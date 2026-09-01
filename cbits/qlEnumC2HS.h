@@ -224,6 +224,10 @@ enum PositionType {Long, Short};
 
 // instruments/swaption.hpp
 enum SettlementType {Physical, Cash};
+// The experimental irregular-swaption settlement enum is distinct from
+// Settlement::Type.  QuantLib declares Physical=0 and Cash=1; keep this
+// c2hs-only bridge header independent of experimental QuantLib includes.
+enum IrregularSettlementType { IrregularPhysical = 0, IrregularCash = 1 };
 
 // instruments/swaption.hpp
 enum SwaptionPriceType {Spot, Forward};

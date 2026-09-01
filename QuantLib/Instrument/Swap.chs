@@ -3,8 +3,10 @@
 module QuantLib.Instrument.Swap
   (
     Swaption
+  , IrregularSwaption
   , NonstandardSwaption
   , Swap
+  , IrregularSwap
   , FixedVsFloatingSwap
   , VanillaSwap
   , NonstandardSwap
@@ -103,6 +105,10 @@ module QuantLib.Instrument.Swap
   , liborLegNPV
 
   , swaption
+  , irregularSwaption
+  , irregularSwap
+  , irregularSwapFairRate
+  , irregularSwapFairSpread
   , nonstandardSwaptionFromSwaption
   , nonstandardSwaption
   , floatFloatSwaption
@@ -170,10 +176,13 @@ import QuantLib.Index.InterestRate(tenor, dayCounter, businessDayConvention)
 
 {#enum SwapType{} deriving(Show, Eq, Read)#}
 {#enum SwaptionPriceType{} add prefix="Swaption" deriving(Show, Eq, Read)#}
+{#enum IrregularSettlementType{} deriving(Show, Eq, Read)#}
 
 {#pointer *Leg foreign -> CLeg' nocode#}
 {#pointer *QlSwaption as Swaption foreign -> CSwaption' nocode#}
+{#pointer *QlIrregularSwaption as IrregularSwaption foreign -> CIrregularSwaption' nocode#}
 {#pointer *QlSwap as Swap foreign -> CSwap' nocode#}
+{#pointer *QlIrregularSwap as IrregularSwap foreign -> CIrregularSwap' nocode#}
 {#pointer *QlFixedVsFloatingSwap as FixedVsFloatingSwap foreign -> CFixedVsFloatingSwap' nocode#}
 {#pointer *QlVanillaSwap as VanillaSwap foreign -> CVanillaSwap' nocode#}
 {#pointer *QlNonstandardSwap as NonstandardSwap foreign -> CNonstandardSwap' nocode#}
@@ -693,6 +702,13 @@ instance HasSpread ConstNotionalCrossCurrencyFixedVsFloatingSwap where
 
 -- |An option on a 'VanillaSwap'.
 {#fun qlSwaption as swaption{withFixedVsFloatingSwap*`GenFixedVsFloatingSwap f',withExercise*`Exercise',`SettlementType',`SettlementMethod',preErrorCheck-`String'errorCheck*-}->`Swaption'peekSwaption*#}
+
+-- |A priceable option on an 'IrregularSwap'.  Use 'haganIrregularSwaptionEngine'
+-- as its pricing engine; QuantLib has no corresponding stock IrregularSwap engine.
+{#fun qlIrregularSwaption as irregularSwaption{withIrregularSwap*`IrregularSwap',withExercise*`Exercise',fromEnumC`IrregularSettlementType',preErrorCheck-`String'errorCheck*-}->`IrregularSwaption'peekIrregularSwaption*#}
+{#fun qlIrregularSwap as irregularSwap{`SwapType',withLeg*`GenLeg fixed',withLeg*`GenLeg float',preErrorCheck-`String'errorCheck*-}->`IrregularSwap'peekIrregularSwap*#}
+{#fun qlIrregularSwapFairRate as irregularSwapFairRate{withIrregularSwap*`IrregularSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlIrregularSwapFairSpread as irregularSwapFairSpread{withIrregularSwap*`IrregularSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Converts an existing 'Swaption' into a 'NonstandardSwaption' (upstream's own conversion
 -- constructor).

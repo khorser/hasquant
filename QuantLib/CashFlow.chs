@@ -25,7 +25,19 @@ module QuantLib.CashFlow
   , cappedFlooredCoupon
   , cappedFlooredIborCoupon
   , digitalIborCoupon
+  , DigitalCoupon
+  , digitalCoupon
+  , digitalCouponConvexityAdjustment
+  , digitalCouponCallOptionRate
+  , digitalCouponPutOptionRate
   , multipleResetsCoupon
+  , RangeAccrualFloatersCoupon
+  , rangeAccrualFloatersCoupon
+  , rangeAccrualFloatersCouponPriceWithoutOptionality
+  , YoYInflationCoupon
+  , yoyInflationCoupon
+  , yoyInflationCouponAsCashFlow
+  , yoyInflationCouponAdjustedFixing
   , averagingMultipleResetsPricer
   , compoundingMultipleResetsPricer
   , OvernightIndexedCoupon
@@ -129,6 +141,12 @@ module QuantLib.CashFlow
   , digitalCmsLeg
   , DigitalCmsLegOpts(..)
   , defaultDigitalCmsLegOpts
+  , DigitalIborLegOpts(..)
+  , defaultDigitalIborLegOpts
+  , digitalIborLeg
+  , MultipleResetsLegOpts(..)
+  , defaultMultipleResetsLegOpts
+  , multipleResetsLeg
   , overnightLeg
   , rangeAccrualLeg
   , cpiLeg
@@ -186,13 +204,19 @@ import QuantLib.Internal.Type
 import QuantLib.Internal.Common
 import QuantLib.Internal.Syntax(deriveOptionsRecord)
 import Data.Maybe(fromMaybe)
-import Data.List.NonEmpty(NonEmpty, toList)
+import Data.List.NonEmpty(NonEmpty(..), toList)
 
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"
 #include "qlEnumObjects.h"
 
 #include "ql.h"
+
+-- These are deliberately local: c2hs fixes each {#fun#}'s raw pointee type
+-- when it expands that hook.
+{#pointer *QlDigitalCoupon as DigitalCoupon foreign -> CDigitalCoupon' nocode#}
+{#pointer *QlRangeAccrualFloatersCoupon as RangeAccrualFloatersCoupon foreign -> CRangeAccrualFloatersCoupon' nocode#}
+{#pointer *QlYoYInflationCoupon as YoYInflationCoupon foreign -> CYoYInflationCoupon nocode#}
 
 {#pointer *Calendar foreign -> CCalendar nocode#}
 {#pointer *Leg foreign -> CLeg' nocode#}
@@ -277,6 +301,14 @@ $(deriveOptionsRecord "DigitalCmsLegOpts" []
   , ("dcmlReplication", [t|Maybe DigitalReplication|], [|Nothing|])
   , ("dcmlNakedOption", [t|Bool|], [|False|])
   ])
+
+$(deriveOptionsRecord "DigitalIborLegOpts" []
+  [ ("dilCallStrikes", [t|[Double]|], [|[]|]), ("dilCallPosition", [t|PositionType|], [|Long|]), ("dilCallATM", [t|Bool|], [|False|]), ("dilCallPayoffs", [t|[Double]|], [|[]|])
+  , ("dilPutStrikes", [t|[Double]|], [|[]|]), ("dilPutPosition", [t|PositionType|], [|Long|]), ("dilPutATM", [t|Bool|], [|False|]), ("dilPutPayoffs", [t|[Double]|], [|[]|])
+  , ("dilReplication", [t|Maybe DigitalReplication|], [|Nothing|]), ("dilNakedOption", [t|Bool|], [|False|]) ])
+
+$(deriveOptionsRecord "MultipleResetsLegOpts" []
+  [ ("mrlNotionals", [t|NonEmpty Double|], [|1.0 :| []|]), ("mrlPaymentCalendar", [t|Maybe Calendar|], [|Nothing|]), ("mrlPaymentLag", [t|Int|], [|0|]), ("mrlFixingDays", [t|[Word]|], [|[]|]), ("mrlGearings", [t|[Double]|], [|[]|]), ("mrlCouponSpreads", [t|[Double]|], [|[]|]), ("mrlRateSpreads", [t|[Double]|], [|[]|]), ("mrlExCouponPeriod", [t|(Int, TimeUnit)|], [|(0, Days)|]), ("mrlExCouponCalendar", [t|Maybe Calendar|], [|Nothing|]), ("mrlExCouponConvention", [t|BusinessDayConvention|], [|Unadjusted|]), ("mrlExCouponEndOfMonth", [t|Bool|], [|False|]), ("mrlAveragingMethod", [t|RateAveragingType|], [|AveragingCompound|]) ])
 
 -- |Build a 'Leg' of plain, predetermined cash flows from parallel amount\/date arrays.
 {#fun qlLeg{withDoubleArray*`[Double]'&,withDayPtr*`[Day]',preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
@@ -411,6 +443,17 @@ leg f = qlLeg fs ds where (ds, fs) = unzip f
   ,`Bool' -- ^nakedOption
   ,preErrorCheck-`String'errorCheck*-}->`FloatingRateCoupon'peekFloatingRateCoupon*#}
 
+-- |A floating coupon with replicated digital call and put payoffs.  Optional
+-- strikes/payoffs use 'Nothing' for QuantLib's null-rate sentinel.
+{#fun qlDigitalCoupon as digitalCoupon{withFloatingRateCoupon*`GenFloatingRateCoupon frc' -- ^underlying
+  ,fromMaybeDouble`Maybe Double',fromEnumC`PositionType',`Bool',fromMaybeDouble`Maybe Double'
+  ,fromMaybeDouble`Maybe Double',fromEnumC`PositionType',`Bool',fromMaybeDouble`Maybe Double'
+  ,withMaybeDigitalReplication*`Maybe DigitalReplication',`Bool'
+  ,preErrorCheck-`String'errorCheck*-}->`DigitalCoupon'peekDigitalCoupon*#}
+{#fun qlDigitalCouponConvexityAdjustment as digitalCouponConvexityAdjustment{withDigitalCoupon*`DigitalCoupon',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlDigitalCouponCallOptionRate as digitalCouponCallOptionRate{withDigitalCoupon*`DigitalCoupon',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlDigitalCouponPutOptionRate as digitalCouponPutOptionRate{withDigitalCoupon*`DigitalCoupon',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |Ibor coupon whose rate averages multiple reset dates in each accrual period.
 {#fun qlMultipleResetsCoupon as multipleResetsCoupon{withDay*`Day' -- ^paymentDate
   ,`Double' -- ^nominal
@@ -425,6 +468,18 @@ leg f = qlLeg fs ds where (ds, fs) = unzip f
   ,withDayCounter*`DayCounter' -- ^dayCounter
   ,withMaybeDay*`Maybe Day' -- ^exCouponDate
   ,preErrorCheck-`String'errorCheck*-}->`FloatingRateCoupon'peekFloatingRateCoupon*#}
+
+-- |A range-accrual coupon.  Attach the existing range-accrual pricer before
+-- asking for its rate; 'rangeAccrualFloatersCouponPriceWithoutOptionality'
+-- needs only a discount curve.
+{#fun qlRangeAccrualFloatersCoupon as rangeAccrualFloatersCoupon{withDay*`Day',`Double',withIborIndex*`GenIborIndex ibor',withDay*`Day',withDay*`Day',fromIntegral`Word',withDayCounter*`DayCounter',`Double',`Double',withMaybeDay*`Maybe Day',withMaybeDay*`Maybe Day',withSchedule*`Schedule',`Double',`Double',preErrorCheck-`String'errorCheck*-}->`RangeAccrualFloatersCoupon'peekRangeAccrualFloatersCoupon*#}
+{#fun qlRangeAccrualFloatersCouponPriceWithoutOptionality as rangeAccrualFloatersCouponPriceWithoutOptionality{withRangeAccrualFloatersCoupon*`RangeAccrualFloatersCoupon',withYieldTermStructure*`GenYieldTermStructure y',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |A year-on-year inflation coupon.  As for 'yoyInflationLeg', attach a
+-- YoY inflation coupon pricer before evaluating the coupon rate.
+{#fun qlYoYInflationCoupon as yoyInflationCoupon{withDay*`Day',`Double',withDay*`Day',withDay*`Day',fromIntegral`Word',withYoYInflationIndex*`YoYInflationIndex',fromEnumQuantity`(Int,TimeUnit)'&,fromEnumC`CPIInterpolationType',withDayCounter*`DayCounter',`Double',`Double',withMaybeDay*`Maybe Day',withMaybeDay*`Maybe Day',preErrorCheck-`String'errorCheck*-}->`YoYInflationCoupon'peekYoYInflationCoupon*#}
+{#fun qlYoYInflationCouponAsCashFlow as yoyInflationCouponAsCashFlow{withYoYInflationCoupon*`YoYInflationCoupon'}->`CashFlow'peekCashFlow*#}
+{#fun qlYoYInflationCouponAdjustedFixing as yoyInflationCouponAdjustedFixing{withYoYInflationCoupon*`YoYInflationCoupon',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Pricer that arithmetically averages multiple Ibor resets.
 {#fun qlAveragingMultipleResetsPricer as averagingMultipleResetsPricer{preErrorCheck-`String'errorCheck*-}->`FloatingRateCouponPricer'peekFloatingRateCouponPricer*#}
@@ -1311,11 +1366,22 @@ digitalCmsLeg schedule index notionals dc adjustment fixingDays gearings spreads
     (dcmlPutStrikes opts) (dcmlPutPosition opts) (dcmlPutATM opts) (dcmlPutPayoffs opts)
     (dcmlReplication opts) (dcmlNakedOption opts)
 
+digitalIborLeg :: Schedule -> GenIborIndex ibor -> NonEmpty Double -> DayCounter -> BusinessDayConvention -> [Word] -> [Double] -> [Double] -> Bool -> DigitalIborLegOpts -> IO Leg
+digitalIborLeg schedule index notionals dc adjustment fixingDays gearings spreads inArrears opts =
+  digitalIborLeg_ schedule index notionals dc adjustment fixingDays gearings spreads inArrears (dilCallStrikes opts) (dilCallPosition opts) (dilCallATM opts) (dilCallPayoffs opts) (dilPutStrikes opts) (dilPutPosition opts) (dilPutATM opts) (dilPutPayoffs opts) (dilReplication opts) (dilNakedOption opts)
+
+multipleResetsLeg :: Schedule -> GenIborIndex ibor -> Word -> DayCounter -> BusinessDayConvention -> MultipleResetsLegOpts -> IO Leg
+multipleResetsLeg schedule index resets dc adjustment opts = do
+  nullCalendar <- calendar Null
+  multipleResetsLeg_ schedule index resets (mrlNotionals opts) dc adjustment (fromMaybe nullCalendar (mrlPaymentCalendar opts)) (mrlPaymentLag opts) (mrlFixingDays opts) (mrlGearings opts) (mrlCouponSpreads opts) (mrlRateSpreads opts) (mrlExCouponPeriod opts) (fromMaybe nullCalendar (mrlExCouponCalendar opts)) (mrlExCouponConvention opts) (mrlExCouponEndOfMonth opts) (mrlAveragingMethod opts)
+
 {#fun qlDigitalCmsLeg as digitalCmsLeg_{withSchedule*`Schedule',withSwapIndex*`GenSwapIndex sidx',withNonEmptyDoubleArray*`NonEmpty Double'&,withDayCounter*`DayCounter',fromEnumC`BusinessDayConvention'
   ,withIntArray*`[Word]'&,withDoubleArray*`[Double]'&,withDoubleArray*`[Double]'&,`Bool'
   ,withDoubleArray*`[Double]'&,fromEnumC`PositionType',`Bool',withDoubleArray*`[Double]'&
   ,withDoubleArray*`[Double]'&,fromEnumC`PositionType',`Bool',withDoubleArray*`[Double]'&
   ,withMaybeDigitalReplication*`Maybe DigitalReplication',`Bool',preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
+{#fun qlDigitalIborLeg as digitalIborLeg_{withSchedule*`Schedule',withIborIndex*`GenIborIndex ibor',withNonEmptyDoubleArray*`NonEmpty Double'&,withDayCounter*`DayCounter',fromEnumC`BusinessDayConvention',withIntArray*`[Word]'&,withDoubleArray*`[Double]'&,withDoubleArray*`[Double]'&,`Bool',withDoubleArray*`[Double]'&,fromEnumC`PositionType',`Bool',withDoubleArray*`[Double]'&,withDoubleArray*`[Double]'&,fromEnumC`PositionType',`Bool',withDoubleArray*`[Double]'&,withMaybeDigitalReplication*`Maybe DigitalReplication',`Bool',preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
+{#fun qlMultipleResetsLeg as multipleResetsLeg_{withSchedule*`Schedule',withIborIndex*`GenIborIndex ibor',fromIntegral`Word',withNonEmptyDoubleArray*`NonEmpty Double'&,withDayCounter*`DayCounter',fromEnumC`BusinessDayConvention',withCalendar*`Calendar',`Int',withIntArray*`[Word]'&,withDoubleArray*`[Double]'&,withDoubleArray*`[Double]'&,withDoubleArray*`[Double]'&,fromEnumQuantity`(Int,TimeUnit)'&,withCalendar*`Calendar',fromEnumC`BusinessDayConvention',`Bool',fromEnumC`RateAveragingType',preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
 
 -- |CMS-coupon pricer via static replication (Hagan's "Conundrums..."), using an analytic
 -- closed-form approximation of the replication integrals.

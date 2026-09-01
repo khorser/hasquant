@@ -74,6 +74,7 @@ module QuantLib.PricingEngine
   , blackCapFloorEngine'
   , blackCapFloorEngine
   , blackSwaptionEngine
+  , haganIrregularSwaptionEngine
   , blackSwaptionEngine'
   , bachelierCapFloorEngine'
   , bachelierCapFloorEngine
@@ -626,6 +627,7 @@ discountingPerpetualFuturesEngine domestic foreignCurve spot funding interpolati
   ,`Double' -- ^displacement
   ,`CashAnnuityModel' -- ^model
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+{#fun qlHaganIrregularSwaptionEngine as haganIrregularSwaptionEngine{withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure sv',withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |shifted-lognormal Black-formula swaption engine, taking a swaption volatility structure
 {#fun qlBlackSwaptionEngine1 as blackSwaptionEngine'{withYieldTermStructure*`GenYieldTermStructure y',withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure sv',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}

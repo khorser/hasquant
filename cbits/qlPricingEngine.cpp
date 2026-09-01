@@ -1,5 +1,6 @@
 #include <ql/experimental/callablebonds/blackcallablebondengine.hpp>
 #include <ql/experimental/callablebonds/treecallablebondengine.hpp>
+#include <ql/experimental/swaptions/haganirregularswaptionengine.hpp>
 #include <ql/experimental/math/zigguratrng.hpp>
 #include <ql/experimental/variancegamma/all.hpp>
 #include <ql/experimental/barrieroption/vannavolgabarrierengine.hpp>
@@ -476,6 +477,9 @@ QlPricingEngine* qlBlackCapFloorEngine(QlYieldTermStructure* discountCurve, QlQu
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
 QlPricingEngine* qlBlackSwaptionEngine(QlYieldTermStructure* discountCurve, QlQuote* vol, DayCounter* dc, double displacement, int model, char **e) {
   try {return ret(new QlPricingEngine(alloc(new BlackSwaptionEngine(*arg(discountCurve), *arg(vol), (*arg(dc)), displacement, (BlackSwaptionEngine::CashAnnuityModel)model))));
+  } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
+QlPricingEngine* qlHaganIrregularSwaptionEngine(QlSwaptionVolatilityStructure* vol, QlYieldTermStructure* curve, char **e) {
+  try {return ret(new QlPricingEngine(alloc(new HaganIrregularSwaptionEngine(*arg(vol), qlNullableHandle(curve)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
 QlPricingEngine* qlBlackSwaptionEngine1(QlYieldTermStructure* discountCurve, QlSwaptionVolatilityStructure* vol, char **e) {
   try {return ret(new QlPricingEngine(alloc(new BlackSwaptionEngine(*arg(discountCurve), *arg(vol)))));

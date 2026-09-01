@@ -698,6 +698,44 @@ peekDigitalCmsCoupon = GenFloatingRateCoupon <.> newGenForeignPtr
 withDigitalCmsCoupon :: DigitalCmsCoupon -> (Ptr CDigitalCmsCoupon' -> IO b) -> IO b
 withDigitalCmsCoupon = withForeignPtr . ptr . getFloatingRateCoupon
 
+-- | A digital floating-rate coupon is kept concrete because its option-rate
+-- results are not members of the 'FloatingRateCoupon' base API.
+data CDigitalCoupon'
+type CDigitalCoupon = ForeignPtr CDigitalCoupon'
+type DigitalCoupon = GenFloatingRateCoupon CDigitalCoupon
+foreign import ccall unsafe "ql.h &qlFreeDigitalCoupon" qlFreeDigitalCoupon :: FinalizerPtr CDigitalCoupon'
+instance Finalizable CDigitalCoupon' where finalize = qlFreeDigitalCoupon
+foreign import ccall "ql.h qlDigitalCouponAsFloatingRateCoupon" qlDigitalCouponAsFloatingRateCoupon :: Ptr CDigitalCoupon' -> IO (Ptr CFloatingRateCoupon')
+instance Upcastable CDigitalCoupon' where {type Base CDigitalCoupon' = CFloatingRateCoupon'; upcast = qlDigitalCouponAsFloatingRateCoupon}
+peekDigitalCoupon :: Ptr CDigitalCoupon' -> IO DigitalCoupon
+peekDigitalCoupon = GenFloatingRateCoupon <.> newGenForeignPtr
+withDigitalCoupon :: DigitalCoupon -> (Ptr CDigitalCoupon' -> IO b) -> IO b
+withDigitalCoupon = withForeignPtr . ptr . getFloatingRateCoupon
+
+-- | A range-accrual coupon is concrete for its no-optionality price helper.
+data CRangeAccrualFloatersCoupon'
+type CRangeAccrualFloatersCoupon = ForeignPtr CRangeAccrualFloatersCoupon'
+type RangeAccrualFloatersCoupon = GenFloatingRateCoupon CRangeAccrualFloatersCoupon
+foreign import ccall unsafe "ql.h &qlFreeRangeAccrualFloatersCoupon" qlFreeRangeAccrualFloatersCoupon :: FinalizerPtr CRangeAccrualFloatersCoupon'
+instance Finalizable CRangeAccrualFloatersCoupon' where finalize = qlFreeRangeAccrualFloatersCoupon
+foreign import ccall "ql.h qlRangeAccrualFloatersCouponAsFloatingRateCoupon" qlRangeAccrualFloatersCouponAsFloatingRateCoupon :: Ptr CRangeAccrualFloatersCoupon' -> IO (Ptr CFloatingRateCoupon')
+instance Upcastable CRangeAccrualFloatersCoupon' where {type Base CRangeAccrualFloatersCoupon' = CFloatingRateCoupon'; upcast = qlRangeAccrualFloatersCouponAsFloatingRateCoupon}
+peekRangeAccrualFloatersCoupon :: Ptr CRangeAccrualFloatersCoupon' -> IO RangeAccrualFloatersCoupon
+peekRangeAccrualFloatersCoupon = GenFloatingRateCoupon <.> newGenForeignPtr
+withRangeAccrualFloatersCoupon :: RangeAccrualFloatersCoupon -> (Ptr CRangeAccrualFloatersCoupon' -> IO b) -> IO b
+withRangeAccrualFloatersCoupon = withForeignPtr . ptr . getFloatingRateCoupon
+
+-- | Concrete YoY coupon retained for 'adjustedFixing'.  Convert it explicitly
+-- with 'asCashFlow' when a general cash-flow collection is required.
+data CYoYInflationCoupon
+newtype YoYInflationCoupon = YoYInflationCoupon {getCYoYInflationCoupon :: Standalone CYoYInflationCoupon}
+foreign import ccall unsafe "ql.h &qlFreeYoYInflationCoupon" qlFreeYoYInflationCoupon :: FinalizerPtr CYoYInflationCoupon
+instance Finalizable CYoYInflationCoupon where finalize = qlFreeYoYInflationCoupon
+peekYoYInflationCoupon :: Ptr CYoYInflationCoupon -> IO YoYInflationCoupon
+peekYoYInflationCoupon = YoYInflationCoupon <.> peekStandalone
+withYoYInflationCoupon :: YoYInflationCoupon -> (Ptr CYoYInflationCoupon -> IO b) -> IO b
+withYoYInflationCoupon = withStandalone . getCYoYInflationCoupon
+
 data CEquityCashFlowPricer
 newtype EquityCashFlowPricer = EquityCashFlowPricer {getCEquityCashFlowPricer :: Standalone CEquityCashFlowPricer}
 foreign import ccall unsafe "ql.h &qlFreeEquityCashFlowPricer" qlFreeEquityCashFlowPricer :: FinalizerPtr CEquityCashFlowPricer
@@ -2755,6 +2793,18 @@ peekGenSwap = newGenForeignPtr >=> newGenSwap
 withGenSwap :: GenSwap (ForeignPtr s) -> (Ptr s -> IO b) -> IO b
 withGenSwap = withForeignPtr . ptr . peel . getInstrument
 
+data CIrregularSwap'
+type CIrregularSwap = ForeignPtr CIrregularSwap'
+type IrregularSwap = GenSwap CIrregularSwap
+foreign import ccall unsafe "ql.h &qlFreeIrregularSwap" qlFreeIrregularSwap :: FinalizerPtr CIrregularSwap'
+instance Finalizable CIrregularSwap' where finalize = qlFreeIrregularSwap
+foreign import ccall "ql.h qlIrregularSwapAsSwap" qlIrregularSwapAsSwap :: Ptr CIrregularSwap' -> IO (Ptr CSwap')
+instance Upcastable CIrregularSwap' where {type Base CIrregularSwap' = CSwap'; upcast = qlIrregularSwapAsSwap}
+peekIrregularSwap :: Ptr CIrregularSwap' -> IO IrregularSwap
+peekIrregularSwap = peekGenSwap
+withIrregularSwap :: IrregularSwap -> (Ptr CIrregularSwap' -> IO b) -> IO b
+withIrregularSwap = withForeignPtr . ptr . peel . getInstrument
+
 data CBond'
 type GenBond b = GenInstrument (AnyOf CBond' b)
 type CBond = ForeignPtr CBond'
@@ -3063,6 +3113,18 @@ peekSwaption :: Ptr CSwaption' -> IO Swaption
 peekSwaption = peekGenOption
 withSwaption :: Swaption -> (Ptr CSwaption' -> IO b) -> IO b
 withSwaption = withForeignPtr . ptr . peel . getInstrument
+
+data CIrregularSwaption'
+type CIrregularSwaption = ForeignPtr CIrregularSwaption'
+type IrregularSwaption = GenOption CIrregularSwaption
+foreign import ccall unsafe "ql.h &qlFreeIrregularSwaption" qlFreeIrregularSwaption :: FinalizerPtr CIrregularSwaption'
+instance Finalizable CIrregularSwaption' where finalize = qlFreeIrregularSwaption
+foreign import ccall "ql.h qlIrregularSwaptionAsOption" qlIrregularSwaptionAsOption :: Ptr CIrregularSwaption' -> IO (Ptr COption')
+instance Upcastable CIrregularSwaption' where {type Base CIrregularSwaption' = COption'; upcast = qlIrregularSwaptionAsOption}
+peekIrregularSwaption :: Ptr CIrregularSwaption' -> IO IrregularSwaption
+peekIrregularSwaption = peekGenOption
+withIrregularSwaption :: IrregularSwaption -> (Ptr CIrregularSwaption' -> IO b) -> IO b
+withIrregularSwaption = withForeignPtr . ptr . peel . getInstrument
 
 data CNonstandardSwaption'
 type CNonstandardSwaption = ForeignPtr CNonstandardSwaption'
