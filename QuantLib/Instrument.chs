@@ -64,10 +64,11 @@ import QuantLib.Internal.Common
 -- in the foreign currency; Quanto contracts use a separate quanto currency.
 -- A zero-length funding frequency selects continuous funding; otherwise
 -- funding is discrete at the supplied period.
-{#fun qlPerpetualFutures as perpetualFutures{fromEnumC`PerpetualFuturesPayoffType'
-  ,fromEnumC`PerpetualFuturesFundingType'
+{#fun qlPerpetualFutures as perpetualFutures{fromEnumC`PerpetualFuturesPayoffType' -- ^payoffType
+  ,fromEnumC`PerpetualFuturesFundingType' -- ^fundingType
   ,fromEnumQuantity`(Int,TimeUnit)'& -- ^fundingFrequency
-  ,withCalendar*`Calendar',withDayCounter*`DayCounter'
+  ,withCalendar*`Calendar' -- ^fundingCalendar
+  ,withDayCounter*`DayCounter' -- ^fundingDayCounter
   ,preErrorCheck-`String'errorCheck*-}->`Instrument'peekInstrument*#}
 
 -- |Returns the net present value of the given Instrument

@@ -208,8 +208,8 @@ import Data.List.NonEmpty(NonEmpty, toList)
   ,`Double' -- ^premium
   ,withDay*`Day' -- ^secondExpiryDate
   ,`Double' -- ^secondStrike
-  ,withStrikedPayoff*`StrikedPayoff'
-  ,withExercise*`Exercise'
+  ,withStrikedPayoff*`StrikedPayoff' -- ^payoff
+  ,withExercise*`Exercise' -- ^exercise
   ,preErrorCheck-`String'errorCheck*-}->`OneAssetOption'peekOneAssetOption*#}
 
 -- |Sensitivity of a MargrabeOption's value to the price of the first asset.

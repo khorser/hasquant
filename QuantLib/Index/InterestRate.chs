@@ -326,8 +326,8 @@ overnightIndexedSwapIndex familyName tenr settlementDays ccy idx telescopicValue
 -- native fixing history: a historical fixing is available only when both component swap indexes
 -- have one.
 {#fun qlSwapSpreadIndex as swapSpreadIndex{`String' -- ^familyName
-  ,withSwapIndex*`GenSwapIndex sidx1'
-  ,withSwapIndex*`GenSwapIndex sidx2'
+  ,withSwapIndex*`GenSwapIndex sidx1' -- ^swapIndex1
+  ,withSwapIndex*`GenSwapIndex sidx2' -- ^swapIndex2
   ,`Double' -- ^gearing1
   ,`Double' -- ^gearing2
   ,preErrorCheck-`String'errorCheck*-}->`SwapSpreadIndex'peekSwapSpreadIndex*#}

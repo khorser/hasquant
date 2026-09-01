@@ -15,6 +15,8 @@ Before writing anything, find the method's actual declaration in QuantLib's own 
 
 Read the upstream Doxygen comment for both the method and its class while that header is open. Add a `-- |` Haddock comment to every public new binding, carrying the relevant behavior, formulas, warnings, and units in clear Haskell-facing language. Do not replace it with a generic label or omit upstream caveats; document intentional scope cuts too. A constructor binding needs the class-level documentation as well as any constructor-specific notes. Constructor-echo inspectors that are deliberately not bound need no documentation.
 
+**Document every public input argument too.** Put a `-- ^parameterName` annotation immediately after each Haskell-visible argument marshaller in the `{#fun#}` declaration, in the same left-to-right order as the upstream signature. Use the upstream parameter name where it is meaningful; explain non-obvious sentinels, `Maybe`/empty-handle behavior, units, and flags in the surrounding Haddock. Do not annotate c2hs-only out/error plumbing such as `preErrorCheck`. Split long declarations across lines rather than leaving a constructor's argument order undocumented.
+
 Default to assuming the method **can throw** — QuantLib almost universally validates via `QL_REQUIRE`/`QL_ENSURE` internally even when the header gives no hint. Only treat it as non-throwing (step 3) if the header shows a trivial inline field return with no validation, like `qlInterestRateRate`/`InterestRate::rate()`. When in doubt, throw: a spuriously `pure` Haskell import over a function that actually throws is undefined behavior once the C++ exception unwinds past the FFI boundary, whereas a throwing convention on a method that never throws just costs an unused `try/catch`.
 
 If the method you're being asked for doesn't exist verbatim in the upstream header — don't invent a plausible-sounding substitute. Say so.
@@ -64,7 +66,7 @@ Two edits, not one — easy to forget the first:
    - Plain value: just `` `Type' ``, e.g. `` `Double' ``.
    - Needs conversion: `` `Type'convFn* ``, e.g. `` `Day'toDay `` (serial-number date), `` `InterestRate'peekInterestRate* `` (wrap a returned foreign object — `peekXxx` must exist in `Internal/Type.hs`, same as `withXxx`).
 
-   Add the upstream-derived `-- |` Haddock comment immediately above it, as required by step 0. It should explain useful semantics and caveats, not merely repeat the Haskell function name.
+   Add the upstream-derived `-- |` Haddock comment immediately above it, as required by step 0, and a `-- ^parameterName` annotation to every public input argument. It should explain useful semantics and caveats, not merely repeat the Haskell function name.
 
 ## 5. Less-common parameter/return shapes
 
