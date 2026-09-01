@@ -935,13 +935,13 @@ span.spaces    { background: white }
 <span class="lineno">  916 </span>
 <span class="lineno">  917 </span>-- |the underlying 'IborIndex' this process was constructed with
 <span class="lineno">  918 </span>liborForwardModelProcessIndex :: (LiborForwardModelProcess) -&gt; IO ((IborIndex))
-<span class="lineno">  919 </span><span class="decl"><span class="istickedoff">liborForwardModelProcessIndex a1 =</span>
-<span class="lineno">  920 </span><span class="spaces">  </span><span class="istickedoff">withGenStochasticProcess a1 $ \a1' -&gt; </span>
-<span class="lineno">  921 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
-<span class="lineno">  922 </span><span class="spaces">  </span><span class="istickedoff">liborForwardModelProcessIndex'_ a1' a2' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  923 </span><span class="spaces">  </span><span class="istickedoff">peekIborIndex res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">  924 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
-<span class="lineno">  925 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  919 </span><span class="decl"><span class="nottickedoff">liborForwardModelProcessIndex a1 =</span>
+<span class="lineno">  920 </span><span class="spaces">  </span><span class="nottickedoff">withGenStochasticProcess a1 $ \a1' -&gt; </span>
+<span class="lineno">  921 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a2' -&gt; </span>
+<span class="lineno">  922 </span><span class="spaces">  </span><span class="nottickedoff">liborForwardModelProcessIndex'_ a1' a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  923 </span><span class="spaces">  </span><span class="nottickedoff">peekIborIndex res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  924 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a2'&gt;&gt;</span>
+<span class="lineno">  925 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
 <span class="lineno">  926 </span>
 <span class="lineno">  927 </span>
 <span class="lineno">  928 </span>

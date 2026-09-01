@@ -78,7 +78,7 @@
 </span><span id="line-45"></span><span>
 </span><span id="line-46"></span><span>
 </span><span id="line-47"></span><span class="annot"><span class="hs-comment">-- |Bootstrap helper for a zero-coupon inflation swap, at the given (observation lag, maturity).</span></span><span>
-</span><span id="line-48"></span><span id="local-6989586621680355683"><span class="annot"><a href="QuantLib.TermStructure.Inflation.html#zeroCouponInflationSwapHelper"><span class="hs-identifier hs-type">zeroCouponInflationSwapHelper</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-special">(</span><span class="annot"><a href="QuantLib.Internal.Type.html#GenQuote"><span class="hs-identifier hs-type">GenQuote</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680355683"><span class="hs-identifier hs-type">q</span></a></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="hs-comment">-- ^quote</span></span><span>
+</span><span id="line-48"></span><span id="local-6989586621680356771"><span class="annot"><a href="QuantLib.TermStructure.Inflation.html#zeroCouponInflationSwapHelper"><span class="hs-identifier hs-type">zeroCouponInflationSwapHelper</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-special">(</span><span class="annot"><a href="QuantLib.Internal.Type.html#GenQuote"><span class="hs-identifier hs-type">GenQuote</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680356771"><span class="hs-identifier hs-type">q</span></a></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="hs-comment">-- ^quote</span></span><span>
 </span><span id="line-49"></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-special">(</span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Word</span></span><span class="hs-special">,</span><span class="annot"><a href="QuantLib.Internal.Common.html#TimeUnit"><span class="hs-identifier hs-type">TimeUnit</span></a></span><span class="hs-special">)</span><span class="hs-special">)</span><span> </span><span class="annot"><span class="hs-comment">-- ^swapObsLag</span></span><span>
 </span><span id="line-50"></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Day</span></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="hs-comment">-- ^maturity</span></span><span>
 </span><span id="line-51"></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-special">(</span><span class="annot"><a href="QuantLib.Internal.Type.html#Calendar"><span class="hs-identifier hs-type">Calendar</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-special">(</span><span class="annot"><a href="QuantLib.Internal.Common.html#BusinessDayConvention"><span class="hs-identifier hs-type">BusinessDayConvention</span></a></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="hs-comment">-- ^paymentConvention</span></span><span>
@@ -98,78 +98,78 @@ GenQuote q
 -&gt; PillarChoice
 -&gt; Maybe Day
 -&gt; IO ZeroCouponInflationSwapHelper
-</span><a href="QuantLib.TermStructure.Inflation.html#zeroCouponInflationSwapHelper"><span class="hs-identifier hs-var hs-var">zeroCouponInflationSwapHelper</span></a></span></span><span> </span><span id="local-6989586621680355792"><span class="annot"><span class="annottext">GenQuote q
-</span><a href="#local-6989586621680355792"><span class="hs-identifier hs-var">a1</span></a></span></span><span> </span><span id="local-6989586621680355793"><span class="annot"><span class="annottext">(Word, TimeUnit)
-</span><a href="#local-6989586621680355793"><span class="hs-identifier hs-var">a2</span></a></span></span><span> </span><span id="local-6989586621680355794"><span class="annot"><span class="annottext">Day
-</span><a href="#local-6989586621680355794"><span class="hs-identifier hs-var">a3</span></a></span></span><span> </span><span id="local-6989586621680355795"><span class="annot"><span class="annottext">Calendar
-</span><a href="#local-6989586621680355795"><span class="hs-identifier hs-var">a4</span></a></span></span><span> </span><span id="local-6989586621680355796"><span class="annot"><span class="annottext">BusinessDayConvention
-</span><a href="#local-6989586621680355796"><span class="hs-identifier hs-var">a5</span></a></span></span><span> </span><span id="local-6989586621680355797"><span class="annot"><span class="annottext">DayCounter
-</span><a href="#local-6989586621680355797"><span class="hs-identifier hs-var">a6</span></a></span></span><span> </span><span id="local-6989586621680355798"><span class="annot"><span class="annottext">ZeroInflationIndex
-</span><a href="#local-6989586621680355798"><span class="hs-identifier hs-var">a7</span></a></span></span><span> </span><span id="local-6989586621680355799"><span class="annot"><span class="annottext">CPIInterpolationType
-</span><a href="#local-6989586621680355799"><span class="hs-identifier hs-var">a8</span></a></span></span><span> </span><span id="local-6989586621680355800"><span class="annot"><span class="annottext">PillarChoice
-</span><a href="#local-6989586621680355800"><span class="hs-identifier hs-var">a9</span></a></span></span><span> </span><span id="local-6989586621680355801"><span class="annot"><span class="annottext">Maybe Day
-</span><a href="#local-6989586621680355801"><span class="hs-identifier hs-var">a10</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
+</span><a href="QuantLib.TermStructure.Inflation.html#zeroCouponInflationSwapHelper"><span class="hs-identifier hs-var hs-var">zeroCouponInflationSwapHelper</span></a></span></span><span> </span><span id="local-6989586621680356880"><span class="annot"><span class="annottext">GenQuote q
+</span><a href="#local-6989586621680356880"><span class="hs-identifier hs-var">a1</span></a></span></span><span> </span><span id="local-6989586621680356881"><span class="annot"><span class="annottext">(Word, TimeUnit)
+</span><a href="#local-6989586621680356881"><span class="hs-identifier hs-var">a2</span></a></span></span><span> </span><span id="local-6989586621680356882"><span class="annot"><span class="annottext">Day
+</span><a href="#local-6989586621680356882"><span class="hs-identifier hs-var">a3</span></a></span></span><span> </span><span id="local-6989586621680356883"><span class="annot"><span class="annottext">Calendar
+</span><a href="#local-6989586621680356883"><span class="hs-identifier hs-var">a4</span></a></span></span><span> </span><span id="local-6989586621680356884"><span class="annot"><span class="annottext">BusinessDayConvention
+</span><a href="#local-6989586621680356884"><span class="hs-identifier hs-var">a5</span></a></span></span><span> </span><span id="local-6989586621680356885"><span class="annot"><span class="annottext">DayCounter
+</span><a href="#local-6989586621680356885"><span class="hs-identifier hs-var">a6</span></a></span></span><span> </span><span id="local-6989586621680356886"><span class="annot"><span class="annottext">ZeroInflationIndex
+</span><a href="#local-6989586621680356886"><span class="hs-identifier hs-var">a7</span></a></span></span><span> </span><span id="local-6989586621680356887"><span class="annot"><span class="annottext">CPIInterpolationType
+</span><a href="#local-6989586621680356887"><span class="hs-identifier hs-var">a8</span></a></span></span><span> </span><span id="local-6989586621680356888"><span class="annot"><span class="annottext">PillarChoice
+</span><a href="#local-6989586621680356888"><span class="hs-identifier hs-var">a9</span></a></span></span><span> </span><span id="local-6989586621680356889"><span class="annot"><span class="annottext">Maybe Day
+</span><a href="#local-6989586621680356889"><span class="hs-identifier hs-var">a10</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
 </span><span id="line-57"></span><span>  </span><span class="annot"><span class="annottext">GenQuote q
 -&gt; (Ptr CQuote' -&gt; IO ZeroCouponInflationSwapHelper)
 -&gt; IO ZeroCouponInflationSwapHelper
 forall q b. GenQuote q -&gt; (Ptr CQuote' -&gt; IO b) -&gt; IO b
 </span><a href="QuantLib.Internal.Type.html#withQuote"><span class="hs-identifier hs-var">withQuote</span></a></span><span> </span><span class="annot"><span class="annottext">GenQuote q
-</span><a href="#local-6989586621680355792"><span class="hs-identifier hs-var">a1</span></a></span><span> </span><span class="annot"><span class="annottext">((Ptr CQuote' -&gt; IO ZeroCouponInflationSwapHelper)
+</span><a href="#local-6989586621680356880"><span class="hs-identifier hs-var">a1</span></a></span><span> </span><span class="annot"><span class="annottext">((Ptr CQuote' -&gt; IO ZeroCouponInflationSwapHelper)
  -&gt; IO ZeroCouponInflationSwapHelper)
 -&gt; (Ptr CQuote' -&gt; IO ZeroCouponInflationSwapHelper)
 -&gt; IO ZeroCouponInflationSwapHelper
 forall a b. (a -&gt; b) -&gt; a -&gt; b
-</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680355803"><span class="annot"><span class="annottext">Ptr CQuote'
-</span><a href="#local-6989586621680355803"><span class="hs-identifier hs-var">a1'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
-</span><span id="line-58"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span class="hs-special">(</span><span id="local-6989586621680355820"><span class="annot"><span class="annottext">CInt
-</span><a href="#local-6989586621680355820"><span class="hs-identifier hs-var">a2'1</span></a></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680355821"><span class="annot"><span class="annottext">CInt
-</span><a href="#local-6989586621680355821"><span class="hs-identifier hs-var">a2'2</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">(Word, TimeUnit) -&gt; (CInt, CInt)
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680356891"><span class="annot"><span class="annottext">Ptr CQuote'
+</span><a href="#local-6989586621680356891"><span class="hs-identifier hs-var">a1'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
+</span><span id="line-58"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span class="hs-special">(</span><span id="local-6989586621680356908"><span class="annot"><span class="annottext">CInt
+</span><a href="#local-6989586621680356908"><span class="hs-identifier hs-var">a2'1</span></a></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680356909"><span class="annot"><span class="annottext">CInt
+</span><a href="#local-6989586621680356909"><span class="hs-identifier hs-var">a2'2</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">(Word, TimeUnit) -&gt; (CInt, CInt)
 forall a b c.
 (Enum a, Integral b, Integral c) =&gt;
 (b, a) -&gt; (CInt, c)
 </span><a href="QuantLib.Internal.html#fromEnumQuantity"><span class="hs-identifier hs-var">fromEnumQuantity</span></a></span><span> </span><span class="annot"><span class="annottext">(Word, TimeUnit)
-</span><a href="#local-6989586621680355793"><span class="hs-identifier hs-var">a2</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span> </span><span>
+</span><a href="#local-6989586621680356881"><span class="hs-identifier hs-var">a2</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span> </span><span>
 </span><span id="line-59"></span><span>  </span><span class="annot"><span class="annottext">Day
 -&gt; (CInt -&gt; IO ZeroCouponInflationSwapHelper)
 -&gt; IO ZeroCouponInflationSwapHelper
 forall a. Day -&gt; (CInt -&gt; IO a) -&gt; IO a
 </span><a href="QuantLib.Internal.html#withDay"><span class="hs-identifier hs-var">withDay</span></a></span><span> </span><span class="annot"><span class="annottext">Day
-</span><a href="#local-6989586621680355794"><span class="hs-identifier hs-var">a3</span></a></span><span> </span><span class="annot"><span class="annottext">((CInt -&gt; IO ZeroCouponInflationSwapHelper)
+</span><a href="#local-6989586621680356882"><span class="hs-identifier hs-var">a3</span></a></span><span> </span><span class="annot"><span class="annottext">((CInt -&gt; IO ZeroCouponInflationSwapHelper)
  -&gt; IO ZeroCouponInflationSwapHelper)
 -&gt; (CInt -&gt; IO ZeroCouponInflationSwapHelper)
 -&gt; IO ZeroCouponInflationSwapHelper
 forall a b. (a -&gt; b) -&gt; a -&gt; b
-</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680355824"><span class="annot"><span class="annottext">CInt
-</span><a href="#local-6989586621680355824"><span class="hs-identifier hs-var">a3'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680356912"><span class="annot"><span class="annottext">CInt
+</span><a href="#local-6989586621680356912"><span class="hs-identifier hs-var">a3'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
 </span><span id="line-60"></span><span>  </span><span class="annot"><span class="annottext">Calendar
 -&gt; (Ptr CCalendar -&gt; IO ZeroCouponInflationSwapHelper)
 -&gt; IO ZeroCouponInflationSwapHelper
 forall b. Calendar -&gt; (Ptr CCalendar -&gt; IO b) -&gt; IO b
 </span><a href="QuantLib.Internal.Type.html#withCalendar"><span class="hs-identifier hs-var">withCalendar</span></a></span><span> </span><span class="annot"><span class="annottext">Calendar
-</span><a href="#local-6989586621680355795"><span class="hs-identifier hs-var">a4</span></a></span><span> </span><span class="annot"><span class="annottext">((Ptr CCalendar -&gt; IO ZeroCouponInflationSwapHelper)
+</span><a href="#local-6989586621680356883"><span class="hs-identifier hs-var">a4</span></a></span><span> </span><span class="annot"><span class="annottext">((Ptr CCalendar -&gt; IO ZeroCouponInflationSwapHelper)
  -&gt; IO ZeroCouponInflationSwapHelper)
 -&gt; (Ptr CCalendar -&gt; IO ZeroCouponInflationSwapHelper)
 -&gt; IO ZeroCouponInflationSwapHelper
 forall a b. (a -&gt; b) -&gt; a -&gt; b
-</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680355826"><span class="annot"><span class="annottext">Ptr CCalendar
-</span><a href="#local-6989586621680355826"><span class="hs-identifier hs-var">a4'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
-</span><span id="line-61"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span id="local-6989586621680355835"><span class="annot"><span class="annottext">a5' :: CInt
-</span><a href="#local-6989586621680355835"><span class="hs-identifier hs-var hs-var">a5'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">BusinessDayConvention -&gt; CInt
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680356914"><span class="annot"><span class="annottext">Ptr CCalendar
+</span><a href="#local-6989586621680356914"><span class="hs-identifier hs-var">a4'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
+</span><span id="line-61"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span id="local-6989586621680356923"><span class="annot"><span class="annottext">a5' :: CInt
+</span><a href="#local-6989586621680356923"><span class="hs-identifier hs-var hs-var">a5'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">BusinessDayConvention -&gt; CInt
 forall a b. (Enum a, Integral b) =&gt; a -&gt; b
 </span><a href="QuantLib.Internal.html#fromEnumC"><span class="hs-identifier hs-var">fromEnumC</span></a></span><span> </span><span class="annot"><span class="annottext">BusinessDayConvention
-</span><a href="#local-6989586621680355796"><span class="hs-identifier hs-var">a5</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span id="local-6989586621680355837"><span id="local-6989586621680355838"></span></span><span> </span><span>
+</span><a href="#local-6989586621680356884"><span class="hs-identifier hs-var">a5</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span id="local-6989586621680356925"><span id="local-6989586621680356926"></span></span><span> </span><span>
 </span><span id="line-62"></span><span>  </span><span class="annot"><span class="annottext">DayCounter
 -&gt; (Ptr CDayCounter -&gt; IO ZeroCouponInflationSwapHelper)
 -&gt; IO ZeroCouponInflationSwapHelper
 forall b. DayCounter -&gt; (Ptr CDayCounter -&gt; IO b) -&gt; IO b
 </span><a href="QuantLib.Internal.Type.html#withDayCounter"><span class="hs-identifier hs-var">withDayCounter</span></a></span><span> </span><span class="annot"><span class="annottext">DayCounter
-</span><a href="#local-6989586621680355797"><span class="hs-identifier hs-var">a6</span></a></span><span> </span><span class="annot"><span class="annottext">((Ptr CDayCounter -&gt; IO ZeroCouponInflationSwapHelper)
+</span><a href="#local-6989586621680356885"><span class="hs-identifier hs-var">a6</span></a></span><span> </span><span class="annot"><span class="annottext">((Ptr CDayCounter -&gt; IO ZeroCouponInflationSwapHelper)
  -&gt; IO ZeroCouponInflationSwapHelper)
 -&gt; (Ptr CDayCounter -&gt; IO ZeroCouponInflationSwapHelper)
 -&gt; IO ZeroCouponInflationSwapHelper
 forall a b. (a -&gt; b) -&gt; a -&gt; b
-</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680355842"><span class="annot"><span class="annottext">Ptr CDayCounter
-</span><a href="#local-6989586621680355842"><span class="hs-identifier hs-var">a6'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680356930"><span class="annot"><span class="annottext">Ptr CDayCounter
+</span><a href="#local-6989586621680356930"><span class="hs-identifier hs-var">a6'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
 </span><span id="line-63"></span><span>  </span><span class="annot"><span class="annottext">ZeroInflationIndex
 -&gt; (Ptr CZeroInflationIndex' -&gt; IO ZeroCouponInflationSwapHelper)
 -&gt; IO ZeroCouponInflationSwapHelper
@@ -177,39 +177,39 @@ forall zidx b.
 GenZeroInflationIndex zidx
 -&gt; (Ptr CZeroInflationIndex' -&gt; IO b) -&gt; IO b
 </span><a href="QuantLib.Internal.Type.html#withZeroInflationIndex"><span class="hs-identifier hs-var">withZeroInflationIndex</span></a></span><span> </span><span class="annot"><span class="annottext">ZeroInflationIndex
-</span><a href="#local-6989586621680355798"><span class="hs-identifier hs-var">a7</span></a></span><span> </span><span class="annot"><span class="annottext">((Ptr CZeroInflationIndex' -&gt; IO ZeroCouponInflationSwapHelper)
+</span><a href="#local-6989586621680356886"><span class="hs-identifier hs-var">a7</span></a></span><span> </span><span class="annot"><span class="annottext">((Ptr CZeroInflationIndex' -&gt; IO ZeroCouponInflationSwapHelper)
  -&gt; IO ZeroCouponInflationSwapHelper)
 -&gt; (Ptr CZeroInflationIndex' -&gt; IO ZeroCouponInflationSwapHelper)
 -&gt; IO ZeroCouponInflationSwapHelper
 forall a b. (a -&gt; b) -&gt; a -&gt; b
-</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680355844"><span class="annot"><span class="annottext">Ptr CZeroInflationIndex'
-</span><a href="#local-6989586621680355844"><span class="hs-identifier hs-var">a7'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
-</span><span id="line-64"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span id="local-6989586621680355853"><span class="annot"><span class="annottext">a8' :: CInt
-</span><a href="#local-6989586621680355853"><span class="hs-identifier hs-var hs-var">a8'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">CPIInterpolationType -&gt; CInt
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680356932"><span class="annot"><span class="annottext">Ptr CZeroInflationIndex'
+</span><a href="#local-6989586621680356932"><span class="hs-identifier hs-var">a7'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
+</span><span id="line-64"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span id="local-6989586621680356941"><span class="annot"><span class="annottext">a8' :: CInt
+</span><a href="#local-6989586621680356941"><span class="hs-identifier hs-var hs-var">a8'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">CPIInterpolationType -&gt; CInt
 forall a b. (Enum a, Integral b) =&gt; a -&gt; b
 </span><a href="QuantLib.Internal.html#fromEnumC"><span class="hs-identifier hs-var">fromEnumC</span></a></span><span> </span><span class="annot"><span class="annottext">CPIInterpolationType
-</span><a href="#local-6989586621680355799"><span class="hs-identifier hs-var">a8</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span> </span><span>
-</span><span id="line-65"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span id="local-6989586621680355859"><span class="annot"><span class="annottext">a9' :: CInt
-</span><a href="#local-6989586621680355859"><span class="hs-identifier hs-var hs-var">a9'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Int -&gt; CInt
+</span><a href="#local-6989586621680356887"><span class="hs-identifier hs-var">a8</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span> </span><span>
+</span><span id="line-65"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span id="local-6989586621680356947"><span class="annot"><span class="annottext">a9' :: CInt
+</span><a href="#local-6989586621680356947"><span class="hs-identifier hs-var hs-var">a9'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Int -&gt; CInt
 forall a b. (Integral a, Num b) =&gt; a -&gt; b
 </span><span class="hs-identifier hs-var">fromIntegral</span></span><span> </span><span class="annot"><span class="annottext">(Int -&gt; CInt) -&gt; (PillarChoice -&gt; Int) -&gt; PillarChoice -&gt; CInt
 forall b c a. (b -&gt; c) -&gt; (a -&gt; b) -&gt; a -&gt; c
 </span><span class="hs-operator hs-var">.</span></span><span> </span><span class="annot"><span class="annottext">PillarChoice -&gt; Int
 forall a. Enum a =&gt; a -&gt; Int
 </span><span class="hs-identifier hs-var">fromEnum</span></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">PillarChoice
-</span><a href="#local-6989586621680355800"><span class="hs-identifier hs-var">a9</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span> </span><span>
+</span><a href="#local-6989586621680356888"><span class="hs-identifier hs-var">a9</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span> </span><span>
 </span><span id="line-66"></span><span>  </span><span class="annot"><span class="annottext">Maybe Day
 -&gt; (CInt -&gt; IO ZeroCouponInflationSwapHelper)
 -&gt; IO ZeroCouponInflationSwapHelper
 forall a. Maybe Day -&gt; (CInt -&gt; IO a) -&gt; IO a
 </span><a href="QuantLib.Internal.html#withMaybeDay"><span class="hs-identifier hs-var">withMaybeDay</span></a></span><span> </span><span class="annot"><span class="annottext">Maybe Day
-</span><a href="#local-6989586621680355801"><span class="hs-identifier hs-var">a10</span></a></span><span> </span><span class="annot"><span class="annottext">((CInt -&gt; IO ZeroCouponInflationSwapHelper)
+</span><a href="#local-6989586621680356889"><span class="hs-identifier hs-var">a10</span></a></span><span> </span><span class="annot"><span class="annottext">((CInt -&gt; IO ZeroCouponInflationSwapHelper)
  -&gt; IO ZeroCouponInflationSwapHelper)
 -&gt; (CInt -&gt; IO ZeroCouponInflationSwapHelper)
 -&gt; IO ZeroCouponInflationSwapHelper
 forall a b. (a -&gt; b) -&gt; a -&gt; b
-</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680355863"><span class="annot"><span class="annottext">CInt
-</span><a href="#local-6989586621680355863"><span class="hs-identifier hs-var">a10'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680356951"><span class="annot"><span class="annottext">CInt
+</span><a href="#local-6989586621680356951"><span class="hs-identifier hs-var">a10'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
 </span><span id="line-67"></span><span>  </span><span class="annot"><span class="annottext">(Ptr (Ptr CChar) -&gt; IO ZeroCouponInflationSwapHelper)
 -&gt; IO ZeroCouponInflationSwapHelper
 forall a b. (Ptr (Ptr a) -&gt; IO b) -&gt; IO b
@@ -218,8 +218,8 @@ forall a b. (Ptr (Ptr a) -&gt; IO b) -&gt; IO b
 -&gt; (Ptr (Ptr CChar) -&gt; IO ZeroCouponInflationSwapHelper)
 -&gt; IO ZeroCouponInflationSwapHelper
 forall a b. (a -&gt; b) -&gt; a -&gt; b
-</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680355865"><span class="annot"><span class="annottext">Ptr (Ptr CChar)
-</span><a href="#local-6989586621680355865"><span class="hs-identifier hs-var">a11'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680356953"><span class="annot"><span class="annottext">Ptr (Ptr CChar)
+</span><a href="#local-6989586621680356953"><span class="hs-identifier hs-var">a11'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
 </span><span id="line-68"></span><span>  </span><span class="annot"><span class="annottext">Ptr CQuote'
 -&gt; CInt
 -&gt; CInt
@@ -234,39 +234,39 @@ forall a b. (a -&gt; b) -&gt; a -&gt; b
 -&gt; Ptr (Ptr CChar)
 -&gt; IO (Ptr CZeroCouponInflationSwapHelper)
 </span><a href="QuantLib.TermStructure.Inflation.html#zeroCouponInflationSwapHelper%27_"><span class="hs-identifier hs-var">zeroCouponInflationSwapHelper'_</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr CQuote'
-</span><a href="#local-6989586621680355803"><span class="hs-identifier hs-var">a1'</span></a></span><span> </span><span class="annot"><span class="annottext">CInt
-</span><a href="#local-6989586621680355820"><span class="hs-identifier hs-var">a2'1</span></a></span><span>  </span><span class="annot"><span class="annottext">CInt
-</span><a href="#local-6989586621680355821"><span class="hs-identifier hs-var">a2'2</span></a></span><span> </span><span class="annot"><span class="annottext">CInt
-</span><a href="#local-6989586621680355824"><span class="hs-identifier hs-var">a3'</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr CCalendar
-</span><a href="#local-6989586621680355826"><span class="hs-identifier hs-var">a4'</span></a></span><span> </span><span class="annot"><span class="annottext">CInt
-</span><a href="#local-6989586621680355835"><span class="hs-identifier hs-var">a5'</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr CDayCounter
-</span><a href="#local-6989586621680355842"><span class="hs-identifier hs-var">a6'</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr CZeroInflationIndex'
-</span><a href="#local-6989586621680355844"><span class="hs-identifier hs-var">a7'</span></a></span><span> </span><span class="annot"><span class="annottext">CInt
-</span><a href="#local-6989586621680355853"><span class="hs-identifier hs-var">a8'</span></a></span><span> </span><span class="annot"><span class="annottext">CInt
-</span><a href="#local-6989586621680355859"><span class="hs-identifier hs-var">a9'</span></a></span><span> </span><span class="annot"><span class="annottext">CInt
-</span><a href="#local-6989586621680355863"><span class="hs-identifier hs-var">a10'</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr (Ptr CChar)
-</span><a href="#local-6989586621680355865"><span class="hs-identifier hs-var">a11'</span></a></span><span> </span><span class="annot"><span class="annottext">IO (Ptr CZeroCouponInflationSwapHelper)
+</span><a href="#local-6989586621680356891"><span class="hs-identifier hs-var">a1'</span></a></span><span> </span><span class="annot"><span class="annottext">CInt
+</span><a href="#local-6989586621680356908"><span class="hs-identifier hs-var">a2'1</span></a></span><span>  </span><span class="annot"><span class="annottext">CInt
+</span><a href="#local-6989586621680356909"><span class="hs-identifier hs-var">a2'2</span></a></span><span> </span><span class="annot"><span class="annottext">CInt
+</span><a href="#local-6989586621680356912"><span class="hs-identifier hs-var">a3'</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr CCalendar
+</span><a href="#local-6989586621680356914"><span class="hs-identifier hs-var">a4'</span></a></span><span> </span><span class="annot"><span class="annottext">CInt
+</span><a href="#local-6989586621680356923"><span class="hs-identifier hs-var">a5'</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr CDayCounter
+</span><a href="#local-6989586621680356930"><span class="hs-identifier hs-var">a6'</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr CZeroInflationIndex'
+</span><a href="#local-6989586621680356932"><span class="hs-identifier hs-var">a7'</span></a></span><span> </span><span class="annot"><span class="annottext">CInt
+</span><a href="#local-6989586621680356941"><span class="hs-identifier hs-var">a8'</span></a></span><span> </span><span class="annot"><span class="annottext">CInt
+</span><a href="#local-6989586621680356947"><span class="hs-identifier hs-var">a9'</span></a></span><span> </span><span class="annot"><span class="annottext">CInt
+</span><a href="#local-6989586621680356951"><span class="hs-identifier hs-var">a10'</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr (Ptr CChar)
+</span><a href="#local-6989586621680356953"><span class="hs-identifier hs-var">a11'</span></a></span><span> </span><span class="annot"><span class="annottext">IO (Ptr CZeroCouponInflationSwapHelper)
 -&gt; (Ptr CZeroCouponInflationSwapHelper
     -&gt; IO ZeroCouponInflationSwapHelper)
 -&gt; IO ZeroCouponInflationSwapHelper
 forall a b. IO a -&gt; (a -&gt; IO b) -&gt; IO b
 forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; (a -&gt; m b) -&gt; m b
-</span><span class="hs-operator hs-var">&gt;&gt;=</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680355867"><span class="annot"><span class="annottext">Ptr CZeroCouponInflationSwapHelper
-</span><a href="#local-6989586621680355867"><span class="hs-identifier hs-var">res</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><span class="hs-operator hs-var">&gt;&gt;=</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680356955"><span class="annot"><span class="annottext">Ptr CZeroCouponInflationSwapHelper
+</span><a href="#local-6989586621680356955"><span class="hs-identifier hs-var">res</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
 </span><span id="line-69"></span><span>  </span><span class="annot"><span class="annottext">Ptr CZeroCouponInflationSwapHelper
 -&gt; IO ZeroCouponInflationSwapHelper
 </span><a href="QuantLib.Internal.Type.html#peekZeroCouponInflationSwapHelper"><span class="hs-identifier hs-var">peekZeroCouponInflationSwapHelper</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr CZeroCouponInflationSwapHelper
-</span><a href="#local-6989586621680355867"><span class="hs-identifier hs-var">res</span></a></span><span> </span><span class="annot"><span class="annottext">IO ZeroCouponInflationSwapHelper
+</span><a href="#local-6989586621680356955"><span class="hs-identifier hs-var">res</span></a></span><span> </span><span class="annot"><span class="annottext">IO ZeroCouponInflationSwapHelper
 -&gt; (ZeroCouponInflationSwapHelper
     -&gt; IO ZeroCouponInflationSwapHelper)
 -&gt; IO ZeroCouponInflationSwapHelper
 forall a b. IO a -&gt; (a -&gt; IO b) -&gt; IO b
 forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; (a -&gt; m b) -&gt; m b
-</span><span class="hs-operator hs-var">&gt;&gt;=</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680355869"><span class="annot"><span class="annottext">ZeroCouponInflationSwapHelper
-</span><a href="#local-6989586621680355869"><span class="hs-identifier hs-var">res'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><span class="hs-operator hs-var">&gt;&gt;=</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680356957"><span class="annot"><span class="annottext">ZeroCouponInflationSwapHelper
+</span><a href="#local-6989586621680356957"><span class="hs-identifier hs-var">res'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
 </span><span id="line-70"></span><span>  </span><span class="annot"><span class="annottext">Ptr (Ptr CChar) -&gt; IO ()
 </span><a href="QuantLib.Internal.html#errorCheck"><span class="hs-identifier hs-var">errorCheck</span></a></span><span>  </span><span class="annot"><span class="annottext">Ptr (Ptr CChar)
-</span><a href="#local-6989586621680355865"><span class="hs-identifier hs-var">a11'</span></a></span><span class="annot"><span class="annottext">IO ()
+</span><a href="#local-6989586621680356953"><span class="hs-identifier hs-var">a11'</span></a></span><span class="annot"><span class="annottext">IO ()
 -&gt; IO ZeroCouponInflationSwapHelper
 -&gt; IO ZeroCouponInflationSwapHelper
 forall a b. IO a -&gt; IO b -&gt; IO b
@@ -276,7 +276,7 @@ forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; m b -&gt; m b
 forall a. a -&gt; IO a
 forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
 </span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">ZeroCouponInflationSwapHelper
-</span><a href="#local-6989586621680355869"><span class="hs-identifier hs-var">res'</span></a></span><span class="hs-special">)</span><span>
+</span><a href="#local-6989586621680356957"><span class="hs-identifier hs-var">res'</span></a></span><span class="hs-special">)</span><span>
 </span><span id="line-72"></span><span>
 </span><span id="line-73"></span><span class="hs-pragma">{-# LINE 58 &quot;./QuantLib/TermStructure/Inflation.chs&quot; #-}</span><span>
 </span><span id="line-58"></span><span>
@@ -356,60 +356,60 @@ forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
 -&gt; Int
 -&gt; Int
 -&gt; IO ZeroInflationTermStructure
-</span><a href="QuantLib.TermStructure.Inflation.html#qlPiecewiseZeroInflationCurve"><span class="hs-identifier hs-var hs-var">qlPiecewiseZeroInflationCurve</span></a></span></span><span> </span><span id="local-6989586621680355872"><span class="annot"><span class="annottext">Day
-</span><a href="#local-6989586621680355872"><span class="hs-identifier hs-var">a1</span></a></span></span><span> </span><span id="local-6989586621680355873"><span class="annot"><span class="annottext">Day
-</span><a href="#local-6989586621680355873"><span class="hs-identifier hs-var">a2</span></a></span></span><span> </span><span id="local-6989586621680355874"><span class="annot"><span class="annottext">Frequency
-</span><a href="#local-6989586621680355874"><span class="hs-identifier hs-var">a3</span></a></span></span><span> </span><span id="local-6989586621680355875"><span class="annot"><span class="annottext">DayCounter
-</span><a href="#local-6989586621680355875"><span class="hs-identifier hs-var">a4</span></a></span></span><span> </span><span id="local-6989586621680355876"><span class="annot"><span class="annottext">[ZeroCouponInflationSwapHelper]
-</span><a href="#local-6989586621680355876"><span class="hs-identifier hs-var">a5</span></a></span></span><span> </span><span id="local-6989586621680355877"><span class="annot"><span class="annottext">Int
-</span><a href="#local-6989586621680355877"><span class="hs-identifier hs-var">a6</span></a></span></span><span> </span><span id="local-6989586621680355878"><span class="annot"><span class="annottext">Int
-</span><a href="#local-6989586621680355878"><span class="hs-identifier hs-var">a7</span></a></span></span><span> </span><span id="local-6989586621680355879"><span class="annot"><span class="annottext">Int
-</span><a href="#local-6989586621680355879"><span class="hs-identifier hs-var">a8</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
+</span><a href="QuantLib.TermStructure.Inflation.html#qlPiecewiseZeroInflationCurve"><span class="hs-identifier hs-var hs-var">qlPiecewiseZeroInflationCurve</span></a></span></span><span> </span><span id="local-6989586621680356960"><span class="annot"><span class="annottext">Day
+</span><a href="#local-6989586621680356960"><span class="hs-identifier hs-var">a1</span></a></span></span><span> </span><span id="local-6989586621680356961"><span class="annot"><span class="annottext">Day
+</span><a href="#local-6989586621680356961"><span class="hs-identifier hs-var">a2</span></a></span></span><span> </span><span id="local-6989586621680356962"><span class="annot"><span class="annottext">Frequency
+</span><a href="#local-6989586621680356962"><span class="hs-identifier hs-var">a3</span></a></span></span><span> </span><span id="local-6989586621680356963"><span class="annot"><span class="annottext">DayCounter
+</span><a href="#local-6989586621680356963"><span class="hs-identifier hs-var">a4</span></a></span></span><span> </span><span id="local-6989586621680356964"><span class="annot"><span class="annottext">[ZeroCouponInflationSwapHelper]
+</span><a href="#local-6989586621680356964"><span class="hs-identifier hs-var">a5</span></a></span></span><span> </span><span id="local-6989586621680356965"><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621680356965"><span class="hs-identifier hs-var">a6</span></a></span></span><span> </span><span id="local-6989586621680356966"><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621680356966"><span class="hs-identifier hs-var">a7</span></a></span></span><span> </span><span id="local-6989586621680356967"><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621680356967"><span class="hs-identifier hs-var">a8</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
 </span><span id="line-90"></span><span>  </span><span class="annot"><span class="annottext">Day
 -&gt; (CInt -&gt; IO ZeroInflationTermStructure)
 -&gt; IO ZeroInflationTermStructure
 forall a. Day -&gt; (CInt -&gt; IO a) -&gt; IO a
 </span><a href="QuantLib.Internal.html#withDay"><span class="hs-identifier hs-var">withDay</span></a></span><span> </span><span class="annot"><span class="annottext">Day
-</span><a href="#local-6989586621680355872"><span class="hs-identifier hs-var">a1</span></a></span><span> </span><span class="annot"><span class="annottext">((CInt -&gt; IO ZeroInflationTermStructure)
+</span><a href="#local-6989586621680356960"><span class="hs-identifier hs-var">a1</span></a></span><span> </span><span class="annot"><span class="annottext">((CInt -&gt; IO ZeroInflationTermStructure)
  -&gt; IO ZeroInflationTermStructure)
 -&gt; (CInt -&gt; IO ZeroInflationTermStructure)
 -&gt; IO ZeroInflationTermStructure
 forall a b. (a -&gt; b) -&gt; a -&gt; b
-</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680355880"><span class="annot"><span class="annottext">CInt
-</span><a href="#local-6989586621680355880"><span class="hs-identifier hs-var">a1'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680356968"><span class="annot"><span class="annottext">CInt
+</span><a href="#local-6989586621680356968"><span class="hs-identifier hs-var">a1'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
 </span><span id="line-91"></span><span>  </span><span class="annot"><span class="annottext">Day
 -&gt; (CInt -&gt; IO ZeroInflationTermStructure)
 -&gt; IO ZeroInflationTermStructure
 forall a. Day -&gt; (CInt -&gt; IO a) -&gt; IO a
 </span><a href="QuantLib.Internal.html#withDay"><span class="hs-identifier hs-var">withDay</span></a></span><span> </span><span class="annot"><span class="annottext">Day
-</span><a href="#local-6989586621680355873"><span class="hs-identifier hs-var">a2</span></a></span><span> </span><span class="annot"><span class="annottext">((CInt -&gt; IO ZeroInflationTermStructure)
+</span><a href="#local-6989586621680356961"><span class="hs-identifier hs-var">a2</span></a></span><span> </span><span class="annot"><span class="annottext">((CInt -&gt; IO ZeroInflationTermStructure)
  -&gt; IO ZeroInflationTermStructure)
 -&gt; (CInt -&gt; IO ZeroInflationTermStructure)
 -&gt; IO ZeroInflationTermStructure
 forall a b. (a -&gt; b) -&gt; a -&gt; b
-</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680355881"><span class="annot"><span class="annottext">CInt
-</span><a href="#local-6989586621680355881"><span class="hs-identifier hs-var">a2'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
-</span><span id="line-92"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span id="local-6989586621680355886"><span class="annot"><span class="annottext">a3' :: CInt
-</span><a href="#local-6989586621680355886"><span class="hs-identifier hs-var hs-var">a3'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Int -&gt; CInt
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680356969"><span class="annot"><span class="annottext">CInt
+</span><a href="#local-6989586621680356969"><span class="hs-identifier hs-var">a2'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
+</span><span id="line-92"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span id="local-6989586621680356974"><span class="annot"><span class="annottext">a3' :: CInt
+</span><a href="#local-6989586621680356974"><span class="hs-identifier hs-var hs-var">a3'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Int -&gt; CInt
 forall a b. (Integral a, Num b) =&gt; a -&gt; b
 </span><span class="hs-identifier hs-var">fromIntegral</span></span><span> </span><span class="annot"><span class="annottext">(Int -&gt; CInt) -&gt; (Frequency -&gt; Int) -&gt; Frequency -&gt; CInt
 forall b c a. (b -&gt; c) -&gt; (a -&gt; b) -&gt; a -&gt; c
 </span><span class="hs-operator hs-var">.</span></span><span> </span><span class="annot"><span class="annottext">Frequency -&gt; Int
 forall a. Enum a =&gt; a -&gt; Int
 </span><span class="hs-identifier hs-var">fromEnum</span></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">Frequency
-</span><a href="#local-6989586621680355874"><span class="hs-identifier hs-var">a3</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span> </span><span>
+</span><a href="#local-6989586621680356962"><span class="hs-identifier hs-var">a3</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span> </span><span>
 </span><span id="line-93"></span><span>  </span><span class="annot"><span class="annottext">DayCounter
 -&gt; (Ptr CDayCounter -&gt; IO ZeroInflationTermStructure)
 -&gt; IO ZeroInflationTermStructure
 forall b. DayCounter -&gt; (Ptr CDayCounter -&gt; IO b) -&gt; IO b
 </span><a href="QuantLib.Internal.Type.html#withDayCounter"><span class="hs-identifier hs-var">withDayCounter</span></a></span><span> </span><span class="annot"><span class="annottext">DayCounter
-</span><a href="#local-6989586621680355875"><span class="hs-identifier hs-var">a4</span></a></span><span> </span><span class="annot"><span class="annottext">((Ptr CDayCounter -&gt; IO ZeroInflationTermStructure)
+</span><a href="#local-6989586621680356963"><span class="hs-identifier hs-var">a4</span></a></span><span> </span><span class="annot"><span class="annottext">((Ptr CDayCounter -&gt; IO ZeroInflationTermStructure)
  -&gt; IO ZeroInflationTermStructure)
 -&gt; (Ptr CDayCounter -&gt; IO ZeroInflationTermStructure)
 -&gt; IO ZeroInflationTermStructure
 forall a b. (a -&gt; b) -&gt; a -&gt; b
-</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680355887"><span class="annot"><span class="annottext">Ptr CDayCounter
-</span><a href="#local-6989586621680355887"><span class="hs-identifier hs-var">a4'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680356975"><span class="annot"><span class="annottext">Ptr CDayCounter
+</span><a href="#local-6989586621680356975"><span class="hs-identifier hs-var">a4'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
 </span><span id="line-94"></span><span>  </span><span class="annot"><span class="annottext">[ZeroCouponInflationSwapHelper]
 -&gt; ((CUInt, Ptr (Ptr CZeroCouponInflationSwapHelper))
     -&gt; IO ZeroInflationTermStructure)
@@ -419,31 +419,31 @@ forall b.
 -&gt; ((CUInt, Ptr (Ptr CZeroCouponInflationSwapHelper)) -&gt; IO b)
 -&gt; IO b
 </span><a href="QuantLib.Internal.Type.html#withZeroCouponInflationSwapHelperArray"><span class="hs-identifier hs-var">withZeroCouponInflationSwapHelperArray</span></a></span><span> </span><span class="annot"><span class="annottext">[ZeroCouponInflationSwapHelper]
-</span><a href="#local-6989586621680355876"><span class="hs-identifier hs-var">a5</span></a></span><span> </span><span class="annot"><span class="annottext">(((CUInt, Ptr (Ptr CZeroCouponInflationSwapHelper))
+</span><a href="#local-6989586621680356964"><span class="hs-identifier hs-var">a5</span></a></span><span> </span><span class="annot"><span class="annottext">(((CUInt, Ptr (Ptr CZeroCouponInflationSwapHelper))
   -&gt; IO ZeroInflationTermStructure)
  -&gt; IO ZeroInflationTermStructure)
 -&gt; ((CUInt, Ptr (Ptr CZeroCouponInflationSwapHelper))
     -&gt; IO ZeroInflationTermStructure)
 -&gt; IO ZeroInflationTermStructure
 forall a b. (a -&gt; b) -&gt; a -&gt; b
-</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span class="hs-special">(</span><span id="local-6989586621680355889"><span class="annot"><span class="annottext">CUInt
-</span><a href="#local-6989586621680355889"><span class="hs-identifier hs-var">a5'1</span></a></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680355890"><span class="annot"><span class="annottext">Ptr (Ptr CZeroCouponInflationSwapHelper)
-</span><a href="#local-6989586621680355890"><span class="hs-identifier hs-var">a5'2</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
-</span><span id="line-95"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span id="local-6989586621680355893"><span class="annot"><span class="annottext">a6' :: CInt
-</span><a href="#local-6989586621680355893"><span class="hs-identifier hs-var hs-var">a6'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Int -&gt; CInt
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span class="hs-special">(</span><span id="local-6989586621680356977"><span class="annot"><span class="annottext">CUInt
+</span><a href="#local-6989586621680356977"><span class="hs-identifier hs-var">a5'1</span></a></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680356978"><span class="annot"><span class="annottext">Ptr (Ptr CZeroCouponInflationSwapHelper)
+</span><a href="#local-6989586621680356978"><span class="hs-identifier hs-var">a5'2</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
+</span><span id="line-95"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span id="local-6989586621680356981"><span class="annot"><span class="annottext">a6' :: CInt
+</span><a href="#local-6989586621680356981"><span class="hs-identifier hs-var hs-var">a6'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Int -&gt; CInt
 forall a b. (Integral a, Num b) =&gt; a -&gt; b
 </span><span class="hs-identifier hs-var">fromIntegral</span></span><span> </span><span class="annot"><span class="annottext">Int
-</span><a href="#local-6989586621680355877"><span class="hs-identifier hs-var">a6</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span> </span><span>
-</span><span id="line-96"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span id="local-6989586621680355896"><span class="annot"><span class="annottext">a7' :: CInt
-</span><a href="#local-6989586621680355896"><span class="hs-identifier hs-var hs-var">a7'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Int -&gt; CInt
+</span><a href="#local-6989586621680356965"><span class="hs-identifier hs-var">a6</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span> </span><span>
+</span><span id="line-96"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span id="local-6989586621680356984"><span class="annot"><span class="annottext">a7' :: CInt
+</span><a href="#local-6989586621680356984"><span class="hs-identifier hs-var hs-var">a7'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Int -&gt; CInt
 forall a b. (Integral a, Num b) =&gt; a -&gt; b
 </span><span class="hs-identifier hs-var">fromIntegral</span></span><span> </span><span class="annot"><span class="annottext">Int
-</span><a href="#local-6989586621680355878"><span class="hs-identifier hs-var">a7</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span> </span><span>
-</span><span id="line-97"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span id="local-6989586621680355909"><span class="annot"><span class="annottext">a8' :: CInt
-</span><a href="#local-6989586621680355909"><span class="hs-identifier hs-var hs-var">a8'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Int -&gt; CInt
+</span><a href="#local-6989586621680356966"><span class="hs-identifier hs-var">a7</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span> </span><span>
+</span><span id="line-97"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span id="local-6989586621680356997"><span class="annot"><span class="annottext">a8' :: CInt
+</span><a href="#local-6989586621680356997"><span class="hs-identifier hs-var hs-var">a8'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Int -&gt; CInt
 forall a b. (Integral a, Num b) =&gt; a -&gt; b
 </span><span class="hs-identifier hs-var">fromIntegral</span></span><span> </span><span class="annot"><span class="annottext">Int
-</span><a href="#local-6989586621680355879"><span class="hs-identifier hs-var">a8</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span> </span><span>
+</span><a href="#local-6989586621680356967"><span class="hs-identifier hs-var">a8</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span> </span><span>
 </span><span id="line-98"></span><span>  </span><span class="annot"><span class="annottext">(Ptr (Ptr CChar) -&gt; IO ZeroInflationTermStructure)
 -&gt; IO ZeroInflationTermStructure
 forall a b. (Ptr (Ptr a) -&gt; IO b) -&gt; IO b
@@ -452,8 +452,8 @@ forall a b. (Ptr (Ptr a) -&gt; IO b) -&gt; IO b
 -&gt; (Ptr (Ptr CChar) -&gt; IO ZeroInflationTermStructure)
 -&gt; IO ZeroInflationTermStructure
 forall a b. (a -&gt; b) -&gt; a -&gt; b
-</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680355910"><span class="annot"><span class="annottext">Ptr (Ptr CChar)
-</span><a href="#local-6989586621680355910"><span class="hs-identifier hs-var">a9'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680356998"><span class="annot"><span class="annottext">Ptr (Ptr CChar)
+</span><a href="#local-6989586621680356998"><span class="hs-identifier hs-var">a9'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
 </span><span id="line-99"></span><span>  </span><span class="annot"><span class="annottext">CInt
 -&gt; CInt
 -&gt; CInt
@@ -466,35 +466,35 @@ forall a b. (a -&gt; b) -&gt; a -&gt; b
 -&gt; Ptr (Ptr CChar)
 -&gt; IO (Ptr CZeroInflationTermStructure')
 </span><a href="QuantLib.TermStructure.Inflation.html#qlPiecewiseZeroInflationCurve%27_"><span class="hs-identifier hs-var">qlPiecewiseZeroInflationCurve'_</span></a></span><span> </span><span class="annot"><span class="annottext">CInt
-</span><a href="#local-6989586621680355880"><span class="hs-identifier hs-var">a1'</span></a></span><span> </span><span class="annot"><span class="annottext">CInt
-</span><a href="#local-6989586621680355881"><span class="hs-identifier hs-var">a2'</span></a></span><span> </span><span class="annot"><span class="annottext">CInt
-</span><a href="#local-6989586621680355886"><span class="hs-identifier hs-var">a3'</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr CDayCounter
-</span><a href="#local-6989586621680355887"><span class="hs-identifier hs-var">a4'</span></a></span><span> </span><span class="annot"><span class="annottext">CUInt
-</span><a href="#local-6989586621680355889"><span class="hs-identifier hs-var">a5'1</span></a></span><span>  </span><span class="annot"><span class="annottext">Ptr (Ptr CZeroCouponInflationSwapHelper)
-</span><a href="#local-6989586621680355890"><span class="hs-identifier hs-var">a5'2</span></a></span><span> </span><span class="annot"><span class="annottext">CInt
-</span><a href="#local-6989586621680355893"><span class="hs-identifier hs-var">a6'</span></a></span><span> </span><span class="annot"><span class="annottext">CInt
-</span><a href="#local-6989586621680355896"><span class="hs-identifier hs-var">a7'</span></a></span><span> </span><span class="annot"><span class="annottext">CInt
-</span><a href="#local-6989586621680355909"><span class="hs-identifier hs-var">a8'</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr (Ptr CChar)
-</span><a href="#local-6989586621680355910"><span class="hs-identifier hs-var">a9'</span></a></span><span> </span><span class="annot"><span class="annottext">IO (Ptr CZeroInflationTermStructure')
+</span><a href="#local-6989586621680356968"><span class="hs-identifier hs-var">a1'</span></a></span><span> </span><span class="annot"><span class="annottext">CInt
+</span><a href="#local-6989586621680356969"><span class="hs-identifier hs-var">a2'</span></a></span><span> </span><span class="annot"><span class="annottext">CInt
+</span><a href="#local-6989586621680356974"><span class="hs-identifier hs-var">a3'</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr CDayCounter
+</span><a href="#local-6989586621680356975"><span class="hs-identifier hs-var">a4'</span></a></span><span> </span><span class="annot"><span class="annottext">CUInt
+</span><a href="#local-6989586621680356977"><span class="hs-identifier hs-var">a5'1</span></a></span><span>  </span><span class="annot"><span class="annottext">Ptr (Ptr CZeroCouponInflationSwapHelper)
+</span><a href="#local-6989586621680356978"><span class="hs-identifier hs-var">a5'2</span></a></span><span> </span><span class="annot"><span class="annottext">CInt
+</span><a href="#local-6989586621680356981"><span class="hs-identifier hs-var">a6'</span></a></span><span> </span><span class="annot"><span class="annottext">CInt
+</span><a href="#local-6989586621680356984"><span class="hs-identifier hs-var">a7'</span></a></span><span> </span><span class="annot"><span class="annottext">CInt
+</span><a href="#local-6989586621680356997"><span class="hs-identifier hs-var">a8'</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr (Ptr CChar)
+</span><a href="#local-6989586621680356998"><span class="hs-identifier hs-var">a9'</span></a></span><span> </span><span class="annot"><span class="annottext">IO (Ptr CZeroInflationTermStructure')
 -&gt; (Ptr CZeroInflationTermStructure'
     -&gt; IO ZeroInflationTermStructure)
 -&gt; IO ZeroInflationTermStructure
 forall a b. IO a -&gt; (a -&gt; IO b) -&gt; IO b
 forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; (a -&gt; m b) -&gt; m b
-</span><span class="hs-operator hs-var">&gt;&gt;=</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680355912"><span class="annot"><span class="annottext">Ptr CZeroInflationTermStructure'
-</span><a href="#local-6989586621680355912"><span class="hs-identifier hs-var">res</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><span class="hs-operator hs-var">&gt;&gt;=</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680357000"><span class="annot"><span class="annottext">Ptr CZeroInflationTermStructure'
+</span><a href="#local-6989586621680357000"><span class="hs-identifier hs-var">res</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
 </span><span id="line-100"></span><span>  </span><span class="annot"><span class="annottext">Ptr CZeroInflationTermStructure' -&gt; IO ZeroInflationTermStructure
 </span><a href="QuantLib.Internal.Type.html#peekZeroInflationTermStructure"><span class="hs-identifier hs-var">peekZeroInflationTermStructure</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr CZeroInflationTermStructure'
-</span><a href="#local-6989586621680355912"><span class="hs-identifier hs-var">res</span></a></span><span> </span><span class="annot"><span class="annottext">IO ZeroInflationTermStructure
+</span><a href="#local-6989586621680357000"><span class="hs-identifier hs-var">res</span></a></span><span> </span><span class="annot"><span class="annottext">IO ZeroInflationTermStructure
 -&gt; (ZeroInflationTermStructure -&gt; IO ZeroInflationTermStructure)
 -&gt; IO ZeroInflationTermStructure
 forall a b. IO a -&gt; (a -&gt; IO b) -&gt; IO b
 forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; (a -&gt; m b) -&gt; m b
-</span><span class="hs-operator hs-var">&gt;&gt;=</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680355914"><span class="annot"><span class="annottext">ZeroInflationTermStructure
-</span><a href="#local-6989586621680355914"><span class="hs-identifier hs-var">res'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><span class="hs-operator hs-var">&gt;&gt;=</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680357002"><span class="annot"><span class="annottext">ZeroInflationTermStructure
+</span><a href="#local-6989586621680357002"><span class="hs-identifier hs-var">res'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
 </span><span id="line-101"></span><span>  </span><span class="annot"><span class="annottext">Ptr (Ptr CChar) -&gt; IO ()
 </span><a href="QuantLib.Internal.html#errorCheck"><span class="hs-identifier hs-var">errorCheck</span></a></span><span>  </span><span class="annot"><span class="annottext">Ptr (Ptr CChar)
-</span><a href="#local-6989586621680355910"><span class="hs-identifier hs-var">a9'</span></a></span><span class="annot"><span class="annottext">IO ()
+</span><a href="#local-6989586621680356998"><span class="hs-identifier hs-var">a9'</span></a></span><span class="annot"><span class="annottext">IO ()
 -&gt; IO ZeroInflationTermStructure -&gt; IO ZeroInflationTermStructure
 forall a b. IO a -&gt; IO b -&gt; IO b
 forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; m b -&gt; m b
@@ -503,7 +503,7 @@ forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; m b -&gt; m b
 forall a. a -&gt; IO a
 forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
 </span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">ZeroInflationTermStructure
-</span><a href="#local-6989586621680355914"><span class="hs-identifier hs-var">res'</span></a></span><span class="hs-special">)</span><span>
+</span><a href="#local-6989586621680357002"><span class="hs-identifier hs-var">res'</span></a></span><span class="hs-special">)</span><span>
 </span><span id="line-103"></span><span>
 </span><span id="line-104"></span><span class="hs-pragma">{-# LINE 90 &quot;./QuantLib/TermStructure/Inflation.chs&quot; #-}</span><span>
 </span><span id="line-90"></span><span>
