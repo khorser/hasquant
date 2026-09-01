@@ -14,6 +14,7 @@ module QuantLib.Model
   , OneFactorAffineModel
   , GenOneFactorAffineModel
   , LiborForwardModel
+  , LfmHullWhiteParameterization
   , HullWhite
   , Gsr
   , MarkovFunctional
@@ -62,6 +63,8 @@ module QuantLib.Model
   , varianceGammaModel
   , vasicek
   , liborForwardModel
+  , lfmHullWhiteParameterization
+  , lfmHullWhiteCovariance
   , gsr
   , markovFunctional
   , markovFunctionalCaplet
@@ -118,6 +121,7 @@ import Data.List.NonEmpty(NonEmpty, toList)
 {#pointer *Constraint as QlConstraint foreign -> CConstraint nocode#}
 {#pointer *QlLmCorrelationModel foreign -> CLmCorrelationModel nocode#}
 {#pointer *QlLmVolatilityModel foreign -> CLmVolatilityModel nocode#}
+{#pointer *QlLfmHullWhiteParameterization as LfmHullWhiteParameterization foreign -> CLfmHullWhiteParameterization nocode#}
 
 {#pointer *QlGJRGARCHModel as GJRGARCHModel foreign -> CGJRGARCHModel' nocode#}
 {#pointer *QlHestonModel as HestonModel foreign -> CHestonModel' nocode#}
@@ -320,6 +324,32 @@ markovFunctionalCaplet ts reversion initialVol steps capletVol expiries ibor gri
 
 -- |Libor market (BGM) forward-rate model, built from a 'LiborForwardModelProcess' plus volatility and correlation models.
 {#fun qlLiborForwardModel as liborForwardModel{withGenStochasticProcess*`LiborForwardModelProcess',withLmVolatilityModel*`LmVolatilityModel',withLmCorrelationModel*`LmCorrelationModel',preErrorCheck-`String'errorCheck*-}->`LiborForwardModel'peekLiborForwardModel*#}
+
+-- |Hull-White caplet-volatility parameterization for a Libor forward model. The correlation
+-- matrix and factor count are explicit, mirroring QuantLib's defaulted constructor arguments;
+-- pass an empty matrix and @1@ for its standard one-factor default.
+lfmHullWhiteParameterization :: LiborForwardModelProcess -> GenOptionletVolatilityStructure ov
+  -> Matrix Double -- ^correlation
+  -> Word -- ^factors
+  -> IO LfmHullWhiteParameterization
+lfmHullWhiteParameterization process capletVol (Matrix rows cols values) factors = qlLfmHullWhiteParameterization process capletVol rows cols values factors
+{#fun qlLfmHullWhiteParameterization{withGenStochasticProcess*`LiborForwardModelProcess' -- ^process
+  ,withOptionletVolatilityStructure*`GenOptionletVolatilityStructure ov' -- ^capletVol
+  ,fromIntegral`Word' -- ^correlationRows
+  ,fromIntegral`Word' -- ^correlationColumns
+  ,withDoubleArrayRaw*`[Double]' -- ^correlation
+  ,fromIntegral`Word' -- ^factors
+  ,preErrorCheck-`String'errorCheck*-}->`LfmHullWhiteParameterization'peekLfmHullWhiteParameterization*#}
+
+-- |Instantaneous covariance matrix at @t@ for the supplied forward-rate state @x@.
+lfmHullWhiteCovariance :: LfmHullWhiteParameterization -> Double -> [Double] -> IO (Matrix Double)
+lfmHullWhiteCovariance p t x = toMatrixDouble <$> qlLfmHullWhiteCovariance p t x
+  where toMatrixDouble (r, c, d) = Matrix r c d
+{#fun qlLfmHullWhiteCovariance{withStandalone*`LfmHullWhiteParameterization' -- ^parameterization
+  ,`Double' -- ^t
+  ,withDoubleArray*`[Double]'& -- ^x
+  ,prePtr-`Word'peekWord*,prePtr-`Word'peekWord*,preArray-`[Double]'&peekDoubleArray*
+  ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Calibrate to a set of market instruments (caps/swaptions)
 -- An additional constraint can be passed which must be satisfied in addition to the constraints of the model.

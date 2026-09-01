@@ -147,6 +147,7 @@ typedef struct QlInterestRateIndex QlInterestRateIndex;
 typedef struct QlKlugeExtOUProcess QlKlugeExtOUProcess;
 typedef struct QlLiborForwardModel QlLiborForwardModel;
 typedef struct QlLiborForwardModelProcess QlLiborForwardModelProcess;
+typedef struct QlLfmHullWhiteParameterization QlLfmHullWhiteParameterization;
 typedef struct QlLmCorrelationModel QlLmCorrelationModel;
 typedef struct QlLmVolatilityModel QlLmVolatilityModel;
 typedef struct QlLocalVolTermStructure QlLocalVolTermStructure;

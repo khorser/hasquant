@@ -905,6 +905,14 @@ instance Finalizable CLmVolatilityModel where finalize = qlFreeLmVolatilityModel
 peekLmVolatilityModel :: Ptr CLmVolatilityModel -> IO (Standalone CLmVolatilityModel)
 peekLmVolatilityModel = peekStandalone
 
+data CLfmHullWhiteParameterization
+type QlLfmHullWhiteParameterization = Standalone CLfmHullWhiteParameterization
+type LfmHullWhiteParameterization = QlLfmHullWhiteParameterization
+foreign import ccall unsafe "ql.h &qlFreeLfmHullWhiteParameterization" qlFreeLfmHullWhiteParameterization :: FinalizerPtr CLfmHullWhiteParameterization
+instance Finalizable CLfmHullWhiteParameterization where finalize = qlFreeLfmHullWhiteParameterization
+peekLfmHullWhiteParameterization :: Ptr CLfmHullWhiteParameterization -> IO (Standalone CLfmHullWhiteParameterization)
+peekLfmHullWhiteParameterization = peekStandalone
+
 -- TYPE HIERARCHIES
 --
 -- Each hierarchy root below carries a haddock tree listing every member. Notation:

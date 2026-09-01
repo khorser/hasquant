@@ -30,30 +30,29 @@ import Data.Time.Calendar(addDays)
 import Data.List.NonEmpty(fromList)
 
 import qualified QuantLib.Settings as Settings
-import QuantLib.Time.Date(today, addPeriod)
+import QuantLib.Time.Date(today, addPeriod, september)
 import QuantLib.Time.Schedule(dayCounter, years, DayCounterConstructor(..), Frequency(..), TimeUnit(..))
-import QuantLib.InterestRate(Compounding(..), rate)
+import QuantLib.InterestRate(Compounding(..), VolatilityType(..), rate)
 import QuantLib.Quote(simpleQuote, setValue)
 import QuantLib.TermStructure.Yield(flatForward, forwardRate, YieldTermStructure, interpolatedZeroCurve)
 import QuantLib.Instrument(npv, setPricingEngine)
 import QuantLib.Instrument.Option(europeanOption, StrikedPayoff(PlainVanilla), PlainVanillaPayoff(..), OptionType(..), Exercise(European), EuropeanExercise(..))
 import QuantLib.Process(hestonProcess, batesProcess, gjrGARCHProcess, HestonProcessDiscretization(..), GJRGARCHProcessDiscretization(..)
  , g2Process, g2ForwardProcess, g2Phi, g2ShortRate, g2ForwardPhi, g2ForwardShortRate, factors, drift, diffusion, expectation, initialValues, hullWhiteForwardProcess, setForwardMeasureTime, hybridHestonHullWhiteProcess, HybridHestonHullWhiteProcessDiscretization(..)
- , liborForwardModelProcess, liborForwardModelProcessFixingDates, liborForwardModelProcessFixingTimes, liborForwardModelProcessCashFlows, liborForwardModelProcessIndex)
+ , liborForwardModelProcess, liborForwardModelProcessFixingDates, liborForwardModelProcessFixingTimes, liborForwardModelProcessCashFlows)
 import QuantLib.Model(hullWhite, g2, g2Dynamics, shortRate
  , hestonModel, batesModel, gJRGARCHModel
- , liborForwardModel, liborForwardModelAsAffineModel, LmVolatilityModel(..), LmCorrelationModel(..))
+ , liborForwardModel, liborForwardModelAsAffineModel, lfmHullWhiteParameterization, lfmHullWhiteCovariance, LmVolatilityModel(..), LmCorrelationModel(..))
 import QuantLib.PricingEngine(analyticHestonHullWhiteEngine, mcHestonHullWhiteEngine
  , analyticHestonEngine', batesEngine, analyticGJRGARCHEngine, mcEuropeanGJRGARCHEngine, blackFormula, analyticCapFloorEngine)
 import QuantLib.Method(pathGenerator, next, asset)
-import QuantLib.Math(RngTrait(..), StatisticsTrait(..), timeGrid, Interpolation(..), realMatrix, realMatrixFromVector, matrixData, realMatrixData)
+import QuantLib.Math(RngTrait(..), StatisticsTrait(..), timeGrid, Interpolation(..), realMatrix, realMatrixFromVector, matrixRows, matrixColumns, matrixData, realMatrixData)
 import Control.Monad(replicateM, zipWithM_)
-import QuantLib.CashFlow(cashFlows)
 import QuantLib.Instrument.CapFloor(cap)
-import QuantLib.Index(fixingCalendar, addFixing)
-import QuantLib.Time.Calendar(advance, calendar, BusinessDayConvention(..), CalendarConstructor(..))
+import QuantLib.Time.Calendar(adjust, advance, calendar, BusinessDayConvention(..), CalendarConstructor(..))
 import QuantLib.Index.InterestRate(iborIndex, IborConstructor(..))
 import qualified QuantLib.Index.InterestRate as Ibor(fixingDays)
+import qualified QuantLib.TermStructure.Volatility as Vol(capletVarianceCurve)
 
 import QuantLib.Spec.Helpers(closePrec)
 
@@ -176,50 +175,44 @@ spec = do
       , (50.0, 2.3282, 2.3521)
       ]
 
-  describe "LiborForwardModelProcess (fixing schedule getters + AnalyticCapFloorEngine self-consistency)" $
-    -- ported from test-suite/libormarketmodel.cpp::testCapletPricing's fixture shape, but not its
-    -- cached NPV: that value depends on LfmHullWhiteParameterization::covariance (needs a bound
-    -- Matrix type, which hasquant doesn't have) feeding a capVolCurve-implied vol into
-    -- LmFixedVolatilityModel. Here the vol/correlation inputs are picked directly instead, so
-    -- this checks internal self-consistency (the four new process getters agree with each other,
-    -- and the resulting cap prices to a sane positive NPV) rather than reproducing upstream's
-    -- own number.
-    it "exposes a consistent forward-rate schedule and prices a positive-NPV cap" $
+  describe "LiborForwardModelProcess (LfmHullWhiteParameterization caplet pricing)" $
+    -- Exact port of test-suite/libormarketmodel.cpp::makeIndex, makeCapVolCurve and
+    -- testCapletPricing. The upstream test widens its tolerance to 1e-5 when index-fixing
+    -- coupons are enabled; hasquant does not expose that global IborCoupon setting, so use the
+    -- portable branch's tolerance for the shared cached value.
+    it "reproduces libormarketmodel.cpp's cached cap NPV" $
       Settings.keepingSettings' $ do
-        evalDate <- today
+        let fixtureDate = 4 `september` 2005
+            curveEndDate = 4 `september` 2018
+            size = 10 :: Word
+            capletVols = [0.1440, 0.1715, 0.1681, 0.1664, 0.1617, 0.1578, 0.1540, 0.1521, 0.1486]
+        cal <- calendar TARGET
+        evalDate <- adjust cal fixtureDate Following
         Settings.setEvaluationDate (Just evalDate)
         dc <- dayCounter (Actual360 False)
-        rQ <- simpleQuote 0.04
-        rTS <- flatForward evalDate rQ dc Continuous Annual
+        emptyIndex <- iborIndex Euribor6M Nothing
+        firstPillar <- advance cal evalDate (fromIntegral (Ibor.fixingDays emptyIndex), Days) Following False
+        rTS <- interpolatedZeroCurve (fromList [(firstPillar, 0.039), (curveEndDate, 0.041)]) dc cal [] Linear
         idx <- iborIndex Euribor6M (Just rTS)
-        let size = 10 :: Word
-
-        cal <- fixingCalendar idx
-        firstFixingDate <- advance cal evalDate (- fromIntegral (Ibor.fixingDays idx), Days) Preceding False
-        addFixing idx firstFixingDate 0.04 False
-
         process <- liborForwardModelProcess size idx
-
         fixingDates <- liborForwardModelProcessFixingDates process
         fixingTimes <- liborForwardModelProcessFixingTimes process
-        length fixingDates `shouldBe` length fixingTimes
-        length fixingTimes `shouldBe` fromIntegral size
-        fixingTimes `shouldSatisfy` \ts -> and (zipWith (<=) ts (drop 1 ts))
-
+        capletVol <- Vol.capletVarianceCurve evalDate (fromList $ zip (take 9 $ drop 1 fixingDates) capletVols) dc ShiftedLognormal 0.0
+        let emptyCorrelation = either error id $ realMatrix 0 0 []
+        parameterization <- lfmHullWhiteParameterization process capletVol emptyCorrelation 1
+        covariance <- lfmHullWhiteCovariance parameterization 0.0 []
+        matrixRows covariance `shouldBe` size
+        matrixColumns covariance `shouldBe` size
+        let covarianceData = matrixData covariance
+            variances = [covarianceData !! (i * fromIntegral size + i) | i <- [0 .. fromIntegral size - 1]]
         leg <- liborForwardModelProcessCashFlows process 1.0
-        flows <- cashFlows leg Nothing Nothing
-        length flows `shouldSatisfy` (> 0)
-
-        idx' <- liborForwardModelProcessIndex process
-        Ibor.fixingDays idx' `shouldBe` Ibor.fixingDays idx
-
-        model <- liborForwardModel process (FixedVolatility (fromList $ zip fixingTimes $ replicate (fromIntegral size) 0.15)) (ExponentialCorrelation size 0.3)
+        model <- liborForwardModel process (FixedVolatility (fromList $ zip fixingTimes (map sqrt variances))) (ExponentialCorrelation size 0.3)
         affineModel <- liborForwardModelAsAffineModel model
         eng <- analyticCapFloorEngine affineModel (Just rTS)
-        capInstr <- cap leg (fromList $ replicate (length flows) 0.04)
+        capInstr <- cap leg (fromList $ replicate (fromIntegral size) 0.04)
         setPricingEngine capInstr eng
         capNpv <- npv capInstr
-        capNpv `shouldSatisfy` (>= 0)
+        capNpv `shouldSatisfy` closePrec 0.015853935178 1.0e-5
 
   describe "G2Process/G2ForwardProcess (phi/shortRate/factors self-consistency)" $ do
     -- ported from test-suite/g2process.cpp::testG2ProcessObservesTermStructure: under a flat

@@ -48,6 +48,7 @@ module QuantLib.TermStructure.Volatility
   , localVolSurface
   , constantOptionletVolatility
   , constantOptionletVolatility'
+  , capletVarianceCurve
   , optionletStripper1
   , optionletStripper2
   , optionletStripper2AsOptionletVolatilityStructure
@@ -432,6 +433,21 @@ andreasenHugeVolatilityInterplCalibrationError x = do
 
 -- |fixed reference date, floating market data
 {#fun qlConstantOptionletVolatility as constantOptionletVolatility{withDay*`Day',withCalendar*`Calendar',fromEnumC`BusinessDayConvention',withQuote*`GenQuote q',withDayCounter*`DayCounter'
+  ,`VolatilityType' -- ^type
+  ,`Double' -- ^displacement
+  ,preErrorCheck-`String'errorCheck*-}->`OptionletVolatilityStructure'peekOptionletVolatilityStructure*#}
+
+-- |Optionlet volatility curve interpolating the supplied caplet-volatility nodes by variance.
+-- Each node pairs an option date with its volatility, so mismatched date/value inputs are
+-- unrepresentable.
+capletVarianceCurve :: Day -> NonEmpty (Day, Double) -> DayCounter -> VolatilityType -> Double
+  -> IO OptionletVolatilityStructure
+capletVarianceCurve referenceDate nodes = qlCapletVarianceCurve referenceDate dates vols
+  where (dates, vols) = unzip (toList nodes)
+{#fun qlCapletVarianceCurve{withDay*`Day' -- ^referenceDate
+  ,withDayArray*`[Day]'& -- ^dates
+  ,withDoubleArray*`[Double]'& -- ^capletVolCurve
+  ,withDayCounter*`DayCounter' -- ^dayCounter
   ,`VolatilityType' -- ^type
   ,`Double' -- ^displacement
   ,preErrorCheck-`String'errorCheck*-}->`OptionletVolatilityStructure'peekOptionletVolatilityStructure*#}

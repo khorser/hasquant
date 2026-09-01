@@ -263,6 +263,7 @@ namespace QuantLib {
   class LfmSwaptionEngine;
   class LiborForwardModel;
   class LiborForwardModelProcess;
+  class LfmHullWhiteParameterization;
   class LmCorrelationModel;
   class LmVolatilityModel;
   class LocalVolTermStructure;
@@ -595,6 +596,7 @@ using QuantLib::LevenbergMarquardt;
 using QuantLib::LfmSwaptionEngine;
 using QuantLib::LiborForwardModel;
 using QuantLib::LiborForwardModelProcess;
+using QuantLib::LfmHullWhiteParameterization;
 using QuantLib::LmCorrelationModel;
 using QuantLib::LmVolatilityModel;
 using QuantLib::LocalVolTermStructure;
@@ -885,6 +887,7 @@ using QlInterestRateIndex = shared_ptr<InterestRateIndex>;
 using QlKlugeExtOUProcess = shared_ptr<KlugeExtOUProcess>;
 using QlLiborForwardModel = shared_ptr<LiborForwardModel>;
 using QlLiborForwardModelProcess = shared_ptr<LiborForwardModelProcess>;
+using QlLfmHullWhiteParameterization = shared_ptr<LfmHullWhiteParameterization>;
 using QlLmCorrelationModel = shared_ptr<LmCorrelationModel>;
 using QlLmVolatilityModel = shared_ptr<LmVolatilityModel>;
 using QlLocalVolTermStructure = shared_ptr<LocalVolTermStructure>;
@@ -1321,6 +1324,8 @@ QL_TRACE_NAME(QlInterestRateIndex)
 QL_TRACE_NAME(QlKlugeExtOUProcess)
 QL_TRACE_NAME(QlLiborForwardModel)
 QL_TRACE_NAME(QlLiborForwardModelProcess)
+QL_TRACE_NAME(LfmHullWhiteParameterization)
+QL_TRACE_NAME(QlLfmHullWhiteParameterization)
 QL_TRACE_NAME(QlLmCorrelationModel)
 QL_TRACE_NAME(QlLmVolatilityModel)
 QL_TRACE_NAME(QlLocalVolTermStructure)

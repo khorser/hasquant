@@ -1163,6 +1163,14 @@ QlLmVolatilityModel* qlLmLinearExponentialVolatilityModel(unsigned fixingTimesLe
 QlLiborForwardModel* qlLiborForwardModel(QlLiborForwardModelProcess* process, QlLmVolatilityModel* volaModel, QlLmCorrelationModel* corrModel, char **e) {
   try {return ret(new QlLiborForwardModel(alloc(new LiborForwardModel(*arg(process), *arg(volaModel), *arg(corrModel)))));
   } catch (std::exception& er) {return handleException<QlLiborForwardModel*>(e, er);}}
+void qlFreeLfmHullWhiteParameterization(QlLfmHullWhiteParameterization *o) {del(o);}
+QlLfmHullWhiteParameterization* qlLfmHullWhiteParameterization(QlLiborForwardModelProcess* process, QlOptionletVolatilityStructure* capletVol, unsigned correlationRows, unsigned correlationCols, double* correlation, unsigned factors, char **e) {
+  try {return ret(new QlLfmHullWhiteParameterization(alloc(new LfmHullWhiteParameterization(*arg(process), handlePtr(arg(capletVol)), qlMatrix(correlation, correlationRows, correlationCols), factors))));
+  } catch (std::exception& er) {return handleException<QlLfmHullWhiteParameterization*>(e, er);}}
+void qlLfmHullWhiteCovariance(QlLfmHullWhiteParameterization* o, double t, unsigned xLen, double* x, unsigned *rows, unsigned *cols, unsigned *len, double **vs, char **e) {
+  try {Matrix m = (*arg(o))->covariance(t, Array(x, x+xLen)); *rows = m.rows(); *cols = m.columns(); *len = m.rows()*m.columns();
+    *vs = qlAllocateDoubles(*len); std::copy(m.begin(), m.end(), *vs);
+  } catch (std::exception& er) {handleException<double*>(e, er);}}
 
 void qlFreeGsr(QlGsr *o) {del(o);}
 void qlFreeMarkovFunctional(QlMarkovFunctional *o) {del(o);}

@@ -1,4 +1,5 @@
 #include <ql/termstructures/volatility/optionlet/constantoptionletvol.hpp>
+#include <ql/termstructures/volatility/optionlet/capletvariancecurve.hpp>
 #include <ql/termstructures/volatility/optionlet/optionletstripper1.hpp>
 #include <ql/termstructures/volatility/optionlet/strippedoptionletadapter.hpp>
 #include <ql/termstructures/volatility/optionlet/spreadedoptionletvol.hpp>
@@ -146,6 +147,9 @@ using makeReg = Region *(*)();
 extern "C" {
 QlOptionletVolatilityStructure *qlConstantOptionletVol1(unsigned days, Calendar *cal, int conv, QlQuote *q, DayCounter *dc, int type, double displacement, char **e) {
   try {return ret(new QlOptionletVolatilityStructure(shared_ptr<OptionletVolatilityStructure>(alloc(new ConstantOptionletVolatility(days, *arg(cal), (BusinessDayConvention) conv, *arg(q), *arg(dc), (VolatilityType)type, displacement)))));
+  } catch (std::exception& er) {return handleException<QlOptionletVolatilityStructure *>(e, er);}}
+QlOptionletVolatilityStructure *qlCapletVarianceCurve(int referenceDate, unsigned datesLen, int* dates, unsigned volsLen, double* vols, DayCounter* dc, int type, double displacement, char **e) {
+  try {return ret(new QlOptionletVolatilityStructure(shared_ptr<OptionletVolatilityStructure>(alloc(new CapletVarianceCurve(Date(referenceDate), qlDateVector(dates, datesLen), std::vector<double>(vols, vols+volsLen), *arg(dc), (VolatilityType)type, displacement)))));
   } catch (std::exception& er) {return handleException<QlOptionletVolatilityStructure *>(e, er);}}
 
 void qlFreeOptionletVolatilityStructure(QlOptionletVolatilityStructure *p) {del(p);}

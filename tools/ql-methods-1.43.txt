@@ -4151,13 +4151,13 @@
 |x|ql/legacy/libormarketmodels/lfmcovarparam.hpp|Size LfmCovarianceParameterization::size() const;
 |x|ql/legacy/libormarketmodels/lfmcovarparam.hpp|Size LfmCovarianceParameterization::factors() const;
 | |ql/legacy/libormarketmodels/lfmcovarparam.hpp|Matrix LfmCovarianceParameterization::diffusion(Time t, const Array & x = { }) const;
-| |ql/legacy/libormarketmodels/lfmcovarparam.hpp|Matrix LfmCovarianceParameterization::covariance(Time t, const Array & x = { }) const;
+|v|ql/legacy/libormarketmodels/lfmcovarparam.hpp|Matrix LfmCovarianceParameterization::covariance(Time t, const Array & x = { }) const;
 | |ql/legacy/libormarketmodels/lfmcovarparam.hpp|Matrix LfmCovarianceParameterization::integratedCovariance(Time t, const Array & x = { }) const;
 | |ql/legacy/libormarketmodels/lfmcovarproxy.hpp|LfmCovarianceProxy::LfmCovarianceProxy(ext::shared_ptr<LmVolatilityModel> volaModel, const ext::shared_ptr<LmCorrelationModel> & corrModel);
 |x|ql/legacy/libormarketmodels/lfmcovarproxy.hpp|ext::shared_ptr<LmVolatilityModel> LfmCovarianceProxy::volatilityModel() const;
 |x|ql/legacy/libormarketmodels/lfmcovarproxy.hpp|ext::shared_ptr<LmCorrelationModel> LfmCovarianceProxy::correlationModel() const;
 | |ql/legacy/libormarketmodels/lfmcovarproxy.hpp|Real LfmCovarianceProxy::integratedCovariance(Size i, Size j, Time t, const Array & x = { }) const;
-| |ql/legacy/libormarketmodels/lfmhullwhiteparam.hpp|LfmHullWhiteParameterization::LfmHullWhiteParameterization(const ext::shared_ptr<LiborForwardModelProcess> & process, const ext::shared_ptr<OptionletVolatilityStructure> & capletVol, const Matrix & correlation = Matrix(), Size factors = 1);
+|v|ql/legacy/libormarketmodels/lfmhullwhiteparam.hpp|LfmHullWhiteParameterization::LfmHullWhiteParameterization(const ext::shared_ptr<LiborForwardModelProcess> & process, const ext::shared_ptr<OptionletVolatilityStructure> & capletVol, const Matrix & correlation = Matrix(), Size factors = 1);
 |v|ql/legacy/libormarketmodels/lfmprocess.hpp|LiborForwardModelProcess::LiborForwardModelProcess(Size size, ext::shared_ptr<IborIndex> index);
 |v|ql/legacy/libormarketmodels/lfmprocess.hpp|ext::shared_ptr<IborIndex> LiborForwardModelProcess::index() const;
 |v|ql/legacy/libormarketmodels/lfmprocess.hpp|Leg LiborForwardModelProcess::cashFlows(Real amount = 1.0) const;
@@ -9304,7 +9304,7 @@
 | |ql/termstructures/volatility/kahalesmilesection.hpp|Real KahaleSmileSection::leftCoreStrike() const;
 | |ql/termstructures/volatility/kahalesmilesection.hpp|Real KahaleSmileSection::rightCoreStrike() const;
 | |ql/termstructures/volatility/kahalesmilesection.hpp|std::pair<Size, Size> KahaleSmileSection::coreIndices() const;
-| |ql/termstructures/volatility/optionlet/capletvariancecurve.hpp|CapletVarianceCurve::CapletVarianceCurve(const Date & referenceDate, const std::vector<Date> & dates, const std::vector<Volatility> & capletVolCurve, const DayCounter & dayCounter, VolatilityType type = ShiftedLognormal, Real displacement = 0.0);
+|v|ql/termstructures/volatility/optionlet/capletvariancecurve.hpp|CapletVarianceCurve::CapletVarianceCurve(const Date & referenceDate, const std::vector<Date> & dates, const std::vector<Volatility> & capletVolCurve, const DayCounter & dayCounter, VolatilityType type = ShiftedLognormal, Real displacement = 0.0);
 | |ql/termstructures/volatility/optionlet/capletvariancecurve.hpp|CapletVarianceCurve(const Date & referenceDate, const std::vector<Date> & dates, const std::vector<Volatility> & capletVolCurve, const DayCounter & dayCounter, VolatilityType type, Real displacement);
 |?|ql/termstructures/volatility/optionlet/capletvariancecurve.hpp|DayCounter dayCounter() const;
 | |ql/termstructures/volatility/optionlet/capletvariancecurve.hpp|Date maxDate() const;
