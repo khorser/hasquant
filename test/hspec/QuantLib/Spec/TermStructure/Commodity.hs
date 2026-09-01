@@ -2,7 +2,7 @@ module QuantLib.Spec.TermStructure.Commodity (spec) where
 
 import Control.Exception(evaluate)
 import Data.Maybe(isNothing, isJust)
-import qualified Data.List.NonEmpty as NE
+import Data.List.NonEmpty(fromList)
 
 import Test.Hspec hiding(before)
 
@@ -23,7 +23,7 @@ spec = do
       dc <- dayCounter Actual365FixedStandard
       let dates = [1 `january` 2024, 1 `february` 2024, 1 `march` 2024]
           prices = [70.0, 71.5, 72.0]
-          nodes = NE.fromList (zip dates prices)
+          nodes = fromList (zip dates prices)
       curve <- commodityCurve "HO curve" ho usd bbl cal nodes dc
       commodityCurveName curve `shouldReturn` "HO curve"
       ct <- commodityCurveCommodityType curve
@@ -42,8 +42,8 @@ spec = do
       cal <- calendar TARGET
       dc <- dayCounter Actual365FixedStandard
       let dates = [1 `january` 2024, 1 `february` 2024]
-      curve <- commodityCurve "HO curve" ho usd bbl cal (NE.fromList (zip dates [70.0, 71.0])) dc
-      basis <- commodityCurve "HO basis" ho usd bbl cal (NE.fromList (zip dates [1.0, 1.0])) dc
+      curve <- commodityCurve "HO curve" ho usd bbl cal (fromList (zip dates [70.0, 71.0])) dc
+      basis <- commodityCurve "HO basis" ho usd bbl cal (fromList (zip dates [1.0, 1.0])) dc
       before <- commodityCurveBasisOfCurve curve
       isNothing before `shouldBe` True
       setCommodityCurveBasisOfCurve curve basis
@@ -58,10 +58,10 @@ spec = do
       dc <- dayCounter Actual365FixedStandard
       let d0 = 1 `january` 2024
           d1 = 1 `february` 2024
-      curve <- commodityCurve "HO curve" ho usd bbl cal (NE.fromList [(d0, 70.0), (d1, 71.0)]) dc
+      curve <- commodityCurve "HO curve" ho usd bbl cal (fromList [(d0, 70.0), (d1, 71.0)]) dc
       p0 <- commodityCurvePrice curve d0
       p0 `shouldBe` 70.0
-      basis <- commodityCurve "HO basis" ho usd bbl cal (NE.fromList [(d0, 1.0), (d1, 1.0)]) dc
+      basis <- commodityCurve "HO basis" ho usd bbl cal (fromList [(d0, 1.0), (d1, 1.0)]) dc
       setCommodityCurveBasisOfCurve curve basis
       p0' <- commodityCurvePrice curve d0
       p0' `shouldBe` 71.0
@@ -76,7 +76,7 @@ spec = do
       dc <- dayCounter Actual365FixedStandard
       let d0 = 1 `january` 2024
           d1 = 1 `february` 2024
-      curve <- commodityCurve "HO curve" ho usd bbl cal (NE.fromList [(d0, 70.0), (d1, 71.0)]) dc
+      curve <- commodityCurve "HO curve" ho usd bbl cal (fromList [(d0, 70.0), (d1, 71.0)]) dc
       flat <- commodityCurvePrice curve d0
       rolled <- commodityCurvePriceNearby curve d0 [] 0
       rolled `shouldBe` flat
@@ -89,7 +89,7 @@ spec = do
       dc <- dayCounter Actual365FixedStandard
       let d0 = 1 `january` 2024
           d1 = 1 `february` 2024
-      curve <- commodityCurve "HO curve" ho usd bbl cal (NE.fromList [(d0, 70.0), (d1, 71.0)]) dc
+      curve <- commodityCurve "HO curve" ho usd bbl cal (fromList [(d0, 70.0), (d1, 71.0)]) dc
       let jan1 = 1 `january` 2024
           feb1 = 1 `february` 2024
           mar1 = 1 `march` 2024

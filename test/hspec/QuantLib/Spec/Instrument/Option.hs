@@ -16,8 +16,7 @@ import Test.Hspec
 import Data.Time.Calendar(addDays)
 import Data.Bits(shiftR, xor)
 import Data.Word(Word64)
-import Data.List.NonEmpty(iterate, tail)
-import qualified Data.List.NonEmpty as NE
+import Data.List.NonEmpty(iterate, tail, fromList)
 import qualified Data.Vector.Storable as V
 
 import qualified QuantLib.Settings as Settings
@@ -202,7 +201,7 @@ spec = do
         Settings.setEvaluationDate (Just evalDate)
         process1 <- flatProcess evalDate 100.0 0.0 0.05 0.30 >>= asStochasticProcess1D
         process2 <- flatProcess evalDate 100.0 0.0 0.05 0.30 >>= asStochasticProcess1D
-        procs <- stochasticProcessArray (process1 NE.:| [process2]) (matrix 2 2 [1.0, 0.5, 0.5, 1.0])
+        procs <- stochasticProcessArray (fromList [process1, process2]) (matrix 2 2 [1.0, 0.5, 0.5, 1.0])
         let payoff = Max (plainVanillaPayoff (PlainVanillaPayoff Call 100.0))
             expected = 21.619
 
@@ -447,7 +446,7 @@ spec = do
                                        dc BlackVarianceSurfaceConstantExtrapolation
                                        BlackVarianceSurfaceConstantExtrapolation Bilinear
         process <- blackScholesMertonProcess spotQ qTS rTS volTS EulerDiscretization False
-        eng <- replicatingVarianceSwapEngine process 5.0 (NE.fromList callStrikes) (NE.fromList putStrikes)
+        eng <- replicatingVarianceSwapEngine process 5.0 (fromList callStrikes) (fromList putStrikes)
         swp <- varianceSwap Long 0.04 50000 evalDate exDate
         setPricingEngine swp eng
         v <- variance swp

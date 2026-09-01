@@ -8,7 +8,6 @@ module QuantLib.Example.FittedBondCurve
 import Prelude hiding(init, head, tail, last)
 import Control.Monad(forM)
 import Data.Time.Calendar
-import qualified Data.List.NonEmpty as NE
 import Data.List.NonEmpty(NonEmpty(..), init, head, tail, last, fromList)
 
 import qualified QuantLib.CashFlow as CF
@@ -152,7 +151,7 @@ run = do
     -- Keep the fixture in one place. Results depend on QLC's optimization options.
     fitCurves :: Calendar -> DayCounter -> [TS.BondHelper] -> IO [TS.FittedBondDiscountCurve]
     fitCurves cal dc instr = mapM
-        (\f -> TS.fittedBondDiscountCurve curveSettleDays cal (NE.fromList instr) dc f tolerance maxEvals [] 1.0)
+        (\f -> TS.fittedBondDiscountCurve curveSettleDays cal (fromList instr) dc f tolerance maxEvals [] 1.0)
         fittings
       where
         noCutoff = 1.0e6 :: Double -- stands in for QuantLib's QL_MAX_REAL default (effectively "no cutoff")

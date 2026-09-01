@@ -2,7 +2,7 @@ module QuantLib.Spec.TermStructure.InflationVolatility (spec) where
 
 import Control.Monad(forM_, zipWithM_)
 import Data.Time.Calendar(addDays, addGregorianYearsClip)
-import qualified Data.List.NonEmpty as NE
+import Data.List.NonEmpty(fromList)
 import qualified Data.Vector.Storable as V
 import Test.Hspec
 
@@ -37,7 +37,7 @@ import QuantLib.Spec.Helpers(closePrec)
 -- has no such stepping, so plain 'Day' arithmetic is the faithful translation, not 'advance'.
 nominalCurveFromTimes :: Calendar -> Day -> DayCounter -> [(Double, Double)] -> IO YieldTermStructure
 nominalCurveFromTimes cal eval dc timesRates =
-  interpolatedZeroCurve (NE.fromList (map mkNode timesRates)) dc cal [] (Cubic Kruger)
+  interpolatedZeroCurve (fromList (map mkNode timesRates)) dc cal [] (Cubic Kruger)
   where
     mkNode (t, r) =
       let ys = floor t :: Integer
@@ -128,7 +128,7 @@ setup = do
   baseDate <- advance cal eval (-1, Months) Unadjusted False
   capStartDate <- advance cal eval (-2, Months) ModifiedFollowing False
   yoyDates <- (baseDate :) <$> mapM (\n -> advance cal capStartDate (n, Years) ModifiedFollowing False) [1 .. length yoyEURrates - 1]
-  yoyEU <- interpolatedYoYInflationCurve eval (NE.fromList (zip yoyDates yoyEURrates)) Monthly dc Linear
+  yoyEU <- interpolatedYoYInflationCurve eval (fromList (zip yoyDates yoyEURrates)) Monthly dc Linear
 
   zii <- zeroInflationIndex EUHICP
   yoyIndexEU <- yoyInflationIndexFromZero zii (Just yoyEU)
@@ -152,8 +152,8 @@ spec = do
     capStartDate <- advance cal eval (-2, Months) ModifiedFollowing False
     yoyDates <- (baseDate :) <$> mapM (\n -> advance cal capStartDate (n, Years) ModifiedFollowing False) [1 .. length yoyEURrates - 1]
     let mid = addDays 180 (yoyDates !! 1)
-    yoyLinear <- interpolatedYoYInflationCurve eval (NE.fromList (zip yoyDates yoyEURrates)) Monthly dc Linear
-    yoyCubic <- interpolatedYoYInflationCurve eval (NE.fromList (zip yoyDates yoyEURrates)) Monthly dc (Cubic Kruger)
+    yoyLinear <- interpolatedYoYInflationCurve eval (fromList (zip yoyDates yoyEURrates)) Monthly dc Linear
+    yoyCubic <- interpolatedYoYInflationCurve eval (fromList (zip yoyDates yoyEURrates)) Monthly dc (Cubic Kruger)
     rLinear <- yoyRate yoyLinear mid True
     rCubic <- yoyRate yoyCubic mid True
     -- both interpolators agree at the nodes themselves; a mid-node query is where a genuinely
@@ -208,7 +208,7 @@ spec = do
     baseDate <- advance cal eval (-1, Months) Unadjusted False
     capStartDate <- advance cal eval (-2, Months) ModifiedFollowing False
     yoyDates <- (baseDate :) <$> mapM (\n -> advance cal capStartDate (n, Years) ModifiedFollowing False) [1 .. length yoyEURrates - 1]
-    yoyEU <- interpolatedYoYInflationCurve eval (NE.fromList (zip yoyDates yoyEURrates)) Monthly dc Linear
+    yoyEU <- interpolatedYoYInflationCurve eval (fromList (zip yoyDates yoyEURrates)) Monthly dc Linear
     zii <- zeroInflationIndex EUHICP
     yoyIndexEU <- yoyInflationIndexFromZero zii (Just yoyEU)
 

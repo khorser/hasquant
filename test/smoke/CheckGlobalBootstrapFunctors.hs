@@ -17,7 +17,7 @@
 --   cabal exec -- ghc -ismoke -package hasquant smoke/CheckGlobalBootstrapFunctors.hs -o /tmp/gbf_smoke -outputdir /tmp/gbf_smoke_build && /tmp/gbf_smoke
 
 import Control.Exception (SomeException, evaluate, try)
-import qualified Data.List.NonEmpty as NE
+import Data.List.NonEmpty(fromList)
 
 import qualified QuantLib.Quote as Quote
 import QuantLib.Settings (setEvaluationDate)
@@ -40,7 +40,7 @@ main = do
 
   q <- Quote.simpleQuote 0.03
   helpers <- mapM (\i -> depositRateHelper q (i, Months) 2 cal ModifiedFollowing True euriborDC) [1 .. 5 :: Int]
-  let nonEmptyHelpers = NE.fromList helpers
+  let nonEmptyHelpers = fromList helpers
 
   -- additionalHelpers reuses the same 5 helpers (mirrors QuantLib-SWIG's own worked example,
   -- which passes b.additionalHelpers into both the curve's own instrument list and the functor

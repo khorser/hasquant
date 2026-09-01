@@ -170,7 +170,7 @@ main = do
   putStrLn $ "Simulated Forward Rates: " ++ show simFwds
 
   putStrLn "\n*** LSM Regression Benchmark ***"
-  lsmBench <- keepingSettings' HaskellLSMExample.run
+  lsmBench <- keepingSettings' $ HaskellLSMExample.run True
   printf "lsmRegress (QuantLib solve): %.6fs, price %.6f\n"
     (HaskellLSMExample.lsmSeconds lsmBench) (HaskellLSMExample.lsmPrice lsmBench)
   printf "Haskell normal equations: %.6fs, price %.6f\n"

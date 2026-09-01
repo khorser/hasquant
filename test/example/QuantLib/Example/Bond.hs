@@ -9,7 +9,7 @@ import Control.Monad((>=>))
 
 import Data.List(zip4)
 
-import qualified Data.List.NonEmpty as NE
+import Data.List.NonEmpty(fromList)
 import Data.Time.Calendar(fromGregorian)
 
 import qualified QuantLib.CashFlow as CF
@@ -119,7 +119,7 @@ buildMarketData = do
     $ zip4 quotes couponRates issueDates maturities
   ts <- piecewiseYieldCurve
           settlDate'
-          (NE.fromList (discDepoHelpers ++ discBondHelpers))
+          (fromList (discDepoHelpers ++ discBondHelpers))
           actActISDA'
           []
           Discount
@@ -198,7 +198,7 @@ buildBonds md = do
 
   fwdCurve <- piecewiseYieldCurve
                 (settlDate md)
-                (NE.fromList (depoLiborHelpers ++ swapLiborHelpers))
+                (fromList (depoLiborHelpers ++ swapLiborHelpers))
                 (actActISDA md)
                 []
                 Discount

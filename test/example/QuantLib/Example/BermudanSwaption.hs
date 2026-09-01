@@ -6,7 +6,7 @@ module QuantLib.Example.BermudanSwaption
   ) where
 import Control.Monad((>=>), forM_, mapAndUnzipM)
 import qualified Data.Vector.Storable as V
-import qualified Data.List.NonEmpty as NE
+import Data.List.NonEmpty(fromList)
 
 import qualified QuantLib.CashFlow as CF
 import qualified QuantLib.Index.InterestRate as IRI
@@ -41,7 +41,7 @@ data Result = Result
 calibrateModel :: Model.CalibratedModel -> [Model.BlackCalibrationHelper] -> IO [Double]
 calibrateModel m hs = do
   hsh <- mapM Model.asCalibrationHelper hs
-  Model.calibrate m (NE.fromList $ map (, 1.0) hsh) (LevenbergMarquardt 1.0e-8 1.0e-8 1.0e-8 False) (EndCriteria 400 100 1.0e-8 1.0e-8 1.0e-8) Nothing []
+  Model.calibrate m (fromList $ map (, 1.0) hsh) (LevenbergMarquardt 1.0e-8 1.0e-8 1.0e-8 False) (EndCriteria 400 100 1.0e-8 1.0e-8 1.0e-8) Nothing []
   mapM calibrate hs
 
 calibrate :: Model.BlackCalibrationHelper -> IO Double
@@ -124,7 +124,7 @@ run = do
     floatDC (Just floatConv) Nothing
 
   bermudanDates <- fixedLeg swp >>= CF.toCouponLeg >>= CF.couponAccrualStartDates
-  let ex = Bermudan (BermudanExercise (NE.fromList bermudanDates) False)
+  let ex = Bermudan (BermudanExercise (fromList bermudanDates) False)
   atmSwaption <- swaption atmSwap ex Physical PhysicalOTC
 
   npvA <- priceSwaption atmSwaption modelG2 50 modelHW modelHW2 modelBK

@@ -27,12 +27,14 @@ module QuantLib.Example.HaskellLSM
     Result(..)
   , run
   ) where
+import Control.Monad(when)
+import Control.Concurrent(threadDelay)
 import Data.List(transpose)
 import qualified Data.Vector.Storable as V
 import qualified Data.Vector as BV
 import qualified Data.Vector.Unboxed as U
-import Data.List.NonEmpty(NonEmpty(..))
-import qualified Data.List.NonEmpty as NE
+import Data.List.NonEmpty(NonEmpty(..), toList)
+import System.Mem(performGC)
 import System.CPUTime(getCPUTime)
 
 import QuantLib.InterestRate
@@ -83,12 +85,12 @@ dot xs ys = sum (zipWith (*) xs ys)
 -- unlike 'lsmRegress''s underlying C++ solve.
 haskellRegress :: Word -> RealVector -> RealVector -> RealVector -> RealVector
 haskellRegress order fitStates fitTargets evalStates =
-  let basisRows = map (NE.toList . monomialBasis order) (V.toList fitStates)
+  let basisRows = map (toList . monomialBasis order) (V.toList fitStates)
       cols = transpose basisRows -- one column per basis term, [] if fitStates is []
       ata = [ [ dot c1 c2 | c2 <- cols ] | c1 <- cols ]
       aty = [ dot c (V.toList fitTargets) | c <- cols ]
       coeffs = gaussSolve ata aty
-  in V.fromList (map (dot coeffs . NE.toList . monomialBasis order) (V.toList evalStates))
+  in V.fromList (map (dot coeffs . toList . monomialBasis order) (V.toList evalStates))
 
 -- |value at column @k@ (0-based) of a row, via 'drop' rather than @(!!)@ -- total regardless of
 -- @k@\/row length, though every call site here only ever asks for a column the row actually has.
@@ -213,8 +215,8 @@ splitMaturity states
   | BV.null states = (V.empty, BV.empty)
   | otherwise = (BV.last states, BV.init states)
 
-run :: IO Result
-run = do
+run :: Bool -> IO Result
+run gc = do
   setEvaluationDate $ Just evalDate
   dc <- dayCounter Actual365FixedStandard
   underQ <- simpleQuote under
@@ -258,10 +260,12 @@ run = do
   -- 'mean' (via 'sum') fully forces each backward-induction result inside the timed block --
   -- without it, the lazily-built cashflow lists would only be forced later, when 'Result' is
   -- printed, and the CPU time captured here would be meaningless.
+  when gc (performGC >> threadDelay 1000000 >> performGC >> threadDelay 1000000)
   (lsmP, lsmT) <- cpuSeconds $ do
     (_, priceFinal, _) <- lsmGoBack polyT order strike steps calibCF0 priceCF0 (U.replicate nPrice False)
     let p = mean (V.map (* df0) priceFinal)
     p `seq` return p
+  when gc (performGC >> threadDelay 1000000 >> performGC >> threadDelay 1000000)
   (haskellP, haskellT) <- cpuSeconds $ do
     let (_, priceFinal, _) = haskellGoBack order strike steps calibCF0 priceCF0 (U.replicate nPrice False)
         p = mean (V.map (* df0) priceFinal)

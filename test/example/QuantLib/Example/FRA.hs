@@ -5,7 +5,7 @@ module QuantLib.Example.FRA
   , run
   ) where
 import Control.Monad(forM, forM_)
-import qualified Data.List.NonEmpty as NE
+import Data.List.NonEmpty(fromList)
 
 import QuantLib.Index
 import qualified QuantLib.Index.InterestRate as I
@@ -46,7 +46,7 @@ run = do
     zip3 fraQuotes starts periods
 
   tsdc <- dayCounter ActualActualISDA
-  fraTS <- piecewiseYieldCurve settleDate (NE.fromList fraInstruments) tsdc [] Discount LogLinear
+  fraTS <- piecewiseYieldCurve settleDate (fromList fraInstruments) tsdc [] Discount LogLinear
 
   it1 <- valuateFRA convention fraDayCounter settleDate fraTS
   forM_ fraQuotes $ \sq -> value sq >>= \v -> setValue sq (v + bpsShift)

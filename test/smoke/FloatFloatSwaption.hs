@@ -14,7 +14,7 @@
 -- Run with: .claude/skills/run-hasquant/driver.sh test/smoke/FloatFloatSwaption.hs
 import Control.Monad (forM, forM_)
 import Data.Maybe (mapMaybe)
-import qualified Data.List.NonEmpty as NE
+import Data.List.NonEmpty(fromList)
 import System.Exit (exitFailure)
 
 import qualified QuantLib.CashFlow as CF
@@ -67,7 +67,7 @@ main = do
     swapBase thirty360bb floatSchedule euribor6m act360
     defaultFloatFloatSwapVaryingOpts{ffsvSpread2 = replicate (2 * n) 0.0010}
 
-  let ex = Bermudan (BermudanExercise (NE.fromList bermudanDates) False)
+  let ex = Bermudan (BermudanExercise (fromList bermudanDates) False)
   swpn1 <- floatFloatSwaption underlying1 ex Physical PhysicalOTC
   swpn2 <- floatFloatSwaption underlying2 ex Physical PhysicalOTC
 

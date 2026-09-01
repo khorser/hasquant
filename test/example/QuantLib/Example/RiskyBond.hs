@@ -3,7 +3,7 @@ module QuantLib.Example.RiskyBond
     Result(..)
   , run
   ) where
-import qualified Data.List.NonEmpty as NE
+import Data.List.NonEmpty(fromList)
 import QuantLib.InterestRate
 import QuantLib.Instrument
 import QuantLib.Instrument.Bond
@@ -45,7 +45,7 @@ run = do
       faceAmount = 1000000.0
       couponRates = [0.02875, 0.03, 0.03125, 0.0325]
 
-  bnd <- fixedRateBond 1 faceAmount sch1 (NE.fromList couponRates) actActBond ModifiedFollowing
+  bnd <- fixedRateBond 1 faceAmount sch1 (fromList couponRates) actActBond ModifiedFollowing
             100.0 (Just $ 20 `november` 2004) usGovBond (0, Days) usGovBond Unadjusted False actActBond
             >>= asBond
 

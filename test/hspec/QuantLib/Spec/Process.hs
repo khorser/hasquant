@@ -27,7 +27,7 @@ module QuantLib.Spec.Process (spec) where
 import Test.Hspec
 import qualified Data.Vector.Storable as V
 import Data.Time.Calendar(addDays)
-import qualified Data.List.NonEmpty as NE
+import Data.List.NonEmpty(fromList)
 
 import qualified QuantLib.Settings as Settings
 import QuantLib.Time.Date(today, addPeriod)
@@ -202,10 +202,10 @@ spec = do
         idx' <- liborForwardModelProcessIndex process
         Ibor.fixingDays idx' `shouldBe` Ibor.fixingDays idx
 
-        model <- liborForwardModel process (FixedVolatility (NE.fromList $ zip fixingTimes $ replicate (fromIntegral size) 0.15)) (ExponentialCorrelation size 0.3)
+        model <- liborForwardModel process (FixedVolatility (fromList $ zip fixingTimes $ replicate (fromIntegral size) 0.15)) (ExponentialCorrelation size 0.3)
         affineModel <- liborForwardModelAsAffineModel model
         eng <- analyticCapFloorEngine affineModel (Just rTS)
-        capInstr <- cap leg (NE.fromList $ replicate (length flows) 0.04)
+        capInstr <- cap leg (fromList $ replicate (length flows) 0.04)
         setPricingEngine capInstr eng
         capNpv <- npv capInstr
         capNpv `shouldSatisfy` (>= 0)
@@ -397,8 +397,8 @@ spec = do
         dates <- mapM (\i -> addPeriod evalDate (i, Years)) yrs
         let rates = [0.03 + 0.0001 * exp (sin (fromIntegral i / 4.0)) | i <- yrs]
             divRates = [0.02 + 0.0002 * exp (sin (fromIntegral i / 3.0)) | i <- yrs]
-        rTS <- interpolatedZeroCurve (NE.fromList (zip dates rates)) dc cal [] Linear
-        qTS <- interpolatedZeroCurve (NE.fromList (zip dates divRates)) dc cal [] Linear
+        rTS <- interpolatedZeroCurve (fromList (zip dates rates)) dc cal [] Linear
+        qTS <- interpolatedZeroCurve (fromList (zip dates divRates)) dc cal [] Linear
 
         maturity <- addPeriod evalDate (5, Years)
         s0 <- simpleQuote 100.0

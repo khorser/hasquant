@@ -12,7 +12,7 @@
 -- Run with: .claude/skills/run-hasquant/driver.sh test/smoke/NonstandardSwaption.hs
 import Control.Monad (forM, forM_)
 import System.Exit (exitFailure)
-import qualified Data.List.NonEmpty as NE
+import Data.List.NonEmpty(fromList)
 
 import qualified QuantLib.CashFlow as CF
 import qualified QuantLib.Index.InterestRate as IR
@@ -53,7 +53,7 @@ main = do
   vswp <- vanillaSwap Payer 1.0 fixedSchedule strike thirty360bb floatSchedule euribor6m 0.0 act360 (Just ModifiedFollowing) Nothing
   underlying1 <- nonstandardSwapFromVanilla vswp
   bermudanDates <- fixedLeg vswp >>= CF.toCouponLeg >>= CF.couponAccrualStartDates
-  let ex = Bermudan (BermudanExercise (NE.fromList bermudanDates) False)
+  let ex = Bermudan (BermudanExercise (fromList bermudanDates) False)
   swpn1 <- nonstandardSwaption underlying1 ex Physical PhysicalOTC
 
   -- 1b. Scalar gearing/spread, per-period nominal/rate (linear amortizing).

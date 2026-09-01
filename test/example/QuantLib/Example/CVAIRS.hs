@@ -5,7 +5,7 @@ module QuantLib.Example.CVAIRS
   , run
   ) where
 import Control.Monad(forM)
-import qualified Data.List.NonEmpty as NE
+import Data.List.NonEmpty(fromList)
 
 import qualified QuantLib.Index.InterestRate as IR
 import QuantLib.Instrument
@@ -51,13 +51,13 @@ run = do
       Nothing TS.LastRelevantDate Nothing False Nothing Nothing Nothing
       >>= TS.asRateHelper
 
-  swapTS <- TS.piecewiseYieldCurve' 2 cal (NE.fromList swapHelpers) actActISDA [] TS.Discount LogLinear True
+  swapTS <- TS.piecewiseYieldCurve' 2 cal (fromList swapHelpers) actActISDA [] TS.Discount LogLinear True
 
   riskFreeEngine <- discountingSwapEngine swapTS Nothing Nothing Nothing
 
   defaultDates <- mapM (\m -> advance cal todaysDate (m, Months) Following False) defaultTenorsMonths
   let mkHazardCurve intensities =
-        Credit.interpolatedHazardRateCurve (NE.fromList (zip defaultDates intensities)) act360 cal [] BackwardFlat True
+        Credit.interpolatedHazardRateCurve (fromList (zip defaultDates intensities)) act360 cal [] BackwardFlat True
   lowTS <- mkHazardCurve intensitiesLow
   mediumTS <- mkHazardCurve intensitiesMedium
   highTS <- mkHazardCurve intensitiesHigh

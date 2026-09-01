@@ -7,7 +7,7 @@ module QuantLib.Example.Gaussian1dModels
   ) where
 import Control.Monad (forM, forM_, replicateM)
 import Data.Maybe (mapMaybe)
-import qualified Data.List.NonEmpty as NE
+import Data.List.NonEmpty(fromList)
 
 import qualified QuantLib.CashFlow as CF
 import qualified QuantLib.Index.InterestRate as IR
@@ -113,7 +113,7 @@ run = do
   -- i = 1..9 over the *schedule*'s own dates, not the underlying's coupon accrual starts.
   fixedDates <- dates fixedSchedule
   exerciseDates <- forM (take 9 (drop 1 fixedDates)) $ \d -> advance cal d (-2, Days) Following False
-  let ex = Bermudan (BermudanExercise (NE.fromList exerciseDates) False)
+  let ex = Bermudan (BermudanExercise (fromList exerciseDates) False)
   swaption1 <- nonstandardSwaption underlying ex Physical PhysicalOTC
 
   -- One-factor GSR model with piecewise volatility adapted to the exercise dates.
@@ -215,7 +215,7 @@ run = do
       markovStepSigmas = replicate (length markovStepDates) 0.01
       cmsTenors = replicate (length markovStepDates) (10, Years) :: [(Word, TimeUnit)]
   markov <- markovFunctional yts6m reversion markovInitialSigma (zip markovStepDates markovStepSigmas)
-    swaptionVol (NE.fromList $ zip markovStepDates cmsTenors) swapBase 16
+    swaptionVol (fromList $ zip markovStepDates cmsTenors) swapBase 16
   markovGm <- markovFunctionalAsGaussian1dModel markov
 
   swaptionEngineMarkov <- gaussian1dSwaptionEngine markovGm 8 5.0 True False (Just ytsOis) None
@@ -229,7 +229,7 @@ run = do
   -- was already fixed by the model's construction.
   basket6ch <- mapM Model.asCalibrationHelper basket6
   forM_ basket6 (`Model.setPricingEngine` swaptionEngineMarkov)
-  Model.calibrate markov (NE.fromList $ map (, 1.0) basket6ch) lmMethod lmEndCriteria Nothing []
+  Model.calibrate markov (fromList $ map (, 1.0) basket6ch) lmMethod lmEndCriteria Nothing []
   underlyingValMarkovPost <- underlyingValueOf swaption4
 
   return Result

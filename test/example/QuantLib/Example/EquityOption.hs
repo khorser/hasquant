@@ -5,7 +5,7 @@ module QuantLib.Example.EquityOption
   , run
   ) where
 import Data.Time.Calendar
-import qualified Data.List.NonEmpty as NE
+import Data.List.NonEmpty(fromList)
 
 import QuantLib.Instrument
 import QuantLib.InterestRate
@@ -109,7 +109,7 @@ run = do
   setEvaluationDate $ Just evalDate
   dc <- dayCounter Actual365FixedStandard
   let europeanEx = European $ EuropeanExercise maturity
-      bermudanEx = Bermudan $ BermudanExercise (NE.fromList exDates) False
+      bermudanEx = Bermudan $ BermudanExercise (fromList exDates) False
       americanEx = American Nothing maturity False
   underQ <- simpleQuote under
   riskFreeQ <- simpleQuote riskFreeRate

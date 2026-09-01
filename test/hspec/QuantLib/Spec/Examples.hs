@@ -8,7 +8,7 @@ import Control.Arrow((&&&))
 import Control.Monad(forM_)
 
 import Data.Time.Calendar
-import qualified Data.List.NonEmpty as NE
+import Data.List.NonEmpty(fromList)
 
 import qualified QuantLib.Settings as Settings
 import QuantLib.Time.Calendar
@@ -130,7 +130,7 @@ spec = do
         forM_ (zip rates amounts) $ \(rate, expectedAmount) -> do
           sched <- B.sinkingSchedule refDate (30, Years) Monthly nullCal
           ns <- B.sinkingNotionals (30, Years) Monthly rate 100.0
-          bnd <- B.amortizingFixedRateBond 0 (NE.fromList ns) sched [rate] dc
+          bnd <- B.amortizingFixedRateBond 0 (fromList ns) sched [rate] dc
                    Following Nothing (0, Days) nullCal Unadjusted False [100.0] 0
           cf <- B.cashFlows bnd
           flows <- CF.cashFlows cf Nothing Nothing
@@ -158,7 +158,7 @@ spec = do
               (x:_) -> x
               [] -> error "sinkingNotionals returned no notionals"
         usd3m <- I.iborIndex (I.UsdLibor (3, Months)) Nothing
-        bnd <- B.amortizingFloatingRateBond 0 (NE.fromList ns) sched usd3m dc
+        bnd <- B.amortizingFloatingRateBond 0 (fromList ns) sched usd3m dc
                  B.defaultAmortizingFloatingRateBondOpts
 
         -- Bond.notionals() reports one entry per schedule date (periods+1, with an
@@ -527,7 +527,7 @@ spec = do
 
     describe "Haskell-regression LSM benchmark" $
       it "matches lsmRegress's price and is not faster" $ do
-        r <- Settings.keepingSettings' HaskellLSMExample.run
+        r <- Settings.keepingSettings' $ HaskellLSMExample.run False
         -- same fixture/paths as the American LSM example above; the two regressions (QuantLib's
         -- lsmRegress vs. a hand-rolled Haskell normal-equations solve) should agree on price --
         -- only the compute path differs, not the math

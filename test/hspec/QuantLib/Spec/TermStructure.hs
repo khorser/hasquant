@@ -10,7 +10,7 @@ import Test.QuickCheck.Monadic as Q(monadicIO, run)
 import Test.QuickCheck((==>))
 
 import Data.Time.Calendar
-import qualified Data.List.NonEmpty as NE
+import Data.List.NonEmpty(fromList)
 import qualified Data.Vector.Storable as V
 
 import QuantLib.Time.Date
@@ -85,7 +85,7 @@ spec = do
                   Nothing LastRelevantDate Nothing False Nothing Nothing Nothing >>= asRateHelper)
               swapData
 
-            ts <- piecewiseYieldCurve settlement (NE.fromList (deposits ++ swaps)) actual360dc [] Discount LogLinear
+            ts <- piecewiseYieldCurve settlement (fromList (deposits ++ swaps)) actual360dc [] Discount LogLinear
             return (cal, settlementDays, ts)
       it "referenceChange" $ Settings.keepingSettings' $ do
         let ds = [10, 30, 60, 120, 360, 720]
@@ -170,7 +170,7 @@ spec = do
           val <- Quote.value q
           refDate <- asTermStructure ts >>= referenceDate
           let d1 = addGregorianYearsClip 10 refDate
-          spreaded <- piecewiseZeroSpreadedTermStructure ts (NE.fromList [(refDate, q), (d1, q)]) IR.Continuous NoFrequency Linear
+          spreaded <- piecewiseZeroSpreadedTermStructure ts (fromList [(refDate, q), (d1, q)]) IR.Continuous NoFrequency Linear
           actual360dc <- dayCounter (Actual360 False)
           let testDate = addGregorianYearsClip 5 refDate
           zero <- IR.rate <$> zeroRate' ts testDate actual360dc IR.Continuous NoFrequency False
@@ -178,7 +178,7 @@ spec = do
           (zero - (spreadedZero - val)) `shouldSatisfy` (<= 1.0e-10)
 
           -- spot-check a second interpolation builds and queries without crashing
-          spreadedCubic <- piecewiseZeroSpreadedTermStructure ts (NE.fromList [(refDate, q), (d1, q)]) IR.Continuous NoFrequency (Cubic Kruger)
+          spreadedCubic <- piecewiseZeroSpreadedTermStructure ts (fromList [(refDate, q), (d1, q)]) IR.Continuous NoFrequency (Cubic Kruger)
           cubicZero <- IR.rate <$> zeroRate' spreadedCubic testDate actual360dc IR.Continuous NoFrequency False
           cubicZero `shouldSatisfy` (not . isNaN)
 
@@ -292,7 +292,7 @@ spec = do
             [((2, Years), 0.03), ((5, Years), 0.035), ((10, Years), 0.04)]
           curve <- do
             let optMethod = Simplex 0.1
-            fittedBondDiscountCurve 3 cal (NE.fromList helpers) thirty360dc
+            fittedBondDiscountCurve 3 cal (fromList helpers) thirty360dc
               (ExponentialSplines True [] [] 0.0 1.0e6 9 Nothing Nothing (Just optMethod))
               1.0e-10 10000 [] 1.0
           performGC
@@ -353,7 +353,7 @@ spec = do
             (\tenor -> multipleResetsSwapRateHelper 0 tenor q euribor3m 2 Nothing AveragingCompound 0.0 NoFrequency actual360dc ModifiedFollowing)
             [(1, Years), (2, Years), (3, Years)]
 
-          ts <- piecewiseYieldCurve today' (NE.fromList helpers) actual360dc [] Discount LogLinear
+          ts <- piecewiseYieldCurve today' (fromList helpers) actual360dc [] Discount LogLinear
           _ <- discount' ts today' False
           implieds <- mapM impliedQuote helpers
           mapM_ (`shouldSatisfy` closePrec inputRate 1.0e-6) implieds
@@ -686,7 +686,7 @@ spec = do
           length surfaceTimes `shouldBe` 10
 
           curveVolQ <- mapM (const (Quote.simpleQuote 0.18)) tenors
-          capVolCurve <- Vol.capFloorTermVolCurve 0 cal Following (NE.fromList $ zipWith (\(n, u) q -> (n, u, q)) tenors curveVolQ) dc
+          capVolCurve <- Vol.capFloorTermVolCurve 0 cal Following (fromList $ zipWith (\(n, u) q -> (n, u, q)) tenors curveVolQ) dc
           volFromCurve <- Vol.capFloorVolatilityForPeriod capVolCurve (5, Years) 0.05 False
           volFromCurve `shouldBe` 0.18
           curveDates <- Vol.capFloorTermVolCurveOptionDates capVolCurve
@@ -724,7 +724,7 @@ spec = do
           let volMatrix = either error id $ objectMatrix 10 3 (replicate 30 flatVolQ)
           capVolSurface <- Vol.capFloorTermVolSurface 0 cal Following tenors [0.02, 0.05, 0.08] volMatrix dc
           curveVolQs <- mapM (const (Quote.simpleQuote 0.18)) tenors
-          capVolCurve <- Vol.capFloorTermVolCurve 0 cal Following (NE.fromList $ zipWith (\(n, u) q -> (n, u, q)) tenors curveVolQs) dc
+          capVolCurve <- Vol.capFloorTermVolCurve 0 cal Following (fromList $ zipWith (\(n, u) q -> (n, u, q)) tenors curveVolQs) dc
 
           stripper1 <- Vol.optionletStripper1 capVolSurface idx Nothing 1.0e-6 100
             (Just discountH) IR.ShiftedLognormal 0 False Nothing
@@ -761,7 +761,7 @@ spec = do
           dc <- dayCounter Actual365FixedStandard
           let tenors = [(n, Years) | n <- [1 .. 10]]
           qs <- mapM (const (Quote.simpleQuote 0.18)) tenors
-          curve <- Vol.abcdAtmVolCurve 0 cal (NE.fromList $ zip3 tenors qs (replicate 10 True)) Following dc
+          curve <- Vol.abcdAtmVolCurve 0 cal (fromList $ zip3 tenors qs (replicate 10 True)) Following dc
           rmsErr <- Vol.abcdAtmVolCurveRmsError curve
           rmsErr `shouldSatisfy` (< 0.05)
           maxErr <- Vol.abcdAtmVolCurveMaxError curve
@@ -791,11 +791,11 @@ spec = do
           idx <- iborIndex Euribor6M (Just forecastH)
           let tenors = [(n, Years) | n <- [1 .. 5]]
           atmQs <- mapM (const (Quote.simpleQuote 0.18)) tenors
-          atmCurve <- Vol.abcdAtmVolCurve 0 cal (NE.fromList $ zip3 tenors atmQs (replicate 5 True)) Following dc
+          atmCurve <- Vol.abcdAtmVolCurve 0 cal (fromList $ zip3 tenors atmQs (replicate 5 True)) Following dc
           let spreads = [-0.01, 0, 0.01]
           spreadQs <- mapM (const (Quote.simpleQuote 0.02)) [1 .. (5 * 3 :: Int)]
           let volSpreads = either error id $ objectMatrix 5 3 spreadQs
-          surf <- Vol.sabrVolSurface idx atmCurve (NE.fromList tenors) (NE.fromList spreads) volSpreads
+          surf <- Vol.sabrVolSurface idx atmCurve (fromList tenors) (fromList spreads) volSpreads
           vs <- Vol.sabrVolSurfaceVolatilitySpreadsForPeriod surf (3, Years)
           length vs `shouldBe` 3
           vs `shouldSatisfy` all (\v -> abs (v - 0.02) < 1.0e-8)
@@ -929,8 +929,8 @@ spec = do
             -- helpers3m/helpers6m each reference the *other* curve's not-yet-bootstrapped
             -- internal handle (via euribor3m/euribor6m) -- this is exactly the cycle a plain
             -- piecewiseYieldCurve' (IterativeBootstrap) can't resolve.
-            ptr3m <- piecewiseYieldCurveGlobalBootstrap' 0 cal (NE.fromList (helpers3mFra ++ helpers3mBasis)) euriborDC [] 1.0e-10 [] False
-            ptr6m <- piecewiseYieldCurveGlobalBootstrap' 0 cal (NE.fromList (helpers6mBasis ++ helpers6mSwap)) euriborDC [] 1.0e-10 [] False
+            ptr3m <- piecewiseYieldCurveGlobalBootstrap' 0 cal (fromList (helpers3mFra ++ helpers3mBasis)) euriborDC [] 1.0e-10 [] False
+            ptr6m <- piecewiseYieldCurveGlobalBootstrap' 0 cal (fromList (helpers6mBasis ++ helpers6mSwap)) euriborDC [] 1.0e-10 [] False
             mc <- multiCurve 1.0e-10
             curve3m <- addBootstrappedCurve mc intcurve3m ptr3m
             curve6m <- addBootstrappedCurve mc intcurve6m ptr6m
@@ -1006,7 +1006,7 @@ spec = do
             helpers3m <- mapM (\i -> swapRateHelper' q (i, Years) cal Annual Following thirty360 euribor3m Nothing (0, Days) (Just intcurveois)
                                         Nothing LastRelevantDate Nothing False Nothing Nothing Nothing
                                       >>= asRateHelper) [1 .. 10 :: Int]
-            ptr3m <- piecewiseYieldCurveGlobalBootstrap' 0 cal (NE.fromList helpers3m) euriborDC [] 1.0e-10 [] False
+            ptr3m <- piecewiseYieldCurveGlobalBootstrap' 0 cal (fromList helpers3m) euriborDC [] 1.0e-10 [] False
             mc <- multiCurve 1.0e-10
             curve3m <- addBootstrappedCurve mc intcurve3m ptr3m
             ptrois <- zeroSpreadedTermStructure intcurve3m b IR.Continuous NoFrequency
@@ -1087,8 +1087,8 @@ spec = do
           q <- Quote.simpleQuote 0.03
           helpersDiscount <- mapM (\i -> depositRateHelper q (i, Months) 2 cal ModifiedFollowing True euriborDC) [1 .. 5 :: Int]
           helpersZero <- mapM (\i -> depositRateHelper q (i, Months) 2 cal ModifiedFollowing True euriborDC) [1 .. 5 :: Int]
-          discountCurve <- piecewiseYieldCurveGlobalBootstrap' 0 cal (NE.fromList helpersDiscount) euriborDC [] 1.0e-10 [] False
-          zeroCurve <- piecewiseYieldCurveGlobalBootstrapSimpleZeroLinear' 0 cal (NE.fromList helpersZero) euriborDC [] 1.0e-10 [] False
+          discountCurve <- piecewiseYieldCurveGlobalBootstrap' 0 cal (fromList helpersDiscount) euriborDC [] 1.0e-10 [] False
+          zeroCurve <- piecewiseYieldCurveGlobalBootstrapSimpleZeroLinear' 0 cal (fromList helpersZero) euriborDC [] 1.0e-10 [] False
           settleFix <- advance cal curveToday (2, Days) Following False
           mapM_ (\i -> do
               pillar <- advance cal settleFix (i, Months) ModifiedFollowing True
@@ -1113,8 +1113,8 @@ spec = do
           q <- Quote.simpleQuote 0.03
           helpersDiscount <- mapM (\i -> depositRateHelper q (i, Months) 2 cal ModifiedFollowing True euriborDC) [1 .. 5 :: Int]
           helpersZero <- mapM (\i -> depositRateHelper q (i, Months) 2 cal ModifiedFollowing True euriborDC) [1 .. 5 :: Int]
-          discountCurve <- piecewiseYieldCurve' 0 cal (NE.fromList helpersDiscount) euriborDC [] Discount Linear False
-          zeroCurve <- piecewiseYieldCurve' 0 cal (NE.fromList helpersZero) euriborDC [] SimpleZeroYield Linear False
+          discountCurve <- piecewiseYieldCurve' 0 cal (fromList helpersDiscount) euriborDC [] Discount Linear False
+          zeroCurve <- piecewiseYieldCurve' 0 cal (fromList helpersZero) euriborDC [] SimpleZeroYield Linear False
           settleFix <- advance cal curveToday (2, Days) Following False
           mapM_ (\i -> do
               pillar <- advance cal settleFix (i, Months) ModifiedFollowing True
@@ -1148,7 +1148,7 @@ spec = do
           settleFix <- advance cal curveToday (2, Days) Following False
           q <- Quote.simpleQuote 0.03
           qVal <- Quote.value q
-          helpers <- NE.fromList <$> mapM (\i -> depositRateHelper q (i, Months) 2 cal ModifiedFollowing True euriborDC) [1 .. 5 :: Int]
+          helpers <- fromList <$> mapM (\i -> depositRateHelper q (i, Months) 2 cal ModifiedFollowing True euriborDC) [1 .. 5 :: Int]
           -- Deliberately *not* coincident with the primary monthly pillars above (45/75/105
           -- days sit between the 1m/2m/3m/4m pillars): reusing the same dates as additionalDates
           -- gave GlobalBootstrap two unknowns pinned to the same time, which visibly perturbed
@@ -1190,7 +1190,7 @@ spec = do
           settleFix <- advance cal curveToday (2, Days) Following False
           q <- Quote.simpleQuote 0.03
           qVal <- Quote.value q
-          helpers <- NE.fromList <$> mapM (\i -> depositRateHelper q (i, Months) 2 cal ModifiedFollowing True euriborDC) [1 .. 5 :: Int]
+          helpers <- fromList <$> mapM (\i -> depositRateHelper q (i, Months) 2 cal ModifiedFollowing True euriborDC) [1 .. 5 :: Int]
           curve <- piecewiseYieldCurveLocalBootstrap' 2 cal helpers euriborDC [] ForwardRate 2 True 1.0e-10 0.3 0.7 True False
           mapM_ (\i -> do
               pillar <- advance cal settleFix (i, Months) ModifiedFollowing True
@@ -1218,7 +1218,7 @@ spec = do
           settleFix <- advance cal curveToday (2, Days) Following False
           q <- Quote.simpleQuote 0.03
           qVal <- Quote.value q
-          helpers <- NE.fromList <$> mapM (\i -> depositRateHelper q (i, Months) 2 cal ModifiedFollowing True euriborDC) [1 .. 5 :: Int]
+          helpers <- fromList <$> mapM (\i -> depositRateHelper q (i, Months) 2 cal ModifiedFollowing True euriborDC) [1 .. 5 :: Int]
           -- additionalDates for GlobalSimpleZeroLinearFull below: deliberately not coincident
           -- with the primary monthly pillars, same reasoning as the GlobalBootstrapFull test above.
           extraDates <- mapM (\d -> advance cal settleFix (d, Days) ModifiedFollowing True) [45, 75, 105 :: Int]
@@ -1247,7 +1247,7 @@ spec = do
           euriborDC <- dayCounter (Actual360 False)
           settleFix <- advance cal curveToday (2, Days) Following False
           q <- Quote.simpleQuote 0.03
-          helpers <- NE.fromList <$> mapM (\i -> depositRateHelper q (i, Months) 2 cal ModifiedFollowing True euriborDC) [1 .. 5 :: Int]
+          helpers <- fromList <$> mapM (\i -> depositRateHelper q (i, Months) 2 cal ModifiedFollowing True euriborDC) [1 .. 5 :: Int]
           discountCurve <- piecewiseYieldCurveGlobalBootstrap' 0 cal helpers euriborDC [] 1.0e-10 [] False
           forwardCurve <- piecewiseYieldCurveGlobalBootstrapForwardRateLinear' 0 cal helpers euriborDC [] 1.0e-10 [] False
           zeroCurve <- piecewiseYieldCurveGlobalBootstrapZeroYieldLinear' 0 cal helpers euriborDC [] 1.0e-10 [] False

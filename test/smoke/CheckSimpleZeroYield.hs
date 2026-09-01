@@ -12,7 +12,7 @@
 -- Run with:
 --   cabal exec -- ghc -ismoke -package hasquant smoke/CheckSimpleZeroYield.hs -o /tmp/zy_smoke -outputdir /tmp/zy_smoke_build && /tmp/zy_smoke
 
-import qualified Data.List.NonEmpty as NE
+import Data.List.NonEmpty(fromList)
 import qualified QuantLib.Quote as Quote
 import QuantLib.Settings(setEvaluationDate)
 import QuantLib.TermStructure.Yield
@@ -34,9 +34,9 @@ main = do
   q <- Quote.simpleQuote 0.03
   helpers <- mapM (\i -> fraRateHelper q i (i + 3) 2 cal ModifiedFollowing True euriborDC LastRelevantDate Nothing False) [1 .. 5]
 
-  discountCurve <- piecewiseYieldCurveGlobalBootstrap' 0 cal (NE.fromList helpers) euriborDC [] 1.0e-10 [] False
+  discountCurve <- piecewiseYieldCurveGlobalBootstrap' 0 cal (fromList helpers) euriborDC [] 1.0e-10 [] False
   helpers2 <- mapM (\i -> fraRateHelper q i (i + 3) 2 cal ModifiedFollowing True euriborDC LastRelevantDate Nothing False) [1 .. 5]
-  zeroCurve <- piecewiseYieldCurveGlobalBootstrapSimpleZeroLinear' 0 cal (NE.fromList helpers2) euriborDC [] 1.0e-10 [] False
+  zeroCurve <- piecewiseYieldCurveGlobalBootstrapSimpleZeroLinear' 0 cal (fromList helpers2) euriborDC [] 1.0e-10 [] False
 
   -- A date strictly between two pillars: the two curves reprice the input instruments
   -- identically at the pillar dates themselves, but interpolate between them differently
