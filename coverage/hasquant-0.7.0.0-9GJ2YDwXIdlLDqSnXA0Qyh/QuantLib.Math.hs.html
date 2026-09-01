@@ -393,95 +393,98 @@ span.spaces    { background: white }
 <span class="lineno">  374 </span>
 <span class="lineno">  375 </span>-- |Time grid with mandatory time points.
 <span class="lineno">  376 </span>-- Mandatory points are guaranteed to belong to the grid. No additional points are added.
-<span class="lineno">  377 </span>timeGridFromVector :: (NonEmptyVector Double) -&gt; IO ((TimeGrid))
-<span class="lineno">  378 </span><span class="decl"><span class="istickedoff">timeGridFromVector a1 =</span>
-<span class="lineno">  379 </span><span class="spaces">  </span><span class="istickedoff">withNonEmptyRealVector a1 $ \(a1'1, a1'2) -&gt; </span>
-<span class="lineno">  380 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
-<span class="lineno">  381 </span><span class="spaces">  </span><span class="istickedoff">timeGridFromVector'_ a1'1  a1'2 a2' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  382 </span><span class="spaces">  </span><span class="istickedoff">peekTimeGrid res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">  383 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
-<span class="lineno">  384 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">  385 </span>
+<span class="lineno">  377 </span>timeGridFromVector :: (NonEmptyVector Double) -- ^mandatoryTimes
+<span class="lineno">  378 </span> -&gt; IO ((TimeGrid))
+<span class="lineno">  379 </span><span class="decl"><span class="istickedoff">timeGridFromVector a1 =</span>
+<span class="lineno">  380 </span><span class="spaces">  </span><span class="istickedoff">withNonEmptyRealVector a1 $ \(a1'1, a1'2) -&gt; </span>
+<span class="lineno">  381 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
+<span class="lineno">  382 </span><span class="spaces">  </span><span class="istickedoff">timeGridFromVector'_ a1'1  a1'2 a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  383 </span><span class="spaces">  </span><span class="istickedoff">peekTimeGrid res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  384 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
+<span class="lineno">  385 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
 <span class="lineno">  386 </span>
 <span class="lineno">  387 </span>
-<span class="lineno">  388 </span>-- |Time grid with mandatory time points.
-<span class="lineno">  389 </span>-- Mandatory points are guaranteed to belong to the grid. Additional points are then added with regular spacing between pairs of mandatory times in order to reach the desired number of steps.
-<span class="lineno">  390 </span>timeGridFromVector' :: (NonEmptyVector Double) -&gt; (Word) -&gt; IO ((TimeGrid))
-<span class="lineno">  391 </span><span class="decl"><span class="nottickedoff">timeGridFromVector' a1 a2 =</span>
-<span class="lineno">  392 </span><span class="spaces">  </span><span class="nottickedoff">withNonEmptyRealVector a1 $ \(a1'1, a1'2) -&gt; </span>
-<span class="lineno">  393 </span><span class="spaces">  </span><span class="nottickedoff">let {a2' = fromIntegral a2} in </span>
-<span class="lineno">  394 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a3' -&gt; </span>
-<span class="lineno">  395 </span><span class="spaces">  </span><span class="nottickedoff">timeGridFromVector''_ a1'1  a1'2 a2' a3' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  396 </span><span class="spaces">  </span><span class="nottickedoff">peekTimeGrid res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">  397 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a3'&gt;&gt;</span>
-<span class="lineno">  398 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
-<span class="lineno">  399 </span>
-<span class="lineno">  400 </span>
-<span class="lineno">  401 </span>
-<span class="lineno">  402 </span>-- |returns the number of times on the grid
-<span class="lineno">  403 </span>size :: (TimeGrid) -&gt; (Word)
-<span class="lineno">  404 </span><span class="decl"><span class="istickedoff">size a1 =</span>
-<span class="lineno">  405 </span><span class="spaces">  </span><span class="istickedoff">C2HSImp.unsafePerformIO $</span>
-<span class="lineno">  406 </span><span class="spaces">  </span><span class="istickedoff">withTimeGrid a1 $ \a1' -&gt; </span>
-<span class="lineno">  407 </span><span class="spaces">  </span><span class="istickedoff">size'_ a1' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  408 </span><span class="spaces">  </span><span class="istickedoff">let {res' = fromIntegral res} in</span>
-<span class="lineno">  409 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">  410 </span>
-<span class="lineno">  411 </span>
-<span class="lineno">  412 </span>
-<span class="lineno">  413 </span>-- |returns the time at the given index of the grid
-<span class="lineno">  414 </span>timeAt :: (TimeGrid) -- ^grid
-<span class="lineno">  415 </span> -&gt; (Word) -- ^index
-<span class="lineno">  416 </span> -&gt; IO ((Double))
-<span class="lineno">  417 </span><span class="decl"><span class="nottickedoff">timeAt a1 a2 =</span>
-<span class="lineno">  418 </span><span class="spaces">  </span><span class="nottickedoff">withTimeGrid a1 $ \a1' -&gt; </span>
-<span class="lineno">  419 </span><span class="spaces">  </span><span class="nottickedoff">let {a2' = fromIntegral a2} in </span>
-<span class="lineno">  420 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a3' -&gt; </span>
-<span class="lineno">  421 </span><span class="spaces">  </span><span class="nottickedoff">timeAt'_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  422 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = realToFrac res} in</span>
-<span class="lineno">  423 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a3'&gt;&gt;</span>
-<span class="lineno">  424 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
-<span class="lineno">  425 </span>
-<span class="lineno">  426 </span>
-<span class="lineno">  427 </span>
-<span class="lineno">  428 </span>-- |Returns all times on the grid in contiguous storage.
-<span class="lineno">  429 </span>points :: (TimeGrid) -&gt; IO ((RealVector))
-<span class="lineno">  430 </span><span class="decl"><span class="istickedoff">points a1 =</span>
-<span class="lineno">  431 </span><span class="spaces">  </span><span class="istickedoff">withTimeGrid a1 $ \a1' -&gt; </span>
-<span class="lineno">  432 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a2'1, a2'2) -&gt; </span>
-<span class="lineno">  433 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
-<span class="lineno">  434 </span><span class="spaces">  </span><span class="istickedoff">points'_ a1' a2'1  a2'2 a3' &gt;&gt;</span>
-<span class="lineno">  435 </span><span class="spaces">  </span><span class="istickedoff">peekRealVector  a2'1  a2'2&gt;&gt;= \a2'' -&gt; </span>
-<span class="lineno">  436 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
-<span class="lineno">  437 </span><span class="spaces">  </span><span class="istickedoff">return (a2'')</span></span>
-<span class="lineno">  438 </span>
-<span class="lineno">  439 </span>
-<span class="lineno">  440 </span>
-<span class="lineno">  441 </span>-- vim: set ff=unix ts=8 sts=2 sw=2 et:
+<span class="lineno">  388 </span>
+<span class="lineno">  389 </span>-- |Time grid with mandatory time points.
+<span class="lineno">  390 </span>-- Mandatory points are guaranteed to belong to the grid. Additional points are then added with regular spacing between pairs of mandatory times in order to reach the desired number of steps.
+<span class="lineno">  391 </span>timeGridFromVector' :: (NonEmptyVector Double) -- ^mandatoryTimes
+<span class="lineno">  392 </span> -&gt; (Word) -- ^steps
+<span class="lineno">  393 </span> -&gt; IO ((TimeGrid))
+<span class="lineno">  394 </span><span class="decl"><span class="nottickedoff">timeGridFromVector' a1 a2 =</span>
+<span class="lineno">  395 </span><span class="spaces">  </span><span class="nottickedoff">withNonEmptyRealVector a1 $ \(a1'1, a1'2) -&gt; </span>
+<span class="lineno">  396 </span><span class="spaces">  </span><span class="nottickedoff">let {a2' = fromIntegral a2} in </span>
+<span class="lineno">  397 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a3' -&gt; </span>
+<span class="lineno">  398 </span><span class="spaces">  </span><span class="nottickedoff">timeGridFromVector''_ a1'1  a1'2 a2' a3' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  399 </span><span class="spaces">  </span><span class="nottickedoff">peekTimeGrid res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  400 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a3'&gt;&gt;</span>
+<span class="lineno">  401 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno">  402 </span>
+<span class="lineno">  403 </span>
+<span class="lineno">  404 </span>
+<span class="lineno">  405 </span>-- |returns the number of times on the grid
+<span class="lineno">  406 </span>size :: (TimeGrid) -&gt; (Word)
+<span class="lineno">  407 </span><span class="decl"><span class="istickedoff">size a1 =</span>
+<span class="lineno">  408 </span><span class="spaces">  </span><span class="istickedoff">C2HSImp.unsafePerformIO $</span>
+<span class="lineno">  409 </span><span class="spaces">  </span><span class="istickedoff">withTimeGrid a1 $ \a1' -&gt; </span>
+<span class="lineno">  410 </span><span class="spaces">  </span><span class="istickedoff">size'_ a1' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  411 </span><span class="spaces">  </span><span class="istickedoff">let {res' = fromIntegral res} in</span>
+<span class="lineno">  412 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  413 </span>
+<span class="lineno">  414 </span>
+<span class="lineno">  415 </span>
+<span class="lineno">  416 </span>-- |returns the time at the given index of the grid
+<span class="lineno">  417 </span>timeAt :: (TimeGrid) -- ^grid
+<span class="lineno">  418 </span> -&gt; (Word) -- ^index
+<span class="lineno">  419 </span> -&gt; IO ((Double))
+<span class="lineno">  420 </span><span class="decl"><span class="nottickedoff">timeAt a1 a2 =</span>
+<span class="lineno">  421 </span><span class="spaces">  </span><span class="nottickedoff">withTimeGrid a1 $ \a1' -&gt; </span>
+<span class="lineno">  422 </span><span class="spaces">  </span><span class="nottickedoff">let {a2' = fromIntegral a2} in </span>
+<span class="lineno">  423 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a3' -&gt; </span>
+<span class="lineno">  424 </span><span class="spaces">  </span><span class="nottickedoff">timeAt'_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  425 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno">  426 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a3'&gt;&gt;</span>
+<span class="lineno">  427 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno">  428 </span>
+<span class="lineno">  429 </span>
+<span class="lineno">  430 </span>
+<span class="lineno">  431 </span>-- |Returns all times on the grid in contiguous storage.
+<span class="lineno">  432 </span>points :: (TimeGrid) -&gt; IO ((RealVector))
+<span class="lineno">  433 </span><span class="decl"><span class="istickedoff">points a1 =</span>
+<span class="lineno">  434 </span><span class="spaces">  </span><span class="istickedoff">withTimeGrid a1 $ \a1' -&gt; </span>
+<span class="lineno">  435 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a2'1, a2'2) -&gt; </span>
+<span class="lineno">  436 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
+<span class="lineno">  437 </span><span class="spaces">  </span><span class="istickedoff">points'_ a1' a2'1  a2'2 a3' &gt;&gt;</span>
+<span class="lineno">  438 </span><span class="spaces">  </span><span class="istickedoff">peekRealVector  a2'1  a2'2&gt;&gt;= \a2'' -&gt; </span>
+<span class="lineno">  439 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
+<span class="lineno">  440 </span><span class="spaces">  </span><span class="istickedoff">return (a2'')</span></span>
+<span class="lineno">  441 </span>
 <span class="lineno">  442 </span>
-<span class="lineno">  443 </span>foreign import ccall safe &quot;QuantLib/Math.chs.h qlRound&quot;
-<span class="lineno">  444 </span>  applyRounding'_ :: ((C2HSImp.Ptr (CRounding)) -&gt; (C2HSImp.CDouble -&gt; (IO C2HSImp.CDouble)))
+<span class="lineno">  443 </span>
+<span class="lineno">  444 </span>-- vim: set ff=unix ts=8 sts=2 sw=2 et:
 <span class="lineno">  445 </span>
-<span class="lineno">  446 </span>foreign import ccall safe &quot;QuantLib/Math.chs.h qlOptimize&quot;
-<span class="lineno">  447 </span>  optimize'_ :: ((C2HSImp.FunPtr ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; (IO C2HSImp.CDouble)))) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (CConstraint)) -&gt; ((C2HSImp.Ptr (COptimizationMethod)) -&gt; ((C2HSImp.Ptr (CEndCriteria)) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ()))))))))))))
+<span class="lineno">  446 </span>foreign import ccall safe &quot;QuantLib/Math.chs.h qlRound&quot;
+<span class="lineno">  447 </span>  applyRounding'_ :: ((C2HSImp.Ptr (CRounding)) -&gt; (C2HSImp.CDouble -&gt; (IO C2HSImp.CDouble)))
 <span class="lineno">  448 </span>
-<span class="lineno">  449 </span>foreign import ccall safe &quot;QuantLib/Math.chs.h qlTimeGrid1&quot;
-<span class="lineno">  450 </span>  timeGrid'_ :: (C2HSImp.CDouble -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CTimeGrid))))))
+<span class="lineno">  449 </span>foreign import ccall safe &quot;QuantLib/Math.chs.h qlOptimize&quot;
+<span class="lineno">  450 </span>  optimize'_ :: ((C2HSImp.FunPtr ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; (IO C2HSImp.CDouble)))) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (CConstraint)) -&gt; ((C2HSImp.Ptr (COptimizationMethod)) -&gt; ((C2HSImp.Ptr (CEndCriteria)) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ()))))))))))))
 <span class="lineno">  451 </span>
-<span class="lineno">  452 </span>foreign import ccall safe &quot;QuantLib/Math.chs.h qlTimeGrid2&quot;
-<span class="lineno">  453 </span>  timeGridFromVector'_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CTimeGrid))))))
+<span class="lineno">  452 </span>foreign import ccall safe &quot;QuantLib/Math.chs.h qlTimeGrid1&quot;
+<span class="lineno">  453 </span>  timeGrid'_ :: (C2HSImp.CDouble -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CTimeGrid))))))
 <span class="lineno">  454 </span>
-<span class="lineno">  455 </span>foreign import ccall safe &quot;QuantLib/Math.chs.h qlTimeGrid3&quot;
-<span class="lineno">  456 </span>  timeGridFromVector''_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CTimeGrid)))))))
+<span class="lineno">  455 </span>foreign import ccall safe &quot;QuantLib/Math.chs.h qlTimeGrid2&quot;
+<span class="lineno">  456 </span>  timeGridFromVector'_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CTimeGrid))))))
 <span class="lineno">  457 </span>
-<span class="lineno">  458 </span>foreign import ccall safe &quot;QuantLib/Math.chs.h qlTimeGridSize&quot;
-<span class="lineno">  459 </span>  size'_ :: ((C2HSImp.Ptr (CTimeGrid)) -&gt; (IO C2HSImp.CUInt))
+<span class="lineno">  458 </span>foreign import ccall safe &quot;QuantLib/Math.chs.h qlTimeGrid3&quot;
+<span class="lineno">  459 </span>  timeGridFromVector''_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CTimeGrid)))))))
 <span class="lineno">  460 </span>
-<span class="lineno">  461 </span>foreign import ccall safe &quot;QuantLib/Math.chs.h qlTimeGridAt&quot;
-<span class="lineno">  462 </span>  timeAt'_ :: ((C2HSImp.Ptr (CTimeGrid)) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble))))
+<span class="lineno">  461 </span>foreign import ccall safe &quot;QuantLib/Math.chs.h qlTimeGridSize&quot;
+<span class="lineno">  462 </span>  size'_ :: ((C2HSImp.Ptr (CTimeGrid)) -&gt; (IO C2HSImp.CUInt))
 <span class="lineno">  463 </span>
-<span class="lineno">  464 </span>foreign import ccall safe &quot;QuantLib/Math.chs.h qlTimeGridPoints&quot;
-<span class="lineno">  465 </span>  points'_ :: ((C2HSImp.Ptr (CTimeGrid)) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ())))))
+<span class="lineno">  464 </span>foreign import ccall safe &quot;QuantLib/Math.chs.h qlTimeGridAt&quot;
+<span class="lineno">  465 </span>  timeAt'_ :: ((C2HSImp.Ptr (CTimeGrid)) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble))))
+<span class="lineno">  466 </span>
+<span class="lineno">  467 </span>foreign import ccall safe &quot;QuantLib/Math.chs.h qlTimeGridPoints&quot;
+<span class="lineno">  468 </span>  points'_ :: ((C2HSImp.Ptr (CTimeGrid)) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ())))))
 
 </pre>
 </body>

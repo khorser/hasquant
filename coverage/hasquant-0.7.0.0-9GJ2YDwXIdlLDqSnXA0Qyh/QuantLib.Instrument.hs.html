@@ -412,147 +412,151 @@ span.spaces    { background: white }
 <span class="lineno">  393 </span>-- in the foreign currency; Quanto contracts use a separate quanto currency.
 <span class="lineno">  394 </span>-- A zero-length funding frequency selects continuous funding; otherwise
 <span class="lineno">  395 </span>-- funding is discrete at the supplied period.
-<span class="lineno">  396 </span>perpetualFutures :: (PerpetualFuturesPayoffType) -&gt; (PerpetualFuturesFundingType) -&gt; ((Int,TimeUnit)) -- ^fundingFrequency
-<span class="lineno">  397 </span> -&gt; (Calendar) -&gt; (DayCounter) -&gt; IO ((Instrument))
-<span class="lineno">  398 </span><span class="decl"><span class="istickedoff">perpetualFutures a1 a2 a3 a4 a5 =</span>
-<span class="lineno">  399 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = fromEnumC a1} in </span>
-<span class="lineno">  400 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = fromEnumC a2} in </span>
-<span class="lineno">  401 </span><span class="spaces">  </span><span class="istickedoff">let {(a3'1, a3'2) = fromEnumQuantity a3} in </span>
-<span class="lineno">  402 </span><span class="spaces">  </span><span class="istickedoff">withCalendar a4 $ \a4' -&gt; </span>
-<span class="lineno">  403 </span><span class="spaces">  </span><span class="istickedoff">withDayCounter a5 $ \a5' -&gt; </span>
-<span class="lineno">  404 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a6' -&gt; </span>
-<span class="lineno">  405 </span><span class="spaces">  </span><span class="istickedoff">perpetualFutures'_ a1' a2' a3'1  a3'2 a4' a5' a6' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  406 </span><span class="spaces">  </span><span class="istickedoff">peekInstrument res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">  407 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a6'&gt;&gt;</span>
-<span class="lineno">  408 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">  409 </span>
-<span class="lineno">  410 </span>
-<span class="lineno">  411 </span>
-<span class="lineno">  412 </span>-- |Returns the net present value of the given Instrument
-<span class="lineno">  413 </span>npv :: (GenInstrument i) -&gt; IO ((Double))
-<span class="lineno">  414 </span><span class="decl"><span class="istickedoff">npv a1 =</span>
-<span class="lineno">  415 </span><span class="spaces">  </span><span class="istickedoff">withInstrument a1 $ \a1' -&gt; </span>
-<span class="lineno">  416 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
-<span class="lineno">  417 </span><span class="spaces">  </span><span class="istickedoff">npv'_ a1' a2' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  418 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
-<span class="lineno">  419 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
-<span class="lineno">  420 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">  421 </span>
-<span class="lineno">  422 </span>
-<span class="lineno">  423 </span>
-<span class="lineno">  424 </span>-- |returns the error estimate on the NPV when available.
-<span class="lineno">  425 </span>errorEstimate :: (GenInstrument i) -&gt; IO ((Double))
-<span class="lineno">  426 </span><span class="decl"><span class="istickedoff">errorEstimate a1 =</span>
-<span class="lineno">  427 </span><span class="spaces">  </span><span class="istickedoff">withInstrument a1 $ \a1' -&gt; </span>
-<span class="lineno">  428 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
-<span class="lineno">  429 </span><span class="spaces">  </span><span class="istickedoff">errorEstimate'_ a1' a2' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  430 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
-<span class="lineno">  431 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
-<span class="lineno">  432 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">  433 </span>
-<span class="lineno">  434 </span>
-<span class="lineno">  435 </span>
-<span class="lineno">  436 </span>-- |returns whether the instrument might have value greater than zero.
-<span class="lineno">  437 </span>isExpired :: (GenInstrument i) -&gt; IO ((Bool))
-<span class="lineno">  438 </span><span class="decl"><span class="nottickedoff">isExpired a1 =</span>
-<span class="lineno">  439 </span><span class="spaces">  </span><span class="nottickedoff">withInstrument a1 $ \a1' -&gt; </span>
-<span class="lineno">  440 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a2' -&gt; </span>
-<span class="lineno">  441 </span><span class="spaces">  </span><span class="nottickedoff">isExpired'_ a1' a2' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  442 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = C2HSImp.toBool res} in</span>
-<span class="lineno">  443 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a2'&gt;&gt;</span>
-<span class="lineno">  444 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
-<span class="lineno">  445 </span>
-<span class="lineno">  446 </span>
-<span class="lineno">  447 </span>
-<span class="lineno">  448 </span>-- |returns the date the net present value refers to.
-<span class="lineno">  449 </span>valuationDate :: (GenInstrument i) -&gt; IO ((Day))
-<span class="lineno">  450 </span><span class="decl"><span class="nottickedoff">valuationDate a1 =</span>
-<span class="lineno">  451 </span><span class="spaces">  </span><span class="nottickedoff">withInstrument a1 $ \a1' -&gt; </span>
-<span class="lineno">  452 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a2' -&gt; </span>
-<span class="lineno">  453 </span><span class="spaces">  </span><span class="nottickedoff">valuationDate'_ a1' a2' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  454 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = toDay res} in</span>
-<span class="lineno">  455 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a2'&gt;&gt;</span>
-<span class="lineno">  456 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
-<span class="lineno">  457 </span>
-<span class="lineno">  458 </span>
-<span class="lineno">  459 </span>
-<span class="lineno">  460 </span>-- |Re-registers `struct QlAdditionalResult*` with c2hs as `RawResultPtr` (the type is defined in
-<span class="lineno">  461 </span>-- `QuantLib.Internal.Common`, `nocode` here too) -- c2hs's pointer-type table is per-file, so
-<span class="lineno">  462 </span>-- without this the `{#fun#}` below infers the out-parameter as the opaque `Ptr (Ptr ())` instead
-<span class="lineno">  463 </span>-- of `Ptr RawResultPtr`, which fails to typecheck against `peekAdditionalResults`'s signature.
-<span class="lineno">  464 </span>
-<span class="lineno">  465 </span>
-<span class="lineno">  466 </span>
-<span class="lineno">  467 </span>-- |Returns QuantLib's `additionalResults()` map for the given Instrument, as an association list
-<span class="lineno">  468 </span>-- keyed by the C++ result name. The map's values are populated by the pricing engine;
-<span class="lineno">  469 </span>-- `additionalResults()` calls `calculate()` internally, so this is safe and idempotent after
-<span class="lineno">  470 </span>-- pricing.
-<span class="lineno">  471 </span>additionalResults :: (GenInstrument i) -&gt; IO (([(String, AdditionalResultVal)]))
-<span class="lineno">  472 </span><span class="decl"><span class="istickedoff">additionalResults a1 =</span>
-<span class="lineno">  473 </span><span class="spaces">  </span><span class="istickedoff">withInstrument a1 $ \a1' -&gt; </span>
-<span class="lineno">  474 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a2'1, a2'2) -&gt; </span>
-<span class="lineno">  475 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
-<span class="lineno">  476 </span><span class="spaces">  </span><span class="istickedoff">additionalResults'_ a1' a2'1  a2'2 a3' &gt;&gt;</span>
-<span class="lineno">  477 </span><span class="spaces">  </span><span class="istickedoff">peekAdditionalResults  a2'1  a2'2&gt;&gt;= \a2'' -&gt; </span>
-<span class="lineno">  478 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
-<span class="lineno">  479 </span><span class="spaces">  </span><span class="istickedoff">return (a2'')</span></span>
-<span class="lineno">  480 </span>
-<span class="lineno">  481 </span>
-<span class="lineno">  482 </span>
-<span class="lineno">  483 </span>composite :: [(Instrument, Double)] -&gt; IO Instrument
-<span class="lineno">  484 </span><span class="decl"><span class="istickedoff">composite = (uncurry qlCompositeInstrument) . unzip</span></span>
-<span class="lineno">  485 </span>-- |Builds a composite instrument whose NPV is the sum of the given instruments' NPVs, each scaled by its paired multiplier.
-<span class="lineno">  486 </span>qlCompositeInstrument :: ([GenInstrument i]) -- ^instruments
-<span class="lineno">  487 </span> -&gt; ([Double]) -- ^multipliers
-<span class="lineno">  488 </span> -&gt; IO ((Instrument))
-<span class="lineno">  489 </span><span class="decl"><span class="istickedoff">qlCompositeInstrument a1 a2 =</span>
-<span class="lineno">  490 </span><span class="spaces">  </span><span class="istickedoff">withInstrumentArray a1 $ \(a1'1, a1'2) -&gt; </span>
-<span class="lineno">  491 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a2 $ \(a2'1, a2'2) -&gt; </span>
-<span class="lineno">  492 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
-<span class="lineno">  493 </span><span class="spaces">  </span><span class="istickedoff">qlCompositeInstrument'_ a1'1  a1'2 a2'1  a2'2 a3' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  494 </span><span class="spaces">  </span><span class="istickedoff">peekInstrument res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">  495 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
-<span class="lineno">  496 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">  497 </span>
-<span class="lineno">  498 </span>
-<span class="lineno">  499 </span>
-<span class="lineno">  500 </span>-- |Sets the pricing engine used to compute the instrument's results.
-<span class="lineno">  501 </span>setPricingEngine :: (GenInstrument i) -&gt; (PricingEngine) -&gt; IO ()
-<span class="lineno">  502 </span><span class="decl"><span class="istickedoff">setPricingEngine a1 a2 =</span>
-<span class="lineno">  503 </span><span class="spaces">  </span><span class="istickedoff">withInstrument a1 $ \a1' -&gt; </span>
-<span class="lineno">  504 </span><span class="spaces">  </span><span class="istickedoff">withPricingEngine a2 $ \a2' -&gt; </span>
-<span class="lineno">  505 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
-<span class="lineno">  506 </span><span class="spaces">  </span><span class="istickedoff">setPricingEngine'_ a1' a2' a3' &gt;&gt;</span>
-<span class="lineno">  507 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
-<span class="lineno">  508 </span><span class="spaces">  </span><span class="istickedoff">return <span class="nottickedoff">()</span></span></span>
-<span class="lineno">  509 </span>
-<span class="lineno">  510 </span>
-<span class="lineno">  511 </span>
-<span class="lineno">  512 </span>-- vim: set ff=unix ts=8 sts=2 sw=2 et:
+<span class="lineno">  396 </span>perpetualFutures :: (PerpetualFuturesPayoffType) -- ^payoffType
+<span class="lineno">  397 </span> -&gt; (PerpetualFuturesFundingType) -- ^fundingType
+<span class="lineno">  398 </span> -&gt; ((Int,TimeUnit)) -- ^fundingFrequency
+<span class="lineno">  399 </span> -&gt; (Calendar) -- ^fundingCalendar
+<span class="lineno">  400 </span> -&gt; (DayCounter) -- ^fundingDayCounter
+<span class="lineno">  401 </span> -&gt; IO ((Instrument))
+<span class="lineno">  402 </span><span class="decl"><span class="istickedoff">perpetualFutures a1 a2 a3 a4 a5 =</span>
+<span class="lineno">  403 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = fromEnumC a1} in </span>
+<span class="lineno">  404 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = fromEnumC a2} in </span>
+<span class="lineno">  405 </span><span class="spaces">  </span><span class="istickedoff">let {(a3'1, a3'2) = fromEnumQuantity a3} in </span>
+<span class="lineno">  406 </span><span class="spaces">  </span><span class="istickedoff">withCalendar a4 $ \a4' -&gt; </span>
+<span class="lineno">  407 </span><span class="spaces">  </span><span class="istickedoff">withDayCounter a5 $ \a5' -&gt; </span>
+<span class="lineno">  408 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a6' -&gt; </span>
+<span class="lineno">  409 </span><span class="spaces">  </span><span class="istickedoff">perpetualFutures'_ a1' a2' a3'1  a3'2 a4' a5' a6' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  410 </span><span class="spaces">  </span><span class="istickedoff">peekInstrument res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  411 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a6'&gt;&gt;</span>
+<span class="lineno">  412 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  413 </span>
+<span class="lineno">  414 </span>
+<span class="lineno">  415 </span>
+<span class="lineno">  416 </span>-- |Returns the net present value of the given Instrument
+<span class="lineno">  417 </span>npv :: (GenInstrument i) -&gt; IO ((Double))
+<span class="lineno">  418 </span><span class="decl"><span class="istickedoff">npv a1 =</span>
+<span class="lineno">  419 </span><span class="spaces">  </span><span class="istickedoff">withInstrument a1 $ \a1' -&gt; </span>
+<span class="lineno">  420 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
+<span class="lineno">  421 </span><span class="spaces">  </span><span class="istickedoff">npv'_ a1' a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  422 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno">  423 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
+<span class="lineno">  424 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  425 </span>
+<span class="lineno">  426 </span>
+<span class="lineno">  427 </span>
+<span class="lineno">  428 </span>-- |returns the error estimate on the NPV when available.
+<span class="lineno">  429 </span>errorEstimate :: (GenInstrument i) -&gt; IO ((Double))
+<span class="lineno">  430 </span><span class="decl"><span class="istickedoff">errorEstimate a1 =</span>
+<span class="lineno">  431 </span><span class="spaces">  </span><span class="istickedoff">withInstrument a1 $ \a1' -&gt; </span>
+<span class="lineno">  432 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
+<span class="lineno">  433 </span><span class="spaces">  </span><span class="istickedoff">errorEstimate'_ a1' a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  434 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno">  435 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
+<span class="lineno">  436 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  437 </span>
+<span class="lineno">  438 </span>
+<span class="lineno">  439 </span>
+<span class="lineno">  440 </span>-- |returns whether the instrument might have value greater than zero.
+<span class="lineno">  441 </span>isExpired :: (GenInstrument i) -&gt; IO ((Bool))
+<span class="lineno">  442 </span><span class="decl"><span class="nottickedoff">isExpired a1 =</span>
+<span class="lineno">  443 </span><span class="spaces">  </span><span class="nottickedoff">withInstrument a1 $ \a1' -&gt; </span>
+<span class="lineno">  444 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a2' -&gt; </span>
+<span class="lineno">  445 </span><span class="spaces">  </span><span class="nottickedoff">isExpired'_ a1' a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  446 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = C2HSImp.toBool res} in</span>
+<span class="lineno">  447 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a2'&gt;&gt;</span>
+<span class="lineno">  448 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno">  449 </span>
+<span class="lineno">  450 </span>
+<span class="lineno">  451 </span>
+<span class="lineno">  452 </span>-- |returns the date the net present value refers to.
+<span class="lineno">  453 </span>valuationDate :: (GenInstrument i) -&gt; IO ((Day))
+<span class="lineno">  454 </span><span class="decl"><span class="nottickedoff">valuationDate a1 =</span>
+<span class="lineno">  455 </span><span class="spaces">  </span><span class="nottickedoff">withInstrument a1 $ \a1' -&gt; </span>
+<span class="lineno">  456 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a2' -&gt; </span>
+<span class="lineno">  457 </span><span class="spaces">  </span><span class="nottickedoff">valuationDate'_ a1' a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  458 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = toDay res} in</span>
+<span class="lineno">  459 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a2'&gt;&gt;</span>
+<span class="lineno">  460 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno">  461 </span>
+<span class="lineno">  462 </span>
+<span class="lineno">  463 </span>
+<span class="lineno">  464 </span>-- |Re-registers `struct QlAdditionalResult*` with c2hs as `RawResultPtr` (the type is defined in
+<span class="lineno">  465 </span>-- `QuantLib.Internal.Common`, `nocode` here too) -- c2hs's pointer-type table is per-file, so
+<span class="lineno">  466 </span>-- without this the `{#fun#}` below infers the out-parameter as the opaque `Ptr (Ptr ())` instead
+<span class="lineno">  467 </span>-- of `Ptr RawResultPtr`, which fails to typecheck against `peekAdditionalResults`'s signature.
+<span class="lineno">  468 </span>
+<span class="lineno">  469 </span>
+<span class="lineno">  470 </span>
+<span class="lineno">  471 </span>-- |Returns QuantLib's `additionalResults()` map for the given Instrument, as an association list
+<span class="lineno">  472 </span>-- keyed by the C++ result name. The map's values are populated by the pricing engine;
+<span class="lineno">  473 </span>-- `additionalResults()` calls `calculate()` internally, so this is safe and idempotent after
+<span class="lineno">  474 </span>-- pricing.
+<span class="lineno">  475 </span>additionalResults :: (GenInstrument i) -&gt; IO (([(String, AdditionalResultVal)]))
+<span class="lineno">  476 </span><span class="decl"><span class="istickedoff">additionalResults a1 =</span>
+<span class="lineno">  477 </span><span class="spaces">  </span><span class="istickedoff">withInstrument a1 $ \a1' -&gt; </span>
+<span class="lineno">  478 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a2'1, a2'2) -&gt; </span>
+<span class="lineno">  479 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
+<span class="lineno">  480 </span><span class="spaces">  </span><span class="istickedoff">additionalResults'_ a1' a2'1  a2'2 a3' &gt;&gt;</span>
+<span class="lineno">  481 </span><span class="spaces">  </span><span class="istickedoff">peekAdditionalResults  a2'1  a2'2&gt;&gt;= \a2'' -&gt; </span>
+<span class="lineno">  482 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
+<span class="lineno">  483 </span><span class="spaces">  </span><span class="istickedoff">return (a2'')</span></span>
+<span class="lineno">  484 </span>
+<span class="lineno">  485 </span>
+<span class="lineno">  486 </span>
+<span class="lineno">  487 </span>composite :: [(Instrument, Double)] -&gt; IO Instrument
+<span class="lineno">  488 </span><span class="decl"><span class="istickedoff">composite = (uncurry qlCompositeInstrument) . unzip</span></span>
+<span class="lineno">  489 </span>-- |Builds a composite instrument whose NPV is the sum of the given instruments' NPVs, each scaled by its paired multiplier.
+<span class="lineno">  490 </span>qlCompositeInstrument :: ([GenInstrument i]) -- ^instruments
+<span class="lineno">  491 </span> -&gt; ([Double]) -- ^multipliers
+<span class="lineno">  492 </span> -&gt; IO ((Instrument))
+<span class="lineno">  493 </span><span class="decl"><span class="istickedoff">qlCompositeInstrument a1 a2 =</span>
+<span class="lineno">  494 </span><span class="spaces">  </span><span class="istickedoff">withInstrumentArray a1 $ \(a1'1, a1'2) -&gt; </span>
+<span class="lineno">  495 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a2 $ \(a2'1, a2'2) -&gt; </span>
+<span class="lineno">  496 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
+<span class="lineno">  497 </span><span class="spaces">  </span><span class="istickedoff">qlCompositeInstrument'_ a1'1  a1'2 a2'1  a2'2 a3' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  498 </span><span class="spaces">  </span><span class="istickedoff">peekInstrument res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  499 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
+<span class="lineno">  500 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  501 </span>
+<span class="lineno">  502 </span>
+<span class="lineno">  503 </span>
+<span class="lineno">  504 </span>-- |Sets the pricing engine used to compute the instrument's results.
+<span class="lineno">  505 </span>setPricingEngine :: (GenInstrument i) -&gt; (PricingEngine) -&gt; IO ()
+<span class="lineno">  506 </span><span class="decl"><span class="istickedoff">setPricingEngine a1 a2 =</span>
+<span class="lineno">  507 </span><span class="spaces">  </span><span class="istickedoff">withInstrument a1 $ \a1' -&gt; </span>
+<span class="lineno">  508 </span><span class="spaces">  </span><span class="istickedoff">withPricingEngine a2 $ \a2' -&gt; </span>
+<span class="lineno">  509 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
+<span class="lineno">  510 </span><span class="spaces">  </span><span class="istickedoff">setPricingEngine'_ a1' a2' a3' &gt;&gt;</span>
+<span class="lineno">  511 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
+<span class="lineno">  512 </span><span class="spaces">  </span><span class="istickedoff">return <span class="nottickedoff">()</span></span></span>
 <span class="lineno">  513 </span>
-<span class="lineno">  514 </span>foreign import ccall safe &quot;QuantLib/Instrument.chs.h qlPerpetualFutures&quot;
-<span class="lineno">  515 </span>  perpetualFutures'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CCalendar)) -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CInstrument'))))))))))
-<span class="lineno">  516 </span>
-<span class="lineno">  517 </span>foreign import ccall safe &quot;QuantLib/Instrument.chs.h qlInstrumentNPV&quot;
-<span class="lineno">  518 </span>  npv'_ :: ((C2HSImp.Ptr (CInstrument')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))
-<span class="lineno">  519 </span>
-<span class="lineno">  520 </span>foreign import ccall safe &quot;QuantLib/Instrument.chs.h qlInstrumentErrorEstimate&quot;
-<span class="lineno">  521 </span>  errorEstimate'_ :: ((C2HSImp.Ptr (CInstrument')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))
-<span class="lineno">  522 </span>
-<span class="lineno">  523 </span>foreign import ccall safe &quot;QuantLib/Instrument.chs.h qlInstrumentIsExpired&quot;
-<span class="lineno">  524 </span>  isExpired'_ :: ((C2HSImp.Ptr (CInstrument')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CInt)))
-<span class="lineno">  525 </span>
-<span class="lineno">  526 </span>foreign import ccall safe &quot;QuantLib/Instrument.chs.h qlInstrumentValuationDate&quot;
-<span class="lineno">  527 </span>  valuationDate'_ :: ((C2HSImp.Ptr (CInstrument')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CInt)))
-<span class="lineno">  528 </span>
-<span class="lineno">  529 </span>foreign import ccall safe &quot;QuantLib/Instrument.chs.h qlInstrumentAdditionalResults&quot;
-<span class="lineno">  530 </span>  additionalResults'_ :: ((C2HSImp.Ptr (CInstrument')) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (RawResultPtr)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ())))))
-<span class="lineno">  531 </span>
-<span class="lineno">  532 </span>foreign import ccall safe &quot;QuantLib/Instrument.chs.h qlCompositeInstrument&quot;
-<span class="lineno">  533 </span>  qlCompositeInstrument'_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr (CInstrument'))) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CInstrument'))))))))
-<span class="lineno">  534 </span>
-<span class="lineno">  535 </span>foreign import ccall safe &quot;QuantLib/Instrument.chs.h qlInstrumentSetPricingEngine&quot;
-<span class="lineno">  536 </span>  setPricingEngine'_ :: ((C2HSImp.Ptr (CInstrument')) -&gt; ((C2HSImp.Ptr (CPricingEngine)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ()))))
+<span class="lineno">  514 </span>
+<span class="lineno">  515 </span>
+<span class="lineno">  516 </span>-- vim: set ff=unix ts=8 sts=2 sw=2 et:
+<span class="lineno">  517 </span>
+<span class="lineno">  518 </span>foreign import ccall safe &quot;QuantLib/Instrument.chs.h qlPerpetualFutures&quot;
+<span class="lineno">  519 </span>  perpetualFutures'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CCalendar)) -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CInstrument'))))))))))
+<span class="lineno">  520 </span>
+<span class="lineno">  521 </span>foreign import ccall safe &quot;QuantLib/Instrument.chs.h qlInstrumentNPV&quot;
+<span class="lineno">  522 </span>  npv'_ :: ((C2HSImp.Ptr (CInstrument')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))
+<span class="lineno">  523 </span>
+<span class="lineno">  524 </span>foreign import ccall safe &quot;QuantLib/Instrument.chs.h qlInstrumentErrorEstimate&quot;
+<span class="lineno">  525 </span>  errorEstimate'_ :: ((C2HSImp.Ptr (CInstrument')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))
+<span class="lineno">  526 </span>
+<span class="lineno">  527 </span>foreign import ccall safe &quot;QuantLib/Instrument.chs.h qlInstrumentIsExpired&quot;
+<span class="lineno">  528 </span>  isExpired'_ :: ((C2HSImp.Ptr (CInstrument')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CInt)))
+<span class="lineno">  529 </span>
+<span class="lineno">  530 </span>foreign import ccall safe &quot;QuantLib/Instrument.chs.h qlInstrumentValuationDate&quot;
+<span class="lineno">  531 </span>  valuationDate'_ :: ((C2HSImp.Ptr (CInstrument')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CInt)))
+<span class="lineno">  532 </span>
+<span class="lineno">  533 </span>foreign import ccall safe &quot;QuantLib/Instrument.chs.h qlInstrumentAdditionalResults&quot;
+<span class="lineno">  534 </span>  additionalResults'_ :: ((C2HSImp.Ptr (CInstrument')) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (RawResultPtr)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ())))))
+<span class="lineno">  535 </span>
+<span class="lineno">  536 </span>foreign import ccall safe &quot;QuantLib/Instrument.chs.h qlCompositeInstrument&quot;
+<span class="lineno">  537 </span>  qlCompositeInstrument'_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr (CInstrument'))) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CInstrument'))))))))
+<span class="lineno">  538 </span>
+<span class="lineno">  539 </span>foreign import ccall safe &quot;QuantLib/Instrument.chs.h qlInstrumentSetPricingEngine&quot;
+<span class="lineno">  540 </span>  setPricingEngine'_ :: ((C2HSImp.Ptr (CInstrument')) -&gt; ((C2HSImp.Ptr (CPricingEngine)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ()))))
 
 </pre>
 </body>
