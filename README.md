@@ -10,7 +10,7 @@ hasquant does not depend on [QuantLib-SWIG](https://github.com/lballabio/QuantLi
 
 The ownership model, enum/ADT design, and C-shim conventions predate AI assistance. AI now helps extend coverage, but each binding is checked against upstream signatures and established patterns, then tested.
 
-Examples are in `test/example/QuantLib/Example`; most deliberately follow QuantLib examples and tests. The Hspec suite is dispatched from `test/main/QuantLib/MainTest.hs`.
+Examples are in `test/example/QuantLib/Example`; most deliberately follow QuantLib examples and tests, prioritizing fidelity to the upstream fixture over idiomatic Haskell. `QuickStart` is the readability-oriented exception. The Hspec suite is dispatched from `test/main/QuantLib/MainTest.hs`.
 
 Published package: https://hackage.haskell.org/package/hasquant. Current Haddock: https://khorser.github.io/hasquant.
 
@@ -65,7 +65,7 @@ Two things follow from that split:
 
 Out of scope:
 
-- Reimplementing QuantLib numerical primitives.
+- Reimplementing or independently binding QuantLib's interpolation, optimization, linear-algebra, and RNG internals, unless another binding needs one exposed.
 - A declarative composition DSL; any such DSL belongs in a sibling project.
 
 ## Roadmap
@@ -79,7 +79,7 @@ Out of scope:
 
 # Testing
 
-Tests reuse QuantLib fixtures and cached values when available. Enum-dispatched bindings also get smoke tests that construct and check representative values.
+Tests reuse QuantLib fixtures and cached values when available. Enum-dispatched bindings also get smoke tests that construct and check representative values; these catch stale or incorrect enum mappings that can survive a clean build and the ordinary test suite.
 
 `tools/ql-methods-1.43.txt` tracks constructors and non-trivial methods. Coverage: https://khorser.github.io/hasquant/coverage/hpc_index.html.
 
@@ -150,4 +150,4 @@ type ConvertibleBond = GenBond CConvertibleBond
 type CallableBond = GenBond CCallableBond
 ```
 
-`GenInstrument a` (for example, `npv`) accepts every instrument. Reuse `asBond` or `asInstrument` when repeated upcasts matter.
+`GenInstrument a` (for example, `npv`) accepts every instrument. An implicit upcast allocates a temporary C-side handle and frees it after the call, so reuse `asBond` or `asInstrument` when making repeated calls through a common parent type.
