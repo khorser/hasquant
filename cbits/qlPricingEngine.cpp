@@ -73,6 +73,11 @@
 #include <ql/pricingengines/swaption/gaussian1dfloatfloatswaptionengine.hpp>
 #include <ql/pricingengines/swaption/gaussian1djamshidianswaptionengine.hpp>
 #include <ql/models/shortrate/calibrationhelpers/swaptionhelper.hpp>
+#include <ql/models/equity/hestonslvmcmodel.hpp>
+#include <ql/models/equity/hestonslvfdmmodel.hpp>
+#include <ql/processes/hestonslvprocess.hpp>
+#include <ql/models/marketmodels/browniangenerators/mtbrowniangenerator.hpp>
+#include <ql/models/marketmodels/browniangenerators/sobolbrowniangenerator.hpp>
 #include <ql/pricingengines/swaption/jamshidianswaptionengine.hpp>
 #include <ql/pricingengines/swaption/treeswaptionengine.hpp>
 #include <ql/pricingengines/vanilla/analyticbsmhullwhiteengine.hpp>
@@ -303,6 +308,14 @@ QL_TRACE_NAME(HsFdmLinearOpComposite)
 QL_TRACE_NAME(HsFdmStepCondition)
 QL_TRACE_NAME(HsFdmInnerValueCalculator)
 #endif
+
+struct HestonSLVFDMLogEntries {
+  struct Entry {
+    double time;
+    std::vector<double> spotGrid, varianceGrid, density;
+  };
+  std::vector<Entry> entries;
+};
 
 extern "C" {
 QlPricingEngine *qlDiscountingBondEngine(QlYieldTermStructure *ts, int f, char **e) {
@@ -1076,6 +1089,69 @@ double qlFdmQuantoHelperQuantoAdjustment(QlFdmQuantoHelper* helper, double equit
   } catch (std::exception& er) {return handleException<double>(e, er);}}
 void qlFreeGJRGARCHModel(QlGJRGARCHModel *o) {del(o);}
 void qlFreeHestonModel(QlHestonModel *o) {del(o);}
+void qlFreeBrownianGeneratorFactory(QlBrownianGeneratorFactory *o) {del(o);}
+QlBrownianGeneratorFactory* qlMTBrownianGeneratorFactory(unsigned long seed, char **e) {
+  try {return ret(new QlBrownianGeneratorFactory(alloc(new MTBrownianGeneratorFactory(seed))));
+  } catch (std::exception& er) {return handleException<QlBrownianGeneratorFactory*>(e, er);}}
+QlBrownianGeneratorFactory* qlSobolBrownianGeneratorFactory(int ordering, unsigned long seed, int directionIntegers, char **e) {
+  try {return ret(new QlBrownianGeneratorFactory(alloc(new SobolBrownianGeneratorFactory(
+    (SobolBrownianGenerator::Ordering)ordering, seed, (SobolRsg::DirectionIntegers)directionIntegers))));
+  } catch (std::exception& er) {return handleException<QlBrownianGeneratorFactory*>(e, er);}}
+void qlFreeHestonSLVMCModel(QlHestonSLVMCModel *o) {del(o);}
+QlHestonSLVMCModel* qlHestonSLVMCModel(QlLocalVolTermStructure* localVol, QlHestonModel* hestonModel, QlBrownianGeneratorFactory* factory, int endDate, unsigned timeStepsPerYear, unsigned nBins, unsigned calibrationPaths, unsigned mandatoryDatesLen, int* mandatoryDates, double mixingFactor, char **e) {
+  try {return ret(new QlHestonSLVMCModel(alloc(new HestonSLVMCModel(
+    Handle<LocalVolTermStructure>(*arg(localVol)), Handle<HestonModel>(*arg(hestonModel)), *arg(factory),
+    Date(endDate), timeStepsPerYear, nBins, calibrationPaths, qlDateVector(mandatoryDates, mandatoryDatesLen), mixingFactor))));
+  } catch (std::exception& er) {return handleException<QlHestonSLVMCModel*>(e, er);}}
+QlLocalVolTermStructure* qlHestonSLVMCModelLeverageFunction(QlHestonSLVMCModel* o, char **e) {
+  try {return ret(new QlLocalVolTermStructure((*arg(o))->leverageFunction()));
+  } catch (std::exception& er) {return handleException<QlLocalVolTermStructure*>(e, er);}}
+void qlFreeHestonSLVFDMModel(QlHestonSLVFDMModel *o) {del(o);}
+QlHestonSLVFDMModel* qlHestonSLVFDMModel(QlLocalVolTermStructure* localVol, QlHestonModel* hestonModel, int endDate,
+    unsigned xGrid, unsigned vGrid, unsigned tMaxStepsPerYear, unsigned tMinStepsPerYear, double tStepNumberDecay,
+    unsigned nRannacherTimeSteps, unsigned predictionCorretionSteps, double x0Density, double localVolEpsProb,
+    unsigned maxIntegrationIterations, double vLowerEps, double vUpperEps, double vMin, double v0Density,
+    double vLowerBoundDensity, double vUpperBoundDensity, double leverageFctPropEps, int greensAlgorithm,
+    int trafoType, FdmSchemeDesc* schemeDesc, int logging, unsigned mandatoryDatesLen, int* mandatoryDates,
+    double mixingFactor, char **e) {
+  try {
+    HestonSLVFokkerPlanckFdmParams p = {xGrid, vGrid, tMaxStepsPerYear, tMinStepsPerYear, tStepNumberDecay,
+      nRannacherTimeSteps, predictionCorretionSteps, x0Density, localVolEpsProb, maxIntegrationIterations,
+      vLowerEps, vUpperEps, vMin, v0Density, vLowerBoundDensity, vUpperBoundDensity, leverageFctPropEps,
+      (FdmHestonGreensFct::Algorithm)greensAlgorithm, (FdmSquareRootFwdOp::TransformationType)trafoType,
+      *arg(schemeDesc)};
+    return ret(new QlHestonSLVFDMModel(alloc(new HestonSLVFDMModel(
+      Handle<LocalVolTermStructure>(*arg(localVol)), Handle<HestonModel>(*arg(hestonModel)), Date(endDate), p,
+      logging, qlDateVector(mandatoryDates, mandatoryDatesLen), mixingFactor))));
+  } catch (std::exception& er) {return handleException<QlHestonSLVFDMModel*>(e, er);}}
+QlLocalVolTermStructure* qlHestonSLVFDMModelLeverageFunction(QlHestonSLVFDMModel* o, char **e) {
+  try {return ret(new QlLocalVolTermStructure((*arg(o))->leverageFunction()));
+  } catch (std::exception& er) {return handleException<QlLocalVolTermStructure*>(e, er);}}
+HestonSLVFDMLogEntries* qlHestonSLVFDMModelLogEntries(QlHestonSLVFDMModel* o, char **e) {
+  try {
+    HestonSLVFDMLogEntries* out = new HestonSLVFDMLogEntries;
+    const std::list<HestonSLVFDMModel::LogEntry>& entries = (*arg(o))->logEntries();
+    out->entries.reserve(entries.size());
+    for (const auto& entry : entries) {
+      HestonSLVFDMLogEntries::Entry copy;
+      copy.time = entry.t;
+      const auto& meshers = entry.mesher->getFdm1dMeshers();
+      copy.spotGrid.assign(meshers.at(0)->locations().begin(), meshers.at(0)->locations().end());
+      copy.varianceGrid.assign(meshers.at(1)->locations().begin(), meshers.at(1)->locations().end());
+      copy.density.assign(entry.prob->begin(), entry.prob->end());
+      out->entries.push_back(std::move(copy));
+    }
+    return out;
+  } catch (std::exception& er) {return handleException<HestonSLVFDMLogEntries*>(e, er);}}
+void qlFreeHestonSLVFDMLogEntries(HestonSLVFDMLogEntries* o) {delete o;}
+unsigned qlHestonSLVFDMLogEntriesSize(HestonSLVFDMLogEntries* o) {return (unsigned)o->entries.size();}
+double qlHestonSLVFDMLogEntriesTime(HestonSLVFDMLogEntries* o, unsigned i) {return o->entries.at(i).time;}
+void qlHestonSLVFDMLogEntriesSpotGrid(HestonSLVFDMLogEntries* o, unsigned i, unsigned* len, double** values) {
+  const auto& x = o->entries.at(i).spotGrid; *len = (unsigned)x.size(); *values = qlAllocateDoubles(*len); std::copy(x.begin(), x.end(), *values);}
+void qlHestonSLVFDMLogEntriesVarianceGrid(HestonSLVFDMLogEntries* o, unsigned i, unsigned* len, double** values) {
+  const auto& x = o->entries.at(i).varianceGrid; *len = (unsigned)x.size(); *values = qlAllocateDoubles(*len); std::copy(x.begin(), x.end(), *values);}
+void qlHestonSLVFDMLogEntriesDensity(HestonSLVFDMLogEntries* o, unsigned i, unsigned* rows, unsigned* cols, unsigned* len, double** values) {
+  const auto& e = o->entries.at(i); *rows = (unsigned)e.varianceGrid.size(); *cols = (unsigned)e.spotGrid.size(); *len = (unsigned)e.density.size(); *values = qlAllocateDoubles(*len); std::copy(e.density.begin(), e.density.end(), *values);}
 void qlFreeBatesModel(QlBatesModel *o) {del(o);}
 void qlFreePiecewiseTimeDependentHestonModel(QlPiecewiseTimeDependentHestonModel *o) {del(o);}
 void qlFreeShortRateModel(QlShortRateModel *o) {del(o);}
@@ -1334,6 +1410,11 @@ void qlFreeGJRGARCHProcess(QlGJRGARCHProcess *o) {del(o);}
 QlStochasticProcess* qlGJRGARCHProcessAsStochasticProcess(QlGJRGARCHProcess *o) {return ret(new QlStochasticProcess(*arg(o)));}
 void qlFreeHestonProcess(QlHestonProcess *o) {del(o);}
 QlStochasticProcess* qlHestonProcessAsStochasticProcess(QlHestonProcess *o) {return ret(new QlStochasticProcess(*arg(o)));}
+void qlFreeHestonSLVProcess(QlHestonSLVProcess *o) {del(o);}
+QlStochasticProcess* qlHestonSLVProcessAsStochasticProcess(QlHestonSLVProcess *o) {return ret(new QlStochasticProcess(*arg(o)));}
+QlHestonSLVProcess* qlHestonSLVProcess(QlHestonProcess* hestonProcess, QlLocalVolTermStructure* leverageFct, double mixingFactor, char **e) {
+  try {return ret(new QlHestonSLVProcess(alloc(new HestonSLVProcess(*arg(hestonProcess), *arg(leverageFct), mixingFactor))));
+  } catch (std::exception& er) {return handleException<QlHestonSLVProcess*>(e, er);}}
 void qlFreeBatesProcess(QlBatesProcess *o) {del(o);}
 QlHestonProcess* qlBatesProcessAsHestonProcess(QlBatesProcess *o) {return ret(new QlHestonProcess(*arg(o)));}
 void qlFreeHybridHestonHullWhiteProcess(QlHybridHestonHullWhiteProcess *o) {del(o);}

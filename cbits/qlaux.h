@@ -20,6 +20,8 @@
 // (like SabrSwaptionVolatilityCube above) it can't be left as a forward declaration.
 #include <ql/models/shortrate/twofactormodel.hpp>
 
+struct HestonSLVFDMLogEntries;
+
 int *qlAllocateInts(size_t size);
 double *qlAllocateDoubles(size_t size);
 
@@ -243,6 +245,10 @@ namespace QuantLib {
   class HestonModel;
   class HestonModelHelper;
   class HestonProcess;
+  class HestonSLVProcess;
+  class HestonSLVMCModel;
+  class HestonSLVFDMModel;
+  class BrownianGeneratorFactory;
   class HistoricalIndexAnalysis;
   class HullWhite;
   class HullWhiteForwardProcess;
@@ -575,6 +581,10 @@ using QuantLib::HestonBlackVolSurface;
 using QuantLib::HestonModel;
 using QuantLib::HestonModelHelper;
 using QuantLib::HestonProcess;
+using QuantLib::HestonSLVProcess;
+using QuantLib::HestonSLVMCModel;
+using QuantLib::HestonSLVFDMModel;
+using QuantLib::BrownianGeneratorFactory;
 using QuantLib::HistoricalIndexAnalysis;
 using QuantLib::HullWhite;
 using QuantLib::HullWhiteForwardProcess;
@@ -877,6 +887,10 @@ using QlGridModelLocalVolSurface = shared_ptr<GridModelLocalVolSurface>;
 using QlHestonBlackVolSurface = shared_ptr<HestonBlackVolSurface>;
 using QlHestonModel = shared_ptr<HestonModel>;
 using QlHestonProcess = shared_ptr<HestonProcess>;
+using QlHestonSLVProcess = shared_ptr<HestonSLVProcess>;
+using QlHestonSLVMCModel = shared_ptr<HestonSLVMCModel>;
+using QlHestonSLVFDMModel = shared_ptr<HestonSLVFDMModel>;
+using QlBrownianGeneratorFactory = shared_ptr<BrownianGeneratorFactory>;
 using QlHistoricalIndexAnalysis = shared_ptr<HistoricalIndexAnalysis>;
 using QlHullWhite = shared_ptr<HullWhite>;
 using QlHullWhiteForwardProcess = shared_ptr<HullWhiteForwardProcess>;
@@ -1159,6 +1173,10 @@ QL_TRACE_NAME(HestonBlackVolSurface)
 QL_TRACE_NAME(HestonModel)
 QL_TRACE_NAME(HestonModelHelper)
 QL_TRACE_NAME(HestonProcess)
+QL_TRACE_NAME(HestonSLVProcess)
+QL_TRACE_NAME(HestonSLVMCModel)
+QL_TRACE_NAME(HestonSLVFDMModel)
+QL_TRACE_NAME(BrownianGeneratorFactory)
 QL_TRACE_NAME(HullWhite)
 QL_TRACE_NAME(HullWhiteForwardProcess)
 QL_TRACE_NAME(HullWhiteProcess)
@@ -1311,6 +1329,10 @@ QL_TRACE_NAME(QlGridModelLocalVolSurface)
 QL_TRACE_NAME(QlHestonBlackVolSurface)
 QL_TRACE_NAME(QlHestonModel)
 QL_TRACE_NAME(QlHestonProcess)
+QL_TRACE_NAME(QlHestonSLVProcess)
+QL_TRACE_NAME(QlHestonSLVMCModel)
+QL_TRACE_NAME(QlHestonSLVFDMModel)
+QL_TRACE_NAME(QlBrownianGeneratorFactory)
 QL_TRACE_NAME(QlHistoricalIndexAnalysis)
 QL_TRACE_NAME(QlHullWhite)
 QL_TRACE_NAME(QlHullWhiteForwardProcess)

@@ -1,6 +1,14 @@
 module QuantLib.Model
   (
     CalibrationErrorType(..)
+  , SobolBrownianOrdering(..)
+  , HestonSLVGreensAlgorithm(..)
+  , HestonSLVVarianceTransformation(..)
+  , HestonSLVFokkerPlanckFdmParams(..)
+  , HestonSLVFDMLogEntry(..)
+  , BrownianGeneratorFactory
+  , HestonSLVMCModel
+  , HestonSLVFDMModel
   , GJRGARCHModel
   , HestonModel
   , GenHestonModel
@@ -59,6 +67,13 @@ module QuantLib.Model
   , generalizedHullWhite
   , gJRGARCHModel
   , hestonModel
+  , mtBrownianGeneratorFactory
+  , sobolBrownianGeneratorFactory
+  , hestonSLVMCModel
+  , hestonSLVMCLeverageFunction
+  , hestonSLVFDMModel
+  , hestonSLVFDMLeverageFunction
+  , hestonSLVFDMLogEntries
   , hullWhite
   , varianceGammaModel
   , vasicek
@@ -108,9 +123,39 @@ import QuantLib.Internal
 {#import QuantLib.CashFlow#}(RateAveragingType)
 import QuantLib.Internal.Type
 import QuantLib.Internal.Common
+import QuantLib.Math(SobolDirectionIntegers)
 import Data.List.NonEmpty(NonEmpty, toList)
 
 {#enum CalibrationErrorType{} deriving(Show, Eq, Read)#}
+
+-- |Sobol Brownian-bridge coordinate ordering.
+data SobolBrownianOrdering = Factors | Steps | Diagonal deriving (Show, Eq, Read, Enum, Bounded)
+
+-- |Initial-density approximation used by the Heston SLV Fokker--Planck calibrator.
+data HestonSLVGreensAlgorithm = ZeroCorrelation | Gaussian | SemiAnalytical deriving (Show, Eq, Read, Enum, Bounded)
+
+-- |Variance-coordinate transformation used by the Heston SLV Fokker--Planck calibrator.
+data HestonSLVVarianceTransformation = Plain | Power | Log deriving (Show, Eq, Read, Enum, Bounded)
+
+-- |Full numerical configuration for QuantLib's Fokker--Planck SLV calibration.
+data HestonSLVFokkerPlanckFdmParams = HestonSLVFokkerPlanckFdmParams
+  { hestonSLVXGrid :: !Word, hestonSLVVGrid :: !Word
+  , hestonSLVTMaxStepsPerYear :: !Word, hestonSLVTMinStepsPerYear :: !Word, hestonSLVTStepNumberDecay :: !Double
+  , hestonSLVNRannacherTimeSteps :: !Word, hestonSLVPredictionCorrectionSteps :: !Word
+  , hestonSLVX0Density :: !Double, hestonSLVLocalVolEpsProb :: !Double, hestonSLVMaxIntegrationIterations :: !Word
+  , hestonSLVVLowerEps :: !Double, hestonSLVVUpperEps :: !Double, hestonSLVVMin :: !Double
+  , hestonSLVV0Density :: !Double, hestonSLVVLowerBoundDensity :: !Double, hestonSLVVUpperBoundDensity :: !Double
+  , hestonSLVLeverageFctPropEps :: !Double, hestonSLVGreensAlgorithm :: !HestonSLVGreensAlgorithm
+  , hestonSLVVarianceTransformation :: !HestonSLVVarianceTransformation, hestonSLVSchemeDesc :: !FdmScheme
+  }
+
+-- |A copied FDM diagnostic snapshot. Coordinates are the native mesher coordinates: the spot
+-- axis is log-spot and the variance axis follows 'hestonSLVVarianceTransformation'. Density rows
+-- correspond to variance coordinates and columns to log-spot coordinates.
+data HestonSLVFDMLogEntry = HestonSLVFDMLogEntry
+  { hestonSLVLogTime :: !Double, hestonSLVLogSpotCoordinates :: !RealVector
+  , hestonSLVLogVarianceCoordinates :: !RealVector, hestonSLVLogDensity :: !RealMatrix
+  } deriving (Show, Eq)
 
 {#pointer *QlQuote as Quote foreign -> CQuote' nocode#}
 {#pointer *QlPricingEngine as PricingEngine foreign -> CPricingEngine nocode#}
@@ -125,6 +170,12 @@ import Data.List.NonEmpty(NonEmpty, toList)
 
 {#pointer *QlGJRGARCHModel as GJRGARCHModel foreign -> CGJRGARCHModel' nocode#}
 {#pointer *QlHestonModel as HestonModel foreign -> CHestonModel' nocode#}
+{#pointer *QlLocalVolTermStructure as LocalVolTermStructure foreign -> CLocalVolTermStructure' nocode#}
+{#pointer *QlBrownianGeneratorFactory as BrownianGeneratorFactory foreign -> CBrownianGeneratorFactory' nocode#}
+{#pointer *QlHestonSLVMCModel as HestonSLVMCModel foreign -> CHestonSLVMCModel' nocode#}
+{#pointer *QlHestonSLVFDMModel as HestonSLVFDMModel foreign -> CHestonSLVFDMModel' nocode#}
+{#pointer *HestonSLVFDMLogEntries as HestonSLVFDMLogEntries foreign -> CHestonSLVFDMLogEntries nocode#}
+{#pointer *FdmSchemeDesc as QlFdmSchemeDesc foreign -> CFdmSchemeDesc nocode#}
 {#pointer *QlBatesModel as BatesModel foreign -> CBatesModel' nocode#}
 {#pointer *QlPiecewiseTimeDependentHestonModel as PiecewiseTimeDependentHestonModel foreign -> CPiecewiseTimeDependentHestonModel' nocode#}
 {#pointer *QlShortRateModel as ShortRateModel foreign -> CShortRateModel' nocode#}
@@ -230,6 +281,106 @@ generalizedHullWhite ts s v = qlGeneralizedHullWhite ts sd vd sq vq where {(sd, 
 
 -- |Heston stochastic-volatility model, calibrated from a 'HestonProcess'.
 {#fun qlHestonModel as hestonModel{withHestonProcess*`GenHestonProcess hp',preErrorCheck-`String'errorCheck*-}->`HestonModel'peekHestonModel*#}
+
+-- |Pseudo-random Mersenne-Twister Brownian increments for SLV Monte-Carlo calibration. Use a
+-- fixed nonzero @seed@ for reproducible calibration output; QuantLib treats zero as entropy.
+{#fun qlMTBrownianGeneratorFactory as mtBrownianGeneratorFactory{fromIntegral`Word' -- ^seed
+  ,preErrorCheck-`String'errorCheck*-}->`BrownianGeneratorFactory'peekBrownianGeneratorFactory*#}
+
+-- |Low-discrepancy Sobol Brownian increments for SLV Monte-Carlo calibration. Supply a fixed
+-- nonzero @seed@ to make the resulting leverage function reproducible.
+{#fun qlSobolBrownianGeneratorFactory as sobolBrownianGeneratorFactory{fromEnumC`SobolBrownianOrdering' -- ^ordering
+  ,fromIntegral`Word' -- ^seed
+  ,fromEnumC`SobolDirectionIntegers' -- ^directionIntegers
+  ,preErrorCheck-`String'errorCheck*-}->`BrownianGeneratorFactory'peekBrownianGeneratorFactory*#}
+
+-- |Monte-Carlo calibration of a Heston stochastic-local-volatility leverage function. The
+-- trailing arguments mirror QuantLib's defaults explicitly; @mandatoryDates@ are inserted into
+-- the calibration time grid.
+{#fun qlHestonSLVMCModel as hestonSLVMCModel{withGenLocalVolTermStructure*`GenLocalVolTermStructure lv' -- ^localVol
+  ,withHestonModel*`GenHestonModel hm' -- ^hestonModel
+  ,withBrownianGeneratorFactory*`BrownianGeneratorFactory' -- ^brownianGeneratorFactory
+  ,withDay*`Day' -- ^endDate
+  ,fromIntegral`Word' -- ^timeStepsPerYear
+  ,fromIntegral`Word' -- ^nBins
+  ,fromIntegral`Word' -- ^calibrationPaths
+  ,withDayArray*`[Day]'& -- ^mandatoryDates
+  ,`Double' -- ^mixingFactor
+  ,preErrorCheck-`String'errorCheck*-}->`HestonSLVMCModel'peekHestonSLVMCModel*#}
+
+-- |Forces MC calibration if necessary and returns its local-volatility leverage function.
+{#fun qlHestonSLVMCModelLeverageFunction as hestonSLVMCLeverageFunction{withHestonSLVMCModel*`HestonSLVMCModel' -- ^model
+  ,preErrorCheck-`String'errorCheck*-}->`LocalVolTermStructure'peekLocalVolTermStructure*#}
+
+-- |Fokker--Planck finite-difference calibration of a Heston stochastic-local-volatility
+-- leverage function. @logging@ retains diagnostic density snapshots for
+-- 'hestonSLVFDMLogEntries'; @mandatoryDates@ are added to its adaptive time grid.
+hestonSLVFDMModel :: GenLocalVolTermStructure lv -> GenHestonModel hm -> Day
+  -> HestonSLVFokkerPlanckFdmParams -> Bool -> [Day] -> Double -> IO HestonSLVFDMModel
+hestonSLVFDMModel localVol model endDate p logging mandatoryDates mixingFactor =
+  hestonSLVFDMModelRaw localVol model endDate
+    (hestonSLVXGrid p) (hestonSLVVGrid p) (hestonSLVTMaxStepsPerYear p) (hestonSLVTMinStepsPerYear p)
+    (hestonSLVTStepNumberDecay p) (hestonSLVNRannacherTimeSteps p) (hestonSLVPredictionCorrectionSteps p)
+    (hestonSLVX0Density p) (hestonSLVLocalVolEpsProb p) (hestonSLVMaxIntegrationIterations p)
+    (hestonSLVVLowerEps p) (hestonSLVVUpperEps p) (hestonSLVVMin p) (hestonSLVV0Density p)
+    (hestonSLVVLowerBoundDensity p) (hestonSLVVUpperBoundDensity p) (hestonSLVLeverageFctPropEps p)
+    (hestonSLVGreensAlgorithm p) (hestonSLVVarianceTransformation p) (hestonSLVSchemeDesc p)
+    logging mandatoryDates mixingFactor
+{#fun qlHestonSLVFDMModel as hestonSLVFDMModelRaw{withGenLocalVolTermStructure*`GenLocalVolTermStructure lv' -- ^localVol
+  ,withHestonModel*`GenHestonModel hm' -- ^hestonModel
+  ,withDay*`Day' -- ^endDate
+  ,fromIntegral`Word' -- ^xGrid
+  ,fromIntegral`Word' -- ^vGrid
+  ,fromIntegral`Word' -- ^tMaxStepsPerYear
+  ,fromIntegral`Word' -- ^tMinStepsPerYear
+  ,`Double' -- ^tStepNumberDecay
+  ,fromIntegral`Word' -- ^nRannacherTimeSteps
+  ,fromIntegral`Word' -- ^predictionCorrectionSteps
+  ,`Double' -- ^x0Density
+  ,`Double' -- ^localVolEpsProb
+  ,fromIntegral`Word' -- ^maxIntegrationIterations
+  ,`Double' -- ^vLowerEps
+  ,`Double' -- ^vUpperEps
+  ,`Double' -- ^vMin
+  ,`Double' -- ^v0Density
+  ,`Double' -- ^vLowerBoundDensity
+  ,`Double' -- ^vUpperBoundDensity
+  ,`Double' -- ^leverageFctPropEps
+  ,fromEnumC`HestonSLVGreensAlgorithm' -- ^greensAlgorithm
+  ,fromEnumC`HestonSLVVarianceTransformation' -- ^trafoType
+  ,withFdmSchemeDesc*`FdmScheme' -- ^schemeDesc
+  ,`Bool' -- ^logging
+  ,withDayArray*`[Day]'& -- ^mandatoryDates
+  ,`Double' -- ^mixingFactor
+  ,preErrorCheck-`String'errorCheck*-}->`HestonSLVFDMModel'peekHestonSLVFDMModel*#}
+
+-- |Forces FDM calibration if necessary and returns its local-volatility leverage function.
+{#fun qlHestonSLVFDMModelLeverageFunction as hestonSLVFDMLeverageFunction{withHestonSLVFDMModel*`HestonSLVFDMModel' -- ^model
+  ,preErrorCheck-`String'errorCheck*-}->`LocalVolTermStructure'peekLocalVolTermStructure*#}
+
+-- |Copies retained FDM density diagnostics. Returns @[]@ when the model was built with
+-- @logging = False@. Calling this makes one fresh QuantLib diagnostic calculation, then decodes
+-- its owned snapshot without retaining the model's mesh objects.
+hestonSLVFDMLogEntries :: HestonSLVFDMModel -> IO [HestonSLVFDMLogEntry]
+hestonSLVFDMLogEntries model = do
+  snapshot <- hestonSLVFDMLogEntriesSnapshot model
+  let n = hestonSLVFDMLogEntriesSize snapshot
+  mapM (hestonSLVFDMLogEntry snapshot) [0 .. n - 1]
+
+hestonSLVFDMLogEntry :: HestonSLVFDMLogEntries -> Word -> IO HestonSLVFDMLogEntry
+hestonSLVFDMLogEntry snapshot i = do
+  let t = hestonSLVFDMLogEntriesTime snapshot i
+  x <- hestonSLVFDMLogEntriesSpotGrid snapshot i
+  v <- hestonSLVFDMLogEntriesVarianceGrid snapshot i
+  (r, c, d) <- hestonSLVFDMLogEntriesDensity snapshot i
+  pure $ HestonSLVFDMLogEntry t x v (RealMatrix r c d)
+
+{#fun qlHestonSLVFDMModelLogEntries as hestonSLVFDMLogEntriesSnapshot{withHestonSLVFDMModel*`HestonSLVFDMModel',preErrorCheck-`String'errorCheck*-}->`HestonSLVFDMLogEntries'peekHestonSLVFDMLogEntries*#}
+{#fun pure qlHestonSLVFDMLogEntriesSize as hestonSLVFDMLogEntriesSize{withHestonSLVFDMLogEntries*`HestonSLVFDMLogEntries'}->`Word'fromIntegral#}
+{#fun pure qlHestonSLVFDMLogEntriesTime as hestonSLVFDMLogEntriesTime{withHestonSLVFDMLogEntries*`HestonSLVFDMLogEntries',fromIntegral`Word'}->`Double'#}
+{#fun qlHestonSLVFDMLogEntriesSpotGrid as hestonSLVFDMLogEntriesSpotGrid{withHestonSLVFDMLogEntries*`HestonSLVFDMLogEntries',fromIntegral`Word',preArray-`RealVector'&peekRealVector*}->`()'#}
+{#fun qlHestonSLVFDMLogEntriesVarianceGrid as hestonSLVFDMLogEntriesVarianceGrid{withHestonSLVFDMLogEntries*`HestonSLVFDMLogEntries',fromIntegral`Word',preArray-`RealVector'&peekRealVector*}->`()'#}
+{#fun qlHestonSLVFDMLogEntriesDensity as hestonSLVFDMLogEntriesDensity{withHestonSLVFDMLogEntries*`HestonSLVFDMLogEntries',fromIntegral`Word',prePtr-`Word'peekWord*,prePtr-`Word'peekWord*,preArray-`RealVector'&peekRealVector*}->`()'#}
 
 -- |Single-factor Hull-White (extended Vasicek) short-rate model: dr = (theta(t) - a r) dt + sigma dW, fitted to the given term structure.
 {#fun qlHullWhite as hullWhite{withYieldTermStructure*`GenYieldTermStructure y',`Double' -- ^y

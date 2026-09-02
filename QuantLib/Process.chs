@@ -17,6 +17,7 @@ module QuantLib.Process
   , GJRGARCHProcess
   , HestonProcess
   , GenHestonProcess
+  , HestonSLVProcess
   , BatesProcess
   , G2Process
   , G2ForwardProcess
@@ -56,6 +57,7 @@ module QuantLib.Process
   , geometricBrownianMotionProcess
   , gjrGARCHProcess
   , hestonProcess
+  , hestonSLVProcess
   , hullWhiteForwardProcess
   , hullWhiteProcess
   , hybridHestonHullWhiteProcess
@@ -97,6 +99,7 @@ import Data.List.NonEmpty(NonEmpty, toList)
 {#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure' nocode#}
 {#pointer *Leg foreign -> CLeg' nocode#}
 {#pointer *QlBlackVolTermStructure as BlackVolTermStructure foreign -> CBlackVolTermStructure' nocode#}
+{#pointer *QlLocalVolTermStructure as LocalVolTermStructure foreign -> CLocalVolTermStructure' nocode#}
 {#pointer *QlIborIndex as IborIndex foreign -> CIborIndex' nocode#}
 
 {#pointer *QlGeneralizedBlackScholesProcess as GeneralizedBlackScholesProcess foreign -> CGeneralizedBlackScholesProcess' nocode#}
@@ -107,6 +110,7 @@ import Data.List.NonEmpty(NonEmpty, toList)
 {#pointer *QlExtendedOrnsteinUhlenbeckProcess as ExtendedOrnsteinUhlenbeckProcess foreign -> CExtendedOrnsteinUhlenbeckProcess' nocode#}
 {#pointer *QlGJRGARCHProcess as GJRGARCHProcess foreign -> CGJRGARCHProcess' nocode#}
 {#pointer *QlHestonProcess as HestonProcess foreign -> CHestonProcess' nocode#}
+{#pointer *QlHestonSLVProcess as HestonSLVProcess foreign -> CHestonSLVProcess' nocode#}
 {#pointer *QlG2Process as G2Process foreign -> CG2Process' nocode#}
 {#pointer *QlG2ForwardProcess as G2ForwardProcess foreign -> CG2ForwardProcess' nocode#}
 {#pointer *QlBatesProcess as BatesProcess foreign -> CBatesProcess' nocode#}
@@ -350,6 +354,14 @@ diffusion p t x = toMatrixDouble <$> qlStochasticProcessDiffusion p t x
   ,`Double' -- ^sigma
   ,`Double' -- ^rho
   ,`HestonProcessDiscretization',preErrorCheck-`String'errorCheck*-}->`HestonProcess'peekHestonProcess*#}
+
+-- |Two-factor Heston stochastic-local-volatility process using the supplied calibrated leverage
+-- function. It is a generic 'StochasticProcess', so it composes with path generators and the
+-- existing drift/diffusion operations.
+{#fun qlHestonSLVProcess as hestonSLVProcess{withHestonProcess*`GenHestonProcess hp' -- ^hestonProcess
+  ,withGenLocalVolTermStructure*`GenLocalVolTermStructure lv' -- ^leverageFct
+  ,`Double' -- ^mixingFactor
+  ,preErrorCheck-`String'errorCheck*-}->`HestonSLVProcess'peekHestonSLVProcess*#}
 
 -- |T-forward-measure counterpart of 'hullWhiteProcess'.
 {#fun qlHullWhiteForwardProcess as hullWhiteForwardProcess{withYieldTermStructure*`GenYieldTermStructure y' -- ^h

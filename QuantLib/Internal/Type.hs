@@ -2118,6 +2118,7 @@ withFittedBondDiscountCurve = withForeignPtr . ptr . peel . getTermStructure
 -- >   G2ForwardProcess
 -- >   HestonProcess
 -- >     BatesProcess
+-- >   HestonSLVProcess
 -- >   StochasticProcess1D
 -- >     ExtendedOrnsteinUhlenbeckProcess
 -- >     HullWhiteForwardProcess
@@ -2137,6 +2138,7 @@ data CStochasticProcessArray'
 data CG2Process'
 data CG2ForwardProcess'
 data CHestonProcess'
+data CHestonSLVProcess'
 data CStochasticProcess1D'
 data CBatesProcess'
 data CExtendedOrnsteinUhlenbeckProcess'
@@ -2167,6 +2169,8 @@ type G2ForwardProcess = GenStochasticProcess CG2ForwardProcess
 type GenHestonProcess hp = GenStochasticProcess (AnyOf CHestonProcess' hp)
 type CHestonProcess = ForeignPtr CHestonProcess'
 type HestonProcess = GenHestonProcess CHestonProcess
+type CHestonSLVProcess = ForeignPtr CHestonSLVProcess'
+type HestonSLVProcess = GenStochasticProcess CHestonSLVProcess
 type GenStochasticProcess1D p1d = GenStochasticProcess (AnyOf CStochasticProcess1D' p1d)
 type CStochasticProcess1D = ForeignPtr CStochasticProcess1D'
 type StochasticProcess1D = GenStochasticProcess1D CStochasticProcess1D
@@ -2197,6 +2201,7 @@ foreign import ccall unsafe "ql.h &qlFreeStochasticProcessArray" qlFreeStochasti
 foreign import ccall unsafe "ql.h &qlFreeG2Process" qlFreeG2Process :: FinalizerPtr CG2Process'
 foreign import ccall unsafe "ql.h &qlFreeG2ForwardProcess" qlFreeG2ForwardProcess :: FinalizerPtr CG2ForwardProcess'
 foreign import ccall unsafe "ql.h &qlFreeHestonProcess" qlFreeHestonProcess :: FinalizerPtr CHestonProcess'
+foreign import ccall unsafe "ql.h &qlFreeHestonSLVProcess" qlFreeHestonSLVProcess :: FinalizerPtr CHestonSLVProcess'
 foreign import ccall unsafe "ql.h &qlFreeStochasticProcess1D" qlFreeStochasticProcess1D :: FinalizerPtr CStochasticProcess1D'
 foreign import ccall unsafe "ql.h &qlFreeBatesProcess" qlFreeBatesProcess :: FinalizerPtr CBatesProcess'
 foreign import ccall unsafe "ql.h &qlFreeExtendedOrnsteinUhlenbeckProcess" qlFreeExtendedOrnsteinUhlenbeckProcess :: FinalizerPtr CExtendedOrnsteinUhlenbeckProcess'
@@ -2216,6 +2221,7 @@ instance Finalizable CStochasticProcessArray' where finalize = qlFreeStochasticP
 instance Finalizable CG2Process' where finalize = qlFreeG2Process
 instance Finalizable CG2ForwardProcess' where finalize = qlFreeG2ForwardProcess
 instance Finalizable CHestonProcess' where finalize = qlFreeHestonProcess
+instance Finalizable CHestonSLVProcess' where finalize = qlFreeHestonSLVProcess
 instance Finalizable CStochasticProcess1D' where finalize = qlFreeStochasticProcess1D
 instance Finalizable CBatesProcess' where finalize = qlFreeBatesProcess
 instance Finalizable CExtendedOrnsteinUhlenbeckProcess' where finalize = qlFreeExtendedOrnsteinUhlenbeckProcess
@@ -2234,6 +2240,7 @@ foreign import ccall "ql.h qlStochasticProcessArrayAsStochasticProcess" qlStocha
 foreign import ccall "ql.h qlG2ProcessAsStochasticProcess" qlG2ProcessAsStochasticProcess :: Ptr CG2Process' -> IO (Ptr CStochasticProcess')
 foreign import ccall "ql.h qlG2ForwardProcessAsStochasticProcess" qlG2ForwardProcessAsStochasticProcess :: Ptr CG2ForwardProcess' -> IO (Ptr CStochasticProcess')
 foreign import ccall "ql.h qlHestonProcessAsStochasticProcess" qlHestonProcessAsStochasticProcess :: Ptr CHestonProcess' -> IO (Ptr CStochasticProcess')
+foreign import ccall "ql.h qlHestonSLVProcessAsStochasticProcess" qlHestonSLVProcessAsStochasticProcess :: Ptr CHestonSLVProcess' -> IO (Ptr CStochasticProcess')
 foreign import ccall "ql.h qlStochasticProcess1DAsStochasticProcess" qlStochasticProcess1DAsStochasticProcess :: Ptr CStochasticProcess1D' -> IO (Ptr CStochasticProcess')
 foreign import ccall "ql.h qlBatesProcessAsHestonProcess" qlBatesProcessAsHestonProcess :: Ptr CBatesProcess' -> IO (Ptr CHestonProcess')
 foreign import ccall "ql.h qlExtendedOrnsteinUhlenbeckProcessAsStochasticProcess1D" qlExtendedOrnsteinUhlenbeckProcessAsStochasticProcess1D :: Ptr CExtendedOrnsteinUhlenbeckProcess' -> IO (Ptr CStochasticProcess1D')
@@ -2252,6 +2259,7 @@ instance Upcastable CStochasticProcessArray' where {type Base CStochasticProcess
 instance Upcastable CG2Process' where {type Base CG2Process' = CStochasticProcess'; upcast = qlG2ProcessAsStochasticProcess}
 instance Upcastable CG2ForwardProcess' where {type Base CG2ForwardProcess' = CStochasticProcess'; upcast = qlG2ForwardProcessAsStochasticProcess}
 instance Upcastable CHestonProcess' where {type Base CHestonProcess' = CStochasticProcess'; upcast = qlHestonProcessAsStochasticProcess}
+instance Upcastable CHestonSLVProcess' where {type Base CHestonSLVProcess' = CStochasticProcess'; upcast = qlHestonSLVProcessAsStochasticProcess}
 instance Upcastable CStochasticProcess1D' where {type Base CStochasticProcess1D' = CStochasticProcess'; upcast = qlStochasticProcess1DAsStochasticProcess}
 instance Upcastable CBatesProcess' where {type Base CBatesProcess' = CHestonProcess'; upcast = qlBatesProcessAsHestonProcess}
 instance Upcastable CExtendedOrnsteinUhlenbeckProcess' where {type Base CExtendedOrnsteinUhlenbeckProcess' = CStochasticProcess1D'; upcast = qlExtendedOrnsteinUhlenbeckProcessAsStochasticProcess1D}
@@ -2293,6 +2301,10 @@ withHestonProcess :: GenHestonProcess hp -> (Ptr CHestonProcess' -> IO b) -> IO 
 withHestonProcess = withGenForeignPtr . peel . getStochasticProcess
 newGenHestonProcess :: GenForeignPtr hp CHestonProcess' -> IO (GenHestonProcess hp)
 newGenHestonProcess = pure . GenStochasticProcess . newAnyOf
+peekHestonSLVProcess :: Ptr CHestonSLVProcess' -> IO HestonSLVProcess
+peekHestonSLVProcess = GenStochasticProcess <.> newGenForeignPtr
+withHestonSLVProcess :: HestonSLVProcess -> (Ptr CHestonSLVProcess' -> IO b) -> IO b
+withHestonSLVProcess = withForeignPtr . ptr . getStochasticProcess
 peekGenHestonProcess :: (Finalizable hp, Upcastable hp, Base hp ~ CHestonProcess') => Ptr hp -> IO (GenHestonProcess (ForeignPtr hp))
 peekGenHestonProcess = newGenForeignPtr >=> newGenHestonProcess
 asStochasticProcess1D :: GenStochasticProcess1D p1d -> IO StochasticProcess1D
@@ -2351,6 +2363,41 @@ withBlackProcess = withForeignPtr . ptr . peel . peel . getStochasticProcess
 -- >      HullWhite + AffineModel
 -- >  Gsr + Gaussian1dModel
 -- >  MarkovFunctional + Gaussian1dModel
+--
+-- Heston SLV calibrators and Brownian factories are standalone lazy objects: they do not
+-- participate in QuantLib's calibrated-model hierarchy.
+data CBrownianGeneratorFactory'
+data CHestonSLVMCModel'
+data CHestonSLVFDMModel'
+data CHestonSLVFDMLogEntries
+type BrownianGeneratorFactory = Standalone CBrownianGeneratorFactory'
+type HestonSLVMCModel = Standalone CHestonSLVMCModel'
+type HestonSLVFDMModel = Standalone CHestonSLVFDMModel'
+type HestonSLVFDMLogEntries = Standalone CHestonSLVFDMLogEntries
+foreign import ccall unsafe "ql.h &qlFreeBrownianGeneratorFactory" qlFreeBrownianGeneratorFactory :: FinalizerPtr CBrownianGeneratorFactory'
+foreign import ccall unsafe "ql.h &qlFreeHestonSLVMCModel" qlFreeHestonSLVMCModel :: FinalizerPtr CHestonSLVMCModel'
+foreign import ccall unsafe "ql.h &qlFreeHestonSLVFDMModel" qlFreeHestonSLVFDMModel :: FinalizerPtr CHestonSLVFDMModel'
+foreign import ccall unsafe "ql.h &qlFreeHestonSLVFDMLogEntries" qlFreeHestonSLVFDMLogEntries :: FinalizerPtr CHestonSLVFDMLogEntries
+instance Finalizable CBrownianGeneratorFactory' where finalize = qlFreeBrownianGeneratorFactory
+instance Finalizable CHestonSLVMCModel' where finalize = qlFreeHestonSLVMCModel
+instance Finalizable CHestonSLVFDMModel' where finalize = qlFreeHestonSLVFDMModel
+instance Finalizable CHestonSLVFDMLogEntries where finalize = qlFreeHestonSLVFDMLogEntries
+peekBrownianGeneratorFactory :: Ptr CBrownianGeneratorFactory' -> IO BrownianGeneratorFactory
+peekBrownianGeneratorFactory = peekStandalone
+withBrownianGeneratorFactory :: BrownianGeneratorFactory -> (Ptr CBrownianGeneratorFactory' -> IO b) -> IO b
+withBrownianGeneratorFactory = withStandalone
+peekHestonSLVMCModel :: Ptr CHestonSLVMCModel' -> IO HestonSLVMCModel
+peekHestonSLVMCModel = peekStandalone
+withHestonSLVMCModel :: HestonSLVMCModel -> (Ptr CHestonSLVMCModel' -> IO b) -> IO b
+withHestonSLVMCModel = withStandalone
+peekHestonSLVFDMModel :: Ptr CHestonSLVFDMModel' -> IO HestonSLVFDMModel
+peekHestonSLVFDMModel = peekStandalone
+withHestonSLVFDMModel :: HestonSLVFDMModel -> (Ptr CHestonSLVFDMModel' -> IO b) -> IO b
+withHestonSLVFDMModel = withStandalone
+peekHestonSLVFDMLogEntries :: Ptr CHestonSLVFDMLogEntries -> IO HestonSLVFDMLogEntries
+peekHestonSLVFDMLogEntries = peekStandalone
+withHestonSLVFDMLogEntries :: HestonSLVFDMLogEntries -> (Ptr CHestonSLVFDMLogEntries -> IO b) -> IO b
+withHestonSLVFDMLogEntries = withStandalone
 type CalibratedModel = GenCalibratedModel CCalibratedModel
 data CCalibratedModel'
 data CGJRGARCHModel'

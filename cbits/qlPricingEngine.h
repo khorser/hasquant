@@ -491,6 +491,31 @@ extern "C" {
   QlStochasticProcess1D* qlGeometricBrownianMotionProcess(double initialValue, double mue, double sigma, char **e);
   QlGJRGARCHProcess* qlGJRGARCHProcess(QlYieldTermStructure* riskFreeRate, QlYieldTermStructure* dividendYield, QlQuote* s0, double v0, double omega, double alpha, double beta, double gamma, double lambda, double daysPerYear, int d, char **e);
   QlHestonProcess* qlHestonProcess(QlYieldTermStructure* riskFreeRate, QlYieldTermStructure* dividendYield, QlQuote* s0, double v0, double kappa, double theta, double sigma, double rho, int d, char **e);
+  void qlFreeHestonSLVProcess(QlHestonSLVProcess *o);
+  QlStochasticProcess* qlHestonSLVProcessAsStochasticProcess(QlHestonSLVProcess *o);
+  QlHestonSLVProcess* qlHestonSLVProcess(QlHestonProcess* hestonProcess, QlLocalVolTermStructure* leverageFct, double mixingFactor, char **e);
+  void qlFreeBrownianGeneratorFactory(QlBrownianGeneratorFactory *o);
+  QlBrownianGeneratorFactory* qlMTBrownianGeneratorFactory(unsigned long seed, char **e);
+  QlBrownianGeneratorFactory* qlSobolBrownianGeneratorFactory(int ordering, unsigned long seed, int directionIntegers, char **e);
+  void qlFreeHestonSLVMCModel(QlHestonSLVMCModel *o);
+  QlHestonSLVMCModel* qlHestonSLVMCModel(QlLocalVolTermStructure* localVol, QlHestonModel* hestonModel, QlBrownianGeneratorFactory* factory, int endDate, unsigned timeStepsPerYear, unsigned nBins, unsigned calibrationPaths, unsigned mandatoryDatesLen, int* mandatoryDates, double mixingFactor, char **e);
+  QlLocalVolTermStructure* qlHestonSLVMCModelLeverageFunction(QlHestonSLVMCModel* o, char **e);
+  void qlFreeHestonSLVFDMModel(QlHestonSLVFDMModel *o);
+  QlHestonSLVFDMModel* qlHestonSLVFDMModel(QlLocalVolTermStructure* localVol, QlHestonModel* hestonModel, int endDate,
+    unsigned xGrid, unsigned vGrid, unsigned tMaxStepsPerYear, unsigned tMinStepsPerYear, double tStepNumberDecay,
+    unsigned nRannacherTimeSteps, unsigned predictionCorretionSteps, double x0Density, double localVolEpsProb,
+    unsigned maxIntegrationIterations, double vLowerEps, double vUpperEps, double vMin, double v0Density,
+    double vLowerBoundDensity, double vUpperBoundDensity, double leverageFctPropEps, int greensAlgorithm,
+    int trafoType, FdmSchemeDesc* schemeDesc, int logging, unsigned mandatoryDatesLen, int* mandatoryDates,
+    double mixingFactor, char **e);
+  QlLocalVolTermStructure* qlHestonSLVFDMModelLeverageFunction(QlHestonSLVFDMModel* o, char **e);
+  HestonSLVFDMLogEntries* qlHestonSLVFDMModelLogEntries(QlHestonSLVFDMModel* o, char **e);
+  void qlFreeHestonSLVFDMLogEntries(HestonSLVFDMLogEntries* o);
+  unsigned qlHestonSLVFDMLogEntriesSize(HestonSLVFDMLogEntries* o);
+  double qlHestonSLVFDMLogEntriesTime(HestonSLVFDMLogEntries* o, unsigned i);
+  void qlHestonSLVFDMLogEntriesSpotGrid(HestonSLVFDMLogEntries* o, unsigned i, unsigned* len, double** values);
+  void qlHestonSLVFDMLogEntriesVarianceGrid(HestonSLVFDMLogEntries* o, unsigned i, unsigned* len, double** values);
+  void qlHestonSLVFDMLogEntriesDensity(HestonSLVFDMLogEntries* o, unsigned i, unsigned* rows, unsigned* cols, unsigned* len, double** values);
   QlHullWhiteForwardProcess* qlHullWhiteForwardProcess(QlYieldTermStructure* h, double a, double sigma, char **e);
   QlHullWhiteProcess* qlHullWhiteProcess(QlYieldTermStructure* h, double a, double sigma, char **e);
   QlHybridHestonHullWhiteProcess* qlHybridHestonHullWhiteProcess(QlHestonProcess* hestonProcess, QlHullWhiteForwardProcess* hullWhiteProcess, double corrEquityShortRate, int discretization, char **e);
