@@ -1304,6 +1304,7 @@ QlLfmHullWhiteParameterization* qlLfmHullWhiteParameterization(QlLiborForwardMod
   try {return ret(new QlLfmHullWhiteParameterization(alloc(new LfmHullWhiteParameterization(*arg(process), handlePtr(arg(capletVol)), qlMatrix(correlation, correlationRows, correlationCols), factors))));
   } catch (std::exception& er) {return handleException<QlLfmHullWhiteParameterization*>(e, er);}}
 void qlLfmHullWhiteCovariance(QlLfmHullWhiteParameterization* o, double t, unsigned xLen, double* x, unsigned *rows, unsigned *cols, unsigned *len, double **vs, char **e) {
+  *rows = 0; *cols = 0; *len = 0; *vs = nullptr;
   try {Matrix m = (*arg(o))->covariance(t, Array(x, x+xLen)); *rows = m.rows(); *cols = m.columns(); *len = m.rows()*m.columns();
     *vs = qlAllocateDoubles(*len); std::copy(m.begin(), m.end(), *vs);
   } catch (std::exception& er) {handleException<double*>(e, er);}}
