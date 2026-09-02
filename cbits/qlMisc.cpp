@@ -832,11 +832,16 @@ Schedule *qlSchedule(int eff, int term, int l, int u, Calendar *cal, int conv, i
 Schedule *qlScheduleUntil(Schedule *sched, int date, char **e) {
   try {return alloc(new Schedule(arg(sched)->until(Date(date))));
   } catch (std::exception& er) {return handleException<Schedule *>(e, er);}}
-void qlScheduleDates(Schedule *sched, unsigned *count, int **days) {
-  const std::vector<Date> &dates = arg(sched)->dates();
-  *count = dates.size(); *days = qlAllocateInts(*count);
-  for (size_t i = 0; i < dates.size(); ++i)
-    (*days)[i] = dates[i].serialNumber();
+void qlScheduleDates(Schedule *sched, unsigned *count, int **days, char **e) {
+  *count = 0; *days = nullptr;
+  int *out = nullptr;
+  try {
+    const std::vector<Date> &dates = arg(sched)->dates();
+    out = qlAllocateInts(dates.size());
+    for (size_t i = 0; i < dates.size(); ++i)
+      out[i] = dates[i].serialNumber();
+    *count = dates.size(); *days = out;
+  } catch (std::exception& er) {qlFreeInts(out); *e = tracedup(er.what());}
 }
 
 int qlPeriodFromFrequency1(int freq, int *u, char **e) {
@@ -1127,21 +1132,30 @@ QlHistoricalIndexAnalysis *qlHistoricalIndexAnalysis(int startDate, int endDate,
 
 void qlFreeHistoricalIndexAnalysis(QlHistoricalIndexAnalysis *o) {del(o);}
 
-void qlHistoricalIndexAnalysisSkippedDates(QlHistoricalIndexAnalysis *o, unsigned *count, int **days) {
-  const std::vector<Date> &dates = (*arg(o))->skippedDates();
-  *count = (unsigned)dates.size(); *days = qlAllocateInts(*count);
-  for (unsigned i = 0; i < *count; ++i) (*days)[i] = dates[i].serialNumber();
+void qlHistoricalIndexAnalysisSkippedDates(QlHistoricalIndexAnalysis *o, unsigned *count, int **days, char **e) {
+  *count = 0; *days = nullptr;
+  int *out = nullptr;
+  try {
+    const std::vector<Date> &dates = (*arg(o))->skippedDates();
+    out = qlAllocateInts(dates.size());
+    for (unsigned i = 0; i < dates.size(); ++i) out[i] = dates[i].serialNumber();
+    *count = dates.size(); *days = out;
+  } catch (std::exception& er) {qlFreeInts(out); *e = tracedup(er.what());}
 }
 
-void qlHistoricalIndexAnalysisSkippedDatesErrorMessage(QlHistoricalIndexAnalysis *o, unsigned *count, char ***msgs) {
+void qlHistoricalIndexAnalysisSkippedDatesErrorMessage(QlHistoricalIndexAnalysis *o, unsigned *count, char ***msgs, char **e) {
   *count = 0; *msgs = 0;
-  const std::vector<std::string> &m = (*arg(o))->skippedDatesErrorMessage();
-  unsigned n = (unsigned)m.size();
-  // ret() (not retPtrArray()): this spine is released by qlFreeStringArray, whose char**
-  // parameter is what its own trace names -- see qlCommodityPricingErrors for the same pairing.
-  char **ms = ret(new char*[n]());
-  for (unsigned i = 0; i < n; ++i) ms[i] = tracedup(m[i].c_str());
-  *msgs = ms; *count = n;
+  unsigned n = 0;
+  char **ms = nullptr;
+  try {
+    const std::vector<std::string> &m = (*arg(o))->skippedDatesErrorMessage();
+    n = (unsigned)m.size();
+    // ret() (not retPtrArray()): this spine is released by qlFreeStringArray, whose char**
+    // parameter is what its own trace names -- see qlCommodityPricingErrors for the same pairing.
+    ms = ret(new char*[n]());
+    for (unsigned i = 0; i < n; ++i) ms[i] = tracedup(m[i].c_str());
+    *msgs = ms; *count = n;
+  } catch (std::exception& er) {qlFreeStringArray(n, ms); *e = tracedup(er.what());}
 }
 
 void qlHistoricalIndexAnalysisMean(QlHistoricalIndexAnalysis *o, unsigned *len, double **vs, char **e) {

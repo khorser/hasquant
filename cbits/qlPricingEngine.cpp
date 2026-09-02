@@ -1492,22 +1492,27 @@ void qlSamplePathAssetPath(SamplePath *s, unsigned asset, unsigned *len, double 
 // performs once per exercise date, with the payoff/exercise values supplied from Haskell instead of a
 // bound Payoff.
 void qlLsmRegress(int polynomType, unsigned order, unsigned fitStatesLen, double *fitStates, unsigned fitTargetsLen, double *fitTargets, unsigned evalLen, double *evalStates, unsigned *outLen, double **outValues, char **e) {
+  *outLen = 0; *outValues = nullptr;
+  std::unique_ptr<double[]> values;
   try {
     QL_REQUIRE(fitStatesLen == fitTargetsLen, "fit states and fit targets must have the same length");
     std::vector<std::function<Real(Real)> > v = LsmBasisSystem::pathBasisSystem(order, (LsmBasisSystem::PolynomialType)polynomType);
     std::vector<Real> x(fitStates, fitStates + fitStatesLen), y(fitTargets, fitTargets + fitTargetsLen);
     Array coeff = GeneralLinearLeastSquares(x, y, v).coefficients();
-    *outLen = evalLen; *outValues = qlAllocateDoubles(evalLen);
+    values.reset(qlAllocateDoubles(evalLen));
     for (unsigned i = 0; i < evalLen; ++i) {
       Real cont = 0.0;
       for (Size l = 0; l < v.size(); ++l) cont += coeff[l] * v[l](evalStates[i]);
-      (*outValues)[i] = cont;
+      values[i] = cont;
     }
-  } catch (std::exception& er) {*e = tracedup(er.what());}}
+    *outLen = evalLen; *outValues = values.release();
+  } catch (std::exception& er) {delArray(values.release()); *e = tracedup(er.what());}}
 
 // Multi-asset counterpart of qlLsmRegress, via LsmBasisSystem::multiPathBasisSystem: fitStates/evalStates
 // are row-major (one row per path, fitCols/evalCols columns = underlyings, which must agree).
 void qlLsmRegressMulti(int polynomType, unsigned order, unsigned fitRows, unsigned fitCols, double *fitStates, unsigned fitTargetsLen, double *fitTargets, unsigned evalRows, unsigned evalCols, double *evalStates, unsigned *outLen, double **outValues, char **e) {
+  *outLen = 0; *outValues = nullptr;
+  std::unique_ptr<double[]> values;
   try {
     QL_REQUIRE(fitCols == evalCols, "fit states and eval states must have the same number of columns (underlyings)");
     QL_REQUIRE(fitRows == fitTargetsLen, "fit states and fit targets must have the same number of rows");
@@ -1517,15 +1522,15 @@ void qlLsmRegressMulti(int polynomType, unsigned order, unsigned fitRows, unsign
     std::vector<Real> y(fitTargets, fitTargets + fitTargetsLen);
     Array coeff = GeneralLinearLeastSquares(x, y, v).coefficients();
     unsigned len = evalRows;
-    double *values = qlAllocateDoubles(len);
+    values.reset(qlAllocateDoubles(len));
     for (unsigned i = 0; i < evalRows; ++i) {
       Array row(evalStates + i*evalCols, evalStates + (i+1)*evalCols);
       Real cont = 0.0;
       for (Size l = 0; l < v.size(); ++l) cont += coeff[l] * v[l](row);
       values[i] = cont;
     }
-    *outLen = len; *outValues = values;
-  } catch (std::exception& er) {*e = tracedup(er.what());}}
+    *outLen = len; *outValues = values.release();
+  } catch (std::exception& er) {delArray(values.release()); *e = tracedup(er.what());}}
 
 double qlUnsafeSabrLogNormalVolatility(double strike, double forward, double expiryTime, double alpha, double beta, double nu, double rho, char **e) {
   try {return unsafeSabrLogNormalVolatility(strike, forward, expiryTime, alpha, beta, nu, rho);

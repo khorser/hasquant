@@ -119,8 +119,8 @@ historicalIndexAnalysisSkipped analysis = do
   dates <- qlHistoricalIndexAnalysisSkippedDates analysis
   messages <- qlHistoricalIndexAnalysisSkippedMessages analysis
   pure (zip dates messages)
-{#fun qlHistoricalIndexAnalysisSkippedDates as qlHistoricalIndexAnalysisSkippedDates{withHistoricalIndexAnalysis*`HistoricalIndexAnalysis',preArray-`[Day]'&peekDayArray*}->`()'#}
-{#fun qlHistoricalIndexAnalysisSkippedDatesErrorMessage as qlHistoricalIndexAnalysisSkippedMessages{withHistoricalIndexAnalysis*`HistoricalIndexAnalysis',preArray-`[String]'&peekCStringArray*}->`()'#}
+{#fun qlHistoricalIndexAnalysisSkippedDates as qlHistoricalIndexAnalysisSkippedDates{withHistoricalIndexAnalysis*`HistoricalIndexAnalysis',preArray-`[Day]'&peekDayArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlHistoricalIndexAnalysisSkippedDatesErrorMessage as qlHistoricalIndexAnalysisSkippedMessages{withHistoricalIndexAnalysis*`HistoricalIndexAnalysis',preArray-`[String]'&peekCStringArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Per-index mean of the historical relative returns actually sampled.
 {#fun qlHistoricalIndexAnalysisMean as historicalIndexAnalysisMean{withHistoricalIndexAnalysis*`HistoricalIndexAnalysis',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}

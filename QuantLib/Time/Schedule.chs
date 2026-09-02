@@ -104,7 +104,7 @@ dayCounter x = uncurry qlDayCounter $ mapDayCounter x
 {#fun qlScheduleUntil as until{withSchedule*`Schedule',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Schedule'peekSchedule*#}
 
 -- |returns the dates for the given Schedule object
-{#fun qlScheduleDates as dates{withSchedule*`Schedule',preArray-`[Day]'&peekDayArray*}->`()'#}
+{#fun qlScheduleDates as dates{withSchedule*`Schedule',preArray-`[Day]'&peekDayArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |returns a Period from a given Frequency (e.g. 6M from SemiAnnual)
 {#fun qlPeriodFromFrequency1 as fromFrequency{`Frequency',preEnum-`TimeUnit'peekEnum*,preErrorCheck-`String'errorCheck*-}->`Word'fromIntegral#}

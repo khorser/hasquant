@@ -194,7 +194,7 @@ extern "C" {
   Schedule *qlSchedule(int eff, int term, int, int, Calendar *cal, int conv, int termConv, int rule, int eom, int first, int nextToLast, char **e);
   Schedule *qlSchedule1(unsigned len, int *dates, Calendar *cal, int conv, int termConv, int tenorLen, int tenorUnit, int rule, int eom, char **e);
   Schedule *qlScheduleUntil(Schedule *sched, int date, char **e);
-  void qlScheduleDates(Schedule *sched, unsigned *count, int **days);
+  void qlScheduleDates(Schedule *sched, unsigned *count, int **days, char **e);
   void qlFreeSchedule(Schedule *s);
 
   int qlPeriodFromFrequency1(int freq, int *, char **e);
@@ -295,8 +295,8 @@ extern "C" {
   QlHistoricalIndexAnalysis *qlHistoricalIndexAnalysis(int startDate, int endDate,
       int stepLen, int stepUnit, unsigned indexesLen, QlIndex **indexes, char **e);
   void qlFreeHistoricalIndexAnalysis(QlHistoricalIndexAnalysis *o);
-  void qlHistoricalIndexAnalysisSkippedDates(QlHistoricalIndexAnalysis *o, unsigned *count, int **days);
-  void qlHistoricalIndexAnalysisSkippedDatesErrorMessage(QlHistoricalIndexAnalysis *o, unsigned *count, char ***msgs);
+  void qlHistoricalIndexAnalysisSkippedDates(QlHistoricalIndexAnalysis *o, unsigned *count, int **days, char **e);
+  void qlHistoricalIndexAnalysisSkippedDatesErrorMessage(QlHistoricalIndexAnalysis *o, unsigned *count, char ***msgs, char **e);
   void qlHistoricalIndexAnalysisMean(QlHistoricalIndexAnalysis *o, unsigned *len, double **vs, char **e);
   void qlHistoricalIndexAnalysisStandardDeviation(QlHistoricalIndexAnalysis *o, unsigned *len, double **vs, char **e);
   void qlHistoricalIndexAnalysisSkewness(QlHistoricalIndexAnalysis *o, unsigned *len, double **vs, char **e);
