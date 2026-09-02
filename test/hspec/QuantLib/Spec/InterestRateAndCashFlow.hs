@@ -8,6 +8,7 @@ import Test.QuickCheck((==>))
 
 import Control.Exception(bracket_)
 import Control.Monad(forM_)
+import qualified Data.List.NonEmpty as NE
 import Data.Time.Calendar
 
 import QuantLib.Time.Date
@@ -35,10 +36,11 @@ import qualified QuantLib.Index.Inflation as Inflation
 import qualified QuantLib.Index.Equity as Equity
 import QuantLib.Currency(currency, Ccy(..))
 import QuantLib.TermStructure.Yield
-import QuantLib.TermStructure.Volatility(blackConstantVol', constantOptionletVolatility', constantSwaptionVolatility')
+import QuantLib.TermStructure.Volatility(blackConstantVol', constantOptionletVolatility, constantOptionletVolatility', constantSwaptionVolatility')
 import qualified QuantLib.Quote as Quote
 import qualified QuantLib.Instrument as Instr
 import qualified QuantLib.Instrument.Bond as Bond
+import qualified QuantLib.Instrument.CapFloor as CapFloor
 import qualified QuantLib.Instrument.Swap as Swap
 import qualified QuantLib.PricingEngine as PE
 import QuantLib.Math
@@ -349,6 +351,295 @@ spec evalDate = do
           quantoAmount <- buildCoupon quantoPricer
           quantoAmount `shouldSatisfy` (/= 0)
           abs (quantoAmount - ordinaryAmount) `shouldSatisfy` (> 1e-12)
+
+    -- Ported from test-suite/digitalcoupon.cpp. Its Cox-Rubinstein N(d1)-formula cases
+    -- (testAssetOrNothing/testCashOrNothing) need QuantLib's CumulativeNormalDistribution,
+    -- which hasquant doesn't bind, so only the purely self-consistent cases are ported here:
+    -- deep in/out-of-the-money asset/cash-or-nothing coupons, call/put parity, and
+    -- sub/central/super replication ordering. Tolerances are upstream's own, unchanged, since
+    -- the fixture (nominal, dates, curve) matches exactly.
+    describe "Digital coupon" $ do
+      let digRefDate = 15 `may` 2023
+          digNominal = 1000000.0 :: Double
+          digFixingDays = 2 :: Word
+
+          digFixture = do
+            cal <- calendar TARGET
+            today' <- adjust cal digRefDate Following
+            Settings.setEvaluationDate (Just today')
+            settlement <- advance cal today' (2, Days) Following False
+            euriborDc <- dayCounter (Actual360 False)
+            rateQ <- Quote.simpleQuote 0.05 >>= Quote.asQuote
+            curve <- flatForward settlement rateQ euriborDc IR.Continuous Annual
+            idx <- iborIndex Euribor6M (Just curve)
+            pure (cal, settlement, euriborDc, curve, idx)
+
+          digPricer cal capletVol = do
+            volQ <- Quote.simpleQuote capletVol >>= Quote.asQuote
+            optDc <- dayCounter (Actual360 False)
+            today' <- Settings.evaluationDate
+            vol <- constantOptionletVolatility today' cal Following volQ optDc IR.ShiftedLognormal 0.0
+            CF.blackIborCouponPricer vol CF.Black76 Nothing Nothing
+
+          -- One exercise (k = 0..9, matching upstream's k+1/k+2-year start/end offsets from
+          -- settlement): the underlying IborCoupon, its accrual period, and its payment-date
+          -- discount factor, all needed to turn a coupon rate into a coupon price.
+          digExercise cal settlement euriborDc curve idx k = do
+            startDate <- advance cal settlement (k + 1, Years) Following False
+            endDate <- advance cal settlement (k + 2, Years) Following False
+            underlying <- CF.iborCoupon endDate digNominal startDate endDate digFixingDays idx
+              1.0 0.0 Nothing Nothing euriborDc False Nothing Preceding
+            accrual <- years euriborDc startDate endDate Nothing Nothing
+            disc <- discount' curve endDate True
+            pure (underlying, accrual, disc)
+
+          -- CashFlow::price(discountCurve) = amount() * discountCurve->discount(date()); the
+          -- coupon's payment date is always `endDate` from 'digExercise' above, so the already-
+          -- computed discount factor is reused rather than re-querying the coupon's own date.
+          digPriceOf disc c = (* disc) <$> CF.floatingRateCouponAmount c
+
+      it "deep in-the-money asset-or-nothing digital coupon reprices to its target" $
+        Settings.keepingSettings' $ do
+          (cal, settlement, euriborDc, curve, idx) <- digFixture
+          pricer <- digPricer cal 0.0001
+          forM_ ([0 .. 9] :: [Int]) $ \k -> do
+            (underlying, accrual, disc) <- digExercise cal settlement euriborDc curve idx k
+            -- Deep ITM short call (strike 0.001): the call payoff almost always fires, so the
+            -- short position cancels the underlying coupon almost exactly.
+            capped <- CF.digitalCoupon underlying (Just 0.001) CF.Short False Nothing
+              Nothing CF.Short False Nothing Nothing False
+            CF.setFloatingRateCouponPricer capped pricer
+            underlyingPrice <- digPriceOf disc underlying
+            cappedPrice <- digPriceOf disc capped
+            cappedPrice `shouldSatisfy` closePrec 0.0 1e-8
+            callRate <- CF.digitalCouponCallOptionRate capped
+            (callRate * digNominal * accrual * disc) `shouldSatisfy` closePrec underlyingPrice 1e-8
+
+            -- Deep ITM long put (strike 0.99): the put payoff almost always fires too, doubling
+            -- the coupon.
+            floored <- CF.digitalCoupon underlying Nothing CF.Long False Nothing
+              (Just 0.99) CF.Long False Nothing Nothing False
+            CF.setFloatingRateCouponPricer floored pricer
+            flooredPrice <- digPriceOf disc floored
+            flooredPrice `shouldSatisfy` closePrec (2 * underlyingPrice) 2.5e-6
+            putRate <- CF.digitalCouponPutOptionRate floored
+            (putRate * digNominal * accrual * disc) `shouldSatisfy` closePrec underlyingPrice 2.5e-6
+
+      it "deep out-of-the-money asset-or-nothing digital coupon reprices to its target" $
+        Settings.keepingSettings' $ do
+          (cal, settlement, euriborDc, curve, idx) <- digFixture
+          pricer <- digPricer cal 0.0001
+          forM_ ([0 .. 9] :: [Int]) $ \k -> do
+            (underlying, accrual, disc) <- digExercise cal settlement euriborDc curve idx k
+            capped <- CF.digitalCoupon underlying (Just 0.99) CF.Short False Nothing
+              Nothing CF.Long False Nothing Nothing False
+            CF.setFloatingRateCouponPricer capped pricer
+            underlyingPrice <- digPriceOf disc underlying
+            cappedPrice <- digPriceOf disc capped
+            cappedPrice `shouldSatisfy` closePrec underlyingPrice 1e-10
+            callRate <- CF.digitalCouponCallOptionRate capped
+            (callRate * digNominal * accrual * disc) `shouldSatisfy` closePrec 0.0 1e-8
+
+            floored <- CF.digitalCoupon underlying Nothing CF.Long False Nothing
+              (Just 0.01) CF.Long False Nothing Nothing False
+            CF.setFloatingRateCouponPricer floored pricer
+            flooredPrice <- digPriceOf disc floored
+            flooredPrice `shouldSatisfy` closePrec underlyingPrice 1e-8
+            putRate <- CF.digitalCouponPutOptionRate floored
+            (putRate * digNominal * accrual * disc) `shouldSatisfy` closePrec 0.0 1e-8
+
+      it "deep in-the-money cash-or-nothing digital coupon reprices to its target" $
+        Settings.keepingSettings' $ do
+          (cal, settlement, euriborDc, curve, idx) <- digFixture
+          pricer <- digPricer cal 0.0001
+          let cashRate = 0.01
+          forM_ ([0 .. 9] :: [Int]) $ \k -> do
+            (underlying, accrual, disc) <- digExercise cal settlement euriborDc curve idx k
+            let targetOptionPrice = cashRate * digNominal * accrual * disc
+            capped <- CF.digitalCoupon underlying (Just 0.001) CF.Short False (Just cashRate)
+              Nothing CF.Short False Nothing Nothing False
+            CF.setFloatingRateCouponPricer capped pricer
+            underlyingPrice <- digPriceOf disc underlying
+            cappedPrice <- digPriceOf disc capped
+            cappedPrice `shouldSatisfy` closePrec (underlyingPrice - targetOptionPrice) 1e-7
+            callRate <- CF.digitalCouponCallOptionRate capped
+            (callRate * digNominal * accrual * disc) `shouldSatisfy` closePrec targetOptionPrice 1e-7
+
+            floored <- CF.digitalCoupon underlying Nothing CF.Long False Nothing
+              (Just 0.99) CF.Long False (Just cashRate) Nothing False
+            CF.setFloatingRateCouponPricer floored pricer
+            flooredPrice <- digPriceOf disc floored
+            flooredPrice `shouldSatisfy` closePrec (underlyingPrice + targetOptionPrice) 1e-7
+            putRate <- CF.digitalCouponPutOptionRate floored
+            (putRate * digNominal * accrual * disc) `shouldSatisfy` closePrec targetOptionPrice 1e-7
+
+      it "deep out-of-the-money cash-or-nothing digital coupon reprices to its target" $
+        Settings.keepingSettings' $ do
+          (cal, settlement, euriborDc, curve, idx) <- digFixture
+          pricer <- digPricer cal 0.0001
+          let cashRate = 0.01
+          forM_ ([0 .. 9] :: [Int]) $ \k -> do
+            (underlying, _, disc) <- digExercise cal settlement euriborDc curve idx k
+            capped <- CF.digitalCoupon underlying (Just 0.99) CF.Short False (Just cashRate)
+              Nothing CF.Short False Nothing Nothing False
+            CF.setFloatingRateCouponPricer capped pricer
+            underlyingPrice <- digPriceOf disc underlying
+            cappedPrice <- digPriceOf disc capped
+            cappedPrice `shouldSatisfy` closePrec underlyingPrice 1e-10
+            callRate <- CF.digitalCouponCallOptionRate capped
+            (callRate * digNominal * disc) `shouldSatisfy` closePrec 0.0 1e-10
+
+            floored <- CF.digitalCoupon underlying Nothing CF.Long False Nothing
+              (Just 0.01) CF.Long False (Just cashRate) Nothing False
+            CF.setFloatingRateCouponPricer floored pricer
+            flooredPrice <- digPriceOf disc floored
+            flooredPrice `shouldSatisfy` closePrec underlyingPrice 1e-9
+            putRate <- CF.digitalCouponPutOptionRate floored
+            (putRate * digNominal * disc) `shouldSatisfy` closePrec 0.0 1e-10
+
+      it "call/put parity holds for European digital coupons" $
+        Settings.keepingSettings' $ do
+          (cal, settlement, euriborDc, curve, idx) <- digFixture
+          let vols = [0.05, 0.15, 0.30] :: [Double]
+              strikes = [0.01, 0.02 .. 0.07] :: [Double]
+              cashRate = 0.01
+          forM_ vols $ \vol -> do
+            pricer <- digPricer cal vol
+            forM_ strikes $ \strike ->
+              forM_ ([0 .. 9] :: [Int]) $ \k -> do
+                (underlying, accrual, disc) <- digExercise cal settlement euriborDc curve idx k
+
+                cashCall <- CF.digitalCoupon underlying (Just strike) CF.Long False (Just cashRate)
+                  Nothing CF.Long False Nothing Nothing False
+                CF.setFloatingRateCouponPricer cashCall pricer
+                cashPut <- CF.digitalCoupon underlying Nothing CF.Long False Nothing
+                  (Just strike) CF.Short False (Just cashRate) Nothing False
+                CF.setFloatingRateCouponPricer cashPut pricer
+                cashCallPrice <- digPriceOf disc cashCall
+                cashPutPrice <- digPriceOf disc cashPut
+                (cashCallPrice - cashPutPrice) `shouldSatisfy`
+                  closePrec (digNominal * accrual * disc * cashRate) 1e-8
+
+                assetCall <- CF.digitalCoupon underlying (Just strike) CF.Long False Nothing
+                  Nothing CF.Long False Nothing Nothing False
+                CF.setFloatingRateCouponPricer assetCall pricer
+                assetPut <- CF.digitalCoupon underlying Nothing CF.Long False Nothing
+                  (Just strike) CF.Short False Nothing Nothing False
+                CF.setFloatingRateCouponPricer assetPut pricer
+                assetCallPrice <- digPriceOf disc assetCall
+                assetPutPrice <- digPriceOf disc assetPut
+                underlyingRate <- CF.floatingRateCouponRate underlying
+                (assetCallPrice - assetPutPrice) `shouldSatisfy`
+                  closePrec (digNominal * accrual * disc * underlyingRate) 1e-7
+
+      -- Upstream checks this ordering across long/short call/put combinations; the long-call
+      -- case here is representative of the same replication-scheme guarantee.
+      it "sub/central/super replication prices a digital coupon in non-decreasing order" $
+        Settings.keepingSettings' $ do
+          (cal, settlement, euriborDc, curve, idx) <- digFixture
+          let vols = [0.05, 0.15, 0.30] :: [Double]
+              strikes = [0.01, 0.02 .. 0.07] :: [Double]
+              cashRate = 0.005
+              gap = 1.0e-4
+              tolerance = 1.0e-9
+          subRepl <- CF.digitalReplication CF.ReplicationSub gap
+          centralRepl <- CF.digitalReplication CF.ReplicationCentral gap
+          overRepl <- CF.digitalReplication CF.ReplicationSuper gap
+          forM_ vols $ \vol -> do
+            pricer <- digPricer cal vol
+            forM_ strikes $ \strike ->
+              forM_ ([0 .. 9] :: [Int]) $ \k -> do
+                (underlying, _, disc) <- digExercise cal settlement euriborDc curve idx k
+                let ordered repl = do
+                      c <- CF.digitalCoupon underlying (Just strike) CF.Long False (Just cashRate)
+                        Nothing CF.Long False Nothing (Just repl) False
+                      CF.setFloatingRateCouponPricer c pricer
+                      digPriceOf disc c
+                subP <- ordered subRepl
+                centralP <- ordered centralRepl
+                overP <- ordered overRepl
+                subP `shouldSatisfy` (<= centralP + tolerance)
+                centralP `shouldSatisfy` (<= overP + tolerance)
+
+    -- Ported from test-suite/capflooredcoupon.cpp. Uses 'CF.npv' to discount a leg directly
+    -- rather than upstream's zero-rate-fixed-leg/Swap trick (there only to reuse Swap's NPV
+    -- machinery); it computes the identical CashFlows::npv a DiscountingSwapEngine would.
+    describe "Capped/floored coupon" $ do
+      let cfRefDate = 2 `january` 2024
+          cfNominal = 100.0 :: Double
+          cfLength = 20 :: Int
+          cfNotionals = NE.fromList (replicate cfLength cfNominal)
+          cfFixingDays = replicate cfLength (2 :: Word)
+
+          cfFixture = do
+            cal <- calendar TARGET
+            today' <- adjust cal cfRefDate ModifiedFollowing
+            Settings.setEvaluationDate (Just today')
+            settlement <- advance cal today' (2, Days) ModifiedFollowing False
+            aa <- dayCounter ActualActualISDA
+            rateQ <- Quote.simpleQuote 0.05 >>= Quote.asQuote
+            curve <- flatForward settlement rateQ aa IR.Continuous Annual
+            idx <- iborIndex Euribor1Y (Just curve)
+            endDate <- advance cal settlement (cfLength, Years) ModifiedFollowing False
+            sch <- schedule (Just settlement) endDate (1, Years) cal ModifiedFollowing ModifiedFollowing Forward False Nothing Nothing
+            optDc <- dayCounter Actual365FixedStandard
+            volQ <- Quote.simpleQuote 0.20 >>= Quote.asQuote
+            vol <- constantOptionletVolatility' 0 cal Following volQ optDc IR.ShiftedLognormal 0.0
+            pricer <- CF.blackIborCouponPricer vol CF.Black76 Nothing Nothing
+            capfloorEngine <- PE.blackCapFloorEngine curve volQ optDc 0.0
+            pure (aa, curve, idx, sch, pricer, capfloorEngine, settlement)
+
+          cfLeg aa idx sch pricer caps floors = do
+            leg <- CF.iborLeg sch idx cfNotionals aa ModifiedFollowing cfFixingDays
+              (replicate cfLength 1.0) (replicate cfLength 0.0) caps floors False False
+            CF.setCouponPricer leg pricer
+            pure leg
+
+      it "collared leg with strike 0/100 reprices to the vanilla floating leg (testLargeRates)" $
+        Settings.keepingSettings' $ do
+          (aa, curve, idx, sch, pricer, _, settlement) <- cfFixture
+          floatLeg <- cfLeg aa idx sch pricer [] []
+          collaredLeg <- cfLeg aa idx sch pricer (replicate cfLength 100.0) (replicate cfLength 0.0)
+          -- 'settlement' (2 business days after the evaluation date) is also the curve's own
+          -- reference date; passing it explicitly as both settlement and npv date matches
+          -- what 'discountingSwapEngine' does internally and avoids asking the curve to
+          -- discount to the evaluation date itself, which sits before its reference date.
+          npvVanilla <- CF.npv floatLeg curve False (Just settlement) (Just settlement)
+          npvCollar <- CF.npv collaredLeg curve False (Just settlement) (Just settlement)
+          npvCollar `shouldSatisfy` closePrec npvVanilla 1e-8
+
+      -- Base case only (gearing = 1, spread = 0): upstream also checks the decomposition
+      -- holds under a positive and a negative gearing/spread, which is additional robustness
+      -- beyond what's needed to exercise 'cappedFlooredCoupon'/'cappedFlooredIborCoupon'.
+      it "capped/floored/collared leg decomposes into vanilla leg plus cap/floor/collar NPV (testDecomposition)" $
+        Settings.keepingSettings' $ do
+          (aa, curve, idx, sch, pricer, capfloorEngine, settlement) <- cfFixture
+          let capStrike = 0.10
+              floorStrike = 0.05
+              legNpv leg = CF.npv leg curve False (Just settlement) (Just settlement)
+          floatLeg <- cfLeg aa idx sch pricer [] []
+          npvVanilla <- legNpv floatLeg
+
+          cappedLeg <- cfLeg aa idx sch pricer (replicate cfLength capStrike) []
+          npvCapped <- legNpv cappedLeg
+          capInst <- CapFloor.cap floatLeg [capStrike]
+          Instr.setPricingEngine capInst capfloorEngine
+          npvCap <- Instr.npv capInst
+          npvCapped `shouldSatisfy` closePrec (npvVanilla - npvCap) 1e-6
+
+          flooredLeg <- cfLeg aa idx sch pricer [] (replicate cfLength floorStrike)
+          npvFloored <- legNpv flooredLeg
+          floorInst <- CapFloor.floor floatLeg [floorStrike]
+          Instr.setPricingEngine floorInst capfloorEngine
+          npvFloor <- Instr.npv floorInst
+          npvFloored `shouldSatisfy` closePrec (npvVanilla + npvFloor) 1e-6
+
+          collaredLeg <- cfLeg aa idx sch pricer (replicate cfLength capStrike) (replicate cfLength floorStrike)
+          npvCollared <- legNpv collaredLeg
+          collarInst <- CapFloor.collar floatLeg [capStrike] [floorStrike]
+          Instr.setPricingEngine collarInst capfloorEngine
+          npvCollar <- Instr.npv collarInst
+          npvCollared `shouldSatisfy` closePrec (npvVanilla - npvCollar) 1e-6
 
     -- Exercises the CashFlow.chs analytics that InterestRateAndCashFlow's other tests never
     -- touch: the accrual-window/previous-next-flow getters, and the six function pairs that
