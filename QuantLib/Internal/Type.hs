@@ -570,8 +570,11 @@ peekBlackDeltaCalculator = BlackDeltaCalculator <.> peekStandalone
 withBlackDeltaCalculator :: BlackDeltaCalculator -> (Ptr CBlackDeltaCalculator -> IO b) -> IO b
 withBlackDeltaCalculator = withStandalone . getCBlackDeltaCalculator
 
--- | Generic floating-rate coupon pricer.  CMS-specific pricers form the concrete
--- 'GenCmsCouponPricer' subfamily, so they retain all generic pricer wiring without a cast.
+-- | > FloatingRateCouponPricer
+-- >   CmsCouponPricer
+--
+-- Generic floating-rate coupon pricer.  CMS-specific pricers form the concrete
+-- 'CmsCouponPricer' subfamily, so they retain all generic pricer wiring without a cast.
 data CFloatingRateCouponPricer'
 newtype GenFloatingRateCouponPricer frcp = GenFloatingRateCouponPricer {getFloatingRateCouponPricer :: GenForeignPtr frcp CFloatingRateCouponPricer'}
 type CFloatingRateCouponPricer = ForeignPtr CFloatingRateCouponPricer'
@@ -603,9 +606,19 @@ peekCmsCouponPricer = GenFloatingRateCouponPricer <.> newGenForeignPtr
 withCmsCouponPricer :: CmsCouponPricer -> (Ptr CCmsCouponPricer' -> IO b) -> IO b
 withCmsCouponPricer = withForeignPtr . ptr . getFloatingRateCouponPricer
 
--- | Base floating-rate coupon class.  Its cash-flow amount is its rate times accrual period and
+-- | > FloatingRateCoupon
+-- >   CmsCoupon
+-- >   IborCoupon
+-- >   OvernightIndexedCoupon
+-- >   DigitalCmsCoupon
+-- >   DigitalCoupon
+-- >   RangeAccrualFloatersCoupon
+--
+-- Base floating-rate coupon class.  Its cash-flow amount is its rate times accrual period and
 -- nominal.  The binding represents coupons at this useful hierarchy level; CMS coupons remain
--- concrete only because 'digitalCmsCoupon' requires one.
+-- concrete only because 'digitalCmsCoupon' requires one.  Every leaf converts to the generic
+-- 'QuantLib.CashFlow.CashFlow' representation via 'QuantLib.CashFlow.asCashFlow', generic over
+-- this whole family through the existing 'Upcastable' chain.
 data CFloatingRateCoupon'
 newtype GenFloatingRateCoupon frc = GenFloatingRateCoupon {getFloatingRateCoupon :: GenForeignPtr frc CFloatingRateCoupon'}
 type CFloatingRateCoupon = ForeignPtr CFloatingRateCoupon'
@@ -657,6 +670,8 @@ peekOvernightIndexedCoupon = GenFloatingRateCoupon <.> newGenForeignPtr
 withOvernightIndexedCoupon :: OvernightIndexedCoupon -> (Ptr COvernightIndexedCoupon' -> IO b) -> IO b
 withOvernightIndexedCoupon = withForeignPtr . ptr . getFloatingRateCoupon
 
+-- | Concrete CPI coupon.  Convert it explicitly with 'QuantLib.CashFlow.cpiCouponAsCashFlow'
+-- when a general cash-flow collection is required.
 data CCPICoupon
 newtype CPICoupon = CPICoupon {getCCPICoupon :: Standalone CCPICoupon}
 foreign import ccall unsafe "ql.h &qlFreeCPICoupon" qlFreeCPICoupon :: FinalizerPtr CCPICoupon
@@ -726,7 +741,8 @@ withRangeAccrualFloatersCoupon :: RangeAccrualFloatersCoupon -> (Ptr CRangeAccru
 withRangeAccrualFloatersCoupon = withForeignPtr . ptr . getFloatingRateCoupon
 
 -- | Concrete YoY coupon retained for 'adjustedFixing'.  Convert it explicitly
--- with 'asCashFlow' when a general cash-flow collection is required.
+-- with 'QuantLib.CashFlow.yoyInflationCouponAsCashFlow' when a general
+-- cash-flow collection is required.
 data CYoYInflationCoupon
 newtype YoYInflationCoupon = YoYInflationCoupon {getCYoYInflationCoupon :: Standalone CYoYInflationCoupon}
 foreign import ccall unsafe "ql.h &qlFreeYoYInflationCoupon" qlFreeYoYInflationCoupon :: FinalizerPtr CYoYInflationCoupon
@@ -1341,6 +1357,7 @@ withBachelierCalculator = withStandalone . getCBachelierCalculator
 -- >      OvernightIborIndex (COvernightIndex')
 -- >    SwapIndex
 -- >      OvernightIndexedSwapIndex
+-- >    SwapSpreadIndex
 -- >  InflationIndex
 -- >    YoYInflationIndex
 -- >    ZeroInflationIndex
@@ -2652,9 +2669,11 @@ markovFunctionalAsGaussian1dModel m = withGenCalibratedModel m qlMarkovFunctiona
 -- >    Swaption
 -- >    NonstandardSwaption
 -- >    FloatFloatSwaption
+-- >    IrregularSwaption
 -- >  Swap*
 -- >    FixedVsFloatingSwap*
 -- >      VanillaSwap
+-- >    IrregularSwap
 -- >    NonstandardSwap
 -- >    FloatFloatSwap
 -- >    AssetSwap

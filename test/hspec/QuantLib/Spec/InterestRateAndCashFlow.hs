@@ -251,7 +251,7 @@ spec evalDate = do
           idx <- iborIndex (UsdLibor (3, Months)) (Just curve)
           floating <- CF.floatingRateCoupon end 100.0 start end 2 idx 1.0 0.0 Nothing Nothing dc False Nothing Preceding
           ibor <- CF.iborCoupon end 100.0 start end 2 idx 1.0 0.0 Nothing Nothing dc False Nothing Preceding
-          iborFlow <- CF.iborCouponAsCashFlow ibor
+          iborFlow <- CF.asCashFlow ibor
           customLeg <- CF.cashFlowLeg [floating, iborFlow]
           CF.startDate customLeg `shouldReturn` start
 
@@ -265,6 +265,7 @@ spec evalDate = do
           addFixing inflation (1 `november` 2009) 100.0 False
           addFixing inflation baseDate 100.0 False
           addFixing inflation (1 `november` 2010) 120.0 False
+          addFixing inflation (1 `december` 2010) 120.0 False
           addFixing inflation fixingDate 120.0 False
           zero <- CF.zeroInflationCashFlow 100.0 inflation CPIFlat baseDate fixingDate (2, Months) paymentDate False
           cpi <- CF.cpiCashFlow 100.0 inflation (Just baseDate) Nothing fixingDate (2, Months) CPIFlat paymentDate False
@@ -281,9 +282,16 @@ spec evalDate = do
           zeroFlow <- CF.zeroInflationCashFlowAsCashFlow zero
           cpiFlow <- CF.cpiCashFlowAsCashFlow cpi
           equityFlow <- CF.equityCashFlowAsCashFlow equity
-          customLeg <- CF.cashFlowLeg [zeroFlow, cpiFlow, equityFlow]
+          dc <- dayCounter (Actual360 False)
+          coupon <- CF.cpiCoupon 100.0 paymentDate 100.0 baseDate paymentDate inflation (2, Months) CPIFlat dc 0.02
+            (Just baseDate) (Just paymentDate) Nothing
+          couponPricer <- CF.cpiCouponPricer Nothing
+          CF.setCpiCouponPricer coupon couponPricer
+          couponFlow <- CF.cpiCouponAsCashFlow coupon
+          customLeg <- CF.cashFlowLeg [zeroFlow, cpiFlow, equityFlow, couponFlow]
           flows <- CF.cashFlows customLeg Nothing Nothing
-          listCloseRel id [120.0, 120.0, 125.0] 1.0e-12 (map (\(_, amount, _) -> amount) flows) `shouldBe` True
+          listCloseRel id [120.0, 120.0, 125.0] 1.0e-12 (map (\(_, amount, _) -> amount) (take 3 flows)) `shouldBe` True
+          map (\(d, _, _) -> d) flows `shouldBe` replicate 4 paymentDate
 
       prop "random single let start date" $
         \(a, ValidDay d) -> monadicIO $ do

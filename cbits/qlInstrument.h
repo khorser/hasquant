@@ -651,7 +651,6 @@ extern "C" {
   void qlFreeFloatingRateCoupon(QlFloatingRateCoupon *o);
   void qlFreeIborCoupon(QlIborCoupon *o);
   QlFloatingRateCoupon* qlIborCouponAsFloatingRateCoupon(QlIborCoupon *o);
-  QlCashFlow* qlIborCouponAsCashFlow(QlIborCoupon *o);
   QlIborCoupon* qlIborCouponExact(int paymentDate, double nominal, int startDate, int endDate, unsigned fixingDays, QlIborIndex *index, double gearing, double spread, int refPeriodStart, int refPeriodEnd, DayCounter *dayCounter, int inArrears, int exCouponDate, int fixingConvention, char **e);
   QlFloatingRateCoupon* qlAverageBMACoupon(int paymentDate, double nominal, int startDate, int endDate, QlBMAIndex *index, double gearing, double spread, int refPeriodStart, int refPeriodEnd, DayCounter *dayCounter, char **e);
   QlFloatingRateCoupon* qlCappedFlooredCoupon(QlFloatingRateCoupon *underlying, double cap, double floor, char **e);
@@ -689,9 +688,11 @@ extern "C" {
   void qlFreeCPICouponPricer(QlCPICouponPricer *o);
   QlCPICouponPricer* qlCPICouponPricer(QlYieldTermStructure *nominal, char **e);
   QlCPICouponPricer* qlCPICouponPricerWithVol(QlCPIVolatilitySurface *vol, QlYieldTermStructure *nominal, char **e);
+  QlCashFlow* qlCPICouponAsCashFlow(QlCPICoupon *o);
   void qlCPICouponSetPricer(QlCPICoupon *coupon, QlCPICouponPricer *pricer, char **e);
   QlCashFlow* qlRedemption(double amount, int date, char **e);
   QlCashFlow* qlAmortizingPayment(double amount, int date, char **e);
+  QlCashFlow* qlFloatingRateCouponAsCashFlow(QlFloatingRateCoupon* o);
   double qlFloatingRateCouponRate(QlFloatingRateCoupon* o, char **e);
   double qlFloatingRateCouponAmount(QlFloatingRateCoupon* o, char **e);
   void qlFloatingRateCouponSetPricer(QlFloatingRateCoupon* o, QlFloatingRateCouponPricer* pricer, char **e);

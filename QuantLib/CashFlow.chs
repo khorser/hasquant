@@ -20,7 +20,6 @@ module QuantLib.CashFlow
   , floatingRateCoupon
   , iborCoupon
   , IborCoupon
-  , iborCouponAsCashFlow
   , averageBMACoupon
   , cappedFlooredCoupon
   , cappedFlooredIborCoupon
@@ -55,6 +54,7 @@ module QuantLib.CashFlow
   , cpiCouponPricer
   , cpiCouponPricerWithVol
   , setCpiCouponPricer
+  , cpiCouponAsCashFlow
   , redemption
   , amortizingPayment
   , cashFlowLeg
@@ -121,6 +121,7 @@ module QuantLib.CashFlow
   , FloatingRateCoupon
   , GenFloatingRateCoupon
   , asFloatingRateCoupon
+  , asCashFlow
   , floatingRateCouponRate
   , floatingRateCouponAmount
   , setFloatingRateCouponPricer
@@ -386,11 +387,6 @@ leg f = qlLeg fs ds where (ds, fs) = unzip f
   ,fromEnumC`BusinessDayConvention' -- ^fixingConvention
   ,preErrorCheck-`String'errorCheck*-}->`IborCoupon'peekIborCoupon*#}
 
--- |Convert a concrete Ibor coupon to the generic cash-flow representation used by
--- heterogeneous 'cashFlowLeg' inputs.
-{#fun qlIborCouponAsCashFlow as iborCouponAsCashFlow{withIborCoupon*`IborCoupon' -- ^coupon
-  }->`CashFlow'peekCashFlow*#}
-
 -- |A BMA-index coupon with explicitly supplied accrual and reference dates.
 {#fun qlAverageBMACoupon as averageBMACoupon{withDay*`Day' -- ^paymentDate
   ,`Double' -- ^nominal
@@ -603,6 +599,11 @@ leg f = qlLeg fs ds where (ds, fs) = unzip f
 {#fun qlCPICouponSetPricer as setCpiCouponPricer{withCPICoupon*`CPICoupon' -- ^coupon
   ,withCPICouponPricer*`CPICouponPricer' -- ^pricer
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
+
+-- |Convert a CPI coupon to the generic cash-flow representation used by
+-- heterogeneous 'cashFlowLeg' inputs.
+{#fun qlCPICouponAsCashFlow as cpiCouponAsCashFlow{withCPICoupon*`CPICoupon' -- ^coupon
+  }->`CashFlow'peekCashFlow*#}
 
 -- |A single redemption payment.
 {#fun qlRedemption as redemption{`Double' -- ^amount
@@ -1264,6 +1265,11 @@ cmsLegFull schedule idx notionals dc adj fixingDays gearings spreads caps floors
   ,withMaybeDay*`Maybe Day' -- ^exCouponDate
   ,fromEnumC`BusinessDayConvention' -- ^fixingConvention
   ,preErrorCheck-`String'errorCheck*-}->`FloatingRateCoupon'peekFloatingRateCoupon*#}
+
+-- |Convert any floating-rate coupon to the generic cash-flow representation used by
+-- heterogeneous 'cashFlowLeg' inputs.
+{#fun qlFloatingRateCouponAsCashFlow as asCashFlow{withFloatingRateCoupon*`GenFloatingRateCoupon frc' -- ^coupon
+  }->`CashFlow'peekCashFlow*#}
 
 -- |The coupon rate.  It is calculated by the attached 'FloatingRateCouponPricer'.
 {#fun qlFloatingRateCouponRate as floatingRateCouponRate{withFloatingRateCoupon*`GenFloatingRateCoupon frc' -- ^coupon
