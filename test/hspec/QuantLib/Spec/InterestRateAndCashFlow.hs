@@ -9,6 +9,7 @@ import Test.QuickCheck((==>))
 import Control.Exception(bracket_)
 import Control.Monad(forM_)
 import qualified Data.List.NonEmpty as NE
+import Data.Maybe(fromMaybe)
 import Data.Time.Calendar
 
 import QuantLib.Time.Date
@@ -30,8 +31,8 @@ import QuantLib.Index(fixingCalendar, addFixing, addFixings, fixing, hasHistoric
   ,historicalIndexAnalysisExpectedShortfall, historicalIndexAnalysisGaussianExpectedShortfall
   ,historicalIndexAnalysisCovariance, historicalIndexAnalysisCorrelation)
 import QuantLib.Index.InterestRate(iborIndex, IborConstructor(..), liborSwapIndex, LiborSwapIndexType(..), swapSpreadIndex, forecastFixing
-  ,historicalRatesAnalysis)
-import qualified QuantLib.Index.InterestRate as Ibor(fixingDays)
+  ,historicalRatesAnalysis, overnightIborIndex, OvernightIborIndexType(..))
+import qualified QuantLib.Index.InterestRate as Ibor(fixingDays, dayCounter)
 import qualified QuantLib.Index.Inflation as Inflation
 import qualified QuantLib.Index.Equity as Equity
 import QuantLib.Currency(currency, Ccy(..))
@@ -640,6 +641,358 @@ spec evalDate = do
           Instr.setPricingEngine collarInst capfloorEngine
           npvCollar <- Instr.npv collarInst
           npvCollared `shouldSatisfy` closePrec (npvVanilla - npvCollar) 1e-6
+
+    -- Ported from test-suite/overnightindexedcoupon.cpp's 'CommonVars' fixture: a SOFR index
+    -- seeded with two blocks of real historical fixings (Jun-Aug 2019, Oct-Nov 2021), default
+    -- evaluation date 23-Nov-2021. Golden rates/amounts below are upstream's own values,
+    -- described there as "manual calculations based on past dates and rates". SOFR's own
+    -- 'fixingDays' is 0 (confirmed against ql/indexes/ibor/sofr.cpp), so omitting a lookback
+    -- (0 below) reproduces upstream's 'Null<Natural>()' default exactly.
+    describe "Overnight indexed coupon" $ do
+      let oisPastDates =
+            [ 21 `june` 2019, 24 `june` 2019, 25 `june` 2019, 26 `june` 2019, 27 `june` 2019
+            , 28 `june` 2019, 1 `july` 2019, 2 `july` 2019, 3 `july` 2019, 5 `july` 2019
+            , 8 `july` 2019, 9 `july` 2019, 10 `july` 2019, 11 `july` 2019, 12 `july` 2019
+            , 15 `july` 2019, 16 `july` 2019, 17 `july` 2019, 18 `july` 2019, 19 `july` 2019
+            , 22 `july` 2019, 23 `july` 2019, 24 `july` 2019, 25 `july` 2019, 26 `july` 2019
+            , 29 `july` 2019, 30 `july` 2019, 31 `july` 2019, 1 `august` 2019, 2 `august` 2019
+            , 5 `august` 2019
+            , 18 `october` 2021, 19 `october` 2021, 20 `october` 2021, 21 `october` 2021
+            , 22 `october` 2021, 25 `october` 2021, 26 `october` 2021, 27 `october` 2021
+            , 28 `october` 2021, 29 `october` 2021, 1 `november` 2021, 2 `november` 2021
+            , 3 `november` 2021, 4 `november` 2021, 5 `november` 2021, 8 `november` 2021
+            , 9 `november` 2021, 10 `november` 2021, 12 `november` 2021, 15 `november` 2021
+            , 16 `november` 2021, 17 `november` 2021, 18 `november` 2021, 19 `november` 2021
+            , 22 `november` 2021
+            ]
+          oisPastRates =
+            [ 0.0237, 0.0239, 0.0241, 0.0243, 0.0242, 0.025,  0.0242, 0.0251, 0.0256, 0.0259
+            , 0.0248, 0.0245, 0.0246, 0.0241, 0.0236, 0.0246, 0.0247, 0.0247, 0.0246, 0.0241
+            , 0.024,  0.024,  0.0241, 0.0242, 0.0241, 0.024,  0.0239, 0.0255, 0.0219, 0.0219
+            , 0.0213
+            , 0.0008, 0.0009, 0.0008, 0.0010, 0.0012, 0.0011, 0.0013, 0.0012, 0.0012, 0.0008
+            , 0.0009, 0.0010, 0.0011, 0.0014, 0.0013, 0.0011, 0.0009, 0.0008, 0.0007, 0.0008
+            , 0.0008, 0.0007, 0.0009, 0.0010, 0.0009
+            ]
+
+          -- Builds the CommonVars fixture: the evaluation date defaults to 23-Nov-2021
+          -- ('mEvalDate' overrides it, for 'testRateWhenTodayIsHoliday'); the forecast curve is
+          -- left unset ('mCurveRate' = Nothing) for coupons entirely in the past, matching
+          -- upstream, where they never need one. Fixings are keyed globally by index name (not
+          -- per-object), so every caller must run under 'clearAllFixingHistories'.
+          oisFixture mEvalDate mCurveRate = do
+            let today' = fromMaybe (23 `november` 2021) mEvalDate
+            Settings.setEvaluationDate (Just today')
+            curve <- case mCurveRate of
+              Nothing -> pure Nothing
+              Just r -> do
+                nullCal <- calendar Null
+                dc <- dayCounter (Actual360 False)
+                q <- Quote.simpleQuote r >>= Quote.asQuote
+                Just <$> flatForward' 0 nullCal q dc IR.Continuous Annual
+            sofr <- overnightIborIndex Sofr curve
+            addFixings sofr (zip oisPastDates oisPastRates) False
+            pure sofr
+
+          -- 'CommonVars::makeCoupon': notional 10000, fixingDays defaulted to the index's own
+          -- (0 for SOFR), no lockout/observation-shift/telescoping, DayCounter() empty (which
+          -- 'FloatingRateCoupon' itself resolves to the index's own daycounter, Actual360 for
+          -- SOFR -- confirmed in ql/cashflows/floatingratecoupon.cpp).
+          oisMakeCoupon sofr start end = do
+            dc <- dayCounter (Actual360 False)
+            CF.overnightIndexedCoupon end 10000.0 start end sofr 1.0 0.0 Nothing Nothing dc
+              False CF.AveragingCompound 0 0 False False Nothing Nothing Nothing Nothing
+
+      it "prices a coupon entirely in the past (testPastCouponRate)" $
+        bracket_ clearAllFixingHistories clearAllFixingHistories $ Settings.keepingSettings' $ do
+          sofr <- oisFixture Nothing Nothing
+          pastCoupon <- oisMakeCoupon sofr (18 `october` 2021) (18 `november` 2021)
+          rate <- CF.floatingRateCouponRate pastCoupon
+          rate `shouldSatisfy` closePrec 0.000987136104 1e-12
+          amount <- CF.floatingRateCouponAmount pastCoupon
+          amount `shouldSatisfy` closePrec (10000.0 * 0.000987136104 * 31.0 / 360) 1e-8
+
+      it "prices a past coupon with a compounded/simple spread (testPastSpreadedCouponRate)" $
+        bracket_ clearAllFixingHistories clearAllFixingHistories $ Settings.keepingSettings' $ do
+          sofr <- oisFixture Nothing Nothing
+          dc <- dayCounter (Actual360 False)
+          let mk daily = CF.overnightIndexedCoupon (18 `november` 2021) 10000.0
+                (18 `october` 2021) (18 `november` 2021) sofr 1.0 0.0001 Nothing Nothing dc
+                False CF.AveragingCompound 0 0 False daily Nothing Nothing Nothing Nothing
+          compoundedSpread <- mk True
+          compoundedRate <- CF.floatingRateCouponRate compoundedSpread
+          compoundedRate `shouldSatisfy` closePrec 0.0010871445057780704 1e-12
+          simpleSpread <- mk False
+          rate <- CF.floatingRateCouponRate simpleSpread
+          rate `shouldSatisfy` closePrec 0.0010871361040194164 1e-12
+
+      it "prices a coupon partly in the past, today fixed and unfixed (testCurrentCouponRate)" $
+        bracket_ clearAllFixingHistories clearAllFixingHistories $ Settings.keepingSettings' $ do
+          sofr <- oisFixture Nothing (Just 0.0010)
+          currentCoupon <- oisMakeCoupon sofr (10 `november` 2021) (10 `december` 2021)
+          rate1 <- CF.floatingRateCouponRate currentCoupon
+          rate1 `shouldSatisfy` closePrec 0.000926701551 1e-12
+
+          addFixing sofr (23 `november` 2021) 0.0007 False
+          rate2 <- CF.floatingRateCouponRate currentCoupon
+          rate2 `shouldSatisfy` closePrec 0.000916700760 1e-12
+
+      it "prices a coupon entirely in the future (testFutureCouponRate)" $
+        bracket_ clearAllFixingHistories clearAllFixingHistories $ Settings.keepingSettings' $ do
+          sofr <- oisFixture Nothing (Just 0.0010)
+          futureCoupon <- oisMakeCoupon sofr (10 `december` 2021) (10 `january` 2022)
+          rate <- CF.floatingRateCouponRate futureCoupon
+          rate `shouldSatisfy` closePrec 0.001000043057 1e-12
+
+      it "prices a coupon when the evaluation date is a holiday (testRateWhenTodayIsHoliday)" $
+        bracket_ clearAllFixingHistories clearAllFixingHistories $ Settings.keepingSettings' $ do
+          sofr <- oisFixture (Just (20 `november` 2021)) (Just 0.0010)
+          coupon <- oisMakeCoupon sofr (10 `november` 2021) (10 `december` 2021)
+          rate <- CF.floatingRateCouponRate coupon
+          rate `shouldSatisfy` closePrec 0.000930035180 1e-12
+
+      -- 'CashFlows::accruedAmount(leg, includeSettlementDateFlows, settlementDate)' delegates to
+      -- the single relevant coupon's own 'accruedAmount(settlementDate)' (cashflows.cpp), so a
+      -- one-coupon 'overnightLeg' stands in for the per-coupon accessor upstream calls directly
+      -- -- there's no route from a standalone 'OvernightIndexedCoupon' into a 'Leg' otherwise
+      -- (see plans/review-2026-09-02.md A1).
+      it "computes accrued amount as of a past/future holiday (testAccruedAmountOn{Past,Future}Holiday)" $
+        bracket_ clearAllFixingHistories clearAllFixingHistories $ Settings.keepingSettings' $ do
+          dc <- dayCounter (Actual360 False)
+          nullCal <- calendar Null
+          sofrPast <- oisFixture Nothing Nothing
+          pastSch <- fromDates [18 `october` 2021, 18 `january` 2022] nullCal Unadjusted Nothing Nothing Nothing Nothing
+          pastLeg <- CF.overnightLeg pastSch sofrPast (10000.0 NE.:| []) dc Unadjusted [] []
+          pastAccrued <- CF.accruedAmount pastLeg True (Just (13 `november` 2021))
+          pastAccrued `shouldSatisfy` closePrec (10000.0 * 0.000074724810) 1e-8
+
+          sofrFuture <- oisFixture Nothing (Just 0.0010)
+          futureSch <- fromDates [10 `december` 2021, 10 `march` 2022] nullCal Unadjusted Nothing Nothing Nothing Nothing
+          futureLeg <- CF.overnightLeg futureSch sofrFuture (10000.0 NE.:| []) dc Unadjusted [] []
+          futureAccrued <- CF.accruedAmount futureLeg True (Just (15 `january` 2022))
+          futureAccrued `shouldSatisfy` closePrec (10000.0 * 0.000100005012) 1e-8
+
+      it "prices a past coupon with a lookback period, with/without observation shift (testPastCouponRateWithLookback[AndObservationShift])" $
+        bracket_ clearAllFixingHistories clearAllFixingHistories $ Settings.keepingSettings' $ do
+          sofr <- oisFixture Nothing Nothing
+          dc <- dayCounter (Actual360 False)
+          lookback <- CF.overnightIndexedCoupon (15 `july` 2019) 10000.0 (1 `july` 2019) (15 `july` 2019)
+            sofr 1.0 0.0 Nothing Nothing dc False CF.AveragingCompound 5 0 False False
+            Nothing Nothing Nothing Nothing
+          lookbackRate <- CF.floatingRateCouponRate lookback
+          lookbackRate `shouldSatisfy` closePrec 0.024781644454 1e-12
+
+          shifted <- CF.overnightIndexedCoupon (31 `july` 2019) 10000.0 (1 `july` 2019) (31 `july` 2019)
+            sofr 1.0 0.0 Nothing Nothing dc False CF.AveragingCompound 5 0 True False
+            Nothing Nothing Nothing Nothing
+          shiftedRate <- CF.floatingRateCouponRate shifted
+          shiftedRate `shouldSatisfy` closePrec 0.024603611707 1e-12
+
+    -- Ported from test-suite/overnightindexedcoupon.cpp's 'BlackONPricerVars' fixture: flat 4%
+    -- forecast curve (Actual360), flat 10% 'ConstantOptionletVolatility', evaluation date
+    -- 1-Jul-2025, a single 1-Jul-2035..1-Oct-2035 coupon, cap 4.5%/floor 3.5%.
+    describe "Black-pricer overnight indexed cap/floor" $ do
+      let blackFixture avg = do
+            let today' = 1 `july` 2025
+            Settings.setEvaluationDate (Just today')
+            dc <- dayCounter (Actual360 False)
+            nullCal <- calendar Null
+            fq <- Quote.simpleQuote 0.04 >>= Quote.asQuote
+            curve <- flatForward' 0 nullCal fq dc IR.Continuous Annual
+            sofr <- overnightIborIndex Sofr (Just curve)
+            cal <- calendar TARGET
+            volQ <- Quote.simpleQuote 0.1 >>= Quote.asQuote
+            vol <- constantOptionletVolatility today' cal Following volQ dc IR.ShiftedLognormal 0.0
+            -- Upstream's 'effectiveVolatilityInput' constructor default is 'false' (a plain
+            -- quoted vol, not an already-'effective' one) -- confirmed against
+            -- blackovernightindexedcouponpricer.hpp; the fixture's constructors never override it.
+            pricer <- (if avg == CF.AveragingCompound then CF.blackCompoundingOvernightIndexedCouponPricer
+                       else CF.blackAveragingOvernightIndexedCouponPricer) (Just vol) False
+            let start = 1 `july` 2035
+                end = 1 `october` 2035
+                mkBase = do
+                  base <- CF.overnightIndexedCoupon end 1000000.0 start end sofr 1.0 0.0 Nothing Nothing dc
+                    False avg 0 0 False False Nothing Nothing Nothing Nothing
+                  CF.setFloatingRateCouponPricer base pricer
+                  pure base
+                mkCapFloor cap floor = do
+                  base <- CF.overnightIndexedCoupon end 1000000.0 start end sofr 1.0 0.0 Nothing Nothing dc
+                    False avg 0 0 False False Nothing Nothing Nothing Nothing
+                  cf <- CF.cappedFlooredOvernightIndexedCoupon base cap floor False False
+                  CF.setFloatingRateCouponPricer cf pricer
+                  pure cf
+            pure (mkBase, mkCapFloor)
+
+      it "compounding pricer: caplet/floorlet/collar rates (testBlackOvernightIndexedCouponPricerCapletFloorlet)" $
+        bracket_ clearAllFixingHistories clearAllFixingHistories $ Settings.keepingSettings' $ do
+          (mkBase, mkCapFloor) <- blackFixture CF.AveragingCompound
+          base <- mkBase
+          baseRate <- CF.floatingRateCouponRate base
+
+          capped <- mkCapFloor (Just 0.045) Nothing
+          cappedRate <- CF.floatingRateCouponRate capped
+          cappedRate `shouldSatisfy` closePrec 0.036862168 1e-8
+          cappedRate `shouldSatisfy` (<= 0.045 + 1e-8)
+
+          floored <- mkCapFloor Nothing (Just 0.035)
+          flooredRate <- CF.floatingRateCouponRate floored
+          flooredRate `shouldSatisfy` closePrec 0.04281620 1e-8
+          flooredRate `shouldSatisfy` (>= 0.035 - 1e-8)
+
+          collared <- mkCapFloor (Just 0.045) (Just 0.035)
+          collaredRate <- CF.floatingRateCouponRate collared
+          collaredRate `shouldSatisfy` closePrec 0.039473179 1e-8
+          baseRate `shouldSatisfy` (> 0)
+
+      it "averaging pricer: caplet/floorlet/collar rates (testBlackAverageONIndexedCouponPricerCapletFloorlet)" $
+        bracket_ clearAllFixingHistories clearAllFixingHistories $ Settings.keepingSettings' $ do
+          (mkBase, mkCapFloor) <- blackFixture CF.AveragingSimple
+          base <- mkBase
+          _ <- CF.floatingRateCouponRate base
+
+          capped <- mkCapFloor (Just 0.045) Nothing
+          cappedRate <- CF.floatingRateCouponRate capped
+          cappedRate `shouldSatisfy` closePrec 0.036745802 1e-8
+          cappedRate `shouldSatisfy` (<= 0.045 + 1e-8)
+
+          floored <- mkCapFloor Nothing (Just 0.035)
+          flooredRate <- CF.floatingRateCouponRate floored
+          flooredRate `shouldSatisfy` closePrec 0.042671405 1e-8
+          flooredRate `shouldSatisfy` (>= 0.035 - 1e-8)
+
+          collared <- mkCapFloor (Just 0.045) (Just 0.035)
+          collaredRate <- CF.floatingRateCouponRate collared
+          collaredRate `shouldSatisfy` closePrec 0.039412858 1e-8
+
+    -- Ported from test-suite/multipleresetscoupons.cpp. Its own dynamic reference (iterate the
+    -- coupon's fixing-date IborLeg, sum accrualPeriod*(fixing+spread)) isn't reproducible via a
+    -- public API here: hasquant has no way to pull individual coupons back out of a 'Leg' (see
+    -- plans/review-2026-09-02.md A1), so the reference is instead a matching set of standalone
+    -- 'iborCoupon's built over the same sub-period dates -- since 'MultipleResetsCoupon' and
+    -- 'IborCoupon' resolve a plain (non-in-arrears) fixing identically (gearing*fixing+spread,
+    -- confirmed against couponpricer.cpp's 'BlackIborCouponPricer::adjustedFixing'), this is the
+    -- same computation upstream's cast-and-sum loop performs, just sourced from fresh coupons
+    -- instead of ones extracted from a leg. 'testMultipleResetsLegRegression' (checks each
+    -- coupon's internal fixing-date *count*) is skipped: there is no 'fixingDates' accessor
+    -- bound, and no way to iterate a leg's individual coupons to call it on regardless.
+    describe "Multiple resets coupon" $ do
+      let mrFixture = do
+            let today' = 15 `march` 2021
+            Settings.setEvaluationDate (Just today')
+            euribor0 <- iborIndex Euribor1M Nothing
+            cal <- fixingCalendar euribor0
+            dc <- dayCounter Actual365FixedStandard
+            curveRate <- Quote.simpleQuote 0.007 >>= Quote.asQuote
+            curve <- flatForward today' curveRate dc IR.Continuous Annual
+            euribor <- iborIndex Euribor1M (Just curve)
+            -- Fixings are keyed globally by index name, so adding them once (on either object)
+            -- makes them visible through 'euribor' too.
+            addFixings euribor
+              [ (13 `january` 2021, 0.0077), (11 `february` 2021, 0.0075), (11 `march` 2021, 0.0073) ]
+              False
+            pure (cal, dc, euribor, curve)
+
+          mrSchedule cal start end =
+            schedule (Just start) end (1, Months) cal ModifiedFollowing ModifiedFollowing Forward False Nothing Nothing
+
+          -- The rate a plain (non-in-arrears) 'IborCoupon' resolves to, gearing 1, over one
+          -- sub-period; the vol fed to its pricer is irrelevant to that rate (see the block
+          -- comment above), so a small fixed value is used throughout. The sub-period *weight*
+          -- ('accrual' below) must use the index's own day counter, not the coupon's: per
+          -- 'MultipleResetsCoupon''s constructor (multipleresetscoupon.cpp), 'dt_' is computed
+          -- via 'index->dayCounter()', independently of the 'dayCounter' argument passed in
+          -- (which only governs the coupon's own overall accrual period).
+          mrSubPeriodRate cal dc euribor fixingDaysN rateSpread (d0, d1) = do
+            volQ <- Quote.simpleQuote 0.20 >>= Quote.asQuote
+            vol <- constantOptionletVolatility' 0 cal Following volQ dc IR.ShiftedLognormal 0.0
+            pricer <- CF.blackIborCouponPricer vol CF.Black76 Nothing Nothing
+            cpn <- CF.iborCoupon d1 1.0 d0 d1 fixingDaysN euribor 1.0 rateSpread Nothing Nothing dc
+              False Nothing Preceding
+            CF.setFloatingRateCouponPricer cpn pricer
+            rate <- CF.floatingRateCouponRate cpn
+            idxDc <- Ibor.dayCounter euribor
+            accrual <- years idxDc d0 d1 Nothing Nothing
+            pure (rate, accrual)
+
+          mrExpected cal dc euribor fixingDaysN rateSpread sch = do
+            ds <- dates sch
+            mapM (mrSubPeriodRate cal dc euribor fixingDaysN rateSpread) (zip ds (drop 1 ds))
+
+      it "replicates a compounded multiple-resets coupon (testCompoundedCouponWithMultipleResets)" $
+        bracket_ clearAllFixingHistories clearAllFixingHistories $ Settings.keepingSettings' $ do
+          (cal, dc, euribor, _) <- mrFixture
+          let start = addGregorianMonthsClip (-2) (15 `march` 2021)
+              end = addGregorianMonthsClip 6 start
+              spread = 0.001
+          sch <- mrSchedule cal start end
+          let fixingDaysN = Ibor.fixingDays euribor
+          subs <- mrExpected cal dc euribor fixingDaysN spread sch
+          let expected = product [1 + a * r | (r, a) <- subs] - 1
+
+          endDate <- last <$> dates sch
+          testCpn <- CF.multipleResetsCoupon endDate 1.0 sch fixingDaysN euribor 1.0 0.0 spread
+            Nothing Nothing dc Nothing
+          pricer <- CF.compoundingMultipleResetsPricer
+          CF.setFloatingRateCouponPricer testCpn pricer
+          actual <- CF.floatingRateCouponAmount testCpn
+          -- 1e-7, not upstream's 1e-14: the reference here routes each sub-period rate through
+          -- a Black76 pricer (see 'mrSubPeriodRate'), which is a formal identity for a plain
+          -- coupon but not bit-identical to 'MultipleResetsPricer''s direct
+          -- 'index->fixing(fixingDate) + rateSpread' -- confirmed the residual is exactly that
+          -- FP noise (~1.4e-8 absolute here), not a modelling gap.
+          actual `shouldSatisfy` closePrec expected 1e-7
+
+      it "replicates an averaged multiple-resets coupon (testAveragedCouponWithMultipleResets)" $
+        bracket_ clearAllFixingHistories clearAllFixingHistories $ Settings.keepingSettings' $ do
+          (cal, dc, euribor, _) <- mrFixture
+          let start = addGregorianMonthsClip (-2) (15 `march` 2021)
+              end = addGregorianMonthsClip 6 start
+              spread = 0.001
+          sch <- mrSchedule cal start end
+          let fixingDaysN = Ibor.fixingDays euribor
+          subs <- mrExpected cal dc euribor fixingDaysN spread sch
+          let expected = sum [a * r | (r, a) <- subs]
+
+          endDate <- last <$> dates sch
+          testCpn <- CF.multipleResetsCoupon endDate 1.0 sch fixingDaysN euribor 1.0 0.0 spread
+            Nothing Nothing dc Nothing
+          pricer <- CF.averagingMultipleResetsPricer
+          CF.setFloatingRateCouponPricer testCpn pricer
+          actual <- CF.floatingRateCouponAmount testCpn
+          actual `shouldSatisfy` closePrec expected 1e-7
+
+      -- A coupon whose ex-coupon date sits at or before the settlement date must contribute
+      -- zero to the leg's NPV (testExCouponCashFlow); unlike the two tests above, this needs an
+      -- actual 'Leg' (for 'CF.npv'), so it goes through 'multipleResetsLeg' rather than the
+      -- standalone constructor. 'multipleResetsLeg's outer schedule carries the *sub-fixing*
+      -- dates (one coupon per 'resets'-sized group of periods, matching upstream's own
+      -- 'createMultipleResetsLeg', which reuses its monthly 'createSchedule' this way) -- so a
+      -- 6-period monthly schedule with resets=6 gives the single 6-month coupon this test wants.
+      it "an ex-coupon multiple-resets cash flow contributes zero to leg NPV (testExCouponCashFlow)" $
+        bracket_ clearAllFixingHistories clearAllFixingHistories $ Settings.keepingSettings' $ do
+          (cal, dc, euribor, curve) <- mrFixture
+          let today' = 15 `march` 2021
+              start = addGregorianMonthsClip (-6) today'
+          outerSch <- mrSchedule cal start today'
+          leg <- CF.multipleResetsLeg outerSch euribor 6 dc ModifiedFollowing
+            CF.defaultMultipleResetsLegOpts { CF.mrlNotionals = 1.0 NE.:| []
+              , CF.mrlExCouponPeriod = (2, Days), CF.mrlExCouponCalendar = Just cal
+              , CF.mrlPaymentLag = 1 }
+          npv <- CF.npv leg curve False (Just today') (Just today')
+          npv `shouldSatisfy` closePrec 0.0 1e-12
+
+      it "leg construction throws on mismatched notionals/fixing-days/gearings/spreads (testMultipleResetsLegConsistencyChecks)" $
+        bracket_ clearAllFixingHistories clearAllFixingHistories $ Settings.keepingSettings' $ do
+          (cal, dc, euribor, _) <- mrFixture
+          let today' = 15 `march` 2021
+          outerSch <- mrSchedule cal today' (addGregorianMonthsClip 12 today')
+          let build = CF.multipleResetsLeg outerSch euribor 6 dc ModifiedFollowing
+              validOpts = CF.defaultMultipleResetsLegOpts { CF.mrlNotionals = 1.0 NE.:| [] }
+          _ <- build validOpts
+          build validOpts { CF.mrlFixingDays = replicate 99 2 } `shouldThrow` anyException
+          build validOpts { CF.mrlGearings = replicate 99 1.0 } `shouldThrow` anyException
+          build validOpts { CF.mrlCouponSpreads = replicate 99 0.0 } `shouldThrow` anyException
+          build validOpts { CF.mrlRateSpreads = replicate 99 0.0 } `shouldThrow` anyException
 
     -- Exercises the CashFlow.chs analytics that InterestRateAndCashFlow's other tests never
     -- touch: the accrual-window/previous-next-flow getters, and the six function pairs that
