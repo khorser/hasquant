@@ -2075,6 +2075,50 @@ spec = do
           fdV <- npv optInst
           (name, closePrec expected 0.2 fdV) `shouldBe` (name, True)
 
+  -- Ported from forwardoption.cpp's testHestonMCPrices, "Test 1": a near-zero-vol-of-vol Heston
+  -- process (kappa/sigma = 1e-8) is observationally a flat Black-Scholes process, so its
+  -- MC-priced forward-starting option must reprice within upstream's own per-moneyness
+  -- tolerance of the closed-form ForwardVanillaEngine<AnalyticEuropeanEngine> price. Only this
+  -- self-contained sub-case is ported (not the file's second sub-case, which additionally
+  -- exercises AnalyticHestonForwardEuropeanEngine/AnalyticHestonEngine consistency at reset=0 —
+  -- out of scope for "MC forward Heston engine" coverage specifically).
+  describe "MC forward Heston engine" $
+    it "reproduces forwardoption.cpp's testHestonMCPrices flat-Heston-vs-analytic-BS case" $
+      Settings.keepingSettings' $ do
+        let today = 2 `january` 2024
+            maturity = addGregorianYearsClip 1 today
+            reset = addDays 182 today
+            q = 0.04; r = 0.01; sigmaBs = 0.245; s = 100.0 :: Double
+            v0 = sigmaBs * sigmaBs; kappa = 1.0e-8; theta = sigmaBs * sigmaBs; sigma = 1.0e-8; rho = -0.93 :: Double
+            moneyness = [0.8, 0.9, 1.0, 1.1, 1.2 :: Double]
+            tolCall = [7.0e-4, 8.0e-4, 6.0e-4, 5.0e-4, 5.0e-4]
+            tolPut = [6.0e-4, 5.0e-4, 6.0e-4, 1.0e-3, 1.0e-3]
+        Settings.setEvaluationDate (Just today)
+        dc <- dayCounter (Actual360 False)
+        rQ <- simpleQuote r
+        qQ <- simpleQuote q
+        rTS <- flatForward today rQ dc Continuous Annual
+        qTS <- flatForward today qQ dc Continuous Annual
+        volQ <- simpleQuote sigmaBs
+        cal <- calendar Null
+        volTS <- blackConstantVol today cal volQ dc
+        spotQ <- simpleQuote s
+        bsProcess <- blackScholesMertonProcess spotQ qTS rTS volTS EulerDiscretization False
+        analyticEngine <- forwardEuropeanEngine bsProcess
+        hp <- hestonProcess rTS (Just qTS) spotQ v0 kappa theta sigma rho QuadraticExponentialMartingale
+        mcEngine <- mcForwardEuropeanHestonEngine LowDiscrepancy Statistics hp (Just 50) Nothing False (Just 4095) Nothing Nothing 42 False
+        forM_ [(Call, tolCall), (Put, tolPut)] $ \(optType, tols) ->
+          forM_ (zip moneyness tols) $ \(mny, tol) -> do
+            let payoff = PlainVanilla (PlainVanillaPayoff optType 0.0)
+                exercise = European (EuropeanExercise maturity)
+            opt <- forwardVanillaOption mny reset payoff exercise
+            setPricingEngine opt analyticEngine
+            analyticPrice <- npv opt
+            setPricingEngine opt mcEngine
+            mcPrice <- npv opt
+            let relErr = abs (analyticPrice - mcPrice) / s
+            (mny, relErr <= tol) `shouldBe` (mny, True)
+
   -- Ported from americanoption.cpp's testFDShoutNPV (golden-value table), testZeroVolFDShoutNPV
   -- and testLargeDividendShoutNPV (both self-consistency).
   describe "FdBlackScholesShoutEngine" $ do
