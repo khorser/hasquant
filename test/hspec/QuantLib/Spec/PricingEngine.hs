@@ -32,7 +32,8 @@ import QuantLib.Instrument.CapFloor(cap)
 import QuantLib.Instrument.Swap(varianceSwap, vanillaSwap, floatingLeg, SwapType(..))
 import QuantLib.Process hiding(blackScholesTheta)
 import QuantLib.Model hiding(setPricingEngine, value)
-import QuantLib.Math(RngTrait(..), StatisticsTrait(..), PolynomialType(..), BinomialTree(..), FdmScheme(..), realMatrix, ComplexLogFormula(..))
+import QuantLib.Math(RngTrait(..), StatisticsTrait(..), PolynomialType(..), BinomialTree(..), FdmScheme(..), realMatrix, ComplexLogFormula(..)
+  ,SobolDirectionIntegers(..), realMatrixRows, realMatrixColumns, realMatrixData)
 import QuantLib.Method(fdmBlackScholesMesher, fdmMesherComposite, fdmMesherLocations)
 import QuantLib.PricingEngine
 
@@ -2221,3 +2222,98 @@ spec = do
         rDivDateDf <- discount' rTS divDate True
         let expected = refNPV * rMaturityDf / rDivDateDf
         calculated `shouldSatisfy` closePrec expected 5.0e-2
+
+  -- Ported from test/smoke/HestonSLVModels.hs (deleted -- it exercised no marshalling/pointer
+  -- concern hspec can't express as well, per AGENTS.md's Hspec-vs-smoke test-placement rule),
+  -- itself built to reproduce hestonslvmodel.cpp's model-construction fixture. The density-grid
+  -- shape check (rows = varianceGrid length, cols = spotGrid length) is the first real
+  -- verification of the 'RealMatrix' layout review item B4 flagged as unverified inference; the
+  -- trailing @logging = False@ check pins B0 (an empty log used to enumerate as a 'Word', so
+  -- @n - 1@ at @n == 0@ underflowed to 'maxBound' -- see 'hestonSLVFDMLogEntries''s haddock).
+  describe "HestonSLV model" $ do
+    it "builds MC/FDM Heston-SLV models with a consistent density-grid layout (LONG)" $
+      Settings.keepingSettings' $ do
+        let today = 5 `march` 2016
+        Settings.setEvaluationDate (Just today)
+        dc <- dayCounter Actual365FixedStandard
+        rQ <- simpleQuote 0.01
+        qQ <- simpleQuote 0.02
+        rTS <- flatForward today rQ dc Continuous Annual
+        qTS <- flatForward today qQ dc Continuous Annual
+        s0 <- simpleQuote 100.0
+        localVolQ <- simpleQuote 0.3
+        hp <- hestonProcess rTS (Just qTS) s0 0.09 1.0 0.06 0.4 (-0.75) HestonFullTruncation
+        hm <- hestonModel hp
+        end <- addPeriod today (1, Years)
+        localVolTS <- localConstantVol today localVolQ dc
+        factory <- sobolBrownianGeneratorFactory Diagonal 1234 JoeKuoD7
+        mc <- hestonSLVMCModel localVolTS hm factory end 91 201 32768 [] 1.0
+        mcLeverage <- hestonSLVMCLeverageFunction mc
+        slv <- hestonSLVProcess hp mcLeverage 1.0
+        n <- factors slv
+        n `shouldBe` 2
+
+        let fdmParams = HestonSLVFokkerPlanckFdmParams
+              51 151 500 50 100.0 5 2 0.1 1.0e-4 10000
+              1.0e-5 1.0e-5 2.5e-6 1.0 0.1 0.9 1.0e-5
+              ZeroCorrelation Log ModifiedCraigSneyd
+        fdm <- hestonSLVFDMModel localVolTS hm end fdmParams True [] 1.0
+        fdmLeverage <- hestonSLVFDMLeverageFunction fdm
+        fdmVol <- localVol fdmLeverage end 100 True
+        fdmVol `shouldSatisfy` (\v -> v > 0 && not (isNaN v || isInfinite v))
+
+        logs <- hestonSLVFDMLogEntries fdm
+        case logs of
+          [] -> expectationFailure "FDM logging produced no diagnostic snapshots"
+          entry : _ -> do
+            let density = hestonSLVLogDensity entry
+                nVar = V.length (hestonSLVLogVarianceCoordinates entry)
+                nSpot = V.length (hestonSLVLogSpotCoordinates entry)
+            realMatrixRows density `shouldBe` fromIntegral nVar
+            realMatrixColumns density `shouldBe` fromIntegral nSpot
+            V.length (realMatrixData density) `shouldBe` nVar * nSpot
+
+        fdmNoLog <- hestonSLVFDMModel localVolTS hm end fdmParams False [] 1.0
+        noLogs <- hestonSLVFDMLogEntries fdmNoLog
+        noLogs `shouldBe` []
+
+    -- Ported from hestonslvmodel.cpp's testMonteCarloVsFdmPricing: the FD Heston-SLV engine's
+    -- price must be unaffected by a "mixing factor" applied to a differently-parameterized
+    -- Heston model paired with the same leverage function (mixingFactor scales the mixing
+    -- model's contribution toward zero, so the two engines are constructed to price
+    -- identically by upstream's own design). The Monte-Carlo leg of the same upstream test
+    -- (MCEuropeanHestonEngine<..., HestonSLVProcess>) isn't ported: 'HestonSLVProcess' is a
+    -- 'GenStochasticProcess' leaf outside the 'GenHestonProcess' family hasquant's
+    -- 'mcEuropeanHestonEngine' requires, so that specific engine/process combination isn't
+    -- constructible from hasquant's current bindings.
+    it "reproduces hestonslvmodel.cpp's testMonteCarloVsFdmPricing mixing-factor FDM consistency (LONG)" $
+      Settings.keepingSettings' $ do
+        let today = 5 `december` 2015
+            v0 = 0.19; kappa = 2.0; theta = 0.18; sigma = 0.8; rho = -0.75 :: Double
+            strikes = [100.0, 110.0 :: Double]
+        Settings.setEvaluationDate (Just today)
+        maturity <- addPeriod today (1, Years)
+        dc <- dayCounter ActualActualISDA
+        s0 <- simpleQuote 100.0
+        rQ <- simpleQuote 0.05
+        qQ <- simpleQuote 0.02
+        rTS <- flatForward today rQ dc Continuous Annual
+        qTS <- flatForward today qQ dc Continuous Annual
+        hp <- hestonProcess rTS (Just qTS) s0 v0 kappa theta sigma rho QuadraticExponentialMartingale
+        hm <- hestonModel hp
+        leverageQ <- simpleQuote 0.25
+        leverageFct <- localConstantVol today leverageQ dc
+        fdEngine <- fdHestonVanillaEngine hm 51 401 101 0 ModifiedCraigSneyd (Just leverageFct) 1.0
+
+        mixHp <- hestonProcess rTS (Just qTS) s0 v0 kappa theta (sigma * 10) rho QuadraticExponentialMartingale
+        mixHm <- hestonModel mixHp
+        fdEngineMix <- fdHestonVanillaEngine mixHm 51 401 101 0 ModifiedCraigSneyd (Just leverageFct) 0.1
+
+        forM_ strikes $ \strike -> do
+          opt <- vanillaOption (PlainVanilla (PlainVanillaPayoff Call strike)) (European (EuropeanExercise maturity))
+          optInst <- asOneAssetOption opt
+          setPricingEngine opt fdEngine
+          priceFDM <- npv optInst
+          setPricingEngine opt fdEngineMix
+          priceFDMWithMix <- npv optInst
+          (strike, priceFDMWithMix) `shouldBe` (strike, priceFDM)
