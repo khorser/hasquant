@@ -37,7 +37,7 @@ import qualified QuantLib.Index.Inflation as Inflation
 import qualified QuantLib.Index.Equity as Equity
 import QuantLib.Currency(currency, Ccy(..))
 import QuantLib.TermStructure.Yield
-import QuantLib.TermStructure.Volatility(blackConstantVol', constantOptionletVolatility, constantOptionletVolatility', constantSwaptionVolatility')
+import QuantLib.TermStructure.Volatility(blackConstantVol', constantOptionletVolatility, constantOptionletVolatility', constantSwaptionVolatility', flatSmileSection, SmileSection)
 import qualified QuantLib.Quote as Quote
 import qualified QuantLib.Instrument as Instr
 import qualified QuantLib.Instrument.Bond as Bond
@@ -1138,6 +1138,51 @@ spec evalDate = do
           nAtm <- CF.npv lAtm curve False Nothing Nothing
           nAtm `shouldSatisfy` relClose 1.0e-6 n1
 
+    -- Ported from test-suite/rangeaccrual.cpp's testInfiniteRange. Its only check with no
+    -- pinned literal: a range accrual coupon whose [lowerStrike, upperStrike] band spans the
+    -- whole real line must reprice to exactly the underlying index's own fixing, since the
+    -- observation indicator is then always 1 regardless of the smile/correlation inputs feeding
+    -- RangeAccrualPricerByBgm. Uses a flat curve/vol fixture rather than upstream's 46-node
+    -- ZeroCurve and full SABR/interpolated-vol-cube setup, since the property holds under any
+    -- consistent curve+smile pair; upstream's own rateTolerance (2.0e-8) is reused as-is.
+    describe "Range accrual coupon" $ do
+      let raRefDate = 6 `march` 2007
+          raNominal = 1.0 :: Double
+          raInfiniteLower = 1.0e-9 :: Double
+          raInfiniteUpper = 1.0 :: Double
+          raRateTolerance = 2.0e-8 :: Double
+
+          raFixture = do
+            Settings.setEvaluationDate (Just raRefDate)
+            cal <- calendar TARGET
+            dc <- dayCounter Actual365FixedStandard
+            rateQ <- Quote.simpleQuote 0.03
+            curve <- flatForward raRefDate rateQ dc IR.Continuous Annual
+            idx <- iborIndex Euribor6M (Just curve)
+            startDate <- advance cal raRefDate (10, Years) Following False
+            endDate <- advance cal startDate (6, Months) Following False
+            obsSchedule <- schedule (Just startDate) endDate (1, Months) cal ModifiedFollowing
+              ModifiedFollowing Forward False Nothing Nothing
+            smileOnExpiry <- flatSmileSection startDate 0.10 dc Nothing Nothing IR.ShiftedLognormal 0.0
+            smileOnPayment <- flatSmileSection endDate 0.10 dc Nothing Nothing IR.ShiftedLognormal 0.0
+            pure (cal, dc, curve, idx, startDate, endDate, obsSchedule, smileOnExpiry, smileOnPayment)
+
+      it "an infinite-range range-accrual coupon reprices to the plain index fixing" $
+        Settings.keepingSettings' $ do
+          (cal, dc, _, idx, startDate, endDate, obsSchedule, smileOnExpiry, smileOnPayment) <- raFixture
+          coupon <- CF.rangeAccrualFloatersCoupon endDate raNominal idx startDate endDate 2 dc
+            1.0 0.0 (Just startDate) (Just endDate) obsSchedule raInfiniteLower raInfiniteUpper
+          -- FloatingRateCoupon::fixingDate() itself steps back fixingDays business days from
+          -- the coupon's accrual start via Calendar::advance(..., Days, Preceding) -- same call
+          -- shape reused here since no accessor for it is bound.
+          fixingDate <- advance cal startDate (-2, Days) Preceding False
+          indexFixing <- forecastFixing idx fixingDate
+          forM_ ([(True, smileOnPayment), (False, smileOnPayment)] :: [(Bool, SmileSection)]) $ \(byCallSpread, smile) -> do
+            pricer <- CF.rangeAccrualPricerByBgm 1.0 smileOnExpiry smile True byCallSpread
+            CF.setFloatingRateCouponPricer coupon pricer
+            rate <- CF.floatingRateCouponRate coupon
+            rate `shouldSatisfy` closePrec indexFixing raRateTolerance
+
     -- No exact cached expected values apply here: test-suite/cms.cpp's own testFairRate is
     -- itself a self-consistency check (numerical/analytic Hagan agreement within a fixed
     -- tolerance, not a pinned rate), with LinearTsrPricer standing in for the last numerical
@@ -1268,7 +1313,7 @@ spec evalDate = do
       -- coupon wiring and by LognormalCmsSpreadPricer, whose result is then accepted by the
       -- generic floating-rate coupon wiring.  This is the concrete-base hierarchy path that
       -- requires CmsCouponPricer without exposing implementation-specific Hagan/TSR leaves.
-      it "CMS-spread coupons reproduce the geared component fixing, including caps" $
+      it "CMS-spread coupons reproduce the geared component fixing, including caps/floors/collars" $
         Settings.keepingSettings' $ do
           let spreadRefDate = 23 `february` 2018
           Settings.setEvaluationDate (Just spreadRefDate)
@@ -1290,25 +1335,35 @@ spec evalDate = do
           payDate <- addPeriod valueDate (1, Years)
           let coupon idx = CF.cmsCoupon payDate 10000 valueDate payDate 2 idx
                 1.0 0.0 Nothing Nothing dc False Nothing Preceding
-              spreadCoupon mCap = CF.cappedFlooredCmsSpreadCoupon payDate 10000 valueDate payDate 2 cms10y2y
-                1.0 0.0 mCap Nothing Nothing Nothing dc False Nothing Preceding
+              spreadCoupon mCap mFloor = CF.cappedFlooredCmsSpreadCoupon payDate 10000 valueDate payDate 2 cms10y2y
+                1.0 0.0 mCap mFloor Nothing Nothing dc False Nothing Preceding
           cms10Coupon <- coupon cms10y
           cms2Coupon <- coupon cms2y
           plainCoupon <- CF.cmsSpreadCoupon payDate 10000 valueDate payDate 2 cms10y2y
             1.0 0.0 Nothing Nothing dc False Nothing Preceding
-          cappedCoupon <- spreadCoupon (Just 0.015)
+          cappedCoupon <- spreadCoupon (Just 0.015) Nothing
+          -- Floor 0.03 is above the uncapped fixing-implied rate (0.05 - 0.03 = 0.02, matching
+          -- cmsspread.cpp::testCouponPricing's cappedCpn/flooredCpn pair), so it must bite.
+          flooredCoupon <- spreadCoupon Nothing (Just 0.03)
+          collaredCoupon <- spreadCoupon (Just 0.045) (Just 0.03)
           CF.setFloatingRateCouponPricer cms10Coupon cmsPricer
           CF.setFloatingRateCouponPricer cms2Coupon cmsPricer
           CF.setFloatingRateCouponPricer plainCoupon spreadPricer
           CF.setFloatingRateCouponPricer cappedCoupon spreadPricer
+          CF.setFloatingRateCouponPricer flooredCoupon spreadPricer
+          CF.setFloatingRateCouponPricer collaredCoupon spreadPricer
           addFixing cms10y spreadRefDate 0.05 False
           addFixing cms2y spreadRefDate 0.03 False
           rate10 <- CF.floatingRateCouponRate cms10Coupon
           rate2 <- CF.floatingRateCouponRate cms2Coupon
           plainRate <- CF.floatingRateCouponRate plainCoupon
           cappedRate <- CF.floatingRateCouponRate cappedCoupon
+          flooredRate <- CF.floatingRateCouponRate flooredCoupon
+          collaredRate <- CF.floatingRateCouponRate collaredCoupon
           plainRate `shouldSatisfy` closePrec 1.0e-12 (rate10 - rate2)
           cappedRate `shouldSatisfy` closePrec 1.0e-12 0.015
+          flooredRate `shouldSatisfy` closePrec 1.0e-12 0.03
+          collaredRate `shouldSatisfy` closePrec 1.0e-12 0.03
           clearFixings cms10y
           clearFixings cms2y
 
