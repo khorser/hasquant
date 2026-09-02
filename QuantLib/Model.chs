@@ -124,6 +124,7 @@ import QuantLib.Internal
 import QuantLib.Internal.Type
 import QuantLib.Internal.Common
 import QuantLib.Math(SobolDirectionIntegers)
+import Data.List(genericTake)
 import Data.List.NonEmpty(NonEmpty, toList)
 
 {#enum CalibrationErrorType{} deriving(Show, Eq, Read)#}
@@ -365,7 +366,7 @@ hestonSLVFDMLogEntries :: HestonSLVFDMModel -> IO [HestonSLVFDMLogEntry]
 hestonSLVFDMLogEntries model = do
   snapshot <- hestonSLVFDMLogEntriesSnapshot model
   let n = hestonSLVFDMLogEntriesSize snapshot
-  mapM (hestonSLVFDMLogEntry snapshot) [0 .. n - 1]
+  mapM (hestonSLVFDMLogEntry snapshot) (genericTake n [0 ..])
 
 hestonSLVFDMLogEntry :: HestonSLVFDMLogEntries -> Word -> IO HestonSLVFDMLogEntry
 hestonSLVFDMLogEntry snapshot i = do
