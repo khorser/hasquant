@@ -2074,3 +2074,106 @@ spec = do
           setPricingEngine opt fdEngine
           fdV <- npv optInst
           (name, closePrec expected 0.2 fdV) `shouldBe` (name, True)
+
+  -- Ported from americanoption.cpp's testFDShoutNPV (golden-value table), testZeroVolFDShoutNPV
+  -- and testLargeDividendShoutNPV (both self-consistency).
+  describe "FdBlackScholesShoutEngine" $ do
+    it "reproduces americanoption.cpp's testFDShoutNPV" $
+      Settings.keepingSettings' $ do
+        let today = 4 `february` 2021
+            cases =
+              [ (Put, 105.0 :: Double, 19.136 :: Double)
+              , (Call, 105.0, 28.211)
+              , (Put, 120.0, 28.02)
+              , (Call, 80.0, 40.785)
+              ]
+        Settings.setEvaluationDate (Just today)
+        dc <- dayCounter Actual365FixedStandard
+        s0 <- simpleQuote 100.0
+        qQ <- simpleQuote 0.03
+        rQ <- simpleQuote 0.06
+        volQ <- simpleQuote 0.25
+        qTS <- flatForward today qQ dc Continuous Annual
+        rTS <- flatForward today rQ dc Continuous Annual
+        tgt <- calendar TARGET
+        volTS <- blackConstantVol today tgt volQ dc
+        process <- blackScholesMertonProcess s0 qTS rTS volTS EulerDiscretization False
+        maturity <- addPeriod today (5, Years)
+        engine <- fdBlackScholesShoutEngine process 400 200 0 Hundsdorfer
+        forM_ cases $ \(ty, strike, expected) -> do
+          opt <- vanillaOption (PlainVanilla (PlainVanillaPayoff ty strike)) (American Nothing maturity False)
+          optInst <- asOneAssetOption opt
+          setPricingEngine opt engine
+          v <- npv optInst
+          v `shouldSatisfy` closePrec expected 2.0e-2
+
+    it "reproduces americanoption.cpp's testZeroVolFDShoutNPV (shout with a discrete dividend matches the American NPV once undiscounted through the ex-date)" $
+      Settings.keepingSettings' $ do
+        let today = 14 `february` 2021
+        Settings.setEvaluationDate (Just today)
+        dc <- dayCounter Actual365FixedStandard
+        s0 <- simpleQuote 100.0
+        qQ <- simpleQuote 0.03
+        rQ <- simpleQuote 0.07
+        volQ <- simpleQuote 1.0e-6
+        qTS <- flatForward today qQ dc Continuous Annual
+        rTS <- flatForward today rQ dc Continuous Annual
+        tgt <- calendar TARGET
+        volTS <- blackConstantVol today tgt volQ dc
+        process <- blackScholesMertonProcess s0 qTS rTS volTS EulerDiscretization False
+        maturity <- addPeriod today (1, Years)
+        divDate <- addPeriod today (3, Months)
+        dividends <- sequence [fixedDividend 10.0 divDate]
+
+        americanOpt <- vanillaOption (PlainVanilla (PlainVanillaPayoff Put 100.0)) (American (Just today) maturity False)
+        americanInst <- asOneAssetOption americanOpt
+        americanEngine <- fdBlackScholesVanillaEngine' process dividends 50 50 1 Douglas False 0.0 CashDividendSpot
+        setPricingEngine americanOpt americanEngine
+        americanNPV <- npv americanInst
+
+        shoutOpt <- vanillaOption (PlainVanilla (PlainVanillaPayoff Put 100.0)) (American (Just today) maturity False)
+        shoutInst <- asOneAssetOption shoutOpt
+        shoutEngine <- fdBlackScholesShoutEngine' process dividends 50 50 0 Hundsdorfer
+        setPricingEngine shoutOpt shoutEngine
+        shoutNPV <- npv shoutInst
+
+        rMaturityDf <- discount' rTS maturity True
+        rDivDateDf <- discount' rTS divDate True
+        let df = rMaturityDf / rDivDateDf
+        (shoutNPV / df) `shouldSatisfy` closePrec americanNPV 1.0e-3
+
+    it "reproduces americanoption.cpp's testLargeDividendShoutNPV" $
+      Settings.keepingSettings' $ do
+        let today = 21 `february` 2021
+            strike = 80.0 :: Double
+        Settings.setEvaluationDate (Just today)
+        dc <- dayCounter Actual365FixedStandard
+        s0 <- simpleQuote 100.0
+        qQ <- simpleQuote 0.0
+        rQ <- simpleQuote 0.0
+        volQ <- simpleQuote 0.25
+        qTS <- flatForward today qQ dc Continuous Annual
+        rTS <- flatForward today rQ dc Continuous Annual
+        tgt <- calendar TARGET
+        volTS <- blackConstantVol today tgt volQ dc
+        process <- blackScholesMertonProcess s0 qTS rTS volTS EulerDiscretization False
+        maturity <- addPeriod today (6, Months)
+        divDate <- addPeriod today (3, Months)
+        dividends <- sequence [fixedDividend 30.0 divDate]
+
+        opt <- vanillaOption (PlainVanilla (PlainVanillaPayoff Call strike)) (American (Just today) maturity False)
+        optInst <- asOneAssetOption opt
+        engine <- fdBlackScholesShoutEngine' process dividends 100 400 0 Hundsdorfer
+        setPricingEngine opt engine
+        calculated <- npv optInst
+
+        refOpt <- vanillaOption (PlainVanilla (PlainVanillaPayoff Call strike)) (American (Just today) divDate False)
+        refInst <- asOneAssetOption refOpt
+        refEngine <- fdBlackScholesShoutEngine process 100 400 0 Hundsdorfer
+        setPricingEngine refOpt refEngine
+        refNPV <- npv refInst
+
+        rMaturityDf <- discount' rTS maturity True
+        rDivDateDf <- discount' rTS divDate True
+        let expected = refNPV * rMaturityDf / rDivDateDf
+        calculated `shouldSatisfy` closePrec expected 5.0e-2
