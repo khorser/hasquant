@@ -1940,3 +1940,137 @@ spec = do
         fdndim2V <- npv crossOpt
         fdndim1V `shouldSatisfy` closePrec fd2dV 0.1
         fdndim2V `shouldSatisfy` closePrec fd2dV 0.1
+
+  -- Ported from hestonmodel.cpp's testAlanLewisReferencePrices (COS-engine case only; the
+  -- other six engines checked against the same table upstream aren't re-derived here) and
+  -- testCosHestonEngineTruncation. Alan Lewis's posted reference prices
+  -- (http://wilmott.com/messageview.cfm?catid=34&threadid=90957) are checked at upstream's own
+  -- 1e-12 relative tolerance -- the tightest golden-value check in this file -- so 'closePrec'
+  -- (an absolute-tolerance helper) isn't reused; tolerance is scaled to each expected value
+  -- inline instead, per CLAUDE.md's "scale a numeric tolerance to the magnitude of the value"
+  -- rule.
+  describe "COS Heston engine" $ do
+    let closeRel expected relTol actual = abs (actual - expected) < relTol * abs expected
+
+    it "reproduces hestonmodel.cpp's testAlanLewisReferencePrices" $
+      Settings.keepingSettings' $ do
+        let today = 5 `july` 2002
+            maturity = 5 `july` 2003
+            v0 = 0.04; kappa = 4.0; theta = 0.25; sigma = 1.0; rho = -0.5 :: Double
+            cases =
+              [ (80.0 :: Double, 7.958878113256768285213263077598987193482161301733 :: Double, 26.774758743998854221382195325726949201687074848341 :: Double)
+              , (90.0, 12.017966707346304987709573290236471654992071308187, 20.933349000596710388139445766564068085476194042256)
+              , (100.0, 17.055270961270109413522653999411000974895436309183, 16.070154917028834278213466703938231827658768230714)
+              , (110.0, 23.017825898442800538908781834822560777763225722188, 12.132211516709844867860534767549426052805766831181)
+              , (120.0, 29.811026202682471843340682293165857439167301370697, 9.024913483457835636553375454092357136489051667150)
+              ]
+        Settings.setEvaluationDate (Just today)
+        dc <- dayCounter Actual365FixedStandard
+        rQ <- simpleQuote 0.01
+        qQ <- simpleQuote 0.02
+        rTS <- flatForward today rQ dc Continuous Annual
+        qTS <- flatForward today qQ dc Continuous Annual
+        s0 <- simpleQuote 100.0
+        hp <- hestonProcess rTS (Just qTS) s0 v0 kappa theta sigma rho QuadraticExponentialMartingale
+        hm <- hestonModel hp
+        engine <- cosHestonEngine hm 20.0 400
+        forM_ cases $ \(strike, expectedPut, expectedCall) -> do
+          putOpt <- vanillaOption (PlainVanilla (PlainVanillaPayoff Put strike)) (European (EuropeanExercise maturity))
+          setPricingEngine putOpt engine
+          putInst <- asOneAssetOption putOpt
+          putV <- npv putInst
+          putV `shouldSatisfy` closeRel expectedPut 1.0e-12
+
+          callOpt <- vanillaOption (PlainVanilla (PlainVanillaPayoff Call strike)) (European (EuropeanExercise maturity))
+          setPricingEngine callOpt engine
+          callInst <- asOneAssetOption callOpt
+          callV <- npv callInst
+          callV `shouldSatisfy` closeRel expectedCall 1.0e-12
+
+    it "reproduces hestonmodel.cpp's testCosHestonEngineTruncation (near-zero deep OTM price)" $
+      Settings.keepingSettings' $ do
+        let today = 22 `august` 2022
+            maturity = 23 `august` 2022
+        Settings.setEvaluationDate (Just today)
+        dc <- dayCounter Actual365FixedStandard
+        rQ <- simpleQuote 0.0
+        qQ <- simpleQuote 0.0
+        rTS <- flatForward today rQ dc Continuous Annual
+        qTS <- flatForward today qQ dc Continuous Annual
+        s0 <- simpleQuote 100.0
+        hp <- hestonProcess rTS (Just qTS) s0 0.007 0.8 0.007 0.1 (-0.2) QuadraticExponentialMartingale
+        hm <- hestonModel hp
+        -- upstream calls COSHestonEngine(model) with no explicit L/N, taking its defaults (16, 200)
+        engine <- cosHestonEngine hm 16.0 200
+        opt <- vanillaOption (PlainVanilla (PlainVanillaPayoff Call 200.0)) (European (EuropeanExercise maturity))
+        setPricingEngine opt engine
+        optInst <- asOneAssetOption opt
+        v <- npv optInst
+        v `shouldSatisfy` closePrec 0.0 1.0e-7
+
+  -- Ported from hestonmodel.cpp's testAnalyticPDFHestonEngine (plain-vanilla case only; the
+  -- digital-via-call-spread case in the same upstream test isn't re-derived here). Self-
+  -- consistency: the transition-density integration engine must reprice a plain vanilla call
+  -- to within upstream's tolerance of the semi-analytic AnalyticHestonEngine.
+  describe "Analytic PDF Heston engine" $
+    it "reproduces hestonmodel.cpp's testAnalyticPDFHestonEngine plain-vanilla case" $
+      Settings.keepingSettings' $ do
+        let today = 5 `january` 2014
+            maturity = 5 `july` 2014
+        Settings.setEvaluationDate (Just today)
+        dc <- dayCounter Actual365FixedStandard
+        rQ <- simpleQuote 0.07
+        qQ <- simpleQuote 0.185
+        rTS <- flatForward today rQ dc Continuous Annual
+        qTS <- flatForward today qQ dc Continuous Annual
+        s0 <- simpleQuote 100.0
+        hp <- hestonProcess rTS (Just qTS) s0 0.1 4.0 0.05 1.0 (-0.5) QuadraticExponentialMartingale
+        hm <- hestonModel hp
+        pdfEngine <- analyticPdfHestonEngine hm 1.0e-6 10000
+        analyticEngine <- analyticHestonEngine' hm 178
+        forM_ [40.0, 60.0 .. 180.0 :: Double] $ \strike -> do
+          opt <- vanillaOption (PlainVanilla (PlainVanillaPayoff Call strike)) (European (EuropeanExercise maturity))
+          optInst <- asOneAssetOption opt
+          setPricingEngine opt analyticEngine
+          expected <- npv optInst
+          setPricingEngine opt pdfEngine
+          calculated <- npv optInst
+          calculated `shouldSatisfy` closePrec expected 3.0e-6
+
+  -- Ported from batesmodel.cpp's testAnalyticVsMCPricing (FD-vs-analytic case only; the
+  -- Monte-Carlo-vs-analytic comparison in the same upstream test isn't re-derived here).
+  -- Self-consistency: the partial-integro finite-difference engine must reprice within 0.2
+  -- (upstream's own absolute tolerance) of the semi-analytic BatesEngine, across upstream's
+  -- four named model fixtures.
+  describe "FD Bates vanilla engine" $
+    it "reproduces batesmodel.cpp's testAnalyticVsMCPricing FD-vs-analytic case" $
+      Settings.keepingSettings' $ do
+        let today = 30 `march` 2007
+            maturity = 30 `march` 2012
+            strike = 100.0 :: Double
+            lambda = 2.0; nu = -0.2; delta = 0.1 :: Double
+            cases =
+              [ ("t'Hout case 1" :: String, 0.04 :: Double, 1.5 :: Double, 0.04 :: Double, 0.3 :: Double, -0.9 :: Double, 0.025 :: Double, 0.0 :: Double)
+              , ("Ikonen-Toivanen", 0.0625, 5.0, 0.16, 0.9, 0.1, 0.1, 0.0)
+              , ("Kahl-Jaeckel", 0.16, 1.0, 0.16, 2.0, -0.8, 0.0, 0.0)
+              , ("Equity case", 0.07, 2.0, 0.04, 0.55, -0.8, 0.03, 0.035)
+              ]
+        Settings.setEvaluationDate (Just today)
+        dc <- dayCounter ActualActualISDA
+        forM_ cases $ \(name, v0, kappa, theta, sigma, rho, r, q) -> do
+          rQ <- simpleQuote r
+          qQ <- simpleQuote q
+          rTS <- flatForward today rQ dc Continuous Annual
+          qTS <- flatForward today qQ dc Continuous Annual
+          s0 <- simpleQuote 100.0
+          bp <- batesProcess rTS qTS s0 v0 kappa theta sigma rho lambda nu delta QuadraticExponentialMartingale
+          bm <- batesModel bp
+          fdEngine <- fdBatesVanillaEngine bm 50 100 30 0 Hundsdorfer
+          analyticEngine <- batesEngine bm 160
+          opt <- vanillaOption (PlainVanilla (PlainVanillaPayoff Put strike)) (European (EuropeanExercise maturity))
+          optInst <- asOneAssetOption opt
+          setPricingEngine opt analyticEngine
+          expected <- npv optInst
+          setPricingEngine opt fdEngine
+          fdV <- npv optInst
+          (name, closePrec expected 0.2 fdV) `shouldBe` (name, True)
