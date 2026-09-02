@@ -13,3 +13,5 @@ stack.yaml.lock
 tags
 .aider*
 .cecli*
+app/SofrXva/example-data/_*
+tools/__pycache__/
