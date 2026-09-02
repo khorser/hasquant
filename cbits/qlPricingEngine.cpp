@@ -1184,13 +1184,34 @@ HestonSLVFDMLogEntries* qlHestonSLVFDMModelLogEntries(QlHestonSLVFDMModel* o, ch
   } catch (std::exception& er) {return handleException<HestonSLVFDMLogEntries*>(e, er);}}
 void qlFreeHestonSLVFDMLogEntries(HestonSLVFDMLogEntries* o) {delete o;}
 unsigned qlHestonSLVFDMLogEntriesSize(HestonSLVFDMLogEntries* o) {return (unsigned)o->entries.size();}
-double qlHestonSLVFDMLogEntriesTime(HestonSLVFDMLogEntries* o, unsigned i) {return o->entries.at(i).time;}
-void qlHestonSLVFDMLogEntriesSpotGrid(HestonSLVFDMLogEntries* o, unsigned i, unsigned* len, double** values) {
-  const auto& x = o->entries.at(i).spotGrid; *len = (unsigned)x.size(); *values = qlAllocateDoubles(*len); std::copy(x.begin(), x.end(), *values);}
-void qlHestonSLVFDMLogEntriesVarianceGrid(HestonSLVFDMLogEntries* o, unsigned i, unsigned* len, double** values) {
-  const auto& x = o->entries.at(i).varianceGrid; *len = (unsigned)x.size(); *values = qlAllocateDoubles(*len); std::copy(x.begin(), x.end(), *values);}
-void qlHestonSLVFDMLogEntriesDensity(HestonSLVFDMLogEntries* o, unsigned i, unsigned* rows, unsigned* cols, unsigned* len, double** values) {
-  const auto& e = o->entries.at(i); *rows = (unsigned)e.varianceGrid.size(); *cols = (unsigned)e.spotGrid.size(); *len = (unsigned)e.density.size(); *values = qlAllocateDoubles(*len); std::copy(e.density.begin(), e.density.end(), *values);}
+double qlHestonSLVFDMLogEntriesTime(HestonSLVFDMLogEntries* o, unsigned i, char **e) {
+  try {return o->entries.at(i).time;
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+void qlHestonSLVFDMLogEntriesSpotGrid(HestonSLVFDMLogEntries* o, unsigned i, unsigned* len, double** values, char **e) {
+  *len = 0; *values = nullptr;
+  try {
+    const auto& x = o->entries.at(i).spotGrid;
+    double *out = qlAllocateDoubles((unsigned)x.size());
+    std::copy(x.begin(), x.end(), out);
+    *len = (unsigned)x.size(); *values = out;
+  } catch (std::exception& er) {*e = tracedup(er.what());}}
+void qlHestonSLVFDMLogEntriesVarianceGrid(HestonSLVFDMLogEntries* o, unsigned i, unsigned* len, double** values, char **e) {
+  *len = 0; *values = nullptr;
+  try {
+    const auto& x = o->entries.at(i).varianceGrid;
+    double *out = qlAllocateDoubles((unsigned)x.size());
+    std::copy(x.begin(), x.end(), out);
+    *len = (unsigned)x.size(); *values = out;
+  } catch (std::exception& er) {*e = tracedup(er.what());}}
+void qlHestonSLVFDMLogEntriesDensity(HestonSLVFDMLogEntries* o, unsigned i, unsigned* rows, unsigned* cols, unsigned* len, double** values, char **e) {
+  *rows = 0; *cols = 0; *len = 0; *values = nullptr;
+  try {
+    const auto& entry = o->entries.at(i);
+    double *out = qlAllocateDoubles((unsigned)entry.density.size());
+    std::copy(entry.density.begin(), entry.density.end(), out);
+    *rows = (unsigned)entry.varianceGrid.size(); *cols = (unsigned)entry.spotGrid.size();
+    *len = (unsigned)entry.density.size(); *values = out;
+  } catch (std::exception& er) {*e = tracedup(er.what());}}
 void qlFreeBatesModel(QlBatesModel *o) {del(o);}
 void qlFreePiecewiseTimeDependentHestonModel(QlPiecewiseTimeDependentHestonModel *o) {del(o);}
 void qlFreeShortRateModel(QlShortRateModel *o) {del(o);}

@@ -370,7 +370,7 @@ hestonSLVFDMLogEntries model = do
 
 hestonSLVFDMLogEntry :: HestonSLVFDMLogEntries -> Word -> IO HestonSLVFDMLogEntry
 hestonSLVFDMLogEntry snapshot i = do
-  let t = hestonSLVFDMLogEntriesTime snapshot i
+  t <- hestonSLVFDMLogEntriesTime snapshot i
   x <- hestonSLVFDMLogEntriesSpotGrid snapshot i
   v <- hestonSLVFDMLogEntriesVarianceGrid snapshot i
   (r, c, d) <- hestonSLVFDMLogEntriesDensity snapshot i
@@ -378,10 +378,10 @@ hestonSLVFDMLogEntry snapshot i = do
 
 {#fun qlHestonSLVFDMModelLogEntries as hestonSLVFDMLogEntriesSnapshot{withHestonSLVFDMModel*`HestonSLVFDMModel',preErrorCheck-`String'errorCheck*-}->`HestonSLVFDMLogEntries'peekHestonSLVFDMLogEntries*#}
 {#fun pure qlHestonSLVFDMLogEntriesSize as hestonSLVFDMLogEntriesSize{withHestonSLVFDMLogEntries*`HestonSLVFDMLogEntries'}->`Word'fromIntegral#}
-{#fun pure qlHestonSLVFDMLogEntriesTime as hestonSLVFDMLogEntriesTime{withHestonSLVFDMLogEntries*`HestonSLVFDMLogEntries',fromIntegral`Word'}->`Double'#}
-{#fun qlHestonSLVFDMLogEntriesSpotGrid as hestonSLVFDMLogEntriesSpotGrid{withHestonSLVFDMLogEntries*`HestonSLVFDMLogEntries',fromIntegral`Word',preArray-`RealVector'&peekRealVector*}->`()'#}
-{#fun qlHestonSLVFDMLogEntriesVarianceGrid as hestonSLVFDMLogEntriesVarianceGrid{withHestonSLVFDMLogEntries*`HestonSLVFDMLogEntries',fromIntegral`Word',preArray-`RealVector'&peekRealVector*}->`()'#}
-{#fun qlHestonSLVFDMLogEntriesDensity as hestonSLVFDMLogEntriesDensity{withHestonSLVFDMLogEntries*`HestonSLVFDMLogEntries',fromIntegral`Word',prePtr-`Word'peekWord*,prePtr-`Word'peekWord*,preArray-`RealVector'&peekRealVector*}->`()'#}
+{#fun qlHestonSLVFDMLogEntriesTime as hestonSLVFDMLogEntriesTime{withHestonSLVFDMLogEntries*`HestonSLVFDMLogEntries',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlHestonSLVFDMLogEntriesSpotGrid as hestonSLVFDMLogEntriesSpotGrid{withHestonSLVFDMLogEntries*`HestonSLVFDMLogEntries',fromIntegral`Word',preArray-`RealVector'&peekRealVector*,preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlHestonSLVFDMLogEntriesVarianceGrid as hestonSLVFDMLogEntriesVarianceGrid{withHestonSLVFDMLogEntries*`HestonSLVFDMLogEntries',fromIntegral`Word',preArray-`RealVector'&peekRealVector*,preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlHestonSLVFDMLogEntriesDensity as hestonSLVFDMLogEntriesDensity{withHestonSLVFDMLogEntries*`HestonSLVFDMLogEntries',fromIntegral`Word',prePtr-`Word'peekWord*,prePtr-`Word'peekWord*,preArray-`RealVector'&peekRealVector*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Single-factor Hull-White (extended Vasicek) short-rate model: dr = (theta(t) - a r) dt + sigma dW, fitted to the given term structure.
 {#fun qlHullWhite as hullWhite{withYieldTermStructure*`GenYieldTermStructure y',`Double' -- ^y
