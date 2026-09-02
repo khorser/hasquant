@@ -145,6 +145,14 @@ namespace {
       default: QL_FAIL("unknown replication type " << type);
     }
   }
+  int qlReplicationTypeOut(Replication::Type type) {
+    switch (type) {
+      case Replication::Sub: return hasquant::ReplicationSub;
+      case Replication::Central: return hasquant::ReplicationCentral;
+      case Replication::Super: return hasquant::ReplicationSuper;
+      default: QL_FAIL("unknown replication type " << type);
+    }
+  }
   // SecondaryCosts = map<string, ext::any>, used with exactly two concrete alternatives
   // (CommodityUnitCost/Money -- see energycommodity.cpp's two any_cast branches), bound as a real
   // 2-variant sum: scIsUnitCost[i] selects which of (scAmounts[i], scCurrencies[i]) alone (Money)
@@ -1711,7 +1719,7 @@ void qlFreeDigitalReplication(QlDigitalReplication *o) {del(o);}
 QlDigitalReplication* qlDigitalReplication(int type, double gap, char **e) {
   try {return ret(new QlDigitalReplication(alloc(new DigitalReplication(qlReplicationType(type), gap))));
   } catch (std::exception& er) {return handleException<QlDigitalReplication*>(e, er);}}
-int qlDigitalReplicationType(QlDigitalReplication* o) {return (*arg(o))->replicationType();}
+int qlDigitalReplicationType(QlDigitalReplication* o) {return qlReplicationTypeOut((*arg(o))->replicationType());}
 double qlDigitalReplicationGap(QlDigitalReplication* o) {return (*arg(o))->gap();}
 
 void qlFreeDigitalCmsCoupon(QlDigitalCmsCoupon *o) {del(o);}
