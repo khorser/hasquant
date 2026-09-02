@@ -36,6 +36,15 @@
 #include <ql/pricingengines/barrier/fdhestondoublebarrierengine.hpp>
 #include <ql/pricingengines/basket/kirkengine.hpp>
 #include <ql/pricingengines/basket/stulzengine.hpp>
+#include <ql/pricingengines/basket/bjerksundstenslandspreadengine.hpp>
+#include <ql/pricingengines/basket/operatorsplittingspreadengine.hpp>
+#include <ql/pricingengines/basket/pearsonspreadengine.hpp>
+#include <ql/pricingengines/basket/gaussiancopulaspreadengine.hpp>
+#include <ql/pricingengines/basket/fd2dblackscholesvanillaengine.hpp>
+#include <ql/pricingengines/basket/choibasketengine.hpp>
+#include <ql/pricingengines/basket/denglizhoubasketengine.hpp>
+#include <ql/pricingengines/basket/fdndimblackscholesvanillaengine.hpp>
+#include <ql/pricingengines/basket/singlefactorbsmbasketengine.hpp>
 #include <ql/pricingengines/bacheliercalculator.hpp>
 #include <ql/pricingengines/blackdeltacalculator.hpp>
 #include <ql/pricingengines/blackformula.hpp>
@@ -731,6 +740,36 @@ QlPricingEngine* qlReplicatingVarianceSwapEngine(QlGeneralizedBlackScholesProces
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
 QlPricingEngine* qlStulzEngine(QlGeneralizedBlackScholesProcess* process1, QlGeneralizedBlackScholesProcess* process2, double correlation, char **e) {
   try {return ret(new QlPricingEngine(alloc(new StulzEngine(*arg(process1), *arg(process2), correlation))));
+  } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
+QlPricingEngine* qlBjerksundStenslandSpreadEngine(QlGeneralizedBlackScholesProcess* process1, QlGeneralizedBlackScholesProcess* process2, double correlation, char **e) {
+  try {return ret(new QlPricingEngine(alloc(new BjerksundStenslandSpreadEngine(*arg(process1), *arg(process2), correlation))));
+  } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
+QlPricingEngine* qlOperatorSplittingSpreadEngine(QlGeneralizedBlackScholesProcess* process1, QlGeneralizedBlackScholesProcess* process2, double correlation, int order, char **e) {
+  try {return ret(new QlPricingEngine(alloc(new OperatorSplittingSpreadEngine(*arg(process1), *arg(process2), correlation, (OperatorSplittingSpreadEngine::Order)order))));
+  } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
+QlPricingEngine* qlPearsonSpreadEngine(QlGeneralizedBlackScholesProcess* process1, QlGeneralizedBlackScholesProcess* process2, double correlation, double integrationTolerance, unsigned maxIntegrationIterations, double nStd, char **e) {
+  try {return ret(new QlPricingEngine(alloc(new PearsonSpreadEngine(*arg(process1), *arg(process2), correlation, integrationTolerance, maxIntegrationIterations, nStd))));
+  } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
+QlPricingEngine* qlGaussianCopulaSpreadEngine(QlGeneralizedBlackScholesProcess* process1, QlGeneralizedBlackScholesProcess* process2, double correlation, unsigned nPoints, char **e) {
+  try {return ret(new QlPricingEngine(alloc(new GaussianCopulaSpreadEngine(*arg(process1), *arg(process2), correlation, nPoints))));
+  } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
+QlPricingEngine* qlFd2dBlackScholesVanillaEngine(QlGeneralizedBlackScholesProcess* p1, QlGeneralizedBlackScholesProcess* p2, double correlation, unsigned xGrid, unsigned yGrid, unsigned tGrid, unsigned dampingSteps, FdmSchemeDesc *schemeDesc, int localVol, double illegalLocalVolOverwrite, char **e) {
+  try {return ret(new QlPricingEngine(alloc(new Fd2dBlackScholesVanillaEngine(*arg(p1), *arg(p2), correlation, xGrid, yGrid, tGrid, dampingSteps, *arg(schemeDesc), localVol, illegalLocalVolOverwrite))));
+  } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
+QlPricingEngine* qlChoiBasketEngine(unsigned processesLen, QlGeneralizedBlackScholesProcess** processes, unsigned rhoRows, unsigned rhoCols, double* rho, double lambda, unsigned maxNrIntegrationSteps, int calcfwdDelta, int controlVariate, char **e) {
+  try {return ret(new QlPricingEngine(alloc(new ChoiBasketEngine(qlVector(processes, processesLen), qlMatrix(rho, rhoRows, rhoCols), lambda, maxNrIntegrationSteps, calcfwdDelta, controlVariate))));
+  } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
+QlPricingEngine* qlDengLiZhouBasketEngine(unsigned processesLen, QlGeneralizedBlackScholesProcess** processes, unsigned rhoRows, unsigned rhoCols, double* rho, char **e) {
+  try {return ret(new QlPricingEngine(alloc(new DengLiZhouBasketEngine(qlVector(processes, processesLen), qlMatrix(rho, rhoRows, rhoCols)))));
+  } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
+QlPricingEngine* qlFdndimBlackScholesVanillaEngine(unsigned processesLen, QlGeneralizedBlackScholesProcess** processes, unsigned rhoRows, unsigned rhoCols, double* rho, unsigned xGridsLen, unsigned* xGrids, unsigned tGrid, unsigned dampingSteps, FdmSchemeDesc *schemeDesc, char **e) {
+  try {return ret(new QlPricingEngine(alloc(new FdndimBlackScholesVanillaEngine(qlVector(processes, processesLen), qlMatrix(rho, rhoRows, rhoCols), std::vector<Size>(xGrids, xGrids+xGridsLen), tGrid, dampingSteps, *arg(schemeDesc)))));
+  } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
+QlPricingEngine* qlFdndimBlackScholesVanillaEngine1(unsigned processesLen, QlGeneralizedBlackScholesProcess** processes, unsigned rhoRows, unsigned rhoCols, double* rho, unsigned xGrid, unsigned tGrid, unsigned dampingSteps, FdmSchemeDesc *schemeDesc, char **e) {
+  try {return ret(new QlPricingEngine(alloc(new FdndimBlackScholesVanillaEngine(qlVector(processes, processesLen), qlMatrix(rho, rhoRows, rhoCols), xGrid, tGrid, dampingSteps, *arg(schemeDesc)))));
+  } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
+QlPricingEngine* qlSingleFactorBsmBasketEngine(unsigned processesLen, QlGeneralizedBlackScholesProcess** processes, double xTol, char **e) {
+  try {return ret(new QlPricingEngine(alloc(new SingleFactorBsmBasketEngine(qlVector(processes, processesLen), xTol))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
 QlPricingEngine* qlLfmSwaptionEngine(QlLiborForwardModel* model, QlYieldTermStructure* discountCurve, char **e) {
   try {return ret(new QlPricingEngine(alloc(new LfmSwaptionEngine(*arg(model), *arg(discountCurve)))));

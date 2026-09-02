@@ -2343,6 +2343,8 @@ withGeneralizedBlackScholesProcess :: GenGeneralizedBlackScholesProcess gbs -> (
 withGeneralizedBlackScholesProcess = withGenForeignPtr . peel . peel . getStochasticProcess
 newGenGeneralizedBlackScholesProcess :: GenForeignPtr gbs CGeneralizedBlackScholesProcess' -> IO (GenGeneralizedBlackScholesProcess gbs)
 newGenGeneralizedBlackScholesProcess = pure . GenStochasticProcess . newAnyOf . newAnyOf
+withGeneralizedBlackScholesProcessArray :: [GenGeneralizedBlackScholesProcess gbs] -> ((CUInt, Ptr (Ptr CGeneralizedBlackScholesProcess')) -> IO b) -> IO b
+withGeneralizedBlackScholesProcessArray = withGenArray withGeneralizedBlackScholesProcess
 peekBlackProcess :: Ptr CBlackProcess' -> IO BlackProcess
 peekBlackProcess = newGenForeignPtr >=> newGenGeneralizedBlackScholesProcess
 withBlackProcess :: BlackProcess -> (Ptr CBlackProcess' -> IO b) -> IO b

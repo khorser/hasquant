@@ -140,6 +140,17 @@ module QuantLib.PricingEngine
   , midPointCdsEngine
   , replicatingVarianceSwapEngine
   , stulzEngine
+  , bjerksundStenslandSpreadEngine
+  , OperatorSplittingOrder(..)
+  , operatorSplittingSpreadEngine
+  , pearsonSpreadEngine
+  , gaussianCopulaSpreadEngine
+  , fd2dBlackScholesVanillaEngine
+  , choiBasketEngine
+  , dengLiZhouBasketEngine
+  , fdndimBlackScholesVanillaEngine
+  , fdndimBlackScholesVanillaEngine'
+  , singleFactorBsmBasketEngine
   , lfmSwaptionEngine
   , treeCapFloorEngine'
   , treeSwaptionEngine'
@@ -279,6 +290,7 @@ import Data.List.NonEmpty(NonEmpty, toList)
 {#enum NumericalFix{} deriving(Show, Eq, Read)#}
 {#enum AccrualBias{} deriving(Show, Eq, Read)#}
 {#enum ForwardsInCouponPeriod{} deriving(Show, Eq, Read)#}
+{#enum OperatorSplittingOrder{} deriving(Show, Eq, Read)#}
 {#enum PerpetualFuturesInterpolationType{} deriving(Show, Eq, Read)#}
 
 {#pointer *DayCounter foreign -> CDayCounter nocode#}
@@ -871,6 +883,62 @@ discountingPerpetualFuturesEngine domestic foreignCurve spot funding interpolati
 {#fun qlStulzEngine as stulzEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',`Double' -- ^correlation
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
+-- |Bjerksund-Stensland (2014) closed-form pricing engine for a spread option on two futures
+{#fun qlBjerksundStenslandSpreadEngine as bjerksundStenslandSpreadEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',`Double' -- ^correlation
+  ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+
+-- |Chi-Fai Lo (2015) operator-splitting-approximation pricing engine for a spread option
+{#fun qlOperatorSplittingSpreadEngine as operatorSplittingSpreadEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',`Double' -- ^correlation
+  ,`OperatorSplittingOrder' -- ^order, upstream default: 'Second'
+  ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+
+-- |Pearson (1995) 1-D-numerical-integration pricing engine for a spread option
+{#fun qlPearsonSpreadEngine as pearsonSpreadEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',`Double' -- ^correlation
+  ,`Double' -- ^integrationTolerance, upstream default: 1e-10
+  ,fromIntegral`Word' -- ^maxIntegrationIterations, upstream default: 10000
+  ,`Double' -- ^nStd, upstream default: 8.0
+  ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+
+-- |Gaussian-copula nested-Gauss-Hermite-quadrature pricing engine for a spread option with smile-implied marginals
+{#fun qlGaussianCopulaSpreadEngine as gaussianCopulaSpreadEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',`Double' -- ^correlation
+  ,fromIntegral`Word' -- ^nPoints, upstream default: 64
+  ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+
+-- |Choi (2018) \"sum of Black-Scholes-Merton models\" pricing engine for a basket option on
+-- multiple underlyings, correlated via @rho@
+choiBasketEngine :: NonEmpty GeneralizedBlackScholesProcess -> Matrix Double -- ^correlation matrix rho
+  -> Double -- ^lambda, upstream default: 10.0
+  -> Word -- ^maxNrIntegrationSteps, upstream default: unbounded; the C shim takes a 32-bit count
+  -> Bool -- ^calcfwdDelta
+  -> Bool -- ^controlVariate
+  -> IO PricingEngine
+choiBasketEngine ps (Matrix mr mc md) = qlChoiBasketEngine (toList ps) mr mc md
+{#fun qlChoiBasketEngine{withGeneralizedBlackScholesProcessArray*`[GeneralizedBlackScholesProcess]'&
+  ,fromIntegral`Word',fromIntegral`Word',withDoubleArrayRaw*`[Double]'
+  ,`Double' -- ^lambda
+  ,fromIntegral`Word' -- ^maxNrIntegrationSteps
+  ,`Bool' -- ^calcfwdDelta
+  ,`Bool' -- ^controlVariate
+  ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+
+-- |Deng-Li-Zhou (2008) closed-form-approximation pricing engine for a spread option on multiple
+-- underlyings, correlated via @rho@
+dengLiZhouBasketEngine :: NonEmpty GeneralizedBlackScholesProcess -> Matrix Double -- ^correlation matrix rho
+  -> IO PricingEngine
+dengLiZhouBasketEngine ps (Matrix mr mc md) = qlDengLiZhouBasketEngine (toList ps) mr mc md
+{#fun qlDengLiZhouBasketEngine{withGeneralizedBlackScholesProcessArray*`[GeneralizedBlackScholesProcess]'&
+  ,fromIntegral`Word',fromIntegral`Word',withDoubleArrayRaw*`[Double]'
+  ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+
+-- |pricing engine for a basket where all underlyings are driven by one stochastic factor
+singleFactorBsmBasketEngine :: NonEmpty GeneralizedBlackScholesProcess
+  -> Double -- ^xTol, upstream default: @1e4*QL_EPSILON@
+  -> IO PricingEngine
+singleFactorBsmBasketEngine ps = qlSingleFactorBsmBasketEngine (toList ps)
+{#fun qlSingleFactorBsmBasketEngine{withGeneralizedBlackScholesProcessArray*`[GeneralizedBlackScholesProcess]'&
+  ,`Double' -- ^xTol
+  ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+
 -- |Libor forward model swaption engine, priced via the Black formula
 {#fun qlLfmSwaptionEngine as lfmSwaptionEngine{withGenCalibratedModel*`LiborForwardModel',withYieldTermStructure*`GenYieldTermStructure y',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
@@ -904,6 +972,51 @@ discountingPerpetualFuturesEngine domestic foreignCurve spot funding interpolati
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 {#pointer *FdmSchemeDesc as QlFdmSchemeDesc foreign -> CFdmSchemeDesc nocode#}
+
+-- |two-dimensional finite-differences Black-Scholes basket-option pricing engine
+{#fun qlFd2dBlackScholesVanillaEngine as fd2dBlackScholesVanillaEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',`Double' -- ^correlation
+  ,fromIntegral`Word' -- ^xGrid, upstream default: 100
+  ,fromIntegral`Word' -- ^yGrid, upstream default: 100
+  ,fromIntegral`Word' -- ^tGrid, upstream default: 50
+  ,fromIntegral`Word' -- ^dampingSteps, upstream default: 0
+  ,withFdmSchemeDesc*`FdmScheme' -- ^schemeDesc, upstream default: 'Hundsdorfer'
+  ,`Bool' -- ^localVol
+  ,`Double' -- ^illegalLocalVolOverwrite, upstream default: @-Null\<Real\>()@
+  ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+
+-- |n-dimensional finite-differences Black-Scholes basket-option pricing engine, with an explicit
+-- per-axis grid size
+fdndimBlackScholesVanillaEngine :: NonEmpty GeneralizedBlackScholesProcess -> Matrix Double -- ^correlation matrix rho
+  -> NonEmpty Word -- ^xGrids, one per underlying
+  -> Word -- ^tGrid, upstream default: 50
+  -> Word -- ^dampingSteps, upstream default: 0
+  -> FdmScheme -- ^schemeDesc, upstream default: 'Douglas'
+  -> IO PricingEngine
+fdndimBlackScholesVanillaEngine ps (Matrix mr mc md) xGrids = qlFdndimBlackScholesVanillaEngine (toList ps) mr mc md (toList xGrids)
+{#fun qlFdndimBlackScholesVanillaEngine{withGeneralizedBlackScholesProcessArray*`[GeneralizedBlackScholesProcess]'&
+  ,fromIntegral`Word',fromIntegral`Word',withDoubleArrayRaw*`[Double]'
+  ,withIntArray*`[Word]'&
+  ,fromIntegral`Word' -- ^tGrid
+  ,fromIntegral`Word' -- ^dampingSteps
+  ,withFdmSchemeDesc*`FdmScheme'
+  ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+
+-- |n-dimensional finite-differences Black-Scholes basket-option pricing engine, auto-scaling every
+-- axis' grid from a single size (largest eigenvalue gets @xGrid@)
+fdndimBlackScholesVanillaEngine' :: NonEmpty GeneralizedBlackScholesProcess -> Matrix Double -- ^correlation matrix rho
+  -> Word -- ^xGrid
+  -> Word -- ^tGrid, upstream default: 50
+  -> Word -- ^dampingSteps, upstream default: 0
+  -> FdmScheme -- ^schemeDesc, upstream default: 'Douglas'
+  -> IO PricingEngine
+fdndimBlackScholesVanillaEngine' ps (Matrix mr mc md) = qlFdndimBlackScholesVanillaEngine1 (toList ps) mr mc md
+{#fun qlFdndimBlackScholesVanillaEngine1{withGeneralizedBlackScholesProcessArray*`[GeneralizedBlackScholesProcess]'&
+  ,fromIntegral`Word',fromIntegral`Word',withDoubleArrayRaw*`[Double]'
+  ,fromIntegral`Word' -- ^xGrid
+  ,fromIntegral`Word' -- ^tGrid
+  ,fromIntegral`Word' -- ^dampingSteps
+  ,withFdmSchemeDesc*`FdmScheme'
+  ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |finite-differences swaption pricing engine for the G2 two-factor short-rate model
 {#fun qlFdG2SwaptionEngine as fdG2SwaptionEngine{withG2*`G2',fromIntegral`Word' -- ^tGrid

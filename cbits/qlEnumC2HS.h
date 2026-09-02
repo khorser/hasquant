@@ -248,6 +248,9 @@ enum NumericalFix {NumericalFixNone, NumericalFixTaylor};
 enum AccrualBias {HalfDayBias, NoBias};
 enum ForwardsInCouponPeriod {Flat, Piecewise};
 
+// pricingengines/basket/operatorsplittingspreadengine.hpp
+enum OperatorSplittingOrder {First, Second};
+
 // instruments/swaption.hpp
 enum SettlementMethod {
   PhysicalOTC,

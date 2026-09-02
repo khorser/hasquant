@@ -182,6 +182,16 @@ extern "C" {
   QlPricingEngine* qlMidPointCdsEngine(QlDefaultProbabilityTermStructure* x0, double recoveryRate, QlYieldTermStructure* discountCurve, int includeSettlementDateFlows, char **e);
   QlPricingEngine* qlReplicatingVarianceSwapEngine(QlGeneralizedBlackScholesProcess* process, double dk, unsigned callStrikesLen, double* callStrikes, unsigned putStrikesLen, double* putStrikes, char **e);
   QlPricingEngine* qlStulzEngine(QlGeneralizedBlackScholesProcess* process1, QlGeneralizedBlackScholesProcess* process2, double correlation, char **e);
+  QlPricingEngine* qlBjerksundStenslandSpreadEngine(QlGeneralizedBlackScholesProcess* process1, QlGeneralizedBlackScholesProcess* process2, double correlation, char **e);
+  QlPricingEngine* qlOperatorSplittingSpreadEngine(QlGeneralizedBlackScholesProcess* process1, QlGeneralizedBlackScholesProcess* process2, double correlation, int order, char **e);
+  QlPricingEngine* qlPearsonSpreadEngine(QlGeneralizedBlackScholesProcess* process1, QlGeneralizedBlackScholesProcess* process2, double correlation, double integrationTolerance, unsigned maxIntegrationIterations, double nStd, char **e);
+  QlPricingEngine* qlGaussianCopulaSpreadEngine(QlGeneralizedBlackScholesProcess* process1, QlGeneralizedBlackScholesProcess* process2, double correlation, unsigned nPoints, char **e);
+  QlPricingEngine* qlFd2dBlackScholesVanillaEngine(QlGeneralizedBlackScholesProcess* p1, QlGeneralizedBlackScholesProcess* p2, double correlation, unsigned xGrid, unsigned yGrid, unsigned tGrid, unsigned dampingSteps, FdmSchemeDesc *schemeDesc, int localVol, double illegalLocalVolOverwrite, char **e);
+  QlPricingEngine* qlChoiBasketEngine(unsigned processesLen, QlGeneralizedBlackScholesProcess** processes, unsigned rhoRows, unsigned rhoCols, double* rho, double lambda, unsigned maxNrIntegrationSteps, int calcfwdDelta, int controlVariate, char **e);
+  QlPricingEngine* qlDengLiZhouBasketEngine(unsigned processesLen, QlGeneralizedBlackScholesProcess** processes, unsigned rhoRows, unsigned rhoCols, double* rho, char **e);
+  QlPricingEngine* qlFdndimBlackScholesVanillaEngine(unsigned processesLen, QlGeneralizedBlackScholesProcess** processes, unsigned rhoRows, unsigned rhoCols, double* rho, unsigned xGridsLen, unsigned* xGrids, unsigned tGrid, unsigned dampingSteps, FdmSchemeDesc *schemeDesc, char **e);
+  QlPricingEngine* qlFdndimBlackScholesVanillaEngine1(unsigned processesLen, QlGeneralizedBlackScholesProcess** processes, unsigned rhoRows, unsigned rhoCols, double* rho, unsigned xGrid, unsigned tGrid, unsigned dampingSteps, FdmSchemeDesc *schemeDesc, char **e);
+  QlPricingEngine* qlSingleFactorBsmBasketEngine(unsigned processesLen, QlGeneralizedBlackScholesProcess** processes, double xTol, char **e);
   QlPricingEngine* qlLfmSwaptionEngine(QlLiborForwardModel* model, QlYieldTermStructure* discountCurve, char **e);
   QlPricingEngine* qlTreeCapFloorEngine1(QlShortRateModel* model, TimeGrid* timeGrid, QlYieldTermStructure* termStructure, char **e);
   QlPricingEngine* qlTreeSwaptionEngine1(QlShortRateModel* x0, TimeGrid* timeGrid, QlYieldTermStructure* termStructure, char **e);
