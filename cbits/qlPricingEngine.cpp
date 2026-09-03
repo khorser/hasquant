@@ -639,6 +639,66 @@ double qlQuantLibBachelierBlackFormula1(QlPlainVanillaPayoff* payoff, double for
 double qlQuantLibBachelierBlackFormula(int optionType, double strike, double forward, double stdDev, double discount, char **e) {
   try {return QuantLib::bachelierBlackFormula((Option::Type)optionType, strike, forward, stdDev, discount);
   } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlQuantLibBlackFormulaForwardDerivative1(QlPlainVanillaPayoff* payoff, double forward, double stdDev, double discount, double displacement, char **e) {
+  try {return QuantLib::blackFormulaForwardDerivative(*arg(payoff), forward, stdDev, discount, displacement);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlQuantLibBlackFormulaForwardDerivative(int optionType, double strike, double forward, double stdDev, double discount, double displacement, char **e) {
+  try {return QuantLib::blackFormulaForwardDerivative((Option::Type)optionType, strike, forward, stdDev, discount, displacement);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlQuantLibBlackFormulaImpliedStdDevChambers1(QlPlainVanillaPayoff* payoff, double forward, double blackPrice, double blackAtmPrice, double discount, double displacement, char **e) {
+  try {return QuantLib::blackFormulaImpliedStdDevChambers(*arg(payoff), forward, blackPrice, blackAtmPrice, discount, displacement);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlQuantLibBlackFormulaImpliedStdDevChambers(int optionType, double strike, double forward, double blackPrice, double blackAtmPrice, double discount, double displacement, char **e) {
+  try {return QuantLib::blackFormulaImpliedStdDevChambers((Option::Type)optionType, strike, forward, blackPrice, blackAtmPrice, discount, displacement);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlQuantLibBlackFormulaImpliedStdDevApproximationRS1(QlPlainVanillaPayoff* payoff, double forward, double blackPrice, double discount, double displacement, char **e) {
+  try {return QuantLib::blackFormulaImpliedStdDevApproximationRS(*arg(payoff), forward, blackPrice, discount, displacement);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlQuantLibBlackFormulaImpliedStdDevApproximationRS(int optionType, double strike, double forward, double blackPrice, double discount, double displacement, char **e) {
+  try {return QuantLib::blackFormulaImpliedStdDevApproximationRS((Option::Type)optionType, strike, forward, blackPrice, discount, displacement);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlQuantLibBlackFormulaImpliedStdDevLiRS1(QlPlainVanillaPayoff* payoff, double forward, double blackPrice, double discount, double displacement, double guess, double omega, double accuracy, unsigned maxIterations, char **e) {
+  try {return QuantLib::blackFormulaImpliedStdDevLiRS(*arg(payoff), forward, blackPrice, discount, displacement, guess, omega, accuracy, maxIterations);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlQuantLibBlackFormulaImpliedStdDevLiRS(int optionType, double strike, double forward, double blackPrice, double discount, double displacement, double guess, double omega, double accuracy, unsigned maxIterations, char **e) {
+  try {return QuantLib::blackFormulaImpliedStdDevLiRS((Option::Type)optionType, strike, forward, blackPrice, discount, displacement, guess, omega, accuracy, maxIterations);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlQuantLibBlackFormulaAssetItmProbability1(QlPlainVanillaPayoff* payoff, double forward, double stdDev, double displacement, char **e) {
+  try {return QuantLib::blackFormulaAssetItmProbability(*arg(payoff), forward, stdDev, displacement);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlQuantLibBlackFormulaAssetItmProbability(int optionType, double strike, double forward, double stdDev, double displacement, char **e) {
+  try {return QuantLib::blackFormulaAssetItmProbability((Option::Type)optionType, strike, forward, stdDev, displacement);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlQuantLibBlackFormulaStdDevSecondDerivative1(QlPlainVanillaPayoff* payoff, double forward, double stdDev, double discount, double displacement, char **e) {
+  try {return QuantLib::blackFormulaStdDevSecondDerivative(*arg(payoff), forward, stdDev, discount, displacement);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlQuantLibBlackFormulaStdDevSecondDerivative(double strike, double forward, double stdDev, double discount, double displacement, char **e) {
+  try {return QuantLib::blackFormulaStdDevSecondDerivative(strike, forward, stdDev, discount, displacement);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlQuantLibBachelierBlackFormulaForwardDerivative1(QlPlainVanillaPayoff* payoff, double forward, double stdDev, double discount, char **e) {
+  try {return QuantLib::bachelierBlackFormulaForwardDerivative(*arg(payoff), forward, stdDev, discount);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlQuantLibBachelierBlackFormulaForwardDerivative(int optionType, double strike, double forward, double stdDev, double discount, char **e) {
+  try {return QuantLib::bachelierBlackFormulaForwardDerivative((Option::Type)optionType, strike, forward, stdDev, discount);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlQuantLibBachelierBlackFormulaImpliedVol(int optionType, double strike, double forward, double tte, double bachelierPrice, double discount, char **e) {
+  try {return QuantLib::bachelierBlackFormulaImpliedVol((Option::Type)optionType, strike, forward, tte, bachelierPrice, discount);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlQuantLibBachelierBlackFormulaImpliedVolChoi(int optionType, double strike, double forward, double tte, double bachelierPrice, double discount, char **e) {
+  try {return QuantLib::bachelierBlackFormulaImpliedVolChoi((Option::Type)optionType, strike, forward, tte, bachelierPrice, discount);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlQuantLibBachelierBlackFormulaStdDevDerivative1(QlPlainVanillaPayoff* payoff, double forward, double stdDev, double discount, char **e) {
+  try {return QuantLib::bachelierBlackFormulaStdDevDerivative(*arg(payoff), forward, stdDev, discount);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlQuantLibBachelierBlackFormulaStdDevDerivative(double strike, double forward, double stdDev, double discount, char **e) {
+  try {return QuantLib::bachelierBlackFormulaStdDevDerivative(strike, forward, stdDev, discount);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlQuantLibBachelierBlackFormulaAssetItmProbability1(QlPlainVanillaPayoff* payoff, double forward, double stdDev, char **e) {
+  try {return QuantLib::bachelierBlackFormulaAssetItmProbability(*arg(payoff), forward, stdDev);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlQuantLibBachelierBlackFormulaAssetItmProbability(int optionType, double strike, double forward, double stdDev, char **e) {
+  try {return QuantLib::bachelierBlackFormulaAssetItmProbability((Option::Type)optionType, strike, forward, stdDev);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
 double qlQuantLibDefaultThetaPerDay(double theta, char **e) {try {return QuantLib::defaultThetaPerDay(theta);} catch (std::exception& er) {return handleException<double>(e, er);}}
 
 QlPricingEngine* qlAnalyticBSMHullWhiteEngine(double equityShortRateCorrelation, QlGeneralizedBlackScholesProcess* x1, QlHullWhite* x2, char **e) {

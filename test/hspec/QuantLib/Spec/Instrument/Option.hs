@@ -28,7 +28,7 @@ import QuantLib.InterestRate(Compounding(..))
 import QuantLib.Quote(simpleQuote)
 import QuantLib.TermStructure.Yield(flatForward)
 import QuantLib.Process hiding(drift)
-import QuantLib.Math(Matrix, realMatrix, realMatrixFromVector, RealMatrix, PolynomialType(..), RngTrait(..), StatisticsTrait(..), Interpolation2D(..))
+import QuantLib.Math(Matrix, boxedRealMatrix, realMatrixFromVector, RealMatrix, PolynomialType(..), RngTrait(..), StatisticsTrait(..), Interpolation2D(..))
 import QuantLib.Instrument(npv, setPricingEngine, errorEstimate, BarrierType(..), AverageType(..))
 import QuantLib.Instrument.Option hiding(theta)
 import QuantLib.Instrument.Swap(varianceOption, varianceSwap, variance)
@@ -37,7 +37,7 @@ import QuantLib.PricingEngine
 import QuantLib.Spec.Helpers(closePrec)
 
 matrix :: Word -> Word -> [Double] -> Matrix Double
-matrix rows columns = either error id . realMatrix rows columns
+matrix rows columns = either error id . boxedRealMatrix rows columns
 
 realGrid :: Word -> Word -> [Double] -> RealMatrix
 realGrid rows columns = either error id . realMatrixFromVector rows columns . V.fromList

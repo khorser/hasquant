@@ -32,7 +32,7 @@ import QuantLib.Instrument.CapFloor(cap)
 import QuantLib.Instrument.Swap(varianceSwap, vanillaSwap, floatingLeg, SwapType(..))
 import QuantLib.Process hiding(blackScholesTheta)
 import QuantLib.Model hiding(setPricingEngine, value)
-import QuantLib.Math(RngTrait(..), StatisticsTrait(..), PolynomialType(..), BinomialTree(..), FdmScheme(..), realMatrix, ComplexLogFormula(..)
+import QuantLib.Math(RngTrait(..), StatisticsTrait(..), PolynomialType(..), BinomialTree(..), FdmScheme(..), boxedRealMatrix, ComplexLogFormula(..)
   ,SobolDirectionIntegers(..), realMatrixRows, realMatrixColumns, realMatrixData)
 import QuantLib.Method(fdmBlackScholesMesher, fdmMesherComposite, fdmMesherLocations)
 import QuantLib.PricingEngine
@@ -62,6 +62,230 @@ spec = do
   -- on second-order greeks, agreement with the independently-implemented blackFormula/
   -- bachelierBlackFormula free functions, and closed-form vanna/volga checks from
   -- blackcalculator.cpp's own documented formula.
+
+  -- Coverage for the free functions bound from ql/pricingengines/blackformula.hpp -- both the
+  -- long-standing ones (blackFormula, blackCashItmProbability, blackImpliedStdDev*,
+  -- blackStdDevDerivative, blackVolDerivative, bachelierBlackFormula), which had none, and the
+  -- ones added alongside this block. Upstream's test-suite/blackformula.cpp asserts properties,
+  -- not cached numbers -- round-tripping an implied vol back through the pricing formula, and a
+  -- mean-value-theorem bracket on the forward derivative -- so those are ported as properties
+  -- rather than invented golden values. Where upstream has no test at all
+  -- (blackFormulaAssetItmProbability, blackFormulaStdDevSecondDerivative, and the Bachelier
+  -- derivative/probability pair) the check is a closed-form identity against a function bound
+  -- independently of it: for a Black call the premium decomposes as
+  -- discount*(F*N(d1) - K*N(d2)) with N(d1)/N(d2) exactly the asset/cash ITM probabilities and
+  -- dPremium/dF = discount*N(d1); the Bachelier analogues follow the same shape with a single N(d).
+  describe "blackFormula free functions" $ do
+    let fwd = 100.0; tte = 1.7; r = 0.1; df = exp (-r * tte)
+        vol = 0.3; sd = vol * sqrt tte
+        strikes = [50, 60, 70, 80, 90, 100, 110, 125, 150, 200, 300] :: [Double]
+        types = [Call, Put]
+
+    -- test-suite/blackformula.cpp: testRadoicicStefanicaImpliedVol. Same fixture (T=1.7, r=0.1,
+    -- forward=100, vol=0.3, the same 11 strikes) and the same 0.02 vol tolerance; the RS
+    -- approximation is closed-form, so this is an accuracy bound, not a solver convergence check.
+    it "blackImpliedStdDevApproximationRS recovers the generating vol to upstream's 0.02 tolerance,\
+       \ and the payoff overload agrees with the type+strike one" $
+      forM_ strikes $ \k -> forM_ types $ \t -> do
+        let payoff = PlainVanillaPayoff t k
+        mv <- blackFormula t k fwd sd df 0.0
+        mv' <- blackFormula' payoff fwd sd df 0.0
+        mv' `shouldBe` mv
+        estSd <- blackImpliedStdDevApproximationRS t k fwd mv df 0.0
+        estSd' <- blackImpliedStdDevApproximationRS' payoff fwd mv df 0.0
+        estSd' `shouldBe` estSd
+        (estSd / sqrt tte) `shouldSatisfy` closePrec vol 0.02
+
+    -- test-suite/blackformula.cpp: testRadoicicStefanicaLowerBound, the figure-3.1 sweep from
+    -- "Tighter Bounds for Implied Volatility". Two separate claims: the approximation is within
+    -- 0.05 of the true stdDev, and (for a non-negligible premium) it is a *lower* bound.
+    it "blackImpliedStdDevApproximationRS stays a lower bound within 0.05 across the\
+       \ Gatheral-Matic-Radoicic-Stefanica sweep" $ do
+      let k = 1.2
+          strike = exp k * 1.0
+      forM_ [0.17, 0.18 .. 2.89 :: Double] $ \s -> do
+        c <- blackFormula Call strike 1.0 s 1.0 0.0
+        est <- blackImpliedStdDevApproximationRS Call strike 1.0 c 1.0 0.0
+        est `shouldSatisfy` (not . isNaN)
+        (s - est) `shouldSatisfy` (\e -> abs e <= 0.05)
+        when (c > 1e-6) $ (s - est) `shouldSatisfy` (>= 0.0)
+
+    -- test-suite/blackformula.cpp: testImpliedVolAdaptiveSuccessiveOverRelaxation. 'Nothing' for
+    -- the guess is upstream's Null<Real>(), i.e. "start from the RS approximation"; upstream
+    -- allows 10x the requested solver accuracy as the assertion tolerance.
+    it "blackImpliedStdDevLiRS inverts blackFormula to 10x its requested accuracy, over\
+       \ displacements, and the payoff overload agrees" $ do
+      let tol = 1e-8
+      forM_ strikes $ \k -> forM_ types $ \t -> forM_ [0.0, 0.01, 0.05 :: Double] $ \displacement -> do
+        let payoff = PlainVanillaPayoff t k
+        mv <- blackFormula' payoff fwd sd df displacement
+        impl <- blackImpliedStdDevLiRS' payoff fwd mv df displacement Nothing 1.0 tol 100
+        impl `shouldSatisfy` closePrec sd (10 * tol)
+        impl2 <- blackImpliedStdDevLiRS t k fwd mv df displacement Nothing 1.0 tol 100
+        impl2 `shouldSatisfy` closePrec sd (10 * tol)
+
+    -- test-suite/blackformula.cpp: testChambersImpliedVol. Chambers-Nawalkha needs the ATM
+    -- premium as a second input; upstream measures its error moneyness-weighted and one-sided
+    -- (the approximation may undershoot freely, but must not overshoot by more than 5e-4).
+    it "blackImpliedStdDevChambers does not overshoot the true stdDev beyond upstream's\
+       \ moneyness-weighted 5e-4, and the payoff overload agrees" $ do
+      let tol = 5.0e-4
+          displacements = [0.0, 0.001, 0.005, 0.01, 0.02] :: [Double]
+          fwds = [-0.001, 0.0, 0.005, 0.01, 0.02, 0.05] :: [Double]
+          ks = [-0.01, -0.005, -0.001, 0.0, 0.001, 0.005, 0.01, 0.02, 0.05, 0.1] :: [Double]
+          sds = [0.1, 0.15, 0.2, 0.3, 0.5, 0.6, 0.7, 0.8, 1.0, 1.5, 2.0] :: [Double]
+          discounts = [1.0, 0.95, 0.8, 1.1] :: [Double]
+      forM_ types $ \t -> forM_ displacements $ \displacement -> forM_ fwds $ \f ->
+        forM_ ks $ \k -> forM_ sds $ \s -> forM_ discounts $ \disc ->
+          when (f + displacement > 0.0 && k + displacement > 0.0) $ do
+            let payoff = PlainVanillaPayoff t k
+            premium <- blackFormula t k f s disc displacement
+            atmPremium <- blackFormula t f f s disc displacement
+            iSd <- blackImpliedStdDevChambers t k f premium atmPremium disc displacement
+            iSd' <- blackImpliedStdDevChambers' payoff f premium atmPremium disc displacement
+            iSd' `shouldBe` iSd
+            let moneyness0 = (k + displacement) / (f + displacement)
+                moneyness = if moneyness0 > 1.0 then 1.0 / moneyness0 else moneyness0
+            ((iSd - s) / s * moneyness) `shouldSatisfy` (<= tol)
+
+    -- test-suite/blackformula.cpp: testBachelierImpliedVol, including its two very tight
+    -- tolerances (1e-12 for the Choi approximation, 1e-15 for the Jaeckel formula) and its
+    -- zero-, deep-ITM- and deep-OTM-strike sweep in units of the standard deviation. Note both
+    -- take the time to expiry and return a *volatility*, unlike every Black function here.
+    it "bachelierImpliedVol and bachelierImpliedVolChoi invert bachelierBlackFormula to\
+       \ upstream's 1e-15 / 1e-12 tolerances" $ do
+      let bfwd = 1.0; bpvol = 0.01; btte = 10.0
+          bsd = bpvol * sqrt btte
+          bdisc = 0.95
+      forM_ [-3, -2, -1, -0.5, 0, 0.5, 1, 2, 3 :: Double] $ \i -> do
+        let k = bfwd - i * bpvol * sqrt btte
+        prem <- bachelierBlackFormula Call k bfwd bsd bdisc
+        choi <- bachelierImpliedVolChoi Call k bfwd btte prem bdisc
+        choi `shouldSatisfy` closePrec bpvol 1.0e-12
+        exact <- bachelierImpliedVol Call k bfwd btte prem bdisc
+        exact `shouldSatisfy` closePrec bpvol 1.0e-15
+
+    -- test-suite/blackformula.cpp: assertBlackFormulaForwardDerivative /
+    -- assertBachelierBlackFormulaForwardDerivative, including the zero-strike and zero-vol edge
+    -- cases each drives. The mean value theorem puts the bumped difference quotient between the
+    -- analytic derivative at the two ends of the bump, for any function monotonic across it.
+    it "blackForwardDerivative and bachelierForwardDerivative bracket their own bumped\
+       \ difference quotient, at zero strike and zero vol too" $ do
+      let bfwd = 1.0; btte = 10.0; bdisc = 0.95; displacement = 0.01
+          bump = 0.0001; eps = 1e-10
+          brackets d bd approx = max d bd + eps > approx && approx > min d bd - eps
+      forM_ [(0.01 :: Double, [0.1, 0.5, 1.0, 1.5, 2.0 :: Double]), (0.01, [0.0]), (0.0, [0.1, 1.0, 2.0])] $
+        \(bpvol, ks) -> do
+          let bsd = bpvol * sqrt btte
+          forM_ ks $ \k -> forM_ types $ \t -> do
+            let payoff = PlainVanillaPayoff t k
+            d <- blackForwardDerivative t k bfwd bsd bdisc displacement
+            d' <- blackForwardDerivative' payoff bfwd bsd bdisc displacement
+            d' `shouldBe` d
+            bd <- blackForwardDerivative t k (bfwd + bump) bsd bdisc displacement
+            p0 <- blackFormula t k bfwd bsd bdisc displacement
+            p1 <- blackFormula t k (bfwd + bump) bsd bdisc displacement
+            brackets d bd ((p1 - p0) / bump) `shouldBe` True
+
+            bad <- bachelierForwardDerivative t k bfwd bsd bdisc
+            bad' <- bachelierForwardDerivative' payoff bfwd bsd bdisc
+            bad' `shouldBe` bad
+            bbd <- bachelierForwardDerivative t k (bfwd + bump) bsd bdisc
+            bp0 <- bachelierBlackFormula t k bfwd bsd bdisc
+            bp1 <- bachelierBlackFormula t k (bfwd + bump) bsd bdisc
+            brackets bad bbd ((bp1 - bp0) / bump) `shouldBe` True
+
+    -- No upstream test covers these, so each is pinned to a closed-form identity involving a
+    -- separately bound function. For a Black call, premium = discount*(F*N(d1) - K*N(d2)) with
+    -- N(d1) = blackAssetItmProbability and N(d2) = blackCashItmProbability, and
+    -- dPremium/dF = discount*N(d1) = blackForwardDerivative.
+    it "blackAssetItmProbability satisfies the Black decomposition and equals\
+       \ blackForwardDerivative/discount" $
+      forM_ strikes $ \k -> forM_ types $ \t -> do
+        let payoff = PlainVanillaPayoff t k
+        pa <- blackAssetItmProbability t k fwd sd 0.0
+        pa' <- blackAssetItmProbability' payoff fwd sd 0.0
+        pa' `shouldBe` pa
+        pc <- blackCashItmProbability t k fwd sd 0.0
+        premium <- blackFormula t k fwd sd df 0.0
+        let sign = if t == Call then 1.0 else -1.0
+        (sign * df * (fwd * pa - k * pc)) `shouldSatisfy` closePrec premium (1e-12 * max 1 premium)
+        fd <- blackForwardDerivative t k fwd sd df 0.0
+        (fd / df) `shouldSatisfy` closePrec (sign * pa) 1e-12
+
+    -- Bachelier analogue of the identity above: premium = discount*((F-K)*N(d) + s*phi(d)) with
+    -- N(d) = bachelierAssetItmProbability and dPremium/dF = discount*N(d).
+    it "bachelierAssetItmProbability matches the Bachelier decomposition and\
+       \ bachelierForwardDerivative/discount" $ do
+      let bfwd = 1.0; bsd = 0.01 * sqrt 10.0; bdisc = 0.95
+      forM_ [0.9, 0.95, 1.0, 1.05, 1.1 :: Double] $ \k -> forM_ types $ \t -> do
+        let payoff = PlainVanillaPayoff t k
+            sign = if t == Call then 1.0 else -1.0
+            d = sign * (bfwd - k) / bsd
+        pa <- bachelierAssetItmProbability t k bfwd bsd
+        pa' <- bachelierAssetItmProbability' payoff bfwd bsd
+        pa' `shouldBe` pa
+        prem <- bachelierBlackFormula t k bfwd bsd bdisc
+        (bdisc * (sign * (bfwd - k) * pa + bsd * normalPdf d)) `shouldSatisfy` closePrec prem 1e-14
+        fd <- bachelierForwardDerivative t k bfwd bsd bdisc
+        (fd / bdisc) `shouldSatisfy` closePrec (sign * pa) 1e-13
+
+    -- Both StdDev derivative families are checked against a central difference of the function
+    -- they differentiate: blackStdDevDerivative against blackFormula, blackStdDevSecondDerivative
+    -- against blackStdDevDerivative, and bachelierStdDevDerivative against bachelierBlackFormula.
+    -- The central difference is O(h^2) accurate, hence the 1e-6-relative tolerance rather than a
+    -- tighter one; this also covers blackVolDerivative, which is the stdDev derivative scaled by
+    -- 1/sqrt(T) less the discount-rate term, i.e. sqrt(T)*blackStdDevDerivative here.
+    it "blackStdDevDerivative, blackStdDevSecondDerivative, blackVolDerivative and\
+       \ bachelierStdDevDerivative match central differences of what they differentiate" $ do
+      let h = 1e-5
+      forM_ strikes $ \k -> do
+        let payoff = PlainVanillaPayoff Call k
+        d1v <- blackStdDevDerivative k fwd sd df 0.0
+        d1v' <- blackStdDevDerivative' payoff fwd sd df 0.0
+        d1v' `shouldBe` d1v
+        pUp <- blackFormula Call k fwd (sd + h) df 0.0
+        pDn <- blackFormula Call k fwd (sd - h) df 0.0
+        d1v `shouldSatisfy` closePrec ((pUp - pDn) / (2 * h)) (1e-6 * max 1 (abs d1v))
+
+        d2v <- blackStdDevSecondDerivative k fwd sd df 0.0
+        d2v' <- blackStdDevSecondDerivative' payoff fwd sd df 0.0
+        d2v' `shouldBe` d2v
+        dUp <- blackStdDevDerivative k fwd (sd + h) df 0.0
+        dDn <- blackStdDevDerivative k fwd (sd - h) df 0.0
+        d2v `shouldSatisfy` closePrec ((dUp - dDn) / (2 * h)) (1e-5 * max 1 (abs d2v))
+
+        volD <- blackVolDerivative k fwd sd tte df 0.0
+        volD `shouldSatisfy` closePrec (sqrt tte * d1v) (1e-9 * max 1 (abs volD))
+
+        bd <- bachelierStdDevDerivative k fwd sd df
+        bd' <- bachelierStdDevDerivative' payoff fwd sd df
+        bd' `shouldBe` bd
+        bUp <- bachelierBlackFormula Call k fwd (sd + h) df
+        bDn <- bachelierBlackFormula Call k fwd (sd - h) df
+        bd `shouldSatisfy` closePrec ((bUp - bDn) / (2 * h)) (1e-6 * max 1 (abs bd))
+
+    -- The pre-existing iterative solver, which had no coverage either. Its cheap closed-form
+    -- sibling is the Brenner-Subrahmanyan\/Feinstein ATM formula extended by Corrado-Miller, so
+    -- it is only accurate near the money: measured across this fixture it is within 0.005 vol
+    -- over strikes 80..125 and degrades to ~0.18 at strike 300. The assertion is split
+    -- accordingly rather than pinned to one invented tolerance -- in the wings it only has to
+    -- stay a usable finite seed for the exact solver, which is all upstream uses it for.
+    it "blackImpliedStdDev inverts blackFormula, and blackImpliedStdDevApproximation is accurate\
+       \ near the money and a finite seed in the wings" $
+      forM_ strikes $ \k -> forM_ types $ \t -> do
+        let payoff = PlainVanillaPayoff t k
+        mv <- blackFormula t k fwd sd df 0.0
+        impl <- blackImpliedStdDev t k fwd mv df 0.0 sd 1e-10 100
+        impl `shouldSatisfy` closePrec sd 1e-8
+        impl' <- blackImpliedStdDev' payoff fwd mv df 0.0 sd 1e-10 100
+        impl' `shouldSatisfy` closePrec sd 1e-8
+        appr <- blackImpliedStdDevApproximation t k fwd mv df 0.0
+        appr' <- blackImpliedStdDevApproximation' payoff fwd mv df 0.0
+        appr' `shouldBe` appr
+        appr `shouldSatisfy` (\v -> v > 0 && not (isNaN v) && not (isInfinite v))
+        when (k >= 80 && k <= 125) $ (appr / sqrt tte) `shouldSatisfy` closePrec vol 0.01
+
   describe "BlackCalculator / BlackScholesCalculator / BachelierCalculator" $ do
     let strike = 100.0; forward = 105.0; stdDev = 0.25; disc = 0.97
         spot = 103.0; maturity = 2.0
@@ -1370,7 +1594,7 @@ spec = do
           calculated <- npv opt
           calculated `shouldSatisfy` closePrec result tol
 
-          rhoMatrix <- either error pure (realMatrix 2 2 [1, rho, rho, 1])
+          rhoMatrix <- either error pure (boxedRealMatrix 2 2 [1, rho, rho, 1])
           fd2d <- fd2dBlackScholesVanillaEngine p1 p2 rho 50 50 15 0 Hundsdorfer False (-1.0e10)
           setPricingEngine opt fd2d
           fdCalculated <- npv opt
@@ -1419,7 +1643,7 @@ spec = do
           let exDate = addDays (round (t * 30 :: Double)) today
               payoff = plainVanillaPayoff (PlainVanillaPayoff ty strike)
               basket = Max payoff
-          rhoMatrix <- either error pure (realMatrix 3 3 [1, rho, rho, rho, 1, rho, rho, rho, 1])
+          rhoMatrix <- either error pure (boxedRealMatrix 3 3 [1, rho, rho, rho, 1, rho, rho, rho, 1])
           procArr <- stochasticProcessArray (p1 :| [p2, p3]) rhoMatrix
 
           euroOpt <- basketOption basket (European (EuropeanExercise exDate))
@@ -1455,7 +1679,7 @@ spec = do
         p1 <- blackScholesMertonProcess spot1 qTS rTS volTS1 EulerDiscretization False
         p2 <- blackScholesMertonProcess spot2 qTS rTS volTS2 EulerDiscretization False
         p3 <- blackScholesMertonProcess spot3 qTS rTS volTS3 EulerDiscretization False
-        rhoMatrix <- either error pure (realMatrix 3 3 [1, -0.25, 0.25, -0.25, 1, 0.3, 0.25, 0.3, 1])
+        rhoMatrix <- either error pure (boxedRealMatrix 3 3 [1, -0.25, 0.25, -0.25, 1, 0.3, 0.25, 0.3, 1])
         procArr <- stochasticProcessArray (p1 :| [p2, p3]) rhoMatrix
 
         let exDate = addDays (round (3.0 * 360 :: Double)) today
@@ -1491,7 +1715,7 @@ spec = do
         vQ1 <- simpleQuote 0.4
         volTS1 <- blackConstantVol today cal vQ1 dc
         p1 <- blackScholesMertonProcess spot1 qTS rTS volTS1 EulerDiscretization False
-        rhoMatrix <- either error pure (realMatrix 1 1 [1])
+        rhoMatrix <- either error pure (boxedRealMatrix 1 1 [1])
         procArr <- stochasticProcessArray (p1 :| []) rhoMatrix
         let exDate = addDays (round (0.5 * 360 :: Double)) today
         eng <- mcAmericanBasketEngine PseudoRandom procArr (Just 52) Nothing False True (Just 10000) Nothing Nothing 1 (Just 2500) 2 Monomial
@@ -1517,7 +1741,7 @@ spec = do
         vQ1 <- simpleQuote 0.4
         volTS1 <- blackConstantVol today cal vQ1 dc
         p1 <- blackScholesMertonProcess spot1 qTS rTS volTS1 EulerDiscretization False
-        rhoMatrix <- either error pure (realMatrix 1 1 [1])
+        rhoMatrix <- either error pure (boxedRealMatrix 1 1 [1])
         procArr <- stochasticProcessArray (p1 :| []) rhoMatrix
         let exDate = addDays (round (0.5 * 360 :: Double)) today
             payoff = plainVanillaPayoff (PlainVanillaPayoff Put 100.0)
@@ -1868,7 +2092,7 @@ spec = do
         bs2Q <- simpleQuote 100
         bp1 <- blackScholesMertonProcess bs1Q bqTS1 brTS bvolTS1 EulerDiscretization False
         bp2 <- blackScholesMertonProcess bs2Q bqTS2 brTS bvolTS2 EulerDiscretization False
-        rhoMatrix <- either error pure (realMatrix 2 2 [1, brho, brho, 1])
+        rhoMatrix <- either error pure (boxedRealMatrix 2 2 [1, brho, brho, 1])
         procArr <- stochasticProcessArray (bp1 :| [bp2]) rhoMatrix
         mc <- mcEuropeanBasketEngine PseudoRandom Statistics procArr (Just 1) Nothing False False (Just 20000) Nothing Nothing 42
         choi <- choiBasketEngine (bp1 :| [bp2]) rhoMatrix 10.0 100000 False False
@@ -1887,7 +2111,7 @@ spec = do
 
         -- SingleFactorBsmBasketEngine assumes every underlying is driven by one common factor, so
         -- it is only verified where that assumption actually holds (rho=1.0)
-        rhoMatrix1 <- either error pure (realMatrix 2 2 [1, 1, 1, 1])
+        rhoMatrix1 <- either error pure (boxedRealMatrix 2 2 [1, 1, 1, 1])
         procArr1 <- stochasticProcessArray (bp1 :| [bp2]) rhoMatrix1
         mc1 <- mcEuropeanBasketEngine PseudoRandom Statistics procArr1 (Just 1) Nothing False False (Just 20000) Nothing Nothing 42
         avgOpt <- basketOption (Average (plainVanillaPayoff (PlainVanillaPayoff Call 100.0)) 2) (European (EuropeanExercise maturity))
@@ -1932,7 +2156,7 @@ spec = do
         setPricingEngine crossOpt fd2d
         fd2dV <- npv crossOpt
 
-        rhoMatrix2 <- either error pure (realMatrix 2 2 [1, rho, rho, 1])
+        rhoMatrix2 <- either error pure (boxedRealMatrix 2 2 [1, rho, rho, 1])
         fdndim1 <- fdndimBlackScholesVanillaEngine (p1' :| [p2']) rhoMatrix2 (50 :| [50]) 50 0 Douglas
         fdndim2 <- fdndimBlackScholesVanillaEngine' (p1' :| [p2']) rhoMatrix2 100 50 0 Douglas
         setPricingEngine crossOpt fdndim1

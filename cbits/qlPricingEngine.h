@@ -146,6 +146,26 @@ extern "C" {
   double qlQuantLibBlackScholesTheta(QlGeneralizedBlackScholesProcess* x0, double value, double delta, double gamma, char **e);
   double qlQuantLibBachelierBlackFormula1(QlPlainVanillaPayoff* payoff, double forward, double stdDev, double discount, char **e);
   double qlQuantLibBachelierBlackFormula(int optionType, double strike, double forward, double stdDev, double discount, char **e);
+  double qlQuantLibBlackFormulaForwardDerivative1(QlPlainVanillaPayoff* payoff, double forward, double stdDev, double discount, double displacement, char **e);
+  double qlQuantLibBlackFormulaForwardDerivative(int optionType, double strike, double forward, double stdDev, double discount, double displacement, char **e);
+  double qlQuantLibBlackFormulaImpliedStdDevChambers1(QlPlainVanillaPayoff* payoff, double forward, double blackPrice, double blackAtmPrice, double discount, double displacement, char **e);
+  double qlQuantLibBlackFormulaImpliedStdDevChambers(int optionType, double strike, double forward, double blackPrice, double blackAtmPrice, double discount, double displacement, char **e);
+  double qlQuantLibBlackFormulaImpliedStdDevApproximationRS1(QlPlainVanillaPayoff* payoff, double forward, double blackPrice, double discount, double displacement, char **e);
+  double qlQuantLibBlackFormulaImpliedStdDevApproximationRS(int optionType, double strike, double forward, double blackPrice, double discount, double displacement, char **e);
+  double qlQuantLibBlackFormulaImpliedStdDevLiRS1(QlPlainVanillaPayoff* payoff, double forward, double blackPrice, double discount, double displacement, double guess, double omega, double accuracy, unsigned maxIterations, char **e);
+  double qlQuantLibBlackFormulaImpliedStdDevLiRS(int optionType, double strike, double forward, double blackPrice, double discount, double displacement, double guess, double omega, double accuracy, unsigned maxIterations, char **e);
+  double qlQuantLibBlackFormulaAssetItmProbability1(QlPlainVanillaPayoff* payoff, double forward, double stdDev, double displacement, char **e);
+  double qlQuantLibBlackFormulaAssetItmProbability(int optionType, double strike, double forward, double stdDev, double displacement, char **e);
+  double qlQuantLibBlackFormulaStdDevSecondDerivative1(QlPlainVanillaPayoff* payoff, double forward, double stdDev, double discount, double displacement, char **e);
+  double qlQuantLibBlackFormulaStdDevSecondDerivative(double strike, double forward, double stdDev, double discount, double displacement, char **e);
+  double qlQuantLibBachelierBlackFormulaForwardDerivative1(QlPlainVanillaPayoff* payoff, double forward, double stdDev, double discount, char **e);
+  double qlQuantLibBachelierBlackFormulaForwardDerivative(int optionType, double strike, double forward, double stdDev, double discount, char **e);
+  double qlQuantLibBachelierBlackFormulaImpliedVol(int optionType, double strike, double forward, double tte, double bachelierPrice, double discount, char **e);
+  double qlQuantLibBachelierBlackFormulaImpliedVolChoi(int optionType, double strike, double forward, double tte, double bachelierPrice, double discount, char **e);
+  double qlQuantLibBachelierBlackFormulaStdDevDerivative1(QlPlainVanillaPayoff* payoff, double forward, double stdDev, double discount, char **e);
+  double qlQuantLibBachelierBlackFormulaStdDevDerivative(double strike, double forward, double stdDev, double discount, char **e);
+  double qlQuantLibBachelierBlackFormulaAssetItmProbability1(QlPlainVanillaPayoff* payoff, double forward, double stdDev, char **e);
+  double qlQuantLibBachelierBlackFormulaAssetItmProbability(int optionType, double strike, double forward, double stdDev, char **e);
   double qlQuantLibDefaultThetaPerDay(double theta, char **e);
 
   QlPricingEngine* qlAnalyticBSMHullWhiteEngine(double equityShortRateCorrelation, QlGeneralizedBlackScholesProcess* x1, QlHullWhite* x2, char **e);

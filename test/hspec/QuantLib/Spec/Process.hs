@@ -46,7 +46,7 @@ import QuantLib.Model(hullWhite, g2, g2Dynamics, shortRate
 import QuantLib.PricingEngine(analyticHestonHullWhiteEngine, mcHestonHullWhiteEngine
  , analyticHestonEngine', batesEngine, analyticGJRGARCHEngine, mcEuropeanGJRGARCHEngine, blackFormula, analyticCapFloorEngine)
 import QuantLib.Method(pathGenerator, next, asset)
-import QuantLib.Math(RngTrait(..), StatisticsTrait(..), timeGrid, Interpolation(..), realMatrix, realMatrixFromVector, matrixRows, matrixColumns, matrixData, realMatrixData)
+import QuantLib.Math(RngTrait(..), StatisticsTrait(..), timeGrid, Interpolation(..), boxedRealMatrix, realMatrixFromVector, matrixRows, matrixColumns, matrixData, realMatrixData)
 import Control.Monad(replicateM, zipWithM_)
 import QuantLib.Instrument.CapFloor(cap)
 import QuantLib.Time.Calendar(adjust, advance, calendar, BusinessDayConvention(..), CalendarConstructor(..))
@@ -60,12 +60,12 @@ spec :: Spec
 spec = do
   describe "matrix construction" $ do
     it "accepts matching boxed and contiguous shapes, including an empty matrix" $ do
-      fmap matrixData (realMatrix 2 2 [1, 2, 3, 4]) `shouldBe` Right [1, 2, 3, 4]
+      fmap matrixData (boxedRealMatrix 2 2 [1, 2, 3, 4]) `shouldBe` Right [1, 2, 3, 4]
       fmap realMatrixData (realMatrixFromVector 0 0 V.empty) `shouldBe` Right V.empty
     it "rejects mismatched and overflowed shapes" $ do
-      realMatrix 2 2 [1, 2, 3] `shouldBe` Left "Data length 3 does not match dimensions 2x2"
+      boxedRealMatrix 2 2 [1, 2, 3] `shouldBe` Left "Data length 3 does not match dimensions 2x2"
       realMatrixFromVector 2 2 (V.fromList [1, 2, 3]) `shouldBe` Left "Data length 3 does not match dimensions 2x2"
-      case realMatrix (maxBound `div` 2 + 1) 2 [] of
+      case boxedRealMatrix (maxBound `div` 2 + 1) 2 [] of
         Left _ -> pure ()
         Right _ -> expectationFailure "overflowed dimensions accepted an empty matrix"
 
@@ -198,7 +198,7 @@ spec = do
         fixingDates <- liborForwardModelProcessFixingDates process
         fixingTimes <- liborForwardModelProcessFixingTimes process
         capletVol <- Vol.capletVarianceCurve evalDate (fromList $ zip (take 9 $ drop 1 fixingDates) capletVols) dc ShiftedLognormal 0.0
-        let emptyCorrelation = either error id $ realMatrix 0 0 []
+        let emptyCorrelation = either error id $ boxedRealMatrix 0 0 []
         parameterization <- lfmHullWhiteParameterization process capletVol emptyCorrelation 1
         covariance <- lfmHullWhiteCovariance parameterization 0.0 []
         matrixRows covariance `shouldBe` size

@@ -111,7 +111,7 @@ run = do
   volTSs <- mapM (\vq -> $(free2nd 'blackConstantVol) evalDate vq dc cal) volQs
   procs1D <- zipWithM (\uq vts -> blackScholesMertonProcess uq divTS ts vts EulerDiscretization False) underQs volTSs
   let corrFlat = concat [ [ if i == j then 1 else assetCorrelation | j <- [0 .. dim-1] ] | i <- [0 .. dim-1] ]
-      corrMat = either error id $ realMatrix (fromIntegral dim) (fromIntegral dim) corrFlat
+      corrMat = either error id $ boxedRealMatrix (fromIntegral dim) (fromIntegral dim) corrFlat
   procs <- stochasticProcessArray (fromList procs1D) corrMat
 
   t <- years dc evalDate maturity Nothing Nothing

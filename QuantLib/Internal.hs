@@ -70,7 +70,7 @@ module QuantLib.Internal
   , peekPtrArray
   , Matrix(..)
   , RealMatrix(..)
-  , realMatrix
+  , boxedRealMatrix
   , realMatrixFromVector
   , objectMatrix
   , qlNullInteger
@@ -418,12 +418,18 @@ data RealMatrix = RealMatrix
   deriving (Eq, Show)
 
 -- |Construct a list-backed numeric matrix for small-dimensional APIs such as process
--- correlation and diffusion matrices. Use 'realMatrixFromVector' for large dense numerical
--- grids such as volatility surfaces and multi-asset LSM data.
-realMatrix :: Word -> Word -> [Double] -> Either String (Matrix Double)
-realMatrix = objectMatrix
+-- correlation and diffusion matrices. Returns a boxed 'Matrix' 'Double', /not/ a
+-- 'RealMatrix' -- despite the shared @RealMatrix@ spelling this is not the pair of
+-- 'realMatrixFromVector', which is the constructor for the contiguous 'RealMatrix' type.
+-- Reach for this one when the dimensions are small and fixed (a correlation or diffusion
+-- matrix), and for 'realMatrixFromVector' for large dense numerical grids such as
+-- volatility surfaces and multi-asset LSM data.
+boxedRealMatrix :: Word -> Word -> [Double] -> Either String (Matrix Double)
+boxedRealMatrix = objectMatrix
 
--- |Construct a row-major numeric matrix backed by contiguous storage.
+-- |Construct a row-major numeric matrix backed by contiguous storage. This is the
+-- constructor for 'RealMatrix'; for a small correlation\/diffusion matrix use
+-- 'boxedRealMatrix', which yields a boxed 'Matrix' 'Double' instead.
 realMatrixFromVector :: Word -> Word -> RealVector -> Either String RealMatrix
 realMatrixFromVector rows cols d
   | matrixDimensionsMatch rows cols (V.length d) = Right $ RealMatrix rows cols d

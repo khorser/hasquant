@@ -1,3 +1,18 @@
+-- |Numeric helpers, enum catalogues, and the matrix\/vector value types the rest of
+-- @hasquant@ marshals through.
+--
+-- __Matrices.__ There are two, and the split is deliberate. 'RealMatrix' is a row-major
+-- numeric matrix over a contiguous 'RealVector', for large dense grids (volatility
+-- surfaces, LSM regression states); 'Matrix' is list-backed and boxed, for small
+-- fixed-dimensional numeric data (correlation and diffusion matrices) and for element
+-- types that cannot live in a storable vector at all, notably @'Matrix' ('QuantLib.Quote.GenQuote' q)@,
+-- whose foreign pointers need continuation-based marshalling. Construct them with
+-- 'realMatrixFromVector' and 'boxedRealMatrix' (or 'objectMatrix') respectively.
+--
+-- 'RealMatrix' interoperates with @hmatrix@ without @hasquant@ depending on it:
+-- @Numeric.LinearAlgebra.reshape cols realMatrixData@ is a row-major view with no
+-- element copy. The reverse, through @flatten@, is zero-copy only for a contiguous
+-- row-major hmatrix matrix; BLAS-produced or sliced matrices can require a reorder.
 module QuantLib.Math
   (
     RoundingType(..)
@@ -34,7 +49,7 @@ module QuantLib.Math
   , realMatrixRows
   , realMatrixColumns
   , realMatrixData
-  , realMatrix
+  , boxedRealMatrix
   , realMatrixFromVector
   , objectMatrix
 

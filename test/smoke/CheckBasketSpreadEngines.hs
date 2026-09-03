@@ -6,7 +6,7 @@ import Text.Printf(printf)
 
 import QuantLib.Instrument(npv, setPricingEngine)
 import QuantLib.Instrument.Option(basketOption, plainVanillaPayoff, BasketPayoff(Average, Spread), OptionType(Call, Put), PlainVanillaPayoff(PlainVanillaPayoff), Exercise(European), EuropeanExercise(EuropeanExercise))
-import QuantLib.Math(realMatrix, RngTrait(PseudoRandom), StatisticsTrait(Statistics), FdmScheme(Hundsdorfer, Douglas))
+import QuantLib.Math(boxedRealMatrix, RngTrait(PseudoRandom), StatisticsTrait(Statistics), FdmScheme(Hundsdorfer, Douglas))
 import QuantLib.PricingEngine
   ( bjerksundStenslandSpreadEngine, operatorSplittingSpreadEngine, OperatorSplittingOrder(First, Second)
   , pearsonSpreadEngine, gaussianCopulaSpreadEngine, fd2dBlackScholesVanillaEngine
@@ -147,7 +147,7 @@ main = keepingSettings' $ do
   bs2Q <- simpleQuote bs2
   bp1 <- blackScholesMertonProcess bs1Q bqTS1 brTS bvolTS1 EulerDiscretization False
   bp2 <- blackScholesMertonProcess bs2Q bqTS2 brTS bvolTS2 EulerDiscretization False
-  rhoMatrix <- either error pure (realMatrix 2 2 [1, brho, brho, 1])
+  rhoMatrix <- either error pure (boxedRealMatrix 2 2 [1, brho, brho, 1])
   procArr <- stochasticProcessArray (bp1 :| [bp2]) rhoMatrix
   mc <- mcEuropeanBasketEngine PseudoRandom Statistics procArr (Just 1) Nothing False False (Just 20000) Nothing Nothing 42
   choi <- choiBasketEngine (bp1 :| [bp2]) rhoMatrix 10.0 100000 False False
@@ -179,7 +179,7 @@ main = keepingSettings' $ do
 
   -- ...and verify it closely against MC at rho=1.0, where the single-factor assumption actually
   -- holds and the approximation becomes exact.
-  rhoMatrix1 <- either error pure (realMatrix 2 2 [1, 1, 1, 1])
+  rhoMatrix1 <- either error pure (boxedRealMatrix 2 2 [1, 1, 1, 1])
   procArr1 <- stochasticProcessArray (bp1 :| [bp2]) rhoMatrix1
   mc1 <- mcEuropeanBasketEngine PseudoRandom Statistics procArr1 (Just 1) Nothing False False (Just 20000) Nothing Nothing 42
   sfb1 <- singleFactorBsmBasketEngine (bp1 :| [bp2]) 1e-8
@@ -192,8 +192,8 @@ main = keepingSettings' $ do
 
   -- FdndimBlackScholesVanillaEngine (both overloads) vs Fd2dBlackScholesVanillaEngine, same
   -- 2-asset spread option as the cross-check above
-  fdndim1 <- fdndimBlackScholesVanillaEngine (p1' :| [p2']) (either error id (realMatrix 2 2 [1, rho, rho, 1])) (50 :| [50]) 50 0 Douglas
-  fdndim2 <- fdndimBlackScholesVanillaEngine' (p1' :| [p2']) (either error id (realMatrix 2 2 [1, rho, rho, 1])) 100 50 0 Douglas
+  fdndim1 <- fdndimBlackScholesVanillaEngine (p1' :| [p2']) (either error id (boxedRealMatrix 2 2 [1, rho, rho, 1])) (50 :| [50]) 50 0 Douglas
+  fdndim2 <- fdndimBlackScholesVanillaEngine' (p1' :| [p2']) (either error id (boxedRealMatrix 2 2 [1, rho, rho, 1])) 100 50 0 Douglas
   setPricingEngine crossOpt fdndim1
   fdndim1V <- npv crossOpt
   setPricingEngine crossOpt fdndim2

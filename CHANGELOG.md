@@ -8,6 +8,10 @@ Added more functionality in FD area to reach more parity with SWIG bingings, add
 
 Reworked API to use NonEmpty lists and unboxed vectors and matrices where seemed applicable.
 
+Completed `ql/pricingengines/blackformula.hpp`: the remaining free functions are now bound — `blackForwardDerivative`, `blackImpliedStdDevChambers`, `blackImpliedStdDevApproximationRS`, `blackImpliedStdDevLiRS`, `blackAssetItmProbability`, `blackStdDevSecondDerivative`, `bachelierForwardDerivative`, `bachelierImpliedVol`, `bachelierImpliedVolChoi`, `bachelierStdDevDerivative` and `bachelierAssetItmProbability`, each with its `PlainVanillaPayoff` overload where upstream has one. The whole header, old bindings included, now has hspec coverage ported from `test-suite/blackformula.cpp`.
+
+**Breaking:** `realMatrix` is renamed to `boxedRealMatrix`. It returns a boxed `Matrix Double`, not a `RealMatrix`, so its old name read as a sibling of `realMatrixFromVector` while returning a different type.
+
 ## 0.6.0.0 (2026)
 
 Rethought multiple inheritance for secondary interfaces (`AffineModel`, `Gaussian1dModel`): instead of a second `Upcastable` node, each leaf now gets a standalone, eagerly-materialized upcast (e.g. `hullWhiteAsAffineModel`). This traded a pure wrap at the call site for an explicit `IO`-sequenced conversion, so a few call sites that used to be pure functions are now `IO` actions — a small, deliberate cost for one fewer hand-rolled sum type per interface. Also generalized several accessor return types one `AnyOf` layer deeper (`SwaptionHelper`, `FixedVsFloatingSwap`) to keep them cast-free, and added a further batch of bindings: Gaussian1d model instruments/engines, YoY/CPI inflation vol surfaces and cap/floors, commodities, cross-currency swaps, and BlackAtmVolCurve/SabrVolSurface/OptionletStripper2.
