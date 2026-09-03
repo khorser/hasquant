@@ -202,6 +202,9 @@ extern "C" {
   QlPricingEngine* qlKirkEngine(QlBlackProcess* process1, QlBlackProcess* process2, double correlation, char **e);
   QlPricingEngine* qlIsdaCdsEngine(QlDefaultProbabilityTermStructure* x0, double recoveryRate, QlYieldTermStructure* discountCurve, int includeSettlementDateFlows, int numericalFix, int accrualBias, int forwardsInCouponPeriod, char **e);
   QlPricingEngine* qlMidPointCdsEngine(QlDefaultProbabilityTermStructure* x0, double recoveryRate, QlYieldTermStructure* discountCurve, int includeSettlementDateFlows, char **e);
+  // ql/experimental/credit/midpointcdoengine.hpp, integralcdoengine.hpp
+  QlPricingEngine* qlMidPointCDOEngine(QlYieldTermStructure* discountCurve, char **e);
+  QlPricingEngine* qlIntegralCDOEngine(QlYieldTermStructure* discountCurve, int stepLen, int stepUnit, char **e);
   QlPricingEngine* qlReplicatingVarianceSwapEngine(QlGeneralizedBlackScholesProcess* process, double dk, unsigned callStrikesLen, double* callStrikes, unsigned putStrikesLen, double* putStrikes, char **e);
   QlPricingEngine* qlStulzEngine(QlGeneralizedBlackScholesProcess* process1, QlGeneralizedBlackScholesProcess* process2, double correlation, char **e);
   QlPricingEngine* qlBjerksundStenslandSpreadEngine(QlGeneralizedBlackScholesProcess* process1, QlGeneralizedBlackScholesProcess* process2, double correlation, char **e);

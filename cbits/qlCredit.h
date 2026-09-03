@@ -31,6 +31,22 @@ extern "C" {
   // number gets a simpleQuote for free).
   QlDefaultLossModel* qlGaussianLHPLossModel(QlQuote* correlQuote, unsigned recoveriesLen, double* recoveries, char **e);
   void qlFreeDefaultLossModel(QlDefaultLossModel *o);
+
+  // ql/experimental/credit/syntheticcdo.hpp -- notional is ext::optional<Real>; haveNotional
+  // selects between the "leveraged off basket tranche notional" default (0) and an explicit
+  // override notional.
+  QlSyntheticCDO* qlSyntheticCDO(QlBasket* basket, int side, Schedule* schedule, double upfrontRate, double runningRate, DayCounter* dayCounter, int paymentConvention, int haveNotional, double notional, char **e);
+  void qlFreeSyntheticCDO(QlSyntheticCDO *o);
+  QlInstrument* qlSyntheticCDOAsInstrument(QlSyntheticCDO *o);
+  double qlSyntheticCDOFairPremium(QlSyntheticCDO* o, char **e);
+  double qlSyntheticCDOFairUpfrontPremium(QlSyntheticCDO* o, char **e);
+  double qlSyntheticCDOPremiumValue(QlSyntheticCDO* o, char **e);
+  double qlSyntheticCDOProtectionValue(QlSyntheticCDO* o, char **e);
+  double qlSyntheticCDOPremiumLegNPV(QlSyntheticCDO* o, char **e);
+  double qlSyntheticCDOProtectionLegNPV(QlSyntheticCDO* o, char **e);
+  double qlSyntheticCDORemainingNotional(QlSyntheticCDO* o, char **e);
+  // leverageFactor() is skipped -- a constructor echo (notional / basket tranche notional).
+  double qlSyntheticCDOImplicitCorrelation(QlSyntheticCDO* o, unsigned recoveriesLen, double* recoveries, QlYieldTermStructure* discountCurve, double targetNPV, double accuracy, char **e);
 #ifdef __cplusplus
 }
 #endif

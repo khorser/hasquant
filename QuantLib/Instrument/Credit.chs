@@ -21,7 +21,21 @@ module QuantLib.Instrument.Credit
   , impliedHazardRate
   , upfrontBPS
   , upfrontNPV
+
+  , SyntheticCDO
+  , syntheticCDO
+
+  , fairPremium
+  , fairUpfrontPremium
+  , premiumValue
+  , protectionValue
+  , premiumLegNPV
+  , protectionLegNPV
+  , cdoRemainingNotional
+  , implicitCorrelation
   ) where
+import Data.List.NonEmpty(NonEmpty)
+
 import QuantLib.Internal
 import QuantLib.Internal.Common
 import QuantLib.Internal.Type
@@ -46,6 +60,8 @@ import QuantLib.Internal.Type
 {#pointer *Schedule foreign -> CSchedule nocode#}
 {#pointer *QlClaim as Claim foreign -> CQlClaim nocode#}
 {#pointer *QlExercise nocode#}
+{#pointer *QlBasket as Basket foreign -> CBasket nocode#}
+{#pointer *QlSyntheticCDO as SyntheticCDO foreign -> CSyntheticCDO' nocode#}
 
 -- |CDS quoted as running-spread only.
 -- side Whether the protection is bought or sold. notional Notional value spread Running spread in fractional units. schedule Coupon schedule. paymentConvention Business-day convention for payment-date adjustment. dayCounter Day-count convention for accrual. settlesAccrual Whether or not the accrued coupon is due in the event of a default. paysAtDefaultTime If set to true, any payments triggered by a default event are due at default time. If set to false, they are due at the end of the accrual period. protectionStart The first date where a default event will trigger the contract.
@@ -132,5 +148,49 @@ import QuantLib.Internal.Type
 
 -- |NPV of the upfront payment.
 {#fun qlCreditDefaultSwapUpfrontNPV as upfrontNPV{withGenInstrument*`CreditDefaultSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |A synthetic CDO tranche: the premium and protection legs on a 'Basket' tranche between
+-- @attachmentRatio@ and @detachmentRatio@ (set on the 'Basket' itself, not here). @notional@
+-- overrides the tranche's own notional (upstream's leverage factor); 'Nothing' uses the
+-- basket's tranche notional directly.
+-- side Whether protection is bought or sold. schedule Premium payment schedule. upfrontRate Upfront in fractional units. runningRate Running premium in fractional units. dayCounter Day-count convention for accrual. paymentConvention Business-day convention for payment-date adjustment. notional Overrides the tranche notional implied by the basket.
+syntheticCDO :: Basket -> ProtectionSide -> Schedule -> Double -> Double -> DayCounter -> BusinessDayConvention
+  -> Maybe Double -> IO SyntheticCDO
+syntheticCDO basket side sched upfrontRate runningRate dc conv notional =
+  syntheticCDO_ basket side sched upfrontRate runningRate dc conv (maybe False (const True) notional) (maybe 0 id notional)
+{#fun qlSyntheticCDO as syntheticCDO_{withBasket*`Basket',`ProtectionSide',withSchedule*`Schedule',`Double',`Double'
+  ,withDayCounter*`DayCounter',fromEnumC`BusinessDayConvention',`Bool',`Double'
+  ,preErrorCheck-`String'errorCheck*-}->`SyntheticCDO'peekSyntheticCDO*#}
+
+-- |The fair running premium that makes the tranche's NPV zero (holding the upfront fixed).
+{#fun qlSyntheticCDOFairPremium as fairPremium{withGenInstrument*`SyntheticCDO',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |The fair upfront premium that makes the tranche's NPV zero (holding the running rate fixed).
+{#fun qlSyntheticCDOFairUpfrontPremium as fairUpfrontPremium{withGenInstrument*`SyntheticCDO',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |NPV of the premium (running plus upfront) leg.
+{#fun qlSyntheticCDOPremiumValue as premiumValue{withGenInstrument*`SyntheticCDO',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |NPV of the protection leg.
+{#fun qlSyntheticCDOProtectionValue as protectionValue{withGenInstrument*`SyntheticCDO',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |NPV of the premium (running plus upfront) leg, as a plain NPV (not divided by notional).
+{#fun qlSyntheticCDOPremiumLegNPV as premiumLegNPV{withGenInstrument*`SyntheticCDO',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |NPV of the protection leg, as a plain NPV.
+{#fun qlSyntheticCDOProtectionLegNPV as protectionLegNPV{withGenInstrument*`SyntheticCDO',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |Total outstanding tranche notional, not wiped out by realized losses.
+{#fun qlSyntheticCDORemainingNotional as cdoRemainingNotional{withGenInstrument*`SyntheticCDO',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |The flat Gaussian-copula LHP correlation (constant along time and portfolio loss level)
+-- that makes the tranche's NPV equal @targetNPV@.
+-- recoveries One recovery rate per basket name, in the basket's own name order. discountCurve Curve to discount both legs with. targetNPV NPV to match; 0 for a fairly-priced tranche. accuracy Root-finding accuracy on the correlation.
+{#fun qlSyntheticCDOImplicitCorrelation as implicitCorrelation{withGenInstrument*`SyntheticCDO'
+  ,withNonEmptyDoubleArray*`NonEmpty Double'& -- ^recoveries
+  ,withYieldTermStructure*`GenYieldTermStructure y' -- ^discountCurve
+  ,`Double' -- ^targetNPV
+  ,`Double' -- ^accuracy
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

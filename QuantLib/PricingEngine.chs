@@ -140,6 +140,8 @@ module QuantLib.PricingEngine
   , juQuadraticApproximationEngine
   , kirkEngine
   , midPointCdsEngine
+  , midPointCDOEngine
+  , integralCDOEngine
   , replicatingVarianceSwapEngine
   , stulzEngine
   , bjerksundStenslandSpreadEngine
@@ -900,6 +902,18 @@ discountingPerpetualFuturesEngine domestic foreignCurve spot funding interpolati
 {#fun qlMidPointCdsEngine as midPointCdsEngine{withGenTermStructure*`DefaultProbabilityTermStructure',`Double' -- ^recoveryRate
   ,withYieldTermStructure*`GenYieldTermStructure y'
   ,fromMaybeBool`Maybe Bool' -- ^includeSettlementDateFlows
+  ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+
+-- |Synthetic CDO tranche pricing engine using the mid-point approximation, evaluating the
+-- expected tranche loss at the mid-point of each accrual/protection period. The basket must
+-- already have a 'QuantLib.Credit.DefaultLossModel' attached.
+{#fun qlMidPointCDOEngine as midPointCDOEngine{withYieldTermStructure*`GenYieldTermStructure y' -- ^discountCurve
+  ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+
+-- |Synthetic CDO tranche pricing engine that integrates the expected tranche loss over
+-- @stepSize@-sized steps of the tranche's schedule.
+{#fun qlIntegralCDOEngine as integralCDOEngine{withYieldTermStructure*`GenYieldTermStructure y' -- ^discountCurve
+  ,fromEnumQuantity`(Word,TimeUnit)'& -- ^stepSize
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |CDS pricing engine implementing the ISDA standard model

@@ -3,6 +3,7 @@
 #include <ql/experimental/credit/pool.hpp>
 #include <ql/experimental/credit/basket.hpp>
 #include <ql/experimental/credit/gaussianlhplossmodel.hpp>
+#include <ql/experimental/credit/syntheticcdo.hpp>
 
 #include "qlaux.h"
 #include "qlCredit.h"
@@ -55,6 +56,37 @@ QlDefaultLossModel* qlGaussianLHPLossModel(QlQuote* correlQuote, unsigned recove
   try {return ret(new QlDefaultLossModel(alloc(new GaussianLHPLossModel(*arg(correlQuote), std::vector<double>(recoveries, recoveries + recoveriesLen)))));
   } catch (std::exception& er) {return handleException<QlDefaultLossModel*>(e, er);}}
 void qlFreeDefaultLossModel(QlDefaultLossModel *o) {del(o);}
+
+QlSyntheticCDO* qlSyntheticCDO(QlBasket* basket, int side, Schedule* schedule, double upfrontRate, double runningRate, DayCounter* dayCounter, int paymentConvention, int haveNotional, double notional, char **e) {
+  try {return ret(new QlSyntheticCDO(alloc(new SyntheticCDO(*arg(basket), (Protection::Side)side, *arg(schedule), upfrontRate, runningRate,
+      *arg(dayCounter), (BusinessDayConvention)paymentConvention, haveNotional ? ext::optional<Real>(notional) : ext::nullopt))));
+  } catch (std::exception& er) {return handleException<QlSyntheticCDO*>(e, er);}}
+void qlFreeSyntheticCDO(QlSyntheticCDO *o) {del(o);}
+QlInstrument* qlSyntheticCDOAsInstrument(QlSyntheticCDO *o) {return ret(new QlInstrument(*arg(o)));}
+double qlSyntheticCDOFairPremium(QlSyntheticCDO* o, char **e) {
+  try {return (*arg(o))->fairPremium();
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlSyntheticCDOFairUpfrontPremium(QlSyntheticCDO* o, char **e) {
+  try {return (*arg(o))->fairUpfrontPremium();
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlSyntheticCDOPremiumValue(QlSyntheticCDO* o, char **e) {
+  try {return (*arg(o))->premiumValue();
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlSyntheticCDOProtectionValue(QlSyntheticCDO* o, char **e) {
+  try {return (*arg(o))->protectionValue();
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlSyntheticCDOPremiumLegNPV(QlSyntheticCDO* o, char **e) {
+  try {return (*arg(o))->premiumLegNPV();
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlSyntheticCDOProtectionLegNPV(QlSyntheticCDO* o, char **e) {
+  try {return (*arg(o))->protectionLegNPV();
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlSyntheticCDORemainingNotional(QlSyntheticCDO* o, char **e) {
+  try {return (*arg(o))->remainingNotional();
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlSyntheticCDOImplicitCorrelation(QlSyntheticCDO* o, unsigned recoveriesLen, double* recoveries, QlYieldTermStructure* discountCurve, double targetNPV, double accuracy, char **e) {
+  try {return (*arg(o))->implicitCorrelation(std::vector<double>(recoveries, recoveries + recoveriesLen), *arg(discountCurve), targetNPV, accuracy);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
 
 }
 

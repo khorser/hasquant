@@ -179,6 +179,7 @@ namespace QuantLib {
   class Pool;
   class Basket;
   class DefaultLossModel;
+  class SyntheticCDO;
   class Claim;
   class CompositeConstraint;
   class Constraint;
@@ -521,6 +522,7 @@ using QuantLib::Issuer;
 using QuantLib::Pool;
 using QuantLib::Basket;
 using QuantLib::DefaultLossModel;
+using QuantLib::SyntheticCDO;
 using QuantLib::Claim;
 using QuantLib::CompositeConstraint;
 using QuantLib::Constraint;
@@ -855,6 +857,7 @@ using QlCdsOption = shared_ptr<CdsOption>;
 using QlPool = shared_ptr<Pool>;
 using QlBasket = shared_ptr<Basket>;
 using QlDefaultLossModel = shared_ptr<DefaultLossModel>;
+using QlSyntheticCDO = shared_ptr<SyntheticCDO>;
 using QlClaim = shared_ptr<Claim>;
 using QlConvertibleBond = shared_ptr<ConvertibleBond>;
 using QlCPIBond = shared_ptr<CPIBond>;
@@ -1102,6 +1105,7 @@ QL_TRACE_NAME(Issuer)
 QL_TRACE_NAME(Pool)
 QL_TRACE_NAME(Basket)
 QL_TRACE_NAME(DefaultLossModel)
+QL_TRACE_NAME(SyntheticCDO)
 QL_TRACE_NAME(Claim)
 QL_TRACE_NAME(CommodityType)
 QL_TRACE_NAME(CompositeConstraint)
@@ -1301,6 +1305,7 @@ QL_TRACE_NAME(QlCdsOption)
 QL_TRACE_NAME(QlPool)
 QL_TRACE_NAME(QlBasket)
 QL_TRACE_NAME(QlDefaultLossModel)
+QL_TRACE_NAME(QlSyntheticCDO)
 QL_TRACE_NAME(QlClaim)
 QL_TRACE_NAME(QlConvertibleBond)
 QL_TRACE_NAME(QlCPIBond)
