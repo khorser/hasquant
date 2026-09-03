@@ -26,6 +26,7 @@ module QuantLib.Credit
 
   , DefaultLossModel
   , gaussianLHPLossModel
+  , constantLossModel
   ) where
 import Data.List.NonEmpty(NonEmpty, toList)
 
@@ -128,6 +129,26 @@ gaussianLHPLossModel :: GenQuote q -> NonEmpty Double -> IO DefaultLossModel
 gaussianLHPLossModel correlQuote recoveries = qlGaussianLHPLossModel correlQuote (toList recoveries)
 {#fun qlGaussianLHPLossModel{withQuote*`GenQuote q' -- ^correlQuote
   ,withDoubleArray*`[Double]'&
+  ,preErrorCheck-`String'errorCheck*-}->`DefaultLossModel'peekDefaultLossModel*#}
+
+-- |One-factor Gaussian- or Student-T-copula constant-loss latent model (John Hull and Alan
+-- White, \"Valuation of a CDO and nth to default CDS without Monte Carlo simulation\", Journal
+-- of Derivatives 12, 2, 2004), exact (no large-pool approximation) but limited to digital-type
+-- payoffs (e.g. 'QuantLib.Instrument.Credit.NthToDefault') since it has no distribution-type
+-- loss integration of its own. @recoveries@ is one recovery rate per basket name, in the same
+-- order the basket's own names appear (@nVariables@ is taken from its length). @tOrders@
+-- selects the copula: @[]@ uses a Gaussian copula; a non-empty list selects a Student-T copula
+-- with these degrees of freedom -- upstream requires exactly one entry per systemic factor plus
+-- one for the idiosyncratic factor, which for this one-factor model is always two entries (e.g.
+-- @[5,5]@), and throws if the count is wrong. Only the @Handle\<Quote\>@ correlation overload is
+-- bound, per CLAUDE.md's @std::variant@\/@Handle\<Quote\>@ convention.
+constantLossModel :: GenQuote q -> NonEmpty Double -> LatentModelIntegrationType -> [Int] -> IO DefaultLossModel
+constantLossModel correlQuote recoveries integralType tOrders =
+  qlConstantLossModel correlQuote (toList recoveries) integralType tOrders
+{#fun qlConstantLossModel{withQuote*`GenQuote q'
+  ,withDoubleArray*`[Double]'&
+  ,`LatentModelIntegrationType'
+  ,withIntArray*`[Int]'&
   ,preErrorCheck-`String'errorCheck*-}->`DefaultLossModel'peekDefaultLossModel*#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

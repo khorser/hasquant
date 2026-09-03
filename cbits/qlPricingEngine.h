@@ -205,6 +205,9 @@ extern "C" {
   // ql/experimental/credit/midpointcdoengine.hpp, integralcdoengine.hpp
   QlPricingEngine* qlMidPointCDOEngine(QlYieldTermStructure* discountCurve, char **e);
   QlPricingEngine* qlIntegralCDOEngine(QlYieldTermStructure* discountCurve, int stepLen, int stepUnit, char **e);
+  // ql/experimental/credit/integralntdengine.hpp -- note integrationStep comes first upstream
+  // (opposite order from IntegralCDOEngine's discountCurve-first constructor).
+  QlPricingEngine* qlIntegralNtdEngine(int stepLen, int stepUnit, QlYieldTermStructure* discountCurve, char **e);
   QlPricingEngine* qlReplicatingVarianceSwapEngine(QlGeneralizedBlackScholesProcess* process, double dk, unsigned callStrikesLen, double* callStrikes, unsigned putStrikesLen, double* putStrikes, char **e);
   QlPricingEngine* qlStulzEngine(QlGeneralizedBlackScholesProcess* process1, QlGeneralizedBlackScholesProcess* process2, double correlation, char **e);
   QlPricingEngine* qlBjerksundStenslandSpreadEngine(QlGeneralizedBlackScholesProcess* process1, QlGeneralizedBlackScholesProcess* process2, double correlation, char **e);

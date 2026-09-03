@@ -142,6 +142,7 @@ module QuantLib.PricingEngine
   , midPointCdsEngine
   , midPointCDOEngine
   , integralCDOEngine
+  , integralNtdEngine
   , replicatingVarianceSwapEngine
   , stulzEngine
   , bjerksundStenslandSpreadEngine
@@ -914,6 +915,12 @@ discountingPerpetualFuturesEngine domestic foreignCurve spot funding interpolati
 -- @stepSize@-sized steps of the tranche's schedule.
 {#fun qlIntegralCDOEngine as integralCDOEngine{withYieldTermStructure*`GenYieldTermStructure y' -- ^discountCurve
   ,fromEnumQuantity`(Word,TimeUnit)'& -- ^stepSize
+  ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+
+-- |Nth-to-default pricing engine that integrates the probability of at least @n@ defaults over
+-- @integrationStep@-sized steps of the underlying basket's copula.
+{#fun qlIntegralNtdEngine as integralNtdEngine{fromEnumQuantity`(Word,TimeUnit)'& -- ^integrationStep
+  ,withYieldTermStructure*`GenYieldTermStructure y' -- ^discountCurve
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |CDS pricing engine implementing the ISDA standard model

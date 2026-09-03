@@ -47,6 +47,22 @@ extern "C" {
   double qlSyntheticCDORemainingNotional(QlSyntheticCDO* o, char **e);
   // leverageFactor() is skipped -- a constructor echo (notional / basket tranche notional).
   double qlSyntheticCDOImplicitCorrelation(QlSyntheticCDO* o, unsigned recoveriesLen, double* recoveries, QlYieldTermStructure* discountCurve, double targetNPV, double accuracy, char **e);
+
+  // ql/experimental/credit/constantlosslatentmodel.hpp -- ConstantLossModel<CopulaPolicy>, only
+  // the Handle<Quote>/nVariables (one-factor) constructor. tOrdersLen == 0 selects
+  // GaussianCopulaPolicy; tOrdersLen > 0 selects TCopulaPolicy with these degrees of freedom
+  // (see qlTermStructureAux.h for the exact-length requirement). The dispatch itself lives in
+  // qlTermStructureAux.cpp, alongside the other DefaultProbabilityTermStructure/credit dispatch
+  // already there, per AGENTS.md's rule that a runtime-enum-selects-a-template-argument switch
+  // belongs in its domain's Aux TU.
+  QlDefaultLossModel* qlConstantLossModel(QlQuote* correlQuote, unsigned recoveriesLen, double* recoveries, int integralType, unsigned tOrdersLen, int* tOrders, char **e);
+
+  // ql/experimental/credit/nthtodefault.hpp -- only fairPremium() is bound; premium/nominal/
+  // dayCounter/side/rank/basketSize are all constructor echoes.
+  QlNthToDefault* qlNthToDefault(QlBasket* basket, unsigned n, int side, Schedule* premiumSchedule, double upfrontRate, double premiumRate, DayCounter* dayCounter, double nominal, int settlePremiumAccrual, char **e);
+  void qlFreeNthToDefault(QlNthToDefault *o);
+  QlInstrument* qlNthToDefaultAsInstrument(QlNthToDefault *o);
+  double qlNthToDefaultFairPremium(QlNthToDefault* o, char **e);
 #ifdef __cplusplus
 }
 #endif

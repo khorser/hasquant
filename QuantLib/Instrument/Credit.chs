@@ -33,6 +33,10 @@ module QuantLib.Instrument.Credit
   , protectionLegNPV
   , cdoRemainingNotional
   , implicitCorrelation
+
+  , NthToDefault
+  , nthToDefault
+  , ntdFairPremium
   ) where
 import Data.List.NonEmpty(NonEmpty)
 
@@ -62,6 +66,7 @@ import QuantLib.Internal.Type
 {#pointer *QlExercise nocode#}
 {#pointer *QlBasket as Basket foreign -> CBasket nocode#}
 {#pointer *QlSyntheticCDO as SyntheticCDO foreign -> CSyntheticCDO' nocode#}
+{#pointer *QlNthToDefault as NthToDefault foreign -> CNthToDefault' nocode#}
 
 -- |CDS quoted as running-spread only.
 -- side Whether the protection is bought or sold. notional Notional value spread Running spread in fractional units. schedule Coupon schedule. paymentConvention Business-day convention for payment-date adjustment. dayCounter Day-count convention for accrual. settlesAccrual Whether or not the accrued coupon is due in the event of a default. paysAtDefaultTime If set to true, any payments triggered by a default event are due at default time. If set to false, they are due at the end of the accrual period. protectionStart The first date where a default event will trigger the contract.
@@ -192,5 +197,18 @@ syntheticCDO basket side sched upfrontRate runningRate dc conv notional =
   ,`Double' -- ^targetNPV
   ,`Double' -- ^accuracy
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |An nth-to-default swap: protection against the @n@-th default (by time) in a 'Basket',
+-- priced via John Hull and Alan White, \"Valuation of a CDO and nth to default CDS without
+-- Monte Carlo simulation\", Journal of Derivatives 12, 2, 2004. Only 'ntdFairPremium' is bound
+-- from the results surface -- @premium@, @nominal@, @dayCounter@, @side@, @rank@ and
+-- @basketSize@ are all constructor echoes.
+-- basket Underlying basket of names. n Which default (1-based) protection is bought/sold on. side Whether protection is bought or sold. premiumSchedule Premium payment schedule. upfrontRate Upfront in fractional units. premiumRate Running premium in fractional units. dayCounter Day-count convention for accrual. nominal Protected notional amount. settlePremiumAccrual Whether the accrued premium is due in the event of the triggering default.
+{#fun qlNthToDefault as nthToDefault{withBasket*`Basket',fromIntegral`Word',`ProtectionSide'
+  ,withSchedule*`Schedule',`Double',`Double',withDayCounter*`DayCounter',`Double',`Bool'
+  ,preErrorCheck-`String'errorCheck*-}->`NthToDefault'peekNthToDefault*#}
+
+-- |The fair running premium that makes the nth-to-default swap's NPV zero.
+{#fun qlNthToDefaultFairPremium as ntdFairPremium{withGenInstrument*`NthToDefault',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

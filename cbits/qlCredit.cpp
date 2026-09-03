@@ -4,9 +4,11 @@
 #include <ql/experimental/credit/basket.hpp>
 #include <ql/experimental/credit/gaussianlhplossmodel.hpp>
 #include <ql/experimental/credit/syntheticcdo.hpp>
+#include <ql/experimental/credit/nthtodefault.hpp>
 
 #include "qlaux.h"
 #include "qlCredit.h"
+#include "qlTermStructureAux.h"
 
 using namespace QuantLib;
 
@@ -86,6 +88,23 @@ double qlSyntheticCDORemainingNotional(QlSyntheticCDO* o, char **e) {
   } catch (std::exception& er) {return handleException<double>(e, er);}}
 double qlSyntheticCDOImplicitCorrelation(QlSyntheticCDO* o, unsigned recoveriesLen, double* recoveries, QlYieldTermStructure* discountCurve, double targetNPV, double accuracy, char **e) {
   try {return (*arg(o))->implicitCorrelation(std::vector<double>(recoveries, recoveries + recoveriesLen), *arg(discountCurve), targetNPV, accuracy);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+
+QlDefaultLossModel* qlConstantLossModel(QlQuote* correlQuote, unsigned recoveriesLen, double* recoveries, int integralType, unsigned tOrdersLen, int* tOrders, char **e) {
+  try {return ret(new QlDefaultLossModel(alloc(qlConstantLossModelAux(*arg(correlQuote),
+      std::vector<double>(recoveries, recoveries + recoveriesLen),
+      (LatentModelIntegrationType::LatentModelIntegrationType)integralType, recoveriesLen,
+      std::vector<Integer>(tOrders, tOrders + tOrdersLen)))));
+  } catch (std::exception& er) {return handleException<QlDefaultLossModel*>(e, er);}}
+
+QlNthToDefault* qlNthToDefault(QlBasket* basket, unsigned n, int side, Schedule* premiumSchedule, double upfrontRate, double premiumRate, DayCounter* dayCounter, double nominal, int settlePremiumAccrual, char **e) {
+  try {return ret(new QlNthToDefault(alloc(new NthToDefault(*arg(basket), n, (Protection::Side)side,
+      *arg(premiumSchedule), upfrontRate, premiumRate, *arg(dayCounter), nominal, settlePremiumAccrual != 0))));
+  } catch (std::exception& er) {return handleException<QlNthToDefault*>(e, er);}}
+void qlFreeNthToDefault(QlNthToDefault *o) {del(o);}
+QlInstrument* qlNthToDefaultAsInstrument(QlNthToDefault *o) {return ret(new QlInstrument(*arg(o)));}
+double qlNthToDefaultFairPremium(QlNthToDefault* o, char **e) {
+  try {return (*arg(o))->fairPremium();
   } catch (std::exception& er) {return handleException<double>(e, er);}}
 
 }

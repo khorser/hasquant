@@ -86,6 +86,7 @@ typedef struct QlCPIVolatilitySurface QlCPIVolatilitySurface;
 typedef struct QlCreditDefaultSwap QlCreditDefaultSwap;
 typedef struct QlDefaultLossModel QlDefaultLossModel;
 typedef struct QlSyntheticCDO QlSyntheticCDO;
+typedef struct QlNthToDefault QlNthToDefault;
 typedef struct QlPool QlPool;
 typedef struct QlDefaultProbabilityHelper QlDefaultProbabilityHelper;
 typedef struct QlDefaultProbabilityTermStructure QlDefaultProbabilityTermStructure;

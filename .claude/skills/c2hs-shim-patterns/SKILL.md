@@ -562,3 +562,49 @@ so callers can guard *before* the call instead of discovering the mismatch as a 
 Any future multi-dimensional regression/interpolation binding built on a per-order term-counting
 basis should check whether its own term count is linear-in-order or combinatorial before assuming
 the scalar case's shape generalizes.
+
+## A copula-policy (or other trait-struct) dispatcher's arms can need genuinely different `initTraits`, not just different types
+
+**`ConstantLossModel<CopulaPolicy>`'s two arms don't share an `initTraits` shape at all** --
+`GaussianCopulaPolicy::initTraits` is `typedef int initTraits;` (an unused sentinel upstream),
+while `TCopulaPolicy::initTraits` is a real struct, `{ std::vector<Integer> tOrders; }`, and
+`TCopulaPolicy`'s own constructor `QL_REQUIRE`s `tOrders.size() == factorWeight.size() + 1` (one
+per systemic factor, plus one for the idiosyncratic factor). A dispatcher that assumes every arm's
+trait struct is default-constructible-and-otherwise-identical would either fail to compile for the
+`int` arm (no `.tOrders` field to set) or silently drop the Student-T degrees of freedom. The fix
+(`qlTermStructureAux.cpp`'s `dispatchCopulaPolicy`/`qlConstantLossModelAux`) still follows the
+usual generic-lambda-plus-explicit-`Ret` shape, but the lambda body branches on the dispatched tag
+with `if constexpr`:
+
+```cpp
+return dispatchCopulaPolicy<DefaultLossModel*>(!tOrders.empty(), [&](auto tag) {
+  using Policy = typename decltype(tag)::type;
+  typename Policy::initTraits ini{};
+  if constexpr (std::is_same_v<Policy, TCopulaPolicy>) ini.tOrders = tOrders;
+  return new ConstantLossModel<Policy>(mktCorrel, recoveries, integralType, nVariables, ini);
+});
+```
+
+`typename Policy::initTraits ini{};` value-initializes correctly for both arms (`int{}` is `0`;
+the struct's `tOrders` default-constructs empty), so only the `if constexpr` branch that actually
+has a `tOrders` field to write touches it -- the other arm's `ini` stays whatever its own
+"no extra parameters" default is. Check this before writing any dispatcher whose arms are chosen
+by a trait/policy template parameter, not just ones chosen by a plain value type: don't assume the
+per-arm initialization struct is uniform just because the outer template signature is.
+
+## A dispatcher belongs in its domain's existing Aux TU, not a new one-off file
+
+**Before adding a new `cbits/qlXAux.{h,cpp}` pair for a single dispatcher, check whether the
+domain already has dispatch code in an existing Aux TU.** `qlTermStructureAux.cpp` already had a
+"some credit stuff" section (`qlInterpolatedHazardRateCurveAux`, `qlPiecewiseDefaultCurveAux`,
+`dispatchDefaultTrait`, ...) dispatching over `DefaultProbabilityTermStructure` -- i.e. credit-domain
+dispatch already lived there before `ConstantLossModel`'s copula-policy dispatcher existed. Adding
+that dispatcher to a brand-new `qlCreditAux.cpp` would have duplicated the file's own `Tag<T>`
+template and split "credit dispatch" across two files for no structural reason; it was added next
+to the existing credit section in `qlTermStructureAux.cpp`/`.h` instead, reusing that file's
+`Tag<T>` and its "explicit leading `Ret`" convention directly. The one-Aux-TU-per-domain rule in
+AGENTS.md ("cbits/*Aux.cpp exist to hold every ... dispatch, and each axis gets exactly one
+generic-lambda dispatcher") is about not re-duplicating a *dispatch axis* per call site, not about
+minting a new file per bound class -- a single new dispatcher for an existing domain goes into that
+domain's existing Aux TU, and only a genuinely new domain with no existing Aux file yet (as
+`qlPricingEngineAux.cpp` was, once, for the engine domain) justifies a new one.

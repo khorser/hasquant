@@ -18,6 +18,9 @@
 #include <ql/experimental/inflation/interpolatedyoyoptionletstripper.hpp>
 #include <ql/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp>
 #include <ql/pricingengines/inflation/inflationcapfloorengines.hpp>
+#include <ql/experimental/credit/constantlosslatentmodel.hpp>
+#include <ql/experimental/math/gaussiancopulapolicy.hpp>
+#include <ql/experimental/math/tcopulapolicy.hpp>
 
 // Every IterativeBootstrap constructor parameter (ql/termstructures/iterativebootstrap.hpp),
 // as one flat POD so the piecewise-curve entry points don't grow nine more positional
@@ -181,6 +184,17 @@ QuantLib::DefaultProbabilityTermStructure* qlPiecewiseDefaultCurveAux1(unsigned 
     QuantLib::DayCounter& dayCounter,
     const std::vector<QuantLib::Handle<QuantLib::Quote> >& jumps, const std::vector<QuantLib::Date>& jumpDates,
     int trait,int interpolator, int approximator, int approximatorArg);
+
+// ConstantLossModel<CopulaPolicy>, only the Handle<Quote>/nVariables (one-factor) constructor.
+// tOrders empty -> GaussianCopulaPolicy (initTraits is a bare int upstream, unused here);
+// tOrders non-empty -> TCopulaPolicy, whose initTraits::tOrders takes exactly these degrees of
+// freedom (one per latent factor, plus one for the idiosyncratic factor -- for this one-factor
+// constructor that's always 2 elements; TCopulaPolicy's own constructor QL_REQUIREs the exact
+// count). See qlTermStructureAux.cpp for the dispatcher itself.
+QuantLib::DefaultLossModel* qlConstantLossModelAux(const QuantLib::Handle<QuantLib::Quote>& mktCorrel,
+    const std::vector<QuantLib::Real>& recoveries,
+    QuantLib::LatentModelIntegrationType::LatentModelIntegrationType integralType,
+    QuantLib::Size nVariables, const std::vector<QuantLib::Integer>& tOrders);
 
 QuantLib::ZeroInflationTermStructure *qlPiecewiseZeroInflationCurveAux(
     const QuantLib::Date &referenceDate,

@@ -2760,6 +2760,7 @@ markovFunctionalAsGaussian1dModel m = withGenCalibratedModel m qlMarkovFunctiona
 -- >      ConstNotionalCrossCurrencyFixedVsFloatingSwap
 -- >  CreditDefaultSwap
 -- >  SyntheticCDO
+-- >  NthToDefault
 -- >  CapFloor
 -- >  YoYInflationCapFloor
 -- >  CPICapFloor
@@ -2828,6 +2829,16 @@ foreign import ccall "ql.h qlSyntheticCDOAsInstrument" qlSyntheticCDOAsInstrumen
 instance Upcastable CSyntheticCDO' where {type Base CSyntheticCDO' = CInstrument'; upcast = qlSyntheticCDOAsInstrument}
 peekSyntheticCDO :: Ptr CSyntheticCDO' -> IO SyntheticCDO
 peekSyntheticCDO = GenInstrument <.> newGenForeignPtr
+
+data CNthToDefault'
+type CNthToDefault = ForeignPtr CNthToDefault'
+type NthToDefault = GenInstrument CNthToDefault
+foreign import ccall unsafe "ql.h &qlFreeNthToDefault" qlFreeNthToDefault :: FinalizerPtr CNthToDefault'
+instance Finalizable CNthToDefault' where finalize = qlFreeNthToDefault
+foreign import ccall "ql.h qlNthToDefaultAsInstrument" qlNthToDefaultAsInstrument :: Ptr CNthToDefault' -> IO (Ptr CInstrument')
+instance Upcastable CNthToDefault' where {type Base CNthToDefault' = CInstrument'; upcast = qlNthToDefaultAsInstrument}
+peekNthToDefault :: Ptr CNthToDefault' -> IO NthToDefault
+peekNthToDefault = GenInstrument <.> newGenForeignPtr
 
 data CVarianceSwap'
 type CVarianceSwap = ForeignPtr CVarianceSwap'

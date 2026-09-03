@@ -1494,7 +1494,7 @@
 |x|ql/experimental/credit/constantlosslatentmodel.hpp|const std::vector<Real> & ConstantLossLatentmodel::recoveries() const;
 | |ql/experimental/credit/constantlosslatentmodel.hpp|Real ConstantLossLatentmodel::expectedRecovery(const Date & d, Size iName, const DefaultProbKey & defKeys) const;
 | |ql/experimental/credit/constantlosslatentmodel.hpp|ConstantLossModel::ConstantLossModel<copulaPolicy>(const std::vector<std::vector<Real>> & factorWeights, const std::vector<Real> & recoveries, LatentModelIntegrationType::LatentModelIntegrationType integralType, const typename copulaPolicy::initTraits & ini = copulaPolicy::initTraits());
-| |ql/experimental/credit/constantlosslatentmodel.hpp|ConstantLossModel::ConstantLossModel<copulaPolicy>(const Handle<Quote> & mktCorrel, const std::vector<Real> & recoveries, LatentModelIntegrationType::LatentModelIntegrationType integralType, Size nVariables, const typename copulaPolicy::initTraits & ini = copulaPolicy::initTraits());
+|v|ql/experimental/credit/constantlosslatentmodel.hpp|ConstantLossModel::ConstantLossModel<copulaPolicy>(const Handle<Quote> & mktCorrel, const std::vector<Real> & recoveries, LatentModelIntegrationType::LatentModelIntegrationType integralType, Size nVariables, const typename copulaPolicy::initTraits & ini = copulaPolicy::initTraits());
 | |ql/experimental/credit/correlationstructure.hpp|CorrelationTermStructure::CorrelationTermStructure(const Calendar & cal, BusinessDayConvention bdc, const DayCounter & dc = DayCounter());
 | |ql/experimental/credit/correlationstructure.hpp|CorrelationTermStructure::CorrelationTermStructure(const Date & referenceDate, const Calendar & cal, BusinessDayConvention bdc, const DayCounter & dc = DayCounter());
 | |ql/experimental/credit/correlationstructure.hpp|CorrelationTermStructure::CorrelationTermStructure(Natural settlementDays, const Calendar & cal, BusinessDayConvention bdc, const DayCounter & dc = DayCounter());
@@ -1603,7 +1603,7 @@
 | |ql/experimental/credit/inhomogeneouspooldef.hpp|Distribution lossDistrib(const Date & d) const;
 |v|ql/experimental/credit/integralcdoengine.hpp|IntegralCDOEngine::IntegralCDOEngine(Handle<YieldTermStructure> discountCurve, Period stepSize = 3 * Months);
 |x|ql/experimental/credit/integralcdoengine.hpp|void IntegralCDOEngine::calculate() const;
-| |ql/experimental/credit/integralntdengine.hpp|IntegralNtdEngine::IntegralNtdEngine(const Period & integrationStep, Handle<YieldTermStructure> discountCurve);
+|v|ql/experimental/credit/integralntdengine.hpp|IntegralNtdEngine::IntegralNtdEngine(const Period & integrationStep, Handle<YieldTermStructure> discountCurve);
 |x|ql/experimental/credit/integralntdengine.hpp|void IntegralNtdEngine::calculate() const;
 | |ql/experimental/credit/interpolatedaffinehazardratecurve.hpp|InterpolatedAffineHazardRateCurve::InterpolatedAffineHazardRateCurve<Interpolator>(const std::vector<Date> & dates, const std::vector<Rate> & hazardRates, const DayCounter & dayCounter, const ext::shared_ptr<OneFactorAffineModel> & model, const Calendar & cal = Calendar(), const std::vector<Handle<Quote>> & jumps = std::vector<Handle<Quote>>(), const std::vector<Date> & jumpDates = std::vector<Date>(), const Interpolator & interpolator = Interpolator());
 | |ql/experimental/credit/interpolatedaffinehazardratecurve.hpp|InterpolatedAffineHazardRateCurve::InterpolatedAffineHazardRateCurve<Interpolator>(const std::vector<Date> & dates, const std::vector<Rate> & hazardRates, const DayCounter & dayCounter, const ext::shared_ptr<OneFactorAffineModel> & model, const Calendar & calendar, const Interpolator & interpolator);
@@ -1674,16 +1674,16 @@
 | |ql/experimental/credit/lossdistribution.hpp|LossDistMonteCarlo::LossDistMonteCarlo(Size nBuckets, Real maximum, Size simulations, long seed = 42, Real epsilon = 1e-6);
 |v|ql/experimental/credit/midpointcdoengine.hpp|MidPointCDOEngine::MidPointCDOEngine(Handle<YieldTermStructure> discountCurve);
 |x|ql/experimental/credit/midpointcdoengine.hpp|void MidPointCDOEngine::calculate() const;
-| |ql/experimental/credit/nthtodefault.hpp|NthToDefault::NthToDefault(const ext::shared_ptr<Basket> & basket, Size n, Protection::Side side, Schedule premiumSchedule, Rate upfrontRate, Rate premiumRate, const DayCounter & dayCounter, Real nominal, bool settlePremiumAccrual);
+|v|ql/experimental/credit/nthtodefault.hpp|NthToDefault::NthToDefault(const ext::shared_ptr<Basket> & basket, Size n, Protection::Side side, Schedule premiumSchedule, Rate upfrontRate, Rate premiumRate, const DayCounter & dayCounter, Real nominal, bool settlePremiumAccrual);
 |x|ql/experimental/credit/nthtodefault.hpp|Rate NthToDefault::premium() const;
 |x|ql/experimental/credit/nthtodefault.hpp|Real NthToDefault::nominal() const;
 |x|ql/experimental/credit/nthtodefault.hpp|DayCounter NthToDefault::dayCounter() const;
 |x|ql/experimental/credit/nthtodefault.hpp|Protection::Side NthToDefault::side() const;
 |x|ql/experimental/credit/nthtodefault.hpp|Size NthToDefault::rank() const;
-| |ql/experimental/credit/nthtodefault.hpp|Size NthToDefault::basketSize() const;
-| |ql/experimental/credit/nthtodefault.hpp|const Date & NthToDefault::maturity() const;
+|x|ql/experimental/credit/nthtodefault.hpp|Size NthToDefault::basketSize() const;
+|x|ql/experimental/credit/nthtodefault.hpp|const Date & NthToDefault::maturity() const;
 |x|ql/experimental/credit/nthtodefault.hpp|const ext::shared_ptr<Basket> & NthToDefault::basket() const;
-| |ql/experimental/credit/nthtodefault.hpp|Rate NthToDefault::fairPremium() const;
+|v|ql/experimental/credit/nthtodefault.hpp|Rate NthToDefault::fairPremium() const;
 | |ql/experimental/credit/nthtodefault.hpp|Real NthToDefault::premiumLegNPV() const;
 | |ql/experimental/credit/nthtodefault.hpp|Real NthToDefault::protectionLegNPV() const;
 | |ql/experimental/credit/nthtodefault.hpp|arguments::arguments();

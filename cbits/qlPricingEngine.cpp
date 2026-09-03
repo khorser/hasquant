@@ -62,6 +62,7 @@
 #include <ql/pricingengines/cliquet/analyticperformanceengine.hpp>
 #include <ql/experimental/credit/integralcdoengine.hpp>
 #include <ql/experimental/credit/midpointcdoengine.hpp>
+#include <ql/experimental/credit/integralntdengine.hpp>
 #include <ql/pricingengines/credit/integralcdsengine.hpp>
 #include <ql/pricingengines/credit/isdacdsengine.hpp>
 #include <ql/pricingengines/exotic/analyticcompoundoptionengine.hpp>
@@ -811,6 +812,9 @@ QlPricingEngine* qlMidPointCDOEngine(QlYieldTermStructure* discountCurve, char *
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
 QlPricingEngine* qlIntegralCDOEngine(QlYieldTermStructure* discountCurve, int l, int u, char **e) {
   try {return ret(new QlPricingEngine(alloc(new IntegralCDOEngine(*arg(discountCurve), Period(l, (TimeUnit)u)))));
+  } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
+QlPricingEngine* qlIntegralNtdEngine(int l, int u, QlYieldTermStructure* discountCurve, char **e) {
+  try {return ret(new QlPricingEngine(alloc(new IntegralNtdEngine(Period(l, (TimeUnit)u), *arg(discountCurve)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
 QlPricingEngine* qlReplicatingVarianceSwapEngine(QlGeneralizedBlackScholesProcess* process, double dk, unsigned callStrikesLen, double* callStrikes, unsigned putStrikesLen, double* putStrikes, char **e) {
   try {return ret(new QlPricingEngine(alloc(new ReplicatingVarianceSwapEngine(*arg(process), dk, std::vector<double>(callStrikes, callStrikes+callStrikesLen), std::vector<double>(putStrikes, putStrikes+putStrikesLen)))));

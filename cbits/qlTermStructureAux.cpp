@@ -1,4 +1,5 @@
 #include <ql/shared_ptr.hpp>
+#include <type_traits>
 using QuantLib::ext::shared_ptr;
 #include "qlTermStructureAux.h"
 namespace hasquant {
@@ -485,6 +486,33 @@ DefaultProbabilityTermStructure* qlPiecewiseDefaultCurveAux1(unsigned settlement
     int trait, int interpolator, int approximator, int approximatorArg) {
   return makePiecewiseDefaultCurve(trait, interpolator, approximator, approximatorArg,
       settlementDays, calendar, instruments, dayCounter, jumps, jumpDates);
+}
+
+// Selects between the two copula policies ConstantLossModel is templated over. Reuses this
+// file's own Tag<T>/explicit-Ret-argument dispatch shape (see the comment above
+// dispatchInterpolation for why the Ret argument must stay explicit, never a trailing decltype).
+template <class Ret, class F>
+Ret dispatchCopulaPolicy(bool useStudent, F&& make) {
+  if (useStudent) return make(Tag<TCopulaPolicy>());
+  return make(Tag<GaussianCopulaPolicy>());
+}
+
+// GaussianCopulaPolicy::initTraits and TCopulaPolicy::initTraits are not the same shape --
+// upstream types them as `int` (unused sentinel) and a `{ std::vector<Integer> tOrders; }`
+// struct respectively, not two structurally-compatible structs. `if constexpr` on the dispatched
+// tag is what lets one generic lambda populate the Student-only `tOrders` field only for the
+// TCopulaPolicy instantiation, while still default-constructing `int{}`/`initTraits{}` uniformly
+// for both arms.
+DefaultLossModel* qlConstantLossModelAux(const Handle<Quote>& mktCorrel,
+    const std::vector<Real>& recoveries,
+    LatentModelIntegrationType::LatentModelIntegrationType integralType,
+    Size nVariables, const std::vector<Integer>& tOrders) {
+  return dispatchCopulaPolicy<DefaultLossModel*>(!tOrders.empty(), [&](auto tag) {
+    using Policy = typename decltype(tag)::type;
+    typename Policy::initTraits ini{};
+    if constexpr (std::is_same_v<Policy, TCopulaPolicy>) ini.tOrders = tOrders;
+    return new ConstantLossModel<Policy>(mktCorrel, recoveries, integralType, nVariables, ini);
+  });
 }
 
 // The `{}` seasonality and the 1.0e-14 / 1.0e-12 accuracy below are upstream's own default
