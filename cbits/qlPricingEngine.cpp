@@ -1614,14 +1614,16 @@ QlLiborForwardModelProcess* qlLiborForwardModelProcess(unsigned size, QlIborInde
 void qlLiborForwardModelProcessFixingDates(QlLiborForwardModelProcess* o, unsigned *len, int **dates, char **e) {
   *len = 0; *dates = 0;
   try {const std::vector<Date>& fixingDates = (*arg(o))->fixingDates();
-    *dates = qlAllocateInts(fixingDates.size()); *len = fixingDates.size();
+    *dates = qlAllocateInts(fixingDates.size()); OutArrayGuard<int> g(dates, len);
     for (unsigned i = 0; i < fixingDates.size(); ++i) (*dates)[i] = fixingDates[i].serialNumber();
+    *len = fixingDates.size(); g.commit();
   } catch (std::exception& er) {(void)handleException<int*>(e, er);}}
 void qlLiborForwardModelProcessFixingTimes(QlLiborForwardModelProcess* o, unsigned *len, double **times, char **e) {
   *len = 0; *times = 0;
   try {const std::vector<Time>& fixingTimes = (*arg(o))->fixingTimes();
-    *times = qlAllocateDoubles(fixingTimes.size()); *len = fixingTimes.size();
+    *times = qlAllocateDoubles(fixingTimes.size()); OutArrayGuard<double> g(times, len);
     std::copy(fixingTimes.begin(), fixingTimes.end(), *times);
+    *len = fixingTimes.size(); g.commit();
   } catch (std::exception& er) {(void)handleException<double*>(e, er);}}
 Leg* qlLiborForwardModelProcessCashFlows(QlLiborForwardModelProcess* o, double amount, char **e) {
   try {return ret(new Leg((*arg(o))->cashFlows(amount)));

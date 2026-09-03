@@ -1310,15 +1310,19 @@ Leg *qlPreviousCashFlows(Leg *leg, int includeSettlementDateFlows, int settlemen
   } catch (std::exception& er) {return handleException<Leg *>(e, er);}}
 void qlLegCashFlows(Leg *leg, int includeSettlementDateFlows, int settlementDate,
    unsigned *al, double **amount, unsigned *dl, int **date, unsigned *hl, int **hasOccurred, char **e) {
-  *amount = 0; *date = 0; *hasOccurred = 0;
-  try {const Leg& l = *arg(leg); *amount = qlAllocateDoubles(l.size()); *date = qlAllocateInts(l.size()); *hasOccurred = qlAllocateInts(l.size());
+  *al = 0; *amount = 0; *dl = 0; *date = 0; *hl = 0; *hasOccurred = 0;
+  try {const Leg& l = *arg(leg);
+    *amount = qlAllocateDoubles(l.size()); OutArrayGuard<double> ag(amount, al);
+    *date = qlAllocateInts(l.size()); OutArrayGuard<int> dg(date, dl);
+    *hasOccurred = qlAllocateInts(l.size()); OutArrayGuard<int> hg(hasOccurred, hl);
     for (unsigned i = 0; i < l.size(); ++i) {
       (*amount)[i] = l[i]->amount();
       (*date)[i] = l[i]->date().serialNumber();
       (*hasOccurred)[i] = l[i]->hasOccurred(qlNullableDate(settlementDate), qlOptBool(includeSettlementDateFlows));
     }
     *al = l.size(); *dl = l.size(); *hl = l.size();
-  } catch (std::exception& er) {qlFreeDoubles(*amount); qlFreeInts(*date); qlFreeInts(*hasOccurred); *e = tracedup(er.what());}}
+    ag.commit(); dg.commit(); hg.commit();
+  } catch (std::exception& er) {*e = tracedup(er.what());}}
 
 double qlCashFlowsDuration(Leg* leg, InterestRate* yield, int type, int includeSettlementDateFlows, int settlementDate, int npvDate, char **e) {
   try {return CashFlows::duration(*arg(leg), *arg(yield), (Duration::Type)type, includeSettlementDateFlows, qlNullableDate(settlementDate), qlNullableDate(npvDate));
