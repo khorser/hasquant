@@ -450,3 +450,85 @@ spec = do
         setPricingEngine swp eng
         v <- variance swp
         v `shouldSatisfy` closePrec 0.04189 1.0e-4
+
+  describe "MargrabeOption" $ do
+    -- cached references from QuantLib test-suite/margrabeoption.cpp::testEuroExchangeTwoAssets
+    -- (Margrabe 1978 p.52, plus quantity variants from Excel calculations). theta/rho aren't
+    -- checked here: MargrabeOption only has dedicated delta1/delta2/gamma1/gamma2 bound, not
+    -- the generic MultiAssetOption theta/rho (those need an upcast this step doesn't add).
+    mapM_ (\(s1, s2, q1n, q2n, div1, div2, r, t, v1, v2, rho, expV, expD1, expD2, expG1, expG2) ->
+      it ("matches the European exchange-option value/greeks at s1=" ++ show s1 ++ " s2=" ++ show s2 ++ " rho=" ++ show rho) $
+        Settings.keepingSettings' $ do
+          evalDate <- today
+          Settings.setEvaluationDate (Just evalDate)
+          process1 <- flatProcess evalDate s1 div1 r v1
+          process2 <- flatProcess evalDate s2 div2 r v2
+          eng <- analyticEuropeanMargrabeEngine process1 process2 rho
+          opt <- margrabeOption q1n q2n (europeanIn (round (t * 360 :: Double)) evalDate)
+          setPricingEngine opt eng
+          v <- npv opt
+          d1 <- delta1 opt
+          d2 <- delta2 opt
+          g1 <- gamma1 opt
+          g2 <- gamma2 opt
+          v `shouldSatisfy` closePrec expV 1.0e-3
+          d1 `shouldSatisfy` closePrec expD1 1.0e-3
+          d2 `shouldSatisfy` closePrec expD2 1.0e-3
+          g1 `shouldSatisfy` closePrec expG1 1.0e-3
+          g2 `shouldSatisfy` closePrec expG2 1.0e-3)
+      ([ (22.0, 20.0, 1, 1, 0.06, 0.04, 0.10, 0.10, 0.20, 0.15, -0.50, 2.125, 0.841, -0.818, 0.112, 0.135)
+       , (22.0, 20.0, 1, 1, 0.06, 0.04, 0.10, 0.10, 0.20, 0.20, -0.50, 2.199, 0.813, -0.784, 0.109, 0.132)
+       , (22.0, 20.0, 1, 1, 0.06, 0.04, 0.10, 0.10, 0.20, 0.25, -0.50, 2.283, 0.788, -0.753, 0.105, 0.126)
+       , (22.0, 20.0, 1, 1, 0.06, 0.04, 0.10, 0.10, 0.20, 0.15,  0.00, 2.045, 0.883, -0.870, 0.108, 0.131)
+       , (22.0, 20.0, 1, 1, 0.06, 0.04, 0.10, 0.10, 0.20, 0.20,  0.00, 2.091, 0.857, -0.838, 0.112, 0.135)
+       , (22.0, 20.0, 1, 1, 0.06, 0.04, 0.10, 0.10, 0.20, 0.25,  0.00, 2.152, 0.830, -0.805, 0.111, 0.134)
+       , (22.0, 20.0, 1, 1, 0.06, 0.04, 0.10, 0.10, 0.20, 0.15,  0.50, 1.974, 0.946, -0.942, 0.079, 0.096)
+       , (22.0, 20.0, 1, 1, 0.06, 0.04, 0.10, 0.10, 0.20, 0.20,  0.50, 1.989, 0.929, -0.922, 0.092, 0.111)
+       , (22.0, 20.0, 1, 1, 0.06, 0.04, 0.10, 0.10, 0.20, 0.25,  0.50, 2.019, 0.902, -0.891, 0.104, 0.125)
+       , (22.0, 20.0, 1, 1, 0.06, 0.04, 0.10, 0.50, 0.20, 0.15, -0.50, 2.762, 0.672, -0.602, 0.072, 0.087)
+       , (22.0, 20.0, 1, 1, 0.06, 0.04, 0.10, 0.50, 0.20, 0.20, -0.50, 2.989, 0.661, -0.578, 0.064, 0.078)
+       , (22.0, 20.0, 1, 1, 0.06, 0.04, 0.10, 0.50, 0.20, 0.25, -0.50, 3.228, 0.653, -0.557, 0.058, 0.070)
+       , (22.0, 20.0, 1, 1, 0.06, 0.04, 0.10, 0.50, 0.20, 0.15,  0.00, 2.479, 0.695, -0.640, 0.085, 0.102)
+       , (22.0, 20.0, 1, 1, 0.06, 0.04, 0.10, 0.50, 0.20, 0.20,  0.00, 2.650, 0.680, -0.616, 0.077, 0.093)
+       , (22.0, 20.0, 1, 1, 0.06, 0.04, 0.10, 0.50, 0.20, 0.25,  0.00, 2.847, 0.668, -0.592, 0.069, 0.083)
+       , (22.0, 20.0, 1, 1, 0.06, 0.04, 0.10, 0.50, 0.20, 0.15,  0.50, 2.138, 0.746, -0.713, 0.106, 0.128)
+       , (22.0, 20.0, 1, 1, 0.06, 0.04, 0.10, 0.50, 0.20, 0.20,  0.50, 2.231, 0.728, -0.689, 0.099, 0.120)
+       , (22.0, 20.0, 1, 1, 0.06, 0.04, 0.10, 0.50, 0.20, 0.25,  0.50, 2.374, 0.707, -0.659, 0.090, 0.109)
+       , (22.0, 10.0, 1, 2, 0.06, 0.04, 0.10, 0.50, 0.20, 0.15,  0.50, 2.138, 0.746, -1.426, 0.106, 0.255)
+       , (11.0, 20.0, 2, 1, 0.06, 0.04, 0.10, 0.50, 0.20, 0.20,  0.50, 2.231, 1.455, -0.689, 0.198, 0.120)
+       , (11.0, 10.0, 2, 2, 0.06, 0.04, 0.10, 0.50, 0.20, 0.25,  0.50, 2.374, 1.413, -1.317, 0.181, 0.219)
+       ] :: [(Double, Double, Int, Int, Double, Double, Double, Double, Double, Double, Double, Double, Double, Double, Double, Double)])
+
+    -- cached references from QuantLib test-suite/margrabeoption.cpp::testAmericanExchangeTwoAssets (Haug).
+    mapM_ (\(s1, s2, q1n, q2n, div1, div2, r, t, v1, v2, rho, expV) ->
+      it ("matches the American exchange-option value at s1=" ++ show s1 ++ " s2=" ++ show s2 ++ " t=" ++ show t ++ " rho=" ++ show rho) $
+        Settings.keepingSettings' $ do
+          evalDate <- today
+          Settings.setEvaluationDate (Just evalDate)
+          process1 <- flatProcess evalDate s1 div1 r v1
+          process2 <- flatProcess evalDate s2 div2 r v2
+          eng <- analyticAmericanMargrabeEngine process1 process2 rho
+          let exDate = addDays (round (t * 360 :: Double)) evalDate
+          opt <- margrabeOption q1n q2n (American (Just evalDate) exDate False)
+          setPricingEngine opt eng
+          v <- npv opt
+          v `shouldSatisfy` closePrec expV 1.0e-3)
+      ([ (22.0, 20.0, 1, 1, 0.06, 0.04, 0.10, 0.10, 0.20, 0.15, -0.50, 2.1357)
+       , (22.0, 20.0, 1, 1, 0.06, 0.04, 0.10, 0.10, 0.20, 0.20, -0.50, 2.2074)
+       , (22.0, 20.0, 1, 1, 0.06, 0.04, 0.10, 0.10, 0.20, 0.25, -0.50, 2.2902)
+       , (22.0, 20.0, 1, 1, 0.06, 0.04, 0.10, 0.10, 0.20, 0.15,  0.00, 2.0592)
+       , (22.0, 20.0, 1, 1, 0.06, 0.04, 0.10, 0.10, 0.20, 0.20,  0.00, 2.1032)
+       , (22.0, 20.0, 1, 1, 0.06, 0.04, 0.10, 0.10, 0.20, 0.25,  0.00, 2.1618)
+       , (22.0, 20.0, 1, 1, 0.06, 0.04, 0.10, 0.10, 0.20, 0.15,  0.50, 2.0001)
+       , (22.0, 20.0, 1, 1, 0.06, 0.04, 0.10, 0.10, 0.20, 0.20,  0.50, 2.0110)
+       , (22.0, 20.0, 1, 1, 0.06, 0.04, 0.10, 0.10, 0.20, 0.25,  0.50, 2.0359)
+       , (22.0, 20.0, 1, 1, 0.06, 0.04, 0.10, 0.50, 0.20, 0.15, -0.50, 2.8051)
+       , (22.0, 20.0, 1, 1, 0.06, 0.04, 0.10, 0.50, 0.20, 0.20, -0.50, 3.0288)
+       , (22.0, 20.0, 1, 1, 0.06, 0.04, 0.10, 0.50, 0.20, 0.25, -0.50, 3.2664)
+       , (22.0, 20.0, 1, 1, 0.06, 0.04, 0.10, 0.50, 0.20, 0.15,  0.00, 2.5282)
+       , (22.0, 20.0, 1, 1, 0.06, 0.04, 0.10, 0.50, 0.20, 0.20,  0.00, 2.6945)
+       , (22.0, 20.0, 1, 1, 0.06, 0.04, 0.10, 0.50, 0.20, 0.25,  0.00, 2.8893)
+       , (22.0, 20.0, 1, 1, 0.06, 0.04, 0.10, 0.50, 0.20, 0.15,  0.50, 2.2053)
+       , (22.0, 20.0, 1, 1, 0.06, 0.04, 0.10, 0.50, 0.20, 0.20,  0.50, 2.2906)
+       , (22.0, 20.0, 1, 1, 0.06, 0.04, 0.10, 0.50, 0.20, 0.25,  0.50, 2.4261)
+       ] :: [(Double, Double, Int, Int, Double, Double, Double, Double, Double, Double, Double, Double)])

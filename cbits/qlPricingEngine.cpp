@@ -27,6 +27,8 @@
 #include <ql/pricingengines/forward/forwardperformanceengine.hpp>
 #include <ql/pricingengines/exotic/analyticsimplechooserengine.hpp>
 #include <ql/pricingengines/exotic/analytictwoassetcorrelationengine.hpp>
+#include <ql/pricingengines/exotic/analyticeuropeanmargrabeengine.hpp>
+#include <ql/pricingengines/exotic/analyticamericanmargrabeengine.hpp>
 #include <ql/pricingengines/exotic/analyticwriterextensibleoptionengine.hpp>
 #include <ql/pricingengines/barrier/analyticpartialtimebarrieroptionengine.hpp>
 #include <ql/pricingengines/barrier/analyticbinarybarrierengine.hpp>
@@ -376,6 +378,12 @@ QlPricingEngine* qlAnalyticComplexChooserEngine(QlGeneralizedBlackScholesProcess
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
 QlPricingEngine* qlAnalyticTwoAssetCorrelationEngine(QlGeneralizedBlackScholesProcess* process1, QlGeneralizedBlackScholesProcess* process2, QlQuote* correlation, char **e) {
   try {return ret(new QlPricingEngine(alloc(new AnalyticTwoAssetCorrelationEngine(*arg(process1), *arg(process2), *arg(correlation)))));
+  } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
+QlPricingEngine* qlAnalyticEuropeanMargrabeEngine(QlGeneralizedBlackScholesProcess* process1, QlGeneralizedBlackScholesProcess* process2, double correlation, char **e) {
+  try {return ret(new QlPricingEngine(alloc(new AnalyticEuropeanMargrabeEngine(*arg(process1), *arg(process2), correlation))));
+  } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
+QlPricingEngine* qlAnalyticAmericanMargrabeEngine(QlGeneralizedBlackScholesProcess* process1, QlGeneralizedBlackScholesProcess* process2, double correlation, char **e) {
+  try {return ret(new QlPricingEngine(alloc(new AnalyticAmericanMargrabeEngine(*arg(process1), *arg(process2), correlation))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
 QlPricingEngine* qlAnalyticWriterExtensibleOptionEngine(QlGeneralizedBlackScholesProcess* process, char **e) {
   try {return ret(new QlPricingEngine(alloc(new AnalyticWriterExtensibleOptionEngine(*arg(process)))));

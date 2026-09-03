@@ -33,6 +33,8 @@ module QuantLib.PricingEngine
   , analyticSimpleChooserEngine
   , analyticComplexChooserEngine
   , analyticTwoAssetCorrelationEngine
+  , analyticEuropeanMargrabeEngine
+  , analyticAmericanMargrabeEngine
   , analyticWriterExtensibleOptionEngine
   , analyticHolderExtensibleOptionEngine
   , fdBlackScholesBarrierEngine
@@ -466,6 +468,22 @@ discountingPerpetualFuturesEngine domestic foreignCurve spot funding interpolati
 {#fun qlAnalyticTwoAssetCorrelationEngine as analyticTwoAssetCorrelationEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess' -- ^process1
   ,withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess' -- ^process2
   ,withQuote*`GenQuote q' -- ^correlation
+  ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+
+-- |Analytic (Margrabe) engine for a European 'margrabeOption': the closed-form price of an
+-- option to exchange one asset for another, from W. Margrabe, \"The Value of an Option to
+-- Exchange One Asset for Another\", Journal of Finance 33 (March 1978), 177-186.
+{#fun qlAnalyticEuropeanMargrabeEngine as analyticEuropeanMargrabeEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess' -- ^process1
+  ,withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess' -- ^process2
+  ,`Double' -- ^correlation
+  ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+
+-- |Analytic (Margrabe) engine for an American 'margrabeOption': the closed-form price of an
+-- option to exchange one asset for another with early exercise, from W. Margrabe, \"The Value
+-- of an American Option to Exchange One Asset for Another\", Journal of Finance 33, 177-86.
+{#fun qlAnalyticAmericanMargrabeEngine as analyticAmericanMargrabeEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess' -- ^process1
+  ,withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess' -- ^process2
+  ,`Double' -- ^correlation
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |analytic pricing engine for writer-extensible options

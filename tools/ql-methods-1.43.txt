@@ -7773,13 +7773,13 @@
 |x|ql/pricingengines/credit/isdacdsengine.hpp|void IsdaCdsEngine::calculate() const;
 |v|ql/pricingengines/credit/midpointcdsengine.hpp|MidPointCdsEngine::MidPointCdsEngine(Handle<DefaultProbabilityTermStructure>, Real recoveryRate, Handle<YieldTermStructure> discountCurve, const ext::optional<bool> & includeSettlementDateFlows = ext::nullopt);
 |x|ql/pricingengines/credit/midpointcdsengine.hpp|void MidPointCdsEngine::calculate() const;
-| |ql/pricingengines/exotic/analyticamericanmargrabeengine.hpp|AnalyticAmericanMargrabeEngine::AnalyticAmericanMargrabeEngine(ext::shared_ptr<GeneralizedBlackScholesProcess> process1, ext::shared_ptr<GeneralizedBlackScholesProcess> process2, Real correlation);
+|v|ql/pricingengines/exotic/analyticamericanmargrabeengine.hpp|AnalyticAmericanMargrabeEngine::AnalyticAmericanMargrabeEngine(ext::shared_ptr<GeneralizedBlackScholesProcess> process1, ext::shared_ptr<GeneralizedBlackScholesProcess> process2, Real correlation);
 |x|ql/pricingengines/exotic/analyticamericanmargrabeengine.hpp|void AnalyticAmericanMargrabeEngine::calculate() const;
 |v|ql/pricingengines/exotic/analyticcomplexchooserengine.hpp|AnalyticComplexChooserEngine::AnalyticComplexChooserEngine(ext::shared_ptr<GeneralizedBlackScholesProcess> process);
 |x|ql/pricingengines/exotic/analyticcomplexchooserengine.hpp|void AnalyticComplexChooserEngine::calculate() const;
 |v|ql/pricingengines/exotic/analyticcompoundoptionengine.hpp|AnalyticCompoundOptionEngine::AnalyticCompoundOptionEngine(ext::shared_ptr<GeneralizedBlackScholesProcess> process);
 |x|ql/pricingengines/exotic/analyticcompoundoptionengine.hpp|void AnalyticCompoundOptionEngine::calculate() const;
-| |ql/pricingengines/exotic/analyticeuropeanmargrabeengine.hpp|AnalyticEuropeanMargrabeEngine::AnalyticEuropeanMargrabeEngine(ext::shared_ptr<GeneralizedBlackScholesProcess> process1, ext::shared_ptr<GeneralizedBlackScholesProcess> process2, Real correlation);
+|v|ql/pricingengines/exotic/analyticeuropeanmargrabeengine.hpp|AnalyticEuropeanMargrabeEngine::AnalyticEuropeanMargrabeEngine(ext::shared_ptr<GeneralizedBlackScholesProcess> process1, ext::shared_ptr<GeneralizedBlackScholesProcess> process2, Real correlation);
 |x|ql/pricingengines/exotic/analyticeuropeanmargrabeengine.hpp|void AnalyticEuropeanMargrabeEngine::calculate() const;
 |v|ql/pricingengines/exotic/analyticholderextensibleoptionengine.hpp|AnalyticHolderExtensibleOptionEngine::AnalyticHolderExtensibleOptionEngine(ext::shared_ptr<GeneralizedBlackScholesProcess> process);
 |x|ql/pricingengines/exotic/analyticholderextensibleoptionengine.hpp|void AnalyticHolderExtensibleOptionEngine::calculate() const;
