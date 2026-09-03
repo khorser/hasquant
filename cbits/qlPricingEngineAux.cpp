@@ -247,6 +247,34 @@ PricingEngine* qlMCPerformanceEngine1Aux(int rngtrait, int stattrait, const shar
   });
 }
 
+// MCLookbackEngine<I,RNG,S> is templated over the lookback option type I as well as RNG/S -- I is
+// not a runtime "trait" (it fixes the whole option/engine-base pair, not a policy struct chosen
+// among siblings), so each of the four already-bound lookback option types gets its own dispatcher
+// over the RNG x Statistics axes only, mirroring the four separate analytic lookback engine shims.
+PricingEngine* qlMCLookbackFixedEngineAux(int rngtrait, int stattrait, const shared_ptr<GeneralizedBlackScholesProcess> process, unsigned timeSteps, unsigned timeStepsPerYear, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed) {
+  return dispatchRngStat<PricingEngine*>(rngtrait, stattrait, [&](auto r, auto st) {
+    return new MCLookbackEngine<ContinuousFixedLookbackOption, typename decltype(r)::type, typename decltype(st)::type>(process, timeSteps, timeStepsPerYear, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed);
+  });
+}
+
+PricingEngine* qlMCLookbackFloatingEngineAux(int rngtrait, int stattrait, const shared_ptr<GeneralizedBlackScholesProcess> process, unsigned timeSteps, unsigned timeStepsPerYear, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed) {
+  return dispatchRngStat<PricingEngine*>(rngtrait, stattrait, [&](auto r, auto st) {
+    return new MCLookbackEngine<ContinuousFloatingLookbackOption, typename decltype(r)::type, typename decltype(st)::type>(process, timeSteps, timeStepsPerYear, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed);
+  });
+}
+
+PricingEngine* qlMCLookbackPartialFixedEngineAux(int rngtrait, int stattrait, const shared_ptr<GeneralizedBlackScholesProcess> process, unsigned timeSteps, unsigned timeStepsPerYear, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed) {
+  return dispatchRngStat<PricingEngine*>(rngtrait, stattrait, [&](auto r, auto st) {
+    return new MCLookbackEngine<ContinuousPartialFixedLookbackOption, typename decltype(r)::type, typename decltype(st)::type>(process, timeSteps, timeStepsPerYear, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed);
+  });
+}
+
+PricingEngine* qlMCLookbackPartialFloatingEngineAux(int rngtrait, int stattrait, const shared_ptr<GeneralizedBlackScholesProcess> process, unsigned timeSteps, unsigned timeStepsPerYear, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed) {
+  return dispatchRngStat<PricingEngine*>(rngtrait, stattrait, [&](auto r, auto st) {
+    return new MCLookbackEngine<ContinuousPartialFloatingLookbackOption, typename decltype(r)::type, typename decltype(st)::type>(process, timeSteps, timeStepsPerYear, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed);
+  });
+}
+
 // MCAmericanBasketEngine is templated <RNG> only upstream (its base MCLongstaffSchwartzEngine<BasketOption::engine,
 // MultiVariate,RNG> never forwards a second template argument), so unlike every other engine in this file it has no
 // S axis to expose -- not a gap, a real upstream limitation. See CLAUDE.md/PricingEngine.chs for the note.

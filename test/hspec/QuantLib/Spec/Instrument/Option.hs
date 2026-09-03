@@ -25,7 +25,7 @@ import QuantLib.Time.Date
 import QuantLib.Time.Calendar(calendar, CalendarConstructor(..))
 import QuantLib.Time.Schedule(dayCounter, DayCounterConstructor(..), Frequency(..))
 import QuantLib.InterestRate(Compounding(..))
-import QuantLib.Quote(simpleQuote)
+import QuantLib.Quote(simpleQuote, Quote)
 import QuantLib.TermStructure.Yield(flatForward)
 import QuantLib.Process hiding(drift)
 import QuantLib.Math(Matrix, boxedRealMatrix, realMatrixFromVector, RealMatrix, PolynomialType(..), RngTrait(..), StatisticsTrait(..), Interpolation2D(..))
@@ -410,6 +410,109 @@ spec = do
         setPricingEngine opt eng
         v <- npv opt
         v `shouldSatisfy` closePrec 20.2845 1.0e-4
+
+  describe "Continuous lookback options (MC engines)" $ do
+    -- cross-checks from QuantLib test-suite/lookbackoptions.cpp::testMonteCarloLookback: each MC
+    -- lookback engine variant is checked against its own already-bound analytic engine, not an
+    -- independent literal (upstream does the same). tolerance 0.1 absolute is upstream's own.
+    let mcTolerance = 0.1 :: Double
+
+    mapM_ (\ty ->
+      it ("partial-time fixed-strike MC engine matches its analytic engine for " ++ show ty) $
+        Settings.keepingSettings' $ do
+          evalDate <- today
+          Settings.setEvaluationDate (Just evalDate)
+          process <- flatProcess evalDate 100.0 0.0 0.06 0.1
+          let lookbackStart = dateOffset evalDate 0.25
+              exercise = europeanIn 360 evalDate
+              payoff = PlainVanilla (PlainVanillaPayoff ty 90.0)
+          opt <- continuousPartialFixedLookbackOption lookbackStart payoff exercise
+          analyticEng <- analyticContinuousPartialFixedLookbackEngine process
+          setPricingEngine opt analyticEng
+          analytical <- npv opt
+          mcEng <- mcLookbackPartialFixedEngine PseudoRandom Statistics process (Just 2000) Nothing False True Nothing (Just mcTolerance) Nothing 1
+          setPricingEngine opt mcEng
+          monteCarlo <- npv opt
+          monteCarlo `shouldSatisfy` closePrec analytical mcTolerance)
+      ([Call, Put] :: [OptionType])
+
+    mapM_ (\ty ->
+      it ("fixed-strike MC engine matches its analytic engine for " ++ show ty) $
+        Settings.keepingSettings' $ do
+          evalDate <- today
+          Settings.setEvaluationDate (Just evalDate)
+          process <- flatProcess evalDate 100.0 0.0 0.06 0.1
+          let exercise = europeanIn 360 evalDate
+              payoff = PlainVanilla (PlainVanillaPayoff ty 90.0)
+          opt <- continuousFixedLookbackOption 100.0 payoff exercise
+          analyticEng <- analyticContinuousFixedLookbackEngine process
+          setPricingEngine opt analyticEng
+          analytical <- npv opt
+          mcEng <- mcLookbackFixedEngine PseudoRandom Statistics process (Just 2000) Nothing False True Nothing (Just mcTolerance) Nothing 1
+          setPricingEngine opt mcEng
+          monteCarlo <- npv opt
+          monteCarlo `shouldSatisfy` closePrec analytical mcTolerance)
+      ([Call, Put] :: [OptionType])
+
+    mapM_ (\ty ->
+      it ("partial-time floating-strike MC engine matches its analytic engine for " ++ show ty) $
+        Settings.keepingSettings' $ do
+          evalDate <- today
+          Settings.setEvaluationDate (Just evalDate)
+          process <- flatProcess evalDate 100.0 0.0 0.06 0.1
+          let lookbackEnd = dateOffset evalDate 0.25
+              exercise = europeanIn 360 evalDate
+          opt <- continuousPartialFloatingLookbackOption 100.0 1.0 lookbackEnd (Floating ty) exercise
+          analyticEng <- analyticContinuousPartialFloatingLookbackEngine process
+          setPricingEngine opt analyticEng
+          analytical <- npv opt
+          mcEng <- mcLookbackPartialFloatingEngine PseudoRandom Statistics process (Just 2000) Nothing False True Nothing (Just mcTolerance) Nothing 1
+          setPricingEngine opt mcEng
+          monteCarlo <- npv opt
+          monteCarlo `shouldSatisfy` closePrec analytical mcTolerance)
+      ([Call, Put] :: [OptionType])
+
+    mapM_ (\ty ->
+      it ("floating-strike MC engine matches its analytic engine for " ++ show ty) $
+        Settings.keepingSettings' $ do
+          evalDate <- today
+          Settings.setEvaluationDate (Just evalDate)
+          process <- flatProcess evalDate 100.0 0.0 0.06 0.1
+          let exercise = europeanIn 360 evalDate
+          opt <- continuousFloatingLookbackOption 100.0 (Floating ty) exercise
+          analyticEng <- analyticContinuousFloatingLookbackEngine process
+          setPricingEngine opt analyticEng
+          analytical <- npv opt
+          mcEng <- mcLookbackFloatingEngine PseudoRandom Statistics process (Just 2000) Nothing False True Nothing (Just mcTolerance) Nothing 1
+          setPricingEngine opt mcEng
+          monteCarlo <- npv opt
+          monteCarlo `shouldSatisfy` closePrec analytical mcTolerance)
+      ([Call, Put] :: [OptionType])
+
+  describe "Vecer engine (continuous arithmetic-average Asian options)" $
+    -- cached references from QuantLib test-suite/asianoptions.cpp::testVecerEngine.
+    mapM_ (\(spot, r, vol, strike, len, expected, tol) ->
+      it ("matches the Vecer reference value at spot=" ++ show spot ++ " r=" ++ show r ++
+          " vol=" ++ show vol ++ " length=" ++ show len ++ "y") $
+        Settings.keepingSettings' $ do
+          evalDate <- today
+          Settings.setEvaluationDate (Just evalDate)
+          process <- flatProcess evalDate spot 0.0 r vol
+          let maturity = dateOffset evalDate len
+          eng <- continuousArithmeticAsianVecerEngine process (Nothing :: Maybe Quote) evalDate 200 200 (-1.0) 1.0
+          opt <- continuousAveragingAsianOption Arithmetic (PlainVanilla (PlainVanillaPayoff Call strike))
+                                                 (European (EuropeanExercise maturity))
+          setPricingEngine opt eng
+          v <- npv opt
+          v `shouldSatisfy` closePrec expected tol)
+      ([ (1.9, 0.05,   0.5,  2.0, 1.0, 0.193174, 1.0e-5)
+       , (2.0, 0.05,   0.5,  2.0, 1.0, 0.246416, 1.0e-5)
+       , (2.1, 0.05,   0.5,  2.0, 1.0, 0.306220, 1.0e-4)
+       , (2.0, 0.02,   0.1,  2.0, 1.0, 0.055986, 2.0e-4)
+       , (2.0, 0.18,   0.3,  2.0, 1.0, 0.218388, 1.0e-4)
+       , (2.0, 0.0125, 0.25, 2.0, 2.0, 0.172269, 1.0e-4)
+       , (2.0, 0.05,   0.5,  2.0, 2.0, 0.350095, 2.0e-4)
+       ] :: [(Double, Double, Double, Double, Double, Double, Double)])
 
   describe "EverestOption" $
     -- cached reference from QuantLib test-suite/everestoption.cpp::testCached.

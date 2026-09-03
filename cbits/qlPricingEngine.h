@@ -41,6 +41,10 @@ extern "C" {
   QlPricingEngine* qlAnalyticContinuousPartialFloatingLookbackEngine(QlGeneralizedBlackScholesProcess* process, char **e);
   QlPricingEngine* qlAnalyticContinuousPartialFixedLookbackEngine(QlGeneralizedBlackScholesProcess* process, char **e);
   QlPricingEngine* qlAnalyticContinuousGeometricAveragePriceAsianEngine(QlGeneralizedBlackScholesProcess* process, char **e);
+  QlPricingEngine* qlMCLookbackFixedEngine(int rngtrait, int stattrait, QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, unsigned timeStepsPerYear, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e);
+  QlPricingEngine* qlMCLookbackFloatingEngine(int rngtrait, int stattrait, QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, unsigned timeStepsPerYear, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e);
+  QlPricingEngine* qlMCLookbackPartialFixedEngine(int rngtrait, int stattrait, QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, unsigned timeStepsPerYear, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e);
+  QlPricingEngine* qlMCLookbackPartialFloatingEngine(int rngtrait, int stattrait, QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, unsigned timeStepsPerYear, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e);
   QlPricingEngine* qlAnalyticDigitalAmericanEngine(QlGeneralizedBlackScholesProcess* x0, char **e);
   QlPricingEngine* qlAnalyticDigitalAmericanKOEngine(QlGeneralizedBlackScholesProcess* x0, char **e);
   QlPricingEngine* qlAnalyticDiscreteGeometricAveragePriceAsianEngine(QlGeneralizedBlackScholesProcess* process, char **e);
@@ -199,6 +203,7 @@ extern "C" {
   QlPricingEngine* qlBjerksundStenslandApproximationEngine(QlGeneralizedBlackScholesProcess* x0, char **e);
   QlPricingEngine* qlQdPlusAmericanEngine(QlGeneralizedBlackScholesProcess* process, unsigned interpolationPoints, int solverType, double eps, unsigned maxIter, char **e);
   QlPricingEngine* qlQdFpAmericanEngine(QlGeneralizedBlackScholesProcess* process, int scheme, int fpEquation, char **e);
+  QlPricingEngine* qlContinuousArithmeticAsianVecerEngine(QlGeneralizedBlackScholesProcess* process, QlQuote* currentAverage, int startDate, unsigned timeSteps, unsigned assetSteps, double zMin, double zMax, char **e);
   QlPricingEngine* qlIntegralCdsEngine(int, int, QlDefaultProbabilityTermStructure* x1, double recoveryRate, QlYieldTermStructure* discountCurve, int includeSettlementDateFlows, char **e);
   QlPricingEngine* qlIntegralEngine(QlGeneralizedBlackScholesProcess* x0, char **e);
   QlPricingEngine* qlJamshidianSwaptionEngine(QlOneFactorAffineModel* model, QlYieldTermStructure* termStructure, char **e);

@@ -57,6 +57,10 @@ module QuantLib.PricingEngine
   , analyticContinuousPartialFloatingLookbackEngine
   , analyticContinuousPartialFixedLookbackEngine
   , analyticContinuousGeometricAveragePriceAsianEngine
+  , mcLookbackFixedEngine
+  , mcLookbackFloatingEngine
+  , mcLookbackPartialFixedEngine
+  , mcLookbackPartialFloatingEngine
   , analyticDigitalAmericanEngine
   , analyticDigitalAmericanKOEngine
   , analyticDiscreteGeometricAveragePriceAsianEngine
@@ -137,6 +141,7 @@ module QuantLib.PricingEngine
   , bjerksundStenslandApproximationEngine
   , qdPlusAmericanEngine
   , qdFpAmericanEngine
+  , continuousArithmeticAsianVecerEngine
   , integralCdsEngine
   , integralEngine
   , isdaCdsEngine
@@ -582,6 +587,54 @@ discountingPerpetualFuturesEngine domestic foreignCurve spot funding interpolati
 -- |analytic pricing engine for European continuous geometric average-price Asian options
 {#fun qlAnalyticContinuousGeometricAveragePriceAsianEngine as analyticContinuousGeometricAveragePriceAsianEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
+-- |Monte Carlo pricing engine for continuous fixed-strike lookback options. Exactly one of
+-- @timeSteps@\/@timeStepsPerYear@ must be given; the other must be 'Nothing'.
+{#fun qlMCLookbackFixedEngine as mcLookbackFixedEngine{`RngTrait',`StatisticsTrait',withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',fromMaybeInt`Maybe Word' -- ^timeSteps
+  ,fromMaybeInt`Maybe Word' -- ^timeStepsPerYear
+  ,`Bool' -- ^brownianBridge
+  ,`Bool' -- ^antitheticVariate
+  ,fromMaybeInt`Maybe Word' -- ^requiredSamples
+  ,fromMaybeDouble`Maybe Double' -- ^requiredTolerance
+  ,fromMaybeInt`Maybe Word' -- ^maxSamples
+  ,fromIntegral`Word' -- ^seed
+  ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+
+-- |Monte Carlo pricing engine for continuous floating-strike lookback options. Exactly one of
+-- @timeSteps@\/@timeStepsPerYear@ must be given; the other must be 'Nothing'.
+{#fun qlMCLookbackFloatingEngine as mcLookbackFloatingEngine{`RngTrait',`StatisticsTrait',withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',fromMaybeInt`Maybe Word' -- ^timeSteps
+  ,fromMaybeInt`Maybe Word' -- ^timeStepsPerYear
+  ,`Bool' -- ^brownianBridge
+  ,`Bool' -- ^antitheticVariate
+  ,fromMaybeInt`Maybe Word' -- ^requiredSamples
+  ,fromMaybeDouble`Maybe Double' -- ^requiredTolerance
+  ,fromMaybeInt`Maybe Word' -- ^maxSamples
+  ,fromIntegral`Word' -- ^seed
+  ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+
+-- |Monte Carlo pricing engine for continuous partial-time fixed-strike lookback options. Exactly
+-- one of @timeSteps@\/@timeStepsPerYear@ must be given; the other must be 'Nothing'.
+{#fun qlMCLookbackPartialFixedEngine as mcLookbackPartialFixedEngine{`RngTrait',`StatisticsTrait',withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',fromMaybeInt`Maybe Word' -- ^timeSteps
+  ,fromMaybeInt`Maybe Word' -- ^timeStepsPerYear
+  ,`Bool' -- ^brownianBridge
+  ,`Bool' -- ^antitheticVariate
+  ,fromMaybeInt`Maybe Word' -- ^requiredSamples
+  ,fromMaybeDouble`Maybe Double' -- ^requiredTolerance
+  ,fromMaybeInt`Maybe Word' -- ^maxSamples
+  ,fromIntegral`Word' -- ^seed
+  ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+
+-- |Monte Carlo pricing engine for continuous partial-time floating-strike lookback options.
+-- Exactly one of @timeSteps@\/@timeStepsPerYear@ must be given; the other must be 'Nothing'.
+{#fun qlMCLookbackPartialFloatingEngine as mcLookbackPartialFloatingEngine{`RngTrait',`StatisticsTrait',withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',fromMaybeInt`Maybe Word' -- ^timeSteps
+  ,fromMaybeInt`Maybe Word' -- ^timeStepsPerYear
+  ,`Bool' -- ^brownianBridge
+  ,`Bool' -- ^antitheticVariate
+  ,fromMaybeInt`Maybe Word' -- ^requiredSamples
+  ,fromMaybeDouble`Maybe Double' -- ^requiredTolerance
+  ,fromMaybeInt`Maybe Word' -- ^maxSamples
+  ,fromIntegral`Word' -- ^seed
+  ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+
 -- |analytic pricing engine for American digital (cash-or-nothing/asset-or-nothing) options
 {#fun qlAnalyticDigitalAmericanEngine as analyticDigitalAmericanEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
@@ -872,6 +925,21 @@ discountingPerpetualFuturesEngine domestic foreignCurve spot funding interpolati
 {#fun qlQdFpAmericanEngine as qdFpAmericanEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess'
   ,`QdFpScheme' -- ^iterationScheme
   ,`FixedPointEquation' -- ^fpEquation, which fixed-point formulation of the exercise boundary equation to solve
+  ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+
+-- |Vecer (2001) engine for continuous-averaging arithmetic Asian options, replicating the average
+-- by a self-financing strategy in the underlying and solving the resulting PDE on a finite
+-- @[zMin,zMax]@ grid; requires @zMin <= 0 <= zMax@ and @startDate@ no earlier than the evaluation
+-- date (seasoned Asians are not supported). @currentAverage@ is accepted for parity with upstream's
+-- constructor but is not read by the current implementation (only the not-yet-seasoned case is
+-- handled), so 'Nothing' is fine.
+{#fun qlContinuousArithmeticAsianVecerEngine as continuousArithmeticAsianVecerEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess'
+  ,withMaybeQuote*`Maybe (GenQuote q)' -- ^currentAverage
+  ,withDay*`Day' -- ^startDate
+  ,fromIntegral`Word' -- ^timeSteps
+  ,fromIntegral`Word' -- ^assetSteps
+  ,`Double' -- ^zMin
+  ,`Double' -- ^zMax
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |CDS pricing engine that integrates the default-leg payoff over the CDS's step-wise schedule

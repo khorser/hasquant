@@ -110,6 +110,7 @@
 #include <ql/pricingengines/vanilla/juquadraticengine.hpp>
 #include <ql/pricingengines/vanilla/qdplusamericanengine.hpp>
 #include <ql/pricingengines/vanilla/qdfpamericanengine.hpp>
+#include <ql/experimental/exoticoptions/continuousarithmeticasianvecerengine.hpp>
 #include <ql/instruments/dividendschedule.hpp>
 #include <ql/methods/finitedifferences/solvers/fdmbackwardsolver.hpp>
 #include <ql/methods/finitedifferences/operators/fdmlinearopcomposite.hpp>
@@ -454,6 +455,18 @@ QlPricingEngine* qlAnalyticContinuousPartialFixedLookbackEngine(QlGeneralizedBla
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
 QlPricingEngine* qlAnalyticContinuousGeometricAveragePriceAsianEngine(QlGeneralizedBlackScholesProcess* process, char **e) {
   try {return ret(new QlPricingEngine(alloc(new AnalyticContinuousGeometricAveragePriceAsianEngine(*arg(process)))));
+  } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
+QlPricingEngine* qlMCLookbackFixedEngine(int rngtrait, int stattrait, QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, unsigned timeStepsPerYear, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e) {
+  try {return ret(new QlPricingEngine(alloc(qlMCLookbackFixedEngineAux(rngtrait, stattrait, *arg(process), timeSteps, timeStepsPerYear, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
+  } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
+QlPricingEngine* qlMCLookbackFloatingEngine(int rngtrait, int stattrait, QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, unsigned timeStepsPerYear, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e) {
+  try {return ret(new QlPricingEngine(alloc(qlMCLookbackFloatingEngineAux(rngtrait, stattrait, *arg(process), timeSteps, timeStepsPerYear, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
+  } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
+QlPricingEngine* qlMCLookbackPartialFixedEngine(int rngtrait, int stattrait, QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, unsigned timeStepsPerYear, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e) {
+  try {return ret(new QlPricingEngine(alloc(qlMCLookbackPartialFixedEngineAux(rngtrait, stattrait, *arg(process), timeSteps, timeStepsPerYear, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
+  } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
+QlPricingEngine* qlMCLookbackPartialFloatingEngine(int rngtrait, int stattrait, QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, unsigned timeStepsPerYear, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e) {
+  try {return ret(new QlPricingEngine(alloc(qlMCLookbackPartialFloatingEngineAux(rngtrait, stattrait, *arg(process), timeSteps, timeStepsPerYear, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
 QlPricingEngine* qlAnalyticDigitalAmericanEngine(QlGeneralizedBlackScholesProcess* x0, char **e) {
   try {return ret(new QlPricingEngine(alloc(new AnalyticDigitalAmericanEngine(*arg(x0)))));
@@ -807,6 +820,9 @@ QlPricingEngine* qlQdFpAmericanEngine(QlGeneralizedBlackScholesProcess* process,
       default: iterationScheme = QdFpAmericanEngine::accurateScheme(); break;
     }
     return ret(new QlPricingEngine(alloc(new QdFpAmericanEngine(*arg(process), iterationScheme, (QdFpAmericanEngine::FixedPointEquation)fpEquation))));
+  } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
+QlPricingEngine* qlContinuousArithmeticAsianVecerEngine(QlGeneralizedBlackScholesProcess* process, QlQuote* currentAverage, int startDate, unsigned timeSteps, unsigned assetSteps, double zMin, double zMax, char **e) {
+  try {return ret(new QlPricingEngine(alloc(new ContinuousArithmeticAsianVecerEngine(*arg(process), qlNullableHandle(arg(currentAverage)), Date(startDate), timeSteps, assetSteps, zMin, zMax))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
 QlPricingEngine* qlIntegralCdsEngine(int l, int u, QlDefaultProbabilityTermStructure* x1, double recoveryRate, QlYieldTermStructure* discountCurve, int includeSettlementDateFlows, char **e) {
   try {return ret(new QlPricingEngine(alloc(new IntegralCdsEngine(Period(l, (TimeUnit)u), Handle<DefaultProbabilityTermStructure>(*arg(x1)), recoveryRate, *arg(discountCurve), qlOptBool(includeSettlementDateFlows)))));

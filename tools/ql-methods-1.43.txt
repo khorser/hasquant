@@ -1737,7 +1737,7 @@
 | |ql/experimental/credit/syntheticcdo.hpp|arguments::arguments();
 | |ql/experimental/credit/syntheticcdo.hpp|void arguments::validate() const;
 | |ql/experimental/credit/syntheticcdo.hpp|void results::reset();
-| |ql/experimental/exoticoptions/continuousarithmeticasianvecerengine.hpp|ContinuousArithmeticAsianVecerEngine::ContinuousArithmeticAsianVecerEngine(ext::shared_ptr<GeneralizedBlackScholesProcess> process, Handle<Quote> currentAverage, Date startDate, Size timeSteps = 100, Size assetSteps = 100, Real z_min = - 1.0, Real z_max = 1.0);
+|v|ql/experimental/exoticoptions/continuousarithmeticasianvecerengine.hpp|ContinuousArithmeticAsianVecerEngine::ContinuousArithmeticAsianVecerEngine(ext::shared_ptr<GeneralizedBlackScholesProcess> process, Handle<Quote> currentAverage, Date startDate, Size timeSteps = 100, Size assetSteps = 100, Real z_min = - 1.0, Real z_max = 1.0);
 |x|ql/experimental/exoticoptions/continuousarithmeticasianvecerengine.hpp|void ContinuousArithmeticAsianVecerEngine::calculate() const;
 |v|ql/experimental/exoticoptions/everestoption.hpp|EverestOption::EverestOption(Real notional, Rate guarantee, const ext::shared_ptr<Exercise> &);
 |v|ql/experimental/exoticoptions/everestoption.hpp|Rate EverestOption::yield() const;
@@ -7271,7 +7271,7 @@
 |x|ql/pricingengines/lookback/analyticcontinuouspartialfixedlookback.hpp|void AnalyticContinuousPartialFixedLookbackEngine::calculate() const;
 |v|ql/pricingengines/lookback/analyticcontinuouspartialfloatinglookback.hpp|AnalyticContinuousPartialFloatingLookbackEngine::AnalyticContinuousPartialFloatingLookbackEngine(ext::shared_ptr<GeneralizedBlackScholesProcess> process);
 |x|ql/pricingengines/lookback/analyticcontinuouspartialfloatinglookback.hpp|void AnalyticContinuousPartialFloatingLookbackEngine::calculate() const;
-| |ql/pricingengines/lookback/mclookbackengine.hpp|MCLookbackEngine::MCLookbackEngine<I, RNG, S>(ext::shared_ptr<GeneralizedBlackScholesProcess> process, Size timeSteps, Size timeStepsPerYear, bool brownianBridge, bool antithetic, Size requiredSamples, Real requiredTolerance, Size maxSamples, BigNatural seed);
+|v|ql/pricingengines/lookback/mclookbackengine.hpp|MCLookbackEngine::MCLookbackEngine<I, RNG, S>(ext::shared_ptr<GeneralizedBlackScholesProcess> process, Size timeSteps, Size timeStepsPerYear, bool brownianBridge, bool antithetic, Size requiredSamples, Real requiredTolerance, Size maxSamples, BigNatural seed);
 |x|ql/pricingengines/lookback/mclookbackengine.hpp|void MCLookbackEngine::calculate() const;
 | |ql/pricingengines/lookback/mclookbackengine.hpp|MakeMCLookbackEngine::MakeMCLookbackEngine<I, RNG, S>(ext::shared_ptr<GeneralizedBlackScholesProcess>);
 | |ql/pricingengines/lookback/mclookbackengine.hpp|MakeMCLookbackEngine<I, RNG, S> & MakeMCLookbackEngine::withSteps(Size steps);
