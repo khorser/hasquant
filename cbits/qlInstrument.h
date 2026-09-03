@@ -423,6 +423,8 @@ extern "C" {
   QlOneAssetOption* qlContinuousAveragingAsianOption(int averageType, QlStrikedTypePayoff* payoff, QlExercise* exercise, char **e);
   QlOneAssetOption* qlContinuousFixedLookbackOption(double currentMinmax, QlStrikedTypePayoff* payoff, QlExercise* exercise, char **e);
   QlOneAssetOption* qlContinuousFloatingLookbackOption(double currentMinmax, QlTypePayoff* payoff, QlExercise* exercise, char **e);
+  QlOneAssetOption* qlContinuousPartialFloatingLookbackOption(double currentMinmax, double lambda, int lookbackPeriodEnd, QlTypePayoff* payoff, QlExercise* exercise, char **e);
+  QlOneAssetOption* qlContinuousPartialFixedLookbackOption(int lookbackPeriodStart, QlStrikedTypePayoff* payoff, QlExercise* exercise, char **e);
   QlOneAssetOption* qlDiscreteAveragingAsianOption(int averageType, double runningAccumulator, unsigned pastFixings, unsigned fixingDatesLen, int* fixingDates, QlStrikedTypePayoff* payoff, QlExercise* exercise, char **e);
   QlOneAssetOption* qlVanillaStorageOption(QlBermudanExercise* ex, double capacity, double load, double changeRate, char **e);
   QlOneAssetOption* qlVanillaSwingOption(QlStrikedTypePayoff* payoff, QlSwingExercise* ex, unsigned minExerciseRights, unsigned maxExerciseRights, char **e);

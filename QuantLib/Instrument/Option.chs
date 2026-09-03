@@ -80,6 +80,8 @@ module QuantLib.Instrument.Option
   , continuousAveragingAsianOption
   , continuousFixedLookbackOption
   , continuousFloatingLookbackOption
+  , continuousPartialFixedLookbackOption
+  , continuousPartialFloatingLookbackOption
   , discreteAveragingAsianOption
   , vanillaStorageOption
   , vanillaSwingOption
@@ -309,6 +311,16 @@ pagodaOption dates roof fraction = qlPagodaOption (toList dates) roof fraction
 -- |Continuous-floating lookback option: the strike is set to the minimum/maximum price observed over the option's life.
 {#fun qlContinuousFloatingLookbackOption as continuousFloatingLookbackOption{`Double' -- ^currentMinmax
   ,withTypePayoff*`TypePayoff',withExercise*`Exercise',preErrorCheck-`String'errorCheck*-}->`OneAssetOption'peekOneAssetOption*#}
+
+-- |Partial-time floating-strike lookback option: the lookback period runs from inception to @lookbackPeriodEnd@, cheaper than a full floating lookback. @lambda@ scales the strike relative to the observed extremum. Priced analytically by Heynen and Kat (1994).
+{#fun qlContinuousPartialFloatingLookbackOption as continuousPartialFloatingLookbackOption{`Double' -- ^currentMinmax
+  ,`Double' -- ^lambda
+  ,withDay*`Day' -- ^lookbackPeriodEnd
+  ,withTypePayoff*`TypePayoff',withExercise*`Exercise',preErrorCheck-`String'errorCheck*-}->`OneAssetOption'peekOneAssetOption*#}
+
+-- |Partial-time fixed-strike lookback option: the lookback period runs from @lookbackPeriodStart@ to expiry, cheaper than a full fixed lookback. Priced analytically by Heynen and Kat (1994).
+{#fun qlContinuousPartialFixedLookbackOption as continuousPartialFixedLookbackOption{withDay*`Day' -- ^lookbackPeriodStart
+  ,withStrikedPayoff*`StrikedPayoff',withExercise*`Exercise',preErrorCheck-`String'errorCheck*-}->`OneAssetOption'peekOneAssetOption*#}
 
 -- |Discrete-averaging Asian option on a single asset, taking the running sum/product of past fixings plus a list of future fixing dates.
 {#fun qlDiscreteAveragingAsianOption as discreteAveragingAsianOption{`AverageType',`Double' -- ^runningAccumulator, the running sum or products of past fixings

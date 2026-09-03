@@ -1012,6 +1012,12 @@ QlOneAssetOption* qlContinuousFixedLookbackOption(double currentMinmax, QlStrike
 QlOneAssetOption* qlContinuousFloatingLookbackOption(double currentMinmax, QlTypePayoff* payoff, QlExercise* exercise, char **e) {
   try {return ret(new QlOneAssetOption(alloc(new ContinuousFloatingLookbackOption(currentMinmax, *arg(payoff), *arg(exercise)))));
   } catch (std::exception& er) {return handleException<QlOneAssetOption*>(e, er);}}
+QlOneAssetOption* qlContinuousPartialFloatingLookbackOption(double currentMinmax, double lambda, int lookbackPeriodEnd, QlTypePayoff* payoff, QlExercise* exercise, char **e) {
+  try {return ret(new QlOneAssetOption(alloc(new ContinuousPartialFloatingLookbackOption(currentMinmax, lambda, Date(lookbackPeriodEnd), *arg(payoff), *arg(exercise)))));
+  } catch (std::exception& er) {return handleException<QlOneAssetOption*>(e, er);}}
+QlOneAssetOption* qlContinuousPartialFixedLookbackOption(int lookbackPeriodStart, QlStrikedTypePayoff* payoff, QlExercise* exercise, char **e) {
+  try {return ret(new QlOneAssetOption(alloc(new ContinuousPartialFixedLookbackOption(Date(lookbackPeriodStart), *arg(payoff), *arg(exercise)))));
+  } catch (std::exception& er) {return handleException<QlOneAssetOption*>(e, er);}}
 QlOneAssetOption* qlDiscreteAveragingAsianOption(int averageType, double runningAccumulator, unsigned pastFixings, unsigned fixingDatesLen, int* fixingDates, QlStrikedTypePayoff* payoff, QlExercise* exercise, char **e) {
   try {return ret(new QlOneAssetOption(alloc(new DiscreteAveragingAsianOption((Average::Type)averageType, runningAccumulator, pastFixings, qlDateVector(fixingDates, fixingDatesLen), *arg(payoff), *arg(exercise)))));
   } catch (std::exception& er) {return handleException<QlOneAssetOption*>(e, er);}}

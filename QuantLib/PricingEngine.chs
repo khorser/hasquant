@@ -51,6 +51,8 @@ module QuantLib.PricingEngine
   , analyticCompoundOptionEngine
   , analyticContinuousFixedLookbackEngine
   , analyticContinuousFloatingLookbackEngine
+  , analyticContinuousPartialFloatingLookbackEngine
+  , analyticContinuousPartialFixedLookbackEngine
   , analyticContinuousGeometricAveragePriceAsianEngine
   , analyticDigitalAmericanEngine
   , analyticDigitalAmericanKOEngine
@@ -561,6 +563,12 @@ discountingPerpetualFuturesEngine domestic foreignCurve spot funding interpolati
 
 -- |analytic pricing engine for European continuous floating-strike lookback options
 {#fun qlAnalyticContinuousFloatingLookbackEngine as analyticContinuousFloatingLookbackEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+
+-- |analytic pricing engine for European continuous partial-time floating-strike lookback options
+{#fun qlAnalyticContinuousPartialFloatingLookbackEngine as analyticContinuousPartialFloatingLookbackEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+
+-- |analytic pricing engine for European continuous partial-time fixed-strike lookback options
+{#fun qlAnalyticContinuousPartialFixedLookbackEngine as analyticContinuousPartialFixedLookbackEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |analytic pricing engine for European continuous geometric average-price Asian options
 {#fun qlAnalyticContinuousGeometricAveragePriceAsianEngine as analyticContinuousGeometricAveragePriceAsianEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}

@@ -3310,8 +3310,8 @@
 | |ql/instruments/inflationcapfloor.hpp|Volatility impliedVolatility(Real, const Handle<YoYInflationTermStructure> &, Volatility, Real, Natural, Volatility, Volatility) const;
 |v|ql/instruments/lookbackoption.hpp|ContinuousFloatingLookbackOption::ContinuousFloatingLookbackOption(Real currentMinmax, const ext::shared_ptr<TypePayoff> & payoff, const ext::shared_ptr<Exercise> & exercise);
 |v|ql/instruments/lookbackoption.hpp|ContinuousFixedLookbackOption::ContinuousFixedLookbackOption(Real currentMinmax, const ext::shared_ptr<StrikedTypePayoff> & payoff, const ext::shared_ptr<Exercise> & exercise);
-| |ql/instruments/lookbackoption.hpp|ContinuousPartialFloatingLookbackOption::ContinuousPartialFloatingLookbackOption(Real currentMinmax, Real lambda, Date lookbackPeriodEnd, const ext::shared_ptr<TypePayoff> & payoff, const ext::shared_ptr<Exercise> & exercise);
-| |ql/instruments/lookbackoption.hpp|ContinuousPartialFixedLookbackOption::ContinuousPartialFixedLookbackOption(Date lookbackPeriodStart, const ext::shared_ptr<StrikedTypePayoff> & payoff, const ext::shared_ptr<Exercise> & exercise);
+|v|ql/instruments/lookbackoption.hpp|ContinuousPartialFloatingLookbackOption::ContinuousPartialFloatingLookbackOption(Real currentMinmax, Real lambda, Date lookbackPeriodEnd, const ext::shared_ptr<TypePayoff> & payoff, const ext::shared_ptr<Exercise> & exercise);
+|v|ql/instruments/lookbackoption.hpp|ContinuousPartialFixedLookbackOption::ContinuousPartialFixedLookbackOption(Date lookbackPeriodStart, const ext::shared_ptr<StrikedTypePayoff> & payoff, const ext::shared_ptr<Exercise> & exercise);
 | |ql/instruments/lookbackoption.hpp|void arguments::validate() const;
 | |ql/instruments/makecapfloor.hpp|MakeCapFloor::MakeCapFloor(CapFloor::Type capFloorType, const Period & capFloorTenor, const ext::shared_ptr<IborIndex> & iborIndex, Rate strike = Null<Rate>(), const Period & forwardStart = 0 * Days);
 | |ql/instruments/makecapfloor.hpp|MakeCapFloor & MakeCapFloor::withNominal(Real n);
@@ -7267,9 +7267,9 @@
 |x|ql/pricingengines/lookback/analyticcontinuousfixedlookback.hpp|void AnalyticContinuousFixedLookbackEngine::calculate() const;
 |v|ql/pricingengines/lookback/analyticcontinuousfloatinglookback.hpp|AnalyticContinuousFloatingLookbackEngine::AnalyticContinuousFloatingLookbackEngine(ext::shared_ptr<GeneralizedBlackScholesProcess> process);
 |x|ql/pricingengines/lookback/analyticcontinuousfloatinglookback.hpp|void AnalyticContinuousFloatingLookbackEngine::calculate() const;
-| |ql/pricingengines/lookback/analyticcontinuouspartialfixedlookback.hpp|AnalyticContinuousPartialFixedLookbackEngine::AnalyticContinuousPartialFixedLookbackEngine(ext::shared_ptr<GeneralizedBlackScholesProcess> process);
+|v|ql/pricingengines/lookback/analyticcontinuouspartialfixedlookback.hpp|AnalyticContinuousPartialFixedLookbackEngine::AnalyticContinuousPartialFixedLookbackEngine(ext::shared_ptr<GeneralizedBlackScholesProcess> process);
 |x|ql/pricingengines/lookback/analyticcontinuouspartialfixedlookback.hpp|void AnalyticContinuousPartialFixedLookbackEngine::calculate() const;
-| |ql/pricingengines/lookback/analyticcontinuouspartialfloatinglookback.hpp|AnalyticContinuousPartialFloatingLookbackEngine::AnalyticContinuousPartialFloatingLookbackEngine(ext::shared_ptr<GeneralizedBlackScholesProcess> process);
+|v|ql/pricingengines/lookback/analyticcontinuouspartialfloatinglookback.hpp|AnalyticContinuousPartialFloatingLookbackEngine::AnalyticContinuousPartialFloatingLookbackEngine(ext::shared_ptr<GeneralizedBlackScholesProcess> process);
 |x|ql/pricingengines/lookback/analyticcontinuouspartialfloatinglookback.hpp|void AnalyticContinuousPartialFloatingLookbackEngine::calculate() const;
 | |ql/pricingengines/lookback/mclookbackengine.hpp|MCLookbackEngine::MCLookbackEngine<I, RNG, S>(ext::shared_ptr<GeneralizedBlackScholesProcess> process, Size timeSteps, Size timeStepsPerYear, bool brownianBridge, bool antithetic, Size requiredSamples, Real requiredTolerance, Size maxSamples, BigNatural seed);
 |x|ql/pricingengines/lookback/mclookbackengine.hpp|void MCLookbackEngine::calculate() const;

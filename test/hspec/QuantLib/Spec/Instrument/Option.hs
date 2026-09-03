@@ -383,6 +383,34 @@ spec = do
       , (105.0, 100.0, 100.0, 0.0, 0.10, 0.50, 0.30, 15.8512)
       ] :: [(Double, Double, Double, Double, Double, Double, Double, Double)])
 
+    -- cached reference from QuantLib test-suite/lookbackoptions.cpp::testAnalyticContinuousPartialFloatingLookback
+    -- (Haug 2006 p.146).
+    it "matches the partial-time floating-strike lookback value" $
+      Settings.keepingSettings' $ do
+        evalDate <- today
+        Settings.setEvaluationDate (Just evalDate)
+        process <- flatProcess evalDate 90.0 0.0 0.06 0.1
+        eng <- analyticContinuousPartialFloatingLookbackEngine process
+        opt <- continuousPartialFloatingLookbackOption 90.0 1.0 (dateOffset evalDate 0.25)
+                 (Floating Call) (europeanIn (round (1.0 * 360 :: Double)) evalDate)
+        setPricingEngine opt eng
+        v <- npv opt
+        v `shouldSatisfy` closePrec 8.6524 1.0e-4
+
+    -- cached reference from QuantLib test-suite/lookbackoptions.cpp::testAnalyticContinuousPartialFixedLookback
+    -- (Haug 2006 p.148).
+    it "matches the partial-time fixed-strike lookback value" $
+      Settings.keepingSettings' $ do
+        evalDate <- today
+        Settings.setEvaluationDate (Just evalDate)
+        process <- flatProcess evalDate 100.0 0.0 0.06 0.1
+        eng <- analyticContinuousPartialFixedLookbackEngine process
+        opt <- continuousPartialFixedLookbackOption (dateOffset evalDate 0.25)
+                 (PlainVanilla (PlainVanillaPayoff Call 90.0)) (europeanIn (round (1.0 * 360 :: Double)) evalDate)
+        setPricingEngine opt eng
+        v <- npv opt
+        v `shouldSatisfy` closePrec 20.2845 1.0e-4
+
   describe "CliquetOption" $
     -- cached reference from QuantLib test-suite/cliquetoption.cpp::testValues (Haug, p.37).
     it "reproduces Haug's cliquet option value" $
