@@ -113,3 +113,7 @@ See the `c2hs-shim-patterns` skill for `{#pointer#}` pragma rules, C shim marsha
 - The cabal multi-cradle maps `test/` to `hasquant:test:hasquant_test`, except `test/exe/QuantLib/MainExample.hs`, which uses `hasquant:exe:hasquant_example`. Do not map individual example files to the executable: ghcide then registers them as its home modules and `MainTest.hs` fails with “attempting to use module … which is not loaded” (GHC-58427). Shared files must use one component.
 - `exe:hasquant_example` is `buildable: False` unless `flag(buildExample)` is set, so HLS on `test/exe` needs `package hasquant / flags: +buildExample` in the local, gitignored `cabal.project.local`. Without it hie-bios reports `Cannot build the executable ... marked as 'buildable: False'`.
 - Cabal's target for the main library is `lib:hasquant` or bare `hasquant`, never `hasquant:lib` (`Unknown target 'hasquant:lib'`).
+
+## Modus operandi
+
+Always show your todo list when working on multi-step tasks.
