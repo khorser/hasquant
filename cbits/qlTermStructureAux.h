@@ -13,6 +13,7 @@
 #include <ql/termstructures/inflation/interpolatedyoyinflationcurve.hpp>
 #include <ql/termstructures/volatility/equityfx/blackvariancecurve.hpp>
 #include <ql/termstructures/volatility/equityfx/blackvariancesurface.hpp>
+#include <ql/termstructures/volatility/zabrsmilesection.hpp>
 #include <ql/experimental/inflation/cpicapfloortermpricesurface.hpp>
 #include <ql/experimental/inflation/yoycapfloortermpricesurface.hpp>
 #include <ql/experimental/inflation/interpolatedyoyoptionletstripper.hpp>
@@ -266,5 +267,19 @@ QuantLib::YoYOptionletVolatilitySurface *qlKInterpolatedYoYOptionletVolatilitySu
     const QuantLib::ext::shared_ptr<QuantLib::YoYCapFloorTermPriceSurface> &capFloorPrices,
     const QuantLib::ext::shared_ptr<QuantLib::YoYInflationCapFloorEngine> &engine, double slope,
     int interpolator1D, int approximator, int approximatorArg);
+
+// ZabrSmileSection<Evaluation> is templated over the evaluation-tag axis (4 type-only tags, no
+// runtime state) -- dispatched here rather than in qlTermStructure.cpp, same rule as every other
+// "runtime enum selects a template argument" case. Returns the generic SmileSection base, same
+// shape as qlSviSmileSection/qlNoArbSabrSmileSection (no dedicated leaf: ZabrSmileSection's only
+// extra getter, model(), isn't exposed -- see qlTermStructure.cpp).
+QuantLib::SmileSection *qlZabrSmileSectionAux(
+    int evaluation, double timeToExpiry, double forward,
+    const std::vector<QuantLib::Real> &params, const std::vector<QuantLib::Real> &moneyness,
+    QuantLib::Size fdRefinement);
+QuantLib::SmileSection *qlZabrSmileSectionAux1(
+    int evaluation, const QuantLib::Date &d, double forward,
+    const std::vector<QuantLib::Real> &params, const QuantLib::DayCounter &dc,
+    const std::vector<QuantLib::Real> &moneyness, QuantLib::Size fdRefinement);
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

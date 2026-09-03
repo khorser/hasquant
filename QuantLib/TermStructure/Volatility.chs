@@ -6,6 +6,7 @@ module QuantLib.TermStructure.Volatility
   , FixedLocalVolSurfaceExtrapolation(..)
   , AndreasenHugeInterpolationType(..)
   , AndreasenHugeCalibrationType(..)
+  , ZabrEvaluation(..)
 
   , BlackVarianceCurve
   , BlackVolatilitySurfaceDelta
@@ -208,6 +209,8 @@ module QuantLib.TermStructure.Volatility
   , spreadedSmileSection
   , atmSmileSection
   , sviSmileSection
+  , zabrSmileSection
+  , zabrSmileSection'
   ) where
 import QuantLib.Internal
 {#import QuantLib.InterestRate#}(VolatilityType)
@@ -282,6 +285,12 @@ import Data.List.NonEmpty(NonEmpty, toList)
 -- binding, same local-declaration treatment as 'SmileInterpolationMethod'.
 {#enum FixedLocalVolSurfaceExtrapolation{} deriving(Show, Eq, Read)#}
 {#enum AndreasenHugeInterpolationType{} add prefix="AndreasenHugeInterpolation" deriving(Show, Eq, Read)#}
+
+-- |'ZabrSmileSection'\'s evaluation-tag axis (Andreasen\/Huge 2011): 'ZabrShortMaturityLognormal'\/
+-- 'ZabrShortMaturityNormal' are closed-form short-maturity expansions (fast, less accurate away
+-- from short maturities); 'ZabrLocalVolatility' and 'ZabrFullFd' solve a finite-difference PDE
+-- (slower, more accurate). Local to this binding -- not shared with any other cross-cutting enum.
+{#enum ZabrEvaluation{} deriving(Show, Eq, Read)#}
 {#enum AndreasenHugeCalibrationType{} add prefix="AndreasenHugeCalibration" deriving(Show, Eq, Read)#}
 
 -- SabrInterpolatedSmileSectionOpts bundles every trailing param
@@ -783,6 +792,41 @@ capletVarianceCurve referenceDate nodes = qlCapletVarianceCurve referenceDate da
   ,`Double' -- ^rho
   ,`Double' -- ^m
   ,withDayCounter*`DayCounter'
+  ,preErrorCheck-`String'errorCheck*-}->`SmileSection'peekSmileSection*#}
+
+-- |a ZABR (Andreasen\/Huge 2011) smile section: direct evaluation (no calibration) of a SABR-like
+-- model widened by a fifth parameter, @gamma@, that controls the backbone shape away from
+-- @gamma = 1@ (which reduces exactly to Hagan\'s SABR). @evaluation@ selects how the price\/vol at
+-- a strike is computed -- see 'ZabrEvaluation'. @moneyness@ is the strike grid (as multiples of
+-- the forward) used only by 'ZabrLocalVolatility'\/'ZabrFullFd' to build their finite-difference
+-- solve; an empty list reproduces upstream\'s own 21-point default grid, and it is ignored by the
+-- two closed-form evaluation modes. @fdRefinement@ subdivides each grid interval for the FD
+-- solve\'s accuracy\/speed tradeoff (upstream\'s own default is 5).
+{#fun qlZabrSmileSection as zabrSmileSection{`ZabrEvaluation'
+  ,`Double' -- ^timeToExpiry
+  ,`Double' -- ^forward
+  ,`Double' -- ^alpha
+  ,`Double' -- ^beta
+  ,`Double' -- ^nu
+  ,`Double' -- ^rho
+  ,`Double' -- ^gamma
+  ,withDoubleArray*`[Double]'& -- ^moneyness
+  ,fromIntegral`Word' -- ^fdRefinement
+  ,preErrorCheck-`String'errorCheck*-}->`SmileSection'peekSmileSection*#}
+
+-- |as 'zabrSmileSection', but the time to expiry is derived from a date and day counter rather
+-- than given directly.
+{#fun qlZabrSmileSection1 as zabrSmileSection'{`ZabrEvaluation'
+  ,withDay*`Day' -- ^optionDate
+  ,`Double' -- ^forward
+  ,`Double' -- ^alpha
+  ,`Double' -- ^beta
+  ,`Double' -- ^nu
+  ,`Double' -- ^rho
+  ,`Double' -- ^gamma
+  ,withDayCounter*`DayCounter'
+  ,withDoubleArray*`[Double]'& -- ^moneyness
+  ,fromIntegral`Word' -- ^fdRefinement
   ,preErrorCheck-`String'errorCheck*-}->`SmileSection'peekSmileSection*#}
 
 -- |a smile section calibrated to a market smile (strikes/vols given directly, not as live

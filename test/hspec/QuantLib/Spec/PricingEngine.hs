@@ -568,6 +568,27 @@ spec = do
         rms `shouldSatisfy` (< 1e-6)
         performGC
 
+  -- ported from test-suite/zabr.cpp::testConsistency: at gamma=1, ZabrSmileSection<Evaluation>
+  -- must (nearly) coincide with the Hagan 2002 SABR closed form (already bound as
+  -- sabrSmileSection), across all four ZabrEvaluation modes. fdRefinement=2 (not upstream's
+  -- default of 5) for the ZabrFullFd case matches upstream's own speed-up for this test; the
+  -- strike grid here is coarser than upstream's 7000-point sweep -- upstream's own tolerance
+  -- (1e-4 absolute on price) doesn't need that density to be meaningfully checked.
+  describe "ZabrSmileSection vs. SabrSmileSection (gamma=1) consistency" $
+    it "optionPrice agrees closely across a strike sweep, for every ZabrEvaluation mode" $ do
+      let tau = 5.0; forward = 0.03; alpha_ = 0.08; beta_ = 0.70; nu = 0.20; rho_ = -0.30
+          gamma = 1.0
+          strikes = [0.0001, 0.0071 .. 0.70] :: [Double]
+          tol = 1e-4
+      sabr <- sabrSmileSection tau forward alpha_ beta_ nu rho_ 0 ShiftedLognormal
+      forM_ [(ZabrShortMaturityLognormal, 5), (ZabrShortMaturityNormal, 5),
+             (ZabrLocalVolatility, 5), (ZabrFullFd, 2)] $ \(evaluation, fdRefinement) -> do
+        zabr <- zabrSmileSection evaluation tau forward alpha_ beta_ nu rho_ gamma [] fdRefinement
+        forM_ strikes $ \k -> do
+          c0 <- smileSectionOptionPrice sabr k Call 1.0
+          z <- smileSectionOptionPrice zabr k Call 1.0
+          z `shouldSatisfy` closePrec c0 tol
+
   -- Ported from test/smoke/CheckMCEngineStatistics.hs and CheckMCVarianceSwapEngineStatistics.hs:
   -- the StatisticsTrait axis added to every MC pricing engine actually reaches each engine's
   -- second template parameter. Nothing in the type system catches a StatisticsTrait value

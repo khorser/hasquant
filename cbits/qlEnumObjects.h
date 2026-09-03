@@ -330,6 +330,16 @@ enum InterpolationType {
   , Abcd
 };
 
+// ZabrSmileSection<Evaluation>'s evaluation-tag axis (4 type-only C++ tags, no runtime state) --
+// names match the upstream tag types verbatim, already distinct from every other enum in this
+// header (no add prefix= needed).
+enum ZabrEvaluation {
+  ZabrShortMaturityLognormal = 0
+  , ZabrShortMaturityNormal
+  , ZabrLocalVolatility
+  , ZabrFullFd
+};
+
 // These names are deliberately qualified: PerpetualFutures and its engine both
 // use common words such as Linear and CubicSpline that would collide with the
 // cross-cutting interpolation enums above in Haskell.

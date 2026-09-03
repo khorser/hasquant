@@ -674,4 +674,36 @@ YoYOptionletVolatilitySurface *qlKInterpolatedYoYOptionletVolatilitySurfaceAux(
   }
 }
 
+// ZabrSmileSection<Evaluation> is templated over the evaluation-tag axis: four type-only C++ tags
+// (no runtime state to carry), same Tag<T> idiom as dispatchTrait above. The explicit leading Ret
+// template argument is load-bearing here too -- see the comment above dispatchInterpolation.
+template <class Ret, class F>
+Ret dispatchZabrEvaluation(int evaluation, F&& make) {
+  switch (evaluation) {
+  case hasquant::ZabrShortMaturityLognormal: return make(Tag<ZabrShortMaturityLognormal>());
+  case hasquant::ZabrShortMaturityNormal: return make(Tag<ZabrShortMaturityNormal>());
+  case hasquant::ZabrLocalVolatility: return make(Tag<ZabrLocalVolatility>());
+  case hasquant::ZabrFullFd: return make(Tag<ZabrFullFd>());
+  default:
+    QL_FAIL("Unsupported ZABR evaluation " << evaluation);
+  }
+}
+
+SmileSection *qlZabrSmileSectionAux(int evaluation, double timeToExpiry, double forward,
+    const std::vector<Real> &params, const std::vector<Real> &moneyness, Size fdRefinement) {
+  return dispatchZabrEvaluation<SmileSection*>(evaluation, [&](auto tag) {
+    using Evaluation = typename decltype(tag)::type;
+    return new ZabrSmileSection<Evaluation>(timeToExpiry, forward, params, moneyness, fdRefinement);
+  });
+}
+
+SmileSection *qlZabrSmileSectionAux1(int evaluation, const Date &d, double forward,
+    const std::vector<Real> &params, const DayCounter &dc, const std::vector<Real> &moneyness,
+    Size fdRefinement) {
+  return dispatchZabrEvaluation<SmileSection*>(evaluation, [&](auto tag) {
+    using Evaluation = typename decltype(tag)::type;
+    return new ZabrSmileSection<Evaluation>(d, forward, params, dc, moneyness, fdRefinement);
+  });
+}
+
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

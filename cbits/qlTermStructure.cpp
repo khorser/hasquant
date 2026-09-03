@@ -498,6 +498,20 @@ QlSmileSection* qlSviSmileSection(int d, double forward, double a, double b, dou
   try {return ret(new QlSmileSection(alloc(ext::shared_ptr<SmileSection>(new SviSmileSection(
       Date(d), forward, std::vector<Real>{a, b, sigma, rho, m}, *arg(dc))))));
   } catch (std::exception& er) {return handleException<QlSmileSection*>(e, er);}}
+// ZabrSmileSection's evaluation-tag dispatch lives in qlTermStructureAux.cpp (a runtime enum
+// selects a template argument). Same generic-QlSmileSection shape as qlSviSmileSection above --
+// ZabrSmileSection's only extra getter, model(), isn't exposed (no known consumer; ZabrModel
+// itself isn't bound as its own type).
+QlSmileSection* qlZabrSmileSection(int evaluation, double timeToExpiry, double forward, double alpha, double beta, double nu, double rho, double gamma, unsigned moneynessLen, double* moneyness, unsigned fdRefinement, char **e) {
+  try {return ret(new QlSmileSection(alloc(ext::shared_ptr<SmileSection>(
+      qlZabrSmileSectionAux(evaluation, timeToExpiry, forward, std::vector<Real>{alpha, beta, nu, rho, gamma},
+          std::vector<Real>(moneyness, moneyness + moneynessLen), fdRefinement)))));
+  } catch (std::exception& er) {return handleException<QlSmileSection*>(e, er);}}
+QlSmileSection* qlZabrSmileSection1(int evaluation, int d, double forward, double alpha, double beta, double nu, double rho, double gamma, DayCounter* dc, unsigned moneynessLen, double* moneyness, unsigned fdRefinement, char **e) {
+  try {return ret(new QlSmileSection(alloc(ext::shared_ptr<SmileSection>(
+      qlZabrSmileSectionAux1(evaluation, Date(d), forward, std::vector<Real>{alpha, beta, nu, rho, gamma},
+          *arg(dc), std::vector<Real>(moneyness, moneyness + moneynessLen), fdRefinement)))));
+  } catch (std::exception& er) {return handleException<QlSmileSection*>(e, er);}}
 QlSabrInterpolatedSmileSection* qlSabrInterpolatedSmileSection(int optionDate, QlQuote* forward, unsigned strikesLen, double* strikes, int hasFloatingStrikes, QlQuote* atmVolatility, unsigned volsLen, QlQuote** vols, double alpha, double beta, double nu, double rho, int isAlphaFixed, int isBetaFixed, int isNuFixed, int isRhoFixed, int vegaWeighted, QlEndCriteria* endCriteria, QlOptimizationMethod* method, DayCounter* dc, double shift, char **e) {
   try {
     // endCriteria/method are nullable (NULL -> empty shared_ptr, letting SABRInterpolation's
