@@ -2533,7 +2533,7 @@
 | |ql/experimental/shortrate/generalizedornsteinuhlenbeckprocess.hpp|Real GeneralizedOrnsteinUhlenbeckProcess::speed(Time t) const;
 | |ql/experimental/shortrate/generalizedornsteinuhlenbeckprocess.hpp|Real GeneralizedOrnsteinUhlenbeckProcess::volatility(Time t) const;
 |x|ql/experimental/shortrate/generalizedornsteinuhlenbeckprocess.hpp|Real GeneralizedOrnsteinUhlenbeckProcess::level() const;
-| |ql/experimental/swaptions/haganirregularswaptionengine.hpp|HaganIrregularSwaptionEngine::HaganIrregularSwaptionEngine(Handle<SwaptionVolatilityStructure>, Handle<YieldTermStructure> termStructure = Handle<YieldTermStructure>());
+|v|ql/experimental/swaptions/haganirregularswaptionengine.hpp|HaganIrregularSwaptionEngine::HaganIrregularSwaptionEngine(Handle<SwaptionVolatilityStructure>, Handle<YieldTermStructure> termStructure = Handle<YieldTermStructure>());
 |x|ql/experimental/swaptions/haganirregularswaptionengine.hpp|void HaganIrregularSwaptionEngine::calculate() const;
 | |ql/experimental/swaptions/haganirregularswaptionengine.hpp|Basket::Basket(ext::shared_ptr<IrregularSwap> swap, Handle<YieldTermStructure> termStructure, Handle<SwaptionVolatilityStructure> volatilityStructure);
 | |ql/experimental/swaptions/haganirregularswaptionengine.hpp|Array Basket::compute(Rate lambda = 0.0) const;
@@ -2544,16 +2544,16 @@
 |x|ql/experimental/swaptions/haganirregularswaptionengine.hpp|ext::shared_ptr<IrregularSwap> Basket::swap() const;
 | |ql/experimental/swaptions/haganirregularswaptionengine.hpp|Real HaganIrregularSwaptionEngine::HKPrice(Basket & basket, ext::shared_ptr<Exercise> & exercise) const;
 | |ql/experimental/swaptions/haganirregularswaptionengine.hpp|Real HaganIrregularSwaptionEngine::LGMPrice(Basket & basket, ext::shared_ptr<Exercise> & exercise) const;
-| |ql/experimental/swaptions/irregularswap.hpp|IrregularSwap::IrregularSwap(Type type, const Leg & fixLeg, const Leg & floatLeg);
+|v|ql/experimental/swaptions/irregularswap.hpp|IrregularSwap::IrregularSwap(Type type, const Leg & fixLeg, const Leg & floatLeg);
 |x|ql/experimental/swaptions/irregularswap.hpp|Type IrregularSwap::type() const;
 | |ql/experimental/swaptions/irregularswap.hpp|const Leg & IrregularSwap::fixedLeg() const;
 | |ql/experimental/swaptions/irregularswap.hpp|const Leg & IrregularSwap::floatingLeg() const;
 | |ql/experimental/swaptions/irregularswap.hpp|Real IrregularSwap::fixedLegBPS() const;
 | |ql/experimental/swaptions/irregularswap.hpp|Real IrregularSwap::fixedLegNPV() const;
-| |ql/experimental/swaptions/irregularswap.hpp|Rate IrregularSwap::fairRate() const;
+|v|ql/experimental/swaptions/irregularswap.hpp|Rate IrregularSwap::fairRate() const;
 | |ql/experimental/swaptions/irregularswap.hpp|Real IrregularSwap::floatingLegBPS() const;
 | |ql/experimental/swaptions/irregularswap.hpp|Real IrregularSwap::floatingLegNPV() const;
-| |ql/experimental/swaptions/irregularswap.hpp|Spread IrregularSwap::fairSpread() const;
+|v|ql/experimental/swaptions/irregularswap.hpp|Spread IrregularSwap::fairSpread() const;
 | |ql/experimental/swaptions/irregularswap.hpp|arguments::arguments();
 | |ql/experimental/swaptions/irregularswap.hpp|void arguments::validate() const;
 | |ql/experimental/swaptions/irregularswap.hpp|void results::reset();
@@ -2561,7 +2561,7 @@
 | |ql/experimental/swaptions/irregularswap.hpp|const Leg & fixedLeg() const;
 | |ql/experimental/swaptions/irregularswap.hpp|const Leg & floatingLeg() const;
 | |ql/experimental/swaptions/irregularswaption.hpp|std::ostream & operator<<(std::ostream & out, IrregularSettlement::Type type);
-| |ql/experimental/swaptions/irregularswaption.hpp|IrregularSwaption::IrregularSwaption(ext::shared_ptr<IrregularSwap> swap, const ext::shared_ptr<Exercise> & exercise, IrregularSettlement::Type delivery = IrregularSettlement::Physical);
+|v|ql/experimental/swaptions/irregularswaption.hpp|IrregularSwaption::IrregularSwaption(ext::shared_ptr<IrregularSwap> swap, const ext::shared_ptr<Exercise> & exercise, IrregularSettlement::Type delivery = IrregularSettlement::Physical);
 |x|ql/experimental/swaptions/irregularswaption.hpp|IrregularSettlement::Type IrregularSwaption::settlementType() const;
 | |ql/experimental/swaptions/irregularswaption.hpp|Swap::Type IrregularSwaption::type() const;
 |x|ql/experimental/swaptions/irregularswaption.hpp|const ext::shared_ptr<IrregularSwap> & IrregularSwaption::underlyingSwap() const;
@@ -6043,7 +6043,6 @@
 |v|ql/methods/finitedifferences/utilities/fdminnervaluecalculator.hpp|Real FdmInnerValueCalculator::avgInnerValue(const FdmLinearOpIterator & iter, Time t);
 |v|ql/methods/finitedifferences/utilities/fdminnervaluecalculator.hpp|FdmCellAveragingInnerValue::FdmCellAveragingInnerValue(ext::shared_ptr<Payoff> payoff, ext::shared_ptr<FdmMesher> mesher, Size direction, std::function<Real (Real)> gridMapping = [ ](Real x) { return x; });
 |v|ql/methods/finitedifferences/utilities/fdminnervaluecalculator.hpp|FdmLogInnerValue::FdmLogInnerValue(const ext::shared_ptr<Payoff> & payoff, const ext::shared_ptr<FdmMesher> & mesher, Size direction);
-|v|ql/methods/finitedifferences/utilities/fdminnervaluecalculator.hpp|FdmZeroInnerValue::FdmZeroInnerValue();
 |v|ql/methods/finitedifferences/utilities/fdminnervaluecalculator.hpp|FdmLogBasketInnerValue::FdmLogBasketInnerValue(ext::shared_ptr<BasketPayoff> payoff, ext::shared_ptr<FdmMesher> mesher);
 | |ql/methods/finitedifferences/utilities/fdmmesherintegral.hpp|FdmMesherIntegral::FdmMesherIntegral(const ext::shared_ptr<FdmMesherComposite> & mesher, const std::function<Real (const Array &, const Array &)> & integrator1d);
 | |ql/methods/finitedifferences/utilities/fdmmesherintegral.hpp|Real FdmMesherIntegral::integrate(const Array & f) const;
@@ -6870,7 +6869,7 @@
 | |ql/models/model.hpp|const ext::shared_ptr<Constraint> & CalibratedModel::constraint() const;
 | |ql/models/model.hpp|EndCriteria::Type CalibratedModel::endCriteria() const;
 | |ql/models/model.hpp|const Array & CalibratedModel::problemValues() const;
-|?|ql/models/model.hpp|Array CalibratedModel::params() const;
+|v|ql/models/model.hpp|Array CalibratedModel::params() const;
 | |ql/models/model.hpp|void CalibratedModel::setParams(const Array & params);
 | |ql/models/model.hpp|Integer CalibratedModel::functionEvaluation() const;
 | |ql/models/model.hpp|ShortRateModel::ShortRateModel(Size nArguments);
