@@ -18,15 +18,20 @@ import QuantLib.Quote
 import QuantLib.TermStructure.Yield
 import qualified QuantLib.Index.InterestRate as IR
 import QuantLib.Instrument
-import QuantLib.Instrument.Option(OptionType(..))
-import QuantLib.Instrument.Swap(fairRate, fixedLegBPS)
+import QuantLib.Instrument.Option(OptionType(..), Exercise(..), EuropeanExercise(..))
+import QuantLib.Instrument.Swap(fairRate, fixedLegBPS, vanillaSwap, swaption, SwapType(..))
 import QuantLib.Model hiding(setPricingEngine, value)
 import QuantLib.PricingEngine
 
 import QuantLib.Spec.Helpers(closePrec)
 
 spec :: Spec
-spec =
+spec = do
+  gaussian1dSpec
+  affineModelSpec
+
+gaussian1dSpec :: Spec
+gaussian1dSpec =
   describe "Gaussian1dModel" $
     it "reproduces the fitted curve's own discount factors, forward rate, and fair swap rate at y=0" $
       Settings.keepingSettings' $ do
@@ -93,3 +98,56 @@ spec =
 
         proc1D <- gaussian1dStateProcess model
         proc1D `seq` return ()
+
+affineModelSpec :: Spec
+affineModelSpec =
+  describe "AffineModel.discountBondOption" $
+    it "reproduces JamshidianSwaptionEngine's own single-period bond-option decomposition" $
+      Settings.keepingSettings' $ do
+        cal <- calendar TARGET
+        originalEvalDate <- Settings.evaluationDate
+        evalDate <- adjust cal originalEvalDate Following
+        Settings.setEvaluationDate (Just evalDate)
+        settlement <- advance cal evalDate (2, Days) Following False
+        dc <- dayCounter Actual365FixedStandard
+        flatQ <- simpleQuote 0.03
+        ts <- flatForward settlement flatQ dc Continuous Annual
+        hw <- hullWhite ts 0.1 0.01
+
+        -- A single fixed-vs-float period, with the exercise date set to the period's own start
+        -- (rather than the usual fixing-lagged date) so that JamshidianSwaptionEngine's
+        -- valueTime (the fixed leg's reset date) exactly equals its maturity (the exercise
+        -- date). That collapses its internal Brent solve for rStar: the normalizing bond
+        -- discountBond(maturity, valueTime, rStar) is then A(t,t)*exp(-B(t,t)*rStar) = 1 for
+        -- any rStar, so strike = notional / (fixedCoupon + notional) in closed form, with no
+        -- need to reproduce the root-find here.
+        start <- advance cal settlement (1, Years) ModifiedFollowing False
+        end <- advance cal start (1, Years) ModifiedFollowing False
+        fixedDC <- dayCounter Thirty360BondBasis
+        act360 <- dayCounter (Actual360 False)
+        euribor6m <- IR.iborIndex IR.Euribor6M (Just ts)
+        fixedSchedule <- schedule (Just start) end (1, Years) cal ModifiedFollowing ModifiedFollowing Forward False Nothing Nothing
+        floatSchedule <- schedule (Just start) end (1, Years) cal ModifiedFollowing ModifiedFollowing Forward False Nothing Nothing
+        let notional = 1.0
+            fixedRate = 0.03
+        swp <- vanillaSwap Payer notional fixedSchedule fixedRate fixedDC floatSchedule euribor6m 0.0 act360 (Just ModifiedFollowing) Nothing
+
+        engine <- jamshidianSwaptionEngine hw (Just ts)
+        swpn <- swaption swp (European (EuropeanExercise start)) Physical PhysicalOTC
+        setPricingEngine swpn engine
+        engineNPV <- npv swpn
+
+        maturityT <- years dc settlement start Nothing Nothing
+        payT <- years dc settlement end Nothing Nothing
+        accrual <- years fixedDC start end Nothing Nothing
+        let amount = notional * (1 + fixedRate * accrual)
+            strike = notional / amount
+        -- Payer swaption <-> Put on the underlying discount bond (JamshidianSwaptionEngine's
+        -- own Swap::Payer -> Option::Put convention).
+        manualForward <- discountBondOptionForward hw Put strike maturityT maturityT payT
+        manualPlain <- discountBondOption hw Put strike maturityT payT
+        let expectedNPV = amount * manualForward
+
+        -- bondStart == maturity here, so the 4-arg and 5-arg forms must agree exactly.
+        manualPlain `shouldSatisfy` closePrec manualForward 1.0e-12
+        engineNPV `shouldSatisfy` closePrec expectedNPV 1.0e-8

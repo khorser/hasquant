@@ -1281,6 +1281,12 @@ void qlFreeOneFactorAffineModel(QlOneFactorAffineModel *o) {del(o);}
 double qlOneFactorAffineModelDiscountBond(QlOneFactorAffineModel* o, double now, double maturity, double rate, char **e) {
   try {return (*arg(o))->discountBond(now, maturity, rate);
   } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlOneFactorAffineModelDiscountBondOption(QlOneFactorAffineModel* o, int type, double strike, double maturity, double bondMaturity, char **e) {
+  try {return (*arg(o))->discountBondOption((Option::Type)type, strike, maturity, bondMaturity);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlOneFactorAffineModelDiscountBondOptionForward(QlOneFactorAffineModel* o, int type, double strike, double maturity, double bondStart, double bondMaturity, char **e) {
+  try {return (*arg(o))->discountBondOption((Option::Type)type, strike, maturity, bondStart, bondMaturity);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
 double qlHullWhiteConvexityBias(double futurePrice, double t, double T, double sigma, double a, char **e) {
   try {return HullWhite::convexityBias(futurePrice, t, T, sigma, a);
   } catch (std::exception& er) {return handleException<double>(e, er);}}

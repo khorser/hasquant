@@ -105,6 +105,8 @@ module QuantLib.Model
   , times
 
   , discountBond
+  , discountBondOption
+  , discountBondOptionForward
   , convexityBias
   , fixedReversion
   , gsrVolatility
@@ -261,6 +263,26 @@ data HestonSLVFDMLogEntry = HestonSLVFDMLogEntry
 {#fun qlOneFactorAffineModelDiscountBond as discountBond{withOneFactorAffineModel*`GenOneFactorAffineModel om',`Double' -- ^now
   ,`Double' -- ^maturity
   ,`Double' -- ^rate
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |Analytic (Jamshidian) price of a European option of @type@ with @strike@, expiring at
+-- @maturity@, on a discount bond that itself pays 1 at @bondMaturity@ -- the closed-form
+-- cross-check for the tree\/Jamshidian swaption engines built on the same model.
+{#fun qlOneFactorAffineModelDiscountBondOption as discountBondOption{withOneFactorAffineModel*`GenOneFactorAffineModel om'
+  ,fromEnumC`OptionType' -- ^type
+  ,`Double' -- ^strike
+  ,`Double' -- ^maturity
+  ,`Double' -- ^bondMaturity
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |As 'discountBondOption', but for a discount bond that only starts accruing at @bondStart@
+-- rather than at @maturity@ (the underlying is a bond spanning @[bondStart, bondMaturity]@).
+{#fun qlOneFactorAffineModelDiscountBondOptionForward as discountBondOptionForward{withOneFactorAffineModel*`GenOneFactorAffineModel om'
+  ,fromEnumC`OptionType' -- ^type
+  ,`Double' -- ^strike
+  ,`Double' -- ^maturity
+  ,`Double' -- ^bondStart
+  ,`Double' -- ^bondMaturity
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Two-additive-factor Gaussian (G2) short-rate model: the sum of two correlated Ornstein-Uhlenbeck factors.

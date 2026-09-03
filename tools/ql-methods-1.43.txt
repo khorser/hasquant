@@ -6859,8 +6859,8 @@
 | |ql/models/marketmodels/utilities.hpp|void checkIncreasingTimesAndCalculateTaus(const std::vector<Time> & times, std::vector<Time> & taus);
 | |ql/models/model.hpp|DiscountFactor AffineModel::discount(Time t) const;
 | |ql/models/model.hpp|Real AffineModel::discountBond(Time now, Time maturity, Array factors) const;
-| |ql/models/model.hpp|Real AffineModel::discountBondOption(Option::Type type, Real strike, Time maturity, Time bondMaturity) const;
-| |ql/models/model.hpp|Real AffineModel::discountBondOption(Option::Type type, Real strike, Time maturity, Time bondStart, Time bondMaturity) const;
+|v|ql/models/model.hpp|Real AffineModel::discountBondOption(Option::Type type, Real strike, Time maturity, Time bondMaturity) const;
+|v|ql/models/model.hpp|Real AffineModel::discountBondOption(Option::Type type, Real strike, Time maturity, Time bondStart, Time bondMaturity) const;
 | |ql/models/model.hpp|TermStructureConsistentModel::TermStructureConsistentModel(Handle<YieldTermStructure> termStructure);
 |x|ql/models/model.hpp|const Handle<YieldTermStructure> & TermStructureConsistentModel::termStructure() const;
 | |ql/models/model.hpp|CalibratedModel::CalibratedModel(Size nArguments);
