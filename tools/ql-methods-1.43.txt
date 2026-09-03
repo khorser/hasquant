@@ -2810,8 +2810,8 @@
 | |ql/experimental/volatility/sviinterpolation.hpp|const std::vector<Real> & SviInterpolation::interpolationWeights() const;
 | |ql/experimental/volatility/sviinterpolation.hpp|EndCriteria::Type SviInterpolation::endCriteria();
 | |ql/experimental/volatility/sviinterpolation.hpp|Svi::Svi(Time t, Real forward, Real a, Real b, Real sigma, Real rho, Real m, bool aIsFixed, bool bIsFixed, bool sigmaIsFixed, bool rhoIsFixed, bool mIsFixed, bool vegaWeighted = false, ext::shared_ptr<EndCriteria> endCriteria = ext::shared_ptr<EndCriteria>(), ext::shared_ptr<OptimizationMethod> optMethod = ext::shared_ptr<OptimizationMethod>(), const Real errorAccept = 0.0020, const bool useMaxError = false, const Size maxGuesses = 50);
-| |ql/experimental/volatility/svismilesection.hpp|SviSmileSection::SviSmileSection(Time timeToExpiry, Rate forward, std::vector<Real> sviParameters);
-| |ql/experimental/volatility/svismilesection.hpp|SviSmileSection::SviSmileSection(const Date & d, Rate forward, std::vector<Real> sviParameters, const DayCounter & dc = Actual365Fixed());
+|x|ql/experimental/volatility/svismilesection.hpp|SviSmileSection::SviSmileSection(Time timeToExpiry, Rate forward, std::vector<Real> sviParameters);
+|v|ql/experimental/volatility/svismilesection.hpp|SviSmileSection::SviSmileSection(const Date & d, Rate forward, std::vector<Real> sviParameters, const DayCounter & dc = Actual365Fixed());
 | |ql/experimental/volatility/volcube.hpp|VolatilityCube::VolatilityCube(std::vector<Handle<InterestRateVolSurface>>, std::vector<Handle<AbcdAtmVolCurve>>);
 | |ql/experimental/volatility/volcube.hpp|const Period & VolatilityCube::minIndexTenor() const;
 | |ql/experimental/volatility/volcube.hpp|const Period & VolatilityCube::maxIndexTenor() const;

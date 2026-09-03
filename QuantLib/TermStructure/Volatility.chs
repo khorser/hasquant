@@ -196,6 +196,7 @@ module QuantLib.TermStructure.Volatility
   , flatSmileSection
   , spreadedSmileSection
   , atmSmileSection
+  , sviSmileSection
   ) where
 import QuantLib.Internal
 {#import QuantLib.InterestRate#}(VolatilityType)
@@ -757,6 +758,19 @@ capletVarianceCurve referenceDate nodes = qlCapletVarianceCurve referenceDate da
 -- strike is unchanged -- use 'smileSectionAtmLevel' to observe what this changed.
 {#fun qlAtmSmileSection as atmSmileSection{withSmileSection*`SmileSection'
   ,fromMaybeDouble`Maybe Double' -- ^atm
+  ,preErrorCheck-`String'errorCheck*-}->`SmileSection'peekSmileSection*#}
+
+-- |a Stochastic Volatility Inspired (SVI) smile section: total variance at
+-- log-moneyness @k = log(strike\/forward)@ is @a + b*(rho*(k-m) + sqrt((k-m)^2 + sigma^2))@.
+-- Direct evaluation, no calibration.
+{#fun qlSviSmileSection as sviSmileSection{withDay*`Day'
+  ,`Double' -- ^forward
+  ,`Double' -- ^a
+  ,`Double' -- ^b
+  ,`Double' -- ^sigma
+  ,`Double' -- ^rho
+  ,`Double' -- ^m
+  ,withDayCounter*`DayCounter'
   ,preErrorCheck-`String'errorCheck*-}->`SmileSection'peekSmileSection*#}
 
 -- |a smile section calibrated to a market smile (strikes/vols given directly, not as live

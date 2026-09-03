@@ -98,6 +98,7 @@ extern "C" {
   double qlSmileSectionDigitalOptionPrice(QlSmileSection* o, double strike, int type, double discount, double gap, char **e);
   double qlSmileSectionDensity(QlSmileSection* o, double strike, double discount, double gap, char **e);
   QlSmileSection* qlFlatSmileSection(int d, double vol, DayCounter* dc, int referenceDate, double atmLevel, int type, double shift, char **e);
+  QlSmileSection* qlSviSmileSection(int d, double forward, double a, double b, double sigma, double rho, double m, DayCounter* dc, char **e);
   QlSmileSection* qlSpreadedSmileSection(QlSmileSection* source, QlQuote* spread, char **e);
   QlSmileSection* qlAtmSmileSection(QlSmileSection* source, double atm, char **e);
   QlSabrInterpolatedSmileSection* qlSabrInterpolatedSmileSection(int optionDate, QlQuote* forward, unsigned strikesLen, double* strikes, int hasFloatingStrikes, QlQuote* atmVolatility, unsigned volsLen, QlQuote** vols, double alpha, double beta, double nu, double rho, int isAlphaFixed, int isBetaFixed, int isNuFixed, int isRhoFixed, int vegaWeighted, QlEndCriteria* endCriteria, QlOptimizationMethod* method, DayCounter* dc, double shift, char **e);

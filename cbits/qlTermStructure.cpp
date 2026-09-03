@@ -6,6 +6,7 @@
 #include <ql/termstructures/volatility/flatsmilesection.hpp>
 #include <ql/termstructures/volatility/spreadedsmilesection.hpp>
 #include <ql/termstructures/volatility/atmsmilesection.hpp>
+#include <ql/experimental/volatility/svismilesection.hpp>
 #include <ql/termstructures/volatility/equityfx/all.hpp>
 #include <ql/termstructures/volatility/equityfx/andreasenhugelocalvoladapter.hpp>
 #include <ql/termstructures/volatility/equityfx/andreasenhugevolatilityadapter.hpp>
@@ -487,6 +488,14 @@ QlSmileSection* qlSpreadedSmileSection(QlSmileSection* source, QlQuote* spread, 
   } catch (std::exception& er) {return handleException<QlSmileSection*>(e, er);}}
 QlSmileSection* qlAtmSmileSection(QlSmileSection* source, double atm, char **e) {
   try {return ret(new QlSmileSection(alloc(ext::shared_ptr<SmileSection>(new AtmSmileSection(*arg(source), atm)))));
+  } catch (std::exception& er) {return handleException<QlSmileSection*>(e, er);}}
+// SviSmileSection exposes no getters beyond the SmileSection base (a/b/sigma/rho/m are
+// private, no accessors), so this returns the generic QlSmileSection directly -- same
+// shape as qlFlatSmileSection/qlSpreadedSmileSection/qlAtmSmileSection above, not the
+// dedicated-leaf pattern used for SabrInterpolatedSmileSection.
+QlSmileSection* qlSviSmileSection(int d, double forward, double a, double b, double sigma, double rho, double m, DayCounter* dc, char **e) {
+  try {return ret(new QlSmileSection(alloc(ext::shared_ptr<SmileSection>(new SviSmileSection(
+      Date(d), forward, std::vector<Real>{a, b, sigma, rho, m}, *arg(dc))))));
   } catch (std::exception& er) {return handleException<QlSmileSection*>(e, er);}}
 QlSabrInterpolatedSmileSection* qlSabrInterpolatedSmileSection(int optionDate, QlQuote* forward, unsigned strikesLen, double* strikes, int hasFloatingStrikes, QlQuote* atmVolatility, unsigned volsLen, QlQuote** vols, double alpha, double beta, double nu, double rho, int isAlphaFixed, int isBetaFixed, int isNuFixed, int isRhoFixed, int vegaWeighted, QlEndCriteria* endCriteria, QlOptimizationMethod* method, DayCounter* dc, double shift, char **e) {
   try {

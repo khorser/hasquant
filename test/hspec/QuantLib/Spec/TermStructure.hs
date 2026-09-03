@@ -10,6 +10,7 @@ import Test.QuickCheck.Monadic as Q(monadicIO, run)
 import Test.QuickCheck((==>))
 
 import Data.Time.Calendar
+import Data.Maybe(catMaybes)
 import Data.List.NonEmpty(fromList)
 import qualified Data.Vector.Storable as V
 
@@ -1446,6 +1447,32 @@ spec = do
           noarbDensity <- Vol.smileSectionDensity noarb strike 1.0 1.0e-4
           abs (sabrDensity - noarbDensity) `shouldSatisfy` (< 1.0)
 
+    -- ported from test-suite/svivolatility.cpp::testSviSmileSection: at the strike where
+    -- log-moneyness k equals m, the SVI total-variance formula
+    -- a + b*(rho*(k-m) + sqrt((k-m)^2+sigma^2)) collapses to a + b*sigma, an exact
+    -- closed-form check (not a numerical-tolerance one).
+    describe "SviSmileSection" $
+      it "atmLevel is the forward, and variance at k=m collapses to a + b*sigma" $
+        Settings.keepingSettings' $ do
+          let today' = 1 `march` 2010
+              expiry = addDays 11 today'
+              forward = 123.45
+              a = -0.0666; b = 0.229; sigma = 0.337; rho = 0.439; m = 0.193
+              strike = forward * exp m
+          Settings.setEvaluationDate (Just today')
+          dc <- dayCounter Actual365FixedStandard
+          svi <- Vol.sviSmileSection expiry forward a b sigma rho m dc
+          Vol.smileSectionAtmLevel svi `shouldReturn` forward
+          variance <- Vol.smileSectionVariance svi strike
+          variance `shouldSatisfy` closePrec (a + b * sigma) 1.0e-8
+          -- SmileSection is an Observer of Settings' evaluation date, and svi's expiry
+          -- (12 march 2010) is far in the past relative to other tests' dates (e.g. the
+          -- swaption-volatility-matrix tests use 11 december 2012); keepingSettings''s own
+          -- single performGC on exit isn't reliably enough to finalize it before a later
+          -- test's setEvaluationDate notifies it and trips its now-past-expiry check.
+          performGC
+          performGC
+
     -- SwaptionVolatilityMatrix (fixed reference date, fixed market data): no upstream cached
     -- fixture applies here, since test-suite/swaptionvolatilitymatrix.cpp only exercises the
     -- Handle<Quote>-based ("floating market data") overload, not the plain-Matrix one bound
@@ -1725,6 +1752,79 @@ spec = do
           local <- Vol.andreasenHugeLocalVolAdapter interpl
           adaptedLocal <- Vol.localVol local (1 `march` 2011) 100 True
           adaptedLocal `shouldSatisfy` (> 0.0)
+
+      -- Ported from upstream test-suite/andreasenhugevolatilityinterpl.cpp's
+      -- AndreasenHugeExampleData/testAndreasenHugePut: the original paper's own
+      -- example market (Andreasen & Huge 2010, "Volatility Interpolation"), with
+      -- upstream's cached calibration-error bounds -- tighter and non-arbitrary,
+      -- unlike the ad-hoc "< 0.05" spot-check above.
+      it "Andreasen-Huge Put calibration reproduces upstream's cached errors" $
+        Settings.keepingSettings' $ do
+          let today' = 1 `march` 2010
+              spotVal = 2772.7
+              maturityTimes :: [Double]
+              maturityTimes =
+                [0.025, 0.101, 0.197, 0.274, 0.523, 0.772, 1.769, 2.267, 2.784, 3.781, 4.778, 5.774]
+              raw :: [(Double, [Double])]
+              raw =
+                [ (0.5131, [0,0,0,0,0,0,0,0,0.3366,0.3291,0,0])
+                , (0.5864, [0,0,0,0,0,0,0,0,0.3178,0.3129,0.3008,0])
+                , (0.6597, [0,0,0,0,0,0,0,0,0.3019,0.2976,0.2975,0])
+                , (0.7330, [0,0,0,0,0,0,0,0,0.2863,0.2848,0.2848,0])
+                , (0.7697, [0,0,0,0.3262,0.3079,0.3001,0.2843,0,0,0,0,0])
+                , (0.8063, [0,0,0,0.3058,0.2936,0.2876,0.2753,0.2713,0.2711,0.2711,0.2722,0.2809])
+                , (0.8430, [0,0,0,0.2887,0.2798,0.2750,0.2666,0,0,0,0,0])
+                , (0.8613, [0.3365,0,0,0,0,0,0,0,0,0,0,0])
+                , (0.8796, [0.3216,0.2906,0.2764,0.2717,0.2663,0.2637,0.2575,0.2555,0.2580,0.2585,0.2611,0.2693])
+                , (0.8979, [0.3043,0.2797,0.2672,0,0,0,0,0,0,0,0,0])
+                , (0.9163, [0.2880,0.2690,0.2578,0.2557,0.2531,0.2519,0.2497,0,0,0,0,0])
+                , (0.9346, [0.2724,0.2590,0.2489,0,0,0,0,0,0,0,0,0])
+                , (0.9529, [0.2586,0.2488,0.2405,0.2407,0.2404,0.2411,0.2418,0.2410,0.2448,0.2469,0.2501,0.2584])
+                , (0.9712, [0.2466,0.2390,0.2329,0,0,0,0,0,0,0,0,0])
+                , (0.9896, [0.2358,0.2300,0.2253,0.2269,0.2284,0.2299,0.2347,0,0,0,0,0])
+                , (1.0079, [0.2247,0.2213,0.2184,0,0,0,0,0,0,0,0,0])
+                , (1.0262, [0.2159,0.2140,0.2123,0.2142,0.2173,0.2198,0.2283,0.2275,0.2322,0.2384,0.2392,0.2486])
+                , (1.0445, [0.2091,0.2076,0.2069,0,0,0,0,0,0,0,0,0])
+                , (1.0629, [0.2056,0.2024,0.2025,0.2039,0.2074,0.2104,0.2213,0,0,0,0,0])
+                , (1.0812, [0.2045,0.1982,0.1984,0,0,0,0,0,0,0,0,0])
+                , (1.0995, [0.2025,0.1959,0.1944,0.1962,0.1988,0.2022,0.2151,0.2161,0.2219,0.2269,0.2305,0.2399])
+                , (1.1178, [0.1933,0.1929,0.1920,0,0,0,0,0,0,0,0,0])
+                , (1.1362, [0,0,0,0.1902,0.1914,0.1950,0.2091,0,0,0,0,0])
+                , (1.1728, [0,0,0,0.1885,0.1854,0.1888,0.2039,0.2058,0.2122,0.2186,0.2223,0.2321])
+                , (1.2095, [0,0,0,0.1867,0.1811,0.1839,0.1990,0,0,0,0,0])
+                , (1.2461, [0,0,0,0.1871,0.1785,0.1793,0.1945,0,0.2054,0.2103,0.2164,0.2251])
+                , (1.3194, [0,0,0,0,0,0,0,0,0.1988,0.2054,0.2105,0.2190])
+                , (1.3927, [0,0,0,0,0,0,0,0,0.1930,0.2002,0.2054,0.2135])
+                , (1.4660, [0,0,0,0,0,0,0,0,0.1849,0.1964,0.2012,0])
+                ]
+          Settings.setEvaluationDate (Just today')
+          dc <- dayCounter Actual365FixedStandard
+          zero <- Quote.simpleQuote 0.0
+          rTS <- flatForward today' zero dc IR.Continuous Annual
+          qZero <- Quote.simpleQuote 0.0
+          qTS <- flatForward today' qZero dc IR.Continuous Annual
+          spot <- Quote.simpleQuote spotVal
+          calibList <- concat <$> mapM
+            (\(ratio, vols) -> do
+              let strike = spotVal * ratio
+                  typ = if strike < spotVal then Put else Call
+              catMaybes <$> mapM
+                (\(t, v) ->
+                  if v <= 0 then pure Nothing
+                  else do
+                    let maturity = addDays (truncate (365 * t) :: Integer) today'
+                    opt <- vanillaOption (PlainVanilla (PlainVanillaPayoff typ strike)) (European (EuropeanExercise maturity))
+                    q <- Quote.simpleQuote v
+                    pure (Just (opt, q)))
+                (zip maturityTimes vols))
+            raw
+          interpl <- Vol.andreasenHugeVolatilityInterpl (fromList calibList) spot rTS qTS
+            Vol.AndreasenHugeInterpolationCubicSpline Vol.AndreasenHugeCalibrationAndreasenHugePut 500
+            Nothing Nothing (LevenbergMarquardt 1.0e-8 1.0e-8 1.0e-8 False)
+            (EndCriteria 500 100 1.0e-12 1.0e-10 1.0e-10)
+          (_, maxError, avgError) <- Vol.andreasenHugeVolatilityInterplCalibrationError interpl
+          maxError `shouldSatisfy` (< 0.0015)
+          avgError `shouldSatisfy` (< 0.00035)
 
     -- Instrument.additionalResults() marshals four discriminants: Real, std::string,
     -- vector<Real>, and an Unsupported fallback (RTTI name) for anything else. The Real/String
