@@ -27,7 +27,6 @@ tested-with:
 extra-source-files:
     cbits/ql.h
     cbits/qlaux.h
-    cbits/qlCredit.h
     cbits/qlEnumC2HS.h
     cbits/qlEnumObjects.h
     cbits/qlInstrument.h
@@ -114,7 +113,6 @@ library
   include-dirs:
       cbits
   cxx-sources:
-      cbits/qlCredit.cpp
       cbits/qlInstrument.cpp
       cbits/qlMisc.cpp
       cbits/qlPricingEngine.cpp
