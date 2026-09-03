@@ -1779,6 +1779,73 @@ type CCallableBondVolatilityStructure = ForeignPtr CCallableBondVolatilityStruct
 type CallableBondVolatilityStructure = GenTermStructure CCallableBondVolatilityStructure
 type CDefaultProbabilityTermStructure = ForeignPtr CDefaultProbabilityTermStructure'
 type DefaultProbabilityTermStructure = GenTermStructure CDefaultProbabilityTermStructure
+withDefaultProbabilityTermStructureArray :: [DefaultProbabilityTermStructure] -> ((CUInt, Ptr (Ptr CDefaultProbabilityTermStructure')) -> IO b) -> IO b
+withDefaultProbabilityTermStructureArray = withGenArray withGenTermStructure
+withDefaultProbabilityTermStructureArrayRaw :: [DefaultProbabilityTermStructure] -> (Ptr (Ptr CDefaultProbabilityTermStructure') -> IO b) -> IO b
+withDefaultProbabilityTermStructureArrayRaw x f = withMany withGenTermStructure x (`withArray` f)
+
+-- CREDIT (ql/experimental/credit) -- DefaultProbKey/Issuer are plain value types (like
+-- Currency/InterestRate above); Pool/Basket/DefaultLossModel are shared_ptr-managed like
+-- PricingEngine. DefaultLossModel mirrors PricingEngine exactly: many constructing functions
+-- (qlGaussianLHPLossModel here, more to follow) all return this one opaque type, so it needs no
+-- GenX/AnyOf family -- nothing in hasquant ever needs to distinguish which concrete loss model
+-- it is or upcast further.
+data CDefaultProbKey
+newtype DefaultProbKey = DefaultProbKey {getCDefaultProbKey :: Standalone CDefaultProbKey}
+foreign import ccall unsafe "ql.h &qlFreeDefaultProbKey" qlFreeDefaultProbKey :: FinalizerPtr CDefaultProbKey
+instance Finalizable CDefaultProbKey where finalize = qlFreeDefaultProbKey
+peekDefaultProbKey :: Ptr CDefaultProbKey -> IO DefaultProbKey
+peekDefaultProbKey = DefaultProbKey <.> peekStandalone
+withDefaultProbKey :: DefaultProbKey -> (Ptr CDefaultProbKey -> IO b) -> IO b
+withDefaultProbKey = withStandalone . getCDefaultProbKey
+withDefaultProbKeyArray :: [DefaultProbKey] -> ((CUInt, Ptr (Ptr CDefaultProbKey)) -> IO b) -> IO b
+withDefaultProbKeyArray = withStandaloneArray getCDefaultProbKey
+withDefaultProbKeyArrayRaw :: [DefaultProbKey] -> (Ptr (Ptr CDefaultProbKey) -> IO b) -> IO b
+withDefaultProbKeyArrayRaw x f = withMany withDefaultProbKey x (`withArray` f)
+
+data CIssuer
+newtype Issuer = Issuer {getCIssuer :: Standalone CIssuer}
+foreign import ccall unsafe "ql.h &qlFreeIssuer" qlFreeIssuer :: FinalizerPtr CIssuer
+instance Finalizable CIssuer where finalize = qlFreeIssuer
+peekIssuer :: Ptr CIssuer -> IO Issuer
+peekIssuer = Issuer <.> peekStandalone
+withIssuer :: Issuer -> (Ptr CIssuer -> IO b) -> IO b
+withIssuer = withStandalone . getCIssuer
+withIssuerArray :: [Issuer] -> ((CUInt, Ptr (Ptr CIssuer)) -> IO b) -> IO b
+withIssuerArray = withStandaloneArray getCIssuer
+withIssuerArrayRaw :: [Issuer] -> (Ptr (Ptr CIssuer) -> IO b) -> IO b
+withIssuerArrayRaw x f = withMany withIssuer x (`withArray` f)
+
+data CPool
+newtype Pool = Pool {getCPool :: Standalone CPool}
+foreign import ccall unsafe "ql.h &qlFreePool" qlFreePool :: FinalizerPtr CPool
+instance Finalizable CPool where finalize = qlFreePool
+peekPool :: Ptr CPool -> IO Pool
+peekPool = Pool <.> peekStandalone
+withPool :: Pool -> (Ptr CPool -> IO b) -> IO b
+withPool = withStandalone . getCPool
+
+data CBasket
+-- Constructor is 'MkBasket', not 'Basket' -- QuantLib.Internal.Common's Payoff ADT already
+-- has a 'Basket' data constructor (for BasketPayoff), and Common.chs imports this module
+-- unqualified, so reusing the name here would make every pattern match on either ambiguous.
+newtype Basket = MkBasket {getCBasket :: Standalone CBasket}
+foreign import ccall unsafe "ql.h &qlFreeBasket" qlFreeBasket :: FinalizerPtr CBasket
+instance Finalizable CBasket where finalize = qlFreeBasket
+peekBasket :: Ptr CBasket -> IO Basket
+peekBasket = MkBasket <.> peekStandalone
+withBasket :: Basket -> (Ptr CBasket -> IO b) -> IO b
+withBasket = withStandalone . getCBasket
+
+data CDefaultLossModel
+newtype DefaultLossModel = DefaultLossModel {getCDefaultLossModel :: Standalone CDefaultLossModel}
+foreign import ccall unsafe "ql.h &qlFreeDefaultLossModel" qlFreeDefaultLossModel :: FinalizerPtr CDefaultLossModel
+instance Finalizable CDefaultLossModel where finalize = qlFreeDefaultLossModel
+peekDefaultLossModel :: Ptr CDefaultLossModel -> IO DefaultLossModel
+peekDefaultLossModel = DefaultLossModel <.> peekStandalone
+withDefaultLossModel :: DefaultLossModel -> (Ptr CDefaultLossModel -> IO b) -> IO b
+withDefaultLossModel = withStandalone . getCDefaultLossModel
+
 type CZeroInflationTermStructure = ForeignPtr CZeroInflationTermStructure'
 type ZeroInflationTermStructure = GenTermStructure CZeroInflationTermStructure
 type CYoYInflationTermStructure = ForeignPtr CYoYInflationTermStructure'

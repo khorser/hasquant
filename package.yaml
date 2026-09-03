@@ -88,6 +88,7 @@ library:
     - QuantLib.Instrument.Option
     - QuantLib.Model
     - QuantLib.Instrument.Credit
+    - QuantLib.Credit
     - QuantLib.Instrument.Swap
     - QuantLib.Instrument.Energy
     - QuantLib.PricingEngine

@@ -27,6 +27,7 @@ tested-with:
 extra-source-files:
     cbits/ql.h
     cbits/qlaux.h
+    cbits/qlCredit.h
     cbits/qlEnumC2HS.h
     cbits/qlEnumObjects.h
     cbits/qlInstrument.h
@@ -97,6 +98,7 @@ library
       QuantLib.Instrument.Option
       QuantLib.Model
       QuantLib.Instrument.Credit
+      QuantLib.Credit
       QuantLib.Instrument.Swap
       QuantLib.Instrument.Energy
       QuantLib.PricingEngine
@@ -112,6 +114,7 @@ library
   include-dirs:
       cbits
   cxx-sources:
+      cbits/qlCredit.cpp
       cbits/qlInstrument.cpp
       cbits/qlMisc.cpp
       cbits/qlPricingEngine.cpp
@@ -238,6 +241,7 @@ test-suite hasquant_test
   other-modules:
       QuantLib.Spec.Calendars
       QuantLib.Spec.Commodity
+      QuantLib.Spec.Credit
       QuantLib.Spec.CurrencyAndDayCounter
       QuantLib.Spec.DatesAndSchedule
       QuantLib.Spec.Examples

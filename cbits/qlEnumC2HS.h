@@ -569,4 +569,33 @@ enum PricingErrorLevel {Info, Warning, Error, Fatal};
 enum DeliverySchedule {Constant, Window, Hourly, Daily, Weekly, Monthly, Quarterly, Yearly};
 enum QuantityPeriodicity {Absolute, PerHour, PerDay, PerWeek, PerMonth, PerQuarter, PerYear};
 
+
+// experimental/credit/defaulttype.hpp
+enum Seniority {
+  SecDom = 0,
+  SnrFor,
+  SubLT2,
+  JrSubT2,
+  PrefT1,
+  NoSeniority,
+  SeniorSec     = SecDom,
+  SeniorUnSec   = SnrFor,
+  SubTier1      = PrefT1,
+  SubUpperTier2 = JrSubT2,
+  SubLoweTier2  = SubLT2
+};
+enum RestructuringType {
+  NoRestructuring = 0,
+  ModifiedRestructuring,
+  ModifiedModifiedRestructuring,
+  FullRestructuring,
+  AnyRestructuring,
+  XR = NoRestructuring,
+  MR = ModifiedRestructuring,
+  MM = ModifiedModifiedRestructuring,
+  CR = FullRestructuring
+};
+// experimental/math/latentmodel.hpp -- LatentModelIntegrationType::LatentModelIntegrationType
+enum LatentModelIntegrationType {GaussianQuadrature, Trapezoid};
+
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

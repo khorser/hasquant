@@ -174,6 +174,11 @@ namespace QuantLib {
   class CapHelper;
   class CashOrNothingPayoff;
   class CdsOption;
+  class DefaultProbKey;
+  class Issuer;
+  class Pool;
+  class Basket;
+  class DefaultLossModel;
   class Claim;
   class CompositeConstraint;
   class Constraint;
@@ -511,6 +516,11 @@ using QuantLib::CapFloorTermVolSurface;
 using QuantLib::CapHelper;
 using QuantLib::CashOrNothingPayoff;
 using QuantLib::CdsOption;
+using QuantLib::DefaultProbKey;
+using QuantLib::Issuer;
+using QuantLib::Pool;
+using QuantLib::Basket;
+using QuantLib::DefaultLossModel;
 using QuantLib::Claim;
 using QuantLib::CompositeConstraint;
 using QuantLib::Constraint;
@@ -842,6 +852,9 @@ using QlEnergyVanillaSwap = shared_ptr<EnergyVanillaSwap>;
 using QlEnergyBasisSwap = shared_ptr<EnergyBasisSwap>;
 using QlCommodityCashFlow = shared_ptr<CommodityCashFlow>;
 using QlCdsOption = shared_ptr<CdsOption>;
+using QlPool = shared_ptr<Pool>;
+using QlBasket = shared_ptr<Basket>;
+using QlDefaultLossModel = shared_ptr<DefaultLossModel>;
 using QlClaim = shared_ptr<Claim>;
 using QlConvertibleBond = shared_ptr<ConvertibleBond>;
 using QlCPIBond = shared_ptr<CPIBond>;
@@ -1084,6 +1097,11 @@ QL_TRACE_NAME(CashFlow)
 QL_TRACE_NAME(CapHelper)
 QL_TRACE_NAME(CashOrNothingPayoff)
 QL_TRACE_NAME(CdsOption)
+QL_TRACE_NAME(DefaultProbKey)
+QL_TRACE_NAME(Issuer)
+QL_TRACE_NAME(Pool)
+QL_TRACE_NAME(Basket)
+QL_TRACE_NAME(DefaultLossModel)
 QL_TRACE_NAME(Claim)
 QL_TRACE_NAME(CommodityType)
 QL_TRACE_NAME(CompositeConstraint)
@@ -1280,6 +1298,9 @@ QL_TRACE_NAME(QlEnergyVanillaSwap)
 QL_TRACE_NAME(QlEnergyBasisSwap)
 QL_TRACE_NAME(QlCommodityCashFlow)
 QL_TRACE_NAME(QlCdsOption)
+QL_TRACE_NAME(QlPool)
+QL_TRACE_NAME(QlBasket)
+QL_TRACE_NAME(QlDefaultLossModel)
 QL_TRACE_NAME(QlClaim)
 QL_TRACE_NAME(QlConvertibleBond)
 QL_TRACE_NAME(QlCPIBond)

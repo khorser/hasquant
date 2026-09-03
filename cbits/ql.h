@@ -2,5 +2,6 @@
 #include "qlPricingEngine.h"
 #include "qlMisc.h"
 #include "qlTermStructure.h"
+#include "qlCredit.h"
 
 /* vim: set ft=c ff=unix ts=8 sts=2 sw=2 et: */

@@ -18,6 +18,7 @@ import qualified QuantLib.Spec.Index.Commodity as IndexCommodity
 import qualified QuantLib.Spec.Instrument as Instrument
 import qualified QuantLib.Spec.Instrument.CapFloor as InstrumentCapFloor
 import qualified QuantLib.Spec.Instrument.Credit as InstrumentCredit
+import qualified QuantLib.Spec.Credit as Credit
 import qualified QuantLib.Spec.Instrument.Energy as InstrumentEnergy
 import qualified QuantLib.Spec.Instrument.InflationCapFloor as InstrumentInflationCapFloor
 import qualified QuantLib.Spec.Instrument.Option as InstrumentOption
@@ -51,6 +52,7 @@ main = do
     Instrument.spec
     InstrumentCapFloor.spec
     InstrumentCredit.spec
+    Credit.spec
     InstrumentEnergy.spec
     InstrumentInflationCapFloor.spec
     InstrumentOption.spec
