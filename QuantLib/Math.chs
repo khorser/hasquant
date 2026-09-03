@@ -1,18 +1,5 @@
--- |Numeric helpers, enum catalogues, and the matrix\/vector value types the rest of
--- @hasquant@ marshals through.
---
--- __Matrices.__ There are two, and the split is deliberate. 'RealMatrix' is a row-major
--- numeric matrix over a contiguous 'RealVector', for large dense grids (volatility
--- surfaces, LSM regression states); 'Matrix' is list-backed and boxed, for small
--- fixed-dimensional numeric data (correlation and diffusion matrices) and for element
--- types that cannot live in a storable vector at all, notably @'Matrix' ('QuantLib.Quote.GenQuote' q)@,
--- whose foreign pointers need continuation-based marshalling. Construct them with
--- 'realMatrixFromVector' and 'boxedRealMatrix' (or 'objectMatrix') respectively.
---
--- 'RealMatrix' interoperates with @hmatrix@ without @hasquant@ depending on it:
--- @Numeric.LinearAlgebra.reshape cols realMatrixData@ is a row-major view with no
--- element copy. The reverse, through @flatten@, is zero-copy only for a contiguous
--- row-major hmatrix matrix; BLAS-produced or sliced matrices can require a reorder.
+-- |Numeric helpers and matrix/vector value types.
+-- 'RealMatrix' stores dense numeric grids; boxed 'Matrix' supports small or object-valued data.
 module QuantLib.Math
   (
     RoundingType(..)
@@ -169,16 +156,7 @@ import Foreign.Marshal.Alloc(alloca)
 -- |Returns all times on the grid in contiguous storage.
 {#fun qlTimeGridPoints as points{withTimeGrid*`TimeGrid',preArray-`RealVector'&peekRealVector*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
--- |Mean of the sample. The @riskStatistics*@ functions in this section compute risk measures
--- over a caller-supplied sample (a P\&L vector, a set of returns, MC exposures, ...) rather
--- than over an index's historical fixings, closing the gap left by
--- 'QuantLib.Index.historicalIndexAnalysis' \/ 'QuantLib.Index.historicalIndexAnalysisPercentile'
--- and friends, which only ever see fixing history. Each call builds a fresh
--- @GenericRiskStatistics\<GaussianStatistics\>@ (@RiskStatistics@,
--- @ql\/math\/statistics\/riskstatistics.hpp@) from the sample and reads one measure off it —
--- there is no persistent accumulator object, mirroring the historical-index side's own \"no
--- dedicated Statistics type\" design. There is deliberately no weighted variant: upstream's
--- @add(value, weight)@ is exactly the accumulator API this shape exists to avoid.
+-- |Mean of a caller-supplied sample. Each @riskStatistics*@ call evaluates a fresh sample.
 {#fun qlRiskStatisticsMean as riskStatisticsMean{withRealVector*`RealVector'& -- ^sample
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 

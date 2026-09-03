@@ -8,17 +8,9 @@ namespace hasquant {
 
 using namespace QuantLib;
 
-// The trait x interpolator x approximation dispatch below is shared by both piecewise-curve
-// entry points (fixed reference date, and settlementDays + calendar): the two differ only in
-// the leading constructor arguments, forwarded here as a variadic pack. It used to be two
-// copies of the same ~150-line nested switch, one per entry point, with each of the ~30 arms
-// spelling out its own `new PiecewiseYieldCurve<Trait, Interp>(...)` argument list -- which is
-// why adding a bootstrap argument prompted the factoring. Shape borrowed from QuantLib-SWIG's
-// make_bootstrap<Curve>() (SWIG/piecewiseyieldcurve.i).
+// Shared piecewise-curve dispatcher; the entry points differ only in leading arguments.
 
-// Spelled CurveType::bootstrap_type, not IterativeBootstrap<CurveType>, for the same
-// [temp.inst] reason spelled out on the GlobalBootstrap branch further down -- see that
-// comment before changing either.
+// Use the curve's bootstrap type to avoid invalid template instantiation.
 template <class Curve>
 typename Curve::bootstrap_type makeIterativeBootstrap(const QlIterativeBootstrapOpts& b) {
   return typename Curve::bootstrap_type(b.accuracy, b.minValue, b.maxValue, b.maxAttempts,
@@ -488,21 +480,14 @@ DefaultProbabilityTermStructure* qlPiecewiseDefaultCurveAux1(unsigned settlement
       settlementDays, calendar, instruments, dayCounter, jumps, jumpDates);
 }
 
-// Selects between the two copula policies ConstantLossModel is templated over. Reuses this
-// file's own Tag<T>/explicit-Ret-argument dispatch shape (see the comment above
-// dispatchInterpolation for why the Ret argument must stay explicit, never a trailing decltype).
+// Selects ConstantLossModel's Gaussian or Student-T copula policy.
 template <class Ret, class F>
 Ret dispatchCopulaPolicy(bool useStudent, F&& make) {
   if (useStudent) return make(Tag<TCopulaPolicy>());
   return make(Tag<GaussianCopulaPolicy>());
 }
 
-// GaussianCopulaPolicy::initTraits and TCopulaPolicy::initTraits are not the same shape --
-// upstream types them as `int` (unused sentinel) and a `{ std::vector<Integer> tOrders; }`
-// struct respectively, not two structurally-compatible structs. `if constexpr` on the dispatched
-// tag is what lets one generic lambda populate the Student-only `tOrders` field only for the
-// TCopulaPolicy instantiation, while still default-constructing `int{}`/`initTraits{}` uniformly
-// for both arms.
+// The policies use different init-trait types; initialize Student-T orders only on its branch.
 DefaultLossModel* qlConstantLossModelAux(const Handle<Quote>& mktCorrel,
     const std::vector<Real>& recoveries,
     LatentModelIntegrationType::LatentModelIntegrationType integralType,

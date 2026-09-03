@@ -573,8 +573,7 @@ withBlackDeltaCalculator = withStandalone . getCBlackDeltaCalculator
 -- | > FloatingRateCouponPricer
 -- >   CmsCouponPricer
 --
--- Generic floating-rate coupon pricer.  CMS-specific pricers form the concrete
--- 'CmsCouponPricer' subfamily, so they retain all generic pricer wiring without a cast.
+-- Generic floating-rate coupon pricer; CMS pricers retain a concrete subtype.
 data CFloatingRateCouponPricer'
 newtype GenFloatingRateCouponPricer frcp = GenFloatingRateCouponPricer {getFloatingRateCouponPricer :: GenForeignPtr frcp CFloatingRateCouponPricer'}
 type CFloatingRateCouponPricer = ForeignPtr CFloatingRateCouponPricer'
@@ -592,8 +591,7 @@ withFloatingRateCouponPricerArray = withGenArray withFloatingRateCouponPricer
 withMaybeFloatingRateCouponPricer :: Maybe FloatingRateCouponPricer -> (Ptr CFloatingRateCouponPricer' -> IO b) -> IO b
 withMaybeFloatingRateCouponPricer = maybe ($ nullPtr) withFloatingRateCouponPricer
 
--- | Vanilla CMS coupon pricer.  QuantLib consumers such as 'lognormalCmsSpreadPricer' require
--- this exact base class, so it is retained as a leaf under 'FloatingRateCouponPricer'.
+-- |CMS coupon-pricer subtype required by CMS consumers.
 data CCmsCouponPricer'
 type CCmsCouponPricer = ForeignPtr CCmsCouponPricer'
 type CmsCouponPricer = GenFloatingRateCouponPricer CCmsCouponPricer
@@ -614,11 +612,7 @@ withCmsCouponPricer = withForeignPtr . ptr . getFloatingRateCouponPricer
 -- >   DigitalCoupon
 -- >   RangeAccrualFloatersCoupon
 --
--- Base floating-rate coupon class.  Its cash-flow amount is its rate times accrual period and
--- nominal.  The binding represents coupons at this useful hierarchy level; CMS coupons remain
--- concrete only because 'digitalCmsCoupon' requires one.  Every leaf converts to the generic
--- 'QuantLib.CashFlow.CashFlow' representation via 'QuantLib.CashFlow.asCashFlow', generic over
--- this whole family through the existing 'Upcastable' chain.
+-- Base floating-rate coupon class. Its cash-flow amount is rate times accrual period and nominal.
 data CFloatingRateCoupon'
 newtype GenFloatingRateCoupon frc = GenFloatingRateCoupon {getFloatingRateCoupon :: GenForeignPtr frc CFloatingRateCoupon'}
 type CFloatingRateCoupon = ForeignPtr CFloatingRateCoupon'
@@ -644,8 +638,7 @@ peekCmsCoupon = GenFloatingRateCoupon <.> newGenForeignPtr
 withCmsCoupon :: CmsCoupon -> (Ptr CCmsCoupon' -> IO b) -> IO b
 withCmsCoupon = withForeignPtr . ptr . getFloatingRateCoupon
 
--- | Concrete Ibor coupon retained for constructors, such as 'DigitalIborCoupon',
--- that require QuantLib's exact subtype.
+-- |Concrete Ibor coupon required by subtype-specific constructors.
 data CIborCoupon'
 type CIborCoupon = ForeignPtr CIborCoupon'
 type IborCoupon = GenFloatingRateCoupon CIborCoupon
@@ -670,8 +663,7 @@ peekOvernightIndexedCoupon = GenFloatingRateCoupon <.> newGenForeignPtr
 withOvernightIndexedCoupon :: OvernightIndexedCoupon -> (Ptr COvernightIndexedCoupon' -> IO b) -> IO b
 withOvernightIndexedCoupon = withForeignPtr . ptr . getFloatingRateCoupon
 
--- | Concrete CPI coupon.  Convert it explicitly with 'QuantLib.CashFlow.cpiCouponAsCashFlow'
--- when a general cash-flow collection is required.
+-- |Concrete CPI coupon; convert with 'QuantLib.CashFlow.cpiCouponAsCashFlow' when needed.
 data CCPICoupon
 newtype CPICoupon = CPICoupon {getCCPICoupon :: Standalone CCPICoupon}
 foreign import ccall unsafe "ql.h &qlFreeCPICoupon" qlFreeCPICoupon :: FinalizerPtr CCPICoupon
@@ -713,8 +705,7 @@ peekDigitalCmsCoupon = GenFloatingRateCoupon <.> newGenForeignPtr
 withDigitalCmsCoupon :: DigitalCmsCoupon -> (Ptr CDigitalCmsCoupon' -> IO b) -> IO b
 withDigitalCmsCoupon = withForeignPtr . ptr . getFloatingRateCoupon
 
--- | A digital floating-rate coupon is kept concrete because its option-rate
--- results are not members of the 'FloatingRateCoupon' base API.
+-- |Concrete digital coupon exposing option-rate results.
 data CDigitalCoupon'
 type CDigitalCoupon = ForeignPtr CDigitalCoupon'
 type DigitalCoupon = GenFloatingRateCoupon CDigitalCoupon
@@ -740,9 +731,7 @@ peekRangeAccrualFloatersCoupon = GenFloatingRateCoupon <.> newGenForeignPtr
 withRangeAccrualFloatersCoupon :: RangeAccrualFloatersCoupon -> (Ptr CRangeAccrualFloatersCoupon' -> IO b) -> IO b
 withRangeAccrualFloatersCoupon = withForeignPtr . ptr . getFloatingRateCoupon
 
--- | Concrete YoY coupon retained for 'adjustedFixing'.  Convert it explicitly
--- with 'QuantLib.CashFlow.yoyInflationCouponAsCashFlow' when a general
--- cash-flow collection is required.
+-- |Concrete YoY coupon exposing 'adjustedFixing'.
 data CYoYInflationCoupon
 newtype YoYInflationCoupon = YoYInflationCoupon {getCYoYInflationCoupon :: Standalone CYoYInflationCoupon}
 foreign import ccall unsafe "ql.h &qlFreeYoYInflationCoupon" qlFreeYoYInflationCoupon :: FinalizerPtr CYoYInflationCoupon
@@ -1784,34 +1773,7 @@ withDefaultProbabilityTermStructureArray = withGenArray withGenTermStructure
 withDefaultProbabilityTermStructureArrayRaw :: [DefaultProbabilityTermStructure] -> (Ptr (Ptr CDefaultProbabilityTermStructure') -> IO b) -> IO b
 withDefaultProbabilityTermStructureArrayRaw x f = withMany withGenTermStructure x (`withArray` f)
 
--- CREDIT (ql/experimental/credit) -- DefaultProbKey/Issuer are plain value types (like
--- Currency/InterestRate above); Pool/Basket/DefaultLossModel are shared_ptr-managed like
--- PricingEngine. DefaultLossModel mirrors PricingEngine exactly: many constructing functions
--- (qlGaussianLHPLossModel here, more to follow) all return this one opaque type, so it needs no
--- GenX/AnyOf family -- nothing in hasquant ever needs to distinguish which concrete loss model
--- it is or upcast further.
---
--- DigitalLossModel is a second, deliberately *non*-interchangeable type over the same C
--- representation as DefaultLossModel (CDefaultLossModel, same finalizer). DefaultLossModel's own
--- virtuals split into two disjoint, non-overlapping halves across upstream's concrete models --
--- confirmed by reading gaussianlhplossmodel.hpp and constantlosslatentmodel.hpp side by side, not
--- assumed: GaussianLHPLossModel overrides expectedTrancheLoss/percentile/probOverLoss/
--- expectedShortfall (what SyntheticCDO's engines and basketExpectedTrancheLoss need);
--- ConstantLossModel overrides probAtLeastNEvents/probsBeingNthEvent/defaultCorrelation instead
--- (what IntegralNtdEngine needs, per integralntdengine.cpp) -- every method it does *not*
--- override still QL_FAILs at runtime with "Not implemented for this model", and vice versa. So
--- QuantLib.Credit.constantLossModel (and any future digital-only model) returns DigitalLossModel,
--- only foldable into a DigitalBasket via QuantLib.Credit.digitalBasket.
---
--- Basket/TrancheBasket/DigitalBasket mirror that split, verified the same way against
--- basket.cpp: Basket carries every Basket-level accessor that is *not* delegated to the loss
--- model (notional, remainingNotional, ...) and so is safe regardless of which loss model is
--- attached; TrancheBasket and DigitalBasket each add the delegated half their respective loss
--- model actually implements (basketExpectedTrancheLoss on TrancheBasket;
--- QuantLib.Instrument.Credit.nthToDefault's basket argument is DigitalBasket). QuantLib's own
--- Basket class carries no such distinction -- the C representation is identical either way -- so
--- 'trancheBasketAsBasket'/'digitalBasketAsBasket' are free relabels, not FFI calls, unlike the
--- Upcastable-based upcasts used elsewhere in this module for a genuine C++ hierarchy edge.
+-- CREDIT: separate types encode tranche-loss and digital-loss capabilities.
 data CDefaultProbKey
 newtype DefaultProbKey = DefaultProbKey {getCDefaultProbKey :: Standalone CDefaultProbKey}
 foreign import ccall unsafe "ql.h &qlFreeDefaultProbKey" qlFreeDefaultProbKey :: FinalizerPtr CDefaultProbKey
@@ -1848,12 +1810,7 @@ withPool :: Pool -> (Ptr CPool -> IO b) -> IO b
 withPool = withStandalone . getCPool
 
 data CBasket
--- Constructor is 'CreditBasket', not 'Basket' -- QuantLib.Internal.Common's Payoff ADT already
--- has a 'Basket' data constructor (for BasketPayoff), and Common.chs imports this module
--- unqualified, so reusing the name here would make every pattern match on either ambiguous.
---
--- Universal, loss-model-agnostic accessors only -- see TrancheBasket/DigitalBasket below and the
--- CREDIT section comment above for why the delegated (loss-model-dependent) surface is not here.
+-- Named 'CreditBasket' to avoid the Payoff ADT's 'Basket' constructor.
 newtype Basket = CreditBasket {getCBasket :: Standalone CBasket}
 foreign import ccall unsafe "ql.h &qlFreeBasket" qlFreeBasket :: FinalizerPtr CBasket
 instance Finalizable CBasket where finalize = qlFreeBasket
@@ -1862,18 +1819,14 @@ peekBasket = CreditBasket <.> peekStandalone
 withBasket :: Basket -> (Ptr CBasket -> IO b) -> IO b
 withBasket = withStandalone . getCBasket
 
--- A Basket guaranteed, by construction (QuantLib.Credit.basket is the only way to get one), to
--- carry a tranche-loss model: required by QuantLib.Instrument.Credit.syntheticCDO and
--- QuantLib.Credit.basketExpectedTrancheLoss. 'trancheBasketAsBasket' is a free relabel (no FFI
--- call) -- see the CREDIT section comment above.
+-- A basket with a tranche-loss model, for CDO pricing.
 newtype TrancheBasket = TrancheBasket {trancheBasketAsBasket :: Basket}
 peekTrancheBasket :: Ptr CBasket -> IO TrancheBasket
 peekTrancheBasket = TrancheBasket <.> peekBasket
 withTrancheBasket :: TrancheBasket -> (Ptr CBasket -> IO b) -> IO b
 withTrancheBasket = withBasket . trancheBasketAsBasket
 
--- A Basket guaranteed to carry a digital-only loss model: required by
--- QuantLib.Instrument.Credit.nthToDefault. See TrancheBasket above.
+-- A basket with a digital-loss model, for nth-to-default pricing.
 newtype DigitalBasket = DigitalBasket {digitalBasketAsBasket :: Basket}
 peekDigitalBasket :: Ptr CBasket -> IO DigitalBasket
 peekDigitalBasket = DigitalBasket <.> peekBasket
@@ -1889,9 +1842,7 @@ peekDefaultLossModel = DefaultLossModel <.> peekStandalone
 withDefaultLossModel :: DefaultLossModel -> (Ptr CDefaultLossModel -> IO b) -> IO b
 withDefaultLossModel = withStandalone . getCDefaultLossModel
 
--- Same CDefaultLossModel representation and Finalizable instance as DefaultLossModel above; a
--- distinct Haskell type so a digital-only loss model (QuantLib.Credit.constantLossModel) can't
--- be handed to Basket's tranche-loss constructor or vice versa. See the CREDIT section comment.
+-- Distinct type prevents mixing digital and tranche-loss models.
 newtype DigitalLossModel = DigitalLossModel {getCDigitalLossModel :: Standalone CDefaultLossModel}
 peekDigitalLossModel :: Ptr CDefaultLossModel -> IO DigitalLossModel
 peekDigitalLossModel = DigitalLossModel <.> peekStandalone
@@ -2506,8 +2457,7 @@ withBlackProcess = withForeignPtr . ptr . peel . peel . getStochasticProcess
 -- >  Gsr + Gaussian1dModel
 -- >  MarkovFunctional + Gaussian1dModel
 --
--- Heston SLV calibrators and Brownian factories are standalone lazy objects: they do not
--- participate in QuantLib's calibrated-model hierarchy.
+-- Heston SLV calibrators and Brownian factories are standalone objects.
 data CBrownianGeneratorFactory'
 data CHestonSLVMCModel'
 data CHestonSLVFDMModel'

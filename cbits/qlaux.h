@@ -1572,20 +1572,7 @@ template <class T> void del(T p) {trace("deleting", p); delete p; trace("deleted
 // friends. Separate rather than a flag on del() because the array/scalar delete form has to be
 // chosen at the call site anyway.
 template <class T> void delArray(T p) {trace("deleting", p); delete[] p; trace("deleted", p);}
-// RAII guard for a C out-param "array pointer + length" pair, for the common shim shape:
-// allocate into *out, then run a loop that can throw partway through, then publish the
-// length. Construct right after the allocation (with *len still at its pre-call 0), then
-// call commit() once the loop finishes without throwing. If an exception unwinds through
-// the guard first, its destructor frees the (possibly partially filled) array and resets
-// both *out and *len back to null/0 -- matching the shim's own pre-call zeroing, so the
-// Haskell-side array marshaller (which peeks and frees unconditionally, before checking the
-// error channel) sees "nothing was returned" instead of double-freeing an already-freed
-// pointer. Forgetting this reset is a real, reproduced bug, not a theoretical one: see
-// qlLegCashFlows's fix (a leg containing a CPICoupon with a missing fixing corrupted the
-// heap via exactly this double-free instead of raising a catchable exception). Prefer this
-// over the alternative safe idiom -- allocate into a local, write the out-params only after
-// the loop succeeds -- when the loop needs to run in-place on *out itself (e.g. because
-// several parallel out-arrays are being filled together, as in qlLegCashFlows).
+// RAII guard for allocated out-arrays: on failure, frees partial output and restores null/zero.
 template <class T> class OutArrayGuard {
   T **out_;
   unsigned *len_;

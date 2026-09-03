@@ -1,9 +1,4 @@
--- |Portfolio credit scaffolding (@ql\/experimental\/credit@): the pool\/issuer\/basket
--- machinery a synthetic CDO or nth-to-default basket is built on, plus the Gaussian large
--- homogeneous pool (LHP) loss model. This is a deliberately minimal slice -- @ql\/experimental\/credit@
--- exposes far more (bucketed copula loss models, CDO-squared, base correlation, ...) than is
--- bound here; see the plan this module was built against for what was deliberately left out and
--- why.
+-- |Portfolio-credit types, baskets, and loss models.
 module QuantLib.Credit
   (
     Seniority(..)
@@ -81,9 +76,7 @@ import QuantLib.Internal.Type
   ,`RestructuringType' -- ^restructuringType
   ,preErrorCheck-`String'errorCheck*-}->`DefaultProbKey'peekDefaultProbKey*#}
 
--- |An issuer's default-probability term structures, keyed by the contract terms
--- ('DefaultProbKey') they apply to. This binds only the @(key, curve)@-list constructor; the
--- default-event-history overload is not bound.
+-- |An issuer's default-probability term structures, keyed by contract terms.
 issuer :: NonEmpty (DefaultProbKey, DefaultProbabilityTermStructure) -> IO Issuer
 issuer probs = qlIssuer keys curves
   where (keys, curves) = unzip (toList probs)
@@ -91,9 +84,7 @@ issuer probs = qlIssuer keys curves
   ,withDefaultProbabilityTermStructureArrayRaw*`[DefaultProbabilityTermStructure]'
   ,preErrorCheck-`String'errorCheck*-}->`Issuer'peekIssuer*#}
 
--- |A named collection of issuers, each entered under its own default-probability key. There is
--- no @add@ mutator here (unlike upstream's @Pool::add@): the whole membership is passed in one
--- call, per CLAUDE.md's \"prefer constructing a new object over mutating one\".
+-- |A named collection of issuers and their default-probability keys.
 pool :: NonEmpty (String, Issuer, DefaultProbKey) -> IO Pool
 pool entries = qlPool names issuers keys
   where (names, issuers, keys) = unzip3 (toList entries)
@@ -102,22 +93,7 @@ pool entries = qlPool names issuers keys
   ,withDefaultProbKeyArrayRaw*`[DefaultProbKey]'
   ,preErrorCheck-`String'errorCheck*-}->`Pool'peekPool*#}
 
--- |A basket of named notional positions drawn from a 'Pool', tranched between
--- @attachmentRatio@ and @detachmentRatio@ (as fractions of the basket's total notional), with a
--- 'DefaultLossModel' attached. The loss model is a constructor argument here rather than a
--- separate @setLossModel@ call: upstream's @Basket@ takes it as a mutator, but every use in the
--- reference fixtures (@cdo.cpp@, @nthtodefault.cpp@) sets it once at construction and never
--- changes it afterwards, so the shim calls @setLossModel@ internally and no mutator is exposed
--- to Haskell.
---
--- Returns a 'TrancheBasket' -- required by 'QuantLib.Instrument.Credit.syntheticCDO' and
--- 'basketExpectedTrancheLoss' -- rather than the plain 'Basket', because those two only work
--- correctly with a tranche-loss model (e.g. 'gaussianLHPLossModel'); see 'DigitalLossModel'\'s
--- haddock for the (verified, not assumed) reason a digital-only model can't take their place. A
--- digital-only model uses 'digitalBasket' instead, which returns a 'DigitalBasket'. Both
--- 'TrancheBasket' and 'DigitalBasket' still upcast to the loss-model-agnostic 'Basket' for free
--- via 'trancheBasketAsBasket'\/'digitalBasketAsBasket' -- e.g. to call 'basketNotional', which
--- works regardless of which loss model is attached.
+-- |A tranched basket with a tranche-loss model; usable for CDO pricing.
 basket :: Day -> NonEmpty (String, Double) -> Pool -> Double -> Double -> Claim -> DefaultLossModel -> IO TrancheBasket
 basket refDate positions p attachmentRatio detachmentRatio cl lm =
   qlBasket refDate names notionals p attachmentRatio detachmentRatio cl lm
@@ -132,21 +108,14 @@ basket refDate positions p attachmentRatio detachmentRatio cl lm =
   ,withDefaultLossModel*`DefaultLossModel'
   ,preErrorCheck-`String'errorCheck*-}->`TrancheBasket'peekTrancheBasket*#}
 
--- |Basket total notional at inception (sum of the positions' notionals, ignoring any losses).
--- Loss-model-agnostic (a plain constructor echo, computed before any loss model is consulted):
--- takes the universal 'Basket', so it works on a 'TrancheBasket' or 'DigitalBasket' alike via
--- 'trancheBasketAsBasket'\/'digitalBasketAsBasket'.
+-- |Basket total notional at inception, before losses.
 {#fun qlBasketNotional as basketNotional{withBasket*`Basket',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
--- |Expected tranche loss on date @d@, according to the basket's attached tranche-loss model.
--- Requires a 'TrancheBasket' -- see 'basket'\'s haddock for why a 'DigitalBasket' can't be used
--- here instead.
+-- |Expected tranche loss on date @d@; requires a tranche-loss model.
 {#fun qlBasketExpectedTrancheLoss as basketExpectedTrancheLoss{withTrancheBasket*`TrancheBasket',withDay*`Day' -- ^d
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
--- |Like 'basket', but takes a 'DigitalLossModel' and returns a 'DigitalBasket' -- the only
--- basket type 'QuantLib.Instrument.Credit.nthToDefault' accepts. See 'DigitalLossModel'\'s
--- haddock for why a digital-only model can't be plugged into 'basket' instead.
+-- |A digital-loss basket for nth-to-default pricing.
 digitalBasket :: Day -> NonEmpty (String, Double) -> Pool -> Double -> Double -> Claim -> DigitalLossModel -> IO DigitalBasket
 digitalBasket refDate positions p attachmentRatio detachmentRatio cl lm =
   qlDigitalBasket refDate names notionals p attachmentRatio detachmentRatio cl lm
@@ -161,35 +130,15 @@ digitalBasket refDate positions p attachmentRatio detachmentRatio cl lm =
   ,withDigitalLossModel*`DigitalLossModel'
   ,preErrorCheck-`String'errorCheck*-}->`DigitalBasket'peekDigitalBasket*#}
 
--- |Gaussian large homogeneous pool (LHP) loss model: an analytical one-factor Gaussian-copula
--- approximation, exact in the limit of a large, homogeneous portfolio (Kalemanova, Schmid,
--- Werner, \"The Normal Inverse Gaussian Distribution for Synthetic CDO Pricing\", Journal of
--- Derivatives 14(3), 2007). Only the @Handle\<Quote\>@ correlation overload is bound, per
--- CLAUDE.md's @std::variant@\/@Handle\<Quote\>@ convention -- a caller with a bare correlation
--- number can get the other overload for free via 'QuantLib.Quote.simpleQuote'. @recoveries@ is
--- one recovery rate per basket name, in the same order the basket's own names appear.
+-- |One-factor Gaussian-copula LHP loss model. @recoveries@ follow basket-name order.
 gaussianLHPLossModel :: GenQuote q -> NonEmpty Double -> IO DefaultLossModel
 gaussianLHPLossModel correlQuote recoveries = qlGaussianLHPLossModel correlQuote (toList recoveries)
 {#fun qlGaussianLHPLossModel{withQuote*`GenQuote q' -- ^correlQuote
   ,withDoubleArray*`[Double]'&
   ,preErrorCheck-`String'errorCheck*-}->`DefaultLossModel'peekDefaultLossModel*#}
 
--- |One-factor Gaussian- or Student-T-copula constant-loss latent model (John Hull and Alan
--- White, \"Valuation of a CDO and nth to default CDS without Monte Carlo simulation\", Journal
--- of Derivatives 12, 2, 2004), exact (no large-pool approximation) but limited to digital-type
--- payoffs (e.g. 'QuantLib.Instrument.Credit.NthToDefault') since it has no distribution-type
--- loss integration of its own -- calling, say, 'basketExpectedTrancheLoss' on a basket built
--- from this model throws upstream's own \"Not implemented for this model\". The returned
--- 'DigitalLossModel' enforces that restriction at compile time instead: it can only be plugged
--- into 'digitalBasket', which can only be plugged into 'QuantLib.Instrument.Credit.nthToDefault'
--- -- not into 'basket' or 'QuantLib.Instrument.Credit.syntheticCDO'. @recoveries@ is one
--- recovery rate per basket name, in the same order the basket's own names appear (@nVariables@
--- is taken from its length). @tOrders@ selects the copula: @[]@ uses a Gaussian copula; a
--- non-empty list selects a Student-T copula with these degrees of freedom -- upstream requires
--- exactly one entry per systemic factor plus one for the idiosyncratic factor, which for this
--- one-factor model is always two entries (e.g. @[5,5]@), and throws if the count is wrong. Only
--- the @Handle\<Quote\>@ correlation overload is bound, per CLAUDE.md's
--- @std::variant@\/@Handle\<Quote\>@ convention.
+-- |One-factor Gaussian- or Student-T-copula model for digital-loss baskets.
+-- @[]@ selects Gaussian; @tOrders@ selects Student-T degrees of freedom.
 constantLossModel :: GenQuote q -> NonEmpty Double -> LatentModelIntegrationType -> [Int] -> IO DigitalLossModel
 constantLossModel correlQuote recoveries integralType tOrders =
   qlConstantLossModel correlQuote (toList recoveries) integralType tOrders

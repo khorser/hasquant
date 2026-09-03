@@ -1,19 +1,4 @@
--- Smoke test for the Gaussian/Student-T copula dispatcher behind QuantLib.Credit.constantLossModel
--- (cbits/qlTermStructureAux.cpp's dispatchCopulaPolicy, added alongside NthToDefault). A green
--- `stack build` only proves this compiles; it does not prove the enum->template dispatch picks
--- the right C++ type for both arms, or that the TCopulaPolicy arm's extra initTraits::tOrders
--- field is actually wired up (GaussianCopulaPolicy's initTraits is an unrelated bare int -- see
--- the c2hs-shim-patterns skill's "differing initTraits per dispatcher arm" note). This exercises
--- both arms end to end against a freshly built library and checks each returns a distinct,
--- finite fair premium on a digital-type payoff (NthToDefault) -- deliberately NOT
--- basketExpectedTrancheLoss: ConstantLossModel has no distribution-type loss integration of its
--- own (see its upstream doc comment and QuantLib.Credit.constantLossModel's haddock), and
--- calling that on a ConstantLossModel-backed basket throws "Not implemented for this model",
--- caught the hard way while first writing this script with expectedTrancheLoss instead. That
--- pitfall is now also caught at compile time: constantLossModel returns a DigitalLossModel,
--- which only digitalBasket (not basket) accepts, and basketExpectedTrancheLoss only takes the
--- TrancheBasket that basket (not digitalBasket) returns -- see QuantLib/Internal/Type.hs's
--- CREDIT section comment for the full Basket/TrancheBasket/DigitalBasket rationale.
+-- Smoke test for Gaussian/Student-T copula dispatch through nth-to-default pricing.
 --
 -- Run with: .claude/skills/run-hasquant/driver.sh test/smoke/CheckCopulaLossModelDispatcher.hs
 import Data.List.NonEmpty(fromList)
@@ -80,9 +65,7 @@ main = do
   checkWith "Student-T arm fairPremium is a finite positive rate"
     "0 < fairPremium < 1" (studentFair > 0 && studentFair < 1)
 
-  -- Not a tight numeric check (no upstream reference for this ad hoc 2-name fixture) -- just
-  -- confirms the two arms are actually distinct code paths rather than one silently dispatching
-  -- to the other (e.g. an untaken switch arm falling through to the same default).
+  -- The two policies must reach distinct dispatch arms.
   checkWith "Gaussian and Student-T arms give different fairPremium"
     "gaussFair /= studentFair" (gaussFair /= studentFair)
 

@@ -117,3 +117,5 @@ See the `c2hs-shim-patterns` skill for `{#pointer#}` pragma rules, C shim marsha
 ## Modus operandi
 
 Always show your todo list when working on multi-step tasks.
+
+Comments should be short (purpose/rationale only, no history). Don't shorten upstream haddock text

@@ -1,11 +1,4 @@
--- Coverage for 'QuantLib.Math'''s @riskStatistics*@ functions -- risk measures over a
--- caller-supplied sample, closing the reachability gap left by
--- 'QuantLib.Index.historicalIndexAnalysis' (which only ever sees an index's historical
--- fixings). Ports the analytic-formula cross-checks from
--- ~/Src/QuantLib/test-suite/riskstats.cpp's testResults: rather than pinned cached numbers
--- (upstream has none either -- every expected value there is itself computed from a closed
--- form), a large deterministic gaussian sample is built and its empirical/gaussian-assumption
--- statistics are checked against the analytic N(mean,sigma) formulas.
+-- Risk-statistics checks against analytic Gaussian results.
 module QuantLib.Spec.Statistics (spec) where
 
 import Test.Hspec
@@ -24,11 +17,7 @@ spec =
       , (-1.0, 0.1)
       ]
 
--- |Number of gaussian draws per scenario. A 1-dimensional Sobol sequence run through
--- 'nextSequence''s inverse-cumulative-normal transform is essentially a low-discrepancy grid
--- over the real line, so even a modest sample size tracks the analytic N(mean,sigma) moments
--- closely -- nowhere near upstream's own 2^16-1, which it needs only because it separately
--- exercises 'IncrementalStatistics'' online update path.
+-- |Enough Sobol draws for stable Gaussian moment estimates.
 sampleSize :: Int
 sampleSize = 8191
 
@@ -53,10 +42,7 @@ scenarioSpec (mean, sigma) =
       gp50 <- riskStatisticsGaussianPercentile sample 0.5
       gp50 `shouldSatisfy` closePrec mean (relTol mean 1.0e-3)
 
-      -- potential upside / value-at-risk at the "two-sigma" centile: the cumulative probability
-      -- at mean+2*sigma, so the (1-centile)-th percentile is exactly mean-2*sigma and the
-      -- centile-th percentile is exactly mean+2*sigma (riskstats.cpp's own twoSigma/upper_tail/
-      -- lower_tail construction).
+      -- Two-sigma quantiles give the expected upside and downside thresholds.
       let upperTail = mean + 2 * sigma
           lowerTail = mean - 2 * sigma
           twoSigma = normalCdf mean sigma upperTail
@@ -86,10 +72,7 @@ scenarioSpec (mean, sigma) =
   where
     relTol expected tol = if expected == 0.0 then tol else abs expected * tol
 
--- |A deterministic gaussian sample: 'n' draws of @N(mean, sigma)@ from a Sobol-driven
--- 'QuantLib.Method.gaussianRsg' (dimension 1, one draw per call), the same
--- inverse-cumulative-normal machinery riskstats.cpp itself drives via a raw @SobolRsg@ plus
--- @InverseCumulativeNormal@.
+-- |Deterministic Sobol sample from @N(mean, sigma)@.
 gaussianSample :: Int -> Double -> Double -> IO RealVector
 gaussianSample n mean sigma = do
   rsg <- sobolGaussianRsg Jaeckel 1 42
@@ -100,9 +83,7 @@ gaussianSample n mean sigma = do
       (z, _weight) <- nextSequence rsg
       pure (mean + sigma * V.head z)
 
--- Abramowitz & Stegun 7.1.26 approximation, accurate to ~1.5e-7 -- ample given this module's
--- own tolerances; avoids a new dependency for a couple of calls. (Same approximation as
--- QuantLib.Spec.Process's local 'erf'.)
+-- Abramowitz-Stegun 7.1.26 approximation; avoids an extra dependency.
 erf :: Double -> Double
 erf x =
   let a1 = 0.254829592; a2 = -0.284496736; a3 = 1.421413741
