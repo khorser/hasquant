@@ -22,6 +22,15 @@ module QuantLib.CashFlow
   , IborCoupon
   , averageBMACoupon
   , cappedFlooredCoupon
+  , StrippedCappedFlooredCoupon
+  , strippedCappedFlooredCoupon
+  , strippedCappedFlooredCouponCap
+  , strippedCappedFlooredCouponFloor
+  , strippedCappedFlooredCouponEffectiveCap
+  , strippedCappedFlooredCouponEffectiveFloor
+  , strippedCappedFlooredCouponIsCap
+  , strippedCappedFlooredCouponIsFloor
+  , strippedCappedFlooredCouponIsCollar
   , cappedFlooredIborCoupon
   , digitalIborCoupon
   , DigitalCoupon
@@ -139,6 +148,10 @@ module QuantLib.CashFlow
   , digitalCmsCoupon
   , digitalCmsCouponCallOptionRate
   , digitalCmsCouponPutOptionRate
+  , DigitalCmsSpreadCoupon
+  , digitalCmsSpreadCoupon
+  , digitalCmsSpreadCouponCallOptionRate
+  , digitalCmsSpreadCouponPutOptionRate
   , digitalCmsLeg
   , DigitalCmsLegOpts(..)
   , defaultDigitalCmsLegOpts
@@ -244,6 +257,7 @@ import Data.List.NonEmpty(NonEmpty(..), toList)
 {#pointer *QlYoYInflationIndex as YoYInflationIndex foreign -> CYoYInflationIndex' nocode#}
 {#pointer *QlFloatingRateCouponPricer as FloatingRateCouponPricer foreign -> CFloatingRateCouponPricer' nocode#}
 {#pointer *QlFloatingRateCoupon as FloatingRateCoupon foreign -> CFloatingRateCoupon' nocode#}
+{#pointer *QlStrippedCappedFlooredCoupon as StrippedCappedFlooredCoupon foreign -> CStrippedCappedFlooredCoupon' nocode#}
 {#pointer *QlDigitalReplication as DigitalReplication foreign -> CDigitalReplication nocode#}
 {#pointer *QlIborCoupon as IborCoupon foreign -> CIborCoupon' nocode#}
 {#pointer *QlOvernightIndexedCoupon as OvernightIndexedCoupon foreign -> COvernightIndexedCoupon' nocode#}
@@ -405,6 +419,46 @@ leg f = qlLeg fs ds where (ds, fs) = unzip f
   ,fromMaybeDouble`Maybe Double' -- ^cap
   ,fromMaybeDouble`Maybe Double' -- ^floor
   ,preErrorCheck-`String'errorCheck*-}->`FloatingRateCoupon'peekFloatingRateCoupon*#}
+
+-- |Strip the embedded cap/floor option out of a capped\/floored coupon: builds a
+-- 'CappedFlooredCoupon' from /underlying/, /cap/ and /floor/ (as 'cappedFlooredCoupon'
+-- does), then wraps it so the option's rate, cap and floor are separately readable.
+{#fun qlStrippedCappedFlooredCoupon as strippedCappedFlooredCoupon{withFloatingRateCoupon*`GenFloatingRateCoupon frc' -- ^underlying
+  ,fromMaybeDouble`Maybe Double' -- ^cap
+  ,fromMaybeDouble`Maybe Double' -- ^floor
+  ,preErrorCheck-`String'errorCheck*-}->`StrippedCappedFlooredCoupon'peekStrippedCappedFlooredCoupon*#}
+
+-- |The cap actually in effect for this coupon, accounting for the sign of /gearing/;
+-- QuantLib's null-rate sentinel means no cap applies.
+{#fun pure qlStrippedCappedFlooredCouponCap as strippedCappedFlooredCouponCap{withStrippedCappedFlooredCoupon*`StrippedCappedFlooredCoupon' -- ^coupon
+  }->`Double'#}
+
+-- |The floor actually in effect for this coupon, accounting for the sign of /gearing/;
+-- QuantLib's null-rate sentinel means no floor applies.
+{#fun pure qlStrippedCappedFlooredCouponFloor as strippedCappedFlooredCouponFloor{withStrippedCappedFlooredCoupon*`StrippedCappedFlooredCoupon' -- ^coupon
+  }->`Double'#}
+
+-- |The cap rate translated back to the underlying index rate (before gearing\/spread);
+-- QuantLib's null-rate sentinel means the coupon is not capped.
+{#fun pure qlStrippedCappedFlooredCouponEffectiveCap as strippedCappedFlooredCouponEffectiveCap{withStrippedCappedFlooredCoupon*`StrippedCappedFlooredCoupon' -- ^coupon
+  }->`Double'#}
+
+-- |The floor rate translated back to the underlying index rate (before gearing\/spread);
+-- QuantLib's null-rate sentinel means the coupon is not floored.
+{#fun pure qlStrippedCappedFlooredCouponEffectiveFloor as strippedCappedFlooredCouponEffectiveFloor{withStrippedCappedFlooredCoupon*`StrippedCappedFlooredCoupon' -- ^coupon
+  }->`Double'#}
+
+-- |Whether this coupon has a cap in effect.
+{#fun pure qlStrippedCappedFlooredCouponIsCap as strippedCappedFlooredCouponIsCap{withStrippedCappedFlooredCoupon*`StrippedCappedFlooredCoupon' -- ^coupon
+  }->`Bool'#}
+
+-- |Whether this coupon has a floor in effect.
+{#fun pure qlStrippedCappedFlooredCouponIsFloor as strippedCappedFlooredCouponIsFloor{withStrippedCappedFlooredCoupon*`StrippedCappedFlooredCoupon' -- ^coupon
+  }->`Bool'#}
+
+-- |Whether this coupon is both capped and floored (a collar).
+{#fun pure qlStrippedCappedFlooredCouponIsCollar as strippedCappedFlooredCouponIsCollar{withStrippedCappedFlooredCoupon*`StrippedCappedFlooredCoupon' -- ^coupon
+  }->`Bool'#}
 
 -- |Ibor coupon with optional cap and floor rates.
 {#fun qlCappedFlooredIborCoupon as cappedFlooredIborCoupon{withDay*`Day' -- ^paymentDate
@@ -1168,6 +1222,7 @@ cmsLegFull schedule idx notionals dc adj fixingDays gearings spreads caps floors
 {#pointer *QlCmsCoupon as CmsCoupon foreign -> CCmsCoupon' nocode#}
 {#pointer *QlSwapSpreadIndex as SwapSpreadIndex foreign -> CSwapSpreadIndex' nocode#}
 {#pointer *QlDigitalCmsCoupon as DigitalCmsCoupon foreign -> CDigitalCmsCoupon' nocode#}
+{#pointer *QlDigitalCmsSpreadCoupon as DigitalCmsSpreadCoupon foreign -> CDigitalCmsSpreadCoupon' nocode#}
 {#pointer *QlSmileSection as SmileSection foreign -> CSmileSection nocode#}
 {#pointer *QlYoYOptionletVolatilitySurface as YoYOptionletVolatilitySurface foreign -> CYoYOptionletVolatilitySurface' nocode#}
 {#pointer *QlYoYInflationCouponPricer as YoYInflationCouponPricer foreign -> CYoYInflationCouponPricer nocode#}
@@ -1361,6 +1416,45 @@ cmsLegFull schedule idx notionals dc adj fixingDays gearings spreads caps floors
 
 -- |Put-option rate.  Multiply by @nominal * accrualPeriod * discount@ to obtain the option NPV.
 {#fun qlDigitalCmsCouponPutOptionRate as digitalCmsCouponPutOptionRate{withDigitalCmsCoupon*`DigitalCmsCoupon' -- ^coupon
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |CMS-spread-rate coupon with embedded digital call and put options.  Builds its own
+-- underlying 'CmsSpreadCoupon' from /paymentDate/ through /fixingConvention/ (as
+-- 'cmsSpreadCoupon' does), then wraps it exactly as 'digitalCmsCoupon' wraps a 'CmsCoupon'.
+-- QuantLib does no date adjustment at construction, so callers must provide business dates.
+-- Optional strikes and payoffs use 'Nothing' for QuantLib's null-rate sentinel.
+{#fun qlDigitalCmsSpreadCoupon as digitalCmsSpreadCoupon{withDay*`Day' -- ^paymentDate
+  ,`Double' -- ^nominal
+  ,withDay*`Day' -- ^accrualStartDate
+  ,withDay*`Day' -- ^accrualEndDate
+  ,fromIntegral`Word' -- ^fixingDays
+  ,withSwapSpreadIndex*`SwapSpreadIndex' -- ^index
+  ,`Double' -- ^gearing
+  ,`Double' -- ^spread
+  ,withMaybeDay*`Maybe Day' -- ^referencePeriodStart
+  ,withMaybeDay*`Maybe Day' -- ^referencePeriodEnd
+  ,withDayCounter*`DayCounter' -- ^dayCounter
+  ,`Bool' -- ^inArrears
+  ,withMaybeDay*`Maybe Day' -- ^exCouponDate
+  ,fromEnumC`BusinessDayConvention' -- ^fixingConvention
+  ,fromMaybeDouble`Maybe Double' -- ^callStrike
+  ,fromEnumC`PositionType' -- ^callPosition
+  ,`Bool' -- ^callATM
+  ,fromMaybeDouble`Maybe Double' -- ^callDigitalPayoff
+  ,fromMaybeDouble`Maybe Double' -- ^putStrike
+  ,fromEnumC`PositionType' -- ^putPosition
+  ,`Bool' -- ^putATM
+  ,fromMaybeDouble`Maybe Double' -- ^putDigitalPayoff
+  ,withMaybeDigitalReplication*`Maybe DigitalReplication' -- ^replication
+  ,`Bool' -- ^nakedOption
+  ,preErrorCheck-`String'errorCheck*-}->`DigitalCmsSpreadCoupon'peekDigitalCmsSpreadCoupon*#}
+
+-- |Call-option rate.  Multiply by @nominal * accrualPeriod * discount@ to obtain the option NPV.
+{#fun qlDigitalCmsSpreadCouponCallOptionRate as digitalCmsSpreadCouponCallOptionRate{withDigitalCmsSpreadCoupon*`DigitalCmsSpreadCoupon' -- ^coupon
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |Put-option rate.  Multiply by @nominal * accrualPeriod * discount@ to obtain the option NPV.
+{#fun qlDigitalCmsSpreadCouponPutOptionRate as digitalCmsSpreadCouponPutOptionRate{withDigitalCmsSpreadCoupon*`DigitalCmsSpreadCoupon' -- ^coupon
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Build a sequence of digital CMS-rate coupons.  The options record covers all digital call/put

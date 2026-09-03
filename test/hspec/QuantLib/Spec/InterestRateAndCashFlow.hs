@@ -642,6 +642,49 @@ spec evalDate = do
           npvCollar <- Instr.npv collarInst
           npvCollared `shouldSatisfy` closePrec (npvVanilla - npvCollar) 1e-6
 
+      -- No upstream fixture exists for StrippedCappedFlooredCoupon (strippedcapflooredcoupon.cpp
+      -- has none in test-suite). Self-consistency instead, read off the two rate() formulas
+      -- (capflooredcoupon.cpp, strippedcapflooredcoupon.cpp): with only a cap in effect,
+      -- CappedFlooredCoupon::rate() = swapletRate - capletRate while
+      -- StrippedCappedFlooredCoupon::rate() = capletRate, so the two must sum back to the plain
+      -- underlying's own rate. cap/floor/effectiveCap/effectiveFloor/isCap/isFloor/isCollar are
+      -- checked against the gearing=1,spread=0 closed forms (cap()=cap_, effectiveCap()=cap_-spread).
+      it "cap/floor/effectiveCap/effectiveFloor/isCap/isFloor/isCollar, and cappedRate+strippedRate=plainRate" $
+        Settings.keepingSettings' $ do
+          (aa, _, idx, sch, pricer, _, _) <- cfFixture
+          (accrualStart:accrualEnd:_) <- dates sch
+          let capStrike = 0.03
+              mkUnderlying = do
+                u <- CF.iborCoupon accrualEnd 100.0 accrualStart accrualEnd 2 idx 1.0 0.0 Nothing Nothing aa False Nothing ModifiedFollowing
+                CF.setFloatingRateCouponPricer u pricer
+                pure u
+
+          plainUnderlying <- mkUnderlying
+          plainRate <- CF.floatingRateCouponRate plainUnderlying
+
+          underlying1 <- mkUnderlying
+          capped <- CF.cappedFlooredCoupon underlying1 (Just capStrike) Nothing
+          CF.setFloatingRateCouponPricer capped pricer
+          cappedRate <- CF.floatingRateCouponRate capped
+
+          underlying2 <- mkUnderlying
+          stripped <- CF.strippedCappedFlooredCoupon underlying2 (Just capStrike) Nothing
+          CF.setFloatingRateCouponPricer stripped pricer
+          strippedRate <- CF.floatingRateCouponRate stripped
+          (cappedRate + strippedRate) `shouldSatisfy` closePrec plainRate 1.0e-10
+
+          let isCap = CF.strippedCappedFlooredCouponIsCap stripped
+              isFloor = CF.strippedCappedFlooredCouponIsFloor stripped
+              isCollar = CF.strippedCappedFlooredCouponIsCollar stripped
+          isCap `shouldBe` True
+          isFloor `shouldBe` False
+          isCollar `shouldBe` False
+
+          let cap' = CF.strippedCappedFlooredCouponCap stripped
+              effCap = CF.strippedCappedFlooredCouponEffectiveCap stripped
+          cap' `shouldBe` capStrike
+          effCap `shouldBe` capStrike
+
     -- Ported from test-suite/overnightindexedcoupon.cpp's 'CommonVars' fixture: a SOFR index
     -- seeded with two blocks of real historical fixings (Jun-Aug 2019, Oct-Nov 2021), default
     -- evaluation date 23-Nov-2021. Golden rates/amounts below are upstream's own values,
@@ -1366,6 +1409,48 @@ spec evalDate = do
           collaredRate `shouldSatisfy` closePrec 1.0e-12 0.03
           clearFixings cms10y
           clearFixings cms2y
+
+      -- No upstream fixture exists for DigitalCmsSpreadCoupon (digitalcmsspreadcoupon.hpp has no
+      -- test-suite file). Mirrors the "digital CMS coupon and leg options" self-consistency check
+      -- above with the CmsSpreadCoupon analogue and 'lognormalCmsSpreadPricer'.
+      it "digital CMS-spread coupon: a deep in-the-money call raises the coupon rate above the plain spread coupon" $
+        Settings.keepingSettings' $ do
+          let spreadRefDate = 23 `february` 2018
+          Settings.setEvaluationDate (Just spreadRefDate)
+          cal <- calendar TARGET
+          dc <- dayCounter (Actual360 False)
+          fwdRateQ <- Quote.simpleQuote 0.02
+          fwdCurve <- flatForward' 0 cal fwdRateQ dc IR.Continuous Annual
+          cms10y <- liborSwapIndex EurLiborSwapIsdaFixA (10, Years) (Just fwdCurve) (Just fwdCurve)
+          cms2y <- liborSwapIndex EurLiborSwapIsdaFixA (2, Years) (Just fwdCurve) (Just fwdCurve)
+          cms10y2y <- swapSpreadIndex "cms10y2y" cms10y cms2y 1.0 (-1.0)
+          volQ <- Quote.simpleQuote 0.20
+          swaptionVol <- constantSwaptionVolatility' spreadRefDate cal Following volQ dc IR.ShiftedLognormal 0
+          meanReversion <- Quote.simpleQuote 0.01 >>= Quote.asQuote
+          correlation <- Quote.simpleQuote 0.6 >>= Quote.asQuote
+          cmsPricer <- CF.linearTsrPricer swaptionVol meanReversion (Just fwdCurve)
+            (CF.LinearTsrPricerSettings CF.LinearTsrRateBound Nothing)
+          spreadPricer <- CF.lognormalCmsSpreadPricer cmsPricer correlation (Just fwdCurve) 32 Nothing Nothing Nothing
+          valueDate <- advance cal spreadRefDate (2, Days) Following False
+          startDate <- addPeriod valueDate (5, Years)
+          payDate <- addPeriod startDate (1, Years)
+
+          plain <- CF.cmsSpreadCoupon payDate 1.0 startDate payDate 2 cms10y2y
+            1.0 0.0 Nothing Nothing dc False Nothing Preceding
+          CF.setFloatingRateCouponPricer plain spreadPricer
+          plainRate <- CF.floatingRateCouponRate plain
+
+          replication <- CF.digitalReplication CF.ReplicationCentral 1.0e-4
+          digital <- CF.digitalCmsSpreadCoupon payDate 1.0 startDate payDate 2 cms10y2y
+            1.0 0.0 Nothing Nothing dc False Nothing Preceding
+            (Just (-0.05)) CF.Long False (Just 0.005) Nothing CF.Long False Nothing (Just replication) False
+          CF.setFloatingRateCouponPricer digital spreadPricer
+          digitalRate <- CF.floatingRateCouponRate digital
+          callRate <- CF.digitalCmsSpreadCouponCallOptionRate digital
+          putRate <- CF.digitalCmsSpreadCouponPutOptionRate digital
+          callRate `shouldSatisfy` (> 0)
+          putRate `shouldBe` 0
+          digitalRate `shouldSatisfy` (> plainRate)
 
       it "CMS and Ibor legs, CMS-rate bonds, and their full options price with effective caps, floors, and amortization" $
         Settings.keepingSettings' $ do

@@ -95,8 +95,10 @@ namespace QuantLib {
   class IrregularSwaption;
   class CmsSpreadCoupon;
   class DigitalCmsCoupon;
+  class DigitalCmsSpreadCoupon;
   class DigitalReplication;
   class SwapSpreadIndex;
+  class StrippedCappedFlooredCoupon;
   class OptionletVolatilityStructure;
   class OptionletStripper2;
   class Coupon;
@@ -439,8 +441,10 @@ using QuantLib::YoYInflationCoupon;
 using QuantLib::CmsCoupon;
 using QuantLib::CmsSpreadCoupon;
 using QuantLib::DigitalCmsCoupon;
+using QuantLib::DigitalCmsSpreadCoupon;
 using QuantLib::DigitalReplication;
 using QuantLib::SwapSpreadIndex;
+using QuantLib::StrippedCappedFlooredCoupon;
 using QuantLib::OptionletVolatilityStructure;
 using QuantLib::OptionletStripper2;
 using QuantLib::Coupon;
@@ -767,8 +771,10 @@ using QlOvernightIndexedCoupon = shared_ptr<OvernightIndexedCoupon>;
 using QlCPICoupon = shared_ptr<CPICoupon>;
 using QlCPICouponPricer = shared_ptr<CPICouponPricer>;
 using QlDigitalCmsCoupon = shared_ptr<DigitalCmsCoupon>;
+using QlDigitalCmsSpreadCoupon = shared_ptr<DigitalCmsSpreadCoupon>;
 using QlDigitalReplication = shared_ptr<DigitalReplication>;
 using QlSwapSpreadIndex = shared_ptr<SwapSpreadIndex>;
+using QlStrippedCappedFlooredCoupon = shared_ptr<StrippedCappedFlooredCoupon>;
 // A vol structure is a Handle, same reasoning as QlBlackVolTermStructure/QlSwaptionVolatilityStructure below.
 using QlOptionletVolatilityStructure = Handle<OptionletVolatilityStructure>;
 using QlRelinkableOptionletVolatilityStructure = RelinkableHandle<OptionletVolatilityStructure>;
@@ -1176,7 +1182,9 @@ QL_TRACE_NAME(OvernightIndexedCoupon)
 QL_TRACE_NAME(CPICoupon)
 QL_TRACE_NAME(CPICouponPricer)
 QL_TRACE_NAME(DigitalCmsCoupon)
+QL_TRACE_NAME(DigitalCmsSpreadCoupon)
 QL_TRACE_NAME(DigitalReplication)
+QL_TRACE_NAME(StrippedCappedFlooredCoupon)
 QL_TRACE_NAME(Forward)
 QL_TRACE_NAME(ForwardRateAgreement)
 QL_TRACE_NAME(ForwardSpreadedTermStructure)
@@ -1346,7 +1354,9 @@ QL_TRACE_NAME(QlFloatingRateCouponPricer)
 QL_TRACE_NAME(QlFloatingRateCoupon)
 QL_TRACE_NAME(QlCmsCoupon)
 QL_TRACE_NAME(QlDigitalCmsCoupon)
+QL_TRACE_NAME(QlDigitalCmsSpreadCoupon)
 QL_TRACE_NAME(QlDigitalReplication)
+QL_TRACE_NAME(QlStrippedCappedFlooredCoupon)
 QL_TRACE_NAME(QlForward)
 QL_TRACE_NAME(QlForwardRateAgreement)
 QL_TRACE_NAME(QlFxForward)

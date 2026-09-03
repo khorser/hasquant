@@ -660,6 +660,16 @@ extern "C" {
   QlIborCoupon* qlIborCouponExact(int paymentDate, double nominal, int startDate, int endDate, unsigned fixingDays, QlIborIndex *index, double gearing, double spread, int refPeriodStart, int refPeriodEnd, DayCounter *dayCounter, int inArrears, int exCouponDate, int fixingConvention, char **e);
   QlFloatingRateCoupon* qlAverageBMACoupon(int paymentDate, double nominal, int startDate, int endDate, QlBMAIndex *index, double gearing, double spread, int refPeriodStart, int refPeriodEnd, DayCounter *dayCounter, char **e);
   QlFloatingRateCoupon* qlCappedFlooredCoupon(QlFloatingRateCoupon *underlying, double cap, double floor, char **e);
+  void qlFreeStrippedCappedFlooredCoupon(QlStrippedCappedFlooredCoupon *o);
+  QlFloatingRateCoupon* qlStrippedCappedFlooredCouponAsFloatingRateCoupon(QlStrippedCappedFlooredCoupon *o);
+  QlStrippedCappedFlooredCoupon* qlStrippedCappedFlooredCoupon(QlFloatingRateCoupon *underlying, double cap, double floor, char **e);
+  double qlStrippedCappedFlooredCouponCap(QlStrippedCappedFlooredCoupon *o);
+  double qlStrippedCappedFlooredCouponFloor(QlStrippedCappedFlooredCoupon *o);
+  double qlStrippedCappedFlooredCouponEffectiveCap(QlStrippedCappedFlooredCoupon *o);
+  double qlStrippedCappedFlooredCouponEffectiveFloor(QlStrippedCappedFlooredCoupon *o);
+  int qlStrippedCappedFlooredCouponIsCap(QlStrippedCappedFlooredCoupon *o);
+  int qlStrippedCappedFlooredCouponIsFloor(QlStrippedCappedFlooredCoupon *o);
+  int qlStrippedCappedFlooredCouponIsCollar(QlStrippedCappedFlooredCoupon *o);
   QlFloatingRateCoupon* qlCappedFlooredIborCoupon(int paymentDate, double nominal, int startDate, int endDate, unsigned fixingDays, QlIborIndex *index, double gearing, double spread, double cap, double floor, int refPeriodStart, int refPeriodEnd, DayCounter *dayCounter, int inArrears, int exCouponDate, int fixingConvention, char **e);
   QlFloatingRateCoupon* qlDigitalIborCoupon(QlIborCoupon *underlying, double callStrike, int callPosition, int callATM, double callPayoff, double putStrike, int putPosition, int putATM, double putPayoff, QlDigitalReplication *replication, int nakedOption, char **e);
   void qlFreeDigitalCoupon(QlDigitalCoupon*);
@@ -710,6 +720,12 @@ extern "C" {
   QlFloatingRateCoupon* qlCmsSpreadCoupon(int paymentDate, double nominal, int startDate, int endDate, unsigned fixingDays, QlSwapSpreadIndex* index, double gearing, double spread, int refPeriodStart, int refPeriodEnd, DayCounter* dayCounter, int inArrears, int exCouponDate, int fixingConvention, char **e);
   QlFloatingRateCoupon* qlCappedFlooredCmsSpreadCoupon(int paymentDate, double nominal, int startDate, int endDate, unsigned fixingDays, QlSwapSpreadIndex* index, double gearing, double spread, double cap, double floor, int refPeriodStart, int refPeriodEnd, DayCounter* dayCounter, int inArrears, int exCouponDate, int fixingConvention, char **e);
   QlFloatingRateCouponPricer* qlLognormalCmsSpreadPricer(QlCmsCouponPricer* cmsPricer, QlQuote* correlation, QlYieldTermStructure* couponDiscountCurve, unsigned integrationPoints, int haveVolatilityType, int volatilityType, double shift1, double shift2, char **e);
+
+  void qlFreeDigitalCmsSpreadCoupon(QlDigitalCmsSpreadCoupon *o);
+  QlFloatingRateCoupon* qlDigitalCmsSpreadCouponAsFloatingRateCoupon(QlDigitalCmsSpreadCoupon *o);
+  QlDigitalCmsSpreadCoupon* qlDigitalCmsSpreadCoupon(int paymentDate, double nominal, int startDate, int endDate, unsigned fixingDays, QlSwapSpreadIndex* index, double gearing, double spread, int refPeriodStart, int refPeriodEnd, DayCounter* dayCounter, int inArrears, int exCouponDate, int fixingConvention, double callStrike, int callPosition, int callATM, double callPayoff, double putStrike, int putPosition, int putATM, double putPayoff, QlDigitalReplication* replication, int nakedOption, char **e);
+  double qlDigitalCmsSpreadCouponCallOptionRate(QlDigitalCmsSpreadCoupon* o, char **e);
+  double qlDigitalCmsSpreadCouponPutOptionRate(QlDigitalCmsSpreadCoupon* o, char **e);
 
   void qlFreeSwapSpreadIndex(QlSwapSpreadIndex *o);
   QlInterestRateIndex* qlSwapSpreadIndexAsInterestRateIndex(QlSwapSpreadIndex *o);

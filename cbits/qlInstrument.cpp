@@ -115,8 +115,10 @@ namespace hasquant {
 #include <ql/cashflows/conundrumpricer.hpp>
 #include <ql/cashflows/lineartsrpricer.hpp>
 #include <ql/experimental/coupons/cmsspreadcoupon.hpp>
+#include <ql/experimental/coupons/digitalcmsspreadcoupon.hpp>
 #include <ql/experimental/coupons/lognormalcmsspreadpricer.hpp>
 #include <ql/experimental/coupons/quantocouponpricer.hpp>
+#include <ql/experimental/coupons/strippedcapflooredcoupon.hpp>
 #include <ql/experimental/coupons/swapspreadindex.hpp>
 #include <ql/cashflows/equitycashflow.hpp>
 #include <ql/indexes/equityindex.hpp>
@@ -1644,6 +1646,19 @@ QlFloatingRateCoupon* qlAverageBMACoupon(int paymentDate, double nominal, int st
 QlFloatingRateCoupon* qlCappedFlooredCoupon(QlFloatingRateCoupon *underlying, double cap, double floor, char **e) {
   try {return ret(new QlFloatingRateCoupon(alloc(new CappedFlooredCoupon(*arg(underlying), cap, floor))));
   } catch (std::exception& er) {return handleException<QlFloatingRateCoupon*>(e, er);}}
+void qlFreeStrippedCappedFlooredCoupon(QlStrippedCappedFlooredCoupon *o) {del(o);}
+QlFloatingRateCoupon* qlStrippedCappedFlooredCouponAsFloatingRateCoupon(QlStrippedCappedFlooredCoupon* o) {return ret(new QlFloatingRateCoupon(*arg(o)));}
+QlStrippedCappedFlooredCoupon* qlStrippedCappedFlooredCoupon(QlFloatingRateCoupon *underlying, double cap, double floor, char **e) {
+  try {auto capped = ext::make_shared<CappedFlooredCoupon>(*arg(underlying), cap, floor);
+    return ret(new QlStrippedCappedFlooredCoupon(alloc(new StrippedCappedFlooredCoupon(capped))));
+  } catch (std::exception& er) {return handleException<QlStrippedCappedFlooredCoupon*>(e, er);}}
+double qlStrippedCappedFlooredCouponCap(QlStrippedCappedFlooredCoupon *o) {return (*arg(o))->cap();}
+double qlStrippedCappedFlooredCouponFloor(QlStrippedCappedFlooredCoupon *o) {return (*arg(o))->floor();}
+double qlStrippedCappedFlooredCouponEffectiveCap(QlStrippedCappedFlooredCoupon *o) {return (*arg(o))->effectiveCap();}
+double qlStrippedCappedFlooredCouponEffectiveFloor(QlStrippedCappedFlooredCoupon *o) {return (*arg(o))->effectiveFloor();}
+int qlStrippedCappedFlooredCouponIsCap(QlStrippedCappedFlooredCoupon *o) {return (*arg(o))->isCap();}
+int qlStrippedCappedFlooredCouponIsFloor(QlStrippedCappedFlooredCoupon *o) {return (*arg(o))->isFloor();}
+int qlStrippedCappedFlooredCouponIsCollar(QlStrippedCappedFlooredCoupon *o) {return (*arg(o))->isCollar();}
 QlFloatingRateCoupon* qlCappedFlooredIborCoupon(int paymentDate, double nominal, int startDate, int endDate, unsigned fixingDays, QlIborIndex *index, double gearing, double spread, double cap, double floor, int refPeriodStart, int refPeriodEnd, DayCounter *dayCounter, int inArrears, int exCouponDate, int fixingConvention, char **e) {
   try {return ret(new QlFloatingRateCoupon(alloc(new CappedFlooredIborCoupon(Date(paymentDate), nominal, Date(startDate), Date(endDate), fixingDays, *arg(index), gearing, spread, cap, floor, qlNullableDate(refPeriodStart), qlNullableDate(refPeriodEnd), *arg(dayCounter), inArrears, qlNullableDate(exCouponDate), (BusinessDayConvention)fixingConvention))));
   } catch (std::exception& er) {return handleException<QlFloatingRateCoupon*>(e, er);}}
@@ -1725,6 +1740,17 @@ QlFloatingRateCouponPricer* qlLognormalCmsSpreadPricer(QlCmsCouponPricer* cmsPri
   try {return ret(new QlFloatingRateCouponPricer(alloc(new LognormalCmsSpreadPricer(*arg(cmsPricer), *arg(correlation), qlNullableHandle(couponDiscountCurve), integrationPoints,
       haveVolatilityType ? ext::optional<VolatilityType>((VolatilityType)volatilityType) : ext::nullopt, shift1, shift2))));
   } catch (std::exception& er) {return handleException<QlFloatingRateCouponPricer*>(e, er);}}
+
+void qlFreeDigitalCmsSpreadCoupon(QlDigitalCmsSpreadCoupon *o) {del(o);}
+QlFloatingRateCoupon* qlDigitalCmsSpreadCouponAsFloatingRateCoupon(QlDigitalCmsSpreadCoupon* o) {return ret(new QlFloatingRateCoupon(*arg(o)));}
+QlDigitalCmsSpreadCoupon* qlDigitalCmsSpreadCoupon(int paymentDate, double nominal, int startDate, int endDate, unsigned fixingDays, QlSwapSpreadIndex* index, double gearing, double spread, int refPeriodStart, int refPeriodEnd, DayCounter* dayCounter, int inArrears, int exCouponDate, int fixingConvention, double callStrike, int callPosition, int callATM, double callPayoff, double putStrike, int putPosition, int putATM, double putPayoff, QlDigitalReplication* replication, int nakedOption, char **e) {
+  try {auto underlying = ext::make_shared<CmsSpreadCoupon>(Date(paymentDate), nominal, Date(startDate), Date(endDate), fixingDays,
+      *arg(index), gearing, spread, qlNullableDate(refPeriodStart), qlNullableDate(refPeriodEnd), *arg(dayCounter), inArrears, qlNullableDate(exCouponDate), (BusinessDayConvention)fixingConvention);
+    return ret(new QlDigitalCmsSpreadCoupon(alloc(new DigitalCmsSpreadCoupon(underlying, callStrike, (Position::Type)callPosition, callATM,
+      callPayoff, putStrike, (Position::Type)putPosition, putATM, putPayoff, replication ? *arg(replication) : shared_ptr<DigitalReplication>(), nakedOption))));
+  } catch (std::exception& er) {return handleException<QlDigitalCmsSpreadCoupon*>(e, er);}}
+double qlDigitalCmsSpreadCouponCallOptionRate(QlDigitalCmsSpreadCoupon* o, char **e) {try {return (*arg(o))->callOptionRate();} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlDigitalCmsSpreadCouponPutOptionRate(QlDigitalCmsSpreadCoupon* o, char **e) {try {return (*arg(o))->putOptionRate();} catch (std::exception& er) {return handleException<double>(e, er);}}
 
 void qlFreeSwapSpreadIndex(QlSwapSpreadIndex *o) {del(o);}
 QlInterestRateIndex* qlSwapSpreadIndexAsInterestRateIndex(QlSwapSpreadIndex* o) {return ret(new QlInterestRateIndex(*arg(o)));}

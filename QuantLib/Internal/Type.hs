@@ -609,8 +609,10 @@ withCmsCouponPricer = withForeignPtr . ptr . getFloatingRateCouponPricer
 -- >   IborCoupon
 -- >   OvernightIndexedCoupon
 -- >   DigitalCmsCoupon
+-- >   DigitalCmsSpreadCoupon
 -- >   DigitalCoupon
 -- >   RangeAccrualFloatersCoupon
+-- >   StrippedCappedFlooredCoupon
 --
 -- Base floating-rate coupon class. Its cash-flow amount is rate times accrual period and nominal.
 data CFloatingRateCoupon'
@@ -704,6 +706,30 @@ peekDigitalCmsCoupon :: Ptr CDigitalCmsCoupon' -> IO DigitalCmsCoupon
 peekDigitalCmsCoupon = GenFloatingRateCoupon <.> newGenForeignPtr
 withDigitalCmsCoupon :: DigitalCmsCoupon -> (Ptr CDigitalCmsCoupon' -> IO b) -> IO b
 withDigitalCmsCoupon = withForeignPtr . ptr . getFloatingRateCoupon
+
+data CDigitalCmsSpreadCoupon'
+type CDigitalCmsSpreadCoupon = ForeignPtr CDigitalCmsSpreadCoupon'
+type DigitalCmsSpreadCoupon = GenFloatingRateCoupon CDigitalCmsSpreadCoupon
+foreign import ccall unsafe "ql.h &qlFreeDigitalCmsSpreadCoupon" qlFreeDigitalCmsSpreadCoupon :: FinalizerPtr CDigitalCmsSpreadCoupon'
+instance Finalizable CDigitalCmsSpreadCoupon' where finalize = qlFreeDigitalCmsSpreadCoupon
+foreign import ccall "ql.h qlDigitalCmsSpreadCouponAsFloatingRateCoupon" qlDigitalCmsSpreadCouponAsFloatingRateCoupon :: Ptr CDigitalCmsSpreadCoupon' -> IO (Ptr CFloatingRateCoupon')
+instance Upcastable CDigitalCmsSpreadCoupon' where {type Base CDigitalCmsSpreadCoupon' = CFloatingRateCoupon'; upcast = qlDigitalCmsSpreadCouponAsFloatingRateCoupon}
+peekDigitalCmsSpreadCoupon :: Ptr CDigitalCmsSpreadCoupon' -> IO DigitalCmsSpreadCoupon
+peekDigitalCmsSpreadCoupon = GenFloatingRateCoupon <.> newGenForeignPtr
+withDigitalCmsSpreadCoupon :: DigitalCmsSpreadCoupon -> (Ptr CDigitalCmsSpreadCoupon' -> IO b) -> IO b
+withDigitalCmsSpreadCoupon = withForeignPtr . ptr . getFloatingRateCoupon
+
+data CStrippedCappedFlooredCoupon'
+type CStrippedCappedFlooredCoupon = ForeignPtr CStrippedCappedFlooredCoupon'
+type StrippedCappedFlooredCoupon = GenFloatingRateCoupon CStrippedCappedFlooredCoupon
+foreign import ccall unsafe "ql.h &qlFreeStrippedCappedFlooredCoupon" qlFreeStrippedCappedFlooredCoupon :: FinalizerPtr CStrippedCappedFlooredCoupon'
+instance Finalizable CStrippedCappedFlooredCoupon' where finalize = qlFreeStrippedCappedFlooredCoupon
+foreign import ccall "ql.h qlStrippedCappedFlooredCouponAsFloatingRateCoupon" qlStrippedCappedFlooredCouponAsFloatingRateCoupon :: Ptr CStrippedCappedFlooredCoupon' -> IO (Ptr CFloatingRateCoupon')
+instance Upcastable CStrippedCappedFlooredCoupon' where {type Base CStrippedCappedFlooredCoupon' = CFloatingRateCoupon'; upcast = qlStrippedCappedFlooredCouponAsFloatingRateCoupon}
+peekStrippedCappedFlooredCoupon :: Ptr CStrippedCappedFlooredCoupon' -> IO StrippedCappedFlooredCoupon
+peekStrippedCappedFlooredCoupon = GenFloatingRateCoupon <.> newGenForeignPtr
+withStrippedCappedFlooredCoupon :: StrippedCappedFlooredCoupon -> (Ptr CStrippedCappedFlooredCoupon' -> IO b) -> IO b
+withStrippedCappedFlooredCoupon = withForeignPtr . ptr . getFloatingRateCoupon
 
 -- |Concrete digital coupon exposing option-rate results.
 data CDigitalCoupon'
