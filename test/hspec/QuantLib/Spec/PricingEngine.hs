@@ -568,6 +568,43 @@ spec = do
         rms `shouldSatisfy` (< 1e-6)
         performGC
 
+  -- NoArbSabrInterpolatedSmileSection has no upstream test-suite fixture of its own either (only
+  -- NoArbSabrInterpolation's direct construction is exercised in test-suite/interpolations.cpp),
+  -- so this is the same round-trip shape as SviInterpolatedSmileSection above: generate vols at
+  -- known no-arb SABR parameters via the already-bound noArbSabrSmileSection, feed them back in
+  -- as quotes, and require calibration to reproduce them closely.
+  describe "NoArbSabrInterpolatedSmileSection" $
+    it "calibrates back to the generating no-arb SABR parameters, including through the\
+       \ AsSmileSection upcast" $
+      Settings.keepingSettings' $ do
+        let forward = 0.03; alpha_ = 0.04; beta_ = 0.5; nu = 0.4; rho_ = -0.2
+            strikes = [0.01, 0.02, 0.03, 0.04, 0.05]
+        refDate <- today
+        Settings.setEvaluationDate (Just refDate)
+        optionDate <- addPeriod refDate (round (5.0 * 365) :: Int, Days)
+        act365 <- dayCounter Actual365FixedStandard
+        generating <- noArbSabrSmileSection' optionDate forward alpha_ beta_ nu rho_ act365 0 ShiftedLognormal
+        refVols <- mapM (smileSectionVolatility generating) strikes
+        atmVol <- smileSectionVolatility generating forward
+
+        forwardQuote <- simpleQuote forward
+        atmVolQ <- simpleQuote atmVol
+        refVolQuotes <- mapM simpleQuote refVols
+        interp <- noArbSabrInterpolatedSmileSection optionDate forwardQuote (fromList $ zip strikes refVolQuotes)
+          False atmVolQ alpha_ beta_ nu rho_ False False False False True Nothing Nothing act365
+        rms <- noArbSabrInterpolatedSmileSectionRmsError interp
+        maxErr <- noArbSabrInterpolatedSmileSectionMaxError interp
+        rms `shouldSatisfy` (< 1e-6)
+        maxErr `shouldSatisfy` (< 1e-6)
+
+        -- the upcast escape hatch: volatility through the generic SmileSection interface (only
+        -- reachable this way now that the concrete type has no smileSectionVolatility of its own).
+        genericSection <- noArbSabrInterpolatedSmileSectionAsSmileSection interp
+        forM_ (zip strikes refVols) $ \(k, expected) -> do
+          got <- smileSectionVolatility genericSection k
+          got `shouldSatisfy` closePrec expected 1e-6
+        performGC
+
   -- ported from test-suite/zabr.cpp::testConsistency: at gamma=1, ZabrSmileSection<Evaluation>
   -- must (nearly) coincide with the Hagan 2002 SABR closed form (already bound as
   -- sabrSmileSection), across all four ZabrEvaluation modes. fdRefinement=2 (not upstream's

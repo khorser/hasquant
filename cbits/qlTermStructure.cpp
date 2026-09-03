@@ -24,6 +24,7 @@
 #include <ql/termstructures/volatility/sabrsmilesection.hpp>
 #include <ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp>
 #include <ql/experimental/volatility/noarbsabrsmilesection.hpp>
+#include <ql/experimental/volatility/noarbsabrinterpolatedsmilesection.hpp>
 #include <ql/experimental/volatility/blackatmvolcurve.hpp>
 #include <ql/experimental/volatility/blackvolsurface.hpp>
 #include <ql/experimental/volatility/abcdatmvolcurve.hpp>
@@ -608,6 +609,51 @@ double qlSviInterpolatedSmileSectionMaxError(QlSviInterpolatedSmileSection* o, c
 int qlSviInterpolatedSmileSectionEndCriteria(QlSviInterpolatedSmileSection* o, char **e) {
   try {return (int)(*arg(o))->endCriteria();
   } catch (std::exception& er) {return handleException<int>(e, er);}}
+// NoArbSabrInterpolatedSmileSection's isAlphaFixed..isRhoFixed all default to false, same as
+// SabrInterpolatedSmileSection's, and it has no shift parameter (unlike SabrInterpolatedSmile-
+// Section) -- 8 trailing-defaulted params, still under the 10-param threshold, so this widens in
+// place like qlSviInterpolatedSmileSection. Same std::variant/Handle<Quote> rule (Quote overload
+// only), dedicated-leaf-over-dynamic_cast reasoning, and eager-calibration-at-construction
+// convention (atmLevel() forces the fit now) as qlSabrInterpolatedSmileSection/
+// qlSviInterpolatedSmileSection above.
+QlNoArbSabrInterpolatedSmileSection* qlNoArbSabrInterpolatedSmileSection(int optionDate, QlQuote* forward, unsigned strikesLen, double* strikes, int hasFloatingStrikes, QlQuote* atmVolatility, unsigned volsLen, QlQuote** vols, double alpha, double beta, double nu, double rho, int isAlphaFixed, int isBetaFixed, int isNuFixed, int isRhoFixed, int vegaWeighted, QlEndCriteria* endCriteria, QlOptimizationMethod* method, DayCounter* dc, char **e) {
+  try {
+    ext::shared_ptr<NoArbSabrInterpolatedSmileSection> section(new NoArbSabrInterpolatedSmileSection(
+        Date(optionDate), *arg(forward), std::vector<Real>(strikes, strikes + strikesLen), hasFloatingStrikes,
+        *arg(atmVolatility), qlHandleVector(vols, volsLen), alpha, beta, nu, rho,
+        isAlphaFixed, isBetaFixed, isNuFixed, isRhoFixed, vegaWeighted,
+        endCriteria ? *arg(endCriteria) : shared_ptr<EndCriteria>(),
+        method ? *arg(method) : shared_ptr<OptimizationMethod>(), *arg(dc)));
+    section->atmLevel(); // force calibration now, surfacing failures at construction
+    return ret(new QlNoArbSabrInterpolatedSmileSection(alloc(section)));
+  } catch (std::exception& er) {return handleException<QlNoArbSabrInterpolatedSmileSection*>(e, er);}}
+void qlFreeNoArbSabrInterpolatedSmileSection(QlNoArbSabrInterpolatedSmileSection* p) {del(p);}
+// Fresh shared_ptr construction (implicit Derived->Base conversion), not a cast -- same pattern
+// as qlSabrInterpolatedSmileSectionAsSmileSection.
+QlSmileSection* qlNoArbSabrInterpolatedSmileSectionAsSmileSection(QlNoArbSabrInterpolatedSmileSection* o, char **e) {
+  try {return ret(new QlSmileSection(*arg(o)));
+  } catch (std::exception& er) {return handleException<QlSmileSection*>(e, er);}}
+double qlNoArbSabrInterpolatedSmileSectionAlpha(QlNoArbSabrInterpolatedSmileSection* o, char **e) {
+  try {return (*arg(o))->alpha();
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlNoArbSabrInterpolatedSmileSectionBeta(QlNoArbSabrInterpolatedSmileSection* o, char **e) {
+  try {return (*arg(o))->beta();
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlNoArbSabrInterpolatedSmileSectionNu(QlNoArbSabrInterpolatedSmileSection* o, char **e) {
+  try {return (*arg(o))->nu();
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlNoArbSabrInterpolatedSmileSectionRho(QlNoArbSabrInterpolatedSmileSection* o, char **e) {
+  try {return (*arg(o))->rho();
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlNoArbSabrInterpolatedSmileSectionRmsError(QlNoArbSabrInterpolatedSmileSection* o, char **e) {
+  try {return (*arg(o))->rmsError();
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlNoArbSabrInterpolatedSmileSectionMaxError(QlNoArbSabrInterpolatedSmileSection* o, char **e) {
+  try {return (*arg(o))->maxError();
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+int qlNoArbSabrInterpolatedSmileSectionEndCriteria(QlNoArbSabrInterpolatedSmileSection* o, char **e) {
+  try {return (int)(*arg(o))->endCriteria();
+  } catch (std::exception& er) {return handleException<int>(e, er);}}
 double qlSwaptionVolatilityStructureSwapLength1(QlSwaptionVolatilityStructure* o, int start, int end, char **e) {
   try {return (*arg(o))->swapLength(Date(start), Date(end));
   } catch (std::exception& er) {return handleException<double>(e, er);}}
@@ -951,6 +997,64 @@ void qlFreeSabrSwaptionVolatilityCube(QlSabrSwaptionVolatilityCube *o) {del(o);}
 // not a rewrap of an existing Handle.
 QlSwaptionVolatilityStructure* qlSabrSwaptionVolatilityCubeAsSwaptionVolatilityStructure(QlSabrSwaptionVolatilityCube *o) {
   return ret(new QlSwaptionVolatilityStructure(*arg(o)));}
+
+// NoArbSabrSwaptionVolatilityCube is XabrSwaptionVolatilityCube<SwaptionVolCubeNoArbSabrModel> --
+// the same class template as SabrSwaptionVolatilityCube one model policy over, with an identical
+// constructor signature (both policies use the default XabrModelTraits<> nParams=4) and identical
+// getters, so this is a straight copy of the SabrSwaptionVolatilityCube shims above with the type
+// swapped -- no new marshalling shape. See the comment above qlSabrSwaptionVolatilityCube for the
+// EndCriteria/OptimizationMethod nullability, volSpreads/parametersGuess flattening, and lazy-
+// calibration notes, all identical here.
+QlNoArbSabrSwaptionVolatilityCube* qlNoArbSabrSwaptionVolatilityCube(QlSwaptionVolatilityStructure* atmVolStructure,
+    unsigned optionTenorsLen, int *optionTenorsNum, unsigned, int *optionTenorsUnit,
+    unsigned swapTenorsLen, int *swapTenorsNum, unsigned, int *swapTenorsUnit,
+    unsigned strikeSpreadsLen, double* strikeSpreads,
+    unsigned volSpreadsRows, unsigned volSpreadsCols, QlQuote** volSpreads,
+    QlSwapIndex* swapIndexBase, QlSwapIndex* shortSwapIndexBase,
+    int vegaWeightedSmileFit,
+    unsigned parametersGuessRows, unsigned parametersGuessCols, QlQuote** parametersGuess,
+    int isAlphaFixed, int isBetaFixed, int isNuFixed, int isRhoFixed,
+    int isAtmCalibrated,
+    QlEndCriteria* endCriteria, QlOptimizationMethod* method,
+    double maxErrorTolerance, double errorAccept, int useMaxError, unsigned maxGuesses,
+    int backwardFlat, double cutoffStrike, char **e) {
+  try {
+    return ret(new QlNoArbSabrSwaptionVolatilityCube(alloc(new NoArbSabrSwaptionVolatilityCube(
+            *arg(atmVolStructure),
+            qlPeriodVector(optionTenorsNum, optionTenorsUnit, optionTenorsLen),
+            qlPeriodVector(swapTenorsNum, swapTenorsUnit, swapTenorsLen),
+            std::vector<Real>(strikeSpreads, strikeSpreads + strikeSpreadsLen),
+            qlHandleMatrix(volSpreads, volSpreadsRows, volSpreadsCols),
+            *arg(swapIndexBase), *arg(shortSwapIndexBase),
+            (bool)vegaWeightedSmileFit,
+            qlHandleMatrix(parametersGuess, parametersGuessRows, parametersGuessCols),
+            std::vector<bool>{(bool)isAlphaFixed, (bool)isBetaFixed, (bool)isNuFixed, (bool)isRhoFixed},
+            (bool)isAtmCalibrated,
+            endCriteria ? *arg(endCriteria) : shared_ptr<EndCriteria>(), maxErrorTolerance,
+            method ? *arg(method) : shared_ptr<OptimizationMethod>(),
+            errorAccept, (bool)useMaxError, maxGuesses, (bool)backwardFlat, cutoffStrike))));
+  } catch (std::exception& er) {return handleException<QlNoArbSabrSwaptionVolatilityCube*>(e, er);}}
+void qlFreeNoArbSabrSwaptionVolatilityCube(QlNoArbSabrSwaptionVolatilityCube *o) {del(o);}
+QlSwaptionVolatilityStructure* qlNoArbSabrSwaptionVolatilityCubeAsSwaptionVolatilityStructure(QlNoArbSabrSwaptionVolatilityCube *o) {
+  return ret(new QlSwaptionVolatilityStructure(*arg(o)));}
+void qlNoArbSabrSwaptionVolatilityCubeSparseSabrParameters(QlNoArbSabrSwaptionVolatilityCube* o, unsigned* rows, unsigned* cols, unsigned* len, double** vs, char** e) {
+  try {fillMatrixOut((*arg(o))->sparseSabrParameters(), rows, cols, len, vs);
+  } catch (std::exception& er) {handleException<double*>(e, er);}}
+void qlNoArbSabrSwaptionVolatilityCubeDenseSabrParameters(QlNoArbSabrSwaptionVolatilityCube* o, unsigned* rows, unsigned* cols, unsigned* len, double** vs, char** e) {
+  try {fillMatrixOut((*arg(o))->denseSabrParameters(), rows, cols, len, vs);
+  } catch (std::exception& er) {handleException<double*>(e, er);}}
+void qlNoArbSabrSwaptionVolatilityCubeMarketVolCube(QlNoArbSabrSwaptionVolatilityCube* o, unsigned* rows, unsigned* cols, unsigned* len, double** vs, char** e) {
+  try {fillMatrixOut((*arg(o))->marketVolCube(), rows, cols, len, vs);
+  } catch (std::exception& er) {handleException<double*>(e, er);}}
+void qlNoArbSabrSwaptionVolatilityCubeVolCubeAtmCalibrated(QlNoArbSabrSwaptionVolatilityCube* o, unsigned* rows, unsigned* cols, unsigned* len, double** vs, char** e) {
+  try {fillMatrixOut((*arg(o))->volCubeAtmCalibrated(), rows, cols, len, vs);
+  } catch (std::exception& er) {handleException<double*>(e, er);}}
+double qlNoArbSabrSwaptionVolatilityCubeAtmStrike1(QlNoArbSabrSwaptionVolatilityCube* o, int optionDate, int n, int u, char **e) {
+  try {return (*arg(o))->atmStrike(Date(optionDate), Period(n, (TimeUnit)u));
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlNoArbSabrSwaptionVolatilityCubeAtmStrike(QlNoArbSabrSwaptionVolatilityCube* o, int optionN, int optionU, int n, int u, char **e) {
+  try {return (*arg(o))->atmStrike(Period(optionN, (TimeUnit)optionU), Period(n, (TimeUnit)u));
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
 
 // No EndCriteria/OptimizationMethod hazard here: InterpolatedSwaptionVolatilityCube only
 // interpolates the given volSpreads, it never calibrates anything.

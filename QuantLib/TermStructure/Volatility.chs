@@ -32,6 +32,7 @@ module QuantLib.TermStructure.Volatility
   , SmileSection
   , SabrInterpolatedSmileSection
   , SviInterpolatedSmileSection
+  , NoArbSabrInterpolatedSmileSection
   , SwaptionVolatilityStructure
   , RelinkableSwaptionVolatilityStructure
   , VolatilityTermStructure
@@ -106,6 +107,15 @@ module QuantLib.TermStructure.Volatility
   , sviInterpolatedSmileSectionRmsError
   , sviInterpolatedSmileSectionMaxError
   , sviInterpolatedSmileSectionEndCriteria
+  , noArbSabrInterpolatedSmileSection
+  , noArbSabrInterpolatedSmileSectionAsSmileSection
+  , noArbSabrInterpolatedSmileSectionAlpha
+  , noArbSabrInterpolatedSmileSectionBeta
+  , noArbSabrInterpolatedSmileSectionNu
+  , noArbSabrInterpolatedSmileSectionRho
+  , noArbSabrInterpolatedSmileSectionRmsError
+  , noArbSabrInterpolatedSmileSectionMaxError
+  , noArbSabrInterpolatedSmileSectionEndCriteria
   , swapLength'
   , swapLength
   , volatilityForPeriod'
@@ -175,8 +185,10 @@ module QuantLib.TermStructure.Volatility
   , blackVolSmile'
   , swaptionVolatilityMatrix'
   , SabrSwaptionVolatilityCube
+  , NoArbSabrSwaptionVolatilityCube
   , InterpolatedSwaptionVolatilityCube
   , sabrSwaptionVolatilityCube
+  , noArbSabrSwaptionVolatilityCube
   , interpolatedSwaptionVolatilityCube
   , sparseSabrParameters
   , denseSabrParameters
@@ -184,6 +196,12 @@ module QuantLib.TermStructure.Volatility
   , volCubeAtmCalibrated
   , sabrSwaptionVolatilityCubeAtmStrike'
   , sabrSwaptionVolatilityCubeAtmStrike
+  , noArbSabrSparseSabrParameters
+  , noArbSabrDenseSabrParameters
+  , noArbSabrMarketVolCube
+  , noArbSabrVolCubeAtmCalibrated
+  , noArbSabrSwaptionVolatilityCubeAtmStrike'
+  , noArbSabrSwaptionVolatilityCubeAtmStrike
   , interpolatedSwaptionVolatilityCubeAtmStrike'
   , interpolatedSwaptionVolatilityCubeAtmStrike
   , swaptionVolatilityMatrix
@@ -234,6 +252,7 @@ import Data.List.NonEmpty(NonEmpty, toList)
 {#pointer *QlSmileSection as SmileSection foreign -> CSmileSection nocode#}
 {#pointer *QlSabrInterpolatedSmileSection as SabrInterpolatedSmileSection foreign -> CSabrInterpolatedSmileSection nocode#}
 {#pointer *QlSviInterpolatedSmileSection as SviInterpolatedSmileSection foreign -> CSviInterpolatedSmileSection nocode#}
+{#pointer *QlNoArbSabrInterpolatedSmileSection as NoArbSabrInterpolatedSmileSection foreign -> CNoArbSabrInterpolatedSmileSection nocode#}
 
 {#pointer *QlVolatilityTermStructure as VolatilityTermStructure foreign -> CVolatilityTermStructure' nocode#}
 {#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure' nocode#}
@@ -259,6 +278,7 @@ import Data.List.NonEmpty(NonEmpty, toList)
 {#pointer *QlSwaptionVolatilityStructure as SwaptionVolatilityStructure foreign -> CSwaptionVolatilityStructure' nocode#}
 {#pointer *QlRelinkableSwaptionVolatilityStructure as RelinkableSwaptionVolatilityStructure foreign -> CRelinkableSwaptionVolatilityStructure' nocode#}
 {#pointer *QlSabrSwaptionVolatilityCube as SabrSwaptionVolatilityCube foreign -> CSabrSwaptionVolatilityCube' nocode#}
+{#pointer *QlNoArbSabrSwaptionVolatilityCube as NoArbSabrSwaptionVolatilityCube foreign -> CNoArbSabrSwaptionVolatilityCube' nocode#}
 {#pointer *QlInterpolatedSwaptionVolatilityCube as InterpolatedSwaptionVolatilityCube foreign -> CInterpolatedSwaptionVolatilityCube' nocode#}
 {#pointer *QlSwapIndex as SwapIndex foreign -> CSwapIndex' nocode#}
 {#pointer *QlBlackAtmVolCurve as BlackAtmVolCurve foreign -> CBlackAtmVolCurve' nocode#}
@@ -990,6 +1010,85 @@ sviInterpolatedSmileSection optionDate forward strikeVols hasFloatingStrikes atm
 -- |the reason the SVI calibration's optimizer stopped
 {#fun qlSviInterpolatedSmileSectionEndCriteria as sviInterpolatedSmileSectionEndCriteria{withSviInterpolatedSmileSection*`SviInterpolatedSmileSection',preErrorCheck-`String'errorCheck*-}->`EndCriteriaType'#}
 
+-- |a smile section calibrated to a market smile using the arbitrage-free SABR parameterization
+-- (Doust's approach, via 'NoArbSabrModel' -- see 'noArbSabrSmileSection'). Unlike
+-- 'noArbSabrSmileSection', which takes fixed calibrated parameters directly, this runs the
+-- alpha\/beta\/nu\/rho calibration itself against the given strike\/volatility quotes -- eagerly,
+-- at construction, same as 'sabrInterpolatedSmileSection'. @alpha@\/@beta@\/@nu@\/@rho@ are the
+-- calibration's initial guess; @isAlphaFixed@\/@isBetaFixed@\/@isNuFixed@\/@isRhoFixed@ default to
+-- 'False' upstream (unlike SVI's fixed flags, which have no default), and there is no @shift@
+-- parameter (unlike 'sabrInterpolatedSmileSection').
+noArbSabrInterpolatedSmileSection :: Day -- ^optionDate
+  -> GenQuote q1 -- ^forward
+  -> NonEmpty (Double, GenQuote q3) -- ^strike/volatility quotes
+  -> Bool -- ^hasFloatingStrikes
+  -> GenQuote q2 -- ^atmVolatility
+  -> Double -- ^alpha
+  -> Double -- ^beta
+  -> Double -- ^nu
+  -> Double -- ^rho
+  -> Bool -- ^isAlphaFixed
+  -> Bool -- ^isBetaFixed
+  -> Bool -- ^isNuFixed
+  -> Bool -- ^isRhoFixed
+  -> Bool -- ^vegaWeighted
+  -> Maybe EndCriteria
+  -> Maybe OptimizationMethod
+  -> DayCounter -> IO NoArbSabrInterpolatedSmileSection
+noArbSabrInterpolatedSmileSection optionDate forward strikeVols hasFloatingStrikes atmVolatility
+  alpha beta nu rho isAlphaFixed isBetaFixed isNuFixed isRhoFixed vegaWeighted
+  endCriteria method dc =
+  noArbSabrInterpolatedSmileSection_ optionDate forward strikes hasFloatingStrikes atmVolatility vols
+    alpha beta nu rho isAlphaFixed isBetaFixed isNuFixed isRhoFixed vegaWeighted
+    endCriteria method dc
+  where (strikes, vols) = unzip (toList strikeVols)
+
+{#fun qlNoArbSabrInterpolatedSmileSection as noArbSabrInterpolatedSmileSection_{withDay*`Day'
+  ,withQuote*`GenQuote q1' -- ^forward
+  ,withDoubleArray*`[Double]'& -- ^strikes
+  ,`Bool' -- ^hasFloatingStrikes
+  ,withQuote*`GenQuote q2' -- ^atmVolatility
+  ,withQuoteArray*`[GenQuote q3]'& -- ^vols
+  ,`Double' -- ^alpha
+  ,`Double' -- ^beta
+  ,`Double' -- ^nu
+  ,`Double' -- ^rho
+  ,`Bool' -- ^isAlphaFixed
+  ,`Bool' -- ^isBetaFixed
+  ,`Bool' -- ^isNuFixed
+  ,`Bool' -- ^isRhoFixed
+  ,`Bool' -- ^vegaWeighted
+  ,withMaybeEndCriteria*`Maybe EndCriteria'
+  ,withMaybeOptimizationMethod*`Maybe OptimizationMethod'
+  ,withDayCounter*`DayCounter'
+  ,preErrorCheck-`String'errorCheck*-}->`NoArbSabrInterpolatedSmileSection'peekNoArbSabrInterpolatedSmileSection*#}
+
+-- |upcast to the generic 'SmileSection' interface (e.g. for 'smileSectionVolatility'\/'smileSectionVariance').
+-- A fresh-@shared_ptr@ upcast, always safe -- not the reverse (downcast) direction.
+{#fun qlNoArbSabrInterpolatedSmileSectionAsSmileSection as noArbSabrInterpolatedSmileSectionAsSmileSection{withNoArbSabrInterpolatedSmileSection*`NoArbSabrInterpolatedSmileSection',preErrorCheck-`String'errorCheck*-}->`SmileSection'peekSmileSection*#}
+
+-- |calibrated @alpha@ (post-fit; can differ from the initial guess passed to
+-- 'noArbSabrInterpolatedSmileSection' unless @isAlphaFixed@ was set).
+{#fun qlNoArbSabrInterpolatedSmileSectionAlpha as noArbSabrInterpolatedSmileSectionAlpha{withNoArbSabrInterpolatedSmileSection*`NoArbSabrInterpolatedSmileSection',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |calibrated @beta@, see 'noArbSabrInterpolatedSmileSectionAlpha'
+{#fun qlNoArbSabrInterpolatedSmileSectionBeta as noArbSabrInterpolatedSmileSectionBeta{withNoArbSabrInterpolatedSmileSection*`NoArbSabrInterpolatedSmileSection',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |calibrated @nu@, see 'noArbSabrInterpolatedSmileSectionAlpha'
+{#fun qlNoArbSabrInterpolatedSmileSectionNu as noArbSabrInterpolatedSmileSectionNu{withNoArbSabrInterpolatedSmileSection*`NoArbSabrInterpolatedSmileSection',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |calibrated @rho@, see 'noArbSabrInterpolatedSmileSectionAlpha'
+{#fun qlNoArbSabrInterpolatedSmileSectionRho as noArbSabrInterpolatedSmileSectionRho{withNoArbSabrInterpolatedSmileSection*`NoArbSabrInterpolatedSmileSection',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |root-mean-square calibration error
+{#fun qlNoArbSabrInterpolatedSmileSectionRmsError as noArbSabrInterpolatedSmileSectionRmsError{withNoArbSabrInterpolatedSmileSection*`NoArbSabrInterpolatedSmileSection',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |maximum calibration error
+{#fun qlNoArbSabrInterpolatedSmileSectionMaxError as noArbSabrInterpolatedSmileSectionMaxError{withNoArbSabrInterpolatedSmileSection*`NoArbSabrInterpolatedSmileSection',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |the reason the calibration's optimizer stopped
+{#fun qlNoArbSabrInterpolatedSmileSectionEndCriteria as noArbSabrInterpolatedSmileSectionEndCriteria{withNoArbSabrInterpolatedSmileSection*`NoArbSabrInterpolatedSmileSection',preErrorCheck-`String'errorCheck*-}->`EndCriteriaType'#}
+
 -- |implements the conversion between swap dates and swap (time) length
 {#fun qlSwaptionVolatilityStructureSwapLength1 as swapLength'{withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure sv'
   ,withDay*`Day' -- ^start
@@ -1511,6 +1610,58 @@ sabrSwaptionVolatilityCube atm ot st ss (Matrix vr vc vd) sidx1 sidx2 vw (Matrix
   ,`Bool',`Double'
   ,preErrorCheck-`String'errorCheck*-}->`SabrSwaptionVolatilityCube'peekSabrSwaptionVolatilityCube*#}
 
+-- |An arbitrage-free SABR (Doust) swaption volatility cube: the same
+-- @XabrSwaptionVolatilityCube@ construction as 'sabrSwaptionVolatilityCube', one model policy
+-- over -- fits an arbitrage-free SABR smile (via 'NoArbSabrModel') at every node instead of the
+-- Hagan-formula SABR smile. Same argument shapes, flattening conventions, lazy calibration, and
+-- 'EndCriteria'\/'OptimizationMethod' safety as 'sabrSwaptionVolatilityCube'; its own extra
+-- getters ('noArbSabrSparseSabrParameters', 'noArbSabrDenseSabrParameters',
+-- 'noArbSabrMarketVolCube', 'noArbSabrVolCubeAtmCalibrated',
+-- 'noArbSabrSwaptionVolatilityCubeAtmStrike'\/'\'') only accept this concrete type.
+noArbSabrSwaptionVolatilityCube :: GenSwaptionVolatilityStructure sv -- ^atmVolStructure
+  -> [(Word, TimeUnit)] -- ^optionTenors
+  -> [(Word, TimeUnit)] -- ^swapTenors
+  -> [Double] -- ^strikeSpreads
+  -> Matrix (GenQuote q1) -- ^volSpreads
+  -> GenSwapIndex sidx1 -- ^swapIndexBase
+  -> GenSwapIndex sidx2 -- ^shortSwapIndexBase
+  -> Bool -- ^vegaWeightedSmileFit
+  -> Matrix (GenQuote q2) -- ^parametersGuess (alpha, beta, nu, rho per node)
+  -> Bool -- ^isAlphaFixed
+  -> Bool -- ^isBetaFixed
+  -> Bool -- ^isNuFixed
+  -> Bool -- ^isRhoFixed
+  -> Bool -- ^isAtmCalibrated, see 'sabrSwaptionVolatilityCube'
+  -> Maybe Double -- ^maxErrorTolerance
+  -> Maybe Double -- ^errorAccept
+  -> Bool -- ^useMaxError
+  -> Word -- ^maxGuesses
+  -> Bool -- ^backwardFlat
+  -> Double -- ^cutoffStrike
+  -> Maybe EndCriteria -- ^endCriteria
+  -> Maybe OptimizationMethod -- ^optMethod
+  -> IO NoArbSabrSwaptionVolatilityCube
+noArbSabrSwaptionVolatilityCube atm ot st ss (Matrix vr vc vd) sidx1 sidx2 vw (Matrix pr pc pd)
+  iaf ibf inf irf iac met eat ume mg bf cs ec om =
+  qlNoArbSabrSwaptionVolatilityCube atm opl opu spl spu ss vr vc vd sidx1 sidx2 vw pr pc pd
+    iaf ibf inf irf iac ec om met eat ume mg bf cs
+  where (opl, opu) = unzip ot; (spl, spu) = unzip st
+{#fun qlNoArbSabrSwaptionVolatilityCube{withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure sv'
+  ,withIntArray*`[Word]'&,withEnumArray*`[TimeUnit]'&
+  ,withIntArray*`[Word]'&,withEnumArray*`[TimeUnit]'&
+  ,withDoubleArray*`[Double]'&
+  ,fromIntegral`Word',fromIntegral`Word',withQuoteArrayRaw*`[GenQuote q1]'
+  ,withSwapIndex*`GenSwapIndex sidx1',withSwapIndex*`GenSwapIndex sidx2'
+  ,`Bool'
+  ,fromIntegral`Word',fromIntegral`Word',withQuoteArrayRaw*`[GenQuote q2]'
+  ,`Bool',`Bool',`Bool',`Bool'
+  ,`Bool'
+  ,withMaybeEndCriteria*`Maybe EndCriteria'
+  ,withMaybeOptimizationMethod*`Maybe OptimizationMethod'
+  ,fromMaybeDouble`Maybe Double',fromMaybeDouble`Maybe Double',`Bool',fromIntegral`Word'
+  ,`Bool',`Double'
+  ,preErrorCheck-`String'errorCheck*-}->`NoArbSabrSwaptionVolatilityCube'peekNoArbSabrSwaptionVolatilityCube*#}
+
 -- |The non-SABR, linear-interpolation swaption volatility cube: interpolates the given
 -- @volSpreads@ rather than calibrating a smile model. No 'EndCriteria'\/'OptimizationMethod'
 -- hazard here -- this class never calibrates anything. See 'sabrSwaptionVolatilityCube' for the
@@ -1578,6 +1729,50 @@ volCubeAtmCalibrated sv = toRealMatrix <$> qlSabrSwaptionVolatilityCubeVolCubeAt
 
 -- |ATM strike at a given (option tenor, swap tenor) node, see 'sabrSwaptionVolatilityCubeAtmStrike\''
 {#fun qlSabrSwaptionVolatilityCubeAtmStrike as sabrSwaptionVolatilityCubeAtmStrike{withSabrSwaptionVolatilityCube*`SabrSwaptionVolatilityCube'
+  ,fromEnumQuantity`(Word,TimeUnit)'& -- ^optionTenor
+  ,fromEnumQuantity`(Word,TimeUnit)'& -- ^swapTenor
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |Per-node calibrated no-arb SABR parameters (alpha, beta, nu, rho columns) before ATM
+-- recalibration, see 'sparseSabrParameters'.
+noArbSabrSparseSabrParameters :: NoArbSabrSwaptionVolatilityCube -> IO RealMatrix
+noArbSabrSparseSabrParameters sv = toRealMatrix <$> qlNoArbSabrSwaptionVolatilityCubeSparseSabrParameters sv
+{#fun qlNoArbSabrSwaptionVolatilityCubeSparseSabrParameters{withNoArbSabrSwaptionVolatilityCube*`NoArbSabrSwaptionVolatilityCube'
+  ,prePtr-`Word'peekWord*,prePtr-`Word'peekWord*,preArray-`RealVector'&peekRealVector*
+  ,preErrorCheck-`String'errorCheck*-}->`()'#}
+
+-- |Per-node calibrated no-arb SABR parameters, meaningfully populated only when the cube was
+-- built with @isAtmCalibrated = True@, see 'denseSabrParameters'.
+noArbSabrDenseSabrParameters :: NoArbSabrSwaptionVolatilityCube -> IO RealMatrix
+noArbSabrDenseSabrParameters sv = toRealMatrix <$> qlNoArbSabrSwaptionVolatilityCubeDenseSabrParameters sv
+{#fun qlNoArbSabrSwaptionVolatilityCubeDenseSabrParameters{withNoArbSabrSwaptionVolatilityCube*`NoArbSabrSwaptionVolatilityCube'
+  ,prePtr-`Word'peekWord*,prePtr-`Word'peekWord*,preArray-`RealVector'&peekRealVector*
+  ,preErrorCheck-`String'errorCheck*-}->`()'#}
+
+-- |The raw market vol grid the cube's no-arb SABR fit targets, see 'marketVolCube'.
+noArbSabrMarketVolCube :: NoArbSabrSwaptionVolatilityCube -> IO RealMatrix
+noArbSabrMarketVolCube sv = toRealMatrix <$> qlNoArbSabrSwaptionVolatilityCubeMarketVolCube sv
+{#fun qlNoArbSabrSwaptionVolatilityCubeMarketVolCube{withNoArbSabrSwaptionVolatilityCube*`NoArbSabrSwaptionVolatilityCube'
+  ,prePtr-`Word'peekWord*,prePtr-`Word'peekWord*,preArray-`RealVector'&peekRealVector*
+  ,preErrorCheck-`String'errorCheck*-}->`()'#}
+
+-- |Like 'noArbSabrMarketVolCube', adjusted so the cube's own ATM row is consistent with
+-- @atmVolStructure@; meaningfully populated only when the cube was built with
+-- @isAtmCalibrated = True@, see 'volCubeAtmCalibrated'.
+noArbSabrVolCubeAtmCalibrated :: NoArbSabrSwaptionVolatilityCube -> IO RealMatrix
+noArbSabrVolCubeAtmCalibrated sv = toRealMatrix <$> qlNoArbSabrSwaptionVolatilityCubeVolCubeAtmCalibrated sv
+{#fun qlNoArbSabrSwaptionVolatilityCubeVolCubeAtmCalibrated{withNoArbSabrSwaptionVolatilityCube*`NoArbSabrSwaptionVolatilityCube'
+  ,prePtr-`Word'peekWord*,prePtr-`Word'peekWord*,preArray-`RealVector'&peekRealVector*
+  ,preErrorCheck-`String'errorCheck*-}->`()'#}
+
+-- |ATM strike at a given (option date, swap tenor) node, see 'sabrSwaptionVolatilityCubeAtmStrike\''.
+{#fun qlNoArbSabrSwaptionVolatilityCubeAtmStrike1 as noArbSabrSwaptionVolatilityCubeAtmStrike'{withNoArbSabrSwaptionVolatilityCube*`NoArbSabrSwaptionVolatilityCube'
+  ,withDay*`Day' -- ^optionDate
+  ,fromEnumQuantity`(Word,TimeUnit)'& -- ^swapTenor
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |ATM strike at a given (option tenor, swap tenor) node, see 'noArbSabrSwaptionVolatilityCubeAtmStrike\''
+{#fun qlNoArbSabrSwaptionVolatilityCubeAtmStrike as noArbSabrSwaptionVolatilityCubeAtmStrike{withNoArbSabrSwaptionVolatilityCube*`NoArbSabrSwaptionVolatilityCube'
   ,fromEnumQuantity`(Word,TimeUnit)'& -- ^optionTenor
   ,fromEnumQuantity`(Word,TimeUnit)'& -- ^swapTenor
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}

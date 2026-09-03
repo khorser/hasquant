@@ -124,6 +124,16 @@ extern "C" {
   double qlSviInterpolatedSmileSectionRmsError(QlSviInterpolatedSmileSection* o, char **e);
   double qlSviInterpolatedSmileSectionMaxError(QlSviInterpolatedSmileSection* o, char **e);
   int qlSviInterpolatedSmileSectionEndCriteria(QlSviInterpolatedSmileSection* o, char **e);
+  QlNoArbSabrInterpolatedSmileSection* qlNoArbSabrInterpolatedSmileSection(int optionDate, QlQuote* forward, unsigned strikesLen, double* strikes, int hasFloatingStrikes, QlQuote* atmVolatility, unsigned volsLen, QlQuote** vols, double alpha, double beta, double nu, double rho, int isAlphaFixed, int isBetaFixed, int isNuFixed, int isRhoFixed, int vegaWeighted, QlEndCriteria* endCriteria, QlOptimizationMethod* method, DayCounter* dc, char **e);
+  void qlFreeNoArbSabrInterpolatedSmileSection(QlNoArbSabrInterpolatedSmileSection* p);
+  QlSmileSection* qlNoArbSabrInterpolatedSmileSectionAsSmileSection(QlNoArbSabrInterpolatedSmileSection* o, char **e);
+  double qlNoArbSabrInterpolatedSmileSectionAlpha(QlNoArbSabrInterpolatedSmileSection* o, char **e);
+  double qlNoArbSabrInterpolatedSmileSectionBeta(QlNoArbSabrInterpolatedSmileSection* o, char **e);
+  double qlNoArbSabrInterpolatedSmileSectionNu(QlNoArbSabrInterpolatedSmileSection* o, char **e);
+  double qlNoArbSabrInterpolatedSmileSectionRho(QlNoArbSabrInterpolatedSmileSection* o, char **e);
+  double qlNoArbSabrInterpolatedSmileSectionRmsError(QlNoArbSabrInterpolatedSmileSection* o, char **e);
+  double qlNoArbSabrInterpolatedSmileSectionMaxError(QlNoArbSabrInterpolatedSmileSection* o, char **e);
+  int qlNoArbSabrInterpolatedSmileSectionEndCriteria(QlNoArbSabrInterpolatedSmileSection* o, char **e);
   double qlSwaptionVolatilityStructureSwapLength1(QlSwaptionVolatilityStructure* o, int start, int end, char **e);
   double qlSwaptionVolatilityStructureSwapLength(QlSwaptionVolatilityStructure* o, int, int, char **e);
   double qlSwaptionVolatilityStructureVolatility1(QlSwaptionVolatilityStructure* o, int optionDate, int, int, double strike, int extrapolate, char **e);
@@ -214,6 +224,26 @@ extern "C" {
       int backwardFlat, double cutoffStrike, char **e);
   void qlFreeSabrSwaptionVolatilityCube(QlSabrSwaptionVolatilityCube *o);
   QlSwaptionVolatilityStructure* qlSabrSwaptionVolatilityCubeAsSwaptionVolatilityStructure(QlSabrSwaptionVolatilityCube *o);
+  QlNoArbSabrSwaptionVolatilityCube* qlNoArbSabrSwaptionVolatilityCube(QlSwaptionVolatilityStructure* atmVolStructure,
+      unsigned, int*, unsigned, int*, unsigned, int*, unsigned, int*,
+      unsigned strikeSpreadsLen, double* strikeSpreads,
+      unsigned volSpreadsRows, unsigned volSpreadsCols, QlQuote** volSpreads,
+      QlSwapIndex* swapIndexBase, QlSwapIndex* shortSwapIndexBase,
+      int vegaWeightedSmileFit,
+      unsigned parametersGuessRows, unsigned parametersGuessCols, QlQuote** parametersGuess,
+      int isAlphaFixed, int isBetaFixed, int isNuFixed, int isRhoFixed,
+      int isAtmCalibrated,
+      QlEndCriteria* endCriteria, QlOptimizationMethod* method,
+      double maxErrorTolerance, double errorAccept, int useMaxError, unsigned maxGuesses,
+      int backwardFlat, double cutoffStrike, char **e);
+  void qlFreeNoArbSabrSwaptionVolatilityCube(QlNoArbSabrSwaptionVolatilityCube *o);
+  QlSwaptionVolatilityStructure* qlNoArbSabrSwaptionVolatilityCubeAsSwaptionVolatilityStructure(QlNoArbSabrSwaptionVolatilityCube *o);
+  void qlNoArbSabrSwaptionVolatilityCubeSparseSabrParameters(QlNoArbSabrSwaptionVolatilityCube* o, unsigned* rows, unsigned* cols, unsigned* len, double** vs, char** e);
+  void qlNoArbSabrSwaptionVolatilityCubeDenseSabrParameters(QlNoArbSabrSwaptionVolatilityCube* o, unsigned* rows, unsigned* cols, unsigned* len, double** vs, char** e);
+  void qlNoArbSabrSwaptionVolatilityCubeMarketVolCube(QlNoArbSabrSwaptionVolatilityCube* o, unsigned* rows, unsigned* cols, unsigned* len, double** vs, char** e);
+  void qlNoArbSabrSwaptionVolatilityCubeVolCubeAtmCalibrated(QlNoArbSabrSwaptionVolatilityCube* o, unsigned* rows, unsigned* cols, unsigned* len, double** vs, char** e);
+  double qlNoArbSabrSwaptionVolatilityCubeAtmStrike1(QlNoArbSabrSwaptionVolatilityCube* o, int optionDate, int n, int u, char **e);
+  double qlNoArbSabrSwaptionVolatilityCubeAtmStrike(QlNoArbSabrSwaptionVolatilityCube* o, int optionN, int optionU, int n, int u, char **e);
   QlInterpolatedSwaptionVolatilityCube* qlInterpolatedSwaptionVolatilityCube(QlSwaptionVolatilityStructure* atmVolStructure,
       unsigned, int*, unsigned, int*, unsigned, int*, unsigned, int*,
       unsigned strikeSpreadsLen, double* strikeSpreads,

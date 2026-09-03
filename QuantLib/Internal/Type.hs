@@ -548,6 +548,18 @@ peekSviInterpolatedSmileSection = SviInterpolatedSmileSection <.> peekStandalone
 withSviInterpolatedSmileSection :: SviInterpolatedSmileSection -> (Ptr CSviInterpolatedSmileSection -> IO b) -> IO b
 withSviInterpolatedSmileSection = withStandalone . getCSviInterpolatedSmileSection
 
+-- |a dedicated leaf, same reasoning and 'SmileSection' escape hatch as 'CSabrInterpolatedSmileSection'
+-- above -- see 'QuantLib.TermStructure.Volatility.noArbSabrInterpolatedSmileSection'\/
+-- 'QuantLib.TermStructure.Volatility.noArbSabrInterpolatedSmileSectionAsSmileSection'.
+data CNoArbSabrInterpolatedSmileSection
+newtype NoArbSabrInterpolatedSmileSection = NoArbSabrInterpolatedSmileSection {getCNoArbSabrInterpolatedSmileSection :: Standalone CNoArbSabrInterpolatedSmileSection}
+foreign import ccall unsafe "ql.h &qlFreeNoArbSabrInterpolatedSmileSection" qlFreeNoArbSabrInterpolatedSmileSection :: FinalizerPtr CNoArbSabrInterpolatedSmileSection
+instance Finalizable CNoArbSabrInterpolatedSmileSection where finalize = qlFreeNoArbSabrInterpolatedSmileSection
+peekNoArbSabrInterpolatedSmileSection :: Ptr CNoArbSabrInterpolatedSmileSection -> IO NoArbSabrInterpolatedSmileSection
+peekNoArbSabrInterpolatedSmileSection = NoArbSabrInterpolatedSmileSection <.> peekStandalone
+withNoArbSabrInterpolatedSmileSection :: NoArbSabrInterpolatedSmileSection -> (Ptr CNoArbSabrInterpolatedSmileSection -> IO b) -> IO b
+withNoArbSabrInterpolatedSmileSection = withStandalone . getCNoArbSabrInterpolatedSmileSection
+
 -- |a dedicated leaf, not a downcast target: 'QuantLib.TermStructure.Volatility.optionletStripper2'
 -- fuses construction of an 'OptionletStripper1' underneath (never exposed to Haskell, mirroring
 -- 'QuantLib.TermStructure.Volatility.optionletStripper1') and stores the resulting
@@ -1608,6 +1620,7 @@ withCommodityIndex = withForeignPtr . ptr . getIndex
 -- >    SwaptionVolatilityStructure
 -- >      RelinkableSwaptionVolatilityStructure
 -- >      SabrSwaptionVolatilityCube
+-- >      NoArbSabrSwaptionVolatilityCube
 -- >      InterpolatedSwaptionVolatilityCube
 -- >    CapFloorTermVolatilityStructure*
 -- >      CapFloorTermVolCurve
@@ -1635,6 +1648,7 @@ data CRelinkableOptionletVolatilityStructure'
 data CSwaptionVolatilityStructure'
 data CRelinkableSwaptionVolatilityStructure'
 data CSabrSwaptionVolatilityCube'
+data CNoArbSabrSwaptionVolatilityCube'
 data CInterpolatedSwaptionVolatilityCube'
 data CCapFloorTermVolatilityStructure'
 data CCapFloorTermVolCurve'
@@ -1720,6 +1734,12 @@ type CSabrSwaptionVolatilityCube = ForeignPtr CSabrSwaptionVolatilityCube'
 -- API-design rule in CLAUDE.md it earns a dedicated leaf instead of being collapsed into
 -- 'SwaptionVolatilityStructure' the way 'swaptionVolatilityMatrix'' is.
 type SabrSwaptionVolatilityCube = GenSwaptionVolatilityStructure CSabrSwaptionVolatilityCube
+type CNoArbSabrSwaptionVolatilityCube = ForeignPtr CNoArbSabrSwaptionVolatilityCube'
+-- | An arbitrage-free (Doust) SABR-calibrated swaption vol cube -- the same underlying
+-- @XabrSwaptionVolatilityCube@ template as 'SabrSwaptionVolatilityCube', one model policy over
+-- (@SwaptionVolCubeNoArbSabrModel@ instead of @SwaptionVolCubeSabrModel@), same dedicated-leaf
+-- reasoning and identical getter surface.
+type NoArbSabrSwaptionVolatilityCube = GenSwaptionVolatilityStructure CNoArbSabrSwaptionVolatilityCube
 type CInterpolatedSwaptionVolatilityCube = ForeignPtr CInterpolatedSwaptionVolatilityCube'
 -- | The non-SABR, linear-interpolation swaption vol cube. It /is/ a
 -- 'SwaptionVolatilityStructure' -- pass it anywhere one is expected. Gets the same dedicated-leaf
@@ -1926,6 +1946,7 @@ foreign import ccall unsafe "ql.h &qlFreeRelinkableOptionletVolatilityStructure"
 foreign import ccall unsafe "ql.h &qlFreeSwaptionVolatilityStructure" qlFreeSwaptionVolatilityStructure :: FinalizerPtr CSwaptionVolatilityStructure'
 foreign import ccall unsafe "ql.h &qlFreeRelinkableSwaptionVolatilityStructure" qlFreeRelinkableSwaptionVolatilityStructure :: FinalizerPtr CRelinkableSwaptionVolatilityStructure'
 foreign import ccall unsafe "ql.h &qlFreeSabrSwaptionVolatilityCube" qlFreeSabrSwaptionVolatilityCube :: FinalizerPtr CSabrSwaptionVolatilityCube'
+foreign import ccall unsafe "ql.h &qlFreeNoArbSabrSwaptionVolatilityCube" qlFreeNoArbSabrSwaptionVolatilityCube :: FinalizerPtr CNoArbSabrSwaptionVolatilityCube'
 foreign import ccall unsafe "ql.h &qlFreeInterpolatedSwaptionVolatilityCube" qlFreeInterpolatedSwaptionVolatilityCube :: FinalizerPtr CInterpolatedSwaptionVolatilityCube'
 foreign import ccall unsafe "ql.h &qlFreeCapFloorTermVolatilityStructure" qlFreeCapFloorTermVolatilityStructure :: FinalizerPtr CCapFloorTermVolatilityStructure'
 foreign import ccall unsafe "ql.h &qlFreeCapFloorTermVolCurve" qlFreeCapFloorTermVolCurve :: FinalizerPtr CCapFloorTermVolCurve'
@@ -1960,6 +1981,7 @@ instance Finalizable CRelinkableOptionletVolatilityStructure' where finalize = q
 instance Finalizable CSwaptionVolatilityStructure' where finalize = qlFreeSwaptionVolatilityStructure
 instance Finalizable CRelinkableSwaptionVolatilityStructure' where finalize = qlFreeRelinkableSwaptionVolatilityStructure
 instance Finalizable CSabrSwaptionVolatilityCube' where finalize = qlFreeSabrSwaptionVolatilityCube
+instance Finalizable CNoArbSabrSwaptionVolatilityCube' where finalize = qlFreeNoArbSabrSwaptionVolatilityCube
 instance Finalizable CInterpolatedSwaptionVolatilityCube' where finalize = qlFreeInterpolatedSwaptionVolatilityCube
 instance Finalizable CCapFloorTermVolatilityStructure' where finalize = qlFreeCapFloorTermVolatilityStructure
 instance Finalizable CCapFloorTermVolCurve' where finalize = qlFreeCapFloorTermVolCurve
@@ -2000,6 +2022,7 @@ foreign import ccall "ql.h qlBlackVolatilitySurfaceDeltaAsBlackVolTermStructure"
 foreign import ccall "ql.h qlSwaptionVolatilityStructureAsVolatilityTermStructure" qlSwaptionVolatilityStructureAsVolatilityTermStructure :: Ptr CSwaptionVolatilityStructure' -> IO (Ptr CVolatilityTermStructure')
 foreign import ccall "ql.h qlRelinkableSwaptionVolatilityStructureAsSwaptionVolatilityStructure" qlRelinkableSwaptionVolatilityStructureAsSwaptionVolatilityStructure :: Ptr CRelinkableSwaptionVolatilityStructure' -> IO (Ptr CSwaptionVolatilityStructure')
 foreign import ccall "ql.h qlSabrSwaptionVolatilityCubeAsSwaptionVolatilityStructure" qlSabrSwaptionVolatilityCubeAsSwaptionVolatilityStructure :: Ptr CSabrSwaptionVolatilityCube' -> IO (Ptr CSwaptionVolatilityStructure')
+foreign import ccall "ql.h qlNoArbSabrSwaptionVolatilityCubeAsSwaptionVolatilityStructure" qlNoArbSabrSwaptionVolatilityCubeAsSwaptionVolatilityStructure :: Ptr CNoArbSabrSwaptionVolatilityCube' -> IO (Ptr CSwaptionVolatilityStructure')
 foreign import ccall "ql.h qlInterpolatedSwaptionVolatilityCubeAsSwaptionVolatilityStructure" qlInterpolatedSwaptionVolatilityCubeAsSwaptionVolatilityStructure :: Ptr CInterpolatedSwaptionVolatilityCube' -> IO (Ptr CSwaptionVolatilityStructure')
 foreign import ccall "ql.h qlCapFloorTermVolatilityStructureAsVolatilityTermStructure" qlCapFloorTermVolatilityStructureAsVolatilityTermStructure :: Ptr CCapFloorTermVolatilityStructure' -> IO (Ptr CVolatilityTermStructure')
 foreign import ccall "ql.h qlCapFloorTermVolCurveAsCapFloorTermVolatilityStructure" qlCapFloorTermVolCurveAsCapFloorTermVolatilityStructure :: Ptr CCapFloorTermVolCurve' -> IO (Ptr CCapFloorTermVolatilityStructure')
@@ -2039,6 +2062,7 @@ instance Upcastable CRelinkableOptionletVolatilityStructure' where {type Base CR
 instance Upcastable CSwaptionVolatilityStructure' where {type Base CSwaptionVolatilityStructure' = CVolatilityTermStructure'; upcast = qlSwaptionVolatilityStructureAsVolatilityTermStructure}
 instance Upcastable CRelinkableSwaptionVolatilityStructure' where {type Base CRelinkableSwaptionVolatilityStructure' = CSwaptionVolatilityStructure'; upcast = qlRelinkableSwaptionVolatilityStructureAsSwaptionVolatilityStructure}
 instance Upcastable CSabrSwaptionVolatilityCube' where {type Base CSabrSwaptionVolatilityCube' = CSwaptionVolatilityStructure'; upcast = qlSabrSwaptionVolatilityCubeAsSwaptionVolatilityStructure}
+instance Upcastable CNoArbSabrSwaptionVolatilityCube' where {type Base CNoArbSabrSwaptionVolatilityCube' = CSwaptionVolatilityStructure'; upcast = qlNoArbSabrSwaptionVolatilityCubeAsSwaptionVolatilityStructure}
 instance Upcastable CInterpolatedSwaptionVolatilityCube' where {type Base CInterpolatedSwaptionVolatilityCube' = CSwaptionVolatilityStructure'; upcast = qlInterpolatedSwaptionVolatilityCubeAsSwaptionVolatilityStructure}
 instance Upcastable CCapFloorTermVolatilityStructure' where {type Base CCapFloorTermVolatilityStructure' = CVolatilityTermStructure'; upcast = qlCapFloorTermVolatilityStructureAsVolatilityTermStructure}
 instance Upcastable CCapFloorTermVolCurve' where {type Base CCapFloorTermVolCurve' = CCapFloorTermVolatilityStructure'; upcast = qlCapFloorTermVolCurveAsCapFloorTermVolatilityStructure}
@@ -2125,6 +2149,10 @@ peekSabrSwaptionVolatilityCube :: Ptr CSabrSwaptionVolatilityCube' -> IO SabrSwa
 peekSabrSwaptionVolatilityCube = newGenForeignPtr >=> newGenSwaptionVolatilityStructure
 withSabrSwaptionVolatilityCube :: SabrSwaptionVolatilityCube -> (Ptr CSabrSwaptionVolatilityCube' -> IO b) -> IO b
 withSabrSwaptionVolatilityCube = withForeignPtr . ptr . peel . peel . getTermStructure
+peekNoArbSabrSwaptionVolatilityCube :: Ptr CNoArbSabrSwaptionVolatilityCube' -> IO NoArbSabrSwaptionVolatilityCube
+peekNoArbSabrSwaptionVolatilityCube = newGenForeignPtr >=> newGenSwaptionVolatilityStructure
+withNoArbSabrSwaptionVolatilityCube :: NoArbSabrSwaptionVolatilityCube -> (Ptr CNoArbSabrSwaptionVolatilityCube' -> IO b) -> IO b
+withNoArbSabrSwaptionVolatilityCube = withForeignPtr . ptr . peel . peel . getTermStructure
 peekInterpolatedSwaptionVolatilityCube :: Ptr CInterpolatedSwaptionVolatilityCube' -> IO InterpolatedSwaptionVolatilityCube
 peekInterpolatedSwaptionVolatilityCube = newGenForeignPtr >=> newGenSwaptionVolatilityStructure
 withInterpolatedSwaptionVolatilityCube :: InterpolatedSwaptionVolatilityCube -> (Ptr CInterpolatedSwaptionVolatilityCube' -> IO b) -> IO b

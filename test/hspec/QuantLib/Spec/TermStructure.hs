@@ -1642,6 +1642,33 @@ spec = do
           k <- Vol.sabrSwaptionVolatilityCubeAtmStrike cube (1, Years) (2, Years)
           k `shouldSatisfy` (\x -> x > -0.05 && x < 0.20)
 
+      -- NoArbSabrSwaptionVolatilityCube is the same XabrSwaptionVolatilityCube construction one
+      -- model policy over (arbitrage-free SABR instead of Hagan-formula SABR) -- same fixture,
+      -- same self-consistency shape as the sabrSwaptionVolatilityCube checks above. The fixture's
+      -- parametersGuess (alpha=0.03, beta=0.5, nu=0.3, rho=0.0 at forward=0.03) already satisfies
+      -- NoArbSabrModel's admissible domain (sigmaI = alpha*forward^(beta-1) ~= 0.17, within
+      -- [0.05,1.00]; beta within [0.01,0.99]; nu within [0.01,0.80]; rho within [-0.99,0.99]).
+      it "noArbSabrSwaptionVolatilityCube reprices close to its own flat ATM input at zero spread" $
+        Settings.keepingSettings' $ do
+          (_, _, atmVol, swapIndexBase, shortSwapIndexBase, volSpreads, parametersGuess) <- mkFixture
+          cube <- Vol.noArbSabrSwaptionVolatilityCube atmVol optionTenors swapTenors strikeSpreads volSpreads
+                    swapIndexBase shortSwapIndexBase False parametersGuess
+                    -- beta fixed: 3 strikeSpreads can't identify 4 free SABR params
+                    -- ("less functions than available variables"), so pin beta at the guess.
+                    False True False False False Nothing Nothing False 50 False 0.0001 Nothing Nothing
+          v <- Vol.volatilityForPeriod' cube (10 `december` 2013) (2, Years) 0.03 False
+          -- least-squares fit, not exact recovery -- same looser tolerance as the SABR cube check.
+          abs (v - flatVol) `shouldSatisfy` (< 1.0e-2)
+
+      it "noArbSabrSwaptionVolatilityCubeAtmStrike returns a finite, plausible rate" $
+        Settings.keepingSettings' $ do
+          (_, _, atmVol, swapIndexBase, shortSwapIndexBase, volSpreads, parametersGuess) <- mkFixture
+          cube <- Vol.noArbSabrSwaptionVolatilityCube atmVol optionTenors swapTenors strikeSpreads volSpreads
+                    swapIndexBase shortSwapIndexBase False parametersGuess
+                    False True False False False Nothing Nothing False 50 False 0.0001 Nothing Nothing
+          k <- Vol.noArbSabrSwaptionVolatilityCubeAtmStrike cube (1, Years) (2, Years)
+          k `shouldSatisfy` (\x -> x > -0.05 && x < 0.20)
+
       it "interpolatedSwaptionVolatilityCube reprices close to its own flat ATM input at zero spread" $
         Settings.keepingSettings' $ do
           (_, _, atmVol, swapIndexBase, shortSwapIndexBase, volSpreads, _) <- mkFixture

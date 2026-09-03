@@ -15,6 +15,10 @@
 // forward-declared the way every other type below is, so its full header is pulled in here
 // instead. InterpolatedSwaptionVolatilityCube is an ordinary class and stays forward-declared.
 #include <ql/termstructures/volatility/swaption/sabrswaptionvolatilitycube.hpp>
+// NoArbSabrSwaptionVolatilityCube is the same situation one model policy over
+// (XabrSwaptionVolatilityCube<SwaptionVolCubeNoArbSabrModel>) -- also a typedef of a template
+// instantiation, also pulled in fully rather than forward-declared.
+#include <ql/experimental/volatility/noarbsabrswaptionvolatilitycube.hpp>
 // TwoFactorModel::ShortRateDynamics is a nested class -- referring to it (even just as a
 // shared_ptr<> template argument below) requires TwoFactorModel to be a complete type, so
 // (like SabrSwaptionVolatilityCube above) it can't be left as a forward declaration.
@@ -293,6 +297,7 @@ namespace QuantLib {
   class MultiAssetOption;
   class MultiCurve;
   class NelsonSiegelFitting;
+  class NoArbSabrInterpolatedSmileSection;
   class NoConstraint;
   class NonstandardSwap;
   class NonstandardSwaption;
@@ -641,6 +646,8 @@ using QuantLib::MidPointCdsEngine;
 using QuantLib::MultiAssetOption;
 using QuantLib::MultiCurve;
 using QuantLib::NelsonSiegelFitting;
+using QuantLib::NoArbSabrInterpolatedSmileSection;
+using QuantLib::NoArbSabrSwaptionVolatilityCube;
 using QuantLib::NoConstraint;
 using QuantLib::NonstandardSwap;
 using QuantLib::NonstandardSwaption;
@@ -986,11 +993,15 @@ using QlConstNotionalCrossCurrencyFixedVsFloatingSwap = shared_ptr<ConstNotional
 // SviInterpolatedSmileSection is a dedicated leaf, same shape/reasoning as
 // QlSabrInterpolatedSmileSection above.
 using QlSviInterpolatedSmileSection = shared_ptr<SviInterpolatedSmileSection>;
+// NoArbSabrInterpolatedSmileSection is a dedicated leaf, same shape/reasoning as
+// QlSabrInterpolatedSmileSection above.
+using QlNoArbSabrInterpolatedSmileSection = shared_ptr<NoArbSabrInterpolatedSmileSection>;
 using QlSwapIndex = shared_ptr<SwapIndex>;
 using QlSwapRateHelper = shared_ptr<SwapRateHelper>;
 using QlSwaption = shared_ptr<Swaption>;
 using QlSwaptionHelper = shared_ptr<SwaptionHelper>;
 using QlSabrSwaptionVolatilityCube = shared_ptr<SabrSwaptionVolatilityCube>;
+using QlNoArbSabrSwaptionVolatilityCube = shared_ptr<NoArbSabrSwaptionVolatilityCube>;
 using QlInterpolatedSwaptionVolatilityCube = shared_ptr<InterpolatedSwaptionVolatilityCube>;
 // A vol structure is a Handle, same reasoning as QlBlackVolTermStructure above.
 using QlSwaptionVolatilityStructure = Handle<SwaptionVolatilityStructure>;
@@ -1438,6 +1449,7 @@ QL_TRACE_NAME(QlStochasticProcess1D)
 QL_TRACE_NAME(QlStochasticProcessArray)
 QL_TRACE_NAME(QlStrikedTypePayoff)
 QL_TRACE_NAME(QlSviInterpolatedSmileSection)
+QL_TRACE_NAME(QlNoArbSabrInterpolatedSmileSection)
 QL_TRACE_NAME(QlSwap)
 QL_TRACE_NAME(QlFixedVsFloatingSwap)
 QL_TRACE_NAME(QlSwapIndex)
@@ -1446,6 +1458,7 @@ QL_TRACE_NAME(QlSwaption)
 QL_TRACE_NAME(QlSwaptionHelper)
 QL_TRACE_NAME(QlSwaptionVolatilityStructure)
 QL_TRACE_NAME(QlSabrSwaptionVolatilityCube)
+QL_TRACE_NAME(QlNoArbSabrSwaptionVolatilityCube)
 QL_TRACE_NAME(QlInterpolatedSwaptionVolatilityCube)
 QL_TRACE_NAME(QlSwingExercise)
 QL_TRACE_NAME(QlTermStructure)
