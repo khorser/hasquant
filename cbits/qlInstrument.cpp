@@ -2206,6 +2206,30 @@ QlBasket* qlDigitalBasket(int refDate, unsigned namesLen, char** names, double* 
   return qlBasket(refDate, namesLen, names, notionals, pool, attachmentRatio, detachmentRatio, claim, lossModel, e);
 }
 
+double qlBasketRemainingNotional(QlBasket* o, int d, char **e) {
+  try {return (*arg(o))->remainingNotional(Date(d));
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlBasketRecoveryRate(QlBasket* o, int d, unsigned iName, char **e) {
+  try {return (*arg(o))->recoveryRate(Date(d), iName);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+
+double qlBasketProbOverLoss(QlBasket* o, int d, double lossFraction, char **e) {
+  try {return (*arg(o))->probOverLoss(Date(d), lossFraction);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlBasketPercentile(QlBasket* o, int d, double prob, char **e) {
+  try {return (*arg(o))->percentile(Date(d), prob);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlBasketExpectedShortfall(QlBasket* o, int d, double prob, char **e) {
+  try {return (*arg(o))->expectedShortfall(Date(d), prob);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+
+double qlBasketDefaultCorrelation(QlBasket* o, int d, unsigned iName, unsigned jName, char **e) {
+  try {return (*arg(o))->defaultCorrelation(Date(d), iName, jName);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlBasketProbAtLeastNEvents(QlBasket* o, unsigned n, int d, char **e) {
+  try {return (*arg(o))->probAtLeastNEvents(n, Date(d));
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+
 QlDefaultLossModel* qlGaussianLHPLossModel(QlQuote* correlQuote, unsigned recoveriesLen, double* recoveries, char **e) {
   try {return ret(new QlDefaultLossModel(alloc(new GaussianLHPLossModel(*arg(correlQuote), std::vector<double>(recoveries, recoveries + recoveriesLen)))));
   } catch (std::exception& er) {return handleException<QlDefaultLossModel*>(e, er);}}

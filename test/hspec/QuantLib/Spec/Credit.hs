@@ -16,6 +16,7 @@ import QuantLib.Instrument.Credit(Claim(..), ProtectionSide(..), syntheticCDO, f
 import QuantLib.PricingEngine(midPointCDOEngine, integralCDOEngine, integralNtdEngine)
 import qualified QuantLib.Settings as Settings
 import QuantLib.Credit
+import QuantLib.Spec.Helpers(closePrec)
 
 -- |Builds a small pool/basket/Gaussian-LHP-loss-model chain and checks the loss model actually
 -- wired up -- 'basketNotional' alone can't tell (it's a plain constructor echo, computed before
@@ -201,5 +202,98 @@ spec =
         (abs (fair - expected) < 1.0 || abs ((fair - expected) / expected) < 0.017)
           `shouldBe` True
         ) hwDataStudent
+
+    -- No golden reference exists for these (upstream has none either); checks structural
+    -- invariants of GaussianLHPLossModel's risk surface on the equity tranche of the CDO
+    -- fixture above (correlation 0.1, 100 names) -- an equity tranche (attach = 0) is what
+    -- makes "any portfolio loss at all reaches the tranche" a true invariant.
+    it "computes tranche-loss risk outputs on a Basket" $ Settings.keepingSettings' $ do
+      let refDate = fromGregorian 2006 8 31
+          poolSize = 100 :: Int
+          names = ["issuer-" ++ show i | i <- [0 .. poolSize - 1]]
+          notionals = replicate poolSize 100.0
+          recovery = 0.4
+
+      Settings.setEvaluationDate (Just refDate)
+
+      eur <- currency EUR
+      key <- northAmericaCorpDefaultKey eur SeniorSec (0, Weeks) 10.0 FullRestructuring
+      act360 <- dayCounter (Actual360 False)
+      hazardQuote <- simpleQuote 0.01
+      dts <- flatHazardRate refDate hazardQuote act360
+
+      iss <- issuer (fromList [(key, dts)])
+      p <- pool (fromList [(n, iss, key) | n <- names])
+
+      correlQuote <- simpleQuote 0.1
+      lossModel <- gaussianLHPLossModel correlQuote (fromList (replicate poolSize recovery))
+      b <- basket refDate (fromList (zip names notionals)) p 0.0 0.03 FaceValue lossModel
+
+      let futureDate = addGregorianYearsClip 5 refDate
+          bb = trancheBasketAsBasket b
+
+      -- No default has been recorded on the pool, so the live notional never drops.
+      full <- basketNotional bb
+      remaining <- basketRemainingNotional bb futureDate
+      remaining `shouldBe` full
+
+      -- GaussianLHPLossModel's expectedRecovery is just the recovery quote passed in.
+      rr <- basketRecoveryRate bb futureDate 0
+      rr `shouldSatisfy` closePrec recovery 1.0e-12
+
+      -- Certain to lose at least 0% of the tranche.
+      p0 <- basketProbOverLoss b futureDate 0.0
+      p0 `shouldSatisfy` closePrec 1.0 1.0e-6
+
+      -- percentile is a monotone non-decreasing function of its probability argument.
+      pctLo <- basketPercentile b futureDate 0.5
+      pctHi <- basketPercentile b futureDate 0.95
+      pctLo `shouldSatisfy` (<= pctHi)
+
+      -- expected shortfall past a percentile is never below that percentile itself.
+      es <- basketExpectedShortfall b futureDate 0.95
+      es `shouldSatisfy` (>= pctHi)
+
+    -- Reuses the nth-to-default Gaussian fixture (10 names, correlation 0.3) to check
+    -- ConstantLossModel's defaultCorrelation/probAtLeastNEvents on a DigitalBasket. Both
+    -- have closed forms at the diagonal/n=0 edge cases (derived above from
+    -- DefaultLatentModel::defaultCorrelation/probAtLeastNEvents), so these are exact checks,
+    -- not pinned regression values.
+    it "computes digital-loss risk outputs on a Basket" $ Settings.keepingSettings' $ do
+      let refDate = fromGregorian 2006 8 31
+          poolSize = 10 :: Int
+          names = ["Name" ++ show i | i <- [0 .. poolSize - 1]]
+          namesNotional = 100.0
+          recovery = 0.4
+
+      Settings.setEvaluationDate (Just refDate)
+
+      eur <- currency EUR
+      key <- northAmericaCorpDefaultKey eur SeniorSec (0, Days) 1.0 FullRestructuring
+      dc365 <- dayCounter Actual365FixedStandard
+      hazardQuote <- simpleQuote 0.01
+      dts <- flatHazardRate refDate hazardQuote dc365
+
+      iss <- issuer (fromList [(key, dts)])
+      p <- pool (fromList [(n, iss, key) | n <- names])
+
+      correlQuote <- simpleQuote 0.3
+      lossModel <- constantLossModel correlQuote (fromList (replicate poolSize recovery)) GaussianQuadrature []
+      b <- digitalBasket refDate (fromList [(n, namesNotional / fromIntegral poolSize) | n <- names]) p 0.0 1.0 FaceValue lossModel
+
+      let futureDate = addGregorianYearsClip 5 refDate
+
+      -- Self-correlation is always 1 (E[1_i*1_i] = p_i, per the closed form).
+      selfCorr <- basketDefaultCorrelation b futureDate 0 0
+      selfCorr `shouldSatisfy` closePrec 1.0 1.0e-9
+
+      -- Certain to have at least 0 defaults.
+      p0 <- basketProbAtLeastNEvents b 0 futureDate
+      p0 `shouldSatisfy` closePrec 1.0 1.0e-6
+
+      -- probAtLeastNEvents is non-increasing in n.
+      p1 <- basketProbAtLeastNEvents b 1 futureDate
+      p2 <- basketProbAtLeastNEvents b 2 futureDate
+      (p0 >= p1 && p1 >= p2) `shouldBe` True
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

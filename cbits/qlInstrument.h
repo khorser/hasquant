@@ -882,6 +882,19 @@ extern "C" {
   // expectedTrancheLoss -- QL_FAILs at runtime either way, caught here at compile time instead.
   QlBasket* qlDigitalBasket(int refDate, unsigned namesLen, char** names, double* notionals, QlPool* pool, double attachmentRatio, double detachmentRatio, QlClaim* claim, QlDefaultLossModel* lossModel, char **e);
 
+  // Loss-model-agnostic: basket state, not delegated to the loss model.
+  double qlBasketRemainingNotional(QlBasket* o, int d, char **e);
+  double qlBasketRecoveryRate(QlBasket* o, int d, unsigned iName, char **e);
+
+  // Tranche-loss outputs -- implemented by GaussianLHPLossModel.
+  double qlBasketProbOverLoss(QlBasket* o, int d, double lossFraction, char **e);
+  double qlBasketPercentile(QlBasket* o, int d, double prob, char **e);
+  double qlBasketExpectedShortfall(QlBasket* o, int d, double prob, char **e);
+
+  // Digital-loss outputs -- implemented by ConstantLossModel.
+  double qlBasketDefaultCorrelation(QlBasket* o, int d, unsigned iName, unsigned jName, char **e);
+  double qlBasketProbAtLeastNEvents(QlBasket* o, unsigned n, int d, char **e);
+
   // ql/experimental/credit/gaussianlhplossmodel.hpp -- only the Handle<Quote> correlation
   // overload is bound, per the std::variant/Handle<Quote> convention (a caller with a bare
   // number gets a simpleQuote for free).
