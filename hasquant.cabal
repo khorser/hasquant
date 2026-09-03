@@ -255,6 +255,7 @@ test-suite hasquant_test
       QuantLib.Spec.PricingEngine
       QuantLib.Spec.Process
       QuantLib.Spec.Quote
+      QuantLib.Spec.Statistics
       QuantLib.Spec.Syntax
       QuantLib.Spec.TermStructure
       QuantLib.Spec.TermStructure.Commodity

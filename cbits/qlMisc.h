@@ -88,6 +88,35 @@ extern "C" {
   double qlTimeGridAt(TimeGrid* t, unsigned i, char **e);
   void qlTimeGridPoints(TimeGrid *t, unsigned *len, double **p, char **e);
 
+  /* RiskStatistics (ql/math/statistics/riskstatistics.hpp) -- a local
+     GenericRiskStatistics<GaussianStatistics> built fresh from the caller's own sample
+     vector for each call, exposing both the empirical (GeneralStatistics/GenericRiskStatistics)
+     and gaussian-assumption (GenericGaussianStatistics) risk measures with no accumulator
+     object surfaced to Haskell -- mirrors the qlHistoricalIndexAnalysis* accessors above, but
+     over a caller-supplied sample instead of an index's historical fixings. */
+  double qlRiskStatisticsMean(unsigned n, double *xs, char **e);
+  double qlRiskStatisticsStandardDeviation(unsigned n, double *xs, char **e);
+  double qlRiskStatisticsVariance(unsigned n, double *xs, char **e);
+  double qlRiskStatisticsSkewness(unsigned n, double *xs, char **e);
+  double qlRiskStatisticsKurtosis(unsigned n, double *xs, char **e);
+  double qlRiskStatisticsMin(unsigned n, double *xs, char **e);
+  double qlRiskStatisticsMax(unsigned n, double *xs, char **e);
+  double qlRiskStatisticsSemiVariance(unsigned n, double *xs, char **e);
+  double qlRiskStatisticsSemiDeviation(unsigned n, double *xs, char **e);
+  double qlRiskStatisticsDownsideVariance(unsigned n, double *xs, char **e);
+  double qlRiskStatisticsDownsideDeviation(unsigned n, double *xs, char **e);
+  double qlRiskStatisticsPercentile(unsigned n, double *xs, double y, char **e);
+  double qlRiskStatisticsGaussianPercentile(unsigned n, double *xs, double y, char **e);
+  double qlRiskStatisticsValueAtRisk(unsigned n, double *xs, double y, char **e);
+  double qlRiskStatisticsGaussianValueAtRisk(unsigned n, double *xs, double y, char **e);
+  double qlRiskStatisticsExpectedShortfall(unsigned n, double *xs, double y, char **e);
+  double qlRiskStatisticsGaussianExpectedShortfall(unsigned n, double *xs, double y, char **e);
+  double qlRiskStatisticsPotentialUpside(unsigned n, double *xs, double y, char **e);
+  double qlRiskStatisticsGaussianPotentialUpside(unsigned n, double *xs, double y, char **e);
+  double qlRiskStatisticsRegret(unsigned n, double *xs, double y, char **e);
+  double qlRiskStatisticsShortfall(unsigned n, double *xs, double y, char **e);
+  double qlRiskStatisticsAverageShortfall(unsigned n, double *xs, double y, char **e);
+
   void qlFreeRounding(Rounding *o);
   Rounding* qlRounding(char **e);
   Rounding* qlRounding1(int precision, int type, int digit, char **e);

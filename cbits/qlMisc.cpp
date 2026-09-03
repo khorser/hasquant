@@ -30,6 +30,7 @@
 #include <ql/experimental/commodities/commoditysettings.hpp>
 #include <ql/index.hpp>
 #include <ql/math/statistics/sequencestatistics.hpp>
+#include <ql/math/statistics/riskstatistics.hpp>
 #include <ql/math/array.hpp>
 
 #include <numeric>
@@ -139,6 +140,12 @@ namespace {
     Real operator()(const Array& a) const {return fn(a.begin(), (unsigned)a.size());}
   };
   using HsMultiCompositeQuote = MultiCompositeQuote<HsArrayFun>;
+
+  RiskStatistics riskStats(unsigned n, double *xs) {
+    RiskStatistics s;
+    s.addSequence(xs, xs+n);
+    return s;
+  }
 }
 
 #ifdef QLTRACK_ALLOCATIONS
@@ -566,6 +573,73 @@ double qlTimeGridAt(TimeGrid* t, unsigned i, char **e) {try {return arg(t)->at(i
 void qlTimeGridPoints(TimeGrid *t, unsigned *len, double **p, char **e) {
   try {*len = arg(t)->size(); *p = qlAllocateDoubles(*len); std::copy(t->begin(), t->end(), *p);
   } catch (std::exception& er) {(void)handleException<double*>(e, er);}}
+
+double qlRiskStatisticsMean(unsigned n, double *xs, char **e) {
+  try {return riskStats(n, xs).mean();
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlRiskStatisticsStandardDeviation(unsigned n, double *xs, char **e) {
+  try {return riskStats(n, xs).standardDeviation();
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlRiskStatisticsVariance(unsigned n, double *xs, char **e) {
+  try {return riskStats(n, xs).variance();
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlRiskStatisticsSkewness(unsigned n, double *xs, char **e) {
+  try {return riskStats(n, xs).skewness();
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlRiskStatisticsKurtosis(unsigned n, double *xs, char **e) {
+  try {return riskStats(n, xs).kurtosis();
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlRiskStatisticsMin(unsigned n, double *xs, char **e) {
+  try {return riskStats(n, xs).min();
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlRiskStatisticsMax(unsigned n, double *xs, char **e) {
+  try {return riskStats(n, xs).max();
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlRiskStatisticsSemiVariance(unsigned n, double *xs, char **e) {
+  try {return riskStats(n, xs).semiVariance();
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlRiskStatisticsSemiDeviation(unsigned n, double *xs, char **e) {
+  try {return riskStats(n, xs).semiDeviation();
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlRiskStatisticsDownsideVariance(unsigned n, double *xs, char **e) {
+  try {return riskStats(n, xs).downsideVariance();
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlRiskStatisticsDownsideDeviation(unsigned n, double *xs, char **e) {
+  try {return riskStats(n, xs).downsideDeviation();
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlRiskStatisticsPercentile(unsigned n, double *xs, double y, char **e) {
+  try {return riskStats(n, xs).percentile(y);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlRiskStatisticsGaussianPercentile(unsigned n, double *xs, double y, char **e) {
+  try {return riskStats(n, xs).gaussianPercentile(y);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlRiskStatisticsValueAtRisk(unsigned n, double *xs, double y, char **e) {
+  try {return riskStats(n, xs).valueAtRisk(y);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlRiskStatisticsGaussianValueAtRisk(unsigned n, double *xs, double y, char **e) {
+  try {return riskStats(n, xs).gaussianValueAtRisk(y);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlRiskStatisticsExpectedShortfall(unsigned n, double *xs, double y, char **e) {
+  try {return riskStats(n, xs).expectedShortfall(y);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlRiskStatisticsGaussianExpectedShortfall(unsigned n, double *xs, double y, char **e) {
+  try {return riskStats(n, xs).gaussianExpectedShortfall(y);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlRiskStatisticsPotentialUpside(unsigned n, double *xs, double y, char **e) {
+  try {return riskStats(n, xs).potentialUpside(y);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlRiskStatisticsGaussianPotentialUpside(unsigned n, double *xs, double y, char **e) {
+  try {return riskStats(n, xs).gaussianPotentialUpside(y);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlRiskStatisticsRegret(unsigned n, double *xs, double y, char **e) {
+  try {return riskStats(n, xs).regret(y);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlRiskStatisticsShortfall(unsigned n, double *xs, double y, char **e) {
+  try {return riskStats(n, xs).shortfall(y);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlRiskStatisticsAverageShortfall(unsigned n, double *xs, double y, char **e) {
+  try {return riskStats(n, xs).averageShortfall(y);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
 
 Rounding* qlRounding(char **e) {try {return alloc(new Rounding());} catch (std::exception& er) {return handleException<Rounding*>(e, er);}}
 Rounding* qlRounding1(int precision, int type, int digit, char **e) {try {return alloc(new Rounding(precision, (Rounding::Type)type, digit));} catch (std::exception& er) {return handleException<Rounding*>(e, er);}}
