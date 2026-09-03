@@ -111,6 +111,17 @@ extern "C" {
   double qlSabrInterpolatedSmileSectionRmsError(QlSabrInterpolatedSmileSection* o, char **e);
   double qlSabrInterpolatedSmileSectionMaxError(QlSabrInterpolatedSmileSection* o, char **e);
   int qlSabrInterpolatedSmileSectionEndCriteria(QlSabrInterpolatedSmileSection* o, char **e);
+  QlSviInterpolatedSmileSection* qlSviInterpolatedSmileSection(int optionDate, QlQuote* forward, unsigned strikesLen, double* strikes, int hasFloatingStrikes, QlQuote* atmVolatility, unsigned volsLen, QlQuote** vols, double a, double b, double sigma, double rho, double m, int aIsFixed, int bIsFixed, int sigmaIsFixed, int rhoIsFixed, int mIsFixed, int vegaWeighted, QlEndCriteria* endCriteria, QlOptimizationMethod* method, DayCounter* dc, char **e);
+  void qlFreeSviInterpolatedSmileSection(QlSviInterpolatedSmileSection* p);
+  QlSmileSection* qlSviInterpolatedSmileSectionAsSmileSection(QlSviInterpolatedSmileSection* o, char **e);
+  double qlSviInterpolatedSmileSectionA(QlSviInterpolatedSmileSection* o, char **e);
+  double qlSviInterpolatedSmileSectionB(QlSviInterpolatedSmileSection* o, char **e);
+  double qlSviInterpolatedSmileSectionSigma(QlSviInterpolatedSmileSection* o, char **e);
+  double qlSviInterpolatedSmileSectionRho(QlSviInterpolatedSmileSection* o, char **e);
+  double qlSviInterpolatedSmileSectionM(QlSviInterpolatedSmileSection* o, char **e);
+  double qlSviInterpolatedSmileSectionRmsError(QlSviInterpolatedSmileSection* o, char **e);
+  double qlSviInterpolatedSmileSectionMaxError(QlSviInterpolatedSmileSection* o, char **e);
+  int qlSviInterpolatedSmileSectionEndCriteria(QlSviInterpolatedSmileSection* o, char **e);
   double qlSwaptionVolatilityStructureSwapLength1(QlSwaptionVolatilityStructure* o, int start, int end, char **e);
   double qlSwaptionVolatilityStructureSwapLength(QlSwaptionVolatilityStructure* o, int, int, char **e);
   double qlSwaptionVolatilityStructureVolatility1(QlSwaptionVolatilityStructure* o, int optionDate, int, int, double strike, int extrapolate, char **e);

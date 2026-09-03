@@ -30,6 +30,7 @@ module QuantLib.TermStructure.Volatility
   , RelinkableOptionletVolatilityStructure
   , SmileSection
   , SabrInterpolatedSmileSection
+  , SviInterpolatedSmileSection
   , SwaptionVolatilityStructure
   , RelinkableSwaptionVolatilityStructure
   , VolatilityTermStructure
@@ -94,6 +95,16 @@ module QuantLib.TermStructure.Volatility
   , sabrInterpolatedSmileSectionRmsError
   , sabrInterpolatedSmileSectionMaxError
   , sabrInterpolatedSmileSectionEndCriteria
+  , sviInterpolatedSmileSection
+  , sviInterpolatedSmileSectionAsSmileSection
+  , sviInterpolatedSmileSectionA
+  , sviInterpolatedSmileSectionB
+  , sviInterpolatedSmileSectionSigma
+  , sviInterpolatedSmileSectionRho
+  , sviInterpolatedSmileSectionM
+  , sviInterpolatedSmileSectionRmsError
+  , sviInterpolatedSmileSectionMaxError
+  , sviInterpolatedSmileSectionEndCriteria
   , swapLength'
   , swapLength
   , volatilityForPeriod'
@@ -219,6 +230,7 @@ import Data.List.NonEmpty(NonEmpty, toList)
 {#pointer *QlIborIndex as IborIndex foreign -> CIborIndex' nocode#}
 {#pointer *QlSmileSection as SmileSection foreign -> CSmileSection nocode#}
 {#pointer *QlSabrInterpolatedSmileSection as SabrInterpolatedSmileSection foreign -> CSabrInterpolatedSmileSection nocode#}
+{#pointer *QlSviInterpolatedSmileSection as SviInterpolatedSmileSection foreign -> CSviInterpolatedSmileSection nocode#}
 
 {#pointer *QlVolatilityTermStructure as VolatilityTermStructure foreign -> CVolatilityTermStructure' nocode#}
 {#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure' nocode#}
@@ -846,6 +858,93 @@ sabrInterpolatedSmileSection optionDate forward strikeVols hasFloatingStrikes at
 
 -- |the reason the SABR calibration's optimizer stopped
 {#fun qlSabrInterpolatedSmileSectionEndCriteria as sabrInterpolatedSmileSectionEndCriteria{withSabrInterpolatedSmileSection*`SabrInterpolatedSmileSection',preErrorCheck-`String'errorCheck*-}->`EndCriteriaType'#}
+
+-- |a smile section calibrated to a market smile using Stochastic Volatility Inspired (SVI, Gatheral
+-- 2004) parameterization: total variance at log-moneyness @k = log(strike\/forward)@ is
+-- @a + b*(rho*(k-m) + sqrt((k-m)^2 + sigma^2))@. Strikes\/vols are given directly (not as live
+-- quotes) -- calibration runs once, eagerly, at construction, same as 'sabrInterpolatedSmileSection'.
+-- @a@\/@b@\/@sigma@\/@rho@\/@m@ are the SVI calibration's initial guess;
+-- @aIsFixed@\/@bIsFixed@\/@sigmaIsFixed@\/@rhoIsFixed@\/@mIsFixed@ have no upstream default (unlike
+-- SABR's fixed flags, which default to 'False') and so are always required here. Calibration
+-- enforces, at construction: @b >= 0@, @|rho| < 1@, @sigma > 0@,
+-- @a + b*sigma*sqrt(1-rho^2) >= 0@, and @b*(1+|rho|) <= 4@.
+sviInterpolatedSmileSection :: Day -- ^optionDate
+  -> GenQuote q1 -- ^forward
+  -> NonEmpty (Double, GenQuote q3) -- ^strike/volatility quotes
+  -> Bool -- ^hasFloatingStrikes
+  -> GenQuote q2 -- ^atmVolatility
+  -> Double -- ^a
+  -> Double -- ^b
+  -> Double -- ^sigma
+  -> Double -- ^rho
+  -> Double -- ^m
+  -> Bool -- ^aIsFixed
+  -> Bool -- ^bIsFixed
+  -> Bool -- ^sigmaIsFixed
+  -> Bool -- ^rhoIsFixed
+  -> Bool -- ^mIsFixed
+  -> Bool -- ^vegaWeighted
+  -> Maybe EndCriteria
+  -> Maybe OptimizationMethod
+  -> DayCounter -> IO SviInterpolatedSmileSection
+sviInterpolatedSmileSection optionDate forward strikeVols hasFloatingStrikes atmVolatility
+  a b sigma rho m aIsFixed bIsFixed sigmaIsFixed rhoIsFixed mIsFixed vegaWeighted
+  endCriteria method dc =
+  sviInterpolatedSmileSection_ optionDate forward strikes hasFloatingStrikes atmVolatility vols
+    a b sigma rho m aIsFixed bIsFixed sigmaIsFixed rhoIsFixed mIsFixed vegaWeighted
+    endCriteria method dc
+  where (strikes, vols) = unzip (toList strikeVols)
+
+{#fun qlSviInterpolatedSmileSection as sviInterpolatedSmileSection_{withDay*`Day'
+  ,withQuote*`GenQuote q1' -- ^forward
+  ,withDoubleArray*`[Double]'& -- ^strikes
+  ,`Bool' -- ^hasFloatingStrikes
+  ,withQuote*`GenQuote q2' -- ^atmVolatility
+  ,withQuoteArray*`[GenQuote q3]'& -- ^vols
+  ,`Double' -- ^a
+  ,`Double' -- ^b
+  ,`Double' -- ^sigma
+  ,`Double' -- ^rho
+  ,`Double' -- ^m
+  ,`Bool' -- ^aIsFixed
+  ,`Bool' -- ^bIsFixed
+  ,`Bool' -- ^sigmaIsFixed
+  ,`Bool' -- ^rhoIsFixed
+  ,`Bool' -- ^mIsFixed
+  ,`Bool' -- ^vegaWeighted
+  ,withMaybeEndCriteria*`Maybe EndCriteria'
+  ,withMaybeOptimizationMethod*`Maybe OptimizationMethod'
+  ,withDayCounter*`DayCounter'
+  ,preErrorCheck-`String'errorCheck*-}->`SviInterpolatedSmileSection'peekSviInterpolatedSmileSection*#}
+
+-- |upcast to the generic 'SmileSection' interface (e.g. for 'smileSectionVolatility'\/'smileSectionVariance').
+-- A fresh-@shared_ptr@ upcast, always safe -- not the reverse (downcast) direction.
+{#fun qlSviInterpolatedSmileSectionAsSmileSection as sviInterpolatedSmileSectionAsSmileSection{withSviInterpolatedSmileSection*`SviInterpolatedSmileSection',preErrorCheck-`String'errorCheck*-}->`SmileSection'peekSmileSection*#}
+
+-- |calibrated @a@ (post-fit; can differ from the initial guess passed to
+-- 'sviInterpolatedSmileSection' unless @aIsFixed@ was set).
+{#fun qlSviInterpolatedSmileSectionA as sviInterpolatedSmileSectionA{withSviInterpolatedSmileSection*`SviInterpolatedSmileSection',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |calibrated @b@, see 'sviInterpolatedSmileSectionA'
+{#fun qlSviInterpolatedSmileSectionB as sviInterpolatedSmileSectionB{withSviInterpolatedSmileSection*`SviInterpolatedSmileSection',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |calibrated @sigma@, see 'sviInterpolatedSmileSectionA'
+{#fun qlSviInterpolatedSmileSectionSigma as sviInterpolatedSmileSectionSigma{withSviInterpolatedSmileSection*`SviInterpolatedSmileSection',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |calibrated @rho@, see 'sviInterpolatedSmileSectionA'
+{#fun qlSviInterpolatedSmileSectionRho as sviInterpolatedSmileSectionRho{withSviInterpolatedSmileSection*`SviInterpolatedSmileSection',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |calibrated @m@, see 'sviInterpolatedSmileSectionA'
+{#fun qlSviInterpolatedSmileSectionM as sviInterpolatedSmileSectionM{withSviInterpolatedSmileSection*`SviInterpolatedSmileSection',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |root-mean-square calibration error
+{#fun qlSviInterpolatedSmileSectionRmsError as sviInterpolatedSmileSectionRmsError{withSviInterpolatedSmileSection*`SviInterpolatedSmileSection',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |maximum calibration error
+{#fun qlSviInterpolatedSmileSectionMaxError as sviInterpolatedSmileSectionMaxError{withSviInterpolatedSmileSection*`SviInterpolatedSmileSection',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |the reason the SVI calibration's optimizer stopped
+{#fun qlSviInterpolatedSmileSectionEndCriteria as sviInterpolatedSmileSectionEndCriteria{withSviInterpolatedSmileSection*`SviInterpolatedSmileSection',preErrorCheck-`String'errorCheck*-}->`EndCriteriaType'#}
 
 -- |implements the conversion between swap dates and swap (time) length
 {#fun qlSwaptionVolatilityStructureSwapLength1 as swapLength'{withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure sv'

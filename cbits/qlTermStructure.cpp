@@ -7,6 +7,7 @@
 #include <ql/termstructures/volatility/spreadedsmilesection.hpp>
 #include <ql/termstructures/volatility/atmsmilesection.hpp>
 #include <ql/experimental/volatility/svismilesection.hpp>
+#include <ql/experimental/volatility/sviinterpolatedsmilesection.hpp>
 #include <ql/termstructures/volatility/equityfx/all.hpp>
 #include <ql/termstructures/volatility/equityfx/andreasenhugelocalvoladapter.hpp>
 #include <ql/termstructures/volatility/equityfx/andreasenhugevolatilityadapter.hpp>
@@ -542,6 +543,55 @@ double qlSabrInterpolatedSmileSectionMaxError(QlSabrInterpolatedSmileSection* o,
   try {return (*arg(o))->maxError();
   } catch (std::exception& er) {return handleException<double>(e, er);}}
 int qlSabrInterpolatedSmileSectionEndCriteria(QlSabrInterpolatedSmileSection* o, char **e) {
+  try {return (int)(*arg(o))->endCriteria();
+  } catch (std::exception& er) {return handleException<int>(e, er);}}
+// SVI's aIsFixed..mIsFixed have no upstream defaults (unlike SABR's isAlphaFixed..isRhoFixed,
+// which default to false) -- only vegaWeighted/endCriteria/method/dc are trailing-defaulted, so
+// this widens in place rather than using a TH options record (below the 10-param threshold).
+// Bind only the Quote overload, per AGENTS.md's std::variant/Handle<Quote> rule (SabrInterpolated-
+// SmileSection above does the same; the flat Rate/Volatility overload stays unbound). Same
+// dedicated-leaf-over-dynamic_cast reasoning and eager-calibration-at-construction convention
+// (atmLevel() forces the fit now, surfacing checkSviParameters' QL_REQUIREs at construction
+// rather than at first use) as qlSabrInterpolatedSmileSection.
+QlSviInterpolatedSmileSection* qlSviInterpolatedSmileSection(int optionDate, QlQuote* forward, unsigned strikesLen, double* strikes, int hasFloatingStrikes, QlQuote* atmVolatility, unsigned volsLen, QlQuote** vols, double a, double b, double sigma, double rho, double m, int aIsFixed, int bIsFixed, int sigmaIsFixed, int rhoIsFixed, int mIsFixed, int vegaWeighted, QlEndCriteria* endCriteria, QlOptimizationMethod* method, DayCounter* dc, char **e) {
+  try {
+    ext::shared_ptr<SviInterpolatedSmileSection> section(new SviInterpolatedSmileSection(
+        Date(optionDate), *arg(forward), std::vector<Real>(strikes, strikes + strikesLen), hasFloatingStrikes,
+        *arg(atmVolatility), qlHandleVector(vols, volsLen), a, b, sigma, rho, m,
+        aIsFixed, bIsFixed, sigmaIsFixed, rhoIsFixed, mIsFixed, vegaWeighted,
+        endCriteria ? *arg(endCriteria) : shared_ptr<EndCriteria>(),
+        method ? *arg(method) : shared_ptr<OptimizationMethod>(), *arg(dc)));
+    section->atmLevel(); // force calibration now, surfacing failures at construction
+    return ret(new QlSviInterpolatedSmileSection(alloc(section)));
+  } catch (std::exception& er) {return handleException<QlSviInterpolatedSmileSection*>(e, er);}}
+void qlFreeSviInterpolatedSmileSection(QlSviInterpolatedSmileSection* p) {del(p);}
+// Fresh shared_ptr construction (implicit Derived->Base conversion), not a cast -- same
+// pattern as qlSabrInterpolatedSmileSectionAsSmileSection.
+QlSmileSection* qlSviInterpolatedSmileSectionAsSmileSection(QlSviInterpolatedSmileSection* o, char **e) {
+  try {return ret(new QlSmileSection(*arg(o)));
+  } catch (std::exception& er) {return handleException<QlSmileSection*>(e, er);}}
+double qlSviInterpolatedSmileSectionA(QlSviInterpolatedSmileSection* o, char **e) {
+  try {return (*arg(o))->a();
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlSviInterpolatedSmileSectionB(QlSviInterpolatedSmileSection* o, char **e) {
+  try {return (*arg(o))->b();
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlSviInterpolatedSmileSectionSigma(QlSviInterpolatedSmileSection* o, char **e) {
+  try {return (*arg(o))->sigma();
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlSviInterpolatedSmileSectionRho(QlSviInterpolatedSmileSection* o, char **e) {
+  try {return (*arg(o))->rho();
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlSviInterpolatedSmileSectionM(QlSviInterpolatedSmileSection* o, char **e) {
+  try {return (*arg(o))->m();
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlSviInterpolatedSmileSectionRmsError(QlSviInterpolatedSmileSection* o, char **e) {
+  try {return (*arg(o))->rmsError();
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlSviInterpolatedSmileSectionMaxError(QlSviInterpolatedSmileSection* o, char **e) {
+  try {return (*arg(o))->maxError();
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+int qlSviInterpolatedSmileSectionEndCriteria(QlSviInterpolatedSmileSection* o, char **e) {
   try {return (int)(*arg(o))->endCriteria();
   } catch (std::exception& er) {return handleException<int>(e, er);}}
 double qlSwaptionVolatilityStructureSwapLength1(QlSwaptionVolatilityStructure* o, int start, int end, char **e) {

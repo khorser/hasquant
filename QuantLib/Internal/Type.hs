@@ -536,6 +536,18 @@ peekSabrInterpolatedSmileSection = SabrInterpolatedSmileSection <.> peekStandalo
 withSabrInterpolatedSmileSection :: SabrInterpolatedSmileSection -> (Ptr CSabrInterpolatedSmileSection -> IO b) -> IO b
 withSabrInterpolatedSmileSection = withStandalone . getCSabrInterpolatedSmileSection
 
+-- |a dedicated leaf, same reasoning and 'SmileSection' escape hatch as 'CSabrInterpolatedSmileSection'
+-- above -- see 'QuantLib.TermStructure.Volatility.sviInterpolatedSmileSection'\/
+-- 'QuantLib.TermStructure.Volatility.sviInterpolatedSmileSectionAsSmileSection'.
+data CSviInterpolatedSmileSection
+newtype SviInterpolatedSmileSection = SviInterpolatedSmileSection {getCSviInterpolatedSmileSection :: Standalone CSviInterpolatedSmileSection}
+foreign import ccall unsafe "ql.h &qlFreeSviInterpolatedSmileSection" qlFreeSviInterpolatedSmileSection :: FinalizerPtr CSviInterpolatedSmileSection
+instance Finalizable CSviInterpolatedSmileSection where finalize = qlFreeSviInterpolatedSmileSection
+peekSviInterpolatedSmileSection :: Ptr CSviInterpolatedSmileSection -> IO SviInterpolatedSmileSection
+peekSviInterpolatedSmileSection = SviInterpolatedSmileSection <.> peekStandalone
+withSviInterpolatedSmileSection :: SviInterpolatedSmileSection -> (Ptr CSviInterpolatedSmileSection -> IO b) -> IO b
+withSviInterpolatedSmileSection = withStandalone . getCSviInterpolatedSmileSection
+
 -- |a dedicated leaf, not a downcast target: 'QuantLib.TermStructure.Volatility.optionletStripper2'
 -- fuses construction of an 'OptionletStripper1' underneath (never exposed to Haskell, mirroring
 -- 'QuantLib.TermStructure.Volatility.optionletStripper1') and stores the resulting

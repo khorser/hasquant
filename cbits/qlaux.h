@@ -337,6 +337,7 @@ namespace QuantLib {
   class SuperFundPayoff;
   class SuperSharePayoff;
   class SvenssonFitting;
+  class SviInterpolatedSmileSection;
   class InterpolatedSwaptionVolatilityCube;
   class Swap;
   class SwapIndex;
@@ -685,6 +686,7 @@ using QuantLib::StulzEngine;
 using QuantLib::SuperFundPayoff;
 using QuantLib::SuperSharePayoff;
 using QuantLib::SvenssonFitting;
+using QuantLib::SviInterpolatedSmileSection;
 using QuantLib::InterpolatedSwaptionVolatilityCube;
 using QuantLib::SabrSwaptionVolatilityCube;
 using QuantLib::Swap;
@@ -981,6 +983,9 @@ using QlFixedVsFloatingSwap = shared_ptr<FixedVsFloatingSwap>;
 using QlConstNotionalCrossCurrencySwap = shared_ptr<ConstNotionalCrossCurrencySwap>;
 using QlConstNotionalCrossCurrencyBasisSwap = shared_ptr<ConstNotionalCrossCurrencyBasisSwap>;
 using QlConstNotionalCrossCurrencyFixedVsFloatingSwap = shared_ptr<ConstNotionalCrossCurrencyFixedVsFloatingSwap>;
+// SviInterpolatedSmileSection is a dedicated leaf, same shape/reasoning as
+// QlSabrInterpolatedSmileSection above.
+using QlSviInterpolatedSmileSection = shared_ptr<SviInterpolatedSmileSection>;
 using QlSwapIndex = shared_ptr<SwapIndex>;
 using QlSwapRateHelper = shared_ptr<SwapRateHelper>;
 using QlSwaption = shared_ptr<Swaption>;
@@ -1432,6 +1437,7 @@ QL_TRACE_NAME(QlStochasticProcess)
 QL_TRACE_NAME(QlStochasticProcess1D)
 QL_TRACE_NAME(QlStochasticProcessArray)
 QL_TRACE_NAME(QlStrikedTypePayoff)
+QL_TRACE_NAME(QlSviInterpolatedSmileSection)
 QL_TRACE_NAME(QlSwap)
 QL_TRACE_NAME(QlFixedVsFloatingSwap)
 QL_TRACE_NAME(QlSwapIndex)

@@ -211,6 +211,7 @@ typedef struct QlStochasticProcess QlStochasticProcess;
 typedef struct QlStochasticProcess1D QlStochasticProcess1D;
 typedef struct QlStochasticProcessArray QlStochasticProcessArray;
 typedef struct QlStrikedTypePayoff QlStrikedTypePayoff;
+typedef struct QlSviInterpolatedSmileSection QlSviInterpolatedSmileSection;
 typedef struct QlSwap QlSwap;
 typedef struct QlIrregularSwap QlIrregularSwap;
 typedef struct QlIrregularSwaption QlIrregularSwaption;

@@ -8,6 +8,7 @@ module QuantLib.Spec.PricingEngine (spec) where
 
 import Control.Monad(forM, forM_, when)
 import Data.Time.Calendar(addDays, addGregorianYearsClip)
+import System.Mem(performGC)
 
 import Test.Hspec
 import qualified Data.Vector.Storable as V
@@ -503,6 +504,69 @@ spec = do
         forM_ (zip strikes refVols) $ \(k, expected) -> do
           got <- smileSectionVolatility generic k
           got `shouldSatisfy` closePrec expected 1e-6
+
+  -- SviInterpolatedSmileSection has no upstream test-suite fixture of its own (only
+  -- SviSmileSection's direct-parameter construction is exercised in test-suite/svivolatility.cpp),
+  -- so this is a round-trip against the already-bound sviSmileSection: generate vols at known SVI
+  -- parameters, feed them back in as quotes, and require calibration to reproduce them closely.
+  -- Same shape as the SabrInterpolatedSmileSection check above, plus one asymmetric-fixed-flag
+  -- case (only mIsFixed set) to pin the argument order across the six adjacent Bools
+  -- (aIsFixed/bIsFixed/sigmaIsFixed/rhoIsFixed/mIsFixed/vegaWeighted) -- an all-False round-trip
+  -- alone wouldn't catch a transposition there.
+  describe "SviInterpolatedSmileSection" $ do
+    let a_ = -0.0666; b_ = 0.229; sigma_ = 0.337; rho_ = 0.439; m_ = 0.193
+        strikes = [0.5, 0.8, 1.0, 1.2, 1.5, 2.0]
+        forward = 1.0
+
+    it "calibrates back to the generating SVI parameters, including through the\
+       \ AsSmileSection upcast" $
+      Settings.keepingSettings' $ do
+        refDate <- today
+        Settings.setEvaluationDate (Just refDate)
+        optionDate <- addPeriod refDate (180, Days)
+        act365 <- dayCounter Actual365FixedStandard
+        generating <- sviSmileSection optionDate forward a_ b_ sigma_ rho_ m_ act365
+        refVols <- mapM (smileSectionVolatility generating) strikes
+        atmVol <- smileSectionVolatility generating forward
+
+        forwardQuote <- simpleQuote forward
+        atmVolQ <- simpleQuote atmVol
+        refVolQuotes <- mapM simpleQuote refVols
+        interp <- sviInterpolatedSmileSection optionDate forwardQuote (fromList $ zip strikes refVolQuotes)
+          False atmVolQ a_ b_ sigma_ rho_ m_ False False False False False True Nothing Nothing act365
+        rms <- sviInterpolatedSmileSectionRmsError interp
+        maxErr <- sviInterpolatedSmileSectionMaxError interp
+        rms `shouldSatisfy` (< 1e-6)
+        maxErr `shouldSatisfy` (< 1e-6)
+
+        -- the upcast escape hatch: volatility through the generic SmileSection interface (only
+        -- reachable this way now that the concrete type has no smileSectionVolatility of its own).
+        genericSection <- sviInterpolatedSmileSectionAsSmileSection interp
+        forM_ (zip strikes refVols) $ \(k, expected) -> do
+          got <- smileSectionVolatility genericSection k
+          got `shouldSatisfy` closePrec expected 1e-6
+        performGC
+
+    it "mIsFixed pins m at the seed value while the other four parameters still calibrate" $
+      Settings.keepingSettings' $ do
+        refDate <- today
+        Settings.setEvaluationDate (Just refDate)
+        optionDate <- addPeriod refDate (180, Days)
+        act365 <- dayCounter Actual365FixedStandard
+        generating <- sviSmileSection optionDate forward a_ b_ sigma_ rho_ m_ act365
+        refVols <- mapM (smileSectionVolatility generating) strikes
+        atmVol <- smileSectionVolatility generating forward
+
+        forwardQuote <- simpleQuote forward
+        atmVolQ <- simpleQuote atmVol
+        refVolQuotes <- mapM simpleQuote refVols
+        interp <- sviInterpolatedSmileSection optionDate forwardQuote (fromList $ zip strikes refVolQuotes)
+          False atmVolQ a_ b_ sigma_ rho_ m_ False False False False True True Nothing Nothing act365
+        calibratedM <- sviInterpolatedSmileSectionM interp
+        calibratedM `shouldBe` m_
+        rms <- sviInterpolatedSmileSectionRmsError interp
+        rms `shouldSatisfy` (< 1e-6)
+        performGC
 
   -- Ported from test/smoke/CheckMCEngineStatistics.hs and CheckMCVarianceSwapEngineStatistics.hs:
   -- the StatisticsTrait axis added to every MC pricing engine actually reaches each engine's
