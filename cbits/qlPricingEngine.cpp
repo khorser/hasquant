@@ -81,6 +81,7 @@
 #include <ql/pricingengines/swaption/gaussian1dnonstandardswaptionengine.hpp>
 #include <ql/pricingengines/swaption/gaussian1dfloatfloatswaptionengine.hpp>
 #include <ql/pricingengines/swaption/gaussian1djamshidianswaptionengine.hpp>
+#include <ql/models/shortrate/onefactormodels/gaussian1dmodel.hpp>
 #include <ql/models/shortrate/calibrationhelpers/swaptionhelper.hpp>
 #include <ql/models/equity/hestonslvmcmodel.hpp>
 #include <ql/models/equity/hestonslvfdmmodel.hpp>
@@ -1394,6 +1395,30 @@ QlMarkovFunctional* qlMarkovFunctionalCaplet(QlYieldTermStructure* termStructure
 void qlMarkovFunctionalVolatility(QlMarkovFunctional* o, unsigned *len, double **vs, char **e) {
   try {Array vol = (*arg(o))->volatility(); *len = vol.size(); *vs = qlAllocateDoubles(*len); std::copy(vol.begin(), vol.end(), *vs);
   } catch (std::exception& er) {handleException<double*>(e, er);}}
+double qlGaussian1dModelNumeraire(QlGaussian1dModel* o, int referenceDate, double y, QlYieldTermStructure* yts, char **e) {
+  try {return (*arg(o))->numeraire(Date(referenceDate), y, qlNullableHandle(yts));
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlGaussian1dModelZerobond(QlGaussian1dModel* o, int maturity, int referenceDate, double y, QlYieldTermStructure* yts, char **e) {
+  try {return (*arg(o))->zerobond(Date(maturity), qlNullableDate(referenceDate), y, qlNullableHandle(yts));
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlGaussian1dModelZerobondOption(QlGaussian1dModel* o, int type, int expiry, int valueDate, int maturity, double strike, int referenceDate, double y, QlYieldTermStructure* yts, double yStdDevs, unsigned yGridPoints, int extrapolatePayoff, int flatPayoffExtrapolation, char **e) {
+  try {return (*arg(o))->zerobondOption((Option::Type)type, Date(expiry), Date(valueDate), Date(maturity), strike, qlNullableDate(referenceDate), y, qlNullableHandle(yts), yStdDevs, yGridPoints, extrapolatePayoff, flatPayoffExtrapolation);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlGaussian1dModelForwardRate(QlGaussian1dModel* o, int fixing, int referenceDate, double y, QlIborIndex* iborIdx, char **e) {
+  try {return (*arg(o))->forwardRate(Date(fixing), qlNullableDate(referenceDate), y, iborIdx ? *arg(iborIdx) : shared_ptr<IborIndex>());
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlGaussian1dModelSwapRate(QlGaussian1dModel* o, int fixing, int tenorLen, int tenorUnit, int referenceDate, double y, QlSwapIndex* swapIdx, char **e) {
+  try {return (*arg(o))->swapRate(Date(fixing), Period(tenorLen, (TimeUnit)tenorUnit), qlNullableDate(referenceDate), y, swapIdx ? *arg(swapIdx) : shared_ptr<SwapIndex>());
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlGaussian1dModelSwapAnnuity(QlGaussian1dModel* o, int fixing, int tenorLen, int tenorUnit, int referenceDate, double y, QlSwapIndex* swapIdx, char **e) {
+  try {return (*arg(o))->swapAnnuity(Date(fixing), Period(tenorLen, (TimeUnit)tenorUnit), qlNullableDate(referenceDate), y, swapIdx ? *arg(swapIdx) : shared_ptr<SwapIndex>());
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+void qlGaussian1dModelYGrid(QlGaussian1dModel* o, double yStdDevs, int gridPoints, double bigT, double t, double y, unsigned *len, double **out, char **e) {
+  try {Array grid = (*arg(o))->yGrid(yStdDevs, gridPoints, bigT, t, y); *len = grid.size(); *out = qlAllocateDoubles(*len); std::copy(grid.begin(), grid.end(), *out);
+  } catch (std::exception& er) {handleException<double*>(e, er);}}
+QlStochasticProcess1D* qlGaussian1dModelStateProcess(QlGaussian1dModel* o, char **e) {
+  try {return ret(new QlStochasticProcess1D((*arg(o))->stateProcess()));
+  } catch (std::exception& er) {return handleException<QlStochasticProcess1D*>(e, er);}}
 QlPricingEngine* qlGaussian1dSwaptionEngine(QlGaussian1dModel* model, int integrationPoints, double stddevs, int extrapolatePayoff, int flatPayoffExtrapolation, QlYieldTermStructure* discountCurve, int probabilities, char **e) {
   try {return ret(new QlPricingEngine(alloc(new Gaussian1dSwaptionEngine(*arg(model), integrationPoints, stddevs, extrapolatePayoff, flatPayoffExtrapolation, qlNullableHandle(discountCurve), (Gaussian1dSwaptionEngine::Probabilities)probabilities))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}

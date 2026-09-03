@@ -59,6 +59,15 @@ module QuantLib.Model
   , gsrAsGaussian1dModel
   , markovFunctionalAsGaussian1dModel
 
+  , gaussian1dNumeraire
+  , gaussian1dZerobond
+  , gaussian1dZerobondOption
+  , gaussian1dForwardRate
+  , gaussian1dSwapRate
+  , gaussian1dSwapAnnuity
+  , gaussian1dYGrid
+  , gaussian1dStateProcess
+
   , batesModel
   , blackKarasinski
   , coxIngersollRoss
@@ -121,6 +130,7 @@ import QuantLib.Internal
 {#import QuantLib.Time.Schedule#}(Frequency)
 {#import QuantLib.InterestRate#}(VolatilityType)
 {#import QuantLib.CashFlow#}(RateAveragingType)
+{#import QuantLib.Instrument.Option#}(OptionType)
 import QuantLib.Internal.Type
 import QuantLib.Internal.Common
 import QuantLib.Math(SobolDirectionIntegers)
@@ -191,6 +201,7 @@ data HestonSLVFDMLogEntry = HestonSLVFDMLogEntry
 {#pointer *QlBatesDoubleExpModel as BatesDoubleExpModel foreign -> CBatesDoubleExpModel' nocode#}
 {#pointer *QlGsr as Gsr foreign -> CGsr' nocode#}
 {#pointer *QlMarkovFunctional as MarkovFunctional foreign -> CMarkovFunctional' nocode#}
+{#pointer *QlGaussian1dModel foreign -> CGaussian1dModel' nocode#}
 {#pointer *QlSwapIndex as SwapIndex foreign -> CSwapIndex' nocode#}
 {#pointer *QlSwaptionVolatilityStructure as SwaptionVolatilityStructure foreign -> CSwaptionVolatilityStructure' nocode#}
 
@@ -462,6 +473,92 @@ markovFunctionalCaplet ts reversion initialVol steps capletVol expiries ibor gri
 
 -- |Volatility step values, as calibrated so far.
 {#fun qlMarkovFunctionalVolatility as markovFunctionalVolatility{withGenCalibratedModel*`MarkovFunctional',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+
+-- |Numeraire value at @referenceDate@, conditional on the standardized state variable @y@
+-- (0 = the model's expected path). @yts@ overrides the model's own term structure for
+-- discounting when given, otherwise the model's own curve is used.
+{#fun qlGaussian1dModelNumeraire as gaussian1dNumeraire{withStandalone*`Gaussian1dModel'
+  ,withDay*`Day' -- ^referenceDate
+  ,`Double' -- ^y
+  ,withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)' -- ^yts
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |Price at @referenceDate@ (default: the evaluation date) of a zero-coupon bond paying 1 at
+-- @maturity@, conditional on the standardized state variable @y@ (0 = the model's expected
+-- path). @yts@ overrides the model's own term structure for discounting when given.
+{#fun qlGaussian1dModelZerobond as gaussian1dZerobond{withStandalone*`Gaussian1dModel'
+  ,withDay*`Day' -- ^maturity
+  ,withMaybeDay*`Maybe Day' -- ^referenceDate
+  ,`Double' -- ^y
+  ,withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)' -- ^yts
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |Price of a European option of @type@, expiring at @expiry@ with @strike@, on a zero-coupon
+-- bond that itself pays 1 at @maturity@ and settles at @valueDate@, conditional on the
+-- standardized state variable @y@ at @referenceDate@ (default: the evaluation date). @yts@
+-- overrides the model's own discounting curve when given. The option payoff is evaluated on a
+-- grid of @yGridPoints@ points spanning @yStdDevs@ standard deviations of @y@;
+-- @extrapolatePayoff@\/@flatPayoffExtrapolation@ control payoff extrapolation beyond the grid.
+{#fun qlGaussian1dModelZerobondOption as gaussian1dZerobondOption{withStandalone*`Gaussian1dModel'
+  ,fromEnumC`OptionType' -- ^type
+  ,withDay*`Day' -- ^expiry
+  ,withDay*`Day' -- ^valueDate
+  ,withDay*`Day' -- ^maturity
+  ,`Double' -- ^strike
+  ,withMaybeDay*`Maybe Day' -- ^referenceDate
+  ,`Double' -- ^y
+  ,withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)' -- ^yts
+  ,`Double' -- ^yStdDevs
+  ,fromIntegral`Word' -- ^yGridPoints
+  ,`Bool' -- ^extrapolatePayoff
+  ,`Bool' -- ^flatPayoffExtrapolation
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |Forward rate for @iborIdx@ fixing on @fixing@, conditional on the standardized state
+-- variable @y@ at @referenceDate@ (default: the evaluation date). @iborIdx@ defaults to the
+-- model's own term structure's natural index when omitted.
+{#fun qlGaussian1dModelForwardRate as gaussian1dForwardRate{withStandalone*`Gaussian1dModel'
+  ,withDay*`Day' -- ^fixing
+  ,withMaybeDay*`Maybe Day' -- ^referenceDate
+  ,`Double' -- ^y
+  ,withMaybeIborIndex*`Maybe (GenIborIndex ibor)' -- ^iborIdx
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |Fair swap rate for a swap on @swapIdx@ fixing on @fixing@ with tenor @tenor@, conditional on
+-- the standardized state variable @y@ at @referenceDate@ (default: the evaluation date).
+{#fun qlGaussian1dModelSwapRate as gaussian1dSwapRate{withStandalone*`Gaussian1dModel'
+  ,withDay*`Day' -- ^fixing
+  ,fromEnumQuantity`(Int,TimeUnit)'& -- ^tenor
+  ,withMaybeDay*`Maybe Day' -- ^referenceDate
+  ,`Double' -- ^y
+  ,withMaybeSwapIndex*`Maybe (GenSwapIndex sidx)' -- ^swapIdx
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |Annuity (present value of a 1bp fixed leg) of a swap on @swapIdx@ fixing on @fixing@ with
+-- tenor @tenor@, conditional on the standardized state variable @y@ at @referenceDate@
+-- (default: the evaluation date).
+{#fun qlGaussian1dModelSwapAnnuity as gaussian1dSwapAnnuity{withStandalone*`Gaussian1dModel'
+  ,withDay*`Day' -- ^fixing
+  ,fromEnumQuantity`(Int,TimeUnit)'& -- ^tenor
+  ,withMaybeDay*`Maybe Day' -- ^referenceDate
+  ,`Double' -- ^y
+  ,withMaybeSwapIndex*`Maybe (GenSwapIndex sidx)' -- ^swapIdx
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |Grid of values for the standardized state variable at time @T@, conditional on the
+-- variable being @y@ at time @t@, spanning @yStdDevs@ standard deviations with
+-- @2*gridPoints+1@ points.
+{#fun qlGaussian1dModelYGrid as gaussian1dYGrid{withStandalone*`Gaussian1dModel'
+  ,`Double' -- ^yStdDevs
+  ,fromIntegral`Int' -- ^gridPoints
+  ,`Double' -- ^bigT
+  ,`Double' -- ^t
+  ,`Double' -- ^y
+  ,preArray-`RealVector'&peekRealVector*
+  ,preErrorCheck-`String'errorCheck*-}->`()'#}
+
+-- |The model's own state process. Throws if the model was constructed without one set.
+{#fun qlGaussian1dModelStateProcess as gaussian1dStateProcess{withStandalone*`Gaussian1dModel',preErrorCheck-`String'errorCheck*-}->`StochasticProcess1D'peekStochasticProcess1D*#}
 
 -- |Variance Gamma model for the underlying's log-return process (Madan-Carr-Chang).
 {#fun qlVarianceGammaModel as varianceGammaModel{withGenStochasticProcess1D*`VarianceGammaProcess',preErrorCheck-`String'errorCheck*-}->`CalibratedModel'peekCalibratedModel*#}

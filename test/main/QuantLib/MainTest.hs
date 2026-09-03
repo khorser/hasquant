@@ -22,6 +22,7 @@ import qualified QuantLib.Spec.Instrument.Energy as InstrumentEnergy
 import qualified QuantLib.Spec.Instrument.InflationCapFloor as InstrumentInflationCapFloor
 import qualified QuantLib.Spec.Instrument.Option as InstrumentOption
 import qualified QuantLib.Spec.Instrument.Swap as InstrumentSwap
+import qualified QuantLib.Spec.Model as Model
 import qualified QuantLib.Spec.PricingEngine as PricingEngine
 import qualified QuantLib.Spec.Process as Process
 import qualified QuantLib.Spec.Quote as Quote
@@ -53,6 +54,7 @@ main = do
     InstrumentInflationCapFloor.spec
     InstrumentOption.spec
     InstrumentSwap.spec
+    Model.spec
     PricingEngine.spec
     Process.spec
     Quote.spec

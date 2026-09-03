@@ -1508,6 +1508,8 @@ peekIborIndex :: Ptr CIborIndex' -> IO IborIndex
 peekIborIndex = newCastForeignPtr >=> newGenIborIndex
 withIborIndex :: GenIborIndex ibor -> (Ptr CIborIndex' -> IO b) -> IO b
 withIborIndex = withGenForeignPtr . peel . peel . getIndex
+withMaybeIborIndex :: Maybe (GenIborIndex ibor) -> (Ptr CIborIndex' -> IO b) -> IO b
+withMaybeIborIndex x f = maybe (f nullPtr) (`withIborIndex` f) x
 newGenIborIndex :: GenForeignPtr ibor CIborIndex' -> IO (GenIborIndex ibor)
 newGenIborIndex = pure . GenIndex . newAnyOf . newAnyOf
 
@@ -1522,6 +1524,8 @@ peekSwapIndex :: Ptr CSwapIndex' -> IO SwapIndex
 peekSwapIndex = newCastForeignPtr >=> newGenSwapIndex
 withSwapIndex :: GenSwapIndex sidx -> (Ptr CSwapIndex' -> IO b) -> IO b
 withSwapIndex  = withGenForeignPtr . peel . peel . getIndex
+withMaybeSwapIndex :: Maybe (GenSwapIndex sidx) -> (Ptr CSwapIndex' -> IO b) -> IO b
+withMaybeSwapIndex x f = maybe (f nullPtr) (`withSwapIndex` f) x
 newGenSwapIndex :: GenForeignPtr sidx CSwapIndex' -> IO (GenSwapIndex sidx)
 newGenSwapIndex = pure . GenIndex . newAnyOf . newAnyOf
 

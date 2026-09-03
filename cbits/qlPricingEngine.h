@@ -414,6 +414,14 @@ extern "C" {
   QlMarkovFunctional* qlMarkovFunctional(QlYieldTermStructure* termStructure, double reversion, unsigned volstepdatesLen, int* volstepdates, unsigned volatilitiesLen, double* volatilities, QlSwaptionVolatilityStructure* swaptionVol, unsigned expiriesLen, int* swaptionExpiries, unsigned tenorsLen, int* tenorQuantity, unsigned, int* tenorUnit, QlSwapIndex* swapIndexBase, unsigned yGridPoints, char **e);
   QlMarkovFunctional* qlMarkovFunctionalCaplet(QlYieldTermStructure* termStructure, double reversion, unsigned volstepdatesLen, int* volstepdates, unsigned volatilitiesLen, double* volatilities, QlOptionletVolatilityStructure* capletVol, unsigned expiriesLen, int* capletExpiries, QlIborIndex* iborIndex, unsigned yGridPoints, char **e);
   void qlMarkovFunctionalVolatility(QlMarkovFunctional* o, unsigned *len, double **vs, char **e);
+  double qlGaussian1dModelNumeraire(QlGaussian1dModel* o, int referenceDate, double y, QlYieldTermStructure* yts, char **e);
+  double qlGaussian1dModelZerobond(QlGaussian1dModel* o, int maturity, int referenceDate, double y, QlYieldTermStructure* yts, char **e);
+  double qlGaussian1dModelZerobondOption(QlGaussian1dModel* o, int type, int expiry, int valueDate, int maturity, double strike, int referenceDate, double y, QlYieldTermStructure* yts, double yStdDevs, unsigned yGridPoints, int extrapolatePayoff, int flatPayoffExtrapolation, char **e);
+  double qlGaussian1dModelForwardRate(QlGaussian1dModel* o, int fixing, int referenceDate, double y, QlIborIndex* iborIdx, char **e);
+  double qlGaussian1dModelSwapRate(QlGaussian1dModel* o, int fixing, int tenorLen, int tenorUnit, int referenceDate, double y, QlSwapIndex* swapIdx, char **e);
+  double qlGaussian1dModelSwapAnnuity(QlGaussian1dModel* o, int fixing, int tenorLen, int tenorUnit, int referenceDate, double y, QlSwapIndex* swapIdx, char **e);
+  void qlGaussian1dModelYGrid(QlGaussian1dModel* o, double yStdDevs, int gridPoints, double bigT, double t, double y, unsigned *len, double **out, char **e);
+  QlStochasticProcess1D* qlGaussian1dModelStateProcess(QlGaussian1dModel* o, char **e);
   QlPricingEngine* qlGaussian1dSwaptionEngine(QlGaussian1dModel* model, int integrationPoints, double stddevs, int extrapolatePayoff, int flatPayoffExtrapolation, QlYieldTermStructure* discountCurve, int probabilities, char **e);
   QlPricingEngine* qlGaussian1dNonstandardSwaptionEngine(QlGaussian1dModel* model, int integrationPoints, double stddevs, int extrapolatePayoff, int flatPayoffExtrapolation, QlQuote* oas, QlYieldTermStructure* discountCurve, int probabilities, char **e);
   QlPricingEngine* qlGaussian1dFloatFloatSwaptionEngine(QlGaussian1dModel* model, int integrationPoints, double stddevs, int extrapolatePayoff, int flatPayoffExtrapolation, QlQuote* oas, QlYieldTermStructure* discountCurve, int includeTodaysExercise, int probabilities, char **e);
