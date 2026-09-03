@@ -64,7 +64,8 @@ import QuantLib.Internal.Type
 {#pointer *Schedule foreign -> CSchedule nocode#}
 {#pointer *QlClaim as Claim foreign -> CQlClaim nocode#}
 {#pointer *QlExercise nocode#}
-{#pointer *QlBasket as Basket foreign -> CBasket nocode#}
+{#pointer *QlBasket as TrancheBasket foreign -> CBasket nocode#}
+{#pointer *QlBasket as DigitalBasket foreign -> CBasket nocode#}
 {#pointer *QlSyntheticCDO as SyntheticCDO foreign -> CSyntheticCDO' nocode#}
 {#pointer *QlNthToDefault as NthToDefault foreign -> CNthToDefault' nocode#}
 
@@ -154,16 +155,19 @@ import QuantLib.Internal.Type
 -- |NPV of the upfront payment.
 {#fun qlCreditDefaultSwapUpfrontNPV as upfrontNPV{withGenInstrument*`CreditDefaultSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
--- |A synthetic CDO tranche: the premium and protection legs on a 'Basket' tranche between
--- @attachmentRatio@ and @detachmentRatio@ (set on the 'Basket' itself, not here). @notional@
--- overrides the tranche's own notional (upstream's leverage factor); 'Nothing' uses the
--- basket's tranche notional directly.
+-- |A synthetic CDO tranche: the premium and protection legs on a 'QuantLib.Credit.TrancheBasket'
+-- tranche between @attachmentRatio@ and @detachmentRatio@ (set on the basket itself, not here).
+-- The basket must carry a tranche-loss model (e.g. 'QuantLib.Credit.gaussianLHPLossModel') --
+-- see 'QuantLib.Credit.basket'\'s haddock for why a
+-- 'QuantLib.Credit.DigitalBasket' can't be used here instead. @notional@ overrides the
+-- tranche's own notional (upstream's leverage factor); 'Nothing' uses the basket's tranche
+-- notional directly.
 -- side Whether protection is bought or sold. schedule Premium payment schedule. upfrontRate Upfront in fractional units. runningRate Running premium in fractional units. dayCounter Day-count convention for accrual. paymentConvention Business-day convention for payment-date adjustment. notional Overrides the tranche notional implied by the basket.
-syntheticCDO :: Basket -> ProtectionSide -> Schedule -> Double -> Double -> DayCounter -> BusinessDayConvention
+syntheticCDO :: TrancheBasket -> ProtectionSide -> Schedule -> Double -> Double -> DayCounter -> BusinessDayConvention
   -> Maybe Double -> IO SyntheticCDO
 syntheticCDO basket side sched upfrontRate runningRate dc conv notional =
   syntheticCDO_ basket side sched upfrontRate runningRate dc conv (maybe False (const True) notional) (maybe 0 id notional)
-{#fun qlSyntheticCDO as syntheticCDO_{withBasket*`Basket',`ProtectionSide',withSchedule*`Schedule',`Double',`Double'
+{#fun qlSyntheticCDO as syntheticCDO_{withTrancheBasket*`TrancheBasket',`ProtectionSide',withSchedule*`Schedule',`Double',`Double'
   ,withDayCounter*`DayCounter',fromEnumC`BusinessDayConvention',`Bool',`Double'
   ,preErrorCheck-`String'errorCheck*-}->`SyntheticCDO'peekSyntheticCDO*#}
 
@@ -198,13 +202,18 @@ syntheticCDO basket side sched upfrontRate runningRate dc conv notional =
   ,`Double' -- ^accuracy
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
--- |An nth-to-default swap: protection against the @n@-th default (by time) in a 'Basket',
--- priced via John Hull and Alan White, \"Valuation of a CDO and nth to default CDS without
--- Monte Carlo simulation\", Journal of Derivatives 12, 2, 2004. Only 'ntdFairPremium' is bound
+-- |An nth-to-default swap: protection against the @n@-th default (by time) in a
+-- 'QuantLib.Credit.DigitalBasket', priced via John Hull and Alan White, \"Valuation of a CDO
+-- and nth to default CDS without Monte Carlo simulation\", Journal of Derivatives 12, 2, 2004.
+-- The basket must be a 'QuantLib.Credit.DigitalBasket' (built via
+-- 'QuantLib.Credit.digitalBasket' over a digital-only loss model such as
+-- 'QuantLib.Credit.constantLossModel'), not a plain tranche-loss 'QuantLib.Credit.TrancheBasket': the
+-- pricing engine needs @probAtLeastNEvents@\/@probsBeingNthEvent@, which tranche-loss models
+-- like 'QuantLib.Credit.gaussianLHPLossModel' don't implement. Only 'ntdFairPremium' is bound
 -- from the results surface -- @premium@, @nominal@, @dayCounter@, @side@, @rank@ and
 -- @basketSize@ are all constructor echoes.
--- basket Underlying basket of names. n Which default (1-based) protection is bought/sold on. side Whether protection is bought or sold. premiumSchedule Premium payment schedule. upfrontRate Upfront in fractional units. premiumRate Running premium in fractional units. dayCounter Day-count convention for accrual. nominal Protected notional amount. settlePremiumAccrual Whether the accrued premium is due in the event of the triggering default.
-{#fun qlNthToDefault as nthToDefault{withBasket*`Basket',fromIntegral`Word',`ProtectionSide'
+-- basket Underlying digital basket of names. n Which default (1-based) protection is bought/sold on. side Whether protection is bought or sold. premiumSchedule Premium payment schedule. upfrontRate Upfront in fractional units. premiumRate Running premium in fractional units. dayCounter Day-count convention for accrual. nominal Protected notional amount. settlePremiumAccrual Whether the accrued premium is due in the event of the triggering default.
+{#fun qlNthToDefault as nthToDefault{withDigitalBasket*`DigitalBasket',fromIntegral`Word',`ProtectionSide'
   ,withSchedule*`Schedule',`Double',`Double',withDayCounter*`DayCounter',`Double',`Bool'
   ,preErrorCheck-`String'errorCheck*-}->`NthToDefault'peekNthToDefault*#}
 

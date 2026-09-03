@@ -48,7 +48,7 @@ spec =
 
       b <- basket refDate (fromList [(n, notionalPerName) | n <- names]) p 0.0 1.0 FaceValue lossModel
 
-      notional <- basketNotional b
+      notional <- basketNotional (trancheBasketAsBasket b)
       notional `shouldBe` notionalPerName * fromIntegral (length names)
 
       let futureDate = addGregorianYearsClip 5 refDate
@@ -165,7 +165,7 @@ spec =
 
       let buildNtds correlQuote = do
             lossModel <- constantLossModel correlQuote (fromList (replicate poolSize recovery)) GaussianQuadrature []
-            b <- basket refDate (fromList [(n, namesNotional / fromIntegral poolSize) | n <- names]) p 0.0 1.0 FaceValue lossModel
+            b <- digitalBasket refDate (fromList [(n, namesNotional / fromIntegral poolSize) | n <- names]) p 0.0 1.0 FaceValue lossModel
             mapM (\i -> do
               ntd <- nthToDefault b (fromIntegral i) Seller sched 0.0 0.02 act360 (namesNotional * fromIntegral poolSize) True
               setPricingEngine ntd engine
@@ -190,7 +190,7 @@ spec =
       -- Student-T reference table).
       studentCorrelQuote <- simpleQuote 0.3
       studentLossModel <- constantLossModel studentCorrelQuote (fromList (replicate poolSize recovery)) GaussianQuadrature [5, 5]
-      studentBasket <- basket refDate (fromList [(n, namesNotional / fromIntegral poolSize) | n <- names]) p 0.0 1.0 FaceValue studentLossModel
+      studentBasket <- digitalBasket refDate (fromList [(n, namesNotional / fromIntegral poolSize) | n <- names]) p 0.0 1.0 FaceValue studentLossModel
       studentNtds <- mapM (\i -> do
         ntd <- nthToDefault studentBasket (fromIntegral i) Seller sched 0.0 0.02 act360 (namesNotional * fromIntegral poolSize) True
         setPricingEngine ntd engine

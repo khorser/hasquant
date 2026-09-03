@@ -54,6 +54,10 @@ double qlBasketExpectedTrancheLoss(QlBasket* o, int d, char **e) {
   try {return (*arg(o))->expectedTrancheLoss(Date(d));
   } catch (std::exception& er) {return handleException<double>(e, er);}}
 
+QlBasket* qlDigitalBasket(int refDate, unsigned namesLen, char** names, double* notionals, QlPool* pool, double attachmentRatio, double detachmentRatio, QlClaim* claim, QlDefaultLossModel* lossModel, char **e) {
+  return qlBasket(refDate, namesLen, names, notionals, pool, attachmentRatio, detachmentRatio, claim, lossModel, e);
+}
+
 QlDefaultLossModel* qlGaussianLHPLossModel(QlQuote* correlQuote, unsigned recoveriesLen, double* recoveries, char **e) {
   try {return ret(new QlDefaultLossModel(alloc(new GaussianLHPLossModel(*arg(correlQuote), std::vector<double>(recoveries, recoveries + recoveriesLen)))));
   } catch (std::exception& er) {return handleException<QlDefaultLossModel*>(e, er);}}

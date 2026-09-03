@@ -1790,6 +1790,28 @@ withDefaultProbabilityTermStructureArrayRaw x f = withMany withGenTermStructure 
 -- (qlGaussianLHPLossModel here, more to follow) all return this one opaque type, so it needs no
 -- GenX/AnyOf family -- nothing in hasquant ever needs to distinguish which concrete loss model
 -- it is or upcast further.
+--
+-- DigitalLossModel is a second, deliberately *non*-interchangeable type over the same C
+-- representation as DefaultLossModel (CDefaultLossModel, same finalizer). DefaultLossModel's own
+-- virtuals split into two disjoint, non-overlapping halves across upstream's concrete models --
+-- confirmed by reading gaussianlhplossmodel.hpp and constantlosslatentmodel.hpp side by side, not
+-- assumed: GaussianLHPLossModel overrides expectedTrancheLoss/percentile/probOverLoss/
+-- expectedShortfall (what SyntheticCDO's engines and basketExpectedTrancheLoss need);
+-- ConstantLossModel overrides probAtLeastNEvents/probsBeingNthEvent/defaultCorrelation instead
+-- (what IntegralNtdEngine needs, per integralntdengine.cpp) -- every method it does *not*
+-- override still QL_FAILs at runtime with "Not implemented for this model", and vice versa. So
+-- QuantLib.Credit.constantLossModel (and any future digital-only model) returns DigitalLossModel,
+-- only foldable into a DigitalBasket via QuantLib.Credit.digitalBasket.
+--
+-- Basket/TrancheBasket/DigitalBasket mirror that split, verified the same way against
+-- basket.cpp: Basket carries every Basket-level accessor that is *not* delegated to the loss
+-- model (notional, remainingNotional, ...) and so is safe regardless of which loss model is
+-- attached; TrancheBasket and DigitalBasket each add the delegated half their respective loss
+-- model actually implements (basketExpectedTrancheLoss on TrancheBasket;
+-- QuantLib.Instrument.Credit.nthToDefault's basket argument is DigitalBasket). QuantLib's own
+-- Basket class carries no such distinction -- the C representation is identical either way -- so
+-- 'trancheBasketAsBasket'/'digitalBasketAsBasket' are free relabels, not FFI calls, unlike the
+-- Upcastable-based upcasts used elsewhere in this module for a genuine C++ hierarchy edge.
 data CDefaultProbKey
 newtype DefaultProbKey = DefaultProbKey {getCDefaultProbKey :: Standalone CDefaultProbKey}
 foreign import ccall unsafe "ql.h &qlFreeDefaultProbKey" qlFreeDefaultProbKey :: FinalizerPtr CDefaultProbKey
@@ -1829,6 +1851,9 @@ data CBasket
 -- Constructor is 'MkBasket', not 'Basket' -- QuantLib.Internal.Common's Payoff ADT already
 -- has a 'Basket' data constructor (for BasketPayoff), and Common.chs imports this module
 -- unqualified, so reusing the name here would make every pattern match on either ambiguous.
+--
+-- Universal, loss-model-agnostic accessors only -- see TrancheBasket/DigitalBasket below and the
+-- CREDIT section comment above for why the delegated (loss-model-dependent) surface is not here.
 newtype Basket = MkBasket {getCBasket :: Standalone CBasket}
 foreign import ccall unsafe "ql.h &qlFreeBasket" qlFreeBasket :: FinalizerPtr CBasket
 instance Finalizable CBasket where finalize = qlFreeBasket
@@ -1836,6 +1861,24 @@ peekBasket :: Ptr CBasket -> IO Basket
 peekBasket = MkBasket <.> peekStandalone
 withBasket :: Basket -> (Ptr CBasket -> IO b) -> IO b
 withBasket = withStandalone . getCBasket
+
+-- A Basket guaranteed, by construction (QuantLib.Credit.basket is the only way to get one), to
+-- carry a tranche-loss model: required by QuantLib.Instrument.Credit.syntheticCDO and
+-- QuantLib.Credit.basketExpectedTrancheLoss. 'trancheBasketAsBasket' is a free relabel (no FFI
+-- call) -- see the CREDIT section comment above.
+newtype TrancheBasket = MkTrancheBasket {trancheBasketAsBasket :: Basket}
+peekTrancheBasket :: Ptr CBasket -> IO TrancheBasket
+peekTrancheBasket = MkTrancheBasket <.> peekBasket
+withTrancheBasket :: TrancheBasket -> (Ptr CBasket -> IO b) -> IO b
+withTrancheBasket = withBasket . trancheBasketAsBasket
+
+-- A Basket guaranteed to carry a digital-only loss model: required by
+-- QuantLib.Instrument.Credit.nthToDefault. See TrancheBasket above.
+newtype DigitalBasket = MkDigitalBasket {digitalBasketAsBasket :: Basket}
+peekDigitalBasket :: Ptr CBasket -> IO DigitalBasket
+peekDigitalBasket = MkDigitalBasket <.> peekBasket
+withDigitalBasket :: DigitalBasket -> (Ptr CBasket -> IO b) -> IO b
+withDigitalBasket = withBasket . digitalBasketAsBasket
 
 data CDefaultLossModel
 newtype DefaultLossModel = DefaultLossModel {getCDefaultLossModel :: Standalone CDefaultLossModel}
@@ -1845,6 +1888,15 @@ peekDefaultLossModel :: Ptr CDefaultLossModel -> IO DefaultLossModel
 peekDefaultLossModel = DefaultLossModel <.> peekStandalone
 withDefaultLossModel :: DefaultLossModel -> (Ptr CDefaultLossModel -> IO b) -> IO b
 withDefaultLossModel = withStandalone . getCDefaultLossModel
+
+-- Same CDefaultLossModel representation and Finalizable instance as DefaultLossModel above; a
+-- distinct Haskell type so a digital-only loss model (QuantLib.Credit.constantLossModel) can't
+-- be handed to Basket's tranche-loss constructor or vice versa. See the CREDIT section comment.
+newtype DigitalLossModel = MkDigitalLossModel {getCDigitalLossModel :: Standalone CDefaultLossModel}
+peekDigitalLossModel :: Ptr CDefaultLossModel -> IO DigitalLossModel
+peekDigitalLossModel = MkDigitalLossModel <.> peekStandalone
+withDigitalLossModel :: DigitalLossModel -> (Ptr CDefaultLossModel -> IO b) -> IO b
+withDigitalLossModel = withStandalone . getCDigitalLossModel
 
 type CZeroInflationTermStructure = ForeignPtr CZeroInflationTermStructure'
 type ZeroInflationTermStructure = GenTermStructure CZeroInflationTermStructure

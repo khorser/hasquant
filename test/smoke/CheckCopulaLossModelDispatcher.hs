@@ -9,7 +9,11 @@
 -- basketExpectedTrancheLoss: ConstantLossModel has no distribution-type loss integration of its
 -- own (see its upstream doc comment and QuantLib.Credit.constantLossModel's haddock), and
 -- calling that on a ConstantLossModel-backed basket throws "Not implemented for this model",
--- caught the hard way while first writing this script with expectedTrancheLoss instead.
+-- caught the hard way while first writing this script with expectedTrancheLoss instead. That
+-- pitfall is now also caught at compile time: constantLossModel returns a DigitalLossModel,
+-- which only digitalBasket (not basket) accepts, and basketExpectedTrancheLoss only takes the
+-- TrancheBasket that basket (not digitalBasket) returns -- see QuantLib/Internal/Type.hs's
+-- CREDIT section comment for the full Basket/TrancheBasket/DigitalBasket rationale.
 --
 -- Run with: .claude/skills/run-hasquant/driver.sh test/smoke/CheckCopulaLossModelDispatcher.hs
 import Data.List.NonEmpty(fromList)
@@ -59,7 +63,7 @@ main = do
   let recoveries = fromList [0.4, 0.4]
 
       priceFirstToDefault lm = do
-        b <- basket refDate (fromList [(n, notional) | n <- names]) p 0.0 1.0 FaceValue lm
+        b <- digitalBasket refDate (fromList [(n, notional) | n <- names]) p 0.0 1.0 FaceValue lm
         ntd <- nthToDefault b 1 Seller sched 0.0 0.02 dc (notional * fromIntegral (length names)) True
         setPricingEngine ntd engine
         ntdFairPremium ntd

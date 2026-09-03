@@ -25,6 +25,14 @@ extern "C" {
   // test a discriminating check that the loss model actually wired up; the remaining outputs
   // (percentile, expectedShortfall, lossDistribution, ...) are a separate step.
   double qlBasketExpectedTrancheLoss(QlBasket* o, int d, char **e);
+  // Identical to qlBasket -- QuantLib's own Basket doesn't distinguish which DefaultLossModel
+  // subclass it holds. This entry point exists only so the Haskell side can bind its result as
+  // the distinct DigitalBasket type (see QuantLib/Internal/Type.hs's CREDIT comment), which is
+  // the only basket type qlNthToDefault accepts: GaussianLHPLossModel-backed baskets (built via
+  // qlBasket) don't implement the probAtLeastNEvents/probsBeingNthEvent virtuals
+  // IntegralNtdEngine needs, and ConstantLossModel-backed baskets don't implement
+  // expectedTrancheLoss -- QL_FAILs at runtime either way, caught here at compile time instead.
+  QlBasket* qlDigitalBasket(int refDate, unsigned namesLen, char** names, double* notionals, QlPool* pool, double attachmentRatio, double detachmentRatio, QlClaim* claim, QlDefaultLossModel* lossModel, char **e);
 
   // ql/experimental/credit/gaussianlhplossmodel.hpp -- only the Handle<Quote> correlation
   // overload is bound, per the std::variant/Handle<Quote> convention (a caller with a bare

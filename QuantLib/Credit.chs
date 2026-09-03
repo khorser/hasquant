@@ -20,12 +20,21 @@ module QuantLib.Credit
   , pool
 
   , Basket
-  , basket
   , basketNotional
+
+  , TrancheBasket
+  , basket
+  , trancheBasketAsBasket
   , basketExpectedTrancheLoss
+
+  , DigitalBasket
+  , digitalBasket
+  , digitalBasketAsBasket
 
   , DefaultLossModel
   , gaussianLHPLossModel
+
+  , DigitalLossModel
   , constantLossModel
   ) where
 import Data.List.NonEmpty(NonEmpty, toList)
@@ -58,7 +67,10 @@ import QuantLib.Internal.Type
 {#pointer *Issuer foreign -> CIssuer nocode#}
 {#pointer *QlPool as Pool foreign -> CPool nocode#}
 {#pointer *QlBasket as Basket foreign -> CBasket nocode#}
+{#pointer *QlBasket as TrancheBasket foreign -> CBasket nocode#}
+{#pointer *QlBasket as DigitalBasket foreign -> CBasket nocode#}
 {#pointer *QlDefaultLossModel as DefaultLossModel foreign -> CDefaultLossModel nocode#}
+{#pointer *QlDefaultLossModel as DigitalLossModel foreign -> CDefaultLossModel nocode#}
 
 -- |ISDA standard default contractual key for corporate US debt. @restructuringType@ may be
 -- 'NoRestructuring' to disable restructuring as a trigger.
@@ -97,7 +109,16 @@ pool entries = qlPool names issuers keys
 -- reference fixtures (@cdo.cpp@, @nthtodefault.cpp@) sets it once at construction and never
 -- changes it afterwards, so the shim calls @setLossModel@ internally and no mutator is exposed
 -- to Haskell.
-basket :: Day -> NonEmpty (String, Double) -> Pool -> Double -> Double -> Claim -> DefaultLossModel -> IO Basket
+--
+-- Returns a 'TrancheBasket' -- required by 'QuantLib.Instrument.Credit.syntheticCDO' and
+-- 'basketExpectedTrancheLoss' -- rather than the plain 'Basket', because those two only work
+-- correctly with a tranche-loss model (e.g. 'gaussianLHPLossModel'); see 'DigitalLossModel'\'s
+-- haddock for the (verified, not assumed) reason a digital-only model can't take their place. A
+-- digital-only model uses 'digitalBasket' instead, which returns a 'DigitalBasket'. Both
+-- 'TrancheBasket' and 'DigitalBasket' still upcast to the loss-model-agnostic 'Basket' for free
+-- via 'trancheBasketAsBasket'\/'digitalBasketAsBasket' -- e.g. to call 'basketNotional', which
+-- works regardless of which loss model is attached.
+basket :: Day -> NonEmpty (String, Double) -> Pool -> Double -> Double -> Claim -> DefaultLossModel -> IO TrancheBasket
 basket refDate positions p attachmentRatio detachmentRatio cl lm =
   qlBasket refDate names notionals p attachmentRatio detachmentRatio cl lm
   where (names, notionals) = unzip (toList positions)
@@ -109,14 +130,36 @@ basket refDate positions p attachmentRatio detachmentRatio cl lm =
   ,`Double' -- ^detachmentRatio
   ,withClaim*`Claim'
   ,withDefaultLossModel*`DefaultLossModel'
-  ,preErrorCheck-`String'errorCheck*-}->`Basket'peekBasket*#}
+  ,preErrorCheck-`String'errorCheck*-}->`TrancheBasket'peekTrancheBasket*#}
 
 -- |Basket total notional at inception (sum of the positions' notionals, ignoring any losses).
+-- Loss-model-agnostic (a plain constructor echo, computed before any loss model is consulted):
+-- takes the universal 'Basket', so it works on a 'TrancheBasket' or 'DigitalBasket' alike via
+-- 'trancheBasketAsBasket'\/'digitalBasketAsBasket'.
 {#fun qlBasketNotional as basketNotional{withBasket*`Basket',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
--- |Expected tranche loss on date @d@, according to the basket's attached loss model.
-{#fun qlBasketExpectedTrancheLoss as basketExpectedTrancheLoss{withBasket*`Basket',withDay*`Day' -- ^d
+-- |Expected tranche loss on date @d@, according to the basket's attached tranche-loss model.
+-- Requires a 'TrancheBasket' -- see 'basket'\'s haddock for why a 'DigitalBasket' can't be used
+-- here instead.
+{#fun qlBasketExpectedTrancheLoss as basketExpectedTrancheLoss{withTrancheBasket*`TrancheBasket',withDay*`Day' -- ^d
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |Like 'basket', but takes a 'DigitalLossModel' and returns a 'DigitalBasket' -- the only
+-- basket type 'QuantLib.Instrument.Credit.nthToDefault' accepts. See 'DigitalLossModel'\'s
+-- haddock for why a digital-only model can't be plugged into 'basket' instead.
+digitalBasket :: Day -> NonEmpty (String, Double) -> Pool -> Double -> Double -> Claim -> DigitalLossModel -> IO DigitalBasket
+digitalBasket refDate positions p attachmentRatio detachmentRatio cl lm =
+  qlDigitalBasket refDate names notionals p attachmentRatio detachmentRatio cl lm
+  where (names, notionals) = unzip (toList positions)
+{#fun qlDigitalBasket{withDay*`Day' -- ^refDate
+  ,withStringArray*`[String]'&
+  ,withDoubleArrayRaw*`[Double]'
+  ,withPool*`Pool'
+  ,`Double' -- ^attachmentRatio
+  ,`Double' -- ^detachmentRatio
+  ,withClaim*`Claim'
+  ,withDigitalLossModel*`DigitalLossModel'
+  ,preErrorCheck-`String'errorCheck*-}->`DigitalBasket'peekDigitalBasket*#}
 
 -- |Gaussian large homogeneous pool (LHP) loss model: an analytical one-factor Gaussian-copula
 -- approximation, exact in the limit of a large, homogeneous portfolio (Kalemanova, Schmid,
@@ -135,20 +178,25 @@ gaussianLHPLossModel correlQuote recoveries = qlGaussianLHPLossModel correlQuote
 -- White, \"Valuation of a CDO and nth to default CDS without Monte Carlo simulation\", Journal
 -- of Derivatives 12, 2, 2004), exact (no large-pool approximation) but limited to digital-type
 -- payoffs (e.g. 'QuantLib.Instrument.Credit.NthToDefault') since it has no distribution-type
--- loss integration of its own. @recoveries@ is one recovery rate per basket name, in the same
--- order the basket's own names appear (@nVariables@ is taken from its length). @tOrders@
--- selects the copula: @[]@ uses a Gaussian copula; a non-empty list selects a Student-T copula
--- with these degrees of freedom -- upstream requires exactly one entry per systemic factor plus
--- one for the idiosyncratic factor, which for this one-factor model is always two entries (e.g.
--- @[5,5]@), and throws if the count is wrong. Only the @Handle\<Quote\>@ correlation overload is
--- bound, per CLAUDE.md's @std::variant@\/@Handle\<Quote\>@ convention.
-constantLossModel :: GenQuote q -> NonEmpty Double -> LatentModelIntegrationType -> [Int] -> IO DefaultLossModel
+-- loss integration of its own -- calling, say, 'basketExpectedTrancheLoss' on a basket built
+-- from this model throws upstream's own \"Not implemented for this model\". The returned
+-- 'DigitalLossModel' enforces that restriction at compile time instead: it can only be plugged
+-- into 'digitalBasket', which can only be plugged into 'QuantLib.Instrument.Credit.nthToDefault'
+-- -- not into 'basket' or 'QuantLib.Instrument.Credit.syntheticCDO'. @recoveries@ is one
+-- recovery rate per basket name, in the same order the basket's own names appear (@nVariables@
+-- is taken from its length). @tOrders@ selects the copula: @[]@ uses a Gaussian copula; a
+-- non-empty list selects a Student-T copula with these degrees of freedom -- upstream requires
+-- exactly one entry per systemic factor plus one for the idiosyncratic factor, which for this
+-- one-factor model is always two entries (e.g. @[5,5]@), and throws if the count is wrong. Only
+-- the @Handle\<Quote\>@ correlation overload is bound, per CLAUDE.md's
+-- @std::variant@\/@Handle\<Quote\>@ convention.
+constantLossModel :: GenQuote q -> NonEmpty Double -> LatentModelIntegrationType -> [Int] -> IO DigitalLossModel
 constantLossModel correlQuote recoveries integralType tOrders =
   qlConstantLossModel correlQuote (toList recoveries) integralType tOrders
 {#fun qlConstantLossModel{withQuote*`GenQuote q'
   ,withDoubleArray*`[Double]'&
   ,`LatentModelIntegrationType'
   ,withIntArray*`[Int]'&
-  ,preErrorCheck-`String'errorCheck*-}->`DefaultLossModel'peekDefaultLossModel*#}
+  ,preErrorCheck-`String'errorCheck*-}->`DigitalLossModel'peekDigitalLossModel*#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

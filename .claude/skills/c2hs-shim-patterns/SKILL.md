@@ -608,3 +608,48 @@ generic-lambda dispatcher") is about not re-duplicating a *dispatch axis* per ca
 minting a new file per bound class -- a single new dispatcher for an existing domain goes into that
 domain's existing Aux TU, and only a genuinely new domain with no existing Aux file yet (as
 `qlPricingEngineAux.cpp` was, once, for the engine domain) justifies a new one.
+
+## A capability split with no real C++ hierarchy still wants a family, but the upcast is free
+
+**When two Haskell-only "flavours" of the same concrete C++ type are indistinguishable at the C++
+level, don't reach for `Upcastable`/`AnyOf` -- write the free relabel by hand.** `Basket`
+(`ql/experimental/credit/basket.hpp`) is a single, non-polymorphic C++ class; QuantLib itself makes
+no distinction between "a `Basket` with a tranche-loss model attached" and "a `Basket` with a
+digital-only loss model attached" -- both are the same `shared_ptr<Basket>`. But
+`DefaultLossModel`'s virtuals split into two disjoint, non-overlapping halves across its concrete
+subclasses (confirmed by reading `basket.cpp`: every delegated method, e.g.
+`expectedTrancheLoss`/`probOverLoss`/`percentile`/`expectedShortfall`/`splitVaRLevel`/
+`lossDistribution`/`probsBeingNthEvent`/`defaultCorrelation`/`probAtLeastNEvents`/`recoveryRate`,
+calls `lossModel_->...`, and `GaussianLHPLossModel` and `ConstantLossModel` each override a
+different, non-overlapping subset -- see `QuantLib/Internal/Type.hs`'s CREDIT section comment).
+Handing every consumer a single `Basket` type either lets `syntheticCDO`/`basketExpectedTrancheLoss`
+compile against a `ConstantLossModel`-backed basket (QL_FAILs at runtime) or vice versa for
+`nthToDefault` -- exactly the kind of runtime throw AGENTS.md's `std::variant` guidance and the
+"avoid `dynamic_cast`" bullet exist to push to compile time instead.
+
+The fix is a 3-type family -- `Basket` (universal: every loss-model-agnostic accessor, e.g.
+`basketNotional`), `TrancheBasket` and `DigitalBasket` (each required by the consumers that need
+their loss model's delegated half) -- but since there is no real C++ upcast to perform (the pointer
+is the exact same `CBasket`/`shared_ptr<Basket>` either way), the "upcast" is a pure, zero-cost
+relabel, not an `IO`-sequenced FFI call:
+
+```haskell
+newtype TrancheBasket = MkTrancheBasket {trancheBasketAsBasket :: Basket}
+peekTrancheBasket :: Ptr CBasket -> IO TrancheBasket
+peekTrancheBasket = MkTrancheBasket <.> peekBasket
+withTrancheBasket :: TrancheBasket -> (Ptr CBasket -> IO b) -> IO b
+withTrancheBasket = withBasket . trancheBasketAsBasket
+```
+
+This is deliberately lighter than the "Multiple inheritance (secondary interfaces)" pattern above
+(no `qlXAsInterfaceY` C shim, no `Standalone`/eager-materialization dance) precisely because that
+pattern's ceremony exists to perform a *real* C++ upcast; reproducing it here would add an FFI
+round-trip for a distinction QuantLib's own object model doesn't make. The two leaves each still
+need their own dedicated C entry point (`qlBasket`/`qlDigitalBasket`, byte-identical bodies, the
+second literally delegating to the first) purely so their `{#fun#}` bindings peek into distinct
+Haskell types -- reusing one C symbol under two `{#fun#}` aliases risks c2hs generating two
+low-level FFI stubs under a colliding derived name (untested here; not worth the risk when a
+one-line delegating C shim sidesteps the question entirely). Recognize this shape whenever a
+capability/permission distinction is invented purely on the Haskell side over one concrete,
+non-polymorphic upstream class -- check for it before assuming every "leaf under a family" case
+needs the heavier `Upcastable` machinery.
