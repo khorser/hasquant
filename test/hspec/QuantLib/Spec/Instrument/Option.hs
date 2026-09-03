@@ -411,6 +411,33 @@ spec = do
         v <- npv opt
         v `shouldSatisfy` closePrec 20.2845 1.0e-4
 
+  describe "EverestOption" $
+    -- cached reference from QuantLib test-suite/everestoption.cpp::testCached.
+    it "matches the cached MCEverestEngine value" $
+      Settings.keepingSettings' $ do
+        evalDate <- today
+        Settings.setEvaluationDate (Just evalDate)
+        p1 <- flatProcess evalDate 1.0 0.01 0.05 0.30 >>= asStochasticProcess1D
+        p2 <- flatProcess evalDate 1.0 0.05 0.05 0.35 >>= asStochasticProcess1D
+        p3 <- flatProcess evalDate 1.0 0.04 0.05 0.25 >>= asStochasticProcess1D
+        p4 <- flatProcess evalDate 1.0 0.03 0.05 0.20 >>= asStochasticProcess1D
+        let correlation = matrix 4 4
+              [ 1.00, 0.50, 0.30, 0.10
+              , 0.50, 1.00, 0.20, 0.40
+              , 0.30, 0.20, 1.00, 0.60
+              , 0.10, 0.40, 0.60, 1.00 ]
+        procs <- stochasticProcessArray (fromList [p1, p2, p3, p4]) correlation
+        opt <- everestOption 1.0 0.0 (europeanIn 360 evalDate)
+        eng <- mcEverestEngine PseudoRandom Statistics procs Nothing (Just 1) False False (Just 1023) Nothing Nothing 86421
+        setPricingEngine opt eng
+        v <- npv opt
+        v `shouldSatisfy` closePrec 0.75784944 1.0e-8
+        -- yield = NPV/(notional*discount) - 1; sanity-checked here (no cached reference),
+        -- consistent with an NPV well below the notional under a positive discount rate.
+        y <- yield opt
+        y `shouldSatisfy` (< 0)
+        y `shouldSatisfy` (> -1)
+
   describe "CliquetOption" $
     -- cached reference from QuantLib test-suite/cliquetoption.cpp::testValues (Haug, p.37).
     it "reproduces Haug's cliquet option value" $

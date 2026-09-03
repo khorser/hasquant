@@ -163,6 +163,7 @@ typedef struct QlLmCorrelationModel QlLmCorrelationModel;
 typedef struct QlLmVolatilityModel QlLmVolatilityModel;
 typedef struct QlLocalVolTermStructure QlLocalVolTermStructure;
 typedef struct QlAndreasenHugeVolatilityInterpl QlAndreasenHugeVolatilityInterpl;
+typedef struct QlEverestOption QlEverestOption;
 typedef struct QlMargrabeOption QlMargrabeOption;
 typedef struct QlMarkovFunctional QlMarkovFunctional;
 typedef struct QlMerton76Process QlMerton76Process;

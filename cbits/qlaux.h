@@ -211,6 +211,7 @@ namespace QuantLib {
   class EquityTotalReturnSwap;
   class EuropeanExercise;
   class EuropeanOption;
+  class EverestOption;
   class ExchangeRate;
   class Exercise;
   class ExponentialSplinesFitting;
@@ -554,6 +555,7 @@ using QuantLib::EquityQuantoCashFlowPricer;
 using QuantLib::EquityTotalReturnSwap;
 using QuantLib::EuropeanExercise;
 using QuantLib::EuropeanOption;
+using QuantLib::EverestOption;
 using QuantLib::ExchangeRate;
 using QuantLib::Exercise;
 using QuantLib::ExponentialSplinesFitting;
@@ -924,6 +926,7 @@ using QlLmCorrelationModel = shared_ptr<LmCorrelationModel>;
 using QlLmVolatilityModel = shared_ptr<LmVolatilityModel>;
 using QlLocalVolTermStructure = shared_ptr<LocalVolTermStructure>;
 using QlAndreasenHugeVolatilityInterpl = shared_ptr<AndreasenHugeVolatilityInterpl>;
+using QlEverestOption = shared_ptr<EverestOption>;
 using QlMargrabeOption = shared_ptr<MargrabeOption>;
 using QlMarkovFunctional = shared_ptr<MarkovFunctional>;
 using QlMerton76Process = shared_ptr<Merton76Process>;
@@ -1379,6 +1382,7 @@ QL_TRACE_NAME(QlLmCorrelationModel)
 QL_TRACE_NAME(QlLmVolatilityModel)
 QL_TRACE_NAME(QlLocalVolTermStructure)
 QL_TRACE_NAME(QlAndreasenHugeVolatilityInterpl)
+QL_TRACE_NAME(QlEverestOption)
 QL_TRACE_NAME(QlMargrabeOption)
 QL_TRACE_NAME(QlMarkovFunctional)
 QL_TRACE_NAME(QlMerton76Process)

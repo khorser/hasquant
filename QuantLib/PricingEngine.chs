@@ -120,6 +120,7 @@ module QuantLib.PricingEngine
   , mcHimalayaEngine
   , mcPagodaEngine
   , mcEuropeanBasketEngine
+  , mcEverestEngine
   , mcAmericanBasketEngine
   , mcPerformanceEngine
   , mcVarianceSwapEngine
@@ -1284,6 +1285,17 @@ fdndimBlackScholesVanillaEngine' ps (Matrix mr mc md) = qlFdndimBlackScholesVani
 
 -- |Monte Carlo pricing engine for a European 'basketOption'.
 {#fun qlMCEuropeanBasketEngine1 as mcEuropeanBasketEngine{`RngTrait',`StatisticsTrait',withGenStochasticProcess*`StochasticProcessArray',fromMaybeInt`Maybe Word' -- ^timeSteps
+  ,fromMaybeInt`Maybe Word' -- ^timeStepsPerYear
+  ,`Bool' -- ^brownianBridge
+  ,`Bool' -- ^antitheticVariate
+  ,fromMaybeInt`Maybe Word' -- ^requiredSamples
+  ,fromMaybeDouble`Maybe Double' -- ^requiredTolerance
+  ,fromMaybeInt`Maybe Word' -- ^maxSamples
+  ,fromIntegral`Word' -- ^seed
+  ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+
+-- |Monte Carlo pricing engine for 'everestOption'. Exactly one of @timeSteps@\/@timeStepsPerYear@ must be given.
+{#fun qlMCEverestEngine1 as mcEverestEngine{`RngTrait',`StatisticsTrait',withGenStochasticProcess*`StochasticProcessArray',fromMaybeInt`Maybe Word' -- ^timeSteps
   ,fromMaybeInt`Maybe Word' -- ^timeStepsPerYear
   ,`Bool' -- ^brownianBridge
   ,`Bool' -- ^antitheticVariate

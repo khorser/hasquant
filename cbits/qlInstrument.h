@@ -315,6 +315,8 @@ extern "C" {
   QlOneAssetOption* qlSoftBarrierOptionAsOneAssetOption(QlSoftBarrierOption *o);
   void qlFreeMargrabeOption(QlMargrabeOption *o);
   QlMultiAssetOption* qlMargrabeOptionAsMultiAssetOption(QlMargrabeOption *o);
+  void qlFreeEverestOption(QlEverestOption *o);
+  QlMultiAssetOption* qlEverestOptionAsMultiAssetOption(QlEverestOption *o);
   void qlFreeMultiAssetOption(QlMultiAssetOption *o);
   QlOption* qlMultiAssetOptionAsOption(QlMultiAssetOption *o);
   void qlFreeOneAssetOption(QlOneAssetOption *o);
@@ -379,6 +381,8 @@ extern "C" {
   double qlMargrabeOptionGamma1(QlMargrabeOption* o, char **e);
   double qlMargrabeOptionGamma2(QlMargrabeOption* o, char **e);
   QlMargrabeOption* qlMargrabeOption(int Q1, int Q2, QlExercise* x2, char **e);
+  double qlEverestOptionYield(QlEverestOption* o, char **e);
+  QlEverestOption* qlEverestOption(double notional, double guarantee, QlExercise* exercise, char **e);
   double qlMultiAssetOptionDelta(QlMultiAssetOption* o, char **e);
   double qlMultiAssetOptionDividendRho(QlMultiAssetOption* o, char **e);
   double qlMultiAssetOptionGamma(QlMultiAssetOption* o, char **e);

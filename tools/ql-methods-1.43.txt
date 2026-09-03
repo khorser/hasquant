@@ -1739,14 +1739,14 @@
 | |ql/experimental/credit/syntheticcdo.hpp|void results::reset();
 | |ql/experimental/exoticoptions/continuousarithmeticasianvecerengine.hpp|ContinuousArithmeticAsianVecerEngine::ContinuousArithmeticAsianVecerEngine(ext::shared_ptr<GeneralizedBlackScholesProcess> process, Handle<Quote> currentAverage, Date startDate, Size timeSteps = 100, Size assetSteps = 100, Real z_min = - 1.0, Real z_max = 1.0);
 |x|ql/experimental/exoticoptions/continuousarithmeticasianvecerengine.hpp|void ContinuousArithmeticAsianVecerEngine::calculate() const;
-| |ql/experimental/exoticoptions/everestoption.hpp|EverestOption::EverestOption(Real notional, Rate guarantee, const ext::shared_ptr<Exercise> &);
-| |ql/experimental/exoticoptions/everestoption.hpp|Rate EverestOption::yield() const;
+|v|ql/experimental/exoticoptions/everestoption.hpp|EverestOption::EverestOption(Real notional, Rate guarantee, const ext::shared_ptr<Exercise> &);
+|v|ql/experimental/exoticoptions/everestoption.hpp|Rate EverestOption::yield() const;
 | |ql/experimental/exoticoptions/everestoption.hpp|arguments::arguments();
 | |ql/experimental/exoticoptions/everestoption.hpp|void arguments::validate() const;
 | |ql/experimental/exoticoptions/everestoption.hpp|void results::reset();
 |?|ql/experimental/exoticoptions/himalayaoption.hpp|HimalayaOption::HimalayaOption(const std::vector<Date> & fixingDates, Real strike);
 | |ql/experimental/exoticoptions/himalayaoption.hpp|void arguments::validate() const;
-| |ql/experimental/exoticoptions/mceverestengine.hpp|MCEverestEngine::MCEverestEngine<RNG, S>(ext::shared_ptr<StochasticProcessArray>, Size timeSteps, Size timeStepsPerYear, bool brownianBridge, bool antitheticVariate, Size requiredSamples, Real requiredTolerance, Size maxSamples, BigNatural seed);
+|v|ql/experimental/exoticoptions/mceverestengine.hpp|MCEverestEngine::MCEverestEngine<RNG, S>(ext::shared_ptr<StochasticProcessArray>, Size timeSteps, Size timeStepsPerYear, bool brownianBridge, bool antitheticVariate, Size requiredSamples, Real requiredTolerance, Size maxSamples, BigNatural seed);
 |x|ql/experimental/exoticoptions/mceverestengine.hpp|void MCEverestEngine::calculate() const;
 | |ql/experimental/exoticoptions/mceverestengine.hpp|MakeMCEverestEngine::MakeMCEverestEngine<RNG, S>(ext::shared_ptr<StochasticProcessArray>);
 | |ql/experimental/exoticoptions/mceverestengine.hpp|MakeMCEverestEngine<RNG, S> & MakeMCEverestEngine::withSteps(Size steps);

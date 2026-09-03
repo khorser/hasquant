@@ -2730,6 +2730,7 @@ markovFunctionalAsGaussian1dModel m = withGenCalibratedModel m qlMarkovFunctiona
 -- >    CdsOption
 -- >    MultiAssetOption
 -- >      MargrabeOption
+-- >      EverestOption
 -- >    OneAssetOption
 -- >      BarrierOption
 -- >      DoubleBarrierOption
@@ -3323,19 +3324,26 @@ withFloatFloatSwaption = withForeignPtr . ptr . peel . getInstrument
 
 data CMultiAssetOption'
 data CMargrabeOption'
+data CEverestOption'
 type GenMultiAssetOption mo = GenOption (AnyOf CMultiAssetOption' mo)
 type CMultiAssetOption = ForeignPtr CMultiAssetOption'
 type MultiAssetOption = GenMultiAssetOption CMultiAssetOption
 type CMargrabeOption = ForeignPtr CMargrabeOption'
 type MargrabeOption = GenMultiAssetOption CMargrabeOption
+type CEverestOption = ForeignPtr CEverestOption'
+type EverestOption = GenMultiAssetOption CEverestOption
 foreign import ccall unsafe "ql.h &qlFreeMultiAssetOption" qlFreeMultiAssetOption :: FinalizerPtr CMultiAssetOption'
 foreign import ccall unsafe "ql.h &qlFreeMargrabeOption" qlFreeMargrabeOption :: FinalizerPtr CMargrabeOption'
+foreign import ccall unsafe "ql.h &qlFreeEverestOption" qlFreeEverestOption :: FinalizerPtr CEverestOption'
 instance Finalizable CMultiAssetOption' where finalize = qlFreeMultiAssetOption
 instance Finalizable CMargrabeOption' where finalize = qlFreeMargrabeOption
+instance Finalizable CEverestOption' where finalize = qlFreeEverestOption
 foreign import ccall "ql.h qlMultiAssetOptionAsOption" qlMultiAssetOptionAsOption :: Ptr CMultiAssetOption' -> IO (Ptr COption')
 foreign import ccall "ql.h qlMargrabeOptionAsMultiAssetOption" qlMargrabeOptionAsMultiAssetOption :: Ptr CMargrabeOption' -> IO (Ptr CMultiAssetOption')
+foreign import ccall "ql.h qlEverestOptionAsMultiAssetOption" qlEverestOptionAsMultiAssetOption :: Ptr CEverestOption' -> IO (Ptr CMultiAssetOption')
 instance Upcastable CMultiAssetOption' where {type Base CMultiAssetOption' = COption'; upcast = qlMultiAssetOptionAsOption}
 instance Upcastable CMargrabeOption' where {type Base CMargrabeOption' = CMultiAssetOption'; upcast = qlMargrabeOptionAsMultiAssetOption}
+instance Upcastable CEverestOption' where {type Base CEverestOption' = CMultiAssetOption'; upcast = qlEverestOptionAsMultiAssetOption}
 asMultiAssetOption :: GenMultiAssetOption mo -> IO MultiAssetOption
 asMultiAssetOption = transferGenForeignPtr peekMultiAssetOption . peel . peel . getInstrument
 peekMultiAssetOption :: Ptr CMultiAssetOption' -> IO MultiAssetOption
@@ -3349,6 +3357,11 @@ peekMargrabeOption :: Ptr CMargrabeOption' -> IO MargrabeOption
 peekMargrabeOption = newGenForeignPtr >=> newGenMultiAssetOption
 withMargrabeOption :: MargrabeOption -> (Ptr CMargrabeOption' -> IO b) -> IO b
 withMargrabeOption = withForeignPtr . ptr . peel . peel . getInstrument
+
+peekEverestOption :: Ptr CEverestOption' -> IO EverestOption
+peekEverestOption = newGenForeignPtr >=> newGenMultiAssetOption
+withEverestOption :: EverestOption -> (Ptr CEverestOption' -> IO b) -> IO b
+withEverestOption = withForeignPtr . ptr . peel . peel . getInstrument
 
 data COneAssetOption'
 type GenOneAssetOption oo = GenOption (AnyOf COneAssetOption' oo)

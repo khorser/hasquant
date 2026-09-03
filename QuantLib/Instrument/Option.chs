@@ -7,6 +7,7 @@ module QuantLib.Instrument.Option
   , CdsOption
   , BarrierOption
   , DoubleBarrierOption
+  , EverestOption
   , MargrabeOption
   , MultiAssetOption
   , OneAssetOption
@@ -82,6 +83,8 @@ module QuantLib.Instrument.Option
   , continuousFloatingLookbackOption
   , continuousPartialFixedLookbackOption
   , continuousPartialFloatingLookbackOption
+  , everestOption
+  , yield
   , discreteAveragingAsianOption
   , vanillaStorageOption
   , vanillaSwingOption
@@ -110,6 +113,7 @@ import Data.List.NonEmpty(NonEmpty, toList)
 {#pointer *QlDoubleBarrierOption as DoubleBarrierOption foreign -> CDoubleBarrierOption' nocode#}
 {#pointer *QlSoftBarrierOption as SoftBarrierOption foreign -> CSoftBarrierOption' nocode#}
 {#pointer *QlMargrabeOption as MargrabeOption foreign -> CMargrabeOption' nocode#}
+{#pointer *QlEverestOption as EverestOption foreign -> CEverestOption' nocode#}
 {#pointer *QlMultiAssetOption as MultiAssetOption foreign -> CMultiAssetOption' nocode#}
 {#pointer *QlOneAssetOption as OneAssetOption foreign -> COneAssetOption' nocode#}
 {#pointer *QlQuantoBarrierOption as QuantoBarrierOption foreign -> CQuantoBarrierOption' nocode#}
@@ -321,6 +325,14 @@ pagodaOption dates roof fraction = qlPagodaOption (toList dates) roof fraction
 -- |Partial-time fixed-strike lookback option: the lookback period runs from @lookbackPeriodStart@ to expiry, cheaper than a full fixed lookback. Priced analytically by Heynen and Kat (1994).
 {#fun qlContinuousPartialFixedLookbackOption as continuousPartialFixedLookbackOption{withDay*`Day' -- ^lookbackPeriodStart
   ,withStrikedPayoff*`StrikedPayoff',withExercise*`Exercise',preErrorCheck-`String'errorCheck*-}->`OneAssetOption'peekOneAssetOption*#}
+
+-- |The excess return over @guarantee@, realized on the worst-performing of a basket of assets and paid out on @notional@ at exercise.
+{#fun qlEverestOption as everestOption{`Double' -- ^notional
+  ,`Double' -- ^guarantee
+  ,withExercise*`Exercise',preErrorCheck-`String'errorCheck*-}->`EverestOption'peekEverestOption*#}
+
+-- |The realized yield on the notional, i.e. NPV\/(notional*discount) - 1.
+{#fun qlEverestOptionYield as yield{withEverestOption*`EverestOption',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Discrete-averaging Asian option on a single asset, taking the running sum/product of past fixings plus a list of future fixing dates.
 {#fun qlDiscreteAveragingAsianOption as discreteAveragingAsianOption{`AverageType',`Double' -- ^runningAccumulator, the running sum or products of past fixings

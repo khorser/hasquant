@@ -73,6 +73,7 @@ namespace hasquant {
 #include <ql/instruments/margrabeoption.hpp>
 #include <ql/experimental/exoticoptions/himalayaoption.hpp>
 #include <ql/experimental/exoticoptions/pagodaoption.hpp>
+#include <ql/experimental/exoticoptions/everestoption.hpp>
 #include <ql/experimental/credit/cdsoption.hpp>
 #include <ql/instruments/bonds/all.hpp>
 #include <ql/cashflows/couponpricer.hpp>
@@ -787,6 +788,8 @@ void qlFreeSoftBarrierOption(QlSoftBarrierOption *o) {del(o);}
 QlOneAssetOption* qlSoftBarrierOptionAsOneAssetOption(QlSoftBarrierOption *o) {return ret(new QlOneAssetOption(*arg(o)));}
 void qlFreeMargrabeOption(QlMargrabeOption *o) {del(o);}
 QlMultiAssetOption* qlMargrabeOptionAsMultiAssetOption(QlMargrabeOption *o) {return ret(new QlMultiAssetOption(*arg(o)));}
+void qlFreeEverestOption(QlEverestOption *o) {del(o);}
+QlMultiAssetOption* qlEverestOptionAsMultiAssetOption(QlEverestOption *o) {return ret(new QlMultiAssetOption(*arg(o)));}
 void qlFreeMultiAssetOption(QlMultiAssetOption *o) {del(o);}
 QlOption* qlMultiAssetOptionAsOption(QlMultiAssetOption *o) {return ret(new QlOption(*arg(o)));}
 void qlFreeOneAssetOption(QlOneAssetOption *o) {del(o);}
@@ -941,6 +944,8 @@ double qlMargrabeOptionDelta2(QlMargrabeOption* o, char **e) {try {return (*arg(
 double qlMargrabeOptionGamma1(QlMargrabeOption* o, char **e) {try {return (*arg(o))->gamma1();} catch (std::exception& er) {return handleException<double>(e, er);}}
 double qlMargrabeOptionGamma2(QlMargrabeOption* o, char **e) {try {return (*arg(o))->gamma2();} catch (std::exception& er) {return handleException<double>(e, er);}}
 QlMargrabeOption* qlMargrabeOption(int Q1, int Q2, QlExercise* x2, char **e) {try {return ret(new QlMargrabeOption(alloc(new MargrabeOption(Q1, Q2, (*arg(x2))))));} catch (std::exception& er) {return handleException<QlMargrabeOption*>(e, er);}}
+double qlEverestOptionYield(QlEverestOption* o, char **e) {try {return (*arg(o))->yield();} catch (std::exception& er) {return handleException<double>(e, er);}}
+QlEverestOption* qlEverestOption(double notional, double guarantee, QlExercise* exercise, char **e) {try {return ret(new QlEverestOption(alloc(new EverestOption(notional, guarantee, *arg(exercise)))));} catch (std::exception& er) {return handleException<QlEverestOption*>(e, er);}}
 double qlMultiAssetOptionDelta(QlMultiAssetOption* o, char **e) {try {return (*arg(o))->delta();} catch (std::exception& er) {return handleException<double>(e, er);}}
 double qlMultiAssetOptionDividendRho(QlMultiAssetOption* o, char **e) {try {return (*arg(o))->dividendRho();} catch (std::exception& er) {return handleException<double>(e, er);}}
 double qlMultiAssetOptionGamma(QlMultiAssetOption* o, char **e) {try {return (*arg(o))->gamma();} catch (std::exception& er) {return handleException<double>(e, er);}}

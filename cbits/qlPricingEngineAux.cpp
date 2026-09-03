@@ -17,6 +17,7 @@
 #include <ql/methods/montecarlo/multipathgenerator.hpp>
 #include <ql/experimental/exoticoptions/mchimalayaengine.hpp>
 #include <ql/experimental/exoticoptions/mcpagodaengine.hpp>
+#include <ql/experimental/exoticoptions/mceverestengine.hpp>
 #include <ql/pricingengines/forward/mcforwardeuropeanbsengine.hpp>
 #include <ql/pricingengines/forward/mcforwardeuropeanhestonengine.hpp>
 #include <ql/pricingengines/basket/mceuropeanbasketengine.hpp>
@@ -225,6 +226,12 @@ PricingEngine* qlMCHimalayaEngine1Aux(int rngtrait, int stattrait, const shared_
 PricingEngine* qlMCPagodaEngine1Aux(int rngtrait, int stattrait, const shared_ptr<StochasticProcessArray> processes, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed) {
   return dispatchRngStat<PricingEngine*>(rngtrait, stattrait, [&](auto r, auto st) {
     return new MCPagodaEngine<typename decltype(r)::type, typename decltype(st)::type>(processes, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed);
+  });
+}
+
+PricingEngine* qlMCEverestEngine1Aux(int rngtrait, int stattrait, const shared_ptr<StochasticProcessArray> processes, unsigned timeSteps, unsigned timeStepsPerYear, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed) {
+  return dispatchRngStat<PricingEngine*>(rngtrait, stattrait, [&](auto r, auto st) {
+    return new MCEverestEngine<typename decltype(r)::type, typename decltype(st)::type>(processes, timeSteps, timeStepsPerYear, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed);
   });
 }
 
