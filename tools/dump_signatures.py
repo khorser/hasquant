@@ -103,7 +103,13 @@ def print_filtered_prototypes(node, current_class_cursor=None):
         if node.is_definition():
             for child in node.get_children():
                 print_filtered_prototypes(child, current_class_cursor=node)
-            return
+        # A class can also appear as a non-definition cursor before its
+        # definition.  Descending into that cursor loses the class context and
+        # emits inline method bodies as unqualified duplicates.  Its definition
+        # is (or will be) handled above, with the proper class prefix.
+        #
+        # Do not let the generic child walk below revisit either form.
+        return
 
     if node.kind in (clang.cindex.CursorKind.CXX_METHOD, 
                      clang.cindex.CursorKind.CONSTRUCTOR, 
