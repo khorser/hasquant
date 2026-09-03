@@ -108,6 +108,8 @@
 #include <ql/pricingengines/vanilla/integralengine.hpp>
 #include <ql/pricingengines/vanilla/jumpdiffusionengine.hpp>
 #include <ql/pricingengines/vanilla/juquadraticengine.hpp>
+#include <ql/pricingengines/vanilla/qdplusamericanengine.hpp>
+#include <ql/pricingengines/vanilla/qdfpamericanengine.hpp>
 #include <ql/instruments/dividendschedule.hpp>
 #include <ql/methods/finitedifferences/solvers/fdmbackwardsolver.hpp>
 #include <ql/methods/finitedifferences/operators/fdmlinearopcomposite.hpp>
@@ -792,6 +794,19 @@ QlPricingEngine* qlBatesDoubleExpEngine(QlBatesDoubleExpModel* model, unsigned i
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
 QlPricingEngine* qlBjerksundStenslandApproximationEngine(QlGeneralizedBlackScholesProcess* x0, char **e) {
   try {return ret(new QlPricingEngine(alloc(new BjerksundStenslandApproximationEngine(*arg(x0)))));
+  } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
+QlPricingEngine* qlQdPlusAmericanEngine(QlGeneralizedBlackScholesProcess* process, unsigned interpolationPoints, int solverType, double eps, unsigned maxIter, char **e) {
+  try {return ret(new QlPricingEngine(alloc(new QdPlusAmericanEngine(*arg(process), interpolationPoints, (QdPlusAmericanEngine::SolverType)solverType, eps, Size(maxIter)))));
+  } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
+QlPricingEngine* qlQdFpAmericanEngine(QlGeneralizedBlackScholesProcess* process, int scheme, int fpEquation, char **e) {
+  try {
+    ext::shared_ptr<QdFpIterationScheme> iterationScheme;
+    switch (scheme) {
+      case 0: iterationScheme = QdFpAmericanEngine::fastScheme(); break;
+      case 2: iterationScheme = QdFpAmericanEngine::highPrecisionScheme(); break;
+      default: iterationScheme = QdFpAmericanEngine::accurateScheme(); break;
+    }
+    return ret(new QlPricingEngine(alloc(new QdFpAmericanEngine(*arg(process), iterationScheme, (QdFpAmericanEngine::FixedPointEquation)fpEquation))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
 QlPricingEngine* qlIntegralCdsEngine(int l, int u, QlDefaultProbabilityTermStructure* x1, double recoveryRate, QlYieldTermStructure* discountCurve, int includeSettlementDateFlows, char **e) {
   try {return ret(new QlPricingEngine(alloc(new IntegralCdsEngine(Period(l, (TimeUnit)u), Handle<DefaultProbabilityTermStructure>(*arg(x1)), recoveryRate, *arg(discountCurve), qlOptBool(includeSettlementDateFlows)))));

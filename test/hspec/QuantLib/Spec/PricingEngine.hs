@@ -879,6 +879,65 @@ spec = do
           v <- npv opt
           v `shouldSatisfy` closePrec expected 1.0e-2
 
+  -- Ported from test-suite/americanoption.cpp::testQdAmericanEngines' "standard put option" /
+  -- "call-put parity on standard option" cached edge cases -- a 10-year put and its
+  -- put-call-symmetric call (r and q swapped) share the same American value. QdPlus is only an
+  -- initial-guess-quality approximation (see its class haddock), and indeed doesn't converge to
+  -- the true American price here: an independent LeisenReimer(20001) binomial reprices this same
+  -- contract at ~23.0000, ~0.026 away from QdPlus's cached 22.9738 -- so qdPlusAmericanEngine is
+  -- checked against upstream's own cached (regression, not "true price") value, while
+  -- qdFpAmericanEngine -- the higher-precision fixed-point refinement -- is cross-checked against
+  -- that binomial reference instead, across all three schemes and all three FixedPointEquations.
+  -- testAndersenLakeHighPrecisionExample/testBulkQdFpAmericanEngine aren't ported directly: both
+  -- need QdFpLegendreScheme/QdFpGaussLobattoScheme, deliberately unbound (QdFpScheme only exposes
+  -- the three built-in static-factory schemes).
+  describe "QD+ / QD-FP American engines" $ do
+    let today' = 1 `june` 2022
+        qdPlusExpected = 22.97383256003585 :: Double
+        cases = [ (Put, 100.0, 120.0, 0.10, 0.03)
+                , (Call, 120.0, 100.0, 0.03, 0.10)
+                ]
+        mkOption ty spot strike r q = do
+          spotQ <- simpleQuote spot
+          qQ <- simpleQuote q
+          rQ <- simpleQuote r
+          volQ <- simpleQuote 0.25
+          dc <- dayCounter Actual365FixedStandard
+          qTS <- flatForward today' qQ dc Continuous Annual
+          rTS <- flatForward today' rQ dc Continuous Annual
+          tgt <- calendar TARGET
+          volTS <- blackConstantVol today' tgt volQ dc
+          process <- blackScholesMertonProcess spotQ qTS rTS volTS EulerDiscretization False
+          let exDate = addDays 3650 today'
+          opt <- vanillaOption (PlainVanilla (PlainVanillaPayoff ty strike)) (American Nothing exDate False)
+          pure (process, opt)
+
+    it "qdPlusAmericanEngine reproduces americanoption.cpp's standard put/call cached values" $
+      Settings.keepingSettings' $ do
+        Settings.setEvaluationDate (Just today')
+        forM_ cases $ \(ty, spot, strike, r, q) -> do
+          (process, opt) <- mkOption ty spot strike r q
+          eng <- qdPlusAmericanEngine process 8 Halley 1e-10 Nothing
+          setPricingEngine opt eng
+          v <- npv opt
+          v `shouldSatisfy` closePrec qdPlusExpected 1e-8
+
+    it "qdFpAmericanEngine agrees with a converged binomial price across every scheme/equation" $
+      Settings.keepingSettings' $ do
+        Settings.setEvaluationDate (Just today')
+        let (ty, spot, strike, r, q) = head cases
+        (biProcess, biOpt) <- mkOption ty spot strike r q
+        biEng <- binomialVanillaEngine LeisenReimer biProcess 20001
+        setPricingEngine biOpt biEng
+        binomialPrice <- npv biOpt
+        forM_ [FastScheme, AccurateScheme, HighPrecisionScheme] $ \scheme ->
+          forM_ [FP_A, FP_B, Auto] $ \fpEquation -> do
+            (process, opt) <- mkOption ty spot strike r q
+            eng <- qdFpAmericanEngine process scheme fpEquation
+            setPricingEngine opt eng
+            v <- npv opt
+            v `shouldSatisfy` closePrec binomialPrice 5e-3
+
   -- Ported from test-suite/quantooption.cpp. Each case wires a QuantoEngine<Instr,Engine>
   -- instantiation (a GeneralizedBlackScholesProcess plus a foreign risk-free curve, an
   -- exchange-rate vol surface, and a correlation quote) around the matching base engine, and

@@ -447,6 +447,15 @@ enum CPIInterpolationType {
   , CPILinear = 2
 };
 
+// Selects among QdFpAmericanEngine's three static QdFpIterationScheme factories
+// (fastScheme/accurateScheme/highPrecisionScheme) -- not an upstream enum, mirrors
+// how BinomialTree/RngTrait select a template/factory above.
+enum QdFpScheme {
+  FastScheme = 0
+  , AccurateScheme
+  , HighPrecisionScheme
+};
+
 // must match the order of qlTermStructure.cpp:regions
 enum RegionType {
   AustraliaRegion = 0

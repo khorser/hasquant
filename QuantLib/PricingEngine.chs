@@ -11,6 +11,9 @@ module QuantLib.PricingEngine
   , NumericalFix(..)
   , AccrualBias(..)
   , ForwardsInCouponPeriod(..)
+  , SolverType(..)
+  , FixedPointEquation(..)
+  , QdFpScheme(..)
   , FdmQuantoHelper
 
   , GenBlackCalculator
@@ -132,6 +135,8 @@ module QuantLib.PricingEngine
   , batesDoubleExpEngine'
   , batesDoubleExpEngine
   , bjerksundStenslandApproximationEngine
+  , qdPlusAmericanEngine
+  , qdFpAmericanEngine
   , integralCdsEngine
   , integralEngine
   , isdaCdsEngine
@@ -318,6 +323,9 @@ import Data.List.NonEmpty(NonEmpty, toList)
 {#enum NumericalFix{} deriving(Show, Eq, Read)#}
 {#enum AccrualBias{} deriving(Show, Eq, Read)#}
 {#enum ForwardsInCouponPeriod{} deriving(Show, Eq, Read)#}
+{#enum SolverType{} deriving(Show, Eq, Read)#}
+{#enum FixedPointEquation{} deriving(Show, Eq, Read)#}
+{#enum QdFpScheme{} deriving(Show, Eq, Read)#}
 {#enum OperatorSplittingOrder{} deriving(Show, Eq, Read)#}
 {#enum PerpetualFuturesInterpolationType{} deriving(Show, Eq, Read)#}
 
@@ -846,6 +854,25 @@ discountingPerpetualFuturesEngine domestic foreignCurve spot funding interpolati
 
 -- |Bjerksund and Stensland (1993) approximation engine for American options
 {#fun qlBjerksundStenslandApproximationEngine as bjerksundStenslandApproximationEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+
+-- |American engine based on the QD+ approximation to the exercise boundary. Mainly a good
+-- initial guess for the exercise boundary of 'qdFpAmericanEngine'; usable as a standalone
+-- (lower-accuracy) American pricer on its own.
+{#fun qlQdPlusAmericanEngine as qdPlusAmericanEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess'
+  ,fromIntegral`Word' -- ^interpolationPoints, number of Chebyshev nodes used to interpolate the exercise boundary
+  ,`SolverType' -- ^solverType, root-finding method used to locate the exercise boundary
+  ,`Double' -- ^eps, solver accuracy
+  ,fromMaybeInt`Maybe Word' -- ^maxIter, solver iteration cap; Nothing uses upstream's default
+  ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+
+-- |High performance\/precision American engine based on fixed point iteration for the exercise
+-- boundary (Andersen, Lake and Offengenden 2015; Andersen and Lake 2021). 'QdFpScheme' selects
+-- one of upstream's three built-in 'iterationScheme's ('FastScheme', 'AccurateScheme',
+-- 'HighPrecisionScheme'), trading speed for accuracy.
+{#fun qlQdFpAmericanEngine as qdFpAmericanEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess'
+  ,`QdFpScheme' -- ^iterationScheme
+  ,`FixedPointEquation' -- ^fpEquation, which fixed-point formulation of the exercise boundary equation to solve
+  ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |CDS pricing engine that integrates the default-leg payoff over the CDS's step-wise schedule
 {#fun qlIntegralCdsEngine as integralCdsEngine{fromEnumQuantity`(Word,TimeUnit)'& -- ^integrationStep

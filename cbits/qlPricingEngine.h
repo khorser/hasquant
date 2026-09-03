@@ -197,6 +197,8 @@ extern "C" {
   QlPricingEngine* qlBatesDoubleExpEngine1(QlBatesDoubleExpModel* model, double relTolerance, unsigned maxEvaluations, char **e);
   QlPricingEngine* qlBatesDoubleExpEngine(QlBatesDoubleExpModel* model, unsigned integrationOrder, char **e);
   QlPricingEngine* qlBjerksundStenslandApproximationEngine(QlGeneralizedBlackScholesProcess* x0, char **e);
+  QlPricingEngine* qlQdPlusAmericanEngine(QlGeneralizedBlackScholesProcess* process, unsigned interpolationPoints, int solverType, double eps, unsigned maxIter, char **e);
+  QlPricingEngine* qlQdFpAmericanEngine(QlGeneralizedBlackScholesProcess* process, int scheme, int fpEquation, char **e);
   QlPricingEngine* qlIntegralCdsEngine(int, int, QlDefaultProbabilityTermStructure* x1, double recoveryRate, QlYieldTermStructure* discountCurve, int includeSettlementDateFlows, char **e);
   QlPricingEngine* qlIntegralEngine(QlGeneralizedBlackScholesProcess* x0, char **e);
   QlPricingEngine* qlJamshidianSwaptionEngine(QlOneFactorAffineModel* model, QlYieldTermStructure* termStructure, char **e);

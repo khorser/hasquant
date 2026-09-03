@@ -7692,7 +7692,7 @@
 | |ql/pricingengines/vanilla/qdfpamericanengine.hpp|QdFpLegendreScheme::QdFpLegendreScheme(Size l, Size m, Size n, Size p);
 | |ql/pricingengines/vanilla/qdfpamericanengine.hpp|QdFpLegendreTanhSinhScheme::QdFpLegendreTanhSinhScheme(Size l, Size m, Size n, Real eps);
 | |ql/pricingengines/vanilla/qdfpamericanengine.hpp|QdFpTanhSinhIterationScheme::QdFpTanhSinhIterationScheme(Size m, Size n, Real eps);
-| |ql/pricingengines/vanilla/qdfpamericanengine.hpp|QdFpAmericanEngine::QdFpAmericanEngine(ext::shared_ptr<GeneralizedBlackScholesProcess> bsProcess, ext::shared_ptr<QdFpIterationScheme> iterationScheme = accurateScheme(), FixedPointEquation fpEquation = Auto);
+|v|ql/pricingengines/vanilla/qdfpamericanengine.hpp|QdFpAmericanEngine::QdFpAmericanEngine(ext::shared_ptr<GeneralizedBlackScholesProcess> bsProcess, ext::shared_ptr<QdFpIterationScheme> iterationScheme = accurateScheme(), FixedPointEquation fpEquation = Auto);
 | |ql/pricingengines/vanilla/qdfpamericanengine.hpp|static ext::shared_ptr<QdFpIterationScheme> QdFpAmericanEngine::fastScheme();
 | |ql/pricingengines/vanilla/qdfpamericanengine.hpp|static ext::shared_ptr<QdFpIterationScheme> QdFpAmericanEngine::accurateScheme();
 | |ql/pricingengines/vanilla/qdfpamericanengine.hpp|static ext::shared_ptr<QdFpIterationScheme> QdFpAmericanEngine::highPrecisionScheme();
@@ -7700,7 +7700,7 @@
 |x|ql/pricingengines/vanilla/qdplusamericanengine.hpp|void QdPutCallParityEngine::calculate() const;
 | |ql/pricingengines/vanilla/qdplusamericanengine.hpp|QdPlusAddOnValue::QdPlusAddOnValue(Time T, Real S, Real K, Rate r, Rate q, Volatility vol, Real xmax, ext::shared_ptr<Interpolation> q_z);
 | |ql/pricingengines/vanilla/qdplusamericanengine.hpp|Real QdPlusAddOnValue::operator()(Real z) const;
-| |ql/pricingengines/vanilla/qdplusamericanengine.hpp|QdPlusAmericanEngine::QdPlusAmericanEngine(ext::shared_ptr<GeneralizedBlackScholesProcess>, Size interpolationPoints = 8, SolverType solverType = Halley, Real eps = 1e-6, Size maxIter = Null<Size>());
+|v|ql/pricingengines/vanilla/qdplusamericanengine.hpp|QdPlusAmericanEngine::QdPlusAmericanEngine(ext::shared_ptr<GeneralizedBlackScholesProcess>, Size interpolationPoints = 8, SolverType solverType = Halley, Real eps = 1e-6, Size maxIter = Null<Size>());
 | |ql/pricingengines/vanilla/qdplusamericanengine.hpp|std::pair<Size, Real> QdPlusAmericanEngine::putExerciseBoundaryAtTau(Real S, Real K, Rate r, Rate q, Volatility vol, Time T, Time tau) const;
 | |ql/pricingengines/vanilla/qdplusamericanengine.hpp|ext::shared_ptr<ChebyshevInterpolation> QdPlusAmericanEngine::getPutExerciseBoundary(Real S, Real K, Rate r, Rate q, Volatility vol, Time T) const;
 | |ql/pricingengines/vanilla/qdplusamericanengine.hpp|static Real QdPlusAmericanEngine::xMax(Real K, Rate r, Rate q);

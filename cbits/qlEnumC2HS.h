@@ -598,4 +598,9 @@ enum RestructuringType {
 // experimental/math/latentmodel.hpp -- LatentModelIntegrationType::LatentModelIntegrationType
 enum LatentModelIntegrationType {GaussianQuadrature, Trapezoid};
 
+// pricingengines/vanilla/qdplusamericanengine.hpp -- QdPlusAmericanEngine::SolverType
+enum SolverType {Brent, Newton, Ridder, Halley, SuperHalley};
+// pricingengines/vanilla/qdfpamericanengine.hpp -- QdFpAmericanEngine::FixedPointEquation
+enum FixedPointEquation {FP_A, FP_B, Auto};
+
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */
