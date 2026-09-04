@@ -387,17 +387,18 @@ spec = do
     describe "Bermudan swaption example (LONG)" $
       it "check values" $ do
         (BermudanSwaptionExample.Result g2v g2p hwv hwp hw2v hw2p bkv bkp npvA npvO npvI) <- Settings.keepingSettings' BermudanSwaptionExample.run
-        -- On Windows (GHC 9.10.3 + clang/libc++), the LevenbergMarquardt-calibrated
-        -- G2 vols diverge from the recorded macOS values by up to ~2.2e-5 (elements
-        -- 1 and 5), same class of cross-platform optimiser divergence documented in
-        -- CLAUDE.md for the CDS/G2 calibration case; 1e-4 covers it.
-        g2v `shouldSatisfy` listClose id [10.04549, 10.51234, 10.70500, 10.83817, 10.94387] 1.0e-4
+        -- g2v/g2p held 1.0e-4 for a ~2.2e-5 Windows divergence attributed to optimiser
+        -- variation; both now pass at 1.0e-5 on Windows, so that allowance is no longer
+        -- earning anything. Measured on a run where the x87 precision fix was not yet
+        -- in effect, so the earlier gap was not the long double problem WINDOWS.md
+        -- describes -- it closed for some other reason (toolchain or QuantLib version).
+        g2v `shouldSatisfy` listClose id [10.04549, 10.51234, 10.70500, 10.83817, 10.94387] 1.0e-5
         hwv `shouldSatisfy` listClose id [10.62037, 10.62959, 10.63414, 10.64428, 10.66132] 1.0e-5
         -- g2v/hwv reproduced exactly. hw2v (numerical Hull-White) and bkv, and all four
         -- calibrated-parameter vectors, are optimiser-dependent and were re-based.
         hw2v `shouldSatisfy` listClose id [10.29283, 10.54541, 10.65625, 10.73677, 10.82257] 1.0e-5
         bkv `shouldSatisfy` listClose id [10.30674, 10.56425, 10.66613, 10.73382, 10.80334] 1.0e-5
-        g2p `shouldSatisfy` listClose id [0.0500580, 0.0094549, 0.0500532, 0.0094549, -0.7636264] 1.0e-4
+        g2p `shouldSatisfy` listClose id [0.0500580, 0.0094549, 0.0500532, 0.0094549, -0.7636264] 1.0e-5
         hwp `shouldSatisfy` listClose id [0.046414, 0.0058693] 1.0e-5
         hw2p `shouldSatisfy` listClose id [0.0559663, 0.0060993] 1.0e-5
         bkp `shouldSatisfy` listClose id [0.0442747, 0.1206741] 1.0e-5
