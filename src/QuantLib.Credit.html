@@ -81,7 +81,7 @@
 </span><span id="line-76"></span><span>  </span><span class="hs-identifier">succ</span><span> </span><span class="hs-identifier">SeniorUnSec</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-identifier">SubLT2</span><span>
 </span><span id="line-77"></span><span>  </span><span class="hs-identifier">succ</span><span> </span><span class="hs-identifier">SubLT2</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-identifier">JrSubT2</span><span>
 </span><span id="line-78"></span><span>  </span><span class="hs-identifier">succ</span><span> </span><span class="hs-identifier">SubLoweTier2</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-identifier">JrSubT2</span><span>
-</span><span id="line-79"></span><span>  </span><span id="local-6989586621680427335"><span class="annot"><span class="annottext">pred :: RestructuringType -&gt; RestructuringType
+</span><span id="line-79"></span><span>  </span><span id="local-6989586621680427539"><span class="annot"><span class="annottext">pred :: RestructuringType -&gt; RestructuringType
 </span><span class="hs-identifier hs-var hs-var">succ</span></span></span><span> </span><span class="hs-identifier">JrSubT2</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-identifier">PrefT1</span><span>
 </span><span id="line-80"></span><span>  </span><span class="annot"><span class="hs-identifier hs-var">succ</span></span><span> </span><span class="hs-identifier">SubUpperTier2</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-identifier">PrefT1</span><span>
 </span><span id="line-81"></span><span>  </span><span class="annot"><span class="hs-identifier hs-var">succ</span></span><span> </span><span class="hs-identifier">PrefT1</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-identifier">NoSeniority</span><span>
@@ -112,12 +112,12 @@
 </span><span id="line-106"></span><span>
 </span><span id="line-107"></span><span>  </span><span class="hs-identifier">fromEnum</span><span> </span><span class="hs-identifier">SecDom</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-number">0</span><span>
 </span><span id="line-108"></span><span>  </span><span class="hs-identifier">fromEnum</span><span> </span><span class="hs-identifier">SeniorSec</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-number">0</span><span>
-</span><span id="line-109"></span><span>  </span><span id="local-6989586621680427385"></span><span class="hs-identifier">fromEnum</span><span> </span><span class="hs-identifier">SnrFor</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-number">1</span><span>
+</span><span id="line-109"></span><span>  </span><span id="local-6989586621680427589"></span><span class="hs-identifier">fromEnum</span><span> </span><span class="hs-identifier">SnrFor</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-number">1</span><span>
 </span><span id="line-110"></span><span>  </span><span class="hs-identifier">fromEnum</span><span> </span><span class="hs-identifier">SeniorUnSec</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-number">1</span><span>
 </span><span id="line-111"></span><span>  </span><span class="hs-identifier">fromEnum</span><span> </span><span class="hs-identifier">SubLT2</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-number">2</span><span>
 </span><span id="line-112"></span><span>  </span><span class="hs-identifier">fromEnum</span><span> </span><span class="hs-identifier">SubLoweTier2</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-number">2</span><span>
 </span><span id="line-113"></span><span>  </span><span class="hs-identifier">fromEnum</span><span> </span><span class="hs-identifier">JrSubT2</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-number">3</span><span>
-</span><span id="line-114"></span><span>  </span><span id="local-6989586621680427386"></span><span class="hs-identifier">fromEnum</span><span> </span><span class="hs-identifier">SubUpperTier2</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-number">3</span><span>
+</span><span id="line-114"></span><span>  </span><span id="local-6989586621680427590"></span><span class="hs-identifier">fromEnum</span><span> </span><span class="hs-identifier">SubUpperTier2</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-number">3</span><span>
 </span><span id="line-115"></span><span>  </span><span class="hs-identifier">fromEnum</span><span> </span><span class="hs-identifier">PrefT1</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-number">4</span><span>
 </span><span id="line-116"></span><span>  </span><span class="hs-identifier">fromEnum</span><span> </span><span class="hs-identifier">SubTier1</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-number">4</span><span>
 </span><span id="line-117"></span><span>  </span><span class="hs-identifier">fromEnum</span><span> </span><span class="hs-identifier">NoSeniority</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-number">5</span><span>
@@ -493,87 +493,87 @@
 -&gt; Claim
 -&gt; DigitalLossModel
 -&gt; IO DigitalBasket
-</span><a href="QuantLib.Credit.html#qlDigitalBasket"><span class="hs-identifier hs-var hs-var">qlDigitalBasket</span></a></span></span><span> </span><span id="local-6989586621680427473"><span class="annot"><span class="annottext">Day
-</span><a href="#local-6989586621680427473"><span class="hs-identifier hs-var">a1</span></a></span></span><span> </span><span id="local-6989586621680427474"><span class="annot"><span class="annottext">[String]
-</span><a href="#local-6989586621680427474"><span class="hs-identifier hs-var">a2</span></a></span></span><span> </span><span id="local-6989586621680427475"><span class="annot"><span class="annottext">[Double]
-</span><a href="#local-6989586621680427475"><span class="hs-identifier hs-var">a3</span></a></span></span><span> </span><span id="local-6989586621680427476"><span class="annot"><span class="annottext">Pool
-</span><a href="#local-6989586621680427476"><span class="hs-identifier hs-var">a4</span></a></span></span><span> </span><span id="local-6989586621680427477"><span class="annot"><span class="annottext">Double
-</span><a href="#local-6989586621680427477"><span class="hs-identifier hs-var">a5</span></a></span></span><span> </span><span id="local-6989586621680427478"><span class="annot"><span class="annottext">Double
-</span><a href="#local-6989586621680427478"><span class="hs-identifier hs-var">a6</span></a></span></span><span> </span><span id="local-6989586621680427479"><span class="annot"><span class="annottext">Claim
-</span><a href="#local-6989586621680427479"><span class="hs-identifier hs-var">a7</span></a></span></span><span> </span><span id="local-6989586621680427480"><span class="annot"><span class="annottext">DigitalLossModel
-</span><a href="#local-6989586621680427480"><span class="hs-identifier hs-var">a8</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
+</span><a href="QuantLib.Credit.html#qlDigitalBasket"><span class="hs-identifier hs-var hs-var">qlDigitalBasket</span></a></span></span><span> </span><span id="local-6989586621680427677"><span class="annot"><span class="annottext">Day
+</span><a href="#local-6989586621680427677"><span class="hs-identifier hs-var">a1</span></a></span></span><span> </span><span id="local-6989586621680427678"><span class="annot"><span class="annottext">[String]
+</span><a href="#local-6989586621680427678"><span class="hs-identifier hs-var">a2</span></a></span></span><span> </span><span id="local-6989586621680427679"><span class="annot"><span class="annottext">[Double]
+</span><a href="#local-6989586621680427679"><span class="hs-identifier hs-var">a3</span></a></span></span><span> </span><span id="local-6989586621680427680"><span class="annot"><span class="annottext">Pool
+</span><a href="#local-6989586621680427680"><span class="hs-identifier hs-var">a4</span></a></span></span><span> </span><span id="local-6989586621680427681"><span class="annot"><span class="annottext">Double
+</span><a href="#local-6989586621680427681"><span class="hs-identifier hs-var">a5</span></a></span></span><span> </span><span id="local-6989586621680427682"><span class="annot"><span class="annottext">Double
+</span><a href="#local-6989586621680427682"><span class="hs-identifier hs-var">a6</span></a></span></span><span> </span><span id="local-6989586621680427683"><span class="annot"><span class="annottext">Claim
+</span><a href="#local-6989586621680427683"><span class="hs-identifier hs-var">a7</span></a></span></span><span> </span><span id="local-6989586621680427684"><span class="annot"><span class="annottext">DigitalLossModel
+</span><a href="#local-6989586621680427684"><span class="hs-identifier hs-var">a8</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
 </span><span id="line-173"></span><span>  </span><span class="annot"><span class="annottext">Day -&gt; (CInt -&gt; IO DigitalBasket) -&gt; IO DigitalBasket
 forall a. Day -&gt; (CInt -&gt; IO a) -&gt; IO a
 </span><a href="QuantLib.Internal.html#withDay"><span class="hs-identifier hs-var">withDay</span></a></span><span> </span><span class="annot"><span class="annottext">Day
-</span><a href="#local-6989586621680427473"><span class="hs-identifier hs-var">a1</span></a></span><span> </span><span class="annot"><span class="annottext">((CInt -&gt; IO DigitalBasket) -&gt; IO DigitalBasket)
+</span><a href="#local-6989586621680427677"><span class="hs-identifier hs-var">a1</span></a></span><span> </span><span class="annot"><span class="annottext">((CInt -&gt; IO DigitalBasket) -&gt; IO DigitalBasket)
 -&gt; (CInt -&gt; IO DigitalBasket) -&gt; IO DigitalBasket
 forall a b. (a -&gt; b) -&gt; a -&gt; b
-</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680427481"><span class="annot"><span class="annottext">CInt
-</span><a href="#local-6989586621680427481"><span class="hs-identifier hs-var">a1'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680427685"><span class="annot"><span class="annottext">CInt
+</span><a href="#local-6989586621680427685"><span class="hs-identifier hs-var">a1'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
 </span><span id="line-174"></span><span>  </span><span class="annot"><span class="annottext">[String]
 -&gt; ((CUInt, Ptr (Ptr CChar)) -&gt; IO DigitalBasket)
 -&gt; IO DigitalBasket
 forall b. [String] -&gt; ((CUInt, Ptr (Ptr CChar)) -&gt; IO b) -&gt; IO b
 </span><a href="QuantLib.Internal.html#withStringArray"><span class="hs-identifier hs-var">withStringArray</span></a></span><span> </span><span class="annot"><span class="annottext">[String]
-</span><a href="#local-6989586621680427474"><span class="hs-identifier hs-var">a2</span></a></span><span> </span><span class="annot"><span class="annottext">(((CUInt, Ptr (Ptr CChar)) -&gt; IO DigitalBasket)
+</span><a href="#local-6989586621680427678"><span class="hs-identifier hs-var">a2</span></a></span><span> </span><span class="annot"><span class="annottext">(((CUInt, Ptr (Ptr CChar)) -&gt; IO DigitalBasket)
  -&gt; IO DigitalBasket)
 -&gt; ((CUInt, Ptr (Ptr CChar)) -&gt; IO DigitalBasket)
 -&gt; IO DigitalBasket
 forall a b. (a -&gt; b) -&gt; a -&gt; b
-</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span class="hs-special">(</span><span id="local-6989586621680427482"><span class="annot"><span class="annottext">CUInt
-</span><a href="#local-6989586621680427482"><span class="hs-identifier hs-var">a2'1</span></a></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680427483"><span class="annot"><span class="annottext">Ptr (Ptr CChar)
-</span><a href="#local-6989586621680427483"><span class="hs-identifier hs-var">a2'2</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span class="hs-special">(</span><span id="local-6989586621680427686"><span class="annot"><span class="annottext">CUInt
+</span><a href="#local-6989586621680427686"><span class="hs-identifier hs-var">a2'1</span></a></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680427687"><span class="annot"><span class="annottext">Ptr (Ptr CChar)
+</span><a href="#local-6989586621680427687"><span class="hs-identifier hs-var">a2'2</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
 </span><span id="line-175"></span><span>  </span><span class="annot"><span class="annottext">[Double] -&gt; (Ptr CDouble -&gt; IO DigitalBasket) -&gt; IO DigitalBasket
 forall b. [Double] -&gt; (Ptr CDouble -&gt; IO b) -&gt; IO b
 </span><a href="QuantLib.Internal.html#withDoubleArrayRaw"><span class="hs-identifier hs-var">withDoubleArrayRaw</span></a></span><span> </span><span class="annot"><span class="annottext">[Double]
-</span><a href="#local-6989586621680427475"><span class="hs-identifier hs-var">a3</span></a></span><span> </span><span class="annot"><span class="annottext">((Ptr CDouble -&gt; IO DigitalBasket) -&gt; IO DigitalBasket)
+</span><a href="#local-6989586621680427679"><span class="hs-identifier hs-var">a3</span></a></span><span> </span><span class="annot"><span class="annottext">((Ptr CDouble -&gt; IO DigitalBasket) -&gt; IO DigitalBasket)
 -&gt; (Ptr CDouble -&gt; IO DigitalBasket) -&gt; IO DigitalBasket
 forall a b. (a -&gt; b) -&gt; a -&gt; b
-</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680427485"><span class="annot"><span class="annottext">Ptr CDouble
-</span><a href="#local-6989586621680427485"><span class="hs-identifier hs-var">a3'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680427689"><span class="annot"><span class="annottext">Ptr CDouble
+</span><a href="#local-6989586621680427689"><span class="hs-identifier hs-var">a3'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
 </span><span id="line-176"></span><span>  </span><span class="annot"><span class="annottext">Pool -&gt; (Ptr CPool -&gt; IO DigitalBasket) -&gt; IO DigitalBasket
 forall b. Pool -&gt; (Ptr CPool -&gt; IO b) -&gt; IO b
 </span><a href="QuantLib.Internal.Type.html#withPool"><span class="hs-identifier hs-var">withPool</span></a></span><span> </span><span class="annot"><span class="annottext">Pool
-</span><a href="#local-6989586621680427476"><span class="hs-identifier hs-var">a4</span></a></span><span> </span><span class="annot"><span class="annottext">((Ptr CPool -&gt; IO DigitalBasket) -&gt; IO DigitalBasket)
+</span><a href="#local-6989586621680427680"><span class="hs-identifier hs-var">a4</span></a></span><span> </span><span class="annot"><span class="annottext">((Ptr CPool -&gt; IO DigitalBasket) -&gt; IO DigitalBasket)
 -&gt; (Ptr CPool -&gt; IO DigitalBasket) -&gt; IO DigitalBasket
 forall a b. (a -&gt; b) -&gt; a -&gt; b
-</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680427487"><span class="annot"><span class="annottext">Ptr CPool
-</span><a href="#local-6989586621680427487"><span class="hs-identifier hs-var">a4'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
-</span><span id="line-177"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span id="local-6989586621680427491"><span class="annot"><span class="annottext">a5' :: CDouble
-</span><a href="#local-6989586621680427491"><span class="hs-identifier hs-var hs-var">a5'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Double -&gt; CDouble
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680427691"><span class="annot"><span class="annottext">Ptr CPool
+</span><a href="#local-6989586621680427691"><span class="hs-identifier hs-var">a4'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
+</span><span id="line-177"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span id="local-6989586621680427695"><span class="annot"><span class="annottext">a5' :: CDouble
+</span><a href="#local-6989586621680427695"><span class="hs-identifier hs-var hs-var">a5'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Double -&gt; CDouble
 forall a b. (Real a, Fractional b) =&gt; a -&gt; b
 </span><span class="hs-identifier hs-var">realToFrac</span></span><span> </span><span class="annot"><span class="annottext">Double
-</span><a href="#local-6989586621680427477"><span class="hs-identifier hs-var">a5</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span> </span><span>
-</span><span id="line-178"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span id="local-6989586621680427495"><span class="annot"><span class="annottext">a6' :: CDouble
-</span><a href="#local-6989586621680427495"><span class="hs-identifier hs-var hs-var">a6'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Double -&gt; CDouble
+</span><a href="#local-6989586621680427681"><span class="hs-identifier hs-var">a5</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span> </span><span>
+</span><span id="line-178"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span id="local-6989586621680427699"><span class="annot"><span class="annottext">a6' :: CDouble
+</span><a href="#local-6989586621680427699"><span class="hs-identifier hs-var hs-var">a6'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Double -&gt; CDouble
 forall a b. (Real a, Fractional b) =&gt; a -&gt; b
 </span><span class="hs-identifier hs-var">realToFrac</span></span><span> </span><span class="annot"><span class="annottext">Double
-</span><a href="#local-6989586621680427478"><span class="hs-identifier hs-var">a6</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span id="local-6989586621680427030"></span><span> </span><span>
+</span><a href="#local-6989586621680427682"><span class="hs-identifier hs-var">a6</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span id="local-6989586621680427234"></span><span> </span><span>
 </span><span id="line-179"></span><span>  </span><span class="annot"><span class="annottext">Claim -&gt; (Ptr CQlClaim -&gt; IO DigitalBasket) -&gt; IO DigitalBasket
 forall a. Claim -&gt; (Ptr CQlClaim -&gt; IO a) -&gt; IO a
 </span><a href="QuantLib.Internal.Common.html#withClaim"><span class="hs-identifier hs-var">withClaim</span></a></span><span> </span><span class="annot"><span class="annottext">Claim
-</span><a href="#local-6989586621680427479"><span class="hs-identifier hs-var">a7</span></a></span><span> </span><span class="annot"><span class="annottext">((Ptr CQlClaim -&gt; IO DigitalBasket) -&gt; IO DigitalBasket)
+</span><a href="#local-6989586621680427683"><span class="hs-identifier hs-var">a7</span></a></span><span> </span><span class="annot"><span class="annottext">((Ptr CQlClaim -&gt; IO DigitalBasket) -&gt; IO DigitalBasket)
 -&gt; (Ptr CQlClaim -&gt; IO DigitalBasket) -&gt; IO DigitalBasket
 forall a b. (a -&gt; b) -&gt; a -&gt; b
-</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680427497"><span class="annot"><span class="annottext">Ptr CQlClaim
-</span><a href="#local-6989586621680427497"><span class="hs-identifier hs-var">a7'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680427701"><span class="annot"><span class="annottext">Ptr CQlClaim
+</span><a href="#local-6989586621680427701"><span class="hs-identifier hs-var">a7'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
 </span><span id="line-180"></span><span>  </span><span class="annot"><span class="annottext">DigitalLossModel
 -&gt; (Ptr CDefaultLossModel -&gt; IO DigitalBasket) -&gt; IO DigitalBasket
 forall b.
 DigitalLossModel -&gt; (Ptr CDefaultLossModel -&gt; IO b) -&gt; IO b
 </span><a href="QuantLib.Internal.Type.html#withDigitalLossModel"><span class="hs-identifier hs-var">withDigitalLossModel</span></a></span><span> </span><span class="annot"><span class="annottext">DigitalLossModel
-</span><a href="#local-6989586621680427480"><span class="hs-identifier hs-var">a8</span></a></span><span> </span><span class="annot"><span class="annottext">((Ptr CDefaultLossModel -&gt; IO DigitalBasket) -&gt; IO DigitalBasket)
+</span><a href="#local-6989586621680427684"><span class="hs-identifier hs-var">a8</span></a></span><span> </span><span class="annot"><span class="annottext">((Ptr CDefaultLossModel -&gt; IO DigitalBasket) -&gt; IO DigitalBasket)
 -&gt; (Ptr CDefaultLossModel -&gt; IO DigitalBasket) -&gt; IO DigitalBasket
 forall a b. (a -&gt; b) -&gt; a -&gt; b
-</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680427502"><span class="annot"><span class="annottext">Ptr CDefaultLossModel
-</span><a href="#local-6989586621680427502"><span class="hs-identifier hs-var">a8'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span id="local-6989586621680427034"></span><span> </span><span>
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680427706"><span class="annot"><span class="annottext">Ptr CDefaultLossModel
+</span><a href="#local-6989586621680427706"><span class="hs-identifier hs-var">a8'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span id="local-6989586621680427238"></span><span> </span><span>
 </span><span id="line-181"></span><span>  </span><span class="annot"><span class="annottext">(Ptr (Ptr CChar) -&gt; IO DigitalBasket) -&gt; IO DigitalBasket
 forall a b. (Ptr (Ptr a) -&gt; IO b) -&gt; IO b
 </span><a href="QuantLib.Internal.html#preErrorCheck"><span class="hs-identifier hs-var">preErrorCheck</span></a></span><span> </span><span class="annot"><span class="annottext">((Ptr (Ptr CChar) -&gt; IO DigitalBasket) -&gt; IO DigitalBasket)
 -&gt; (Ptr (Ptr CChar) -&gt; IO DigitalBasket) -&gt; IO DigitalBasket
 forall a b. (a -&gt; b) -&gt; a -&gt; b
-</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680427503"><span class="annot"><span class="annottext">Ptr (Ptr CChar)
-</span><a href="#local-6989586621680427503"><span class="hs-identifier hs-var">a9'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680427707"><span class="annot"><span class="annottext">Ptr (Ptr CChar)
+</span><a href="#local-6989586621680427707"><span class="hs-identifier hs-var">a9'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
 </span><span id="line-182"></span><span>  </span><span class="annot"><span class="annottext">CInt
 -&gt; CUInt
 -&gt; Ptr (Ptr CChar)
@@ -586,32 +586,32 @@ forall a b. (a -&gt; b) -&gt; a -&gt; b
 -&gt; Ptr (Ptr CChar)
 -&gt; IO (Ptr CBasket)
 </span><a href="QuantLib.Credit.html#qlDigitalBasket%27_"><span class="hs-identifier hs-var">qlDigitalBasket'_</span></a></span><span> </span><span class="annot"><span class="annottext">CInt
-</span><a href="#local-6989586621680427481"><span class="hs-identifier hs-var">a1'</span></a></span><span> </span><span class="annot"><span class="annottext">CUInt
-</span><a href="#local-6989586621680427482"><span class="hs-identifier hs-var">a2'1</span></a></span><span>  </span><span class="annot"><span class="annottext">Ptr (Ptr CChar)
-</span><a href="#local-6989586621680427483"><span class="hs-identifier hs-var">a2'2</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr CDouble
-</span><a href="#local-6989586621680427485"><span class="hs-identifier hs-var">a3'</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr CPool
-</span><a href="#local-6989586621680427487"><span class="hs-identifier hs-var">a4'</span></a></span><span> </span><span class="annot"><span class="annottext">CDouble
-</span><a href="#local-6989586621680427491"><span class="hs-identifier hs-var">a5'</span></a></span><span> </span><span class="annot"><span class="annottext">CDouble
-</span><a href="#local-6989586621680427495"><span class="hs-identifier hs-var">a6'</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr CQlClaim
-</span><a href="#local-6989586621680427497"><span class="hs-identifier hs-var">a7'</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr CDefaultLossModel
-</span><a href="#local-6989586621680427502"><span class="hs-identifier hs-var">a8'</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr (Ptr CChar)
-</span><a href="#local-6989586621680427503"><span class="hs-identifier hs-var">a9'</span></a></span><span> </span><span class="annot"><span class="annottext">IO (Ptr CBasket)
+</span><a href="#local-6989586621680427685"><span class="hs-identifier hs-var">a1'</span></a></span><span> </span><span class="annot"><span class="annottext">CUInt
+</span><a href="#local-6989586621680427686"><span class="hs-identifier hs-var">a2'1</span></a></span><span>  </span><span class="annot"><span class="annottext">Ptr (Ptr CChar)
+</span><a href="#local-6989586621680427687"><span class="hs-identifier hs-var">a2'2</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr CDouble
+</span><a href="#local-6989586621680427689"><span class="hs-identifier hs-var">a3'</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr CPool
+</span><a href="#local-6989586621680427691"><span class="hs-identifier hs-var">a4'</span></a></span><span> </span><span class="annot"><span class="annottext">CDouble
+</span><a href="#local-6989586621680427695"><span class="hs-identifier hs-var">a5'</span></a></span><span> </span><span class="annot"><span class="annottext">CDouble
+</span><a href="#local-6989586621680427699"><span class="hs-identifier hs-var">a6'</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr CQlClaim
+</span><a href="#local-6989586621680427701"><span class="hs-identifier hs-var">a7'</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr CDefaultLossModel
+</span><a href="#local-6989586621680427706"><span class="hs-identifier hs-var">a8'</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr (Ptr CChar)
+</span><a href="#local-6989586621680427707"><span class="hs-identifier hs-var">a9'</span></a></span><span> </span><span class="annot"><span class="annottext">IO (Ptr CBasket)
 -&gt; (Ptr CBasket -&gt; IO DigitalBasket) -&gt; IO DigitalBasket
 forall a b. IO a -&gt; (a -&gt; IO b) -&gt; IO b
 forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; (a -&gt; m b) -&gt; m b
-</span><span class="hs-operator hs-var">&gt;&gt;=</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680427505"><span class="annot"><span class="annottext">Ptr CBasket
-</span><a href="#local-6989586621680427505"><span class="hs-identifier hs-var">res</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><span class="hs-operator hs-var">&gt;&gt;=</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680427709"><span class="annot"><span class="annottext">Ptr CBasket
+</span><a href="#local-6989586621680427709"><span class="hs-identifier hs-var">res</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
 </span><span id="line-183"></span><span>  </span><span class="annot"><span class="annottext">Ptr CBasket -&gt; IO DigitalBasket
 </span><a href="QuantLib.Internal.Type.html#peekDigitalBasket"><span class="hs-identifier hs-var">peekDigitalBasket</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr CBasket
-</span><a href="#local-6989586621680427505"><span class="hs-identifier hs-var">res</span></a></span><span> </span><span class="annot"><span class="annottext">IO DigitalBasket
+</span><a href="#local-6989586621680427709"><span class="hs-identifier hs-var">res</span></a></span><span> </span><span class="annot"><span class="annottext">IO DigitalBasket
 -&gt; (DigitalBasket -&gt; IO DigitalBasket) -&gt; IO DigitalBasket
 forall a b. IO a -&gt; (a -&gt; IO b) -&gt; IO b
 forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; (a -&gt; m b) -&gt; m b
-</span><span class="hs-operator hs-var">&gt;&gt;=</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680427507"><span class="annot"><span class="annottext">DigitalBasket
-</span><a href="#local-6989586621680427507"><span class="hs-identifier hs-var">res'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><span class="hs-operator hs-var">&gt;&gt;=</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680427711"><span class="annot"><span class="annottext">DigitalBasket
+</span><a href="#local-6989586621680427711"><span class="hs-identifier hs-var">res'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
 </span><span id="line-184"></span><span>  </span><span class="annot"><span class="annottext">Ptr (Ptr CChar) -&gt; IO ()
 </span><a href="QuantLib.Internal.html#errorCheck"><span class="hs-identifier hs-var">errorCheck</span></a></span><span>  </span><span class="annot"><span class="annottext">Ptr (Ptr CChar)
-</span><a href="#local-6989586621680427503"><span class="hs-identifier hs-var">a9'</span></a></span><span class="annot"><span class="annottext">IO () -&gt; IO DigitalBasket -&gt; IO DigitalBasket
+</span><a href="#local-6989586621680427707"><span class="hs-identifier hs-var">a9'</span></a></span><span class="annot"><span class="annottext">IO () -&gt; IO DigitalBasket -&gt; IO DigitalBasket
 forall a b. IO a -&gt; IO b -&gt; IO b
 forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; m b -&gt; m b
 </span><span class="hs-operator hs-var">&gt;&gt;</span></span><span>
@@ -619,7 +619,7 @@ forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; m b -&gt; m b
 forall a. a -&gt; IO a
 forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
 </span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">DigitalBasket
-</span><a href="#local-6989586621680427507"><span class="hs-identifier hs-var">res'</span></a></span><span class="hs-special">)</span><span>
+</span><a href="#local-6989586621680427711"><span class="hs-identifier hs-var">res'</span></a></span><span class="hs-special">)</span><span>
 </span><span id="line-186"></span><span>
 </span><span id="line-187"></span><span class="hs-pragma">{-# LINE 176 &quot;./QuantLib/Credit.chs&quot; #-}</span><span>
 </span><span id="line-176"></span><span>

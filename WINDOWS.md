@@ -65,7 +65,7 @@ cmake -G Ninja \
   -DCMAKE_BUILD_TYPE=Release \
   -DCMAKE_INSTALL_PREFIX=h:/QuantLib-ghc \
   -DBoost_NO_BOOST_CMAKE=ON -DBoost_INCLUDE_DIR=h:/boost-inc \
-  -DCMAKE_CXX_FLAGS="-include vector" \
+  -DCMAKE_CXX_FLAGS="-include vector -DBOOST_MATH_PROMOTE_DOUBLE_POLICY=false" \
   -DQL_BUILD_EXAMPLES=OFF -DQL_BUILD_TEST_SUITE=OFF \
   ..
 ninja
@@ -83,7 +83,7 @@ h:\cmake-4.4.2-windows-x86_64\bin\cmake.exe -G Ninja ^
   -DCMAKE_INSTALL_PREFIX=h:/QuantLib-ghc ^
   -DBoost-NO_BOOST_CMAKE=ON ^
   -DBoost_INCLUDE_DIR=h:/boost_1_91_0 ^
-  -DCMAKE_CXX_FLAGS="-include vector" ^
+  -DCMAKE_CXX_FLAGS="-include vector -DBOOST_MATH_PROMOTE_DOUBLE_POLICY=false" ^
   -DQL_BUILD_EXAMPLES=OFF ^
   -DQL_BUILD_TEST_SUITE=OFF ^
   -DCMAKE_MAKE_PROGRAM=h:/ninja.exe ^
@@ -96,6 +96,7 @@ h:\ninja install
 
 - `Boost_NO_BOOST_CMAKE=ON` prevents CMake from restoring MSYS2's full include directory.
 - `-include vector` supplies a missing direct include in QuantLib's Islamic-holiday source; libc++ does not provide it transitively.
+- `-DBOOST_MATH_PROMOTE_DOUBLE_POLICY=false` stops `boost::math` widening `double` to `long double`, which a GHC-linked binary computes at the wrong precision. See "x87 precision and `long double`" below for why.
 
 The ~976-translation-unit build installs headers to `h:\QuantLib-ghc\include` and the library to `h:\QuantLib-ghc\lib\libQuantLib.a`; it needs no source patches.
 
@@ -136,6 +137,25 @@ h:\cabal.exe test
   guard — linking MSYS2's `libstdc++` alongside GHC's `libc++` produces
   `duplicate symbol: std::__1::basic_ostream<…>::operator<<(int)` and
   hundreds like it.
+
+## x87 precision and `long double`
+
+A GHC-linked binary runs the x87 unit at 53-bit precision, where a `clang++`-linked
+one has 64-bit. `boost::math` widens `double` to `long double` by default, so its
+distributions silently lose the precision they asked for — QuantLib's
+`quantile(non_central_chi_squared)` stops converging and `hestonSLVFDMModel` throws.
+Hence `-DBOOST_MATH_PROMOTE_DOUBLE_POLICY=false` in Step 2: no promotion, no 80-bit
+arithmetic, no problem. QuantLib names `long double` in exactly one place otherwise.
+
+There is no reliable place to fix this at run time instead — a static initializer runs
+too early, and GHC's RTS hooks are one-shot per process while the control word is
+per-thread. So if you can't set the flag when building QuantLib, call
+`QuantLib.Settings.setExtendedPrecision` at program start; it restores 64-bit precision
+directly, and is a no-op off Windows/x86.
+
+Debugging note: mingw's `printf` has no `%Lg` and prints subnormal nonsense for a
+`long double` even when the value is fine — cast to `double`, and don't trust such a
+figure in a library's error message.
 
 ## Versions this was last verified against
 
