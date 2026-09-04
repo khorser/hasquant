@@ -75,7 +75,6 @@ rendistatoSpec = describe "RendistatoBasket / RendistatoCalculator" $
     Settings.keepingSettings' $ do
       let today' = 1 `september` 2024
       Settings.setEvaluationDate (Just today')
-      target <- calendar TARGET
       dc <- dayCounter Actual365FixedStandard
       q <- simpleQuote 0.03
       curve <- flatForward today' q dc Continuous NoFrequency

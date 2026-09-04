@@ -12,7 +12,7 @@ import QuantLib.Quote(simpleQuote, setValue)
 import QuantLib.TermStructure.Credit(flatHazardRate)
 import QuantLib.TermStructure.Yield(flatForward)
 import QuantLib.Instrument(setPricingEngine)
-import QuantLib.Instrument.Credit(Claim(..), ProtectionSide(..), syntheticCDO, fairPremium, NthToDefault, nthToDefault, ntdFairPremium)
+import QuantLib.Instrument.Credit(Claim(..), ProtectionSide(..), syntheticCDO, fairPremium, nthToDefault, ntdFairPremium)
 import QuantLib.PricingEngine(midPointCDOEngine, integralCDOEngine, integralNtdEngine)
 import qualified QuantLib.Settings as Settings
 import QuantLib.Credit

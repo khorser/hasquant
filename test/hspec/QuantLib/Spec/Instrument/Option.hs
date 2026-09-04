@@ -614,14 +614,14 @@ spec = do
     -- (Margrabe 1978 p.52, plus quantity variants from Excel calculations). theta/rho aren't
     -- checked here: MargrabeOption only has dedicated delta1/delta2/gamma1/gamma2 bound, not
     -- the generic MultiAssetOption theta/rho (those need an upcast this step doesn't add).
-    mapM_ (\(s1, s2, q1n, q2n, div1, div2, r, t, v1, v2, rho, expV, expD1, expD2, expG1, expG2) ->
-      it ("matches the European exchange-option value/greeks at s1=" ++ show s1 ++ " s2=" ++ show s2 ++ " rho=" ++ show rho) $
+    mapM_ (\(s1, s2, q1n, q2n, div1, div2, r, t, v1, v2, correlation, expV, expD1, expD2, expG1, expG2) ->
+      it ("matches the European exchange-option value/greeks at s1=" ++ show s1 ++ " s2=" ++ show s2 ++ " rho=" ++ show correlation) $
         Settings.keepingSettings' $ do
           evalDate <- today
           Settings.setEvaluationDate (Just evalDate)
           process1 <- flatProcess evalDate s1 div1 r v1
           process2 <- flatProcess evalDate s2 div2 r v2
-          eng <- analyticEuropeanMargrabeEngine process1 process2 rho
+          eng <- analyticEuropeanMargrabeEngine process1 process2 correlation
           opt <- margrabeOption q1n q2n (europeanIn (round (t * 360 :: Double)) evalDate)
           setPricingEngine opt eng
           v <- npv opt
@@ -658,14 +658,14 @@ spec = do
        ] :: [(Double, Double, Int, Int, Double, Double, Double, Double, Double, Double, Double, Double, Double, Double, Double, Double)])
 
     -- cached references from QuantLib test-suite/margrabeoption.cpp::testAmericanExchangeTwoAssets (Haug).
-    mapM_ (\(s1, s2, q1n, q2n, div1, div2, r, t, v1, v2, rho, expV) ->
-      it ("matches the American exchange-option value at s1=" ++ show s1 ++ " s2=" ++ show s2 ++ " t=" ++ show t ++ " rho=" ++ show rho) $
+    mapM_ (\(s1, s2, q1n, q2n, div1, div2, r, t, v1, v2, correlation, expV) ->
+      it ("matches the American exchange-option value at s1=" ++ show s1 ++ " s2=" ++ show s2 ++ " t=" ++ show t ++ " rho=" ++ show correlation) $
         Settings.keepingSettings' $ do
           evalDate <- today
           Settings.setEvaluationDate (Just evalDate)
           process1 <- flatProcess evalDate s1 div1 r v1
           process2 <- flatProcess evalDate s2 div2 r v2
-          eng <- analyticAmericanMargrabeEngine process1 process2 rho
+          eng <- analyticAmericanMargrabeEngine process1 process2 correlation
           let exDate = addDays (round (t * 360 :: Double)) evalDate
           opt <- margrabeOption q1n q2n (American (Just evalDate) exDate False)
           setPricingEngine opt eng

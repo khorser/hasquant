@@ -858,10 +858,10 @@ spec evalDate = do
                     False avg 0 0 False False Nothing Nothing Nothing Nothing
                   CF.setFloatingRateCouponPricer base pricer
                   pure base
-                mkCapFloor cap floor = do
+                mkCapFloor cap floorRate = do
                   base <- CF.overnightIndexedCoupon end 1000000.0 start end sofr 1.0 0.0 Nothing Nothing dc
                     False avg 0 0 False False Nothing Nothing Nothing Nothing
-                  cf <- CF.cappedFlooredOvernightIndexedCoupon base cap floor False False
+                  cf <- CF.cappedFlooredOvernightIndexedCoupon base cap floorRate False False
                   CF.setFloatingRateCouponPricer cf pricer
                   pure cf
             pure (mkBase, mkCapFloor)
