@@ -2,7 +2,6 @@
 module QuantLib.Spec.TermStructure (spec) where
 
 import Control.Monad(replicateM, forM_)
-import System.Mem(performGC)
 
 import Test.Hspec hiding(before, after)
 import Test.Hspec.QuickCheck(prop)
@@ -296,8 +295,6 @@ spec = do
             fittedBondDiscountCurve 3 cal (fromList helpers) thirty360dc
               (ExponentialSplines True [] [] 0.0 1.0e6 9 Nothing Nothing (Just optMethod))
               1.0e-10 10000 [] 1.0
-          performGC
-          performGC
           d <- discount' curve (5 `january` 2029) False
           d `shouldSatisfy` (\x -> x > 0 && x < 1)
 
@@ -358,7 +355,6 @@ spec = do
           _ <- discount' ts today' False
           implieds <- mapM impliedQuote helpers
           mapM_ (`shouldSatisfy` closePrec inputRate 1.0e-6) implieds
-          performGC
 
     -- No upstream test-suite fixture exists for OvernightIndexFutureRateHelper/SofrFutureRateHelper
     -- either (checked ~/Src/QuantLib/test-suite for overnightindexfuture/sofrfuture-named files,
@@ -1465,13 +1461,6 @@ spec = do
           Vol.smileSectionAtmLevel svi `shouldReturn` forward
           variance <- Vol.smileSectionVariance svi strike
           variance `shouldSatisfy` closePrec (a + b * sigma) 1.0e-8
-          -- SmileSection is an Observer of Settings' evaluation date, and svi's expiry
-          -- (12 march 2010) is far in the past relative to other tests' dates (e.g. the
-          -- swaption-volatility-matrix tests use 11 december 2012); keepingSettings''s own
-          -- single performGC on exit isn't reliably enough to finalize it before a later
-          -- test's setEvaluationDate notifies it and trips its now-past-expiry check.
-          performGC
-          performGC
 
     -- SwaptionVolatilityMatrix (fixed reference date, fixed market data): no upstream cached
     -- fixture applies here, since test-suite/swaptionvolatilitymatrix.cpp only exercises the
@@ -1637,8 +1626,6 @@ spec = do
               swapIndexBase shortSwapIndexBase False parametersGuess
               False True False False False Nothing Nothing False 50 False 0.0001
               (Just endCriteria) (Just optMethod)
-          performGC
-          performGC
           k <- Vol.sabrSwaptionVolatilityCubeAtmStrike cube (1, Years) (2, Years)
           k `shouldSatisfy` (\x -> x > -0.05 && x < 0.20)
 

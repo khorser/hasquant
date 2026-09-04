@@ -29,7 +29,6 @@
 -- is not on it.
 import Control.Monad (forM_, when)
 import System.Environment (getArgs)
-import System.Mem (performGC)
 
 import QuantLib.Instrument
 import QuantLib.Instrument.Swap
@@ -90,8 +89,7 @@ livenessChecks = do
   -- curve, so anything other than an exact match means we are not reading the same object.
   do
     c <- spreadedCurveDroppingBase
-    performGC
-    performGC
+    collectGarbage
     d <- TS.discount c 5.0 False
     checkEq "derived curve outlives its dropped base" refSpreaded d
 
@@ -101,8 +99,7 @@ livenessChecks = do
   refNpv <- swapNpvWith =<< mkCurve 0.02
   do
     e <- discountingSwapEngineDroppingCurve 0.02
-    performGC
-    performGC
+    collectGarbage
     v <- swapNpvWithEngine e
     checkEq "engine outlives its dropped curve" refNpv v
 
@@ -166,9 +163,8 @@ growthLoop n = do
     _ <- TS.discount derived 5.0 False
     e <- discountingSwapEngine derived Nothing Nothing Nothing
     _ <- swapNpvWithEngine e
-    when (i `mod` 100 == 0) performGC
-  performGC
-  performGC
+    when (i `mod` 100 == 0) collectGarbage
+  collectGarbage
   putStrLn ("growth loop: completed " ++ show n ++ " iterations")
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

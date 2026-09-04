@@ -6,9 +6,7 @@ module QuantLib.Example.Repo
   ) where
 
 import Control.Monad(void, when)
-import System.Mem(performGC)
 import System.IO (hPutStrLn, stderr)
-import Control.Concurrent (threadDelay)
 
 import QuantLib.Instrument
 import QuantLib.Instrument.Bond
@@ -16,7 +14,7 @@ import QuantLib.Instrument.Forward
 import qualified QuantLib.InterestRate as IR
 import QuantLib.PricingEngine(discountingBondEngine)
 import QuantLib.Quote(setValue, simpleQuote, SimpleQuote)
-import QuantLib.Settings(setEvaluationDate)
+import QuantLib.Settings(collectGarbage, setEvaluationDate)
 import QuantLib.TermStructure.Yield
 import QuantLib.Time.Calendar
 import QuantLib.Time.Date
@@ -51,7 +49,7 @@ run gc = do
     (6, Months) bondCalendar bondBusinessDayConvention bondBusinessDayConvention Backward False
     Nothing Nothing
   (fwd, clP, accr1, accr2, clF, fP, dp) <- doBond bondCalendar bondSchedule bondQuote repoDayCountConvention bondDayCountConvention bondCurve
-  when gc (performGC >> threadDelay 1000000 >> performGC >> threadDelay 1000000 >> hPutStrLn stderr "GC complete")
+  when gc (collectGarbage >> hPutStrLn stderr "GC complete")
   repoCurve <- simpleQuote repoRate >>=
         $(free2nd 'flatForward) repoSettlementDate repoDayCountConvention repoCompounding repoCompoundFreq
   spotInc <- spotIncome fwd repoCurve

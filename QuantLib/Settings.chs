@@ -12,6 +12,7 @@ module QuantLib.Settings
 
   , keepingSettings
   , keepingSettings'
+  , collectGarbage
   , version
   , boostVersion
   , epsilon
@@ -63,9 +64,18 @@ keepingSettings = bracket qlSavedSettings qlFreeSavedSettings . const
 -- SavedSettings destructor suppresses all exceptions
 
 -- |brackets to restore settings once action has completed or raised an exception. Before restoring settings
--- garbage collection is run to avoid problems with market data objects watching evaluation date
+-- 'collectGarbage' is run to avoid problems with market data objects watching evaluation date
 keepingSettings' :: IO b -> IO b
-keepingSettings' = bracket qlSavedSettings (\s -> performGC >> qlFreeSavedSettings s) . const
+keepingSettings' = bracket qlSavedSettings (\s -> collectGarbage >> qlFreeSavedSettings s) . const
+
+-- |Best effort: give the finalizers of unreachable QuantLib objects a chance to run, so
+-- their C++ destructors fire before, say, 'setEvaluationDate' notifies surviving observers.
+--
+-- 'performGC' only /schedules/ finalizers, it does not run them synchronously, so this is a
+-- nudge rather than a guarantee. Where correctness depends on an object being gone, anchor
+-- its dates so staleness cannot arise in the first place.
+collectGarbage :: IO ()
+collectGarbage = performGC >> performGC
 
 foreign import ccall safe "ql.h qlVersion" qlVersion :: IO CString
 foreign import ccall safe "ql.h qlBoostVersion" qlBoostVersion :: IO CString

@@ -14,7 +14,6 @@
 --   cabal exec -- ghc -package hasquant test/smoke/CheckQuoteComposition.hs \
 --     -o /tmp/checkquotecomp -outputdir /tmp/checkquotecomp_build && /tmp/checkquotecomp
 import Data.Time.Calendar(Day, fromGregorian)
-import System.Mem(performGC)
 
 import QuantLib.InterestRate
 import QuantLib.Quote
@@ -88,5 +87,5 @@ main = do
     _ <- setValue q1 0.01
     checkClose "multi-composite average after an input moves" 0.02 `flip` 1.0e-12 =<< value avg
 
-  performGC
+  collectGarbage
   putStrLn "all quote-composition checks passed"

@@ -8,7 +8,6 @@ module QuantLib.Spec.PricingEngine (spec) where
 
 import Control.Monad(forM, forM_, when)
 import Data.Time.Calendar(addDays, addGregorianYearsClip)
-import System.Mem(performGC)
 
 import Test.Hspec
 import qualified Data.Vector.Storable as V
@@ -545,7 +544,6 @@ spec = do
         forM_ (zip strikes refVols) $ \(k, expected) -> do
           got <- smileSectionVolatility genericSection k
           got `shouldSatisfy` closePrec expected 1e-6
-        performGC
 
     it "mIsFixed pins m at the seed value while the other four parameters still calibrate" $
       Settings.keepingSettings' $ do
@@ -566,7 +564,6 @@ spec = do
         calibratedM `shouldBe` m_
         rms <- sviInterpolatedSmileSectionRmsError interp
         rms `shouldSatisfy` (< 1e-6)
-        performGC
 
   -- NoArbSabrInterpolatedSmileSection has no upstream test-suite fixture of its own either (only
   -- NoArbSabrInterpolation's direct construction is exercised in test-suite/interpolations.cpp),
@@ -603,7 +600,6 @@ spec = do
         forM_ (zip strikes refVols) $ \(k, expected) -> do
           got <- smileSectionVolatility genericSection k
           got `shouldSatisfy` closePrec expected 1e-6
-        performGC
 
   -- ported from test-suite/zabr.cpp::testConsistency: at gamma=1, ZabrSmileSection<Evaluation>
   -- must (nearly) coincide with the Hagan 2002 SABR closed form (already bound as

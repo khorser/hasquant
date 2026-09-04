@@ -28,13 +28,11 @@ module QuantLib.Example.HaskellLSM
   , run
   ) where
 import Control.Monad(when)
-import Control.Concurrent(threadDelay)
 import Data.List(transpose)
 import qualified Data.Vector.Storable as V
 import qualified Data.Vector as BV
 import qualified Data.Vector.Unboxed as U
 import Data.List.NonEmpty(NonEmpty(..), toList)
-import System.Mem(performGC)
 import System.CPUTime(getCPUTime)
 
 import QuantLib.InterestRate
@@ -260,12 +258,12 @@ run gc = do
   -- 'mean' (via 'sum') fully forces each backward-induction result inside the timed block --
   -- without it, the lazily-built cashflow lists would only be forced later, when 'Result' is
   -- printed, and the CPU time captured here would be meaningless.
-  when gc (performGC >> threadDelay 1000000 >> performGC >> threadDelay 1000000)
+  when gc collectGarbage
   (lsmP, lsmT) <- cpuSeconds $ do
     (_, priceFinal, _) <- lsmGoBack polyT order strike steps calibCF0 priceCF0 (U.replicate nPrice False)
     let p = mean (V.map (* df0) priceFinal)
     p `seq` return p
-  when gc (performGC >> threadDelay 1000000 >> performGC >> threadDelay 1000000)
+  when gc collectGarbage
   (haskellP, haskellT) <- cpuSeconds $ do
     let (_, priceFinal, _) = haskellGoBack order strike steps calibCF0 priceCF0 (U.replicate nPrice False)
         p = mean (V.map (* df0) priceFinal)

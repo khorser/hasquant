@@ -261,15 +261,26 @@ insufficient.
   actually run it. This is what catches the staleness above and any
   enum/factory-table order mismatch; `test/` won't, since it doesn't know
   about cases it was never written to check.
+- **Never spell a GC nudge by hand: `QuantLib.Settings.collectGarbage` is
+  the one exported name for it.** It is `performGC >> performGC`, with
+  haddock saying plainly that `performGC` only *schedules* finalizers, so it
+  is a nudge rather than a guarantee. If a site ever needs a `threadDelay`
+  for the finalizer thread to actually get scheduled, add it *inside*
+  `collectGarbage` and re-run everything -- do not re-scatter the idiom
+  across call sites, which is exactly the state it was consolidated out of.
 - **A new hspec test that sets `Settings.evaluationDate` must wrap its body in
-  `Settings.keepingSettings'`, not a manual trailing `performGC`.**
+  `Settings.keepingSettings'`, not a manual trailing `collectGarbage`.**
   `QuantLib.Settings.keepingSettings'` is a `bracket`-based helper that
-  already runs `performGC` right before restoring the saved `Settings`
+  already runs `collectGarbage` right before restoring the saved `Settings`
   singleton — on normal completion *and* on an exception, which a manual
   trailing call does not cover. Nearly every hspec test that mutates the
   evaluation date is already wrapped in it
   (`test/hspec/QuantLib/Spec/DatesAndSchedule.hs` has dozens of examples);
-  don't add a second, redundant `performGC` on top. This matters especially
+  don't add a second, redundant `collectGarbage` on top -- nor a mid-body
+  double GC, which is what the three sites in
+  `test/hspec/QuantLib/Spec/TermStructure.hs` did before `keepingSettings'`
+  itself was strengthened to the double sweep, and which were deleted then.
+  This matters especially
   for a test anchored to a fixed historical date with a long internal
   schedule (a term price surface, a piecewise curve with a maturity decades
   out): without the bracket's GC, a still-alive `LazyObject` from that test
