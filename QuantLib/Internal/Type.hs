@@ -2846,6 +2846,7 @@ markovFunctionalAsGaussian1dModel m = withGenCalibratedModel m qlMarkovFunctiona
 -- >  Bond
 -- >    ConvertibleBond
 -- >    FixedRateBond
+-- >      BTP
 -- >    CallableBond
 -- >    CPIBond
 -- >  Commodity*
@@ -3098,17 +3099,64 @@ peekConvertibleBond = peekGenBond
 withConvertibleBond :: ConvertibleBond -> (Ptr CConvertibleBond' -> IO b) -> IO b
 withConvertibleBond = withForeignPtr . ptr . peel . getInstrument
 
+-- FixedRateBond is promoted to a one-AnyOf-layer family of its own (mirrors
+-- GenFixedVsFloatingSwap/VanillaSwap) because BTP (below) is a real leaf under it: BTP is only
+-- needed at all because RendistatoBasket's own constructor requires vector<shared_ptr<BTP>>, and
+-- the shim constructing 'btp'/'btpWithRedemption' already knows it is building a genuine BTP, so
+-- there is no cast to avoid by keeping it that way rather than eagerly erasing to FixedRateBond.
 data CFixedRateBond'
+type GenFixedRateBond fb = GenBond (AnyOf CFixedRateBond' fb)
 type CFixedRateBond = ForeignPtr CFixedRateBond'
-type FixedRateBond = GenBond CFixedRateBond
+type FixedRateBond = GenFixedRateBond CFixedRateBond
 foreign import ccall unsafe "ql.h &qlFreeFixedRateBond" qlFreeFixedRateBond :: FinalizerPtr CFixedRateBond'
 instance Finalizable CFixedRateBond' where finalize = qlFreeFixedRateBond
 foreign import ccall "ql.h qlFixedRateBondAsBond" qlFixedRateBondAsBond :: Ptr CFixedRateBond' -> IO (Ptr CBond')
 instance Upcastable CFixedRateBond' where {type Base CFixedRateBond' = CBond'; upcast = qlFixedRateBondAsBond}
 peekFixedRateBond :: Ptr CFixedRateBond' -> IO FixedRateBond
-peekFixedRateBond = peekGenBond
-withFixedRateBond :: FixedRateBond -> (Ptr CFixedRateBond' -> IO b) -> IO b
-withFixedRateBond = withForeignPtr . ptr . peel . getInstrument
+peekFixedRateBond = newCastForeignPtr >=> newGenFixedRateBond
+withFixedRateBond :: GenFixedRateBond fb -> (Ptr CFixedRateBond' -> IO b) -> IO b
+withFixedRateBond = withGenForeignPtr . peel . peel . getInstrument
+newGenFixedRateBond :: GenForeignPtr fb CFixedRateBond' -> IO (GenFixedRateBond fb)
+newGenFixedRateBond = pure . GenInstrument . newAnyOf . newAnyOf
+
+-- |Italian BTP (Buono Poliennali del Tesoro): a 'FixedRateBond' with the Italian Treasury's own
+-- hardcoded conventions (semiannual, Actual\/Actual ISMA, ModifiedFollowing, TARGET payment
+-- calendar, par redemption unless overridden) -- see 'QuantLib.Instrument.Bond.btp'.
+data CBTP'
+type CBTP = ForeignPtr CBTP'
+type BTP = GenFixedRateBond CBTP
+foreign import ccall unsafe "ql.h &qlFreeBtp" qlFreeBtp :: FinalizerPtr CBTP'
+instance Finalizable CBTP' where finalize = qlFreeBtp
+foreign import ccall "ql.h qlBtpAsFixedRateBond" qlBtpAsFixedRateBond :: Ptr CBTP' -> IO (Ptr CFixedRateBond')
+instance Upcastable CBTP' where {type Base CBTP' = CFixedRateBond'; upcast = qlBtpAsFixedRateBond}
+peekBTP :: Ptr CBTP' -> IO BTP
+peekBTP = newGenForeignPtr >=> newGenFixedRateBond
+withBTP :: BTP -> (Ptr CBTP' -> IO b) -> IO b
+withBTP = withForeignPtr . ptr . peel . peel . getInstrument
+withBTPArray :: [BTP] -> ((CUInt, Ptr (Ptr CBTP')) -> IO b) -> IO b
+withBTPArray = withGenArray withBTP
+
+-- |A weighted collection of BTPs with live clean-price quotes -- see
+-- 'QuantLib.Instrument.Bond.rendistatoBasket'.
+data CRendistatoBasket
+newtype RendistatoBasket = RendistatoBasket {getCRendistatoBasket :: Standalone CRendistatoBasket}
+foreign import ccall unsafe "ql.h &qlFreeRendistatoBasket" qlFreeRendistatoBasket :: FinalizerPtr CRendistatoBasket
+instance Finalizable CRendistatoBasket where finalize = qlFreeRendistatoBasket
+peekRendistatoBasket :: Ptr CRendistatoBasket -> IO RendistatoBasket
+peekRendistatoBasket = RendistatoBasket <.> peekStandalone
+withRendistatoBasket :: RendistatoBasket -> (Ptr CRendistatoBasket -> IO b) -> IO b
+withRendistatoBasket = withStandalone . getCRendistatoBasket
+
+-- |QuantLib's own BTP-vs-swap-curve relative-value calculator -- see
+-- 'QuantLib.Instrument.Bond.rendistatoCalculator'.
+data CRendistatoCalculator
+newtype RendistatoCalculator = RendistatoCalculator {getCRendistatoCalculator :: Standalone CRendistatoCalculator}
+foreign import ccall unsafe "ql.h &qlFreeRendistatoCalculator" qlFreeRendistatoCalculator :: FinalizerPtr CRendistatoCalculator
+instance Finalizable CRendistatoCalculator where finalize = qlFreeRendistatoCalculator
+peekRendistatoCalculator :: Ptr CRendistatoCalculator -> IO RendistatoCalculator
+peekRendistatoCalculator = RendistatoCalculator <.> peekStandalone
+withRendistatoCalculator :: RendistatoCalculator -> (Ptr CRendistatoCalculator -> IO b) -> IO b
+withRendistatoCalculator = withStandalone . getCRendistatoCalculator
 
 data CCPIBond'
 type CCPIBond = ForeignPtr CCPIBond'

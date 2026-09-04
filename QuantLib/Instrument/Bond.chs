@@ -3,6 +3,9 @@ module QuantLib.Instrument.Bond
   (
     Bond
   , FixedRateBond
+  , BTP
+  , RendistatoBasket
+  , RendistatoCalculator
   , ConvertibleBond
   , CallableBond
   , CPIBond
@@ -15,6 +18,26 @@ module QuantLib.Instrument.Bond
   , bond
   , bond'
   , fixedRateBond
+  , btp
+  , btpWithRedemption
+  , rendistatoBasket
+  , rendistatoCalculator
+  , rendistatoCalculatorYield
+  , rendistatoCalculatorDuration
+  , rendistatoCalculatorYields
+  , rendistatoCalculatorDurations
+  , rendistatoCalculatorSwapLengths
+  , rendistatoCalculatorSwapRates
+  , rendistatoCalculatorSwapYields
+  , rendistatoCalculatorSwapDurations
+  , rendistatoCalculatorEquivalentSwap
+  , rendistatoCalculatorEquivalentSwapRate
+  , rendistatoCalculatorEquivalentSwapYield
+  , rendistatoCalculatorEquivalentSwapDuration
+  , rendistatoCalculatorEquivalentSwapLength
+  , rendistatoCalculatorEquivalentSwapSpread
+  , rendistatoEquivalentSwapLengthQuote
+  , rendistatoEquivalentSwapSpreadQuote
   , zeroCouponBond
   , floatingRateBond
   , cmsRateBond
@@ -93,7 +116,7 @@ import QuantLib.Internal.Common
 import QuantLib.Internal.Syntax(deriveOptionsRecord)
 import QuantLib.Time.Calendar(calendar, CalendarConstructor(..))
 import Data.Maybe(fromMaybe)
-import Data.List.NonEmpty(NonEmpty)
+import Data.List.NonEmpty(NonEmpty, toList)
 
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"
@@ -103,7 +126,7 @@ import Data.List.NonEmpty(NonEmpty)
 
 {#pointer *Calendar foreign -> CCalendar nocode#}
 {#pointer *Leg foreign -> CLeg' nocode#}
-{#pointer *QlQuote as Quote foreign -> CQuote nocode#}
+{#pointer *QlQuote as Quote foreign -> CQuote' nocode#}
 {#pointer *QlCallability foreign -> CQlCallability nocode#}
 {#pointer *InterestRate foreign -> CInterestRate nocode#}
 
@@ -114,6 +137,10 @@ import Data.List.NonEmpty(NonEmpty)
 {#pointer *QlIborIndex as IborIndex foreign -> CIborIndex' nocode#}
 {#pointer *QlSwapIndex as SwapIndex foreign -> CSwapIndex' nocode#}
 {#pointer *QlFixedRateBond as FixedRateBond foreign -> CFixedRateBond' nocode#}
+{#pointer *QlBTP as BTP foreign -> CBTP' nocode#}
+{#pointer *QlRendistatoBasket as RendistatoBasket foreign -> CRendistatoBasket nocode#}
+{#pointer *QlRendistatoCalculator as RendistatoCalculator foreign -> CRendistatoCalculator nocode#}
+{#pointer *QlVanillaSwap as VanillaSwap foreign -> CVanillaSwap' nocode#}
 {#pointer *QlCPIBond as CPIBond foreign -> CCPIBond' nocode#}
 {#pointer *QlCallableBond as CallableBond foreign -> CCallableBond' nocode#}
 {#pointer *QlConvertibleBond as ConvertibleBond foreign -> CConvertibleBond' nocode#}
@@ -185,6 +212,28 @@ $(deriveOptionsRecord "AmortizingFloatingRateBondOpts" []
   ,`Bool' -- ^exCouponEndOfMonth
   ,withDayCounter*`DayCounter' -- ^firstPeriodDayCounter
   ,preErrorCheck-`String'errorCheck*-}->`FixedRateBond'peekFixedRateBond*#}
+
+-- |Italian BTP (Buono Poliennali del Tesoro): a 'FixedRateBond' with the Italian Treasury's own
+-- hardcoded conventions baked in -- semiannual, Actual\/Actual (ISMA), ModifiedFollowing, TARGET
+-- payment calendar, par (100) redemption. 'accruedAmount' (generic, via 'GenBond') additionally
+-- rounds to 5 decimal places on a 'BTP', through the C++ override -- no separate binding needed.
+-- 'BTP.yield' upstream is a thin wrapper fixing 'yield''s day counter\/compounding\/frequency
+-- arguments to Actual\/Actual (ISMA)\/Compounded\/Annual and is not bound; call the generic
+-- 'yield' with those same arguments instead.
+{#fun qlBtp as btp{withDay*`Day' -- ^maturityDate
+  ,`Double' -- ^fixedRate
+  ,withMaybeDay*`Maybe Day' -- ^startDate
+  ,withMaybeDay*`Maybe Day' -- ^issueDate
+  ,preErrorCheck-`String'errorCheck*-}->`BTP'peekBTP*#}
+
+-- |As 'btp', but with an explicit (non-par) redemption amount -- needed only for one remaining
+-- legacy BTP (as of upstream's own documentation) that redeems below par.
+{#fun qlBtpWithRedemption as btpWithRedemption{withDay*`Day' -- ^maturityDate
+  ,`Double' -- ^fixedRate
+  ,`Double' -- ^redemption
+  ,withMaybeDay*`Maybe Day' -- ^startDate
+  ,withMaybeDay*`Maybe Day' -- ^issueDate
+  ,preErrorCheck-`String'errorCheck*-}->`BTP'peekBTP*#}
 
 -- |amortizing fixed-rate bond: like 'fixedRateBond' but with a per-period notional schedule
 -- instead of a single face amount (see 'sinkingSchedule'\/'sinkingNotionals' for building one).
@@ -574,5 +623,78 @@ amortizingFloatingRateBond settlementDays notionalsArg schedule idx accrualDayCo
   ,fromIntegral`Word' -- ^settlementDays
   ,withDayCounter*`DayCounter',withSchedule*`Schedule',`Double' -- redemption
   ,preErrorCheck-`String'errorCheck*-}->`ConvertibleBond'peekConvertibleBond*#}
+
+-- |A weighted collection of BTPs with their outstanding amounts and live clean-price quotes,
+-- used by 'rendistatoCalculator'. size\/btps\/cleanPriceQuotes\/outstandings\/weights\/outstanding
+-- are all constructor echoes and are not bound.
+rendistatoBasket :: NonEmpty (BTP, Double, GenQuote q) -> IO RendistatoBasket
+rendistatoBasket xs = qlRendistatoBasket btps outstandings quotes
+  where (btps, outstandings, quotes) = unzip3 (toList xs)
+{#fun qlRendistatoBasket{withBTPArray*`[BTP]'&
+  ,withDoubleArray*`[Double]'&
+  ,withQuoteArray*`[GenQuote q]'&
+  ,preErrorCheck-`String'errorCheck*-}->`RendistatoBasket'peekRendistatoBasket*#}
+
+-- |QuantLib's own BTP-vs-EUR-swap-curve relative-value tool
+-- (@ql\/instruments\/bonds\/btp.hpp@'s @RendistatoCalculator@): aggregates a 'RendistatoBasket'
+-- into a weighted BTP yield\/duration, prices a fixed ladder of 1..15Y EUR swaps against a
+-- discount curve, and reports the swap whose duration is closest to (without exceeding) the
+-- basket's own duration as the \"equivalent swap\". @euriborForwardCurve@ forwards the internally
+-- constructed Euribor index used for those comparison swaps' floating leg -- matching upstream's
+-- own @Euribor@ default when @Nothing@, but the calculator immediately prices those swaps
+-- (@fairRate@), which needs a real forwarding curve to project floating cashflows, so a
+-- @Nothing@ here throws rather than degrading gracefully; pass the same curve as
+-- @discountCurve@ unless a genuinely different forward curve is wanted. @discountCurve@ is
+-- required, with no upstream default.
+{#fun qlRendistatoCalculator as rendistatoCalculator{withRendistatoBasket*`RendistatoBasket' -- ^basket
+  ,fromEnumQuantity`(Int,TimeUnit)'& -- ^euriborTenor
+  ,withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y1)' -- ^euriborForwardCurve
+  ,withYieldTermStructure*`GenYieldTermStructure y2' -- ^discountCurve
+  ,preErrorCheck-`String'errorCheck*-}->`RendistatoCalculator'peekRendistatoCalculator*#}
+
+-- |the basket's outstanding-weighted BTP yield: @sum (weights * yields)@ -- a near-tautology
+-- over 'rendistatoCalculatorYields', kept because it is upstream's own published aggregate.
+{#fun qlRendistatoCalculatorYield as rendistatoCalculatorYield{withRendistatoCalculator*`RendistatoCalculator',preErrorCheck-`String'errorCheck*-}->`Double'#}
+-- |the basket's outstanding-weighted BTP (modified) duration.
+{#fun qlRendistatoCalculatorDuration as rendistatoCalculatorDuration{withRendistatoCalculator*`RendistatoCalculator',preErrorCheck-`String'errorCheck*-}->`Double'#}
+-- |per-bond yields, in basket order.
+{#fun qlRendistatoCalculatorYields as rendistatoCalculatorYields{withRendistatoCalculator*`RendistatoCalculator'
+  ,preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+-- |per-bond (modified) durations, in basket order.
+{#fun qlRendistatoCalculatorDurations as rendistatoCalculatorDurations{withRendistatoCalculator*`RendistatoCalculator'
+  ,preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+-- |the fixed 1..15Y comparison-swap ladder's lengths, in years -- pairs positionally with
+-- 'rendistatoCalculatorSwapRates'\/'rendistatoCalculatorSwapYields'\/'rendistatoCalculatorSwapDurations'.
+{#fun qlRendistatoCalculatorSwapLengths as rendistatoCalculatorSwapLengths{withRendistatoCalculator*`RendistatoCalculator'
+  ,preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+-- |each ladder swap's fair (par) rate.
+{#fun qlRendistatoCalculatorSwapRates as rendistatoCalculatorSwapRates{withRendistatoCalculator*`RendistatoCalculator'
+  ,preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+-- |each ladder swap's fixed leg, repriced as a par bond and re-expressed as a BTP-convention yield.
+{#fun qlRendistatoCalculatorSwapYields as rendistatoCalculatorSwapYields{withRendistatoCalculator*`RendistatoCalculator'
+  ,preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+-- |each ladder swap's fixed leg (modified) duration, on the same par-bond proxy.
+{#fun qlRendistatoCalculatorSwapDurations as rendistatoCalculatorSwapDurations{withRendistatoCalculator*`RendistatoCalculator'
+  ,preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+-- |the ladder swap whose duration is closest to (without exceeding) the basket's own duration.
+{#fun qlRendistatoCalculatorEquivalentSwap as rendistatoCalculatorEquivalentSwap{withRendistatoCalculator*`RendistatoCalculator',preErrorCheck-`String'errorCheck*-}->`VanillaSwap'peekVanillaSwap*#}
+-- |the equivalent swap's fair rate.
+{#fun qlRendistatoCalculatorEquivalentSwapRate as rendistatoCalculatorEquivalentSwapRate{withRendistatoCalculator*`RendistatoCalculator',preErrorCheck-`String'errorCheck*-}->`Double'#}
+-- |the equivalent swap's par-bond-proxy yield.
+{#fun qlRendistatoCalculatorEquivalentSwapYield as rendistatoCalculatorEquivalentSwapYield{withRendistatoCalculator*`RendistatoCalculator',preErrorCheck-`String'errorCheck*-}->`Double'#}
+-- |the equivalent swap's par-bond-proxy duration.
+{#fun qlRendistatoCalculatorEquivalentSwapDuration as rendistatoCalculatorEquivalentSwapDuration{withRendistatoCalculator*`RendistatoCalculator',preErrorCheck-`String'errorCheck*-}->`Double'#}
+-- |the equivalent swap's length, in years.
+{#fun qlRendistatoCalculatorEquivalentSwapLength as rendistatoCalculatorEquivalentSwapLength{withRendistatoCalculator*`RendistatoCalculator',preErrorCheck-`String'errorCheck*-}->`Double'#}
+-- |@rendistatoCalculatorYield - rendistatoCalculatorEquivalentSwapRate@: the basket's spread over
+-- its equivalent swap.
+{#fun qlRendistatoCalculatorEquivalentSwapSpread as rendistatoCalculatorEquivalentSwapSpread{withRendistatoCalculator*`RendistatoCalculator',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |A live 'Quote' tracking 'rendistatoCalculatorEquivalentSwapLength' -- re-evaluates on every
+-- access rather than snapshotting it, so it can be wired into curve bootstrapping like any other
+-- quote.
+{#fun qlRendistatoEquivalentSwapLengthQuote as rendistatoEquivalentSwapLengthQuote{withRendistatoCalculator*`RendistatoCalculator',preErrorCheck-`String'errorCheck*-}->`Quote'peekQuote*#}
+-- |A live 'Quote' tracking 'rendistatoCalculatorEquivalentSwapSpread'.
+{#fun qlRendistatoEquivalentSwapSpreadQuote as rendistatoEquivalentSwapSpreadQuote{withRendistatoCalculator*`RendistatoCalculator',preErrorCheck-`String'errorCheck*-}->`Quote'peekQuote*#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

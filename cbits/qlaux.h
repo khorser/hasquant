@@ -43,6 +43,11 @@ namespace QuantLib {
   class Quote;
   class Bond;
   class FixedRateBond;
+  class BTP;
+  class RendistatoBasket;
+  class RendistatoCalculator;
+  class RendistatoEquivalentSwapLengthQuote;
+  class RendistatoEquivalentSwapSpreadQuote;
   class FixedRateCoupon;
   class CashFlow;
   class FixedVsFloatingSwap;
@@ -391,6 +396,11 @@ using QuantLib::Quote;
 using QuantLib::BusinessDayConvention;
 using QuantLib::Bond;
 using QuantLib::FixedRateBond;
+using QuantLib::BTP;
+using QuantLib::RendistatoBasket;
+using QuantLib::RendistatoCalculator;
+using QuantLib::RendistatoEquivalentSwapLengthQuote;
+using QuantLib::RendistatoEquivalentSwapSpreadQuote;
 using QuantLib::FixedRateCoupon;
 using QuantLib::FixedVsFloatingSwap;
 using QuantLib::ConstNotionalCrossCurrencySwap;
@@ -792,6 +802,9 @@ using QlRelinkableOptionletVolatilityStructure = RelinkableHandle<OptionletVolat
 using QlInstrument = shared_ptr<Instrument>;
 using QlBond = shared_ptr<Bond>;
 using QlFixedRateBond = shared_ptr<FixedRateBond>;
+using QlBTP = shared_ptr<BTP>;
+using QlRendistatoBasket = shared_ptr<RendistatoBasket>;
+using QlRendistatoCalculator = shared_ptr<RendistatoCalculator>;
 using QlForward = shared_ptr<Forward>;
 using QlBondForward = shared_ptr<BondForward>;
 using QlForwardRateAgreement = shared_ptr<ForwardRateAgreement>;
@@ -1189,6 +1202,11 @@ QL_TRACE_NAME(FdmStepConditionComposite)
 QL_TRACE_NAME(FittedBondDiscountCurve)
 QL_TRACE_NAME(FixedDividend)
 QL_TRACE_NAME(FixedRateBond)
+QL_TRACE_NAME(BTP)
+QL_TRACE_NAME(RendistatoBasket)
+QL_TRACE_NAME(RendistatoCalculator)
+QL_TRACE_NAME(RendistatoEquivalentSwapLengthQuote)
+QL_TRACE_NAME(RendistatoEquivalentSwapSpreadQuote)
 QL_TRACE_NAME(FixedRateBondHelper)
 QL_TRACE_NAME(FlatForward)
 QL_TRACE_NAME(FloatingRateBond)
@@ -1369,6 +1387,9 @@ QL_TRACE_NAME(QlFdmMesher)
 QL_TRACE_NAME(QlFdmQuantoHelper)
 QL_TRACE_NAME(QlFittedBondDiscountCurve)
 QL_TRACE_NAME(QlFixedRateBond)
+QL_TRACE_NAME(QlBTP)
+QL_TRACE_NAME(QlRendistatoBasket)
+QL_TRACE_NAME(QlRendistatoCalculator)
 QL_TRACE_NAME(QlFloatingRateCouponPricer)
 QL_TRACE_NAME(QlFloatingRateCoupon)
 QL_TRACE_NAME(QlCmsCoupon)

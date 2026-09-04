@@ -280,6 +280,14 @@ namespace {
   private:
     BasketAccumulateFun fn_;
   };
+
+  // Shared by RendistatoCalculator's plain-Real-vector getters (yields/durations/swapLengths/
+  // swapRates/swapYields/swapDurations).
+  void copyRealVector(const std::vector<Real>& v, unsigned *len, double **out) {
+    double *xs = qlAllocateDoubles(v.size());
+    std::copy(v.begin(), v.end(), xs);
+    *len = v.size(); *out = xs;
+  }
 }
 
 #ifdef QLTRACK_ALLOCATIONS
@@ -1067,6 +1075,15 @@ QlFixedRateBond *qlFixedRateBond(unsigned settlDays, double face, Schedule *sche
               Period(exCouponPeriodLen, (TimeUnit)exCouponPeriodUnit), *arg(exCouponCalendar), (BusinessDayConvention)exCouponConvention, exCouponEndOfMonth,
               *arg(firstPeriodDayCounter)))));
   } catch (std::exception& er) {return handleException<QlFixedRateBond *>(e, er);}}
+
+QlBTP *qlBtp(int maturityDate, double fixedRate, int startDate, int issueDate, char **e) {
+  try {return ret(new QlBTP(alloc(new BTP(Date(maturityDate), fixedRate, qlNullableDate(startDate), qlNullableDate(issueDate)))));
+  } catch (std::exception& er) {return handleException<QlBTP*>(e, er);}}
+QlBTP *qlBtpWithRedemption(int maturityDate, double fixedRate, double redemption, int startDate, int issueDate, char **e) {
+  try {return ret(new QlBTP(alloc(new BTP(Date(maturityDate), fixedRate, redemption, qlNullableDate(startDate), qlNullableDate(issueDate)))));
+  } catch (std::exception& er) {return handleException<QlBTP*>(e, er);}}
+void qlFreeBtp(QlBTP *o) {del(o);}
+QlFixedRateBond *qlBtpAsFixedRateBond(QlBTP *o) {return ret(new QlFixedRateBond(*arg(o)));}
 
 QlInstrument *qlBondAsInstrument(QlBond *b) {return ret(new QlInstrument(*arg(b)));}
 
@@ -2319,6 +2336,75 @@ QlInstrument* qlNthToDefaultAsInstrument(QlNthToDefault *o) {return ret(new QlIn
 double qlNthToDefaultFairPremium(QlNthToDefault* o, char **e) {
   try {return (*arg(o))->fairPremium();
   } catch (std::exception& er) {return handleException<double>(e, er);}}
+
+QlRendistatoBasket *qlRendistatoBasket(unsigned btpsLen, QlBTP **btps, unsigned outstandingsLen, double *outstandings, unsigned quotesLen, QlQuote **cleanPriceQuotes, char **e) {
+  try {return ret(new QlRendistatoBasket(alloc(new RendistatoBasket(qlVector(btps, btpsLen),
+      std::vector<double>(outstandings, outstandings+outstandingsLen), qlHandleVector(cleanPriceQuotes, quotesLen)))));
+  } catch (std::exception& er) {return handleException<QlRendistatoBasket*>(e, er);}}
+void qlFreeRendistatoBasket(QlRendistatoBasket *o) {del(o);}
+
+QlRendistatoCalculator *qlRendistatoCalculator(QlRendistatoBasket *basket, int euriborTenorLen, int euriborTenorUnit,
+    QlYieldTermStructure *euriborForwardCurve, QlYieldTermStructure *discountCurve, char **e) {
+  try {
+    auto idx = ext::make_shared<Euribor>(Period(euriborTenorLen, (TimeUnit)euriborTenorUnit), qlNullableHandle(euriborForwardCurve));
+    return ret(new QlRendistatoCalculator(alloc(new RendistatoCalculator(*arg(basket), idx, *arg(discountCurve)))));
+  } catch (std::exception& er) {return handleException<QlRendistatoCalculator*>(e, er);}}
+void qlFreeRendistatoCalculator(QlRendistatoCalculator *o) {del(o);}
+double qlRendistatoCalculatorYield(QlRendistatoCalculator *o, char **e) {
+  try {return (*arg(o))->yield();
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlRendistatoCalculatorDuration(QlRendistatoCalculator *o, char **e) {
+  try {return (*arg(o))->duration();
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+
+void qlRendistatoCalculatorYields(QlRendistatoCalculator *o, unsigned *len, double **out, char **e) {
+  *len = 0; *out = 0;
+  try {copyRealVector((*arg(o))->yields(), len, out);
+  } catch (std::exception& er) {(void)handleException<double*>(e, er);}}
+void qlRendistatoCalculatorDurations(QlRendistatoCalculator *o, unsigned *len, double **out, char **e) {
+  *len = 0; *out = 0;
+  try {copyRealVector((*arg(o))->durations(), len, out);
+  } catch (std::exception& er) {(void)handleException<double*>(e, er);}}
+void qlRendistatoCalculatorSwapLengths(QlRendistatoCalculator *o, unsigned *len, double **out, char **e) {
+  *len = 0; *out = 0;
+  try {copyRealVector((*arg(o))->swapLengths(), len, out);
+  } catch (std::exception& er) {(void)handleException<double*>(e, er);}}
+void qlRendistatoCalculatorSwapRates(QlRendistatoCalculator *o, unsigned *len, double **out, char **e) {
+  *len = 0; *out = 0;
+  try {copyRealVector((*arg(o))->swapRates(), len, out);
+  } catch (std::exception& er) {(void)handleException<double*>(e, er);}}
+void qlRendistatoCalculatorSwapYields(QlRendistatoCalculator *o, unsigned *len, double **out, char **e) {
+  *len = 0; *out = 0;
+  try {copyRealVector((*arg(o))->swapYields(), len, out);
+  } catch (std::exception& er) {(void)handleException<double*>(e, er);}}
+void qlRendistatoCalculatorSwapDurations(QlRendistatoCalculator *o, unsigned *len, double **out, char **e) {
+  *len = 0; *out = 0;
+  try {copyRealVector((*arg(o))->swapDurations(), len, out);
+  } catch (std::exception& er) {(void)handleException<double*>(e, er);}}
+QlVanillaSwap *qlRendistatoCalculatorEquivalentSwap(QlRendistatoCalculator *o, char **e) {
+  try {return ret(new QlVanillaSwap((*arg(o))->equivalentSwap()));
+  } catch (std::exception& er) {return handleException<QlVanillaSwap*>(e, er);}}
+double qlRendistatoCalculatorEquivalentSwapRate(QlRendistatoCalculator *o, char **e) {
+  try {return (*arg(o))->equivalentSwapRate();
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlRendistatoCalculatorEquivalentSwapYield(QlRendistatoCalculator *o, char **e) {
+  try {return (*arg(o))->equivalentSwapYield();
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlRendistatoCalculatorEquivalentSwapDuration(QlRendistatoCalculator *o, char **e) {
+  try {return (*arg(o))->equivalentSwapDuration();
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlRendistatoCalculatorEquivalentSwapLength(QlRendistatoCalculator *o, char **e) {
+  try {return (*arg(o))->equivalentSwapLength();
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlRendistatoCalculatorEquivalentSwapSpread(QlRendistatoCalculator *o, char **e) {
+  try {return (*arg(o))->equivalentSwapSpread();
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+QlQuote *qlRendistatoEquivalentSwapLengthQuote(QlRendistatoCalculator *o, char **e) {
+  try {return ret(new QlQuote(shared_ptr<Quote>(alloc(new RendistatoEquivalentSwapLengthQuote(*arg(o))))));
+  } catch (std::exception& er) {return handleException<QlQuote*>(e, er);}}
+QlQuote *qlRendistatoEquivalentSwapSpreadQuote(QlRendistatoCalculator *o, char **e) {
+  try {return ret(new QlQuote(shared_ptr<Quote>(alloc(new RendistatoEquivalentSwapSpreadQuote(*arg(o))))));
+  } catch (std::exception& er) {return handleException<QlQuote*>(e, er);}}
 
 }
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

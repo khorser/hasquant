@@ -456,6 +456,19 @@ extern "C" {
     unsigned nSpreads, double *spreads, unsigned nCaps, double *caps, unsigned nFloors, double *floors,
     int inArrears, int issue, unsigned redemptionsLen, double *redemptions, char **e);
   QlBond *qlFixedRateBondAsBond(QlFixedRateBond *bond);
+
+  // BTP -- an Italian Treasury bond: FixedRateBond with the market's own hardcoded conventions
+  // (semiannual, Actual/Actual ISMA, ModifiedFollowing, TARGET, par redemption). Kept as its own
+  // leaf type (rather than folded into the generic fixedRateBond, per AGENTS.md's "don't mirror
+  // the hierarchy 1:1" rule) only because RendistatoBasket's constructor genuinely requires
+  // vector<shared_ptr<BTP>> -- BTP::yield and CCTEU are convenience wrappers over already-bound
+  // functionality and are not bound (see tools/ql-methods-1.43.txt / AGENTS.md).
+  QlBTP *qlBtp(int maturityDate, double fixedRate, int startDate, int issueDate, char **e);
+  // legacy non-par redemption constructor; upstream notes only one such BTP remains.
+  QlBTP *qlBtpWithRedemption(int maturityDate, double fixedRate, double redemption, int startDate, int issueDate, char **e);
+  void qlFreeBtp(QlBTP *o);
+  QlFixedRateBond *qlBtpAsFixedRateBond(QlBTP *o);
+
   QlCPIBond *qlCPIBond(unsigned settlementDays, double faceAmount, double baseCPI, int obsLagLen, int obsLagUnit, QlZeroInflationIndex* index, int observationInterpolation, Schedule *schedule, unsigned couponsLen, double *coupons, DayCounter *accrualDayCounter, int paymentConvention, int issueDate, Calendar *paymentCalendar, int exCouponPeriodLen, int exCouponPeriodUnit, Calendar* exCouponCalendar, int exCouponConvention, int exCouponEndOfMonth, char **e);
   QlBond *qlCPIBondAsBond(QlCPIBond *bond);
 
@@ -954,6 +967,37 @@ extern "C" {
   void qlFreeNthToDefault(QlNthToDefault *o);
   QlInstrument* qlNthToDefaultAsInstrument(QlNthToDefault *o);
   double qlNthToDefaultFairPremium(QlNthToDefault* o, char **e);
+
+  // ql/instruments/bonds/btp.hpp -- RendistatoBasket/RendistatoCalculator, QuantLib's own
+  // BTP-vs-swap-curve relative-value tool for the Italian bond market. size/btps/
+  // cleanPriceQuotes/outstandings/weights/outstanding on RendistatoBasket are all constructor
+  // echoes and are not bound; only the basket constructor itself is needed to build a
+  // RendistatoCalculator.
+  QlRendistatoBasket *qlRendistatoBasket(unsigned btpsLen, QlBTP **btps, unsigned outstandingsLen, double *outstandings, unsigned quotesLen, QlQuote **cleanPriceQuotes, char **e);
+  void qlFreeRendistatoBasket(QlRendistatoBasket *o);
+
+  // euriborTenor/euriborForwardCurve build the Euribor index RendistatoCalculator needs
+  // internally (for its ladder of comparison swaps); Euribor itself is never exposed back to
+  // Haskell, since nothing calls it back -- constructed transiently here exactly like
+  // GarmanKlass's IntervalPrice.
+  QlRendistatoCalculator *qlRendistatoCalculator(QlRendistatoBasket *basket, int euriborTenorLen, int euriborTenorUnit, QlYieldTermStructure *euriborForwardCurve, QlYieldTermStructure *discountCurve, char **e);
+  void qlFreeRendistatoCalculator(QlRendistatoCalculator *o);
+  double qlRendistatoCalculatorYield(QlRendistatoCalculator *o, char **e);
+  double qlRendistatoCalculatorDuration(QlRendistatoCalculator *o, char **e);
+  void qlRendistatoCalculatorYields(QlRendistatoCalculator *o, unsigned *len, double **out, char **e);
+  void qlRendistatoCalculatorDurations(QlRendistatoCalculator *o, unsigned *len, double **out, char **e);
+  void qlRendistatoCalculatorSwapLengths(QlRendistatoCalculator *o, unsigned *len, double **out, char **e);
+  void qlRendistatoCalculatorSwapRates(QlRendistatoCalculator *o, unsigned *len, double **out, char **e);
+  void qlRendistatoCalculatorSwapYields(QlRendistatoCalculator *o, unsigned *len, double **out, char **e);
+  void qlRendistatoCalculatorSwapDurations(QlRendistatoCalculator *o, unsigned *len, double **out, char **e);
+  QlVanillaSwap *qlRendistatoCalculatorEquivalentSwap(QlRendistatoCalculator *o, char **e);
+  double qlRendistatoCalculatorEquivalentSwapRate(QlRendistatoCalculator *o, char **e);
+  double qlRendistatoCalculatorEquivalentSwapYield(QlRendistatoCalculator *o, char **e);
+  double qlRendistatoCalculatorEquivalentSwapDuration(QlRendistatoCalculator *o, char **e);
+  double qlRendistatoCalculatorEquivalentSwapLength(QlRendistatoCalculator *o, char **e);
+  double qlRendistatoCalculatorEquivalentSwapSpread(QlRendistatoCalculator *o, char **e);
+  QlQuote *qlRendistatoEquivalentSwapLengthQuote(QlRendistatoCalculator *o, char **e);
+  QlQuote *qlRendistatoEquivalentSwapSpreadQuote(QlRendistatoCalculator *o, char **e);
 #ifdef __cplusplus
 }
 #endif

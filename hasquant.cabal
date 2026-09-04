@@ -247,6 +247,7 @@ test-suite hasquant_test
       QuantLib.Spec.Helpers
       QuantLib.Spec.Index.Commodity
       QuantLib.Spec.Instrument
+      QuantLib.Spec.Instrument.Bond
       QuantLib.Spec.Instrument.CapFloor
       QuantLib.Spec.Instrument.Credit
       QuantLib.Spec.Instrument.Energy
