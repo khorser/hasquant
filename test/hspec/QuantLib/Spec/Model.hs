@@ -10,7 +10,6 @@ import qualified Data.Vector.Storable as V
 import Data.Time.Calendar(addGregorianYearsClip)
 
 import qualified QuantLib.Settings as Settings
-import QuantLib.Time.Date
 import QuantLib.Time.Calendar
 import QuantLib.Time.Schedule
 import QuantLib.InterestRate(Compounding(..))
@@ -18,7 +17,7 @@ import QuantLib.Quote
 import QuantLib.TermStructure.Yield
 import qualified QuantLib.Index.InterestRate as IR
 import QuantLib.Instrument
-import QuantLib.Instrument.Option(OptionType(..), Exercise(..), EuropeanExercise(..))
+import QuantLib.Instrument.Option(EuropeanExercise(..))
 import QuantLib.Instrument.Swap(fairRate, fixedLegBPS, vanillaSwap, swaption, SwapType(..))
 import QuantLib.Model hiding(setPricingEngine, value)
 import QuantLib.PricingEngine

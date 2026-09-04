@@ -161,7 +161,7 @@ constantAndLocalEstimatorSpec = describe "ConstantEstimator and SimpleLocalEstim
         prices = [100.0, 105.0, 110.0]
         series = fromList (zip days prices)
         yearFraction = 1.0 / 252.0
-        expected = [abs (log (p1 / p0)) / sqrt yearFraction | (p0, p1) <- zip prices (tail prices)]
+        expected = [abs (log (p1 / p0)) / sqrt yearFraction | (p0, p1) <- zip prices (drop 1 prices)]
     result <- simpleLocalVolatilityEstimator yearFraction series
-    map fst result `shouldBe` tail days
+    map fst result `shouldBe` drop 1 days
     map snd result `shouldSatisfy` listClose id expected 1.0e-9
