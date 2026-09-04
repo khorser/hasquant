@@ -13,6 +13,7 @@ module QuantLib.Settings
   , keepingSettings
   , keepingSettings'
   , collectGarbage
+  , setExtendedPrecision
   , version
   , boostVersion
   , epsilon
@@ -28,6 +29,23 @@ import QuantLib.Internal
 
 #include "qlTypesC2HS.h"
 #include "ql.h"
+
+-- |Sets the x87 floating-point unit to 64-bit extended precision.
+--
+-- Call this once at program start on Windows, before any pricing. By the time Haskell
+-- code runs there, the x87 unit sits at 53-bit precision, where a binary linked by
+-- clang++ rather than ghc has 64-bit; every 80-bit @long double@ operation inside
+-- QuantLib is then silently rounded to double. That matters because @boost::math@ promotes @double@
+-- arguments to @long double@ by default, so its distributions lose the precision their
+-- algorithms assume -- returning quietly less accurate answers, or failing to converge
+-- outright (@hestonSLVFDMModel@ throws out of @quantile(non_central_chi_squared)@
+-- without this).
+--
+-- A no-op on every other platform and on non-x86 Windows. The control word is
+-- per-thread, so with a threaded runtime call it on each OS thread that prices. Only
+-- the x87 unit is touched: Haskell's own 'Double' arithmetic is SSE\/MXCSR and is
+-- unaffected either way.
+{#fun qlSetExtendedPrecision as setExtendedPrecision{}->`()'#}
 
 -- |returns the current value of the Evaluation Date:
 -- the date at which pricing is to be performed

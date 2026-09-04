@@ -81,7 +81,7 @@ jobs:
         uses: actions/cache@v6
         with:
           path: ${{ env.QL_INSTALL }}
-          key: quantlib-${{ env.QL_VERSION }}-ghc${{ env.GHC_VERSION }}
+          key: quantlib-${{ env.QL_VERSION }}-ghc${{ env.GHC_VERSION }}-nopromote
 
       - name: Download QuantLib source
         if: steps.cache-ql.outputs.cache-hit != 'true'
@@ -109,7 +109,7 @@ jobs:
             -DCMAKE_INSTALL_PREFIX=%QL_INSTALL:\=/% ^
             -DBoost_NO_BOOST_CMAKE=ON ^
             -DBoost_INCLUDE_DIR=%BOOST_INC:\=/% ^
-            -DCMAKE_CXX_FLAGS="-include vector" ^
+            -DCMAKE_CXX_FLAGS="-include vector -DBOOST_MATH_PROMOTE_DOUBLE_POLICY=false" ^
             -DQL_BUILD_EXAMPLES=OFF ^
             -DQL_BUILD_TEST_SUITE=OFF ^
             ..

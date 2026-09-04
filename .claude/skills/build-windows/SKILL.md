@@ -46,3 +46,50 @@ Notes that are only relevant when an agent drives the build:
   `workflow_dispatch` only appears once the workflow file is on `master`, so
   a probe has to be merged before it can be dispatched. Compile the same
   probe locally first to get a baseline log to diff the Windows one against.
+- **If the standalone probe *passes* on Windows while the suite still fails,
+  the difference is process state, not arithmetic -- run the same probe body
+  from inside a GHC process.** Guard the probe's `main` with a
+  `-D..._NO_MAIN` and export its sections as `extern "C"`, then link the
+  object into a `base`-only Haskell driver (`tools/debug/HestonSLVProbe.hs`,
+  built without `-threaded` to match `hasquant_test`) with
+  `ghc <driver>.hs <probe>.o -lQuantLib -optl<libc++.a> ...`. Have both
+  binaries dump the x86 FP environment (MXCSR's FTZ/DAZ/RC bits, the x87
+  control word, `fegetround`) around each stage: a divergence there explains
+  a libQuantLib call that throws under the RTS and returns without it.
+  Keeping hasquant out of that driver is deliberate -- it isolates the RTS.
+- **The third rung is a hasquant-linked driver, and it only needs
+  `cabal build lib:hasquant`** -- not `cabal build all --enable-tests`. Write
+  `cabal.project.local` exactly as `windows.yml` does, build the library
+  alone, then `cabal exec -- ghc -package hasquant <driver>.hs <probe>.o`
+  with the same `-optl` libc++ flags. Running the fixture outside hspec
+  splits two causes the suite conflates: a throw means hasquant's own path
+  (shim marshalling, or what its dylib does to the process), while a pass
+  means the trigger is elsewhere in the suite's randomized order. Gate it on
+  a `workflow_dispatch` boolean so one dispatch can cover all three rungs.
+- **By the time Haskell code runs on Windows the x87 precision control is at
+  53-bit (control word `0x027f`, PC=2), where a `clang++`-linked binary has
+  64-bit extended (`0x037f`, PC=3).** Every 80-bit `long double`
+  operation is therefore silently rounded to double, so anything routing
+  `double` maths through `long double` -- every `boost::math` distribution,
+  via its default `promote_double` policy -- can fail to converge or return
+  garbage only under GHC. Dump the control word with `fnstcw` before
+  theorising; `PC=(cw >> 8) & 3`.
+  - The individual functions are *not* broken: `ldexpl`, `logl`, `expl`,
+    `powl`, `sqrtl` all return correct values in both links, and
+    `-lmingwex` changes nothing. The one-line check that does separate them
+    is whether `1.0L + ldexpl(1, -63) != 1.0L`, and the same call under
+    `policies::promote_double<false>` is exact in both.
+  - Restore it with `fldcw`, not `_controlfp_s`: MSVC's CRT documents
+    `_MCW_PC` as unsupported on x64. Haskell's own `Double` arithmetic uses
+    SSE and is governed by MXCSR, so changing the x87 word does not affect
+    it. A namespace-scope initializer does not stick -- it compiles, links,
+    and the test still fails -- and GHC's weak-symbol RTS hooks
+    (`defaultsHook` and friends) are the wrong shape twice over: one-shot
+    per process for a per-thread register, and a library defining one
+    collides with any program that defines the same. hasquant exposes
+    `QuantLib.Settings.setExtendedPrecision` for the caller to invoke at
+    startup instead of hooking the marshalling path.
+  - When diagnosing, note that mingw's `printf` has no `%Lg`: it prints
+    subnormal nonsense (`…e-312`) for a long double in the *passing* binary
+    too, so cast to `double` for display, and distrust an `…e-312` figure in
+    a boost error message as evidence about the value itself.

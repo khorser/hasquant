@@ -12,6 +12,8 @@ extern "C" {
   void *qlSavedSettings();
   void qlFreeSavedSettings(void *settings);
 
+  void qlSetExtendedPrecision();
+
   const char *qlVersion();
   const char *qlBoostVersion();
   void qlFreeString(char *p);

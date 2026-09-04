@@ -448,6 +448,8 @@ void qlFreeSavedSettings(void *settings) {del((SavedSettings *)settings);}
 const char *qlVersion() {return QL_VERSION;}
 const char *qlBoostVersion() {return BOOST_LIB_VERSION;}
 
+void qlSetExtendedPrecision() {setX87ExtendedPrecision();}
+
 
 void qlFreeCurrency(Currency *currency) {del(currency);}
 const char *qlCurrencyName(Currency *currency) {return tracedup(arg(currency)->name().c_str());}
