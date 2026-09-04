@@ -344,6 +344,63 @@ extern "C" {
   void qlHistoricalIndexAnalysisGaussianExpectedShortfall(QlHistoricalIndexAnalysis *o, double centile, unsigned *len, double **vs, char **e);
   void qlHistoricalIndexAnalysisCovariance(QlHistoricalIndexAnalysis *o, unsigned *rows, unsigned *cols, unsigned *len, double **vs, char **e);
   void qlHistoricalIndexAnalysisCorrelation(QlHistoricalIndexAnalysis *o, unsigned *rows, unsigned *cols, unsigned *len, double **vs, char **e);
+
+  /* Garch11 -- a GARCH(1,1) volatility model, direct-parameter or calibrated from a return
+     series. calibratedDatesLen/calibratedValuesLen are always equal in practice (the Haskell
+     side always builds them from one zipped list); kept as two counts, per the codebase's usual
+     array-marshalling shape, rather than one shared length. */
+  Garch11 *qlGarch11(double alpha, double beta, double vl);
+  Garch11 *qlGarch11Calibrated(unsigned datesLen, int *dates, unsigned valuesLen, double *values, int mode, char **e);
+  void qlFreeGarch11(Garch11 *o);
+  double qlGarch11Alpha(Garch11 *o);
+  double qlGarch11Beta(Garch11 *o);
+  double qlGarch11Omega(Garch11 *o);
+  double qlGarch11LtVol(Garch11 *o);
+  double qlGarch11LogLikelihood(Garch11 *o);
+  double qlGarch11Forecast(Garch11 *o, double r, double sigma2);
+  void qlGarch11Calculate(Garch11 *o, unsigned datesLen, int *dates, unsigned valuesLen, double *values,
+      unsigned *outDatesLen, int **outDates, unsigned *outValuesLen, double **outValues, char **e);
+
+  /* GarmanKlass family (ql/models/volatility/garmanklass.hpp) and the two other
+     LocalVolatilityEstimator/VolatilityCompositor implementations in ql/models/volatility --
+     all stateless calculators over a price/return series, so each is constructed and run in one
+     shim call; none is exposed as a Haskell object. The five xxxLen counts (dates, opens,
+     closes, highs, lows) are always equal by construction on the Haskell side, same convention
+     as qlGarch11Calibrated above. */
+  void qlGarmanKlassSimpleSigma(double yearFraction,
+      unsigned datesLen, int *dates, unsigned opensLen, double *opens, unsigned closesLen, double *closes,
+      unsigned highsLen, double *highs, unsigned lowsLen, double *lows,
+      unsigned *outDatesLen, int **outDates, unsigned *outValuesLen, double **outValues, char **e);
+  void qlGarmanKlassSigma1(double yearFraction, double marketOpenFraction,
+      unsigned datesLen, int *dates, unsigned opensLen, double *opens, unsigned closesLen, double *closes,
+      unsigned highsLen, double *highs, unsigned lowsLen, double *lows,
+      unsigned *outDatesLen, int **outDates, unsigned *outValuesLen, double **outValues, char **e);
+  void qlParkinsonSigma(double yearFraction,
+      unsigned datesLen, int *dates, unsigned opensLen, double *opens, unsigned closesLen, double *closes,
+      unsigned highsLen, double *highs, unsigned lowsLen, double *lows,
+      unsigned *outDatesLen, int **outDates, unsigned *outValuesLen, double **outValues, char **e);
+  void qlGarmanKlassSigma3(double yearFraction, double marketOpenFraction,
+      unsigned datesLen, int *dates, unsigned opensLen, double *opens, unsigned closesLen, double *closes,
+      unsigned highsLen, double *highs, unsigned lowsLen, double *lows,
+      unsigned *outDatesLen, int **outDates, unsigned *outValuesLen, double **outValues, char **e);
+  void qlGarmanKlassSigma4(double yearFraction,
+      unsigned datesLen, int *dates, unsigned opensLen, double *opens, unsigned closesLen, double *closes,
+      unsigned highsLen, double *highs, unsigned lowsLen, double *lows,
+      unsigned *outDatesLen, int **outDates, unsigned *outValuesLen, double **outValues, char **e);
+  void qlGarmanKlassSigma5(double yearFraction,
+      unsigned datesLen, int *dates, unsigned opensLen, double *opens, unsigned closesLen, double *closes,
+      unsigned highsLen, double *highs, unsigned lowsLen, double *lows,
+      unsigned *outDatesLen, int **outDates, unsigned *outValuesLen, double **outValues, char **e);
+  void qlGarmanKlassSigma6(double yearFraction, double marketOpenFraction,
+      unsigned datesLen, int *dates, unsigned opensLen, double *opens, unsigned closesLen, double *closes,
+      unsigned highsLen, double *highs, unsigned lowsLen, double *lows,
+      unsigned *outDatesLen, int **outDates, unsigned *outValuesLen, double **outValues, char **e);
+  void qlConstantVolatilityEstimator(unsigned windowSize,
+      unsigned datesLen, int *dates, unsigned valuesLen, double *values,
+      unsigned *outDatesLen, int **outDates, unsigned *outValuesLen, double **outValues, char **e);
+  void qlSimpleLocalVolatilityEstimator(double yearFraction,
+      unsigned datesLen, int *dates, unsigned valuesLen, double *values,
+      unsigned *outDatesLen, int **outDates, unsigned *outValuesLen, double **outValues, char **e);
 #ifdef __cplusplus
 }
 #endif

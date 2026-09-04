@@ -249,6 +249,7 @@ namespace QuantLib {
   class GJRGARCHModel;
   class GJRGARCHProcess;
   class GapPayoff;
+  class Garch11;
   class GarmanKohlagenProcess;
   class Gaussian1dModel;
   class GeneralizedBlackScholesProcess;
@@ -597,6 +598,7 @@ using QuantLib::G2SwaptionEngine;
 using QuantLib::GJRGARCHModel;
 using QuantLib::GJRGARCHProcess;
 using QuantLib::GapPayoff;
+using QuantLib::Garch11;
 using QuantLib::GarmanKohlagenProcess;
 using QuantLib::Gaussian1dModel;
 using QuantLib::GeneralizedBlackScholesProcess;
@@ -1213,6 +1215,7 @@ QL_TRACE_NAME(G2SwaptionEngine)
 QL_TRACE_NAME(GJRGARCHModel)
 QL_TRACE_NAME(GJRGARCHProcess)
 QL_TRACE_NAME(GapPayoff)
+QL_TRACE_NAME(Garch11)
 QL_TRACE_NAME(GarmanKohlagenProcess)
 QL_TRACE_NAME(Gaussian1dModel)
 QL_TRACE_NAME(GeneralizedBlackScholesProcess)

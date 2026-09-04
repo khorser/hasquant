@@ -415,6 +415,16 @@ withInterestRate = withStandalone . getCInterestRate
 withInterestRateArray :: [InterestRate] -> ((CUInt, Ptr (Ptr CInterestRate)) -> IO b) -> IO b
 withInterestRateArray = withStandaloneArray getCInterestRate
 
+-- |a GARCH(1,1) volatility model -- see 'QuantLib.VolatilityModel.garch11'\/'garch11Calibrated'.
+data CGarch11
+newtype Garch11 = Garch11 {getCGarch11 :: Standalone CGarch11}
+foreign import ccall unsafe "ql.h &qlFreeGarch11" qlFreeGarch11 :: FinalizerPtr CGarch11
+instance Finalizable CGarch11 where finalize = qlFreeGarch11
+peekGarch11 :: Ptr CGarch11 -> IO Garch11
+peekGarch11 = Garch11 <.> peekStandalone
+withGarch11 :: Garch11 -> (Ptr CGarch11 -> IO b) -> IO b
+withGarch11 = withStandalone . getCGarch11
+
 data CTimeGrid
 newtype TimeGrid = TimeGrid {getCTimeGrid :: Standalone CTimeGrid}
 foreign import ccall unsafe "ql.h &qlFreeTimeGrid" qlFreeTimeGrid :: FinalizerPtr CTimeGrid

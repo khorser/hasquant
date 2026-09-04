@@ -17,6 +17,7 @@ typedef struct CommodityType CommodityType;
 typedef struct UnitOfMeasure UnitOfMeasure;
 typedef struct PaymentTerm PaymentTerm;
 typedef struct UnitOfMeasureConversion UnitOfMeasureConversion;
+typedef struct Garch11 Garch11;
 typedef struct FdmSchemeDesc FdmSchemeDesc;
 typedef struct BlackDeltaCalculator BlackDeltaCalculator;
 typedef struct CouponLeg CouponLeg;

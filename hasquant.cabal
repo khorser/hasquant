@@ -73,6 +73,7 @@ library
       QuantLib.Time.Schedule
       QuantLib.Settings
       QuantLib.InterestRate
+      QuantLib.VolatilityModel
       QuantLib.Index
       QuantLib.Instrument
       QuantLib.Quote
@@ -262,6 +263,7 @@ test-suite hasquant_test
       QuantLib.Spec.TermStructure
       QuantLib.Spec.TermStructure.Commodity
       QuantLib.Spec.TermStructure.InflationVolatility
+      QuantLib.Spec.VolatilityModel
       QuantLib.Example.AmericanLSM
       QuantLib.Example.AsianOption
       QuantLib.Example.BasketLSM

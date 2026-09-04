@@ -32,6 +32,11 @@
 #include <ql/math/statistics/sequencestatistics.hpp>
 #include <ql/math/statistics/riskstatistics.hpp>
 #include <ql/math/array.hpp>
+#include <ql/prices.hpp>
+#include <ql/models/volatility/garch.hpp>
+#include <ql/models/volatility/garmanklass.hpp>
+#include <ql/models/volatility/constantestimator.hpp>
+#include <ql/models/volatility/simplelocalestimator.hpp>
 
 #include <numeric>
 #include <functional>
@@ -336,6 +341,55 @@ static const makeCcy ccys[] = {
   , &makeCurrency<XOFCurrency>
   , &makeCurrency<ZMWCurrency>
 };
+
+namespace {
+  // Marshals a real-valued TimeSeries<Real> in from parallel date/value arrays, and a
+  // TimeSeries<Volatility> result back out through the four out-params -- shared by
+  // Garch11::calculate, ConstantEstimator, and SimpleLocalEstimator (Volatility and Real are
+  // the same type, ql/types.hpp).
+  void realSeriesCalculate(const std::function<TimeSeries<Volatility>(const TimeSeries<Real>&)>& calc,
+                            unsigned len, int *dates, double *values,
+                            unsigned *outDatesLen, int **outDates, unsigned *outValuesLen, double **outValues, char **e) {
+    int *ds = 0;
+    double *vs = 0;
+    *outDatesLen = 0; *outDates = 0; *outValuesLen = 0; *outValues = 0;
+    try {
+      TimeSeries<Real> ts;
+      for (unsigned n = 0; n < len; ++n) ts[Date(dates[n])] = values[n];
+      TimeSeries<Volatility> out = calc(ts);
+      const std::vector<Date> outDs = out.dates();
+      const std::vector<Volatility> outVs = out.values();
+      ds = qlAllocateInts(outDs.size());
+      vs = qlAllocateDoubles(outVs.size());
+      for (unsigned n = 0; n < outDs.size(); ++n) ds[n] = outDs[n].serialNumber();
+      for (unsigned n = 0; n < outVs.size(); ++n) vs[n] = outVs[n];
+      *outDatesLen = outDs.size(); *outDates = ds; *outValuesLen = outVs.size(); *outValues = vs;
+    } catch (std::exception& er) {
+      qlFreeInts(ds); qlFreeDoubles(vs); *e = tracedup(er.what());
+    }}
+
+  // Same shape, for the GarmanKlass family's TimeSeries<IntervalPrice> input.
+  void intervalPriceSeriesCalculate(const std::function<TimeSeries<Volatility>(const TimeSeries<IntervalPrice>&)>& calc,
+                                     unsigned len, int *dates, double *opens, double *closes, double *highs, double *lows,
+                                     unsigned *outDatesLen, int **outDates, unsigned *outValuesLen, double **outValues, char **e) {
+    int *ds = 0;
+    double *vs = 0;
+    *outDatesLen = 0; *outDates = 0; *outValuesLen = 0; *outValues = 0;
+    try {
+      TimeSeries<IntervalPrice> ts;
+      for (unsigned n = 0; n < len; ++n) ts[Date(dates[n])] = IntervalPrice(opens[n], closes[n], highs[n], lows[n]);
+      TimeSeries<Volatility> out = calc(ts);
+      const std::vector<Date> outDs = out.dates();
+      const std::vector<Volatility> outVs = out.values();
+      ds = qlAllocateInts(outDs.size());
+      vs = qlAllocateDoubles(outVs.size());
+      for (unsigned n = 0; n < outDs.size(); ++n) ds[n] = outDs[n].serialNumber();
+      for (unsigned n = 0; n < outVs.size(); ++n) vs[n] = outVs[n];
+      *outDatesLen = outDs.size(); *outDates = ds; *outValuesLen = outVs.size(); *outValues = vs;
+    } catch (std::exception& er) {
+      qlFreeInts(ds); qlFreeDoubles(vs); *e = tracedup(er.what());
+    }}
+}
 
 extern "C" {
 void qlFreeInts(int *p) {delArray(p);}
@@ -1303,5 +1357,97 @@ void qlHistoricalIndexAnalysisCovariance(QlHistoricalIndexAnalysis *o, unsigned 
 void qlHistoricalIndexAnalysisCorrelation(QlHistoricalIndexAnalysis *o, unsigned *rows, unsigned *cols, unsigned *len, double **vs, char **e) {
   try {fillMatrixOut((*arg(o))->stats()->correlation(), rows, cols, len, vs);
   } catch (std::exception& er) {handleException<double*>(e, er);}}
+
+Garch11 *qlGarch11(double alpha, double beta, double vl) {return alloc(new Garch11(alpha, beta, vl));}
+Garch11 *qlGarch11Calibrated(unsigned datesLen, int *dates, unsigned /*valuesLen*/, double *values, int mode, char **e) {
+  try {
+    Garch11::time_series ts;
+    for (unsigned n = 0; n < datesLen; ++n) ts[Date(dates[n])] = values[n];
+    return alloc(new Garch11(ts, (Garch11::Mode)mode));
+  } catch (std::exception& er) {return handleException<Garch11*>(e, er);}}
+void qlFreeGarch11(Garch11 *o) {del(o);}
+double qlGarch11Alpha(Garch11 *o) {return arg(o)->alpha();}
+double qlGarch11Beta(Garch11 *o) {return arg(o)->beta();}
+double qlGarch11Omega(Garch11 *o) {return arg(o)->omega();}
+double qlGarch11LtVol(Garch11 *o) {return arg(o)->ltVol();}
+double qlGarch11LogLikelihood(Garch11 *o) {return arg(o)->logLikelihood();}
+double qlGarch11Forecast(Garch11 *o, double r, double sigma2) {return arg(o)->forecast(r, sigma2);}
+void qlGarch11Calculate(Garch11 *o, unsigned datesLen, int *dates, unsigned /*valuesLen*/, double *values,
+    unsigned *outDatesLen, int **outDates, unsigned *outValuesLen, double **outValues, char **e) {
+  Garch11 *g = arg(o);
+  realSeriesCalculate([g](const TimeSeries<Real>& ts){return g->calculate(ts);},
+      datesLen, dates, values, outDatesLen, outDates, outValuesLen, outValues, e);
+}
+
+void qlGarmanKlassSimpleSigma(double yearFraction,
+    unsigned datesLen, int *dates, unsigned /*opensLen*/, double *opens, unsigned /*closesLen*/, double *closes,
+    unsigned /*highsLen*/, double *highs, unsigned /*lowsLen*/, double *lows,
+    unsigned *outDatesLen, int **outDates, unsigned *outValuesLen, double **outValues, char **e) {
+  GarmanKlassSimpleSigma est(yearFraction);
+  intervalPriceSeriesCalculate([&est](const TimeSeries<IntervalPrice>& ts){return est.calculate(ts);},
+      datesLen, dates, opens, closes, highs, lows, outDatesLen, outDates, outValuesLen, outValues, e);
+}
+void qlGarmanKlassSigma1(double yearFraction, double marketOpenFraction,
+    unsigned datesLen, int *dates, unsigned /*opensLen*/, double *opens, unsigned /*closesLen*/, double *closes,
+    unsigned /*highsLen*/, double *highs, unsigned /*lowsLen*/, double *lows,
+    unsigned *outDatesLen, int **outDates, unsigned *outValuesLen, double **outValues, char **e) {
+  GarmanKlassSigma1 est(yearFraction, marketOpenFraction);
+  intervalPriceSeriesCalculate([&est](const TimeSeries<IntervalPrice>& ts){return est.calculate(ts);},
+      datesLen, dates, opens, closes, highs, lows, outDatesLen, outDates, outValuesLen, outValues, e);
+}
+void qlParkinsonSigma(double yearFraction,
+    unsigned datesLen, int *dates, unsigned /*opensLen*/, double *opens, unsigned /*closesLen*/, double *closes,
+    unsigned /*highsLen*/, double *highs, unsigned /*lowsLen*/, double *lows,
+    unsigned *outDatesLen, int **outDates, unsigned *outValuesLen, double **outValues, char **e) {
+  ParkinsonSigma est(yearFraction);
+  intervalPriceSeriesCalculate([&est](const TimeSeries<IntervalPrice>& ts){return est.calculate(ts);},
+      datesLen, dates, opens, closes, highs, lows, outDatesLen, outDates, outValuesLen, outValues, e);
+}
+void qlGarmanKlassSigma3(double yearFraction, double marketOpenFraction,
+    unsigned datesLen, int *dates, unsigned /*opensLen*/, double *opens, unsigned /*closesLen*/, double *closes,
+    unsigned /*highsLen*/, double *highs, unsigned /*lowsLen*/, double *lows,
+    unsigned *outDatesLen, int **outDates, unsigned *outValuesLen, double **outValues, char **e) {
+  GarmanKlassSigma3 est(yearFraction, marketOpenFraction);
+  intervalPriceSeriesCalculate([&est](const TimeSeries<IntervalPrice>& ts){return est.calculate(ts);},
+      datesLen, dates, opens, closes, highs, lows, outDatesLen, outDates, outValuesLen, outValues, e);
+}
+void qlGarmanKlassSigma4(double yearFraction,
+    unsigned datesLen, int *dates, unsigned /*opensLen*/, double *opens, unsigned /*closesLen*/, double *closes,
+    unsigned /*highsLen*/, double *highs, unsigned /*lowsLen*/, double *lows,
+    unsigned *outDatesLen, int **outDates, unsigned *outValuesLen, double **outValues, char **e) {
+  GarmanKlassSigma4 est(yearFraction);
+  intervalPriceSeriesCalculate([&est](const TimeSeries<IntervalPrice>& ts){return est.calculate(ts);},
+      datesLen, dates, opens, closes, highs, lows, outDatesLen, outDates, outValuesLen, outValues, e);
+}
+void qlGarmanKlassSigma5(double yearFraction,
+    unsigned datesLen, int *dates, unsigned /*opensLen*/, double *opens, unsigned /*closesLen*/, double *closes,
+    unsigned /*highsLen*/, double *highs, unsigned /*lowsLen*/, double *lows,
+    unsigned *outDatesLen, int **outDates, unsigned *outValuesLen, double **outValues, char **e) {
+  GarmanKlassSigma5 est(yearFraction);
+  intervalPriceSeriesCalculate([&est](const TimeSeries<IntervalPrice>& ts){return est.calculate(ts);},
+      datesLen, dates, opens, closes, highs, lows, outDatesLen, outDates, outValuesLen, outValues, e);
+}
+void qlGarmanKlassSigma6(double yearFraction, double marketOpenFraction,
+    unsigned datesLen, int *dates, unsigned /*opensLen*/, double *opens, unsigned /*closesLen*/, double *closes,
+    unsigned /*highsLen*/, double *highs, unsigned /*lowsLen*/, double *lows,
+    unsigned *outDatesLen, int **outDates, unsigned *outValuesLen, double **outValues, char **e) {
+  GarmanKlassSigma6 est(yearFraction, marketOpenFraction);
+  intervalPriceSeriesCalculate([&est](const TimeSeries<IntervalPrice>& ts){return est.calculate(ts);},
+      datesLen, dates, opens, closes, highs, lows, outDatesLen, outDates, outValuesLen, outValues, e);
+}
+void qlConstantVolatilityEstimator(unsigned windowSize,
+    unsigned datesLen, int *dates, unsigned /*valuesLen*/, double *values,
+    unsigned *outDatesLen, int **outDates, unsigned *outValuesLen, double **outValues, char **e) {
+  ConstantEstimator est(windowSize);
+  realSeriesCalculate([&est](const TimeSeries<Real>& ts){return est.calculate(ts);},
+      datesLen, dates, values, outDatesLen, outDates, outValuesLen, outValues, e);
+}
+void qlSimpleLocalVolatilityEstimator(double yearFraction,
+    unsigned datesLen, int *dates, unsigned /*valuesLen*/, double *values,
+    unsigned *outDatesLen, int **outDates, unsigned *outValuesLen, double **outValues, char **e) {
+  SimpleLocalEstimator est(yearFraction);
+  realSeriesCalculate([&est](const TimeSeries<Real>& ts){return est.calculate(ts);},
+      datesLen, dates, values, outDatesLen, outDates, outValuesLen, outValues, e);
+}
 }
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

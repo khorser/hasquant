@@ -28,6 +28,7 @@ import qualified QuantLib.Spec.PricingEngine as PricingEngine
 import qualified QuantLib.Spec.Process as Process
 import qualified QuantLib.Spec.Quote as Quote
 import qualified QuantLib.Spec.Statistics as Statistics
+import qualified QuantLib.Spec.VolatilityModel as VolatilityModel
 import qualified QuantLib.Spec.Examples as Examples
 
 main :: IO ()
@@ -62,6 +63,7 @@ main = do
     Process.spec
     Quote.spec
     Statistics.spec
+    VolatilityModel.spec
     Examples.spec
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

@@ -176,6 +176,9 @@ enum PriceType {
 // prices.hpp
 enum IntervalPriceType {Open, Close, High, Low};
 
+// models/volatility/garch.hpp
+enum Garch11Mode {MomentMatchingGuess, GammaGuess, BestOfTwo, DoubleOptimization};
+
 // experimental/fx/deltavolquote.hpp
 enum DeltaType {
   Spot,        // Spot Delta, e.g. usual Black Scholes delta
