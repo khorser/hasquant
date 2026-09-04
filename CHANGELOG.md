@@ -4,7 +4,7 @@ Haskell callbacks reaching into QuantLib's hot loops instead of stopping at the 
 
 Also added callbacks for custom `Payoff` objects which can be priced through FD, basket and Monte Carlo engines.
 
-Added more functionality in FD area to reach more parity with SWIG bingings, added historical analysis for indices, `app/SofrXva` grew into a real standalone SOFR-OIS exposure-profile executable. An HPC coverage report now publishes alongside Haddock. Added 200+ new constructors/methods, ported more upstream tests (400+ in total).
+Added more functionality in FD area to reach more parity with SWIG bingings, added historical analysis for indices, `app/SofrXva` grew into a real standalone SOFR-OIS exposure-profile executable. An HPC coverage report now publishes alongside Haddock. Added 200+ new constructors/methods, ported more upstream tests (500+ in total).
 
 Reworked API to use NonEmpty lists and unboxed vectors and matrices where seemed applicable.
 
