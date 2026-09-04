@@ -815,8 +815,8 @@ QlPricingEngine* qlQdFpAmericanEngine(QlGeneralizedBlackScholesProcess* process,
   try {
     ext::shared_ptr<QdFpIterationScheme> iterationScheme;
     switch (scheme) {
-      case 0: iterationScheme = QdFpAmericanEngine::fastScheme(); break;
-      case 2: iterationScheme = QdFpAmericanEngine::highPrecisionScheme(); break;
+      case hasquant::FastScheme: iterationScheme = QdFpAmericanEngine::fastScheme(); break;
+      case hasquant::HighPrecisionScheme: iterationScheme = QdFpAmericanEngine::highPrecisionScheme(); break;
       default: iterationScheme = QdFpAmericanEngine::accurateScheme(); break;
     }
     return ret(new QlPricingEngine(alloc(new QdFpAmericanEngine(*arg(process), iterationScheme, (QdFpAmericanEngine::FixedPointEquation)fpEquation))));
