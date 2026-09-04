@@ -76,54 +76,54 @@
 </span><span id="line-51"></span><span class="hs-comment">-- |Adjusts a non-business day to the appropriate near business day with respect to the given convention</span><span>
 </span><span id="line-52"></span><span class="hs-identifier">adjust</span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-special">(</span><span class="hs-identifier">Calendar</span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-special">(</span><span class="hs-identifier">Day</span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-special">(</span><span class="hs-identifier">BusinessDayConvention</span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-identifier">IO</span><span> </span><span class="hs-special">(</span><span class="hs-special">(</span><span class="hs-identifier">Day</span><span class="hs-special">)</span><span class="hs-special">)</span><span>
 </span><span id="line-53"></span><span id="adjust"><span class="annot"><span class="annottext">adjust :: Calendar -&gt; Day -&gt; BusinessDayConvention -&gt; IO Day
-</span><a href="QuantLib.Time.Calendar.html#adjust"><span class="hs-identifier hs-var hs-var">adjust</span></a></span></span><span> </span><span id="local-6989586621680329155"><span class="annot"><span class="annottext">Calendar
-</span><a href="#local-6989586621680329155"><span class="hs-identifier hs-var">a1</span></a></span></span><span> </span><span id="local-6989586621680329156"><span class="annot"><span class="annottext">Day
-</span><a href="#local-6989586621680329156"><span class="hs-identifier hs-var">a2</span></a></span></span><span> </span><span id="local-6989586621680329157"><span class="annot"><span class="annottext">BusinessDayConvention
-</span><a href="#local-6989586621680329157"><span class="hs-identifier hs-var">a3</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
+</span><a href="QuantLib.Time.Calendar.html#adjust"><span class="hs-identifier hs-var hs-var">adjust</span></a></span></span><span> </span><span id="local-6989586621680406823"><span class="annot"><span class="annottext">Calendar
+</span><a href="#local-6989586621680406823"><span class="hs-identifier hs-var">a1</span></a></span></span><span> </span><span id="local-6989586621680406824"><span class="annot"><span class="annottext">Day
+</span><a href="#local-6989586621680406824"><span class="hs-identifier hs-var">a2</span></a></span></span><span> </span><span id="local-6989586621680406825"><span class="annot"><span class="annottext">BusinessDayConvention
+</span><a href="#local-6989586621680406825"><span class="hs-identifier hs-var">a3</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
 </span><span id="line-54"></span><span>  </span><span class="annot"><span class="annottext">Calendar -&gt; (Ptr CCalendar -&gt; IO Day) -&gt; IO Day
 forall b. Calendar -&gt; (Ptr CCalendar -&gt; IO b) -&gt; IO b
 </span><a href="QuantLib.Internal.Type.html#withCalendar"><span class="hs-identifier hs-var">withCalendar</span></a></span><span> </span><span class="annot"><span class="annottext">Calendar
-</span><a href="#local-6989586621680329155"><span class="hs-identifier hs-var">a1</span></a></span><span> </span><span class="annot"><span class="annottext">((Ptr CCalendar -&gt; IO Day) -&gt; IO Day)
+</span><a href="#local-6989586621680406823"><span class="hs-identifier hs-var">a1</span></a></span><span> </span><span class="annot"><span class="annottext">((Ptr CCalendar -&gt; IO Day) -&gt; IO Day)
 -&gt; (Ptr CCalendar -&gt; IO Day) -&gt; IO Day
 forall a b. (a -&gt; b) -&gt; a -&gt; b
-</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680329159"><span class="annot"><span class="annottext">Ptr CCalendar
-</span><a href="#local-6989586621680329159"><span class="hs-identifier hs-var">a1'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680406827"><span class="annot"><span class="annottext">Ptr CCalendar
+</span><a href="#local-6989586621680406827"><span class="hs-identifier hs-var">a1'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
 </span><span id="line-55"></span><span>  </span><span class="annot"><span class="annottext">Day -&gt; (CInt -&gt; IO Day) -&gt; IO Day
 forall a. Day -&gt; (CInt -&gt; IO a) -&gt; IO a
 </span><a href="QuantLib.Internal.html#withDay"><span class="hs-identifier hs-var">withDay</span></a></span><span> </span><span class="annot"><span class="annottext">Day
-</span><a href="#local-6989586621680329156"><span class="hs-identifier hs-var">a2</span></a></span><span> </span><span class="annot"><span class="annottext">((CInt -&gt; IO Day) -&gt; IO Day) -&gt; (CInt -&gt; IO Day) -&gt; IO Day
+</span><a href="#local-6989586621680406824"><span class="hs-identifier hs-var">a2</span></a></span><span> </span><span class="annot"><span class="annottext">((CInt -&gt; IO Day) -&gt; IO Day) -&gt; (CInt -&gt; IO Day) -&gt; IO Day
 forall a b. (a -&gt; b) -&gt; a -&gt; b
-</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680329162"><span class="annot"><span class="annottext">CInt
-</span><a href="#local-6989586621680329162"><span class="hs-identifier hs-var">a2'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
-</span><span id="line-56"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span id="local-6989586621680329176"><span class="annot"><span class="annottext">a3' :: CInt
-</span><a href="#local-6989586621680329176"><span class="hs-identifier hs-var hs-var">a3'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">BusinessDayConvention -&gt; CInt
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680406830"><span class="annot"><span class="annottext">CInt
+</span><a href="#local-6989586621680406830"><span class="hs-identifier hs-var">a2'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
+</span><span id="line-56"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span id="local-6989586621680406844"><span class="annot"><span class="annottext">a3' :: CInt
+</span><a href="#local-6989586621680406844"><span class="hs-identifier hs-var hs-var">a3'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">BusinessDayConvention -&gt; CInt
 forall a b. (Enum a, Integral b) =&gt; a -&gt; b
 </span><a href="QuantLib.Internal.html#fromEnumC"><span class="hs-identifier hs-var">fromEnumC</span></a></span><span> </span><span class="annot"><span class="annottext">BusinessDayConvention
-</span><a href="#local-6989586621680329157"><span class="hs-identifier hs-var">a3</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span> </span><span>
+</span><a href="#local-6989586621680406825"><span class="hs-identifier hs-var">a3</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span> </span><span>
 </span><span id="line-57"></span><span>  </span><span class="annot"><span class="annottext">(Ptr (Ptr CChar) -&gt; IO Day) -&gt; IO Day
 forall a b. (Ptr (Ptr a) -&gt; IO b) -&gt; IO b
 </span><a href="QuantLib.Internal.html#preErrorCheck"><span class="hs-identifier hs-var">preErrorCheck</span></a></span><span> </span><span class="annot"><span class="annottext">((Ptr (Ptr CChar) -&gt; IO Day) -&gt; IO Day)
 -&gt; (Ptr (Ptr CChar) -&gt; IO Day) -&gt; IO Day
 forall a b. (a -&gt; b) -&gt; a -&gt; b
-</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680329178"><span class="annot"><span class="annottext">Ptr (Ptr CChar)
-</span><a href="#local-6989586621680329178"><span class="hs-identifier hs-var">a4'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680406846"><span class="annot"><span class="annottext">Ptr (Ptr CChar)
+</span><a href="#local-6989586621680406846"><span class="hs-identifier hs-var">a4'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
 </span><span id="line-58"></span><span>  </span><span class="annot"><span class="annottext">Ptr CCalendar -&gt; CInt -&gt; CInt -&gt; Ptr (Ptr CChar) -&gt; IO CInt
 </span><a href="QuantLib.Time.Calendar.html#adjust%27_"><span class="hs-identifier hs-var">adjust'_</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr CCalendar
-</span><a href="#local-6989586621680329159"><span class="hs-identifier hs-var">a1'</span></a></span><span> </span><span class="annot"><span class="annottext">CInt
-</span><a href="#local-6989586621680329162"><span class="hs-identifier hs-var">a2'</span></a></span><span> </span><span class="annot"><span class="annottext">CInt
-</span><a href="#local-6989586621680329176"><span class="hs-identifier hs-var">a3'</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr (Ptr CChar)
-</span><a href="#local-6989586621680329178"><span class="hs-identifier hs-var">a4'</span></a></span><span> </span><span class="annot"><span class="annottext">IO CInt -&gt; (CInt -&gt; IO Day) -&gt; IO Day
+</span><a href="#local-6989586621680406827"><span class="hs-identifier hs-var">a1'</span></a></span><span> </span><span class="annot"><span class="annottext">CInt
+</span><a href="#local-6989586621680406830"><span class="hs-identifier hs-var">a2'</span></a></span><span> </span><span class="annot"><span class="annottext">CInt
+</span><a href="#local-6989586621680406844"><span class="hs-identifier hs-var">a3'</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr (Ptr CChar)
+</span><a href="#local-6989586621680406846"><span class="hs-identifier hs-var">a4'</span></a></span><span> </span><span class="annot"><span class="annottext">IO CInt -&gt; (CInt -&gt; IO Day) -&gt; IO Day
 forall a b. IO a -&gt; (a -&gt; IO b) -&gt; IO b
 forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; (a -&gt; m b) -&gt; m b
-</span><span class="hs-operator hs-var">&gt;&gt;=</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680329180"><span class="annot"><span class="annottext">CInt
-</span><a href="#local-6989586621680329180"><span class="hs-identifier hs-var">res</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
-</span><span id="line-59"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span id="local-6989586621680329181"><span class="annot"><span class="annottext">res' :: Day
-</span><a href="#local-6989586621680329181"><span class="hs-identifier hs-var hs-var">res'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">CInt -&gt; Day
+</span><span class="hs-operator hs-var">&gt;&gt;=</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680406848"><span class="annot"><span class="annottext">CInt
+</span><a href="#local-6989586621680406848"><span class="hs-identifier hs-var">res</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><span id="line-59"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span id="local-6989586621680406849"><span class="annot"><span class="annottext">res' :: Day
+</span><a href="#local-6989586621680406849"><span class="hs-identifier hs-var hs-var">res'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">CInt -&gt; Day
 </span><a href="QuantLib.Internal.html#toDay"><span class="hs-identifier hs-var">toDay</span></a></span><span> </span><span class="annot"><span class="annottext">CInt
-</span><a href="#local-6989586621680329180"><span class="hs-identifier hs-var">res</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span>
+</span><a href="#local-6989586621680406848"><span class="hs-identifier hs-var">res</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span>
 </span><span id="line-60"></span><span>  </span><span class="annot"><span class="annottext">Ptr (Ptr CChar) -&gt; IO ()
 </span><a href="QuantLib.Internal.html#errorCheck"><span class="hs-identifier hs-var">errorCheck</span></a></span><span>  </span><span class="annot"><span class="annottext">Ptr (Ptr CChar)
-</span><a href="#local-6989586621680329178"><span class="hs-identifier hs-var">a4'</span></a></span><span class="annot"><span class="annottext">IO () -&gt; IO Day -&gt; IO Day
+</span><a href="#local-6989586621680406846"><span class="hs-identifier hs-var">a4'</span></a></span><span class="annot"><span class="annottext">IO () -&gt; IO Day -&gt; IO Day
 forall a b. IO a -&gt; IO b -&gt; IO b
 forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; m b -&gt; m b
 </span><span class="hs-operator hs-var">&gt;&gt;</span></span><span>
@@ -131,7 +131,7 @@ forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; m b -&gt; m b
 forall a. a -&gt; IO a
 forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
 </span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Day
-</span><a href="#local-6989586621680329181"><span class="hs-identifier hs-var">res'</span></a></span><span class="hs-special">)</span><span>
+</span><a href="#local-6989586621680406849"><span class="hs-identifier hs-var">res'</span></a></span><span class="hs-special">)</span><span>
 </span><span id="line-62"></span><span>
 </span><span id="line-63"></span><span class="hs-pragma">{-# LINE 52 &quot;./QuantLib/Time/Calendar.chs&quot; #-}</span><span>
 </span><span id="line-52"></span><span>
@@ -364,14 +364,14 @@ forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
 </span><span id="line-113"></span><span class="hs-comment">-- everything except these three -- has to be spliced back in CalendarEnum.chs instead of</span><span>
 </span><span id="line-114"></span><span class="hs-comment">-- here). Each alternative below parses a nested CalendarConstructor and materializes it with</span><span>
 </span><span id="line-115"></span><span class="hs-comment">-- `calendar`, exactly what a caller passing a literal Joint2/3/4 value would already do.</span><span>
-</span><span id="line-116"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680329257"><span id="local-6989586621680329261"><span id="local-6989586621680329264"><span class="annot"><span class="hs-identifier hs-type">Read</span></span><span> </span><span class="annot"><a href="QuantLib.Internal.CalendarEnum.html#CalendarConstructor"><span class="hs-identifier hs-type">CalendarConstructor</span></a></span></span></span></span><span> </span><span class="hs-keyword">where</span><span>
-</span><span id="line-117"></span><span>  </span><span id="local-6989586621680329287"><span class="annot"><span class="annottext">readsPrec :: Int -&gt; ReadS CalendarConstructor
-</span><a href="#local-6989586621680329287"><span class="hs-identifier hs-var hs-var hs-var">readsPrec</span></a></span></span><span> </span><span id="local-6989586621680329289"><span class="annot"><span class="annottext">Int
-</span><a href="#local-6989586621680329289"><span class="hs-identifier hs-var">d</span></a></span></span><span> </span><span id="local-6989586621680329290"><span class="annot"><span class="annottext">String
-</span><a href="#local-6989586621680329290"><span class="hs-identifier hs-var">r</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Int -&gt; ReadS CalendarConstructor
+</span><span id="line-116"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680406925"><span id="local-6989586621680406929"><span id="local-6989586621680406932"><span class="annot"><span class="hs-identifier hs-type">Read</span></span><span> </span><span class="annot"><a href="QuantLib.Internal.CalendarEnum.html#CalendarConstructor"><span class="hs-identifier hs-type">CalendarConstructor</span></a></span></span></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-117"></span><span>  </span><span id="local-6989586621680406955"><span class="annot"><span class="annottext">readsPrec :: Int -&gt; ReadS CalendarConstructor
+</span><a href="#local-6989586621680406955"><span class="hs-identifier hs-var hs-var hs-var">readsPrec</span></a></span></span><span> </span><span id="local-6989586621680406957"><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621680406957"><span class="hs-identifier hs-var">d</span></a></span></span><span> </span><span id="local-6989586621680406958"><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621680406958"><span class="hs-identifier hs-var">r</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Int -&gt; ReadS CalendarConstructor
 </span><a href="QuantLib.Internal.CalendarEnum.html#readCalendarConstructorPlain"><span class="hs-identifier hs-var">readCalendarConstructorPlain</span></a></span><span> </span><span class="annot"><span class="annottext">Int
-</span><a href="#local-6989586621680329289"><span class="hs-identifier hs-var">d</span></a></span><span> </span><span class="annot"><span class="annottext">String
-</span><a href="#local-6989586621680329290"><span class="hs-identifier hs-var">r</span></a></span><span>
+</span><a href="#local-6989586621680406957"><span class="hs-identifier hs-var">d</span></a></span><span> </span><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621680406958"><span class="hs-identifier hs-var">r</span></a></span><span>
 </span><span id="line-118"></span><span>    </span><span class="annot"><span class="annottext">[(CalendarConstructor, String)]
 -&gt; [(CalendarConstructor, String)]
 -&gt; [(CalendarConstructor, String)]
@@ -379,51 +379,51 @@ forall a. [a] -&gt; [a] -&gt; [a]
 </span><span class="hs-operator hs-var">++</span></span><span> </span><span class="annot"><span class="annottext">Bool -&gt; ReadS CalendarConstructor -&gt; ReadS CalendarConstructor
 forall a. Bool -&gt; ReadS a -&gt; ReadS a
 </span><span class="hs-identifier hs-var">readParen</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Int
-</span><a href="#local-6989586621680329289"><span class="hs-identifier hs-var">d</span></a></span><span> </span><span class="annot"><span class="annottext">Int -&gt; Int -&gt; Bool
+</span><a href="#local-6989586621680406957"><span class="hs-identifier hs-var">d</span></a></span><span> </span><span class="annot"><span class="annottext">Int -&gt; Int -&gt; Bool
 forall a. Ord a =&gt; a -&gt; a -&gt; Bool
 </span><span class="hs-operator hs-var">&gt;</span></span><span> </span><span class="annot"><span class="annottext">Int
-</span><span class="hs-number">10</span></span><span class="hs-special">)</span><span> </span><span class="hs-special">(</span><span class="hs-glyph">\</span><span id="local-6989586621680329294"><span class="annot"><span class="annottext">String
-</span><a href="#local-6989586621680329294"><span class="hs-identifier hs-var">r'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><span class="hs-number">10</span></span><span class="hs-special">)</span><span> </span><span class="hs-special">(</span><span class="hs-glyph">\</span><span id="local-6989586621680406962"><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621680406962"><span class="hs-identifier hs-var">r'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
 </span><span id="line-119"></span><span>         </span><span class="hs-special">[</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Calendar -&gt; Calendar -&gt; JointCalendarRule -&gt; CalendarConstructor
 </span><a href="QuantLib.Internal.CalendarEnum.html#Joint2"><span class="hs-identifier hs-var">Joint2</span></a></span><span> </span><span class="annot"><span class="annottext">Calendar
-</span><a href="#local-6989586621680329295"><span class="hs-identifier hs-var">c1</span></a></span><span> </span><span class="annot"><span class="annottext">Calendar
-</span><a href="#local-6989586621680329296"><span class="hs-identifier hs-var">c2</span></a></span><span> </span><span class="annot"><span class="annottext">JointCalendarRule
-</span><a href="#local-6989586621680329297"><span class="hs-identifier hs-var">rule</span></a></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">String
-</span><a href="#local-6989586621680329298"><span class="hs-identifier hs-var">s3</span></a></span><span class="hs-special">)</span><span>
+</span><a href="#local-6989586621680406963"><span class="hs-identifier hs-var">c1</span></a></span><span> </span><span class="annot"><span class="annottext">Calendar
+</span><a href="#local-6989586621680406964"><span class="hs-identifier hs-var">c2</span></a></span><span> </span><span class="annot"><span class="annottext">JointCalendarRule
+</span><a href="#local-6989586621680406965"><span class="hs-identifier hs-var">rule</span></a></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621680406966"><span class="hs-identifier hs-var">s3</span></a></span><span class="hs-special">)</span><span>
 </span><span id="line-120"></span><span>         </span><span class="hs-glyph">|</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">String
-</span><span class="hs-string">&quot;Joint2&quot;</span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680329299"><span class="annot"><span class="annottext">String
-</span><a href="#local-6989586621680329299"><span class="hs-identifier hs-var">s0</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">ReadS String
+</span><span class="hs-string">&quot;Joint2&quot;</span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680406967"><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621680406967"><span class="hs-identifier hs-var">s0</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">ReadS String
 </span><span class="hs-identifier hs-var">lex</span></span><span> </span><span class="annot"><span class="annottext">String
-</span><a href="#local-6989586621680329294"><span class="hs-identifier hs-var">r'</span></a></span><span>
-</span><span id="line-121"></span><span>         </span><span class="hs-special">,</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680329301"><span class="annot"><span class="annottext">CalendarConstructor
-</span><a href="#local-6989586621680329301"><span class="hs-identifier hs-var">p1</span></a></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680329302"><span class="annot"><span class="annottext">String
-</span><a href="#local-6989586621680329302"><span class="hs-identifier hs-var">s1</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Int -&gt; ReadS CalendarConstructor
+</span><a href="#local-6989586621680406962"><span class="hs-identifier hs-var">r'</span></a></span><span>
+</span><span id="line-121"></span><span>         </span><span class="hs-special">,</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680406969"><span class="annot"><span class="annottext">CalendarConstructor
+</span><a href="#local-6989586621680406969"><span class="hs-identifier hs-var">p1</span></a></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680406970"><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621680406970"><span class="hs-identifier hs-var">s1</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Int -&gt; ReadS CalendarConstructor
 forall a. Read a =&gt; Int -&gt; ReadS a
 </span><span class="hs-identifier hs-var">readsPrec</span></span><span> </span><span class="annot"><span class="annottext">Int
 </span><span class="hs-number">11</span></span><span> </span><span class="annot"><span class="annottext">String
-</span><a href="#local-6989586621680329299"><span class="hs-identifier hs-var">s0</span></a></span><span class="hs-special">,</span><span> </span><span class="hs-keyword">let</span><span> </span><span id="local-6989586621680329295"><span class="annot"><span class="annottext">c1 :: Calendar
-</span><a href="#local-6989586621680329295"><span class="hs-identifier hs-var hs-var">c1</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">CalendarConstructor -&gt; Calendar
+</span><a href="#local-6989586621680406967"><span class="hs-identifier hs-var">s0</span></a></span><span class="hs-special">,</span><span> </span><span class="hs-keyword">let</span><span> </span><span id="local-6989586621680406963"><span class="annot"><span class="annottext">c1 :: Calendar
+</span><a href="#local-6989586621680406963"><span class="hs-identifier hs-var hs-var">c1</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">CalendarConstructor -&gt; Calendar
 </span><a href="QuantLib.Time.Calendar.html#unsafeCalendar"><span class="hs-identifier hs-var">unsafeCalendar</span></a></span><span> </span><span class="annot"><span class="annottext">CalendarConstructor
-</span><a href="#local-6989586621680329301"><span class="hs-identifier hs-var">p1</span></a></span><span>
-</span><span id="line-122"></span><span>         </span><span class="hs-special">,</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680329304"><span class="annot"><span class="annottext">CalendarConstructor
-</span><a href="#local-6989586621680329304"><span class="hs-identifier hs-var">p2</span></a></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680329305"><span class="annot"><span class="annottext">String
-</span><a href="#local-6989586621680329305"><span class="hs-identifier hs-var">s2</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Int -&gt; ReadS CalendarConstructor
+</span><a href="#local-6989586621680406969"><span class="hs-identifier hs-var">p1</span></a></span><span>
+</span><span id="line-122"></span><span>         </span><span class="hs-special">,</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680406972"><span class="annot"><span class="annottext">CalendarConstructor
+</span><a href="#local-6989586621680406972"><span class="hs-identifier hs-var">p2</span></a></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680406973"><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621680406973"><span class="hs-identifier hs-var">s2</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Int -&gt; ReadS CalendarConstructor
 forall a. Read a =&gt; Int -&gt; ReadS a
 </span><span class="hs-identifier hs-var">readsPrec</span></span><span> </span><span class="annot"><span class="annottext">Int
 </span><span class="hs-number">11</span></span><span> </span><span class="annot"><span class="annottext">String
-</span><a href="#local-6989586621680329302"><span class="hs-identifier hs-var">s1</span></a></span><span class="hs-special">,</span><span> </span><span class="hs-keyword">let</span><span> </span><span id="local-6989586621680329296"><span class="annot"><span class="annottext">c2 :: Calendar
-</span><a href="#local-6989586621680329296"><span class="hs-identifier hs-var hs-var">c2</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">CalendarConstructor -&gt; Calendar
+</span><a href="#local-6989586621680406970"><span class="hs-identifier hs-var">s1</span></a></span><span class="hs-special">,</span><span> </span><span class="hs-keyword">let</span><span> </span><span id="local-6989586621680406964"><span class="annot"><span class="annottext">c2 :: Calendar
+</span><a href="#local-6989586621680406964"><span class="hs-identifier hs-var hs-var">c2</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">CalendarConstructor -&gt; Calendar
 </span><a href="QuantLib.Time.Calendar.html#unsafeCalendar"><span class="hs-identifier hs-var">unsafeCalendar</span></a></span><span> </span><span class="annot"><span class="annottext">CalendarConstructor
-</span><a href="#local-6989586621680329304"><span class="hs-identifier hs-var">p2</span></a></span><span>
-</span><span id="line-123"></span><span>         </span><span class="hs-special">,</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680329297"><span class="annot"><span class="annottext">JointCalendarRule
-</span><a href="#local-6989586621680329297"><span class="hs-identifier hs-var">rule</span></a></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680329298"><span class="annot"><span class="annottext">String
-</span><a href="#local-6989586621680329298"><span class="hs-identifier hs-var">s3</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Int -&gt; ReadS JointCalendarRule
+</span><a href="#local-6989586621680406972"><span class="hs-identifier hs-var">p2</span></a></span><span>
+</span><span id="line-123"></span><span>         </span><span class="hs-special">,</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680406965"><span class="annot"><span class="annottext">JointCalendarRule
+</span><a href="#local-6989586621680406965"><span class="hs-identifier hs-var">rule</span></a></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680406966"><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621680406966"><span class="hs-identifier hs-var">s3</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Int -&gt; ReadS JointCalendarRule
 forall a. Read a =&gt; Int -&gt; ReadS a
 </span><span class="hs-identifier hs-var">readsPrec</span></span><span> </span><span class="annot"><span class="annottext">Int
 </span><span class="hs-number">11</span></span><span> </span><span class="annot"><span class="annottext">String
-</span><a href="#local-6989586621680329305"><span class="hs-identifier hs-var">s2</span></a></span><span>
+</span><a href="#local-6989586621680406973"><span class="hs-identifier hs-var">s2</span></a></span><span>
 </span><span id="line-124"></span><span>         </span><span class="hs-special">]</span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">String
-</span><a href="#local-6989586621680329290"><span class="hs-identifier hs-var">r</span></a></span><span>
+</span><a href="#local-6989586621680406958"><span class="hs-identifier hs-var">r</span></a></span><span>
 </span><span id="line-125"></span><span>    </span><span class="annot"><span class="annottext">[(CalendarConstructor, String)]
 -&gt; [(CalendarConstructor, String)]
 -&gt; [(CalendarConstructor, String)]
@@ -431,63 +431,63 @@ forall a. [a] -&gt; [a] -&gt; [a]
 </span><span class="hs-operator hs-var">++</span></span><span> </span><span class="annot"><span class="annottext">Bool -&gt; ReadS CalendarConstructor -&gt; ReadS CalendarConstructor
 forall a. Bool -&gt; ReadS a -&gt; ReadS a
 </span><span class="hs-identifier hs-var">readParen</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Int
-</span><a href="#local-6989586621680329289"><span class="hs-identifier hs-var">d</span></a></span><span> </span><span class="annot"><span class="annottext">Int -&gt; Int -&gt; Bool
+</span><a href="#local-6989586621680406957"><span class="hs-identifier hs-var">d</span></a></span><span> </span><span class="annot"><span class="annottext">Int -&gt; Int -&gt; Bool
 forall a. Ord a =&gt; a -&gt; a -&gt; Bool
 </span><span class="hs-operator hs-var">&gt;</span></span><span> </span><span class="annot"><span class="annottext">Int
-</span><span class="hs-number">10</span></span><span class="hs-special">)</span><span> </span><span class="hs-special">(</span><span class="hs-glyph">\</span><span id="local-6989586621680329306"><span class="annot"><span class="annottext">String
-</span><a href="#local-6989586621680329306"><span class="hs-identifier hs-var">r'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><span class="hs-number">10</span></span><span class="hs-special">)</span><span> </span><span class="hs-special">(</span><span class="hs-glyph">\</span><span id="local-6989586621680406974"><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621680406974"><span class="hs-identifier hs-var">r'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
 </span><span id="line-126"></span><span>         </span><span class="hs-special">[</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Calendar
 -&gt; Calendar -&gt; Calendar -&gt; JointCalendarRule -&gt; CalendarConstructor
 </span><a href="QuantLib.Internal.CalendarEnum.html#Joint3"><span class="hs-identifier hs-var">Joint3</span></a></span><span> </span><span class="annot"><span class="annottext">Calendar
-</span><a href="#local-6989586621680329307"><span class="hs-identifier hs-var">c1</span></a></span><span> </span><span class="annot"><span class="annottext">Calendar
-</span><a href="#local-6989586621680329308"><span class="hs-identifier hs-var">c2</span></a></span><span> </span><span class="annot"><span class="annottext">Calendar
-</span><a href="#local-6989586621680329309"><span class="hs-identifier hs-var">c3</span></a></span><span> </span><span class="annot"><span class="annottext">JointCalendarRule
-</span><a href="#local-6989586621680329310"><span class="hs-identifier hs-var">rule</span></a></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">String
-</span><a href="#local-6989586621680329311"><span class="hs-identifier hs-var">s4</span></a></span><span class="hs-special">)</span><span>
+</span><a href="#local-6989586621680406975"><span class="hs-identifier hs-var">c1</span></a></span><span> </span><span class="annot"><span class="annottext">Calendar
+</span><a href="#local-6989586621680406976"><span class="hs-identifier hs-var">c2</span></a></span><span> </span><span class="annot"><span class="annottext">Calendar
+</span><a href="#local-6989586621680406977"><span class="hs-identifier hs-var">c3</span></a></span><span> </span><span class="annot"><span class="annottext">JointCalendarRule
+</span><a href="#local-6989586621680406978"><span class="hs-identifier hs-var">rule</span></a></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621680406979"><span class="hs-identifier hs-var">s4</span></a></span><span class="hs-special">)</span><span>
 </span><span id="line-127"></span><span>         </span><span class="hs-glyph">|</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">String
-</span><span class="hs-string">&quot;Joint3&quot;</span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680329312"><span class="annot"><span class="annottext">String
-</span><a href="#local-6989586621680329312"><span class="hs-identifier hs-var">s0</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">ReadS String
+</span><span class="hs-string">&quot;Joint3&quot;</span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680406980"><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621680406980"><span class="hs-identifier hs-var">s0</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">ReadS String
 </span><span class="hs-identifier hs-var">lex</span></span><span> </span><span class="annot"><span class="annottext">String
-</span><a href="#local-6989586621680329306"><span class="hs-identifier hs-var">r'</span></a></span><span>
-</span><span id="line-128"></span><span>         </span><span class="hs-special">,</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680329313"><span class="annot"><span class="annottext">CalendarConstructor
-</span><a href="#local-6989586621680329313"><span class="hs-identifier hs-var">p1</span></a></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680329314"><span class="annot"><span class="annottext">String
-</span><a href="#local-6989586621680329314"><span class="hs-identifier hs-var">s1</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Int -&gt; ReadS CalendarConstructor
+</span><a href="#local-6989586621680406974"><span class="hs-identifier hs-var">r'</span></a></span><span>
+</span><span id="line-128"></span><span>         </span><span class="hs-special">,</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680406981"><span class="annot"><span class="annottext">CalendarConstructor
+</span><a href="#local-6989586621680406981"><span class="hs-identifier hs-var">p1</span></a></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680406982"><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621680406982"><span class="hs-identifier hs-var">s1</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Int -&gt; ReadS CalendarConstructor
 forall a. Read a =&gt; Int -&gt; ReadS a
 </span><span class="hs-identifier hs-var">readsPrec</span></span><span> </span><span class="annot"><span class="annottext">Int
 </span><span class="hs-number">11</span></span><span> </span><span class="annot"><span class="annottext">String
-</span><a href="#local-6989586621680329312"><span class="hs-identifier hs-var">s0</span></a></span><span class="hs-special">,</span><span> </span><span class="hs-keyword">let</span><span> </span><span id="local-6989586621680329307"><span class="annot"><span class="annottext">c1 :: Calendar
-</span><a href="#local-6989586621680329307"><span class="hs-identifier hs-var hs-var">c1</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">CalendarConstructor -&gt; Calendar
+</span><a href="#local-6989586621680406980"><span class="hs-identifier hs-var">s0</span></a></span><span class="hs-special">,</span><span> </span><span class="hs-keyword">let</span><span> </span><span id="local-6989586621680406975"><span class="annot"><span class="annottext">c1 :: Calendar
+</span><a href="#local-6989586621680406975"><span class="hs-identifier hs-var hs-var">c1</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">CalendarConstructor -&gt; Calendar
 </span><a href="QuantLib.Time.Calendar.html#unsafeCalendar"><span class="hs-identifier hs-var">unsafeCalendar</span></a></span><span> </span><span class="annot"><span class="annottext">CalendarConstructor
-</span><a href="#local-6989586621680329313"><span class="hs-identifier hs-var">p1</span></a></span><span>
-</span><span id="line-129"></span><span>         </span><span class="hs-special">,</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680329315"><span class="annot"><span class="annottext">CalendarConstructor
-</span><a href="#local-6989586621680329315"><span class="hs-identifier hs-var">p2</span></a></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680329316"><span class="annot"><span class="annottext">String
-</span><a href="#local-6989586621680329316"><span class="hs-identifier hs-var">s2</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Int -&gt; ReadS CalendarConstructor
+</span><a href="#local-6989586621680406981"><span class="hs-identifier hs-var">p1</span></a></span><span>
+</span><span id="line-129"></span><span>         </span><span class="hs-special">,</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680406983"><span class="annot"><span class="annottext">CalendarConstructor
+</span><a href="#local-6989586621680406983"><span class="hs-identifier hs-var">p2</span></a></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680406984"><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621680406984"><span class="hs-identifier hs-var">s2</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Int -&gt; ReadS CalendarConstructor
 forall a. Read a =&gt; Int -&gt; ReadS a
 </span><span class="hs-identifier hs-var">readsPrec</span></span><span> </span><span class="annot"><span class="annottext">Int
 </span><span class="hs-number">11</span></span><span> </span><span class="annot"><span class="annottext">String
-</span><a href="#local-6989586621680329314"><span class="hs-identifier hs-var">s1</span></a></span><span class="hs-special">,</span><span> </span><span class="hs-keyword">let</span><span> </span><span id="local-6989586621680329308"><span class="annot"><span class="annottext">c2 :: Calendar
-</span><a href="#local-6989586621680329308"><span class="hs-identifier hs-var hs-var">c2</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">CalendarConstructor -&gt; Calendar
+</span><a href="#local-6989586621680406982"><span class="hs-identifier hs-var">s1</span></a></span><span class="hs-special">,</span><span> </span><span class="hs-keyword">let</span><span> </span><span id="local-6989586621680406976"><span class="annot"><span class="annottext">c2 :: Calendar
+</span><a href="#local-6989586621680406976"><span class="hs-identifier hs-var hs-var">c2</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">CalendarConstructor -&gt; Calendar
 </span><a href="QuantLib.Time.Calendar.html#unsafeCalendar"><span class="hs-identifier hs-var">unsafeCalendar</span></a></span><span> </span><span class="annot"><span class="annottext">CalendarConstructor
-</span><a href="#local-6989586621680329315"><span class="hs-identifier hs-var">p2</span></a></span><span>
-</span><span id="line-130"></span><span>         </span><span class="hs-special">,</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680329317"><span class="annot"><span class="annottext">CalendarConstructor
-</span><a href="#local-6989586621680329317"><span class="hs-identifier hs-var">p3</span></a></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680329318"><span class="annot"><span class="annottext">String
-</span><a href="#local-6989586621680329318"><span class="hs-identifier hs-var">s3</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Int -&gt; ReadS CalendarConstructor
+</span><a href="#local-6989586621680406983"><span class="hs-identifier hs-var">p2</span></a></span><span>
+</span><span id="line-130"></span><span>         </span><span class="hs-special">,</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680406985"><span class="annot"><span class="annottext">CalendarConstructor
+</span><a href="#local-6989586621680406985"><span class="hs-identifier hs-var">p3</span></a></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680406986"><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621680406986"><span class="hs-identifier hs-var">s3</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Int -&gt; ReadS CalendarConstructor
 forall a. Read a =&gt; Int -&gt; ReadS a
 </span><span class="hs-identifier hs-var">readsPrec</span></span><span> </span><span class="annot"><span class="annottext">Int
 </span><span class="hs-number">11</span></span><span> </span><span class="annot"><span class="annottext">String
-</span><a href="#local-6989586621680329316"><span class="hs-identifier hs-var">s2</span></a></span><span class="hs-special">,</span><span> </span><span class="hs-keyword">let</span><span> </span><span id="local-6989586621680329309"><span class="annot"><span class="annottext">c3 :: Calendar
-</span><a href="#local-6989586621680329309"><span class="hs-identifier hs-var hs-var">c3</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">CalendarConstructor -&gt; Calendar
+</span><a href="#local-6989586621680406984"><span class="hs-identifier hs-var">s2</span></a></span><span class="hs-special">,</span><span> </span><span class="hs-keyword">let</span><span> </span><span id="local-6989586621680406977"><span class="annot"><span class="annottext">c3 :: Calendar
+</span><a href="#local-6989586621680406977"><span class="hs-identifier hs-var hs-var">c3</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">CalendarConstructor -&gt; Calendar
 </span><a href="QuantLib.Time.Calendar.html#unsafeCalendar"><span class="hs-identifier hs-var">unsafeCalendar</span></a></span><span> </span><span class="annot"><span class="annottext">CalendarConstructor
-</span><a href="#local-6989586621680329317"><span class="hs-identifier hs-var">p3</span></a></span><span>
-</span><span id="line-131"></span><span>         </span><span class="hs-special">,</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680329310"><span class="annot"><span class="annottext">JointCalendarRule
-</span><a href="#local-6989586621680329310"><span class="hs-identifier hs-var">rule</span></a></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680329311"><span class="annot"><span class="annottext">String
-</span><a href="#local-6989586621680329311"><span class="hs-identifier hs-var">s4</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Int -&gt; ReadS JointCalendarRule
+</span><a href="#local-6989586621680406985"><span class="hs-identifier hs-var">p3</span></a></span><span>
+</span><span id="line-131"></span><span>         </span><span class="hs-special">,</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680406978"><span class="annot"><span class="annottext">JointCalendarRule
+</span><a href="#local-6989586621680406978"><span class="hs-identifier hs-var">rule</span></a></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680406979"><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621680406979"><span class="hs-identifier hs-var">s4</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Int -&gt; ReadS JointCalendarRule
 forall a. Read a =&gt; Int -&gt; ReadS a
 </span><span class="hs-identifier hs-var">readsPrec</span></span><span> </span><span class="annot"><span class="annottext">Int
 </span><span class="hs-number">11</span></span><span> </span><span class="annot"><span class="annottext">String
-</span><a href="#local-6989586621680329318"><span class="hs-identifier hs-var">s3</span></a></span><span>
+</span><a href="#local-6989586621680406986"><span class="hs-identifier hs-var">s3</span></a></span><span>
 </span><span id="line-132"></span><span>         </span><span class="hs-special">]</span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">String
-</span><a href="#local-6989586621680329290"><span class="hs-identifier hs-var">r</span></a></span><span>
+</span><a href="#local-6989586621680406958"><span class="hs-identifier hs-var">r</span></a></span><span>
 </span><span id="line-133"></span><span>    </span><span class="annot"><span class="annottext">[(CalendarConstructor, String)]
 -&gt; [(CalendarConstructor, String)]
 -&gt; [(CalendarConstructor, String)]
@@ -495,11 +495,11 @@ forall a. [a] -&gt; [a] -&gt; [a]
 </span><span class="hs-operator hs-var">++</span></span><span> </span><span class="annot"><span class="annottext">Bool -&gt; ReadS CalendarConstructor -&gt; ReadS CalendarConstructor
 forall a. Bool -&gt; ReadS a -&gt; ReadS a
 </span><span class="hs-identifier hs-var">readParen</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Int
-</span><a href="#local-6989586621680329289"><span class="hs-identifier hs-var">d</span></a></span><span> </span><span class="annot"><span class="annottext">Int -&gt; Int -&gt; Bool
+</span><a href="#local-6989586621680406957"><span class="hs-identifier hs-var">d</span></a></span><span> </span><span class="annot"><span class="annottext">Int -&gt; Int -&gt; Bool
 forall a. Ord a =&gt; a -&gt; a -&gt; Bool
 </span><span class="hs-operator hs-var">&gt;</span></span><span> </span><span class="annot"><span class="annottext">Int
-</span><span class="hs-number">10</span></span><span class="hs-special">)</span><span> </span><span class="hs-special">(</span><span class="hs-glyph">\</span><span id="local-6989586621680329319"><span class="annot"><span class="annottext">String
-</span><a href="#local-6989586621680329319"><span class="hs-identifier hs-var">r'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><span class="hs-number">10</span></span><span class="hs-special">)</span><span> </span><span class="hs-special">(</span><span class="hs-glyph">\</span><span id="local-6989586621680406987"><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621680406987"><span class="hs-identifier hs-var">r'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
 </span><span id="line-134"></span><span>         </span><span class="hs-special">[</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Calendar
 -&gt; Calendar
 -&gt; Calendar
@@ -507,66 +507,66 @@ forall a. Ord a =&gt; a -&gt; a -&gt; Bool
 -&gt; JointCalendarRule
 -&gt; CalendarConstructor
 </span><a href="QuantLib.Internal.CalendarEnum.html#Joint4"><span class="hs-identifier hs-var">Joint4</span></a></span><span> </span><span class="annot"><span class="annottext">Calendar
-</span><a href="#local-6989586621680329320"><span class="hs-identifier hs-var">c1</span></a></span><span> </span><span class="annot"><span class="annottext">Calendar
-</span><a href="#local-6989586621680329321"><span class="hs-identifier hs-var">c2</span></a></span><span> </span><span class="annot"><span class="annottext">Calendar
-</span><a href="#local-6989586621680329322"><span class="hs-identifier hs-var">c3</span></a></span><span> </span><span class="annot"><span class="annottext">Calendar
-</span><a href="#local-6989586621680329323"><span class="hs-identifier hs-var">c4</span></a></span><span> </span><span class="annot"><span class="annottext">JointCalendarRule
-</span><a href="#local-6989586621680329324"><span class="hs-identifier hs-var">rule</span></a></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">String
-</span><a href="#local-6989586621680329325"><span class="hs-identifier hs-var">s5</span></a></span><span class="hs-special">)</span><span>
+</span><a href="#local-6989586621680406988"><span class="hs-identifier hs-var">c1</span></a></span><span> </span><span class="annot"><span class="annottext">Calendar
+</span><a href="#local-6989586621680406989"><span class="hs-identifier hs-var">c2</span></a></span><span> </span><span class="annot"><span class="annottext">Calendar
+</span><a href="#local-6989586621680406990"><span class="hs-identifier hs-var">c3</span></a></span><span> </span><span class="annot"><span class="annottext">Calendar
+</span><a href="#local-6989586621680406991"><span class="hs-identifier hs-var">c4</span></a></span><span> </span><span class="annot"><span class="annottext">JointCalendarRule
+</span><a href="#local-6989586621680406992"><span class="hs-identifier hs-var">rule</span></a></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621680406993"><span class="hs-identifier hs-var">s5</span></a></span><span class="hs-special">)</span><span>
 </span><span id="line-135"></span><span>         </span><span class="hs-glyph">|</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">String
-</span><span class="hs-string">&quot;Joint4&quot;</span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680329326"><span class="annot"><span class="annottext">String
-</span><a href="#local-6989586621680329326"><span class="hs-identifier hs-var">s0</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">ReadS String
+</span><span class="hs-string">&quot;Joint4&quot;</span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680406994"><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621680406994"><span class="hs-identifier hs-var">s0</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">ReadS String
 </span><span class="hs-identifier hs-var">lex</span></span><span> </span><span class="annot"><span class="annottext">String
-</span><a href="#local-6989586621680329319"><span class="hs-identifier hs-var">r'</span></a></span><span>
-</span><span id="line-136"></span><span>         </span><span class="hs-special">,</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680329327"><span class="annot"><span class="annottext">CalendarConstructor
-</span><a href="#local-6989586621680329327"><span class="hs-identifier hs-var">p1</span></a></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680329328"><span class="annot"><span class="annottext">String
-</span><a href="#local-6989586621680329328"><span class="hs-identifier hs-var">s1</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Int -&gt; ReadS CalendarConstructor
+</span><a href="#local-6989586621680406987"><span class="hs-identifier hs-var">r'</span></a></span><span>
+</span><span id="line-136"></span><span>         </span><span class="hs-special">,</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680406995"><span class="annot"><span class="annottext">CalendarConstructor
+</span><a href="#local-6989586621680406995"><span class="hs-identifier hs-var">p1</span></a></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680406996"><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621680406996"><span class="hs-identifier hs-var">s1</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Int -&gt; ReadS CalendarConstructor
 forall a. Read a =&gt; Int -&gt; ReadS a
 </span><span class="hs-identifier hs-var">readsPrec</span></span><span> </span><span class="annot"><span class="annottext">Int
 </span><span class="hs-number">11</span></span><span> </span><span class="annot"><span class="annottext">String
-</span><a href="#local-6989586621680329326"><span class="hs-identifier hs-var">s0</span></a></span><span class="hs-special">,</span><span> </span><span class="hs-keyword">let</span><span> </span><span id="local-6989586621680329320"><span class="annot"><span class="annottext">c1 :: Calendar
-</span><a href="#local-6989586621680329320"><span class="hs-identifier hs-var hs-var">c1</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">CalendarConstructor -&gt; Calendar
+</span><a href="#local-6989586621680406994"><span class="hs-identifier hs-var">s0</span></a></span><span class="hs-special">,</span><span> </span><span class="hs-keyword">let</span><span> </span><span id="local-6989586621680406988"><span class="annot"><span class="annottext">c1 :: Calendar
+</span><a href="#local-6989586621680406988"><span class="hs-identifier hs-var hs-var">c1</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">CalendarConstructor -&gt; Calendar
 </span><a href="QuantLib.Time.Calendar.html#unsafeCalendar"><span class="hs-identifier hs-var">unsafeCalendar</span></a></span><span> </span><span class="annot"><span class="annottext">CalendarConstructor
-</span><a href="#local-6989586621680329327"><span class="hs-identifier hs-var">p1</span></a></span><span>
-</span><span id="line-137"></span><span>         </span><span class="hs-special">,</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680329329"><span class="annot"><span class="annottext">CalendarConstructor
-</span><a href="#local-6989586621680329329"><span class="hs-identifier hs-var">p2</span></a></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680329330"><span class="annot"><span class="annottext">String
-</span><a href="#local-6989586621680329330"><span class="hs-identifier hs-var">s2</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Int -&gt; ReadS CalendarConstructor
+</span><a href="#local-6989586621680406995"><span class="hs-identifier hs-var">p1</span></a></span><span>
+</span><span id="line-137"></span><span>         </span><span class="hs-special">,</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680406997"><span class="annot"><span class="annottext">CalendarConstructor
+</span><a href="#local-6989586621680406997"><span class="hs-identifier hs-var">p2</span></a></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680406998"><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621680406998"><span class="hs-identifier hs-var">s2</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Int -&gt; ReadS CalendarConstructor
 forall a. Read a =&gt; Int -&gt; ReadS a
 </span><span class="hs-identifier hs-var">readsPrec</span></span><span> </span><span class="annot"><span class="annottext">Int
 </span><span class="hs-number">11</span></span><span> </span><span class="annot"><span class="annottext">String
-</span><a href="#local-6989586621680329328"><span class="hs-identifier hs-var">s1</span></a></span><span class="hs-special">,</span><span> </span><span class="hs-keyword">let</span><span> </span><span id="local-6989586621680329321"><span class="annot"><span class="annottext">c2 :: Calendar
-</span><a href="#local-6989586621680329321"><span class="hs-identifier hs-var hs-var">c2</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">CalendarConstructor -&gt; Calendar
+</span><a href="#local-6989586621680406996"><span class="hs-identifier hs-var">s1</span></a></span><span class="hs-special">,</span><span> </span><span class="hs-keyword">let</span><span> </span><span id="local-6989586621680406989"><span class="annot"><span class="annottext">c2 :: Calendar
+</span><a href="#local-6989586621680406989"><span class="hs-identifier hs-var hs-var">c2</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">CalendarConstructor -&gt; Calendar
 </span><a href="QuantLib.Time.Calendar.html#unsafeCalendar"><span class="hs-identifier hs-var">unsafeCalendar</span></a></span><span> </span><span class="annot"><span class="annottext">CalendarConstructor
-</span><a href="#local-6989586621680329329"><span class="hs-identifier hs-var">p2</span></a></span><span>
-</span><span id="line-138"></span><span>         </span><span class="hs-special">,</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680329331"><span class="annot"><span class="annottext">CalendarConstructor
-</span><a href="#local-6989586621680329331"><span class="hs-identifier hs-var">p3</span></a></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680329332"><span class="annot"><span class="annottext">String
-</span><a href="#local-6989586621680329332"><span class="hs-identifier hs-var">s3</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Int -&gt; ReadS CalendarConstructor
+</span><a href="#local-6989586621680406997"><span class="hs-identifier hs-var">p2</span></a></span><span>
+</span><span id="line-138"></span><span>         </span><span class="hs-special">,</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680406999"><span class="annot"><span class="annottext">CalendarConstructor
+</span><a href="#local-6989586621680406999"><span class="hs-identifier hs-var">p3</span></a></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680407000"><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621680407000"><span class="hs-identifier hs-var">s3</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Int -&gt; ReadS CalendarConstructor
 forall a. Read a =&gt; Int -&gt; ReadS a
 </span><span class="hs-identifier hs-var">readsPrec</span></span><span> </span><span class="annot"><span class="annottext">Int
 </span><span class="hs-number">11</span></span><span> </span><span class="annot"><span class="annottext">String
-</span><a href="#local-6989586621680329330"><span class="hs-identifier hs-var">s2</span></a></span><span class="hs-special">,</span><span> </span><span class="hs-keyword">let</span><span> </span><span id="local-6989586621680329322"><span class="annot"><span class="annottext">c3 :: Calendar
-</span><a href="#local-6989586621680329322"><span class="hs-identifier hs-var hs-var">c3</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">CalendarConstructor -&gt; Calendar
+</span><a href="#local-6989586621680406998"><span class="hs-identifier hs-var">s2</span></a></span><span class="hs-special">,</span><span> </span><span class="hs-keyword">let</span><span> </span><span id="local-6989586621680406990"><span class="annot"><span class="annottext">c3 :: Calendar
+</span><a href="#local-6989586621680406990"><span class="hs-identifier hs-var hs-var">c3</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">CalendarConstructor -&gt; Calendar
 </span><a href="QuantLib.Time.Calendar.html#unsafeCalendar"><span class="hs-identifier hs-var">unsafeCalendar</span></a></span><span> </span><span class="annot"><span class="annottext">CalendarConstructor
-</span><a href="#local-6989586621680329331"><span class="hs-identifier hs-var">p3</span></a></span><span>
-</span><span id="line-139"></span><span>         </span><span class="hs-special">,</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680329333"><span class="annot"><span class="annottext">CalendarConstructor
-</span><a href="#local-6989586621680329333"><span class="hs-identifier hs-var">p4</span></a></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680329334"><span class="annot"><span class="annottext">String
-</span><a href="#local-6989586621680329334"><span class="hs-identifier hs-var">s4</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Int -&gt; ReadS CalendarConstructor
+</span><a href="#local-6989586621680406999"><span class="hs-identifier hs-var">p3</span></a></span><span>
+</span><span id="line-139"></span><span>         </span><span class="hs-special">,</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680407001"><span class="annot"><span class="annottext">CalendarConstructor
+</span><a href="#local-6989586621680407001"><span class="hs-identifier hs-var">p4</span></a></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680407002"><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621680407002"><span class="hs-identifier hs-var">s4</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Int -&gt; ReadS CalendarConstructor
 forall a. Read a =&gt; Int -&gt; ReadS a
 </span><span class="hs-identifier hs-var">readsPrec</span></span><span> </span><span class="annot"><span class="annottext">Int
 </span><span class="hs-number">11</span></span><span> </span><span class="annot"><span class="annottext">String
-</span><a href="#local-6989586621680329332"><span class="hs-identifier hs-var">s3</span></a></span><span class="hs-special">,</span><span> </span><span class="hs-keyword">let</span><span> </span><span id="local-6989586621680329323"><span class="annot"><span class="annottext">c4 :: Calendar
-</span><a href="#local-6989586621680329323"><span class="hs-identifier hs-var hs-var">c4</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">CalendarConstructor -&gt; Calendar
+</span><a href="#local-6989586621680407000"><span class="hs-identifier hs-var">s3</span></a></span><span class="hs-special">,</span><span> </span><span class="hs-keyword">let</span><span> </span><span id="local-6989586621680406991"><span class="annot"><span class="annottext">c4 :: Calendar
+</span><a href="#local-6989586621680406991"><span class="hs-identifier hs-var hs-var">c4</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">CalendarConstructor -&gt; Calendar
 </span><a href="QuantLib.Time.Calendar.html#unsafeCalendar"><span class="hs-identifier hs-var">unsafeCalendar</span></a></span><span> </span><span class="annot"><span class="annottext">CalendarConstructor
-</span><a href="#local-6989586621680329333"><span class="hs-identifier hs-var">p4</span></a></span><span>
-</span><span id="line-140"></span><span>         </span><span class="hs-special">,</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680329324"><span class="annot"><span class="annottext">JointCalendarRule
-</span><a href="#local-6989586621680329324"><span class="hs-identifier hs-var">rule</span></a></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680329325"><span class="annot"><span class="annottext">String
-</span><a href="#local-6989586621680329325"><span class="hs-identifier hs-var">s5</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Int -&gt; ReadS JointCalendarRule
+</span><a href="#local-6989586621680407001"><span class="hs-identifier hs-var">p4</span></a></span><span>
+</span><span id="line-140"></span><span>         </span><span class="hs-special">,</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680406992"><span class="annot"><span class="annottext">JointCalendarRule
+</span><a href="#local-6989586621680406992"><span class="hs-identifier hs-var">rule</span></a></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680406993"><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621680406993"><span class="hs-identifier hs-var">s5</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">Int -&gt; ReadS JointCalendarRule
 forall a. Read a =&gt; Int -&gt; ReadS a
 </span><span class="hs-identifier hs-var">readsPrec</span></span><span> </span><span class="annot"><span class="annottext">Int
 </span><span class="hs-number">11</span></span><span> </span><span class="annot"><span class="annottext">String
-</span><a href="#local-6989586621680329334"><span class="hs-identifier hs-var">s4</span></a></span><span>
+</span><a href="#local-6989586621680407002"><span class="hs-identifier hs-var">s4</span></a></span><span>
 </span><span id="line-141"></span><span>         </span><span class="hs-special">]</span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">String
-</span><a href="#local-6989586621680329290"><span class="hs-identifier hs-var">r</span></a></span><span>
+</span><a href="#local-6989586621680406958"><span class="hs-identifier hs-var">r</span></a></span><span>
 </span><span id="line-142"></span><span>
 </span><span id="line-143"></span><span class="hs-comment">-- vim: set ff=unix ts=8 sts=2 sw=2 et:</span><span>
 </span><span id="line-144"></span><span>

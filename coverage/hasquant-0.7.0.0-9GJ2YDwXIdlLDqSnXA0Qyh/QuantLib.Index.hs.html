@@ -262,379 +262,383 @@ span.spaces    { background: white }
 <span class="lineno">  243 </span><span class="decl"><span class="istickedoff">qlHistoricalIndexAnalysisSkippedDates a1 =</span>
 <span class="lineno">  244 </span><span class="spaces">  </span><span class="istickedoff">withHistoricalIndexAnalysis a1 $ \a1' -&gt; </span>
 <span class="lineno">  245 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a2'1, a2'2) -&gt; </span>
-<span class="lineno">  246 </span><span class="spaces">  </span><span class="istickedoff">qlHistoricalIndexAnalysisSkippedDates'_ a1' a2'1  a2'2 &gt;&gt;</span>
-<span class="lineno">  247 </span><span class="spaces">  </span><span class="istickedoff">peekDayArray  a2'1  a2'2&gt;&gt;= \a2'' -&gt; </span>
-<span class="lineno">  248 </span><span class="spaces">  </span><span class="istickedoff">return (a2'')</span></span>
-<span class="lineno">  249 </span>
-<span class="lineno">  250 </span>
-<span class="lineno">  251 </span>qlHistoricalIndexAnalysisSkippedMessages :: (HistoricalIndexAnalysis) -&gt; IO (([String]))
-<span class="lineno">  252 </span><span class="decl"><span class="istickedoff">qlHistoricalIndexAnalysisSkippedMessages a1 =</span>
-<span class="lineno">  253 </span><span class="spaces">  </span><span class="istickedoff">withHistoricalIndexAnalysis a1 $ \a1' -&gt; </span>
-<span class="lineno">  254 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a2'1, a2'2) -&gt; </span>
-<span class="lineno">  255 </span><span class="spaces">  </span><span class="istickedoff">qlHistoricalIndexAnalysisSkippedMessages'_ a1' a2'1  a2'2 &gt;&gt;</span>
-<span class="lineno">  256 </span><span class="spaces">  </span><span class="istickedoff">peekCStringArray  a2'1  a2'2&gt;&gt;= \a2'' -&gt; </span>
-<span class="lineno">  257 </span><span class="spaces">  </span><span class="istickedoff">return <span class="nottickedoff">(a2'')</span></span></span>
-<span class="lineno">  258 </span>
-<span class="lineno">  259 </span>
-<span class="lineno">  260 </span>
-<span class="lineno">  261 </span>-- |Per-index mean of the historical relative returns actually sampled.
-<span class="lineno">  262 </span>historicalIndexAnalysisMean :: (HistoricalIndexAnalysis) -&gt; IO (([Double]))
-<span class="lineno">  263 </span><span class="decl"><span class="istickedoff">historicalIndexAnalysisMean a1 =</span>
-<span class="lineno">  264 </span><span class="spaces">  </span><span class="istickedoff">withHistoricalIndexAnalysis a1 $ \a1' -&gt; </span>
-<span class="lineno">  265 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a2'1, a2'2) -&gt; </span>
-<span class="lineno">  266 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
-<span class="lineno">  267 </span><span class="spaces">  </span><span class="istickedoff">historicalIndexAnalysisMean'_ a1' a2'1  a2'2 a3' &gt;&gt;</span>
-<span class="lineno">  268 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a2'1  a2'2&gt;&gt;= \a2'' -&gt; </span>
-<span class="lineno">  269 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
-<span class="lineno">  270 </span><span class="spaces">  </span><span class="istickedoff">return (a2'')</span></span>
-<span class="lineno">  271 </span>
-<span class="lineno">  272 </span>
-<span class="lineno">  273 </span>
-<span class="lineno">  274 </span>-- |Per-index standard deviation of the historical relative returns actually sampled.
-<span class="lineno">  275 </span>historicalIndexAnalysisStandardDeviation :: (HistoricalIndexAnalysis) -&gt; IO (([Double]))
-<span class="lineno">  276 </span><span class="decl"><span class="istickedoff">historicalIndexAnalysisStandardDeviation a1 =</span>
-<span class="lineno">  277 </span><span class="spaces">  </span><span class="istickedoff">withHistoricalIndexAnalysis a1 $ \a1' -&gt; </span>
-<span class="lineno">  278 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a2'1, a2'2) -&gt; </span>
-<span class="lineno">  279 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
-<span class="lineno">  280 </span><span class="spaces">  </span><span class="istickedoff">historicalIndexAnalysisStandardDeviation'_ a1' a2'1  a2'2 a3' &gt;&gt;</span>
-<span class="lineno">  281 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a2'1  a2'2&gt;&gt;= \a2'' -&gt; </span>
-<span class="lineno">  282 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
-<span class="lineno">  283 </span><span class="spaces">  </span><span class="istickedoff">return (a2'')</span></span>
-<span class="lineno">  284 </span>
-<span class="lineno">  285 </span>
-<span class="lineno">  286 </span>
-<span class="lineno">  287 </span>-- |Per-index skewness of the historical relative returns actually sampled.
-<span class="lineno">  288 </span>historicalIndexAnalysisSkewness :: (HistoricalIndexAnalysis) -&gt; IO (([Double]))
-<span class="lineno">  289 </span><span class="decl"><span class="istickedoff">historicalIndexAnalysisSkewness a1 =</span>
-<span class="lineno">  290 </span><span class="spaces">  </span><span class="istickedoff">withHistoricalIndexAnalysis a1 $ \a1' -&gt; </span>
-<span class="lineno">  291 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a2'1, a2'2) -&gt; </span>
-<span class="lineno">  292 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
-<span class="lineno">  293 </span><span class="spaces">  </span><span class="istickedoff">historicalIndexAnalysisSkewness'_ a1' a2'1  a2'2 a3' &gt;&gt;</span>
-<span class="lineno">  294 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a2'1  a2'2&gt;&gt;= \a2'' -&gt; </span>
-<span class="lineno">  295 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
-<span class="lineno">  296 </span><span class="spaces">  </span><span class="istickedoff">return <span class="nottickedoff">(a2'')</span></span></span>
-<span class="lineno">  297 </span>
-<span class="lineno">  298 </span>
-<span class="lineno">  299 </span>
-<span class="lineno">  300 </span>-- |Per-index (excess) kurtosis of the historical relative returns actually sampled.
-<span class="lineno">  301 </span>historicalIndexAnalysisKurtosis :: (HistoricalIndexAnalysis) -&gt; IO (([Double]))
-<span class="lineno">  302 </span><span class="decl"><span class="istickedoff">historicalIndexAnalysisKurtosis a1 =</span>
-<span class="lineno">  303 </span><span class="spaces">  </span><span class="istickedoff">withHistoricalIndexAnalysis a1 $ \a1' -&gt; </span>
-<span class="lineno">  304 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a2'1, a2'2) -&gt; </span>
-<span class="lineno">  305 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
-<span class="lineno">  306 </span><span class="spaces">  </span><span class="istickedoff">historicalIndexAnalysisKurtosis'_ a1' a2'1  a2'2 a3' &gt;&gt;</span>
-<span class="lineno">  307 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a2'1  a2'2&gt;&gt;= \a2'' -&gt; </span>
-<span class="lineno">  308 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
-<span class="lineno">  309 </span><span class="spaces">  </span><span class="istickedoff">return <span class="nottickedoff">(a2'')</span></span></span>
-<span class="lineno">  310 </span>
-<span class="lineno">  311 </span>
-<span class="lineno">  312 </span>
-<span class="lineno">  313 </span>-- |Per-index minimum of the historical relative returns actually sampled.
-<span class="lineno">  314 </span>historicalIndexAnalysisMin :: (HistoricalIndexAnalysis) -&gt; IO (([Double]))
-<span class="lineno">  315 </span><span class="decl"><span class="istickedoff">historicalIndexAnalysisMin a1 =</span>
-<span class="lineno">  316 </span><span class="spaces">  </span><span class="istickedoff">withHistoricalIndexAnalysis a1 $ \a1' -&gt; </span>
-<span class="lineno">  317 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a2'1, a2'2) -&gt; </span>
-<span class="lineno">  318 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
-<span class="lineno">  319 </span><span class="spaces">  </span><span class="istickedoff">historicalIndexAnalysisMin'_ a1' a2'1  a2'2 a3' &gt;&gt;</span>
-<span class="lineno">  320 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a2'1  a2'2&gt;&gt;= \a2'' -&gt; </span>
-<span class="lineno">  321 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
-<span class="lineno">  322 </span><span class="spaces">  </span><span class="istickedoff">return (a2'')</span></span>
-<span class="lineno">  323 </span>
-<span class="lineno">  324 </span>
-<span class="lineno">  325 </span>
-<span class="lineno">  326 </span>-- |Per-index maximum of the historical relative returns actually sampled.
-<span class="lineno">  327 </span>historicalIndexAnalysisMax :: (HistoricalIndexAnalysis) -&gt; IO (([Double]))
-<span class="lineno">  328 </span><span class="decl"><span class="istickedoff">historicalIndexAnalysisMax a1 =</span>
-<span class="lineno">  329 </span><span class="spaces">  </span><span class="istickedoff">withHistoricalIndexAnalysis a1 $ \a1' -&gt; </span>
-<span class="lineno">  330 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a2'1, a2'2) -&gt; </span>
-<span class="lineno">  331 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
-<span class="lineno">  332 </span><span class="spaces">  </span><span class="istickedoff">historicalIndexAnalysisMax'_ a1' a2'1  a2'2 a3' &gt;&gt;</span>
-<span class="lineno">  333 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a2'1  a2'2&gt;&gt;= \a2'' -&gt; </span>
-<span class="lineno">  334 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
-<span class="lineno">  335 </span><span class="spaces">  </span><span class="istickedoff">return (a2'')</span></span>
-<span class="lineno">  336 </span>
-<span class="lineno">  337 </span>
-<span class="lineno">  338 </span>
-<span class="lineno">  339 </span>-- |Per-index variance of the historical relative returns falling below the mean.
-<span class="lineno">  340 </span>historicalIndexAnalysisSemiVariance :: (HistoricalIndexAnalysis) -&gt; IO (([Double]))
-<span class="lineno">  341 </span><span class="decl"><span class="istickedoff">historicalIndexAnalysisSemiVariance a1 =</span>
-<span class="lineno">  342 </span><span class="spaces">  </span><span class="istickedoff">withHistoricalIndexAnalysis a1 $ \a1' -&gt; </span>
-<span class="lineno">  343 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a2'1, a2'2) -&gt; </span>
-<span class="lineno">  344 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
-<span class="lineno">  345 </span><span class="spaces">  </span><span class="istickedoff">historicalIndexAnalysisSemiVariance'_ a1' a2'1  a2'2 a3' &gt;&gt;</span>
-<span class="lineno">  346 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a2'1  a2'2&gt;&gt;= \a2'' -&gt; </span>
-<span class="lineno">  347 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
-<span class="lineno">  348 </span><span class="spaces">  </span><span class="istickedoff">return (a2'')</span></span>
-<span class="lineno">  349 </span>
-<span class="lineno">  350 </span>
-<span class="lineno">  351 </span>
-<span class="lineno">  352 </span>-- |Per-index square root of 'historicalIndexAnalysisSemiVariance'.
-<span class="lineno">  353 </span>historicalIndexAnalysisSemiDeviation :: (HistoricalIndexAnalysis) -&gt; IO (([Double]))
-<span class="lineno">  354 </span><span class="decl"><span class="istickedoff">historicalIndexAnalysisSemiDeviation a1 =</span>
-<span class="lineno">  355 </span><span class="spaces">  </span><span class="istickedoff">withHistoricalIndexAnalysis a1 $ \a1' -&gt; </span>
-<span class="lineno">  356 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a2'1, a2'2) -&gt; </span>
-<span class="lineno">  357 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
-<span class="lineno">  358 </span><span class="spaces">  </span><span class="istickedoff">historicalIndexAnalysisSemiDeviation'_ a1' a2'1  a2'2 a3' &gt;&gt;</span>
-<span class="lineno">  359 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a2'1  a2'2&gt;&gt;= \a2'' -&gt; </span>
-<span class="lineno">  360 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
-<span class="lineno">  361 </span><span class="spaces">  </span><span class="istickedoff">return (a2'')</span></span>
-<span class="lineno">  362 </span>
-<span class="lineno">  363 </span>
-<span class="lineno">  364 </span>
-<span class="lineno">  365 </span>-- |Per-index variance of the historical relative returns falling below zero.
-<span class="lineno">  366 </span>historicalIndexAnalysisDownsideVariance :: (HistoricalIndexAnalysis) -&gt; IO (([Double]))
-<span class="lineno">  367 </span><span class="decl"><span class="istickedoff">historicalIndexAnalysisDownsideVariance a1 =</span>
-<span class="lineno">  368 </span><span class="spaces">  </span><span class="istickedoff">withHistoricalIndexAnalysis a1 $ \a1' -&gt; </span>
-<span class="lineno">  369 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a2'1, a2'2) -&gt; </span>
-<span class="lineno">  370 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
-<span class="lineno">  371 </span><span class="spaces">  </span><span class="istickedoff">historicalIndexAnalysisDownsideVariance'_ a1' a2'1  a2'2 a3' &gt;&gt;</span>
-<span class="lineno">  372 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a2'1  a2'2&gt;&gt;= \a2'' -&gt; </span>
-<span class="lineno">  373 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
-<span class="lineno">  374 </span><span class="spaces">  </span><span class="istickedoff">return (a2'')</span></span>
-<span class="lineno">  375 </span>
-<span class="lineno">  376 </span>
-<span class="lineno">  377 </span>
-<span class="lineno">  378 </span>-- |Per-index square root of 'historicalIndexAnalysisDownsideVariance'.
-<span class="lineno">  379 </span>historicalIndexAnalysisDownsideDeviation :: (HistoricalIndexAnalysis) -&gt; IO (([Double]))
-<span class="lineno">  380 </span><span class="decl"><span class="istickedoff">historicalIndexAnalysisDownsideDeviation a1 =</span>
-<span class="lineno">  381 </span><span class="spaces">  </span><span class="istickedoff">withHistoricalIndexAnalysis a1 $ \a1' -&gt; </span>
-<span class="lineno">  382 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a2'1, a2'2) -&gt; </span>
-<span class="lineno">  383 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
-<span class="lineno">  384 </span><span class="spaces">  </span><span class="istickedoff">historicalIndexAnalysisDownsideDeviation'_ a1' a2'1  a2'2 a3' &gt;&gt;</span>
-<span class="lineno">  385 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a2'1  a2'2&gt;&gt;= \a2'' -&gt; </span>
-<span class="lineno">  386 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
-<span class="lineno">  387 </span><span class="spaces">  </span><span class="istickedoff">return (a2'')</span></span>
-<span class="lineno">  388 </span>
-<span class="lineno">  389 </span>
-<span class="lineno">  390 </span>
-<span class="lineno">  391 </span>-- |Per-index empirical @y@-th percentile of the historical relative returns actually sampled;
-<span class="lineno">  392 </span>-- @y@ must lie in @[0.9, 1.0)@.
-<span class="lineno">  393 </span>historicalIndexAnalysisPercentile :: (HistoricalIndexAnalysis) -&gt; (Double) -- ^y
-<span class="lineno">  394 </span> -&gt; IO (([Double]))
-<span class="lineno">  395 </span><span class="decl"><span class="istickedoff">historicalIndexAnalysisPercentile a1 a2 =</span>
-<span class="lineno">  396 </span><span class="spaces">  </span><span class="istickedoff">withHistoricalIndexAnalysis a1 $ \a1' -&gt; </span>
-<span class="lineno">  397 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = realToFrac a2} in </span>
-<span class="lineno">  398 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a3'1, a3'2) -&gt; </span>
-<span class="lineno">  399 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a4' -&gt; </span>
-<span class="lineno">  400 </span><span class="spaces">  </span><span class="istickedoff">historicalIndexAnalysisPercentile'_ a1' a2' a3'1  a3'2 a4' &gt;&gt;</span>
-<span class="lineno">  401 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a3'1  a3'2&gt;&gt;= \a3'' -&gt; </span>
-<span class="lineno">  402 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a4'&gt;&gt;</span>
-<span class="lineno">  403 </span><span class="spaces">  </span><span class="istickedoff">return <span class="nottickedoff">(a3'')</span></span></span>
-<span class="lineno">  404 </span>
-<span class="lineno">  405 </span>
-<span class="lineno">  406 </span>
-<span class="lineno">  407 </span>-- |Per-index @y@-th percentile assuming the historical relative returns are gaussian; @y@ must lie in @[0.9, 1.0)@.
-<span class="lineno">  408 </span>historicalIndexAnalysisGaussianPercentile :: (HistoricalIndexAnalysis) -&gt; (Double) -- ^y
-<span class="lineno">  409 </span> -&gt; IO (([Double]))
-<span class="lineno">  410 </span><span class="decl"><span class="istickedoff">historicalIndexAnalysisGaussianPercentile a1 a2 =</span>
-<span class="lineno">  411 </span><span class="spaces">  </span><span class="istickedoff">withHistoricalIndexAnalysis a1 $ \a1' -&gt; </span>
-<span class="lineno">  412 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = realToFrac a2} in </span>
-<span class="lineno">  413 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a3'1, a3'2) -&gt; </span>
-<span class="lineno">  414 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a4' -&gt; </span>
-<span class="lineno">  415 </span><span class="spaces">  </span><span class="istickedoff">historicalIndexAnalysisGaussianPercentile'_ a1' a2' a3'1  a3'2 a4' &gt;&gt;</span>
-<span class="lineno">  416 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a3'1  a3'2&gt;&gt;= \a3'' -&gt; </span>
-<span class="lineno">  417 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a4'&gt;&gt;</span>
-<span class="lineno">  418 </span><span class="spaces">  </span><span class="istickedoff">return <span class="nottickedoff">(a3'')</span></span></span>
-<span class="lineno">  419 </span>
-<span class="lineno">  420 </span>
-<span class="lineno">  421 </span>
-<span class="lineno">  422 </span>-- |Per-index empirical value-at-risk at the given @centile@, which must lie in @[0.9, 1.0)@.
-<span class="lineno">  423 </span>historicalIndexAnalysisValueAtRisk :: (HistoricalIndexAnalysis) -&gt; (Double) -- ^centile
-<span class="lineno">  424 </span> -&gt; IO (([Double]))
-<span class="lineno">  425 </span><span class="decl"><span class="istickedoff">historicalIndexAnalysisValueAtRisk a1 a2 =</span>
-<span class="lineno">  426 </span><span class="spaces">  </span><span class="istickedoff">withHistoricalIndexAnalysis a1 $ \a1' -&gt; </span>
-<span class="lineno">  427 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = realToFrac a2} in </span>
-<span class="lineno">  428 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a3'1, a3'2) -&gt; </span>
-<span class="lineno">  429 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a4' -&gt; </span>
-<span class="lineno">  430 </span><span class="spaces">  </span><span class="istickedoff">historicalIndexAnalysisValueAtRisk'_ a1' a2' a3'1  a3'2 a4' &gt;&gt;</span>
-<span class="lineno">  431 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a3'1  a3'2&gt;&gt;= \a3'' -&gt; </span>
-<span class="lineno">  432 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a4'&gt;&gt;</span>
-<span class="lineno">  433 </span><span class="spaces">  </span><span class="istickedoff">return (a3'')</span></span>
-<span class="lineno">  434 </span>
-<span class="lineno">  435 </span>
-<span class="lineno">  436 </span>
-<span class="lineno">  437 </span>-- |Per-index value-at-risk at the given @centile@ assuming the historical relative returns are gaussian; @centile@ must lie in @[0.9, 1.0)@.
-<span class="lineno">  438 </span>historicalIndexAnalysisGaussianValueAtRisk :: (HistoricalIndexAnalysis) -&gt; (Double) -- ^centile
-<span class="lineno">  439 </span> -&gt; IO (([Double]))
-<span class="lineno">  440 </span><span class="decl"><span class="istickedoff">historicalIndexAnalysisGaussianValueAtRisk a1 a2 =</span>
-<span class="lineno">  441 </span><span class="spaces">  </span><span class="istickedoff">withHistoricalIndexAnalysis a1 $ \a1' -&gt; </span>
-<span class="lineno">  442 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = realToFrac a2} in </span>
-<span class="lineno">  443 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a3'1, a3'2) -&gt; </span>
-<span class="lineno">  444 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a4' -&gt; </span>
-<span class="lineno">  445 </span><span class="spaces">  </span><span class="istickedoff">historicalIndexAnalysisGaussianValueAtRisk'_ a1' a2' a3'1  a3'2 a4' &gt;&gt;</span>
-<span class="lineno">  446 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a3'1  a3'2&gt;&gt;= \a3'' -&gt; </span>
-<span class="lineno">  447 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a4'&gt;&gt;</span>
-<span class="lineno">  448 </span><span class="spaces">  </span><span class="istickedoff">return (a3'')</span></span>
-<span class="lineno">  449 </span>
-<span class="lineno">  450 </span>
-<span class="lineno">  451 </span>
-<span class="lineno">  452 </span>-- |Per-index empirical expected shortfall at the given @centile@, which must lie in @[0.9, 1.0)@.
-<span class="lineno">  453 </span>-- Throws if no sampled return falls below the value-at-risk threshold.
-<span class="lineno">  454 </span>historicalIndexAnalysisExpectedShortfall :: (HistoricalIndexAnalysis) -&gt; (Double) -- ^centile
-<span class="lineno">  455 </span> -&gt; IO (([Double]))
-<span class="lineno">  456 </span><span class="decl"><span class="istickedoff">historicalIndexAnalysisExpectedShortfall a1 a2 =</span>
-<span class="lineno">  457 </span><span class="spaces">  </span><span class="istickedoff">withHistoricalIndexAnalysis a1 $ \a1' -&gt; </span>
-<span class="lineno">  458 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = realToFrac a2} in </span>
-<span class="lineno">  459 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a3'1, a3'2) -&gt; </span>
-<span class="lineno">  460 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a4' -&gt; </span>
-<span class="lineno">  461 </span><span class="spaces">  </span><span class="istickedoff">historicalIndexAnalysisExpectedShortfall'_ a1' a2' a3'1  a3'2 a4' &gt;&gt;</span>
-<span class="lineno">  462 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a3'1  a3'2&gt;&gt;= \a3'' -&gt; </span>
-<span class="lineno">  463 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a4'&gt;&gt;</span>
-<span class="lineno">  464 </span><span class="spaces">  </span><span class="istickedoff">return (a3'')</span></span>
-<span class="lineno">  465 </span>
-<span class="lineno">  466 </span>
-<span class="lineno">  467 </span>
-<span class="lineno">  468 </span>-- |Per-index expected shortfall at the given @centile@ assuming the historical relative returns
-<span class="lineno">  469 </span>-- are gaussian; @centile@ must lie in @[0.9, 1.0)@.
-<span class="lineno">  470 </span>historicalIndexAnalysisGaussianExpectedShortfall :: (HistoricalIndexAnalysis) -&gt; (Double) -- ^centile
-<span class="lineno">  471 </span> -&gt; IO (([Double]))
-<span class="lineno">  472 </span><span class="decl"><span class="istickedoff">historicalIndexAnalysisGaussianExpectedShortfall a1 a2 =</span>
-<span class="lineno">  473 </span><span class="spaces">  </span><span class="istickedoff">withHistoricalIndexAnalysis a1 $ \a1' -&gt; </span>
-<span class="lineno">  474 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = realToFrac a2} in </span>
-<span class="lineno">  475 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a3'1, a3'2) -&gt; </span>
-<span class="lineno">  476 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a4' -&gt; </span>
-<span class="lineno">  477 </span><span class="spaces">  </span><span class="istickedoff">historicalIndexAnalysisGaussianExpectedShortfall'_ a1' a2' a3'1  a3'2 a4' &gt;&gt;</span>
-<span class="lineno">  478 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a3'1  a3'2&gt;&gt;= \a3'' -&gt; </span>
-<span class="lineno">  479 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a4'&gt;&gt;</span>
-<span class="lineno">  480 </span><span class="spaces">  </span><span class="istickedoff">return (a3'')</span></span>
-<span class="lineno">  481 </span>
-<span class="lineno">  482 </span>
-<span class="lineno">  483 </span>
-<span class="lineno">  484 </span>toMatrixDouble :: (Word, Word, [Double]) -&gt; Matrix Double
-<span class="lineno">  485 </span><span class="decl"><span class="istickedoff">toMatrixDouble (r, c, d) = Matrix r c d</span></span>
+<span class="lineno">  246 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
+<span class="lineno">  247 </span><span class="spaces">  </span><span class="istickedoff">qlHistoricalIndexAnalysisSkippedDates'_ a1' a2'1  a2'2 a3' &gt;&gt;</span>
+<span class="lineno">  248 </span><span class="spaces">  </span><span class="istickedoff">peekDayArray  a2'1  a2'2&gt;&gt;= \a2'' -&gt; </span>
+<span class="lineno">  249 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
+<span class="lineno">  250 </span><span class="spaces">  </span><span class="istickedoff">return (a2'')</span></span>
+<span class="lineno">  251 </span>
+<span class="lineno">  252 </span>
+<span class="lineno">  253 </span>qlHistoricalIndexAnalysisSkippedMessages :: (HistoricalIndexAnalysis) -&gt; IO (([String]))
+<span class="lineno">  254 </span><span class="decl"><span class="istickedoff">qlHistoricalIndexAnalysisSkippedMessages a1 =</span>
+<span class="lineno">  255 </span><span class="spaces">  </span><span class="istickedoff">withHistoricalIndexAnalysis a1 $ \a1' -&gt; </span>
+<span class="lineno">  256 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a2'1, a2'2) -&gt; </span>
+<span class="lineno">  257 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
+<span class="lineno">  258 </span><span class="spaces">  </span><span class="istickedoff">qlHistoricalIndexAnalysisSkippedMessages'_ a1' a2'1  a2'2 a3' &gt;&gt;</span>
+<span class="lineno">  259 </span><span class="spaces">  </span><span class="istickedoff">peekCStringArray  a2'1  a2'2&gt;&gt;= \a2'' -&gt; </span>
+<span class="lineno">  260 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
+<span class="lineno">  261 </span><span class="spaces">  </span><span class="istickedoff">return <span class="nottickedoff">(a2'')</span></span></span>
+<span class="lineno">  262 </span>
+<span class="lineno">  263 </span>
+<span class="lineno">  264 </span>
+<span class="lineno">  265 </span>-- |Per-index mean of the historical relative returns actually sampled.
+<span class="lineno">  266 </span>historicalIndexAnalysisMean :: (HistoricalIndexAnalysis) -&gt; IO (([Double]))
+<span class="lineno">  267 </span><span class="decl"><span class="istickedoff">historicalIndexAnalysisMean a1 =</span>
+<span class="lineno">  268 </span><span class="spaces">  </span><span class="istickedoff">withHistoricalIndexAnalysis a1 $ \a1' -&gt; </span>
+<span class="lineno">  269 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a2'1, a2'2) -&gt; </span>
+<span class="lineno">  270 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
+<span class="lineno">  271 </span><span class="spaces">  </span><span class="istickedoff">historicalIndexAnalysisMean'_ a1' a2'1  a2'2 a3' &gt;&gt;</span>
+<span class="lineno">  272 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a2'1  a2'2&gt;&gt;= \a2'' -&gt; </span>
+<span class="lineno">  273 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
+<span class="lineno">  274 </span><span class="spaces">  </span><span class="istickedoff">return (a2'')</span></span>
+<span class="lineno">  275 </span>
+<span class="lineno">  276 </span>
+<span class="lineno">  277 </span>
+<span class="lineno">  278 </span>-- |Per-index standard deviation of the historical relative returns actually sampled.
+<span class="lineno">  279 </span>historicalIndexAnalysisStandardDeviation :: (HistoricalIndexAnalysis) -&gt; IO (([Double]))
+<span class="lineno">  280 </span><span class="decl"><span class="istickedoff">historicalIndexAnalysisStandardDeviation a1 =</span>
+<span class="lineno">  281 </span><span class="spaces">  </span><span class="istickedoff">withHistoricalIndexAnalysis a1 $ \a1' -&gt; </span>
+<span class="lineno">  282 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a2'1, a2'2) -&gt; </span>
+<span class="lineno">  283 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
+<span class="lineno">  284 </span><span class="spaces">  </span><span class="istickedoff">historicalIndexAnalysisStandardDeviation'_ a1' a2'1  a2'2 a3' &gt;&gt;</span>
+<span class="lineno">  285 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a2'1  a2'2&gt;&gt;= \a2'' -&gt; </span>
+<span class="lineno">  286 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
+<span class="lineno">  287 </span><span class="spaces">  </span><span class="istickedoff">return (a2'')</span></span>
+<span class="lineno">  288 </span>
+<span class="lineno">  289 </span>
+<span class="lineno">  290 </span>
+<span class="lineno">  291 </span>-- |Per-index skewness of the historical relative returns actually sampled.
+<span class="lineno">  292 </span>historicalIndexAnalysisSkewness :: (HistoricalIndexAnalysis) -&gt; IO (([Double]))
+<span class="lineno">  293 </span><span class="decl"><span class="istickedoff">historicalIndexAnalysisSkewness a1 =</span>
+<span class="lineno">  294 </span><span class="spaces">  </span><span class="istickedoff">withHistoricalIndexAnalysis a1 $ \a1' -&gt; </span>
+<span class="lineno">  295 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a2'1, a2'2) -&gt; </span>
+<span class="lineno">  296 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
+<span class="lineno">  297 </span><span class="spaces">  </span><span class="istickedoff">historicalIndexAnalysisSkewness'_ a1' a2'1  a2'2 a3' &gt;&gt;</span>
+<span class="lineno">  298 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a2'1  a2'2&gt;&gt;= \a2'' -&gt; </span>
+<span class="lineno">  299 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
+<span class="lineno">  300 </span><span class="spaces">  </span><span class="istickedoff">return <span class="nottickedoff">(a2'')</span></span></span>
+<span class="lineno">  301 </span>
+<span class="lineno">  302 </span>
+<span class="lineno">  303 </span>
+<span class="lineno">  304 </span>-- |Per-index (excess) kurtosis of the historical relative returns actually sampled.
+<span class="lineno">  305 </span>historicalIndexAnalysisKurtosis :: (HistoricalIndexAnalysis) -&gt; IO (([Double]))
+<span class="lineno">  306 </span><span class="decl"><span class="istickedoff">historicalIndexAnalysisKurtosis a1 =</span>
+<span class="lineno">  307 </span><span class="spaces">  </span><span class="istickedoff">withHistoricalIndexAnalysis a1 $ \a1' -&gt; </span>
+<span class="lineno">  308 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a2'1, a2'2) -&gt; </span>
+<span class="lineno">  309 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
+<span class="lineno">  310 </span><span class="spaces">  </span><span class="istickedoff">historicalIndexAnalysisKurtosis'_ a1' a2'1  a2'2 a3' &gt;&gt;</span>
+<span class="lineno">  311 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a2'1  a2'2&gt;&gt;= \a2'' -&gt; </span>
+<span class="lineno">  312 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
+<span class="lineno">  313 </span><span class="spaces">  </span><span class="istickedoff">return <span class="nottickedoff">(a2'')</span></span></span>
+<span class="lineno">  314 </span>
+<span class="lineno">  315 </span>
+<span class="lineno">  316 </span>
+<span class="lineno">  317 </span>-- |Per-index minimum of the historical relative returns actually sampled.
+<span class="lineno">  318 </span>historicalIndexAnalysisMin :: (HistoricalIndexAnalysis) -&gt; IO (([Double]))
+<span class="lineno">  319 </span><span class="decl"><span class="istickedoff">historicalIndexAnalysisMin a1 =</span>
+<span class="lineno">  320 </span><span class="spaces">  </span><span class="istickedoff">withHistoricalIndexAnalysis a1 $ \a1' -&gt; </span>
+<span class="lineno">  321 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a2'1, a2'2) -&gt; </span>
+<span class="lineno">  322 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
+<span class="lineno">  323 </span><span class="spaces">  </span><span class="istickedoff">historicalIndexAnalysisMin'_ a1' a2'1  a2'2 a3' &gt;&gt;</span>
+<span class="lineno">  324 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a2'1  a2'2&gt;&gt;= \a2'' -&gt; </span>
+<span class="lineno">  325 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
+<span class="lineno">  326 </span><span class="spaces">  </span><span class="istickedoff">return (a2'')</span></span>
+<span class="lineno">  327 </span>
+<span class="lineno">  328 </span>
+<span class="lineno">  329 </span>
+<span class="lineno">  330 </span>-- |Per-index maximum of the historical relative returns actually sampled.
+<span class="lineno">  331 </span>historicalIndexAnalysisMax :: (HistoricalIndexAnalysis) -&gt; IO (([Double]))
+<span class="lineno">  332 </span><span class="decl"><span class="istickedoff">historicalIndexAnalysisMax a1 =</span>
+<span class="lineno">  333 </span><span class="spaces">  </span><span class="istickedoff">withHistoricalIndexAnalysis a1 $ \a1' -&gt; </span>
+<span class="lineno">  334 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a2'1, a2'2) -&gt; </span>
+<span class="lineno">  335 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
+<span class="lineno">  336 </span><span class="spaces">  </span><span class="istickedoff">historicalIndexAnalysisMax'_ a1' a2'1  a2'2 a3' &gt;&gt;</span>
+<span class="lineno">  337 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a2'1  a2'2&gt;&gt;= \a2'' -&gt; </span>
+<span class="lineno">  338 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
+<span class="lineno">  339 </span><span class="spaces">  </span><span class="istickedoff">return (a2'')</span></span>
+<span class="lineno">  340 </span>
+<span class="lineno">  341 </span>
+<span class="lineno">  342 </span>
+<span class="lineno">  343 </span>-- |Per-index variance of the historical relative returns falling below the mean.
+<span class="lineno">  344 </span>historicalIndexAnalysisSemiVariance :: (HistoricalIndexAnalysis) -&gt; IO (([Double]))
+<span class="lineno">  345 </span><span class="decl"><span class="istickedoff">historicalIndexAnalysisSemiVariance a1 =</span>
+<span class="lineno">  346 </span><span class="spaces">  </span><span class="istickedoff">withHistoricalIndexAnalysis a1 $ \a1' -&gt; </span>
+<span class="lineno">  347 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a2'1, a2'2) -&gt; </span>
+<span class="lineno">  348 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
+<span class="lineno">  349 </span><span class="spaces">  </span><span class="istickedoff">historicalIndexAnalysisSemiVariance'_ a1' a2'1  a2'2 a3' &gt;&gt;</span>
+<span class="lineno">  350 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a2'1  a2'2&gt;&gt;= \a2'' -&gt; </span>
+<span class="lineno">  351 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
+<span class="lineno">  352 </span><span class="spaces">  </span><span class="istickedoff">return (a2'')</span></span>
+<span class="lineno">  353 </span>
+<span class="lineno">  354 </span>
+<span class="lineno">  355 </span>
+<span class="lineno">  356 </span>-- |Per-index square root of 'historicalIndexAnalysisSemiVariance'.
+<span class="lineno">  357 </span>historicalIndexAnalysisSemiDeviation :: (HistoricalIndexAnalysis) -&gt; IO (([Double]))
+<span class="lineno">  358 </span><span class="decl"><span class="istickedoff">historicalIndexAnalysisSemiDeviation a1 =</span>
+<span class="lineno">  359 </span><span class="spaces">  </span><span class="istickedoff">withHistoricalIndexAnalysis a1 $ \a1' -&gt; </span>
+<span class="lineno">  360 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a2'1, a2'2) -&gt; </span>
+<span class="lineno">  361 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
+<span class="lineno">  362 </span><span class="spaces">  </span><span class="istickedoff">historicalIndexAnalysisSemiDeviation'_ a1' a2'1  a2'2 a3' &gt;&gt;</span>
+<span class="lineno">  363 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a2'1  a2'2&gt;&gt;= \a2'' -&gt; </span>
+<span class="lineno">  364 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
+<span class="lineno">  365 </span><span class="spaces">  </span><span class="istickedoff">return (a2'')</span></span>
+<span class="lineno">  366 </span>
+<span class="lineno">  367 </span>
+<span class="lineno">  368 </span>
+<span class="lineno">  369 </span>-- |Per-index variance of the historical relative returns falling below zero.
+<span class="lineno">  370 </span>historicalIndexAnalysisDownsideVariance :: (HistoricalIndexAnalysis) -&gt; IO (([Double]))
+<span class="lineno">  371 </span><span class="decl"><span class="istickedoff">historicalIndexAnalysisDownsideVariance a1 =</span>
+<span class="lineno">  372 </span><span class="spaces">  </span><span class="istickedoff">withHistoricalIndexAnalysis a1 $ \a1' -&gt; </span>
+<span class="lineno">  373 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a2'1, a2'2) -&gt; </span>
+<span class="lineno">  374 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
+<span class="lineno">  375 </span><span class="spaces">  </span><span class="istickedoff">historicalIndexAnalysisDownsideVariance'_ a1' a2'1  a2'2 a3' &gt;&gt;</span>
+<span class="lineno">  376 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a2'1  a2'2&gt;&gt;= \a2'' -&gt; </span>
+<span class="lineno">  377 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
+<span class="lineno">  378 </span><span class="spaces">  </span><span class="istickedoff">return (a2'')</span></span>
+<span class="lineno">  379 </span>
+<span class="lineno">  380 </span>
+<span class="lineno">  381 </span>
+<span class="lineno">  382 </span>-- |Per-index square root of 'historicalIndexAnalysisDownsideVariance'.
+<span class="lineno">  383 </span>historicalIndexAnalysisDownsideDeviation :: (HistoricalIndexAnalysis) -&gt; IO (([Double]))
+<span class="lineno">  384 </span><span class="decl"><span class="istickedoff">historicalIndexAnalysisDownsideDeviation a1 =</span>
+<span class="lineno">  385 </span><span class="spaces">  </span><span class="istickedoff">withHistoricalIndexAnalysis a1 $ \a1' -&gt; </span>
+<span class="lineno">  386 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a2'1, a2'2) -&gt; </span>
+<span class="lineno">  387 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
+<span class="lineno">  388 </span><span class="spaces">  </span><span class="istickedoff">historicalIndexAnalysisDownsideDeviation'_ a1' a2'1  a2'2 a3' &gt;&gt;</span>
+<span class="lineno">  389 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a2'1  a2'2&gt;&gt;= \a2'' -&gt; </span>
+<span class="lineno">  390 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
+<span class="lineno">  391 </span><span class="spaces">  </span><span class="istickedoff">return (a2'')</span></span>
+<span class="lineno">  392 </span>
+<span class="lineno">  393 </span>
+<span class="lineno">  394 </span>
+<span class="lineno">  395 </span>-- |Per-index empirical @y@-th percentile of the historical relative returns actually sampled;
+<span class="lineno">  396 </span>-- @y@ must lie in @[0.9, 1.0)@.
+<span class="lineno">  397 </span>historicalIndexAnalysisPercentile :: (HistoricalIndexAnalysis) -&gt; (Double) -- ^y
+<span class="lineno">  398 </span> -&gt; IO (([Double]))
+<span class="lineno">  399 </span><span class="decl"><span class="istickedoff">historicalIndexAnalysisPercentile a1 a2 =</span>
+<span class="lineno">  400 </span><span class="spaces">  </span><span class="istickedoff">withHistoricalIndexAnalysis a1 $ \a1' -&gt; </span>
+<span class="lineno">  401 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = realToFrac a2} in </span>
+<span class="lineno">  402 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a3'1, a3'2) -&gt; </span>
+<span class="lineno">  403 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a4' -&gt; </span>
+<span class="lineno">  404 </span><span class="spaces">  </span><span class="istickedoff">historicalIndexAnalysisPercentile'_ a1' a2' a3'1  a3'2 a4' &gt;&gt;</span>
+<span class="lineno">  405 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a3'1  a3'2&gt;&gt;= \a3'' -&gt; </span>
+<span class="lineno">  406 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a4'&gt;&gt;</span>
+<span class="lineno">  407 </span><span class="spaces">  </span><span class="istickedoff">return <span class="nottickedoff">(a3'')</span></span></span>
+<span class="lineno">  408 </span>
+<span class="lineno">  409 </span>
+<span class="lineno">  410 </span>
+<span class="lineno">  411 </span>-- |Per-index @y@-th percentile assuming the historical relative returns are gaussian; @y@ must lie in @[0.9, 1.0)@.
+<span class="lineno">  412 </span>historicalIndexAnalysisGaussianPercentile :: (HistoricalIndexAnalysis) -&gt; (Double) -- ^y
+<span class="lineno">  413 </span> -&gt; IO (([Double]))
+<span class="lineno">  414 </span><span class="decl"><span class="istickedoff">historicalIndexAnalysisGaussianPercentile a1 a2 =</span>
+<span class="lineno">  415 </span><span class="spaces">  </span><span class="istickedoff">withHistoricalIndexAnalysis a1 $ \a1' -&gt; </span>
+<span class="lineno">  416 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = realToFrac a2} in </span>
+<span class="lineno">  417 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a3'1, a3'2) -&gt; </span>
+<span class="lineno">  418 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a4' -&gt; </span>
+<span class="lineno">  419 </span><span class="spaces">  </span><span class="istickedoff">historicalIndexAnalysisGaussianPercentile'_ a1' a2' a3'1  a3'2 a4' &gt;&gt;</span>
+<span class="lineno">  420 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a3'1  a3'2&gt;&gt;= \a3'' -&gt; </span>
+<span class="lineno">  421 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a4'&gt;&gt;</span>
+<span class="lineno">  422 </span><span class="spaces">  </span><span class="istickedoff">return <span class="nottickedoff">(a3'')</span></span></span>
+<span class="lineno">  423 </span>
+<span class="lineno">  424 </span>
+<span class="lineno">  425 </span>
+<span class="lineno">  426 </span>-- |Per-index empirical value-at-risk at the given @centile@, which must lie in @[0.9, 1.0)@.
+<span class="lineno">  427 </span>historicalIndexAnalysisValueAtRisk :: (HistoricalIndexAnalysis) -&gt; (Double) -- ^centile
+<span class="lineno">  428 </span> -&gt; IO (([Double]))
+<span class="lineno">  429 </span><span class="decl"><span class="istickedoff">historicalIndexAnalysisValueAtRisk a1 a2 =</span>
+<span class="lineno">  430 </span><span class="spaces">  </span><span class="istickedoff">withHistoricalIndexAnalysis a1 $ \a1' -&gt; </span>
+<span class="lineno">  431 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = realToFrac a2} in </span>
+<span class="lineno">  432 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a3'1, a3'2) -&gt; </span>
+<span class="lineno">  433 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a4' -&gt; </span>
+<span class="lineno">  434 </span><span class="spaces">  </span><span class="istickedoff">historicalIndexAnalysisValueAtRisk'_ a1' a2' a3'1  a3'2 a4' &gt;&gt;</span>
+<span class="lineno">  435 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a3'1  a3'2&gt;&gt;= \a3'' -&gt; </span>
+<span class="lineno">  436 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a4'&gt;&gt;</span>
+<span class="lineno">  437 </span><span class="spaces">  </span><span class="istickedoff">return (a3'')</span></span>
+<span class="lineno">  438 </span>
+<span class="lineno">  439 </span>
+<span class="lineno">  440 </span>
+<span class="lineno">  441 </span>-- |Per-index value-at-risk at the given @centile@ assuming the historical relative returns are gaussian; @centile@ must lie in @[0.9, 1.0)@.
+<span class="lineno">  442 </span>historicalIndexAnalysisGaussianValueAtRisk :: (HistoricalIndexAnalysis) -&gt; (Double) -- ^centile
+<span class="lineno">  443 </span> -&gt; IO (([Double]))
+<span class="lineno">  444 </span><span class="decl"><span class="istickedoff">historicalIndexAnalysisGaussianValueAtRisk a1 a2 =</span>
+<span class="lineno">  445 </span><span class="spaces">  </span><span class="istickedoff">withHistoricalIndexAnalysis a1 $ \a1' -&gt; </span>
+<span class="lineno">  446 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = realToFrac a2} in </span>
+<span class="lineno">  447 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a3'1, a3'2) -&gt; </span>
+<span class="lineno">  448 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a4' -&gt; </span>
+<span class="lineno">  449 </span><span class="spaces">  </span><span class="istickedoff">historicalIndexAnalysisGaussianValueAtRisk'_ a1' a2' a3'1  a3'2 a4' &gt;&gt;</span>
+<span class="lineno">  450 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a3'1  a3'2&gt;&gt;= \a3'' -&gt; </span>
+<span class="lineno">  451 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a4'&gt;&gt;</span>
+<span class="lineno">  452 </span><span class="spaces">  </span><span class="istickedoff">return (a3'')</span></span>
+<span class="lineno">  453 </span>
+<span class="lineno">  454 </span>
+<span class="lineno">  455 </span>
+<span class="lineno">  456 </span>-- |Per-index empirical expected shortfall at the given @centile@, which must lie in @[0.9, 1.0)@.
+<span class="lineno">  457 </span>-- Throws if no sampled return falls below the value-at-risk threshold.
+<span class="lineno">  458 </span>historicalIndexAnalysisExpectedShortfall :: (HistoricalIndexAnalysis) -&gt; (Double) -- ^centile
+<span class="lineno">  459 </span> -&gt; IO (([Double]))
+<span class="lineno">  460 </span><span class="decl"><span class="istickedoff">historicalIndexAnalysisExpectedShortfall a1 a2 =</span>
+<span class="lineno">  461 </span><span class="spaces">  </span><span class="istickedoff">withHistoricalIndexAnalysis a1 $ \a1' -&gt; </span>
+<span class="lineno">  462 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = realToFrac a2} in </span>
+<span class="lineno">  463 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a3'1, a3'2) -&gt; </span>
+<span class="lineno">  464 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a4' -&gt; </span>
+<span class="lineno">  465 </span><span class="spaces">  </span><span class="istickedoff">historicalIndexAnalysisExpectedShortfall'_ a1' a2' a3'1  a3'2 a4' &gt;&gt;</span>
+<span class="lineno">  466 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a3'1  a3'2&gt;&gt;= \a3'' -&gt; </span>
+<span class="lineno">  467 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a4'&gt;&gt;</span>
+<span class="lineno">  468 </span><span class="spaces">  </span><span class="istickedoff">return (a3'')</span></span>
+<span class="lineno">  469 </span>
+<span class="lineno">  470 </span>
+<span class="lineno">  471 </span>
+<span class="lineno">  472 </span>-- |Per-index expected shortfall at the given @centile@ assuming the historical relative returns
+<span class="lineno">  473 </span>-- are gaussian; @centile@ must lie in @[0.9, 1.0)@.
+<span class="lineno">  474 </span>historicalIndexAnalysisGaussianExpectedShortfall :: (HistoricalIndexAnalysis) -&gt; (Double) -- ^centile
+<span class="lineno">  475 </span> -&gt; IO (([Double]))
+<span class="lineno">  476 </span><span class="decl"><span class="istickedoff">historicalIndexAnalysisGaussianExpectedShortfall a1 a2 =</span>
+<span class="lineno">  477 </span><span class="spaces">  </span><span class="istickedoff">withHistoricalIndexAnalysis a1 $ \a1' -&gt; </span>
+<span class="lineno">  478 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = realToFrac a2} in </span>
+<span class="lineno">  479 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a3'1, a3'2) -&gt; </span>
+<span class="lineno">  480 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a4' -&gt; </span>
+<span class="lineno">  481 </span><span class="spaces">  </span><span class="istickedoff">historicalIndexAnalysisGaussianExpectedShortfall'_ a1' a2' a3'1  a3'2 a4' &gt;&gt;</span>
+<span class="lineno">  482 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a3'1  a3'2&gt;&gt;= \a3'' -&gt; </span>
+<span class="lineno">  483 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a4'&gt;&gt;</span>
+<span class="lineno">  484 </span><span class="spaces">  </span><span class="istickedoff">return (a3'')</span></span>
+<span class="lineno">  485 </span>
 <span class="lineno">  486 </span>
-<span class="lineno">  487 </span>-- |Covariance matrix of the historical relative returns across indexes.
-<span class="lineno">  488 </span>historicalIndexAnalysisCovariance :: HistoricalIndexAnalysis -&gt; IO (Matrix Double)
-<span class="lineno">  489 </span><span class="decl"><span class="istickedoff">historicalIndexAnalysisCovariance hra = toMatrixDouble &lt;$&gt; qlHistoricalIndexAnalysisCovariance hra</span></span>
-<span class="lineno">  490 </span>qlHistoricalIndexAnalysisCovariance :: (HistoricalIndexAnalysis) -&gt; IO ((Word), (Word), ([Double]))
-<span class="lineno">  491 </span><span class="decl"><span class="istickedoff">qlHistoricalIndexAnalysisCovariance a1 =</span>
-<span class="lineno">  492 </span><span class="spaces">  </span><span class="istickedoff">withHistoricalIndexAnalysis a1 $ \a1' -&gt; </span>
-<span class="lineno">  493 </span><span class="spaces">  </span><span class="istickedoff">prePtr $ \a2' -&gt; </span>
-<span class="lineno">  494 </span><span class="spaces">  </span><span class="istickedoff">prePtr $ \a3' -&gt; </span>
-<span class="lineno">  495 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a4'1, a4'2) -&gt; </span>
-<span class="lineno">  496 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a5' -&gt; </span>
-<span class="lineno">  497 </span><span class="spaces">  </span><span class="istickedoff">qlHistoricalIndexAnalysisCovariance'_ a1' a2' a3' a4'1  a4'2 a5' &gt;&gt;</span>
-<span class="lineno">  498 </span><span class="spaces">  </span><span class="istickedoff">peekWord  a2'&gt;&gt;= \a2'' -&gt; </span>
-<span class="lineno">  499 </span><span class="spaces">  </span><span class="istickedoff">peekWord  a3'&gt;&gt;= \a3'' -&gt; </span>
-<span class="lineno">  500 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a4'1  a4'2&gt;&gt;= \a4'' -&gt; </span>
-<span class="lineno">  501 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a5'&gt;&gt;</span>
-<span class="lineno">  502 </span><span class="spaces">  </span><span class="istickedoff">return (a2'', a3'', a4'')</span></span>
-<span class="lineno">  503 </span>
-<span class="lineno">  504 </span>
-<span class="lineno">  505 </span>
-<span class="lineno">  506 </span>-- |Correlation matrix of the historical relative returns across indexes.
-<span class="lineno">  507 </span>historicalIndexAnalysisCorrelation :: HistoricalIndexAnalysis -&gt; IO (Matrix Double)
-<span class="lineno">  508 </span><span class="decl"><span class="istickedoff">historicalIndexAnalysisCorrelation hra = toMatrixDouble &lt;$&gt; qlHistoricalIndexAnalysisCorrelation hra</span></span>
-<span class="lineno">  509 </span>qlHistoricalIndexAnalysisCorrelation :: (HistoricalIndexAnalysis) -&gt; IO ((Word), (Word), ([Double]))
-<span class="lineno">  510 </span><span class="decl"><span class="istickedoff">qlHistoricalIndexAnalysisCorrelation a1 =</span>
-<span class="lineno">  511 </span><span class="spaces">  </span><span class="istickedoff">withHistoricalIndexAnalysis a1 $ \a1' -&gt; </span>
-<span class="lineno">  512 </span><span class="spaces">  </span><span class="istickedoff">prePtr $ \a2' -&gt; </span>
-<span class="lineno">  513 </span><span class="spaces">  </span><span class="istickedoff">prePtr $ \a3' -&gt; </span>
-<span class="lineno">  514 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a4'1, a4'2) -&gt; </span>
-<span class="lineno">  515 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a5' -&gt; </span>
-<span class="lineno">  516 </span><span class="spaces">  </span><span class="istickedoff">qlHistoricalIndexAnalysisCorrelation'_ a1' a2' a3' a4'1  a4'2 a5' &gt;&gt;</span>
-<span class="lineno">  517 </span><span class="spaces">  </span><span class="istickedoff">peekWord  a2'&gt;&gt;= \a2'' -&gt; </span>
-<span class="lineno">  518 </span><span class="spaces">  </span><span class="istickedoff">peekWord  a3'&gt;&gt;= \a3'' -&gt; </span>
-<span class="lineno">  519 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a4'1  a4'2&gt;&gt;= \a4'' -&gt; </span>
-<span class="lineno">  520 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a5'&gt;&gt;</span>
-<span class="lineno">  521 </span><span class="spaces">  </span><span class="istickedoff">return (a2'', a3'', a4'')</span></span>
-<span class="lineno">  522 </span>
-<span class="lineno">  523 </span>
-<span class="lineno">  524 </span>
-<span class="lineno">  525 </span>-- vim: set ff=unix ts=8 sts=2 sw=2 et:
+<span class="lineno">  487 </span>
+<span class="lineno">  488 </span>toMatrixDouble :: (Word, Word, [Double]) -&gt; Matrix Double
+<span class="lineno">  489 </span><span class="decl"><span class="istickedoff">toMatrixDouble (r, c, d) = Matrix r c d</span></span>
+<span class="lineno">  490 </span>
+<span class="lineno">  491 </span>-- |Covariance matrix of the historical relative returns across indexes.
+<span class="lineno">  492 </span>historicalIndexAnalysisCovariance :: HistoricalIndexAnalysis -&gt; IO (Matrix Double)
+<span class="lineno">  493 </span><span class="decl"><span class="istickedoff">historicalIndexAnalysisCovariance hra = toMatrixDouble &lt;$&gt; qlHistoricalIndexAnalysisCovariance hra</span></span>
+<span class="lineno">  494 </span>qlHistoricalIndexAnalysisCovariance :: (HistoricalIndexAnalysis) -&gt; IO ((Word), (Word), ([Double]))
+<span class="lineno">  495 </span><span class="decl"><span class="istickedoff">qlHistoricalIndexAnalysisCovariance a1 =</span>
+<span class="lineno">  496 </span><span class="spaces">  </span><span class="istickedoff">withHistoricalIndexAnalysis a1 $ \a1' -&gt; </span>
+<span class="lineno">  497 </span><span class="spaces">  </span><span class="istickedoff">prePtr $ \a2' -&gt; </span>
+<span class="lineno">  498 </span><span class="spaces">  </span><span class="istickedoff">prePtr $ \a3' -&gt; </span>
+<span class="lineno">  499 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a4'1, a4'2) -&gt; </span>
+<span class="lineno">  500 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a5' -&gt; </span>
+<span class="lineno">  501 </span><span class="spaces">  </span><span class="istickedoff">qlHistoricalIndexAnalysisCovariance'_ a1' a2' a3' a4'1  a4'2 a5' &gt;&gt;</span>
+<span class="lineno">  502 </span><span class="spaces">  </span><span class="istickedoff">peekWord  a2'&gt;&gt;= \a2'' -&gt; </span>
+<span class="lineno">  503 </span><span class="spaces">  </span><span class="istickedoff">peekWord  a3'&gt;&gt;= \a3'' -&gt; </span>
+<span class="lineno">  504 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a4'1  a4'2&gt;&gt;= \a4'' -&gt; </span>
+<span class="lineno">  505 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a5'&gt;&gt;</span>
+<span class="lineno">  506 </span><span class="spaces">  </span><span class="istickedoff">return (a2'', a3'', a4'')</span></span>
+<span class="lineno">  507 </span>
+<span class="lineno">  508 </span>
+<span class="lineno">  509 </span>
+<span class="lineno">  510 </span>-- |Correlation matrix of the historical relative returns across indexes.
+<span class="lineno">  511 </span>historicalIndexAnalysisCorrelation :: HistoricalIndexAnalysis -&gt; IO (Matrix Double)
+<span class="lineno">  512 </span><span class="decl"><span class="istickedoff">historicalIndexAnalysisCorrelation hra = toMatrixDouble &lt;$&gt; qlHistoricalIndexAnalysisCorrelation hra</span></span>
+<span class="lineno">  513 </span>qlHistoricalIndexAnalysisCorrelation :: (HistoricalIndexAnalysis) -&gt; IO ((Word), (Word), ([Double]))
+<span class="lineno">  514 </span><span class="decl"><span class="istickedoff">qlHistoricalIndexAnalysisCorrelation a1 =</span>
+<span class="lineno">  515 </span><span class="spaces">  </span><span class="istickedoff">withHistoricalIndexAnalysis a1 $ \a1' -&gt; </span>
+<span class="lineno">  516 </span><span class="spaces">  </span><span class="istickedoff">prePtr $ \a2' -&gt; </span>
+<span class="lineno">  517 </span><span class="spaces">  </span><span class="istickedoff">prePtr $ \a3' -&gt; </span>
+<span class="lineno">  518 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a4'1, a4'2) -&gt; </span>
+<span class="lineno">  519 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a5' -&gt; </span>
+<span class="lineno">  520 </span><span class="spaces">  </span><span class="istickedoff">qlHistoricalIndexAnalysisCorrelation'_ a1' a2' a3' a4'1  a4'2 a5' &gt;&gt;</span>
+<span class="lineno">  521 </span><span class="spaces">  </span><span class="istickedoff">peekWord  a2'&gt;&gt;= \a2'' -&gt; </span>
+<span class="lineno">  522 </span><span class="spaces">  </span><span class="istickedoff">peekWord  a3'&gt;&gt;= \a3'' -&gt; </span>
+<span class="lineno">  523 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a4'1  a4'2&gt;&gt;= \a4'' -&gt; </span>
+<span class="lineno">  524 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a5'&gt;&gt;</span>
+<span class="lineno">  525 </span><span class="spaces">  </span><span class="istickedoff">return (a2'', a3'', a4'')</span></span>
 <span class="lineno">  526 </span>
-<span class="lineno">  527 </span>foreign import ccall safe &quot;QuantLib/Index.chs.h qlIndexAddFixing&quot;
-<span class="lineno">  528 </span>  addFixing'_ :: ((C2HSImp.Ptr (CIndex')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ()))))))
-<span class="lineno">  529 </span>
-<span class="lineno">  530 </span>foreign import ccall safe &quot;QuantLib/Index.chs.h qlIndexFixingCalendar&quot;
-<span class="lineno">  531 </span>  fixingCalendar'_ :: ((C2HSImp.Ptr (CIndex')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CCalendar)))))
-<span class="lineno">  532 </span>
-<span class="lineno">  533 </span>foreign import ccall safe &quot;QuantLib/Index.chs.h qlIndexFixing&quot;
-<span class="lineno">  534 </span>  fixing'_ :: ((C2HSImp.Ptr (CIndex')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))))
-<span class="lineno">  535 </span>
-<span class="lineno">  536 </span>foreign import ccall safe &quot;QuantLib/Index.chs.h qlIndexHasHistoricalFixing&quot;
-<span class="lineno">  537 </span>  hasHistoricalFixing'_ :: ((C2HSImp.Ptr (CIndex')) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CInt))))
-<span class="lineno">  538 </span>
-<span class="lineno">  539 </span>foreign import ccall safe &quot;QuantLib/Index.chs.h qlIndexIsValidFixingDate&quot;
-<span class="lineno">  540 </span>  isValidFixingDate'_ :: ((C2HSImp.Ptr (CIndex')) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CInt))))
-<span class="lineno">  541 </span>
-<span class="lineno">  542 </span>foreign import ccall safe &quot;QuantLib/Index.chs.h qlIndexAddFixings&quot;
-<span class="lineno">  543 </span>  qlIndexAddFixings'_ :: ((C2HSImp.Ptr (CIndex')) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ())))))))
-<span class="lineno">  544 </span>
-<span class="lineno">  545 </span>foreign import ccall safe &quot;QuantLib/Index.chs.h qlIndexClearFixings&quot;
-<span class="lineno">  546 </span>  clearFixings'_ :: ((C2HSImp.Ptr (CIndex')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ())))
-<span class="lineno">  547 </span>
-<span class="lineno">  548 </span>foreign import ccall safe &quot;QuantLib/Index.chs.h qlIndexFixingHistory&quot;
-<span class="lineno">  549 </span>  qlIndexFixingHistory'_ :: ((C2HSImp.Ptr (CIndex')) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CInt)) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ())))))))
-<span class="lineno">  550 </span>
-<span class="lineno">  551 </span>foreign import ccall safe &quot;QuantLib/Index.chs.h qlIndexManagerHistories&quot;
-<span class="lineno">  552 </span>  fixingHistoryNames'_ :: ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar))) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ()))))
-<span class="lineno">  553 </span>
-<span class="lineno">  554 </span>foreign import ccall safe &quot;QuantLib/Index.chs.h qlIndexManagerClearHistories&quot;
-<span class="lineno">  555 </span>  clearAllFixingHistories'_ :: ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ()))
-<span class="lineno">  556 </span>
-<span class="lineno">  557 </span>foreign import ccall safe &quot;QuantLib/Index.chs.h qlHistoricalIndexAnalysis&quot;
-<span class="lineno">  558 </span>  historicalIndexAnalysis'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr (CIndex'))) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CHistoricalIndexAnalysis))))))))))
-<span class="lineno">  559 </span>
-<span class="lineno">  560 </span>foreign import ccall safe &quot;QuantLib/Index.chs.h qlHistoricalIndexAnalysisSkippedDates&quot;
-<span class="lineno">  561 </span>  qlHistoricalIndexAnalysisSkippedDates'_ :: ((C2HSImp.Ptr (CHistoricalIndexAnalysis)) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CInt)) -&gt; (IO ()))))
-<span class="lineno">  562 </span>
-<span class="lineno">  563 </span>foreign import ccall safe &quot;QuantLib/Index.chs.h qlHistoricalIndexAnalysisSkippedDatesErrorMessage&quot;
-<span class="lineno">  564 </span>  qlHistoricalIndexAnalysisSkippedMessages'_ :: ((C2HSImp.Ptr (CHistoricalIndexAnalysis)) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar))) -&gt; (IO ()))))
-<span class="lineno">  565 </span>
-<span class="lineno">  566 </span>foreign import ccall safe &quot;QuantLib/Index.chs.h qlHistoricalIndexAnalysisMean&quot;
-<span class="lineno">  567 </span>  historicalIndexAnalysisMean'_ :: ((C2HSImp.Ptr (CHistoricalIndexAnalysis)) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ())))))
-<span class="lineno">  568 </span>
-<span class="lineno">  569 </span>foreign import ccall safe &quot;QuantLib/Index.chs.h qlHistoricalIndexAnalysisStandardDeviation&quot;
-<span class="lineno">  570 </span>  historicalIndexAnalysisStandardDeviation'_ :: ((C2HSImp.Ptr (CHistoricalIndexAnalysis)) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ())))))
-<span class="lineno">  571 </span>
-<span class="lineno">  572 </span>foreign import ccall safe &quot;QuantLib/Index.chs.h qlHistoricalIndexAnalysisSkewness&quot;
-<span class="lineno">  573 </span>  historicalIndexAnalysisSkewness'_ :: ((C2HSImp.Ptr (CHistoricalIndexAnalysis)) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ())))))
-<span class="lineno">  574 </span>
-<span class="lineno">  575 </span>foreign import ccall safe &quot;QuantLib/Index.chs.h qlHistoricalIndexAnalysisKurtosis&quot;
-<span class="lineno">  576 </span>  historicalIndexAnalysisKurtosis'_ :: ((C2HSImp.Ptr (CHistoricalIndexAnalysis)) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ())))))
-<span class="lineno">  577 </span>
-<span class="lineno">  578 </span>foreign import ccall safe &quot;QuantLib/Index.chs.h qlHistoricalIndexAnalysisMin&quot;
-<span class="lineno">  579 </span>  historicalIndexAnalysisMin'_ :: ((C2HSImp.Ptr (CHistoricalIndexAnalysis)) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ())))))
-<span class="lineno">  580 </span>
-<span class="lineno">  581 </span>foreign import ccall safe &quot;QuantLib/Index.chs.h qlHistoricalIndexAnalysisMax&quot;
-<span class="lineno">  582 </span>  historicalIndexAnalysisMax'_ :: ((C2HSImp.Ptr (CHistoricalIndexAnalysis)) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ())))))
-<span class="lineno">  583 </span>
-<span class="lineno">  584 </span>foreign import ccall safe &quot;QuantLib/Index.chs.h qlHistoricalIndexAnalysisSemiVariance&quot;
-<span class="lineno">  585 </span>  historicalIndexAnalysisSemiVariance'_ :: ((C2HSImp.Ptr (CHistoricalIndexAnalysis)) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ())))))
-<span class="lineno">  586 </span>
-<span class="lineno">  587 </span>foreign import ccall safe &quot;QuantLib/Index.chs.h qlHistoricalIndexAnalysisSemiDeviation&quot;
-<span class="lineno">  588 </span>  historicalIndexAnalysisSemiDeviation'_ :: ((C2HSImp.Ptr (CHistoricalIndexAnalysis)) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ())))))
-<span class="lineno">  589 </span>
-<span class="lineno">  590 </span>foreign import ccall safe &quot;QuantLib/Index.chs.h qlHistoricalIndexAnalysisDownsideVariance&quot;
-<span class="lineno">  591 </span>  historicalIndexAnalysisDownsideVariance'_ :: ((C2HSImp.Ptr (CHistoricalIndexAnalysis)) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ())))))
-<span class="lineno">  592 </span>
-<span class="lineno">  593 </span>foreign import ccall safe &quot;QuantLib/Index.chs.h qlHistoricalIndexAnalysisDownsideDeviation&quot;
-<span class="lineno">  594 </span>  historicalIndexAnalysisDownsideDeviation'_ :: ((C2HSImp.Ptr (CHistoricalIndexAnalysis)) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ())))))
-<span class="lineno">  595 </span>
-<span class="lineno">  596 </span>foreign import ccall safe &quot;QuantLib/Index.chs.h qlHistoricalIndexAnalysisPercentile&quot;
-<span class="lineno">  597 </span>  historicalIndexAnalysisPercentile'_ :: ((C2HSImp.Ptr (CHistoricalIndexAnalysis)) -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ()))))))
-<span class="lineno">  598 </span>
-<span class="lineno">  599 </span>foreign import ccall safe &quot;QuantLib/Index.chs.h qlHistoricalIndexAnalysisGaussianPercentile&quot;
-<span class="lineno">  600 </span>  historicalIndexAnalysisGaussianPercentile'_ :: ((C2HSImp.Ptr (CHistoricalIndexAnalysis)) -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ()))))))
-<span class="lineno">  601 </span>
-<span class="lineno">  602 </span>foreign import ccall safe &quot;QuantLib/Index.chs.h qlHistoricalIndexAnalysisValueAtRisk&quot;
-<span class="lineno">  603 </span>  historicalIndexAnalysisValueAtRisk'_ :: ((C2HSImp.Ptr (CHistoricalIndexAnalysis)) -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ()))))))
-<span class="lineno">  604 </span>
-<span class="lineno">  605 </span>foreign import ccall safe &quot;QuantLib/Index.chs.h qlHistoricalIndexAnalysisGaussianValueAtRisk&quot;
-<span class="lineno">  606 </span>  historicalIndexAnalysisGaussianValueAtRisk'_ :: ((C2HSImp.Ptr (CHistoricalIndexAnalysis)) -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ()))))))
-<span class="lineno">  607 </span>
-<span class="lineno">  608 </span>foreign import ccall safe &quot;QuantLib/Index.chs.h qlHistoricalIndexAnalysisExpectedShortfall&quot;
-<span class="lineno">  609 </span>  historicalIndexAnalysisExpectedShortfall'_ :: ((C2HSImp.Ptr (CHistoricalIndexAnalysis)) -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ()))))))
-<span class="lineno">  610 </span>
-<span class="lineno">  611 </span>foreign import ccall safe &quot;QuantLib/Index.chs.h qlHistoricalIndexAnalysisGaussianExpectedShortfall&quot;
-<span class="lineno">  612 </span>  historicalIndexAnalysisGaussianExpectedShortfall'_ :: ((C2HSImp.Ptr (CHistoricalIndexAnalysis)) -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ()))))))
-<span class="lineno">  613 </span>
-<span class="lineno">  614 </span>foreign import ccall safe &quot;QuantLib/Index.chs.h qlHistoricalIndexAnalysisCovariance&quot;
-<span class="lineno">  615 </span>  qlHistoricalIndexAnalysisCovariance'_ :: ((C2HSImp.Ptr (CHistoricalIndexAnalysis)) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ())))))))
-<span class="lineno">  616 </span>
-<span class="lineno">  617 </span>foreign import ccall safe &quot;QuantLib/Index.chs.h qlHistoricalIndexAnalysisCorrelation&quot;
-<span class="lineno">  618 </span>  qlHistoricalIndexAnalysisCorrelation'_ :: ((C2HSImp.Ptr (CHistoricalIndexAnalysis)) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ())))))))
+<span class="lineno">  527 </span>
+<span class="lineno">  528 </span>
+<span class="lineno">  529 </span>-- vim: set ff=unix ts=8 sts=2 sw=2 et:
+<span class="lineno">  530 </span>
+<span class="lineno">  531 </span>foreign import ccall safe &quot;QuantLib/Index.chs.h qlIndexAddFixing&quot;
+<span class="lineno">  532 </span>  addFixing'_ :: ((C2HSImp.Ptr (CIndex')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ()))))))
+<span class="lineno">  533 </span>
+<span class="lineno">  534 </span>foreign import ccall safe &quot;QuantLib/Index.chs.h qlIndexFixingCalendar&quot;
+<span class="lineno">  535 </span>  fixingCalendar'_ :: ((C2HSImp.Ptr (CIndex')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CCalendar)))))
+<span class="lineno">  536 </span>
+<span class="lineno">  537 </span>foreign import ccall safe &quot;QuantLib/Index.chs.h qlIndexFixing&quot;
+<span class="lineno">  538 </span>  fixing'_ :: ((C2HSImp.Ptr (CIndex')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))))
+<span class="lineno">  539 </span>
+<span class="lineno">  540 </span>foreign import ccall safe &quot;QuantLib/Index.chs.h qlIndexHasHistoricalFixing&quot;
+<span class="lineno">  541 </span>  hasHistoricalFixing'_ :: ((C2HSImp.Ptr (CIndex')) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CInt))))
+<span class="lineno">  542 </span>
+<span class="lineno">  543 </span>foreign import ccall safe &quot;QuantLib/Index.chs.h qlIndexIsValidFixingDate&quot;
+<span class="lineno">  544 </span>  isValidFixingDate'_ :: ((C2HSImp.Ptr (CIndex')) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CInt))))
+<span class="lineno">  545 </span>
+<span class="lineno">  546 </span>foreign import ccall safe &quot;QuantLib/Index.chs.h qlIndexAddFixings&quot;
+<span class="lineno">  547 </span>  qlIndexAddFixings'_ :: ((C2HSImp.Ptr (CIndex')) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ())))))))
+<span class="lineno">  548 </span>
+<span class="lineno">  549 </span>foreign import ccall safe &quot;QuantLib/Index.chs.h qlIndexClearFixings&quot;
+<span class="lineno">  550 </span>  clearFixings'_ :: ((C2HSImp.Ptr (CIndex')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ())))
+<span class="lineno">  551 </span>
+<span class="lineno">  552 </span>foreign import ccall safe &quot;QuantLib/Index.chs.h qlIndexFixingHistory&quot;
+<span class="lineno">  553 </span>  qlIndexFixingHistory'_ :: ((C2HSImp.Ptr (CIndex')) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CInt)) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ())))))))
+<span class="lineno">  554 </span>
+<span class="lineno">  555 </span>foreign import ccall safe &quot;QuantLib/Index.chs.h qlIndexManagerHistories&quot;
+<span class="lineno">  556 </span>  fixingHistoryNames'_ :: ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar))) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ()))))
+<span class="lineno">  557 </span>
+<span class="lineno">  558 </span>foreign import ccall safe &quot;QuantLib/Index.chs.h qlIndexManagerClearHistories&quot;
+<span class="lineno">  559 </span>  clearAllFixingHistories'_ :: ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ()))
+<span class="lineno">  560 </span>
+<span class="lineno">  561 </span>foreign import ccall safe &quot;QuantLib/Index.chs.h qlHistoricalIndexAnalysis&quot;
+<span class="lineno">  562 </span>  historicalIndexAnalysis'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr (CIndex'))) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CHistoricalIndexAnalysis))))))))))
+<span class="lineno">  563 </span>
+<span class="lineno">  564 </span>foreign import ccall safe &quot;QuantLib/Index.chs.h qlHistoricalIndexAnalysisSkippedDates&quot;
+<span class="lineno">  565 </span>  qlHistoricalIndexAnalysisSkippedDates'_ :: ((C2HSImp.Ptr (CHistoricalIndexAnalysis)) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CInt)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ())))))
+<span class="lineno">  566 </span>
+<span class="lineno">  567 </span>foreign import ccall safe &quot;QuantLib/Index.chs.h qlHistoricalIndexAnalysisSkippedDatesErrorMessage&quot;
+<span class="lineno">  568 </span>  qlHistoricalIndexAnalysisSkippedMessages'_ :: ((C2HSImp.Ptr (CHistoricalIndexAnalysis)) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar))) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ())))))
+<span class="lineno">  569 </span>
+<span class="lineno">  570 </span>foreign import ccall safe &quot;QuantLib/Index.chs.h qlHistoricalIndexAnalysisMean&quot;
+<span class="lineno">  571 </span>  historicalIndexAnalysisMean'_ :: ((C2HSImp.Ptr (CHistoricalIndexAnalysis)) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ())))))
+<span class="lineno">  572 </span>
+<span class="lineno">  573 </span>foreign import ccall safe &quot;QuantLib/Index.chs.h qlHistoricalIndexAnalysisStandardDeviation&quot;
+<span class="lineno">  574 </span>  historicalIndexAnalysisStandardDeviation'_ :: ((C2HSImp.Ptr (CHistoricalIndexAnalysis)) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ())))))
+<span class="lineno">  575 </span>
+<span class="lineno">  576 </span>foreign import ccall safe &quot;QuantLib/Index.chs.h qlHistoricalIndexAnalysisSkewness&quot;
+<span class="lineno">  577 </span>  historicalIndexAnalysisSkewness'_ :: ((C2HSImp.Ptr (CHistoricalIndexAnalysis)) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ())))))
+<span class="lineno">  578 </span>
+<span class="lineno">  579 </span>foreign import ccall safe &quot;QuantLib/Index.chs.h qlHistoricalIndexAnalysisKurtosis&quot;
+<span class="lineno">  580 </span>  historicalIndexAnalysisKurtosis'_ :: ((C2HSImp.Ptr (CHistoricalIndexAnalysis)) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ())))))
+<span class="lineno">  581 </span>
+<span class="lineno">  582 </span>foreign import ccall safe &quot;QuantLib/Index.chs.h qlHistoricalIndexAnalysisMin&quot;
+<span class="lineno">  583 </span>  historicalIndexAnalysisMin'_ :: ((C2HSImp.Ptr (CHistoricalIndexAnalysis)) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ())))))
+<span class="lineno">  584 </span>
+<span class="lineno">  585 </span>foreign import ccall safe &quot;QuantLib/Index.chs.h qlHistoricalIndexAnalysisMax&quot;
+<span class="lineno">  586 </span>  historicalIndexAnalysisMax'_ :: ((C2HSImp.Ptr (CHistoricalIndexAnalysis)) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ())))))
+<span class="lineno">  587 </span>
+<span class="lineno">  588 </span>foreign import ccall safe &quot;QuantLib/Index.chs.h qlHistoricalIndexAnalysisSemiVariance&quot;
+<span class="lineno">  589 </span>  historicalIndexAnalysisSemiVariance'_ :: ((C2HSImp.Ptr (CHistoricalIndexAnalysis)) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ())))))
+<span class="lineno">  590 </span>
+<span class="lineno">  591 </span>foreign import ccall safe &quot;QuantLib/Index.chs.h qlHistoricalIndexAnalysisSemiDeviation&quot;
+<span class="lineno">  592 </span>  historicalIndexAnalysisSemiDeviation'_ :: ((C2HSImp.Ptr (CHistoricalIndexAnalysis)) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ())))))
+<span class="lineno">  593 </span>
+<span class="lineno">  594 </span>foreign import ccall safe &quot;QuantLib/Index.chs.h qlHistoricalIndexAnalysisDownsideVariance&quot;
+<span class="lineno">  595 </span>  historicalIndexAnalysisDownsideVariance'_ :: ((C2HSImp.Ptr (CHistoricalIndexAnalysis)) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ())))))
+<span class="lineno">  596 </span>
+<span class="lineno">  597 </span>foreign import ccall safe &quot;QuantLib/Index.chs.h qlHistoricalIndexAnalysisDownsideDeviation&quot;
+<span class="lineno">  598 </span>  historicalIndexAnalysisDownsideDeviation'_ :: ((C2HSImp.Ptr (CHistoricalIndexAnalysis)) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ())))))
+<span class="lineno">  599 </span>
+<span class="lineno">  600 </span>foreign import ccall safe &quot;QuantLib/Index.chs.h qlHistoricalIndexAnalysisPercentile&quot;
+<span class="lineno">  601 </span>  historicalIndexAnalysisPercentile'_ :: ((C2HSImp.Ptr (CHistoricalIndexAnalysis)) -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ()))))))
+<span class="lineno">  602 </span>
+<span class="lineno">  603 </span>foreign import ccall safe &quot;QuantLib/Index.chs.h qlHistoricalIndexAnalysisGaussianPercentile&quot;
+<span class="lineno">  604 </span>  historicalIndexAnalysisGaussianPercentile'_ :: ((C2HSImp.Ptr (CHistoricalIndexAnalysis)) -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ()))))))
+<span class="lineno">  605 </span>
+<span class="lineno">  606 </span>foreign import ccall safe &quot;QuantLib/Index.chs.h qlHistoricalIndexAnalysisValueAtRisk&quot;
+<span class="lineno">  607 </span>  historicalIndexAnalysisValueAtRisk'_ :: ((C2HSImp.Ptr (CHistoricalIndexAnalysis)) -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ()))))))
+<span class="lineno">  608 </span>
+<span class="lineno">  609 </span>foreign import ccall safe &quot;QuantLib/Index.chs.h qlHistoricalIndexAnalysisGaussianValueAtRisk&quot;
+<span class="lineno">  610 </span>  historicalIndexAnalysisGaussianValueAtRisk'_ :: ((C2HSImp.Ptr (CHistoricalIndexAnalysis)) -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ()))))))
+<span class="lineno">  611 </span>
+<span class="lineno">  612 </span>foreign import ccall safe &quot;QuantLib/Index.chs.h qlHistoricalIndexAnalysisExpectedShortfall&quot;
+<span class="lineno">  613 </span>  historicalIndexAnalysisExpectedShortfall'_ :: ((C2HSImp.Ptr (CHistoricalIndexAnalysis)) -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ()))))))
+<span class="lineno">  614 </span>
+<span class="lineno">  615 </span>foreign import ccall safe &quot;QuantLib/Index.chs.h qlHistoricalIndexAnalysisGaussianExpectedShortfall&quot;
+<span class="lineno">  616 </span>  historicalIndexAnalysisGaussianExpectedShortfall'_ :: ((C2HSImp.Ptr (CHistoricalIndexAnalysis)) -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ()))))))
+<span class="lineno">  617 </span>
+<span class="lineno">  618 </span>foreign import ccall safe &quot;QuantLib/Index.chs.h qlHistoricalIndexAnalysisCovariance&quot;
+<span class="lineno">  619 </span>  qlHistoricalIndexAnalysisCovariance'_ :: ((C2HSImp.Ptr (CHistoricalIndexAnalysis)) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ())))))))
+<span class="lineno">  620 </span>
+<span class="lineno">  621 </span>foreign import ccall safe &quot;QuantLib/Index.chs.h qlHistoricalIndexAnalysisCorrelation&quot;
+<span class="lineno">  622 </span>  qlHistoricalIndexAnalysisCorrelation'_ :: ((C2HSImp.Ptr (CHistoricalIndexAnalysis)) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ())))))))
 
 </pre>
 </body>

@@ -336,186 +336,188 @@ span.spaces    { background: white }
 <span class="lineno">  317 </span><span class="decl"><span class="istickedoff">dates a1 =</span>
 <span class="lineno">  318 </span><span class="spaces">  </span><span class="istickedoff">withSchedule a1 $ \a1' -&gt; </span>
 <span class="lineno">  319 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a2'1, a2'2) -&gt; </span>
-<span class="lineno">  320 </span><span class="spaces">  </span><span class="istickedoff">dates'_ a1' a2'1  a2'2 &gt;&gt;</span>
-<span class="lineno">  321 </span><span class="spaces">  </span><span class="istickedoff">peekDayArray  a2'1  a2'2&gt;&gt;= \a2'' -&gt; </span>
-<span class="lineno">  322 </span><span class="spaces">  </span><span class="istickedoff">return (a2'')</span></span>
-<span class="lineno">  323 </span>
-<span class="lineno">  324 </span>
+<span class="lineno">  320 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
+<span class="lineno">  321 </span><span class="spaces">  </span><span class="istickedoff">dates'_ a1' a2'1  a2'2 a3' &gt;&gt;</span>
+<span class="lineno">  322 </span><span class="spaces">  </span><span class="istickedoff">peekDayArray  a2'1  a2'2&gt;&gt;= \a2'' -&gt; </span>
+<span class="lineno">  323 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
+<span class="lineno">  324 </span><span class="spaces">  </span><span class="istickedoff">return (a2'')</span></span>
 <span class="lineno">  325 </span>
-<span class="lineno">  326 </span>-- |returns a Period from a given Frequency (e.g. 6M from SemiAnnual)
-<span class="lineno">  327 </span>fromFrequency :: (Frequency) -&gt; IO ((Word), (TimeUnit))
-<span class="lineno">  328 </span><span class="decl"><span class="istickedoff">fromFrequency a1 =</span>
-<span class="lineno">  329 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = (fromIntegral . fromEnum) a1} in </span>
-<span class="lineno">  330 </span><span class="spaces">  </span><span class="istickedoff">preEnum $ \a2' -&gt; </span>
-<span class="lineno">  331 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
-<span class="lineno">  332 </span><span class="spaces">  </span><span class="istickedoff">fromFrequency'_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  333 </span><span class="spaces">  </span><span class="istickedoff">let {res' = fromIntegral res} in</span>
-<span class="lineno">  334 </span><span class="spaces">  </span><span class="istickedoff">peekEnum  a2'&gt;&gt;= \a2'' -&gt; </span>
-<span class="lineno">  335 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
-<span class="lineno">  336 </span><span class="spaces">  </span><span class="istickedoff">return (res', a2'')</span></span>
-<span class="lineno">  337 </span>
-<span class="lineno">  338 </span>
+<span class="lineno">  326 </span>
+<span class="lineno">  327 </span>
+<span class="lineno">  328 </span>-- |returns a Period from a given Frequency (e.g. 6M from SemiAnnual)
+<span class="lineno">  329 </span>fromFrequency :: (Frequency) -&gt; IO ((Word), (TimeUnit))
+<span class="lineno">  330 </span><span class="decl"><span class="istickedoff">fromFrequency a1 =</span>
+<span class="lineno">  331 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = (fromIntegral . fromEnum) a1} in </span>
+<span class="lineno">  332 </span><span class="spaces">  </span><span class="istickedoff">preEnum $ \a2' -&gt; </span>
+<span class="lineno">  333 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
+<span class="lineno">  334 </span><span class="spaces">  </span><span class="istickedoff">fromFrequency'_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  335 </span><span class="spaces">  </span><span class="istickedoff">let {res' = fromIntegral res} in</span>
+<span class="lineno">  336 </span><span class="spaces">  </span><span class="istickedoff">peekEnum  a2'&gt;&gt;= \a2'' -&gt; </span>
+<span class="lineno">  337 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
+<span class="lineno">  338 </span><span class="spaces">  </span><span class="istickedoff">return (res', a2'')</span></span>
 <span class="lineno">  339 </span>
-<span class="lineno">  340 </span>-- |returns a Frequency from a given Period (e.g. SemiAnnual from 6M)
-<span class="lineno">  341 </span>toFrequency :: (Word,TimeUnit) -&gt; IO ((Frequency))
-<span class="lineno">  342 </span><span class="decl"><span class="istickedoff">toFrequency a1 =</span>
-<span class="lineno">  343 </span><span class="spaces">  </span><span class="istickedoff">let {(a1'1, a1'2) = fromEnumQuantity a1} in </span>
-<span class="lineno">  344 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
-<span class="lineno">  345 </span><span class="spaces">  </span><span class="istickedoff">toFrequency'_ a1'1  a1'2 a2' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  346 </span><span class="spaces">  </span><span class="istickedoff">let {res' = (toEnum . fromIntegral) res} in</span>
-<span class="lineno">  347 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
-<span class="lineno">  348 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">  349 </span>
-<span class="lineno">  350 </span>
+<span class="lineno">  340 </span>
+<span class="lineno">  341 </span>
+<span class="lineno">  342 </span>-- |returns a Frequency from a given Period (e.g. SemiAnnual from 6M)
+<span class="lineno">  343 </span>toFrequency :: (Word,TimeUnit) -&gt; IO ((Frequency))
+<span class="lineno">  344 </span><span class="decl"><span class="istickedoff">toFrequency a1 =</span>
+<span class="lineno">  345 </span><span class="spaces">  </span><span class="istickedoff">let {(a1'1, a1'2) = fromEnumQuantity a1} in </span>
+<span class="lineno">  346 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
+<span class="lineno">  347 </span><span class="spaces">  </span><span class="istickedoff">toFrequency'_ a1'1  a1'2 a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  348 </span><span class="spaces">  </span><span class="istickedoff">let {res' = (toEnum . fromIntegral) res} in</span>
+<span class="lineno">  349 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
+<span class="lineno">  350 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
 <span class="lineno">  351 </span>
-<span class="lineno">  352 </span>-- |Parses a period from its short-format string representation (e.g. \&quot;6M\&quot;).
-<span class="lineno">  353 </span>parse :: (String) -&gt; IO ((Int), (TimeUnit))
-<span class="lineno">  354 </span><span class="decl"><span class="istickedoff">parse a1 =</span>
-<span class="lineno">  355 </span><span class="spaces">  </span><span class="istickedoff">C2HSImp.withCString a1 $ \a1' -&gt; </span>
-<span class="lineno">  356 </span><span class="spaces">  </span><span class="istickedoff">preEnum $ \a2' -&gt; </span>
-<span class="lineno">  357 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
-<span class="lineno">  358 </span><span class="spaces">  </span><span class="istickedoff">parse'_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  359 </span><span class="spaces">  </span><span class="istickedoff">let {res' = fromIntegral res} in</span>
-<span class="lineno">  360 </span><span class="spaces">  </span><span class="istickedoff">peekEnum  a2'&gt;&gt;= \a2'' -&gt; </span>
-<span class="lineno">  361 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
-<span class="lineno">  362 </span><span class="spaces">  </span><span class="istickedoff">return (res', a2'')</span></span>
-<span class="lineno">  363 </span>
-<span class="lineno">  364 </span>
+<span class="lineno">  352 </span>
+<span class="lineno">  353 </span>
+<span class="lineno">  354 </span>-- |Parses a period from its short-format string representation (e.g. \&quot;6M\&quot;).
+<span class="lineno">  355 </span>parse :: (String) -&gt; IO ((Int), (TimeUnit))
+<span class="lineno">  356 </span><span class="decl"><span class="istickedoff">parse a1 =</span>
+<span class="lineno">  357 </span><span class="spaces">  </span><span class="istickedoff">C2HSImp.withCString a1 $ \a1' -&gt; </span>
+<span class="lineno">  358 </span><span class="spaces">  </span><span class="istickedoff">preEnum $ \a2' -&gt; </span>
+<span class="lineno">  359 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
+<span class="lineno">  360 </span><span class="spaces">  </span><span class="istickedoff">parse'_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  361 </span><span class="spaces">  </span><span class="istickedoff">let {res' = fromIntegral res} in</span>
+<span class="lineno">  362 </span><span class="spaces">  </span><span class="istickedoff">peekEnum  a2'&gt;&gt;= \a2'' -&gt; </span>
+<span class="lineno">  363 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
+<span class="lineno">  364 </span><span class="spaces">  </span><span class="istickedoff">return (res', a2'')</span></span>
 <span class="lineno">  365 </span>
-<span class="lineno">  366 </span>addPeriods :: (Int,TimeUnit) -&gt; (Int,TimeUnit) -&gt; IO ((Int), (TimeUnit))
-<span class="lineno">  367 </span><span class="decl"><span class="istickedoff">addPeriods a1 a2 =</span>
-<span class="lineno">  368 </span><span class="spaces">  </span><span class="istickedoff">let {(a1'1, a1'2) = fromEnumQuantity a1} in </span>
-<span class="lineno">  369 </span><span class="spaces">  </span><span class="istickedoff">let {(a2'1, a2'2) = fromEnumQuantity a2} in </span>
-<span class="lineno">  370 </span><span class="spaces">  </span><span class="istickedoff">preEnum $ \a3' -&gt; </span>
-<span class="lineno">  371 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a4' -&gt; </span>
-<span class="lineno">  372 </span><span class="spaces">  </span><span class="istickedoff">addPeriods'_ a1'1  a1'2 a2'1  a2'2 a3' a4' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  373 </span><span class="spaces">  </span><span class="istickedoff">let {res' = fromIntegral res} in</span>
-<span class="lineno">  374 </span><span class="spaces">  </span><span class="istickedoff">peekEnum  a3'&gt;&gt;= \a3'' -&gt; </span>
-<span class="lineno">  375 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a4'&gt;&gt;</span>
-<span class="lineno">  376 </span><span class="spaces">  </span><span class="istickedoff">return (res', a3'')</span></span>
-<span class="lineno">  377 </span>
-<span class="lineno">  378 </span>
+<span class="lineno">  366 </span>
+<span class="lineno">  367 </span>
+<span class="lineno">  368 </span>addPeriods :: (Int,TimeUnit) -&gt; (Int,TimeUnit) -&gt; IO ((Int), (TimeUnit))
+<span class="lineno">  369 </span><span class="decl"><span class="istickedoff">addPeriods a1 a2 =</span>
+<span class="lineno">  370 </span><span class="spaces">  </span><span class="istickedoff">let {(a1'1, a1'2) = fromEnumQuantity a1} in </span>
+<span class="lineno">  371 </span><span class="spaces">  </span><span class="istickedoff">let {(a2'1, a2'2) = fromEnumQuantity a2} in </span>
+<span class="lineno">  372 </span><span class="spaces">  </span><span class="istickedoff">preEnum $ \a3' -&gt; </span>
+<span class="lineno">  373 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a4' -&gt; </span>
+<span class="lineno">  374 </span><span class="spaces">  </span><span class="istickedoff">addPeriods'_ a1'1  a1'2 a2'1  a2'2 a3' a4' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  375 </span><span class="spaces">  </span><span class="istickedoff">let {res' = fromIntegral res} in</span>
+<span class="lineno">  376 </span><span class="spaces">  </span><span class="istickedoff">peekEnum  a3'&gt;&gt;= \a3'' -&gt; </span>
+<span class="lineno">  377 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a4'&gt;&gt;</span>
+<span class="lineno">  378 </span><span class="spaces">  </span><span class="istickedoff">return (res', a3'')</span></span>
 <span class="lineno">  379 </span>
-<span class="lineno">  380 </span>-- |Adds two periods together.
-<span class="lineno">  381 </span>add :: (Int, TimeUnit) -&gt; (Int, TimeUnit) -&gt; IO (Int, TimeUnit)
-<span class="lineno">  382 </span><span class="decl"><span class="istickedoff">add = addPeriods</span></span>
-<span class="lineno">  383 </span>
-<span class="lineno">  384 </span>-- |Divides a period's length by an integer divisor.
-<span class="lineno">  385 </span>divide :: (Int,TimeUnit) -&gt; (Int) -&gt; IO ((Int), (TimeUnit))
-<span class="lineno">  386 </span><span class="decl"><span class="istickedoff">divide a1 a2 =</span>
-<span class="lineno">  387 </span><span class="spaces">  </span><span class="istickedoff">let {(a1'1, a1'2) = fromEnumQuantity a1} in </span>
-<span class="lineno">  388 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = fromIntegral a2} in </span>
-<span class="lineno">  389 </span><span class="spaces">  </span><span class="istickedoff">preEnum $ \a3' -&gt; </span>
-<span class="lineno">  390 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a4' -&gt; </span>
-<span class="lineno">  391 </span><span class="spaces">  </span><span class="istickedoff">divide'_ a1'1  a1'2 a2' a3' a4' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  392 </span><span class="spaces">  </span><span class="istickedoff">let {res' = fromIntegral res} in</span>
-<span class="lineno">  393 </span><span class="spaces">  </span><span class="istickedoff">peekEnum  a3'&gt;&gt;= \a3'' -&gt; </span>
-<span class="lineno">  394 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a4'&gt;&gt;</span>
-<span class="lineno">  395 </span><span class="spaces">  </span><span class="istickedoff">return (res', a3'')</span></span>
-<span class="lineno">  396 </span>
-<span class="lineno">  397 </span>
+<span class="lineno">  380 </span>
+<span class="lineno">  381 </span>
+<span class="lineno">  382 </span>-- |Adds two periods together.
+<span class="lineno">  383 </span>add :: (Int, TimeUnit) -&gt; (Int, TimeUnit) -&gt; IO (Int, TimeUnit)
+<span class="lineno">  384 </span><span class="decl"><span class="istickedoff">add = addPeriods</span></span>
+<span class="lineno">  385 </span>
+<span class="lineno">  386 </span>-- |Divides a period's length by an integer divisor.
+<span class="lineno">  387 </span>divide :: (Int,TimeUnit) -&gt; (Int) -&gt; IO ((Int), (TimeUnit))
+<span class="lineno">  388 </span><span class="decl"><span class="istickedoff">divide a1 a2 =</span>
+<span class="lineno">  389 </span><span class="spaces">  </span><span class="istickedoff">let {(a1'1, a1'2) = fromEnumQuantity a1} in </span>
+<span class="lineno">  390 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = fromIntegral a2} in </span>
+<span class="lineno">  391 </span><span class="spaces">  </span><span class="istickedoff">preEnum $ \a3' -&gt; </span>
+<span class="lineno">  392 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a4' -&gt; </span>
+<span class="lineno">  393 </span><span class="spaces">  </span><span class="istickedoff">divide'_ a1'1  a1'2 a2' a3' a4' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  394 </span><span class="spaces">  </span><span class="istickedoff">let {res' = fromIntegral res} in</span>
+<span class="lineno">  395 </span><span class="spaces">  </span><span class="istickedoff">peekEnum  a3'&gt;&gt;= \a3'' -&gt; </span>
+<span class="lineno">  396 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a4'&gt;&gt;</span>
+<span class="lineno">  397 </span><span class="spaces">  </span><span class="istickedoff">return (res', a3'')</span></span>
 <span class="lineno">  398 </span>
-<span class="lineno">  399 </span>-- |Compares two periods, converting to a common time unit as needed.
-<span class="lineno">  400 </span>lessThan :: (Int,TimeUnit) -&gt; (Int,TimeUnit) -&gt; IO ((Bool))
-<span class="lineno">  401 </span><span class="decl"><span class="nottickedoff">lessThan a1 a2 =</span>
-<span class="lineno">  402 </span><span class="spaces">  </span><span class="nottickedoff">let {(a1'1, a1'2) = fromEnumQuantity a1} in </span>
-<span class="lineno">  403 </span><span class="spaces">  </span><span class="nottickedoff">let {(a2'1, a2'2) = fromEnumQuantity a2} in </span>
-<span class="lineno">  404 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a3' -&gt; </span>
-<span class="lineno">  405 </span><span class="spaces">  </span><span class="nottickedoff">lessThan'_ a1'1  a1'2 a2'1  a2'2 a3' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  406 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = C2HSImp.toBool res} in</span>
-<span class="lineno">  407 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a3'&gt;&gt;</span>
-<span class="lineno">  408 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
-<span class="lineno">  409 </span>
-<span class="lineno">  410 </span>
+<span class="lineno">  399 </span>
+<span class="lineno">  400 </span>
+<span class="lineno">  401 </span>-- |Compares two periods, converting to a common time unit as needed.
+<span class="lineno">  402 </span>lessThan :: (Int,TimeUnit) -&gt; (Int,TimeUnit) -&gt; IO ((Bool))
+<span class="lineno">  403 </span><span class="decl"><span class="nottickedoff">lessThan a1 a2 =</span>
+<span class="lineno">  404 </span><span class="spaces">  </span><span class="nottickedoff">let {(a1'1, a1'2) = fromEnumQuantity a1} in </span>
+<span class="lineno">  405 </span><span class="spaces">  </span><span class="nottickedoff">let {(a2'1, a2'2) = fromEnumQuantity a2} in </span>
+<span class="lineno">  406 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a3' -&gt; </span>
+<span class="lineno">  407 </span><span class="spaces">  </span><span class="nottickedoff">lessThan'_ a1'1  a1'2 a2'1  a2'2 a3' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  408 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = C2HSImp.toBool res} in</span>
+<span class="lineno">  409 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a3'&gt;&gt;</span>
+<span class="lineno">  410 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
 <span class="lineno">  411 </span>
-<span class="lineno">  412 </span>-- |Normalizes a period to the coarsest equivalent time unit (e.g. 12M to 1Y).
-<span class="lineno">  413 </span>normalize :: (Int,TimeUnit) -&gt; IO ((Int), (TimeUnit))
-<span class="lineno">  414 </span><span class="decl"><span class="istickedoff">normalize a1 =</span>
-<span class="lineno">  415 </span><span class="spaces">  </span><span class="istickedoff">let {(a1'1, a1'2) = fromEnumQuantity a1} in </span>
-<span class="lineno">  416 </span><span class="spaces">  </span><span class="istickedoff">preEnum $ \a2' -&gt; </span>
-<span class="lineno">  417 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
-<span class="lineno">  418 </span><span class="spaces">  </span><span class="istickedoff">normalize'_ a1'1  a1'2 a2' a3' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  419 </span><span class="spaces">  </span><span class="istickedoff">let {res' = fromIntegral res} in</span>
-<span class="lineno">  420 </span><span class="spaces">  </span><span class="istickedoff">peekEnum  a2'&gt;&gt;= \a2'' -&gt; </span>
-<span class="lineno">  421 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
-<span class="lineno">  422 </span><span class="spaces">  </span><span class="istickedoff">return (res', a2'')</span></span>
-<span class="lineno">  423 </span>
-<span class="lineno">  424 </span>
+<span class="lineno">  412 </span>
+<span class="lineno">  413 </span>
+<span class="lineno">  414 </span>-- |Normalizes a period to the coarsest equivalent time unit (e.g. 12M to 1Y).
+<span class="lineno">  415 </span>normalize :: (Int,TimeUnit) -&gt; IO ((Int), (TimeUnit))
+<span class="lineno">  416 </span><span class="decl"><span class="istickedoff">normalize a1 =</span>
+<span class="lineno">  417 </span><span class="spaces">  </span><span class="istickedoff">let {(a1'1, a1'2) = fromEnumQuantity a1} in </span>
+<span class="lineno">  418 </span><span class="spaces">  </span><span class="istickedoff">preEnum $ \a2' -&gt; </span>
+<span class="lineno">  419 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
+<span class="lineno">  420 </span><span class="spaces">  </span><span class="istickedoff">normalize'_ a1'1  a1'2 a2' a3' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  421 </span><span class="spaces">  </span><span class="istickedoff">let {res' = fromIntegral res} in</span>
+<span class="lineno">  422 </span><span class="spaces">  </span><span class="istickedoff">peekEnum  a2'&gt;&gt;= \a2'' -&gt; </span>
+<span class="lineno">  423 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
+<span class="lineno">  424 </span><span class="spaces">  </span><span class="istickedoff">return (res', a2'')</span></span>
 <span class="lineno">  425 </span>
-<span class="lineno">  426 </span>-- Same NOINLINE reasoning as QuantLib.Time.Calendar's own unsafeCalendar (which this can't
-<span class="lineno">  427 </span>-- reuse: DayCounterConstructor's Read instance needs its own top-level NOINLINE binding, not
-<span class="lineno">  428 </span>-- a shared one, so GHC can't float/duplicate-inline this call site independently of that
-<span class="lineno">  429 </span>-- one's).
-<span class="lineno">  430 </span>unsafeCalendar :: CalendarConstructor -&gt; Calendar
-<span class="lineno">  431 </span><span class="decl"><span class="nottickedoff">unsafeCalendar = unsafePerformIO . calendar</span></span>
-<span class="lineno">  432 </span>{-# NOINLINE unsafeCalendar #-}
-<span class="lineno">  433 </span>
-<span class="lineno">  434 </span>-- Hand-written, not `deriving`/TH-spliced: DayCounterConstructor's Business252 case carries a
-<span class="lineno">  435 </span>-- live Calendar field (see QuantLib.Internal.Syntax.deriveReadPlain's comment for why the
-<span class="lineno">  436 </span>-- generated part is spliced back in CalendarEnum.chs instead of here).
-<span class="lineno">  437 </span>-- ActualActualBond'/ActualActualISMA' carry a Schedule, which has no small enum-shaped
-<span class="lineno">  438 </span>-- readable proxy at all -- they get no alternative here, so parsing their name deliberately
-<span class="lineno">  439 </span>-- falls through to the standard Read &quot;no parse&quot; failure.
-<span class="lineno">  440 </span>instance <span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Read DayCounterConstructor</span></span></span></span></span></span> where
-<span class="lineno">  441 </span>  <span class="decl"><span class="nottickedoff">readsPrec d r = readDayCounterConstructorPlain d r</span>
-<span class="lineno">  442 </span><span class="spaces">    </span><span class="nottickedoff">++ readParen (d &gt; 10) (\r' -&gt;</span>
-<span class="lineno">  443 </span><span class="spaces">         </span><span class="nottickedoff">[ (Business252 c, s1)</span>
-<span class="lineno">  444 </span><span class="spaces">         </span><span class="nottickedoff">| (&quot;Business252&quot;, s0) &lt;- lex r'</span>
-<span class="lineno">  445 </span><span class="spaces">         </span><span class="nottickedoff">, (p, s1) &lt;- readsPrec 11 s0, let c = unsafeCalendar p</span>
-<span class="lineno">  446 </span><span class="spaces">         </span><span class="nottickedoff">]) r</span></span>
-<span class="lineno">  447 </span>
-<span class="lineno">  448 </span>-- vim: set ff=unix ts=8 sts=2 sw=2 et:
+<span class="lineno">  426 </span>
+<span class="lineno">  427 </span>
+<span class="lineno">  428 </span>-- Same NOINLINE reasoning as QuantLib.Time.Calendar's own unsafeCalendar (which this can't
+<span class="lineno">  429 </span>-- reuse: DayCounterConstructor's Read instance needs its own top-level NOINLINE binding, not
+<span class="lineno">  430 </span>-- a shared one, so GHC can't float/duplicate-inline this call site independently of that
+<span class="lineno">  431 </span>-- one's).
+<span class="lineno">  432 </span>unsafeCalendar :: CalendarConstructor -&gt; Calendar
+<span class="lineno">  433 </span><span class="decl"><span class="nottickedoff">unsafeCalendar = unsafePerformIO . calendar</span></span>
+<span class="lineno">  434 </span>{-# NOINLINE unsafeCalendar #-}
+<span class="lineno">  435 </span>
+<span class="lineno">  436 </span>-- Hand-written, not `deriving`/TH-spliced: DayCounterConstructor's Business252 case carries a
+<span class="lineno">  437 </span>-- live Calendar field (see QuantLib.Internal.Syntax.deriveReadPlain's comment for why the
+<span class="lineno">  438 </span>-- generated part is spliced back in CalendarEnum.chs instead of here).
+<span class="lineno">  439 </span>-- ActualActualBond'/ActualActualISMA' carry a Schedule, which has no small enum-shaped
+<span class="lineno">  440 </span>-- readable proxy at all -- they get no alternative here, so parsing their name deliberately
+<span class="lineno">  441 </span>-- falls through to the standard Read &quot;no parse&quot; failure.
+<span class="lineno">  442 </span>instance <span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Read DayCounterConstructor</span></span></span></span></span></span> where
+<span class="lineno">  443 </span>  <span class="decl"><span class="nottickedoff">readsPrec d r = readDayCounterConstructorPlain d r</span>
+<span class="lineno">  444 </span><span class="spaces">    </span><span class="nottickedoff">++ readParen (d &gt; 10) (\r' -&gt;</span>
+<span class="lineno">  445 </span><span class="spaces">         </span><span class="nottickedoff">[ (Business252 c, s1)</span>
+<span class="lineno">  446 </span><span class="spaces">         </span><span class="nottickedoff">| (&quot;Business252&quot;, s0) &lt;- lex r'</span>
+<span class="lineno">  447 </span><span class="spaces">         </span><span class="nottickedoff">, (p, s1) &lt;- readsPrec 11 s0, let c = unsafeCalendar p</span>
+<span class="lineno">  448 </span><span class="spaces">         </span><span class="nottickedoff">]) r</span></span>
 <span class="lineno">  449 </span>
-<span class="lineno">  450 </span>foreign import ccall safe &quot;QuantLib/Time/Schedule.chs.h qlDayCounter&quot;
-<span class="lineno">  451 </span>  qlDayCounter'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CDayCounter))))))
-<span class="lineno">  452 </span>
-<span class="lineno">  453 </span>foreign import ccall safe &quot;QuantLib/Time/Schedule.chs.h qlDayCounterBusiness252&quot;
-<span class="lineno">  454 </span>  qlDayCounterBusiness252'_ :: ((C2HSImp.Ptr (CCalendar)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CDayCounter)))))
-<span class="lineno">  455 </span>
-<span class="lineno">  456 </span>foreign import ccall safe &quot;QuantLib/Time/Schedule.chs.h qlDayCounterActualActualBond&quot;
-<span class="lineno">  457 </span>  actualActualBond''_ :: ((C2HSImp.Ptr (CSchedule)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CDayCounter)))))
-<span class="lineno">  458 </span>
-<span class="lineno">  459 </span>foreign import ccall safe &quot;QuantLib/Time/Schedule.chs.h qlDayCounterActualActualISMA&quot;
-<span class="lineno">  460 </span>  actualActualISMA''_ :: ((C2HSImp.Ptr (CSchedule)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CDayCounter)))))
-<span class="lineno">  461 </span>
-<span class="lineno">  462 </span>foreign import ccall safe &quot;QuantLib/Time/Schedule.chs.h qlDayCounterDayCount&quot;
-<span class="lineno">  463 </span>  days'_ :: ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (IO C2HSImp.CInt))))
-<span class="lineno">  464 </span>
-<span class="lineno">  465 </span>foreign import ccall safe &quot;QuantLib/Time/Schedule.chs.h qlDayCounterYearFraction&quot;
-<span class="lineno">  466 </span>  years'_ :: ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))))))
-<span class="lineno">  467 </span>
-<span class="lineno">  468 </span>foreign import ccall safe &quot;QuantLib/Time/Schedule.chs.h qlSchedule&quot;
-<span class="lineno">  469 </span>  schedule'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CCalendar)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CSchedule)))))))))))))))
-<span class="lineno">  470 </span>
-<span class="lineno">  471 </span>foreign import ccall safe &quot;QuantLib/Time/Schedule.chs.h qlSchedule1&quot;
-<span class="lineno">  472 </span>  fromDates'_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; ((C2HSImp.Ptr (CCalendar)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CSchedule)))))))))))))
-<span class="lineno">  473 </span>
-<span class="lineno">  474 </span>foreign import ccall safe &quot;QuantLib/Time/Schedule.chs.h qlScheduleUntil&quot;
-<span class="lineno">  475 </span>  until'_ :: ((C2HSImp.Ptr (CSchedule)) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CSchedule))))))
-<span class="lineno">  476 </span>
-<span class="lineno">  477 </span>foreign import ccall safe &quot;QuantLib/Time/Schedule.chs.h qlScheduleDates&quot;
-<span class="lineno">  478 </span>  dates'_ :: ((C2HSImp.Ptr (CSchedule)) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CInt)) -&gt; (IO ()))))
-<span class="lineno">  479 </span>
-<span class="lineno">  480 </span>foreign import ccall safe &quot;QuantLib/Time/Schedule.chs.h qlPeriodFromFrequency1&quot;
-<span class="lineno">  481 </span>  fromFrequency'_ :: (C2HSImp.CInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CInt))))
-<span class="lineno">  482 </span>
-<span class="lineno">  483 </span>foreign import ccall safe &quot;QuantLib/Time/Schedule.chs.h qlPeriodToFrequency1&quot;
-<span class="lineno">  484 </span>  toFrequency'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CInt))))
-<span class="lineno">  485 </span>
-<span class="lineno">  486 </span>foreign import ccall safe &quot;QuantLib/Time/Schedule.chs.h qlPeriodParserParse1&quot;
-<span class="lineno">  487 </span>  parse'_ :: ((C2HSImp.Ptr C2HSImp.CChar) -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CInt))))
-<span class="lineno">  488 </span>
-<span class="lineno">  489 </span>foreign import ccall safe &quot;QuantLib/Time/Schedule.chs.h qlPeriodAdd1&quot;
-<span class="lineno">  490 </span>  addPeriods'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CInt)))))))
-<span class="lineno">  491 </span>
-<span class="lineno">  492 </span>foreign import ccall safe &quot;QuantLib/Time/Schedule.chs.h qlPeriodDivide1&quot;
-<span class="lineno">  493 </span>  divide'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CInt))))))
-<span class="lineno">  494 </span>
-<span class="lineno">  495 </span>foreign import ccall safe &quot;QuantLib/Time/Schedule.chs.h qlPeriodsLT1&quot;
-<span class="lineno">  496 </span>  lessThan'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CInt))))))
-<span class="lineno">  497 </span>
-<span class="lineno">  498 </span>foreign import ccall safe &quot;QuantLib/Time/Schedule.chs.h qlPeriodNormalize1&quot;
-<span class="lineno">  499 </span>  normalize'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CInt)))))
+<span class="lineno">  450 </span>-- vim: set ff=unix ts=8 sts=2 sw=2 et:
+<span class="lineno">  451 </span>
+<span class="lineno">  452 </span>foreign import ccall safe &quot;QuantLib/Time/Schedule.chs.h qlDayCounter&quot;
+<span class="lineno">  453 </span>  qlDayCounter'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CDayCounter))))))
+<span class="lineno">  454 </span>
+<span class="lineno">  455 </span>foreign import ccall safe &quot;QuantLib/Time/Schedule.chs.h qlDayCounterBusiness252&quot;
+<span class="lineno">  456 </span>  qlDayCounterBusiness252'_ :: ((C2HSImp.Ptr (CCalendar)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CDayCounter)))))
+<span class="lineno">  457 </span>
+<span class="lineno">  458 </span>foreign import ccall safe &quot;QuantLib/Time/Schedule.chs.h qlDayCounterActualActualBond&quot;
+<span class="lineno">  459 </span>  actualActualBond''_ :: ((C2HSImp.Ptr (CSchedule)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CDayCounter)))))
+<span class="lineno">  460 </span>
+<span class="lineno">  461 </span>foreign import ccall safe &quot;QuantLib/Time/Schedule.chs.h qlDayCounterActualActualISMA&quot;
+<span class="lineno">  462 </span>  actualActualISMA''_ :: ((C2HSImp.Ptr (CSchedule)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CDayCounter)))))
+<span class="lineno">  463 </span>
+<span class="lineno">  464 </span>foreign import ccall safe &quot;QuantLib/Time/Schedule.chs.h qlDayCounterDayCount&quot;
+<span class="lineno">  465 </span>  days'_ :: ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (IO C2HSImp.CInt))))
+<span class="lineno">  466 </span>
+<span class="lineno">  467 </span>foreign import ccall safe &quot;QuantLib/Time/Schedule.chs.h qlDayCounterYearFraction&quot;
+<span class="lineno">  468 </span>  years'_ :: ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))))))
+<span class="lineno">  469 </span>
+<span class="lineno">  470 </span>foreign import ccall safe &quot;QuantLib/Time/Schedule.chs.h qlSchedule&quot;
+<span class="lineno">  471 </span>  schedule'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CCalendar)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CSchedule)))))))))))))))
+<span class="lineno">  472 </span>
+<span class="lineno">  473 </span>foreign import ccall safe &quot;QuantLib/Time/Schedule.chs.h qlSchedule1&quot;
+<span class="lineno">  474 </span>  fromDates'_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; ((C2HSImp.Ptr (CCalendar)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CSchedule)))))))))))))
+<span class="lineno">  475 </span>
+<span class="lineno">  476 </span>foreign import ccall safe &quot;QuantLib/Time/Schedule.chs.h qlScheduleUntil&quot;
+<span class="lineno">  477 </span>  until'_ :: ((C2HSImp.Ptr (CSchedule)) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CSchedule))))))
+<span class="lineno">  478 </span>
+<span class="lineno">  479 </span>foreign import ccall safe &quot;QuantLib/Time/Schedule.chs.h qlScheduleDates&quot;
+<span class="lineno">  480 </span>  dates'_ :: ((C2HSImp.Ptr (CSchedule)) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CInt)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ())))))
+<span class="lineno">  481 </span>
+<span class="lineno">  482 </span>foreign import ccall safe &quot;QuantLib/Time/Schedule.chs.h qlPeriodFromFrequency1&quot;
+<span class="lineno">  483 </span>  fromFrequency'_ :: (C2HSImp.CInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CInt))))
+<span class="lineno">  484 </span>
+<span class="lineno">  485 </span>foreign import ccall safe &quot;QuantLib/Time/Schedule.chs.h qlPeriodToFrequency1&quot;
+<span class="lineno">  486 </span>  toFrequency'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CInt))))
+<span class="lineno">  487 </span>
+<span class="lineno">  488 </span>foreign import ccall safe &quot;QuantLib/Time/Schedule.chs.h qlPeriodParserParse1&quot;
+<span class="lineno">  489 </span>  parse'_ :: ((C2HSImp.Ptr C2HSImp.CChar) -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CInt))))
+<span class="lineno">  490 </span>
+<span class="lineno">  491 </span>foreign import ccall safe &quot;QuantLib/Time/Schedule.chs.h qlPeriodAdd1&quot;
+<span class="lineno">  492 </span>  addPeriods'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CInt)))))))
+<span class="lineno">  493 </span>
+<span class="lineno">  494 </span>foreign import ccall safe &quot;QuantLib/Time/Schedule.chs.h qlPeriodDivide1&quot;
+<span class="lineno">  495 </span>  divide'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CInt))))))
+<span class="lineno">  496 </span>
+<span class="lineno">  497 </span>foreign import ccall safe &quot;QuantLib/Time/Schedule.chs.h qlPeriodsLT1&quot;
+<span class="lineno">  498 </span>  lessThan'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CInt))))))
+<span class="lineno">  499 </span>
+<span class="lineno">  500 </span>foreign import ccall safe &quot;QuantLib/Time/Schedule.chs.h qlPeriodNormalize1&quot;
+<span class="lineno">  501 </span>  normalize'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CInt)))))
 
 </pre>
 </body>

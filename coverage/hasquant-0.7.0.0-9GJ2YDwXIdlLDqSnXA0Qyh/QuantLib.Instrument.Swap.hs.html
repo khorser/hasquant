@@ -2121,7 +2121,7 @@ span.spaces    { background: white }
 <span class="lineno"> 2102 </span>instance HasFixedLeg (GenFixedVsFloatingSwap f) where
 <span class="lineno"> 2103 </span>  <span class="decl"><span class="istickedoff">fairRate = qlFixedVsFloatingSwapFairRate</span></span>
 <span class="lineno"> 2104 </span>  <span class="decl"><span class="nottickedoff">fixedLeg = qlFixedVsFloatingSwapFixedLeg</span></span>
-<span class="lineno"> 2105 </span>  <span class="decl"><span class="nottickedoff">fixedLegBPS = qlFixedVsFloatingSwapFixedLegBPS</span></span>
+<span class="lineno"> 2105 </span>  <span class="decl"><span class="istickedoff">fixedLegBPS = qlFixedVsFloatingSwapFixedLegBPS</span></span>
 <span class="lineno"> 2106 </span>  <span class="decl"><span class="nottickedoff">fixedLegNPV = qlFixedVsFloatingSwapFixedLegNPV</span></span>
 <span class="lineno"> 2107 </span>
 <span class="lineno"> 2108 </span>class HasSpread a where
@@ -2202,13 +2202,13 @@ span.spaces    { background: white }
 <span class="lineno"> 2183 </span>
 <span class="lineno"> 2184 </span>-- |Basis-point sensitivity of the fixed leg.
 <span class="lineno"> 2185 </span>qlFixedVsFloatingSwapFixedLegBPS :: (GenFixedVsFloatingSwap f) -&gt; IO ((Double))
-<span class="lineno"> 2186 </span><span class="decl"><span class="nottickedoff">qlFixedVsFloatingSwapFixedLegBPS a1 =</span>
-<span class="lineno"> 2187 </span><span class="spaces">  </span><span class="nottickedoff">withFixedVsFloatingSwap a1 $ \a1' -&gt; </span>
-<span class="lineno"> 2188 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a2' -&gt; </span>
-<span class="lineno"> 2189 </span><span class="spaces">  </span><span class="nottickedoff">qlFixedVsFloatingSwapFixedLegBPS'_ a1' a2' &gt;&gt;= \res -&gt;</span>
-<span class="lineno"> 2190 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = realToFrac res} in</span>
-<span class="lineno"> 2191 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a2'&gt;&gt;</span>
-<span class="lineno"> 2192 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno"> 2186 </span><span class="decl"><span class="istickedoff">qlFixedVsFloatingSwapFixedLegBPS a1 =</span>
+<span class="lineno"> 2187 </span><span class="spaces">  </span><span class="istickedoff">withFixedVsFloatingSwap a1 $ \a1' -&gt; </span>
+<span class="lineno"> 2188 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
+<span class="lineno"> 2189 </span><span class="spaces">  </span><span class="istickedoff">qlFixedVsFloatingSwapFixedLegBPS'_ a1' a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno"> 2190 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno"> 2191 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
+<span class="lineno"> 2192 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
 <span class="lineno"> 2193 </span>
 <span class="lineno"> 2194 </span>
 <span class="lineno"> 2195 </span>

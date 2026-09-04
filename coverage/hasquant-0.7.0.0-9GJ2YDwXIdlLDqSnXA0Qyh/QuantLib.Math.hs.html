@@ -21,470 +21,882 @@ span.spaces    { background: white }
 <span class="lineno">    2 </span>-- Edit the ORIGNAL .chs file instead!
 <span class="lineno">    3 </span>
 <span class="lineno">    4 </span>
-<span class="lineno">    5 </span>module QuantLib.Math
-<span class="lineno">    6 </span>  (
-<span class="lineno">    7 </span>    RoundingType(..)
-<span class="lineno">    8 </span>  , Rounding(..)
-<span class="lineno">    9 </span>  , applyRounding
-<span class="lineno">   10 </span>  , optimize
-<span class="lineno">   11 </span>
-<span class="lineno">   12 </span>  , EndCriteriaType(..)
-<span class="lineno">   13 </span>  , HistogramAlgorithm(..)
-<span class="lineno">   14 </span>
-<span class="lineno">   15 </span>  , Approximation(..)
-<span class="lineno">   16 </span>  , Interpolation(..)
-<span class="lineno">   17 </span>  , Interpolation2D(..)
-<span class="lineno">   18 </span>
-<span class="lineno">   19 </span>  , RngTrait(..)
-<span class="lineno">   20 </span>  , StatisticsTrait(..)
-<span class="lineno">   21 </span>  , BinomialTree(..)
-<span class="lineno">   22 </span>  , BoundaryConditionSide(..)
-<span class="lineno">   23 </span>  , FdmSchemeType(..)
-<span class="lineno">   24 </span>  , FdmScheme(..)
-<span class="lineno">   25 </span>  , PolynomialType(..)
-<span class="lineno">   26 </span>  , ComplexLogFormula(..)
-<span class="lineno">   27 </span>  , CmsMarketCalibrationType(..)
-<span class="lineno">   28 </span>  , EndCriteria(..)
-<span class="lineno">   29 </span>  , OptimizationMethod(..)
-<span class="lineno">   30 </span>  , Constraint(..)
-<span class="lineno">   31 </span>  , SobolDirectionIntegers(..)
-<span class="lineno">   32 </span>
-<span class="lineno">   33 </span>  , Matrix
-<span class="lineno">   34 </span>  , matrixRows
-<span class="lineno">   35 </span>  , matrixColumns
-<span class="lineno">   36 </span>  , matrixData
-<span class="lineno">   37 </span>  , RealMatrix
-<span class="lineno">   38 </span>  , realMatrixRows
-<span class="lineno">   39 </span>  , realMatrixColumns
-<span class="lineno">   40 </span>  , realMatrixData
-<span class="lineno">   41 </span>  , realMatrix
-<span class="lineno">   42 </span>  , realMatrixFromVector
-<span class="lineno">   43 </span>  , objectMatrix
-<span class="lineno">   44 </span>
-<span class="lineno">   45 </span>  , RealVector
-<span class="lineno">   46 </span>  , NonEmptyVector
-<span class="lineno">   47 </span>  , singletonNonEmptyVector
-<span class="lineno">   48 </span>  , consNonEmptyVector
-<span class="lineno">   49 </span>  , nonEmptyVector
-<span class="lineno">   50 </span>  , nonEmptyVectorToVector
-<span class="lineno">   51 </span>
-<span class="lineno">   52 </span>  , TimeGrid
-<span class="lineno">   53 </span>  , timeGrid
-<span class="lineno">   54 </span>  , timeGridFromVector
-<span class="lineno">   55 </span>  , timeGridFromVector'
-<span class="lineno">   56 </span>  , timeAt
-<span class="lineno">   57 </span>  , size
-<span class="lineno">   58 </span>  , points
-<span class="lineno">   59 </span>  ) where
-<span class="lineno">   60 </span>import qualified Foreign.C.Types as C2HSImp
-<span class="lineno">   61 </span>import qualified Foreign.ForeignPtr as C2HSImp
-<span class="lineno">   62 </span>import qualified Foreign.Ptr as C2HSImp
-<span class="lineno">   63 </span>import qualified System.IO.Unsafe as C2HSImp
-<span class="lineno">   64 </span>
-<span class="lineno">   65 </span>
-<span class="lineno">   66 </span>import QuantLib.Internal
-<span class="lineno">   67 </span>import QuantLib.Internal.Common
-<span class="lineno">   68 </span>import QuantLib.Internal.Type
-<span class="lineno">   69 </span>import Foreign.Marshal.Alloc(alloca)
-<span class="lineno">   70 </span>
-<span class="lineno">   71 </span>
-<span class="lineno">   72 </span>
-<span class="lineno">   73 </span>
-<span class="lineno">   74 </span>
-<span class="lineno">   75 </span>
-<span class="lineno">   76 </span>
-<span class="lineno">   77 </span>data EndCriteriaType = EndNone
-<span class="lineno">   78 </span>                     | MaxIterations
-<span class="lineno">   79 </span>                     | StationaryPoint
-<span class="lineno">   80 </span>                     | StationaryFunctionValue
-<span class="lineno">   81 </span>                     | StationaryFunctionAccuracy
-<span class="lineno">   82 </span>                     | ZeroGradientNorm
-<span class="lineno">   83 </span>                     | Unknown
-<span class="lineno">   84 </span>  deriving (<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="istickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Enum</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Show</span></span></span></span></span></span>,<span class="decl"><span class="istickedoff"><span class="decl"><span class="istickedoff">Eq</span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Read</span></span></span></span></span></span></span></span>)
-<span class="lineno">   85 </span>
-<span class="lineno">   86 </span>
-<span class="lineno">   87 </span>data HistogramAlgorithm = HistogramNone
-<span class="lineno">   88 </span>                        | Sturges
-<span class="lineno">   89 </span>                        | FD
-<span class="lineno">   90 </span>                        | Scott
-<span class="lineno">   91 </span>  deriving (<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Enum</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Show</span></span></span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Eq</span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Read</span></span></span></span></span></span></span></span>)
-<span class="lineno">   92 </span>
-<span class="lineno">   93 </span>
-<span class="lineno">   94 </span>data RngTrait = PseudoRandom
-<span class="lineno">   95 </span>              | PoissonPseudoRandom
-<span class="lineno">   96 </span>              | LowDiscrepancy
-<span class="lineno">   97 </span>              | Ziggurat
-<span class="lineno">   98 </span>  deriving (<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Show</span></span></span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Eq</span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Read</span></span></span></span></span></span></span></span>)
-<span class="lineno">   99 </span>instance <span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Enum RngTrait</span></span></span></span> where
-<span class="lineno">  100 </span>  <span class="decl"><span class="nottickedoff">succ PseudoRandom = PoissonPseudoRandom</span>
-<span class="lineno">  101 </span><span class="spaces">  </span><span class="nottickedoff">succ PoissonPseudoRandom = LowDiscrepancy</span>
-<span class="lineno">  102 </span><span class="spaces">  </span><span class="nottickedoff">succ LowDiscrepancy = Ziggurat</span>
-<span class="lineno">  103 </span><span class="spaces">  </span><span class="nottickedoff">succ Ziggurat = error &quot;RngTrait.succ: Ziggurat has no successor&quot;</span></span>
-<span class="lineno">  104 </span>
-<span class="lineno">  105 </span>  <span class="decl"><span class="nottickedoff">pred PoissonPseudoRandom = PseudoRandom</span>
-<span class="lineno">  106 </span><span class="spaces">  </span><span class="nottickedoff">pred LowDiscrepancy = PoissonPseudoRandom</span>
-<span class="lineno">  107 </span><span class="spaces">  </span><span class="nottickedoff">pred Ziggurat = LowDiscrepancy</span>
-<span class="lineno">  108 </span><span class="spaces">  </span><span class="nottickedoff">pred PseudoRandom = error &quot;RngTrait.pred: PseudoRandom has no predecessor&quot;</span></span>
-<span class="lineno">  109 </span>
-<span class="lineno">  110 </span>  <span class="decl"><span class="nottickedoff">enumFromTo from to = go from</span>
-<span class="lineno">  111 </span><span class="spaces">    </span><span class="nottickedoff">where</span>
-<span class="lineno">  112 </span><span class="spaces">      </span><span class="nottickedoff">end = fromEnum to</span>
-<span class="lineno">  113 </span><span class="spaces">      </span><span class="nottickedoff">go v = case compare (fromEnum v) end of</span>
-<span class="lineno">  114 </span><span class="spaces">                 </span><span class="nottickedoff">LT -&gt; v : go (succ v)</span>
-<span class="lineno">  115 </span><span class="spaces">                 </span><span class="nottickedoff">EQ -&gt; [v]</span>
-<span class="lineno">  116 </span><span class="spaces">                 </span><span class="nottickedoff">GT -&gt; []</span></span>
+<span class="lineno">    5 </span>-- |Numeric helpers and matrix/vector value types.
+<span class="lineno">    6 </span>-- 'RealMatrix' stores dense numeric grids; boxed 'Matrix' supports small or object-valued data.
+<span class="lineno">    7 </span>module QuantLib.Math
+<span class="lineno">    8 </span>  (
+<span class="lineno">    9 </span>    RoundingType(..)
+<span class="lineno">   10 </span>  , Rounding(..)
+<span class="lineno">   11 </span>  , applyRounding
+<span class="lineno">   12 </span>  , optimize
+<span class="lineno">   13 </span>
+<span class="lineno">   14 </span>  , EndCriteriaType(..)
+<span class="lineno">   15 </span>  , HistogramAlgorithm(..)
+<span class="lineno">   16 </span>
+<span class="lineno">   17 </span>  , Approximation(..)
+<span class="lineno">   18 </span>  , Interpolation(..)
+<span class="lineno">   19 </span>  , Interpolation2D(..)
+<span class="lineno">   20 </span>
+<span class="lineno">   21 </span>  , RngTrait(..)
+<span class="lineno">   22 </span>  , StatisticsTrait(..)
+<span class="lineno">   23 </span>  , BinomialTree(..)
+<span class="lineno">   24 </span>  , BoundaryConditionSide(..)
+<span class="lineno">   25 </span>  , FdmSchemeType(..)
+<span class="lineno">   26 </span>  , FdmScheme(..)
+<span class="lineno">   27 </span>  , PolynomialType(..)
+<span class="lineno">   28 </span>  , ComplexLogFormula(..)
+<span class="lineno">   29 </span>  , CmsMarketCalibrationType(..)
+<span class="lineno">   30 </span>  , EndCriteria(..)
+<span class="lineno">   31 </span>  , OptimizationMethod(..)
+<span class="lineno">   32 </span>  , Constraint(..)
+<span class="lineno">   33 </span>  , SobolDirectionIntegers(..)
+<span class="lineno">   34 </span>
+<span class="lineno">   35 </span>  , Matrix
+<span class="lineno">   36 </span>  , matrixRows
+<span class="lineno">   37 </span>  , matrixColumns
+<span class="lineno">   38 </span>  , matrixData
+<span class="lineno">   39 </span>  , RealMatrix
+<span class="lineno">   40 </span>  , realMatrixRows
+<span class="lineno">   41 </span>  , realMatrixColumns
+<span class="lineno">   42 </span>  , realMatrixData
+<span class="lineno">   43 </span>  , boxedRealMatrix
+<span class="lineno">   44 </span>  , realMatrixFromVector
+<span class="lineno">   45 </span>  , objectMatrix
+<span class="lineno">   46 </span>
+<span class="lineno">   47 </span>  , RealVector
+<span class="lineno">   48 </span>  , NonEmptyVector
+<span class="lineno">   49 </span>  , singletonNonEmptyVector
+<span class="lineno">   50 </span>  , consNonEmptyVector
+<span class="lineno">   51 </span>  , nonEmptyVector
+<span class="lineno">   52 </span>  , nonEmptyVectorToVector
+<span class="lineno">   53 </span>
+<span class="lineno">   54 </span>  , TimeGrid
+<span class="lineno">   55 </span>  , timeGrid
+<span class="lineno">   56 </span>  , timeGridFromVector
+<span class="lineno">   57 </span>  , timeGridFromVector'
+<span class="lineno">   58 </span>  , timeAt
+<span class="lineno">   59 </span>  , size
+<span class="lineno">   60 </span>  , points
+<span class="lineno">   61 </span>
+<span class="lineno">   62 </span>  , riskStatisticsMean
+<span class="lineno">   63 </span>  , riskStatisticsStandardDeviation
+<span class="lineno">   64 </span>  , riskStatisticsVariance
+<span class="lineno">   65 </span>  , riskStatisticsSkewness
+<span class="lineno">   66 </span>  , riskStatisticsKurtosis
+<span class="lineno">   67 </span>  , riskStatisticsMin
+<span class="lineno">   68 </span>  , riskStatisticsMax
+<span class="lineno">   69 </span>  , riskStatisticsSemiVariance
+<span class="lineno">   70 </span>  , riskStatisticsSemiDeviation
+<span class="lineno">   71 </span>  , riskStatisticsDownsideVariance
+<span class="lineno">   72 </span>  , riskStatisticsDownsideDeviation
+<span class="lineno">   73 </span>  , riskStatisticsPercentile
+<span class="lineno">   74 </span>  , riskStatisticsGaussianPercentile
+<span class="lineno">   75 </span>  , riskStatisticsValueAtRisk
+<span class="lineno">   76 </span>  , riskStatisticsGaussianValueAtRisk
+<span class="lineno">   77 </span>  , riskStatisticsExpectedShortfall
+<span class="lineno">   78 </span>  , riskStatisticsGaussianExpectedShortfall
+<span class="lineno">   79 </span>  , riskStatisticsPotentialUpside
+<span class="lineno">   80 </span>  , riskStatisticsGaussianPotentialUpside
+<span class="lineno">   81 </span>  , riskStatisticsRegret
+<span class="lineno">   82 </span>  , riskStatisticsShortfall
+<span class="lineno">   83 </span>  , riskStatisticsAverageShortfall
+<span class="lineno">   84 </span>  ) where
+<span class="lineno">   85 </span>import qualified Foreign.C.Types as C2HSImp
+<span class="lineno">   86 </span>import qualified Foreign.ForeignPtr as C2HSImp
+<span class="lineno">   87 </span>import qualified Foreign.Ptr as C2HSImp
+<span class="lineno">   88 </span>import qualified System.IO.Unsafe as C2HSImp
+<span class="lineno">   89 </span>
+<span class="lineno">   90 </span>
+<span class="lineno">   91 </span>import QuantLib.Internal
+<span class="lineno">   92 </span>import QuantLib.Internal.Common
+<span class="lineno">   93 </span>import QuantLib.Internal.Type
+<span class="lineno">   94 </span>import Foreign.Marshal.Alloc(alloca)
+<span class="lineno">   95 </span>
+<span class="lineno">   96 </span>
+<span class="lineno">   97 </span>
+<span class="lineno">   98 </span>
+<span class="lineno">   99 </span>
+<span class="lineno">  100 </span>
+<span class="lineno">  101 </span>
+<span class="lineno">  102 </span>data EndCriteriaType = EndNone
+<span class="lineno">  103 </span>                     | MaxIterations
+<span class="lineno">  104 </span>                     | StationaryPoint
+<span class="lineno">  105 </span>                     | StationaryFunctionValue
+<span class="lineno">  106 </span>                     | StationaryFunctionAccuracy
+<span class="lineno">  107 </span>                     | ZeroGradientNorm
+<span class="lineno">  108 </span>                     | Unknown
+<span class="lineno">  109 </span>  deriving (<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="istickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Enum</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Show</span></span></span></span></span></span>,<span class="decl"><span class="istickedoff"><span class="decl"><span class="istickedoff">Eq</span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Read</span></span></span></span></span></span></span></span>)
+<span class="lineno">  110 </span>
+<span class="lineno">  111 </span>
+<span class="lineno">  112 </span>data HistogramAlgorithm = HistogramNone
+<span class="lineno">  113 </span>                        | Sturges
+<span class="lineno">  114 </span>                        | FD
+<span class="lineno">  115 </span>                        | Scott
+<span class="lineno">  116 </span>  deriving (<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Enum</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Show</span></span></span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Eq</span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Read</span></span></span></span></span></span></span></span>)
 <span class="lineno">  117 </span>
-<span class="lineno">  118 </span>  <span class="decl"><span class="nottickedoff">enumFrom from = enumFromTo from Ziggurat</span></span>
-<span class="lineno">  119 </span>
-<span class="lineno">  120 </span>  <span class="decl"><span class="istickedoff">fromEnum PseudoRandom = 0</span>
-<span class="lineno">  121 </span><span class="spaces">  </span><span class="istickedoff">fromEnum PoissonPseudoRandom = <span class="nottickedoff">1</span></span>
-<span class="lineno">  122 </span><span class="spaces">  </span><span class="istickedoff">fromEnum LowDiscrepancy = 2</span>
-<span class="lineno">  123 </span><span class="spaces">  </span><span class="istickedoff">fromEnum Ziggurat = <span class="nottickedoff">3</span></span></span>
-<span class="lineno">  124 </span>
-<span class="lineno">  125 </span>  <span class="decl"><span class="nottickedoff">toEnum 0 = PseudoRandom</span>
-<span class="lineno">  126 </span><span class="spaces">  </span><span class="nottickedoff">toEnum 1 = PoissonPseudoRandom</span>
-<span class="lineno">  127 </span><span class="spaces">  </span><span class="nottickedoff">toEnum 2 = LowDiscrepancy</span>
-<span class="lineno">  128 </span><span class="spaces">  </span><span class="nottickedoff">toEnum 3 = Ziggurat</span>
-<span class="lineno">  129 </span><span class="spaces">  </span><span class="nottickedoff">toEnum unmatched = error (&quot;RngTrait.toEnum: Cannot match &quot; ++ show unmatched)</span></span>
-<span class="lineno">  130 </span>
-<span class="lineno">  131 </span>
-<span class="lineno">  132 </span>data StatisticsTrait = Statistics
-<span class="lineno">  133 </span>                     | GaussianStatistics
-<span class="lineno">  134 </span>                     | GeneralStatistics
-<span class="lineno">  135 </span>                     | IncrementalStatistics
-<span class="lineno">  136 </span>  deriving (<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Show</span></span></span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Eq</span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Read</span></span></span></span></span></span></span></span>)
-<span class="lineno">  137 </span>instance <span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Enum StatisticsTrait</span></span></span></span> where
-<span class="lineno">  138 </span>  <span class="decl"><span class="nottickedoff">succ Statistics = GaussianStatistics</span>
-<span class="lineno">  139 </span><span class="spaces">  </span><span class="nottickedoff">succ GaussianStatistics = GeneralStatistics</span>
-<span class="lineno">  140 </span><span class="spaces">  </span><span class="nottickedoff">succ GeneralStatistics = IncrementalStatistics</span>
-<span class="lineno">  141 </span><span class="spaces">  </span><span class="nottickedoff">succ IncrementalStatistics = error &quot;StatisticsTrait.succ: IncrementalStatistics has no successor&quot;</span></span>
+<span class="lineno">  118 </span>
+<span class="lineno">  119 </span>data RngTrait = PseudoRandom
+<span class="lineno">  120 </span>              | PoissonPseudoRandom
+<span class="lineno">  121 </span>              | LowDiscrepancy
+<span class="lineno">  122 </span>              | Ziggurat
+<span class="lineno">  123 </span>  deriving (<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Show</span></span></span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Eq</span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Read</span></span></span></span></span></span></span></span>)
+<span class="lineno">  124 </span>instance <span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Enum RngTrait</span></span></span></span> where
+<span class="lineno">  125 </span>  <span class="decl"><span class="nottickedoff">succ PseudoRandom = PoissonPseudoRandom</span>
+<span class="lineno">  126 </span><span class="spaces">  </span><span class="nottickedoff">succ PoissonPseudoRandom = LowDiscrepancy</span>
+<span class="lineno">  127 </span><span class="spaces">  </span><span class="nottickedoff">succ LowDiscrepancy = Ziggurat</span>
+<span class="lineno">  128 </span><span class="spaces">  </span><span class="nottickedoff">succ Ziggurat = error &quot;RngTrait.succ: Ziggurat has no successor&quot;</span></span>
+<span class="lineno">  129 </span>
+<span class="lineno">  130 </span>  <span class="decl"><span class="nottickedoff">pred PoissonPseudoRandom = PseudoRandom</span>
+<span class="lineno">  131 </span><span class="spaces">  </span><span class="nottickedoff">pred LowDiscrepancy = PoissonPseudoRandom</span>
+<span class="lineno">  132 </span><span class="spaces">  </span><span class="nottickedoff">pred Ziggurat = LowDiscrepancy</span>
+<span class="lineno">  133 </span><span class="spaces">  </span><span class="nottickedoff">pred PseudoRandom = error &quot;RngTrait.pred: PseudoRandom has no predecessor&quot;</span></span>
+<span class="lineno">  134 </span>
+<span class="lineno">  135 </span>  <span class="decl"><span class="nottickedoff">enumFromTo from to = go from</span>
+<span class="lineno">  136 </span><span class="spaces">    </span><span class="nottickedoff">where</span>
+<span class="lineno">  137 </span><span class="spaces">      </span><span class="nottickedoff">end = fromEnum to</span>
+<span class="lineno">  138 </span><span class="spaces">      </span><span class="nottickedoff">go v = case compare (fromEnum v) end of</span>
+<span class="lineno">  139 </span><span class="spaces">                 </span><span class="nottickedoff">LT -&gt; v : go (succ v)</span>
+<span class="lineno">  140 </span><span class="spaces">                 </span><span class="nottickedoff">EQ -&gt; [v]</span>
+<span class="lineno">  141 </span><span class="spaces">                 </span><span class="nottickedoff">GT -&gt; []</span></span>
 <span class="lineno">  142 </span>
-<span class="lineno">  143 </span>  <span class="decl"><span class="nottickedoff">pred GaussianStatistics = Statistics</span>
-<span class="lineno">  144 </span><span class="spaces">  </span><span class="nottickedoff">pred GeneralStatistics = GaussianStatistics</span>
-<span class="lineno">  145 </span><span class="spaces">  </span><span class="nottickedoff">pred IncrementalStatistics = GeneralStatistics</span>
-<span class="lineno">  146 </span><span class="spaces">  </span><span class="nottickedoff">pred Statistics = error &quot;StatisticsTrait.pred: Statistics has no predecessor&quot;</span></span>
-<span class="lineno">  147 </span>
-<span class="lineno">  148 </span>  <span class="decl"><span class="nottickedoff">enumFromTo from to = go from</span>
-<span class="lineno">  149 </span><span class="spaces">    </span><span class="nottickedoff">where</span>
-<span class="lineno">  150 </span><span class="spaces">      </span><span class="nottickedoff">end = fromEnum to</span>
-<span class="lineno">  151 </span><span class="spaces">      </span><span class="nottickedoff">go v = case compare (fromEnum v) end of</span>
-<span class="lineno">  152 </span><span class="spaces">                 </span><span class="nottickedoff">LT -&gt; v : go (succ v)</span>
-<span class="lineno">  153 </span><span class="spaces">                 </span><span class="nottickedoff">EQ -&gt; [v]</span>
-<span class="lineno">  154 </span><span class="spaces">                 </span><span class="nottickedoff">GT -&gt; []</span></span>
+<span class="lineno">  143 </span>  <span class="decl"><span class="nottickedoff">enumFrom from = enumFromTo from Ziggurat</span></span>
+<span class="lineno">  144 </span>
+<span class="lineno">  145 </span>  <span class="decl"><span class="istickedoff">fromEnum PseudoRandom = 0</span>
+<span class="lineno">  146 </span><span class="spaces">  </span><span class="istickedoff">fromEnum PoissonPseudoRandom = <span class="nottickedoff">1</span></span>
+<span class="lineno">  147 </span><span class="spaces">  </span><span class="istickedoff">fromEnum LowDiscrepancy = 2</span>
+<span class="lineno">  148 </span><span class="spaces">  </span><span class="istickedoff">fromEnum Ziggurat = <span class="nottickedoff">3</span></span></span>
+<span class="lineno">  149 </span>
+<span class="lineno">  150 </span>  <span class="decl"><span class="nottickedoff">toEnum 0 = PseudoRandom</span>
+<span class="lineno">  151 </span><span class="spaces">  </span><span class="nottickedoff">toEnum 1 = PoissonPseudoRandom</span>
+<span class="lineno">  152 </span><span class="spaces">  </span><span class="nottickedoff">toEnum 2 = LowDiscrepancy</span>
+<span class="lineno">  153 </span><span class="spaces">  </span><span class="nottickedoff">toEnum 3 = Ziggurat</span>
+<span class="lineno">  154 </span><span class="spaces">  </span><span class="nottickedoff">toEnum unmatched = error (&quot;RngTrait.toEnum: Cannot match &quot; ++ show unmatched)</span></span>
 <span class="lineno">  155 </span>
-<span class="lineno">  156 </span>  <span class="decl"><span class="nottickedoff">enumFrom from = enumFromTo from IncrementalStatistics</span></span>
-<span class="lineno">  157 </span>
-<span class="lineno">  158 </span>  <span class="decl"><span class="istickedoff">fromEnum Statistics = 0</span>
-<span class="lineno">  159 </span><span class="spaces">  </span><span class="istickedoff">fromEnum GaussianStatistics = 1</span>
-<span class="lineno">  160 </span><span class="spaces">  </span><span class="istickedoff">fromEnum GeneralStatistics = 2</span>
-<span class="lineno">  161 </span><span class="spaces">  </span><span class="istickedoff">fromEnum IncrementalStatistics = 3</span></span>
-<span class="lineno">  162 </span>
-<span class="lineno">  163 </span>  <span class="decl"><span class="nottickedoff">toEnum 0 = Statistics</span>
-<span class="lineno">  164 </span><span class="spaces">  </span><span class="nottickedoff">toEnum 1 = GaussianStatistics</span>
-<span class="lineno">  165 </span><span class="spaces">  </span><span class="nottickedoff">toEnum 2 = GeneralStatistics</span>
-<span class="lineno">  166 </span><span class="spaces">  </span><span class="nottickedoff">toEnum 3 = IncrementalStatistics</span>
-<span class="lineno">  167 </span><span class="spaces">  </span><span class="nottickedoff">toEnum unmatched = error (&quot;StatisticsTrait.toEnum: Cannot match &quot; ++ show unmatched)</span></span>
-<span class="lineno">  168 </span>
-<span class="lineno">  169 </span>
-<span class="lineno">  170 </span>data BinomialTree = JarrowRudd
-<span class="lineno">  171 </span>                  | CoxRossRubinstein
-<span class="lineno">  172 </span>                  | AdditiveEQPBinomialTree
-<span class="lineno">  173 </span>                  | Trigeorgis
-<span class="lineno">  174 </span>                  | Tian
-<span class="lineno">  175 </span>                  | LeisenReimer
-<span class="lineno">  176 </span>                  | Joshi4
-<span class="lineno">  177 </span>                  | ExtendedJarrowRudd
-<span class="lineno">  178 </span>                  | ExtendedCoxRossRubinstein
-<span class="lineno">  179 </span>                  | ExtendedAdditiveEQPBinomialTree
-<span class="lineno">  180 </span>                  | ExtendedTrigeorgis
-<span class="lineno">  181 </span>                  | ExtendedTian
-<span class="lineno">  182 </span>                  | ExtendedLeisenReimer
-<span class="lineno">  183 </span>                  | ExtendedJoshi4
-<span class="lineno">  184 </span>  deriving (<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Show</span></span></span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Eq</span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Read</span></span></span></span></span></span></span></span>)
-<span class="lineno">  185 </span>instance <span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Enum BinomialTree</span></span></span></span> where
-<span class="lineno">  186 </span>  <span class="decl"><span class="nottickedoff">succ JarrowRudd = CoxRossRubinstein</span>
-<span class="lineno">  187 </span><span class="spaces">  </span><span class="nottickedoff">succ CoxRossRubinstein = AdditiveEQPBinomialTree</span>
-<span class="lineno">  188 </span><span class="spaces">  </span><span class="nottickedoff">succ AdditiveEQPBinomialTree = Trigeorgis</span>
-<span class="lineno">  189 </span><span class="spaces">  </span><span class="nottickedoff">succ Trigeorgis = Tian</span>
-<span class="lineno">  190 </span><span class="spaces">  </span><span class="nottickedoff">succ Tian = LeisenReimer</span>
-<span class="lineno">  191 </span><span class="spaces">  </span><span class="nottickedoff">succ LeisenReimer = Joshi4</span>
-<span class="lineno">  192 </span><span class="spaces">  </span><span class="nottickedoff">succ Joshi4 = ExtendedJarrowRudd</span>
-<span class="lineno">  193 </span><span class="spaces">  </span><span class="nottickedoff">succ ExtendedJarrowRudd = ExtendedCoxRossRubinstein</span>
-<span class="lineno">  194 </span><span class="spaces">  </span><span class="nottickedoff">succ ExtendedCoxRossRubinstein = ExtendedAdditiveEQPBinomialTree</span>
-<span class="lineno">  195 </span><span class="spaces">  </span><span class="nottickedoff">succ ExtendedAdditiveEQPBinomialTree = ExtendedTrigeorgis</span>
-<span class="lineno">  196 </span><span class="spaces">  </span><span class="nottickedoff">succ ExtendedTrigeorgis = ExtendedTian</span>
-<span class="lineno">  197 </span><span class="spaces">  </span><span class="nottickedoff">succ ExtendedTian = ExtendedLeisenReimer</span>
-<span class="lineno">  198 </span><span class="spaces">  </span><span class="nottickedoff">succ ExtendedLeisenReimer = ExtendedJoshi4</span>
-<span class="lineno">  199 </span><span class="spaces">  </span><span class="nottickedoff">succ ExtendedJoshi4 = error &quot;BinomialTree.succ: ExtendedJoshi4 has no successor&quot;</span></span>
-<span class="lineno">  200 </span>
-<span class="lineno">  201 </span>  <span class="decl"><span class="nottickedoff">pred CoxRossRubinstein = JarrowRudd</span>
-<span class="lineno">  202 </span><span class="spaces">  </span><span class="nottickedoff">pred AdditiveEQPBinomialTree = CoxRossRubinstein</span>
-<span class="lineno">  203 </span><span class="spaces">  </span><span class="nottickedoff">pred Trigeorgis = AdditiveEQPBinomialTree</span>
-<span class="lineno">  204 </span><span class="spaces">  </span><span class="nottickedoff">pred Tian = Trigeorgis</span>
-<span class="lineno">  205 </span><span class="spaces">  </span><span class="nottickedoff">pred LeisenReimer = Tian</span>
-<span class="lineno">  206 </span><span class="spaces">  </span><span class="nottickedoff">pred Joshi4 = LeisenReimer</span>
-<span class="lineno">  207 </span><span class="spaces">  </span><span class="nottickedoff">pred ExtendedJarrowRudd = Joshi4</span>
-<span class="lineno">  208 </span><span class="spaces">  </span><span class="nottickedoff">pred ExtendedCoxRossRubinstein = ExtendedJarrowRudd</span>
-<span class="lineno">  209 </span><span class="spaces">  </span><span class="nottickedoff">pred ExtendedAdditiveEQPBinomialTree = ExtendedCoxRossRubinstein</span>
-<span class="lineno">  210 </span><span class="spaces">  </span><span class="nottickedoff">pred ExtendedTrigeorgis = ExtendedAdditiveEQPBinomialTree</span>
-<span class="lineno">  211 </span><span class="spaces">  </span><span class="nottickedoff">pred ExtendedTian = ExtendedTrigeorgis</span>
-<span class="lineno">  212 </span><span class="spaces">  </span><span class="nottickedoff">pred ExtendedLeisenReimer = ExtendedTian</span>
-<span class="lineno">  213 </span><span class="spaces">  </span><span class="nottickedoff">pred ExtendedJoshi4 = ExtendedLeisenReimer</span>
-<span class="lineno">  214 </span><span class="spaces">  </span><span class="nottickedoff">pred JarrowRudd = error &quot;BinomialTree.pred: JarrowRudd has no predecessor&quot;</span></span>
-<span class="lineno">  215 </span>
-<span class="lineno">  216 </span>  <span class="decl"><span class="nottickedoff">enumFromTo from to = go from</span>
-<span class="lineno">  217 </span><span class="spaces">    </span><span class="nottickedoff">where</span>
-<span class="lineno">  218 </span><span class="spaces">      </span><span class="nottickedoff">end = fromEnum to</span>
-<span class="lineno">  219 </span><span class="spaces">      </span><span class="nottickedoff">go v = case compare (fromEnum v) end of</span>
-<span class="lineno">  220 </span><span class="spaces">                 </span><span class="nottickedoff">LT -&gt; v : go (succ v)</span>
-<span class="lineno">  221 </span><span class="spaces">                 </span><span class="nottickedoff">EQ -&gt; [v]</span>
-<span class="lineno">  222 </span><span class="spaces">                 </span><span class="nottickedoff">GT -&gt; []</span></span>
-<span class="lineno">  223 </span>
-<span class="lineno">  224 </span>  <span class="decl"><span class="nottickedoff">enumFrom from = enumFromTo from ExtendedJoshi4</span></span>
+<span class="lineno">  156 </span>
+<span class="lineno">  157 </span>data StatisticsTrait = Statistics
+<span class="lineno">  158 </span>                     | GaussianStatistics
+<span class="lineno">  159 </span>                     | GeneralStatistics
+<span class="lineno">  160 </span>                     | IncrementalStatistics
+<span class="lineno">  161 </span>  deriving (<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Show</span></span></span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Eq</span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Read</span></span></span></span></span></span></span></span>)
+<span class="lineno">  162 </span>instance <span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Enum StatisticsTrait</span></span></span></span> where
+<span class="lineno">  163 </span>  <span class="decl"><span class="nottickedoff">succ Statistics = GaussianStatistics</span>
+<span class="lineno">  164 </span><span class="spaces">  </span><span class="nottickedoff">succ GaussianStatistics = GeneralStatistics</span>
+<span class="lineno">  165 </span><span class="spaces">  </span><span class="nottickedoff">succ GeneralStatistics = IncrementalStatistics</span>
+<span class="lineno">  166 </span><span class="spaces">  </span><span class="nottickedoff">succ IncrementalStatistics = error &quot;StatisticsTrait.succ: IncrementalStatistics has no successor&quot;</span></span>
+<span class="lineno">  167 </span>
+<span class="lineno">  168 </span>  <span class="decl"><span class="nottickedoff">pred GaussianStatistics = Statistics</span>
+<span class="lineno">  169 </span><span class="spaces">  </span><span class="nottickedoff">pred GeneralStatistics = GaussianStatistics</span>
+<span class="lineno">  170 </span><span class="spaces">  </span><span class="nottickedoff">pred IncrementalStatistics = GeneralStatistics</span>
+<span class="lineno">  171 </span><span class="spaces">  </span><span class="nottickedoff">pred Statistics = error &quot;StatisticsTrait.pred: Statistics has no predecessor&quot;</span></span>
+<span class="lineno">  172 </span>
+<span class="lineno">  173 </span>  <span class="decl"><span class="nottickedoff">enumFromTo from to = go from</span>
+<span class="lineno">  174 </span><span class="spaces">    </span><span class="nottickedoff">where</span>
+<span class="lineno">  175 </span><span class="spaces">      </span><span class="nottickedoff">end = fromEnum to</span>
+<span class="lineno">  176 </span><span class="spaces">      </span><span class="nottickedoff">go v = case compare (fromEnum v) end of</span>
+<span class="lineno">  177 </span><span class="spaces">                 </span><span class="nottickedoff">LT -&gt; v : go (succ v)</span>
+<span class="lineno">  178 </span><span class="spaces">                 </span><span class="nottickedoff">EQ -&gt; [v]</span>
+<span class="lineno">  179 </span><span class="spaces">                 </span><span class="nottickedoff">GT -&gt; []</span></span>
+<span class="lineno">  180 </span>
+<span class="lineno">  181 </span>  <span class="decl"><span class="nottickedoff">enumFrom from = enumFromTo from IncrementalStatistics</span></span>
+<span class="lineno">  182 </span>
+<span class="lineno">  183 </span>  <span class="decl"><span class="istickedoff">fromEnum Statistics = 0</span>
+<span class="lineno">  184 </span><span class="spaces">  </span><span class="istickedoff">fromEnum GaussianStatistics = 1</span>
+<span class="lineno">  185 </span><span class="spaces">  </span><span class="istickedoff">fromEnum GeneralStatistics = 2</span>
+<span class="lineno">  186 </span><span class="spaces">  </span><span class="istickedoff">fromEnum IncrementalStatistics = 3</span></span>
+<span class="lineno">  187 </span>
+<span class="lineno">  188 </span>  <span class="decl"><span class="nottickedoff">toEnum 0 = Statistics</span>
+<span class="lineno">  189 </span><span class="spaces">  </span><span class="nottickedoff">toEnum 1 = GaussianStatistics</span>
+<span class="lineno">  190 </span><span class="spaces">  </span><span class="nottickedoff">toEnum 2 = GeneralStatistics</span>
+<span class="lineno">  191 </span><span class="spaces">  </span><span class="nottickedoff">toEnum 3 = IncrementalStatistics</span>
+<span class="lineno">  192 </span><span class="spaces">  </span><span class="nottickedoff">toEnum unmatched = error (&quot;StatisticsTrait.toEnum: Cannot match &quot; ++ show unmatched)</span></span>
+<span class="lineno">  193 </span>
+<span class="lineno">  194 </span>
+<span class="lineno">  195 </span>data BinomialTree = JarrowRudd
+<span class="lineno">  196 </span>                  | CoxRossRubinstein
+<span class="lineno">  197 </span>                  | AdditiveEQPBinomialTree
+<span class="lineno">  198 </span>                  | Trigeorgis
+<span class="lineno">  199 </span>                  | Tian
+<span class="lineno">  200 </span>                  | LeisenReimer
+<span class="lineno">  201 </span>                  | Joshi4
+<span class="lineno">  202 </span>                  | ExtendedJarrowRudd
+<span class="lineno">  203 </span>                  | ExtendedCoxRossRubinstein
+<span class="lineno">  204 </span>                  | ExtendedAdditiveEQPBinomialTree
+<span class="lineno">  205 </span>                  | ExtendedTrigeorgis
+<span class="lineno">  206 </span>                  | ExtendedTian
+<span class="lineno">  207 </span>                  | ExtendedLeisenReimer
+<span class="lineno">  208 </span>                  | ExtendedJoshi4
+<span class="lineno">  209 </span>  deriving (<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Show</span></span></span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Eq</span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Read</span></span></span></span></span></span></span></span>)
+<span class="lineno">  210 </span>instance <span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Enum BinomialTree</span></span></span></span> where
+<span class="lineno">  211 </span>  <span class="decl"><span class="nottickedoff">succ JarrowRudd = CoxRossRubinstein</span>
+<span class="lineno">  212 </span><span class="spaces">  </span><span class="nottickedoff">succ CoxRossRubinstein = AdditiveEQPBinomialTree</span>
+<span class="lineno">  213 </span><span class="spaces">  </span><span class="nottickedoff">succ AdditiveEQPBinomialTree = Trigeorgis</span>
+<span class="lineno">  214 </span><span class="spaces">  </span><span class="nottickedoff">succ Trigeorgis = Tian</span>
+<span class="lineno">  215 </span><span class="spaces">  </span><span class="nottickedoff">succ Tian = LeisenReimer</span>
+<span class="lineno">  216 </span><span class="spaces">  </span><span class="nottickedoff">succ LeisenReimer = Joshi4</span>
+<span class="lineno">  217 </span><span class="spaces">  </span><span class="nottickedoff">succ Joshi4 = ExtendedJarrowRudd</span>
+<span class="lineno">  218 </span><span class="spaces">  </span><span class="nottickedoff">succ ExtendedJarrowRudd = ExtendedCoxRossRubinstein</span>
+<span class="lineno">  219 </span><span class="spaces">  </span><span class="nottickedoff">succ ExtendedCoxRossRubinstein = ExtendedAdditiveEQPBinomialTree</span>
+<span class="lineno">  220 </span><span class="spaces">  </span><span class="nottickedoff">succ ExtendedAdditiveEQPBinomialTree = ExtendedTrigeorgis</span>
+<span class="lineno">  221 </span><span class="spaces">  </span><span class="nottickedoff">succ ExtendedTrigeorgis = ExtendedTian</span>
+<span class="lineno">  222 </span><span class="spaces">  </span><span class="nottickedoff">succ ExtendedTian = ExtendedLeisenReimer</span>
+<span class="lineno">  223 </span><span class="spaces">  </span><span class="nottickedoff">succ ExtendedLeisenReimer = ExtendedJoshi4</span>
+<span class="lineno">  224 </span><span class="spaces">  </span><span class="nottickedoff">succ ExtendedJoshi4 = error &quot;BinomialTree.succ: ExtendedJoshi4 has no successor&quot;</span></span>
 <span class="lineno">  225 </span>
-<span class="lineno">  226 </span>  <span class="decl"><span class="istickedoff">fromEnum JarrowRudd = 0</span>
-<span class="lineno">  227 </span><span class="spaces">  </span><span class="istickedoff">fromEnum CoxRossRubinstein = 1</span>
-<span class="lineno">  228 </span><span class="spaces">  </span><span class="istickedoff">fromEnum AdditiveEQPBinomialTree = 2</span>
-<span class="lineno">  229 </span><span class="spaces">  </span><span class="istickedoff">fromEnum Trigeorgis = 3</span>
-<span class="lineno">  230 </span><span class="spaces">  </span><span class="istickedoff">fromEnum Tian = 4</span>
-<span class="lineno">  231 </span><span class="spaces">  </span><span class="istickedoff">fromEnum LeisenReimer = 5</span>
-<span class="lineno">  232 </span><span class="spaces">  </span><span class="istickedoff">fromEnum Joshi4 = 6</span>
-<span class="lineno">  233 </span><span class="spaces">  </span><span class="istickedoff">fromEnum ExtendedJarrowRudd = 7</span>
-<span class="lineno">  234 </span><span class="spaces">  </span><span class="istickedoff">fromEnum ExtendedCoxRossRubinstein = 8</span>
-<span class="lineno">  235 </span><span class="spaces">  </span><span class="istickedoff">fromEnum ExtendedAdditiveEQPBinomialTree = 9</span>
-<span class="lineno">  236 </span><span class="spaces">  </span><span class="istickedoff">fromEnum ExtendedTrigeorgis = 10</span>
-<span class="lineno">  237 </span><span class="spaces">  </span><span class="istickedoff">fromEnum ExtendedTian = 11</span>
-<span class="lineno">  238 </span><span class="spaces">  </span><span class="istickedoff">fromEnum ExtendedLeisenReimer = 12</span>
-<span class="lineno">  239 </span><span class="spaces">  </span><span class="istickedoff">fromEnum ExtendedJoshi4 = 13</span></span>
+<span class="lineno">  226 </span>  <span class="decl"><span class="nottickedoff">pred CoxRossRubinstein = JarrowRudd</span>
+<span class="lineno">  227 </span><span class="spaces">  </span><span class="nottickedoff">pred AdditiveEQPBinomialTree = CoxRossRubinstein</span>
+<span class="lineno">  228 </span><span class="spaces">  </span><span class="nottickedoff">pred Trigeorgis = AdditiveEQPBinomialTree</span>
+<span class="lineno">  229 </span><span class="spaces">  </span><span class="nottickedoff">pred Tian = Trigeorgis</span>
+<span class="lineno">  230 </span><span class="spaces">  </span><span class="nottickedoff">pred LeisenReimer = Tian</span>
+<span class="lineno">  231 </span><span class="spaces">  </span><span class="nottickedoff">pred Joshi4 = LeisenReimer</span>
+<span class="lineno">  232 </span><span class="spaces">  </span><span class="nottickedoff">pred ExtendedJarrowRudd = Joshi4</span>
+<span class="lineno">  233 </span><span class="spaces">  </span><span class="nottickedoff">pred ExtendedCoxRossRubinstein = ExtendedJarrowRudd</span>
+<span class="lineno">  234 </span><span class="spaces">  </span><span class="nottickedoff">pred ExtendedAdditiveEQPBinomialTree = ExtendedCoxRossRubinstein</span>
+<span class="lineno">  235 </span><span class="spaces">  </span><span class="nottickedoff">pred ExtendedTrigeorgis = ExtendedAdditiveEQPBinomialTree</span>
+<span class="lineno">  236 </span><span class="spaces">  </span><span class="nottickedoff">pred ExtendedTian = ExtendedTrigeorgis</span>
+<span class="lineno">  237 </span><span class="spaces">  </span><span class="nottickedoff">pred ExtendedLeisenReimer = ExtendedTian</span>
+<span class="lineno">  238 </span><span class="spaces">  </span><span class="nottickedoff">pred ExtendedJoshi4 = ExtendedLeisenReimer</span>
+<span class="lineno">  239 </span><span class="spaces">  </span><span class="nottickedoff">pred JarrowRudd = error &quot;BinomialTree.pred: JarrowRudd has no predecessor&quot;</span></span>
 <span class="lineno">  240 </span>
-<span class="lineno">  241 </span>  <span class="decl"><span class="nottickedoff">toEnum 0 = JarrowRudd</span>
-<span class="lineno">  242 </span><span class="spaces">  </span><span class="nottickedoff">toEnum 1 = CoxRossRubinstein</span>
-<span class="lineno">  243 </span><span class="spaces">  </span><span class="nottickedoff">toEnum 2 = AdditiveEQPBinomialTree</span>
-<span class="lineno">  244 </span><span class="spaces">  </span><span class="nottickedoff">toEnum 3 = Trigeorgis</span>
-<span class="lineno">  245 </span><span class="spaces">  </span><span class="nottickedoff">toEnum 4 = Tian</span>
-<span class="lineno">  246 </span><span class="spaces">  </span><span class="nottickedoff">toEnum 5 = LeisenReimer</span>
-<span class="lineno">  247 </span><span class="spaces">  </span><span class="nottickedoff">toEnum 6 = Joshi4</span>
-<span class="lineno">  248 </span><span class="spaces">  </span><span class="nottickedoff">toEnum 7 = ExtendedJarrowRudd</span>
-<span class="lineno">  249 </span><span class="spaces">  </span><span class="nottickedoff">toEnum 8 = ExtendedCoxRossRubinstein</span>
-<span class="lineno">  250 </span><span class="spaces">  </span><span class="nottickedoff">toEnum 9 = ExtendedAdditiveEQPBinomialTree</span>
-<span class="lineno">  251 </span><span class="spaces">  </span><span class="nottickedoff">toEnum 10 = ExtendedTrigeorgis</span>
-<span class="lineno">  252 </span><span class="spaces">  </span><span class="nottickedoff">toEnum 11 = ExtendedTian</span>
-<span class="lineno">  253 </span><span class="spaces">  </span><span class="nottickedoff">toEnum 12 = ExtendedLeisenReimer</span>
-<span class="lineno">  254 </span><span class="spaces">  </span><span class="nottickedoff">toEnum 13 = ExtendedJoshi4</span>
-<span class="lineno">  255 </span><span class="spaces">  </span><span class="nottickedoff">toEnum unmatched = error (&quot;BinomialTree.toEnum: Cannot match &quot; ++ show unmatched)</span></span>
-<span class="lineno">  256 </span>
-<span class="lineno">  257 </span>
-<span class="lineno">  258 </span>data BoundaryConditionSide = BoundaryNone
-<span class="lineno">  259 </span>                           | Upper
-<span class="lineno">  260 </span>                           | Lower
-<span class="lineno">  261 </span>  deriving (<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Enum</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Show</span></span></span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Eq</span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Read</span></span></span></span></span></span></span></span>)
-<span class="lineno">  262 </span>
-<span class="lineno">  263 </span>
-<span class="lineno">  264 </span>data PolynomialType = Monomial
-<span class="lineno">  265 </span>                    | Laguerre
-<span class="lineno">  266 </span>                    | Hermite
-<span class="lineno">  267 </span>                    | Hyperbolic
-<span class="lineno">  268 </span>                    | Legendre
-<span class="lineno">  269 </span>                    | Chebyshev
-<span class="lineno">  270 </span>                    | Chebyshev2nd
-<span class="lineno">  271 </span>  deriving (<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="istickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Enum</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Show</span></span></span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Eq</span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Read</span></span></span></span></span></span></span></span>)
-<span class="lineno">  272 </span>
-<span class="lineno">  273 </span>
-<span class="lineno">  274 </span>-- |Characteristic-function contour/control-variate choice used by Heston integrations.
-<span class="lineno">  275 </span>data ComplexLogFormula = Gatheral
-<span class="lineno">  276 </span>                       | BranchCorrection
-<span class="lineno">  277 </span>                       | AndersenPiterbarg
-<span class="lineno">  278 </span>                       | AndersenPiterbargOptCV
-<span class="lineno">  279 </span>                       | AsymptoticChF
-<span class="lineno">  280 </span>                       | AngledContour
-<span class="lineno">  281 </span>                       | AngledContourNoCV
-<span class="lineno">  282 </span>                       | OptimalCV
-<span class="lineno">  283 </span>  deriving (<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="istickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Enum</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Show</span></span></span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Eq</span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Read</span></span></span></span></span></span></span></span>)
-<span class="lineno">  284 </span>
-<span class="lineno">  285 </span>
-<span class="lineno">  286 </span>data CmsMarketCalibrationType = OnSpread
-<span class="lineno">  287 </span>                              | OnPrice
-<span class="lineno">  288 </span>                              | OnForwardCmsPrice
-<span class="lineno">  289 </span>  deriving (<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Enum</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Show</span></span></span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Eq</span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Read</span></span></span></span></span></span></span></span>)
-<span class="lineno">  290 </span>
-<span class="lineno">  291 </span>
-<span class="lineno">  292 </span>data SobolDirectionIntegers = Unit
-<span class="lineno">  293 </span>                            | Jaeckel
-<span class="lineno">  294 </span>                            | SobolLevitan
-<span class="lineno">  295 </span>                            | SobolLevitanLemieux
-<span class="lineno">  296 </span>                            | JoeKuoD5
-<span class="lineno">  297 </span>                            | JoeKuoD6
-<span class="lineno">  298 </span>                            | JoeKuoD7
-<span class="lineno">  299 </span>                            | Kuo
-<span class="lineno">  300 </span>                            | Kuo2
-<span class="lineno">  301 </span>                            | Kuo3
-<span class="lineno">  302 </span>  deriving (<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Enum</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Show</span></span></span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Eq</span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Read</span></span></span></span></span></span></span></span>)
-<span class="lineno">  303 </span>
-<span class="lineno">  304 </span>
-<span class="lineno">  305 </span>
-<span class="lineno">  306 </span>
-<span class="lineno">  307 </span>
-<span class="lineno">  308 </span>
+<span class="lineno">  241 </span>  <span class="decl"><span class="nottickedoff">enumFromTo from to = go from</span>
+<span class="lineno">  242 </span><span class="spaces">    </span><span class="nottickedoff">where</span>
+<span class="lineno">  243 </span><span class="spaces">      </span><span class="nottickedoff">end = fromEnum to</span>
+<span class="lineno">  244 </span><span class="spaces">      </span><span class="nottickedoff">go v = case compare (fromEnum v) end of</span>
+<span class="lineno">  245 </span><span class="spaces">                 </span><span class="nottickedoff">LT -&gt; v : go (succ v)</span>
+<span class="lineno">  246 </span><span class="spaces">                 </span><span class="nottickedoff">EQ -&gt; [v]</span>
+<span class="lineno">  247 </span><span class="spaces">                 </span><span class="nottickedoff">GT -&gt; []</span></span>
+<span class="lineno">  248 </span>
+<span class="lineno">  249 </span>  <span class="decl"><span class="nottickedoff">enumFrom from = enumFromTo from ExtendedJoshi4</span></span>
+<span class="lineno">  250 </span>
+<span class="lineno">  251 </span>  <span class="decl"><span class="istickedoff">fromEnum JarrowRudd = 0</span>
+<span class="lineno">  252 </span><span class="spaces">  </span><span class="istickedoff">fromEnum CoxRossRubinstein = 1</span>
+<span class="lineno">  253 </span><span class="spaces">  </span><span class="istickedoff">fromEnum AdditiveEQPBinomialTree = 2</span>
+<span class="lineno">  254 </span><span class="spaces">  </span><span class="istickedoff">fromEnum Trigeorgis = 3</span>
+<span class="lineno">  255 </span><span class="spaces">  </span><span class="istickedoff">fromEnum Tian = 4</span>
+<span class="lineno">  256 </span><span class="spaces">  </span><span class="istickedoff">fromEnum LeisenReimer = 5</span>
+<span class="lineno">  257 </span><span class="spaces">  </span><span class="istickedoff">fromEnum Joshi4 = 6</span>
+<span class="lineno">  258 </span><span class="spaces">  </span><span class="istickedoff">fromEnum ExtendedJarrowRudd = 7</span>
+<span class="lineno">  259 </span><span class="spaces">  </span><span class="istickedoff">fromEnum ExtendedCoxRossRubinstein = 8</span>
+<span class="lineno">  260 </span><span class="spaces">  </span><span class="istickedoff">fromEnum ExtendedAdditiveEQPBinomialTree = 9</span>
+<span class="lineno">  261 </span><span class="spaces">  </span><span class="istickedoff">fromEnum ExtendedTrigeorgis = 10</span>
+<span class="lineno">  262 </span><span class="spaces">  </span><span class="istickedoff">fromEnum ExtendedTian = 11</span>
+<span class="lineno">  263 </span><span class="spaces">  </span><span class="istickedoff">fromEnum ExtendedLeisenReimer = 12</span>
+<span class="lineno">  264 </span><span class="spaces">  </span><span class="istickedoff">fromEnum ExtendedJoshi4 = 13</span></span>
+<span class="lineno">  265 </span>
+<span class="lineno">  266 </span>  <span class="decl"><span class="nottickedoff">toEnum 0 = JarrowRudd</span>
+<span class="lineno">  267 </span><span class="spaces">  </span><span class="nottickedoff">toEnum 1 = CoxRossRubinstein</span>
+<span class="lineno">  268 </span><span class="spaces">  </span><span class="nottickedoff">toEnum 2 = AdditiveEQPBinomialTree</span>
+<span class="lineno">  269 </span><span class="spaces">  </span><span class="nottickedoff">toEnum 3 = Trigeorgis</span>
+<span class="lineno">  270 </span><span class="spaces">  </span><span class="nottickedoff">toEnum 4 = Tian</span>
+<span class="lineno">  271 </span><span class="spaces">  </span><span class="nottickedoff">toEnum 5 = LeisenReimer</span>
+<span class="lineno">  272 </span><span class="spaces">  </span><span class="nottickedoff">toEnum 6 = Joshi4</span>
+<span class="lineno">  273 </span><span class="spaces">  </span><span class="nottickedoff">toEnum 7 = ExtendedJarrowRudd</span>
+<span class="lineno">  274 </span><span class="spaces">  </span><span class="nottickedoff">toEnum 8 = ExtendedCoxRossRubinstein</span>
+<span class="lineno">  275 </span><span class="spaces">  </span><span class="nottickedoff">toEnum 9 = ExtendedAdditiveEQPBinomialTree</span>
+<span class="lineno">  276 </span><span class="spaces">  </span><span class="nottickedoff">toEnum 10 = ExtendedTrigeorgis</span>
+<span class="lineno">  277 </span><span class="spaces">  </span><span class="nottickedoff">toEnum 11 = ExtendedTian</span>
+<span class="lineno">  278 </span><span class="spaces">  </span><span class="nottickedoff">toEnum 12 = ExtendedLeisenReimer</span>
+<span class="lineno">  279 </span><span class="spaces">  </span><span class="nottickedoff">toEnum 13 = ExtendedJoshi4</span>
+<span class="lineno">  280 </span><span class="spaces">  </span><span class="nottickedoff">toEnum unmatched = error (&quot;BinomialTree.toEnum: Cannot match &quot; ++ show unmatched)</span></span>
+<span class="lineno">  281 </span>
+<span class="lineno">  282 </span>
+<span class="lineno">  283 </span>data BoundaryConditionSide = BoundaryNone
+<span class="lineno">  284 </span>                           | Upper
+<span class="lineno">  285 </span>                           | Lower
+<span class="lineno">  286 </span>  deriving (<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Enum</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Show</span></span></span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Eq</span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Read</span></span></span></span></span></span></span></span>)
+<span class="lineno">  287 </span>
+<span class="lineno">  288 </span>
+<span class="lineno">  289 </span>data PolynomialType = Monomial
+<span class="lineno">  290 </span>                    | Laguerre
+<span class="lineno">  291 </span>                    | Hermite
+<span class="lineno">  292 </span>                    | Hyperbolic
+<span class="lineno">  293 </span>                    | Legendre
+<span class="lineno">  294 </span>                    | Chebyshev
+<span class="lineno">  295 </span>                    | Chebyshev2nd
+<span class="lineno">  296 </span>  deriving (<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="istickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Enum</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Show</span></span></span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Eq</span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Read</span></span></span></span></span></span></span></span>)
+<span class="lineno">  297 </span>
+<span class="lineno">  298 </span>
+<span class="lineno">  299 </span>-- |Characteristic-function contour/control-variate choice used by Heston integrations.
+<span class="lineno">  300 </span>data ComplexLogFormula = Gatheral
+<span class="lineno">  301 </span>                       | BranchCorrection
+<span class="lineno">  302 </span>                       | AndersenPiterbarg
+<span class="lineno">  303 </span>                       | AndersenPiterbargOptCV
+<span class="lineno">  304 </span>                       | AsymptoticChF
+<span class="lineno">  305 </span>                       | AngledContour
+<span class="lineno">  306 </span>                       | AngledContourNoCV
+<span class="lineno">  307 </span>                       | OptimalCV
+<span class="lineno">  308 </span>  deriving (<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="istickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Enum</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Show</span></span></span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Eq</span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Read</span></span></span></span></span></span></span></span>)
 <span class="lineno">  309 </span>
 <span class="lineno">  310 </span>
-<span class="lineno">  311 </span>
-<span class="lineno">  312 </span>
-<span class="lineno">  313 </span>
-<span class="lineno">  314 </span>
+<span class="lineno">  311 </span>data CmsMarketCalibrationType = OnSpread
+<span class="lineno">  312 </span>                              | OnPrice
+<span class="lineno">  313 </span>                              | OnForwardCmsPrice
+<span class="lineno">  314 </span>  deriving (<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Enum</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Show</span></span></span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Eq</span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Read</span></span></span></span></span></span></span></span>)
 <span class="lineno">  315 </span>
 <span class="lineno">  316 </span>
-<span class="lineno">  317 </span>-- |rounds a value to the precision and rule carried by the given 'Rounding'
-<span class="lineno">  318 </span>applyRounding :: (Rounding) -- ^rounding
-<span class="lineno">  319 </span> -&gt; (Double) -- ^value
-<span class="lineno">  320 </span> -&gt; (Double)
-<span class="lineno">  321 </span><span class="decl"><span class="istickedoff">applyRounding a1 a2 =</span>
-<span class="lineno">  322 </span><span class="spaces">  </span><span class="istickedoff">C2HSImp.unsafePerformIO $</span>
-<span class="lineno">  323 </span><span class="spaces">  </span><span class="istickedoff">withRounding a1 $ \a1' -&gt; </span>
-<span class="lineno">  324 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = realToFrac a2} in </span>
-<span class="lineno">  325 </span><span class="spaces">  </span><span class="istickedoff">applyRounding'_ a1' a2' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  326 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
-<span class="lineno">  327 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  317 </span>data SobolDirectionIntegers = Unit
+<span class="lineno">  318 </span>                            | Jaeckel
+<span class="lineno">  319 </span>                            | SobolLevitan
+<span class="lineno">  320 </span>                            | SobolLevitanLemieux
+<span class="lineno">  321 </span>                            | JoeKuoD5
+<span class="lineno">  322 </span>                            | JoeKuoD6
+<span class="lineno">  323 </span>                            | JoeKuoD7
+<span class="lineno">  324 </span>                            | Kuo
+<span class="lineno">  325 </span>                            | Kuo2
+<span class="lineno">  326 </span>                            | Kuo3
+<span class="lineno">  327 </span>  deriving (<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="istickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Enum</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Show</span></span></span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Eq</span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Read</span></span></span></span></span></span></span></span>)
 <span class="lineno">  328 </span>
 <span class="lineno">  329 </span>
 <span class="lineno">  330 </span>
-<span class="lineno">  331 </span>-- |Minimizes an arbitrary Haskell-defined cost function via QuantLib's general-purpose
-<span class="lineno">  332 </span>-- 'Problem'\/'OptimizationMethod' machinery -- unlike 'QuantLib.Model.calibrate', which drives a
-<span class="lineno">  333 </span>-- 'QuantLib.Model.CalibratedModel''s own built-in calibration error against bound
-<span class="lineno">  334 </span>-- 'QuantLib.Model.CalibrationHelper's, this takes any 'RealVector -&gt; Double' objective. The cost
-<span class="lineno">  335 </span>-- function crosses back into Haskell once per outer optimizer iteration, over the whole parameter
-<span class="lineno">  336 </span>-- vector, not once per component -- see CLAUDE.md's &quot;coarsen the language-boundary crossing&quot;
-<span class="lineno">  337 </span>-- bullet and 'QuantLib.Internal.Type.withCostFunction'.
-<span class="lineno">  338 </span>optimize :: (RealVector -&gt; Double) -- ^cost function
-<span class="lineno">  339 </span> -&gt; (RealVector) -- ^initial guess
-<span class="lineno">  340 </span> -&gt; (Maybe Constraint) -&gt; (OptimizationMethod) -&gt; (EndCriteria) -&gt; IO ((RealVector), (Double), (EndCriteriaType))
-<span class="lineno">  341 </span><span class="decl"><span class="istickedoff">optimize a1 a2 a3 a4 a5 =</span>
-<span class="lineno">  342 </span><span class="spaces">  </span><span class="istickedoff">withCostFunction a1 $ \a1' -&gt; </span>
-<span class="lineno">  343 </span><span class="spaces">  </span><span class="istickedoff">withRealVector a2 $ \(a2'1, a2'2) -&gt; </span>
-<span class="lineno">  344 </span><span class="spaces">  </span><span class="istickedoff">withMaybeConstraint a3 $ \a3' -&gt; </span>
-<span class="lineno">  345 </span><span class="spaces">  </span><span class="istickedoff">withOptimizationMethod a4 $ \a4' -&gt; </span>
-<span class="lineno">  346 </span><span class="spaces">  </span><span class="istickedoff">withEndCriteria a5 $ \a5' -&gt; </span>
-<span class="lineno">  347 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a6'1, a6'2) -&gt; </span>
-<span class="lineno">  348 </span><span class="spaces">  </span><span class="istickedoff">alloca $ \a7' -&gt; </span>
-<span class="lineno">  349 </span><span class="spaces">  </span><span class="istickedoff">alloca $ \a8' -&gt; </span>
-<span class="lineno">  350 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a9' -&gt; </span>
-<span class="lineno">  351 </span><span class="spaces">  </span><span class="istickedoff">optimize'_ a1' a2'1  a2'2 a3' a4' a5' a6'1  a6'2 a7' a8' a9' &gt;&gt;</span>
-<span class="lineno">  352 </span><span class="spaces">  </span><span class="istickedoff">peekRealVector  a6'1  a6'2&gt;&gt;= \a6'' -&gt; </span>
-<span class="lineno">  353 </span><span class="spaces">  </span><span class="istickedoff">peekDouble  a7'&gt;&gt;= \a7'' -&gt; </span>
-<span class="lineno">  354 </span><span class="spaces">  </span><span class="istickedoff">peekEnum  a8'&gt;&gt;= \a8'' -&gt; </span>
-<span class="lineno">  355 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a9'&gt;&gt;</span>
-<span class="lineno">  356 </span><span class="spaces">  </span><span class="istickedoff">return (a6'', a7'', a8'')</span></span>
-<span class="lineno">  357 </span>
-<span class="lineno">  358 </span>
-<span class="lineno">  359 </span>
-<span class="lineno">  360 </span>-- |Regularly spaced time-grid.
-<span class="lineno">  361 </span>timeGrid :: (Double) -- ^end
-<span class="lineno">  362 </span> -&gt; (Word) -- ^steps
-<span class="lineno">  363 </span> -&gt; IO ((TimeGrid))
-<span class="lineno">  364 </span><span class="decl"><span class="istickedoff">timeGrid a1 a2 =</span>
-<span class="lineno">  365 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = realToFrac a1} in </span>
-<span class="lineno">  366 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = fromIntegral a2} in </span>
-<span class="lineno">  367 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
-<span class="lineno">  368 </span><span class="spaces">  </span><span class="istickedoff">timeGrid'_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  369 </span><span class="spaces">  </span><span class="istickedoff">peekTimeGrid res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">  370 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
-<span class="lineno">  371 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">  372 </span>
-<span class="lineno">  373 </span>
-<span class="lineno">  374 </span>
-<span class="lineno">  375 </span>-- |Time grid with mandatory time points.
-<span class="lineno">  376 </span>-- Mandatory points are guaranteed to belong to the grid. No additional points are added.
-<span class="lineno">  377 </span>timeGridFromVector :: (NonEmptyVector Double) -- ^mandatoryTimes
-<span class="lineno">  378 </span> -&gt; IO ((TimeGrid))
-<span class="lineno">  379 </span><span class="decl"><span class="istickedoff">timeGridFromVector a1 =</span>
-<span class="lineno">  380 </span><span class="spaces">  </span><span class="istickedoff">withNonEmptyRealVector a1 $ \(a1'1, a1'2) -&gt; </span>
-<span class="lineno">  381 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
-<span class="lineno">  382 </span><span class="spaces">  </span><span class="istickedoff">timeGridFromVector'_ a1'1  a1'2 a2' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  383 </span><span class="spaces">  </span><span class="istickedoff">peekTimeGrid res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">  384 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
-<span class="lineno">  385 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">  386 </span>
-<span class="lineno">  387 </span>
-<span class="lineno">  388 </span>
-<span class="lineno">  389 </span>-- |Time grid with mandatory time points.
-<span class="lineno">  390 </span>-- Mandatory points are guaranteed to belong to the grid. Additional points are then added with regular spacing between pairs of mandatory times in order to reach the desired number of steps.
-<span class="lineno">  391 </span>timeGridFromVector' :: (NonEmptyVector Double) -- ^mandatoryTimes
-<span class="lineno">  392 </span> -&gt; (Word) -- ^steps
-<span class="lineno">  393 </span> -&gt; IO ((TimeGrid))
-<span class="lineno">  394 </span><span class="decl"><span class="nottickedoff">timeGridFromVector' a1 a2 =</span>
-<span class="lineno">  395 </span><span class="spaces">  </span><span class="nottickedoff">withNonEmptyRealVector a1 $ \(a1'1, a1'2) -&gt; </span>
-<span class="lineno">  396 </span><span class="spaces">  </span><span class="nottickedoff">let {a2' = fromIntegral a2} in </span>
-<span class="lineno">  397 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a3' -&gt; </span>
-<span class="lineno">  398 </span><span class="spaces">  </span><span class="nottickedoff">timeGridFromVector''_ a1'1  a1'2 a2' a3' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  399 </span><span class="spaces">  </span><span class="nottickedoff">peekTimeGrid res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">  400 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a3'&gt;&gt;</span>
-<span class="lineno">  401 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
-<span class="lineno">  402 </span>
-<span class="lineno">  403 </span>
-<span class="lineno">  404 </span>
-<span class="lineno">  405 </span>-- |returns the number of times on the grid
-<span class="lineno">  406 </span>size :: (TimeGrid) -&gt; (Word)
-<span class="lineno">  407 </span><span class="decl"><span class="istickedoff">size a1 =</span>
-<span class="lineno">  408 </span><span class="spaces">  </span><span class="istickedoff">C2HSImp.unsafePerformIO $</span>
-<span class="lineno">  409 </span><span class="spaces">  </span><span class="istickedoff">withTimeGrid a1 $ \a1' -&gt; </span>
-<span class="lineno">  410 </span><span class="spaces">  </span><span class="istickedoff">size'_ a1' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  411 </span><span class="spaces">  </span><span class="istickedoff">let {res' = fromIntegral res} in</span>
-<span class="lineno">  412 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  331 </span>
+<span class="lineno">  332 </span>
+<span class="lineno">  333 </span>
+<span class="lineno">  334 </span>
+<span class="lineno">  335 </span>
+<span class="lineno">  336 </span>
+<span class="lineno">  337 </span>
+<span class="lineno">  338 </span>
+<span class="lineno">  339 </span>
+<span class="lineno">  340 </span>
+<span class="lineno">  341 </span>
+<span class="lineno">  342 </span>-- |rounds a value to the precision and rule carried by the given 'Rounding'
+<span class="lineno">  343 </span>applyRounding :: (Rounding) -- ^rounding
+<span class="lineno">  344 </span> -&gt; (Double) -- ^value
+<span class="lineno">  345 </span> -&gt; (Double)
+<span class="lineno">  346 </span><span class="decl"><span class="istickedoff">applyRounding a1 a2 =</span>
+<span class="lineno">  347 </span><span class="spaces">  </span><span class="istickedoff">C2HSImp.unsafePerformIO $</span>
+<span class="lineno">  348 </span><span class="spaces">  </span><span class="istickedoff">withRounding a1 $ \a1' -&gt; </span>
+<span class="lineno">  349 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = realToFrac a2} in </span>
+<span class="lineno">  350 </span><span class="spaces">  </span><span class="istickedoff">applyRounding'_ a1' a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  351 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno">  352 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  353 </span>
+<span class="lineno">  354 </span>
+<span class="lineno">  355 </span>
+<span class="lineno">  356 </span>-- |Minimizes an arbitrary Haskell-defined cost function via QuantLib's general-purpose
+<span class="lineno">  357 </span>-- 'Problem'\/'OptimizationMethod' machinery -- unlike 'QuantLib.Model.calibrate', which drives a
+<span class="lineno">  358 </span>-- 'QuantLib.Model.CalibratedModel''s own built-in calibration error against bound
+<span class="lineno">  359 </span>-- 'QuantLib.Model.CalibrationHelper's, this takes any 'RealVector -&gt; Double' objective. The cost
+<span class="lineno">  360 </span>-- function crosses back into Haskell once per outer optimizer iteration, over the whole parameter
+<span class="lineno">  361 </span>-- vector, not once per component -- see CLAUDE.md's &quot;coarsen the language-boundary crossing&quot;
+<span class="lineno">  362 </span>-- bullet and 'QuantLib.Internal.Type.withCostFunction'.
+<span class="lineno">  363 </span>optimize :: (RealVector -&gt; Double) -- ^cost function
+<span class="lineno">  364 </span> -&gt; (RealVector) -- ^initial guess
+<span class="lineno">  365 </span> -&gt; (Maybe Constraint) -&gt; (OptimizationMethod) -&gt; (EndCriteria) -&gt; IO ((RealVector), (Double), (EndCriteriaType))
+<span class="lineno">  366 </span><span class="decl"><span class="istickedoff">optimize a1 a2 a3 a4 a5 =</span>
+<span class="lineno">  367 </span><span class="spaces">  </span><span class="istickedoff">withCostFunction a1 $ \a1' -&gt; </span>
+<span class="lineno">  368 </span><span class="spaces">  </span><span class="istickedoff">withRealVector a2 $ \(a2'1, a2'2) -&gt; </span>
+<span class="lineno">  369 </span><span class="spaces">  </span><span class="istickedoff">withMaybeConstraint a3 $ \a3' -&gt; </span>
+<span class="lineno">  370 </span><span class="spaces">  </span><span class="istickedoff">withOptimizationMethod a4 $ \a4' -&gt; </span>
+<span class="lineno">  371 </span><span class="spaces">  </span><span class="istickedoff">withEndCriteria a5 $ \a5' -&gt; </span>
+<span class="lineno">  372 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a6'1, a6'2) -&gt; </span>
+<span class="lineno">  373 </span><span class="spaces">  </span><span class="istickedoff">alloca $ \a7' -&gt; </span>
+<span class="lineno">  374 </span><span class="spaces">  </span><span class="istickedoff">alloca $ \a8' -&gt; </span>
+<span class="lineno">  375 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a9' -&gt; </span>
+<span class="lineno">  376 </span><span class="spaces">  </span><span class="istickedoff">optimize'_ a1' a2'1  a2'2 a3' a4' a5' a6'1  a6'2 a7' a8' a9' &gt;&gt;</span>
+<span class="lineno">  377 </span><span class="spaces">  </span><span class="istickedoff">peekRealVector  a6'1  a6'2&gt;&gt;= \a6'' -&gt; </span>
+<span class="lineno">  378 </span><span class="spaces">  </span><span class="istickedoff">peekDouble  a7'&gt;&gt;= \a7'' -&gt; </span>
+<span class="lineno">  379 </span><span class="spaces">  </span><span class="istickedoff">peekEnum  a8'&gt;&gt;= \a8'' -&gt; </span>
+<span class="lineno">  380 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a9'&gt;&gt;</span>
+<span class="lineno">  381 </span><span class="spaces">  </span><span class="istickedoff">return (a6'', a7'', a8'')</span></span>
+<span class="lineno">  382 </span>
+<span class="lineno">  383 </span>
+<span class="lineno">  384 </span>
+<span class="lineno">  385 </span>-- |Regularly spaced time-grid.
+<span class="lineno">  386 </span>timeGrid :: (Double) -- ^end
+<span class="lineno">  387 </span> -&gt; (Word) -- ^steps
+<span class="lineno">  388 </span> -&gt; IO ((TimeGrid))
+<span class="lineno">  389 </span><span class="decl"><span class="istickedoff">timeGrid a1 a2 =</span>
+<span class="lineno">  390 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = realToFrac a1} in </span>
+<span class="lineno">  391 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = fromIntegral a2} in </span>
+<span class="lineno">  392 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
+<span class="lineno">  393 </span><span class="spaces">  </span><span class="istickedoff">timeGrid'_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  394 </span><span class="spaces">  </span><span class="istickedoff">peekTimeGrid res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  395 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
+<span class="lineno">  396 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  397 </span>
+<span class="lineno">  398 </span>
+<span class="lineno">  399 </span>
+<span class="lineno">  400 </span>-- |Time grid with mandatory time points.
+<span class="lineno">  401 </span>-- Mandatory points are guaranteed to belong to the grid. No additional points are added.
+<span class="lineno">  402 </span>timeGridFromVector :: (NonEmptyVector Double) -- ^mandatoryTimes
+<span class="lineno">  403 </span> -&gt; IO ((TimeGrid))
+<span class="lineno">  404 </span><span class="decl"><span class="istickedoff">timeGridFromVector a1 =</span>
+<span class="lineno">  405 </span><span class="spaces">  </span><span class="istickedoff">withNonEmptyRealVector a1 $ \(a1'1, a1'2) -&gt; </span>
+<span class="lineno">  406 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
+<span class="lineno">  407 </span><span class="spaces">  </span><span class="istickedoff">timeGridFromVector'_ a1'1  a1'2 a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  408 </span><span class="spaces">  </span><span class="istickedoff">peekTimeGrid res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  409 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
+<span class="lineno">  410 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  411 </span>
+<span class="lineno">  412 </span>
 <span class="lineno">  413 </span>
-<span class="lineno">  414 </span>
-<span class="lineno">  415 </span>
-<span class="lineno">  416 </span>-- |returns the time at the given index of the grid
-<span class="lineno">  417 </span>timeAt :: (TimeGrid) -- ^grid
-<span class="lineno">  418 </span> -&gt; (Word) -- ^index
-<span class="lineno">  419 </span> -&gt; IO ((Double))
-<span class="lineno">  420 </span><span class="decl"><span class="nottickedoff">timeAt a1 a2 =</span>
-<span class="lineno">  421 </span><span class="spaces">  </span><span class="nottickedoff">withTimeGrid a1 $ \a1' -&gt; </span>
-<span class="lineno">  422 </span><span class="spaces">  </span><span class="nottickedoff">let {a2' = fromIntegral a2} in </span>
-<span class="lineno">  423 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a3' -&gt; </span>
-<span class="lineno">  424 </span><span class="spaces">  </span><span class="nottickedoff">timeAt'_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  425 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = realToFrac res} in</span>
-<span class="lineno">  426 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a3'&gt;&gt;</span>
-<span class="lineno">  427 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno">  414 </span>-- |Time grid with mandatory time points.
+<span class="lineno">  415 </span>-- Mandatory points are guaranteed to belong to the grid. Additional points are then added with regular spacing between pairs of mandatory times in order to reach the desired number of steps.
+<span class="lineno">  416 </span>timeGridFromVector' :: (NonEmptyVector Double) -- ^mandatoryTimes
+<span class="lineno">  417 </span> -&gt; (Word) -- ^steps
+<span class="lineno">  418 </span> -&gt; IO ((TimeGrid))
+<span class="lineno">  419 </span><span class="decl"><span class="nottickedoff">timeGridFromVector' a1 a2 =</span>
+<span class="lineno">  420 </span><span class="spaces">  </span><span class="nottickedoff">withNonEmptyRealVector a1 $ \(a1'1, a1'2) -&gt; </span>
+<span class="lineno">  421 </span><span class="spaces">  </span><span class="nottickedoff">let {a2' = fromIntegral a2} in </span>
+<span class="lineno">  422 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a3' -&gt; </span>
+<span class="lineno">  423 </span><span class="spaces">  </span><span class="nottickedoff">timeGridFromVector''_ a1'1  a1'2 a2' a3' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  424 </span><span class="spaces">  </span><span class="nottickedoff">peekTimeGrid res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  425 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a3'&gt;&gt;</span>
+<span class="lineno">  426 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno">  427 </span>
 <span class="lineno">  428 </span>
 <span class="lineno">  429 </span>
-<span class="lineno">  430 </span>
-<span class="lineno">  431 </span>-- |Returns all times on the grid in contiguous storage.
-<span class="lineno">  432 </span>points :: (TimeGrid) -&gt; IO ((RealVector))
-<span class="lineno">  433 </span><span class="decl"><span class="istickedoff">points a1 =</span>
+<span class="lineno">  430 </span>-- |returns the number of times on the grid
+<span class="lineno">  431 </span>size :: (TimeGrid) -&gt; (Word)
+<span class="lineno">  432 </span><span class="decl"><span class="istickedoff">size a1 =</span>
+<span class="lineno">  433 </span><span class="spaces">  </span><span class="istickedoff">C2HSImp.unsafePerformIO $</span>
 <span class="lineno">  434 </span><span class="spaces">  </span><span class="istickedoff">withTimeGrid a1 $ \a1' -&gt; </span>
-<span class="lineno">  435 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a2'1, a2'2) -&gt; </span>
-<span class="lineno">  436 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
-<span class="lineno">  437 </span><span class="spaces">  </span><span class="istickedoff">points'_ a1' a2'1  a2'2 a3' &gt;&gt;</span>
-<span class="lineno">  438 </span><span class="spaces">  </span><span class="istickedoff">peekRealVector  a2'1  a2'2&gt;&gt;= \a2'' -&gt; </span>
-<span class="lineno">  439 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
-<span class="lineno">  440 </span><span class="spaces">  </span><span class="istickedoff">return (a2'')</span></span>
-<span class="lineno">  441 </span>
-<span class="lineno">  442 </span>
-<span class="lineno">  443 </span>
-<span class="lineno">  444 </span>-- vim: set ff=unix ts=8 sts=2 sw=2 et:
-<span class="lineno">  445 </span>
-<span class="lineno">  446 </span>foreign import ccall safe &quot;QuantLib/Math.chs.h qlRound&quot;
-<span class="lineno">  447 </span>  applyRounding'_ :: ((C2HSImp.Ptr (CRounding)) -&gt; (C2HSImp.CDouble -&gt; (IO C2HSImp.CDouble)))
-<span class="lineno">  448 </span>
-<span class="lineno">  449 </span>foreign import ccall safe &quot;QuantLib/Math.chs.h qlOptimize&quot;
-<span class="lineno">  450 </span>  optimize'_ :: ((C2HSImp.FunPtr ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; (IO C2HSImp.CDouble)))) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (CConstraint)) -&gt; ((C2HSImp.Ptr (COptimizationMethod)) -&gt; ((C2HSImp.Ptr (CEndCriteria)) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ()))))))))))))
-<span class="lineno">  451 </span>
-<span class="lineno">  452 </span>foreign import ccall safe &quot;QuantLib/Math.chs.h qlTimeGrid1&quot;
-<span class="lineno">  453 </span>  timeGrid'_ :: (C2HSImp.CDouble -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CTimeGrid))))))
+<span class="lineno">  435 </span><span class="spaces">  </span><span class="istickedoff">size'_ a1' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  436 </span><span class="spaces">  </span><span class="istickedoff">let {res' = fromIntegral res} in</span>
+<span class="lineno">  437 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  438 </span>
+<span class="lineno">  439 </span>
+<span class="lineno">  440 </span>
+<span class="lineno">  441 </span>-- |returns the time at the given index of the grid
+<span class="lineno">  442 </span>timeAt :: (TimeGrid) -- ^grid
+<span class="lineno">  443 </span> -&gt; (Word) -- ^index
+<span class="lineno">  444 </span> -&gt; IO ((Double))
+<span class="lineno">  445 </span><span class="decl"><span class="nottickedoff">timeAt a1 a2 =</span>
+<span class="lineno">  446 </span><span class="spaces">  </span><span class="nottickedoff">withTimeGrid a1 $ \a1' -&gt; </span>
+<span class="lineno">  447 </span><span class="spaces">  </span><span class="nottickedoff">let {a2' = fromIntegral a2} in </span>
+<span class="lineno">  448 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a3' -&gt; </span>
+<span class="lineno">  449 </span><span class="spaces">  </span><span class="nottickedoff">timeAt'_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  450 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno">  451 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a3'&gt;&gt;</span>
+<span class="lineno">  452 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno">  453 </span>
 <span class="lineno">  454 </span>
-<span class="lineno">  455 </span>foreign import ccall safe &quot;QuantLib/Math.chs.h qlTimeGrid2&quot;
-<span class="lineno">  456 </span>  timeGridFromVector'_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CTimeGrid))))))
-<span class="lineno">  457 </span>
-<span class="lineno">  458 </span>foreign import ccall safe &quot;QuantLib/Math.chs.h qlTimeGrid3&quot;
-<span class="lineno">  459 </span>  timeGridFromVector''_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CTimeGrid)))))))
-<span class="lineno">  460 </span>
-<span class="lineno">  461 </span>foreign import ccall safe &quot;QuantLib/Math.chs.h qlTimeGridSize&quot;
-<span class="lineno">  462 </span>  size'_ :: ((C2HSImp.Ptr (CTimeGrid)) -&gt; (IO C2HSImp.CUInt))
-<span class="lineno">  463 </span>
-<span class="lineno">  464 </span>foreign import ccall safe &quot;QuantLib/Math.chs.h qlTimeGridAt&quot;
-<span class="lineno">  465 </span>  timeAt'_ :: ((C2HSImp.Ptr (CTimeGrid)) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble))))
+<span class="lineno">  455 </span>
+<span class="lineno">  456 </span>-- |Returns all times on the grid in contiguous storage.
+<span class="lineno">  457 </span>points :: (TimeGrid) -&gt; IO ((RealVector))
+<span class="lineno">  458 </span><span class="decl"><span class="istickedoff">points a1 =</span>
+<span class="lineno">  459 </span><span class="spaces">  </span><span class="istickedoff">withTimeGrid a1 $ \a1' -&gt; </span>
+<span class="lineno">  460 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a2'1, a2'2) -&gt; </span>
+<span class="lineno">  461 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
+<span class="lineno">  462 </span><span class="spaces">  </span><span class="istickedoff">points'_ a1' a2'1  a2'2 a3' &gt;&gt;</span>
+<span class="lineno">  463 </span><span class="spaces">  </span><span class="istickedoff">peekRealVector  a2'1  a2'2&gt;&gt;= \a2'' -&gt; </span>
+<span class="lineno">  464 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
+<span class="lineno">  465 </span><span class="spaces">  </span><span class="istickedoff">return (a2'')</span></span>
 <span class="lineno">  466 </span>
-<span class="lineno">  467 </span>foreign import ccall safe &quot;QuantLib/Math.chs.h qlTimeGridPoints&quot;
-<span class="lineno">  468 </span>  points'_ :: ((C2HSImp.Ptr (CTimeGrid)) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ())))))
+<span class="lineno">  467 </span>
+<span class="lineno">  468 </span>
+<span class="lineno">  469 </span>-- |Mean of a caller-supplied sample. Each @riskStatistics*@ call evaluates a fresh sample.
+<span class="lineno">  470 </span>riskStatisticsMean :: (RealVector) -- ^sample
+<span class="lineno">  471 </span> -&gt; IO ((Double))
+<span class="lineno">  472 </span><span class="decl"><span class="istickedoff">riskStatisticsMean a1 =</span>
+<span class="lineno">  473 </span><span class="spaces">  </span><span class="istickedoff">withRealVector a1 $ \(a1'1, a1'2) -&gt; </span>
+<span class="lineno">  474 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
+<span class="lineno">  475 </span><span class="spaces">  </span><span class="istickedoff">riskStatisticsMean'_ a1'1  a1'2 a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  476 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno">  477 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
+<span class="lineno">  478 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  479 </span>
+<span class="lineno">  480 </span>
+<span class="lineno">  481 </span>
+<span class="lineno">  482 </span>-- |Standard deviation of the sample (square root of 'riskStatisticsVariance').
+<span class="lineno">  483 </span>riskStatisticsStandardDeviation :: (RealVector) -- ^sample
+<span class="lineno">  484 </span> -&gt; IO ((Double))
+<span class="lineno">  485 </span><span class="decl"><span class="istickedoff">riskStatisticsStandardDeviation a1 =</span>
+<span class="lineno">  486 </span><span class="spaces">  </span><span class="istickedoff">withRealVector a1 $ \(a1'1, a1'2) -&gt; </span>
+<span class="lineno">  487 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
+<span class="lineno">  488 </span><span class="spaces">  </span><span class="istickedoff">riskStatisticsStandardDeviation'_ a1'1  a1'2 a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  489 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno">  490 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
+<span class="lineno">  491 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  492 </span>
+<span class="lineno">  493 </span>
+<span class="lineno">  494 </span>
+<span class="lineno">  495 </span>-- |Variance of the sample, @N\/(N-1)@-corrected.
+<span class="lineno">  496 </span>riskStatisticsVariance :: (RealVector) -- ^sample
+<span class="lineno">  497 </span> -&gt; IO ((Double))
+<span class="lineno">  498 </span><span class="decl"><span class="istickedoff">riskStatisticsVariance a1 =</span>
+<span class="lineno">  499 </span><span class="spaces">  </span><span class="istickedoff">withRealVector a1 $ \(a1'1, a1'2) -&gt; </span>
+<span class="lineno">  500 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
+<span class="lineno">  501 </span><span class="spaces">  </span><span class="istickedoff">riskStatisticsVariance'_ a1'1  a1'2 a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  502 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno">  503 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
+<span class="lineno">  504 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  505 </span>
+<span class="lineno">  506 </span>
+<span class="lineno">  507 </span>
+<span class="lineno">  508 </span>-- |Skewness of the sample; 0 for a gaussian distribution.
+<span class="lineno">  509 </span>riskStatisticsSkewness :: (RealVector) -- ^sample
+<span class="lineno">  510 </span> -&gt; IO ((Double))
+<span class="lineno">  511 </span><span class="decl"><span class="nottickedoff">riskStatisticsSkewness a1 =</span>
+<span class="lineno">  512 </span><span class="spaces">  </span><span class="nottickedoff">withRealVector a1 $ \(a1'1, a1'2) -&gt; </span>
+<span class="lineno">  513 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a2' -&gt; </span>
+<span class="lineno">  514 </span><span class="spaces">  </span><span class="nottickedoff">riskStatisticsSkewness'_ a1'1  a1'2 a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  515 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno">  516 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a2'&gt;&gt;</span>
+<span class="lineno">  517 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno">  518 </span>
+<span class="lineno">  519 </span>
+<span class="lineno">  520 </span>
+<span class="lineno">  521 </span>-- |Excess kurtosis of the sample; 0 for a gaussian distribution.
+<span class="lineno">  522 </span>riskStatisticsKurtosis :: (RealVector) -- ^sample
+<span class="lineno">  523 </span> -&gt; IO ((Double))
+<span class="lineno">  524 </span><span class="decl"><span class="nottickedoff">riskStatisticsKurtosis a1 =</span>
+<span class="lineno">  525 </span><span class="spaces">  </span><span class="nottickedoff">withRealVector a1 $ \(a1'1, a1'2) -&gt; </span>
+<span class="lineno">  526 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a2' -&gt; </span>
+<span class="lineno">  527 </span><span class="spaces">  </span><span class="nottickedoff">riskStatisticsKurtosis'_ a1'1  a1'2 a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  528 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno">  529 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a2'&gt;&gt;</span>
+<span class="lineno">  530 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno">  531 </span>
+<span class="lineno">  532 </span>
+<span class="lineno">  533 </span>
+<span class="lineno">  534 </span>-- |Minimum sample value. Throws if the sample is empty.
+<span class="lineno">  535 </span>riskStatisticsMin :: (RealVector) -- ^sample
+<span class="lineno">  536 </span> -&gt; IO ((Double))
+<span class="lineno">  537 </span><span class="decl"><span class="nottickedoff">riskStatisticsMin a1 =</span>
+<span class="lineno">  538 </span><span class="spaces">  </span><span class="nottickedoff">withRealVector a1 $ \(a1'1, a1'2) -&gt; </span>
+<span class="lineno">  539 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a2' -&gt; </span>
+<span class="lineno">  540 </span><span class="spaces">  </span><span class="nottickedoff">riskStatisticsMin'_ a1'1  a1'2 a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  541 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno">  542 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a2'&gt;&gt;</span>
+<span class="lineno">  543 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno">  544 </span>
+<span class="lineno">  545 </span>
+<span class="lineno">  546 </span>
+<span class="lineno">  547 </span>-- |Maximum sample value. Throws if the sample is empty.
+<span class="lineno">  548 </span>riskStatisticsMax :: (RealVector) -- ^sample
+<span class="lineno">  549 </span> -&gt; IO ((Double))
+<span class="lineno">  550 </span><span class="decl"><span class="nottickedoff">riskStatisticsMax a1 =</span>
+<span class="lineno">  551 </span><span class="spaces">  </span><span class="nottickedoff">withRealVector a1 $ \(a1'1, a1'2) -&gt; </span>
+<span class="lineno">  552 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a2' -&gt; </span>
+<span class="lineno">  553 </span><span class="spaces">  </span><span class="nottickedoff">riskStatisticsMax'_ a1'1  a1'2 a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  554 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno">  555 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a2'&gt;&gt;</span>
+<span class="lineno">  556 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno">  557 </span>
+<span class="lineno">  558 </span>
+<span class="lineno">  559 </span>
+<span class="lineno">  560 </span>-- |Variance of the sample values falling below the sample mean (Markowitz semi-variance).
+<span class="lineno">  561 </span>-- Throws if fewer than two sample values fall below the mean.
+<span class="lineno">  562 </span>riskStatisticsSemiVariance :: (RealVector) -- ^sample
+<span class="lineno">  563 </span> -&gt; IO ((Double))
+<span class="lineno">  564 </span><span class="decl"><span class="nottickedoff">riskStatisticsSemiVariance a1 =</span>
+<span class="lineno">  565 </span><span class="spaces">  </span><span class="nottickedoff">withRealVector a1 $ \(a1'1, a1'2) -&gt; </span>
+<span class="lineno">  566 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a2' -&gt; </span>
+<span class="lineno">  567 </span><span class="spaces">  </span><span class="nottickedoff">riskStatisticsSemiVariance'_ a1'1  a1'2 a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  568 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno">  569 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a2'&gt;&gt;</span>
+<span class="lineno">  570 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno">  571 </span>
+<span class="lineno">  572 </span>
+<span class="lineno">  573 </span>
+<span class="lineno">  574 </span>-- |Square root of 'riskStatisticsSemiVariance'.
+<span class="lineno">  575 </span>riskStatisticsSemiDeviation :: (RealVector) -- ^sample
+<span class="lineno">  576 </span> -&gt; IO ((Double))
+<span class="lineno">  577 </span><span class="decl"><span class="nottickedoff">riskStatisticsSemiDeviation a1 =</span>
+<span class="lineno">  578 </span><span class="spaces">  </span><span class="nottickedoff">withRealVector a1 $ \(a1'1, a1'2) -&gt; </span>
+<span class="lineno">  579 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a2' -&gt; </span>
+<span class="lineno">  580 </span><span class="spaces">  </span><span class="nottickedoff">riskStatisticsSemiDeviation'_ a1'1  a1'2 a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  581 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno">  582 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a2'&gt;&gt;</span>
+<span class="lineno">  583 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno">  584 </span>
+<span class="lineno">  585 </span>
+<span class="lineno">  586 </span>
+<span class="lineno">  587 </span>-- |Variance of the sample values falling below zero. Throws if fewer than two sample values
+<span class="lineno">  588 </span>-- fall below zero.
+<span class="lineno">  589 </span>riskStatisticsDownsideVariance :: (RealVector) -- ^sample
+<span class="lineno">  590 </span> -&gt; IO ((Double))
+<span class="lineno">  591 </span><span class="decl"><span class="nottickedoff">riskStatisticsDownsideVariance a1 =</span>
+<span class="lineno">  592 </span><span class="spaces">  </span><span class="nottickedoff">withRealVector a1 $ \(a1'1, a1'2) -&gt; </span>
+<span class="lineno">  593 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a2' -&gt; </span>
+<span class="lineno">  594 </span><span class="spaces">  </span><span class="nottickedoff">riskStatisticsDownsideVariance'_ a1'1  a1'2 a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  595 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno">  596 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a2'&gt;&gt;</span>
+<span class="lineno">  597 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno">  598 </span>
+<span class="lineno">  599 </span>
+<span class="lineno">  600 </span>
+<span class="lineno">  601 </span>-- |Square root of 'riskStatisticsDownsideVariance'.
+<span class="lineno">  602 </span>riskStatisticsDownsideDeviation :: (RealVector) -- ^sample
+<span class="lineno">  603 </span> -&gt; IO ((Double))
+<span class="lineno">  604 </span><span class="decl"><span class="nottickedoff">riskStatisticsDownsideDeviation a1 =</span>
+<span class="lineno">  605 </span><span class="spaces">  </span><span class="nottickedoff">withRealVector a1 $ \(a1'1, a1'2) -&gt; </span>
+<span class="lineno">  606 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a2' -&gt; </span>
+<span class="lineno">  607 </span><span class="spaces">  </span><span class="nottickedoff">riskStatisticsDownsideDeviation'_ a1'1  a1'2 a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  608 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno">  609 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a2'&gt;&gt;</span>
+<span class="lineno">  610 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno">  611 </span>
+<span class="lineno">  612 </span>
+<span class="lineno">  613 </span>
+<span class="lineno">  614 </span>-- |Empirical @y@-th percentile of the sample; @y@ must lie in @(0.0, 1.0]@.
+<span class="lineno">  615 </span>riskStatisticsPercentile :: (RealVector) -- ^sample
+<span class="lineno">  616 </span> -&gt; (Double) -- ^y
+<span class="lineno">  617 </span> -&gt; IO ((Double))
+<span class="lineno">  618 </span><span class="decl"><span class="istickedoff">riskStatisticsPercentile a1 a2 =</span>
+<span class="lineno">  619 </span><span class="spaces">  </span><span class="istickedoff">withRealVector a1 $ \(a1'1, a1'2) -&gt; </span>
+<span class="lineno">  620 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = realToFrac a2} in </span>
+<span class="lineno">  621 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
+<span class="lineno">  622 </span><span class="spaces">  </span><span class="istickedoff">riskStatisticsPercentile'_ a1'1  a1'2 a2' a3' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  623 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno">  624 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
+<span class="lineno">  625 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  626 </span>
+<span class="lineno">  627 </span>
+<span class="lineno">  628 </span>
+<span class="lineno">  629 </span>-- |@y@-th percentile assuming the sample is gaussian (mean\/standard deviation matched); @y@
+<span class="lineno">  630 </span>-- must lie in @(0.0, 1.0)@.
+<span class="lineno">  631 </span>riskStatisticsGaussianPercentile :: (RealVector) -- ^sample
+<span class="lineno">  632 </span> -&gt; (Double) -- ^y
+<span class="lineno">  633 </span> -&gt; IO ((Double))
+<span class="lineno">  634 </span><span class="decl"><span class="istickedoff">riskStatisticsGaussianPercentile a1 a2 =</span>
+<span class="lineno">  635 </span><span class="spaces">  </span><span class="istickedoff">withRealVector a1 $ \(a1'1, a1'2) -&gt; </span>
+<span class="lineno">  636 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = realToFrac a2} in </span>
+<span class="lineno">  637 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
+<span class="lineno">  638 </span><span class="spaces">  </span><span class="istickedoff">riskStatisticsGaussianPercentile'_ a1'1  a1'2 a2' a3' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  639 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno">  640 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
+<span class="lineno">  641 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  642 </span>
+<span class="lineno">  643 </span>
+<span class="lineno">  644 </span>
+<span class="lineno">  645 </span>-- |Empirical value-at-risk at the given @centile@, which must lie in @[0.9, 1.0)@ — a loss
+<span class="lineno">  646 </span>-- (non-negative), the negative of the empirical @(1-centile)@-th percentile floored at zero.
+<span class="lineno">  647 </span>riskStatisticsValueAtRisk :: (RealVector) -- ^sample
+<span class="lineno">  648 </span> -&gt; (Double) -- ^centile
+<span class="lineno">  649 </span> -&gt; IO ((Double))
+<span class="lineno">  650 </span><span class="decl"><span class="istickedoff">riskStatisticsValueAtRisk a1 a2 =</span>
+<span class="lineno">  651 </span><span class="spaces">  </span><span class="istickedoff">withRealVector a1 $ \(a1'1, a1'2) -&gt; </span>
+<span class="lineno">  652 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = realToFrac a2} in </span>
+<span class="lineno">  653 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
+<span class="lineno">  654 </span><span class="spaces">  </span><span class="istickedoff">riskStatisticsValueAtRisk'_ a1'1  a1'2 a2' a3' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  655 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno">  656 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
+<span class="lineno">  657 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  658 </span>
+<span class="lineno">  659 </span>
+<span class="lineno">  660 </span>
+<span class="lineno">  661 </span>-- |Value-at-risk at the given @centile@ assuming the sample is gaussian; @centile@ must lie in
+<span class="lineno">  662 </span>-- @[0.9, 1.0)@.
+<span class="lineno">  663 </span>riskStatisticsGaussianValueAtRisk :: (RealVector) -- ^sample
+<span class="lineno">  664 </span> -&gt; (Double) -- ^centile
+<span class="lineno">  665 </span> -&gt; IO ((Double))
+<span class="lineno">  666 </span><span class="decl"><span class="istickedoff">riskStatisticsGaussianValueAtRisk a1 a2 =</span>
+<span class="lineno">  667 </span><span class="spaces">  </span><span class="istickedoff">withRealVector a1 $ \(a1'1, a1'2) -&gt; </span>
+<span class="lineno">  668 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = realToFrac a2} in </span>
+<span class="lineno">  669 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
+<span class="lineno">  670 </span><span class="spaces">  </span><span class="istickedoff">riskStatisticsGaussianValueAtRisk'_ a1'1  a1'2 a2' a3' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  671 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno">  672 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
+<span class="lineno">  673 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  674 </span>
+<span class="lineno">  675 </span>
+<span class="lineno">  676 </span>
+<span class="lineno">  677 </span>-- |Empirical expected shortfall (conditional value-at-risk) at the given @centile@, which must
+<span class="lineno">  678 </span>-- lie in @[0.9, 1.0)@: the average of the sample values below the value-at-risk threshold.
+<span class="lineno">  679 </span>-- Throws if the sample is empty, or if no sample value falls below the threshold.
+<span class="lineno">  680 </span>riskStatisticsExpectedShortfall :: (RealVector) -- ^sample
+<span class="lineno">  681 </span> -&gt; (Double) -- ^centile
+<span class="lineno">  682 </span> -&gt; IO ((Double))
+<span class="lineno">  683 </span><span class="decl"><span class="istickedoff">riskStatisticsExpectedShortfall a1 a2 =</span>
+<span class="lineno">  684 </span><span class="spaces">  </span><span class="istickedoff">withRealVector a1 $ \(a1'1, a1'2) -&gt; </span>
+<span class="lineno">  685 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = realToFrac a2} in </span>
+<span class="lineno">  686 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
+<span class="lineno">  687 </span><span class="spaces">  </span><span class="istickedoff">riskStatisticsExpectedShortfall'_ a1'1  a1'2 a2' a3' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  688 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno">  689 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
+<span class="lineno">  690 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  691 </span>
+<span class="lineno">  692 </span>
+<span class="lineno">  693 </span>
+<span class="lineno">  694 </span>-- |Expected shortfall at the given @centile@ assuming the sample is gaussian; @centile@ must
+<span class="lineno">  695 </span>-- lie in @[0.9, 1.0)@.
+<span class="lineno">  696 </span>riskStatisticsGaussianExpectedShortfall :: (RealVector) -- ^sample
+<span class="lineno">  697 </span> -&gt; (Double) -- ^centile
+<span class="lineno">  698 </span> -&gt; IO ((Double))
+<span class="lineno">  699 </span><span class="decl"><span class="istickedoff">riskStatisticsGaussianExpectedShortfall a1 a2 =</span>
+<span class="lineno">  700 </span><span class="spaces">  </span><span class="istickedoff">withRealVector a1 $ \(a1'1, a1'2) -&gt; </span>
+<span class="lineno">  701 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = realToFrac a2} in </span>
+<span class="lineno">  702 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
+<span class="lineno">  703 </span><span class="spaces">  </span><span class="istickedoff">riskStatisticsGaussianExpectedShortfall'_ a1'1  a1'2 a2' a3' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  704 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno">  705 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
+<span class="lineno">  706 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  707 </span>
+<span class="lineno">  708 </span>
+<span class="lineno">  709 </span>
+<span class="lineno">  710 </span>-- |Empirical potential upside (the reciprocal notion of value-at-risk, floored at zero) at the
+<span class="lineno">  711 </span>-- given @centile@, which must lie in @[0.9, 1.0)@.
+<span class="lineno">  712 </span>riskStatisticsPotentialUpside :: (RealVector) -- ^sample
+<span class="lineno">  713 </span> -&gt; (Double) -- ^centile
+<span class="lineno">  714 </span> -&gt; IO ((Double))
+<span class="lineno">  715 </span><span class="decl"><span class="istickedoff">riskStatisticsPotentialUpside a1 a2 =</span>
+<span class="lineno">  716 </span><span class="spaces">  </span><span class="istickedoff">withRealVector a1 $ \(a1'1, a1'2) -&gt; </span>
+<span class="lineno">  717 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = realToFrac a2} in </span>
+<span class="lineno">  718 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
+<span class="lineno">  719 </span><span class="spaces">  </span><span class="istickedoff">riskStatisticsPotentialUpside'_ a1'1  a1'2 a2' a3' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  720 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno">  721 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
+<span class="lineno">  722 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  723 </span>
+<span class="lineno">  724 </span>
+<span class="lineno">  725 </span>
+<span class="lineno">  726 </span>-- |Potential upside at the given @centile@ assuming the sample is gaussian; @centile@ must lie
+<span class="lineno">  727 </span>-- in @[0.9, 1.0)@.
+<span class="lineno">  728 </span>riskStatisticsGaussianPotentialUpside :: (RealVector) -- ^sample
+<span class="lineno">  729 </span> -&gt; (Double) -- ^centile
+<span class="lineno">  730 </span> -&gt; IO ((Double))
+<span class="lineno">  731 </span><span class="decl"><span class="istickedoff">riskStatisticsGaussianPotentialUpside a1 a2 =</span>
+<span class="lineno">  732 </span><span class="spaces">  </span><span class="istickedoff">withRealVector a1 $ \(a1'1, a1'2) -&gt; </span>
+<span class="lineno">  733 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = realToFrac a2} in </span>
+<span class="lineno">  734 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
+<span class="lineno">  735 </span><span class="spaces">  </span><span class="istickedoff">riskStatisticsGaussianPotentialUpside'_ a1'1  a1'2 a2' a3' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  736 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno">  737 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
+<span class="lineno">  738 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  739 </span>
+<span class="lineno">  740 </span>
+<span class="lineno">  741 </span>
+<span class="lineno">  742 </span>-- |Variance of the sample values falling below @target@ (Dembo\/Freeman regret). Throws if
+<span class="lineno">  743 </span>-- fewer than two sample values fall below @target@.
+<span class="lineno">  744 </span>riskStatisticsRegret :: (RealVector) -- ^sample
+<span class="lineno">  745 </span> -&gt; (Double) -- ^target
+<span class="lineno">  746 </span> -&gt; IO ((Double))
+<span class="lineno">  747 </span><span class="decl"><span class="nottickedoff">riskStatisticsRegret a1 a2 =</span>
+<span class="lineno">  748 </span><span class="spaces">  </span><span class="nottickedoff">withRealVector a1 $ \(a1'1, a1'2) -&gt; </span>
+<span class="lineno">  749 </span><span class="spaces">  </span><span class="nottickedoff">let {a2' = realToFrac a2} in </span>
+<span class="lineno">  750 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a3' -&gt; </span>
+<span class="lineno">  751 </span><span class="spaces">  </span><span class="nottickedoff">riskStatisticsRegret'_ a1'1  a1'2 a2' a3' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  752 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno">  753 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a3'&gt;&gt;</span>
+<span class="lineno">  754 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno">  755 </span>
+<span class="lineno">  756 </span>
+<span class="lineno">  757 </span>
+<span class="lineno">  758 </span>-- |Probability (fraction of the sample, by count) of falling below @target@. Throws if the
+<span class="lineno">  759 </span>-- sample is empty.
+<span class="lineno">  760 </span>riskStatisticsShortfall :: (RealVector) -- ^sample
+<span class="lineno">  761 </span> -&gt; (Double) -- ^target
+<span class="lineno">  762 </span> -&gt; IO ((Double))
+<span class="lineno">  763 </span><span class="decl"><span class="istickedoff">riskStatisticsShortfall a1 a2 =</span>
+<span class="lineno">  764 </span><span class="spaces">  </span><span class="istickedoff">withRealVector a1 $ \(a1'1, a1'2) -&gt; </span>
+<span class="lineno">  765 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = realToFrac a2} in </span>
+<span class="lineno">  766 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
+<span class="lineno">  767 </span><span class="spaces">  </span><span class="istickedoff">riskStatisticsShortfall'_ a1'1  a1'2 a2' a3' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  768 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno">  769 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
+<span class="lineno">  770 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  771 </span>
+<span class="lineno">  772 </span>
+<span class="lineno">  773 </span>
+<span class="lineno">  774 </span>-- |Average shortfall below @target@, i.e. the mean of @target - x@ over sample values @x@
+<span class="lineno">  775 </span>-- below @target@. Throws if no sample value falls below @target@.
+<span class="lineno">  776 </span>riskStatisticsAverageShortfall :: (RealVector) -- ^sample
+<span class="lineno">  777 </span> -&gt; (Double) -- ^target
+<span class="lineno">  778 </span> -&gt; IO ((Double))
+<span class="lineno">  779 </span><span class="decl"><span class="nottickedoff">riskStatisticsAverageShortfall a1 a2 =</span>
+<span class="lineno">  780 </span><span class="spaces">  </span><span class="nottickedoff">withRealVector a1 $ \(a1'1, a1'2) -&gt; </span>
+<span class="lineno">  781 </span><span class="spaces">  </span><span class="nottickedoff">let {a2' = realToFrac a2} in </span>
+<span class="lineno">  782 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a3' -&gt; </span>
+<span class="lineno">  783 </span><span class="spaces">  </span><span class="nottickedoff">riskStatisticsAverageShortfall'_ a1'1  a1'2 a2' a3' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  784 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno">  785 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a3'&gt;&gt;</span>
+<span class="lineno">  786 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno">  787 </span>
+<span class="lineno">  788 </span>
+<span class="lineno">  789 </span>
+<span class="lineno">  790 </span>-- vim: set ff=unix ts=8 sts=2 sw=2 et:
+<span class="lineno">  791 </span>
+<span class="lineno">  792 </span>foreign import ccall safe &quot;QuantLib/Math.chs.h qlRound&quot;
+<span class="lineno">  793 </span>  applyRounding'_ :: ((C2HSImp.Ptr (CRounding)) -&gt; (C2HSImp.CDouble -&gt; (IO C2HSImp.CDouble)))
+<span class="lineno">  794 </span>
+<span class="lineno">  795 </span>foreign import ccall safe &quot;QuantLib/Math.chs.h qlOptimize&quot;
+<span class="lineno">  796 </span>  optimize'_ :: ((C2HSImp.FunPtr ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; (IO C2HSImp.CDouble)))) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (CConstraint)) -&gt; ((C2HSImp.Ptr (COptimizationMethod)) -&gt; ((C2HSImp.Ptr (CEndCriteria)) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ()))))))))))))
+<span class="lineno">  797 </span>
+<span class="lineno">  798 </span>foreign import ccall safe &quot;QuantLib/Math.chs.h qlTimeGrid1&quot;
+<span class="lineno">  799 </span>  timeGrid'_ :: (C2HSImp.CDouble -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CTimeGrid))))))
+<span class="lineno">  800 </span>
+<span class="lineno">  801 </span>foreign import ccall safe &quot;QuantLib/Math.chs.h qlTimeGrid2&quot;
+<span class="lineno">  802 </span>  timeGridFromVector'_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CTimeGrid))))))
+<span class="lineno">  803 </span>
+<span class="lineno">  804 </span>foreign import ccall safe &quot;QuantLib/Math.chs.h qlTimeGrid3&quot;
+<span class="lineno">  805 </span>  timeGridFromVector''_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CTimeGrid)))))))
+<span class="lineno">  806 </span>
+<span class="lineno">  807 </span>foreign import ccall safe &quot;QuantLib/Math.chs.h qlTimeGridSize&quot;
+<span class="lineno">  808 </span>  size'_ :: ((C2HSImp.Ptr (CTimeGrid)) -&gt; (IO C2HSImp.CUInt))
+<span class="lineno">  809 </span>
+<span class="lineno">  810 </span>foreign import ccall safe &quot;QuantLib/Math.chs.h qlTimeGridAt&quot;
+<span class="lineno">  811 </span>  timeAt'_ :: ((C2HSImp.Ptr (CTimeGrid)) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble))))
+<span class="lineno">  812 </span>
+<span class="lineno">  813 </span>foreign import ccall safe &quot;QuantLib/Math.chs.h qlTimeGridPoints&quot;
+<span class="lineno">  814 </span>  points'_ :: ((C2HSImp.Ptr (CTimeGrid)) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ())))))
+<span class="lineno">  815 </span>
+<span class="lineno">  816 </span>foreign import ccall safe &quot;QuantLib/Math.chs.h qlRiskStatisticsMean&quot;
+<span class="lineno">  817 </span>  riskStatisticsMean'_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble))))
+<span class="lineno">  818 </span>
+<span class="lineno">  819 </span>foreign import ccall safe &quot;QuantLib/Math.chs.h qlRiskStatisticsStandardDeviation&quot;
+<span class="lineno">  820 </span>  riskStatisticsStandardDeviation'_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble))))
+<span class="lineno">  821 </span>
+<span class="lineno">  822 </span>foreign import ccall safe &quot;QuantLib/Math.chs.h qlRiskStatisticsVariance&quot;
+<span class="lineno">  823 </span>  riskStatisticsVariance'_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble))))
+<span class="lineno">  824 </span>
+<span class="lineno">  825 </span>foreign import ccall safe &quot;QuantLib/Math.chs.h qlRiskStatisticsSkewness&quot;
+<span class="lineno">  826 </span>  riskStatisticsSkewness'_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble))))
+<span class="lineno">  827 </span>
+<span class="lineno">  828 </span>foreign import ccall safe &quot;QuantLib/Math.chs.h qlRiskStatisticsKurtosis&quot;
+<span class="lineno">  829 </span>  riskStatisticsKurtosis'_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble))))
+<span class="lineno">  830 </span>
+<span class="lineno">  831 </span>foreign import ccall safe &quot;QuantLib/Math.chs.h qlRiskStatisticsMin&quot;
+<span class="lineno">  832 </span>  riskStatisticsMin'_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble))))
+<span class="lineno">  833 </span>
+<span class="lineno">  834 </span>foreign import ccall safe &quot;QuantLib/Math.chs.h qlRiskStatisticsMax&quot;
+<span class="lineno">  835 </span>  riskStatisticsMax'_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble))))
+<span class="lineno">  836 </span>
+<span class="lineno">  837 </span>foreign import ccall safe &quot;QuantLib/Math.chs.h qlRiskStatisticsSemiVariance&quot;
+<span class="lineno">  838 </span>  riskStatisticsSemiVariance'_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble))))
+<span class="lineno">  839 </span>
+<span class="lineno">  840 </span>foreign import ccall safe &quot;QuantLib/Math.chs.h qlRiskStatisticsSemiDeviation&quot;
+<span class="lineno">  841 </span>  riskStatisticsSemiDeviation'_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble))))
+<span class="lineno">  842 </span>
+<span class="lineno">  843 </span>foreign import ccall safe &quot;QuantLib/Math.chs.h qlRiskStatisticsDownsideVariance&quot;
+<span class="lineno">  844 </span>  riskStatisticsDownsideVariance'_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble))))
+<span class="lineno">  845 </span>
+<span class="lineno">  846 </span>foreign import ccall safe &quot;QuantLib/Math.chs.h qlRiskStatisticsDownsideDeviation&quot;
+<span class="lineno">  847 </span>  riskStatisticsDownsideDeviation'_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble))))
+<span class="lineno">  848 </span>
+<span class="lineno">  849 </span>foreign import ccall safe &quot;QuantLib/Math.chs.h qlRiskStatisticsPercentile&quot;
+<span class="lineno">  850 </span>  riskStatisticsPercentile'_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))))
+<span class="lineno">  851 </span>
+<span class="lineno">  852 </span>foreign import ccall safe &quot;QuantLib/Math.chs.h qlRiskStatisticsGaussianPercentile&quot;
+<span class="lineno">  853 </span>  riskStatisticsGaussianPercentile'_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))))
+<span class="lineno">  854 </span>
+<span class="lineno">  855 </span>foreign import ccall safe &quot;QuantLib/Math.chs.h qlRiskStatisticsValueAtRisk&quot;
+<span class="lineno">  856 </span>  riskStatisticsValueAtRisk'_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))))
+<span class="lineno">  857 </span>
+<span class="lineno">  858 </span>foreign import ccall safe &quot;QuantLib/Math.chs.h qlRiskStatisticsGaussianValueAtRisk&quot;
+<span class="lineno">  859 </span>  riskStatisticsGaussianValueAtRisk'_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))))
+<span class="lineno">  860 </span>
+<span class="lineno">  861 </span>foreign import ccall safe &quot;QuantLib/Math.chs.h qlRiskStatisticsExpectedShortfall&quot;
+<span class="lineno">  862 </span>  riskStatisticsExpectedShortfall'_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))))
+<span class="lineno">  863 </span>
+<span class="lineno">  864 </span>foreign import ccall safe &quot;QuantLib/Math.chs.h qlRiskStatisticsGaussianExpectedShortfall&quot;
+<span class="lineno">  865 </span>  riskStatisticsGaussianExpectedShortfall'_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))))
+<span class="lineno">  866 </span>
+<span class="lineno">  867 </span>foreign import ccall safe &quot;QuantLib/Math.chs.h qlRiskStatisticsPotentialUpside&quot;
+<span class="lineno">  868 </span>  riskStatisticsPotentialUpside'_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))))
+<span class="lineno">  869 </span>
+<span class="lineno">  870 </span>foreign import ccall safe &quot;QuantLib/Math.chs.h qlRiskStatisticsGaussianPotentialUpside&quot;
+<span class="lineno">  871 </span>  riskStatisticsGaussianPotentialUpside'_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))))
+<span class="lineno">  872 </span>
+<span class="lineno">  873 </span>foreign import ccall safe &quot;QuantLib/Math.chs.h qlRiskStatisticsRegret&quot;
+<span class="lineno">  874 </span>  riskStatisticsRegret'_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))))
+<span class="lineno">  875 </span>
+<span class="lineno">  876 </span>foreign import ccall safe &quot;QuantLib/Math.chs.h qlRiskStatisticsShortfall&quot;
+<span class="lineno">  877 </span>  riskStatisticsShortfall'_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))))
+<span class="lineno">  878 </span>
+<span class="lineno">  879 </span>foreign import ccall safe &quot;QuantLib/Math.chs.h qlRiskStatisticsAverageShortfall&quot;
+<span class="lineno">  880 </span>  riskStatisticsAverageShortfall'_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))))
 
 </pre>
 </body>

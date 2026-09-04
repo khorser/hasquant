@@ -78,15 +78,15 @@ span.spaces    { background: white }
 <span class="lineno">   59 </span> -&gt; (NonEmpty Double) -- ^capRates
 <span class="lineno">   60 </span> -&gt; (NonEmpty Double) -- ^floorRates
 <span class="lineno">   61 </span> -&gt; IO ((CapFloor))
-<span class="lineno">   62 </span><span class="decl"><span class="nottickedoff">collar a1 a2 a3 =</span>
-<span class="lineno">   63 </span><span class="spaces">  </span><span class="nottickedoff">withLeg a1 $ \a1' -&gt; </span>
-<span class="lineno">   64 </span><span class="spaces">  </span><span class="nottickedoff">withNonEmptyDoubleArray a2 $ \(a2'1, a2'2) -&gt; </span>
-<span class="lineno">   65 </span><span class="spaces">  </span><span class="nottickedoff">withNonEmptyDoubleArray a3 $ \(a3'1, a3'2) -&gt; </span>
-<span class="lineno">   66 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a4' -&gt; </span>
-<span class="lineno">   67 </span><span class="spaces">  </span><span class="nottickedoff">collar'_ a1' a2'1  a2'2 a3'1  a3'2 a4' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">   68 </span><span class="spaces">  </span><span class="nottickedoff">peekCapFloor res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">   69 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a4'&gt;&gt;</span>
-<span class="lineno">   70 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno">   62 </span><span class="decl"><span class="istickedoff">collar a1 a2 a3 =</span>
+<span class="lineno">   63 </span><span class="spaces">  </span><span class="istickedoff">withLeg a1 $ \a1' -&gt; </span>
+<span class="lineno">   64 </span><span class="spaces">  </span><span class="istickedoff">withNonEmptyDoubleArray a2 $ \(a2'1, a2'2) -&gt; </span>
+<span class="lineno">   65 </span><span class="spaces">  </span><span class="istickedoff">withNonEmptyDoubleArray a3 $ \(a3'1, a3'2) -&gt; </span>
+<span class="lineno">   66 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a4' -&gt; </span>
+<span class="lineno">   67 </span><span class="spaces">  </span><span class="istickedoff">collar'_ a1' a2'1  a2'2 a3'1  a3'2 a4' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">   68 </span><span class="spaces">  </span><span class="istickedoff">peekCapFloor res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">   69 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a4'&gt;&gt;</span>
+<span class="lineno">   70 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
 <span class="lineno">   71 </span>
 <span class="lineno">   72 </span>
 <span class="lineno">   73 </span>

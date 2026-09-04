@@ -144,15 +144,15 @@ span.spaces    { background: white }
 <span class="lineno">  125 </span>
 <span class="lineno">  126 </span>-- |flat hazard-rate curve anchored at a reference date
 <span class="lineno">  127 </span>flatHazardRate :: (Day) -&gt; (GenQuote q) -&gt; (DayCounter) -&gt; IO ((DefaultProbabilityTermStructure))
-<span class="lineno">  128 </span><span class="decl"><span class="nottickedoff">flatHazardRate a1 a2 a3 =</span>
-<span class="lineno">  129 </span><span class="spaces">  </span><span class="nottickedoff">withDay a1 $ \a1' -&gt; </span>
-<span class="lineno">  130 </span><span class="spaces">  </span><span class="nottickedoff">withQuote a2 $ \a2' -&gt; </span>
-<span class="lineno">  131 </span><span class="spaces">  </span><span class="nottickedoff">withDayCounter a3 $ \a3' -&gt; </span>
-<span class="lineno">  132 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a4' -&gt; </span>
-<span class="lineno">  133 </span><span class="spaces">  </span><span class="nottickedoff">flatHazardRate'_ a1' a2' a3' a4' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  134 </span><span class="spaces">  </span><span class="nottickedoff">peekDefaultProbabilityTermStructure res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">  135 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a4'&gt;&gt;</span>
-<span class="lineno">  136 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno">  128 </span><span class="decl"><span class="istickedoff">flatHazardRate a1 a2 a3 =</span>
+<span class="lineno">  129 </span><span class="spaces">  </span><span class="istickedoff">withDay a1 $ \a1' -&gt; </span>
+<span class="lineno">  130 </span><span class="spaces">  </span><span class="istickedoff">withQuote a2 $ \a2' -&gt; </span>
+<span class="lineno">  131 </span><span class="spaces">  </span><span class="istickedoff">withDayCounter a3 $ \a3' -&gt; </span>
+<span class="lineno">  132 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a4' -&gt; </span>
+<span class="lineno">  133 </span><span class="spaces">  </span><span class="istickedoff">flatHazardRate'_ a1' a2' a3' a4' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  134 </span><span class="spaces">  </span><span class="istickedoff">peekDefaultProbabilityTermStructure res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  135 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a4'&gt;&gt;</span>
+<span class="lineno">  136 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
 <span class="lineno">  137 </span>
 <span class="lineno">  138 </span>
 <span class="lineno">  139 </span>

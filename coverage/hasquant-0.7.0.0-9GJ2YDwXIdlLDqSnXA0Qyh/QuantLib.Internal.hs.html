@@ -89,7 +89,7 @@ span.spaces    { background: white }
 <span class="lineno">   70 </span>  , peekPtrArray
 <span class="lineno">   71 </span>  , Matrix(..)
 <span class="lineno">   72 </span>  , RealMatrix(..)
-<span class="lineno">   73 </span>  , realMatrix
+<span class="lineno">   73 </span>  , boxedRealMatrix
 <span class="lineno">   74 </span>  , realMatrixFromVector
 <span class="lineno">   75 </span>  , objectMatrix
 <span class="lineno">   76 </span>  , qlNullInteger
@@ -437,48 +437,54 @@ span.spaces    { background: white }
 <span class="lineno">  418 </span>  deriving (<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Eq</span></span></span></span>, <span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Show</span></span></span></span></span></span>)
 <span class="lineno">  419 </span>
 <span class="lineno">  420 </span>-- |Construct a list-backed numeric matrix for small-dimensional APIs such as process
-<span class="lineno">  421 </span>-- correlation and diffusion matrices. Use 'realMatrixFromVector' for large dense numerical
-<span class="lineno">  422 </span>-- grids such as volatility surfaces and multi-asset LSM data.
-<span class="lineno">  423 </span>realMatrix :: Word -&gt; Word -&gt; [Double] -&gt; Either String (Matrix Double)
-<span class="lineno">  424 </span><span class="decl"><span class="istickedoff">realMatrix = objectMatrix</span></span>
-<span class="lineno">  425 </span>
-<span class="lineno">  426 </span>-- |Construct a row-major numeric matrix backed by contiguous storage.
-<span class="lineno">  427 </span>realMatrixFromVector :: Word -&gt; Word -&gt; RealVector -&gt; Either String RealMatrix
-<span class="lineno">  428 </span><span class="decl"><span class="istickedoff">realMatrixFromVector rows cols d</span>
-<span class="lineno">  429 </span><span class="spaces">  </span><span class="istickedoff">| matrixDimensionsMatch rows cols (V.length d) = Right $ RealMatrix rows cols d</span>
-<span class="lineno">  430 </span><span class="spaces">  </span><span class="istickedoff">| <span class="tickonlytrue">otherwise</span> = Left $ &quot;Data length &quot; ++ show (V.length d)</span>
-<span class="lineno">  431 </span><span class="spaces">      </span><span class="istickedoff">++ &quot; does not match dimensions &quot; ++ show rows ++ &quot;x&quot; ++ show cols</span></span>
-<span class="lineno">  432 </span>
-<span class="lineno">  433 </span>objectMatrix :: Word -&gt; Word -&gt; [a] -&gt; Either String (Matrix a)
-<span class="lineno">  434 </span><span class="decl"><span class="istickedoff">objectMatrix rows cols d</span>
-<span class="lineno">  435 </span><span class="spaces">  </span><span class="istickedoff">| matrixDimensionsMatch rows cols (length d) = Right $ Matrix rows cols d</span>
-<span class="lineno">  436 </span><span class="spaces">  </span><span class="istickedoff">| <span class="tickonlytrue">otherwise</span> = Left $ &quot;Data length &quot; ++ show (length d)</span>
+<span class="lineno">  421 </span>-- correlation and diffusion matrices. Returns a boxed 'Matrix' 'Double', /not/ a
+<span class="lineno">  422 </span>-- 'RealMatrix' -- despite the shared @RealMatrix@ spelling this is not the pair of
+<span class="lineno">  423 </span>-- 'realMatrixFromVector', which is the constructor for the contiguous 'RealMatrix' type.
+<span class="lineno">  424 </span>-- Reach for this one when the dimensions are small and fixed (a correlation or diffusion
+<span class="lineno">  425 </span>-- matrix), and for 'realMatrixFromVector' for large dense numerical grids such as
+<span class="lineno">  426 </span>-- volatility surfaces and multi-asset LSM data.
+<span class="lineno">  427 </span>boxedRealMatrix :: Word -&gt; Word -&gt; [Double] -&gt; Either String (Matrix Double)
+<span class="lineno">  428 </span><span class="decl"><span class="istickedoff">boxedRealMatrix = objectMatrix</span></span>
+<span class="lineno">  429 </span>
+<span class="lineno">  430 </span>-- |Construct a row-major numeric matrix backed by contiguous storage. This is the
+<span class="lineno">  431 </span>-- constructor for 'RealMatrix'; for a small correlation\/diffusion matrix use
+<span class="lineno">  432 </span>-- 'boxedRealMatrix', which yields a boxed 'Matrix' 'Double' instead.
+<span class="lineno">  433 </span>realMatrixFromVector :: Word -&gt; Word -&gt; RealVector -&gt; Either String RealMatrix
+<span class="lineno">  434 </span><span class="decl"><span class="istickedoff">realMatrixFromVector rows cols d</span>
+<span class="lineno">  435 </span><span class="spaces">  </span><span class="istickedoff">| matrixDimensionsMatch rows cols (V.length d) = Right $ RealMatrix rows cols d</span>
+<span class="lineno">  436 </span><span class="spaces">  </span><span class="istickedoff">| <span class="tickonlytrue">otherwise</span> = Left $ &quot;Data length &quot; ++ show (V.length d)</span>
 <span class="lineno">  437 </span><span class="spaces">      </span><span class="istickedoff">++ &quot; does not match dimensions &quot; ++ show rows ++ &quot;x&quot; ++ show cols</span></span>
 <span class="lineno">  438 </span>
-<span class="lineno">  439 </span>-- |Checks a matrix shape without overflowing the public 'Word' dimensions.
-<span class="lineno">  440 </span>matrixDimensionsMatch :: Word -&gt; Word -&gt; Int -&gt; Bool
-<span class="lineno">  441 </span><span class="decl"><span class="istickedoff">matrixDimensionsMatch rows cols dataLength =</span>
-<span class="lineno">  442 </span><span class="spaces">  </span><span class="istickedoff">toInteger rows * toInteger cols == toInteger dataLength</span></span>
-<span class="lineno">  443 </span>
-<span class="lineno">  444 </span>-- just a generic implementation to help when it's difficult to have Enum declaration due to complex module deps
-<span class="lineno">  445 </span>fromEnumC :: (Enum a, Integral b) =&gt; a -&gt; b
-<span class="lineno">  446 </span><span class="decl"><span class="istickedoff">fromEnumC = fromIntegral . fromEnum</span></span>
-<span class="lineno">  447 </span>
-<span class="lineno">  448 </span>-- output-direction counterpart to 'fromEnumC', for a {#fun#} returning a bare enum value
-<span class="lineno">  449 </span>-- (not through a pointer out-param, see 'peekEnum' for that case) across the same module-dep boundary
-<span class="lineno">  450 </span>toEnumC :: (Enum a, Integral b) =&gt; b -&gt; a
-<span class="lineno">  451 </span><span class="decl"><span class="istickedoff">toEnumC = toEnum . fromIntegral</span></span>
-<span class="lineno">  452 </span>
-<span class="lineno">  453 </span>uncurryNested :: (a -&gt; b -&gt; c -&gt; d) -&gt; (a, (b, c)) -&gt; d
-<span class="lineno">  454 </span><span class="decl"><span class="istickedoff">uncurryNested f (x, (y, z)) = f x y z</span></span>
-<span class="lineno">  455 </span>
-<span class="lineno">  456 </span>-- |'Prelude' only goes up to 'zipWith3'; this fills the gap for unpacking a C-side
-<span class="lineno">  457 </span>-- structure-of-parallel-arrays result into one Haskell record/tuple per element.
-<span class="lineno">  458 </span>zipWith6 :: (a -&gt; b -&gt; c -&gt; d -&gt; e -&gt; f -&gt; g) -&gt; [a] -&gt; [b] -&gt; [c] -&gt; [d] -&gt; [e] -&gt; [f] -&gt; [g]
-<span class="lineno">  459 </span><span class="decl"><span class="istickedoff">zipWith6 f (a:as) (b:bs) (c:cs) (d:ds) (e:es) (g:gs) = f a b <span class="nottickedoff">c</span> <span class="nottickedoff">d</span> <span class="nottickedoff">e</span> <span class="nottickedoff">g</span> : zipWith6 <span class="nottickedoff">f</span> as bs cs ds es gs</span>
-<span class="lineno">  460 </span><span class="spaces"></span><span class="istickedoff">zipWith6 _ _ _ _ _ _ _ = []</span></span>
+<span class="lineno">  439 </span>objectMatrix :: Word -&gt; Word -&gt; [a] -&gt; Either String (Matrix a)
+<span class="lineno">  440 </span><span class="decl"><span class="istickedoff">objectMatrix rows cols d</span>
+<span class="lineno">  441 </span><span class="spaces">  </span><span class="istickedoff">| matrixDimensionsMatch rows cols (length d) = Right $ Matrix rows cols d</span>
+<span class="lineno">  442 </span><span class="spaces">  </span><span class="istickedoff">| <span class="tickonlytrue">otherwise</span> = Left $ &quot;Data length &quot; ++ show (length d)</span>
+<span class="lineno">  443 </span><span class="spaces">      </span><span class="istickedoff">++ &quot; does not match dimensions &quot; ++ show rows ++ &quot;x&quot; ++ show cols</span></span>
+<span class="lineno">  444 </span>
+<span class="lineno">  445 </span>-- |Checks a matrix shape without overflowing the public 'Word' dimensions.
+<span class="lineno">  446 </span>matrixDimensionsMatch :: Word -&gt; Word -&gt; Int -&gt; Bool
+<span class="lineno">  447 </span><span class="decl"><span class="istickedoff">matrixDimensionsMatch rows cols dataLength =</span>
+<span class="lineno">  448 </span><span class="spaces">  </span><span class="istickedoff">toInteger rows * toInteger cols == toInteger dataLength</span></span>
+<span class="lineno">  449 </span>
+<span class="lineno">  450 </span>-- just a generic implementation to help when it's difficult to have Enum declaration due to complex module deps
+<span class="lineno">  451 </span>fromEnumC :: (Enum a, Integral b) =&gt; a -&gt; b
+<span class="lineno">  452 </span><span class="decl"><span class="istickedoff">fromEnumC = fromIntegral . fromEnum</span></span>
+<span class="lineno">  453 </span>
+<span class="lineno">  454 </span>-- output-direction counterpart to 'fromEnumC', for a {#fun#} returning a bare enum value
+<span class="lineno">  455 </span>-- (not through a pointer out-param, see 'peekEnum' for that case) across the same module-dep boundary
+<span class="lineno">  456 </span>toEnumC :: (Enum a, Integral b) =&gt; b -&gt; a
+<span class="lineno">  457 </span><span class="decl"><span class="istickedoff">toEnumC = toEnum . fromIntegral</span></span>
+<span class="lineno">  458 </span>
+<span class="lineno">  459 </span>uncurryNested :: (a -&gt; b -&gt; c -&gt; d) -&gt; (a, (b, c)) -&gt; d
+<span class="lineno">  460 </span><span class="decl"><span class="istickedoff">uncurryNested f (x, (y, z)) = f x y z</span></span>
 <span class="lineno">  461 </span>
-<span class="lineno">  462 </span>-- vim: set ff=unix ts=8 sts=2 sw=2 et:
+<span class="lineno">  462 </span>-- |'Prelude' only goes up to 'zipWith3'; this fills the gap for unpacking a C-side
+<span class="lineno">  463 </span>-- structure-of-parallel-arrays result into one Haskell record/tuple per element.
+<span class="lineno">  464 </span>zipWith6 :: (a -&gt; b -&gt; c -&gt; d -&gt; e -&gt; f -&gt; g) -&gt; [a] -&gt; [b] -&gt; [c] -&gt; [d] -&gt; [e] -&gt; [f] -&gt; [g]
+<span class="lineno">  465 </span><span class="decl"><span class="istickedoff">zipWith6 f (a:as) (b:bs) (c:cs) (d:ds) (e:es) (g:gs) = f a b <span class="nottickedoff">c</span> <span class="nottickedoff">d</span> <span class="nottickedoff">e</span> <span class="nottickedoff">g</span> : zipWith6 <span class="nottickedoff">f</span> as bs cs ds es gs</span>
+<span class="lineno">  466 </span><span class="spaces"></span><span class="istickedoff">zipWith6 _ _ _ _ _ _ _ = []</span></span>
+<span class="lineno">  467 </span>
+<span class="lineno">  468 </span>-- vim: set ff=unix ts=8 sts=2 sw=2 et:
 
 </pre>
 </body>
