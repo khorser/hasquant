@@ -1,6 +1,13 @@
 Haskell bindings to [QuantLib](https://www.quantlib.org/).
 
-Supported functionality includes yield, credit, inflation, and volatility curves; IBOR, overnight, swap, and inflation indexes; fixed, floating, amortizing, callable, and convertible bonds; vanilla, barrier, Asian, compound, variance, and basket options; vanilla, CMS, OIS, CDS, and zero-coupon swaps; and analytic, tree, finite-difference, and Monte Carlo engines from Black-Scholes through SABR and Heston.
+Supported functionality includes
+- yield, credit, inflation, and volatility curves;
+- IBOR, overnight, swap, and inflation indexes;
+- fixed, floating, amortizing, callable, and convertible bonds;
+- vanilla, barrier, Asian, compound, variance, and basket options;
+- vanilla, CMS, OIS, CDS, zero-coupon, and portfolio-credit (synthetic CDO, nth-to-default) swaps and instruments;
+- risk statistics (VaR, expected shortfall, ...) over caller-supplied samples;
+- and analytic, tree, finite-difference, and Monte Carlo engines from Black-Scholes through SABR and Heston.
 
 hasquant is a close-to-1:1 `c2hs` wrapper over QuantLib's C++ API, not a framework. It binds 1,600+ constructors and non-trivial methods (over 15% of QuantLib's surface) and deliberately excludes 2000+ methods (mostly mutators or getters that only repeat constructor inputs).
 
@@ -71,7 +78,7 @@ Out of scope:
 ## Roadmap
 - Add classes and methods using the repository skills.
 - Evaluate whether some [OpenSourceRiskEngine](https://opensourcerisk.org) functionality should be bound
-- Join forces with [HQuantLib](https://github.com/paulrzcz/hquantlib): 6 historical vol estimators, a bivariate copula CDF catalogue
+- Join forces with [HQuantLib](https://github.com/paulrzcz/hquantlib): a bivariate copula CDF catalogue
 - Build a declarative composition DSL as a sibling project.
 - Expose that DSL through an agent-callable tool, so an LLM can construct and price products through validated hasquant operations rather than generated pricing logic.
 - Review interfaces for consistency, add obviously missing features and fix contradictions to the current design
