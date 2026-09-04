@@ -1772,4 +1772,16 @@ T handleException(char **msg, std::exception &e) {
   return 0;
 }
 
+template <class F>
+static void fillMatrixOut(F&& get, unsigned* rows, unsigned* cols, unsigned* len, double** vs) {
+  *rows = 0; *cols = 0; *len = 0; *vs = nullptr;
+  const Matrix m = get();
+  const unsigned n = (unsigned)(m.rows() * m.columns());
+  *vs = qlAllocateDoubles(n);
+  OutArrayGuard<double> guard(vs, len);
+  std::copy(m.begin(), m.end(), *vs);
+  *rows = (unsigned)m.rows(); *cols = (unsigned)m.columns(); *len = n;
+  guard.commit();
+}
+
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

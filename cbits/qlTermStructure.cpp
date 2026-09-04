@@ -109,12 +109,6 @@ namespace {
     return r;
   }
 
-  void fillMatrixOut(const Matrix& m, unsigned* rows, unsigned* cols, unsigned* len, double** vs) {
-    *rows = (unsigned)m.rows(); *cols = (unsigned)m.columns(); *len = (unsigned)(m.rows() * m.columns());
-    *vs = qlAllocateDoubles(*len);
-    std::copy(m.begin(), m.end(), *vs);
-  }
-
   // The stripper sets the real vol on this engine as it bootstraps each strike's curve
   // (interpolatedyoyoptionletstripper.hpp), so it is constructed with a deliberately null
   // vol handle -- same idiom as the upstream test (inflationvolatility.cpp's testYoYPriceSurfaceToVol).
@@ -1038,16 +1032,16 @@ void qlFreeNoArbSabrSwaptionVolatilityCube(QlNoArbSabrSwaptionVolatilityCube *o)
 QlSwaptionVolatilityStructure* qlNoArbSabrSwaptionVolatilityCubeAsSwaptionVolatilityStructure(QlNoArbSabrSwaptionVolatilityCube *o) {
   return ret(new QlSwaptionVolatilityStructure(*arg(o)));}
 void qlNoArbSabrSwaptionVolatilityCubeSparseSabrParameters(QlNoArbSabrSwaptionVolatilityCube* o, unsigned* rows, unsigned* cols, unsigned* len, double** vs, char** e) {
-  try {fillMatrixOut((*arg(o))->sparseSabrParameters(), rows, cols, len, vs);
+  try {fillMatrixOut([&] {return (*arg(o))->sparseSabrParameters();}, rows, cols, len, vs);
   } catch (std::exception& er) {handleException<double*>(e, er);}}
 void qlNoArbSabrSwaptionVolatilityCubeDenseSabrParameters(QlNoArbSabrSwaptionVolatilityCube* o, unsigned* rows, unsigned* cols, unsigned* len, double** vs, char** e) {
-  try {fillMatrixOut((*arg(o))->denseSabrParameters(), rows, cols, len, vs);
+  try {fillMatrixOut([&] {return (*arg(o))->denseSabrParameters();}, rows, cols, len, vs);
   } catch (std::exception& er) {handleException<double*>(e, er);}}
 void qlNoArbSabrSwaptionVolatilityCubeMarketVolCube(QlNoArbSabrSwaptionVolatilityCube* o, unsigned* rows, unsigned* cols, unsigned* len, double** vs, char** e) {
-  try {fillMatrixOut((*arg(o))->marketVolCube(), rows, cols, len, vs);
+  try {fillMatrixOut([&] {return (*arg(o))->marketVolCube();}, rows, cols, len, vs);
   } catch (std::exception& er) {handleException<double*>(e, er);}}
 void qlNoArbSabrSwaptionVolatilityCubeVolCubeAtmCalibrated(QlNoArbSabrSwaptionVolatilityCube* o, unsigned* rows, unsigned* cols, unsigned* len, double** vs, char** e) {
-  try {fillMatrixOut((*arg(o))->volCubeAtmCalibrated(), rows, cols, len, vs);
+  try {fillMatrixOut([&] {return (*arg(o))->volCubeAtmCalibrated();}, rows, cols, len, vs);
   } catch (std::exception& er) {handleException<double*>(e, er);}}
 double qlNoArbSabrSwaptionVolatilityCubeAtmStrike1(QlNoArbSabrSwaptionVolatilityCube* o, int optionDate, int n, int u, char **e) {
   try {return (*arg(o))->atmStrike(Date(optionDate), Period(n, (TimeUnit)u));
@@ -1085,16 +1079,16 @@ QlSwaptionVolatilityStructure* qlInterpolatedSwaptionVolatilityCubeAsSwaptionVol
 // codebase returns a Matrix outward, every existing Matrix use (qlMatrix/qlHandleMatrix/
 // qlRealMatrix) crosses the boundary inward only.
 void qlSabrSwaptionVolatilityCubeSparseSabrParameters(QlSabrSwaptionVolatilityCube* o, unsigned* rows, unsigned* cols, unsigned* len, double** vs, char** e) {
-  try {fillMatrixOut((*arg(o))->sparseSabrParameters(), rows, cols, len, vs);
+  try {fillMatrixOut([&] {return (*arg(o))->sparseSabrParameters();}, rows, cols, len, vs);
   } catch (std::exception& er) {handleException<double*>(e, er);}}
 void qlSabrSwaptionVolatilityCubeDenseSabrParameters(QlSabrSwaptionVolatilityCube* o, unsigned* rows, unsigned* cols, unsigned* len, double** vs, char** e) {
-  try {fillMatrixOut((*arg(o))->denseSabrParameters(), rows, cols, len, vs);
+  try {fillMatrixOut([&] {return (*arg(o))->denseSabrParameters();}, rows, cols, len, vs);
   } catch (std::exception& er) {handleException<double*>(e, er);}}
 void qlSabrSwaptionVolatilityCubeMarketVolCube(QlSabrSwaptionVolatilityCube* o, unsigned* rows, unsigned* cols, unsigned* len, double** vs, char** e) {
-  try {fillMatrixOut((*arg(o))->marketVolCube(), rows, cols, len, vs);
+  try {fillMatrixOut([&] {return (*arg(o))->marketVolCube();}, rows, cols, len, vs);
   } catch (std::exception& er) {handleException<double*>(e, er);}}
 void qlSabrSwaptionVolatilityCubeVolCubeAtmCalibrated(QlSabrSwaptionVolatilityCube* o, unsigned* rows, unsigned* cols, unsigned* len, double** vs, char** e) {
-  try {fillMatrixOut((*arg(o))->volCubeAtmCalibrated(), rows, cols, len, vs);
+  try {fillMatrixOut([&] {return (*arg(o))->volCubeAtmCalibrated();}, rows, cols, len, vs);
   } catch (std::exception& er) {handleException<double*>(e, er);}}
 
 // atmStrike is defined on the abstract SwaptionVolatilityCube base (both concrete subtypes

@@ -348,8 +348,8 @@ namespace {
   // Garch11::calculate, ConstantEstimator, and SimpleLocalEstimator (Volatility and Real are
   // the same type, ql/types.hpp).
   void realSeriesCalculate(const std::function<TimeSeries<Volatility>(const TimeSeries<Real>&)>& calc,
-                            unsigned len, int *dates, double *values,
-                            unsigned *outDatesLen, int **outDates, unsigned *outValuesLen, double **outValues, char **e) {
+      unsigned len, int *dates, double *values,
+      unsigned *outDatesLen, int **outDates, unsigned *outValuesLen, double **outValues, char **e) {
     int *ds = 0;
     double *vs = 0;
     *outDatesLen = 0; *outDates = 0; *outValuesLen = 0; *outValues = 0;
@@ -366,12 +366,13 @@ namespace {
       *outDatesLen = outDs.size(); *outDates = ds; *outValuesLen = outVs.size(); *outValues = vs;
     } catch (std::exception& er) {
       qlFreeInts(ds); qlFreeDoubles(vs); *e = tracedup(er.what());
-    }}
+    }
+  }
 
   // Same shape, for the GarmanKlass family's TimeSeries<IntervalPrice> input.
   void intervalPriceSeriesCalculate(const std::function<TimeSeries<Volatility>(const TimeSeries<IntervalPrice>&)>& calc,
-                                     unsigned len, int *dates, double *opens, double *closes, double *highs, double *lows,
-                                     unsigned *outDatesLen, int **outDates, unsigned *outValuesLen, double **outValues, char **e) {
+      unsigned len, int *dates, double *opens, double *closes, double *highs, double *lows,
+      unsigned *outDatesLen, int **outDates, unsigned *outValuesLen, double **outValues, char **e) {
     int *ds = 0;
     double *vs = 0;
     *outDatesLen = 0; *outDates = 0; *outValuesLen = 0; *outValues = 0;
@@ -388,7 +389,8 @@ namespace {
       *outDatesLen = outDs.size(); *outDates = ds; *outValuesLen = outVs.size(); *outValues = vs;
     } catch (std::exception& er) {
       qlFreeInts(ds); qlFreeDoubles(vs); *e = tracedup(er.what());
-    }}
+    }
+  }
 }
 
 extern "C" {
@@ -1217,12 +1219,6 @@ static void fillVectorOut(const std::vector<Real>& a, unsigned* len, double** vs
   std::copy(a.begin(), a.end(), *vs);
 }
 
-static void fillMatrixOut(const Matrix& m, unsigned* rows, unsigned* cols, unsigned* len, double** vs) {
-  *rows = (unsigned)m.rows(); *cols = (unsigned)m.columns(); *len = (unsigned)(m.rows() * m.columns());
-  *vs = qlAllocateDoubles(*len);
-  std::copy(m.begin(), m.end(), *vs);
-}
-
 QlHistoricalIndexAnalysis *qlHistoricalIndexAnalysis(int startDate, int endDate,
     int stepLen, int stepUnit, unsigned indexesLen, QlIndex **indexes, char **e) {
   try {
@@ -1353,11 +1349,11 @@ void qlHistoricalIndexAnalysisGaussianExpectedShortfall(QlHistoricalIndexAnalysi
   } catch (std::exception& er) {handleException<double*>(e, er);}}
 
 void qlHistoricalIndexAnalysisCovariance(QlHistoricalIndexAnalysis *o, unsigned *rows, unsigned *cols, unsigned *len, double **vs, char **e) {
-  try {fillMatrixOut((*arg(o))->stats()->covariance(), rows, cols, len, vs);
+  try {fillMatrixOut([&] {return (*arg(o))->stats()->covariance();}, rows, cols, len, vs);
   } catch (std::exception& er) {handleException<double*>(e, er);}}
 
 void qlHistoricalIndexAnalysisCorrelation(QlHistoricalIndexAnalysis *o, unsigned *rows, unsigned *cols, unsigned *len, double **vs, char **e) {
-  try {fillMatrixOut((*arg(o))->stats()->correlation(), rows, cols, len, vs);
+  try {fillMatrixOut([&] {return (*arg(o))->stats()->correlation();}, rows, cols, len, vs);
   } catch (std::exception& er) {handleException<double*>(e, er);}}
 
 Garch11 *qlGarch11(double alpha, double beta, double vl) {return alloc(new Garch11(alpha, beta, vl));}
