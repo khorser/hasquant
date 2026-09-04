@@ -5,9 +5,15 @@ name: Windows HestonSLV probe
 # (tools/debug/hestonslv-probe.cpp) and prints the exact (t, df, ncp, q) that
 # hestonslvfdmmodel.cpp's varianceMesher feeds to boost's
 # quantile(non_central_chi_squared), so the call that throws on Windows -- and
-# only on Windows -- can be identified from the log. No Haskell is built; this
-# reuses the QuantLib cache the Windows workflow populates, so it is a few
-# minutes on a cache hit and ~35 min otherwise.
+# only on Windows -- can be identified from the log. It then runs the same probe
+# sections -- which now include the MC model and SLV process the hspec test builds
+# before the FDM one -- again from inside a GHC-hosted process (tools/debug/HestonSLVProbe.hs,
+# base only -- hasquant is not built) and dumps the FP environment of both, since
+# the standalone Windows run passes while the hasquant suite's identical call
+# throws. With the `hasquant` input set it adds a third rung: lib:hasquant (only
+# the library) plus a driver running the test body through hasquant's own
+# bindings, outside hspec. This reuses the QuantLib cache the Windows workflow
+# populates, so it is a few minutes on a cache hit and ~35 min otherwise.
 
 on:
   workflow_dispatch:
@@ -17,6 +23,10 @@ on:
         type: choice
         default: "9.10.3"
         options: ["9.10.3", "9.14.1"]
+      hasquant:
+        description: Also build lib:hasquant and run the test body through it
+        type: boolean
+        default: true
 
 jobs:
   probe:
@@ -72,8 +82,10 @@ jobs:
           mkdir "%BOOST_INC%"
           mklink /J "%BOOST_INC%\boost" "%MSYS2_ROOT%\mingw64\include\boost"
 
-      # Same key as windows.yml, so a probe run normally restores that workflow's
-      # already-built QuantLib rather than rebuilding it.
+      # Deliberately NOT windows.yml's key any more: that job now builds QuantLib with
+      # BOOST_MATH_PROMOTE_DOUBLE_POLICY=false, which is the very behaviour this probe
+      # exists to measure. The probe keeps a stock QuantLib, at the cost of its own
+      # ~35 min build the first time.
       - name: Cache built QuantLib
         id: cache-ql
         uses: actions/cache@v6
@@ -137,9 +149,113 @@ jobs:
           hestonslv-probe.exe > hestonslv-probe.log 2>&1
           type hestonslv-probe.log
 
-      - name: Upload the probe log
+      # The same probe sections, called from a GHC-hosted process. The standalone
+      # run above passes on Windows while the hasquant suite's identical libQuantLib
+      # call throws, so this isolates the RTS: base only, no hasquant, no -threaded
+      # (matching hasquant_test), with the FP environment dumped at each stage.
+      - name: Build the RTS-hosted probe
+        shell: cmd
+        env:
+          GHC_ROOT: ${{ steps.ghc-root.outputs.root }}
+        run: |
+          "%GHC_ROOT%\mingw\bin\clang++.exe" -std=c++17 -O2 -include vector ^
+            -DHESTONSLV_PROBE_NO_MAIN -c ^
+            -isystem "%QL_INSTALL%\include" -isystem "%BOOST_INC%" ^
+            tools\debug\hestonslv-probe.cpp -o hsprobe.o
+          ghc -O1 -outputdir hsprobe-out -o hestonslv-hsprobe.exe ^
+            tools\debug\HestonSLVProbe.hs hsprobe.o ^
+            -L"%QL_INSTALL%\lib" -lQuantLib ^
+            -optl"%GHC_ROOT%\mingw\lib\libc++.a" ^
+            -optl"%GHC_ROOT%\mingw\lib\libc++abi.a" ^
+            -optl"%GHC_ROOT%\mingw\lib\libunwind.a"
+
+      # Same driver, same object, linked with mingw's libmingwex ahead of whatever GHC
+      # picks up. That library is where mingw-w64 supplies the 80-bit long double math
+      # (ldexpl, logl, expl, powl, lgammal); if this build's part E reports
+      # "yes (80-bit)" where the plain link reports "NO (collapsed)", the failure is a
+      # link-order problem and the fix belongs in the Windows ghc-options, not in a test
+      # skip.
+      - name: Build the RTS-hosted probe with libmingwex
+        shell: cmd
+        env:
+          GHC_ROOT: ${{ steps.ghc-root.outputs.root }}
+        run: |
+          dir "%GHC_ROOT%\mingw\lib\libmingwex.a"
+          ghc -O1 -outputdir hsprobe-mx-out -o hestonslv-hsprobe-mingwex.exe ^
+            tools\debug\HestonSLVProbe.hs hsprobe.o ^
+            -L"%QL_INSTALL%\lib" -lQuantLib ^
+            -optl-lmingwex ^
+            -optl"%GHC_ROOT%\mingw\lib\libc++.a" ^
+            -optl"%GHC_ROOT%\mingw\lib\libc++abi.a" ^
+            -optl"%GHC_ROOT%\mingw\lib\libunwind.a"
+
+      # Never fails the job, for the same reason as the standalone run.
+      - name: Run the RTS-hosted probe
+        shell: cmd
+        run: |
+          set "PATH=%QL_INSTALL%\bin;%PATH%"
+          hestonslv-hsprobe.exe > hestonslv-hsprobe.log 2>&1
+          type hestonslv-hsprobe.log
+
+      - name: Run the RTS-hosted probe linked with libmingwex
+        shell: cmd
+        run: |
+          set "PATH=%QL_INSTALL%\bin;%PATH%"
+          hestonslv-hsprobe-mingwex.exe > hestonslv-hsprobe-mingwex.log 2>&1
+          type hestonslv-hsprobe-mingwex.log
+
+      # Third rung: the same fixture through hasquant's own bindings. Only lib:hasquant
+      # is built -- not the test suite or examples -- and the driver runs outside hspec,
+      # so a throw here isolates the cause to hasquant's path rather than libQuantLib,
+      # the RTS, or the suite's randomized order.
+      - name: Write cabal.project.local
+        if: inputs.hasquant
+        shell: pwsh
+        env:
+          GHC_ROOT: ${{ steps.ghc-root.outputs.root }}
+        run: |
+          $ghc = $env:GHC_ROOT
+          $mingw = "$ghc/mingw"
+          $lines = @(
+            "ignore-project: False"
+            "with-compiler: $ghc/bin/ghc"
+            "package hasquant"
+            "  extra-include-dirs: $env:QL_INSTALL/include $env:BOOST_INC"
+            "  extra-lib-dirs: $env:QL_INSTALL/lib"
+            "  ghc-options: -pgmcxx $mingw/bin/clang++ -optl $mingw/lib/libc++.a -optl $mingw/lib/libc++abi.a -optl $mingw/lib/libunwind.a -optcxx -isystem -optcxx $env:QL_INSTALL/include"
+          )
+          $lines -join "`n" | Out-File -FilePath cabal.project.local -Encoding utf8
+
+      - name: Build lib:hasquant and the hasquant-linked probe
+        if: inputs.hasquant
+        shell: cmd
+        env:
+          GHC_ROOT: ${{ steps.ghc-root.outputs.root }}
+        run: |
+          cabal build lib:hasquant
+          cabal exec -- ghc -O1 -outputdir hqprobe-out -o hestonslv-hqprobe.exe ^
+            -package hasquant tools\debug\HestonSLVHasquant.hs hsprobe.o ^
+            -L"%QL_INSTALL%\lib" -lQuantLib ^
+            -optl"%GHC_ROOT%\mingw\lib\libc++.a" ^
+            -optl"%GHC_ROOT%\mingw\lib\libc++abi.a" ^
+            -optl"%GHC_ROOT%\mingw\lib\libunwind.a"
+
+      # Never fails the job, for the same reason as the runs above.
+      - name: Run the hasquant-linked probe
+        if: inputs.hasquant
+        shell: cmd
+        run: |
+          set "PATH=%QL_INSTALL%\bin;%PATH%"
+          hestonslv-hqprobe.exe > hestonslv-hqprobe.log 2>&1
+          type hestonslv-hqprobe.log
+
+      - name: Upload the probe logs
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: hestonslv-probe-${{ env.GHC_VERSION }}
-          path: hestonslv-probe.log
+          path: |
+            hestonslv-probe.log
+            hestonslv-hsprobe.log
+            hestonslv-hsprobe-mingwex.log
+            hestonslv-hqprobe.log
