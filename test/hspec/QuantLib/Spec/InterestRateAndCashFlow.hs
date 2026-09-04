@@ -31,7 +31,7 @@ import QuantLib.Index(fixingCalendar, addFixing, addFixings, fixing, hasHistoric
   ,historicalIndexAnalysisExpectedShortfall, historicalIndexAnalysisGaussianExpectedShortfall
   ,historicalIndexAnalysisCovariance, historicalIndexAnalysisCorrelation)
 import QuantLib.Index.InterestRate(iborIndex, IborConstructor(..), liborSwapIndex, LiborSwapIndexType(..), swapSpreadIndex, forecastFixing
-  ,historicalRatesAnalysis, overnightIborIndex, OvernightIborIndexType(..))
+  ,fixingDate, valueDate, maturityDate, historicalRatesAnalysis, overnightIborIndex, OvernightIborIndexType(..))
 import qualified QuantLib.Index.InterestRate as Ibor(fixingDays, dayCounter)
 import qualified QuantLib.Index.Inflation as Inflation
 import qualified QuantLib.Index.Equity as Equity
@@ -1622,6 +1622,41 @@ spec evalDate = do
           n `shouldSatisfy` not . isNaN
 
     describe "Index fixings" $ do
+      it "calculates convention-aware fixing, value, and maturity dates" $
+        Settings.keepingSettings' $ do
+          cal <- calendar TARGET
+          eur <- currency EUR
+          dc <- dayCounter (Actual360 False)
+          idx <- iborIndex (Ibor "DateRules" (3, Months) 2 eur cal ModifiedFollowing False dc) Nothing
+          let fixing = 29 `january` 2024
+              value = 31 `january` 2024
+          fixingDate idx value `shouldReturn` fixing
+          valueDate idx fixing `shouldReturn` value
+          maturityDate idx value `shouldReturn` (30 `april` 2024)
+
+      it "uses CustomIbor's separate value and maturity calendars for date calculations" $
+        Settings.keepingSettings' $ do
+          fixingCal <- calendar (Bespoke "DateRuleFixing" [Date.Saturday, Date.Sunday])
+          valueMaturityCal <- calendar (Bespoke "DateRuleValueMaturity" [Date.Wednesday, Date.Thursday])
+          eur <- currency EUR
+          dc <- dayCounter (Actual360 False)
+          idx <- iborIndex (CustomIbor "DateRuleCustom" (3, Months) 1 eur fixingCal valueMaturityCal valueMaturityCal
+                              ModifiedFollowing False dc) Nothing
+          let fixing = 30 `january` 2024
+              value = 2 `february` 2024
+          valueDate idx fixing `shouldReturn` value
+          fixingDate idx value `shouldReturn` fixing
+          maturityDate idx value `shouldReturn` (3 `may` 2024)
+
+      it "rejects a non-business fixing date when calculating its value date" $
+        Settings.keepingSettings' $ do
+          cal <- calendar TARGET
+          eur <- currency EUR
+          dc <- dayCounter (Actual360 False)
+          idx <- iborIndex (Ibor "InvalidFixing" (3, Months) 2 eur cal ModifiedFollowing False dc) Nothing
+          let cPlusPlusEx (CPlusPlusException message) = not (null message)
+          valueDate idx (28 `january` 2024) `shouldThrow` cPlusPlusEx
+
       it "addFixing/fixing round-trip, hasHistoricalFixing/isValidFixingDate, addFixings and clearFixings" $
         Settings.keepingSettings' $ do
           idx <- iborIndex (Euribor (6, Months)) Nothing

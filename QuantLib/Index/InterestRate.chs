@@ -22,6 +22,9 @@ module QuantLib.Index.InterestRate
   , dayCounter
   , fixingDays
   , tenor
+  , fixingDate
+  , valueDate
+  , maturityDate
 
   , asInterestRateIndex
   , asIborIndex
@@ -281,6 +284,27 @@ iborIndex c ts = qlCreateIbor (iborIndexOrdinal c) (iborIndexTenor c) ts
 
 -- |Returns the index's tenor.
 {#fun qlInterestRateIndexTenor as tenor{withInterestRateIndex*`GenInterestRateIndex ridx',preEnum-`TimeUnit'peekEnum*,preErrorCheck-`String'errorCheck*-}->`Word'fromIntegral#}
+
+-- |Returns the fixing date corresponding to a value date, using this index's
+-- convention-specific business-day rules.  Concrete indexes can override the
+-- base calculation.
+{#fun qlInterestRateIndexFixingDate as fixingDate{withInterestRateIndex*`GenInterestRateIndex ridx' -- ^index
+  ,withDay*`Day' -- ^valueDate
+  ,preErrorCheck-`String'errorCheck*-}->`Day'toDay#}
+
+-- |Returns the value date corresponding to a fixing date, using this index's
+-- convention-specific business-day rules.  Throws when @fixingDate@ is not a
+-- valid fixing day for the index.
+{#fun qlInterestRateIndexValueDate as valueDate{withInterestRateIndex*`GenInterestRateIndex ridx' -- ^index
+  ,withDay*`Day' -- ^fixingDate
+  ,preErrorCheck-`String'errorCheck*-}->`Day'toDay#}
+
+-- |Returns the maturity date corresponding to a value date.  This is a
+-- concrete-index calculation: Ibor, Libor, swap, and custom indexes can each
+-- apply their own tenor, calendar, and end-of-month conventions.
+{#fun qlInterestRateIndexMaturityDate as maturityDate{withInterestRateIndex*`GenInterestRateIndex ridx' -- ^index
+  ,withDay*`Day' -- ^valueDate
+  ,preErrorCheck-`String'errorCheck*-}->`Day'toDay#}
 
 -- |Creates one of the built-in overnight indexes (e.g. Sofr, Estr, Sonia), optionally linked to a forwarding curve.
 {#fun qlCreateONIndex as overnightIborIndex{`OvernightIborIndexType',withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)',preErrorCheck-`String'errorCheck*-}->`OvernightIborIndex'peekOvernightIborIndex*#}

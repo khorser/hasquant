@@ -1990,6 +1990,15 @@ QlVanillaSwap* qlSwapIndexUnderlyingSwap(QlSwapIndex* o, int fixingDate, char **
 double qlInterestRateIndexForecastFixing(QlInterestRateIndex* o, int fixingDate, char **e) {
   try {return (*arg(o))->forecastFixing(Date(fixingDate));
   } catch (std::exception& er) {return handleException<double>(e, er);}}
+int qlInterestRateIndexFixingDate(QlInterestRateIndex* o, int valueDate, char **e) {
+  try {return (*arg(o))->fixingDate(Date(valueDate)).serialNumber();
+  } catch (std::exception& er) {return handleException<int>(e, er);}}
+int qlInterestRateIndexValueDate(QlInterestRateIndex* o, int fixingDate, char **e) {
+  try {return (*arg(o))->valueDate(Date(fixingDate)).serialNumber();
+  } catch (std::exception& er) {return handleException<int>(e, er);}}
+int qlInterestRateIndexMaturityDate(QlInterestRateIndex* o, int valueDate, char **e) {
+  try {return (*arg(o))->maturityDate(Date(valueDate)).serialNumber();
+  } catch (std::exception& er) {return handleException<int>(e, er);}}
 Calendar* qlIndexFixingCalendar(QlIndex* o, char **e) {
   try {return alloc(new Calendar((*arg(o))->fixingCalendar()));
   } catch (std::exception& er) {return handleException<Calendar*>(e, er);}}

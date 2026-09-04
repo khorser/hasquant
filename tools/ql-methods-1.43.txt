@@ -2771,9 +2771,9 @@
 |v|ql/indexes/interestrateindex.hpp|Natural InterestRateIndex::fixingDays() const;
 |v|ql/indexes/interestrateindex.hpp|const Currency & InterestRateIndex::currency() const;
 |v|ql/indexes/interestrateindex.hpp|const DayCounter & InterestRateIndex::dayCounter() const;
-| |ql/indexes/interestrateindex.hpp|Date InterestRateIndex::fixingDate(const Date & valueDate) const;
-| |ql/indexes/interestrateindex.hpp|Date InterestRateIndex::valueDate(const Date & fixingDate) const;
-| |ql/indexes/interestrateindex.hpp|Date InterestRateIndex::maturityDate(const Date & valueDate) const;
+|v|ql/indexes/interestrateindex.hpp|Date InterestRateIndex::fixingDate(const Date & valueDate) const;
+|v|ql/indexes/interestrateindex.hpp|Date InterestRateIndex::valueDate(const Date & fixingDate) const;
+|v|ql/indexes/interestrateindex.hpp|Date InterestRateIndex::maturityDate(const Date & valueDate) const;
 |v|ql/indexes/interestrateindex.hpp|Rate InterestRateIndex::forecastFixing(const Date & fixingDate) const;
 | |ql/indexes/interestrateindex.hpp|std::string name() const;
 | |ql/indexes/interestrateindex.hpp|Calendar fixingCalendar() const;

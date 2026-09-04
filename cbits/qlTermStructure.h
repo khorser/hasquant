@@ -525,6 +525,9 @@ extern "C" {
   QlOvernightIndexedSwap* qlOvernightIndexedSwapIndexUnderlyingSwap(QlOvernightIndexedSwapIndex* o, int fixingDate, char **e);
   QlVanillaSwap* qlSwapIndexUnderlyingSwap(QlSwapIndex* o, int fixingDate, char **e);
   double qlInterestRateIndexForecastFixing(QlInterestRateIndex* o, int fixingDate, char **e);
+  int qlInterestRateIndexFixingDate(QlInterestRateIndex* o, int valueDate, char **e);
+  int qlInterestRateIndexValueDate(QlInterestRateIndex* o, int fixingDate, char **e);
+  int qlInterestRateIndexMaturityDate(QlInterestRateIndex* o, int valueDate, char **e);
   Calendar* qlIndexFixingCalendar(QlIndex* o, char **e);
   Currency* qlInterestRateIndexCurrency(QlInterestRateIndex* o, char **e);
   DayCounter* qlInterestRateIndexDayCounter(QlInterestRateIndex* o, char **e);
