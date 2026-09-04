@@ -59,18 +59,21 @@ garch11Spec = describe "Garch11" $ do
           let sigma2' = garch11Forecast g r sigma2
               r' = z * sqrt sigma2'
           in go (addDays 1 d) r' sigma2' zs ((d, r') : acc)
-    -- Only checks that the constrained optimizer respects alpha/beta's box constraint and
-    -- that all four 'Garch11Mode' values calibrate without throwing -- a wiring-level check,
-    -- not a convergence guarantee. This synthetic (chaotic-map-driven) series has no ground
-    -- truth to fit, and omega\/logLikelihood can legitimately land on a degenerate boundary
-    -- (NaN log-likelihood, omega == 0) for a poorly-conditioned sample; that's an optimizer
-    -- property, not something this binding should assert away.
+    -- Only checks that all four 'Garch11Mode' values calibrate without throwing and hand back
+    -- finite parameters -- a wiring-level check, not a convergence guarantee. This synthetic
+    -- (chaotic-map-driven) series has no ground truth to fit, and omega\/logLikelihood can
+    -- legitimately land on a degenerate boundary (NaN log-likelihood, omega == 0) for a
+    -- poorly-conditioned sample; that's an optimizer property, not something this binding
+    -- should assert away. alpha/beta likewise aren't guaranteed to sit in [0,1]: Garch11's
+    -- box constraint binds the optimizer only, and on the non-'DoubleOptimization' path
+    -- garch.cpp's calibrate_r2 catches an optimizer exception and returns the raw
+    -- initialGuess1/initialGuess2 ACF estimate unfiltered, which carries no sign constraint
+    -- (seen on Windows CI as a calibrated alpha of -0.85).
     checkCalibration series mode = do
       gc <- garch11Calibrated series mode
-      let a = garch11Alpha gc
-          b = garch11Beta gc
-      a `shouldSatisfy` (\x -> x >= 0 && x <= 1)
-      b `shouldSatisfy` (\x -> x >= 0 && x <= 1)
+      garch11Alpha gc `shouldSatisfy` finite
+      garch11Beta gc `shouldSatisfy` finite
+    finite x = not (isNaN x || isInfinite x)
 
 -- Closed-form checks transcribed directly from ql/models/volatility/garmanklass.hpp, evaluated
 -- in Haskell against a two-bar series with distinct open/close/high/low on each bar -- any

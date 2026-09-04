@@ -1,0 +1,145 @@
+name: Windows HestonSLV probe
+
+# On-demand only. Reconstructs the HestonSLV fixture of
+# QuantLib.Spec.PricingEngine's Windows-pending test in plain C++
+# (tools/debug/hestonslv-probe.cpp) and prints the exact (t, df, ncp, q) that
+# hestonslvfdmmodel.cpp's varianceMesher feeds to boost's
+# quantile(non_central_chi_squared), so the call that throws on Windows -- and
+# only on Windows -- can be identified from the log. No Haskell is built; this
+# reuses the QuantLib cache the Windows workflow populates, so it is a few
+# minutes on a cache hit and ~35 min otherwise.
+
+on:
+  workflow_dispatch:
+    inputs:
+      ghc:
+        description: GHC whose bundled clang++/libc++ toolchain to build against
+        type: choice
+        default: "9.10.3"
+        options: ["9.10.3", "9.14.1"]
+
+jobs:
+  probe:
+    runs-on: windows-latest
+
+    env:
+      QL_VERSION: "1.43"
+      BOOST_INC: ${{ github.workspace }}\boost-inc
+      QL_INSTALL: ${{ github.workspace }}\QuantLib-ghc
+      GHC_VERSION: ${{ inputs.ghc }}
+
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Set up GHC and cabal
+        uses: haskell-actions/setup@v2
+        with:
+          ghc-version: ${{ env.GHC_VERSION }}
+          cabal-version: latest
+
+      - name: Locate GHC's bundled clang++ toolchain
+        id: ghc-root
+        shell: pwsh
+        run: |
+          $ghcExe = (ghcup whereis ghc $env:GHC_VERSION).Trim()
+          $ghcBin = Split-Path $ghcExe -Parent
+          $ghcRoot = Split-Path $ghcBin -Parent
+          if (-not (Test-Path "$ghcRoot\mingw\bin\clang++.exe")) {
+            throw "Expected GHC-bundled clang++ at $ghcRoot\mingw\bin\clang++.exe, not found"
+          }
+          "root=$ghcRoot" | Out-File -FilePath $env:GITHUB_OUTPUT -Append -Encoding utf8
+
+      - name: Install Boost/cmake/ninja via MSYS2
+        id: msys2
+        uses: msys2/setup-msys2@v2
+        with:
+          msystem: MINGW64
+          update: true
+          install: >-
+            mingw-w64-x86_64-boost
+            mingw-w64-x86_64-cmake
+            mingw-w64-x86_64-ninja
+
+      - name: Report the MSYS2 boost version
+        shell: msys2 {0}
+        run: pacman -Qi mingw-w64-x86_64-boost | head -5
+
+      - name: Expose Boost headers only
+        shell: cmd
+        env:
+          MSYS2_ROOT: ${{ steps.msys2.outputs.msys2-location }}
+        run: |
+          mkdir "%BOOST_INC%"
+          mklink /J "%BOOST_INC%\boost" "%MSYS2_ROOT%\mingw64\include\boost"
+
+      # Same key as windows.yml, so a probe run normally restores that workflow's
+      # already-built QuantLib rather than rebuilding it.
+      - name: Cache built QuantLib
+        id: cache-ql
+        uses: actions/cache@v6
+        with:
+          path: ${{ env.QL_INSTALL }}
+          key: quantlib-${{ env.QL_VERSION }}-ghc${{ env.GHC_VERSION }}
+
+      - name: Download QuantLib source
+        if: steps.cache-ql.outputs.cache-hit != 'true'
+        shell: pwsh
+        run: |
+          Invoke-WebRequest -Uri "https://github.com/lballabio/QuantLib/releases/download/v$env:QL_VERSION/QuantLib-$env:QL_VERSION.tar.gz" -OutFile QuantLib.tar.gz
+          tar -xzf QuantLib.tar.gz
+          Rename-Item "QuantLib-$env:QL_VERSION" QuantLib-src
+
+      - name: Build and install QuantLib with GHC's clang++
+        if: steps.cache-ql.outputs.cache-hit != 'true'
+        shell: cmd
+        env:
+          MSYS2_ROOT: ${{ steps.msys2.outputs.msys2-location }}
+          GHC_ROOT: ${{ steps.ghc-root.outputs.root }}
+        run: |
+          set "PATH=%MSYS2_ROOT%\mingw64\bin;%PATH%"
+          mkdir QuantLib-src\build
+          cd QuantLib-src\build
+          cmake -G Ninja ^
+            -DCMAKE_CXX_COMPILER=%GHC_ROOT:\=/%/mingw/bin/clang++.exe ^
+            -DCMAKE_BUILD_TYPE=Release ^
+            -DCMAKE_INSTALL_PREFIX=%QL_INSTALL:\=/% ^
+            -DBoost_NO_BOOST_CMAKE=ON ^
+            -DBoost_INCLUDE_DIR=%BOOST_INC:\=/% ^
+            -DCMAKE_CXX_FLAGS="-include vector" ^
+            -DQL_BUILD_EXAMPLES=OFF ^
+            -DQL_BUILD_TEST_SUITE=OFF ^
+            ..
+          ninja
+          ninja install
+
+      # Same toolchain and flags cabal.project.local gives the cbits shim, minus
+      # the GHC link step: clang++ plus libc++, QuantLib and Boost as system
+      # includes so their headers don't trip -Wall on the probe's own warnings.
+      - name: Build the probe
+        shell: cmd
+        env:
+          GHC_ROOT: ${{ steps.ghc-root.outputs.root }}
+        run: |
+          "%GHC_ROOT%\mingw\bin\clang++.exe" -std=c++17 -O2 -include vector ^
+            -isystem "%QL_INSTALL%\include" -isystem "%BOOST_INC%" ^
+            tools\debug\hestonslv-probe.cpp ^
+            -L"%QL_INSTALL%\lib" -lQuantLib ^
+            "%GHC_ROOT%\mingw\lib\libc++.a" "%GHC_ROOT%\mingw\lib\libc++abi.a" ^
+            "%GHC_ROOT%\mingw\lib\libunwind.a" ^
+            -o hestonslv-probe.exe
+
+      # Never fails the job: the point is the log, and a throw is the expected
+      # outcome here -- the probe catches and prints it rather than aborting.
+      - name: Run the probe
+        shell: cmd
+        run: |
+          set "PATH=%QL_INSTALL%\bin;%PATH%"
+          hestonslv-probe.exe > hestonslv-probe.log 2>&1
+          type hestonslv-probe.log
+
+      - name: Upload the probe log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: hestonslv-probe-${{ env.GHC_VERSION }}
+          path: hestonslv-probe.log

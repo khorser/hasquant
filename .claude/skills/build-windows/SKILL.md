@@ -37,3 +37,12 @@ Notes that are only relevant when an agent drives the build:
   warning/optimisation settings.
 - `ninja` intermittently fails with `Permission denied` / `Access is denied`
   on `.obj.d` depfiles (virus scanning). Re-run it; it resumes.
+- When a Windows-only failure can't be reproduced anywhere else, put the
+  fixture in a standalone `tools/debug/*.cpp` probe -- no Haskell, no
+  hasquant -- and run it from the `Windows HestonSLV probe`
+  (`.github/workflows/windows-debug.yml`) `workflow_dispatch` job, which
+  restores the same QuantLib cache `windows.yml` builds and never fails the
+  run (a throw is the expected output, so the probe catches and prints it).
+  `workflow_dispatch` only appears once the workflow file is on `master`, so
+  a probe has to be merged before it can be dispatched. Compile the same
+  probe locally first to get a baseline log to diff the Windows one against.
