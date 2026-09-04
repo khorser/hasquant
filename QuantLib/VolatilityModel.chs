@@ -44,9 +44,10 @@ import QuantLib.Internal.Type
 -- |Direct-parameter GARCH(1,1) model: @vl@ is the long-term (unconditional) volatility: the
 -- model's persistence @gamma = 1 - alpha - beta@ and @omega = vl * gamma@ are derived from it.
 -- Does not calibrate; use 'garch11Calibrated' to fit alpha\/beta\/vl to an observed series.
-{#fun pure qlGarch11 as garch11{`Double' -- ^alpha
+{#fun qlGarch11 as garch11{`Double' -- ^alpha
   ,`Double' -- ^beta
   ,`Double' -- ^vl (long-term volatility)
+  ,preErrorCheck-`String'errorCheck*-
   }->`Garch11'peekGarch11*#}
 
 -- |Calibrates a GARCH(1,1) model to an observed return series via maximum likelihood. All four

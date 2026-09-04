@@ -1356,7 +1356,9 @@ void qlHistoricalIndexAnalysisCorrelation(QlHistoricalIndexAnalysis *o, unsigned
   try {fillMatrixOut([&] {return (*arg(o))->stats()->correlation();}, rows, cols, len, vs);
   } catch (std::exception& er) {handleException<double*>(e, er);}}
 
-Garch11 *qlGarch11(double alpha, double beta, double vl) {return alloc(new Garch11(alpha, beta, vl));}
+Garch11 *qlGarch11(double alpha, double beta, double vl, char **e) {
+  try {return alloc(new Garch11(alpha, beta, vl));
+  } catch (std::exception& er) {return handleException<Garch11*>(e, er);}}
 Garch11 *qlGarch11Calibrated(unsigned datesLen, int *dates, unsigned /*valuesLen*/, double *values, int mode, char **e) {
   try {
     Garch11::time_series ts;

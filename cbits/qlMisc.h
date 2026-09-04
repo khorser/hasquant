@@ -351,7 +351,7 @@ extern "C" {
      series. calibratedDatesLen/calibratedValuesLen are always equal in practice (the Haskell
      side always builds them from one zipped list); kept as two counts, per the codebase's usual
      array-marshalling shape, rather than one shared length. */
-  Garch11 *qlGarch11(double alpha, double beta, double vl);
+  Garch11 *qlGarch11(double alpha, double beta, double vl, char **e);
   Garch11 *qlGarch11Calibrated(unsigned datesLen, int *dates, unsigned valuesLen, double *values, int mode, char **e);
   void qlFreeGarch11(Garch11 *o);
   double qlGarch11Alpha(Garch11 *o);
