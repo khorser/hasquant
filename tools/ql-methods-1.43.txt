@@ -6608,10 +6608,10 @@
 | |ql/patterns/observable.hpp|Observable::Observable(Observable &&);
 | |ql/patterns/observable.hpp|Observable & Observable::operator=(Observable &&);
 | |ql/patterns/observable.hpp|void Observable::notifyObservers();
-| |ql/patterns/observable.hpp|void ObservableSettings::disableUpdates(bool deferred = false);
-| |ql/patterns/observable.hpp|void ObservableSettings::enableUpdates();
-| |ql/patterns/observable.hpp|bool ObservableSettings::updatesEnabled() const;
-| |ql/patterns/observable.hpp|bool ObservableSettings::updatesDeferred() const;
+|v|ql/patterns/observable.hpp|void ObservableSettings::disableUpdates(bool deferred = false);
+|v|ql/patterns/observable.hpp|void ObservableSettings::enableUpdates();
+|v|ql/patterns/observable.hpp|bool ObservableSettings::updatesEnabled() const;
+|v|ql/patterns/observable.hpp|bool ObservableSettings::updatesDeferred() const;
 | |ql/patterns/observable.hpp|bool ObservableSettings::runningDeferredUpdates() const;
 | |ql/patterns/observable.hpp|Observer::Observer();
 | |ql/patterns/observable.hpp|Observer::Observer(const Observer &);
