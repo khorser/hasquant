@@ -76,8 +76,7 @@ Out of scope:
 - A declarative composition DSL; any such DSL belongs in a sibling project.
 
 ## Roadmap
-- Add classes and methods using the repository skills.
-- Evaluate whether some [OpenSourceRiskEngine](https://opensourcerisk.org) functionality should be bound
+- Identify which [OpenSourceRiskEngine](https://opensourcerisk.org) functionality should be bound
 - Join forces with [HQuantLib](https://github.com/paulrzcz/hquantlib): a bivariate copula CDF catalogue
 - Build a declarative composition DSL as a sibling project.
 - Expose that DSL through an agent-callable tool, so an LLM can construct and price products through validated hasquant operations rather than generated pricing logic.

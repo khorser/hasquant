@@ -40,6 +40,14 @@ Unlike pattern 2, skip the `Gen*` newtype / `AnyOf` phantom-flexibility wrapper 
 
 The `Ql*AsY` upcast shims this needs (`cbits/*.cpp`) are the standard `ret(new QlY(*arg(o)))` shape described in the `c2hs-shim-patterns` skill. If the type already has them from a previous implementation, nothing there changes.
 
+## Stored Haskell callbacks
+
+If a C++ object stores a Haskell callback and invokes it later, the `FunPtr` bracket must span the object's whole use, not only its constructor. Represent the callback-bearing case in the Haskell ADT and expose a continuation such as `withCustomPayoff`; free the callback only after the continuation finishes. An argument-position marshaller would free it as soon as construction returned.
+
+Before exposing a callback abstraction, inspect its consumers. Prefer an upstream inner primitive that lets Haskell own the outer loop; otherwise batch the callback to the coarsest granularity the upstream algorithm supports. Keep a fine-grained callback only when upstream itself consumes one element at a time.
+
+Custom payoff compatibility is consumer-specific. Most pricing engines require a built-in `StrikedTypePayoff`; `FdBlackScholesVanillaEngine` and `FdHestonVanillaEngine` can dereference a failed cast. Use the custom striked-payoff form for those engines and document compatibility on every public consumer that accepts a custom payoff. The supplied option type and strike guide the grid; they do not redefine the callback payoff.
+
 ## Verification
 
-Run `make` (see CLAUDE.md) for a quick C++-only compile check, then a **full** (not incremental) `stack build --test --no-haddock` — this pattern touches `{#pointer#}` declarations across multiple `.chs` files, and an incremental build here once reported success while still running stale code. A wrong hop count still type-checks, so add or extend a `smoke/` script exercising the *deepest* case (most upcast hops) end to end: construct via the deepest nested case, consume it, print something derived (e.g. `isExpired`) — see `smoke/CheckPayoffExerciseUpcast.hs`.
+Run `make` for a quick C++-only compile check, then a **full** (not incremental) `stack build --test --no-haddock` — this pattern touches `{#pointer#}` declarations across multiple `.chs` files, and an incremental build here once reported success while still running stale code. A wrong hop count still type-checks, so add or extend a `smoke/` script exercising the *deepest* case (most upcast hops) end to end: construct via the deepest nested case, consume it, print something derived (e.g. `isExpired`) — see `smoke/CheckPayoffExerciseUpcast.hs`.

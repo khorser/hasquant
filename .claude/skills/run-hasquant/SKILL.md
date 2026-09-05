@@ -9,10 +9,7 @@ All paths below are relative to the repo root.
 
 ## Prerequisites
 
-QuantLib 1.43 and GHC/stack/cabal are expected to already be installed
-(this repo's `CLAUDE.md` documents the full dev setup, including the
-GHC 8.10 Docker gate — not repeated here). Nothing further was needed to
-run the commands below.
+QuantLib 1.43 and GHC/Stack/Cabal are expected to be installed. The GHC 8.10 compatibility gate uses the repository's Docker Compose setup below.
 
 ## Build
 
@@ -158,41 +155,22 @@ insufficient.
 
 ## Gotchas
 
-- **`cabal repl`/`ghci` can silently return wrong numeric results (often exactly `0.0`) from
-  pricing engine `npv`/calculators, even for known-good code.** Reproduced on both a new example
-  and the pre-existing `QuantLib.Example.EquityOption` (whose compiled-binary hspec test passes)
-  by running `Settings.keepingSettings' EquityOption.run` from a `cabal repl test:hasquant_test`
-  session — every price came back `0.0`. The same call in the actual compiled `hasquant_test`
-  binary (`cabal run test:hasquant_test`) gives the correct values. Root cause not chased down
-  (plausibly GHC's bytecode interpreter and the C++ shared library disagreeing about some
-  QuantLib static-initialization or singleton-state timing), but the fix is procedural: never
-  trust a numeric result read through `cabal repl`/`ghci` for anything that crosses into
-  `cbits/`. To eyeball intermediate values while developing, add a temporary
-  `Debug.Trace.traceShowM` in the hspec spec (or any code path already run via `cabal run
-  test:hasquant_test`/`cabal test`) and read it from that compiled run, then remove it.
-- **Build through `tools/quiet-build.py` to see warnings that matter** —
-  `tools/quiet-build.py stack build --test --no-haddock`, or pipe into it.
-  c2hs emits `import qualified Foreign.ForeignPtr as C2HSImp` into every
-  generated module, unused wherever pointer types are `{#pointer ...
-  nocode#}` (nearly everywhere), so a full build carries 28 identical,
-  unactionable `-Wunused-imports` warnings, blamed on an innocent `.chs`
-  import line by c2hs's line mapping. The script drops exactly that block
-  and nothing else, and prints how many it hid. Don't reach for `{-#
-  OPTIONS_GHC -Wno-unused-imports #-}` instead: the noise had already
-  hidden a real unused `Foreign.Ptr` import in `Instrument/Credit.chs` and
-  two live `-Wname-shadowing` warnings in
-  `test/example/QuantLib/Example/MulticurveBootstrapping.hs`, which a
-  per-module pragma would also have suppressed. C++ noise is *not* handled
-  here — that's `-isystem` in the `Makefile` and `package.yaml`.
-- **After testing: no new compilation warnings, and a clean `hlint` run.**
-  Check a hint actually holds before applying it — two here turned out
-  wrong. `Avoid NonEmpty.unzip` fires on the bare name `unzip` in *any*
-  module importing `Data.List.NonEmpty`, with no type resolution: it flags
-  plain `Prelude.unzip` over ordinary lists, and importing
-  `Data.Functor.unzip` explicitly doesn't silence it. For a genuinely wrong
-  hint, add a targeted `- ignore: {name: ..., within: Module}` to
-  `.hlint.yaml` with the evidence in a comment rather than contorting the
-  code.
+- **Do not trust `cabal repl` or `ghci` numeric results that cross into `cbits/`.** Known-good
+  pricing calls can return `0.0` in the interpreter while the compiled test binary is correct.
+  Inspect intermediate values through a temporary trace in a compiled `cabal test`/`cabal run`
+  path, then remove it.
+- **After a repository change, run one clean warning-visible build and fix every real
+  source warning it reports, including pre-existing warnings.** Use
+  `stack clean hasquant` followed by
+  `tools/quiet-build.py stack build --test --no-haddock`; an incremental build can hide
+  warnings in untouched modules. The accepted noise is Stack's non-portable `cpp-options: -P`
+  note and the linker's redundant `-U` warning. The helper suppresses only c2hs's generated
+  `Foreign.ForeignPtr` unused-import block; do not hide real warnings with a module-wide pragma.
+  Fix partial-function warnings with an exhaustive `case`, not another incomplete pattern.
+
+  Run `hlint .`, not per-file linting of `.chs` inputs. Check a hint is type-correct before
+  applying it; for a proven false positive, add a narrow `.hlint.yaml` exception with a short
+  reason.
 - **`trackAllocations` needs the built C++ objects deleted, or it silently
   does nothing.** Neither `cabal build --flag trackAllocations` nor `stack
   build --flag hasquant:trackAllocations` recompiles `cxx-sources` when
