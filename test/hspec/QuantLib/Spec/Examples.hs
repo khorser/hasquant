@@ -38,6 +38,8 @@ import qualified QuantLib.Example.MulticurveBootstrapping as MulticurveExample
 import qualified QuantLib.Example.TARF as TARFExample
 import qualified QuantLib.Example.AmericanLSM as AmericanLSMExample
 import qualified QuantLib.Example.BasketLSM as BasketLSMExample
+import qualified QuantLib.Example.HestonHullWhiteMC as HestonHullWhiteMCExample
+import qualified QuantLib.Example.LiborMarketModelMC as LiborMarketModelMCExample
 import qualified QuantLib.Example.FittedBondCurve as FittedBondCurveExample
 import qualified QuantLib.Example.ShortRateModels as ShortRateModelsExample
 import qualified QuantLib.Example.Gaussian1dModels as Gaussian1dModelsExample
@@ -497,6 +499,29 @@ spec = do
         -- in-sample bias and ordinary MC noise, not a clean bias-only comparison.
         calibP `shouldSatisfy` closePrec 4.4625 0.01
         exProb `shouldSatisfy` closePrec 0.7322 0.01
+
+    describe "Heston-Hull-White MC example (numeraire discounting)" $
+      it "check values" $ do
+        r <- HestonHullWhiteMCExample.run
+        -- Port of test-suite/hybridhestonhullwhiteprocess.cpp::testZeroBondPricing: the joint
+        -- process's own numeraire is the only discounting used, so both errors are measured
+        -- against quantities the simulation never sees -- the curve's P(0,t) and HullWhite's
+        -- closed-form discountBondOption. Upstream's own absolute tolerances (0.03/0.0035 over
+        -- 8191 paths) are kept; they are wide because they cover MC error across 89 grid points.
+        HestonHullWhiteMCExample.gridPoints r `shouldBe` 89
+        HestonHullWhiteMCExample.zeroBondError r `shouldSatisfy` (< 0.03)
+        HestonHullWhiteMCExample.zeroOptionError r `shouldSatisfy` (< 0.0035)
+
+    describe "Libor market model MC example (discountBond discounting)" $
+      it "check values" $ do
+        r <- LiborMarketModelMCExample.run
+        -- Port of test-suite/libormarketmodelprocess.cpp::testMonteCarloCapletPricing's
+        -- one-factor leg: the simulated forward-rate vector is discounted only by the process's
+        -- own discountBond, and compared against upstream's cached capletNpv values. The
+        -- tolerance is absolute, not relative: the first caplet's NPV is exactly 0, and MC error
+        -- here does not scale with each caplet's own value. 20k Sobol paths land at ~2.5e-5.
+        length (LiborMarketModelMCExample.capletNpvs r) `shouldBe` 10
+        LiborMarketModelMCExample.maxError r `shouldSatisfy` (< 2.0e-4)
 
     describe "Basket LSM example" $
       it "check values" $ do

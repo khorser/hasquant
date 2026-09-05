@@ -44,10 +44,14 @@ module QuantLib.Process
   , squareRootProcess
   , vegaStressedBlackScholesProcess
 
+  , apply
   , batesProcess
+  , covariance
   , diffusion
   , drift
+  , evolve
   , expectation
+  , stdDeviation
   , extOUWithJumpsProcess
   , factors
   , initialValues
@@ -67,6 +71,8 @@ module QuantLib.Process
   , liborForwardModelProcessFixingTimes
   , liborForwardModelProcessCashFlows
   , liborForwardModelProcessIndex
+  , liborForwardModelProcessDiscountBond
+  , liborForwardModelProcessAccrualTimes
   , merton76Process
   , ornsteinUhlenbeckProcess
   , varianceGammaProcess
@@ -77,6 +83,12 @@ module QuantLib.Process
   , g2ForwardPhi
   , g2ForwardShortRate
   , setForwardMeasureTime
+  , setG2ForwardMeasureTime
+  , hullWhiteAlpha
+  , hullWhiteForwardAlpha
+  , hullWhiteForwardB
+  , hullWhiteForwardM
+  , hybridHestonHullWhiteNumeraire
 
   , blackScholesTheta
   ) where
@@ -301,6 +313,55 @@ diffusion p t x = toMatrixDouble <$> qlStochasticProcessDiffusion p t x
   ,preArray-`[Double]'&peekDoubleArray*
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
+-- |the standard deviation matrix of the process over /dt/ given state /x0/ at time /t0/, i.e.
+-- a square root of 'covariance' -- the factor a simulated normal draw is multiplied by in one
+-- exact-scheme step. Pairs with 'expectation': @x_(t0+dt) = expectation + stdDeviation \* dw@
+-- for a process whose discretization is exact in that sense.
+stdDeviation :: GenStochasticProcess p -> Double -> [Double] -> Double -> IO (Matrix Double)
+stdDeviation p t0 x0 dt = toMatrixDouble <$> qlStochasticProcessStdDeviation p t0 x0 dt
+{#fun qlStochasticProcessStdDeviation{withStochasticProcess*`GenStochasticProcess p'
+  ,`Double' -- ^t0
+  ,withDoubleArray*`[Double]'& -- ^x0
+  ,`Double' -- ^dt
+  ,prePtr-`Word'peekWord*,prePtr-`Word'peekWord*,preArray-`[Double]'&peekDoubleArray*
+  ,preErrorCheck-`String'errorCheck*-}->`()'#}
+
+-- |the covariance matrix of the process over /dt/ given state /x0/ at time /t0/; equals
+-- @stdDeviation \* transpose stdDeviation@.
+covariance :: GenStochasticProcess p -> Double -> [Double] -> Double -> IO (Matrix Double)
+covariance p t0 x0 dt = toMatrixDouble <$> qlStochasticProcessCovariance p t0 x0 dt
+{#fun qlStochasticProcessCovariance{withStochasticProcess*`GenStochasticProcess p'
+  ,`Double' -- ^t0
+  ,withDoubleArray*`[Double]'& -- ^x0
+  ,`Double' -- ^dt
+  ,prePtr-`Word'peekWord*,prePtr-`Word'peekWord*,preArray-`[Double]'&peekDoubleArray*
+  ,preErrorCheck-`String'errorCheck*-}->`()'#}
+
+-- |applies an increment /dx/ to a state /x0/ in the process's own state space -- not always
+-- plain addition (a log-variable process exponentiates, for instance), which is why it is a
+-- method rather than a caller-side @zipWith (+)@.
+{#fun qlStochasticProcessApply as apply{withStochasticProcess*`GenStochasticProcess p'
+  ,withDoubleArray*`[Double]'& -- ^x0
+  ,withDoubleArray*`[Double]'& -- ^dx
+  ,preArray-`[Double]'&peekDoubleArray*
+  ,preErrorCheck-`String'errorCheck*-}->`()'#}
+
+-- |one discretized step of the process: the state at /t0+dt/ given state /x0/ at /t0/ and the
+-- standard-normal draws /dw/ (one per 'factors').
+--
+-- This crosses the FFI boundary once per timestep, so it is not the way to generate many paths --
+-- use 'QuantLib.Method.pathGenerator' for that, which drives the same @evolve@ entirely inside
+-- QuantLib. Reach for this when Haskell has to own the path logic (path-dependent state,
+-- early termination, a custom draw source via 'QuantLib.Method.gaussianRsg') while QuantLib
+-- keeps owning the process's discretization scheme.
+{#fun qlStochasticProcessEvolve as evolve{withStochasticProcess*`GenStochasticProcess p'
+  ,`Double' -- ^t0
+  ,withDoubleArray*`[Double]'& -- ^x0
+  ,`Double' -- ^dt
+  ,withDoubleArray*`[Double]'& -- ^dw
+  ,preArray-`[Double]'&peekDoubleArray*
+  ,preErrorCheck-`String'errorCheck*-}->`()'#}
+
 -- |Geman-Roncoroni process, a mean-reverting jump-diffusion model for electricity spot prices
 -- with a seasonal deterministic mean and an asymmetric jump term.
 {#fun qlGemanRoncoroniProcess as gemanRoncoroniProcess{`Double'-- ^x0
@@ -370,11 +431,63 @@ diffusion p t x = toMatrixDouble <$> qlStochasticProcessDiffusion p t x
   ,preErrorCheck-`String'errorCheck*-}->`HullWhiteForwardProcess'peekHullWhiteForwardProcess*#}
 
 -- |sets the T-forward measure's maturity time: a required post-construction call before a
--- 'hullWhiteForwardProcess' can be used for forward-measure pricing (e.g. as the short-rate leg
--- of 'hybridHestonHullWhiteProcess') -- upstream calls it immediately after construction, once
--- the pricing horizon is known.
+-- 'hullWhiteForwardProcess' can be used for forward-measure pricing. Call it as soon as the
+-- pricing horizon is known and, when the process is the short-rate leg of a
+-- 'hybridHestonHullWhiteProcess', /before/ that process is constructed -- the joint process
+-- reads this time once, at construction, and a later change does not reach it.
 {#fun qlHullWhiteForwardProcessSetForwardMeasureTime as setForwardMeasureTime{withGenStochasticProcess1D*`HullWhiteForwardProcess',`Double' -- ^t
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
+
+-- |the T-forward-measure time /T/ of a 'g2ForwardProcess', the multi-factor counterpart of
+-- 'setForwardMeasureTime'.
+--
+-- Mandatory before the process is simulated or its 'drift' read: @G2ForwardProcess@'s
+-- constructor leaves the inherited /T/ default-initialized, and 'drift' (hence 'evolve' and
+-- 'expectation') adds a measure correction computed from it, so without this call those read
+-- an indeterminate value. 'g2ForwardPhi' and 'g2ForwardShortRate' do not depend on /T/ and are
+-- unaffected.
+{#fun qlG2ForwardProcessSetForwardMeasureTime as setG2ForwardMeasureTime{withGenStochasticProcess*`G2ForwardProcess',`Double' -- ^t
+  ,preErrorCheck-`String'errorCheck*-}->`()'#}
+
+-- |the deterministic drift offset alpha(t) that fits 'hullWhiteProcess''s initial term
+-- structure; the simulated state /x/ is the short rate itself, so this is the piece to
+-- subtract to recover the zero-mean OU factor.
+{#fun qlHullWhiteProcessAlpha as hullWhiteAlpha{withGenStochasticProcess1D*`HullWhiteProcess',`Double' -- ^t
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |'hullWhiteAlpha' for a 'hullWhiteForwardProcess', i.e. under its T-forward measure.
+{#fun qlHullWhiteForwardProcessAlpha as hullWhiteForwardAlpha{withGenStochasticProcess1D*`HullWhiteForwardProcess',`Double' -- ^t
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |the Hull-White B(t, T) = (1 - exp(-a (T - t))) \/ a factor of the affine discount-bond
+-- formula P(t, T) = A(t, T) exp(-B(t, T) r_t).
+{#fun qlHullWhiteForwardProcessB as hullWhiteForwardB{withGenStochasticProcess1D*`HullWhiteForwardProcess',`Double' -- ^t
+  ,`Double' -- ^T
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |the T-forward-measure drift adjustment M_T(s, t, T) the process applies between /s/ and
+-- /t/ when the numeraire is the /T/-maturity zero bond.
+{#fun qlHullWhiteForwardProcessMT as hullWhiteForwardM{withGenStochasticProcess1D*`HullWhiteForwardProcess',`Double' -- ^s
+  ,`Double' -- ^t
+  ,`Double' -- ^T
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |the T-forward-measure numeraire of a 'hybridHestonHullWhiteProcess' at time /t/ in state
+-- /x/: @P(t, T, x!!2) \/ P(0, T)@, where /T/ is the process's forward-measure time and P is
+-- the Hull-White discount bond implied by the simulated short-rate factor.
+--
+-- The state is @[S, v, r]@ -- spot, variance and the Hull-White factor, in the order
+-- 'initialValues' returns -- and only @x!!2@ is read. This is /not/ a bank account: to turn a
+-- simulated time-/t/ payoff into a present value, divide it by this numeraire and multiply by
+-- the curve's own @discount ts T@.
+--
+-- /T/ is captured when the hybrid process is /constructed/, from the
+-- 'hullWhiteForwardProcess''s forward-measure time -- so 'setForwardMeasureTime' must be
+-- called on that process /before/ 'hybridHestonHullWhiteProcess', not after.
+{#fun qlHybridHestonHullWhiteProcessNumeraire as hybridHestonHullWhiteNumeraire{withGenStochasticProcess*`HybridHestonHullWhiteProcess'
+  ,`Double' -- ^t
+  ,withDoubleArray*`[Double]'& -- ^x
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Hull-White one-factor short-rate process, fitted to the given initial term structure.
 {#fun qlHullWhiteProcess as hullWhiteProcess{withYieldTermStructure*`GenYieldTermStructure y' -- ^h
@@ -415,6 +528,25 @@ diffusion p t x = toMatrixDouble <$> qlStochasticProcessDiffusion p t x
 -- |the underlying 'IborIndex' this process was constructed with
 {#fun qlLiborForwardModelProcessIndex as liborForwardModelProcessIndex{withGenStochasticProcess*`LiborForwardModelProcess'
   ,preErrorCheck-`String'errorCheck*-}->`IborIndex'peekIborIndex*#}
+
+-- |the /cumulative/ discount factors implied by one simulated vector of forward rates: element
+-- /i/ discounts from the end of accrual period /i/ back to the process's start, i.e.
+-- @scanl1 (*) [1 \/ (1 + r_i tau_i)]@ over 'liborForwardModelProcessAccrualTimes' -- not the
+-- individual one-period factors.
+{#fun qlLiborForwardModelProcessDiscountBond as liborForwardModelProcessDiscountBond{withGenStochasticProcess*`LiborForwardModelProcess'
+  ,withDoubleArray*`[Double]'& -- ^rates
+  ,preArray-`[Double]'&peekDoubleArray*
+  ,preErrorCheck-`String'errorCheck*-}->`()'#}
+
+-- |the @(start, end)@ accrual times of the forward rates this process evolves, in its own day
+-- count fraction from the evaluation date; their difference is the accrual period a caplet
+-- payoff is scaled by.
+liborForwardModelProcessAccrualTimes :: LiborForwardModelProcess -> IO [(Double, Double)]
+liborForwardModelProcessAccrualTimes p = uncurry zip <$> qlLiborForwardModelProcessAccrualTimes p
+{#fun qlLiborForwardModelProcessAccrualTimes{withGenStochasticProcess*`LiborForwardModelProcess'
+  ,preArray-`[Double]'&peekDoubleArray*
+  ,preArray-`[Double]'&peekDoubleArray*
+  ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Merton (1976) jump-diffusion process: a Black-Scholes process plus a log-normal jump
 -- component with Poisson jump intensity jumpInt.

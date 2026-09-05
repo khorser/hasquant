@@ -169,9 +169,11 @@ executable hasquant_example
       QuantLib.Example.FxForward
       QuantLib.Example.Gaussian1dModels
       QuantLib.Example.HaskellLSM
+      QuantLib.Example.HestonHullWhiteMC
       QuantLib.Example.InflationCurve
       QuantLib.Example.InflationInstruments
       QuantLib.Example.IsdaCds
+      QuantLib.Example.LiborMarketModelMC
       QuantLib.Example.MulticurveBootstrapping
       QuantLib.Example.Optimizer
       QuantLib.Example.OvernightIndexedSwap
@@ -285,9 +287,11 @@ test-suite hasquant_test
       QuantLib.Example.FxForward
       QuantLib.Example.Gaussian1dModels
       QuantLib.Example.HaskellLSM
+      QuantLib.Example.HestonHullWhiteMC
       QuantLib.Example.InflationCurve
       QuantLib.Example.InflationInstruments
       QuantLib.Example.IsdaCds
+      QuantLib.Example.LiborMarketModelMC
       QuantLib.Example.MulticurveBootstrapping
       QuantLib.Example.Optimizer
       QuantLib.Example.OvernightIndexedSwap

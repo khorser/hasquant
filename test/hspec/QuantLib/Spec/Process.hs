@@ -18,10 +18,14 @@
 -- also binds 'G2'\'s @dynamics()@ (as 'g2Dynamics', returning the new 'ShortRateDynamics' type)
 -- and its @shortRate@ method, closing the last holdout -- all 8 of upstream's g2process.cpp
 -- cases are now ported. Of test-suite/hybridhestonhullwhiteprocess.cpp's 10 cases,
--- 'testAnalyticHestonHullWhitePricing' is ported (an MC-vs-analytic cross-check with the
--- short-rate leg decorrelated); the rest need bindings this module doesn't have
--- ('numeraire', 'SobolBrownianBridgeRsg', 'HullWhite.discountBond'\/'discountBondOption', a
--- bound 'FdmHestonHullWhiteVanillaEngine', ...) and are left as a further follow-up.
+-- 'testAnalyticHestonHullWhitePricing' is ported here (an MC-vs-analytic cross-check with the
+-- short-rate leg decorrelated) and 'testZeroBondPricing' as
+-- "QuantLib.Example.HestonHullWhiteMC"; the rest still need bindings this module doesn't have
+-- (a bound 'FdmHestonHullWhiteVanillaEngine', ...) and are left as a further follow-up.
+-- 'QuantLib.Process.hybridHestonHullWhiteNumeraire' and the Hull-White process getters
+-- ('hullWhiteAlpha'\/'hullWhiteForwardAlpha'\/'hullWhiteForwardB'\/'hullWhiteForwardM') are
+-- checked here against closed forms, and 'stdDeviation'\/'covariance'\/'apply'\/'evolve'
+-- against each other on 'g2Process'.
 module QuantLib.Spec.Process (spec) where
 
 import Test.Hspec
@@ -34,15 +38,19 @@ import QuantLib.Time.Date(today, addPeriod, september)
 import QuantLib.Time.Schedule(dayCounter, years, DayCounterConstructor(..), Frequency(..), TimeUnit(..))
 import QuantLib.InterestRate(Compounding(..), VolatilityType(..), rate)
 import QuantLib.Quote(simpleQuote, setValue)
-import QuantLib.TermStructure.Yield(flatForward, forwardRate, YieldTermStructure, interpolatedZeroCurve)
+import QuantLib.TermStructure.Yield(flatForward, forwardRate, discount, YieldTermStructure, interpolatedZeroCurve)
 import QuantLib.Instrument(npv, setPricingEngine)
 import QuantLib.Instrument.Option(europeanOption, StrikedPayoff(PlainVanilla), PlainVanillaPayoff(..), OptionType(..), Exercise(European), EuropeanExercise(..))
 import QuantLib.Process(hestonProcess, batesProcess, gjrGARCHProcess, HestonProcessDiscretization(..), GJRGARCHProcessDiscretization(..)
- , g2Process, g2ForwardProcess, g2Phi, g2ShortRate, g2ForwardPhi, g2ForwardShortRate, factors, drift, diffusion, expectation, initialValues, hullWhiteForwardProcess, setForwardMeasureTime, hybridHestonHullWhiteProcess, HybridHestonHullWhiteProcessDiscretization(..)
- , liborForwardModelProcess, liborForwardModelProcessFixingDates, liborForwardModelProcessFixingTimes, liborForwardModelProcessCashFlows)
+ , g2Process, g2ForwardProcess, g2Phi, g2ShortRate, g2ForwardPhi, g2ForwardShortRate, setG2ForwardMeasureTime, factors, drift, diffusion, expectation, initialValues, hullWhiteProcess, hullWhiteForwardProcess, setForwardMeasureTime, hybridHestonHullWhiteProcess, HybridHestonHullWhiteProcessDiscretization(..)
+ , liborForwardModelProcess, liborForwardModelProcessFixingDates, liborForwardModelProcessFixingTimes, liborForwardModelProcessCashFlows
+ , liborForwardModelProcessDiscountBond, liborForwardModelProcessAccrualTimes
+ , hybridHestonHullWhiteNumeraire, hullWhiteAlpha, hullWhiteForwardAlpha, hullWhiteForwardB, hullWhiteForwardM
+ , stdDeviation, covariance, apply, evolve)
 import QuantLib.Model(hullWhite, g2, g2Dynamics, shortRate
  , hestonModel, batesModel, gJRGARCHModel
- , liborForwardModel, liborForwardModelAsAffineModel, lfmHullWhiteParameterization, lfmHullWhiteCovariance, LmVolatilityModel(..), LmCorrelationModel(..))
+ , liborForwardModel, liborForwardModelAsAffineModel, lfmHullWhiteParameterization, lfmHullWhiteCovariance, setCovarParam, LmVolatilityModel(..), LmCorrelationModel(..)
+ , discountBond, discountBondOption)
 import QuantLib.PricingEngine(analyticHestonHullWhiteEngine, mcHestonHullWhiteEngine
  , analyticHestonEngine', batesEngine, analyticGJRGARCHEngine, mcEuropeanGJRGARCHEngine, blackFormula, analyticCapFloorEngine)
 import QuantLib.Method(pathGenerator, next, asset)
@@ -175,7 +183,7 @@ spec = do
       , (50.0, 2.3282, 2.3521)
       ]
 
-  describe "LiborForwardModelProcess (LfmHullWhiteParameterization caplet pricing)" $
+  describe "LiborForwardModelProcess (LfmHullWhiteParameterization caplet pricing)" $ do
     -- Exact port of test-suite/libormarketmodel.cpp::makeIndex, makeCapVolCurve and
     -- testCapletPricing. The upstream test widens its tolerance to 1e-5 when index-fixing
     -- coupons are enabled; hasquant does not expose that global IborCoupon setting, so use the
@@ -200,10 +208,10 @@ spec = do
         capletVol <- Vol.capletVarianceCurve evalDate (fromList $ zip (take 9 $ drop 1 fixingDates) capletVols) dc ShiftedLognormal 0.0
         let emptyCorrelation = either error id $ boxedRealMatrix 0 0 []
         parameterization <- lfmHullWhiteParameterization process capletVol emptyCorrelation 1
-        covariance <- lfmHullWhiteCovariance parameterization 0.0 []
-        matrixRows covariance `shouldBe` size
-        matrixColumns covariance `shouldBe` size
-        let covarianceData = matrixData covariance
+        covar <- lfmHullWhiteCovariance parameterization 0.0 []
+        matrixRows covar `shouldBe` size
+        matrixColumns covar `shouldBe` size
+        let covarianceData = matrixData covar
             variances = [covarianceData !! (i * fromIntegral size + i) | i <- [0 .. fromIntegral size - 1]]
         leg <- liborForwardModelProcessCashFlows process 1.0
         model <- liborForwardModel process (FixedVolatility (fromList $ zip fixingTimes (map sqrt variances))) (ExponentialCorrelation size 0.3)
@@ -213,6 +221,44 @@ spec = do
         setPricingEngine capInstr eng
         capNpv <- npv capInstr
         capNpv `shouldSatisfy` closePrec 0.015853935178 1.0e-5
+
+    -- discountBond compounds along the accrual grid: element i discounts from the end of
+    -- period i back to the start, so it is the running product of the one-period factors, not
+    -- the factors themselves. Also covers 'setCovarParam', without which the process holds no
+    -- covariance parameterization and drift/diffusion/factors dereference a null pointer.
+    it "discountBond is the running product of its accrual-period discount factors" $
+      Settings.keepingSettings' $ do
+        let fixtureDate = 4 `september` 2005
+            curveEndDate = 4 `september` 2018
+            size = 10 :: Word
+        cal <- calendar TARGET
+        evalDate <- adjust cal fixtureDate Following
+        Settings.setEvaluationDate (Just evalDate)
+        dc <- dayCounter (Actual360 False)
+        emptyIndex <- iborIndex Euribor6M Nothing
+        firstPillar <- advance cal evalDate (fromIntegral (Ibor.fixingDays emptyIndex), Days) Following False
+        rTS <- interpolatedZeroCurve (fromList [(firstPillar, 0.039), (curveEndDate, 0.041)]) dc cal [] Linear
+        idx <- iborIndex Euribor6M (Just rTS)
+        process <- liborForwardModelProcess size idx
+
+        accruals <- liborForwardModelProcessAccrualTimes process
+        length accruals `shouldBe` fromIntegral size
+        all (\(st, en) -> en > st) accruals `shouldBe` True
+
+        let rates = [0.03 + 0.002 * fromIntegral i | i <- [0 .. fromIntegral size - 1 :: Int]]
+            expected = scanl1 (*) (zipWith (\r (st, en) -> 1 / (1 + r * (en - st))) rates accruals)
+        dfs <- liborForwardModelProcessDiscountBond process rates
+        zipWithM_ (\c e -> c `shouldSatisfy` closePrec e 1.0e-12) dfs expected
+
+        -- the process is only simulable once a covariance parameterization is installed
+        fixingDates <- liborForwardModelProcessFixingDates process
+        capletVol <- Vol.capletVarianceCurve evalDate (fromList (zip (take 9 (drop 1 fixingDates)) (repeat 0.15))) dc ShiftedLognormal 0.0
+        let emptyCorrelation = either error id $ boxedRealMatrix 0 0 []
+        parameterization <- lfmHullWhiteParameterization process capletVol emptyCorrelation 1
+        setCovarParam process parameterization
+        factors process `shouldReturn` 1
+        diff <- diffusion process 0.0 rates
+        matrixRows diff `shouldBe` size
 
   describe "G2Process/G2ForwardProcess (phi/shortRate/factors self-consistency)" $ do
     -- ported from test-suite/g2process.cpp::testG2ProcessObservesTermStructure: under a flat
@@ -383,7 +429,66 @@ spec = do
             sum expT `shouldSatisfy` closePrec expected 1.0e-12)
           [0.1, 0.5, 2.0, 5.0, 10.0]
 
-  describe "HybridHestonHullWhiteProcess (AnalyticHestonHullWhiteEngine vs. MCHestonHullWhiteEngine)" $
+    -- G2ForwardProcess's constructor leaves the inherited forward-measure time
+    -- default-initialized, and only drift (via xForwardDrift/yForwardDrift) reads it -- so
+    -- 'setG2ForwardMeasureTime' is required before the process is simulated. Setting T = t
+    -- zeroes both corrections, which makes the difference against any other T exactly the two
+    -- closed forms from g2process.cpp.
+    it "setG2ForwardMeasureTime drives drift's measure correction" $
+      Settings.keepingSettings' $ do
+        evalDate <- today
+        Settings.setEvaluationDate (Just evalDate)
+        dc <- dayCounter Actual365FixedStandard
+        let a = 0.1; sigma = 0.01; b = 0.2; eta = 0.013; rho = -0.5
+            t = 1.5; bigT = 12.0; z = [0.003, -0.001]
+        rateQ <- simpleQuote 0.03
+        curve <- flatForward evalDate rateQ dc Continuous Annual
+        process <- g2ForwardProcess a sigma b eta rho (Just curve)
+
+        setG2ForwardMeasureTime process t
+        baseX:baseY:_ <- drift process t z
+        setG2ForwardMeasureTime process bigT
+        farX:farY:_ <- drift process t z
+
+        let expatT = exp (-a * (bigT - t))
+            expbtT = exp (-b * (bigT - t))
+            xFwd = -(sigma * sigma / a) * (1 - expatT) - (rho * sigma * eta / b) * (1 - expbtT)
+            yFwd = -(eta * eta / b) * (1 - expbtT) - (rho * sigma * eta / a) * (1 - expatT)
+        (farX - baseX) `shouldSatisfy` closePrec xFwd 1.0e-12
+        (farY - baseY) `shouldSatisfy` closePrec yFwd 1.0e-12
+
+    -- stdDeviation/covariance/apply/evolve complete the StochasticProcess interface alongside
+    -- the already-bound drift/diffusion/expectation. G2Process uses the base-class
+    -- implementations of all four, so these identities are the definitions themselves:
+    -- covariance = stdDeviation stdDeviation^T, apply is plain addition in this state space,
+    -- and evolve with a zero draw is the expectation.
+    it "stdDeviation/covariance/apply/evolve agree with each other" $
+      Settings.keepingSettings' $ do
+        evalDate <- today
+        Settings.setEvaluationDate (Just evalDate)
+        dc <- dayCounter Actual365FixedStandard
+        rateQ <- simpleQuote 0.03
+        curve <- flatForward evalDate rateQ dc Continuous Annual
+        process <- g2Process 0.1 0.01 0.2 0.013 (-0.5) (Just curve)
+        let t0 = 1.0; dt = 0.25; x0 = [0.004, -0.002]
+
+        sd <- stdDeviation process t0 x0 dt
+        cov <- covariance process t0 x0 dt
+        matrixRows sd `shouldBe` 2
+        matrixColumns sd `shouldBe` 2
+        let sdData = matrixData sd
+            at i j = sdData !! (i * 2 + j)
+            expectedCov = [sum [at i k * at j k | k <- [0, 1]] | i <- [0, 1], j <- [0, 1]]
+        zipWithM_ (\c e -> c `shouldSatisfy` closePrec e 1.0e-12) (matrixData cov) expectedCov
+
+        applied <- apply process x0 [0.001, 0.002]
+        zipWithM_ (\c e -> c `shouldSatisfy` closePrec e 1.0e-14) applied [0.005, 0.0]
+
+        evolved <- evolve process t0 x0 dt [0.0, 0.0]
+        expected <- expectation process t0 x0 dt
+        zipWithM_ (\c e -> c `shouldSatisfy` closePrec e 1.0e-12) evolved expected
+
+  describe "HybridHestonHullWhiteProcess (AnalyticHestonHullWhiteEngine vs. MCHestonHullWhiteEngine)" $ do
     -- ported from test-suite/hybridhestonhullwhiteprocess.cpp::testAnalyticHestonHullWhitePricing:
     -- with the equity/short-rate correlation set to 0, an MC price on the joint
     -- Heston/Hull-White process must reproduce the semi-analytic AnalyticHestonHullWhiteEngine
@@ -429,6 +534,101 @@ spec = do
 
             mcNpv `shouldSatisfy` closePrec analyticNpv 1.0e-4
           | typ <- [Put, Call], strike <- [80.0, 120.0] ]
+
+    -- 'hybridHestonHullWhiteNumeraire' is by construction P_HW(t, T, x!!2) / P(0, T) -- the
+    -- same Hull-White model the process builds internally from its forward process's a/sigma
+    -- and the Heston leg's risk-free curve. Rebuilding that model here and comparing is an
+    -- exact identity, not an approximation, so it pins both the formula and the fact that only
+    -- the third state component is read.
+    it "numeraire equals the Hull-White discount bond over the curve's own P(0,T)" $
+      Settings.keepingSettings' $ do
+        evalDate <- today
+        Settings.setEvaluationDate (Just evalDate)
+        dc <- dayCounter (Actual360 False)
+        let a = 0.05; sigma = 0.01
+        rateQ <- simpleQuote 0.04
+        rTS <- flatForward evalDate rateQ dc Continuous Annual
+        s0 <- simpleQuote 100.0
+        hProcess <- hestonProcess rTS Nothing s0 0.04 1.0 0.04 0.2 (-0.5) QuadraticExponentialMartingale
+        hwFwd <- hullWhiteForwardProcess rTS a sigma
+        let bigT = 10.0
+        setForwardMeasureTime hwFwd bigT
+        joint <- hybridHestonHullWhiteProcess hProcess hwFwd (-0.4) HybridHestonHullWhiteEuler
+        hwModel <- hullWhite rTS a sigma
+        endDf <- discount rTS bigT False
+
+        sequence_ [ do
+            expected <- (/ endDf) <$> discountBond hwModel t bigT r
+            calculated <- hybridHestonHullWhiteNumeraire joint t [100.0, 0.04, r]
+            calculated `shouldSatisfy` closePrec expected 1.0e-12
+          | t <- [1.0, 3.0, 7.0], r <- [0.0, 0.02, -0.01] ]
+
+    -- at t=0 in the process's own initial state the Hull-White factor is 0, so
+    -- P(0, T, 0) = P(0, T) and the numeraire collapses to 1 -- the sanity check that the
+    -- division by the curve's end discount is the right way round.
+    it "numeraire is 1 at time 0 in the initial state" $
+      Settings.keepingSettings' $ do
+        evalDate <- today
+        Settings.setEvaluationDate (Just evalDate)
+        dc <- dayCounter (Actual360 False)
+        rateQ <- simpleQuote 0.03
+        rTS <- flatForward evalDate rateQ dc Continuous Annual
+        s0 <- simpleQuote 100.0
+        hProcess <- hestonProcess rTS Nothing s0 0.04 1.0 0.04 0.2 (-0.5) QuadraticExponentialMartingale
+        hwFwd <- hullWhiteForwardProcess rTS 0.05 0.01
+        setForwardMeasureTime hwFwd 5.0
+        joint <- hybridHestonHullWhiteProcess hProcess hwFwd 0.0 HybridHestonHullWhiteEuler
+        iv <- initialValues joint
+        calculated <- hybridHestonHullWhiteNumeraire joint 0.0 iv
+        calculated `shouldSatisfy` closePrec 1.0 1.0e-12
+
+    -- B(t,T) and alpha(t) are the two pieces of Hull-White's affine bond formula
+    -- P(t,T) = A(t,T) exp(-B(t,T) r_t); both have closed forms independent of the process's
+    -- own implementation (alpha's second term is the curve's instantaneous forward rate).
+    it "alpha and B match their closed forms" $
+      Settings.keepingSettings' $ do
+        evalDate <- today
+        Settings.setEvaluationDate (Just evalDate)
+        dc <- dayCounter Actual365FixedStandard
+        let a = 0.07; sigma = 0.012
+        rateQ <- simpleQuote 0.035
+        rTS <- flatForward evalDate rateQ dc Continuous Annual
+        hw <- hullWhiteProcess rTS a sigma
+        hwFwd <- hullWhiteForwardProcess rTS a sigma
+        setForwardMeasureTime hwFwd 10.0
+
+        mapM_ (\t -> do
+            fwdIR <- forwardRate rTS t t Continuous NoFrequency True
+            let alfa = (sigma / a) * (1 - exp (-a * t))
+                expected = 0.5 * alfa * alfa + rate fwdIR
+            plain <- hullWhiteAlpha hw t
+            fwd <- hullWhiteForwardAlpha hwFwd t
+            plain `shouldSatisfy` closePrec expected 1.0e-12
+            fwd `shouldSatisfy` closePrec expected 1.0e-12)
+          [0.5, 2.0, 8.0]
+
+        mapM_ (\(t, bigT) -> do
+            calculated <- hullWhiteForwardB hwFwd t bigT
+            calculated `shouldSatisfy` closePrec ((1 - exp (-a * (bigT - t))) / a) 1.0e-12)
+          [(0.0, 1.0), (1.0, 5.0), (3.0, 3.0)]
+
+    -- M_T is the T-forward-measure drift adjustment applied between s and t; it must vanish
+    -- over a zero-length step, and upstream's own expectation() is
+    -- x0 e^{-a dt} + alpha(t0+dt) - alpha(t0) e^{-a dt} - M_T(t0, t0+dt, T), which ties the
+    -- three getters together without re-deriving M_T's closed form here.
+    it "M_T vanishes over a zero-length step and is nonzero over a real one" $
+      Settings.keepingSettings' $ do
+        evalDate <- today
+        Settings.setEvaluationDate (Just evalDate)
+        dc <- dayCounter Actual365FixedStandard
+        rateQ <- simpleQuote 0.03
+        rTS <- flatForward evalDate rateQ dc Continuous Annual
+        hwFwd <- hullWhiteForwardProcess rTS 0.05 0.01
+        setForwardMeasureTime hwFwd 10.0
+        zeroStep <- hullWhiteForwardM hwFwd 1.0 1.0 10.0
+        zeroStep `shouldSatisfy` closePrec 0.0 1.0e-14
+        realStep <- hullWhiteForwardM hwFwd 1.0 3.0 10.0
+        abs realStep `shouldSatisfy` (> 1.0e-8)
 
   where
     -- Abramowitz & Stegun 7.1.26 approximation, accurate to ~1.5e-7 -- ample for this

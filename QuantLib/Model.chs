@@ -23,6 +23,7 @@ module QuantLib.Model
   , GenOneFactorAffineModel
   , LiborForwardModel
   , LfmHullWhiteParameterization
+  , setCovarParam
   , HullWhite
   , Gsr
   , MarkovFunctional
@@ -611,6 +612,18 @@ lfmHullWhiteParameterization process capletVol (Matrix rows cols values) factors
   ,withDoubleArrayRaw*`[Double]' -- ^correlation
   ,fromIntegral`Word' -- ^factors
   ,preErrorCheck-`String'errorCheck*-}->`LfmHullWhiteParameterization'peekLfmHullWhiteParameterization*#}
+
+-- |installs the covariance parameterization a 'LiborForwardModelProcess' evolves under.
+--
+-- Mandatory before the process is used for anything dynamic: a freshly constructed
+-- 'QuantLib.Process.liborForwardModelProcess' holds no parameterization, and
+-- 'QuantLib.Process.drift', 'QuantLib.Process.diffusion', 'QuantLib.Process.evolve',
+-- 'QuantLib.Process.factors' and 'QuantLib.Method.pathGenerator' all dereference it.
+-- 'QuantLib.Process.liborForwardModelProcessDiscountBond', the fixing/accrual times and
+-- 'QuantLib.Process.liborForwardModelProcessCashFlows' do not, and work without it.
+{#fun qlLiborForwardModelProcessSetCovarParam as setCovarParam{withGenStochasticProcess*`LiborForwardModelProcess' -- ^process
+  ,withStandalone*`LfmHullWhiteParameterization' -- ^param
+  ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Instantaneous covariance matrix at @t@ for the supplied forward-rate state @x@.
 lfmHullWhiteCovariance :: LfmHullWhiteParameterization -> Double -> [Double] -> IO (Matrix Double)
