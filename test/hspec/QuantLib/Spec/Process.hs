@@ -123,7 +123,14 @@ spec = do
             r = 0.03
             q = 0.01
             v0 = 0.04
-            t = 0.5
+            -- t = 0.5 (the original choice) lands HestonProcess::pdf's Cornish-Fisher upper-bound
+            -- estimate (ql/processes/hestonprocess.cpp: cornishFisherEps, a 4th-order finite
+            -- difference of the CIR characteristic function divided by d^4 = 1e-8) in a
+            -- numerically fragile spot: reproduced in raw C++ against the installed QuantLib, it
+            -- returns NaN there on Linux/gcc and Windows but a plausible value on macOS/clang --
+            -- an upstream platform-sensitivity, not a hasquant binding bug. t = 1.0 sits on a
+            -- stable plateau confirmed by a parameter sweep across both platforms.
+            t = 1.0
         rQ <- simpleQuote r
         qQ <- simpleQuote q
         rTS <- flatForward evalDate rQ dc Continuous Annual
