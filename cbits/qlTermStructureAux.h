@@ -177,14 +177,16 @@ QuantLib::DefaultProbabilityTermStructure* qlPiecewiseDefaultCurveAux(const Quan
     const std::vector<QuantLib::ext::shared_ptr<QuantLib::DefaultProbabilityHelper> >& instruments,
     QuantLib::DayCounter& dayCounter,
     const std::vector<QuantLib::Handle<QuantLib::Quote> >& jumps, const std::vector<QuantLib::Date>& jumpDates,
-    int trait,int interpolator, int approximator, int approximatorArg);
+    int trait,int interpolator, int approximator, int approximatorArg,
+    const QlIterativeBootstrapOpts& bootstrapOpts);
 
 QuantLib::DefaultProbabilityTermStructure* qlPiecewiseDefaultCurveAux1(unsigned settlementDays,
     const QuantLib::Calendar& calendar,
     const std::vector<QuantLib::ext::shared_ptr<QuantLib::DefaultProbabilityHelper> >& instruments,
     QuantLib::DayCounter& dayCounter,
     const std::vector<QuantLib::Handle<QuantLib::Quote> >& jumps, const std::vector<QuantLib::Date>& jumpDates,
-    int trait,int interpolator, int approximator, int approximatorArg);
+    int trait,int interpolator, int approximator, int approximatorArg,
+    const QlIterativeBootstrapOpts& bootstrapOpts);
 
 // ConstantLossModel<CopulaPolicy>, only the Handle<Quote>/nVariables (one-factor) constructor.
 // tOrders empty -> GaussianCopulaPolicy (initTraits is a bare int upstream, unused here);

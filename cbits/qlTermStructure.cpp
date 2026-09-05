@@ -116,6 +116,39 @@ namespace {
     return Handle<YoYOptionletVolatilitySurface>(shared_ptr<YoYOptionletVolatilitySurface>(), false);
   }
 
+  // IterativeBootstrap's constructor defaults for the narrow piecewise-yield entry points;
+  // bootstrapOpts below builds the same POD from explicit full-arity yield/credit settings.
+  QlIterativeBootstrapOpts defaultBootstrapOpts() {
+    QlIterativeBootstrapOpts b;
+    b.accuracy = b.minValue = b.maxValue = Null<Real>();
+    b.maxAttempts = 1;
+    b.maxFactor = b.minFactor = 2.0;
+    b.dontThrow = 0;
+    b.dontThrowSteps = 10;
+    b.maxEvaluations = MAX_FUNCTION_EVALUATIONS;
+    return b;
+  }
+
+  QlIterativeBootstrapOpts bootstrapOpts(double accuracy, double minValue, double maxValue,
+      unsigned maxAttempts, double maxFactor, double minFactor, int dontThrow,
+      unsigned dontThrowSteps, unsigned maxEvaluations) {
+    QlIterativeBootstrapOpts b;
+    b.accuracy = accuracy; b.minValue = minValue; b.maxValue = maxValue;
+    b.maxAttempts = maxAttempts; b.maxFactor = maxFactor; b.minFactor = minFactor;
+    b.dontThrow = dontThrow; b.dontThrowSteps = dontThrowSteps; b.maxEvaluations = maxEvaluations;
+    return b;
+  }
+
+  template <class Build>
+  QlDefaultProbabilityTermStructure* piecewiseDefaultCurveImpl(Build&& build, char **e) {
+    try {
+      auto ts = allocShared(build());
+      return ret(new QlDefaultProbabilityTermStructure(ts));
+    } catch (std::exception& er) {
+      return handleException<QlDefaultProbabilityTermStructure*>(e, er);
+    }
+  }
+
 
 // The named-index factory tables below live inside the extern "C" block with the shims that
 // use them, but a template cannot be declared with C linkage, so their element constructors
@@ -1154,16 +1187,18 @@ QlDefaultProbabilityHelper* qlUpfrontCdsHelper(QlQuote* upfront, double runningS
   try {return ret(new QlDefaultProbabilityHelper(alloc(new UpfrontCdsHelper(*arg(upfront), runningSpread, Period(n, (TimeUnit)u), settlementDays, *arg(calendar), (Frequency)frequency, (BusinessDayConvention)paymentConvention, (DateGeneration::Rule)rule, *arg(dayCounter), recoveryRate, *arg(discountCurve), upfrontSettlementDays, settlesAccrual, paysAtDefaultTime,
             qlNullableDate(startDate), *arg(lastPeriodDayCounter), rebatesAccrual, (CreditDefaultSwap::PricingModel)model))));
   } catch (std::exception& er) {return handleException<QlDefaultProbabilityHelper*>(e, er);}}
-QlDefaultProbabilityTermStructure* qlPiecewiseDefaultCurve(int referenceDate, unsigned instrumentsLen, QlDefaultProbabilityHelper** instruments, DayCounter* dayCounter, unsigned jumpsLen, QlQuote** jumps, unsigned jDatesLen, int* jumpDates, int trait, int interpolator, int approximator, int approximatorArg, char **e) {
-  try {
-    auto ts = allocShared(qlPiecewiseDefaultCurveAux(Date(referenceDate), qlVector(instruments, instrumentsLen), *arg(dayCounter), qlHandleVector(jumps, jumpsLen), qlDateVector(jumpDates, jDatesLen), trait, interpolator, approximator, approximatorArg));
-    return ret(new QlDefaultProbabilityTermStructure(ts));
-  } catch (std::exception& er) {return handleException<QlDefaultProbabilityTermStructure*>(e, er);}}
-QlDefaultProbabilityTermStructure* qlPiecewiseDefaultCurve1(unsigned settlementDays, Calendar *calendar, unsigned instrumentsLen, QlDefaultProbabilityHelper** instruments, DayCounter* dayCounter, unsigned jumpsLen, QlQuote** jumps, unsigned jDatesLen, int* jumpDates, int trait, int interpolator, int approximator, int approximatorArg, char **e) {
-  try {
-    auto ts = allocShared(qlPiecewiseDefaultCurveAux1(settlementDays, *arg(calendar), qlVector(instruments, instrumentsLen), *arg(dayCounter), qlHandleVector(jumps, jumpsLen), qlDateVector(jumpDates, jDatesLen), trait, interpolator, approximator, approximatorArg));
-    return ret(new QlDefaultProbabilityTermStructure(ts));
-  } catch (std::exception& er) {return handleException<QlDefaultProbabilityTermStructure*>(e, er);}}
+QlDefaultProbabilityTermStructure* qlPiecewiseDefaultCurve(int referenceDate, unsigned instrumentsLen, QlDefaultProbabilityHelper** instruments, DayCounter* dayCounter, unsigned jumpsLen, QlQuote** jumps, unsigned jDatesLen, int* jumpDates, int trait, int interpolator, int approximator, int approximatorArg, double accuracy, double minValue, double maxValue, unsigned maxAttempts, double maxFactor, double minFactor, int dontThrow, unsigned dontThrowSteps, unsigned maxEvaluations, char **e) {
+  const auto b = bootstrapOpts(accuracy, minValue, maxValue, maxAttempts, maxFactor, minFactor, dontThrow, dontThrowSteps, maxEvaluations);
+  return piecewiseDefaultCurveImpl([&] {
+    return qlPiecewiseDefaultCurveAux(Date(referenceDate), qlVector(instruments, instrumentsLen), *arg(dayCounter), qlHandleVector(jumps, jumpsLen), qlDateVector(jumpDates, jDatesLen), trait, interpolator, approximator, approximatorArg, b);
+  }, e);
+}
+QlDefaultProbabilityTermStructure* qlPiecewiseDefaultCurve1(unsigned settlementDays, Calendar *calendar, unsigned instrumentsLen, QlDefaultProbabilityHelper** instruments, DayCounter* dayCounter, unsigned jumpsLen, QlQuote** jumps, unsigned jDatesLen, int* jumpDates, int trait, int interpolator, int approximator, int approximatorArg, double accuracy, double minValue, double maxValue, unsigned maxAttempts, double maxFactor, double minFactor, int dontThrow, unsigned dontThrowSteps, unsigned maxEvaluations, char **e) {
+  const auto b = bootstrapOpts(accuracy, minValue, maxValue, maxAttempts, maxFactor, minFactor, dontThrow, dontThrowSteps, maxEvaluations);
+  return piecewiseDefaultCurveImpl([&] {
+    return qlPiecewiseDefaultCurveAux1(settlementDays, *arg(calendar), qlVector(instruments, instrumentsLen), *arg(dayCounter), qlHandleVector(jumps, jumpsLen), qlDateVector(jumpDates, jDatesLen), trait, interpolator, approximator, approximatorArg, b);
+  }, e);
+}
 double qlDefaultProbabilityTermStructureDefaultDensity1(QlDefaultProbabilityTermStructure* o, double t, int extrapolate, char **e) {
   try {return (*arg(o))->defaultDensity(t, extrapolate);
   } catch (std::exception& er) {return handleException<double>(e, er);}}
@@ -1412,30 +1447,6 @@ QlBondHelper *qlCPIBondHelper(QlQuote *quote, unsigned settlementDays, double fa
           *arg(accrualDayCounter), (BusinessDayConvention)paymentConvention, qlNullableDate(issueDate), *arg(paymentCalendar)))));
   } catch (std::exception& er) {return handleException<QlBondHelper *>(e, er);}}
 void qlFreeRateHelper(QlRateHelper *helper) {del(helper);}
-
-// IterativeBootstrap's own constructor defaults (ql/termstructures/iterativebootstrap.hpp),
-// for the narrow entry points that don't expose the settings. Kept here rather than as
-// in-class initialisers so the struct stays a POD usable from the C side.
-static QlIterativeBootstrapOpts defaultBootstrapOpts() {
-  QlIterativeBootstrapOpts b;
-  b.accuracy = b.minValue = b.maxValue = Null<Real>();
-  b.maxAttempts = 1;
-  b.maxFactor = b.minFactor = 2.0;
-  b.dontThrow = 0;
-  b.dontThrowSteps = 10;
-  b.maxEvaluations = MAX_FUNCTION_EVALUATIONS;
-  return b;
-}
-
-static QlIterativeBootstrapOpts bootstrapOpts(double accuracy, double minValue, double maxValue,
-    unsigned maxAttempts, double maxFactor, double minFactor, int dontThrow,
-    unsigned dontThrowSteps, unsigned maxEvaluations) {
-  QlIterativeBootstrapOpts b;
-  b.accuracy = accuracy; b.minValue = minValue; b.maxValue = maxValue;
-  b.maxAttempts = maxAttempts; b.maxFactor = maxFactor; b.minFactor = minFactor;
-  b.dontThrow = dontThrow; b.dontThrowSteps = dontThrowSteps; b.maxEvaluations = maxEvaluations;
-  return b;
-}
 
 static QlYieldTermStructure *piecewiseYieldCurveImpl(int date, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen, QlQuote **quotes, unsigned datesLen, int *dates, int trait, int interpolator, int approximator, int approximatorArg, const QlIterativeBootstrapOpts& b, char **e) {
   try {

@@ -200,23 +200,6 @@ $(deriveOptionsRecord "OISRateHelperOpts" ["m"]
   , ("oisConvention", [t|BusinessDayConvention|], [|ModifiedFollowing|])
   ])
 
--- IterativeBootstrapOpts bundles every constructor parameter of QuantLib's
--- @IterativeBootstrap@ (@ql\/termstructures\/iterativebootstrap.hpp@), which is the
--- bootstrapper 'piecewiseYieldCurve'\/'piecewiseYieldCurve'' use and whose settings they
--- hardcode to upstream's defaults. Shape borrowed from QuantLib-SWIG's @_IterativeBootstrap@
--- struct. Same splice-placement constraint as OISRateHelperOpts above.
-$(deriveOptionsRecord "IterativeBootstrapOpts" []
-  [ ("ibAccuracy", [t|Maybe Double|], [|Nothing|])
-  , ("ibMinValue", [t|Maybe Double|], [|Nothing|])
-  , ("ibMaxValue", [t|Maybe Double|], [|Nothing|])
-  , ("ibMaxAttempts", [t|Word|], [|1|])
-  , ("ibMaxFactor", [t|Double|], [|2.0|])
-  , ("ibMinFactor", [t|Double|], [|2.0|])
-  , ("ibDontThrow", [t|Bool|], [|False|])
-  , ("ibDontThrowSteps", [t|Word|], [|10|])
-  , ("ibMaxEvaluations", [t|Word|], [|100|])
-  ])
-
 -- Upstream defaults accuracy/minValue/maxValue to Null<Real>() rather than to a number, so
 -- those three are Maybe on the Haskell side; fromMaybeDouble supplies the sentinel, and the
 -- {#fun#} specs below take a plain Double, hence the realToFrac.

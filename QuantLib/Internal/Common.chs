@@ -8,6 +8,8 @@ module QuantLib.Internal.Common
   , Approximation(..)
   , Interpolation(..)
   , Interpolation2D(..)
+  , IterativeBootstrapOpts(..)
+  , defaultIterativeBootstrapOpts
 
   , ExerciseType(..)
   , Exercise(..)
@@ -140,6 +142,21 @@ import QuantLib.Internal.Syntax
 
 #include "qlEnumC2HS.h"
 #include "qlEnumObjects.h"
+
+-- |Every constructor parameter of QuantLib's curve-generic @IterativeBootstrap@.
+-- The first three fields are 'Maybe' because 'Nothing' preserves QuantLib's
+-- @Null\<Real\>()@ sentinel, which selects a suitable value for each curve pillar.
+$(deriveOptionsRecord "IterativeBootstrapOpts" []
+  [ ("ibAccuracy", [t|Maybe Double|], [|Nothing|])
+  , ("ibMinValue", [t|Maybe Double|], [|Nothing|])
+  , ("ibMaxValue", [t|Maybe Double|], [|Nothing|])
+  , ("ibMaxAttempts", [t|Word|], [|1|])
+  , ("ibMaxFactor", [t|Double|], [|2.0|])
+  , ("ibMinFactor", [t|Double|], [|2.0|])
+  , ("ibDontThrow", [t|Bool|], [|False|])
+  , ("ibDontThrowSteps", [t|Word|], [|10|])
+  , ("ibMaxEvaluations", [t|Word|], [|100|])
+  ])
 
 -- this enum is not special, just used in many places and was put here to avoid cyclic dependencies
 {#enum TimeUnit{} deriving(Show, Eq, Read, Bounded)#}
