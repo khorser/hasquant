@@ -24,6 +24,8 @@ module QuantLib.Index.Inflation
 
   , fixing
   , yoyFixing
+  , needsForecast
+  , yoyNeedsForecast
   ) where
 import QuantLib.Internal
 import QuantLib.Internal.Type
@@ -98,5 +100,13 @@ import QuantLib.Internal.Type
 -- |The (possibly forecast) year-on-year fixing at the given date; for a date with no linked
 -- term structure this returns the stored historical fixing added via 'QuantLib.Index.addFixing'.
 {#fun qlYoYInflationIndexFixing as yoyFixing{withYoYInflationIndex*`YoYInflationIndex',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |Whether 'fixing' at the given date would have to be forecast rather than served from a stored
+-- historical fixing -- true once the date falls after the latest period a fixing could plausibly
+-- already be published for, given the index's publication lag.
+{#fun pure qlZeroInflationIndexNeedsForecast as needsForecast{withZeroInflationIndex*`ZeroInflationIndex',withDay*`Day'}->`Bool'#}
+
+-- |The year-on-year counterpart of 'needsForecast', for 'yoyFixing'.
+{#fun pure qlYoYInflationIndexNeedsForecast as yoyNeedsForecast{withYoYInflationIndex*`YoYInflationIndex',withDay*`Day'}->`Bool'#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

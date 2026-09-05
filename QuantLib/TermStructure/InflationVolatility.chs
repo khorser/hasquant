@@ -15,6 +15,7 @@ module QuantLib.TermStructure.InflationVolatility
 
   , yoyCapFloorBaseDate
   , yoyCapFloorAtmYoYSwapDateRates
+  , yoyCapFloorAtmYoYSwapTimeRates
   , yoyCapFloorAtmYoYSwapRate
   , yoyCapFloorAtmYoYRate
   , yoyCapFloorStrikes
@@ -136,6 +137,15 @@ yoyCapFloorAtmYoYSwapDateRates s = do
   return $ zip ds rs
 {#fun qlYoYCapFloorTermPriceSurfaceAtmYoYSwapDateRates{withGenTermStructure*`YoYCapFloorTermPriceSurface'
   ,preArray-`[Day]'&peekDayArray*,preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+
+-- |The same ATM YoY swap curve as 'yoyCapFloorAtmYoYSwapDateRates', but with maturities as year
+-- fractions from the surface's reference date rather than dates.
+yoyCapFloorAtmYoYSwapTimeRates :: YoYCapFloorTermPriceSurface -> IO [(Double, Double)]
+yoyCapFloorAtmYoYSwapTimeRates s = do
+  (ts, rs) <- qlYoYCapFloorTermPriceSurfaceAtmYoYSwapTimeRates s
+  return $ zip ts rs
+{#fun qlYoYCapFloorTermPriceSurfaceAtmYoYSwapTimeRates{withGenTermStructure*`YoYCapFloorTermPriceSurface'
+  ,preArray-`[Double]'&peekDoubleArray*,preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |The ATM YoY swap rate at the given maturity date, from put\/call parity on the surface's
 -- cap\/floor price data.

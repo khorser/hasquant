@@ -358,6 +358,32 @@ spec = do
         computed <- fairSpread cds
         computed `shouldSatisfy` closePrec quotedSpread 1.0e-6
 
+    it "defaultProbabilityHelperImpliedQuote reproduces each SpreadCdsHelper's own bootstrap quote" $ Settings.keepingSettings' $ do
+      let refDate = fromGregorian 2015 6 15
+          spreads = zip [1, 2, 3, 5] [0.005, 0.006, 0.007, 0.009]
+          recovery = 0.4
+      Settings.setEvaluationDate (Just refDate)
+      Settings.setIncludeTodaysCashFlows (Just True)
+      cal <- calendar TARGET
+      helperDc <- dayCounter Thirty360BondBasis
+      discountDc <- dayCounter (Actual360 False)
+      discountQuote <- simpleQuote 0.06
+      discountCurve <- flatForward refDate discountQuote discountDc Continuous Annual
+      helpers <- forM spreads $ \(years, spread) -> do
+        q <- simpleQuote spread
+        spreadCdsHelper q (years, Years) 1 cal Quarterly Following TwentiethIMM helperDc recovery discountCurve True True Nothing helperDc True Midpoint
+      let hs = fromList helpers
+      curve <- piecewiseDefaultCurve refDate hs helperDc [] HazardRate BackwardFlat
+      -- PiecewiseDefaultCurve is a LazyObject: bootstrap (which calls setTermStructure/
+      -- resetEngine on each helper, populating CdsHelper::swap_) only runs on the first
+      -- calculate()-triggering call, not at construction. Force it before calling
+      -- impliedQuote on the helpers, or swap_ is still null and QuantLib's
+      -- swap_->recalculate() hits boost::shared_ptr's null-dereference assertion.
+      _ <- survivalProbability curve refDate False
+      forM_ (zip helpers spreads) $ \(h, (_, quotedSpread)) -> do
+        implied <- defaultProbabilityHelperImpliedQuote h
+        implied `shouldSatisfy` closePrec quotedSpread 1.0e-8
+
     it "reproduces CDS spreads for all supported credit traits/interpolators" $ Settings.keepingSettings' $ do
       let refDate = fromGregorian 2015 6 15
           spreads = zip [1, 2, 3, 5] [0.005, 0.006, 0.007, 0.009]

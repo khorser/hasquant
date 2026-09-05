@@ -190,6 +190,7 @@ module QuantLib.TermStructure.Volatility
   , sabrSwaptionVolatilityCube
   , noArbSabrSwaptionVolatilityCube
   , interpolatedSwaptionVolatilityCube
+  , interpolatedSwaptionVolatilityCubeVolSpreads
   , sparseSabrParameters
   , denseSabrParameters
   , marketVolCube
@@ -1686,6 +1687,15 @@ interpolatedSwaptionVolatilityCube atm ot st ss (Matrix vr vc vd) sidx1 sidx2 vw
   ,withSwapIndex*`GenSwapIndex sidx1',withSwapIndex*`GenSwapIndex sidx2'
   ,`Bool'
   ,preErrorCheck-`String'errorCheck*-}->`InterpolatedSwaptionVolatilityCube'peekInterpolatedSwaptionVolatilityCube*#}
+
+-- |The interpolated volatility-spread matrix (option tenor x swap tenor) at the given strike
+-- index (0-based, into the @strikeSpreads@ the cube was built with).
+interpolatedSwaptionVolatilityCubeVolSpreads :: InterpolatedSwaptionVolatilityCube -> Word -> IO RealMatrix
+interpolatedSwaptionVolatilityCubeVolSpreads sv i = toRealMatrix <$> qlInterpolatedSwaptionVolatilityCubeVolSpreads sv i
+{#fun qlInterpolatedSwaptionVolatilityCubeVolSpreads{withInterpolatedSwaptionVolatilityCube*`InterpolatedSwaptionVolatilityCube'
+  ,fromIntegral`Word' -- ^i
+  ,prePtr-`Word'peekWord*,prePtr-`Word'peekWord*,preArray-`RealVector'&peekRealVector*
+  ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 toRealMatrix :: (Word, Word, RealVector) -> RealMatrix
 toRealMatrix (r, c, d) = RealMatrix r c d

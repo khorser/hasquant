@@ -1666,6 +1666,18 @@ spec = do
           k <- Vol.interpolatedSwaptionVolatilityCubeAtmStrike cube (1, Years) (2, Years)
           k `shouldSatisfy` (\x -> x > -0.05 && x < 0.20)
 
+      it "interpolatedSwaptionVolatilityCubeVolSpreads reports the zero spreads the cube was built with" $
+        Settings.keepingSettings' $ do
+          (_, _, atmVol, swapIndexBase, shortSwapIndexBase, volSpreads, _) <- mkFixture
+          cube <- Vol.interpolatedSwaptionVolatilityCube atmVol optionTenors swapTenors strikeSpreads volSpreads
+                    swapIndexBase shortSwapIndexBase False
+          mapM_ (\i -> do
+              m <- Vol.interpolatedSwaptionVolatilityCubeVolSpreads cube i
+              realMatrixRows m `shouldBe` fromIntegral (length optionTenors)
+              realMatrixColumns m `shouldBe` fromIntegral (length swapTenors)
+              realMatrixData m `shouldSatisfy` V.all (== 0)
+            ) ([0 .. fromIntegral (length strikeSpreads) - 1] :: [Word])
+
     -- Fixture from QuantLib's test-suite/fdheston.cpp testFdmHestonConvergence (first row of its
     -- HestonTestData table), which compares FdHestonVanillaEngine against AnalyticHestonEngine on
     -- the same HestonModel and expects agreement within 2% relative (or 0.002 absolute for small

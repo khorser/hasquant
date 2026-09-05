@@ -344,6 +344,13 @@ extern "C" {
   void qlHistoricalIndexAnalysisGaussianValueAtRisk(QlHistoricalIndexAnalysis *o, double centile, unsigned *len, double **vs, char **e);
   void qlHistoricalIndexAnalysisExpectedShortfall(QlHistoricalIndexAnalysis *o, double centile, unsigned *len, double **vs, char **e);
   void qlHistoricalIndexAnalysisGaussianExpectedShortfall(QlHistoricalIndexAnalysis *o, double centile, unsigned *len, double **vs, char **e);
+  void qlHistoricalIndexAnalysisPotentialUpside(QlHistoricalIndexAnalysis *o, double centile, unsigned *len, double **vs, char **e);
+  void qlHistoricalIndexAnalysisGaussianPotentialUpside(QlHistoricalIndexAnalysis *o, double centile, unsigned *len, double **vs, char **e);
+  void qlHistoricalIndexAnalysisRegret(QlHistoricalIndexAnalysis *o, double target, unsigned *len, double **vs, char **e);
+  void qlHistoricalIndexAnalysisShortfall(QlHistoricalIndexAnalysis *o, double target, unsigned *len, double **vs, char **e);
+  void qlHistoricalIndexAnalysisGaussianShortfall(QlHistoricalIndexAnalysis *o, double target, unsigned *len, double **vs, char **e);
+  void qlHistoricalIndexAnalysisAverageShortfall(QlHistoricalIndexAnalysis *o, double target, unsigned *len, double **vs, char **e);
+  void qlHistoricalIndexAnalysisGaussianAverageShortfall(QlHistoricalIndexAnalysis *o, double target, unsigned *len, double **vs, char **e);
   void qlHistoricalIndexAnalysisCovariance(QlHistoricalIndexAnalysis *o, unsigned *rows, unsigned *cols, unsigned *len, double **vs, char **e);
   void qlHistoricalIndexAnalysisCorrelation(QlHistoricalIndexAnalysis *o, unsigned *rows, unsigned *cols, unsigned *len, double **vs, char **e);
 

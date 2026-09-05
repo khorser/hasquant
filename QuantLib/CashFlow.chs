@@ -51,6 +51,8 @@ module QuantLib.CashFlow
   , compoundingMultipleResetsPricer
   , OvernightIndexedCoupon
   , overnightIndexedCoupon
+  , overnightIndexedCouponFixingDates
+  , overnightIndexedCouponIndexFixings
   , cappedFlooredOvernightIndexedCoupon
   , compoundingOvernightIndexedCouponPricer
   , arithmeticAveragedOvernightIndexedCouponPricer
@@ -573,6 +575,16 @@ leg f = qlLeg fs ds where (ds, fs) = unzip f
   ,withMaybeDay*`Maybe Day' -- ^exCouponDate
   ,fromMaybeInt`Maybe Int' -- ^rounding
   ,preErrorCheck-`String'errorCheck*-}->`OvernightIndexedCoupon'peekOvernightIndexedCoupon*#}
+
+-- |The dates on which the coupon observes the overnight index, one per accrual sub-period.
+{#fun qlOvernightIndexedCouponFixingDates as overnightIndexedCouponFixingDates{withOvernightIndexedCoupon*`OvernightIndexedCoupon'
+  ,preArray-`[Day]'&peekDayArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+
+-- |The index fixing observed at each of 'overnightIndexedCouponFixingDates', in the same order.
+-- Requires the underlying overnight index to already have those fixings available (historical or
+-- forecast via a projection curve).
+{#fun qlOvernightIndexedCouponIndexFixings as overnightIndexedCouponIndexFixings{withOvernightIndexedCoupon*`OvernightIndexedCoupon'
+  ,preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Capped/floored overnight-index coupon.
 {#fun qlCappedFlooredOvernightIndexedCoupon as cappedFlooredOvernightIndexedCoupon{withOvernightIndexedCoupon*`OvernightIndexedCoupon' -- ^underlying

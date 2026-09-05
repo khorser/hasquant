@@ -1721,6 +1721,15 @@ QlOvernightIndexedCoupon* qlOvernightIndexedCoupon(int paymentDate, double nomin
 QlFloatingRateCoupon* qlCappedFlooredOvernightIndexedCoupon(QlOvernightIndexedCoupon *underlying, double cap, double floor, int naked, int daily, char **e) {
   try {return ret(new QlFloatingRateCoupon(alloc(new CappedFlooredOvernightIndexedCoupon(*arg(underlying), cap, floor, naked, daily))));
   } catch (std::exception& er) {return handleException<QlFloatingRateCoupon*>(e, er);}}
+void qlOvernightIndexedCouponFixingDates(QlOvernightIndexedCoupon *o, unsigned *len, int **dates, char **e) {
+  try {const std::vector<Date>& ds = (*arg(o))->fixingDates();
+    *len = ds.size(); *dates = qlAllocateInts(*len);
+    for (unsigned i = 0; i < *len; ++i) (*dates)[i] = ds[i].serialNumber();
+  } catch (std::exception& er) {(void)handleException<int*>(e, er);}}
+void qlOvernightIndexedCouponIndexFixings(QlOvernightIndexedCoupon *o, unsigned *len, double **fixings, char **e) {
+  try {const std::vector<Rate>& fs = (*arg(o))->indexFixings();
+    *len = fs.size(); *fixings = qlAllocateDoubles(*len); std::copy(fs.begin(), fs.end(), *fixings);
+  } catch (std::exception& er) {(void)handleException<double*>(e, er);}}
 QlFloatingRateCouponPricer* qlCompoundingOvernightIndexedCouponPricer(QlOptionletVolatilityStructure *vol, int effective, char **e) {try {return ret(new QlFloatingRateCouponPricer(alloc(new CompoundingOvernightIndexedCouponPricer(qlNullableHandle(vol), effective))));} catch (std::exception& er) {return handleException<QlFloatingRateCouponPricer*>(e, er);}}
 QlFloatingRateCouponPricer* qlArithmeticAveragedOvernightIndexedCouponPricer(double mr, double volatility, int byApprox, QlOptionletVolatilityStructure *vol, int effective, char **e) {try {return ret(new QlFloatingRateCouponPricer(alloc(new ArithmeticAveragedOvernightIndexedCouponPricer(mr, volatility, byApprox, qlNullableHandle(vol), effective))));} catch (std::exception& er) {return handleException<QlFloatingRateCouponPricer*>(e, er);}}
 QlFloatingRateCouponPricer* qlBlackCompoundingOvernightIndexedCouponPricer(QlOptionletVolatilityStructure *vol, int effective, char **e) {try {return ret(new QlFloatingRateCouponPricer(alloc(new BlackCompoundingOvernightIndexedCouponPricer(qlNullableHandle(vol), effective))));} catch (std::exception& er) {return handleException<QlFloatingRateCouponPricer*>(e, er);}}

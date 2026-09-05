@@ -816,6 +816,17 @@ spec evalDate = do
           amount <- CF.floatingRateCouponAmount pastCoupon
           amount `shouldSatisfy` closePrec (10000.0 * 0.000987136104 * 31.0 / 360) 1e-8
 
+      it "fixingDates/indexFixings agree with the coupon's own historical fixings, for a wholly past coupon" $
+        bracket_ clearAllFixingHistories clearAllFixingHistories $ Settings.keepingSettings' $ do
+          sofr <- oisFixture Nothing Nothing
+          pastCoupon <- oisMakeCoupon sofr (18 `october` 2021) (18 `november` 2021)
+          dates <- CF.overnightIndexedCouponFixingDates pastCoupon
+          fixings <- CF.overnightIndexedCouponIndexFixings pastCoupon
+          length fixings `shouldBe` length dates
+          length dates `shouldSatisfy` (> 0)
+          expected <- mapM (\d -> fixing sofr d False) dates
+          fixings `shouldBe` expected
+
       it "prices a past coupon with a compounded/simple spread (testPastSpreadedCouponRate)" $
         bracket_ clearAllFixingHistories clearAllFixingHistories $ Settings.keepingSettings' $ do
           sofr <- oisFixture Nothing Nothing

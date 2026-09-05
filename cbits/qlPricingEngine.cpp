@@ -778,6 +778,9 @@ QlPricingEngine* qlVarianceGammaEngine(QlVarianceGammaProcess* x0, double absolu
 QlPricingEngine* qlAnalyticHestonEngine1(QlHestonModel* model, unsigned integrationOrder, char **e) {
   try {return ret(new QlPricingEngine(alloc(new AnalyticHestonEngine(*arg(model), integrationOrder))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
+int qlAnalyticHestonEngineOptimalControlVariate(double t, double v0, double kappa, double theta, double sigma, double rho) {
+  return AnalyticHestonEngine::optimalControlVariate(t, v0, kappa, theta, sigma, rho);
+}
 QlPricingEngine* qlAnalyticHestonHullWhiteEngine1(QlHestonModel* model, QlHullWhite* hullWhiteModel, double relTolerance, unsigned maxEvaluations, char **e) {
   try {return ret(new QlPricingEngine(alloc(new AnalyticHestonHullWhiteEngine(*arg(model), *arg(hullWhiteModel), relTolerance, maxEvaluations))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
@@ -1060,6 +1063,7 @@ FdmSchemeDesc* qlFdmSchemeDescHundsdorfer(char **e) {try {return alloc(new FdmSc
 FdmSchemeDesc* qlFdmSchemeDescImplicitEuler(char **e) {try {return alloc(new FdmSchemeDesc(FdmSchemeDesc::ImplicitEuler()));} catch (std::exception& er) {return handleException<FdmSchemeDesc*>(e, er);}}
 FdmSchemeDesc* qlFdmSchemeDescModifiedCraigSneyd(char **e) {try {return alloc(new FdmSchemeDesc(FdmSchemeDesc::ModifiedCraigSneyd()));} catch (std::exception& er) {return handleException<FdmSchemeDesc*>(e, er);}}
 FdmSchemeDesc* qlFdmSchemeDescModifiedHundsdorfer(char **e) {try {return alloc(new FdmSchemeDesc(FdmSchemeDesc::ModifiedHundsdorfer()));} catch (std::exception& er) {return handleException<FdmSchemeDesc*>(e, er);}}
+FdmSchemeDesc* qlFdmSchemeDescMethodOfLines(double eps, double relInitStepSize, char **e) {try {return alloc(new FdmSchemeDesc(FdmSchemeDesc::MethodOfLines(eps, relInitStepSize)));} catch (std::exception& er) {return handleException<FdmSchemeDesc*>(e, er);}}
 void qlFreeFdmSchemeDesc(FdmSchemeDesc *o) {del(o);}
 
 // Drives FdmBackwardSolver::rollback with a Haskell-defined operator/step condition instead of a
@@ -1453,6 +1457,16 @@ QlGsr* qlGsr(QlYieldTermStructure* termStructure, unsigned volstepdatesLen, int*
 void qlGsrVolatility(QlGsr* o, unsigned *len, double **vs, char **e) {
   try {Array vol = (*arg(o))->volatility(); *len = vol.size(); *vs = qlAllocateDoubles(*len); std::copy(vol.begin(), vol.end(), *vs);
   } catch (std::exception& er) {handleException<double*>(e, er);}}
+void qlGsrMoveVolatility(QlGsr* o, unsigned i, unsigned *len, int **fp, char **e) {
+  try {std::vector<bool> res = (*arg(o))->MoveVolatility(i);
+    *len = res.size(); *fp = qlAllocateInts(*len);
+    for (unsigned j = 0; j < *len; ++j) (*fp)[j] = res[j];
+  } catch (std::exception& er) {handleException<int*>(e, er);}}
+void qlGsrMoveReversion(QlGsr* o, unsigned i, unsigned *len, int **fp, char **e) {
+  try {std::vector<bool> res = (*arg(o))->MoveReversion(i);
+    *len = res.size(); *fp = qlAllocateInts(*len);
+    for (unsigned j = 0; j < *len; ++j) (*fp)[j] = res[j];
+  } catch (std::exception& er) {handleException<int*>(e, er);}}
 void qlGsrCalibrateVolatilitiesIterative(QlGsr* o, unsigned helpersLen, QlBlackCalibrationHelper** helpers, QlOptimizationMethod* method, QlEndCriteria* endCriteria, Constraint* constraint, unsigned weightsLen, double* weights, char **e) {
   try {(*arg(o))->calibrateVolatilitiesIterative(qlVector(helpers, helpersLen), **arg(method), **arg(endCriteria), Constraint(constraint ? *arg(constraint) : Constraint()), std::vector<double>(weights, weights+weightsLen));
   } catch (std::exception& er) {(void)handleException<int>(e, er);}}

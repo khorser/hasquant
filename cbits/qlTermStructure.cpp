@@ -1105,6 +1105,10 @@ QlInterpolatedSwaptionVolatilityCube* qlInterpolatedSwaptionVolatilityCube(QlSwa
 void qlFreeInterpolatedSwaptionVolatilityCube(QlInterpolatedSwaptionVolatilityCube *o) {del(o);}
 QlSwaptionVolatilityStructure* qlInterpolatedSwaptionVolatilityCubeAsSwaptionVolatilityStructure(QlInterpolatedSwaptionVolatilityCube *o) {
   return ret(new QlSwaptionVolatilityStructure(*arg(o)));}
+// volSpreads(i) indexes by strike -- one Matrix (optionTenors x swapTenors) per strike spread.
+void qlInterpolatedSwaptionVolatilityCubeVolSpreads(QlInterpolatedSwaptionVolatilityCube* o, unsigned i, unsigned* rows, unsigned* cols, unsigned* len, double** vs, char** e) {
+  try {fillMatrixOut([&] {return (*arg(o))->volSpreads(i);}, rows, cols, len, vs);
+  } catch (std::exception& er) {handleException<double*>(e, er);}}
 
 // Matrix-out diagnostics, direct on the concrete type -- no downcast needed. Composes the
 // established 1D out-array idiom (qlAllocateDoubles + unsigned*len/double**vs, see
@@ -1178,6 +1182,9 @@ QlDefaultProbabilityTermStructure* qlInterpolatedSurvivalProbabilityCurve(unsign
   } catch (std::exception& er) {return handleException<QlDefaultProbabilityTermStructure*>(e, er);}}
 
 void qlFreeDefaultProbabilityHelper(QlDefaultProbabilityHelper *o) {del(o);}
+double qlDefaultProbabilityHelperImpliedQuote(QlDefaultProbabilityHelper *o, char **e) {
+  try {return (*arg(o))->impliedQuote();
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
 
 QlDefaultProbabilityHelper* qlSpreadCdsHelper(QlQuote* runningSpread, int n, int u, int settlementDays, Calendar* calendar, int frequency, int paymentConvention, int rule, DayCounter* dayCounter, double recoveryRate, QlYieldTermStructure* discountCurve, int settlesAccrual, int paysAtDefaultTime, int startDate, DayCounter* lastPeriodDayCounter, int rebatesAccrual, int model, char **e) {
   try {return ret(new QlDefaultProbabilityHelper(alloc(new SpreadCdsHelper(*arg(runningSpread), Period(n, (TimeUnit)u), settlementDays, *arg(calendar), (Frequency)frequency, (BusinessDayConvention)paymentConvention, (DateGeneration::Rule)rule, *arg(dayCounter), recoveryRate, *arg(discountCurve), settlesAccrual, paysAtDefaultTime,
@@ -2245,6 +2252,12 @@ double qlZeroInflationIndexFixing(QlZeroInflationIndex* o, int fixingDate, char 
 double qlYoYInflationIndexFixing(QlYoYInflationIndex* o, int fixingDate, char **e) {
   try {return (*arg(o))->fixing(Date(fixingDate));
   } catch (std::exception& er) {return handleException<double>(e, er);}}
+int qlZeroInflationIndexNeedsForecast(QlZeroInflationIndex* o, int fixingDate) {
+  return (*arg(o))->needsForecast(Date(fixingDate));
+}
+int qlYoYInflationIndexNeedsForecast(QlYoYInflationIndex* o, int fixingDate) {
+  return (*arg(o))->needsForecast(Date(fixingDate));
+}
 
 /* YoYOptionletVolatilitySurface */
 
@@ -2404,6 +2417,22 @@ void qlYoYCapFloorTermPriceSurfaceAtmYoYSwapDateRates(QlYoYCapFloorTermPriceSurf
     *dl = dr.first.size(); *rl = dr.second.size(); *date = dates; *rate = rates;
   } catch (const std::exception& er) {
     qlFreeInts(dates); qlFreeDoubles(rates); *e = tracedup(er.what());
+  }
+}
+
+void qlYoYCapFloorTermPriceSurfaceAtmYoYSwapTimeRates(QlYoYCapFloorTermPriceSurface *o,
+    unsigned *tl, double **time, unsigned *rl, double **rate, char **e) {
+  *tl = 0; *rl = 0; *time = nullptr; *rate = nullptr;
+  double *times = nullptr;
+  double *rates = nullptr;
+  try {
+    const auto &tr = (*arg(o))->atmYoYSwapTimeRates();
+    times = qlAllocateDoubles(tr.first.size()); rates = qlAllocateDoubles(tr.second.size());
+    for (unsigned i = 0; i < tr.first.size(); ++i) times[i] = tr.first[i];
+    for (unsigned i = 0; i < tr.second.size(); ++i) rates[i] = tr.second[i];
+    *tl = tr.first.size(); *rl = tr.second.size(); *time = times; *rate = rates;
+  } catch (const std::exception& er) {
+    qlFreeDoubles(times); qlFreeDoubles(rates); *e = tracedup(er.what());
   }
 }
 

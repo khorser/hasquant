@@ -1369,6 +1369,34 @@ void qlHistoricalIndexAnalysisGaussianExpectedShortfall(QlHistoricalIndexAnalysi
   try {fillVectorOut((*arg(o))->stats()->gaussianExpectedShortfall(centile), len, vs);
   } catch (std::exception& er) {handleException<double*>(e, er);}}
 
+void qlHistoricalIndexAnalysisPotentialUpside(QlHistoricalIndexAnalysis *o, double centile, unsigned *len, double **vs, char **e) {
+  try {fillVectorOut((*arg(o))->stats()->potentialUpside(centile), len, vs);
+  } catch (std::exception& er) {handleException<double*>(e, er);}}
+
+void qlHistoricalIndexAnalysisGaussianPotentialUpside(QlHistoricalIndexAnalysis *o, double centile, unsigned *len, double **vs, char **e) {
+  try {fillVectorOut((*arg(o))->stats()->gaussianPotentialUpside(centile), len, vs);
+  } catch (std::exception& er) {handleException<double*>(e, er);}}
+
+void qlHistoricalIndexAnalysisRegret(QlHistoricalIndexAnalysis *o, double target, unsigned *len, double **vs, char **e) {
+  try {fillVectorOut((*arg(o))->stats()->regret(target), len, vs);
+  } catch (std::exception& er) {handleException<double*>(e, er);}}
+
+void qlHistoricalIndexAnalysisShortfall(QlHistoricalIndexAnalysis *o, double target, unsigned *len, double **vs, char **e) {
+  try {fillVectorOut((*arg(o))->stats()->shortfall(target), len, vs);
+  } catch (std::exception& er) {handleException<double*>(e, er);}}
+
+void qlHistoricalIndexAnalysisGaussianShortfall(QlHistoricalIndexAnalysis *o, double target, unsigned *len, double **vs, char **e) {
+  try {fillVectorOut((*arg(o))->stats()->gaussianShortfall(target), len, vs);
+  } catch (std::exception& er) {handleException<double*>(e, er);}}
+
+void qlHistoricalIndexAnalysisAverageShortfall(QlHistoricalIndexAnalysis *o, double target, unsigned *len, double **vs, char **e) {
+  try {fillVectorOut((*arg(o))->stats()->averageShortfall(target), len, vs);
+  } catch (std::exception& er) {handleException<double*>(e, er);}}
+
+void qlHistoricalIndexAnalysisGaussianAverageShortfall(QlHistoricalIndexAnalysis *o, double target, unsigned *len, double **vs, char **e) {
+  try {fillVectorOut((*arg(o))->stats()->gaussianAverageShortfall(target), len, vs);
+  } catch (std::exception& er) {handleException<double*>(e, er);}}
+
 void qlHistoricalIndexAnalysisCovariance(QlHistoricalIndexAnalysis *o, unsigned *rows, unsigned *cols, unsigned *len, double **vs, char **e) {
   try {fillMatrixOut([&] {return (*arg(o))->stats()->covariance();}, rows, cols, len, vs);
   } catch (std::exception& er) {handleException<double*>(e, er);}}

@@ -112,6 +112,8 @@ module QuantLib.Model
   , convexityBias
   , fixedReversion
   , gsrVolatility
+  , gsrMoveVolatility
+  , gsrMoveReversion
   , markovFunctionalVolatility
   , params
   , value
@@ -451,6 +453,19 @@ gsr ts initialVol subsequentVols reversion horizon =
 
 -- |Volatility step values, as calibrated so far.
 {#fun qlGsrVolatility as gsrVolatility{withGenCalibratedModel*`Gsr',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+
+-- |The calibration mask ('calibrate''s @fixParameters@) that fixes every model parameter except
+-- the volatility at step index @i@ (0-based) -- a ready-made @fixParameters@ argument for
+-- calibrating that one volatility in isolation.
+{#fun qlGsrMoveVolatility as gsrMoveVolatility{withGenCalibratedModel*`Gsr'
+  ,fromIntegral`Word' -- ^i
+  ,preArray-`[Bool]'&peekBoolArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+
+-- |The calibration mask that fixes every model parameter except the reversion at index @i@
+-- (0-based) -- the reversion counterpart of 'gsrMoveVolatility'.
+{#fun qlGsrMoveReversion as gsrMoveReversion{withGenCalibratedModel*`Gsr'
+  ,fromIntegral`Word' -- ^i
+  ,preArray-`[Bool]'&peekBoolArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Iteratively calibrates the volatility step values, one at a time, to the given helpers (assumed to have step dates matching the model's volatility step dates).
 {#fun qlGsrCalibrateVolatilitiesIterative as calibrateVolatilitiesIterative{withGenCalibratedModel*`Gsr',withBlackCalibrationHelperArray*`[GenBlackCalibrationHelper bch]'&,withOptimizationMethod*`OptimizationMethod',withEndCriteria*`EndCriteria'

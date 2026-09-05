@@ -885,6 +885,9 @@ data FdmScheme =
   | ImplicitEuler
   | ModifiedCraigSneyd
   | ModifiedHundsdorfer
+  | MethodOfLines
+    !Double -- ^eps
+    !Double -- ^relInitStepSize
 
 {#fun qlFdmSchemeDesc{`FdmSchemeType',`Double',`Double',preErrorCheck-`String'errorCheck*-}->`QlFdmSchemeDesc'peekFdmSchemeDesc*#}
 {#fun qlFdmSchemeDescCraigSneyd{preErrorCheck-`String'errorCheck*-}->`QlFdmSchemeDesc'peekFdmSchemeDesc*#}
@@ -894,6 +897,9 @@ data FdmScheme =
 {#fun qlFdmSchemeDescImplicitEuler{preErrorCheck-`String'errorCheck*-}->`QlFdmSchemeDesc'peekFdmSchemeDesc*#}
 {#fun qlFdmSchemeDescModifiedCraigSneyd{preErrorCheck-`String'errorCheck*-}->`QlFdmSchemeDesc'peekFdmSchemeDesc*#}
 {#fun qlFdmSchemeDescModifiedHundsdorfer{preErrorCheck-`String'errorCheck*-}->`QlFdmSchemeDesc'peekFdmSchemeDesc*#}
+{#fun qlFdmSchemeDescMethodOfLines{`Double' -- ^eps
+  ,`Double' -- ^relInitStepSize
+  ,preErrorCheck-`String'errorCheck*-}->`QlFdmSchemeDesc'peekFdmSchemeDesc*#}
 
 fdmScheme :: FdmScheme -> IO QlFdmSchemeDesc
 fdmScheme (FdmScheme t th mu) = qlFdmSchemeDesc t th mu
@@ -904,6 +910,7 @@ fdmScheme Hundsdorfer = qlFdmSchemeDescHundsdorfer
 fdmScheme ImplicitEuler = qlFdmSchemeDescImplicitEuler
 fdmScheme ModifiedCraigSneyd = qlFdmSchemeDescModifiedCraigSneyd
 fdmScheme ModifiedHundsdorfer = qlFdmSchemeDescModifiedHundsdorfer
+fdmScheme (MethodOfLines eps relInitStepSize) = qlFdmSchemeDescMethodOfLines eps relInitStepSize
 
 data Constraint =
   Boundary
