@@ -1460,7 +1460,7 @@
 |x|ql/experimental/credit/gaussianlhplossmodel.hpp|GaussianLHPLossModel::GaussianLHPLossModel(Real correlation, const std::vector<Real> & recoveries);
 |v|ql/experimental/credit/gaussianlhplossmodel.hpp|GaussianLHPLossModel::GaussianLHPLossModel(const Handle<Quote> & correlQuote, const std::vector<Real> & recoveries);
 |x|ql/experimental/credit/gaussianlhplossmodel.hpp|void GaussianLHPLossModel::update();
-| |ql/experimental/credit/gaussianlhplossmodel.hpp|Real GaussianLHPLossModel::expectedShortfall(const Date & d, Probability perctl) const;
+|v|ql/experimental/credit/gaussianlhplossmodel.hpp|Real GaussianLHPLossModel::expectedShortfall(const Date & d, Probability perctl) const; -- reachable via the already-bound Basket::expectedShortfall (qlBasketExpectedShortfall), which delegates straight through to the loss model; no dedicated binding needed
 |v|ql/experimental/credit/gaussianlhplossmodel.hpp|Probability GaussianLHPLossModel::averageProb(const Date & d) const;
 |v|ql/experimental/credit/gaussianlhplossmodel.hpp|Real GaussianLHPLossModel::averageRecovery(const Date & d) const;
 | |ql/experimental/credit/homogeneouspooldef.hpp|HomogeneousPoolLossModel::HomogeneousPoolLossModel<copulaPolicy>(const ext::shared_ptr<ConstantLossLatentmodel<copulaPolicy>> & copula, Size nBuckets, Real max = 5., Real min = - 5., Size nSteps = 50);
