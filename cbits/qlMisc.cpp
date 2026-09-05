@@ -450,8 +450,29 @@ void qlFreeSavedSettings(void *settings) {del((SavedSettings *)settings);}
 const char *qlVersion() {return QL_VERSION;}
 const char *qlBoostVersion() {return BOOST_LIB_VERSION;}
 
-void qlSetExtendedPrecision() {setX87ExtendedPrecision();}
-
+// By the time Haskell code runs, the x87 unit is at 53-bit precision (control word
+// 0x027f), where a binary linked by clang++ rather than ghc has 64-bit extended (0x037f).
+// Every 80-bit long double operation is then silently rounded to double, which breaks boost::math's default
+// promote_double policy: its algorithms assume the precision they asked for. It surfaced
+// as quantile(non_central_chi_squared) failing to converge on the lower tail inside
+// SquareRootProcessRNDCalculator::invcdf, throwing out of hestonSLVFDMModel on Windows
+// and nowhere else. See WINDOWS.md and tools/debug/hestonslv-probe.cpp.
+//
+// Exposed rather than done automatically. Setting it from a namespace-scope initializer
+// was measured not to stick -- the test still failed on Windows with one in place -- and
+// the RTS hooks that could run earlier are one-shot per process, which cannot be right
+// for a per-thread register. The alternative, re-asserting it on every crossing from
+// Haskell, buys ordering at the cost of FP-state side effects in the marshalling path. fldcw rather than
+// _controlfp_s because MSVC's CRT documents _MCW_PC as unsupported on x64. The word is
+// per-thread. Haskell's own Double arithmetic is SSE/MXCSR and is unaffected.
+void qlSetExtendedPrecision() {
+#if defined(_WIN32) && (defined(__x86_64__) || defined(__i386__))
+  unsigned short cw = 0;
+  __asm__ __volatile__("fnstcw %0" : "=m"(cw));
+  cw = (unsigned short)((cw & ~0x0300u) | 0x0300u);
+  __asm__ __volatile__("fldcw %0" : : "m"(cw));
+#endif
+}
 
 void qlFreeCurrency(Currency *currency) {del(currency);}
 const char *qlCurrencyName(Currency *currency) {return tracedup(arg(currency)->name().c_str());}
