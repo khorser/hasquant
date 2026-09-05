@@ -9,7 +9,7 @@ Supported functionality includes
 - risk statistics (VaR, expected shortfall, ...) over caller-supplied samples;
 - and analytic, tree, finite-difference, and Monte Carlo engines from Black-Scholes through SABR and Heston.
 
-hasquant is a close-to-1:1 `c2hs` wrapper over QuantLib's C++ API, not a framework. It binds 1,600+ constructors and non-trivial methods (over 15% of QuantLib's surface) and deliberately excludes 2000+ methods (mostly mutators or getters that only repeat constructor inputs).
+hasquant is a close-to-1:1 `c2hs` wrapper over QuantLib's C++ API, not a framework. It binds 1,900+ constructors and non-trivial methods (around 20% of QuantLib's surface) and deliberately excludes 2000+ methods (mostly mutators or getters that only repeat constructor inputs).
 
 Type safety is a primary API goal. Phantom-typed pointers (`GenBond a`, `GenQuote a`, …) preserve the relevant part of QuantLib's object hierarchy in Haskell, so invalid object combinations are compile-time errors rather than failed casts at runtime. The C++ shim uses no runtime downcasts; bindings expose a concrete leaf type when one is needed. Enums mirror upstream values explicitly.
 
