@@ -41,7 +41,7 @@ import QuantLib.Quote(simpleQuote, setValue)
 import QuantLib.TermStructure.Yield(flatForward, forwardRate, discount, YieldTermStructure, interpolatedZeroCurve)
 import QuantLib.Instrument(npv, setPricingEngine)
 import QuantLib.Instrument.Option(europeanOption, StrikedPayoff(PlainVanilla), PlainVanillaPayoff(..), OptionType(..), Exercise(European), EuropeanExercise(..))
-import QuantLib.Process(hestonProcess, batesProcess, gjrGARCHProcess, HestonProcessDiscretization(..), GJRGARCHProcessDiscretization(..)
+import QuantLib.Process(hestonProcess, hestonProcessPdf, batesProcess, gjrGARCHProcess, HestonProcessDiscretization(..), GJRGARCHProcessDiscretization(..)
  , g2Process, g2ForwardProcess, g2Phi, g2ShortRate, g2ForwardPhi, g2ForwardShortRate, setG2ForwardMeasureTime, factors, drift, diffusion, expectation, initialValues, hullWhiteProcess, hullWhiteForwardProcess, setForwardMeasureTime, hybridHestonHullWhiteProcess, HybridHestonHullWhiteProcessDiscretization(..)
  , liborForwardModelProcess, liborForwardModelProcessFixingDates, liborForwardModelProcessFixingTimes, liborForwardModelProcessCashFlows
  , liborForwardModelProcessDiscountBond, liborForwardModelProcessAccrualTimes
@@ -49,7 +49,7 @@ import QuantLib.Process(hestonProcess, batesProcess, gjrGARCHProcess, HestonProc
  , stdDeviation, covariance, apply, evolve)
 import QuantLib.Model(hullWhite, g2, g2Dynamics, shortRate
  , hestonModel, batesModel, gJRGARCHModel
- , liborForwardModel, liborForwardModelAsAffineModel, lfmHullWhiteParameterization, lfmHullWhiteCovariance, setCovarParam, LmVolatilityModel(..), LmCorrelationModel(..)
+ , liborForwardModel, liborForwardModelS0, liborForwardModelAsAffineModel, lfmHullWhiteParameterization, lfmHullWhiteCovariance, setCovarParam, LmVolatilityModel(..), LmCorrelationModel(..)
  , discountBond, discountBondOption)
 import QuantLib.PricingEngine(analyticHestonHullWhiteEngine, mcHestonHullWhiteEngine
  , analyticHestonEngine', batesEngine, analyticGJRGARCHEngine, mcEuropeanGJRGARCHEngine, blackFormula, analyticCapFloorEngine)
@@ -77,7 +77,7 @@ spec = do
         Left _ -> pure ()
         Right _ -> expectationFailure "overflowed dimensions accepted an empty matrix"
 
-  describe "HestonModel (AnalyticHestonEngine vs. Black formula)" $
+  describe "HestonModel (AnalyticHestonEngine vs. Black formula)" $ do
     -- cached reference from test-suite/hestonmodel.cpp::testAnalyticVsBlack: a near-zero
     -- vol-of-vol Heston process (sigma=1e-4) should reproduce the flat-vol Black price almost
     -- exactly.
@@ -112,6 +112,35 @@ spec = do
         let forwardPrice = spot * exp ((r - q) * t)
         expected <- blackFormula Put strike forwardPrice (sqrt (v0 * t)) (exp (-r * t)) 0.0
         calculated `shouldSatisfy` closePrec expected 2.0e-7
+
+    it "pdf(x, v, t) decays away from the peak near (log forward, v0)" $
+      Settings.keepingSettings' $ do
+        evalDate <- today
+        Settings.setEvaluationDate (Just evalDate)
+        dc <- dayCounter ActualActualISDA
+        let spot = 100.0
+            r = 0.03
+            q = 0.01
+            v0 = 0.04
+            t = 0.5
+        rQ <- simpleQuote r
+        qQ <- simpleQuote q
+        rTS <- flatForward evalDate rQ dc Continuous Annual
+        qTS <- flatForward evalDate qQ dc Continuous Annual
+        s0 <- simpleQuote spot
+        process <- hestonProcess rTS (Just qTS) s0 v0 1.5 0.04 0.3 (-0.5) QuadraticExponentialMartingale
+        -- Approximate mean log-price at t (Ito correction for the log transform); the process's
+        -- exact drift isn't bound, but this is close enough to sit near the density's peak for a
+        -- "decays away from it" check.
+        let x0 = log spot + (r - q - 0.5 * v0) * t
+        atPeak <- hestonProcessPdf process x0 v0 t 1e-8
+        -- The density well away from the peak, in v or in x, must be markedly smaller than at
+        -- the peak.
+        farInV <- hestonProcessPdf process x0 (v0 * 6) t 1e-8
+        farInX <- hestonProcessPdf process (x0 + 4 * sqrt (v0 * t)) v0 t 1e-8
+        atPeak `shouldSatisfy` (> 0)
+        atPeak `shouldSatisfy` (> farInV)
+        atPeak `shouldSatisfy` (> farInX)
 
   describe "BatesModel (BatesEngine vs. Black formula)" $
     -- cached reference from test-suite/batesmodel.cpp::testAnalyticVsBlack: same near-zero
@@ -215,6 +244,14 @@ spec = do
             variances = [covarianceData !! (i * fromIntegral size + i) | i <- [0 .. fromIntegral size - 1]]
         leg <- liborForwardModelProcessCashFlows process 1.0
         model <- liborForwardModel process (FixedVolatility (fromList $ zip fixingTimes (map sqrt variances))) (ExponentialCorrelation size 0.3)
+        -- S_0(alpha, beta) is an annuity-weighted average of the initial forward rates
+        -- f[alpha+1 .. beta] (LiborForwardModel::S_0 in liborforwardmodel.cpp), so it must lie
+        -- within their range.
+        x0 <- initialValues process
+        s0 <- liborForwardModelS0 model 0 (size - 1)
+        let fwds = drop 1 x0
+        s0 `shouldSatisfy` (>= minimum fwds - 1e-12)
+        s0 `shouldSatisfy` (<= maximum fwds + 1e-12)
         affineModel <- liborForwardModelAsAffineModel model
         eng <- analyticCapFloorEngine affineModel (Just rTS)
         capInstr <- cap leg (fromList $ replicate (fromIntegral size) 0.04)

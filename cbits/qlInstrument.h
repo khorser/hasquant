@@ -725,6 +725,16 @@ extern "C" {
   double qlFloatingRateCouponRate(QlFloatingRateCoupon* o, char **e);
   double qlFloatingRateCouponAmount(QlFloatingRateCoupon* o, char **e);
   void qlFloatingRateCouponSetPricer(QlFloatingRateCoupon* o, QlFloatingRateCouponPricer* pricer, char **e);
+  double qlFloatingRateCouponPrice(QlFloatingRateCoupon* o, QlYieldTermStructure* discountingCurve, char **e);
+  double qlFloatingRateCouponConvexityAdjustment(QlFloatingRateCoupon* o, char **e);
+  double qlDigitalCouponRate(QlDigitalCoupon *o, char **e);
+  double qlCPICouponIndexRatio(QlCPICoupon *o, int d, char **e);
+  double qlFloatingRateCouponPricerSwapletRate(QlFloatingRateCouponPricer* o, char **e);
+  double qlFloatingRateCouponPricerSwapletPrice(QlFloatingRateCouponPricer* o, char **e);
+  double qlFloatingRateCouponPricerCapletPrice(QlFloatingRateCouponPricer* o, double effectiveCap, char **e);
+  double qlFloatingRateCouponPricerCapletRate(QlFloatingRateCouponPricer* o, double effectiveCap, char **e);
+  double qlFloatingRateCouponPricerFloorletPrice(QlFloatingRateCouponPricer* o, double effectiveFloor, char **e);
+  double qlFloatingRateCouponPricerFloorletRate(QlFloatingRateCouponPricer* o, double effectiveFloor, char **e);
 
   void qlFreeCmsCoupon(QlCmsCoupon *o);
   QlFloatingRateCoupon* qlCmsCouponAsFloatingRateCoupon(QlCmsCoupon *o);

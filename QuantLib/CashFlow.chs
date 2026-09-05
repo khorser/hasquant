@@ -38,6 +38,7 @@ module QuantLib.CashFlow
   , digitalCouponConvexityAdjustment
   , digitalCouponCallOptionRate
   , digitalCouponPutOptionRate
+  , digitalCouponRate
   , multipleResetsCoupon
   , RangeAccrualFloatersCoupon
   , rangeAccrualFloatersCoupon
@@ -64,6 +65,7 @@ module QuantLib.CashFlow
   , cpiCouponPricerWithVol
   , setCpiCouponPricer
   , cpiCouponAsCashFlow
+  , cpiCouponIndexRatio
   , redemption
   , amortizingPayment
   , cashFlowLeg
@@ -134,6 +136,14 @@ module QuantLib.CashFlow
   , floatingRateCouponRate
   , floatingRateCouponAmount
   , setFloatingRateCouponPricer
+  , floatingRateCouponPrice
+  , floatingRateCouponConvexityAdjustment
+  , floatingRateCouponPricerSwapletRate
+  , floatingRateCouponPricerSwapletPrice
+  , floatingRateCouponPricerCapletPrice
+  , floatingRateCouponPricerCapletRate
+  , floatingRateCouponPricerFloorletPrice
+  , floatingRateCouponPricerFloorletRate
   , CmsCoupon
   , cmsCoupon
   , cappedFlooredCmsCoupon
@@ -504,6 +514,10 @@ leg f = qlLeg fs ds where (ds, fs) = unzip f
 {#fun qlDigitalCouponCallOptionRate as digitalCouponCallOptionRate{withDigitalCoupon*`DigitalCoupon',preErrorCheck-`String'errorCheck*-}->`Double'#}
 {#fun qlDigitalCouponPutOptionRate as digitalCouponPutOptionRate{withDigitalCoupon*`DigitalCoupon',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
+-- |The digital coupon's overall rate: the underlying floating rate plus the call/put digital
+-- option payoffs (as adjusted rates via 'digitalCouponCallOptionRate'\/'digitalCouponPutOptionRate').
+{#fun qlDigitalCouponRate as digitalCouponRate{withDigitalCoupon*`DigitalCoupon',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |Ibor coupon whose rate averages multiple reset dates in each accrual period.
 {#fun qlMultipleResetsCoupon as multipleResetsCoupon{withDay*`Day' -- ^paymentDate
   ,`Double' -- ^nominal
@@ -658,6 +672,12 @@ leg f = qlLeg fs ds where (ds, fs) = unzip f
 -- heterogeneous 'cashFlowLeg' inputs.
 {#fun qlCPICouponAsCashFlow as cpiCouponAsCashFlow{withCPICoupon*`CPICoupon' -- ^coupon
   }->`CashFlow'peekCashFlow*#}
+
+-- |The ratio of the (possibly interpolated) index value on /d/ to the coupon's base index
+-- value, i.e. the inflation-adjustment factor applied to the coupon's fixed rate.
+{#fun qlCPICouponIndexRatio as cpiCouponIndexRatio{withCPICoupon*`CPICoupon' -- ^coupon
+  ,withDay*`Day' -- ^d
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |A single redemption payment.
 {#fun qlRedemption as redemption{`Double' -- ^amount
@@ -1282,6 +1302,33 @@ cmsLegFull schedule idx notionals dc adj fixingDays gearings spreads caps floors
 -- /pricers/ by matching coupon type.
 {#fun qlQuantLibSetCouponPricers as setCouponPricers{withLeg*`GenLeg l',withFloatingRateCouponPricerArray*`[GenFloatingRateCouponPricer frcp]'&,preErrorCheck-`String'errorCheck*-}->`()'#}
 
+-- |Rate for a fully-determined coupon period, with no cap\/floor.
+{#fun qlFloatingRateCouponPricerSwapletRate as floatingRateCouponPricerSwapletRate{withFloatingRateCouponPricer*`GenFloatingRateCouponPricer frcp',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |Price (NPV contribution) for a fully-determined coupon period, with no cap\/floor.  Not
+-- every pricer supports this: e.g. 'CompoundingOvernightIndexedCouponPricer' throws.
+{#fun qlFloatingRateCouponPricerSwapletPrice as floatingRateCouponPricerSwapletPrice{withFloatingRateCouponPricer*`GenFloatingRateCouponPricer frcp',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |Price of the caplet with the given effective cap rate.  Not every pricer supports this.
+{#fun qlFloatingRateCouponPricerCapletPrice as floatingRateCouponPricerCapletPrice{withFloatingRateCouponPricer*`GenFloatingRateCouponPricer frcp'
+  ,`Double' -- ^effectiveCap
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |Rate of the caplet with the given effective cap rate.  Not every pricer supports this.
+{#fun qlFloatingRateCouponPricerCapletRate as floatingRateCouponPricerCapletRate{withFloatingRateCouponPricer*`GenFloatingRateCouponPricer frcp'
+  ,`Double' -- ^effectiveCap
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |Price of the floorlet with the given effective floor rate.  Not every pricer supports this.
+{#fun qlFloatingRateCouponPricerFloorletPrice as floatingRateCouponPricerFloorletPrice{withFloatingRateCouponPricer*`GenFloatingRateCouponPricer frcp'
+  ,`Double' -- ^effectiveFloor
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |Rate of the floorlet with the given effective floor rate.  Not every pricer supports this.
+{#fun qlFloatingRateCouponPricerFloorletRate as floatingRateCouponPricerFloorletRate{withFloatingRateCouponPricer*`GenFloatingRateCouponPricer frcp'
+  ,`Double' -- ^effectiveFloor
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |Constant-maturity-swap (CMS) coupon.
 --
 -- The start and end dates are used as supplied: QuantLib performs no business-day adjustment
@@ -1338,6 +1385,17 @@ cmsLegFull schedule idx notionals dc adj fixingDays gearings spreads caps floors
 {#fun qlFloatingRateCouponSetPricer as setFloatingRateCouponPricer{withFloatingRateCoupon*`GenFloatingRateCoupon frc' -- ^coupon
   ,withFloatingRateCouponPricer*`GenFloatingRateCouponPricer frcp' -- ^pricer
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
+
+-- |Net present value of the coupon, i.e. the coupon amount discounted off the given curve.
+-- 'Nothing' uses the coupon's own default discounting (an empty @Handle\<YieldTermStructure\>@).
+{#fun qlFloatingRateCouponPrice as floatingRateCouponPrice{withFloatingRateCoupon*`GenFloatingRateCoupon frc' -- ^coupon
+  ,withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)' -- ^discountingCurve
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |The adjustment (e.g. for coupons that fix in arrears) applied to the plain index fixing to
+-- get the effective, convexity-adjusted fixing used in 'floatingRateCouponRate'.
+{#fun qlFloatingRateCouponConvexityAdjustment as floatingRateCouponConvexityAdjustment{withFloatingRateCoupon*`GenFloatingRateCoupon frc' -- ^coupon
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |CMS coupon with optional cap and floor.  This is QuantLib's
 -- @CappedFlooredCmsCoupon@: it wraps a 'CmsCoupon' in a capped/floored coupon and returns it at

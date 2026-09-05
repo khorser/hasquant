@@ -1428,6 +1428,8 @@ QlLmVolatilityModel* qlLmLinearExponentialVolatilityModel(unsigned fixingTimesLe
 QlLiborForwardModel* qlLiborForwardModel(QlLiborForwardModelProcess* process, QlLmVolatilityModel* volaModel, QlLmCorrelationModel* corrModel, char **e) {
   try {return ret(new QlLiborForwardModel(alloc(new LiborForwardModel(*arg(process), *arg(volaModel), *arg(corrModel)))));
   } catch (std::exception& er) {return handleException<QlLiborForwardModel*>(e, er);}}
+double qlLiborForwardModelS0(QlLiborForwardModel* o, unsigned alpha, unsigned beta, char **e) {
+  try {return (*arg(o))->S_0(alpha, beta);} catch (std::exception& er) {return handleException<double>(e, er);}}
 void qlFreeLfmHullWhiteParameterization(QlLfmHullWhiteParameterization *o) {del(o);}
 QlLfmHullWhiteParameterization* qlLfmHullWhiteParameterization(QlLiborForwardModelProcess* process, QlOptionletVolatilityStructure* capletVol, unsigned correlationRows, unsigned correlationCols, double* correlation, unsigned factors, char **e) {
   try {return ret(new QlLfmHullWhiteParameterization(alloc(new LfmHullWhiteParameterization(*arg(process), handlePtr(arg(capletVol)), qlMatrix(correlation, correlationRows, correlationCols), factors))));
@@ -1721,6 +1723,8 @@ QlGJRGARCHProcess* qlGJRGARCHProcess(QlYieldTermStructure* riskFreeRate, QlYield
 QlHestonProcess* qlHestonProcess(QlYieldTermStructure* riskFreeRate, QlYieldTermStructure* dividendYield, QlQuote* s0, double v0, double kappa, double theta, double sigma, double rho, int d, char **e) {
   try {return ret(new QlHestonProcess(alloc(new HestonProcess(*arg(riskFreeRate), qlNullableHandle(arg(dividendYield)), *arg(s0), v0, kappa, theta, sigma, rho, (HestonProcess::Discretization)d))));
   } catch (std::exception& er) {return handleException<QlHestonProcess*>(e, er);}}
+double qlHestonProcessPdf(QlHestonProcess* o, double x, double v, double t, double eps, char **e) {
+  try {return (*arg(o))->pdf(x, v, t, eps);} catch (std::exception& er) {return handleException<double>(e, er);}}
 QlHullWhiteForwardProcess* qlHullWhiteForwardProcess(QlYieldTermStructure* h, double a, double sigma, char **e) {
   try {return ret(new QlHullWhiteForwardProcess(alloc(new HullWhiteForwardProcess(*arg(h), a, sigma))));
   } catch (std::exception& er) {return handleException<QlHullWhiteForwardProcess*>(e, er);}}

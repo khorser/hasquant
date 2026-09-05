@@ -381,6 +381,7 @@ extern "C" {
   QlAffineModel* qlOneFactorAffineModelAsAffineModel(QlOneFactorAffineModel *o);
   void qlFreeLiborForwardModel(QlLiborForwardModel *o);
   QlAffineModel* qlLiborForwardModelAsAffineModel(QlLiborForwardModel *o);
+  double qlLiborForwardModelS0(QlLiborForwardModel *o, unsigned alpha, unsigned beta, char **e);
   void qlFreeHullWhite(QlHullWhite *o);
   QlOneFactorAffineModel* qlHullWhiteAsOneFactorAffineModel(QlHullWhite *o);
   void qlFreeCalibratedModel(QlCalibratedModel *o);
@@ -559,6 +560,7 @@ extern "C" {
   QlStochasticProcess1D* qlGeometricBrownianMotionProcess(double initialValue, double mue, double sigma, char **e);
   QlGJRGARCHProcess* qlGJRGARCHProcess(QlYieldTermStructure* riskFreeRate, QlYieldTermStructure* dividendYield, QlQuote* s0, double v0, double omega, double alpha, double beta, double gamma, double lambda, double daysPerYear, int d, char **e);
   QlHestonProcess* qlHestonProcess(QlYieldTermStructure* riskFreeRate, QlYieldTermStructure* dividendYield, QlQuote* s0, double v0, double kappa, double theta, double sigma, double rho, int d, char **e);
+  double qlHestonProcessPdf(QlHestonProcess* o, double x, double v, double t, double eps, char **e);
   void qlFreeHestonSLVProcess(QlHestonSLVProcess *o);
   QlStochasticProcess* qlHestonSLVProcessAsStochasticProcess(QlHestonSLVProcess *o);
   QlHestonSLVProcess* qlHestonSLVProcess(QlHestonProcess* hestonProcess, QlLocalVolTermStructure* leverageFct, double mixingFactor, char **e);

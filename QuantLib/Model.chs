@@ -88,6 +88,7 @@ module QuantLib.Model
   , varianceGammaModel
   , vasicek
   , liborForwardModel
+  , liborForwardModelS0
   , lfmHullWhiteParameterization
   , lfmHullWhiteCovariance
   , gsr
@@ -596,6 +597,13 @@ markovFunctionalCaplet ts reversion initialVol steps capletVol expiries ibor gri
 
 -- |Libor market (BGM) forward-rate model, built from a 'LiborForwardModelProcess' plus volatility and correlation models.
 {#fun qlLiborForwardModel as liborForwardModel{withGenStochasticProcess*`LiborForwardModelProcess',withLmVolatilityModel*`LmVolatilityModel',withLmCorrelationModel*`LmCorrelationModel',preErrorCheck-`String'errorCheck*-}->`LiborForwardModel'peekLiborForwardModel*#}
+
+-- |Initial value of the discrete forward rate indexed by /alpha/, as seen from time index /beta/
+-- (both indices into the process's tenor structure): the model's calibration input @S_0(alpha,beta)@.
+{#fun qlLiborForwardModelS0 as liborForwardModelS0{withGenCalibratedModel*`LiborForwardModel'
+  ,fromIntegral`Word' -- ^alpha
+  ,fromIntegral`Word' -- ^beta
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Hull-White caplet-volatility parameterization for a Libor forward model. The correlation
 -- matrix and factor count are explicit, mirroring QuantLib's defaulted constructor arguments;

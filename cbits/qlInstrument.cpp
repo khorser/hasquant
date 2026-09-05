@@ -1736,6 +1736,17 @@ double qlFloatingRateCouponAmount(QlFloatingRateCoupon* o, char **e) {try {retur
 void qlFloatingRateCouponSetPricer(QlFloatingRateCoupon* o, QlFloatingRateCouponPricer* pricer, char **e) {
   try {(*arg(o))->setPricer(*arg(pricer));
   } catch (std::exception& er) {(void)handleException<int>(e, er);}}
+double qlFloatingRateCouponPrice(QlFloatingRateCoupon* o, QlYieldTermStructure* discountingCurve, char **e) {
+  try {return (*arg(o))->price(qlNullableHandle(discountingCurve));} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlFloatingRateCouponConvexityAdjustment(QlFloatingRateCoupon* o, char **e) {try {return (*arg(o))->convexityAdjustment();} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlDigitalCouponRate(QlDigitalCoupon* o, char **e) {try {return (*arg(o))->rate();} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlCPICouponIndexRatio(QlCPICoupon* o, int d, char **e) {try {return (*arg(o))->indexRatio(Date(d));} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlFloatingRateCouponPricerSwapletRate(QlFloatingRateCouponPricer* o, char **e) {try {return (*arg(o))->swapletRate();} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlFloatingRateCouponPricerSwapletPrice(QlFloatingRateCouponPricer* o, char **e) {try {return (*arg(o))->swapletPrice();} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlFloatingRateCouponPricerCapletPrice(QlFloatingRateCouponPricer* o, double effectiveCap, char **e) {try {return (*arg(o))->capletPrice(effectiveCap);} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlFloatingRateCouponPricerCapletRate(QlFloatingRateCouponPricer* o, double effectiveCap, char **e) {try {return (*arg(o))->capletRate(effectiveCap);} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlFloatingRateCouponPricerFloorletPrice(QlFloatingRateCouponPricer* o, double effectiveFloor, char **e) {try {return (*arg(o))->floorletPrice(effectiveFloor);} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlFloatingRateCouponPricerFloorletRate(QlFloatingRateCouponPricer* o, double effectiveFloor, char **e) {try {return (*arg(o))->floorletRate(effectiveFloor);} catch (std::exception& er) {return handleException<double>(e, er);}}
 
 void qlFreeCmsCoupon(QlCmsCoupon *o) {del(o);}
 QlFloatingRateCoupon* qlCmsCouponAsFloatingRateCoupon(QlCmsCoupon* o) {return ret(new QlFloatingRateCoupon(*arg(o)));}

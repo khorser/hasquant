@@ -61,6 +61,7 @@ module QuantLib.Process
   , geometricBrownianMotionProcess
   , gjrGARCHProcess
   , hestonProcess
+  , hestonProcessPdf
   , hestonSLVProcess
   , hullWhiteForwardProcess
   , hullWhiteProcess
@@ -415,6 +416,16 @@ covariance p t0 x0 dt = toMatrixDouble <$> qlStochasticProcessCovariance p t0 x0
   ,`Double' -- ^sigma
   ,`Double' -- ^rho
   ,`HestonProcessDiscretization',preErrorCheck-`String'errorCheck*-}->`HestonProcess'peekHestonProcess*#}
+
+-- |Probability density of @(x = ln S, v)@ at time /t/, evaluated via the Heston
+-- characteristic-function inversion (the same machinery as 'QuantLib.PricingEngine.analyticPDFHestonEngine').
+-- /eps/ is the requested integration accuracy.
+{#fun qlHestonProcessPdf as hestonProcessPdf{withHestonProcess*`GenHestonProcess hp' -- ^process
+  ,`Double' -- ^x
+  ,`Double' -- ^v
+  ,`Double' -- ^t
+  ,`Double' -- ^eps
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Two-factor Heston stochastic-local-volatility process using the supplied calibrated leverage
 -- function. It is a generic 'StochasticProcess', so it composes with path generators and the
