@@ -1,4 +1,5 @@
 #include <ql/settings.hpp>
+#include <ql/patterns/observable.hpp>
 #include <ql/version.hpp>
 #include <ql/errors.hpp>
 #include <ql/time/date.hpp>
@@ -63,6 +64,29 @@ using namespace QuantLib;
 // crossing" bullet. values() (the Jacobian-style multi-output variant) is left unimplemented,
 // same as PyCostFunction's own -- no bound caller needs it yet.
 namespace {
+  class SavedSettingsWithObservable {
+    public:
+      SavedSettingsWithObservable()
+      : updatesEnabled_(ObservableSettings::instance().updatesEnabled()),
+        updatesDeferred_(ObservableSettings::instance().updatesDeferred()) {}
+
+      ~SavedSettingsWithObservable() {
+        try {
+          auto& settings = ObservableSettings::instance();
+          if (updatesEnabled_)
+            settings.enableUpdates();
+          else
+            settings.disableUpdates(updatesDeferred_);
+        } catch (...) {
+        }
+      }
+
+    private:
+      bool updatesEnabled_;
+      bool updatesDeferred_;
+      SavedSettings savedSettings_;
+  };
+
   class HsCostFunction : public CostFunction {
     public:
       explicit HsCostFunction(double (*fn)(double*, unsigned)) : fn_(fn) {}
@@ -445,8 +469,14 @@ int qlSettingsIncludeTodaysCashFlows() {return qlOptBool(Settings::instance().in
 void qlSettingsSetIncludeTodaysCashFlows(int x) {Settings::instance().includeTodaysCashFlows() = qlOptBool(x);}
 int qlSettingsIncludeReferenceDateEvents() {return Settings::instance().includeReferenceDateEvents();}
 void qlSettingsSetIncludeReferenceDateEvents(int x0) {Settings::instance().includeReferenceDateEvents() = x0;}
-void *qlSavedSettings() {return ret(new SavedSettings());}
-void qlFreeSavedSettings(void *settings) {del((SavedSettings *)settings);}
+void qlObservableSettingsDisableUpdates(int deferred) {ObservableSettings::instance().disableUpdates(deferred);}
+void qlObservableSettingsEnableUpdates(char **e) {
+  try {ObservableSettings::instance().enableUpdates();
+  } catch (std::exception& er) {*e = tracedup(er.what());}}
+int qlObservableSettingsUpdatesEnabled() {return ObservableSettings::instance().updatesEnabled();}
+int qlObservableSettingsUpdatesDeferred() {return ObservableSettings::instance().updatesDeferred();}
+void *qlSavedSettings() {return ret(new SavedSettingsWithObservable());}
+void qlFreeSavedSettings(void *settings) {del((SavedSettingsWithObservable *)settings);}
 const char *qlVersion() {return QL_VERSION;}
 const char *qlBoostVersion() {return BOOST_LIB_VERSION;}
 

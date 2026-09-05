@@ -18,6 +18,9 @@ import QuantLib.Time.Schedule
 
 import QuantLib.Spec.Helpers(ValidDay(..))
 
+observableState :: IO (Bool, Bool)
+observableState = (,) <$> Settings.updatesEnabled <*> Settings.updatesDeferred
+
 spec :: Spec
 spec = do
     describe "dates" $ do
@@ -193,3 +196,53 @@ spec = do
         result `shouldSatisfy` either (const True) (const False)
         after' <- Settings.evaluationDate
         after' `shouldBe` before'
+
+      it "exposes ObservableSettings update modes" $
+        Settings.keepingSettings $ do
+          Settings.enableUpdates
+          observableState `shouldReturn` (True, False)
+          Settings.disableUpdates False
+          observableState `shouldReturn` (False, False)
+          Settings.disableUpdates True
+          observableState `shouldReturn` (False, True)
+          Settings.enableUpdates
+          observableState `shouldReturn` (True, False)
+
+      it "keepingSettings restores ObservableSettings after normal completion" $
+        Settings.keepingSettings $ do
+          before' <- observableState
+          Settings.keepingSettings $ Settings.disableUpdates True
+          observableState `shouldReturn` before'
+
+      it "keepingSettings' restores ObservableSettings after normal completion" $
+        Settings.keepingSettings $ do
+          before' <- observableState
+          Settings.keepingSettings' $ Settings.disableUpdates True
+          observableState `shouldReturn` before'
+
+      it "keepingSettings restores ObservableSettings when the bracketed action throws" $
+        Settings.keepingSettings $ do
+          before' <- observableState
+          (result :: Either SomeException ()) <- try $ Settings.keepingSettings $ do
+            Settings.disableUpdates True
+            _ <- evaluate (error "deliberate ObservableSettings failure" :: ())
+            return ()
+          result `shouldSatisfy` either (const True) (const False)
+          observableState `shouldReturn` before'
+
+      it "keepingSettings' restores ObservableSettings when the bracketed action throws" $
+        Settings.keepingSettings $ do
+          before' <- observableState
+          (result :: Either SomeException ()) <- try $ Settings.keepingSettings' $ do
+            Settings.disableUpdates True
+            _ <- evaluate (error "deliberate ObservableSettings failure" :: ())
+            return ()
+          result `shouldSatisfy` either (const True) (const False)
+          observableState `shouldReturn` before'
+
+      it "keepingSettings' restores a deferred ObservableSettings entry mode" $
+        Settings.keepingSettings $ do
+          Settings.disableUpdates True
+          before' <- observableState
+          Settings.keepingSettings' Settings.enableUpdates
+          observableState `shouldReturn` before'

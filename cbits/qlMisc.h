@@ -9,6 +9,10 @@ extern "C" {
   void qlSettingsSetIncludeTodaysCashFlows(int x);
   int qlSettingsIncludeReferenceDateEvents();
   void qlSettingsSetIncludeReferenceDateEvents(int x0);
+  void qlObservableSettingsDisableUpdates(int deferred);
+  void qlObservableSettingsEnableUpdates(char **e);
+  int qlObservableSettingsUpdatesEnabled();
+  int qlObservableSettingsUpdatesDeferred();
   void *qlSavedSettings();
   void qlFreeSavedSettings(void *settings);
 
