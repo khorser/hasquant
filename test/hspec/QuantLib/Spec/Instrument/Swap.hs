@@ -208,7 +208,7 @@ spec = do
   -- Ported from test-suite/zerocouponswap.cpp's spot-starting cases only (checkFairFixedPayment
   -- and checkFairFixedRate): a swap starting exactly at settlement needs no historical Euribor
   -- fixing, unlike the "ongoing" cases in the same functions, which are left as follow-up work.
-  describe "ZeroCouponSwap" $
+  describe "ZeroCouponSwap" $ do
     it "fairFixedPayment and fairFixedRate both reprice a spot-starting swap to zero NPV" $
       Settings.keepingSettings' $ do
         let today' = 15 `march` 2021
@@ -239,3 +239,25 @@ spec = do
         setPricingEngine parZc' engine
         parNpv' <- npv parZc'
         parNpv' `shouldSatisfy` closePrec 0 1e-6
+
+    -- ZeroCouponSwap::fixedLegNPV/floatingLegNPV are literally legNPV_[0]/legNPV_[1] upstream
+    -- (zerocouponswap.cpp), i.e. exactly the already-bound generic leg 0/1 legNPV -- so this
+    -- checks the *identity* claim rather than binding a redundant getter.
+    it "fixedLegNPV/floatingLegNPV equal the generic leg 0/1 legNPV, and sum to the swap's NPV" $
+      Settings.keepingSettings' $ do
+        let today' = 15 `march` 2021
+        Settings.setEvaluationDate (Just today')
+        cal <- calendar TARGET
+        dc <- dayCounter Actual365FixedStandard
+        settle <- advance cal today' (2, Days) Following False
+        q <- simpleQuote 0.007
+        ts <- flatForward settle q dc Continuous Annual
+        euribor6m <- IR.iborIndex IR.Euribor6M (Just ts)
+        engine <- discountingSwapEngine ts Nothing Nothing Nothing
+        let end = 12 `february` 2041
+        zc <- zeroCouponSwap Payer 1.0e6 settle end 1.2e6 euribor6m cal ModifiedFollowing (1 :: Word)
+        setPricingEngine zc engine
+        fixedNPV <- legNPV zc 0
+        floatNPV <- legNPV zc 1
+        total <- npv zc
+        (fixedNPV + floatNPV) `shouldSatisfy` closePrec total 1e-8

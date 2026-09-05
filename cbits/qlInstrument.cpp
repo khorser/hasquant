@@ -532,6 +532,7 @@ QlBondForward* qlBondForward(int valueDate, int maturityDate, int type, double s
 double qlBondForwardCleanForwardPrice(QlBondForward* o, char **e) {try {return (*arg(o))->cleanForwardPrice();} catch (std::exception& er) {return handleException<double>(e, er);}}
 double qlBondForwardForwardPrice(QlBondForward* o, char **e) {try {return (*arg(o))->forwardPrice();} catch (std::exception& er) {return handleException<double>(e, er);}}
 InterestRate* qlForwardRateAgreementForwardRate(QlForwardRateAgreement* o, char **e) {try {return ret(new InterestRate((*arg(o))->forwardRate()));} catch (std::exception& er) {return handleException<InterestRate*>(e, er);}}
+double qlForwardRateAgreementAmount(QlForwardRateAgreement* o, char **e) {try {return (*arg(o))->amount();} catch (std::exception& er) {return handleException<double>(e, er);}}
 
 void qlFreeFxForward(QlFxForward *fwd) {del(fwd);}
 QlInstrument* qlFxForwardAsInstrument(QlFxForward *fwd) {return ret(new QlInstrument(*arg(fwd)));}
@@ -541,6 +542,7 @@ QlFxForward* qlFxForward(double sourceNominal, Currency* sourceCurrency, double 
 QlFxForward* qlFxForward1(double sourceNominal, Currency* sourceCurrency, Currency* targetCurrency, double forwardRate, int maturityDate, int paySourceCurrency, unsigned settlementDays, Calendar* paymentCalendar, char **e) {
   try {return ret(new QlFxForward(alloc(new FxForward(sourceNominal, *arg(sourceCurrency), *arg(targetCurrency), forwardRate, Date(maturityDate), paySourceCurrency, settlementDays, *arg(paymentCalendar)))));
   } catch (std::exception& er) {return handleException<QlFxForward*>(e, er);}}
+double qlFxForwardForwardRate(QlFxForward* o) {return (*arg(o))->forwardRate();}
 double qlFxForwardFairForwardRate(QlFxForward* o, char **e) {try {return (*arg(o))->fairForwardRate();} catch (std::exception& er) {return handleException<double>(e, er);}}
 double qlFxForwardNpvSourceCurrency(QlFxForward* o, char **e) {try {return (*arg(o))->npvSourceCurrency();} catch (std::exception& er) {return handleException<double>(e, er);}}
 double qlFxForwardNpvTargetCurrency(QlFxForward* o, char **e) {try {return (*arg(o))->npvTargetCurrency();} catch (std::exception& er) {return handleException<double>(e, er);}}
@@ -588,6 +590,9 @@ QlNonstandardSwap* qlNonstandardSwap(int type, unsigned fixedNominalLen, double*
 QlNonstandardSwap* qlNonstandardSwap2(int type, unsigned fixedNominalLen, double* fixedNominal, unsigned floatingNominalLen, double* floatingNominal, Schedule* fixedSchedule, unsigned fixedRateLen, double* fixedRate, DayCounter* fixedDayCount, Schedule* floatingSchedule, QlIborIndex* iborIndex, unsigned gearingLen, double* gearing, unsigned spreadLen, double* spread, DayCounter* floatingDayCount, int intermediateCapitalExchange, int finalCapitalExchange, int paymentConvention, char **e) {
   try {return ret(new QlNonstandardSwap(alloc(new NonstandardSwap((Swap::Type)type, std::vector<double>(fixedNominal, fixedNominal+fixedNominalLen), std::vector<double>(floatingNominal, floatingNominal+floatingNominalLen), *arg(fixedSchedule), std::vector<double>(fixedRate, fixedRate+fixedRateLen), *arg(fixedDayCount), *arg(floatingSchedule), *arg(iborIndex), std::vector<double>(gearing, gearing+gearingLen), std::vector<double>(spread, spread+spreadLen), *arg(floatingDayCount), intermediateCapitalExchange, finalCapitalExchange, qlOptBusinessDayConvention(paymentConvention)))));
   } catch (std::exception& er) {return handleException<QlNonstandardSwap*>(e, er);}}
+void qlNonstandardSwapFixedRate(QlNonstandardSwap* o, unsigned *len, double **out, char **e) {
+  try {const std::vector<Real>& rs = (*arg(o))->fixedRate(); *len = rs.size(); *out = qlAllocateDoubles(*len); std::copy(rs.begin(), rs.end(), *out);
+  } catch (std::exception& er) {(void)handleException<double*>(e, er);}}
 
 void qlFreeFloatFloatSwap(QlFloatFloatSwap *o) {del(o);}
 QlSwap* qlFloatFloatSwapAsSwap(QlFloatFloatSwap *o) {return ret(new QlSwap(*arg(o)));}
@@ -790,6 +795,7 @@ double qlCreditDefaultSwapImpliedHazardRate(QlCreditDefaultSwap* o, double targe
   } catch (std::exception& er) {return handleException<double>(e, er);}}
 double qlCreditDefaultSwapUpfrontBPS(QlCreditDefaultSwap* o, char **e) {try {return (*arg(o))->upfrontBPS();} catch (std::exception& er) {return handleException<double>(e, er);}}
 double qlCreditDefaultSwapUpfrontNPV(QlCreditDefaultSwap* o, char **e) {try {return (*arg(o))->upfrontNPV();} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlCreditDefaultSwapAccrualRebateNPV(QlCreditDefaultSwap* o, char **e) {try {return (*arg(o))->accrualRebateNPV();} catch (std::exception& er) {return handleException<double>(e, er);}}
 void qlFreeBarrierOption(QlBarrierOption *o) {del(o);}
 QlOneAssetOption* qlBarrierOptionAsOneAssetOption(QlBarrierOption *o) {return ret(new QlOneAssetOption(*arg(o)));}
 void qlFreeDoubleBarrierOption(QlDoubleBarrierOption *o) {del(o);}

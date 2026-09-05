@@ -12,6 +12,7 @@ module QuantLib.Instrument.Credit
   , impliedVolatility
   , riskyAnnuity
 
+  , accrualRebateNPV
   , conventionalSpread
   , couponLegBPS
   , couponLegNPV
@@ -154,6 +155,10 @@ import QuantLib.Internal.Type
 
 -- |NPV of the upfront payment.
 {#fun qlCreditDefaultSwapUpfrontNPV as upfrontNPV{withGenInstrument*`CreditDefaultSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |NPV of the rebate paid/received on an early default for the fraction of the accrual period
+-- elapsed since the last coupon date; zero unless the CDS was constructed with @rebatesAccrual@.
+{#fun qlCreditDefaultSwapAccrualRebateNPV as accrualRebateNPV{withGenInstrument*`CreditDefaultSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |A synthetic CDO tranche over a tranche-loss basket. @notional@ overrides the basket tranche.
 syntheticCDO :: TrancheBasket -> ProtectionSide -> Schedule -> Double -> Double -> DayCounter -> BusinessDayConvention

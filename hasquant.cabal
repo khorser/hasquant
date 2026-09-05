@@ -253,6 +253,7 @@ test-suite hasquant_test
       QuantLib.Spec.Instrument.CapFloor
       QuantLib.Spec.Instrument.Credit
       QuantLib.Spec.Instrument.Energy
+      QuantLib.Spec.Instrument.Forward
       QuantLib.Spec.Instrument.InflationCapFloor
       QuantLib.Spec.Instrument.Option
       QuantLib.Spec.Instrument.Swap
