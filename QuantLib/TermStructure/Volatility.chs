@@ -184,6 +184,8 @@ module QuantLib.TermStructure.Volatility
   , blackVolSmile
   , blackVolSmile'
   , swaptionVolatilityMatrix'
+  , SwaptionVolatilityMatrix
+  , swaptionVolatilityMatrixLocate
   , SabrSwaptionVolatilityCube
   , NoArbSabrSwaptionVolatilityCube
   , InterpolatedSwaptionVolatilityCube
@@ -240,6 +242,7 @@ import QuantLib.Internal.Common
 import QuantLib.Internal.Syntax(deriveOptionsRecord)
 import QuantLib.Time.Schedule(dayCounter, DayCounterConstructor(..))
 import Data.List.NonEmpty(NonEmpty, toList)
+import Foreign.Marshal.Alloc(alloca)
 
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"
@@ -278,6 +281,7 @@ import Data.List.NonEmpty(NonEmpty, toList)
 {#pointer *QlCapFloorTermVolSurface as CapFloorTermVolSurface foreign -> CCapFloorTermVolSurface' nocode#}
 {#pointer *QlSwaptionVolatilityStructure as SwaptionVolatilityStructure foreign -> CSwaptionVolatilityStructure' nocode#}
 {#pointer *QlRelinkableSwaptionVolatilityStructure as RelinkableSwaptionVolatilityStructure foreign -> CRelinkableSwaptionVolatilityStructure' nocode#}
+{#pointer *QlSwaptionVolatilityMatrix as SwaptionVolatilityMatrix foreign -> CSwaptionVolatilityMatrix' nocode#}
 {#pointer *QlSabrSwaptionVolatilityCube as SabrSwaptionVolatilityCube foreign -> CSabrSwaptionVolatilityCube' nocode#}
 {#pointer *QlNoArbSabrSwaptionVolatilityCube as NoArbSabrSwaptionVolatilityCube foreign -> CNoArbSabrSwaptionVolatilityCube' nocode#}
 {#pointer *QlInterpolatedSwaptionVolatilityCube as InterpolatedSwaptionVolatilityCube foreign -> CInterpolatedSwaptionVolatilityCube' nocode#}
@@ -1503,7 +1507,7 @@ swaptionVolatilityMatrix' :: Day -> Calendar -> BusinessDayConvention
   -> Bool -- ^flatExtrapolation
   -> VolatilityType
   -> RealMatrix -- ^shifts
-  -> IO SwaptionVolatilityStructure
+  -> IO SwaptionVolatilityMatrix
 swaptionVolatilityMatrix' d c bdc ot st (Matrix vr vc vd) dc' fe ty (RealMatrix sr sc sd) =
   qlSwaptionVolatilityMatrix d c bdc opl opu spl spu vr vc vd dc' fe ty sr sc sd
   where (opl, opu) = unzip ot; (spl, spu) = unzip st
@@ -1513,7 +1517,7 @@ swaptionVolatilityMatrix' d c bdc ot st (Matrix vr vc vd) dc' fe ty (RealMatrix 
   ,fromIntegral`Word',fromIntegral`Word',withQuoteArrayRaw*`[GenQuote q]'
   ,withDayCounter*`DayCounter',`Bool',`VolatilityType'
   ,fromIntegral`Word',fromIntegral`Word',withRealVectorRaw*`RealVector'
-  ,preErrorCheck-`String'errorCheck*-}->`SwaptionVolatilityStructure'peekSwaptionVolatilityStructure*#}
+  ,preErrorCheck-`String'errorCheck*-}->`SwaptionVolatilityMatrix'peekSwaptionVolatilityMatrix*#}
 
 -- |floating reference date, floating market data. See 'swaptionVolatilityMatrix\'' for the
 -- @shifts@ convention
@@ -1526,7 +1530,7 @@ swaptionVolatilityMatrix :: Calendar -> BusinessDayConvention
   -> Bool -- ^flatExtrapolation
   -> VolatilityType
   -> RealMatrix -- ^shifts
-  -> IO SwaptionVolatilityStructure
+  -> IO SwaptionVolatilityMatrix
 swaptionVolatilityMatrix c bdc ot st (Matrix vr vc vd) dc' fe ty (RealMatrix sr sc sd) =
   qlSwaptionVolatilityMatrix1 c bdc opl opu spl spu vr vc vd dc' fe ty sr sc sd
   where (opl, opu) = unzip ot; (spl, spu) = unzip st
@@ -1536,7 +1540,17 @@ swaptionVolatilityMatrix c bdc ot st (Matrix vr vc vd) dc' fe ty (RealMatrix sr 
   ,fromIntegral`Word',fromIntegral`Word',withQuoteArrayRaw*`[GenQuote q]'
   ,withDayCounter*`DayCounter',`Bool',`VolatilityType'
   ,fromIntegral`Word',fromIntegral`Word',withRealVectorRaw*`RealVector'
-  ,preErrorCheck-`String'errorCheck*-}->`SwaptionVolatilityStructure'peekSwaptionVolatilityStructure*#}
+  ,preErrorCheck-`String'errorCheck*-}->`SwaptionVolatilityMatrix'peekSwaptionVolatilityMatrix*#}
+
+-- |Lower indexes of the grid corners surrounding @(optionDate, swapTenor)@, into the row\/column
+-- axes this matrix was built from (see 'swaptionVolatilityMatrix'\''\/'swaptionVolatilityMatrix').
+swaptionVolatilityMatrixLocate :: SwaptionVolatilityMatrix -> Day -> (Word, TimeUnit) -> IO (Word, Word)
+swaptionVolatilityMatrixLocate = qlSwaptionVolatilityMatrixLocate
+{#fun qlSwaptionVolatilityMatrixLocate{withSwaptionVolatilityMatrix*`SwaptionVolatilityMatrix'
+  ,withDay*`Day' -- ^optionDate
+  ,fromEnumQuantity`(Word,TimeUnit)'& -- ^swapTenor
+  ,alloca-`Word'peekWord*,alloca-`Word'peekWord*
+  ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |A SABR-calibrated swaption volatility cube: fits a SABR smile at every (option tenor, swap
 -- tenor) node from an ATM surface plus a grid of vol spreads. The result /is/ a

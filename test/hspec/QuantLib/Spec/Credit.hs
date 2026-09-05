@@ -49,8 +49,9 @@ spec = do
 
       correlQuote <- simpleQuote 0.3
       lossModel <- gaussianLHPLossModel correlQuote (fromList (replicate (length names) 0.4))
+      defaultLossModel <- gaussianLHPLossModelAsDefaultLossModel lossModel
 
-      b <- basket refDate (fromList [(n, notionalPerName) | n <- names]) p 0.0 1.0 FaceValue lossModel
+      b <- basket refDate (fromList [(n, notionalPerName) | n <- names]) p 0.0 1.0 FaceValue defaultLossModel
 
       notional <- basketNotional (trancheBasketAsBasket b)
       notional `shouldBe` notionalPerName * fromIntegral (length names)
@@ -58,6 +59,13 @@ spec = do
       let futureDate = addGregorianYearsClip 5 refDate
       etl <- basketExpectedTrancheLoss b futureDate
       etl `shouldSatisfy` (\x -> x > 0 && x < notional)
+
+      -- Only reachable once lossModel has been attached to a Basket (via 'basket' above) --
+      -- averageProb/averageRecovery read the model's basket_ pointer, set on attachment.
+      avgProb <- gaussianLHPLossModelAverageProb lossModel futureDate
+      avgProb `shouldSatisfy` (\x -> x > 0 && x < 1)
+      avgRecovery <- gaussianLHPLossModelAverageRecovery lossModel futureDate
+      avgRecovery `shouldSatisfy` closePrec 0.4 1.0e-8
 
     -- Ports test-suite/cdo.cpp's testHW, data set 1 only (corr=0.1, the "gaussian" branch of
     -- hwData7): a 100-name pool, the Gaussian LHP loss model (the only loss model hasquant
@@ -96,7 +104,7 @@ spec = do
       yieldTS <- flatForward refDate rateQuote act360 Continuous Annual
 
       correlQuote <- simpleQuote 0.1
-      lossModel <- gaussianLHPLossModel correlQuote (fromList (replicate poolSize recovery))
+      lossModel <- gaussianLHPLossModel correlQuote (fromList (replicate poolSize recovery)) >>= gaussianLHPLossModelAsDefaultLossModel
 
       target <- calendar TARGET
       sched <- schedule (Just $ fromGregorian 2006 9 1) (fromGregorian 2011 9 1) (3, Months) target
@@ -229,7 +237,7 @@ spec = do
       p <- pool (fromList [(n, iss, key) | n <- names])
 
       correlQuote <- simpleQuote 0.1
-      lossModel <- gaussianLHPLossModel correlQuote (fromList (replicate poolSize recovery))
+      lossModel <- gaussianLHPLossModel correlQuote (fromList (replicate poolSize recovery)) >>= gaussianLHPLossModelAsDefaultLossModel
       b <- basket refDate (fromList (zip names notionals)) p 0.0 0.03 FaceValue lossModel
 
       let futureDate = addGregorianYearsClip 5 refDate

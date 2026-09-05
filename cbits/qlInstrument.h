@@ -554,7 +554,10 @@ extern "C" {
   void qlFreeCashFlow(QlCashFlow *o);
   QlCashFlow *qlSimpleCashFlow(double amount, int date, char **e);
   QlCashFlow *qlIndexedCashFlow(double notional, QlIndex *index, int baseDate, int fixingDate, int paymentDate, int growthOnly, char **e);
-  QlCashFlow *qlFixedRateCoupon(int paymentDate, double nominal, double rate, DayCounter *dayCounter, int accrualStartDate, int accrualEndDate, int refPeriodStart, int refPeriodEnd, int exCouponDate, char **e);
+  QlFixedRateCoupon *qlFixedRateCoupon(int paymentDate, double nominal, double rate, DayCounter *dayCounter, int accrualStartDate, int accrualEndDate, int refPeriodStart, int refPeriodEnd, int exCouponDate, char **e);
+  void qlFreeFixedRateCoupon(QlFixedRateCoupon *o);
+  QlCashFlow* qlFixedRateCouponAsCashFlow(QlFixedRateCoupon *o);
+  InterestRate* qlFixedRateCouponInterestRate(QlFixedRateCoupon *o);
   QlCashFlow *qlFloatingRateCoupon(int paymentDate, double nominal, int startDate, int endDate, unsigned fixingDays, QlInterestRateIndex *index, double gearing, double spread, int refPeriodStart, int refPeriodEnd, DayCounter *dayCounter, int inArrears, int exCouponDate, int fixingConvention, char **e);
   QlCashFlow *qlIborCoupon(int paymentDate, double nominal, int startDate, int endDate, unsigned fixingDays, QlIborIndex *index, double gearing, double spread, int refPeriodStart, int refPeriodEnd, DayCounter *dayCounter, int inArrears, int exCouponDate, int fixingConvention, char **e);
   Leg *qlCashFlowLeg(unsigned len, QlCashFlow **cashFlows, char **e);
@@ -675,7 +678,11 @@ extern "C" {
   void qlFreeIborCoupon(QlIborCoupon *o);
   QlFloatingRateCoupon* qlIborCouponAsFloatingRateCoupon(QlIborCoupon *o);
   QlIborCoupon* qlIborCouponExact(int paymentDate, double nominal, int startDate, int endDate, unsigned fixingDays, QlIborIndex *index, double gearing, double spread, int refPeriodStart, int refPeriodEnd, DayCounter *dayCounter, int inArrears, int exCouponDate, int fixingConvention, char **e);
-  QlFloatingRateCoupon* qlAverageBMACoupon(int paymentDate, double nominal, int startDate, int endDate, QlBMAIndex *index, double gearing, double spread, int refPeriodStart, int refPeriodEnd, DayCounter *dayCounter, char **e);
+  void qlFreeAverageBMACoupon(QlAverageBMACoupon *o);
+  QlFloatingRateCoupon* qlAverageBMACouponAsFloatingRateCoupon(QlAverageBMACoupon* o);
+  QlAverageBMACoupon* qlAverageBMACoupon(int paymentDate, double nominal, int startDate, int endDate, QlBMAIndex *index, double gearing, double spread, int refPeriodStart, int refPeriodEnd, DayCounter *dayCounter, char **e);
+  void qlAverageBMACouponFixingDates(QlAverageBMACoupon *o, unsigned *len, int **ds, char **e);
+  void qlAverageBMACouponIndexFixings(QlAverageBMACoupon *o, unsigned *len, double **fs, char **e);
   QlFloatingRateCoupon* qlCappedFlooredCoupon(QlFloatingRateCoupon *underlying, double cap, double floor, char **e);
   void qlFreeStrippedCappedFlooredCoupon(QlStrippedCappedFlooredCoupon *o);
   QlFloatingRateCoupon* qlStrippedCappedFlooredCouponAsFloatingRateCoupon(QlStrippedCappedFlooredCoupon *o);
@@ -695,7 +702,10 @@ extern "C" {
   double qlDigitalCouponConvexityAdjustment(QlDigitalCoupon *o, char **e);
   double qlDigitalCouponCallOptionRate(QlDigitalCoupon *o, char **e);
   double qlDigitalCouponPutOptionRate(QlDigitalCoupon *o, char **e);
-  QlFloatingRateCoupon* qlMultipleResetsCoupon(int paymentDate, double nominal, Schedule *schedule, unsigned fixingDays, QlIborIndex *index, double gearing, double couponSpread, double rateSpread, int refPeriodStart, int refPeriodEnd, DayCounter *dayCounter, int exCouponDate, char **e);
+  void qlFreeMultipleResetsCoupon(QlMultipleResetsCoupon *o);
+  QlFloatingRateCoupon* qlMultipleResetsCouponAsFloatingRateCoupon(QlMultipleResetsCoupon* o);
+  QlMultipleResetsCoupon* qlMultipleResetsCoupon(int paymentDate, double nominal, Schedule *schedule, unsigned fixingDays, QlIborIndex *index, double gearing, double couponSpread, double rateSpread, int refPeriodStart, int refPeriodEnd, DayCounter *dayCounter, int exCouponDate, char **e);
+  void qlMultipleResetsCouponFixingDates(QlMultipleResetsCoupon *o, unsigned *len, int **dates, char **e);
   void qlFreeRangeAccrualFloatersCoupon(QlRangeAccrualFloatersCoupon*);
   QlFloatingRateCoupon* qlRangeAccrualFloatersCouponAsFloatingRateCoupon(QlRangeAccrualFloatersCoupon*);
   QlRangeAccrualFloatersCoupon* qlRangeAccrualFloatersCoupon(int paymentDate, double nominal, QlIborIndex*, int startDate, int endDate, unsigned fixingDays, DayCounter*, double gearing, double spread, int refStart, int refEnd, Schedule*, double lower, double upper, char **e);
@@ -949,7 +959,11 @@ extern "C" {
   // ql/experimental/credit/gaussianlhplossmodel.hpp -- only the Handle<Quote> correlation
   // overload is bound, per the std::variant/Handle<Quote> convention (a caller with a bare
   // number gets a simpleQuote for free).
-  QlDefaultLossModel* qlGaussianLHPLossModel(QlQuote* correlQuote, unsigned recoveriesLen, double* recoveries, char **e);
+  QlGaussianLHPLossModel* qlGaussianLHPLossModel(QlQuote* correlQuote, unsigned recoveriesLen, double* recoveries, char **e);
+  void qlFreeGaussianLHPLossModel(QlGaussianLHPLossModel *o);
+  QlDefaultLossModel* qlGaussianLHPLossModelAsDefaultLossModel(QlGaussianLHPLossModel *o);
+  double qlGaussianLHPLossModelAverageProb(QlGaussianLHPLossModel *o, int d, char **e);
+  double qlGaussianLHPLossModelAverageRecovery(QlGaussianLHPLossModel *o, int d, char **e);
   void qlFreeDefaultLossModel(QlDefaultLossModel *o);
 
   // ql/experimental/credit/syntheticcdo.hpp -- notional is ext::optional<Real>; haveNotional

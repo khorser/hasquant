@@ -62,7 +62,7 @@ run = do
   imms <- (imm1 :) <$> nextIMMs (length futPrices - 1) imm1
 
   futHelpers <- mapM (\(q, imm) ->
-    TS.futuresRateHelper q imm 3 cal ModifiedFollowing True depoDC Nothing TS.IMM) $
+    TS.futuresRateHelper q imm 3 cal ModifiedFollowing True depoDC Nothing TS.IMM >>= TS.asRateHelper) $
       zip futQuotes imms
 
   swFixedDC <- dayCounter Thirty360European

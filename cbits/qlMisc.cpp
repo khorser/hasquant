@@ -736,12 +736,18 @@ QlQuote* qlForwardSwapQuote(QlSwapIndex* swapIndex, QlQuote* spread, int l, int 
 QlQuote* qlForwardValueQuote(QlIndex* index, int fixingDate, char **e) {
   try {return ret(new QlQuote(shared_ptr<Quote>(alloc(new ForwardValueQuote(*arg(index), Date(fixingDate))))));
   } catch (std::exception& er) {return handleException<QlQuote*>(e, er);}}
-QlQuote* qlFuturesConvAdjustmentQuote1(QlIborIndex* index, char* immCode, QlQuote* futuresQuote, QlQuote* volatility, QlQuote* meanReversion, char **e) {
-  try {return ret(new QlQuote(shared_ptr<Quote>(alloc(new FuturesConvAdjustmentQuote(*arg(index), std::string(arg(immCode)), *arg(futuresQuote), *arg(volatility), *arg(meanReversion))))));
-  } catch (std::exception& er) {return handleException<QlQuote*>(e, er);}}
-QlQuote* qlFuturesConvAdjustmentQuote(QlIborIndex* index, int futuresDate, QlQuote* futuresQuote, QlQuote* volatility, QlQuote* meanReversion, char **e) {
-  try {return ret(new QlQuote(shared_ptr<Quote>(alloc(new FuturesConvAdjustmentQuote(*arg(index), Date(futuresDate), *arg(futuresQuote), *arg(volatility), *arg(meanReversion))))));
-  } catch (std::exception& er) {return handleException<QlQuote*>(e, er);}}
+QlFuturesConvAdjustmentQuote* qlFuturesConvAdjustmentQuote1(QlIborIndex* index, char* immCode, QlQuote* futuresQuote, QlQuote* volatility, QlQuote* meanReversion, char **e) {
+  try {return ret(new QlFuturesConvAdjustmentQuote(alloc(new FuturesConvAdjustmentQuote(*arg(index), std::string(arg(immCode)), *arg(futuresQuote), *arg(volatility), *arg(meanReversion)))));
+  } catch (std::exception& er) {return handleException<QlFuturesConvAdjustmentQuote*>(e, er);}}
+QlFuturesConvAdjustmentQuote* qlFuturesConvAdjustmentQuote(QlIborIndex* index, int futuresDate, QlQuote* futuresQuote, QlQuote* volatility, QlQuote* meanReversion, char **e) {
+  try {return ret(new QlFuturesConvAdjustmentQuote(alloc(new FuturesConvAdjustmentQuote(*arg(index), Date(futuresDate), *arg(futuresQuote), *arg(volatility), *arg(meanReversion)))));
+  } catch (std::exception& er) {return handleException<QlFuturesConvAdjustmentQuote*>(e, er);}}
+void qlFreeFuturesConvAdjustmentQuote(QlFuturesConvAdjustmentQuote *o) {del(o);}
+// Fresh Handle for this newly built object -- same shape as qlDeltaVolQuoteAsQuote.
+QlQuote* qlFuturesConvAdjustmentQuoteAsQuote(QlFuturesConvAdjustmentQuote *o) {return ret(new QlQuote(*arg(o)));}
+double qlFuturesConvAdjustmentQuoteFuturesValue(QlFuturesConvAdjustmentQuote *o, char **e) {
+  try {return (*arg(o))->futuresValue();
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
 QlQuote* qlImpliedStdDevQuote(int optionType, QlQuote* forward, QlQuote* price, double strike, double guess, double accuracy, unsigned maxIter, char **e) {
   try {return ret(new QlQuote(shared_ptr<Quote>(alloc(new ImpliedStdDevQuote((Option::Type)optionType, *arg(forward), *arg(price), strike, guess, accuracy, maxIter)))));
   } catch (std::exception& er) {return handleException<QlQuote*>(e, er);}}

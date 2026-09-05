@@ -31,7 +31,7 @@ import QuantLib.Index(fixingCalendar, addFixing, addFixings, fixing, hasHistoric
   ,historicalIndexAnalysisExpectedShortfall, historicalIndexAnalysisGaussianExpectedShortfall
   ,historicalIndexAnalysisCovariance, historicalIndexAnalysisCorrelation)
 import QuantLib.Index.InterestRate(iborIndex, IborConstructor(..), liborSwapIndex, LiborSwapIndexType(..), swapSpreadIndex, forecastFixing
-  ,fixingDate, valueDate, maturityDate, historicalRatesAnalysis, overnightIborIndex, OvernightIborIndexType(..))
+  ,fixingDate, valueDate, maturityDate, historicalRatesAnalysis, overnightIborIndex, OvernightIborIndexType(..), bmaIndex)
 import qualified QuantLib.Index.InterestRate as Ibor(fixingDays, dayCounter)
 import qualified QuantLib.Index.Inflation as Inflation
 import qualified QuantLib.Index.Equity as Equity
@@ -232,7 +232,10 @@ spec evalDate = do
           simple <- CF.simpleCashFlow 10.0 paymentDate
           indexed <- CF.indexedCashFlow 100.0 idx baseDate fixingDate paymentDate False
           growth <- CF.indexedCashFlow 100.0 idx baseDate fixingDate paymentDate True
-          fixed <- CF.fixedRateCoupon accrualEnd 100.0 0.05 dc paymentDate accrualEnd Nothing Nothing Nothing
+          fixedCoupon <- CF.fixedRateCoupon accrualEnd 100.0 0.05 dc paymentDate accrualEnd Nothing Nothing Nothing
+          fixedIR <- CF.fixedRateCouponInterestRate fixedCoupon
+          IR.rate fixedIR `shouldSatisfy` closePrec 0.05 1.0e-12
+          fixed <- CF.fixedRateCouponAsCashFlow fixedCoupon
           mixed <- CF.cashFlowLeg [simple, indexed, growth, fixed]
           flows <- CF.cashFlows mixed Nothing Nothing
           let expected = [10.0, 120.0, 20.0, 2.5]
@@ -827,6 +830,22 @@ spec evalDate = do
           expected <- mapM (\d -> fixing sofr d False) dates
           fixings `shouldBe` expected
 
+      it "AverageBMACoupon fixingDates/indexFixings agree with the coupon's own seeded fixings" $
+        bracket_ clearAllFixingHistories clearAllFixingHistories $ Settings.keepingSettings' $ do
+          Settings.setEvaluationDate (Just (1 `december` 2021))
+          dc <- dayCounter (Actual360 False)
+          rateQuote <- Quote.simpleQuote 0.0009 >>= Quote.asQuote
+          curve <- flatForward (1 `december` 2021) rateQuote dc IR.Continuous Annual
+          bma <- bmaIndex (Just curve)
+          cpn <- CF.averageBMACoupon (18 `november` 2021) 10000.0 (18 `october` 2021) (18 `november` 2021)
+            bma 1.0 0.0 Nothing Nothing dc
+          fdates <- CF.averageBMACouponFixingDates cpn
+          length fdates `shouldSatisfy` (> 0)
+          addFixings bma (zip fdates (replicate (length fdates) 0.0009)) False
+          fixings <- CF.averageBMACouponIndexFixings cpn
+          length fixings `shouldBe` length fdates
+          fixings `shouldSatisfy` all (closePrec 0.0009 1e-15)
+
       it "prices a past coupon with a compounded/simple spread (testPastSpreadedCouponRate)" $
         bracket_ clearAllFixingHistories clearAllFixingHistories $ Settings.keepingSettings' $ do
           sofr <- oisFixture Nothing Nothing
@@ -1047,6 +1066,8 @@ spec evalDate = do
           endDate <- last <$> dates sch
           testCpn <- CF.multipleResetsCoupon endDate 1.0 sch fixingDaysN euribor 1.0 0.0 spread
             Nothing Nothing dc Nothing
+          fixingDates <- CF.multipleResetsCouponFixingDates testCpn
+          length fixingDates `shouldBe` length subs
           pricer <- CF.compoundingMultipleResetsPricer
           CF.setFloatingRateCouponPricer testCpn pricer
           actual <- CF.floatingRateCouponAmount testCpn

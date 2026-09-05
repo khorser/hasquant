@@ -16,11 +16,18 @@ module QuantLib.CashFlow
   , leg
   , simpleCashFlow
   , indexedCashFlow
+  , FixedRateCoupon
   , fixedRateCoupon
+  , fixedRateCouponAsCashFlow
+  , fixedRateCouponInterestRate
   , floatingRateCoupon
   , iborCoupon
   , IborCoupon
+  , AverageBMACoupon
   , averageBMACoupon
+  , averageBMACouponAsFloatingRateCoupon
+  , averageBMACouponFixingDates
+  , averageBMACouponIndexFixings
   , cappedFlooredCoupon
   , StrippedCappedFlooredCoupon
   , strippedCappedFlooredCoupon
@@ -39,7 +46,10 @@ module QuantLib.CashFlow
   , digitalCouponCallOptionRate
   , digitalCouponPutOptionRate
   , digitalCouponRate
+  , MultipleResetsCoupon
   , multipleResetsCoupon
+  , multipleResetsCouponAsFloatingRateCoupon
+  , multipleResetsCouponFixingDates
   , RangeAccrualFloatersCoupon
   , rangeAccrualFloatersCoupon
   , rangeAccrualFloatersCouponPriceWithoutOptionality
@@ -249,6 +259,7 @@ import Data.List.NonEmpty(NonEmpty(..), toList)
 {#pointer *CouponLeg foreign -> CCouponLeg' nocode#}
 {#pointer *QlQuote as Quote foreign -> CQuote' nocode#}
 {#pointer *QlCashFlow as CashFlow foreign -> CCashFlow nocode#}
+{#pointer *QlFixedRateCoupon as FixedRateCoupon foreign -> CFixedRateCoupon nocode#}
 {#pointer *InterestRate foreign -> CInterestRate nocode#}
 {#pointer *QlIndex as Index foreign -> CIndex' nocode#}
 {#pointer *QlInterestRateIndex as InterestRateIndex foreign -> CInterestRateIndex' nocode#}
@@ -273,6 +284,8 @@ import Data.List.NonEmpty(NonEmpty(..), toList)
 {#pointer *QlDigitalReplication as DigitalReplication foreign -> CDigitalReplication nocode#}
 {#pointer *QlIborCoupon as IborCoupon foreign -> CIborCoupon' nocode#}
 {#pointer *QlOvernightIndexedCoupon as OvernightIndexedCoupon foreign -> COvernightIndexedCoupon' nocode#}
+{#pointer *QlAverageBMACoupon as AverageBMACoupon foreign -> CAverageBMACoupon' nocode#}
+{#pointer *QlMultipleResetsCoupon as MultipleResetsCoupon foreign -> CMultipleResetsCoupon' nocode#}
 {#pointer *QlCPICoupon as CPICoupon foreign -> CCPICoupon nocode#}
 {#pointer *QlCPICouponPricer as CPICouponPricer foreign -> CCPICouponPricer nocode#}
 {#pointer *QlCPIVolatilitySurface as CPIVolatilitySurface foreign -> CCPIVolatilitySurface' nocode#}
@@ -363,7 +376,8 @@ leg f = qlLeg fs ds where (ds, fs) = unzip f
   ,preErrorCheck-`String'errorCheck*-}->`CashFlow'peekCashFlow*#}
 
 -- |A fixed coupon with explicitly supplied payment, accrual, reference-period, and ex-coupon
--- dates.  'Nothing' for a reference or ex-coupon date passes QuantLib's empty @Date()@.
+-- dates.  'Nothing' for a reference or ex-coupon date passes QuantLib's empty @Date()@. Convert
+-- with 'fixedRateCouponAsCashFlow' to combine it with other cash flows in a 'Leg'.
 {#fun qlFixedRateCoupon as fixedRateCoupon{withDay*`Day' -- ^paymentDate
   ,`Double' -- ^nominal
   ,`Double' -- ^rate
@@ -373,7 +387,16 @@ leg f = qlLeg fs ds where (ds, fs) = unzip f
   ,withMaybeDay*`Maybe Day' -- ^referencePeriodStart
   ,withMaybeDay*`Maybe Day' -- ^referencePeriodEnd
   ,withMaybeDay*`Maybe Day' -- ^exCouponDate
-  ,preErrorCheck-`String'errorCheck*-}->`CashFlow'peekCashFlow*#}
+  ,preErrorCheck-`String'errorCheck*-}->`FixedRateCoupon'peekFixedRateCoupon*#}
+
+-- |Widen a 'FixedRateCoupon' to the generic 'CashFlow' -- needed to combine it with other cash
+-- flows via 'cashFlowLeg' or similar.
+{#fun qlFixedRateCouponAsCashFlow as fixedRateCouponAsCashFlow{withFixedRateCoupon*`FixedRateCoupon'}->`CashFlow'peekCashFlow*#}
+
+-- |The coupon's own fixed rate, as an 'InterestRate' (rate value plus day counter/compounding/
+-- frequency) rather than a bare rate -- distinct from 'floatingRateCouponRate', which returns a
+-- bare @Double@ for the (possibly index-derived) accrual rate.
+{#fun qlFixedRateCouponInterestRate as fixedRateCouponInterestRate{withFixedRateCoupon*`FixedRateCoupon'}->`InterestRate'peekInterestRate*#}
 
 -- |A generic floating-rate coupon.  Attach a 'FloatingRateCouponPricer' to the resulting leg
 -- with 'setCouponPricer' before evaluating a coupon whose rate requires one.  'Nothing' dates
@@ -424,7 +447,16 @@ leg f = qlLeg fs ds where (ds, fs) = unzip f
   ,withMaybeDay*`Maybe Day' -- ^referencePeriodStart
   ,withMaybeDay*`Maybe Day' -- ^referencePeriodEnd
   ,withDayCounter*`DayCounter' -- ^dayCounter
-  ,preErrorCheck-`String'errorCheck*-}->`FloatingRateCoupon'peekFloatingRateCoupon*#}
+  ,preErrorCheck-`String'errorCheck*-}->`AverageBMACoupon'peekAverageBMACoupon*#}
+
+-- |Widen an 'AverageBMACoupon' to the generic 'FloatingRateCoupon'.
+{#fun qlAverageBMACouponAsFloatingRateCoupon as averageBMACouponAsFloatingRateCoupon{withAverageBMACoupon*`AverageBMACoupon'}->`FloatingRateCoupon'peekFloatingRateCoupon*#}
+
+-- |The fixing dates of the individual BMA rates being averaged over this coupon's accrual period.
+{#fun qlAverageBMACouponFixingDates as averageBMACouponFixingDates{withAverageBMACoupon*`AverageBMACoupon',preArray-`[Day]'&peekDayArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+
+-- |The individual BMA fixings being averaged, in the same order as 'averageBMACouponFixingDates'.
+{#fun qlAverageBMACouponIndexFixings as averageBMACouponIndexFixings{withAverageBMACoupon*`AverageBMACoupon',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Wrap a floating-rate coupon with optional cap and floor rates.
 {#fun qlCappedFlooredCoupon as cappedFlooredCoupon{withFloatingRateCoupon*`GenFloatingRateCoupon frc' -- ^underlying
@@ -533,7 +565,13 @@ leg f = qlLeg fs ds where (ds, fs) = unzip f
   ,withMaybeDay*`Maybe Day' -- ^referencePeriodEnd
   ,withDayCounter*`DayCounter' -- ^dayCounter
   ,withMaybeDay*`Maybe Day' -- ^exCouponDate
-  ,preErrorCheck-`String'errorCheck*-}->`FloatingRateCoupon'peekFloatingRateCoupon*#}
+  ,preErrorCheck-`String'errorCheck*-}->`MultipleResetsCoupon'peekMultipleResetsCoupon*#}
+
+-- |Widen a 'MultipleResetsCoupon' to the generic 'FloatingRateCoupon'.
+{#fun qlMultipleResetsCouponAsFloatingRateCoupon as multipleResetsCouponAsFloatingRateCoupon{withMultipleResetsCoupon*`MultipleResetsCoupon'}->`FloatingRateCoupon'peekFloatingRateCoupon*#}
+
+-- |Fixing dates for the rates being compounded over this coupon's reset schedule.
+{#fun qlMultipleResetsCouponFixingDates as multipleResetsCouponFixingDates{withMultipleResetsCoupon*`MultipleResetsCoupon',preArray-`[Day]'&peekDayArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |A range-accrual coupon.  Attach the existing range-accrual pricer before
 -- asking for its rate; 'rangeAccrualFloatersCouponPriceWithoutOptionality'

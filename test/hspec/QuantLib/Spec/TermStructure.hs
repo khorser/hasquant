@@ -364,7 +364,7 @@ spec = do
     -- are wired correctly, or whether the futures-price convention (100 - compounded rate) was
     -- used consistently -- a transposed date or enum still converges. So each check below is kept,
     -- but paired with a discriminating check that can actually fail on a wiring mistake.
-    describe "overnight index future rate helper" $
+    describe "overnight index future rate helper" $ do
       it "bootstrapped curve reprices the helper's own futures price" $
         Settings.keepingSettings' $ do
           Settings.setEvaluationDate (Just (2 `january` 2024))
@@ -380,6 +380,40 @@ spec = do
           implied <- impliedQuote rh
           priceVal <- Quote.value price
           implied `shouldSatisfy` closePrec priceVal 1.0e-6
+
+      it "convexityAdjustment echoes the quote it was built with, and defaults to 0" $
+        Settings.keepingSettings' $ do
+          Settings.setEvaluationDate (Just (2 `january` 2024))
+          cal <- calendar TARGET
+          ois <- overnightIborIndex Sofr Nothing
+          let valueDate = 2 `january` 2024
+          maturityDate <- advance cal valueDate (3, Months) ModifiedFollowing False
+          price <- Quote.simpleQuote 95.0
+          adjQuote <- Quote.simpleQuote 0.0012
+          adjQuoteG <- Quote.asQuote adjQuote
+          rhAdj <- overnightIndexFutureRateHelper price valueDate maturityDate ois (Just adjQuoteG) AveragingCompound LastRelevantDate Nothing
+          adj <- overnightIndexFutureRateHelperConvexityAdjustment rhAdj
+          adj `shouldSatisfy` closePrec 0.0012 1.0e-12
+          rhNone <- overnightIndexFutureRateHelper price valueDate maturityDate ois Nothing AveragingCompound LastRelevantDate Nothing
+          none <- overnightIndexFutureRateHelperConvexityAdjustment rhNone
+          none `shouldBe` 0.0
+
+    describe "futures rate helper" $
+      it "convexityAdjustment echoes the quote it was built with, and defaults to 0" $
+        Settings.keepingSettings' $ do
+          Settings.setEvaluationDate (Just (2 `january` 2024))
+          cal <- calendar TARGET
+          actual360dc <- dayCounter (Actual360 False)
+          immDate <- nextIMMDate (2 `january` 2024) True
+          price <- Quote.simpleQuote 95.0
+          adjQuote <- Quote.simpleQuote 0.0007
+          adjQuoteG <- Quote.asQuote adjQuote
+          fhAdj <- futuresRateHelper price immDate 3 cal ModifiedFollowing True actual360dc (Just adjQuoteG) IMM
+          adj <- futuresRateHelperConvexityAdjustment fhAdj
+          adj `shouldSatisfy` closePrec 0.0007 1.0e-12
+          fhNone <- futuresRateHelper price immDate 3 cal ModifiedFollowing True actual360dc Nothing IMM
+          none <- futuresRateHelperConvexityAdjustment fhNone
+          none `shouldBe` 0.0
 
     describe "sofr future rate helper" $ do
       it "bootstrapped curve reprices the helper's own futures price" $
@@ -1512,6 +1546,11 @@ spec = do
                     v <- Vol.volatilityForPeriod' grid od st 0.02 False
                     abs (v - expected) `shouldSatisfy` (< 1.0e-6)
                 ) nodes
+
+          -- The grid's own lowest corner locates to (0, 0).
+          (i0, j0) <- Vol.swaptionVolatilityMatrixLocate grid (head optionDates) (head swapTenors)
+          i0 `shouldBe` 0
+          j0 `shouldBe` 0
 
     -- SabrSwaptionVolatilityCube/InterpolatedSwaptionVolatilityCube: no upstream cached fixture
     -- ported here (test-suite/swaptionvolatilitycube.cpp's CommonVars fixture is shared, nontrivial

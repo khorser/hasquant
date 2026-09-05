@@ -7,6 +7,8 @@ module QuantLib.TermStructure.Yield
   , RateHelper
   , SwapRateHelper
   , OISRateHelper
+  , FuturesRateHelper
+  , OvernightIndexFutureRateHelper
   , FittingMethod(..)
   , FittedBondDiscountCurve
   , fittedBondDiscountCurve
@@ -55,6 +57,8 @@ module QuantLib.TermStructure.Yield
   , futuresIborRateHelper
   , futuresRateHelper
   , overnightIndexFutureRateHelper
+  , futuresRateHelperConvexityAdjustment
+  , overnightIndexFutureRateHelperConvexityAdjustment
   , sofrFutureRateHelper
   , impliedQuote
   , impliedTermStructure
@@ -154,6 +158,8 @@ import QuantLib.Internal.Type
 {#pointer *QlRateHelper as RateHelper foreign -> CRateHelper' nocode#}
 {#pointer *QlSwapRateHelper as SwapRateHelper foreign -> CSwapRateHelper' nocode#}
 {#pointer *QlOISRateHelper as OISRateHelper foreign -> COISRateHelper' nocode#}
+{#pointer *QlFuturesRateHelper as FuturesRateHelper foreign -> CFuturesRateHelper' nocode#}
+{#pointer *QlOvernightIndexFutureRateHelper as OvernightIndexFutureRateHelper foreign -> COvernightIndexFutureRateHelper' nocode#}
 {#pointer *QlBondHelper as BondHelper foreign -> CBondHelper' nocode#}
 {#pointer *QlZeroInflationIndex as ZeroInflationIndex foreign -> CZeroInflationIndex' nocode#}
 {#pointer *FittedBondDiscountCurveFittingMethod as QlFittedBondDiscountCurveFittingMethod foreign -> CFittedBondDiscountCurveFittingMethod nocode#}
@@ -641,12 +647,12 @@ withCompositeZeroYieldStructure f c1 c2 comp freq k =
   ,withDay*`Day' -- ^endDate
   ,withDayCounter*`DayCounter',withMaybeQuote*`Maybe (GenQuote q2)' -- ^convexityAdjustment
   ,`FuturesType' -- ^type
-  ,preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
+  ,preErrorCheck-`String'errorCheck*-}->`FuturesRateHelper'peekFuturesRateHelper*#}
 
 -- |Rate helper for bootstrapping over IborIndex futures prices, taking its conventions from an
 -- ibor index.
 {#fun qlFuturesRateHelper2 as futuresIborRateHelper{withQuote*`GenQuote q1',withDay*`Day' -- ^immDate
-  ,withIborIndex*`GenIborIndex ibor',withMaybeQuote*`Maybe (GenQuote q2)',preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
+  ,withIborIndex*`GenIborIndex ibor',withMaybeQuote*`Maybe (GenQuote q2)',preErrorCheck-`String'errorCheck*-}->`FuturesRateHelper'peekFuturesRateHelper*#}
 
 -- |Rate helper for bootstrapping over IborIndex futures prices, given explicit
 -- calendar\/convention\/day-counter conventions.
@@ -655,7 +661,10 @@ withCompositeZeroYieldStructure f c1 c2 comp freq k =
   ,withCalendar*`Calendar',fromEnumC`BusinessDayConvention',`Bool' -- ^endOfMonth
   ,withDayCounter*`DayCounter',withMaybeQuote*`Maybe (GenQuote q2)' -- ^convexityAdjustment
   ,`FuturesType' -- ^type
-  ,preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
+  ,preErrorCheck-`String'errorCheck*-}->`FuturesRateHelper'peekFuturesRateHelper*#}
+
+-- |The futures-vs-forward convexity adjustment this helper was built with (0 if none was given).
+{#fun qlFuturesRateHelperConvexityAdjustment as futuresRateHelperConvexityAdjustment{withGenRateHelper*`FuturesRateHelper',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Rate helper for bootstrapping over overnight-index compounding futures.
 {#fun qlOvernightIndexFutureRateHelper as overnightIndexFutureRateHelper{withQuote*`GenQuote q1',withDay*`Day' -- ^valueDate
@@ -665,7 +674,10 @@ withCompositeZeroYieldStructure f c1 c2 comp freq k =
   ,`RateAveragingType' -- ^averagingMethod
   ,`PillarChoice' -- ^pillar
   ,withMaybeDay*`Maybe Day' -- ^customPillarDate
-  ,preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
+  ,preErrorCheck-`String'errorCheck*-}->`OvernightIndexFutureRateHelper'peekOvernightIndexFutureRateHelper*#}
+
+-- |The futures-vs-forward convexity adjustment this helper was built with (0 if none was given).
+{#fun qlOvernightIndexFutureRateHelperConvexityAdjustment as overnightIndexFutureRateHelperConvexityAdjustment{withGenRateHelper*`OvernightIndexFutureRateHelper',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Rate helper for bootstrapping over CME SOFR futures. Compounds overnight SOFR from the third
 -- Wednesday of 'referenceMonth'\/'referenceYear' (inclusive) to the third Wednesday of the

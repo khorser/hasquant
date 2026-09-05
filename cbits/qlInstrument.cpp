@@ -1324,9 +1324,12 @@ QlCashFlow *qlSimpleCashFlow(double amount, int date, char **e) {
 QlCashFlow *qlIndexedCashFlow(double notional, QlIndex *index, int baseDate, int fixingDate, int paymentDate, int growthOnly, char **e) {
   try {return ret(new QlCashFlow(alloc(new IndexedCashFlow(notional, *arg(index), Date(baseDate), Date(fixingDate), Date(paymentDate), growthOnly))));
   } catch (std::exception& er) {return handleException<QlCashFlow*>(e, er);}}
-QlCashFlow *qlFixedRateCoupon(int paymentDate, double nominal, double rate, DayCounter *dayCounter, int accrualStartDate, int accrualEndDate, int refPeriodStart, int refPeriodEnd, int exCouponDate, char **e) {
-  try {return ret(new QlCashFlow(alloc(new FixedRateCoupon(Date(paymentDate), nominal, rate, *arg(dayCounter), Date(accrualStartDate), Date(accrualEndDate), qlNullableDate(refPeriodStart), qlNullableDate(refPeriodEnd), qlNullableDate(exCouponDate)))));
-  } catch (std::exception& er) {return handleException<QlCashFlow*>(e, er);}}
+QlFixedRateCoupon *qlFixedRateCoupon(int paymentDate, double nominal, double rate, DayCounter *dayCounter, int accrualStartDate, int accrualEndDate, int refPeriodStart, int refPeriodEnd, int exCouponDate, char **e) {
+  try {return ret(new QlFixedRateCoupon(alloc(new FixedRateCoupon(Date(paymentDate), nominal, rate, *arg(dayCounter), Date(accrualStartDate), Date(accrualEndDate), qlNullableDate(refPeriodStart), qlNullableDate(refPeriodEnd), qlNullableDate(exCouponDate)))));
+  } catch (std::exception& er) {return handleException<QlFixedRateCoupon*>(e, er);}}
+void qlFreeFixedRateCoupon(QlFixedRateCoupon *o) {del(o);}
+QlCashFlow* qlFixedRateCouponAsCashFlow(QlFixedRateCoupon *o) {return ret(new QlCashFlow(*arg(o)));}
+InterestRate* qlFixedRateCouponInterestRate(QlFixedRateCoupon *o) {return ret(new InterestRate((*arg(o))->interestRate()));}
 QlCashFlow *qlFloatingRateCoupon(int paymentDate, double nominal, int startDate, int endDate, unsigned fixingDays, QlInterestRateIndex *index, double gearing, double spread, int refPeriodStart, int refPeriodEnd, DayCounter *dayCounter, int inArrears, int exCouponDate, int fixingConvention, char **e) {
   try {return ret(new QlCashFlow(alloc(new FloatingRateCoupon(Date(paymentDate), nominal, Date(startDate), Date(endDate), fixingDays, *arg(index), gearing, spread, qlNullableDate(refPeriodStart), qlNullableDate(refPeriodEnd), *arg(dayCounter), inArrears, qlNullableDate(exCouponDate), (BusinessDayConvention)fixingConvention))));
   } catch (std::exception& er) {return handleException<QlCashFlow*>(e, er);}}
@@ -1663,9 +1666,19 @@ QlFloatingRateCoupon* qlIborCouponAsFloatingRateCoupon(QlIborCoupon* o) {return 
 QlIborCoupon* qlIborCouponExact(int paymentDate, double nominal, int startDate, int endDate, unsigned fixingDays, QlIborIndex *index, double gearing, double spread, int refPeriodStart, int refPeriodEnd, DayCounter *dayCounter, int inArrears, int exCouponDate, int fixingConvention, char **e) {
   try {return ret(new QlIborCoupon(alloc(new IborCoupon(Date(paymentDate), nominal, Date(startDate), Date(endDate), fixingDays, *arg(index), gearing, spread, qlNullableDate(refPeriodStart), qlNullableDate(refPeriodEnd), *arg(dayCounter), inArrears, qlNullableDate(exCouponDate), (BusinessDayConvention)fixingConvention))));
   } catch (std::exception& er) {return handleException<QlIborCoupon*>(e, er);}}
-QlFloatingRateCoupon* qlAverageBMACoupon(int paymentDate, double nominal, int startDate, int endDate, QlBMAIndex *index, double gearing, double spread, int refPeriodStart, int refPeriodEnd, DayCounter *dayCounter, char **e) {
-  try {return ret(new QlFloatingRateCoupon(alloc(new AverageBMACoupon(Date(paymentDate), nominal, Date(startDate), Date(endDate), *arg(index), gearing, spread, qlNullableDate(refPeriodStart), qlNullableDate(refPeriodEnd), *arg(dayCounter)))));
-  } catch (std::exception& er) {return handleException<QlFloatingRateCoupon*>(e, er);}}
+void qlFreeAverageBMACoupon(QlAverageBMACoupon *o) {del(o);}
+QlFloatingRateCoupon* qlAverageBMACouponAsFloatingRateCoupon(QlAverageBMACoupon* o) {return ret(new QlFloatingRateCoupon(*arg(o)));}
+QlAverageBMACoupon* qlAverageBMACoupon(int paymentDate, double nominal, int startDate, int endDate, QlBMAIndex *index, double gearing, double spread, int refPeriodStart, int refPeriodEnd, DayCounter *dayCounter, char **e) {
+  try {return ret(new QlAverageBMACoupon(alloc(new AverageBMACoupon(Date(paymentDate), nominal, Date(startDate), Date(endDate), *arg(index), gearing, spread, qlNullableDate(refPeriodStart), qlNullableDate(refPeriodEnd), *arg(dayCounter)))));
+  } catch (std::exception& er) {return handleException<QlAverageBMACoupon*>(e, er);}}
+void qlAverageBMACouponFixingDates(QlAverageBMACoupon *o, unsigned *len, int **ds, char **e) {
+  try {const std::vector<Date>& d = (*arg(o))->fixingDates(); *len = d.size(); *ds = qlAllocateInts(*len);
+    std::transform(d.begin(), d.end(), *ds, [](const Date& x) {return (int)x.serialNumber();});
+  } catch (std::exception& er) {(void)handleException<int*>(e, er);}}
+void qlAverageBMACouponIndexFixings(QlAverageBMACoupon *o, unsigned *len, double **fs, char **e) {
+  try {const std::vector<Rate>& f = (*arg(o))->indexFixings(); *len = f.size(); *fs = qlAllocateDoubles(*len);
+    std::copy(f.begin(), f.end(), *fs);
+  } catch (std::exception& er) {(void)handleException<double*>(e, er);}}
 QlFloatingRateCoupon* qlCappedFlooredCoupon(QlFloatingRateCoupon *underlying, double cap, double floor, char **e) {
   try {return ret(new QlFloatingRateCoupon(alloc(new CappedFlooredCoupon(*arg(underlying), cap, floor))));
   } catch (std::exception& er) {return handleException<QlFloatingRateCoupon*>(e, er);}}
@@ -1696,9 +1709,16 @@ QlDigitalCoupon* qlDigitalCoupon(QlFloatingRateCoupon *underlying, double callSt
 double qlDigitalCouponConvexityAdjustment(QlDigitalCoupon* o, char **e) {try {return (*arg(o))->convexityAdjustment();} catch (std::exception& er) {return handleException<double>(e, er);}}
 double qlDigitalCouponCallOptionRate(QlDigitalCoupon* o, char **e) {try {return (*arg(o))->callOptionRate();} catch (std::exception& er) {return handleException<double>(e, er);}}
 double qlDigitalCouponPutOptionRate(QlDigitalCoupon* o, char **e) {try {return (*arg(o))->putOptionRate();} catch (std::exception& er) {return handleException<double>(e, er);}}
-QlFloatingRateCoupon* qlMultipleResetsCoupon(int paymentDate, double nominal, Schedule *schedule, unsigned fixingDays, QlIborIndex *index, double gearing, double couponSpread, double rateSpread, int refPeriodStart, int refPeriodEnd, DayCounter *dayCounter, int exCouponDate, char **e) {
-  try {return ret(new QlFloatingRateCoupon(alloc(new MultipleResetsCoupon(Date(paymentDate), nominal, *arg(schedule), fixingDays, *arg(index), gearing, couponSpread, rateSpread, qlNullableDate(refPeriodStart), qlNullableDate(refPeriodEnd), *arg(dayCounter), qlNullableDate(exCouponDate)))));
-  } catch (std::exception& er) {return handleException<QlFloatingRateCoupon*>(e, er);}}
+void qlFreeMultipleResetsCoupon(QlMultipleResetsCoupon *o) {del(o);}
+QlFloatingRateCoupon* qlMultipleResetsCouponAsFloatingRateCoupon(QlMultipleResetsCoupon* o) {return ret(new QlFloatingRateCoupon(*arg(o)));}
+QlMultipleResetsCoupon* qlMultipleResetsCoupon(int paymentDate, double nominal, Schedule *schedule, unsigned fixingDays, QlIborIndex *index, double gearing, double couponSpread, double rateSpread, int refPeriodStart, int refPeriodEnd, DayCounter *dayCounter, int exCouponDate, char **e) {
+  try {return ret(new QlMultipleResetsCoupon(alloc(new MultipleResetsCoupon(Date(paymentDate), nominal, *arg(schedule), fixingDays, *arg(index), gearing, couponSpread, rateSpread, qlNullableDate(refPeriodStart), qlNullableDate(refPeriodEnd), *arg(dayCounter), qlNullableDate(exCouponDate)))));
+  } catch (std::exception& er) {return handleException<QlMultipleResetsCoupon*>(e, er);}}
+void qlMultipleResetsCouponFixingDates(QlMultipleResetsCoupon *o, unsigned *len, int **dates, char **e) {
+  try {const std::vector<Date>& ds = (*arg(o))->fixingDates();
+    *len = ds.size(); *dates = qlAllocateInts(*len);
+    for (unsigned i = 0; i < *len; ++i) (*dates)[i] = ds[i].serialNumber();
+  } catch (std::exception& er) {(void)handleException<int*>(e, er);}}
 void qlFreeRangeAccrualFloatersCoupon(QlRangeAccrualFloatersCoupon* o) {del(o);}
 QlFloatingRateCoupon* qlRangeAccrualFloatersCouponAsFloatingRateCoupon(QlRangeAccrualFloatersCoupon* o) {return ret(new QlFloatingRateCoupon(*arg(o)));}
 QlRangeAccrualFloatersCoupon* qlRangeAccrualFloatersCoupon(int paymentDate, double nominal, QlIborIndex* index, int startDate, int endDate, unsigned fixingDays, DayCounter* dayCounter, double gearing, double spread, int refStart, int refEnd, Schedule* observations, double lower, double upper, char **e) {
@@ -2310,9 +2330,24 @@ double qlBasketProbAtLeastNEvents(QlBasket* o, unsigned n, int d, char **e) {
   try {return (*arg(o))->probAtLeastNEvents(n, Date(d));
   } catch (std::exception& er) {return handleException<double>(e, er);}}
 
-QlDefaultLossModel* qlGaussianLHPLossModel(QlQuote* correlQuote, unsigned recoveriesLen, double* recoveries, char **e) {
-  try {return ret(new QlDefaultLossModel(alloc(new GaussianLHPLossModel(*arg(correlQuote), std::vector<double>(recoveries, recoveries + recoveriesLen)))));
-  } catch (std::exception& er) {return handleException<QlDefaultLossModel*>(e, er);}}
+QlGaussianLHPLossModel* qlGaussianLHPLossModel(QlQuote* correlQuote, unsigned recoveriesLen, double* recoveries, char **e) {
+  try {return ret(new QlGaussianLHPLossModel(alloc(new GaussianLHPLossModel(*arg(correlQuote), std::vector<double>(recoveries, recoveries + recoveriesLen)))));
+  } catch (std::exception& er) {return handleException<QlGaussianLHPLossModel*>(e, er);}}
+void qlFreeGaussianLHPLossModel(QlGaussianLHPLossModel *o) {del(o);}
+// Fresh shared_ptr<DefaultLossModel> aliasing the same GaussianLHPLossModel -- same shape as
+// qlFloatingRateCouponAsCashFlow/qlFixedRateCouponAsCashFlow (DefaultLossModel is a standalone
+// leaf with no Upcastable family, so this is a plain upcast-by-copy, not an AnyOf upcast).
+QlDefaultLossModel* qlGaussianLHPLossModelAsDefaultLossModel(QlGaussianLHPLossModel *o) {return ret(new QlDefaultLossModel(*arg(o)));}
+// averageProb/averageRecovery read this model's basket_ (set only once the model has been
+// attached to a Basket via qlBasket/qlDigitalBasket/qlNthToDefault); calling either before that
+// attachment dereferences a null shared_ptr inside QuantLib itself and segfaults, not throws --
+// see the qlBasket family's own doc comment.
+double qlGaussianLHPLossModelAverageProb(QlGaussianLHPLossModel *o, int d, char **e) {
+  try {return (*arg(o))->averageProb(Date(d));
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlGaussianLHPLossModelAverageRecovery(QlGaussianLHPLossModel *o, int d, char **e) {
+  try {return (*arg(o))->averageRecovery(Date(d));
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
 void qlFreeDefaultLossModel(QlDefaultLossModel *o) {del(o);}
 
 QlSyntheticCDO* qlSyntheticCDO(QlBasket* basket, int side, Schedule* schedule, double upfrontRate, double runningRate, DayCounter* dayCounter, int paymentConvention, int haveNotional, double notional, char **e) {

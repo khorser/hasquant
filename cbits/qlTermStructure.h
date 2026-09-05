@@ -207,8 +207,11 @@ extern "C" {
   QlSmileSection* qlBlackVolatilitySurfaceDeltaSmile(QlBlackVolatilitySurfaceDelta* o, int d, char **e);
   QlCapFloorTermVolSurface* qlCapFloorTermVolSurface(unsigned settlementDays, Calendar* calendar, int bdc, unsigned, int*, unsigned, int*, unsigned strikesLen, double* strikes, unsigned volatilitiesRows, unsigned volatilitiesCols, QlQuote** volatilities, DayCounter* dc, char **e);
   QlCapFloorTermVolSurface* qlCapFloorTermVolSurface1(int settlementDate, Calendar* calendar, int bdc, unsigned, int*, unsigned, int*, unsigned strikesLen, double* strikes, unsigned volatilitiesRows, unsigned volatilitiesCols, QlQuote** volatilities, DayCounter* dc, char **e);
-  QlSwaptionVolatilityStructure* qlSwaptionVolatilityMatrix(int referenceDate, Calendar* calendar, int bdc, unsigned, int*, unsigned, int*, unsigned, int*, unsigned, int*, unsigned volRows, unsigned volCols, QlQuote** vols, DayCounter* dc, int flatExtrapolation, int type, unsigned shiftRows, unsigned shiftCols, double* shifts, char **e);
-  QlSwaptionVolatilityStructure* qlSwaptionVolatilityMatrix1(Calendar* calendar, int bdc, unsigned, int*, unsigned, int*, unsigned, int*, unsigned, int*, unsigned volRows, unsigned volCols, QlQuote** vols, DayCounter* dc, int flatExtrapolation, int type, unsigned shiftRows, unsigned shiftCols, double* shifts, char **e);
+  QlSwaptionVolatilityMatrix* qlSwaptionVolatilityMatrix(int referenceDate, Calendar* calendar, int bdc, unsigned, int*, unsigned, int*, unsigned, int*, unsigned, int*, unsigned volRows, unsigned volCols, QlQuote** vols, DayCounter* dc, int flatExtrapolation, int type, unsigned shiftRows, unsigned shiftCols, double* shifts, char **e);
+  QlSwaptionVolatilityMatrix* qlSwaptionVolatilityMatrix1(Calendar* calendar, int bdc, unsigned, int*, unsigned, int*, unsigned, int*, unsigned, int*, unsigned volRows, unsigned volCols, QlQuote** vols, DayCounter* dc, int flatExtrapolation, int type, unsigned shiftRows, unsigned shiftCols, double* shifts, char **e);
+  void qlFreeSwaptionVolatilityMatrix(QlSwaptionVolatilityMatrix *o);
+  QlSwaptionVolatilityStructure* qlSwaptionVolatilityMatrixAsSwaptionVolatilityStructure(QlSwaptionVolatilityMatrix *o);
+  void qlSwaptionVolatilityMatrixLocate(QlSwaptionVolatilityMatrix *o, int optionDate, int n, int u, unsigned *i, unsigned *j, char **e);
 
   QlSabrSwaptionVolatilityCube* qlSabrSwaptionVolatilityCube(QlSwaptionVolatilityStructure* atmVolStructure,
       unsigned, int*, unsigned, int*, unsigned, int*, unsigned, int*,
@@ -435,10 +438,16 @@ extern "C" {
   QlRateHelper* qlFraRateHelper1(QlQuote* rate, unsigned monthsToStart, QlIborIndex* iborIndex, int pillar, int customPillarDate, int useIndexedCoupon, char **e);
   QlRateHelper* qlFraRateHelper2(QlQuote* rate, int, int, unsigned lengthInMonths, unsigned fixingDays, Calendar* calendar, int convention, int endOfMonth, DayCounter* dayCounter, int pillar, int customPillarDate, int useIndexedCoupon, char **e);
   QlRateHelper* qlFraRateHelper3(QlQuote* rate, int, int, QlIborIndex* iborIndex, int pillar, int customPillarDate, int useIndexedCoupon, char **e);
-  QlRateHelper* qlFuturesRateHelper1(QlQuote* price, int immStartDate, int endDate, DayCounter* dayCounter, QlQuote* convexityAdjustment, int type, char **e);
-  QlRateHelper* qlFuturesRateHelper2(QlQuote* price, int immDate, QlIborIndex* iborIndex, QlQuote* convexityAdjustment, char **e);
-  QlRateHelper* qlFuturesRateHelper(QlQuote* price, int immDate, unsigned lengthInMonths, Calendar* calendar, int convention, int endOfMonth, DayCounter* dayCounter, QlQuote* convexityAdjustment, int type, char **e);
-  QlRateHelper* qlOvernightIndexFutureRateHelper(QlQuote* price, int valueDate, int maturityDate, QlOvernightIndex* overnightIndex, QlQuote* convexityAdjustment, int averagingMethod, int pillar, int customPillarDate, char **e);
+  QlFuturesRateHelper* qlFuturesRateHelper1(QlQuote* price, int immStartDate, int endDate, DayCounter* dayCounter, QlQuote* convexityAdjustment, int type, char **e);
+  QlFuturesRateHelper* qlFuturesRateHelper2(QlQuote* price, int immDate, QlIborIndex* iborIndex, QlQuote* convexityAdjustment, char **e);
+  QlFuturesRateHelper* qlFuturesRateHelper(QlQuote* price, int immDate, unsigned lengthInMonths, Calendar* calendar, int convention, int endOfMonth, DayCounter* dayCounter, QlQuote* convexityAdjustment, int type, char **e);
+  void qlFreeFuturesRateHelper(QlFuturesRateHelper *o);
+  QlRateHelper* qlFuturesRateHelperAsRateHelper(QlFuturesRateHelper *o);
+  double qlFuturesRateHelperConvexityAdjustment(QlFuturesRateHelper *o, char **e);
+  QlOvernightIndexFutureRateHelper* qlOvernightIndexFutureRateHelper(QlQuote* price, int valueDate, int maturityDate, QlOvernightIndex* overnightIndex, QlQuote* convexityAdjustment, int averagingMethod, int pillar, int customPillarDate, char **e);
+  void qlFreeOvernightIndexFutureRateHelper(QlOvernightIndexFutureRateHelper *o);
+  QlRateHelper* qlOvernightIndexFutureRateHelperAsRateHelper(QlOvernightIndexFutureRateHelper *o);
+  double qlOvernightIndexFutureRateHelperConvexityAdjustment(QlOvernightIndexFutureRateHelper *o, char **e);
   QlRateHelper* qlSofrFutureRateHelper(QlQuote* price, int month, int year, int freq, QlQuote* convexityAdjustment, int pillar, int customPillarDate, char **e);
   double qlRateHelperImpliedQuote(QlRateHelper* o, char **e);
   QlBond* qlBondHelperBond(QlBondHelper* o, char **e);

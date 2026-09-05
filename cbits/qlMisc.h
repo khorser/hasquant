@@ -137,8 +137,11 @@ extern "C" {
   QlQuote* qlEurodollarFuturesImpliedStdDevQuote(QlQuote* forward, QlQuote* callPrice, QlQuote* putPrice, double strike, double guess, double accuracy, unsigned maxIter, char **e);
   QlQuote* qlForwardSwapQuote(QlSwapIndex* swapIndex, QlQuote* spread, int, int, char **e);
   QlQuote* qlForwardValueQuote(QlIndex* index, int fixingDate, char **e);
-  QlQuote* qlFuturesConvAdjustmentQuote1(QlIborIndex* index, char* immCode, QlQuote* futuresQuote, QlQuote* volatility, QlQuote* meanReversion, char **e);
-  QlQuote* qlFuturesConvAdjustmentQuote(QlIborIndex* index, int futuresDate, QlQuote* futuresQuote, QlQuote* volatility, QlQuote* meanReversion, char **e);
+  QlFuturesConvAdjustmentQuote* qlFuturesConvAdjustmentQuote1(QlIborIndex* index, char* immCode, QlQuote* futuresQuote, QlQuote* volatility, QlQuote* meanReversion, char **e);
+  QlFuturesConvAdjustmentQuote* qlFuturesConvAdjustmentQuote(QlIborIndex* index, int futuresDate, QlQuote* futuresQuote, QlQuote* volatility, QlQuote* meanReversion, char **e);
+  void qlFreeFuturesConvAdjustmentQuote(QlFuturesConvAdjustmentQuote *o);
+  QlQuote* qlFuturesConvAdjustmentQuoteAsQuote(QlFuturesConvAdjustmentQuote *o);
+  double qlFuturesConvAdjustmentQuoteFuturesValue(QlFuturesConvAdjustmentQuote *o, char **e);
   QlQuote* qlImpliedStdDevQuote(int optionType, QlQuote* forward, QlQuote* price, double strike, double guess, double accuracy, unsigned maxIter, char **e);
   QlQuote* qlLastFixingQuote(QlIndex* index, char **e);
   int qlQuoteIsValid(QlQuote* o, char **e);

@@ -4,8 +4,8 @@
 | |ql/cashflow.hpp|ext::shared_ptr<Coupon> CashFlow::coupon_cast(const ext::shared_ptr<CashFlow> &);
 | |ql/cashflow.hpp|bool earlier_than::operator()(const CashFlow & c1, const CashFlow & c2) const;
 |v|ql/cashflows/averagebmacoupon.hpp|AverageBMACoupon::AverageBMACoupon(const Date & paymentDate, Real nominal, const Date & startDate, const Date & endDate, const ext::shared_ptr<BMAIndex> & index, Real gearing = 1.0, Spread spread = 0.0, const Date & refPeriodStart = Date(), const Date & refPeriodEnd = Date(), const DayCounter & dayCounter = DayCounter());
-| |ql/cashflows/averagebmacoupon.hpp|std::vector<Date> AverageBMACoupon::fixingDates() const;
-| |ql/cashflows/averagebmacoupon.hpp|std::vector<Rate> AverageBMACoupon::indexFixings() const;
+|v|ql/cashflows/averagebmacoupon.hpp|std::vector<Date> AverageBMACoupon::fixingDates() const;
+|v|ql/cashflows/averagebmacoupon.hpp|std::vector<Rate> AverageBMACoupon::indexFixings() const;
 |?|ql/cashflows/averagebmacoupon.hpp|AverageBMALeg::AverageBMALeg(Schedule schedule, ext::shared_ptr<BMAIndex> index);
 | |ql/cashflows/averagebmacoupon.hpp|AverageBMALeg & AverageBMALeg::withNotionals(Real notional);
 | |ql/cashflows/averagebmacoupon.hpp|AverageBMALeg & AverageBMALeg::withNotionals(const std::vector<Real> & notionals);
@@ -309,7 +309,7 @@
 |v|ql/cashflows/equitycashflow.hpp|EquityQuantoCashFlowPricer::EquityQuantoCashFlowPricer(Handle<YieldTermStructure> quantoCurrencyTermStructure, Handle<BlackVolTermStructure> equityVolatility, Handle<BlackVolTermStructure> fxVolatility, Handle<Quote> correlation);
 |v|ql/cashflows/fixedratecoupon.hpp|FixedRateCoupon::FixedRateCoupon(const Date & paymentDate, Real nominal, Rate rate, const DayCounter & dayCounter, const Date & accrualStartDate, const Date & accrualEndDate, const Date & refPeriodStart = Date(), const Date & refPeriodEnd = Date(), const Date & exCouponDate = Date());
 |x|ql/cashflows/fixedratecoupon.hpp|FixedRateCoupon::FixedRateCoupon(const Date & paymentDate, Real nominal, InterestRate interestRate, const Date & accrualStartDate, const Date & accrualEndDate, const Date & refPeriodStart = Date(), const Date & refPeriodEnd = Date(), const Date & exCouponDate = Date());
-| |ql/cashflows/fixedratecoupon.hpp|InterestRate FixedRateCoupon::interestRate() const;
+|v|ql/cashflows/fixedratecoupon.hpp|InterestRate FixedRateCoupon::interestRate() const;
 |?|ql/cashflows/fixedratecoupon.hpp|FixedRateLeg::FixedRateLeg(Schedule schedule);
 | |ql/cashflows/fixedratecoupon.hpp|FixedRateLeg & FixedRateLeg::withNotionals(Real);
 | |ql/cashflows/fixedratecoupon.hpp|FixedRateLeg & FixedRateLeg::withNotionals(const std::vector<Real> &);
@@ -432,7 +432,7 @@
 |x|ql/cashflows/lineartsrpricer.hpp|PriceHelper::PriceHelper(const SmileSection * section, const Option::Type type, const Real targetPrice);
 |x|ql/cashflows/lineartsrpricer.hpp|Real PriceHelper::operator()(Real strike) const;
 |v|ql/cashflows/multipleresetscoupon.hpp|MultipleResetsCoupon::MultipleResetsCoupon(const Date & paymentDate, Real nominal, const Schedule & resetSchedule, Natural fixingDays, const ext::shared_ptr<IborIndex> & index, Real gearing = 1.0, Rate couponSpread = 0.0, Rate rateSpread = 0.0, const Date & refPeriodStart = Date(), const Date & refPeriodEnd = Date(), const DayCounter & dayCounter = DayCounter(), const Date & exCouponDate = Date());
-| |ql/cashflows/multipleresetscoupon.hpp|const std::vector<Date> & MultipleResetsCoupon::fixingDates() const;
+|v|ql/cashflows/multipleresetscoupon.hpp|const std::vector<Date> & MultipleResetsCoupon::fixingDates() const;
 |x|ql/cashflows/multipleresetscoupon.hpp|const std::vector<Time> & MultipleResetsCoupon::dt() const;
 |x|ql/cashflows/multipleresetscoupon.hpp|const std::vector<Date> & MultipleResetsCoupon::valueDates() const;
 |x|ql/cashflows/multipleresetscoupon.hpp|Spread MultipleResetsCoupon::rateSpread() const;
@@ -1461,8 +1461,8 @@
 |v|ql/experimental/credit/gaussianlhplossmodel.hpp|GaussianLHPLossModel::GaussianLHPLossModel(const Handle<Quote> & correlQuote, const std::vector<Real> & recoveries);
 |x|ql/experimental/credit/gaussianlhplossmodel.hpp|void GaussianLHPLossModel::update();
 | |ql/experimental/credit/gaussianlhplossmodel.hpp|Real GaussianLHPLossModel::expectedShortfall(const Date & d, Probability perctl) const;
-| |ql/experimental/credit/gaussianlhplossmodel.hpp|Probability GaussianLHPLossModel::averageProb(const Date & d) const;
-| |ql/experimental/credit/gaussianlhplossmodel.hpp|Real GaussianLHPLossModel::averageRecovery(const Date & d) const;
+|v|ql/experimental/credit/gaussianlhplossmodel.hpp|Probability GaussianLHPLossModel::averageProb(const Date & d) const;
+|v|ql/experimental/credit/gaussianlhplossmodel.hpp|Real GaussianLHPLossModel::averageRecovery(const Date & d) const;
 | |ql/experimental/credit/homogeneouspooldef.hpp|HomogeneousPoolLossModel::HomogeneousPoolLossModel<copulaPolicy>(const ext::shared_ptr<ConstantLossLatentmodel<copulaPolicy>> & copula, Size nBuckets, Real max = 5., Real min = - 5., Size nSteps = 50);
 | |ql/experimental/credit/homogeneouspooldef.hpp|Real HomogeneousPoolLossModel::expectedShortfall(const Date & d, Probability percentile) const;
 | |ql/experimental/credit/homogeneouspooldef.hpp|void resetModel();
@@ -7879,7 +7879,7 @@
 |v|ql/quotes/forwardvaluequote.hpp|ForwardValueQuote::ForwardValueQuote(ext::shared_ptr<Index> index, const Date & fixingDate);
 |v|ql/quotes/futuresconvadjustmentquote.hpp|FuturesConvAdjustmentQuote::FuturesConvAdjustmentQuote(const ext::shared_ptr<IborIndex> & index, const Date & futuresDate, Handle<Quote> futuresQuote, Handle<Quote> volatility, Handle<Quote> meanReversion);
 |v|ql/quotes/futuresconvadjustmentquote.hpp|FuturesConvAdjustmentQuote::FuturesConvAdjustmentQuote(const ext::shared_ptr<IborIndex> & index, const std::string & immCode, Handle<Quote> futuresQuote, Handle<Quote> volatility, Handle<Quote> meanReversion);
-| |ql/quotes/futuresconvadjustmentquote.hpp|Real FuturesConvAdjustmentQuote::futuresValue() const;
+|v|ql/quotes/futuresconvadjustmentquote.hpp|Real FuturesConvAdjustmentQuote::futuresValue() const;
 |x|ql/quotes/futuresconvadjustmentquote.hpp|Real FuturesConvAdjustmentQuote::volatility() const;
 |x|ql/quotes/futuresconvadjustmentquote.hpp|Real FuturesConvAdjustmentQuote::meanReversion() const;
 |x|ql/quotes/futuresconvadjustmentquote.hpp|Date FuturesConvAdjustmentQuote::immDate() const;
@@ -8786,7 +8786,7 @@
 |x|ql/termstructures/volatility/swaption/swaptionvolmatrix.hpp|SwaptionVolatilityMatrix::SwaptionVolatilityMatrix(const SwaptionVolatilityMatrix &);
 |x|ql/termstructures/volatility/swaption/swaptionvolmatrix.hpp|SwaptionVolatilityMatrix & SwaptionVolatilityMatrix::operator=(SwaptionVolatilityMatrix &&);
 |x|ql/termstructures/volatility/swaption/swaptionvolmatrix.hpp|SwaptionVolatilityMatrix & SwaptionVolatilityMatrix::operator=(const SwaptionVolatilityMatrix &);
-| |ql/termstructures/volatility/swaption/swaptionvolmatrix.hpp|std::pair<Size, Size> SwaptionVolatilityMatrix::locate(const Date & optionDate, const Period & swapTenor) const;
+|v|ql/termstructures/volatility/swaption/swaptionvolmatrix.hpp|std::pair<Size, Size> SwaptionVolatilityMatrix::locate(const Date & optionDate, const Period & swapTenor) const;
 | |ql/termstructures/volatility/swaption/swaptionvolmatrix.hpp|std::pair<Size, Size> SwaptionVolatilityMatrix::locate(Time optionTime, Time swapLength) const;
 | |ql/termstructures/volatility/swaption/swaptionvolmatrix.hpp|Date maxDate() const;
 | |ql/termstructures/volatility/swaption/swaptionvolmatrix.hpp|Rate minStrike() const;
@@ -9097,7 +9097,7 @@
 |x|ql/termstructures/yield/overnightindexfutureratehelper.hpp|Real OvernightIndexFutureRateHelper::impliedQuote() const;
 |x|ql/termstructures/yield/overnightindexfutureratehelper.hpp|void OvernightIndexFutureRateHelper::setTermStructure(YieldTermStructure *);
 |x|ql/termstructures/yield/overnightindexfutureratehelper.hpp|void OvernightIndexFutureRateHelper::accept(AcyclicVisitor &);
-| |ql/termstructures/yield/overnightindexfutureratehelper.hpp|Real OvernightIndexFutureRateHelper::convexityAdjustment() const;
+|v|ql/termstructures/yield/overnightindexfutureratehelper.hpp|Real OvernightIndexFutureRateHelper::convexityAdjustment() const;
 |v|ql/termstructures/yield/overnightindexfutureratehelper.hpp|SofrFutureRateHelper::SofrFutureRateHelper(const std::variant<Rate, Handle<Quote>> & price, Month referenceMonth, Year referenceYear, Frequency referenceFreq, const std::variant<Rate, Handle<Quote>> & convexityAdjustment = 0.0, Pillar::Choice pillar = Pillar::LastRelevantDate, const Date & customPillarDate = Date());
 | |ql/termstructures/yield/piecewiseforwardspreadedtermstructure.hpp|InterpolatedPiecewiseForwardSpreadedTermStructure::InterpolatedPiecewiseForwardSpreadedTermStructure<Interpolator>(Handle<YieldTermStructure>, std::vector<Handle<Quote>> spreads, std::vector<Date> dates, Interpolator factory = Interpolator());
 | |ql/termstructures/yield/piecewiseforwardspreadedtermstructure.hpp|InterpolatedPiecewiseForwardSpreadedTermStructure::InterpolatedPiecewiseForwardSpreadedTermStructure<Interpolator>(Handle<YieldTermStructure>, std::vector<Handle<Quote>> spreads, std::vector<Date> dates, const DayCounter & dc, Interpolator factory = Interpolator());
@@ -9152,7 +9152,7 @@
 |v|ql/termstructures/yield/ratehelpers.hpp|FuturesRateHelper::FuturesRateHelper(const std::variant<Real, Handle<Quote>> & price, const Date & iborStartDate, const Date & iborEndDate, const DayCounter & dayCounter, const std::variant<Real, Handle<Quote>> & convexityAdjustment = 0.0, Futures::Type type = Futures::IMM);
 |v|ql/termstructures/yield/ratehelpers.hpp|FuturesRateHelper::FuturesRateHelper(const std::variant<Real, Handle<Quote>> & price, const Date & iborStartDate, const ext::shared_ptr<IborIndex> & iborIndex, const std::variant<Real, Handle<Quote>> & convexityAdjustment = 0.0, Futures::Type type = Futures::IMM);
 |x|ql/termstructures/yield/ratehelpers.hpp|Real FuturesRateHelper::impliedQuote() const;
-| |ql/termstructures/yield/ratehelpers.hpp|Real FuturesRateHelper::convexityAdjustment() const;
+|v|ql/termstructures/yield/ratehelpers.hpp|Real FuturesRateHelper::convexityAdjustment() const;
 |x|ql/termstructures/yield/ratehelpers.hpp|void FuturesRateHelper::accept(AcyclicVisitor &);
 |v|ql/termstructures/yield/ratehelpers.hpp|DepositRateHelper::DepositRateHelper(const std::variant<Rate, Handle<Quote>> & rate, const Period & tenor, Natural fixingDays, const Calendar & calendar, BusinessDayConvention convention, bool endOfMonth, const DayCounter & dayCounter);
 |v|ql/termstructures/yield/ratehelpers.hpp|DepositRateHelper::DepositRateHelper(const std::variant<Rate, Handle<Quote>> & rate, const ext::shared_ptr<IborIndex> & iborIndex);
