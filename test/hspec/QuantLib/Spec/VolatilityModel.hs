@@ -83,33 +83,46 @@ garmanKlassSpec = describe "GarmanKlass family" $ do
   it "garmanKlassSimpleSigma matches ln(close\\/open)^2, scaled by yearFraction" $ do
     result <- garmanKlassSimpleSigma yearFraction bars
     map fst result `shouldBe` [day1, day2]
-    (result !! 0) `shouldSatisfy` (\(_, v) -> closePrec (simpleSigma o1 c1) 1.0e-9 v)
-    (result !! 1) `shouldSatisfy` (\(_, v) -> closePrec (simpleSigma o2 c2) 1.0e-9 v)
+    case result of
+      (r0:r1:_) -> do
+        r0 `shouldSatisfy` (\(_, v) -> closePrec (simpleSigma o1 c1) 1.0e-9 v)
+        r1 `shouldSatisfy` (\(_, v) -> closePrec (simpleSigma o2 c2) 1.0e-9 v)
+      _ -> expectationFailure "expected at least two bars"
 
   it "parkinsonSigma matches the high-low estimator" $ do
     result <- parkinsonSigma yearFraction bars
-    (result !! 1) `shouldSatisfy` (\(_, v) -> closePrec (parkinsonSigma' o2 h2 l2) 1.0e-9 v)
+    case result of
+      (_:r1:_) -> r1 `shouldSatisfy` (\(_, v) -> closePrec (parkinsonSigma' o2 h2 l2) 1.0e-9 v)
+      _ -> expectationFailure "expected at least two bars"
 
   it "garmanKlassSigma4 matches its published high-low\\/close-open coefficients" $ do
     result <- garmanKlassSigma4 yearFraction bars
-    (result !! 1) `shouldSatisfy` (\(_, v) -> closePrec (sigma4Formula o2 c2 h2 l2) 1.0e-9 v)
+    case result of
+      (_:r1:_) -> r1 `shouldSatisfy` (\(_, v) -> closePrec (sigma4Formula o2 c2 h2 l2) 1.0e-9 v)
+      _ -> expectationFailure "expected at least two bars"
 
   it "garmanKlassSigma5 matches its published high-low\\/close-open coefficients" $ do
     result <- garmanKlassSigma5 yearFraction bars
-    (result !! 1) `shouldSatisfy` (\(_, v) -> closePrec (sigma5Formula o2 c2 h2 l2) 1.0e-9 v)
+    case result of
+      (_:r1:_) -> r1 `shouldSatisfy` (\(_, v) -> closePrec (sigma5Formula o2 c2 h2 l2) 1.0e-9 v)
+      _ -> expectationFailure "expected at least two bars"
 
   it "garmanKlassSigma1 blends simpleSigma with the overnight jump, dropping the first bar" $ do
     result <- garmanKlassSigma1 yearFraction marketOpenFraction bars
     map fst result `shouldBe` [day2]
     let simpleBase = log (c2 / o2) ** 2
         expected = openCloseBlend marketOpenFraction 0.5 simpleBase
-    (result !! 0) `shouldSatisfy` (\(_, v) -> closePrec expected 1.0e-9 v)
+    case result of
+      (r0:_) -> r0 `shouldSatisfy` (\(_, v) -> closePrec expected 1.0e-9 v)
+      [] -> expectationFailure "expected at least one bar"
 
   it "garmanKlassSigma3 blends parkinsonSigma with the overnight jump, dropping the first bar" $ do
     result <- garmanKlassSigma3 yearFraction marketOpenFraction bars
     let parkinsonBase = (log (h2 / o2) - log (l2 / o2)) ** 2 / (4 * log 2)
         expected = openCloseBlend marketOpenFraction 0.17 parkinsonBase
-    (result !! 0) `shouldSatisfy` (\(_, v) -> closePrec expected 1.0e-9 v)
+    case result of
+      (r0:_) -> r0 `shouldSatisfy` (\(_, v) -> closePrec expected 1.0e-9 v)
+      [] -> expectationFailure "expected at least one bar"
 
   it "garmanKlassSigma6 blends garmanKlassSigma4 with the overnight jump, dropping the first bar" $ do
     result <- garmanKlassSigma6 yearFraction marketOpenFraction bars
@@ -117,7 +130,9 @@ garmanKlassSpec = describe "GarmanKlass family" $ do
           let u = log (h2 / o2); d = log (l2 / o2); cc = log (c2 / o2)
           in 0.511 * (u - d) ** 2 - 0.019 * (cc * (u + d) - 2 * u * d) - 0.383 * cc * cc
         expected = openCloseBlend marketOpenFraction 0.012 sigma4Base
-    (result !! 0) `shouldSatisfy` (\(_, v) -> closePrec expected 1.0e-9 v)
+    case result of
+      (r0:_) -> r0 `shouldSatisfy` (\(_, v) -> closePrec expected 1.0e-9 v)
+      [] -> expectationFailure "expected at least one bar"
   where
     day1 = fromGregorian 2020 3 2
     day2 = fromGregorian 2020 3 3
@@ -149,7 +164,7 @@ constantAndLocalEstimatorSpec = describe "ConstantEstimator and SimpleLocalEstim
         days = [addDays i day0 | i <- [0 .. 4]]
         vals = [1.0, 2.0, 3.0, 2.0, 1.0]
         series = fromList (zip days vals)
-        windowed ws = sqrt (sum (map (** 2) ws) / n - (sum ws) ** 2 / n / (n + 1))
+        windowed ws = sqrt (sum (map (** 2) ws) / n - sum ws ** 2 / n / (n + 1))
           where n = fromIntegral (length ws)
     result <- constantVolatilityEstimator 3 series
     map fst result `shouldBe` drop 3 days

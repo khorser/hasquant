@@ -404,14 +404,14 @@ spec = do
           Settings.setEvaluationDate (Just (2 `january` 2024))
           cal <- calendar TARGET
           actual360dc <- dayCounter (Actual360 False)
-          immDate <- nextIMMDate (2 `january` 2024) True
+          immDate' <- nextIMMDate (2 `january` 2024) True
           price <- Quote.simpleQuote 95.0
           adjQuote <- Quote.simpleQuote 0.0007
           adjQuoteG <- Quote.asQuote adjQuote
-          fhAdj <- futuresRateHelper price immDate 3 cal ModifiedFollowing True actual360dc (Just adjQuoteG) IMM
+          fhAdj <- futuresRateHelper price immDate' 3 cal ModifiedFollowing True actual360dc (Just adjQuoteG) IMM
           adj <- futuresRateHelperConvexityAdjustment fhAdj
           adj `shouldSatisfy` closePrec 0.0007 1.0e-12
-          fhNone <- futuresRateHelper price immDate 3 cal ModifiedFollowing True actual360dc Nothing IMM
+          fhNone <- futuresRateHelper price immDate' 3 cal ModifiedFollowing True actual360dc Nothing IMM
           none <- futuresRateHelperConvexityAdjustment fhNone
           none `shouldBe` 0.0
 
@@ -1548,9 +1548,12 @@ spec = do
                 ) nodes
 
           -- The grid's own lowest corner locates to (0, 0).
-          (i0, j0) <- Vol.swaptionVolatilityMatrixLocate grid (head optionDates) (head swapTenors)
-          i0 `shouldBe` 0
-          j0 `shouldBe` 0
+          case (optionDates, swapTenors) of
+            (od0:_, st0:_) -> do
+              (i0, j0) <- Vol.swaptionVolatilityMatrixLocate grid od0 st0
+              i0 `shouldBe` 0
+              j0 `shouldBe` 0
+            _ -> expectationFailure "expected at least one option date and one swap tenor"
 
     -- SabrSwaptionVolatilityCube/InterpolatedSwaptionVolatilityCube: no upstream cached fixture
     -- ported here (test-suite/swaptionvolatilitycube.cpp's CommonVars fixture is shared, nontrivial

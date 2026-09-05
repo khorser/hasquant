@@ -26,6 +26,7 @@
 -- ('hullWhiteAlpha'\/'hullWhiteForwardAlpha'\/'hullWhiteForwardB'\/'hullWhiteForwardM') are
 -- checked here against closed forms, and 'stdDeviation'\/'covariance'\/'apply'\/'evolve'
 -- against each other on 'g2Process'.
+{-# LANGUAGE TupleSections #-}
 module QuantLib.Spec.Process (spec) where
 
 import Test.Hspec
@@ -50,7 +51,7 @@ import QuantLib.Process(hestonProcess, hestonProcessPdf, batesProcess, gjrGARCHP
 import QuantLib.Model(hullWhite, g2, g2Dynamics, shortRate
  , hestonModel, batesModel, gJRGARCHModel
  , liborForwardModel, liborForwardModelS0, liborForwardModelAsAffineModel, lfmHullWhiteParameterization, lfmHullWhiteCovariance, setCovarParam, LmVolatilityModel(..), LmCorrelationModel(..)
- , discountBond, discountBondOption)
+ , discountBond)
 import QuantLib.PricingEngine(analyticHestonHullWhiteEngine, mcHestonHullWhiteEngine
  , analyticHestonEngine', batesEngine, analyticGJRGARCHEngine, mcEuropeanGJRGARCHEngine, blackFormula, analyticCapFloorEngine)
 import QuantLib.Method(pathGenerator, next, asset)
@@ -289,7 +290,7 @@ spec = do
 
         -- the process is only simulable once a covariance parameterization is installed
         fixingDates <- liborForwardModelProcessFixingDates process
-        capletVol <- Vol.capletVarianceCurve evalDate (fromList (zip (take 9 (drop 1 fixingDates)) (repeat 0.15))) dc ShiftedLognormal 0.0
+        capletVol <- Vol.capletVarianceCurve evalDate (fromList (map (, 0.15) (take 9 (drop 1 fixingDates)))) dc ShiftedLognormal 0.0
         let emptyCorrelation = either error id $ boxedRealMatrix 0 0 []
         parameterization <- lfmHullWhiteParameterization process capletVol emptyCorrelation 1
         setCovarParam process parameterization

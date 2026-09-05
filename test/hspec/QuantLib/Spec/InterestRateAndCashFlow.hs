@@ -218,7 +218,7 @@ spec evalDate = do
       it "builds a mixed custom leg from simple, indexed, and coupon cash flows" $
         Settings.keepingSettings' $ do
           let baseDate = 7 `april` 2010
-              fixingDate = 8 `april` 2010
+              fixingDate' = 8 `april` 2010
               paymentDate = 7 `april` 2011
               accrualEnd = addDays 180 paymentDate
           Settings.setEvaluationDate (Just baseDate)
@@ -227,11 +227,11 @@ spec evalDate = do
           curve <- flatForward baseDate q dc IR.Continuous Annual
           idx <- iborIndex (UsdLibor (3, Months)) (Just curve)
           addFixing idx baseDate 100.0 True
-          addFixing idx fixingDate 120.0 True
-          Settings.setEvaluationDate (Just $ addDays 1 fixingDate)
+          addFixing idx fixingDate' 120.0 True
+          Settings.setEvaluationDate (Just $ addDays 1 fixingDate')
           simple <- CF.simpleCashFlow 10.0 paymentDate
-          indexed <- CF.indexedCashFlow 100.0 idx baseDate fixingDate paymentDate False
-          growth <- CF.indexedCashFlow 100.0 idx baseDate fixingDate paymentDate True
+          indexed <- CF.indexedCashFlow 100.0 idx baseDate fixingDate' paymentDate False
+          growth <- CF.indexedCashFlow 100.0 idx baseDate fixingDate' paymentDate True
           fixedCoupon <- CF.fixedRateCoupon accrualEnd 100.0 0.05 dc paymentDate accrualEnd Nothing Nothing Nothing
           fixedIR <- CF.fixedRateCouponInterestRate fixedCoupon
           IR.rate fixedIR `shouldSatisfy` closePrec 0.05 1.0e-12
@@ -264,7 +264,7 @@ spec evalDate = do
       it "uses CPI, zero-inflation, and equity cash flows in a custom leg" $
         Settings.keepingSettings' $ do
           let baseDate = 1 `january` 2010
-              fixingDate = 1 `january` 2011
+              fixingDate' = 1 `january` 2011
               paymentDate = 1 `february` 2011
           Settings.setEvaluationDate (Just paymentDate)
           inflation <- Inflation.zeroInflationIndex Inflation.UKRPI
@@ -272,15 +272,15 @@ spec evalDate = do
           addFixing inflation baseDate 100.0 False
           addFixing inflation (1 `november` 2010) 120.0 False
           addFixing inflation (1 `december` 2010) 120.0 False
-          addFixing inflation fixingDate 120.0 False
-          zero <- CF.zeroInflationCashFlow 100.0 inflation CPIFlat baseDate fixingDate (2, Months) paymentDate False
-          cpi <- CF.cpiCashFlow 100.0 inflation (Just baseDate) Nothing fixingDate (2, Months) CPIFlat paymentDate False
+          addFixing inflation fixingDate' 120.0 False
+          zero <- CF.zeroInflationCashFlow 100.0 inflation CPIFlat baseDate fixingDate' (2, Months) paymentDate False
+          cpi <- CF.cpiCashFlow 100.0 inflation (Just baseDate) Nothing fixingDate' (2, Months) CPIFlat paymentDate False
           cal <- calendar Null
           usd <- currency USD
           equityIndex <- Equity.equityIndex "custom-leg-equity" cal usd Nothing Nothing Nothing
           addFixing equityIndex baseDate 80.0 False
-          addFixing equityIndex fixingDate 100.0 False
-          equity <- CF.equityCashFlow 100.0 equityIndex baseDate fixingDate paymentDate False
+          addFixing equityIndex fixingDate' 100.0 False
+          equity <- CF.equityCashFlow 100.0 equityIndex baseDate fixingDate' paymentDate False
           zeroAmount <- CF.zeroInflationCashFlowAmount zero
           cpiAmount <- CF.cpiCashFlowAmount cpi
           equityAmount <- CF.equityCashFlowAmount equity
@@ -823,11 +823,11 @@ spec evalDate = do
         bracket_ clearAllFixingHistories clearAllFixingHistories $ Settings.keepingSettings' $ do
           sofr <- oisFixture Nothing Nothing
           pastCoupon <- oisMakeCoupon sofr (18 `october` 2021) (18 `november` 2021)
-          dates <- CF.overnightIndexedCouponFixingDates pastCoupon
+          dates' <- CF.overnightIndexedCouponFixingDates pastCoupon
           fixings <- CF.overnightIndexedCouponIndexFixings pastCoupon
-          length fixings `shouldBe` length dates
-          length dates `shouldSatisfy` (> 0)
-          expected <- mapM (\d -> fixing sofr d False) dates
+          length fixings `shouldBe` length dates'
+          length dates' `shouldSatisfy` (> 0)
+          expected <- mapM (\d -> fixing sofr d False) dates'
           fixings `shouldBe` expected
 
       it "AverageBMACoupon fixingDates/indexFixings agree with the coupon's own seeded fixings" $
@@ -1311,8 +1311,8 @@ spec evalDate = do
           -- FloatingRateCoupon::fixingDate() itself steps back fixingDays business days from
           -- the coupon's accrual start via Calendar::advance(..., Days, Preceding) -- same call
           -- shape reused here since no accessor for it is bound.
-          fixingDate <- advance cal startDate (-2, Days) Preceding False
-          indexFixing <- forecastFixing idx fixingDate
+          fixingDate' <- advance cal startDate (-2, Days) Preceding False
+          indexFixing <- forecastFixing idx fixingDate'
           forM_ ([(True, smileOnPayment), (False, smileOnPayment)] :: [(Bool, SmileSection)]) $ \(byCallSpread, smile) -> do
             pricer <- CF.rangeAccrualPricerByBgm 1.0 smileOnExpiry smile True byCallSpread
             CF.setFloatingRateCouponPricer coupon pricer
@@ -1467,15 +1467,15 @@ spec evalDate = do
           cmsPricer <- CF.linearTsrPricer swaptionVol meanReversion (Just fwdCurve)
             (CF.LinearTsrPricerSettings CF.LinearTsrRateBound Nothing)
           spreadPricer <- CF.lognormalCmsSpreadPricer cmsPricer correlation (Just fwdCurve) 32 Nothing Nothing Nothing
-          valueDate <- advance cal spreadRefDate (2, Days) Following False
-          payDate <- addPeriod valueDate (1, Years)
-          let coupon idx = CF.cmsCoupon payDate 10000 valueDate payDate 2 idx
+          valueDate' <- advance cal spreadRefDate (2, Days) Following False
+          payDate <- addPeriod valueDate' (1, Years)
+          let coupon idx = CF.cmsCoupon payDate 10000 valueDate' payDate 2 idx
                 1.0 0.0 Nothing Nothing dc False Nothing Preceding
-              spreadCoupon mCap mFloor = CF.cappedFlooredCmsSpreadCoupon payDate 10000 valueDate payDate 2 cms10y2y
+              spreadCoupon mCap mFloor = CF.cappedFlooredCmsSpreadCoupon payDate 10000 valueDate' payDate 2 cms10y2y
                 1.0 0.0 mCap mFloor Nothing Nothing dc False Nothing Preceding
           cms10Coupon <- coupon cms10y
           cms2Coupon <- coupon cms2y
-          plainCoupon <- CF.cmsSpreadCoupon payDate 10000 valueDate payDate 2 cms10y2y
+          plainCoupon <- CF.cmsSpreadCoupon payDate 10000 valueDate' payDate 2 cms10y2y
             1.0 0.0 Nothing Nothing dc False Nothing Preceding
           cappedCoupon <- spreadCoupon (Just 0.015) Nothing
           -- Floor 0.03 is above the uncapped fixing-implied rate (0.05 - 0.03 = 0.02, matching
@@ -1524,8 +1524,8 @@ spec evalDate = do
           cmsPricer <- CF.linearTsrPricer swaptionVol meanReversion (Just fwdCurve)
             (CF.LinearTsrPricerSettings CF.LinearTsrRateBound Nothing)
           spreadPricer <- CF.lognormalCmsSpreadPricer cmsPricer correlation (Just fwdCurve) 32 Nothing Nothing Nothing
-          valueDate <- advance cal spreadRefDate (2, Days) Following False
-          startDate <- addPeriod valueDate (5, Years)
+          valueDate' <- advance cal spreadRefDate (2, Days) Following False
+          startDate <- addPeriod valueDate' (5, Years)
           payDate <- addPeriod startDate (1, Years)
 
           plain <- CF.cmsSpreadCoupon payDate 1.0 startDate payDate 2 cms10y2y
@@ -1721,10 +1721,10 @@ spec evalDate = do
           eur <- currency EUR
           dc <- dayCounter (Actual360 False)
           idx <- iborIndex (Ibor "DateRules" (3, Months) 2 eur cal ModifiedFollowing False dc) Nothing
-          let fixing = 29 `january` 2024
+          let fixing' = 29 `january` 2024
               value = 31 `january` 2024
-          fixingDate idx value `shouldReturn` fixing
-          valueDate idx fixing `shouldReturn` value
+          fixingDate idx value `shouldReturn` fixing'
+          valueDate idx fixing' `shouldReturn` value
           maturityDate idx value `shouldReturn` (30 `april` 2024)
 
       it "uses CustomIbor's separate value and maturity calendars for date calculations" $
@@ -1735,10 +1735,10 @@ spec evalDate = do
           dc <- dayCounter (Actual360 False)
           idx <- iborIndex (CustomIbor "DateRuleCustom" (3, Months) 1 eur fixingCal valueMaturityCal valueMaturityCal
                               ModifiedFollowing False dc) Nothing
-          let fixing = 30 `january` 2024
+          let fixing' = 30 `january` 2024
               value = 2 `february` 2024
-          valueDate idx fixing `shouldReturn` value
-          fixingDate idx value `shouldReturn` fixing
+          valueDate idx fixing' `shouldReturn` value
+          fixingDate idx value `shouldReturn` fixing'
           maturityDate idx value `shouldReturn` (3 `may` 2024)
 
       it "rejects a non-business fixing date when calculating its value date" $
@@ -1748,6 +1748,7 @@ spec evalDate = do
           dc <- dayCounter (Actual360 False)
           idx <- iborIndex (Ibor "InvalidFixing" (3, Months) 2 eur cal ModifiedFollowing False dc) Nothing
           let cPlusPlusEx (CPlusPlusException message) = not (null message)
+              cPlusPlusEx _ = False
           valueDate idx (28 `january` 2024) `shouldThrow` cPlusPlusEx
 
       it "addFixing/fixing round-trip, hasHistoricalFixing/isValidFixingDate, addFixings and clearFixings" $

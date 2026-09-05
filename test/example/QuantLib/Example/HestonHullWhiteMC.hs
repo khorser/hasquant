@@ -24,6 +24,7 @@ module QuantLib.Example.HestonHullWhiteMC
 
 import Control.Monad(foldM, forM)
 import Data.List.NonEmpty(fromList)
+import Data.Maybe(fromMaybe)
 import qualified Data.Vector.Storable as V
 
 import QuantLib.Instrument.Option(OptionType(..))
@@ -36,11 +37,10 @@ import QuantLib.Process(hestonProcess, hullWhiteForwardProcess, setForwardMeasur
 import QuantLib.Quote(simpleQuote)
 import qualified QuantLib.Settings as Settings
 import QuantLib.InterestRate(Compounding(..))
-import QuantLib.Time.Schedule(Frequency(..))
 import QuantLib.TermStructure.Yield(interpolatedZeroCurve, flatForward, discount)
 import QuantLib.Time.Calendar(calendar, CalendarConstructor(..))
 import QuantLib.Time.Date(today, addPeriod)
-import QuantLib.Time.Schedule(dayCounter, years, DayCounterConstructor(..), TimeUnit(..))
+import QuantLib.Time.Schedule(Frequency(..), dayCounter, years, DayCounterConstructor(..), TimeUnit(..))
 
 data Result = Result
   { zeroBondError :: !Double    -- ^largest @|MC mean of 1\/numeraire - P(0,t)|@ over the grid
@@ -81,7 +81,7 @@ run = Settings.keepingSettings' $ do
   -- the grid drops the final (maturity) node, as upstream's `times.end()-1` does
   let gridTimes = init times
       steps = length gridTimes - 1
-  grid <- timeGridFromVector (maybe (error "empty time grid") id (nonEmptyVector (V.fromList gridTimes)))
+  grid <- timeGridFromVector (fromMaybe (error "empty time grid") (nonEmptyVector (V.fromList gridTimes)))
   nFactors <- factors joint
   gen <- sobolPathGenerator JoeKuoD7 joint grid 0 (nFactors * fromIntegral steps) False
 

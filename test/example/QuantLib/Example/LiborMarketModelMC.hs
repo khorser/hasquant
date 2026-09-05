@@ -22,6 +22,7 @@ module QuantLib.Example.LiborMarketModelMC
 
 import Control.Monad(foldM, forM)
 import Data.List.NonEmpty(fromList)
+import Data.Maybe(fromMaybe)
 import qualified Data.Vector.Storable as V
 
 import QuantLib.Index.InterestRate(iborIndex, IborConstructor(..))
@@ -72,18 +73,18 @@ run = Settings.keepingSettings' $ do
 
   fixingTimes <- liborForwardModelProcessFixingTimes process
   accruals <- liborForwardModelProcessAccrualTimes process
-  grid <- timeGridFromVector' (maybe (error "empty fixing times") id (nonEmptyVector (V.fromList fixingTimes))) 12
+  grid <- timeGridFromVector' (fromMaybe (error "empty fixing times") (nonEmptyVector (V.fromList fixingTimes))) 12
   gridPts <- points grid
   -- each rate is read at its own fixing time's index in the grid, as upstream's `location` does
-  let location = [maybe (error "fixing time not on grid") id (V.findIndex (== t) gridPts) | t <- fixingTimes]
+  let location = [fromMaybe (error "fixing time not on grid") (V.findIndex (== t) gridPts) | t <- fixingTimes]
       steps = fromIntegral (V.length gridPts) - 1
   nFactors <- factors process
   gen <- sobolPathGenerator JoeKuoD7 process grid 42 (nFactors * steps) False
 
   totals <- foldM (\acc _ -> do
       path <- next gen
-      rateVecs <- forM [0 .. fromIntegral len - 1] (asset path)
-      let rates = zipWith (\v j -> v V.! j) rateVecs location
+      rateVecs <- forM [0 .. len - 1] (asset path)
+      let rates = zipWith (V.!) rateVecs location
       dfs <- liborForwardModelProcessDiscountBond process rates
       let payoffs = zipWith3 (\df r (st, en) -> df * max 0.0 (r - capRate) * (en - st)) dfs rates accruals
       pure (zipWith' (+) acc payoffs))
