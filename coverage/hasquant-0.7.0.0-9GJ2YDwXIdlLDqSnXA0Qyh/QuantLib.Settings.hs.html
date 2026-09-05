@@ -32,195 +32,250 @@ span.spaces    { background: white }
 <span class="lineno">   13 </span>  , setIncludeTodaysCashFlows
 <span class="lineno">   14 </span>  , includeReferenceDateEvents
 <span class="lineno">   15 </span>  , setIncludeReferenceDateEvents
-<span class="lineno">   16 </span>
-<span class="lineno">   17 </span>  , keepingSettings
-<span class="lineno">   18 </span>  , keepingSettings'
-<span class="lineno">   19 </span>  , collectGarbage
-<span class="lineno">   20 </span>  , setExtendedPrecision
-<span class="lineno">   21 </span>  , version
-<span class="lineno">   22 </span>  , boostVersion
-<span class="lineno">   23 </span>  , epsilon
-<span class="lineno">   24 </span>  ) where
-<span class="lineno">   25 </span>import qualified Foreign.C.Types as C2HSImp
-<span class="lineno">   26 </span>import qualified Foreign.Marshal.Utils as C2HSImp
-<span class="lineno">   27 </span>import qualified Foreign.Ptr as C2HSImp
-<span class="lineno">   28 </span>
-<span class="lineno">   29 </span>
-<span class="lineno">   30 </span>import Foreign.C.Types(CDouble)
-<span class="lineno">   31 </span>import Foreign.C.String(CString, peekCString)
-<span class="lineno">   32 </span>import System.IO.Unsafe(unsafePerformIO)
-<span class="lineno">   33 </span>import System.Mem(performGC)
-<span class="lineno">   34 </span>import Control.Exception(bracket)
-<span class="lineno">   35 </span>
-<span class="lineno">   36 </span>import QuantLib.Time.Date
-<span class="lineno">   37 </span>import QuantLib.Internal
-<span class="lineno">   38 </span>
+<span class="lineno">   16 </span>  , disableUpdates
+<span class="lineno">   17 </span>  , enableUpdates
+<span class="lineno">   18 </span>  , updatesEnabled
+<span class="lineno">   19 </span>  , updatesDeferred
+<span class="lineno">   20 </span>
+<span class="lineno">   21 </span>  , keepingSettings
+<span class="lineno">   22 </span>  , keepingSettings'
+<span class="lineno">   23 </span>  , collectGarbage
+<span class="lineno">   24 </span>  , setExtendedPrecision
+<span class="lineno">   25 </span>  , version
+<span class="lineno">   26 </span>  , boostVersion
+<span class="lineno">   27 </span>  , epsilon
+<span class="lineno">   28 </span>  ) where
+<span class="lineno">   29 </span>import qualified Foreign.C.Types as C2HSImp
+<span class="lineno">   30 </span>import qualified Foreign.Marshal.Utils as C2HSImp
+<span class="lineno">   31 </span>import qualified Foreign.Ptr as C2HSImp
+<span class="lineno">   32 </span>
+<span class="lineno">   33 </span>
+<span class="lineno">   34 </span>import Foreign.C.Types(CDouble)
+<span class="lineno">   35 </span>import Foreign.C.String(CString, peekCString)
+<span class="lineno">   36 </span>import System.IO.Unsafe(unsafePerformIO)
+<span class="lineno">   37 </span>import System.Mem(performGC)
+<span class="lineno">   38 </span>import Control.Exception(bracket)
 <span class="lineno">   39 </span>
-<span class="lineno">   40 </span>
-<span class="lineno">   41 </span>
-<span class="lineno">   42 </span>-- |Sets the x87 floating-point unit to 64-bit extended precision.
-<span class="lineno">   43 </span>--
-<span class="lineno">   44 </span>-- Call this once at program start on Windows, before any pricing. By the time Haskell
-<span class="lineno">   45 </span>-- code runs there, the x87 unit sits at 53-bit precision, where a binary linked by
-<span class="lineno">   46 </span>-- clang++ rather than ghc has 64-bit; every 80-bit @long double@ operation inside
-<span class="lineno">   47 </span>-- QuantLib is then silently rounded to double. That matters because @boost::math@ promotes @double@
-<span class="lineno">   48 </span>-- arguments to @long double@ by default, so its distributions lose the precision their
-<span class="lineno">   49 </span>-- algorithms assume -- returning quietly less accurate answers, or failing to converge
-<span class="lineno">   50 </span>-- outright (@hestonSLVFDMModel@ throws out of @quantile(non_central_chi_squared)@
-<span class="lineno">   51 </span>-- without this).
-<span class="lineno">   52 </span>--
-<span class="lineno">   53 </span>-- A no-op on every other platform and on non-x86 Windows. The control word is
-<span class="lineno">   54 </span>-- per-thread, so with a threaded runtime call it on each OS thread that prices. Only
-<span class="lineno">   55 </span>-- the x87 unit is touched: Haskell's own 'Double' arithmetic is SSE\/MXCSR and is
-<span class="lineno">   56 </span>-- unaffected either way.
-<span class="lineno">   57 </span>setExtendedPrecision :: IO ()
-<span class="lineno">   58 </span><span class="decl"><span class="nottickedoff">setExtendedPrecision =</span>
-<span class="lineno">   59 </span><span class="spaces">  </span><span class="nottickedoff">setExtendedPrecision'_ &gt;&gt;</span>
-<span class="lineno">   60 </span><span class="spaces">  </span><span class="nottickedoff">return ()</span></span>
-<span class="lineno">   61 </span>
-<span class="lineno">   62 </span>
-<span class="lineno">   63 </span>
-<span class="lineno">   64 </span>-- |returns the current value of the Evaluation Date:
-<span class="lineno">   65 </span>-- the date at which pricing is to be performed
-<span class="lineno">   66 </span>evaluationDate :: IO ((Day))
-<span class="lineno">   67 </span><span class="decl"><span class="istickedoff">evaluationDate =</span>
-<span class="lineno">   68 </span><span class="spaces">  </span><span class="istickedoff">evaluationDate'_ &gt;&gt;= \res -&gt;</span>
-<span class="lineno">   69 </span><span class="spaces">  </span><span class="istickedoff">let {res' = toDay res} in</span>
-<span class="lineno">   70 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">   71 </span>
-<span class="lineno">   72 </span>
-<span class="lineno">   73 </span>
-<span class="lineno">   74 </span>-- |sets the value of the Evaluation Date
-<span class="lineno">   75 </span>-- |Nothing sets the evaluation date to Date::todaysDate() and allow it to change at midnight. This comes at the price of losing some performance, since the evaluation date is re-evaluated each time it is read.
-<span class="lineno">   76 </span>setEvaluationDate :: (Maybe Day) -&gt; IO ()
-<span class="lineno">   77 </span><span class="decl"><span class="istickedoff">setEvaluationDate a1 =</span>
-<span class="lineno">   78 </span><span class="spaces">  </span><span class="istickedoff">withMaybeDay a1 $ \a1' -&gt; </span>
-<span class="lineno">   79 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
-<span class="lineno">   80 </span><span class="spaces">  </span><span class="istickedoff">setEvaluationDate'_ a1' a2' &gt;&gt;</span>
-<span class="lineno">   81 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
-<span class="lineno">   82 </span><span class="spaces">  </span><span class="istickedoff">return <span class="nottickedoff">()</span></span></span>
-<span class="lineno">   83 </span>
-<span class="lineno">   84 </span>
-<span class="lineno">   85 </span>
-<span class="lineno">   86 </span>-- |returns the current value of the boolean which enforce the usage of historic
-<span class="lineno">   87 </span>-- fixings for today's date
-<span class="lineno">   88 </span>enforceTodaysHistoricFixings :: IO ((Bool))
-<span class="lineno">   89 </span><span class="decl"><span class="istickedoff">enforceTodaysHistoricFixings =</span>
-<span class="lineno">   90 </span><span class="spaces">  </span><span class="istickedoff">enforceTodaysHistoricFixings'_ &gt;&gt;= \res -&gt;</span>
-<span class="lineno">   91 </span><span class="spaces">  </span><span class="istickedoff">let {res' = C2HSImp.toBool res} in</span>
-<span class="lineno">   92 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">   93 </span>
-<span class="lineno">   94 </span>
-<span class="lineno">   95 </span>
-<span class="lineno">   96 </span>-- |sets the value of the boolean which enforce the usage of historic fixings
-<span class="lineno">   97 </span>-- for today's date
-<span class="lineno">   98 </span>setEnforceTodaysHistoricFixings :: (Bool) -&gt; IO ()
-<span class="lineno">   99 </span><span class="decl"><span class="istickedoff">setEnforceTodaysHistoricFixings a1 =</span>
-<span class="lineno">  100 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = C2HSImp.fromBool a1} in </span>
-<span class="lineno">  101 </span><span class="spaces">  </span><span class="istickedoff">setEnforceTodaysHistoricFixings'_ a1' &gt;&gt;</span>
-<span class="lineno">  102 </span><span class="spaces">  </span><span class="istickedoff">return <span class="nottickedoff">()</span></span></span>
-<span class="lineno">  103 </span>
-<span class="lineno">  104 </span>
-<span class="lineno">  105 </span>
-<span class="lineno">  106 </span>-- |if set, whether CashFlows occurring on today's date should enter the NPV; when the NPV date
-<span class="lineno">  107 </span>-- equals today's date this overrides includeReferenceDateEvents and cannot be overridden locally
-<span class="lineno">  108 </span>includeTodaysCashFlows :: IO ((Maybe Bool))
-<span class="lineno">  109 </span><span class="decl"><span class="istickedoff">includeTodaysCashFlows =</span>
-<span class="lineno">  110 </span><span class="spaces">  </span><span class="istickedoff">includeTodaysCashFlows'_ &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  111 </span><span class="spaces">  </span><span class="istickedoff">let {res' = toMaybeBool res} in</span>
-<span class="lineno">  112 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">  113 </span>
-<span class="lineno">  114 </span>
-<span class="lineno">  115 </span>
-<span class="lineno">  116 </span>-- |sets whether CashFlows occurring on today's date should enter the NPV
-<span class="lineno">  117 </span>setIncludeTodaysCashFlows :: (Maybe Bool) -&gt; IO ()
-<span class="lineno">  118 </span><span class="decl"><span class="istickedoff">setIncludeTodaysCashFlows a1 =</span>
-<span class="lineno">  119 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = fromMaybeBool a1} in </span>
-<span class="lineno">  120 </span><span class="spaces">  </span><span class="istickedoff">setIncludeTodaysCashFlows'_ a1' &gt;&gt;</span>
-<span class="lineno">  121 </span><span class="spaces">  </span><span class="istickedoff">return <span class="nottickedoff">()</span></span></span>
-<span class="lineno">  122 </span>
-<span class="lineno">  123 </span>
-<span class="lineno">  124 </span>
-<span class="lineno">  125 </span>-- |This flag specifies whether or not Events occurring on the reference date should, by default, be taken into account as not happened yet. It can be overridden locally when calling the Event::hasOccurred method.
-<span class="lineno">  126 </span>includeReferenceDateEvents :: IO ((Bool))
-<span class="lineno">  127 </span><span class="decl"><span class="nottickedoff">includeReferenceDateEvents =</span>
-<span class="lineno">  128 </span><span class="spaces">  </span><span class="nottickedoff">includeReferenceDateEvents'_ &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  129 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = C2HSImp.toBool res} in</span>
-<span class="lineno">  130 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
-<span class="lineno">  131 </span>
-<span class="lineno">  132 </span>
-<span class="lineno">  133 </span>
-<span class="lineno">  134 </span>-- |sets whether Events occurring on the reference date should, by default, be taken into account as not happened yet
-<span class="lineno">  135 </span>setIncludeReferenceDateEvents :: (Bool) -&gt; IO ()
-<span class="lineno">  136 </span><span class="decl"><span class="istickedoff">setIncludeReferenceDateEvents a1 =</span>
-<span class="lineno">  137 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = C2HSImp.fromBool a1} in </span>
-<span class="lineno">  138 </span><span class="spaces">  </span><span class="istickedoff">setIncludeReferenceDateEvents'_ a1' &gt;&gt;</span>
-<span class="lineno">  139 </span><span class="spaces">  </span><span class="istickedoff">return <span class="nottickedoff">()</span></span></span>
-<span class="lineno">  140 </span>
-<span class="lineno">  141 </span>
-<span class="lineno">  142 </span>
-<span class="lineno">  143 </span>-- |brackets to restore settings once action has completed or raised an exception
-<span class="lineno">  144 </span>keepingSettings :: IO b -&gt; IO b
-<span class="lineno">  145 </span><span class="decl"><span class="istickedoff">keepingSettings = bracket qlSavedSettings qlFreeSavedSettings . const</span></span>
-<span class="lineno">  146 </span>-- SavedSettings destructor suppresses all exceptions
-<span class="lineno">  147 </span>
-<span class="lineno">  148 </span>-- |brackets to restore settings once action has completed or raised an exception. Before restoring settings
-<span class="lineno">  149 </span>-- 'collectGarbage' is run to avoid problems with market data objects watching evaluation date
-<span class="lineno">  150 </span>keepingSettings' :: IO b -&gt; IO b
-<span class="lineno">  151 </span><span class="decl"><span class="istickedoff">keepingSettings' = bracket qlSavedSettings (\s -&gt; collectGarbage &gt;&gt; qlFreeSavedSettings s) . const</span></span>
-<span class="lineno">  152 </span>
-<span class="lineno">  153 </span>-- |Best effort: give the finalizers of unreachable QuantLib objects a chance to run, so
-<span class="lineno">  154 </span>-- their C++ destructors fire before, say, 'setEvaluationDate' notifies surviving observers.
-<span class="lineno">  155 </span>--
-<span class="lineno">  156 </span>-- 'performGC' only /schedules/ finalizers, it does not run them synchronously, so this is a
-<span class="lineno">  157 </span>-- nudge rather than a guarantee. Where correctness depends on an object being gone, anchor
-<span class="lineno">  158 </span>-- its dates so staleness cannot arise in the first place.
-<span class="lineno">  159 </span>collectGarbage :: IO ()
-<span class="lineno">  160 </span><span class="decl"><span class="istickedoff">collectGarbage = performGC &gt;&gt; performGC</span></span>
-<span class="lineno">  161 </span>
-<span class="lineno">  162 </span>foreign import ccall safe &quot;ql.h qlVersion&quot; qlVersion :: IO CString
-<span class="lineno">  163 </span>foreign import ccall safe &quot;ql.h qlBoostVersion&quot; qlBoostVersion :: IO CString
-<span class="lineno">  164 </span>foreign import ccall safe &quot;ql.h qlEpsilon&quot; qlEpsilon :: CDouble
+<span class="lineno">   40 </span>import QuantLib.Time.Date
+<span class="lineno">   41 </span>import QuantLib.Internal
+<span class="lineno">   42 </span>
+<span class="lineno">   43 </span>
+<span class="lineno">   44 </span>
+<span class="lineno">   45 </span>
+<span class="lineno">   46 </span>-- |Sets the x87 floating-point unit to 64-bit extended precision.
+<span class="lineno">   47 </span>--
+<span class="lineno">   48 </span>-- Call this once at program start on Windows, before any pricing. By the time Haskell
+<span class="lineno">   49 </span>-- code runs there, the x87 unit sits at 53-bit precision, where a binary linked by
+<span class="lineno">   50 </span>-- clang++ rather than ghc has 64-bit; every 80-bit @long double@ operation inside
+<span class="lineno">   51 </span>-- QuantLib is then silently rounded to double. That matters because @boost::math@ promotes @double@
+<span class="lineno">   52 </span>-- arguments to @long double@ by default, so its distributions lose the precision their
+<span class="lineno">   53 </span>-- algorithms assume -- returning quietly less accurate answers, or failing to converge
+<span class="lineno">   54 </span>-- outright (@hestonSLVFDMModel@ throws out of @quantile(non_central_chi_squared)@
+<span class="lineno">   55 </span>-- without this).
+<span class="lineno">   56 </span>--
+<span class="lineno">   57 </span>-- A no-op on every other platform and on non-x86 Windows. The control word is
+<span class="lineno">   58 </span>-- per-thread, so with a threaded runtime call it on each OS thread that prices. Only
+<span class="lineno">   59 </span>-- the x87 unit is touched: Haskell's own 'Double' arithmetic is SSE\/MXCSR and is
+<span class="lineno">   60 </span>-- unaffected either way.
+<span class="lineno">   61 </span>setExtendedPrecision :: IO ()
+<span class="lineno">   62 </span><span class="decl"><span class="nottickedoff">setExtendedPrecision =</span>
+<span class="lineno">   63 </span><span class="spaces">  </span><span class="nottickedoff">setExtendedPrecision'_ &gt;&gt;</span>
+<span class="lineno">   64 </span><span class="spaces">  </span><span class="nottickedoff">return ()</span></span>
+<span class="lineno">   65 </span>
+<span class="lineno">   66 </span>
+<span class="lineno">   67 </span>
+<span class="lineno">   68 </span>-- |returns the current value of the Evaluation Date:
+<span class="lineno">   69 </span>-- the date at which pricing is to be performed
+<span class="lineno">   70 </span>evaluationDate :: IO ((Day))
+<span class="lineno">   71 </span><span class="decl"><span class="istickedoff">evaluationDate =</span>
+<span class="lineno">   72 </span><span class="spaces">  </span><span class="istickedoff">evaluationDate'_ &gt;&gt;= \res -&gt;</span>
+<span class="lineno">   73 </span><span class="spaces">  </span><span class="istickedoff">let {res' = toDay res} in</span>
+<span class="lineno">   74 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">   75 </span>
+<span class="lineno">   76 </span>
+<span class="lineno">   77 </span>
+<span class="lineno">   78 </span>-- |sets the value of the Evaluation Date
+<span class="lineno">   79 </span>-- |Nothing sets the evaluation date to Date::todaysDate() and allow it to change at midnight. This comes at the price of losing some performance, since the evaluation date is re-evaluated each time it is read.
+<span class="lineno">   80 </span>setEvaluationDate :: (Maybe Day) -&gt; IO ()
+<span class="lineno">   81 </span><span class="decl"><span class="istickedoff">setEvaluationDate a1 =</span>
+<span class="lineno">   82 </span><span class="spaces">  </span><span class="istickedoff">withMaybeDay a1 $ \a1' -&gt; </span>
+<span class="lineno">   83 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
+<span class="lineno">   84 </span><span class="spaces">  </span><span class="istickedoff">setEvaluationDate'_ a1' a2' &gt;&gt;</span>
+<span class="lineno">   85 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
+<span class="lineno">   86 </span><span class="spaces">  </span><span class="istickedoff">return <span class="nottickedoff">()</span></span></span>
+<span class="lineno">   87 </span>
+<span class="lineno">   88 </span>
+<span class="lineno">   89 </span>
+<span class="lineno">   90 </span>-- |returns the current value of the boolean which enforce the usage of historic
+<span class="lineno">   91 </span>-- fixings for today's date
+<span class="lineno">   92 </span>enforceTodaysHistoricFixings :: IO ((Bool))
+<span class="lineno">   93 </span><span class="decl"><span class="istickedoff">enforceTodaysHistoricFixings =</span>
+<span class="lineno">   94 </span><span class="spaces">  </span><span class="istickedoff">enforceTodaysHistoricFixings'_ &gt;&gt;= \res -&gt;</span>
+<span class="lineno">   95 </span><span class="spaces">  </span><span class="istickedoff">let {res' = C2HSImp.toBool res} in</span>
+<span class="lineno">   96 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">   97 </span>
+<span class="lineno">   98 </span>
+<span class="lineno">   99 </span>
+<span class="lineno">  100 </span>-- |sets the value of the boolean which enforce the usage of historic fixings
+<span class="lineno">  101 </span>-- for today's date
+<span class="lineno">  102 </span>setEnforceTodaysHistoricFixings :: (Bool) -&gt; IO ()
+<span class="lineno">  103 </span><span class="decl"><span class="istickedoff">setEnforceTodaysHistoricFixings a1 =</span>
+<span class="lineno">  104 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = C2HSImp.fromBool a1} in </span>
+<span class="lineno">  105 </span><span class="spaces">  </span><span class="istickedoff">setEnforceTodaysHistoricFixings'_ a1' &gt;&gt;</span>
+<span class="lineno">  106 </span><span class="spaces">  </span><span class="istickedoff">return <span class="nottickedoff">()</span></span></span>
+<span class="lineno">  107 </span>
+<span class="lineno">  108 </span>
+<span class="lineno">  109 </span>
+<span class="lineno">  110 </span>-- |if set, whether CashFlows occurring on today's date should enter the NPV; when the NPV date
+<span class="lineno">  111 </span>-- equals today's date this overrides includeReferenceDateEvents and cannot be overridden locally
+<span class="lineno">  112 </span>includeTodaysCashFlows :: IO ((Maybe Bool))
+<span class="lineno">  113 </span><span class="decl"><span class="istickedoff">includeTodaysCashFlows =</span>
+<span class="lineno">  114 </span><span class="spaces">  </span><span class="istickedoff">includeTodaysCashFlows'_ &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  115 </span><span class="spaces">  </span><span class="istickedoff">let {res' = toMaybeBool res} in</span>
+<span class="lineno">  116 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  117 </span>
+<span class="lineno">  118 </span>
+<span class="lineno">  119 </span>
+<span class="lineno">  120 </span>-- |sets whether CashFlows occurring on today's date should enter the NPV
+<span class="lineno">  121 </span>setIncludeTodaysCashFlows :: (Maybe Bool) -&gt; IO ()
+<span class="lineno">  122 </span><span class="decl"><span class="istickedoff">setIncludeTodaysCashFlows a1 =</span>
+<span class="lineno">  123 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = fromMaybeBool a1} in </span>
+<span class="lineno">  124 </span><span class="spaces">  </span><span class="istickedoff">setIncludeTodaysCashFlows'_ a1' &gt;&gt;</span>
+<span class="lineno">  125 </span><span class="spaces">  </span><span class="istickedoff">return <span class="nottickedoff">()</span></span></span>
+<span class="lineno">  126 </span>
+<span class="lineno">  127 </span>
+<span class="lineno">  128 </span>
+<span class="lineno">  129 </span>-- |This flag specifies whether or not Events occurring on the reference date should, by default, be taken into account as not happened yet. It can be overridden locally when calling the Event::hasOccurred method.
+<span class="lineno">  130 </span>includeReferenceDateEvents :: IO ((Bool))
+<span class="lineno">  131 </span><span class="decl"><span class="nottickedoff">includeReferenceDateEvents =</span>
+<span class="lineno">  132 </span><span class="spaces">  </span><span class="nottickedoff">includeReferenceDateEvents'_ &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  133 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = C2HSImp.toBool res} in</span>
+<span class="lineno">  134 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno">  135 </span>
+<span class="lineno">  136 </span>
+<span class="lineno">  137 </span>
+<span class="lineno">  138 </span>-- |sets whether Events occurring on the reference date should, by default, be taken into account as not happened yet
+<span class="lineno">  139 </span>setIncludeReferenceDateEvents :: (Bool) -&gt; IO ()
+<span class="lineno">  140 </span><span class="decl"><span class="istickedoff">setIncludeReferenceDateEvents a1 =</span>
+<span class="lineno">  141 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = C2HSImp.fromBool a1} in </span>
+<span class="lineno">  142 </span><span class="spaces">  </span><span class="istickedoff">setIncludeReferenceDateEvents'_ a1' &gt;&gt;</span>
+<span class="lineno">  143 </span><span class="spaces">  </span><span class="istickedoff">return <span class="nottickedoff">()</span></span></span>
+<span class="lineno">  144 </span>
+<span class="lineno">  145 </span>
+<span class="lineno">  146 </span>
+<span class="lineno">  147 </span>-- |Disables observer notifications. When @deferred@ is 'True', notifications are queued until
+<span class="lineno">  148 </span>-- 'enableUpdates' is called; otherwise they are discarded.
+<span class="lineno">  149 </span>disableUpdates :: (Bool) -- ^deferred
+<span class="lineno">  150 </span> -&gt; IO ()
+<span class="lineno">  151 </span><span class="decl"><span class="istickedoff">disableUpdates a1 =</span>
+<span class="lineno">  152 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = C2HSImp.fromBool a1} in </span>
+<span class="lineno">  153 </span><span class="spaces">  </span><span class="istickedoff">disableUpdates'_ a1' &gt;&gt;</span>
+<span class="lineno">  154 </span><span class="spaces">  </span><span class="istickedoff">return <span class="nottickedoff">()</span></span></span>
+<span class="lineno">  155 </span>
+<span class="lineno">  156 </span>
+<span class="lineno">  157 </span>
+<span class="lineno">  158 </span>-- |Enables observer notifications and runs any notifications queued while updates were deferred.
+<span class="lineno">  159 </span>enableUpdates :: IO ()
+<span class="lineno">  160 </span><span class="decl"><span class="istickedoff">enableUpdates =</span>
+<span class="lineno">  161 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a1' -&gt; </span>
+<span class="lineno">  162 </span><span class="spaces">  </span><span class="istickedoff">enableUpdates'_ a1' &gt;&gt;</span>
+<span class="lineno">  163 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a1'&gt;&gt;</span>
+<span class="lineno">  164 </span><span class="spaces">  </span><span class="istickedoff">return <span class="nottickedoff">()</span></span></span>
 <span class="lineno">  165 </span>
-<span class="lineno">  166 </span>{-# NOINLINE version #-}
-<span class="lineno">  167 </span>version :: String
-<span class="lineno">  168 </span><span class="decl"><span class="istickedoff">version = unsafePerformIO $ qlVersion &gt;&gt;= peekCString</span></span>
-<span class="lineno">  169 </span>
-<span class="lineno">  170 </span>{-# NOINLINE boostVersion #-}
-<span class="lineno">  171 </span>boostVersion :: String
-<span class="lineno">  172 </span><span class="decl"><span class="istickedoff">boostVersion = unsafePerformIO $ qlBoostVersion &gt;&gt;= peekCString</span></span>
-<span class="lineno">  173 </span>
-<span class="lineno">  174 </span>epsilon :: Double
-<span class="lineno">  175 </span><span class="decl"><span class="istickedoff">epsilon = realToFrac qlEpsilon</span></span>
+<span class="lineno">  166 </span>
+<span class="lineno">  167 </span>
+<span class="lineno">  168 </span>-- |Whether observer notifications are currently enabled.
+<span class="lineno">  169 </span>updatesEnabled :: IO ((Bool))
+<span class="lineno">  170 </span><span class="decl"><span class="istickedoff">updatesEnabled =</span>
+<span class="lineno">  171 </span><span class="spaces">  </span><span class="istickedoff">updatesEnabled'_ &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  172 </span><span class="spaces">  </span><span class="istickedoff">let {res' = C2HSImp.toBool res} in</span>
+<span class="lineno">  173 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  174 </span>
+<span class="lineno">  175 </span>
 <span class="lineno">  176 </span>
-<span class="lineno">  177 </span>-- vim: set ff=unix ts=8 sts=2 sw=2 et:
-<span class="lineno">  178 </span>
-<span class="lineno">  179 </span>foreign import ccall safe &quot;QuantLib/Settings.chs.h qlSetExtendedPrecision&quot;
-<span class="lineno">  180 </span>  setExtendedPrecision'_ :: (IO ())
-<span class="lineno">  181 </span>
-<span class="lineno">  182 </span>foreign import ccall safe &quot;QuantLib/Settings.chs.h qlSettingsEvaluationDate&quot;
-<span class="lineno">  183 </span>  evaluationDate'_ :: (IO C2HSImp.CInt)
+<span class="lineno">  177 </span>-- |Whether observer notifications are currently disabled with deferred delivery enabled.
+<span class="lineno">  178 </span>updatesDeferred :: IO ((Bool))
+<span class="lineno">  179 </span><span class="decl"><span class="istickedoff">updatesDeferred =</span>
+<span class="lineno">  180 </span><span class="spaces">  </span><span class="istickedoff">updatesDeferred'_ &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  181 </span><span class="spaces">  </span><span class="istickedoff">let {res' = C2HSImp.toBool res} in</span>
+<span class="lineno">  182 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  183 </span>
 <span class="lineno">  184 </span>
-<span class="lineno">  185 </span>foreign import ccall safe &quot;QuantLib/Settings.chs.h qlSettingsSetEvaluationDate&quot;
-<span class="lineno">  186 </span>  setEvaluationDate'_ :: (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ())))
-<span class="lineno">  187 </span>
-<span class="lineno">  188 </span>foreign import ccall safe &quot;QuantLib/Settings.chs.h qlSettingsEnforceTodaysHistoricFixings&quot;
-<span class="lineno">  189 </span>  enforceTodaysHistoricFixings'_ :: (IO C2HSImp.CInt)
+<span class="lineno">  185 </span>
+<span class="lineno">  186 </span>-- |brackets to restore settings once action has completed or raised an exception
+<span class="lineno">  187 </span>keepingSettings :: IO b -&gt; IO b
+<span class="lineno">  188 </span><span class="decl"><span class="istickedoff">keepingSettings = bracket qlSavedSettings qlFreeSavedSettings . const</span></span>
+<span class="lineno">  189 </span>-- SavedSettings destructor suppresses all exceptions
 <span class="lineno">  190 </span>
-<span class="lineno">  191 </span>foreign import ccall safe &quot;QuantLib/Settings.chs.h qlSettingsSetEnforceTodaysHistoricFixings&quot;
-<span class="lineno">  192 </span>  setEnforceTodaysHistoricFixings'_ :: (C2HSImp.CInt -&gt; (IO ()))
-<span class="lineno">  193 </span>
-<span class="lineno">  194 </span>foreign import ccall safe &quot;QuantLib/Settings.chs.h qlSettingsIncludeTodaysCashFlows&quot;
-<span class="lineno">  195 </span>  includeTodaysCashFlows'_ :: (IO C2HSImp.CInt)
-<span class="lineno">  196 </span>
-<span class="lineno">  197 </span>foreign import ccall safe &quot;QuantLib/Settings.chs.h qlSettingsSetIncludeTodaysCashFlows&quot;
-<span class="lineno">  198 </span>  setIncludeTodaysCashFlows'_ :: (C2HSImp.CInt -&gt; (IO ()))
-<span class="lineno">  199 </span>
-<span class="lineno">  200 </span>foreign import ccall safe &quot;QuantLib/Settings.chs.h qlSettingsIncludeReferenceDateEvents&quot;
-<span class="lineno">  201 </span>  includeReferenceDateEvents'_ :: (IO C2HSImp.CInt)
-<span class="lineno">  202 </span>
-<span class="lineno">  203 </span>foreign import ccall safe &quot;QuantLib/Settings.chs.h qlSettingsSetIncludeReferenceDateEvents&quot;
-<span class="lineno">  204 </span>  setIncludeReferenceDateEvents'_ :: (C2HSImp.CInt -&gt; (IO ()))
+<span class="lineno">  191 </span>-- |brackets to restore settings once action has completed or raised an exception. Before restoring settings
+<span class="lineno">  192 </span>-- 'collectGarbage' is run to avoid problems with market data objects watching evaluation date
+<span class="lineno">  193 </span>keepingSettings' :: IO b -&gt; IO b
+<span class="lineno">  194 </span><span class="decl"><span class="istickedoff">keepingSettings' = bracket qlSavedSettings (\s -&gt; collectGarbage &gt;&gt; qlFreeSavedSettings s) . const</span></span>
+<span class="lineno">  195 </span>
+<span class="lineno">  196 </span>-- |Best effort: give the finalizers of unreachable QuantLib objects a chance to run, so
+<span class="lineno">  197 </span>-- their C++ destructors fire before, say, 'setEvaluationDate' notifies surviving observers.
+<span class="lineno">  198 </span>--
+<span class="lineno">  199 </span>-- 'performGC' only /schedules/ finalizers, it does not run them synchronously, so this is a
+<span class="lineno">  200 </span>-- nudge rather than a guarantee. Where correctness depends on an object being gone, anchor
+<span class="lineno">  201 </span>-- its dates so staleness cannot arise in the first place.
+<span class="lineno">  202 </span>collectGarbage :: IO ()
+<span class="lineno">  203 </span><span class="decl"><span class="istickedoff">collectGarbage = performGC &gt;&gt; performGC</span></span>
+<span class="lineno">  204 </span>
+<span class="lineno">  205 </span>foreign import ccall safe &quot;ql.h qlVersion&quot; qlVersion :: IO CString
+<span class="lineno">  206 </span>foreign import ccall safe &quot;ql.h qlBoostVersion&quot; qlBoostVersion :: IO CString
+<span class="lineno">  207 </span>foreign import ccall safe &quot;ql.h qlEpsilon&quot; qlEpsilon :: CDouble
+<span class="lineno">  208 </span>
+<span class="lineno">  209 </span>{-# NOINLINE version #-}
+<span class="lineno">  210 </span>version :: String
+<span class="lineno">  211 </span><span class="decl"><span class="istickedoff">version = unsafePerformIO $ qlVersion &gt;&gt;= peekCString</span></span>
+<span class="lineno">  212 </span>
+<span class="lineno">  213 </span>{-# NOINLINE boostVersion #-}
+<span class="lineno">  214 </span>boostVersion :: String
+<span class="lineno">  215 </span><span class="decl"><span class="istickedoff">boostVersion = unsafePerformIO $ qlBoostVersion &gt;&gt;= peekCString</span></span>
+<span class="lineno">  216 </span>
+<span class="lineno">  217 </span>epsilon :: Double
+<span class="lineno">  218 </span><span class="decl"><span class="istickedoff">epsilon = realToFrac qlEpsilon</span></span>
+<span class="lineno">  219 </span>
+<span class="lineno">  220 </span>-- vim: set ff=unix ts=8 sts=2 sw=2 et:
+<span class="lineno">  221 </span>
+<span class="lineno">  222 </span>foreign import ccall safe &quot;QuantLib/Settings.chs.h qlSetExtendedPrecision&quot;
+<span class="lineno">  223 </span>  setExtendedPrecision'_ :: (IO ())
+<span class="lineno">  224 </span>
+<span class="lineno">  225 </span>foreign import ccall safe &quot;QuantLib/Settings.chs.h qlSettingsEvaluationDate&quot;
+<span class="lineno">  226 </span>  evaluationDate'_ :: (IO C2HSImp.CInt)
+<span class="lineno">  227 </span>
+<span class="lineno">  228 </span>foreign import ccall safe &quot;QuantLib/Settings.chs.h qlSettingsSetEvaluationDate&quot;
+<span class="lineno">  229 </span>  setEvaluationDate'_ :: (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ())))
+<span class="lineno">  230 </span>
+<span class="lineno">  231 </span>foreign import ccall safe &quot;QuantLib/Settings.chs.h qlSettingsEnforceTodaysHistoricFixings&quot;
+<span class="lineno">  232 </span>  enforceTodaysHistoricFixings'_ :: (IO C2HSImp.CInt)
+<span class="lineno">  233 </span>
+<span class="lineno">  234 </span>foreign import ccall safe &quot;QuantLib/Settings.chs.h qlSettingsSetEnforceTodaysHistoricFixings&quot;
+<span class="lineno">  235 </span>  setEnforceTodaysHistoricFixings'_ :: (C2HSImp.CInt -&gt; (IO ()))
+<span class="lineno">  236 </span>
+<span class="lineno">  237 </span>foreign import ccall safe &quot;QuantLib/Settings.chs.h qlSettingsIncludeTodaysCashFlows&quot;
+<span class="lineno">  238 </span>  includeTodaysCashFlows'_ :: (IO C2HSImp.CInt)
+<span class="lineno">  239 </span>
+<span class="lineno">  240 </span>foreign import ccall safe &quot;QuantLib/Settings.chs.h qlSettingsSetIncludeTodaysCashFlows&quot;
+<span class="lineno">  241 </span>  setIncludeTodaysCashFlows'_ :: (C2HSImp.CInt -&gt; (IO ()))
+<span class="lineno">  242 </span>
+<span class="lineno">  243 </span>foreign import ccall safe &quot;QuantLib/Settings.chs.h qlSettingsIncludeReferenceDateEvents&quot;
+<span class="lineno">  244 </span>  includeReferenceDateEvents'_ :: (IO C2HSImp.CInt)
+<span class="lineno">  245 </span>
+<span class="lineno">  246 </span>foreign import ccall safe &quot;QuantLib/Settings.chs.h qlSettingsSetIncludeReferenceDateEvents&quot;
+<span class="lineno">  247 </span>  setIncludeReferenceDateEvents'_ :: (C2HSImp.CInt -&gt; (IO ()))
+<span class="lineno">  248 </span>
+<span class="lineno">  249 </span>foreign import ccall safe &quot;QuantLib/Settings.chs.h qlObservableSettingsDisableUpdates&quot;
+<span class="lineno">  250 </span>  disableUpdates'_ :: (C2HSImp.CInt -&gt; (IO ()))
+<span class="lineno">  251 </span>
+<span class="lineno">  252 </span>foreign import ccall safe &quot;QuantLib/Settings.chs.h qlObservableSettingsEnableUpdates&quot;
+<span class="lineno">  253 </span>  enableUpdates'_ :: ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ()))
+<span class="lineno">  254 </span>
+<span class="lineno">  255 </span>foreign import ccall safe &quot;QuantLib/Settings.chs.h qlObservableSettingsUpdatesEnabled&quot;
+<span class="lineno">  256 </span>  updatesEnabled'_ :: (IO C2HSImp.CInt)
+<span class="lineno">  257 </span>
+<span class="lineno">  258 </span>foreign import ccall safe &quot;QuantLib/Settings.chs.h qlObservableSettingsUpdatesDeferred&quot;
+<span class="lineno">  259 </span>  updatesDeferred'_ :: (IO C2HSImp.CInt)
 
 </pre>
 </body>

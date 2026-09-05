@@ -42,24 +42,24 @@ span.spaces    { background: white }
 <span class="lineno">   23 </span>  , spotIncome
 <span class="lineno">   24 </span>  , spotValue
 <span class="lineno">   25 </span>
-<span class="lineno">   26 </span>  , forwardRate
-<span class="lineno">   27 </span>  , fairForwardRate
-<span class="lineno">   28 </span>  , npvSourceCurrency
-<span class="lineno">   29 </span>  , npvTargetCurrency
-<span class="lineno">   30 </span>  ) where
-<span class="lineno">   31 </span>import qualified Foreign.C.Types as C2HSImp
-<span class="lineno">   32 </span>import qualified Foreign.ForeignPtr as C2HSImp
-<span class="lineno">   33 </span>import qualified Foreign.Marshal.Utils as C2HSImp
-<span class="lineno">   34 </span>import qualified Foreign.Ptr as C2HSImp
-<span class="lineno">   35 </span>
-<span class="lineno">   36 </span>
-<span class="lineno">   37 </span>import QuantLib.Internal
-<span class="lineno">   38 </span>import QuantLib.Internal.Common
-<span class="lineno">   39 </span>import QuantLib.Internal.Type
-<span class="lineno">   40 </span>import QuantLib.InterestRate
-<span class="lineno">   41 </span>
-<span class="lineno">   42 </span>
-<span class="lineno">   43 </span>
+<span class="lineno">   26 </span>  , amount
+<span class="lineno">   27 </span>  , forwardRate
+<span class="lineno">   28 </span>  , fxForwardRate
+<span class="lineno">   29 </span>  , fairForwardRate
+<span class="lineno">   30 </span>  , npvSourceCurrency
+<span class="lineno">   31 </span>  , npvTargetCurrency
+<span class="lineno">   32 </span>  ) where
+<span class="lineno">   33 </span>import qualified Foreign.C.Types as C2HSImp
+<span class="lineno">   34 </span>import qualified Foreign.ForeignPtr as C2HSImp
+<span class="lineno">   35 </span>import qualified Foreign.Marshal.Utils as C2HSImp
+<span class="lineno">   36 </span>import qualified Foreign.Ptr as C2HSImp
+<span class="lineno">   37 </span>import qualified System.IO.Unsafe as C2HSImp
+<span class="lineno">   38 </span>
+<span class="lineno">   39 </span>
+<span class="lineno">   40 </span>import QuantLib.Internal
+<span class="lineno">   41 </span>import QuantLib.Internal.Common
+<span class="lineno">   42 </span>import QuantLib.Internal.Type
+<span class="lineno">   43 </span>import QuantLib.InterestRate
 <span class="lineno">   44 </span>
 <span class="lineno">   45 </span>
 <span class="lineno">   46 </span>
@@ -86,299 +86,333 @@ span.spaces    { background: white }
 <span class="lineno">   67 </span>
 <span class="lineno">   68 </span>
 <span class="lineno">   69 </span>
-<span class="lineno">   70 </span>-- |FRA with a par-rate approximation: the forward rate is forecast from valueDate to maturityDate by the index's forecast curve (useIndexedCoupon=false).
-<span class="lineno">   71 </span>forwardRateAgreement :: (GenIborIndex ibor) -&gt; (Day) -- ^valueDate
-<span class="lineno">   72 </span> -&gt; (Day) -- ^maturityDate
-<span class="lineno">   73 </span> -&gt; (PositionType) -&gt; (Double) -- ^strikeForwardRate
-<span class="lineno">   74 </span> -&gt; (Double) -- ^notionalAmount
-<span class="lineno">   75 </span> -&gt; (Maybe (GenYieldTermStructure y)) -- ^discountCurve
-<span class="lineno">   76 </span> -&gt; IO ((ForwardRateAgreement))
-<span class="lineno">   77 </span><span class="decl"><span class="istickedoff">forwardRateAgreement a1 a2 a3 a4 a5 a6 a7 =</span>
-<span class="lineno">   78 </span><span class="spaces">  </span><span class="istickedoff">withIborIndex a1 $ \a1' -&gt; </span>
-<span class="lineno">   79 </span><span class="spaces">  </span><span class="istickedoff">withDay a2 $ \a2' -&gt; </span>
-<span class="lineno">   80 </span><span class="spaces">  </span><span class="istickedoff">withDay a3 $ \a3' -&gt; </span>
-<span class="lineno">   81 </span><span class="spaces">  </span><span class="istickedoff">let {a4' = fromEnumC a4} in </span>
-<span class="lineno">   82 </span><span class="spaces">  </span><span class="istickedoff">let {a5' = realToFrac a5} in </span>
-<span class="lineno">   83 </span><span class="spaces">  </span><span class="istickedoff">let {a6' = realToFrac a6} in </span>
-<span class="lineno">   84 </span><span class="spaces">  </span><span class="istickedoff">withMaybeYieldTermStructure a7 $ \a7' -&gt; </span>
-<span class="lineno">   85 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a8' -&gt; </span>
-<span class="lineno">   86 </span><span class="spaces">  </span><span class="istickedoff">forwardRateAgreement'_ a1' a2' a3' a4' a5' a6' a7' a8' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">   87 </span><span class="spaces">  </span><span class="istickedoff">peekForwardRateAgreement res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">   88 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a8'&gt;&gt;</span>
-<span class="lineno">   89 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">   90 </span>
-<span class="lineno">   91 </span>
-<span class="lineno">   92 </span>
-<span class="lineno">   93 </span>-- |If strike is given in the constructor, can calculate the NPV of the contract via NPV().If strike/forward price is desired, it can be obtained via forwardPrice(). In this case, the strike variable in the constructor is irrelevant and will be ignored.
-<span class="lineno">   94 </span>bondForward :: (Day) -- ^valueDate
-<span class="lineno">   95 </span> -&gt; (Day) -- ^maturityDate
-<span class="lineno">   96 </span> -&gt; (PositionType) -&gt; (Double) -- ^strike
-<span class="lineno">   97 </span> -&gt; (Word) -- ^settlementDays
-<span class="lineno">   98 </span> -&gt; (DayCounter) -&gt; (Calendar) -&gt; (BusinessDayConvention) -&gt; (GenBond b) -&gt; (Maybe (GenYieldTermStructure y1)) -- ^discountCurve
-<span class="lineno">   99 </span> -&gt; (Maybe (GenYieldTermStructure y2)) -- ^incomeDiscountCurve
-<span class="lineno">  100 </span> -&gt; IO ((BondForward))
-<span class="lineno">  101 </span><span class="decl"><span class="istickedoff">bondForward a1 a2 a3 a4 a5 a6 a7 a8 a9 a10 a11 =</span>
-<span class="lineno">  102 </span><span class="spaces">  </span><span class="istickedoff">withDay a1 $ \a1' -&gt; </span>
-<span class="lineno">  103 </span><span class="spaces">  </span><span class="istickedoff">withDay a2 $ \a2' -&gt; </span>
-<span class="lineno">  104 </span><span class="spaces">  </span><span class="istickedoff">let {a3' = fromEnumC a3} in </span>
-<span class="lineno">  105 </span><span class="spaces">  </span><span class="istickedoff">let {a4' = realToFrac a4} in </span>
-<span class="lineno">  106 </span><span class="spaces">  </span><span class="istickedoff">let {a5' = fromIntegral a5} in </span>
-<span class="lineno">  107 </span><span class="spaces">  </span><span class="istickedoff">withDayCounter a6 $ \a6' -&gt; </span>
-<span class="lineno">  108 </span><span class="spaces">  </span><span class="istickedoff">withCalendar a7 $ \a7' -&gt; </span>
-<span class="lineno">  109 </span><span class="spaces">  </span><span class="istickedoff">let {a8' = fromEnumC a8} in </span>
-<span class="lineno">  110 </span><span class="spaces">  </span><span class="istickedoff">withBond a9 $ \a9' -&gt; </span>
-<span class="lineno">  111 </span><span class="spaces">  </span><span class="istickedoff">withMaybeYieldTermStructure a10 $ \a10' -&gt; </span>
-<span class="lineno">  112 </span><span class="spaces">  </span><span class="istickedoff">withMaybeYieldTermStructure a11 $ \a11' -&gt; </span>
-<span class="lineno">  113 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a12' -&gt; </span>
-<span class="lineno">  114 </span><span class="spaces">  </span><span class="istickedoff">bondForward'_ a1' a2' a3' a4' a5' a6' a7' a8' a9' a10' a11' a12' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  115 </span><span class="spaces">  </span><span class="istickedoff">peekBondForward res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">  116 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a12'&gt;&gt;</span>
-<span class="lineno">  117 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">  118 </span>
-<span class="lineno">  119 </span>
-<span class="lineno">  120 </span>
-<span class="lineno">  121 </span>-- |(dirty) forward bond price minus accrued on bond at delivery
-<span class="lineno">  122 </span>cleanForwardPrice :: (BondForward) -&gt; IO ((Double))
-<span class="lineno">  123 </span><span class="decl"><span class="istickedoff">cleanForwardPrice a1 =</span>
-<span class="lineno">  124 </span><span class="spaces">  </span><span class="istickedoff">withBondForward a1 $ \a1' -&gt; </span>
-<span class="lineno">  125 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
-<span class="lineno">  126 </span><span class="spaces">  </span><span class="istickedoff">cleanForwardPrice'_ a1' a2' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  127 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
-<span class="lineno">  128 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
-<span class="lineno">  129 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">  130 </span>
-<span class="lineno">  131 </span>
-<span class="lineno">  132 </span>
-<span class="lineno">  133 </span>-- |(dirty) forward bond price
-<span class="lineno">  134 </span>forwardPrice :: (BondForward) -&gt; IO ((Double))
-<span class="lineno">  135 </span><span class="decl"><span class="istickedoff">forwardPrice a1 =</span>
-<span class="lineno">  136 </span><span class="spaces">  </span><span class="istickedoff">withBondForward a1 $ \a1' -&gt; </span>
-<span class="lineno">  137 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
-<span class="lineno">  138 </span><span class="spaces">  </span><span class="istickedoff">forwardPrice'_ a1' a2' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  139 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
-<span class="lineno">  140 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
-<span class="lineno">  141 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">  142 </span>
-<span class="lineno">  143 </span>
-<span class="lineno">  144 </span>
-<span class="lineno">  145 </span>-- |forward value/price of underlying, discounting income/dividends
-<span class="lineno">  146 </span>-- if this is a bond forward price, is must be a dirty forward price.
-<span class="lineno">  147 </span>forwardValue :: (GenForward f) -&gt; IO ((Double))
-<span class="lineno">  148 </span><span class="decl"><span class="nottickedoff">forwardValue a1 =</span>
-<span class="lineno">  149 </span><span class="spaces">  </span><span class="nottickedoff">withForward a1 $ \a1' -&gt; </span>
-<span class="lineno">  150 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a2' -&gt; </span>
-<span class="lineno">  151 </span><span class="spaces">  </span><span class="nottickedoff">forwardValue'_ a1' a2' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  152 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = realToFrac res} in</span>
-<span class="lineno">  153 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a2'&gt;&gt;</span>
-<span class="lineno">  154 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
-<span class="lineno">  155 </span>
-<span class="lineno">  156 </span>
-<span class="lineno">  157 </span>
-<span class="lineno">  158 </span>-- |Simple yield calculation based on underlying spot and forward values, taking into account underlying income. When $ t&gt;0 $, call with: underlyingSpotValue=spotValue(t), forwardValue=strikePrice, to get current yield. For a repo, if $ t=0 $, impliedYield should reproduce the spot repo rate. For FRA's, this should reproduce the relevant zero rate at the FRA's maturityDate_;
-<span class="lineno">  159 </span>impliedYield :: (GenForward f) -&gt; (Double) -- ^underlyingSpotValue
-<span class="lineno">  160 </span> -&gt; (Double) -- ^forwarValue
-<span class="lineno">  161 </span> -&gt; (Day) -- ^settlementDate
-<span class="lineno">  162 </span> -&gt; (Compounding) -&gt; (DayCounter) -&gt; IO ((InterestRate))
-<span class="lineno">  163 </span><span class="decl"><span class="istickedoff">impliedYield a1 a2 a3 a4 a5 a6 =</span>
-<span class="lineno">  164 </span><span class="spaces">  </span><span class="istickedoff">withForward a1 $ \a1' -&gt; </span>
-<span class="lineno">  165 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = realToFrac a2} in </span>
-<span class="lineno">  166 </span><span class="spaces">  </span><span class="istickedoff">let {a3' = realToFrac a3} in </span>
-<span class="lineno">  167 </span><span class="spaces">  </span><span class="istickedoff">withDay a4 $ \a4' -&gt; </span>
-<span class="lineno">  168 </span><span class="spaces">  </span><span class="istickedoff">let {a5' = (fromIntegral . fromEnum) a5} in </span>
-<span class="lineno">  169 </span><span class="spaces">  </span><span class="istickedoff">withDayCounter a6 $ \a6' -&gt; </span>
-<span class="lineno">  170 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a7' -&gt; </span>
-<span class="lineno">  171 </span><span class="spaces">  </span><span class="istickedoff">impliedYield'_ a1' a2' a3' a4' a5' a6' a7' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  172 </span><span class="spaces">  </span><span class="istickedoff">peekInterestRate res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">  173 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a7'&gt;&gt;</span>
-<span class="lineno">  174 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">  175 </span>
-<span class="lineno">  176 </span>
-<span class="lineno">  177 </span>
-<span class="lineno">  178 </span>-- |Date on which the forward contract settles.
-<span class="lineno">  179 </span>settlementDate :: (GenForward f) -&gt; IO ((Day))
-<span class="lineno">  180 </span><span class="decl"><span class="nottickedoff">settlementDate a1 =</span>
-<span class="lineno">  181 </span><span class="spaces">  </span><span class="nottickedoff">withForward a1 $ \a1' -&gt; </span>
-<span class="lineno">  182 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a2' -&gt; </span>
-<span class="lineno">  183 </span><span class="spaces">  </span><span class="nottickedoff">settlementDate'_ a1' a2' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  184 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = toDay res} in</span>
-<span class="lineno">  185 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a2'&gt;&gt;</span>
-<span class="lineno">  186 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
-<span class="lineno">  187 </span>
-<span class="lineno">  188 </span>
-<span class="lineno">  189 </span>
-<span class="lineno">  190 </span>-- |NPV of income/dividends/storage-costs etc. of underlying instrument.
-<span class="lineno">  191 </span>spotIncome :: (GenForward f) -&gt; (GenYieldTermStructure y) -&gt; IO ((Double))
-<span class="lineno">  192 </span><span class="decl"><span class="istickedoff">spotIncome a1 a2 =</span>
-<span class="lineno">  193 </span><span class="spaces">  </span><span class="istickedoff">withForward a1 $ \a1' -&gt; </span>
-<span class="lineno">  194 </span><span class="spaces">  </span><span class="istickedoff">withYieldTermStructure a2 $ \a2' -&gt; </span>
-<span class="lineno">  195 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
-<span class="lineno">  196 </span><span class="spaces">  </span><span class="istickedoff">spotIncome'_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  197 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
-<span class="lineno">  198 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
-<span class="lineno">  199 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">  200 </span>
-<span class="lineno">  201 </span>
-<span class="lineno">  202 </span>
-<span class="lineno">  203 </span>-- |returns spot value/price of an underlying financial instrument
-<span class="lineno">  204 </span>spotValue :: (GenForward f) -&gt; IO ((Double))
-<span class="lineno">  205 </span><span class="decl"><span class="nottickedoff">spotValue a1 =</span>
-<span class="lineno">  206 </span><span class="spaces">  </span><span class="nottickedoff">withForward a1 $ \a1' -&gt; </span>
-<span class="lineno">  207 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a2' -&gt; </span>
-<span class="lineno">  208 </span><span class="spaces">  </span><span class="nottickedoff">spotValue'_ a1' a2' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  209 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = realToFrac res} in</span>
-<span class="lineno">  210 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a2'&gt;&gt;</span>
-<span class="lineno">  211 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
-<span class="lineno">  212 </span>
-<span class="lineno">  213 </span>
-<span class="lineno">  214 </span>
-<span class="lineno">  215 </span>-- |Returns the relevant forward rate associated with the FRA term.
-<span class="lineno">  216 </span>forwardRate :: (ForwardRateAgreement) -&gt; IO ((InterestRate))
-<span class="lineno">  217 </span><span class="decl"><span class="istickedoff">forwardRate a1 =</span>
-<span class="lineno">  218 </span><span class="spaces">  </span><span class="istickedoff">withGenInstrument a1 $ \a1' -&gt; </span>
-<span class="lineno">  219 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
-<span class="lineno">  220 </span><span class="spaces">  </span><span class="istickedoff">forwardRate'_ a1' a2' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  221 </span><span class="spaces">  </span><span class="istickedoff">peekInterestRate res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">  222 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
-<span class="lineno">  223 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">  224 </span>
-<span class="lineno">  225 </span>
-<span class="lineno">  226 </span>
-<span class="lineno">  227 </span>-- |FX forward using nominal amounts in both currencies.
-<span class="lineno">  228 </span>fxForward :: (Double) -- ^sourceNominal
-<span class="lineno">  229 </span> -&gt; (Currency) -- ^sourceCurrency
-<span class="lineno">  230 </span> -&gt; (Double) -- ^targetNominal
-<span class="lineno">  231 </span> -&gt; (Currency) -- ^targetCurrency
-<span class="lineno">  232 </span> -&gt; (Day) -- ^maturityDate
-<span class="lineno">  233 </span> -&gt; (Bool) -- ^paySourceCurrency
-<span class="lineno">  234 </span> -&gt; (Word) -- ^settlementDays
-<span class="lineno">  235 </span> -&gt; (Calendar) -- ^paymentCalendar
-<span class="lineno">  236 </span> -&gt; IO ((FxForward))
-<span class="lineno">  237 </span><span class="decl"><span class="istickedoff">fxForward a1 a2 a3 a4 a5 a6 a7 a8 =</span>
-<span class="lineno">  238 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = realToFrac a1} in </span>
-<span class="lineno">  239 </span><span class="spaces">  </span><span class="istickedoff">withCurrency a2 $ \a2' -&gt; </span>
-<span class="lineno">  240 </span><span class="spaces">  </span><span class="istickedoff">let {a3' = realToFrac a3} in </span>
-<span class="lineno">  241 </span><span class="spaces">  </span><span class="istickedoff">withCurrency a4 $ \a4' -&gt; </span>
-<span class="lineno">  242 </span><span class="spaces">  </span><span class="istickedoff">withDay a5 $ \a5' -&gt; </span>
-<span class="lineno">  243 </span><span class="spaces">  </span><span class="istickedoff">let {a6' = C2HSImp.fromBool a6} in </span>
-<span class="lineno">  244 </span><span class="spaces">  </span><span class="istickedoff">let {a7' = fromIntegral a7} in </span>
-<span class="lineno">  245 </span><span class="spaces">  </span><span class="istickedoff">withCalendar a8 $ \a8' -&gt; </span>
-<span class="lineno">  246 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a9' -&gt; </span>
-<span class="lineno">  247 </span><span class="spaces">  </span><span class="istickedoff">fxForward'_ a1' a2' a3' a4' a5' a6' a7' a8' a9' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  248 </span><span class="spaces">  </span><span class="istickedoff">peekFxForward res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">  249 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a9'&gt;&gt;</span>
-<span class="lineno">  250 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">  251 </span>
-<span class="lineno">  252 </span>
-<span class="lineno">  253 </span>
-<span class="lineno">  254 </span>-- |FX forward using a source nominal amount and a contracted forward rate (target/source).
-<span class="lineno">  255 </span>fxForward' :: (Double) -- ^sourceNominal
-<span class="lineno">  256 </span> -&gt; (Currency) -- ^sourceCurrency
-<span class="lineno">  257 </span> -&gt; (Currency) -- ^targetCurrency
-<span class="lineno">  258 </span> -&gt; (Double) -- ^forwardRate
-<span class="lineno">  259 </span> -&gt; (Day) -- ^maturityDate
-<span class="lineno">  260 </span> -&gt; (Bool) -- ^paySourceCurrency
-<span class="lineno">  261 </span> -&gt; (Word) -- ^settlementDays
-<span class="lineno">  262 </span> -&gt; (Calendar) -- ^paymentCalendar
-<span class="lineno">  263 </span> -&gt; IO ((FxForward))
-<span class="lineno">  264 </span><span class="decl"><span class="istickedoff">fxForward' a1 a2 a3 a4 a5 a6 a7 a8 =</span>
-<span class="lineno">  265 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = realToFrac a1} in </span>
-<span class="lineno">  266 </span><span class="spaces">  </span><span class="istickedoff">withCurrency a2 $ \a2' -&gt; </span>
-<span class="lineno">  267 </span><span class="spaces">  </span><span class="istickedoff">withCurrency a3 $ \a3' -&gt; </span>
-<span class="lineno">  268 </span><span class="spaces">  </span><span class="istickedoff">let {a4' = realToFrac a4} in </span>
-<span class="lineno">  269 </span><span class="spaces">  </span><span class="istickedoff">withDay a5 $ \a5' -&gt; </span>
-<span class="lineno">  270 </span><span class="spaces">  </span><span class="istickedoff">let {a6' = C2HSImp.fromBool a6} in </span>
-<span class="lineno">  271 </span><span class="spaces">  </span><span class="istickedoff">let {a7' = fromIntegral a7} in </span>
-<span class="lineno">  272 </span><span class="spaces">  </span><span class="istickedoff">withCalendar a8 $ \a8' -&gt; </span>
-<span class="lineno">  273 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a9' -&gt; </span>
-<span class="lineno">  274 </span><span class="spaces">  </span><span class="istickedoff">fxForward''_ a1' a2' a3' a4' a5' a6' a7' a8' a9' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  275 </span><span class="spaces">  </span><span class="istickedoff">peekFxForward res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">  276 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a9'&gt;&gt;</span>
-<span class="lineno">  277 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">  278 </span>
-<span class="lineno">  279 </span>
-<span class="lineno">  280 </span>
-<span class="lineno">  281 </span>-- |The market-implied fair forward rate, computed by the pricing engine.
-<span class="lineno">  282 </span>fairForwardRate :: (FxForward) -&gt; IO ((Double))
-<span class="lineno">  283 </span><span class="decl"><span class="istickedoff">fairForwardRate a1 =</span>
-<span class="lineno">  284 </span><span class="spaces">  </span><span class="istickedoff">withGenInstrument a1 $ \a1' -&gt; </span>
-<span class="lineno">  285 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
-<span class="lineno">  286 </span><span class="spaces">  </span><span class="istickedoff">fairForwardRate'_ a1' a2' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  287 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
-<span class="lineno">  288 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
-<span class="lineno">  289 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">  290 </span>
-<span class="lineno">  291 </span>
-<span class="lineno">  292 </span>
-<span class="lineno">  293 </span>-- |NPV in source currency terms.
-<span class="lineno">  294 </span>npvSourceCurrency :: (FxForward) -&gt; IO ((Double))
-<span class="lineno">  295 </span><span class="decl"><span class="istickedoff">npvSourceCurrency a1 =</span>
-<span class="lineno">  296 </span><span class="spaces">  </span><span class="istickedoff">withGenInstrument a1 $ \a1' -&gt; </span>
-<span class="lineno">  297 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
-<span class="lineno">  298 </span><span class="spaces">  </span><span class="istickedoff">npvSourceCurrency'_ a1' a2' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  299 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
-<span class="lineno">  300 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
-<span class="lineno">  301 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">  302 </span>
-<span class="lineno">  303 </span>
-<span class="lineno">  304 </span>
-<span class="lineno">  305 </span>-- |NPV in target currency terms.
-<span class="lineno">  306 </span>npvTargetCurrency :: (FxForward) -&gt; IO ((Double))
-<span class="lineno">  307 </span><span class="decl"><span class="istickedoff">npvTargetCurrency a1 =</span>
-<span class="lineno">  308 </span><span class="spaces">  </span><span class="istickedoff">withGenInstrument a1 $ \a1' -&gt; </span>
-<span class="lineno">  309 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
-<span class="lineno">  310 </span><span class="spaces">  </span><span class="istickedoff">npvTargetCurrency'_ a1' a2' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  311 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
-<span class="lineno">  312 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
-<span class="lineno">  313 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">  314 </span>
-<span class="lineno">  315 </span>
-<span class="lineno">  316 </span>
-<span class="lineno">  317 </span>-- vim: set ff=unix ts=8 sts=2 sw=2 et:
+<span class="lineno">   70 </span>
+<span class="lineno">   71 </span>
+<span class="lineno">   72 </span>
+<span class="lineno">   73 </span>-- |FRA with a par-rate approximation: the forward rate is forecast from valueDate to maturityDate by the index's forecast curve (useIndexedCoupon=false).
+<span class="lineno">   74 </span>forwardRateAgreement :: (GenIborIndex ibor) -&gt; (Day) -- ^valueDate
+<span class="lineno">   75 </span> -&gt; (Day) -- ^maturityDate
+<span class="lineno">   76 </span> -&gt; (PositionType) -&gt; (Double) -- ^strikeForwardRate
+<span class="lineno">   77 </span> -&gt; (Double) -- ^notionalAmount
+<span class="lineno">   78 </span> -&gt; (Maybe (GenYieldTermStructure y)) -- ^discountCurve
+<span class="lineno">   79 </span> -&gt; IO ((ForwardRateAgreement))
+<span class="lineno">   80 </span><span class="decl"><span class="istickedoff">forwardRateAgreement a1 a2 a3 a4 a5 a6 a7 =</span>
+<span class="lineno">   81 </span><span class="spaces">  </span><span class="istickedoff">withIborIndex a1 $ \a1' -&gt; </span>
+<span class="lineno">   82 </span><span class="spaces">  </span><span class="istickedoff">withDay a2 $ \a2' -&gt; </span>
+<span class="lineno">   83 </span><span class="spaces">  </span><span class="istickedoff">withDay a3 $ \a3' -&gt; </span>
+<span class="lineno">   84 </span><span class="spaces">  </span><span class="istickedoff">let {a4' = fromEnumC a4} in </span>
+<span class="lineno">   85 </span><span class="spaces">  </span><span class="istickedoff">let {a5' = realToFrac a5} in </span>
+<span class="lineno">   86 </span><span class="spaces">  </span><span class="istickedoff">let {a6' = realToFrac a6} in </span>
+<span class="lineno">   87 </span><span class="spaces">  </span><span class="istickedoff">withMaybeYieldTermStructure a7 $ \a7' -&gt; </span>
+<span class="lineno">   88 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a8' -&gt; </span>
+<span class="lineno">   89 </span><span class="spaces">  </span><span class="istickedoff">forwardRateAgreement'_ a1' a2' a3' a4' a5' a6' a7' a8' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">   90 </span><span class="spaces">  </span><span class="istickedoff">peekForwardRateAgreement res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">   91 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a8'&gt;&gt;</span>
+<span class="lineno">   92 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">   93 </span>
+<span class="lineno">   94 </span>
+<span class="lineno">   95 </span>
+<span class="lineno">   96 </span>-- |If strike is given in the constructor, can calculate the NPV of the contract via NPV().If strike/forward price is desired, it can be obtained via forwardPrice(). In this case, the strike variable in the constructor is irrelevant and will be ignored.
+<span class="lineno">   97 </span>bondForward :: (Day) -- ^valueDate
+<span class="lineno">   98 </span> -&gt; (Day) -- ^maturityDate
+<span class="lineno">   99 </span> -&gt; (PositionType) -&gt; (Double) -- ^strike
+<span class="lineno">  100 </span> -&gt; (Word) -- ^settlementDays
+<span class="lineno">  101 </span> -&gt; (DayCounter) -&gt; (Calendar) -&gt; (BusinessDayConvention) -&gt; (GenBond b) -&gt; (Maybe (GenYieldTermStructure y1)) -- ^discountCurve
+<span class="lineno">  102 </span> -&gt; (Maybe (GenYieldTermStructure y2)) -- ^incomeDiscountCurve
+<span class="lineno">  103 </span> -&gt; IO ((BondForward))
+<span class="lineno">  104 </span><span class="decl"><span class="istickedoff">bondForward a1 a2 a3 a4 a5 a6 a7 a8 a9 a10 a11 =</span>
+<span class="lineno">  105 </span><span class="spaces">  </span><span class="istickedoff">withDay a1 $ \a1' -&gt; </span>
+<span class="lineno">  106 </span><span class="spaces">  </span><span class="istickedoff">withDay a2 $ \a2' -&gt; </span>
+<span class="lineno">  107 </span><span class="spaces">  </span><span class="istickedoff">let {a3' = fromEnumC a3} in </span>
+<span class="lineno">  108 </span><span class="spaces">  </span><span class="istickedoff">let {a4' = realToFrac a4} in </span>
+<span class="lineno">  109 </span><span class="spaces">  </span><span class="istickedoff">let {a5' = fromIntegral a5} in </span>
+<span class="lineno">  110 </span><span class="spaces">  </span><span class="istickedoff">withDayCounter a6 $ \a6' -&gt; </span>
+<span class="lineno">  111 </span><span class="spaces">  </span><span class="istickedoff">withCalendar a7 $ \a7' -&gt; </span>
+<span class="lineno">  112 </span><span class="spaces">  </span><span class="istickedoff">let {a8' = fromEnumC a8} in </span>
+<span class="lineno">  113 </span><span class="spaces">  </span><span class="istickedoff">withBond a9 $ \a9' -&gt; </span>
+<span class="lineno">  114 </span><span class="spaces">  </span><span class="istickedoff">withMaybeYieldTermStructure a10 $ \a10' -&gt; </span>
+<span class="lineno">  115 </span><span class="spaces">  </span><span class="istickedoff">withMaybeYieldTermStructure a11 $ \a11' -&gt; </span>
+<span class="lineno">  116 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a12' -&gt; </span>
+<span class="lineno">  117 </span><span class="spaces">  </span><span class="istickedoff">bondForward'_ a1' a2' a3' a4' a5' a6' a7' a8' a9' a10' a11' a12' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  118 </span><span class="spaces">  </span><span class="istickedoff">peekBondForward res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  119 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a12'&gt;&gt;</span>
+<span class="lineno">  120 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  121 </span>
+<span class="lineno">  122 </span>
+<span class="lineno">  123 </span>
+<span class="lineno">  124 </span>-- |(dirty) forward bond price minus accrued on bond at delivery
+<span class="lineno">  125 </span>cleanForwardPrice :: (BondForward) -&gt; IO ((Double))
+<span class="lineno">  126 </span><span class="decl"><span class="istickedoff">cleanForwardPrice a1 =</span>
+<span class="lineno">  127 </span><span class="spaces">  </span><span class="istickedoff">withBondForward a1 $ \a1' -&gt; </span>
+<span class="lineno">  128 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
+<span class="lineno">  129 </span><span class="spaces">  </span><span class="istickedoff">cleanForwardPrice'_ a1' a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  130 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno">  131 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
+<span class="lineno">  132 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  133 </span>
+<span class="lineno">  134 </span>
+<span class="lineno">  135 </span>
+<span class="lineno">  136 </span>-- |(dirty) forward bond price
+<span class="lineno">  137 </span>forwardPrice :: (BondForward) -&gt; IO ((Double))
+<span class="lineno">  138 </span><span class="decl"><span class="istickedoff">forwardPrice a1 =</span>
+<span class="lineno">  139 </span><span class="spaces">  </span><span class="istickedoff">withBondForward a1 $ \a1' -&gt; </span>
+<span class="lineno">  140 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
+<span class="lineno">  141 </span><span class="spaces">  </span><span class="istickedoff">forwardPrice'_ a1' a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  142 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno">  143 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
+<span class="lineno">  144 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  145 </span>
+<span class="lineno">  146 </span>
+<span class="lineno">  147 </span>
+<span class="lineno">  148 </span>-- |forward value/price of underlying, discounting income/dividends
+<span class="lineno">  149 </span>-- if this is a bond forward price, is must be a dirty forward price.
+<span class="lineno">  150 </span>forwardValue :: (GenForward f) -&gt; IO ((Double))
+<span class="lineno">  151 </span><span class="decl"><span class="nottickedoff">forwardValue a1 =</span>
+<span class="lineno">  152 </span><span class="spaces">  </span><span class="nottickedoff">withForward a1 $ \a1' -&gt; </span>
+<span class="lineno">  153 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a2' -&gt; </span>
+<span class="lineno">  154 </span><span class="spaces">  </span><span class="nottickedoff">forwardValue'_ a1' a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  155 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno">  156 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a2'&gt;&gt;</span>
+<span class="lineno">  157 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno">  158 </span>
+<span class="lineno">  159 </span>
+<span class="lineno">  160 </span>
+<span class="lineno">  161 </span>-- |Simple yield calculation based on underlying spot and forward values, taking into account underlying income. When $ t&gt;0 $, call with: underlyingSpotValue=spotValue(t), forwardValue=strikePrice, to get current yield. For a repo, if $ t=0 $, impliedYield should reproduce the spot repo rate. For FRA's, this should reproduce the relevant zero rate at the FRA's maturityDate_;
+<span class="lineno">  162 </span>impliedYield :: (GenForward f) -&gt; (Double) -- ^underlyingSpotValue
+<span class="lineno">  163 </span> -&gt; (Double) -- ^forwarValue
+<span class="lineno">  164 </span> -&gt; (Day) -- ^settlementDate
+<span class="lineno">  165 </span> -&gt; (Compounding) -&gt; (DayCounter) -&gt; IO ((InterestRate))
+<span class="lineno">  166 </span><span class="decl"><span class="istickedoff">impliedYield a1 a2 a3 a4 a5 a6 =</span>
+<span class="lineno">  167 </span><span class="spaces">  </span><span class="istickedoff">withForward a1 $ \a1' -&gt; </span>
+<span class="lineno">  168 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = realToFrac a2} in </span>
+<span class="lineno">  169 </span><span class="spaces">  </span><span class="istickedoff">let {a3' = realToFrac a3} in </span>
+<span class="lineno">  170 </span><span class="spaces">  </span><span class="istickedoff">withDay a4 $ \a4' -&gt; </span>
+<span class="lineno">  171 </span><span class="spaces">  </span><span class="istickedoff">let {a5' = (fromIntegral . fromEnum) a5} in </span>
+<span class="lineno">  172 </span><span class="spaces">  </span><span class="istickedoff">withDayCounter a6 $ \a6' -&gt; </span>
+<span class="lineno">  173 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a7' -&gt; </span>
+<span class="lineno">  174 </span><span class="spaces">  </span><span class="istickedoff">impliedYield'_ a1' a2' a3' a4' a5' a6' a7' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  175 </span><span class="spaces">  </span><span class="istickedoff">peekInterestRate res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  176 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a7'&gt;&gt;</span>
+<span class="lineno">  177 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  178 </span>
+<span class="lineno">  179 </span>
+<span class="lineno">  180 </span>
+<span class="lineno">  181 </span>-- |Date on which the forward contract settles.
+<span class="lineno">  182 </span>settlementDate :: (GenForward f) -&gt; IO ((Day))
+<span class="lineno">  183 </span><span class="decl"><span class="nottickedoff">settlementDate a1 =</span>
+<span class="lineno">  184 </span><span class="spaces">  </span><span class="nottickedoff">withForward a1 $ \a1' -&gt; </span>
+<span class="lineno">  185 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a2' -&gt; </span>
+<span class="lineno">  186 </span><span class="spaces">  </span><span class="nottickedoff">settlementDate'_ a1' a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  187 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = toDay res} in</span>
+<span class="lineno">  188 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a2'&gt;&gt;</span>
+<span class="lineno">  189 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno">  190 </span>
+<span class="lineno">  191 </span>
+<span class="lineno">  192 </span>
+<span class="lineno">  193 </span>-- |NPV of income/dividends/storage-costs etc. of underlying instrument.
+<span class="lineno">  194 </span>spotIncome :: (GenForward f) -&gt; (GenYieldTermStructure y) -&gt; IO ((Double))
+<span class="lineno">  195 </span><span class="decl"><span class="istickedoff">spotIncome a1 a2 =</span>
+<span class="lineno">  196 </span><span class="spaces">  </span><span class="istickedoff">withForward a1 $ \a1' -&gt; </span>
+<span class="lineno">  197 </span><span class="spaces">  </span><span class="istickedoff">withYieldTermStructure a2 $ \a2' -&gt; </span>
+<span class="lineno">  198 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
+<span class="lineno">  199 </span><span class="spaces">  </span><span class="istickedoff">spotIncome'_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  200 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno">  201 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
+<span class="lineno">  202 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  203 </span>
+<span class="lineno">  204 </span>
+<span class="lineno">  205 </span>
+<span class="lineno">  206 </span>-- |returns spot value/price of an underlying financial instrument
+<span class="lineno">  207 </span>spotValue :: (GenForward f) -&gt; IO ((Double))
+<span class="lineno">  208 </span><span class="decl"><span class="nottickedoff">spotValue a1 =</span>
+<span class="lineno">  209 </span><span class="spaces">  </span><span class="nottickedoff">withForward a1 $ \a1' -&gt; </span>
+<span class="lineno">  210 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a2' -&gt; </span>
+<span class="lineno">  211 </span><span class="spaces">  </span><span class="nottickedoff">spotValue'_ a1' a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  212 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno">  213 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a2'&gt;&gt;</span>
+<span class="lineno">  214 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno">  215 </span>
+<span class="lineno">  216 </span>
+<span class="lineno">  217 </span>
+<span class="lineno">  218 </span>-- |Returns the relevant forward rate associated with the FRA term.
+<span class="lineno">  219 </span>forwardRate :: (ForwardRateAgreement) -&gt; IO ((InterestRate))
+<span class="lineno">  220 </span><span class="decl"><span class="istickedoff">forwardRate a1 =</span>
+<span class="lineno">  221 </span><span class="spaces">  </span><span class="istickedoff">withGenInstrument a1 $ \a1' -&gt; </span>
+<span class="lineno">  222 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
+<span class="lineno">  223 </span><span class="spaces">  </span><span class="istickedoff">forwardRate'_ a1' a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  224 </span><span class="spaces">  </span><span class="istickedoff">peekInterestRate res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  225 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
+<span class="lineno">  226 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  227 </span>
+<span class="lineno">  228 </span>
+<span class="lineno">  229 </span>
+<span class="lineno">  230 </span>-- |The payoff on the value date: the discounted difference between the FRA's forward rate and
+<span class="lineno">  231 </span>-- its strike (contract) rate, scaled by the notional and accrual, negated for a short position.
+<span class="lineno">  232 </span>amount :: (ForwardRateAgreement) -&gt; IO ((Double))
+<span class="lineno">  233 </span><span class="decl"><span class="istickedoff">amount a1 =</span>
+<span class="lineno">  234 </span><span class="spaces">  </span><span class="istickedoff">withGenInstrument a1 $ \a1' -&gt; </span>
+<span class="lineno">  235 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
+<span class="lineno">  236 </span><span class="spaces">  </span><span class="istickedoff">amount'_ a1' a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  237 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno">  238 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
+<span class="lineno">  239 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  240 </span>
+<span class="lineno">  241 </span>
+<span class="lineno">  242 </span>
+<span class="lineno">  243 </span>-- |FX forward using nominal amounts in both currencies.
+<span class="lineno">  244 </span>fxForward :: (Double) -- ^sourceNominal
+<span class="lineno">  245 </span> -&gt; (Currency) -- ^sourceCurrency
+<span class="lineno">  246 </span> -&gt; (Double) -- ^targetNominal
+<span class="lineno">  247 </span> -&gt; (Currency) -- ^targetCurrency
+<span class="lineno">  248 </span> -&gt; (Day) -- ^maturityDate
+<span class="lineno">  249 </span> -&gt; (Bool) -- ^paySourceCurrency
+<span class="lineno">  250 </span> -&gt; (Word) -- ^settlementDays
+<span class="lineno">  251 </span> -&gt; (Calendar) -- ^paymentCalendar
+<span class="lineno">  252 </span> -&gt; IO ((FxForward))
+<span class="lineno">  253 </span><span class="decl"><span class="istickedoff">fxForward a1 a2 a3 a4 a5 a6 a7 a8 =</span>
+<span class="lineno">  254 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = realToFrac a1} in </span>
+<span class="lineno">  255 </span><span class="spaces">  </span><span class="istickedoff">withCurrency a2 $ \a2' -&gt; </span>
+<span class="lineno">  256 </span><span class="spaces">  </span><span class="istickedoff">let {a3' = realToFrac a3} in </span>
+<span class="lineno">  257 </span><span class="spaces">  </span><span class="istickedoff">withCurrency a4 $ \a4' -&gt; </span>
+<span class="lineno">  258 </span><span class="spaces">  </span><span class="istickedoff">withDay a5 $ \a5' -&gt; </span>
+<span class="lineno">  259 </span><span class="spaces">  </span><span class="istickedoff">let {a6' = C2HSImp.fromBool a6} in </span>
+<span class="lineno">  260 </span><span class="spaces">  </span><span class="istickedoff">let {a7' = fromIntegral a7} in </span>
+<span class="lineno">  261 </span><span class="spaces">  </span><span class="istickedoff">withCalendar a8 $ \a8' -&gt; </span>
+<span class="lineno">  262 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a9' -&gt; </span>
+<span class="lineno">  263 </span><span class="spaces">  </span><span class="istickedoff">fxForward'_ a1' a2' a3' a4' a5' a6' a7' a8' a9' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  264 </span><span class="spaces">  </span><span class="istickedoff">peekFxForward res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  265 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a9'&gt;&gt;</span>
+<span class="lineno">  266 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  267 </span>
+<span class="lineno">  268 </span>
+<span class="lineno">  269 </span>
+<span class="lineno">  270 </span>-- |FX forward using a source nominal amount and a contracted forward rate (target/source).
+<span class="lineno">  271 </span>fxForward' :: (Double) -- ^sourceNominal
+<span class="lineno">  272 </span> -&gt; (Currency) -- ^sourceCurrency
+<span class="lineno">  273 </span> -&gt; (Currency) -- ^targetCurrency
+<span class="lineno">  274 </span> -&gt; (Double) -- ^forwardRate
+<span class="lineno">  275 </span> -&gt; (Day) -- ^maturityDate
+<span class="lineno">  276 </span> -&gt; (Bool) -- ^paySourceCurrency
+<span class="lineno">  277 </span> -&gt; (Word) -- ^settlementDays
+<span class="lineno">  278 </span> -&gt; (Calendar) -- ^paymentCalendar
+<span class="lineno">  279 </span> -&gt; IO ((FxForward))
+<span class="lineno">  280 </span><span class="decl"><span class="istickedoff">fxForward' a1 a2 a3 a4 a5 a6 a7 a8 =</span>
+<span class="lineno">  281 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = realToFrac a1} in </span>
+<span class="lineno">  282 </span><span class="spaces">  </span><span class="istickedoff">withCurrency a2 $ \a2' -&gt; </span>
+<span class="lineno">  283 </span><span class="spaces">  </span><span class="istickedoff">withCurrency a3 $ \a3' -&gt; </span>
+<span class="lineno">  284 </span><span class="spaces">  </span><span class="istickedoff">let {a4' = realToFrac a4} in </span>
+<span class="lineno">  285 </span><span class="spaces">  </span><span class="istickedoff">withDay a5 $ \a5' -&gt; </span>
+<span class="lineno">  286 </span><span class="spaces">  </span><span class="istickedoff">let {a6' = C2HSImp.fromBool a6} in </span>
+<span class="lineno">  287 </span><span class="spaces">  </span><span class="istickedoff">let {a7' = fromIntegral a7} in </span>
+<span class="lineno">  288 </span><span class="spaces">  </span><span class="istickedoff">withCalendar a8 $ \a8' -&gt; </span>
+<span class="lineno">  289 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a9' -&gt; </span>
+<span class="lineno">  290 </span><span class="spaces">  </span><span class="istickedoff">fxForward''_ a1' a2' a3' a4' a5' a6' a7' a8' a9' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  291 </span><span class="spaces">  </span><span class="istickedoff">peekFxForward res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  292 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a9'&gt;&gt;</span>
+<span class="lineno">  293 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  294 </span>
+<span class="lineno">  295 </span>
+<span class="lineno">  296 </span>
+<span class="lineno">  297 </span>-- |The contracted forward exchange rate (target\/source), computed as @targetNominal \/
+<span class="lineno">  298 </span>-- sourceNominal@ -- distinct from 'fairForwardRate', the market-implied rate.
+<span class="lineno">  299 </span>fxForwardRate :: (FxForward) -&gt; (Double)
+<span class="lineno">  300 </span><span class="decl"><span class="istickedoff">fxForwardRate a1 =</span>
+<span class="lineno">  301 </span><span class="spaces">  </span><span class="istickedoff">C2HSImp.unsafePerformIO $</span>
+<span class="lineno">  302 </span><span class="spaces">  </span><span class="istickedoff">withGenInstrument a1 $ \a1' -&gt; </span>
+<span class="lineno">  303 </span><span class="spaces">  </span><span class="istickedoff">fxForwardRate'_ a1' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  304 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno">  305 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  306 </span>
+<span class="lineno">  307 </span>
+<span class="lineno">  308 </span>
+<span class="lineno">  309 </span>-- |The market-implied fair forward rate, computed by the pricing engine.
+<span class="lineno">  310 </span>fairForwardRate :: (FxForward) -&gt; IO ((Double))
+<span class="lineno">  311 </span><span class="decl"><span class="istickedoff">fairForwardRate a1 =</span>
+<span class="lineno">  312 </span><span class="spaces">  </span><span class="istickedoff">withGenInstrument a1 $ \a1' -&gt; </span>
+<span class="lineno">  313 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
+<span class="lineno">  314 </span><span class="spaces">  </span><span class="istickedoff">fairForwardRate'_ a1' a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  315 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno">  316 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
+<span class="lineno">  317 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
 <span class="lineno">  318 </span>
-<span class="lineno">  319 </span>foreign import ccall safe &quot;QuantLib/Instrument/Forward.chs.h qlForwardRateAgreement&quot;
-<span class="lineno">  320 </span>  forwardRateAgreement'_ :: ((C2HSImp.Ptr (CIborIndex')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CForwardRateAgreement')))))))))))
-<span class="lineno">  321 </span>
-<span class="lineno">  322 </span>foreign import ccall safe &quot;QuantLib/Instrument/Forward.chs.h qlBondForward&quot;
-<span class="lineno">  323 </span>  bondForward'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; ((C2HSImp.Ptr (CCalendar)) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CBond')) -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CBondForward')))))))))))))))
-<span class="lineno">  324 </span>
-<span class="lineno">  325 </span>foreign import ccall safe &quot;QuantLib/Instrument/Forward.chs.h qlBondForwardCleanForwardPrice&quot;
-<span class="lineno">  326 </span>  cleanForwardPrice'_ :: ((C2HSImp.Ptr (CBondForward')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))
-<span class="lineno">  327 </span>
-<span class="lineno">  328 </span>foreign import ccall safe &quot;QuantLib/Instrument/Forward.chs.h qlBondForwardForwardPrice&quot;
-<span class="lineno">  329 </span>  forwardPrice'_ :: ((C2HSImp.Ptr (CBondForward')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))
+<span class="lineno">  319 </span>
+<span class="lineno">  320 </span>
+<span class="lineno">  321 </span>-- |NPV in source currency terms.
+<span class="lineno">  322 </span>npvSourceCurrency :: (FxForward) -&gt; IO ((Double))
+<span class="lineno">  323 </span><span class="decl"><span class="istickedoff">npvSourceCurrency a1 =</span>
+<span class="lineno">  324 </span><span class="spaces">  </span><span class="istickedoff">withGenInstrument a1 $ \a1' -&gt; </span>
+<span class="lineno">  325 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
+<span class="lineno">  326 </span><span class="spaces">  </span><span class="istickedoff">npvSourceCurrency'_ a1' a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  327 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno">  328 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
+<span class="lineno">  329 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
 <span class="lineno">  330 </span>
-<span class="lineno">  331 </span>foreign import ccall safe &quot;QuantLib/Instrument/Forward.chs.h qlForwardForwardValue&quot;
-<span class="lineno">  332 </span>  forwardValue'_ :: ((C2HSImp.Ptr (CForward')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))
-<span class="lineno">  333 </span>
-<span class="lineno">  334 </span>foreign import ccall safe &quot;QuantLib/Instrument/Forward.chs.h qlForwardImpliedYield&quot;
-<span class="lineno">  335 </span>  impliedYield'_ :: ((C2HSImp.Ptr (CForward')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CInterestRate))))))))))
-<span class="lineno">  336 </span>
-<span class="lineno">  337 </span>foreign import ccall safe &quot;QuantLib/Instrument/Forward.chs.h qlForwardSettlementDate&quot;
-<span class="lineno">  338 </span>  settlementDate'_ :: ((C2HSImp.Ptr (CForward')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CInt)))
-<span class="lineno">  339 </span>
-<span class="lineno">  340 </span>foreign import ccall safe &quot;QuantLib/Instrument/Forward.chs.h qlForwardSpotIncome&quot;
-<span class="lineno">  341 </span>  spotIncome'_ :: ((C2HSImp.Ptr (CForward')) -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble))))
+<span class="lineno">  331 </span>
+<span class="lineno">  332 </span>
+<span class="lineno">  333 </span>-- |NPV in target currency terms.
+<span class="lineno">  334 </span>npvTargetCurrency :: (FxForward) -&gt; IO ((Double))
+<span class="lineno">  335 </span><span class="decl"><span class="istickedoff">npvTargetCurrency a1 =</span>
+<span class="lineno">  336 </span><span class="spaces">  </span><span class="istickedoff">withGenInstrument a1 $ \a1' -&gt; </span>
+<span class="lineno">  337 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
+<span class="lineno">  338 </span><span class="spaces">  </span><span class="istickedoff">npvTargetCurrency'_ a1' a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  339 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno">  340 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
+<span class="lineno">  341 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
 <span class="lineno">  342 </span>
-<span class="lineno">  343 </span>foreign import ccall safe &quot;QuantLib/Instrument/Forward.chs.h qlForwardSpotValue&quot;
-<span class="lineno">  344 </span>  spotValue'_ :: ((C2HSImp.Ptr (CForward')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))
-<span class="lineno">  345 </span>
-<span class="lineno">  346 </span>foreign import ccall safe &quot;QuantLib/Instrument/Forward.chs.h qlForwardRateAgreementForwardRate&quot;
-<span class="lineno">  347 </span>  forwardRate'_ :: ((C2HSImp.Ptr (CForwardRateAgreement')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CInterestRate)))))
-<span class="lineno">  348 </span>
-<span class="lineno">  349 </span>foreign import ccall safe &quot;QuantLib/Instrument/Forward.chs.h qlFxForward&quot;
-<span class="lineno">  350 </span>  fxForward'_ :: (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (CCurrency)) -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (CCurrency)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (CCalendar)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CFxForward'))))))))))))
-<span class="lineno">  351 </span>
-<span class="lineno">  352 </span>foreign import ccall safe &quot;QuantLib/Instrument/Forward.chs.h qlFxForward1&quot;
-<span class="lineno">  353 </span>  fxForward''_ :: (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (CCurrency)) -&gt; ((C2HSImp.Ptr (CCurrency)) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (CCalendar)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CFxForward'))))))))))))
-<span class="lineno">  354 </span>
-<span class="lineno">  355 </span>foreign import ccall safe &quot;QuantLib/Instrument/Forward.chs.h qlFxForwardFairForwardRate&quot;
-<span class="lineno">  356 </span>  fairForwardRate'_ :: ((C2HSImp.Ptr (CFxForward')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))
-<span class="lineno">  357 </span>
-<span class="lineno">  358 </span>foreign import ccall safe &quot;QuantLib/Instrument/Forward.chs.h qlFxForwardNpvSourceCurrency&quot;
-<span class="lineno">  359 </span>  npvSourceCurrency'_ :: ((C2HSImp.Ptr (CFxForward')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))
-<span class="lineno">  360 </span>
-<span class="lineno">  361 </span>foreign import ccall safe &quot;QuantLib/Instrument/Forward.chs.h qlFxForwardNpvTargetCurrency&quot;
-<span class="lineno">  362 </span>  npvTargetCurrency'_ :: ((C2HSImp.Ptr (CFxForward')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))
+<span class="lineno">  343 </span>
+<span class="lineno">  344 </span>
+<span class="lineno">  345 </span>-- vim: set ff=unix ts=8 sts=2 sw=2 et:
+<span class="lineno">  346 </span>
+<span class="lineno">  347 </span>foreign import ccall safe &quot;QuantLib/Instrument/Forward.chs.h qlForwardRateAgreement&quot;
+<span class="lineno">  348 </span>  forwardRateAgreement'_ :: ((C2HSImp.Ptr (CIborIndex')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CForwardRateAgreement')))))))))))
+<span class="lineno">  349 </span>
+<span class="lineno">  350 </span>foreign import ccall safe &quot;QuantLib/Instrument/Forward.chs.h qlBondForward&quot;
+<span class="lineno">  351 </span>  bondForward'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; ((C2HSImp.Ptr (CCalendar)) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CBond')) -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CBondForward')))))))))))))))
+<span class="lineno">  352 </span>
+<span class="lineno">  353 </span>foreign import ccall safe &quot;QuantLib/Instrument/Forward.chs.h qlBondForwardCleanForwardPrice&quot;
+<span class="lineno">  354 </span>  cleanForwardPrice'_ :: ((C2HSImp.Ptr (CBondForward')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))
+<span class="lineno">  355 </span>
+<span class="lineno">  356 </span>foreign import ccall safe &quot;QuantLib/Instrument/Forward.chs.h qlBondForwardForwardPrice&quot;
+<span class="lineno">  357 </span>  forwardPrice'_ :: ((C2HSImp.Ptr (CBondForward')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))
+<span class="lineno">  358 </span>
+<span class="lineno">  359 </span>foreign import ccall safe &quot;QuantLib/Instrument/Forward.chs.h qlForwardForwardValue&quot;
+<span class="lineno">  360 </span>  forwardValue'_ :: ((C2HSImp.Ptr (CForward')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))
+<span class="lineno">  361 </span>
+<span class="lineno">  362 </span>foreign import ccall safe &quot;QuantLib/Instrument/Forward.chs.h qlForwardImpliedYield&quot;
+<span class="lineno">  363 </span>  impliedYield'_ :: ((C2HSImp.Ptr (CForward')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CInterestRate))))))))))
+<span class="lineno">  364 </span>
+<span class="lineno">  365 </span>foreign import ccall safe &quot;QuantLib/Instrument/Forward.chs.h qlForwardSettlementDate&quot;
+<span class="lineno">  366 </span>  settlementDate'_ :: ((C2HSImp.Ptr (CForward')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CInt)))
+<span class="lineno">  367 </span>
+<span class="lineno">  368 </span>foreign import ccall safe &quot;QuantLib/Instrument/Forward.chs.h qlForwardSpotIncome&quot;
+<span class="lineno">  369 </span>  spotIncome'_ :: ((C2HSImp.Ptr (CForward')) -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble))))
+<span class="lineno">  370 </span>
+<span class="lineno">  371 </span>foreign import ccall safe &quot;QuantLib/Instrument/Forward.chs.h qlForwardSpotValue&quot;
+<span class="lineno">  372 </span>  spotValue'_ :: ((C2HSImp.Ptr (CForward')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))
+<span class="lineno">  373 </span>
+<span class="lineno">  374 </span>foreign import ccall safe &quot;QuantLib/Instrument/Forward.chs.h qlForwardRateAgreementForwardRate&quot;
+<span class="lineno">  375 </span>  forwardRate'_ :: ((C2HSImp.Ptr (CForwardRateAgreement')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CInterestRate)))))
+<span class="lineno">  376 </span>
+<span class="lineno">  377 </span>foreign import ccall safe &quot;QuantLib/Instrument/Forward.chs.h qlForwardRateAgreementAmount&quot;
+<span class="lineno">  378 </span>  amount'_ :: ((C2HSImp.Ptr (CForwardRateAgreement')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))
+<span class="lineno">  379 </span>
+<span class="lineno">  380 </span>foreign import ccall safe &quot;QuantLib/Instrument/Forward.chs.h qlFxForward&quot;
+<span class="lineno">  381 </span>  fxForward'_ :: (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (CCurrency)) -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (CCurrency)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (CCalendar)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CFxForward'))))))))))))
+<span class="lineno">  382 </span>
+<span class="lineno">  383 </span>foreign import ccall safe &quot;QuantLib/Instrument/Forward.chs.h qlFxForward1&quot;
+<span class="lineno">  384 </span>  fxForward''_ :: (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (CCurrency)) -&gt; ((C2HSImp.Ptr (CCurrency)) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (CCalendar)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CFxForward'))))))))))))
+<span class="lineno">  385 </span>
+<span class="lineno">  386 </span>foreign import ccall safe &quot;QuantLib/Instrument/Forward.chs.h qlFxForwardForwardRate&quot;
+<span class="lineno">  387 </span>  fxForwardRate'_ :: ((C2HSImp.Ptr (CFxForward')) -&gt; (IO C2HSImp.CDouble))
+<span class="lineno">  388 </span>
+<span class="lineno">  389 </span>foreign import ccall safe &quot;QuantLib/Instrument/Forward.chs.h qlFxForwardFairForwardRate&quot;
+<span class="lineno">  390 </span>  fairForwardRate'_ :: ((C2HSImp.Ptr (CFxForward')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))
+<span class="lineno">  391 </span>
+<span class="lineno">  392 </span>foreign import ccall safe &quot;QuantLib/Instrument/Forward.chs.h qlFxForwardNpvSourceCurrency&quot;
+<span class="lineno">  393 </span>  npvSourceCurrency'_ :: ((C2HSImp.Ptr (CFxForward')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))
+<span class="lineno">  394 </span>
+<span class="lineno">  395 </span>foreign import ccall safe &quot;QuantLib/Instrument/Forward.chs.h qlFxForwardNpvTargetCurrency&quot;
+<span class="lineno">  396 </span>  npvTargetCurrency'_ :: ((C2HSImp.Ptr (CFxForward')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))
 
 </pre>
 </body>

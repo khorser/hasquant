@@ -83,454 +83,455 @@ span.spaces    { background: white }
 <span class="lineno">   64 </span>garch11 :: (Double) -- ^alpha
 <span class="lineno">   65 </span> -&gt; (Double) -- ^beta
 <span class="lineno">   66 </span> -&gt; (Double) -- ^vl (long-term volatility)
-<span class="lineno">   67 </span> -&gt; (Garch11)
+<span class="lineno">   67 </span> -&gt; IO ((Garch11))
 <span class="lineno">   68 </span><span class="decl"><span class="istickedoff">garch11 a1 a2 a3 =</span>
-<span class="lineno">   69 </span><span class="spaces">  </span><span class="istickedoff">C2HSImp.unsafePerformIO $</span>
-<span class="lineno">   70 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = realToFrac a1} in </span>
-<span class="lineno">   71 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = realToFrac a2} in </span>
-<span class="lineno">   72 </span><span class="spaces">  </span><span class="istickedoff">let {a3' = realToFrac a3} in </span>
-<span class="lineno">   73 </span><span class="spaces">  </span><span class="istickedoff">garch11'_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">   69 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = realToFrac a1} in </span>
+<span class="lineno">   70 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = realToFrac a2} in </span>
+<span class="lineno">   71 </span><span class="spaces">  </span><span class="istickedoff">let {a3' = realToFrac a3} in </span>
+<span class="lineno">   72 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a4' -&gt; </span>
+<span class="lineno">   73 </span><span class="spaces">  </span><span class="istickedoff">garch11'_ a1' a2' a3' a4' &gt;&gt;= \res -&gt;</span>
 <span class="lineno">   74 </span><span class="spaces">  </span><span class="istickedoff">peekGarch11 res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">   75 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">   76 </span>
+<span class="lineno">   75 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a4'&gt;&gt;</span>
+<span class="lineno">   76 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
 <span class="lineno">   77 </span>
 <span class="lineno">   78 </span>
-<span class="lineno">   79 </span>-- |Calibrates a GARCH(1,1) model to an observed return series via maximum likelihood. All four
-<span class="lineno">   80 </span>-- 'Garch11Mode' values converge to the same maximum-likelihood fit for a well-behaved series --
-<span class="lineno">   81 </span>-- they differ only in the initial guess ('MomentMatchingGuess'\/'GammaGuess'), or run both and
-<span class="lineno">   82 </span>-- keep the better ('BestOfTwo', the upstream default) or optimize from each in turn
-<span class="lineno">   83 </span>-- ('DoubleOptimization'). There is no way from Haskell to supply a custom
-<span class="lineno">   84 </span>-- 'OptimizationMethod'\/'EndCriteria' or to re-calibrate an existing model in place (upstream's
-<span class="lineno">   85 </span>-- @calibrate@ overloads are mutators on an already-constructed object); construct a fresh model
-<span class="lineno">   86 </span>-- if a different fit is needed.
-<span class="lineno">   87 </span>garch11Calibrated :: NonEmpty (Day, Double) -- ^observed return series
-<span class="lineno">   88 </span>  -&gt; Garch11Mode -&gt; IO Garch11
-<span class="lineno">   89 </span><span class="decl"><span class="istickedoff">garch11Calibrated series = qlGarch11Calibrated dates vals</span>
-<span class="lineno">   90 </span><span class="spaces">  </span><span class="istickedoff">where (dates, vals) = unzip (toList series)</span></span>
-<span class="lineno">   91 </span>qlGarch11Calibrated :: ([Day]) -&gt; ([Double]) -&gt; (Garch11Mode) -&gt; IO ((Garch11))
-<span class="lineno">   92 </span><span class="decl"><span class="istickedoff">qlGarch11Calibrated a1 a2 a3 =</span>
-<span class="lineno">   93 </span><span class="spaces">  </span><span class="istickedoff">withDayArray a1 $ \(a1'1, a1'2) -&gt; </span>
-<span class="lineno">   94 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a2 $ \(a2'1, a2'2) -&gt; </span>
-<span class="lineno">   95 </span><span class="spaces">  </span><span class="istickedoff">let {a3' = (fromIntegral . fromEnum) a3} in </span>
-<span class="lineno">   96 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a4' -&gt; </span>
-<span class="lineno">   97 </span><span class="spaces">  </span><span class="istickedoff">qlGarch11Calibrated'_ a1'1  a1'2 a2'1  a2'2 a3' a4' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">   98 </span><span class="spaces">  </span><span class="istickedoff">peekGarch11 res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">   99 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a4'&gt;&gt;</span>
-<span class="lineno">  100 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">  101 </span>
+<span class="lineno">   79 </span>
+<span class="lineno">   80 </span>-- |Calibrates a GARCH(1,1) model to an observed return series via maximum likelihood. All four
+<span class="lineno">   81 </span>-- 'Garch11Mode' values converge to the same maximum-likelihood fit for a well-behaved series --
+<span class="lineno">   82 </span>-- they differ only in the initial guess ('MomentMatchingGuess'\/'GammaGuess'), or run both and
+<span class="lineno">   83 </span>-- keep the better ('BestOfTwo', the upstream default) or optimize from each in turn
+<span class="lineno">   84 </span>-- ('DoubleOptimization'). There is no way from Haskell to supply a custom
+<span class="lineno">   85 </span>-- 'OptimizationMethod'\/'EndCriteria' or to re-calibrate an existing model in place (upstream's
+<span class="lineno">   86 </span>-- @calibrate@ overloads are mutators on an already-constructed object); construct a fresh model
+<span class="lineno">   87 </span>-- if a different fit is needed.
+<span class="lineno">   88 </span>garch11Calibrated :: NonEmpty (Day, Double) -- ^observed return series
+<span class="lineno">   89 </span>  -&gt; Garch11Mode -&gt; IO Garch11
+<span class="lineno">   90 </span><span class="decl"><span class="istickedoff">garch11Calibrated series = qlGarch11Calibrated dates vals</span>
+<span class="lineno">   91 </span><span class="spaces">  </span><span class="istickedoff">where (dates, vals) = unzip (toList series)</span></span>
+<span class="lineno">   92 </span>qlGarch11Calibrated :: ([Day]) -&gt; ([Double]) -&gt; (Garch11Mode) -&gt; IO ((Garch11))
+<span class="lineno">   93 </span><span class="decl"><span class="istickedoff">qlGarch11Calibrated a1 a2 a3 =</span>
+<span class="lineno">   94 </span><span class="spaces">  </span><span class="istickedoff">withDayArray a1 $ \(a1'1, a1'2) -&gt; </span>
+<span class="lineno">   95 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a2 $ \(a2'1, a2'2) -&gt; </span>
+<span class="lineno">   96 </span><span class="spaces">  </span><span class="istickedoff">let {a3' = (fromIntegral . fromEnum) a3} in </span>
+<span class="lineno">   97 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a4' -&gt; </span>
+<span class="lineno">   98 </span><span class="spaces">  </span><span class="istickedoff">qlGarch11Calibrated'_ a1'1  a1'2 a2'1  a2'2 a3' a4' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">   99 </span><span class="spaces">  </span><span class="istickedoff">peekGarch11 res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  100 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a4'&gt;&gt;</span>
+<span class="lineno">  101 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
 <span class="lineno">  102 </span>
 <span class="lineno">  103 </span>
-<span class="lineno">  104 </span>-- |the calibrated (or constructor-supplied) alpha coefficient
-<span class="lineno">  105 </span>garch11Alpha :: (Garch11) -&gt; (Double)
-<span class="lineno">  106 </span><span class="decl"><span class="istickedoff">garch11Alpha a1 =</span>
-<span class="lineno">  107 </span><span class="spaces">  </span><span class="istickedoff">C2HSImp.unsafePerformIO $</span>
-<span class="lineno">  108 </span><span class="spaces">  </span><span class="istickedoff">withGarch11 a1 $ \a1' -&gt; </span>
-<span class="lineno">  109 </span><span class="spaces">  </span><span class="istickedoff">garch11Alpha'_ a1' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  110 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
-<span class="lineno">  111 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">  112 </span>
+<span class="lineno">  104 </span>
+<span class="lineno">  105 </span>-- |the calibrated (or constructor-supplied) alpha coefficient
+<span class="lineno">  106 </span>garch11Alpha :: (Garch11) -&gt; (Double)
+<span class="lineno">  107 </span><span class="decl"><span class="istickedoff">garch11Alpha a1 =</span>
+<span class="lineno">  108 </span><span class="spaces">  </span><span class="istickedoff">C2HSImp.unsafePerformIO $</span>
+<span class="lineno">  109 </span><span class="spaces">  </span><span class="istickedoff">withGarch11 a1 $ \a1' -&gt; </span>
+<span class="lineno">  110 </span><span class="spaces">  </span><span class="istickedoff">garch11Alpha'_ a1' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  111 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno">  112 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
 <span class="lineno">  113 </span>
-<span class="lineno">  114 </span>-- |the calibrated (or constructor-supplied) beta coefficient
-<span class="lineno">  115 </span>garch11Beta :: (Garch11) -&gt; (Double)
-<span class="lineno">  116 </span><span class="decl"><span class="istickedoff">garch11Beta a1 =</span>
-<span class="lineno">  117 </span><span class="spaces">  </span><span class="istickedoff">C2HSImp.unsafePerformIO $</span>
-<span class="lineno">  118 </span><span class="spaces">  </span><span class="istickedoff">withGarch11 a1 $ \a1' -&gt; </span>
-<span class="lineno">  119 </span><span class="spaces">  </span><span class="istickedoff">garch11Beta'_ a1' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  120 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
-<span class="lineno">  121 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">  122 </span>
+<span class="lineno">  114 </span>
+<span class="lineno">  115 </span>-- |the calibrated (or constructor-supplied) beta coefficient
+<span class="lineno">  116 </span>garch11Beta :: (Garch11) -&gt; (Double)
+<span class="lineno">  117 </span><span class="decl"><span class="istickedoff">garch11Beta a1 =</span>
+<span class="lineno">  118 </span><span class="spaces">  </span><span class="istickedoff">C2HSImp.unsafePerformIO $</span>
+<span class="lineno">  119 </span><span class="spaces">  </span><span class="istickedoff">withGarch11 a1 $ \a1' -&gt; </span>
+<span class="lineno">  120 </span><span class="spaces">  </span><span class="istickedoff">garch11Beta'_ a1' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  121 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno">  122 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
 <span class="lineno">  123 </span>
-<span class="lineno">  124 </span>-- |the calibrated (or derived) omega coefficient, @vl * (1 - alpha - beta)@
-<span class="lineno">  125 </span>garch11Omega :: (Garch11) -&gt; (Double)
-<span class="lineno">  126 </span><span class="decl"><span class="nottickedoff">garch11Omega a1 =</span>
-<span class="lineno">  127 </span><span class="spaces">  </span><span class="nottickedoff">C2HSImp.unsafePerformIO $</span>
-<span class="lineno">  128 </span><span class="spaces">  </span><span class="nottickedoff">withGarch11 a1 $ \a1' -&gt; </span>
-<span class="lineno">  129 </span><span class="spaces">  </span><span class="nottickedoff">garch11Omega'_ a1' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  130 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = realToFrac res} in</span>
-<span class="lineno">  131 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
-<span class="lineno">  132 </span>
+<span class="lineno">  124 </span>
+<span class="lineno">  125 </span>-- |the calibrated (or derived) omega coefficient, @vl * (1 - alpha - beta)@
+<span class="lineno">  126 </span>garch11Omega :: (Garch11) -&gt; (Double)
+<span class="lineno">  127 </span><span class="decl"><span class="nottickedoff">garch11Omega a1 =</span>
+<span class="lineno">  128 </span><span class="spaces">  </span><span class="nottickedoff">C2HSImp.unsafePerformIO $</span>
+<span class="lineno">  129 </span><span class="spaces">  </span><span class="nottickedoff">withGarch11 a1 $ \a1' -&gt; </span>
+<span class="lineno">  130 </span><span class="spaces">  </span><span class="nottickedoff">garch11Omega'_ a1' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  131 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno">  132 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
 <span class="lineno">  133 </span>
-<span class="lineno">  134 </span>-- |the calibrated (or constructor-supplied) long-term volatility
-<span class="lineno">  135 </span>garch11LtVol :: (Garch11) -&gt; (Double)
-<span class="lineno">  136 </span><span class="decl"><span class="nottickedoff">garch11LtVol a1 =</span>
-<span class="lineno">  137 </span><span class="spaces">  </span><span class="nottickedoff">C2HSImp.unsafePerformIO $</span>
-<span class="lineno">  138 </span><span class="spaces">  </span><span class="nottickedoff">withGarch11 a1 $ \a1' -&gt; </span>
-<span class="lineno">  139 </span><span class="spaces">  </span><span class="nottickedoff">garch11LtVol'_ a1' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  140 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = realToFrac res} in</span>
-<span class="lineno">  141 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
-<span class="lineno">  142 </span>
+<span class="lineno">  134 </span>
+<span class="lineno">  135 </span>-- |the calibrated (or constructor-supplied) long-term volatility
+<span class="lineno">  136 </span>garch11LtVol :: (Garch11) -&gt; (Double)
+<span class="lineno">  137 </span><span class="decl"><span class="nottickedoff">garch11LtVol a1 =</span>
+<span class="lineno">  138 </span><span class="spaces">  </span><span class="nottickedoff">C2HSImp.unsafePerformIO $</span>
+<span class="lineno">  139 </span><span class="spaces">  </span><span class="nottickedoff">withGarch11 a1 $ \a1' -&gt; </span>
+<span class="lineno">  140 </span><span class="spaces">  </span><span class="nottickedoff">garch11LtVol'_ a1' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  141 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno">  142 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
 <span class="lineno">  143 </span>
-<span class="lineno">  144 </span>-- |the log-likelihood of the calibrated fit; @0@ for a direct-parameter ('garch11') model
-<span class="lineno">  145 </span>garch11LogLikelihood :: (Garch11) -&gt; (Double)
-<span class="lineno">  146 </span><span class="decl"><span class="nottickedoff">garch11LogLikelihood a1 =</span>
-<span class="lineno">  147 </span><span class="spaces">  </span><span class="nottickedoff">C2HSImp.unsafePerformIO $</span>
-<span class="lineno">  148 </span><span class="spaces">  </span><span class="nottickedoff">withGarch11 a1 $ \a1' -&gt; </span>
-<span class="lineno">  149 </span><span class="spaces">  </span><span class="nottickedoff">garch11LogLikelihood'_ a1' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  150 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = realToFrac res} in</span>
-<span class="lineno">  151 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
-<span class="lineno">  152 </span>
+<span class="lineno">  144 </span>
+<span class="lineno">  145 </span>-- |the log-likelihood of the calibrated fit; @0@ for a direct-parameter ('garch11') model
+<span class="lineno">  146 </span>garch11LogLikelihood :: (Garch11) -&gt; (Double)
+<span class="lineno">  147 </span><span class="decl"><span class="nottickedoff">garch11LogLikelihood a1 =</span>
+<span class="lineno">  148 </span><span class="spaces">  </span><span class="nottickedoff">C2HSImp.unsafePerformIO $</span>
+<span class="lineno">  149 </span><span class="spaces">  </span><span class="nottickedoff">withGarch11 a1 $ \a1' -&gt; </span>
+<span class="lineno">  150 </span><span class="spaces">  </span><span class="nottickedoff">garch11LogLikelihood'_ a1' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  151 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno">  152 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
 <span class="lineno">  153 </span>
 <span class="lineno">  154 </span>
-<span class="lineno">  155 </span>-- |one-step-ahead variance forecast: @gamma*vl + alpha*r^2 + beta*sigma2@, given the latest
-<span class="lineno">  156 </span>-- return @r@ and the previous step's variance @sigma2@.
-<span class="lineno">  157 </span>garch11Forecast :: (Garch11) -&gt; (Double) -- ^r
-<span class="lineno">  158 </span> -&gt; (Double) -- ^sigma2
-<span class="lineno">  159 </span> -&gt; (Double)
-<span class="lineno">  160 </span><span class="decl"><span class="istickedoff">garch11Forecast a1 a2 a3 =</span>
-<span class="lineno">  161 </span><span class="spaces">  </span><span class="istickedoff">C2HSImp.unsafePerformIO $</span>
-<span class="lineno">  162 </span><span class="spaces">  </span><span class="istickedoff">withGarch11 a1 $ \a1' -&gt; </span>
-<span class="lineno">  163 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = realToFrac a2} in </span>
-<span class="lineno">  164 </span><span class="spaces">  </span><span class="istickedoff">let {a3' = realToFrac a3} in </span>
-<span class="lineno">  165 </span><span class="spaces">  </span><span class="istickedoff">garch11Forecast'_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  166 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
-<span class="lineno">  167 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">  168 </span>
+<span class="lineno">  155 </span>
+<span class="lineno">  156 </span>-- |one-step-ahead variance forecast: @gamma*vl + alpha*r^2 + beta*sigma2@, given the latest
+<span class="lineno">  157 </span>-- return @r@ and the previous step's variance @sigma2@.
+<span class="lineno">  158 </span>garch11Forecast :: (Garch11) -&gt; (Double) -- ^r
+<span class="lineno">  159 </span> -&gt; (Double) -- ^sigma2
+<span class="lineno">  160 </span> -&gt; (Double)
+<span class="lineno">  161 </span><span class="decl"><span class="istickedoff">garch11Forecast a1 a2 a3 =</span>
+<span class="lineno">  162 </span><span class="spaces">  </span><span class="istickedoff">C2HSImp.unsafePerformIO $</span>
+<span class="lineno">  163 </span><span class="spaces">  </span><span class="istickedoff">withGarch11 a1 $ \a1' -&gt; </span>
+<span class="lineno">  164 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = realToFrac a2} in </span>
+<span class="lineno">  165 </span><span class="spaces">  </span><span class="istickedoff">let {a3' = realToFrac a3} in </span>
+<span class="lineno">  166 </span><span class="spaces">  </span><span class="istickedoff">garch11Forecast'_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  167 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno">  168 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
 <span class="lineno">  169 </span>
 <span class="lineno">  170 </span>
-<span class="lineno">  171 </span>-- |Runs the model's calibrated (or constructor-supplied) alpha\/beta\/omega recursion forward
-<span class="lineno">  172 </span>-- over a return series. The output series is offset by one from the input: the first input
-<span class="lineno">  173 </span>-- point has nothing to forecast from, so it is dropped, and one extra point is extrapolated one
-<span class="lineno">  174 </span>-- step past the input series' last date -- an @n@-point input still produces an @n@-point
-<span class="lineno">  175 </span>-- output, just shifted forward by one date.
-<span class="lineno">  176 </span>garch11Calculate :: Garch11 -&gt; NonEmpty (Day, Double) -- ^return series
-<span class="lineno">  177 </span>  -&gt; IO [(Day, Double)]
-<span class="lineno">  178 </span><span class="decl"><span class="istickedoff">garch11Calculate g series = do</span>
-<span class="lineno">  179 </span><span class="spaces">  </span><span class="istickedoff">(ds, vs) &lt;- qlGarch11Calculate g dates vals</span>
-<span class="lineno">  180 </span><span class="spaces">  </span><span class="istickedoff">return $ zip ds vs</span>
-<span class="lineno">  181 </span><span class="spaces">  </span><span class="istickedoff">where (dates, vals) = unzip (toList series)</span></span>
-<span class="lineno">  182 </span>qlGarch11Calculate :: (Garch11) -&gt; ([Day]) -&gt; ([Double]) -&gt; IO (([Day]), ([Double]))
-<span class="lineno">  183 </span><span class="decl"><span class="istickedoff">qlGarch11Calculate a1 a2 a3 =</span>
-<span class="lineno">  184 </span><span class="spaces">  </span><span class="istickedoff">withGarch11 a1 $ \a1' -&gt; </span>
-<span class="lineno">  185 </span><span class="spaces">  </span><span class="istickedoff">withDayArray a2 $ \(a2'1, a2'2) -&gt; </span>
-<span class="lineno">  186 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a3 $ \(a3'1, a3'2) -&gt; </span>
-<span class="lineno">  187 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a4'1, a4'2) -&gt; </span>
-<span class="lineno">  188 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a5'1, a5'2) -&gt; </span>
-<span class="lineno">  189 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a6' -&gt; </span>
-<span class="lineno">  190 </span><span class="spaces">  </span><span class="istickedoff">qlGarch11Calculate'_ a1' a2'1  a2'2 a3'1  a3'2 a4'1  a4'2 a5'1  a5'2 a6' &gt;&gt;</span>
-<span class="lineno">  191 </span><span class="spaces">  </span><span class="istickedoff">peekDayArray  a4'1  a4'2&gt;&gt;= \a4'' -&gt; </span>
-<span class="lineno">  192 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a5'1  a5'2&gt;&gt;= \a5'' -&gt; </span>
-<span class="lineno">  193 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a6'&gt;&gt;</span>
-<span class="lineno">  194 </span><span class="spaces">  </span><span class="istickedoff">return (a4'', a5'')</span></span>
-<span class="lineno">  195 </span>
+<span class="lineno">  171 </span>
+<span class="lineno">  172 </span>-- |Runs the model's calibrated (or constructor-supplied) alpha\/beta\/omega recursion forward
+<span class="lineno">  173 </span>-- over a return series. The output series is offset by one from the input: the first input
+<span class="lineno">  174 </span>-- point has nothing to forecast from, so it is dropped, and one extra point is extrapolated one
+<span class="lineno">  175 </span>-- step past the input series' last date -- an @n@-point input still produces an @n@-point
+<span class="lineno">  176 </span>-- output, just shifted forward by one date.
+<span class="lineno">  177 </span>garch11Calculate :: Garch11 -&gt; NonEmpty (Day, Double) -- ^return series
+<span class="lineno">  178 </span>  -&gt; IO [(Day, Double)]
+<span class="lineno">  179 </span><span class="decl"><span class="istickedoff">garch11Calculate g series = do</span>
+<span class="lineno">  180 </span><span class="spaces">  </span><span class="istickedoff">(ds, vs) &lt;- qlGarch11Calculate g dates vals</span>
+<span class="lineno">  181 </span><span class="spaces">  </span><span class="istickedoff">return $ zip ds vs</span>
+<span class="lineno">  182 </span><span class="spaces">  </span><span class="istickedoff">where (dates, vals) = unzip (toList series)</span></span>
+<span class="lineno">  183 </span>qlGarch11Calculate :: (Garch11) -&gt; ([Day]) -&gt; ([Double]) -&gt; IO (([Day]), ([Double]))
+<span class="lineno">  184 </span><span class="decl"><span class="istickedoff">qlGarch11Calculate a1 a2 a3 =</span>
+<span class="lineno">  185 </span><span class="spaces">  </span><span class="istickedoff">withGarch11 a1 $ \a1' -&gt; </span>
+<span class="lineno">  186 </span><span class="spaces">  </span><span class="istickedoff">withDayArray a2 $ \(a2'1, a2'2) -&gt; </span>
+<span class="lineno">  187 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a3 $ \(a3'1, a3'2) -&gt; </span>
+<span class="lineno">  188 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a4'1, a4'2) -&gt; </span>
+<span class="lineno">  189 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a5'1, a5'2) -&gt; </span>
+<span class="lineno">  190 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a6' -&gt; </span>
+<span class="lineno">  191 </span><span class="spaces">  </span><span class="istickedoff">qlGarch11Calculate'_ a1' a2'1  a2'2 a3'1  a3'2 a4'1  a4'2 a5'1  a5'2 a6' &gt;&gt;</span>
+<span class="lineno">  192 </span><span class="spaces">  </span><span class="istickedoff">peekDayArray  a4'1  a4'2&gt;&gt;= \a4'' -&gt; </span>
+<span class="lineno">  193 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a5'1  a5'2&gt;&gt;= \a5'' -&gt; </span>
+<span class="lineno">  194 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a6'&gt;&gt;</span>
+<span class="lineno">  195 </span><span class="spaces">  </span><span class="istickedoff">return (a4'', a5'')</span></span>
 <span class="lineno">  196 </span>
 <span class="lineno">  197 </span>
-<span class="lineno">  198 </span>-- |Garman-Klass (1980) simple estimator: @sigma^2 = ln(close\/open)^2@, scaled by @yearFraction@.
-<span class="lineno">  199 </span>-- Input bars are @(date, open, close, high, low)@; only open\/close are used here.
-<span class="lineno">  200 </span>garmanKlassSimpleSigma :: Double -- ^yearFraction
-<span class="lineno">  201 </span>  -&gt; NonEmpty (Day, Double, Double, Double, Double) -- ^(date, open, close, high, low) price bars
-<span class="lineno">  202 </span>  -&gt; IO [(Day, Double)]
-<span class="lineno">  203 </span><span class="decl"><span class="istickedoff">garmanKlassSimpleSigma yearFraction bars = do</span>
-<span class="lineno">  204 </span><span class="spaces">  </span><span class="istickedoff">(ds, vs) &lt;- qlGarmanKlassSimpleSigma yearFraction dates opens closes highs lows</span>
-<span class="lineno">  205 </span><span class="spaces">  </span><span class="istickedoff">return $ zip ds vs</span>
-<span class="lineno">  206 </span><span class="spaces">  </span><span class="istickedoff">where (dates, opens, closes, highs, lows) = unzipBars bars</span></span>
-<span class="lineno">  207 </span>qlGarmanKlassSimpleSigma :: (Double) -&gt; ([Day]) -&gt; ([Double]) -&gt; ([Double]) -&gt; ([Double]) -&gt; ([Double]) -&gt; IO (([Day]), ([Double]))
-<span class="lineno">  208 </span><span class="decl"><span class="istickedoff">qlGarmanKlassSimpleSigma a1 a2 a3 a4 a5 a6 =</span>
-<span class="lineno">  209 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = realToFrac a1} in </span>
-<span class="lineno">  210 </span><span class="spaces">  </span><span class="istickedoff">withDayArray a2 $ \(a2'1, a2'2) -&gt; </span>
-<span class="lineno">  211 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a3 $ \(a3'1, a3'2) -&gt; </span>
-<span class="lineno">  212 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a4 $ \(a4'1, a4'2) -&gt; </span>
-<span class="lineno">  213 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a5 $ \(a5'1, a5'2) -&gt; </span>
-<span class="lineno">  214 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a6 $ \(a6'1, a6'2) -&gt; </span>
-<span class="lineno">  215 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a7'1, a7'2) -&gt; </span>
-<span class="lineno">  216 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a8'1, a8'2) -&gt; </span>
-<span class="lineno">  217 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a9' -&gt; </span>
-<span class="lineno">  218 </span><span class="spaces">  </span><span class="istickedoff">qlGarmanKlassSimpleSigma'_ a1' a2'1  a2'2 a3'1  a3'2 a4'1  a4'2 a5'1  a5'2 a6'1  a6'2 a7'1  a7'2 a8'1  a8'2 a9' &gt;&gt;</span>
-<span class="lineno">  219 </span><span class="spaces">  </span><span class="istickedoff">peekDayArray  a7'1  a7'2&gt;&gt;= \a7'' -&gt; </span>
-<span class="lineno">  220 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a8'1  a8'2&gt;&gt;= \a8'' -&gt; </span>
-<span class="lineno">  221 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a9'&gt;&gt;</span>
-<span class="lineno">  222 </span><span class="spaces">  </span><span class="istickedoff">return (a7'', a8'')</span></span>
-<span class="lineno">  223 </span>
+<span class="lineno">  198 </span>
+<span class="lineno">  199 </span>-- |Garman-Klass (1980) simple estimator: @sigma^2 = ln(close\/open)^2@, scaled by @yearFraction@.
+<span class="lineno">  200 </span>-- Input bars are @(date, open, close, high, low)@; only open\/close are used here.
+<span class="lineno">  201 </span>garmanKlassSimpleSigma :: Double -- ^yearFraction
+<span class="lineno">  202 </span>  -&gt; NonEmpty (Day, Double, Double, Double, Double) -- ^(date, open, close, high, low) price bars
+<span class="lineno">  203 </span>  -&gt; IO [(Day, Double)]
+<span class="lineno">  204 </span><span class="decl"><span class="istickedoff">garmanKlassSimpleSigma yearFraction bars = do</span>
+<span class="lineno">  205 </span><span class="spaces">  </span><span class="istickedoff">(ds, vs) &lt;- qlGarmanKlassSimpleSigma yearFraction dates opens closes highs lows</span>
+<span class="lineno">  206 </span><span class="spaces">  </span><span class="istickedoff">return $ zip ds vs</span>
+<span class="lineno">  207 </span><span class="spaces">  </span><span class="istickedoff">where (dates, opens, closes, highs, lows) = unzipBars bars</span></span>
+<span class="lineno">  208 </span>qlGarmanKlassSimpleSigma :: (Double) -&gt; ([Day]) -&gt; ([Double]) -&gt; ([Double]) -&gt; ([Double]) -&gt; ([Double]) -&gt; IO (([Day]), ([Double]))
+<span class="lineno">  209 </span><span class="decl"><span class="istickedoff">qlGarmanKlassSimpleSigma a1 a2 a3 a4 a5 a6 =</span>
+<span class="lineno">  210 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = realToFrac a1} in </span>
+<span class="lineno">  211 </span><span class="spaces">  </span><span class="istickedoff">withDayArray a2 $ \(a2'1, a2'2) -&gt; </span>
+<span class="lineno">  212 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a3 $ \(a3'1, a3'2) -&gt; </span>
+<span class="lineno">  213 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a4 $ \(a4'1, a4'2) -&gt; </span>
+<span class="lineno">  214 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a5 $ \(a5'1, a5'2) -&gt; </span>
+<span class="lineno">  215 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a6 $ \(a6'1, a6'2) -&gt; </span>
+<span class="lineno">  216 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a7'1, a7'2) -&gt; </span>
+<span class="lineno">  217 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a8'1, a8'2) -&gt; </span>
+<span class="lineno">  218 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a9' -&gt; </span>
+<span class="lineno">  219 </span><span class="spaces">  </span><span class="istickedoff">qlGarmanKlassSimpleSigma'_ a1' a2'1  a2'2 a3'1  a3'2 a4'1  a4'2 a5'1  a5'2 a6'1  a6'2 a7'1  a7'2 a8'1  a8'2 a9' &gt;&gt;</span>
+<span class="lineno">  220 </span><span class="spaces">  </span><span class="istickedoff">peekDayArray  a7'1  a7'2&gt;&gt;= \a7'' -&gt; </span>
+<span class="lineno">  221 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a8'1  a8'2&gt;&gt;= \a8'' -&gt; </span>
+<span class="lineno">  222 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a9'&gt;&gt;</span>
+<span class="lineno">  223 </span><span class="spaces">  </span><span class="istickedoff">return (a7'', a8'')</span></span>
 <span class="lineno">  224 </span>
 <span class="lineno">  225 </span>
-<span class="lineno">  226 </span>-- |Garman-Klass Sigma1: blends 'garmanKlassSimpleSigma' with the overnight (previous close to
-<span class="lineno">  227 </span>-- today's open) jump, weighted by @marketOpenFraction@ (the fraction of the trading day the
-<span class="lineno">  228 </span>-- market is open). Drops the series' first bar (needs a previous close).
-<span class="lineno">  229 </span>garmanKlassSigma1 :: Double -- ^yearFraction
-<span class="lineno">  230 </span>  -&gt; Double -- ^marketOpenFraction
-<span class="lineno">  231 </span>  -&gt; NonEmpty (Day, Double, Double, Double, Double) -- ^(date, open, close, high, low) price bars
-<span class="lineno">  232 </span>  -&gt; IO [(Day, Double)]
-<span class="lineno">  233 </span><span class="decl"><span class="istickedoff">garmanKlassSigma1 yearFraction marketOpenFraction bars = do</span>
-<span class="lineno">  234 </span><span class="spaces">  </span><span class="istickedoff">(ds, vs) &lt;- qlGarmanKlassSigma1 yearFraction marketOpenFraction dates opens closes highs lows</span>
-<span class="lineno">  235 </span><span class="spaces">  </span><span class="istickedoff">return $ zip ds vs</span>
-<span class="lineno">  236 </span><span class="spaces">  </span><span class="istickedoff">where (dates, opens, closes, highs, lows) = unzipBars bars</span></span>
-<span class="lineno">  237 </span>qlGarmanKlassSigma1 :: (Double) -&gt; (Double) -&gt; ([Day]) -&gt; ([Double]) -&gt; ([Double]) -&gt; ([Double]) -&gt; ([Double]) -&gt; IO (([Day]), ([Double]))
-<span class="lineno">  238 </span><span class="decl"><span class="istickedoff">qlGarmanKlassSigma1 a1 a2 a3 a4 a5 a6 a7 =</span>
-<span class="lineno">  239 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = realToFrac a1} in </span>
-<span class="lineno">  240 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = realToFrac a2} in </span>
-<span class="lineno">  241 </span><span class="spaces">  </span><span class="istickedoff">withDayArray a3 $ \(a3'1, a3'2) -&gt; </span>
-<span class="lineno">  242 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a4 $ \(a4'1, a4'2) -&gt; </span>
-<span class="lineno">  243 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a5 $ \(a5'1, a5'2) -&gt; </span>
-<span class="lineno">  244 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a6 $ \(a6'1, a6'2) -&gt; </span>
-<span class="lineno">  245 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a7 $ \(a7'1, a7'2) -&gt; </span>
-<span class="lineno">  246 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a8'1, a8'2) -&gt; </span>
-<span class="lineno">  247 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a9'1, a9'2) -&gt; </span>
-<span class="lineno">  248 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a10' -&gt; </span>
-<span class="lineno">  249 </span><span class="spaces">  </span><span class="istickedoff">qlGarmanKlassSigma1'_ a1' a2' a3'1  a3'2 a4'1  a4'2 a5'1  a5'2 a6'1  a6'2 a7'1  a7'2 a8'1  a8'2 a9'1  a9'2 a10' &gt;&gt;</span>
-<span class="lineno">  250 </span><span class="spaces">  </span><span class="istickedoff">peekDayArray  a8'1  a8'2&gt;&gt;= \a8'' -&gt; </span>
-<span class="lineno">  251 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a9'1  a9'2&gt;&gt;= \a9'' -&gt; </span>
-<span class="lineno">  252 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a10'&gt;&gt;</span>
-<span class="lineno">  253 </span><span class="spaces">  </span><span class="istickedoff">return (a8'', a9'')</span></span>
-<span class="lineno">  254 </span>
+<span class="lineno">  226 </span>
+<span class="lineno">  227 </span>-- |Garman-Klass Sigma1: blends 'garmanKlassSimpleSigma' with the overnight (previous close to
+<span class="lineno">  228 </span>-- today's open) jump, weighted by @marketOpenFraction@ (the fraction of the trading day the
+<span class="lineno">  229 </span>-- market is open). Drops the series' first bar (needs a previous close).
+<span class="lineno">  230 </span>garmanKlassSigma1 :: Double -- ^yearFraction
+<span class="lineno">  231 </span>  -&gt; Double -- ^marketOpenFraction
+<span class="lineno">  232 </span>  -&gt; NonEmpty (Day, Double, Double, Double, Double) -- ^(date, open, close, high, low) price bars
+<span class="lineno">  233 </span>  -&gt; IO [(Day, Double)]
+<span class="lineno">  234 </span><span class="decl"><span class="istickedoff">garmanKlassSigma1 yearFraction marketOpenFraction bars = do</span>
+<span class="lineno">  235 </span><span class="spaces">  </span><span class="istickedoff">(ds, vs) &lt;- qlGarmanKlassSigma1 yearFraction marketOpenFraction dates opens closes highs lows</span>
+<span class="lineno">  236 </span><span class="spaces">  </span><span class="istickedoff">return $ zip ds vs</span>
+<span class="lineno">  237 </span><span class="spaces">  </span><span class="istickedoff">where (dates, opens, closes, highs, lows) = unzipBars bars</span></span>
+<span class="lineno">  238 </span>qlGarmanKlassSigma1 :: (Double) -&gt; (Double) -&gt; ([Day]) -&gt; ([Double]) -&gt; ([Double]) -&gt; ([Double]) -&gt; ([Double]) -&gt; IO (([Day]), ([Double]))
+<span class="lineno">  239 </span><span class="decl"><span class="istickedoff">qlGarmanKlassSigma1 a1 a2 a3 a4 a5 a6 a7 =</span>
+<span class="lineno">  240 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = realToFrac a1} in </span>
+<span class="lineno">  241 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = realToFrac a2} in </span>
+<span class="lineno">  242 </span><span class="spaces">  </span><span class="istickedoff">withDayArray a3 $ \(a3'1, a3'2) -&gt; </span>
+<span class="lineno">  243 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a4 $ \(a4'1, a4'2) -&gt; </span>
+<span class="lineno">  244 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a5 $ \(a5'1, a5'2) -&gt; </span>
+<span class="lineno">  245 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a6 $ \(a6'1, a6'2) -&gt; </span>
+<span class="lineno">  246 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a7 $ \(a7'1, a7'2) -&gt; </span>
+<span class="lineno">  247 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a8'1, a8'2) -&gt; </span>
+<span class="lineno">  248 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a9'1, a9'2) -&gt; </span>
+<span class="lineno">  249 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a10' -&gt; </span>
+<span class="lineno">  250 </span><span class="spaces">  </span><span class="istickedoff">qlGarmanKlassSigma1'_ a1' a2' a3'1  a3'2 a4'1  a4'2 a5'1  a5'2 a6'1  a6'2 a7'1  a7'2 a8'1  a8'2 a9'1  a9'2 a10' &gt;&gt;</span>
+<span class="lineno">  251 </span><span class="spaces">  </span><span class="istickedoff">peekDayArray  a8'1  a8'2&gt;&gt;= \a8'' -&gt; </span>
+<span class="lineno">  252 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a9'1  a9'2&gt;&gt;= \a9'' -&gt; </span>
+<span class="lineno">  253 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a10'&gt;&gt;</span>
+<span class="lineno">  254 </span><span class="spaces">  </span><span class="istickedoff">return (a8'', a9'')</span></span>
 <span class="lineno">  255 </span>
 <span class="lineno">  256 </span>
-<span class="lineno">  257 </span>-- |Parkinson (1980) high-low estimator: @sigma^2 = ln(high\/low)^2 \/ (4 ln 2)@, scaled by
-<span class="lineno">  258 </span>-- @yearFraction@. Input bars are @(date, open, close, high, low)@; only high\/low are used here.
-<span class="lineno">  259 </span>parkinsonSigma :: Double -- ^yearFraction
-<span class="lineno">  260 </span>  -&gt; NonEmpty (Day, Double, Double, Double, Double) -- ^(date, open, close, high, low) price bars
-<span class="lineno">  261 </span>  -&gt; IO [(Day, Double)]
-<span class="lineno">  262 </span><span class="decl"><span class="istickedoff">parkinsonSigma yearFraction bars = do</span>
-<span class="lineno">  263 </span><span class="spaces">  </span><span class="istickedoff">(ds, vs) &lt;- qlParkinsonSigma yearFraction dates opens closes highs lows</span>
-<span class="lineno">  264 </span><span class="spaces">  </span><span class="istickedoff">return $ zip ds vs</span>
-<span class="lineno">  265 </span><span class="spaces">  </span><span class="istickedoff">where (dates, opens, closes, highs, lows) = unzipBars bars</span></span>
-<span class="lineno">  266 </span>qlParkinsonSigma :: (Double) -&gt; ([Day]) -&gt; ([Double]) -&gt; ([Double]) -&gt; ([Double]) -&gt; ([Double]) -&gt; IO (([Day]), ([Double]))
-<span class="lineno">  267 </span><span class="decl"><span class="istickedoff">qlParkinsonSigma a1 a2 a3 a4 a5 a6 =</span>
-<span class="lineno">  268 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = realToFrac a1} in </span>
-<span class="lineno">  269 </span><span class="spaces">  </span><span class="istickedoff">withDayArray a2 $ \(a2'1, a2'2) -&gt; </span>
-<span class="lineno">  270 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a3 $ \(a3'1, a3'2) -&gt; </span>
-<span class="lineno">  271 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a4 $ \(a4'1, a4'2) -&gt; </span>
-<span class="lineno">  272 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a5 $ \(a5'1, a5'2) -&gt; </span>
-<span class="lineno">  273 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a6 $ \(a6'1, a6'2) -&gt; </span>
-<span class="lineno">  274 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a7'1, a7'2) -&gt; </span>
-<span class="lineno">  275 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a8'1, a8'2) -&gt; </span>
-<span class="lineno">  276 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a9' -&gt; </span>
-<span class="lineno">  277 </span><span class="spaces">  </span><span class="istickedoff">qlParkinsonSigma'_ a1' a2'1  a2'2 a3'1  a3'2 a4'1  a4'2 a5'1  a5'2 a6'1  a6'2 a7'1  a7'2 a8'1  a8'2 a9' &gt;&gt;</span>
-<span class="lineno">  278 </span><span class="spaces">  </span><span class="istickedoff">peekDayArray  a7'1  a7'2&gt;&gt;= \a7'' -&gt; </span>
-<span class="lineno">  279 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a8'1  a8'2&gt;&gt;= \a8'' -&gt; </span>
-<span class="lineno">  280 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a9'&gt;&gt;</span>
-<span class="lineno">  281 </span><span class="spaces">  </span><span class="istickedoff">return (a7'', a8'')</span></span>
-<span class="lineno">  282 </span>
+<span class="lineno">  257 </span>
+<span class="lineno">  258 </span>-- |Parkinson (1980) high-low estimator: @sigma^2 = ln(high\/low)^2 \/ (4 ln 2)@, scaled by
+<span class="lineno">  259 </span>-- @yearFraction@. Input bars are @(date, open, close, high, low)@; only high\/low are used here.
+<span class="lineno">  260 </span>parkinsonSigma :: Double -- ^yearFraction
+<span class="lineno">  261 </span>  -&gt; NonEmpty (Day, Double, Double, Double, Double) -- ^(date, open, close, high, low) price bars
+<span class="lineno">  262 </span>  -&gt; IO [(Day, Double)]
+<span class="lineno">  263 </span><span class="decl"><span class="istickedoff">parkinsonSigma yearFraction bars = do</span>
+<span class="lineno">  264 </span><span class="spaces">  </span><span class="istickedoff">(ds, vs) &lt;- qlParkinsonSigma yearFraction dates opens closes highs lows</span>
+<span class="lineno">  265 </span><span class="spaces">  </span><span class="istickedoff">return $ zip ds vs</span>
+<span class="lineno">  266 </span><span class="spaces">  </span><span class="istickedoff">where (dates, opens, closes, highs, lows) = unzipBars bars</span></span>
+<span class="lineno">  267 </span>qlParkinsonSigma :: (Double) -&gt; ([Day]) -&gt; ([Double]) -&gt; ([Double]) -&gt; ([Double]) -&gt; ([Double]) -&gt; IO (([Day]), ([Double]))
+<span class="lineno">  268 </span><span class="decl"><span class="istickedoff">qlParkinsonSigma a1 a2 a3 a4 a5 a6 =</span>
+<span class="lineno">  269 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = realToFrac a1} in </span>
+<span class="lineno">  270 </span><span class="spaces">  </span><span class="istickedoff">withDayArray a2 $ \(a2'1, a2'2) -&gt; </span>
+<span class="lineno">  271 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a3 $ \(a3'1, a3'2) -&gt; </span>
+<span class="lineno">  272 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a4 $ \(a4'1, a4'2) -&gt; </span>
+<span class="lineno">  273 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a5 $ \(a5'1, a5'2) -&gt; </span>
+<span class="lineno">  274 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a6 $ \(a6'1, a6'2) -&gt; </span>
+<span class="lineno">  275 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a7'1, a7'2) -&gt; </span>
+<span class="lineno">  276 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a8'1, a8'2) -&gt; </span>
+<span class="lineno">  277 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a9' -&gt; </span>
+<span class="lineno">  278 </span><span class="spaces">  </span><span class="istickedoff">qlParkinsonSigma'_ a1' a2'1  a2'2 a3'1  a3'2 a4'1  a4'2 a5'1  a5'2 a6'1  a6'2 a7'1  a7'2 a8'1  a8'2 a9' &gt;&gt;</span>
+<span class="lineno">  279 </span><span class="spaces">  </span><span class="istickedoff">peekDayArray  a7'1  a7'2&gt;&gt;= \a7'' -&gt; </span>
+<span class="lineno">  280 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a8'1  a8'2&gt;&gt;= \a8'' -&gt; </span>
+<span class="lineno">  281 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a9'&gt;&gt;</span>
+<span class="lineno">  282 </span><span class="spaces">  </span><span class="istickedoff">return (a7'', a8'')</span></span>
 <span class="lineno">  283 </span>
 <span class="lineno">  284 </span>
-<span class="lineno">  285 </span>-- |Garman-Klass Sigma3: blends 'parkinsonSigma' with the overnight jump, same
-<span class="lineno">  286 </span>-- @marketOpenFraction@ weighting as 'garmanKlassSigma1'. Drops the series' first bar.
-<span class="lineno">  287 </span>garmanKlassSigma3 :: Double -- ^yearFraction
-<span class="lineno">  288 </span>  -&gt; Double -- ^marketOpenFraction
-<span class="lineno">  289 </span>  -&gt; NonEmpty (Day, Double, Double, Double, Double) -- ^(date, open, close, high, low) price bars
-<span class="lineno">  290 </span>  -&gt; IO [(Day, Double)]
-<span class="lineno">  291 </span><span class="decl"><span class="istickedoff">garmanKlassSigma3 yearFraction marketOpenFraction bars = do</span>
-<span class="lineno">  292 </span><span class="spaces">  </span><span class="istickedoff">(ds, vs) &lt;- qlGarmanKlassSigma3 yearFraction marketOpenFraction dates opens closes highs lows</span>
-<span class="lineno">  293 </span><span class="spaces">  </span><span class="istickedoff">return $ zip ds vs</span>
-<span class="lineno">  294 </span><span class="spaces">  </span><span class="istickedoff">where (dates, opens, closes, highs, lows) = unzipBars bars</span></span>
-<span class="lineno">  295 </span>qlGarmanKlassSigma3 :: (Double) -&gt; (Double) -&gt; ([Day]) -&gt; ([Double]) -&gt; ([Double]) -&gt; ([Double]) -&gt; ([Double]) -&gt; IO (([Day]), ([Double]))
-<span class="lineno">  296 </span><span class="decl"><span class="istickedoff">qlGarmanKlassSigma3 a1 a2 a3 a4 a5 a6 a7 =</span>
-<span class="lineno">  297 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = realToFrac a1} in </span>
-<span class="lineno">  298 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = realToFrac a2} in </span>
-<span class="lineno">  299 </span><span class="spaces">  </span><span class="istickedoff">withDayArray a3 $ \(a3'1, a3'2) -&gt; </span>
-<span class="lineno">  300 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a4 $ \(a4'1, a4'2) -&gt; </span>
-<span class="lineno">  301 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a5 $ \(a5'1, a5'2) -&gt; </span>
-<span class="lineno">  302 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a6 $ \(a6'1, a6'2) -&gt; </span>
-<span class="lineno">  303 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a7 $ \(a7'1, a7'2) -&gt; </span>
-<span class="lineno">  304 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a8'1, a8'2) -&gt; </span>
-<span class="lineno">  305 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a9'1, a9'2) -&gt; </span>
-<span class="lineno">  306 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a10' -&gt; </span>
-<span class="lineno">  307 </span><span class="spaces">  </span><span class="istickedoff">qlGarmanKlassSigma3'_ a1' a2' a3'1  a3'2 a4'1  a4'2 a5'1  a5'2 a6'1  a6'2 a7'1  a7'2 a8'1  a8'2 a9'1  a9'2 a10' &gt;&gt;</span>
-<span class="lineno">  308 </span><span class="spaces">  </span><span class="istickedoff">peekDayArray  a8'1  a8'2&gt;&gt;= \a8'' -&gt; </span>
-<span class="lineno">  309 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a9'1  a9'2&gt;&gt;= \a9'' -&gt; </span>
-<span class="lineno">  310 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a10'&gt;&gt;</span>
-<span class="lineno">  311 </span><span class="spaces">  </span><span class="istickedoff">return (a8'', a9'')</span></span>
-<span class="lineno">  312 </span>
+<span class="lineno">  285 </span>
+<span class="lineno">  286 </span>-- |Garman-Klass Sigma3: blends 'parkinsonSigma' with the overnight jump, same
+<span class="lineno">  287 </span>-- @marketOpenFraction@ weighting as 'garmanKlassSigma1'. Drops the series' first bar.
+<span class="lineno">  288 </span>garmanKlassSigma3 :: Double -- ^yearFraction
+<span class="lineno">  289 </span>  -&gt; Double -- ^marketOpenFraction
+<span class="lineno">  290 </span>  -&gt; NonEmpty (Day, Double, Double, Double, Double) -- ^(date, open, close, high, low) price bars
+<span class="lineno">  291 </span>  -&gt; IO [(Day, Double)]
+<span class="lineno">  292 </span><span class="decl"><span class="istickedoff">garmanKlassSigma3 yearFraction marketOpenFraction bars = do</span>
+<span class="lineno">  293 </span><span class="spaces">  </span><span class="istickedoff">(ds, vs) &lt;- qlGarmanKlassSigma3 yearFraction marketOpenFraction dates opens closes highs lows</span>
+<span class="lineno">  294 </span><span class="spaces">  </span><span class="istickedoff">return $ zip ds vs</span>
+<span class="lineno">  295 </span><span class="spaces">  </span><span class="istickedoff">where (dates, opens, closes, highs, lows) = unzipBars bars</span></span>
+<span class="lineno">  296 </span>qlGarmanKlassSigma3 :: (Double) -&gt; (Double) -&gt; ([Day]) -&gt; ([Double]) -&gt; ([Double]) -&gt; ([Double]) -&gt; ([Double]) -&gt; IO (([Day]), ([Double]))
+<span class="lineno">  297 </span><span class="decl"><span class="istickedoff">qlGarmanKlassSigma3 a1 a2 a3 a4 a5 a6 a7 =</span>
+<span class="lineno">  298 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = realToFrac a1} in </span>
+<span class="lineno">  299 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = realToFrac a2} in </span>
+<span class="lineno">  300 </span><span class="spaces">  </span><span class="istickedoff">withDayArray a3 $ \(a3'1, a3'2) -&gt; </span>
+<span class="lineno">  301 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a4 $ \(a4'1, a4'2) -&gt; </span>
+<span class="lineno">  302 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a5 $ \(a5'1, a5'2) -&gt; </span>
+<span class="lineno">  303 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a6 $ \(a6'1, a6'2) -&gt; </span>
+<span class="lineno">  304 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a7 $ \(a7'1, a7'2) -&gt; </span>
+<span class="lineno">  305 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a8'1, a8'2) -&gt; </span>
+<span class="lineno">  306 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a9'1, a9'2) -&gt; </span>
+<span class="lineno">  307 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a10' -&gt; </span>
+<span class="lineno">  308 </span><span class="spaces">  </span><span class="istickedoff">qlGarmanKlassSigma3'_ a1' a2' a3'1  a3'2 a4'1  a4'2 a5'1  a5'2 a6'1  a6'2 a7'1  a7'2 a8'1  a8'2 a9'1  a9'2 a10' &gt;&gt;</span>
+<span class="lineno">  309 </span><span class="spaces">  </span><span class="istickedoff">peekDayArray  a8'1  a8'2&gt;&gt;= \a8'' -&gt; </span>
+<span class="lineno">  310 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a9'1  a9'2&gt;&gt;= \a9'' -&gt; </span>
+<span class="lineno">  311 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a10'&gt;&gt;</span>
+<span class="lineno">  312 </span><span class="spaces">  </span><span class="istickedoff">return (a8'', a9'')</span></span>
 <span class="lineno">  313 </span>
 <span class="lineno">  314 </span>
-<span class="lineno">  315 </span>-- |Garman-Klass (1980) Sigma4 estimator, combining the high-low range with the close-open
-<span class="lineno">  316 </span>-- return via their published coefficients. Input bars are @(date, open, close, high, low)@.
-<span class="lineno">  317 </span>garmanKlassSigma4 :: Double -- ^yearFraction
-<span class="lineno">  318 </span>  -&gt; NonEmpty (Day, Double, Double, Double, Double) -- ^(date, open, close, high, low) price bars
-<span class="lineno">  319 </span>  -&gt; IO [(Day, Double)]
-<span class="lineno">  320 </span><span class="decl"><span class="istickedoff">garmanKlassSigma4 yearFraction bars = do</span>
-<span class="lineno">  321 </span><span class="spaces">  </span><span class="istickedoff">(ds, vs) &lt;- qlGarmanKlassSigma4 yearFraction dates opens closes highs lows</span>
-<span class="lineno">  322 </span><span class="spaces">  </span><span class="istickedoff">return $ zip ds vs</span>
-<span class="lineno">  323 </span><span class="spaces">  </span><span class="istickedoff">where (dates, opens, closes, highs, lows) = unzipBars bars</span></span>
-<span class="lineno">  324 </span>qlGarmanKlassSigma4 :: (Double) -&gt; ([Day]) -&gt; ([Double]) -&gt; ([Double]) -&gt; ([Double]) -&gt; ([Double]) -&gt; IO (([Day]), ([Double]))
-<span class="lineno">  325 </span><span class="decl"><span class="istickedoff">qlGarmanKlassSigma4 a1 a2 a3 a4 a5 a6 =</span>
-<span class="lineno">  326 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = realToFrac a1} in </span>
-<span class="lineno">  327 </span><span class="spaces">  </span><span class="istickedoff">withDayArray a2 $ \(a2'1, a2'2) -&gt; </span>
-<span class="lineno">  328 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a3 $ \(a3'1, a3'2) -&gt; </span>
-<span class="lineno">  329 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a4 $ \(a4'1, a4'2) -&gt; </span>
-<span class="lineno">  330 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a5 $ \(a5'1, a5'2) -&gt; </span>
-<span class="lineno">  331 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a6 $ \(a6'1, a6'2) -&gt; </span>
-<span class="lineno">  332 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a7'1, a7'2) -&gt; </span>
-<span class="lineno">  333 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a8'1, a8'2) -&gt; </span>
-<span class="lineno">  334 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a9' -&gt; </span>
-<span class="lineno">  335 </span><span class="spaces">  </span><span class="istickedoff">qlGarmanKlassSigma4'_ a1' a2'1  a2'2 a3'1  a3'2 a4'1  a4'2 a5'1  a5'2 a6'1  a6'2 a7'1  a7'2 a8'1  a8'2 a9' &gt;&gt;</span>
-<span class="lineno">  336 </span><span class="spaces">  </span><span class="istickedoff">peekDayArray  a7'1  a7'2&gt;&gt;= \a7'' -&gt; </span>
-<span class="lineno">  337 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a8'1  a8'2&gt;&gt;= \a8'' -&gt; </span>
-<span class="lineno">  338 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a9'&gt;&gt;</span>
-<span class="lineno">  339 </span><span class="spaces">  </span><span class="istickedoff">return (a7'', a8'')</span></span>
-<span class="lineno">  340 </span>
+<span class="lineno">  315 </span>
+<span class="lineno">  316 </span>-- |Garman-Klass (1980) Sigma4 estimator, combining the high-low range with the close-open
+<span class="lineno">  317 </span>-- return via their published coefficients. Input bars are @(date, open, close, high, low)@.
+<span class="lineno">  318 </span>garmanKlassSigma4 :: Double -- ^yearFraction
+<span class="lineno">  319 </span>  -&gt; NonEmpty (Day, Double, Double, Double, Double) -- ^(date, open, close, high, low) price bars
+<span class="lineno">  320 </span>  -&gt; IO [(Day, Double)]
+<span class="lineno">  321 </span><span class="decl"><span class="istickedoff">garmanKlassSigma4 yearFraction bars = do</span>
+<span class="lineno">  322 </span><span class="spaces">  </span><span class="istickedoff">(ds, vs) &lt;- qlGarmanKlassSigma4 yearFraction dates opens closes highs lows</span>
+<span class="lineno">  323 </span><span class="spaces">  </span><span class="istickedoff">return $ zip ds vs</span>
+<span class="lineno">  324 </span><span class="spaces">  </span><span class="istickedoff">where (dates, opens, closes, highs, lows) = unzipBars bars</span></span>
+<span class="lineno">  325 </span>qlGarmanKlassSigma4 :: (Double) -&gt; ([Day]) -&gt; ([Double]) -&gt; ([Double]) -&gt; ([Double]) -&gt; ([Double]) -&gt; IO (([Day]), ([Double]))
+<span class="lineno">  326 </span><span class="decl"><span class="istickedoff">qlGarmanKlassSigma4 a1 a2 a3 a4 a5 a6 =</span>
+<span class="lineno">  327 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = realToFrac a1} in </span>
+<span class="lineno">  328 </span><span class="spaces">  </span><span class="istickedoff">withDayArray a2 $ \(a2'1, a2'2) -&gt; </span>
+<span class="lineno">  329 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a3 $ \(a3'1, a3'2) -&gt; </span>
+<span class="lineno">  330 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a4 $ \(a4'1, a4'2) -&gt; </span>
+<span class="lineno">  331 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a5 $ \(a5'1, a5'2) -&gt; </span>
+<span class="lineno">  332 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a6 $ \(a6'1, a6'2) -&gt; </span>
+<span class="lineno">  333 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a7'1, a7'2) -&gt; </span>
+<span class="lineno">  334 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a8'1, a8'2) -&gt; </span>
+<span class="lineno">  335 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a9' -&gt; </span>
+<span class="lineno">  336 </span><span class="spaces">  </span><span class="istickedoff">qlGarmanKlassSigma4'_ a1' a2'1  a2'2 a3'1  a3'2 a4'1  a4'2 a5'1  a5'2 a6'1  a6'2 a7'1  a7'2 a8'1  a8'2 a9' &gt;&gt;</span>
+<span class="lineno">  337 </span><span class="spaces">  </span><span class="istickedoff">peekDayArray  a7'1  a7'2&gt;&gt;= \a7'' -&gt; </span>
+<span class="lineno">  338 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a8'1  a8'2&gt;&gt;= \a8'' -&gt; </span>
+<span class="lineno">  339 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a9'&gt;&gt;</span>
+<span class="lineno">  340 </span><span class="spaces">  </span><span class="istickedoff">return (a7'', a8'')</span></span>
 <span class="lineno">  341 </span>
 <span class="lineno">  342 </span>
-<span class="lineno">  343 </span>-- |Garman-Klass (1980) Sigma5 estimator: an alternative high-low\/close-open combination to
-<span class="lineno">  344 </span>-- 'garmanKlassSigma4', with different published coefficients.
-<span class="lineno">  345 </span>garmanKlassSigma5 :: Double -- ^yearFraction
-<span class="lineno">  346 </span>  -&gt; NonEmpty (Day, Double, Double, Double, Double) -- ^(date, open, close, high, low) price bars
-<span class="lineno">  347 </span>  -&gt; IO [(Day, Double)]
-<span class="lineno">  348 </span><span class="decl"><span class="istickedoff">garmanKlassSigma5 yearFraction bars = do</span>
-<span class="lineno">  349 </span><span class="spaces">  </span><span class="istickedoff">(ds, vs) &lt;- qlGarmanKlassSigma5 yearFraction dates opens closes highs lows</span>
-<span class="lineno">  350 </span><span class="spaces">  </span><span class="istickedoff">return $ zip ds vs</span>
-<span class="lineno">  351 </span><span class="spaces">  </span><span class="istickedoff">where (dates, opens, closes, highs, lows) = unzipBars bars</span></span>
-<span class="lineno">  352 </span>qlGarmanKlassSigma5 :: (Double) -&gt; ([Day]) -&gt; ([Double]) -&gt; ([Double]) -&gt; ([Double]) -&gt; ([Double]) -&gt; IO (([Day]), ([Double]))
-<span class="lineno">  353 </span><span class="decl"><span class="istickedoff">qlGarmanKlassSigma5 a1 a2 a3 a4 a5 a6 =</span>
-<span class="lineno">  354 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = realToFrac a1} in </span>
-<span class="lineno">  355 </span><span class="spaces">  </span><span class="istickedoff">withDayArray a2 $ \(a2'1, a2'2) -&gt; </span>
-<span class="lineno">  356 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a3 $ \(a3'1, a3'2) -&gt; </span>
-<span class="lineno">  357 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a4 $ \(a4'1, a4'2) -&gt; </span>
-<span class="lineno">  358 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a5 $ \(a5'1, a5'2) -&gt; </span>
-<span class="lineno">  359 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a6 $ \(a6'1, a6'2) -&gt; </span>
-<span class="lineno">  360 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a7'1, a7'2) -&gt; </span>
-<span class="lineno">  361 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a8'1, a8'2) -&gt; </span>
-<span class="lineno">  362 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a9' -&gt; </span>
-<span class="lineno">  363 </span><span class="spaces">  </span><span class="istickedoff">qlGarmanKlassSigma5'_ a1' a2'1  a2'2 a3'1  a3'2 a4'1  a4'2 a5'1  a5'2 a6'1  a6'2 a7'1  a7'2 a8'1  a8'2 a9' &gt;&gt;</span>
-<span class="lineno">  364 </span><span class="spaces">  </span><span class="istickedoff">peekDayArray  a7'1  a7'2&gt;&gt;= \a7'' -&gt; </span>
-<span class="lineno">  365 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a8'1  a8'2&gt;&gt;= \a8'' -&gt; </span>
-<span class="lineno">  366 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a9'&gt;&gt;</span>
-<span class="lineno">  367 </span><span class="spaces">  </span><span class="istickedoff">return (a7'', a8'')</span></span>
-<span class="lineno">  368 </span>
+<span class="lineno">  343 </span>
+<span class="lineno">  344 </span>-- |Garman-Klass (1980) Sigma5 estimator: an alternative high-low\/close-open combination to
+<span class="lineno">  345 </span>-- 'garmanKlassSigma4', with different published coefficients.
+<span class="lineno">  346 </span>garmanKlassSigma5 :: Double -- ^yearFraction
+<span class="lineno">  347 </span>  -&gt; NonEmpty (Day, Double, Double, Double, Double) -- ^(date, open, close, high, low) price bars
+<span class="lineno">  348 </span>  -&gt; IO [(Day, Double)]
+<span class="lineno">  349 </span><span class="decl"><span class="istickedoff">garmanKlassSigma5 yearFraction bars = do</span>
+<span class="lineno">  350 </span><span class="spaces">  </span><span class="istickedoff">(ds, vs) &lt;- qlGarmanKlassSigma5 yearFraction dates opens closes highs lows</span>
+<span class="lineno">  351 </span><span class="spaces">  </span><span class="istickedoff">return $ zip ds vs</span>
+<span class="lineno">  352 </span><span class="spaces">  </span><span class="istickedoff">where (dates, opens, closes, highs, lows) = unzipBars bars</span></span>
+<span class="lineno">  353 </span>qlGarmanKlassSigma5 :: (Double) -&gt; ([Day]) -&gt; ([Double]) -&gt; ([Double]) -&gt; ([Double]) -&gt; ([Double]) -&gt; IO (([Day]), ([Double]))
+<span class="lineno">  354 </span><span class="decl"><span class="istickedoff">qlGarmanKlassSigma5 a1 a2 a3 a4 a5 a6 =</span>
+<span class="lineno">  355 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = realToFrac a1} in </span>
+<span class="lineno">  356 </span><span class="spaces">  </span><span class="istickedoff">withDayArray a2 $ \(a2'1, a2'2) -&gt; </span>
+<span class="lineno">  357 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a3 $ \(a3'1, a3'2) -&gt; </span>
+<span class="lineno">  358 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a4 $ \(a4'1, a4'2) -&gt; </span>
+<span class="lineno">  359 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a5 $ \(a5'1, a5'2) -&gt; </span>
+<span class="lineno">  360 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a6 $ \(a6'1, a6'2) -&gt; </span>
+<span class="lineno">  361 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a7'1, a7'2) -&gt; </span>
+<span class="lineno">  362 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a8'1, a8'2) -&gt; </span>
+<span class="lineno">  363 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a9' -&gt; </span>
+<span class="lineno">  364 </span><span class="spaces">  </span><span class="istickedoff">qlGarmanKlassSigma5'_ a1' a2'1  a2'2 a3'1  a3'2 a4'1  a4'2 a5'1  a5'2 a6'1  a6'2 a7'1  a7'2 a8'1  a8'2 a9' &gt;&gt;</span>
+<span class="lineno">  365 </span><span class="spaces">  </span><span class="istickedoff">peekDayArray  a7'1  a7'2&gt;&gt;= \a7'' -&gt; </span>
+<span class="lineno">  366 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a8'1  a8'2&gt;&gt;= \a8'' -&gt; </span>
+<span class="lineno">  367 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a9'&gt;&gt;</span>
+<span class="lineno">  368 </span><span class="spaces">  </span><span class="istickedoff">return (a7'', a8'')</span></span>
 <span class="lineno">  369 </span>
 <span class="lineno">  370 </span>
-<span class="lineno">  371 </span>-- |Garman-Klass Sigma6: blends 'garmanKlassSigma5' with the overnight jump, same
-<span class="lineno">  372 </span>-- @marketOpenFraction@ weighting as 'garmanKlassSigma1'. Drops the series' first bar.
-<span class="lineno">  373 </span>garmanKlassSigma6 :: Double -- ^yearFraction
-<span class="lineno">  374 </span>  -&gt; Double -- ^marketOpenFraction
-<span class="lineno">  375 </span>  -&gt; NonEmpty (Day, Double, Double, Double, Double) -- ^(date, open, close, high, low) price bars
-<span class="lineno">  376 </span>  -&gt; IO [(Day, Double)]
-<span class="lineno">  377 </span><span class="decl"><span class="istickedoff">garmanKlassSigma6 yearFraction marketOpenFraction bars = do</span>
-<span class="lineno">  378 </span><span class="spaces">  </span><span class="istickedoff">(ds, vs) &lt;- qlGarmanKlassSigma6 yearFraction marketOpenFraction dates opens closes highs lows</span>
-<span class="lineno">  379 </span><span class="spaces">  </span><span class="istickedoff">return $ zip ds vs</span>
-<span class="lineno">  380 </span><span class="spaces">  </span><span class="istickedoff">where (dates, opens, closes, highs, lows) = unzipBars bars</span></span>
-<span class="lineno">  381 </span>qlGarmanKlassSigma6 :: (Double) -&gt; (Double) -&gt; ([Day]) -&gt; ([Double]) -&gt; ([Double]) -&gt; ([Double]) -&gt; ([Double]) -&gt; IO (([Day]), ([Double]))
-<span class="lineno">  382 </span><span class="decl"><span class="istickedoff">qlGarmanKlassSigma6 a1 a2 a3 a4 a5 a6 a7 =</span>
-<span class="lineno">  383 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = realToFrac a1} in </span>
-<span class="lineno">  384 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = realToFrac a2} in </span>
-<span class="lineno">  385 </span><span class="spaces">  </span><span class="istickedoff">withDayArray a3 $ \(a3'1, a3'2) -&gt; </span>
-<span class="lineno">  386 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a4 $ \(a4'1, a4'2) -&gt; </span>
-<span class="lineno">  387 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a5 $ \(a5'1, a5'2) -&gt; </span>
-<span class="lineno">  388 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a6 $ \(a6'1, a6'2) -&gt; </span>
-<span class="lineno">  389 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a7 $ \(a7'1, a7'2) -&gt; </span>
-<span class="lineno">  390 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a8'1, a8'2) -&gt; </span>
-<span class="lineno">  391 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a9'1, a9'2) -&gt; </span>
-<span class="lineno">  392 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a10' -&gt; </span>
-<span class="lineno">  393 </span><span class="spaces">  </span><span class="istickedoff">qlGarmanKlassSigma6'_ a1' a2' a3'1  a3'2 a4'1  a4'2 a5'1  a5'2 a6'1  a6'2 a7'1  a7'2 a8'1  a8'2 a9'1  a9'2 a10' &gt;&gt;</span>
-<span class="lineno">  394 </span><span class="spaces">  </span><span class="istickedoff">peekDayArray  a8'1  a8'2&gt;&gt;= \a8'' -&gt; </span>
-<span class="lineno">  395 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a9'1  a9'2&gt;&gt;= \a9'' -&gt; </span>
-<span class="lineno">  396 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a10'&gt;&gt;</span>
-<span class="lineno">  397 </span><span class="spaces">  </span><span class="istickedoff">return (a8'', a9'')</span></span>
-<span class="lineno">  398 </span>
+<span class="lineno">  371 </span>
+<span class="lineno">  372 </span>-- |Garman-Klass Sigma6: blends 'garmanKlassSigma5' with the overnight jump, same
+<span class="lineno">  373 </span>-- @marketOpenFraction@ weighting as 'garmanKlassSigma1'. Drops the series' first bar.
+<span class="lineno">  374 </span>garmanKlassSigma6 :: Double -- ^yearFraction
+<span class="lineno">  375 </span>  -&gt; Double -- ^marketOpenFraction
+<span class="lineno">  376 </span>  -&gt; NonEmpty (Day, Double, Double, Double, Double) -- ^(date, open, close, high, low) price bars
+<span class="lineno">  377 </span>  -&gt; IO [(Day, Double)]
+<span class="lineno">  378 </span><span class="decl"><span class="istickedoff">garmanKlassSigma6 yearFraction marketOpenFraction bars = do</span>
+<span class="lineno">  379 </span><span class="spaces">  </span><span class="istickedoff">(ds, vs) &lt;- qlGarmanKlassSigma6 yearFraction marketOpenFraction dates opens closes highs lows</span>
+<span class="lineno">  380 </span><span class="spaces">  </span><span class="istickedoff">return $ zip ds vs</span>
+<span class="lineno">  381 </span><span class="spaces">  </span><span class="istickedoff">where (dates, opens, closes, highs, lows) = unzipBars bars</span></span>
+<span class="lineno">  382 </span>qlGarmanKlassSigma6 :: (Double) -&gt; (Double) -&gt; ([Day]) -&gt; ([Double]) -&gt; ([Double]) -&gt; ([Double]) -&gt; ([Double]) -&gt; IO (([Day]), ([Double]))
+<span class="lineno">  383 </span><span class="decl"><span class="istickedoff">qlGarmanKlassSigma6 a1 a2 a3 a4 a5 a6 a7 =</span>
+<span class="lineno">  384 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = realToFrac a1} in </span>
+<span class="lineno">  385 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = realToFrac a2} in </span>
+<span class="lineno">  386 </span><span class="spaces">  </span><span class="istickedoff">withDayArray a3 $ \(a3'1, a3'2) -&gt; </span>
+<span class="lineno">  387 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a4 $ \(a4'1, a4'2) -&gt; </span>
+<span class="lineno">  388 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a5 $ \(a5'1, a5'2) -&gt; </span>
+<span class="lineno">  389 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a6 $ \(a6'1, a6'2) -&gt; </span>
+<span class="lineno">  390 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a7 $ \(a7'1, a7'2) -&gt; </span>
+<span class="lineno">  391 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a8'1, a8'2) -&gt; </span>
+<span class="lineno">  392 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a9'1, a9'2) -&gt; </span>
+<span class="lineno">  393 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a10' -&gt; </span>
+<span class="lineno">  394 </span><span class="spaces">  </span><span class="istickedoff">qlGarmanKlassSigma6'_ a1' a2' a3'1  a3'2 a4'1  a4'2 a5'1  a5'2 a6'1  a6'2 a7'1  a7'2 a8'1  a8'2 a9'1  a9'2 a10' &gt;&gt;</span>
+<span class="lineno">  395 </span><span class="spaces">  </span><span class="istickedoff">peekDayArray  a8'1  a8'2&gt;&gt;= \a8'' -&gt; </span>
+<span class="lineno">  396 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a9'1  a9'2&gt;&gt;= \a9'' -&gt; </span>
+<span class="lineno">  397 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a10'&gt;&gt;</span>
+<span class="lineno">  398 </span><span class="spaces">  </span><span class="istickedoff">return (a8'', a9'')</span></span>
 <span class="lineno">  399 </span>
 <span class="lineno">  400 </span>
-<span class="lineno">  401 </span>-- |Smooths an already-computed volatility series with a rolling constant estimate over the
-<span class="lineno">  402 </span>-- trailing @windowSize@ points.
-<span class="lineno">  403 </span>constantVolatilityEstimator :: Word -- ^windowSize
-<span class="lineno">  404 </span>  -&gt; NonEmpty (Day, Double) -- ^volatility series
-<span class="lineno">  405 </span>  -&gt; IO [(Day, Double)]
-<span class="lineno">  406 </span><span class="decl"><span class="istickedoff">constantVolatilityEstimator windowSize series = do</span>
-<span class="lineno">  407 </span><span class="spaces">  </span><span class="istickedoff">(ds, vs) &lt;- qlConstantVolatilityEstimator windowSize dates vals</span>
-<span class="lineno">  408 </span><span class="spaces">  </span><span class="istickedoff">return $ zip ds vs</span>
-<span class="lineno">  409 </span><span class="spaces">  </span><span class="istickedoff">where (dates, vals) = unzip (toList series)</span></span>
-<span class="lineno">  410 </span>qlConstantVolatilityEstimator :: (Word) -&gt; ([Day]) -&gt; ([Double]) -&gt; IO (([Day]), ([Double]))
-<span class="lineno">  411 </span><span class="decl"><span class="istickedoff">qlConstantVolatilityEstimator a1 a2 a3 =</span>
-<span class="lineno">  412 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = fromIntegral a1} in </span>
-<span class="lineno">  413 </span><span class="spaces">  </span><span class="istickedoff">withDayArray a2 $ \(a2'1, a2'2) -&gt; </span>
-<span class="lineno">  414 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a3 $ \(a3'1, a3'2) -&gt; </span>
-<span class="lineno">  415 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a4'1, a4'2) -&gt; </span>
-<span class="lineno">  416 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a5'1, a5'2) -&gt; </span>
-<span class="lineno">  417 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a6' -&gt; </span>
-<span class="lineno">  418 </span><span class="spaces">  </span><span class="istickedoff">qlConstantVolatilityEstimator'_ a1' a2'1  a2'2 a3'1  a3'2 a4'1  a4'2 a5'1  a5'2 a6' &gt;&gt;</span>
-<span class="lineno">  419 </span><span class="spaces">  </span><span class="istickedoff">peekDayArray  a4'1  a4'2&gt;&gt;= \a4'' -&gt; </span>
-<span class="lineno">  420 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a5'1  a5'2&gt;&gt;= \a5'' -&gt; </span>
-<span class="lineno">  421 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a6'&gt;&gt;</span>
-<span class="lineno">  422 </span><span class="spaces">  </span><span class="istickedoff">return (a4'', a5'')</span></span>
-<span class="lineno">  423 </span>
+<span class="lineno">  401 </span>
+<span class="lineno">  402 </span>-- |Smooths an already-computed volatility series with a rolling constant estimate over the
+<span class="lineno">  403 </span>-- trailing @windowSize@ points.
+<span class="lineno">  404 </span>constantVolatilityEstimator :: Word -- ^windowSize
+<span class="lineno">  405 </span>  -&gt; NonEmpty (Day, Double) -- ^volatility series
+<span class="lineno">  406 </span>  -&gt; IO [(Day, Double)]
+<span class="lineno">  407 </span><span class="decl"><span class="istickedoff">constantVolatilityEstimator windowSize series = do</span>
+<span class="lineno">  408 </span><span class="spaces">  </span><span class="istickedoff">(ds, vs) &lt;- qlConstantVolatilityEstimator windowSize dates vals</span>
+<span class="lineno">  409 </span><span class="spaces">  </span><span class="istickedoff">return $ zip ds vs</span>
+<span class="lineno">  410 </span><span class="spaces">  </span><span class="istickedoff">where (dates, vals) = unzip (toList series)</span></span>
+<span class="lineno">  411 </span>qlConstantVolatilityEstimator :: (Word) -&gt; ([Day]) -&gt; ([Double]) -&gt; IO (([Day]), ([Double]))
+<span class="lineno">  412 </span><span class="decl"><span class="istickedoff">qlConstantVolatilityEstimator a1 a2 a3 =</span>
+<span class="lineno">  413 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = fromIntegral a1} in </span>
+<span class="lineno">  414 </span><span class="spaces">  </span><span class="istickedoff">withDayArray a2 $ \(a2'1, a2'2) -&gt; </span>
+<span class="lineno">  415 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a3 $ \(a3'1, a3'2) -&gt; </span>
+<span class="lineno">  416 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a4'1, a4'2) -&gt; </span>
+<span class="lineno">  417 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a5'1, a5'2) -&gt; </span>
+<span class="lineno">  418 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a6' -&gt; </span>
+<span class="lineno">  419 </span><span class="spaces">  </span><span class="istickedoff">qlConstantVolatilityEstimator'_ a1' a2'1  a2'2 a3'1  a3'2 a4'1  a4'2 a5'1  a5'2 a6' &gt;&gt;</span>
+<span class="lineno">  420 </span><span class="spaces">  </span><span class="istickedoff">peekDayArray  a4'1  a4'2&gt;&gt;= \a4'' -&gt; </span>
+<span class="lineno">  421 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a5'1  a5'2&gt;&gt;= \a5'' -&gt; </span>
+<span class="lineno">  422 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a6'&gt;&gt;</span>
+<span class="lineno">  423 </span><span class="spaces">  </span><span class="istickedoff">return (a4'', a5'')</span></span>
 <span class="lineno">  424 </span>
 <span class="lineno">  425 </span>
-<span class="lineno">  426 </span>-- |Local (point-to-point) volatility estimate from a raw price series: @|ln(p_i\/p_{i-1})| \/
-<span class="lineno">  427 </span>-- sqrt(yearFraction)@ for each consecutive pair. Drops the series' first date; an @n@-point
-<span class="lineno">  428 </span>-- input produces an @(n-1)@-point output.
-<span class="lineno">  429 </span>simpleLocalVolatilityEstimator :: Double -- ^yearFraction
-<span class="lineno">  430 </span>  -&gt; NonEmpty (Day, Double) -- ^price series
-<span class="lineno">  431 </span>  -&gt; IO [(Day, Double)]
-<span class="lineno">  432 </span><span class="decl"><span class="istickedoff">simpleLocalVolatilityEstimator yearFraction series = do</span>
-<span class="lineno">  433 </span><span class="spaces">  </span><span class="istickedoff">(ds, vs) &lt;- qlSimpleLocalVolatilityEstimator yearFraction dates vals</span>
-<span class="lineno">  434 </span><span class="spaces">  </span><span class="istickedoff">return $ zip ds vs</span>
-<span class="lineno">  435 </span><span class="spaces">  </span><span class="istickedoff">where (dates, vals) = unzip (toList series)</span></span>
-<span class="lineno">  436 </span>qlSimpleLocalVolatilityEstimator :: (Double) -&gt; ([Day]) -&gt; ([Double]) -&gt; IO (([Day]), ([Double]))
-<span class="lineno">  437 </span><span class="decl"><span class="istickedoff">qlSimpleLocalVolatilityEstimator a1 a2 a3 =</span>
-<span class="lineno">  438 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = realToFrac a1} in </span>
-<span class="lineno">  439 </span><span class="spaces">  </span><span class="istickedoff">withDayArray a2 $ \(a2'1, a2'2) -&gt; </span>
-<span class="lineno">  440 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a3 $ \(a3'1, a3'2) -&gt; </span>
-<span class="lineno">  441 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a4'1, a4'2) -&gt; </span>
-<span class="lineno">  442 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a5'1, a5'2) -&gt; </span>
-<span class="lineno">  443 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a6' -&gt; </span>
-<span class="lineno">  444 </span><span class="spaces">  </span><span class="istickedoff">qlSimpleLocalVolatilityEstimator'_ a1' a2'1  a2'2 a3'1  a3'2 a4'1  a4'2 a5'1  a5'2 a6' &gt;&gt;</span>
-<span class="lineno">  445 </span><span class="spaces">  </span><span class="istickedoff">peekDayArray  a4'1  a4'2&gt;&gt;= \a4'' -&gt; </span>
-<span class="lineno">  446 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a5'1  a5'2&gt;&gt;= \a5'' -&gt; </span>
-<span class="lineno">  447 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a6'&gt;&gt;</span>
-<span class="lineno">  448 </span><span class="spaces">  </span><span class="istickedoff">return (a4'', a5'')</span></span>
-<span class="lineno">  449 </span>
+<span class="lineno">  426 </span>
+<span class="lineno">  427 </span>-- |Local (point-to-point) volatility estimate from a raw price series: @|ln(p_i\/p_{i-1})| \/
+<span class="lineno">  428 </span>-- sqrt(yearFraction)@ for each consecutive pair. Drops the series' first date; an @n@-point
+<span class="lineno">  429 </span>-- input produces an @(n-1)@-point output.
+<span class="lineno">  430 </span>simpleLocalVolatilityEstimator :: Double -- ^yearFraction
+<span class="lineno">  431 </span>  -&gt; NonEmpty (Day, Double) -- ^price series
+<span class="lineno">  432 </span>  -&gt; IO [(Day, Double)]
+<span class="lineno">  433 </span><span class="decl"><span class="istickedoff">simpleLocalVolatilityEstimator yearFraction series = do</span>
+<span class="lineno">  434 </span><span class="spaces">  </span><span class="istickedoff">(ds, vs) &lt;- qlSimpleLocalVolatilityEstimator yearFraction dates vals</span>
+<span class="lineno">  435 </span><span class="spaces">  </span><span class="istickedoff">return $ zip ds vs</span>
+<span class="lineno">  436 </span><span class="spaces">  </span><span class="istickedoff">where (dates, vals) = unzip (toList series)</span></span>
+<span class="lineno">  437 </span>qlSimpleLocalVolatilityEstimator :: (Double) -&gt; ([Day]) -&gt; ([Double]) -&gt; IO (([Day]), ([Double]))
+<span class="lineno">  438 </span><span class="decl"><span class="istickedoff">qlSimpleLocalVolatilityEstimator a1 a2 a3 =</span>
+<span class="lineno">  439 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = realToFrac a1} in </span>
+<span class="lineno">  440 </span><span class="spaces">  </span><span class="istickedoff">withDayArray a2 $ \(a2'1, a2'2) -&gt; </span>
+<span class="lineno">  441 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a3 $ \(a3'1, a3'2) -&gt; </span>
+<span class="lineno">  442 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a4'1, a4'2) -&gt; </span>
+<span class="lineno">  443 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a5'1, a5'2) -&gt; </span>
+<span class="lineno">  444 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a6' -&gt; </span>
+<span class="lineno">  445 </span><span class="spaces">  </span><span class="istickedoff">qlSimpleLocalVolatilityEstimator'_ a1' a2'1  a2'2 a3'1  a3'2 a4'1  a4'2 a5'1  a5'2 a6' &gt;&gt;</span>
+<span class="lineno">  446 </span><span class="spaces">  </span><span class="istickedoff">peekDayArray  a4'1  a4'2&gt;&gt;= \a4'' -&gt; </span>
+<span class="lineno">  447 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a5'1  a5'2&gt;&gt;= \a5'' -&gt; </span>
+<span class="lineno">  448 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a6'&gt;&gt;</span>
+<span class="lineno">  449 </span><span class="spaces">  </span><span class="istickedoff">return (a4'', a5'')</span></span>
 <span class="lineno">  450 </span>
 <span class="lineno">  451 </span>
-<span class="lineno">  452 </span>unzipBars :: NonEmpty (Day, Double, Double, Double, Double) -&gt; ([Day], [Double], [Double], [Double], [Double])
-<span class="lineno">  453 </span><span class="decl"><span class="istickedoff">unzipBars bars = (map d5 xs, map o5 xs, map c5 xs, map h5 xs, map l5 xs)</span>
-<span class="lineno">  454 </span><span class="spaces">  </span><span class="istickedoff">where</span>
-<span class="lineno">  455 </span><span class="spaces">    </span><span class="istickedoff">xs = toList bars</span>
-<span class="lineno">  456 </span><span class="spaces">    </span><span class="istickedoff">d5 (d,_,_,_,_) = d</span>
-<span class="lineno">  457 </span><span class="spaces">    </span><span class="istickedoff">o5 (_,o,_,_,_) = o</span>
-<span class="lineno">  458 </span><span class="spaces">    </span><span class="istickedoff">c5 (_,_,c,_,_) = c</span>
-<span class="lineno">  459 </span><span class="spaces">    </span><span class="istickedoff">h5 (_,_,_,h,_) = h</span>
-<span class="lineno">  460 </span><span class="spaces">    </span><span class="istickedoff">l5 (_,_,_,_,l) = l</span></span>
-<span class="lineno">  461 </span>
-<span class="lineno">  462 </span>foreign import ccall safe &quot;QuantLib/VolatilityModel.chs.h qlGarch11&quot;
-<span class="lineno">  463 </span>  garch11'_ :: (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (IO (C2HSImp.Ptr (CGarch11))))))
-<span class="lineno">  464 </span>
-<span class="lineno">  465 </span>foreign import ccall safe &quot;QuantLib/VolatilityModel.chs.h qlGarch11Calibrated&quot;
-<span class="lineno">  466 </span>  qlGarch11Calibrated'_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CGarch11)))))))))
-<span class="lineno">  467 </span>
-<span class="lineno">  468 </span>foreign import ccall safe &quot;QuantLib/VolatilityModel.chs.h qlGarch11Alpha&quot;
-<span class="lineno">  469 </span>  garch11Alpha'_ :: ((C2HSImp.Ptr (CGarch11)) -&gt; (IO C2HSImp.CDouble))
-<span class="lineno">  470 </span>
-<span class="lineno">  471 </span>foreign import ccall safe &quot;QuantLib/VolatilityModel.chs.h qlGarch11Beta&quot;
-<span class="lineno">  472 </span>  garch11Beta'_ :: ((C2HSImp.Ptr (CGarch11)) -&gt; (IO C2HSImp.CDouble))
-<span class="lineno">  473 </span>
-<span class="lineno">  474 </span>foreign import ccall safe &quot;QuantLib/VolatilityModel.chs.h qlGarch11Omega&quot;
-<span class="lineno">  475 </span>  garch11Omega'_ :: ((C2HSImp.Ptr (CGarch11)) -&gt; (IO C2HSImp.CDouble))
-<span class="lineno">  476 </span>
-<span class="lineno">  477 </span>foreign import ccall safe &quot;QuantLib/VolatilityModel.chs.h qlGarch11LtVol&quot;
-<span class="lineno">  478 </span>  garch11LtVol'_ :: ((C2HSImp.Ptr (CGarch11)) -&gt; (IO C2HSImp.CDouble))
-<span class="lineno">  479 </span>
-<span class="lineno">  480 </span>foreign import ccall safe &quot;QuantLib/VolatilityModel.chs.h qlGarch11LogLikelihood&quot;
-<span class="lineno">  481 </span>  garch11LogLikelihood'_ :: ((C2HSImp.Ptr (CGarch11)) -&gt; (IO C2HSImp.CDouble))
-<span class="lineno">  482 </span>
-<span class="lineno">  483 </span>foreign import ccall safe &quot;QuantLib/VolatilityModel.chs.h qlGarch11Forecast&quot;
-<span class="lineno">  484 </span>  garch11Forecast'_ :: ((C2HSImp.Ptr (CGarch11)) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (IO C2HSImp.CDouble))))
-<span class="lineno">  485 </span>
-<span class="lineno">  486 </span>foreign import ccall safe &quot;QuantLib/VolatilityModel.chs.h qlGarch11Calculate&quot;
-<span class="lineno">  487 </span>  qlGarch11Calculate'_ :: ((C2HSImp.Ptr (CGarch11)) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CInt)) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ())))))))))))
-<span class="lineno">  488 </span>
-<span class="lineno">  489 </span>foreign import ccall safe &quot;QuantLib/VolatilityModel.chs.h qlGarmanKlassSimpleSigma&quot;
-<span class="lineno">  490 </span>  qlGarmanKlassSimpleSigma'_ :: (C2HSImp.CDouble -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CInt)) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ())))))))))))))))))
-<span class="lineno">  491 </span>
-<span class="lineno">  492 </span>foreign import ccall safe &quot;QuantLib/VolatilityModel.chs.h qlGarmanKlassSigma1&quot;
-<span class="lineno">  493 </span>  qlGarmanKlassSigma1'_ :: (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CInt)) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ()))))))))))))))))))
-<span class="lineno">  494 </span>
-<span class="lineno">  495 </span>foreign import ccall safe &quot;QuantLib/VolatilityModel.chs.h qlParkinsonSigma&quot;
-<span class="lineno">  496 </span>  qlParkinsonSigma'_ :: (C2HSImp.CDouble -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CInt)) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ())))))))))))))))))
-<span class="lineno">  497 </span>
-<span class="lineno">  498 </span>foreign import ccall safe &quot;QuantLib/VolatilityModel.chs.h qlGarmanKlassSigma3&quot;
-<span class="lineno">  499 </span>  qlGarmanKlassSigma3'_ :: (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CInt)) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ()))))))))))))))))))
-<span class="lineno">  500 </span>
-<span class="lineno">  501 </span>foreign import ccall safe &quot;QuantLib/VolatilityModel.chs.h qlGarmanKlassSigma4&quot;
-<span class="lineno">  502 </span>  qlGarmanKlassSigma4'_ :: (C2HSImp.CDouble -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CInt)) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ())))))))))))))))))
-<span class="lineno">  503 </span>
-<span class="lineno">  504 </span>foreign import ccall safe &quot;QuantLib/VolatilityModel.chs.h qlGarmanKlassSigma5&quot;
-<span class="lineno">  505 </span>  qlGarmanKlassSigma5'_ :: (C2HSImp.CDouble -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CInt)) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ())))))))))))))))))
-<span class="lineno">  506 </span>
-<span class="lineno">  507 </span>foreign import ccall safe &quot;QuantLib/VolatilityModel.chs.h qlGarmanKlassSigma6&quot;
-<span class="lineno">  508 </span>  qlGarmanKlassSigma6'_ :: (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CInt)) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ()))))))))))))))))))
-<span class="lineno">  509 </span>
-<span class="lineno">  510 </span>foreign import ccall safe &quot;QuantLib/VolatilityModel.chs.h qlConstantVolatilityEstimator&quot;
-<span class="lineno">  511 </span>  qlConstantVolatilityEstimator'_ :: (C2HSImp.CUInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CInt)) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ())))))))))))
-<span class="lineno">  512 </span>
-<span class="lineno">  513 </span>foreign import ccall safe &quot;QuantLib/VolatilityModel.chs.h qlSimpleLocalVolatilityEstimator&quot;
-<span class="lineno">  514 </span>  qlSimpleLocalVolatilityEstimator'_ :: (C2HSImp.CDouble -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CInt)) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ())))))))))))
+<span class="lineno">  452 </span>
+<span class="lineno">  453 </span>unzipBars :: NonEmpty (Day, Double, Double, Double, Double) -&gt; ([Day], [Double], [Double], [Double], [Double])
+<span class="lineno">  454 </span><span class="decl"><span class="istickedoff">unzipBars bars = (map d5 xs, map o5 xs, map c5 xs, map h5 xs, map l5 xs)</span>
+<span class="lineno">  455 </span><span class="spaces">  </span><span class="istickedoff">where</span>
+<span class="lineno">  456 </span><span class="spaces">    </span><span class="istickedoff">xs = toList bars</span>
+<span class="lineno">  457 </span><span class="spaces">    </span><span class="istickedoff">d5 (d,_,_,_,_) = d</span>
+<span class="lineno">  458 </span><span class="spaces">    </span><span class="istickedoff">o5 (_,o,_,_,_) = o</span>
+<span class="lineno">  459 </span><span class="spaces">    </span><span class="istickedoff">c5 (_,_,c,_,_) = c</span>
+<span class="lineno">  460 </span><span class="spaces">    </span><span class="istickedoff">h5 (_,_,_,h,_) = h</span>
+<span class="lineno">  461 </span><span class="spaces">    </span><span class="istickedoff">l5 (_,_,_,_,l) = l</span></span>
+<span class="lineno">  462 </span>
+<span class="lineno">  463 </span>foreign import ccall safe &quot;QuantLib/VolatilityModel.chs.h qlGarch11&quot;
+<span class="lineno">  464 </span>  garch11'_ :: (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CGarch11)))))))
+<span class="lineno">  465 </span>
+<span class="lineno">  466 </span>foreign import ccall safe &quot;QuantLib/VolatilityModel.chs.h qlGarch11Calibrated&quot;
+<span class="lineno">  467 </span>  qlGarch11Calibrated'_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CGarch11)))))))))
+<span class="lineno">  468 </span>
+<span class="lineno">  469 </span>foreign import ccall safe &quot;QuantLib/VolatilityModel.chs.h qlGarch11Alpha&quot;
+<span class="lineno">  470 </span>  garch11Alpha'_ :: ((C2HSImp.Ptr (CGarch11)) -&gt; (IO C2HSImp.CDouble))
+<span class="lineno">  471 </span>
+<span class="lineno">  472 </span>foreign import ccall safe &quot;QuantLib/VolatilityModel.chs.h qlGarch11Beta&quot;
+<span class="lineno">  473 </span>  garch11Beta'_ :: ((C2HSImp.Ptr (CGarch11)) -&gt; (IO C2HSImp.CDouble))
+<span class="lineno">  474 </span>
+<span class="lineno">  475 </span>foreign import ccall safe &quot;QuantLib/VolatilityModel.chs.h qlGarch11Omega&quot;
+<span class="lineno">  476 </span>  garch11Omega'_ :: ((C2HSImp.Ptr (CGarch11)) -&gt; (IO C2HSImp.CDouble))
+<span class="lineno">  477 </span>
+<span class="lineno">  478 </span>foreign import ccall safe &quot;QuantLib/VolatilityModel.chs.h qlGarch11LtVol&quot;
+<span class="lineno">  479 </span>  garch11LtVol'_ :: ((C2HSImp.Ptr (CGarch11)) -&gt; (IO C2HSImp.CDouble))
+<span class="lineno">  480 </span>
+<span class="lineno">  481 </span>foreign import ccall safe &quot;QuantLib/VolatilityModel.chs.h qlGarch11LogLikelihood&quot;
+<span class="lineno">  482 </span>  garch11LogLikelihood'_ :: ((C2HSImp.Ptr (CGarch11)) -&gt; (IO C2HSImp.CDouble))
+<span class="lineno">  483 </span>
+<span class="lineno">  484 </span>foreign import ccall safe &quot;QuantLib/VolatilityModel.chs.h qlGarch11Forecast&quot;
+<span class="lineno">  485 </span>  garch11Forecast'_ :: ((C2HSImp.Ptr (CGarch11)) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (IO C2HSImp.CDouble))))
+<span class="lineno">  486 </span>
+<span class="lineno">  487 </span>foreign import ccall safe &quot;QuantLib/VolatilityModel.chs.h qlGarch11Calculate&quot;
+<span class="lineno">  488 </span>  qlGarch11Calculate'_ :: ((C2HSImp.Ptr (CGarch11)) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CInt)) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ())))))))))))
+<span class="lineno">  489 </span>
+<span class="lineno">  490 </span>foreign import ccall safe &quot;QuantLib/VolatilityModel.chs.h qlGarmanKlassSimpleSigma&quot;
+<span class="lineno">  491 </span>  qlGarmanKlassSimpleSigma'_ :: (C2HSImp.CDouble -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CInt)) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ())))))))))))))))))
+<span class="lineno">  492 </span>
+<span class="lineno">  493 </span>foreign import ccall safe &quot;QuantLib/VolatilityModel.chs.h qlGarmanKlassSigma1&quot;
+<span class="lineno">  494 </span>  qlGarmanKlassSigma1'_ :: (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CInt)) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ()))))))))))))))))))
+<span class="lineno">  495 </span>
+<span class="lineno">  496 </span>foreign import ccall safe &quot;QuantLib/VolatilityModel.chs.h qlParkinsonSigma&quot;
+<span class="lineno">  497 </span>  qlParkinsonSigma'_ :: (C2HSImp.CDouble -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CInt)) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ())))))))))))))))))
+<span class="lineno">  498 </span>
+<span class="lineno">  499 </span>foreign import ccall safe &quot;QuantLib/VolatilityModel.chs.h qlGarmanKlassSigma3&quot;
+<span class="lineno">  500 </span>  qlGarmanKlassSigma3'_ :: (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CInt)) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ()))))))))))))))))))
+<span class="lineno">  501 </span>
+<span class="lineno">  502 </span>foreign import ccall safe &quot;QuantLib/VolatilityModel.chs.h qlGarmanKlassSigma4&quot;
+<span class="lineno">  503 </span>  qlGarmanKlassSigma4'_ :: (C2HSImp.CDouble -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CInt)) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ())))))))))))))))))
+<span class="lineno">  504 </span>
+<span class="lineno">  505 </span>foreign import ccall safe &quot;QuantLib/VolatilityModel.chs.h qlGarmanKlassSigma5&quot;
+<span class="lineno">  506 </span>  qlGarmanKlassSigma5'_ :: (C2HSImp.CDouble -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CInt)) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ())))))))))))))))))
+<span class="lineno">  507 </span>
+<span class="lineno">  508 </span>foreign import ccall safe &quot;QuantLib/VolatilityModel.chs.h qlGarmanKlassSigma6&quot;
+<span class="lineno">  509 </span>  qlGarmanKlassSigma6'_ :: (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CInt)) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ()))))))))))))))))))
+<span class="lineno">  510 </span>
+<span class="lineno">  511 </span>foreign import ccall safe &quot;QuantLib/VolatilityModel.chs.h qlConstantVolatilityEstimator&quot;
+<span class="lineno">  512 </span>  qlConstantVolatilityEstimator'_ :: (C2HSImp.CUInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CInt)) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ())))))))))))
+<span class="lineno">  513 </span>
+<span class="lineno">  514 </span>foreign import ccall safe &quot;QuantLib/VolatilityModel.chs.h qlSimpleLocalVolatilityEstimator&quot;
+<span class="lineno">  515 </span>  qlSimpleLocalVolatilityEstimator'_ :: (C2HSImp.CDouble -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CInt)) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ())))))))))))
 
 </pre>
 </body>

@@ -10,7 +10,7 @@
 </span><span id="line-10"></span><span class="hs-keyword">data</span><span> </span><span id="Error"><span class="annot"><a href="QuantLib.Type.html#Error"><span class="hs-identifier hs-var">Error</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span id="CPlusPlusException"><span class="annot"><a href="QuantLib.Type.html#CPlusPlusException"><span class="hs-identifier hs-var">CPlusPlusException</span></a></span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">String</span></span><span>
 </span><span id="line-11"></span><span>          </span><span class="hs-glyph">|</span><span> </span><span id="DateConversion"><span class="annot"><a href="QuantLib.Type.html#DateConversion"><span class="hs-identifier hs-var">DateConversion</span></a></span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">Day</span></span><span>
 </span><span id="line-12"></span><span>          </span><span class="hs-glyph">|</span><span> </span><span id="EnumConversion"><span class="annot"><a href="QuantLib.Type.html#EnumConversion"><span class="hs-identifier hs-var">EnumConversion</span></a></span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">String</span></span><span>
-</span><span id="line-13"></span><span>          </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680392702"><span id="local-6989586621680392714"><span id="local-6989586621680392718"><span class="annot"><span class="annottext">Int -&gt; Error -&gt; ShowS
+</span><span id="line-13"></span><span>          </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680420436"><span id="local-6989586621680420448"><span id="local-6989586621680420452"><span class="annot"><span class="annottext">Int -&gt; Error -&gt; ShowS
 [Error] -&gt; ShowS
 Error -&gt; String
 (Int -&gt; Error -&gt; ShowS)
@@ -23,7 +23,7 @@ $cshow :: Error -&gt; String
 show :: Error -&gt; String
 $cshowList :: [Error] -&gt; ShowS
 showList :: [Error] -&gt; ShowS
-</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Show</span></span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680392724"><span id="local-6989586621680392735"><span class="annot"><span class="annottext">Error -&gt; Error -&gt; Bool
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Show</span></span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680420458"><span id="local-6989586621680420469"><span class="annot"><span class="annottext">Error -&gt; Error -&gt; Bool
 (Error -&gt; Error -&gt; Bool) -&gt; (Error -&gt; Error -&gt; Bool) -&gt; Eq Error
 forall a. (a -&gt; a -&gt; Bool) -&gt; (a -&gt; a -&gt; Bool) -&gt; Eq a
 $c== :: Error -&gt; Error -&gt; Bool
@@ -32,7 +32,7 @@ $c/= :: Error -&gt; Error -&gt; Bool
 /= :: Error -&gt; Error -&gt; Bool
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span class="hs-special">)</span><span>
 </span><span id="line-14"></span><span>
-</span><span id="line-15"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680392745"><span id="local-6989586621680392749"><span id="local-6989586621680392752"><span id="local-6989586621680392755"><span class="annot"><span class="hs-identifier hs-type">Exception</span></span><span> </span><span class="annot"><a href="QuantLib.Type.html#Error"><span class="hs-identifier hs-type">Error</span></a></span></span></span></span></span><span>
+</span><span id="line-15"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621680420479"><span id="local-6989586621680420483"><span id="local-6989586621680420486"><span id="local-6989586621680420489"><span class="annot"><span class="hs-identifier hs-type">Exception</span></span><span> </span><span class="annot"><a href="QuantLib.Type.html#Error"><span class="hs-identifier hs-type">Error</span></a></span></span></span></span></span><span>
 </span><span id="line-16"></span><span>
 </span><span id="line-17"></span><span class="hs-comment">-- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:</span><span>
 </span><span id="line-18"></span></pre></body></html>

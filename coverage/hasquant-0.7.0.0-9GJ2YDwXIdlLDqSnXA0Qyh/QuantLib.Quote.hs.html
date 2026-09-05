@@ -26,170 +26,170 @@ span.spaces    { background: white }
 <span class="lineno">    7 </span>     Quote
 <span class="lineno">    8 </span>   , SimpleQuote
 <span class="lineno">    9 </span>   , DeltaVolQuote
-<span class="lineno">   10 </span>   , RelinkableQuote
-<span class="lineno">   11 </span>   , GenQuote
-<span class="lineno">   12 </span>
-<span class="lineno">   13 </span>   , asQuote
-<span class="lineno">   14 </span>   , PriceType(..)
-<span class="lineno">   15 </span>   , IntervalPriceType(..)
-<span class="lineno">   16 </span>   , AtmType(..)
-<span class="lineno">   17 </span>   , DeltaType(..)
-<span class="lineno">   18 </span>
-<span class="lineno">   19 </span>  , simpleQuote
-<span class="lineno">   20 </span>  , deltaVolQuote
-<span class="lineno">   21 </span>  , atmVolQuote
-<span class="lineno">   22 </span>  , value
-<span class="lineno">   23 </span>  , isValid
-<span class="lineno">   24 </span>  , setValue
-<span class="lineno">   25 </span>  , eurodollarFuturesImpliedStdDevQuote
-<span class="lineno">   26 </span>  , forwardSwapQuote
-<span class="lineno">   27 </span>  , forwardValueQuote
-<span class="lineno">   28 </span>  , futuresConvAdjustmentQuote'
-<span class="lineno">   29 </span>  , futuresConvAdjustmentQuote
-<span class="lineno">   30 </span>  , impliedStdDevQuote
-<span class="lineno">   31 </span>  , lastFixingQuote
-<span class="lineno">   32 </span>  , relinkableQuote
-<span class="lineno">   33 </span>  , linkTo
-<span class="lineno">   34 </span>
-<span class="lineno">   35 </span>  , QuoteOp(..)
-<span class="lineno">   36 </span>  , MultiQuoteOp(..)
-<span class="lineno">   37 </span>  , derivedQuote
-<span class="lineno">   38 </span>  , compositeQuote
-<span class="lineno">   39 </span>  , multiCompositeQuote
-<span class="lineno">   40 </span>  , withDerivedQuote
-<span class="lineno">   41 </span>  , withCompositeQuote
-<span class="lineno">   42 </span>  , withMultiCompositeQuote
-<span class="lineno">   43 </span>  ) where
-<span class="lineno">   44 </span>import qualified Foreign.C.String as C2HSImp
-<span class="lineno">   45 </span>import qualified Foreign.C.Types as C2HSImp
-<span class="lineno">   46 </span>import qualified Foreign.ForeignPtr as C2HSImp
-<span class="lineno">   47 </span>import qualified Foreign.Marshal.Utils as C2HSImp
-<span class="lineno">   48 </span>import qualified Foreign.Ptr as C2HSImp
-<span class="lineno">   49 </span>
-<span class="lineno">   50 </span>
-<span class="lineno">   51 </span>import Foreign.Ptr(FunPtr)
+<span class="lineno">   10 </span>   , FuturesConvAdjustmentQuote
+<span class="lineno">   11 </span>   , RelinkableQuote
+<span class="lineno">   12 </span>   , GenQuote
+<span class="lineno">   13 </span>
+<span class="lineno">   14 </span>   , asQuote
+<span class="lineno">   15 </span>   , PriceType(..)
+<span class="lineno">   16 </span>   , IntervalPriceType(..)
+<span class="lineno">   17 </span>   , AtmType(..)
+<span class="lineno">   18 </span>   , DeltaType(..)
+<span class="lineno">   19 </span>
+<span class="lineno">   20 </span>  , simpleQuote
+<span class="lineno">   21 </span>  , deltaVolQuote
+<span class="lineno">   22 </span>  , atmVolQuote
+<span class="lineno">   23 </span>  , value
+<span class="lineno">   24 </span>  , isValid
+<span class="lineno">   25 </span>  , setValue
+<span class="lineno">   26 </span>  , eurodollarFuturesImpliedStdDevQuote
+<span class="lineno">   27 </span>  , forwardSwapQuote
+<span class="lineno">   28 </span>  , forwardValueQuote
+<span class="lineno">   29 </span>  , futuresConvAdjustmentQuote'
+<span class="lineno">   30 </span>  , futuresConvAdjustmentQuote
+<span class="lineno">   31 </span>  , futuresConvAdjustmentQuoteFuturesValue
+<span class="lineno">   32 </span>  , impliedStdDevQuote
+<span class="lineno">   33 </span>  , lastFixingQuote
+<span class="lineno">   34 </span>  , relinkableQuote
+<span class="lineno">   35 </span>  , linkTo
+<span class="lineno">   36 </span>
+<span class="lineno">   37 </span>  , QuoteOp(..)
+<span class="lineno">   38 </span>  , MultiQuoteOp(..)
+<span class="lineno">   39 </span>  , derivedQuote
+<span class="lineno">   40 </span>  , compositeQuote
+<span class="lineno">   41 </span>  , multiCompositeQuote
+<span class="lineno">   42 </span>  , withDerivedQuote
+<span class="lineno">   43 </span>  , withCompositeQuote
+<span class="lineno">   44 </span>  , withMultiCompositeQuote
+<span class="lineno">   45 </span>  ) where
+<span class="lineno">   46 </span>import qualified Foreign.C.String as C2HSImp
+<span class="lineno">   47 </span>import qualified Foreign.C.Types as C2HSImp
+<span class="lineno">   48 </span>import qualified Foreign.ForeignPtr as C2HSImp
+<span class="lineno">   49 </span>import qualified Foreign.Marshal.Utils as C2HSImp
+<span class="lineno">   50 </span>import qualified Foreign.Ptr as C2HSImp
+<span class="lineno">   51 </span>
 <span class="lineno">   52 </span>
-<span class="lineno">   53 </span>import QuantLib.Internal
-<span class="lineno">   54 </span>import QuantLib.Internal.Common
-<span class="lineno">   55 </span>import QuantLib.Internal.Type
-<span class="lineno">   56 </span>
-<span class="lineno">   57 </span>
+<span class="lineno">   53 </span>import Foreign.Ptr(FunPtr)
+<span class="lineno">   54 </span>
+<span class="lineno">   55 </span>import QuantLib.Internal
+<span class="lineno">   56 </span>import QuantLib.Internal.Common
+<span class="lineno">   57 </span>import QuantLib.Internal.Type
 <span class="lineno">   58 </span>
 <span class="lineno">   59 </span>
 <span class="lineno">   60 </span>
 <span class="lineno">   61 </span>
 <span class="lineno">   62 </span>
-<span class="lineno">   63 </span>data IntervalPriceType = IntervalPriceOpen
-<span class="lineno">   64 </span>                       | IntervalPriceClose
-<span class="lineno">   65 </span>                       | IntervalPriceHigh
-<span class="lineno">   66 </span>                       | IntervalPriceLow
-<span class="lineno">   67 </span>  deriving (<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Enum</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Show</span></span></span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Eq</span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Read</span></span></span></span></span></span></span></span>)
-<span class="lineno">   68 </span>
-<span class="lineno">   69 </span>
-<span class="lineno">   70 </span>data AtmType = AtmNull
-<span class="lineno">   71 </span>             | AtmSpot
-<span class="lineno">   72 </span>             | AtmFwd
-<span class="lineno">   73 </span>             | AtmDeltaNeutral
-<span class="lineno">   74 </span>             | AtmVegaMax
-<span class="lineno">   75 </span>             | AtmGammaMax
-<span class="lineno">   76 </span>             | AtmPutCall50
-<span class="lineno">   77 </span>  deriving (<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="istickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Enum</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Show</span></span></span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Eq</span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Read</span></span></span></span></span></span></span></span>)
-<span class="lineno">   78 </span>
-<span class="lineno">   79 </span>
-<span class="lineno">   80 </span>data PriceType = Bid
-<span class="lineno">   81 </span>               | Ask
-<span class="lineno">   82 </span>               | Last
-<span class="lineno">   83 </span>               | Close
-<span class="lineno">   84 </span>               | Mid
-<span class="lineno">   85 </span>               | MidEquivalent
-<span class="lineno">   86 </span>               | MidSafe
-<span class="lineno">   87 </span>  deriving (<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Enum</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Show</span></span></span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Eq</span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Read</span></span></span></span></span></span></span></span>)
-<span class="lineno">   88 </span>
-<span class="lineno">   89 </span>
-<span class="lineno">   90 </span>data DeltaType = Spot
-<span class="lineno">   91 </span>               | Fwd
-<span class="lineno">   92 </span>               | PaSpot
-<span class="lineno">   93 </span>               | PaFwd
-<span class="lineno">   94 </span>  deriving (<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="istickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Enum</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Show</span></span></span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Eq</span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Read</span></span></span></span></span></span></span></span>)
-<span class="lineno">   95 </span>
-<span class="lineno">   96 </span>
+<span class="lineno">   63 </span>
+<span class="lineno">   64 </span>
+<span class="lineno">   65 </span>data IntervalPriceType = IntervalPriceOpen
+<span class="lineno">   66 </span>                       | IntervalPriceClose
+<span class="lineno">   67 </span>                       | IntervalPriceHigh
+<span class="lineno">   68 </span>                       | IntervalPriceLow
+<span class="lineno">   69 </span>  deriving (<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Enum</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Show</span></span></span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Eq</span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Read</span></span></span></span></span></span></span></span>)
+<span class="lineno">   70 </span>
+<span class="lineno">   71 </span>
+<span class="lineno">   72 </span>data AtmType = AtmNull
+<span class="lineno">   73 </span>             | AtmSpot
+<span class="lineno">   74 </span>             | AtmFwd
+<span class="lineno">   75 </span>             | AtmDeltaNeutral
+<span class="lineno">   76 </span>             | AtmVegaMax
+<span class="lineno">   77 </span>             | AtmGammaMax
+<span class="lineno">   78 </span>             | AtmPutCall50
+<span class="lineno">   79 </span>  deriving (<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="istickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Enum</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Show</span></span></span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Eq</span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Read</span></span></span></span></span></span></span></span>)
+<span class="lineno">   80 </span>
+<span class="lineno">   81 </span>
+<span class="lineno">   82 </span>data PriceType = Bid
+<span class="lineno">   83 </span>               | Ask
+<span class="lineno">   84 </span>               | Last
+<span class="lineno">   85 </span>               | Close
+<span class="lineno">   86 </span>               | Mid
+<span class="lineno">   87 </span>               | MidEquivalent
+<span class="lineno">   88 </span>               | MidSafe
+<span class="lineno">   89 </span>  deriving (<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Enum</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Show</span></span></span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Eq</span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Read</span></span></span></span></span></span></span></span>)
+<span class="lineno">   90 </span>
+<span class="lineno">   91 </span>
+<span class="lineno">   92 </span>data DeltaType = Spot
+<span class="lineno">   93 </span>               | Fwd
+<span class="lineno">   94 </span>               | PaSpot
+<span class="lineno">   95 </span>               | PaFwd
+<span class="lineno">   96 </span>  deriving (<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="istickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Enum</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Show</span></span></span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Eq</span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Read</span></span></span></span></span></span></span></span>)
 <span class="lineno">   97 </span>
-<span class="lineno">   98 </span>-- |Operation used by 'derivedQuote' or 'compositeQuote'. The former applies
-<span class="lineno">   99 </span>-- @quote \`op\` operand@; the latter applies @quote1 \`op\` quote2@. Use
-<span class="lineno">  100 </span>-- 'withDerivedQuote' for reversed unary operations such as FX inversion.
-<span class="lineno">  101 </span>data QuoteOp = QuoteAdd
-<span class="lineno">  102 </span>             | QuoteSubtract
-<span class="lineno">  103 </span>             | QuoteMultiply
-<span class="lineno">  104 </span>             | QuoteDivide
-<span class="lineno">  105 </span>  deriving (<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Show</span></span></span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Eq</span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Read</span></span></span></span></span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Bounded</span></span></span></span>)
-<span class="lineno">  106 </span>instance <span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Enum QuoteOp</span></span></span></span> where
-<span class="lineno">  107 </span>  <span class="decl"><span class="nottickedoff">succ QuoteAdd = QuoteSubtract</span>
-<span class="lineno">  108 </span><span class="spaces">  </span><span class="nottickedoff">succ QuoteSubtract = QuoteMultiply</span>
-<span class="lineno">  109 </span><span class="spaces">  </span><span class="nottickedoff">succ QuoteMultiply = QuoteDivide</span>
-<span class="lineno">  110 </span><span class="spaces">  </span><span class="nottickedoff">succ QuoteDivide = error &quot;QuoteOp.succ: QuoteDivide has no successor&quot;</span></span>
-<span class="lineno">  111 </span>
-<span class="lineno">  112 </span>  <span class="decl"><span class="nottickedoff">pred QuoteSubtract = QuoteAdd</span>
-<span class="lineno">  113 </span><span class="spaces">  </span><span class="nottickedoff">pred QuoteMultiply = QuoteSubtract</span>
-<span class="lineno">  114 </span><span class="spaces">  </span><span class="nottickedoff">pred QuoteDivide = QuoteMultiply</span>
-<span class="lineno">  115 </span><span class="spaces">  </span><span class="nottickedoff">pred QuoteAdd = error &quot;QuoteOp.pred: QuoteAdd has no predecessor&quot;</span></span>
-<span class="lineno">  116 </span>
-<span class="lineno">  117 </span>  <span class="decl"><span class="nottickedoff">enumFromTo from to = go from</span>
-<span class="lineno">  118 </span><span class="spaces">    </span><span class="nottickedoff">where</span>
-<span class="lineno">  119 </span><span class="spaces">      </span><span class="nottickedoff">end = fromEnum to</span>
-<span class="lineno">  120 </span><span class="spaces">      </span><span class="nottickedoff">go v = case compare (fromEnum v) end of</span>
-<span class="lineno">  121 </span><span class="spaces">                 </span><span class="nottickedoff">LT -&gt; v : go (succ v)</span>
-<span class="lineno">  122 </span><span class="spaces">                 </span><span class="nottickedoff">EQ -&gt; [v]</span>
-<span class="lineno">  123 </span><span class="spaces">                 </span><span class="nottickedoff">GT -&gt; []</span></span>
-<span class="lineno">  124 </span>
-<span class="lineno">  125 </span>  <span class="decl"><span class="nottickedoff">enumFrom from = enumFromTo from QuoteDivide</span></span>
+<span class="lineno">   98 </span>
+<span class="lineno">   99 </span>
+<span class="lineno">  100 </span>-- |Operation used by 'derivedQuote' or 'compositeQuote'. The former applies
+<span class="lineno">  101 </span>-- @quote \`op\` operand@; the latter applies @quote1 \`op\` quote2@. Use
+<span class="lineno">  102 </span>-- 'withDerivedQuote' for reversed unary operations such as FX inversion.
+<span class="lineno">  103 </span>data QuoteOp = QuoteAdd
+<span class="lineno">  104 </span>             | QuoteSubtract
+<span class="lineno">  105 </span>             | QuoteMultiply
+<span class="lineno">  106 </span>             | QuoteDivide
+<span class="lineno">  107 </span>  deriving (<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Show</span></span></span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Eq</span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Read</span></span></span></span></span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Bounded</span></span></span></span>)
+<span class="lineno">  108 </span>instance <span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Enum QuoteOp</span></span></span></span> where
+<span class="lineno">  109 </span>  <span class="decl"><span class="nottickedoff">succ QuoteAdd = QuoteSubtract</span>
+<span class="lineno">  110 </span><span class="spaces">  </span><span class="nottickedoff">succ QuoteSubtract = QuoteMultiply</span>
+<span class="lineno">  111 </span><span class="spaces">  </span><span class="nottickedoff">succ QuoteMultiply = QuoteDivide</span>
+<span class="lineno">  112 </span><span class="spaces">  </span><span class="nottickedoff">succ QuoteDivide = error &quot;QuoteOp.succ: QuoteDivide has no successor&quot;</span></span>
+<span class="lineno">  113 </span>
+<span class="lineno">  114 </span>  <span class="decl"><span class="nottickedoff">pred QuoteSubtract = QuoteAdd</span>
+<span class="lineno">  115 </span><span class="spaces">  </span><span class="nottickedoff">pred QuoteMultiply = QuoteSubtract</span>
+<span class="lineno">  116 </span><span class="spaces">  </span><span class="nottickedoff">pred QuoteDivide = QuoteMultiply</span>
+<span class="lineno">  117 </span><span class="spaces">  </span><span class="nottickedoff">pred QuoteAdd = error &quot;QuoteOp.pred: QuoteAdd has no predecessor&quot;</span></span>
+<span class="lineno">  118 </span>
+<span class="lineno">  119 </span>  <span class="decl"><span class="nottickedoff">enumFromTo from to = go from</span>
+<span class="lineno">  120 </span><span class="spaces">    </span><span class="nottickedoff">where</span>
+<span class="lineno">  121 </span><span class="spaces">      </span><span class="nottickedoff">end = fromEnum to</span>
+<span class="lineno">  122 </span><span class="spaces">      </span><span class="nottickedoff">go v = case compare (fromEnum v) end of</span>
+<span class="lineno">  123 </span><span class="spaces">                 </span><span class="nottickedoff">LT -&gt; v : go (succ v)</span>
+<span class="lineno">  124 </span><span class="spaces">                 </span><span class="nottickedoff">EQ -&gt; [v]</span>
+<span class="lineno">  125 </span><span class="spaces">                 </span><span class="nottickedoff">GT -&gt; []</span></span>
 <span class="lineno">  126 </span>
-<span class="lineno">  127 </span>  <span class="decl"><span class="istickedoff">fromEnum QuoteAdd = 0</span>
-<span class="lineno">  128 </span><span class="spaces">  </span><span class="istickedoff">fromEnum QuoteSubtract = 1</span>
-<span class="lineno">  129 </span><span class="spaces">  </span><span class="istickedoff">fromEnum QuoteMultiply = 2</span>
-<span class="lineno">  130 </span><span class="spaces">  </span><span class="istickedoff">fromEnum QuoteDivide = <span class="nottickedoff">3</span></span></span>
-<span class="lineno">  131 </span>
-<span class="lineno">  132 </span>  <span class="decl"><span class="nottickedoff">toEnum 0 = QuoteAdd</span>
-<span class="lineno">  133 </span><span class="spaces">  </span><span class="nottickedoff">toEnum 1 = QuoteSubtract</span>
-<span class="lineno">  134 </span><span class="spaces">  </span><span class="nottickedoff">toEnum 2 = QuoteMultiply</span>
-<span class="lineno">  135 </span><span class="spaces">  </span><span class="nottickedoff">toEnum 3 = QuoteDivide</span>
-<span class="lineno">  136 </span><span class="spaces">  </span><span class="nottickedoff">toEnum unmatched = error (&quot;QuoteOp.toEnum: Cannot match &quot; ++ show unmatched)</span></span>
-<span class="lineno">  137 </span>
-<span class="lineno">  138 </span>
+<span class="lineno">  127 </span>  <span class="decl"><span class="nottickedoff">enumFrom from = enumFromTo from QuoteDivide</span></span>
+<span class="lineno">  128 </span>
+<span class="lineno">  129 </span>  <span class="decl"><span class="istickedoff">fromEnum QuoteAdd = 0</span>
+<span class="lineno">  130 </span><span class="spaces">  </span><span class="istickedoff">fromEnum QuoteSubtract = 1</span>
+<span class="lineno">  131 </span><span class="spaces">  </span><span class="istickedoff">fromEnum QuoteMultiply = 2</span>
+<span class="lineno">  132 </span><span class="spaces">  </span><span class="istickedoff">fromEnum QuoteDivide = <span class="nottickedoff">3</span></span></span>
+<span class="lineno">  133 </span>
+<span class="lineno">  134 </span>  <span class="decl"><span class="nottickedoff">toEnum 0 = QuoteAdd</span>
+<span class="lineno">  135 </span><span class="spaces">  </span><span class="nottickedoff">toEnum 1 = QuoteSubtract</span>
+<span class="lineno">  136 </span><span class="spaces">  </span><span class="nottickedoff">toEnum 2 = QuoteMultiply</span>
+<span class="lineno">  137 </span><span class="spaces">  </span><span class="nottickedoff">toEnum 3 = QuoteDivide</span>
+<span class="lineno">  138 </span><span class="spaces">  </span><span class="nottickedoff">toEnum unmatched = error (&quot;QuoteOp.toEnum: Cannot match &quot; ++ show unmatched)</span></span>
 <span class="lineno">  139 </span>
-<span class="lineno">  140 </span>-- |Which fold a catalogue 'multiCompositeQuote' applies over its elements.
-<span class="lineno">  141 </span>data MultiQuoteOp = QuoteSum
-<span class="lineno">  142 </span>                  | QuoteProduct
-<span class="lineno">  143 </span>                  | QuoteNorm2
-<span class="lineno">  144 </span>  deriving (<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Show</span></span></span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Eq</span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Read</span></span></span></span></span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Bounded</span></span></span></span>)
-<span class="lineno">  145 </span>instance <span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Enum MultiQuoteOp</span></span></span></span> where
-<span class="lineno">  146 </span>  <span class="decl"><span class="nottickedoff">succ QuoteSum = QuoteProduct</span>
-<span class="lineno">  147 </span><span class="spaces">  </span><span class="nottickedoff">succ QuoteProduct = QuoteNorm2</span>
-<span class="lineno">  148 </span><span class="spaces">  </span><span class="nottickedoff">succ QuoteNorm2 = error &quot;MultiQuoteOp.succ: QuoteNorm2 has no successor&quot;</span></span>
-<span class="lineno">  149 </span>
-<span class="lineno">  150 </span>  <span class="decl"><span class="nottickedoff">pred QuoteProduct = QuoteSum</span>
-<span class="lineno">  151 </span><span class="spaces">  </span><span class="nottickedoff">pred QuoteNorm2 = QuoteProduct</span>
-<span class="lineno">  152 </span><span class="spaces">  </span><span class="nottickedoff">pred QuoteSum = error &quot;MultiQuoteOp.pred: QuoteSum has no predecessor&quot;</span></span>
-<span class="lineno">  153 </span>
-<span class="lineno">  154 </span>  <span class="decl"><span class="nottickedoff">enumFromTo from to = go from</span>
-<span class="lineno">  155 </span><span class="spaces">    </span><span class="nottickedoff">where</span>
-<span class="lineno">  156 </span><span class="spaces">      </span><span class="nottickedoff">end = fromEnum to</span>
-<span class="lineno">  157 </span><span class="spaces">      </span><span class="nottickedoff">go v = case compare (fromEnum v) end of</span>
-<span class="lineno">  158 </span><span class="spaces">                 </span><span class="nottickedoff">LT -&gt; v : go (succ v)</span>
-<span class="lineno">  159 </span><span class="spaces">                 </span><span class="nottickedoff">EQ -&gt; [v]</span>
-<span class="lineno">  160 </span><span class="spaces">                 </span><span class="nottickedoff">GT -&gt; []</span></span>
-<span class="lineno">  161 </span>
-<span class="lineno">  162 </span>  <span class="decl"><span class="nottickedoff">enumFrom from = enumFromTo from QuoteNorm2</span></span>
+<span class="lineno">  140 </span>
+<span class="lineno">  141 </span>
+<span class="lineno">  142 </span>-- |Which fold a catalogue 'multiCompositeQuote' applies over its elements.
+<span class="lineno">  143 </span>data MultiQuoteOp = QuoteSum
+<span class="lineno">  144 </span>                  | QuoteProduct
+<span class="lineno">  145 </span>                  | QuoteNorm2
+<span class="lineno">  146 </span>  deriving (<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Show</span></span></span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Eq</span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Read</span></span></span></span></span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Bounded</span></span></span></span>)
+<span class="lineno">  147 </span>instance <span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Enum MultiQuoteOp</span></span></span></span> where
+<span class="lineno">  148 </span>  <span class="decl"><span class="nottickedoff">succ QuoteSum = QuoteProduct</span>
+<span class="lineno">  149 </span><span class="spaces">  </span><span class="nottickedoff">succ QuoteProduct = QuoteNorm2</span>
+<span class="lineno">  150 </span><span class="spaces">  </span><span class="nottickedoff">succ QuoteNorm2 = error &quot;MultiQuoteOp.succ: QuoteNorm2 has no successor&quot;</span></span>
+<span class="lineno">  151 </span>
+<span class="lineno">  152 </span>  <span class="decl"><span class="nottickedoff">pred QuoteProduct = QuoteSum</span>
+<span class="lineno">  153 </span><span class="spaces">  </span><span class="nottickedoff">pred QuoteNorm2 = QuoteProduct</span>
+<span class="lineno">  154 </span><span class="spaces">  </span><span class="nottickedoff">pred QuoteSum = error &quot;MultiQuoteOp.pred: QuoteSum has no predecessor&quot;</span></span>
+<span class="lineno">  155 </span>
+<span class="lineno">  156 </span>  <span class="decl"><span class="nottickedoff">enumFromTo from to = go from</span>
+<span class="lineno">  157 </span><span class="spaces">    </span><span class="nottickedoff">where</span>
+<span class="lineno">  158 </span><span class="spaces">      </span><span class="nottickedoff">end = fromEnum to</span>
+<span class="lineno">  159 </span><span class="spaces">      </span><span class="nottickedoff">go v = case compare (fromEnum v) end of</span>
+<span class="lineno">  160 </span><span class="spaces">                 </span><span class="nottickedoff">LT -&gt; v : go (succ v)</span>
+<span class="lineno">  161 </span><span class="spaces">                 </span><span class="nottickedoff">EQ -&gt; [v]</span>
+<span class="lineno">  162 </span><span class="spaces">                 </span><span class="nottickedoff">GT -&gt; []</span></span>
 <span class="lineno">  163 </span>
-<span class="lineno">  164 </span>  <span class="decl"><span class="istickedoff">fromEnum QuoteSum = 0</span>
-<span class="lineno">  165 </span><span class="spaces">  </span><span class="istickedoff">fromEnum QuoteProduct = 1</span>
-<span class="lineno">  166 </span><span class="spaces">  </span><span class="istickedoff">fromEnum QuoteNorm2 = 2</span></span>
-<span class="lineno">  167 </span>
-<span class="lineno">  168 </span>  <span class="decl"><span class="nottickedoff">toEnum 0 = QuoteSum</span>
-<span class="lineno">  169 </span><span class="spaces">  </span><span class="nottickedoff">toEnum 1 = QuoteProduct</span>
-<span class="lineno">  170 </span><span class="spaces">  </span><span class="nottickedoff">toEnum 2 = QuoteNorm2</span>
-<span class="lineno">  171 </span><span class="spaces">  </span><span class="nottickedoff">toEnum unmatched = error (&quot;MultiQuoteOp.toEnum: Cannot match &quot; ++ show unmatched)</span></span>
-<span class="lineno">  172 </span>
-<span class="lineno">  173 </span>
+<span class="lineno">  164 </span>  <span class="decl"><span class="nottickedoff">enumFrom from = enumFromTo from QuoteNorm2</span></span>
+<span class="lineno">  165 </span>
+<span class="lineno">  166 </span>  <span class="decl"><span class="istickedoff">fromEnum QuoteSum = 0</span>
+<span class="lineno">  167 </span><span class="spaces">  </span><span class="istickedoff">fromEnum QuoteProduct = 1</span>
+<span class="lineno">  168 </span><span class="spaces">  </span><span class="istickedoff">fromEnum QuoteNorm2 = 2</span></span>
+<span class="lineno">  169 </span>
+<span class="lineno">  170 </span>  <span class="decl"><span class="nottickedoff">toEnum 0 = QuoteSum</span>
+<span class="lineno">  171 </span><span class="spaces">  </span><span class="nottickedoff">toEnum 1 = QuoteProduct</span>
+<span class="lineno">  172 </span><span class="spaces">  </span><span class="nottickedoff">toEnum 2 = QuoteNorm2</span>
+<span class="lineno">  173 </span><span class="spaces">  </span><span class="nottickedoff">toEnum unmatched = error (&quot;MultiQuoteOp.toEnum: Cannot match &quot; ++ show unmatched)</span></span>
 <span class="lineno">  174 </span>
 <span class="lineno">  175 </span>
 <span class="lineno">  176 </span>
@@ -206,421 +206,440 @@ span.spaces    { background: white }
 <span class="lineno">  187 </span>
 <span class="lineno">  188 </span>
 <span class="lineno">  189 </span>
-<span class="lineno">  190 </span>-- |market element returning a stored value
-<span class="lineno">  191 </span>simpleQuote :: (Double) -&gt; IO ((SimpleQuote))
-<span class="lineno">  192 </span><span class="decl"><span class="istickedoff">simpleQuote a1 =</span>
-<span class="lineno">  193 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = realToFrac a1} in </span>
-<span class="lineno">  194 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
-<span class="lineno">  195 </span><span class="spaces">  </span><span class="istickedoff">simpleQuote'_ a1' a2' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  196 </span><span class="spaces">  </span><span class="istickedoff">peekSimpleQuote res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">  197 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
-<span class="lineno">  198 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">  199 </span>
-<span class="lineno">  200 </span>
-<span class="lineno">  201 </span>
-<span class="lineno">  202 </span>-- |quotation of an FX delta vs vol, e.g. a 25-delta risk-reversal/butterfly point
-<span class="lineno">  203 </span>deltaVolQuote :: (Double) -- ^delta
-<span class="lineno">  204 </span> -&gt; (GenQuote q) -- ^vol
-<span class="lineno">  205 </span> -&gt; (Double) -- ^maturity
-<span class="lineno">  206 </span> -&gt; (DeltaType) -&gt; IO ((DeltaVolQuote))
-<span class="lineno">  207 </span><span class="decl"><span class="istickedoff">deltaVolQuote a1 a2 a3 a4 =</span>
-<span class="lineno">  208 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = realToFrac a1} in </span>
-<span class="lineno">  209 </span><span class="spaces">  </span><span class="istickedoff">withQuote a2 $ \a2' -&gt; </span>
-<span class="lineno">  210 </span><span class="spaces">  </span><span class="istickedoff">let {a3' = realToFrac a3} in </span>
-<span class="lineno">  211 </span><span class="spaces">  </span><span class="istickedoff">let {a4' = fromEnumC a4} in </span>
-<span class="lineno">  212 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a5' -&gt; </span>
-<span class="lineno">  213 </span><span class="spaces">  </span><span class="istickedoff">deltaVolQuote'_ a1' a2' a3' a4' a5' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  214 </span><span class="spaces">  </span><span class="istickedoff">peekDeltaVolQuote res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">  215 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a5'&gt;&gt;</span>
-<span class="lineno">  216 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">  217 </span>
-<span class="lineno">  218 </span>
-<span class="lineno">  219 </span>
-<span class="lineno">  220 </span>-- |quotation of an FX at-the-money vol point (e.g. ATM straddle)
-<span class="lineno">  221 </span>atmVolQuote :: (GenQuote q) -- ^vol
-<span class="lineno">  222 </span> -&gt; (DeltaType) -&gt; (Double) -- ^maturity
-<span class="lineno">  223 </span> -&gt; (AtmType) -&gt; IO ((DeltaVolQuote))
-<span class="lineno">  224 </span><span class="decl"><span class="istickedoff">atmVolQuote a1 a2 a3 a4 =</span>
-<span class="lineno">  225 </span><span class="spaces">  </span><span class="istickedoff">withQuote a1 $ \a1' -&gt; </span>
-<span class="lineno">  226 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = fromEnumC a2} in </span>
-<span class="lineno">  227 </span><span class="spaces">  </span><span class="istickedoff">let {a3' = realToFrac a3} in </span>
-<span class="lineno">  228 </span><span class="spaces">  </span><span class="istickedoff">let {a4' = fromEnumC a4} in </span>
-<span class="lineno">  229 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a5' -&gt; </span>
-<span class="lineno">  230 </span><span class="spaces">  </span><span class="istickedoff">atmVolQuote'_ a1' a2' a3' a4' a5' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  231 </span><span class="spaces">  </span><span class="istickedoff">peekDeltaVolQuote res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">  232 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a5'&gt;&gt;</span>
-<span class="lineno">  233 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">  234 </span>
-<span class="lineno">  235 </span>
-<span class="lineno">  236 </span>
-<span class="lineno">  237 </span>-- |Returns the current value of the given Quote object
-<span class="lineno">  238 </span>value :: (GenQuote q) -&gt; IO ((Double))
-<span class="lineno">  239 </span><span class="decl"><span class="istickedoff">value a1 =</span>
-<span class="lineno">  240 </span><span class="spaces">  </span><span class="istickedoff">withQuote a1 $ \a1' -&gt; </span>
-<span class="lineno">  241 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
-<span class="lineno">  242 </span><span class="spaces">  </span><span class="istickedoff">value'_ a1' a2' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  243 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
-<span class="lineno">  244 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
-<span class="lineno">  245 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">  246 </span>
-<span class="lineno">  247 </span>
-<span class="lineno">  248 </span>
-<span class="lineno">  249 </span>-- |returns the difference between the new value and the old value
-<span class="lineno">  250 </span>-- /NB/ The change will propagate to all users of the quote
-<span class="lineno">  251 </span>setValue :: (SimpleQuote) -&gt; (Double) -&gt; IO ((Double))
-<span class="lineno">  252 </span><span class="decl"><span class="istickedoff">setValue a1 a2 =</span>
-<span class="lineno">  253 </span><span class="spaces">  </span><span class="istickedoff">withGenQuote a1 $ \a1' -&gt; </span>
-<span class="lineno">  254 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = realToFrac a2} in </span>
-<span class="lineno">  255 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
-<span class="lineno">  256 </span><span class="spaces">  </span><span class="istickedoff">setValue'_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  257 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
-<span class="lineno">  258 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
-<span class="lineno">  259 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">  260 </span>
-<span class="lineno">  261 </span>
-<span class="lineno">  262 </span>
-<span class="lineno">  263 </span>-- |implied standard deviation of a Eurodollar future's underlying, solved from its call/put prices
-<span class="lineno">  264 </span>eurodollarFuturesImpliedStdDevQuote :: (GenQuote q1) -- ^forward
-<span class="lineno">  265 </span> -&gt; (GenQuote q2) -- ^callPrice
-<span class="lineno">  266 </span> -&gt; (GenQuote q3) -- ^putPrice
-<span class="lineno">  267 </span> -&gt; (Double) -- ^strike
-<span class="lineno">  268 </span> -&gt; (Double) -- ^guess
-<span class="lineno">  269 </span> -&gt; (Double) -- ^accuracy
-<span class="lineno">  270 </span> -&gt; (Word) -- ^maxIter
-<span class="lineno">  271 </span> -&gt; IO ((Quote))
-<span class="lineno">  272 </span><span class="decl"><span class="istickedoff">eurodollarFuturesImpliedStdDevQuote a1 a2 a3 a4 a5 a6 a7 =</span>
-<span class="lineno">  273 </span><span class="spaces">  </span><span class="istickedoff">withQuote a1 $ \a1' -&gt; </span>
-<span class="lineno">  274 </span><span class="spaces">  </span><span class="istickedoff">withQuote a2 $ \a2' -&gt; </span>
-<span class="lineno">  275 </span><span class="spaces">  </span><span class="istickedoff">withQuote a3 $ \a3' -&gt; </span>
-<span class="lineno">  276 </span><span class="spaces">  </span><span class="istickedoff">let {a4' = realToFrac a4} in </span>
-<span class="lineno">  277 </span><span class="spaces">  </span><span class="istickedoff">let {a5' = realToFrac a5} in </span>
-<span class="lineno">  278 </span><span class="spaces">  </span><span class="istickedoff">let {a6' = realToFrac a6} in </span>
-<span class="lineno">  279 </span><span class="spaces">  </span><span class="istickedoff">let {a7' = fromIntegral a7} in </span>
-<span class="lineno">  280 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a8' -&gt; </span>
-<span class="lineno">  281 </span><span class="spaces">  </span><span class="istickedoff">eurodollarFuturesImpliedStdDevQuote'_ a1' a2' a3' a4' a5' a6' a7' a8' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  282 </span><span class="spaces">  </span><span class="istickedoff">peekQuote res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">  283 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a8'&gt;&gt;</span>
-<span class="lineno">  284 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">  285 </span>
-<span class="lineno">  286 </span>
-<span class="lineno">  287 </span>
-<span class="lineno">  288 </span>-- |implied rate of a forward-starting swap on the given swap index, offset by a spread quote
-<span class="lineno">  289 </span>forwardSwapQuote :: (GenSwapIndex sidx) -&gt; (GenQuote q) -- ^spread
-<span class="lineno">  290 </span> -&gt; ((Int,TimeUnit)) -- ^fwdStart
-<span class="lineno">  291 </span> -&gt; IO ((Quote))
-<span class="lineno">  292 </span><span class="decl"><span class="nottickedoff">forwardSwapQuote a1 a2 a3 =</span>
-<span class="lineno">  293 </span><span class="spaces">  </span><span class="nottickedoff">withSwapIndex a1 $ \a1' -&gt; </span>
-<span class="lineno">  294 </span><span class="spaces">  </span><span class="nottickedoff">withQuote a2 $ \a2' -&gt; </span>
-<span class="lineno">  295 </span><span class="spaces">  </span><span class="nottickedoff">let {(a3'1, a3'2) = fromEnumQuantity a3} in </span>
-<span class="lineno">  296 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a4' -&gt; </span>
-<span class="lineno">  297 </span><span class="spaces">  </span><span class="nottickedoff">forwardSwapQuote'_ a1' a2' a3'1  a3'2 a4' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  298 </span><span class="spaces">  </span><span class="nottickedoff">peekQuote res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">  299 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a4'&gt;&gt;</span>
-<span class="lineno">  300 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
-<span class="lineno">  301 </span>
-<span class="lineno">  302 </span>
-<span class="lineno">  303 </span>
-<span class="lineno">  304 </span>-- |forward value of an index as of a given fixing date
-<span class="lineno">  305 </span>forwardValueQuote :: (GenIndex idx) -&gt; (Day) -&gt; IO ((Quote))
-<span class="lineno">  306 </span><span class="decl"><span class="istickedoff">forwardValueQuote a1 a2 =</span>
-<span class="lineno">  307 </span><span class="spaces">  </span><span class="istickedoff">withIndex a1 $ \a1' -&gt; </span>
-<span class="lineno">  308 </span><span class="spaces">  </span><span class="istickedoff">withDay a2 $ \a2' -&gt; </span>
-<span class="lineno">  309 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
-<span class="lineno">  310 </span><span class="spaces">  </span><span class="istickedoff">forwardValueQuote'_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  311 </span><span class="spaces">  </span><span class="istickedoff">peekQuote res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">  312 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
-<span class="lineno">  313 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">  314 </span>
-<span class="lineno">  315 </span>
-<span class="lineno">  316 </span>
-<span class="lineno">  317 </span>-- |futures-convexity adjustment for an Ibor future identified by its IMM code
-<span class="lineno">  318 </span>futuresConvAdjustmentQuote' :: (GenIborIndex ibor) -&gt; (String) -- ^immCode
-<span class="lineno">  319 </span> -&gt; (GenQuote q1) -- ^futuresQuote
-<span class="lineno">  320 </span> -&gt; (GenQuote q2) -- ^volatility
-<span class="lineno">  321 </span> -&gt; (GenQuote q3) -- ^meanReversion
-<span class="lineno">  322 </span> -&gt; IO ((Quote))
-<span class="lineno">  323 </span><span class="decl"><span class="nottickedoff">futuresConvAdjustmentQuote' a1 a2 a3 a4 a5 =</span>
-<span class="lineno">  324 </span><span class="spaces">  </span><span class="nottickedoff">withIborIndex a1 $ \a1' -&gt; </span>
-<span class="lineno">  325 </span><span class="spaces">  </span><span class="nottickedoff">C2HSImp.withCString a2 $ \a2' -&gt; </span>
-<span class="lineno">  326 </span><span class="spaces">  </span><span class="nottickedoff">withQuote a3 $ \a3' -&gt; </span>
-<span class="lineno">  327 </span><span class="spaces">  </span><span class="nottickedoff">withQuote a4 $ \a4' -&gt; </span>
-<span class="lineno">  328 </span><span class="spaces">  </span><span class="nottickedoff">withQuote a5 $ \a5' -&gt; </span>
-<span class="lineno">  329 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a6' -&gt; </span>
-<span class="lineno">  330 </span><span class="spaces">  </span><span class="nottickedoff">futuresConvAdjustmentQuote''_ a1' a2' a3' a4' a5' a6' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  331 </span><span class="spaces">  </span><span class="nottickedoff">peekQuote res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">  332 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a6'&gt;&gt;</span>
-<span class="lineno">  333 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
-<span class="lineno">  334 </span>
-<span class="lineno">  335 </span>
-<span class="lineno">  336 </span>
-<span class="lineno">  337 </span>-- |futures-convexity adjustment for an Ibor future identified by its futures (IMM) date
-<span class="lineno">  338 </span>futuresConvAdjustmentQuote :: (GenIborIndex ibor) -&gt; (Day) -- ^futuresDate
-<span class="lineno">  339 </span> -&gt; (GenQuote q1) -- ^futuresQuote
-<span class="lineno">  340 </span> -&gt; (GenQuote q2) -- ^volatility
-<span class="lineno">  341 </span> -&gt; (GenQuote q3) -- ^meanReversion
-<span class="lineno">  342 </span> -&gt; IO ((Quote))
-<span class="lineno">  343 </span><span class="decl"><span class="nottickedoff">futuresConvAdjustmentQuote a1 a2 a3 a4 a5 =</span>
-<span class="lineno">  344 </span><span class="spaces">  </span><span class="nottickedoff">withIborIndex a1 $ \a1' -&gt; </span>
-<span class="lineno">  345 </span><span class="spaces">  </span><span class="nottickedoff">withDay a2 $ \a2' -&gt; </span>
-<span class="lineno">  346 </span><span class="spaces">  </span><span class="nottickedoff">withQuote a3 $ \a3' -&gt; </span>
-<span class="lineno">  347 </span><span class="spaces">  </span><span class="nottickedoff">withQuote a4 $ \a4' -&gt; </span>
-<span class="lineno">  348 </span><span class="spaces">  </span><span class="nottickedoff">withQuote a5 $ \a5' -&gt; </span>
-<span class="lineno">  349 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a6' -&gt; </span>
-<span class="lineno">  350 </span><span class="spaces">  </span><span class="nottickedoff">futuresConvAdjustmentQuote'_ a1' a2' a3' a4' a5' a6' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  351 </span><span class="spaces">  </span><span class="nottickedoff">peekQuote res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">  352 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a6'&gt;&gt;</span>
-<span class="lineno">  353 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
-<span class="lineno">  354 </span>
-<span class="lineno">  355 </span>
-<span class="lineno">  356 </span>
-<span class="lineno">  357 </span>-- |implied standard deviation of an underlying, solved from its option price at a given strike
-<span class="lineno">  358 </span>impliedStdDevQuote :: (OptionType) -&gt; (GenQuote q1) -- ^forward
-<span class="lineno">  359 </span> -&gt; (GenQuote q2) -- ^price
-<span class="lineno">  360 </span> -&gt; (Double) -- &amp;strike
-<span class="lineno">  361 </span> -&gt; (Double) -- ^guess
-<span class="lineno">  362 </span> -&gt; (Double) -- ^accuracy
-<span class="lineno">  363 </span> -&gt; (Word) -- ^maxIter
-<span class="lineno">  364 </span> -&gt; IO ((Quote))
-<span class="lineno">  365 </span><span class="decl"><span class="istickedoff">impliedStdDevQuote a1 a2 a3 a4 a5 a6 a7 =</span>
-<span class="lineno">  366 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = fromEnumC a1} in </span>
-<span class="lineno">  367 </span><span class="spaces">  </span><span class="istickedoff">withQuote a2 $ \a2' -&gt; </span>
-<span class="lineno">  368 </span><span class="spaces">  </span><span class="istickedoff">withQuote a3 $ \a3' -&gt; </span>
-<span class="lineno">  369 </span><span class="spaces">  </span><span class="istickedoff">let {a4' = realToFrac a4} in </span>
-<span class="lineno">  370 </span><span class="spaces">  </span><span class="istickedoff">let {a5' = realToFrac a5} in </span>
-<span class="lineno">  371 </span><span class="spaces">  </span><span class="istickedoff">let {a6' = realToFrac a6} in </span>
-<span class="lineno">  372 </span><span class="spaces">  </span><span class="istickedoff">let {a7' = fromIntegral a7} in </span>
-<span class="lineno">  373 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a8' -&gt; </span>
-<span class="lineno">  374 </span><span class="spaces">  </span><span class="istickedoff">impliedStdDevQuote'_ a1' a2' a3' a4' a5' a6' a7' a8' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  375 </span><span class="spaces">  </span><span class="istickedoff">peekQuote res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">  376 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a8'&gt;&gt;</span>
-<span class="lineno">  377 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">  378 </span>
-<span class="lineno">  379 </span>
-<span class="lineno">  380 </span>
-<span class="lineno">  381 </span>-- |last available fixing of the given index, updating whenever a new fixing is added
-<span class="lineno">  382 </span>lastFixingQuote :: (GenIndex idx) -&gt; IO ((Quote))
-<span class="lineno">  383 </span><span class="decl"><span class="nottickedoff">lastFixingQuote a1 =</span>
-<span class="lineno">  384 </span><span class="spaces">  </span><span class="nottickedoff">withIndex a1 $ \a1' -&gt; </span>
-<span class="lineno">  385 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a2' -&gt; </span>
-<span class="lineno">  386 </span><span class="spaces">  </span><span class="nottickedoff">lastFixingQuote'_ a1' a2' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  387 </span><span class="spaces">  </span><span class="nottickedoff">peekQuote res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">  388 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a2'&gt;&gt;</span>
-<span class="lineno">  389 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
-<span class="lineno">  390 </span>
-<span class="lineno">  391 </span>
-<span class="lineno">  392 </span>
-<span class="lineno">  393 </span>-- |returns true if the Quote holds a valid value
-<span class="lineno">  394 </span>isValid :: (GenQuote q) -&gt; IO ((Bool))
-<span class="lineno">  395 </span><span class="decl"><span class="nottickedoff">isValid a1 =</span>
-<span class="lineno">  396 </span><span class="spaces">  </span><span class="nottickedoff">withQuote a1 $ \a1' -&gt; </span>
-<span class="lineno">  397 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a2' -&gt; </span>
-<span class="lineno">  398 </span><span class="spaces">  </span><span class="nottickedoff">isValid'_ a1' a2' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  399 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = C2HSImp.toBool res} in</span>
-<span class="lineno">  400 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a2'&gt;&gt;</span>
-<span class="lineno">  401 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
-<span class="lineno">  402 </span>
-<span class="lineno">  403 </span>
-<span class="lineno">  404 </span>
-<span class="lineno">  405 </span>-- |A relinkable quote handle. Objects built from it follow later 'linkTo' calls.
-<span class="lineno">  406 </span>-- 'Nothing' creates an empty handle; reading it throws until linked.
-<span class="lineno">  407 </span>relinkableQuote :: (Maybe (GenQuote q)) -&gt; IO ((RelinkableQuote))
-<span class="lineno">  408 </span><span class="decl"><span class="istickedoff">relinkableQuote a1 =</span>
-<span class="lineno">  409 </span><span class="spaces">  </span><span class="istickedoff">withMaybeQuote a1 $ \a1' -&gt; </span>
-<span class="lineno">  410 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
-<span class="lineno">  411 </span><span class="spaces">  </span><span class="istickedoff">relinkableQuote'_ a1' a2' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  412 </span><span class="spaces">  </span><span class="istickedoff">peekRelinkableQuote res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">  413 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
-<span class="lineno">  414 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">  415 </span>
-<span class="lineno">  416 </span>
-<span class="lineno">  417 </span>
-<span class="lineno">  418 </span>-- |Point a relinkable handle at another quote. Existing dependents reprice without reconstruction.
-<span class="lineno">  419 </span>-- Use 'setValue' for a value bump; this swaps the quote object.
-<span class="lineno">  420 </span>linkTo :: (RelinkableQuote) -&gt; (GenQuote q) -&gt; IO ()
-<span class="lineno">  421 </span><span class="decl"><span class="istickedoff">linkTo a1 a2 =</span>
-<span class="lineno">  422 </span><span class="spaces">  </span><span class="istickedoff">withRelinkableQuote a1 $ \a1' -&gt; </span>
-<span class="lineno">  423 </span><span class="spaces">  </span><span class="istickedoff">withQuote a2 $ \a2' -&gt; </span>
-<span class="lineno">  424 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
-<span class="lineno">  425 </span><span class="spaces">  </span><span class="istickedoff">linkTo'_ a1' a2' a3' &gt;&gt;</span>
-<span class="lineno">  426 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
-<span class="lineno">  427 </span><span class="spaces">  </span><span class="istickedoff">return <span class="nottickedoff">()</span></span></span>
-<span class="lineno">  428 </span>
-<span class="lineno">  429 </span>
-<span class="lineno">  430 </span>
-<span class="lineno">  431 </span>-- These composite quotes are live observer-graph nodes. Haskell-side recomputation would be a snapshot and would not notify dependent curves or instruments.
+<span class="lineno">  190 </span>
+<span class="lineno">  191 </span>
+<span class="lineno">  192 </span>
+<span class="lineno">  193 </span>
+<span class="lineno">  194 </span>-- |market element returning a stored value
+<span class="lineno">  195 </span>simpleQuote :: (Double) -&gt; IO ((SimpleQuote))
+<span class="lineno">  196 </span><span class="decl"><span class="istickedoff">simpleQuote a1 =</span>
+<span class="lineno">  197 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = realToFrac a1} in </span>
+<span class="lineno">  198 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
+<span class="lineno">  199 </span><span class="spaces">  </span><span class="istickedoff">simpleQuote'_ a1' a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  200 </span><span class="spaces">  </span><span class="istickedoff">peekSimpleQuote res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  201 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
+<span class="lineno">  202 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  203 </span>
+<span class="lineno">  204 </span>
+<span class="lineno">  205 </span>
+<span class="lineno">  206 </span>-- |quotation of an FX delta vs vol, e.g. a 25-delta risk-reversal/butterfly point
+<span class="lineno">  207 </span>deltaVolQuote :: (Double) -- ^delta
+<span class="lineno">  208 </span> -&gt; (GenQuote q) -- ^vol
+<span class="lineno">  209 </span> -&gt; (Double) -- ^maturity
+<span class="lineno">  210 </span> -&gt; (DeltaType) -&gt; IO ((DeltaVolQuote))
+<span class="lineno">  211 </span><span class="decl"><span class="istickedoff">deltaVolQuote a1 a2 a3 a4 =</span>
+<span class="lineno">  212 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = realToFrac a1} in </span>
+<span class="lineno">  213 </span><span class="spaces">  </span><span class="istickedoff">withQuote a2 $ \a2' -&gt; </span>
+<span class="lineno">  214 </span><span class="spaces">  </span><span class="istickedoff">let {a3' = realToFrac a3} in </span>
+<span class="lineno">  215 </span><span class="spaces">  </span><span class="istickedoff">let {a4' = fromEnumC a4} in </span>
+<span class="lineno">  216 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a5' -&gt; </span>
+<span class="lineno">  217 </span><span class="spaces">  </span><span class="istickedoff">deltaVolQuote'_ a1' a2' a3' a4' a5' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  218 </span><span class="spaces">  </span><span class="istickedoff">peekDeltaVolQuote res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  219 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a5'&gt;&gt;</span>
+<span class="lineno">  220 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  221 </span>
+<span class="lineno">  222 </span>
+<span class="lineno">  223 </span>
+<span class="lineno">  224 </span>-- |quotation of an FX at-the-money vol point (e.g. ATM straddle)
+<span class="lineno">  225 </span>atmVolQuote :: (GenQuote q) -- ^vol
+<span class="lineno">  226 </span> -&gt; (DeltaType) -&gt; (Double) -- ^maturity
+<span class="lineno">  227 </span> -&gt; (AtmType) -&gt; IO ((DeltaVolQuote))
+<span class="lineno">  228 </span><span class="decl"><span class="istickedoff">atmVolQuote a1 a2 a3 a4 =</span>
+<span class="lineno">  229 </span><span class="spaces">  </span><span class="istickedoff">withQuote a1 $ \a1' -&gt; </span>
+<span class="lineno">  230 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = fromEnumC a2} in </span>
+<span class="lineno">  231 </span><span class="spaces">  </span><span class="istickedoff">let {a3' = realToFrac a3} in </span>
+<span class="lineno">  232 </span><span class="spaces">  </span><span class="istickedoff">let {a4' = fromEnumC a4} in </span>
+<span class="lineno">  233 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a5' -&gt; </span>
+<span class="lineno">  234 </span><span class="spaces">  </span><span class="istickedoff">atmVolQuote'_ a1' a2' a3' a4' a5' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  235 </span><span class="spaces">  </span><span class="istickedoff">peekDeltaVolQuote res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  236 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a5'&gt;&gt;</span>
+<span class="lineno">  237 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  238 </span>
+<span class="lineno">  239 </span>
+<span class="lineno">  240 </span>
+<span class="lineno">  241 </span>-- |Returns the current value of the given Quote object
+<span class="lineno">  242 </span>value :: (GenQuote q) -&gt; IO ((Double))
+<span class="lineno">  243 </span><span class="decl"><span class="istickedoff">value a1 =</span>
+<span class="lineno">  244 </span><span class="spaces">  </span><span class="istickedoff">withQuote a1 $ \a1' -&gt; </span>
+<span class="lineno">  245 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
+<span class="lineno">  246 </span><span class="spaces">  </span><span class="istickedoff">value'_ a1' a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  247 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno">  248 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
+<span class="lineno">  249 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  250 </span>
+<span class="lineno">  251 </span>
+<span class="lineno">  252 </span>
+<span class="lineno">  253 </span>-- |returns the difference between the new value and the old value
+<span class="lineno">  254 </span>-- /NB/ The change will propagate to all users of the quote
+<span class="lineno">  255 </span>setValue :: (SimpleQuote) -&gt; (Double) -&gt; IO ((Double))
+<span class="lineno">  256 </span><span class="decl"><span class="istickedoff">setValue a1 a2 =</span>
+<span class="lineno">  257 </span><span class="spaces">  </span><span class="istickedoff">withGenQuote a1 $ \a1' -&gt; </span>
+<span class="lineno">  258 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = realToFrac a2} in </span>
+<span class="lineno">  259 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
+<span class="lineno">  260 </span><span class="spaces">  </span><span class="istickedoff">setValue'_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  261 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno">  262 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
+<span class="lineno">  263 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  264 </span>
+<span class="lineno">  265 </span>
+<span class="lineno">  266 </span>
+<span class="lineno">  267 </span>-- |implied standard deviation of a Eurodollar future's underlying, solved from its call/put prices
+<span class="lineno">  268 </span>eurodollarFuturesImpliedStdDevQuote :: (GenQuote q1) -- ^forward
+<span class="lineno">  269 </span> -&gt; (GenQuote q2) -- ^callPrice
+<span class="lineno">  270 </span> -&gt; (GenQuote q3) -- ^putPrice
+<span class="lineno">  271 </span> -&gt; (Double) -- ^strike
+<span class="lineno">  272 </span> -&gt; (Double) -- ^guess
+<span class="lineno">  273 </span> -&gt; (Double) -- ^accuracy
+<span class="lineno">  274 </span> -&gt; (Word) -- ^maxIter
+<span class="lineno">  275 </span> -&gt; IO ((Quote))
+<span class="lineno">  276 </span><span class="decl"><span class="istickedoff">eurodollarFuturesImpliedStdDevQuote a1 a2 a3 a4 a5 a6 a7 =</span>
+<span class="lineno">  277 </span><span class="spaces">  </span><span class="istickedoff">withQuote a1 $ \a1' -&gt; </span>
+<span class="lineno">  278 </span><span class="spaces">  </span><span class="istickedoff">withQuote a2 $ \a2' -&gt; </span>
+<span class="lineno">  279 </span><span class="spaces">  </span><span class="istickedoff">withQuote a3 $ \a3' -&gt; </span>
+<span class="lineno">  280 </span><span class="spaces">  </span><span class="istickedoff">let {a4' = realToFrac a4} in </span>
+<span class="lineno">  281 </span><span class="spaces">  </span><span class="istickedoff">let {a5' = realToFrac a5} in </span>
+<span class="lineno">  282 </span><span class="spaces">  </span><span class="istickedoff">let {a6' = realToFrac a6} in </span>
+<span class="lineno">  283 </span><span class="spaces">  </span><span class="istickedoff">let {a7' = fromIntegral a7} in </span>
+<span class="lineno">  284 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a8' -&gt; </span>
+<span class="lineno">  285 </span><span class="spaces">  </span><span class="istickedoff">eurodollarFuturesImpliedStdDevQuote'_ a1' a2' a3' a4' a5' a6' a7' a8' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  286 </span><span class="spaces">  </span><span class="istickedoff">peekQuote res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  287 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a8'&gt;&gt;</span>
+<span class="lineno">  288 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  289 </span>
+<span class="lineno">  290 </span>
+<span class="lineno">  291 </span>
+<span class="lineno">  292 </span>-- |implied rate of a forward-starting swap on the given swap index, offset by a spread quote
+<span class="lineno">  293 </span>forwardSwapQuote :: (GenSwapIndex sidx) -&gt; (GenQuote q) -- ^spread
+<span class="lineno">  294 </span> -&gt; ((Int,TimeUnit)) -- ^fwdStart
+<span class="lineno">  295 </span> -&gt; IO ((Quote))
+<span class="lineno">  296 </span><span class="decl"><span class="nottickedoff">forwardSwapQuote a1 a2 a3 =</span>
+<span class="lineno">  297 </span><span class="spaces">  </span><span class="nottickedoff">withSwapIndex a1 $ \a1' -&gt; </span>
+<span class="lineno">  298 </span><span class="spaces">  </span><span class="nottickedoff">withQuote a2 $ \a2' -&gt; </span>
+<span class="lineno">  299 </span><span class="spaces">  </span><span class="nottickedoff">let {(a3'1, a3'2) = fromEnumQuantity a3} in </span>
+<span class="lineno">  300 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a4' -&gt; </span>
+<span class="lineno">  301 </span><span class="spaces">  </span><span class="nottickedoff">forwardSwapQuote'_ a1' a2' a3'1  a3'2 a4' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  302 </span><span class="spaces">  </span><span class="nottickedoff">peekQuote res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  303 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a4'&gt;&gt;</span>
+<span class="lineno">  304 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno">  305 </span>
+<span class="lineno">  306 </span>
+<span class="lineno">  307 </span>
+<span class="lineno">  308 </span>-- |forward value of an index as of a given fixing date
+<span class="lineno">  309 </span>forwardValueQuote :: (GenIndex idx) -&gt; (Day) -&gt; IO ((Quote))
+<span class="lineno">  310 </span><span class="decl"><span class="istickedoff">forwardValueQuote a1 a2 =</span>
+<span class="lineno">  311 </span><span class="spaces">  </span><span class="istickedoff">withIndex a1 $ \a1' -&gt; </span>
+<span class="lineno">  312 </span><span class="spaces">  </span><span class="istickedoff">withDay a2 $ \a2' -&gt; </span>
+<span class="lineno">  313 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
+<span class="lineno">  314 </span><span class="spaces">  </span><span class="istickedoff">forwardValueQuote'_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  315 </span><span class="spaces">  </span><span class="istickedoff">peekQuote res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  316 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
+<span class="lineno">  317 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  318 </span>
+<span class="lineno">  319 </span>
+<span class="lineno">  320 </span>
+<span class="lineno">  321 </span>-- |futures-convexity adjustment for an Ibor future identified by its IMM code
+<span class="lineno">  322 </span>futuresConvAdjustmentQuote' :: (GenIborIndex ibor) -&gt; (String) -- ^immCode
+<span class="lineno">  323 </span> -&gt; (GenQuote q1) -- ^futuresQuote
+<span class="lineno">  324 </span> -&gt; (GenQuote q2) -- ^volatility
+<span class="lineno">  325 </span> -&gt; (GenQuote q3) -- ^meanReversion
+<span class="lineno">  326 </span> -&gt; IO ((FuturesConvAdjustmentQuote))
+<span class="lineno">  327 </span><span class="decl"><span class="nottickedoff">futuresConvAdjustmentQuote' a1 a2 a3 a4 a5 =</span>
+<span class="lineno">  328 </span><span class="spaces">  </span><span class="nottickedoff">withIborIndex a1 $ \a1' -&gt; </span>
+<span class="lineno">  329 </span><span class="spaces">  </span><span class="nottickedoff">C2HSImp.withCString a2 $ \a2' -&gt; </span>
+<span class="lineno">  330 </span><span class="spaces">  </span><span class="nottickedoff">withQuote a3 $ \a3' -&gt; </span>
+<span class="lineno">  331 </span><span class="spaces">  </span><span class="nottickedoff">withQuote a4 $ \a4' -&gt; </span>
+<span class="lineno">  332 </span><span class="spaces">  </span><span class="nottickedoff">withQuote a5 $ \a5' -&gt; </span>
+<span class="lineno">  333 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a6' -&gt; </span>
+<span class="lineno">  334 </span><span class="spaces">  </span><span class="nottickedoff">futuresConvAdjustmentQuote''_ a1' a2' a3' a4' a5' a6' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  335 </span><span class="spaces">  </span><span class="nottickedoff">peekFuturesConvAdjustmentQuote res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  336 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a6'&gt;&gt;</span>
+<span class="lineno">  337 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno">  338 </span>
+<span class="lineno">  339 </span>
+<span class="lineno">  340 </span>
+<span class="lineno">  341 </span>-- |futures-convexity adjustment for an Ibor future identified by its futures (IMM) date
+<span class="lineno">  342 </span>futuresConvAdjustmentQuote :: (GenIborIndex ibor) -&gt; (Day) -- ^futuresDate
+<span class="lineno">  343 </span> -&gt; (GenQuote q1) -- ^futuresQuote
+<span class="lineno">  344 </span> -&gt; (GenQuote q2) -- ^volatility
+<span class="lineno">  345 </span> -&gt; (GenQuote q3) -- ^meanReversion
+<span class="lineno">  346 </span> -&gt; IO ((FuturesConvAdjustmentQuote))
+<span class="lineno">  347 </span><span class="decl"><span class="istickedoff">futuresConvAdjustmentQuote a1 a2 a3 a4 a5 =</span>
+<span class="lineno">  348 </span><span class="spaces">  </span><span class="istickedoff">withIborIndex a1 $ \a1' -&gt; </span>
+<span class="lineno">  349 </span><span class="spaces">  </span><span class="istickedoff">withDay a2 $ \a2' -&gt; </span>
+<span class="lineno">  350 </span><span class="spaces">  </span><span class="istickedoff">withQuote a3 $ \a3' -&gt; </span>
+<span class="lineno">  351 </span><span class="spaces">  </span><span class="istickedoff">withQuote a4 $ \a4' -&gt; </span>
+<span class="lineno">  352 </span><span class="spaces">  </span><span class="istickedoff">withQuote a5 $ \a5' -&gt; </span>
+<span class="lineno">  353 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a6' -&gt; </span>
+<span class="lineno">  354 </span><span class="spaces">  </span><span class="istickedoff">futuresConvAdjustmentQuote'_ a1' a2' a3' a4' a5' a6' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  355 </span><span class="spaces">  </span><span class="istickedoff">peekFuturesConvAdjustmentQuote res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  356 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a6'&gt;&gt;</span>
+<span class="lineno">  357 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  358 </span>
+<span class="lineno">  359 </span>
+<span class="lineno">  360 </span>
+<span class="lineno">  361 </span>-- |The futures-vs-forward-rate value implied by the futures quote alone (@futuresQuote_-&gt;value()@).
+<span class="lineno">  362 </span>futuresConvAdjustmentQuoteFuturesValue :: (FuturesConvAdjustmentQuote) -&gt; IO ((Double))
+<span class="lineno">  363 </span><span class="decl"><span class="istickedoff">futuresConvAdjustmentQuoteFuturesValue a1 =</span>
+<span class="lineno">  364 </span><span class="spaces">  </span><span class="istickedoff">withGenQuote a1 $ \a1' -&gt; </span>
+<span class="lineno">  365 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
+<span class="lineno">  366 </span><span class="spaces">  </span><span class="istickedoff">futuresConvAdjustmentQuoteFuturesValue'_ a1' a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  367 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno">  368 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
+<span class="lineno">  369 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  370 </span>
+<span class="lineno">  371 </span>
+<span class="lineno">  372 </span>
+<span class="lineno">  373 </span>-- |implied standard deviation of an underlying, solved from its option price at a given strike
+<span class="lineno">  374 </span>impliedStdDevQuote :: (OptionType) -&gt; (GenQuote q1) -- ^forward
+<span class="lineno">  375 </span> -&gt; (GenQuote q2) -- ^price
+<span class="lineno">  376 </span> -&gt; (Double) -- &amp;strike
+<span class="lineno">  377 </span> -&gt; (Double) -- ^guess
+<span class="lineno">  378 </span> -&gt; (Double) -- ^accuracy
+<span class="lineno">  379 </span> -&gt; (Word) -- ^maxIter
+<span class="lineno">  380 </span> -&gt; IO ((Quote))
+<span class="lineno">  381 </span><span class="decl"><span class="istickedoff">impliedStdDevQuote a1 a2 a3 a4 a5 a6 a7 =</span>
+<span class="lineno">  382 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = fromEnumC a1} in </span>
+<span class="lineno">  383 </span><span class="spaces">  </span><span class="istickedoff">withQuote a2 $ \a2' -&gt; </span>
+<span class="lineno">  384 </span><span class="spaces">  </span><span class="istickedoff">withQuote a3 $ \a3' -&gt; </span>
+<span class="lineno">  385 </span><span class="spaces">  </span><span class="istickedoff">let {a4' = realToFrac a4} in </span>
+<span class="lineno">  386 </span><span class="spaces">  </span><span class="istickedoff">let {a5' = realToFrac a5} in </span>
+<span class="lineno">  387 </span><span class="spaces">  </span><span class="istickedoff">let {a6' = realToFrac a6} in </span>
+<span class="lineno">  388 </span><span class="spaces">  </span><span class="istickedoff">let {a7' = fromIntegral a7} in </span>
+<span class="lineno">  389 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a8' -&gt; </span>
+<span class="lineno">  390 </span><span class="spaces">  </span><span class="istickedoff">impliedStdDevQuote'_ a1' a2' a3' a4' a5' a6' a7' a8' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  391 </span><span class="spaces">  </span><span class="istickedoff">peekQuote res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  392 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a8'&gt;&gt;</span>
+<span class="lineno">  393 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  394 </span>
+<span class="lineno">  395 </span>
+<span class="lineno">  396 </span>
+<span class="lineno">  397 </span>-- |last available fixing of the given index, updating whenever a new fixing is added
+<span class="lineno">  398 </span>lastFixingQuote :: (GenIndex idx) -&gt; IO ((Quote))
+<span class="lineno">  399 </span><span class="decl"><span class="nottickedoff">lastFixingQuote a1 =</span>
+<span class="lineno">  400 </span><span class="spaces">  </span><span class="nottickedoff">withIndex a1 $ \a1' -&gt; </span>
+<span class="lineno">  401 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a2' -&gt; </span>
+<span class="lineno">  402 </span><span class="spaces">  </span><span class="nottickedoff">lastFixingQuote'_ a1' a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  403 </span><span class="spaces">  </span><span class="nottickedoff">peekQuote res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  404 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a2'&gt;&gt;</span>
+<span class="lineno">  405 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno">  406 </span>
+<span class="lineno">  407 </span>
+<span class="lineno">  408 </span>
+<span class="lineno">  409 </span>-- |returns true if the Quote holds a valid value
+<span class="lineno">  410 </span>isValid :: (GenQuote q) -&gt; IO ((Bool))
+<span class="lineno">  411 </span><span class="decl"><span class="nottickedoff">isValid a1 =</span>
+<span class="lineno">  412 </span><span class="spaces">  </span><span class="nottickedoff">withQuote a1 $ \a1' -&gt; </span>
+<span class="lineno">  413 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a2' -&gt; </span>
+<span class="lineno">  414 </span><span class="spaces">  </span><span class="nottickedoff">isValid'_ a1' a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  415 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = C2HSImp.toBool res} in</span>
+<span class="lineno">  416 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a2'&gt;&gt;</span>
+<span class="lineno">  417 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno">  418 </span>
+<span class="lineno">  419 </span>
+<span class="lineno">  420 </span>
+<span class="lineno">  421 </span>-- |A relinkable quote handle. Objects built from it follow later 'linkTo' calls.
+<span class="lineno">  422 </span>-- 'Nothing' creates an empty handle; reading it throws until linked.
+<span class="lineno">  423 </span>relinkableQuote :: (Maybe (GenQuote q)) -&gt; IO ((RelinkableQuote))
+<span class="lineno">  424 </span><span class="decl"><span class="istickedoff">relinkableQuote a1 =</span>
+<span class="lineno">  425 </span><span class="spaces">  </span><span class="istickedoff">withMaybeQuote a1 $ \a1' -&gt; </span>
+<span class="lineno">  426 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
+<span class="lineno">  427 </span><span class="spaces">  </span><span class="istickedoff">relinkableQuote'_ a1' a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  428 </span><span class="spaces">  </span><span class="istickedoff">peekRelinkableQuote res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  429 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
+<span class="lineno">  430 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  431 </span>
 <span class="lineno">  432 </span>
-<span class="lineno">  433 </span>-- |A quote derived from another by applying @quote \`op\` operand@, live: it recomputes whenever
-<span class="lineno">  434 </span>-- the underlying quote moves, and notifies everything built on it.
-<span class="lineno">  435 </span>--
-<span class="lineno">  436 </span>-- @'derivedQuote' 'QuoteAdd' base 0.0005@ is the &quot;base plus 5bp&quot; spread quote for a rate helper.
-<span class="lineno">  437 </span>-- For anything outside the 'QuoteOp' catalogue -- @1\/x@, a cap, a nonlinear transform -- use
-<span class="lineno">  438 </span>-- 'withDerivedQuote'.
-<span class="lineno">  439 </span>derivedQuote :: (QuoteOp) -&gt; (GenQuote q) -&gt; (Double) -- ^operand
-<span class="lineno">  440 </span> -&gt; IO ((Quote))
-<span class="lineno">  441 </span><span class="decl"><span class="istickedoff">derivedQuote a1 a2 a3 =</span>
-<span class="lineno">  442 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = fromEnumC a1} in </span>
-<span class="lineno">  443 </span><span class="spaces">  </span><span class="istickedoff">withQuote a2 $ \a2' -&gt; </span>
-<span class="lineno">  444 </span><span class="spaces">  </span><span class="istickedoff">let {a3' = realToFrac a3} in </span>
-<span class="lineno">  445 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a4' -&gt; </span>
-<span class="lineno">  446 </span><span class="spaces">  </span><span class="istickedoff">derivedQuote'_ a1' a2' a3' a4' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  447 </span><span class="spaces">  </span><span class="istickedoff">peekQuote res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">  448 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a4'&gt;&gt;</span>
-<span class="lineno">  449 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">  450 </span>
-<span class="lineno">  451 </span>
-<span class="lineno">  452 </span>
-<span class="lineno">  453 </span>-- |A quote combining two others as @quote1 \`op\` quote2@, live in both: it recomputes whenever
-<span class="lineno">  454 </span>-- either moves. Use 'withCompositeQuote' for an operation outside the 'QuoteOp' catalogue.
-<span class="lineno">  455 </span>compositeQuote :: (QuoteOp) -&gt; (GenQuote q1) -&gt; (GenQuote q2) -&gt; IO ((Quote))
-<span class="lineno">  456 </span><span class="decl"><span class="istickedoff">compositeQuote a1 a2 a3 =</span>
-<span class="lineno">  457 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = fromEnumC a1} in </span>
-<span class="lineno">  458 </span><span class="spaces">  </span><span class="istickedoff">withQuote a2 $ \a2' -&gt; </span>
-<span class="lineno">  459 </span><span class="spaces">  </span><span class="istickedoff">withQuote a3 $ \a3' -&gt; </span>
-<span class="lineno">  460 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a4' -&gt; </span>
-<span class="lineno">  461 </span><span class="spaces">  </span><span class="istickedoff">compositeQuote'_ a1' a2' a3' a4' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  462 </span><span class="spaces">  </span><span class="istickedoff">peekQuote res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">  463 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a4'&gt;&gt;</span>
-<span class="lineno">  464 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">  465 </span>
+<span class="lineno">  433 </span>
+<span class="lineno">  434 </span>-- |Point a relinkable handle at another quote. Existing dependents reprice without reconstruction.
+<span class="lineno">  435 </span>-- Use 'setValue' for a value bump; this swaps the quote object.
+<span class="lineno">  436 </span>linkTo :: (RelinkableQuote) -&gt; (GenQuote q) -&gt; IO ()
+<span class="lineno">  437 </span><span class="decl"><span class="istickedoff">linkTo a1 a2 =</span>
+<span class="lineno">  438 </span><span class="spaces">  </span><span class="istickedoff">withRelinkableQuote a1 $ \a1' -&gt; </span>
+<span class="lineno">  439 </span><span class="spaces">  </span><span class="istickedoff">withQuote a2 $ \a2' -&gt; </span>
+<span class="lineno">  440 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
+<span class="lineno">  441 </span><span class="spaces">  </span><span class="istickedoff">linkTo'_ a1' a2' a3' &gt;&gt;</span>
+<span class="lineno">  442 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
+<span class="lineno">  443 </span><span class="spaces">  </span><span class="istickedoff">return <span class="nottickedoff">()</span></span></span>
+<span class="lineno">  444 </span>
+<span class="lineno">  445 </span>
+<span class="lineno">  446 </span>
+<span class="lineno">  447 </span>-- These composite quotes are live observer-graph nodes. Haskell-side recomputation would be a snapshot and would not notify dependent curves or instruments.
+<span class="lineno">  448 </span>
+<span class="lineno">  449 </span>-- |A quote derived from another by applying @quote \`op\` operand@, live: it recomputes whenever
+<span class="lineno">  450 </span>-- the underlying quote moves, and notifies everything built on it.
+<span class="lineno">  451 </span>--
+<span class="lineno">  452 </span>-- @'derivedQuote' 'QuoteAdd' base 0.0005@ is the &quot;base plus 5bp&quot; spread quote for a rate helper.
+<span class="lineno">  453 </span>-- For anything outside the 'QuoteOp' catalogue -- @1\/x@, a cap, a nonlinear transform -- use
+<span class="lineno">  454 </span>-- 'withDerivedQuote'.
+<span class="lineno">  455 </span>derivedQuote :: (QuoteOp) -&gt; (GenQuote q) -&gt; (Double) -- ^operand
+<span class="lineno">  456 </span> -&gt; IO ((Quote))
+<span class="lineno">  457 </span><span class="decl"><span class="istickedoff">derivedQuote a1 a2 a3 =</span>
+<span class="lineno">  458 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = fromEnumC a1} in </span>
+<span class="lineno">  459 </span><span class="spaces">  </span><span class="istickedoff">withQuote a2 $ \a2' -&gt; </span>
+<span class="lineno">  460 </span><span class="spaces">  </span><span class="istickedoff">let {a3' = realToFrac a3} in </span>
+<span class="lineno">  461 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a4' -&gt; </span>
+<span class="lineno">  462 </span><span class="spaces">  </span><span class="istickedoff">derivedQuote'_ a1' a2' a3' a4' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  463 </span><span class="spaces">  </span><span class="istickedoff">peekQuote res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  464 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a4'&gt;&gt;</span>
+<span class="lineno">  465 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
 <span class="lineno">  466 </span>
 <span class="lineno">  467 </span>
-<span class="lineno">  468 </span>-- |A quote folding any number of others, live in all of them. An empty list is accepted and
-<span class="lineno">  469 </span>-- gives the fold's identity (@0@ for 'QuoteSum' and 'QuoteNorm2', @1@ for 'QuoteProduct') --
-<span class="lineno">  470 </span>-- upstream imposes no non-empty requirement. Use 'withMultiCompositeQuote' for a fold outside
-<span class="lineno">  471 </span>-- the 'MultiQuoteOp' catalogue.
-<span class="lineno">  472 </span>multiCompositeQuote :: (MultiQuoteOp) -&gt; ([GenQuote q]) -&gt; IO ((Quote))
-<span class="lineno">  473 </span><span class="decl"><span class="istickedoff">multiCompositeQuote a1 a2 =</span>
-<span class="lineno">  474 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = fromEnumC a1} in </span>
-<span class="lineno">  475 </span><span class="spaces">  </span><span class="istickedoff">withQuoteArray a2 $ \(a2'1, a2'2) -&gt; </span>
-<span class="lineno">  476 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
-<span class="lineno">  477 </span><span class="spaces">  </span><span class="istickedoff">multiCompositeQuote'_ a1' a2'1  a2'2 a3' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  468 </span>
+<span class="lineno">  469 </span>-- |A quote combining two others as @quote1 \`op\` quote2@, live in both: it recomputes whenever
+<span class="lineno">  470 </span>-- either moves. Use 'withCompositeQuote' for an operation outside the 'QuoteOp' catalogue.
+<span class="lineno">  471 </span>compositeQuote :: (QuoteOp) -&gt; (GenQuote q1) -&gt; (GenQuote q2) -&gt; IO ((Quote))
+<span class="lineno">  472 </span><span class="decl"><span class="istickedoff">compositeQuote a1 a2 a3 =</span>
+<span class="lineno">  473 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = fromEnumC a1} in </span>
+<span class="lineno">  474 </span><span class="spaces">  </span><span class="istickedoff">withQuote a2 $ \a2' -&gt; </span>
+<span class="lineno">  475 </span><span class="spaces">  </span><span class="istickedoff">withQuote a3 $ \a3' -&gt; </span>
+<span class="lineno">  476 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a4' -&gt; </span>
+<span class="lineno">  477 </span><span class="spaces">  </span><span class="istickedoff">compositeQuote'_ a1' a2' a3' a4' &gt;&gt;= \res -&gt;</span>
 <span class="lineno">  478 </span><span class="spaces">  </span><span class="istickedoff">peekQuote res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">  479 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
+<span class="lineno">  479 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a4'&gt;&gt;</span>
 <span class="lineno">  480 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
 <span class="lineno">  481 </span>
 <span class="lineno">  482 </span>
 <span class="lineno">  483 </span>
-<span class="lineno">  484 </span>qlDerivedQuoteFromFunction :: (GenQuote q) -&gt; (FunPtr QuoteUnaryFun) -&gt; IO ((Quote))
-<span class="lineno">  485 </span><span class="decl"><span class="istickedoff">qlDerivedQuoteFromFunction a1 a2 =</span>
-<span class="lineno">  486 </span><span class="spaces">  </span><span class="istickedoff">withQuote a1 $ \a1' -&gt; </span>
-<span class="lineno">  487 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = id a2} in </span>
-<span class="lineno">  488 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
-<span class="lineno">  489 </span><span class="spaces">  </span><span class="istickedoff">qlDerivedQuoteFromFunction'_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  490 </span><span class="spaces">  </span><span class="istickedoff">peekQuote res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">  491 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
-<span class="lineno">  492 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">  493 </span>
-<span class="lineno">  494 </span>
-<span class="lineno">  495 </span>qlCompositeQuoteFromFunction :: (GenQuote q1) -&gt; (GenQuote q2) -&gt; (FunPtr QuoteBinaryFun) -&gt; IO ((Quote))
-<span class="lineno">  496 </span><span class="decl"><span class="istickedoff">qlCompositeQuoteFromFunction a1 a2 a3 =</span>
-<span class="lineno">  497 </span><span class="spaces">  </span><span class="istickedoff">withQuote a1 $ \a1' -&gt; </span>
-<span class="lineno">  498 </span><span class="spaces">  </span><span class="istickedoff">withQuote a2 $ \a2' -&gt; </span>
-<span class="lineno">  499 </span><span class="spaces">  </span><span class="istickedoff">let {a3' = id a3} in </span>
-<span class="lineno">  500 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a4' -&gt; </span>
-<span class="lineno">  501 </span><span class="spaces">  </span><span class="istickedoff">qlCompositeQuoteFromFunction'_ a1' a2' a3' a4' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  502 </span><span class="spaces">  </span><span class="istickedoff">peekQuote res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">  503 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a4'&gt;&gt;</span>
-<span class="lineno">  504 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">  505 </span>
-<span class="lineno">  506 </span>
-<span class="lineno">  507 </span>qlMultiCompositeQuoteFromFunction :: ([GenQuote q]) -&gt; (FunPtr QuoteArrayFun) -&gt; IO ((Quote))
-<span class="lineno">  508 </span><span class="decl"><span class="istickedoff">qlMultiCompositeQuoteFromFunction a1 a2 =</span>
-<span class="lineno">  509 </span><span class="spaces">  </span><span class="istickedoff">withQuoteArray a1 $ \(a1'1, a1'2) -&gt; </span>
-<span class="lineno">  510 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = id a2} in </span>
-<span class="lineno">  511 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
-<span class="lineno">  512 </span><span class="spaces">  </span><span class="istickedoff">qlMultiCompositeQuoteFromFunction'_ a1'1  a1'2 a2' a3' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  513 </span><span class="spaces">  </span><span class="istickedoff">peekQuote res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">  514 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
-<span class="lineno">  515 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">  516 </span>
-<span class="lineno">  517 </span>
-<span class="lineno">  518 </span>
-<span class="lineno">  519 </span>-- |As 'derivedQuote', with an arbitrary Haskell function.
-<span class="lineno">  520 </span>--
-<span class="lineno">  521 </span>-- __The continuation must span the whole use, not only construction.__ QuantLib calls @f@ later from @Quote::value()@. Returning frees its function pointer, so a later read crashes.
-<span class="lineno">  522 </span>--
-<span class="lineno">  523 </span>-- @f@ must be total: exceptions cross C++, including during bootstrap. Prefer 'derivedQuote' when its 'QuoteOp' fits.
-<span class="lineno">  524 </span>withDerivedQuote :: (Double -&gt; Double) -- ^f(value)
-<span class="lineno">  525 </span>  -&gt; GenQuote q -&gt; (Quote -&gt; IO b) -&gt; IO b
-<span class="lineno">  526 </span><span class="decl"><span class="istickedoff">withDerivedQuote f q k = withPayoffFun f (\fp -&gt; qlDerivedQuoteFromFunction q fp &gt;&gt;= k)</span></span>
-<span class="lineno">  527 </span>
-<span class="lineno">  528 </span>-- |As 'compositeQuote', but combining the two quotes with an arbitrary Haskell function. Same
-<span class="lineno">  529 </span>-- continuation-lifetime and totality rules as 'withDerivedQuote'.
-<span class="lineno">  530 </span>withCompositeQuote :: (Double -&gt; Double -&gt; Double) -- ^f(value1, value2)
-<span class="lineno">  531 </span>  -&gt; GenQuote q1 -&gt; GenQuote q2 -&gt; (Quote -&gt; IO b) -&gt; IO b
-<span class="lineno">  532 </span><span class="decl"><span class="istickedoff">withCompositeQuote f q1 q2 k = withQuoteBinaryFun f (\fp -&gt; qlCompositeQuoteFromFunction q1 q2 fp &gt;&gt;= k)</span></span>
+<span class="lineno">  484 </span>-- |A quote folding any number of others, live in all of them. An empty list is accepted and
+<span class="lineno">  485 </span>-- gives the fold's identity (@0@ for 'QuoteSum' and 'QuoteNorm2', @1@ for 'QuoteProduct') --
+<span class="lineno">  486 </span>-- upstream imposes no non-empty requirement. Use 'withMultiCompositeQuote' for a fold outside
+<span class="lineno">  487 </span>-- the 'MultiQuoteOp' catalogue.
+<span class="lineno">  488 </span>multiCompositeQuote :: (MultiQuoteOp) -&gt; ([GenQuote q]) -&gt; IO ((Quote))
+<span class="lineno">  489 </span><span class="decl"><span class="istickedoff">multiCompositeQuote a1 a2 =</span>
+<span class="lineno">  490 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = fromEnumC a1} in </span>
+<span class="lineno">  491 </span><span class="spaces">  </span><span class="istickedoff">withQuoteArray a2 $ \(a2'1, a2'2) -&gt; </span>
+<span class="lineno">  492 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
+<span class="lineno">  493 </span><span class="spaces">  </span><span class="istickedoff">multiCompositeQuote'_ a1' a2'1  a2'2 a3' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  494 </span><span class="spaces">  </span><span class="istickedoff">peekQuote res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  495 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
+<span class="lineno">  496 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  497 </span>
+<span class="lineno">  498 </span>
+<span class="lineno">  499 </span>
+<span class="lineno">  500 </span>qlDerivedQuoteFromFunction :: (GenQuote q) -&gt; (FunPtr QuoteUnaryFun) -&gt; IO ((Quote))
+<span class="lineno">  501 </span><span class="decl"><span class="istickedoff">qlDerivedQuoteFromFunction a1 a2 =</span>
+<span class="lineno">  502 </span><span class="spaces">  </span><span class="istickedoff">withQuote a1 $ \a1' -&gt; </span>
+<span class="lineno">  503 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = id a2} in </span>
+<span class="lineno">  504 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
+<span class="lineno">  505 </span><span class="spaces">  </span><span class="istickedoff">qlDerivedQuoteFromFunction'_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  506 </span><span class="spaces">  </span><span class="istickedoff">peekQuote res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  507 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
+<span class="lineno">  508 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  509 </span>
+<span class="lineno">  510 </span>
+<span class="lineno">  511 </span>qlCompositeQuoteFromFunction :: (GenQuote q1) -&gt; (GenQuote q2) -&gt; (FunPtr QuoteBinaryFun) -&gt; IO ((Quote))
+<span class="lineno">  512 </span><span class="decl"><span class="istickedoff">qlCompositeQuoteFromFunction a1 a2 a3 =</span>
+<span class="lineno">  513 </span><span class="spaces">  </span><span class="istickedoff">withQuote a1 $ \a1' -&gt; </span>
+<span class="lineno">  514 </span><span class="spaces">  </span><span class="istickedoff">withQuote a2 $ \a2' -&gt; </span>
+<span class="lineno">  515 </span><span class="spaces">  </span><span class="istickedoff">let {a3' = id a3} in </span>
+<span class="lineno">  516 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a4' -&gt; </span>
+<span class="lineno">  517 </span><span class="spaces">  </span><span class="istickedoff">qlCompositeQuoteFromFunction'_ a1' a2' a3' a4' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  518 </span><span class="spaces">  </span><span class="istickedoff">peekQuote res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  519 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a4'&gt;&gt;</span>
+<span class="lineno">  520 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  521 </span>
+<span class="lineno">  522 </span>
+<span class="lineno">  523 </span>qlMultiCompositeQuoteFromFunction :: ([GenQuote q]) -&gt; (FunPtr QuoteArrayFun) -&gt; IO ((Quote))
+<span class="lineno">  524 </span><span class="decl"><span class="istickedoff">qlMultiCompositeQuoteFromFunction a1 a2 =</span>
+<span class="lineno">  525 </span><span class="spaces">  </span><span class="istickedoff">withQuoteArray a1 $ \(a1'1, a1'2) -&gt; </span>
+<span class="lineno">  526 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = id a2} in </span>
+<span class="lineno">  527 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
+<span class="lineno">  528 </span><span class="spaces">  </span><span class="istickedoff">qlMultiCompositeQuoteFromFunction'_ a1'1  a1'2 a2' a3' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  529 </span><span class="spaces">  </span><span class="istickedoff">peekQuote res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  530 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
+<span class="lineno">  531 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  532 </span>
 <span class="lineno">  533 </span>
-<span class="lineno">  534 </span>-- |As 'multiCompositeQuote', but folding with an arbitrary Haskell function. The whole element
-<span class="lineno">  535 </span>-- vector is passed per evaluation, so this crosses into Haskell once per value, not once per
-<span class="lineno">  536 </span>-- element. Same continuation-lifetime and totality rules as 'withDerivedQuote'.
-<span class="lineno">  537 </span>withMultiCompositeQuote :: ([Double] -&gt; Double) -- ^f(values)
-<span class="lineno">  538 </span>  -&gt; [GenQuote q] -&gt; (Quote -&gt; IO b) -&gt; IO b
-<span class="lineno">  539 </span><span class="decl"><span class="istickedoff">withMultiCompositeQuote f qs k = withBasketAccumulateFun f (\fp -&gt; qlMultiCompositeQuoteFromFunction qs fp &gt;&gt;= k)</span></span>
-<span class="lineno">  540 </span>
-<span class="lineno">  541 </span>-- vim: set ff=unix ts=8 sts=2 sw=2 et:
-<span class="lineno">  542 </span>
-<span class="lineno">  543 </span>foreign import ccall safe &quot;QuantLib/Quote.chs.h qlSimpleQuote&quot;
-<span class="lineno">  544 </span>  simpleQuote'_ :: (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CSimpleQuote')))))
-<span class="lineno">  545 </span>
-<span class="lineno">  546 </span>foreign import ccall safe &quot;QuantLib/Quote.chs.h qlDeltaVolQuote1&quot;
-<span class="lineno">  547 </span>  deltaVolQuote'_ :: (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (CQuote')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CDeltaVolQuote'))))))))
-<span class="lineno">  548 </span>
-<span class="lineno">  549 </span>foreign import ccall safe &quot;QuantLib/Quote.chs.h qlDeltaVolQuote2&quot;
-<span class="lineno">  550 </span>  atmVolQuote'_ :: ((C2HSImp.Ptr (CQuote')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CDeltaVolQuote'))))))))
-<span class="lineno">  551 </span>
-<span class="lineno">  552 </span>foreign import ccall safe &quot;QuantLib/Quote.chs.h qlQuoteValue&quot;
-<span class="lineno">  553 </span>  value'_ :: ((C2HSImp.Ptr (CQuote')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))
-<span class="lineno">  554 </span>
-<span class="lineno">  555 </span>foreign import ccall safe &quot;QuantLib/Quote.chs.h qlSimpleQuoteSetValue&quot;
-<span class="lineno">  556 </span>  setValue'_ :: ((C2HSImp.Ptr (CSimpleQuote')) -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble))))
-<span class="lineno">  557 </span>
-<span class="lineno">  558 </span>foreign import ccall safe &quot;QuantLib/Quote.chs.h qlEurodollarFuturesImpliedStdDevQuote&quot;
-<span class="lineno">  559 </span>  eurodollarFuturesImpliedStdDevQuote'_ :: ((C2HSImp.Ptr (CQuote')) -&gt; ((C2HSImp.Ptr (CQuote')) -&gt; ((C2HSImp.Ptr (CQuote')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CQuote')))))))))))
-<span class="lineno">  560 </span>
-<span class="lineno">  561 </span>foreign import ccall safe &quot;QuantLib/Quote.chs.h qlForwardSwapQuote&quot;
-<span class="lineno">  562 </span>  forwardSwapQuote'_ :: ((C2HSImp.Ptr (CSwapIndex')) -&gt; ((C2HSImp.Ptr (CQuote')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CQuote'))))))))
-<span class="lineno">  563 </span>
-<span class="lineno">  564 </span>foreign import ccall safe &quot;QuantLib/Quote.chs.h qlForwardValueQuote&quot;
-<span class="lineno">  565 </span>  forwardValueQuote'_ :: ((C2HSImp.Ptr (CIndex')) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CQuote'))))))
-<span class="lineno">  566 </span>
-<span class="lineno">  567 </span>foreign import ccall safe &quot;QuantLib/Quote.chs.h qlFuturesConvAdjustmentQuote1&quot;
-<span class="lineno">  568 </span>  futuresConvAdjustmentQuote''_ :: ((C2HSImp.Ptr (CIborIndex')) -&gt; ((C2HSImp.Ptr C2HSImp.CChar) -&gt; ((C2HSImp.Ptr (CQuote')) -&gt; ((C2HSImp.Ptr (CQuote')) -&gt; ((C2HSImp.Ptr (CQuote')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CQuote')))))))))
-<span class="lineno">  569 </span>
-<span class="lineno">  570 </span>foreign import ccall safe &quot;QuantLib/Quote.chs.h qlFuturesConvAdjustmentQuote&quot;
-<span class="lineno">  571 </span>  futuresConvAdjustmentQuote'_ :: ((C2HSImp.Ptr (CIborIndex')) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CQuote')) -&gt; ((C2HSImp.Ptr (CQuote')) -&gt; ((C2HSImp.Ptr (CQuote')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CQuote')))))))))
-<span class="lineno">  572 </span>
-<span class="lineno">  573 </span>foreign import ccall safe &quot;QuantLib/Quote.chs.h qlImpliedStdDevQuote&quot;
-<span class="lineno">  574 </span>  impliedStdDevQuote'_ :: (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CQuote')) -&gt; ((C2HSImp.Ptr (CQuote')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CQuote')))))))))))
-<span class="lineno">  575 </span>
-<span class="lineno">  576 </span>foreign import ccall safe &quot;QuantLib/Quote.chs.h qlLastFixingQuote&quot;
-<span class="lineno">  577 </span>  lastFixingQuote'_ :: ((C2HSImp.Ptr (CIndex')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CQuote')))))
-<span class="lineno">  578 </span>
-<span class="lineno">  579 </span>foreign import ccall safe &quot;QuantLib/Quote.chs.h qlQuoteIsValid&quot;
-<span class="lineno">  580 </span>  isValid'_ :: ((C2HSImp.Ptr (CQuote')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CInt)))
-<span class="lineno">  581 </span>
-<span class="lineno">  582 </span>foreign import ccall safe &quot;QuantLib/Quote.chs.h qlRelinkableQuote&quot;
-<span class="lineno">  583 </span>  relinkableQuote'_ :: ((C2HSImp.Ptr (CQuote')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CRelinkableQuote')))))
-<span class="lineno">  584 </span>
-<span class="lineno">  585 </span>foreign import ccall safe &quot;QuantLib/Quote.chs.h qlRelinkableQuoteLinkTo&quot;
-<span class="lineno">  586 </span>  linkTo'_ :: ((C2HSImp.Ptr (CRelinkableQuote')) -&gt; ((C2HSImp.Ptr (CQuote')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ()))))
-<span class="lineno">  587 </span>
-<span class="lineno">  588 </span>foreign import ccall safe &quot;QuantLib/Quote.chs.h qlDerivedQuote&quot;
-<span class="lineno">  589 </span>  derivedQuote'_ :: (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CQuote')) -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CQuote')))))))
-<span class="lineno">  590 </span>
-<span class="lineno">  591 </span>foreign import ccall safe &quot;QuantLib/Quote.chs.h qlCompositeQuote&quot;
-<span class="lineno">  592 </span>  compositeQuote'_ :: (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CQuote')) -&gt; ((C2HSImp.Ptr (CQuote')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CQuote')))))))
-<span class="lineno">  593 </span>
-<span class="lineno">  594 </span>foreign import ccall safe &quot;QuantLib/Quote.chs.h qlMultiCompositeQuote&quot;
-<span class="lineno">  595 </span>  multiCompositeQuote'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr (CQuote'))) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CQuote')))))))
-<span class="lineno">  596 </span>
-<span class="lineno">  597 </span>foreign import ccall safe &quot;QuantLib/Quote.chs.h qlDerivedQuoteFromFunction&quot;
-<span class="lineno">  598 </span>  qlDerivedQuoteFromFunction'_ :: ((C2HSImp.Ptr (CQuote')) -&gt; ((C2HSImp.FunPtr (C2HSImp.CDouble -&gt; (IO C2HSImp.CDouble))) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CQuote'))))))
-<span class="lineno">  599 </span>
-<span class="lineno">  600 </span>foreign import ccall safe &quot;QuantLib/Quote.chs.h qlCompositeQuoteFromFunction&quot;
-<span class="lineno">  601 </span>  qlCompositeQuoteFromFunction'_ :: ((C2HSImp.Ptr (CQuote')) -&gt; ((C2HSImp.Ptr (CQuote')) -&gt; ((C2HSImp.FunPtr (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (IO C2HSImp.CDouble)))) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CQuote')))))))
-<span class="lineno">  602 </span>
-<span class="lineno">  603 </span>foreign import ccall safe &quot;QuantLib/Quote.chs.h qlMultiCompositeQuoteFromFunction&quot;
-<span class="lineno">  604 </span>  qlMultiCompositeQuoteFromFunction'_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr (CQuote'))) -&gt; ((C2HSImp.FunPtr ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; (IO C2HSImp.CDouble)))) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CQuote')))))))
+<span class="lineno">  534 </span>
+<span class="lineno">  535 </span>-- |As 'derivedQuote', with an arbitrary Haskell function.
+<span class="lineno">  536 </span>--
+<span class="lineno">  537 </span>-- __The continuation must span the whole use, not only construction.__ QuantLib calls @f@ later from @Quote::value()@. Returning frees its function pointer, so a later read crashes.
+<span class="lineno">  538 </span>--
+<span class="lineno">  539 </span>-- @f@ must be total: exceptions cross C++, including during bootstrap. Prefer 'derivedQuote' when its 'QuoteOp' fits.
+<span class="lineno">  540 </span>withDerivedQuote :: (Double -&gt; Double) -- ^f(value)
+<span class="lineno">  541 </span>  -&gt; GenQuote q -&gt; (Quote -&gt; IO b) -&gt; IO b
+<span class="lineno">  542 </span><span class="decl"><span class="istickedoff">withDerivedQuote f q k = withPayoffFun f (\fp -&gt; qlDerivedQuoteFromFunction q fp &gt;&gt;= k)</span></span>
+<span class="lineno">  543 </span>
+<span class="lineno">  544 </span>-- |As 'compositeQuote', but combining the two quotes with an arbitrary Haskell function. Same
+<span class="lineno">  545 </span>-- continuation-lifetime and totality rules as 'withDerivedQuote'.
+<span class="lineno">  546 </span>withCompositeQuote :: (Double -&gt; Double -&gt; Double) -- ^f(value1, value2)
+<span class="lineno">  547 </span>  -&gt; GenQuote q1 -&gt; GenQuote q2 -&gt; (Quote -&gt; IO b) -&gt; IO b
+<span class="lineno">  548 </span><span class="decl"><span class="istickedoff">withCompositeQuote f q1 q2 k = withQuoteBinaryFun f (\fp -&gt; qlCompositeQuoteFromFunction q1 q2 fp &gt;&gt;= k)</span></span>
+<span class="lineno">  549 </span>
+<span class="lineno">  550 </span>-- |As 'multiCompositeQuote', but folding with an arbitrary Haskell function. The whole element
+<span class="lineno">  551 </span>-- vector is passed per evaluation, so this crosses into Haskell once per value, not once per
+<span class="lineno">  552 </span>-- element. Same continuation-lifetime and totality rules as 'withDerivedQuote'.
+<span class="lineno">  553 </span>withMultiCompositeQuote :: ([Double] -&gt; Double) -- ^f(values)
+<span class="lineno">  554 </span>  -&gt; [GenQuote q] -&gt; (Quote -&gt; IO b) -&gt; IO b
+<span class="lineno">  555 </span><span class="decl"><span class="istickedoff">withMultiCompositeQuote f qs k = withBasketAccumulateFun f (\fp -&gt; qlMultiCompositeQuoteFromFunction qs fp &gt;&gt;= k)</span></span>
+<span class="lineno">  556 </span>
+<span class="lineno">  557 </span>-- vim: set ff=unix ts=8 sts=2 sw=2 et:
+<span class="lineno">  558 </span>
+<span class="lineno">  559 </span>foreign import ccall safe &quot;QuantLib/Quote.chs.h qlSimpleQuote&quot;
+<span class="lineno">  560 </span>  simpleQuote'_ :: (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CSimpleQuote')))))
+<span class="lineno">  561 </span>
+<span class="lineno">  562 </span>foreign import ccall safe &quot;QuantLib/Quote.chs.h qlDeltaVolQuote1&quot;
+<span class="lineno">  563 </span>  deltaVolQuote'_ :: (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (CQuote')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CDeltaVolQuote'))))))))
+<span class="lineno">  564 </span>
+<span class="lineno">  565 </span>foreign import ccall safe &quot;QuantLib/Quote.chs.h qlDeltaVolQuote2&quot;
+<span class="lineno">  566 </span>  atmVolQuote'_ :: ((C2HSImp.Ptr (CQuote')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CDeltaVolQuote'))))))))
+<span class="lineno">  567 </span>
+<span class="lineno">  568 </span>foreign import ccall safe &quot;QuantLib/Quote.chs.h qlQuoteValue&quot;
+<span class="lineno">  569 </span>  value'_ :: ((C2HSImp.Ptr (CQuote')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))
+<span class="lineno">  570 </span>
+<span class="lineno">  571 </span>foreign import ccall safe &quot;QuantLib/Quote.chs.h qlSimpleQuoteSetValue&quot;
+<span class="lineno">  572 </span>  setValue'_ :: ((C2HSImp.Ptr (CSimpleQuote')) -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble))))
+<span class="lineno">  573 </span>
+<span class="lineno">  574 </span>foreign import ccall safe &quot;QuantLib/Quote.chs.h qlEurodollarFuturesImpliedStdDevQuote&quot;
+<span class="lineno">  575 </span>  eurodollarFuturesImpliedStdDevQuote'_ :: ((C2HSImp.Ptr (CQuote')) -&gt; ((C2HSImp.Ptr (CQuote')) -&gt; ((C2HSImp.Ptr (CQuote')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CQuote')))))))))))
+<span class="lineno">  576 </span>
+<span class="lineno">  577 </span>foreign import ccall safe &quot;QuantLib/Quote.chs.h qlForwardSwapQuote&quot;
+<span class="lineno">  578 </span>  forwardSwapQuote'_ :: ((C2HSImp.Ptr (CSwapIndex')) -&gt; ((C2HSImp.Ptr (CQuote')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CQuote'))))))))
+<span class="lineno">  579 </span>
+<span class="lineno">  580 </span>foreign import ccall safe &quot;QuantLib/Quote.chs.h qlForwardValueQuote&quot;
+<span class="lineno">  581 </span>  forwardValueQuote'_ :: ((C2HSImp.Ptr (CIndex')) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CQuote'))))))
+<span class="lineno">  582 </span>
+<span class="lineno">  583 </span>foreign import ccall safe &quot;QuantLib/Quote.chs.h qlFuturesConvAdjustmentQuote1&quot;
+<span class="lineno">  584 </span>  futuresConvAdjustmentQuote''_ :: ((C2HSImp.Ptr (CIborIndex')) -&gt; ((C2HSImp.Ptr C2HSImp.CChar) -&gt; ((C2HSImp.Ptr (CQuote')) -&gt; ((C2HSImp.Ptr (CQuote')) -&gt; ((C2HSImp.Ptr (CQuote')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CFuturesConvAdjustmentQuote')))))))))
+<span class="lineno">  585 </span>
+<span class="lineno">  586 </span>foreign import ccall safe &quot;QuantLib/Quote.chs.h qlFuturesConvAdjustmentQuote&quot;
+<span class="lineno">  587 </span>  futuresConvAdjustmentQuote'_ :: ((C2HSImp.Ptr (CIborIndex')) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CQuote')) -&gt; ((C2HSImp.Ptr (CQuote')) -&gt; ((C2HSImp.Ptr (CQuote')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CFuturesConvAdjustmentQuote')))))))))
+<span class="lineno">  588 </span>
+<span class="lineno">  589 </span>foreign import ccall safe &quot;QuantLib/Quote.chs.h qlFuturesConvAdjustmentQuoteFuturesValue&quot;
+<span class="lineno">  590 </span>  futuresConvAdjustmentQuoteFuturesValue'_ :: ((C2HSImp.Ptr (CFuturesConvAdjustmentQuote')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))
+<span class="lineno">  591 </span>
+<span class="lineno">  592 </span>foreign import ccall safe &quot;QuantLib/Quote.chs.h qlImpliedStdDevQuote&quot;
+<span class="lineno">  593 </span>  impliedStdDevQuote'_ :: (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CQuote')) -&gt; ((C2HSImp.Ptr (CQuote')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CQuote')))))))))))
+<span class="lineno">  594 </span>
+<span class="lineno">  595 </span>foreign import ccall safe &quot;QuantLib/Quote.chs.h qlLastFixingQuote&quot;
+<span class="lineno">  596 </span>  lastFixingQuote'_ :: ((C2HSImp.Ptr (CIndex')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CQuote')))))
+<span class="lineno">  597 </span>
+<span class="lineno">  598 </span>foreign import ccall safe &quot;QuantLib/Quote.chs.h qlQuoteIsValid&quot;
+<span class="lineno">  599 </span>  isValid'_ :: ((C2HSImp.Ptr (CQuote')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CInt)))
+<span class="lineno">  600 </span>
+<span class="lineno">  601 </span>foreign import ccall safe &quot;QuantLib/Quote.chs.h qlRelinkableQuote&quot;
+<span class="lineno">  602 </span>  relinkableQuote'_ :: ((C2HSImp.Ptr (CQuote')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CRelinkableQuote')))))
+<span class="lineno">  603 </span>
+<span class="lineno">  604 </span>foreign import ccall safe &quot;QuantLib/Quote.chs.h qlRelinkableQuoteLinkTo&quot;
+<span class="lineno">  605 </span>  linkTo'_ :: ((C2HSImp.Ptr (CRelinkableQuote')) -&gt; ((C2HSImp.Ptr (CQuote')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ()))))
+<span class="lineno">  606 </span>
+<span class="lineno">  607 </span>foreign import ccall safe &quot;QuantLib/Quote.chs.h qlDerivedQuote&quot;
+<span class="lineno">  608 </span>  derivedQuote'_ :: (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CQuote')) -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CQuote')))))))
+<span class="lineno">  609 </span>
+<span class="lineno">  610 </span>foreign import ccall safe &quot;QuantLib/Quote.chs.h qlCompositeQuote&quot;
+<span class="lineno">  611 </span>  compositeQuote'_ :: (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CQuote')) -&gt; ((C2HSImp.Ptr (CQuote')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CQuote')))))))
+<span class="lineno">  612 </span>
+<span class="lineno">  613 </span>foreign import ccall safe &quot;QuantLib/Quote.chs.h qlMultiCompositeQuote&quot;
+<span class="lineno">  614 </span>  multiCompositeQuote'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr (CQuote'))) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CQuote')))))))
+<span class="lineno">  615 </span>
+<span class="lineno">  616 </span>foreign import ccall safe &quot;QuantLib/Quote.chs.h qlDerivedQuoteFromFunction&quot;
+<span class="lineno">  617 </span>  qlDerivedQuoteFromFunction'_ :: ((C2HSImp.Ptr (CQuote')) -&gt; ((C2HSImp.FunPtr (C2HSImp.CDouble -&gt; (IO C2HSImp.CDouble))) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CQuote'))))))
+<span class="lineno">  618 </span>
+<span class="lineno">  619 </span>foreign import ccall safe &quot;QuantLib/Quote.chs.h qlCompositeQuoteFromFunction&quot;
+<span class="lineno">  620 </span>  qlCompositeQuoteFromFunction'_ :: ((C2HSImp.Ptr (CQuote')) -&gt; ((C2HSImp.Ptr (CQuote')) -&gt; ((C2HSImp.FunPtr (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (IO C2HSImp.CDouble)))) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CQuote')))))))
+<span class="lineno">  621 </span>
+<span class="lineno">  622 </span>foreign import ccall safe &quot;QuantLib/Quote.chs.h qlMultiCompositeQuoteFromFunction&quot;
+<span class="lineno">  623 </span>  qlMultiCompositeQuoteFromFunction'_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr (CQuote'))) -&gt; ((C2HSImp.FunPtr ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; (IO C2HSImp.CDouble)))) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CQuote')))))))
 
 </pre>
 </body>

@@ -42,66 +42,66 @@ span.spaces    { background: white }
 <span class="lineno">   23 </span>  , defaultProbabilityBetween'
 <span class="lineno">   24 </span>  , spreadCdsHelper
 <span class="lineno">   25 </span>  , upfrontCdsHelper
-<span class="lineno">   26 </span>  , interpolatedDefaultDensityCurve
-<span class="lineno">   27 </span>  , interpolatedHazardRateCurve
-<span class="lineno">   28 </span>  , interpolatedSurvivalProbabilityCurve
-<span class="lineno">   29 </span>  , piecewiseDefaultCurve
-<span class="lineno">   30 </span>  , piecewiseDefaultCurve'
-<span class="lineno">   31 </span>  ) where
-<span class="lineno">   32 </span>import qualified Foreign.C.Types as C2HSImp
-<span class="lineno">   33 </span>import qualified Foreign.ForeignPtr as C2HSImp
-<span class="lineno">   34 </span>import qualified Foreign.Marshal.Utils as C2HSImp
-<span class="lineno">   35 </span>import qualified Foreign.Ptr as C2HSImp
-<span class="lineno">   36 </span>
-<span class="lineno">   37 </span>
-<span class="lineno">   38 </span>
-<span class="lineno">   39 </span>
-<span class="lineno">   40 </span>
+<span class="lineno">   26 </span>  , defaultProbabilityHelperImpliedQuote
+<span class="lineno">   27 </span>  , interpolatedDefaultDensityCurve
+<span class="lineno">   28 </span>  , interpolatedHazardRateCurve
+<span class="lineno">   29 </span>  , interpolatedSurvivalProbabilityCurve
+<span class="lineno">   30 </span>  , IterativeBootstrapOpts(..)
+<span class="lineno">   31 </span>  , defaultIterativeBootstrapOpts
+<span class="lineno">   32 </span>  , piecewiseDefaultCurve
+<span class="lineno">   33 </span>  , piecewiseDefaultCurve'
+<span class="lineno">   34 </span>  , piecewiseDefaultCurveFull
+<span class="lineno">   35 </span>  , piecewiseDefaultCurveFull'
+<span class="lineno">   36 </span>  ) where
+<span class="lineno">   37 </span>import qualified Foreign.C.Types as C2HSImp
+<span class="lineno">   38 </span>import qualified Foreign.ForeignPtr as C2HSImp
+<span class="lineno">   39 </span>import qualified Foreign.Marshal.Utils as C2HSImp
+<span class="lineno">   40 </span>import qualified Foreign.Ptr as C2HSImp
 <span class="lineno">   41 </span>
 <span class="lineno">   42 </span>
-<span class="lineno">   43 </span>import QuantLib.Internal
-<span class="lineno">   44 </span>import QuantLib.Instrument(PricingModel)
-<span class="lineno">   45 </span>import QuantLib.Internal.Type
-<span class="lineno">   46 </span>import QuantLib.Time.Schedule(DateGenerationRule, Frequency)
-<span class="lineno">   47 </span>import QuantLib.Internal.Common
-<span class="lineno">   48 </span>import Data.List.NonEmpty(NonEmpty, toList)
-<span class="lineno">   49 </span>
-<span class="lineno">   50 </span>data ProbabilityTrait = SurvivalProbability
-<span class="lineno">   51 </span>                      | HazardRate
-<span class="lineno">   52 </span>                      | DefaultDensity
-<span class="lineno">   53 </span>  deriving (<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Show</span></span></span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Eq</span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Read</span></span></span></span></span></span></span></span>)
-<span class="lineno">   54 </span>instance <span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Enum ProbabilityTrait</span></span></span></span> where
-<span class="lineno">   55 </span>  <span class="decl"><span class="nottickedoff">succ SurvivalProbability = HazardRate</span>
-<span class="lineno">   56 </span><span class="spaces">  </span><span class="nottickedoff">succ HazardRate = DefaultDensity</span>
-<span class="lineno">   57 </span><span class="spaces">  </span><span class="nottickedoff">succ DefaultDensity = error &quot;ProbabilityTrait.succ: DefaultDensity has no successor&quot;</span></span>
-<span class="lineno">   58 </span>
-<span class="lineno">   59 </span>  <span class="decl"><span class="nottickedoff">pred HazardRate = SurvivalProbability</span>
-<span class="lineno">   60 </span><span class="spaces">  </span><span class="nottickedoff">pred DefaultDensity = HazardRate</span>
-<span class="lineno">   61 </span><span class="spaces">  </span><span class="nottickedoff">pred SurvivalProbability = error &quot;ProbabilityTrait.pred: SurvivalProbability has no predecessor&quot;</span></span>
-<span class="lineno">   62 </span>
-<span class="lineno">   63 </span>  <span class="decl"><span class="nottickedoff">enumFromTo from to = go from</span>
-<span class="lineno">   64 </span><span class="spaces">    </span><span class="nottickedoff">where</span>
-<span class="lineno">   65 </span><span class="spaces">      </span><span class="nottickedoff">end = fromEnum to</span>
-<span class="lineno">   66 </span><span class="spaces">      </span><span class="nottickedoff">go v = case compare (fromEnum v) end of</span>
-<span class="lineno">   67 </span><span class="spaces">                 </span><span class="nottickedoff">LT -&gt; v : go (succ v)</span>
-<span class="lineno">   68 </span><span class="spaces">                 </span><span class="nottickedoff">EQ -&gt; [v]</span>
-<span class="lineno">   69 </span><span class="spaces">                 </span><span class="nottickedoff">GT -&gt; []</span></span>
-<span class="lineno">   70 </span>
-<span class="lineno">   71 </span>  <span class="decl"><span class="nottickedoff">enumFrom from = enumFromTo from DefaultDensity</span></span>
-<span class="lineno">   72 </span>
-<span class="lineno">   73 </span>  <span class="decl"><span class="istickedoff">fromEnum SurvivalProbability = <span class="nottickedoff">0</span></span>
-<span class="lineno">   74 </span><span class="spaces">  </span><span class="istickedoff">fromEnum HazardRate = 1</span>
-<span class="lineno">   75 </span><span class="spaces">  </span><span class="istickedoff">fromEnum DefaultDensity = <span class="nottickedoff">2</span></span></span>
-<span class="lineno">   76 </span>
-<span class="lineno">   77 </span>  <span class="decl"><span class="nottickedoff">toEnum 0 = SurvivalProbability</span>
-<span class="lineno">   78 </span><span class="spaces">  </span><span class="nottickedoff">toEnum 1 = HazardRate</span>
-<span class="lineno">   79 </span><span class="spaces">  </span><span class="nottickedoff">toEnum 2 = DefaultDensity</span>
-<span class="lineno">   80 </span><span class="spaces">  </span><span class="nottickedoff">toEnum unmatched = error (&quot;ProbabilityTrait.toEnum: Cannot match &quot; ++ show unmatched)</span></span>
+<span class="lineno">   43 </span>
+<span class="lineno">   44 </span>
+<span class="lineno">   45 </span>
+<span class="lineno">   46 </span>
+<span class="lineno">   47 </span>
+<span class="lineno">   48 </span>import QuantLib.Internal
+<span class="lineno">   49 </span>import QuantLib.Instrument(PricingModel)
+<span class="lineno">   50 </span>import QuantLib.Internal.Type
+<span class="lineno">   51 </span>import QuantLib.Time.Schedule(DateGenerationRule, Frequency)
+<span class="lineno">   52 </span>import QuantLib.Internal.Common
+<span class="lineno">   53 </span>import Data.List.NonEmpty(NonEmpty, toList)
+<span class="lineno">   54 </span>
+<span class="lineno">   55 </span>data ProbabilityTrait = SurvivalProbability
+<span class="lineno">   56 </span>                      | HazardRate
+<span class="lineno">   57 </span>                      | DefaultDensity
+<span class="lineno">   58 </span>  deriving (<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Show</span></span></span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Eq</span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Read</span></span></span></span></span></span></span></span>)
+<span class="lineno">   59 </span>instance <span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Enum ProbabilityTrait</span></span></span></span> where
+<span class="lineno">   60 </span>  <span class="decl"><span class="nottickedoff">succ SurvivalProbability = HazardRate</span>
+<span class="lineno">   61 </span><span class="spaces">  </span><span class="nottickedoff">succ HazardRate = DefaultDensity</span>
+<span class="lineno">   62 </span><span class="spaces">  </span><span class="nottickedoff">succ DefaultDensity = error &quot;ProbabilityTrait.succ: DefaultDensity has no successor&quot;</span></span>
+<span class="lineno">   63 </span>
+<span class="lineno">   64 </span>  <span class="decl"><span class="nottickedoff">pred HazardRate = SurvivalProbability</span>
+<span class="lineno">   65 </span><span class="spaces">  </span><span class="nottickedoff">pred DefaultDensity = HazardRate</span>
+<span class="lineno">   66 </span><span class="spaces">  </span><span class="nottickedoff">pred SurvivalProbability = error &quot;ProbabilityTrait.pred: SurvivalProbability has no predecessor&quot;</span></span>
+<span class="lineno">   67 </span>
+<span class="lineno">   68 </span>  <span class="decl"><span class="nottickedoff">enumFromTo from to = go from</span>
+<span class="lineno">   69 </span><span class="spaces">    </span><span class="nottickedoff">where</span>
+<span class="lineno">   70 </span><span class="spaces">      </span><span class="nottickedoff">end = fromEnum to</span>
+<span class="lineno">   71 </span><span class="spaces">      </span><span class="nottickedoff">go v = case compare (fromEnum v) end of</span>
+<span class="lineno">   72 </span><span class="spaces">                 </span><span class="nottickedoff">LT -&gt; v : go (succ v)</span>
+<span class="lineno">   73 </span><span class="spaces">                 </span><span class="nottickedoff">EQ -&gt; [v]</span>
+<span class="lineno">   74 </span><span class="spaces">                 </span><span class="nottickedoff">GT -&gt; []</span></span>
+<span class="lineno">   75 </span>
+<span class="lineno">   76 </span>  <span class="decl"><span class="nottickedoff">enumFrom from = enumFromTo from DefaultDensity</span></span>
+<span class="lineno">   77 </span>
+<span class="lineno">   78 </span>  <span class="decl"><span class="istickedoff">fromEnum SurvivalProbability = 0</span>
+<span class="lineno">   79 </span><span class="spaces">  </span><span class="istickedoff">fromEnum HazardRate = 1</span>
+<span class="lineno">   80 </span><span class="spaces">  </span><span class="istickedoff">fromEnum DefaultDensity = 2</span></span>
 <span class="lineno">   81 </span>
-<span class="lineno">   82 </span>
-<span class="lineno">   83 </span>
-<span class="lineno">   84 </span>
-<span class="lineno">   85 </span>
+<span class="lineno">   82 </span>  <span class="decl"><span class="nottickedoff">toEnum 0 = SurvivalProbability</span>
+<span class="lineno">   83 </span><span class="spaces">  </span><span class="nottickedoff">toEnum 1 = HazardRate</span>
+<span class="lineno">   84 </span><span class="spaces">  </span><span class="nottickedoff">toEnum 2 = DefaultDensity</span>
+<span class="lineno">   85 </span><span class="spaces">  </span><span class="nottickedoff">toEnum unmatched = error (&quot;ProbabilityTrait.toEnum: Cannot match &quot; ++ show unmatched)</span></span>
 <span class="lineno">   86 </span>
 <span class="lineno">   87 </span>
 <span class="lineno">   88 </span>
@@ -114,479 +114,573 @@ span.spaces    { background: white }
 <span class="lineno">   95 </span>
 <span class="lineno">   96 </span>
 <span class="lineno">   97 </span>
-<span class="lineno">   98 </span>-- |a curve whose hazard rate is another curve's, scaled by a spread factor
-<span class="lineno">   99 </span>factorSpreadedHazardRateCurve :: (DefaultProbabilityTermStructure) -&gt; (GenQuote q) -&gt; IO ((DefaultProbabilityTermStructure))
-<span class="lineno">  100 </span><span class="decl"><span class="nottickedoff">factorSpreadedHazardRateCurve a1 a2 =</span>
-<span class="lineno">  101 </span><span class="spaces">  </span><span class="nottickedoff">withGenTermStructure a1 $ \a1' -&gt; </span>
-<span class="lineno">  102 </span><span class="spaces">  </span><span class="nottickedoff">withQuote a2 $ \a2' -&gt; </span>
-<span class="lineno">  103 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a3' -&gt; </span>
-<span class="lineno">  104 </span><span class="spaces">  </span><span class="nottickedoff">factorSpreadedHazardRateCurve'_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  105 </span><span class="spaces">  </span><span class="nottickedoff">peekDefaultProbabilityTermStructure res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">  106 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a3'&gt;&gt;</span>
-<span class="lineno">  107 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
-<span class="lineno">  108 </span>
-<span class="lineno">  109 </span>
-<span class="lineno">  110 </span>
-<span class="lineno">  111 </span>-- |flat hazard-rate curve anchored at a settlement date
-<span class="lineno">  112 </span>flatHazardRate' :: (Word) -&gt; (Calendar) -&gt; (GenQuote q) -&gt; (DayCounter) -&gt; IO ((DefaultProbabilityTermStructure))
-<span class="lineno">  113 </span><span class="decl"><span class="istickedoff">flatHazardRate' a1 a2 a3 a4 =</span>
-<span class="lineno">  114 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = fromIntegral a1} in </span>
-<span class="lineno">  115 </span><span class="spaces">  </span><span class="istickedoff">withCalendar a2 $ \a2' -&gt; </span>
-<span class="lineno">  116 </span><span class="spaces">  </span><span class="istickedoff">withQuote a3 $ \a3' -&gt; </span>
-<span class="lineno">  117 </span><span class="spaces">  </span><span class="istickedoff">withDayCounter a4 $ \a4' -&gt; </span>
-<span class="lineno">  118 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a5' -&gt; </span>
-<span class="lineno">  119 </span><span class="spaces">  </span><span class="istickedoff">flatHazardRate''_ a1' a2' a3' a4' a5' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  120 </span><span class="spaces">  </span><span class="istickedoff">peekDefaultProbabilityTermStructure res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">  121 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a5'&gt;&gt;</span>
-<span class="lineno">  122 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">  123 </span>
-<span class="lineno">  124 </span>
-<span class="lineno">  125 </span>
-<span class="lineno">  126 </span>-- |flat hazard-rate curve anchored at a reference date
-<span class="lineno">  127 </span>flatHazardRate :: (Day) -&gt; (GenQuote q) -&gt; (DayCounter) -&gt; IO ((DefaultProbabilityTermStructure))
-<span class="lineno">  128 </span><span class="decl"><span class="istickedoff">flatHazardRate a1 a2 a3 =</span>
-<span class="lineno">  129 </span><span class="spaces">  </span><span class="istickedoff">withDay a1 $ \a1' -&gt; </span>
-<span class="lineno">  130 </span><span class="spaces">  </span><span class="istickedoff">withQuote a2 $ \a2' -&gt; </span>
-<span class="lineno">  131 </span><span class="spaces">  </span><span class="istickedoff">withDayCounter a3 $ \a3' -&gt; </span>
-<span class="lineno">  132 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a4' -&gt; </span>
-<span class="lineno">  133 </span><span class="spaces">  </span><span class="istickedoff">flatHazardRate'_ a1' a2' a3' a4' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  134 </span><span class="spaces">  </span><span class="istickedoff">peekDefaultProbabilityTermStructure res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">  135 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a4'&gt;&gt;</span>
-<span class="lineno">  136 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">  137 </span>
-<span class="lineno">  138 </span>
-<span class="lineno">  139 </span>
-<span class="lineno">  140 </span>-- |a curve whose survival probability is another curve's, multiplied by a spread factor
-<span class="lineno">  141 </span>spreadedHazardRateCurve :: (DefaultProbabilityTermStructure) -&gt; (GenQuote q) -&gt; IO ((DefaultProbabilityTermStructure))
-<span class="lineno">  142 </span><span class="decl"><span class="nottickedoff">spreadedHazardRateCurve a1 a2 =</span>
-<span class="lineno">  143 </span><span class="spaces">  </span><span class="nottickedoff">withGenTermStructure a1 $ \a1' -&gt; </span>
-<span class="lineno">  144 </span><span class="spaces">  </span><span class="nottickedoff">withQuote a2 $ \a2' -&gt; </span>
-<span class="lineno">  145 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a3' -&gt; </span>
-<span class="lineno">  146 </span><span class="spaces">  </span><span class="nottickedoff">spreadedHazardRateCurve'_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  147 </span><span class="spaces">  </span><span class="nottickedoff">peekDefaultProbabilityTermStructure res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">  148 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a3'&gt;&gt;</span>
-<span class="lineno">  149 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
-<span class="lineno">  150 </span>
-<span class="lineno">  151 </span>
-<span class="lineno">  152 </span>
-<span class="lineno">  153 </span>-- |default probability from the reference date until a given date
-<span class="lineno">  154 </span>defaultProbability :: (DefaultProbabilityTermStructure) -&gt; (Day) -&gt; (Bool) -- ^extrapolate
-<span class="lineno">  155 </span> -&gt; IO ((Double))
-<span class="lineno">  156 </span><span class="decl"><span class="nottickedoff">defaultProbability a1 a2 a3 =</span>
-<span class="lineno">  157 </span><span class="spaces">  </span><span class="nottickedoff">withGenTermStructure a1 $ \a1' -&gt; </span>
-<span class="lineno">  158 </span><span class="spaces">  </span><span class="nottickedoff">withDay a2 $ \a2' -&gt; </span>
-<span class="lineno">  159 </span><span class="spaces">  </span><span class="nottickedoff">let {a3' = C2HSImp.fromBool a3} in </span>
-<span class="lineno">  160 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a4' -&gt; </span>
-<span class="lineno">  161 </span><span class="spaces">  </span><span class="nottickedoff">defaultProbability'_ a1' a2' a3' a4' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  162 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = realToFrac res} in</span>
-<span class="lineno">  163 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a4'&gt;&gt;</span>
-<span class="lineno">  164 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
-<span class="lineno">  165 </span>
-<span class="lineno">  166 </span>
-<span class="lineno">  167 </span>
-<span class="lineno">  168 </span>-- |hazard rate at a given time, with annual frequency and continuous compounding
-<span class="lineno">  169 </span>hazardRate' :: (DefaultProbabilityTermStructure) -&gt; (Double) -&gt; (Bool) -- ^extrapolate
-<span class="lineno">  170 </span> -&gt; IO ((Double))
-<span class="lineno">  171 </span><span class="decl"><span class="nottickedoff">hazardRate' a1 a2 a3 =</span>
-<span class="lineno">  172 </span><span class="spaces">  </span><span class="nottickedoff">withGenTermStructure a1 $ \a1' -&gt; </span>
-<span class="lineno">  173 </span><span class="spaces">  </span><span class="nottickedoff">let {a2' = realToFrac a2} in </span>
-<span class="lineno">  174 </span><span class="spaces">  </span><span class="nottickedoff">let {a3' = C2HSImp.fromBool a3} in </span>
-<span class="lineno">  175 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a4' -&gt; </span>
-<span class="lineno">  176 </span><span class="spaces">  </span><span class="nottickedoff">hazardRate''_ a1' a2' a3' a4' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  177 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = realToFrac res} in</span>
-<span class="lineno">  178 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a4'&gt;&gt;</span>
-<span class="lineno">  179 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
-<span class="lineno">  180 </span>
-<span class="lineno">  181 </span>
-<span class="lineno">  182 </span>
-<span class="lineno">  183 </span>-- |hazard rate at a given date, with annual frequency and continuous compounding
-<span class="lineno">  184 </span>hazardRate :: (DefaultProbabilityTermStructure) -&gt; (Day) -&gt; (Bool) -- ^extrapolate
-<span class="lineno">  185 </span> -&gt; IO ((Double))
-<span class="lineno">  186 </span><span class="decl"><span class="nottickedoff">hazardRate a1 a2 a3 =</span>
-<span class="lineno">  187 </span><span class="spaces">  </span><span class="nottickedoff">withGenTermStructure a1 $ \a1' -&gt; </span>
-<span class="lineno">  188 </span><span class="spaces">  </span><span class="nottickedoff">withDay a2 $ \a2' -&gt; </span>
-<span class="lineno">  189 </span><span class="spaces">  </span><span class="nottickedoff">let {a3' = C2HSImp.fromBool a3} in </span>
-<span class="lineno">  190 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a4' -&gt; </span>
-<span class="lineno">  191 </span><span class="spaces">  </span><span class="nottickedoff">hazardRate'_ a1' a2' a3' a4' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  192 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = realToFrac res} in</span>
-<span class="lineno">  193 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a4'&gt;&gt;</span>
-<span class="lineno">  194 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
-<span class="lineno">  195 </span>
-<span class="lineno">  196 </span>
-<span class="lineno">  197 </span>
-<span class="lineno">  198 </span>-- |The same day-counting rule used by the term structure should be used for calculating the passed time t.
-<span class="lineno">  199 </span>survivalProbability' :: (DefaultProbabilityTermStructure) -&gt; (Double) -&gt; (Bool) -- ^extrapolate
-<span class="lineno">  200 </span> -&gt; IO ((Double))
-<span class="lineno">  201 </span><span class="decl"><span class="nottickedoff">survivalProbability' a1 a2 a3 =</span>
-<span class="lineno">  202 </span><span class="spaces">  </span><span class="nottickedoff">withGenTermStructure a1 $ \a1' -&gt; </span>
-<span class="lineno">  203 </span><span class="spaces">  </span><span class="nottickedoff">let {a2' = realToFrac a2} in </span>
-<span class="lineno">  204 </span><span class="spaces">  </span><span class="nottickedoff">let {a3' = C2HSImp.fromBool a3} in </span>
-<span class="lineno">  205 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a4' -&gt; </span>
-<span class="lineno">  206 </span><span class="spaces">  </span><span class="nottickedoff">survivalProbability''_ a1' a2' a3' a4' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  207 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = realToFrac res} in</span>
-<span class="lineno">  208 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a4'&gt;&gt;</span>
-<span class="lineno">  209 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
-<span class="lineno">  210 </span>
-<span class="lineno">  211 </span>
-<span class="lineno">  212 </span>
-<span class="lineno">  213 </span>-- |survival probability from the reference date until a given date
-<span class="lineno">  214 </span>survivalProbability :: (DefaultProbabilityTermStructure) -&gt; (Day) -&gt; (Bool) -- ^extrapolate
-<span class="lineno">  215 </span> -&gt; IO ((Double))
-<span class="lineno">  216 </span><span class="decl"><span class="istickedoff">survivalProbability a1 a2 a3 =</span>
-<span class="lineno">  217 </span><span class="spaces">  </span><span class="istickedoff">withGenTermStructure a1 $ \a1' -&gt; </span>
-<span class="lineno">  218 </span><span class="spaces">  </span><span class="istickedoff">withDay a2 $ \a2' -&gt; </span>
-<span class="lineno">  219 </span><span class="spaces">  </span><span class="istickedoff">let {a3' = C2HSImp.fromBool a3} in </span>
-<span class="lineno">  220 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a4' -&gt; </span>
-<span class="lineno">  221 </span><span class="spaces">  </span><span class="istickedoff">survivalProbability'_ a1' a2' a3' a4' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  222 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
-<span class="lineno">  223 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a4'&gt;&gt;</span>
-<span class="lineno">  224 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">  225 </span>
-<span class="lineno">  226 </span>
-<span class="lineno">  227 </span>
-<span class="lineno">  228 </span>-- |The same day-counting rule used by the term structure should be used for calculating the passed time t.
-<span class="lineno">  229 </span>defaultDensity' :: (DefaultProbabilityTermStructure) -&gt; (Double) -&gt; (Bool) -- ^extrapolate
-<span class="lineno">  230 </span> -&gt; IO ((Double))
-<span class="lineno">  231 </span><span class="decl"><span class="nottickedoff">defaultDensity' a1 a2 a3 =</span>
-<span class="lineno">  232 </span><span class="spaces">  </span><span class="nottickedoff">withGenTermStructure a1 $ \a1' -&gt; </span>
-<span class="lineno">  233 </span><span class="spaces">  </span><span class="nottickedoff">let {a2' = realToFrac a2} in </span>
-<span class="lineno">  234 </span><span class="spaces">  </span><span class="nottickedoff">let {a3' = C2HSImp.fromBool a3} in </span>
-<span class="lineno">  235 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a4' -&gt; </span>
-<span class="lineno">  236 </span><span class="spaces">  </span><span class="nottickedoff">defaultDensity''_ a1' a2' a3' a4' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  237 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = realToFrac res} in</span>
-<span class="lineno">  238 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a4'&gt;&gt;</span>
-<span class="lineno">  239 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
-<span class="lineno">  240 </span>
-<span class="lineno">  241 </span>
-<span class="lineno">  242 </span>
-<span class="lineno">  243 </span>-- |default density at a given date
-<span class="lineno">  244 </span>defaultDensity :: (DefaultProbabilityTermStructure) -&gt; (Day) -&gt; (Bool) -- ^extrapolate
-<span class="lineno">  245 </span> -&gt; IO ((Double))
-<span class="lineno">  246 </span><span class="decl"><span class="nottickedoff">defaultDensity a1 a2 a3 =</span>
-<span class="lineno">  247 </span><span class="spaces">  </span><span class="nottickedoff">withGenTermStructure a1 $ \a1' -&gt; </span>
-<span class="lineno">  248 </span><span class="spaces">  </span><span class="nottickedoff">withDay a2 $ \a2' -&gt; </span>
-<span class="lineno">  249 </span><span class="spaces">  </span><span class="nottickedoff">let {a3' = C2HSImp.fromBool a3} in </span>
-<span class="lineno">  250 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a4' -&gt; </span>
-<span class="lineno">  251 </span><span class="spaces">  </span><span class="nottickedoff">defaultDensity'_ a1' a2' a3' a4' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  252 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = realToFrac res} in</span>
-<span class="lineno">  253 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a4'&gt;&gt;</span>
-<span class="lineno">  254 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
-<span class="lineno">  255 </span>
-<span class="lineno">  256 </span>
-<span class="lineno">  257 </span>
-<span class="lineno">  258 </span>-- |The same day-counting rule used by the term structure should be used for calculating the passed time t.
-<span class="lineno">  259 </span>defaultProbability' :: (DefaultProbabilityTermStructure) -&gt; (Double) -&gt; (Bool) -- ^extrapolate
-<span class="lineno">  260 </span> -&gt; IO ((Double))
-<span class="lineno">  261 </span><span class="decl"><span class="nottickedoff">defaultProbability' a1 a2 a3 =</span>
-<span class="lineno">  262 </span><span class="spaces">  </span><span class="nottickedoff">withGenTermStructure a1 $ \a1' -&gt; </span>
-<span class="lineno">  263 </span><span class="spaces">  </span><span class="nottickedoff">let {a2' = realToFrac a2} in </span>
-<span class="lineno">  264 </span><span class="spaces">  </span><span class="nottickedoff">let {a3' = C2HSImp.fromBool a3} in </span>
-<span class="lineno">  265 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a4' -&gt; </span>
-<span class="lineno">  266 </span><span class="spaces">  </span><span class="nottickedoff">defaultProbability''_ a1' a2' a3' a4' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  267 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = realToFrac res} in</span>
-<span class="lineno">  268 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a4'&gt;&gt;</span>
-<span class="lineno">  269 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
-<span class="lineno">  270 </span>
-<span class="lineno">  271 </span>
-<span class="lineno">  272 </span>
-<span class="lineno">  273 </span>-- |probability of default between two given dates
-<span class="lineno">  274 </span>defaultProbabilityBetween :: (DefaultProbabilityTermStructure) -&gt; (Day) -&gt; (Day) -&gt; (Bool) -- ^extrapolate
-<span class="lineno">  275 </span> -&gt; IO ((Double))
-<span class="lineno">  276 </span><span class="decl"><span class="nottickedoff">defaultProbabilityBetween a1 a2 a3 a4 =</span>
-<span class="lineno">  277 </span><span class="spaces">  </span><span class="nottickedoff">withGenTermStructure a1 $ \a1' -&gt; </span>
-<span class="lineno">  278 </span><span class="spaces">  </span><span class="nottickedoff">withDay a2 $ \a2' -&gt; </span>
-<span class="lineno">  279 </span><span class="spaces">  </span><span class="nottickedoff">withDay a3 $ \a3' -&gt; </span>
-<span class="lineno">  280 </span><span class="spaces">  </span><span class="nottickedoff">let {a4' = C2HSImp.fromBool a4} in </span>
-<span class="lineno">  281 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a5' -&gt; </span>
-<span class="lineno">  282 </span><span class="spaces">  </span><span class="nottickedoff">defaultProbabilityBetween'_ a1' a2' a3' a4' a5' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  283 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = realToFrac res} in</span>
-<span class="lineno">  284 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a5'&gt;&gt;</span>
-<span class="lineno">  285 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
-<span class="lineno">  286 </span>
-<span class="lineno">  287 </span>
-<span class="lineno">  288 </span>
-<span class="lineno">  289 </span>-- |probability of default between two given times
-<span class="lineno">  290 </span>defaultProbabilityBetween' :: (DefaultProbabilityTermStructure) -&gt; (Double) -&gt; (Double) -&gt; (Bool) -- ^extrapolate
-<span class="lineno">  291 </span> -&gt; IO ((Double))
-<span class="lineno">  292 </span><span class="decl"><span class="nottickedoff">defaultProbabilityBetween' a1 a2 a3 a4 =</span>
-<span class="lineno">  293 </span><span class="spaces">  </span><span class="nottickedoff">withGenTermStructure a1 $ \a1' -&gt; </span>
-<span class="lineno">  294 </span><span class="spaces">  </span><span class="nottickedoff">let {a2' = realToFrac a2} in </span>
-<span class="lineno">  295 </span><span class="spaces">  </span><span class="nottickedoff">let {a3' = realToFrac a3} in </span>
-<span class="lineno">  296 </span><span class="spaces">  </span><span class="nottickedoff">let {a4' = C2HSImp.fromBool a4} in </span>
-<span class="lineno">  297 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a5' -&gt; </span>
-<span class="lineno">  298 </span><span class="spaces">  </span><span class="nottickedoff">defaultProbabilityBetween''_ a1' a2' a3' a4' a5' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  299 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = realToFrac res} in</span>
-<span class="lineno">  300 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a5'&gt;&gt;</span>
-<span class="lineno">  301 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
-<span class="lineno">  302 </span>
-<span class="lineno">  303 </span>
-<span class="lineno">  304 </span>
-<span class="lineno">  305 </span>-- |bootstrap helper for a CDS quoted by running spread
-<span class="lineno">  306 </span>spreadCdsHelper :: (GenQuote q) -- ^runningSpread
-<span class="lineno">  307 </span> -&gt; ((Word,TimeUnit)) -- ^tenor
-<span class="lineno">  308 </span> -&gt; (Int) -- ^settlementDays
-<span class="lineno">  309 </span> -&gt; (Calendar) -&gt; (Frequency) -&gt; (BusinessDayConvention) -&gt; (DateGenerationRule) -&gt; (DayCounter) -&gt; (Double) -- recoveryRate
-<span class="lineno">  310 </span> -&gt; (GenYieldTermStructure y) -- ^discountCurve
-<span class="lineno">  311 </span> -&gt; (Bool) -- ^settlesAccrual
-<span class="lineno">  312 </span> -&gt; (Bool) -- ^paysAtDefaultTime
-<span class="lineno">  313 </span> -&gt; (Maybe Day) -- ^startDate
-<span class="lineno">  314 </span> -&gt; (DayCounter) -- ^lastPeriodDayCounter
-<span class="lineno">  315 </span> -&gt; (Bool) -- ^rebatesAccrual
-<span class="lineno">  316 </span> -&gt; (PricingModel) -- ^model
-<span class="lineno">  317 </span> -&gt; IO ((DefaultProbabilityHelper))
-<span class="lineno">  318 </span><span class="decl"><span class="istickedoff">spreadCdsHelper a1 a2 a3 a4 a5 a6 a7 a8 a9 a10 a11 a12 a13 a14 a15 a16 =</span>
-<span class="lineno">  319 </span><span class="spaces">  </span><span class="istickedoff">withQuote a1 $ \a1' -&gt; </span>
-<span class="lineno">  320 </span><span class="spaces">  </span><span class="istickedoff">let {(a2'1, a2'2) = fromEnumQuantity a2} in </span>
-<span class="lineno">  321 </span><span class="spaces">  </span><span class="istickedoff">let {a3' = fromIntegral a3} in </span>
-<span class="lineno">  322 </span><span class="spaces">  </span><span class="istickedoff">withCalendar a4 $ \a4' -&gt; </span>
-<span class="lineno">  323 </span><span class="spaces">  </span><span class="istickedoff">let {a5' = (fromIntegral . fromEnum) a5} in </span>
-<span class="lineno">  324 </span><span class="spaces">  </span><span class="istickedoff">let {a6' = fromEnumC a6} in </span>
-<span class="lineno">  325 </span><span class="spaces">  </span><span class="istickedoff">let {a7' = (fromIntegral . fromEnum) a7} in </span>
-<span class="lineno">  326 </span><span class="spaces">  </span><span class="istickedoff">withDayCounter a8 $ \a8' -&gt; </span>
-<span class="lineno">  327 </span><span class="spaces">  </span><span class="istickedoff">let {a9' = realToFrac a9} in </span>
-<span class="lineno">  328 </span><span class="spaces">  </span><span class="istickedoff">withYieldTermStructure a10 $ \a10' -&gt; </span>
-<span class="lineno">  329 </span><span class="spaces">  </span><span class="istickedoff">let {a11' = C2HSImp.fromBool a11} in </span>
-<span class="lineno">  330 </span><span class="spaces">  </span><span class="istickedoff">let {a12' = C2HSImp.fromBool a12} in </span>
-<span class="lineno">  331 </span><span class="spaces">  </span><span class="istickedoff">withMaybeDay a13 $ \a13' -&gt; </span>
-<span class="lineno">  332 </span><span class="spaces">  </span><span class="istickedoff">withDayCounter a14 $ \a14' -&gt; </span>
-<span class="lineno">  333 </span><span class="spaces">  </span><span class="istickedoff">let {a15' = C2HSImp.fromBool a15} in </span>
-<span class="lineno">  334 </span><span class="spaces">  </span><span class="istickedoff">let {a16' = (fromIntegral . fromEnum) a16} in </span>
-<span class="lineno">  335 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a17' -&gt; </span>
-<span class="lineno">  336 </span><span class="spaces">  </span><span class="istickedoff">spreadCdsHelper'_ a1' a2'1  a2'2 a3' a4' a5' a6' a7' a8' a9' a10' a11' a12' a13' a14' a15' a16' a17' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  337 </span><span class="spaces">  </span><span class="istickedoff">peekDefaultProbabilityHelper res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">  338 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a17'&gt;&gt;</span>
-<span class="lineno">  339 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">  340 </span>
-<span class="lineno">  341 </span>
-<span class="lineno">  342 </span>
-<span class="lineno">  343 </span>-- |the upfront must be quoted in fractional units.
-<span class="lineno">  344 </span>upfrontCdsHelper :: (GenQuote q) -- ^upfront
-<span class="lineno">  345 </span> -&gt; (Double) -- ^runningSpread
-<span class="lineno">  346 </span> -&gt; ((Word,TimeUnit)) -- ^tenor
-<span class="lineno">  347 </span> -&gt; (Int) -- ^settlementDays
-<span class="lineno">  348 </span> -&gt; (Calendar) -&gt; (Frequency) -&gt; (BusinessDayConvention) -&gt; (DateGenerationRule) -&gt; (DayCounter) -&gt; (Double) -- ^recoveryDate
-<span class="lineno">  349 </span> -&gt; (GenYieldTermStructure y) -- ^discountCurve
-<span class="lineno">  350 </span> -&gt; (Word) -- ^upfrontSettlementDays
-<span class="lineno">  351 </span> -&gt; (Bool) -- &amp;settlesAccrual
-<span class="lineno">  352 </span> -&gt; (Bool) -- ^paysAtDefaultTime
-<span class="lineno">  353 </span> -&gt; (Maybe Day) -- ^startDate
-<span class="lineno">  354 </span> -&gt; (DayCounter) -- ^lastPeriodDayCounter
-<span class="lineno">  355 </span> -&gt; (Bool) -- ^rebatesAccrual
-<span class="lineno">  356 </span> -&gt; (PricingModel) -- ^model
-<span class="lineno">  357 </span> -&gt; IO ((DefaultProbabilityHelper))
-<span class="lineno">  358 </span><span class="decl"><span class="nottickedoff">upfrontCdsHelper a1 a2 a3 a4 a5 a6 a7 a8 a9 a10 a11 a12 a13 a14 a15 a16 a17 a18 =</span>
-<span class="lineno">  359 </span><span class="spaces">  </span><span class="nottickedoff">withQuote a1 $ \a1' -&gt; </span>
-<span class="lineno">  360 </span><span class="spaces">  </span><span class="nottickedoff">let {a2' = realToFrac a2} in </span>
-<span class="lineno">  361 </span><span class="spaces">  </span><span class="nottickedoff">let {(a3'1, a3'2) = fromEnumQuantity a3} in </span>
-<span class="lineno">  362 </span><span class="spaces">  </span><span class="nottickedoff">let {a4' = fromIntegral a4} in </span>
-<span class="lineno">  363 </span><span class="spaces">  </span><span class="nottickedoff">withCalendar a5 $ \a5' -&gt; </span>
-<span class="lineno">  364 </span><span class="spaces">  </span><span class="nottickedoff">let {a6' = (fromIntegral . fromEnum) a6} in </span>
-<span class="lineno">  365 </span><span class="spaces">  </span><span class="nottickedoff">let {a7' = fromEnumC a7} in </span>
-<span class="lineno">  366 </span><span class="spaces">  </span><span class="nottickedoff">let {a8' = (fromIntegral . fromEnum) a8} in </span>
-<span class="lineno">  367 </span><span class="spaces">  </span><span class="nottickedoff">withDayCounter a9 $ \a9' -&gt; </span>
-<span class="lineno">  368 </span><span class="spaces">  </span><span class="nottickedoff">let {a10' = realToFrac a10} in </span>
-<span class="lineno">  369 </span><span class="spaces">  </span><span class="nottickedoff">withYieldTermStructure a11 $ \a11' -&gt; </span>
-<span class="lineno">  370 </span><span class="spaces">  </span><span class="nottickedoff">let {a12' = fromIntegral a12} in </span>
-<span class="lineno">  371 </span><span class="spaces">  </span><span class="nottickedoff">let {a13' = C2HSImp.fromBool a13} in </span>
-<span class="lineno">  372 </span><span class="spaces">  </span><span class="nottickedoff">let {a14' = C2HSImp.fromBool a14} in </span>
-<span class="lineno">  373 </span><span class="spaces">  </span><span class="nottickedoff">withMaybeDay a15 $ \a15' -&gt; </span>
-<span class="lineno">  374 </span><span class="spaces">  </span><span class="nottickedoff">withDayCounter a16 $ \a16' -&gt; </span>
-<span class="lineno">  375 </span><span class="spaces">  </span><span class="nottickedoff">let {a17' = C2HSImp.fromBool a17} in </span>
-<span class="lineno">  376 </span><span class="spaces">  </span><span class="nottickedoff">let {a18' = (fromIntegral . fromEnum) a18} in </span>
-<span class="lineno">  377 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a19' -&gt; </span>
-<span class="lineno">  378 </span><span class="spaces">  </span><span class="nottickedoff">upfrontCdsHelper'_ a1' a2' a3'1  a3'2 a4' a5' a6' a7' a8' a9' a10' a11' a12' a13' a14' a15' a16' a17' a18' a19' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  379 </span><span class="spaces">  </span><span class="nottickedoff">peekDefaultProbabilityHelper res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">  380 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a19'&gt;&gt;</span>
-<span class="lineno">  381 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
-<span class="lineno">  382 </span>
-<span class="lineno">  383 </span>
-<span class="lineno">  384 </span>
-<span class="lineno">  385 </span>interpolatedDefaultDensityCurve :: NonEmpty (Day, Double) -&gt; DayCounter -&gt; Calendar -&gt; [(Day, GenQuote q)] -- ^jumps
-<span class="lineno">  386 </span>  -&gt; Interpolation -&gt; IO DefaultProbabilityTermStructure
-<span class="lineno">  387 </span><span class="decl"><span class="nottickedoff">interpolatedDefaultDensityCurve d dc c q i = uncurryNested (qlInterpolatedDefaultDensityCurve dd dq dc c qq qd) (qlInterpolation i) where {(qd, qq) = unzip q; (dd, dq) = unzip (toList d)}</span></span>
+<span class="lineno">   98 </span>
+<span class="lineno">   99 </span>
+<span class="lineno">  100 </span>
+<span class="lineno">  101 </span>
+<span class="lineno">  102 </span>
+<span class="lineno">  103 </span>-- |a curve whose hazard rate is another curve's, scaled by a spread factor
+<span class="lineno">  104 </span>factorSpreadedHazardRateCurve :: (DefaultProbabilityTermStructure) -&gt; (GenQuote q) -&gt; IO ((DefaultProbabilityTermStructure))
+<span class="lineno">  105 </span><span class="decl"><span class="nottickedoff">factorSpreadedHazardRateCurve a1 a2 =</span>
+<span class="lineno">  106 </span><span class="spaces">  </span><span class="nottickedoff">withGenTermStructure a1 $ \a1' -&gt; </span>
+<span class="lineno">  107 </span><span class="spaces">  </span><span class="nottickedoff">withQuote a2 $ \a2' -&gt; </span>
+<span class="lineno">  108 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a3' -&gt; </span>
+<span class="lineno">  109 </span><span class="spaces">  </span><span class="nottickedoff">factorSpreadedHazardRateCurve'_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  110 </span><span class="spaces">  </span><span class="nottickedoff">peekDefaultProbabilityTermStructure res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  111 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a3'&gt;&gt;</span>
+<span class="lineno">  112 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno">  113 </span>
+<span class="lineno">  114 </span>
+<span class="lineno">  115 </span>
+<span class="lineno">  116 </span>-- |flat hazard-rate curve anchored at a settlement date
+<span class="lineno">  117 </span>flatHazardRate' :: (Word) -&gt; (Calendar) -&gt; (GenQuote q) -&gt; (DayCounter) -&gt; IO ((DefaultProbabilityTermStructure))
+<span class="lineno">  118 </span><span class="decl"><span class="istickedoff">flatHazardRate' a1 a2 a3 a4 =</span>
+<span class="lineno">  119 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = fromIntegral a1} in </span>
+<span class="lineno">  120 </span><span class="spaces">  </span><span class="istickedoff">withCalendar a2 $ \a2' -&gt; </span>
+<span class="lineno">  121 </span><span class="spaces">  </span><span class="istickedoff">withQuote a3 $ \a3' -&gt; </span>
+<span class="lineno">  122 </span><span class="spaces">  </span><span class="istickedoff">withDayCounter a4 $ \a4' -&gt; </span>
+<span class="lineno">  123 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a5' -&gt; </span>
+<span class="lineno">  124 </span><span class="spaces">  </span><span class="istickedoff">flatHazardRate''_ a1' a2' a3' a4' a5' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  125 </span><span class="spaces">  </span><span class="istickedoff">peekDefaultProbabilityTermStructure res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  126 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a5'&gt;&gt;</span>
+<span class="lineno">  127 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  128 </span>
+<span class="lineno">  129 </span>
+<span class="lineno">  130 </span>
+<span class="lineno">  131 </span>-- |flat hazard-rate curve anchored at a reference date
+<span class="lineno">  132 </span>flatHazardRate :: (Day) -&gt; (GenQuote q) -&gt; (DayCounter) -&gt; IO ((DefaultProbabilityTermStructure))
+<span class="lineno">  133 </span><span class="decl"><span class="istickedoff">flatHazardRate a1 a2 a3 =</span>
+<span class="lineno">  134 </span><span class="spaces">  </span><span class="istickedoff">withDay a1 $ \a1' -&gt; </span>
+<span class="lineno">  135 </span><span class="spaces">  </span><span class="istickedoff">withQuote a2 $ \a2' -&gt; </span>
+<span class="lineno">  136 </span><span class="spaces">  </span><span class="istickedoff">withDayCounter a3 $ \a3' -&gt; </span>
+<span class="lineno">  137 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a4' -&gt; </span>
+<span class="lineno">  138 </span><span class="spaces">  </span><span class="istickedoff">flatHazardRate'_ a1' a2' a3' a4' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  139 </span><span class="spaces">  </span><span class="istickedoff">peekDefaultProbabilityTermStructure res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  140 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a4'&gt;&gt;</span>
+<span class="lineno">  141 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  142 </span>
+<span class="lineno">  143 </span>
+<span class="lineno">  144 </span>
+<span class="lineno">  145 </span>-- |a curve whose survival probability is another curve's, multiplied by a spread factor
+<span class="lineno">  146 </span>spreadedHazardRateCurve :: (DefaultProbabilityTermStructure) -&gt; (GenQuote q) -&gt; IO ((DefaultProbabilityTermStructure))
+<span class="lineno">  147 </span><span class="decl"><span class="nottickedoff">spreadedHazardRateCurve a1 a2 =</span>
+<span class="lineno">  148 </span><span class="spaces">  </span><span class="nottickedoff">withGenTermStructure a1 $ \a1' -&gt; </span>
+<span class="lineno">  149 </span><span class="spaces">  </span><span class="nottickedoff">withQuote a2 $ \a2' -&gt; </span>
+<span class="lineno">  150 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a3' -&gt; </span>
+<span class="lineno">  151 </span><span class="spaces">  </span><span class="nottickedoff">spreadedHazardRateCurve'_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  152 </span><span class="spaces">  </span><span class="nottickedoff">peekDefaultProbabilityTermStructure res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  153 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a3'&gt;&gt;</span>
+<span class="lineno">  154 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno">  155 </span>
+<span class="lineno">  156 </span>
+<span class="lineno">  157 </span>
+<span class="lineno">  158 </span>-- |default probability from the reference date until a given date
+<span class="lineno">  159 </span>defaultProbability :: (DefaultProbabilityTermStructure) -&gt; (Day) -&gt; (Bool) -- ^extrapolate
+<span class="lineno">  160 </span> -&gt; IO ((Double))
+<span class="lineno">  161 </span><span class="decl"><span class="nottickedoff">defaultProbability a1 a2 a3 =</span>
+<span class="lineno">  162 </span><span class="spaces">  </span><span class="nottickedoff">withGenTermStructure a1 $ \a1' -&gt; </span>
+<span class="lineno">  163 </span><span class="spaces">  </span><span class="nottickedoff">withDay a2 $ \a2' -&gt; </span>
+<span class="lineno">  164 </span><span class="spaces">  </span><span class="nottickedoff">let {a3' = C2HSImp.fromBool a3} in </span>
+<span class="lineno">  165 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a4' -&gt; </span>
+<span class="lineno">  166 </span><span class="spaces">  </span><span class="nottickedoff">defaultProbability'_ a1' a2' a3' a4' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  167 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno">  168 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a4'&gt;&gt;</span>
+<span class="lineno">  169 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno">  170 </span>
+<span class="lineno">  171 </span>
+<span class="lineno">  172 </span>
+<span class="lineno">  173 </span>-- |hazard rate at a given time, with annual frequency and continuous compounding
+<span class="lineno">  174 </span>hazardRate' :: (DefaultProbabilityTermStructure) -&gt; (Double) -&gt; (Bool) -- ^extrapolate
+<span class="lineno">  175 </span> -&gt; IO ((Double))
+<span class="lineno">  176 </span><span class="decl"><span class="nottickedoff">hazardRate' a1 a2 a3 =</span>
+<span class="lineno">  177 </span><span class="spaces">  </span><span class="nottickedoff">withGenTermStructure a1 $ \a1' -&gt; </span>
+<span class="lineno">  178 </span><span class="spaces">  </span><span class="nottickedoff">let {a2' = realToFrac a2} in </span>
+<span class="lineno">  179 </span><span class="spaces">  </span><span class="nottickedoff">let {a3' = C2HSImp.fromBool a3} in </span>
+<span class="lineno">  180 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a4' -&gt; </span>
+<span class="lineno">  181 </span><span class="spaces">  </span><span class="nottickedoff">hazardRate''_ a1' a2' a3' a4' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  182 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno">  183 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a4'&gt;&gt;</span>
+<span class="lineno">  184 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno">  185 </span>
+<span class="lineno">  186 </span>
+<span class="lineno">  187 </span>
+<span class="lineno">  188 </span>-- |hazard rate at a given date, with annual frequency and continuous compounding
+<span class="lineno">  189 </span>hazardRate :: (DefaultProbabilityTermStructure) -&gt; (Day) -&gt; (Bool) -- ^extrapolate
+<span class="lineno">  190 </span> -&gt; IO ((Double))
+<span class="lineno">  191 </span><span class="decl"><span class="istickedoff">hazardRate a1 a2 a3 =</span>
+<span class="lineno">  192 </span><span class="spaces">  </span><span class="istickedoff">withGenTermStructure a1 $ \a1' -&gt; </span>
+<span class="lineno">  193 </span><span class="spaces">  </span><span class="istickedoff">withDay a2 $ \a2' -&gt; </span>
+<span class="lineno">  194 </span><span class="spaces">  </span><span class="istickedoff">let {a3' = C2HSImp.fromBool a3} in </span>
+<span class="lineno">  195 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a4' -&gt; </span>
+<span class="lineno">  196 </span><span class="spaces">  </span><span class="istickedoff">hazardRate'_ a1' a2' a3' a4' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  197 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno">  198 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a4'&gt;&gt;</span>
+<span class="lineno">  199 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  200 </span>
+<span class="lineno">  201 </span>
+<span class="lineno">  202 </span>
+<span class="lineno">  203 </span>-- |The same day-counting rule used by the term structure should be used for calculating the passed time t.
+<span class="lineno">  204 </span>survivalProbability' :: (DefaultProbabilityTermStructure) -&gt; (Double) -&gt; (Bool) -- ^extrapolate
+<span class="lineno">  205 </span> -&gt; IO ((Double))
+<span class="lineno">  206 </span><span class="decl"><span class="nottickedoff">survivalProbability' a1 a2 a3 =</span>
+<span class="lineno">  207 </span><span class="spaces">  </span><span class="nottickedoff">withGenTermStructure a1 $ \a1' -&gt; </span>
+<span class="lineno">  208 </span><span class="spaces">  </span><span class="nottickedoff">let {a2' = realToFrac a2} in </span>
+<span class="lineno">  209 </span><span class="spaces">  </span><span class="nottickedoff">let {a3' = C2HSImp.fromBool a3} in </span>
+<span class="lineno">  210 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a4' -&gt; </span>
+<span class="lineno">  211 </span><span class="spaces">  </span><span class="nottickedoff">survivalProbability''_ a1' a2' a3' a4' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  212 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno">  213 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a4'&gt;&gt;</span>
+<span class="lineno">  214 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno">  215 </span>
+<span class="lineno">  216 </span>
+<span class="lineno">  217 </span>
+<span class="lineno">  218 </span>-- |survival probability from the reference date until a given date
+<span class="lineno">  219 </span>survivalProbability :: (DefaultProbabilityTermStructure) -&gt; (Day) -&gt; (Bool) -- ^extrapolate
+<span class="lineno">  220 </span> -&gt; IO ((Double))
+<span class="lineno">  221 </span><span class="decl"><span class="istickedoff">survivalProbability a1 a2 a3 =</span>
+<span class="lineno">  222 </span><span class="spaces">  </span><span class="istickedoff">withGenTermStructure a1 $ \a1' -&gt; </span>
+<span class="lineno">  223 </span><span class="spaces">  </span><span class="istickedoff">withDay a2 $ \a2' -&gt; </span>
+<span class="lineno">  224 </span><span class="spaces">  </span><span class="istickedoff">let {a3' = C2HSImp.fromBool a3} in </span>
+<span class="lineno">  225 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a4' -&gt; </span>
+<span class="lineno">  226 </span><span class="spaces">  </span><span class="istickedoff">survivalProbability'_ a1' a2' a3' a4' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  227 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno">  228 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a4'&gt;&gt;</span>
+<span class="lineno">  229 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  230 </span>
+<span class="lineno">  231 </span>
+<span class="lineno">  232 </span>
+<span class="lineno">  233 </span>-- |The same day-counting rule used by the term structure should be used for calculating the passed time t.
+<span class="lineno">  234 </span>defaultDensity' :: (DefaultProbabilityTermStructure) -&gt; (Double) -&gt; (Bool) -- ^extrapolate
+<span class="lineno">  235 </span> -&gt; IO ((Double))
+<span class="lineno">  236 </span><span class="decl"><span class="nottickedoff">defaultDensity' a1 a2 a3 =</span>
+<span class="lineno">  237 </span><span class="spaces">  </span><span class="nottickedoff">withGenTermStructure a1 $ \a1' -&gt; </span>
+<span class="lineno">  238 </span><span class="spaces">  </span><span class="nottickedoff">let {a2' = realToFrac a2} in </span>
+<span class="lineno">  239 </span><span class="spaces">  </span><span class="nottickedoff">let {a3' = C2HSImp.fromBool a3} in </span>
+<span class="lineno">  240 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a4' -&gt; </span>
+<span class="lineno">  241 </span><span class="spaces">  </span><span class="nottickedoff">defaultDensity''_ a1' a2' a3' a4' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  242 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno">  243 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a4'&gt;&gt;</span>
+<span class="lineno">  244 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno">  245 </span>
+<span class="lineno">  246 </span>
+<span class="lineno">  247 </span>
+<span class="lineno">  248 </span>-- |default density at a given date
+<span class="lineno">  249 </span>defaultDensity :: (DefaultProbabilityTermStructure) -&gt; (Day) -&gt; (Bool) -- ^extrapolate
+<span class="lineno">  250 </span> -&gt; IO ((Double))
+<span class="lineno">  251 </span><span class="decl"><span class="istickedoff">defaultDensity a1 a2 a3 =</span>
+<span class="lineno">  252 </span><span class="spaces">  </span><span class="istickedoff">withGenTermStructure a1 $ \a1' -&gt; </span>
+<span class="lineno">  253 </span><span class="spaces">  </span><span class="istickedoff">withDay a2 $ \a2' -&gt; </span>
+<span class="lineno">  254 </span><span class="spaces">  </span><span class="istickedoff">let {a3' = C2HSImp.fromBool a3} in </span>
+<span class="lineno">  255 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a4' -&gt; </span>
+<span class="lineno">  256 </span><span class="spaces">  </span><span class="istickedoff">defaultDensity'_ a1' a2' a3' a4' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  257 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno">  258 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a4'&gt;&gt;</span>
+<span class="lineno">  259 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  260 </span>
+<span class="lineno">  261 </span>
+<span class="lineno">  262 </span>
+<span class="lineno">  263 </span>-- |The same day-counting rule used by the term structure should be used for calculating the passed time t.
+<span class="lineno">  264 </span>defaultProbability' :: (DefaultProbabilityTermStructure) -&gt; (Double) -&gt; (Bool) -- ^extrapolate
+<span class="lineno">  265 </span> -&gt; IO ((Double))
+<span class="lineno">  266 </span><span class="decl"><span class="nottickedoff">defaultProbability' a1 a2 a3 =</span>
+<span class="lineno">  267 </span><span class="spaces">  </span><span class="nottickedoff">withGenTermStructure a1 $ \a1' -&gt; </span>
+<span class="lineno">  268 </span><span class="spaces">  </span><span class="nottickedoff">let {a2' = realToFrac a2} in </span>
+<span class="lineno">  269 </span><span class="spaces">  </span><span class="nottickedoff">let {a3' = C2HSImp.fromBool a3} in </span>
+<span class="lineno">  270 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a4' -&gt; </span>
+<span class="lineno">  271 </span><span class="spaces">  </span><span class="nottickedoff">defaultProbability''_ a1' a2' a3' a4' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  272 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno">  273 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a4'&gt;&gt;</span>
+<span class="lineno">  274 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno">  275 </span>
+<span class="lineno">  276 </span>
+<span class="lineno">  277 </span>
+<span class="lineno">  278 </span>-- |probability of default between two given dates
+<span class="lineno">  279 </span>defaultProbabilityBetween :: (DefaultProbabilityTermStructure) -&gt; (Day) -&gt; (Day) -&gt; (Bool) -- ^extrapolate
+<span class="lineno">  280 </span> -&gt; IO ((Double))
+<span class="lineno">  281 </span><span class="decl"><span class="nottickedoff">defaultProbabilityBetween a1 a2 a3 a4 =</span>
+<span class="lineno">  282 </span><span class="spaces">  </span><span class="nottickedoff">withGenTermStructure a1 $ \a1' -&gt; </span>
+<span class="lineno">  283 </span><span class="spaces">  </span><span class="nottickedoff">withDay a2 $ \a2' -&gt; </span>
+<span class="lineno">  284 </span><span class="spaces">  </span><span class="nottickedoff">withDay a3 $ \a3' -&gt; </span>
+<span class="lineno">  285 </span><span class="spaces">  </span><span class="nottickedoff">let {a4' = C2HSImp.fromBool a4} in </span>
+<span class="lineno">  286 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a5' -&gt; </span>
+<span class="lineno">  287 </span><span class="spaces">  </span><span class="nottickedoff">defaultProbabilityBetween'_ a1' a2' a3' a4' a5' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  288 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno">  289 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a5'&gt;&gt;</span>
+<span class="lineno">  290 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno">  291 </span>
+<span class="lineno">  292 </span>
+<span class="lineno">  293 </span>
+<span class="lineno">  294 </span>-- |probability of default between two given times
+<span class="lineno">  295 </span>defaultProbabilityBetween' :: (DefaultProbabilityTermStructure) -&gt; (Double) -&gt; (Double) -&gt; (Bool) -- ^extrapolate
+<span class="lineno">  296 </span> -&gt; IO ((Double))
+<span class="lineno">  297 </span><span class="decl"><span class="nottickedoff">defaultProbabilityBetween' a1 a2 a3 a4 =</span>
+<span class="lineno">  298 </span><span class="spaces">  </span><span class="nottickedoff">withGenTermStructure a1 $ \a1' -&gt; </span>
+<span class="lineno">  299 </span><span class="spaces">  </span><span class="nottickedoff">let {a2' = realToFrac a2} in </span>
+<span class="lineno">  300 </span><span class="spaces">  </span><span class="nottickedoff">let {a3' = realToFrac a3} in </span>
+<span class="lineno">  301 </span><span class="spaces">  </span><span class="nottickedoff">let {a4' = C2HSImp.fromBool a4} in </span>
+<span class="lineno">  302 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a5' -&gt; </span>
+<span class="lineno">  303 </span><span class="spaces">  </span><span class="nottickedoff">defaultProbabilityBetween''_ a1' a2' a3' a4' a5' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  304 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno">  305 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a5'&gt;&gt;</span>
+<span class="lineno">  306 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno">  307 </span>
+<span class="lineno">  308 </span>
+<span class="lineno">  309 </span>
+<span class="lineno">  310 </span>-- |bootstrap helper for a CDS quoted by running spread
+<span class="lineno">  311 </span>spreadCdsHelper :: (GenQuote q) -- ^runningSpread
+<span class="lineno">  312 </span> -&gt; ((Word,TimeUnit)) -- ^tenor
+<span class="lineno">  313 </span> -&gt; (Int) -- ^settlementDays
+<span class="lineno">  314 </span> -&gt; (Calendar) -&gt; (Frequency) -&gt; (BusinessDayConvention) -&gt; (DateGenerationRule) -&gt; (DayCounter) -&gt; (Double) -- recoveryRate
+<span class="lineno">  315 </span> -&gt; (GenYieldTermStructure y) -- ^discountCurve
+<span class="lineno">  316 </span> -&gt; (Bool) -- ^settlesAccrual
+<span class="lineno">  317 </span> -&gt; (Bool) -- ^paysAtDefaultTime
+<span class="lineno">  318 </span> -&gt; (Maybe Day) -- ^startDate
+<span class="lineno">  319 </span> -&gt; (DayCounter) -- ^lastPeriodDayCounter
+<span class="lineno">  320 </span> -&gt; (Bool) -- ^rebatesAccrual
+<span class="lineno">  321 </span> -&gt; (PricingModel) -- ^model
+<span class="lineno">  322 </span> -&gt; IO ((DefaultProbabilityHelper))
+<span class="lineno">  323 </span><span class="decl"><span class="istickedoff">spreadCdsHelper a1 a2 a3 a4 a5 a6 a7 a8 a9 a10 a11 a12 a13 a14 a15 a16 =</span>
+<span class="lineno">  324 </span><span class="spaces">  </span><span class="istickedoff">withQuote a1 $ \a1' -&gt; </span>
+<span class="lineno">  325 </span><span class="spaces">  </span><span class="istickedoff">let {(a2'1, a2'2) = fromEnumQuantity a2} in </span>
+<span class="lineno">  326 </span><span class="spaces">  </span><span class="istickedoff">let {a3' = fromIntegral a3} in </span>
+<span class="lineno">  327 </span><span class="spaces">  </span><span class="istickedoff">withCalendar a4 $ \a4' -&gt; </span>
+<span class="lineno">  328 </span><span class="spaces">  </span><span class="istickedoff">let {a5' = (fromIntegral . fromEnum) a5} in </span>
+<span class="lineno">  329 </span><span class="spaces">  </span><span class="istickedoff">let {a6' = fromEnumC a6} in </span>
+<span class="lineno">  330 </span><span class="spaces">  </span><span class="istickedoff">let {a7' = (fromIntegral . fromEnum) a7} in </span>
+<span class="lineno">  331 </span><span class="spaces">  </span><span class="istickedoff">withDayCounter a8 $ \a8' -&gt; </span>
+<span class="lineno">  332 </span><span class="spaces">  </span><span class="istickedoff">let {a9' = realToFrac a9} in </span>
+<span class="lineno">  333 </span><span class="spaces">  </span><span class="istickedoff">withYieldTermStructure a10 $ \a10' -&gt; </span>
+<span class="lineno">  334 </span><span class="spaces">  </span><span class="istickedoff">let {a11' = C2HSImp.fromBool a11} in </span>
+<span class="lineno">  335 </span><span class="spaces">  </span><span class="istickedoff">let {a12' = C2HSImp.fromBool a12} in </span>
+<span class="lineno">  336 </span><span class="spaces">  </span><span class="istickedoff">withMaybeDay a13 $ \a13' -&gt; </span>
+<span class="lineno">  337 </span><span class="spaces">  </span><span class="istickedoff">withDayCounter a14 $ \a14' -&gt; </span>
+<span class="lineno">  338 </span><span class="spaces">  </span><span class="istickedoff">let {a15' = C2HSImp.fromBool a15} in </span>
+<span class="lineno">  339 </span><span class="spaces">  </span><span class="istickedoff">let {a16' = (fromIntegral . fromEnum) a16} in </span>
+<span class="lineno">  340 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a17' -&gt; </span>
+<span class="lineno">  341 </span><span class="spaces">  </span><span class="istickedoff">spreadCdsHelper'_ a1' a2'1  a2'2 a3' a4' a5' a6' a7' a8' a9' a10' a11' a12' a13' a14' a15' a16' a17' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  342 </span><span class="spaces">  </span><span class="istickedoff">peekDefaultProbabilityHelper res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  343 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a17'&gt;&gt;</span>
+<span class="lineno">  344 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  345 </span>
+<span class="lineno">  346 </span>
+<span class="lineno">  347 </span>
+<span class="lineno">  348 </span>-- |the upfront must be quoted in fractional units.
+<span class="lineno">  349 </span>upfrontCdsHelper :: (GenQuote q) -- ^upfront
+<span class="lineno">  350 </span> -&gt; (Double) -- ^runningSpread
+<span class="lineno">  351 </span> -&gt; ((Word,TimeUnit)) -- ^tenor
+<span class="lineno">  352 </span> -&gt; (Int) -- ^settlementDays
+<span class="lineno">  353 </span> -&gt; (Calendar) -&gt; (Frequency) -&gt; (BusinessDayConvention) -&gt; (DateGenerationRule) -&gt; (DayCounter) -&gt; (Double) -- ^recoveryDate
+<span class="lineno">  354 </span> -&gt; (GenYieldTermStructure y) -- ^discountCurve
+<span class="lineno">  355 </span> -&gt; (Word) -- ^upfrontSettlementDays
+<span class="lineno">  356 </span> -&gt; (Bool) -- &amp;settlesAccrual
+<span class="lineno">  357 </span> -&gt; (Bool) -- ^paysAtDefaultTime
+<span class="lineno">  358 </span> -&gt; (Maybe Day) -- ^startDate
+<span class="lineno">  359 </span> -&gt; (DayCounter) -- ^lastPeriodDayCounter
+<span class="lineno">  360 </span> -&gt; (Bool) -- ^rebatesAccrual
+<span class="lineno">  361 </span> -&gt; (PricingModel) -- ^model
+<span class="lineno">  362 </span> -&gt; IO ((DefaultProbabilityHelper))
+<span class="lineno">  363 </span><span class="decl"><span class="nottickedoff">upfrontCdsHelper a1 a2 a3 a4 a5 a6 a7 a8 a9 a10 a11 a12 a13 a14 a15 a16 a17 a18 =</span>
+<span class="lineno">  364 </span><span class="spaces">  </span><span class="nottickedoff">withQuote a1 $ \a1' -&gt; </span>
+<span class="lineno">  365 </span><span class="spaces">  </span><span class="nottickedoff">let {a2' = realToFrac a2} in </span>
+<span class="lineno">  366 </span><span class="spaces">  </span><span class="nottickedoff">let {(a3'1, a3'2) = fromEnumQuantity a3} in </span>
+<span class="lineno">  367 </span><span class="spaces">  </span><span class="nottickedoff">let {a4' = fromIntegral a4} in </span>
+<span class="lineno">  368 </span><span class="spaces">  </span><span class="nottickedoff">withCalendar a5 $ \a5' -&gt; </span>
+<span class="lineno">  369 </span><span class="spaces">  </span><span class="nottickedoff">let {a6' = (fromIntegral . fromEnum) a6} in </span>
+<span class="lineno">  370 </span><span class="spaces">  </span><span class="nottickedoff">let {a7' = fromEnumC a7} in </span>
+<span class="lineno">  371 </span><span class="spaces">  </span><span class="nottickedoff">let {a8' = (fromIntegral . fromEnum) a8} in </span>
+<span class="lineno">  372 </span><span class="spaces">  </span><span class="nottickedoff">withDayCounter a9 $ \a9' -&gt; </span>
+<span class="lineno">  373 </span><span class="spaces">  </span><span class="nottickedoff">let {a10' = realToFrac a10} in </span>
+<span class="lineno">  374 </span><span class="spaces">  </span><span class="nottickedoff">withYieldTermStructure a11 $ \a11' -&gt; </span>
+<span class="lineno">  375 </span><span class="spaces">  </span><span class="nottickedoff">let {a12' = fromIntegral a12} in </span>
+<span class="lineno">  376 </span><span class="spaces">  </span><span class="nottickedoff">let {a13' = C2HSImp.fromBool a13} in </span>
+<span class="lineno">  377 </span><span class="spaces">  </span><span class="nottickedoff">let {a14' = C2HSImp.fromBool a14} in </span>
+<span class="lineno">  378 </span><span class="spaces">  </span><span class="nottickedoff">withMaybeDay a15 $ \a15' -&gt; </span>
+<span class="lineno">  379 </span><span class="spaces">  </span><span class="nottickedoff">withDayCounter a16 $ \a16' -&gt; </span>
+<span class="lineno">  380 </span><span class="spaces">  </span><span class="nottickedoff">let {a17' = C2HSImp.fromBool a17} in </span>
+<span class="lineno">  381 </span><span class="spaces">  </span><span class="nottickedoff">let {a18' = (fromIntegral . fromEnum) a18} in </span>
+<span class="lineno">  382 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a19' -&gt; </span>
+<span class="lineno">  383 </span><span class="spaces">  </span><span class="nottickedoff">upfrontCdsHelper'_ a1' a2' a3'1  a3'2 a4' a5' a6' a7' a8' a9' a10' a11' a12' a13' a14' a15' a16' a17' a18' a19' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  384 </span><span class="spaces">  </span><span class="nottickedoff">peekDefaultProbabilityHelper res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  385 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a19'&gt;&gt;</span>
+<span class="lineno">  386 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno">  387 </span>
 <span class="lineno">  388 </span>
-<span class="lineno">  389 </span>-- |default-probability term structure built by interpolating default densities at given dates
-<span class="lineno">  390 </span>qlInterpolatedDefaultDensityCurve :: ([Day]) -&gt; ([Double]) -&gt; (DayCounter) -&gt; (Calendar) -&gt; ([GenQuote q]) -&gt; ([Day]) -&gt; (Int) -&gt; (Int) -&gt; (Int) -&gt; IO ((DefaultProbabilityTermStructure))
-<span class="lineno">  391 </span><span class="decl"><span class="nottickedoff">qlInterpolatedDefaultDensityCurve a1 a2 a3 a4 a5 a6 a7 a8 a9 =</span>
-<span class="lineno">  392 </span><span class="spaces">  </span><span class="nottickedoff">withDayArray a1 $ \(a1'1, a1'2) -&gt; </span>
-<span class="lineno">  393 </span><span class="spaces">  </span><span class="nottickedoff">withDoubleArray a2 $ \(a2'1, a2'2) -&gt; </span>
-<span class="lineno">  394 </span><span class="spaces">  </span><span class="nottickedoff">withDayCounter a3 $ \a3' -&gt; </span>
-<span class="lineno">  395 </span><span class="spaces">  </span><span class="nottickedoff">withCalendar a4 $ \a4' -&gt; </span>
-<span class="lineno">  396 </span><span class="spaces">  </span><span class="nottickedoff">withQuoteArray a5 $ \(a5'1, a5'2) -&gt; </span>
-<span class="lineno">  397 </span><span class="spaces">  </span><span class="nottickedoff">withDayArray a6 $ \(a6'1, a6'2) -&gt; </span>
-<span class="lineno">  398 </span><span class="spaces">  </span><span class="nottickedoff">let {a7' = fromIntegral a7} in </span>
-<span class="lineno">  399 </span><span class="spaces">  </span><span class="nottickedoff">let {a8' = fromIntegral a8} in </span>
-<span class="lineno">  400 </span><span class="spaces">  </span><span class="nottickedoff">let {a9' = fromIntegral a9} in </span>
-<span class="lineno">  401 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a10' -&gt; </span>
-<span class="lineno">  402 </span><span class="spaces">  </span><span class="nottickedoff">qlInterpolatedDefaultDensityCurve'_ a1'1  a1'2 a2'1  a2'2 a3' a4' a5'1  a5'2 a6'1  a6'2 a7' a8' a9' a10' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  403 </span><span class="spaces">  </span><span class="nottickedoff">peekDefaultProbabilityTermStructure res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">  404 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a10'&gt;&gt;</span>
-<span class="lineno">  405 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
-<span class="lineno">  406 </span>
+<span class="lineno">  389 </span>
+<span class="lineno">  390 </span>-- |The fair running-spread/upfront quote implied by the helper's current market data and pricing
+<span class="lineno">  391 </span>-- engine -- the value that would make the quoted instrument re-price at par. Requires the helper
+<span class="lineno">  392 </span>-- to have already been used to bootstrap a curve (throws otherwise, per upstream).
+<span class="lineno">  393 </span>defaultProbabilityHelperImpliedQuote :: (DefaultProbabilityHelper) -&gt; IO ((Double))
+<span class="lineno">  394 </span><span class="decl"><span class="istickedoff">defaultProbabilityHelperImpliedQuote a1 =</span>
+<span class="lineno">  395 </span><span class="spaces">  </span><span class="istickedoff">withDefaultProbabilityHelper a1 $ \a1' -&gt; </span>
+<span class="lineno">  396 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
+<span class="lineno">  397 </span><span class="spaces">  </span><span class="istickedoff">defaultProbabilityHelperImpliedQuote'_ a1' a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  398 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno">  399 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
+<span class="lineno">  400 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  401 </span>
+<span class="lineno">  402 </span>
+<span class="lineno">  403 </span>
+<span class="lineno">  404 </span>interpolatedDefaultDensityCurve :: NonEmpty (Day, Double) -&gt; DayCounter -&gt; Calendar -&gt; [(Day, GenQuote q)] -- ^jumps
+<span class="lineno">  405 </span>  -&gt; Interpolation -&gt; IO DefaultProbabilityTermStructure
+<span class="lineno">  406 </span><span class="decl"><span class="istickedoff">interpolatedDefaultDensityCurve d dc c q i = uncurryNested (qlInterpolatedDefaultDensityCurve dd dq dc c qq qd) (qlInterpolation i) where {(qd, qq) = unzip q; (dd, dq) = unzip (toList d)}</span></span>
 <span class="lineno">  407 </span>
-<span class="lineno">  408 </span>
-<span class="lineno">  409 </span>interpolatedHazardRateCurve :: NonEmpty (Day, Double) -&gt; DayCounter -&gt; Calendar -&gt; [(Day, GenQuote q)] -- ^jumps
-<span class="lineno">  410 </span>  -&gt; Interpolation
-<span class="lineno">  411 </span>  -&gt; Bool -- ^extrapolate past the curve's max date
-<span class="lineno">  412 </span>  -&gt; IO DefaultProbabilityTermStructure
-<span class="lineno">  413 </span><span class="decl"><span class="istickedoff">interpolatedHazardRateCurve d dc c q i ex = uncurryNested (qlInterpolatedHazardRateCurve dd dq dc c qq qd) (qlInterpolation i) ex where {(qd, qq) = unzip q; (dd, dq) = unzip (toList d)}</span></span>
-<span class="lineno">  414 </span>
-<span class="lineno">  415 </span>-- |default-probability term structure built by interpolating hazard rates at given dates
-<span class="lineno">  416 </span>qlInterpolatedHazardRateCurve :: ([Day]) -&gt; ([Double]) -&gt; (DayCounter) -&gt; (Calendar) -&gt; ([GenQuote q]) -&gt; ([Day]) -&gt; (Int) -&gt; (Int) -&gt; (Int) -&gt; (Bool) -&gt; IO ((DefaultProbabilityTermStructure))
-<span class="lineno">  417 </span><span class="decl"><span class="istickedoff">qlInterpolatedHazardRateCurve a1 a2 a3 a4 a5 a6 a7 a8 a9 a10 =</span>
-<span class="lineno">  418 </span><span class="spaces">  </span><span class="istickedoff">withDayArray a1 $ \(a1'1, a1'2) -&gt; </span>
-<span class="lineno">  419 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a2 $ \(a2'1, a2'2) -&gt; </span>
-<span class="lineno">  420 </span><span class="spaces">  </span><span class="istickedoff">withDayCounter a3 $ \a3' -&gt; </span>
-<span class="lineno">  421 </span><span class="spaces">  </span><span class="istickedoff">withCalendar a4 $ \a4' -&gt; </span>
-<span class="lineno">  422 </span><span class="spaces">  </span><span class="istickedoff">withQuoteArray a5 $ \(a5'1, a5'2) -&gt; </span>
-<span class="lineno">  423 </span><span class="spaces">  </span><span class="istickedoff">withDayArray a6 $ \(a6'1, a6'2) -&gt; </span>
-<span class="lineno">  424 </span><span class="spaces">  </span><span class="istickedoff">let {a7' = fromIntegral a7} in </span>
-<span class="lineno">  425 </span><span class="spaces">  </span><span class="istickedoff">let {a8' = fromIntegral a8} in </span>
-<span class="lineno">  426 </span><span class="spaces">  </span><span class="istickedoff">let {a9' = fromIntegral a9} in </span>
-<span class="lineno">  427 </span><span class="spaces">  </span><span class="istickedoff">let {a10' = C2HSImp.fromBool a10} in </span>
-<span class="lineno">  428 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a11' -&gt; </span>
-<span class="lineno">  429 </span><span class="spaces">  </span><span class="istickedoff">qlInterpolatedHazardRateCurve'_ a1'1  a1'2 a2'1  a2'2 a3' a4' a5'1  a5'2 a6'1  a6'2 a7' a8' a9' a10' a11' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  430 </span><span class="spaces">  </span><span class="istickedoff">peekDefaultProbabilityTermStructure res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">  431 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a11'&gt;&gt;</span>
-<span class="lineno">  432 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  408 </span>-- |default-probability term structure built by interpolating default densities at given dates
+<span class="lineno">  409 </span>qlInterpolatedDefaultDensityCurve :: ([Day]) -&gt; ([Double]) -&gt; (DayCounter) -&gt; (Calendar) -&gt; ([GenQuote q]) -&gt; ([Day]) -&gt; (Int) -&gt; (Int) -&gt; (Int) -&gt; IO ((DefaultProbabilityTermStructure))
+<span class="lineno">  410 </span><span class="decl"><span class="istickedoff">qlInterpolatedDefaultDensityCurve a1 a2 a3 a4 a5 a6 a7 a8 a9 =</span>
+<span class="lineno">  411 </span><span class="spaces">  </span><span class="istickedoff">withDayArray a1 $ \(a1'1, a1'2) -&gt; </span>
+<span class="lineno">  412 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a2 $ \(a2'1, a2'2) -&gt; </span>
+<span class="lineno">  413 </span><span class="spaces">  </span><span class="istickedoff">withDayCounter a3 $ \a3' -&gt; </span>
+<span class="lineno">  414 </span><span class="spaces">  </span><span class="istickedoff">withCalendar a4 $ \a4' -&gt; </span>
+<span class="lineno">  415 </span><span class="spaces">  </span><span class="istickedoff">withQuoteArray a5 $ \(a5'1, a5'2) -&gt; </span>
+<span class="lineno">  416 </span><span class="spaces">  </span><span class="istickedoff">withDayArray a6 $ \(a6'1, a6'2) -&gt; </span>
+<span class="lineno">  417 </span><span class="spaces">  </span><span class="istickedoff">let {a7' = fromIntegral a7} in </span>
+<span class="lineno">  418 </span><span class="spaces">  </span><span class="istickedoff">let {a8' = fromIntegral a8} in </span>
+<span class="lineno">  419 </span><span class="spaces">  </span><span class="istickedoff">let {a9' = fromIntegral a9} in </span>
+<span class="lineno">  420 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a10' -&gt; </span>
+<span class="lineno">  421 </span><span class="spaces">  </span><span class="istickedoff">qlInterpolatedDefaultDensityCurve'_ a1'1  a1'2 a2'1  a2'2 a3' a4' a5'1  a5'2 a6'1  a6'2 a7' a8' a9' a10' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  422 </span><span class="spaces">  </span><span class="istickedoff">peekDefaultProbabilityTermStructure res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  423 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a10'&gt;&gt;</span>
+<span class="lineno">  424 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  425 </span>
+<span class="lineno">  426 </span>
+<span class="lineno">  427 </span>
+<span class="lineno">  428 </span>interpolatedHazardRateCurve :: NonEmpty (Day, Double) -&gt; DayCounter -&gt; Calendar -&gt; [(Day, GenQuote q)] -- ^jumps
+<span class="lineno">  429 </span>  -&gt; Interpolation
+<span class="lineno">  430 </span>  -&gt; Bool -- ^extrapolate past the curve's max date
+<span class="lineno">  431 </span>  -&gt; IO DefaultProbabilityTermStructure
+<span class="lineno">  432 </span><span class="decl"><span class="istickedoff">interpolatedHazardRateCurve d dc c q i ex = uncurryNested (qlInterpolatedHazardRateCurve dd dq dc c qq qd) (qlInterpolation i) ex where {(qd, qq) = unzip q; (dd, dq) = unzip (toList d)}</span></span>
 <span class="lineno">  433 </span>
-<span class="lineno">  434 </span>
-<span class="lineno">  435 </span>
-<span class="lineno">  436 </span>interpolatedSurvivalProbabilityCurve :: NonEmpty (Day, Double) -&gt; DayCounter -&gt; Calendar -&gt; [(Day, GenQuote q)] -- ^jumps
-<span class="lineno">  437 </span>  -&gt; Interpolation -&gt; IO DefaultProbabilityTermStructure
-<span class="lineno">  438 </span><span class="decl"><span class="nottickedoff">interpolatedSurvivalProbabilityCurve d dc c q i = uncurryNested (qlInterpolatedSurvivalProbabilityCurve dd dq dc c qq qd) (qlInterpolation i) where {(qd, qq) = unzip q; (dd, dq) = unzip (toList d)}</span></span>
-<span class="lineno">  439 </span>
-<span class="lineno">  440 </span>-- |default-probability term structure built by interpolating survival probabilities at given dates
-<span class="lineno">  441 </span>qlInterpolatedSurvivalProbabilityCurve :: ([Day]) -&gt; ([Double]) -&gt; (DayCounter) -&gt; (Calendar) -&gt; ([GenQuote q]) -&gt; ([Day]) -&gt; (Int) -&gt; (Int) -&gt; (Int) -&gt; IO ((DefaultProbabilityTermStructure))
-<span class="lineno">  442 </span><span class="decl"><span class="nottickedoff">qlInterpolatedSurvivalProbabilityCurve a1 a2 a3 a4 a5 a6 a7 a8 a9 =</span>
-<span class="lineno">  443 </span><span class="spaces">  </span><span class="nottickedoff">withDayArray a1 $ \(a1'1, a1'2) -&gt; </span>
-<span class="lineno">  444 </span><span class="spaces">  </span><span class="nottickedoff">withDoubleArray a2 $ \(a2'1, a2'2) -&gt; </span>
-<span class="lineno">  445 </span><span class="spaces">  </span><span class="nottickedoff">withDayCounter a3 $ \a3' -&gt; </span>
-<span class="lineno">  446 </span><span class="spaces">  </span><span class="nottickedoff">withCalendar a4 $ \a4' -&gt; </span>
-<span class="lineno">  447 </span><span class="spaces">  </span><span class="nottickedoff">withQuoteArray a5 $ \(a5'1, a5'2) -&gt; </span>
-<span class="lineno">  448 </span><span class="spaces">  </span><span class="nottickedoff">withDayArray a6 $ \(a6'1, a6'2) -&gt; </span>
-<span class="lineno">  449 </span><span class="spaces">  </span><span class="nottickedoff">let {a7' = fromIntegral a7} in </span>
-<span class="lineno">  450 </span><span class="spaces">  </span><span class="nottickedoff">let {a8' = fromIntegral a8} in </span>
-<span class="lineno">  451 </span><span class="spaces">  </span><span class="nottickedoff">let {a9' = fromIntegral a9} in </span>
-<span class="lineno">  452 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a10' -&gt; </span>
-<span class="lineno">  453 </span><span class="spaces">  </span><span class="nottickedoff">qlInterpolatedSurvivalProbabilityCurve'_ a1'1  a1'2 a2'1  a2'2 a3' a4' a5'1  a5'2 a6'1  a6'2 a7' a8' a9' a10' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  454 </span><span class="spaces">  </span><span class="nottickedoff">peekDefaultProbabilityTermStructure res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">  455 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a10'&gt;&gt;</span>
-<span class="lineno">  456 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
-<span class="lineno">  457 </span>
+<span class="lineno">  434 </span>-- |default-probability term structure built by interpolating hazard rates at given dates
+<span class="lineno">  435 </span>qlInterpolatedHazardRateCurve :: ([Day]) -&gt; ([Double]) -&gt; (DayCounter) -&gt; (Calendar) -&gt; ([GenQuote q]) -&gt; ([Day]) -&gt; (Int) -&gt; (Int) -&gt; (Int) -&gt; (Bool) -&gt; IO ((DefaultProbabilityTermStructure))
+<span class="lineno">  436 </span><span class="decl"><span class="istickedoff">qlInterpolatedHazardRateCurve a1 a2 a3 a4 a5 a6 a7 a8 a9 a10 =</span>
+<span class="lineno">  437 </span><span class="spaces">  </span><span class="istickedoff">withDayArray a1 $ \(a1'1, a1'2) -&gt; </span>
+<span class="lineno">  438 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a2 $ \(a2'1, a2'2) -&gt; </span>
+<span class="lineno">  439 </span><span class="spaces">  </span><span class="istickedoff">withDayCounter a3 $ \a3' -&gt; </span>
+<span class="lineno">  440 </span><span class="spaces">  </span><span class="istickedoff">withCalendar a4 $ \a4' -&gt; </span>
+<span class="lineno">  441 </span><span class="spaces">  </span><span class="istickedoff">withQuoteArray a5 $ \(a5'1, a5'2) -&gt; </span>
+<span class="lineno">  442 </span><span class="spaces">  </span><span class="istickedoff">withDayArray a6 $ \(a6'1, a6'2) -&gt; </span>
+<span class="lineno">  443 </span><span class="spaces">  </span><span class="istickedoff">let {a7' = fromIntegral a7} in </span>
+<span class="lineno">  444 </span><span class="spaces">  </span><span class="istickedoff">let {a8' = fromIntegral a8} in </span>
+<span class="lineno">  445 </span><span class="spaces">  </span><span class="istickedoff">let {a9' = fromIntegral a9} in </span>
+<span class="lineno">  446 </span><span class="spaces">  </span><span class="istickedoff">let {a10' = C2HSImp.fromBool a10} in </span>
+<span class="lineno">  447 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a11' -&gt; </span>
+<span class="lineno">  448 </span><span class="spaces">  </span><span class="istickedoff">qlInterpolatedHazardRateCurve'_ a1'1  a1'2 a2'1  a2'2 a3' a4' a5'1  a5'2 a6'1  a6'2 a7' a8' a9' a10' a11' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  449 </span><span class="spaces">  </span><span class="istickedoff">peekDefaultProbabilityTermStructure res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  450 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a11'&gt;&gt;</span>
+<span class="lineno">  451 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  452 </span>
+<span class="lineno">  453 </span>
+<span class="lineno">  454 </span>
+<span class="lineno">  455 </span>interpolatedSurvivalProbabilityCurve :: NonEmpty (Day, Double) -&gt; DayCounter -&gt; Calendar -&gt; [(Day, GenQuote q)] -- ^jumps
+<span class="lineno">  456 </span>  -&gt; Interpolation -&gt; IO DefaultProbabilityTermStructure
+<span class="lineno">  457 </span><span class="decl"><span class="istickedoff">interpolatedSurvivalProbabilityCurve d dc c q i = uncurryNested (qlInterpolatedSurvivalProbabilityCurve dd dq dc c qq qd) (qlInterpolation i) where {(qd, qq) = unzip q; (dd, dq) = unzip (toList d)}</span></span>
 <span class="lineno">  458 </span>
-<span class="lineno">  459 </span>
-<span class="lineno">  460 </span>piecewiseDefaultCurve :: Day -&gt; NonEmpty DefaultProbabilityHelper -&gt; DayCounter -&gt; [(Day, GenQuote q)] -- ^jumps
-<span class="lineno">  461 </span>  -&gt; ProbabilityTrait -&gt; Interpolation -&gt; IO DefaultProbabilityTermStructure
-<span class="lineno">  462 </span><span class="decl"><span class="istickedoff">piecewiseDefaultCurve d h dc q t i = uncurryNested (qlPiecewiseDefaultCurve d (toList h) dc qq qd t) (qlInterpolation i) where (qd, qq) = unzip q</span></span>
-<span class="lineno">  463 </span>-- |default-probability term structure bootstrapped from CDS/default helpers, anchored at an explicit reference date
-<span class="lineno">  464 </span>qlPiecewiseDefaultCurve :: (Day) -&gt; ([DefaultProbabilityHelper]) -&gt; (DayCounter) -&gt; ([GenQuote q]) -&gt; ([Day]) -&gt; (ProbabilityTrait) -&gt; (Int) -&gt; (Int) -&gt; (Int) -&gt; IO ((DefaultProbabilityTermStructure))
-<span class="lineno">  465 </span><span class="decl"><span class="istickedoff">qlPiecewiseDefaultCurve a1 a2 a3 a4 a5 a6 a7 a8 a9 =</span>
-<span class="lineno">  466 </span><span class="spaces">  </span><span class="istickedoff">withDay a1 $ \a1' -&gt; </span>
-<span class="lineno">  467 </span><span class="spaces">  </span><span class="istickedoff">withDefaultProbabilityHelperArray a2 $ \(a2'1, a2'2) -&gt; </span>
-<span class="lineno">  468 </span><span class="spaces">  </span><span class="istickedoff">withDayCounter a3 $ \a3' -&gt; </span>
-<span class="lineno">  469 </span><span class="spaces">  </span><span class="istickedoff">withQuoteArray a4 $ \(a4'1, a4'2) -&gt; </span>
-<span class="lineno">  470 </span><span class="spaces">  </span><span class="istickedoff">withDayArray a5 $ \(a5'1, a5'2) -&gt; </span>
-<span class="lineno">  471 </span><span class="spaces">  </span><span class="istickedoff">let {a6' = (fromIntegral . fromEnum) a6} in </span>
-<span class="lineno">  472 </span><span class="spaces">  </span><span class="istickedoff">let {a7' = fromIntegral a7} in </span>
-<span class="lineno">  473 </span><span class="spaces">  </span><span class="istickedoff">let {a8' = fromIntegral a8} in </span>
-<span class="lineno">  474 </span><span class="spaces">  </span><span class="istickedoff">let {a9' = fromIntegral a9} in </span>
-<span class="lineno">  475 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a10' -&gt; </span>
-<span class="lineno">  476 </span><span class="spaces">  </span><span class="istickedoff">qlPiecewiseDefaultCurve'_ a1' a2'1  a2'2 a3' a4'1  a4'2 a5'1  a5'2 a6' a7' a8' a9' a10' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  477 </span><span class="spaces">  </span><span class="istickedoff">peekDefaultProbabilityTermStructure res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">  478 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a10'&gt;&gt;</span>
-<span class="lineno">  479 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">  480 </span>
-<span class="lineno">  481 </span>
+<span class="lineno">  459 </span>-- |default-probability term structure built by interpolating survival probabilities at given dates
+<span class="lineno">  460 </span>qlInterpolatedSurvivalProbabilityCurve :: ([Day]) -&gt; ([Double]) -&gt; (DayCounter) -&gt; (Calendar) -&gt; ([GenQuote q]) -&gt; ([Day]) -&gt; (Int) -&gt; (Int) -&gt; (Int) -&gt; IO ((DefaultProbabilityTermStructure))
+<span class="lineno">  461 </span><span class="decl"><span class="istickedoff">qlInterpolatedSurvivalProbabilityCurve a1 a2 a3 a4 a5 a6 a7 a8 a9 =</span>
+<span class="lineno">  462 </span><span class="spaces">  </span><span class="istickedoff">withDayArray a1 $ \(a1'1, a1'2) -&gt; </span>
+<span class="lineno">  463 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a2 $ \(a2'1, a2'2) -&gt; </span>
+<span class="lineno">  464 </span><span class="spaces">  </span><span class="istickedoff">withDayCounter a3 $ \a3' -&gt; </span>
+<span class="lineno">  465 </span><span class="spaces">  </span><span class="istickedoff">withCalendar a4 $ \a4' -&gt; </span>
+<span class="lineno">  466 </span><span class="spaces">  </span><span class="istickedoff">withQuoteArray a5 $ \(a5'1, a5'2) -&gt; </span>
+<span class="lineno">  467 </span><span class="spaces">  </span><span class="istickedoff">withDayArray a6 $ \(a6'1, a6'2) -&gt; </span>
+<span class="lineno">  468 </span><span class="spaces">  </span><span class="istickedoff">let {a7' = fromIntegral a7} in </span>
+<span class="lineno">  469 </span><span class="spaces">  </span><span class="istickedoff">let {a8' = fromIntegral a8} in </span>
+<span class="lineno">  470 </span><span class="spaces">  </span><span class="istickedoff">let {a9' = fromIntegral a9} in </span>
+<span class="lineno">  471 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a10' -&gt; </span>
+<span class="lineno">  472 </span><span class="spaces">  </span><span class="istickedoff">qlInterpolatedSurvivalProbabilityCurve'_ a1'1  a1'2 a2'1  a2'2 a3' a4' a5'1  a5'2 a6'1  a6'2 a7' a8' a9' a10' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  473 </span><span class="spaces">  </span><span class="istickedoff">peekDefaultProbabilityTermStructure res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  474 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a10'&gt;&gt;</span>
+<span class="lineno">  475 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  476 </span>
+<span class="lineno">  477 </span>
+<span class="lineno">  478 </span>
+<span class="lineno">  479 </span>-- QuantLib uses Null&lt;Real&gt;() rather than a number for these defaults.
+<span class="lineno">  480 </span>nullableDouble :: Maybe Double -&gt; Double
+<span class="lineno">  481 </span><span class="decl"><span class="istickedoff">nullableDouble = realToFrac . fromMaybeDouble</span></span>
 <span class="lineno">  482 </span>
-<span class="lineno">  483 </span>piecewiseDefaultCurve' :: Word -&gt; Calendar -&gt; NonEmpty DefaultProbabilityHelper -&gt; DayCounter -&gt; [(Day, GenQuote q)] -- ^jumps
-<span class="lineno">  484 </span>  -&gt; ProbabilityTrait -&gt; Interpolation -&gt; IO DefaultProbabilityTermStructure
-<span class="lineno">  485 </span><span class="decl"><span class="nottickedoff">piecewiseDefaultCurve' d c h dc q t i = uncurryNested (qlPiecewiseDefaultCurve1 d c (toList h) dc qq qd t) (qlInterpolation i) where (qd, qq) = unzip q</span></span>
-<span class="lineno">  486 </span>-- |default-probability term structure bootstrapped from CDS/default helpers, anchored at a settlement-days/calendar pair
-<span class="lineno">  487 </span>qlPiecewiseDefaultCurve1 :: (Word) -&gt; (Calendar) -&gt; ([DefaultProbabilityHelper]) -&gt; (DayCounter) -&gt; ([GenQuote q]) -&gt; ([Day]) -&gt; (ProbabilityTrait) -&gt; (Int) -&gt; (Int) -&gt; (Int) -&gt; IO ((DefaultProbabilityTermStructure))
-<span class="lineno">  488 </span><span class="decl"><span class="nottickedoff">qlPiecewiseDefaultCurve1 a1 a2 a3 a4 a5 a6 a7 a8 a9 a10 =</span>
-<span class="lineno">  489 </span><span class="spaces">  </span><span class="nottickedoff">let {a1' = fromIntegral a1} in </span>
-<span class="lineno">  490 </span><span class="spaces">  </span><span class="nottickedoff">withCalendar a2 $ \a2' -&gt; </span>
-<span class="lineno">  491 </span><span class="spaces">  </span><span class="nottickedoff">withDefaultProbabilityHelperArray a3 $ \(a3'1, a3'2) -&gt; </span>
-<span class="lineno">  492 </span><span class="spaces">  </span><span class="nottickedoff">withDayCounter a4 $ \a4' -&gt; </span>
-<span class="lineno">  493 </span><span class="spaces">  </span><span class="nottickedoff">withQuoteArray a5 $ \(a5'1, a5'2) -&gt; </span>
-<span class="lineno">  494 </span><span class="spaces">  </span><span class="nottickedoff">withDayArray a6 $ \(a6'1, a6'2) -&gt; </span>
-<span class="lineno">  495 </span><span class="spaces">  </span><span class="nottickedoff">let {a7' = (fromIntegral . fromEnum) a7} in </span>
-<span class="lineno">  496 </span><span class="spaces">  </span><span class="nottickedoff">let {a8' = fromIntegral a8} in </span>
-<span class="lineno">  497 </span><span class="spaces">  </span><span class="nottickedoff">let {a9' = fromIntegral a9} in </span>
-<span class="lineno">  498 </span><span class="spaces">  </span><span class="nottickedoff">let {a10' = fromIntegral a10} in </span>
-<span class="lineno">  499 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a11' -&gt; </span>
-<span class="lineno">  500 </span><span class="spaces">  </span><span class="nottickedoff">qlPiecewiseDefaultCurve1'_ a1' a2' a3'1  a3'2 a4' a5'1  a5'2 a6'1  a6'2 a7' a8' a9' a10' a11' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  501 </span><span class="spaces">  </span><span class="nottickedoff">peekDefaultProbabilityTermStructure res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">  502 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a11'&gt;&gt;</span>
-<span class="lineno">  503 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
-<span class="lineno">  504 </span>
-<span class="lineno">  505 </span>
-<span class="lineno">  506 </span>
-<span class="lineno">  507 </span>-- vim: set ff=unix ts=8 sts=2 sw=2 et:
-<span class="lineno">  508 </span>
-<span class="lineno">  509 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlFactorSpreadedHazardRateCurve&quot;
-<span class="lineno">  510 </span>  factorSpreadedHazardRateCurve'_ :: ((C2HSImp.Ptr (CDefaultProbabilityTermStructure')) -&gt; ((C2HSImp.Ptr (CQuote')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CDefaultProbabilityTermStructure'))))))
-<span class="lineno">  511 </span>
-<span class="lineno">  512 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlFlatHazardRate1&quot;
-<span class="lineno">  513 </span>  flatHazardRate''_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (CCalendar)) -&gt; ((C2HSImp.Ptr (CQuote')) -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CDefaultProbabilityTermStructure'))))))))
-<span class="lineno">  514 </span>
-<span class="lineno">  515 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlFlatHazardRate&quot;
-<span class="lineno">  516 </span>  flatHazardRate'_ :: (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CQuote')) -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CDefaultProbabilityTermStructure')))))))
-<span class="lineno">  517 </span>
-<span class="lineno">  518 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlSpreadedHazardRateCurve&quot;
-<span class="lineno">  519 </span>  spreadedHazardRateCurve'_ :: ((C2HSImp.Ptr (CDefaultProbabilityTermStructure')) -&gt; ((C2HSImp.Ptr (CQuote')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CDefaultProbabilityTermStructure'))))))
-<span class="lineno">  520 </span>
-<span class="lineno">  521 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlDefaultProbabilityTermStructureDefaultProbability&quot;
-<span class="lineno">  522 </span>  defaultProbability'_ :: ((C2HSImp.Ptr (CDefaultProbabilityTermStructure')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))))
-<span class="lineno">  523 </span>
-<span class="lineno">  524 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlDefaultProbabilityTermStructureHazardRate1&quot;
-<span class="lineno">  525 </span>  hazardRate''_ :: ((C2HSImp.Ptr (CDefaultProbabilityTermStructure')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))))
-<span class="lineno">  526 </span>
-<span class="lineno">  527 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlDefaultProbabilityTermStructureHazardRate&quot;
-<span class="lineno">  528 </span>  hazardRate'_ :: ((C2HSImp.Ptr (CDefaultProbabilityTermStructure')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))))
-<span class="lineno">  529 </span>
-<span class="lineno">  530 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlDefaultProbabilityTermStructureSurvivalProbability1&quot;
-<span class="lineno">  531 </span>  survivalProbability''_ :: ((C2HSImp.Ptr (CDefaultProbabilityTermStructure')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))))
-<span class="lineno">  532 </span>
-<span class="lineno">  533 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlDefaultProbabilityTermStructureSurvivalProbability&quot;
-<span class="lineno">  534 </span>  survivalProbability'_ :: ((C2HSImp.Ptr (CDefaultProbabilityTermStructure')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))))
-<span class="lineno">  535 </span>
-<span class="lineno">  536 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlDefaultProbabilityTermStructureDefaultDensity1&quot;
-<span class="lineno">  537 </span>  defaultDensity''_ :: ((C2HSImp.Ptr (CDefaultProbabilityTermStructure')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))))
+<span class="lineno">  483 </span>-- |Default-probability term structure bootstrapped from CDS/default helpers, anchored at an
+<span class="lineno">  484 </span>-- explicit reference date and using QuantLib's default iterative-bootstrap settings.
+<span class="lineno">  485 </span>piecewiseDefaultCurve :: Day -- ^referenceDate
+<span class="lineno">  486 </span>  -&gt; NonEmpty DefaultProbabilityHelper -- ^instruments
+<span class="lineno">  487 </span>  -&gt; DayCounter -- ^dayCounter
+<span class="lineno">  488 </span>  -&gt; [(Day, GenQuote q)] -- ^jumps paired with their dates
+<span class="lineno">  489 </span>  -&gt; ProbabilityTrait -- ^bootstrap trait
+<span class="lineno">  490 </span>  -&gt; Interpolation -- ^interpolator
+<span class="lineno">  491 </span>  -&gt; IO DefaultProbabilityTermStructure
+<span class="lineno">  492 </span><span class="decl"><span class="istickedoff">piecewiseDefaultCurve d h dc q t i =</span>
+<span class="lineno">  493 </span><span class="spaces">  </span><span class="istickedoff">piecewiseDefaultCurveFull d h dc q t i defaultIterativeBootstrapOpts</span></span>
+<span class="lineno">  494 </span>
+<span class="lineno">  495 </span>-- |Like 'piecewiseDefaultCurve', but exposes every @IterativeBootstrap@ setting. Start from
+<span class="lineno">  496 </span>-- 'defaultIterativeBootstrapOpts' and override selected fields. Setting 'ibDontThrow' to 'True'
+<span class="lineno">  497 </span>-- returns the best fallback pillar value found after a bootstrap failure; this is a recovery
+<span class="lineno">  498 </span>-- option and does not establish that the resulting curve reprices its instruments.
+<span class="lineno">  499 </span>piecewiseDefaultCurveFull :: Day -- ^referenceDate
+<span class="lineno">  500 </span>  -&gt; NonEmpty DefaultProbabilityHelper -- ^instruments
+<span class="lineno">  501 </span>  -&gt; DayCounter -- ^dayCounter
+<span class="lineno">  502 </span>  -&gt; [(Day, GenQuote q)] -- ^jumps paired with their dates
+<span class="lineno">  503 </span>  -&gt; ProbabilityTrait -- ^bootstrap trait
+<span class="lineno">  504 </span>  -&gt; Interpolation -- ^interpolator
+<span class="lineno">  505 </span>  -&gt; IterativeBootstrapOpts -- ^bootstrap settings
+<span class="lineno">  506 </span>  -&gt; IO DefaultProbabilityTermStructure
+<span class="lineno">  507 </span><span class="decl"><span class="istickedoff">piecewiseDefaultCurveFull d h dc q t i b =</span>
+<span class="lineno">  508 </span><span class="spaces">  </span><span class="istickedoff">uncurryNested (piecewiseDefaultCurve_ d (toList h) dc qq qd t) (qlInterpolation i)</span>
+<span class="lineno">  509 </span><span class="spaces">    </span><span class="istickedoff">(nullableDouble (ibAccuracy b)) (nullableDouble (ibMinValue b)) (nullableDouble (ibMaxValue b))</span>
+<span class="lineno">  510 </span><span class="spaces">    </span><span class="istickedoff">(ibMaxAttempts b) (ibMaxFactor b) (ibMinFactor b) (ibDontThrow b) (ibDontThrowSteps b) (ibMaxEvaluations b)</span>
+<span class="lineno">  511 </span><span class="spaces">  </span><span class="istickedoff">where (qd, qq) = unzip q</span></span>
+<span class="lineno">  512 </span>piecewiseDefaultCurve_ :: (Day) -&gt; ([DefaultProbabilityHelper]) -&gt; (DayCounter) -&gt; ([GenQuote q]) -&gt; ([Day]) -&gt; (ProbabilityTrait) -&gt; (Int) -&gt; (Int) -&gt; (Int) -&gt; (Double) -&gt; (Double) -&gt; (Double) -&gt; (Word) -&gt; (Double) -&gt; (Double) -&gt; (Bool) -&gt; (Word) -&gt; (Word) -&gt; IO ((DefaultProbabilityTermStructure))
+<span class="lineno">  513 </span><span class="decl"><span class="istickedoff">piecewiseDefaultCurve_ a1 a2 a3 a4 a5 a6 a7 a8 a9 a10 a11 a12 a13 a14 a15 a16 a17 a18 =</span>
+<span class="lineno">  514 </span><span class="spaces">  </span><span class="istickedoff">withDay a1 $ \a1' -&gt; </span>
+<span class="lineno">  515 </span><span class="spaces">  </span><span class="istickedoff">withDefaultProbabilityHelperArray a2 $ \(a2'1, a2'2) -&gt; </span>
+<span class="lineno">  516 </span><span class="spaces">  </span><span class="istickedoff">withDayCounter a3 $ \a3' -&gt; </span>
+<span class="lineno">  517 </span><span class="spaces">  </span><span class="istickedoff">withQuoteArray a4 $ \(a4'1, a4'2) -&gt; </span>
+<span class="lineno">  518 </span><span class="spaces">  </span><span class="istickedoff">withDayArray a5 $ \(a5'1, a5'2) -&gt; </span>
+<span class="lineno">  519 </span><span class="spaces">  </span><span class="istickedoff">let {a6' = (fromIntegral . fromEnum) a6} in </span>
+<span class="lineno">  520 </span><span class="spaces">  </span><span class="istickedoff">let {a7' = fromIntegral a7} in </span>
+<span class="lineno">  521 </span><span class="spaces">  </span><span class="istickedoff">let {a8' = fromIntegral a8} in </span>
+<span class="lineno">  522 </span><span class="spaces">  </span><span class="istickedoff">let {a9' = fromIntegral a9} in </span>
+<span class="lineno">  523 </span><span class="spaces">  </span><span class="istickedoff">let {a10' = realToFrac a10} in </span>
+<span class="lineno">  524 </span><span class="spaces">  </span><span class="istickedoff">let {a11' = realToFrac a11} in </span>
+<span class="lineno">  525 </span><span class="spaces">  </span><span class="istickedoff">let {a12' = realToFrac a12} in </span>
+<span class="lineno">  526 </span><span class="spaces">  </span><span class="istickedoff">let {a13' = fromIntegral a13} in </span>
+<span class="lineno">  527 </span><span class="spaces">  </span><span class="istickedoff">let {a14' = realToFrac a14} in </span>
+<span class="lineno">  528 </span><span class="spaces">  </span><span class="istickedoff">let {a15' = realToFrac a15} in </span>
+<span class="lineno">  529 </span><span class="spaces">  </span><span class="istickedoff">let {a16' = C2HSImp.fromBool a16} in </span>
+<span class="lineno">  530 </span><span class="spaces">  </span><span class="istickedoff">let {a17' = fromIntegral a17} in </span>
+<span class="lineno">  531 </span><span class="spaces">  </span><span class="istickedoff">let {a18' = fromIntegral a18} in </span>
+<span class="lineno">  532 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a19' -&gt; </span>
+<span class="lineno">  533 </span><span class="spaces">  </span><span class="istickedoff">piecewiseDefaultCurve_'_ a1' a2'1  a2'2 a3' a4'1  a4'2 a5'1  a5'2 a6' a7' a8' a9' a10' a11' a12' a13' a14' a15' a16' a17' a18' a19' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  534 </span><span class="spaces">  </span><span class="istickedoff">peekDefaultProbabilityTermStructure res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  535 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a19'&gt;&gt;</span>
+<span class="lineno">  536 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  537 </span>
 <span class="lineno">  538 </span>
-<span class="lineno">  539 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlDefaultProbabilityTermStructureDefaultDensity&quot;
-<span class="lineno">  540 </span>  defaultDensity'_ :: ((C2HSImp.Ptr (CDefaultProbabilityTermStructure')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))))
-<span class="lineno">  541 </span>
-<span class="lineno">  542 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlDefaultProbabilityTermStructureDefaultProbability1&quot;
-<span class="lineno">  543 </span>  defaultProbability''_ :: ((C2HSImp.Ptr (CDefaultProbabilityTermStructure')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))))
-<span class="lineno">  544 </span>
-<span class="lineno">  545 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlDefaultProbabilityTermStructureDefaultProbability2&quot;
-<span class="lineno">  546 </span>  defaultProbabilityBetween'_ :: ((C2HSImp.Ptr (CDefaultProbabilityTermStructure')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble))))))
-<span class="lineno">  547 </span>
-<span class="lineno">  548 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlDefaultProbabilityTermStructureDefaultProbability3&quot;
-<span class="lineno">  549 </span>  defaultProbabilityBetween''_ :: ((C2HSImp.Ptr (CDefaultProbabilityTermStructure')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble))))))
-<span class="lineno">  550 </span>
-<span class="lineno">  551 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlSpreadCdsHelper&quot;
-<span class="lineno">  552 </span>  spreadCdsHelper'_ :: ((C2HSImp.Ptr (CQuote')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CCalendar)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CDefaultProbabilityHelper)))))))))))))))))))))
-<span class="lineno">  553 </span>
-<span class="lineno">  554 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlUpfrontCdsHelper&quot;
-<span class="lineno">  555 </span>  upfrontCdsHelper'_ :: ((C2HSImp.Ptr (CQuote')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CCalendar)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CDefaultProbabilityHelper)))))))))))))))))))))))
-<span class="lineno">  556 </span>
-<span class="lineno">  557 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlInterpolatedDefaultDensityCurve&quot;
-<span class="lineno">  558 </span>  qlInterpolatedDefaultDensityCurve'_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; ((C2HSImp.Ptr (CCalendar)) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr (CQuote'))) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CDefaultProbabilityTermStructure')))))))))))))))))
-<span class="lineno">  559 </span>
-<span class="lineno">  560 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlInterpolatedHazardRateCurve&quot;
-<span class="lineno">  561 </span>  qlInterpolatedHazardRateCurve'_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; ((C2HSImp.Ptr (CCalendar)) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr (CQuote'))) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CDefaultProbabilityTermStructure'))))))))))))))))))
-<span class="lineno">  562 </span>
-<span class="lineno">  563 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlInterpolatedSurvivalProbabilityCurve&quot;
-<span class="lineno">  564 </span>  qlInterpolatedSurvivalProbabilityCurve'_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; ((C2HSImp.Ptr (CCalendar)) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr (CQuote'))) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CDefaultProbabilityTermStructure')))))))))))))))))
-<span class="lineno">  565 </span>
-<span class="lineno">  566 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlPiecewiseDefaultCurve&quot;
-<span class="lineno">  567 </span>  qlPiecewiseDefaultCurve'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr (CDefaultProbabilityHelper))) -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr (CQuote'))) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CDefaultProbabilityTermStructure'))))))))))))))))
-<span class="lineno">  568 </span>
-<span class="lineno">  569 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlPiecewiseDefaultCurve1&quot;
-<span class="lineno">  570 </span>  qlPiecewiseDefaultCurve1'_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (CCalendar)) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr (CDefaultProbabilityHelper))) -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr (CQuote'))) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CDefaultProbabilityTermStructure')))))))))))))))))
+<span class="lineno">  539 </span>
+<span class="lineno">  540 </span>-- |Default-probability term structure bootstrapped from CDS/default helpers, anchored at a
+<span class="lineno">  541 </span>-- settlement-days/calendar pair and using QuantLib's default iterative-bootstrap settings.
+<span class="lineno">  542 </span>piecewiseDefaultCurve' :: Word -- ^settlementDays
+<span class="lineno">  543 </span>  -&gt; Calendar -- ^calendar
+<span class="lineno">  544 </span>  -&gt; NonEmpty DefaultProbabilityHelper -- ^instruments
+<span class="lineno">  545 </span>  -&gt; DayCounter -- ^dayCounter
+<span class="lineno">  546 </span>  -&gt; [(Day, GenQuote q)] -- ^jumps paired with their dates
+<span class="lineno">  547 </span>  -&gt; ProbabilityTrait -- ^bootstrap trait
+<span class="lineno">  548 </span>  -&gt; Interpolation -- ^interpolator
+<span class="lineno">  549 </span>  -&gt; IO DefaultProbabilityTermStructure
+<span class="lineno">  550 </span><span class="decl"><span class="istickedoff">piecewiseDefaultCurve' d c h dc q t i =</span>
+<span class="lineno">  551 </span><span class="spaces">  </span><span class="istickedoff">piecewiseDefaultCurveFull' d c h dc q t i defaultIterativeBootstrapOpts</span></span>
+<span class="lineno">  552 </span>
+<span class="lineno">  553 </span>-- |Like 'piecewiseDefaultCurve'', but exposes every @IterativeBootstrap@ setting. See
+<span class="lineno">  554 </span>-- 'piecewiseDefaultCurveFull' for the fallback semantics of 'ibDontThrow'.
+<span class="lineno">  555 </span>piecewiseDefaultCurveFull' :: Word -- ^settlementDays
+<span class="lineno">  556 </span>  -&gt; Calendar -- ^calendar
+<span class="lineno">  557 </span>  -&gt; NonEmpty DefaultProbabilityHelper -- ^instruments
+<span class="lineno">  558 </span>  -&gt; DayCounter -- ^dayCounter
+<span class="lineno">  559 </span>  -&gt; [(Day, GenQuote q)] -- ^jumps paired with their dates
+<span class="lineno">  560 </span>  -&gt; ProbabilityTrait -- ^bootstrap trait
+<span class="lineno">  561 </span>  -&gt; Interpolation -- ^interpolator
+<span class="lineno">  562 </span>  -&gt; IterativeBootstrapOpts -- ^bootstrap settings
+<span class="lineno">  563 </span>  -&gt; IO DefaultProbabilityTermStructure
+<span class="lineno">  564 </span><span class="decl"><span class="istickedoff">piecewiseDefaultCurveFull' d c h dc q t i b =</span>
+<span class="lineno">  565 </span><span class="spaces">  </span><span class="istickedoff">uncurryNested (piecewiseDefaultCurve1_ d c (toList h) dc qq qd t) (qlInterpolation i)</span>
+<span class="lineno">  566 </span><span class="spaces">    </span><span class="istickedoff">(nullableDouble (ibAccuracy b)) (nullableDouble (ibMinValue b)) (nullableDouble (ibMaxValue b))</span>
+<span class="lineno">  567 </span><span class="spaces">    </span><span class="istickedoff">(ibMaxAttempts b) (ibMaxFactor b) (ibMinFactor b) (ibDontThrow b) (ibDontThrowSteps b) (ibMaxEvaluations b)</span>
+<span class="lineno">  568 </span><span class="spaces">  </span><span class="istickedoff">where (qd, qq) = unzip q</span></span>
+<span class="lineno">  569 </span>piecewiseDefaultCurve1_ :: (Word) -&gt; (Calendar) -&gt; ([DefaultProbabilityHelper]) -&gt; (DayCounter) -&gt; ([GenQuote q]) -&gt; ([Day]) -&gt; (ProbabilityTrait) -&gt; (Int) -&gt; (Int) -&gt; (Int) -&gt; (Double) -&gt; (Double) -&gt; (Double) -&gt; (Word) -&gt; (Double) -&gt; (Double) -&gt; (Bool) -&gt; (Word) -&gt; (Word) -&gt; IO ((DefaultProbabilityTermStructure))
+<span class="lineno">  570 </span><span class="decl"><span class="istickedoff">piecewiseDefaultCurve1_ a1 a2 a3 a4 a5 a6 a7 a8 a9 a10 a11 a12 a13 a14 a15 a16 a17 a18 a19 =</span>
+<span class="lineno">  571 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = fromIntegral a1} in </span>
+<span class="lineno">  572 </span><span class="spaces">  </span><span class="istickedoff">withCalendar a2 $ \a2' -&gt; </span>
+<span class="lineno">  573 </span><span class="spaces">  </span><span class="istickedoff">withDefaultProbabilityHelperArray a3 $ \(a3'1, a3'2) -&gt; </span>
+<span class="lineno">  574 </span><span class="spaces">  </span><span class="istickedoff">withDayCounter a4 $ \a4' -&gt; </span>
+<span class="lineno">  575 </span><span class="spaces">  </span><span class="istickedoff">withQuoteArray a5 $ \(a5'1, a5'2) -&gt; </span>
+<span class="lineno">  576 </span><span class="spaces">  </span><span class="istickedoff">withDayArray a6 $ \(a6'1, a6'2) -&gt; </span>
+<span class="lineno">  577 </span><span class="spaces">  </span><span class="istickedoff">let {a7' = (fromIntegral . fromEnum) a7} in </span>
+<span class="lineno">  578 </span><span class="spaces">  </span><span class="istickedoff">let {a8' = fromIntegral a8} in </span>
+<span class="lineno">  579 </span><span class="spaces">  </span><span class="istickedoff">let {a9' = fromIntegral a9} in </span>
+<span class="lineno">  580 </span><span class="spaces">  </span><span class="istickedoff">let {a10' = fromIntegral a10} in </span>
+<span class="lineno">  581 </span><span class="spaces">  </span><span class="istickedoff">let {a11' = realToFrac a11} in </span>
+<span class="lineno">  582 </span><span class="spaces">  </span><span class="istickedoff">let {a12' = realToFrac a12} in </span>
+<span class="lineno">  583 </span><span class="spaces">  </span><span class="istickedoff">let {a13' = realToFrac a13} in </span>
+<span class="lineno">  584 </span><span class="spaces">  </span><span class="istickedoff">let {a14' = fromIntegral a14} in </span>
+<span class="lineno">  585 </span><span class="spaces">  </span><span class="istickedoff">let {a15' = realToFrac a15} in </span>
+<span class="lineno">  586 </span><span class="spaces">  </span><span class="istickedoff">let {a16' = realToFrac a16} in </span>
+<span class="lineno">  587 </span><span class="spaces">  </span><span class="istickedoff">let {a17' = C2HSImp.fromBool a17} in </span>
+<span class="lineno">  588 </span><span class="spaces">  </span><span class="istickedoff">let {a18' = fromIntegral a18} in </span>
+<span class="lineno">  589 </span><span class="spaces">  </span><span class="istickedoff">let {a19' = fromIntegral a19} in </span>
+<span class="lineno">  590 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a20' -&gt; </span>
+<span class="lineno">  591 </span><span class="spaces">  </span><span class="istickedoff">piecewiseDefaultCurve1_'_ a1' a2' a3'1  a3'2 a4' a5'1  a5'2 a6'1  a6'2 a7' a8' a9' a10' a11' a12' a13' a14' a15' a16' a17' a18' a19' a20' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  592 </span><span class="spaces">  </span><span class="istickedoff">peekDefaultProbabilityTermStructure res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  593 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a20'&gt;&gt;</span>
+<span class="lineno">  594 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  595 </span>
+<span class="lineno">  596 </span>
+<span class="lineno">  597 </span>
+<span class="lineno">  598 </span>-- vim: set ff=unix ts=8 sts=2 sw=2 et:
+<span class="lineno">  599 </span>
+<span class="lineno">  600 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlFactorSpreadedHazardRateCurve&quot;
+<span class="lineno">  601 </span>  factorSpreadedHazardRateCurve'_ :: ((C2HSImp.Ptr (CDefaultProbabilityTermStructure')) -&gt; ((C2HSImp.Ptr (CQuote')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CDefaultProbabilityTermStructure'))))))
+<span class="lineno">  602 </span>
+<span class="lineno">  603 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlFlatHazardRate1&quot;
+<span class="lineno">  604 </span>  flatHazardRate''_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (CCalendar)) -&gt; ((C2HSImp.Ptr (CQuote')) -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CDefaultProbabilityTermStructure'))))))))
+<span class="lineno">  605 </span>
+<span class="lineno">  606 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlFlatHazardRate&quot;
+<span class="lineno">  607 </span>  flatHazardRate'_ :: (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CQuote')) -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CDefaultProbabilityTermStructure')))))))
+<span class="lineno">  608 </span>
+<span class="lineno">  609 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlSpreadedHazardRateCurve&quot;
+<span class="lineno">  610 </span>  spreadedHazardRateCurve'_ :: ((C2HSImp.Ptr (CDefaultProbabilityTermStructure')) -&gt; ((C2HSImp.Ptr (CQuote')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CDefaultProbabilityTermStructure'))))))
+<span class="lineno">  611 </span>
+<span class="lineno">  612 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlDefaultProbabilityTermStructureDefaultProbability&quot;
+<span class="lineno">  613 </span>  defaultProbability'_ :: ((C2HSImp.Ptr (CDefaultProbabilityTermStructure')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))))
+<span class="lineno">  614 </span>
+<span class="lineno">  615 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlDefaultProbabilityTermStructureHazardRate1&quot;
+<span class="lineno">  616 </span>  hazardRate''_ :: ((C2HSImp.Ptr (CDefaultProbabilityTermStructure')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))))
+<span class="lineno">  617 </span>
+<span class="lineno">  618 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlDefaultProbabilityTermStructureHazardRate&quot;
+<span class="lineno">  619 </span>  hazardRate'_ :: ((C2HSImp.Ptr (CDefaultProbabilityTermStructure')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))))
+<span class="lineno">  620 </span>
+<span class="lineno">  621 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlDefaultProbabilityTermStructureSurvivalProbability1&quot;
+<span class="lineno">  622 </span>  survivalProbability''_ :: ((C2HSImp.Ptr (CDefaultProbabilityTermStructure')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))))
+<span class="lineno">  623 </span>
+<span class="lineno">  624 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlDefaultProbabilityTermStructureSurvivalProbability&quot;
+<span class="lineno">  625 </span>  survivalProbability'_ :: ((C2HSImp.Ptr (CDefaultProbabilityTermStructure')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))))
+<span class="lineno">  626 </span>
+<span class="lineno">  627 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlDefaultProbabilityTermStructureDefaultDensity1&quot;
+<span class="lineno">  628 </span>  defaultDensity''_ :: ((C2HSImp.Ptr (CDefaultProbabilityTermStructure')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))))
+<span class="lineno">  629 </span>
+<span class="lineno">  630 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlDefaultProbabilityTermStructureDefaultDensity&quot;
+<span class="lineno">  631 </span>  defaultDensity'_ :: ((C2HSImp.Ptr (CDefaultProbabilityTermStructure')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))))
+<span class="lineno">  632 </span>
+<span class="lineno">  633 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlDefaultProbabilityTermStructureDefaultProbability1&quot;
+<span class="lineno">  634 </span>  defaultProbability''_ :: ((C2HSImp.Ptr (CDefaultProbabilityTermStructure')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))))
+<span class="lineno">  635 </span>
+<span class="lineno">  636 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlDefaultProbabilityTermStructureDefaultProbability2&quot;
+<span class="lineno">  637 </span>  defaultProbabilityBetween'_ :: ((C2HSImp.Ptr (CDefaultProbabilityTermStructure')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble))))))
+<span class="lineno">  638 </span>
+<span class="lineno">  639 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlDefaultProbabilityTermStructureDefaultProbability3&quot;
+<span class="lineno">  640 </span>  defaultProbabilityBetween''_ :: ((C2HSImp.Ptr (CDefaultProbabilityTermStructure')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble))))))
+<span class="lineno">  641 </span>
+<span class="lineno">  642 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlSpreadCdsHelper&quot;
+<span class="lineno">  643 </span>  spreadCdsHelper'_ :: ((C2HSImp.Ptr (CQuote')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CCalendar)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CDefaultProbabilityHelper)))))))))))))))))))))
+<span class="lineno">  644 </span>
+<span class="lineno">  645 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlUpfrontCdsHelper&quot;
+<span class="lineno">  646 </span>  upfrontCdsHelper'_ :: ((C2HSImp.Ptr (CQuote')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CCalendar)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CDefaultProbabilityHelper)))))))))))))))))))))))
+<span class="lineno">  647 </span>
+<span class="lineno">  648 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlDefaultProbabilityHelperImpliedQuote&quot;
+<span class="lineno">  649 </span>  defaultProbabilityHelperImpliedQuote'_ :: ((C2HSImp.Ptr (CDefaultProbabilityHelper)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))
+<span class="lineno">  650 </span>
+<span class="lineno">  651 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlInterpolatedDefaultDensityCurve&quot;
+<span class="lineno">  652 </span>  qlInterpolatedDefaultDensityCurve'_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; ((C2HSImp.Ptr (CCalendar)) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr (CQuote'))) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CDefaultProbabilityTermStructure')))))))))))))))))
+<span class="lineno">  653 </span>
+<span class="lineno">  654 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlInterpolatedHazardRateCurve&quot;
+<span class="lineno">  655 </span>  qlInterpolatedHazardRateCurve'_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; ((C2HSImp.Ptr (CCalendar)) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr (CQuote'))) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CDefaultProbabilityTermStructure'))))))))))))))))))
+<span class="lineno">  656 </span>
+<span class="lineno">  657 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlInterpolatedSurvivalProbabilityCurve&quot;
+<span class="lineno">  658 </span>  qlInterpolatedSurvivalProbabilityCurve'_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; ((C2HSImp.Ptr (CCalendar)) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr (CQuote'))) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CDefaultProbabilityTermStructure')))))))))))))))))
+<span class="lineno">  659 </span>
+<span class="lineno">  660 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlPiecewiseDefaultCurve&quot;
+<span class="lineno">  661 </span>  piecewiseDefaultCurve_'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr (CDefaultProbabilityHelper))) -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr (CQuote'))) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CDefaultProbabilityTermStructure')))))))))))))))))))))))))
+<span class="lineno">  662 </span>
+<span class="lineno">  663 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlPiecewiseDefaultCurve1&quot;
+<span class="lineno">  664 </span>  piecewiseDefaultCurve1_'_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (CCalendar)) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr (CDefaultProbabilityHelper))) -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr (CQuote'))) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CDefaultProbabilityTermStructure'))))))))))))))))))))))))))
 
 </pre>
 </body>

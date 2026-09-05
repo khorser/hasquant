@@ -435,14 +435,14 @@ span.spaces    { background: white }
 <span class="lineno">  416 </span>timeGridFromVector' :: (NonEmptyVector Double) -- ^mandatoryTimes
 <span class="lineno">  417 </span> -&gt; (Word) -- ^steps
 <span class="lineno">  418 </span> -&gt; IO ((TimeGrid))
-<span class="lineno">  419 </span><span class="decl"><span class="nottickedoff">timeGridFromVector' a1 a2 =</span>
-<span class="lineno">  420 </span><span class="spaces">  </span><span class="nottickedoff">withNonEmptyRealVector a1 $ \(a1'1, a1'2) -&gt; </span>
-<span class="lineno">  421 </span><span class="spaces">  </span><span class="nottickedoff">let {a2' = fromIntegral a2} in </span>
-<span class="lineno">  422 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a3' -&gt; </span>
-<span class="lineno">  423 </span><span class="spaces">  </span><span class="nottickedoff">timeGridFromVector''_ a1'1  a1'2 a2' a3' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  424 </span><span class="spaces">  </span><span class="nottickedoff">peekTimeGrid res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">  425 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a3'&gt;&gt;</span>
-<span class="lineno">  426 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno">  419 </span><span class="decl"><span class="istickedoff">timeGridFromVector' a1 a2 =</span>
+<span class="lineno">  420 </span><span class="spaces">  </span><span class="istickedoff">withNonEmptyRealVector a1 $ \(a1'1, a1'2) -&gt; </span>
+<span class="lineno">  421 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = fromIntegral a2} in </span>
+<span class="lineno">  422 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
+<span class="lineno">  423 </span><span class="spaces">  </span><span class="istickedoff">timeGridFromVector''_ a1'1  a1'2 a2' a3' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  424 </span><span class="spaces">  </span><span class="istickedoff">peekTimeGrid res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  425 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
+<span class="lineno">  426 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
 <span class="lineno">  427 </span>
 <span class="lineno">  428 </span>
 <span class="lineno">  429 </span>

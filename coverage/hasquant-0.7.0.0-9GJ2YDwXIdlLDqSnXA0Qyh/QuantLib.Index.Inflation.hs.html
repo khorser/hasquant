@@ -47,20 +47,20 @@ span.spaces    { background: white }
 <span class="lineno">   28 </span>
 <span class="lineno">   29 </span>  , fixing
 <span class="lineno">   30 </span>  , yoyFixing
-<span class="lineno">   31 </span>  ) where
-<span class="lineno">   32 </span>import qualified Foreign.C.String as C2HSImp
-<span class="lineno">   33 </span>import qualified Foreign.C.Types as C2HSImp
-<span class="lineno">   34 </span>import qualified Foreign.ForeignPtr as C2HSImp
-<span class="lineno">   35 </span>import qualified Foreign.Marshal.Utils as C2HSImp
-<span class="lineno">   36 </span>import qualified Foreign.Ptr as C2HSImp
-<span class="lineno">   37 </span>
-<span class="lineno">   38 </span>
-<span class="lineno">   39 </span>import QuantLib.Internal
-<span class="lineno">   40 </span>import QuantLib.Internal.Type
-<span class="lineno">   41 </span>import QuantLib.Time.Schedule(Frequency, TimeUnit)
-<span class="lineno">   42 </span>
-<span class="lineno">   43 </span>
-<span class="lineno">   44 </span>
+<span class="lineno">   31 </span>  , needsForecast
+<span class="lineno">   32 </span>  , yoyNeedsForecast
+<span class="lineno">   33 </span>  ) where
+<span class="lineno">   34 </span>import qualified Foreign.C.String as C2HSImp
+<span class="lineno">   35 </span>import qualified Foreign.C.Types as C2HSImp
+<span class="lineno">   36 </span>import qualified Foreign.ForeignPtr as C2HSImp
+<span class="lineno">   37 </span>import qualified Foreign.Marshal.Utils as C2HSImp
+<span class="lineno">   38 </span>import qualified Foreign.Ptr as C2HSImp
+<span class="lineno">   39 </span>import qualified System.IO.Unsafe as C2HSImp
+<span class="lineno">   40 </span>
+<span class="lineno">   41 </span>
+<span class="lineno">   42 </span>import QuantLib.Internal
+<span class="lineno">   43 </span>import QuantLib.Internal.Type
+<span class="lineno">   44 </span>import QuantLib.Time.Schedule(Frequency, TimeUnit)
 <span class="lineno">   45 </span>
 <span class="lineno">   46 </span>
 <span class="lineno">   47 </span>
@@ -80,333 +80,368 @@ span.spaces    { background: white }
 <span class="lineno">   61 </span>
 <span class="lineno">   62 </span>
 <span class="lineno">   63 </span>
-<span class="lineno">   64 </span>data ZeroInflationIndexType = AUCPI
-<span class="lineno">   65 </span>                            | EUHICP
-<span class="lineno">   66 </span>                            | EUHICPXT
-<span class="lineno">   67 </span>                            | FRHICP
-<span class="lineno">   68 </span>                            | UKHICP
-<span class="lineno">   69 </span>                            | UKRPI
-<span class="lineno">   70 </span>                            | USCPI
-<span class="lineno">   71 </span>                            | ZACPI
-<span class="lineno">   72 </span>  deriving (<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Show</span></span></span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Eq</span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Read</span></span></span></span></span></span></span></span>)
-<span class="lineno">   73 </span>instance <span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Enum ZeroInflationIndexType</span></span></span></span> where
-<span class="lineno">   74 </span>  <span class="decl"><span class="nottickedoff">succ AUCPI = EUHICP</span>
-<span class="lineno">   75 </span><span class="spaces">  </span><span class="nottickedoff">succ EUHICP = EUHICPXT</span>
-<span class="lineno">   76 </span><span class="spaces">  </span><span class="nottickedoff">succ EUHICPXT = FRHICP</span>
-<span class="lineno">   77 </span><span class="spaces">  </span><span class="nottickedoff">succ FRHICP = UKHICP</span>
-<span class="lineno">   78 </span><span class="spaces">  </span><span class="nottickedoff">succ UKHICP = UKRPI</span>
-<span class="lineno">   79 </span><span class="spaces">  </span><span class="nottickedoff">succ UKRPI = USCPI</span>
-<span class="lineno">   80 </span><span class="spaces">  </span><span class="nottickedoff">succ USCPI = ZACPI</span>
-<span class="lineno">   81 </span><span class="spaces">  </span><span class="nottickedoff">succ ZACPI = error &quot;ZeroInflationIndexType.succ: ZACPI has no successor&quot;</span></span>
-<span class="lineno">   82 </span>
-<span class="lineno">   83 </span>  <span class="decl"><span class="nottickedoff">pred EUHICP = AUCPI</span>
-<span class="lineno">   84 </span><span class="spaces">  </span><span class="nottickedoff">pred EUHICPXT = EUHICP</span>
-<span class="lineno">   85 </span><span class="spaces">  </span><span class="nottickedoff">pred FRHICP = EUHICPXT</span>
-<span class="lineno">   86 </span><span class="spaces">  </span><span class="nottickedoff">pred UKHICP = FRHICP</span>
-<span class="lineno">   87 </span><span class="spaces">  </span><span class="nottickedoff">pred UKRPI = UKHICP</span>
-<span class="lineno">   88 </span><span class="spaces">  </span><span class="nottickedoff">pred USCPI = UKRPI</span>
-<span class="lineno">   89 </span><span class="spaces">  </span><span class="nottickedoff">pred ZACPI = USCPI</span>
-<span class="lineno">   90 </span><span class="spaces">  </span><span class="nottickedoff">pred AUCPI = error &quot;ZeroInflationIndexType.pred: AUCPI has no predecessor&quot;</span></span>
-<span class="lineno">   91 </span>
-<span class="lineno">   92 </span>  <span class="decl"><span class="nottickedoff">enumFromTo from to = go from</span>
-<span class="lineno">   93 </span><span class="spaces">    </span><span class="nottickedoff">where</span>
-<span class="lineno">   94 </span><span class="spaces">      </span><span class="nottickedoff">end = fromEnum to</span>
-<span class="lineno">   95 </span><span class="spaces">      </span><span class="nottickedoff">go v = case compare (fromEnum v) end of</span>
-<span class="lineno">   96 </span><span class="spaces">                 </span><span class="nottickedoff">LT -&gt; v : go (succ v)</span>
-<span class="lineno">   97 </span><span class="spaces">                 </span><span class="nottickedoff">EQ -&gt; [v]</span>
-<span class="lineno">   98 </span><span class="spaces">                 </span><span class="nottickedoff">GT -&gt; []</span></span>
-<span class="lineno">   99 </span>
-<span class="lineno">  100 </span>  <span class="decl"><span class="nottickedoff">enumFrom from = enumFromTo from ZACPI</span></span>
-<span class="lineno">  101 </span>
-<span class="lineno">  102 </span>  <span class="decl"><span class="istickedoff">fromEnum AUCPI = <span class="nottickedoff">0</span></span>
-<span class="lineno">  103 </span><span class="spaces">  </span><span class="istickedoff">fromEnum EUHICP = 1</span>
-<span class="lineno">  104 </span><span class="spaces">  </span><span class="istickedoff">fromEnum EUHICPXT = <span class="nottickedoff">2</span></span>
-<span class="lineno">  105 </span><span class="spaces">  </span><span class="istickedoff">fromEnum FRHICP = <span class="nottickedoff">3</span></span>
-<span class="lineno">  106 </span><span class="spaces">  </span><span class="istickedoff">fromEnum UKHICP = <span class="nottickedoff">4</span></span>
-<span class="lineno">  107 </span><span class="spaces">  </span><span class="istickedoff">fromEnum UKRPI = 5</span>
-<span class="lineno">  108 </span><span class="spaces">  </span><span class="istickedoff">fromEnum USCPI = <span class="nottickedoff">6</span></span>
-<span class="lineno">  109 </span><span class="spaces">  </span><span class="istickedoff">fromEnum ZACPI = <span class="nottickedoff">7</span></span></span>
-<span class="lineno">  110 </span>
-<span class="lineno">  111 </span>  <span class="decl"><span class="nottickedoff">toEnum 0 = AUCPI</span>
-<span class="lineno">  112 </span><span class="spaces">  </span><span class="nottickedoff">toEnum 1 = EUHICP</span>
-<span class="lineno">  113 </span><span class="spaces">  </span><span class="nottickedoff">toEnum 2 = EUHICPXT</span>
-<span class="lineno">  114 </span><span class="spaces">  </span><span class="nottickedoff">toEnum 3 = FRHICP</span>
-<span class="lineno">  115 </span><span class="spaces">  </span><span class="nottickedoff">toEnum 4 = UKHICP</span>
-<span class="lineno">  116 </span><span class="spaces">  </span><span class="nottickedoff">toEnum 5 = UKRPI</span>
-<span class="lineno">  117 </span><span class="spaces">  </span><span class="nottickedoff">toEnum 6 = USCPI</span>
-<span class="lineno">  118 </span><span class="spaces">  </span><span class="nottickedoff">toEnum 7 = ZACPI</span>
-<span class="lineno">  119 </span><span class="spaces">  </span><span class="nottickedoff">toEnum unmatched = error (&quot;ZeroInflationIndexType.toEnum: Cannot match &quot; ++ show unmatched)</span></span>
-<span class="lineno">  120 </span>
-<span class="lineno">  121 </span>
-<span class="lineno">  122 </span>data YoYInflationIndexType = YYAUCPI
-<span class="lineno">  123 </span>                           | YYEUHICP
-<span class="lineno">  124 </span>                           | YYEUHICPXT
-<span class="lineno">  125 </span>                           | YYFRHICP
-<span class="lineno">  126 </span>                           | YYUKRPI
-<span class="lineno">  127 </span>                           | YYUSCPI
-<span class="lineno">  128 </span>                           | YYZACPI
-<span class="lineno">  129 </span>  deriving (<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Show</span></span></span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Eq</span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Read</span></span></span></span></span></span></span></span>)
-<span class="lineno">  130 </span>instance <span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Enum YoYInflationIndexType</span></span></span></span> where
-<span class="lineno">  131 </span>  <span class="decl"><span class="nottickedoff">succ YYAUCPI = YYEUHICP</span>
-<span class="lineno">  132 </span><span class="spaces">  </span><span class="nottickedoff">succ YYEUHICP = YYEUHICPXT</span>
-<span class="lineno">  133 </span><span class="spaces">  </span><span class="nottickedoff">succ YYEUHICPXT = YYFRHICP</span>
-<span class="lineno">  134 </span><span class="spaces">  </span><span class="nottickedoff">succ YYFRHICP = YYUKRPI</span>
-<span class="lineno">  135 </span><span class="spaces">  </span><span class="nottickedoff">succ YYUKRPI = YYUSCPI</span>
-<span class="lineno">  136 </span><span class="spaces">  </span><span class="nottickedoff">succ YYUSCPI = YYZACPI</span>
-<span class="lineno">  137 </span><span class="spaces">  </span><span class="nottickedoff">succ YYZACPI = error &quot;YoYInflationIndexType.succ: YYZACPI has no successor&quot;</span></span>
-<span class="lineno">  138 </span>
-<span class="lineno">  139 </span>  <span class="decl"><span class="nottickedoff">pred YYEUHICP = YYAUCPI</span>
-<span class="lineno">  140 </span><span class="spaces">  </span><span class="nottickedoff">pred YYEUHICPXT = YYEUHICP</span>
-<span class="lineno">  141 </span><span class="spaces">  </span><span class="nottickedoff">pred YYFRHICP = YYEUHICPXT</span>
-<span class="lineno">  142 </span><span class="spaces">  </span><span class="nottickedoff">pred YYUKRPI = YYFRHICP</span>
-<span class="lineno">  143 </span><span class="spaces">  </span><span class="nottickedoff">pred YYUSCPI = YYUKRPI</span>
-<span class="lineno">  144 </span><span class="spaces">  </span><span class="nottickedoff">pred YYZACPI = YYUSCPI</span>
-<span class="lineno">  145 </span><span class="spaces">  </span><span class="nottickedoff">pred YYAUCPI = error &quot;YoYInflationIndexType.pred: YYAUCPI has no predecessor&quot;</span></span>
-<span class="lineno">  146 </span>
-<span class="lineno">  147 </span>  <span class="decl"><span class="nottickedoff">enumFromTo from to = go from</span>
-<span class="lineno">  148 </span><span class="spaces">    </span><span class="nottickedoff">where</span>
-<span class="lineno">  149 </span><span class="spaces">      </span><span class="nottickedoff">end = fromEnum to</span>
-<span class="lineno">  150 </span><span class="spaces">      </span><span class="nottickedoff">go v = case compare (fromEnum v) end of</span>
-<span class="lineno">  151 </span><span class="spaces">                 </span><span class="nottickedoff">LT -&gt; v : go (succ v)</span>
-<span class="lineno">  152 </span><span class="spaces">                 </span><span class="nottickedoff">EQ -&gt; [v]</span>
-<span class="lineno">  153 </span><span class="spaces">                 </span><span class="nottickedoff">GT -&gt; []</span></span>
-<span class="lineno">  154 </span>
-<span class="lineno">  155 </span>  <span class="decl"><span class="nottickedoff">enumFrom from = enumFromTo from YYZACPI</span></span>
-<span class="lineno">  156 </span>
-<span class="lineno">  157 </span>  <span class="decl"><span class="istickedoff">fromEnum YYAUCPI = <span class="nottickedoff">0</span></span>
-<span class="lineno">  158 </span><span class="spaces">  </span><span class="istickedoff">fromEnum YYEUHICP = <span class="nottickedoff">1</span></span>
-<span class="lineno">  159 </span><span class="spaces">  </span><span class="istickedoff">fromEnum YYEUHICPXT = <span class="nottickedoff">2</span></span>
-<span class="lineno">  160 </span><span class="spaces">  </span><span class="istickedoff">fromEnum YYFRHICP = <span class="nottickedoff">3</span></span>
-<span class="lineno">  161 </span><span class="spaces">  </span><span class="istickedoff">fromEnum YYUKRPI = 4</span>
-<span class="lineno">  162 </span><span class="spaces">  </span><span class="istickedoff">fromEnum YYUSCPI = <span class="nottickedoff">5</span></span>
-<span class="lineno">  163 </span><span class="spaces">  </span><span class="istickedoff">fromEnum YYZACPI = <span class="nottickedoff">6</span></span></span>
-<span class="lineno">  164 </span>
-<span class="lineno">  165 </span>  <span class="decl"><span class="nottickedoff">toEnum 0 = YYAUCPI</span>
-<span class="lineno">  166 </span><span class="spaces">  </span><span class="nottickedoff">toEnum 1 = YYEUHICP</span>
-<span class="lineno">  167 </span><span class="spaces">  </span><span class="nottickedoff">toEnum 2 = YYEUHICPXT</span>
-<span class="lineno">  168 </span><span class="spaces">  </span><span class="nottickedoff">toEnum 3 = YYFRHICP</span>
-<span class="lineno">  169 </span><span class="spaces">  </span><span class="nottickedoff">toEnum 4 = YYUKRPI</span>
-<span class="lineno">  170 </span><span class="spaces">  </span><span class="nottickedoff">toEnum 5 = YYUSCPI</span>
-<span class="lineno">  171 </span><span class="spaces">  </span><span class="nottickedoff">toEnum 6 = YYZACPI</span>
-<span class="lineno">  172 </span><span class="spaces">  </span><span class="nottickedoff">toEnum unmatched = error (&quot;YoYInflationIndexType.toEnum: Cannot match &quot; ++ show unmatched)</span></span>
-<span class="lineno">  173 </span>
-<span class="lineno">  174 </span>
-<span class="lineno">  175 </span>data RegionType = AustraliaRegion
-<span class="lineno">  176 </span>                | EURegion
-<span class="lineno">  177 </span>                | FranceRegion
-<span class="lineno">  178 </span>                | UKRegion
-<span class="lineno">  179 </span>                | USRegion
-<span class="lineno">  180 </span>                | ZARegion
-<span class="lineno">  181 </span>  deriving (<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Show</span></span></span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Eq</span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Read</span></span></span></span></span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Bounded</span></span></span></span>)
-<span class="lineno">  182 </span>instance <span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Enum RegionType</span></span></span></span> where
-<span class="lineno">  183 </span>  <span class="decl"><span class="nottickedoff">succ AustraliaRegion = EURegion</span>
-<span class="lineno">  184 </span><span class="spaces">  </span><span class="nottickedoff">succ EURegion = FranceRegion</span>
-<span class="lineno">  185 </span><span class="spaces">  </span><span class="nottickedoff">succ FranceRegion = UKRegion</span>
-<span class="lineno">  186 </span><span class="spaces">  </span><span class="nottickedoff">succ UKRegion = USRegion</span>
-<span class="lineno">  187 </span><span class="spaces">  </span><span class="nottickedoff">succ USRegion = ZARegion</span>
-<span class="lineno">  188 </span><span class="spaces">  </span><span class="nottickedoff">succ ZARegion = error &quot;RegionType.succ: ZARegion has no successor&quot;</span></span>
-<span class="lineno">  189 </span>
-<span class="lineno">  190 </span>  <span class="decl"><span class="nottickedoff">pred EURegion = AustraliaRegion</span>
-<span class="lineno">  191 </span><span class="spaces">  </span><span class="nottickedoff">pred FranceRegion = EURegion</span>
-<span class="lineno">  192 </span><span class="spaces">  </span><span class="nottickedoff">pred UKRegion = FranceRegion</span>
-<span class="lineno">  193 </span><span class="spaces">  </span><span class="nottickedoff">pred USRegion = UKRegion</span>
-<span class="lineno">  194 </span><span class="spaces">  </span><span class="nottickedoff">pred ZARegion = USRegion</span>
-<span class="lineno">  195 </span><span class="spaces">  </span><span class="nottickedoff">pred AustraliaRegion = error &quot;RegionType.pred: AustraliaRegion has no predecessor&quot;</span></span>
-<span class="lineno">  196 </span>
-<span class="lineno">  197 </span>  <span class="decl"><span class="nottickedoff">enumFromTo from to = go from</span>
-<span class="lineno">  198 </span><span class="spaces">    </span><span class="nottickedoff">where</span>
-<span class="lineno">  199 </span><span class="spaces">      </span><span class="nottickedoff">end = fromEnum to</span>
-<span class="lineno">  200 </span><span class="spaces">      </span><span class="nottickedoff">go v = case compare (fromEnum v) end of</span>
-<span class="lineno">  201 </span><span class="spaces">                 </span><span class="nottickedoff">LT -&gt; v : go (succ v)</span>
-<span class="lineno">  202 </span><span class="spaces">                 </span><span class="nottickedoff">EQ -&gt; [v]</span>
-<span class="lineno">  203 </span><span class="spaces">                 </span><span class="nottickedoff">GT -&gt; []</span></span>
-<span class="lineno">  204 </span>
-<span class="lineno">  205 </span>  <span class="decl"><span class="nottickedoff">enumFrom from = enumFromTo from ZARegion</span></span>
-<span class="lineno">  206 </span>
-<span class="lineno">  207 </span>  <span class="decl"><span class="nottickedoff">fromEnum AustraliaRegion = 0</span>
-<span class="lineno">  208 </span><span class="spaces">  </span><span class="nottickedoff">fromEnum EURegion = 1</span>
-<span class="lineno">  209 </span><span class="spaces">  </span><span class="nottickedoff">fromEnum FranceRegion = 2</span>
-<span class="lineno">  210 </span><span class="spaces">  </span><span class="nottickedoff">fromEnum UKRegion = 3</span>
-<span class="lineno">  211 </span><span class="spaces">  </span><span class="nottickedoff">fromEnum USRegion = 4</span>
-<span class="lineno">  212 </span><span class="spaces">  </span><span class="nottickedoff">fromEnum ZARegion = 5</span></span>
-<span class="lineno">  213 </span>
-<span class="lineno">  214 </span>  <span class="decl"><span class="nottickedoff">toEnum 0 = AustraliaRegion</span>
-<span class="lineno">  215 </span><span class="spaces">  </span><span class="nottickedoff">toEnum 1 = EURegion</span>
-<span class="lineno">  216 </span><span class="spaces">  </span><span class="nottickedoff">toEnum 2 = FranceRegion</span>
-<span class="lineno">  217 </span><span class="spaces">  </span><span class="nottickedoff">toEnum 3 = UKRegion</span>
-<span class="lineno">  218 </span><span class="spaces">  </span><span class="nottickedoff">toEnum 4 = USRegion</span>
-<span class="lineno">  219 </span><span class="spaces">  </span><span class="nottickedoff">toEnum 5 = ZARegion</span>
-<span class="lineno">  220 </span><span class="spaces">  </span><span class="nottickedoff">toEnum unmatched = error (&quot;RegionType.toEnum: Cannot match &quot; ++ show unmatched)</span></span>
-<span class="lineno">  221 </span>
-<span class="lineno">  222 </span>
-<span class="lineno">  223 </span>
-<span class="lineno">  224 </span>-- |A named zero inflation index (RPI/HICP/CPI family). Constructs with no historical
-<span class="lineno">  225 </span>-- fixings and no linked term structure -- add fixings via 'QuantLib.Index.addFixing'.
-<span class="lineno">  226 </span>zeroInflationIndex :: (ZeroInflationIndexType) -&gt; IO ((ZeroInflationIndex))
-<span class="lineno">  227 </span><span class="decl"><span class="istickedoff">zeroInflationIndex a1 =</span>
-<span class="lineno">  228 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = (fromIntegral . fromEnum) a1} in </span>
-<span class="lineno">  229 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
-<span class="lineno">  230 </span><span class="spaces">  </span><span class="istickedoff">zeroInflationIndex'_ a1' a2' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  231 </span><span class="spaces">  </span><span class="istickedoff">peekZeroInflationIndex res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">  232 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
-<span class="lineno">  233 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">  234 </span>
-<span class="lineno">  235 </span>
-<span class="lineno">  236 </span>
-<span class="lineno">  237 </span>-- |A named quoted year-on-year inflation index.
-<span class="lineno">  238 </span>yoyInflationIndex :: (YoYInflationIndexType) -&gt; IO ((YoYInflationIndex))
-<span class="lineno">  239 </span><span class="decl"><span class="istickedoff">yoyInflationIndex a1 =</span>
-<span class="lineno">  240 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = (fromIntegral . fromEnum) a1} in </span>
-<span class="lineno">  241 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
-<span class="lineno">  242 </span><span class="spaces">  </span><span class="istickedoff">yoyInflationIndex'_ a1' a2' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  243 </span><span class="spaces">  </span><span class="istickedoff">peekYoYInflationIndex res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">  244 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
-<span class="lineno">  245 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">  246 </span>
-<span class="lineno">  247 </span>
-<span class="lineno">  248 </span>
-<span class="lineno">  249 </span>-- |One of the 6 named geographical/economic regions QuantLib ships (used for the pre-baked
-<span class="lineno">  250 </span>-- named indices, e.g. 'UKRPI' uses 'UKRegion' internally). See 'region\'' for an arbitrary
-<span class="lineno">  251 </span>-- custom region.
-<span class="lineno">  252 </span>region :: (RegionType) -&gt; IO ((Region))
-<span class="lineno">  253 </span><span class="decl"><span class="nottickedoff">region a1 =</span>
-<span class="lineno">  254 </span><span class="spaces">  </span><span class="nottickedoff">let {a1' = (fromIntegral . fromEnum) a1} in </span>
-<span class="lineno">  255 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a2' -&gt; </span>
-<span class="lineno">  256 </span><span class="spaces">  </span><span class="nottickedoff">region'_ a1' a2' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  257 </span><span class="spaces">  </span><span class="nottickedoff">peekRegion res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">  258 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a2'&gt;&gt;</span>
-<span class="lineno">  259 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
-<span class="lineno">  260 </span>
-<span class="lineno">  261 </span>
-<span class="lineno">  262 </span>
-<span class="lineno">  263 </span>-- |An arbitrary custom region, given its name and ISO code.
-<span class="lineno">  264 </span>region' :: (String) -&gt; (String) -&gt; IO ((Region))
-<span class="lineno">  265 </span><span class="decl"><span class="istickedoff">region' a1 a2 =</span>
-<span class="lineno">  266 </span><span class="spaces">  </span><span class="istickedoff">C2HSImp.withCString a1 $ \a1' -&gt; </span>
-<span class="lineno">  267 </span><span class="spaces">  </span><span class="istickedoff">C2HSImp.withCString a2 $ \a2' -&gt; </span>
-<span class="lineno">  268 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
-<span class="lineno">  269 </span><span class="spaces">  </span><span class="istickedoff">region''_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  270 </span><span class="spaces">  </span><span class="istickedoff">peekRegion res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">  271 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
-<span class="lineno">  272 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">  273 </span>
-<span class="lineno">  274 </span>
-<span class="lineno">  275 </span>
-<span class="lineno">  276 </span>-- |A custom zero inflation index (arbitrary family name/region/currency), with no historical
-<span class="lineno">  277 </span>-- fixings -- add fixings via 'QuantLib.Index.addFixing'.
-<span class="lineno">  278 </span>zeroInflationIndex' :: (String) -- ^familyName
-<span class="lineno">  279 </span> -&gt; (Region) -&gt; (Bool) -- ^revised
-<span class="lineno">  280 </span> -&gt; (Frequency) -&gt; ((Int,TimeUnit)) -- ^availabilityLag
-<span class="lineno">  281 </span> -&gt; (Currency) -&gt; (Maybe ZeroInflationTermStructure) -&gt; IO ((ZeroInflationIndex))
-<span class="lineno">  282 </span><span class="decl"><span class="istickedoff">zeroInflationIndex' a1 a2 a3 a4 a5 a6 a7 =</span>
-<span class="lineno">  283 </span><span class="spaces">  </span><span class="istickedoff">C2HSImp.withCString a1 $ \a1' -&gt; </span>
-<span class="lineno">  284 </span><span class="spaces">  </span><span class="istickedoff">withRegion a2 $ \a2' -&gt; </span>
-<span class="lineno">  285 </span><span class="spaces">  </span><span class="istickedoff">let {a3' = C2HSImp.fromBool a3} in </span>
-<span class="lineno">  286 </span><span class="spaces">  </span><span class="istickedoff">let {a4' = (fromIntegral . fromEnum) a4} in </span>
-<span class="lineno">  287 </span><span class="spaces">  </span><span class="istickedoff">let {(a5'1, a5'2) = fromEnumQuantity a5} in </span>
-<span class="lineno">  288 </span><span class="spaces">  </span><span class="istickedoff">withCurrency a6 $ \a6' -&gt; </span>
-<span class="lineno">  289 </span><span class="spaces">  </span><span class="istickedoff">withMaybeZeroInflationTermStructure a7 $ \a7' -&gt; </span>
-<span class="lineno">  290 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a8' -&gt; </span>
-<span class="lineno">  291 </span><span class="spaces">  </span><span class="istickedoff">zeroInflationIndex''_ a1' a2' a3' a4' a5'1  a5'2 a6' a7' a8' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  292 </span><span class="spaces">  </span><span class="istickedoff">peekZeroInflationIndex res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">  293 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a8'&gt;&gt;</span>
-<span class="lineno">  294 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">  295 </span>
-<span class="lineno">  296 </span>
-<span class="lineno">  297 </span>
-<span class="lineno">  298 </span>-- |A custom quoted year-on-year inflation index (arbitrary family name/region/currency); needs
-<span class="lineno">  299 </span>-- its own past fixings added via 'QuantLib.Index.addFixing'. See 'yoyInflationIndexFromZero'
-<span class="lineno">  300 </span>-- for a YoY index defined instead as a ratio of an existing 'ZeroInflationIndex'\'s fixings.
-<span class="lineno">  301 </span>yoyInflationIndex' :: (String) -- ^familyName
-<span class="lineno">  302 </span> -&gt; (Region) -&gt; (Bool) -- ^revised
-<span class="lineno">  303 </span> -&gt; (Frequency) -&gt; ((Int,TimeUnit)) -- ^availabilityLag
-<span class="lineno">  304 </span> -&gt; (Currency) -&gt; (Maybe YoYInflationTermStructure) -&gt; IO ((YoYInflationIndex))
-<span class="lineno">  305 </span><span class="decl"><span class="istickedoff">yoyInflationIndex' a1 a2 a3 a4 a5 a6 a7 =</span>
-<span class="lineno">  306 </span><span class="spaces">  </span><span class="istickedoff">C2HSImp.withCString a1 $ \a1' -&gt; </span>
-<span class="lineno">  307 </span><span class="spaces">  </span><span class="istickedoff">withRegion a2 $ \a2' -&gt; </span>
-<span class="lineno">  308 </span><span class="spaces">  </span><span class="istickedoff">let {a3' = C2HSImp.fromBool a3} in </span>
-<span class="lineno">  309 </span><span class="spaces">  </span><span class="istickedoff">let {a4' = (fromIntegral . fromEnum) a4} in </span>
-<span class="lineno">  310 </span><span class="spaces">  </span><span class="istickedoff">let {(a5'1, a5'2) = fromEnumQuantity a5} in </span>
-<span class="lineno">  311 </span><span class="spaces">  </span><span class="istickedoff">withCurrency a6 $ \a6' -&gt; </span>
-<span class="lineno">  312 </span><span class="spaces">  </span><span class="istickedoff">withMaybeYoYInflationTermStructure a7 $ \a7' -&gt; </span>
-<span class="lineno">  313 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a8' -&gt; </span>
-<span class="lineno">  314 </span><span class="spaces">  </span><span class="istickedoff">yoyInflationIndex''_ a1' a2' a3' a4' a5'1  a5'2 a6' a7' a8' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  315 </span><span class="spaces">  </span><span class="istickedoff">peekYoYInflationIndex res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">  316 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a8'&gt;&gt;</span>
-<span class="lineno">  317 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">  318 </span>
-<span class="lineno">  319 </span>
-<span class="lineno">  320 </span>
-<span class="lineno">  321 </span>-- |A year-on-year index defined as the ratio of an existing 'ZeroInflationIndex'\'s fixings;
-<span class="lineno">  322 </span>-- stores no fixings of its own.
-<span class="lineno">  323 </span>yoyInflationIndexFromZero :: (ZeroInflationIndex) -&gt; (Maybe YoYInflationTermStructure) -&gt; IO ((YoYInflationIndex))
-<span class="lineno">  324 </span><span class="decl"><span class="istickedoff">yoyInflationIndexFromZero a1 a2 =</span>
-<span class="lineno">  325 </span><span class="spaces">  </span><span class="istickedoff">withZeroInflationIndex a1 $ \a1' -&gt; </span>
-<span class="lineno">  326 </span><span class="spaces">  </span><span class="istickedoff">withMaybeYoYInflationTermStructure a2 $ \a2' -&gt; </span>
-<span class="lineno">  327 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
-<span class="lineno">  328 </span><span class="spaces">  </span><span class="istickedoff">yoyInflationIndexFromZero'_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  329 </span><span class="spaces">  </span><span class="istickedoff">peekYoYInflationIndex res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">  330 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
-<span class="lineno">  331 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">  332 </span>
-<span class="lineno">  333 </span>
-<span class="lineno">  334 </span>
-<span class="lineno">  335 </span>-- |The (possibly forecast) fixing at the given date; for a date with no linked term
-<span class="lineno">  336 </span>-- structure this returns the stored historical fixing added via 'QuantLib.Index.addFixing'.
-<span class="lineno">  337 </span>fixing :: (ZeroInflationIndex) -&gt; (Day) -&gt; IO ((Double))
-<span class="lineno">  338 </span><span class="decl"><span class="istickedoff">fixing a1 a2 =</span>
-<span class="lineno">  339 </span><span class="spaces">  </span><span class="istickedoff">withZeroInflationIndex a1 $ \a1' -&gt; </span>
-<span class="lineno">  340 </span><span class="spaces">  </span><span class="istickedoff">withDay a2 $ \a2' -&gt; </span>
-<span class="lineno">  341 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
-<span class="lineno">  342 </span><span class="spaces">  </span><span class="istickedoff">fixing'_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  343 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
-<span class="lineno">  344 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
-<span class="lineno">  345 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">  346 </span>
-<span class="lineno">  347 </span>
-<span class="lineno">  348 </span>
-<span class="lineno">  349 </span>-- |The (possibly forecast) year-on-year fixing at the given date; for a date with no linked
-<span class="lineno">  350 </span>-- term structure this returns the stored historical fixing added via 'QuantLib.Index.addFixing'.
-<span class="lineno">  351 </span>yoyFixing :: (YoYInflationIndex) -&gt; (Day) -&gt; IO ((Double))
-<span class="lineno">  352 </span><span class="decl"><span class="nottickedoff">yoyFixing a1 a2 =</span>
-<span class="lineno">  353 </span><span class="spaces">  </span><span class="nottickedoff">withYoYInflationIndex a1 $ \a1' -&gt; </span>
-<span class="lineno">  354 </span><span class="spaces">  </span><span class="nottickedoff">withDay a2 $ \a2' -&gt; </span>
-<span class="lineno">  355 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a3' -&gt; </span>
-<span class="lineno">  356 </span><span class="spaces">  </span><span class="nottickedoff">yoyFixing'_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  357 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = realToFrac res} in</span>
-<span class="lineno">  358 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a3'&gt;&gt;</span>
-<span class="lineno">  359 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
-<span class="lineno">  360 </span>
-<span class="lineno">  361 </span>
-<span class="lineno">  362 </span>
-<span class="lineno">  363 </span>-- vim: set ff=unix ts=8 sts=2 sw=2 et:
+<span class="lineno">   64 </span>
+<span class="lineno">   65 </span>
+<span class="lineno">   66 </span>
+<span class="lineno">   67 </span>data ZeroInflationIndexType = AUCPI
+<span class="lineno">   68 </span>                            | EUHICP
+<span class="lineno">   69 </span>                            | EUHICPXT
+<span class="lineno">   70 </span>                            | FRHICP
+<span class="lineno">   71 </span>                            | UKHICP
+<span class="lineno">   72 </span>                            | UKRPI
+<span class="lineno">   73 </span>                            | USCPI
+<span class="lineno">   74 </span>                            | ZACPI
+<span class="lineno">   75 </span>  deriving (<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Show</span></span></span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Eq</span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Read</span></span></span></span></span></span></span></span>)
+<span class="lineno">   76 </span>instance <span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Enum ZeroInflationIndexType</span></span></span></span> where
+<span class="lineno">   77 </span>  <span class="decl"><span class="nottickedoff">succ AUCPI = EUHICP</span>
+<span class="lineno">   78 </span><span class="spaces">  </span><span class="nottickedoff">succ EUHICP = EUHICPXT</span>
+<span class="lineno">   79 </span><span class="spaces">  </span><span class="nottickedoff">succ EUHICPXT = FRHICP</span>
+<span class="lineno">   80 </span><span class="spaces">  </span><span class="nottickedoff">succ FRHICP = UKHICP</span>
+<span class="lineno">   81 </span><span class="spaces">  </span><span class="nottickedoff">succ UKHICP = UKRPI</span>
+<span class="lineno">   82 </span><span class="spaces">  </span><span class="nottickedoff">succ UKRPI = USCPI</span>
+<span class="lineno">   83 </span><span class="spaces">  </span><span class="nottickedoff">succ USCPI = ZACPI</span>
+<span class="lineno">   84 </span><span class="spaces">  </span><span class="nottickedoff">succ ZACPI = error &quot;ZeroInflationIndexType.succ: ZACPI has no successor&quot;</span></span>
+<span class="lineno">   85 </span>
+<span class="lineno">   86 </span>  <span class="decl"><span class="nottickedoff">pred EUHICP = AUCPI</span>
+<span class="lineno">   87 </span><span class="spaces">  </span><span class="nottickedoff">pred EUHICPXT = EUHICP</span>
+<span class="lineno">   88 </span><span class="spaces">  </span><span class="nottickedoff">pred FRHICP = EUHICPXT</span>
+<span class="lineno">   89 </span><span class="spaces">  </span><span class="nottickedoff">pred UKHICP = FRHICP</span>
+<span class="lineno">   90 </span><span class="spaces">  </span><span class="nottickedoff">pred UKRPI = UKHICP</span>
+<span class="lineno">   91 </span><span class="spaces">  </span><span class="nottickedoff">pred USCPI = UKRPI</span>
+<span class="lineno">   92 </span><span class="spaces">  </span><span class="nottickedoff">pred ZACPI = USCPI</span>
+<span class="lineno">   93 </span><span class="spaces">  </span><span class="nottickedoff">pred AUCPI = error &quot;ZeroInflationIndexType.pred: AUCPI has no predecessor&quot;</span></span>
+<span class="lineno">   94 </span>
+<span class="lineno">   95 </span>  <span class="decl"><span class="nottickedoff">enumFromTo from to = go from</span>
+<span class="lineno">   96 </span><span class="spaces">    </span><span class="nottickedoff">where</span>
+<span class="lineno">   97 </span><span class="spaces">      </span><span class="nottickedoff">end = fromEnum to</span>
+<span class="lineno">   98 </span><span class="spaces">      </span><span class="nottickedoff">go v = case compare (fromEnum v) end of</span>
+<span class="lineno">   99 </span><span class="spaces">                 </span><span class="nottickedoff">LT -&gt; v : go (succ v)</span>
+<span class="lineno">  100 </span><span class="spaces">                 </span><span class="nottickedoff">EQ -&gt; [v]</span>
+<span class="lineno">  101 </span><span class="spaces">                 </span><span class="nottickedoff">GT -&gt; []</span></span>
+<span class="lineno">  102 </span>
+<span class="lineno">  103 </span>  <span class="decl"><span class="nottickedoff">enumFrom from = enumFromTo from ZACPI</span></span>
+<span class="lineno">  104 </span>
+<span class="lineno">  105 </span>  <span class="decl"><span class="istickedoff">fromEnum AUCPI = <span class="nottickedoff">0</span></span>
+<span class="lineno">  106 </span><span class="spaces">  </span><span class="istickedoff">fromEnum EUHICP = 1</span>
+<span class="lineno">  107 </span><span class="spaces">  </span><span class="istickedoff">fromEnum EUHICPXT = <span class="nottickedoff">2</span></span>
+<span class="lineno">  108 </span><span class="spaces">  </span><span class="istickedoff">fromEnum FRHICP = <span class="nottickedoff">3</span></span>
+<span class="lineno">  109 </span><span class="spaces">  </span><span class="istickedoff">fromEnum UKHICP = <span class="nottickedoff">4</span></span>
+<span class="lineno">  110 </span><span class="spaces">  </span><span class="istickedoff">fromEnum UKRPI = 5</span>
+<span class="lineno">  111 </span><span class="spaces">  </span><span class="istickedoff">fromEnum USCPI = <span class="nottickedoff">6</span></span>
+<span class="lineno">  112 </span><span class="spaces">  </span><span class="istickedoff">fromEnum ZACPI = <span class="nottickedoff">7</span></span></span>
+<span class="lineno">  113 </span>
+<span class="lineno">  114 </span>  <span class="decl"><span class="nottickedoff">toEnum 0 = AUCPI</span>
+<span class="lineno">  115 </span><span class="spaces">  </span><span class="nottickedoff">toEnum 1 = EUHICP</span>
+<span class="lineno">  116 </span><span class="spaces">  </span><span class="nottickedoff">toEnum 2 = EUHICPXT</span>
+<span class="lineno">  117 </span><span class="spaces">  </span><span class="nottickedoff">toEnum 3 = FRHICP</span>
+<span class="lineno">  118 </span><span class="spaces">  </span><span class="nottickedoff">toEnum 4 = UKHICP</span>
+<span class="lineno">  119 </span><span class="spaces">  </span><span class="nottickedoff">toEnum 5 = UKRPI</span>
+<span class="lineno">  120 </span><span class="spaces">  </span><span class="nottickedoff">toEnum 6 = USCPI</span>
+<span class="lineno">  121 </span><span class="spaces">  </span><span class="nottickedoff">toEnum 7 = ZACPI</span>
+<span class="lineno">  122 </span><span class="spaces">  </span><span class="nottickedoff">toEnum unmatched = error (&quot;ZeroInflationIndexType.toEnum: Cannot match &quot; ++ show unmatched)</span></span>
+<span class="lineno">  123 </span>
+<span class="lineno">  124 </span>
+<span class="lineno">  125 </span>data YoYInflationIndexType = YYAUCPI
+<span class="lineno">  126 </span>                           | YYEUHICP
+<span class="lineno">  127 </span>                           | YYEUHICPXT
+<span class="lineno">  128 </span>                           | YYFRHICP
+<span class="lineno">  129 </span>                           | YYUKRPI
+<span class="lineno">  130 </span>                           | YYUSCPI
+<span class="lineno">  131 </span>                           | YYZACPI
+<span class="lineno">  132 </span>  deriving (<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Show</span></span></span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Eq</span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Read</span></span></span></span></span></span></span></span>)
+<span class="lineno">  133 </span>instance <span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Enum YoYInflationIndexType</span></span></span></span> where
+<span class="lineno">  134 </span>  <span class="decl"><span class="nottickedoff">succ YYAUCPI = YYEUHICP</span>
+<span class="lineno">  135 </span><span class="spaces">  </span><span class="nottickedoff">succ YYEUHICP = YYEUHICPXT</span>
+<span class="lineno">  136 </span><span class="spaces">  </span><span class="nottickedoff">succ YYEUHICPXT = YYFRHICP</span>
+<span class="lineno">  137 </span><span class="spaces">  </span><span class="nottickedoff">succ YYFRHICP = YYUKRPI</span>
+<span class="lineno">  138 </span><span class="spaces">  </span><span class="nottickedoff">succ YYUKRPI = YYUSCPI</span>
+<span class="lineno">  139 </span><span class="spaces">  </span><span class="nottickedoff">succ YYUSCPI = YYZACPI</span>
+<span class="lineno">  140 </span><span class="spaces">  </span><span class="nottickedoff">succ YYZACPI = error &quot;YoYInflationIndexType.succ: YYZACPI has no successor&quot;</span></span>
+<span class="lineno">  141 </span>
+<span class="lineno">  142 </span>  <span class="decl"><span class="nottickedoff">pred YYEUHICP = YYAUCPI</span>
+<span class="lineno">  143 </span><span class="spaces">  </span><span class="nottickedoff">pred YYEUHICPXT = YYEUHICP</span>
+<span class="lineno">  144 </span><span class="spaces">  </span><span class="nottickedoff">pred YYFRHICP = YYEUHICPXT</span>
+<span class="lineno">  145 </span><span class="spaces">  </span><span class="nottickedoff">pred YYUKRPI = YYFRHICP</span>
+<span class="lineno">  146 </span><span class="spaces">  </span><span class="nottickedoff">pred YYUSCPI = YYUKRPI</span>
+<span class="lineno">  147 </span><span class="spaces">  </span><span class="nottickedoff">pred YYZACPI = YYUSCPI</span>
+<span class="lineno">  148 </span><span class="spaces">  </span><span class="nottickedoff">pred YYAUCPI = error &quot;YoYInflationIndexType.pred: YYAUCPI has no predecessor&quot;</span></span>
+<span class="lineno">  149 </span>
+<span class="lineno">  150 </span>  <span class="decl"><span class="nottickedoff">enumFromTo from to = go from</span>
+<span class="lineno">  151 </span><span class="spaces">    </span><span class="nottickedoff">where</span>
+<span class="lineno">  152 </span><span class="spaces">      </span><span class="nottickedoff">end = fromEnum to</span>
+<span class="lineno">  153 </span><span class="spaces">      </span><span class="nottickedoff">go v = case compare (fromEnum v) end of</span>
+<span class="lineno">  154 </span><span class="spaces">                 </span><span class="nottickedoff">LT -&gt; v : go (succ v)</span>
+<span class="lineno">  155 </span><span class="spaces">                 </span><span class="nottickedoff">EQ -&gt; [v]</span>
+<span class="lineno">  156 </span><span class="spaces">                 </span><span class="nottickedoff">GT -&gt; []</span></span>
+<span class="lineno">  157 </span>
+<span class="lineno">  158 </span>  <span class="decl"><span class="nottickedoff">enumFrom from = enumFromTo from YYZACPI</span></span>
+<span class="lineno">  159 </span>
+<span class="lineno">  160 </span>  <span class="decl"><span class="istickedoff">fromEnum YYAUCPI = <span class="nottickedoff">0</span></span>
+<span class="lineno">  161 </span><span class="spaces">  </span><span class="istickedoff">fromEnum YYEUHICP = <span class="nottickedoff">1</span></span>
+<span class="lineno">  162 </span><span class="spaces">  </span><span class="istickedoff">fromEnum YYEUHICPXT = <span class="nottickedoff">2</span></span>
+<span class="lineno">  163 </span><span class="spaces">  </span><span class="istickedoff">fromEnum YYFRHICP = <span class="nottickedoff">3</span></span>
+<span class="lineno">  164 </span><span class="spaces">  </span><span class="istickedoff">fromEnum YYUKRPI = 4</span>
+<span class="lineno">  165 </span><span class="spaces">  </span><span class="istickedoff">fromEnum YYUSCPI = <span class="nottickedoff">5</span></span>
+<span class="lineno">  166 </span><span class="spaces">  </span><span class="istickedoff">fromEnum YYZACPI = <span class="nottickedoff">6</span></span></span>
+<span class="lineno">  167 </span>
+<span class="lineno">  168 </span>  <span class="decl"><span class="nottickedoff">toEnum 0 = YYAUCPI</span>
+<span class="lineno">  169 </span><span class="spaces">  </span><span class="nottickedoff">toEnum 1 = YYEUHICP</span>
+<span class="lineno">  170 </span><span class="spaces">  </span><span class="nottickedoff">toEnum 2 = YYEUHICPXT</span>
+<span class="lineno">  171 </span><span class="spaces">  </span><span class="nottickedoff">toEnum 3 = YYFRHICP</span>
+<span class="lineno">  172 </span><span class="spaces">  </span><span class="nottickedoff">toEnum 4 = YYUKRPI</span>
+<span class="lineno">  173 </span><span class="spaces">  </span><span class="nottickedoff">toEnum 5 = YYUSCPI</span>
+<span class="lineno">  174 </span><span class="spaces">  </span><span class="nottickedoff">toEnum 6 = YYZACPI</span>
+<span class="lineno">  175 </span><span class="spaces">  </span><span class="nottickedoff">toEnum unmatched = error (&quot;YoYInflationIndexType.toEnum: Cannot match &quot; ++ show unmatched)</span></span>
+<span class="lineno">  176 </span>
+<span class="lineno">  177 </span>
+<span class="lineno">  178 </span>data RegionType = AustraliaRegion
+<span class="lineno">  179 </span>                | EURegion
+<span class="lineno">  180 </span>                | FranceRegion
+<span class="lineno">  181 </span>                | UKRegion
+<span class="lineno">  182 </span>                | USRegion
+<span class="lineno">  183 </span>                | ZARegion
+<span class="lineno">  184 </span>  deriving (<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Show</span></span></span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Eq</span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Read</span></span></span></span></span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Bounded</span></span></span></span>)
+<span class="lineno">  185 </span>instance <span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Enum RegionType</span></span></span></span> where
+<span class="lineno">  186 </span>  <span class="decl"><span class="nottickedoff">succ AustraliaRegion = EURegion</span>
+<span class="lineno">  187 </span><span class="spaces">  </span><span class="nottickedoff">succ EURegion = FranceRegion</span>
+<span class="lineno">  188 </span><span class="spaces">  </span><span class="nottickedoff">succ FranceRegion = UKRegion</span>
+<span class="lineno">  189 </span><span class="spaces">  </span><span class="nottickedoff">succ UKRegion = USRegion</span>
+<span class="lineno">  190 </span><span class="spaces">  </span><span class="nottickedoff">succ USRegion = ZARegion</span>
+<span class="lineno">  191 </span><span class="spaces">  </span><span class="nottickedoff">succ ZARegion = error &quot;RegionType.succ: ZARegion has no successor&quot;</span></span>
+<span class="lineno">  192 </span>
+<span class="lineno">  193 </span>  <span class="decl"><span class="nottickedoff">pred EURegion = AustraliaRegion</span>
+<span class="lineno">  194 </span><span class="spaces">  </span><span class="nottickedoff">pred FranceRegion = EURegion</span>
+<span class="lineno">  195 </span><span class="spaces">  </span><span class="nottickedoff">pred UKRegion = FranceRegion</span>
+<span class="lineno">  196 </span><span class="spaces">  </span><span class="nottickedoff">pred USRegion = UKRegion</span>
+<span class="lineno">  197 </span><span class="spaces">  </span><span class="nottickedoff">pred ZARegion = USRegion</span>
+<span class="lineno">  198 </span><span class="spaces">  </span><span class="nottickedoff">pred AustraliaRegion = error &quot;RegionType.pred: AustraliaRegion has no predecessor&quot;</span></span>
+<span class="lineno">  199 </span>
+<span class="lineno">  200 </span>  <span class="decl"><span class="nottickedoff">enumFromTo from to = go from</span>
+<span class="lineno">  201 </span><span class="spaces">    </span><span class="nottickedoff">where</span>
+<span class="lineno">  202 </span><span class="spaces">      </span><span class="nottickedoff">end = fromEnum to</span>
+<span class="lineno">  203 </span><span class="spaces">      </span><span class="nottickedoff">go v = case compare (fromEnum v) end of</span>
+<span class="lineno">  204 </span><span class="spaces">                 </span><span class="nottickedoff">LT -&gt; v : go (succ v)</span>
+<span class="lineno">  205 </span><span class="spaces">                 </span><span class="nottickedoff">EQ -&gt; [v]</span>
+<span class="lineno">  206 </span><span class="spaces">                 </span><span class="nottickedoff">GT -&gt; []</span></span>
+<span class="lineno">  207 </span>
+<span class="lineno">  208 </span>  <span class="decl"><span class="nottickedoff">enumFrom from = enumFromTo from ZARegion</span></span>
+<span class="lineno">  209 </span>
+<span class="lineno">  210 </span>  <span class="decl"><span class="nottickedoff">fromEnum AustraliaRegion = 0</span>
+<span class="lineno">  211 </span><span class="spaces">  </span><span class="nottickedoff">fromEnum EURegion = 1</span>
+<span class="lineno">  212 </span><span class="spaces">  </span><span class="nottickedoff">fromEnum FranceRegion = 2</span>
+<span class="lineno">  213 </span><span class="spaces">  </span><span class="nottickedoff">fromEnum UKRegion = 3</span>
+<span class="lineno">  214 </span><span class="spaces">  </span><span class="nottickedoff">fromEnum USRegion = 4</span>
+<span class="lineno">  215 </span><span class="spaces">  </span><span class="nottickedoff">fromEnum ZARegion = 5</span></span>
+<span class="lineno">  216 </span>
+<span class="lineno">  217 </span>  <span class="decl"><span class="nottickedoff">toEnum 0 = AustraliaRegion</span>
+<span class="lineno">  218 </span><span class="spaces">  </span><span class="nottickedoff">toEnum 1 = EURegion</span>
+<span class="lineno">  219 </span><span class="spaces">  </span><span class="nottickedoff">toEnum 2 = FranceRegion</span>
+<span class="lineno">  220 </span><span class="spaces">  </span><span class="nottickedoff">toEnum 3 = UKRegion</span>
+<span class="lineno">  221 </span><span class="spaces">  </span><span class="nottickedoff">toEnum 4 = USRegion</span>
+<span class="lineno">  222 </span><span class="spaces">  </span><span class="nottickedoff">toEnum 5 = ZARegion</span>
+<span class="lineno">  223 </span><span class="spaces">  </span><span class="nottickedoff">toEnum unmatched = error (&quot;RegionType.toEnum: Cannot match &quot; ++ show unmatched)</span></span>
+<span class="lineno">  224 </span>
+<span class="lineno">  225 </span>
+<span class="lineno">  226 </span>
+<span class="lineno">  227 </span>-- |A named zero inflation index (RPI/HICP/CPI family). Constructs with no historical
+<span class="lineno">  228 </span>-- fixings and no linked term structure -- add fixings via 'QuantLib.Index.addFixing'.
+<span class="lineno">  229 </span>zeroInflationIndex :: (ZeroInflationIndexType) -&gt; IO ((ZeroInflationIndex))
+<span class="lineno">  230 </span><span class="decl"><span class="istickedoff">zeroInflationIndex a1 =</span>
+<span class="lineno">  231 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = (fromIntegral . fromEnum) a1} in </span>
+<span class="lineno">  232 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
+<span class="lineno">  233 </span><span class="spaces">  </span><span class="istickedoff">zeroInflationIndex'_ a1' a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  234 </span><span class="spaces">  </span><span class="istickedoff">peekZeroInflationIndex res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  235 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
+<span class="lineno">  236 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  237 </span>
+<span class="lineno">  238 </span>
+<span class="lineno">  239 </span>
+<span class="lineno">  240 </span>-- |A named quoted year-on-year inflation index.
+<span class="lineno">  241 </span>yoyInflationIndex :: (YoYInflationIndexType) -&gt; IO ((YoYInflationIndex))
+<span class="lineno">  242 </span><span class="decl"><span class="istickedoff">yoyInflationIndex a1 =</span>
+<span class="lineno">  243 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = (fromIntegral . fromEnum) a1} in </span>
+<span class="lineno">  244 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
+<span class="lineno">  245 </span><span class="spaces">  </span><span class="istickedoff">yoyInflationIndex'_ a1' a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  246 </span><span class="spaces">  </span><span class="istickedoff">peekYoYInflationIndex res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  247 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
+<span class="lineno">  248 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  249 </span>
+<span class="lineno">  250 </span>
+<span class="lineno">  251 </span>
+<span class="lineno">  252 </span>-- |One of the 6 named geographical/economic regions QuantLib ships (used for the pre-baked
+<span class="lineno">  253 </span>-- named indices, e.g. 'UKRPI' uses 'UKRegion' internally). See 'region\'' for an arbitrary
+<span class="lineno">  254 </span>-- custom region.
+<span class="lineno">  255 </span>region :: (RegionType) -&gt; IO ((Region))
+<span class="lineno">  256 </span><span class="decl"><span class="nottickedoff">region a1 =</span>
+<span class="lineno">  257 </span><span class="spaces">  </span><span class="nottickedoff">let {a1' = (fromIntegral . fromEnum) a1} in </span>
+<span class="lineno">  258 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a2' -&gt; </span>
+<span class="lineno">  259 </span><span class="spaces">  </span><span class="nottickedoff">region'_ a1' a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  260 </span><span class="spaces">  </span><span class="nottickedoff">peekRegion res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  261 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a2'&gt;&gt;</span>
+<span class="lineno">  262 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno">  263 </span>
+<span class="lineno">  264 </span>
+<span class="lineno">  265 </span>
+<span class="lineno">  266 </span>-- |An arbitrary custom region, given its name and ISO code.
+<span class="lineno">  267 </span>region' :: (String) -&gt; (String) -&gt; IO ((Region))
+<span class="lineno">  268 </span><span class="decl"><span class="istickedoff">region' a1 a2 =</span>
+<span class="lineno">  269 </span><span class="spaces">  </span><span class="istickedoff">C2HSImp.withCString a1 $ \a1' -&gt; </span>
+<span class="lineno">  270 </span><span class="spaces">  </span><span class="istickedoff">C2HSImp.withCString a2 $ \a2' -&gt; </span>
+<span class="lineno">  271 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
+<span class="lineno">  272 </span><span class="spaces">  </span><span class="istickedoff">region''_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  273 </span><span class="spaces">  </span><span class="istickedoff">peekRegion res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  274 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
+<span class="lineno">  275 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  276 </span>
+<span class="lineno">  277 </span>
+<span class="lineno">  278 </span>
+<span class="lineno">  279 </span>-- |A custom zero inflation index (arbitrary family name/region/currency), with no historical
+<span class="lineno">  280 </span>-- fixings -- add fixings via 'QuantLib.Index.addFixing'.
+<span class="lineno">  281 </span>zeroInflationIndex' :: (String) -- ^familyName
+<span class="lineno">  282 </span> -&gt; (Region) -&gt; (Bool) -- ^revised
+<span class="lineno">  283 </span> -&gt; (Frequency) -&gt; ((Int,TimeUnit)) -- ^availabilityLag
+<span class="lineno">  284 </span> -&gt; (Currency) -&gt; (Maybe ZeroInflationTermStructure) -&gt; IO ((ZeroInflationIndex))
+<span class="lineno">  285 </span><span class="decl"><span class="istickedoff">zeroInflationIndex' a1 a2 a3 a4 a5 a6 a7 =</span>
+<span class="lineno">  286 </span><span class="spaces">  </span><span class="istickedoff">C2HSImp.withCString a1 $ \a1' -&gt; </span>
+<span class="lineno">  287 </span><span class="spaces">  </span><span class="istickedoff">withRegion a2 $ \a2' -&gt; </span>
+<span class="lineno">  288 </span><span class="spaces">  </span><span class="istickedoff">let {a3' = C2HSImp.fromBool a3} in </span>
+<span class="lineno">  289 </span><span class="spaces">  </span><span class="istickedoff">let {a4' = (fromIntegral . fromEnum) a4} in </span>
+<span class="lineno">  290 </span><span class="spaces">  </span><span class="istickedoff">let {(a5'1, a5'2) = fromEnumQuantity a5} in </span>
+<span class="lineno">  291 </span><span class="spaces">  </span><span class="istickedoff">withCurrency a6 $ \a6' -&gt; </span>
+<span class="lineno">  292 </span><span class="spaces">  </span><span class="istickedoff">withMaybeZeroInflationTermStructure a7 $ \a7' -&gt; </span>
+<span class="lineno">  293 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a8' -&gt; </span>
+<span class="lineno">  294 </span><span class="spaces">  </span><span class="istickedoff">zeroInflationIndex''_ a1' a2' a3' a4' a5'1  a5'2 a6' a7' a8' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  295 </span><span class="spaces">  </span><span class="istickedoff">peekZeroInflationIndex res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  296 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a8'&gt;&gt;</span>
+<span class="lineno">  297 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  298 </span>
+<span class="lineno">  299 </span>
+<span class="lineno">  300 </span>
+<span class="lineno">  301 </span>-- |A custom quoted year-on-year inflation index (arbitrary family name/region/currency); needs
+<span class="lineno">  302 </span>-- its own past fixings added via 'QuantLib.Index.addFixing'. See 'yoyInflationIndexFromZero'
+<span class="lineno">  303 </span>-- for a YoY index defined instead as a ratio of an existing 'ZeroInflationIndex'\'s fixings.
+<span class="lineno">  304 </span>yoyInflationIndex' :: (String) -- ^familyName
+<span class="lineno">  305 </span> -&gt; (Region) -&gt; (Bool) -- ^revised
+<span class="lineno">  306 </span> -&gt; (Frequency) -&gt; ((Int,TimeUnit)) -- ^availabilityLag
+<span class="lineno">  307 </span> -&gt; (Currency) -&gt; (Maybe YoYInflationTermStructure) -&gt; IO ((YoYInflationIndex))
+<span class="lineno">  308 </span><span class="decl"><span class="istickedoff">yoyInflationIndex' a1 a2 a3 a4 a5 a6 a7 =</span>
+<span class="lineno">  309 </span><span class="spaces">  </span><span class="istickedoff">C2HSImp.withCString a1 $ \a1' -&gt; </span>
+<span class="lineno">  310 </span><span class="spaces">  </span><span class="istickedoff">withRegion a2 $ \a2' -&gt; </span>
+<span class="lineno">  311 </span><span class="spaces">  </span><span class="istickedoff">let {a3' = C2HSImp.fromBool a3} in </span>
+<span class="lineno">  312 </span><span class="spaces">  </span><span class="istickedoff">let {a4' = (fromIntegral . fromEnum) a4} in </span>
+<span class="lineno">  313 </span><span class="spaces">  </span><span class="istickedoff">let {(a5'1, a5'2) = fromEnumQuantity a5} in </span>
+<span class="lineno">  314 </span><span class="spaces">  </span><span class="istickedoff">withCurrency a6 $ \a6' -&gt; </span>
+<span class="lineno">  315 </span><span class="spaces">  </span><span class="istickedoff">withMaybeYoYInflationTermStructure a7 $ \a7' -&gt; </span>
+<span class="lineno">  316 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a8' -&gt; </span>
+<span class="lineno">  317 </span><span class="spaces">  </span><span class="istickedoff">yoyInflationIndex''_ a1' a2' a3' a4' a5'1  a5'2 a6' a7' a8' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  318 </span><span class="spaces">  </span><span class="istickedoff">peekYoYInflationIndex res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  319 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a8'&gt;&gt;</span>
+<span class="lineno">  320 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  321 </span>
+<span class="lineno">  322 </span>
+<span class="lineno">  323 </span>
+<span class="lineno">  324 </span>-- |A year-on-year index defined as the ratio of an existing 'ZeroInflationIndex'\'s fixings;
+<span class="lineno">  325 </span>-- stores no fixings of its own.
+<span class="lineno">  326 </span>yoyInflationIndexFromZero :: (ZeroInflationIndex) -&gt; (Maybe YoYInflationTermStructure) -&gt; IO ((YoYInflationIndex))
+<span class="lineno">  327 </span><span class="decl"><span class="istickedoff">yoyInflationIndexFromZero a1 a2 =</span>
+<span class="lineno">  328 </span><span class="spaces">  </span><span class="istickedoff">withZeroInflationIndex a1 $ \a1' -&gt; </span>
+<span class="lineno">  329 </span><span class="spaces">  </span><span class="istickedoff">withMaybeYoYInflationTermStructure a2 $ \a2' -&gt; </span>
+<span class="lineno">  330 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
+<span class="lineno">  331 </span><span class="spaces">  </span><span class="istickedoff">yoyInflationIndexFromZero'_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  332 </span><span class="spaces">  </span><span class="istickedoff">peekYoYInflationIndex res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  333 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
+<span class="lineno">  334 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  335 </span>
+<span class="lineno">  336 </span>
+<span class="lineno">  337 </span>
+<span class="lineno">  338 </span>-- |The (possibly forecast) fixing at the given date; for a date with no linked term
+<span class="lineno">  339 </span>-- structure this returns the stored historical fixing added via 'QuantLib.Index.addFixing'.
+<span class="lineno">  340 </span>fixing :: (ZeroInflationIndex) -&gt; (Day) -&gt; IO ((Double))
+<span class="lineno">  341 </span><span class="decl"><span class="istickedoff">fixing a1 a2 =</span>
+<span class="lineno">  342 </span><span class="spaces">  </span><span class="istickedoff">withZeroInflationIndex a1 $ \a1' -&gt; </span>
+<span class="lineno">  343 </span><span class="spaces">  </span><span class="istickedoff">withDay a2 $ \a2' -&gt; </span>
+<span class="lineno">  344 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
+<span class="lineno">  345 </span><span class="spaces">  </span><span class="istickedoff">fixing'_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  346 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno">  347 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
+<span class="lineno">  348 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  349 </span>
+<span class="lineno">  350 </span>
+<span class="lineno">  351 </span>
+<span class="lineno">  352 </span>-- |The (possibly forecast) year-on-year fixing at the given date; for a date with no linked
+<span class="lineno">  353 </span>-- term structure this returns the stored historical fixing added via 'QuantLib.Index.addFixing'.
+<span class="lineno">  354 </span>yoyFixing :: (YoYInflationIndex) -&gt; (Day) -&gt; IO ((Double))
+<span class="lineno">  355 </span><span class="decl"><span class="nottickedoff">yoyFixing a1 a2 =</span>
+<span class="lineno">  356 </span><span class="spaces">  </span><span class="nottickedoff">withYoYInflationIndex a1 $ \a1' -&gt; </span>
+<span class="lineno">  357 </span><span class="spaces">  </span><span class="nottickedoff">withDay a2 $ \a2' -&gt; </span>
+<span class="lineno">  358 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a3' -&gt; </span>
+<span class="lineno">  359 </span><span class="spaces">  </span><span class="nottickedoff">yoyFixing'_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  360 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno">  361 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a3'&gt;&gt;</span>
+<span class="lineno">  362 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno">  363 </span>
 <span class="lineno">  364 </span>
-<span class="lineno">  365 </span>foreign import ccall safe &quot;QuantLib/Index/Inflation.chs.h qlCreateZeroInflationIndex&quot;
-<span class="lineno">  366 </span>  zeroInflationIndex'_ :: (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CZeroInflationIndex')))))
-<span class="lineno">  367 </span>
-<span class="lineno">  368 </span>foreign import ccall safe &quot;QuantLib/Index/Inflation.chs.h qlCreateYoYInflationIndex&quot;
-<span class="lineno">  369 </span>  yoyInflationIndex'_ :: (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CYoYInflationIndex')))))
-<span class="lineno">  370 </span>
-<span class="lineno">  371 </span>foreign import ccall safe &quot;QuantLib/Index/Inflation.chs.h qlRegion&quot;
-<span class="lineno">  372 </span>  region'_ :: (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CRegion)))))
-<span class="lineno">  373 </span>
-<span class="lineno">  374 </span>foreign import ccall safe &quot;QuantLib/Index/Inflation.chs.h qlCreateRegion&quot;
-<span class="lineno">  375 </span>  region''_ :: ((C2HSImp.Ptr C2HSImp.CChar) -&gt; ((C2HSImp.Ptr C2HSImp.CChar) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CRegion))))))
-<span class="lineno">  376 </span>
-<span class="lineno">  377 </span>foreign import ccall safe &quot;QuantLib/Index/Inflation.chs.h qlZeroInflationIndex&quot;
-<span class="lineno">  378 </span>  zeroInflationIndex''_ :: ((C2HSImp.Ptr C2HSImp.CChar) -&gt; ((C2HSImp.Ptr (CRegion)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CCurrency)) -&gt; ((C2HSImp.Ptr (CZeroInflationTermStructure')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CZeroInflationIndex'))))))))))))
+<span class="lineno">  365 </span>
+<span class="lineno">  366 </span>-- |Whether 'fixing' at the given date would have to be forecast rather than served from a stored
+<span class="lineno">  367 </span>-- historical fixing -- true once the date falls after the latest period a fixing could plausibly
+<span class="lineno">  368 </span>-- already be published for, given the index's publication lag.
+<span class="lineno">  369 </span>needsForecast :: (ZeroInflationIndex) -&gt; (Day) -&gt; (Bool)
+<span class="lineno">  370 </span><span class="decl"><span class="nottickedoff">needsForecast a1 a2 =</span>
+<span class="lineno">  371 </span><span class="spaces">  </span><span class="nottickedoff">C2HSImp.unsafePerformIO $</span>
+<span class="lineno">  372 </span><span class="spaces">  </span><span class="nottickedoff">withZeroInflationIndex a1 $ \a1' -&gt; </span>
+<span class="lineno">  373 </span><span class="spaces">  </span><span class="nottickedoff">withDay a2 $ \a2' -&gt; </span>
+<span class="lineno">  374 </span><span class="spaces">  </span><span class="nottickedoff">needsForecast'_ a1' a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  375 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = C2HSImp.toBool res} in</span>
+<span class="lineno">  376 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno">  377 </span>
+<span class="lineno">  378 </span>
 <span class="lineno">  379 </span>
-<span class="lineno">  380 </span>foreign import ccall safe &quot;QuantLib/Index/Inflation.chs.h qlYoYInflationIndex&quot;
-<span class="lineno">  381 </span>  yoyInflationIndex''_ :: ((C2HSImp.Ptr C2HSImp.CChar) -&gt; ((C2HSImp.Ptr (CRegion)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CCurrency)) -&gt; ((C2HSImp.Ptr (CYoYInflationTermStructure')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CYoYInflationIndex'))))))))))))
-<span class="lineno">  382 </span>
-<span class="lineno">  383 </span>foreign import ccall safe &quot;QuantLib/Index/Inflation.chs.h qlYoYInflationIndexFromZero&quot;
-<span class="lineno">  384 </span>  yoyInflationIndexFromZero'_ :: ((C2HSImp.Ptr (CZeroInflationIndex')) -&gt; ((C2HSImp.Ptr (CYoYInflationTermStructure')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CYoYInflationIndex'))))))
-<span class="lineno">  385 </span>
-<span class="lineno">  386 </span>foreign import ccall safe &quot;QuantLib/Index/Inflation.chs.h qlZeroInflationIndexFixing&quot;
-<span class="lineno">  387 </span>  fixing'_ :: ((C2HSImp.Ptr (CZeroInflationIndex')) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble))))
-<span class="lineno">  388 </span>
-<span class="lineno">  389 </span>foreign import ccall safe &quot;QuantLib/Index/Inflation.chs.h qlYoYInflationIndexFixing&quot;
-<span class="lineno">  390 </span>  yoyFixing'_ :: ((C2HSImp.Ptr (CYoYInflationIndex')) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble))))
+<span class="lineno">  380 </span>-- |The year-on-year counterpart of 'needsForecast', for 'yoyFixing'.
+<span class="lineno">  381 </span>yoyNeedsForecast :: (YoYInflationIndex) -&gt; (Day) -&gt; (Bool)
+<span class="lineno">  382 </span><span class="decl"><span class="nottickedoff">yoyNeedsForecast a1 a2 =</span>
+<span class="lineno">  383 </span><span class="spaces">  </span><span class="nottickedoff">C2HSImp.unsafePerformIO $</span>
+<span class="lineno">  384 </span><span class="spaces">  </span><span class="nottickedoff">withYoYInflationIndex a1 $ \a1' -&gt; </span>
+<span class="lineno">  385 </span><span class="spaces">  </span><span class="nottickedoff">withDay a2 $ \a2' -&gt; </span>
+<span class="lineno">  386 </span><span class="spaces">  </span><span class="nottickedoff">yoyNeedsForecast'_ a1' a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  387 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = C2HSImp.toBool res} in</span>
+<span class="lineno">  388 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno">  389 </span>
+<span class="lineno">  390 </span>
+<span class="lineno">  391 </span>
+<span class="lineno">  392 </span>-- vim: set ff=unix ts=8 sts=2 sw=2 et:
+<span class="lineno">  393 </span>
+<span class="lineno">  394 </span>foreign import ccall safe &quot;QuantLib/Index/Inflation.chs.h qlCreateZeroInflationIndex&quot;
+<span class="lineno">  395 </span>  zeroInflationIndex'_ :: (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CZeroInflationIndex')))))
+<span class="lineno">  396 </span>
+<span class="lineno">  397 </span>foreign import ccall safe &quot;QuantLib/Index/Inflation.chs.h qlCreateYoYInflationIndex&quot;
+<span class="lineno">  398 </span>  yoyInflationIndex'_ :: (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CYoYInflationIndex')))))
+<span class="lineno">  399 </span>
+<span class="lineno">  400 </span>foreign import ccall safe &quot;QuantLib/Index/Inflation.chs.h qlRegion&quot;
+<span class="lineno">  401 </span>  region'_ :: (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CRegion)))))
+<span class="lineno">  402 </span>
+<span class="lineno">  403 </span>foreign import ccall safe &quot;QuantLib/Index/Inflation.chs.h qlCreateRegion&quot;
+<span class="lineno">  404 </span>  region''_ :: ((C2HSImp.Ptr C2HSImp.CChar) -&gt; ((C2HSImp.Ptr C2HSImp.CChar) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CRegion))))))
+<span class="lineno">  405 </span>
+<span class="lineno">  406 </span>foreign import ccall safe &quot;QuantLib/Index/Inflation.chs.h qlZeroInflationIndex&quot;
+<span class="lineno">  407 </span>  zeroInflationIndex''_ :: ((C2HSImp.Ptr C2HSImp.CChar) -&gt; ((C2HSImp.Ptr (CRegion)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CCurrency)) -&gt; ((C2HSImp.Ptr (CZeroInflationTermStructure')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CZeroInflationIndex'))))))))))))
+<span class="lineno">  408 </span>
+<span class="lineno">  409 </span>foreign import ccall safe &quot;QuantLib/Index/Inflation.chs.h qlYoYInflationIndex&quot;
+<span class="lineno">  410 </span>  yoyInflationIndex''_ :: ((C2HSImp.Ptr C2HSImp.CChar) -&gt; ((C2HSImp.Ptr (CRegion)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CCurrency)) -&gt; ((C2HSImp.Ptr (CYoYInflationTermStructure')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CYoYInflationIndex'))))))))))))
+<span class="lineno">  411 </span>
+<span class="lineno">  412 </span>foreign import ccall safe &quot;QuantLib/Index/Inflation.chs.h qlYoYInflationIndexFromZero&quot;
+<span class="lineno">  413 </span>  yoyInflationIndexFromZero'_ :: ((C2HSImp.Ptr (CZeroInflationIndex')) -&gt; ((C2HSImp.Ptr (CYoYInflationTermStructure')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CYoYInflationIndex'))))))
+<span class="lineno">  414 </span>
+<span class="lineno">  415 </span>foreign import ccall safe &quot;QuantLib/Index/Inflation.chs.h qlZeroInflationIndexFixing&quot;
+<span class="lineno">  416 </span>  fixing'_ :: ((C2HSImp.Ptr (CZeroInflationIndex')) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble))))
+<span class="lineno">  417 </span>
+<span class="lineno">  418 </span>foreign import ccall safe &quot;QuantLib/Index/Inflation.chs.h qlYoYInflationIndexFixing&quot;
+<span class="lineno">  419 </span>  yoyFixing'_ :: ((C2HSImp.Ptr (CYoYInflationIndex')) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble))))
+<span class="lineno">  420 </span>
+<span class="lineno">  421 </span>foreign import ccall safe &quot;QuantLib/Index/Inflation.chs.h qlZeroInflationIndexNeedsForecast&quot;
+<span class="lineno">  422 </span>  needsForecast'_ :: ((C2HSImp.Ptr (CZeroInflationIndex')) -&gt; (C2HSImp.CInt -&gt; (IO C2HSImp.CInt)))
+<span class="lineno">  423 </span>
+<span class="lineno">  424 </span>foreign import ccall safe &quot;QuantLib/Index/Inflation.chs.h qlYoYInflationIndexNeedsForecast&quot;
+<span class="lineno">  425 </span>  yoyNeedsForecast'_ :: ((C2HSImp.Ptr (CYoYInflationIndex')) -&gt; (C2HSImp.CInt -&gt; (IO C2HSImp.CInt)))
 
 </pre>
 </body>
