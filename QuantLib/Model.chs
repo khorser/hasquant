@@ -23,6 +23,7 @@ module QuantLib.Model
   , GenOneFactorAffineModel
   , LiborForwardModel
   , LfmHullWhiteParameterization
+  , setCovarParam
   , HullWhite
   , Gsr
   , MarkovFunctional
@@ -87,6 +88,7 @@ module QuantLib.Model
   , varianceGammaModel
   , vasicek
   , liborForwardModel
+  , liborForwardModelS0
   , lfmHullWhiteParameterization
   , lfmHullWhiteCovariance
   , gsr
@@ -110,6 +112,8 @@ module QuantLib.Model
   , convexityBias
   , fixedReversion
   , gsrVolatility
+  , gsrMoveVolatility
+  , gsrMoveReversion
   , markovFunctionalVolatility
   , params
   , value
@@ -450,6 +454,19 @@ gsr ts initialVol subsequentVols reversion horizon =
 -- |Volatility step values, as calibrated so far.
 {#fun qlGsrVolatility as gsrVolatility{withGenCalibratedModel*`Gsr',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
+-- |The calibration mask ('calibrate''s @fixParameters@) that fixes every model parameter except
+-- the volatility at step index @i@ (0-based) -- a ready-made @fixParameters@ argument for
+-- calibrating that one volatility in isolation.
+{#fun qlGsrMoveVolatility as gsrMoveVolatility{withGenCalibratedModel*`Gsr'
+  ,fromIntegral`Word' -- ^i
+  ,preArray-`[Bool]'&peekBoolArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+
+-- |The calibration mask that fixes every model parameter except the reversion at index @i@
+-- (0-based) -- the reversion counterpart of 'gsrMoveVolatility'.
+{#fun qlGsrMoveReversion as gsrMoveReversion{withGenCalibratedModel*`Gsr'
+  ,fromIntegral`Word' -- ^i
+  ,preArray-`[Bool]'&peekBoolArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+
 -- |Iteratively calibrates the volatility step values, one at a time, to the given helpers (assumed to have step dates matching the model's volatility step dates).
 {#fun qlGsrCalibrateVolatilitiesIterative as calibrateVolatilitiesIterative{withGenCalibratedModel*`Gsr',withBlackCalibrationHelperArray*`[GenBlackCalibrationHelper bch]'&,withOptimizationMethod*`OptimizationMethod',withEndCriteria*`EndCriteria'
   ,withMaybeConstraint*`Maybe Constraint'
@@ -596,6 +613,13 @@ markovFunctionalCaplet ts reversion initialVol steps capletVol expiries ibor gri
 -- |Libor market (BGM) forward-rate model, built from a 'LiborForwardModelProcess' plus volatility and correlation models.
 {#fun qlLiborForwardModel as liborForwardModel{withGenStochasticProcess*`LiborForwardModelProcess',withLmVolatilityModel*`LmVolatilityModel',withLmCorrelationModel*`LmCorrelationModel',preErrorCheck-`String'errorCheck*-}->`LiborForwardModel'peekLiborForwardModel*#}
 
+-- |Initial value of the discrete forward rate indexed by /alpha/, as seen from time index /beta/
+-- (both indices into the process's tenor structure): the model's calibration input @S_0(alpha,beta)@.
+{#fun qlLiborForwardModelS0 as liborForwardModelS0{withGenCalibratedModel*`LiborForwardModel'
+  ,fromIntegral`Word' -- ^alpha
+  ,fromIntegral`Word' -- ^beta
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |Hull-White caplet-volatility parameterization for a Libor forward model. The correlation
 -- matrix and factor count are explicit, mirroring QuantLib's defaulted constructor arguments;
 -- pass an empty matrix and @1@ for its standard one-factor default.
@@ -611,6 +635,18 @@ lfmHullWhiteParameterization process capletVol (Matrix rows cols values) factors
   ,withDoubleArrayRaw*`[Double]' -- ^correlation
   ,fromIntegral`Word' -- ^factors
   ,preErrorCheck-`String'errorCheck*-}->`LfmHullWhiteParameterization'peekLfmHullWhiteParameterization*#}
+
+-- |installs the covariance parameterization a 'LiborForwardModelProcess' evolves under.
+--
+-- Mandatory before the process is used for anything dynamic: a freshly constructed
+-- 'QuantLib.Process.liborForwardModelProcess' holds no parameterization, and
+-- 'QuantLib.Process.drift', 'QuantLib.Process.diffusion', 'QuantLib.Process.evolve',
+-- 'QuantLib.Process.factors' and 'QuantLib.Method.pathGenerator' all dereference it.
+-- 'QuantLib.Process.liborForwardModelProcessDiscountBond', the fixing/accrual times and
+-- 'QuantLib.Process.liborForwardModelProcessCashFlows' do not, and work without it.
+{#fun qlLiborForwardModelProcessSetCovarParam as setCovarParam{withGenStochasticProcess*`LiborForwardModelProcess' -- ^process
+  ,withStandalone*`LfmHullWhiteParameterization' -- ^param
+  ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Instantaneous covariance matrix at @t@ for the supplied forward-rate state @x@.
 lfmHullWhiteCovariance :: LfmHullWhiteParameterization -> Double -> [Double] -> IO (Matrix Double)

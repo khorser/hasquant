@@ -578,7 +578,7 @@ spec = do
             strikes = [0.01, 0.02, 0.03, 0.04, 0.05]
         refDate <- today
         Settings.setEvaluationDate (Just refDate)
-        optionDate <- addPeriod refDate (round (5.0 * 365) :: Int, Days)
+        optionDate <- addPeriod refDate (round (5.0 * 365 :: Double) :: Int, Days)
         act365 <- dayCounter Actual365FixedStandard
         generating <- noArbSabrSmileSection' optionDate forward alpha_ beta_ nu rho_ act365 0 ShiftedLognormal
         refVols <- mapM (smileSectionVolatility generating) strikes
@@ -610,13 +610,13 @@ spec = do
   describe "ZabrSmileSection vs. SabrSmileSection (gamma=1) consistency" $
     it "optionPrice agrees closely across a strike sweep, for every ZabrEvaluation mode" $ do
       let tau = 5.0; forward = 0.03; alpha_ = 0.08; beta_ = 0.70; nu = 0.20; rho_ = -0.30
-          gamma = 1.0
+          gamma_ = 1.0
           strikes = [0.0001, 0.0071 .. 0.70] :: [Double]
           tol = 1e-4
       sabr <- sabrSmileSection tau forward alpha_ beta_ nu rho_ 0 ShiftedLognormal
       forM_ [(ZabrShortMaturityLognormal, 5), (ZabrShortMaturityNormal, 5),
              (ZabrLocalVolatility, 5), (ZabrFullFd, 2)] $ \(evaluation, fdRefinement) -> do
-        zabr <- zabrSmileSection evaluation tau forward alpha_ beta_ nu rho_ gamma [] fdRefinement
+        zabr <- zabrSmileSection evaluation tau forward alpha_ beta_ nu rho_ gamma_ [] fdRefinement
         forM_ strikes $ \k -> do
           c0 <- smileSectionOptionPrice sabr k Call 1.0
           z <- smileSectionOptionPrice zabr k Call 1.0
@@ -1012,7 +1012,8 @@ spec = do
   describe "QD+ / QD-FP American engines" $ do
     let today' = 1 `june` 2022
         qdPlusExpected = 22.97383256003585 :: Double
-        cases = [ (Put, 100.0, 120.0, 0.10, 0.03)
+        putCase = (Put, 100.0, 120.0, 0.10, 0.03)
+        cases = [ putCase
                 , (Call, 120.0, 100.0, 0.03, 0.10)
                 ]
         mkOption ty spot strike r q = do
@@ -1043,7 +1044,7 @@ spec = do
     it "qdFpAmericanEngine agrees with a converged binomial price across every scheme/equation" $
       Settings.keepingSettings' $ do
         Settings.setEvaluationDate (Just today')
-        let (ty, spot, strike, r, q) = head cases
+        let (ty, spot, strike, r, q) = putCase
         (biProcess, biOpt) <- mkOption ty spot strike r q
         biEng <- binomialVanillaEngine LeisenReimer biProcess 20001
         setPricingEngine biOpt biEng
@@ -1710,14 +1711,14 @@ spec = do
   describe "Basket and spread pricing engines" $ do
     it "testEuroTwoValues: StulzEngine/KirkEngine vs. Fd2dBlackScholesVanillaEngine/MCEuropeanBasketEngine on a representative row subset" $
       Settings.keepingSettings' $ do
-        let today = 1 `march` 2024
-        Settings.setEvaluationDate (Just today)
+        let evalDate = 1 `march` 2024
+        Settings.setEvaluationDate (Just evalDate)
         dc <- dayCounter (Actual360 False)
         cal <- calendar TARGET
         -- basketType: 0=Min, 1=Max, 2=Spread
         let rows :: [(Int, OptionType, Double, Double, Double, Double, Double, Double, Double, Double, Double, Double, Double, Double)]
             rows =
-              -- basketType, type, strike, s1, s2, q1, q2, r, t, v1, v2, rho, result, tol
+              -- basketType, type, strike, s1, s2, q1, q2, r, t, v1, v2, corr, result, tol
               [ (0, Call, 100.0, 100.0, 100.0, 0.00, 0.00, 0.05, 1.00, 0.30, 0.30, 0.90, 10.898, 1.0e-3)
               , (0, Call, 100.0, 100.0, 100.0, 0.00, 0.00, 0.05, 1.00, 0.30, 0.30, 0.10, 4.413, 1.0e-3)
               , (1, Call, 100.0, 100.0, 100.0, 0.00, 0.00, 0.05, 1.00, 0.30, 0.30, 0.90, 17.565, 1.0e-3)
@@ -1731,20 +1732,20 @@ spec = do
               , (2, Call, 3.0, 122.0, 120.0, 0.00, 0.00, 0.10, 0.5, 0.25, 0.20, 0.5, 7.0067, 1.0e-3)
               , (2, Call, 3.0, 122.0, 120.0, 0.00, 0.00, 0.10, 0.5, 0.20, 0.25, -0.5, 12.1483, 1.0e-3)
               ]
-        forM_ rows $ \(basketType, ty, strike, s1, s2, q1, q2, r, t, v1, v2, rho, result, tol) -> do
-          let exDate = addDays (round (t * 360 :: Double)) today
+        forM_ rows $ \(basketType, ty, strike, s1, s2, q1, q2, r, t, v1, v2, corr, result, tol) -> do
+          let exDate = addDays (round (t * 360 :: Double)) evalDate
           spot1 <- simpleQuote s1
           spot2 <- simpleQuote s2
           qQ1 <- simpleQuote q1
           qQ2 <- simpleQuote q2
-          qTS1 <- flatForward today qQ1 dc Continuous Annual
-          qTS2 <- flatForward today qQ2 dc Continuous Annual
+          qTS1 <- flatForward evalDate qQ1 dc Continuous Annual
+          qTS2 <- flatForward evalDate qQ2 dc Continuous Annual
           rQ <- simpleQuote r
-          rTS <- flatForward today rQ dc Continuous Annual
+          rTS <- flatForward evalDate rQ dc Continuous Annual
           vQ1 <- simpleQuote v1
           vQ2 <- simpleQuote v2
-          volTS1 <- blackConstantVol today cal vQ1 dc
-          volTS2 <- blackConstantVol today cal vQ2 dc
+          volTS1 <- blackConstantVol evalDate cal vQ1 dc
+          volTS2 <- blackConstantVol evalDate cal vQ2 dc
 
           (analyticEngine, p1, p2) <- case basketType of
             2 -> do
@@ -1752,12 +1753,12 @@ spec = do
               bp2 <- blackProcess spot2 rTS volTS2 EulerDiscretization False
               gp1 <- asGeneralizedBlackScholesProcess bp1
               gp2 <- asGeneralizedBlackScholesProcess bp2
-              kirk <- kirkEngine bp1 bp2 rho
+              kirk <- kirkEngine bp1 bp2 corr
               pure (kirk, gp1, gp2)
             _ -> do
               gp1 <- blackScholesMertonProcess spot1 qTS1 rTS volTS1 EulerDiscretization False
               gp2 <- blackScholesMertonProcess spot2 qTS2 rTS volTS2 EulerDiscretization False
-              stulz <- stulzEngine gp1 gp2 rho
+              stulz <- stulzEngine gp1 gp2 corr
               pure (stulz, gp1, gp2)
 
           let payoff = PlainVanillaPayoff ty strike
@@ -1771,8 +1772,8 @@ spec = do
           calculated <- npv opt
           calculated `shouldSatisfy` closePrec result tol
 
-          rhoMatrix <- either error pure (boxedRealMatrix 2 2 [1, rho, rho, 1])
-          fd2d <- fd2dBlackScholesVanillaEngine p1 p2 rho 50 50 15 0 Hundsdorfer False (-1.0e10)
+          rhoMatrix <- either error pure (boxedRealMatrix 2 2 [1, corr, corr, 1])
+          fd2d <- fd2dBlackScholesVanillaEngine p1 p2 corr 50 50 15 0 Hundsdorfer False (-1.0e10)
           setPricingEngine opt fd2d
           fdCalculated <- npv opt
           fdCalculated `shouldSatisfy` closePrec result (0.01 * result)
@@ -1785,12 +1786,12 @@ spec = do
 
     it "testBarraquandThreeValues: MCEuropeanBasketEngine/MCAmericanBasketEngine reproduce Barraquand-Martineau Table 3" $
       Settings.keepingSettings' $ do
-        today <- Settings.evaluationDate
+        evalDate <- Settings.evaluationDate
         dc <- dayCounter (Actual360 False)
         cal <- calendar TARGET
         let rows :: [(OptionType, Double, Double, Double, Double, Double)]
             -- optionType=Put, basketType=Max always here (the only live Table-3 rows upstream
-            -- leaves un-commented); strike, t (months, 30 days/month), rho, euroValue, amValue
+            -- leaves un-commented); strike, t (months, 30 days/month), corr, euroValue, amValue
             rows =
               [ (Put, 35.0, 1.0, 0.0, 0.00, 0.00)
               , (Put, 40.0, 1.0, 0.0, 0.13, 0.23)
@@ -1804,23 +1805,23 @@ spec = do
         spot2 <- simpleQuote 40.0
         spot3 <- simpleQuote 40.0
         qQ <- simpleQuote 0.0
-        qTS <- flatForward today qQ dc Continuous Annual
+        qTS <- flatForward evalDate qQ dc Continuous Annual
         rQ <- simpleQuote 0.05
-        rTS <- flatForward today rQ dc Continuous Annual
+        rTS <- flatForward evalDate rQ dc Continuous Annual
         vQ1 <- simpleQuote 0.20
         vQ2 <- simpleQuote 0.30
         vQ3 <- simpleQuote 0.50
-        volTS1 <- blackConstantVol today cal vQ1 dc
-        volTS2 <- blackConstantVol today cal vQ2 dc
-        volTS3 <- blackConstantVol today cal vQ3 dc
+        volTS1 <- blackConstantVol evalDate cal vQ1 dc
+        volTS2 <- blackConstantVol evalDate cal vQ2 dc
+        volTS3 <- blackConstantVol evalDate cal vQ3 dc
         p1 <- blackScholesMertonProcess spot1 qTS rTS volTS1 EulerDiscretization False
         p2 <- blackScholesMertonProcess spot2 qTS rTS volTS2 EulerDiscretization False
         p3 <- blackScholesMertonProcess spot3 qTS rTS volTS3 EulerDiscretization False
-        forM_ rows $ \(ty, strike, t, rho, euroValue, amValue) -> do
-          let exDate = addDays (round (t * 30 :: Double)) today
+        forM_ rows $ \(ty, strike, t, corr, euroValue, amValue) -> do
+          let exDate = addDays (round (t * 30 :: Double)) evalDate
               payoff = plainVanillaPayoff (PlainVanillaPayoff ty strike)
               basket = Max payoff
-          rhoMatrix <- either error pure (boxedRealMatrix 3 3 [1, rho, rho, rho, 1, rho, rho, rho, 1])
+          rhoMatrix <- either error pure (boxedRealMatrix 3 3 [1, corr, corr, corr, 1, corr, corr, corr, 1])
           procArr <- stochasticProcessArray (p1 :| [p2, p3]) rhoMatrix
 
           euroOpt <- basketOption basket (European (EuropeanExercise exDate))
@@ -1829,7 +1830,7 @@ spec = do
           euroCalculated <- npv euroOpt
           euroCalculated `shouldSatisfy` closePrec euroValue (0.01 * 40.0)
 
-          amOpt <- basketOption basket (American (Just today) exDate False)
+          amOpt <- basketOption basket (American (Just evalDate) exDate False)
           mcLsmc <- mcAmericanBasketEngine PseudoRandom procArr (Just 500) Nothing False True (Just 1000) Nothing Nothing 1 (Just 250) 2 Monomial
           setPricingEngine amOpt mcLsmc
           amCalculated <- npv amOpt
@@ -1837,32 +1838,32 @@ spec = do
 
     it "testTavellaValues: MCAmericanBasketEngine reproduces Tavella's cached three-asset American call value" $
       Settings.keepingSettings' $ do
-        today <- Settings.evaluationDate
+        evalDate <- Settings.evaluationDate
         dc <- dayCounter (Actual360 False)
         cal <- calendar TARGET
         spot1 <- simpleQuote 100.0
         spot2 <- simpleQuote 100.0
         spot3 <- simpleQuote 100.0
         qQ <- simpleQuote 0.1
-        qTS <- flatForward today qQ dc Continuous Annual
+        qTS <- flatForward evalDate qQ dc Continuous Annual
         rQ <- simpleQuote 0.05
-        rTS <- flatForward today rQ dc Continuous Annual
+        rTS <- flatForward evalDate rQ dc Continuous Annual
         vQ1 <- simpleQuote 0.20
         vQ2 <- simpleQuote 0.20
         vQ3 <- simpleQuote 0.20
-        volTS1 <- blackConstantVol today cal vQ1 dc
-        volTS2 <- blackConstantVol today cal vQ2 dc
-        volTS3 <- blackConstantVol today cal vQ3 dc
+        volTS1 <- blackConstantVol evalDate cal vQ1 dc
+        volTS2 <- blackConstantVol evalDate cal vQ2 dc
+        volTS3 <- blackConstantVol evalDate cal vQ3 dc
         p1 <- blackScholesMertonProcess spot1 qTS rTS volTS1 EulerDiscretization False
         p2 <- blackScholesMertonProcess spot2 qTS rTS volTS2 EulerDiscretization False
         p3 <- blackScholesMertonProcess spot3 qTS rTS volTS3 EulerDiscretization False
         rhoMatrix <- either error pure (boxedRealMatrix 3 3 [1, -0.25, 0.25, -0.25, 1, 0.3, 0.25, 0.3, 1])
         procArr <- stochasticProcessArray (p1 :| [p2, p3]) rhoMatrix
 
-        let exDate = addDays (round (3.0 * 360 :: Double)) today
+        let exDate = addDays (round (3.0 * 360 :: Double)) evalDate
             payoff = plainVanillaPayoff (PlainVanillaPayoff Call 100.0)
             basket = Max payoff
-        opt <- basketOption basket (American (Just today) exDate False)
+        opt <- basketOption basket (American (Just evalDate) exDate False)
         eng <- mcAmericanBasketEngine PseudoRandom procArr (Just 20) Nothing False True (Just 10000) Nothing Nothing 1 (Just 2500) 2 Monomial
         setPricingEngine opt eng
         calculated <- npv opt
@@ -1872,7 +1873,7 @@ spec = do
 
     it "testOneDAmericanValues: single-asset MaxBasketPayoff American reduces to the 1-D put table (sliceOne)" $
       Settings.keepingSettings' $ do
-        today <- Settings.evaluationDate
+        evalDate <- Settings.evaluationDate
         dc <- dayCounter (Actual360 False)
         cal <- calendar TARGET
         let rows :: [(Double, Double, Double)]
@@ -1886,44 +1887,44 @@ spec = do
               ]
         spot1 <- simpleQuote 0.0
         qQ <- simpleQuote 0.0
-        qTS <- flatForward today qQ dc Continuous Annual
+        qTS <- flatForward evalDate qQ dc Continuous Annual
         rQ <- simpleQuote 0.06
-        rTS <- flatForward today rQ dc Continuous Annual
+        rTS <- flatForward evalDate rQ dc Continuous Annual
         vQ1 <- simpleQuote 0.4
-        volTS1 <- blackConstantVol today cal vQ1 dc
+        volTS1 <- blackConstantVol evalDate cal vQ1 dc
         p1 <- blackScholesMertonProcess spot1 qTS rTS volTS1 EulerDiscretization False
         rhoMatrix <- either error pure (boxedRealMatrix 1 1 [1])
         procArr <- stochasticProcessArray (p1 :| []) rhoMatrix
-        let exDate = addDays (round (0.5 * 360 :: Double)) today
+        let exDate = addDays (round (0.5 * 360 :: Double)) evalDate
         eng <- mcAmericanBasketEngine PseudoRandom procArr (Just 52) Nothing False True (Just 10000) Nothing Nothing 1 (Just 2500) 2 Monomial
         forM_ rows $ \(s, expected, tol) -> do
-          setValue spot1 s
+          _ <- setValue spot1 s
           let payoff = plainVanillaPayoff (PlainVanillaPayoff Put 100.0)
               basket = Max payoff
-          opt <- basketOption basket (American (Just today) exDate False)
+          opt <- basketOption basket (American (Just evalDate) exDate False)
           setPricingEngine opt eng
           calculated <- npv opt
           calculated `shouldSatisfy` closePrec expected (tol * s)
 
     it "testOddSamples: MCAmericanBasketEngine survives an odd required-sample count (antithetic off-by-one regression)" $
       Settings.keepingSettings' $ do
-        today <- Settings.evaluationDate
+        evalDate <- Settings.evaluationDate
         dc <- dayCounter (Actual360 False)
         cal <- calendar TARGET
         spot1 <- simpleQuote 80.0
         qQ <- simpleQuote 0.0
-        qTS <- flatForward today qQ dc Continuous Annual
+        qTS <- flatForward evalDate qQ dc Continuous Annual
         rQ <- simpleQuote 0.06
-        rTS <- flatForward today rQ dc Continuous Annual
+        rTS <- flatForward evalDate rQ dc Continuous Annual
         vQ1 <- simpleQuote 0.4
-        volTS1 <- blackConstantVol today cal vQ1 dc
+        volTS1 <- blackConstantVol evalDate cal vQ1 dc
         p1 <- blackScholesMertonProcess spot1 qTS rTS volTS1 EulerDiscretization False
         rhoMatrix <- either error pure (boxedRealMatrix 1 1 [1])
         procArr <- stochasticProcessArray (p1 :| []) rhoMatrix
-        let exDate = addDays (round (0.5 * 360 :: Double)) today
+        let exDate = addDays (round (0.5 * 360 :: Double)) evalDate
             payoff = plainVanillaPayoff (PlainVanillaPayoff Put 100.0)
             basket = Max payoff
-        opt <- basketOption basket (American (Just today) exDate False)
+        opt <- basketOption basket (American (Just evalDate) exDate False)
         eng <- mcAmericanBasketEngine PseudoRandom procArr (Just 53) Nothing False True (Just 10001) Nothing Nothing 1 (Just 2500) 2 Monomial
         setPricingEngine opt eng
         calculated <- npv opt
@@ -1931,15 +1932,15 @@ spec = do
 
     it "testLocalVolatilitySpreadOption: Fd2dBlackScholesVanillaEngine on two Heston-implied local-vol surfaces" $
       Settings.keepingSettings' $ do
-        let today = 21 `september` 2017
-        Settings.setEvaluationDate (Just today)
+        let evalDate = 21 `september` 2017
+        Settings.setEvaluationDate (Just evalDate)
         dc <- dayCounter (Actual360 False)
-        maturity <- addPeriod today (3, Months)
+        maturity <- addPeriod evalDate (3, Months)
 
         rQ <- simpleQuote 0.07
-        rTS <- flatForward today rQ dc Continuous Annual
+        rTS <- flatForward evalDate rQ dc Continuous Annual
         qQ <- simpleQuote 0.03
-        qTS <- flatForward today qQ dc Continuous Annual
+        qTS <- flatForward evalDate qQ dc Continuous Annual
 
         let s1Value = 100.0 :: Double
             s2Value = 110.0
@@ -1954,36 +1955,36 @@ spec = do
         vol1 <- hestonBlackVolSurface hm1 AngledContour 160
         vol2 <- hestonBlackVolSurface hm2 AngledContour 160
 
-        let rho = -0.6
+        let rho_ = -0.6
             spreadStrike = s2Value - s1Value
 
         bs1 <- blackScholesMertonProcess s1 qTS rTS vol1 EulerDiscretization False
         bs2 <- blackScholesMertonProcess s2 qTS rTS vol2 EulerDiscretization False
 
         opt <- basketOption (Spread (plainVanillaPayoff (PlainVanillaPayoff Call spreadStrike))) (European (EuropeanExercise maturity))
-        eng <- fd2dBlackScholesVanillaEngine bs1 bs2 rho 11 11 6 0 Hundsdorfer True 0.25
+        eng <- fd2dBlackScholesVanillaEngine bs1 bs2 rho_ 11 11 6 0 Hundsdorfer True 0.25
         setPricingEngine opt eng
         calculated <- npv opt
         calculated `shouldSatisfy` closePrec 2.561 0.01
 
     it "test2DPDEGreeks: Fd2dBlackScholesVanillaEngine's delta/gamma vs. KirkEngine bump-and-reprice" $
       Settings.keepingSettings' $ do
-        today <- Settings.evaluationDate
+        evalDate <- Settings.evaluationDate
         dc <- dayCounter Actual365FixedStandard
-        let maturity = addDays 1095 today
+        let maturity = addDays 1095 evalDate
 
         let s1 = 100.0 :: Double
             s2 = 100.0
-            rho = 0.5
+            rho_ = 0.5
             strike = s1 - s2
 
         cal <- calendar TARGET
         spot1 <- simpleQuote s1
         spot2 <- simpleQuote s2
         rQ <- simpleQuote 0.013
-        rTS <- flatForward today rQ dc Continuous Annual
+        rTS <- flatForward evalDate rQ dc Continuous Annual
         vQ <- simpleQuote 0.2
-        volTS <- blackConstantVol today cal vQ dc
+        volTS <- blackConstantVol evalDate cal vQ dc
 
         p1 <- blackProcess spot1 rTS volTS EulerDiscretization False
         p2 <- blackProcess spot2 rTS volTS EulerDiscretization False
@@ -1992,22 +1993,22 @@ spec = do
 
         opt <- basketOption (Spread (plainVanillaPayoff (PlainVanillaPayoff Call strike))) (European (EuropeanExercise maturity))
 
-        fd2d <- fd2dBlackScholesVanillaEngine gp1 gp2 rho 100 100 50 0 Hundsdorfer False (-1.0e10)
+        fd2d <- fd2dBlackScholesVanillaEngine gp1 gp2 rho_ 100 100 50 0 Hundsdorfer False (-1.0e10)
         setPricingEngine opt fd2d
         calculatedDelta <- delta opt
         calculatedGamma <- gamma opt
 
-        kirk <- kirkEngine p1 p2 rho
+        kirk <- kirkEngine p1 p2 rho_
         setPricingEngine opt kirk
         npv0 <- npv opt
 
         let eps = 1.0
-        setValue spot1 (s1 + eps)
-        setValue spot2 (s2 + eps)
+        _ <- setValue spot1 (s1 + eps)
+        _ <- setValue spot2 (s2 + eps)
         npvUp <- npv opt
 
-        setValue spot1 (s1 - eps)
-        setValue spot2 (s2 - eps)
+        _ <- setValue spot1 (s1 - eps)
+        _ <- setValue spot2 (s2 - eps)
         npvDown <- npv opt
 
         let expectedDelta = (npvUp - npvDown) / (2 * eps)
@@ -2018,28 +2019,28 @@ spec = do
 
     it "testBjerksundStenslandSpreadEngine: reproduces the cached put value and call-put parity" $
       Settings.keepingSettings' $ do
-        let today = 1 `march` 2024
-        Settings.setEvaluationDate (Just today)
+        let evalDate = 1 `march` 2024
+        Settings.setEvaluationDate (Just evalDate)
         dc <- dayCounter Actual365FixedStandard
         cal <- calendar TARGET
-        maturity <- addPeriod today (12, Months)
+        maturity <- addPeriod evalDate (12, Months)
 
         let f1 = 100 :: Double
             f2 = 110 :: Double
-            rho = 0.75 :: Double
+            rho_ = 0.75 :: Double
             spreadStrike = 5 :: Double
         rQ <- simpleQuote 0.05
-        rTS <- flatForward today rQ dc Continuous Annual
+        rTS <- flatForward evalDate rQ dc Continuous Annual
         v1Q <- simpleQuote 0.25
         v2Q <- simpleQuote 0.35
-        vol1TS <- blackConstantVol today cal v1Q dc
-        vol2TS <- blackConstantVol today cal v2Q dc
+        vol1TS <- blackConstantVol evalDate cal v1Q dc
+        vol2TS <- blackConstantVol evalDate cal v2Q dc
         s1 <- simpleQuote f1
         s2 <- simpleQuote f2
         p1 <- blackScholesMertonProcess s1 rTS rTS vol1TS EulerDiscretization False
         p2 <- blackScholesMertonProcess s2 rTS rTS vol2TS EulerDiscretization False
 
-        bjEngine <- bjerksundStenslandSpreadEngine p1 p2 rho
+        bjEngine <- bjerksundStenslandSpreadEngine p1 p2 rho_
         putOpt <- basketOption (Spread (plainVanillaPayoff (PlainVanillaPayoff Put spreadStrike))) (European (EuropeanExercise maturity))
         setPricingEngine putOpt bjEngine
         putNPV <- npv putOpt
@@ -2053,19 +2054,19 @@ spec = do
 
     it "testOperatorSplittingSpreadEngine: reproduces the full Kirk-vs-Strang(First/Second) rho table" $
       Settings.keepingSettings' $ do
-        let today = 1 `march` 2024
-        Settings.setEvaluationDate (Just today)
+        let evalDate = 1 `march` 2024
+        Settings.setEvaluationDate (Just evalDate)
         dc <- dayCounter Actual365FixedStandard
         cal <- calendar TARGET
-        maturity <- addPeriod today (12, Months)
+        maturity <- addPeriod evalDate (12, Months)
         rQ <- simpleQuote 0.05
-        rTS <- flatForward today rQ dc Continuous Annual
+        rTS <- flatForward evalDate rQ dc Continuous Annual
 
         -- forward-adjusted BlackProcess inputs (f1=110*dq1/df, f2=90*dq2/df)
         dq1Q <- simpleQuote 0.03
         dq2Q <- simpleQuote 0.02
-        dq1TS <- flatForward today dq1Q dc Continuous Annual
-        dq2TS <- flatForward today dq2Q dc Continuous Annual
+        dq1TS <- flatForward evalDate dq1Q dc Continuous Annual
+        dq2TS <- flatForward evalDate dq2Q dc Continuous Annual
         dfR <- discount' rTS maturity False
         dq1 <- discount' dq1TS maturity False
         dq2 <- discount' dq2TS maturity False
@@ -2073,8 +2074,8 @@ spec = do
             f2' = 90 * dq2 / dfR
         v1Q' <- simpleQuote 0.3
         v2Q' <- simpleQuote 0.2
-        vol1TS' <- blackConstantVol today cal v1Q' dc
-        vol2TS' <- blackConstantVol today cal v2Q' dc
+        vol1TS' <- blackConstantVol evalDate cal v1Q' dc
+        vol2TS' <- blackConstantVol evalDate cal v2Q' dc
         f1Q <- simpleQuote f1'
         f2Q <- simpleQuote f2'
         bp1' <- blackProcess f1Q rTS vol1TS' EulerDiscretization False
@@ -2111,16 +2112,16 @@ spec = do
 
     it "testStrangSplittingSpreadEngineVsMathematica: Kirk/OperatorSplitting(First/Second) reproduce cached Mathematica values" $
       Settings.keepingSettings' $ do
-        let today = 27 `may` 2024
-        Settings.setEvaluationDate (Just today)
+        let evalDate = 27 `may` 2024
+        Settings.setEvaluationDate (Just evalDate)
         dc <- dayCounter Actual365FixedStandard
         cal <- calendar TARGET
-        rTS <- simpleQuote 0.05 >>= \rQ -> flatForward today rQ dc Continuous Annual
-        vol2TS <- simpleQuote 0.2 >>= \vQ -> blackConstantVol today cal vQ dc
+        rTS <- simpleQuote 0.05 >>= \rQ -> flatForward evalDate rQ dc Continuous Annual
+        vol2TS <- simpleQuote 0.2 >>= \vQ -> blackConstantVol evalDate cal vQ dc
 
         let s1 = 110.0 :: Double
             s2 = 90.0 :: Double
-            -- T, K, vol1, rho, kirkNPV, strang1, strang2
+            -- T, K, vol1, rho_, kirkNPV, strang1, strang2
             rows =
               [ (5.0, 20, 0.1, 0.6, 15.39520956886349, 15.39641179190707, 15.41992212706643)
               , (10.0, 20, 0.1, 0.6, 22.91537136258191, 22.89480115264337, 22.95919510928365)
@@ -2136,12 +2137,12 @@ spec = do
               , (2.0, 20, 0.3, -0.5, 25.80847626931109, 25.77323435009942, 25.77810550213640)
               ] ::
                 [(Double, Double, Double, Double, Double, Double, Double)]
-        forM_ rows $ \(t, strike, vol1, rho, kirkNPV, strang1, strang2) -> do
-          let maturityDate = addDays (round (t * 365 :: Double)) today
+        forM_ rows $ \(t, strike, vol1, rho_, kirkNPV, strang1, strang2) -> do
+          let maturityDate = addDays (round (t * 365 :: Double)) evalDate
           dr <- discount' rTS maturityDate False
           let f1 = s1 / dr
               f2 = s2 / dr
-          vol1TS <- simpleQuote vol1 >>= \vQ -> blackConstantVol today cal vQ dc
+          vol1TS <- simpleQuote vol1 >>= \vQ -> blackConstantVol evalDate cal vQ dc
           f1Q <- simpleQuote f1
           f2Q <- simpleQuote f2
           p1 <- blackProcess f1Q rTS vol1TS EulerDiscretization False
@@ -2151,38 +2152,38 @@ spec = do
 
           opt <- basketOption (Spread (plainVanillaPayoff (PlainVanillaPayoff Call strike))) (European (EuropeanExercise maturityDate))
 
-          kirk <- kirkEngine p1 p2 rho
+          kirk <- kirkEngine p1 p2 rho_
           setPricingEngine opt kirk
           kirkCalc <- npv opt
           kirkCalc `shouldSatisfy` closePrec kirkNPV (1.0e-4 * abs kirkNPV)
 
-          os1 <- operatorSplittingSpreadEngine gp1 gp2 rho First
+          os1 <- operatorSplittingSpreadEngine gp1 gp2 rho_ First
           setPricingEngine opt os1
           strang1Calc <- npv opt
           strang1Calc `shouldSatisfy` closePrec strang1 (1.0e-4 * abs strang1)
 
-          os2 <- operatorSplittingSpreadEngine gp1 gp2 rho Second
+          os2 <- operatorSplittingSpreadEngine gp1 gp2 rho_ Second
           setPricingEngine opt os2
           strang2Calc <- npv opt
           strang2Calc `shouldSatisfy` closePrec strang2 (1.0e-4 * abs strang2)
 
-    it "testPDEvsApproximations: Kirk/BjerksundStensland/OperatorSplitting/Pearson/GaussianCopula track Fd2d across type/rho/rate/spot" $
+    it "testPDEvsApproximations: Kirk/BjerksundStensland/OperatorSplitting/Pearson/GaussianCopula track Fd2d across type/rho_/rate/spot" $
       Settings.keepingSettings' $ do
-        let today = 5 `february` 2024
-        Settings.setEvaluationDate (Just today)
+        let evalDate = 5 `february` 2024
+        Settings.setEvaluationDate (Just evalDate)
         dc <- dayCounter Actual365FixedStandard
         cal <- calendar TARGET
-        maturity <- addPeriod today (6, Months)
+        maturity <- addPeriod evalDate (6, Months)
         let strike = 5.0 :: Double
 
         s1Q <- simpleQuote 100.0
         s2Q <- simpleQuote 100.0
         rQ <- simpleQuote 0.05
-        rTS <- flatForward today rQ dc Continuous Annual
+        rTS <- flatForward evalDate rQ dc Continuous Annual
         v1Q <- simpleQuote 0.25
         v2Q <- simpleQuote 0.4
-        vol1TS <- blackConstantVol today cal v1Q dc
-        vol2TS <- blackConstantVol today cal v2Q dc
+        vol1TS <- blackConstantVol evalDate cal v1Q dc
+        vol2TS <- blackConstantVol evalDate cal v2Q dc
         bp1 <- blackProcess s1Q rTS vol1TS EulerDiscretization False
         bp2 <- blackProcess s2Q rTS vol2TS EulerDiscretization False
         p1 <- asGeneralizedBlackScholesProcess bp1
@@ -2192,14 +2193,14 @@ spec = do
           forM [Call, Put] $ \ty -> do
             opt <- basketOption (Spread (plainVanillaPayoff (PlainVanillaPayoff ty strike))) (European (EuropeanExercise maturity))
             fmap concat $
-              forM [-0.75, 0.0, 0.9] $ \rho -> do
-                kirk <- kirkEngine bp1 bp2 rho
-                bs2014 <- bjerksundStenslandSpreadEngine p1 p2 rho
-                os1 <- operatorSplittingSpreadEngine p1 p2 rho First
-                os2 <- operatorSplittingSpreadEngine p1 p2 rho Second
-                pearson <- pearsonSpreadEngine p1 p2 rho 1.0e-10 10000 8.0
-                gauss <- gaussianCopulaSpreadEngine p1 p2 rho 64
-                fd2d <- fd2dBlackScholesVanillaEngine p1 p2 rho 50 50 15 0 Hundsdorfer False (-1.0e10)
+              forM [-0.75, 0.0, 0.9] $ \rho_ -> do
+                kirk <- kirkEngine bp1 bp2 rho_
+                bs2014 <- bjerksundStenslandSpreadEngine p1 p2 rho_
+                os1 <- operatorSplittingSpreadEngine p1 p2 rho_ First
+                os2 <- operatorSplittingSpreadEngine p1 p2 rho_ Second
+                pearson <- pearsonSpreadEngine p1 p2 rho_ 1.0e-10 10000 8.0
+                gauss <- gaussianCopulaSpreadEngine p1 p2 rho_ 64
+                fd2d <- fd2dBlackScholesVanillaEngine p1 p2 rho_ 50 50 15 0 Hundsdorfer False (-1.0e10)
 
                 fmap concat $
                   forM [0.0, 0.05, 0.2] $ \rate -> do
@@ -2246,25 +2247,25 @@ spec = do
 
     it "ChoiBasketEngine/DengLiZhouBasketEngine/SingleFactorBsmBasketEngine self-consistency vs. MCEuropeanBasketEngine" $
       Settings.keepingSettings' $ do
-        let today = 1 `march` 2024
-        Settings.setEvaluationDate (Just today)
+        let evalDate = 1 `march` 2024
+        Settings.setEvaluationDate (Just evalDate)
         dc <- dayCounter Actual365FixedStandard
         cal <- calendar TARGET
-        maturity <- addPeriod today (12, Months)
+        maturity <- addPeriod evalDate (12, Months)
 
         -- Choi/DengLiZhou (accept Average or Spread) and SingleFactorBsm (Average only)
         -- self-consistency against the already-bound MCEuropeanBasketEngine
         let brho = 0.3 :: Double
         bq1 <- simpleQuote 0.0
         bq2 <- simpleQuote 0.0
-        bqTS1 <- flatForward today bq1 dc Continuous Annual
-        bqTS2 <- flatForward today bq2 dc Continuous Annual
+        bqTS1 <- flatForward evalDate bq1 dc Continuous Annual
+        bqTS2 <- flatForward evalDate bq2 dc Continuous Annual
         brQ <- simpleQuote 0.05
-        brTS <- flatForward today brQ dc Continuous Annual
+        brTS <- flatForward evalDate brQ dc Continuous Annual
         bv1 <- simpleQuote 0.3
         bv2 <- simpleQuote 0.3
-        bvolTS1 <- blackConstantVol today cal bv1 dc
-        bvolTS2 <- blackConstantVol today cal bv2 dc
+        bvolTS1 <- blackConstantVol evalDate cal bv1 dc
+        bvolTS2 <- blackConstantVol evalDate cal bv2 dc
         bs1Q <- simpleQuote 100
         bs2Q <- simpleQuote 100
         bp1 <- blackScholesMertonProcess bs1Q bqTS1 brTS bvolTS1 EulerDiscretization False
@@ -2287,7 +2288,7 @@ spec = do
         dlzV `shouldSatisfy` closePrec mcV (0.05 * mcV)
 
         -- SingleFactorBsmBasketEngine assumes every underlying is driven by one common factor, so
-        -- it is only verified where that assumption actually holds (rho=1.0)
+        -- it is only verified where that assumption actually holds (rho_=1.0)
         rhoMatrix1 <- either error pure (boxedRealMatrix 2 2 [1, 1, 1, 1])
         procArr1 <- stochasticProcessArray (bp1 :| [bp2]) rhoMatrix1
         mc1 <- mcEuropeanBasketEngine PseudoRandom Statistics procArr1 (Just 1) Nothing False False (Just 20000) Nothing Nothing 42
@@ -2300,18 +2301,18 @@ spec = do
 
     it "FdndimBlackScholesVanillaEngine (both overloads) vs. Fd2dBlackScholesVanillaEngine" $
       Settings.keepingSettings' $ do
-        let today = 1 `march` 2024
-        Settings.setEvaluationDate (Just today)
+        let evalDate = 1 `march` 2024
+        Settings.setEvaluationDate (Just evalDate)
         dc <- dayCounter Actual365FixedStandard
         cal <- calendar TARGET
-        maturity <- addPeriod today (12, Months)
-        let rho = 0.75 :: Double
+        maturity <- addPeriod evalDate (12, Months)
+        let rho_ = 0.75 :: Double
         rQ <- simpleQuote 0.05
-        rTS <- flatForward today rQ dc Continuous Annual
+        rTS <- flatForward evalDate rQ dc Continuous Annual
         dq1Q <- simpleQuote 0.03
         dq2Q <- simpleQuote 0.02
-        dq1TS <- flatForward today dq1Q dc Continuous Annual
-        dq2TS <- flatForward today dq2Q dc Continuous Annual
+        dq1TS <- flatForward evalDate dq1Q dc Continuous Annual
+        dq2TS <- flatForward evalDate dq2Q dc Continuous Annual
         dfR <- discount' rTS maturity False
         dq1 <- discount' dq1TS maturity False
         dq2 <- discount' dq2TS maturity False
@@ -2319,8 +2320,8 @@ spec = do
             f2' = 90 * dq2 / dfR
         v1Q' <- simpleQuote 0.3
         v2Q' <- simpleQuote 0.2
-        vol1TS' <- blackConstantVol today cal v1Q' dc
-        vol2TS' <- blackConstantVol today cal v2Q' dc
+        vol1TS' <- blackConstantVol evalDate cal v1Q' dc
+        vol2TS' <- blackConstantVol evalDate cal v2Q' dc
         f1Q <- simpleQuote f1'
         f2Q <- simpleQuote f2'
         bp1' <- blackProcess f1Q rTS vol1TS' EulerDiscretization False
@@ -2328,12 +2329,12 @@ spec = do
         p1' <- asGeneralizedBlackScholesProcess bp1'
         p2' <- asGeneralizedBlackScholesProcess bp2'
 
-        fd2d <- fd2dBlackScholesVanillaEngine p1' p2' rho 100 100 50 0 Hundsdorfer False (-1.0e10)
+        fd2d <- fd2dBlackScholesVanillaEngine p1' p2' rho_ 100 100 50 0 Hundsdorfer False (-1.0e10)
         crossOpt <- basketOption (Spread (plainVanillaPayoff (PlainVanillaPayoff Call 20.0))) (European (EuropeanExercise maturity))
         setPricingEngine crossOpt fd2d
         fd2dV <- npv crossOpt
 
-        rhoMatrix2 <- either error pure (boxedRealMatrix 2 2 [1, rho, rho, 1])
+        rhoMatrix2 <- either error pure (boxedRealMatrix 2 2 [1, rho_, rho_, 1])
         fdndim1 <- fdndimBlackScholesVanillaEngine (p1' :| [p2']) rhoMatrix2 (50 :| [50]) 50 0 Douglas
         fdndim2 <- fdndimBlackScholesVanillaEngine' (p1' :| [p2']) rhoMatrix2 100 50 0 Douglas
         setPricingEngine crossOpt fdndim1
@@ -2356,9 +2357,9 @@ spec = do
 
     it "reproduces hestonmodel.cpp's testAlanLewisReferencePrices" $
       Settings.keepingSettings' $ do
-        let today = 5 `july` 2002
+        let evalDate = 5 `july` 2002
             maturity = 5 `july` 2003
-            v0 = 0.04; kappa = 4.0; theta = 0.25; sigma = 1.0; rho = -0.5 :: Double
+            v0 = 0.04; kappa = 4.0; theta_ = 0.25; sigma = 1.0; rho_ = -0.5 :: Double
             cases =
               [ (80.0 :: Double, 7.958878113256768285213263077598987193482161301733 :: Double, 26.774758743998854221382195325726949201687074848341 :: Double)
               , (90.0, 12.017966707346304987709573290236471654992071308187, 20.933349000596710388139445766564068085476194042256)
@@ -2366,14 +2367,14 @@ spec = do
               , (110.0, 23.017825898442800538908781834822560777763225722188, 12.132211516709844867860534767549426052805766831181)
               , (120.0, 29.811026202682471843340682293165857439167301370697, 9.024913483457835636553375454092357136489051667150)
               ]
-        Settings.setEvaluationDate (Just today)
+        Settings.setEvaluationDate (Just evalDate)
         dc <- dayCounter Actual365FixedStandard
         rQ <- simpleQuote 0.01
         qQ <- simpleQuote 0.02
-        rTS <- flatForward today rQ dc Continuous Annual
-        qTS <- flatForward today qQ dc Continuous Annual
+        rTS <- flatForward evalDate rQ dc Continuous Annual
+        qTS <- flatForward evalDate qQ dc Continuous Annual
         s0 <- simpleQuote 100.0
-        hp <- hestonProcess rTS (Just qTS) s0 v0 kappa theta sigma rho QuadraticExponentialMartingale
+        hp <- hestonProcess rTS (Just qTS) s0 v0 kappa theta_ sigma rho_ QuadraticExponentialMartingale
         hm <- hestonModel hp
         engine <- cosHestonEngine hm 20.0 400
         forM_ cases $ \(strike, expectedPut, expectedCall) -> do
@@ -2391,14 +2392,14 @@ spec = do
 
     it "reproduces hestonmodel.cpp's testCosHestonEngineTruncation (near-zero deep OTM price)" $
       Settings.keepingSettings' $ do
-        let today = 22 `august` 2022
+        let evalDate = 22 `august` 2022
             maturity = 23 `august` 2022
-        Settings.setEvaluationDate (Just today)
+        Settings.setEvaluationDate (Just evalDate)
         dc <- dayCounter Actual365FixedStandard
         rQ <- simpleQuote 0.0
         qQ <- simpleQuote 0.0
-        rTS <- flatForward today rQ dc Continuous Annual
-        qTS <- flatForward today qQ dc Continuous Annual
+        rTS <- flatForward evalDate rQ dc Continuous Annual
+        qTS <- flatForward evalDate qQ dc Continuous Annual
         s0 <- simpleQuote 100.0
         hp <- hestonProcess rTS (Just qTS) s0 0.007 0.8 0.007 0.1 (-0.2) QuadraticExponentialMartingale
         hm <- hestonModel hp
@@ -2417,14 +2418,14 @@ spec = do
   describe "Analytic PDF Heston engine" $
     it "reproduces hestonmodel.cpp's testAnalyticPDFHestonEngine plain-vanilla case" $
       Settings.keepingSettings' $ do
-        let today = 5 `january` 2014
+        let evalDate = 5 `january` 2014
             maturity = 5 `july` 2014
-        Settings.setEvaluationDate (Just today)
+        Settings.setEvaluationDate (Just evalDate)
         dc <- dayCounter Actual365FixedStandard
         rQ <- simpleQuote 0.07
         qQ <- simpleQuote 0.185
-        rTS <- flatForward today rQ dc Continuous Annual
-        qTS <- flatForward today qQ dc Continuous Annual
+        rTS <- flatForward evalDate rQ dc Continuous Annual
+        qTS <- flatForward evalDate qQ dc Continuous Annual
         s0 <- simpleQuote 100.0
         hp <- hestonProcess rTS (Just qTS) s0 0.1 4.0 0.05 1.0 (-0.5) QuadraticExponentialMartingale
         hm <- hestonModel hp
@@ -2447,25 +2448,25 @@ spec = do
   describe "FD Bates vanilla engine" $
     it "reproduces batesmodel.cpp's testAnalyticVsMCPricing FD-vs-analytic case" $
       Settings.keepingSettings' $ do
-        let today = 30 `march` 2007
+        let evalDate = 30 `march` 2007
             maturity = 30 `march` 2012
             strike = 100.0 :: Double
-            lambda = 2.0; nu = -0.2; delta = 0.1 :: Double
+            lambda = 2.0; nu = -0.2; delta_ = 0.1 :: Double
             cases =
               [ ("t'Hout case 1" :: String, 0.04 :: Double, 1.5 :: Double, 0.04 :: Double, 0.3 :: Double, -0.9 :: Double, 0.025 :: Double, 0.0 :: Double)
               , ("Ikonen-Toivanen", 0.0625, 5.0, 0.16, 0.9, 0.1, 0.1, 0.0)
               , ("Kahl-Jaeckel", 0.16, 1.0, 0.16, 2.0, -0.8, 0.0, 0.0)
               , ("Equity case", 0.07, 2.0, 0.04, 0.55, -0.8, 0.03, 0.035)
               ]
-        Settings.setEvaluationDate (Just today)
+        Settings.setEvaluationDate (Just evalDate)
         dc <- dayCounter ActualActualISDA
-        forM_ cases $ \(name, v0, kappa, theta, sigma, rho, r, q) -> do
+        forM_ cases $ \(name, v0, kappa, theta_, sigma, rho_, r, q) -> do
           rQ <- simpleQuote r
           qQ <- simpleQuote q
-          rTS <- flatForward today rQ dc Continuous Annual
-          qTS <- flatForward today qQ dc Continuous Annual
+          rTS <- flatForward evalDate rQ dc Continuous Annual
+          qTS <- flatForward evalDate qQ dc Continuous Annual
           s0 <- simpleQuote 100.0
-          bp <- batesProcess rTS qTS s0 v0 kappa theta sigma rho lambda nu delta QuadraticExponentialMartingale
+          bp <- batesProcess rTS qTS s0 v0 kappa theta_ sigma rho_ lambda nu delta_ QuadraticExponentialMartingale
           bm <- batesModel bp
           fdEngine <- fdBatesVanillaEngine bm 50 100 30 0 Hundsdorfer
           analyticEngine <- batesEngine bm 160
@@ -2487,27 +2488,27 @@ spec = do
   describe "MC forward Heston engine" $
     it "reproduces forwardoption.cpp's testHestonMCPrices flat-Heston-vs-analytic-BS case" $
       Settings.keepingSettings' $ do
-        let today = 2 `january` 2024
-            maturity = addGregorianYearsClip 1 today
-            reset = addDays 182 today
+        let evalDate = 2 `january` 2024
+            maturity = addGregorianYearsClip 1 evalDate
+            reset = addDays 182 evalDate
             q = 0.04; r = 0.01; sigmaBs = 0.245; s = 100.0 :: Double
-            v0 = sigmaBs * sigmaBs; kappa = 1.0e-8; theta = sigmaBs * sigmaBs; sigma = 1.0e-8; rho = -0.93 :: Double
+            v0 = sigmaBs * sigmaBs; kappa = 1.0e-8; theta_ = sigmaBs * sigmaBs; sigma = 1.0e-8; rho_ = -0.93 :: Double
             moneyness = [0.8, 0.9, 1.0, 1.1, 1.2 :: Double]
             tolCall = [7.0e-4, 8.0e-4, 6.0e-4, 5.0e-4, 5.0e-4]
             tolPut = [6.0e-4, 5.0e-4, 6.0e-4, 1.0e-3, 1.0e-3]
-        Settings.setEvaluationDate (Just today)
+        Settings.setEvaluationDate (Just evalDate)
         dc <- dayCounter (Actual360 False)
         rQ <- simpleQuote r
         qQ <- simpleQuote q
-        rTS <- flatForward today rQ dc Continuous Annual
-        qTS <- flatForward today qQ dc Continuous Annual
+        rTS <- flatForward evalDate rQ dc Continuous Annual
+        qTS <- flatForward evalDate qQ dc Continuous Annual
         volQ <- simpleQuote sigmaBs
         cal <- calendar Null
-        volTS <- blackConstantVol today cal volQ dc
+        volTS <- blackConstantVol evalDate cal volQ dc
         spotQ <- simpleQuote s
         bsProcess <- blackScholesMertonProcess spotQ qTS rTS volTS EulerDiscretization False
         analyticEngine <- forwardEuropeanEngine bsProcess
-        hp <- hestonProcess rTS (Just qTS) spotQ v0 kappa theta sigma rho QuadraticExponentialMartingale
+        hp <- hestonProcess rTS (Just qTS) spotQ v0 kappa theta_ sigma rho_ QuadraticExponentialMartingale
         mcEngine <- mcForwardEuropeanHestonEngine LowDiscrepancy Statistics hp (Just 50) Nothing False (Just 4095) Nothing Nothing 42 False
         forM_ [(Call, tolCall), (Put, tolPut)] $ \(optType, tols) ->
           forM_ (zip moneyness tols) $ \(mny, tol) -> do
@@ -2526,25 +2527,25 @@ spec = do
   describe "FdBlackScholesShoutEngine" $ do
     it "reproduces americanoption.cpp's testFDShoutNPV" $
       Settings.keepingSettings' $ do
-        let today = 4 `february` 2021
+        let evalDate = 4 `february` 2021
             cases =
               [ (Put, 105.0 :: Double, 19.136 :: Double)
               , (Call, 105.0, 28.211)
               , (Put, 120.0, 28.02)
               , (Call, 80.0, 40.785)
               ]
-        Settings.setEvaluationDate (Just today)
+        Settings.setEvaluationDate (Just evalDate)
         dc <- dayCounter Actual365FixedStandard
         s0 <- simpleQuote 100.0
         qQ <- simpleQuote 0.03
         rQ <- simpleQuote 0.06
         volQ <- simpleQuote 0.25
-        qTS <- flatForward today qQ dc Continuous Annual
-        rTS <- flatForward today rQ dc Continuous Annual
+        qTS <- flatForward evalDate qQ dc Continuous Annual
+        rTS <- flatForward evalDate rQ dc Continuous Annual
         tgt <- calendar TARGET
-        volTS <- blackConstantVol today tgt volQ dc
+        volTS <- blackConstantVol evalDate tgt volQ dc
         process <- blackScholesMertonProcess s0 qTS rTS volTS EulerDiscretization False
-        maturity <- addPeriod today (5, Years)
+        maturity <- addPeriod evalDate (5, Years)
         engine <- fdBlackScholesShoutEngine process 400 200 0 Hundsdorfer
         forM_ cases $ \(ty, strike, expected) -> do
           opt <- vanillaOption (PlainVanilla (PlainVanillaPayoff ty strike)) (American Nothing maturity False)
@@ -2555,29 +2556,29 @@ spec = do
 
     it "reproduces americanoption.cpp's testZeroVolFDShoutNPV (shout with a discrete dividend matches the American NPV once undiscounted through the ex-date)" $
       Settings.keepingSettings' $ do
-        let today = 14 `february` 2021
-        Settings.setEvaluationDate (Just today)
+        let evalDate = 14 `february` 2021
+        Settings.setEvaluationDate (Just evalDate)
         dc <- dayCounter Actual365FixedStandard
         s0 <- simpleQuote 100.0
         qQ <- simpleQuote 0.03
         rQ <- simpleQuote 0.07
         volQ <- simpleQuote 1.0e-6
-        qTS <- flatForward today qQ dc Continuous Annual
-        rTS <- flatForward today rQ dc Continuous Annual
+        qTS <- flatForward evalDate qQ dc Continuous Annual
+        rTS <- flatForward evalDate rQ dc Continuous Annual
         tgt <- calendar TARGET
-        volTS <- blackConstantVol today tgt volQ dc
+        volTS <- blackConstantVol evalDate tgt volQ dc
         process <- blackScholesMertonProcess s0 qTS rTS volTS EulerDiscretization False
-        maturity <- addPeriod today (1, Years)
-        divDate <- addPeriod today (3, Months)
+        maturity <- addPeriod evalDate (1, Years)
+        divDate <- addPeriod evalDate (3, Months)
         dividends <- sequence [fixedDividend 10.0 divDate]
 
-        americanOpt <- vanillaOption (PlainVanilla (PlainVanillaPayoff Put 100.0)) (American (Just today) maturity False)
+        americanOpt <- vanillaOption (PlainVanilla (PlainVanillaPayoff Put 100.0)) (American (Just evalDate) maturity False)
         americanInst <- asOneAssetOption americanOpt
         americanEngine <- fdBlackScholesVanillaEngine' process dividends 50 50 1 Douglas False 0.0 CashDividendSpot
         setPricingEngine americanOpt americanEngine
         americanNPV <- npv americanInst
 
-        shoutOpt <- vanillaOption (PlainVanilla (PlainVanillaPayoff Put 100.0)) (American (Just today) maturity False)
+        shoutOpt <- vanillaOption (PlainVanilla (PlainVanillaPayoff Put 100.0)) (American (Just evalDate) maturity False)
         shoutInst <- asOneAssetOption shoutOpt
         shoutEngine <- fdBlackScholesShoutEngine' process dividends 50 50 0 Hundsdorfer
         setPricingEngine shoutOpt shoutEngine
@@ -2590,30 +2591,30 @@ spec = do
 
     it "reproduces americanoption.cpp's testLargeDividendShoutNPV" $
       Settings.keepingSettings' $ do
-        let today = 21 `february` 2021
+        let evalDate = 21 `february` 2021
             strike = 80.0 :: Double
-        Settings.setEvaluationDate (Just today)
+        Settings.setEvaluationDate (Just evalDate)
         dc <- dayCounter Actual365FixedStandard
         s0 <- simpleQuote 100.0
         qQ <- simpleQuote 0.0
         rQ <- simpleQuote 0.0
         volQ <- simpleQuote 0.25
-        qTS <- flatForward today qQ dc Continuous Annual
-        rTS <- flatForward today rQ dc Continuous Annual
+        qTS <- flatForward evalDate qQ dc Continuous Annual
+        rTS <- flatForward evalDate rQ dc Continuous Annual
         tgt <- calendar TARGET
-        volTS <- blackConstantVol today tgt volQ dc
+        volTS <- blackConstantVol evalDate tgt volQ dc
         process <- blackScholesMertonProcess s0 qTS rTS volTS EulerDiscretization False
-        maturity <- addPeriod today (6, Months)
-        divDate <- addPeriod today (3, Months)
+        maturity <- addPeriod evalDate (6, Months)
+        divDate <- addPeriod evalDate (3, Months)
         dividends <- sequence [fixedDividend 30.0 divDate]
 
-        opt <- vanillaOption (PlainVanilla (PlainVanillaPayoff Call strike)) (American (Just today) maturity False)
+        opt <- vanillaOption (PlainVanilla (PlainVanillaPayoff Call strike)) (American (Just evalDate) maturity False)
         optInst <- asOneAssetOption opt
         engine <- fdBlackScholesShoutEngine' process dividends 100 400 0 Hundsdorfer
         setPricingEngine opt engine
         calculated <- npv optInst
 
-        refOpt <- vanillaOption (PlainVanilla (PlainVanillaPayoff Call strike)) (American (Just today) divDate False)
+        refOpt <- vanillaOption (PlainVanilla (PlainVanillaPayoff Call strike)) (American (Just evalDate) divDate False)
         refInst <- asOneAssetOption refOpt
         refEngine <- fdBlackScholesShoutEngine process 100 400 0 Hundsdorfer
         setPricingEngine refOpt refEngine
@@ -2636,19 +2637,19 @@ spec = do
   describe "HestonSLV model" $ do
     it "builds MC/FDM Heston-SLV models with a consistent density-grid layout (LONG)" $
       Settings.keepingSettings' $ do
-        let today = 5 `march` 2016
-        Settings.setEvaluationDate (Just today)
+        let evalDate = 5 `march` 2016
+        Settings.setEvaluationDate (Just evalDate)
         dc <- dayCounter Actual365FixedStandard
         rQ <- simpleQuote 0.01
         qQ <- simpleQuote 0.02
-        rTS <- flatForward today rQ dc Continuous Annual
-        qTS <- flatForward today qQ dc Continuous Annual
+        rTS <- flatForward evalDate rQ dc Continuous Annual
+        qTS <- flatForward evalDate qQ dc Continuous Annual
         s0 <- simpleQuote 100.0
         localVolQ <- simpleQuote 0.3
         hp <- hestonProcess rTS (Just qTS) s0 0.09 1.0 0.06 0.4 (-0.75) HestonFullTruncation
         hm <- hestonModel hp
-        end <- addPeriod today (1, Years)
-        localVolTS <- localConstantVol today localVolQ dc
+        end <- addPeriod evalDate (1, Years)
+        localVolTS <- localConstantVol evalDate localVolQ dc
         factory <- sobolBrownianGeneratorFactory Diagonal 1234 JoeKuoD7
         mc <- hestonSLVMCModel localVolTS hm factory end 91 201 32768 [] 1.0
         mcLeverage <- hestonSLVMCLeverageFunction mc
@@ -2691,24 +2692,24 @@ spec = do
     -- constructible from hasquant's current bindings.
     it "reproduces hestonslvmodel.cpp's testMonteCarloVsFdmPricing mixing-factor FDM consistency (LONG)" $
       Settings.keepingSettings' $ do
-        let today = 5 `december` 2015
-            v0 = 0.19; kappa = 2.0; theta = 0.18; sigma = 0.8; rho = -0.75 :: Double
+        let evalDate = 5 `december` 2015
+            v0 = 0.19; kappa = 2.0; theta_ = 0.18; sigma = 0.8; rho_ = -0.75 :: Double
             strikes = [100.0, 110.0 :: Double]
-        Settings.setEvaluationDate (Just today)
-        maturity <- addPeriod today (1, Years)
+        Settings.setEvaluationDate (Just evalDate)
+        maturity <- addPeriod evalDate (1, Years)
         dc <- dayCounter ActualActualISDA
         s0 <- simpleQuote 100.0
         rQ <- simpleQuote 0.05
         qQ <- simpleQuote 0.02
-        rTS <- flatForward today rQ dc Continuous Annual
-        qTS <- flatForward today qQ dc Continuous Annual
-        hp <- hestonProcess rTS (Just qTS) s0 v0 kappa theta sigma rho QuadraticExponentialMartingale
+        rTS <- flatForward evalDate rQ dc Continuous Annual
+        qTS <- flatForward evalDate qQ dc Continuous Annual
+        hp <- hestonProcess rTS (Just qTS) s0 v0 kappa theta_ sigma rho_ QuadraticExponentialMartingale
         hm <- hestonModel hp
         leverageQ <- simpleQuote 0.25
-        leverageFct <- localConstantVol today leverageQ dc
+        leverageFct <- localConstantVol evalDate leverageQ dc
         fdEngine <- fdHestonVanillaEngine hm 51 401 101 0 ModifiedCraigSneyd (Just leverageFct) 1.0
 
-        mixHp <- hestonProcess rTS (Just qTS) s0 v0 kappa theta (sigma * 10) rho QuadraticExponentialMartingale
+        mixHp <- hestonProcess rTS (Just qTS) s0 v0 kappa theta_ (sigma * 10) rho_ QuadraticExponentialMartingale
         mixHm <- hestonModel mixHp
         fdEngineMix <- fdHestonVanillaEngine mixHm 51 401 101 0 ModifiedCraigSneyd (Just leverageFct) 0.1
 

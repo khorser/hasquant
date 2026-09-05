@@ -199,6 +199,13 @@ spec = do
       a <- yoyCapFloorAtmYoYRate priceSurfEU d Nothing True
       abs (a - expected) `shouldSatisfy` (< eps)
 
+  it "atmYoYSwapTimeRates carries the same rates as atmYoYSwapDateRates" $ Settings.keepingSettings' $ do
+    (_, _, _, _, _, priceSurfEU) <- setup
+    dateRates <- yoyCapFloorAtmYoYSwapDateRates priceSurfEU
+    timeRates <- yoyCapFloorAtmYoYSwapTimeRates priceSurfEU
+    length timeRates `shouldBe` length dateRates
+    zipWithM_ (\(_, r1) (_, r2) -> r1 `shouldBe` r2) dateRates timeRates
+
   -- No second upstream fixture covers a non-(Bicubic, Cubic) combination, so this is a
   -- construction/sanity check only, same reasoning as the interpolatedYoYInflationCurve
   -- spot-check above.

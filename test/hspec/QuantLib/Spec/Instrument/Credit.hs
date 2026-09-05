@@ -76,6 +76,18 @@ spec = do
         integ1wFair <- fairSpread cds
         integ1wFair `shouldSatisfy` closePrec 0.007517539081 1.0e-5
 
+        -- accrualRebateNPV has no cached upstream value here, so cross-check it between
+        -- engines instead (mirrors the NPV/fairSpread cross-engine checks above): for this
+        -- fixture (protection starting exactly on a schedule date) it comes out as zero under
+        -- both engines, which is itself a useful check that the binding reaches the right
+        -- result rather than an unrelated field.
+        setPricingEngine cds midEng
+        midRebate <- accrualRebateNPV cds
+        midRebate `shouldSatisfy` closePrec 0 1.0e-8
+        setPricingEngine cds integ1dEng
+        integ1dRebate <- accrualRebateNPV cds
+        integ1dRebate `shouldSatisfy` closePrec midRebate (10000 * 1.0e-4)
+
   describe "testFairSpread" $
     it "rebuilding at the CDS's own fairSpread reprices it to ~0" $
       Settings.keepingSettings' $ do

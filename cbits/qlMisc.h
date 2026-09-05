@@ -9,6 +9,10 @@ extern "C" {
   void qlSettingsSetIncludeTodaysCashFlows(int x);
   int qlSettingsIncludeReferenceDateEvents();
   void qlSettingsSetIncludeReferenceDateEvents(int x0);
+  void qlObservableSettingsDisableUpdates(int deferred);
+  void qlObservableSettingsEnableUpdates(char **e);
+  int qlObservableSettingsUpdatesEnabled();
+  int qlObservableSettingsUpdatesDeferred();
   void *qlSavedSettings();
   void qlFreeSavedSettings(void *settings);
 
@@ -137,8 +141,11 @@ extern "C" {
   QlQuote* qlEurodollarFuturesImpliedStdDevQuote(QlQuote* forward, QlQuote* callPrice, QlQuote* putPrice, double strike, double guess, double accuracy, unsigned maxIter, char **e);
   QlQuote* qlForwardSwapQuote(QlSwapIndex* swapIndex, QlQuote* spread, int, int, char **e);
   QlQuote* qlForwardValueQuote(QlIndex* index, int fixingDate, char **e);
-  QlQuote* qlFuturesConvAdjustmentQuote1(QlIborIndex* index, char* immCode, QlQuote* futuresQuote, QlQuote* volatility, QlQuote* meanReversion, char **e);
-  QlQuote* qlFuturesConvAdjustmentQuote(QlIborIndex* index, int futuresDate, QlQuote* futuresQuote, QlQuote* volatility, QlQuote* meanReversion, char **e);
+  QlFuturesConvAdjustmentQuote* qlFuturesConvAdjustmentQuote1(QlIborIndex* index, char* immCode, QlQuote* futuresQuote, QlQuote* volatility, QlQuote* meanReversion, char **e);
+  QlFuturesConvAdjustmentQuote* qlFuturesConvAdjustmentQuote(QlIborIndex* index, int futuresDate, QlQuote* futuresQuote, QlQuote* volatility, QlQuote* meanReversion, char **e);
+  void qlFreeFuturesConvAdjustmentQuote(QlFuturesConvAdjustmentQuote *o);
+  QlQuote* qlFuturesConvAdjustmentQuoteAsQuote(QlFuturesConvAdjustmentQuote *o);
+  double qlFuturesConvAdjustmentQuoteFuturesValue(QlFuturesConvAdjustmentQuote *o, char **e);
   QlQuote* qlImpliedStdDevQuote(int optionType, QlQuote* forward, QlQuote* price, double strike, double guess, double accuracy, unsigned maxIter, char **e);
   QlQuote* qlLastFixingQuote(QlIndex* index, char **e);
   int qlQuoteIsValid(QlQuote* o, char **e);
@@ -344,6 +351,13 @@ extern "C" {
   void qlHistoricalIndexAnalysisGaussianValueAtRisk(QlHistoricalIndexAnalysis *o, double centile, unsigned *len, double **vs, char **e);
   void qlHistoricalIndexAnalysisExpectedShortfall(QlHistoricalIndexAnalysis *o, double centile, unsigned *len, double **vs, char **e);
   void qlHistoricalIndexAnalysisGaussianExpectedShortfall(QlHistoricalIndexAnalysis *o, double centile, unsigned *len, double **vs, char **e);
+  void qlHistoricalIndexAnalysisPotentialUpside(QlHistoricalIndexAnalysis *o, double centile, unsigned *len, double **vs, char **e);
+  void qlHistoricalIndexAnalysisGaussianPotentialUpside(QlHistoricalIndexAnalysis *o, double centile, unsigned *len, double **vs, char **e);
+  void qlHistoricalIndexAnalysisRegret(QlHistoricalIndexAnalysis *o, double target, unsigned *len, double **vs, char **e);
+  void qlHistoricalIndexAnalysisShortfall(QlHistoricalIndexAnalysis *o, double target, unsigned *len, double **vs, char **e);
+  void qlHistoricalIndexAnalysisGaussianShortfall(QlHistoricalIndexAnalysis *o, double target, unsigned *len, double **vs, char **e);
+  void qlHistoricalIndexAnalysisAverageShortfall(QlHistoricalIndexAnalysis *o, double target, unsigned *len, double **vs, char **e);
+  void qlHistoricalIndexAnalysisGaussianAverageShortfall(QlHistoricalIndexAnalysis *o, double target, unsigned *len, double **vs, char **e);
   void qlHistoricalIndexAnalysisCovariance(QlHistoricalIndexAnalysis *o, unsigned *rows, unsigned *cols, unsigned *len, double **vs, char **e);
   void qlHistoricalIndexAnalysisCorrelation(QlHistoricalIndexAnalysis *o, unsigned *rows, unsigned *cols, unsigned *len, double **vs, char **e);
 
@@ -351,7 +365,7 @@ extern "C" {
      series. calibratedDatesLen/calibratedValuesLen are always equal in practice (the Haskell
      side always builds them from one zipped list); kept as two counts, per the codebase's usual
      array-marshalling shape, rather than one shared length. */
-  Garch11 *qlGarch11(double alpha, double beta, double vl);
+  Garch11 *qlGarch11(double alpha, double beta, double vl, char **e);
   Garch11 *qlGarch11Calibrated(unsigned datesLen, int *dates, unsigned valuesLen, double *values, int mode, char **e);
   void qlFreeGarch11(Garch11 *o);
   double qlGarch11Alpha(Garch11 *o);

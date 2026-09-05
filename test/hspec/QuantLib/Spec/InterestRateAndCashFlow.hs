@@ -31,7 +31,7 @@ import QuantLib.Index(fixingCalendar, addFixing, addFixings, fixing, hasHistoric
   ,historicalIndexAnalysisExpectedShortfall, historicalIndexAnalysisGaussianExpectedShortfall
   ,historicalIndexAnalysisCovariance, historicalIndexAnalysisCorrelation)
 import QuantLib.Index.InterestRate(iborIndex, IborConstructor(..), liborSwapIndex, LiborSwapIndexType(..), swapSpreadIndex, forecastFixing
-  ,historicalRatesAnalysis, overnightIborIndex, OvernightIborIndexType(..))
+  ,fixingDate, valueDate, maturityDate, historicalRatesAnalysis, overnightIborIndex, OvernightIborIndexType(..), bmaIndex)
 import qualified QuantLib.Index.InterestRate as Ibor(fixingDays, dayCounter)
 import qualified QuantLib.Index.Inflation as Inflation
 import qualified QuantLib.Index.Equity as Equity
@@ -232,7 +232,10 @@ spec evalDate = do
           simple <- CF.simpleCashFlow 10.0 paymentDate
           indexed <- CF.indexedCashFlow 100.0 idx baseDate fixingDate paymentDate False
           growth <- CF.indexedCashFlow 100.0 idx baseDate fixingDate paymentDate True
-          fixed <- CF.fixedRateCoupon accrualEnd 100.0 0.05 dc paymentDate accrualEnd Nothing Nothing Nothing
+          fixedCoupon <- CF.fixedRateCoupon accrualEnd 100.0 0.05 dc paymentDate accrualEnd Nothing Nothing Nothing
+          fixedIR <- CF.fixedRateCouponInterestRate fixedCoupon
+          IR.rate fixedIR `shouldSatisfy` closePrec 0.05 1.0e-12
+          fixed <- CF.fixedRateCouponAsCashFlow fixedCoupon
           mixed <- CF.cashFlowLeg [simple, indexed, growth, fixed]
           flows <- CF.cashFlows mixed Nothing Nothing
           let expected = [10.0, 120.0, 20.0, 2.5]
@@ -290,6 +293,11 @@ spec evalDate = do
             (Just baseDate) (Just paymentDate) Nothing
           couponPricer <- CF.cpiCouponPricer Nothing
           CF.setCpiCouponPricer coupon couponPricer
+          -- indexRatio(paymentDate) reads the index two months (the coupon's own lag) back, at
+          -- 1 December 2010, where the fixing added above is 120.0; the coupon's own base CPI
+          -- is 100.0, so the ratio is 1.2.
+          indexRatio <- CF.cpiCouponIndexRatio coupon paymentDate
+          indexRatio `shouldSatisfy` closePrec 1.2 1e-12
           couponFlow <- CF.cpiCouponAsCashFlow coupon
           customLeg <- CF.cashFlowLeg [zeroFlow, cpiFlow, equityFlow, couponFlow]
           flows <- CF.cashFlows customLeg Nothing Nothing
@@ -308,6 +316,57 @@ spec evalDate = do
                   ds = map validDay d
                   f = zip ds a
               run $ (CF.leg f >>= CF.startDate) `shouldReturn` minimum ds
+
+      it "FloatingRateCoupon price/convexityAdjustment and the generic FloatingRateCouponPricer accessors agree with the coupon's own rate/amount" $
+        Settings.keepingSettings' $ do
+          Settings.setEvaluationDate (Just $ 7 `april` 2010)
+          cal <- calendar TARGET
+          dc <- dayCounter Actual365FixedStandard
+          q <- Quote.simpleQuote 0.04875825 >>= Quote.asQuote
+          ts <- flatForward (9 `april` 2010) q dc IR.Continuous Annual
+          v <- Quote.simpleQuote 0.10
+          vol <- constantOptionletVolatility' 2 cal ModifiedFollowing v dc IR.ShiftedLognormal 0.0
+          let p = (3, Months)
+          index3m <- iborIndex (UsdLibor p) (Just ts)
+          startDate <- advance cal (20 `september` 2013) (3, Months) Following False
+          endDate <- advance cal startDate (3, Months) Following False
+          coupon <- CF.iborCoupon endDate 100.0 startDate endDate 2 index3m 1.0 0.0 Nothing Nothing dc False Nothing Preceding
+          pricer <- CF.blackIborCouponPricer vol CF.Black76 Nothing Nothing
+          CF.setFloatingRateCouponPricer coupon pricer
+
+          -- FloatingRateCoupon::rate() is `pricer_->initialize(*this); return pricer_->swapletRate();`,
+          -- so calling the coupon's rate first, then reading the (now-initialized) pricer
+          -- directly, must agree.
+          rate <- CF.floatingRateCouponRate coupon
+          swapletRate <- CF.floatingRateCouponPricerSwapletRate pricer
+          swapletRate `shouldSatisfy` closePrec rate 1e-12
+
+          amount <- CF.floatingRateCouponAmount coupon
+          -- FloatingRateCouponPricer::swapletPrice() is *per unit notional*
+          -- (swapletRate * accrualPeriod * discount), unlike CashFlow::amount().
+          swapletPrice <- CF.floatingRateCouponPricerSwapletPrice pricer
+          disc <- discount' ts endDate True
+          swapletPrice `shouldSatisfy` closePrec (amount / 100.0 * disc) 1e-10
+
+          -- CashFlow::price(discountCurve) = amount() * discountCurve->discount(date()).
+          price <- CF.floatingRateCouponPrice coupon (Just ts)
+          price `shouldSatisfy` closePrec (amount * disc) 1e-10
+
+          -- No CMS-style timing adjustment applies to a plain Ibor coupon.
+          convexityAdjustment <- CF.floatingRateCouponConvexityAdjustment coupon
+          convexityAdjustment `shouldSatisfy` closePrec 0.0 1e-12
+
+          -- Caplet/floorlet put-call parity at a common effective strike: the price difference
+          -- must equal the (undiscounted) intrinsic value of the underlying swaplet relative to
+          -- that strike, discounted.
+          accrual <- years dc startDate endDate Nothing Nothing
+          let effStrike = rate + 0.001
+          capletPrice <- CF.floatingRateCouponPricerCapletPrice pricer effStrike
+          floorletPrice <- CF.floatingRateCouponPricerFloorletPrice pricer effStrike
+          (capletPrice - floorletPrice) `shouldSatisfy` closePrec ((rate - effStrike) * accrual * disc) 1e-8
+          capletRate <- CF.floatingRateCouponPricerCapletRate pricer effStrike
+          floorletRate <- CF.floatingRateCouponPricerFloorletRate pricer effStrike
+          (capletRate - floorletRate) `shouldSatisfy` closePrec (rate - effStrike) 1e-8
 
       it "check for segfaulting regression with dynamic cast of coupon in Black pricer" $
         Settings.keepingSettings' $ do
@@ -413,6 +472,9 @@ spec evalDate = do
             underlyingPrice <- digPriceOf disc underlying
             cappedPrice <- digPriceOf disc capped
             cappedPrice `shouldSatisfy` closePrec 0.0 1e-8
+            -- DigitalCoupon::rate() must agree with CashFlow::amount() = rate * accrualPeriod * nominal.
+            cappedRate <- CF.digitalCouponRate capped
+            (cappedRate * digNominal * accrual * disc) `shouldSatisfy` closePrec cappedPrice 1e-8
             callRate <- CF.digitalCouponCallOptionRate capped
             (callRate * digNominal * accrual * disc) `shouldSatisfy` closePrec underlyingPrice 1e-8
 
@@ -422,6 +484,8 @@ spec evalDate = do
               (Just 0.99) CF.Long False Nothing Nothing False
             CF.setFloatingRateCouponPricer floored pricer
             flooredPrice <- digPriceOf disc floored
+            flooredRate <- CF.digitalCouponRate floored
+            (flooredRate * digNominal * accrual * disc) `shouldSatisfy` closePrec flooredPrice 1e-8
             flooredPrice `shouldSatisfy` closePrec (2 * underlyingPrice) 2.5e-6
             putRate <- CF.digitalCouponPutOptionRate floored
             (putRate * digNominal * accrual * disc) `shouldSatisfy` closePrec underlyingPrice 2.5e-6
@@ -755,6 +819,33 @@ spec evalDate = do
           amount <- CF.floatingRateCouponAmount pastCoupon
           amount `shouldSatisfy` closePrec (10000.0 * 0.000987136104 * 31.0 / 360) 1e-8
 
+      it "fixingDates/indexFixings agree with the coupon's own historical fixings, for a wholly past coupon" $
+        bracket_ clearAllFixingHistories clearAllFixingHistories $ Settings.keepingSettings' $ do
+          sofr <- oisFixture Nothing Nothing
+          pastCoupon <- oisMakeCoupon sofr (18 `october` 2021) (18 `november` 2021)
+          dates <- CF.overnightIndexedCouponFixingDates pastCoupon
+          fixings <- CF.overnightIndexedCouponIndexFixings pastCoupon
+          length fixings `shouldBe` length dates
+          length dates `shouldSatisfy` (> 0)
+          expected <- mapM (\d -> fixing sofr d False) dates
+          fixings `shouldBe` expected
+
+      it "AverageBMACoupon fixingDates/indexFixings agree with the coupon's own seeded fixings" $
+        bracket_ clearAllFixingHistories clearAllFixingHistories $ Settings.keepingSettings' $ do
+          Settings.setEvaluationDate (Just (1 `december` 2021))
+          dc <- dayCounter (Actual360 False)
+          rateQuote <- Quote.simpleQuote 0.0009 >>= Quote.asQuote
+          curve <- flatForward (1 `december` 2021) rateQuote dc IR.Continuous Annual
+          bma <- bmaIndex (Just curve)
+          cpn <- CF.averageBMACoupon (18 `november` 2021) 10000.0 (18 `october` 2021) (18 `november` 2021)
+            bma 1.0 0.0 Nothing Nothing dc
+          fdates <- CF.averageBMACouponFixingDates cpn
+          length fdates `shouldSatisfy` (> 0)
+          addFixings bma (zip fdates (replicate (length fdates) 0.0009)) False
+          fixings <- CF.averageBMACouponIndexFixings cpn
+          length fixings `shouldBe` length fdates
+          fixings `shouldSatisfy` all (closePrec 0.0009 1e-15)
+
       it "prices a past coupon with a compounded/simple spread (testPastSpreadedCouponRate)" $
         bracket_ clearAllFixingHistories clearAllFixingHistories $ Settings.keepingSettings' $ do
           sofr <- oisFixture Nothing Nothing
@@ -975,6 +1066,8 @@ spec evalDate = do
           endDate <- last <$> dates sch
           testCpn <- CF.multipleResetsCoupon endDate 1.0 sch fixingDaysN euribor 1.0 0.0 spread
             Nothing Nothing dc Nothing
+          fixingDates <- CF.multipleResetsCouponFixingDates testCpn
+          length fixingDates `shouldBe` length subs
           pricer <- CF.compoundingMultipleResetsPricer
           CF.setFloatingRateCouponPricer testCpn pricer
           actual <- CF.floatingRateCouponAmount testCpn
@@ -1622,6 +1715,41 @@ spec evalDate = do
           n `shouldSatisfy` not . isNaN
 
     describe "Index fixings" $ do
+      it "calculates convention-aware fixing, value, and maturity dates" $
+        Settings.keepingSettings' $ do
+          cal <- calendar TARGET
+          eur <- currency EUR
+          dc <- dayCounter (Actual360 False)
+          idx <- iborIndex (Ibor "DateRules" (3, Months) 2 eur cal ModifiedFollowing False dc) Nothing
+          let fixing = 29 `january` 2024
+              value = 31 `january` 2024
+          fixingDate idx value `shouldReturn` fixing
+          valueDate idx fixing `shouldReturn` value
+          maturityDate idx value `shouldReturn` (30 `april` 2024)
+
+      it "uses CustomIbor's separate value and maturity calendars for date calculations" $
+        Settings.keepingSettings' $ do
+          fixingCal <- calendar (Bespoke "DateRuleFixing" [Date.Saturday, Date.Sunday])
+          valueMaturityCal <- calendar (Bespoke "DateRuleValueMaturity" [Date.Wednesday, Date.Thursday])
+          eur <- currency EUR
+          dc <- dayCounter (Actual360 False)
+          idx <- iborIndex (CustomIbor "DateRuleCustom" (3, Months) 1 eur fixingCal valueMaturityCal valueMaturityCal
+                              ModifiedFollowing False dc) Nothing
+          let fixing = 30 `january` 2024
+              value = 2 `february` 2024
+          valueDate idx fixing `shouldReturn` value
+          fixingDate idx value `shouldReturn` fixing
+          maturityDate idx value `shouldReturn` (3 `may` 2024)
+
+      it "rejects a non-business fixing date when calculating its value date" $
+        Settings.keepingSettings' $ do
+          cal <- calendar TARGET
+          eur <- currency EUR
+          dc <- dayCounter (Actual360 False)
+          idx <- iborIndex (Ibor "InvalidFixing" (3, Months) 2 eur cal ModifiedFollowing False dc) Nothing
+          let cPlusPlusEx (CPlusPlusException message) = not (null message)
+          valueDate idx (28 `january` 2024) `shouldThrow` cPlusPlusEx
+
       it "addFixing/fixing round-trip, hasHistoricalFixing/isValidFixingDate, addFixings and clearFixings" $
         Settings.keepingSettings' $ do
           idx <- iborIndex (Euribor (6, Months)) Nothing

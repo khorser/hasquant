@@ -214,3 +214,16 @@ spec = do
       v' `shouldSatisfy` closePrec expected' 1.0e-15
       v' `shouldNotSatisfy` closePrec v 1.0e-9
       Settings.collectGarbage
+
+  describe "FuturesConvAdjustmentQuote" $
+    it "futuresValue reports the futures quote's own value, independent of volatility/meanReversion" $ do
+      today <- Settings.evaluationDate
+      cal <- calendar TARGET
+      idx <- iborIndex Euribor1Y Nothing
+      futuresDate <- advance cal today (1, Years) Following False
+      futuresQuote <- simpleQuote 95.0 >>= asQuote
+      volQuote <- simpleQuote 0.01 >>= asQuote
+      meanRevQuote <- simpleQuote 0.03 >>= asQuote
+      q <- futuresConvAdjustmentQuote idx futuresDate futuresQuote volQuote meanRevQuote
+      fv <- futuresConvAdjustmentQuoteFuturesValue q
+      fv `shouldSatisfy` closePrec 95.0 1.0e-12

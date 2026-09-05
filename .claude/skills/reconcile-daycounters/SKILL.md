@@ -44,6 +44,6 @@ Prefer **specific, dedicated constructors over a generic parameterized one** her
 
 ## Verification
 
-Run `make` (see CLAUDE.md) for a quick C++-only compile check before doing a full `stack build --test --no-haddock`.
+Run `make` for a quick C++-only compile check before doing a full `stack build --test --no-haddock`.
 
 A `cbits/`-only change touches no `.chs` file, so the run-hasquant skill's stale-build gotcha applies: clean-build if in doubt, and confirm at the value level with a `smoke/` script that constructs one of the new day counters and checks a day-count/year-fraction actually differs the way it should.

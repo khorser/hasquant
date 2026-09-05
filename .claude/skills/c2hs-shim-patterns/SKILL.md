@@ -283,6 +283,8 @@ types.
 
 ## Fighting the wrong layer
 
+`GenForeignPtr`'s `_access` and `_mayFree` fields are an intentional manual dictionary. Do not replace them with a public `Access` constraint: c2hs emits explicit signatures for every hook, so polymorphic `GenX` hooks would each need hand-written constraints, including awkward prime-bearing C tag names. The existing result types already pin `newCastForeignPtr` and `newGenForeignPtr` correctly.
+
 **A `{#fun#}` argument type reading `import Foreign.ForeignPtr(ForeignPtr)`
 plus a bare `GenX (ForeignPtr a)' `` annotation is a sign you're fighting
 the wrong layer.** That shape only type-checks against a marshaller whose
@@ -347,6 +349,8 @@ variable instead (to `r`) — see `withBond`/`withGenBond` in
 `Internal/Type.hs`.
 
 ## Enum export and numbering
+
+**Add a c2hs `add prefix=` only for a verified Haskell name collision.** Search the target module and its unqualified imports for the bare constructors first. Short upstream names are not by themselves a reason to prefix them; unprefixed constructors are the default. Existing prefixed enums such as `RateAveragingType` resolve real collisions and are not a blanket precedent.
 
 **Don't export c2hs's raw double-underscore enum constructors**
 (`ActualActual__Bond`, from `add prefix = "ActualActual__"`) through any

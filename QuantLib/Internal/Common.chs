@@ -8,6 +8,8 @@ module QuantLib.Internal.Common
   , Approximation(..)
   , Interpolation(..)
   , Interpolation2D(..)
+  , IterativeBootstrapOpts(..)
+  , defaultIterativeBootstrapOpts
 
   , ExerciseType(..)
   , Exercise(..)
@@ -140,6 +142,21 @@ import QuantLib.Internal.Syntax
 
 #include "qlEnumC2HS.h"
 #include "qlEnumObjects.h"
+
+-- |Every constructor parameter of QuantLib's curve-generic @IterativeBootstrap@.
+-- The first three fields are 'Maybe' because 'Nothing' preserves QuantLib's
+-- @Null\<Real\>()@ sentinel, which selects a suitable value for each curve pillar.
+$(deriveOptionsRecord "IterativeBootstrapOpts" []
+  [ ("ibAccuracy", [t|Maybe Double|], [|Nothing|])
+  , ("ibMinValue", [t|Maybe Double|], [|Nothing|])
+  , ("ibMaxValue", [t|Maybe Double|], [|Nothing|])
+  , ("ibMaxAttempts", [t|Word|], [|1|])
+  , ("ibMaxFactor", [t|Double|], [|2.0|])
+  , ("ibMinFactor", [t|Double|], [|2.0|])
+  , ("ibDontThrow", [t|Bool|], [|False|])
+  , ("ibDontThrowSteps", [t|Word|], [|10|])
+  , ("ibMaxEvaluations", [t|Word|], [|100|])
+  ])
 
 -- this enum is not special, just used in many places and was put here to avoid cyclic dependencies
 {#enum TimeUnit{} deriving(Show, Eq, Read, Bounded)#}
@@ -868,6 +885,9 @@ data FdmScheme =
   | ImplicitEuler
   | ModifiedCraigSneyd
   | ModifiedHundsdorfer
+  | MethodOfLines
+    !Double -- ^eps
+    !Double -- ^relInitStepSize
 
 {#fun qlFdmSchemeDesc{`FdmSchemeType',`Double',`Double',preErrorCheck-`String'errorCheck*-}->`QlFdmSchemeDesc'peekFdmSchemeDesc*#}
 {#fun qlFdmSchemeDescCraigSneyd{preErrorCheck-`String'errorCheck*-}->`QlFdmSchemeDesc'peekFdmSchemeDesc*#}
@@ -877,6 +897,9 @@ data FdmScheme =
 {#fun qlFdmSchemeDescImplicitEuler{preErrorCheck-`String'errorCheck*-}->`QlFdmSchemeDesc'peekFdmSchemeDesc*#}
 {#fun qlFdmSchemeDescModifiedCraigSneyd{preErrorCheck-`String'errorCheck*-}->`QlFdmSchemeDesc'peekFdmSchemeDesc*#}
 {#fun qlFdmSchemeDescModifiedHundsdorfer{preErrorCheck-`String'errorCheck*-}->`QlFdmSchemeDesc'peekFdmSchemeDesc*#}
+{#fun qlFdmSchemeDescMethodOfLines{`Double' -- ^eps
+  ,`Double' -- ^relInitStepSize
+  ,preErrorCheck-`String'errorCheck*-}->`QlFdmSchemeDesc'peekFdmSchemeDesc*#}
 
 fdmScheme :: FdmScheme -> IO QlFdmSchemeDesc
 fdmScheme (FdmScheme t th mu) = qlFdmSchemeDesc t th mu
@@ -887,6 +910,7 @@ fdmScheme Hundsdorfer = qlFdmSchemeDescHundsdorfer
 fdmScheme ImplicitEuler = qlFdmSchemeDescImplicitEuler
 fdmScheme ModifiedCraigSneyd = qlFdmSchemeDescModifiedCraigSneyd
 fdmScheme ModifiedHundsdorfer = qlFdmSchemeDescModifiedHundsdorfer
+fdmScheme (MethodOfLines eps relInitStepSize) = qlFdmSchemeDescMethodOfLines eps relInitStepSize
 
 data Constraint =
   Boundary

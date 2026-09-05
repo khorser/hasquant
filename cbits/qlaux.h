@@ -24,30 +24,6 @@
 // (like SabrSwaptionVolatilityCube above) it can't be left as a forward declaration.
 #include <ql/models/shortrate/twofactormodel.hpp>
 
-// By the time Haskell code runs, the x87 unit is at 53-bit precision (control word
-// 0x027f), where a binary linked by clang++ rather than ghc has 64-bit extended (0x037f).
-// Every 80-bit long double operation is then silently rounded to double, which breaks boost::math's default
-// promote_double policy: its algorithms assume the precision they asked for. It surfaced
-// as quantile(non_central_chi_squared) failing to converge on the lower tail inside
-// SquareRootProcessRNDCalculator::invcdf, throwing out of hestonSLVFDMModel on Windows
-// and nowhere else. See WINDOWS.md and tools/debug/hestonslv-probe.cpp.
-//
-// Exposed rather than done automatically. Setting it from a namespace-scope initializer
-// was measured not to stick -- the test still failed on Windows with one in place -- and
-// the RTS hooks that could run earlier are one-shot per process, which cannot be right
-// for a per-thread register. The alternative, re-asserting it on every crossing from
-// Haskell, buys ordering at the cost of FP-state side effects in the marshalling path. fldcw rather than
-// _controlfp_s because MSVC's CRT documents _MCW_PC as unsupported on x64. The word is
-// per-thread. Haskell's own Double arithmetic is SSE/MXCSR and is unaffected.
-inline void setX87ExtendedPrecision() {
-#if defined(_WIN32) && (defined(__x86_64__) || defined(__i386__))
-  unsigned short cw = 0;
-  __asm__ __volatile__("fnstcw %0" : "=m"(cw));
-  cw = (unsigned short)((cw & ~0x0300u) | 0x0300u);
-  __asm__ __volatile__("fldcw %0" : : "m"(cw));
-#endif
-}
-
 struct HestonSLVFDMLogEntries;
 
 int *qlAllocateInts(size_t size);
@@ -114,6 +90,8 @@ namespace QuantLib {
   class IborIndex;
   class IborCoupon;
   class OvernightIndexedCoupon;
+  class AverageBMACoupon;
+  class MultipleResetsCoupon;
   class CPICoupon;
   class CPICouponPricer;
   class Index;
@@ -214,6 +192,7 @@ namespace QuantLib {
   class Pool;
   class Basket;
   class DefaultLossModel;
+  class GaussianLHPLossModel;
   class SyntheticCDO;
   class NthToDefault;
   class Claim;
@@ -233,6 +212,7 @@ namespace QuantLib {
   class CubicBSplinesFitting;
   class DefaultProbabilityTermStructure;
   class DeltaVolQuote;
+  class FuturesConvAdjustmentQuote;
   class DiscountingFxForwardEngine;
   class DiscountingSwapEngine;
   class DiscountingConstNotionalCrossCurrencySwapEngine;
@@ -270,6 +250,7 @@ namespace QuantLib {
   class FraRateHelper;
   class FractionalDividend;
   class FuturesRateHelper;
+  class OvernightIndexFutureRateHelper;
   class FxForward;
   class G2;
   class G2ForwardProcess;
@@ -379,6 +360,7 @@ namespace QuantLib {
   class SwapRateHelper;
   class Swaption;
   class SwaptionHelper;
+  class SwaptionVolatilityMatrix;
   class SwaptionVolatilityStructure;
   class SwingExercise;
   class TermStructure;
@@ -470,6 +452,8 @@ using QuantLib::CustomIborIndex;
 using QuantLib::IborIndex;
 using QuantLib::IborCoupon;
 using QuantLib::OvernightIndexedCoupon;
+using QuantLib::AverageBMACoupon;
+using QuantLib::MultipleResetsCoupon;
 using QuantLib::CPICoupon;
 using QuantLib::CPICouponPricer;
 using QuantLib::Index;
@@ -569,6 +553,7 @@ using QuantLib::Issuer;
 using QuantLib::Pool;
 using QuantLib::Basket;
 using QuantLib::DefaultLossModel;
+using QuantLib::GaussianLHPLossModel;
 using QuantLib::SyntheticCDO;
 using QuantLib::NthToDefault;
 using QuantLib::Claim;
@@ -588,6 +573,7 @@ using QuantLib::CreditDefaultSwap;
 using QuantLib::CubicBSplinesFitting;
 using QuantLib::DefaultProbabilityTermStructure;
 using QuantLib::DeltaVolQuote;
+using QuantLib::FuturesConvAdjustmentQuote;
 using QuantLib::DiscountingFxForwardEngine;
 using QuantLib::DiscountingSwapEngine;
 using QuantLib::Dividend;
@@ -624,6 +610,7 @@ using QuantLib::ForwardSpreadedTermStructure;
 using QuantLib::FraRateHelper;
 using QuantLib::FractionalDividend;
 using QuantLib::FuturesRateHelper;
+using QuantLib::OvernightIndexFutureRateHelper;
 using QuantLib::FxForward;
 using QuantLib::G2;
 using QuantLib::G2ForwardProcess;
@@ -737,6 +724,7 @@ using QuantLib::SwapIndex;
 using QuantLib::SwapRateHelper;
 using QuantLib::Swaption;
 using QuantLib::SwaptionHelper;
+using QuantLib::SwaptionVolatilityMatrix;
 using QuantLib::SwaptionVolatilityStructure;
 using QuantLib::SwingExercise;
 using QuantLib::TermStructure;
@@ -813,6 +801,8 @@ using QlYoYInflationCoupon = shared_ptr<YoYInflationCoupon>;
 using QlCmsCoupon = shared_ptr<CmsCoupon>;
 using QlIborCoupon = shared_ptr<IborCoupon>;
 using QlOvernightIndexedCoupon = shared_ptr<OvernightIndexedCoupon>;
+using QlAverageBMACoupon = shared_ptr<AverageBMACoupon>;
+using QlMultipleResetsCoupon = shared_ptr<MultipleResetsCoupon>;
 using QlCPICoupon = shared_ptr<CPICoupon>;
 using QlCPICouponPricer = shared_ptr<CPICouponPricer>;
 using QlDigitalCmsCoupon = shared_ptr<DigitalCmsCoupon>;
@@ -889,6 +879,7 @@ using QlCapFloorTermVolatilityStructure = shared_ptr<CapFloorTermVolatilityStruc
 using QlCapFloorTermVolCurve = shared_ptr<CapFloorTermVolCurve>;
 using QlCapFloorTermVolSurface = shared_ptr<CapFloorTermVolSurface>;
 using QlCashFlow = shared_ptr<CashFlow>;
+using QlFixedRateCoupon = shared_ptr<FixedRateCoupon>;
 // CommodityCurve is a plain TermStructure subclass, constructed and consumed directly by value
 // (basisOfCurve_ is a shared_ptr<CommodityCurve>, never a Handle) -- shared_ptr-wrapped, same
 // reasoning as QlTermStructure/QlCallableBondVolatilityStructure/QlDefaultProbabilityTermStructure.
@@ -915,6 +906,7 @@ using QlCdsOption = shared_ptr<CdsOption>;
 using QlPool = shared_ptr<Pool>;
 using QlBasket = shared_ptr<Basket>;
 using QlDefaultLossModel = shared_ptr<DefaultLossModel>;
+using QlGaussianLHPLossModel = shared_ptr<GaussianLHPLossModel>;
 using QlSyntheticCDO = shared_ptr<SyntheticCDO>;
 using QlNthToDefault = shared_ptr<NthToDefault>;
 using QlClaim = shared_ptr<Claim>;
@@ -933,6 +925,7 @@ using QlCPIVolatilitySurface = Handle<CPIVolatilitySurface>;
 using QlCreditDefaultSwap = shared_ptr<CreditDefaultSwap>;
 using QlDefaultProbabilityTermStructure = shared_ptr<DefaultProbabilityTermStructure>;
 using QlDeltaVolQuote = shared_ptr<DeltaVolQuote>;
+using QlFuturesConvAdjustmentQuote = shared_ptr<FuturesConvAdjustmentQuote>;
 using QlDividend = shared_ptr<Dividend>;
 using QlEquityCashFlow = shared_ptr<EquityCashFlow>;
 using QlEquityCashFlowPricer = shared_ptr<EquityCashFlowPricer>;
@@ -994,6 +987,8 @@ using QlNonstandardSwaption = shared_ptr<NonstandardSwaption>;
 using QlFloatFloatSwap = shared_ptr<FloatFloatSwap>;
 using QlFloatFloatSwaption = shared_ptr<FloatFloatSwaption>;
 using QlOISRateHelper = shared_ptr<OISRateHelper>;
+using QlFuturesRateHelper = shared_ptr<FuturesRateHelper>;
+using QlOvernightIndexFutureRateHelper = shared_ptr<OvernightIndexFutureRateHelper>;
 using QlOneAssetOption = shared_ptr<OneAssetOption>;
 using QlOneFactorAffineModel = shared_ptr<OneFactorAffineModel>;
 using QlOption = shared_ptr<Option>;
@@ -1039,6 +1034,7 @@ using QlSwapIndex = shared_ptr<SwapIndex>;
 using QlSwapRateHelper = shared_ptr<SwapRateHelper>;
 using QlSwaption = shared_ptr<Swaption>;
 using QlSwaptionHelper = shared_ptr<SwaptionHelper>;
+using QlSwaptionVolatilityMatrix = shared_ptr<SwaptionVolatilityMatrix>;
 using QlSabrSwaptionVolatilityCube = shared_ptr<SabrSwaptionVolatilityCube>;
 using QlNoArbSabrSwaptionVolatilityCube = shared_ptr<NoArbSabrSwaptionVolatilityCube>;
 using QlInterpolatedSwaptionVolatilityCube = shared_ptr<InterpolatedSwaptionVolatilityCube>;
@@ -1164,6 +1160,7 @@ QL_TRACE_NAME(CapFloorTermVolatilityStructure)
 QL_TRACE_NAME(CapFloorTermVolCurve)
 QL_TRACE_NAME(CapFloorTermVolSurface)
 QL_TRACE_NAME(CashFlow)
+QL_TRACE_NAME(FixedRateCoupon)
 QL_TRACE_NAME(CapHelper)
 QL_TRACE_NAME(CashOrNothingPayoff)
 QL_TRACE_NAME(CdsOption)
@@ -1172,6 +1169,7 @@ QL_TRACE_NAME(Issuer)
 QL_TRACE_NAME(Pool)
 QL_TRACE_NAME(Basket)
 QL_TRACE_NAME(DefaultLossModel)
+QL_TRACE_NAME(GaussianLHPLossModel)
 QL_TRACE_NAME(SyntheticCDO)
 QL_TRACE_NAME(NthToDefault)
 QL_TRACE_NAME(Claim)
@@ -1195,6 +1193,7 @@ QL_TRACE_NAME(Currency)
 QL_TRACE_NAME(DayCounter)
 QL_TRACE_NAME(DefaultProbabilityTermStructure)
 QL_TRACE_NAME(DeltaVolQuote)
+QL_TRACE_NAME(FuturesConvAdjustmentQuote)
 QL_TRACE_NAME(DepositRateHelper)
 QL_TRACE_NAME(DiscountingBondEngine)
 QL_TRACE_NAME(DiscountingFxForwardEngine)
@@ -1239,6 +1238,8 @@ QL_TRACE_NAME(FloatingRateCoupon)
 QL_TRACE_NAME(CmsCoupon)
 QL_TRACE_NAME(IborCoupon)
 QL_TRACE_NAME(OvernightIndexedCoupon)
+QL_TRACE_NAME(AverageBMACoupon)
+QL_TRACE_NAME(MultipleResetsCoupon)
 QL_TRACE_NAME(CPICoupon)
 QL_TRACE_NAME(CPICouponPricer)
 QL_TRACE_NAME(DigitalCmsCoupon)
@@ -1251,6 +1252,7 @@ QL_TRACE_NAME(ForwardSpreadedTermStructure)
 QL_TRACE_NAME(FraRateHelper)
 QL_TRACE_NAME(FractionalDividend)
 QL_TRACE_NAME(FuturesRateHelper)
+QL_TRACE_NAME(OvernightIndexFutureRateHelper)
 QL_TRACE_NAME(FxForward)
 QL_TRACE_NAME(G2)
 QL_TRACE_NAME(G2SwaptionEngine)
@@ -1368,6 +1370,7 @@ QL_TRACE_NAME(QlCapFloorTermVolatilityStructure)
 QL_TRACE_NAME(QlCapFloorTermVolCurve)
 QL_TRACE_NAME(QlCapFloorTermVolSurface)
 QL_TRACE_NAME(QlCashFlow)
+QL_TRACE_NAME(QlFixedRateCoupon)
 QL_TRACE_NAME(QlCommodityCurve)
 QL_TRACE_NAME(QlCommodityIndex)
 QL_TRACE_NAME(QlCommodity)
@@ -1381,6 +1384,7 @@ QL_TRACE_NAME(QlCdsOption)
 QL_TRACE_NAME(QlPool)
 QL_TRACE_NAME(QlBasket)
 QL_TRACE_NAME(QlDefaultLossModel)
+QL_TRACE_NAME(QlGaussianLHPLossModel)
 QL_TRACE_NAME(QlSyntheticCDO)
 QL_TRACE_NAME(QlNthToDefault)
 QL_TRACE_NAME(QlClaim)
@@ -1394,6 +1398,7 @@ QL_TRACE_NAME(QlCPIVolatilitySurface)
 QL_TRACE_NAME(QlCreditDefaultSwap)
 QL_TRACE_NAME(QlDefaultProbabilityTermStructure)
 QL_TRACE_NAME(QlDeltaVolQuote)
+QL_TRACE_NAME(QlFuturesConvAdjustmentQuote)
 QL_TRACE_NAME(QlDividend)
 QL_TRACE_NAME(QlEndCriteria)
 QL_TRACE_NAME(QlEquityCashFlow)
@@ -1417,6 +1422,8 @@ QL_TRACE_NAME(QlRendistatoCalculator)
 QL_TRACE_NAME(QlFloatingRateCouponPricer)
 QL_TRACE_NAME(QlFloatingRateCoupon)
 QL_TRACE_NAME(QlCmsCoupon)
+QL_TRACE_NAME(QlAverageBMACoupon)
+QL_TRACE_NAME(QlMultipleResetsCoupon)
 QL_TRACE_NAME(QlDigitalCmsCoupon)
 QL_TRACE_NAME(QlDigitalCmsSpreadCoupon)
 QL_TRACE_NAME(QlDigitalReplication)
@@ -1467,6 +1474,8 @@ QL_TRACE_NAME(QlNonstandardSwaption)
 QL_TRACE_NAME(QlFloatFloatSwap)
 QL_TRACE_NAME(QlFloatFloatSwaption)
 QL_TRACE_NAME(QlOISRateHelper)
+QL_TRACE_NAME(QlFuturesRateHelper)
+QL_TRACE_NAME(QlOvernightIndexFutureRateHelper)
 QL_TRACE_NAME(QlOneAssetOption)
 QL_TRACE_NAME(QlOneFactorAffineModel)
 QL_TRACE_NAME(QlOption)
@@ -1506,6 +1515,7 @@ QL_TRACE_NAME(QlSwaption)
 QL_TRACE_NAME(QlSwaptionHelper)
 QL_TRACE_NAME(QlSwaptionVolatilityStructure)
 QL_TRACE_NAME(QlSabrSwaptionVolatilityCube)
+QL_TRACE_NAME(QlSwaptionVolatilityMatrix)
 QL_TRACE_NAME(QlNoArbSabrSwaptionVolatilityCube)
 QL_TRACE_NAME(QlInterpolatedSwaptionVolatilityCube)
 QL_TRACE_NAME(QlSwingExercise)
@@ -1565,6 +1575,7 @@ QL_TRACE_NAME(SwapIndex)
 QL_TRACE_NAME(SwapRateHelper)
 QL_TRACE_NAME(Swaption)
 QL_TRACE_NAME(SwaptionHelper)
+QL_TRACE_NAME(SwaptionVolatilityMatrix)
 QL_TRACE_NAME(SwaptionVolatilityStructure)
 QL_TRACE_NAME(SwingExercise)
 QL_TRACE_NAME(TermStructure)
@@ -1770,6 +1781,18 @@ template <class T>
 T handleException(char **msg, std::exception &e) {
   *msg = tracedup(e.what());
   return 0;
+}
+
+template <class F>
+static void fillMatrixOut(F&& get, unsigned* rows, unsigned* cols, unsigned* len, double** vs) {
+  *rows = 0; *cols = 0; *len = 0; *vs = nullptr;
+  const Matrix m = get();
+  const unsigned n = (unsigned)(m.rows() * m.columns());
+  *vs = qlAllocateDoubles(n);
+  OutArrayGuard<double> guard(vs, len);
+  std::copy(m.begin(), m.end(), *vs);
+  *rows = (unsigned)m.rows(); *cols = (unsigned)m.columns(); *len = n;
+  guard.commit();
 }
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

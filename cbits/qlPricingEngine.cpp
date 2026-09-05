@@ -778,6 +778,9 @@ QlPricingEngine* qlVarianceGammaEngine(QlVarianceGammaProcess* x0, double absolu
 QlPricingEngine* qlAnalyticHestonEngine1(QlHestonModel* model, unsigned integrationOrder, char **e) {
   try {return ret(new QlPricingEngine(alloc(new AnalyticHestonEngine(*arg(model), integrationOrder))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
+int qlAnalyticHestonEngineOptimalControlVariate(double t, double v0, double kappa, double theta, double sigma, double rho) {
+  return AnalyticHestonEngine::optimalControlVariate(t, v0, kappa, theta, sigma, rho);
+}
 QlPricingEngine* qlAnalyticHestonHullWhiteEngine1(QlHestonModel* model, QlHullWhite* hullWhiteModel, double relTolerance, unsigned maxEvaluations, char **e) {
   try {return ret(new QlPricingEngine(alloc(new AnalyticHestonHullWhiteEngine(*arg(model), *arg(hullWhiteModel), relTolerance, maxEvaluations))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
@@ -1060,6 +1063,7 @@ FdmSchemeDesc* qlFdmSchemeDescHundsdorfer(char **e) {try {return alloc(new FdmSc
 FdmSchemeDesc* qlFdmSchemeDescImplicitEuler(char **e) {try {return alloc(new FdmSchemeDesc(FdmSchemeDesc::ImplicitEuler()));} catch (std::exception& er) {return handleException<FdmSchemeDesc*>(e, er);}}
 FdmSchemeDesc* qlFdmSchemeDescModifiedCraigSneyd(char **e) {try {return alloc(new FdmSchemeDesc(FdmSchemeDesc::ModifiedCraigSneyd()));} catch (std::exception& er) {return handleException<FdmSchemeDesc*>(e, er);}}
 FdmSchemeDesc* qlFdmSchemeDescModifiedHundsdorfer(char **e) {try {return alloc(new FdmSchemeDesc(FdmSchemeDesc::ModifiedHundsdorfer()));} catch (std::exception& er) {return handleException<FdmSchemeDesc*>(e, er);}}
+FdmSchemeDesc* qlFdmSchemeDescMethodOfLines(double eps, double relInitStepSize, char **e) {try {return alloc(new FdmSchemeDesc(FdmSchemeDesc::MethodOfLines(eps, relInitStepSize)));} catch (std::exception& er) {return handleException<FdmSchemeDesc*>(e, er);}}
 void qlFreeFdmSchemeDesc(FdmSchemeDesc *o) {del(o);}
 
 // Drives FdmBackwardSolver::rollback with a Haskell-defined operator/step condition instead of a
@@ -1428,6 +1432,8 @@ QlLmVolatilityModel* qlLmLinearExponentialVolatilityModel(unsigned fixingTimesLe
 QlLiborForwardModel* qlLiborForwardModel(QlLiborForwardModelProcess* process, QlLmVolatilityModel* volaModel, QlLmCorrelationModel* corrModel, char **e) {
   try {return ret(new QlLiborForwardModel(alloc(new LiborForwardModel(*arg(process), *arg(volaModel), *arg(corrModel)))));
   } catch (std::exception& er) {return handleException<QlLiborForwardModel*>(e, er);}}
+double qlLiborForwardModelS0(QlLiborForwardModel* o, unsigned alpha, unsigned beta, char **e) {
+  try {return (*arg(o))->S_0(alpha, beta);} catch (std::exception& er) {return handleException<double>(e, er);}}
 void qlFreeLfmHullWhiteParameterization(QlLfmHullWhiteParameterization *o) {del(o);}
 QlLfmHullWhiteParameterization* qlLfmHullWhiteParameterization(QlLiborForwardModelProcess* process, QlOptionletVolatilityStructure* capletVol, unsigned correlationRows, unsigned correlationCols, double* correlation, unsigned factors, char **e) {
   try {return ret(new QlLfmHullWhiteParameterization(alloc(new LfmHullWhiteParameterization(*arg(process), handlePtr(arg(capletVol)), qlMatrix(correlation, correlationRows, correlationCols), factors))));
@@ -1451,6 +1457,16 @@ QlGsr* qlGsr(QlYieldTermStructure* termStructure, unsigned volstepdatesLen, int*
 void qlGsrVolatility(QlGsr* o, unsigned *len, double **vs, char **e) {
   try {Array vol = (*arg(o))->volatility(); *len = vol.size(); *vs = qlAllocateDoubles(*len); std::copy(vol.begin(), vol.end(), *vs);
   } catch (std::exception& er) {handleException<double*>(e, er);}}
+void qlGsrMoveVolatility(QlGsr* o, unsigned i, unsigned *len, int **fp, char **e) {
+  try {std::vector<bool> res = (*arg(o))->MoveVolatility(i);
+    *len = res.size(); *fp = qlAllocateInts(*len);
+    for (unsigned j = 0; j < *len; ++j) (*fp)[j] = res[j];
+  } catch (std::exception& er) {handleException<int*>(e, er);}}
+void qlGsrMoveReversion(QlGsr* o, unsigned i, unsigned *len, int **fp, char **e) {
+  try {std::vector<bool> res = (*arg(o))->MoveReversion(i);
+    *len = res.size(); *fp = qlAllocateInts(*len);
+    for (unsigned j = 0; j < *len; ++j) (*fp)[j] = res[j];
+  } catch (std::exception& er) {handleException<int*>(e, er);}}
 void qlGsrCalibrateVolatilitiesIterative(QlGsr* o, unsigned helpersLen, QlBlackCalibrationHelper** helpers, QlOptimizationMethod* method, QlEndCriteria* endCriteria, Constraint* constraint, unsigned weightsLen, double* weights, char **e) {
   try {(*arg(o))->calibrateVolatilitiesIterative(qlVector(helpers, helpersLen), **arg(method), **arg(endCriteria), Constraint(constraint ? *arg(constraint) : Constraint()), std::vector<double>(weights, weights+weightsLen));
   } catch (std::exception& er) {(void)handleException<int>(e, er);}}
@@ -1590,6 +1606,20 @@ void qlStochasticProcessDiffusion(QlStochasticProcess* o, double t, unsigned xLe
 void qlStochasticProcessExpectation(QlStochasticProcess* o, double t0, unsigned x0Len, double *x0, double dt, unsigned *len, double **vs, char **e) {
   try {Array ex = (*arg(o))->expectation(t0, Array(x0, x0+x0Len), dt); *len = ex.size(); *vs = qlAllocateDoubles(*len); std::copy(ex.begin(), ex.end(), *vs);
   } catch (std::exception& er) {handleException<double*>(e, er);}}
+void qlStochasticProcessStdDeviation(QlStochasticProcess* o, double t0, unsigned x0Len, double *x0, double dt, unsigned *rows, unsigned *cols, unsigned *len, double **vs, char **e) {
+  try {Matrix m = (*arg(o))->stdDeviation(t0, Array(x0, x0+x0Len), dt); *rows = m.rows(); *cols = m.columns(); *len = m.rows()*m.columns();
+    *vs = qlAllocateDoubles(*len); std::copy(m.begin(), m.end(), *vs);
+  } catch (std::exception& er) {handleException<double*>(e, er);}}
+void qlStochasticProcessCovariance(QlStochasticProcess* o, double t0, unsigned x0Len, double *x0, double dt, unsigned *rows, unsigned *cols, unsigned *len, double **vs, char **e) {
+  try {Matrix m = (*arg(o))->covariance(t0, Array(x0, x0+x0Len), dt); *rows = m.rows(); *cols = m.columns(); *len = m.rows()*m.columns();
+    *vs = qlAllocateDoubles(*len); std::copy(m.begin(), m.end(), *vs);
+  } catch (std::exception& er) {handleException<double*>(e, er);}}
+void qlStochasticProcessApply(QlStochasticProcess* o, unsigned x0Len, double *x0, unsigned dxLen, double *dx, unsigned *len, double **vs, char **e) {
+  try {Array a = (*arg(o))->apply(Array(x0, x0+x0Len), Array(dx, dx+dxLen)); *len = a.size(); *vs = qlAllocateDoubles(*len); std::copy(a.begin(), a.end(), *vs);
+  } catch (std::exception& er) {handleException<double*>(e, er);}}
+void qlStochasticProcessEvolve(QlStochasticProcess* o, double t0, unsigned x0Len, double *x0, double dt, unsigned dwLen, double *dw, unsigned *len, double **vs, char **e) {
+  try {Array a = (*arg(o))->evolve(t0, Array(x0, x0+x0Len), dt, Array(dw, dw+dwLen)); *len = a.size(); *vs = qlAllocateDoubles(*len); std::copy(a.begin(), a.end(), *vs);
+  } catch (std::exception& er) {handleException<double*>(e, er);}}
 
 QlBlackProcess* qlBlackProcess(QlQuote* x0, QlYieldTermStructure* riskFreeTS, QlBlackVolTermStructure* blackVolTS, int d, int forceDiscretization, char **e) {
   try {return ret(new QlBlackProcess(alloc(new BlackProcess(*arg(x0), *arg(riskFreeTS), *arg(blackVolTS), createDiscretization1D(d), forceDiscretization))));
@@ -1650,6 +1680,21 @@ QlStochasticProcess1D* qlHullWhiteForwardProcessAsStochasticProcess1D(QlHullWhit
 void qlHullWhiteForwardProcessSetForwardMeasureTime(QlHullWhiteForwardProcess* o, double t, char **e) {
   try {(*arg(o))->setForwardMeasureTime(t);
   } catch (std::exception& er) {(void)handleException<double>(e, er);}}
+double qlHullWhiteProcessAlpha(QlHullWhiteProcess* o, double t, char **e) {
+  try {return (*arg(o))->alpha(t);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlHullWhiteForwardProcessAlpha(QlHullWhiteForwardProcess* o, double t, char **e) {
+  try {return (*arg(o))->alpha(t);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlHullWhiteForwardProcessB(QlHullWhiteForwardProcess* o, double t, double T, char **e) {
+  try {return (*arg(o))->B(t, T);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlHullWhiteForwardProcessMT(QlHullWhiteForwardProcess* o, double s, double t, double T, char **e) {
+  try {return (*arg(o))->M_T(s, t, T);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlHybridHestonHullWhiteProcessNumeraire(QlHybridHestonHullWhiteProcess* o, double t, unsigned xLen, double *x, char **e) {
+  try {return (*arg(o))->numeraire(t, Array(x, x+xLen));
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
 
 void qlFreeG2Process(QlG2Process *o) {del(o);}
 QlStochasticProcess* qlG2ProcessAsStochasticProcess(QlG2Process *o) {return ret(new QlStochasticProcess(*arg(o)));}
@@ -1664,6 +1709,9 @@ double qlG2ForwardProcessPhi(QlG2ForwardProcess* o, double t, char **e) {
   try {return (*arg(o))->phi(t);
   } catch (std::exception& er) {return handleException<double>(e, er);}}
 double qlG2ForwardProcessShortRate(QlG2ForwardProcess* o, double t, double x, double y) {return (*arg(o))->shortRate(t, x, y);}
+void qlG2ForwardProcessSetForwardMeasureTime(QlG2ForwardProcess* o, double t, char **e) {
+  try {(*arg(o))->setForwardMeasureTime(t);
+  } catch (std::exception& er) {(void)handleException<double>(e, er);}}
 
 QlBatesProcess* qlBatesProcess(QlYieldTermStructure* riskFreeRate, QlYieldTermStructure* dividendYield, QlQuote* s0, double v0, double kappa, double theta, double sigma, double rho, double lambda, double nu, double delta, int d, char **e) {
   try {return ret(new QlBatesProcess(alloc(new BatesProcess(*arg(riskFreeRate), *arg(dividendYield), *arg(s0), v0, kappa, theta, sigma, rho, lambda, nu, delta, (HestonProcess::Discretization)d))));
@@ -1689,6 +1737,8 @@ QlGJRGARCHProcess* qlGJRGARCHProcess(QlYieldTermStructure* riskFreeRate, QlYield
 QlHestonProcess* qlHestonProcess(QlYieldTermStructure* riskFreeRate, QlYieldTermStructure* dividendYield, QlQuote* s0, double v0, double kappa, double theta, double sigma, double rho, int d, char **e) {
   try {return ret(new QlHestonProcess(alloc(new HestonProcess(*arg(riskFreeRate), qlNullableHandle(arg(dividendYield)), *arg(s0), v0, kappa, theta, sigma, rho, (HestonProcess::Discretization)d))));
   } catch (std::exception& er) {return handleException<QlHestonProcess*>(e, er);}}
+double qlHestonProcessPdf(QlHestonProcess* o, double x, double v, double t, double eps, char **e) {
+  try {return (*arg(o))->pdf(x, v, t, eps);} catch (std::exception& er) {return handleException<double>(e, er);}}
 QlHullWhiteForwardProcess* qlHullWhiteForwardProcess(QlYieldTermStructure* h, double a, double sigma, char **e) {
   try {return ret(new QlHullWhiteForwardProcess(alloc(new HullWhiteForwardProcess(*arg(h), a, sigma))));
   } catch (std::exception& er) {return handleException<QlHullWhiteForwardProcess*>(e, er);}}
@@ -1724,6 +1774,26 @@ Leg* qlLiborForwardModelProcessCashFlows(QlLiborForwardModelProcess* o, double a
 QlIborIndex* qlLiborForwardModelProcessIndex(QlLiborForwardModelProcess* o, char **e) {
   try {return ret(new QlIborIndex((*arg(o))->index()));
   } catch (std::exception& er) {return handleException<QlIborIndex*>(e, er);}}
+void qlLiborForwardModelProcessSetCovarParam(QlLiborForwardModelProcess* o, QlLfmHullWhiteParameterization* param, char **e) {
+  try {(*arg(o))->setCovarParam(*arg(param));
+  } catch (std::exception& er) {(void)handleException<double>(e, er);}}
+void qlLiborForwardModelProcessDiscountBond(QlLiborForwardModelProcess* o, unsigned ratesLen, double *rates, unsigned *len, double **dfs, char **e) {
+  *len = 0; *dfs = 0;
+  try {std::vector<DiscountFactor> d = (*arg(o))->discountBond(std::vector<Rate>(rates, rates+ratesLen));
+    *dfs = qlAllocateDoubles(d.size()); OutArrayGuard<double> g(dfs, len);
+    std::copy(d.begin(), d.end(), *dfs);
+    *len = d.size(); g.commit();
+  } catch (std::exception& er) {(void)handleException<double*>(e, er);}}
+void qlLiborForwardModelProcessAccrualTimes(QlLiborForwardModelProcess* o, unsigned *startLen, double **start, unsigned *endLen, double **end, char **e) {
+  *startLen = 0; *start = 0; *endLen = 0; *end = 0;
+  try {const std::vector<Time>& s = (*arg(o))->accrualStartTimes();
+    const std::vector<Time>& t = (*arg(o))->accrualEndTimes();
+    *start = qlAllocateDoubles(s.size()); OutArrayGuard<double> gs(start, startLen);
+    std::copy(s.begin(), s.end(), *start);
+    *end = qlAllocateDoubles(t.size()); OutArrayGuard<double> gt(end, endLen);
+    std::copy(t.begin(), t.end(), *end);
+    *startLen = s.size(); *endLen = t.size(); gs.commit(); gt.commit();
+  } catch (std::exception& er) {(void)handleException<double*>(e, er);}}
 QlMerton76Process* qlMerton76Process(QlQuote* stateVariable, QlYieldTermStructure* dividendTS, QlYieldTermStructure* riskFreeTS, QlBlackVolTermStructure* blackVolTS, QlQuote* jumpInt, QlQuote* logJMean, QlQuote* logJVol, int d, char **e) {
   try {return ret(new QlMerton76Process(alloc(new Merton76Process(*arg(stateVariable), *arg(dividendTS), *arg(riskFreeTS), *arg(blackVolTS), *arg(jumpInt), *arg(logJMean), *arg(logJVol), createDiscretization1D(d)))));
   } catch (std::exception& er) {return handleException<QlMerton76Process*>(e, er);}}

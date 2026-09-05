@@ -451,12 +451,13 @@ Ret dispatchDefaultTrait(int trait, F&& make) {
 // as a variadic pack -- same shape as dispatchTrait's for PiecewiseYieldCurve above.
 template <class... Args>
 DefaultProbabilityTermStructure *makePiecewiseDefaultCurve(int trait, int interpolator,
-    int approximator, int approximatorArg, Args&&... args) {
+    int approximator, int approximatorArg, const QlIterativeBootstrapOpts& b, Args&&... args) {
   return dispatchDefaultTrait<DefaultProbabilityTermStructure*>(trait, [&](auto t) {
     using Trait = typename decltype(t)::type;
     return dispatchInterpolation<DefaultProbabilityTermStructure*>(interpolator, approximator, approximatorArg,
 [&](auto i) {
-          return new PiecewiseDefaultCurve<Trait, decltype(i)>(std::forward<Args>(args)..., i);
+          using CurveType = PiecewiseDefaultCurve<Trait, decltype(i)>;
+          return new CurveType(std::forward<Args>(args)..., i, makeIterativeBootstrap<CurveType>(b));
         });
   });
 }
@@ -465,8 +466,9 @@ DefaultProbabilityTermStructure* qlPiecewiseDefaultCurveAux(const Date &referenc
     const std::vector<shared_ptr<DefaultProbabilityHelper> >& instruments,
     DayCounter& dayCounter,
     const std::vector<Handle<Quote> >& jumps, const std::vector<Date>& jumpDates,
-    int trait, int interpolator, int approximator, int approximatorArg) {
-  return makePiecewiseDefaultCurve(trait, interpolator, approximator, approximatorArg,
+    int trait, int interpolator, int approximator, int approximatorArg,
+    const QlIterativeBootstrapOpts& bootstrapOpts) {
+  return makePiecewiseDefaultCurve(trait, interpolator, approximator, approximatorArg, bootstrapOpts,
       referenceDate, instruments, dayCounter, jumps, jumpDates);
 }
 
@@ -475,8 +477,9 @@ DefaultProbabilityTermStructure* qlPiecewiseDefaultCurveAux1(unsigned settlement
     const std::vector<shared_ptr<DefaultProbabilityHelper> >& instruments,
     DayCounter& dayCounter,
     const std::vector<Handle<Quote> >& jumps, const std::vector<Date>& jumpDates,
-    int trait, int interpolator, int approximator, int approximatorArg) {
-  return makePiecewiseDefaultCurve(trait, interpolator, approximator, approximatorArg,
+    int trait, int interpolator, int approximator, int approximatorArg,
+    const QlIterativeBootstrapOpts& bootstrapOpts) {
+  return makePiecewiseDefaultCurve(trait, interpolator, approximator, approximatorArg, bootstrapOpts,
       settlementDays, calendar, instruments, dayCounter, jumps, jumpDates);
 }
 

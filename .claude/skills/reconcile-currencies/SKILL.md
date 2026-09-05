@@ -21,6 +21,6 @@ Currencies use a fixed enum and matching factory table. Keep these in lockstep:
 
 ## Verification
 
-Run `make` (see CLAUDE.md) for a quick C++-only compile check before doing a full `stack build --test --no-haddock`.
+Run `make` for a quick C++-only compile check before doing a full `stack build --test --no-haddock`.
 
 This change touches no `.chs` file, so the run-hasquant skill's stale-build gotcha applies: clean-build if in doubt, and confirm at the value level with a `smoke/` script that constructs one of the new currencies and prints something derived from it.

@@ -55,6 +55,6 @@ Not an enum case — treat it as a new class in the `Index`/`IborIndex`/`Overnig
 
 ## Verification
 
-Run `make` (see CLAUDE.md) for a quick C++-only compile check before doing a full `stack build --test --no-haddock`.
+Run `make` for a quick C++-only compile check before doing a full `stack build --test --no-haddock`.
 
 **Case 1:** the change touches no `.chs` file, so the run-hasquant skill's stale-build gotcha applies — confirmed here by checking the generated `dist-newstyle/.../QuantLib/Index/InterestRate.hs` (or the `.stack-work/...` equivalent) after such a change. Clean-build if in doubt, and confirm at the value level with a `smoke/` script that constructs one of the new cases and prints something derived from it.

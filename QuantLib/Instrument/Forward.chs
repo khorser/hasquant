@@ -19,7 +19,9 @@ module QuantLib.Instrument.Forward
   , spotIncome
   , spotValue
 
+  , amount
   , forwardRate
+  , fxForwardRate
   , fairForwardRate
   , npvSourceCurrency
   , npvTargetCurrency
@@ -92,6 +94,10 @@ import QuantLib.Internal.Type
 -- |Returns the relevant forward rate associated with the FRA term.
 {#fun qlForwardRateAgreementForwardRate as forwardRate{withGenInstrument*`ForwardRateAgreement',preErrorCheck-`String'errorCheck*-}->`InterestRate'peekInterestRate*#}
 
+-- |The payoff on the value date: the discounted difference between the FRA's forward rate and
+-- its strike (contract) rate, scaled by the notional and accrual, negated for a short position.
+{#fun qlForwardRateAgreementAmount as amount{withGenInstrument*`ForwardRateAgreement',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |FX forward using nominal amounts in both currencies.
 {#fun qlFxForward as fxForward{`Double' -- ^sourceNominal
   ,withCurrency*`Currency' -- ^sourceCurrency
@@ -113,6 +119,10 @@ import QuantLib.Internal.Type
   ,fromIntegral`Word' -- ^settlementDays
   ,withCalendar*`Calendar' -- ^paymentCalendar
   ,preErrorCheck-`String'errorCheck*-}->`FxForward'peekFxForward*#}
+
+-- |The contracted forward exchange rate (target\/source), computed as @targetNominal \/
+-- sourceNominal@ -- distinct from 'fairForwardRate', the market-implied rate.
+{#fun pure qlFxForwardForwardRate as fxForwardRate{withGenInstrument*`FxForward'}->`Double'#}
 
 -- |The market-implied fair forward rate, computed by the pricing engine.
 {#fun qlFxForwardFairForwardRate as fairForwardRate{withGenInstrument*`FxForward',preErrorCheck-`String'errorCheck*-}->`Double'#}

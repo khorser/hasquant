@@ -24,8 +24,8 @@ spec = describe "VolatilityModel (ql/models/volatility, ql/prices.hpp)" $ do
 garch11Spec :: Spec
 garch11Spec = describe "Garch11" $ do
   it "reproduces garch.cpp::testCalculation's calculated series" $ do
-    let g = garch11 0.2 0.3 0.4
-        day0 = fromGregorian 1962 7 6
+    g <- garch11 0.2 0.3 0.4
+    let day0 = fromGregorian 1962 7 6
         days = [addDays i day0 | i <- [1 .. 10]]
         series = fromList (zip days (replicate 10 0.1))
     result <- garch11Calculate g series
@@ -42,8 +42,8 @@ garch11Spec = describe "Garch11" $ do
     map snd result `shouldSatisfy` listClose id expected 1.0e-6
 
   it "forecast/calculate agree, and calibration on a synthetic series lands on stable, plausible parameters in all four modes" $ do
-    let g0 = garch11 0.2 0.3 0.4
-        day0 = fromGregorian 1990 1 1
+    g0 <- garch11 0.2 0.3 0.4
+    let day0 = fromGregorian 1990 1 1
         n = 80 :: Int
         -- A deterministic, non-degenerate synthetic "return" series -- avoids depending on
         -- QuantLib's own RNG draw sequence (which this binding never promises to reproduce
@@ -161,7 +161,7 @@ constantAndLocalEstimatorSpec = describe "ConstantEstimator and SimpleLocalEstim
         prices = [100.0, 105.0, 110.0]
         series = fromList (zip days prices)
         yearFraction = 1.0 / 252.0
-        expected = [abs (log (p1 / p0)) / sqrt yearFraction | (p0, p1) <- zip prices (tail prices)]
+        expected = [abs (log (p1 / p0)) / sqrt yearFraction | (p0, p1) <- zip prices (drop 1 prices)]
     result <- simpleLocalVolatilityEstimator yearFraction series
-    map fst result `shouldBe` tail days
+    map fst result `shouldBe` drop 1 days
     map snd result `shouldSatisfy` listClose id expected 1.0e-9

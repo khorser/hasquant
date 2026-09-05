@@ -5,7 +5,9 @@ description: Add a new QuantLib class binding (new hierarchy root or a class in 
 
 Adding `QlXXX` touches `cbits/` and `QuantLib/`. Select the matching domain `.cpp` and `.chs` module before starting.
 
-**First, check whether the class needs a dedicated Haskell type at all** — apply CLAUDE.md's "don't mirror the C++ hierarchy 1:1" rule. If it doesn't (most `PricingEngine` subclasses, for instance), just bind a constructing function returning the existing parent/grandparent type, e.g. `discountingSwapEngine :: ... -> IO PricingEngine`: no type boilerplate (step 4) and no `AsParent` upcast shim (step 3), since there's no dedicated type to upcast from.
+**First, check whether the class needs a dedicated Haskell type at all** — apply AGENTS.md's "don't mirror the C++ hierarchy 1:1" rule. If it doesn't (most `PricingEngine` subclasses, for instance), just bind a constructing function returning the existing parent/grandparent type, e.g. `discountingSwapEngine :: ... -> IO PricingEngine`: no type boilerplate (step 4) and no `AsParent` upcast shim (step 3), since there's no dedicated type to upcast from.
+
+Do not include or exclude a singleton-like class by analogy. Inspect its upstream inheritance and constructors: confirm `Singleton<T>`, deleted or inaccessible construction/copy/move operations, and process-global `instance()` state. A genuine singleton normally binds as free functions over `X::instance()`, with no Haskell object type.
 
 Read upstream documentation for every exposed constructor and method. Add concise Haddock covering behavior, units, formulas, warnings, limitations, and intentional scope cuts.
 
@@ -15,8 +17,7 @@ Read upstream documentation for every exposed constructor and method. Add concis
 
 2. **`cbits/qlTypesC2HS.h`** — add a fake `typedef struct QlXxx QlXxx;` def. This is a c2hs-only stand-in type (the real definition lives in C++; c2hs just needs something to point at).
 
-3. **`cbits/<some>.cpp`** (ask the user which file if not already specified) — add `qlFreeXxx` (the finalizer, freeing the `shared_ptr` wrapper) plus any constructor/method C shims needed for this class, following the existing `try { ... } catch (std::exception& er) { return handleException<T>(e, er); }` pattern used throughout. Avoid creating new C++ files unless a new concept is introduced.
-Do not create new files unless asked. Use one corresponding to the domain: TermStructure, Instrument, PricingEngine, Misc. Aux files are used to instantiate templates.
+3. **The matching existing `cbits/*.cpp` domain file** — add `qlFreeXxx` (the finalizer, freeing the `shared_ptr` wrapper) plus the constructor/method shims, following the established exception pattern. Create a new translation unit only for a genuinely new domain; template instantiations belong in the domain's existing Aux file.
 
 4. **`QuantLib/Internal/Type.hs`** — add type and marshalling boilerplate. The shape differs depending on whether this is a **new hierarchy root** or a **class in an existing hierarchy**:
 
@@ -40,14 +41,20 @@ Do not create new files unless asked. Use one corresponding to the domain: TermS
 
    **Choose hierarchy levels from actual consumer signatures, not from constructor implementation classes.** If a downstream QuantLib API takes a concrete intermediate base, that base must be a real Haskell type/family member so it can be passed without a downcast; make constructors for its implementation subclasses return that required type. Do not add separate leaves for those implementation subclasses unless a bound API takes one specifically, or it has a calculation/getter that must remain concrete. For example, `LognormalCmsSpreadPricer` takes `CmsCouponPricer`, so CMS pricer constructors return a `CmsCouponPricer` leaf under `FloatingRateCouponPricer`; no separate `LinearTsrPricer` leaf is warranted merely because that is the class constructed.
 
+   A family root returned at its own concrete type peeks with `newCastForeignPtr`; a leaf that must upcast on access peeks with `newGenForeignPtr`. After promoting a former leaf into a family root, change its own peek function accordingly. Array helpers peel once for every `AnyOf` layer below the outer `Gen*`; a root and a leaf at the same depth use the same peel count. These mistakes can compile while walking the wrong hierarchy at runtime.
+
 5. **`QuantLib/<Module>.chs`** — add the `{#pointer}` boilerplate, e.g.:
    `{#pointer *QlXxx as Xxx foreign -> CParent' nocode#}`
-   then the `{#fun ...#}` bindings for the class's own methods. Ask the user which module if not already specified; otherwise pick by topical family, per CLAUDE.md's module-placement rule.
+   then the `{#fun ...#}` bindings for the class's own methods. Choose the existing module by topical family, per AGENTS.md's module-placement rule; add a module only when no existing family fits.
 
 ## Update tools/ql-methods-*.txt
 
 After the binding compiles, update `tools/ql-methods-1.43.txt` for **every** constructor/method the new class exposes, not just the first — see [[add-quantlib-method]] for the status vocabulary.
 
+Before treating an empty `ql/experimental/` header as a missing binding, check its size and deprecation message. QuantLib 1.43 contains forwarding and `this file is empty and will disappear` stubs; zero tracker entries for those files means the class is absent or moved, not overlooked.
+
 ## Verification
 
-Run `make` (see CLAUDE.md) for a quick C++-only compile check before doing a full `stack build --test --no-haddock`.
+Run `make` for a quick C++-only compile check before doing a full `stack build --test --no-haddock`.
+
+When changing `tools/gen_quantlib_hierarchy.py`, run it against already-bound hierarchies and diff the generated declarations with `QuantLib/Internal/Type.hs`. Exercise the affected root, intermediate, and deepest-leaf shapes; wrong `AnyOf` nesting and upcast depth can compile.

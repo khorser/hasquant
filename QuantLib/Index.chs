@@ -31,6 +31,13 @@ module QuantLib.Index
   , historicalIndexAnalysisPercentile
   , historicalIndexAnalysisGaussianPercentile
   , historicalIndexAnalysisValueAtRisk
+  , historicalIndexAnalysisPotentialUpside
+  , historicalIndexAnalysisGaussianPotentialUpside
+  , historicalIndexAnalysisRegret
+  , historicalIndexAnalysisShortfall
+  , historicalIndexAnalysisGaussianShortfall
+  , historicalIndexAnalysisAverageShortfall
+  , historicalIndexAnalysisGaussianAverageShortfall
   , historicalIndexAnalysisGaussianValueAtRisk
   , historicalIndexAnalysisExpectedShortfall
   , historicalIndexAnalysisGaussianExpectedShortfall
@@ -183,6 +190,43 @@ historicalIndexAnalysisSkipped analysis = do
 -- are gaussian; @centile@ must lie in @[0.9, 1.0)@.
 {#fun qlHistoricalIndexAnalysisGaussianExpectedShortfall as historicalIndexAnalysisGaussianExpectedShortfall{withHistoricalIndexAnalysis*`HistoricalIndexAnalysis'
   ,`Double' -- ^centile
+  ,preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+
+-- |Per-index empirical potential upside at the given @centile@, which must lie in @[0.9, 1.0)@ --
+-- the upside counterpart of 'historicalIndexAnalysisValueAtRisk'.
+{#fun qlHistoricalIndexAnalysisPotentialUpside as historicalIndexAnalysisPotentialUpside{withHistoricalIndexAnalysis*`HistoricalIndexAnalysis'
+  ,`Double' -- ^centile
+  ,preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+
+-- |Per-index potential upside at the given @centile@ assuming the historical relative returns
+-- are gaussian; @centile@ must lie in @[0.9, 1.0)@.
+{#fun qlHistoricalIndexAnalysisGaussianPotentialUpside as historicalIndexAnalysisGaussianPotentialUpside{withHistoricalIndexAnalysis*`HistoricalIndexAnalysis'
+  ,`Double' -- ^centile
+  ,preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+
+-- |Per-index regret at the given @target@: expected loss below target, conditional on being below it.
+{#fun qlHistoricalIndexAnalysisRegret as historicalIndexAnalysisRegret{withHistoricalIndexAnalysis*`HistoricalIndexAnalysis'
+  ,`Double' -- ^target
+  ,preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+
+-- |Per-index empirical probability of falling below @target@.
+{#fun qlHistoricalIndexAnalysisShortfall as historicalIndexAnalysisShortfall{withHistoricalIndexAnalysis*`HistoricalIndexAnalysis'
+  ,`Double' -- ^target
+  ,preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+
+-- |Per-index probability of falling below @target@ assuming the historical relative returns are gaussian.
+{#fun qlHistoricalIndexAnalysisGaussianShortfall as historicalIndexAnalysisGaussianShortfall{withHistoricalIndexAnalysis*`HistoricalIndexAnalysis'
+  ,`Double' -- ^target
+  ,preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+
+-- |Per-index empirical average shortfall (expected loss below @target@, unconditional) at the given @target@.
+{#fun qlHistoricalIndexAnalysisAverageShortfall as historicalIndexAnalysisAverageShortfall{withHistoricalIndexAnalysis*`HistoricalIndexAnalysis'
+  ,`Double' -- ^target
+  ,preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+
+-- |Per-index average shortfall at the given @target@ assuming the historical relative returns are gaussian.
+{#fun qlHistoricalIndexAnalysisGaussianAverageShortfall as historicalIndexAnalysisGaussianAverageShortfall{withHistoricalIndexAnalysis*`HistoricalIndexAnalysis'
+  ,`Double' -- ^target
   ,preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 toMatrixDouble :: (Word, Word, [Double]) -> Matrix Double

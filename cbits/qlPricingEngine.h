@@ -190,6 +190,7 @@ extern "C" {
   QlPricingEngine* qlTreeVanillaSwapEngine(QlShortRateModel* x0, unsigned timeSteps, QlYieldTermStructure* termStructure, char **e);
   QlPricingEngine* qlVarianceGammaEngine(QlVarianceGammaProcess* x0, double absoluteError, char **e);
   QlPricingEngine* qlAnalyticHestonEngine1(QlHestonModel* model, unsigned integrationOrder, char **e);
+  int qlAnalyticHestonEngineOptimalControlVariate(double t, double v0, double kappa, double theta, double sigma, double rho);
   QlPricingEngine* qlAnalyticHestonHullWhiteEngine1(QlHestonModel* model, QlHullWhite* hullWhiteModel, double relTolerance, unsigned maxEvaluations, char **e);
   QlPricingEngine* qlBatesEngine1(QlBatesModel* model, double relTolerance, unsigned maxEvaluations, char **e);
 
@@ -302,6 +303,7 @@ extern "C" {
   FdmSchemeDesc* qlFdmSchemeDescImplicitEuler(char **e);
   FdmSchemeDesc* qlFdmSchemeDescModifiedCraigSneyd(char **e);
   FdmSchemeDesc* qlFdmSchemeDescModifiedHundsdorfer(char **e);
+  FdmSchemeDesc* qlFdmSchemeDescMethodOfLines(double eps, double relInitStepSize, char **e);
 
   void qlFreeFdm1dMesher(QlFdm1dMesher *o);
   void qlFreeFdmMesher(QlFdmMesher *o);
@@ -381,6 +383,7 @@ extern "C" {
   QlAffineModel* qlOneFactorAffineModelAsAffineModel(QlOneFactorAffineModel *o);
   void qlFreeLiborForwardModel(QlLiborForwardModel *o);
   QlAffineModel* qlLiborForwardModelAsAffineModel(QlLiborForwardModel *o);
+  double qlLiborForwardModelS0(QlLiborForwardModel *o, unsigned alpha, unsigned beta, char **e);
   void qlFreeHullWhite(QlHullWhite *o);
   QlOneFactorAffineModel* qlHullWhiteAsOneFactorAffineModel(QlHullWhite *o);
   void qlFreeCalibratedModel(QlCalibratedModel *o);
@@ -430,6 +433,8 @@ extern "C" {
   QlGaussian1dModel* qlMarkovFunctionalAsGaussian1dModel(QlMarkovFunctional *o);
   QlGsr* qlGsr(QlYieldTermStructure* termStructure, unsigned volstepdatesLen, int* volstepdates, unsigned volatilitiesLen, QlQuote** volatilities, QlQuote* reversion, double T, char **e);
   void qlGsrVolatility(QlGsr* o, unsigned *len, double **vs, char **e);
+  void qlGsrMoveVolatility(QlGsr* o, unsigned i, unsigned *len, int **fp, char **e);
+  void qlGsrMoveReversion(QlGsr* o, unsigned i, unsigned *len, int **fp, char **e);
   void qlGsrCalibrateVolatilitiesIterative(QlGsr* o, unsigned helpersLen, QlBlackCalibrationHelper** helpers, QlOptimizationMethod* method, QlEndCriteria* endCriteria, Constraint* constraint, unsigned weightsLen, double* weights, char **e);
   QlMarkovFunctional* qlMarkovFunctional(QlYieldTermStructure* termStructure, double reversion, unsigned volstepdatesLen, int* volstepdates, unsigned volatilitiesLen, double* volatilities, QlSwaptionVolatilityStructure* swaptionVol, unsigned expiriesLen, int* swaptionExpiries, unsigned tenorsLen, int* tenorQuantity, unsigned, int* tenorUnit, QlSwapIndex* swapIndexBase, unsigned yGridPoints, char **e);
   QlMarkovFunctional* qlMarkovFunctionalCaplet(QlYieldTermStructure* termStructure, double reversion, unsigned volstepdatesLen, int* volstepdates, unsigned volatilitiesLen, double* volatilities, QlOptionletVolatilityStructure* capletVol, unsigned expiriesLen, int* capletExpiries, QlIborIndex* iborIndex, unsigned yGridPoints, char **e);
@@ -494,6 +499,10 @@ extern "C" {
   void qlStochasticProcessDrift(QlStochasticProcess* o, double t, unsigned xLen, double *x, unsigned *len, double **vs, char **e);
   void qlStochasticProcessDiffusion(QlStochasticProcess* o, double t, unsigned xLen, double *x, unsigned *rows, unsigned *cols, unsigned *len, double **vs, char **e);
   void qlStochasticProcessExpectation(QlStochasticProcess* o, double t0, unsigned x0Len, double *x0, double dt, unsigned *len, double **vs, char **e);
+  void qlStochasticProcessStdDeviation(QlStochasticProcess* o, double t0, unsigned x0Len, double *x0, double dt, unsigned *rows, unsigned *cols, unsigned *len, double **vs, char **e);
+  void qlStochasticProcessCovariance(QlStochasticProcess* o, double t0, unsigned x0Len, double *x0, double dt, unsigned *rows, unsigned *cols, unsigned *len, double **vs, char **e);
+  void qlStochasticProcessApply(QlStochasticProcess* o, unsigned x0Len, double *x0, unsigned dxLen, double *dx, unsigned *len, double **vs, char **e);
+  void qlStochasticProcessEvolve(QlStochasticProcess* o, double t0, unsigned x0Len, double *x0, double dt, unsigned dwLen, double *dw, unsigned *len, double **vs, char **e);
 
   QlBlackProcess* qlBlackProcess(QlQuote* x0, QlYieldTermStructure* riskFreeTS, QlBlackVolTermStructure* blackVolTS, int d, int forceDiscretization, char **e);
   QlGeneralizedBlackScholesProcess* qlBlackScholesMertonProcess(QlQuote* x0, QlYieldTermStructure* dividendTS, QlYieldTermStructure* riskFreeTS, QlBlackVolTermStructure* blackVolTS, int d, int forceDiscretization, char **e);
@@ -531,6 +540,11 @@ extern "C" {
   void qlFreeHullWhiteForwardProcess(QlHullWhiteForwardProcess *o);
   QlStochasticProcess1D* qlHullWhiteForwardProcessAsStochasticProcess1D(QlHullWhiteForwardProcess *o);
   void qlHullWhiteForwardProcessSetForwardMeasureTime(QlHullWhiteForwardProcess* o, double t, char **e);
+  double qlHullWhiteProcessAlpha(QlHullWhiteProcess* o, double t, char **e);
+  double qlHullWhiteForwardProcessAlpha(QlHullWhiteForwardProcess* o, double t, char **e);
+  double qlHullWhiteForwardProcessB(QlHullWhiteForwardProcess* o, double t, double T, char **e);
+  double qlHullWhiteForwardProcessMT(QlHullWhiteForwardProcess* o, double s, double t, double T, char **e);
+  double qlHybridHestonHullWhiteProcessNumeraire(QlHybridHestonHullWhiteProcess* o, double t, unsigned xLen, double *x, char **e);
 
   void qlFreeG2Process(QlG2Process *o);
   QlStochasticProcess* qlG2ProcessAsStochasticProcess(QlG2Process *o);
@@ -540,6 +554,7 @@ extern "C" {
   QlStochasticProcess* qlG2ForwardProcessAsStochasticProcess(QlG2ForwardProcess *o);
   double qlG2ForwardProcessPhi(QlG2ForwardProcess* o, double t, char **e);
   double qlG2ForwardProcessShortRate(QlG2ForwardProcess* o, double t, double x, double y);
+  void qlG2ForwardProcessSetForwardMeasureTime(QlG2ForwardProcess* o, double t, char **e);
 
   QlBatesProcess* qlBatesProcess(QlYieldTermStructure* riskFreeRate, QlYieldTermStructure* dividendYield, QlQuote* s0, double v0, double kappa, double theta, double sigma, double rho, double lambda, double nu, double delta, int d, char **e);
   QlExtOUWithJumpsProcess* qlExtOUWithJumpsProcess(QlExtendedOrnsteinUhlenbeckProcess* process, double Y0, double beta, double jumpIntensity, double eta, char **e);
@@ -549,6 +564,7 @@ extern "C" {
   QlStochasticProcess1D* qlGeometricBrownianMotionProcess(double initialValue, double mue, double sigma, char **e);
   QlGJRGARCHProcess* qlGJRGARCHProcess(QlYieldTermStructure* riskFreeRate, QlYieldTermStructure* dividendYield, QlQuote* s0, double v0, double omega, double alpha, double beta, double gamma, double lambda, double daysPerYear, int d, char **e);
   QlHestonProcess* qlHestonProcess(QlYieldTermStructure* riskFreeRate, QlYieldTermStructure* dividendYield, QlQuote* s0, double v0, double kappa, double theta, double sigma, double rho, int d, char **e);
+  double qlHestonProcessPdf(QlHestonProcess* o, double x, double v, double t, double eps, char **e);
   void qlFreeHestonSLVProcess(QlHestonSLVProcess *o);
   QlStochasticProcess* qlHestonSLVProcessAsStochasticProcess(QlHestonSLVProcess *o);
   QlHestonSLVProcess* qlHestonSLVProcess(QlHestonProcess* hestonProcess, QlLocalVolTermStructure* leverageFct, double mixingFactor, char **e);
@@ -583,6 +599,9 @@ extern "C" {
   void qlLiborForwardModelProcessFixingTimes(QlLiborForwardModelProcess* o, unsigned *len, double **times, char **e);
   Leg* qlLiborForwardModelProcessCashFlows(QlLiborForwardModelProcess* o, double amount, char **e);
   QlIborIndex* qlLiborForwardModelProcessIndex(QlLiborForwardModelProcess* o, char **e);
+  void qlLiborForwardModelProcessSetCovarParam(QlLiborForwardModelProcess* o, QlLfmHullWhiteParameterization* param, char **e);
+  void qlLiborForwardModelProcessDiscountBond(QlLiborForwardModelProcess* o, unsigned ratesLen, double *rates, unsigned *len, double **dfs, char **e);
+  void qlLiborForwardModelProcessAccrualTimes(QlLiborForwardModelProcess* o, unsigned *startLen, double **start, unsigned *endLen, double **end, char **e);
   QlMerton76Process* qlMerton76Process(QlQuote* stateVariable, QlYieldTermStructure* dividendTS, QlYieldTermStructure* riskFreeTS, QlBlackVolTermStructure* blackVolTS, QlQuote* jumpInt, QlQuote* logJMean, QlQuote* logJVol, int d, char **e);
   QlStochasticProcess1D* qlOrnsteinUhlenbeckProcess(double speed, double vol, double x0, double level, char **e);
   QlVarianceGammaProcess* qlVarianceGammaProcess(QlQuote* s0, QlYieldTermStructure* dividendYield, QlYieldTermStructure* riskFreeRate, double sigma, double nu, double theta, char **e);

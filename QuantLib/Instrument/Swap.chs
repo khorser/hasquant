@@ -47,6 +47,7 @@ module QuantLib.Instrument.Swap
   , nonstandardSwapFromVanilla
   , nonstandardSwap
   , nonstandardSwap'
+  , nonstandardSwapFixedRate
   , floatFloatSwap
   , floatFloatSwap'
   , fairSpread1
@@ -350,6 +351,12 @@ swap' = (uncurry qlSwap1) . unzip
   ,`Bool' -- ^finalCapitalExchange
   ,fromMaybeEnum`Maybe BusinessDayConvention' -- ^paymentConvention
   ,preErrorCheck-`String'errorCheck*-}->`NonstandardSwap'peekNonstandardSwap*#}
+
+-- |Per-period fixed rate, one entry per fixed-leg accrual period. For a swap built via
+-- 'nonstandardSwap'\/'nonstandardSwap'', this simply echoes the constructor's @fixedRate@; for
+-- one built via 'nonstandardSwapFromVanilla' it is derived from the underlying vanilla swap's
+-- fixed leg coupons.
+{#fun qlNonstandardSwapFixedRate as nonstandardSwapFixedRate{withNonstandardSwap*`NonstandardSwap',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Swap exchanging capped\/floored Libor or CMS coupons with a single flat nominal on each leg.
 -- 'FloatFloatSwapOpts' bundles every trailing param the C++ constructor defaults (gearing\/
@@ -923,7 +930,8 @@ instance HasSpread ConstNotionalCrossCurrencyFixedVsFloatingSwap where
 -- |The spread that would make the swap's NPV zero.
 {#fun qlCPISwapFairSpread{withCPISwap*`CPISwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
--- |Zero-coupon swap quoted in terms of a known fixed cash flow. \"payer\"\/\"receiver\" refer to the fixed leg.
+-- |Zero-coupon swap quoted in terms of a known fixed cash flow. \"payer\"\/\"receiver\" refer to
+-- the fixed leg. Per-leg NPV uses the generic 'leg'\/'legNPV' (leg 0 = fixed, leg 1 = floating).
 {#fun qlZeroCouponSwap as zeroCouponSwap{`SwapType',`Double' -- ^baseNominal
   ,withDay*`Day' -- ^startDate
   ,withDay*`Day' -- ^maturityDate

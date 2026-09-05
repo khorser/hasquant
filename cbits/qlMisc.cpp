@@ -1,4 +1,5 @@
 #include <ql/settings.hpp>
+#include <ql/patterns/observable.hpp>
 #include <ql/version.hpp>
 #include <ql/errors.hpp>
 #include <ql/time/date.hpp>
@@ -63,6 +64,29 @@ using namespace QuantLib;
 // crossing" bullet. values() (the Jacobian-style multi-output variant) is left unimplemented,
 // same as PyCostFunction's own -- no bound caller needs it yet.
 namespace {
+  class SavedSettingsWithObservable {
+    public:
+      SavedSettingsWithObservable()
+      : updatesEnabled_(ObservableSettings::instance().updatesEnabled()),
+        updatesDeferred_(ObservableSettings::instance().updatesDeferred()) {}
+
+      ~SavedSettingsWithObservable() {
+        try {
+          auto& settings = ObservableSettings::instance();
+          if (updatesEnabled_)
+            settings.enableUpdates();
+          else
+            settings.disableUpdates(updatesDeferred_);
+        } catch (...) {
+        }
+      }
+
+    private:
+      bool updatesEnabled_;
+      bool updatesDeferred_;
+      SavedSettings savedSettings_;
+  };
+
   class HsCostFunction : public CostFunction {
     public:
       explicit HsCostFunction(double (*fn)(double*, unsigned)) : fn_(fn) {}
@@ -348,8 +372,8 @@ namespace {
   // Garch11::calculate, ConstantEstimator, and SimpleLocalEstimator (Volatility and Real are
   // the same type, ql/types.hpp).
   void realSeriesCalculate(const std::function<TimeSeries<Volatility>(const TimeSeries<Real>&)>& calc,
-                            unsigned len, int *dates, double *values,
-                            unsigned *outDatesLen, int **outDates, unsigned *outValuesLen, double **outValues, char **e) {
+      unsigned len, int *dates, double *values,
+      unsigned *outDatesLen, int **outDates, unsigned *outValuesLen, double **outValues, char **e) {
     int *ds = 0;
     double *vs = 0;
     *outDatesLen = 0; *outDates = 0; *outValuesLen = 0; *outValues = 0;
@@ -366,12 +390,13 @@ namespace {
       *outDatesLen = outDs.size(); *outDates = ds; *outValuesLen = outVs.size(); *outValues = vs;
     } catch (std::exception& er) {
       qlFreeInts(ds); qlFreeDoubles(vs); *e = tracedup(er.what());
-    }}
+    }
+  }
 
   // Same shape, for the GarmanKlass family's TimeSeries<IntervalPrice> input.
   void intervalPriceSeriesCalculate(const std::function<TimeSeries<Volatility>(const TimeSeries<IntervalPrice>&)>& calc,
-                                     unsigned len, int *dates, double *opens, double *closes, double *highs, double *lows,
-                                     unsigned *outDatesLen, int **outDates, unsigned *outValuesLen, double **outValues, char **e) {
+      unsigned len, int *dates, double *opens, double *closes, double *highs, double *lows,
+      unsigned *outDatesLen, int **outDates, unsigned *outValuesLen, double **outValues, char **e) {
     int *ds = 0;
     double *vs = 0;
     *outDatesLen = 0; *outDates = 0; *outValuesLen = 0; *outValues = 0;
@@ -388,7 +413,8 @@ namespace {
       *outDatesLen = outDs.size(); *outDates = ds; *outValuesLen = outVs.size(); *outValues = vs;
     } catch (std::exception& er) {
       qlFreeInts(ds); qlFreeDoubles(vs); *e = tracedup(er.what());
-    }}
+    }
+  }
 }
 
 extern "C" {
@@ -443,13 +469,40 @@ int qlSettingsIncludeTodaysCashFlows() {return qlOptBool(Settings::instance().in
 void qlSettingsSetIncludeTodaysCashFlows(int x) {Settings::instance().includeTodaysCashFlows() = qlOptBool(x);}
 int qlSettingsIncludeReferenceDateEvents() {return Settings::instance().includeReferenceDateEvents();}
 void qlSettingsSetIncludeReferenceDateEvents(int x0) {Settings::instance().includeReferenceDateEvents() = x0;}
-void *qlSavedSettings() {return ret(new SavedSettings());}
-void qlFreeSavedSettings(void *settings) {del((SavedSettings *)settings);}
+void qlObservableSettingsDisableUpdates(int deferred) {ObservableSettings::instance().disableUpdates(deferred);}
+void qlObservableSettingsEnableUpdates(char **e) {
+  try {ObservableSettings::instance().enableUpdates();
+  } catch (std::exception& er) {*e = tracedup(er.what());}}
+int qlObservableSettingsUpdatesEnabled() {return ObservableSettings::instance().updatesEnabled();}
+int qlObservableSettingsUpdatesDeferred() {return ObservableSettings::instance().updatesDeferred();}
+void *qlSavedSettings() {return ret(new SavedSettingsWithObservable());}
+void qlFreeSavedSettings(void *settings) {del((SavedSettingsWithObservable *)settings);}
 const char *qlVersion() {return QL_VERSION;}
 const char *qlBoostVersion() {return BOOST_LIB_VERSION;}
 
-void qlSetExtendedPrecision() {setX87ExtendedPrecision();}
-
+// By the time Haskell code runs, the x87 unit is at 53-bit precision (control word
+// 0x027f), where a binary linked by clang++ rather than ghc has 64-bit extended (0x037f).
+// Every 80-bit long double operation is then silently rounded to double, which breaks boost::math's default
+// promote_double policy: its algorithms assume the precision they asked for. It surfaced
+// as quantile(non_central_chi_squared) failing to converge on the lower tail inside
+// SquareRootProcessRNDCalculator::invcdf, throwing out of hestonSLVFDMModel on Windows
+// and nowhere else. See WINDOWS.md and tools/debug/hestonslv-probe.cpp.
+//
+// Exposed rather than done automatically. Setting it from a namespace-scope initializer
+// was measured not to stick -- the test still failed on Windows with one in place -- and
+// the RTS hooks that could run earlier are one-shot per process, which cannot be right
+// for a per-thread register. The alternative, re-asserting it on every crossing from
+// Haskell, buys ordering at the cost of FP-state side effects in the marshalling path. fldcw rather than
+// _controlfp_s because MSVC's CRT documents _MCW_PC as unsupported on x64. The word is
+// per-thread. Haskell's own Double arithmetic is SSE/MXCSR and is unaffected.
+void qlSetExtendedPrecision() {
+#if defined(_WIN32) && (defined(__x86_64__) || defined(__i386__))
+  unsigned short cw = 0;
+  __asm__ __volatile__("fnstcw %0" : "=m"(cw));
+  cw = (unsigned short)((cw & ~0x0300u) | 0x0300u);
+  __asm__ __volatile__("fldcw %0" : : "m"(cw));
+#endif
+}
 
 void qlFreeCurrency(Currency *currency) {del(currency);}
 const char *qlCurrencyName(Currency *currency) {return tracedup(arg(currency)->name().c_str());}
@@ -713,12 +766,18 @@ QlQuote* qlForwardSwapQuote(QlSwapIndex* swapIndex, QlQuote* spread, int l, int 
 QlQuote* qlForwardValueQuote(QlIndex* index, int fixingDate, char **e) {
   try {return ret(new QlQuote(shared_ptr<Quote>(alloc(new ForwardValueQuote(*arg(index), Date(fixingDate))))));
   } catch (std::exception& er) {return handleException<QlQuote*>(e, er);}}
-QlQuote* qlFuturesConvAdjustmentQuote1(QlIborIndex* index, char* immCode, QlQuote* futuresQuote, QlQuote* volatility, QlQuote* meanReversion, char **e) {
-  try {return ret(new QlQuote(shared_ptr<Quote>(alloc(new FuturesConvAdjustmentQuote(*arg(index), std::string(arg(immCode)), *arg(futuresQuote), *arg(volatility), *arg(meanReversion))))));
-  } catch (std::exception& er) {return handleException<QlQuote*>(e, er);}}
-QlQuote* qlFuturesConvAdjustmentQuote(QlIborIndex* index, int futuresDate, QlQuote* futuresQuote, QlQuote* volatility, QlQuote* meanReversion, char **e) {
-  try {return ret(new QlQuote(shared_ptr<Quote>(alloc(new FuturesConvAdjustmentQuote(*arg(index), Date(futuresDate), *arg(futuresQuote), *arg(volatility), *arg(meanReversion))))));
-  } catch (std::exception& er) {return handleException<QlQuote*>(e, er);}}
+QlFuturesConvAdjustmentQuote* qlFuturesConvAdjustmentQuote1(QlIborIndex* index, char* immCode, QlQuote* futuresQuote, QlQuote* volatility, QlQuote* meanReversion, char **e) {
+  try {return ret(new QlFuturesConvAdjustmentQuote(alloc(new FuturesConvAdjustmentQuote(*arg(index), std::string(arg(immCode)), *arg(futuresQuote), *arg(volatility), *arg(meanReversion)))));
+  } catch (std::exception& er) {return handleException<QlFuturesConvAdjustmentQuote*>(e, er);}}
+QlFuturesConvAdjustmentQuote* qlFuturesConvAdjustmentQuote(QlIborIndex* index, int futuresDate, QlQuote* futuresQuote, QlQuote* volatility, QlQuote* meanReversion, char **e) {
+  try {return ret(new QlFuturesConvAdjustmentQuote(alloc(new FuturesConvAdjustmentQuote(*arg(index), Date(futuresDate), *arg(futuresQuote), *arg(volatility), *arg(meanReversion)))));
+  } catch (std::exception& er) {return handleException<QlFuturesConvAdjustmentQuote*>(e, er);}}
+void qlFreeFuturesConvAdjustmentQuote(QlFuturesConvAdjustmentQuote *o) {del(o);}
+// Fresh Handle for this newly built object -- same shape as qlDeltaVolQuoteAsQuote.
+QlQuote* qlFuturesConvAdjustmentQuoteAsQuote(QlFuturesConvAdjustmentQuote *o) {return ret(new QlQuote(*arg(o)));}
+double qlFuturesConvAdjustmentQuoteFuturesValue(QlFuturesConvAdjustmentQuote *o, char **e) {
+  try {return (*arg(o))->futuresValue();
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
 QlQuote* qlImpliedStdDevQuote(int optionType, QlQuote* forward, QlQuote* price, double strike, double guess, double accuracy, unsigned maxIter, char **e) {
   try {return ret(new QlQuote(shared_ptr<Quote>(alloc(new ImpliedStdDevQuote((Option::Type)optionType, *arg(forward), *arg(price), strike, guess, accuracy, maxIter)))));
   } catch (std::exception& er) {return handleException<QlQuote*>(e, er);}}
@@ -1217,12 +1276,6 @@ static void fillVectorOut(const std::vector<Real>& a, unsigned* len, double** vs
   std::copy(a.begin(), a.end(), *vs);
 }
 
-static void fillMatrixOut(const Matrix& m, unsigned* rows, unsigned* cols, unsigned* len, double** vs) {
-  *rows = (unsigned)m.rows(); *cols = (unsigned)m.columns(); *len = (unsigned)(m.rows() * m.columns());
-  *vs = qlAllocateDoubles(*len);
-  std::copy(m.begin(), m.end(), *vs);
-}
-
 QlHistoricalIndexAnalysis *qlHistoricalIndexAnalysis(int startDate, int endDate,
     int stepLen, int stepUnit, unsigned indexesLen, QlIndex **indexes, char **e) {
   try {
@@ -1352,15 +1405,45 @@ void qlHistoricalIndexAnalysisGaussianExpectedShortfall(QlHistoricalIndexAnalysi
   try {fillVectorOut((*arg(o))->stats()->gaussianExpectedShortfall(centile), len, vs);
   } catch (std::exception& er) {handleException<double*>(e, er);}}
 
+void qlHistoricalIndexAnalysisPotentialUpside(QlHistoricalIndexAnalysis *o, double centile, unsigned *len, double **vs, char **e) {
+  try {fillVectorOut((*arg(o))->stats()->potentialUpside(centile), len, vs);
+  } catch (std::exception& er) {handleException<double*>(e, er);}}
+
+void qlHistoricalIndexAnalysisGaussianPotentialUpside(QlHistoricalIndexAnalysis *o, double centile, unsigned *len, double **vs, char **e) {
+  try {fillVectorOut((*arg(o))->stats()->gaussianPotentialUpside(centile), len, vs);
+  } catch (std::exception& er) {handleException<double*>(e, er);}}
+
+void qlHistoricalIndexAnalysisRegret(QlHistoricalIndexAnalysis *o, double target, unsigned *len, double **vs, char **e) {
+  try {fillVectorOut((*arg(o))->stats()->regret(target), len, vs);
+  } catch (std::exception& er) {handleException<double*>(e, er);}}
+
+void qlHistoricalIndexAnalysisShortfall(QlHistoricalIndexAnalysis *o, double target, unsigned *len, double **vs, char **e) {
+  try {fillVectorOut((*arg(o))->stats()->shortfall(target), len, vs);
+  } catch (std::exception& er) {handleException<double*>(e, er);}}
+
+void qlHistoricalIndexAnalysisGaussianShortfall(QlHistoricalIndexAnalysis *o, double target, unsigned *len, double **vs, char **e) {
+  try {fillVectorOut((*arg(o))->stats()->gaussianShortfall(target), len, vs);
+  } catch (std::exception& er) {handleException<double*>(e, er);}}
+
+void qlHistoricalIndexAnalysisAverageShortfall(QlHistoricalIndexAnalysis *o, double target, unsigned *len, double **vs, char **e) {
+  try {fillVectorOut((*arg(o))->stats()->averageShortfall(target), len, vs);
+  } catch (std::exception& er) {handleException<double*>(e, er);}}
+
+void qlHistoricalIndexAnalysisGaussianAverageShortfall(QlHistoricalIndexAnalysis *o, double target, unsigned *len, double **vs, char **e) {
+  try {fillVectorOut((*arg(o))->stats()->gaussianAverageShortfall(target), len, vs);
+  } catch (std::exception& er) {handleException<double*>(e, er);}}
+
 void qlHistoricalIndexAnalysisCovariance(QlHistoricalIndexAnalysis *o, unsigned *rows, unsigned *cols, unsigned *len, double **vs, char **e) {
-  try {fillMatrixOut((*arg(o))->stats()->covariance(), rows, cols, len, vs);
+  try {fillMatrixOut([&] {return (*arg(o))->stats()->covariance();}, rows, cols, len, vs);
   } catch (std::exception& er) {handleException<double*>(e, er);}}
 
 void qlHistoricalIndexAnalysisCorrelation(QlHistoricalIndexAnalysis *o, unsigned *rows, unsigned *cols, unsigned *len, double **vs, char **e) {
-  try {fillMatrixOut((*arg(o))->stats()->correlation(), rows, cols, len, vs);
+  try {fillMatrixOut([&] {return (*arg(o))->stats()->correlation();}, rows, cols, len, vs);
   } catch (std::exception& er) {handleException<double*>(e, er);}}
 
-Garch11 *qlGarch11(double alpha, double beta, double vl) {return alloc(new Garch11(alpha, beta, vl));}
+Garch11 *qlGarch11(double alpha, double beta, double vl, char **e) {
+  try {return alloc(new Garch11(alpha, beta, vl));
+  } catch (std::exception& er) {return handleException<Garch11*>(e, er);}}
 Garch11 *qlGarch11Calibrated(unsigned datesLen, int *dates, unsigned /*valuesLen*/, double *values, int mode, char **e) {
   try {
     Garch11::time_series ts;

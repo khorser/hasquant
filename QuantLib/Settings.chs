@@ -9,6 +9,10 @@ module QuantLib.Settings
   , setIncludeTodaysCashFlows
   , includeReferenceDateEvents
   , setIncludeReferenceDateEvents
+  , disableUpdates
+  , enableUpdates
+  , updatesEnabled
+  , updatesDeferred
 
   , keepingSettings
   , keepingSettings'
@@ -75,6 +79,20 @@ import QuantLib.Internal
 
 -- |sets whether Events occurring on the reference date should, by default, be taken into account as not happened yet
 {#fun qlSettingsSetIncludeReferenceDateEvents as setIncludeReferenceDateEvents{`Bool'}->`()'#}
+
+-- |Disables observer notifications. When @deferred@ is 'True', notifications are queued until
+-- 'enableUpdates' is called; otherwise they are discarded.
+{#fun qlObservableSettingsDisableUpdates as disableUpdates{`Bool' -- ^deferred
+  }->`()'#}
+
+-- |Enables observer notifications and runs any notifications queued while updates were deferred.
+{#fun qlObservableSettingsEnableUpdates as enableUpdates{preErrorCheck-`String'errorCheck*-}->`()'#}
+
+-- |Whether observer notifications are currently enabled.
+{#fun qlObservableSettingsUpdatesEnabled as updatesEnabled{}->`Bool'#}
+
+-- |Whether observer notifications are currently disabled with deferred delivery enabled.
+{#fun qlObservableSettingsUpdatesDeferred as updatesDeferred{}->`Bool'#}
 
 -- |brackets to restore settings once action has completed or raised an exception
 keepingSettings :: IO b -> IO b

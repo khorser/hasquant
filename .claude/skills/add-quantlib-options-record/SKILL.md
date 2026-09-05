@@ -49,4 +49,4 @@ oisRateHelperFull days tenor rate idx curve
 
 ## Verification
 
-Run `make` (see CLAUDE.md) for a quick C++-only compile check before a full `stack build --test --no-haddock`. Check that the *narrow* entry points still typecheck at their original signatures — that's the property this pattern exists to preserve.
+Run `make` for a quick C++-only compile check before a full `stack build --test --no-haddock`. Check that the *narrow* entry points still typecheck at their original signatures — that's the property this pattern exists to preserve.

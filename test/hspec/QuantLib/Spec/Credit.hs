@@ -1,19 +1,22 @@
 module QuantLib.Spec.Credit (spec) where
 
+import Control.Monad(forM, forM_)
 import Test.Hspec
 import Data.List.NonEmpty(fromList)
-import Data.Time.Calendar(fromGregorian, addGregorianYearsClip)
+import Data.Time.Calendar(fromGregorian, addDays, addGregorianYearsClip)
 
 import QuantLib.Currency(currency, Ccy(..))
-import QuantLib.Time.Calendar(calendar, CalendarConstructor(..), BusinessDayConvention(..))
+import QuantLib.Time.Calendar(calendar, adjust, CalendarConstructor(..), BusinessDayConvention(..))
 import QuantLib.Time.Schedule(dayCounter, DayCounterConstructor(..), TimeUnit(..), schedule, DateGenerationRule(..), Frequency(..))
 import QuantLib.InterestRate(Compounding(..))
+import QuantLib.Math(Interpolation(..))
 import QuantLib.Quote(simpleQuote, setValue)
-import QuantLib.TermStructure.Credit(flatHazardRate)
-import QuantLib.TermStructure.Yield(flatForward)
-import QuantLib.Instrument(setPricingEngine)
-import QuantLib.Instrument.Credit(Claim(..), ProtectionSide(..), syntheticCDO, fairPremium, nthToDefault, ntdFairPremium)
-import QuantLib.PricingEngine(midPointCDOEngine, integralCDOEngine, integralNtdEngine)
+import QuantLib.TermStructure.Credit
+import QuantLib.TermStructure.Yield(flatForward, interpolatedDiscountCurve)
+import QuantLib.Instrument(setPricingEngine, PricingModel(..))
+import QuantLib.Instrument.Credit(Claim(..), ProtectionSide(..), creditDefaultSwap, syntheticCDO, fairPremium, nthToDefault, ntdFairPremium)
+import QuantLib.Instrument.Swap(fairSpread)
+import QuantLib.PricingEngine(midPointCdsEngine, midPointCDOEngine, integralCDOEngine, integralNtdEngine)
 import qualified QuantLib.Settings as Settings
 import QuantLib.Credit
 import QuantLib.Spec.Helpers(closePrec)
@@ -26,7 +29,7 @@ import QuantLib.Spec.Helpers(closePrec)
 -- curve, five equal-notional names); numeric golden-value coverage against that fixture is
 -- the 'SyntheticCDO' test below.
 spec :: Spec
-spec =
+spec = do
   describe "portfolio credit scaffolding (Pool, Issuer, Basket, GaussianLHPLossModel)" $ do
     it "wires a basket to a Gaussian LHP loss model over a small pool" $ Settings.keepingSettings' $ do
       let refDate = fromGregorian 2006 8 31
@@ -46,8 +49,9 @@ spec =
 
       correlQuote <- simpleQuote 0.3
       lossModel <- gaussianLHPLossModel correlQuote (fromList (replicate (length names) 0.4))
+      defaultLossModel <- gaussianLHPLossModelAsDefaultLossModel lossModel
 
-      b <- basket refDate (fromList [(n, notionalPerName) | n <- names]) p 0.0 1.0 FaceValue lossModel
+      b <- basket refDate (fromList [(n, notionalPerName) | n <- names]) p 0.0 1.0 FaceValue defaultLossModel
 
       notional <- basketNotional (trancheBasketAsBasket b)
       notional `shouldBe` notionalPerName * fromIntegral (length names)
@@ -55,6 +59,13 @@ spec =
       let futureDate = addGregorianYearsClip 5 refDate
       etl <- basketExpectedTrancheLoss b futureDate
       etl `shouldSatisfy` (\x -> x > 0 && x < notional)
+
+      -- Only reachable once lossModel has been attached to a Basket (via 'basket' above) --
+      -- averageProb/averageRecovery read the model's basket_ pointer, set on attachment.
+      avgProb <- gaussianLHPLossModelAverageProb lossModel futureDate
+      avgProb `shouldSatisfy` (\x -> x > 0 && x < 1)
+      avgRecovery <- gaussianLHPLossModelAverageRecovery lossModel futureDate
+      avgRecovery `shouldSatisfy` closePrec 0.4 1.0e-8
 
     -- Ports test-suite/cdo.cpp's testHW, data set 1 only (corr=0.1, the "gaussian" branch of
     -- hwData7): a 100-name pool, the Gaussian LHP loss model (the only loss model hasquant
@@ -93,7 +104,7 @@ spec =
       yieldTS <- flatForward refDate rateQuote act360 Continuous Annual
 
       correlQuote <- simpleQuote 0.1
-      lossModel <- gaussianLHPLossModel correlQuote (fromList (replicate poolSize recovery))
+      lossModel <- gaussianLHPLossModel correlQuote (fromList (replicate poolSize recovery)) >>= gaussianLHPLossModelAsDefaultLossModel
 
       target <- calendar TARGET
       sched <- schedule (Just $ fromGregorian 2006 9 1) (fromGregorian 2011 9 1) (3, Months) target
@@ -226,7 +237,7 @@ spec =
       p <- pool (fromList [(n, iss, key) | n <- names])
 
       correlQuote <- simpleQuote 0.1
-      lossModel <- gaussianLHPLossModel correlQuote (fromList (replicate poolSize recovery))
+      lossModel <- gaussianLHPLossModel correlQuote (fromList (replicate poolSize recovery)) >>= gaussianLHPLossModelAsDefaultLossModel
       b <- basket refDate (fromList (zip names notionals)) p 0.0 0.03 FaceValue lossModel
 
       let futureDate = addGregorianYearsClip 5 refDate
@@ -295,5 +306,175 @@ spec =
       p1 <- basketProbAtLeastNEvents b 1 futureDate
       p2 <- basketProbAtLeastNEvents b 2 futureDate
       (p0 >= p1 && p1 >= p2) `shouldBe` True
+
+  describe "default-probability curves" $ do
+    it "constructs direct hazard, survival, and density curves" $ Settings.keepingSettings' $ do
+      let refDate = fromGregorian 2024 1 2
+          d1 = addGregorianYearsClip 1 refDate
+          d2 = addGregorianYearsClip 2 refDate
+      Settings.setEvaluationDate (Just refDate)
+      dc <- dayCounter Actual365FixedStandard
+      cal <- calendar TARGET
+
+      hazard <- interpolatedHazardRateCurve (fromList [(refDate, 0.02), (d1, 0.018), (d2, 0.016)]) dc cal [] BackwardFlat False
+      hazardRate hazard d1 False `shouldReturn` 0.018
+
+      survival <- interpolatedSurvivalProbabilityCurve (fromList [(refDate, 1.0), (d1, 0.98), (d2, 0.95)]) dc cal [] LogLinear
+      survivalProbability survival d2 False `shouldReturn` 0.95
+
+      density <- interpolatedDefaultDensityCurve (fromList [(refDate, 0.02), (d1, 0.018), (d2, 0.016)]) dc cal [] Linear
+      defaultDensity density d1 False `shouldReturn` 0.018
+
+    it "matches narrow and full constructors at default bootstrap settings" $ Settings.keepingSettings' $ do
+      let refDate = fromGregorian 2015 6 15
+          spreads = zip [1, 2, 3, 5] [0.005, 0.006, 0.007, 0.009]
+          recovery = 0.4
+          queryDate = addGregorianYearsClip 4 refDate
+      Settings.setEvaluationDate (Just refDate)
+      Settings.setIncludeTodaysCashFlows (Just True)
+      cal <- calendar TARGET
+      helperDc <- dayCounter Thirty360BondBasis
+      discountDc <- dayCounter (Actual360 False)
+      discountQuote <- simpleQuote 0.06
+      discountCurve <- flatForward refDate discountQuote discountDc Continuous Annual
+      helpers <- forM spreads $ \(years, spread) -> do
+        q <- simpleQuote spread
+        spreadCdsHelper q (years, Years) 1 cal Quarterly Following TwentiethIMM helperDc recovery discountCurve True True Nothing helperDc True Midpoint
+      let hs = fromList helpers
+      fixedNarrow <- piecewiseDefaultCurve refDate hs helperDc [] HazardRate BackwardFlat
+      fixedFull <- piecewiseDefaultCurveFull refDate hs helperDc [] HazardRate BackwardFlat defaultIterativeBootstrapOpts
+      movingNarrow <- piecewiseDefaultCurve' 0 cal hs helperDc [] HazardRate BackwardFlat
+      movingFull <- piecewiseDefaultCurveFull' 0 cal hs helperDc [] HazardRate BackwardFlat defaultIterativeBootstrapOpts
+
+      fixedNarrowP <- survivalProbability fixedNarrow queryDate False
+      fixedFullP <- survivalProbability fixedFull queryDate False
+      movingNarrowP <- survivalProbability movingNarrow queryDate False
+      movingFullP <- survivalProbability movingFull queryDate False
+      fixedFullP `shouldSatisfy` closePrec fixedNarrowP 1.0e-12
+      movingFullP `shouldSatisfy` closePrec movingNarrowP 1.0e-12
+
+      let (_, quotedSpread) = spreads !! 2
+          protectionStart = addDays 1 refDate
+          maturity = addGregorianYearsClip 3 refDate
+      startDate <- adjust cal protectionStart Following
+      sched <- schedule (Just startDate) maturity (3, Months) cal Following Unadjusted TwentiethIMM False Nothing Nothing
+      forM_ [fixedNarrow, fixedFull, movingNarrow, movingFull] $ \curve -> do
+        cds <- creditDefaultSwap Buyer 1.0 quotedSpread sched Following helperDc True True
+          (Just protectionStart) FaceValue helperDc True Nothing 3
+        engine <- midPointCdsEngine curve recovery discountCurve Nothing
+        setPricingEngine cds engine
+        computed <- fairSpread cds
+        computed `shouldSatisfy` closePrec quotedSpread 1.0e-6
+
+    it "defaultProbabilityHelperImpliedQuote reproduces each SpreadCdsHelper's own bootstrap quote" $ Settings.keepingSettings' $ do
+      let refDate = fromGregorian 2015 6 15
+          spreads = zip [1, 2, 3, 5] [0.005, 0.006, 0.007, 0.009]
+          recovery = 0.4
+      Settings.setEvaluationDate (Just refDate)
+      Settings.setIncludeTodaysCashFlows (Just True)
+      cal <- calendar TARGET
+      helperDc <- dayCounter Thirty360BondBasis
+      discountDc <- dayCounter (Actual360 False)
+      discountQuote <- simpleQuote 0.06
+      discountCurve <- flatForward refDate discountQuote discountDc Continuous Annual
+      helpers <- forM spreads $ \(years, spread) -> do
+        q <- simpleQuote spread
+        spreadCdsHelper q (years, Years) 1 cal Quarterly Following TwentiethIMM helperDc recovery discountCurve True True Nothing helperDc True Midpoint
+      let hs = fromList helpers
+      curve <- piecewiseDefaultCurve refDate hs helperDc [] HazardRate BackwardFlat
+      -- PiecewiseDefaultCurve is a LazyObject: bootstrap (which calls setTermStructure/
+      -- resetEngine on each helper, populating CdsHelper::swap_) only runs on the first
+      -- calculate()-triggering call, not at construction. Force it before calling
+      -- impliedQuote on the helpers, or swap_ is still null and QuantLib's
+      -- swap_->recalculate() hits boost::shared_ptr's null-dereference assertion.
+      _ <- survivalProbability curve refDate False
+      forM_ (zip helpers spreads) $ \(h, (_, quotedSpread)) -> do
+        implied <- defaultProbabilityHelperImpliedQuote h
+        implied `shouldSatisfy` closePrec quotedSpread 1.0e-8
+
+    it "reproduces CDS spreads for all supported credit traits/interpolators" $ Settings.keepingSettings' $ do
+      let refDate = fromGregorian 2015 6 15
+          spreads = zip [1, 2, 3, 5] [0.005, 0.006, 0.007, 0.009]
+          recovery = 0.4
+          combinations =
+            [ (HazardRate, BackwardFlat)
+            , (DefaultDensity, BackwardFlat)
+            , (DefaultDensity, Linear)
+            , (SurvivalProbability, LogLinear)
+            ]
+      Settings.setEvaluationDate (Just refDate)
+      Settings.setIncludeTodaysCashFlows (Just True)
+      cal <- calendar TARGET
+      helperDc <- dayCounter Thirty360BondBasis
+      discountDc <- dayCounter (Actual360 False)
+      discountQuote <- simpleQuote 0.06
+      discountCurve <- flatForward refDate discountQuote discountDc Continuous Annual
+      helpers <- forM spreads $ \(years, spread) -> do
+        q <- simpleQuote spread
+        spreadCdsHelper q (years, Years) 1 cal Quarterly Following TwentiethIMM helperDc recovery discountCurve True True Nothing helperDc True Midpoint
+      let hs = fromList helpers
+      forM_ (zip [0 :: Int ..] combinations) $ \(j, (trait, interpolation)) -> do
+        curve <- if even j
+          then piecewiseDefaultCurveFull refDate hs helperDc [] trait interpolation defaultIterativeBootstrapOpts
+          else piecewiseDefaultCurveFull' 0 cal hs helperDc [] trait interpolation defaultIterativeBootstrapOpts
+        forM_ spreads $ \(years, quotedSpread) -> do
+          let protectionStart = addDays 1 refDate
+              maturity = addGregorianYearsClip (fromIntegral years) refDate
+          startDate <- adjust cal protectionStart Following
+          sched <- schedule (Just startDate) maturity (3, Months) cal Following Unadjusted TwentiethIMM False Nothing Nothing
+          cds <- creditDefaultSwap Buyer 1.0 quotedSpread sched Following helperDc True True
+            (Just protectionStart) FaceValue helperDc True Nothing 3
+          engine <- midPointCdsEngine curve recovery discountCurve Nothing
+          setPricingEngine cds engine
+          computed <- fairSpread cds
+          computed `shouldSatisfy` closePrec quotedSpread 1.0e-6
+
+    it "supports retry/fallback settings for a distressed inverted spread curve" $ Settings.keepingSettings' $ do
+      let asof = fromGregorian 2020 4 1
+          curveNodes = fromList $ zip
+            [ fromGregorian 2020 4 1, fromGregorian 2020 4 2, fromGregorian 2020 4 14
+            , fromGregorian 2020 4 21, fromGregorian 2020 4 28, fromGregorian 2020 5 6
+            , fromGregorian 2020 6 5, fromGregorian 2020 7 7, fromGregorian 2020 8 5
+            , fromGregorian 2020 9 8, fromGregorian 2020 10 7, fromGregorian 2020 11 5
+            , fromGregorian 2020 12 7, fromGregorian 2021 1 6, fromGregorian 2021 2 5
+            , fromGregorian 2021 3 5, fromGregorian 2021 4 7, fromGregorian 2022 4 4
+            , fromGregorian 2023 4 3, fromGregorian 2024 4 3, fromGregorian 2025 4 3
+            , fromGregorian 2027 4 5, fromGregorian 2030 4 3, fromGregorian 2035 4 3
+            , fromGregorian 2040 4 3, fromGregorian 2050 4 4
+            ]
+            [ 1.000000000, 0.999955835, 0.999931070, 0.999914629, 0.999902799
+            , 0.999887990, 0.999825782, 0.999764392, 0.999709076, 0.999647785
+            , 0.999594638, 0.999536198, 0.999483093, 0.999419291, 0.999379417
+            , 0.999324981, 0.999262356, 0.999575101, 0.996135441, 0.995228348
+            , 0.989366687, 0.979271200, 0.961150726, 0.926265361, 0.891640651
+            , 0.839314063
+            ]
+          cdsSpreads = [((6, Months), 2.957980250), ((1, Years), 3.076933100), ((2, Years), 2.944524520)
+                       , ((3, Years), 2.844498960), ((4, Years), 2.769234420), ((5, Years), 2.713474100)]
+          recovery = 0.035
+          testDate = fromGregorian 2020 12 21
+      Settings.setEvaluationDate (Just asof)
+      tsDc <- dayCounter Actual365FixedStandard
+      cdsDc <- dayCounter (Actual360 False)
+      lastDc <- dayCounter (Actual360 True)
+      cal <- calendar WeekendsOnly
+      discountCurve <- interpolatedDiscountCurve curveNodes tsDc cal [] LogLinear False
+      helpers <- forM cdsSpreads $ \(tenor, spread) -> do
+        q <- simpleQuote spread
+        spreadCdsHelper q tenor 1 cal Quarterly Following CDS2015 cdsDc recovery discountCurve True True Nothing lastDc True Midpoint
+      let hs = fromList helpers
+      defaultCurve <- piecewiseDefaultCurve asof hs tsDc [] SurvivalProbability LogLinear
+      survivalProbability defaultCurve testDate False `shouldThrow` anyException
+
+      fallbackCurve <- piecewiseDefaultCurveFull asof hs tsDc [] SurvivalProbability LogLinear
+        defaultIterativeBootstrapOpts
+          { ibMaxAttempts = 5
+          , ibMaxFactor = 1.0
+          , ibMinFactor = 10.0
+          , ibDontThrow = True
+          , ibDontThrowSteps = 2
+          }
+      _ <- survivalProbability fallbackCurve testDate False
+      pure ()
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

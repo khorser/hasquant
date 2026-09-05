@@ -110,6 +110,7 @@ module QuantLib.PricingEngine
   , treeVanillaSwapEngine
   , varianceGammaEngine
   , analyticHestonEngine'
+  , analyticHestonEngineOptimalControlVariate
   , analyticHestonHullWhiteEngine'
   , batesEngine'
   , mcHestonHullWhiteEngine
@@ -864,6 +865,17 @@ discountingPerpetualFuturesEngine domestic foreignCurve spot funding interpolati
 -- |semi-analytic Heston-model pricing engine, integrating with a fixed quadrature order
 {#fun qlAnalyticHestonEngine1 as analyticHestonEngine'{withHestonModel*`GenHestonModel hm',fromIntegral`Word' -- ^integrationOrder
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+
+-- |The complex-logarithm evaluation formula 'AnalyticHestonEngine' would pick for the given
+-- maturity and Heston parameters when constructed with 'ComplexLogFormula' left to default to
+-- the model's own heuristic (mirrors upstream's asymptotic-characteristic-function threshold).
+{#fun pure qlAnalyticHestonEngineOptimalControlVariate as analyticHestonEngineOptimalControlVariate{`Double' -- ^t
+  ,`Double' -- ^v0
+  ,`Double' -- ^kappa
+  ,`Double' -- ^theta
+  ,`Double' -- ^sigma
+  ,`Double' -- ^rho
+  }->`ComplexLogFormula'#}
 
 -- |semi-analytic Heston/Hull-White engine, integrating with a fixed relative tolerance and evaluation cap
 {#fun qlAnalyticHestonHullWhiteEngine1 as analyticHestonHullWhiteEngine'{withHestonModel*`GenHestonModel hm',withHullWhite*`HullWhite',`Double' -- ^relTolerance

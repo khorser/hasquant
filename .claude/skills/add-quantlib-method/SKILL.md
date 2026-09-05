@@ -15,6 +15,8 @@ Before writing anything, find the method's actual declaration in QuantLib's own 
 
 Read the upstream Doxygen comment for both the method and its class while that header is open. Add a `-- |` Haddock comment to every public new binding, carrying the relevant behavior, formulas, warnings, and units in clear Haskell-facing language. Do not replace it with a generic label or omit upstream caveats; document intentional scope cuts too. A constructor binding needs the class-level documentation as well as any constructor-specific notes. Constructor-echo inspectors that are deliberately not bound need no documentation.
 
+Before binding an inspector, check every producer of its return type that hasquant actually exposes. Exclude a value that merely echoes a constructor input unless another bound producer computes, calibrates, interpolates, or looks it up. A sibling binding that has not been checked is not precedent. If such getters were the only reason to introduce a dedicated leaf type, return the existing parent type instead.
+
 **Document every public input argument too.** Put a `-- ^parameterName` annotation immediately after each Haskell-visible argument marshaller in the `{#fun#}` declaration, in the same left-to-right order as the upstream signature. Use the upstream parameter name where it is meaningful; explain non-obvious sentinels, `Maybe`/empty-handle behavior, units, and flags in the surrounding Haddock. Do not annotate c2hs-only out/error plumbing such as `preErrorCheck`. Split long declarations across lines rather than leaving a constructor's argument order undocumented.
 
 Default to assuming the method **can throw** — QuantLib almost universally validates via `QL_REQUIRE`/`QL_ENSURE` internally even when the header gives no hint. Only treat it as non-throwing (step 3) if the header shows a trivial inline field return with no validation, like `qlInterestRateRate`/`InterestRate::rate()`. When in doubt, throw: a spuriously `pure` Haskell import over a function that actually throws is undefined behavior once the C++ exception unwinds past the FFI boundary, whereas a throwing convention on a method that never throws just costs an unused `try/catch`.
@@ -155,7 +157,7 @@ hasquant does **not** emit two arities for a method with trailing default argume
 ```
 (Note this particular binding types `discountCurve` non-nullably, so its `Handle<T>()`-default case isn't reachable from Haskell at all — a defaulted `Handle<T>` doesn't *have* to become `Maybe`; it's a per-binding judgment call whether the empty-handle case is worth exposing.) Don't confuse this with genuine C++ **overloads** (distinct signatures, not one signature's defaults) — those get separate numbered C shims, see below.
 
-The one exception is a genuinely wide signature (~19+ trailing defaulted params, `OISRateHelper`-scale): that gets a second, options-record entry point alongside the narrow binding instead — see [[add-quantlib-options-record]].
+With more than 10 trailing defaulted parameters, preserve the narrow binding and add a second options-record entry point instead — see [[add-quantlib-options-record]].
 
 ### Numbered overloads
 
@@ -167,10 +169,14 @@ When a class has multiple real overloads of the same name, each gets its own C s
 
 A true static/singleton accessor takes no self-parameter at all: `Settings::instance()`'s shim is `int qlSettingsEvaluationDate() {return Settings::instance().evaluationDate()...;}`, bound as `{#fun qlSettingsEvaluationDate as evaluationDate{}->\`Day'toDay#}` — the empty `{}` argument list is the tell. `tools/gen_quantlib_method.py` now does this automatically when it sees a `static` prefix: no receiver pointer/bound-class requirement, and the C++ call is qualified directly as `Class::member(...)` rather than dereferencing a receiver — see `qlCashFlowsYield` (generated from the `static Rate CashFlows::yield(...)` declaration above) for the shape. It also flags every defaulted parameter with a note pointing at the "one full-arity shim" convention above, rather than silently guessing whether to `Maybe`-wrap it — auto-generating the nullable marshalling for an arbitrary parameter type isn't reliable without an existing `Handle<T>`/`ext::optional<T>`-style convention for that specific type, so it's left as a flagged, human judgment call.
 
+Do not classify a class as a singleton from its surface API or by analogy. Check its inheritance from `Singleton<T>`, whether copy/move or ordinary construction is deleted or inaccessible, and whether `instance()` owns process-global state. Bind a genuine singleton as free functions over `X::instance()` rather than inventing a Haskell object.
+
 ## Update tools/ql-methods-*.txt
 
 After the binding compiles, grep the method/class name in `tools/ql-methods-1.43.txt` (the current version's tracking dump) and set that line's status character to match what you just did: `v` if the shim's arg count matches the upstream declaration exactly, `u` if it deliberately binds fewer args (a documented scope cut, e.g. an omitted optional parameter). This is the same status vocabulary `tools/sync_ql_methods_status.py`/`tools/reconcile_signatures.py` already use (blank = unreviewed candidate, `x` = permanently excluded, `v`/`u`/`?` as above) — updating it inline as you add each binding keeps the file current without needing another bulk resync pass later. Some blank lines got auto-marked `x` by `tools/detect_trivial_getters.py`, a one-off libclang-based scan for getters that just return a field set verbatim from a constructor parameter and never written anywhere else with a computed value (report mode by default; `--apply` writes the marks) — if you're ever re-deriving why a getter is excluded, check there before assuming it was a manual call.
 
 ## Verification
 
-Run `make` (see CLAUDE.md) for a quick C++-only compile check before doing a full `stack build --test --no-haddock`.
+Run `make` for a quick C++-only compile check before doing a full `stack build --test --no-haddock`.
+
+When changing `tools/gen_quantlib_method.py`, generate bindings for already-bound methods covering the affected shapes and diff them against the hand-written `.h`, `.cpp`, and `.chs` implementations. Treat marshaller, pointer-depth, enum-cast, exception, and naming differences as bugs unless they are documented human-judgment fields.

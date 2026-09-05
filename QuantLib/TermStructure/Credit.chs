@@ -19,11 +19,16 @@ module QuantLib.TermStructure.Credit
   , defaultProbabilityBetween'
   , spreadCdsHelper
   , upfrontCdsHelper
+  , defaultProbabilityHelperImpliedQuote
   , interpolatedDefaultDensityCurve
   , interpolatedHazardRateCurve
   , interpolatedSurvivalProbabilityCurve
+  , IterativeBootstrapOpts(..)
+  , defaultIterativeBootstrapOpts
   , piecewiseDefaultCurve
   , piecewiseDefaultCurve'
+  , piecewiseDefaultCurveFull
+  , piecewiseDefaultCurveFull'
   ) where
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"
@@ -131,6 +136,12 @@ import Data.List.NonEmpty(NonEmpty, toList)
   ,`PricingModel' -- ^model
   ,preErrorCheck-`String'errorCheck*-}->`DefaultProbabilityHelper'peekDefaultProbabilityHelper*#}
 
+-- |The fair running-spread/upfront quote implied by the helper's current market data and pricing
+-- engine -- the value that would make the quoted instrument re-price at par. Requires the helper
+-- to have already been used to bootstrap a curve (throws otherwise, per upstream).
+{#fun qlDefaultProbabilityHelperImpliedQuote as defaultProbabilityHelperImpliedQuote{withDefaultProbabilityHelper*`DefaultProbabilityHelper'
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 interpolatedDefaultDensityCurve :: NonEmpty (Day, Double) -> DayCounter -> Calendar -> [(Day, GenQuote q)] -- ^jumps
   -> Interpolation -> IO DefaultProbabilityTermStructure
 interpolatedDefaultDensityCurve d dc c q i = uncurryNested (qlInterpolatedDefaultDensityCurve dd dq dc c qq qd) (qlInterpolation i) where {(qd, qq) = unzip q; (dd, dq) = unzip (toList d)}
@@ -154,16 +165,70 @@ interpolatedSurvivalProbabilityCurve d dc c q i = uncurryNested (qlInterpolatedS
 -- |default-probability term structure built by interpolating survival probabilities at given dates
 {#fun qlInterpolatedSurvivalProbabilityCurve{withDayArray*`[Day]'&,withDoubleArray*`[Double]'&,withDayCounter*`DayCounter',withCalendar*`Calendar',withQuoteArray*`[GenQuote q]'&,withDayArray*`[Day]'&,`Int',`Int',`Int',preErrorCheck-`String'errorCheck*-}->`DefaultProbabilityTermStructure'peekDefaultProbabilityTermStructure*#}
 
-piecewiseDefaultCurve :: Day -> NonEmpty DefaultProbabilityHelper -> DayCounter -> [(Day, GenQuote q)] -- ^jumps
-  -> ProbabilityTrait -> Interpolation -> IO DefaultProbabilityTermStructure
-piecewiseDefaultCurve d h dc q t i = uncurryNested (qlPiecewiseDefaultCurve d (toList h) dc qq qd t) (qlInterpolation i) where (qd, qq) = unzip q
--- |default-probability term structure bootstrapped from CDS/default helpers, anchored at an explicit reference date
-{#fun qlPiecewiseDefaultCurve{withDay*`Day',withDefaultProbabilityHelperArray*`[DefaultProbabilityHelper]'&,withDayCounter*`DayCounter',withQuoteArray*`[GenQuote q]'&,withDayArray*`[Day]'&,`ProbabilityTrait',`Int',`Int',`Int',preErrorCheck-`String'errorCheck*-}->`DefaultProbabilityTermStructure'peekDefaultProbabilityTermStructure*#}
+-- QuantLib uses Null<Real>() rather than a number for these defaults.
+nullableDouble :: Maybe Double -> Double
+nullableDouble = realToFrac . fromMaybeDouble
 
-piecewiseDefaultCurve' :: Word -> Calendar -> NonEmpty DefaultProbabilityHelper -> DayCounter -> [(Day, GenQuote q)] -- ^jumps
-  -> ProbabilityTrait -> Interpolation -> IO DefaultProbabilityTermStructure
-piecewiseDefaultCurve' d c h dc q t i = uncurryNested (qlPiecewiseDefaultCurve1 d c (toList h) dc qq qd t) (qlInterpolation i) where (qd, qq) = unzip q
--- |default-probability term structure bootstrapped from CDS/default helpers, anchored at a settlement-days/calendar pair
-{#fun qlPiecewiseDefaultCurve1{fromIntegral`Word',withCalendar*`Calendar',withDefaultProbabilityHelperArray*`[DefaultProbabilityHelper]'&,withDayCounter*`DayCounter',withQuoteArray*`[GenQuote q]'&,withDayArray*`[Day]'&,`ProbabilityTrait',`Int',`Int',`Int',preErrorCheck-`String'errorCheck*-}->`DefaultProbabilityTermStructure'peekDefaultProbabilityTermStructure*#}
+-- |Default-probability term structure bootstrapped from CDS/default helpers, anchored at an
+-- explicit reference date and using QuantLib's default iterative-bootstrap settings.
+piecewiseDefaultCurve :: Day -- ^referenceDate
+  -> NonEmpty DefaultProbabilityHelper -- ^instruments
+  -> DayCounter -- ^dayCounter
+  -> [(Day, GenQuote q)] -- ^jumps paired with their dates
+  -> ProbabilityTrait -- ^bootstrap trait
+  -> Interpolation -- ^interpolator
+  -> IO DefaultProbabilityTermStructure
+piecewiseDefaultCurve d h dc q t i =
+  piecewiseDefaultCurveFull d h dc q t i defaultIterativeBootstrapOpts
+
+-- |Like 'piecewiseDefaultCurve', but exposes every @IterativeBootstrap@ setting. Start from
+-- 'defaultIterativeBootstrapOpts' and override selected fields. Setting 'ibDontThrow' to 'True'
+-- returns the best fallback pillar value found after a bootstrap failure; this is a recovery
+-- option and does not establish that the resulting curve reprices its instruments.
+piecewiseDefaultCurveFull :: Day -- ^referenceDate
+  -> NonEmpty DefaultProbabilityHelper -- ^instruments
+  -> DayCounter -- ^dayCounter
+  -> [(Day, GenQuote q)] -- ^jumps paired with their dates
+  -> ProbabilityTrait -- ^bootstrap trait
+  -> Interpolation -- ^interpolator
+  -> IterativeBootstrapOpts -- ^bootstrap settings
+  -> IO DefaultProbabilityTermStructure
+piecewiseDefaultCurveFull d h dc q t i b =
+  uncurryNested (piecewiseDefaultCurve_ d (toList h) dc qq qd t) (qlInterpolation i)
+    (nullableDouble (ibAccuracy b)) (nullableDouble (ibMinValue b)) (nullableDouble (ibMaxValue b))
+    (ibMaxAttempts b) (ibMaxFactor b) (ibMinFactor b) (ibDontThrow b) (ibDontThrowSteps b) (ibMaxEvaluations b)
+  where (qd, qq) = unzip q
+{#fun qlPiecewiseDefaultCurve as piecewiseDefaultCurve_{withDay*`Day',withDefaultProbabilityHelperArray*`[DefaultProbabilityHelper]'&,withDayCounter*`DayCounter',withQuoteArray*`[GenQuote q]'&,withDayArray*`[Day]'&,`ProbabilityTrait',`Int',`Int',`Int',`Double',`Double',`Double',fromIntegral`Word',`Double',`Double',`Bool',fromIntegral`Word',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`DefaultProbabilityTermStructure'peekDefaultProbabilityTermStructure*#}
+
+-- |Default-probability term structure bootstrapped from CDS/default helpers, anchored at a
+-- settlement-days/calendar pair and using QuantLib's default iterative-bootstrap settings.
+piecewiseDefaultCurve' :: Word -- ^settlementDays
+  -> Calendar -- ^calendar
+  -> NonEmpty DefaultProbabilityHelper -- ^instruments
+  -> DayCounter -- ^dayCounter
+  -> [(Day, GenQuote q)] -- ^jumps paired with their dates
+  -> ProbabilityTrait -- ^bootstrap trait
+  -> Interpolation -- ^interpolator
+  -> IO DefaultProbabilityTermStructure
+piecewiseDefaultCurve' d c h dc q t i =
+  piecewiseDefaultCurveFull' d c h dc q t i defaultIterativeBootstrapOpts
+
+-- |Like 'piecewiseDefaultCurve'', but exposes every @IterativeBootstrap@ setting. See
+-- 'piecewiseDefaultCurveFull' for the fallback semantics of 'ibDontThrow'.
+piecewiseDefaultCurveFull' :: Word -- ^settlementDays
+  -> Calendar -- ^calendar
+  -> NonEmpty DefaultProbabilityHelper -- ^instruments
+  -> DayCounter -- ^dayCounter
+  -> [(Day, GenQuote q)] -- ^jumps paired with their dates
+  -> ProbabilityTrait -- ^bootstrap trait
+  -> Interpolation -- ^interpolator
+  -> IterativeBootstrapOpts -- ^bootstrap settings
+  -> IO DefaultProbabilityTermStructure
+piecewiseDefaultCurveFull' d c h dc q t i b =
+  uncurryNested (piecewiseDefaultCurve1_ d c (toList h) dc qq qd t) (qlInterpolation i)
+    (nullableDouble (ibAccuracy b)) (nullableDouble (ibMinValue b)) (nullableDouble (ibMaxValue b))
+    (ibMaxAttempts b) (ibMaxFactor b) (ibMinFactor b) (ibDontThrow b) (ibDontThrowSteps b) (ibMaxEvaluations b)
+  where (qd, qq) = unzip q
+{#fun qlPiecewiseDefaultCurve1 as piecewiseDefaultCurve1_{fromIntegral`Word',withCalendar*`Calendar',withDefaultProbabilityHelperArray*`[DefaultProbabilityHelper]'&,withDayCounter*`DayCounter',withQuoteArray*`[GenQuote q]'&,withDayArray*`[Day]'&,`ProbabilityTrait',`Int',`Int',`Int',`Double',`Double',`Double',fromIntegral`Word',`Double',`Double',`Bool',fromIntegral`Word',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`DefaultProbabilityTermStructure'peekDefaultProbabilityTermStructure*#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

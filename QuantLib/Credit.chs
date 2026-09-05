@@ -34,7 +34,11 @@ module QuantLib.Credit
   , basketProbAtLeastNEvents
 
   , DefaultLossModel
+  , GaussianLHPLossModel
   , gaussianLHPLossModel
+  , gaussianLHPLossModelAsDefaultLossModel
+  , gaussianLHPLossModelAverageProb
+  , gaussianLHPLossModelAverageRecovery
 
   , DigitalLossModel
   , constantLossModel
@@ -73,6 +77,7 @@ import QuantLib.Internal.Type
 {#pointer *QlBasket as DigitalBasket foreign -> CBasket nocode#}
 {#pointer *QlDefaultLossModel as DefaultLossModel foreign -> CDefaultLossModel nocode#}
 {#pointer *QlDefaultLossModel as DigitalLossModel foreign -> CDefaultLossModel nocode#}
+{#pointer *QlGaussianLHPLossModel as GaussianLHPLossModel foreign -> CGaussianLHPLossModel nocode#}
 
 -- |ISDA standard default contractual key for corporate US debt. @restructuringType@ may be
 -- 'NoRestructuring' to disable restructuring as a trigger.
@@ -175,12 +180,32 @@ digitalBasket refDate positions p attachmentRatio detachmentRatio cl lm =
   ,withDigitalLossModel*`DigitalLossModel'
   ,preErrorCheck-`String'errorCheck*-}->`DigitalBasket'peekDigitalBasket*#}
 
--- |One-factor Gaussian-copula LHP loss model. @recoveries@ follow basket-name order.
-gaussianLHPLossModel :: GenQuote q -> NonEmpty Double -> IO DefaultLossModel
+-- |One-factor Gaussian-copula LHP loss model. @recoveries@ follow basket-name order. Convert with
+-- 'gaussianLHPLossModelAsDefaultLossModel' to pass into 'basket'\/'digitalBasket'.
+gaussianLHPLossModel :: GenQuote q -> NonEmpty Double -> IO GaussianLHPLossModel
 gaussianLHPLossModel correlQuote recoveries = qlGaussianLHPLossModel correlQuote (toList recoveries)
 {#fun qlGaussianLHPLossModel{withQuote*`GenQuote q' -- ^correlQuote
   ,withDoubleArray*`[Double]'&
-  ,preErrorCheck-`String'errorCheck*-}->`DefaultLossModel'peekDefaultLossModel*#}
+  ,preErrorCheck-`String'errorCheck*-}->`GaussianLHPLossModel'peekGaussianLHPLossModel*#}
+
+-- |Widen a 'GaussianLHPLossModel' to the generic 'DefaultLossModel' -- needed to pass it into
+-- 'basket'\/'digitalBasket'\/'QuantLib.TermStructure.Credit.nthToDefault'.
+{#fun qlGaussianLHPLossModelAsDefaultLossModel as gaussianLHPLossModelAsDefaultLossModel{withGaussianLHPLossModel*`GaussianLHPLossModel'}->`DefaultLossModel'peekDefaultLossModel*#}
+
+-- |Weighted-average default probability across the basket's remaining names at date @d@
+-- (probability-weighted by remaining notional). /Precondition, unchecked by hasquant/: this
+-- model must already have been attached to a 'Basket' via 'basket'\/'digitalBasket'\/
+-- 'QuantLib.TermStructure.Credit.nthToDefault' -- calling this on a freshly constructed,
+-- unattached model dereferences a null basket pointer inside QuantLib itself and segfaults
+-- rather than throwing.
+{#fun qlGaussianLHPLossModelAverageProb as gaussianLHPLossModelAverageProb{withGaussianLHPLossModel*`GaussianLHPLossModel',withDay*`Day' -- ^d
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |Weighted-average recovery rate across the basket's remaining names at date @d@, weighted by
+-- notional and remaining survival probability so the aggregated model's expected loss matches
+-- the original portfolio's. Same unattached-model precondition as 'gaussianLHPLossModelAverageProb'.
+{#fun qlGaussianLHPLossModelAverageRecovery as gaussianLHPLossModelAverageRecovery{withGaussianLHPLossModel*`GaussianLHPLossModel',withDay*`Day' -- ^d
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |One-factor Gaussian- or Student-T-copula model for digital-loss baskets.
 -- @[]@ selects Gaussian; @tOrders@ selects Student-T degrees of freedom.
