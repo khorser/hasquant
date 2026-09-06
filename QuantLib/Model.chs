@@ -136,7 +136,6 @@ import QuantLib.Internal
 {#import QuantLib.Time.Schedule#}(Frequency)
 {#import QuantLib.InterestRate#}(VolatilityType)
 {#import QuantLib.CashFlow#}(RateAveragingType)
-{#import QuantLib.Instrument.Option#}(OptionType)
 import QuantLib.Internal.Type
 import QuantLib.Internal.Common
 import QuantLib.Math(SobolDirectionIntegers)

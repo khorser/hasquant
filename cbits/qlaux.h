@@ -906,7 +906,6 @@ using QlCdsOption = shared_ptr<CdsOption>;
 using QlPool = shared_ptr<Pool>;
 using QlBasket = shared_ptr<Basket>;
 using QlDefaultLossModel = shared_ptr<DefaultLossModel>;
-using QlGaussianLHPLossModel = shared_ptr<GaussianLHPLossModel>;
 using QlSyntheticCDO = shared_ptr<SyntheticCDO>;
 using QlNthToDefault = shared_ptr<NthToDefault>;
 using QlClaim = shared_ptr<Claim>;
@@ -1170,6 +1169,7 @@ QL_TRACE_NAME(Pool)
 QL_TRACE_NAME(Basket)
 QL_TRACE_NAME(DefaultLossModel)
 QL_TRACE_NAME(GaussianLHPLossModel)
+QL_TRACE_NAME(HestonSLVFDMLogEntries)
 QL_TRACE_NAME(SyntheticCDO)
 QL_TRACE_NAME(NthToDefault)
 QL_TRACE_NAME(Claim)
@@ -1384,7 +1384,6 @@ QL_TRACE_NAME(QlCdsOption)
 QL_TRACE_NAME(QlPool)
 QL_TRACE_NAME(QlBasket)
 QL_TRACE_NAME(QlDefaultLossModel)
-QL_TRACE_NAME(QlGaussianLHPLossModel)
 QL_TRACE_NAME(QlSyntheticCDO)
 QL_TRACE_NAME(QlNthToDefault)
 QL_TRACE_NAME(QlClaim)
@@ -1664,14 +1663,52 @@ template <class T> void del(T p) {trace("deleting", p); delete p; trace("deleted
 // friends. Separate rather than a flag on del() because the array/scalar delete form has to be
 // chosen at the call site anyway.
 template <class T> void delArray(T p) {trace("deleting", p); delete[] p; trace("deleted", p);}
-// RAII guard for allocated out-arrays: on failure, frees partial output and restores null/zero.
-template <class T> class OutArrayGuard {
+
+template <class T> T* allocateOutArray(unsigned);
+template <> inline int* allocateOutArray<int>(unsigned n) {return qlAllocateInts(n);}
+template <> inline double* allocateOutArray<double>(unsigned n) {return qlAllocateDoubles(n);}
+
+// Stages an array result until the whole shim call has succeeded. Construction makes the caller's
+// storage safe for c2hs to peek on an exception; destruction balances a traced allocation that was
+// never committed.
+template <class T> class OutArrayResult {
+  unsigned *outLen_;
   T **out_;
-  unsigned *len_;
+  unsigned len_ = 0;
+  T *value_ = nullptr;
 public:
-  OutArrayGuard(T **out, unsigned *len) : out_(out), len_(len) {}
-  ~OutArrayGuard() {if (out_) {delArray(*out_); *out_ = nullptr; if (len_) *len_ = 0;}}
-  void commit() {out_ = nullptr; len_ = nullptr;}
+  OutArrayResult(unsigned *outLen, T **out) : outLen_(outLen), out_(out) {
+    *outLen_ = 0;
+    *out_ = nullptr;
+  }
+  OutArrayResult(const OutArrayResult&) = delete;
+  OutArrayResult& operator=(const OutArrayResult&) = delete;
+  ~OutArrayResult() {if (value_) delArray(value_);}
+  T* allocate(unsigned len) {
+    value_ = allocateOutArray<T>(len);
+    len_ = len;
+    return value_;
+  }
+  T* data() {return value_;}
+  void commit() noexcept {
+    *outLen_ = len_;
+    *out_ = value_;
+    value_ = nullptr;
+  }
+};
+
+// Stages scalar outputs alongside OutArrayResult so multi-output functions publish only a fully
+// built result. Its constructor supplies the neutral value c2hs will see on an exception.
+template <class T> class OutValue {
+  T *out_;
+  T value_{};
+public:
+  explicit OutValue(T *out) : out_(out) {*out_ = T();}
+  OutValue(const OutValue&) = delete;
+  OutValue& operator=(const OutValue&) = delete;
+  void set(T value) {value_ = value;}
+  T get() const {return value_;}
+  void commit() noexcept {*out_ = value_;}
 };
 // del() for an object whose actual `delete' has to happen elsewhere -- a type only
 // forward-declared here, freed through a function in the translation unit that defines it. The
@@ -1784,15 +1821,27 @@ T handleException(char **msg, std::exception &e) {
 }
 
 template <class F>
+static void fillVectorOut(F&& get, unsigned* len, double** vs) {
+  OutArrayResult<double> result(len, vs);
+  decltype(auto) values = get();
+  double *out = result.allocate((unsigned)values.size());
+  std::copy(values.begin(), values.end(), out);
+  result.commit();
+}
+
+template <class F>
 static void fillMatrixOut(F&& get, unsigned* rows, unsigned* cols, unsigned* len, double** vs) {
-  *rows = 0; *cols = 0; *len = 0; *vs = nullptr;
-  const Matrix m = get();
+  OutValue<unsigned> rowResult(rows), colResult(cols);
+  OutArrayResult<double> result(len, vs);
+  decltype(auto) m = get();
   const unsigned n = (unsigned)(m.rows() * m.columns());
-  *vs = qlAllocateDoubles(n);
-  OutArrayGuard<double> guard(vs, len);
-  std::copy(m.begin(), m.end(), *vs);
-  *rows = (unsigned)m.rows(); *cols = (unsigned)m.columns(); *len = n;
-  guard.commit();
+  double *out = result.allocate(n);
+  std::copy(m.begin(), m.end(), out);
+  rowResult.set((unsigned)m.rows());
+  colResult.set((unsigned)m.columns());
+  result.commit();
+  rowResult.commit();
+  colResult.commit();
 }
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

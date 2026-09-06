@@ -287,11 +287,8 @@ double qlAbcdAtmVolCurveKAtTime(QlAbcdAtmVolCurve* o, double t, char **e) {
   try {return (*arg(o))->k(t);
   } catch (std::exception& er) {return handleException<double>(e, er);}}
 void qlAbcdAtmVolCurveK(QlAbcdAtmVolCurve* o, unsigned *count, double **ks, char **e) {
-  try {
-    std::vector<Real> k = (*arg(o))->k();
-    *count = k.size(); *ks = qlAllocateDoubles(*count);
-    for (size_t i = 0; i < k.size(); ++i) (*ks)[i] = k[i];
-  } catch (std::exception& er) {*count = 0; *ks = 0; handleException<int>(e, er);}}
+  try {fillVectorOut([&] {return (*arg(o))->k();}, count, ks);
+  } catch (std::exception& er) {(void)handleException<int>(e, er);}}
 void qlAbcdAtmVolCurveOptionTenors(QlAbcdAtmVolCurve* o, unsigned *count, int **n, unsigned *count2, int **u, char **e) {
   *count = 0; *count2 = 0; *n = nullptr; *u = nullptr;
   int *lengths = nullptr, *units = nullptr;
@@ -315,17 +312,16 @@ void qlAbcdAtmVolCurveOptionTenorsInInterpolation(QlAbcdAtmVolCurve* o, unsigned
     qlFreeInts(lengths); qlFreeInts(units); *e = tracedup(er.what());
   }}
 void qlAbcdAtmVolCurveOptionDates(QlAbcdAtmVolCurve* o, unsigned *count, int **days, char **e) {
+  OutArrayResult<int> result(count, days);
   try {
     const std::vector<Date> &dates = (*arg(o))->optionDates();
-    *count = dates.size(); *days = qlAllocateInts(*count);
-    for (size_t i = 0; i < dates.size(); ++i) (*days)[i] = dates[i].serialNumber();
-  } catch (std::exception& er) {*count = 0; *days = 0; handleException<int>(e, er);}}
+    int *out = result.allocate(dates.size());
+    for (size_t i = 0; i < dates.size(); ++i) out[i] = dates[i].serialNumber();
+    result.commit();
+  } catch (std::exception& er) {(void)handleException<int>(e, er);}}
 void qlAbcdAtmVolCurveOptionTimes(QlAbcdAtmVolCurve* o, unsigned *count, double **times, char **e) {
-  try {
-    const std::vector<Time> &t = (*arg(o))->optionTimes();
-    *count = t.size(); *times = qlAllocateDoubles(*count);
-    for (size_t i = 0; i < t.size(); ++i) (*times)[i] = t[i];
-  } catch (std::exception& er) {*count = 0; *times = 0; handleException<int>(e, er);}}
+  try {fillVectorOut([&] {return (*arg(o))->optionTimes();}, count, times);
+  } catch (std::exception& er) {(void)handleException<int>(e, er);}}
 QlSabrVolSurface* qlSabrVolSurface(QlInterestRateIndex* index, QlBlackAtmVolCurve* atmCurve, unsigned tenorsLen, int *n, unsigned, int *u, unsigned spreadsLen, double *atmRateSpreads, unsigned volRows, unsigned volCols, QlQuote** volSpreads, char **e) {
   try {return ret(new QlSabrVolSurface(alloc(new SabrVolSurface(*arg(index), Handle<BlackAtmVolCurve>(*arg(atmCurve)),
       qlPeriodVector(n, u, tenorsLen), std::vector<Spread>(atmRateSpreads, atmRateSpreads+spreadsLen),
@@ -335,17 +331,11 @@ QlBlackAtmVolCurve* qlSabrVolSurfaceAtmCurve(QlSabrVolSurface* o, char **e) {
   try {return ret(new QlBlackAtmVolCurve((*arg(o))->atmCurve().currentLink()));
   } catch (std::exception& er) {return handleException<QlBlackAtmVolCurve*>(e, er);}}
 void qlSabrVolSurfaceVolatilitySpreadsForPeriod(QlSabrVolSurface* o, int n, int u, unsigned *count, double **vols, char **e) {
-  try {
-    std::vector<Volatility> v = (*arg(o))->volatilitySpreads(Period(n, (TimeUnit)u));
-    *count = v.size(); *vols = qlAllocateDoubles(*count);
-    for (size_t i = 0; i < v.size(); ++i) (*vols)[i] = v[i];
-  } catch (std::exception& er) {*count = 0; *vols = 0; handleException<int>(e, er);}}
+  try {fillVectorOut([&] {return (*arg(o))->volatilitySpreads(Period(n, (TimeUnit)u));}, count, vols);
+  } catch (std::exception& er) {(void)handleException<int>(e, er);}}
 void qlSabrVolSurfaceVolatilitySpreadsForDate(QlSabrVolSurface* o, int date, unsigned *count, double **vols, char **e) {
-  try {
-    std::vector<Volatility> v = (*arg(o))->volatilitySpreads(Date(date));
-    *count = v.size(); *vols = qlAllocateDoubles(*count);
-    for (size_t i = 0; i < v.size(); ++i) (*vols)[i] = v[i];
-  } catch (std::exception& er) {*count = 0; *vols = 0; handleException<int>(e, er);}}
+  try {fillVectorOut([&] {return (*arg(o))->volatilitySpreads(Date(date));}, count, vols);
+  } catch (std::exception& er) {(void)handleException<int>(e, er);}}
 QlInterestRateIndex* qlSabrVolSurfaceIndex(QlSabrVolSurface* o, char **e) {
   try {return ret(new QlInterestRateIndex((*arg(o))->index()));
   } catch (std::exception& er) {return handleException<QlInterestRateIndex*>(e, er);}}
@@ -371,23 +361,14 @@ QlOptionletVolatilityStructure* qlOptionletStripper2AsOptionletVolatilityStructu
       alloc(new StrippedOptionletAdapter(*arg(o))))));
   } catch (std::exception& er) {return handleException<QlOptionletVolatilityStructure*>(e, er);}}
 void qlOptionletStripper2AtmCapFloorStrikes(QlOptionletStripper2* o, unsigned *count, double **vs, char **e) {
-  try {
-    const std::vector<Rate> &v = (*arg(o))->atmCapFloorStrikes();
-    *count = v.size(); *vs = qlAllocateDoubles(*count);
-    for (size_t i = 0; i < v.size(); ++i) (*vs)[i] = v[i];
-  } catch (std::exception& er) {*count = 0; *vs = 0; handleException<int>(e, er);}}
+  try {fillVectorOut([&] {return (*arg(o))->atmCapFloorStrikes();}, count, vs);
+  } catch (std::exception& er) {(void)handleException<int>(e, er);}}
 void qlOptionletStripper2AtmCapFloorPrices(QlOptionletStripper2* o, unsigned *count, double **vs, char **e) {
-  try {
-    const std::vector<Real> &v = (*arg(o))->atmCapFloorPrices();
-    *count = v.size(); *vs = qlAllocateDoubles(*count);
-    for (size_t i = 0; i < v.size(); ++i) (*vs)[i] = v[i];
-  } catch (std::exception& er) {*count = 0; *vs = 0; handleException<int>(e, er);}}
+  try {fillVectorOut([&] {return (*arg(o))->atmCapFloorPrices();}, count, vs);
+  } catch (std::exception& er) {(void)handleException<int>(e, er);}}
 void qlOptionletStripper2SpreadsVol(QlOptionletStripper2* o, unsigned *count, double **vs, char **e) {
-  try {
-    const std::vector<Volatility> &v = (*arg(o))->spreadsVol();
-    *count = v.size(); *vs = qlAllocateDoubles(*count);
-    for (size_t i = 0; i < v.size(); ++i) (*vs)[i] = v[i];
-  } catch (std::exception& er) {*count = 0; *vs = 0; handleException<int>(e, er);}}
+  try {fillVectorOut([&] {return (*arg(o))->spreadsVol();}, count, vs);
+  } catch (std::exception& er) {(void)handleException<int>(e, er);}}
 
 void qlFreeSwaptionVolatilityStructure(QlSwaptionVolatilityStructure *o) {del(o);}
 // Deliberate snapshot detach, same reasoning as qlBlackVolTermStructureAsVolatilityTermStructure.
@@ -964,7 +945,9 @@ void qlFreeSwaptionVolatilityMatrix(QlSwaptionVolatilityMatrix *o) {del(o);}
 QlSwaptionVolatilityStructure* qlSwaptionVolatilityMatrixAsSwaptionVolatilityStructure(QlSwaptionVolatilityMatrix *o) {
   return ret(new QlSwaptionVolatilityStructure(*arg(o)));}
 void qlSwaptionVolatilityMatrixLocate(QlSwaptionVolatilityMatrix *o, int optionDate, int n, int u, unsigned *i, unsigned *j, char **e) {
-  try {std::pair<Size,Size> ij = (*arg(o))->locate(Date(optionDate), Period(n, (TimeUnit)u)); *i = ij.first; *j = ij.second;
+  OutValue<unsigned> iResult(i), jResult(j);
+  try {std::pair<Size,Size> ij = (*arg(o))->locate(Date(optionDate), Period(n, (TimeUnit)u));
+    iResult.set(ij.first); jResult.set(ij.second); iResult.commit(); jResult.commit();
   } catch (std::exception& er) {(void)handleException<void*>(e, er);}}
 
 // SabrSwaptionVolatilityCube, InterpolatedSwaptionVolatilityCube, and SwaptionVolatilityMatrix each

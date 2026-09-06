@@ -656,16 +656,21 @@ QlEndCriteria* qlEndCriteria(unsigned maxIterations, unsigned maxStationaryState
   } catch (std::exception& er) {return handleException<QlEndCriteria*>(e, er);}}
 
 void qlOptimize(double (*costFn)(double*, unsigned), unsigned x0Len, double* x0, Constraint* constraint, QlOptimizationMethod* method, QlEndCriteria* endCriteria, unsigned* outLen, double** outValues, double* outCost, int* outEndCriteriaType, char **e) {
+  OutArrayResult<double> valuesResult(outLen, outValues);
+  OutValue<double> costResult(outCost);
+  OutValue<int> endCriteriaResult(outEndCriteriaType);
   try {
     HsCostFunction cf(costFn);
     NoConstraint noConstraint;
     Problem problem(cf, constraint ? *arg(constraint) : static_cast<Constraint&>(noConstraint), Array(x0, x0+x0Len));
-    *outEndCriteriaType = (int)(*arg(method))->minimize(problem, **arg(endCriteria));
+    endCriteriaResult.set((int)(*arg(method))->minimize(problem, **arg(endCriteria)));
     const Array& sol = problem.currentValue();
-    *outCost = problem.functionValue();
-    *outLen = (unsigned)sol.size();
-    *outValues = qlAllocateDoubles(*outLen);
-    std::copy(sol.begin(), sol.end(), *outValues);
+    costResult.set(problem.functionValue());
+    double *values = valuesResult.allocate((unsigned)sol.size());
+    std::copy(sol.begin(), sol.end(), values);
+    valuesResult.commit();
+    costResult.commit();
+    endCriteriaResult.commit();
   } catch (std::exception& er) {(void)handleException<int>(e, er);}}
 
 TimeGrid* qlTimeGrid1(double end, unsigned steps, char **e) {
@@ -680,7 +685,7 @@ TimeGrid* qlTimeGrid3(unsigned x0Len, double* x0, unsigned steps, char **e) {
 unsigned qlTimeGridSize(TimeGrid* t) {return arg(t)->size();}
 double qlTimeGridAt(TimeGrid* t, unsigned i, char **e) {try {return arg(t)->at(i);} catch (std::exception& er) {return handleException<double>(e, er);}}
 void qlTimeGridPoints(TimeGrid *t, unsigned *len, double **p, char **e) {
-  try {*len = arg(t)->size(); *p = qlAllocateDoubles(*len); std::copy(t->begin(), t->end(), *p);
+  try {fillVectorOut([&] {return std::vector<double>(arg(t)->begin(), t->end());}, len, p);
   } catch (std::exception& er) {(void)handleException<double*>(e, er);}}
 
 double qlRiskStatisticsMean(unsigned n, double *xs, char **e) {
@@ -868,8 +873,10 @@ int qlECBDate(int m, int y, char **e) {try {return (ECB::date((Month)m, y)).seri
 int qlECBIsECBcode(char* in, char **e) {try {return ECB::isECBcode(arg(in));} catch (std::exception& er) {return handleException<int>(e, er);}}
 int qlECBIsECBdate(int d, char **e) {try {return ECB::isECBdate(Date(d));} catch (std::exception& er) {return handleException<int>(e, er);}}
 void qlECBKnownDates(unsigned *count, int **ds, char **e) {
-  try { const std::set<Date> &dates = ECB::knownDates(); *count = dates.size(); *ds = qlAllocateInts(*count);
-    std::transform(dates.begin(), dates.end(), *ds, std::mem_fn(&Date::serialNumber));
+  OutArrayResult<int> result(count, ds);
+  try { const std::set<Date> &dates = ECB::knownDates(); int *out = result.allocate((unsigned)dates.size());
+    std::transform(dates.begin(), dates.end(), out, std::mem_fn(&Date::serialNumber));
+    result.commit();
   } catch (std::exception& er) {(void)handleException<int>(e, er);}}
 char* qlECBNextCode1(char* ecbCode, char **e) {try {return tracedup((ECB::nextCode(std::string(arg(ecbCode)))).c_str());} catch (std::exception& er) {return handleException<char*>(e, er);}}
 char* qlECBNextCode(int d, char **e) {try {return tracedup((ECB::nextCode(qlNullableDate(d))).c_str());} catch (std::exception& er) {return handleException<char*>(e, er);}}
@@ -878,14 +885,18 @@ int qlECBNextDate1(char* ecbCode, int referenceDate, char **e) {
   } catch (std::exception& er) {return handleException<int>(e, er);}}
 int qlECBNextDate(int d, char **e) {try {return (ECB::nextDate(qlNullableDate(d))).serialNumber();} catch (std::exception& er) {return handleException<int>(e, er);}}
 void qlECBNextDates1(char* ecbCode, int referenceDate, unsigned *count, int **ds, char **e) {
+  OutArrayResult<int> result(count, ds);
   try {const std::vector<Date> &dates = ECB::nextDates(ecbCode, qlNullableDate(referenceDate));
-    *count = dates.size(); *ds = qlAllocateInts(*count);
-    std::transform(dates.begin(), dates.end(), *ds, std::mem_fn(&Date::serialNumber));
+    int *out = result.allocate((unsigned)dates.size());
+    std::transform(dates.begin(), dates.end(), out, std::mem_fn(&Date::serialNumber));
+    result.commit();
   } catch (std::exception& er) {(void)handleException<int*>(e, er);}}
 void qlECBNextDates(int d, unsigned *count, int **ds, char **e) {
+  OutArrayResult<int> result(count, ds);
   try {const std::vector<Date> &dates = ECB::nextDates(qlNullableDate(d));
-    *count = dates.size(); *ds = qlAllocateInts(*count);
-    std::transform(dates.begin(), dates.end(), *ds, std::mem_fn(&Date::serialNumber));
+    int *out = result.allocate((unsigned)dates.size());
+    std::transform(dates.begin(), dates.end(), out, std::mem_fn(&Date::serialNumber));
+    result.commit();
   } catch (std::exception& er) {(void)handleException<int*>(e, er);}}
 void qlECBRemoveDate(int d, char **e) {try {ECB::removeDate(Date(d));} catch (std::exception& er) {(void)handleException<int>(e, er);}}
 
@@ -998,10 +1009,12 @@ Calendar* qlJointCalendar2(Calendar* x_1, Calendar* x0, int x1, char **e) {
   try {return allocAs<Calendar>(new JointCalendar(*arg(x_1), *arg(x0), (JointCalendarRule)x1));
   } catch (std::exception& er) {return handleException<Calendar*>(e, er);}}
 void qlCalendarHolidayList(Calendar* calendar, int from, int to, int includeWeekEnds, unsigned *len, int **days, char **e) {
+  OutArrayResult<int> result(len, days);
   try {const std::vector<Date> dates = arg(calendar)->holidayList(Date(from), Date(to), includeWeekEnds);
-    *len = dates.size(); *days = qlAllocateInts(*len);
+    int *out = result.allocate((unsigned)dates.size());
     for (size_t i = 0; i < dates.size(); ++i)
-      (*days)[i] = dates[i].serialNumber();
+      out[i] = dates[i].serialNumber();
+    result.commit();
   } catch (std::exception& er) {(void)handleException<int*>(e, er);}}
 Schedule *qlSchedule1(unsigned len, int *dates, Calendar *cal, int conv, int termConv, int tenorLen, int tenorUnit, int rule, int eom, char **e) {
   try {std::vector<Date> d; d.reserve(len);
@@ -1270,12 +1283,6 @@ namespace QuantLib {
   };
 }
 
-static void fillVectorOut(const std::vector<Real>& a, unsigned* len, double** vs) {
-  *len = (unsigned)a.size();
-  *vs = qlAllocateDoubles(*len);
-  std::copy(a.begin(), a.end(), *vs);
-}
-
 QlHistoricalIndexAnalysis *qlHistoricalIndexAnalysis(int startDate, int endDate,
     int stepLen, int stepUnit, unsigned indexesLen, QlIndex **indexes, char **e) {
   try {
@@ -1342,95 +1349,95 @@ void qlHistoricalIndexAnalysisSkippedDatesErrorMessage(QlHistoricalIndexAnalysis
 }
 
 void qlHistoricalIndexAnalysisMean(QlHistoricalIndexAnalysis *o, unsigned *len, double **vs, char **e) {
-  try {fillVectorOut((*arg(o))->stats()->mean(), len, vs);
+  try {fillVectorOut([&] {return (*arg(o))->stats()->mean();}, len, vs);
   } catch (std::exception& er) {handleException<double*>(e, er);}}
 
 void qlHistoricalIndexAnalysisStandardDeviation(QlHistoricalIndexAnalysis *o, unsigned *len, double **vs, char **e) {
-  try {fillVectorOut((*arg(o))->stats()->standardDeviation(), len, vs);
+  try {fillVectorOut([&] {return (*arg(o))->stats()->standardDeviation();}, len, vs);
   } catch (std::exception& er) {handleException<double*>(e, er);}}
 
 void qlHistoricalIndexAnalysisSkewness(QlHistoricalIndexAnalysis *o, unsigned *len, double **vs, char **e) {
-  try {fillVectorOut((*arg(o))->stats()->skewness(), len, vs);
+  try {fillVectorOut([&] {return (*arg(o))->stats()->skewness();}, len, vs);
   } catch (std::exception& er) {handleException<double*>(e, er);}}
 
 void qlHistoricalIndexAnalysisKurtosis(QlHistoricalIndexAnalysis *o, unsigned *len, double **vs, char **e) {
-  try {fillVectorOut((*arg(o))->stats()->kurtosis(), len, vs);
+  try {fillVectorOut([&] {return (*arg(o))->stats()->kurtosis();}, len, vs);
   } catch (std::exception& er) {handleException<double*>(e, er);}}
 
 void qlHistoricalIndexAnalysisMin(QlHistoricalIndexAnalysis *o, unsigned *len, double **vs, char **e) {
-  try {fillVectorOut((*arg(o))->stats()->min(), len, vs);
+  try {fillVectorOut([&] {return (*arg(o))->stats()->min();}, len, vs);
   } catch (std::exception& er) {handleException<double*>(e, er);}}
 
 void qlHistoricalIndexAnalysisMax(QlHistoricalIndexAnalysis *o, unsigned *len, double **vs, char **e) {
-  try {fillVectorOut((*arg(o))->stats()->max(), len, vs);
+  try {fillVectorOut([&] {return (*arg(o))->stats()->max();}, len, vs);
   } catch (std::exception& er) {handleException<double*>(e, er);}}
 
 void qlHistoricalIndexAnalysisSemiVariance(QlHistoricalIndexAnalysis *o, unsigned *len, double **vs, char **e) {
-  try {fillVectorOut((*arg(o))->stats()->semiVariance(), len, vs);
+  try {fillVectorOut([&] {return (*arg(o))->stats()->semiVariance();}, len, vs);
   } catch (std::exception& er) {handleException<double*>(e, er);}}
 
 void qlHistoricalIndexAnalysisSemiDeviation(QlHistoricalIndexAnalysis *o, unsigned *len, double **vs, char **e) {
-  try {fillVectorOut((*arg(o))->stats()->semiDeviation(), len, vs);
+  try {fillVectorOut([&] {return (*arg(o))->stats()->semiDeviation();}, len, vs);
   } catch (std::exception& er) {handleException<double*>(e, er);}}
 
 void qlHistoricalIndexAnalysisDownsideVariance(QlHistoricalIndexAnalysis *o, unsigned *len, double **vs, char **e) {
-  try {fillVectorOut((*arg(o))->stats()->downsideVariance(), len, vs);
+  try {fillVectorOut([&] {return (*arg(o))->stats()->downsideVariance();}, len, vs);
   } catch (std::exception& er) {handleException<double*>(e, er);}}
 
 void qlHistoricalIndexAnalysisDownsideDeviation(QlHistoricalIndexAnalysis *o, unsigned *len, double **vs, char **e) {
-  try {fillVectorOut((*arg(o))->stats()->downsideDeviation(), len, vs);
+  try {fillVectorOut([&] {return (*arg(o))->stats()->downsideDeviation();}, len, vs);
   } catch (std::exception& er) {handleException<double*>(e, er);}}
 
 void qlHistoricalIndexAnalysisPercentile(QlHistoricalIndexAnalysis *o, double y, unsigned *len, double **vs, char **e) {
-  try {fillVectorOut((*arg(o))->stats()->percentile(y), len, vs);
+  try {fillVectorOut([&] {return (*arg(o))->stats()->percentile(y);}, len, vs);
   } catch (std::exception& er) {handleException<double*>(e, er);}}
 
 void qlHistoricalIndexAnalysisGaussianPercentile(QlHistoricalIndexAnalysis *o, double y, unsigned *len, double **vs, char **e) {
-  try {fillVectorOut((*arg(o))->stats()->gaussianPercentile(y), len, vs);
+  try {fillVectorOut([&] {return (*arg(o))->stats()->gaussianPercentile(y);}, len, vs);
   } catch (std::exception& er) {handleException<double*>(e, er);}}
 
 void qlHistoricalIndexAnalysisValueAtRisk(QlHistoricalIndexAnalysis *o, double centile, unsigned *len, double **vs, char **e) {
-  try {fillVectorOut((*arg(o))->stats()->valueAtRisk(centile), len, vs);
+  try {fillVectorOut([&] {return (*arg(o))->stats()->valueAtRisk(centile);}, len, vs);
   } catch (std::exception& er) {handleException<double*>(e, er);}}
 
 void qlHistoricalIndexAnalysisGaussianValueAtRisk(QlHistoricalIndexAnalysis *o, double centile, unsigned *len, double **vs, char **e) {
-  try {fillVectorOut((*arg(o))->stats()->gaussianValueAtRisk(centile), len, vs);
+  try {fillVectorOut([&] {return (*arg(o))->stats()->gaussianValueAtRisk(centile);}, len, vs);
   } catch (std::exception& er) {handleException<double*>(e, er);}}
 
 void qlHistoricalIndexAnalysisExpectedShortfall(QlHistoricalIndexAnalysis *o, double centile, unsigned *len, double **vs, char **e) {
-  try {fillVectorOut((*arg(o))->stats()->expectedShortfall(centile), len, vs);
+  try {fillVectorOut([&] {return (*arg(o))->stats()->expectedShortfall(centile);}, len, vs);
   } catch (std::exception& er) {handleException<double*>(e, er);}}
 
 void qlHistoricalIndexAnalysisGaussianExpectedShortfall(QlHistoricalIndexAnalysis *o, double centile, unsigned *len, double **vs, char **e) {
-  try {fillVectorOut((*arg(o))->stats()->gaussianExpectedShortfall(centile), len, vs);
+  try {fillVectorOut([&] {return (*arg(o))->stats()->gaussianExpectedShortfall(centile);}, len, vs);
   } catch (std::exception& er) {handleException<double*>(e, er);}}
 
 void qlHistoricalIndexAnalysisPotentialUpside(QlHistoricalIndexAnalysis *o, double centile, unsigned *len, double **vs, char **e) {
-  try {fillVectorOut((*arg(o))->stats()->potentialUpside(centile), len, vs);
+  try {fillVectorOut([&] {return (*arg(o))->stats()->potentialUpside(centile);}, len, vs);
   } catch (std::exception& er) {handleException<double*>(e, er);}}
 
 void qlHistoricalIndexAnalysisGaussianPotentialUpside(QlHistoricalIndexAnalysis *o, double centile, unsigned *len, double **vs, char **e) {
-  try {fillVectorOut((*arg(o))->stats()->gaussianPotentialUpside(centile), len, vs);
+  try {fillVectorOut([&] {return (*arg(o))->stats()->gaussianPotentialUpside(centile);}, len, vs);
   } catch (std::exception& er) {handleException<double*>(e, er);}}
 
 void qlHistoricalIndexAnalysisRegret(QlHistoricalIndexAnalysis *o, double target, unsigned *len, double **vs, char **e) {
-  try {fillVectorOut((*arg(o))->stats()->regret(target), len, vs);
+  try {fillVectorOut([&] {return (*arg(o))->stats()->regret(target);}, len, vs);
   } catch (std::exception& er) {handleException<double*>(e, er);}}
 
 void qlHistoricalIndexAnalysisShortfall(QlHistoricalIndexAnalysis *o, double target, unsigned *len, double **vs, char **e) {
-  try {fillVectorOut((*arg(o))->stats()->shortfall(target), len, vs);
+  try {fillVectorOut([&] {return (*arg(o))->stats()->shortfall(target);}, len, vs);
   } catch (std::exception& er) {handleException<double*>(e, er);}}
 
 void qlHistoricalIndexAnalysisGaussianShortfall(QlHistoricalIndexAnalysis *o, double target, unsigned *len, double **vs, char **e) {
-  try {fillVectorOut((*arg(o))->stats()->gaussianShortfall(target), len, vs);
+  try {fillVectorOut([&] {return (*arg(o))->stats()->gaussianShortfall(target);}, len, vs);
   } catch (std::exception& er) {handleException<double*>(e, er);}}
 
 void qlHistoricalIndexAnalysisAverageShortfall(QlHistoricalIndexAnalysis *o, double target, unsigned *len, double **vs, char **e) {
-  try {fillVectorOut((*arg(o))->stats()->averageShortfall(target), len, vs);
+  try {fillVectorOut([&] {return (*arg(o))->stats()->averageShortfall(target);}, len, vs);
   } catch (std::exception& er) {handleException<double*>(e, er);}}
 
 void qlHistoricalIndexAnalysisGaussianAverageShortfall(QlHistoricalIndexAnalysis *o, double target, unsigned *len, double **vs, char **e) {
-  try {fillVectorOut((*arg(o))->stats()->gaussianAverageShortfall(target), len, vs);
+  try {fillVectorOut([&] {return (*arg(o))->stats()->gaussianAverageShortfall(target);}, len, vs);
   } catch (std::exception& er) {handleException<double*>(e, er);}}
 
 void qlHistoricalIndexAnalysisCovariance(QlHistoricalIndexAnalysis *o, unsigned *rows, unsigned *cols, unsigned *len, double **vs, char **e) {

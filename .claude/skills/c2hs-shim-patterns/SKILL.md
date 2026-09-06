@@ -85,6 +85,14 @@ length/array pair) before picking the marshaller.
 
 ## Exception safety in shims
 
+**Prefer the transactional RAII holders in `qlaux.h` for primitive out-parameters.** Construct
+`OutArrayResult<T>` and any accompanying `OutValue<T>` objects before the first operation that can
+throw. Their constructors publish null/zero defaults, their destructors release uncommitted traced
+arrays, and `commit()` publishes the completed result without throwing. `fillVectorOut` and
+`fillMatrixOut` apply this pattern to the common numeric cases and take a callable so the upstream
+getter runs only after the outputs are safe. Use explicit holders for transformed arrays and
+multi-output calls; commit every holder only after all allocations and transformations succeed.
+
 **A `try`/`catch(std::exception&)` wrapping a shim function is not enough
 on its own if the function commits any output only after a loop, or builds
 more than one heap object before returning.** A mid-loop or mid-sequence

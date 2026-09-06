@@ -1854,6 +1854,7 @@ spec evalDate = do
           gEss <- historicalIndexAnalysisGaussianExpectedShortfall hra centile
           _ <- historicalIndexAnalysisPercentile hra centile
           _ <- historicalIndexAnalysisGaussianPercentile hra centile
+          historicalIndexAnalysisPercentile hra 0.0 `shouldThrow` anyException
           -- VaR/expected shortfall are losses, capped at 0.0 -- expected shortfall (the
           -- average loss beyond the VaR threshold) must be at least as large as VaR itself.
           mapM_ (`shouldSatisfy` all (>= 0)) ([vars, ess, gVars, gEss] :: [[Double]])
@@ -1868,6 +1869,8 @@ spec evalDate = do
             _ -> expectationFailure "covariance matrix did not have 4 entries"
 
           correlation <- historicalIndexAnalysisCorrelation hra
+          emptyHra <- historicalRatesAnalysis startDate startDate (1, Months) [idx, idx]
+          historicalIndexAnalysisCovariance emptyHra `shouldThrow` anyException
           (matrixRows correlation, matrixColumns correlation) `shouldBe` (2, 2)
           let corr = matrixData correlation
           corr `shouldSatisfy` all (closePrec 1.0 1.0e-9)

@@ -37,8 +37,6 @@ import Foreign.Marshal.Alloc(alloca)
 
 #include "ql.h"
 
-{#pointer *Rounding as QlRounding foreign newtype nocode#}
-
 {#enum MoneyConversionType{} deriving(Show, Eq, Read)#}
 {#enum ExchangeRateType{} deriving(Show, Eq, Read)#}
 {#enum Ccy{} deriving(Show, Eq, Read, Bounded)#}

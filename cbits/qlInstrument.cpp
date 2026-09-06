@@ -591,7 +591,7 @@ QlNonstandardSwap* qlNonstandardSwap2(int type, unsigned fixedNominalLen, double
   try {return ret(new QlNonstandardSwap(alloc(new NonstandardSwap((Swap::Type)type, std::vector<double>(fixedNominal, fixedNominal+fixedNominalLen), std::vector<double>(floatingNominal, floatingNominal+floatingNominalLen), *arg(fixedSchedule), std::vector<double>(fixedRate, fixedRate+fixedRateLen), *arg(fixedDayCount), *arg(floatingSchedule), *arg(iborIndex), std::vector<double>(gearing, gearing+gearingLen), std::vector<double>(spread, spread+spreadLen), *arg(floatingDayCount), intermediateCapitalExchange, finalCapitalExchange, qlOptBusinessDayConvention(paymentConvention)))));
   } catch (std::exception& er) {return handleException<QlNonstandardSwap*>(e, er);}}
 void qlNonstandardSwapFixedRate(QlNonstandardSwap* o, unsigned *len, double **out, char **e) {
-  try {const std::vector<Real>& rs = (*arg(o))->fixedRate(); *len = rs.size(); *out = qlAllocateDoubles(*len); std::copy(rs.begin(), rs.end(), *out);
+  try {fillVectorOut([&] {return (*arg(o))->fixedRate();}, len, out);
   } catch (std::exception& er) {(void)handleException<double*>(e, er);}}
 
 void qlFreeFloatFloatSwap(QlFloatFloatSwap *o) {del(o);}
@@ -1161,12 +1161,11 @@ Schedule *qlSinkingSchedule(int startDate, int lengthLen, int lengthUnit, int fr
   } catch (std::exception& er) {return handleException<Schedule *>(e, er);}}
 void qlSinkingNotionals(int lengthLen, int lengthUnit, int frequency, double couponRate, double initialNotional,
     unsigned *len, double **out, char **e) {
-  try {const std::vector<Real>& ns = sinkingNotionals(Period(lengthLen, (TimeUnit)lengthUnit), (Frequency)frequency, couponRate, initialNotional);
-    *len = ns.size(); *out = qlAllocateDoubles(*len); std::copy(ns.begin(), ns.end(), *out);
+  try {fillVectorOut([&] {return sinkingNotionals(Period(lengthLen, (TimeUnit)lengthUnit), (Frequency)frequency, couponRate, initialNotional);}, len, out);
   } catch (std::exception& er) {(void)handleException<double*>(e, er);}}
 
 void qlBondNotionals(QlBond* o, unsigned *len, double **ns, char **e) {
-  try {const std::vector<double>& notionals = (*arg(o))->notionals(); *len = notionals.size(); *ns = qlAllocateDoubles(*len); std::copy(notionals.begin(), notionals.end(), *ns);
+  try {fillVectorOut([&] {return (*arg(o))->notionals();}, len, ns);
   } catch (std::exception& er) {(void)handleException<double*>(e, er);}}
 double qlBondYield(QlBond* o, DayCounter* dc, int comp, int freq, double accuracy, unsigned maxEvaluations, double guess, int priceType, char **e) {
   try {return (*arg(o))->yield(*arg(dc), (Compounding)comp, (Frequency)freq, accuracy, maxEvaluations, guess, (Bond::Price::Type)priceType);
@@ -1357,18 +1356,19 @@ Leg *qlPreviousCashFlows(Leg *leg, int includeSettlementDateFlows, int settlemen
   } catch (std::exception& er) {return handleException<Leg *>(e, er);}}
 void qlLegCashFlows(Leg *leg, int includeSettlementDateFlows, int settlementDate,
    unsigned *al, double **amount, unsigned *dl, int **date, unsigned *hl, int **hasOccurred, char **e) {
-  *al = 0; *amount = 0; *dl = 0; *date = 0; *hl = 0; *hasOccurred = 0;
+  OutArrayResult<double> amountResult(al, amount);
+  OutArrayResult<int> dateResult(dl, date);
+  OutArrayResult<int> occurredResult(hl, hasOccurred);
   try {const Leg& l = *arg(leg);
-    *amount = qlAllocateDoubles(l.size()); OutArrayGuard<double> ag(amount, al);
-    *date = qlAllocateInts(l.size()); OutArrayGuard<int> dg(date, dl);
-    *hasOccurred = qlAllocateInts(l.size()); OutArrayGuard<int> hg(hasOccurred, hl);
+    double *amounts = amountResult.allocate((unsigned)l.size());
+    int *dates = dateResult.allocate((unsigned)l.size());
+    int *occurred = occurredResult.allocate((unsigned)l.size());
     for (unsigned i = 0; i < l.size(); ++i) {
-      (*amount)[i] = l[i]->amount();
-      (*date)[i] = l[i]->date().serialNumber();
-      (*hasOccurred)[i] = l[i]->hasOccurred(qlNullableDate(settlementDate), qlOptBool(includeSettlementDateFlows));
+      amounts[i] = l[i]->amount();
+      dates[i] = l[i]->date().serialNumber();
+      occurred[i] = l[i]->hasOccurred(qlNullableDate(settlementDate), qlOptBool(includeSettlementDateFlows));
     }
-    *al = l.size(); *dl = l.size(); *hl = l.size();
-    ag.commit(); dg.commit(); hg.commit();
+    amountResult.commit(); dateResult.commit(); occurredResult.commit();
   } catch (std::exception& er) {*e = tracedup(er.what());}}
 
 double qlCashFlowsDuration(Leg* leg, InterestRate* yield, int type, int includeSettlementDateFlows, int settlementDate, int npvDate, char **e) {
@@ -1672,12 +1672,13 @@ QlAverageBMACoupon* qlAverageBMACoupon(int paymentDate, double nominal, int star
   try {return ret(new QlAverageBMACoupon(alloc(new AverageBMACoupon(Date(paymentDate), nominal, Date(startDate), Date(endDate), *arg(index), gearing, spread, qlNullableDate(refPeriodStart), qlNullableDate(refPeriodEnd), *arg(dayCounter)))));
   } catch (std::exception& er) {return handleException<QlAverageBMACoupon*>(e, er);}}
 void qlAverageBMACouponFixingDates(QlAverageBMACoupon *o, unsigned *len, int **ds, char **e) {
-  try {const std::vector<Date>& d = (*arg(o))->fixingDates(); *len = d.size(); *ds = qlAllocateInts(*len);
-    std::transform(d.begin(), d.end(), *ds, [](const Date& x) {return (int)x.serialNumber();});
+  OutArrayResult<int> result(len, ds);
+  try {const std::vector<Date>& d = (*arg(o))->fixingDates(); int *out = result.allocate((unsigned)d.size());
+    std::transform(d.begin(), d.end(), out, [](const Date& x) {return (int)x.serialNumber();});
+    result.commit();
   } catch (std::exception& er) {(void)handleException<int*>(e, er);}}
 void qlAverageBMACouponIndexFixings(QlAverageBMACoupon *o, unsigned *len, double **fs, char **e) {
-  try {const std::vector<Rate>& f = (*arg(o))->indexFixings(); *len = f.size(); *fs = qlAllocateDoubles(*len);
-    std::copy(f.begin(), f.end(), *fs);
+  try {fillVectorOut([&] {return (*arg(o))->indexFixings();}, len, fs);
   } catch (std::exception& er) {(void)handleException<double*>(e, er);}}
 QlFloatingRateCoupon* qlCappedFlooredCoupon(QlFloatingRateCoupon *underlying, double cap, double floor, char **e) {
   try {return ret(new QlFloatingRateCoupon(alloc(new CappedFlooredCoupon(*arg(underlying), cap, floor))));
@@ -1715,9 +1716,11 @@ QlMultipleResetsCoupon* qlMultipleResetsCoupon(int paymentDate, double nominal, 
   try {return ret(new QlMultipleResetsCoupon(alloc(new MultipleResetsCoupon(Date(paymentDate), nominal, *arg(schedule), fixingDays, *arg(index), gearing, couponSpread, rateSpread, qlNullableDate(refPeriodStart), qlNullableDate(refPeriodEnd), *arg(dayCounter), qlNullableDate(exCouponDate)))));
   } catch (std::exception& er) {return handleException<QlMultipleResetsCoupon*>(e, er);}}
 void qlMultipleResetsCouponFixingDates(QlMultipleResetsCoupon *o, unsigned *len, int **dates, char **e) {
+  OutArrayResult<int> result(len, dates);
   try {const std::vector<Date>& ds = (*arg(o))->fixingDates();
-    *len = ds.size(); *dates = qlAllocateInts(*len);
-    for (unsigned i = 0; i < *len; ++i) (*dates)[i] = ds[i].serialNumber();
+    int *out = result.allocate((unsigned)ds.size());
+    for (unsigned i = 0; i < ds.size(); ++i) out[i] = ds[i].serialNumber();
+    result.commit();
   } catch (std::exception& er) {(void)handleException<int*>(e, er);}}
 void qlFreeRangeAccrualFloatersCoupon(QlRangeAccrualFloatersCoupon* o) {del(o);}
 QlFloatingRateCoupon* qlRangeAccrualFloatersCouponAsFloatingRateCoupon(QlRangeAccrualFloatersCoupon* o) {return ret(new QlFloatingRateCoupon(*arg(o)));}
@@ -1742,13 +1745,14 @@ QlFloatingRateCoupon* qlCappedFlooredOvernightIndexedCoupon(QlOvernightIndexedCo
   try {return ret(new QlFloatingRateCoupon(alloc(new CappedFlooredOvernightIndexedCoupon(*arg(underlying), cap, floor, naked, daily))));
   } catch (std::exception& er) {return handleException<QlFloatingRateCoupon*>(e, er);}}
 void qlOvernightIndexedCouponFixingDates(QlOvernightIndexedCoupon *o, unsigned *len, int **dates, char **e) {
+  OutArrayResult<int> result(len, dates);
   try {const std::vector<Date>& ds = (*arg(o))->fixingDates();
-    *len = ds.size(); *dates = qlAllocateInts(*len);
-    for (unsigned i = 0; i < *len; ++i) (*dates)[i] = ds[i].serialNumber();
+    int *out = result.allocate((unsigned)ds.size());
+    for (unsigned i = 0; i < ds.size(); ++i) out[i] = ds[i].serialNumber();
+    result.commit();
   } catch (std::exception& er) {(void)handleException<int*>(e, er);}}
 void qlOvernightIndexedCouponIndexFixings(QlOvernightIndexedCoupon *o, unsigned *len, double **fixings, char **e) {
-  try {const std::vector<Rate>& fs = (*arg(o))->indexFixings();
-    *len = fs.size(); *fixings = qlAllocateDoubles(*len); std::copy(fs.begin(), fs.end(), *fixings);
+  try {fillVectorOut([&] {return (*arg(o))->indexFixings();}, len, fixings);
   } catch (std::exception& er) {(void)handleException<double*>(e, er);}}
 QlFloatingRateCouponPricer* qlCompoundingOvernightIndexedCouponPricer(QlOptionletVolatilityStructure *vol, int effective, char **e) {try {return ret(new QlFloatingRateCouponPricer(alloc(new CompoundingOvernightIndexedCouponPricer(qlNullableHandle(vol), effective))));} catch (std::exception& er) {return handleException<QlFloatingRateCouponPricer*>(e, er);}}
 QlFloatingRateCouponPricer* qlArithmeticAveragedOvernightIndexedCouponPricer(double mr, double volatility, int byApprox, QlOptionletVolatilityStructure *vol, int effective, char **e) {try {return ret(new QlFloatingRateCouponPricer(alloc(new ArithmeticAveragedOvernightIndexedCouponPricer(mr, volatility, byApprox, qlNullableHandle(vol), effective))));} catch (std::exception& er) {return handleException<QlFloatingRateCouponPricer*>(e, er);}}
@@ -2263,8 +2267,8 @@ QlCPICapFloor *qlCPICapFloor(int type, double nominal, int startDate, double bas
   } catch (std::exception& er) {return handleException<QlCPICapFloor*>(e, er);}}
 
 DefaultProbKey* qlNorthAmericaCorpDefaultKey(Currency* currency, int seniority, int graceFailureToPayLen, int graceFailureToPayUnit, double amountFailure, int restructuringType, char **e) {
-  try {return new DefaultProbKey(NorthAmericaCorpDefaultKey(*arg(currency), (Seniority)seniority,
-      Period(graceFailureToPayLen, (TimeUnit)graceFailureToPayUnit), amountFailure, (Restructuring::Type)restructuringType));
+  try {return ret(new DefaultProbKey(NorthAmericaCorpDefaultKey(*arg(currency), (Seniority)seniority,
+      Period(graceFailureToPayLen, (TimeUnit)graceFailureToPayUnit), amountFailure, (Restructuring::Type)restructuringType)));
   } catch (std::exception& er) {return handleException<DefaultProbKey*>(e, er);}}
 void qlFreeDefaultProbKey(DefaultProbKey *o) {del(o);}
 
@@ -2274,7 +2278,7 @@ Issuer* qlIssuer(unsigned probabilitiesLen, DefaultProbKey** keys, QlDefaultProb
     probs.reserve(probabilitiesLen);
     for (unsigned i = 0; i < probabilitiesLen; ++i)
       probs.emplace_back(*keys[i], Handle<DefaultProbabilityTermStructure>(*curves[i]));
-    return new Issuer(probs);
+    return ret(new Issuer(probs));
   } catch (std::exception& er) {return handleException<Issuer*>(e, er);}}
 void qlFreeIssuer(Issuer *o) {del(o);}
 
@@ -2330,24 +2334,10 @@ double qlBasketProbAtLeastNEvents(QlBasket* o, unsigned n, int d, char **e) {
   try {return (*arg(o))->probAtLeastNEvents(n, Date(d));
   } catch (std::exception& er) {return handleException<double>(e, er);}}
 
-QlGaussianLHPLossModel* qlGaussianLHPLossModel(QlQuote* correlQuote, unsigned recoveriesLen, double* recoveries, char **e) {
-  try {return ret(new QlGaussianLHPLossModel(alloc(new GaussianLHPLossModel(*arg(correlQuote), std::vector<double>(recoveries, recoveries + recoveriesLen)))));
-  } catch (std::exception& er) {return handleException<QlGaussianLHPLossModel*>(e, er);}}
-void qlFreeGaussianLHPLossModel(QlGaussianLHPLossModel *o) {del(o);}
-// Fresh shared_ptr<DefaultLossModel> aliasing the same GaussianLHPLossModel -- same shape as
-// qlFloatingRateCouponAsCashFlow/qlFixedRateCouponAsCashFlow (DefaultLossModel is a standalone
-// leaf with no Upcastable family, so this is a plain upcast-by-copy, not an AnyOf upcast).
-QlDefaultLossModel* qlGaussianLHPLossModelAsDefaultLossModel(QlGaussianLHPLossModel *o) {return ret(new QlDefaultLossModel(*arg(o)));}
-// averageProb/averageRecovery read this model's basket_ (set only once the model has been
-// attached to a Basket via qlBasket/qlDigitalBasket/qlNthToDefault); calling either before that
-// attachment dereferences a null shared_ptr inside QuantLib itself and segfaults, not throws --
-// see the qlBasket family's own doc comment.
-double qlGaussianLHPLossModelAverageProb(QlGaussianLHPLossModel *o, int d, char **e) {
-  try {return (*arg(o))->averageProb(Date(d));
-  } catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlGaussianLHPLossModelAverageRecovery(QlGaussianLHPLossModel *o, int d, char **e) {
-  try {return (*arg(o))->averageRecovery(Date(d));
-  } catch (std::exception& er) {return handleException<double>(e, er);}}
+QlDefaultLossModel* qlGaussianLHPLossModel(QlQuote* correlQuote, unsigned recoveriesLen, double* recoveries, char **e) {
+  try {return ret(new QlDefaultLossModel(shared_ptr<DefaultLossModel>(allocAs<DefaultLossModel>(
+      new GaussianLHPLossModel(*arg(correlQuote), std::vector<double>(recoveries, recoveries + recoveriesLen))))));
+  } catch (std::exception& er) {return handleException<QlDefaultLossModel*>(e, er);}}
 void qlFreeDefaultLossModel(QlDefaultLossModel *o) {del(o);}
 
 QlSyntheticCDO* qlSyntheticCDO(QlBasket* basket, int side, Schedule* schedule, double upfrontRate, double runningRate, DayCounter* dayCounter, int paymentConvention, int haveNotional, double notional, char **e) {

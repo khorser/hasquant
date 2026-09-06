@@ -1992,21 +1992,6 @@ peekDigitalLossModel = DigitalLossModel <.> peekStandalone
 withDigitalLossModel :: DigitalLossModel -> (Ptr CDefaultLossModel -> IO b) -> IO b
 withDigitalLossModel = withStandalone . getCDigitalLossModel
 
--- | 'GaussianLHPLossModel': a standalone 'DefaultLossModel' subclass, following the same
--- ZeroInflationCashFlow\/CPICashFlow\/CommodityCashFlow precedent (no polymorphic
--- @DefaultLossModel@ family is modelled here -- 'DefaultLossModel' is itself a standalone type
--- with no 'Upcastable' instance) -- gets its own concrete leaf, distinct from 'DefaultLossModel'
--- and 'DigitalLossModel', for its own 'averageProb'\/'averageRecovery' getters. Convert with
--- 'QuantLib.Credit.gaussianLHPLossModelAsDefaultLossModel' to pass into 'basket'\/'digitalBasket'.
-data CGaussianLHPLossModel
-newtype GaussianLHPLossModel = GaussianLHPLossModel {getCGaussianLHPLossModel :: Standalone CGaussianLHPLossModel}
-foreign import ccall unsafe "ql.h &qlFreeGaussianLHPLossModel" qlFreeGaussianLHPLossModel :: FinalizerPtr CGaussianLHPLossModel
-instance Finalizable CGaussianLHPLossModel where finalize = qlFreeGaussianLHPLossModel
-peekGaussianLHPLossModel :: Ptr CGaussianLHPLossModel -> IO GaussianLHPLossModel
-peekGaussianLHPLossModel = GaussianLHPLossModel <.> peekStandalone
-withGaussianLHPLossModel :: GaussianLHPLossModel -> (Ptr CGaussianLHPLossModel -> IO b) -> IO b
-withGaussianLHPLossModel = withStandalone . getCGaussianLHPLossModel
-
 type CZeroInflationTermStructure = ForeignPtr CZeroInflationTermStructure'
 type ZeroInflationTermStructure = GenTermStructure CZeroInflationTermStructure
 type CYoYInflationTermStructure = ForeignPtr CYoYInflationTermStructure'

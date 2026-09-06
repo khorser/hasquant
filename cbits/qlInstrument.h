@@ -826,6 +826,7 @@ extern "C" {
       unsigned scLen, char **scKeys, unsigned, int *scIsUnitCost, unsigned, double *scAmounts,
       unsigned, Currency **scCurrencies, unsigned, UnitOfMeasure **scUoms,
       char **e);
+  void qlFreeEnergyFuture(QlEnergyFuture *o);
 
   /* EnergySwap -- binds no constructor (see qlaux.h); base-level getters generalized over both
      leaves below. */
@@ -959,11 +960,7 @@ extern "C" {
   // ql/experimental/credit/gaussianlhplossmodel.hpp -- only the Handle<Quote> correlation
   // overload is bound, per the std::variant/Handle<Quote> convention (a caller with a bare
   // number gets a simpleQuote for free).
-  QlGaussianLHPLossModel* qlGaussianLHPLossModel(QlQuote* correlQuote, unsigned recoveriesLen, double* recoveries, char **e);
-  void qlFreeGaussianLHPLossModel(QlGaussianLHPLossModel *o);
-  QlDefaultLossModel* qlGaussianLHPLossModelAsDefaultLossModel(QlGaussianLHPLossModel *o);
-  double qlGaussianLHPLossModelAverageProb(QlGaussianLHPLossModel *o, int d, char **e);
-  double qlGaussianLHPLossModelAverageRecovery(QlGaussianLHPLossModel *o, int d, char **e);
+  QlDefaultLossModel* qlGaussianLHPLossModel(QlQuote* correlQuote, unsigned recoveriesLen, double* recoveries, char **e);
   void qlFreeDefaultLossModel(QlDefaultLossModel *o);
 
   // ql/experimental/credit/syntheticcdo.hpp -- notional is ext::optional<Real>; haveNotional
