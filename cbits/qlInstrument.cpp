@@ -1807,6 +1807,12 @@ QlFloatingRateCouponPricer* qlLognormalCmsSpreadPricer(QlCmsCouponPricer* cmsPri
   try {return ret(new QlFloatingRateCouponPricer(alloc(new LognormalCmsSpreadPricer(*arg(cmsPricer), *arg(correlation), qlNullableHandle(couponDiscountCurve), integrationPoints,
       haveVolatilityType ? ext::optional<VolatilityType>((VolatilityType)volatilityType) : ext::nullopt, shift1, shift2))));
   } catch (std::exception& er) {return handleException<QlFloatingRateCouponPricer*>(e, er);}}
+Leg* qlCmsSpreadLeg(Schedule* schedule, QlSwapSpreadIndex* swapSpreadIndex, unsigned notionalsLen, double* notionals, DayCounter* paymentDayCounter, int paymentAdjustment, unsigned fixingDaysLen, unsigned* fixingDays, unsigned gearingsLen, double* gearings, unsigned spreadsLen, double* spreads, unsigned capsLen, double* caps, unsigned floorsLen, double* floors, int inArrears, int zeroPayments, char **e) {
+  try {return alloc(new Leg(CmsSpreadLeg(*arg(schedule), *arg(swapSpreadIndex)).withNotionals(std::vector<double>(notionals, notionals+notionalsLen)).withPaymentDayCounter(*arg(paymentDayCounter))
+        .withPaymentAdjustment((BusinessDayConvention)paymentAdjustment).withFixingDays(std::vector<unsigned>(fixingDays, fixingDays+fixingDaysLen))
+        .withGearings(std::vector<double>(gearings, gearings+gearingsLen)).withSpreads(std::vector<double>(spreads, spreads+spreadsLen))
+        .withCaps(std::vector<double>(caps, caps+capsLen)).withFloors(std::vector<double>(floors, floors+floorsLen)).inArrears(inArrears).withZeroPayments(zeroPayments)));
+  } catch (std::exception& er) {return handleException<Leg*>(e, er);}}
 
 void qlFreeDigitalCmsSpreadCoupon(QlDigitalCmsSpreadCoupon *o) {del(o);}
 QlFloatingRateCoupon* qlDigitalCmsSpreadCouponAsFloatingRateCoupon(QlDigitalCmsSpreadCoupon* o) {return ret(new QlFloatingRateCoupon(*arg(o)));}
@@ -1818,6 +1824,20 @@ QlDigitalCmsSpreadCoupon* qlDigitalCmsSpreadCoupon(int paymentDate, double nomin
   } catch (std::exception& er) {return handleException<QlDigitalCmsSpreadCoupon*>(e, er);}}
 double qlDigitalCmsSpreadCouponCallOptionRate(QlDigitalCmsSpreadCoupon* o, char **e) {try {return (*arg(o))->callOptionRate();} catch (std::exception& er) {return handleException<double>(e, er);}}
 double qlDigitalCmsSpreadCouponPutOptionRate(QlDigitalCmsSpreadCoupon* o, char **e) {try {return (*arg(o))->putOptionRate();} catch (std::exception& er) {return handleException<double>(e, er);}}
+Leg* qlDigitalCmsSpreadLeg(Schedule* schedule, QlSwapSpreadIndex* index, unsigned notionalsLen, double* notionals, DayCounter* paymentDayCounter, int paymentAdjustment, unsigned fixingDaysLen, unsigned* fixingDays, unsigned gearingsLen, double* gearings, unsigned spreadsLen, double* spreads, int inArrears, unsigned callStrikesLen, double* callStrikes, int callPosition, int callATM, unsigned callPayoffsLen, double* callPayoffs, unsigned putStrikesLen, double* putStrikes, int putPosition, int putATM, unsigned putPayoffsLen, double* putPayoffs, QlDigitalReplication* replication, int nakedOption, char **e) {
+  try {DigitalCmsSpreadLeg builder(*arg(schedule), *arg(index));
+    builder.withNotionals(std::vector<Real>(notionals, notionals + notionalsLen))
+      .withPaymentDayCounter(*arg(paymentDayCounter)).withPaymentAdjustment((BusinessDayConvention)paymentAdjustment)
+      .withFixingDays(std::vector<Natural>(fixingDays, fixingDays + fixingDaysLen))
+      .withGearings(std::vector<Real>(gearings, gearings + gearingsLen)).withSpreads(std::vector<Spread>(spreads, spreads + spreadsLen))
+      .inArrears(inArrears).withCallStrikes(std::vector<Rate>(callStrikes, callStrikes + callStrikesLen))
+      .withLongCallOption((Position::Type)callPosition).withCallATM(callATM)
+      .withCallPayoffs(std::vector<Rate>(callPayoffs, callPayoffs + callPayoffsLen))
+      .withPutStrikes(std::vector<Rate>(putStrikes, putStrikes + putStrikesLen)).withLongPutOption((Position::Type)putPosition)
+      .withPutATM(putATM).withPutPayoffs(std::vector<Rate>(putPayoffs, putPayoffs + putPayoffsLen))
+      .withReplication(replication ? *arg(replication) : shared_ptr<DigitalReplication>()).withNakedOption(nakedOption);
+    return ret(new Leg(builder));
+  } catch (std::exception& er) {return handleException<Leg*>(e, er);}}
 
 void qlFreeSwapSpreadIndex(QlSwapSpreadIndex *o) {del(o);}
 QlInterestRateIndex* qlSwapSpreadIndexAsInterestRateIndex(QlSwapSpreadIndex* o) {return ret(new QlInterestRateIndex(*arg(o)));}

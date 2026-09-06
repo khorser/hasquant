@@ -321,6 +321,98 @@ spec = do
         mc <- npv opt
         mc `shouldSatisfy` closePrec 5.3425606635 4.0e-3
 
+  describe "Geometric-average Asian options under Heston" $ do
+    -- Kim, Kim, Kim & Wee, "A Recursive Method for Discretely Monitored Geometric Asian Option
+    -- Prices", Bull. Korean Math. Soc. 53, 733-749 (2016): the same Heston process prices both
+    -- the continuous case (day=1095, strike=100 row of Kim & Wee's earlier continuous paper,
+    -- reproduced in this paper's Table 4) and the discrete case (day=1095, strike=100 row of
+    -- Tables 1-3), matching asianoptions.cpp::testAnalyticContinuousGeometricAveragePriceHeston /
+    -- ::testAnalyticDiscreteGeometricAveragePriceHeston / ::testMCDiscreteGeometricAveragePriceHeston.
+    let asianHestonProcess evalDate = do
+          rQ <- simpleQuote 0.05
+          qQ <- simpleQuote 0.0
+          dc <- dayCounter Actual365FixedStandard
+          rTS <- flatForward evalDate rQ dc Continuous Annual
+          qTS <- flatForward evalDate qQ dc Continuous Annual
+          s0 <- simpleQuote 100.0
+          hestonProcess rTS (Just qTS) s0 0.09 1.15 0.0348 0.39 (-0.64) QuadraticExponentialMartingale
+        -- upstream builds weekly fixings counting back from the expiry date
+        weeklyFixingsTo :: Day -> Int -> [Day]
+        weeklyFixingsTo expiry futureFixings = [addDays (-7 * fromIntegral i) expiry | i <- [0 .. futureFixings - 1]]
+
+    it "reproduces the continuous geometric value under Heston" $
+      Settings.keepingSettingsGc $ do
+        evalDate <- today
+        Settings.setEvaluationDate (Just evalDate)
+        process <- asianHestonProcess evalDate
+        eng <- analyticContinuousGeometricAveragePriceAsianHestonEngine process 50 100.0
+        opt <- continuousAveragingAsianOption Geometric (PlainVanilla (PlainVanillaPayoff Call 100.0))
+                                               (europeanIn 1095 evalDate)
+        setPricingEngine opt eng
+        v <- npv opt
+        v `shouldSatisfy` closePrec 11.9959 1.0e-2
+
+    it "reproduces the discrete geometric value under Heston" $
+      Settings.keepingSettingsGc $ do
+        evalDate <- today
+        Settings.setEvaluationDate (Just evalDate)
+        process <- asianHestonProcess evalDate
+        eng <- analyticDiscreteGeometricAveragePriceAsianHestonEngine process 100.0
+        let expiry = addDays 1095 evalDate
+            fixingDates = weeklyFixingsTo expiry (1095 `div` 7)
+        opt <- discreteAveragingAsianOption Geometric 1.0 0 fixingDates
+                                             (PlainVanilla (PlainVanillaPayoff Call 100.0))
+                                             (europeanIn 1095 evalDate)
+        setPricingEngine opt eng
+        v <- npv opt
+        v `shouldSatisfy` closePrec 12.0639 2.0e-1
+
+    it "MC discrete geometric-price engine under Heston matches the analytic value" $
+      Settings.keepingSettingsGc $ do
+        evalDate <- today
+        Settings.setEvaluationDate (Just evalDate)
+        process <- asianHestonProcess evalDate
+        let expiry = addDays 1095 evalDate
+            fixingDates = weeklyFixingsTo expiry (1095 `div` 7)
+        opt <- discreteAveragingAsianOption Geometric 1.0 0 fixingDates
+                                             (PlainVanilla (PlainVanillaPayoff Call 100.0))
+                                             (europeanIn 1095 evalDate)
+        mcEng <- mcDiscreteGeometricAPHestonEngine LowDiscrepancy Statistics process True
+                   (Just 8191) Nothing Nothing 43 Nothing Nothing
+        setPricingEngine opt mcEng
+        mc <- npv opt
+        mc `shouldSatisfy` closePrec 12.0639 2.0e-1
+
+    -- Ballestra, Pacelli & Zirilli, "A numerical method to price exotic path-dependent options on
+    -- an underlying described by the Heston stochastic volatility model", J. Banking & Finance
+    -- (2007), section 4: the reference value ("22.48 to 22.52") is for the arithmetic-average
+    -- case, matching asianoptions.cpp::testMCDiscreteArithmeticAveragePriceHeston.
+    it "reproduces Ballestra/Pacelli/Zirilli's arithmetic value under Heston (MC, fixed seed)" $
+      Settings.keepingSettingsGc $ do
+        evalDate <- today
+        rQ <- simpleQuote 0.05
+        qQ <- simpleQuote 0.0
+        dc <- dayCounter (Actual360 False)
+        rTS <- flatForward evalDate rQ dc Continuous Annual
+        qTS <- flatForward evalDate qQ dc Continuous Annual
+        s0 <- simpleQuote 120.0
+        process <- hestonProcess rTS (Just qTS) s0 0.09 11.35 0.022 0.618 (-0.5) QuadraticExponentialMartingale
+        Settings.setEvaluationDate (Just evalDate)
+        let fixings = 12 :: Int
+            firstFixing = 1 / 12 :: Double
+            len = 11 / 12 :: Double
+            dt = len / fromIntegral (fixings - 1)
+            fixingDates = [dateOffset365 evalDate (firstFixing + fromIntegral i * dt) | i <- [0 .. fixings - 1]]
+            dateOffset365 d t = addDays (floor (t * 365.25 :: Double)) d -- matches upstream's Integer(...) truncation
+        opt <- discreteAveragingAsianOption Arithmetic 0.0 0 fixingDates
+                                             (PlainVanilla (PlainVanillaPayoff Call 100.0))
+                                             (European (EuropeanExercise (last fixingDates)))
+        eng <- mcDiscreteArithmeticAPHestonEngine LowDiscrepancy Statistics process False
+                 (Just 4095) Nothing Nothing 42 Nothing Nothing False
+        setPricingEngine opt eng
+        v <- npv opt
+        v `shouldSatisfy` closePrec 22.50 5.0e-2
+
   describe "Arithmetic-average Asian option (MC average-strike engine)" $
     -- cached references from QuantLib test-suite/asianoptions.cpp::testMCDiscreteArithmeticAverageStrike
     -- (Levy 1997, as reproduced in Clewlow & Strickland's "Exotic Options"): a two-row subset of

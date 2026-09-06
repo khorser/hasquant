@@ -11,6 +11,8 @@
 #include <ql/pricingengines/asian/analytic_cont_geom_av_price.hpp>
 #include <ql/pricingengines/asian/analytic_discr_geom_av_strike.hpp>
 #include <ql/pricingengines/asian/mc_discr_arith_av_price.hpp>
+#include <ql/experimental/asian/analytic_cont_geom_av_price_heston.hpp>
+#include <ql/pricingengines/asian/mc_discr_arith_av_price_heston.hpp>
 #include <ql/pricingengines/asian/turnbullwakemanasianengine.hpp>
 #include <ql/pricingengines/asian/fdblackscholesasianengine.hpp>
 #include <ql/pricingengines/forward/forwardengine.hpp>
@@ -447,6 +449,12 @@ QlPricingEngine* qlAnalyticContinuousPartialFixedLookbackEngine(QlGeneralizedBla
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
 QlPricingEngine* qlAnalyticContinuousGeometricAveragePriceAsianEngine(QlGeneralizedBlackScholesProcess* process, char **e) {
   try {return ret(new QlPricingEngine(alloc(new AnalyticContinuousGeometricAveragePriceAsianEngine(*arg(process)))));
+  } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
+QlPricingEngine* qlAnalyticContinuousGeometricAveragePriceAsianHestonEngine(QlHestonProcess* process, unsigned summationCutoff, double xiRightLimit, char **e) {
+  try {return ret(new QlPricingEngine(alloc(new AnalyticContinuousGeometricAveragePriceAsianHestonEngine(*arg(process), summationCutoff, xiRightLimit))));
+  } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
+QlPricingEngine* qlAnalyticDiscreteGeometricAveragePriceAsianHestonEngine(QlHestonProcess* process, double xiRightLimit, char **e) {
+  try {return ret(new QlPricingEngine(alloc(new AnalyticDiscreteGeometricAveragePriceAsianHestonEngine(*arg(process), xiRightLimit))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
 QlPricingEngine* qlMCLookbackFixedEngine(int rngtrait, int stattrait, QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, unsigned timeStepsPerYear, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e) {
   try {return ret(new QlPricingEngine(alloc(qlMCLookbackFixedEngineAux(rngtrait, stattrait, *arg(process), timeSteps, timeStepsPerYear, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
@@ -930,6 +938,12 @@ QlPricingEngine* qlMCDiscreteArithmeticAPEngine1(int rngtrait, int stattrait, Ql
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
 QlPricingEngine* qlMCDiscreteArithmeticASEngine1(int rngtrait, int stattrait, QlGeneralizedBlackScholesProcess* process, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e) {
   try {return ret(new QlPricingEngine(alloc(qlMCDiscreteArithmeticASEngine1Aux(rngtrait, stattrait, *arg(process), brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
+  } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
+QlPricingEngine* qlMCDiscreteArithmeticAPHestonEngine1(int rngtrait, int stattrait, QlHestonProcess* process, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, unsigned timeSteps, unsigned timeStepsPerYear, int controlVariate, char **e) {
+  try {return ret(new QlPricingEngine(alloc(qlMCDiscreteArithmeticAPHestonEngine1Aux(rngtrait, stattrait, *arg(process), antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed, timeSteps, timeStepsPerYear, controlVariate))));
+  } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
+QlPricingEngine* qlMCDiscreteGeometricAPHestonEngine1(int rngtrait, int stattrait, QlHestonProcess* process, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, unsigned timeSteps, unsigned timeStepsPerYear, char **e) {
+  try {return ret(new QlPricingEngine(alloc(qlMCDiscreteGeometricAPHestonEngine1Aux(rngtrait, stattrait, *arg(process), antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed, timeSteps, timeStepsPerYear))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
 QlPricingEngine* qlMCDiscreteGeometricAPEngine1(int rngtrait, int stattrait, QlGeneralizedBlackScholesProcess* process, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e) {
   try {return ret(new QlPricingEngine(alloc(qlMCDiscreteGeometricAPEngine1Aux(rngtrait, stattrait, *arg(process), brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed))));

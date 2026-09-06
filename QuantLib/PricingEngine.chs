@@ -57,6 +57,8 @@ module QuantLib.PricingEngine
   , analyticContinuousPartialFloatingLookbackEngine
   , analyticContinuousPartialFixedLookbackEngine
   , analyticContinuousGeometricAveragePriceAsianEngine
+  , analyticContinuousGeometricAveragePriceAsianHestonEngine
+  , analyticDiscreteGeometricAveragePriceAsianHestonEngine
   , mcLookbackFixedEngine
   , mcLookbackFloatingEngine
   , mcLookbackPartialFixedEngine
@@ -120,6 +122,8 @@ module QuantLib.PricingEngine
   , mcDiscreteArithmeticAPEngine
   , mcDiscreteArithmeticASEngine
   , mcDiscreteGeometricAPEngine
+  , mcDiscreteArithmeticAPHestonEngine
+  , mcDiscreteGeometricAPHestonEngine
   , mcEuropeanEngine
   , mcEuropeanGjrGarchEngine
   , mcEuropeanHestonEngine
@@ -587,6 +591,25 @@ discountingPerpetualFuturesEngine domestic foreignCurve spot funding interpolati
 
 -- |analytic pricing engine for European continuous geometric average-price Asian options
 {#fun qlAnalyticContinuousGeometricAveragePriceAsianEngine as analyticContinuousGeometricAveragePriceAsianEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+
+-- |Analytic pricing engine for European continuous geometric average-price Asian options under
+-- the Heston stochastic-volatility model.  Implements the closed-form solution of Kim & Wee,
+-- \"Pricing of geometric Asian options under Heston's stochastic volatility model\", Quantitative
+-- Finance 14:10 (2014). /summationCutoff/ and /xiRightLimit/ bound the truncated summation and
+-- integration ranges used by the closed form; QuantLib's own defaults are 50 and 100.0.
+{#fun qlAnalyticContinuousGeometricAveragePriceAsianHestonEngine as analyticContinuousGeometricAveragePriceAsianHestonEngine{withHestonProcess*`GenHestonProcess hp'
+  ,fromIntegral`Word' -- ^summationCutoff
+  ,`Double' -- ^xiRightLimit
+  ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+
+-- |Analytic pricing engine for European discrete geometric average-price Asian options under the
+-- Heston stochastic-volatility model.  Implements the closed-form solution of Kim, Kim, Kim & Wee,
+-- \"A Recursive Method for Discretely Monitored Geometric Asian Option Prices\", Bull. Korean
+-- Math. Soc. 53 (2016). /xiRightLimit/ bounds the truncated integration range; QuantLib's own
+-- default is 100.0.
+{#fun qlAnalyticDiscreteGeometricAveragePriceAsianHestonEngine as analyticDiscreteGeometricAveragePriceAsianHestonEngine{withHestonProcess*`GenHestonProcess hp'
+  ,`Double' -- ^xiRightLimit
+  ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |Monte Carlo pricing engine for continuous fixed-strike lookback options. Exactly one of
 -- @timeSteps@\/@timeStepsPerYear@ must be given; the other must be 'Nothing'.
@@ -1327,6 +1350,34 @@ fdndimBlackScholesVanillaEngine' ps (Matrix mr mc md) = qlFdndimBlackScholesVani
   ,fromMaybeDouble`Maybe Double' -- ^requiredTolerance
   ,fromMaybeInt`Maybe Word' -- ^maxSamples
   ,fromIntegral`Word' -- ^seed
+  ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+
+-- |Monte Carlo pricing engine for discrete arithmetic average-price Asian options under the
+-- Heston stochastic-volatility model.  Uses one time step per fixing date unless /timeSteps/ or
+-- /timeStepsPerYear/ overrides the grid. When /controlVariate/ is true, prices the same path
+-- against 'analyticDiscreteGeometricAveragePriceAsianHestonEngine' as a control variate.
+{#fun qlMCDiscreteArithmeticAPHestonEngine1 as mcDiscreteArithmeticAPHestonEngine{`RngTrait',`StatisticsTrait',withHestonProcess*`GenHestonProcess hp'
+  ,`Bool' -- ^antitheticVariate
+  ,fromMaybeInt`Maybe Word' -- ^requiredSamples
+  ,fromMaybeDouble`Maybe Double' -- ^requiredTolerance
+  ,fromMaybeInt`Maybe Word' -- ^maxSamples
+  ,fromIntegral`Word' -- ^seed
+  ,fromMaybeInt`Maybe Word' -- ^timeSteps
+  ,fromMaybeInt`Maybe Word' -- ^timeStepsPerYear
+  ,`Bool' -- ^controlVariate
+  ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+
+-- |Monte Carlo pricing engine for discrete geometric average-price Asian options under the
+-- Heston stochastic-volatility model.  Uses one time step per fixing date unless /timeSteps/ or
+-- /timeStepsPerYear/ overrides the grid.
+{#fun qlMCDiscreteGeometricAPHestonEngine1 as mcDiscreteGeometricAPHestonEngine{`RngTrait',`StatisticsTrait',withHestonProcess*`GenHestonProcess hp'
+  ,`Bool' -- ^antitheticVariate
+  ,fromMaybeInt`Maybe Word' -- ^requiredSamples
+  ,fromMaybeDouble`Maybe Double' -- ^requiredTolerance
+  ,fromMaybeInt`Maybe Word' -- ^maxSamples
+  ,fromIntegral`Word' -- ^seed
+  ,fromMaybeInt`Maybe Word' -- ^timeSteps
+  ,fromMaybeInt`Maybe Word' -- ^timeStepsPerYear
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |Monte Carlo pricing engine for European options under a Black-Scholes process

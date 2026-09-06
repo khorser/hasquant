@@ -269,6 +269,17 @@ extern "C" {
   QlTermStructure* qlCallableBondVolatilityStructureAsTermStructure(QlCallableBondVolatilityStructure *o);
   QlCallableBondVolatilityStructure* qlCallableBondConstantVolatility1(unsigned settlementDays, Calendar* x1, QlQuote* volatility, DayCounter* dayCounter, char **e);
   QlCallableBondVolatilityStructure* qlCallableBondConstantVolatility(int referenceDate, QlQuote* volatility, DayCounter* dayCounter, char **e);
+  double qlCallableBondVolatilityStructureVolatilityForTime(QlCallableBondVolatilityStructure* o, double optionTime, double bondLength, double strike, int extrapolate, char **e);
+  double qlCallableBondVolatilityStructureVolatilityForDate(QlCallableBondVolatilityStructure* o, int optionDate, int bondTenorLen, int bondTenorUnit, double strike, int extrapolate, char **e);
+  double qlCallableBondVolatilityStructureVolatilityForPeriod(QlCallableBondVolatilityStructure* o, int optionTenorLen, int optionTenorUnit, int bondTenorLen, int bondTenorUnit, double strike, int extrapolate, char **e);
+  double qlCallableBondVolatilityStructureBlackVarianceForTime(QlCallableBondVolatilityStructure* o, double optionTime, double bondLength, double strike, int extrapolate, char **e);
+  double qlCallableBondVolatilityStructureBlackVarianceForDate(QlCallableBondVolatilityStructure* o, int optionDate, int bondTenorLen, int bondTenorUnit, double strike, int extrapolate, char **e);
+  double qlCallableBondVolatilityStructureBlackVarianceForPeriod(QlCallableBondVolatilityStructure* o, int optionTenorLen, int optionTenorUnit, int bondTenorLen, int bondTenorUnit, double strike, int extrapolate, char **e);
+  QlSmileSection* qlCallableBondVolatilityStructureSmileSectionForDate(QlCallableBondVolatilityStructure* o, int optionDate, int bondTenorLen, int bondTenorUnit, char **e);
+  QlSmileSection* qlCallableBondVolatilityStructureSmileSectionForPeriod(QlCallableBondVolatilityStructure* o, int optionTenorLen, int optionTenorUnit, int bondTenorLen, int bondTenorUnit, char **e);
+  int qlCallableBondVolatilityStructureMaxBondTenor(QlCallableBondVolatilityStructure* o, int *u, char **e);
+  double qlCallableBondVolatilityStructureMinStrike(QlCallableBondVolatilityStructure* o, char **e);
+  double qlCallableBondVolatilityStructureMaxStrike(QlCallableBondVolatilityStructure* o, char **e);
 
   void qlFreeDefaultProbabilityTermStructure(QlDefaultProbabilityTermStructure *o);
   QlTermStructure* qlDefaultProbabilityTermStructureAsTermStructure(QlDefaultProbabilityTermStructure *o);

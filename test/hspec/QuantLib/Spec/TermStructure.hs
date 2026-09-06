@@ -730,6 +730,46 @@ spec = do
           volFromConst <- Vol.capFloorVolatilityForPeriod constVol (5, Years) 0.05 False
           volFromConst `shouldBe` 0.18
 
+      -- CallableBondVolatilityStructure's query methods, checked against a constant
+      -- callable-bond volatility structure: the flat volatility must come back unchanged
+      -- across the Time/Date/Period overloads, blackVariance must equal vol^2 * optionTime,
+      -- and the constant leaf's own maxBondTenor/minStrike/maxStrike (100 years,
+      -- QL_MIN_REAL/QL_MAX_REAL per callablebondconstantvol.hpp) come through unmarshalled.
+      it "queries a constant callable-bond volatility structure across all overloads" $
+        Settings.keepingSettingsGc $ do
+          let evalDate = 11 `december` 2012
+          Settings.setEvaluationDate (Just evalDate)
+          cal <- Calendar.calendar TARGET
+          dc <- dayCounter Actual365FixedStandard
+          cbVolQ <- Quote.simpleQuote 0.12
+          -- the fixed-reference-date constructor defaults to an empty Calendar, which
+          -- 'callableBondVolatilityForPeriod' needs (via optionDateFromTenor); use the
+          -- floating-reference-date overload with an explicit calendar instead, exactly as
+          -- the cap/floor test above does for 'constantCapFloorTermVolatility'.
+          cbVol <- Vol.callableBondConstantVolatility' 0 cal cbVolQ dc
+          let optionDate = addDays (365 * 3) evalDate
+              bondTenor = (5, Years)
+          volTime <- Vol.callableBondVolatilityForTime cbVol 3.0 5.0 0.05 False
+          volTime `shouldBe` 0.12
+          volDate <- Vol.callableBondVolatilityForDate cbVol optionDate bondTenor 0.05 False
+          volDate `shouldBe` 0.12
+          volPeriod <- Vol.callableBondVolatilityForPeriod cbVol (3, Years) bondTenor 0.05 False
+          volPeriod `shouldBe` 0.12
+          varTime <- Vol.callableBondBlackVarianceForTime cbVol 3.0 5.0 0.05 False
+          varTime `shouldSatisfy` closePrec (0.12 * 0.12 * 3.0) 1.0e-10
+          varDate <- Vol.callableBondBlackVarianceForDate cbVol optionDate bondTenor 0.05 False
+          varDate `shouldSatisfy` closePrec varTime 1.0e-6
+          varPeriod <- Vol.callableBondBlackVarianceForPeriod cbVol (3, Years) bondTenor 0.05 False
+          varPeriod `shouldSatisfy` closePrec varTime 1.0e-6
+          _smileByDate <- Vol.callableBondSmileSectionForDate cbVol optionDate bondTenor
+          _smileByPeriod <- Vol.callableBondSmileSectionForPeriod cbVol (3, Years) bondTenor
+          maxTenor <- Vol.callableBondMaxBondTenor cbVol
+          maxTenor `shouldBe` (100, Years)
+          minK <- Vol.callableBondMinStrike cbVol
+          minK `shouldSatisfy` (< -1.0e100)
+          maxK <- Vol.callableBondMaxStrike cbVol
+          maxK `shouldSatisfy` (> 1.0e100)
+
       -- OptionletStripper2 reconciles OptionletStripper1's forward-forward stripping against an
       -- ATM CapFloorTermVolCurve (upstream: optionletstripper.cpp's testFlatTermVolatilityStripping2).
       -- With flat term-vol inputs on both the surface and the ATM curve, stripping via either path

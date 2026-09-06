@@ -1148,6 +1148,39 @@ QlCallableBondVolatilityStructure* qlCallableBondConstantVolatility1(unsigned se
 QlCallableBondVolatilityStructure* qlCallableBondConstantVolatility(int referenceDate, QlQuote* volatility, DayCounter* dayCounter, char **e) {
   try {return ret(new QlCallableBondVolatilityStructure(alloc(new CallableBondConstantVolatility(Date(referenceDate), *arg(volatility), *arg(dayCounter)))));
   } catch (std::exception& er) {return handleException<QlCallableBondVolatilityStructure*>(e, er);}}
+double qlCallableBondVolatilityStructureVolatilityForTime(QlCallableBondVolatilityStructure* o, double optionTime, double bondLength, double strike, int extrapolate, char **e) {
+  try {return (*arg(o))->volatility(optionTime, bondLength, strike, extrapolate);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlCallableBondVolatilityStructureVolatilityForDate(QlCallableBondVolatilityStructure* o, int optionDate, int bondTenorLen, int bondTenorUnit, double strike, int extrapolate, char **e) {
+  try {return (*arg(o))->volatility(Date(optionDate), Period(bondTenorLen, (TimeUnit)bondTenorUnit), strike, extrapolate);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlCallableBondVolatilityStructureVolatilityForPeriod(QlCallableBondVolatilityStructure* o, int optionTenorLen, int optionTenorUnit, int bondTenorLen, int bondTenorUnit, double strike, int extrapolate, char **e) {
+  try {return (*arg(o))->volatility(Period(optionTenorLen, (TimeUnit)optionTenorUnit), Period(bondTenorLen, (TimeUnit)bondTenorUnit), strike, extrapolate);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlCallableBondVolatilityStructureBlackVarianceForTime(QlCallableBondVolatilityStructure* o, double optionTime, double bondLength, double strike, int extrapolate, char **e) {
+  try {return (*arg(o))->blackVariance(optionTime, bondLength, strike, extrapolate);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlCallableBondVolatilityStructureBlackVarianceForDate(QlCallableBondVolatilityStructure* o, int optionDate, int bondTenorLen, int bondTenorUnit, double strike, int extrapolate, char **e) {
+  try {return (*arg(o))->blackVariance(Date(optionDate), Period(bondTenorLen, (TimeUnit)bondTenorUnit), strike, extrapolate);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlCallableBondVolatilityStructureBlackVarianceForPeriod(QlCallableBondVolatilityStructure* o, int optionTenorLen, int optionTenorUnit, int bondTenorLen, int bondTenorUnit, double strike, int extrapolate, char **e) {
+  try {return (*arg(o))->blackVariance(Period(optionTenorLen, (TimeUnit)optionTenorUnit), Period(bondTenorLen, (TimeUnit)bondTenorUnit), strike, extrapolate);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+QlSmileSection* qlCallableBondVolatilityStructureSmileSectionForDate(QlCallableBondVolatilityStructure* o, int optionDate, int bondTenorLen, int bondTenorUnit, char **e) {
+  try {return ret(new QlSmileSection(alloc((*arg(o))->smileSection(Date(optionDate), Period(bondTenorLen, (TimeUnit)bondTenorUnit)))));
+  } catch (std::exception& er) {return handleException<QlSmileSection*>(e, er);}}
+QlSmileSection* qlCallableBondVolatilityStructureSmileSectionForPeriod(QlCallableBondVolatilityStructure* o, int optionTenorLen, int optionTenorUnit, int bondTenorLen, int bondTenorUnit, char **e) {
+  try {return ret(new QlSmileSection(alloc((*arg(o))->smileSection(Period(optionTenorLen, (TimeUnit)optionTenorUnit), Period(bondTenorLen, (TimeUnit)bondTenorUnit)))));
+  } catch (std::exception& er) {return handleException<QlSmileSection*>(e, er);}}
+int qlCallableBondVolatilityStructureMaxBondTenor(QlCallableBondVolatilityStructure* o, int *u, char **e) {
+  try {const Period &p = (*arg(o))->maxBondTenor(); *u = p.units(); return p.length();
+  } catch (std::exception& er) {return handleException<int>(e, er);}}
+double qlCallableBondVolatilityStructureMinStrike(QlCallableBondVolatilityStructure* o, char **e) {
+  try {return (*arg(o))->minStrike();
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlCallableBondVolatilityStructureMaxStrike(QlCallableBondVolatilityStructure* o, char **e) {
+  try {return (*arg(o))->maxStrike();
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
 QlDefaultProbabilityTermStructure* qlFactorSpreadedHazardRateCurve(QlDefaultProbabilityTermStructure* originalCurve, QlQuote* spread, char **e) {
   try {return ret(new QlDefaultProbabilityTermStructure(alloc(new FactorSpreadedHazardRateCurve(Handle<DefaultProbabilityTermStructure>(*arg(originalCurve)), *arg(spread)))));
   } catch (std::exception& er) {return handleException<QlDefaultProbabilityTermStructure*>(e, er);}}

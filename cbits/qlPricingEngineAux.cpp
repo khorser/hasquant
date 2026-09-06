@@ -22,6 +22,7 @@
 #include <ql/pricingengines/forward/mcforwardeuropeanhestonengine.hpp>
 #include <ql/pricingengines/basket/mceuropeanbasketengine.hpp>
 #include <ql/pricingengines/basket/mcamericanbasketengine.hpp>
+#include <ql/pricingengines/asian/mc_discr_arith_av_price_heston.hpp>
 #include <ql/math/statistics/incrementalstatistics.hpp>
 
 namespace hasquant {
@@ -190,6 +191,18 @@ PricingEngine* qlMCDiscreteArithmeticASEngine1Aux(int rngtrait, int stattrait, c
 PricingEngine* qlMCDiscreteGeometricAPEngine1Aux(int rngtrait, int stattrait, const shared_ptr<GeneralizedBlackScholesProcess> process, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed) {
   return dispatchRngStat<PricingEngine*>(rngtrait, stattrait, [&](auto r, auto st) {
     return new MCDiscreteGeometricAPEngine<typename decltype(r)::type, typename decltype(st)::type>(process, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed);
+  });
+}
+
+PricingEngine* qlMCDiscreteArithmeticAPHestonEngine1Aux(int rngtrait, int stattrait, const shared_ptr<HestonProcess> process, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, unsigned timeSteps, unsigned timeStepsPerYear, int controlVariate) {
+  return dispatchRngStat<PricingEngine*>(rngtrait, stattrait, [&](auto r, auto st) {
+    return new MCDiscreteArithmeticAPHestonEngine<typename decltype(r)::type, typename decltype(st)::type>(process, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed, timeSteps, timeStepsPerYear, controlVariate);
+  });
+}
+
+PricingEngine* qlMCDiscreteGeometricAPHestonEngine1Aux(int rngtrait, int stattrait, const shared_ptr<HestonProcess> process, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, unsigned timeSteps, unsigned timeStepsPerYear) {
+  return dispatchRngStat<PricingEngine*>(rngtrait, stattrait, [&](auto r, auto st) {
+    return new MCDiscreteGeometricAPHestonEngine<typename decltype(r)::type, typename decltype(st)::type>(process, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed, timeSteps, timeStepsPerYear);
   });
 }
 

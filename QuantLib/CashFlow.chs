@@ -161,6 +161,7 @@ module QuantLib.CashFlow
   , cappedFlooredCmsCoupon
   , cmsSpreadCoupon
   , cappedFlooredCmsSpreadCoupon
+  , cmsSpreadLeg
   , ReplicationType(..)
   , DigitalReplication
   , digitalReplication
@@ -177,6 +178,9 @@ module QuantLib.CashFlow
   , digitalCmsLeg
   , DigitalCmsLegOpts(..)
   , defaultDigitalCmsLegOpts
+  , digitalCmsSpreadLeg
+  , DigitalCmsSpreadLegOpts(..)
+  , defaultDigitalCmsSpreadLegOpts
   , DigitalIborLegOpts(..)
   , defaultDigitalIborLegOpts
   , digitalIborLeg
@@ -340,6 +344,22 @@ $(deriveOptionsRecord "DigitalCmsLegOpts" []
   , ("dcmlPutPayoffs", [t|[Double]|], [|[]|])
   , ("dcmlReplication", [t|Maybe DigitalReplication|], [|Nothing|])
   , ("dcmlNakedOption", [t|Bool|], [|False|])
+  ])
+
+-- Same shape as DigitalCmsLegOpts -- DigitalCmsSpreadLeg's builder methods (upstream
+-- ql/experimental/coupons/digitalcmsspreadcoupon.hpp) are identical to DigitalCmsLeg's, only the
+-- index type differs (SwapSpreadIndex, not SwapIndex).
+$(deriveOptionsRecord "DigitalCmsSpreadLegOpts" []
+  [ ("dcmslCallStrikes", [t|[Double]|], [|[]|])
+  , ("dcmslCallPosition", [t|PositionType|], [|Long|])
+  , ("dcmslCallATM", [t|Bool|], [|False|])
+  , ("dcmslCallPayoffs", [t|[Double]|], [|[]|])
+  , ("dcmslPutStrikes", [t|[Double]|], [|[]|])
+  , ("dcmslPutPosition", [t|PositionType|], [|Long|])
+  , ("dcmslPutATM", [t|Bool|], [|False|])
+  , ("dcmslPutPayoffs", [t|[Double]|], [|[]|])
+  , ("dcmslReplication", [t|Maybe DigitalReplication|], [|Nothing|])
+  , ("dcmslNakedOption", [t|Bool|], [|False|])
   ])
 
 $(deriveOptionsRecord "DigitalIborLegOpts" []
@@ -1488,6 +1508,21 @@ cmsLegFull schedule idx notionals dc adj fixingDays gearings spreads caps floors
   ,fromEnumC`BusinessDayConvention' -- ^fixingConvention
   ,preErrorCheck-`String'errorCheck*-}->`FloatingRateCoupon'peekFloatingRateCoupon*#}
 
+-- |CMS-spread leg builder.  Unlike 'CmsLeg', upstream's @CmsSpreadLeg@ has no
+-- ex-coupon-period\/fixing-convention builder methods, so this binds its full builder surface
+-- directly with no accompanying options record.
+{#fun qlCmsSpreadLeg as cmsSpreadLeg{withSchedule*`Schedule',withSwapSpreadIndex*`SwapSpreadIndex' -- ^swapSpreadIndex
+  ,withNonEmptyDoubleArray*`NonEmpty Double'& -- ^notionals
+  ,withDayCounter*`DayCounter',fromEnumC`BusinessDayConvention' -- ^paymentAdjustment
+  ,withIntArray*`[Word]'& -- ^fixingDays
+  ,withDoubleArray*`[Double]'& -- ^gearings
+  ,withDoubleArray*`[Double]'& -- ^spreads
+  ,withDoubleArray*`[Double]'& -- ^caps
+  ,withDoubleArray*`[Double]'& -- ^floors
+  ,`Bool' -- ^inArrears
+  ,`Bool' -- ^zeroPayments
+  ,preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
+
 -- |Digital-option replication strategy.  It specifies the sub, central, or super replication
 -- used to price the embedded digital option in a digital coupon; /gap/ is the call/put-spread
 -- width used by that replication.
@@ -1578,6 +1613,15 @@ digitalIborLeg :: Schedule -> GenIborIndex ibor -> NonEmpty Double -> DayCounter
 digitalIborLeg schedule index notionals dc adjustment fixingDays gearings spreads inArrears opts =
   digitalIborLeg_ schedule index notionals dc adjustment fixingDays gearings spreads inArrears (dilCallStrikes opts) (dilCallPosition opts) (dilCallATM opts) (dilCallPayoffs opts) (dilPutStrikes opts) (dilPutPosition opts) (dilPutATM opts) (dilPutPayoffs opts) (dilReplication opts) (dilNakedOption opts)
 
+-- |Build a sequence of digital CMS-spread-rate coupons.  The options record covers all digital
+-- call/put and replication choices, exactly as 'digitalCmsLeg' does for the plain CMS index case.
+digitalCmsSpreadLeg :: Schedule -> SwapSpreadIndex -> NonEmpty Double -> DayCounter -> BusinessDayConvention -> [Word] -> [Double] -> [Double] -> Bool -> DigitalCmsSpreadLegOpts -> IO Leg
+digitalCmsSpreadLeg schedule index notionals dc adjustment fixingDays gearings spreads inArrears opts =
+  digitalCmsSpreadLeg_ schedule index notionals dc adjustment fixingDays gearings spreads inArrears
+    (dcmslCallStrikes opts) (dcmslCallPosition opts) (dcmslCallATM opts) (dcmslCallPayoffs opts)
+    (dcmslPutStrikes opts) (dcmslPutPosition opts) (dcmslPutATM opts) (dcmslPutPayoffs opts)
+    (dcmslReplication opts) (dcmslNakedOption opts)
+
 multipleResetsLeg :: Schedule -> GenIborIndex ibor -> Word -> DayCounter -> BusinessDayConvention -> MultipleResetsLegOpts -> IO Leg
 multipleResetsLeg schedule index resets dc adjustment opts = do
   nullCalendar <- calendar Null
@@ -1589,6 +1633,11 @@ multipleResetsLeg schedule index resets dc adjustment opts = do
   ,withDoubleArray*`[Double]'&,fromEnumC`PositionType',`Bool',withDoubleArray*`[Double]'&
   ,withMaybeDigitalReplication*`Maybe DigitalReplication',`Bool',preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
 {#fun qlDigitalIborLeg as digitalIborLeg_{withSchedule*`Schedule',withIborIndex*`GenIborIndex ibor',withNonEmptyDoubleArray*`NonEmpty Double'&,withDayCounter*`DayCounter',fromEnumC`BusinessDayConvention',withIntArray*`[Word]'&,withDoubleArray*`[Double]'&,withDoubleArray*`[Double]'&,`Bool',withDoubleArray*`[Double]'&,fromEnumC`PositionType',`Bool',withDoubleArray*`[Double]'&,withDoubleArray*`[Double]'&,fromEnumC`PositionType',`Bool',withDoubleArray*`[Double]'&,withMaybeDigitalReplication*`Maybe DigitalReplication',`Bool',preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
+{#fun qlDigitalCmsSpreadLeg as digitalCmsSpreadLeg_{withSchedule*`Schedule',withSwapSpreadIndex*`SwapSpreadIndex',withNonEmptyDoubleArray*`NonEmpty Double'&,withDayCounter*`DayCounter',fromEnumC`BusinessDayConvention'
+  ,withIntArray*`[Word]'&,withDoubleArray*`[Double]'&,withDoubleArray*`[Double]'&,`Bool'
+  ,withDoubleArray*`[Double]'&,fromEnumC`PositionType',`Bool',withDoubleArray*`[Double]'&
+  ,withDoubleArray*`[Double]'&,fromEnumC`PositionType',`Bool',withDoubleArray*`[Double]'&
+  ,withMaybeDigitalReplication*`Maybe DigitalReplication',`Bool',preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
 {#fun qlMultipleResetsLeg as multipleResetsLeg_{withSchedule*`Schedule',withIborIndex*`GenIborIndex ibor',fromIntegral`Word',withNonEmptyDoubleArray*`NonEmpty Double'&,withDayCounter*`DayCounter',fromEnumC`BusinessDayConvention',withCalendar*`Calendar',`Int',withIntArray*`[Word]'&,withDoubleArray*`[Double]'&,withDoubleArray*`[Double]'&,withDoubleArray*`[Double]'&,fromEnumQuantity`(Int,TimeUnit)'&,withCalendar*`Calendar',fromEnumC`BusinessDayConvention',`Bool',fromEnumC`RateAveragingType',preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
 
 -- |CMS-coupon pricer via static replication (Hagan's "Conundrums..."), using an analytic

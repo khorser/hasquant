@@ -1545,6 +1545,93 @@ spec evalDate = do
           putRate `shouldBe` 0
           digitalRate `shouldSatisfy` (> plainRate)
 
+      -- Single-period schedule so cmsSpreadLeg's operator-Leg() produces exactly one coupon,
+      -- built from the same dates/params as a standalone cmsSpreadCoupon; both are then priced
+      -- (via cashFlowLeg for the standalone coupon, so 'npv' accepts it) and must agree exactly,
+      -- since QuantLib's own FloatingLeg<> builder (behind cmsSpreadLeg) constructs the identical
+      -- CmsSpreadCoupon for a non-stub single-period schedule -- refPeriodStart/End explicitly
+      -- pinned to the accrual dates here match FloatingLeg's own refStart=start/refEnd=end for
+      -- exactly this (regular, non-stub) case.
+      it "cmsSpreadLeg produces the same single coupon as the standalone cmsSpreadCoupon" $
+        Settings.keepingSettingsGc $ do
+          let spreadRefDate = 23 `february` 2018
+          Settings.setEvaluationDate (Just spreadRefDate)
+          cal <- calendar TARGET
+          dc <- dayCounter (Actual360 False)
+          fwdRateQ <- Quote.simpleQuote 0.02
+          fwdCurve <- flatForward' 0 cal fwdRateQ dc IR.Continuous Annual
+          cms10y <- liborSwapIndex EurLiborSwapIsdaFixA (10, Years) (Just fwdCurve) (Just fwdCurve)
+          cms2y <- liborSwapIndex EurLiborSwapIsdaFixA (2, Years) (Just fwdCurve) (Just fwdCurve)
+          cms10y2y <- swapSpreadIndex "cms10y2y" cms10y cms2y 1.0 (-1.0)
+          volQ <- Quote.simpleQuote 0.20
+          swaptionVol <- constantSwaptionVolatility' spreadRefDate cal Following volQ dc IR.ShiftedLognormal 0
+          meanReversion <- Quote.simpleQuote 0.01 >>= Quote.asQuote
+          correlation <- Quote.simpleQuote 0.6 >>= Quote.asQuote
+          cmsPricer <- CF.linearTsrPricer swaptionVol meanReversion (Just fwdCurve)
+            (CF.LinearTsrPricerSettings CF.LinearTsrRateBound Nothing)
+          spreadPricer <- CF.lognormalCmsSpreadPricer cmsPricer correlation (Just fwdCurve) 32 Nothing Nothing Nothing
+          valueDate' <- advance cal spreadRefDate (2, Days) Following False
+          payDate <- addPeriod valueDate' (1, Years)
+          sch <- schedule (Just valueDate') payDate (1, Years) cal Unadjusted Unadjusted Backward False Nothing Nothing
+
+          standalone <- CF.cmsSpreadCoupon payDate 10000 valueDate' payDate 2 cms10y2y
+            1.0 0.0 (Just valueDate') (Just payDate) dc False Nothing Preceding
+          CF.setFloatingRateCouponPricer standalone spreadPricer
+          standaloneCf <- CF.asCashFlow standalone
+          refLeg <- CF.cashFlowLeg [standaloneCf]
+          refNpv <- CF.npv refLeg fwdCurve False Nothing Nothing
+
+          leg <- CF.cmsSpreadLeg sch cms10y2y [10000] dc Unadjusted [2] [1.0] [0.0] [] [] False False
+          CF.setCouponPricer leg spreadPricer
+          legNpv <- CF.npv leg fwdCurve False Nothing Nothing
+
+          legNpv `shouldSatisfy` closePrec refNpv 1.0e-8
+
+      -- Same cross-check for digitalCmsSpreadLeg, reusing the "digital CMS-spread coupon" test's
+      -- fixture and call/put parameters via 'DigitalCmsSpreadLegOpts'.
+      it "digitalCmsSpreadLeg produces the same single coupon as the standalone digitalCmsSpreadCoupon" $
+        Settings.keepingSettingsGc $ do
+          let spreadRefDate = 23 `february` 2018
+          Settings.setEvaluationDate (Just spreadRefDate)
+          cal <- calendar TARGET
+          dc <- dayCounter (Actual360 False)
+          fwdRateQ <- Quote.simpleQuote 0.02
+          fwdCurve <- flatForward' 0 cal fwdRateQ dc IR.Continuous Annual
+          cms10y <- liborSwapIndex EurLiborSwapIsdaFixA (10, Years) (Just fwdCurve) (Just fwdCurve)
+          cms2y <- liborSwapIndex EurLiborSwapIsdaFixA (2, Years) (Just fwdCurve) (Just fwdCurve)
+          cms10y2y <- swapSpreadIndex "cms10y2y" cms10y cms2y 1.0 (-1.0)
+          volQ <- Quote.simpleQuote 0.20
+          swaptionVol <- constantSwaptionVolatility' spreadRefDate cal Following volQ dc IR.ShiftedLognormal 0
+          meanReversion <- Quote.simpleQuote 0.01 >>= Quote.asQuote
+          correlation <- Quote.simpleQuote 0.6 >>= Quote.asQuote
+          cmsPricer <- CF.linearTsrPricer swaptionVol meanReversion (Just fwdCurve)
+            (CF.LinearTsrPricerSettings CF.LinearTsrRateBound Nothing)
+          spreadPricer <- CF.lognormalCmsSpreadPricer cmsPricer correlation (Just fwdCurve) 32 Nothing Nothing Nothing
+          valueDate' <- advance cal spreadRefDate (2, Days) Following False
+          startDate <- addPeriod valueDate' (5, Years)
+          payDate <- addPeriod startDate (1, Years)
+          sch <- schedule (Just startDate) payDate (1, Years) cal Unadjusted Unadjusted Backward False Nothing Nothing
+
+          replication <- CF.digitalReplication CF.ReplicationCentral 1.0e-4
+          standalone <- CF.digitalCmsSpreadCoupon payDate 10000 startDate payDate 2 cms10y2y
+            1.0 0.0 (Just startDate) (Just payDate) dc False Nothing Preceding
+            (Just (-0.05)) CF.Long False (Just 0.005) Nothing CF.Long False Nothing (Just replication) False
+          CF.setFloatingRateCouponPricer standalone spreadPricer
+          standaloneCf <- CF.asCashFlow standalone
+          refLeg <- CF.cashFlowLeg [standaloneCf]
+          refNpv <- CF.npv refLeg fwdCurve False Nothing Nothing
+
+          let opts = CF.defaultDigitalCmsSpreadLegOpts
+                { CF.dcmslCallStrikes = [-0.05]
+                , CF.dcmslCallPayoffs = [0.005]
+                , CF.dcmslReplication = Just replication
+                }
+          leg <- CF.digitalCmsSpreadLeg sch cms10y2y [10000] dc Unadjusted [2] [1.0] [0.0] False opts
+          CF.setCouponPricer leg spreadPricer
+          legNpv <- CF.npv leg fwdCurve False Nothing Nothing
+
+          legNpv `shouldSatisfy` closePrec refNpv 1.0e-8
+
       it "CMS and Ibor legs, CMS-rate bonds, and their full options price with effective caps, floors, and amortization" $
         Settings.keepingSettingsGc $ do
           Settings.setEvaluationDate (Just refDate)

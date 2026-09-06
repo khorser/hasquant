@@ -759,12 +759,14 @@ extern "C" {
   QlFloatingRateCoupon* qlCmsSpreadCoupon(int paymentDate, double nominal, int startDate, int endDate, unsigned fixingDays, QlSwapSpreadIndex* index, double gearing, double spread, int refPeriodStart, int refPeriodEnd, DayCounter* dayCounter, int inArrears, int exCouponDate, int fixingConvention, char **e);
   QlFloatingRateCoupon* qlCappedFlooredCmsSpreadCoupon(int paymentDate, double nominal, int startDate, int endDate, unsigned fixingDays, QlSwapSpreadIndex* index, double gearing, double spread, double cap, double floor, int refPeriodStart, int refPeriodEnd, DayCounter* dayCounter, int inArrears, int exCouponDate, int fixingConvention, char **e);
   QlFloatingRateCouponPricer* qlLognormalCmsSpreadPricer(QlCmsCouponPricer* cmsPricer, QlQuote* correlation, QlYieldTermStructure* couponDiscountCurve, unsigned integrationPoints, int haveVolatilityType, int volatilityType, double shift1, double shift2, char **e);
+  Leg* qlCmsSpreadLeg(Schedule* schedule, QlSwapSpreadIndex* swapSpreadIndex, unsigned notionalsLen, double* notionals, DayCounter* paymentDayCounter, int paymentAdjustment, unsigned fixingDaysLen, unsigned* fixingDays, unsigned gearingsLen, double* gearings, unsigned spreadsLen, double* spreads, unsigned capsLen, double* caps, unsigned floorsLen, double* floors, int inArrears, int zeroPayments, char **e);
 
   void qlFreeDigitalCmsSpreadCoupon(QlDigitalCmsSpreadCoupon *o);
   QlFloatingRateCoupon* qlDigitalCmsSpreadCouponAsFloatingRateCoupon(QlDigitalCmsSpreadCoupon *o);
   QlDigitalCmsSpreadCoupon* qlDigitalCmsSpreadCoupon(int paymentDate, double nominal, int startDate, int endDate, unsigned fixingDays, QlSwapSpreadIndex* index, double gearing, double spread, int refPeriodStart, int refPeriodEnd, DayCounter* dayCounter, int inArrears, int exCouponDate, int fixingConvention, double callStrike, int callPosition, int callATM, double callPayoff, double putStrike, int putPosition, int putATM, double putPayoff, QlDigitalReplication* replication, int nakedOption, char **e);
   double qlDigitalCmsSpreadCouponCallOptionRate(QlDigitalCmsSpreadCoupon* o, char **e);
   double qlDigitalCmsSpreadCouponPutOptionRate(QlDigitalCmsSpreadCoupon* o, char **e);
+  Leg* qlDigitalCmsSpreadLeg(Schedule* schedule, QlSwapSpreadIndex* index, unsigned notionalsLen, double* notionals, DayCounter* paymentDayCounter, int paymentAdjustment, unsigned fixingDaysLen, unsigned* fixingDays, unsigned gearingsLen, double* gearings, unsigned spreadsLen, double* spreads, int inArrears, unsigned callStrikesLen, double* callStrikes, int callPosition, int callATM, unsigned callPayoffsLen, double* callPayoffs, unsigned putStrikesLen, double* putStrikes, int putPosition, int putATM, unsigned putPayoffsLen, double* putPayoffs, QlDigitalReplication* replication, int nakedOption, char **e);
 
   void qlFreeSwapSpreadIndex(QlSwapSpreadIndex *o);
   QlInterestRateIndex* qlSwapSpreadIndexAsInterestRateIndex(QlSwapSpreadIndex *o);

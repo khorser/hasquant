@@ -126,6 +126,17 @@ module QuantLib.TermStructure.Volatility
   , volatilityForPeriods
   , callableBondConstantVolatility'
   , callableBondConstantVolatility
+  , callableBondVolatilityForTime
+  , callableBondVolatilityForDate
+  , callableBondVolatilityForPeriod
+  , callableBondBlackVarianceForTime
+  , callableBondBlackVarianceForDate
+  , callableBondBlackVarianceForPeriod
+  , callableBondSmileSectionForDate
+  , callableBondSmileSectionForPeriod
+  , callableBondMaxBondTenor
+  , callableBondMinStrike
+  , callableBondMaxStrike
   , constantCapFloorTermVolatility'
   , constantCapFloorTermVolatility
   , capFloorVolatilityForPeriod
@@ -1157,6 +1168,75 @@ noArbSabrInterpolatedSmileSection optionDate forward strikeVols hasFloatingStrik
 
 -- |as 'callableBondConstantVolatility\'', but a fixed reference date
 {#fun qlCallableBondConstantVolatility as callableBondConstantVolatility{withDay*`Day',withQuote*`GenQuote q',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`CallableBondVolatilityStructure'peekCallableBondVolatilityStructure*#}
+
+-- |The volatility for a given option time and bond length.
+{#fun qlCallableBondVolatilityStructureVolatilityForTime as callableBondVolatilityForTime{withGenTermStructure*`CallableBondVolatilityStructure'
+  ,`Double' -- ^optionTime
+  ,`Double' -- ^bondLength
+  ,`Double' -- ^strike
+  ,`Bool' -- ^extrapolate
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |The volatility for a given option date and bond tenor.
+{#fun qlCallableBondVolatilityStructureVolatilityForDate as callableBondVolatilityForDate{withGenTermStructure*`CallableBondVolatilityStructure'
+  ,withDay*`Day' -- ^optionDate
+  ,fromEnumQuantity`(Word,TimeUnit)'& -- ^bondTenor
+  ,`Double' -- ^strike
+  ,`Bool' -- ^extrapolate
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |The volatility for a given option tenor and bond tenor.
+{#fun qlCallableBondVolatilityStructureVolatilityForPeriod as callableBondVolatilityForPeriod{withGenTermStructure*`CallableBondVolatilityStructure'
+  ,fromEnumQuantity`(Word,TimeUnit)'& -- ^optionTenor
+  ,fromEnumQuantity`(Word,TimeUnit)'& -- ^bondTenor
+  ,`Double' -- ^strike
+  ,`Bool' -- ^extrapolate
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |The Black variance for a given option time and bond length.
+{#fun qlCallableBondVolatilityStructureBlackVarianceForTime as callableBondBlackVarianceForTime{withGenTermStructure*`CallableBondVolatilityStructure'
+  ,`Double' -- ^optionTime
+  ,`Double' -- ^bondLength
+  ,`Double' -- ^strike
+  ,`Bool' -- ^extrapolate
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |The Black variance for a given option date and bond tenor.
+{#fun qlCallableBondVolatilityStructureBlackVarianceForDate as callableBondBlackVarianceForDate{withGenTermStructure*`CallableBondVolatilityStructure'
+  ,withDay*`Day' -- ^optionDate
+  ,fromEnumQuantity`(Word,TimeUnit)'& -- ^bondTenor
+  ,`Double' -- ^strike
+  ,`Bool' -- ^extrapolate
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |The Black variance for a given option tenor and bond tenor.
+{#fun qlCallableBondVolatilityStructureBlackVarianceForPeriod as callableBondBlackVarianceForPeriod{withGenTermStructure*`CallableBondVolatilityStructure'
+  ,fromEnumQuantity`(Word,TimeUnit)'& -- ^optionTenor
+  ,fromEnumQuantity`(Word,TimeUnit)'& -- ^bondTenor
+  ,`Double' -- ^strike
+  ,`Bool' -- ^extrapolate
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |The smile section for a given option date and bond tenor.
+{#fun qlCallableBondVolatilityStructureSmileSectionForDate as callableBondSmileSectionForDate{withGenTermStructure*`CallableBondVolatilityStructure'
+  ,withDay*`Day' -- ^optionDate
+  ,fromEnumQuantity`(Word,TimeUnit)'& -- ^bondTenor
+  ,preErrorCheck-`String'errorCheck*-}->`SmileSection'peekSmileSection*#}
+
+-- |The smile section for a given option tenor and bond tenor.
+{#fun qlCallableBondVolatilityStructureSmileSectionForPeriod as callableBondSmileSectionForPeriod{withGenTermStructure*`CallableBondVolatilityStructure'
+  ,fromEnumQuantity`(Word,TimeUnit)'& -- ^optionTenor
+  ,fromEnumQuantity`(Word,TimeUnit)'& -- ^bondTenor
+  ,preErrorCheck-`String'errorCheck*-}->`SmileSection'peekSmileSection*#}
+
+-- |The largest bond tenor for which the structure can return vols.
+{#fun qlCallableBondVolatilityStructureMaxBondTenor as callableBondMaxBondTenor{withGenTermStructure*`CallableBondVolatilityStructure',preEnum-`TimeUnit'peekEnum*,preErrorCheck-`String'errorCheck*-}->`Int'#}
+
+-- |The minimum strike for which the structure can return vols.
+{#fun qlCallableBondVolatilityStructureMinStrike as callableBondMinStrike{withGenTermStructure*`CallableBondVolatilityStructure',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |The maximum strike for which the structure can return vols.
+{#fun qlCallableBondVolatilityStructureMaxStrike as callableBondMaxStrike{withGenTermStructure*`CallableBondVolatilityStructure',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |fixed reference date, floating market data
 {#fun qlConstantCapFloorTermVolatility1 as constantCapFloorTermVolatility'{withDay*`Day',withCalendar*`Calendar',fromEnumC`BusinessDayConvention',withQuote*`GenQuote q',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`CapFloorTermVolatilityStructure'peekCapFloorTermVolatilityStructure*#}
