@@ -35,16 +35,16 @@ span.spaces    { background: white }
 <span class="lineno">   16 </span>  , impliedVolatility
 <span class="lineno">   17 </span>  , riskyAnnuity
 <span class="lineno">   18 </span>
-<span class="lineno">   19 </span>  , accrualRebateNPV
+<span class="lineno">   19 </span>  , accrualRebateNpv
 <span class="lineno">   20 </span>  , conventionalSpread
-<span class="lineno">   21 </span>  , couponLegBPS
-<span class="lineno">   22 </span>  , couponLegNPV
+<span class="lineno">   21 </span>  , couponLegBps
+<span class="lineno">   22 </span>  , couponLegNpv
 <span class="lineno">   23 </span>  , coupons
-<span class="lineno">   24 </span>  , defaultLegNPV
+<span class="lineno">   24 </span>  , defaultLegNpv
 <span class="lineno">   25 </span>  , fairUpfront
 <span class="lineno">   26 </span>  , impliedHazardRate
-<span class="lineno">   27 </span>  , upfrontBPS
-<span class="lineno">   28 </span>  , upfrontNPV
+<span class="lineno">   27 </span>  , upfrontBps
+<span class="lineno">   28 </span>  , upfrontNpv
 <span class="lineno">   29 </span>
 <span class="lineno">   30 </span>  , SyntheticCDO
 <span class="lineno">   31 </span>  , syntheticCDO
@@ -53,8 +53,8 @@ span.spaces    { background: white }
 <span class="lineno">   34 </span>  , fairUpfrontPremium
 <span class="lineno">   35 </span>  , premiumValue
 <span class="lineno">   36 </span>  , protectionValue
-<span class="lineno">   37 </span>  , premiumLegNPV
-<span class="lineno">   38 </span>  , protectionLegNPV
+<span class="lineno">   37 </span>  , premiumLegNpv
+<span class="lineno">   38 </span>  , protectionLegNpv
 <span class="lineno">   39 </span>  , cdoRemainingNotional
 <span class="lineno">   40 </span>  , implicitCorrelation
 <span class="lineno">   41 </span>
@@ -276,11 +276,11 @@ span.spaces    { background: white }
 <span class="lineno">  257 </span>
 <span class="lineno">  258 </span>
 <span class="lineno">  259 </span>-- |Returns the variation of the fixed-leg value given a one-basis-point change in the running spread.
-<span class="lineno">  260 </span>couponLegBPS :: (CreditDefaultSwap) -&gt; IO ((Double))
-<span class="lineno">  261 </span><span class="decl"><span class="nottickedoff">couponLegBPS a1 =</span>
+<span class="lineno">  260 </span>couponLegBps :: (CreditDefaultSwap) -&gt; IO ((Double))
+<span class="lineno">  261 </span><span class="decl"><span class="nottickedoff">couponLegBps a1 =</span>
 <span class="lineno">  262 </span><span class="spaces">  </span><span class="nottickedoff">withGenInstrument a1 $ \a1' -&gt; </span>
 <span class="lineno">  263 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a2' -&gt; </span>
-<span class="lineno">  264 </span><span class="spaces">  </span><span class="nottickedoff">couponLegBPS'_ a1' a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  264 </span><span class="spaces">  </span><span class="nottickedoff">couponLegBps'_ a1' a2' &gt;&gt;= \res -&gt;</span>
 <span class="lineno">  265 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = realToFrac res} in</span>
 <span class="lineno">  266 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a2'&gt;&gt;</span>
 <span class="lineno">  267 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
@@ -288,11 +288,11 @@ span.spaces    { background: white }
 <span class="lineno">  269 </span>
 <span class="lineno">  270 </span>
 <span class="lineno">  271 </span>-- |NPV of the coupon (premium) leg.
-<span class="lineno">  272 </span>couponLegNPV :: (CreditDefaultSwap) -&gt; IO ((Double))
-<span class="lineno">  273 </span><span class="decl"><span class="istickedoff">couponLegNPV a1 =</span>
+<span class="lineno">  272 </span>couponLegNpv :: (CreditDefaultSwap) -&gt; IO ((Double))
+<span class="lineno">  273 </span><span class="decl"><span class="istickedoff">couponLegNpv a1 =</span>
 <span class="lineno">  274 </span><span class="spaces">  </span><span class="istickedoff">withGenInstrument a1 $ \a1' -&gt; </span>
 <span class="lineno">  275 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
-<span class="lineno">  276 </span><span class="spaces">  </span><span class="istickedoff">couponLegNPV'_ a1' a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  276 </span><span class="spaces">  </span><span class="istickedoff">couponLegNpv'_ a1' a2' &gt;&gt;= \res -&gt;</span>
 <span class="lineno">  277 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
 <span class="lineno">  278 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
 <span class="lineno">  279 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
@@ -312,11 +312,11 @@ span.spaces    { background: white }
 <span class="lineno">  293 </span>
 <span class="lineno">  294 </span>
 <span class="lineno">  295 </span>-- |NPV of the default (protection) leg.
-<span class="lineno">  296 </span>defaultLegNPV :: (CreditDefaultSwap) -&gt; IO ((Double))
-<span class="lineno">  297 </span><span class="decl"><span class="istickedoff">defaultLegNPV a1 =</span>
+<span class="lineno">  296 </span>defaultLegNpv :: (CreditDefaultSwap) -&gt; IO ((Double))
+<span class="lineno">  297 </span><span class="decl"><span class="istickedoff">defaultLegNpv a1 =</span>
 <span class="lineno">  298 </span><span class="spaces">  </span><span class="istickedoff">withGenInstrument a1 $ \a1' -&gt; </span>
 <span class="lineno">  299 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
-<span class="lineno">  300 </span><span class="spaces">  </span><span class="istickedoff">defaultLegNPV'_ a1' a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  300 </span><span class="spaces">  </span><span class="istickedoff">defaultLegNpv'_ a1' a2' &gt;&gt;= \res -&gt;</span>
 <span class="lineno">  301 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
 <span class="lineno">  302 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
 <span class="lineno">  303 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
@@ -359,11 +359,11 @@ span.spaces    { background: white }
 <span class="lineno">  340 </span>
 <span class="lineno">  341 </span>
 <span class="lineno">  342 </span>-- |Returns the variation of the upfront payment value given a one-basis-point change in the upfront.
-<span class="lineno">  343 </span>upfrontBPS :: (CreditDefaultSwap) -&gt; IO ((Double))
-<span class="lineno">  344 </span><span class="decl"><span class="nottickedoff">upfrontBPS a1 =</span>
+<span class="lineno">  343 </span>upfrontBps :: (CreditDefaultSwap) -&gt; IO ((Double))
+<span class="lineno">  344 </span><span class="decl"><span class="nottickedoff">upfrontBps a1 =</span>
 <span class="lineno">  345 </span><span class="spaces">  </span><span class="nottickedoff">withGenInstrument a1 $ \a1' -&gt; </span>
 <span class="lineno">  346 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a2' -&gt; </span>
-<span class="lineno">  347 </span><span class="spaces">  </span><span class="nottickedoff">upfrontBPS'_ a1' a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  347 </span><span class="spaces">  </span><span class="nottickedoff">upfrontBps'_ a1' a2' &gt;&gt;= \res -&gt;</span>
 <span class="lineno">  348 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = realToFrac res} in</span>
 <span class="lineno">  349 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a2'&gt;&gt;</span>
 <span class="lineno">  350 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
@@ -371,11 +371,11 @@ span.spaces    { background: white }
 <span class="lineno">  352 </span>
 <span class="lineno">  353 </span>
 <span class="lineno">  354 </span>-- |NPV of the upfront payment.
-<span class="lineno">  355 </span>upfrontNPV :: (CreditDefaultSwap) -&gt; IO ((Double))
-<span class="lineno">  356 </span><span class="decl"><span class="nottickedoff">upfrontNPV a1 =</span>
+<span class="lineno">  355 </span>upfrontNpv :: (CreditDefaultSwap) -&gt; IO ((Double))
+<span class="lineno">  356 </span><span class="decl"><span class="nottickedoff">upfrontNpv a1 =</span>
 <span class="lineno">  357 </span><span class="spaces">  </span><span class="nottickedoff">withGenInstrument a1 $ \a1' -&gt; </span>
 <span class="lineno">  358 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a2' -&gt; </span>
-<span class="lineno">  359 </span><span class="spaces">  </span><span class="nottickedoff">upfrontNPV'_ a1' a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  359 </span><span class="spaces">  </span><span class="nottickedoff">upfrontNpv'_ a1' a2' &gt;&gt;= \res -&gt;</span>
 <span class="lineno">  360 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = realToFrac res} in</span>
 <span class="lineno">  361 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a2'&gt;&gt;</span>
 <span class="lineno">  362 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
@@ -384,11 +384,11 @@ span.spaces    { background: white }
 <span class="lineno">  365 </span>
 <span class="lineno">  366 </span>-- |NPV of the rebate paid/received on an early default for the fraction of the accrual period
 <span class="lineno">  367 </span>-- elapsed since the last coupon date; zero unless the CDS was constructed with @rebatesAccrual@.
-<span class="lineno">  368 </span>accrualRebateNPV :: (CreditDefaultSwap) -&gt; IO ((Double))
-<span class="lineno">  369 </span><span class="decl"><span class="istickedoff">accrualRebateNPV a1 =</span>
+<span class="lineno">  368 </span>accrualRebateNpv :: (CreditDefaultSwap) -&gt; IO ((Double))
+<span class="lineno">  369 </span><span class="decl"><span class="istickedoff">accrualRebateNpv a1 =</span>
 <span class="lineno">  370 </span><span class="spaces">  </span><span class="istickedoff">withGenInstrument a1 $ \a1' -&gt; </span>
 <span class="lineno">  371 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
-<span class="lineno">  372 </span><span class="spaces">  </span><span class="istickedoff">accrualRebateNPV'_ a1' a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  372 </span><span class="spaces">  </span><span class="istickedoff">accrualRebateNpv'_ a1' a2' &gt;&gt;= \res -&gt;</span>
 <span class="lineno">  373 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
 <span class="lineno">  374 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
 <span class="lineno">  375 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
@@ -468,11 +468,11 @@ span.spaces    { background: white }
 <span class="lineno">  449 </span>
 <span class="lineno">  450 </span>
 <span class="lineno">  451 </span>-- |NPV of the premium (running plus upfront) leg, as a plain NPV (not divided by notional).
-<span class="lineno">  452 </span>premiumLegNPV :: (SyntheticCDO) -&gt; IO ((Double))
-<span class="lineno">  453 </span><span class="decl"><span class="nottickedoff">premiumLegNPV a1 =</span>
+<span class="lineno">  452 </span>premiumLegNpv :: (SyntheticCDO) -&gt; IO ((Double))
+<span class="lineno">  453 </span><span class="decl"><span class="nottickedoff">premiumLegNpv a1 =</span>
 <span class="lineno">  454 </span><span class="spaces">  </span><span class="nottickedoff">withGenInstrument a1 $ \a1' -&gt; </span>
 <span class="lineno">  455 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a2' -&gt; </span>
-<span class="lineno">  456 </span><span class="spaces">  </span><span class="nottickedoff">premiumLegNPV'_ a1' a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  456 </span><span class="spaces">  </span><span class="nottickedoff">premiumLegNpv'_ a1' a2' &gt;&gt;= \res -&gt;</span>
 <span class="lineno">  457 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = realToFrac res} in</span>
 <span class="lineno">  458 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a2'&gt;&gt;</span>
 <span class="lineno">  459 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
@@ -480,11 +480,11 @@ span.spaces    { background: white }
 <span class="lineno">  461 </span>
 <span class="lineno">  462 </span>
 <span class="lineno">  463 </span>-- |NPV of the protection leg, as a plain NPV.
-<span class="lineno">  464 </span>protectionLegNPV :: (SyntheticCDO) -&gt; IO ((Double))
-<span class="lineno">  465 </span><span class="decl"><span class="nottickedoff">protectionLegNPV a1 =</span>
+<span class="lineno">  464 </span>protectionLegNpv :: (SyntheticCDO) -&gt; IO ((Double))
+<span class="lineno">  465 </span><span class="decl"><span class="nottickedoff">protectionLegNpv a1 =</span>
 <span class="lineno">  466 </span><span class="spaces">  </span><span class="nottickedoff">withGenInstrument a1 $ \a1' -&gt; </span>
 <span class="lineno">  467 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a2' -&gt; </span>
-<span class="lineno">  468 </span><span class="spaces">  </span><span class="nottickedoff">protectionLegNPV'_ a1' a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  468 </span><span class="spaces">  </span><span class="nottickedoff">protectionLegNpv'_ a1' a2' &gt;&gt;= \res -&gt;</span>
 <span class="lineno">  469 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = realToFrac res} in</span>
 <span class="lineno">  470 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a2'&gt;&gt;</span>
 <span class="lineno">  471 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
@@ -581,16 +581,16 @@ span.spaces    { background: white }
 <span class="lineno">  562 </span>  conventionalSpread'_ :: ((C2HSImp.Ptr (CCreditDefaultSwap')) -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))))))
 <span class="lineno">  563 </span>
 <span class="lineno">  564 </span>foreign import ccall safe &quot;QuantLib/Instrument/Credit.chs.h qlCreditDefaultSwapCouponLegBPS&quot;
-<span class="lineno">  565 </span>  couponLegBPS'_ :: ((C2HSImp.Ptr (CCreditDefaultSwap')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))
+<span class="lineno">  565 </span>  couponLegBps'_ :: ((C2HSImp.Ptr (CCreditDefaultSwap')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))
 <span class="lineno">  566 </span>
 <span class="lineno">  567 </span>foreign import ccall safe &quot;QuantLib/Instrument/Credit.chs.h qlCreditDefaultSwapCouponLegNPV&quot;
-<span class="lineno">  568 </span>  couponLegNPV'_ :: ((C2HSImp.Ptr (CCreditDefaultSwap')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))
+<span class="lineno">  568 </span>  couponLegNpv'_ :: ((C2HSImp.Ptr (CCreditDefaultSwap')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))
 <span class="lineno">  569 </span>
 <span class="lineno">  570 </span>foreign import ccall safe &quot;QuantLib/Instrument/Credit.chs.h qlCreditDefaultSwapCoupons&quot;
 <span class="lineno">  571 </span>  coupons'_ :: ((C2HSImp.Ptr (CCreditDefaultSwap')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CLeg')))))
 <span class="lineno">  572 </span>
 <span class="lineno">  573 </span>foreign import ccall safe &quot;QuantLib/Instrument/Credit.chs.h qlCreditDefaultSwapDefaultLegNPV&quot;
-<span class="lineno">  574 </span>  defaultLegNPV'_ :: ((C2HSImp.Ptr (CCreditDefaultSwap')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))
+<span class="lineno">  574 </span>  defaultLegNpv'_ :: ((C2HSImp.Ptr (CCreditDefaultSwap')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))
 <span class="lineno">  575 </span>
 <span class="lineno">  576 </span>foreign import ccall safe &quot;QuantLib/Instrument/Credit.chs.h qlCreditDefaultSwapFairUpfront&quot;
 <span class="lineno">  577 </span>  fairUpfront'_ :: ((C2HSImp.Ptr (CCreditDefaultSwap')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))
@@ -599,13 +599,13 @@ span.spaces    { background: white }
 <span class="lineno">  580 </span>  impliedHazardRate'_ :: ((C2HSImp.Ptr (CCreditDefaultSwap')) -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))))))))
 <span class="lineno">  581 </span>
 <span class="lineno">  582 </span>foreign import ccall safe &quot;QuantLib/Instrument/Credit.chs.h qlCreditDefaultSwapUpfrontBPS&quot;
-<span class="lineno">  583 </span>  upfrontBPS'_ :: ((C2HSImp.Ptr (CCreditDefaultSwap')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))
+<span class="lineno">  583 </span>  upfrontBps'_ :: ((C2HSImp.Ptr (CCreditDefaultSwap')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))
 <span class="lineno">  584 </span>
 <span class="lineno">  585 </span>foreign import ccall safe &quot;QuantLib/Instrument/Credit.chs.h qlCreditDefaultSwapUpfrontNPV&quot;
-<span class="lineno">  586 </span>  upfrontNPV'_ :: ((C2HSImp.Ptr (CCreditDefaultSwap')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))
+<span class="lineno">  586 </span>  upfrontNpv'_ :: ((C2HSImp.Ptr (CCreditDefaultSwap')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))
 <span class="lineno">  587 </span>
 <span class="lineno">  588 </span>foreign import ccall safe &quot;QuantLib/Instrument/Credit.chs.h qlCreditDefaultSwapAccrualRebateNPV&quot;
-<span class="lineno">  589 </span>  accrualRebateNPV'_ :: ((C2HSImp.Ptr (CCreditDefaultSwap')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))
+<span class="lineno">  589 </span>  accrualRebateNpv'_ :: ((C2HSImp.Ptr (CCreditDefaultSwap')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))
 <span class="lineno">  590 </span>
 <span class="lineno">  591 </span>foreign import ccall safe &quot;QuantLib/Instrument/Credit.chs.h qlSyntheticCDO&quot;
 <span class="lineno">  592 </span>  syntheticCDO_'_ :: ((C2HSImp.Ptr (CBasket)) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CSchedule)) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CSyntheticCDO')))))))))))))
@@ -623,10 +623,10 @@ span.spaces    { background: white }
 <span class="lineno">  604 </span>  protectionValue'_ :: ((C2HSImp.Ptr (CSyntheticCDO')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))
 <span class="lineno">  605 </span>
 <span class="lineno">  606 </span>foreign import ccall safe &quot;QuantLib/Instrument/Credit.chs.h qlSyntheticCDOPremiumLegNPV&quot;
-<span class="lineno">  607 </span>  premiumLegNPV'_ :: ((C2HSImp.Ptr (CSyntheticCDO')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))
+<span class="lineno">  607 </span>  premiumLegNpv'_ :: ((C2HSImp.Ptr (CSyntheticCDO')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))
 <span class="lineno">  608 </span>
 <span class="lineno">  609 </span>foreign import ccall safe &quot;QuantLib/Instrument/Credit.chs.h qlSyntheticCDOProtectionLegNPV&quot;
-<span class="lineno">  610 </span>  protectionLegNPV'_ :: ((C2HSImp.Ptr (CSyntheticCDO')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))
+<span class="lineno">  610 </span>  protectionLegNpv'_ :: ((C2HSImp.Ptr (CSyntheticCDO')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))
 <span class="lineno">  611 </span>
 <span class="lineno">  612 </span>foreign import ccall safe &quot;QuantLib/Instrument/Credit.chs.h qlSyntheticCDORemainingNotional&quot;
 <span class="lineno">  613 </span>  cdoRemainingNotional'_ :: ((C2HSImp.Ptr (CSyntheticCDO')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))

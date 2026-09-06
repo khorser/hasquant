@@ -143,7 +143,7 @@ h:\cabal.exe test
 A GHC-linked binary runs the x87 unit at 53-bit precision, where a `clang++`-linked
 one has 64-bit. `boost::math` widens `double` to `long double` by default, so its
 distributions silently lose the precision they asked for — QuantLib's
-`quantile(non_central_chi_squared)` stops converging and `hestonSLVFDMModel` throws.
+`quantile(non_central_chi_squared)` stops converging and `hestonSlvFdmModel` throws.
 Hence `-DBOOST_MATH_PROMOTE_DOUBLE_POLICY=false` in Step 2: no promotion, no 80-bit
 arithmetic, no problem. QuantLib names `long double` in exactly one place otherwise.
 

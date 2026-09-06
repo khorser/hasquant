@@ -38,7 +38,7 @@ span.spaces    { background: white }
 <span class="lineno">   19 </span>  , updatesDeferred
 <span class="lineno">   20 </span>
 <span class="lineno">   21 </span>  , keepingSettings
-<span class="lineno">   22 </span>  , keepingSettings'
+<span class="lineno">   22 </span>  , keepingSettingsGc
 <span class="lineno">   23 </span>  , collectGarbage
 <span class="lineno">   24 </span>  , setExtendedPrecision
 <span class="lineno">   25 </span>  , version
@@ -70,7 +70,7 @@ span.spaces    { background: white }
 <span class="lineno">   51 </span>-- QuantLib is then silently rounded to double. That matters because @boost::math@ promotes @double@
 <span class="lineno">   52 </span>-- arguments to @long double@ by default, so its distributions lose the precision their
 <span class="lineno">   53 </span>-- algorithms assume -- returning quietly less accurate answers, or failing to converge
-<span class="lineno">   54 </span>-- outright (@hestonSLVFDMModel@ throws out of @quantile(non_central_chi_squared)@
+<span class="lineno">   54 </span>-- outright (@hestonSlvFdmModel@ throws out of @quantile(non_central_chi_squared)@
 <span class="lineno">   55 </span>-- without this).
 <span class="lineno">   56 </span>--
 <span class="lineno">   57 </span>-- A no-op on every other platform and on non-x86 Windows. The control word is
@@ -209,8 +209,8 @@ span.spaces    { background: white }
 <span class="lineno">  190 </span>
 <span class="lineno">  191 </span>-- |brackets to restore settings once action has completed or raised an exception. Before restoring settings
 <span class="lineno">  192 </span>-- 'collectGarbage' is run to avoid problems with market data objects watching evaluation date
-<span class="lineno">  193 </span>keepingSettings' :: IO b -&gt; IO b
-<span class="lineno">  194 </span><span class="decl"><span class="istickedoff">keepingSettings' = bracket qlSavedSettings (\s -&gt; collectGarbage &gt;&gt; qlFreeSavedSettings s) . const</span></span>
+<span class="lineno">  193 </span>keepingSettingsGc :: IO b -&gt; IO b
+<span class="lineno">  194 </span><span class="decl"><span class="istickedoff">keepingSettingsGc = bracket qlSavedSettings (\s -&gt; collectGarbage &gt;&gt; qlFreeSavedSettings s) . const</span></span>
 <span class="lineno">  195 </span>
 <span class="lineno">  196 </span>-- |Best effort: give the finalizers of unreachable QuantLib objects a chance to run, so
 <span class="lineno">  197 </span>-- their C++ destructors fire before, say, 'setEvaluationDate' notifies surviving observers.
