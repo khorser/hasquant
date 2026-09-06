@@ -163,6 +163,10 @@ With more than 10 trailing defaulted parameters, preserve the narrow binding and
 
 When a class has multiple real overloads of the same name, each gets its own C shim with a numeric suffix on the second and later ones — the first keeps the bare name: `qlOISRateHelper`/`qlOISRateHelper2`, `qlJointCalendar2`/`qlJointCalendar3`/`qlJointCalendar4`. The numbering isn't necessarily contiguous from 1 and isn't derivable from the C++ signature — it reflects whatever order bindings were historically added in. If you're adding a second overload of an existing binding, just pick the next unused suffix; don't try to make it "meaningful."
 
+Numeric suffixes are private C-shim disambiguators, not public Haskell names. Exported functions must use a semantic name: `From` for an alternate representation, `With` for added configuration, `At` for coordinates, and `Moving` for evaluation-date-relative term structures. Never export a trailing apostrophe or an unexplained numeric overload suffix. The same short exported name may be reused in different topical modules; module qualification resolves that case. Treat acronyms as camel-case words in exported values and record selectors (`legNpv`, `npvBps`, `gjrGarchModel`, `nextImmDate`), while leaving ABI-facing C names and Haskell type and constructor names alone.
+
+Before introducing a public typeclass to consolidate overloads, verify that every proposed instance implements the same operation with identical argument and result types and identical semantics. Such a capability class is useful across related bound types; it is not a namespace workaround and must not combine operations merely because their upstream names look alike. Prefer distinct module-qualified functions or a sum-typed argument when signatures or semantics differ.
+
 ### Static methods, and default values, are now visible in the dump
 
 `tools/dump_signatures.py` includes `static` and parameter defaults. `tools/ql-methods-1.43.txt` does not, so check the header when working from that dump; `tools/reconcile_signatures.py` ignores those fields when matching entries.

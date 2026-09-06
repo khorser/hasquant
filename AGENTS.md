@@ -47,6 +47,8 @@ Scale numeric tolerances to the result magnitude, normally about `1e-6` relative
 
 ## API design
 
+- Exported value names never use a trailing apostrophe or an unexplained numeric suffix to distinguish overloads. Use `From` for an alternate representation, `With` for added configuration, `At` for coordinates, and `Moving` for evaluation-date-relative term structures. The same short name may appear in different topical modules; callers can qualify imports.
+- Treat acronyms as camel-case words in exported values and record selectors: `legNpv`, `npvBps`, `gjrGarchModel`, `hestonSlvFdmModel`, and `nextImmDate`. Keep C shim names, C tags, Haskell types, and data constructors unchanged unless a representation change requires otherwise.
 - Bind only the requested surface by default, but include a neighboring binding when it reuses the same open header, marshalling, and fixture without separate investigation.
 - Do not mirror the C++ hierarchy mechanically. A class needs a dedicated Haskell type only when it has a meaningful class-specific calculation/getter or must be accepted at that exact type. Thin constructors may return an existing parent type.
 - Avoid `dynamic_cast` and `dynamic_pointer_cast` in `cbits/` unless upstream itself forces a downcast. Prefer a concrete leaf type and compile-time-typed getters. If an accessor exposes a missing intermediate base, widen the Haskell family instead; use the `add-quantlib-class` hierarchy procedure.
@@ -54,7 +56,7 @@ Scale numeric tolerances to the result magnitude, normally about `1e-6` relative
 - Place modules by topical family, not C++ inheritance. Keep generic root modules for hierarchy-wide operations.
 - Bind few inspectors. Exclude values that merely echo construction inputs unless another bound producer computes them. Apply this per producer; an unchecked sibling binding is not precedent. If echo getters were the only reason for a leaf type, omit the leaf too.
 - New setters or mutators require explicit user confirmation before implementation. Existing exceptions are engine/pricer wiring, the process-global `Settings` API, and `SimpleQuote.setValue`. Prefer construction-time options.
-- Keep public APIs concrete. Internal `Finalizable` and `Upcastable` constraints are normal, but do not expose ad-hoc public typeclass constraints without a compelling need.
+- Keep public APIs concrete. Internal `Finalizable` and `Upcastable` constraints are normal, but do not expose ad-hoc public typeclass constraints without a compelling need. A public capability class is appropriate only when related bound types implement the same operation with the same argument and result types and the same semantics; do not introduce one merely to avoid qualified imports or to combine similarly named operations with different meanings.
 - Choose collection types by semantics and scale: lists for small possibly-empty collections, `NonEmpty` when emptiness is invalid, storable `RealVector`/`RealMatrix` for large homogeneous numeric data, and boxed matrices for small fixed-dimensional inputs.
 - Use collections of tuples for positionally paired inputs. Keep independent grid axes separate.
 - Reuse tuple conventions instead of wrapper types: `Period` is `(Int|Word, TimeUnit)`, bond price/type is `(Double, BondPriceType)`, and `Money` is `(Double, Currency)`. Matching inputs and outputs should use the same shape.
@@ -69,7 +71,7 @@ Scale numeric tolerances to the result magnitude, normally about `1e-6` relative
 - `Calendar.advance` with `Days` counts business days. To reproduce upstream `Date + Period(n, Days)`, use plain `Data.Time.Calendar.addDays`.
 - Derive an exercise/query date and its year fraction from the same source; do not independently round a time fraction into a date.
 - If a historical QuantLib golden value disagrees systematically, reproduce the fixture in raw C++ against the installed library before diagnosing the binding.
-- Tests that change `Settings.evaluationDate` must use `Settings.keepingSettings'`. Never hand-write the double-`performGC` nudge; use `Settings.collectGarbage` only when finalization is needed outside settings restoration.
+- Tests that change `Settings.evaluationDate` must use `Settings.keepingSettingsGc`. Never hand-write the double-`performGC` nudge; use `Settings.collectGarbage` only when finalization is needed outside settings restoration.
 - Document custom-payoff engine compatibility anywhere a public function accepts one; several upstream engines require a striked payoff and two bound FD engines otherwise dereference a failed cast.
 
 ## C shim and generated code

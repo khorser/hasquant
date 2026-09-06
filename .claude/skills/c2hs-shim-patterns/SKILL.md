@@ -5,6 +5,12 @@ description: Reference for c2hs pragma flags, C shim marshalling patterns, and k
 
 Reference patterns for `.chs` pragmas and `cbits/` marshalling. Use it when a binding's pointer declaration, marshaller, or generated type fails to compile.
 
+## Public Haskell names are semantic
+
+C shim suffixes exist only to disambiguate ABI symbols. Do not expose them as trailing apostrophes or unexplained numeric suffixes in Haskell. Name alternate representations with `From`, added configuration with `With`, coordinates with `At`, and evaluation-date-relative term structures with `Moving`. Reusing a short name in separate topical modules is intentional and preferable to encoding the module name in the value. Treat acronyms as camel-case words in exported values and record selectors (`npvBps`, `gjrGarchModel`, `hestonSlvFdmModel`, `nextImmDate`); ABI-facing C names, C tags, Haskell types, and constructors keep their existing spelling unless the representation itself changes.
+
+Use a public capability class only for related bound types that provide an operation with exactly the same type and semantics. Do not use a class solely to avoid qualified imports, and do not merge same-named upstream methods whose remaining arguments or meanings differ. A sum-typed argument is the better fit when one operation accepts a closed set of genuinely interchangeable representations.
+
 ## `{#pointer#}` flags and bare-backtick return specs
 
 **`{#pointer#}` flags decide what a bare-backtick `{#fun#}` return spec
