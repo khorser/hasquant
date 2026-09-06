@@ -126,7 +126,7 @@ spec evalDate = do
           checkNPV :: CF.Leg -> IR.InterestRate -> Bool -> Double -> IO ()
           checkNPV l r includeRef expected = do
             td <- Settings.evaluationDate
-            v <- CF.npvFromYield' l r includeRef (Just td) (Just td)
+            v <- CF.npvFromYield l r includeRef (Just td) (Just td)
             abs(v - expected) `shouldSatisfy` (<= 1.0e-6)
 
       it "misc variants of settings" $
@@ -1209,41 +1209,25 @@ spec evalDate = do
               prevFlows <- CF.cashFlows prevLeg Nothing Nothing
               length prevFlows `shouldBe` 1
 
-      it "InterestRate-taking and flat-param-taking entry points agree (basisPointValue, bpsFromYield, convexity, duration, npvFromYield, yieldValueBasisPoint)" $
+      it "InterestRate-taking analytics remain coherent after removing decomposed-rate overloads" $
         Settings.keepingSettingsGc $ do
           (l, dc, cpn) <- mkFixedLeg
-          let r = 0.03; comp = IR.Simple; freq = Annual
-
-          bpv' <- CF.basisPointValue' l cpn False Nothing Nothing
-          bpv  <- CF.basisPointValue l r dc comp freq False Nothing Nothing
-          bpv `shouldSatisfy` relClose 1.0e-9 bpv'
-
-          bfy' <- CF.bpsFromYield' l cpn False Nothing Nothing
-          bfy  <- CF.bpsFromYield l r dc comp freq False Nothing Nothing
-          bfy `shouldSatisfy` relClose 1.0e-9 bfy'
-
-          cvx' <- CF.convexity' l cpn False Nothing Nothing
-          cvx  <- CF.convexity l r dc comp freq False Nothing Nothing
-          cvx `shouldSatisfy` relClose 1.0e-9 cvx'
-
-          -- duration/duration' are named the opposite way round from the other pairs here:
-          -- 'duration' takes the InterestRate, 'duration'' takes the flat params.
-          durIR   <- CF.duration l cpn CF.Simple False Nothing Nothing
-          durFlat <- CF.duration' l r dc comp freq CF.Simple False Nothing Nothing
-          durFlat `shouldSatisfy` relClose 1.0e-9 durIR
-
-          npv1 <- CF.npvFromYield' l cpn False Nothing Nothing
-          npv2 <- CF.npvFromYield l r dc comp freq False Nothing Nothing
-          npv2 `shouldSatisfy` relClose 1.0e-9 npv1
-
-          yvbp' <- CF.yieldValueBasisPoint' l cpn False Nothing Nothing
-          yvbp  <- CF.yieldValueBasisPoint l r dc comp freq False Nothing Nothing
-          yvbp `shouldSatisfy` relClose 1.0e-9 yvbp'
+          shifted <- IR.interestRate 0.0301 dc IR.Simple Annual
+          bpv <- CF.basisPointValue l cpn False Nothing Nothing
+          bfy <- CF.bpsFromYield l cpn False Nothing Nothing
+          cvx <- CF.convexity l cpn False Nothing Nothing
+          dur <- CF.duration l cpn CF.Simple False Nothing Nothing
+          npv0 <- CF.npvFromYield l cpn False Nothing Nothing
+          npv1 <- CF.npvFromYield l shifted False Nothing Nothing
+          yvbp <- CF.yieldValueBasisPoint l cpn False Nothing Nothing
+          bpv `shouldSatisfy` relClose 1.0e-6 (npv1 - npv0)
+          forM_ ([bfy, cvx, dur, yvbp] :: [Double])
+            (`shouldSatisfy` (\x -> not (isNaN x || isInfinite x)))
 
       it "yield recovers the coupon rate from the leg's own NPV" $
         Settings.keepingSettingsGc $ do
           (l, dc, cpn) <- mkFixedLeg
-          npv0 <- CF.npvFromYield' l cpn False Nothing Nothing
+          npv0 <- CF.npvFromYield l cpn False Nothing Nothing
           impliedYield <- CF.yield l npv0 dc IR.Simple Annual False Nothing Nothing 1.0e-10 1000 0.03
           impliedYield `shouldSatisfy` relClose 1.0e-6 0.03
 

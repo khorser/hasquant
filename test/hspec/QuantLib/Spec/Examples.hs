@@ -12,7 +12,7 @@ import Data.List.NonEmpty(fromList)
 
 import qualified QuantLib.Settings as Settings
 import QuantLib.Time.Calendar
-import QuantLib.Time.Schedule(dayCounter, DayCounterConstructor(..), TimeUnit(..), Frequency(..))
+import QuantLib.Time.Schedule(dayCounter, schedule, DayCounterConstructor(..), TimeUnit(..), Frequency(..), DateGenerationRule(..))
 import qualified QuantLib.CashFlow as CF
 import qualified QuantLib.Instrument.Bond as B
 import qualified QuantLib.Index.InterestRate as I
@@ -112,8 +112,12 @@ spec = do
     describe "some more bonds" $
       it "some statics" $ do
         c <- calendar UnitedKingdomSettlement
-        l <- CF.leg [(fromGregorian 2013 1 1, 1000)]
-        b <- B.bond' 2 c 1000 (Just (fromGregorian 2013 1 1)) (Just (fromGregorian 2012 1 1)) l
+        let issue = fromGregorian 2012 1 1
+            maturity = fromGregorian 2013 1 1
+        dc <- dayCounter (Actual360 False)
+        sch <- schedule (Just issue) maturity (1, Years) c Unadjusted Unadjusted Backward False Nothing Nothing
+        b <- B.fixedRateBond 2 1000 sch [0.05] dc Following 100 (Just issue) c
+          (0, Days) c Unadjusted False dc
         B.maturityDate b `shouldReturn` Just (fromGregorian 2013 1 1)
 
     describe "Amortizing bonds" $ do

@@ -57,8 +57,8 @@ run = do
     (zip swapTenors swapQuotes)
 
   swapHelpers' <- mapM asRateHelper swapHelpers
-  discountCurve <- piecewiseYieldCurve' 0 weekendsOnly (fromList (depositHelpers ++ swapHelpers'))
-    act365Fixed [] Discount LogLinear False
+  discountCurve <- piecewiseYieldCurveMoving 0 weekendsOnly (fromList (depositHelpers ++ swapHelpers'))
+    act365Fixed [] (Iterative Discount LogLinear defaultIterativeBootstrapOpts) False
 
   let termDate = fromGregorian 2010 6 20
       spread = 0.001

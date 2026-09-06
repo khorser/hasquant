@@ -439,7 +439,6 @@ extern "C" {
   QlVanillaOption* qlEuropeanOption(QlStrikedTypePayoff* x0, QlExercise* x1, char **e);
 
   QlBond *qlBond(unsigned settlDays, Calendar *calendar, int issueDate, Leg *coupons, char **e);
-  QlBond *qlBond1(unsigned settlDays, Calendar *calendar, double faceAmount, int maturityDate, int issueDate, Leg *cashFlows, char **e);
   Leg* qlBondCashflows(QlBond* o, char **e);
   Leg* qlBondRedemptions(QlBond* o, char **e);
   int qlBondSettlementDate(QlBond* o, int d, char **e);
@@ -493,7 +492,6 @@ extern "C" {
     unsigned maxEvaluations, double guess, int priceType, char **e);
   double qlBondAccruedAmount(QlBond* o, int d, char **e);
   double qlBondCleanPrice(QlBond* o, char **e);
-  double qlBondCleanPrice1(QlBond* o, double yield, DayCounter* dc, int comp, int freq, int settlementDate, char **e);
   double qlBondDirtyPrice(QlBond* o, char **e);
   double qlBondDirtyPrice1(QlBond* o, double yield, DayCounter* dc, int comp, int freq, int settlementDate, char **e);
   int qlBondNextCashFlowDate(QlBond* o, int d, char **e);
@@ -514,24 +512,19 @@ extern "C" {
   int qlBondFunctionsAccruedDays(QlBond* bond, int settlementDate, char **e);
   double qlBondFunctionsAccruedPeriod(QlBond* bond, int settlementDate, char **e);
   double qlBondFunctionsAtmRate(QlBond* bond, QlYieldTermStructure* discountCurve, int settlementDate, double price, int, char **e);
-  double qlBondFunctionsBasisPointValue1(QlBond* bond, double yield, DayCounter* dayCounter, int compounding, int frequency, int settlementDate, char **e);
   double qlBondFunctionsBasisPointValue(QlBond* bond, InterestRate* yield, int settlementDate, char **e);
   double qlBondFunctionsBps1(QlBond* bond, InterestRate* yield, int settlementDate, char **e);
-  double qlBondFunctionsBps2(QlBond* bond, double yield, DayCounter* dayCounter, int compounding, int frequency, int settlementDate, char **e);
   double qlBondFunctionsBps(QlBond* bond, QlYieldTermStructure* discountCurve, int settlementDate, char **e);
   double qlBondFunctionsCleanPrice2(QlBond* bond, QlYieldTermStructure* discountCurve, int settlementDate, char **e);
   double qlBondFunctionsCleanPrice3(QlBond* bond, QlYieldTermStructure* discount, double zSpread, int compounding, int frequency, int settlementDate, char **e);
   double qlBondFunctionsCleanPrice4(QlBond* bond, InterestRate* yield, int settlementDate, char **e);
-  double qlBondFunctionsConvexity1(QlBond* bond, double yield, DayCounter* dayCounter, int compounding, int frequency, int settlementDate, char **e);
   double qlBondFunctionsConvexity(QlBond* bond, InterestRate* yield, int settlementDate, char **e);
-  double qlBondFunctionsDuration1(QlBond* bond, double yield, DayCounter* dayCounter, int compounding, int frequency, int type, int settlementDate, char **e);
   double qlBondFunctionsDuration(QlBond* bond, InterestRate* yield, int type, int settlementDate, char **e);
   double qlBondFunctionsNextCashFlowAmount(QlBond* bond, int refDate, char **e);
   double qlBondFunctionsPreviousCashFlowAmount(QlBond* bond, int refDate, char **e);
   int qlBondFunctionsReferencePeriodEnd(QlBond* bond, int settlementDate, char **e);
   int qlBondFunctionsReferencePeriodStart(QlBond* bond, int settlementDate, char **e);
   double qlBondFunctionsYield2(QlBond* bond, double price, int, DayCounter* dayCounter, int compounding, int frequency, int settlementDate, double accuracy, unsigned maxIterations, double guess, char **e);
-  double qlBondFunctionsYieldValueBasisPoint1(QlBond* bond, double yield, DayCounter* dayCounter, int compounding, int frequency, int settlementDate, char **e);
   double qlBondFunctionsYieldValueBasisPoint(QlBond* bond, InterestRate* yield, int settlementDate, char **e);
   double qlBondFunctionsZSpread(QlBond* bond, double price, int, QlYieldTermStructure* x2, int compounding, int frequency, int settlementDate, double accuracy, unsigned maxIterations, double guess, char **e);
 
@@ -577,14 +570,10 @@ extern "C" {
   int qlCashFlowsAccruedDays(Leg* leg, int includeSettlementDateFlows, int settlementDate, char **e);
   double qlCashFlowsAccruedPeriod(Leg* leg, int includeSettlementDateFlows, int settlementDate, char **e);
   double qlCashFlowsAtmRate(Leg* leg, QlYieldTermStructure* discountCurve, int includeSettlementDateFlows, int settlementDate, int npvDate, double npv, char **e);
-  double qlCashFlowsBasisPointValue1(Leg* leg, double yield, DayCounter* dayCounter, int compounding, int frequency, int includeSettlementDateFlows, int settlementDate, int npvDate, char **e);
   double qlCashFlowsBasisPointValue(Leg* leg, InterestRate* yield, int includeSettlementDateFlows, int settlementDate, int npvDate, char **e);
   double qlCashFlowsBps1(Leg* leg, InterestRate* yield, int includeSettlementDateFlows, int settlementDate, int npvDate, char **e);
-  double qlCashFlowsBps2(Leg* leg, double yield, DayCounter* dayCounter, int compounding, int frequency, int includeSettlementDateFlows, int settlementDate, int npvDate, char **e);
   double qlCashFlowsBps(Leg* leg, QlYieldTermStructure* discountCurve, int includeSettlementDateFlows, int settlementDate, int npvDate, char **e);
-  double qlCashFlowsConvexity1(Leg* leg, double yield, DayCounter* dayCounter, int compounding, int frequency, int includeSettlementDateFlows, int settlementDate, int npvDate, char **e);
   double qlCashFlowsConvexity(Leg* leg, InterestRate* yield, int includeSettlementDateFlows, int settlementDate, int npvDate, char **e);
-  double qlCashFlowsDuration1(Leg* leg, double yield, DayCounter* dayCounter, int compounding, int frequency, int type, int includeSettlementDateFlows, int settlementDate, int npvDate, char **e);
   int qlCashFlowsIsExpired(Leg* leg, int includeSettlementDateFlows, int settlementDate, char **e);
   int qlCashFlowsMaturityDate(Leg* leg, char **e);
   double qlCashFlowsNextCashFlowAmount(Leg* leg, int includeSettlementDateFlows, int settlementDate, char **e);
@@ -592,7 +581,6 @@ extern "C" {
   double qlCashFlowsNextCouponRate(Leg* leg, int includeSettlementDateFlows, int settlementDate, char **e);
   double qlCashFlowsNominal(Leg* leg, int includeSettlementDateFlows, int settlDate, char **e);
   double qlCashFlowsNpv1(Leg* leg, InterestRate* yield, int includeSettlementDateFlows, int settlementDate, int npvDate, char **e);
-  double qlCashFlowsNpv2(Leg* leg, double yield, DayCounter* dayCounter, int compounding, int frequency, int includeSettlementDateFlows, int settlementDate, int npvDate, char **e);
   double qlCashFlowsNpv3(Leg* leg, QlYieldTermStructure* discount, double zSpread, int compounding, int frequency, int includeSettlementDateFlows, int settlementDate, int npvDate, char **e);
   double qlCashFlowsNpv(Leg* leg, QlYieldTermStructure* discountCurve, int includeSettlementDateFlows, int settlementDate, int npvDate, char **e);
   void qlCashFlowsNpvbps(Leg* leg, QlYieldTermStructure* discountCurve, int includeSettlementDateFlows, int settlementDate, int npvDate, double *npv, double *bps, char **e);
@@ -602,7 +590,6 @@ extern "C" {
   int qlCashFlowsReferencePeriodEnd(Leg* leg, int includeSettlementDateFlows, int settlDate, char **e);
   int qlCashFlowsReferencePeriodStart(Leg* leg, int includeSettlementDateFlows, int settlDate, char **e);
   double qlCashFlowsYield(Leg* leg, double npv, DayCounter* dayCounter, int compounding, int frequency, int includeSettlementDateFlows, int settlementDate, int npvDate, double accuracy, unsigned maxIterations, double guess, char **e);
-  double qlCashFlowsYieldValueBasisPoint1(Leg* leg, double yield, DayCounter* dayCounter, int compounding, int frequency, int includeSettlementDateFlows, int settlementDate, int npvDate, char **e);
   double qlCashFlowsYieldValueBasisPoint(Leg* leg, InterestRate* yield, int includeSettlementDateFlows, int settlementDate, int npvDate, char **e);
   double qlCashFlowsZSpread(Leg* leg, double npv, QlYieldTermStructure* x2, int compounding, int frequency, int includeSettlementDateFlows, int settlementDate, int npvDate, double accuracy, unsigned maxIterations, double guess, char **e);
 

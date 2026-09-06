@@ -1002,9 +1002,11 @@ spec = do
               >>= mapM asRateHelper -- swapRateHelper' returns the concrete SwapRateHelper; upcast to the generic RateHelper the other helpers already are, so the list below is homogeneous
             -- helpers3m/helpers6m each reference the *other* curve's not-yet-bootstrapped
             -- internal handle (via euribor3m/euribor6m) -- this is exactly the cycle a plain
-            -- piecewiseYieldCurve' (IterativeBootstrap) can't resolve.
-            ptr3m <- piecewiseYieldCurveGlobalBootstrap' 0 cal (fromList (helpers3mFra ++ helpers3mBasis)) euriborDC [] 1.0e-10 [] False
-            ptr6m <- piecewiseYieldCurveGlobalBootstrap' 0 cal (fromList (helpers6mBasis ++ helpers6mSwap)) euriborDC [] 1.0e-10 [] False
+            -- piecewiseYieldCurveMoving with IterativeBootstrap can't resolve.
+            ptr3m <- piecewiseYieldCurveMoving 0 cal (fromList (helpers3mFra ++ helpers3mBasis)) euriborDC []
+              (GlobalDiscountLogLinear 1.0e-10 []) False
+            ptr6m <- piecewiseYieldCurveMoving 0 cal (fromList (helpers6mBasis ++ helpers6mSwap)) euriborDC []
+              (GlobalDiscountLogLinear 1.0e-10 []) False
             mc <- multiCurve 1.0e-10
             curve3m <- addBootstrappedCurve mc intcurve3m ptr3m
             curve6m <- addBootstrappedCurve mc intcurve6m ptr6m
@@ -1080,7 +1082,8 @@ spec = do
             helpers3m <- mapM (\i -> swapRateHelper' q (i, Years) cal Annual Following thirty360 euribor3m Nothing (0, Days) (Just intcurveois)
                                         Nothing LastRelevantDate Nothing False Nothing Nothing Nothing
                                       >>= asRateHelper) [1 .. 10 :: Int]
-            ptr3m <- piecewiseYieldCurveGlobalBootstrap' 0 cal (fromList helpers3m) euriborDC [] 1.0e-10 [] False
+            ptr3m <- piecewiseYieldCurveMoving 0 cal (fromList helpers3m) euriborDC []
+              (GlobalDiscountLogLinear 1.0e-10 []) False
             mc <- multiCurve 1.0e-10
             curve3m <- addBootstrappedCurve mc intcurve3m ptr3m
             ptrois <- zeroSpreadedTermStructure intcurve3m b IR.Continuous NoFrequency
@@ -1126,8 +1129,10 @@ spec = do
           h1 <- depositRateHelper q1 (6, Months) 2 cal ModifiedFollowing True euriborDC
           h2 <- depositRateHelper q2 (6, Months) 2 cal ModifiedFollowing True euriborDC
           let helpers = [h1, h2]
-          curveMostlyQ2 <- piecewiseYieldCurveGlobalBootstrap' 0 cal helpers euriborDC [] 1.0e-10 [0.1, 0.9] False
-          curveMostlyQ1 <- piecewiseYieldCurveGlobalBootstrap' 0 cal helpers euriborDC [] 1.0e-10 [0.9, 0.1] False
+          curveMostlyQ2 <- piecewiseYieldCurveMoving 0 cal helpers euriborDC []
+            (GlobalDiscountLogLinear 1.0e-10 [0.1, 0.9]) False
+          curveMostlyQ1 <- piecewiseYieldCurveMoving 0 cal helpers euriborDC []
+            (GlobalDiscountLogLinear 1.0e-10 [0.9, 0.1]) False
           settleFix <- advance cal curveToday (2, Days) Following False
           pillar <- advance cal settleFix (6, Months) ModifiedFollowing True
           d1 <- discount' curveMostlyQ1 pillar False
@@ -1161,8 +1166,10 @@ spec = do
           q <- Quote.simpleQuote 0.03
           helpersDiscount <- mapM (\i -> depositRateHelper q (i, Months) 2 cal ModifiedFollowing True euriborDC) [1 .. 5 :: Int]
           helpersZero <- mapM (\i -> depositRateHelper q (i, Months) 2 cal ModifiedFollowing True euriborDC) [1 .. 5 :: Int]
-          discountCurve <- piecewiseYieldCurveGlobalBootstrap' 0 cal (fromList helpersDiscount) euriborDC [] 1.0e-10 [] False
-          zeroCurve <- piecewiseYieldCurveGlobalBootstrapSimpleZeroLinear' 0 cal (fromList helpersZero) euriborDC [] 1.0e-10 [] False
+          discountCurve <- piecewiseYieldCurveMoving 0 cal (fromList helpersDiscount) euriborDC []
+            (GlobalDiscountLogLinear 1.0e-10 []) False
+          zeroCurve <- piecewiseYieldCurveMoving 0 cal (fromList helpersZero) euriborDC []
+            (GlobalSimpleZeroLinear 1.0e-10 []) False
           settleFix <- advance cal curveToday (2, Days) Following False
           mapM_ (\i -> do
               pillar <- advance cal settleFix (i, Months) ModifiedFollowing True
@@ -1177,7 +1184,7 @@ spec = do
       -- default Bootstrap for any Traits/Interpolator combination -- was reachable only through
       -- the GlobalBootstrap-specific entry points above, never with plain IterativeBootstrap.
       -- Same pillar-discount-factor comparison as the GlobalBootstrap test above, but through
-      -- piecewiseYieldCurve' directly (no GlobalBootstrap involved), to confirm the trait now
+      -- piecewiseYieldCurveMoving with IterativeBootstrap (no GlobalBootstrap involved), to confirm the trait now
       -- dispatches instead of hitting dispatchTrait's "Unsupported trait" QL_FAIL.
       it "SimpleZeroYield reprices to the same pillar discount factors as Discount under IterativeBootstrap" $
         Settings.keepingSettingsGc $ do
@@ -1187,8 +1194,10 @@ spec = do
           q <- Quote.simpleQuote 0.03
           helpersDiscount <- mapM (\i -> depositRateHelper q (i, Months) 2 cal ModifiedFollowing True euriborDC) [1 .. 5 :: Int]
           helpersZero <- mapM (\i -> depositRateHelper q (i, Months) 2 cal ModifiedFollowing True euriborDC) [1 .. 5 :: Int]
-          discountCurve <- piecewiseYieldCurve' 0 cal (fromList helpersDiscount) euriborDC [] Discount Linear False
-          zeroCurve <- piecewiseYieldCurve' 0 cal (fromList helpersZero) euriborDC [] SimpleZeroYield Linear False
+          discountCurve <- piecewiseYieldCurveMoving 0 cal (fromList helpersDiscount) euriborDC []
+            (Iterative Discount Linear defaultIterativeBootstrapOpts) False
+          zeroCurve <- piecewiseYieldCurveMoving 0 cal (fromList helpersZero) euriborDC []
+            (Iterative SimpleZeroYield Linear defaultIterativeBootstrapOpts) False
           settleFix <- advance cal curveToday (2, Days) Following False
           mapM_ (\i -> do
               pillar <- advance cal settleFix (i, Months) ModifiedFollowing True
@@ -1234,7 +1243,8 @@ spec = do
           -- spurious 2-day discounting gap -- confirmed by comparing against a settl=0 curve,
           -- whose discount() came out identical to a plain (non-functor) curve but consistently
           -- off from the hand-computed expectation.
-          curve <- piecewiseYieldCurveGlobalBootstrapSimpleZeroLinearFull' 2 cal helpers euriborDC [] helpers extraDates 1.0e-10 False
+          curve <- piecewiseYieldCurveMoving 2 cal helpers euriborDC []
+            (GlobalSimpleZeroLinearFull helpers extraDates 1.0e-10) False
           mapM_ (\i -> do
               pillar <- advance cal settleFix (i, Months) ModifiedFollowing True
               -- Actual360's own year fraction: no dedicated QuantLib.yearFraction binding
@@ -1247,8 +1257,8 @@ spec = do
             ) ([1 .. 5] :: [Int])
 
       -- LocalBootstrap only works with an interpolator providing localInterpolate(), which
-      -- upstream only ConvexMonotone supplies -- so piecewiseYieldCurveLocalBootstrap' hardcodes
-      -- ConvexMonotone rather than taking an Interpolation argument. No cached upstream fixture
+      -- upstream only ConvexMonotone supplies, so the Local constructor selects ConvexMonotone
+      -- rather than taking an Interpolation argument. No cached upstream fixture
       -- reuses this exact combination, so this checks the same reprices-its-own-instruments
       -- property as the GlobalBootstrapFull test above: each deposit still solves back to its
       -- own input quote via the standard simple-compounding relation. trait=ForwardRate, not
@@ -1265,7 +1275,8 @@ spec = do
           q <- Quote.simpleQuote 0.03
           qVal <- Quote.value q
           helpers <- fromList <$> mapM (\i -> depositRateHelper q (i, Months) 2 cal ModifiedFollowing True euriborDC) [1 .. 5 :: Int]
-          curve <- piecewiseYieldCurveLocalBootstrap' 2 cal helpers euriborDC [] ForwardRate 2 True 1.0e-10 0.3 0.7 True False
+          curve <- piecewiseYieldCurveMoving 2 cal helpers euriborDC []
+            (Local LForwardRate 2 True 1.0e-10 0.3 0.7 True) False
           mapM_ (\i -> do
               pillar <- advance cal settleFix (i, Months) ModifiedFollowing True
               let tau = fromIntegral (diffDays pillar settleFix) / 360 :: Double
@@ -1273,18 +1284,9 @@ spec = do
               df `shouldSatisfy` closePrec (1 / (1 + qVal * tau)) tolerance
             ) ([1 .. 5] :: [Int])
 
-      -- piecewiseYieldCurve2' unifies all five bootstrapper choices tested above behind one
-      -- Bootstrap ADT instead of one function per bootstrapper: piecewiseYieldCurve'/
-      -- piecewiseYieldCurveGlobalBootstrap'/piecewiseYieldCurveGlobalBootstrapSimpleZeroLinear'/
-      -- ...Full' are now one-line wrappers over it (piecewiseYieldCurveLocalBootstrap' is the one
-      -- exception -- it still accepts the full BootstrapTrait including the rejected Discount,
-      -- which Bootstrap's Local constructor can't represent, so it keeps its own direct
-      -- implementation; see Bootstrap's haddock). Exercises every Bootstrap constructor directly
-      -- through piecewiseYieldCurve2' itself, checking the same reprices-its-own-instruments
-      -- property as the individual-function tests above -- passing here, together with those
-      -- tests still passing unchanged, is the evidence that the unification didn't change any
-      -- bootstrapper's behaviour.
-      it "piecewiseYieldCurve2' dispatches every Bootstrap constructor to a curve that reprices its own instruments" $
+      -- piecewiseYieldCurveMoving unifies every moving bootstrapper behind one Bootstrap ADT.
+      -- Exercise every constructor and check that each curve reprices its own instruments.
+      it "piecewiseYieldCurveMoving dispatches every Bootstrap constructor to a curve that reprices its own instruments" $
         Settings.keepingSettingsGc $ do
           Settings.setEvaluationDate (Just curveToday)
           cal <- Calendar.calendar TARGET
@@ -1302,18 +1304,18 @@ spec = do
                   df <- discount' curve pillar False
                   df `shouldSatisfy` closePrec (1 / (1 + qVal * tau)) tolerance
                 ) ([1 .. 5] :: [Int])
-          piecewiseYieldCurve2' 2 cal helpers euriborDC [] (Iterative ForwardRate Linear defaultIterativeBootstrapOpts) False >>= checkCurve
-          piecewiseYieldCurve2' 2 cal helpers euriborDC [] (GlobalDiscountLogLinear 1.0e-10 []) False >>= checkCurve
-          piecewiseYieldCurve2' 2 cal helpers euriborDC [] (GlobalSimpleZeroLinear 1.0e-10 []) False >>= checkCurve
-          piecewiseYieldCurve2' 2 cal helpers euriborDC [] (GlobalSimpleZeroLinearFull helpers extraDates 1.0e-10) False >>= checkCurve
-          piecewiseYieldCurve2' 2 cal helpers euriborDC [] (GlobalForwardRateLinear 1.0e-10 []) False >>= checkCurve
-          piecewiseYieldCurve2' 2 cal helpers euriborDC [] (GlobalZeroYieldLinear 1.0e-10 []) False >>= checkCurve
-          piecewiseYieldCurve2' 2 cal helpers euriborDC [] (Local LForwardRate 2 True 1.0e-10 0.3 0.7 True) False >>= checkCurve
+          piecewiseYieldCurveMoving 2 cal helpers euriborDC [] (Iterative ForwardRate Linear defaultIterativeBootstrapOpts) False >>= checkCurve
+          piecewiseYieldCurveMoving 2 cal helpers euriborDC [] (GlobalDiscountLogLinear 1.0e-10 []) False >>= checkCurve
+          piecewiseYieldCurveMoving 2 cal helpers euriborDC [] (GlobalSimpleZeroLinear 1.0e-10 []) False >>= checkCurve
+          piecewiseYieldCurveMoving 2 cal helpers euriborDC [] (GlobalSimpleZeroLinearFull helpers extraDates 1.0e-10) False >>= checkCurve
+          piecewiseYieldCurveMoving 2 cal helpers euriborDC [] (GlobalForwardRateLinear 1.0e-10 []) False >>= checkCurve
+          piecewiseYieldCurveMoving 2 cal helpers euriborDC [] (GlobalZeroYieldLinear 1.0e-10 []) False >>= checkCurve
+          piecewiseYieldCurveMoving 2 cal helpers euriborDC [] (Local LForwardRate 2 True 1.0e-10 0.3 0.7 True) False >>= checkCurve
 
       -- issue #15: GlobalBootstrap widened to ForwardRate/Linear and ZeroYield/Linear, the other
       -- two IterativeBootstrap traits paired with the cheapest interpolator. Same
       -- reprices-its-own-instruments property as the SimpleZeroYield GlobalBootstrap test above,
-      -- through their own dedicated named entry points rather than piecewiseYieldCurve2' directly.
+      -- through their own dedicated named entry points rather than piecewiseYieldCurveMoving directly.
       it "ForwardRate/ZeroYield GlobalBootstrap curves reprice to the same pillar discount factors as Discount" $
         Settings.keepingSettingsGc $ do
           Settings.setEvaluationDate (Just curveToday)
@@ -1322,9 +1324,12 @@ spec = do
           settleFix <- advance cal curveToday (2, Days) Following False
           q <- Quote.simpleQuote 0.03
           helpers <- fromList <$> mapM (\i -> depositRateHelper q (i, Months) 2 cal ModifiedFollowing True euriborDC) [1 .. 5 :: Int]
-          discountCurve <- piecewiseYieldCurveGlobalBootstrap' 0 cal helpers euriborDC [] 1.0e-10 [] False
-          forwardCurve <- piecewiseYieldCurveGlobalBootstrapForwardRateLinear' 0 cal helpers euriborDC [] 1.0e-10 [] False
-          zeroCurve <- piecewiseYieldCurveGlobalBootstrapZeroYieldLinear' 0 cal helpers euriborDC [] 1.0e-10 [] False
+          discountCurve <- piecewiseYieldCurveMoving 0 cal helpers euriborDC []
+            (GlobalDiscountLogLinear 1.0e-10 []) False
+          forwardCurve <- piecewiseYieldCurveMoving 0 cal helpers euriborDC []
+            (GlobalForwardRateLinear 1.0e-10 []) False
+          zeroCurve <- piecewiseYieldCurveMoving 0 cal helpers euriborDC []
+            (GlobalZeroYieldLinear 1.0e-10 []) False
           mapM_ (\i -> do
               pillar <- advance cal settleFix (i, Months) ModifiedFollowing True
               dfDiscount <- discount' discountCurve pillar False

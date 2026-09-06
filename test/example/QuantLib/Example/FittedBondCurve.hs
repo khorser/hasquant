@@ -56,7 +56,8 @@ run = do
   mapM_ (\(price, q, i) -> do
       b <- TS.bondHelperBond i
       ytm <- yieldFromPrice' b (price, Clean) dc IR.Compounded Annual newtod 1e-10 100 0.05
-      dur <- duration b ytm dc IR.Compounded Annual CF.Modified newtod
+      ytmRate <- IR.interestRate ytm dc IR.Compounded Annual
+      dur <- duration b ytmRate CF.Modified newtod
       let dp = -dur * price * 5 / 10000
       setValue q (price + dp)) $
         zip3 (drop 1 cleanPrices) (drop 1 cleanQuotes) iA
@@ -122,7 +123,8 @@ run = do
 
       let (instrA, instrB) = unzip helpers
 
-      ts0 <- TS.piecewiseYieldCurve' curveSettleDays cal (fromList instrB) dc [] TS.Discount LogLinear False
+      ts0 <- TS.piecewiseYieldCurveMoving curveSettleDays cal (fromList instrB) dc []
+        (TS.Iterative TS.Discount LogLinear TS.defaultIterativeBootstrapOpts) False
 
       curves <- fitCurves cal dc instrA
       rs <- rates ts0 dc bondSettle evalDate curves instrA
@@ -141,7 +143,8 @@ run = do
     step3 :: Day -> DayCounter -> Calendar -> Day -> [TS.BondHelper] -> [TS.RateHelper]
              -> IO (Rate, TS.YieldTermStructure, [TS.FittedBondDiscountCurve])
     step3 evalDate dc cal bondSettle iA iB = do
-      ts00 <- TS.piecewiseYieldCurve' curveSettleDays cal (fromList iB) dc [] TS.Discount LogLinear False
+      ts00 <- TS.piecewiseYieldCurveMoving curveSettleDays cal (fromList iB) dc []
+        (TS.Iterative TS.Discount LogLinear TS.defaultIterativeBootstrapOpts) False
 
       curves <- fitCurves cal dc iA
       rs <- rates ts00 dc bondSettle evalDate curves iA

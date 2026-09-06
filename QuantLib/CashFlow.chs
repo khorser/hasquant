@@ -95,14 +95,10 @@ module QuantLib.CashFlow
   , accruedDays
   , accruedPeriod
   , atmRate
-  , basisPointValue'
   , basisPointValue
   , bpsFromYield
-  , bpsFromYield'
   , bps
-  , convexity'
   , convexity
-  , duration'
   , isExpired
   , maturityDate
   , nextCashFlowAmount
@@ -110,7 +106,6 @@ module QuantLib.CashFlow
   , nextCouponRate
   , nominal
   , npvFromYield
-  , npvFromYield'
   , npv'
   , npv
   , npvBps
@@ -120,7 +115,6 @@ module QuantLib.CashFlow
   , referencePeriodEnd
   , referencePeriodStart
   , yield
-  , yieldValueBasisPoint'
   , yieldValueBasisPoint
   , zSpread
 
@@ -832,18 +826,9 @@ cashFlows l i d = do{(as, ds, hs) <- qlLegCashFlows l i d; return $ zip3 ds as h
   ,withMaybeDay*`Maybe Day' -- ^settlementDate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
--- |Basis-point value, as 'basisPointValue'' but taking a plain yield\/day counter\/compounding\/frequency
--- instead of an 'InterestRate'.
-{#fun qlCashFlowsBasisPointValue1 as basisPointValue{withLeg*`GenLeg l',`Double'
-  ,withDayCounter*`DayCounter',`Compounding',`Frequency'
-  ,`Bool' -- ^includeSettlementDateFlows
-  ,withMaybeDay*`Maybe Day' -- ^settlementDate
-  ,withMaybeDay*`Maybe Day' -- ^npvDate
-  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
-
 -- |Basis-point value.
 -- Obtained by setting dy = 0.0001 in the 2nd-order Taylor series expansion.
-{#fun qlCashFlowsBasisPointValue as basisPointValue'{withLeg*`GenLeg l',withInterestRate*`InterestRate'
+{#fun qlCashFlowsBasisPointValue as basisPointValue{withLeg*`GenLeg l',withInterestRate*`InterestRate'
   ,`Bool' -- ^includeSettlementDateFlows
   ,withMaybeDay*`Maybe Day' -- ^settlementDate
   ,withMaybeDay*`Maybe Day' -- ^npvDate
@@ -851,41 +836,16 @@ cashFlows l i d = do{(as, ds, hs) <- qlLegCashFlows l i d; return $ zip3 ds as h
 
 -- |Basis-point sensitivity of the cash flows.
 -- The result is the change in NPV due to a uniform 1-basis-point change in the rate paid by the cash flows. The change for each coupon is discounted according to the given constant interest rate. The result is affected by the choice of the interest-rate compounding and the relative frequency and day counter.
-{#fun qlCashFlowsBps1 as bpsFromYield'{withLeg*`GenLeg l',withInterestRate*`InterestRate'
+{#fun qlCashFlowsBps1 as bpsFromYield{withLeg*`GenLeg l',withInterestRate*`InterestRate'
   ,`Bool' -- ^includeSettlementDateFlows
   ,withMaybeDay*`Maybe Day' -- ^settlementDate
   ,withMaybeDay*`Maybe Day' -- ^npvDate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
-
--- |Basis-point sensitivity, as 'bpsFromYield'' but taking a plain yield\/day counter\/compounding\/frequency
--- instead of an 'InterestRate'.
-{#fun qlCashFlowsBps2 as bpsFromYield{withLeg*`GenLeg l',`Double'
-  ,withDayCounter*`DayCounter',`Compounding',`Frequency',`Bool' -- ^includeSettlementDateFlows
-  ,withMaybeDay*`Maybe Day' -- ^settlementDate
-  ,withMaybeDay*`Maybe Day' -- ^npvDate
-  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
-
--- |Cash-flow convexity, as 'convexity'' but taking a plain yield\/day counter\/compounding\/frequency
--- instead of an 'InterestRate'.
-{#fun qlCashFlowsConvexity1 as convexity{withLeg*`GenLeg l',`Double'
-  ,withDayCounter*`DayCounter',`Compounding',`Frequency',`Bool' -- ^includeSettlementDateFlows
-    ,withMaybeDay*`Maybe Day' -- ^settlementDate
-    ,withMaybeDay*`Maybe Day' -- ^npvDate
-    ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Cash-flow convexity.
 -- The convexity of a string of cash flows is defined as \[ C = \frac{1}{P} \frac{\partial^2 P}{\partial y^2} \] where $ P $ is the present value of the cash flows according to the given IRR $ y $.
-{#fun qlCashFlowsConvexity as convexity'{withLeg*`GenLeg l',withInterestRate*`InterestRate'
+{#fun qlCashFlowsConvexity as convexity{withLeg*`GenLeg l',withInterestRate*`InterestRate'
   ,`Bool' -- ^includeSettlementDateFlows
-  ,withMaybeDay*`Maybe Day' -- ^settlementDate
-  ,withMaybeDay*`Maybe Day' -- ^npvDate
-  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
-
--- |Cash-flow duration, as 'duration' but taking a plain yield\/day counter\/compounding\/frequency
--- instead of an 'InterestRate'.
-{#fun qlCashFlowsDuration1 as duration'{withLeg*`GenLeg l',`Double'
-  ,withDayCounter*`DayCounter'
-  ,`Compounding',`Frequency',`DurationType',`Bool' -- ^includeSettlementDateFlows
   ,withMaybeDay*`Maybe Day' -- ^settlementDate
   ,withMaybeDay*`Maybe Day' -- ^npvDate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
@@ -920,15 +880,7 @@ cashFlows l i d = do{(as, ds, hs) <- qlLegCashFlows l i d; return $ zip3 ds as h
 
 -- |NPV of the cash flows.
 -- The IRR is the interest rate at which the NPV of the cash flows equals the dirty price.The NPV is the sum of the cash flows, each discounted according to the given constant interest rate. The result is affected by the choice of the interest-rate compounding and the relative frequency and day counter.
-{#fun qlCashFlowsNpv1 as npvFromYield'{withLeg*`GenLeg l',withInterestRate*`InterestRate',`Bool' -- ^includeSettlementDateFlows
-  ,withMaybeDay*`Maybe Day' -- ^settlementDate
-  ,withMaybeDay*`Maybe Day' -- ^npvDate
-  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
-
--- |NPV of the cash flows, as 'npvFromYield'' but taking a plain yield\/day counter\/compounding\/frequency
--- instead of an 'InterestRate'.
-{#fun qlCashFlowsNpv2 as npvFromYield{withLeg*`GenLeg l',`Double'
-  ,withDayCounter*`DayCounter',`Compounding',`Frequency',`Bool' -- ^includeSettlementDateFlows
+{#fun qlCashFlowsNpv1 as npvFromYield{withLeg*`GenLeg l',withInterestRate*`InterestRate',`Bool' -- ^includeSettlementDateFlows
   ,withMaybeDay*`Maybe Day' -- ^settlementDate
   ,withMaybeDay*`Maybe Day' -- ^npvDate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
@@ -1016,17 +968,9 @@ cashFlows l i d = do{(as, ds, hs) <- qlLegCashFlows l i d; return $ zip3 ds as h
   ,`Double' -- ^guess
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
--- |Yield value of a basis point, as 'yieldValueBasisPoint'' but taking a plain
--- yield\/day counter\/compounding\/frequency instead of an 'InterestRate'.
-{#fun qlCashFlowsYieldValueBasisPoint1 as yieldValueBasisPoint{withLeg*`GenLeg l',`Double' -- ^yield
-  ,withDayCounter*`DayCounter',`Compounding',`Frequency',`Bool' -- ^includeSettlementDateFlows
-  ,withMaybeDay*`Maybe Day' -- ^settlementDate
-  ,withMaybeDay*`Maybe Day' -- ^npvDate
-  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
-
 -- |Yield value of a basis point.
 -- The yield value of a one basis point change in price is the derivative of the yield with respect to the price multiplied by 0.01
-{#fun qlCashFlowsYieldValueBasisPoint as yieldValueBasisPoint'{withLeg*`GenLeg l',withInterestRate*`InterestRate' -- ^yield
+{#fun qlCashFlowsYieldValueBasisPoint as yieldValueBasisPoint{withLeg*`GenLeg l',withInterestRate*`InterestRate' -- ^yield
   ,`Bool' -- ^includeSettlementDateFlows
   ,withMaybeDay*`Maybe Day' -- ^settlementDate
   ,withMaybeDay*`Maybe Day' -- ^npvDate

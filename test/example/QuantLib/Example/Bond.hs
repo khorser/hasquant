@@ -263,7 +263,8 @@ priceBonds md pricing allBonds@(fixedBond, _, floater) = do
 
   let (_, _, floaterYield) = bYield
       (_, _, floaterCleanPrice) = bCleanPrice
-  fCleanFromYield <- cleanPriceFromYield floater floaterYield (actual360dc md) Compounded Annual (settlDate md)
+  floaterRate <- interestRate floaterYield (actual360dc md) Compounded Annual
+  fCleanFromYield <- cleanPriceFromYield floater floaterRate (settlDate md)
   fYieldFromClean <- yieldFromPrice floater (floaterCleanPrice, Clean) (actual360dc md) Compounded Annual (settlDate md) 1e-8 100
 
   let bDirtyPrice = zipTriple (+) bCleanPrice bAccruedAmount

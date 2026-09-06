@@ -16,7 +16,6 @@ module QuantLib.Instrument.Bond
   , CPIInterpolationType(..)
 
   , bond
-  , bond'
   , fixedRateBond
   , btp
   , btpWithRedemption
@@ -77,24 +76,18 @@ module QuantLib.Instrument.Bond
   , accruedDays
   , accruedPeriod
   , atmRate
-  , basisPointValue'
   , basisPointValue
   , bpsFromYield
-  , bpsFromYield'
   , bps
   , cleanPrice
   , cleanPrice'
-  , cleanPriceFromYield'
-  , convexity'
   , convexity
-  , duration'
   , duration
   , nextCashFlowAmount
   , previousCashFlowAmount
   , referencePeriodEnd
   , referencePeriodStart
   , yieldFromPrice'
-  , yieldValueBasisPoint'
   , yieldValueBasisPoint
   , zSpread
 
@@ -181,16 +174,6 @@ $(deriveOptionsRecord "AmortizingFloatingRateBondOpts" []
 -- Redemptions and maturity are calculated from the coupon data, if available. Therefore, redemptions must not be included in the passed cash flows.
 {#fun qlBond as bond{fromIntegral`Word',withCalendar*`Calendar',withMaybeDay*`Maybe Day' -- ^issueDate
   ,withLeg*`GenLeg l' -- ^coupons
-  ,preErrorCheck-`String'errorCheck*-}->`Bond'peekBond*#}
-
--- |old constructor for non amortizing bonds.
--- /Warning/ The last passed cash flow must be the bond redemption. No other cash flow can have a date later than the redemption date.
-{#fun qlBond1 as bond'{fromIntegral`Word' -- ^settlementDays
-  ,withCalendar*`Calendar'
-  ,`Double' -- ^faceAmount
-  ,withMaybeDay*`Maybe Day' -- ^maturityDate
-  ,withMaybeDay*`Maybe Day' -- ^issueDate
-  ,withLeg*`GenLeg l' -- ^cashFlows
   ,preErrorCheck-`String'errorCheck*-}->`Bond'peekBond*#}
 
 -- |Returns the maturity date of the bond
@@ -403,9 +386,6 @@ amortizingFloatingRateBond settlementDays notionalsArg schedule idx accrualDayCo
 -- |accrued amount at a given date
 {#fun qlBondAccruedAmount as accruedAmount{withBond*`GenBond b',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
--- |clean price given a yield and settlement date
-{#fun qlBondCleanPrice1 as cleanPriceFromYield{withBond*`GenBond b',`Double',withDayCounter*`DayCounter',`Compounding',`Frequency',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Double'#}
-
 -- |dirty price given a yield and settlement date
 {#fun qlBondDirtyPrice1 as dirtyPriceFromYield{withBond*`GenBond b',`Double',withDayCounter*`DayCounter',`Compounding',`Frequency',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
@@ -476,17 +456,11 @@ amortizingFloatingRateBond settlementDays notionalsArg schedule idx accrualDayCo
 -- |length in time accrued up to the given (or default settlement) date
 {#fun qlBondFunctionsAccruedPeriod as accruedPeriod{withBond*`GenBond b',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
--- |basis-point value given a flat yield, day counter, compounding and frequency
-{#fun qlBondFunctionsBasisPointValue1 as basisPointValue{withBond*`GenBond b',`Double',withDayCounter*`DayCounter',`Compounding',`Frequency',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Double'#}
-
 -- |basis-point value given an 'InterestRate' yield
-{#fun qlBondFunctionsBasisPointValue as basisPointValue'{withBond*`GenBond b',withInterestRate*`InterestRate',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlBondFunctionsBasisPointValue as basisPointValue{withBond*`GenBond b',withInterestRate*`InterestRate',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |bps (Basis Point Sensitivity) given an 'InterestRate' yield
-{#fun qlBondFunctionsBps1 as bpsFromYield'{withBond*`GenBond b',withInterestRate*`InterestRate',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Double'#}
-
--- |bps (Basis Point Sensitivity) given a flat yield, day counter, compounding and frequency
-{#fun qlBondFunctionsBps2 as bpsFromYield{withBond*`GenBond b',`Double',withDayCounter*`DayCounter',`Compounding',`Frequency',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlBondFunctionsBps1 as bpsFromYield{withBond*`GenBond b',withInterestRate*`InterestRate',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |bps (Basis Point Sensitivity) given a discount curve
 {#fun qlBondFunctionsBps as bps{withBond*`GenBond b',withYieldTermStructure*`GenYieldTermStructure y',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Double'#}
@@ -501,25 +475,15 @@ amortizingFloatingRateBond settlementDays notionalsArg schedule idx accrualDayCo
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |clean price given an 'InterestRate' yield
-{#fun qlBondFunctionsCleanPrice4 as cleanPriceFromYield'{withBond*`GenBond b',withInterestRate*`InterestRate',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Double'#}
-
--- |convexity given a flat yield, day counter, compounding and frequency
-{#fun qlBondFunctionsConvexity1 as convexity{withBond*`GenBond b',`Double' -- ^yield
-  ,withDayCounter*`DayCounter',`Compounding',`Frequency',withDay*`Day' -- ^settlementDate
-  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlBondFunctionsCleanPrice4 as cleanPriceFromYield{withBond*`GenBond b',withInterestRate*`InterestRate',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |convexity given an 'InterestRate' yield
-{#fun qlBondFunctionsConvexity as convexity'{withBond*`GenBond b',withInterestRate*`InterestRate' -- ^yield
+{#fun qlBondFunctionsConvexity as convexity{withBond*`GenBond b',withInterestRate*`InterestRate' -- ^yield
   ,withDay*`Day' -- ^settlementDate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
--- |duration given a flat yield, day counter, compounding, frequency and duration type
-{#fun qlBondFunctionsDuration1 as duration{withBond*`GenBond b',`Double' -- ^yield
-  ,withDayCounter*`DayCounter',`Compounding',`Frequency',`DurationType',withDay*`Day' -- ^settlementDate
-  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
-
 -- |duration given an 'InterestRate' yield and duration type
-{#fun qlBondFunctionsDuration as duration'{withBond*`GenBond b',withInterestRate*`InterestRate' -- ^yield
+{#fun qlBondFunctionsDuration as duration{withBond*`GenBond b',withInterestRate*`InterestRate' -- ^yield
   ,`DurationType',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |amount of the cash flow immediately after the given (or default settlement) date
@@ -542,12 +506,8 @@ amortizingFloatingRateBond settlementDays notionalsArg schedule idx accrualDayCo
   ,`Double' -- ^guess
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
--- |yield value of a basis point given a flat yield, day counter, compounding and frequency
-{#fun qlBondFunctionsYieldValueBasisPoint1 as yieldValueBasisPoint{withBond*`GenBond b',`Double' -- ^yield
-  ,withDayCounter*`DayCounter',`Compounding',`Frequency',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Double'#}
-
 -- |yield value of a basis point given an 'InterestRate' yield
-{#fun qlBondFunctionsYieldValueBasisPoint as yieldValueBasisPoint'{withBond*`GenBond b',withInterestRate*`InterestRate' -- ^yield
+{#fun qlBondFunctionsYieldValueBasisPoint as yieldValueBasisPoint{withBond*`GenBond b',withInterestRate*`InterestRate' -- ^yield
   ,withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Z-spread over a discount curve implied by a (clean) price, solved to the given accuracy

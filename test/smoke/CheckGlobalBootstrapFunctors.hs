@@ -1,5 +1,5 @@
 -- Stale-build guard for GlobalBootstrap's canned-functor binding
--- (piecewiseYieldCurveGlobalBootstrapSimpleZeroLinearFull' / qlPiecewiseYieldCurveGlobalBootstrap3
+-- (piecewiseYieldCurveMoving / qlPiecewiseYieldCurveGlobalBootstrap3
 -- / qlPiecewiseYieldCurveGlobalBootstrapFullAux). This is a genuinely new C++ construction path
 -- (GlobalBootstrap's functor-callback constructor, not the plain accuracy/instrumentWeights one),
 -- added entirely inside cbits/qlTermStructureAux.cpp -- exactly the kind of change a stale build
@@ -46,7 +46,8 @@ main = do
   -- which passes b.additionalHelpers into both the curve's own instrument list and the functor
   -- slot); additionalDates needs exactly 5 - 2 = 3 entries for AdditionalErrors' formula.
   goodDates <- mapM (\i -> advance cal settleFix (i, Months) ModifiedFollowing True) [1, 2, 3 :: Int]
-  curve <- piecewiseYieldCurveGlobalBootstrapSimpleZeroLinearFull' 0 cal nonEmptyHelpers euriborDC [] nonEmptyHelpers goodDates 1.0e-10 False
+  curve <- piecewiseYieldCurveMoving 0 cal nonEmptyHelpers euriborDC []
+    (GlobalSimpleZeroLinearFull nonEmptyHelpers goodDates 1.0e-10) False
   sampleDate <- advance cal settleFix (4, Months) ModifiedFollowing True
   df <- discount' curve sampleDate False
   checkWith "functor-based GlobalBootstrap curve produces a sane discount factor"
@@ -56,7 +57,8 @@ main = do
   -- Mismatched pillar count (4 dates instead of 3): should raise, not silently misbootstrap or
   -- crash with QuantLib's raw internal message.
   badDates <- mapM (\i -> advance cal settleFix (i, Months) ModifiedFollowing True) [1, 2, 3, 4 :: Int]
-  result <- try (piecewiseYieldCurveGlobalBootstrapSimpleZeroLinearFull' 0 cal nonEmptyHelpers euriborDC [] nonEmptyHelpers badDates 1.0e-10 False
+  result <- try (piecewiseYieldCurveMoving 0 cal nonEmptyHelpers euriborDC []
+    (GlobalSimpleZeroLinearFull nonEmptyHelpers badDates 1.0e-10) False
                     >>= \c -> discount' c sampleDate False >>= evaluate) :: IO (Either SomeException Double)
   checkWith "mismatched additionalDates/additionalHelpers pillar count raises"
             "confirms the QL_REQUIRE guard fires instead of silently misbootstrapping"
