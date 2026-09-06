@@ -10,7 +10,7 @@
 --  1. swaptionVolatilityMatrixLocate (concrete-leaf-only) resolves correctly on a freshly
 --     constructed matrix.
 --  2. The same value, passed where a generic SwaptionVolatilityStructure is expected
---     (volatilityForPeriod'), upcasts correctly and recovers the exact input volatility.
+--     ('volatility'), upcasts correctly and recovers the exact input volatility.
 --  3. asVolatilityTermStructure (two AnyOf layers up: SwaptionVolatilityMatrix ->
 --     SwaptionVolatilityStructure -> VolatilityTermStructure) still resolves to a live object
 --     whose referenceDate matches what the matrix was built with.
@@ -61,11 +61,11 @@ main = do
   putStrLn "OK: swaptionVolatilityMatrixLocate resolves the concrete leaf"
 
   -- 2. one AnyOf layer up: passed where a generic SwaptionVolatilityStructure is expected
-  v <- Vol.volatilityForPeriod' grid optionDate0 (2, Years) 0.02 False
+  v <- Vol.volatility grid (Vol.OptionDate optionDate0) (Vol.SwapTenor (2, Years)) 0.02 False
   unless (close v 0.10) $ do
-    putStrLn ("MISMATCH: volatilityForPeriod' should recover 0.10 at this node, got " ++ show v)
+    putStrLn ("MISMATCH: volatility should recover 0.10 at this node, got " ++ show v)
     exitFailure
-  putStrLn "OK: volatilityForPeriod' upcasts SwaptionVolatilityMatrix to SwaptionVolatilityStructure"
+  putStrLn "OK: volatility upcasts SwaptionVolatilityMatrix to SwaptionVolatilityStructure"
 
   -- 3. two AnyOf layers up: SwaptionVolatilityMatrix -> SwaptionVolatilityStructure ->
   -- VolatilityTermStructure

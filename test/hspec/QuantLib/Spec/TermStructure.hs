@@ -1547,6 +1547,32 @@ spec = do
           swapTenors = [(2, Years), (10, Years)]
           refDate = 11 `december` 2012
 
+      it "dispatches every option- and swap-maturity representation" $
+        Settings.keepingSettingsGc $ do
+          Settings.setEvaluationDate (Just refDate)
+          cal <- Calendar.calendar TARGET
+          dc <- dayCounter Actual365FixedStandard
+          volQ <- Quote.simpleQuote 0.20
+          flatVol <- Vol.constantSwaptionVolatility' refDate cal ModifiedFollowing volQ dc IR.ShiftedLognormal 0
+          optionDate <- advance cal refDate (1, Years) ModifiedFollowing False
+          let coordinates :: [(Vol.OptionMaturity, Vol.SwapMaturity)]
+              coordinates =
+                [ (Vol.OptionDate optionDate, Vol.SwapLength 2.0)
+                , (Vol.OptionDate optionDate, Vol.SwapTenor (2, Years))
+                , (Vol.OptionTime 1.0, Vol.SwapLength 2.0)
+                , (Vol.OptionTime 1.0, Vol.SwapTenor (2, Years))
+                , (Vol.OptionTenor (1, Years), Vol.SwapLength 2.0)
+                , (Vol.OptionTenor (1, Years), Vol.SwapTenor (2, Years))
+                ]
+          forM_ coordinates $ \(optionMaturity, swapMaturity) -> do
+            v <- Vol.volatility flatVol optionMaturity swapMaturity 0.02 False
+            v `shouldBe` 0.20
+            variance <- Vol.blackVariance flatVol optionMaturity swapMaturity 0.02 False
+            variance `shouldSatisfy` (> 0)
+            smile <- Vol.smileSection flatVol optionMaturity swapMaturity False
+            smileVol <- Vol.smileSectionVolatility smile 0.02
+            smileVol `shouldSatisfy` closePrec 0.20 1.0e-12
+
       it "a constant grid agrees with constantSwaptionVolatility' at the same point" $
         Settings.keepingSettingsGc $ do
           Settings.setEvaluationDate (Just refDate)
@@ -1561,8 +1587,8 @@ spec = do
           volQ <- Quote.simpleQuote v
           flatVol <- Vol.constantSwaptionVolatility' refDate cal ModifiedFollowing volQ dc IR.ShiftedLognormal 0
           optionDate <- advance cal refDate (1, Years) ModifiedFollowing False
-          fromGrid <- Vol.volatilityForPeriod' grid optionDate (2, Years) 0.02 False
-          fromFlat <- Vol.volatilityForPeriod' flatVol optionDate (2, Years) 0.02 False
+          fromGrid <- Vol.volatility grid (Vol.OptionDate optionDate) (Vol.SwapTenor (2, Years)) 0.02 False
+          fromFlat <- Vol.volatility flatVol (Vol.OptionDate optionDate) (Vol.SwapTenor (2, Years)) 0.02 False
           abs (fromGrid - fromFlat) `shouldSatisfy` (< 1.0e-6 * max 1 (abs fromFlat))
 
       it "recovers each cell's input volatility exactly at its own grid node" $
@@ -1583,7 +1609,7 @@ spec = do
                       | (od, oVols) <- zip optionDates vols
                       , (st, expected) <- zip swapTenors oVols]
           mapM_ (\(od, st, expected) -> do
-                    v <- Vol.volatilityForPeriod' grid od st 0.02 False
+                    v <- Vol.volatility grid (Vol.OptionDate od) (Vol.SwapTenor st) 0.02 False
                     abs (v - expected) `shouldSatisfy` (< 1.0e-6)
                 ) nodes
 
@@ -1632,7 +1658,7 @@ spec = do
                     -- beta fixed: 3 strikeSpreads can't identify 4 free SABR params
                     -- ("less functions than available variables"), so pin beta at the guess.
                     False True False False False Nothing Nothing False 50 False 0.0001 Nothing Nothing
-          v <- Vol.volatilityForPeriod' cube (10 `december` 2013) (2, Years) 0.03 False
+          v <- Vol.volatility cube (Vol.OptionDate (10 `december` 2013)) (Vol.SwapTenor (2, Years)) 0.03 False
           -- SABR calibration is a least-squares fit, not exact recovery, so this is deliberately a
           -- much looser tolerance than the exact-grid-recovery checks above -- don't tighten it.
           abs (v - flatVol) `shouldSatisfy` (< 1.0e-2)
@@ -1653,7 +1679,7 @@ spec = do
                     -- that path is out of scope for this shape/sanity test.
                     False True False False False Nothing Nothing False 50 False 0.0001 Nothing Nothing
           -- trigger calibration (lazy -- see the shim comment on qlSabrSwaptionVolatilityCube)
-          _ <- Vol.volatilityForPeriod' cube (10 `december` 2013) (2, Years) 0.03 False
+          _ <- Vol.volatility cube (Vol.OptionDate (10 `december` 2013)) (Vol.SwapTenor (2, Years)) 0.03 False
           let n = fromIntegral (length optionTenors * length swapTenors)
           sparse <- Vol.sparseSabrParameters cube
           realMatrixRows sparse `shouldBe` n
@@ -1725,7 +1751,7 @@ spec = do
                     -- beta fixed: 3 strikeSpreads can't identify 4 free SABR params
                     -- ("less functions than available variables"), so pin beta at the guess.
                     False True False False False Nothing Nothing False 50 False 0.0001 Nothing Nothing
-          v <- Vol.volatilityForPeriod' cube (10 `december` 2013) (2, Years) 0.03 False
+          v <- Vol.volatility cube (Vol.OptionDate (10 `december` 2013)) (Vol.SwapTenor (2, Years)) 0.03 False
           -- least-squares fit, not exact recovery -- same looser tolerance as the SABR cube check.
           abs (v - flatVol) `shouldSatisfy` (< 1.0e-2)
 
@@ -1743,7 +1769,7 @@ spec = do
           (_, _, atmVol, swapIndexBase, shortSwapIndexBase, volSpreads, _) <- mkFixture
           cube <- Vol.interpolatedSwaptionVolatilityCube atmVol optionTenors swapTenors strikeSpreads volSpreads
                     swapIndexBase shortSwapIndexBase False
-          v <- Vol.volatilityForPeriod' cube (10 `december` 2013) (2, Years) 0.03 False
+          v <- Vol.volatility cube (Vol.OptionDate (10 `december` 2013)) (Vol.SwapTenor (2, Years)) 0.03 False
           abs (v - flatVol) `shouldSatisfy` (< 1.0e-2)
           k <- Vol.interpolatedSwaptionVolatilityCubeAtmStrike cube (1, Years) (2, Years)
           k `shouldSatisfy` (\x -> x > -0.05 && x < 0.20)
