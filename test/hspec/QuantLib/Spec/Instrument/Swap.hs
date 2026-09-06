@@ -96,6 +96,24 @@ spec = do
                  v `shouldSatisfy` closePrec 0 1.0e-8)
           [(len, rate) | len <- [1, 2, 5, 10, 20], rate <- [0.04, 0.05, 0.06, 0.07]]
 
+    it "exposes fairRate and fairSpread through the irregular-swap capabilities" $
+      Settings.keepingSettingsGc $ do
+        today' <- today
+        Settings.setEvaluationDate (Just today')
+        base <- makeSwap today' 5 0.05 0
+        fixed <- fixedLeg base
+        floating <- floatingLeg base
+        irregular <- irregularSwap Payer fixed floating
+        dc <- dayCounter Actual365FixedStandard
+        q <- simpleQuote 0.05
+        curve <- flatForward today' q dc Continuous Annual
+        engine <- discountingSwapEngine curve Nothing Nothing Nothing
+        setPricingEngine irregular engine
+        rate' <- fairRate irregular
+        spread' <- fairSpread irregular
+        rate' `shouldSatisfy` (\x -> not (isNaN x || isInfinite x))
+        spread' `shouldSatisfy` (\x -> not (isNaN x || isInfinite x))
+
   describe "ConstNotionalCrossCurrency{Swap,BasisSwap,FixedVsFloatingSwap}" $
     it "symmetric legs (same index/schedule/nominal/spread, matching curves, spotFX=1) NPV to zero" $
       Settings.keepingSettingsGc $ do
@@ -145,7 +163,7 @@ spec = do
           ModifiedFollowing 0 cal 100 eur sched usdLibor3m 0 ModifiedFollowing 0 cal
           False False Nothing False 0 AveragingCompound
         setPricingEngine guess engine
-        fair <- xccyFairRate guess
+        fair <- fairRate guess
 
         priced <- constNotionalCrossCurrencyFixedVsFloatingSwap Payer 100 usd sched fair legDC
           ModifiedFollowing 0 cal 100 eur sched usdLibor3m 0 ModifiedFollowing 0 cal

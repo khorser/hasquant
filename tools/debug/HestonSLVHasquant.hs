@@ -64,7 +64,7 @@ body = Settings.keepingSettingsGc $ do
   localVolTS <- localConstantVol today localVolQ dc
   factory <- sobolBrownianGeneratorFactory Diagonal 1234 JoeKuoD7
   mc <- hestonSlvMcModel localVolTS hm factory end 91 201 32768 [] 1.0
-  mcLeverage <- hestonSlvMcLeverageFunction mc
+  mcLeverage <- leverageFunction mc
   mcVol <- localVol mcLeverage end 100 True
   putStrLn ("  MC model built, leverage(end, 100) = " ++ show mcVol)
   slv <- hestonSlvProcess hp mcLeverage 1.0
@@ -77,6 +77,6 @@ body = Settings.keepingSettingsGc $ do
         1.0e-5 1.0e-5 2.5e-6 1.0 0.1 0.9 1.0e-5
         ZeroCorrelation Log ModifiedCraigSneyd
   fdm <- hestonSlvFdmModel localVolTS hm end fdmParams True [] 1.0
-  fdmLeverage <- hestonSlvFdmLeverageFunction fdm
+  fdmLeverage <- leverageFunction fdm
   fdmVol <- localVol fdmLeverage end 100 True
   putStrLn ("  FDM model built, leverage(end, 100) = " ++ show fdmVol)

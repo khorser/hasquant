@@ -25,7 +25,7 @@ import QuantLib.Instrument.Option(OptionType(Call))
 import QuantLib.Math(RngTrait(PseudoRandom), timeGrid)
 import QuantLib.Method(pathGenerator, next, asset)
 import QuantLib.Process(blackScholesMertonProcess, ProcessDiscretization(EulerDiscretization))
-import QuantLib.PricingEngine(blackCalculator', value, blackDelta)
+import QuantLib.PricingEngine(blackCalculator', value, delta)
 import QuantLib.Quote(simpleQuote)
 import QuantLib.Settings(setEvaluationDate)
 import QuantLib.Time.Date(today)
@@ -94,7 +94,7 @@ run = do
           dt = maturity / fromIntegral n
       black00 <- blackCalculator' Call strike s00 (sqrt (sigma * sigma * maturity)) (exp (- r * maturity))
       premium <- value black00
-      delta0 <- blackDelta black00 s00
+      delta0 <- delta black00 s00
       (moneyAcct, stockAmount) <- rehedge dt (premium - delta0 * s00) delta0 0.0 (take (n - 1) (drop 1 path))
       let finalStock = path !! n
           optionPayoff = max (finalStock - strike) 0
@@ -106,8 +106,8 @@ run = do
               moneyAcct1 = moneyAcct * exp (r * dt)
               timeToMaturity = maturity - t'
           black <- blackCalculator' Call strike stock (sqrt (sigma * sigma * timeToMaturity)) (exp (- r * timeToMaturity))
-          delta <- blackDelta black stock
-          rehedge dt (moneyAcct1 - (delta - stockAmount) * stock) delta t' rest
+          hedgeDelta <- delta black stock
+          rehedge dt (moneyAcct1 - (hedgeDelta - stockAmount) * stock) hedgeDelta t' rest
 
     compute process' nTimeSteps n = do
       tg <- timeGrid maturity nTimeSteps

@@ -11,7 +11,7 @@ import QuantLib.InterestRate
 import QuantLib.Instrument.Option
 import QuantLib.Math
 import QuantLib.PricingEngine
-import QuantLib.Process
+import QuantLib.Process hiding(fixingDates)
 import QuantLib.Quote
 import QuantLib.Settings
 import QuantLib.Time.Calendar

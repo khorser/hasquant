@@ -23,7 +23,7 @@
 -- "QuantLib.Example.HestonHullWhiteMC"; the rest still need bindings this module doesn't have
 -- (a bound 'FdmHestonHullWhiteVanillaEngine', ...) and are left as a further follow-up.
 -- 'QuantLib.Process.hybridHestonHullWhiteNumeraire' and the Hull-White process getters
--- ('hullWhiteAlpha'\/'hullWhiteForwardAlpha'\/'hullWhiteForwardB'\/'hullWhiteForwardM') are
+-- ('alpha'\/'hullWhiteForwardB'\/'hullWhiteForwardM') are
 -- checked here against closed forms, and 'stdDeviation'\/'covariance'\/'apply'\/'evolve'
 -- against each other on 'g2Process'.
 {-# LANGUAGE TupleSections #-}
@@ -42,11 +42,12 @@ import QuantLib.Quote(simpleQuote, setValue)
 import QuantLib.TermStructure.Yield(flatForward, forwardRate, discount, YieldTermStructure, interpolatedZeroCurve)
 import QuantLib.Instrument(npv, setPricingEngine)
 import QuantLib.Instrument.Option(europeanOption, StrikedPayoff(PlainVanilla), PlainVanillaPayoff(..), OptionType(..), Exercise(European), EuropeanExercise(..))
+import qualified QuantLib.Process as Process
 import QuantLib.Process(hestonProcess, hestonProcessPdf, batesProcess, gjrGarchProcess, HestonProcessDiscretization(..), GJRGARCHProcessDiscretization(..)
- , g2Process, g2ForwardProcess, g2Phi, g2ShortRate, g2ForwardPhi, g2ForwardShortRate, setG2ForwardMeasureTime, factors, drift, diffusion, expectation, initialValues, hullWhiteProcess, hullWhiteForwardProcess, setForwardMeasureTime, hybridHestonHullWhiteProcess, HybridHestonHullWhiteProcessDiscretization(..)
- , liborForwardModelProcess, liborForwardModelProcessFixingDates, liborForwardModelProcessFixingTimes, liborForwardModelProcessCashFlows
- , liborForwardModelProcessDiscountBond, liborForwardModelProcessAccrualTimes
- , hybridHestonHullWhiteNumeraire, hullWhiteAlpha, hullWhiteForwardAlpha, hullWhiteForwardB, hullWhiteForwardM
+ , g2Process, g2ForwardProcess, phi, setForwardMeasureTime, factors, drift, diffusion, expectation, initialValues, hullWhiteProcess, hullWhiteForwardProcess, hybridHestonHullWhiteProcess, HybridHestonHullWhiteProcessDiscretization(..)
+ , liborForwardModelProcess, cashFlows
+ , accrualTimes
+ , hybridHestonHullWhiteNumeraire, hullWhiteForwardB, hullWhiteForwardM
  , stdDeviation, covariance, apply, evolve)
 import QuantLib.Model(hullWhite, g2, g2Dynamics, shortRate
  , hestonModel, batesModel, gjrGarchModel
@@ -240,8 +241,8 @@ spec = do
         rTS <- interpolatedZeroCurve (fromList [(firstPillar, 0.039), (curveEndDate, 0.041)]) dc cal [] Linear
         idx <- iborIndex Euribor6M (Just rTS)
         process <- liborForwardModelProcess size idx
-        fixingDates <- liborForwardModelProcessFixingDates process
-        fixingTimes <- liborForwardModelProcessFixingTimes process
+        fixingDates <- Process.fixingDates process
+        fixingTimes <- Process.fixingTimes process
         capletVol <- Vol.capletVarianceCurve evalDate (fromList $ zip (take 9 $ drop 1 fixingDates) capletVols) dc ShiftedLognormal 0.0
         let emptyCorrelation = either error id $ boxedRealMatrix 0 0 []
         parameterization <- lfmHullWhiteParameterization process capletVol emptyCorrelation 1
@@ -250,7 +251,7 @@ spec = do
         matrixColumns covar `shouldBe` size
         let covarianceData = matrixData covar
             variances = [covarianceData !! (i * fromIntegral size + i) | i <- [0 .. fromIntegral size - 1]]
-        leg <- liborForwardModelProcessCashFlows process 1.0
+        leg <- cashFlows process 1.0
         model <- liborForwardModel process (FixedVolatility (fromList $ zip fixingTimes (map sqrt variances))) (ExponentialCorrelation size 0.3)
         -- S_0(alpha, beta) is an annuity-weighted average of the initial forward rates
         -- f[alpha+1 .. beta] (LiborForwardModel::S_0 in liborforwardmodel.cpp), so it must lie
@@ -286,17 +287,17 @@ spec = do
         idx <- iborIndex Euribor6M (Just rTS)
         process <- liborForwardModelProcess size idx
 
-        accruals <- liborForwardModelProcessAccrualTimes process
+        accruals <- accrualTimes process
         length accruals `shouldBe` fromIntegral size
         all (\(st, en) -> en > st) accruals `shouldBe` True
 
         let rates = [0.03 + 0.002 * fromIntegral i | i <- [0 .. fromIntegral size - 1 :: Int]]
             expected = scanl1 (*) (zipWith (\r (st, en) -> 1 / (1 + r * (en - st))) rates accruals)
-        dfs <- liborForwardModelProcessDiscountBond process rates
+        dfs <- Process.discountBond process rates
         zipWithM_ (\c e -> c `shouldSatisfy` closePrec e 1.0e-12) dfs expected
 
         -- the process is only simulable once a covariance parameterization is installed
-        fixingDates <- liborForwardModelProcessFixingDates process
+        fixingDates <- Process.fixingDates process
         capletVol <- Vol.capletVarianceCurve evalDate (fromList (map (, 0.15) (take 9 (drop 1 fixingDates)))) dc ShiftedLognormal 0.0
         let emptyCorrelation = either error id $ boxedRealMatrix 0 0 []
         parameterization <- lfmHullWhiteParameterization process capletVol emptyCorrelation 1
@@ -319,9 +320,9 @@ spec = do
         curve <- flatForward evalDate rateQ dc Continuous Annual
         process <- g2Process 0.1 0.01 0.2 0.013 (-0.5) (Just curve)
         let t = 2.0
-        phiBefore <- g2Phi process t
+        phiBefore <- phi process t
         _ <- setValue rateQ 0.05
-        phiAfter <- g2Phi process t
+        phiAfter <- phi process t
         (phiAfter - phiBefore) `shouldSatisfy` closePrec 0.03 1.0e-10
 
     -- ported from test-suite/g2process.cpp::testG2ForwardProcessPhiAndShortRate: shortRate(t,
@@ -335,11 +336,11 @@ spec = do
         rateQ <- simpleQuote 0.035
         curve <- flatForward evalDate rateQ dc Continuous Annual
         fwd <- g2ForwardProcess 0.1 0.01 0.2 0.013 (-0.5) (Just curve)
-        g2ForwardShortRate fwd 1.0 0.002 (-0.001) `shouldSatisfy` closePrec 0.001 1.0e-12
+        Process.shortRate fwd 1.0 0.002 (-0.001) `shouldSatisfy` closePrec 0.001 1.0e-12
 
         paramOnly <- g2ForwardProcess 0.1 0.01 0.2 0.013 (-0.5) Nothing
-        g2ForwardPhi paramOnly 1.0 `shouldThrow` anyException
-        g2ForwardShortRate paramOnly 1.0 0.01 0.01 `shouldSatisfy` closePrec 0.02 1.0e-12
+        phi paramOnly 1.0 `shouldThrow` anyException
+        Process.shortRate paramOnly 1.0 0.01 0.01 `shouldSatisfy` closePrec 0.02 1.0e-12
 
     -- ported from test-suite/g2process.cpp::testG2ProcessPathGeneratorMatchesCurve: the
     -- empirical mean of r(t) = state[0]+state[1] along simulated paths must converge to the
@@ -363,7 +364,7 @@ spec = do
         paths <- replicateM nPaths (next pg >>= \sp -> mapM (fmap V.toList . asset sp) [0, 1])
         let sumR = foldr1 (zipWith (+)) [zipWith (+) r0 r1 | [r0, r1] <- paths]
             meanR = map (/ fromIntegral nPaths) sumR
-        expected <- mapM (\i -> g2Phi process (horizon * fromIntegral i / fromIntegral steps)) [0 .. steps]
+        expected <- mapM (\i -> phi process (horizon * fromIntegral i / fromIntegral steps)) [0 .. steps]
         zipWithM_ (\ m e -> m `shouldSatisfy` closePrec e 1.5e-3) meanR expected
 
     -- ported from test-suite/g2process.cpp::testG2ProcessPhiAndShortRate (minus its x0()/y0()
@@ -383,11 +384,11 @@ spec = do
 
         mapM_ (\t -> do
             expected <- referencePhi curve t a sigma b eta rho
-            actual <- g2Phi process t
+            actual <- phi process t
             actual `shouldSatisfy` closePrec expected 1.0e-12)
           [0.25, 1.0, 5.0, 10.0]
 
-        mapM_ (\(z1, z2) -> g2ShortRate process 1.0 z1 z2 `shouldSatisfy` closePrec (z1 + z2) 1.0e-12)
+        mapM_ (\(z1, z2) -> Process.shortRate process 1.0 z1 z2 `shouldSatisfy` closePrec (z1 + z2) 1.0e-12)
           [(z1, z2) | z1 <- [-0.01, 0.0, 0.005], z2 <- [-0.002, 0.0, 0.004]]
 
         iv <- initialValues process
@@ -411,7 +412,7 @@ spec = do
 
         mapM_ (\t -> do
             fromModel <- shortRate dyn t 0.0 0.0
-            fromProcess <- g2Phi process t
+            fromProcess <- phi process t
             fromProcess `shouldSatisfy` closePrec fromModel 1.0e-12)
           [0.1, 0.5, 2.0, 7.5, 20.0]
 
@@ -420,15 +421,15 @@ spec = do
     -- and the process degenerates to two zero-mean OU factors -- initialValues is (0,0).
     it "phi throws and initialValues degenerate to (0,0) without a term structure" $ do
       process <- g2Process 0.1 0.01 0.2 0.013 (-0.5) Nothing
-      g2Phi process 1.0 `shouldThrow` anyException
-      g2ShortRate process 1.0 0.01 0.02 `shouldSatisfy` closePrec 0.03 1.0e-14
+      phi process 1.0 `shouldThrow` anyException
+      Process.shortRate process 1.0 0.01 0.02 `shouldSatisfy` closePrec 0.03 1.0e-14
       iv <- initialValues process
       iv `shouldSatisfy` all ((< 1.0e-14) . abs)
 
     -- ported from test-suite/g2process.cpp::testG2ProcessDriftIncludesTermStructure: drift's
     -- y-component and diffusion are entirely curve-independent; drift's x-component differs
     -- from the curveless case by exactly a*phi(t) + phi'(t) (a numerical derivative, matching
-    -- G2Process's own implementation), the same shift 'g2Phi' reports.
+    -- G2Process's own implementation), the same shift 'phi' reports.
     it "drift/diffusion pick up the term-structure shift only in the x-component" $
       Settings.keepingSettingsGc $ do
         evalDate <- today
@@ -446,8 +447,8 @@ spec = do
         d21 `shouldSatisfy` closePrec d11 1.0e-12
 
         let h = 1.0e-4
-        phiT <- g2Phi withCurve t
-        phiTh <- g2Phi withCurve (t + h)
+        phiT <- phi withCurve t
+        phiTh <- phi withCurve (t + h)
         let expectedDelta = a * phiT + (phiTh - phiT) / h
         (d20 - d10) `shouldSatisfy` closePrec expectedDelta 1.0e-10
 
@@ -470,16 +471,16 @@ spec = do
 
         mapM_ (\t -> do
             expT <- expectation process 0.0 iv t
-            expected <- g2Phi process t
+            expected <- phi process t
             sum expT `shouldSatisfy` closePrec expected 1.0e-12)
           [0.1, 0.5, 2.0, 5.0, 10.0]
 
     -- G2ForwardProcess's constructor leaves the inherited forward-measure time
     -- default-initialized, and only drift (via xForwardDrift/yForwardDrift) reads it -- so
-    -- 'setG2ForwardMeasureTime' is required before the process is simulated. Setting T = t
+    -- 'setForwardMeasureTime' is required before the process is simulated. Setting T = t
     -- zeroes both corrections, which makes the difference against any other T exactly the two
     -- closed forms from g2process.cpp.
-    it "setG2ForwardMeasureTime drives drift's measure correction" $
+    it "setForwardMeasureTime drives drift's measure correction" $
       Settings.keepingSettingsGc $ do
         evalDate <- today
         Settings.setEvaluationDate (Just evalDate)
@@ -490,9 +491,9 @@ spec = do
         curve <- flatForward evalDate rateQ dc Continuous Annual
         process <- g2ForwardProcess a sigma b eta rho (Just curve)
 
-        setG2ForwardMeasureTime process t
+        setForwardMeasureTime process t
         baseX:baseY:_ <- drift process t z
-        setG2ForwardMeasureTime process bigT
+        setForwardMeasureTime process bigT
         farX:farY:_ <- drift process t z
 
         let expatT = exp (-a * (bigT - t))
@@ -646,8 +647,8 @@ spec = do
             fwdIR <- forwardRate rTS t t Continuous NoFrequency True
             let alfa = (sigma / a) * (1 - exp (-a * t))
                 expected = 0.5 * alfa * alfa + rate fwdIR
-            plain <- hullWhiteAlpha hw t
-            fwd <- hullWhiteForwardAlpha hwFwd t
+            plain <- Process.alpha hw t
+            fwd <- Process.alpha hwFwd t
             plain `shouldSatisfy` closePrec expected 1.0e-12
             fwd `shouldSatisfy` closePrec expected 1.0e-12)
           [0.5, 2.0, 8.0]
@@ -690,7 +691,7 @@ spec = do
 
     -- reference implementation of the G2++ deterministic offset phi(t), copied from
     -- G2::FittingParameter::Impl::value in ql/models/shortrate/twofactormodels/g2.hpp; used to
-    -- check 'g2Phi' against a closed form independent of G2Process's own implementation.
+    -- check 'phi' against a closed form independent of G2Process's own implementation.
     referencePhi :: YieldTermStructure -> Double -> Double -> Double -> Double -> Double -> Double -> IO Double
     referencePhi curve t a sigma b eta rho = do
       fwdIR <- forwardRate curve t t Continuous NoFrequency True

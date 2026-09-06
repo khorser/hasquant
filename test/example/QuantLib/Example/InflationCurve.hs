@@ -13,7 +13,7 @@ import QuantLib.Index.Inflation
 import QuantLib.Math(Interpolation(..))
 import QuantLib.Quote(simpleQuote)
 import QuantLib.Settings(setEvaluationDate)
-import QuantLib.Instrument.Swap(zcisFairRate, yoyFairRate)
+import QuantLib.Instrument.Swap(fairRate)
 import QuantLib.TermStructure.Inflation
 import QuantLib.TermStructure.Yield(flatForward, PillarChoice(..))
 import QuantLib.Time.Calendar
@@ -50,7 +50,7 @@ run = do
   z2 <- zeroRate zeroCurve maturity2 True
   -- the helper builds its swap internally, so this accessor is the only way to reach it;
   -- once the curve is bootstrapped the swap must reprice to the quote it was built from
-  zcisFair <- zcisFairRate =<< zeroCouponInflationSwapHelperSwap h1
+  zcisFair <- fairRate =<< zeroCouponInflationSwapHelperSwap h1
 
   yii <- yoyInflationIndex YYUKRPI
   forM_ (zip [1 :: Double ..] fixingDates) $ \(i, d) -> addFixing yii d (flatRate + i * 0.0001) False
@@ -63,7 +63,7 @@ run = do
   yoyCurve <- piecewiseYoYInflationCurve evalDate baseDate flatRate Monthly dc [hy1, hy2] Linear
   y1 <- yoyRate yoyCurve maturity1 True
   y2 <- yoyRate yoyCurve maturity2 True
-  yoyFair <- yoyFairRate =<< yearOnYearInflationSwapHelperSwap hy1
+  yoyFair <- fairRate =<< yearOnYearInflationSwapHelperSwap hy1
 
   return Result
     { zeroRate1Y = z1

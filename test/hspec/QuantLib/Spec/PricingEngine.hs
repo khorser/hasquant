@@ -35,7 +35,8 @@ import QuantLib.Model hiding(setPricingEngine, value)
 import QuantLib.Math(RngTrait(..), StatisticsTrait(..), PolynomialType(..), BinomialTree(..), FdmScheme(..), boxedRealMatrix, ComplexLogFormula(..)
   ,SobolDirectionIntegers(..), realMatrixRows, realMatrixColumns, realMatrixData)
 import QuantLib.Method(fdmBlackScholesMesher, fdmMesherComposite, fdmMesherLocations)
-import QuantLib.PricingEngine
+import QuantLib.PricingEngine hiding(alpha, delta, gamma, theta)
+import qualified QuantLib.PricingEngine as Calc
 
 import QuantLib.Spec.Helpers(closePrec)
 
@@ -323,7 +324,7 @@ spec = do
       let d1 = log (forward / strike) / stdDev + 0.5 * stdDev
           d2 = d1 - stdDev
       callVega <- vega callBC maturity
-      callVanna <- vanna callBC spot maturity
+      callVanna <- blackVanna callBC spot maturity
       callVanna `shouldSatisfy` closePrec (-d2 / (spot * stdDev) * callVega) 1e-10
       callVolga <- volga callBC maturity
       callVolga `shouldSatisfy` closePrec (callVega * d1 * d2 / stdDev) 1e-10
@@ -337,8 +338,8 @@ spec = do
           bscSpot = forward * disc / growth
       callBSC <- blackScholesCalculator' Call strike bscSpot growth stdDev disc
       callBSC2 <- blackScholesCalculator (PlainVanilla (PlainVanillaPayoff Call strike)) bscSpot growth stdDev disc
-      callBSCVal <- value callBSC
-      callBSCVal2 <- value callBSC2
+      callBSCVal <- Calc.value callBSC
+      callBSCVal2 <- Calc.value callBSC2
       callBSCVal2 `shouldBe` callBSCVal
       callBSCVal `shouldBe` callVal
 
@@ -346,36 +347,36 @@ spec = do
             fromBSC <- fBSC callBSC
             fromBC <- fBC callBC
             fromBSC `shouldBe` fromBC
-      checkInherited deltaForward deltaForward
-      checkInherited (`rho` maturity) (`rho` maturity)
-      checkInherited (`dividendRho` maturity) (`dividendRho` maturity)
-      checkInherited strikeSensitivity strikeSensitivity
-      checkInherited strikeGamma strikeGamma
-      checkInherited (`vega` maturity) (`vega` maturity)
-      checkInherited (`volga` maturity) (`volga` maturity)
-      checkInherited itmAssetProbability itmAssetProbability
-      checkInherited itmCashProbability itmCashProbability
-      checkInherited alpha alpha
-      checkInherited beta beta
+      checkInherited Calc.deltaForward Calc.deltaForward
+      checkInherited (`Calc.rho` maturity) (`Calc.rho` maturity)
+      checkInherited (`Calc.dividendRho` maturity) (`Calc.dividendRho` maturity)
+      checkInherited Calc.strikeSensitivity Calc.strikeSensitivity
+      checkInherited Calc.strikeGamma Calc.strikeGamma
+      checkInherited (`Calc.vega` maturity) (`Calc.vega` maturity)
+      checkInherited (`Calc.volga` maturity) (`Calc.volga` maturity)
+      checkInherited Calc.itmAssetProbability Calc.itmAssetProbability
+      checkInherited Calc.itmCashProbability Calc.itmCashProbability
+      checkInherited Calc.alpha Calc.alpha
+      checkInherited Calc.beta Calc.beta
 
-      bscVanna <- vanna callBSC bscSpot maturity
-      bcVannaAtBscSpot <- vanna callBC bscSpot maturity
+      bscVanna <- blackVanna callBSC bscSpot maturity
+      bcVannaAtBscSpot <- blackVanna callBC bscSpot maturity
       bscVanna `shouldBe` bcVannaAtBscSpot
 
       bscDelta <- blackScholesDelta callBSC
-      bcDeltaAtSpot <- blackDelta callBC bscSpot
+      bcDeltaAtSpot <- Calc.delta callBC bscSpot
       bscDelta `shouldBe` bcDeltaAtSpot
       bscElasticity <- blackScholesElasticity callBSC
-      bcElasticityAtSpot <- blackElasticity callBC bscSpot
+      bcElasticityAtSpot <- Calc.elasticity callBC bscSpot
       bscElasticity `shouldBe` bcElasticityAtSpot
       bscGamma <- blackScholesGamma callBSC
-      bcGammaAtSpot <- blackGamma callBC bscSpot
+      bcGammaAtSpot <- Calc.gamma callBC bscSpot
       bscGamma `shouldBe` bcGammaAtSpot
       bscTheta <- blackScholesTheta callBSC maturity
-      bcThetaAtSpot <- blackTheta callBC bscSpot maturity
+      bcThetaAtSpot <- Calc.theta callBC bscSpot maturity
       bscTheta `shouldBe` bcThetaAtSpot
       bscThetaPerDay <- blackScholesThetaPerDay callBSC maturity
-      bcThetaPerDayAtSpot <- blackThetaPerDay callBC bscSpot maturity
+      bcThetaPerDayAtSpot <- Calc.thetaPerDay callBC bscSpot maturity
       bscThetaPerDay `shouldBe` bcThetaPerDayAtSpot
 
     it "BachelierCalculator: ctors agree, put-call parity holds, Call/Put share second-order\
@@ -390,21 +391,21 @@ spec = do
       callNC2 <- bachelierCalculator (PlainVanilla (PlainVanillaPayoff Call strike)) forward bachelierStdDev disc
       putNC2 <- bachelierCalculator (PlainVanilla (PlainVanillaPayoff Put strike)) forward bachelierStdDev disc
 
-      callNVal <- bachelierValue callNC
-      callNVal2 <- bachelierValue callNC2
+      callNVal <- Calc.value callNC
+      callNVal2 <- Calc.value callNC2
       callNVal2 `shouldBe` callNVal
-      putNVal <- bachelierValue putNC
-      putNVal2 <- bachelierValue putNC2
+      putNVal <- Calc.value putNC
+      putNVal2 <- Calc.value putNC2
       putNVal2 `shouldBe` putNVal
 
       (callNVal - putNVal) `shouldSatisfy` closePrec (disc * (forward - strike)) 1e-10
 
-      callNDF <- bachelierDeltaForward callNC
-      putNDF <- bachelierDeltaForward putNC
+      callNDF <- Calc.deltaForward callNC
+      putNDF <- Calc.deltaForward putNC
       (callNDF - putNDF) `shouldSatisfy` closePrec disc 1e-10
 
-      forM_ [ bachelierGammaForward, (`bachelierVega` maturity)
-            , bachelierStrikeGamma, (`bachelierVanna` maturity), (`bachelierVolga` maturity)
+      forM_ [ Calc.gammaForward, (`Calc.vega` maturity)
+            , Calc.strikeGamma, (`bachelierVanna` maturity), (`Calc.volga` maturity)
             ] $ \f -> do
         c <- f callNC
         p <- f putNC
@@ -417,10 +418,10 @@ spec = do
 
       let d = (forward - strike) / bachelierStdDev
           nd = normalPdf d
-      callNVega <- bachelierVega callNC maturity
+      callNVega <- Calc.vega callNC maturity
       callNVanna <- bachelierVanna callNC maturity
       callNVanna `shouldSatisfy` closePrec (-d * nd * sqrt maturity / bachelierStdDev) 1e-9
-      callNVolga <- bachelierVolga callNC maturity
+      callNVolga <- Calc.volga callNC maturity
       callNVolga `shouldSatisfy` closePrec (d * d / bachelierStdDev * callNVega) 1e-9
       callNVega `shouldSatisfy` closePrec (disc * sqrt maturity * nd) 1e-9
 
@@ -1673,6 +1674,8 @@ spec = do
         gsrStepVolQuotes <- mapM simpleQuote [0.01, 0.01]
         gsrReversionQuote <- simpleQuote 0.01
         gsrModel <- gsr ts gsrInitialVolQuote (zip stepDates gsrStepVolQuotes) gsrReversionQuote 60.0
+        gsrVols <- volatilities gsrModel
+        gsrVols `shouldSatisfy` (\xs -> length xs == 3 && all (closePrec 0.01 1.0e-12) xs)
         gsrModel' <- gsrAsGaussian1dModel gsrModel
         gsrEngine <- gaussian1dCapFloorEngine gsrModel' 64 7.0 True False (Just ts)
         setPricingEngine capfl gsrEngine
@@ -1684,6 +1687,8 @@ spec = do
         swaptionVol <- constantSwaptionVolatility' evalDate cal ModifiedFollowing swaptionVolQ dc365 ShiftedLognormal 0.0
         cmsExpiries <- mapM (\n -> advance cal evalDate (n, Years) Following False) [1, 2, 3 :: Int]
         markov <- markovFunctional ts 0.01 0.01 [] swaptionVol (fromList $ zip cmsExpiries $ replicate 3 (10, Years)) swapBase 16
+        markovVols <- volatilities markov
+        markovVols `shouldSatisfy` (\xs -> not (null xs) && all (\x -> not (isNaN x || isInfinite x)) xs)
         markovModel <- markovFunctionalAsGaussian1dModel markov
         markovEngine <- gaussian1dCapFloorEngine markovModel 8 5.0 True False (Just ts)
         setPricingEngine capfl markovEngine
@@ -2656,7 +2661,7 @@ spec = do
         localVolTS <- localConstantVol evalDate localVolQ dc
         factory <- sobolBrownianGeneratorFactory Diagonal 1234 JoeKuoD7
         mc <- hestonSlvMcModel localVolTS hm factory end 91 201 32768 [] 1.0
-        mcLeverage <- hestonSlvMcLeverageFunction mc
+        mcLeverage <- leverageFunction mc
         slv <- hestonSlvProcess hp mcLeverage 1.0
         n <- factors slv
         n `shouldBe` 2
@@ -2666,7 +2671,7 @@ spec = do
               1.0e-5 1.0e-5 2.5e-6 1.0 0.1 0.9 1.0e-5
               ZeroCorrelation Log ModifiedCraigSneyd
         fdm <- hestonSlvFdmModel localVolTS hm end fdmParams True [] 1.0
-        fdmLeverage <- hestonSlvFdmLeverageFunction fdm
+        fdmLeverage <- leverageFunction fdm
         fdmVol <- localVol fdmLeverage end 100 True
         fdmVol `shouldSatisfy` (\v -> v > 0 && not (isNaN v || isInfinite v))
 

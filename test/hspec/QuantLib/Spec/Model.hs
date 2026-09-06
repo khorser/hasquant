@@ -58,7 +58,7 @@ gaussian1dSpec =
         -- t=0 branch) to the curve's own discount factor at the model's forward-measure time,
         -- which for Gsr is exactly the constructor's horizon argument T (60.0 here).
         curveDfHorizon <- discount ts 60.0 True
-        num <- gaussian1dNumeraire model settlement 0 Nothing
+        num <- numeraire model settlement 0 Nothing
         num `shouldSatisfy` closePrec curveDfHorizon 1.0e-6
 
         -- forwardRate(fixing, y=0) for euribor6m must equal the index's own curve-implied
@@ -95,7 +95,7 @@ gaussian1dSpec =
         grid <- gaussian1dYGrid model 7.0 8 1.0 0 0
         V.length grid `shouldBe` 2 * 8 + 1
 
-        proc1D <- gaussian1dStateProcess model
+        proc1D <- stateProcess model
         proc1D `seq` return ()
 
 affineModelSpec :: Spec

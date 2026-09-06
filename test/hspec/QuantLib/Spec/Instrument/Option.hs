@@ -27,13 +27,13 @@ import QuantLib.Time.Schedule(dayCounter, DayCounterConstructor(..), Frequency(.
 import QuantLib.InterestRate(Compounding(..))
 import QuantLib.Quote(simpleQuote, Quote)
 import QuantLib.TermStructure.Yield(flatForward)
-import QuantLib.Process hiding(drift)
+import QuantLib.Process hiding(drift, fixingDates)
 import QuantLib.Math(Matrix, boxedRealMatrix, realMatrixFromVector, RealMatrix, PolynomialType(..), RngTrait(..), StatisticsTrait(..), Interpolation2D(..))
 import QuantLib.Instrument(npv, setPricingEngine, errorEstimate, BarrierType(..), AverageType(..))
 import QuantLib.Instrument.Option hiding(theta)
 import QuantLib.Instrument.Swap(varianceOption, varianceSwap, variance)
 import QuantLib.TermStructure.Volatility(blackConstantVol, blackVarianceSurface, BlackVarianceSurfaceExtrapolation(..))
-import QuantLib.PricingEngine
+import QuantLib.PricingEngine hiding(theta)
 import QuantLib.Spec.Helpers(closePrec)
 
 matrix :: Word -> Word -> [Double] -> Matrix Double

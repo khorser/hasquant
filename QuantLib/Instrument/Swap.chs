@@ -1,5 +1,6 @@
 {-# LANGUAGE FlexibleInstances #-}
 {-# LANGUAGE TemplateHaskell #-}
+{-# LANGUAGE TypeSynonymInstances #-}
 module QuantLib.Instrument.Swap
   (
     Swaption
@@ -50,16 +51,13 @@ module QuantLib.Instrument.Swap
   , nonstandardSwapFixedRate
   , floatFloatSwap
   , floatFloatSwap'
-  , fairSpread1
-  , fairSpread2
+  , firstLegFairSpread
+  , secondLegFairSpread
   , makeVanillaSwap
   , makeCms
   , zeroCouponInflationSwap
-  , zcisFairRate
   , yearOnYearInflationSwap
-  , yoyFairRate
   , cpiSwap
-  , cpiSwapFairRate
   , zeroCouponSwap
   , zeroCouponSwap'
   , fairFixedPayment
@@ -93,7 +91,6 @@ module QuantLib.Instrument.Swap
   , fairPaySpread
   , fairRecSpread
   , constNotionalCrossCurrencyFixedVsFloatingSwap
-  , xccyFairRate
 
   , bmaLeg
   , bmaLegBps
@@ -108,8 +105,6 @@ module QuantLib.Instrument.Swap
   , swaption
   , irregularSwaption
   , irregularSwap
-  , irregularSwapFairRate
-  , irregularSwapFairSpread
   , nonstandardSwaptionFromSwaption
   , nonstandardSwaption
   , floatFloatSwaption
@@ -137,7 +132,8 @@ module QuantLib.Instrument.Swap
 
   , HasFixedLeg(..)
   , HasFloatingLeg(..)
-  , HasSpread(..)
+  , HasFairRate(..)
+  , HasFairSpread(..)
   ) where
 import Data.Maybe(fromMaybe)
 import QuantLib.Internal.Syntax(deriveOptionsRecord)
@@ -432,10 +428,10 @@ floatFloatSwap' ty nominal1 nominal2 schedule1 index1 dayCount1 schedule2 index2
   ,preErrorCheck-`String'errorCheck*-}->`FloatFloatSwap'peekFloatFloatSwap*#}
 
 -- |The spread on leg 1 that would make the swap's NPV zero.
-{#fun qlFloatFloatSwapFairSpread1 as fairSpread1{withFloatFloatSwap*`FloatFloatSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlFloatFloatSwapFairSpread1 as firstLegFairSpread{withFloatFloatSwap*`FloatFloatSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |The spread on leg 2 that would make the swap's NPV zero.
-{#fun qlFloatFloatSwapFairSpread2 as fairSpread2{withFloatFloatSwap*`FloatFloatSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlFloatFloatSwapFairSpread2 as secondLegFairSpread{withFloatFloatSwap*`FloatFloatSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- | Haskell equivalent of QuantLib's fluent @MakeVanillaSwap@ builder -- a
 -- single function with 'Maybe'-wrapped optional parameters instead of
@@ -698,12 +694,12 @@ constNotionalCrossCurrencyBasisSwap payNominal payCurrency paySchedule payIndex 
   ,`RateAveragingType' -- ^floatAveragingMethod
   ,preErrorCheck-`String'errorCheck*-}->`ConstNotionalCrossCurrencyFixedVsFloatingSwap'peekConstNotionalCrossCurrencyFixedVsFloatingSwap*#}
 
--- |The fixed rate that would make the swap's NPV zero. Named distinctly from 'fairRate' -- that
--- name belongs to the 'HasFixedLeg' class, which this type doesn't implement (upstream gives it
--- no fixedLeg\/fixedLegBps\/fixedLegNpv getters); 'fairSpread' (via 'HasSpread') is available.
-{#fun qlConstNotionalCrossCurrencyFixedVsFloatingSwapFairRate as xccyFairRate{withConstNotionalCrossCurrencyFixedVsFloatingSwap*`ConstNotionalCrossCurrencyFixedVsFloatingSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
+-- |The fixed rate that would make the swap's NPV zero.
+{#fun qlConstNotionalCrossCurrencyFixedVsFloatingSwapFairRate{withConstNotionalCrossCurrencyFixedVsFloatingSwap*`ConstNotionalCrossCurrencyFixedVsFloatingSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
-instance HasSpread ConstNotionalCrossCurrencyFixedVsFloatingSwap where
+instance HasFairRate ConstNotionalCrossCurrencyFixedVsFloatingSwap where
+  fairRate = qlConstNotionalCrossCurrencyFixedVsFloatingSwapFairRate
+instance HasFairSpread ConstNotionalCrossCurrencyFixedVsFloatingSwap where
   fairSpread = qlConstNotionalCrossCurrencyFixedVsFloatingSwapFairSpread
 {#fun qlConstNotionalCrossCurrencyFixedVsFloatingSwapFairSpread{withConstNotionalCrossCurrencyFixedVsFloatingSwap*`ConstNotionalCrossCurrencyFixedVsFloatingSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
@@ -714,8 +710,8 @@ instance HasSpread ConstNotionalCrossCurrencyFixedVsFloatingSwap where
 -- as its pricing engine; QuantLib has no corresponding stock IrregularSwap engine.
 {#fun qlIrregularSwaption as irregularSwaption{withIrregularSwap*`IrregularSwap',withExercise*`Exercise',fromEnumC`IrregularSettlementType',preErrorCheck-`String'errorCheck*-}->`IrregularSwaption'peekIrregularSwaption*#}
 {#fun qlIrregularSwap as irregularSwap{`SwapType',withLeg*`GenLeg fixed',withLeg*`GenLeg float',preErrorCheck-`String'errorCheck*-}->`IrregularSwap'peekIrregularSwap*#}
-{#fun qlIrregularSwapFairRate as irregularSwapFairRate{withIrregularSwap*`IrregularSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
-{#fun qlIrregularSwapFairSpread as irregularSwapFairSpread{withIrregularSwap*`IrregularSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlIrregularSwapFairRate{withIrregularSwap*`IrregularSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlIrregularSwapFairSpread{withIrregularSwap*`IrregularSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Converts an existing 'Swaption' into a 'NonstandardSwaption' (upstream's own conversion
 -- constructor).
@@ -877,7 +873,7 @@ instance HasSpread ConstNotionalCrossCurrencyFixedVsFloatingSwap where
   ,preErrorCheck-`String'errorCheck*-}->`ZeroCouponInflationSwap'peekZeroCouponInflationSwap*#}
 
 -- |The fixed rate that would make the swap's NPV zero.
-{#fun qlZeroCouponInflationSwapFairRate as zcisFairRate{withZeroCouponInflationSwap*`ZeroCouponInflationSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlZeroCouponInflationSwapFairRate{withZeroCouponInflationSwap*`ZeroCouponInflationSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |A year-on-year inflation-indexed swap: fixed leg vs a YoY-inflation-linked leg. Per-leg
 -- NPV\/BPS use the generic 'leg'\/'legNpv'\/'legBps' (leg 0 = fixed, leg 1 = YoY).
@@ -896,7 +892,7 @@ instance HasSpread ConstNotionalCrossCurrencyFixedVsFloatingSwap where
   ,preErrorCheck-`String'errorCheck*-}->`YearOnYearInflationSwap'peekYearOnYearInflationSwap*#}
 
 -- |The fixed rate that would make the swap's NPV zero.
-{#fun qlYearOnYearInflationSwapFairRate as yoyFairRate{withYearOnYearInflationSwap*`YearOnYearInflationSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlYearOnYearInflationSwapFairRate{withYearOnYearInflationSwap*`YearOnYearInflationSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |The spread that would make the swap's NPV zero.
 {#fun qlYearOnYearInflationSwapFairSpread{withYearOnYearInflationSwap*`YearOnYearInflationSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
@@ -925,7 +921,7 @@ instance HasSpread ConstNotionalCrossCurrencyFixedVsFloatingSwap where
   ,preErrorCheck-`String'errorCheck*-}->`CPISwap'peekCPISwap*#}
 
 -- |The fixed rate that would make the swap's NPV zero.
-{#fun qlCPISwapFairRate as cpiSwapFairRate{withCPISwap*`CPISwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlCPISwapFairRate{withCPISwap*`CPISwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |The spread that would make the swap's NPV zero.
 {#fun qlCPISwapFairSpread{withCPISwap*`CPISwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
@@ -996,35 +992,49 @@ instance HasSpread ConstNotionalCrossCurrencyFixedVsFloatingSwap where
 {#fun qlEquityTotalReturnSwapFairMargin as fairMargin{withEquityTotalReturnSwap*`EquityTotalReturnSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 class HasFixedLeg a where
-  fairRate :: a -> IO Double
   fixedLeg :: a -> IO Leg
   fixedLegBps :: a -> IO Double
   fixedLegNpv :: a -> IO Double
 instance HasFixedLeg OvernightIndexedSwap where
-  fairRate = qlOvernightIndexedSwapFairRate
   fixedLeg = qlOvernightIndexedSwapFixedLeg
   fixedLegBps = qlOvernightIndexedSwapFixedLegBPS
   fixedLegNpv = qlOvernightIndexedSwapFixedLegNPV
 instance HasFixedLeg (GenFixedVsFloatingSwap f) where
-  fairRate = qlFixedVsFloatingSwapFairRate
   fixedLeg = qlFixedVsFloatingSwapFixedLeg
   fixedLegBps = qlFixedVsFloatingSwapFixedLegBPS
   fixedLegNpv = qlFixedVsFloatingSwapFixedLegNPV
 
-class HasSpread a where
+class HasFairRate a where
+  fairRate :: a -> IO Double
+instance HasFairRate OvernightIndexedSwap where
+  fairRate = qlOvernightIndexedSwapFairRate
+instance HasFairRate (GenFixedVsFloatingSwap f) where
+  fairRate = qlFixedVsFloatingSwapFairRate
+instance HasFairRate IrregularSwap where
+  fairRate = qlIrregularSwapFairRate
+instance HasFairRate ZeroCouponInflationSwap where
+  fairRate = qlZeroCouponInflationSwapFairRate
+instance HasFairRate YearOnYearInflationSwap where
+  fairRate = qlYearOnYearInflationSwapFairRate
+instance HasFairRate CPISwap where
+  fairRate = qlCPISwapFairRate
+
+class HasFairSpread a where
   fairSpread :: a -> IO Double
-instance HasSpread (GenFixedVsFloatingSwap f) where
+instance HasFairSpread (GenFixedVsFloatingSwap f) where
   fairSpread = qlFixedVsFloatingSwapFairSpread
-instance HasSpread OvernightIndexedSwap where
+instance HasFairSpread OvernightIndexedSwap where
   fairSpread = qlOvernightIndexedSwapFairSpread
-instance HasSpread AssetSwap where
+instance HasFairSpread AssetSwap where
   fairSpread = qlAssetSwapFairSpread
-instance HasSpread CreditDefaultSwap where
+instance HasFairSpread CreditDefaultSwap where
   fairSpread = qlCreditDefaultSwapFairSpread
-instance HasSpread YearOnYearInflationSwap where
+instance HasFairSpread YearOnYearInflationSwap where
   fairSpread = qlYearOnYearInflationSwapFairSpread
-instance HasSpread CPISwap where
+instance HasFairSpread CPISwap where
   fairSpread = qlCPISwapFairSpread
+instance HasFairSpread IrregularSwap where
+  fairSpread = qlIrregularSwapFairSpread
 
 class HasFloatingLeg a where
   floatingLeg :: a -> IO Leg

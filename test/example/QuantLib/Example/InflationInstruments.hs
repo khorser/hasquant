@@ -89,7 +89,7 @@ priceZcis dc cal idx1 swapEngine = do
   zcis0Inst <- asInstrument zcis0
   setPricingEngine zcis0Inst swapEngine
   npvBefore <- npv zcis0Inst
-  fairZcisRate <- zcisFairRate zcis0
+  fairZcisRate <- fairRate zcis0
   zcis1 <- zeroCouponInflationSwap Payer nominal evalDate maturity5Y cal Unadjusted dc fairZcisRate idx1 obsLag CPILinear False cal Following
   zcis1Inst <- asInstrument zcis1
   setPricingEngine zcis1Inst swapEngine
@@ -128,7 +128,7 @@ refineCpiSwapRate ctx 0 r = do
   pure (r, n)
 refineCpiSwapRate ctx n r = do
   (s, _) <- buildCpiSwap ctx r
-  r' <- cpiSwapFairRate s
+  r' <- fairRate s
   refineCpiSwapRate ctx (n - 1) r'
 
 run :: IO Result
@@ -189,7 +189,7 @@ run = do
   yoySwap0 <- yearOnYearInflationSwap Payer nominal fixedSchedule flatRate dc yoySchedule yidx1 obsLag CPILinear 0.0 dc cal Unadjusted
   yoySwap0Inst <- asInstrument yoySwap0
   setPricingEngine yoySwap0Inst swapEngine
-  fairYoyRate <- yoyFairRate yoySwap0
+  fairYoyRate <- fairRate yoySwap0
   yoySwap1 <- yearOnYearInflationSwap Payer nominal fixedSchedule fairYoyRate dc yoySchedule yidx1 obsLag CPILinear 0.0 dc cal Unadjusted
   yoySwap1Inst <- asInstrument yoySwap1
   setPricingEngine yoySwap1Inst swapEngine

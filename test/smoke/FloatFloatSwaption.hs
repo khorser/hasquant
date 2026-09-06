@@ -4,7 +4,7 @@
 -- upstream's default). Checks:
 -- 1. Both FloatFloatSwap constructors materialize (flat-nominal via floatFloatSwap/
 --    FloatFloatSwapOpts, per-period-nominal via floatFloatSwap'/FloatFloatSwapVaryingOpts).
--- 2. fairSpread1/fairSpread2 run without crashing once a pricing engine is attached.
+-- 2. firstLegFairSpread/secondLegFairSpread run without crashing once a pricing engine is attached.
 -- 3. FloatFloatSwaption materializes from both underlyings and calibrationBasket returns a
 --    non-empty basket in both CalibrationBasketNaive/MaturityStrikeByDeltaGamma modes -- reusing
 --    the same peekPtrArray/retPtrArray plumbing increment 1 built and tested.
@@ -89,12 +89,12 @@ main = do
   engine <- gaussian1dFloatFloatSwaptionEngine gsrGm 64 7.0 True False Nothing (Just ts) True None
   forM_ [swpn1, swpn2] (`setPricingEngine` engine)
 
-  -- 2. fairSpread1/fairSpread2 run without crashing once priced (via a plain swap pricing engine).
+  -- 2. firstLegFairSpread/secondLegFairSpread run without crashing once priced (via a plain swap pricing engine).
   swapEngine <- discountingSwapEngine ts Nothing Nothing Nothing
   I.setPricingEngine underlying1 swapEngine
-  s1 <- fairSpread1 underlying1
-  s2 <- fairSpread2 underlying1
-  putStrLn ("fairSpread1: " ++ show s1 ++ ", fairSpread2: " ++ show s2)
+  s1 <- firstLegFairSpread underlying1
+  s2 <- secondLegFairSpread underlying1
+  putStrLn ("firstLegFairSpread: " ++ show s1 ++ ", secondLegFairSpread: " ++ show s2)
 
   -- 3. calibrationBasket in both modes.
   basketNaive <- floatFloatSwaptionCalibrationBasket swpn1 swapBase swaptionVolTS CalibrationBasketNaive

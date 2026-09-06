@@ -1,3 +1,5 @@
+{-# LANGUAGE FlexibleInstances #-}
+{-# LANGUAGE TypeSynonymInstances #-}
 module QuantLib.Process
   (
     ProcessDiscretization(..)
@@ -68,25 +70,21 @@ module QuantLib.Process
   , hybridHestonHullWhiteProcess
   , klugeExtOUProcess
   , liborForwardModelProcess
-  , liborForwardModelProcessFixingDates
-  , liborForwardModelProcessFixingTimes
-  , liborForwardModelProcessCashFlows
-  , liborForwardModelProcessIndex
-  , liborForwardModelProcessDiscountBond
-  , liborForwardModelProcessAccrualTimes
+  , fixingDates
+  , fixingTimes
+  , cashFlows
+  , index
+  , discountBond
+  , accrualTimes
   , merton76Process
   , ornsteinUhlenbeckProcess
   , varianceGammaProcess
   , stochasticProcessArray
 
-  , g2Phi
-  , g2ShortRate
-  , g2ForwardPhi
-  , g2ForwardShortRate
-  , setForwardMeasureTime
-  , setG2ForwardMeasureTime
-  , hullWhiteAlpha
-  , hullWhiteForwardAlpha
+  , HasPhi(..)
+  , HasShortRate(..)
+  , HasForwardMeasureTime(..)
+  , HasAlpha(..)
   , hullWhiteForwardB
   , hullWhiteForwardM
   , hybridHestonHullWhiteNumeraire
@@ -254,27 +252,59 @@ import Data.List.NonEmpty(NonEmpty, toList)
 
 -- |the deterministic offset phi(t) that fits 'g2Process''s initial term structure -- throws if
 -- the process was constructed with no term structure.
-{#fun qlG2ProcessPhi as g2Phi{withGenStochasticProcess*`G2Process',`Double' -- ^t
+{#fun qlG2ProcessPhi{withGenStochasticProcess*`G2Process',`Double' -- ^t
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |the short rate implied by a simulated 'g2Process' state @(z1, z2)@ at time /t/: just
--- @z1 + z2@, since 'g2Phi''s offset is already baked into the first simulated component.
-{#fun pure qlG2ProcessShortRate as g2ShortRate{withGenStochasticProcess*`G2Process',`Double' -- ^t
+-- @z1 + z2@, since 'phi''s offset is already baked into the first simulated component.
+{#fun pure qlG2ProcessShortRate{withGenStochasticProcess*`G2Process',`Double' -- ^t
   ,`Double' -- ^z1
   ,`Double' -- ^z2
   }->`Double'#}
 
 -- |the deterministic offset phi(t) that fits 'g2ForwardProcess''s initial term structure --
 -- throws if the process was constructed with no term structure.
-{#fun qlG2ForwardProcessPhi as g2ForwardPhi{withGenStochasticProcess*`G2ForwardProcess',`Double' -- ^t
+{#fun qlG2ForwardProcessPhi{withGenStochasticProcess*`G2ForwardProcess',`Double' -- ^t
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |the short rate implied by a simulated 'g2ForwardProcess' state @(z1, z2)@ at time /t/: just
--- @z1 + z2@, since 'g2ForwardPhi''s offset is already baked into the first simulated component.
-{#fun pure qlG2ForwardProcessShortRate as g2ForwardShortRate{withGenStochasticProcess*`G2ForwardProcess',`Double' -- ^t
+-- @z1 + z2@, since 'phi''s offset is already baked into the first simulated component.
+{#fun pure qlG2ForwardProcessShortRate{withGenStochasticProcess*`G2ForwardProcess',`Double' -- ^t
   ,`Double' -- ^z1
   ,`Double' -- ^z2
   }->`Double'#}
+
+-- |Two-factor short-rate processes with the same deterministic curve-fitting offset.
+class HasPhi a where
+  phi :: a -> Double -> IO Double
+instance HasPhi G2Process where
+  phi = qlG2ProcessPhi
+instance HasPhi G2ForwardProcess where
+  phi = qlG2ForwardProcessPhi
+
+-- |Two-factor processes whose simulated state maps to the short rate in the same way.
+class HasShortRate a where
+  shortRate :: a -> Double -> Double -> Double -> Double
+instance HasShortRate G2Process where
+  shortRate = qlG2ProcessShortRate
+instance HasShortRate G2ForwardProcess where
+  shortRate = qlG2ForwardProcessShortRate
+
+-- |Forward-measure processes that require a maturity time before simulation.
+class HasForwardMeasureTime a where
+  setForwardMeasureTime :: a -> Double -> IO ()
+instance HasForwardMeasureTime HullWhiteForwardProcess where
+  setForwardMeasureTime = qlHullWhiteForwardProcessSetForwardMeasureTime
+instance HasForwardMeasureTime G2ForwardProcess where
+  setForwardMeasureTime = qlG2ForwardProcessSetForwardMeasureTime
+
+-- |Hull--White processes exposing the deterministic curve-fitting offset.
+class HasAlpha a where
+  alpha :: a -> Double -> IO Double
+instance HasAlpha HullWhiteProcess where
+  alpha = qlHullWhiteProcessAlpha
+instance HasAlpha HullWhiteForwardProcess where
+  alpha = qlHullWhiteForwardProcessAlpha
 
 -- |the number of independent Brownian factors driving a stochastic process -- e.g. 2 for
 -- 'g2Process', matching its state size; used to size a 'QuantLib.Method.pathGenerator''s
@@ -446,7 +476,7 @@ covariance p t0 x0 dt = toMatrixDouble <$> qlStochasticProcessCovariance p t0 x0
 -- pricing horizon is known and, when the process is the short-rate leg of a
 -- 'hybridHestonHullWhiteProcess', /before/ that process is constructed -- the joint process
 -- reads this time once, at construction, and a later change does not reach it.
-{#fun qlHullWhiteForwardProcessSetForwardMeasureTime as setForwardMeasureTime{withGenStochasticProcess1D*`HullWhiteForwardProcess',`Double' -- ^t
+{#fun qlHullWhiteForwardProcessSetForwardMeasureTime{withGenStochasticProcess1D*`HullWhiteForwardProcess',`Double' -- ^t
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |the T-forward-measure time /T/ of a 'g2ForwardProcess', the multi-factor counterpart of
@@ -455,19 +485,19 @@ covariance p t0 x0 dt = toMatrixDouble <$> qlStochasticProcessCovariance p t0 x0
 -- Mandatory before the process is simulated or its 'drift' read: @G2ForwardProcess@'s
 -- constructor leaves the inherited /T/ default-initialized, and 'drift' (hence 'evolve' and
 -- 'expectation') adds a measure correction computed from it, so without this call those read
--- an indeterminate value. 'g2ForwardPhi' and 'g2ForwardShortRate' do not depend on /T/ and are
+-- an indeterminate value. 'phi' and 'shortRate' do not depend on /T/ and are
 -- unaffected.
-{#fun qlG2ForwardProcessSetForwardMeasureTime as setG2ForwardMeasureTime{withGenStochasticProcess*`G2ForwardProcess',`Double' -- ^t
+{#fun qlG2ForwardProcessSetForwardMeasureTime{withGenStochasticProcess*`G2ForwardProcess',`Double' -- ^t
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |the deterministic drift offset alpha(t) that fits 'hullWhiteProcess''s initial term
 -- structure; the simulated state /x/ is the short rate itself, so this is the piece to
 -- subtract to recover the zero-mean OU factor.
-{#fun qlHullWhiteProcessAlpha as hullWhiteAlpha{withGenStochasticProcess1D*`HullWhiteProcess',`Double' -- ^t
+{#fun qlHullWhiteProcessAlpha{withGenStochasticProcess1D*`HullWhiteProcess',`Double' -- ^t
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
--- |'hullWhiteAlpha' for a 'hullWhiteForwardProcess', i.e. under its T-forward measure.
-{#fun qlHullWhiteForwardProcessAlpha as hullWhiteForwardAlpha{withGenStochasticProcess1D*`HullWhiteForwardProcess',`Double' -- ^t
+-- |'alpha' for a 'hullWhiteForwardProcess', i.e. under its T-forward measure.
+{#fun qlHullWhiteForwardProcessAlpha{withGenStochasticProcess1D*`HullWhiteForwardProcess',`Double' -- ^t
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |the Hull-White B(t, T) = (1 - exp(-a (T - t))) \/ a factor of the affine discount-bond
@@ -522,29 +552,29 @@ covariance p t0 x0 dt = toMatrixDouble <$> qlStochasticProcessCovariance p t0 x0
   ,withIborIndex*`GenIborIndex ibor',preErrorCheck-`String'errorCheck*-}->`LiborForwardModelProcess'peekLiborForwardModelProcess*#}
 
 -- |the reset (fixing) dates of the forward rates this process evolves
-{#fun qlLiborForwardModelProcessFixingDates as liborForwardModelProcessFixingDates{withGenStochasticProcess*`LiborForwardModelProcess'
+{#fun qlLiborForwardModelProcessFixingDates as fixingDates{withGenStochasticProcess*`LiborForwardModelProcess'
   ,preArray-`[Day]'&peekDayArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |the reset (fixing) times of the forward rates this process evolves, in the process's own
 -- day count fraction from the evaluation date
-{#fun qlLiborForwardModelProcessFixingTimes as liborForwardModelProcessFixingTimes{withGenStochasticProcess*`LiborForwardModelProcess'
+{#fun qlLiborForwardModelProcessFixingTimes as fixingTimes{withGenStochasticProcess*`LiborForwardModelProcess'
   ,preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |the leg of Ibor coupons (notional @amount@ each) this process's forward rates reset -- used
 -- e.g. to build the 'QuantLib.Instrument.CapFloor.cap' this process prices via 'liborForwardModel'
-{#fun qlLiborForwardModelProcessCashFlows as liborForwardModelProcessCashFlows{withGenStochasticProcess*`LiborForwardModelProcess'
+{#fun qlLiborForwardModelProcessCashFlows as cashFlows{withGenStochasticProcess*`LiborForwardModelProcess'
   ,`Double' -- ^amount
   ,preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
 
 -- |the underlying 'IborIndex' this process was constructed with
-{#fun qlLiborForwardModelProcessIndex as liborForwardModelProcessIndex{withGenStochasticProcess*`LiborForwardModelProcess'
+{#fun qlLiborForwardModelProcessIndex as index{withGenStochasticProcess*`LiborForwardModelProcess'
   ,preErrorCheck-`String'errorCheck*-}->`IborIndex'peekIborIndex*#}
 
 -- |the /cumulative/ discount factors implied by one simulated vector of forward rates: element
 -- /i/ discounts from the end of accrual period /i/ back to the process's start, i.e.
--- @scanl1 (*) [1 \/ (1 + r_i tau_i)]@ over 'liborForwardModelProcessAccrualTimes' -- not the
+-- @scanl1 (*) [1 \/ (1 + r_i tau_i)]@ over 'accrualTimes' -- not the
 -- individual one-period factors.
-{#fun qlLiborForwardModelProcessDiscountBond as liborForwardModelProcessDiscountBond{withGenStochasticProcess*`LiborForwardModelProcess'
+{#fun qlLiborForwardModelProcessDiscountBond as discountBond{withGenStochasticProcess*`LiborForwardModelProcess'
   ,withDoubleArray*`[Double]'& -- ^rates
   ,preArray-`[Double]'&peekDoubleArray*
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
@@ -552,8 +582,8 @@ covariance p t0 x0 dt = toMatrixDouble <$> qlStochasticProcessCovariance p t0 x0
 -- |the @(start, end)@ accrual times of the forward rates this process evolves, in its own day
 -- count fraction from the evaluation date; their difference is the accrual period a caplet
 -- payoff is scaled by.
-liborForwardModelProcessAccrualTimes :: LiborForwardModelProcess -> IO [(Double, Double)]
-liborForwardModelProcessAccrualTimes p = uncurry zip <$> qlLiborForwardModelProcessAccrualTimes p
+accrualTimes :: LiborForwardModelProcess -> IO [(Double, Double)]
+accrualTimes p = uncurry zip <$> qlLiborForwardModelProcessAccrualTimes p
 {#fun qlLiborForwardModelProcessAccrualTimes{withGenStochasticProcess*`LiborForwardModelProcess'
   ,preArray-`[Double]'&peekDoubleArray*
   ,preArray-`[Double]'&peekDoubleArray*

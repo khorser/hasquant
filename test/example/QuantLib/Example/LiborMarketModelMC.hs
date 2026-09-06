@@ -1,5 +1,5 @@
 -- |Monte-Carlo caplet pricing under a one-factor Libor market model, discounting each simulated
--- forward-rate vector with the process's own 'liborForwardModelProcessDiscountBond' rather than
+-- forward-rate vector with the process's own 'discountBond' rather than
 -- with a deterministic curve.
 --
 -- Ported from QuantLib's test-suite\/libormarketmodelprocess.cpp::testMonteCarloCapletPricing
@@ -31,9 +31,9 @@ import QuantLib.InterestRate(VolatilityType(..))
 import QuantLib.Math(SobolDirectionIntegers(..), Interpolation(..), timeGridFromVector', nonEmptyVector, points, boxedRealMatrix)
 import QuantLib.Method(sobolPathGenerator, next, asset)
 import QuantLib.Model(lfmHullWhiteParameterization, setCovarParam)
-import QuantLib.Process(liborForwardModelProcess, liborForwardModelProcessFixingDates
- , liborForwardModelProcessFixingTimes, liborForwardModelProcessAccrualTimes
- , liborForwardModelProcessDiscountBond, factors)
+import QuantLib.Process(liborForwardModelProcess, fixingDates
+ , fixingTimes, accrualTimes
+ , discountBond, factors)
 import qualified QuantLib.Settings as Settings
 import QuantLib.TermStructure.Yield(interpolatedZeroCurve)
 import qualified QuantLib.TermStructure.Volatility as Vol(capletVarianceCurve)
@@ -62,7 +62,7 @@ run = Settings.keepingSettingsGc $ do
 
   -- the cap-vol curve is built off a len+1-sized process, as upstream's makeCapVolCurve does
   volProcess <- liborForwardModelProcess (len + 1) idx
-  volDates <- liborForwardModelProcessFixingDates volProcess
+  volDates <- fixingDates volProcess
   volDc <- dayCounter ActualActualISDA
   capletVol <- Vol.capletVarianceCurve evalDate
     (fromList (zip (take (fromIntegral len) (drop 1 volDates)) capletVols)) volDc ShiftedLognormal 0.0
@@ -71,12 +71,12 @@ run = Settings.keepingSettingsGc $ do
   parameterization <- lfmHullWhiteParameterization process capletVol emptyCorrelation 1
   setCovarParam process parameterization
 
-  fixingTimes <- liborForwardModelProcessFixingTimes process
-  accruals <- liborForwardModelProcessAccrualTimes process
-  grid <- timeGridFromVector' (fromMaybe (error "empty fixing times") (nonEmptyVector (V.fromList fixingTimes))) 12
+  resetTimes <- fixingTimes process
+  accruals <- accrualTimes process
+  grid <- timeGridFromVector' (fromMaybe (error "empty fixing times") (nonEmptyVector (V.fromList resetTimes))) 12
   gridPts <- points grid
   -- each rate is read at its own fixing time's index in the grid, as upstream's `location` does
-  let location = [fromMaybe (error "fixing time not on grid") (V.findIndex (== t) gridPts) | t <- fixingTimes]
+  let location = [fromMaybe (error "fixing time not on grid") (V.findIndex (== t) gridPts) | t <- resetTimes]
       steps = fromIntegral (V.length gridPts) - 1
   nFactors <- factors process
   gen <- sobolPathGenerator JoeKuoD7 process grid 42 (nFactors * steps) False
@@ -85,7 +85,7 @@ run = Settings.keepingSettingsGc $ do
       path <- next gen
       rateVecs <- forM [0 .. len - 1] (asset path)
       let rates = zipWith (V.!) rateVecs location
-      dfs <- liborForwardModelProcessDiscountBond process rates
+      dfs <- discountBond process rates
       let payoffs = zipWith3 (\df r (st, en) -> df * max 0.0 (r - capRate) * (en - st)) dfs rates accruals
       pure (zipWith' (+) acc payoffs))
     (replicate (fromIntegral len) 0.0) [1 .. nrTrails :: Int]

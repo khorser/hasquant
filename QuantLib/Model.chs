@@ -1,3 +1,5 @@
+{-# LANGUAGE FlexibleInstances #-}
+{-# LANGUAGE TypeSynonymInstances #-}
 module QuantLib.Model
   (
     CalibrationErrorType(..)
@@ -60,14 +62,16 @@ module QuantLib.Model
   , gsrAsGaussian1dModel
   , markovFunctionalAsGaussian1dModel
 
-  , gaussian1dNumeraire
+  , HasLeverageFunction(..)
+  , HasVolatilities(..)
+  , numeraire
   , gaussian1dZerobond
   , gaussian1dZerobondOption
   , gaussian1dForwardRate
   , gaussian1dSwapRate
   , gaussian1dSwapAnnuity
   , gaussian1dYGrid
-  , gaussian1dStateProcess
+  , stateProcess
 
   , batesModel
   , blackKarasinski
@@ -80,9 +84,7 @@ module QuantLib.Model
   , mtBrownianGeneratorFactory
   , sobolBrownianGeneratorFactory
   , hestonSlvMcModel
-  , hestonSlvMcLeverageFunction
   , hestonSlvFdmModel
-  , hestonSlvFdmLeverageFunction
   , hestonSlvFdmLogEntries
   , hullWhite
   , varianceGammaModel
@@ -111,10 +113,8 @@ module QuantLib.Model
   , discountBondOptionForward
   , convexityBias
   , fixedReversion
-  , gsrVolatility
   , gsrMoveVolatility
   , gsrMoveReversion
-  , markovFunctionalVolatility
   , params
   , value
   , blackPrice
@@ -346,7 +346,7 @@ generalizedHullWhite ts s v = qlGeneralizedHullWhite ts sd vd sq vq where {(sd, 
   ,preErrorCheck-`String'errorCheck*-}->`HestonSLVMCModel'peekHestonSLVMCModel*#}
 
 -- |Forces MC calibration if necessary and returns its local-volatility leverage function.
-{#fun qlHestonSLVMCModelLeverageFunction as hestonSlvMcLeverageFunction{withHestonSLVMCModel*`HestonSLVMCModel' -- ^model
+{#fun qlHestonSLVMCModelLeverageFunction{withHestonSLVMCModel*`HestonSLVMCModel' -- ^model
   ,preErrorCheck-`String'errorCheck*-}->`LocalVolTermStructure'peekLocalVolTermStructure*#}
 
 -- |Fokker--Planck finite-difference calibration of a Heston stochastic-local-volatility
@@ -392,7 +392,7 @@ hestonSlvFdmModel localVol model endDate p logging mandatoryDates mixingFactor =
   ,preErrorCheck-`String'errorCheck*-}->`HestonSLVFDMModel'peekHestonSLVFDMModel*#}
 
 -- |Forces FDM calibration if necessary and returns its local-volatility leverage function.
-{#fun qlHestonSLVFDMModelLeverageFunction as hestonSlvFdmLeverageFunction{withHestonSLVFDMModel*`HestonSLVFDMModel' -- ^model
+{#fun qlHestonSLVFDMModelLeverageFunction{withHestonSLVFDMModel*`HestonSLVFDMModel' -- ^model
   ,preErrorCheck-`String'errorCheck*-}->`LocalVolTermStructure'peekLocalVolTermStructure*#}
 
 -- |Copies retained FDM density diagnostics. Returns @[]@ when the model was built with
@@ -451,7 +451,7 @@ gsr ts initialVol subsequentVols reversion horizon =
   ,preErrorCheck-`String'errorCheck*-}->`Gsr'peekGsr*#}
 
 -- |Volatility step values, as calibrated so far.
-{#fun qlGsrVolatility as gsrVolatility{withGenCalibratedModel*`Gsr',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlGsrVolatility{withGenCalibratedModel*`Gsr',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |The calibration mask ('calibrate''s @fixParameters@) that fixes every model parameter except
 -- the volatility at step index @i@ (0-based) -- a ready-made @fixParameters@ argument for
@@ -510,12 +510,12 @@ markovFunctionalCaplet ts reversion initialVol steps capletVol expiries ibor gri
   ,preErrorCheck-`String'errorCheck*-}->`MarkovFunctional'peekMarkovFunctional*#}
 
 -- |Volatility step values, as calibrated so far.
-{#fun qlMarkovFunctionalVolatility as markovFunctionalVolatility{withGenCalibratedModel*`MarkovFunctional',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlMarkovFunctionalVolatility{withGenCalibratedModel*`MarkovFunctional',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Numeraire value at @referenceDate@, conditional on the standardized state variable @y@
 -- (0 = the model's expected path). @yts@ overrides the model's own term structure for
 -- discounting when given, otherwise the model's own curve is used.
-{#fun qlGaussian1dModelNumeraire as gaussian1dNumeraire{withStandalone*`Gaussian1dModel'
+{#fun qlGaussian1dModelNumeraire as numeraire{withStandalone*`Gaussian1dModel'
   ,withDay*`Day' -- ^referenceDate
   ,`Double' -- ^y
   ,withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)' -- ^yts
@@ -596,7 +596,23 @@ markovFunctionalCaplet ts reversion initialVol steps capletVol expiries ibor gri
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |The model's own state process. Throws if the model was constructed without one set.
-{#fun qlGaussian1dModelStateProcess as gaussian1dStateProcess{withStandalone*`Gaussian1dModel',preErrorCheck-`String'errorCheck*-}->`StochasticProcess1D'peekStochasticProcess1D*#}
+{#fun qlGaussian1dModelStateProcess as stateProcess{withStandalone*`Gaussian1dModel',preErrorCheck-`String'errorCheck*-}->`StochasticProcess1D'peekStochasticProcess1D*#}
+
+-- |Models that expose a calibrated local-volatility leverage function.
+class HasLeverageFunction a where
+  leverageFunction :: a -> IO LocalVolTermStructure
+instance HasLeverageFunction HestonSLVMCModel where
+  leverageFunction = qlHestonSLVMCModelLeverageFunction
+instance HasLeverageFunction HestonSLVFDMModel where
+  leverageFunction = qlHestonSLVFDMModelLeverageFunction
+
+-- |Models that expose their calibrated volatility step values.
+class HasVolatilities a where
+  volatilities :: a -> IO [Double]
+instance HasVolatilities Gsr where
+  volatilities = qlGsrVolatility
+instance HasVolatilities MarkovFunctional where
+  volatilities = qlMarkovFunctionalVolatility
 
 -- |Variance Gamma model for the underlying's log-return process (Madan-Carr-Chang).
 {#fun qlVarianceGammaModel as varianceGammaModel{withGenStochasticProcess1D*`VarianceGammaProcess',preErrorCheck-`String'errorCheck*-}->`CalibratedModel'peekCalibratedModel*#}
@@ -641,8 +657,8 @@ lfmHullWhiteParameterization process capletVol (Matrix rows cols values) factors
 -- 'QuantLib.Process.liborForwardModelProcess' holds no parameterization, and
 -- 'QuantLib.Process.drift', 'QuantLib.Process.diffusion', 'QuantLib.Process.evolve',
 -- 'QuantLib.Process.factors' and 'QuantLib.Method.pathGenerator' all dereference it.
--- 'QuantLib.Process.liborForwardModelProcessDiscountBond', the fixing/accrual times and
--- 'QuantLib.Process.liborForwardModelProcessCashFlows' do not, and work without it.
+-- 'QuantLib.Process.discountBond', the fixing/accrual times and
+-- 'QuantLib.Process.cashFlows' do not, and work without it.
 {#fun qlLiborForwardModelProcessSetCovarParam as setCovarParam{withGenStochasticProcess*`LiborForwardModelProcess' -- ^process
   ,withStandalone*`LfmHullWhiteParameterization' -- ^param
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
