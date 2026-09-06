@@ -15,6 +15,9 @@ module QuantLib.PricingEngine
   , FixedPointEquation(..)
   , QdFpScheme(..)
   , FdmQuantoHelper
+  , IntegrationControl(..)
+  , LatticeTime(..)
+  , FdmGrid(..)
 
   , GenBlackCalculator
   , asBlackCalculator
@@ -42,7 +45,6 @@ module QuantLib.PricingEngine
   , analyticHolderExtensibleOptionEngine
   , fdBlackScholesBarrierEngine
   , fdHestonBarrierEngine
-  , fdHestonBarrierEngine'
   , binomialBarrierEngine
   , vannaVolgaBarrierEngine
   , analyticDoubleBarrierEngine
@@ -111,10 +113,7 @@ module QuantLib.PricingEngine
   , treeSwaptionEngine
   , treeVanillaSwapEngine
   , varianceGammaEngine
-  , analyticHestonEngine'
   , analyticHestonEngineOptimalControlVariate
-  , analyticHestonHullWhiteEngine'
-  , batesEngine'
   , mcHestonHullWhiteEngine
   , mcAmericanEngine
   , mcBarrierEngine
@@ -172,43 +171,30 @@ module QuantLib.PricingEngine
   , choiBasketEngine
   , dengLiZhouBasketEngine
   , fdndimBlackScholesVanillaEngine
-  , fdndimBlackScholesVanillaEngine'
   , singleFactorBsmBasketEngine
   , lfmSwaptionEngine
-  , treeCapFloorEngine'
-  , treeSwaptionEngine'
-  , treeVanillaSwapEngine'
 
   , fdG2SwaptionEngine
   , fdHullWhiteSwaptionEngine
   , binomialVanillaEngine
   , fdBlackScholesVanillaEngine
-  , fdBlackScholesVanillaEngine'
   , fdBlackScholesVanillaEngineQuanto
-  , fdBlackScholesVanillaEngineQuanto'
   , fdmQuantoHelper
   , fdmQuantoHelperQuantoAdjustment
   , fdHestonVanillaEngine
-  , fdHestonVanillaEngine'
   , cosHestonEngine
   , analyticPdfHestonEngine
   , fdBatesVanillaEngine
-  , fdBatesVanillaEngine'
   , fdBlackScholesShoutEngine
-  , fdBlackScholesShoutEngine'
   , fdHestonVanillaEngineQuanto
-  , fdHestonVanillaEngineQuanto'
   , fdHestonHullWhiteVanillaEngine
-  , fdHestonHullWhiteVanillaEngine'
 
   , binomialConvertibleEngine
   , blackCallableFixedRateBondEngine'
   , blackCallableFixedRateBondEngine
   , blackCallableZeroCouponBondEngine'
   , blackCallableZeroCouponBondEngine
-  , treeCallableFixedRateBondEngine'
   , treeCallableFixedRateBondEngine
-  , treeCallableZeroCouponBondEngine'
   , treeCallableZeroCouponBondEngine
 
   , alpha
@@ -328,6 +314,23 @@ import QuantLib.Internal.Common
 import Data.List.NonEmpty(NonEmpty, toList)
 
 {#enum CashAnnuityModel{} deriving(Show, Eq, Read)#}
+
+-- |Numerical integration control for analytic Heston-family engines.
+data IntegrationControl
+  = IntegrationOrder Word
+  | IntegrationTolerance Double Word
+  deriving (Eq, Show)
+
+-- |Time discretization for lattice pricing engines.
+data LatticeTime
+  = TimeSteps Word
+  | ExplicitTimeGrid TimeGrid
+
+-- |Spatial discretization for an n-dimensional finite-difference engine.
+data FdmGrid
+  = UniformGrid Word
+  | AxisGrids (NonEmpty Word)
+  deriving (Eq, Show)
 {#enum Probabilities{} deriving(Show, Eq, Read)#}
 {#enum CashDividendModel{} add prefix="CashDividend" deriving(Show, Eq, Read)#}
 {#enum NumericalFix{} deriving(Show, Eq, Read)#}
@@ -839,17 +842,17 @@ discountingPerpetualFuturesEngine domestic foreignCurve spot funding interpolati
 {#fun qlAnalyticGJRGARCHEngine as analyticGjrGarchEngine{withGenCalibratedModel*`GJRGARCHModel',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |semi-analytic Heston-model pricing engine, integrating with a fixed relative tolerance and evaluation cap
-{#fun qlAnalyticHestonEngine as analyticHestonEngine{withHestonModel*`GenHestonModel hm',`Double' -- ^relTolerance
+{#fun qlAnalyticHestonEngine as analyticHestonEngineTolerance{withHestonModel*`GenHestonModel hm',`Double' -- ^relTolerance
   ,fromIntegral`Word' -- ^maxEvaluations
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |semi-analytic pricing engine combining a Heston equity model with a Hull-White short-rate model
-{#fun qlAnalyticHestonHullWhiteEngine as analyticHestonHullWhiteEngine{withHestonModel*`GenHestonModel hm',withHullWhite*`HullWhite'
+{#fun qlAnalyticHestonHullWhiteEngine as analyticHestonHullWhiteEngineOrder{withHestonModel*`GenHestonModel hm',withHullWhite*`HullWhite'
   ,fromIntegral`Word' -- ^integrationOrder
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |semi-analytic pricing engine for the Bates (Heston plus jumps) model, integrating with a fixed order
-{#fun qlBatesEngine as batesEngine{withBatesModel*`GenBatesModel bm'
+{#fun qlBatesEngine as batesEngineOrder{withBatesModel*`GenBatesModel bm'
   ,fromIntegral`Word' -- ^integrationOrder
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
@@ -869,15 +872,15 @@ discountingPerpetualFuturesEngine domestic foreignCurve spot funding interpolati
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |numerical-lattice pricing engine for caps\/floors under a short-rate model
-{#fun qlTreeCapFloorEngine as treeCapFloorEngine{withShortRateModel*`GenShortRateModel sm',fromIntegral`Word' -- ^timeSteps
+{#fun qlTreeCapFloorEngine as treeCapFloorEngineTimeSteps{withShortRateModel*`GenShortRateModel sm',fromIntegral`Word' -- ^timeSteps
   ,withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |numerical-lattice pricing engine for swaptions under a short-rate model
-{#fun qlTreeSwaptionEngine as treeSwaptionEngine{withShortRateModel*`GenShortRateModel sm',fromIntegral`Word' -- ^timeSteps
+{#fun qlTreeSwaptionEngine as treeSwaptionEngineTimeSteps{withShortRateModel*`GenShortRateModel sm',fromIntegral`Word' -- ^timeSteps
   ,withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |numerical-lattice pricing engine for plain vanilla swaps under a short-rate model
-{#fun qlTreeVanillaSwapEngine as treeVanillaSwapEngine{withShortRateModel*`GenShortRateModel sm',fromIntegral`Word' -- ^timeSteps
+{#fun qlTreeVanillaSwapEngine as treeVanillaSwapEngineTimeSteps{withShortRateModel*`GenShortRateModel sm',fromIntegral`Word' -- ^timeSteps
   ,withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |pricing engine for European vanilla options using the Variance Gamma model, integrated numerically
@@ -886,8 +889,15 @@ discountingPerpetualFuturesEngine domestic foreignCurve spot funding interpolati
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |semi-analytic Heston-model pricing engine, integrating with a fixed quadrature order
-{#fun qlAnalyticHestonEngine1 as analyticHestonEngine'{withHestonModel*`GenHestonModel hm',fromIntegral`Word' -- ^integrationOrder
+{#fun qlAnalyticHestonEngine1 as analyticHestonEngineOrder{withHestonModel*`GenHestonModel hm',fromIntegral`Word' -- ^integrationOrder
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+
+-- |Semi-analytic Heston engine with either fixed-order or tolerance-based integration.
+analyticHestonEngine :: GenHestonModel hm -> IntegrationControl -> IO PricingEngine
+analyticHestonEngine model control =
+  case control of
+    IntegrationOrder order -> analyticHestonEngineOrder model order
+    IntegrationTolerance tolerance evaluations -> analyticHestonEngineTolerance model tolerance evaluations
 
 -- |The complex-logarithm evaluation formula 'AnalyticHestonEngine' would pick for the given
 -- maturity and Heston parameters when constructed with 'ComplexLogFormula' left to default to
@@ -901,14 +911,28 @@ discountingPerpetualFuturesEngine domestic foreignCurve spot funding interpolati
   }->`ComplexLogFormula'#}
 
 -- |semi-analytic Heston/Hull-White engine, integrating with a fixed relative tolerance and evaluation cap
-{#fun qlAnalyticHestonHullWhiteEngine1 as analyticHestonHullWhiteEngine'{withHestonModel*`GenHestonModel hm',withHullWhite*`HullWhite',`Double' -- ^relTolerance
+{#fun qlAnalyticHestonHullWhiteEngine1 as analyticHestonHullWhiteEngineTolerance{withHestonModel*`GenHestonModel hm',withHullWhite*`HullWhite',`Double' -- ^relTolerance
   ,fromIntegral`Word' -- ^maxEvaluations
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
+-- |Semi-analytic Heston/Hull-White engine with fixed-order or tolerance-based integration.
+analyticHestonHullWhiteEngine :: GenHestonModel hm -> HullWhite -> IntegrationControl -> IO PricingEngine
+analyticHestonHullWhiteEngine heston hullWhite control =
+  case control of
+    IntegrationOrder order -> analyticHestonHullWhiteEngineOrder heston hullWhite order
+    IntegrationTolerance tolerance evaluations -> analyticHestonHullWhiteEngineTolerance heston hullWhite tolerance evaluations
+
 -- |semi-analytic Bates-model pricing engine, integrating with a fixed relative tolerance and evaluation cap
-{#fun qlBatesEngine1 as batesEngine'{withBatesModel*`GenBatesModel bm',`Double' -- ^relTolerance
+{#fun qlBatesEngine1 as batesEngineTolerance{withBatesModel*`GenBatesModel bm',`Double' -- ^relTolerance
   ,fromIntegral`Word' -- ^maxEvaluations
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+
+-- |Semi-analytic Bates engine with either fixed-order or tolerance-based integration.
+batesEngine :: GenBatesModel bm -> IntegrationControl -> IO PricingEngine
+batesEngine model control =
+  case control of
+    IntegrationOrder order -> batesEngineOrder model order
+    IntegrationTolerance tolerance evaluations -> batesEngineTolerance model tolerance evaluations
 
 -- |Barone-Adesi and Whaley (1987) quadratic-approximation engine for American options
 {#fun qlBaroneAdesiWhaleyApproximationEngine as baroneAdesiWhaleyApproximationEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
@@ -1141,13 +1165,34 @@ singleFactorBsmBasketEngine ps = qlSingleFactorBsmBasketEngine (toList ps)
 {#fun qlLfmSwaptionEngine as lfmSwaptionEngine{withGenCalibratedModel*`LiborForwardModel',withYieldTermStructure*`GenYieldTermStructure y',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |numerical-lattice pricing engine for caps\/floors under a short-rate model, on an explicit time grid
-{#fun qlTreeCapFloorEngine1 as treeCapFloorEngine'{withShortRateModel*`GenShortRateModel sm',withTimeGrid*`TimeGrid',withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+{#fun qlTreeCapFloorEngine1 as treeCapFloorEngineTimeGrid{withShortRateModel*`GenShortRateModel sm',withTimeGrid*`TimeGrid',withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |numerical-lattice pricing engine for swaptions under a short-rate model, on an explicit time grid
-{#fun qlTreeSwaptionEngine1 as treeSwaptionEngine'{withShortRateModel*`GenShortRateModel sm',withTimeGrid*`TimeGrid',withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+{#fun qlTreeSwaptionEngine1 as treeSwaptionEngineTimeGrid{withShortRateModel*`GenShortRateModel sm',withTimeGrid*`TimeGrid',withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |numerical-lattice pricing engine for plain vanilla swaps under a short-rate model, on an explicit time grid
-{#fun qlTreeVanillaSwapEngine1 as treeVanillaSwapEngine'{withShortRateModel*`GenShortRateModel sm',withTimeGrid*`TimeGrid',withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+{#fun qlTreeVanillaSwapEngine1 as treeVanillaSwapEngineTimeGrid{withShortRateModel*`GenShortRateModel sm',withTimeGrid*`TimeGrid',withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+
+-- |Numerical-lattice cap/floor engine using either a step count or an explicit grid.
+treeCapFloorEngine :: GenShortRateModel sm -> LatticeTime -> Maybe (GenYieldTermStructure y) -> IO PricingEngine
+treeCapFloorEngine model latticeTime curve =
+  case latticeTime of
+    TimeSteps steps -> treeCapFloorEngineTimeSteps model steps curve
+    ExplicitTimeGrid grid -> treeCapFloorEngineTimeGrid model grid curve
+
+-- |Numerical-lattice swaption engine using either a step count or an explicit grid.
+treeSwaptionEngine :: GenShortRateModel sm -> LatticeTime -> Maybe (GenYieldTermStructure y) -> IO PricingEngine
+treeSwaptionEngine model latticeTime curve =
+  case latticeTime of
+    TimeSteps steps -> treeSwaptionEngineTimeSteps model steps curve
+    ExplicitTimeGrid grid -> treeSwaptionEngineTimeGrid model grid curve
+
+-- |Numerical-lattice vanilla-swap engine using either a step count or an explicit grid.
+treeVanillaSwapEngine :: GenShortRateModel sm -> LatticeTime -> Maybe (GenYieldTermStructure y) -> IO PricingEngine
+treeVanillaSwapEngine model latticeTime curve =
+  case latticeTime of
+    TimeSteps steps -> treeVanillaSwapEngineTimeSteps model steps curve
+    ExplicitTimeGrid grid -> treeVanillaSwapEngineTimeGrid model grid curve
 
 {#pointer *QlLocalVolTermStructure as LocalVolTermStructure foreign -> CLocalVolTermStructure' nocode#}
 {#pointer *QlFdmQuantoHelper as FdmQuantoHelper foreign -> CFdmQuantoHelper nocode#}
@@ -1184,13 +1229,13 @@ singleFactorBsmBasketEngine ps = qlSingleFactorBsmBasketEngine (toList ps)
 
 -- |n-dimensional finite-differences Black-Scholes basket-option pricing engine, with an explicit
 -- per-axis grid size
-fdndimBlackScholesVanillaEngine :: NonEmpty GeneralizedBlackScholesProcess -> Matrix Double -- ^correlation matrix rho
+fdndimBlackScholesVanillaEngineAxisGrids :: NonEmpty GeneralizedBlackScholesProcess -> Matrix Double -- ^correlation matrix rho
   -> NonEmpty Word -- ^xGrids, one per underlying
   -> Word -- ^tGrid, upstream default: 50
   -> Word -- ^dampingSteps, upstream default: 0
   -> FdmScheme -- ^schemeDesc, upstream default: 'Douglas'
   -> IO PricingEngine
-fdndimBlackScholesVanillaEngine ps (Matrix mr mc md) xGrids = qlFdndimBlackScholesVanillaEngine (toList ps) mr mc md (toList xGrids)
+fdndimBlackScholesVanillaEngineAxisGrids ps (Matrix mr mc md) xGrids = qlFdndimBlackScholesVanillaEngine (toList ps) mr mc md (toList xGrids)
 {#fun qlFdndimBlackScholesVanillaEngine{withGeneralizedBlackScholesProcessArray*`[GeneralizedBlackScholesProcess]'&
   ,fromIntegral`Word',fromIntegral`Word',withDoubleArrayRaw*`[Double]'
   ,withIntArray*`[Word]'&
@@ -1201,13 +1246,13 @@ fdndimBlackScholesVanillaEngine ps (Matrix mr mc md) xGrids = qlFdndimBlackSchol
 
 -- |n-dimensional finite-differences Black-Scholes basket-option pricing engine, auto-scaling every
 -- axis' grid from a single size (largest eigenvalue gets @xGrid@)
-fdndimBlackScholesVanillaEngine' :: NonEmpty GeneralizedBlackScholesProcess -> Matrix Double -- ^correlation matrix rho
+fdndimBlackScholesVanillaEngineUniformGrid :: NonEmpty GeneralizedBlackScholesProcess -> Matrix Double -- ^correlation matrix rho
   -> Word -- ^xGrid
   -> Word -- ^tGrid, upstream default: 50
   -> Word -- ^dampingSteps, upstream default: 0
   -> FdmScheme -- ^schemeDesc, upstream default: 'Douglas'
   -> IO PricingEngine
-fdndimBlackScholesVanillaEngine' ps (Matrix mr mc md) = qlFdndimBlackScholesVanillaEngine1 (toList ps) mr mc md
+fdndimBlackScholesVanillaEngineUniformGrid ps (Matrix mr mc md) = qlFdndimBlackScholesVanillaEngine1 (toList ps) mr mc md
 {#fun qlFdndimBlackScholesVanillaEngine1{withGeneralizedBlackScholesProcessArray*`[GeneralizedBlackScholesProcess]'&
   ,fromIntegral`Word',fromIntegral`Word',withDoubleArrayRaw*`[Double]'
   ,fromIntegral`Word' -- ^xGrid
@@ -1215,6 +1260,14 @@ fdndimBlackScholesVanillaEngine' ps (Matrix mr mc md) = qlFdndimBlackScholesVani
   ,fromIntegral`Word' -- ^dampingSteps
   ,withFdmSchemeDesc*`FdmScheme'
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+
+-- |N-dimensional Black-Scholes finite-difference engine with uniform or per-axis grids.
+fdndimBlackScholesVanillaEngine :: NonEmpty GeneralizedBlackScholesProcess -> Matrix Double
+  -> FdmGrid -> Word -> Word -> FdmScheme -> IO PricingEngine
+fdndimBlackScholesVanillaEngine processes correlations grid =
+  case grid of
+    UniformGrid gridSize -> fdndimBlackScholesVanillaEngineUniformGrid processes correlations gridSize
+    AxisGrids sizes -> fdndimBlackScholesVanillaEngineAxisGrids processes correlations sizes
 
 -- |finite-differences swaption pricing engine for the G2 two-factor short-rate model
 {#fun qlFdG2SwaptionEngine as fdG2SwaptionEngine{withG2*`G2',fromIntegral`Word' -- ^tGrid
@@ -1241,7 +1294,7 @@ fdndimBlackScholesVanillaEngine' ps (Matrix mr mc md) = qlFdndimBlackScholesVani
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |finite-differences Heston-model barrier-option pricing engine
-{#fun qlFdHestonBarrierEngine as fdHestonBarrierEngine{withHestonModel*`GenHestonModel hm',fromIntegral`Word' -- ^tGrid
+{#fun qlFdHestonBarrierEngine as fdHestonBarrierEngineNoDividends{withHestonModel*`GenHestonModel hm',fromIntegral`Word' -- ^tGrid
   ,fromIntegral`Word' -- ^xGrid
   ,fromIntegral`Word' -- ^vGrid
   ,fromIntegral`Word' -- ^dampingSteps
@@ -1251,7 +1304,7 @@ fdndimBlackScholesVanillaEngine' ps (Matrix mr mc md) = qlFdndimBlackScholesVani
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |finite-differences Heston-model barrier-option pricing engine, with discrete dividends
-{#fun qlFdHestonBarrierEngine1 as fdHestonBarrierEngine'{withHestonModel*`GenHestonModel hm',withDividendArray*`[Dividend]'&
+{#fun qlFdHestonBarrierEngine1 as fdHestonBarrierEngineWithDividends{withHestonModel*`GenHestonModel hm',withDividendArray*`[Dividend]'&
   ,fromIntegral`Word' -- ^tGrid
   ,fromIntegral`Word' -- ^xGrid
   ,fromIntegral`Word' -- ^vGrid
@@ -1260,6 +1313,14 @@ fdndimBlackScholesVanillaEngine' ps (Matrix mr mc md) = qlFdndimBlackScholesVani
   ,withMaybeLocalVolTermStructure*`Maybe (GenLocalVolTermStructure lv)' -- ^leverageFct
   ,`Double' -- ^mixingFactor, upstream default: 1.0
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+
+-- |Finite-difference Heston barrier engine; an empty list selects the no-dividend overload.
+fdHestonBarrierEngine :: GenHestonModel hm -> [Dividend] -> Word -> Word -> Word -> Word
+  -> FdmScheme -> Maybe (GenLocalVolTermStructure lv) -> Double -> IO PricingEngine
+fdHestonBarrierEngine model dividends =
+  case dividends of
+    [] -> fdHestonBarrierEngineNoDividends model
+    _ -> fdHestonBarrierEngineWithDividends model dividends
 
 -- |finite-differences Heston-model double-barrier-option pricing engine
 {#fun qlFdHestonDoubleBarrierEngine as fdHestonDoubleBarrierEngine{withHestonModel*`GenHestonModel hm',fromIntegral`Word' -- ^tGrid
@@ -1515,7 +1576,7 @@ fdndimBlackScholesVanillaEngine' ps (Matrix mr mc md) = qlFdndimBlackScholesVani
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |finite-differences Black-Scholes pricing engine for vanilla options
-{#fun qlFdBlackScholesVanillaEngine as fdBlackScholesVanillaEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',fromIntegral`Word' -- ^timeSteps
+{#fun qlFdBlackScholesVanillaEngine as fdBlackScholesVanillaEngineNoDividends{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',fromIntegral`Word' -- ^timeSteps
   ,fromIntegral`Word' -- ^gridPoints
   ,fromIntegral`Word' -- ^timeDependent
   ,withFdmSchemeDesc*`FdmScheme'
@@ -1525,7 +1586,7 @@ fdndimBlackScholesVanillaEngine' ps (Matrix mr mc md) = qlFdndimBlackScholesVani
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |finite-differences Black-Scholes pricing engine for vanilla options, with discrete dividends
-{#fun qlFdBlackScholesVanillaEngine1 as fdBlackScholesVanillaEngine'{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',withDividendArray*`[Dividend]'&
+{#fun qlFdBlackScholesVanillaEngine1 as fdBlackScholesVanillaEngineWithDividends{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',withDividendArray*`[Dividend]'&
   ,fromIntegral`Word' -- ^timeSteps
   ,fromIntegral`Word' -- ^gridPoints
   ,fromIntegral`Word' -- ^timeDependent
@@ -1535,8 +1596,16 @@ fdndimBlackScholesVanillaEngine' ps (Matrix mr mc md) = qlFdndimBlackScholesVani
   ,`CashDividendModel' -- ^cashDividendModel
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
+-- |Finite-difference Black-Scholes vanilla engine; @[]@ selects no-dividend behavior.
+fdBlackScholesVanillaEngine :: GeneralizedBlackScholesProcess -> [Dividend] -> Word -> Word -> Word
+  -> FdmScheme -> Bool -> Double -> CashDividendModel -> IO PricingEngine
+fdBlackScholesVanillaEngine process dividends =
+  case dividends of
+    [] -> fdBlackScholesVanillaEngineNoDividends process
+    _ -> fdBlackScholesVanillaEngineWithDividends process dividends
+
 -- |finite-differences Black-Scholes pricing engine for vanilla options, with quanto adjustment
-{#fun qlFdBlackScholesVanillaEngine2 as fdBlackScholesVanillaEngineQuanto{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',withMaybeFdmQuantoHelper*`Maybe FdmQuantoHelper'
+{#fun qlFdBlackScholesVanillaEngine2 as fdBlackScholesVanillaEngineQuantoNoDividends{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',withMaybeFdmQuantoHelper*`Maybe FdmQuantoHelper'
   ,fromIntegral`Word' -- ^timeSteps
   ,fromIntegral`Word' -- ^gridPoints
   ,fromIntegral`Word' -- ^timeDependent
@@ -1547,7 +1616,7 @@ fdndimBlackScholesVanillaEngine' ps (Matrix mr mc md) = qlFdndimBlackScholesVani
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |finite-differences Black-Scholes pricing engine for vanilla options, with discrete dividends and quanto adjustment
-{#fun qlFdBlackScholesVanillaEngine3 as fdBlackScholesVanillaEngineQuanto'{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',withDividendArray*`[Dividend]'&,withMaybeFdmQuantoHelper*`Maybe FdmQuantoHelper'
+{#fun qlFdBlackScholesVanillaEngine3 as fdBlackScholesVanillaEngineQuantoWithDividends{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',withDividendArray*`[Dividend]'&,withMaybeFdmQuantoHelper*`Maybe FdmQuantoHelper'
   ,fromIntegral`Word' -- ^timeSteps
   ,fromIntegral`Word' -- ^gridPoints
   ,fromIntegral`Word' -- ^timeDependent
@@ -1557,8 +1626,17 @@ fdndimBlackScholesVanillaEngine' ps (Matrix mr mc md) = qlFdndimBlackScholesVani
   ,`CashDividendModel' -- ^cashDividendModel
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
+-- |Quanto-adjusted Black-Scholes vanilla engine; @[]@ selects no-dividend behavior.
+fdBlackScholesVanillaEngineQuanto :: GeneralizedBlackScholesProcess -> [Dividend]
+  -> Maybe FdmQuantoHelper -> Word -> Word -> Word -> FdmScheme -> Bool -> Double
+  -> CashDividendModel -> IO PricingEngine
+fdBlackScholesVanillaEngineQuanto process dividends =
+  case dividends of
+    [] -> fdBlackScholesVanillaEngineQuantoNoDividends process
+    _ -> fdBlackScholesVanillaEngineQuantoWithDividends process dividends
+
 -- |finite-differences Heston-model pricing engine for vanilla options
-{#fun qlFdHestonVanillaEngine as fdHestonVanillaEngine{withHestonModel*`GenHestonModel hm',fromIntegral`Word' -- ^tGrid
+{#fun qlFdHestonVanillaEngine as fdHestonVanillaEngineNoDividends{withHestonModel*`GenHestonModel hm',fromIntegral`Word' -- ^tGrid
   ,fromIntegral`Word' -- ^xGrid
   ,fromIntegral`Word' -- ^vGrid
   ,fromIntegral`Word' -- ^dampingSteps
@@ -1568,7 +1646,7 @@ fdndimBlackScholesVanillaEngine' ps (Matrix mr mc md) = qlFdndimBlackScholesVani
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |finite-differences Heston-model pricing engine for vanilla options, with discrete dividends
-{#fun qlFdHestonVanillaEngine1 as fdHestonVanillaEngine'{withHestonModel*`GenHestonModel hm',withDividendArray*`[Dividend]'&
+{#fun qlFdHestonVanillaEngine1 as fdHestonVanillaEngineWithDividends{withHestonModel*`GenHestonModel hm',withDividendArray*`[Dividend]'&
   ,fromIntegral`Word' -- ^tGrid
   ,fromIntegral`Word' -- ^xGrid
   ,fromIntegral`Word' -- ^vGrid
@@ -1577,6 +1655,14 @@ fdndimBlackScholesVanillaEngine' ps (Matrix mr mc md) = qlFdndimBlackScholesVani
   ,withMaybeLocalVolTermStructure*`Maybe (GenLocalVolTermStructure lv)' -- ^leverageFct
   ,`Double' -- ^mixingFactor, upstream default: 1.0
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+
+-- |Finite-difference Heston vanilla engine; @[]@ selects no-dividend behavior.
+fdHestonVanillaEngine :: GenHestonModel hm -> [Dividend] -> Word -> Word -> Word -> Word
+  -> FdmScheme -> Maybe (GenLocalVolTermStructure lv) -> Double -> IO PricingEngine
+fdHestonVanillaEngine model dividends =
+  case dividends of
+    [] -> fdHestonVanillaEngineNoDividends model
+    _ -> fdHestonVanillaEngineWithDividends model dividends
 
 -- |Fourier-cosine-series Heston engine for European vanilla options. @L@ controls the truncation range and @n@ the number of cosine terms.
 {#fun qlCOSHestonEngine as cosHestonEngine{withHestonModel*`GenHestonModel hm' -- ^model
@@ -1591,7 +1677,7 @@ fdndimBlackScholesVanillaEngine' ps (Matrix mr mc md) = qlFdndimBlackScholesVani
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |Partial-integro finite-difference Bates-model engine for vanilla options.
-{#fun qlFdBatesVanillaEngine as fdBatesVanillaEngine{withBatesModel*`GenBatesModel bm' -- ^model
+{#fun qlFdBatesVanillaEngine as fdBatesVanillaEngineNoDividends{withBatesModel*`GenBatesModel bm' -- ^model
   ,fromIntegral`Word' -- ^tGrid
   ,fromIntegral`Word' -- ^xGrid
   ,fromIntegral`Word' -- ^vGrid
@@ -1600,7 +1686,7 @@ fdndimBlackScholesVanillaEngine' ps (Matrix mr mc md) = qlFdndimBlackScholesVani
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |Partial-integro finite-difference Bates-model engine for vanilla options with discrete dividends.
-{#fun qlFdBatesVanillaEngine1 as fdBatesVanillaEngine'{withBatesModel*`GenBatesModel bm' -- ^model
+{#fun qlFdBatesVanillaEngine1 as fdBatesVanillaEngineWithDividends{withBatesModel*`GenBatesModel bm' -- ^model
   ,withDividendArray*`[Dividend]'& -- ^dividends
   ,fromIntegral`Word' -- ^tGrid
   ,fromIntegral`Word' -- ^xGrid
@@ -1609,8 +1695,16 @@ fdndimBlackScholesVanillaEngine' ps (Matrix mr mc md) = qlFdndimBlackScholesVani
   ,withFdmSchemeDesc*`FdmScheme' -- ^schemeDesc
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
+-- |Finite-difference Bates vanilla engine; @[]@ selects no-dividend behavior.
+fdBatesVanillaEngine :: GenBatesModel bm -> [Dividend] -> Word -> Word -> Word -> Word
+  -> FdmScheme -> IO PricingEngine
+fdBatesVanillaEngine model dividends =
+  case dividends of
+    [] -> fdBatesVanillaEngineNoDividends model
+    _ -> fdBatesVanillaEngineWithDividends model dividends
+
 -- |Finite-difference Black-Scholes engine for American shout options.
-{#fun qlFdBlackScholesShoutEngine as fdBlackScholesShoutEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess' -- ^process
+{#fun qlFdBlackScholesShoutEngine as fdBlackScholesShoutEngineNoDividends{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess' -- ^process
   ,fromIntegral`Word' -- ^tGrid
   ,fromIntegral`Word' -- ^xGrid
   ,fromIntegral`Word' -- ^dampingSteps
@@ -1618,7 +1712,7 @@ fdndimBlackScholesVanillaEngine' ps (Matrix mr mc md) = qlFdndimBlackScholesVani
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |Finite-difference Black-Scholes engine for American shout options with discrete dividends.
-{#fun qlFdBlackScholesShoutEngine1 as fdBlackScholesShoutEngine'{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess' -- ^process
+{#fun qlFdBlackScholesShoutEngine1 as fdBlackScholesShoutEngineWithDividends{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess' -- ^process
   ,withDividendArray*`[Dividend]'& -- ^dividends
   ,fromIntegral`Word' -- ^tGrid
   ,fromIntegral`Word' -- ^xGrid
@@ -1626,8 +1720,16 @@ fdndimBlackScholesVanillaEngine' ps (Matrix mr mc md) = qlFdndimBlackScholesVani
   ,withFdmSchemeDesc*`FdmScheme' -- ^schemeDesc
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
+-- |Finite-difference Black-Scholes shout engine; @[]@ selects no-dividend behavior.
+fdBlackScholesShoutEngine :: GeneralizedBlackScholesProcess -> [Dividend] -> Word -> Word
+  -> Word -> FdmScheme -> IO PricingEngine
+fdBlackScholesShoutEngine process dividends =
+  case dividends of
+    [] -> fdBlackScholesShoutEngineNoDividends process
+    _ -> fdBlackScholesShoutEngineWithDividends process dividends
+
 -- |finite-differences Heston-model pricing engine for vanilla options, with quanto adjustment
-{#fun qlFdHestonVanillaEngine2 as fdHestonVanillaEngineQuanto{withHestonModel*`GenHestonModel hm',withMaybeFdmQuantoHelper*`Maybe FdmQuantoHelper'
+{#fun qlFdHestonVanillaEngine2 as fdHestonVanillaEngineQuantoNoDividends{withHestonModel*`GenHestonModel hm',withMaybeFdmQuantoHelper*`Maybe FdmQuantoHelper'
   ,fromIntegral`Word' -- ^tGrid
   ,fromIntegral`Word' -- ^xGrid
   ,fromIntegral`Word' -- ^vGrid
@@ -1638,7 +1740,7 @@ fdndimBlackScholesVanillaEngine' ps (Matrix mr mc md) = qlFdndimBlackScholesVani
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |finite-differences Heston-model pricing engine for vanilla options, with discrete dividends and quanto adjustment
-{#fun qlFdHestonVanillaEngine3 as fdHestonVanillaEngineQuanto'{withHestonModel*`GenHestonModel hm',withDividendArray*`[Dividend]'&,withMaybeFdmQuantoHelper*`Maybe FdmQuantoHelper'
+{#fun qlFdHestonVanillaEngine3 as fdHestonVanillaEngineQuantoWithDividends{withHestonModel*`GenHestonModel hm',withDividendArray*`[Dividend]'&,withMaybeFdmQuantoHelper*`Maybe FdmQuantoHelper'
   ,fromIntegral`Word' -- ^tGrid
   ,fromIntegral`Word' -- ^xGrid
   ,fromIntegral`Word' -- ^vGrid
@@ -1648,8 +1750,17 @@ fdndimBlackScholesVanillaEngine' ps (Matrix mr mc md) = qlFdndimBlackScholesVani
   ,`Double' -- ^mixingFactor, upstream default: 1.0
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
+-- |Quanto-adjusted Heston vanilla engine; @[]@ selects no-dividend behavior.
+fdHestonVanillaEngineQuanto :: GenHestonModel hm -> [Dividend] -> Maybe FdmQuantoHelper
+  -> Word -> Word -> Word -> Word -> FdmScheme -> Maybe (GenLocalVolTermStructure lv)
+  -> Double -> IO PricingEngine
+fdHestonVanillaEngineQuanto model dividends =
+  case dividends of
+    [] -> fdHestonVanillaEngineQuantoNoDividends model
+    _ -> fdHestonVanillaEngineQuantoWithDividends model dividends
+
 -- |finite-differences pricing engine for vanilla options combining a Heston equity model with a Hull-White short-rate model
-{#fun qlFdHestonHullWhiteVanillaEngine as fdHestonHullWhiteVanillaEngine{withHestonModel*`GenHestonModel hm',withGenStochasticProcess1D*`HullWhiteProcess'
+{#fun qlFdHestonHullWhiteVanillaEngine as fdHestonHullWhiteVanillaEngineNoDividends{withHestonModel*`GenHestonModel hm',withGenStochasticProcess1D*`HullWhiteProcess'
   ,`Double' -- ^corrEquityShortRate
   ,fromIntegral`Word' -- ^tGrid
   ,fromIntegral`Word' -- ^xGrid
@@ -1661,7 +1772,7 @@ fdndimBlackScholesVanillaEngine' ps (Matrix mr mc md) = qlFdndimBlackScholesVani
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |finite-differences pricing engine for vanilla options combining a Heston equity model with a Hull-White short-rate model, with discrete dividends
-{#fun qlFdHestonHullWhiteVanillaEngine1 as fdHestonHullWhiteVanillaEngine'{withHestonModel*`GenHestonModel hm',withGenStochasticProcess1D*`HullWhiteProcess',withDividendArray*`[Dividend]'&
+{#fun qlFdHestonHullWhiteVanillaEngine1 as fdHestonHullWhiteVanillaEngineWithDividends{withHestonModel*`GenHestonModel hm',withGenStochasticProcess1D*`HullWhiteProcess',withDividendArray*`[Dividend]'&
   ,`Double' -- ^corrEquityShortRate
   ,fromIntegral`Word' -- ^tGrid
   ,fromIntegral`Word' -- ^xGrid
@@ -1671,6 +1782,14 @@ fdndimBlackScholesVanillaEngine' ps (Matrix mr mc md) = qlFdndimBlackScholesVani
   ,`Bool' -- ^controlVariate, upstream default: true
   ,withFdmSchemeDesc*`FdmScheme'
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+
+-- |Heston/Hull-White finite-difference engine; @[]@ selects no-dividend behavior.
+fdHestonHullWhiteVanillaEngine :: GenHestonModel hm -> HullWhiteProcess -> [Dividend]
+  -> Double -> Word -> Word -> Word -> Word -> Word -> Bool -> FdmScheme -> IO PricingEngine
+fdHestonHullWhiteVanillaEngine heston hullWhite dividends =
+  case dividends of
+    [] -> fdHestonHullWhiteVanillaEngineNoDividends heston hullWhite
+    _ -> fdHestonHullWhiteVanillaEngineWithDividends heston hullWhite dividends
 
 -- |binomial Tsiveriotis-Fernandes pricing engine for convertible bonds
 {#fun qlBinomialConvertibleEngine as binomialConvertibleEngine{`BinomialTree',withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess'
@@ -1692,18 +1811,32 @@ fdndimBlackScholesVanillaEngine' ps (Matrix mr mc md) = qlFdndimBlackScholesVani
 {#fun qlBlackCallableZeroCouponBondEngine as blackCallableZeroCouponBondEngine{withQuote*`GenQuote q',withYieldTermStructure*`GenYieldTermStructure y',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |numerical-lattice pricing engine for callable fixed-rate bonds, on an explicit time grid
-{#fun qlTreeCallableFixedRateBondEngine1 as treeCallableFixedRateBondEngine'{withShortRateModel*`GenShortRateModel sm',withTimeGrid*`TimeGrid',withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+{#fun qlTreeCallableFixedRateBondEngine1 as treeCallableFixedRateBondEngineTimeGrid{withShortRateModel*`GenShortRateModel sm',withTimeGrid*`TimeGrid',withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |numerical-lattice pricing engine for callable fixed-rate bonds
-{#fun qlTreeCallableFixedRateBondEngine as treeCallableFixedRateBondEngine{withShortRateModel*`GenShortRateModel sm',fromIntegral`Word' -- ^timeSteps
+{#fun qlTreeCallableFixedRateBondEngine as treeCallableFixedRateBondEngineTimeSteps{withShortRateModel*`GenShortRateModel sm',fromIntegral`Word' -- ^timeSteps
   ,withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |numerical-lattice pricing engine for callable zero coupon bonds, on an explicit time grid
-{#fun qlTreeCallableZeroCouponBondEngine1 as treeCallableZeroCouponBondEngine'{withShortRateModel*`GenShortRateModel sm',withTimeGrid*`TimeGrid',withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+{#fun qlTreeCallableZeroCouponBondEngine1 as treeCallableZeroCouponBondEngineTimeGrid{withShortRateModel*`GenShortRateModel sm',withTimeGrid*`TimeGrid',withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |numerical-lattice pricing engine for callable zero coupon bonds
-{#fun qlTreeCallableZeroCouponBondEngine as treeCallableZeroCouponBondEngine{withShortRateModel*`GenShortRateModel sm',fromIntegral`Word' -- ^timeSteps
+{#fun qlTreeCallableZeroCouponBondEngine as treeCallableZeroCouponBondEngineTimeSteps{withShortRateModel*`GenShortRateModel sm',fromIntegral`Word' -- ^timeSteps
   ,withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+
+-- |Callable fixed-rate bond lattice engine using either a step count or an explicit grid.
+treeCallableFixedRateBondEngine :: GenShortRateModel sm -> LatticeTime -> Maybe (GenYieldTermStructure y) -> IO PricingEngine
+treeCallableFixedRateBondEngine model latticeTime curve =
+  case latticeTime of
+    TimeSteps steps -> treeCallableFixedRateBondEngineTimeSteps model steps curve
+    ExplicitTimeGrid grid -> treeCallableFixedRateBondEngineTimeGrid model grid curve
+
+-- |Callable zero-coupon bond lattice engine using either a step count or an explicit grid.
+treeCallableZeroCouponBondEngine :: GenShortRateModel sm -> LatticeTime -> Maybe (GenYieldTermStructure y) -> IO PricingEngine
+treeCallableZeroCouponBondEngine model latticeTime curve =
+  case latticeTime of
+    TimeSteps steps -> treeCallableZeroCouponBondEngineTimeSteps model steps curve
+    ExplicitTimeGrid grid -> treeCallableZeroCouponBondEngineTimeGrid model grid curve
 
 -- |intermediate value N'(d1) (or its sign-flipped equivalent) used internally to derive the calculator's Greeks
 {#fun qlBlackCalculatorAlpha as alpha{withBlackCalculator*`GenBlackCalculator bc',preErrorCheck-`String'errorCheck*-}->`Double'#}

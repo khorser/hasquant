@@ -53,7 +53,7 @@ import QuantLib.Model(hullWhite, g2, g2Dynamics, shortRate
  , liborForwardModel, liborForwardModelS0, liborForwardModelAsAffineModel, lfmHullWhiteParameterization, lfmHullWhiteCovariance, setCovarParam, LmVolatilityModel(..), LmCorrelationModel(..)
  , discountBond)
 import QuantLib.PricingEngine(analyticHestonHullWhiteEngine, mcHestonHullWhiteEngine
- , analyticHestonEngine', batesEngine, analyticGjrGarchEngine, mcEuropeanGjrGarchEngine, blackFormula, analyticCapFloorEngine)
+ , analyticHestonEngine, IntegrationControl(..), batesEngine, analyticGjrGarchEngine, mcEuropeanGjrGarchEngine, blackFormula, analyticCapFloorEngine)
 import QuantLib.Method(pathGenerator, next, asset)
 import QuantLib.Math(RngTrait(..), StatisticsTrait(..), timeGrid, Interpolation(..), boxedRealMatrix, realMatrixFromVector, matrixRows, matrixColumns, matrixData, realMatrixData)
 import Control.Monad(replicateM, zipWithM_)
@@ -99,7 +99,7 @@ spec = do
         s0 <- simpleQuote spot
         process <- hestonProcess rTS (Just qTS) s0 v0 5.0 0.05 1.0e-4 0.0 QuadraticExponentialMartingale
         model <- hestonModel process
-        eng <- analyticHestonEngine' model 144
+        eng <- analyticHestonEngine model (IntegrationOrder 144)
         exerciseDate <- addPeriod evalDate (6, Months)
         opt <- europeanOption (PlainVanilla (PlainVanillaPayoff Put strike)) (European (EuropeanExercise exerciseDate))
         setPricingEngine opt eng
@@ -171,7 +171,7 @@ spec = do
         s0 <- simpleQuote spot
         process <- batesProcess rTS qTS s0 v0 5.0 0.05 1.0e-4 0.0 0.0001 0.0 0.0001 QuadraticExponentialMartingale
         model <- batesModel process
-        eng <- batesEngine model 64
+        eng <- batesEngine model (IntegrationOrder 64)
         exerciseDate <- addPeriod evalDate (6, Months)
         opt <- europeanOption (PlainVanilla (PlainVanillaPayoff Put strike)) (European (EuropeanExercise exerciseDate))
         setPricingEngine opt eng
@@ -563,7 +563,7 @@ spec = do
         maturityT <- years dc evalDate maturity Nothing Nothing
         setForwardMeasureTime hwFwdProcess maturityT
         hwModel <- hullWhite rTS 0.01 0.01
-        analyticEng <- analyticHestonHullWhiteEngine hModel hwModel 128
+        analyticEng <- analyticHestonHullWhiteEngine hModel hwModel (IntegrationOrder 128)
 
         sequence_ [ do
             jointProcess <- hybridHestonHullWhiteProcess hProcess hwFwdProcess 0.0 HybridHestonHullWhiteEuler

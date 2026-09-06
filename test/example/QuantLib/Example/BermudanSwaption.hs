@@ -110,13 +110,13 @@ run = do
     (Model.hullWhite ts 0.1 0.01)
     (\m ss -> do
       modelHW2s <- Model.asOneFactorAffineModel m >>= Model.asShortRateModel
-      forM_ ss (\s -> treeSwaptionEngine' modelHW2s grid Nothing >>= Model.setPricingEngine s))
+      forM_ ss (\s -> treeSwaptionEngine modelHW2s (ExplicitTimeGrid grid) Nothing >>= Model.setPricingEngine s))
     (\m -> Model.asOneFactorAffineModel m >>= Model.asShortRateModel >>= Model.asCalibratedModel)
     swaptions
 
   (modelBK, bkv, bkp) <- calibrateShortRateModel
     (Model.blackKarasinski ts 0.1 0.1)
-    (\m ss -> forM_ ss (\s -> treeSwaptionEngine' m grid Nothing >>= Model.setPricingEngine s))
+    (\m ss -> forM_ ss (\s -> treeSwaptionEngine m (ExplicitTimeGrid grid) Nothing >>= Model.setPricingEngine s))
     Model.asCalibratedModel
     swaptions
 
@@ -192,24 +192,24 @@ run = do
 
         priceSwaption swption modelG2 g2n modelHW modelHW2 modelBK = do
           modelG2s <- Model.asShortRateModel modelG2
-          treeSwaptionEngine modelG2s g2n Nothing >>= setPricingEngine swption
+          treeSwaptionEngine modelG2s (TimeSteps g2n) Nothing >>= setPricingEngine swption
           npvG2tree <- npv swption
           fdG2SwaptionEngine modelG2 100 50 50 0 1.0e-5 Hundsdorfer >>= setPricingEngine swption
           npvG2fd <- npv swption
 
           modelHWs <- Model.asOneFactorAffineModel modelHW >>= Model.asShortRateModel
-          treeSwaptionEngine modelHWs 50 Nothing >>= setPricingEngine swption
+          treeSwaptionEngine modelHWs (TimeSteps 50) Nothing >>= setPricingEngine swption
           npvHWtree <- npv swption
           fdHullWhiteSwaptionEngine modelHW 100 100 0 1.0e-5 Douglas >>= setPricingEngine swption
           npvHWfd <- npv swption
 
           modelHW2s <- Model.asOneFactorAffineModel modelHW2 >>= Model.asShortRateModel
-          treeSwaptionEngine modelHW2s 50 Nothing >>= setPricingEngine swption
+          treeSwaptionEngine modelHW2s (TimeSteps 50) Nothing >>= setPricingEngine swption
           npvHW2numtree <- npv swption
           fdHullWhiteSwaptionEngine modelHW2 100 100 0 1.0e-5 Douglas >>= setPricingEngine swption
           npvHW2numfd <- npv swption
 
-          treeSwaptionEngine modelBK 50 Nothing >>= setPricingEngine swption
+          treeSwaptionEngine modelBK (TimeSteps 50) Nothing >>= setPricingEngine swption
           npvBK <- npv swption
           return [npvG2tree, npvG2fd, npvHWtree, npvHWfd, npvHW2numtree, npvHW2numfd, npvBK]
 

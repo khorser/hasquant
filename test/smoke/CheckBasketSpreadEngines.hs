@@ -10,7 +10,7 @@ import QuantLib.Math(boxedRealMatrix, RngTrait(PseudoRandom), StatisticsTrait(St
 import QuantLib.PricingEngine
   ( bjerksundStenslandSpreadEngine, operatorSplittingSpreadEngine, OperatorSplittingOrder(First, Second)
   , pearsonSpreadEngine, gaussianCopulaSpreadEngine, fd2dBlackScholesVanillaEngine
-  , choiBasketEngine, dengLiZhouBasketEngine, fdndimBlackScholesVanillaEngine, fdndimBlackScholesVanillaEngine'
+  , choiBasketEngine, dengLiZhouBasketEngine, fdndimBlackScholesVanillaEngine, FdmGrid(..)
   , singleFactorBsmBasketEngine, kirkEngine, mcEuropeanBasketEngine
   )
 import QuantLib.Process(blackProcess, blackScholesMertonProcess, stochasticProcessArray, asGeneralizedBlackScholesProcess, ProcessDiscretization(EulerDiscretization))
@@ -190,10 +190,10 @@ main = keepingSettingsGc $ do
   printf "2-asset average call (rho=1.0, single-factor): MC=%.4f SingleFactorBsm=%.4f\n" mcAvgV1 sfbV1
   check "SingleFactorBsmBasketEngine vs MC (rho=1.0)" (approx (0.02 * mcAvgV1) mcAvgV1 sfbV1)
 
-  -- FdndimBlackScholesVanillaEngine (both overloads) vs Fd2dBlackScholesVanillaEngine, same
+  -- FdndimBlackScholesVanillaEngine (both grid forms) vs Fd2dBlackScholesVanillaEngine, same
   -- 2-asset spread option as the cross-check above
-  fdndim1 <- fdndimBlackScholesVanillaEngine (p1' :| [p2']) (either error id (boxedRealMatrix 2 2 [1, rho, rho, 1])) (50 :| [50]) 50 0 Douglas
-  fdndim2 <- fdndimBlackScholesVanillaEngine' (p1' :| [p2']) (either error id (boxedRealMatrix 2 2 [1, rho, rho, 1])) 100 50 0 Douglas
+  fdndim1 <- fdndimBlackScholesVanillaEngine (p1' :| [p2']) (either error id (boxedRealMatrix 2 2 [1, rho, rho, 1])) (AxisGrids (50 :| [50])) 50 0 Douglas
+  fdndim2 <- fdndimBlackScholesVanillaEngine (p1' :| [p2']) (either error id (boxedRealMatrix 2 2 [1, rho, rho, 1])) (UniformGrid 100) 50 0 Douglas
   setPricingEngine crossOpt fdndim1
   fdndim1V <- npv crossOpt
   setPricingEngine crossOpt fdndim2

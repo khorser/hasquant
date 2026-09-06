@@ -882,7 +882,7 @@ spec = do
         hp <- hestonProcess rTS (Just qTS) spotQ 0.04 2.0 0.04 0.5 (-0.5) QuadraticExponentialMartingale
         hm <- hestonModel hp
         fdHBarOpt <- barrierOption UpOut 130 0 payoff exercise >>= asOneAssetOption
-        fdHestonBarrierEngine hm 20 100 20 0 Douglas Nothing 1.0 >>= setPricingEngine fdHBarOpt
+        fdHestonBarrierEngine hm [] 20 100 20 0 Douglas Nothing 1.0 >>= setPricingEngine fdHBarOpt
         fdHBarNpv <- npv fdHBarOpt
         fdHBarNpv `shouldSatisfy` (\v -> not (isNaN v) && not (isInfinite v))
 
@@ -1430,8 +1430,8 @@ spec = do
   -- Ported from quantooption.cpp's testFDMQuantoHelper, testPDEOptionValues, and
   -- testAmericanQuantoOption: the FDM-side building blocks (FdmQuantoHelper's own quanto drift
   -- adjustment, and the FdmBlackScholesMesher grid it feeds into) and the FD-vs-analytic /
-  -- FD-vs-FD cross-checks that exercise fdBlackScholesVanillaEngineQuanto(') and
-  -- fdHestonVanillaEngineQuanto'.
+  -- FD-vs-FD cross-checks that exercise the empty and non-empty dividend dispatch paths of
+  -- fdBlackScholesVanillaEngineQuanto and fdHestonVanillaEngineQuanto.
   describe "FdmQuantoHelper / FD quanto engines" $ do
     it "FdmQuantoHelper.quantoAdjustment and FdmBlackScholesMesher grid bounds reproduce testFDMQuantoHelper" $
       Settings.keepingSettingsGc $ do
@@ -1515,7 +1515,7 @@ spec = do
           let exDate = addDays (round (t * 360 :: Double)) today'
           opt <- vanillaOption (PlainVanilla (PlainVanillaPayoff ty strike)) (European (EuropeanExercise exDate))
 
-          pdeEngine <- fdBlackScholesVanillaEngineQuanto bsmProcess (Just quantoHelper) (round (t * 200 :: Double)) 500 1
+          pdeEngine <- fdBlackScholesVanillaEngineQuanto bsmProcess [] (Just quantoHelper) (round (t * 200 :: Double)) 500 1
             Douglas False 0.0 CashDividendSpot
           setPricingEngine opt pdeEngine
           optInst <- asOneAssetOption opt
@@ -1531,7 +1531,7 @@ spec = do
           closePrec expNpv 2.0e-4 calcNpv `shouldBe` True
           closePrec expDelta 1.0e-4 calcDelta `shouldBe` True
 
-    it "fdBlackScholesVanillaEngineQuanto'/fdHestonVanillaEngineQuanto' reproduce testAmericanQuantoOption" $
+    it "quanto FD engines with dividends reproduce testAmericanQuantoOption" $
       Settings.keepingSettingsGc $ do
         let today' = 21 `april` 2019
             domesticR = 0.025 :: Double
@@ -1567,13 +1567,13 @@ spec = do
         opt <- vanillaOption (PlainVanilla (PlainVanillaPayoff Call strike)) (American Nothing maturity False)
         optInst <- asOneAssetOption opt
 
-        bsEngine <- fdBlackScholesVanillaEngineQuanto' bsmProcess dividends (Just quantoHelper) 100 400 1
+        bsEngine <- fdBlackScholesVanillaEngineQuanto bsmProcess dividends (Just quantoHelper) 100 400 1
           Douglas False 0.0 CashDividendSpot
         setPricingEngine opt bsEngine
         bsCalculated <- npv optInst
         closePrec expected tol bsCalculated `shouldBe` True
 
-        localVolEngine <- fdBlackScholesVanillaEngineQuanto' bsmProcess dividends (Just quantoHelper) 100 400 1
+        localVolEngine <- fdBlackScholesVanillaEngineQuanto bsmProcess dividends (Just quantoHelper) 100 400 1
           Douglas False 0.0 CashDividendSpot
         setPricingEngine opt localVolEngine
         localVolCalculated <- npv optInst
@@ -1590,7 +1590,7 @@ spec = do
             hestonRho = 0.0 :: Double
         hp <- hestonProcess domesticTS (Just divTS) spotQ v0 kappa theta0 sigma hestonRho QuadraticExponentialMartingale
         hm <- hestonModel hp
-        hestonEngine <- fdHestonVanillaEngineQuanto' hm dividends (Just quantoHelper) 100 400 3 1 Hundsdorfer Nothing 1.0
+        hestonEngine <- fdHestonVanillaEngineQuanto hm dividends (Just quantoHelper) 100 400 3 1 Hundsdorfer Nothing 1.0
         setPricingEngine divOpt hestonEngine
         hestonCalculated <- npv divOptInst
         closePrec expected tol hestonCalculated `shouldBe` True
@@ -1599,7 +1599,7 @@ spec = do
         localConstVol <- localConstantVol today' constVolQ dc
         hp05 <- hestonProcess domesticTS (Just divTS) spotQ (0.25 * v0) kappa (0.25 * theta0) sigma hestonRho QuadraticExponentialMartingale
         hm05 <- hestonModel hp05
-        hestonSlvEngine <- fdHestonVanillaEngineQuanto' hm05 dividends (Just quantoHelper) 100 400 3 1 Hundsdorfer (Just localConstVol) 1.0
+        hestonSlvEngine <- fdHestonVanillaEngineQuanto hm05 dividends (Just quantoHelper) 100 400 3 1 Hundsdorfer (Just localConstVol) 1.0
         setPricingEngine divOpt hestonSlvEngine
         hestonSlvCalculated <- npv divOptInst
         closePrec expected tol hestonSlvCalculated `shouldBe` True
@@ -2299,7 +2299,7 @@ spec = do
         sfbV1 <- npv avgOpt
         sfbV1 `shouldSatisfy` closePrec mcAvgV1 (0.02 * mcAvgV1)
 
-    it "FdndimBlackScholesVanillaEngine (both overloads) vs. Fd2dBlackScholesVanillaEngine" $
+    it "FdndimBlackScholesVanillaEngine (both grid forms) vs. Fd2dBlackScholesVanillaEngine" $
       Settings.keepingSettingsGc $ do
         let evalDate = 1 `march` 2024
         Settings.setEvaluationDate (Just evalDate)
@@ -2335,8 +2335,8 @@ spec = do
         fd2dV <- npv crossOpt
 
         rhoMatrix2 <- either error pure (boxedRealMatrix 2 2 [1, rho_, rho_, 1])
-        fdndim1 <- fdndimBlackScholesVanillaEngine (p1' :| [p2']) rhoMatrix2 (50 :| [50]) 50 0 Douglas
-        fdndim2 <- fdndimBlackScholesVanillaEngine' (p1' :| [p2']) rhoMatrix2 100 50 0 Douglas
+        fdndim1 <- fdndimBlackScholesVanillaEngine (p1' :| [p2']) rhoMatrix2 (AxisGrids (50 :| [50])) 50 0 Douglas
+        fdndim2 <- fdndimBlackScholesVanillaEngine (p1' :| [p2']) rhoMatrix2 (UniformGrid 100) 50 0 Douglas
         setPricingEngine crossOpt fdndim1
         fdndim1V <- npv crossOpt
         setPricingEngine crossOpt fdndim2
@@ -2430,12 +2430,16 @@ spec = do
         hp <- hestonProcess rTS (Just qTS) s0 0.1 4.0 0.05 1.0 (-0.5) QuadraticExponentialMartingale
         hm <- hestonModel hp
         pdfEngine <- analyticPdfHestonEngine hm 1.0e-6 10000
-        analyticEngine <- analyticHestonEngine' hm 178
+        analyticEngine <- analyticHestonEngine hm (IntegrationOrder 178)
+        toleranceEngine <- analyticHestonEngine hm (IntegrationTolerance 1.0e-8 10000)
         forM_ [40.0, 60.0 .. 180.0 :: Double] $ \strike -> do
           opt <- vanillaOption (PlainVanilla (PlainVanillaPayoff Call strike)) (European (EuropeanExercise maturity))
           optInst <- asOneAssetOption opt
           setPricingEngine opt analyticEngine
           expected <- npv optInst
+          setPricingEngine opt toleranceEngine
+          toleranceValue <- npv optInst
+          toleranceValue `shouldSatisfy` closePrec expected 1.0e-7
           setPricingEngine opt pdfEngine
           calculated <- npv optInst
           calculated `shouldSatisfy` closePrec expected 3.0e-6
@@ -2468,8 +2472,8 @@ spec = do
           s0 <- simpleQuote 100.0
           bp <- batesProcess rTS qTS s0 v0 kappa theta_ sigma rho_ lambda nu delta_ QuadraticExponentialMartingale
           bm <- batesModel bp
-          fdEngine <- fdBatesVanillaEngine bm 50 100 30 0 Hundsdorfer
-          analyticEngine <- batesEngine bm 160
+          fdEngine <- fdBatesVanillaEngine bm [] 50 100 30 0 Hundsdorfer
+          analyticEngine <- batesEngine bm (IntegrationOrder 160)
           opt <- vanillaOption (PlainVanilla (PlainVanillaPayoff Put strike)) (European (EuropeanExercise maturity))
           optInst <- asOneAssetOption opt
           setPricingEngine opt analyticEngine
@@ -2546,7 +2550,7 @@ spec = do
         volTS <- blackConstantVol evalDate tgt volQ dc
         process <- blackScholesMertonProcess s0 qTS rTS volTS EulerDiscretization False
         maturity <- addPeriod evalDate (5, Years)
-        engine <- fdBlackScholesShoutEngine process 400 200 0 Hundsdorfer
+        engine <- fdBlackScholesShoutEngine process [] 400 200 0 Hundsdorfer
         forM_ cases $ \(ty, strike, expected) -> do
           opt <- vanillaOption (PlainVanilla (PlainVanillaPayoff ty strike)) (American Nothing maturity False)
           optInst <- asOneAssetOption opt
@@ -2574,13 +2578,13 @@ spec = do
 
         americanOpt <- vanillaOption (PlainVanilla (PlainVanillaPayoff Put 100.0)) (American (Just evalDate) maturity False)
         americanInst <- asOneAssetOption americanOpt
-        americanEngine <- fdBlackScholesVanillaEngine' process dividends 50 50 1 Douglas False 0.0 CashDividendSpot
+        americanEngine <- fdBlackScholesVanillaEngine process dividends 50 50 1 Douglas False 0.0 CashDividendSpot
         setPricingEngine americanOpt americanEngine
         americanNPV <- npv americanInst
 
         shoutOpt <- vanillaOption (PlainVanilla (PlainVanillaPayoff Put 100.0)) (American (Just evalDate) maturity False)
         shoutInst <- asOneAssetOption shoutOpt
-        shoutEngine <- fdBlackScholesShoutEngine' process dividends 50 50 0 Hundsdorfer
+        shoutEngine <- fdBlackScholesShoutEngine process dividends 50 50 0 Hundsdorfer
         setPricingEngine shoutOpt shoutEngine
         shoutNPV <- npv shoutInst
 
@@ -2610,13 +2614,13 @@ spec = do
 
         opt <- vanillaOption (PlainVanilla (PlainVanillaPayoff Call strike)) (American (Just evalDate) maturity False)
         optInst <- asOneAssetOption opt
-        engine <- fdBlackScholesShoutEngine' process dividends 100 400 0 Hundsdorfer
+        engine <- fdBlackScholesShoutEngine process dividends 100 400 0 Hundsdorfer
         setPricingEngine opt engine
         calculated <- npv optInst
 
         refOpt <- vanillaOption (PlainVanilla (PlainVanillaPayoff Call strike)) (American (Just evalDate) divDate False)
         refInst <- asOneAssetOption refOpt
-        refEngine <- fdBlackScholesShoutEngine process 100 400 0 Hundsdorfer
+        refEngine <- fdBlackScholesShoutEngine process [] 100 400 0 Hundsdorfer
         setPricingEngine refOpt refEngine
         refNPV <- npv refInst
 
@@ -2707,11 +2711,11 @@ spec = do
         hm <- hestonModel hp
         leverageQ <- simpleQuote 0.25
         leverageFct <- localConstantVol evalDate leverageQ dc
-        fdEngine <- fdHestonVanillaEngine hm 51 401 101 0 ModifiedCraigSneyd (Just leverageFct) 1.0
+        fdEngine <- fdHestonVanillaEngine hm [] 51 401 101 0 ModifiedCraigSneyd (Just leverageFct) 1.0
 
         mixHp <- hestonProcess rTS (Just qTS) s0 v0 kappa theta_ (sigma * 10) rho_ QuadraticExponentialMartingale
         mixHm <- hestonModel mixHp
-        fdEngineMix <- fdHestonVanillaEngine mixHm 51 401 101 0 ModifiedCraigSneyd (Just leverageFct) 0.1
+        fdEngineMix <- fdHestonVanillaEngine mixHm [] 51 401 101 0 ModifiedCraigSneyd (Just leverageFct) 0.1
 
         forM_ strikes $ \strike -> do
           opt <- vanillaOption (PlainVanilla (PlainVanillaPayoff Call strike)) (European (EuropeanExercise maturity))

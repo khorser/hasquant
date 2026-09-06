@@ -103,7 +103,7 @@ main = do
   -- withCustomStrikedPayoff one carries a real strike, so the cast succeeds and the engine prices
   -- the Haskell function correctly. Checked against the native PlainVanilla payoff through the
   -- same engine: identical, since the payoff values are identical and the strike given matches.
-  let fdEngine = fdBlackScholesVanillaEngine bsmProc 100 200 0 Douglas False 0.0 CashDividendSpot
+  let fdEngine = fdBlackScholesVanillaEngine bsmProc [] 100 200 0 Douglas False 0.0 CashDividendSpot
   nativeFdOpt <- vanillaOption (PlainVanilla (PlainVanillaPayoff Call strike)) americanEx
   nativeFdInst <- asOneAssetOption nativeFdOpt
   fdEngine >>= setPricingEngine nativeFdInst

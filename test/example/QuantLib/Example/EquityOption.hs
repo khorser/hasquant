@@ -49,13 +49,13 @@ hestonNpv :: YieldTermStructure -> YieldTermStructure -> SimpleQuote -> Double -
 hestonNpv ts divTS underQ vol europeanOpt = do
   hestonProc <- hestonProcess ts (Just divTS) underQ (vol*vol) 1.0 (vol*vol) 0.001 0.0 QuadraticExponentialMartingale
   hestonMod <- hestonModel hestonProc
-  hestonEng <- analyticHestonEngine' hestonMod 144
+  hestonEng <- analyticHestonEngine hestonMod (IntegrationOrder 144)
   QuantLib.Instrument.setPricingEngine europeanOpt hestonEng
   npv europeanOpt
 
 batesNpv :: YieldTermStructure -> YieldTermStructure -> SimpleQuote -> Double -> VanillaOption -> IO Double
 batesNpv ts divTS underQ vol europeanOpt = do
-  batesEng <- batesProcess ts divTS underQ (vol*vol) 1.0 (vol*vol) 0.001 0.0 1.0e-14 1.0e-14 1.0e-14 HestonFullTruncation >>= batesModel >>= (`batesEngine` 144)
+  batesEng <- batesProcess ts divTS underQ (vol*vol) 1.0 (vol*vol) 0.001 0.0 1.0e-14 1.0e-14 1.0e-14 HestonFullTruncation >>= batesModel >>= (\model -> batesEngine model (IntegrationOrder 144))
   QuantLib.Instrument.setPricingEngine europeanOpt batesEng
   npv europeanOpt
 
@@ -79,7 +79,7 @@ integralNpv bsmProc europeanOpt = do
 
 fdSweep :: GeneralizedBlackScholesProcess -> [OneAssetOption] -> IO [Double]
 fdSweep bsmProc = mapM (\i -> do
-    eng <- fdBlackScholesVanillaEngine bsmProc 801 800 0 Douglas False 0.0 CashDividendSpot
+    eng <- fdBlackScholesVanillaEngine bsmProc [] 801 800 0 Douglas False 0.0 CashDividendSpot
     QuantLib.Instrument.setPricingEngine i eng
     npv i)
 

@@ -216,7 +216,7 @@ run = do
 
   americanOpt <- vanillaOption vanillaPayoff americanEx
   americanInst <- asOneAssetOption americanOpt
-  fdBlackScholesVanillaEngine bsmProc (fromIntegral nSteps) (fromIntegral nPts) 0 Douglas False 0.0 CashDividendSpot
+  fdBlackScholesVanillaEngine bsmProc [] (fromIntegral nSteps) (fromIntegral nPts) 0 Douglas False 0.0 CashDividendSpot
     >>= QuantLib.Instrument.setPricingEngine americanInst
   fdRef <- npv americanInst
 
@@ -230,7 +230,7 @@ run = do
   fdCustomStrikedRef <- withCustomStrikedPayoff Call strike "HaskellCall" (\s -> max (s - strike) 0) $ \custom -> do
     opt <- vanillaOption custom americanEx
     inst <- asOneAssetOption opt
-    fdBlackScholesVanillaEngine bsmProc (fromIntegral nSteps) (fromIntegral nPts) 0 Douglas False 0.0 CashDividendSpot
+    fdBlackScholesVanillaEngine bsmProc [] (fromIntegral nSteps) (fromIntegral nPts) 0 Douglas False 0.0 CashDividendSpot
       >>= QuantLib.Instrument.setPricingEngine inst
     npv inst
 

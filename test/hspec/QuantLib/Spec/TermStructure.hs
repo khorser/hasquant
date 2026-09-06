@@ -36,7 +36,7 @@ import QuantLib.Instrument.Option(vanillaOption, EuropeanExercise(..), PlainVani
 import qualified QuantLib.Instrument.Forward as Fwd
 import QuantLib.Process(blackScholesMertonProcess, ProcessDiscretization(EulerDiscretization), hestonProcess, HestonProcessDiscretization(..))
 import qualified QuantLib.TermStructure.Volatility as Vol
-import QuantLib.PricingEngine(discountingSwapEngine, analyticEuropeanEngine, blackSwaptionEngine', blackCapFloorEngine', bachelierSwaptionEngine', bachelierCapFloorEngine', bjerksundStenslandApproximationEngine, analyticHestonEngine', fdHestonVanillaEngine)
+import QuantLib.PricingEngine(discountingSwapEngine, analyticEuropeanEngine, blackSwaptionEngine', blackCapFloorEngine', bachelierSwaptionEngine', bachelierCapFloorEngine', bjerksundStenslandApproximationEngine, analyticHestonEngine, IntegrationControl(..), fdHestonVanillaEngine)
 
 import QuantLib.Spec.Helpers(areClose, closePrec)
 
@@ -1807,9 +1807,9 @@ spec = do
           exerciseDate <- addPeriod refDate (365, Days)
           opt <- vanillaOption (PlainVanilla (PlainVanillaPayoff Call 100))
                                 (European (EuropeanExercise exerciseDate))
-          analyticHestonEngine' model 144 >>= setPricingEngine opt
+          analyticHestonEngine model (IntegrationOrder 144) >>= setPricingEngine opt
           expected <- npv opt
-          fdHestonVanillaEngine model 60 101 51 0 Hundsdorfer Nothing 1.0 >>= setPricingEngine opt
+          fdHestonVanillaEngine model [] 60 101 51 0 Hundsdorfer Nothing 1.0 >>= setPricingEngine opt
           calculated <- npv opt
           abs (calculated - expected) `shouldSatisfy` (< max 0.002 (0.02 * abs expected))
 
@@ -1829,7 +1829,7 @@ spec = do
           exerciseDate <- addPeriod refDate (365, Days)
           opt <- vanillaOption (PlainVanilla (PlainVanillaPayoff Call 100))
                                (European (EuropeanExercise exerciseDate))
-          analyticHestonEngine' model 144 >>= setPricingEngine opt
+          analyticHestonEngine model (IntegrationOrder 144) >>= setPricingEngine opt
           hestonPrice <- npv opt
           surface <- Vol.hestonBlackVolSurface model AngledContour 160
           bsProcess <- blackScholesMertonProcess s0 qTS rTS surface EulerDiscretization False

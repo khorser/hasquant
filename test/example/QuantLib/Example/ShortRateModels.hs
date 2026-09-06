@@ -168,7 +168,7 @@ runSwaps = do
   model <- hullWhite ts 0.1 0.01
   euribor <- IR.iborIndex IR.Euribor6M (Just ts)
   riskFreeEngine <- discountingSwapEngine ts Nothing Nothing Nothing
-  treeEngine <- treeVanillaSwapEngine model 120 Nothing
+  treeEngine <- treeVanillaSwapEngine model (TimeSteps 120) Nothing
   thirty360bb <- dayCounter Thirty360BondBasis
   act360 <- dayCounter (Actual360 False)
   results <- forM starts $ \s -> do
