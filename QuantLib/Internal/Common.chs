@@ -1,4 +1,4 @@
-{-# LANGUAGE TemplateHaskell, StandaloneDeriving, EmptyDataDecls #-}
+{-# LANGUAGE TemplateHaskell, StandaloneDeriving #-}
 -- internal utilities to convert special enums: either complex ones or represented as QuantLib objects that I didn't want to expose so I represented them as ADTs
 {-# OPTIONS_GHC -Wno-unused-top-binds #-}
 module QuantLib.Internal.Common
