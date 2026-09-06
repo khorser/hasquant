@@ -3,7 +3,7 @@
 -- Smoke test for OISRateHelperOpts/deriveOptionsRecord (Batch 8's new options-record
 -- TH infra -- see the add-quantlib-options-record skill). Two things this
 -- checks that a green `stack build` alone would not:
---  1. defaultOISRateHelperOpts's field order/types actually line up with the raw
+--  1. defaultOisRateHelperOpts's field order/types actually line up with the raw
 --     full-arity binding oisRateHelperFull threads them into -- a silent field
 --     transposition (deriveOptionsRecord builds the record purely from the inline
 --     splice list, with no reification against the underlying binding to catch
@@ -43,12 +43,12 @@ main = do
 
   let endToEndDiscount h = do
         curve <- piecewiseYieldCurve today [h] dc [] Discount LogLinear
-        discount' curve endDate True
+        discountAtDate curve endDate True
 
   hNarrow <- oisRateHelper 2 (1, Years) q idx Nothing
   dNarrow <- endToEndDiscount hNarrow
 
-  hFullDefaults <- oisRateHelperFull 2 (1, Years) q idx Nothing defaultOISRateHelperOpts
+  hFullDefaults <- oisRateHelperFull 2 (1, Years) q idx Nothing defaultOisRateHelperOpts
   dFullDefaults <- endToEndDiscount hFullDefaults
 
   putStrLn ("narrow          -> discount " ++ show dNarrow)
@@ -59,7 +59,7 @@ main = do
     (dNarrow == dFullDefaults)
 
   hOverridden <- oisRateHelperFull 2 (1, Years) q idx Nothing
-    defaultOISRateHelperOpts{oisTelescopicValueDates = True, oisPaymentFrequency = Semiannual, oisAveragingMethod = AveragingSimple}
+    defaultOisRateHelperOpts{oisTelescopicValueDates = True, oisPaymentFrequency = Semiannual, oisAveragingMethod = AveragingSimple}
   dOverridden <- endToEndDiscount hOverridden
   putStrLn ("full (overridden) -> discount " ++ show dOverridden)
   checkWith "override path takes effect"

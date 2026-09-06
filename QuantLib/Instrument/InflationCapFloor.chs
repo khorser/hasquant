@@ -64,7 +64,7 @@ import Data.List.NonEmpty(NonEmpty)
 -- |A CPI cap or floor: a single cumulative option on cumulative inflation up to maturity
 -- (@CPI(T)\/CPI(0)@), not a strip of optionlets like 'YoYInflationCapFloor' -- similar in shape
 -- to a ZCIIS option. No implied-volatility inspector: pricing goes purely through
--- 'QuantLib.PricingEngine.interpolatingCPICapFloorEngine' off a market price surface, there is
+-- 'QuantLib.PricingEngine.interpolatingCpiCapFloorEngine' off a market price surface, there is
 -- no vol-driven engine for it in QL 1.43.
 {#fun qlCPICapFloor as cpiCapFloor{fromEnumC`OptionType'
   ,`Double' -- ^nominal

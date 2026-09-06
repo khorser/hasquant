@@ -11,19 +11,19 @@ For a wide constructor, keep the narrow signature and add a second full-arity fu
 
 ## Shape
 
-Worked example, all in `QuantLib/TermStructure/Yield.chs`: `OISRateHelperOpts` / `defaultOISRateHelperOpts` / `oisRateHelperFull` / `oisRateHelperFull'`.
+Worked example, all in `QuantLib/TermStructure/Yield.chs`: `OISRateHelperOpts` / `defaultOisRateHelperOpts` / `oisRateHelperFull` / `oisRateHelperBetweenDatesWithOptions`.
 
 Three layers:
 
 1. **Raw c2hs binding at full C arity**, unexported, trailing-underscore name — `oisRateHelper_`, `oisRateHelper2_`. Widen the *C shim* to full arity rather than maintaining a second near-duplicate one (`cbits/qlTermStructure.cpp`'s `qlOISRateHelper`/`qlOISRateHelper2`).
-2. **The existing narrow public functions** keep their original signature and now call that same raw binding, hardcoding upstream's defaults positionally (`oisRateHelper`, `oisRateHelper'`).
-3. **The new full-arity public functions** take the leading required args plus one `XxxOpts` record, and expand it into the raw binding (`oisRateHelperFull`, `oisRateHelperFull'`).
+2. **The existing narrow public functions** keep their original signature and now call that same raw binding, hardcoding upstream's defaults positionally (`oisRateHelper`, `oisRateHelperBetweenDates`).
+3. **The new full-arity public functions** take the leading required args plus one `XxxOpts` record, and expand it into the raw binding (`oisRateHelperFull`, `oisRateHelperBetweenDatesWithOptions`).
 
 Callers override only what they need:
 
 ```haskell
 oisRateHelperFull days tenor rate idx curve
-  defaultOISRateHelperOpts { oisPaymentLag = 2, oisTelescopicValueDates = True }
+  defaultOisRateHelperOpts { oisPaymentLag = 2, oisTelescopicValueDates = True }
 ```
 
 ## Steps
@@ -45,7 +45,7 @@ oisRateHelperFull days tenor rate idx curve
   `("oisOvernightSpread", [t|Maybe (GenQuote $(varT (mkName "m")))|], [|Nothing|])`
   and `"m"` must also appear in the record's type-variable list (argument 2).
 - **No pure default available.** A field whose type only exists in IO — `Calendar`, obtainable only via `calendar Null :: IO Calendar` — is `Maybe`-wrapped with a `Nothing` default, and the hand-written wrapper substitutes the real value with `fromMaybe` after constructing one. That's why `OISRateHelperOpts`'s three calendar fields are `Maybe Calendar` while the raw binding takes a plain `Calendar`.
-- **Fields not used by every overload.** When two overloads share one options record, mark the ones a given wrapper ignores in the field's comment — e.g. `oisForwardStart` is ignored by `oisRateHelperFull'`, since the second C constructor has no `forwardStart` parameter.
+- **Fields not used by every overload.** When two overloads share one options record, mark the ones a given wrapper ignores in the field's comment — e.g. `oisForwardStart` is ignored by `oisRateHelperBetweenDatesWithOptions`, since the second C constructor has no `forwardStart` parameter.
 
 ## Verification
 

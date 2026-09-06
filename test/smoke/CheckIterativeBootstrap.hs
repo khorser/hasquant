@@ -55,7 +55,7 @@ attempt opts = try $ do
   cal <- calendar TARGET
   d <- advance cal curveToday (6, Months) ModifiedFollowing True
   ts <- buildCurve opts
-  discount' ts d False >>= evaluate
+  discountAtDate ts d False >>= evaluate
 
 -- SomeException's Show dumps a GHC backtrace; only the outcome matters here.
 describe :: Either SomeException Double -> String

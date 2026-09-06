@@ -7,13 +7,13 @@ module QuantLib.InterestRate
   , InterestRate
   , interestRate
   , compoundFactor
-  , compoundFactor'
+  , compoundFactorBetween
   , discountFactor
-  , discountFactor'
+  , discountFactorBetween
   , equivalentRate
-  , equivalentRate'
+  , equivalentRateBetween
   , impliedRate
-  , impliedRate'
+  , impliedRateBetween
   , rate
   ) where
 import QuantLib.Internal
@@ -36,7 +36,7 @@ import QuantLib.Internal.Type
 
 -- |compound factor implied by the rate compounded between two dates
 -- returns the compound (a.k.a capitalization) factor implied by the rate compounded between two dates.
-{#fun qlInterestRateCompoundFactor1 as compoundFactor'{withInterestRate*`InterestRate',withDay*`Day' -- ^d1
+{#fun qlInterestRateCompoundFactor1 as compoundFactorBetween{withInterestRate*`InterestRate',withDay*`Day' -- ^d1
   ,withDay*`Day' -- ^d2
   ,withDay*`Day' -- ^refStart
   ,withDay*`Day' -- ^refEnd
@@ -48,7 +48,7 @@ import QuantLib.Internal.Type
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |discount factor implied by the rate compounded between two dates
-{#fun qlInterestRateDiscountFactor1 as discountFactor'{withInterestRate*`InterestRate',withDay*`Day' -- ^d1
+{#fun qlInterestRateDiscountFactor1 as discountFactorBetween{withInterestRate*`InterestRate',withDay*`Day' -- ^d1
   ,withDay*`Day' -- ^d2
   ,withDay*`Day' -- ^refStart
   ,withDay*`Day' -- ^refEnd
@@ -60,7 +60,7 @@ import QuantLib.Internal.Type
 
 -- |equivalent rate for a compounding period between two dates
 -- The resulting rate is calculated taking the required day-counting rule into account.
-{#fun qlInterestRateEquivalentRate1 as equivalentRate'{withInterestRate*`InterestRate',withDayCounter*`DayCounter' -- ^resultDC
+{#fun qlInterestRateEquivalentRate1 as equivalentRateBetween{withInterestRate*`InterestRate',withDayCounter*`DayCounter' -- ^resultDC
   ,`Compounding',`Frequency',withDay*`Day' -- ^d1
   ,withDay*`Day' -- ^d2
   ,withDay*`Day' -- ^refStart
@@ -74,7 +74,7 @@ import QuantLib.Internal.Type
 
 -- |implied rate for a given compound factor between two dates.
 -- The resulting rate is calculated taking the required day-counting rule into account.
-{#fun qlInterestRateImpliedRate1 as impliedRate'{withInterestRate*`InterestRate',`Double' -- ^compound
+{#fun qlInterestRateImpliedRate1 as impliedRateBetween{withInterestRate*`InterestRate',`Double' -- ^compound
   ,withDayCounter*`DayCounter',`Compounding',`Frequency',withDay*`Day' -- ^d1
   ,withDay*`Day' -- ^d2
   ,withDay*`Day' -- ^refStart

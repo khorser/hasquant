@@ -38,7 +38,7 @@ module QuantLib.Index.InterestRate
 
   , overnightIndexedSwapIndex
   , swapIndex
-  , swapIndex'
+  , swapIndexWithDiscountCurve
   , swapSpreadIndex
 
   -- The bundled names are the fixed-tenor shortcut pattern synonyms defined below;
@@ -63,7 +63,7 @@ module QuantLib.Index.InterestRate
   , endOfMonth
 
   , underlyingSwap
-  , underlyingOIS
+  , underlyingOis
 
   , historicalRatesAnalysis
   ) where
@@ -338,7 +338,7 @@ overnightIndexedSwapIndex familyName tenr settlementDays ccy idx telescopicValue
   ,fromEnumC`BusinessDayConvention',withDayCounter*`DayCounter',withIborIndex*`GenIborIndex ibor',preErrorCheck-`String'errorCheck*-}->`SwapIndex'peekSwapIndex*#}
 
 -- |Creates a swap-rate index with a discounting curve distinct from the forwarding curve of the underlying ibor index.
-{#fun qlSwapIndex1 as swapIndex'{`String' -- ^familyName
+{#fun qlSwapIndex1 as swapIndexWithDiscountCurve{`String' -- ^familyName
   ,fromEnumQuantity`(Int,TimeUnit)'& -- ^tenor
   ,fromIntegral`Word' -- ^settlementDays
   ,withCurrency*`Currency',withCalendar*`Calendar',fromEnumQuantity`(Int,TimeUnit)'& -- ^fixedLegTenor
@@ -399,7 +399,7 @@ overnightIndexedSwapIndex familyName tenr settlementDays ccy idx telescopicValue
 {#fun pure qlIborIndexEndOfMonth as endOfMonth{withIborIndex*`GenIborIndex ibor'}->`Bool'#}
 
 -- |Returns the overnight-indexed swap underlying the index for a given fixing date. Relinking the index's term structure afterwards has no effect on the returned swap.
-{#fun qlOvernightIndexedSwapIndexUnderlyingSwap as underlyingOIS {withOvernightIndexedSwapIndex*`OvernightIndexedSwapIndex',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`OvernightIndexedSwap'peekOvernightIndexedSwap*#}
+{#fun qlOvernightIndexedSwapIndexUnderlyingSwap as underlyingOis {withOvernightIndexedSwapIndex*`OvernightIndexedSwapIndex',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`OvernightIndexedSwap'peekOvernightIndexedSwap*#}
 
 -- |Returns the vanilla swap underlying the index for a given fixing date. Relinking the index's term structure afterwards has no effect on the returned swap.
 {#fun qlSwapIndexUnderlyingSwap as underlyingSwap{withSwapIndex*`GenSwapIndex sidx',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`VanillaSwap'peekVanillaSwap*#}

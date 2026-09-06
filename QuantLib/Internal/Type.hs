@@ -570,12 +570,12 @@ peekNoArbSabrInterpolatedSmileSection = NoArbSabrInterpolatedSmileSection <.> pe
 withNoArbSabrInterpolatedSmileSection :: NoArbSabrInterpolatedSmileSection -> (Ptr CNoArbSabrInterpolatedSmileSection -> IO b) -> IO b
 withNoArbSabrInterpolatedSmileSection = withStandalone . getCNoArbSabrInterpolatedSmileSection
 
--- |a dedicated leaf, not a downcast target: 'QuantLib.TermStructure.Volatility.optionletStripper2'
+-- |a dedicated leaf, not a downcast target: 'QuantLib.TermStructure.Volatility.optionletStripperWithAtm'
 -- fuses construction of an 'OptionletStripper1' underneath (never exposed to Haskell, mirroring
--- 'QuantLib.TermStructure.Volatility.optionletStripper1') and stores the resulting
+-- 'QuantLib.TermStructure.Volatility.optionletStripper') and stores the resulting
 -- @OptionletStripper2@ itself, so its own diagnostic getters (atmCapFloorStrikes\/atmCapFloorPrices\/
 -- spreadsVol) need no runtime cast. Use
--- 'QuantLib.TermStructure.Volatility.optionletStripper2AsOptionletVolatilityStructure' to pass one
+-- 'QuantLib.TermStructure.Volatility.asOptionletVolatilityStructure' to pass one
 -- into anything that wants the generic 'OptionletVolatilityStructure' interface.
 data COptionletStripper2
 newtype OptionletStripper2 = OptionletStripper2 {getCOptionletStripper2 :: Standalone COptionletStripper2}
@@ -1881,7 +1881,7 @@ type CYoYOptionletVolatilitySurface = ForeignPtr CYoYOptionletVolatilitySurface'
 -- 'VolatilityTermStructure' leaf like 'CapFloorTermVolSurface', constructed and consumed via a
 -- @Handle@ (mirroring 'OptionletVolatilityStructure', since it feeds
 -- 'QuantLib.PricingEngine.yoyInflationBlackCapFloorEngine' et al. exactly the way
--- 'OptionletVolatilityStructure' feeds 'QuantLib.PricingEngine.blackCapFloorEngine'').
+-- 'OptionletVolatilityStructure' feeds 'QuantLib.PricingEngine.blackCapFloorEngineWithVolatilityStructure').
 type YoYOptionletVolatilitySurface = GenVolatilityTermStructure CYoYOptionletVolatilitySurface
 type CCPIVolatilitySurface = ForeignPtr CCPIVolatilitySurface'
 -- | A CPI (zero-inflation) volatility surface, quoted via 'volatility'\/'totalVariance' at
@@ -1889,7 +1889,7 @@ type CCPIVolatilitySurface = ForeignPtr CCPIVolatilitySurface'
 -- 'VolatilityTermStructure' leaf constructed and consumed via a @Handle@. Unlike
 -- 'YoYOptionletVolatilitySurface' it feeds no pricing engine in QL 1.43: 'CPICapFloor' prices
 -- purely off 'QuantLib.TermStructure.InflationVolatility.CPICapFloorTermPriceSurface' via
--- 'QuantLib.PricingEngine.interpolatingCPICapFloorEngine', and 'CPICouponPricer' (the type that
+-- 'QuantLib.PricingEngine.interpolatingCpiCapFloorEngine', and 'CPICouponPricer' (the type that
 -- would consume this) is itself explicitly unfinished upstream for vol-dependent coupons (no
 -- concrete descendant exists to bind, unlike 'YoYInflationCouponPricer's three) -- so this type
 -- stands alone as a queryable surface, not (yet) as engine\/pricer plumbing.
@@ -2005,7 +2005,7 @@ data CYoYCapFloorTermPriceSurface'
 type CYoYCapFloorTermPriceSurface = ForeignPtr CYoYCapFloorTermPriceSurface'
 -- | Prices YoY cap\/floors by cap\/floor-surface intersection and put\/call parity, deriving an
 -- ATM YoY swap curve as a side effect -- the market-data input the YoY optionlet stripper
--- ('QuantLib.TermStructure.InflationVolatility.kInterpolatedYoYOptionletVolatilitySurfaceBlack'
+-- ('QuantLib.TermStructure.InflationVolatility.kInterpolatedYoyOptionletVolatilitySurfaceBlack'
 -- et al.) bootstraps from. A plain 'TermStructure' leaf, constructed and consumed by
 -- @shared_ptr@ like 'CPICapFloorTermPriceSurface', never a @Handle@. Takes independent
 -- 'Interpolation2D' (cap\/floor price grid) and 'Interpolation' (per-maturity) choices --
@@ -2018,7 +2018,7 @@ type CCPICapFloorTermPriceSurface = ForeignPtr CCPICapFloorTermPriceSurface'
 -- | Prices CPI cap\/floors by interpolation and put\/call parity off a market strike\/maturity
 -- price grid, not by any vol model (see 'CPICapFloor's own comment) -- a plain 'TermStructure'
 -- leaf, constructed and consumed by @shared_ptr@ like 'CommodityCurve', never a @Handle@ (wrapped
--- into one at the point of use, e.g. 'QuantLib.PricingEngine.interpolatingCPICapFloorEngine').
+-- into one at the point of use, e.g. 'QuantLib.PricingEngine.interpolatingCpiCapFloorEngine').
 -- Takes an 'Interpolation2D' choice for the cap\/floor price grid -- a different template
 -- (@InterpolatedCPICapFloorTermPriceSurface@) from 'YoYCapFloorTermPriceSurface's
 -- @InterpolatedYoYCapFloorTermPriceSurface@, hence its own single 2-D slot rather than

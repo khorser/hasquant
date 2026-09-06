@@ -8,7 +8,7 @@ import qualified Data.Vector.Storable as V
 import Test.Hspec
 
 import qualified QuantLib.Settings as Settings
-import QuantLib.CashFlow(Leg, yoyInflationLeg, blackYoYInflationCouponPricer, setYoYInflationCouponPricer)
+import QuantLib.CashFlow(Leg, yoyInflationLeg, blackYoyInflationCouponPricer, setYoyInflationCouponPricer)
 import qualified QuantLib.CashFlow as CF
 import QuantLib.Currency(currency, Ccy(GBP))
 import QuantLib.Instrument.Option(OptionType(..))
@@ -20,7 +20,7 @@ import QuantLib.InterestRate(VolatilityType(..))
 import QuantLib.Instrument(npv, setPricingEngine)
 import QuantLib.Instrument.InflationCapFloor
 import QuantLib.Math(Interpolation(..), Interpolation2D(..), RealMatrix, realMatrixFromVector)
-import QuantLib.PricingEngine(PricingEngine, yoyInflationBlackCapFloorEngine, interpolatingCPICapFloorEngine)
+import QuantLib.PricingEngine(PricingEngine, yoyInflationBlackCapFloorEngine, interpolatingCpiCapFloorEngine)
 import QuantLib.Quote(simpleQuote)
 import QuantLib.TermStructure.InflationVolatility
 import QuantLib.TermStructure.Yield(flatForward, PillarChoice(..))
@@ -73,7 +73,7 @@ linkedYoYIndex evalDate = do
   h1 <- yearOnYearInflationSwapHelper q1 (3, Months) maturity1 cal Unadjusted dc yii0 CPIFlat nominalCurve LastRelevantDate Nothing
   h2 <- yearOnYearInflationSwapHelper q2 (3, Months) maturity2 cal Unadjusted dc yii0 CPIFlat nominalCurve LastRelevantDate Nothing
   baseDate <- advance cal evalDate (-2, Months) Unadjusted False
-  yoyCurve <- piecewiseYoYInflationCurve evalDate baseDate 0.03 Monthly dc [h1, h2] Linear
+  yoyCurve <- piecewiseYoyInflationCurve evalDate baseDate 0.03 Monthly dc [h1, h2] Linear
   customYoYIndex (Just yoyCurve)
 
 -- |A short YoY-inflation leg (3 annual coupons) on the given (curve-linked) index -- mirrors
@@ -97,7 +97,7 @@ setupEngine yii evalDate = do
   nominalQ <- simpleQuote 0.02
   nominalCurve <- flatForward evalDate nominalQ dc IR.Continuous Annual
   volQ <- simpleQuote 0.02
-  vol <- constantYoYOptionletVolatility volQ 0 cal Unadjusted dc (3, Months) Annual False (-1.0) 100.0 ShiftedLognormal 0.0
+  vol <- constantYoyOptionletVolatility volQ 0 cal Unadjusted dc (3, Months) Annual False (-1.0) 100.0 ShiftedLognormal 0.0
   yoyInflationBlackCapFloorEngine yii vol nominalCurve
 
 -- |A custom-named zero index, linked to a tiny bootstrapped 'ZeroInflationTermStructure' --
@@ -169,7 +169,7 @@ spec = do
     -- Confirmed by reading inflationcoupon.cpp: InflationCoupon::rate() unconditionally requires
     -- a pricer (QL_REQUIRE(pricer_, "pricer not set")), capped or not -- yoyInflationLeg's own
     -- operator Leg() (yoyinflationcoupon.cpp) auto-attaches a default (non-vol) pricer only when
-    -- caps and floors are BOTH empty; a non-empty cap here means 'setYoYInflationCouponPricer'
+    -- caps and floors are BOTH empty; a non-empty cap here means 'setYoyInflationCouponPricer'
     -- must be called explicitly, and this test's NPV assertion below only succeeds if it actually
     -- ran (leaving it out reproduces "pricer not set", not a silently-wrong number) -- so this
     -- doubles as the setter's own regression check.
@@ -188,9 +188,9 @@ spec = do
     nominalQ <- simpleQuote 0.02
     nominalCurve <- flatForward todayD nominalQ dc IR.Continuous Annual
     volQ <- simpleQuote 0.02
-    vol <- constantYoYOptionletVolatility volQ 0 cal Unadjusted dc (3, Months) Annual False (-1.0) 100.0 ShiftedLognormal 0.0
-    pricer <- blackYoYInflationCouponPricer vol nominalCurve
-    setYoYInflationCouponPricer cappedLeg pricer
+    vol <- constantYoyOptionletVolatility volQ 0 cal Unadjusted dc (3, Months) Annual False (-1.0) 100.0 ShiftedLognormal 0.0
+    pricer <- blackYoyInflationCouponPricer vol nominalCurve
+    setYoyInflationCouponPricer cappedLeg pricer
 
     cappedNPV <- CF.npv cappedLeg nominalCurve True Nothing Nothing
     uncappedNPV <- CF.npv uncappedLeg nominalCurve True Nothing Nothing
@@ -246,7 +246,7 @@ spec = do
       (matrix 2 3 [0.02276, 0.034532, 0.047795, 0.010027, cPriceGrid, 0.017019])
       (matrix 2 3 [0.001562, 0.002145, 0.002445, 0.005361, fPriceGrid, 0.007704])
       Bilinear
-    engine <- interpolatingCPICapFloorEngine surface
+    engine <- interpolatingCpiCapFloorEngine surface
 
     capInst <- cpiCapFloor Call 1.0 today' 100.0 maturity5Y cal Unadjusted cal Unadjusted cStrike zii obsLag CPIFlat
     setPricingEngine capInst engine
@@ -280,7 +280,7 @@ spec = do
       (matrix 2 3 [0.02276, 0.034532, 0.047795, 0.010027, cPriceGrid, 0.017019])
       (matrix 2 3 [0.001562, 0.002145, 0.002445, 0.005361, 0.006666, 0.007704])
       Bicubic
-    engine <- interpolatingCPICapFloorEngine surface
+    engine <- interpolatingCpiCapFloorEngine surface
     capInst <- cpiCapFloor Call 1.0 today' 100.0 maturity5Y cal Unadjusted cal Unadjusted cStrike zii obsLag CPIFlat
     setPricingEngine capInst engine
     capNPV <- npv capInst

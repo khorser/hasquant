@@ -85,7 +85,7 @@ run = do
 
   datedOisHelpers <- forM datedOisQuotes $ \(start, end, rate) -> do
     q <- simpleQuote rate
-    TS.oisRateHelper' start end q eonia (Nothing :: Maybe TS.YieldTermStructure)
+    TS.oisRateHelperBetweenDates start end q eonia (Nothing :: Maybe TS.YieldTermStructure)
       >>= TS.asRateHelper
 
   eoniaCurve <- TS.piecewiseYieldCurveMoving 0 cal (fromList (depoHelpers ++ oisHelpers ++ datedOisHelpers))
@@ -103,7 +103,7 @@ run = do
             False depositDC TS.LastRelevantDate Nothing True
         swaps <- forM swapQuotes $ \(yrs, rate) -> do
           q <- simpleQuote rate
-          TS.swapRateHelper' q (yrs, Years) cal Annual Unadjusted fixedLegDC euribor6M
+          TS.swapRateHelperWithConventions q (yrs, Years) cal Annual Unadjusted fixedLegDC euribor6M
             Nothing (0, Days) discounting
             Nothing TS.LastRelevantDate Nothing False Nothing Nothing Nothing
             >>= TS.asRateHelper

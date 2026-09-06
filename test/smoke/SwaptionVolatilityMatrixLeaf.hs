@@ -49,7 +49,7 @@ main = do
   volQuotes <- mapM Q.simpleQuote vols
   let volMatrix = either error id (objectMatrix 2 2 volQuotes)
 
-  grid <- Vol.swaptionVolatilityMatrix' today cal ModifiedFollowing optionTenors swapTenors
+  grid <- Vol.swaptionVolatilityMatrix today cal ModifiedFollowing optionTenors swapTenors
             volMatrix dc False ShiftedLognormal shiftMatrix
 
   -- 1. concrete-leaf-only getter

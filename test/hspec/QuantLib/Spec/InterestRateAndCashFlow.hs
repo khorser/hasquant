@@ -37,7 +37,7 @@ import qualified QuantLib.Index.Inflation as Inflation
 import qualified QuantLib.Index.Equity as Equity
 import QuantLib.Currency(currency, Ccy(..))
 import QuantLib.TermStructure.Yield
-import QuantLib.TermStructure.Volatility(blackConstantVol', constantOptionletVolatility, constantOptionletVolatility', constantSwaptionVolatility', flatSmileSection, SmileSection)
+import QuantLib.TermStructure.Volatility(blackConstantVolMoving, constantOptionletVolatility, constantOptionletVolatilityMoving, constantSwaptionVolatility, flatSmileSection, SmileSection)
 import qualified QuantLib.Quote as Quote
 import qualified QuantLib.Instrument as Instr
 import qualified QuantLib.Instrument.Bond as Bond
@@ -89,20 +89,20 @@ spec evalDate = do
             dc <- dayCounter (Actual360 False)
             ir <- IR.interestRate r dc comp freq
             let d2 = addDays (truncate $ 360 * t + 0.5) d1
-            compoundf <- IR.compoundFactor' ir d1 d2 d1 d2
-            disc <- IR.discountFactor' ir d1 d2 d1 d2
+            compoundf <- IR.compoundFactorBetween ir d1 d2 d1 d2
+            disc <- IR.discountFactorBetween ir d1 d2 d1 d2
             abs (disc - 1.0/compoundf) `shouldSatisfy` (<= 1.0e-15)
-            ir2 <- IR.equivalentRate' ir dc comp freq d1 d2 d1 d2
+            ir2 <- IR.equivalentRateBetween ir dc comp freq d1 d2 d1 d2
             abs (IR.rate ir - IR.rate ir2) `shouldSatisfy` (<= 1.0e-15)
 
-            ir3 <- IR.equivalentRate' ir dc comp2 freq2 d1 d2 d1 d2
+            ir3 <- IR.equivalentRateBetween ir dc comp2 freq2 d1 d2 d1 d2
             expectedIR <- IR.interestRate expected dc comp2 freq2
 
             let roundingPrecision = Rounding prec Closest 5
                 r3 = applyRounding roundingPrecision (IR.rate ir3)
             abs(r3 - IR.rate expectedIR) `shouldSatisfy` (<= 1.0e-17)
 
-            ir3' <- IR.equivalentRate' ir dc comp2 freq2 d1 d2 d1 d2
+            ir3' <- IR.equivalentRateBetween ir dc comp2 freq2 d1 d2 d1 d2
             let r3' = applyRounding roundingPrecision (IR.rate ir3')
             abs(r3' - expected) `shouldSatisfy` (<= 1.0e-17)
 
@@ -325,7 +325,7 @@ spec evalDate = do
           q <- Quote.simpleQuote 0.04875825 >>= Quote.asQuote
           ts <- flatForward (9 `april` 2010) q dc IR.Continuous Annual
           v <- Quote.simpleQuote 0.10
-          vol <- constantOptionletVolatility' 2 cal ModifiedFollowing v dc IR.ShiftedLognormal 0.0
+          vol <- constantOptionletVolatilityMoving 2 cal ModifiedFollowing v dc IR.ShiftedLognormal 0.0
           let p = (3, Months)
           index3m <- iborIndex (UsdLibor p) (Just ts)
           startDate <- advance cal (20 `september` 2013) (3, Months) Following False
@@ -345,7 +345,7 @@ spec evalDate = do
           -- FloatingRateCouponPricer::swapletPrice() is *per unit notional*
           -- (swapletRate * accrualPeriod * discount), unlike CashFlow::amount().
           swapletPrice <- CF.floatingRateCouponPricerSwapletPrice pricer
-          disc <- discount' ts endDate True
+          disc <- discountAtDate ts endDate True
           swapletPrice `shouldSatisfy` closePrec (amount / 100.0 * disc) 1e-10
 
           -- CashFlow::price(discountCurve) = amount() * discountCurve->discount(date()).
@@ -376,7 +376,7 @@ spec evalDate = do
           q <- Quote.simpleQuote 0.04875825 >>= Quote.asQuote
           ts <- flatForward (9 `april` 2010) q dc IR.Continuous Annual
           v <- Quote.simpleQuote 0.10
-          vol <- constantOptionletVolatility' 2 cal ModifiedFollowing v dc IR.ShiftedLognormal 0.0
+          vol <- constantOptionletVolatilityMoving 2 cal ModifiedFollowing v dc IR.ShiftedLognormal 0.0
           let p = (3, Months)
           index3m <- iborIndex (UsdLibor p) (Just ts)
           pricer <- CF.blackIborCouponPricer vol CF.Black76 Nothing Nothing
@@ -394,12 +394,12 @@ spec evalDate = do
           q <- Quote.simpleQuote 0.04875825 >>= Quote.asQuote
           ts <- flatForward (9 `april` 2010) q dc IR.Continuous Annual
           v <- Quote.simpleQuote 0.10
-          vol <- constantOptionletVolatility' 2 cal ModifiedFollowing v dc IR.ShiftedLognormal 0.0
+          vol <- constantOptionletVolatilityMoving 2 cal ModifiedFollowing v dc IR.ShiftedLognormal 0.0
           let p = (3, Months)
           index3m <- iborIndex (UsdLibor p) (Just ts)
           pricer <- CF.blackIborCouponPricer vol CF.Black76 Nothing Nothing
           fxVolQ <- Quote.simpleQuote 0.20 >>= Quote.asQuote
-          fxVol <- blackConstantVol' 2 cal fxVolQ dc
+          fxVol <- blackConstantVolMoving 2 cal fxVolQ dc
           correlation <- Quote.simpleQuote 0.50 >>= Quote.asQuote
           quantoPricer <- CF.blackIborQuantoCouponPricer fxVol correlation vol
           sch <- schedule (Just $ 20 `september` 2013) (20 `december` 2013) p cal Following Following Backward False Nothing Nothing
@@ -450,7 +450,7 @@ spec evalDate = do
             underlying <- CF.iborCoupon endDate digNominal startDate endDate digFixingDays idx
               1.0 0.0 Nothing Nothing euriborDc False Nothing Preceding
             accrual <- years euriborDc startDate endDate Nothing Nothing
-            disc <- discount' curve endDate True
+            disc <- discountAtDate curve endDate True
             pure (underlying, accrual, disc)
 
           -- CashFlow::price(discountCurve) = amount() * discountCurve->discount(date()); the
@@ -626,7 +626,7 @@ spec evalDate = do
                 subP `shouldSatisfy` (<= centralP + tolerance)
                 centralP `shouldSatisfy` (<= overP + tolerance)
 
-    -- Ported from test-suite/capflooredcoupon.cpp. Uses 'CF.npv' to discount a leg directly
+    -- Ported from test-suite/capflooredcoupon.cpp. Uses 'CF.npvWithZSpread to discount a leg directly
     -- rather than upstream's zero-rate-fixed-leg/Swap trick (there only to reuse Swap's NPV
     -- machinery); it computes the identical CashFlows::npv a DiscountingSwapEngine would.
     describe "Capped/floored coupon" $ do
@@ -649,7 +649,7 @@ spec evalDate = do
             sch <- schedule (Just settlement) endDate (1, Years) cal ModifiedFollowing ModifiedFollowing Forward False Nothing Nothing
             optDc <- dayCounter Actual365FixedStandard
             volQ <- Quote.simpleQuote 0.20 >>= Quote.asQuote
-            vol <- constantOptionletVolatility' 0 cal Following volQ optDc IR.ShiftedLognormal 0.0
+            vol <- constantOptionletVolatilityMoving 0 cal Following volQ optDc IR.ShiftedLognormal 0.0
             pricer <- CF.blackIborCouponPricer vol CF.Black76 Nothing Nothing
             capfloorEngine <- PE.blackCapFloorEngine curve volQ optDc 0.0
             pure (aa, curve, idx, sch, pricer, capfloorEngine, settlement)
@@ -796,7 +796,7 @@ spec evalDate = do
                 nullCal <- calendar Null
                 dc <- dayCounter (Actual360 False)
                 q <- Quote.simpleQuote r >>= Quote.asQuote
-                Just <$> flatForward' 0 nullCal q dc IR.Continuous Annual
+                Just <$> flatForwardMoving 0 nullCal q dc IR.Continuous Annual
             sofr <- overnightIborIndex Sofr curve
             addFixings sofr (zip oisPastDates oisPastRates) False
             pure sofr
@@ -837,12 +837,12 @@ spec evalDate = do
           rateQuote <- Quote.simpleQuote 0.0009 >>= Quote.asQuote
           curve <- flatForward (1 `december` 2021) rateQuote dc IR.Continuous Annual
           bma <- bmaIndex (Just curve)
-          cpn <- CF.averageBMACoupon (18 `november` 2021) 10000.0 (18 `october` 2021) (18 `november` 2021)
+          cpn <- CF.averageBmaCoupon (18 `november` 2021) 10000.0 (18 `october` 2021) (18 `november` 2021)
             bma 1.0 0.0 Nothing Nothing dc
-          fdates <- CF.averageBMACouponFixingDates cpn
+          fdates <- CF.averageBmaCouponFixingDates cpn
           length fdates `shouldSatisfy` (> 0)
           addFixings bma (zip fdates (replicate (length fdates) 0.0009)) False
-          fixings <- CF.averageBMACouponIndexFixings cpn
+          fixings <- CF.averageBmaCouponIndexFixings cpn
           length fixings `shouldBe` length fdates
           fixings `shouldSatisfy` all (closePrec 0.0009 1e-15)
 
@@ -932,7 +932,7 @@ spec evalDate = do
             dc <- dayCounter (Actual360 False)
             nullCal <- calendar Null
             fq <- Quote.simpleQuote 0.04 >>= Quote.asQuote
-            curve <- flatForward' 0 nullCal fq dc IR.Continuous Annual
+            curve <- flatForwardMoving 0 nullCal fq dc IR.Continuous Annual
             sofr <- overnightIborIndex Sofr (Just curve)
             cal <- calendar TARGET
             volQ <- Quote.simpleQuote 0.1 >>= Quote.asQuote
@@ -1038,7 +1038,7 @@ spec evalDate = do
           -- (which only governs the coupon's own overall accrual period).
           mrSubPeriodRate cal dc euribor fixingDaysN rateSpread (d0, d1) = do
             volQ <- Quote.simpleQuote 0.20 >>= Quote.asQuote
-            vol <- constantOptionletVolatility' 0 cal Following volQ dc IR.ShiftedLognormal 0.0
+            vol <- constantOptionletVolatilityMoving 0 cal Following volQ dc IR.ShiftedLognormal 0.0
             pricer <- CF.blackIborCouponPricer vol CF.Black76 Nothing Nothing
             cpn <- CF.iborCoupon d1 1.0 d0 d1 fixingDaysN euribor 1.0 rateSpread Nothing Nothing dc
               False Nothing Preceding
@@ -1099,7 +1099,7 @@ spec evalDate = do
 
       -- A coupon whose ex-coupon date sits at or before the settlement date must contribute
       -- zero to the leg's NPV (testExCouponCashFlow); unlike the two tests above, this needs an
-      -- actual 'Leg' (for 'CF.npv'), so it goes through 'multipleResetsLeg' rather than the
+      -- actual 'Leg' (for 'CF.npvWithZSpread), so it goes through 'multipleResetsLeg' rather than the
       -- standalone constructor. 'multipleResetsLeg's outer schedule carries the *sub-fixing*
       -- dates (one coupon per 'resets'-sized group of periods, matching upstream's own
       -- 'createMultipleResetsLeg', which reuses its monthly 'createSchedule' this way) -- so a
@@ -1231,7 +1231,7 @@ spec evalDate = do
           impliedYield <- CF.yield l npv0 dc IR.Simple Annual False Nothing Nothing 1.0e-10 1000 0.03
           impliedYield `shouldSatisfy` relClose 1.0e-6 0.03
 
-      it "term-structure NPV analytics: npv vs npv' (zero z-spread), npvBps decomposition, zSpread round-trip, atmRate repricing" $
+      it "term-structure NPV analytics: npv vs npvWithZSpread (zero z-spread), npvBps decomposition, zSpread round-trip, atmRate repricing" $
         Settings.keepingSettingsGc $ do
           (l, dc, _) <- mkFixedLeg
           td <- Settings.evaluationDate
@@ -1239,7 +1239,7 @@ spec evalDate = do
           curve <- flatForward td q dc IR.Continuous Annual
 
           n1 <- CF.npv l curve False Nothing Nothing
-          n2 <- CF.npv' l curve 0.0 IR.Continuous Annual False Nothing Nothing
+          n2 <- CF.npvWithZSpread l curve 0.0 IR.Continuous Annual False Nothing Nothing
           n2 `shouldSatisfy` relClose 1.0e-6 n1
 
           (npvbpsN, npvbpsB) <- CF.npvBps l curve False td td
@@ -1316,10 +1316,10 @@ spec evalDate = do
             cal <- calendar TARGET
             dc <- dayCounter Actual365FixedStandard
             fwdRateQ <- Quote.simpleQuote 0.05
-            fwdCurve <- flatForward' 0 cal fwdRateQ dc IR.Continuous Annual
+            fwdCurve <- flatForwardMoving 0 cal fwdRateQ dc IR.Continuous Annual
             swapIdx <- liborSwapIndex EurLiborSwapIsdaFixA (10, Years) (Just fwdCurve) (Just fwdCurve)
             volQ <- Quote.simpleQuote 0.15
-            atmVol <- constantSwaptionVolatility' refDate cal ModifiedFollowing volQ dc IR.ShiftedLognormal 0
+            atmVol <- constantSwaptionVolatility refDate cal ModifiedFollowing volQ dc IR.ShiftedLognormal 0
             meanRevQ <- Quote.simpleQuote 0.0 >>= Quote.asQuote
             startDate <- addPeriod refDate (20, Years)
             endDate <- addPeriod startDate (1, Years)
@@ -1440,12 +1440,12 @@ spec evalDate = do
           cal <- calendar TARGET
           dc <- dayCounter (Actual360 False)
           fwdRateQ <- Quote.simpleQuote 0.02
-          fwdCurve <- flatForward' 0 cal fwdRateQ dc IR.Continuous Annual
+          fwdCurve <- flatForwardMoving 0 cal fwdRateQ dc IR.Continuous Annual
           cms10y <- liborSwapIndex EurLiborSwapIsdaFixA (10, Years) (Just fwdCurve) (Just fwdCurve)
           cms2y <- liborSwapIndex EurLiborSwapIsdaFixA (2, Years) (Just fwdCurve) (Just fwdCurve)
           cms10y2y <- swapSpreadIndex "cms10y2y" cms10y cms2y 1.0 (-1.0)
           volQ <- Quote.simpleQuote 0.20
-          swaptionVol <- constantSwaptionVolatility' spreadRefDate cal Following volQ dc IR.ShiftedLognormal 0
+          swaptionVol <- constantSwaptionVolatility spreadRefDate cal Following volQ dc IR.ShiftedLognormal 0
           meanReversion <- Quote.simpleQuote 0.01 >>= Quote.asQuote
           correlation <- Quote.simpleQuote 0.6 >>= Quote.asQuote
           cmsPricer <- CF.linearTsrPricer swaptionVol meanReversion (Just fwdCurve)
@@ -1497,12 +1497,12 @@ spec evalDate = do
           cal <- calendar TARGET
           dc <- dayCounter (Actual360 False)
           fwdRateQ <- Quote.simpleQuote 0.02
-          fwdCurve <- flatForward' 0 cal fwdRateQ dc IR.Continuous Annual
+          fwdCurve <- flatForwardMoving 0 cal fwdRateQ dc IR.Continuous Annual
           cms10y <- liborSwapIndex EurLiborSwapIsdaFixA (10, Years) (Just fwdCurve) (Just fwdCurve)
           cms2y <- liborSwapIndex EurLiborSwapIsdaFixA (2, Years) (Just fwdCurve) (Just fwdCurve)
           cms10y2y <- swapSpreadIndex "cms10y2y" cms10y cms2y 1.0 (-1.0)
           volQ <- Quote.simpleQuote 0.20
-          swaptionVol <- constantSwaptionVolatility' spreadRefDate cal Following volQ dc IR.ShiftedLognormal 0
+          swaptionVol <- constantSwaptionVolatility spreadRefDate cal Following volQ dc IR.ShiftedLognormal 0
           meanReversion <- Quote.simpleQuote 0.01 >>= Quote.asQuote
           correlation <- Quote.simpleQuote 0.6 >>= Quote.asQuote
           cmsPricer <- CF.linearTsrPricer swaptionVol meanReversion (Just fwdCurve)
@@ -1543,12 +1543,12 @@ spec evalDate = do
           cal <- calendar TARGET
           dc <- dayCounter (Actual360 False)
           fwdRateQ <- Quote.simpleQuote 0.02
-          fwdCurve <- flatForward' 0 cal fwdRateQ dc IR.Continuous Annual
+          fwdCurve <- flatForwardMoving 0 cal fwdRateQ dc IR.Continuous Annual
           cms10y <- liborSwapIndex EurLiborSwapIsdaFixA (10, Years) (Just fwdCurve) (Just fwdCurve)
           cms2y <- liborSwapIndex EurLiborSwapIsdaFixA (2, Years) (Just fwdCurve) (Just fwdCurve)
           cms10y2y <- swapSpreadIndex "cms10y2y" cms10y cms2y 1.0 (-1.0)
           volQ <- Quote.simpleQuote 0.20
-          swaptionVol <- constantSwaptionVolatility' spreadRefDate cal Following volQ dc IR.ShiftedLognormal 0
+          swaptionVol <- constantSwaptionVolatility spreadRefDate cal Following volQ dc IR.ShiftedLognormal 0
           meanReversion <- Quote.simpleQuote 0.01 >>= Quote.asQuote
           correlation <- Quote.simpleQuote 0.6 >>= Quote.asQuote
           cmsPricer <- CF.linearTsrPricer swaptionVol meanReversion (Just fwdCurve)
@@ -1580,12 +1580,12 @@ spec evalDate = do
           cal <- calendar TARGET
           dc <- dayCounter (Actual360 False)
           fwdRateQ <- Quote.simpleQuote 0.02
-          fwdCurve <- flatForward' 0 cal fwdRateQ dc IR.Continuous Annual
+          fwdCurve <- flatForwardMoving 0 cal fwdRateQ dc IR.Continuous Annual
           cms10y <- liborSwapIndex EurLiborSwapIsdaFixA (10, Years) (Just fwdCurve) (Just fwdCurve)
           cms2y <- liborSwapIndex EurLiborSwapIsdaFixA (2, Years) (Just fwdCurve) (Just fwdCurve)
           cms10y2y <- swapSpreadIndex "cms10y2y" cms10y cms2y 1.0 (-1.0)
           volQ <- Quote.simpleQuote 0.20
-          swaptionVol <- constantSwaptionVolatility' spreadRefDate cal Following volQ dc IR.ShiftedLognormal 0
+          swaptionVol <- constantSwaptionVolatility spreadRefDate cal Following volQ dc IR.ShiftedLognormal 0
           meanReversion <- Quote.simpleQuote 0.01 >>= Quote.asQuote
           correlation <- Quote.simpleQuote 0.6 >>= Quote.asQuote
           cmsPricer <- CF.linearTsrPricer swaptionVol meanReversion (Just fwdCurve)
@@ -1628,10 +1628,10 @@ spec evalDate = do
           swapBase <- liborSwapIndex EuriborSwapIsdaFixA (10, Years) (Just ts) (Just ts)
           euribor6m <- iborIndex Euribor6M (Just ts)
           volQ <- Quote.simpleQuote 0.20
-          swaptionVol <- constantSwaptionVolatility' refDate cal Following volQ dc365 IR.ShiftedLognormal 0.0
+          swaptionVol <- constantSwaptionVolatility refDate cal Following volQ dc365 IR.ShiftedLognormal 0.0
           reversionQ <- Quote.simpleQuote 0.01
           cmsPricer <- CF.analyticHaganPricer swaptionVol CF.Standard reversionQ
-          optionletVol <- constantOptionletVolatility' 0 cal Following volQ dc365 IR.ShiftedLognormal 0.0
+          optionletVol <- constantOptionletVolatilityMoving 0 cal Following volQ dc365 IR.ShiftedLognormal 0.0
           iborPricer <- CF.blackIborCouponPricer optionletVol CF.Black76 Nothing Nothing
           start <- advance cal settlement (1, Years) ModifiedFollowing False
           maturity <- advance cal start (10, Years) ModifiedFollowing False
@@ -1738,7 +1738,7 @@ spec evalDate = do
           (_, dc, _, _, meanRevQ, mkLeg, _, _, _) <- mkFixture
           normalVolQ <- Quote.simpleQuote 0.008
           cal <- calendar TARGET
-          atmVolNormal <- constantSwaptionVolatility' refDate cal ModifiedFollowing normalVolQ dc IR.Normal 0
+          atmVolNormal <- constantSwaptionVolatility refDate cal ModifiedFollowing normalVolQ dc IR.Normal 0
 
           legExplicitBounds <- mkLeg
           pricerExplicitBounds <- CF.linearTsrPricer atmVolNormal meanRevQ Nothing
@@ -1754,7 +1754,7 @@ spec evalDate = do
 
           rateExplicitBounds `shouldNotBe` rateDefaultBounds
 
-      -- 'makeCms' uses 'swap'' (with explicit payer flags), not 'swap', specifically so the
+      -- 'makeCms' uses 'swapFromLegs' (with explicit payer flags), not 'swap', specifically so the
       -- CMS leg is always index 0 of the result regardless of 'Swap.SwapType' -- exercised for
       -- both directions here, since a naive Payer\/Receiver-swaps-the-'swap'-argument-order
       -- implementation (matching upstream @MakeCms@'s own @payCms_@ ternary literally) would
@@ -1766,7 +1766,7 @@ spec evalDate = do
           cal <- calendar TARGET
           dc <- dayCounter Actual365FixedStandard
           fwdRateQ <- Quote.simpleQuote 0.05
-          fwdCurve <- flatForward' 0 cal fwdRateQ dc IR.Continuous Annual
+          fwdCurve <- flatForwardMoving 0 cal fwdRateQ dc IR.Continuous Annual
           swapIdx <- liborSwapIndex EurLiborSwapIsdaFixA (10, Years) (Just fwdCurve) (Just fwdCurve)
           idx6m <- iborIndex (Euribor (6, Months)) (Just fwdCurve)
           -- forwardStart of 1Y (not spot-starting) keeps the first coupon's fixing date safely
@@ -1774,7 +1774,7 @@ spec evalDate = do
           cms <- Swap.makeCms (10, Years) swapIdx idx6m 0.0 (1, Years) Nothing (1, Years) dc
             Nothing Nothing (Just 1000000) (Just swapType)
           volQ <- Quote.simpleQuote 0.15
-          atmVol <- constantSwaptionVolatility' refDate cal ModifiedFollowing volQ dc IR.ShiftedLognormal 0
+          atmVol <- constantSwaptionVolatility refDate cal ModifiedFollowing volQ dc IR.ShiftedLognormal 0
           meanRevQ <- Quote.simpleQuote 0.0 >>= Quote.asQuote
           pricer <- CF.linearTsrPricer atmVol meanRevQ Nothing
             (CF.LinearTsrPricerSettings CF.LinearTsrRateBound Nothing)

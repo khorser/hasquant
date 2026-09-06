@@ -86,7 +86,7 @@ spec = do
         capfl <- cap leg [0.03]
         volQ <- simpleQuote 0.20
         vol0 <- constantOptionletVolatility today' cal ModifiedFollowing volQ dc ShiftedLognormal 0
-        eng <- blackCapFloorEngine' discountTS vol0
+        eng <- blackCapFloorEngineWithVolatilityStructure discountTS vol0
         setPricingEngine capfl eng
         _ <- npv capfl
 

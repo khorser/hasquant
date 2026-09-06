@@ -33,7 +33,7 @@ main = do
       (if pillar == CustomDate then Just customPillarDate else Nothing) True
     curve <- piecewiseYieldCurve today [h] dc [] Discount LogLinear
     endDate <- advance cal today (5, Months) ModifiedFollowing False
-    d <- discount' curve endDate True
+    d <- discountAtDate curve endDate True
     putStrLn (show pillar ++ " -> discount " ++ show d)
 
   imm <- nextImmDate today True
@@ -41,7 +41,7 @@ main = do
     q <- simpleQuote 99.0
     h <- futuresRateHelper q futDate 3 cal ModifiedFollowing True dc Nothing ty
     curve <- piecewiseYieldCurve today [h] dc [] Discount LogLinear
-    d <- discount' curve futDate True
+    d <- discountAtDate curve futDate True
     putStrLn (show ty ++ " -> discount " ++ show d)
   where
     today = 2 `january` 2024

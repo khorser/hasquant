@@ -50,10 +50,10 @@ module QuantLib.Instrument.Option
   , softBarrierOptionImpliedVolatility
   , forwardVanillaOption
   , compoundOption
-  , delta1
-  , delta2
-  , gamma1
-  , gamma2
+  , firstAssetDelta
+  , secondAssetDelta
+  , firstAssetGamma
+  , secondAssetGamma
   , margrabeOption
   , simpleChooserOption
   , complexChooserOption
@@ -219,16 +219,16 @@ import Data.List.NonEmpty(NonEmpty, toList)
   ,preErrorCheck-`String'errorCheck*-}->`OneAssetOption'peekOneAssetOption*#}
 
 -- |Sensitivity of a MargrabeOption's value to the price of the first asset.
-{#fun qlMargrabeOptionDelta1 as delta1{withMargrabeOption*`MargrabeOption',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlMargrabeOptionDelta1 as firstAssetDelta{withMargrabeOption*`MargrabeOption',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Sensitivity of a MargrabeOption's value to the price of the second asset.
-{#fun qlMargrabeOptionDelta2 as delta2{withMargrabeOption*`MargrabeOption',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlMargrabeOptionDelta2 as secondAssetDelta{withMargrabeOption*`MargrabeOption',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Second derivative of a MargrabeOption's value with respect to the price of the first asset.
-{#fun qlMargrabeOptionGamma1 as gamma1{withMargrabeOption*`MargrabeOption',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlMargrabeOptionGamma1 as firstAssetGamma{withMargrabeOption*`MargrabeOption',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Second derivative of a MargrabeOption's value with respect to the price of the second asset.
-{#fun qlMargrabeOptionGamma2 as gamma2{withMargrabeOption*`MargrabeOption',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlMargrabeOptionGamma2 as secondAssetGamma{withMargrabeOption*`MargrabeOption',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Sensitivity of the option's value to the forward price of the underlying.
 {#fun qlOneAssetOptionDeltaForward as deltaForward{withOneAssetOption*`GenOneAssetOption oo',preErrorCheck-`String'errorCheck*-}->`Double'#}

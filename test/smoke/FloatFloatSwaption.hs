@@ -3,7 +3,7 @@
 -- swaption built at ex/Gaussian1dModels.cpp:468-473 (gearing2/spread2 nonzero, everything else
 -- upstream's default). Checks:
 -- 1. Both FloatFloatSwap constructors materialize (flat-nominal via floatFloatSwap/
---    FloatFloatSwapOpts, per-period-nominal via floatFloatSwap'/FloatFloatSwapVaryingOpts).
+--    FloatFloatSwapOpts, per-period-nominal via floatFloatSwapWithNominals/FloatFloatSwapVaryingOpts).
 -- 2. firstLegFairSpread/secondLegFairSpread run without crashing once a pricing engine is attached.
 -- 3. FloatFloatSwaption materializes from both underlyings and calibrationBasket returns a
 --    non-empty basket in both CalibrationBasketNaive/MaturityStrikeByDeltaGamma modes -- reusing
@@ -56,16 +56,16 @@ main = do
   -- 1a. Flat-nominal ctor -- CMS leg (gearing1=1, spread1=0) vs Euribor6M+10bp (spread2=0.0010),
   -- matching ex/Gaussian1dModels.cpp's underlying4.
   underlying1 <- floatFloatSwap Payer 1.0 1.0 fixedSchedule swapBase thirty360bb floatSchedule
-    euribor6m act360 defaultFloatFloatSwapOpts{ffsSpread2 = 0.0010}
+    euribor6m act360 defaultFloatFloatSwapOpts{ffsSecondLegSpread = 0.0010}
 
   -- 1b. Per-period-nominal ctor (full coverage; not used by the upstream example).
   -- leg 0 = CMS leg (schedule1/index1), not a FixedVsFloatingSwap's fixed leg -- FloatFloatSwap
   -- exchanges two floating legs, so use the generic Swap 'leg' accessor instead of 'fixedLeg'.
   bermudanDates <- leg underlying1 0 >>= CF.toCouponLeg >>= CF.couponAccrualStartDates
   let n = length bermudanDates
-  underlying2 <- floatFloatSwap' Payer (replicate n 1.0) (replicate (2 * n) 1.0) fixedSchedule
+  underlying2 <- floatFloatSwapWithNominals Payer (replicate n 1.0) (replicate (2 * n) 1.0) fixedSchedule
     swapBase thirty360bb floatSchedule euribor6m act360
-    defaultFloatFloatSwapVaryingOpts{ffsvSpread2 = replicate (2 * n) 0.0010}
+    defaultFloatFloatSwapVaryingOpts{ffsvSecondLegSpread = replicate (2 * n) 0.0010}
 
   let ex = Bermudan (BermudanExercise (fromList bermudanDates) False)
   swpn1 <- floatFloatSwaption underlying1 ex Physical PhysicalOTC
@@ -74,7 +74,7 @@ main = do
   -- Leg 0 is a CMS leg (index1 = swapBase) -- CMS coupons always need a pricer, unlike the
   -- plain Euribor leg 1, which computes its forecast fixing directly.
   swaptionVolQ <- simpleQuote 0.20
-  swaptionVolTS <- constantSwaptionVolatility 0 cal ModifiedFollowing swaptionVolQ dc365 ShiftedLognormal 0.0
+  swaptionVolTS <- constantSwaptionVolatilityMoving 0 cal ModifiedFollowing swaptionVolQ dc365 ShiftedLognormal 0.0
   reversionQ <- simpleQuote 0.01
   cmsPricer <- CF.linearTsrPricer swaptionVolTS reversionQ Nothing
     (CF.LinearTsrPricerSettings CF.LinearTsrRateBound Nothing)

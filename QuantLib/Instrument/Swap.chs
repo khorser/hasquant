@@ -39,16 +39,16 @@ module QuantLib.Instrument.Swap
   , ConstNotionalCrossCurrencyBasisSwapOpts(..)
   , defaultConstNotionalCrossCurrencyBasisSwapOpts
 
-  , swap'
+  , swapFromLegs
   , swap
   , bmaSwap
   , vanillaSwap
   , nonstandardSwapFromVanilla
   , nonstandardSwap
-  , nonstandardSwap'
+  , nonstandardSwapWithGearings
   , nonstandardSwapFixedRate
   , floatFloatSwap
-  , floatFloatSwap'
+  , floatFloatSwapWithNominals
   , firstLegFairSpread
   , secondLegFairSpread
   , makeVanillaSwap
@@ -57,7 +57,7 @@ module QuantLib.Instrument.Swap
   , yearOnYearInflationSwap
   , cpiSwap
   , zeroCouponSwap
-  , zeroCouponSwap'
+  , zeroCouponSwapFromRate
   , fairFixedPayment
   , fairFixedRate
   , equityTotalReturnSwapIbor
@@ -80,7 +80,7 @@ module QuantLib.Instrument.Swap
 
   -- ConstNotionalCrossCurrencySwap family
   , constNotionalCrossCurrencySwap
-  , constNotionalCrossCurrencySwap'
+  , constNotionalCrossCurrencySwapFromLegs
   , legCurrency
   , inCcyLegBps
   , inCcyLegNpv
@@ -122,7 +122,7 @@ module QuantLib.Instrument.Swap
 
   -- OvernightIndexedSwap
   , overnightIndexedSwap
-  , overnightIndexedSwap'
+  , overnightIndexedSwapWithNominals
 
   , overnightLeg
   , overnightLegBps
@@ -215,30 +215,30 @@ import QuantLib.Index.InterestRate(tenor, dayCounter, businessDayConvention)
 $(deriveOptionsRecord "FloatFloatSwapOpts" []
   [ ("ffsIntermediateCapitalExchange", [t|Bool|], [|False|])
   , ("ffsFinalCapitalExchange", [t|Bool|], [|False|])
-  , ("ffsGearing1", [t|Double|], [|1.0|])
-  , ("ffsSpread1", [t|Double|], [|0.0|])
-  , ("ffsCappedRate1", [t|Maybe Double|], [|Nothing|])
-  , ("ffsFlooredRate1", [t|Maybe Double|], [|Nothing|])
-  , ("ffsGearing2", [t|Double|], [|1.0|])
-  , ("ffsSpread2", [t|Double|], [|0.0|])
-  , ("ffsCappedRate2", [t|Maybe Double|], [|Nothing|])
-  , ("ffsFlooredRate2", [t|Maybe Double|], [|Nothing|])
-  , ("ffsPaymentConvention1", [t|Maybe BusinessDayConvention|], [|Nothing|])
-  , ("ffsPaymentConvention2", [t|Maybe BusinessDayConvention|], [|Nothing|])
+  , ("ffsFirstLegGearing", [t|Double|], [|1.0|])
+  , ("ffsFirstLegSpread", [t|Double|], [|0.0|])
+  , ("ffsFirstLegCappedRate", [t|Maybe Double|], [|Nothing|])
+  , ("ffsFirstLegFlooredRate", [t|Maybe Double|], [|Nothing|])
+  , ("ffsSecondLegGearing", [t|Double|], [|1.0|])
+  , ("ffsSecondLegSpread", [t|Double|], [|0.0|])
+  , ("ffsSecondLegCappedRate", [t|Maybe Double|], [|Nothing|])
+  , ("ffsSecondLegFlooredRate", [t|Maybe Double|], [|Nothing|])
+  , ("ffsFirstLegPaymentConvention", [t|Maybe BusinessDayConvention|], [|Nothing|])
+  , ("ffsSecondLegPaymentConvention", [t|Maybe BusinessDayConvention|], [|Nothing|])
   ])
 $(deriveOptionsRecord "FloatFloatSwapVaryingOpts" []
   [ ("ffsvIntermediateCapitalExchange", [t|Bool|], [|False|])
   , ("ffsvFinalCapitalExchange", [t|Bool|], [|False|])
-  , ("ffsvGearing1", [t|[Double]|], [|[]|])
-  , ("ffsvSpread1", [t|[Double]|], [|[]|])
-  , ("ffsvCappedRate1", [t|[Double]|], [|[]|])
-  , ("ffsvFlooredRate1", [t|[Double]|], [|[]|])
-  , ("ffsvGearing2", [t|[Double]|], [|[]|])
-  , ("ffsvSpread2", [t|[Double]|], [|[]|])
-  , ("ffsvCappedRate2", [t|[Double]|], [|[]|])
-  , ("ffsvFlooredRate2", [t|[Double]|], [|[]|])
-  , ("ffsvPaymentConvention1", [t|Maybe BusinessDayConvention|], [|Nothing|])
-  , ("ffsvPaymentConvention2", [t|Maybe BusinessDayConvention|], [|Nothing|])
+  , ("ffsvFirstLegGearing", [t|[Double]|], [|[]|])
+  , ("ffsvFirstLegSpread", [t|[Double]|], [|[]|])
+  , ("ffsvFirstLegCappedRate", [t|[Double]|], [|[]|])
+  , ("ffsvFirstLegFlooredRate", [t|[Double]|], [|[]|])
+  , ("ffsvSecondLegGearing", [t|[Double]|], [|[]|])
+  , ("ffsvSecondLegSpread", [t|[Double]|], [|[]|])
+  , ("ffsvSecondLegCappedRate", [t|[Double]|], [|[]|])
+  , ("ffsvSecondLegFlooredRate", [t|[Double]|], [|[]|])
+  , ("ffsvFirstLegPaymentConvention", [t|Maybe BusinessDayConvention|], [|Nothing|])
+  , ("ffsvSecondLegPaymentConvention", [t|Maybe BusinessDayConvention|], [|Nothing|])
   ])
 
 -- ConstNotionalCrossCurrencyBasisSwapOpts bundles ConstNotionalCrossCurrencyBasisSwap's 13
@@ -277,9 +277,9 @@ $(deriveOptionsRecord "ConstNotionalCrossCurrencyBasisSwapOpts" []
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Multi leg constructor.
-swap' :: [(Leg, Bool)] -- ^(legs, payer)
+swapFromLegs :: [(Leg, Bool)] -- ^(legs, payer)
   -> IO Swap
-swap' = (uncurry qlSwap1) . unzip
+swapFromLegs = (uncurry qlSwap1) . unzip
 {#fun qlSwap1{withLegArray*`[Leg]'&,withBoolArray*`[Bool]'&,preErrorCheck-`String'errorCheck*-}->`Swap'peekSwap*#}
 
 -- |Swap paying Libor against BMA coupons
@@ -312,7 +312,7 @@ swap' = (uncurry qlSwap1) . unzip
 
 -- |'VanillaSwap' generalized to per-period fixed/floating nominals and fixed rates, plus
 -- optional intermediate\/final notional exchange -- a single 'Double' gearing\/spread shared
--- across all floating periods. See 'nonstandardSwap'' for a per-period gearing\/spread.
+-- across all floating periods. See 'nonstandardSwapWithGearings' for per-period gearing\/spread.
 {#fun qlNonstandardSwap as nonstandardSwap{`SwapType'
   ,withDoubleArray*`[Double]'& -- ^fixedNominal
   ,withDoubleArray*`[Double]'& -- ^floatingNominal
@@ -330,7 +330,7 @@ swap' = (uncurry qlSwap1) . unzip
   ,preErrorCheck-`String'errorCheck*-}->`NonstandardSwap'peekNonstandardSwap*#}
 
 -- |As 'nonstandardSwap', but with a per-period gearing and spread instead of one shared value.
-{#fun qlNonstandardSwap2 as nonstandardSwap'{`SwapType'
+{#fun qlNonstandardSwap2 as nonstandardSwapWithGearings{`SwapType'
   ,withDoubleArray*`[Double]'& -- ^fixedNominal
   ,withDoubleArray*`[Double]'& -- ^floatingNominal
   ,withSchedule*`Schedule' -- ^fixedSchedule
@@ -347,7 +347,7 @@ swap' = (uncurry qlSwap1) . unzip
   ,preErrorCheck-`String'errorCheck*-}->`NonstandardSwap'peekNonstandardSwap*#}
 
 -- |Per-period fixed rate, one entry per fixed-leg accrual period. For a swap built via
--- 'nonstandardSwap'\/'nonstandardSwap'', this simply echoes the constructor's @fixedRate@; for
+-- 'nonstandardSwap'\/'nonstandardSwapWithGearings', this simply echoes the constructor's @fixedRate@; for
 -- one built via 'nonstandardSwapFromVanilla' it is derived from the underlying vanilla swap's
 -- fixed leg coupons.
 {#fun qlNonstandardSwapFixedRate as nonstandardSwapFixedRate{withNonstandardSwap*`NonstandardSwap',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
@@ -355,7 +355,7 @@ swap' = (uncurry qlSwap1) . unzip
 -- |Swap exchanging capped\/floored Libor or CMS coupons with a single flat nominal on each leg.
 -- 'FloatFloatSwapOpts' bundles every trailing param the C++ constructor defaults (gearing\/
 -- spread\/cap\/floor per leg, capital exchange, payment conventions); override only what's
--- needed via record-update syntax on 'defaultFloatFloatSwapOpts'. See 'floatFloatSwap'' for the
+-- needed via record-update syntax on 'defaultFloatFloatSwapOpts'. See 'floatFloatSwapWithNominals' for the
 -- per-period-nominal overload.
 floatFloatSwap :: SwapType -> Double -> Double -> Schedule -> GenInterestRateIndex ridx1
   -> DayCounter -> Schedule -> GenInterestRateIndex ridx2 -> DayCounter -> FloatFloatSwapOpts
@@ -363,9 +363,9 @@ floatFloatSwap :: SwapType -> Double -> Double -> Schedule -> GenInterestRateInd
 floatFloatSwap ty nominal1 nominal2 schedule1 index1 dayCount1 schedule2 index2 dayCount2 opts =
   floatFloatSwap_ ty nominal1 nominal2 schedule1 index1 dayCount1 schedule2 index2 dayCount2
     (ffsIntermediateCapitalExchange opts) (ffsFinalCapitalExchange opts)
-    (ffsGearing1 opts) (ffsSpread1 opts) (ffsCappedRate1 opts) (ffsFlooredRate1 opts)
-    (ffsGearing2 opts) (ffsSpread2 opts) (ffsCappedRate2 opts) (ffsFlooredRate2 opts)
-    (ffsPaymentConvention1 opts) (ffsPaymentConvention2 opts)
+    (ffsFirstLegGearing opts) (ffsFirstLegSpread opts) (ffsFirstLegCappedRate opts) (ffsFirstLegFlooredRate opts)
+    (ffsSecondLegGearing opts) (ffsSecondLegSpread opts) (ffsSecondLegCappedRate opts) (ffsSecondLegFlooredRate opts)
+    (ffsFirstLegPaymentConvention opts) (ffsSecondLegPaymentConvention opts)
 
 {#fun qlFloatFloatSwap as floatFloatSwap_{`SwapType'
   ,`Double' -- ^nominal1
@@ -392,15 +392,15 @@ floatFloatSwap ty nominal1 nominal2 schedule1 index1 dayCount1 schedule2 index2 
 
 -- |As 'floatFloatSwap', but with a per-period nominal on each leg instead of a single flat value
 -- (full coverage; not used by the upstream example).
-floatFloatSwap' :: SwapType -> [Double] -> [Double] -> Schedule -> GenInterestRateIndex ridx1
+floatFloatSwapWithNominals :: SwapType -> [Double] -> [Double] -> Schedule -> GenInterestRateIndex ridx1
   -> DayCounter -> Schedule -> GenInterestRateIndex ridx2 -> DayCounter
   -> FloatFloatSwapVaryingOpts -> IO FloatFloatSwap
-floatFloatSwap' ty nominal1 nominal2 schedule1 index1 dayCount1 schedule2 index2 dayCount2 opts =
+floatFloatSwapWithNominals ty nominal1 nominal2 schedule1 index1 dayCount1 schedule2 index2 dayCount2 opts =
   floatFloatSwap2_ ty nominal1 nominal2 schedule1 index1 dayCount1 schedule2 index2 dayCount2
     (ffsvIntermediateCapitalExchange opts) (ffsvFinalCapitalExchange opts)
-    (ffsvGearing1 opts) (ffsvSpread1 opts) (ffsvCappedRate1 opts) (ffsvFlooredRate1 opts)
-    (ffsvGearing2 opts) (ffsvSpread2 opts) (ffsvCappedRate2 opts) (ffsvFlooredRate2 opts)
-    (ffsvPaymentConvention1 opts) (ffsvPaymentConvention2 opts)
+    (ffsvFirstLegGearing opts) (ffsvFirstLegSpread opts) (ffsvFirstLegCappedRate opts) (ffsvFirstLegFlooredRate opts)
+    (ffsvSecondLegGearing opts) (ffsvSecondLegSpread opts) (ffsvSecondLegCappedRate opts) (ffsvSecondLegFlooredRate opts)
+    (ffsvFirstLegPaymentConvention opts) (ffsvSecondLegPaymentConvention opts)
 
 {#fun qlFloatFloatSwap2 as floatFloatSwap2_{`SwapType'
   ,withDoubleArray*`[Double]'& -- ^nominal1
@@ -496,10 +496,10 @@ makeVanillaSwap (swLen, swUnit) index fixedRate forwardStart mSettlementDays
 -- |Haskell equivalent of QuantLib's fluent @MakeCms@ builder, in the style of
 -- 'makeVanillaSwap' above -- not a binding of the @MakeCms@ C++ class at all, but a plain
 -- function composing already-bound primitives ('QuantLib.Time.Schedule.schedule',
--- 'QuantLib.CashFlow.cmsLeg', 'QuantLib.CashFlow.iborLeg', 'swap''). The result is a plain
+-- 'QuantLib.CashFlow.cmsLeg', 'QuantLib.CashFlow.iborLeg', 'swapFromLegs'). The result is a plain
 -- 'Swap' (a CMS swap has no calc\/getter of its own beyond generic 'Swap''s), with no
 -- 'FloatingRateCouponPricer' attached -- attach one to the CMS leg afterwards via
--- @setCouponPricer =<< 'leg' result 0@ ('swap'' is used instead of 'swap' precisely so the
+-- @setCouponPricer =<< 'leg' result 0@ ('swapFromLegs' is used instead of 'swap' precisely so the
 -- CMS leg is always leg 0, regardless of 'SwapType') and 'QuantLib.CashFlow.setCouponPricer'
 -- before pricing.
 --
@@ -556,9 +556,9 @@ makeCms (swLen, swUnit) swapIndex iborIndex iborSpread forwardStart mSettlementD
     [] [] [] [] [] False False
   floatLegResult <- iborLeg floatSchedule iborIndex (nominal :| []) floatDayCount floatConv
     [] [] [iborSpread] [] [] False False
-  -- 'swap'' (not 'swap') so the CMS leg is always leg 0 of the result regardless of
+  -- 'swapFromLegs' (not 'swap') so the CMS leg is always leg 0 of the result regardless of
   -- 'SwapType' -- attach a pricer via @setCouponPricer =<< 'leg' result 0@ before pricing.
-  swap' [(cmsLegResult, swapType == Payer), (floatLegResult, swapType == Receiver)]
+  swapFromLegs [(cmsLegResult, swapType == Payer), (floatLegResult, swapType == Receiver)]
 
 -- |The cash flows belonging to the first leg are paid; the ones belonging to the second leg are received.
 {#fun qlSwap as swap{withLeg*`GenLeg l1',withLeg*`GenLeg l2',preErrorCheck-`String'errorCheck*-}->`Swap'peekSwap*#}
@@ -587,9 +587,9 @@ makeCms (swLen, swUnit) swapIndex iborIndex iborSpread forwardStart mSettlementD
   ,preErrorCheck-`String'errorCheck*-}->`ConstNotionalCrossCurrencySwap'peekConstNotionalCrossCurrencySwap*#}
 
 -- |Multi-leg constructor.
-constNotionalCrossCurrencySwap' :: [(Leg, Bool)] -- ^(legs, payer)
+constNotionalCrossCurrencySwapFromLegs :: [(Leg, Bool)] -- ^(legs, payer)
   -> [Currency] -> IO ConstNotionalCrossCurrencySwap
-constNotionalCrossCurrencySwap' legsPayer = qlConstNotionalCrossCurrencySwap1 legs payer
+constNotionalCrossCurrencySwapFromLegs legsPayer = qlConstNotionalCrossCurrencySwap1 legs payer
   where (legs, payer) = unzip legsPayer
 {#fun qlConstNotionalCrossCurrencySwap1{withLegArray*`[Leg]'&,withBoolArray*`[Bool]'&,withCurrencyArray*`[Currency]'&,preErrorCheck-`String'errorCheck*-}->`ConstNotionalCrossCurrencySwap'peekConstNotionalCrossCurrencySwap*#}
 
@@ -770,7 +770,7 @@ instance HasFairSpread ConstNotionalCrossCurrencyFixedVsFloatingSwap where
   ,preErrorCheck-`String'errorCheck*-}->`OvernightIndexedSwap'peekOvernightIndexedSwap*#}
 
 -- |As 'overnightIndexedSwap', but with a per-period nominal schedule instead of a single flat nominal.
-{#fun qlOvernightIndexedSwap1 as overnightIndexedSwap'{`SwapType',withDoubleArray*`[Double]'& -- ^nominals
+{#fun qlOvernightIndexedSwap1 as overnightIndexedSwapWithNominals{`SwapType',withDoubleArray*`[Double]'& -- ^nominals
   ,withSchedule*`Schedule' -- ^schedule
   ,`Double' -- ^fixedRate
   ,withDayCounter*`DayCounter' -- ^fixedDC
@@ -936,7 +936,7 @@ instance HasFairSpread ConstNotionalCrossCurrencyFixedVsFloatingSwap where
   ,preErrorCheck-`String'errorCheck*-}->`ZeroCouponSwap'peekZeroCouponSwap*#}
 
 -- |Zero-coupon swap quoted in terms of a fixed rate.
-{#fun qlZeroCouponSwap1 as zeroCouponSwap'{`SwapType',`Double' -- ^baseNominal
+{#fun qlZeroCouponSwap1 as zeroCouponSwapFromRate{`SwapType',`Double' -- ^baseNominal
   ,withDay*`Day' -- ^startDate
   ,withDay*`Day' -- ^maturityDate
   ,`Double' -- ^fixedRate

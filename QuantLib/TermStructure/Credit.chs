@@ -4,19 +4,19 @@ module QuantLib.TermStructure.Credit
   , DefaultProbabilityTermStructure
   , DefaultProbabilityHelper
   , factorSpreadedHazardRateCurve
-  , flatHazardRate'
+  , flatHazardRateMoving
   , flatHazardRate
   , spreadedHazardRateCurve
   , defaultProbability
-  , hazardRate'
+  , hazardRateAtTime
   , hazardRate
-  , survivalProbability'
+  , survivalProbabilityAtTime
   , survivalProbability
-  , defaultDensity'
+  , defaultDensityAtTime
   , defaultDensity
-  , defaultProbability'
+  , defaultProbabilityAtTime
   , defaultProbabilityBetween
-  , defaultProbabilityBetween'
+  , defaultProbabilityBetweenTimes
   , spreadCdsHelper
   , upfrontCdsHelper
   , defaultProbabilityHelperImpliedQuote
@@ -26,9 +26,9 @@ module QuantLib.TermStructure.Credit
   , IterativeBootstrapOpts(..)
   , defaultIterativeBootstrapOpts
   , piecewiseDefaultCurve
-  , piecewiseDefaultCurve'
+  , piecewiseDefaultCurveMoving
   , piecewiseDefaultCurveFull
-  , piecewiseDefaultCurveFull'
+  , piecewiseDefaultCurveFullMoving
   ) where
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"
@@ -56,7 +56,7 @@ import Data.List.NonEmpty(NonEmpty, toList)
 {#fun qlFactorSpreadedHazardRateCurve as factorSpreadedHazardRateCurve{withGenTermStructure*`DefaultProbabilityTermStructure',withQuote*`GenQuote q',preErrorCheck-`String'errorCheck*-}->`DefaultProbabilityTermStructure'peekDefaultProbabilityTermStructure*#}
 
 -- |flat hazard-rate curve anchored at a settlement date
-{#fun qlFlatHazardRate1 as flatHazardRate'{fromIntegral`Word',withCalendar*`Calendar',withQuote*`GenQuote q',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`DefaultProbabilityTermStructure'peekDefaultProbabilityTermStructure*#}
+{#fun qlFlatHazardRate1 as flatHazardRateMoving{fromIntegral`Word',withCalendar*`Calendar',withQuote*`GenQuote q',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`DefaultProbabilityTermStructure'peekDefaultProbabilityTermStructure*#}
 
 -- |flat hazard-rate curve anchored at a reference date
 {#fun qlFlatHazardRate as flatHazardRate{withDay*`Day',withQuote*`GenQuote q',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`DefaultProbabilityTermStructure'peekDefaultProbabilityTermStructure*#}
@@ -69,7 +69,7 @@ import Data.List.NonEmpty(NonEmpty, toList)
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |hazard rate at a given time, with annual frequency and continuous compounding
-{#fun qlDefaultProbabilityTermStructureHazardRate1 as hazardRate'{withGenTermStructure*`DefaultProbabilityTermStructure',`Double',`Bool' -- ^extrapolate
+{#fun qlDefaultProbabilityTermStructureHazardRate1 as hazardRateAtTime{withGenTermStructure*`DefaultProbabilityTermStructure',`Double',`Bool' -- ^extrapolate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |hazard rate at a given date, with annual frequency and continuous compounding
@@ -77,7 +77,7 @@ import Data.List.NonEmpty(NonEmpty, toList)
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |The same day-counting rule used by the term structure should be used for calculating the passed time t.
-{#fun qlDefaultProbabilityTermStructureSurvivalProbability1 as survivalProbability'{withGenTermStructure*`DefaultProbabilityTermStructure',`Double',`Bool' -- ^extrapolate
+{#fun qlDefaultProbabilityTermStructureSurvivalProbability1 as survivalProbabilityAtTime{withGenTermStructure*`DefaultProbabilityTermStructure',`Double',`Bool' -- ^extrapolate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |survival probability from the reference date until a given date
@@ -85,7 +85,7 @@ import Data.List.NonEmpty(NonEmpty, toList)
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |The same day-counting rule used by the term structure should be used for calculating the passed time t.
-{#fun qlDefaultProbabilityTermStructureDefaultDensity1 as defaultDensity'{withGenTermStructure*`DefaultProbabilityTermStructure',`Double',`Bool' -- ^extrapolate
+{#fun qlDefaultProbabilityTermStructureDefaultDensity1 as defaultDensityAtTime{withGenTermStructure*`DefaultProbabilityTermStructure',`Double',`Bool' -- ^extrapolate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |default density at a given date
@@ -93,7 +93,7 @@ import Data.List.NonEmpty(NonEmpty, toList)
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |The same day-counting rule used by the term structure should be used for calculating the passed time t.
-{#fun qlDefaultProbabilityTermStructureDefaultProbability1 as defaultProbability'{withGenTermStructure*`DefaultProbabilityTermStructure',`Double',`Bool' -- ^extrapolate
+{#fun qlDefaultProbabilityTermStructureDefaultProbability1 as defaultProbabilityAtTime{withGenTermStructure*`DefaultProbabilityTermStructure',`Double',`Bool' -- ^extrapolate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |probability of default between two given dates
@@ -101,7 +101,7 @@ import Data.List.NonEmpty(NonEmpty, toList)
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |probability of default between two given times
-{#fun qlDefaultProbabilityTermStructureDefaultProbability3 as defaultProbabilityBetween'{withGenTermStructure*`DefaultProbabilityTermStructure',`Double',`Double',`Bool' -- ^extrapolate
+{#fun qlDefaultProbabilityTermStructureDefaultProbability3 as defaultProbabilityBetweenTimes{withGenTermStructure*`DefaultProbabilityTermStructure',`Double',`Double',`Bool' -- ^extrapolate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |bootstrap helper for a CDS quoted by running spread
@@ -202,7 +202,7 @@ piecewiseDefaultCurveFull d h dc q t i b =
 
 -- |Default-probability term structure bootstrapped from CDS/default helpers, anchored at a
 -- settlement-days/calendar pair and using QuantLib's default iterative-bootstrap settings.
-piecewiseDefaultCurve' :: Word -- ^settlementDays
+piecewiseDefaultCurveMoving :: Word -- ^settlementDays
   -> Calendar -- ^calendar
   -> NonEmpty DefaultProbabilityHelper -- ^instruments
   -> DayCounter -- ^dayCounter
@@ -210,12 +210,12 @@ piecewiseDefaultCurve' :: Word -- ^settlementDays
   -> ProbabilityTrait -- ^bootstrap trait
   -> Interpolation -- ^interpolator
   -> IO DefaultProbabilityTermStructure
-piecewiseDefaultCurve' d c h dc q t i =
-  piecewiseDefaultCurveFull' d c h dc q t i defaultIterativeBootstrapOpts
+piecewiseDefaultCurveMoving d c h dc q t i =
+  piecewiseDefaultCurveFullMoving d c h dc q t i defaultIterativeBootstrapOpts
 
--- |Like 'piecewiseDefaultCurve'', but exposes every @IterativeBootstrap@ setting. See
+-- |Like 'piecewiseDefaultCurveMoving', but exposes every @IterativeBootstrap@ setting. See
 -- 'piecewiseDefaultCurveFull' for the fallback semantics of 'ibDontThrow'.
-piecewiseDefaultCurveFull' :: Word -- ^settlementDays
+piecewiseDefaultCurveFullMoving :: Word -- ^settlementDays
   -> Calendar -- ^calendar
   -> NonEmpty DefaultProbabilityHelper -- ^instruments
   -> DayCounter -- ^dayCounter
@@ -224,7 +224,7 @@ piecewiseDefaultCurveFull' :: Word -- ^settlementDays
   -> Interpolation -- ^interpolator
   -> IterativeBootstrapOpts -- ^bootstrap settings
   -> IO DefaultProbabilityTermStructure
-piecewiseDefaultCurveFull' d c h dc q t i b =
+piecewiseDefaultCurveFullMoving d c h dc q t i b =
   uncurryNested (piecewiseDefaultCurve1_ d c (toList h) dc qq qd t) (qlInterpolation i)
     (nullableDouble (ibAccuracy b)) (nullableDouble (ibMinValue b)) (nullableDouble (ibMaxValue b))
     (ibMaxAttempts b) (ibMaxFactor b) (ibMinFactor b) (ibDontThrow b) (ibDontThrowSteps b) (ibMaxEvaluations b)

@@ -57,7 +57,7 @@ timesRatesEUR =
   , (50.0466, 0.0450794) ]
 
 -- |Upstream's YoY rates (times = years - 2 month lag; the first is the base rate), used to build
--- the linked 'YoYInflationTermStructure' directly via 'interpolatedYoYInflationCurve' -- these
+-- the linked 'YoYInflationTermStructure' directly via 'interpolatedYoyInflationCurve' -- these
 -- are already-known market YoY levels, not swap quotes to bootstrap from.
 yoyEURrates :: [Double]
 yoyEURrates =
@@ -131,7 +131,7 @@ setup = do
   baseDate <- advance cal eval (-1, Months) Unadjusted False
   capStartDate <- advance cal eval (-2, Months) ModifiedFollowing False
   yoyDates <- (baseDate :) <$> mapM (\n -> advance cal capStartDate (n, Years) ModifiedFollowing False) [1 .. length yoyEURrates - 1]
-  yoyEU <- interpolatedYoYInflationCurve eval (fromList (zip yoyDates yoyEURrates)) Monthly dc Linear
+  yoyEU <- interpolatedYoyInflationCurve eval (fromList (zip yoyDates yoyEURrates)) Monthly dc Linear
 
   zii <- zeroInflationIndex EUHICP
   yoyIndexEU <- yoyInflationIndexFromZero zii (Just yoyEU)
@@ -146,7 +146,7 @@ setup = do
 spec :: Spec
 spec = do
  describe "YoY optionlet stripper (KInterpolatedYoYOptionletVolatilitySurface)" $ do
-  it "interpolatedYoYInflationCurve: a non-Linear interpolation builds and differs between nodes" $ Settings.keepingSettingsGc $ do
+  it "interpolatedYoyInflationCurve: a non-Linear interpolation builds and differs between nodes" $ Settings.keepingSettingsGc $ do
     let eval = 23 `november` 2007
     Settings.setEvaluationDate (Just eval)
     cal <- calendar TARGET
@@ -155,8 +155,8 @@ spec = do
     capStartDate <- advance cal eval (-2, Months) ModifiedFollowing False
     yoyDates <- (baseDate :) <$> mapM (\n -> advance cal capStartDate (n, Years) ModifiedFollowing False) [1 .. length yoyEURrates - 1]
     let mid = addDays 180 (yoyDates !! 1)
-    yoyLinear <- interpolatedYoYInflationCurve eval (fromList (zip yoyDates yoyEURrates)) Monthly dc Linear
-    yoyCubic <- interpolatedYoYInflationCurve eval (fromList (zip yoyDates yoyEURrates)) Monthly dc (Cubic Kruger)
+    yoyLinear <- interpolatedYoyInflationCurve eval (fromList (zip yoyDates yoyEURrates)) Monthly dc Linear
+    yoyCubic <- interpolatedYoyInflationCurve eval (fromList (zip yoyDates yoyEURrates)) Monthly dc (Cubic Kruger)
     rLinear <- yoyRate yoyLinear mid True
     rCubic <- yoyRate yoyCubic mid True
     -- both interpolators agree at the nodes themselves; a mid-node query is where a genuinely
@@ -166,7 +166,7 @@ spec = do
   it "matches an independent C++ reprise of upstream's testYoYPriceSurfaceToVol fixture" $ Settings.keepingSettingsGc $ do
     (_, cal, dc, nominalEUR, yoyIndexEU, priceSurfEU) <- setup
 
-    yoySurf <- kInterpolatedYoYOptionletVolatilitySurfaceUnitDisplacedBlack 0 cal ModifiedFollowing dc
+    yoySurf <- kInterpolatedYoyOptionletVolatilitySurfaceUnitDisplacedBlack 0 cal ModifiedFollowing dc
                  priceSurfEU yoyIndexEU nominalEUR (-0.5) Linear
 
     strikes <- yoyCapFloorStrikes priceSurfEU
@@ -187,27 +187,27 @@ spec = do
   it "recovers upstream's cached ATM YoY swap/inflation curve (testYoYPriceSurfaceToATM)" $ Settings.keepingSettingsGc $ do
     (_, _, _, _, _, priceSurfEU) <- setup
 
-    dateRates <- yoyCapFloorAtmYoYSwapDateRates priceSurfEU
+    dateRates <- yoyCapFloorAtmYoySwapDateRates priceSurfEU
     let eps = 2e-5 :: Double
     zipWithM_ (\(d, r) expected -> do
         abs (r - expected) `shouldSatisfy` (< eps)
-        r2 <- yoyCapFloorAtmYoYSwapRate priceSurfEU d True
+        r2 <- yoyCapFloorAtmYoySwapRate priceSurfEU d True
         abs (r2 - expected) `shouldSatisfy` (< eps)
       ) dateRates atmYoYSwapRates
 
     forM_ (zip (map fst dateRates) atmYoYRates) $ \(d, expected) -> do
-      a <- yoyCapFloorAtmYoYRate priceSurfEU d Nothing True
+      a <- yoyCapFloorAtmYoyRate priceSurfEU d Nothing True
       abs (a - expected) `shouldSatisfy` (< eps)
 
   it "atmYoYSwapTimeRates carries the same rates as atmYoYSwapDateRates" $ Settings.keepingSettingsGc $ do
     (_, _, _, _, _, priceSurfEU) <- setup
-    dateRates <- yoyCapFloorAtmYoYSwapDateRates priceSurfEU
-    timeRates <- yoyCapFloorAtmYoYSwapTimeRates priceSurfEU
+    dateRates <- yoyCapFloorAtmYoySwapDateRates priceSurfEU
+    timeRates <- yoyCapFloorAtmYoySwapTimeRates priceSurfEU
     length timeRates `shouldBe` length dateRates
     zipWithM_ (\(_, r1) (_, r2) -> r1 `shouldBe` r2) dateRates timeRates
 
   -- No second upstream fixture covers a non-(Bicubic, Cubic) combination, so this is a
-  -- construction/sanity check only, same reasoning as the interpolatedYoYInflationCurve
+  -- construction/sanity check only, same reasoning as the interpolatedYoyInflationCurve
   -- spot-check above.
   it "yoyCapFloorTermPriceSurface: a different (Interpolation2D, Interpolation) pair builds and queries" $ Settings.keepingSettingsGc $ do
     let eval = 23 `november` 2007
@@ -218,14 +218,14 @@ spec = do
     baseDate <- advance cal eval (-1, Months) Unadjusted False
     capStartDate <- advance cal eval (-2, Months) ModifiedFollowing False
     yoyDates <- (baseDate :) <$> mapM (\n -> advance cal capStartDate (n, Years) ModifiedFollowing False) [1 .. length yoyEURrates - 1]
-    yoyEU <- interpolatedYoYInflationCurve eval (fromList (zip yoyDates yoyEURrates)) Monthly dc Linear
+    yoyEU <- interpolatedYoyInflationCurve eval (fromList (zip yoyDates yoyEURrates)) Monthly dc Linear
     zii <- zeroInflationIndex EUHICP
     yoyIndexEU <- yoyInflationIndexFromZero zii (Just yoyEU)
 
     priceSurf <- yoyCapFloorTermPriceSurface 0 (3, Months) yoyIndexEU CPILinear nominalEUR dc cal ModifiedFollowing
                    cStrikesEU fStrikesEU cfMaturitiesEU capPricesEU floorPricesEU Bilinear Linear
-    ((rate1st, _):_) <- yoyCapFloorAtmYoYSwapDateRates priceSurf
-    rate <- yoyCapFloorAtmYoYSwapRate priceSurf rate1st True
+    ((rate1st, _):_) <- yoyCapFloorAtmYoySwapDateRates priceSurf
+    rate <- yoyCapFloorAtmYoySwapRate priceSurf rate1st True
     rate `shouldSatisfy` (not . isNaN)
 
   -- No second upstream fixture covers a non-Linear interpolation here, so this is a
@@ -238,10 +238,10 @@ spec = do
   -- Kruger derivative estimate with so few points ("root not bracketed") -- a real numerical
   -- fragility of the bootstrap with this data, not a hasquant bug. BackwardFlat has no derivative
   -- estimation so it bootstraps fine and still exercises a genuinely different interpolator.
-  it "kInterpolatedYoYOptionletVolatilitySurfaceUnitDisplacedBlack: a non-Linear interpolation builds and queries" $ Settings.keepingSettingsGc $ do
+  it "kInterpolatedYoyOptionletVolatilitySurfaceUnitDisplacedBlack: a non-Linear interpolation builds and queries" $ Settings.keepingSettingsGc $ do
     (_, cal, dc, nominalEUR, yoyIndexEU, priceSurfEU) <- setup
 
-    yoySurf <- kInterpolatedYoYOptionletVolatilitySurfaceUnitDisplacedBlack 0 cal ModifiedFollowing dc
+    yoySurf <- kInterpolatedYoyOptionletVolatilitySurfaceUnitDisplacedBlack 0 cal ModifiedFollowing dc
                  priceSurfEU yoyIndexEU nominalEUR (-0.5) BackwardFlat
 
     (strike1st: _) <- yoyCapFloorStrikes priceSurfEU
@@ -251,7 +251,7 @@ spec = do
     vol `shouldSatisfy` (not . isNaN)
 
  -- Ported from test/smoke/CheckInflationVolatility.hs's UnitDisplacedBlack/Bachelier half
- -- (the Black engine + constantYoYOptionletVolatility path is already covered in
+ -- (the Black engine + constantYoyOptionletVolatility path is already covered in
  -- Instrument/InflationCapFloor.hs) -- constructs the two remaining YoY inflation cap/floor
  -- engines against the same constant vol surface, confirming the shim signatures actually work.
  describe "ConstantYoYOptionletVolatility: UnitDisplacedBlack/Bachelier cap/floor engines" $
@@ -261,7 +261,7 @@ spec = do
     dc <- dayCounter Actual365FixedStandard
     cal <- calendar Null
     volQ <- simpleQuote 0.03
-    vol <- constantYoYOptionletVolatility volQ 0 cal Unadjusted dc (0, Months) Monthly False (-1.0) 100.0 ShiftedLognormal 0.0
+    vol <- constantYoyOptionletVolatility volQ 0 cal Unadjusted dc (0, Months) Monthly False (-1.0) 100.0 ShiftedLognormal 0.0
     yii <- yoyInflationIndex YYUKRPI
     addFixing yii (1 `january` 2020) 0.03 False
     nominalQ <- simpleQuote 0.02
@@ -270,17 +270,17 @@ spec = do
     _ <- yoyInflationBachelierCapFloorEngine yii vol nominalCurve
     pure ()
 
- -- Ported from test/smoke/CheckInflationVolatility.hs: ConstantCPIVolatility has no engine/
+ -- Ported from test/smoke/CheckInflationVolatility.hs: ConstantCpiVolatility has no engine/
  -- pricer consuming it in QL 1.43 (see its own haddock in QuantLib.Internal.Type), so this only
  -- exercises construction + query, same as the smoke script did.
- describe "ConstantCPIVolatility" $
+ describe "ConstantCpiVolatility" $
   it "echoes its constant quote via cpiVolatility/cpiTotalVariance" $ Settings.keepingSettingsGc $ do
     evalDate <- today
     Settings.setEvaluationDate (Just evalDate)
     dc <- dayCounter Actual365FixedStandard
     cal <- calendar Null
     cpiVolQ <- simpleQuote 0.04
-    cpiVol <- constantCPIVolatility cpiVolQ 0 cal Unadjusted dc (2, Months) Monthly False
+    cpiVol <- constantCpiVolatility cpiVolQ 0 cal Unadjusted dc (2, Months) Monthly False
     let queryDate = addDays 365 evalDate
     cv <- cpiVolatility cpiVol queryDate 0.03 Nothing True
     cv `shouldSatisfy` closePrec 0.04 1.0e-10

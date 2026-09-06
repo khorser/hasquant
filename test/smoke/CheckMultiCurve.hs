@@ -44,7 +44,7 @@ main = do
   settleFix <- advance cal curveToday (2, Days) Following False
 
   discQ <- Quote.simpleQuote 0.02
-  discountCurve <- flatForward' 0 cal discQ euriborDC IR.Continuous Annual
+  discountCurve <- flatForwardMoving 0 cal discQ euriborDC IR.Continuous Annual
 
   -- 1. One curve through the new GlobalBootstrap dispatch path, standalone (no cycle): a
   -- plain FRA-only curve is enough to exercise qlPiecewiseYieldCurveGlobalBootstrap1 and the
@@ -54,7 +54,7 @@ main = do
   standaloneCurve <- piecewiseYieldCurveMoving 0 cal (fromList standaloneHelpers) euriborDC []
     (GlobalDiscountLogLinear 1.0e-10 []) False
   sixM <- advance cal settleFix (6, Months) ModifiedFollowing True
-  standaloneDiscount <- discount' standaloneCurve sixM False
+  standaloneDiscount <- discountAtDate standaloneCurve sixM False
   checkWith "standalone GlobalBootstrap curve produces a sane discount factor"
             "confirms qlPiecewiseYieldCurveGlobalBootstrap1 actually dispatched, not just linked"
             (standaloneDiscount > 0 && standaloneDiscount < 1)
@@ -70,7 +70,7 @@ main = do
   helpers3mFra <- mapM (\i -> fraRateHelper q i (i + 3) 2 cal ModifiedFollowing True euriborDC LastRelevantDate Nothing False) [1 .. 3]
   helpers3mBasis <- mapM (\i -> iborIborBasisSwapRateHelper b (i, Years) 2 cal ModifiedFollowing True euribor3m euribor6m discountCurve True) [2 .. 4]
   helpers6mBasis <- mapM (\i -> iborIborBasisSwapRateHelper b (i * 6, Months) 2 cal ModifiedFollowing True euribor3m euribor6m discountCurve False) [1 .. 2]
-  helpers6mSwap <- mapM (\i -> swapRateHelper' q (i, Years) cal Annual Following euriborDC euribor6m Nothing (0, Days) (Just discountCurve)
+  helpers6mSwap <- mapM (\i -> swapRateHelperWithConventions q (i, Years) cal Annual Following euriborDC euribor6m Nothing (0, Days) (Just discountCurve)
                                   Nothing LastRelevantDate Nothing False Nothing Nothing Nothing) [2 .. 4]
     >>= mapM asRateHelper
   ptr3m <- piecewiseYieldCurveMoving 0 cal (fromList $ helpers3mFra ++ helpers3mBasis) euriborDC []
@@ -99,8 +99,8 @@ main = do
 
   -- curve3m/curve6m are the external handles addBootstrappedCurve hands back; confirm they're
   -- usable YieldTermStructures independent of the swap check above.
-  d3m <- discount' curve3m maturity False
-  d6m <- discount' curve6m maturity False
+  d3m <- discountAtDate curve3m maturity False
+  d6m <- discountAtDate curve6m maturity False
   checkWith "both external curve handles from the MultiCurve cycle give sane discount factors"
             "d3m/d6m come from addBootstrappedCurve's returned Handle<YieldTermStructure>"
             (d3m > 0 && d3m < 1 && d6m > 0 && d6m < 1)

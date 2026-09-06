@@ -85,28 +85,28 @@ spec = do
     -- test-suite/blackformula.cpp: testRadoicicStefanicaImpliedVol. Same fixture (T=1.7, r=0.1,
     -- forward=100, vol=0.3, the same 11 strikes) and the same 0.02 vol tolerance; the RS
     -- approximation is closed-form, so this is an accuracy bound, not a solver convergence check.
-    it "blackImpliedStdDevApproximationRS recovers the generating vol to upstream's 0.02 tolerance,\
+    it "blackImpliedStdDevApproximationRs recovers the generating vol to upstream's 0.02 tolerance,\
        \ and the payoff overload agrees with the type+strike one" $
       forM_ strikes $ \k -> forM_ types $ \t -> do
         let payoff = PlainVanillaPayoff t k
         mv <- blackFormula t k fwd sd df 0.0
-        mv' <- blackFormula' payoff fwd sd df 0.0
+        mv' <- blackFormulaFromPayoff payoff fwd sd df 0.0
         mv' `shouldBe` mv
-        estSd <- blackImpliedStdDevApproximationRS t k fwd mv df 0.0
-        estSd' <- blackImpliedStdDevApproximationRS' payoff fwd mv df 0.0
+        estSd <- blackImpliedStdDevApproximationRs t k fwd mv df 0.0
+        estSd' <- blackImpliedStdDevApproximationRsFromPayoff payoff fwd mv df 0.0
         estSd' `shouldBe` estSd
         (estSd / sqrt tte) `shouldSatisfy` closePrec vol 0.02
 
     -- test-suite/blackformula.cpp: testRadoicicStefanicaLowerBound, the figure-3.1 sweep from
     -- "Tighter Bounds for Implied Volatility". Two separate claims: the approximation is within
     -- 0.05 of the true stdDev, and (for a non-negligible premium) it is a *lower* bound.
-    it "blackImpliedStdDevApproximationRS stays a lower bound within 0.05 across the\
+    it "blackImpliedStdDevApproximationRs stays a lower bound within 0.05 across the\
        \ Gatheral-Matic-Radoicic-Stefanica sweep" $ do
       let k = 1.2
           strike = exp k * 1.0
       forM_ [0.17, 0.18 .. 2.89 :: Double] $ \s -> do
         c <- blackFormula Call strike 1.0 s 1.0 0.0
-        est <- blackImpliedStdDevApproximationRS Call strike 1.0 c 1.0 0.0
+        est <- blackImpliedStdDevApproximationRs Call strike 1.0 c 1.0 0.0
         est `shouldSatisfy` (not . isNaN)
         (s - est) `shouldSatisfy` (\e -> abs e <= 0.05)
         when (c > 1e-6) $ (s - est) `shouldSatisfy` (>= 0.0)
@@ -114,15 +114,15 @@ spec = do
     -- test-suite/blackformula.cpp: testImpliedVolAdaptiveSuccessiveOverRelaxation. 'Nothing' for
     -- the guess is upstream's Null<Real>(), i.e. "start from the RS approximation"; upstream
     -- allows 10x the requested solver accuracy as the assertion tolerance.
-    it "blackImpliedStdDevLiRS inverts blackFormula to 10x its requested accuracy, over\
+    it "blackImpliedStdDevLiRs inverts blackFormula to 10x its requested accuracy, over\
        \ displacements, and the payoff overload agrees" $ do
       let tol = 1e-8
       forM_ strikes $ \k -> forM_ types $ \t -> forM_ [0.0, 0.01, 0.05 :: Double] $ \displacement -> do
         let payoff = PlainVanillaPayoff t k
-        mv <- blackFormula' payoff fwd sd df displacement
-        impl <- blackImpliedStdDevLiRS' payoff fwd mv df displacement Nothing 1.0 tol 100
+        mv <- blackFormulaFromPayoff payoff fwd sd df displacement
+        impl <- blackImpliedStdDevLiRsFromPayoff payoff fwd mv df displacement Nothing 1.0 tol 100
         impl `shouldSatisfy` closePrec sd (10 * tol)
-        impl2 <- blackImpliedStdDevLiRS t k fwd mv df displacement Nothing 1.0 tol 100
+        impl2 <- blackImpliedStdDevLiRs t k fwd mv df displacement Nothing 1.0 tol 100
         impl2 `shouldSatisfy` closePrec sd (10 * tol)
 
     -- test-suite/blackformula.cpp: testChambersImpliedVol. Chambers-Nawalkha needs the ATM
@@ -143,7 +143,7 @@ spec = do
             premium <- blackFormula t k f s disc displacement
             atmPremium <- blackFormula t f f s disc displacement
             iSd <- blackImpliedStdDevChambers t k f premium atmPremium disc displacement
-            iSd' <- blackImpliedStdDevChambers' payoff f premium atmPremium disc displacement
+            iSd' <- blackImpliedStdDevChambersFromPayoff payoff f premium atmPremium disc displacement
             iSd' `shouldBe` iSd
             let moneyness0 = (k + displacement) / (f + displacement)
                 moneyness = if moneyness0 > 1.0 then 1.0 / moneyness0 else moneyness0
@@ -181,7 +181,7 @@ spec = do
           forM_ ks $ \k -> forM_ types $ \t -> do
             let payoff = PlainVanillaPayoff t k
             d <- blackForwardDerivative t k bfwd bsd bdisc displacement
-            d' <- blackForwardDerivative' payoff bfwd bsd bdisc displacement
+            d' <- blackForwardDerivativeFromPayoff payoff bfwd bsd bdisc displacement
             d' `shouldBe` d
             bd <- blackForwardDerivative t k (bfwd + bump) bsd bdisc displacement
             p0 <- blackFormula t k bfwd bsd bdisc displacement
@@ -189,7 +189,7 @@ spec = do
             brackets d bd ((p1 - p0) / bump) `shouldBe` True
 
             bad <- bachelierForwardDerivative t k bfwd bsd bdisc
-            bad' <- bachelierForwardDerivative' payoff bfwd bsd bdisc
+            bad' <- bachelierForwardDerivativeFromPayoff payoff bfwd bsd bdisc
             bad' `shouldBe` bad
             bbd <- bachelierForwardDerivative t k (bfwd + bump) bsd bdisc
             bp0 <- bachelierBlackFormula t k bfwd bsd bdisc
@@ -205,7 +205,7 @@ spec = do
       forM_ strikes $ \k -> forM_ types $ \t -> do
         let payoff = PlainVanillaPayoff t k
         pa <- blackAssetItmProbability t k fwd sd 0.0
-        pa' <- blackAssetItmProbability' payoff fwd sd 0.0
+        pa' <- blackAssetItmProbabilityFromPayoff payoff fwd sd 0.0
         pa' `shouldBe` pa
         pc <- blackCashItmProbability t k fwd sd 0.0
         premium <- blackFormula t k fwd sd df 0.0
@@ -224,7 +224,7 @@ spec = do
             sign = if t == Call then 1.0 else -1.0
             d = sign * (bfwd - k) / bsd
         pa <- bachelierAssetItmProbability t k bfwd bsd
-        pa' <- bachelierAssetItmProbability' payoff bfwd bsd
+        pa' <- bachelierAssetItmProbabilityFromPayoff payoff bfwd bsd
         pa' `shouldBe` pa
         prem <- bachelierBlackFormula t k bfwd bsd bdisc
         (bdisc * (sign * (bfwd - k) * pa + bsd * normalPdf d)) `shouldSatisfy` closePrec prem 1e-14
@@ -243,14 +243,14 @@ spec = do
       forM_ strikes $ \k -> do
         let payoff = PlainVanillaPayoff Call k
         d1v <- blackStdDevDerivative k fwd sd df 0.0
-        d1v' <- blackStdDevDerivative' payoff fwd sd df 0.0
+        d1v' <- blackStdDevDerivativeFromPayoff payoff fwd sd df 0.0
         d1v' `shouldBe` d1v
         pUp <- blackFormula Call k fwd (sd + h) df 0.0
         pDn <- blackFormula Call k fwd (sd - h) df 0.0
         d1v `shouldSatisfy` closePrec ((pUp - pDn) / (2 * h)) (1e-6 * max 1 (abs d1v))
 
         d2v <- blackStdDevSecondDerivative k fwd sd df 0.0
-        d2v' <- blackStdDevSecondDerivative' payoff fwd sd df 0.0
+        d2v' <- blackStdDevSecondDerivativeFromPayoff payoff fwd sd df 0.0
         d2v' `shouldBe` d2v
         dUp <- blackStdDevDerivative k fwd (sd + h) df 0.0
         dDn <- blackStdDevDerivative k fwd (sd - h) df 0.0
@@ -260,7 +260,7 @@ spec = do
         volD `shouldSatisfy` closePrec (sqrt tte * d1v) (1e-9 * max 1 (abs volD))
 
         bd <- bachelierStdDevDerivative k fwd sd df
-        bd' <- bachelierStdDevDerivative' payoff fwd sd df
+        bd' <- bachelierStdDevDerivativeFromPayoff payoff fwd sd df
         bd' `shouldBe` bd
         bUp <- bachelierBlackFormula Call k fwd (sd + h) df
         bDn <- bachelierBlackFormula Call k fwd (sd - h) df
@@ -279,10 +279,10 @@ spec = do
         mv <- blackFormula t k fwd sd df 0.0
         impl <- blackImpliedStdDev t k fwd mv df 0.0 sd 1e-10 100
         impl `shouldSatisfy` closePrec sd 1e-8
-        impl' <- blackImpliedStdDev' payoff fwd mv df 0.0 sd 1e-10 100
+        impl' <- blackImpliedStdDevFromPayoff payoff fwd mv df 0.0 sd 1e-10 100
         impl' `shouldSatisfy` closePrec sd 1e-8
         appr <- blackImpliedStdDevApproximation t k fwd mv df 0.0
-        appr' <- blackImpliedStdDevApproximation' payoff fwd mv df 0.0
+        appr' <- blackImpliedStdDevApproximationFromPayoff payoff fwd mv df 0.0
         appr' `shouldBe` appr
         appr `shouldSatisfy` (\v -> v > 0 && not (isNaN v) && not (isInfinite v))
         when (k >= 80 && k <= 125) $ (appr / sqrt tte) `shouldSatisfy` closePrec vol 0.01
@@ -293,10 +293,10 @@ spec = do
 
     it "BlackCalculator: ctors agree, put-call parity holds, Call/Put share second-order greeks,\
        \ value matches blackFormula, vanna/volga match their closed forms" $ do
-      callBC <- blackCalculator' Call strike forward stdDev disc
-      putBC <- blackCalculator' Put strike forward stdDev disc
-      callBC2 <- blackCalculator (PlainVanilla (PlainVanillaPayoff Call strike)) forward stdDev disc
-      putBC2 <- blackCalculator (PlainVanilla (PlainVanillaPayoff Put strike)) forward stdDev disc
+      callBC <- blackCalculator Call strike forward stdDev disc
+      putBC <- blackCalculator Put strike forward stdDev disc
+      callBC2 <- blackCalculatorFromPayoff (PlainVanilla (PlainVanillaPayoff Call strike)) forward stdDev disc
+      putBC2 <- blackCalculatorFromPayoff (PlainVanilla (PlainVanillaPayoff Put strike)) forward stdDev disc
 
       callVal <- value callBC
       callVal2 <- value callBC2
@@ -332,12 +332,12 @@ spec = do
     it "BlackScholesCalculator: ctors agree, inherited GenBlackCalculator methods match the\
        \ equivalent BlackCalculator exactly, and its own no-spot overrides match BlackCalculator's\
        \ spot-taking versions at its stored spot" $ do
-      callBC <- blackCalculator' Call strike forward stdDev disc
+      callBC <- blackCalculator Call strike forward stdDev disc
       callVal <- value callBC
       let growth = 1.0
           bscSpot = forward * disc / growth
-      callBSC <- blackScholesCalculator' Call strike bscSpot growth stdDev disc
-      callBSC2 <- blackScholesCalculator (PlainVanilla (PlainVanillaPayoff Call strike)) bscSpot growth stdDev disc
+      callBSC <- blackScholesCalculator Call strike bscSpot growth stdDev disc
+      callBSC2 <- blackScholesCalculatorFromPayoff (PlainVanilla (PlainVanillaPayoff Call strike)) bscSpot growth stdDev disc
       callBSCVal <- Calc.value callBSC
       callBSCVal2 <- Calc.value callBSC2
       callBSCVal2 `shouldBe` callBSCVal
@@ -386,10 +386,10 @@ spec = do
       -- forward/strike spread is needed or every second-order greek degenerates to ~1e-87
       -- in the tail, passing every check without exercising the formula.
       let bachelierStdDev = 8.0
-      callNC <- bachelierCalculator' Call strike forward bachelierStdDev disc
-      putNC <- bachelierCalculator' Put strike forward bachelierStdDev disc
-      callNC2 <- bachelierCalculator (PlainVanilla (PlainVanillaPayoff Call strike)) forward bachelierStdDev disc
-      putNC2 <- bachelierCalculator (PlainVanilla (PlainVanillaPayoff Put strike)) forward bachelierStdDev disc
+      callNC <- bachelierCalculator Call strike forward bachelierStdDev disc
+      putNC <- bachelierCalculator Put strike forward bachelierStdDev disc
+      callNC2 <- bachelierCalculatorFromPayoff (PlainVanilla (PlainVanillaPayoff Call strike)) forward bachelierStdDev disc
+      putNC2 <- bachelierCalculatorFromPayoff (PlainVanilla (PlainVanillaPayoff Put strike)) forward bachelierStdDev disc
 
       callNVal <- Calc.value callNC
       callNVal2 <- Calc.value callNC2
@@ -452,7 +452,7 @@ spec = do
         volAtAtm2 <- smileSectionVolatility volNormal forward
         volAtAtm1 `shouldNotBe` volAtAtm2
 
-    it "SabrSmileSection'/NoArbSabrSmileSection(') Date- and Time-based ctors agree, and NoArb\
+    it "SabrSmileSection/NoArbSabrSmileSection Date- and Time-based ctors agree, and NoArb\
        \ differs from the plain SabrSmileSection" $
       Settings.keepingSettingsGc $ do
         refDate <- today
@@ -463,14 +463,14 @@ spec = do
         act365 <- dayCounter Actual365FixedStandard
 
         sectionByTime <- sabrSmileSection expiryFromDays forward alpha_ beta_ nu rho_ shift ShiftedLognormal
-        sectionByDate <- sabrSmileSection' optionDate forward alpha_ beta_ nu rho_ (Just refDate) act365 shift ShiftedLognormal
+        sectionByDate <- sabrSmileSectionAtDate optionDate forward alpha_ beta_ nu rho_ (Just refDate) act365 shift ShiftedLognormal
         forM_ [0.01, 0.02, 0.03, 0.04, 0.05 :: Double] $ \strike -> do
           volT <- smileSectionVolatility sectionByTime strike
           volD <- smileSectionVolatility sectionByDate strike
           volD `shouldSatisfy` closePrec volT 1e-12
 
         noArbByTime <- noArbSabrSmileSection expiryFromDays forward alpha_ beta_ nu rho_ shift ShiftedLognormal
-        noArbByDate <- noArbSabrSmileSection' optionDate forward alpha_ beta_ nu rho_ act365 shift ShiftedLognormal
+        noArbByDate <- noArbSabrSmileSectionAtDate optionDate forward alpha_ beta_ nu rho_ act365 shift ShiftedLognormal
         differences <- forM [0.01, 0.02, 0.03, 0.04, 0.05 :: Double] $ \strike -> do
           volT <- smileSectionVolatility noArbByTime strike
           volD <- smileSectionVolatility noArbByDate strike
@@ -581,7 +581,7 @@ spec = do
         Settings.setEvaluationDate (Just refDate)
         optionDate <- addPeriod refDate (round (5.0 * 365 :: Double) :: Int, Days)
         act365 <- dayCounter Actual365FixedStandard
-        generating <- noArbSabrSmileSection' optionDate forward alpha_ beta_ nu rho_ act365 0 ShiftedLognormal
+        generating <- noArbSabrSmileSectionAtDate optionDate forward alpha_ beta_ nu rho_ act365 0 ShiftedLognormal
         refVols <- mapM (smileSectionVolatility generating) strikes
         atmVol <- smileSectionVolatility generating forward
 
@@ -923,7 +923,7 @@ spec = do
   -- digitaloption.cpp's testCashAtExpiryOrNothingAmericanValues and
   -- testAssetAtExpiryOrNothingAmericanValues, on a payoff-at-expiry American exercise --
   -- knockin picks AnalyticDigitalAmericanEngine vs. AnalyticDigitalAmericanKOEngine.
-  describe "AnalyticDigitalAmericanEngine / AnalyticDigitalAmericanKOEngine" $ do
+  describe "AnalyticDigitalAmericanEngine / AnalyticDigitalAmericanKoEngine" $ do
     let today' = 28 `august` 2026
         priceCase mkPayoff (ty, strike, spot, q, r, tDays, vol, knockIn, _expected) =
           Settings.keepingSettingsGc $ do
@@ -934,12 +934,12 @@ spec = do
             qQ <- simpleQuote q
             rQ <- simpleQuote r
             volQ <- simpleQuote vol
-            qTS <- flatForward' 0 cal qQ dc Continuous Annual
-            rTS <- flatForward' 0 cal rQ dc Continuous Annual
-            volTS <- blackConstantVol' 0 cal volQ dc
+            qTS <- flatForwardMoving 0 cal qQ dc Continuous Annual
+            rTS <- flatForwardMoving 0 cal rQ dc Continuous Annual
+            volTS <- blackConstantVolMoving 0 cal volQ dc
             process <- blackScholesMertonProcess spotQ qTS rTS volTS EulerDiscretization False
             engine <- if knockIn then analyticDigitalAmericanEngine process
-                                  else analyticDigitalAmericanKOEngine process
+                                  else analyticDigitalAmericanKoEngine process
             let exDate = addDays tDays today'
             opt <- europeanOption (mkPayoff ty strike) (American Nothing exDate True)
               >>= asOneAssetOption >>= asOption >>= asInstrument
@@ -1120,11 +1120,11 @@ spec = do
         fxRateQ <- simpleQuote (0.0 :: Double)
         fxVolQ <- simpleQuote (0.0 :: Double)
         corrQ <- simpleQuote (0.0 :: Double)
-        qTS <- flatForward' 0 tgt qRateQ dc Continuous Annual
-        rTS <- flatForward' 0 tgt rRateQ dc Continuous Annual
-        volTS <- blackConstantVol' 0 tgt volQ dc
-        fxrTS <- flatForward' 0 tgt fxRateQ dc Continuous Annual
-        fxVolTS <- blackConstantVol' 0 tgt fxVolQ dc
+        qTS <- flatForwardMoving 0 tgt qRateQ dc Continuous Annual
+        rTS <- flatForwardMoving 0 tgt rRateQ dc Continuous Annual
+        volTS <- blackConstantVolMoving 0 tgt volQ dc
+        fxrTS <- flatForwardMoving 0 tgt fxRateQ dc Continuous Annual
+        fxVolTS <- blackConstantVolMoving 0 tgt fxVolQ dc
         proc <- blackScholesMertonProcess spotQ qTS rTS volTS EulerDiscretization False
         engine <- quantoEuropeanEngine proc fxrTS fxVolTS corrQ
         let u = 100.0 :: Double
@@ -1262,11 +1262,11 @@ spec = do
         fxRateQ <- simpleQuote (0.0 :: Double)
         fxVolQ <- simpleQuote (0.0 :: Double)
         corrQ <- simpleQuote (0.0 :: Double)
-        qTS <- flatForward' 0 tgt qRateQ dc Continuous Annual
-        rTS <- flatForward' 0 tgt rRateQ dc Continuous Annual
-        volTS <- blackConstantVol' 0 tgt volQ dc
-        fxrTS <- flatForward' 0 tgt fxRateQ dc Continuous Annual
-        fxVolTS <- blackConstantVol' 0 tgt fxVolQ dc
+        qTS <- flatForwardMoving 0 tgt qRateQ dc Continuous Annual
+        rTS <- flatForwardMoving 0 tgt rRateQ dc Continuous Annual
+        volTS <- blackConstantVolMoving 0 tgt volQ dc
+        fxrTS <- flatForwardMoving 0 tgt fxRateQ dc Continuous Annual
+        fxVolTS <- blackConstantVolMoving 0 tgt fxVolQ dc
         proc <- blackScholesMertonProcess spotQ qTS rTS volTS EulerDiscretization False
         engine <- quantoForwardEuropeanEngine proc fxrTS fxVolTS corrQ
         let u = 100.0 :: Double
@@ -1684,7 +1684,7 @@ spec = do
 
         swapBase <- IR.liborSwapIndex IR.EuriborSwapIsdaFixA (10, Years) (Just ts) (Just ts)
         swaptionVolQ <- simpleQuote 0.20
-        swaptionVol <- constantSwaptionVolatility' evalDate cal ModifiedFollowing swaptionVolQ dc365 ShiftedLognormal 0.0
+        swaptionVol <- constantSwaptionVolatility evalDate cal ModifiedFollowing swaptionVolQ dc365 ShiftedLognormal 0.0
         cmsExpiries <- mapM (\n -> advance cal evalDate (n, Years) Following False) [1, 2, 3 :: Int]
         markov <- markovFunctional ts 0.01 0.01 [] swaptionVol (fromList $ zip cmsExpiries $ replicate 3 (10, Years)) swapBase 16
         markovVols <- volatilities markov
@@ -1697,10 +1697,10 @@ spec = do
 
         capletExpiries <- CF.toCouponLeg floatLeg >>= CF.couponAccrualStartDates
         capletVolQ <- simpleQuote 0.20
-        capletVol <- constantOptionletVolatility' 0 cal ModifiedFollowing capletVolQ dc365 ShiftedLognormal 0.0
+        capletVol <- constantOptionletVolatilityMoving 0 cal ModifiedFollowing capletVolQ dc365 ShiftedLognormal 0.0
         markovCaplet <- markovFunctionalCaplet ts 0.01 0.01 [] capletVol (fromList capletExpiries) euribor6m 16
         markovCapletModel <- markovFunctionalAsGaussian1dModel markovCaplet
-        blackEngine <- blackCapFloorEngine' ts capletVol
+        blackEngine <- blackCapFloorEngineWithVolatilityStructure ts capletVol
         setPricingEngine capfl blackEngine
         blackNpv <- npv capfl
         markovCapletEngine <- gaussian1dCapFloorEngine markovCapletModel 64 7.0 True False (Just ts)
@@ -2054,7 +2054,7 @@ spec = do
         callOpt <- basketOption (Spread (plainVanillaPayoff (PlainVanillaPayoff Call spreadStrike))) (European (EuropeanExercise maturity))
         setPricingEngine callOpt bjEngine
         callNPV <- npv callOpt
-        df <- discount' rTS maturity False
+        df <- discountAtDate rTS maturity False
         ((callNPV - putNPV) / df) `shouldSatisfy` closePrec (f1 - f2 - spreadStrike) 1.0e-3
 
     it "testOperatorSplittingSpreadEngine: reproduces the full Kirk-vs-Strang(First/Second) rho table" $
@@ -2072,9 +2072,9 @@ spec = do
         dq2Q <- simpleQuote 0.02
         dq1TS <- flatForward evalDate dq1Q dc Continuous Annual
         dq2TS <- flatForward evalDate dq2Q dc Continuous Annual
-        dfR <- discount' rTS maturity False
-        dq1 <- discount' dq1TS maturity False
-        dq2 <- discount' dq2TS maturity False
+        dfR <- discountAtDate rTS maturity False
+        dq1 <- discountAtDate dq1TS maturity False
+        dq2 <- discountAtDate dq2TS maturity False
         let f1' = 110 * dq1 / dfR
             f2' = 90 * dq2 / dfR
         v1Q' <- simpleQuote 0.3
@@ -2144,7 +2144,7 @@ spec = do
                 [(Double, Double, Double, Double, Double, Double, Double)]
         forM_ rows $ \(t, strike, vol1, rho_, kirkNPV, strang1, strang2) -> do
           let maturityDate = addDays (round (t * 365 :: Double)) evalDate
-          dr <- discount' rTS maturityDate False
+          dr <- discountAtDate rTS maturityDate False
           let f1 = s1 / dr
               f2 = s2 / dr
           vol1TS <- simpleQuote vol1 >>= \vQ -> blackConstantVol evalDate cal vQ dc
@@ -2318,9 +2318,9 @@ spec = do
         dq2Q <- simpleQuote 0.02
         dq1TS <- flatForward evalDate dq1Q dc Continuous Annual
         dq2TS <- flatForward evalDate dq2Q dc Continuous Annual
-        dfR <- discount' rTS maturity False
-        dq1 <- discount' dq1TS maturity False
-        dq2 <- discount' dq2TS maturity False
+        dfR <- discountAtDate rTS maturity False
+        dq1 <- discountAtDate dq1TS maturity False
+        dq2 <- discountAtDate dq2TS maturity False
         let f1' = 110 * dq1 / dfR
             f2' = 90 * dq2 / dfR
         v1Q' <- simpleQuote 0.3
@@ -2593,8 +2593,8 @@ spec = do
         setPricingEngine shoutOpt shoutEngine
         shoutNPV <- npv shoutInst
 
-        rMaturityDf <- discount' rTS maturity True
-        rDivDateDf <- discount' rTS divDate True
+        rMaturityDf <- discountAtDate rTS maturity True
+        rDivDateDf <- discountAtDate rTS divDate True
         let df = rMaturityDf / rDivDateDf
         (shoutNPV / df) `shouldSatisfy` closePrec americanNPV 1.0e-3
 
@@ -2629,8 +2629,8 @@ spec = do
         setPricingEngine refOpt refEngine
         refNPV <- npv refInst
 
-        rMaturityDf <- discount' rTS maturity True
-        rDivDateDf <- discount' rTS divDate True
+        rMaturityDf <- discountAtDate rTS maturity True
+        rDivDateDf <- discountAtDate rTS divDate True
         let expected = refNPV * rMaturityDf / rDivDateDf
         calculated `shouldSatisfy` closePrec expected 5.0e-2
 

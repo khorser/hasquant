@@ -40,8 +40,8 @@ data Result = Result
   , yieldFromCleanPriceR :: Double
   , nextCouponDate :: (Day, Day, Day)
   , tradable :: (Bool, Bool, Bool)
-  , cfnpvR :: Double
-  , cfnpvbpsR :: (Double, Double)
+  , cfNpvR :: Double
+  , cfNpvBpsR :: (Double, Double)
   , bpsR :: Double
   }
 
@@ -191,7 +191,7 @@ buildBonds md = do
     mapM (\(q, n) ->
       do
         quote <- simpleQuote q
-        swapRateHelper' quote (n, Years) (targetCal md) Annual Unadjusted
+        swapRateHelperWithConventions quote (n, Years) (targetCal md) Annual Unadjusted
                               (thirty360Europeandc md) eur6M Nothing (1, Days) Nothing
                               Nothing LastRelevantDate Nothing False Nothing Nothing Nothing >>= asRateHelper) $
           zip liborSwapQuotes liborSwapTerms
@@ -233,7 +233,7 @@ buildBonds md = do
                                    (Just $ fromGregorian 2005 10 21)
                                    (0, Days) (nyseCal md) Unadjusted False ModifiedFollowing
   volval <- simpleQuote 0
-  vol <- constantOptionletVolatility'
+  vol <- constantOptionletVolatilityMoving
           settlementDays (targetCal md) ModifiedFollowing volval (actual365Fixeddc md) ShiftedLognormal 0.0
   cf <- cashFlows floater
   CF.blackIborCouponPricer vol CF.Black76 Nothing Nothing >>= CF.setCouponPricer cf
@@ -285,8 +285,8 @@ priceBonds md pricing allBonds@(fixedBond, _, floater) = do
     , cleanPriceFromYieldR = fCleanFromYield
     , yieldFromCleanPriceR = fYieldFromClean
     , tradable = bTradable
-    , cfnpvR = cfnpv
-    , cfnpvbpsR = cfnpvbps
+    , cfNpvR = cfnpv
+    , cfNpvBpsR = cfnpvbps
     , bpsR = bbps
     }
 

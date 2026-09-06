@@ -46,8 +46,8 @@ main = do
   -- two constructions are actually distinguishable -- proof SimpleZeroYield's branch dispatched
   -- to a genuinely different CurveType, not a mis-numbered alias of Discount's.
   midPillar <- advance cal curveToday (75, Days) ModifiedFollowing True
-  dDiscount <- discount' discountCurve midPillar False
-  dZero <- discount' zeroCurve midPillar False
+  dDiscount <- discountAtDate discountCurve midPillar False
+  dZero <- discountAtDate zeroCurve midPillar False
 
   checkWith "SimpleZeroYield GlobalBootstrap curve produces a sane discount factor"
             "confirms qlPiecewiseYieldCurveGlobalBootstrap2 actually dispatched, not just linked"

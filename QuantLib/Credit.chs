@@ -34,7 +34,7 @@ module QuantLib.Credit
   , basketProbAtLeastNEvents
 
   , DefaultLossModel
-  , gaussianLHPLossModel
+  , gaussianLhpLossModel
 
   , DigitalLossModel
   , constantLossModel
@@ -176,8 +176,8 @@ digitalBasket refDate positions p attachmentRatio detachmentRatio cl lm =
   ,preErrorCheck-`String'errorCheck*-}->`DigitalBasket'peekDigitalBasket*#}
 
 -- |One-factor Gaussian-copula LHP loss model. @recoveries@ follow basket-name order.
-gaussianLHPLossModel :: GenQuote q -> NonEmpty Double -> IO DefaultLossModel
-gaussianLHPLossModel correlQuote recoveries = qlGaussianLHPLossModel correlQuote (toList recoveries)
+gaussianLhpLossModel :: GenQuote q -> NonEmpty Double -> IO DefaultLossModel
+gaussianLhpLossModel correlQuote recoveries = qlGaussianLHPLossModel correlQuote (toList recoveries)
 {#fun qlGaussianLHPLossModel{withQuote*`GenQuote q' -- ^correlQuote
   ,withDoubleArray*`[Double]'&
   ,preErrorCheck-`String'errorCheck*-}->`DefaultLossModel'peekDefaultLossModel*#}

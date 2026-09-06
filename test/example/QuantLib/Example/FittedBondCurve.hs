@@ -55,7 +55,7 @@ run = do
   (rates3, ts00, curves3) <- step3 newtod dc cal newBondSettle iA iB
   mapM_ (\(price, q, i) -> do
       b <- TS.bondHelperBond i
-      ytm <- yieldFromPrice' b (price, Clean) dc IR.Compounded Annual newtod 1e-10 100 0.05
+      ytm <- yieldFromPriceWithGuess b (price, Clean) dc IR.Compounded Annual newtod 1e-10 100 0.05
       ytmRate <- IR.interestRate ytm dc IR.Compounded Annual
       dur <- duration b ytmRate CF.Modified newtod
       let dp = -dur * price * 5 / 10000
@@ -80,11 +80,11 @@ run = do
     parRate ts ds dc = do
       dfs <- mapM (\(d1, d2) -> do
               dt <- years dc d1 d2 Nothing Nothing
-              df <- TS.discount' ts d2 False
+              df <- TS.discountAtDate ts d2 False
               return $ df * dt) $
                 zip (init ds) (tail ds)
-      df1 <- TS.discount' ts (head ds) False
-      df2 <- TS.discount' ts (last ds) False
+      df1 <- TS.discountAtDate ts (head ds) False
+      df2 <- TS.discountAtDate ts (last ds) False
       return $ 100.0 * (df1 - df2) / sum dfs
 
     rates :: TS.YieldTermStructure -> DayCounter -> Day -> Day -> [TS.FittedBondDiscountCurve] -> [TS.BondHelper] -> IO Rate
@@ -103,7 +103,7 @@ run = do
               cfDates = bondSettle :| ds
           m <- years dc evalDate (maximum cfDates) Nothing Nothing
           r1 <- parRate ts0 cfDates dc
-          r2 <- forM curves $ $(free1st' 3) parRate cfDates dc --before the migration off type classes an implicit cast to YieldTermStructure was needed
+          r2 <- forM curves $ $(free1stWithArity 3) parRate cfDates dc --before the migration off type classes an implicit cast to YieldTermStructure was needed
           return (m, r1:r2)
       let (tenors, rs) = unzip r
       return Rate {refDateR = refDate, numIterR = numIter, tenorsR = tenors, ratesR = rs}
@@ -154,7 +154,7 @@ run = do
     -- Keep the fixture in one place. Results depend on QLC's optimization options.
     fitCurves :: Calendar -> DayCounter -> [TS.BondHelper] -> IO [TS.FittedBondDiscountCurve]
     fitCurves cal dc instr = mapM
-        (\f -> TS.fittedBondDiscountCurve curveSettleDays cal (fromList instr) dc f tolerance maxEvals [] 1.0)
+        (\f -> TS.fittedBondDiscountCurveMoving curveSettleDays cal (fromList instr) dc f tolerance maxEvals [] 1.0)
         fittings
       where
         noCutoff = 1.0e6 :: Double -- stands in for QuantLib's QL_MAX_REAL default (effectively "no cutoff")

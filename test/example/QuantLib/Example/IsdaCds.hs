@@ -27,7 +27,7 @@ newtype Result = Result { conventionalUpfrontR :: Double }
 -- against a cached Markit-published upfront value rather than a self-consistency check.
 -- All builder defaults below are transcribed from @ql\/instruments\/makecds.cpp@'s
 -- @MakeCreditDefaultSwap@ (both trades there go through the upfront+running-spread
--- constructor, hence 'creditDefaultSwap'' rather than 'creditDefaultSwap').
+-- constructor, hence 'creditDefaultSwapWithUpfront' rather than 'creditDefaultSwap').
 run :: IO Result
 run = do
   weekendsOnly <- calendar WeekendsOnly
@@ -52,7 +52,7 @@ run = do
       swapQuotes = [ 0.011907, 0.01699, 0.021198, 0.02444, 0.026937, 0.028967, 0.030504
                    , 0.031719, 0.03279, 0.034535, 0.036217, 0.036981, 0.037246, 0.037605 ]
   swapHelpers <- mapM
-    (\(t, q) -> simpleQuote q >>= \sq -> swapRateHelper' sq (t, Years) weekendsOnly Semiannual ModifiedFollowing
+    (\(t, q) -> simpleQuote q >>= \sq -> swapRateHelperWithConventions sq (t, Years) weekendsOnly Semiannual ModifiedFollowing
         thirty360bb isdaIbor Nothing (0, Days) Nothing Nothing LastRelevantDate Nothing False Nothing Nothing Nothing)
     (zip swapTenors swapQuotes)
 
@@ -68,16 +68,16 @@ run = do
   upfrontDate <- advance weekendsOnly tradeDate (3, Days) Following False
   sched <- schedule (Just protectionStart) termDate (3, Months) weekendsOnly Following Unadjusted CDS False Nothing Nothing
 
-  quotedTrade <- creditDefaultSwap' Buyer notional 0.0 spread sched Following act360 True True
+  quotedTrade <- creditDefaultSwapWithUpfront Buyer notional 0.0 spread sched Following act360 True True
     (Just protectionStart) (Just upfrontDate) FaceValue act360IncludeLast True (Just tradeDate) 3
 
   h <- impliedHazardRate quotedTrade 0.0 discountCurve act365Fixed recovery 1e-10 ISDA
   hq <- simpleQuote h
-  probabilityCurve <- flatHazardRate' 0 weekendsOnly hq act365Fixed
+  probabilityCurve <- flatHazardRateMoving 0 weekendsOnly hq act365Fixed
 
   engine <- isdaCdsEngine probabilityCurve recovery discountCurve Nothing NumericalFixTaylor HalfDayBias Piecewise
 
-  conventionalTrade <- creditDefaultSwap' Buyer notional 0.0 0.01 sched Following act360 True True
+  conventionalTrade <- creditDefaultSwapWithUpfront Buyer notional 0.0 0.01 sched Following act360 True True
     (Just protectionStart) (Just upfrontDate) FaceValue act360IncludeLast True (Just tradeDate) 3
   asInstrument conventionalTrade >>= (`setPricingEngine` engine)
   upfront <- fairUpfront conventionalTrade

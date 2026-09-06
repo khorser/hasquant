@@ -98,7 +98,7 @@ run = do
   euribor6m <- IR.iborIndex IR.Euribor6M (Just yts6m)
 
   volQuote <- simpleQuote volLevel
-  swaptionVol <- constantSwaptionVolatility 0 cal ModifiedFollowing volQuote dc365 ShiftedLognormal 0.0
+  swaptionVol <- constantSwaptionVolatilityMoving 0 cal ModifiedFollowing volQuote dc365 ShiftedLognormal 0.0
 
   effectiveDate <- advance cal refDate (2, Days) Following False
   maturity <- advance cal effectiveDate (10, Years) Following False
@@ -182,7 +182,7 @@ run = do
 
   -- 4. CMS 10y vs Euribor 6m float-float swaption, exercisable yearly.
   underlying4 <- floatFloatSwap Payer 1.0 1.0 fixedSchedule swapBase thirty360bb floatSchedule euribor6m act360
-    defaultFloatFloatSwapOpts{ffsSpread2 = 0.0010}
+    defaultFloatFloatSwapOpts{ffsSecondLegSpread = 0.0010}
   swaption4 <- floatFloatSwaption underlying4 ex Physical PhysicalOTC
   floatSwaptionEngine <- gaussian1dFloatFloatSwaptionEngine gsrGm 64 7.0 True False Nothing (Just ytsOis) True None
   setPricingEngine swaption4 floatSwaptionEngine

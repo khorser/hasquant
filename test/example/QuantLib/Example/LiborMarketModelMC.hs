@@ -28,7 +28,7 @@ import qualified Data.Vector.Storable as V
 import QuantLib.Index.InterestRate(iborIndex, IborConstructor(..))
 import qualified QuantLib.Index.InterestRate as Ibor(fixingDays)
 import QuantLib.InterestRate(VolatilityType(..))
-import QuantLib.Math(SobolDirectionIntegers(..), Interpolation(..), timeGridFromVector', nonEmptyVector, points, boxedRealMatrix)
+import QuantLib.Math(SobolDirectionIntegers(..), Interpolation(..), timeGridFromVectorWithSteps, nonEmptyVector, points, boxedRealMatrix)
 import QuantLib.Method(sobolPathGenerator, next, asset)
 import QuantLib.Model(lfmHullWhiteParameterization, setCovarParam)
 import QuantLib.Process(liborForwardModelProcess, fixingDates
@@ -73,7 +73,7 @@ run = Settings.keepingSettingsGc $ do
 
   resetTimes <- fixingTimes process
   accruals <- accrualTimes process
-  grid <- timeGridFromVector' (fromMaybe (error "empty fixing times") (nonEmptyVector (V.fromList resetTimes))) 12
+  grid <- timeGridFromVectorWithSteps (fromMaybe (error "empty fixing times") (nonEmptyVector (V.fromList resetTimes))) 12
   gridPts <- points grid
   -- each rate is read at its own fixing time's index in the grid, as upstream's `location` does
   let location = [fromMaybe (error "fixing time not on grid") (V.findIndex (== t) gridPts) | t <- resetTimes]

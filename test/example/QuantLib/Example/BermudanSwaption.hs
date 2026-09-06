@@ -90,7 +90,7 @@ run = do
   fixedATMRate <- fairRate swp
   (swaptionHelpers, tms) <- mapAndUnzipM (createHelpers index6m ts) calibrationGrid
   swaptions <- mapM Model.asBlackCalibrationHelper swaptionHelpers
-  grid <- maybe (fail "BermudanSwaption: empty calibration grid") (`timeGridFromVector'` 30) (nonEmptyVector (V.fromList (concat tms)))
+  grid <- maybe (fail "BermudanSwaption: empty calibration grid") (`timeGridFromVectorWithSteps` 30) (nonEmptyVector (V.fromList (concat tms)))
 
   (modelG2, g2v, g2p) <- calibrateShortRateModel
     (Model.g2 ts 0.1 0.01 0.1 0.01 (-0.75))

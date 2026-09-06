@@ -35,7 +35,7 @@ main = do
   cal <- calendar TARGET
   actual360dc <- dayCounter (Actual360 False)
   flatRate <- Quote.simpleQuote 0.03
-  base <- flatForward' 2 cal flatRate actual360dc IR.Continuous Annual
+  base <- flatForwardMoving 2 cal flatRate actual360dc IR.Continuous Annual
   refDate <- asTermStructure base >>= referenceDate
 
   -- 1. ultimateForwardTermStructure: below the first smoothing point (fsp) it must reproduce
@@ -45,8 +45,8 @@ main = do
   let fsp = (10, Years)
       cutOffDate = addYears 10 refDate
   ufrTs <- ultimateForwardTermStructure base llfr ufr fsp 0.1 Nothing IR.Compounded Annual
-  baseZero <- IR.rate <$> zeroRate' base cutOffDate actual360dc IR.Continuous NoFrequency True
-  ufrZero <- IR.rate <$> zeroRate' ufrTs cutOffDate actual360dc IR.Continuous NoFrequency True
+  baseZero <- IR.rate <$> zeroRateAtDate base cutOffDate actual360dc IR.Continuous NoFrequency True
+  ufrZero <- IR.rate <$> zeroRateAtDate ufrTs cutOffDate actual360dc IR.Continuous NoFrequency True
   report "UFR curve zero rate at the first smoothing point" (show ufrZero)
   checkClose "matches the base curve's own zero rate at fsp" baseZero ufrZero 1.0e-8
 
@@ -55,8 +55,8 @@ main = do
   let d1 = addYears 1 refDate
       spreadDf1 = 0.95
   spreaded <- interpolatedSpreadDiscountCurve base [(refDate, 1.0), (d1, spreadDf1), (addYears 2 refDate, 0.90)] Linear
-  baseD1 <- discount' base d1 False
-  spreadedD1 <- discount' spreaded d1 False
+  baseD1 <- discountAtDate base d1 False
+  spreadedD1 <- discountAtDate spreaded d1 False
   report "spread discount curve at 1y node" (show spreadedD1)
   checkClose "equals base discount * spread df" (baseD1 * spreadDf1) spreadedD1 1.0e-8
 
@@ -69,7 +69,7 @@ main = do
   q <- Quote.simpleQuote inputRate
   rh <- multipleResetsSwapRateHelper 0 (2, Years) q euribor3m 2 Nothing AveragingCompound 0.0 NoFrequency actual360dc ModifiedFollowing
   ts <- piecewiseYieldCurve curveToday [rh] actual360dc [] Discount LogLinear
-  _ <- discount' ts curveToday False
+  _ <- discountAtDate ts curveToday False
   implied <- impliedQuote rh
   report "multiple-resets swap rate helper implied quote" (show implied)
   checkWith "reprices to its own input rate" "close to 0.05"

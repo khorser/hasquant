@@ -50,7 +50,7 @@ module QuantLib.Math
   , TimeGrid
   , timeGrid
   , timeGridFromVector
-  , timeGridFromVector'
+  , timeGridFromVectorWithSteps
   , timeAt
   , size
   , points
@@ -141,7 +141,7 @@ import Foreign.Marshal.Alloc(alloca)
 
 -- |Time grid with mandatory time points.
 -- Mandatory points are guaranteed to belong to the grid. Additional points are then added with regular spacing between pairs of mandatory times in order to reach the desired number of steps.
-{#fun qlTimeGrid3 as timeGridFromVector'{withNonEmptyRealVector*`NonEmptyVector Double'& -- ^mandatoryTimes
+{#fun qlTimeGrid3 as timeGridFromVectorWithSteps{withNonEmptyRealVector*`NonEmptyVector Double'& -- ^mandatoryTimes
   ,fromIntegral`Word' -- ^steps
   ,preErrorCheck-`String'errorCheck*-}->`TimeGrid'peekTimeGrid*#}
 

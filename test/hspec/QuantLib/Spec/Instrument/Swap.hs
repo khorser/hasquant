@@ -253,7 +253,7 @@ spec = do
         parNpv `shouldSatisfy` closePrec 0 1e-6
 
         fairRt <- fairFixedRate zc dc
-        parZc' <- zeroCouponSwap' Receiver 1.0e6 settle end fairRt dc euribor6m cal ModifiedFollowing paymentDelay
+        parZc' <- zeroCouponSwapFromRate Receiver 1.0e6 settle end fairRt dc euribor6m cal ModifiedFollowing paymentDelay
         setPricingEngine parZc' engine
         parNpv' <- npv parZc'
         parNpv' `shouldSatisfy` closePrec 0 1e-6

@@ -9,7 +9,7 @@ module QuantLib.Instrument.Forward
   , forwardRateAgreement
   , bondForward
   , fxForward
-  , fxForward'
+  , fxForwardFromRate
 
   , cleanForwardPrice
   , forwardPrice
@@ -110,7 +110,7 @@ import QuantLib.Internal.Type
   ,preErrorCheck-`String'errorCheck*-}->`FxForward'peekFxForward*#}
 
 -- |FX forward using a source nominal amount and a contracted forward rate (target/source).
-{#fun qlFxForward1 as fxForward'{`Double' -- ^sourceNominal
+{#fun qlFxForward1 as fxForwardFromRate{`Double' -- ^sourceNominal
   ,withCurrency*`Currency' -- ^sourceCurrency
   ,withCurrency*`Currency' -- ^targetCurrency
   ,`Double' -- ^forwardRate

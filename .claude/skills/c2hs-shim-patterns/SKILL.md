@@ -640,7 +640,7 @@ subclasses (confirmed by reading `basket.cpp`: every delegated method, e.g.
 `lossDistribution`/`probsBeingNthEvent`/`defaultCorrelation`/`probAtLeastNEvents`/`recoveryRate`,
 calls `lossModel_->...`, and `GaussianLHPLossModel` and `ConstantLossModel` each override a
 different, non-overlapping subset -- see `QuantLib/Internal/Type.hs`'s CREDIT section comment).
-Handing every consumer a single `Basket` type either lets `syntheticCDO`/`basketExpectedTrancheLoss`
+Handing every consumer a single `Basket` type either lets `syntheticCdo`/`basketExpectedTrancheLoss`
 compile against a `ConstantLossModel`-backed basket (QL_FAILs at runtime) or vice versa for
 `nthToDefault` -- exactly the kind of runtime throw AGENTS.md's `std::variant` guidance and the
 "avoid `dynamic_cast`" bullet exist to push to compile time instead.

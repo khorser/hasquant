@@ -68,7 +68,7 @@ module QuantLib.PricingEngine
   , mcLookbackPartialFixedEngine
   , mcLookbackPartialFloatingEngine
   , analyticDigitalAmericanEngine
-  , analyticDigitalAmericanKOEngine
+  , analyticDigitalAmericanKoEngine
   , analyticDiscreteGeometricAveragePriceAsianEngine
   , analyticDiscreteGeometricAverageStrikeAsianEngine
   , turnbullWakemanAsianEngine
@@ -80,7 +80,7 @@ module QuantLib.PricingEngine
   , forwardBaroneAdesiWhaleyEngine
   , forwardBjerksundStenslandEngine
   , forwardFdBlackScholesVanillaEngine
-  , mcForwardEuropeanBSEngine
+  , mcForwardEuropeanBsEngine
   , mcForwardEuropeanHestonEngine
   , analyticHestonForwardEuropeanEngine
   , quantoEuropeanEngine
@@ -88,20 +88,20 @@ module QuantLib.PricingEngine
   , quantoForwardPerformanceEuropeanEngine
   , quantoBarrierEngine
   , quantoDoubleBarrierEngine
-  , blackCapFloorEngine'
+  , blackCapFloorEngineWithVolatilityStructure
   , blackCapFloorEngine
   , blackSwaptionEngine
   , haganIrregularSwaptionEngine
-  , blackSwaptionEngine'
-  , bachelierCapFloorEngine'
+  , blackSwaptionEngineWithVolatilityStructure
+  , bachelierCapFloorEngineWithVolatilityStructure
   , bachelierCapFloorEngine
   , yoyInflationBlackCapFloorEngine
   , yoyInflationUnitDisplacedBlackCapFloorEngine
   , yoyInflationBachelierCapFloorEngine
-  , interpolatingCPICapFloorEngine
+  , interpolatingCpiCapFloorEngine
   , bachelierSwaptionEngine
-  , bachelierSwaptionEngine'
-  , analyticBSMHullWhiteEngine
+  , bachelierSwaptionEngineWithVolatilityStructure
+  , analyticBsmHullWhiteEngine
   , analyticCapFloorEngine
   , gaussian1dCapFloorEngine
   , analyticGjrGarchEngine
@@ -120,11 +120,11 @@ module QuantLib.PricingEngine
   , mcAmericanEngine
   , mcBarrierEngine
   , mcDigitalEngine
-  , mcDiscreteArithmeticAPEngine
-  , mcDiscreteArithmeticASEngine
-  , mcDiscreteGeometricAPEngine
-  , mcDiscreteArithmeticAPHestonEngine
-  , mcDiscreteGeometricAPHestonEngine
+  , mcDiscreteArithmeticApEngine
+  , mcDiscreteArithmeticAsEngine
+  , mcDiscreteGeometricApEngine
+  , mcDiscreteArithmeticApHestonEngine
+  , mcDiscreteGeometricApHestonEngine
   , mcEuropeanEngine
   , mcEuropeanGjrGarchEngine
   , mcEuropeanHestonEngine
@@ -138,11 +138,11 @@ module QuantLib.PricingEngine
   , mcPerformanceEngine
   , mcVarianceSwapEngine
   , baroneAdesiWhaleyApproximationEngine
-  , batesDetJumpEngine'
+  , batesDetJumpEngineWithTolerance
   , batesDetJumpEngine
-  , batesDoubleExpDetJumpEngine'
+  , batesDoubleExpDetJumpEngineWithTolerance
   , batesDoubleExpDetJumpEngine
-  , batesDoubleExpEngine'
+  , batesDoubleExpEngineWithTolerance
   , batesDoubleExpEngine
   , bjerksundStenslandApproximationEngine
   , qdPlusAmericanEngine
@@ -159,8 +159,8 @@ module QuantLib.PricingEngine
   , juQuadraticApproximationEngine
   , kirkEngine
   , midPointCdsEngine
-  , midPointCDOEngine
-  , integralCDOEngine
+  , midPointCdoEngine
+  , integralCdoEngine
   , integralNtdEngine
   , replicatingVarianceSwapEngine
   , stulzEngine
@@ -192,64 +192,64 @@ module QuantLib.PricingEngine
   , fdHestonHullWhiteVanillaEngine
 
   , binomialConvertibleEngine
-  , blackCallableFixedRateBondEngine'
+  , blackCallableFixedRateBondEngineWithVolatilityStructure
   , blackCallableFixedRateBondEngine
-  , blackCallableZeroCouponBondEngine'
+  , blackCallableZeroCouponBondEngineWithVolatilityStructure
   , blackCallableZeroCouponBondEngine
   , treeCallableFixedRateBondEngine
   , treeCallableZeroCouponBondEngine
 
-  , blackCalculator'
   , blackCalculator
+  , blackCalculatorFromPayoff
   , blackVanna
-  , blackScholesCalculator'
   , blackScholesCalculator
+  , blackScholesCalculatorFromPayoff
   , blackScholesDelta
   , blackScholesElasticity
   , blackScholesGamma
   , blackScholesTheta
   , blackScholesThetaPerDay
 
-  , bachelierCalculator'
   , bachelierCalculator
+  , bachelierCalculatorFromPayoff
   , bachelierVanna
 
   , blackDeltaCalculator
   , deltaFromStrike
   , strikeFromDelta
   , atmStrike
-  , blackFormula'
+  , blackFormulaFromPayoff
   , blackFormula
-  , blackCashItmProbability'
+  , blackCashItmProbabilityFromPayoff
   , blackCashItmProbability
-  , blackImpliedStdDev'
+  , blackImpliedStdDevFromPayoff
   , blackImpliedStdDev
-  , blackImpliedStdDevApproximation'
+  , blackImpliedStdDevApproximationFromPayoff
   , blackImpliedStdDevApproximation
-  , blackStdDevDerivative'
+  , blackStdDevDerivativeFromPayoff
   , blackStdDevDerivative
   , blackVolDerivative
-  , bachelierBlackFormula'
+  , bachelierBlackFormulaFromPayoff
   , bachelierBlackFormula
-  , blackForwardDerivative'
+  , blackForwardDerivativeFromPayoff
   , blackForwardDerivative
-  , blackImpliedStdDevChambers'
+  , blackImpliedStdDevChambersFromPayoff
   , blackImpliedStdDevChambers
-  , blackImpliedStdDevApproximationRS'
-  , blackImpliedStdDevApproximationRS
-  , blackImpliedStdDevLiRS'
-  , blackImpliedStdDevLiRS
-  , blackAssetItmProbability'
+  , blackImpliedStdDevApproximationRsFromPayoff
+  , blackImpliedStdDevApproximationRs
+  , blackImpliedStdDevLiRsFromPayoff
+  , blackImpliedStdDevLiRs
+  , blackAssetItmProbabilityFromPayoff
   , blackAssetItmProbability
-  , blackStdDevSecondDerivative'
+  , blackStdDevSecondDerivativeFromPayoff
   , blackStdDevSecondDerivative
-  , bachelierForwardDerivative'
+  , bachelierForwardDerivativeFromPayoff
   , bachelierForwardDerivative
   , bachelierImpliedVol
   , bachelierImpliedVolChoi
-  , bachelierStdDevDerivative'
+  , bachelierStdDevDerivativeFromPayoff
   , bachelierStdDevDerivative
-  , bachelierAssetItmProbability'
+  , bachelierAssetItmProbabilityFromPayoff
   , bachelierAssetItmProbability
   , defaultThetaPerDay
   , unsafeSabrLogNormalVolatility
@@ -630,7 +630,7 @@ discountingPerpetualFuturesEngine domestic foreignCurve spot funding interpolati
 {#fun qlAnalyticDigitalAmericanEngine as analyticDigitalAmericanEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |analytic pricing engine for American knock-out digital (cash-or-nothing/asset-or-nothing) options
-{#fun qlAnalyticDigitalAmericanKOEngine as analyticDigitalAmericanKOEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+{#fun qlAnalyticDigitalAmericanKOEngine as analyticDigitalAmericanKoEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |analytic pricing engine for European discrete geometric average-price Asian options
 {#fun qlAnalyticDiscreteGeometricAveragePriceAsianEngine as analyticDiscreteGeometricAveragePriceAsianEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
@@ -665,7 +665,7 @@ discountingPerpetualFuturesEngine domestic foreignCurve spot funding interpolati
 {#fun qlForwardFdBlackScholesVanillaEngine as forwardFdBlackScholesVanillaEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |Monte Carlo pricing engine for forward-starting European options under a Black-Scholes process
-{#fun qlMCForwardEuropeanBSEngine1 as mcForwardEuropeanBSEngine{`RngTrait',`StatisticsTrait',withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',fromMaybeInt`Maybe Word' -- ^timeSteps
+{#fun qlMCForwardEuropeanBSEngine1 as mcForwardEuropeanBsEngine{`RngTrait',`StatisticsTrait',withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',fromMaybeInt`Maybe Word' -- ^timeSteps
   ,fromMaybeInt`Maybe Word' -- ^timeStepsPerYear
   ,`Bool' -- ^brownianBridge
   ,`Bool' -- ^antitheticVariate
@@ -729,7 +729,7 @@ discountingPerpetualFuturesEngine domestic foreignCurve spot funding interpolati
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |Black-formula cap\/floor engine, taking an optionlet volatility structure
-{#fun qlBlackCapFloorEngine1 as blackCapFloorEngine'{withYieldTermStructure*`GenYieldTermStructure y',withOptionletVolatilityStructure*`GenOptionletVolatilityStructure ov',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+{#fun qlBlackCapFloorEngine1 as blackCapFloorEngineWithVolatilityStructure{withYieldTermStructure*`GenYieldTermStructure y',withOptionletVolatilityStructure*`GenOptionletVolatilityStructure ov',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |Black-formula cap\/floor engine, taking a flat volatility quote
 {#fun qlBlackCapFloorEngine as blackCapFloorEngine{withYieldTermStructure*`GenYieldTermStructure y',withQuote*`GenQuote q',withDayCounter*`DayCounter'
@@ -744,10 +744,10 @@ discountingPerpetualFuturesEngine domestic foreignCurve spot funding interpolati
 {#fun qlHaganIrregularSwaptionEngine as haganIrregularSwaptionEngine{withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure sv',withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |shifted-lognormal Black-formula swaption engine, taking a swaption volatility structure
-{#fun qlBlackSwaptionEngine1 as blackSwaptionEngine'{withYieldTermStructure*`GenYieldTermStructure y',withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure sv',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+{#fun qlBlackSwaptionEngine1 as blackSwaptionEngineWithVolatilityStructure{withYieldTermStructure*`GenYieldTermStructure y',withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure sv',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |Bachelier (normal) cap\/floor engine, taking an optionlet volatility structure
-{#fun qlBachelierCapFloorEngine1 as bachelierCapFloorEngine'{withYieldTermStructure*`GenYieldTermStructure y',withOptionletVolatilityStructure*`GenOptionletVolatilityStructure ov',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+{#fun qlBachelierCapFloorEngine1 as bachelierCapFloorEngineWithVolatilityStructure{withYieldTermStructure*`GenYieldTermStructure y',withOptionletVolatilityStructure*`GenOptionletVolatilityStructure ov',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |Bachelier (normal) cap\/floor engine, taking a flat volatility quote
 {#fun qlBachelierCapFloorEngine as bachelierCapFloorEngine{withYieldTermStructure*`GenYieldTermStructure y',withQuote*`GenQuote q',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
@@ -775,7 +775,7 @@ discountingPerpetualFuturesEngine domestic foreignCurve spot funding interpolati
 -- |The only 'QuantLib.Instrument.InflationCapFloor.CPICapFloor' pricing engine in QL 1.43 --
 -- prices purely by interpolating a market price surface, no stochastic-vol model (see that
 -- type's own haddock for the CPI\/YoY asymmetry).
-{#fun qlInterpolatingCPICapFloorEngine as interpolatingCPICapFloorEngine{withGenTermStructure*`CPICapFloorTermPriceSurface'
+{#fun qlInterpolatingCPICapFloorEngine as interpolatingCpiCapFloorEngine{withGenTermStructure*`CPICapFloorTermPriceSurface'
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |Bachelier (normal) swaption engine, taking a flat volatility quote
@@ -783,10 +783,10 @@ discountingPerpetualFuturesEngine domestic foreignCurve spot funding interpolati
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |Bachelier (normal) swaption engine, taking a swaption volatility structure
-{#fun qlBachelierSwaptionEngine1 as bachelierSwaptionEngine'{withYieldTermStructure*`GenYieldTermStructure y',withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure sv',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+{#fun qlBachelierSwaptionEngine1 as bachelierSwaptionEngineWithVolatilityStructure{withYieldTermStructure*`GenYieldTermStructure y',withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure sv',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |analytic European option pricer including stochastic interest rates (Black-Scholes-Merton + Hull-White)
-{#fun qlAnalyticBSMHullWhiteEngine as analyticBSMHullWhiteEngine{`Double',withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',withHullWhite*`HullWhite',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+{#fun qlAnalyticBSMHullWhiteEngine as analyticBsmHullWhiteEngine{`Double',withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',withHullWhite*`HullWhite',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |the term structure is only needed when the short-rate model cannot provide one itself.
 {#fun qlAnalyticCapFloorEngine as analyticCapFloorEngine{withStandalone*`AffineModel',withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
@@ -902,7 +902,7 @@ batesEngine model control =
 {#fun qlBaroneAdesiWhaleyApproximationEngine as baroneAdesiWhaleyApproximationEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |semi-analytic engine for the Bates model with deterministic jumps, integrating with a fixed relative tolerance and evaluation cap
-{#fun qlBatesDetJumpEngine1 as batesDetJumpEngine'{withBatesDetJumpModel*`BatesDetJumpModel',`Double' -- ^relTolerance
+{#fun qlBatesDetJumpEngine1 as batesDetJumpEngineWithTolerance{withBatesDetJumpModel*`BatesDetJumpModel',`Double' -- ^relTolerance
   ,fromIntegral`Word' -- ^maxEvaluations
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
@@ -911,7 +911,7 @@ batesEngine model control =
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |semi-analytic engine for the double-exponential-jump Bates model with deterministic jumps, integrating with a fixed relative tolerance and evaluation cap
-{#fun qlBatesDoubleExpDetJumpEngine1 as batesDoubleExpDetJumpEngine'{withBatesDoubleExpDetJumpModel*`BatesDoubleExpDetJumpModel',`Double' -- ^relTolerance
+{#fun qlBatesDoubleExpDetJumpEngine1 as batesDoubleExpDetJumpEngineWithTolerance{withBatesDoubleExpDetJumpModel*`BatesDoubleExpDetJumpModel',`Double' -- ^relTolerance
   ,fromIntegral`Word' -- ^maxEvaluations
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
@@ -920,7 +920,7 @@ batesEngine model control =
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |semi-analytic engine for the double-exponential-jump Bates model, integrating with a fixed relative tolerance and evaluation cap
-{#fun qlBatesDoubleExpEngine1 as batesDoubleExpEngine'{withBatesDoubleExpModel*`GenBatesDoubleExpModel bdem',`Double' -- ^relTolerance
+{#fun qlBatesDoubleExpEngine1 as batesDoubleExpEngineWithTolerance{withBatesDoubleExpModel*`GenBatesDoubleExpModel bdem',`Double' -- ^relTolerance
   ,fromIntegral`Word' -- ^maxEvaluations
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
@@ -1035,12 +1035,12 @@ batesEngine model control =
 -- |Synthetic CDO tranche pricing engine using the mid-point approximation, evaluating the
 -- expected tranche loss at the mid-point of each accrual/protection period. The basket must
 -- already have a 'QuantLib.Credit.DefaultLossModel' attached.
-{#fun qlMidPointCDOEngine as midPointCDOEngine{withYieldTermStructure*`GenYieldTermStructure y' -- ^discountCurve
+{#fun qlMidPointCDOEngine as midPointCdoEngine{withYieldTermStructure*`GenYieldTermStructure y' -- ^discountCurve
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |Synthetic CDO tranche pricing engine that integrates the expected tranche loss over
 -- @stepSize@-sized steps of the tranche's schedule.
-{#fun qlIntegralCDOEngine as integralCDOEngine{withYieldTermStructure*`GenYieldTermStructure y' -- ^discountCurve
+{#fun qlIntegralCDOEngine as integralCdoEngine{withYieldTermStructure*`GenYieldTermStructure y' -- ^discountCurve
   ,fromEnumQuantity`(Word,TimeUnit)'& -- ^stepSize
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
@@ -1350,7 +1350,7 @@ fdHestonBarrierEngine model dividends =
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |Monte Carlo pricing engine for discrete arithmetic average-price Asian options
-{#fun qlMCDiscreteArithmeticAPEngine1 as mcDiscreteArithmeticAPEngine{`RngTrait',`StatisticsTrait',withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',`Bool' -- ^brownianBridge
+{#fun qlMCDiscreteArithmeticAPEngine1 as mcDiscreteArithmeticApEngine{`RngTrait',`StatisticsTrait',withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',`Bool' -- ^brownianBridge
   ,`Bool' -- ^antitheticVariate
   ,`Bool' -- ^controlVariate
   ,fromMaybeInt`Maybe Word' -- ^requiredSamples
@@ -1360,7 +1360,7 @@ fdHestonBarrierEngine model dividends =
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |Monte Carlo pricing engine for discrete arithmetic average-strike Asian options
-{#fun qlMCDiscreteArithmeticASEngine1 as mcDiscreteArithmeticASEngine{`RngTrait',`StatisticsTrait',withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',`Bool' -- ^brownianBridge
+{#fun qlMCDiscreteArithmeticASEngine1 as mcDiscreteArithmeticAsEngine{`RngTrait',`StatisticsTrait',withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',`Bool' -- ^brownianBridge
   ,`Bool' -- ^antitheticVariate
   ,fromMaybeInt`Maybe Word' -- ^requiredSamples
   ,fromMaybeDouble`Maybe Double' -- ^requiredTolerance
@@ -1369,7 +1369,7 @@ fdHestonBarrierEngine model dividends =
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |Monte Carlo pricing engine for discrete geometric average-price Asian options
-{#fun qlMCDiscreteGeometricAPEngine1 as mcDiscreteGeometricAPEngine{`RngTrait',`StatisticsTrait',withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',`Bool' -- ^brownianBridge
+{#fun qlMCDiscreteGeometricAPEngine1 as mcDiscreteGeometricApEngine{`RngTrait',`StatisticsTrait',withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',`Bool' -- ^brownianBridge
   ,`Bool' -- ^antitheticVariate
   ,fromMaybeInt`Maybe Word' -- ^requiredSamples
   ,fromMaybeDouble`Maybe Double' -- ^requiredTolerance
@@ -1381,7 +1381,7 @@ fdHestonBarrierEngine model dividends =
 -- Heston stochastic-volatility model.  Uses one time step per fixing date unless /timeSteps/ or
 -- /timeStepsPerYear/ overrides the grid. When /controlVariate/ is true, prices the same path
 -- against 'analyticDiscreteGeometricAveragePriceAsianHestonEngine' as a control variate.
-{#fun qlMCDiscreteArithmeticAPHestonEngine1 as mcDiscreteArithmeticAPHestonEngine{`RngTrait',`StatisticsTrait',withHestonProcess*`GenHestonProcess hp'
+{#fun qlMCDiscreteArithmeticAPHestonEngine1 as mcDiscreteArithmeticApHestonEngine{`RngTrait',`StatisticsTrait',withHestonProcess*`GenHestonProcess hp'
   ,`Bool' -- ^antitheticVariate
   ,fromMaybeInt`Maybe Word' -- ^requiredSamples
   ,fromMaybeDouble`Maybe Double' -- ^requiredTolerance
@@ -1395,7 +1395,7 @@ fdHestonBarrierEngine model dividends =
 -- |Monte Carlo pricing engine for discrete geometric average-price Asian options under the
 -- Heston stochastic-volatility model.  Uses one time step per fixing date unless /timeSteps/ or
 -- /timeStepsPerYear/ overrides the grid.
-{#fun qlMCDiscreteGeometricAPHestonEngine1 as mcDiscreteGeometricAPHestonEngine{`RngTrait',`StatisticsTrait',withHestonProcess*`GenHestonProcess hp'
+{#fun qlMCDiscreteGeometricAPHestonEngine1 as mcDiscreteGeometricApHestonEngine{`RngTrait',`StatisticsTrait',withHestonProcess*`GenHestonProcess hp'
   ,`Bool' -- ^antitheticVariate
   ,fromMaybeInt`Maybe Word' -- ^requiredSamples
   ,fromMaybeDouble`Maybe Double' -- ^requiredTolerance
@@ -1763,13 +1763,13 @@ fdHestonHullWhiteVanillaEngine heston hullWhite dividends =
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |volatility is the quoted fwd yield volatility, not price vol
-{#fun qlBlackCallableFixedRateBondEngine1 as blackCallableFixedRateBondEngine'{withGenTermStructure*`CallableBondVolatilityStructure',withYieldTermStructure*`GenYieldTermStructure y',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+{#fun qlBlackCallableFixedRateBondEngine1 as blackCallableFixedRateBondEngineWithVolatilityStructure{withGenTermStructure*`CallableBondVolatilityStructure',withYieldTermStructure*`GenYieldTermStructure y',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |volatility is the quoted fwd yield volatility, not price vol
 {#fun qlBlackCallableFixedRateBondEngine as blackCallableFixedRateBondEngine{withQuote*`GenQuote q',withYieldTermStructure*`GenYieldTermStructure y',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |volatility is the quoted fwd yield volatility, not price vol
-{#fun qlBlackCallableZeroCouponBondEngine1 as blackCallableZeroCouponBondEngine'{withGenTermStructure*`CallableBondVolatilityStructure',withYieldTermStructure*`GenYieldTermStructure y',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+{#fun qlBlackCallableZeroCouponBondEngine1 as blackCallableZeroCouponBondEngineWithVolatilityStructure{withGenTermStructure*`CallableBondVolatilityStructure',withYieldTermStructure*`GenYieldTermStructure y',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |volatility is the quoted fwd yield volatility, not price vol
 {#fun qlBlackCallableZeroCouponBondEngine as blackCallableZeroCouponBondEngine{withQuote*`GenQuote q',withYieldTermStructure*`GenYieldTermStructure y',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
@@ -1809,14 +1809,14 @@ treeCallableZeroCouponBondEngine model latticeTime curve =
 {#fun qlBlackCalculatorBeta{withBlackCalculator*`GenBlackCalculator bc',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Black 1976 option-price calculator, from the option type and strike directly
-{#fun qlBlackCalculator1 as blackCalculator'{fromEnumC`OptionType',`Double' -- ^strike
+{#fun qlBlackCalculator1 as blackCalculator{fromEnumC`OptionType',`Double' -- ^strike
   ,`Double' -- ^forward
   ,`Double' -- ^stdDev
   ,`Double' -- ^discount
   ,preErrorCheck-`String'errorCheck*-}->`BlackCalculator'peekBlackCalculator*#}
 
 -- |Black 1976 option-price calculator, from a striked payoff
-{#fun qlBlackCalculator as blackCalculator{withStrikedPayoff*`StrikedPayoff'
+{#fun qlBlackCalculator as blackCalculatorFromPayoff{withStrikedPayoff*`StrikedPayoff'
   ,`Double' -- ^forward
   ,`Double' -- ^stdDev
   ,`Double' -- ^discount
@@ -1890,7 +1890,7 @@ treeCallableZeroCouponBondEngine model latticeTime curve =
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Black-Scholes-Merton option-price calculator, from the option type and strike directly
-{#fun qlBlackScholesCalculator1 as blackScholesCalculator'{fromEnumC`OptionType',`Double' -- ^strike
+{#fun qlBlackScholesCalculator1 as blackScholesCalculator{fromEnumC`OptionType',`Double' -- ^strike
   ,`Double' -- ^spot
   ,`Double' -- ^growth
   ,`Double' -- ^stdDev
@@ -1898,7 +1898,7 @@ treeCallableZeroCouponBondEngine model latticeTime curve =
   ,preErrorCheck-`String'errorCheck*-}->`BlackScholesCalculator'peekBlackScholesCalculator*#}
 
 -- |Black-Scholes-Merton option-price calculator, from a striked payoff and spot price
-{#fun qlBlackScholesCalculator as blackScholesCalculator{withStrikedPayoff*`StrikedPayoff',`Double' -- ^spot
+{#fun qlBlackScholesCalculator as blackScholesCalculatorFromPayoff{withStrikedPayoff*`StrikedPayoff',`Double' -- ^spot
   ,`Double' -- ^growth
   ,`Double' -- ^stdDev
   ,`Double' -- ^discount
@@ -1924,14 +1924,14 @@ treeCallableZeroCouponBondEngine model latticeTime curve =
 -- |Bachelier (normal-model) analogue of 'BlackCalculator', for options on a rate rather than a
 -- price. No subclass hierarchy upstream, unlike BlackCalculator\/BlackScholesCalculator, so this
 -- is a single leaf type with its own methods rather than a 'GenBlackCalculator' instance.
-{#fun qlBachelierCalculator1 as bachelierCalculator'{fromEnumC`OptionType',`Double' -- ^strike
+{#fun qlBachelierCalculator1 as bachelierCalculator{fromEnumC`OptionType',`Double' -- ^strike
   ,`Double' -- ^forward
   ,`Double' -- ^stdDev
   ,`Double' -- ^discount
   ,preErrorCheck-`String'errorCheck*-}->`BachelierCalculator'peekBachelierCalculator*#}
 
 -- |Bachelier (normal-model) option-price calculator, from a striked payoff
-{#fun qlBachelierCalculator as bachelierCalculator{withStrikedPayoff*`StrikedPayoff'
+{#fun qlBachelierCalculator as bachelierCalculatorFromPayoff{withStrikedPayoff*`StrikedPayoff'
   ,`Double' -- ^forward
   ,`Double' -- ^stdDev
   ,`Double' -- ^discount
@@ -2096,7 +2096,7 @@ instance HasOptionCalculator BachelierCalculator where
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Black 1976 formula /Warning/ instead of volatility it uses standard deviation, i.e. volatility*sqrt(timeToMaturity)
-{#fun qlQuantLibBlackFormula1 as blackFormula'{withPlainVanillaPayoff*`PlainVanillaPayoff',`Double' -- ^forward
+{#fun qlQuantLibBlackFormula1 as blackFormulaFromPayoff{withPlainVanillaPayoff*`PlainVanillaPayoff',`Double' -- ^forward
   ,`Double' -- ^stdDev
   ,`Double' -- ^discount
   ,`Double' -- ^displacement
@@ -2112,7 +2112,7 @@ instance HasOptionCalculator BachelierCalculator where
 
 
 -- |Black 1976 probability of being in the money (in the bond martingale measure), i.e. N(d2). It is a risk-neutral probability, not the real world one. /Warning/ instead of volatility it uses standard deviation, i.e. volatility*sqrt(timeToMaturity)
-{#fun qlQuantLibBlackFormulaCashItmProbability1 as blackCashItmProbability'{withPlainVanillaPayoff*`PlainVanillaPayoff',`Double' -- ^forward
+{#fun qlQuantLibBlackFormulaCashItmProbability1 as blackCashItmProbabilityFromPayoff{withPlainVanillaPayoff*`PlainVanillaPayoff',`Double' -- ^forward
   ,`Double' -- ^stdDev
   ,`Double' -- ^displacement
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
@@ -2125,7 +2125,7 @@ instance HasOptionCalculator BachelierCalculator where
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Black 1976 implied standard deviation, i.e. volatility*sqrt(timeToMaturity)
-{#fun qlQuantLibBlackFormulaImpliedStdDev1 as blackImpliedStdDev'{withPlainVanillaPayoff*`PlainVanillaPayoff',`Double' -- ^forward
+{#fun qlQuantLibBlackFormulaImpliedStdDev1 as blackImpliedStdDevFromPayoff{withPlainVanillaPayoff*`PlainVanillaPayoff',`Double' -- ^forward
   ,`Double' -- ^blackPrice
   ,`Double' -- ^discount
   ,`Double' -- ^displacement
@@ -2146,7 +2146,7 @@ instance HasOptionCalculator BachelierCalculator where
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Approximated Black 1976 implied standard deviation, i.e. volatility*sqrt(timeToMaturity).It is calculated using Brenner and Subrahmanyan (1988) and Feinstein (1988) approximation for at-the-money forward option, with the extended moneyness approximation by Corrado and Miller (1996)
-{#fun qlQuantLibBlackFormulaImpliedStdDevApproximation1 as blackImpliedStdDevApproximation'{withPlainVanillaPayoff*`PlainVanillaPayoff',`Double' -- ^forward
+{#fun qlQuantLibBlackFormulaImpliedStdDevApproximation1 as blackImpliedStdDevApproximationFromPayoff{withPlainVanillaPayoff*`PlainVanillaPayoff',`Double' -- ^forward
   ,`Double' -- ^blackPrice
   ,`Double' -- ^discount
   ,`Double' -- ^displacement
@@ -2161,7 +2161,7 @@ instance HasOptionCalculator BachelierCalculator where
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Black 1976 formula for standard deviation derivative /Warning/ instead of volatility it uses standard deviation, i.e. volatility*sqrt(timeToMaturity), and it returns the derivative with respect to the standard deviation. If T is the time to maturity Black vega would be blackStdDevDerivative(strike, forward, stdDev)*sqrt(T)
-{#fun qlQuantLibBlackFormulaStdDevDerivative1 as blackStdDevDerivative'{withPlainVanillaPayoff*`PlainVanillaPayoff',`Double' -- ^forward
+{#fun qlQuantLibBlackFormulaStdDevDerivative1 as blackStdDevDerivativeFromPayoff{withPlainVanillaPayoff*`PlainVanillaPayoff',`Double' -- ^forward
   ,`Double' -- ^stdDev
   ,`Double' -- ^discount
   ,`Double' -- ^displacement
@@ -2185,7 +2185,7 @@ instance HasOptionCalculator BachelierCalculator where
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Black style formula when forward is normal rather than log-normal. This is essentially the model of Bachelier. /Warning/ Bachelier model needs absolute volatility, not percentage volatility. Standard deviation is absoluteVolatility*sqrt(timeToMaturity)
-{#fun qlQuantLibBachelierBlackFormula1 as bachelierBlackFormula'{withPlainVanillaPayoff*`PlainVanillaPayoff',`Double' -- ^forward
+{#fun qlQuantLibBachelierBlackFormula1 as bachelierBlackFormulaFromPayoff{withPlainVanillaPayoff*`PlainVanillaPayoff',`Double' -- ^forward
   ,`Double' -- ^stdDev
   ,`Double' -- ^discount
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
@@ -2198,7 +2198,7 @@ instance HasOptionCalculator BachelierCalculator where
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Black 1976 formula for the derivative with respect to the forward
-{#fun qlQuantLibBlackFormulaForwardDerivative1 as blackForwardDerivative'{withPlainVanillaPayoff*`PlainVanillaPayoff',`Double' -- ^forward
+{#fun qlQuantLibBlackFormulaForwardDerivative1 as blackForwardDerivativeFromPayoff{withPlainVanillaPayoff*`PlainVanillaPayoff',`Double' -- ^forward
   ,`Double' -- ^stdDev
   ,`Double' -- ^discount
   ,`Double' -- ^displacement
@@ -2213,7 +2213,7 @@ instance HasOptionCalculator BachelierCalculator where
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Approximated Black 1976 implied standard deviation following Chambers and Nawalkha, /The Financial Review/ 2001, 89-100. The at-the-money option price must be known to use this method.
-{#fun qlQuantLibBlackFormulaImpliedStdDevChambers1 as blackImpliedStdDevChambers'{withPlainVanillaPayoff*`PlainVanillaPayoff',`Double' -- ^forward
+{#fun qlQuantLibBlackFormulaImpliedStdDevChambers1 as blackImpliedStdDevChambersFromPayoff{withPlainVanillaPayoff*`PlainVanillaPayoff',`Double' -- ^forward
   ,`Double' -- ^blackPrice
   ,`Double' -- ^blackAtmPrice
   ,`Double' -- ^discount
@@ -2230,14 +2230,14 @@ instance HasOptionCalculator BachelierCalculator where
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Approximated Black 1976 implied standard deviation following Radoicic and Stefanica, /An Explicit Implicit Volatility Formula/
-{#fun qlQuantLibBlackFormulaImpliedStdDevApproximationRS1 as blackImpliedStdDevApproximationRS'{withPlainVanillaPayoff*`PlainVanillaPayoff',`Double' -- ^forward
+{#fun qlQuantLibBlackFormulaImpliedStdDevApproximationRS1 as blackImpliedStdDevApproximationRsFromPayoff{withPlainVanillaPayoff*`PlainVanillaPayoff',`Double' -- ^forward
   ,`Double' -- ^blackPrice
   ,`Double' -- ^discount
   ,`Double' -- ^displacement
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Approximated Black 1976 implied standard deviation following Radoicic and Stefanica, /An Explicit Implicit Volatility Formula/
-{#fun qlQuantLibBlackFormulaImpliedStdDevApproximationRS as blackImpliedStdDevApproximationRS{fromEnumC`OptionType',`Double' -- ^strike
+{#fun qlQuantLibBlackFormulaImpliedStdDevApproximationRS as blackImpliedStdDevApproximationRs{fromEnumC`OptionType',`Double' -- ^strike
   ,`Double' -- ^forward
   ,`Double' -- ^blackPrice
   ,`Double' -- ^discount
@@ -2245,7 +2245,7 @@ instance HasOptionCalculator BachelierCalculator where
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Black 1976 implied standard deviation by the Li-Rational-Substitution solver, started from the Radoicic-Stefanica approximation. Pass 'Nothing' for the guess to let QuantLib pick the starting point.
-{#fun qlQuantLibBlackFormulaImpliedStdDevLiRS1 as blackImpliedStdDevLiRS'{withPlainVanillaPayoff*`PlainVanillaPayoff',`Double' -- ^forward
+{#fun qlQuantLibBlackFormulaImpliedStdDevLiRS1 as blackImpliedStdDevLiRsFromPayoff{withPlainVanillaPayoff*`PlainVanillaPayoff',`Double' -- ^forward
   ,`Double' -- ^blackPrice
   ,`Double' -- ^discount
   ,`Double' -- ^displacement
@@ -2256,7 +2256,7 @@ instance HasOptionCalculator BachelierCalculator where
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Black 1976 implied standard deviation by the Li-Rational-Substitution solver, started from the Radoicic-Stefanica approximation. Pass 'Nothing' for the guess to let QuantLib pick the starting point.
-{#fun qlQuantLibBlackFormulaImpliedStdDevLiRS as blackImpliedStdDevLiRS{fromEnumC`OptionType',`Double' -- ^strike
+{#fun qlQuantLibBlackFormulaImpliedStdDevLiRS as blackImpliedStdDevLiRs{fromEnumC`OptionType',`Double' -- ^strike
   ,`Double' -- ^forward
   ,`Double' -- ^blackPrice
   ,`Double' -- ^discount
@@ -2268,7 +2268,7 @@ instance HasOptionCalculator BachelierCalculator where
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Black 1976 probability of being in the money in the asset martingale measure, i.e. N(d1). It is a risk-neutral probability, not the real world one.
-{#fun qlQuantLibBlackFormulaAssetItmProbability1 as blackAssetItmProbability'{withPlainVanillaPayoff*`PlainVanillaPayoff',`Double' -- ^forward
+{#fun qlQuantLibBlackFormulaAssetItmProbability1 as blackAssetItmProbabilityFromPayoff{withPlainVanillaPayoff*`PlainVanillaPayoff',`Double' -- ^forward
   ,`Double' -- ^stdDev
   ,`Double' -- ^displacement
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
@@ -2281,7 +2281,7 @@ instance HasOptionCalculator BachelierCalculator where
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Black 1976 formula for the second derivative with respect to the standard deviation. /Warning/ instead of volatility it uses standard deviation, i.e. volatility*sqrt(timeToMaturity)
-{#fun qlQuantLibBlackFormulaStdDevSecondDerivative1 as blackStdDevSecondDerivative'{withPlainVanillaPayoff*`PlainVanillaPayoff',`Double' -- ^forward
+{#fun qlQuantLibBlackFormulaStdDevSecondDerivative1 as blackStdDevSecondDerivativeFromPayoff{withPlainVanillaPayoff*`PlainVanillaPayoff',`Double' -- ^forward
   ,`Double' -- ^stdDev
   ,`Double' -- ^discount
   ,`Double' -- ^displacement
@@ -2296,7 +2296,7 @@ instance HasOptionCalculator BachelierCalculator where
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Bachelier formula for the derivative with respect to the forward. /Warning/ the Bachelier model needs absolute volatility, not percentage volatility; standard deviation is absoluteVolatility*sqrt(timeToMaturity)
-{#fun qlQuantLibBachelierBlackFormulaForwardDerivative1 as bachelierForwardDerivative'{withPlainVanillaPayoff*`PlainVanillaPayoff',`Double' -- ^forward
+{#fun qlQuantLibBachelierBlackFormulaForwardDerivative1 as bachelierForwardDerivativeFromPayoff{withPlainVanillaPayoff*`PlainVanillaPayoff',`Double' -- ^forward
   ,`Double' -- ^stdDev
   ,`Double' -- ^discount
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
@@ -2325,7 +2325,7 @@ instance HasOptionCalculator BachelierCalculator where
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Bachelier formula for the standard deviation derivative. /Warning/ it returns the derivative with respect to the standard deviation; Bachelier vega is this times sqrt(T).
-{#fun qlQuantLibBachelierBlackFormulaStdDevDerivative1 as bachelierStdDevDerivative'{withPlainVanillaPayoff*`PlainVanillaPayoff',`Double' -- ^forward
+{#fun qlQuantLibBachelierBlackFormulaStdDevDerivative1 as bachelierStdDevDerivativeFromPayoff{withPlainVanillaPayoff*`PlainVanillaPayoff',`Double' -- ^forward
   ,`Double' -- ^stdDev
   ,`Double' -- ^discount
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
@@ -2338,7 +2338,7 @@ instance HasOptionCalculator BachelierCalculator where
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Bachelier probability of being in the money in the asset martingale measure, i.e. N(d). It is a risk-neutral probability, not the real world one.
-{#fun qlQuantLibBachelierBlackFormulaAssetItmProbability1 as bachelierAssetItmProbability'{withPlainVanillaPayoff*`PlainVanillaPayoff',`Double' -- ^forward
+{#fun qlQuantLibBachelierBlackFormulaAssetItmProbability1 as bachelierAssetItmProbabilityFromPayoff{withPlainVanillaPayoff*`PlainVanillaPayoff',`Double' -- ^forward
   ,`Double' -- ^stdDev
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 

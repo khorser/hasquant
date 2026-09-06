@@ -14,9 +14,9 @@ import QuantLib.Quote(simpleQuote, setValue)
 import QuantLib.TermStructure.Credit
 import QuantLib.TermStructure.Yield(flatForward, interpolatedDiscountCurve)
 import QuantLib.Instrument(setPricingEngine, PricingModel(..))
-import QuantLib.Instrument.Credit(Claim(..), ProtectionSide(..), creditDefaultSwap, syntheticCDO, fairPremium, nthToDefault, ntdFairPremium)
+import QuantLib.Instrument.Credit(Claim(..), ProtectionSide(..), creditDefaultSwap, syntheticCdo, fairPremium, nthToDefault, ntdFairPremium)
 import QuantLib.Instrument.Swap(fairSpread)
-import QuantLib.PricingEngine(midPointCdsEngine, midPointCDOEngine, integralCDOEngine, integralNtdEngine)
+import QuantLib.PricingEngine(midPointCdsEngine, midPointCdoEngine, integralCdoEngine, integralNtdEngine)
 import qualified QuantLib.Settings as Settings
 import QuantLib.Credit
 import QuantLib.Spec.Helpers(closePrec)
@@ -48,7 +48,7 @@ spec = do
       p <- pool (fromList [(n, iss, key) | n <- names])
 
       correlQuote <- simpleQuote 0.3
-      lossModel <- gaussianLHPLossModel correlQuote (fromList (replicate (length names) 0.4))
+      lossModel <- gaussianLhpLossModel correlQuote (fromList (replicate (length names) 0.4))
 
       b <- basket refDate (fromList [(n, notionalPerName) | n <- names]) p 0.0 1.0 FaceValue lossModel
 
@@ -96,18 +96,18 @@ spec = do
       yieldTS <- flatForward refDate rateQuote act360 Continuous Annual
 
       correlQuote <- simpleQuote 0.1
-      lossModel <- gaussianLHPLossModel correlQuote (fromList (replicate poolSize recovery))
+      lossModel <- gaussianLhpLossModel correlQuote (fromList (replicate poolSize recovery))
 
       target <- calendar TARGET
       sched <- schedule (Just $ fromGregorian 2006 9 1) (fromGregorian 2011 9 1) (3, Months) target
         Following Following Backward False Nothing Nothing
 
-      midPEngine <- midPointCDOEngine yieldTS
-      integralEngine <- integralCDOEngine yieldTS (3, Months)
+      midPEngine <- midPointCdoEngine yieldTS
+      integralEngine <- integralCdoEngine yieldTS (3, Months)
 
       mapM_ (\(att, det, expected) -> do
         b <- basket refDate (fromList (zip names notionals)) p att det FaceValue lossModel
-        cdo <- syntheticCDO b Seller sched 0.0 0.02 act360 Following Nothing
+        cdo <- syntheticCdo b Seller sched 0.0 0.02 act360 Following Nothing
 
         setPricingEngine cdo midPEngine
         midFair <- (* 1e4) <$> fairPremium cdo
@@ -229,7 +229,7 @@ spec = do
       p <- pool (fromList [(n, iss, key) | n <- names])
 
       correlQuote <- simpleQuote 0.1
-      lossModel <- gaussianLHPLossModel correlQuote (fromList (replicate poolSize recovery))
+      lossModel <- gaussianLhpLossModel correlQuote (fromList (replicate poolSize recovery))
       b <- basket refDate (fromList (zip names notionals)) p 0.0 0.03 FaceValue lossModel
 
       let futureDate = addGregorianYearsClip 5 refDate
@@ -335,8 +335,8 @@ spec = do
       let hs = fromList helpers
       fixedNarrow <- piecewiseDefaultCurve refDate hs helperDc [] HazardRate BackwardFlat
       fixedFull <- piecewiseDefaultCurveFull refDate hs helperDc [] HazardRate BackwardFlat defaultIterativeBootstrapOpts
-      movingNarrow <- piecewiseDefaultCurve' 0 cal hs helperDc [] HazardRate BackwardFlat
-      movingFull <- piecewiseDefaultCurveFull' 0 cal hs helperDc [] HazardRate BackwardFlat defaultIterativeBootstrapOpts
+      movingNarrow <- piecewiseDefaultCurveMoving 0 cal hs helperDc [] HazardRate BackwardFlat
+      movingFull <- piecewiseDefaultCurveFullMoving 0 cal hs helperDc [] HazardRate BackwardFlat defaultIterativeBootstrapOpts
 
       fixedNarrowP <- survivalProbability fixedNarrow queryDate False
       fixedFullP <- survivalProbability fixedFull queryDate False
@@ -408,7 +408,7 @@ spec = do
       forM_ (zip [0 :: Int ..] combinations) $ \(j, (trait, interpolation)) -> do
         curve <- if even j
           then piecewiseDefaultCurveFull refDate hs helperDc [] trait interpolation defaultIterativeBootstrapOpts
-          else piecewiseDefaultCurveFull' 0 cal hs helperDc [] trait interpolation defaultIterativeBootstrapOpts
+          else piecewiseDefaultCurveFullMoving 0 cal hs helperDc [] trait interpolation defaultIterativeBootstrapOpts
         forM_ spreads $ \(years, quotedSpread) -> do
           let protectionStart = addDays 1 refDate
               maturity = addGregorianYearsClip (fromIntegral years) refDate

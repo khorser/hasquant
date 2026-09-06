@@ -53,7 +53,7 @@ module QuantLib.Process
   , evolve
   , expectation
   , stdDeviation
-  , extOUWithJumpsProcess
+  , extOuWithJumpsProcess
   , factors
   , initialValues
   , g2ForwardProcess
@@ -67,7 +67,7 @@ module QuantLib.Process
   , hullWhiteForwardProcess
   , hullWhiteProcess
   , hybridHestonHullWhiteProcess
-  , klugeExtOUProcess
+  , klugeExtOuProcess
   , liborForwardModelProcess
   , fixingDates
   , fixingTimes
@@ -168,7 +168,7 @@ import Data.List.NonEmpty(NonEmpty, toList)
   ,`ProcessDiscretization',`ExtendedBlackScholesMertonProcessDiscretization',preErrorCheck-`String'errorCheck*-}->`GeneralizedBlackScholesProcess'peekGeneralizedBlackScholesProcess*#}
 
 -- |Garman-Kohlhagen (1983) process for an exchange rate: d(ln S) = (r - r_f - sigma^2\/2) dt + sigma dW.
-{#fun qlGarmanKohlagenProcess as garmanKohlhagenProcess{withQuote*`GenQuote q' -- ^x0
+{#fun qlGarmanKohlhagenProcess as garmanKohlhagenProcess{withQuote*`GenQuote q' -- ^x0
   ,withYieldTermStructure*`GenYieldTermStructure y1' -- ^foreignRiskFreeTS
   ,withYieldTermStructure*`GenYieldTermStructure y2' -- ^domesticRiskFreeTS
   ,withBlackVolTermStructure*`GenBlackVolTermStructure bv' -- ^blackVolTS
@@ -223,7 +223,7 @@ import Data.List.NonEmpty(NonEmpty, toList)
 
 -- |Kluge model: an extended Ornstein-Uhlenbeck process plus an exponential-jump component,
 -- S = exp(X + Y) with dX = alpha (mu(t) - X) dt + sigma dW and dY = -beta Y dt + J dN.
-{#fun qlExtOUWithJumpsProcess as extOUWithJumpsProcess{withGenStochasticProcess1D*`ExtendedOrnsteinUhlenbeckProcess',`Double' -- ^Y0
+{#fun qlExtOUWithJumpsProcess as extOuWithJumpsProcess{withGenStochasticProcess1D*`ExtendedOrnsteinUhlenbeckProcess',`Double' -- ^Y0
   ,`Double' -- ^beta
   ,`Double' -- ^jumpIntensity
   ,`Double' -- ^eta
@@ -541,8 +541,8 @@ covariance p t0 x0 dt = toMatrixDouble <$> qlStochasticProcessCovariance p t0 x0
   ,`Double' -- ^corrEquityShortRate
   ,`HybridHestonHullWhiteProcessDiscretization',preErrorCheck-`String'errorCheck*-}->`HybridHestonHullWhiteProcess'peekHybridHestonHullWhiteProcess*#}
 
--- |joint correlated Kluge ('extOUWithJumpsProcess') and extended Ornstein-Uhlenbeck process.
-{#fun qlKlugeExtOUProcess as klugeExtOUProcess{`Double' -- ^rho
+-- |joint correlated Kluge ('extOuWithJumpsProcess') and extended Ornstein-Uhlenbeck process.
+{#fun qlKlugeExtOUProcess as klugeExtOuProcess{`Double' -- ^rho
   ,withGenStochasticProcess*`ExtOUWithJumpsProcess',withGenStochasticProcess1D*`ExtendedOrnsteinUhlenbeckProcess',preErrorCheck-`String'errorCheck*-}->`KlugeExtOUProcess'peekKlugeExtOUProcess*#}
 
 -- |Libor market model process, evolving /size/ forward rates of /index/ under the rolling

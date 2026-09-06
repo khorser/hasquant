@@ -47,10 +47,10 @@ run = do
   npvSrc <- npvSourceCurrency fwd
   npvTgt <- npvTargetCurrency fwd
 
-  -- exercise the rate-based constructor (fxForward'): a contract struck at
+  -- exercise the rate-based constructor (fxForwardFromRate): a contract struck at
   -- the just-computed fair rate must have ~0 NPV, an economic invariant
   -- independent of the nominal-based constructor tested above.
-  fwdAtFairRate <- fxForward' sourceNominal eur usd ffr maturity True 2 cal
+  fwdAtFairRate <- fxForwardFromRate sourceNominal eur usd ffr maturity True 2 cal
   setPricingEngine fwdAtFairRate engine
   npvFair <- npv fwdAtFairRate
 

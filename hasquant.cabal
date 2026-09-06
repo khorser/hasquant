@@ -38,6 +38,7 @@ extra-source-files:
     cbits/qlTypesC2HS.h
     README.md
     cabal.project.local.WINDOWS
+    tools/api-name-map-0.7.txt
 extra-doc-files:
     CHANGELOG.md
     WINDOWS.md
@@ -240,6 +241,7 @@ test-suite hasquant_test
   type: exitcode-stdio-1.0
   main-is: QuantLib/MainTest.hs
   other-modules:
+      QuantLib.Spec.ApiNames
       QuantLib.Spec.Calendars
       QuantLib.Spec.Commodity
       QuantLib.Spec.Credit
@@ -317,8 +319,11 @@ test-suite hasquant_test
       HUnit >=1.6.2 && <1.7
     , QuickCheck >=2.14.2 && <2.19
     , base >=4.14 && <5
+    , directory >=1.3.6.0 && <1.4
+    , filepath >=1.4.2.1 && <1.6
     , hasquant
     , hspec >=2.7.10 && <2.12
+    , process >=1.6.13.2 && <1.7
     , time >=1.9.3 && <1.16
     , vector >=0.12.3 && <0.14
   default-language: Haskell2010

@@ -148,7 +148,7 @@ type CommodityCashFlows = [CommodityCashFlow]
 
 -- |The currency-resolved secondary costs computed during the most recent pricing
 -- (@performCalculations()@) of this 'Commodity'\/'EnergyCommodity' leaf -- a plain member read, not
--- itself a pricing trigger, so call 'QuantLib.Instrument.npv' first if it hasn't been priced yet.
+-- itself a pricing trigger, so call 'QuantLib.Instrument.npvWithZSpread first if it hasn't been priced yet.
 secondaryCostAmounts :: GenCommodity c -> IO SecondaryCostAmounts
 secondaryCostAmounts o = do
   (keys, amts, ccys) <- qlCommoditySecondaryCostAmounts_ o
@@ -225,7 +225,7 @@ energyFuture buySell (qCt, qUom, qAmt) (tpAmt, tpCcy, tpUom) index cmdType secCo
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |The per-day pricing breakdown computed during this 'EnergySwap' leaf's most recent
--- @performCalculations()@ -- populated only after pricing (call 'QuantLib.Instrument.npv' first).
+-- @performCalculations()@ -- populated only after pricing (call 'QuantLib.Instrument.npvWithZSpread first).
 dailyPositions :: GenEnergySwap s -> IO EnergyDailyPositions
 dailyPositions s = do
   (dates, qtyAmts, payPrices, recvPrices, riskDeltas, unrealized) <- qlEnergySwapDailyPositions_ s

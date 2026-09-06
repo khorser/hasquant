@@ -50,7 +50,7 @@ gaussian1dSpec =
 
         -- zerobond(maturity, y=0) must equal the curve's own discount factor.
         let maturity = addGregorianYearsClip 5 settlement
-        curveDf <- discount' ts maturity False
+        curveDf <- discountAtDate ts maturity False
         modelDf <- gaussian1dZerobond model maturity Nothing 0 Nothing
         modelDf `shouldSatisfy` closePrec curveDf 1.0e-6
 

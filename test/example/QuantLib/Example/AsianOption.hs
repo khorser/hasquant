@@ -27,7 +27,7 @@ import QuantLib.Syntax
 -- yield 6%, risk-free rate 2.5%, 11\/12y to maturity, 13% vol, expected NPV
 -- 1.7255070456. Cross-checks 'turnbullWakemanAsianEngine' and
 -- 'fdBlackScholesAsianEngine' (this module's two new engines) against the
--- already-bound 'mcDiscreteArithmeticAPEngine' on the same instrument.
+-- already-bound 'mcDiscreteArithmeticApEngine' on the same instrument.
 data Result = Result
   { twR :: Double
   , fdR :: Double
@@ -59,7 +59,7 @@ run = do
   QuantLib.Instrument.setPricingEngine option fdEng
   fd <- npv option
 
-  mcEng <- mcDiscreteArithmeticAPEngine LowDiscrepancy Statistics bsmProc False False True (Just 2047) Nothing Nothing 0
+  mcEng <- mcDiscreteArithmeticApEngine LowDiscrepancy Statistics bsmProc False False True (Just 2047) Nothing Nothing 0
   QuantLib.Instrument.setPricingEngine option mcEng
   mc <- npv option
 

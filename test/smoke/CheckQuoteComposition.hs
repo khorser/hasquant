@@ -19,7 +19,7 @@ import QuantLib.InterestRate
 import QuantLib.Quote
 import QuantLib.Settings
 import QuantLib.Time.Schedule
-import QuantLib.TermStructure.Yield(flatForward, discount')
+import QuantLib.TermStructure.Yield(flatForward, discountAtDate)
 
 
 import SmokeCheck
@@ -42,20 +42,20 @@ main = do
   checkClose "composite quote value" 0.0305 `flip` 1.0e-12 =<< value q
 
   curve <- flatForward evalDate q dc Continuous Annual
-  df0 <- discount' curve maturity True
+  df0 <- discountAtDate curve maturity True
   _ <- setValue base 0.04
-  df1 <- discount' curve maturity True
+  df1 <- discountAtDate curve maturity True
   checkWith "curve reprices after base quote moves"
     "discount factor must change, i.e. the curve heard the notification" (df0 /= df1)
   -- The whole point: not merely "different", but exactly the curve for the new composed rate.
   ref <- simpleQuote 0.0405 >>= \r -> flatForward evalDate r dc Continuous Annual
-  dfRef <- discount' ref maturity True
+  dfRef <- discountAtDate ref maturity True
   checkClose "curve matches the composed rate 0.0405" dfRef df1 1.0e-14
 
   _ <- setValue spread 0.001
-  df2 <- discount' curve maturity True
+  df2 <- discountAtDate curve maturity True
   ref2 <- simpleQuote 0.041 >>= \r -> flatForward evalDate r dc Continuous Annual
-  dfRef2 <- discount' ref2 maturity True
+  dfRef2 <- discountAtDate ref2 maturity True
   checkClose "curve matches after the spread quote moves too" dfRef2 df2 1.0e-14
 
   -- 2. Same, through an arbitrary Haskell function. Everything that reads the quote -- curve
@@ -64,11 +64,11 @@ main = do
   withDerivedQuote (* 1.5) base' $ \dq -> do
     checkClose "derived quote value" 0.045 `flip` 1.0e-12 =<< value dq
     curve' <- flatForward evalDate dq dc Continuous Annual
-    dfA <- discount' curve' maturity True
+    dfA <- discountAtDate curve' maturity True
     _ <- setValue base' 0.02
-    dfB <- discount' curve' maturity True
+    dfB <- discountAtDate curve' maturity True
     refB <- simpleQuote 0.03 >>= \r -> flatForward evalDate r dc Continuous Annual
-    dfRefB <- discount' refB maturity True
+    dfRefB <- discountAtDate refB maturity True
     checkWith "callback-derived curve moved" "discount factor must change" (dfA /= dfB)
     checkClose "callback-derived curve matches f(0.02) = 0.03" dfRefB dfB 1.0e-14
 

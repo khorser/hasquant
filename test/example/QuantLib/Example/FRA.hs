@@ -17,7 +17,7 @@ import QuantLib.Time.Schedule(TimeUnit(..), dayCounter, DayCounterConstructor(..
 import qualified QuantLib.InterestRate as IR
 import QuantLib.Quote
 import QuantLib.Settings
-import QuantLib.TermStructure.Yield(piecewiseYieldCurve, fraRateHelper, BootstrapTrait(..), zeroRate', PillarChoice(..))
+import QuantLib.TermStructure.Yield(piecewiseYieldCurve, fraRateHelper, BootstrapTrait(..), zeroRateAtDate, PillarChoice(..))
 import QuantLib.Math
 
 data IterationResult = IterationResult { fwdRateR :: Double
@@ -76,7 +76,7 @@ run = do
         fra <- forwardRateAgreement eu3m v m Long q notional (Just ts)
 
         fwdRate <- forwardRate fra
-        zRate <- zeroRate' ts m dc IR.Simple Annual False
+        zRate <- zeroRateAtDate ts m dc IR.Simple Annual False
         fraNPV <- npv fra
         return $ IterationResult (IR.rate fwdRate) (IR.rate zRate) fraNPV) $
          zip dates quotes

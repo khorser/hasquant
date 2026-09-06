@@ -64,7 +64,7 @@ main = do
   swpn2 <- nonstandardSwaption underlying2 ex Physical PhysicalOTC
 
   -- 1c. Vector gearing/spread ctor (full coverage; not used by the upstream example).
-  underlying3 <- nonstandardSwap' Payer nominalFixed (concatMap (\x -> [x, x]) nominalFixed) fixedSchedule strikes thirty360bb floatSchedule euribor6m (replicate (2 * n) 1.0) (replicate (2 * n) 0.0) act360 False False Nothing
+  underlying3 <- nonstandardSwapWithGearings Payer nominalFixed (concatMap (\x -> [x, x]) nominalFixed) fixedSchedule strikes thirty360bb floatSchedule euribor6m (replicate (2 * n) 1.0) (replicate (2 * n) 0.0) act360 False False Nothing
   _swpn3 <- nonstandardSwaption underlying3 ex Physical PhysicalOTC
 
   -- 2. From-Swaption ctor.
@@ -84,7 +84,7 @@ main = do
 
   swapBase <- IR.liborSwapIndex IR.EuriborSwapIsdaFixA (10, Years) (Just ts) (Just ts)
   swaptionVolQ <- simpleQuote 0.20
-  swaptionVolTS <- constantSwaptionVolatility 0 cal ModifiedFollowing swaptionVolQ dc365 ShiftedLognormal 0.0
+  swaptionVolTS <- constantSwaptionVolatilityMoving 0 cal ModifiedFollowing swaptionVolQ dc365 ShiftedLognormal 0.0
   basketNaive <- calibrationBasket swpn1 swapBase swaptionVolTS CalibrationBasketNaive
   basketMSDG <- calibrationBasket swpn1 swapBase swaptionVolTS MaturityStrikeByDeltaGamma
   putStrLn ("Naive basket size: " ++ show (length basketNaive))

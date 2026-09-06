@@ -15,7 +15,7 @@ import Language.Haskell.TH.Syntax
 import Language.Haskell.TH.Lib(DecsQ, TypeQ, ExpQ, conP, plainTV)
 import Data.List(isPrefixOf, isSuffixOf)
 import Data.Maybe(catMaybes)
-import Data.Char(toUpper)
+import Data.Char(isUpper, toLower, toUpper)
 import Control.Monad((>=>))
 import System.IO.Unsafe(unsafePerformIO)
 
@@ -315,10 +315,26 @@ deriveOptionsRecord recName tyVarNames fields = do
     ]
   where
     recTypeName = mkName recName
-    defaultName = mkName ("default" ++ recName)
+    defaultName = mkName ("default" ++ camelInitialism recName)
     fieldNames = [mkName n | (n, _, _) <- fields]
     -- lazy fields, unlike the strict (!) ones the two enum-merging functions above generate
     strictness = Bang NoSourceUnpackedness NoSourceStrictness
+
+-- Camel-case a leading acronym while leaving the type name itself alone:
+-- OISRateHelperOpts becomes the default-value stem OisRateHelperOpts, while
+-- IborLegOpts remains IborLegOpts.
+camelInitialism :: String -> String
+camelInitialism [] = []
+camelInitialism name =
+  case span isUpper name of
+    ([], _) -> name
+    ([c], rest) -> c : rest
+    (first : more, []) -> first : map toLower more
+    (first : more, rest) ->
+      case reverse more of
+        boundary : reversedMiddle ->
+          first : (map toLower (reverse reversedMiddle) ++ (boundary : rest))
+        [] -> first : rest
 
 -- A merged ADT from deriveCrossEnum/deriveIborConstructor can't get a plain `deriving
 -- (Read)` when any of its "extra" constructors carries a live QuantLib object (Calendar,

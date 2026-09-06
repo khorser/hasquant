@@ -316,7 +316,7 @@ spec = do
         opt <- discreteAveragingAsianOption Geometric 1.0 0 (discreteAsianFixingDates evalDate)
                                              (PlainVanilla (PlainVanillaPayoff Call 100.0))
                                              (europeanIn 360 evalDate)
-        mcEng <- mcDiscreteGeometricAPEngine LowDiscrepancy Statistics process True False (Just 8191) Nothing Nothing 42
+        mcEng <- mcDiscreteGeometricApEngine LowDiscrepancy Statistics process True False (Just 8191) Nothing Nothing 42
         setPricingEngine opt mcEng
         mc <- npv opt
         mc `shouldSatisfy` closePrec 5.3425606635 4.0e-3
@@ -377,7 +377,7 @@ spec = do
         opt <- discreteAveragingAsianOption Geometric 1.0 0 fixingDates
                                              (PlainVanilla (PlainVanillaPayoff Call 100.0))
                                              (europeanIn 1095 evalDate)
-        mcEng <- mcDiscreteGeometricAPHestonEngine LowDiscrepancy Statistics process True
+        mcEng <- mcDiscreteGeometricApHestonEngine LowDiscrepancy Statistics process True
                    (Just 8191) Nothing Nothing 43 Nothing Nothing
         setPricingEngine opt mcEng
         mc <- npv opt
@@ -407,7 +407,7 @@ spec = do
         opt <- discreteAveragingAsianOption Arithmetic 0.0 0 fixingDates
                                              (PlainVanilla (PlainVanillaPayoff Call 100.0))
                                              (European (EuropeanExercise (last fixingDates)))
-        eng <- mcDiscreteArithmeticAPHestonEngine LowDiscrepancy Statistics process False
+        eng <- mcDiscreteArithmeticApHestonEngine LowDiscrepancy Statistics process False
                  (Just 4095) Nothing Nothing 42 Nothing Nothing False
         setPricingEngine opt eng
         v <- npv opt
@@ -427,7 +427,7 @@ spec = do
           let len = 11 / 12 :: Double
               dt = len / fromIntegral (fixings - 1 :: Int)
               fixingDates = [dateOffset evalDate (fromIntegral i * dt) | i <- [0 .. fixings - 1 :: Int]]
-          eng <- mcDiscreteArithmeticASEngine LowDiscrepancy Statistics process True False (Just 1023) Nothing Nothing 3456789
+          eng <- mcDiscreteArithmeticAsEngine LowDiscrepancy Statistics process True False (Just 1023) Nothing Nothing 3456789
           opt <- discreteAveragingAsianOption Arithmetic 0.0 0 fixingDates
                                                (PlainVanilla (PlainVanillaPayoff Call 87.0))
                                                (europeanIn (round (len * 360)) evalDate)
@@ -704,7 +704,7 @@ spec = do
   describe "MargrabeOption" $ do
     -- cached references from QuantLib test-suite/margrabeoption.cpp::testEuroExchangeTwoAssets
     -- (Margrabe 1978 p.52, plus quantity variants from Excel calculations). theta/rho aren't
-    -- checked here: MargrabeOption only has dedicated delta1/delta2/gamma1/gamma2 bound, not
+    -- checked here: MargrabeOption only has dedicated firstAssetDelta/secondAssetDelta/firstAssetGamma/secondAssetGamma bound, not
     -- the generic MultiAssetOption theta/rho (those need an upcast this step doesn't add).
     mapM_ (\(s1, s2, q1n, q2n, div1, div2, r, t, v1, v2, correlation, expV, expD1, expD2, expG1, expG2) ->
       it ("matches the European exchange-option value/greeks at s1=" ++ show s1 ++ " s2=" ++ show s2 ++ " rho=" ++ show correlation) $
@@ -717,10 +717,10 @@ spec = do
           opt <- margrabeOption q1n q2n (europeanIn (round (t * 360 :: Double)) evalDate)
           setPricingEngine opt eng
           v <- npv opt
-          d1 <- delta1 opt
-          d2 <- delta2 opt
-          g1 <- gamma1 opt
-          g2 <- gamma2 opt
+          d1 <- firstAssetDelta opt
+          d2 <- secondAssetDelta opt
+          g1 <- firstAssetGamma opt
+          g2 <- secondAssetGamma opt
           v `shouldSatisfy` closePrec expV 1.0e-3
           d1 `shouldSatisfy` closePrec expD1 1.0e-3
           d2 `shouldSatisfy` closePrec expD2 1.0e-3

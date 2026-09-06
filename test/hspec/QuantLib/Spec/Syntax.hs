@@ -11,7 +11,7 @@ import Data.Time.Calendar
 import QuantLib.Time.Date as Date
 import QuantLib.Type
 import qualified QuantLib.Settings as Settings
-import QuantLib.Syntax(free1st, free2nd, cutAt, cutAt', cut)
+import QuantLib.Syntax(free1st, free2nd, cutAt, cutAtWithArity, cut)
 import QuantLib.Example.SyntaxHelpers(syntaxTestF, HasSyntaxLabel(..))
 
 import QuantLib.Spec.Helpers(ValidDay(..), InvalidDay(..))
@@ -35,9 +35,9 @@ spec = do
         $(cut [| syntaxTestF _a 2 _a 4 |]) 1 `shouldBe` syntaxTestF 1 2 1 4
       it "cut orders shared holes by first occurrence" $
         $(cut [| syntaxTestF _b 2 _a _b |]) 1 3 `shouldBe` syntaxTestF 1 2 3 1
-      it "cutAt, cutAt' and cut all work on a typeclass method" $ do
+      it "cutAt, cutAtWithArity and cut all work on a typeclass method" $ do
         $(cutAt [1] 'syntaxLabelWith) 1 2 3 True `shouldBe` syntaxLabelWith True 1 2 3
-        $(cutAt' [1] 4) syntaxLabelWith 1 2 3 True `shouldBe` syntaxLabelWith True 1 2 3
+        $(cutAtWithArity [1] 4) syntaxLabelWith 1 2 3 True `shouldBe` syntaxLabelWith True 1 2 3
         $(cut [| syntaxLabelWith _ 1 2 3 |]) True `shouldBe` syntaxLabelWith True 1 2 3
 
     describe "settings" $ do

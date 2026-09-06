@@ -36,7 +36,7 @@ import QuantLib.Instrument.Option(vanillaOption, EuropeanExercise(..), PlainVani
 import qualified QuantLib.Instrument.Forward as Fwd
 import QuantLib.Process(blackScholesMertonProcess, ProcessDiscretization(EulerDiscretization), hestonProcess, HestonProcessDiscretization(..))
 import qualified QuantLib.TermStructure.Volatility as Vol
-import QuantLib.PricingEngine(discountingSwapEngine, analyticEuropeanEngine, blackSwaptionEngine', blackCapFloorEngine', bachelierSwaptionEngine', bachelierCapFloorEngine', bjerksundStenslandApproximationEngine, analyticHestonEngine, IntegrationControl(..), fdHestonVanillaEngine)
+import QuantLib.PricingEngine(discountingSwapEngine, analyticEuropeanEngine, blackSwaptionEngineWithVolatilityStructure, blackCapFloorEngineWithVolatilityStructure, bachelierSwaptionEngineWithVolatilityStructure, bachelierCapFloorEngineWithVolatilityStructure, bjerksundStenslandApproximationEngine, analyticHestonEngine, IntegrationControl(..), fdHestonVanillaEngine)
 
 import QuantLib.Spec.Helpers(areClose, closePrec)
 
@@ -81,7 +81,7 @@ spec = do
             swaps <- mapM
               (\(n, u, r) -> do
                 q <- Quote.simpleQuote (r/100)
-                swapRateHelper' q (n, u) cal Annual Unadjusted thirty360dc index Nothing (0, Days) Nothing
+                swapRateHelperWithConventions q (n, u) cal Annual Unadjusted thirty360dc index Nothing (0, Days) Nothing
                   Nothing LastRelevantDate Nothing False Nothing Nothing Nothing >>= asRateHelper)
               swapData
 
@@ -93,12 +93,12 @@ spec = do
         flatRate <- Quote.simpleQuote 0.03
         cal <- calendar Null
         actual360dc <- dayCounter (Actual360 False)
-        ts <- flatForward' settlementDays cal flatRate actual360dc IR.Continuous Annual
+        ts <- flatForwardMoving settlementDays cal flatRate actual360dc IR.Continuous Annual
         td <- Settings.evaluationDate
 
-        expected <- mapM (\d -> discount' ts (addDays d td) False) ds
+        expected <- mapM (\d -> discountAtDate ts (addDays d td) False) ds
         Settings.setEvaluationDate (Just $ addDays 30 td)
-        calculated <- mapM (\d -> discount' ts (addDays (30+d) td) False) ds
+        calculated <- mapM (\d -> discountAtDate ts (addDays (30+d) td) False) ds
 
         mapM_ (\(x1, x2) -> x1 `shouldSatisfy` areClose x2) (zip expected calculated)
 
@@ -110,9 +110,9 @@ spec = do
           newSettlement <- advance cal newToday (fromIntegral settlementDays, Days) Following False
           let testDate = addGregorianYearsClip 5 newSettlement
           implied <- impliedTermStructure ts newSettlement
-          baseDiscount <- discount' ts newSettlement False
-          dsc <- discount' ts testDate False
-          impliedDiscount <- discount' implied testDate False
+          baseDiscount <- discountAtDate ts newSettlement False
+          dsc <- discountAtDate ts testDate False
+          impliedDiscount <- discountAtDate implied testDate False
 
           (dsc - baseDiscount * impliedDiscount) `shouldSatisfy` (<= 1.0e-10)
 
@@ -125,8 +125,8 @@ spec = do
           refDate <- asTermStructure ts >>= referenceDate
           let testDate = addGregorianYearsClip 5 refDate
           actual360dc <- dayCounter (Actual360 False)
-          forward <- IR.rate <$> forwardRate' ts testDate testDate actual360dc IR.Continuous NoFrequency False
-          spreadedForward <- IR.rate <$> forwardRate' spreaded testDate testDate actual360dc IR.Continuous NoFrequency False
+          forward <- IR.rate <$> forwardRateBetweenDates ts testDate testDate actual360dc IR.Continuous NoFrequency False
+          spreadedForward <- IR.rate <$> forwardRateBetweenDates spreaded testDate testDate actual360dc IR.Continuous NoFrequency False
 
           (forward - (spreadedForward - val)) `shouldSatisfy` (<= 1.0e-10)
       it "z-spreaded" $
@@ -138,8 +138,8 @@ spec = do
           spreaded <- zeroSpreadedTermStructure ts q IR.Continuous NoFrequency
           refDate <- asTermStructure ts >>= referenceDate
           let testDate = addGregorianYearsClip 5 refDate
-          zero <- IR.rate <$> zeroRate' ts testDate actual360dc IR.Continuous NoFrequency False
-          spreadedZero <- IR.rate <$> zeroRate' spreaded testDate actual360dc IR.Continuous NoFrequency False
+          zero <- IR.rate <$> zeroRateAtDate ts testDate actual360dc IR.Continuous NoFrequency False
+          spreadedZero <- IR.rate <$> zeroRateAtDate spreaded testDate actual360dc IR.Continuous NoFrequency False
 
           (zero - (spreadedZero - val)) `shouldSatisfy` (<= 1.0e-10)
 
@@ -154,9 +154,9 @@ spec = do
           c1 <- flatForward refDate q1 dc IR.Continuous NoFrequency
           c2 <- flatForward refDate q2 dc IR.Continuous NoFrequency
           withCompositeZeroYieldStructure (-) c1 c2 IR.Continuous NoFrequency $ \composite -> do
-            initial <- IR.rate <$> zeroRate' composite queryDate dc IR.Continuous NoFrequency False
+            initial <- IR.rate <$> zeroRateAtDate composite queryDate dc IR.Continuous NoFrequency False
             _ <- Quote.setValue q1 0.04
-            updated <- IR.rate <$> zeroRate' composite queryDate dc IR.Continuous NoFrequency False
+            updated <- IR.rate <$> zeroRateAtDate composite queryDate dc IR.Continuous NoFrequency False
             initial `shouldSatisfy` closePrec 0.02 (1.0e-6 * 0.02)
             updated `shouldSatisfy` closePrec 0.03 (1.0e-6 * 0.03)
 
@@ -173,13 +173,13 @@ spec = do
           spreaded <- piecewiseZeroSpreadedTermStructure ts (fromList [(refDate, q), (d1, q)]) IR.Continuous NoFrequency Linear
           actual360dc <- dayCounter (Actual360 False)
           let testDate = addGregorianYearsClip 5 refDate
-          zero <- IR.rate <$> zeroRate' ts testDate actual360dc IR.Continuous NoFrequency False
-          spreadedZero <- IR.rate <$> zeroRate' spreaded testDate actual360dc IR.Continuous NoFrequency False
+          zero <- IR.rate <$> zeroRateAtDate ts testDate actual360dc IR.Continuous NoFrequency False
+          spreadedZero <- IR.rate <$> zeroRateAtDate spreaded testDate actual360dc IR.Continuous NoFrequency False
           (zero - (spreadedZero - val)) `shouldSatisfy` (<= 1.0e-10)
 
           -- spot-check a second interpolation builds and queries without crashing
           spreadedCubic <- piecewiseZeroSpreadedTermStructure ts (fromList [(refDate, q), (d1, q)]) IR.Continuous NoFrequency (Cubic Kruger)
-          cubicZero <- IR.rate <$> zeroRate' spreadedCubic testDate actual360dc IR.Continuous NoFrequency False
+          cubicZero <- IR.rate <$> zeroRateAtDate spreadedCubic testDate actual360dc IR.Continuous NoFrequency False
           cubicZero `shouldSatisfy` (not . isNaN)
 
       -- Mirrors upstream's ultimateforwardtermstructure.cpp testZeroRateAtFirstSmoothingPoint:
@@ -196,8 +196,8 @@ spec = do
               cutOffDate = addGregorianYearsClip 10 refDate
           ufrTs <- ultimateForwardTermStructure ts llfr ufr fsp 0.1 Nothing IR.Compounded Annual
 
-          base <- IR.rate <$> zeroRate' ts cutOffDate actual360dc IR.Continuous NoFrequency True
-          extrap <- IR.rate <$> zeroRate' ufrTs cutOffDate actual360dc IR.Continuous NoFrequency True
+          base <- IR.rate <$> zeroRateAtDate ts cutOffDate actual360dc IR.Continuous NoFrequency True
+          extrap <- IR.rate <$> zeroRateAtDate ufrTs cutOffDate actual360dc IR.Continuous NoFrequency True
 
           extrap `shouldSatisfy` closePrec base 1.0e-8
 
@@ -216,7 +216,7 @@ spec = do
               farDate = addGregorianYearsClip 150 refDate
           ufrTs <- ultimateForwardTermStructure ts llfr ufr fsp 0.1 Nothing IR.Compounded Annual
 
-          farZero <- IR.rate <$> zeroRate' ufrTs farDate actual360dc IR.Continuous NoFrequency True
+          farZero <- IR.rate <$> zeroRateAtDate ufrTs farDate actual360dc IR.Continuous NoFrequency True
           farZero `shouldSatisfy` closePrec ufrVal 3.0e-3
 
       -- Multiplicative discount spread: at the input node dates the spread curve's own discount
@@ -231,8 +231,8 @@ spec = do
               spreadDf1 = 0.95
           spreaded <- interpolatedSpreadDiscountCurve ts [(refDate, 1.0), (d1, spreadDf1), (d2, 0.90)] Linear
 
-          baseD1 <- discount' ts d1 False
-          spreadedD1 <- discount' spreaded d1 False
+          baseD1 <- discountAtDate ts d1 False
+          spreadedD1 <- discountAtDate spreaded d1 False
 
           spreadedD1 `shouldSatisfy` closePrec (baseD1 * spreadDf1) 1.0e-8
 
@@ -256,7 +256,7 @@ spec = do
 
           ccy <- currency EUR
           ibor <- iborIndex (Ibor "dummy" (6, Months) 2 ccy cal ModifiedFollowing False actual360dc) Nothing
-          vanilla <- swapRateHelper' q (5, Years) cal Annual Unadjusted thirty360dc ibor Nothing (0, Days) Nothing
+          vanilla <- swapRateHelperWithConventions q (5, Years) cal Annual Unadjusted thirty360dc ibor Nothing (0, Days) Nothing
             Nothing LastRelevantDate Nothing False Nothing Nothing Nothing >>= swapRateHelperSwap
           (Swap.asSwap vanilla >>= Swap.maturityDate) `shouldReturn` Just (4 `january` 2029)
 
@@ -292,10 +292,10 @@ spec = do
             [((2, Years), 0.03), ((5, Years), 0.035), ((10, Years), 0.04)]
           curve <- do
             let optMethod = Simplex 0.1
-            fittedBondDiscountCurve 3 cal (fromList helpers) thirty360dc
+            fittedBondDiscountCurveMoving 3 cal (fromList helpers) thirty360dc
               (ExponentialSplines True [] [] 0.0 1.0e6 9 Nothing Nothing (Just optMethod))
               1.0e-10 10000 [] 1.0
-          d <- discount' curve (5 `january` 2029) False
+          d <- discountAtDate curve (5 `january` 2029) False
           d `shouldSatisfy` (\x -> x > 0 && x < 1)
 
     -- No upstream test-suite fixture exists for FxSwapRateHelper (unlike the other rate
@@ -315,7 +315,7 @@ spec = do
           let fixingDays = 2 :: Word
           settlement <- advance cal (2 `january` 2024) (2, Days) Following False
           collRate <- Quote.simpleQuote 0.03
-          collateralCurve <- flatForward' fixingDays cal collRate actual360dc IR.Continuous Annual
+          collateralCurve <- flatForwardMoving fixingDays cal collRate actual360dc IR.Continuous Annual
           spotFx <- Quote.simpleQuote 1.10
           fwdPoint <- Quote.simpleQuote 0.0025
           rh <- fxSwapRateHelper fwdPoint spotFx (1, Years) fixingDays cal ModifiedFollowing False
@@ -324,7 +324,7 @@ spec = do
           -- PiecewiseYieldCurve is a lazy QuantLib object: bootstrapping (and the
           -- setTermStructure call on each helper) only runs on first calculation, not on
           -- construction, so the curve must be queried before impliedQuote is meaningful.
-          _ <- discount' ts settlement False
+          _ <- discountAtDate ts settlement False
           implied <- impliedQuote rh
           fwdVal <- Quote.value fwdPoint
           implied `shouldSatisfy` closePrec fwdVal 1.0e-8
@@ -352,7 +352,7 @@ spec = do
             [(1, Years), (2, Years), (3, Years)]
 
           ts <- piecewiseYieldCurve today' (fromList helpers) actual360dc [] Discount LogLinear
-          _ <- discount' ts today' False
+          _ <- discountAtDate ts today' False
           implieds <- mapM impliedQuote helpers
           mapM_ (`shouldSatisfy` closePrec inputRate 1.0e-6) implieds
 
@@ -376,7 +376,7 @@ spec = do
           price <- Quote.simpleQuote 95.0
           rh <- overnightIndexFutureRateHelper price valueDate maturityDate ois Nothing AveragingCompound LastRelevantDate Nothing
           ts <- piecewiseYieldCurve valueDate [rh] actual360dc [] Discount LogLinear
-          _ <- discount' ts valueDate False
+          _ <- discountAtDate ts valueDate False
           implied <- impliedQuote rh
           priceVal <- Quote.value price
           implied `shouldSatisfy` closePrec priceVal 1.0e-6
@@ -424,7 +424,7 @@ spec = do
           price <- Quote.simpleQuote 95.0
           rh <- sofrFutureRateHelper price QuantLib.Time.Date.March 2024 Quarterly Nothing LastRelevantDate Nothing
           ts <- piecewiseYieldCurve settlement [rh] actual360dc [] Discount LogLinear
-          _ <- discount' ts settlement False
+          _ <- discountAtDate ts settlement False
           implied <- impliedQuote rh
           priceVal <- Quote.value price
           implied `shouldSatisfy` closePrec priceVal 1.0e-6
@@ -448,11 +448,11 @@ spec = do
 
           sofrRh <- sofrFutureRateHelper price QuantLib.Time.Date.March 2024 Quarterly Nothing LastRelevantDate Nothing
           sofrTs <- piecewiseYieldCurve settlement [sofrRh] actual360dc [] Discount LogLinear
-          sofrDf <- discount' sofrTs maturityDate False
+          sofrDf <- discountAtDate sofrTs maturityDate False
 
           explicitRh <- overnightIndexFutureRateHelper price valueDate maturityDate ois Nothing AveragingCompound LastRelevantDate Nothing
           explicitTs <- piecewiseYieldCurve settlement [explicitRh] actual360dc [] Discount LogLinear
-          explicitDf <- discount' explicitTs maturityDate False
+          explicitDf <- discountAtDate explicitTs maturityDate False
 
           sofrDf `shouldSatisfy` closePrec explicitDf 1.0e-8
 
@@ -597,9 +597,9 @@ spec = do
             cal <- Calendar.calendar TARGET
             dc <- dayCounter Actual365FixedStandard
             volQ <- Quote.simpleQuote 0.20
-            vol0 <- Vol.constantSwaptionVolatility' (11 `december` 2012) cal ModifiedFollowing volQ dc IR.ShiftedLognormal 0
+            vol0 <- Vol.constantSwaptionVolatility (11 `december` 2012) cal ModifiedFollowing volQ dc IR.ShiftedLognormal 0
             volH <- Vol.relinkableSwaptionVolatilityStructure (Just vol0)
-            eng <- blackSwaptionEngine' discountH volH
+            eng <- blackSwaptionEngineWithVolatilityStructure discountH volH
             -- the Black swaption engine requires a spot-starting swaption: the exercise date
             -- must fall on or before the swap's start date (13 december 2012)
             swpn <- swaption sw (European (EuropeanExercise (12 `december` 2012))) Physical PhysicalOTC
@@ -614,7 +614,7 @@ spec = do
           cal <- Calendar.calendar TARGET
           dc <- dayCounter Actual365FixedStandard
           q <- Quote.simpleQuote 0.60
-          vol1 <- Vol.constantSwaptionVolatility' (11 `december` 2012) cal ModifiedFollowing q dc IR.ShiftedLognormal 0
+          vol1 <- Vol.constantSwaptionVolatility (11 `december` 2012) cal ModifiedFollowing q dc IR.ShiftedLognormal 0
           Vol.linkSwaptionVolTo volH vol1
           npvAfter <- npv swpn
           abs (npvAfter - npvBefore) `shouldSatisfy` (> 0.5)
@@ -636,7 +636,7 @@ spec = do
             volQ <- Quote.simpleQuote 0.20
             vol0 <- Vol.constantOptionletVolatility (11 `december` 2012) cal ModifiedFollowing volQ dc IR.ShiftedLognormal 0
             volH <- Vol.relinkableOptionletVolatilityStructure (Just vol0)
-            eng <- blackCapFloorEngine' discountH volH
+            eng <- blackCapFloorEngineWithVolatilityStructure discountH volH
             setPricingEngine capfl eng
             pure (capfl, volH)
 
@@ -676,18 +676,18 @@ spec = do
 
           flatVolQ <- Quote.simpleQuote 0.18
           let volMatrix = either error id $ objectMatrix 10 3 (replicate 30 flatVolQ)
-          capVolSurface <- Vol.capFloorTermVolSurface 0 cal Following
+          capVolSurface <- Vol.capFloorTermVolSurfaceMoving 0 cal Following
             [(n, Years) | n <- [1 .. 10]] [0.02, 0.05, 0.08] volMatrix dc
-          strippedVol <- Vol.optionletStripper1 capVolSurface idx Nothing 1.0e-6 100
+          strippedVol <- Vol.optionletStripper capVolSurface idx Nothing 1.0e-6 100
             (Just discountH) IR.ShiftedLognormal 0 False Nothing
-          strippedEng <- blackCapFloorEngine' discountH strippedVol
+          strippedEng <- blackCapFloorEngineWithVolatilityStructure discountH strippedVol
           setPricingEngine capfl strippedEng
           priceStripped <- npv capfl
 
           constVolQ <- Quote.simpleQuote 0.18
           constVol <- Vol.constantOptionletVolatility (11 `december` 2012) cal Following constVolQ dc
             IR.ShiftedLognormal 0
-          constEng <- blackCapFloorEngine' discountH constVol
+          constEng <- blackCapFloorEngineWithVolatilityStructure discountH constVol
           setPricingEngine capfl constEng
           priceConst <- npv capfl
 
@@ -708,7 +708,7 @@ spec = do
 
           flatVolQ <- Quote.simpleQuote 0.18
           let volMatrix = either error id $ objectMatrix 10 3 (replicate 30 flatVolQ)
-          capVolSurface <- Vol.capFloorTermVolSurface 0 cal Following tenors [0.02, 0.05, 0.08] volMatrix dc
+          capVolSurface <- Vol.capFloorTermVolSurfaceMoving 0 cal Following tenors [0.02, 0.05, 0.08] volMatrix dc
           volFromSurface <- Vol.capFloorVolatilityForPeriod capVolSurface (5, Years) 0.05 False
           volFromSurface `shouldBe` 0.18
           surfaceDates <- Vol.capFloorTermVolSurfaceOptionDates capVolSurface
@@ -717,7 +717,7 @@ spec = do
           length surfaceTimes `shouldBe` 10
 
           curveVolQ <- mapM (const (Quote.simpleQuote 0.18)) tenors
-          capVolCurve <- Vol.capFloorTermVolCurve 0 cal Following (fromList $ zipWith (\(n, u) q -> (n, u, q)) tenors curveVolQ) dc
+          capVolCurve <- Vol.capFloorTermVolCurveMoving 0 cal Following (fromList $ zipWith (\(n, u) q -> (n, u, q)) tenors curveVolQ) dc
           volFromCurve <- Vol.capFloorVolatilityForPeriod capVolCurve (5, Years) 0.05 False
           volFromCurve `shouldBe` 0.18
           curveDates <- Vol.capFloorTermVolCurveOptionDates capVolCurve
@@ -726,7 +726,7 @@ spec = do
           length curveTimes `shouldBe` 10
 
           constVolQ <- Quote.simpleQuote 0.18
-          constVol <- Vol.constantCapFloorTermVolatility 0 cal Following constVolQ dc
+          constVol <- Vol.constantCapFloorTermVolatilityMoving 0 cal Following constVolQ dc
           volFromConst <- Vol.capFloorVolatilityForPeriod constVol (5, Years) 0.05 False
           volFromConst `shouldBe` 0.18
 
@@ -746,7 +746,7 @@ spec = do
           -- 'volatility' needs (via optionDateFromTenor); use the
           -- floating-reference-date overload with an explicit calendar instead, exactly as
           -- the cap/floor test above does for 'constantCapFloorTermVolatility'.
-          cbVol <- Vol.callableBondConstantVolatility' 0 cal cbVolQ dc
+          cbVol <- Vol.callableBondConstantVolatilityMoving 0 cal cbVolQ dc
           let optionDate = addDays (365 * 3) evalDate
               optionTime = 3.0 :: Double
               bondLength = 5.0 :: Double
@@ -764,8 +764,8 @@ spec = do
           varDate `shouldSatisfy` closePrec varTime 1.0e-6
           varPeriod <- Vol.blackVariance cbVol optionTenor bondTenor 0.05 False
           varPeriod `shouldSatisfy` closePrec varTime 1.0e-6
-          _smileByDate <- Vol.callableBondSmileSectionForDate cbVol optionDate bondTenor
-          _smileByPeriod <- Vol.callableBondSmileSectionForPeriod cbVol optionTenor bondTenor
+          _smileByDate <- Vol.callableBondSmileSectionAtDate cbVol optionDate bondTenor
+          _smileByPeriod <- Vol.callableBondSmileSectionForTenors cbVol optionTenor bondTenor
           maxTenor <- Vol.maxBondTenor cbVol
           maxTenor `shouldBe` (100, Years)
           minK <- Vol.minStrike cbVol
@@ -796,30 +796,30 @@ spec = do
 
           flatVolQ <- Quote.simpleQuote 0.18
           let volMatrix = either error id $ objectMatrix 10 3 (replicate 30 flatVolQ)
-          capVolSurface <- Vol.capFloorTermVolSurface 0 cal Following tenors [0.02, 0.05, 0.08] volMatrix dc
+          capVolSurface <- Vol.capFloorTermVolSurfaceMoving 0 cal Following tenors [0.02, 0.05, 0.08] volMatrix dc
           curveVolQs <- mapM (const (Quote.simpleQuote 0.18)) tenors
-          capVolCurve <- Vol.capFloorTermVolCurve 0 cal Following (fromList $ zipWith (\(n, u) q -> (n, u, q)) tenors curveVolQs) dc
+          capVolCurve <- Vol.capFloorTermVolCurveMoving 0 cal Following (fromList $ zipWith (\(n, u) q -> (n, u, q)) tenors curveVolQs) dc
 
-          stripper1 <- Vol.optionletStripper1 capVolSurface idx Nothing 1.0e-6 100
+          stripper1 <- Vol.optionletStripper capVolSurface idx Nothing 1.0e-6 100
             (Just discountH) IR.ShiftedLognormal 0 False Nothing
-          stripper2 <- Vol.optionletStripper2 capVolSurface idx Nothing 1.0e-6 100
+          stripper2 <- Vol.optionletStripperWithAtm capVolSurface idx Nothing 1.0e-6 100
             (Just discountH) IR.ShiftedLognormal 0 False Nothing capVolCurve
-          vol2 <- Vol.optionletStripper2AsOptionletVolatilityStructure stripper2
+          vol2 <- Vol.asOptionletVolatilityStructure stripper2
 
-          eng1 <- blackCapFloorEngine' discountH stripper1
+          eng1 <- blackCapFloorEngineWithVolatilityStructure discountH stripper1
           setPricingEngine capfl eng1
           price1 <- npv capfl
 
-          eng2 <- blackCapFloorEngine' discountH vol2
+          eng2 <- blackCapFloorEngineWithVolatilityStructure discountH vol2
           setPricingEngine capfl eng2
           price2 <- npv capfl
 
           price1 `shouldSatisfy` (> 1)
           abs (price1 - price2) / abs price1 `shouldSatisfy` (< 1.0e-5)
 
-          atmStrikes <- Vol.optionletStripper2AtmCapFloorStrikes stripper2
-          atmPrices <- Vol.optionletStripper2AtmCapFloorPrices stripper2
-          spreadsVol <- Vol.optionletStripper2SpreadsVol stripper2
+          atmStrikes <- Vol.atmCapFloorStrikes stripper2
+          atmPrices <- Vol.atmCapFloorPrices stripper2
+          spreadsVol <- Vol.spreadsVol stripper2
           length atmStrikes `shouldBe` 10
           length atmPrices `shouldBe` 10
           length spreadsVol `shouldBe` 10
@@ -895,17 +895,17 @@ spec = do
           swpn <- swaption sw (European (EuropeanExercise (12 `december` 2012))) Physical PhysicalOTC
 
           normalVolQ <- Quote.simpleQuote 0.0075
-          normalVol <- Vol.constantSwaptionVolatility' (11 `december` 2012) cal ModifiedFollowing normalVolQ dc IR.Normal 0
+          normalVol <- Vol.constantSwaptionVolatility (11 `december` 2012) cal ModifiedFollowing normalVolQ dc IR.Normal 0
           normalVolH <- Vol.relinkableSwaptionVolatilityStructure (Just normalVol)
-          bachelierEng <- bachelierSwaptionEngine' discountH normalVolH
+          bachelierEng <- bachelierSwaptionEngineWithVolatilityStructure discountH normalVolH
           setPricingEngine swpn bachelierEng
           npvBachelier <- npv swpn
           npvBachelier `shouldSatisfy` (not . isNaN)
 
           lognormalVolQ <- Quote.simpleQuote 0.20
-          lognormalVol <- Vol.constantSwaptionVolatility' (11 `december` 2012) cal ModifiedFollowing lognormalVolQ dc IR.ShiftedLognormal 0
+          lognormalVol <- Vol.constantSwaptionVolatility (11 `december` 2012) cal ModifiedFollowing lognormalVolQ dc IR.ShiftedLognormal 0
           lognormalVolH <- Vol.relinkableSwaptionVolatilityStructure (Just lognormalVol)
-          blackEng <- blackSwaptionEngine' discountH lognormalVolH
+          blackEng <- blackSwaptionEngineWithVolatilityStructure discountH lognormalVolH
           setPricingEngine swpn blackEng
           npvBlack <- npv swpn
           npvBlack `shouldSatisfy` (not . isNaN)
@@ -929,7 +929,7 @@ spec = do
           normalVolQ <- Quote.simpleQuote 0.0075
           normalVol <- Vol.constantOptionletVolatility (11 `december` 2012) cal ModifiedFollowing normalVolQ dc IR.Normal 0
           normalVolH <- Vol.relinkableOptionletVolatilityStructure (Just normalVol)
-          bachelierEng <- bachelierCapFloorEngine' discountH normalVolH
+          bachelierEng <- bachelierCapFloorEngineWithVolatilityStructure discountH normalVolH
           setPricingEngine capfl bachelierEng
           npvBachelier <- npv capfl
           npvBachelier `shouldSatisfy` (not . isNaN)
@@ -937,7 +937,7 @@ spec = do
           lognormalVolQ <- Quote.simpleQuote 0.20
           lognormalVol <- Vol.constantOptionletVolatility (11 `december` 2012) cal ModifiedFollowing lognormalVolQ dc IR.ShiftedLognormal 0
           lognormalVolH <- Vol.relinkableOptionletVolatilityStructure (Just lognormalVol)
-          blackEng <- blackCapFloorEngine' discountH lognormalVolH
+          blackEng <- blackCapFloorEngineWithVolatilityStructure discountH lognormalVolH
           setPricingEngine capfl blackEng
           npvBlack <- npv capfl
           npvBlack `shouldSatisfy` (not . isNaN)
@@ -986,7 +986,7 @@ spec = do
             thirty360 <- dayCounter Thirty360BondBasis
             settleFix <- advance cal curveToday (2, Days) Following False
             discQ <- Quote.simpleQuote 0.02
-            discountCurve <- flatForward' 0 cal discQ euriborDC IR.Continuous Annual
+            discountCurve <- flatForwardMoving 0 cal discQ euriborDC IR.Continuous Annual
             -- the internal handles: empty until addBootstrappedCurve links them below
             intcurve3m <- relinkableYieldTermStructure Nothing
             intcurve6m <- relinkableYieldTermStructure Nothing
@@ -997,9 +997,9 @@ spec = do
             helpers3mFra <- mapM (\i -> fraRateHelper q i (i + 3) 2 cal ModifiedFollowing True euriborDC LastRelevantDate Nothing False) [1 .. 9]
             helpers3mBasis <- mapM (\i -> iborIborBasisSwapRateHelper b (i, Years) 2 cal ModifiedFollowing True euribor3m euribor6m discountCurve True) [2 .. 10]
             helpers6mBasis <- mapM (\i -> iborIborBasisSwapRateHelper b (i * 6, Months) 2 cal ModifiedFollowing True euribor3m euribor6m discountCurve False) [1 .. 3]
-            helpers6mSwap <- mapM (\i -> swapRateHelper' q (i, Years) cal Annual Following thirty360 euribor6m Nothing (0, Days) (Just discountCurve)
+            helpers6mSwap <- mapM (\i -> swapRateHelperWithConventions q (i, Years) cal Annual Following thirty360 euribor6m Nothing (0, Days) (Just discountCurve)
                                             Nothing LastRelevantDate Nothing False Nothing Nothing Nothing) [2 .. 10]
-              >>= mapM asRateHelper -- swapRateHelper' returns the concrete SwapRateHelper; upcast to the generic RateHelper the other helpers already are, so the list below is homogeneous
+              >>= mapM asRateHelper -- swapRateHelperWithConventions returns the concrete SwapRateHelper; upcast to the generic RateHelper the other helpers already are, so the list below is homogeneous
             -- helpers3m/helpers6m each reference the *other* curve's not-yet-bootstrapped
             -- internal handle (via euribor3m/euribor6m) -- this is exactly the cycle a plain
             -- piecewiseYieldCurveMoving with IterativeBootstrap can't resolve.
@@ -1079,7 +1079,7 @@ spec = do
             b <- Quote.simpleQuote (-0.01)
             -- these helpers discount off intcurveois, which is not yet linked to anything --
             -- it is itself a spread over the curve being bootstrapped from these very helpers.
-            helpers3m <- mapM (\i -> swapRateHelper' q (i, Years) cal Annual Following thirty360 euribor3m Nothing (0, Days) (Just intcurveois)
+            helpers3m <- mapM (\i -> swapRateHelperWithConventions q (i, Years) cal Annual Following thirty360 euribor3m Nothing (0, Days) (Just intcurveois)
                                         Nothing LastRelevantDate Nothing False Nothing Nothing Nothing
                                       >>= asRateHelper) [1 .. 10 :: Int]
             ptr3m <- piecewiseYieldCurveMoving 0 cal (fromList helpers3m) euriborDC []
@@ -1135,8 +1135,8 @@ spec = do
             (GlobalDiscountLogLinear 1.0e-10 [0.9, 0.1]) False
           settleFix <- advance cal curveToday (2, Days) Following False
           pillar <- advance cal settleFix (6, Months) ModifiedFollowing True
-          d1 <- discount' curveMostlyQ1 pillar False
-          d2 <- discount' curveMostlyQ2 pillar False
+          d1 <- discountAtDate curveMostlyQ1 pillar False
+          d2 <- discountAtDate curveMostlyQ2 pillar False
           -- higher weight on the higher rate (q2) means a lower discount factor at the pillar
           d2 `shouldSatisfy` (< d1)
 
@@ -1173,8 +1173,8 @@ spec = do
           settleFix <- advance cal curveToday (2, Days) Following False
           mapM_ (\i -> do
               pillar <- advance cal settleFix (i, Months) ModifiedFollowing True
-              dDiscount <- discount' discountCurve pillar False
-              dZero <- discount' zeroCurve pillar False
+              dDiscount <- discountAtDate discountCurve pillar False
+              dZero <- discountAtDate zeroCurve pillar False
               dZero `shouldSatisfy` closePrec dDiscount tolerance
             ) ([1 .. 5] :: [Int])
 
@@ -1201,8 +1201,8 @@ spec = do
           settleFix <- advance cal curveToday (2, Days) Following False
           mapM_ (\i -> do
               pillar <- advance cal settleFix (i, Months) ModifiedFollowing True
-              dDiscount <- discount' discountCurve pillar False
-              dZero <- discount' zeroCurve pillar False
+              dDiscount <- discountAtDate discountCurve pillar False
+              dZero <- discountAtDate zeroCurve pillar False
               dZero `shouldSatisfy` closePrec dDiscount tolerance
             ) ([1 .. 5] :: [Int])
 
@@ -1251,7 +1251,7 @@ spec = do
               -- exists (CLAUDE.md's "bind few inspectors" rule), and diffDays/360 reproduces it
               -- exactly since Actual360 is a plain actual-days-over-360 day counter.
               let tau = fromIntegral (diffDays pillar settleFix) / 360 :: Double
-              df <- discount' curve pillar False
+              df <- discountAtDate curve pillar False
               -- simple-compounding deposit relation: df = 1 / (1 + qVal * tau)
               df `shouldSatisfy` closePrec (1 / (1 + qVal * tau)) tolerance
             ) ([1 .. 5] :: [Int])
@@ -1280,7 +1280,7 @@ spec = do
           mapM_ (\i -> do
               pillar <- advance cal settleFix (i, Months) ModifiedFollowing True
               let tau = fromIntegral (diffDays pillar settleFix) / 360 :: Double
-              df <- discount' curve pillar False
+              df <- discountAtDate curve pillar False
               df `shouldSatisfy` closePrec (1 / (1 + qVal * tau)) tolerance
             ) ([1 .. 5] :: [Int])
 
@@ -1301,7 +1301,7 @@ spec = do
           let checkCurve curve = mapM_ (\i -> do
                   pillar <- advance cal settleFix (i, Months) ModifiedFollowing True
                   let tau = fromIntegral (diffDays pillar settleFix) / 360 :: Double
-                  df <- discount' curve pillar False
+                  df <- discountAtDate curve pillar False
                   df `shouldSatisfy` closePrec (1 / (1 + qVal * tau)) tolerance
                 ) ([1 .. 5] :: [Int])
           piecewiseYieldCurveMoving 2 cal helpers euriborDC [] (Iterative ForwardRate Linear defaultIterativeBootstrapOpts) False >>= checkCurve
@@ -1332,9 +1332,9 @@ spec = do
             (GlobalZeroYieldLinear 1.0e-10 []) False
           mapM_ (\i -> do
               pillar <- advance cal settleFix (i, Months) ModifiedFollowing True
-              dfDiscount <- discount' discountCurve pillar False
-              dfForward <- discount' forwardCurve pillar False
-              dfZero <- discount' zeroCurve pillar False
+              dfDiscount <- discountAtDate discountCurve pillar False
+              dfForward <- discountAtDate forwardCurve pillar False
+              dfZero <- discountAtDate zeroCurve pillar False
               dfForward `shouldSatisfy` closePrec dfDiscount tolerance
               dfZero `shouldSatisfy` closePrec dfDiscount tolerance
             ) ([1 .. 5] :: [Int])
@@ -1385,7 +1385,7 @@ spec = do
 
     -- BlackVolatilitySurfaceDelta: cached fixture ported from upstream's
     -- testBlackVolSurfaceDeltaNonConstantVol (test-suite/blackvolsurfacedelta.cpp), which
-    -- exercises blackVolSmile directly -- the one binding-specific getter this class adds over
+    -- exercises blackVolSmileAtTime directly -- the one binding-specific getter this class adds over
     -- the generic BlackVolTermStructure -- so no extra generic blackVol(t,k) inspector is
     -- needed just to reuse it.
     describe "black volatility surface delta" $
@@ -1405,9 +1405,9 @@ spec = do
           cal <- Calendar.calendar TARGET
           spot <- Quote.simpleQuote 1.18
           dtsQ <- Quote.simpleQuote 0.02
-          dts <- flatForward' 0 cal dtsQ dc IR.Continuous Annual
+          dts <- flatForwardMoving 0 cal dtsQ dc IR.Continuous Annual
           ftsQ <- Quote.simpleQuote 0.035
-          fts <- flatForward' 0 cal ftsQ dc IR.Continuous Annual
+          fts <- flatForwardMoving 0 cal ftsQ dc IR.Continuous Annual
           let vols = either error id $ realMatrixFromVector 4 3 $ V.fromList
                 [ 0.15, 0.13, 0.135
                 , 0.14, 0.11, 0.125
@@ -1416,16 +1416,16 @@ spec = do
                 ]
           surface <- Vol.blackVolatilitySurfaceDelta refDate [d1M, d6M, d1Y, d2Y] [-0.25] [0.25] True vols
                        dc cal spot dts fts
-          smile1M <- Vol.blackVolSmile' surface d1M
+          smile1M <- Vol.blackVolSmileAtDate surface d1M
           vol1M <- Vol.smileSectionVolatility smile1M atmStrike
           vol1M `shouldSatisfy` closePrec 0.13010360399 tolerance
-          smile15D <- Vol.blackVolSmile' surface d15D
+          smile15D <- Vol.blackVolSmileAtDate surface d15D
           vol15D <- Vol.smileSectionVolatility smile15D atmStrike
           vol15D `shouldSatisfy` closePrec 0.13007226607 tolerance
-          smile3M <- Vol.blackVolSmile' surface d3M
+          smile3M <- Vol.blackVolSmileAtDate surface d3M
           vol3M <- Vol.smileSectionVolatility smile3M atmStrike
           vol3M `shouldSatisfy` closePrec 0.115077252583 tolerance
-          smile6M <- Vol.blackVolSmile' surface d6M
+          smile6M <- Vol.blackVolSmileAtDate surface d6M
           volLow <- Vol.smileSectionVolatility smile6M 1.10
           volHigh <- Vol.smileSectionVolatility smile6M 1.30
           volLow `shouldSatisfy` closePrec 0.1411379628132 tolerance
@@ -1450,9 +1450,9 @@ spec = do
           cal <- Calendar.calendar TARGET
           spot <- Quote.simpleQuote 1.18
           dtsQ <- Quote.simpleQuote 0.02
-          dts <- flatForward' 0 cal dtsQ dc IR.Continuous Annual
+          dts <- flatForwardMoving 0 cal dtsQ dc IR.Continuous Annual
           ftsQ <- Quote.simpleQuote 0.035
-          fts <- flatForward' 0 cal ftsQ dc IR.Continuous Annual
+          fts <- flatForwardMoving 0 cal ftsQ dc IR.Continuous Annual
           let vols = either error id $ realMatrixFromVector 4 3 $ V.fromList
                 [ 0.15, 0.13, 0.135
                 , 0.14, 0.11, 0.125
@@ -1465,8 +1465,8 @@ spec = do
                              dc cal spot dts fts linearOpts
           surfaceCubic <- Vol.blackVolatilitySurfaceDeltaFull refDate [d1M, d6M, d1Y, d2Y] [-0.25] [0.25] True vols
                              dc cal spot dts fts cubicOpts
-          smileLinear <- Vol.blackVolSmile' surfaceLinear d6M
-          smileCubic <- Vol.blackVolSmile' surfaceCubic d6M
+          smileLinear <- Vol.blackVolSmileAtDate surfaceLinear d6M
+          smileCubic <- Vol.blackVolSmileAtDate surfaceCubic d6M
           volLinear <- Vol.smileSectionVolatility smileLinear offGridStrike
           volCubic <- Vol.smileSectionVolatility smileCubic offGridStrike
           volLinear `shouldNotBe` volCubic
@@ -1561,7 +1561,7 @@ spec = do
           cal <- Calendar.calendar TARGET
           dc <- dayCounter Actual365FixedStandard
           volQ <- Quote.simpleQuote 0.20
-          flatVol <- Vol.constantSwaptionVolatility' refDate cal ModifiedFollowing volQ dc IR.ShiftedLognormal 0
+          flatVol <- Vol.constantSwaptionVolatility refDate cal ModifiedFollowing volQ dc IR.ShiftedLognormal 0
           optionDate <- advance cal refDate (1, Years) ModifiedFollowing False
           let coordinates :: [(Vol.OptionMaturity, Vol.SwapMaturity)]
               coordinates =
@@ -1581,7 +1581,7 @@ spec = do
             smileVol <- Vol.smileSectionVolatility smile 0.02
             smileVol `shouldSatisfy` closePrec 0.20 1.0e-12
 
-      it "a constant grid agrees with constantSwaptionVolatility' at the same point" $
+      it "a constant grid agrees with constantSwaptionVolatility at the same point" $
         Settings.keepingSettingsGc $ do
           Settings.setEvaluationDate (Just refDate)
           cal <- Calendar.calendar TARGET
@@ -1590,10 +1590,10 @@ spec = do
               shiftMatrix = either error id $ realMatrixFromVector 0 0 V.empty
           volQuotes <- replicateM 4 (Quote.simpleQuote v)
           let volMatrix = either error id $ objectMatrix 2 2 volQuotes
-          grid <- Vol.swaptionVolatilityMatrix' refDate cal ModifiedFollowing optionTenors swapTenors
+          grid <- Vol.swaptionVolatilityMatrix refDate cal ModifiedFollowing optionTenors swapTenors
                     volMatrix dc False IR.ShiftedLognormal shiftMatrix
           volQ <- Quote.simpleQuote v
-          flatVol <- Vol.constantSwaptionVolatility' refDate cal ModifiedFollowing volQ dc IR.ShiftedLognormal 0
+          flatVol <- Vol.constantSwaptionVolatility refDate cal ModifiedFollowing volQ dc IR.ShiftedLognormal 0
           optionDate <- advance cal refDate (1, Years) ModifiedFollowing False
           fromGrid <- Vol.volatility grid (Vol.OptionDate optionDate) (Vol.SwapTenor (2, Years)) 0.02 False
           fromFlat <- Vol.volatility flatVol (Vol.OptionDate optionDate) (Vol.SwapTenor (2, Years)) 0.02 False
@@ -1610,7 +1610,7 @@ spec = do
               shiftMatrix = either error id $ realMatrixFromVector 0 0 V.empty
           volQuotes <- mapM Quote.simpleQuote (concat vols)
           let volMatrix = either error id $ objectMatrix 2 2 volQuotes
-          grid <- Vol.swaptionVolatilityMatrix' refDate cal ModifiedFollowing optionTenors swapTenors
+          grid <- Vol.swaptionVolatilityMatrix refDate cal ModifiedFollowing optionTenors swapTenors
                     volMatrix dc False IR.ShiftedLognormal shiftMatrix
           optionDates <- mapM (\(n, u) -> advance cal refDate (fromIntegral n, u) ModifiedFollowing False) optionTenors
           let nodes = [(od, st, expected)
@@ -1647,11 +1647,11 @@ spec = do
             cal <- Calendar.calendar TARGET
             dc <- dayCounter Actual365FixedStandard
             fwdRateQ <- Quote.simpleQuote 0.03
-            fwdCurve <- flatForward' 0 cal fwdRateQ dc IR.Continuous Annual
+            fwdCurve <- flatForwardMoving 0 cal fwdRateQ dc IR.Continuous Annual
             swapIndexBase <- liborSwapIndex EurLiborSwapIsdaFixA (10, Years) (Just fwdCurve) (Just fwdCurve)
             shortSwapIndexBase <- liborSwapIndex EurLiborSwapIsdaFixA (1, Years) (Just fwdCurve) (Just fwdCurve)
             volQ <- Quote.simpleQuote flatVol
-            atmVol <- Vol.constantSwaptionVolatility' refDate cal ModifiedFollowing volQ dc IR.ShiftedLognormal 0
+            atmVol <- Vol.constantSwaptionVolatility refDate cal ModifiedFollowing volQ dc IR.ShiftedLognormal 0
             zeroSpreadQuotes <- replicateM (length optionTenors * length swapTenors * length strikeSpreads) (Quote.simpleQuote 0)
             let volSpreads = either error id $ objectMatrix (fromIntegral (length optionTenors * length swapTenors)) (fromIntegral (length strikeSpreads)) zeroSpreadQuotes
             guessQuotes <- concat <$> replicateM (length optionTenors * length swapTenors) (mapM Quote.simpleQuote [0.03, 0.5, 0.3, 0.0])
@@ -1683,7 +1683,7 @@ spec = do
                     -- SwaptionVolatilityDiscrete and dereferences the result unchecked, which
                     -- segfaults (boost "px != 0") when atmVolStructure is a flat
                     -- ConstantSwaptionVolatility, as this fixture's atmVol is -- it would need a
-                    -- discrete grid structure (e.g. swaptionVolatilityMatrix') instead. Exercising
+                    -- discrete grid structure (e.g. swaptionVolatilityMatrix) instead. Exercising
                     -- that path is out of scope for this shape/sanity test.
                     False True False False False Nothing Nothing False 50 False 0.0001 Nothing Nothing
           -- trigger calibration (lazy -- see the shim comment on qlSabrSwaptionVolatilityCube)
@@ -1712,7 +1712,7 @@ spec = do
           mapM_ (`shouldSatisfy` (> 0)) (byRow [4])
           mapM_ (`shouldSatisfy` (\r -> r >= -1 && r <= 1)) (byRow [5])
 
-      it "sabrSwaptionVolatilityCubeAtmStrike returns a finite, plausible rate" $
+      it "sabrSwaptionVolatilityCubeAtmStrikeAtTime returns a finite, plausible rate" $
         Settings.keepingSettingsGc $ do
           (_, _, atmVol, swapIndexBase, shortSwapIndexBase, volSpreads, parametersGuess) <- mkFixture
           cube <- Vol.sabrSwaptionVolatilityCube atmVol optionTenors swapTenors strikeSpreads volSpreads
@@ -1720,7 +1720,7 @@ spec = do
                     -- beta fixed: 3 strikeSpreads can't identify 4 free SABR params
                     -- ("less functions than available variables"), so pin beta at the guess.
                     False True False False False Nothing Nothing False 50 False 0.0001 Nothing Nothing
-          k <- Vol.sabrSwaptionVolatilityCubeAtmStrike cube (1, Years) (2, Years)
+          k <- Vol.sabrSwaptionVolatilityCubeAtmStrikeAtTime cube (1, Years) (2, Years)
           k `shouldSatisfy` (\x -> x > -0.05 && x < 0.20)
 
       -- Proves the QlEndCriteria/QlOptimizationMethod shared_ptr boxing actually keeps the
@@ -1742,7 +1742,7 @@ spec = do
               swapIndexBase shortSwapIndexBase False parametersGuess
               False True False False False Nothing Nothing False 50 False 0.0001
               (Just endCriteria) (Just optMethod)
-          k <- Vol.sabrSwaptionVolatilityCubeAtmStrike cube (1, Years) (2, Years)
+          k <- Vol.sabrSwaptionVolatilityCubeAtmStrikeAtTime cube (1, Years) (2, Years)
           k `shouldSatisfy` (\x -> x > -0.05 && x < 0.20)
 
       -- NoArbSabrSwaptionVolatilityCube is the same XabrSwaptionVolatilityCube construction one
@@ -1763,13 +1763,13 @@ spec = do
           -- least-squares fit, not exact recovery -- same looser tolerance as the SABR cube check.
           abs (v - flatVol) `shouldSatisfy` (< 1.0e-2)
 
-      it "noArbSabrSwaptionVolatilityCubeAtmStrike returns a finite, plausible rate" $
+      it "noArbSabrSwaptionVolatilityCubeAtmStrikeAtTime returns a finite, plausible rate" $
         Settings.keepingSettingsGc $ do
           (_, _, atmVol, swapIndexBase, shortSwapIndexBase, volSpreads, parametersGuess) <- mkFixture
           cube <- Vol.noArbSabrSwaptionVolatilityCube atmVol optionTenors swapTenors strikeSpreads volSpreads
                     swapIndexBase shortSwapIndexBase False parametersGuess
                     False True False False False Nothing Nothing False 50 False 0.0001 Nothing Nothing
-          k <- Vol.noArbSabrSwaptionVolatilityCubeAtmStrike cube (1, Years) (2, Years)
+          k <- Vol.noArbSabrSwaptionVolatilityCubeAtmStrikeAtTime cube (1, Years) (2, Years)
           k `shouldSatisfy` (\x -> x > -0.05 && x < 0.20)
 
       it "interpolatedSwaptionVolatilityCube reprices close to its own flat ATM input at zero spread" $
@@ -1779,7 +1779,7 @@ spec = do
                     swapIndexBase shortSwapIndexBase False
           v <- Vol.volatility cube (Vol.OptionDate (10 `december` 2013)) (Vol.SwapTenor (2, Years)) 0.03 False
           abs (v - flatVol) `shouldSatisfy` (< 1.0e-2)
-          k <- Vol.interpolatedSwaptionVolatilityCubeAtmStrike cube (1, Years) (2, Years)
+          k <- Vol.interpolatedSwaptionVolatilityCubeAtmStrikeAtTime cube (1, Years) (2, Years)
           k `shouldSatisfy` (\x -> x > -0.05 && x < 0.20)
 
       it "interpolatedSwaptionVolatilityCubeVolSpreads reports the zero spreads the cube was built with" $
@@ -2020,7 +2020,7 @@ spec = do
           capfl <- cap leg [0.03]
           volQ <- Quote.simpleQuote 0.20
           vol0 <- Vol.constantOptionletVolatility (11 `december` 2012) cal ModifiedFollowing volQ dc IR.ShiftedLognormal 0
-          eng <- blackCapFloorEngine' discountTS vol0
+          eng <- blackCapFloorEngineWithVolatilityStructure discountTS vol0
           setPricingEngine capfl eng
           _ <- npv capfl
           res <- additionalResults capfl

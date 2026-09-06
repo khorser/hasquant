@@ -741,7 +741,7 @@ spec = do
     -- (data from Levy 1997 as reproduced by Haug): expected NPV 1.7255070456, upstream's
     -- own cross-engine tolerances are 2e-2 (MC/PDE) and 3e-2 (Turnbull-Wakeman analytic
     -- approximation) -- this exercises the two new Asian engines plus the already-bound
-    -- mcDiscreteArithmeticAPEngine on the same instrument.
+    -- mcDiscreteArithmeticApEngine on the same instrument.
     describe "Asian option example" $
       it "check values" $ do
         r <- Settings.keepingSettingsGc AsianOptionExample.run

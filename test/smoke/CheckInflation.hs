@@ -88,7 +88,7 @@ main = do
   qy2 <- simpleQuote 0.03
   hy1 <- yearOnYearInflationSwapHelper qy1 obsLag maturity1 cal Unadjusted dc yii CPILinear nominalCurve LastRelevantDate Nothing
   hy2 <- yearOnYearInflationSwapHelper qy2 obsLag maturity2 cal Unadjusted dc yii CPILinear nominalCurve LastRelevantDate Nothing
-  yoyCurve <- piecewiseYoYInflationCurve today baseDate 0.03 Monthly dc [hy1, hy2] Linear
+  yoyCurve <- piecewiseYoyInflationCurve today baseDate 0.03 Monthly dc [hy1, hy2] Linear
   ry1 <- yoyRate yoyCurve maturity1 True
   ry2 <- yoyRate yoyCurve maturity2 True
   putStrLn ("yoyRate @1Y = " ++ show ry1 ++ ", @2Y = " ++ show ry2 ++ " (both should be ~0.03)")

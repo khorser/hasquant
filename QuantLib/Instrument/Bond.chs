@@ -80,14 +80,14 @@ module QuantLib.Instrument.Bond
   , bpsFromYield
   , bps
   , cleanPrice
-  , cleanPrice'
+  , cleanPriceWithZSpread
   , convexity
   , duration
   , nextCashFlowAmount
   , previousCashFlowAmount
   , referencePeriodEnd
   , referencePeriodStart
-  , yieldFromPrice'
+  , yieldFromPriceWithGuess
   , yieldValueBasisPoint
   , zSpread
 
@@ -469,7 +469,7 @@ amortizingFloatingRateBond settlementDays notionalsArg schedule idx accrualDayCo
 {#fun qlBondFunctionsCleanPrice2 as cleanPrice{withBond*`GenBond b',withYieldTermStructure*`GenYieldTermStructure y',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |clean price given a discount curve, a Z-spread over it, compounding and frequency
-{#fun qlBondFunctionsCleanPrice3 as cleanPrice'{withBond*`GenBond b',withYieldTermStructure*`GenYieldTermStructure y' -- ^discount
+{#fun qlBondFunctionsCleanPrice3 as cleanPriceWithZSpread{withBond*`GenBond b',withYieldTermStructure*`GenYieldTermStructure y' -- ^discount
   ,`Double' -- ^zSpread
   ,`Compounding',`Frequency',withDay*`Day' -- ^settlementDate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
@@ -499,7 +499,7 @@ amortizingFloatingRateBond settlementDays notionalsArg schedule idx accrualDayCo
 {#fun qlBondFunctionsReferencePeriodStart as referencePeriodStart{withBond*`GenBond b',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Maybe Day' toMaybeDay#}
 
 -- |yield given a (clean) price and settlement date, solved to the given accuracy
-{#fun qlBondFunctionsYield2 as yieldFromPrice'{withBond*`GenBond b',fromEnumDouble`Double,BondPriceType'&
+{#fun qlBondFunctionsYield2 as yieldFromPriceWithGuess{withBond*`GenBond b',fromEnumDouble`Double,BondPriceType'&
   ,withDayCounter*`DayCounter',`Compounding',`Frequency',withDay*`Day' -- ^settlementDate
   ,`Double' --  ^accuracy
   ,fromIntegral`Word' -- ^maxIterations

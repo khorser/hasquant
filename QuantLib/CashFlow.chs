@@ -24,10 +24,10 @@ module QuantLib.CashFlow
   , iborCoupon
   , IborCoupon
   , AverageBMACoupon
-  , averageBMACoupon
-  , averageBMACouponAsFloatingRateCoupon
-  , averageBMACouponFixingDates
-  , averageBMACouponIndexFixings
+  , averageBmaCoupon
+  , averageBmaCouponAsFloatingRateCoupon
+  , averageBmaCouponFixingDates
+  , averageBmaCouponIndexFixings
   , cappedFlooredCoupon
   , StrippedCappedFlooredCoupon
   , strippedCappedFlooredCoupon
@@ -106,7 +106,7 @@ module QuantLib.CashFlow
   , nextCouponRate
   , nominal
   , npvFromYield
-  , npv'
+  , npvWithZSpread
   , npv
   , npvBps
   , previousCashFlowAmount
@@ -122,10 +122,10 @@ module QuantLib.CashFlow
   , couponAccrualStartDates
 
   , fixedDividend
-  , fractionalDividend'
+  , fractionalDividendFromRate
   , fractionalDividend
 
-  , averageBMALeg
+  , averageBmaLeg
   , fixedRateLeg
   , iborLeg
   , iborLegFull
@@ -186,10 +186,10 @@ module QuantLib.CashFlow
   , cpiLeg
   , yoyInflationLeg
   , YoYInflationCouponPricer
-  , blackYoYInflationCouponPricer
-  , unitDisplacedBlackYoYInflationCouponPricer
-  , bachelierYoYInflationCouponPricer
-  , setYoYInflationCouponPricer
+  , blackYoyInflationCouponPricer
+  , unitDisplacedBlackYoyInflationCouponPricer
+  , bachelierYoyInflationCouponPricer
+  , setYoyInflationCouponPricer
   , ZeroInflationCashFlow
   , zeroInflationCashFlow
   , zeroInflationCashFlowAsCashFlow
@@ -330,11 +330,11 @@ $(deriveOptionsRecord "CmsLegOpts" []
 $(deriveOptionsRecord "DigitalCmsLegOpts" []
   [ ("dcmlCallStrikes", [t|[Double]|], [|[]|])
   , ("dcmlCallPosition", [t|PositionType|], [|Long|])
-  , ("dcmlCallATM", [t|Bool|], [|False|])
+  , ("dcmlCallAtm", [t|Bool|], [|False|])
   , ("dcmlCallPayoffs", [t|[Double]|], [|[]|])
   , ("dcmlPutStrikes", [t|[Double]|], [|[]|])
   , ("dcmlPutPosition", [t|PositionType|], [|Long|])
-  , ("dcmlPutATM", [t|Bool|], [|False|])
+  , ("dcmlPutAtm", [t|Bool|], [|False|])
   , ("dcmlPutPayoffs", [t|[Double]|], [|[]|])
   , ("dcmlReplication", [t|Maybe DigitalReplication|], [|Nothing|])
   , ("dcmlNakedOption", [t|Bool|], [|False|])
@@ -346,19 +346,19 @@ $(deriveOptionsRecord "DigitalCmsLegOpts" []
 $(deriveOptionsRecord "DigitalCmsSpreadLegOpts" []
   [ ("dcmslCallStrikes", [t|[Double]|], [|[]|])
   , ("dcmslCallPosition", [t|PositionType|], [|Long|])
-  , ("dcmslCallATM", [t|Bool|], [|False|])
+  , ("dcmslCallAtm", [t|Bool|], [|False|])
   , ("dcmslCallPayoffs", [t|[Double]|], [|[]|])
   , ("dcmslPutStrikes", [t|[Double]|], [|[]|])
   , ("dcmslPutPosition", [t|PositionType|], [|Long|])
-  , ("dcmslPutATM", [t|Bool|], [|False|])
+  , ("dcmslPutAtm", [t|Bool|], [|False|])
   , ("dcmslPutPayoffs", [t|[Double]|], [|[]|])
   , ("dcmslReplication", [t|Maybe DigitalReplication|], [|Nothing|])
   , ("dcmslNakedOption", [t|Bool|], [|False|])
   ])
 
 $(deriveOptionsRecord "DigitalIborLegOpts" []
-  [ ("dilCallStrikes", [t|[Double]|], [|[]|]), ("dilCallPosition", [t|PositionType|], [|Long|]), ("dilCallATM", [t|Bool|], [|False|]), ("dilCallPayoffs", [t|[Double]|], [|[]|])
-  , ("dilPutStrikes", [t|[Double]|], [|[]|]), ("dilPutPosition", [t|PositionType|], [|Long|]), ("dilPutATM", [t|Bool|], [|False|]), ("dilPutPayoffs", [t|[Double]|], [|[]|])
+  [ ("dilCallStrikes", [t|[Double]|], [|[]|]), ("dilCallPosition", [t|PositionType|], [|Long|]), ("dilCallAtm", [t|Bool|], [|False|]), ("dilCallPayoffs", [t|[Double]|], [|[]|])
+  , ("dilPutStrikes", [t|[Double]|], [|[]|]), ("dilPutPosition", [t|PositionType|], [|Long|]), ("dilPutAtm", [t|Bool|], [|False|]), ("dilPutPayoffs", [t|[Double]|], [|[]|])
   , ("dilReplication", [t|Maybe DigitalReplication|], [|Nothing|]), ("dilNakedOption", [t|Bool|], [|False|]) ])
 
 $(deriveOptionsRecord "MultipleResetsLegOpts" []
@@ -451,7 +451,7 @@ leg f = qlLeg fs ds where (ds, fs) = unzip f
   ,preErrorCheck-`String'errorCheck*-}->`IborCoupon'peekIborCoupon*#}
 
 -- |A BMA-index coupon with explicitly supplied accrual and reference dates.
-{#fun qlAverageBMACoupon as averageBMACoupon{withDay*`Day' -- ^paymentDate
+{#fun qlAverageBMACoupon as averageBmaCoupon{withDay*`Day' -- ^paymentDate
   ,`Double' -- ^nominal
   ,withDay*`Day' -- ^accrualStartDate
   ,withDay*`Day' -- ^accrualEndDate
@@ -464,13 +464,13 @@ leg f = qlLeg fs ds where (ds, fs) = unzip f
   ,preErrorCheck-`String'errorCheck*-}->`AverageBMACoupon'peekAverageBMACoupon*#}
 
 -- |Widen an 'AverageBMACoupon' to the generic 'FloatingRateCoupon'.
-{#fun qlAverageBMACouponAsFloatingRateCoupon as averageBMACouponAsFloatingRateCoupon{withAverageBMACoupon*`AverageBMACoupon'}->`FloatingRateCoupon'peekFloatingRateCoupon*#}
+{#fun qlAverageBMACouponAsFloatingRateCoupon as averageBmaCouponAsFloatingRateCoupon{withAverageBMACoupon*`AverageBMACoupon'}->`FloatingRateCoupon'peekFloatingRateCoupon*#}
 
 -- |The fixing dates of the individual BMA rates being averaged over this coupon's accrual period.
-{#fun qlAverageBMACouponFixingDates as averageBMACouponFixingDates{withAverageBMACoupon*`AverageBMACoupon',preArray-`[Day]'&peekDayArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlAverageBMACouponFixingDates as averageBmaCouponFixingDates{withAverageBMACoupon*`AverageBMACoupon',preArray-`[Day]'&peekDayArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
--- |The individual BMA fixings being averaged, in the same order as 'averageBMACouponFixingDates'.
-{#fun qlAverageBMACouponIndexFixings as averageBMACouponIndexFixings{withAverageBMACoupon*`AverageBMACoupon',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+-- |The individual BMA fixings being averaged, in the same order as 'averageBmaCouponFixingDates'.
+{#fun qlAverageBMACouponIndexFixings as averageBmaCouponIndexFixings{withAverageBMACoupon*`AverageBMACoupon',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Wrap a floating-rate coupon with optional cap and floor rates.
 {#fun qlCappedFlooredCoupon as cappedFlooredCoupon{withFloatingRateCoupon*`GenFloatingRateCoupon frc' -- ^underlying
@@ -902,7 +902,7 @@ cashFlows l i d = do{(as, ds, hs) <- qlLegCashFlows l i d; return $ zip3 ds as h
 
 -- |NPV of the cash flows.
 -- For details on z-spread refer to: "Credit Spreads Explained", Lehman Brothers European Fixed Income Research - March 2004, D. O'KaneThe NPV is the sum of the cash flows, each discounted according to the z-spreaded term structure. The result is affected by the choice of the z-spread compounding and the relative frequency and day counter.
-{#fun qlCashFlowsNpv3 as npv'{withLeg*`GenLeg l',withYieldTermStructure*`GenYieldTermStructure y',`Double' -- ^zSpread
+{#fun qlCashFlowsNpv3 as npvWithZSpread{withLeg*`GenLeg l',withYieldTermStructure*`GenYieldTermStructure y',`Double' -- ^zSpread
   ,`Compounding',`Frequency',`Bool' -- ^includeSettlementDateFlows
   ,withMaybeDay*`Maybe Day' -- ^settlementDate
   ,withMaybeDay*`Maybe Day' -- ^npvDate
@@ -985,7 +985,7 @@ cashFlows l i d = do{(as, ds, hs) <- qlLegCashFlows l i d; return $ zip3 ds as h
   ,preErrorCheck-`String'errorCheck*-}->`Dividend'peekDividend*#}
 
 -- |Predetermined cash flow paying /rate/ times /nominal/ at /date/.
-{#fun qlFractionalDividend1 as fractionalDividend'{`Double' -- ^rate
+{#fun qlFractionalDividend1 as fractionalDividendFromRate{`Double' -- ^rate
   ,`Double' -- ^nominal
   ,withDay*`Day' -- ^date
   ,preErrorCheck-`String'errorCheck*-}->`Dividend'peekDividend*#}
@@ -996,7 +996,7 @@ cashFlows l i d = do{(as, ds, hs) <- qlLegCashFlows l i d; return $ zip3 ds as h
   ,preErrorCheck-`String'errorCheck*-}->`Dividend'peekDividend*#}
 
 -- |Build a leg of average-BMA coupons.
-{#fun qlAverageBMALeg as averageBMALeg{withSchedule*`Schedule',withBMAIndex*`BMAIndex'
+{#fun qlAverageBMALeg as averageBmaLeg{withSchedule*`Schedule',withBMAIndex*`BMAIndex'
   ,withNonEmptyDoubleArray*`NonEmpty Double'& -- ^notionals
   ,withDayCounter*`DayCounter',fromEnumC`BusinessDayConvention',withDoubleArray*`[Double]'& -- ^gearings
   ,withDoubleArray*`[Double]'& -- ^spreads
@@ -1128,8 +1128,8 @@ cmsLegFull schedule idx notionals dc adj fixingDays gearings spreads caps floors
 
 -- |Year-on-year inflation-linked coupons (a 'YoYInflationCoupon' leg). Non-empty /caps/\//floors/
 -- build 'CappedFlooredYoYInflationCoupon's instead of plain ones -- but /any/ resulting coupon
--- (capped or not) still needs a pricer set via 'setYoYInflationCouponPricer' before its
--- 'QuantLib.CashFlow.npv'\/'amount' can be computed: upstream's @InflationCoupon::rate()@
+-- (capped or not) still needs a pricer set via 'setYoyInflationCouponPricer' before its
+-- 'QuantLib.CashFlow.npvWithZSpread\/'amount' can be computed: upstream's @InflationCoupon::rate()@
 -- requires @pricer_@ unconditionally, not just for the capped\/floored case (confirmed by reading
 -- @inflationcoupon.cpp@). CPI-leg ('cpiLeg') caps\/floors have no equivalent in QL 1.43 (no
 -- @CappedFlooredCPICoupon@ class exists upstream, see README.md's TODO) -- this is a
@@ -1288,26 +1288,26 @@ cmsLegFull schedule idx notionals dc adj fixingDays gearings spreads caps floors
   ,preErrorCheck-`String'errorCheck*-}->`FloatingRateCouponPricer'peekFloatingRateCouponPricer*#}
 
 -- |Black-formula pricer for capped\/floored 'yoyInflationLeg' coupons.
-{#fun qlBlackYoYInflationCouponPricer as blackYoYInflationCouponPricer{withGenVolatilityTermStructure*`YoYOptionletVolatilitySurface'
+{#fun qlBlackYoYInflationCouponPricer as blackYoyInflationCouponPricer{withGenVolatilityTermStructure*`YoYOptionletVolatilitySurface'
   ,withYieldTermStructure*`GenYieldTermStructure y' -- ^nominalTermStructure
   ,preErrorCheck-`String'errorCheck*-}->`YoYInflationCouponPricer'peekYoYInflationCouponPricer*#}
 
 -- |Unit-Displaced-Black-formula pricer for capped\/floored 'yoyInflationLeg' coupons.
-{#fun qlUnitDisplacedBlackYoYInflationCouponPricer as unitDisplacedBlackYoYInflationCouponPricer{withGenVolatilityTermStructure*`YoYOptionletVolatilitySurface'
+{#fun qlUnitDisplacedBlackYoYInflationCouponPricer as unitDisplacedBlackYoyInflationCouponPricer{withGenVolatilityTermStructure*`YoYOptionletVolatilitySurface'
   ,withYieldTermStructure*`GenYieldTermStructure y' -- ^nominalTermStructure
   ,preErrorCheck-`String'errorCheck*-}->`YoYInflationCouponPricer'peekYoYInflationCouponPricer*#}
 
 -- |Bachelier-formula pricer for capped\/floored 'yoyInflationLeg' coupons.
-{#fun qlBachelierYoYInflationCouponPricer as bachelierYoYInflationCouponPricer{withGenVolatilityTermStructure*`YoYOptionletVolatilitySurface'
+{#fun qlBachelierYoYInflationCouponPricer as bachelierYoyInflationCouponPricer{withGenVolatilityTermStructure*`YoYOptionletVolatilitySurface'
   ,withYieldTermStructure*`GenYieldTermStructure y' -- ^nominalTermStructure
   ,preErrorCheck-`String'errorCheck*-}->`YoYInflationCouponPricer'peekYoYInflationCouponPricer*#}
 
 -- |Set the pricer of every 'QuantLib.Instrument.InflationCapFloor.YoYInflationCapFloor'-ready
 -- 'YoYInflationCoupon'\/'CappedFlooredYoYInflationCoupon' in /leg/. Required before pricing (via
--- 'QuantLib.CashFlow.npv' or an 'QuantLib.Instrument.setPricingEngine'd instrument built on the
+-- 'QuantLib.CashFlow.npvWithZSpread or an 'QuantLib.Instrument.setPricingEngine'd instrument built on the
 -- leg) any 'yoyInflationLeg' built with non-empty caps\/floors -- 'yoyInflationLeg' auto-attaches
 -- a default (non-vol) pricer only when caps and floors are both empty.
-{#fun qlSetYoYInflationCouponPricer as setYoYInflationCouponPricer{withLeg*`GenLeg l',withYoYInflationCouponPricer*`YoYInflationCouponPricer',preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlSetYoYInflationCouponPricer as setYoyInflationCouponPricer{withLeg*`GenLeg l',withYoYInflationCouponPricer*`YoYInflationCouponPricer',preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Set the pricer of every floating-rate coupon in /leg/.
 {#fun qlQuantLibSetCouponPricer as setCouponPricer{withLeg*`GenLeg l',withFloatingRateCouponPricer*`GenFloatingRateCouponPricer frcp',preErrorCheck-`String'errorCheck*-}->`()'#}
@@ -1549,21 +1549,21 @@ cmsLegFull schedule idx notionals dc adj fixingDays gearings spreads caps floors
 digitalCmsLeg :: Schedule -> GenSwapIndex sidx -> NonEmpty Double -> DayCounter -> BusinessDayConvention -> [Word] -> [Double] -> [Double] -> Bool -> DigitalCmsLegOpts -> IO Leg
 digitalCmsLeg schedule index notionals dc adjustment fixingDays gearings spreads inArrears opts =
   digitalCmsLeg_ schedule index notionals dc adjustment fixingDays gearings spreads inArrears
-    (dcmlCallStrikes opts) (dcmlCallPosition opts) (dcmlCallATM opts) (dcmlCallPayoffs opts)
-    (dcmlPutStrikes opts) (dcmlPutPosition opts) (dcmlPutATM opts) (dcmlPutPayoffs opts)
+    (dcmlCallStrikes opts) (dcmlCallPosition opts) (dcmlCallAtm opts) (dcmlCallPayoffs opts)
+    (dcmlPutStrikes opts) (dcmlPutPosition opts) (dcmlPutAtm opts) (dcmlPutPayoffs opts)
     (dcmlReplication opts) (dcmlNakedOption opts)
 
 digitalIborLeg :: Schedule -> GenIborIndex ibor -> NonEmpty Double -> DayCounter -> BusinessDayConvention -> [Word] -> [Double] -> [Double] -> Bool -> DigitalIborLegOpts -> IO Leg
 digitalIborLeg schedule index notionals dc adjustment fixingDays gearings spreads inArrears opts =
-  digitalIborLeg_ schedule index notionals dc adjustment fixingDays gearings spreads inArrears (dilCallStrikes opts) (dilCallPosition opts) (dilCallATM opts) (dilCallPayoffs opts) (dilPutStrikes opts) (dilPutPosition opts) (dilPutATM opts) (dilPutPayoffs opts) (dilReplication opts) (dilNakedOption opts)
+  digitalIborLeg_ schedule index notionals dc adjustment fixingDays gearings spreads inArrears (dilCallStrikes opts) (dilCallPosition opts) (dilCallAtm opts) (dilCallPayoffs opts) (dilPutStrikes opts) (dilPutPosition opts) (dilPutAtm opts) (dilPutPayoffs opts) (dilReplication opts) (dilNakedOption opts)
 
 -- |Build a sequence of digital CMS-spread-rate coupons.  The options record covers all digital
 -- call/put and replication choices, exactly as 'digitalCmsLeg' does for the plain CMS index case.
 digitalCmsSpreadLeg :: Schedule -> SwapSpreadIndex -> NonEmpty Double -> DayCounter -> BusinessDayConvention -> [Word] -> [Double] -> [Double] -> Bool -> DigitalCmsSpreadLegOpts -> IO Leg
 digitalCmsSpreadLeg schedule index notionals dc adjustment fixingDays gearings spreads inArrears opts =
   digitalCmsSpreadLeg_ schedule index notionals dc adjustment fixingDays gearings spreads inArrears
-    (dcmslCallStrikes opts) (dcmslCallPosition opts) (dcmslCallATM opts) (dcmslCallPayoffs opts)
-    (dcmslPutStrikes opts) (dcmslPutPosition opts) (dcmslPutATM opts) (dcmslPutPayoffs opts)
+    (dcmslCallStrikes opts) (dcmslCallPosition opts) (dcmslCallAtm opts) (dcmslCallPayoffs opts)
+    (dcmslPutStrikes opts) (dcmslPutPosition opts) (dcmslPutAtm opts) (dcmslPutPayoffs opts)
     (dcmslReplication opts) (dcmslNakedOption opts)
 
 multipleResetsLeg :: Schedule -> GenIborIndex ibor -> Word -> DayCounter -> BusinessDayConvention -> MultipleResetsLegOpts -> IO Leg

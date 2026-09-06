@@ -13,8 +13,8 @@ module QuantLib.TermStructure.Inflation
   , yearOnYearInflationSwapHelperSwap
 
   , piecewiseZeroInflationCurve
-  , piecewiseYoYInflationCurve
-  , interpolatedYoYInflationCurve
+  , piecewiseYoyInflationCurve
+  , interpolatedYoyInflationCurve
 
   , zeroRate
   , yoyRate
@@ -89,12 +89,12 @@ piecewiseZeroInflationCurve r b f dc h i = uncurryNested (qlPiecewiseZeroInflati
   ,withZeroCouponInflationSwapHelperArray*`[ZeroCouponInflationSwapHelper]'&
   ,`Int',`Int',`Int',preErrorCheck-`String'errorCheck*-}->`ZeroInflationTermStructure'peekZeroInflationTermStructure*#}
 
-piecewiseYoYInflationCurve :: Day -- ^referenceDate
+piecewiseYoyInflationCurve :: Day -- ^referenceDate
   -> Day -- ^baseDate
   -> Double -- ^baseYoYRate
   -> Frequency -> DayCounter -> NonEmpty YearOnYearInflationSwapHelper -> Interpolation
   -> IO YoYInflationTermStructure
-piecewiseYoYInflationCurve r b y f dc h i = uncurryNested (qlPiecewiseYoYInflationCurve r b y f dc (toList h)) (qlInterpolation i)
+piecewiseYoyInflationCurve r b y f dc h i = uncurryNested (qlPiecewiseYoYInflationCurve r b y f dc (toList h)) (qlInterpolation i)
 -- |Bootstraps a year-on-year inflation term structure piecewise from a set of helpers,
 -- interpolating between the bootstrapped nodes with the given 'Interpolation'.
 {#fun qlPiecewiseYoYInflationCurve{withDay*`Day',withDay*`Day',`Double',`Frequency',withDayCounter*`DayCounter'
@@ -102,14 +102,14 @@ piecewiseYoYInflationCurve r b y f dc h i = uncurryNested (qlPiecewiseYoYInflati
   ,`Int',`Int',`Int',preErrorCheck-`String'errorCheck*-}->`YoYInflationTermStructure'peekYoYInflationTermStructure*#}
 
 -- |A YoY-inflation curve interpolating directly between given (date, rate) nodes, unlike
--- 'piecewiseYoYInflationCurve''s bootstrap from swap helpers -- useful when the rates are
+-- 'piecewiseYoyInflationCurve' bootstrap from swap helpers -- useful when the rates are
 -- already known market YoY levels rather than swap quotes to calibrate against. The first
 -- node is the curve's own base date\/rate.
-interpolatedYoYInflationCurve :: Day -- ^referenceDate
+interpolatedYoyInflationCurve :: Day -- ^referenceDate
   -> NonEmpty (Day, Double) -- ^dates, rates
   -> Frequency -> DayCounter -> Interpolation
   -> IO YoYInflationTermStructure
-interpolatedYoYInflationCurve r dr f dc i = uncurryNested (qlInterpolatedYoYInflationCurve r ds rs f dc) (qlInterpolation i)
+interpolatedYoyInflationCurve r dr f dc i = uncurryNested (qlInterpolatedYoYInflationCurve r ds rs f dc) (qlInterpolation i)
   where (ds, rs) = unzip (toList dr)
 {#fun qlInterpolatedYoYInflationCurve{withDay*`Day',withDayArray*`[Day]'&,withDoubleArrayRaw*`[Double]'
   ,`Frequency',withDayCounter*`DayCounter'

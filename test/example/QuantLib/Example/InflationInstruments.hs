@@ -183,7 +183,7 @@ run = do
   qy2 <- simpleQuote flatRate
   hy1 <- yearOnYearInflationSwapHelper qy1 obsLag maturity2Y cal Unadjusted dc yidx0 CPILinear nominalCurve LastRelevantDate Nothing
   hy2 <- yearOnYearInflationSwapHelper qy2 obsLag maturity5Y cal Unadjusted dc yidx0 CPILinear nominalCurve LastRelevantDate Nothing
-  yoyCurve <- piecewiseYoYInflationCurve evalDate baseDate flatRate Monthly dc [hy1, hy2] Linear
+  yoyCurve <- piecewiseYoyInflationCurve evalDate baseDate flatRate Monthly dc [hy1, hy2] Linear
   yidx1 <- customYoyInflationIndex "WL YoY CPI" reg False Monthly obsLagI gbp (Just yoyCurve)
   yoySchedule <- schedule (Just evalDate) maturity5Y (6, Months) cal Unadjusted Unadjusted Backward False Nothing Nothing
   yoySwap0 <- yearOnYearInflationSwap Payer nominal fixedSchedule flatRate dc yoySchedule yidx1 obsLag CPILinear 0.0 dc cal Unadjusted
@@ -224,11 +224,11 @@ run = do
   setPricingEngine cpiLegBond bondEngine
   cpiLegNpv <- npv cpiLegBond
 
-  -- yoyInflationLeg exercised via the generic Leg-based 'swap'' constructor
+  -- yoyInflationLeg exercised via the generic Leg-based 'swapFromLegs' constructor
   yoyL <- CF.yoyInflationLeg yoySchedule cal yidx1 obsLag CPILinear [nominal] dc Unadjusted [0] [1.0] [0.0] [] []
   fixedIR <- interestRate flatRate dc Compounded Annual
   fixedL <- CF.fixedRateLeg fixedSchedule [nominal] [fixedIR] Unadjusted dc cal
-  yoyLegSwap <- swap' [(fixedL, True), (yoyL, False)]
+  yoyLegSwap <- swapFromLegs [(fixedL, True), (yoyL, False)]
   yoyLegSwapInst <- asInstrument yoyLegSwap
   setPricingEngine yoyLegSwapInst swapEngine
   yoyLegNpv <- npv yoyLegSwapInst

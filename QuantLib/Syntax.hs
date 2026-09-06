@@ -3,12 +3,12 @@ module QuantLib.Syntax
   (
     free1st
   , free2nd
-  , free1st'
-  , free2nd'
+  , free1stWithArity
+  , free2ndWithArity
   , freeNth
-  , freeNth'
+  , freeNthWithArity
   , cutAt
-  , cutAt'
+  , cutAtWithArity
   , cut
   )
 where
@@ -41,13 +41,13 @@ free2nd = freeNth 2
 -- Top-level bindings and typeclass methods don't need this; 'free1st' handles both.
 --
 -- > -- parRate is a local where-binding here, so 'parRate wouldn't reify
--- > forM curves $ $(free1st' 3) parRate (bondSettle :| ds) dc
-free1st' :: Int -> ExpQ
-free1st' = freeNth' 1
+-- > forM curves $ $(free1stWithArity 3) parRate (bondSettle :| ds) dc
+free1stWithArity :: Int -> ExpQ
+free1stWithArity = freeNthWithArity 1
 
--- |same as 'free1st'', but frees the second argument instead of the first
-free2nd' :: Int -> ExpQ
-free2nd' = freeNth' 2
+-- |same as 'free1stWithArity', but frees the second argument instead of the first
+free2ndWithArity :: Int -> ExpQ
+free2ndWithArity = freeNthWithArity 2
 
 -- |the general form behind 'free1st'\/'free2nd': frees the @i@-th (1-based) argument of a
 -- reified function, moving it to the trailing position
@@ -56,11 +56,11 @@ free2nd' = freeNth' 2
 freeNth :: Int -> Name -> ExpQ
 freeNth i = cutAt [i]
 
--- |the general form behind 'free1st''\/'free2nd'': like 'freeNth', but with a user-supplied
+-- |the general form behind 'free1stWithArity'\/'free2ndWithArity': like 'freeNth', but with a user-supplied
 -- arity instead of one discovered via 'reify', and taking the target as its first argument
--- (see 'free1st'')
-freeNth' :: Int -> Int -> ExpQ
-freeNth' i = cutAt' [i]
+-- (see 'free1stWithArity')
+freeNthWithArity :: Int -> Int -> ExpQ
+freeNthWithArity i = cutAtWithArity [i]
 
 -- |number of arguments a reified signature takes
 arity :: Type -> Q Int
@@ -111,10 +111,10 @@ cutAt :: [Int] -> Name -> ExpQ
 cutAt is n = reifiedArity n >>= \an -> genCutAt is an n
 
 -- |like 'cutAt', but with a user-supplied arity instead of one discovered via 'reify', for a
--- target 'reify' can't see (same reason as 'free1st''); the target becomes the generated
+-- target 'reify' can't see (same reason as 'free1stWithArity'); the target becomes the generated
 -- function's first argument
-cutAt' :: [Int] -> Int -> ExpQ
-cutAt' is an = do
+cutAtWithArity :: [Int] -> Int -> ExpQ
+cutAtWithArity is an = do
   n <- newName "f"
   LamE [VarP n] <$> genCutAt is an n
 

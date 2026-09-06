@@ -50,7 +50,7 @@ main = do
   putStrLn $ "Floater's clean price from yield: " ++ show (Bond.cleanPriceFromYieldR br)
   putStrLn $ "Floater's yield from clean price: " ++ show (Bond.yieldFromCleanPriceR br)
   putStrLn $ "Tradable: " ++ show (Bond.tradable br)
-  putStrLn $ "CashFlows: NPV: " ++ show (Bond.cfnpvR br) ++ ", NPV_BPS: " ++ show (Bond.cfnpvbpsR br)
+  putStrLn $ "CashFlows: NPV: " ++ show (Bond.cfNpvR br) ++ ", NPV_BPS: " ++ show (Bond.cfNpvBpsR br)
   putStrLn $ "BPS: " ++ show (Bond.bpsR br)
 
   putStrLn "\n*** Repo Example ***"

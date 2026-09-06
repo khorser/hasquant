@@ -78,7 +78,7 @@ computeXva npvs curves t0Discount cptyPoints ownPoints cptyRecovery ownRecovery 
   buckets <- forM (zip3 tss prevDates thisDates) $ \(ts, dPrev, dThis) -> do
     pdCpty <- Credit.defaultProbabilityBetween cptyDTS dPrev dThis True
     pdOwn <- Credit.defaultProbabilityBetween ownDTS dPrev dThis True
-    df <- TS.discount' t0Discount dThis True
+    df <- TS.discountAtDate t0Discount dThis True
     pure (df * ee ts * pdCpty, df * ene ts * pdOwn, (dThis, quantile percentile (npvsAt ts)))
 
   let (cvaTerms, dvaTerms, pfe) = unzip3 buckets

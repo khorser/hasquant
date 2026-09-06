@@ -22,7 +22,7 @@ module QuantLib.Quote
   , eurodollarFuturesImpliedStdDevQuote
   , forwardSwapQuote
   , forwardValueQuote
-  , futuresConvAdjustmentQuote'
+  , futuresConvAdjustmentQuoteFromImmCode
   , futuresConvAdjustmentQuote
   , futuresConvAdjustmentQuoteFuturesValue
   , impliedStdDevQuote
@@ -116,7 +116,7 @@ import QuantLib.Internal.Type
 {#fun qlForwardValueQuote as forwardValueQuote{withIndex*`GenIndex idx',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Quote'peekQuote*#}
 
 -- |futures-convexity adjustment for an Ibor future identified by its IMM code
-{#fun qlFuturesConvAdjustmentQuote1 as futuresConvAdjustmentQuote'{withIborIndex*`GenIborIndex ibor',`String' -- ^immCode
+{#fun qlFuturesConvAdjustmentQuote1 as futuresConvAdjustmentQuoteFromImmCode{withIborIndex*`GenIborIndex ibor',`String' -- ^immCode
   ,withQuote*`GenQuote q1' -- ^futuresQuote
   ,withQuote*`GenQuote q2' -- ^volatility
   ,withQuote*`GenQuote q3' -- ^meanReversion

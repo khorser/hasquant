@@ -41,7 +41,7 @@ spec = do
         cal <- calendar TARGET
         dc <- dayCounter (Actual360 False)
         hazardQ <- simpleQuote 0.01234
-        probCurve <- flatHazardRate' 0 cal hazardQ dc
+        probCurve <- flatHazardRateMoving 0 cal hazardQ dc
         discQ <- simpleQuote 0.06
         discountCurve <- flatForward today' discQ dc Continuous Annual
 
@@ -98,7 +98,7 @@ spec = do
         cal <- calendar TARGET
         dc <- dayCounter (Actual360 False)
         hazardQ <- simpleQuote 0.01234
-        probCurve <- flatHazardRate' 0 cal hazardQ dc
+        probCurve <- flatHazardRateMoving 0 cal hazardQ dc
         discQ <- simpleQuote 0.06
         discountCurve <- flatForward today' discQ dc Continuous Annual
         eng <- midPointCdsEngine probCurve 0.4 discountCurve Nothing
@@ -129,7 +129,7 @@ spec = do
         cal <- calendar TARGET
         dc <- dayCounter (Actual360 False)
         hazardQ <- simpleQuote 0.01234
-        probCurve <- flatHazardRate' 0 cal hazardQ dc
+        probCurve <- flatHazardRateMoving 0 cal hazardQ dc
         discQ <- simpleQuote 0.06
         discountCurve <- flatForward today' discQ dc Continuous Annual
         eng <- midPointCdsEngine probCurve 0.4 discountCurve (Just True)
@@ -138,12 +138,12 @@ spec = do
         sch <- schedule (Just today') maturity (6, Months) cal Following Following
           Forward False Nothing Nothing
 
-        cds <- creditDefaultSwap' Seller 10000 0.001 0.05 sch Following dc True True
+        cds <- creditDefaultSwapWithUpfront Seller 10000 0.001 0.05 sch Following dc True True
           Nothing Nothing FaceValue dc True Nothing 3
         setPricingEngine cds eng
         fairUp <- fairUpfront cds
 
-        fairCds <- creditDefaultSwap' Seller 10000 fairUp 0.05 sch Following dc True True
+        fairCds <- creditDefaultSwapWithUpfront Seller 10000 fairUp 0.05 sch Following dc True True
           Nothing Nothing FaceValue dc True Nothing 3
         setPricingEngine fairCds eng
         fairNpv <- npv fairCds
@@ -168,7 +168,7 @@ spec = do
             Forward False Nothing Nothing
 
           hazardQ <- simpleQuote h
-          probCurve <- flatHazardRate' 0 cal hazardQ dc
+          probCurve <- flatHazardRateMoving 0 cal hazardQ dc
           eng <- midPointCdsEngine probCurve 0.4 discountCurve Nothing
 
           cds <- creditDefaultSwap Seller 10000 0.0120 sch ModifiedFollowing dc True True
