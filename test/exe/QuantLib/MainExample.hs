@@ -33,12 +33,12 @@ main = do
   putStrLn $ "Today is " ++ show wd
 
   putStrLn "\n*** QuickStart Example ***"
-  qr <- keepingSettings' QuickStart.run
+  qr <- keepingSettingsGc QuickStart.run
   putStrLn $ "NPV: " ++ show (QuickStart.quickNpv qr)
   putStrLn $ "Fair rate: " ++ show (QuickStart.quickFairRate qr)
 
   putStrLn "\n*** Bond Example ***"
-  br <- keepingSettings' Bond.run
+  br <- keepingSettingsGc Bond.run
   putStrLn $ "NPV: " ++ show (Bond.npvR br)
   putStrLn $ "Yield: " ++ show (Bond.yieldR br)
   putStrLn $ "Clean price: " ++ show (Bond.cleanPriceR br)
@@ -54,7 +54,7 @@ main = do
   putStrLn $ "BPS: " ++ show (Bond.bpsR br)
 
   putStrLn "\n*** Repo Example ***"
-  rr <- keepingSettings' $ RepoExample.run True
+  rr <- keepingSettingsGc $ RepoExample.run True
   putStrLn $ "Underlying bond clean price: " ++ show (RepoExample.cleanPriceR rr)
   putStrLn $ "Underlying bond dirty price: " ++ show (RepoExample.dirtyPriceR rr)
   putStrLn $ "Underlying bond accrued at settlement: " ++ show (RepoExample.accruedAmountSettlement rr)
@@ -69,19 +69,19 @@ main = do
   putStrLn $ "Market repo rate:   " ++ show (RepoExample.zeroRateR rr)
 
   putStrLn "\n*** FRA Example ***"
-  (FRA.Result i1 i2) <- keepingSettings' FRA.run
+  (FRA.Result i1 i2) <- keepingSettingsGc FRA.run
   printFraIterationResult i1
   putStrLn "* After 100bp shift *"
   printFraIterationResult i2
 
   putStrLn "\n*** Swap Example ***"
-  (SwapExample.Result si1 si2) <- keepingSettings' SwapExample.run
+  (SwapExample.Result si1 si2) <- keepingSettingsGc SwapExample.run
   printSwapIterationResult si1
   putStrLn "***Updating market data***"
   printSwapIterationResult si2
 
   putStrLn "\n*** FittedBondCurve Example ***"
-  (BondCurveExample.Result ss r1 r2 r3 r4) <- keepingSettings' BondCurveExample.run
+  (BondCurveExample.Result ss r1 r2 r3 r4) <- keepingSettingsGc BondCurveExample.run
   putStrLn $ "Bond settlement date: " ++ show ss
   printBondCurveInfo r1
   printBondCurveInfo r2
@@ -89,14 +89,14 @@ main = do
   printBondCurveInfo r4
 
   putStrLn "\n*** Replication Example ***"
-  (ReplicationExample.Result npvInit npvOut npvIn) <- keepingSettings' ReplicationExample.run
+  (ReplicationExample.Result npvInit npvOut npvIn) <- keepingSettingsGc ReplicationExample.run
   void $ printf "%20s %19s %19s %19s %19s\n" "NPV of" "Analytic" "12-day replication" "26-day replication" "52-day replication"
   printDLine "%20s" "Initial" "%20.6f" npvInit
   printDLine "%20s" "Out of the money" "%20.6f" npvOut
   printDLine "%20s" "In the money" "%20.6f" npvIn
 
   putStrLn "\n*** BermudanSwaption Example ***"
-  (BermudanSwaptionExample.Result g2v g2p hwv hwp hw2v hw2p bkv bkp npvA npvO npvI) <- keepingSettings' BermudanSwaptionExample.run
+  (BermudanSwaptionExample.Result g2v g2p hwv hwp hw2v hw2p bkv bkp npvA npvO npvI) <- keepingSettingsGc BermudanSwaptionExample.run
   void $ printf "%25s %8s %8s %8s %8s %8s\n" "Calibrated vols for" "1x5" "2x4" "3x3" "4x2" "5x1"
   printDLine "%25s" "G2" "%9.5f" g2v
   printDLine "%25s" "Hull-White" "%9.5f" hwv
@@ -138,7 +138,7 @@ main = do
   printEquityOptNPVs "MC (longstaff Schwartz)" (americanOnly [mcA])
 
   putStrLn "\n*** CDS Example ***"
-  (CDSExample.Result probs fairSpread npv defNpv cpnNpv) <- keepingSettings' CDSExample.run
+  (CDSExample.Result probs fairSpread npv defNpv cpnNpv) <- keepingSettingsGc CDSExample.run
   printDoubles "Survival probabilities (1Y, 2Y)" probs
   void $ printf "%15s %15s %15s %15s %15s\n" "" "3M" "6M" "1Y" "2Y"
   printDLine "%15s" "Fair spread" "%16.6f" fairSpread
@@ -147,13 +147,13 @@ main = do
   printDLine "%15s" "Coupon leg NPV" "%16.2f" cpnNpv
 
   putStrLn "\n*** Callable Bond Example ***"
-  (CallableBondExample.Result ps ys) <- keepingSettings' CallableBondExample.run
+  (CallableBondExample.Result ps ys) <- keepingSettingsGc CallableBondExample.run
   void $ printf "%5s   %10s %10s %10s %10s %10s\n" "" "sigma=0.0" "sigma=1.0" "sigma=3.0" "sigma=6.0" "sigma=12.0"
   printDLine "%5s" "Price" "%11.2f" ps
   printDLine "%5s" "Yield" "%11.2f" ys
 
   putStrLn "\n*** Convertible Bond Example ***"
-  (ConvertibleBondExample.Result jr crr ad tr ti lr j) <- keepingSettings' ConvertibleBondExample.run
+  (ConvertibleBondExample.Result jr crr ad tr ti lr j) <- keepingSettingsGc ConvertibleBondExample.run
   void $ printf "%30s %10s %10s\n" "NPV for Tree" "European" "American"
   printDLine "%30s" "Jarrow-Rudd" "%11.6f" jr
   printDLine "%30s" "Cox-Ross-Rubinstein" "%11.6f" crr
@@ -164,13 +164,13 @@ main = do
   printDLine "%30s" "Joshi" "%11.6f" j
 
   putStrLn "\n*** Straightforward Monte Carlo pricing of an FX TARF Example ***"
-  (TARF.Result tnpv fwds simFwds) <- keepingSettings' TARF.run
+  (TARF.Result tnpv fwds simFwds) <- keepingSettingsGc TARF.run
   putStrLn $ "NPV: " ++ show tnpv
   putStrLn $ "Forward Rates:           " ++ show fwds
   putStrLn $ "Simulated Forward Rates: " ++ show simFwds
 
   putStrLn "\n*** LSM Regression Benchmark ***"
-  lsmBench <- keepingSettings' $ HaskellLSMExample.run True
+  lsmBench <- keepingSettingsGc $ HaskellLSMExample.run True
   printf "lsmRegress (QuantLib solve): %.6fs, price %.6f\n"
     (HaskellLSMExample.lsmSeconds lsmBench) (HaskellLSMExample.lsmPrice lsmBench)
   printf "Haskell normal equations: %.6fs, price %.6f\n"
@@ -178,14 +178,14 @@ main = do
   putStrLn "(CPU time covers backward induction only; both use identical pre-generated paths.)"
 
   putStrLn "\n*** CVA IRS Example ***"
-  (CVAIRSExample.Result rows) <- keepingSettings' CVAIRSExample.run
+  (CVAIRSExample.Result rows) <- keepingSettingsGc CVAIRSExample.run
   putStrLn "-- Correction in the contract fix rate in bp --"
   void $ printf "%4s %8s %8s %8s %8s\n" "Tenor" "FairRate" "Low" "Medium" "High"
   forM_ rows $ \(CVAIRSExample.SwapRow tt fr lo med hi) ->
     printf "%4d %8.3f %8.2f %8.2f %8.2f\n" tt (fr*100) lo med hi
 
   putStrLn "\n*** Short Rate Models Example ***"
-  srm <- keepingSettings' ShortRateModelsExample.run
+  srm <- keepingSettingsGc ShortRateModelsExample.run
   printCalibration "cachedHullWhite" (ShortRateModelsExample.cachedHullWhite srm)
   printCalibration "cachedHullWhiteFixedReversion" (ShortRateModelsExample.cachedHullWhiteFixedReversion srm)
   printCalibration "cachedHullWhite2" (ShortRateModelsExample.cachedHullWhite2 srm)

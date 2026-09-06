@@ -11,7 +11,7 @@
 -- Deliberately depends on @base@ only, and is built without @-threaded@ to match
 -- @hasquant_test@: the point is to isolate the RTS, so pulling in hasquant would
 -- confound it. If this run also passes, the RTS alone is not the cause and the next
--- step is the same driver linked against hasquant, calling 'hestonSLVFDMModel'.
+-- step is the same driver linked against hasquant, calling 'hestonSlvFdmModel'.
 module Main(main) where
 
 import Foreign.C.String(CString, withCString)

@@ -45,17 +45,17 @@ main = do
     putStrLn (show ty ++ " -> " ++ show r)
 
   gbp <- currency GBP
-  customRegion <- region' "Wonderland" "WL"
-  zii' <- zeroInflationIndex' "WL CPI" customRegion False Monthly (1, Months) gbp Nothing
+  reg <- customRegion "Wonderland" "WL"
+  zii' <- customZeroInflationIndex "WL CPI" reg False Monthly (1, Months) gbp Nothing
   addFixing zii' (1 `january` 2019) 97.0 False
   addFixing zii' (1 `january` 2020) 100.0 False
   fz' <- fixing zii' (1 `january` 2020)
-  putStrLn ("custom zeroInflationIndex' -> fixing " ++ show fz')
+  putStrLn ("custom zero-inflation index -> fixing " ++ show fz')
 
-  yii' <- yoyInflationIndex' "WL YoY CPI" customRegion False Monthly (1, Months) gbp Nothing
+  yii' <- customYoyInflationIndex "WL YoY CPI" reg False Monthly (1, Months) gbp Nothing
   addFixing yii' (1 `january` 2020) 0.03 False
   fy' <- yoyFixing yii' (1 `january` 2020)
-  putStrLn ("custom yoyInflationIndex' -> fixing " ++ show fy')
+  putStrLn ("custom YoY-inflation index -> fixing " ++ show fy')
 
   -- ratio YoY index needs the underlying zero index's fixings a year apart
   yiiRatio <- yoyInflationIndexFromZero zii' Nothing

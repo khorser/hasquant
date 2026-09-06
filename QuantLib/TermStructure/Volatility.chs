@@ -213,11 +213,11 @@ module QuantLib.TermStructure.Volatility
   , gridModelLocalVolSurface
   , gridModelLocalVolSurfaceAsCalibratedModel
   , hestonBlackVolSurface
-  , andreasenHugeVolatilityInterpl
-  , andreasenHugeVolatilityInterplCalibrationError
-  , andreasenHugeVolatilityInterplFwd
-  , andreasenHugeVolatilityInterplOptionPrice
-  , andreasenHugeVolatilityInterplLocalVol
+  , andreasenHugeVolatilityInterpolation
+  , andreasenHugeVolatilityInterpolationCalibrationError
+  , andreasenHugeVolatilityInterpolationFwd
+  , andreasenHugeVolatilityInterpolationOptionPrice
+  , andreasenHugeVolatilityInterpolationLocalVol
   , andreasenHugeVolatilityAdapter
   , andreasenHugeLocalVolAdapter
   , spreadedOptionletVol
@@ -420,12 +420,12 @@ gridModelLocalVolSurface d nodes = qlGridModelLocalVolSurface d dates rowSizes v
 
 -- |Interpolation choice for Andreasen-Huge local-volatility calibration.
 -- |Calibration choice for Andreasen-Huge local-volatility calibration.
-andreasenHugeVolatilityInterpl :: NonEmpty (VanillaOption, GenQuote q) -> GenQuote q
+andreasenHugeVolatilityInterpolation :: NonEmpty (VanillaOption, GenQuote q) -> GenQuote q
   -> GenYieldTermStructure y1 -> GenYieldTermStructure y2
   -> AndreasenHugeInterpolationType -> AndreasenHugeCalibrationType -> Word
   -> Maybe Double -> Maybe Double -> OptimizationMethod -> EndCriteria
   -> IO AndreasenHugeVolatilityInterpl
-andreasenHugeVolatilityInterpl xs spot r q = qlAndreasenHugeVolatilityInterpl os qs spot r q
+andreasenHugeVolatilityInterpolation xs spot r q = qlAndreasenHugeVolatilityInterpl os qs spot r q
   where (os, qs) = unzip (toList xs)
 {#fun qlAndreasenHugeVolatilityInterpl{withVanillaOptionArray*`[VanillaOption]'&,withQuoteArrayRaw*`[GenQuote q1]'
   ,withQuote*`GenQuote q2',withYieldTermStructure*`GenYieldTermStructure y1',withYieldTermStructure*`GenYieldTermStructure y2'
@@ -433,24 +433,24 @@ andreasenHugeVolatilityInterpl xs spot r q = qlAndreasenHugeVolatilityInterpl os
   ,withOptimizationMethod*`OptimizationMethod',withEndCriteria*`EndCriteria',preErrorCheck-`String'errorCheck*-}->`AndreasenHugeVolatilityInterpl'peekAndreasenHugeVolatilityInterpl*#}
 
 -- |Minimum, maximum, and average calibration errors, expressed in volatility units.
-andreasenHugeVolatilityInterplCalibrationError :: AndreasenHugeVolatilityInterpl -> IO (Double, Double, Double)
-andreasenHugeVolatilityInterplCalibrationError x = do
+andreasenHugeVolatilityInterpolationCalibrationError :: AndreasenHugeVolatilityInterpl -> IO (Double, Double, Double)
+andreasenHugeVolatilityInterpolationCalibrationError x = do
   [mn, mx, av] <- qlAndreasenHugeVolatilityInterplCalibrationError x
   pure (mn, mx, av)
 {#fun qlAndreasenHugeVolatilityInterplCalibrationError{withAndreasenHugeVolatilityInterpl*`AndreasenHugeVolatilityInterpl',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Forward level implied by an Andreasen-Huge calibration at time @t@.
-{#fun qlAndreasenHugeVolatilityInterplFwd as andreasenHugeVolatilityInterplFwd{withAndreasenHugeVolatilityInterpl*`AndreasenHugeVolatilityInterpl' -- ^interpolation
+{#fun qlAndreasenHugeVolatilityInterplFwd as andreasenHugeVolatilityInterpolationFwd{withAndreasenHugeVolatilityInterpl*`AndreasenHugeVolatilityInterpl' -- ^interpolation
   ,`Double' -- ^t
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 -- |Calibrated option price at time, strike, and put/call type.
-{#fun qlAndreasenHugeVolatilityInterplOptionPrice as andreasenHugeVolatilityInterplOptionPrice{withAndreasenHugeVolatilityInterpl*`AndreasenHugeVolatilityInterpl' -- ^interpolation
+{#fun qlAndreasenHugeVolatilityInterplOptionPrice as andreasenHugeVolatilityInterpolationOptionPrice{withAndreasenHugeVolatilityInterpl*`AndreasenHugeVolatilityInterpl' -- ^interpolation
   ,`Double' -- ^t
   ,`Double' -- ^strike
   ,fromEnumC`OptionType' -- ^optionType
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 -- |Calibrated local volatility at time and strike.
-{#fun qlAndreasenHugeVolatilityInterplLocalVol as andreasenHugeVolatilityInterplLocalVol{withAndreasenHugeVolatilityInterpl*`AndreasenHugeVolatilityInterpl' -- ^interpolation
+{#fun qlAndreasenHugeVolatilityInterplLocalVol as andreasenHugeVolatilityInterpolationLocalVol{withAndreasenHugeVolatilityInterpl*`AndreasenHugeVolatilityInterpl' -- ^interpolation
   ,`Double' -- ^t
   ,`Double' -- ^strike
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}

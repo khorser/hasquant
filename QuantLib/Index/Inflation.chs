@@ -11,16 +11,16 @@ module QuantLib.Index.Inflation
 
   , ZeroInflationIndexType(..)
   , zeroInflationIndex
-  , zeroInflationIndex'
+  , customZeroInflationIndex
   , YoYInflationIndexType(..)
   , yoyInflationIndex
-  , yoyInflationIndex'
+  , customYoyInflationIndex
   , yoyInflationIndexFromZero
 
   , Region
   , RegionType(..)
   , region
-  , region'
+  , customRegion
 
   , fixing
   , yoyFixing
@@ -62,11 +62,11 @@ import QuantLib.Internal.Type
 {#fun qlRegion as region{`RegionType',preErrorCheck-`String'errorCheck*-}->`Region'peekRegion*#}
 
 -- |An arbitrary custom region, given its name and ISO code.
-{#fun qlCreateRegion as region'{`String',`String',preErrorCheck-`String'errorCheck*-}->`Region'peekRegion*#}
+{#fun qlCreateRegion as customRegion{`String',`String',preErrorCheck-`String'errorCheck*-}->`Region'peekRegion*#}
 
 -- |A custom zero inflation index (arbitrary family name/region/currency), with no historical
 -- fixings -- add fixings via 'QuantLib.Index.addFixing'.
-{#fun qlZeroInflationIndex as zeroInflationIndex'{`String' -- ^familyName
+{#fun qlZeroInflationIndex as customZeroInflationIndex{`String' -- ^familyName
   ,withRegion*`Region'
   ,`Bool' -- ^revised
   ,`Frequency'
@@ -78,7 +78,7 @@ import QuantLib.Internal.Type
 -- |A custom quoted year-on-year inflation index (arbitrary family name/region/currency); needs
 -- its own past fixings added via 'QuantLib.Index.addFixing'. See 'yoyInflationIndexFromZero'
 -- for a YoY index defined instead as a ratio of an existing 'ZeroInflationIndex'\'s fixings.
-{#fun qlYoYInflationIndex as yoyInflationIndex'{`String' -- ^familyName
+{#fun qlYoYInflationIndex as customYoyInflationIndex{`String' -- ^familyName
   ,withRegion*`Region'
   ,`Bool' -- ^revised
   ,`Frequency'

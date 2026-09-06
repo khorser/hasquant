@@ -247,8 +247,8 @@ insufficient.
   `collectGarbage` and re-run everything -- do not re-scatter the idiom
   across call sites, which is exactly the state it was consolidated out of.
 - **A new hspec test that sets `Settings.evaluationDate` must wrap its body in
-  `Settings.keepingSettings'`, not a manual trailing `collectGarbage`.**
-  `QuantLib.Settings.keepingSettings'` is a `bracket`-based helper that
+  `Settings.keepingSettingsGc`, not a manual trailing `collectGarbage`.**
+  `QuantLib.Settings.keepingSettingsGc` is a `bracket`-based helper that
   already runs `collectGarbage` right before restoring the saved `Settings`
   singleton — on normal completion *and* on an exception, which a manual
   trailing call does not cover. Nearly every hspec test that mutates the
@@ -256,7 +256,7 @@ insufficient.
   (`test/hspec/QuantLib/Spec/DatesAndSchedule.hs` has dozens of examples);
   don't add a second, redundant `collectGarbage` on top -- nor a mid-body
   double GC, which is what the three sites in
-  `test/hspec/QuantLib/Spec/TermStructure.hs` did before `keepingSettings'`
+  `test/hspec/QuantLib/Spec/TermStructure.hs` did before `keepingSettingsGc`
   itself was strengthened to the double sweep, and which were deleted then.
   This matters especially
   for a test anchored to a fixed historical date with a long internal
@@ -265,7 +265,7 @@ insufficient.
   can crash an unrelated *later* test once a subsequent
   `Settings.setEvaluationDate` call notifies observers and the old object's
   now-past termination date trips `effective date ... later than or equal
-  to termination date ...` deep in QuantLib. `keepingSettings'`/
+  to termination date ...` deep in QuantLib. `keepingSettingsGc`/
   `keepingSettings`'s own restore-on-exception behavior has a direct
   regression test in `test/hspec/QuantLib/Spec/DatesAndSchedule.hs`
   (`describe "settings"`) — extend it, don't re-derive it, if this ever

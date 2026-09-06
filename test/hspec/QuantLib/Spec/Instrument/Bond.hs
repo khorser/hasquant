@@ -28,7 +28,7 @@ spec = describe "Bond (BTP, Rendistato)" $ do
 btpSpec :: Spec
 btpSpec = describe "BTP" $ do
   it "matches a hand-built FixedRateBond using btp.cpp's own hardcoded conventions, except accruedAmount's ClosestRounding(5)" $
-    Settings.keepingSettings' $ do
+    Settings.keepingSettingsGc $ do
       let maturity = 1 `september` 2030
           start = 1 `september` 2020
           fixedRate = 0.03
@@ -72,7 +72,7 @@ btpSpec = describe "BTP" $ do
 rendistatoSpec :: Spec
 rendistatoSpec = describe "RendistatoBasket / RendistatoCalculator" $
   it "aggregates a basket of BTPs against a flat EUR curve" $
-    Settings.keepingSettings' $ do
+    Settings.keepingSettingsGc $ do
       let today' = 1 `september` 2024
       Settings.setEvaluationDate (Just today')
       dc <- dayCounter Actual365FixedStandard

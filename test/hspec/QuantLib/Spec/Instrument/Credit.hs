@@ -35,7 +35,7 @@ spec = do
   describe "testCachedValue" $
     it "NPV and fairSpread reproduce creditdefaultswap.cpp's cached values under\
        \ MidPointCdsEngine and IntegralCdsEngine (1 day and 1 week steps)" $
-      Settings.keepingSettings' $ do
+      Settings.keepingSettingsGc $ do
         let today' = 9 `june` 2006
         Settings.setEvaluationDate (Just today')
         cal <- calendar TARGET
@@ -76,21 +76,21 @@ spec = do
         integ1wFair <- fairSpread cds
         integ1wFair `shouldSatisfy` closePrec 0.007517539081 1.0e-5
 
-        -- accrualRebateNPV has no cached upstream value here, so cross-check it between
+        -- accrualRebateNpv has no cached upstream value here, so cross-check it between
         -- engines instead (mirrors the NPV/fairSpread cross-engine checks above): for this
         -- fixture (protection starting exactly on a schedule date) it comes out as zero under
         -- both engines, which is itself a useful check that the binding reaches the right
         -- result rather than an unrelated field.
         setPricingEngine cds midEng
-        midRebate <- accrualRebateNPV cds
+        midRebate <- accrualRebateNpv cds
         midRebate `shouldSatisfy` closePrec 0 1.0e-8
         setPricingEngine cds integ1dEng
-        integ1dRebate <- accrualRebateNPV cds
+        integ1dRebate <- accrualRebateNpv cds
         integ1dRebate `shouldSatisfy` closePrec midRebate (10000 * 1.0e-4)
 
   describe "testFairSpread" $
     it "rebuilding at the CDS's own fairSpread reprices it to ~0" $
-      Settings.keepingSettings' $ do
+      Settings.keepingSettingsGc $ do
         today' <- today >>= \d -> do
           cal <- calendar TARGET
           adjust cal d Following
@@ -121,7 +121,7 @@ spec = do
 
   describe "testFairUpfront" $
     it "rebuilding at the CDS's own fairUpfront reprices it to ~0" $
-      Settings.keepingSettings' $ do
+      Settings.keepingSettingsGc $ do
         today' <- today >>= \d -> do
           cal <- calendar TARGET
           adjust cal d Following
@@ -151,7 +151,7 @@ spec = do
 
   describe "testImpliedHazardRate" $
     it "round-trips impliedHazardRate against the flat hazard rate used to build the CDS's NPV" $
-      Settings.keepingSettings' $ do
+      Settings.keepingSettingsGc $ do
         today' <- today >>= \d -> do
           cal <- calendar TARGET
           adjust cal d Following

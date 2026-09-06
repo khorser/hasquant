@@ -137,11 +137,11 @@ run = do
   dc <- dayCounter Actual365FixedStandard
   cal <- calendar Null
   gbp <- currency GBP
-  reg <- region' "Wonderland" "WL"
+  reg <- customRegion "Wonderland" "WL"
 
   -- unlinked index carrying only historical fixings, used to build the ZCIIS helpers
   fixingDates <- mapM (\n -> advance cal (1 `january` 2022) (n, Months) Unadjusted False) [0 .. 24 :: Int]
-  idx0 <- zeroInflationIndex' "WL CPI" reg False Monthly obsLagI gbp Nothing
+  idx0 <- customZeroInflationIndex "WL CPI" reg False Monthly obsLagI gbp Nothing
   forM_ (zip [1 :: Double ..] fixingDates) $ \(i, d) -> addFixing idx0 d (260.0 + i) False
 
   q1 <- simpleQuote flatRate
@@ -150,7 +150,7 @@ run = do
   h2 <- zeroCouponInflationSwapHelper q2 obsLag maturity5Y cal Unadjusted dc idx0 CPILinear LastRelevantDate Nothing
   zeroCurve <- piecewiseZeroInflationCurve evalDate baseDate Monthly dc [h1, h2] Linear
   -- curve-linked index (same name/region/etc, picks up idx0's fixings automatically)
-  idx1 <- zeroInflationIndex' "WL CPI" reg False Monthly obsLagI gbp (Just zeroCurve)
+  idx1 <- customZeroInflationIndex "WL CPI" reg False Monthly obsLagI gbp (Just zeroCurve)
 
   nominalQ <- simpleQuote nominalRate
   nominalCurve <- flatForward evalDate nominalQ dc Continuous Annual
@@ -177,14 +177,14 @@ run = do
   (_, cpiSwapNpv) <- refineCpiSwapRate cpiSwapCtx (15 :: Int) flatRate
 
   -- YoY inflation curve + swap, mirroring the same unlinked/linked-index trick
-  yidx0 <- yoyInflationIndex' "WL YoY CPI" reg False Monthly obsLagI gbp Nothing
+  yidx0 <- customYoyInflationIndex "WL YoY CPI" reg False Monthly obsLagI gbp Nothing
   forM_ (zip [1 :: Double ..] fixingDates) $ \(i, d) -> addFixing yidx0 d (flatRate + i * 0.0001) False
   qy1 <- simpleQuote flatRate
   qy2 <- simpleQuote flatRate
   hy1 <- yearOnYearInflationSwapHelper qy1 obsLag maturity2Y cal Unadjusted dc yidx0 CPILinear nominalCurve LastRelevantDate Nothing
   hy2 <- yearOnYearInflationSwapHelper qy2 obsLag maturity5Y cal Unadjusted dc yidx0 CPILinear nominalCurve LastRelevantDate Nothing
   yoyCurve <- piecewiseYoYInflationCurve evalDate baseDate flatRate Monthly dc [hy1, hy2] Linear
-  yidx1 <- yoyInflationIndex' "WL YoY CPI" reg False Monthly obsLagI gbp (Just yoyCurve)
+  yidx1 <- customYoyInflationIndex "WL YoY CPI" reg False Monthly obsLagI gbp (Just yoyCurve)
   yoySchedule <- schedule (Just evalDate) maturity5Y (6, Months) cal Unadjusted Unadjusted Backward False Nothing Nothing
   yoySwap0 <- yearOnYearInflationSwap Payer nominal fixedSchedule flatRate dc yoySchedule yidx1 obsLag CPILinear 0.0 dc cal Unadjusted
   yoySwap0Inst <- asInstrument yoySwap0
@@ -210,7 +210,7 @@ run = do
   q3 <- simpleQuote (flatRate + 0.02) -- higher expected inflation
   h3 <- zeroCouponInflationSwapHelper q3 obsLag maturity5Y cal Unadjusted dc idx0 CPILinear LastRelevantDate Nothing
   hiZeroCurve <- piecewiseZeroInflationCurve evalDate baseDate Monthly dc [h1, h3] Linear
-  hiIdx <- zeroInflationIndex' "WL CPI" reg False Monthly obsLagI gbp (Just hiZeroCurve)
+  hiIdx <- customZeroInflationIndex "WL CPI" reg False Monthly obsLagI gbp (Just hiZeroCurve)
   cbHi <- cpiBond settlementDays faceAmount baseCPI0 obsLag hiIdx CPILinear cpiBondSchedule [couponRate]
     dc Unadjusted (Just evalDate) cal (0, Days) cal Unadjusted False
   cbHiInst <- asBond cbHi >>= asInstrument

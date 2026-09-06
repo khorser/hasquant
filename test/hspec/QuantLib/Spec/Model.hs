@@ -18,7 +18,7 @@ import QuantLib.TermStructure.Yield
 import qualified QuantLib.Index.InterestRate as IR
 import QuantLib.Instrument
 import QuantLib.Instrument.Option(EuropeanExercise(..))
-import QuantLib.Instrument.Swap(fairRate, fixedLegBPS, vanillaSwap, swaption, SwapType(..))
+import QuantLib.Instrument.Swap(fairRate, fixedLegBps, vanillaSwap, swaption, SwapType(..))
 import QuantLib.Model hiding(setPricingEngine, value)
 import QuantLib.PricingEngine
 
@@ -33,7 +33,7 @@ gaussian1dSpec :: Spec
 gaussian1dSpec =
   describe "Gaussian1dModel" $
     it "reproduces the fitted curve's own discount factors, forward rate, and fair swap rate at y=0" $
-      Settings.keepingSettings' $ do
+      Settings.keepingSettingsGc $ do
         cal <- calendar TARGET
         originalEvalDate <- Settings.evaluationDate
         evalDate <- adjust cal originalEvalDate Following
@@ -79,9 +79,9 @@ gaussian1dSpec =
         modelSwapRate <- gaussian1dSwapRate model fixingDate (10, Years) Nothing 0 (Just swapBase)
         modelSwapRate `shouldSatisfy` closePrec curveFairRate 1.0e-6
 
-        -- swapAnnuity(fixing, tenor, y=0) is the fixed leg's annuity; |fixedLegBPS| / 1bp is
+        -- swapAnnuity(fixing, tenor, y=0) is the fixed leg's annuity; |fixedLegBps| / 1bp is
         -- the same quantity computed off the swap's own priced fixed leg.
-        fixedBPS <- fixedLegBPS underlying
+        fixedBPS <- fixedLegBps underlying
         modelAnnuity <- gaussian1dSwapAnnuity model fixingDate (10, Years) Nothing 0 (Just swapBase)
         modelAnnuity `shouldSatisfy` closePrec (abs fixedBPS / 1.0e-4) 1.0e-4
 
@@ -102,7 +102,7 @@ affineModelSpec :: Spec
 affineModelSpec =
   describe "AffineModel.discountBondOption" $
     it "reproduces JamshidianSwaptionEngine's own single-period bond-option decomposition" $
-      Settings.keepingSettings' $ do
+      Settings.keepingSettingsGc $ do
         cal <- calendar TARGET
         originalEvalDate <- Settings.evaluationDate
         evalDate <- adjust cal originalEvalDate Following

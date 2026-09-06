@@ -146,7 +146,7 @@ setup = do
 spec :: Spec
 spec = do
  describe "YoY optionlet stripper (KInterpolatedYoYOptionletVolatilitySurface)" $ do
-  it "interpolatedYoYInflationCurve: a non-Linear interpolation builds and differs between nodes" $ Settings.keepingSettings' $ do
+  it "interpolatedYoYInflationCurve: a non-Linear interpolation builds and differs between nodes" $ Settings.keepingSettingsGc $ do
     let eval = 23 `november` 2007
     Settings.setEvaluationDate (Just eval)
     cal <- calendar TARGET
@@ -163,7 +163,7 @@ spec = do
     -- different interpolation should (and does) diverge from Linear
     abs (rLinear - rCubic) `shouldSatisfy` (> 1e-8)
 
-  it "matches an independent C++ reprise of upstream's testYoYPriceSurfaceToVol fixture" $ Settings.keepingSettings' $ do
+  it "matches an independent C++ reprise of upstream's testYoYPriceSurfaceToVol fixture" $ Settings.keepingSettingsGc $ do
     (_, cal, dc, nominalEUR, yoyIndexEU, priceSurfEU) <- setup
 
     yoySurf <- kInterpolatedYoYOptionletVolatilitySurfaceUnitDisplacedBlack 0 cal ModifiedFollowing dc
@@ -184,7 +184,7 @@ spec = do
         abs (vol - v) `shouldSatisfy` (< eps)
       ) strikes volATyear3
 
-  it "recovers upstream's cached ATM YoY swap/inflation curve (testYoYPriceSurfaceToATM)" $ Settings.keepingSettings' $ do
+  it "recovers upstream's cached ATM YoY swap/inflation curve (testYoYPriceSurfaceToATM)" $ Settings.keepingSettingsGc $ do
     (_, _, _, _, _, priceSurfEU) <- setup
 
     dateRates <- yoyCapFloorAtmYoYSwapDateRates priceSurfEU
@@ -199,7 +199,7 @@ spec = do
       a <- yoyCapFloorAtmYoYRate priceSurfEU d Nothing True
       abs (a - expected) `shouldSatisfy` (< eps)
 
-  it "atmYoYSwapTimeRates carries the same rates as atmYoYSwapDateRates" $ Settings.keepingSettings' $ do
+  it "atmYoYSwapTimeRates carries the same rates as atmYoYSwapDateRates" $ Settings.keepingSettingsGc $ do
     (_, _, _, _, _, priceSurfEU) <- setup
     dateRates <- yoyCapFloorAtmYoYSwapDateRates priceSurfEU
     timeRates <- yoyCapFloorAtmYoYSwapTimeRates priceSurfEU
@@ -209,7 +209,7 @@ spec = do
   -- No second upstream fixture covers a non-(Bicubic, Cubic) combination, so this is a
   -- construction/sanity check only, same reasoning as the interpolatedYoYInflationCurve
   -- spot-check above.
-  it "yoyCapFloorTermPriceSurface: a different (Interpolation2D, Interpolation) pair builds and queries" $ Settings.keepingSettings' $ do
+  it "yoyCapFloorTermPriceSurface: a different (Interpolation2D, Interpolation) pair builds and queries" $ Settings.keepingSettingsGc $ do
     let eval = 23 `november` 2007
     Settings.setEvaluationDate (Just eval)
     cal <- calendar TARGET
@@ -238,7 +238,7 @@ spec = do
   -- Kruger derivative estimate with so few points ("root not bracketed") -- a real numerical
   -- fragility of the bootstrap with this data, not a hasquant bug. BackwardFlat has no derivative
   -- estimation so it bootstraps fine and still exercises a genuinely different interpolator.
-  it "kInterpolatedYoYOptionletVolatilitySurfaceUnitDisplacedBlack: a non-Linear interpolation builds and queries" $ Settings.keepingSettings' $ do
+  it "kInterpolatedYoYOptionletVolatilitySurfaceUnitDisplacedBlack: a non-Linear interpolation builds and queries" $ Settings.keepingSettingsGc $ do
     (_, cal, dc, nominalEUR, yoyIndexEU, priceSurfEU) <- setup
 
     yoySurf <- kInterpolatedYoYOptionletVolatilitySurfaceUnitDisplacedBlack 0 cal ModifiedFollowing dc
@@ -255,7 +255,7 @@ spec = do
  -- Instrument/InflationCapFloor.hs) -- constructs the two remaining YoY inflation cap/floor
  -- engines against the same constant vol surface, confirming the shim signatures actually work.
  describe "ConstantYoYOptionletVolatility: UnitDisplacedBlack/Bachelier cap/floor engines" $
-  it "both engines construct against a constant YoY vol surface" $ Settings.keepingSettings' $ do
+  it "both engines construct against a constant YoY vol surface" $ Settings.keepingSettingsGc $ do
     evalDate <- today
     Settings.setEvaluationDate (Just evalDate)
     dc <- dayCounter Actual365FixedStandard
@@ -274,7 +274,7 @@ spec = do
  -- pricer consuming it in QL 1.43 (see its own haddock in QuantLib.Internal.Type), so this only
  -- exercises construction + query, same as the smoke script did.
  describe "ConstantCPIVolatility" $
-  it "echoes its constant quote via cpiVolatility/cpiTotalVariance" $ Settings.keepingSettings' $ do
+  it "echoes its constant quote via cpiVolatility/cpiTotalVariance" $ Settings.keepingSettingsGc $ do
     evalDate <- today
     Settings.setEvaluationDate (Just evalDate)
     dc <- dayCounter Actual365FixedStandard

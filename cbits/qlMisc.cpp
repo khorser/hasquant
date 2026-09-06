@@ -485,7 +485,7 @@ const char *qlBoostVersion() {return BOOST_LIB_VERSION;}
 // Every 80-bit long double operation is then silently rounded to double, which breaks boost::math's default
 // promote_double policy: its algorithms assume the precision they asked for. It surfaced
 // as quantile(non_central_chi_squared) failing to converge on the lower tail inside
-// SquareRootProcessRNDCalculator::invcdf, throwing out of hestonSLVFDMModel on Windows
+// SquareRootProcessRNDCalculator::invcdf, throwing out of hestonSlvFdmModel on Windows
 // and nowhere else. See WINDOWS.md and tools/debug/hestonslv-probe.cpp.
 //
 // Exposed rather than done automatically. Setting it from a namespace-scope initializer

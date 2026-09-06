@@ -98,7 +98,7 @@ module QuantLib.PricingEngine
   , analyticBSMHullWhiteEngine
   , analyticCapFloorEngine
   , gaussian1dCapFloorEngine
-  , analyticGJRGARCHEngine
+  , analyticGjrGarchEngine
   , analyticHestonEngine
   , analyticHestonHullWhiteEngine
   , batesEngine
@@ -121,7 +121,7 @@ module QuantLib.PricingEngine
   , mcDiscreteArithmeticASEngine
   , mcDiscreteGeometricAPEngine
   , mcEuropeanEngine
-  , mcEuropeanGJRGARCHEngine
+  , mcEuropeanGjrGarchEngine
   , mcEuropeanHestonEngine
   , integralHestonVarianceOptionEngine
   , mcHullWhiteCapFloorEngine
@@ -813,7 +813,7 @@ discountingPerpetualFuturesEngine domestic foreignCurve spot funding interpolati
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |analytic pricing engine for vanilla options under a GJR-GARCH process
-{#fun qlAnalyticGJRGARCHEngine as analyticGJRGARCHEngine{withGenCalibratedModel*`GJRGARCHModel',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+{#fun qlAnalyticGJRGARCHEngine as analyticGjrGarchEngine{withGenCalibratedModel*`GJRGARCHModel',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |semi-analytic Heston-model pricing engine, integrating with a fixed relative tolerance and evaluation cap
 {#fun qlAnalyticHestonEngine as analyticHestonEngine{withHestonModel*`GenHestonModel hm',`Double' -- ^relTolerance
@@ -1341,7 +1341,7 @@ fdndimBlackScholesVanillaEngine' ps (Matrix mr mc md) = qlFdndimBlackScholesVani
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |Monte Carlo pricing engine for European options under a GJR-GARCH process
-{#fun qlMCEuropeanGJRGARCHEngine1 as mcEuropeanGJRGARCHEngine{`RngTrait',`StatisticsTrait',withGenStochasticProcess*`GJRGARCHProcess',fromMaybeInt`Maybe Word' -- ^timeSteps
+{#fun qlMCEuropeanGJRGARCHEngine1 as mcEuropeanGjrGarchEngine{`RngTrait',`StatisticsTrait',withGenStochasticProcess*`GJRGARCHProcess',fromMaybeInt`Maybe Word' -- ^timeSteps
   ,fromMaybeInt`Maybe Word' -- ^timeStepsPerYear
   ,`Bool' -- ^antitheticVariate
   ,fromMaybeInt`Maybe Word' -- ^requiredSamples

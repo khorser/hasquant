@@ -39,7 +39,7 @@ module QuantLib.Process
   , blackScholesMertonProcess
   , blackScholesProcess
   , extendedBlackScholesMertonProcess
-  , garmanKohlagenProcess
+  , garmanKohlhagenProcess
   , generalizedBlackScholesProcess
   , squareRootProcess
   , vegaStressedBlackScholesProcess
@@ -59,10 +59,10 @@ module QuantLib.Process
   , g2Process
   , gemanRoncoroniProcess
   , geometricBrownianMotionProcess
-  , gjrGARCHProcess
+  , gjrGarchProcess
   , hestonProcess
   , hestonProcessPdf
-  , hestonSLVProcess
+  , hestonSlvProcess
   , hullWhiteForwardProcess
   , hullWhiteProcess
   , hybridHestonHullWhiteProcess
@@ -171,7 +171,7 @@ import Data.List.NonEmpty(NonEmpty, toList)
   ,`ProcessDiscretization',`ExtendedBlackScholesMertonProcessDiscretization',preErrorCheck-`String'errorCheck*-}->`GeneralizedBlackScholesProcess'peekGeneralizedBlackScholesProcess*#}
 
 -- |Garman-Kohlhagen (1983) process for an exchange rate: d(ln S) = (r - r_f - sigma^2\/2) dt + sigma dW.
-{#fun qlGarmanKohlagenProcess as garmanKohlagenProcess{withQuote*`GenQuote q' -- ^x0
+{#fun qlGarmanKohlagenProcess as garmanKohlhagenProcess{withQuote*`GenQuote q' -- ^x0
   ,withYieldTermStructure*`GenYieldTermStructure y1' -- ^foreignRiskFreeTS
   ,withYieldTermStructure*`GenYieldTermStructure y2' -- ^domesticRiskFreeTS
   ,withBlackVolTermStructure*`GenBlackVolTermStructure bv' -- ^blackVolTS
@@ -392,7 +392,7 @@ covariance p t0 x0 dt = toMatrixDouble <$> qlStochasticProcessCovariance p t0 x0
 
 -- |stochastic-volatility GJR-GARCH(1,1) process; parameters are supplied as daily constants
 -- and annualized internally via daysPerYear.
-{#fun qlGJRGARCHProcess as gjrGARCHProcess{withYieldTermStructure*`GenYieldTermStructure y1' -- ^riskFreeRate
+{#fun qlGJRGARCHProcess as gjrGarchProcess{withYieldTermStructure*`GenYieldTermStructure y1' -- ^riskFreeRate
   ,withYieldTermStructure*`GenYieldTermStructure y2' -- ^dividendYield
   ,withQuote*`GenQuote q' -- ^s0
   ,`Double' -- ^v0
@@ -430,7 +430,7 @@ covariance p t0 x0 dt = toMatrixDouble <$> qlStochasticProcessCovariance p t0 x0
 -- |Two-factor Heston stochastic-local-volatility process using the supplied calibrated leverage
 -- function. It is a generic 'StochasticProcess', so it composes with path generators and the
 -- existing drift/diffusion operations.
-{#fun qlHestonSLVProcess as hestonSLVProcess{withHestonProcess*`GenHestonProcess hp' -- ^hestonProcess
+{#fun qlHestonSLVProcess as hestonSlvProcess{withHestonProcess*`GenHestonProcess hp' -- ^hestonProcess
   ,withGenLocalVolTermStructure*`GenLocalVolTermStructure lv' -- ^leverageFct
   ,`Double' -- ^mixingFactor
   ,preErrorCheck-`String'errorCheck*-}->`HestonSLVProcess'peekHestonSLVProcess*#}

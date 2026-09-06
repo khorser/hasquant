@@ -31,28 +31,28 @@ spec = do
       it "leap years" $ do
         [False, True, False] `shouldBe` map isLeap [fromGregorian 2100 10 10, fromGregorian 2012 1 1, fromGregorian 1981 5 5]
       it "read ISO date" $ do
-        Settings.keepingSettings' $ read "2006-01-15" `shouldBe` january 15 2006
+        Settings.keepingSettingsGc $ read "2006-01-15" `shouldBe` january 15 2006
       it "known ECB dates" $ do
-        Settings.keepingSettings' $ do
-          knownDates_ <- knownECBDates
+        Settings.keepingSettingsGc $ do
+          knownDates_ <- knownEcbDates
           knownDates_ `shouldNotSatisfy` null
           let knownDates = fromList knownDates_
-          knownDates'_ <- nextECBDates (Just minDate)
+          knownDates'_ <- nextEcbDates (Just minDate)
           knownDates'_ `shouldNotSatisfy` null
           let knownDates' = fromList knownDates'_
           knownDates `shouldBe` knownDates'
           mapM_ (\(d, p) -> do
-            isECBDate d `shouldReturn` True
+            isEcbDate d `shouldReturn` True
             let d1 = addDays (-1) d
-            isECBDate d1 `shouldReturn` False
-            nextECBDate (Just d1) `shouldReturn` d
-            nextECBDate (Just p) `shouldReturn` d)
+            isEcbDate d1 `shouldReturn` False
+            nextEcbDate (Just d1) `shouldReturn` d
+            nextEcbDate (Just p) `shouldReturn` d)
             (zip knownDates_ (minDate:knownDates_))
           let h = head knownDates
-          removeECBDate h
-          isECBDate h `shouldReturn` False
-          addECBDate h
-          isECBDate h `shouldReturn` True
+          removeEcbDate h
+          isEcbDate h `shouldReturn` False
+          addEcbDate h
+          isEcbDate h `shouldReturn` True
       it "IMM dates (LONG)" $ do
         let immCodes = [
                 "F0", "G0", "H0", "J0", "K0", "M0", "N0", "Q0", "U0", "V0", "X0", "Z0",
@@ -65,11 +65,11 @@ spec = do
                 "F7", "G7", "H7", "J7", "K7", "M7", "N7", "Q7", "U7", "V7", "X7", "Z7",
                 "F8", "G8", "H8", "J8", "K8", "M8", "N8", "Q8", "U8", "V8", "X8", "Z8",
                 "F9", "G9", "H9", "J9", "K9", "M9", "N9", "Q9", "U9", "V9", "X9", "Z9"]
-        Settings.keepingSettings' $ do
+        Settings.keepingSettingsGc $ do
           mapM_ (\d -> do
-            imm <- nextIMMDate d False
-            isIMMDate imm False `shouldReturn` True
-            n <- nextIMMDate d True
+            imm <- nextImmDate d False
+            isImmDate imm False `shouldReturn` True
+            n <- nextImmDate d True
             imm `shouldSatisfy` (> d)
             imm `shouldSatisfy` (<= n)
             code <- immCode imm
@@ -134,13 +134,13 @@ spec = do
         dates s `shouldReturn` ds
 
       it "daily" $
-        Settings.keepingSettings' $ do
+        Settings.keepingSettingsGc $ do
           let startD = 17 `january` 2012
           cal <- calendar TARGET
           (schedule (Just startD) (addDays 7 startD) (1, Days) cal Following Following Backward False Nothing Nothing >>= dates)
             `shouldReturn` [17 `january` 2012, 18 `january` 2012, 19 `january` 2012, 20 `january` 2012, 23 `january` 2012, 24 `january` 2012]
       it "end date with EoM adjustment" $
-        Settings.keepingSettings' $ do
+        Settings.keepingSettingsGc $ do
           cal <- calendar Japan
         -- ql.Schedule(ql.Date(30, 9, 2009), ql.Date(15, 6, 2012), ql.Period(6, ql.Months), ql.Japan(), ql.Following, ql.Following, ql.DateGeneration.Forward, True).dates().dates()
           (schedule (Just $ 30 `september` 2009) (15 `june` 2012) (6, Months) cal Following Following Forward True Nothing Nothing >>= dates)
@@ -149,13 +149,13 @@ spec = do
           (schedule (Just $ 30 `september` 2009) (15 `june` 2012) (6, Months) cal ModifiedFollowing ModifiedFollowing Forward True Nothing Nothing >>= dates)
             `shouldReturn` [30 `september` 2009, 31 `march` 2010, 30 `september` 2010, 31 `march` 2011, 30 `september` 2011, 30 `march` 2012, 15 `june` 2012]
       it "dates past end date with EoM adjustment" $
-        Settings.keepingSettings' $ do
+        Settings.keepingSettingsGc $ do
           cal <- calendar TARGET
           -- ql.Schedule(ql.Date(28, 3, 2013), ql.Date(30, 3, 2015), ql.Period(1, ql.Years), ql.TARGET(), ql.Unadjusted, ql.Unadjusted, ql.DateGeneration.Forward, True).dates()
           (schedule (Just $ 28 `march` 2013) (30 `march` 2015) (1, Years) cal Unadjusted Unadjusted Forward True Nothing Nothing >>= dates)
             `shouldReturn` [28 `march` 2013, 31 `march` 2014, 30 `march` 2015]
 
-    -- regression tests for QuantLib.Settings.keepingSettings/keepingSettings' themselves: every
+    -- regression tests for QuantLib.Settings.keepingSettings/keepingSettingsGc themselves: every
     -- other test in this suite trusts these brackets to restore the evaluation date, so their own
     -- restore behaviour -- including on an exception raised inside the bracketed action -- is
     -- worth pinning down directly rather than only assuming it from Control.Exception.bracket's
@@ -168,10 +168,10 @@ spec = do
         after' <- Settings.evaluationDate
         after' `shouldBe` before'
 
-      it "keepingSettings' restores the evaluation date set inside it, on normal completion" $ do
+      it "keepingSettingsGc restores the evaluation date set inside it, on normal completion" $ do
         before' <- Settings.evaluationDate
         let inside = addDays 365 before'
-        Settings.keepingSettings' $ Settings.setEvaluationDate (Just inside)
+        Settings.keepingSettingsGc $ Settings.setEvaluationDate (Just inside)
         after' <- Settings.evaluationDate
         after' `shouldBe` before'
 
@@ -186,12 +186,12 @@ spec = do
         after' <- Settings.evaluationDate
         after' `shouldBe` before'
 
-      it "keepingSettings' restores the evaluation date even when the bracketed action throws" $ do
+      it "keepingSettingsGc restores the evaluation date even when the bracketed action throws" $ do
         before' <- Settings.evaluationDate
         let inside = addDays 365 before'
-        (result :: Either SomeException ()) <- try $ Settings.keepingSettings' $ do
+        (result :: Either SomeException ()) <- try $ Settings.keepingSettingsGc $ do
           Settings.setEvaluationDate (Just inside)
-          _ <- evaluate (error "deliberate failure inside keepingSettings'" :: ())
+          _ <- evaluate (error "deliberate failure inside keepingSettingsGc" :: ())
           return ()
         result `shouldSatisfy` either (const True) (const False)
         after' <- Settings.evaluationDate
@@ -214,10 +214,10 @@ spec = do
           Settings.keepingSettings $ Settings.disableUpdates True
           observableState `shouldReturn` before'
 
-      it "keepingSettings' restores ObservableSettings after normal completion" $
+      it "keepingSettingsGc restores ObservableSettings after normal completion" $
         Settings.keepingSettings $ do
           before' <- observableState
-          Settings.keepingSettings' $ Settings.disableUpdates True
+          Settings.keepingSettingsGc $ Settings.disableUpdates True
           observableState `shouldReturn` before'
 
       it "keepingSettings restores ObservableSettings when the bracketed action throws" $
@@ -230,19 +230,19 @@ spec = do
           result `shouldSatisfy` either (const True) (const False)
           observableState `shouldReturn` before'
 
-      it "keepingSettings' restores ObservableSettings when the bracketed action throws" $
+      it "keepingSettingsGc restores ObservableSettings when the bracketed action throws" $
         Settings.keepingSettings $ do
           before' <- observableState
-          (result :: Either SomeException ()) <- try $ Settings.keepingSettings' $ do
+          (result :: Either SomeException ()) <- try $ Settings.keepingSettingsGc $ do
             Settings.disableUpdates True
             _ <- evaluate (error "deliberate ObservableSettings failure" :: ())
             return ()
           result `shouldSatisfy` either (const True) (const False)
           observableState `shouldReturn` before'
 
-      it "keepingSettings' restores a deferred ObservableSettings entry mode" $
+      it "keepingSettingsGc restores a deferred ObservableSettings entry mode" $
         Settings.keepingSettings $ do
           Settings.disableUpdates True
           before' <- observableState
-          Settings.keepingSettings' Settings.enableUpdates
+          Settings.keepingSettingsGc Settings.enableUpdates
           observableState `shouldReturn` before'

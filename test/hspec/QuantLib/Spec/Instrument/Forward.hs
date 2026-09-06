@@ -28,7 +28,7 @@ spec :: Spec
 spec = do
   describe "ForwardRateAgreement" $
     it "amount matches upstream's closed form: notional*sign*(F-K)*T/(1+F*T)" $
-      Settings.keepingSettings' $ do
+      Settings.keepingSettingsGc $ do
         let today' = 23 `may` 2006
         Settings.setEvaluationDate (Just today')
         q <- simpleQuote 0.035
@@ -51,7 +51,7 @@ spec = do
 
   describe "FxForward" $
     it "fxForwardRate equals targetNominal/sourceNominal for the nominal-based constructor" $
-      Settings.keepingSettings' $ do
+      Settings.keepingSettingsGc $ do
         let today' = 23 `may` 2006
         Settings.setEvaluationDate (Just today')
         usd <- currency USD

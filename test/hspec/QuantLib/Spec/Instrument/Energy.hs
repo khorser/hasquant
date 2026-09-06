@@ -47,7 +47,7 @@ spec :: Spec
 spec = do
   describe "EnergyFuture" $ do
     it "nets to zero when the trade price matches the index's flat quote" $
-      Settings.keepingSettings' $ do
+      Settings.keepingSettingsGc $ do
         evalDate <- today
         Settings.setEvaluationDate (Just evalDate)
         ct <- commodityType "CL" "Crude Oil"
@@ -58,7 +58,7 @@ spec = do
         npv fut `shouldReturn` 0
 
     it "control: a below-market trade price nets to a positive, formula-predicted NPV" $
-      Settings.keepingSettings' $ do
+      Settings.keepingSettingsGc $ do
         evalDate <- today
         Settings.setEvaluationDate (Just evalDate)
         ct <- commodityType "CL" "Crude Oil"
@@ -72,7 +72,7 @@ spec = do
 
   describe "EnergyVanillaSwap" $ do
     it "nets to zero (before financing cost) when the fixed price matches the flat floating quote" $
-      Settings.keepingSettings' $ do
+      Settings.keepingSettingsGc $ do
         evalDate <- today
         Settings.setEvaluationDate (Just evalDate)
         ct <- commodityType "CL" "Crude Oil"
@@ -86,7 +86,7 @@ spec = do
         npv swp `shouldReturn` 0
 
     it "control: paying a below-market fixed price nets to a positive NPV" $
-      Settings.keepingSettings' $ do
+      Settings.keepingSettingsGc $ do
         evalDate <- today
         Settings.setEvaluationDate (Just evalDate)
         ct <- commodityType "CL" "Crude Oil"
@@ -102,7 +102,7 @@ spec = do
 
   describe "EnergyBasisSwap" $ do
     it "nets to zero (before financing cost) with a zero basis and matching flat quotes" $
-      Settings.keepingSettings' $ do
+      Settings.keepingSettingsGc $ do
         evalDate <- today
         Settings.setEvaluationDate (Just evalDate)
         ct <- commodityType "CL" "Crude Oil"
@@ -116,7 +116,7 @@ spec = do
         npv swp `shouldReturn` 0
 
     it "control: a nonzero basis added to the pay leg nets to a negative NPV" $
-      Settings.keepingSettings' $ do
+      Settings.keepingSettingsGc $ do
         evalDate <- today
         Settings.setEvaluationDate (Just evalDate)
         ct <- commodityType "CL" "Crude Oil"

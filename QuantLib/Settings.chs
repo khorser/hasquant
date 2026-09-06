@@ -15,7 +15,7 @@ module QuantLib.Settings
   , updatesDeferred
 
   , keepingSettings
-  , keepingSettings'
+  , keepingSettingsGc
   , collectGarbage
   , setExtendedPrecision
   , version
@@ -42,7 +42,7 @@ import QuantLib.Internal
 -- QuantLib is then silently rounded to double. That matters because @boost::math@ promotes @double@
 -- arguments to @long double@ by default, so its distributions lose the precision their
 -- algorithms assume -- returning quietly less accurate answers, or failing to converge
--- outright (@hestonSLVFDMModel@ throws out of @quantile(non_central_chi_squared)@
+-- outright (@hestonSlvFdmModel@ throws out of @quantile(non_central_chi_squared)@
 -- without this).
 --
 -- A no-op on every other platform and on non-x86 Windows. The control word is
@@ -101,8 +101,8 @@ keepingSettings = bracket qlSavedSettings qlFreeSavedSettings . const
 
 -- |brackets to restore settings once action has completed or raised an exception. Before restoring settings
 -- 'collectGarbage' is run to avoid problems with market data objects watching evaluation date
-keepingSettings' :: IO b -> IO b
-keepingSettings' = bracket qlSavedSettings (\s -> collectGarbage >> qlFreeSavedSettings s) . const
+keepingSettingsGc :: IO b -> IO b
+keepingSettingsGc = bracket qlSavedSettings (\s -> collectGarbage >> qlFreeSavedSettings s) . const
 
 -- |Best effort: give the finalizers of unreachable QuantLib objects a chance to run, so
 -- their C++ destructors fire before, say, 'setEvaluationDate' notifies surviving observers.

@@ -66,14 +66,14 @@ spec = do
   describe "VanillaSwap" $ do
     it "testCachedValue: 10Y swap NPV reproduces swap.cpp's cached value (either at-par or\
        \ index-fixing coupon pricing, since hasquant has no binding to select between them)" $
-      Settings.keepingSettings' $ do
+      Settings.keepingSettingsGc $ do
         Settings.setEvaluationDate (Just (17 `june` 2002))
         swp <- makeSwap (17 `june` 2002) 10 0.06 0.001
         v <- npv swp
         v `shouldSatisfy` (\x -> closePrec (-5.872863313209) 1e-8 x || closePrec (-5.872342992212) 1e-8 x)
 
     it "testFairRate: rebuilding at the swap's own fairRate reprices it to ~0" $
-      Settings.keepingSettings' $ do
+      Settings.keepingSettingsGc $ do
         today' <- today
         Settings.setEvaluationDate (Just today')
         mapM_ (\(len, spread) -> do
@@ -85,7 +85,7 @@ spec = do
           [(len, spread) | len <- [1, 2, 5, 10, 20], spread <- [-0.001, -0.01, 0.0, 0.01, 0.001]]
 
     it "testFairSpread: rebuilding at the swap's own fairSpread reprices it to ~0" $
-      Settings.keepingSettings' $ do
+      Settings.keepingSettingsGc $ do
         today' <- today
         Settings.setEvaluationDate (Just today')
         mapM_ (\(len, rate) -> do
@@ -98,7 +98,7 @@ spec = do
 
   describe "ConstNotionalCrossCurrency{Swap,BasisSwap,FixedVsFloatingSwap}" $
     it "symmetric legs (same index/schedule/nominal/spread, matching curves, spotFX=1) NPV to zero" $
-      Settings.keepingSettings' $ do
+      Settings.keepingSettingsGc $ do
         let today' = 11 `september` 2018
         cal <- calendar UnitedStatesSettlement
         Settings.setEvaluationDate (Just today')
@@ -135,8 +135,8 @@ spec = do
         -- base-class getters, reached generically over the leaf.
         payCcy <- legCurrency basisSwap 0
         show payCcy `shouldBe` show usd
-        inCcyNpv0 <- inCcyLegNPV basisSwap 0
-        inCcyNpv1 <- inCcyLegNPV basisSwap 1
+        inCcyNpv0 <- inCcyLegNpv basisSwap 0
+        inCcyNpv1 <- inCcyLegNpv basisSwap 1
         inCcyNpv1 `shouldSatisfy` closePrec inCcyNpv0 1e-6
 
         -- ConstNotionalCrossCurrencyFixedVsFloatingSwap: solve the fair fixed rate against a
@@ -162,7 +162,7 @@ spec = do
   -- self-consistency check either way, so any valid schedule matching the index's tenor works.
   describe "AssetSwap" $
     it "fairCleanPrice and fairSpread both reprice the par asset swap to zero NPV" $
-      Settings.keepingSettings' $ do
+      Settings.keepingSettingsGc $ do
         let evalDate = 24 `april` 2007
         Settings.setEvaluationDate (Just evalDate)
         cal <- calendar TARGET
@@ -210,7 +210,7 @@ spec = do
   -- fixing, unlike the "ongoing" cases in the same functions, which are left as follow-up work.
   describe "ZeroCouponSwap" $ do
     it "fairFixedPayment and fairFixedRate both reprice a spot-starting swap to zero NPV" $
-      Settings.keepingSettings' $ do
+      Settings.keepingSettingsGc $ do
         let today' = 15 `march` 2021
         Settings.setEvaluationDate (Just today')
         cal <- calendar TARGET
@@ -240,11 +240,11 @@ spec = do
         parNpv' <- npv parZc'
         parNpv' `shouldSatisfy` closePrec 0 1e-6
 
-    -- ZeroCouponSwap::fixedLegNPV/floatingLegNPV are literally legNPV_[0]/legNPV_[1] upstream
-    -- (zerocouponswap.cpp), i.e. exactly the already-bound generic leg 0/1 legNPV -- so this
+    -- ZeroCouponSwap::fixedLegNpv/floatingLegNpv are literally legNPV_[0]/legNPV_[1] upstream
+    -- (zerocouponswap.cpp), i.e. exactly the already-bound generic leg 0/1 legNpv -- so this
     -- checks the *identity* claim rather than binding a redundant getter.
-    it "fixedLegNPV/floatingLegNPV equal the generic leg 0/1 legNPV, and sum to the swap's NPV" $
-      Settings.keepingSettings' $ do
+    it "fixedLegNpv/floatingLegNpv equal the generic leg 0/1 legNpv, and sum to the swap's NPV" $
+      Settings.keepingSettingsGc $ do
         let today' = 15 `march` 2021
         Settings.setEvaluationDate (Just today')
         cal <- calendar TARGET
@@ -257,7 +257,7 @@ spec = do
         let end = 12 `february` 2041
         zc <- zeroCouponSwap Payer 1.0e6 settle end 1.2e6 euribor6m cal ModifiedFollowing (1 :: Word)
         setPricingEngine zc engine
-        fixedNPV <- legNPV zc 0
-        floatNPV <- legNPV zc 1
+        fixedNPV <- legNpv zc 0
+        floatNPV <- legNpv zc 1
         total <- npv zc
         (fixedNPV + floatNPV) `shouldSatisfy` closePrec total 1e-8

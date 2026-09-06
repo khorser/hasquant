@@ -59,8 +59,8 @@ run = do
   mapM_ (asInstrument >=> (`setPricingEngine` eng)) cds
   fairSpreads <- mapM fairSpread cds
   npvs <- mapM (asInstrument >=> npv) cds
-  defnpvs <- mapM defaultLegNPV cds
-  cpnnpvs <- mapM couponLegNPV cds
+  defnpvs <- mapM defaultLegNpv cds
+  cpnnpvs <- mapM couponLegNpv cds
 
   return Result {
       probsR = map (100*) probs

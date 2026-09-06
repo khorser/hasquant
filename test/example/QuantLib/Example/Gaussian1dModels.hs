@@ -198,8 +198,8 @@ run = do
   swapPricer <- discountingSwapEngine ytsOis Nothing Nothing Nothing
   setPricingEngine underlying4 swapPricer
   npv5 <- npv underlying4
-  legNpv0 <- legNPV underlying4 0
-  legNpv1 <- legNPV underlying4 1
+  legNpv0 <- legNpv underlying4 0
+  legNpv1 <- legNpv underlying4 1
 
   basket6 <- floatFloatSwaptionCalibrationBasket swaption4 swapBase swaptionVol CalibrationBasketNaive
   forM_ basket6 (`Model.setPricingEngine` swaptionEngine)

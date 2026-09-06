@@ -51,13 +51,13 @@ run = do
     TS.fraRateHelper q m1 m2 (fromIntegral fixingDays) cal ModifiedFollowing True depoDC TS.LastRelevantDate Nothing True) $
       zip fraQuotes fraTerms
 
-  imm1 <- nextIMMDate settleDate True
+  imm1 <- nextImmDate settleDate True
   -- chain of IMM dates, each derived from the one before. Written as an explicit
   -- Avoid a partial `last` and repeated list append.
   let nextIMMs :: Int -> Day -> IO [Day]
       nextIMMs 0 _ = pure []
       nextIMMs k prev = do
-        v <- nextIMMDate (addDays 1 prev) True
+        v <- nextImmDate (addDays 1 prev) True
         (v :) <$> nextIMMs (k - 1) v
   imms <- (imm1 :) <$> nextIMMs (length futPrices - 1) imm1
 

@@ -48,7 +48,7 @@ main = do
   fpState "after hasquant driver"
 
 body :: IO ()
-body = Settings.keepingSettings' $ do
+body = Settings.keepingSettingsGc $ do
   let today = 5 `march` 2016
   Settings.setEvaluationDate (Just today)
   dc <- dayCounter Actual365FixedStandard
@@ -63,11 +63,11 @@ body = Settings.keepingSettings' $ do
   end <- addPeriod today (1, Years)
   localVolTS <- localConstantVol today localVolQ dc
   factory <- sobolBrownianGeneratorFactory Diagonal 1234 JoeKuoD7
-  mc <- hestonSLVMCModel localVolTS hm factory end 91 201 32768 [] 1.0
-  mcLeverage <- hestonSLVMCLeverageFunction mc
+  mc <- hestonSlvMcModel localVolTS hm factory end 91 201 32768 [] 1.0
+  mcLeverage <- hestonSlvMcLeverageFunction mc
   mcVol <- localVol mcLeverage end 100 True
   putStrLn ("  MC model built, leverage(end, 100) = " ++ show mcVol)
-  slv <- hestonSLVProcess hp mcLeverage 1.0
+  slv <- hestonSlvProcess hp mcLeverage 1.0
   n <- factors slv
   putStrLn ("  SLV process factors = " ++ show n)
   fpState "after MC calibration"
@@ -76,7 +76,7 @@ body = Settings.keepingSettings' $ do
         51 151 500 50 100.0 5 2 0.1 1.0e-4 10000
         1.0e-5 1.0e-5 2.5e-6 1.0 0.1 0.9 1.0e-5
         ZeroCorrelation Log ModifiedCraigSneyd
-  fdm <- hestonSLVFDMModel localVolTS hm end fdmParams True [] 1.0
-  fdmLeverage <- hestonSLVFDMLeverageFunction fdm
+  fdm <- hestonSlvFdmModel localVolTS hm end fdmParams True [] 1.0
+  fdmLeverage <- hestonSlvFdmLeverageFunction fdm
   fdmVol <- localVol fdmLeverage end 100 True
   putStrLn ("  FDM model built, leverage(end, 100) = " ++ show fdmVol)

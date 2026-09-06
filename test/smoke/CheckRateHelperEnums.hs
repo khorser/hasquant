@@ -36,7 +36,7 @@ main = do
     d <- discount' curve endDate True
     putStrLn (show pillar ++ " -> discount " ++ show d)
 
-  imm <- nextIMMDate today True
+  imm <- nextImmDate today True
   forM_ ([(IMM, imm), (ASX, 8 `march` 2024), (Custom, imm)] :: [(FuturesType, Day)]) $ \(ty, futDate) -> do
     q <- simpleQuote 99.0
     h <- futuresRateHelper q futDate 3 cal ModifiedFollowing True dc Nothing ty

@@ -15,7 +15,7 @@ import QuantLib.PricingEngine
   )
 import QuantLib.Process(blackProcess, blackScholesMertonProcess, stochasticProcessArray, asGeneralizedBlackScholesProcess, ProcessDiscretization(EulerDiscretization))
 import QuantLib.Quote(simpleQuote)
-import QuantLib.Settings(keepingSettings')
+import QuantLib.Settings(keepingSettingsGc)
 import qualified QuantLib.Settings as Settings
 import QuantLib.Time.Calendar(calendar, CalendarConstructor(TARGET))
 import QuantLib.Time.Date(addPeriod, march)
@@ -31,7 +31,7 @@ approx :: Double -> Double -> Double -> Bool
 approx tol expected actual = abs (expected - actual) <= tol
 
 main :: IO ()
-main = keepingSettings' $ do
+main = keepingSettingsGc $ do
   let today = 1 `march` 2024
   Settings.setEvaluationDate (Just today)
   dc <- dayCounter Actual365FixedStandard

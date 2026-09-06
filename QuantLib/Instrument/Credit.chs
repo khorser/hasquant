@@ -12,16 +12,16 @@ module QuantLib.Instrument.Credit
   , impliedVolatility
   , riskyAnnuity
 
-  , accrualRebateNPV
+  , accrualRebateNpv
   , conventionalSpread
-  , couponLegBPS
-  , couponLegNPV
+  , couponLegBps
+  , couponLegNpv
   , coupons
-  , defaultLegNPV
+  , defaultLegNpv
   , fairUpfront
   , impliedHazardRate
-  , upfrontBPS
-  , upfrontNPV
+  , upfrontBps
+  , upfrontNpv
 
   , SyntheticCDO
   , syntheticCDO
@@ -30,8 +30,8 @@ module QuantLib.Instrument.Credit
   , fairUpfrontPremium
   , premiumValue
   , protectionValue
-  , premiumLegNPV
-  , protectionLegNPV
+  , premiumLegNpv
+  , protectionLegNpv
   , cdoRemainingNotional
   , implicitCorrelation
 
@@ -128,16 +128,16 @@ import QuantLib.Internal.Type
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Returns the variation of the fixed-leg value given a one-basis-point change in the running spread.
-{#fun qlCreditDefaultSwapCouponLegBPS as couponLegBPS{withGenInstrument*`CreditDefaultSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlCreditDefaultSwapCouponLegBPS as couponLegBps{withGenInstrument*`CreditDefaultSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |NPV of the coupon (premium) leg.
-{#fun qlCreditDefaultSwapCouponLegNPV as couponLegNPV{withGenInstrument*`CreditDefaultSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlCreditDefaultSwapCouponLegNPV as couponLegNpv{withGenInstrument*`CreditDefaultSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |The coupon-leg cash flows of the CDS.
 {#fun qlCreditDefaultSwapCoupons as coupons{withGenInstrument*`CreditDefaultSwap',preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
 
 -- |NPV of the default (protection) leg.
-{#fun qlCreditDefaultSwapDefaultLegNPV as defaultLegNPV{withGenInstrument*`CreditDefaultSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlCreditDefaultSwapDefaultLegNPV as defaultLegNpv{withGenInstrument*`CreditDefaultSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Returns the upfront spread that, given the running spread and the quoted recovery rate, will make the instrument have an NPV of 0.
 {#fun qlCreditDefaultSwapFairUpfront as fairUpfront{withGenInstrument*`CreditDefaultSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
@@ -151,14 +151,14 @@ import QuantLib.Internal.Type
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Returns the variation of the upfront payment value given a one-basis-point change in the upfront.
-{#fun qlCreditDefaultSwapUpfrontBPS as upfrontBPS{withGenInstrument*`CreditDefaultSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlCreditDefaultSwapUpfrontBPS as upfrontBps{withGenInstrument*`CreditDefaultSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |NPV of the upfront payment.
-{#fun qlCreditDefaultSwapUpfrontNPV as upfrontNPV{withGenInstrument*`CreditDefaultSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlCreditDefaultSwapUpfrontNPV as upfrontNpv{withGenInstrument*`CreditDefaultSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |NPV of the rebate paid/received on an early default for the fraction of the accrual period
 -- elapsed since the last coupon date; zero unless the CDS was constructed with @rebatesAccrual@.
-{#fun qlCreditDefaultSwapAccrualRebateNPV as accrualRebateNPV{withGenInstrument*`CreditDefaultSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlCreditDefaultSwapAccrualRebateNPV as accrualRebateNpv{withGenInstrument*`CreditDefaultSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |A synthetic CDO tranche over a tranche-loss basket. @notional@ overrides the basket tranche.
 syntheticCDO :: TrancheBasket -> ProtectionSide -> Schedule -> Double -> Double -> DayCounter -> BusinessDayConvention
@@ -182,10 +182,10 @@ syntheticCDO basket side sched upfrontRate runningRate dc conv notional =
 {#fun qlSyntheticCDOProtectionValue as protectionValue{withGenInstrument*`SyntheticCDO',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |NPV of the premium (running plus upfront) leg, as a plain NPV (not divided by notional).
-{#fun qlSyntheticCDOPremiumLegNPV as premiumLegNPV{withGenInstrument*`SyntheticCDO',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlSyntheticCDOPremiumLegNPV as premiumLegNpv{withGenInstrument*`SyntheticCDO',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |NPV of the protection leg, as a plain NPV.
-{#fun qlSyntheticCDOProtectionLegNPV as protectionLegNPV{withGenInstrument*`SyntheticCDO',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlSyntheticCDOProtectionLegNPV as protectionLegNpv{withGenInstrument*`SyntheticCDO',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Total outstanding tranche notional, not wiped out by realized losses.
 {#fun qlSyntheticCDORemainingNotional as cdoRemainingNotional{withGenInstrument*`SyntheticCDO',preErrorCheck-`String'errorCheck*-}->`Double'#}

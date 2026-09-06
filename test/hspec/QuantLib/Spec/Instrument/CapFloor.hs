@@ -57,7 +57,7 @@ spec :: Spec
 spec = do
   describe "testCachedValue" $
     it "Black cap/floor NPV reproduces capfloor.cpp's cached values" $
-      Settings.keepingSettings' $ do
+      Settings.keepingSettingsGc $ do
         leg <- cachedFixture
         dc <- dayCounter (Actual360 False)
         volQ <- simpleQuote 0.20
@@ -76,7 +76,7 @@ spec = do
 
   describe "testCachedValueFromOptionLets" $
     it "sums additionalResults[optionletsPrice] to the same cached cap/floor NPVs" $
-      Settings.keepingSettings' $ do
+      Settings.keepingSettingsGc $ do
         leg <- cachedFixture
         dc <- dayCounter (Actual360 False)
         volQ <- simpleQuote 0.20
@@ -105,7 +105,7 @@ spec = do
 
   describe "testATMRate" $
     it "cap atmRate == floor atmRate, and a VanillaSwap struck there reprices to ~0" $
-      Settings.keepingSettings' $ do
+      Settings.keepingSettingsGc $ do
         Settings.setEvaluationDate (Just (11 `december` 2012))
         cal <- calendar TARGET
         settle <- advance cal (11 `december` 2012) (2, Days) ModifiedFollowing False
@@ -133,7 +133,7 @@ spec = do
 
   describe "testImpliedVolatility" $
     it "round-trips impliedVolatility against the vol used to build the cap's price" $
-      Settings.keepingSettings' $ do
+      Settings.keepingSettingsGc $ do
         Settings.setEvaluationDate (Just (11 `december` 2012))
         cal <- calendar TARGET
         settle <- advance cal (11 `december` 2012) (2, Days) ModifiedFollowing False

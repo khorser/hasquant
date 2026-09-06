@@ -40,7 +40,7 @@ spec :: Spec
 spec = do
   describe "additionalResults" $ do
     it "Bjerksund-Stensland American option engine: exerciseType (StringVal) and strikeGamma (RealVal, > 0)" $
-      Settings.keepingSettings' $ do
+      Settings.keepingSettingsGc $ do
         Settings.setEvaluationDate $ Just (fromGregorian 1998 5 15)
         dc <- dayCounter Actual365FixedStandard
         let evalDate = 17 `may` 1998
@@ -70,7 +70,7 @@ spec = do
         length addl `shouldSatisfy` (> 0)
 
     it "Black cap/floor engine: optionletsPrice (RealVectorVal, non-empty and non-negative)" $
-      Settings.keepingSettings' $ do
+      Settings.keepingSettingsGc $ do
         let today' = 11 `december` 2012
         Settings.setEvaluationDate (Just today')
         cal <- calendar TARGET
@@ -99,7 +99,7 @@ spec = do
 
   describe "PerpetualFutures" $
     it "reproduces perpetualfutures.cpp's constant-parameter analytic values" $
-      Settings.keepingSettings' $ do
+      Settings.keepingSettingsGc $ do
         let evalDate = fromGregorian 2024 1 2
             spot = 10000.0
             domesticRate = 0.04

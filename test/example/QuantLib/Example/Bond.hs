@@ -247,7 +247,7 @@ priceBonds md pricing allBonds@(fixedBond, _, floater) = do
   -- some cash flows smoke check
   cfs <- cashFlows fixedBond
   cfnpv <- CF.npv cfs (discountCurve md) True (Just $ 1 `may` 2012) (Just $ 3 `may` 2012)
-  cfnpvbps <- CF.npvbps cfs (discountCurve md) True (1 `may` 2012) (3 `may` 2012)
+  cfnpvbps <- CF.npvBps cfs (discountCurve md) True (1 `may` 2012) (3 `may` 2012)
   bbps <- bps fixedBond (discountCurve md) (3 `may` 2012)
 
   bNpv <-

@@ -3305,7 +3305,7 @@ withVanillaSwap = withForeignPtr . ptr . peel . peel . getInstrument
 -- ConstNotionalCrossCurrencySwap sits between Swap and its two owned leaves
 -- (ConstNotionalCrossCurrencyBasisSwap, ConstNotionalCrossCurrencyFixedVsFloatingSwap). It earns
 -- its own family level (mirrors FixedVsFloatingSwap/VanillaSwap just above) because its own
--- getters (legCurrency, inCcyLegBPS, inCcyLegNPV, npvDateDiscounts) are inherited by both leaves
+-- getters (legCurrency, inCcyLegBps, inCcyLegNpv, npvDateDiscounts) are inherited by both leaves
 -- and are bound generically over 'GenConstNotionalCrossCurrencySwap', while each leaf keeps its
 -- own engine-dispatched getters (fairPaySpread/fairRecSpread, fairRate/fairSpread) reachable only
 -- through the real leaf pointer. Unlike FixedVsFloatingSwap, the base class is concrete upstream

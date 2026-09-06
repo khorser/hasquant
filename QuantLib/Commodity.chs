@@ -95,7 +95,7 @@ import Foreign.Marshal.Alloc(alloca)
 
 -- |Construct a custom commodity type identified by its code (e.g. \"HO\") and descriptive name
 -- (e.g. \"Heating Oil\"). QuantLib has no fixed enum of commodity types -- every instance is
--- user-registered by code, the same way a custom 'QuantLib.Currency.currency'' is.
+-- user-registered by code, the same way a custom 'QuantLib.Currency.customCurrency' is.
 {#fun qlCommodityType as commodityType{`String' -- ^code
   ,`String' -- ^name
   ,preErrorCheck-`String'errorCheck*-}->`CommodityType'peekCommodityType*#}

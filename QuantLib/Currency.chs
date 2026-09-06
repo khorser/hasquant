@@ -5,11 +5,11 @@ module QuantLib.Currency
   , Ccy(..)
   , Currency
   , currency
-  , currency'
+  , customCurrency
   , code
   , fractionsPerUnit
   , fractionSymbol
-  , code'
+  , numericCode
   , symbol
   , ExchangeRate
   , exchangeRate
@@ -58,14 +58,14 @@ import Foreign.Marshal.Alloc(alloca)
 {#fun pure qlCurrencyFractionSymbol as fractionSymbol{withCurrency*`Currency'}->`String'#}
 
 -- |The currency's ISO 4217 numeric code, e.g. 840 for USD.
-{#fun pure qlCurrencyNumericCode as code'{withCurrency*`Currency'}->`Int'#}
+{#fun pure qlCurrencyNumericCode as numericCode{withCurrency*`Currency'}->`Int'#}
 
 -- |The currency's symbol, e.g. \"$\".
 {#fun pure qlCurrencySymbol as symbol{withCurrency*`Currency'}->`String'#}
 
 -- |Construct a custom currency from its name, codes, symbols, rounding convention and an
 -- optional triangulation currency used for indirect exchange.
-{#fun qlCreateCurrency as currency'{`String' -- ^name
+{#fun qlCreateCurrency as customCurrency{`String' -- ^name
   ,`String' -- ^code
   ,`Int' -- ^numericCode
   ,`String' -- ^symbol

@@ -31,7 +31,7 @@ import QuantLib.Spec.Helpers(closePrec)
 spec :: Spec
 spec = do
   describe "portfolio credit scaffolding (Pool, Issuer, Basket, GaussianLHPLossModel)" $ do
-    it "wires a basket to a Gaussian LHP loss model over a small pool" $ Settings.keepingSettings' $ do
+    it "wires a basket to a Gaussian LHP loss model over a small pool" $ Settings.keepingSettingsGc $ do
       let refDate = fromGregorian 2006 8 31
           names = ["issuer-0", "issuer-1", "issuer-2", "issuer-3", "issuer-4"]
           notionalPerName = 100.0
@@ -66,7 +66,7 @@ spec = do
     -- absolute / 50% relative, cdo.cpp's absoluteTolerance/relativeToleranceMidp[3]) -- LHP is a
     -- crude approximation for a 100-name pool, so this is a wiring check against Hull-White
     -- Table 7, not a tight numeric regression. Do not tighten this tolerance later.
-    it "prices a synthetic CDO tranche against Hull-White Table 7 (Gaussian LHP)" $ Settings.keepingSettings' $ do
+    it "prices a synthetic CDO tranche against Hull-White Table 7 (Gaussian LHP)" $ Settings.keepingSettingsGc $ do
       let refDate = fromGregorian 2006 8 31
           poolSize = 100 :: Int
           names = ["issuer-" ++ show i | i <- [0 .. poolSize - 1]]
@@ -127,7 +127,7 @@ spec = do
     -- correlation on a shared SimpleQuote (mutating it re-prices without rebuilding the basket
     -- or loss model, since ConstantLossModel holds a Handle<Quote> onto it) and checked against
     -- Hull-White Table 3, at upstream's own tolerances.
-    it "prices nth-to-default swaps against Hull-White Table 3" $ Settings.keepingSettings' $ do
+    it "prices nth-to-default swaps against Hull-White Table 3" $ Settings.keepingSettingsGc $ do
       let refDate = fromGregorian 2006 8 31
           poolSize = 10 :: Int
           names = ["Name" ++ show i | i <- [0 .. poolSize - 1]]
@@ -210,7 +210,7 @@ spec = do
     -- invariants of GaussianLHPLossModel's risk surface on the equity tranche of the CDO
     -- fixture above (correlation 0.1, 100 names) -- an equity tranche (attach = 0) is what
     -- makes "any portfolio loss at all reaches the tranche" a true invariant.
-    it "computes tranche-loss risk outputs on a Basket" $ Settings.keepingSettings' $ do
+    it "computes tranche-loss risk outputs on a Basket" $ Settings.keepingSettingsGc $ do
       let refDate = fromGregorian 2006 8 31
           poolSize = 100 :: Int
           names = ["issuer-" ++ show i | i <- [0 .. poolSize - 1]]
@@ -262,7 +262,7 @@ spec = do
     -- have closed forms at the diagonal/n=0 edge cases (derived above from
     -- DefaultLatentModel::defaultCorrelation/probAtLeastNEvents), so these are exact checks,
     -- not pinned regression values.
-    it "computes digital-loss risk outputs on a Basket" $ Settings.keepingSettings' $ do
+    it "computes digital-loss risk outputs on a Basket" $ Settings.keepingSettingsGc $ do
       let refDate = fromGregorian 2006 8 31
           poolSize = 10 :: Int
           names = ["Name" ++ show i | i <- [0 .. poolSize - 1]]
@@ -300,7 +300,7 @@ spec = do
       (p0 >= p1 && p1 >= p2) `shouldBe` True
 
   describe "default-probability curves" $ do
-    it "constructs direct hazard, survival, and density curves" $ Settings.keepingSettings' $ do
+    it "constructs direct hazard, survival, and density curves" $ Settings.keepingSettingsGc $ do
       let refDate = fromGregorian 2024 1 2
           d1 = addGregorianYearsClip 1 refDate
           d2 = addGregorianYearsClip 2 refDate
@@ -317,7 +317,7 @@ spec = do
       density <- interpolatedDefaultDensityCurve (fromList [(refDate, 0.02), (d1, 0.018), (d2, 0.016)]) dc cal [] Linear
       defaultDensity density d1 False `shouldReturn` 0.018
 
-    it "matches narrow and full constructors at default bootstrap settings" $ Settings.keepingSettings' $ do
+    it "matches narrow and full constructors at default bootstrap settings" $ Settings.keepingSettingsGc $ do
       let refDate = fromGregorian 2015 6 15
           spreads = zip [1, 2, 3, 5] [0.005, 0.006, 0.007, 0.009]
           recovery = 0.4
@@ -358,7 +358,7 @@ spec = do
         computed <- fairSpread cds
         computed `shouldSatisfy` closePrec quotedSpread 1.0e-6
 
-    it "defaultProbabilityHelperImpliedQuote reproduces each SpreadCdsHelper's own bootstrap quote" $ Settings.keepingSettings' $ do
+    it "defaultProbabilityHelperImpliedQuote reproduces each SpreadCdsHelper's own bootstrap quote" $ Settings.keepingSettingsGc $ do
       let refDate = fromGregorian 2015 6 15
           spreads = zip [1, 2, 3, 5] [0.005, 0.006, 0.007, 0.009]
           recovery = 0.4
@@ -384,7 +384,7 @@ spec = do
         implied <- defaultProbabilityHelperImpliedQuote h
         implied `shouldSatisfy` closePrec quotedSpread 1.0e-8
 
-    it "reproduces CDS spreads for all supported credit traits/interpolators" $ Settings.keepingSettings' $ do
+    it "reproduces CDS spreads for all supported credit traits/interpolators" $ Settings.keepingSettingsGc $ do
       let refDate = fromGregorian 2015 6 15
           spreads = zip [1, 2, 3, 5] [0.005, 0.006, 0.007, 0.009]
           recovery = 0.4
@@ -421,7 +421,7 @@ spec = do
           computed <- fairSpread cds
           computed `shouldSatisfy` closePrec quotedSpread 1.0e-6
 
-    it "supports retry/fallback settings for a distressed inverted spread curve" $ Settings.keepingSettings' $ do
+    it "supports retry/fallback settings for a distressed inverted spread curve" $ Settings.keepingSettingsGc $ do
       let asof = fromGregorian 2020 4 1
           curveNodes = fromList $ zip
             [ fromGregorian 2020 4 1, fromGregorian 2020 4 2, fromGregorian 2020 4 14

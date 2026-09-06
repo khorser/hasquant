@@ -52,7 +52,7 @@ data Result = Result
 data Acc = Acc !Double !Double
 
 run :: IO Result
-run = Settings.keepingSettings' $ do
+run = Settings.keepingSettingsGc $ do
   evalDate <- today
   Settings.setEvaluationDate (Just evalDate)
   dc <- dayCounter (Actual360 False)

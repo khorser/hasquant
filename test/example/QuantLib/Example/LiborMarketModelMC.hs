@@ -47,7 +47,7 @@ data Result = Result
   } deriving Show
 
 run :: IO Result
-run = Settings.keepingSettings' $ do
+run = Settings.keepingSettingsGc $ do
   let fixtureDate = 4 `september` 2005
       curveEndDate = 4 `september` 2018
       len = 10 :: Word

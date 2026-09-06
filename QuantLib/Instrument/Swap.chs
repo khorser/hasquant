@@ -66,8 +66,8 @@ module QuantLib.Instrument.Swap
   , fairFixedRate
   , equityTotalReturnSwapIbor
   , equityTotalReturnSwapOvernight
-  , equityLegNPV
-  , interestRateLegNPV
+  , equityLegNpv
+  , interestRateLegNpv
   , fairMargin
   , varianceSwap
   , variance
@@ -75,8 +75,8 @@ module QuantLib.Instrument.Swap
 
   , endDiscounts
   , leg
-  , legBPS
-  , legNPV
+  , legBps
+  , legNpv
   , maturityDate
   , npvDateDiscount
   , startDate
@@ -86,8 +86,8 @@ module QuantLib.Instrument.Swap
   , constNotionalCrossCurrencySwap
   , constNotionalCrossCurrencySwap'
   , legCurrency
-  , inCcyLegBPS
-  , inCcyLegNPV
+  , inCcyLegBps
+  , inCcyLegNpv
   , npvDateDiscounts
   , constNotionalCrossCurrencyBasisSwap
   , fairPaySpread
@@ -96,14 +96,14 @@ module QuantLib.Instrument.Swap
   , xccyFairRate
 
   , bmaLeg
-  , bmaLegBPS
-  , bmaLegNPV
+  , bmaLegBps
+  , bmaLegNpv
   , fairLiborFraction
   , fairLiborSpread
   , liborFraction
   , liborLeg
-  , liborLegBPS
-  , liborLegNPV
+  , liborLegBps
+  , liborLegNpv
 
   , swaption
   , irregularSwaption
@@ -132,8 +132,8 @@ module QuantLib.Instrument.Swap
   , overnightIndexedSwap'
 
   , overnightLeg
-  , overnightLegBPS
-  , overnightLegNPV
+  , overnightLegBps
+  , overnightLegNpv
 
   , HasFixedLeg(..)
   , HasFloatingLeg(..)
@@ -576,10 +576,10 @@ makeCms (swLen, swUnit) swapIndex iborIndex iborSpread forwardStart mSettlementD
 {#fun qlSwapLeg as leg{withSwap*`GenSwap s',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
 
 -- |Basis-point sensitivity of leg j.
-{#fun qlSwapLegBPS as legBPS{withSwap*`GenSwap s',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlSwapLegBPS as legBps{withSwap*`GenSwap s',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |NPV of leg j.
-{#fun qlSwapLegNPV as legNPV{withSwap*`GenSwap s',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlSwapLegNPV as legNpv{withSwap*`GenSwap s',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Discount factor at leg j's start date.
 {#fun qlSwapStartDiscounts as startDiscounts{withSwap*`GenSwap s',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`Double'#}
@@ -602,11 +602,11 @@ constNotionalCrossCurrencySwap' legsPayer = qlConstNotionalCrossCurrencySwap1 le
 -- |Leg j's currency.
 {#fun qlConstNotionalCrossCurrencySwapLegCurrency as legCurrency{withConstNotionalCrossCurrencySwap*`GenConstNotionalCrossCurrencySwap x',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`Currency'peekCurrency*#}
 
--- |Basis-point sensitivity of leg j, expressed in the leg's own currency (contrast 'legBPS', in the swap's NPV currency).
-{#fun qlConstNotionalCrossCurrencySwapInCcyLegBPS as inCcyLegBPS{withConstNotionalCrossCurrencySwap*`GenConstNotionalCrossCurrencySwap x',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`Double'#}
+-- |Basis-point sensitivity of leg j, expressed in the leg's own currency (contrast 'legBps', in the swap's NPV currency).
+{#fun qlConstNotionalCrossCurrencySwapInCcyLegBPS as inCcyLegBps{withConstNotionalCrossCurrencySwap*`GenConstNotionalCrossCurrencySwap x',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
--- |NPV of leg j, expressed in the leg's own currency (contrast 'legNPV', in the swap's NPV currency).
-{#fun qlConstNotionalCrossCurrencySwapInCcyLegNPV as inCcyLegNPV{withConstNotionalCrossCurrencySwap*`GenConstNotionalCrossCurrencySwap x',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`Double'#}
+-- |NPV of leg j, expressed in the leg's own currency (contrast 'legNpv', in the swap's NPV currency).
+{#fun qlConstNotionalCrossCurrencySwapInCcyLegNPV as inCcyLegNpv{withConstNotionalCrossCurrencySwap*`GenConstNotionalCrossCurrencySwap x',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Discount factor at the instrument's NPV date, for leg j.
 {#fun qlConstNotionalCrossCurrencySwapNpvDateDiscounts as npvDateDiscounts{withConstNotionalCrossCurrencySwap*`GenConstNotionalCrossCurrencySwap x',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`Double'#}
@@ -700,7 +700,7 @@ constNotionalCrossCurrencyBasisSwap payNominal payCurrency paySchedule payIndex 
 
 -- |The fixed rate that would make the swap's NPV zero. Named distinctly from 'fairRate' -- that
 -- name belongs to the 'HasFixedLeg' class, which this type doesn't implement (upstream gives it
--- no fixedLeg\/fixedLegBPS\/fixedLegNPV getters); 'fairSpread' (via 'HasSpread') is available.
+-- no fixedLeg\/fixedLegBps\/fixedLegNpv getters); 'fairSpread' (via 'HasSpread') is available.
 {#fun qlConstNotionalCrossCurrencyFixedVsFloatingSwapFairRate as xccyFairRate{withConstNotionalCrossCurrencyFixedVsFloatingSwap*`ConstNotionalCrossCurrencyFixedVsFloatingSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 instance HasSpread ConstNotionalCrossCurrencyFixedVsFloatingSwap where
@@ -804,10 +804,10 @@ instance HasSpread ConstNotionalCrossCurrencyFixedVsFloatingSwap where
 {#fun qlBMASwapBmaLeg as bmaLeg{withBMASwap*`BMASwap',preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
 
 -- |Basis-point sensitivity of the BMA leg.
-{#fun qlBMASwapBmaLegBPS as bmaLegBPS{withBMASwap*`BMASwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlBMASwapBmaLegBPS as bmaLegBps{withBMASwap*`BMASwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |NPV of the BMA leg.
-{#fun qlBMASwapBmaLegNPV as bmaLegNPV{withBMASwap*`BMASwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlBMASwapBmaLegNPV as bmaLegNpv{withBMASwap*`BMASwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |The Libor fraction that would make the swap's NPV zero.
 {#fun qlBMASwapFairLiborFraction as fairLiborFraction{withBMASwap*`BMASwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
@@ -822,10 +822,10 @@ instance HasSpread ConstNotionalCrossCurrencyFixedVsFloatingSwap where
 {#fun qlBMASwapLiborLeg as liborLeg{withBMASwap*`BMASwap',preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
 
 -- |Basis-point sensitivity of the Libor leg.
-{#fun qlBMASwapLiborLegBPS as liborLegBPS{withBMASwap*`BMASwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlBMASwapLiborLegBPS as liborLegBps{withBMASwap*`BMASwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |NPV of the Libor leg.
-{#fun qlBMASwapLiborLegNPV as liborLegNPV{withBMASwap*`BMASwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlBMASwapLiborLegNPV as liborLegNpv{withBMASwap*`BMASwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |The underlying bond's cash flows.
 {#fun qlAssetSwapBondLeg as bondLeg{withAssetSwap*`AssetSwap',preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
@@ -852,14 +852,14 @@ instance HasSpread ConstNotionalCrossCurrencyFixedVsFloatingSwap where
 {#fun qlOvernightIndexedSwapOvernightLeg as overnightLeg{withOvernightIndexedSwap*`OvernightIndexedSwap',preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
 
 -- |Basis-point sensitivity of the overnight leg.
-{#fun qlOvernightIndexedSwapOvernightLegBPS as overnightLegBPS{withOvernightIndexedSwap*`OvernightIndexedSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlOvernightIndexedSwapOvernightLegBPS as overnightLegBps{withOvernightIndexedSwap*`OvernightIndexedSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |NPV of the overnight leg.
-{#fun qlOvernightIndexedSwapOvernightLegNPV as overnightLegNPV{withOvernightIndexedSwap*`OvernightIndexedSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlOvernightIndexedSwapOvernightLegNPV as overnightLegNpv{withOvernightIndexedSwap*`OvernightIndexedSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- Inflation-linked swaps
 -- |A zero-coupon inflation-indexed swap (ZCIIS): a single fixed-vs-CPI-ratio exchange at
--- maturity. Per-leg NPV\/BPS use the generic 'leg'\/'legNPV'\/'legBPS' (leg 0 = fixed, leg 1 =
+-- maturity. Per-leg NPV\/BPS use the generic 'leg'\/'legNpv'\/'legBps' (leg 0 = fixed, leg 1 =
 -- inflation).
 {#fun qlZeroCouponInflationSwap as zeroCouponInflationSwap{`SwapType',`Double' -- ^nominal
   ,withDay*`Day' -- ^startDate
@@ -880,7 +880,7 @@ instance HasSpread ConstNotionalCrossCurrencyFixedVsFloatingSwap where
 {#fun qlZeroCouponInflationSwapFairRate as zcisFairRate{withZeroCouponInflationSwap*`ZeroCouponInflationSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |A year-on-year inflation-indexed swap: fixed leg vs a YoY-inflation-linked leg. Per-leg
--- NPV\/BPS use the generic 'leg'\/'legNPV'\/'legBPS' (leg 0 = fixed, leg 1 = YoY).
+-- NPV\/BPS use the generic 'leg'\/'legNpv'\/'legBps' (leg 0 = fixed, leg 1 = YoY).
 {#fun qlYearOnYearInflationSwap as yearOnYearInflationSwap{`SwapType',`Double' -- ^nominal
   ,withSchedule*`Schedule' -- ^fixedSchedule
   ,`Double' -- ^fixedRate
@@ -904,7 +904,7 @@ instance HasSpread ConstNotionalCrossCurrencyFixedVsFloatingSwap where
 -- |A fixed-x-CPI-ratio leg (subtracting the inflation notional if
 -- /subtractInflationNominal/) vs a float+spread leg -- QuantLib's general-purpose inflation
 -- swap, also usable to replicate a single-cashflow ZCIIS (see 'zeroCouponInflationSwap').
--- Per-leg NPV\/BPS use the generic 'leg'\/'legNPV'\/'legBPS' (leg 0 = CPI, leg 1 = float).
+-- Per-leg NPV\/BPS use the generic 'leg'\/'legNpv'\/'legBps' (leg 0 = CPI, leg 1 = float).
 {#fun qlCPISwap as cpiSwap{`SwapType',`Double' -- ^nominal
   ,`Bool' -- ^subtractInflationNominal
   ,`Double' -- ^spread
@@ -931,7 +931,7 @@ instance HasSpread ConstNotionalCrossCurrencyFixedVsFloatingSwap where
 {#fun qlCPISwapFairSpread{withCPISwap*`CPISwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Zero-coupon swap quoted in terms of a known fixed cash flow. \"payer\"\/\"receiver\" refer to
--- the fixed leg. Per-leg NPV uses the generic 'leg'\/'legNPV' (leg 0 = fixed, leg 1 = floating).
+-- the fixed leg. Per-leg NPV uses the generic 'leg'\/'legNpv' (leg 0 = fixed, leg 1 = floating).
 {#fun qlZeroCouponSwap as zeroCouponSwap{`SwapType',`Double' -- ^baseNominal
   ,withDay*`Day' -- ^startDate
   ,withDay*`Day' -- ^maturityDate
@@ -987,10 +987,10 @@ instance HasSpread ConstNotionalCrossCurrencyFixedVsFloatingSwap where
   ,preErrorCheck-`String'errorCheck*-}->`EquityTotalReturnSwap'peekEquityTotalReturnSwap*#}
 
 -- |NPV of the equity total-return leg.
-{#fun qlEquityTotalReturnSwapEquityLegNPV as equityLegNPV{withEquityTotalReturnSwap*`EquityTotalReturnSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlEquityTotalReturnSwapEquityLegNPV as equityLegNpv{withEquityTotalReturnSwap*`EquityTotalReturnSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |NPV of the interest-rate leg.
-{#fun qlEquityTotalReturnSwapInterestRateLegNPV as interestRateLegNPV{withEquityTotalReturnSwap*`EquityTotalReturnSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlEquityTotalReturnSwapInterestRateLegNPV as interestRateLegNpv{withEquityTotalReturnSwap*`EquityTotalReturnSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |The margin that would make the swap's NPV zero.
 {#fun qlEquityTotalReturnSwapFairMargin as fairMargin{withEquityTotalReturnSwap*`EquityTotalReturnSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
@@ -998,18 +998,18 @@ instance HasSpread ConstNotionalCrossCurrencyFixedVsFloatingSwap where
 class HasFixedLeg a where
   fairRate :: a -> IO Double
   fixedLeg :: a -> IO Leg
-  fixedLegBPS :: a -> IO Double
-  fixedLegNPV :: a -> IO Double
+  fixedLegBps :: a -> IO Double
+  fixedLegNpv :: a -> IO Double
 instance HasFixedLeg OvernightIndexedSwap where
   fairRate = qlOvernightIndexedSwapFairRate
   fixedLeg = qlOvernightIndexedSwapFixedLeg
-  fixedLegBPS = qlOvernightIndexedSwapFixedLegBPS
-  fixedLegNPV = qlOvernightIndexedSwapFixedLegNPV
+  fixedLegBps = qlOvernightIndexedSwapFixedLegBPS
+  fixedLegNpv = qlOvernightIndexedSwapFixedLegNPV
 instance HasFixedLeg (GenFixedVsFloatingSwap f) where
   fairRate = qlFixedVsFloatingSwapFairRate
   fixedLeg = qlFixedVsFloatingSwapFixedLeg
-  fixedLegBPS = qlFixedVsFloatingSwapFixedLegBPS
-  fixedLegNPV = qlFixedVsFloatingSwapFixedLegNPV
+  fixedLegBps = qlFixedVsFloatingSwapFixedLegBPS
+  fixedLegNpv = qlFixedVsFloatingSwapFixedLegNPV
 
 class HasSpread a where
   fairSpread :: a -> IO Double
@@ -1028,16 +1028,16 @@ instance HasSpread CPISwap where
 
 class HasFloatingLeg a where
   floatingLeg :: a -> IO Leg
-  floatingLegBPS :: a -> IO Double
-  floatingLegNPV :: a -> IO Double
+  floatingLegBps :: a -> IO Double
+  floatingLegNpv :: a -> IO Double
 instance HasFloatingLeg (GenFixedVsFloatingSwap f) where
   floatingLeg = qlFixedVsFloatingSwapFloatingLeg
-  floatingLegBPS = qlFixedVsFloatingSwapFloatingLegBPS
-  floatingLegNPV = qlFixedVsFloatingSwapFloatingLegNPV
+  floatingLegBps = qlFixedVsFloatingSwapFloatingLegBPS
+  floatingLegNpv = qlFixedVsFloatingSwapFloatingLegNPV
 instance HasFloatingLeg AssetSwap where
   floatingLeg = qlAssetSwapFloatingLeg
-  floatingLegBPS = qlAssetSwapFloatingLegBPS
-  floatingLegNPV = qlAssetSwapFloatingLegNPV
+  floatingLegBps = qlAssetSwapFloatingLegBPS
+  floatingLegNpv = qlAssetSwapFloatingLegNPV
 
 -- |The spread that would make the swap's NPV zero.
 {#fun qlFixedVsFloatingSwapFairSpread{withFixedVsFloatingSwap*`GenFixedVsFloatingSwap f',preErrorCheck-`String'errorCheck*-}->`Double'#}

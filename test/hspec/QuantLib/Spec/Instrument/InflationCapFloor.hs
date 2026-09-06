@@ -39,8 +39,8 @@ matrix rows columns = either error id . realMatrixFromVector rows columns . V.fr
 customYoYIndex :: Maybe YoYInflationTermStructure -> IO YoYInflationIndex
 customYoYIndex mts = do
   gbp <- currency GBP
-  r <- region' "InflationCapFloor Test" "ICFT"
-  yoyInflationIndex' "ICFT YoY" r False Monthly (1, Months) gbp mts
+  r <- customRegion "InflationCapFloor Test" "ICFT"
+  customYoyInflationIndex "ICFT YoY" r False Monthly (1, Months) gbp mts
 
 -- |Bootstraps a tiny YoY curve and returns an index linked to it. A YoY index's
 -- 'needsForecast' (ql/indexes/inflationindex.cpp) is date-driven, not data-driven: any fixing
@@ -110,10 +110,10 @@ setupEngine yii evalDate = do
 customZeroIndex :: Day -> IO ZeroInflationIndex
 customZeroIndex evalDate = do
   gbp <- currency GBP
-  r <- region' "InflationCapFloor CPI Test" "ICFCT"
+  r <- customRegion "InflationCapFloor CPI Test" "ICFCT"
   cal <- calendar Null
   dc <- dayCounter Actual365FixedStandard
-  zii0 <- zeroInflationIndex' "ICFCT Zero" r False Monthly (1, Months) gbp Nothing
+  zii0 <- customZeroInflationIndex "ICFCT Zero" r False Monthly (1, Months) gbp Nothing
   -- Same today-relative fixing window as 'linkedYoYIndex', for the same reason.
   fixingDates <- mapM (\n -> advance cal evalDate (n, Months) Unadjusted False) [-96 .. 12 :: Int]
   forM_ (zip [1 :: Double ..] fixingDates) $ \(i, d) -> addFixing zii0 d (100.0 + i * 0.1) False
@@ -128,12 +128,12 @@ customZeroIndex evalDate = do
   h2 <- zeroCouponInflationSwapHelper q2 (2, Months) maturity2 cal Unadjusted dc zii0 CPIFlat LastRelevantDate Nothing
   baseDate <- advance cal evalDate (-2, Months) Unadjusted False
   zeroCurve <- piecewiseZeroInflationCurve evalDate baseDate Monthly dc [h1, h2] Linear
-  zeroInflationIndex' "ICFCT Zero" r False Monthly (1, Months) gbp (Just zeroCurve)
+  customZeroInflationIndex "ICFCT Zero" r False Monthly (1, Months) gbp (Just zeroCurve)
 
 spec :: Spec
 spec = do
  describe "YoY inflation cap/floor" $ do
-  it "cap - floor = collar, and the sum of optionlets equals the parent NPV" $ Settings.keepingSettings' $ do
+  it "cap - floor = collar, and the sum of optionlets equals the parent NPV" $ Settings.keepingSettingsGc $ do
     -- Anchored to the real wall-clock date (like 'QuantLib.Spec.Examples`'s SimpleChooserOption),
     -- not a hardcoded past date: every maturity derived below is then always in the future, so a
     -- later test in the suite changing the global evaluation date can never see this test's
@@ -165,7 +165,7 @@ spec = do
       npv o
     abs (capNPV - sum caplets) `shouldSatisfy` (< 1e-6)
 
-  it "a capped yoyInflationLeg's NPV decomposes as uncapped leg NPV minus the equivalent cap's NPV" $ Settings.keepingSettings' $ do
+  it "a capped yoyInflationLeg's NPV decomposes as uncapped leg NPV minus the equivalent cap's NPV" $ Settings.keepingSettingsGc $ do
     -- Confirmed by reading inflationcoupon.cpp: InflationCoupon::rate() unconditionally requires
     -- a pricer (QL_REQUIRE(pricer_, "pricer not set")), capped or not -- yoyInflationLeg's own
     -- operator Leg() (yoyinflationcoupon.cpp) auto-attaches a default (non-vol) pricer only when
@@ -214,7 +214,7 @@ spec = do
   -- maturity itself) and a maturity/strike that exactly match one price-surface grid node.
   -- baseCPI is a required constructor argument but never touched by this engine's calculate()
   -- (confirmed by reading cpicapfloorengines.cpp) so an arbitrary placeholder is fine.
-  it "reproduces the exact grid price at a matching strike/maturity node" $ Settings.keepingSettings' $ do
+  it "reproduces the exact grid price at a matching strike/maturity node" $ Settings.keepingSettingsGc $ do
     -- First-of-month, derived from the real wall-clock date rather than hardcoded, so
     -- CPI::Flat's period-start sampling (see the comment above) lands exactly on the raw date
     -- without pinning the test to a date that will eventually become stale/past.
@@ -261,7 +261,7 @@ spec = do
   -- No upstream fixture covers a non-Bilinear Interpolation2D, so this is a
   -- construction/sanity check only, same reasoning as the yoyCapFloorTermPriceSurface
   -- spot-check in QuantLib.Spec.TermStructure.InflationVolatility.
-  it "cpiCapFloorTermPriceSurface: Bicubic builds and reproduces the same grid price" $ Settings.keepingSettings' $ do
+  it "cpiCapFloorTermPriceSurface: Bicubic builds and reproduces the same grid price" $ Settings.keepingSettingsGc $ do
     (y, m, _) <- toGregorian <$> today
     let today' = fromGregorian y m 1
     Settings.setEvaluationDate (Just today')

@@ -113,7 +113,7 @@ module QuantLib.CashFlow
   , npvFromYield'
   , npv'
   , npv
-  , npvbps
+  , npvBps
   , previousCashFlowAmount
   , previousCashFlowDate
   , previousCouponRate
@@ -945,7 +945,7 @@ cashFlows l i d = do{(as, ds, hs) <- qlLegCashFlows l i d; return $ zip3 ds as h
 
 -- |NPV and BPS of the cash flows.
 -- The NPV and BPS of the cash flows calculated together for performance reason
-{#fun qlCashFlowsNpvbps as npvbps{withLeg*`GenLeg l',withYieldTermStructure*`GenYieldTermStructure y',`Bool' -- ^includeSettlementDateFlows
+{#fun qlCashFlowsNpvbps as npvBps{withLeg*`GenLeg l',withYieldTermStructure*`GenYieldTermStructure y',`Bool' -- ^includeSettlementDateFlows
   ,withDay*`Day' -- ^settlementDate
   ,withDay*`Day' -- ^npvDate
   ,prePtr-`Double'peekDouble*,prePtr-`Double'peekDouble*,preErrorCheck-`String'errorCheck*-}->`()'#}
