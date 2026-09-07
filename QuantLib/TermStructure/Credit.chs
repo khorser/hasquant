@@ -3,8 +3,8 @@ module QuantLib.TermStructure.Credit
     ProbabilityTrait(..)
   , DefaultProbabilityTermStructure
   , DefaultProbabilityHelper
+  , Reference(..)
   , factorSpreadedHazardRateCurve
-  , flatHazardRateMoving
   , flatHazardRate
   , spreadedHazardRateCurve
   , defaultProbability
@@ -26,9 +26,6 @@ module QuantLib.TermStructure.Credit
   , IterativeBootstrapOpts(..)
   , defaultIterativeBootstrapOpts
   , piecewiseDefaultCurve
-  , piecewiseDefaultCurveMoving
-  , piecewiseDefaultCurveFull
-  , piecewiseDefaultCurveFullMoving
   ) where
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"
@@ -40,6 +37,7 @@ import QuantLib.Internal
 import QuantLib.Internal.Type
 {#import QuantLib.Time.Schedule#}(DateGenerationRule, Frequency)
 import QuantLib.Internal.Common
+import QuantLib.TermStructure (Reference(..), setExtrapolation)
 import Data.List.NonEmpty(NonEmpty, toList)
 
 {#enum ProbabilityTrait{} deriving(Show, Eq, Read)#}
@@ -55,11 +53,12 @@ import Data.List.NonEmpty(NonEmpty, toList)
 -- |a curve whose hazard rate is another curve's, scaled by a spread factor
 {#fun qlFactorSpreadedHazardRateCurve as factorSpreadedHazardRateCurve{withGenTermStructure*`DefaultProbabilityTermStructure',withQuote*`GenQuote q',preErrorCheck-`String'errorCheck*-}->`DefaultProbabilityTermStructure'peekDefaultProbabilityTermStructure*#}
 
--- |flat hazard-rate curve anchored at a settlement date
-{#fun qlFlatHazardRate1 as flatHazardRateMoving{fromIntegral`Word',withCalendar*`Calendar',withQuote*`GenQuote q',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`DefaultProbabilityTermStructure'peekDefaultProbabilityTermStructure*#}
-
--- |flat hazard-rate curve anchored at a reference date
-{#fun qlFlatHazardRate as flatHazardRate{withDay*`Day',withQuote*`GenQuote q',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`DefaultProbabilityTermStructure'peekDefaultProbabilityTermStructure*#}
+-- |Flat hazard-rate curve with either a fixed or evaluation-date-relative reference point.
+flatHazardRate :: Reference -> GenQuote q -> DayCounter -> IO DefaultProbabilityTermStructure
+flatHazardRate (ReferenceDate d) = flatHazardRateFixed d
+flatHazardRate (SettlementDays n cal) = flatHazardRateMovingRaw n cal
+{#fun qlFlatHazardRate1 as flatHazardRateMovingRaw{fromIntegral`Word',withCalendar*`Calendar',withQuote*`GenQuote q',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`DefaultProbabilityTermStructure'peekDefaultProbabilityTermStructure*#}
+{#fun qlFlatHazardRate as flatHazardRateFixed{withDay*`Day',withQuote*`GenQuote q',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`DefaultProbabilityTermStructure'peekDefaultProbabilityTermStructure*#}
 
 -- |a curve whose survival probability is another curve's, multiplied by a spread factor
 {#fun qlSpreadedHazardRateCurve as spreadedHazardRateCurve{withGenTermStructure*`DefaultProbabilityTermStructure',withQuote*`GenQuote q',preErrorCheck-`String'errorCheck*-}->`DefaultProbabilityTermStructure'peekDefaultProbabilityTermStructure*#}
@@ -143,8 +142,13 @@ import Data.List.NonEmpty(NonEmpty, toList)
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 interpolatedDefaultDensityCurve :: NonEmpty (Day, Double) -> DayCounter -> Calendar -> [(Day, GenQuote q)] -- ^jumps
-  -> Interpolation -> IO DefaultProbabilityTermStructure
-interpolatedDefaultDensityCurve d dc c q i = uncurryNested (qlInterpolatedDefaultDensityCurve dd dq dc c qq qd) (qlInterpolation i) where {(qd, qq) = unzip q; (dd, dq) = unzip (toList d)}
+  -> Interpolation -> Bool -> IO DefaultProbabilityTermStructure
+interpolatedDefaultDensityCurve d dc c q i ex = do
+  curve <- uncurryNested (qlInterpolatedDefaultDensityCurve dd dq dc c qq qd) (qlInterpolation i)
+  setExtrapolation curve ex
+  pure curve
+  where (qd, qq) = unzip q
+        (dd, dq) = unzip (toList d)
 
 -- |default-probability term structure built by interpolating default densities at given dates
 {#fun qlInterpolatedDefaultDensityCurve{withDayArray*`[Day]'&,withDoubleArray*`[Double]'&,withDayCounter*`DayCounter',withCalendar*`Calendar',withQuoteArray*`[GenQuote q]'&,withDayArray*`[Day]'&,`Int',`Int',`Int',preErrorCheck-`String'errorCheck*-}->`DefaultProbabilityTermStructure'peekDefaultProbabilityTermStructure*#}
@@ -159,8 +163,13 @@ interpolatedHazardRateCurve d dc c q i ex = uncurryNested (qlInterpolatedHazardR
 {#fun qlInterpolatedHazardRateCurve{withDayArray*`[Day]'&,withDoubleArray*`[Double]'&,withDayCounter*`DayCounter',withCalendar*`Calendar',withQuoteArray*`[GenQuote q]'&,withDayArray*`[Day]'&,`Int',`Int',`Int',`Bool',preErrorCheck-`String'errorCheck*-}->`DefaultProbabilityTermStructure'peekDefaultProbabilityTermStructure*#}
 
 interpolatedSurvivalProbabilityCurve :: NonEmpty (Day, Double) -> DayCounter -> Calendar -> [(Day, GenQuote q)] -- ^jumps
-  -> Interpolation -> IO DefaultProbabilityTermStructure
-interpolatedSurvivalProbabilityCurve d dc c q i = uncurryNested (qlInterpolatedSurvivalProbabilityCurve dd dq dc c qq qd) (qlInterpolation i) where {(qd, qq) = unzip q; (dd, dq) = unzip (toList d)}
+  -> Interpolation -> Bool -> IO DefaultProbabilityTermStructure
+interpolatedSurvivalProbabilityCurve d dc c q i ex = do
+  curve <- uncurryNested (qlInterpolatedSurvivalProbabilityCurve dd dq dc c qq qd) (qlInterpolation i)
+  setExtrapolation curve ex
+  pure curve
+  where (qd, qq) = unzip q
+        (dd, dq) = unzip (toList d)
 
 -- |default-probability term structure built by interpolating survival probabilities at given dates
 {#fun qlInterpolatedSurvivalProbabilityCurve{withDayArray*`[Day]'&,withDoubleArray*`[Double]'&,withDayCounter*`DayCounter',withCalendar*`Calendar',withQuoteArray*`[GenQuote q]'&,withDayArray*`[Day]'&,`Int',`Int',`Int',preErrorCheck-`String'errorCheck*-}->`DefaultProbabilityTermStructure'peekDefaultProbabilityTermStructure*#}
@@ -169,66 +178,30 @@ interpolatedSurvivalProbabilityCurve d dc c q i = uncurryNested (qlInterpolatedS
 nullableDouble :: Maybe Double -> Double
 nullableDouble = realToFrac . fromMaybeDouble
 
--- |Default-probability term structure bootstrapped from CDS/default helpers, anchored at an
--- explicit reference date and using QuantLib's default iterative-bootstrap settings.
-piecewiseDefaultCurve :: Day -- ^referenceDate
-  -> NonEmpty DefaultProbabilityHelper -- ^instruments
-  -> DayCounter -- ^dayCounter
-  -> [(Day, GenQuote q)] -- ^jumps paired with their dates
-  -> ProbabilityTrait -- ^bootstrap trait
-  -> Interpolation -- ^interpolator
-  -> IO DefaultProbabilityTermStructure
-piecewiseDefaultCurve d h dc q t i =
-  piecewiseDefaultCurveFull d h dc q t i defaultIterativeBootstrapOpts
-
--- |Like 'piecewiseDefaultCurve', but exposes every @IterativeBootstrap@ setting. Start from
--- 'defaultIterativeBootstrapOpts' and override selected fields. Setting 'ibDontThrow' to 'True'
--- returns the best fallback pillar value found after a bootstrap failure; this is a recovery
--- option and does not establish that the resulting curve reprices its instruments.
-piecewiseDefaultCurveFull :: Day -- ^referenceDate
+-- |Default-probability term structure bootstrapped from CDS/default helpers with either a fixed
+-- or evaluation-date-relative reference point and complete iterative-bootstrap settings.
+piecewiseDefaultCurve :: Reference
   -> NonEmpty DefaultProbabilityHelper -- ^instruments
   -> DayCounter -- ^dayCounter
   -> [(Day, GenQuote q)] -- ^jumps paired with their dates
   -> ProbabilityTrait -- ^bootstrap trait
   -> Interpolation -- ^interpolator
   -> IterativeBootstrapOpts -- ^bootstrap settings
+  -> Bool -- ^extrapolate past the curve's max date
   -> IO DefaultProbabilityTermStructure
-piecewiseDefaultCurveFull d h dc q t i b =
-  uncurryNested (piecewiseDefaultCurve_ d (toList h) dc qq qd t) (qlInterpolation i)
-    (nullableDouble (ibAccuracy b)) (nullableDouble (ibMinValue b)) (nullableDouble (ibMaxValue b))
-    (ibMaxAttempts b) (ibMaxFactor b) (ibMinFactor b) (ibDontThrow b) (ibDontThrowSteps b) (ibMaxEvaluations b)
+piecewiseDefaultCurve reference h dc q t i b ex = do
+  curve <- case reference of
+    ReferenceDate d -> uncurryNested (piecewiseDefaultCurve_ d hs dc qq qd t) (qlInterpolation i)
+      (nullableDouble (ibAccuracy b)) (nullableDouble (ibMinValue b)) (nullableDouble (ibMaxValue b))
+      (ibMaxAttempts b) (ibMaxFactor b) (ibMinFactor b) (ibDontThrow b) (ibDontThrowSteps b) (ibMaxEvaluations b)
+    SettlementDays d c -> uncurryNested (piecewiseDefaultCurve1_ d c hs dc qq qd t) (qlInterpolation i)
+      (nullableDouble (ibAccuracy b)) (nullableDouble (ibMinValue b)) (nullableDouble (ibMaxValue b))
+      (ibMaxAttempts b) (ibMaxFactor b) (ibMinFactor b) (ibDontThrow b) (ibDontThrowSteps b) (ibMaxEvaluations b)
+  setExtrapolation curve ex
+  pure curve
   where (qd, qq) = unzip q
+        hs = toList h
 {#fun qlPiecewiseDefaultCurve as piecewiseDefaultCurve_{withDay*`Day',withDefaultProbabilityHelperArray*`[DefaultProbabilityHelper]'&,withDayCounter*`DayCounter',withQuoteArray*`[GenQuote q]'&,withDayArray*`[Day]'&,`ProbabilityTrait',`Int',`Int',`Int',`Double',`Double',`Double',fromIntegral`Word',`Double',`Double',`Bool',fromIntegral`Word',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`DefaultProbabilityTermStructure'peekDefaultProbabilityTermStructure*#}
-
--- |Default-probability term structure bootstrapped from CDS/default helpers, anchored at a
--- settlement-days/calendar pair and using QuantLib's default iterative-bootstrap settings.
-piecewiseDefaultCurveMoving :: Word -- ^settlementDays
-  -> Calendar -- ^calendar
-  -> NonEmpty DefaultProbabilityHelper -- ^instruments
-  -> DayCounter -- ^dayCounter
-  -> [(Day, GenQuote q)] -- ^jumps paired with their dates
-  -> ProbabilityTrait -- ^bootstrap trait
-  -> Interpolation -- ^interpolator
-  -> IO DefaultProbabilityTermStructure
-piecewiseDefaultCurveMoving d c h dc q t i =
-  piecewiseDefaultCurveFullMoving d c h dc q t i defaultIterativeBootstrapOpts
-
--- |Like 'piecewiseDefaultCurveMoving', but exposes every @IterativeBootstrap@ setting. See
--- 'piecewiseDefaultCurveFull' for the fallback semantics of 'ibDontThrow'.
-piecewiseDefaultCurveFullMoving :: Word -- ^settlementDays
-  -> Calendar -- ^calendar
-  -> NonEmpty DefaultProbabilityHelper -- ^instruments
-  -> DayCounter -- ^dayCounter
-  -> [(Day, GenQuote q)] -- ^jumps paired with their dates
-  -> ProbabilityTrait -- ^bootstrap trait
-  -> Interpolation -- ^interpolator
-  -> IterativeBootstrapOpts -- ^bootstrap settings
-  -> IO DefaultProbabilityTermStructure
-piecewiseDefaultCurveFullMoving d c h dc q t i b =
-  uncurryNested (piecewiseDefaultCurve1_ d c (toList h) dc qq qd t) (qlInterpolation i)
-    (nullableDouble (ibAccuracy b)) (nullableDouble (ibMinValue b)) (nullableDouble (ibMaxValue b))
-    (ibMaxAttempts b) (ibMaxFactor b) (ibMinFactor b) (ibDontThrow b) (ibDontThrowSteps b) (ibMaxEvaluations b)
-  where (qd, qq) = unzip q
 {#fun qlPiecewiseDefaultCurve1 as piecewiseDefaultCurve1_{fromIntegral`Word',withCalendar*`Calendar',withDefaultProbabilityHelperArray*`[DefaultProbabilityHelper]'&,withDayCounter*`DayCounter',withQuoteArray*`[GenQuote q]'&,withDayArray*`[Day]'&,`ProbabilityTrait',`Int',`Int',`Int',`Double',`Double',`Double',fromIntegral`Word',`Double',`Double',`Bool',fromIntegral`Word',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`DefaultProbabilityTermStructure'peekDefaultProbabilityTermStructure*#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

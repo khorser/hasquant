@@ -11,8 +11,9 @@ import QuantLib.Time.Schedule(dayCounter, DayCounterConstructor(..), TimeUnit(..
 import QuantLib.InterestRate(Compounding(..))
 import QuantLib.Math(Interpolation(..))
 import QuantLib.Quote(simpleQuote, setValue)
+import QuantLib.TermStructure(allowsExtrapolation)
 import QuantLib.TermStructure.Credit
-import QuantLib.TermStructure.Yield(Reference(..), flatForward, interpolatedDiscountCurve)
+import QuantLib.TermStructure.Yield(flatForward, interpolatedDiscountCurve)
 import QuantLib.Instrument(setPricingEngine, PricingModel(..))
 import QuantLib.Instrument.Credit(Claim(..), ProtectionSide(..), creditDefaultSwap, syntheticCdo, fairPremium, nthToDefault, ntdFairPremium)
 import QuantLib.Instrument.Swap(fairSpread)
@@ -41,7 +42,7 @@ spec = do
       eur <- currency EUR
       dc <- dayCounter (Actual360 False)
       hazardQuote <- simpleQuote 0.01
-      dts <- flatHazardRate refDate hazardQuote dc
+      dts <- flatHazardRate (ReferenceDate refDate) hazardQuote dc
       key <- northAmericaCorpDefaultKey eur SeniorSec (0, Weeks) 10.0 FullRestructuring
 
       iss <- issuer (fromList [(key, dts)])
@@ -87,7 +88,7 @@ spec = do
       key <- northAmericaCorpDefaultKey eur SeniorSec (0, Weeks) 10.0 FullRestructuring
       act360 <- dayCounter (Actual360 False)
       hazardQuote <- simpleQuote 0.01
-      dts <- flatHazardRate refDate hazardQuote act360
+      dts <- flatHazardRate (ReferenceDate refDate) hazardQuote act360
 
       iss <- issuer (fromList [(key, dts)])
       p <- pool (fromList [(n, iss, key) | n <- names])
@@ -153,7 +154,7 @@ spec = do
       dc365 <- dayCounter Actual365FixedStandard
       act360 <- dayCounter (Actual360 False)
       hazardQuote <- simpleQuote 0.01
-      dts <- flatHazardRate refDate hazardQuote dc365
+      dts <- flatHazardRate (ReferenceDate refDate) hazardQuote dc365
 
       iss <- issuer (fromList [(key, dts)])
       p <- pool (fromList [(n, iss, key) | n <- names])
@@ -223,7 +224,7 @@ spec = do
       key <- northAmericaCorpDefaultKey eur SeniorSec (0, Weeks) 10.0 FullRestructuring
       act360 <- dayCounter (Actual360 False)
       hazardQuote <- simpleQuote 0.01
-      dts <- flatHazardRate refDate hazardQuote act360
+      dts <- flatHazardRate (ReferenceDate refDate) hazardQuote act360
 
       iss <- issuer (fromList [(key, dts)])
       p <- pool (fromList [(n, iss, key) | n <- names])
@@ -275,7 +276,7 @@ spec = do
       key <- northAmericaCorpDefaultKey eur SeniorSec (0, Days) 1.0 FullRestructuring
       dc365 <- dayCounter Actual365FixedStandard
       hazardQuote <- simpleQuote 0.01
-      dts <- flatHazardRate refDate hazardQuote dc365
+      dts <- flatHazardRate (ReferenceDate refDate) hazardQuote dc365
 
       iss <- issuer (fromList [(key, dts)])
       p <- pool (fromList [(n, iss, key) | n <- names])
@@ -311,13 +312,14 @@ spec = do
       hazard <- interpolatedHazardRateCurve (fromList [(refDate, 0.02), (d1, 0.018), (d2, 0.016)]) dc cal [] BackwardFlat False
       hazardRate hazard d1 False `shouldReturn` 0.018
 
-      survival <- interpolatedSurvivalProbabilityCurve (fromList [(refDate, 1.0), (d1, 0.98), (d2, 0.95)]) dc cal [] LogLinear
+      survival <- interpolatedSurvivalProbabilityCurve (fromList [(refDate, 1.0), (d1, 0.98), (d2, 0.95)]) dc cal [] LogLinear True
       survivalProbability survival d2 False `shouldReturn` 0.95
+      allowsExtrapolation survival `shouldReturn` True
 
-      density <- interpolatedDefaultDensityCurve (fromList [(refDate, 0.02), (d1, 0.018), (d2, 0.016)]) dc cal [] Linear
+      density <- interpolatedDefaultDensityCurve (fromList [(refDate, 0.02), (d1, 0.018), (d2, 0.016)]) dc cal [] Linear False
       defaultDensity density d1 False `shouldReturn` 0.018
 
-    it "matches narrow and full constructors at default bootstrap settings" $ Settings.keepingSettingsGc $ do
+    it "matches fixed and moving references at default bootstrap settings" $ Settings.keepingSettingsGc $ do
       let refDate = fromGregorian 2015 6 15
           spreads = zip [1, 2, 3, 5] [0.005, 0.006, 0.007, 0.009]
           recovery = 0.4
@@ -333,24 +335,19 @@ spec = do
         q <- simpleQuote spread
         spreadCdsHelper q (years, Years) 1 cal Quarterly Following TwentiethIMM helperDc recovery discountCurve True True Nothing helperDc True Midpoint
       let hs = fromList helpers
-      fixedNarrow <- piecewiseDefaultCurve refDate hs helperDc [] HazardRate BackwardFlat
-      fixedFull <- piecewiseDefaultCurveFull refDate hs helperDc [] HazardRate BackwardFlat defaultIterativeBootstrapOpts
-      movingNarrow <- piecewiseDefaultCurveMoving 0 cal hs helperDc [] HazardRate BackwardFlat
-      movingFull <- piecewiseDefaultCurveFullMoving 0 cal hs helperDc [] HazardRate BackwardFlat defaultIterativeBootstrapOpts
+      fixedCurve <- piecewiseDefaultCurve (ReferenceDate refDate) hs helperDc [] HazardRate BackwardFlat defaultIterativeBootstrapOpts False
+      movingCurve <- piecewiseDefaultCurve (SettlementDays 0 cal) hs helperDc [] HazardRate BackwardFlat defaultIterativeBootstrapOpts False
 
-      fixedNarrowP <- survivalProbability fixedNarrow queryDate False
-      fixedFullP <- survivalProbability fixedFull queryDate False
-      movingNarrowP <- survivalProbability movingNarrow queryDate False
-      movingFullP <- survivalProbability movingFull queryDate False
-      fixedFullP `shouldSatisfy` closePrec fixedNarrowP 1.0e-12
-      movingFullP `shouldSatisfy` closePrec movingNarrowP 1.0e-12
+      fixedP <- survivalProbability fixedCurve queryDate False
+      movingP <- survivalProbability movingCurve queryDate False
+      movingP `shouldSatisfy` closePrec fixedP 1.0e-12
 
       let (_, quotedSpread) = spreads !! 2
           protectionStart = addDays 1 refDate
           maturity = addGregorianYearsClip 3 refDate
       startDate <- adjust cal protectionStart Following
       sched <- schedule (Just startDate) maturity (3, Months) cal Following Unadjusted TwentiethIMM False Nothing Nothing
-      forM_ [fixedNarrow, fixedFull, movingNarrow, movingFull] $ \curve -> do
+      forM_ [fixedCurve, movingCurve] $ \curve -> do
         cds <- creditDefaultSwap Buyer 1.0 quotedSpread sched Following helperDc True True
           (Just protectionStart) FaceValue helperDc True Nothing 3
         engine <- midPointCdsEngine curve recovery discountCurve Nothing
@@ -373,7 +370,7 @@ spec = do
         q <- simpleQuote spread
         spreadCdsHelper q (years, Years) 1 cal Quarterly Following TwentiethIMM helperDc recovery discountCurve True True Nothing helperDc True Midpoint
       let hs = fromList helpers
-      curve <- piecewiseDefaultCurve refDate hs helperDc [] HazardRate BackwardFlat
+      curve <- piecewiseDefaultCurve (ReferenceDate refDate) hs helperDc [] HazardRate BackwardFlat defaultIterativeBootstrapOpts False
       -- PiecewiseDefaultCurve is a LazyObject: bootstrap (which calls setTermStructure/
       -- resetEngine on each helper, populating CdsHelper::swap_) only runs on the first
       -- calculate()-triggering call, not at construction. Force it before calling
@@ -407,8 +404,8 @@ spec = do
       let hs = fromList helpers
       forM_ (zip [0 :: Int ..] combinations) $ \(j, (trait, interpolation)) -> do
         curve <- if even j
-          then piecewiseDefaultCurveFull refDate hs helperDc [] trait interpolation defaultIterativeBootstrapOpts
-          else piecewiseDefaultCurveFullMoving 0 cal hs helperDc [] trait interpolation defaultIterativeBootstrapOpts
+          then piecewiseDefaultCurve (ReferenceDate refDate) hs helperDc [] trait interpolation defaultIterativeBootstrapOpts False
+          else piecewiseDefaultCurve (SettlementDays 0 cal) hs helperDc [] trait interpolation defaultIterativeBootstrapOpts False
         forM_ spreads $ \(years, quotedSpread) -> do
           let protectionStart = addDays 1 refDate
               maturity = addGregorianYearsClip (fromIntegral years) refDate
@@ -455,10 +452,10 @@ spec = do
         q <- simpleQuote spread
         spreadCdsHelper q tenor 1 cal Quarterly Following CDS2015 cdsDc recovery discountCurve True True Nothing lastDc True Midpoint
       let hs = fromList helpers
-      defaultCurve <- piecewiseDefaultCurve asof hs tsDc [] SurvivalProbability LogLinear
+      defaultCurve <- piecewiseDefaultCurve (ReferenceDate asof) hs tsDc [] SurvivalProbability LogLinear defaultIterativeBootstrapOpts False
       survivalProbability defaultCurve testDate False `shouldThrow` anyException
 
-      fallbackCurve <- piecewiseDefaultCurveFull asof hs tsDc [] SurvivalProbability LogLinear
+      fallbackCurve <- piecewiseDefaultCurve (ReferenceDate asof) hs tsDc [] SurvivalProbability LogLinear
         defaultIterativeBootstrapOpts
           { ibMaxAttempts = 5
           , ibMaxFactor = 1.0
@@ -466,6 +463,7 @@ spec = do
           , ibDontThrow = True
           , ibDontThrowSteps = 2
           }
+        False
       _ <- survivalProbability fallbackCurve testDate False
       pure ()
 

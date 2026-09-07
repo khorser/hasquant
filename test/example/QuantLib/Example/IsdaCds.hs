@@ -73,7 +73,7 @@ run = do
 
   h <- impliedHazardRate quotedTrade 0.0 discountCurve act365Fixed recovery 1e-10 ISDA
   hq <- simpleQuote h
-  probabilityCurve <- flatHazardRateMoving 0 weekendsOnly hq act365Fixed
+  probabilityCurve <- flatHazardRate (SettlementDays 0 weekendsOnly) hq act365Fixed
 
   engine <- isdaCdsEngine probabilityCurve recovery discountCurve Nothing NumericalFixTaylor HalfDayBias Piecewise
 

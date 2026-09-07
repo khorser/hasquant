@@ -33,7 +33,7 @@ run = do
   actActBond <- dayCounter ActualActualBond
 
   hazardRate <- simpleQuote 0.1
-  defaultProbability <- flatHazardRateMoving 0 target hazardRate actual360dc
+  defaultProbability <- flatHazardRate (SettlementDays 0 target) hazardRate actual360dc
 
   riskFreeRate <- simpleQuote 0.02
   riskFree <- flatForward (ReferenceDate evalDate) riskFreeRate actual360dc Continuous Annual

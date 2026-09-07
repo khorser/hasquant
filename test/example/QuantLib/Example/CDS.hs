@@ -47,7 +47,7 @@ run = do
         $(free1st 'spreadCdsHelper) (t, Months) 1 cal Quarterly Following TwentiethIMM dc recoveryRate ts True True Nothing dc True Midpoint)
       [3, 6, 12, 24]
 
-  hts <- piecewiseDefaultCurve evalDate (fromList instruments) dc [] HazardRate BackwardFlat
+  hts <- piecewiseDefaultCurve (ReferenceDate evalDate) (fromList instruments) dc [] HazardRate BackwardFlat defaultIterativeBootstrapOpts False
   probs <- mapM (\y -> survivalProbability hts (addGregorianYearsClip y evalDate) False) [1, 2]
   eng <- midPointCdsEngine hts recoveryRate ts Nothing
 

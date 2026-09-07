@@ -41,7 +41,7 @@ spec = do
         cal <- calendar TARGET
         dc <- dayCounter (Actual360 False)
         hazardQ <- simpleQuote 0.01234
-        probCurve <- flatHazardRateMoving 0 cal hazardQ dc
+        probCurve <- flatHazardRate (SettlementDays 0 cal) hazardQ dc
         discQ <- simpleQuote 0.06
         discountCurve <- flatForward (ReferenceDate today') discQ dc Continuous Annual
 
@@ -98,7 +98,7 @@ spec = do
         cal <- calendar TARGET
         dc <- dayCounter (Actual360 False)
         hazardQ <- simpleQuote 0.01234
-        probCurve <- flatHazardRateMoving 0 cal hazardQ dc
+        probCurve <- flatHazardRate (SettlementDays 0 cal) hazardQ dc
         discQ <- simpleQuote 0.06
         discountCurve <- flatForward (ReferenceDate today') discQ dc Continuous Annual
         eng <- midPointCdsEngine probCurve 0.4 discountCurve Nothing
@@ -129,7 +129,7 @@ spec = do
         cal <- calendar TARGET
         dc <- dayCounter (Actual360 False)
         hazardQ <- simpleQuote 0.01234
-        probCurve <- flatHazardRateMoving 0 cal hazardQ dc
+        probCurve <- flatHazardRate (SettlementDays 0 cal) hazardQ dc
         discQ <- simpleQuote 0.06
         discountCurve <- flatForward (ReferenceDate today') discQ dc Continuous Annual
         eng <- midPointCdsEngine probCurve 0.4 discountCurve (Just True)
@@ -168,7 +168,7 @@ spec = do
             Forward False Nothing Nothing
 
           hazardQ <- simpleQuote h
-          probCurve <- flatHazardRateMoving 0 cal hazardQ dc
+          probCurve <- flatHazardRate (SettlementDays 0 cal) hazardQ dc
           eng <- midPointCdsEngine probCurve 0.4 discountCurve Nothing
 
           cds <- creditDefaultSwap Seller 10000 0.0120 sch ModifiedFollowing dc True True

@@ -9,11 +9,11 @@ import QuantLib.Time.Calendar(calendar, CalendarConstructor(..), BusinessDayConv
 import QuantLib.Time.Schedule(dayCounter, DayCounterConstructor(..), TimeUnit(..), schedule, DateGenerationRule(..), Frequency(..))
 import QuantLib.InterestRate(Compounding(..))
 import QuantLib.Quote(simpleQuote)
-import QuantLib.TermStructure.Credit(flatHazardRate)
+import QuantLib.TermStructure.Credit(Reference(..), flatHazardRate)
 import QuantLib.TermStructure.Yield(Reference(..), flatForward)
 import QuantLib.Settings(setEvaluationDate)
 import QuantLib.Instrument(setPricingEngine)
-import QuantLib.Instrument.Credit(Claim(..), ProtectionSide(..), nthToDefault, ntdFairPremium)
+import QuantLib.Instrument.Credit(Reference(..), Claim(..), ProtectionSide(..), nthToDefault, ntdFairPremium)
 import QuantLib.PricingEngine(integralNtdEngine)
 import QuantLib.Credit
 
@@ -31,7 +31,7 @@ main = do
   key <- northAmericaCorpDefaultKey eur SeniorSec (0, Days) 1.0 FullRestructuring
   dc <- dayCounter (Actual360 False)
   hazardQuote <- simpleQuote 0.01
-  dts <- flatHazardRate refDate hazardQuote dc
+  dts <- flatHazardRate (ReferenceDate refDate) hazardQuote dc
 
   iss <- issuer (fromList [(key, dts)])
   p <- pool (fromList [(n, iss, key) | n <- names])
