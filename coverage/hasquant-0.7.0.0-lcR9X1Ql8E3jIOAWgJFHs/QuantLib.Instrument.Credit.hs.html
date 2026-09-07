@@ -28,7 +28,7 @@ span.spaces    { background: white }
 <span class="lineno">    9 </span>  , Claim(..)
 <span class="lineno">   10 </span>
 <span class="lineno">   11 </span>  , creditDefaultSwap
-<span class="lineno">   12 </span>  , creditDefaultSwap'
+<span class="lineno">   12 </span>  , creditDefaultSwapWithUpfront
 <span class="lineno">   13 </span>
 <span class="lineno">   14 </span>  , atmRate
 <span class="lineno">   15 </span>  , cdsOption
@@ -47,7 +47,7 @@ span.spaces    { background: white }
 <span class="lineno">   28 </span>  , upfrontNpv
 <span class="lineno">   29 </span>
 <span class="lineno">   30 </span>  , SyntheticCDO
-<span class="lineno">   31 </span>  , syntheticCDO
+<span class="lineno">   31 </span>  , syntheticCdo
 <span class="lineno">   32 </span>
 <span class="lineno">   33 </span>  , fairPremium
 <span class="lineno">   34 </span>  , fairUpfrontPremium
@@ -155,7 +155,7 @@ span.spaces    { background: white }
 <span class="lineno">  136 </span>
 <span class="lineno">  137 </span>-- |CDS quoted as upfront and running spread.
 <span class="lineno">  138 </span>-- side Whether the protection is bought or sold. notional Notional value upfront Upfront in fractional units. spread Running spread in fractional units. schedule Coupon schedule. paymentConvention Business-day convention for payment-date adjustment. dayCounter Day-count convention for accrual. settlesAccrual Whether or not the accrued coupon is due in the event of a default. paysAtDefaultTime If set to true, any payments triggered by a default event are due at default time. If set to false, they are due at the end of the accrual period. protectionStart The first date where a default event will trigger the contract. upfrontDate Settlement date for the upfront payment.
-<span class="lineno">  139 </span>creditDefaultSwap' :: (ProtectionSide) -&gt; (Double) -- ^notional
+<span class="lineno">  139 </span>creditDefaultSwapWithUpfront :: (ProtectionSide) -&gt; (Double) -- ^notional
 <span class="lineno">  140 </span> -&gt; (Double) -- ^upfront
 <span class="lineno">  141 </span> -&gt; (Double) -- ^spread
 <span class="lineno">  142 </span> -&gt; (Schedule) -&gt; (BusinessDayConvention) -&gt; (DayCounter) -&gt; (Bool) -- ^settlesAccrual
@@ -167,7 +167,7 @@ span.spaces    { background: white }
 <span class="lineno">  148 </span> -&gt; (Maybe Day) -- ^tradeDate
 <span class="lineno">  149 </span> -&gt; (Word) -- ^cashSettlementDays
 <span class="lineno">  150 </span> -&gt; IO ((CreditDefaultSwap))
-<span class="lineno">  151 </span><span class="decl"><span class="istickedoff">creditDefaultSwap' a1 a2 a3 a4 a5 a6 a7 a8 a9 a10 a11 a12 a13 a14 a15 a16 =</span>
+<span class="lineno">  151 </span><span class="decl"><span class="istickedoff">creditDefaultSwapWithUpfront a1 a2 a3 a4 a5 a6 a7 a8 a9 a10 a11 a12 a13 a14 a15 a16 =</span>
 <span class="lineno">  152 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = (fromIntegral . fromEnum) a1} in </span>
 <span class="lineno">  153 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = realToFrac a2} in </span>
 <span class="lineno">  154 </span><span class="spaces">  </span><span class="istickedoff">let {a3' = realToFrac a3} in </span>
@@ -185,7 +185,7 @@ span.spaces    { background: white }
 <span class="lineno">  166 </span><span class="spaces">  </span><span class="istickedoff">withMaybeDay a15 $ \a15' -&gt; </span>
 <span class="lineno">  167 </span><span class="spaces">  </span><span class="istickedoff">let {a16' = fromIntegral a16} in </span>
 <span class="lineno">  168 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a17' -&gt; </span>
-<span class="lineno">  169 </span><span class="spaces">  </span><span class="istickedoff">creditDefaultSwap''_ a1' a2' a3' a4' a5' a6' a7' a8' a9' a10' a11' a12' a13' a14' a15' a16' a17' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  169 </span><span class="spaces">  </span><span class="istickedoff">creditDefaultSwapWithUpfront'_ a1' a2' a3' a4' a5' a6' a7' a8' a9' a10' a11' a12' a13' a14' a15' a16' a17' &gt;&gt;= \res -&gt;</span>
 <span class="lineno">  170 </span><span class="spaces">  </span><span class="istickedoff">peekCreditDefaultSwap res &gt;&gt;= \res' -&gt;</span>
 <span class="lineno">  171 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a17'&gt;&gt;</span>
 <span class="lineno">  172 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
@@ -396,9 +396,9 @@ span.spaces    { background: white }
 <span class="lineno">  377 </span>
 <span class="lineno">  378 </span>
 <span class="lineno">  379 </span>-- |A synthetic CDO tranche over a tranche-loss basket. @notional@ overrides the basket tranche.
-<span class="lineno">  380 </span>syntheticCDO :: TrancheBasket -&gt; ProtectionSide -&gt; Schedule -&gt; Double -&gt; Double -&gt; DayCounter -&gt; BusinessDayConvention
+<span class="lineno">  380 </span>syntheticCdo :: TrancheBasket -&gt; ProtectionSide -&gt; Schedule -&gt; Double -&gt; Double -&gt; DayCounter -&gt; BusinessDayConvention
 <span class="lineno">  381 </span>  -&gt; Maybe Double -&gt; IO SyntheticCDO
-<span class="lineno">  382 </span><span class="decl"><span class="istickedoff">syntheticCDO basket side sched upfrontRate runningRate dc conv notional =</span>
+<span class="lineno">  382 </span><span class="decl"><span class="istickedoff">syntheticCdo basket side sched upfrontRate runningRate dc conv notional =</span>
 <span class="lineno">  383 </span><span class="spaces">  </span><span class="istickedoff">syntheticCDO_ basket side sched upfrontRate runningRate dc conv (maybe False <span class="nottickedoff">(const True)</span> notional) (maybe 0 <span class="nottickedoff">id</span> notional)</span></span>
 <span class="lineno">  384 </span>syntheticCDO_ :: (TrancheBasket) -&gt; (ProtectionSide) -&gt; (Schedule) -&gt; (Double) -&gt; (Double) -&gt; (DayCounter) -&gt; (BusinessDayConvention) -&gt; (Bool) -&gt; (Double) -&gt; IO ((SyntheticCDO))
 <span class="lineno">  385 </span><span class="decl"><span class="istickedoff">syntheticCDO_ a1 a2 a3 a4 a5 a6 a7 a8 a9 =</span>
@@ -563,7 +563,7 @@ span.spaces    { background: white }
 <span class="lineno">  544 </span>  creditDefaultSwap'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (CSchedule)) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CQlClaim)) -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CCreditDefaultSwap'))))))))))))))))))
 <span class="lineno">  545 </span>
 <span class="lineno">  546 </span>foreign import ccall safe &quot;QuantLib/Instrument/Credit.chs.h qlCreditDefaultSwap1&quot;
-<span class="lineno">  547 </span>  creditDefaultSwap''_ :: (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (CSchedule)) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CQlClaim)) -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CCreditDefaultSwap'))))))))))))))))))))
+<span class="lineno">  547 </span>  creditDefaultSwapWithUpfront'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (CSchedule)) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CQlClaim)) -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CCreditDefaultSwap'))))))))))))))))))))
 <span class="lineno">  548 </span>
 <span class="lineno">  549 </span>foreign import ccall safe &quot;QuantLib/Instrument/Credit.chs.h qlCdsOptionAtmRate&quot;
 <span class="lineno">  550 </span>  atmRate'_ :: ((C2HSImp.Ptr (CCdsOption')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))

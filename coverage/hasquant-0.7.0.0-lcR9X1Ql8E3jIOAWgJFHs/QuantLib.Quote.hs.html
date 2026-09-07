@@ -45,7 +45,7 @@ span.spaces    { background: white }
 <span class="lineno">   26 </span>  , eurodollarFuturesImpliedStdDevQuote
 <span class="lineno">   27 </span>  , forwardSwapQuote
 <span class="lineno">   28 </span>  , forwardValueQuote
-<span class="lineno">   29 </span>  , futuresConvAdjustmentQuote'
+<span class="lineno">   29 </span>  , futuresConvAdjustmentQuoteFromImmCode
 <span class="lineno">   30 </span>  , futuresConvAdjustmentQuote
 <span class="lineno">   31 </span>  , futuresConvAdjustmentQuoteFuturesValue
 <span class="lineno">   32 </span>  , impliedStdDevQuote
@@ -338,19 +338,19 @@ span.spaces    { background: white }
 <span class="lineno">  319 </span>
 <span class="lineno">  320 </span>
 <span class="lineno">  321 </span>-- |futures-convexity adjustment for an Ibor future identified by its IMM code
-<span class="lineno">  322 </span>futuresConvAdjustmentQuote' :: (GenIborIndex ibor) -&gt; (String) -- ^immCode
+<span class="lineno">  322 </span>futuresConvAdjustmentQuoteFromImmCode :: (GenIborIndex ibor) -&gt; (String) -- ^immCode
 <span class="lineno">  323 </span> -&gt; (GenQuote q1) -- ^futuresQuote
 <span class="lineno">  324 </span> -&gt; (GenQuote q2) -- ^volatility
 <span class="lineno">  325 </span> -&gt; (GenQuote q3) -- ^meanReversion
 <span class="lineno">  326 </span> -&gt; IO ((FuturesConvAdjustmentQuote))
-<span class="lineno">  327 </span><span class="decl"><span class="nottickedoff">futuresConvAdjustmentQuote' a1 a2 a3 a4 a5 =</span>
+<span class="lineno">  327 </span><span class="decl"><span class="nottickedoff">futuresConvAdjustmentQuoteFromImmCode a1 a2 a3 a4 a5 =</span>
 <span class="lineno">  328 </span><span class="spaces">  </span><span class="nottickedoff">withIborIndex a1 $ \a1' -&gt; </span>
 <span class="lineno">  329 </span><span class="spaces">  </span><span class="nottickedoff">C2HSImp.withCString a2 $ \a2' -&gt; </span>
 <span class="lineno">  330 </span><span class="spaces">  </span><span class="nottickedoff">withQuote a3 $ \a3' -&gt; </span>
 <span class="lineno">  331 </span><span class="spaces">  </span><span class="nottickedoff">withQuote a4 $ \a4' -&gt; </span>
 <span class="lineno">  332 </span><span class="spaces">  </span><span class="nottickedoff">withQuote a5 $ \a5' -&gt; </span>
 <span class="lineno">  333 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a6' -&gt; </span>
-<span class="lineno">  334 </span><span class="spaces">  </span><span class="nottickedoff">futuresConvAdjustmentQuote''_ a1' a2' a3' a4' a5' a6' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  334 </span><span class="spaces">  </span><span class="nottickedoff">futuresConvAdjustmentQuoteFromImmCode'_ a1' a2' a3' a4' a5' a6' &gt;&gt;= \res -&gt;</span>
 <span class="lineno">  335 </span><span class="spaces">  </span><span class="nottickedoff">peekFuturesConvAdjustmentQuote res &gt;&gt;= \res' -&gt;</span>
 <span class="lineno">  336 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a6'&gt;&gt;</span>
 <span class="lineno">  337 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
@@ -600,7 +600,7 @@ span.spaces    { background: white }
 <span class="lineno">  581 </span>  forwardValueQuote'_ :: ((C2HSImp.Ptr (CIndex')) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CQuote'))))))
 <span class="lineno">  582 </span>
 <span class="lineno">  583 </span>foreign import ccall safe &quot;QuantLib/Quote.chs.h qlFuturesConvAdjustmentQuote1&quot;
-<span class="lineno">  584 </span>  futuresConvAdjustmentQuote''_ :: ((C2HSImp.Ptr (CIborIndex')) -&gt; ((C2HSImp.Ptr C2HSImp.CChar) -&gt; ((C2HSImp.Ptr (CQuote')) -&gt; ((C2HSImp.Ptr (CQuote')) -&gt; ((C2HSImp.Ptr (CQuote')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CFuturesConvAdjustmentQuote')))))))))
+<span class="lineno">  584 </span>  futuresConvAdjustmentQuoteFromImmCode'_ :: ((C2HSImp.Ptr (CIborIndex')) -&gt; ((C2HSImp.Ptr C2HSImp.CChar) -&gt; ((C2HSImp.Ptr (CQuote')) -&gt; ((C2HSImp.Ptr (CQuote')) -&gt; ((C2HSImp.Ptr (CQuote')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CFuturesConvAdjustmentQuote')))))))))
 <span class="lineno">  585 </span>
 <span class="lineno">  586 </span>foreign import ccall safe &quot;QuantLib/Quote.chs.h qlFuturesConvAdjustmentQuote&quot;
 <span class="lineno">  587 </span>  futuresConvAdjustmentQuote'_ :: ((C2HSImp.Ptr (CIborIndex')) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CQuote')) -&gt; ((C2HSImp.Ptr (CQuote')) -&gt; ((C2HSImp.Ptr (CQuote')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CFuturesConvAdjustmentQuote')))))))))

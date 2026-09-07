@@ -148,7 +148,7 @@ span.spaces    { background: white }
 <span class="lineno">  129 </span>-- |A CPI cap or floor: a single cumulative option on cumulative inflation up to maturity
 <span class="lineno">  130 </span>-- (@CPI(T)\/CPI(0)@), not a strip of optionlets like 'YoYInflationCapFloor' -- similar in shape
 <span class="lineno">  131 </span>-- to a ZCIIS option. No implied-volatility inspector: pricing goes purely through
-<span class="lineno">  132 </span>-- 'QuantLib.PricingEngine.interpolatingCPICapFloorEngine' off a market price surface, there is
+<span class="lineno">  132 </span>-- 'QuantLib.PricingEngine.interpolatingCpiCapFloorEngine' off a market price surface, there is
 <span class="lineno">  133 </span>-- no vol-driven engine for it in QL 1.43.
 <span class="lineno">  134 </span>cpiCapFloor :: (OptionType) -&gt; (Double) -- ^nominal
 <span class="lineno">  135 </span> -&gt; (Day) -- ^startDate

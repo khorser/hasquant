@@ -91,7 +91,7 @@ span.spaces    { background: white }
 <span class="lineno">   72 </span>  , mcLookbackPartialFixedEngine
 <span class="lineno">   73 </span>  , mcLookbackPartialFloatingEngine
 <span class="lineno">   74 </span>  , analyticDigitalAmericanEngine
-<span class="lineno">   75 </span>  , analyticDigitalAmericanKOEngine
+<span class="lineno">   75 </span>  , analyticDigitalAmericanKoEngine
 <span class="lineno">   76 </span>  , analyticDiscreteGeometricAveragePriceAsianEngine
 <span class="lineno">   77 </span>  , analyticDiscreteGeometricAverageStrikeAsianEngine
 <span class="lineno">   78 </span>  , turnbullWakemanAsianEngine
@@ -103,7 +103,7 @@ span.spaces    { background: white }
 <span class="lineno">   84 </span>  , forwardBaroneAdesiWhaleyEngine
 <span class="lineno">   85 </span>  , forwardBjerksundStenslandEngine
 <span class="lineno">   86 </span>  , forwardFdBlackScholesVanillaEngine
-<span class="lineno">   87 </span>  , mcForwardEuropeanBSEngine
+<span class="lineno">   87 </span>  , mcForwardEuropeanBsEngine
 <span class="lineno">   88 </span>  , mcForwardEuropeanHestonEngine
 <span class="lineno">   89 </span>  , analyticHestonForwardEuropeanEngine
 <span class="lineno">   90 </span>  , quantoEuropeanEngine
@@ -111,20 +111,20 @@ span.spaces    { background: white }
 <span class="lineno">   92 </span>  , quantoForwardPerformanceEuropeanEngine
 <span class="lineno">   93 </span>  , quantoBarrierEngine
 <span class="lineno">   94 </span>  , quantoDoubleBarrierEngine
-<span class="lineno">   95 </span>  , blackCapFloorEngine'
+<span class="lineno">   95 </span>  , blackCapFloorEngineWithVolatilityStructure
 <span class="lineno">   96 </span>  , blackCapFloorEngine
 <span class="lineno">   97 </span>  , blackSwaptionEngine
 <span class="lineno">   98 </span>  , haganIrregularSwaptionEngine
-<span class="lineno">   99 </span>  , blackSwaptionEngine'
-<span class="lineno">  100 </span>  , bachelierCapFloorEngine'
+<span class="lineno">   99 </span>  , blackSwaptionEngineWithVolatilityStructure
+<span class="lineno">  100 </span>  , bachelierCapFloorEngineWithVolatilityStructure
 <span class="lineno">  101 </span>  , bachelierCapFloorEngine
 <span class="lineno">  102 </span>  , yoyInflationBlackCapFloorEngine
 <span class="lineno">  103 </span>  , yoyInflationUnitDisplacedBlackCapFloorEngine
 <span class="lineno">  104 </span>  , yoyInflationBachelierCapFloorEngine
-<span class="lineno">  105 </span>  , interpolatingCPICapFloorEngine
+<span class="lineno">  105 </span>  , interpolatingCpiCapFloorEngine
 <span class="lineno">  106 </span>  , bachelierSwaptionEngine
-<span class="lineno">  107 </span>  , bachelierSwaptionEngine'
-<span class="lineno">  108 </span>  , analyticBSMHullWhiteEngine
+<span class="lineno">  107 </span>  , bachelierSwaptionEngineWithVolatilityStructure
+<span class="lineno">  108 </span>  , analyticBsmHullWhiteEngine
 <span class="lineno">  109 </span>  , analyticCapFloorEngine
 <span class="lineno">  110 </span>  , gaussian1dCapFloorEngine
 <span class="lineno">  111 </span>  , analyticGjrGarchEngine
@@ -143,11 +143,11 @@ span.spaces    { background: white }
 <span class="lineno">  124 </span>  , mcAmericanEngine
 <span class="lineno">  125 </span>  , mcBarrierEngine
 <span class="lineno">  126 </span>  , mcDigitalEngine
-<span class="lineno">  127 </span>  , mcDiscreteArithmeticAPEngine
-<span class="lineno">  128 </span>  , mcDiscreteArithmeticASEngine
-<span class="lineno">  129 </span>  , mcDiscreteGeometricAPEngine
-<span class="lineno">  130 </span>  , mcDiscreteArithmeticAPHestonEngine
-<span class="lineno">  131 </span>  , mcDiscreteGeometricAPHestonEngine
+<span class="lineno">  127 </span>  , mcDiscreteArithmeticApEngine
+<span class="lineno">  128 </span>  , mcDiscreteArithmeticAsEngine
+<span class="lineno">  129 </span>  , mcDiscreteGeometricApEngine
+<span class="lineno">  130 </span>  , mcDiscreteArithmeticApHestonEngine
+<span class="lineno">  131 </span>  , mcDiscreteGeometricApHestonEngine
 <span class="lineno">  132 </span>  , mcEuropeanEngine
 <span class="lineno">  133 </span>  , mcEuropeanGjrGarchEngine
 <span class="lineno">  134 </span>  , mcEuropeanHestonEngine
@@ -161,11 +161,11 @@ span.spaces    { background: white }
 <span class="lineno">  142 </span>  , mcPerformanceEngine
 <span class="lineno">  143 </span>  , mcVarianceSwapEngine
 <span class="lineno">  144 </span>  , baroneAdesiWhaleyApproximationEngine
-<span class="lineno">  145 </span>  , batesDetJumpEngine'
+<span class="lineno">  145 </span>  , batesDetJumpEngineWithTolerance
 <span class="lineno">  146 </span>  , batesDetJumpEngine
-<span class="lineno">  147 </span>  , batesDoubleExpDetJumpEngine'
+<span class="lineno">  147 </span>  , batesDoubleExpDetJumpEngineWithTolerance
 <span class="lineno">  148 </span>  , batesDoubleExpDetJumpEngine
-<span class="lineno">  149 </span>  , batesDoubleExpEngine'
+<span class="lineno">  149 </span>  , batesDoubleExpEngineWithTolerance
 <span class="lineno">  150 </span>  , batesDoubleExpEngine
 <span class="lineno">  151 </span>  , bjerksundStenslandApproximationEngine
 <span class="lineno">  152 </span>  , qdPlusAmericanEngine
@@ -182,8 +182,8 @@ span.spaces    { background: white }
 <span class="lineno">  163 </span>  , juQuadraticApproximationEngine
 <span class="lineno">  164 </span>  , kirkEngine
 <span class="lineno">  165 </span>  , midPointCdsEngine
-<span class="lineno">  166 </span>  , midPointCDOEngine
-<span class="lineno">  167 </span>  , integralCDOEngine
+<span class="lineno">  166 </span>  , midPointCdoEngine
+<span class="lineno">  167 </span>  , integralCdoEngine
 <span class="lineno">  168 </span>  , integralNtdEngine
 <span class="lineno">  169 </span>  , replicatingVarianceSwapEngine
 <span class="lineno">  170 </span>  , stulzEngine
@@ -215,64 +215,64 @@ span.spaces    { background: white }
 <span class="lineno">  196 </span>  , fdHestonHullWhiteVanillaEngine
 <span class="lineno">  197 </span>
 <span class="lineno">  198 </span>  , binomialConvertibleEngine
-<span class="lineno">  199 </span>  , blackCallableFixedRateBondEngine'
+<span class="lineno">  199 </span>  , blackCallableFixedRateBondEngineWithVolatilityStructure
 <span class="lineno">  200 </span>  , blackCallableFixedRateBondEngine
-<span class="lineno">  201 </span>  , blackCallableZeroCouponBondEngine'
+<span class="lineno">  201 </span>  , blackCallableZeroCouponBondEngineWithVolatilityStructure
 <span class="lineno">  202 </span>  , blackCallableZeroCouponBondEngine
 <span class="lineno">  203 </span>  , treeCallableFixedRateBondEngine
 <span class="lineno">  204 </span>  , treeCallableZeroCouponBondEngine
 <span class="lineno">  205 </span>
-<span class="lineno">  206 </span>  , blackCalculator'
-<span class="lineno">  207 </span>  , blackCalculator
+<span class="lineno">  206 </span>  , blackCalculator
+<span class="lineno">  207 </span>  , blackCalculatorFromPayoff
 <span class="lineno">  208 </span>  , blackVanna
-<span class="lineno">  209 </span>  , blackScholesCalculator'
-<span class="lineno">  210 </span>  , blackScholesCalculator
+<span class="lineno">  209 </span>  , blackScholesCalculator
+<span class="lineno">  210 </span>  , blackScholesCalculatorFromPayoff
 <span class="lineno">  211 </span>  , blackScholesDelta
 <span class="lineno">  212 </span>  , blackScholesElasticity
 <span class="lineno">  213 </span>  , blackScholesGamma
 <span class="lineno">  214 </span>  , blackScholesTheta
 <span class="lineno">  215 </span>  , blackScholesThetaPerDay
 <span class="lineno">  216 </span>
-<span class="lineno">  217 </span>  , bachelierCalculator'
-<span class="lineno">  218 </span>  , bachelierCalculator
+<span class="lineno">  217 </span>  , bachelierCalculator
+<span class="lineno">  218 </span>  , bachelierCalculatorFromPayoff
 <span class="lineno">  219 </span>  , bachelierVanna
 <span class="lineno">  220 </span>
 <span class="lineno">  221 </span>  , blackDeltaCalculator
 <span class="lineno">  222 </span>  , deltaFromStrike
 <span class="lineno">  223 </span>  , strikeFromDelta
 <span class="lineno">  224 </span>  , atmStrike
-<span class="lineno">  225 </span>  , blackFormula'
+<span class="lineno">  225 </span>  , blackFormulaFromPayoff
 <span class="lineno">  226 </span>  , blackFormula
-<span class="lineno">  227 </span>  , blackCashItmProbability'
+<span class="lineno">  227 </span>  , blackCashItmProbabilityFromPayoff
 <span class="lineno">  228 </span>  , blackCashItmProbability
-<span class="lineno">  229 </span>  , blackImpliedStdDev'
+<span class="lineno">  229 </span>  , blackImpliedStdDevFromPayoff
 <span class="lineno">  230 </span>  , blackImpliedStdDev
-<span class="lineno">  231 </span>  , blackImpliedStdDevApproximation'
+<span class="lineno">  231 </span>  , blackImpliedStdDevApproximationFromPayoff
 <span class="lineno">  232 </span>  , blackImpliedStdDevApproximation
-<span class="lineno">  233 </span>  , blackStdDevDerivative'
+<span class="lineno">  233 </span>  , blackStdDevDerivativeFromPayoff
 <span class="lineno">  234 </span>  , blackStdDevDerivative
 <span class="lineno">  235 </span>  , blackVolDerivative
-<span class="lineno">  236 </span>  , bachelierBlackFormula'
+<span class="lineno">  236 </span>  , bachelierBlackFormulaFromPayoff
 <span class="lineno">  237 </span>  , bachelierBlackFormula
-<span class="lineno">  238 </span>  , blackForwardDerivative'
+<span class="lineno">  238 </span>  , blackForwardDerivativeFromPayoff
 <span class="lineno">  239 </span>  , blackForwardDerivative
-<span class="lineno">  240 </span>  , blackImpliedStdDevChambers'
+<span class="lineno">  240 </span>  , blackImpliedStdDevChambersFromPayoff
 <span class="lineno">  241 </span>  , blackImpliedStdDevChambers
-<span class="lineno">  242 </span>  , blackImpliedStdDevApproximationRS'
-<span class="lineno">  243 </span>  , blackImpliedStdDevApproximationRS
-<span class="lineno">  244 </span>  , blackImpliedStdDevLiRS'
-<span class="lineno">  245 </span>  , blackImpliedStdDevLiRS
-<span class="lineno">  246 </span>  , blackAssetItmProbability'
+<span class="lineno">  242 </span>  , blackImpliedStdDevApproximationRsFromPayoff
+<span class="lineno">  243 </span>  , blackImpliedStdDevApproximationRs
+<span class="lineno">  244 </span>  , blackImpliedStdDevLiRsFromPayoff
+<span class="lineno">  245 </span>  , blackImpliedStdDevLiRs
+<span class="lineno">  246 </span>  , blackAssetItmProbabilityFromPayoff
 <span class="lineno">  247 </span>  , blackAssetItmProbability
-<span class="lineno">  248 </span>  , blackStdDevSecondDerivative'
+<span class="lineno">  248 </span>  , blackStdDevSecondDerivativeFromPayoff
 <span class="lineno">  249 </span>  , blackStdDevSecondDerivative
-<span class="lineno">  250 </span>  , bachelierForwardDerivative'
+<span class="lineno">  250 </span>  , bachelierForwardDerivativeFromPayoff
 <span class="lineno">  251 </span>  , bachelierForwardDerivative
 <span class="lineno">  252 </span>  , bachelierImpliedVol
 <span class="lineno">  253 </span>  , bachelierImpliedVolChoi
-<span class="lineno">  254 </span>  , bachelierStdDevDerivative'
+<span class="lineno">  254 </span>  , bachelierStdDevDerivativeFromPayoff
 <span class="lineno">  255 </span>  , bachelierStdDevDerivative
-<span class="lineno">  256 </span>  , bachelierAssetItmProbability'
+<span class="lineno">  256 </span>  , bachelierAssetItmProbabilityFromPayoff
 <span class="lineno">  257 </span>  , bachelierAssetItmProbability
 <span class="lineno">  258 </span>  , defaultThetaPerDay
 <span class="lineno">  259 </span>  , unsafeSabrLogNormalVolatility
@@ -1275,11 +1275,11 @@ span.spaces    { background: white }
 <span class="lineno"> 1256 </span>
 <span class="lineno"> 1257 </span>
 <span class="lineno"> 1258 </span>-- |analytic pricing engine for American knock-out digital (cash-or-nothing/asset-or-nothing) options
-<span class="lineno"> 1259 </span>analyticDigitalAmericanKOEngine :: (GeneralizedBlackScholesProcess) -&gt; IO ((PricingEngine))
-<span class="lineno"> 1260 </span><span class="decl"><span class="istickedoff">analyticDigitalAmericanKOEngine a1 =</span>
+<span class="lineno"> 1259 </span>analyticDigitalAmericanKoEngine :: (GeneralizedBlackScholesProcess) -&gt; IO ((PricingEngine))
+<span class="lineno"> 1260 </span><span class="decl"><span class="istickedoff">analyticDigitalAmericanKoEngine a1 =</span>
 <span class="lineno"> 1261 </span><span class="spaces">  </span><span class="istickedoff">withGeneralizedBlackScholesProcess a1 $ \a1' -&gt; </span>
 <span class="lineno"> 1262 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
-<span class="lineno"> 1263 </span><span class="spaces">  </span><span class="istickedoff">analyticDigitalAmericanKOEngine'_ a1' a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno"> 1263 </span><span class="spaces">  </span><span class="istickedoff">analyticDigitalAmericanKoEngine'_ a1' a2' &gt;&gt;= \res -&gt;</span>
 <span class="lineno"> 1264 </span><span class="spaces">  </span><span class="istickedoff">peekPricingEngine res &gt;&gt;= \res' -&gt;</span>
 <span class="lineno"> 1265 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
 <span class="lineno"> 1266 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
@@ -1410,7 +1410,7 @@ span.spaces    { background: white }
 <span class="lineno"> 1391 </span>
 <span class="lineno"> 1392 </span>
 <span class="lineno"> 1393 </span>-- |Monte Carlo pricing engine for forward-starting European options under a Black-Scholes process
-<span class="lineno"> 1394 </span>mcForwardEuropeanBSEngine :: (RngTrait) -&gt; (StatisticsTrait) -&gt; (GeneralizedBlackScholesProcess) -&gt; (Maybe Word) -- ^timeSteps
+<span class="lineno"> 1394 </span>mcForwardEuropeanBsEngine :: (RngTrait) -&gt; (StatisticsTrait) -&gt; (GeneralizedBlackScholesProcess) -&gt; (Maybe Word) -- ^timeSteps
 <span class="lineno"> 1395 </span> -&gt; (Maybe Word) -- ^timeStepsPerYear
 <span class="lineno"> 1396 </span> -&gt; (Bool) -- ^brownianBridge
 <span class="lineno"> 1397 </span> -&gt; (Bool) -- ^antitheticVariate
@@ -1419,7 +1419,7 @@ span.spaces    { background: white }
 <span class="lineno"> 1400 </span> -&gt; (Maybe Word) -- ^maxSamples
 <span class="lineno"> 1401 </span> -&gt; (Word) -- ^seed
 <span class="lineno"> 1402 </span> -&gt; IO ((PricingEngine))
-<span class="lineno"> 1403 </span><span class="decl"><span class="istickedoff">mcForwardEuropeanBSEngine a1 a2 a3 a4 a5 a6 a7 a8 a9 a10 a11 =</span>
+<span class="lineno"> 1403 </span><span class="decl"><span class="istickedoff">mcForwardEuropeanBsEngine a1 a2 a3 a4 a5 a6 a7 a8 a9 a10 a11 =</span>
 <span class="lineno"> 1404 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = (fromIntegral . fromEnum) a1} in </span>
 <span class="lineno"> 1405 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = (fromIntegral . fromEnum) a2} in </span>
 <span class="lineno"> 1406 </span><span class="spaces">  </span><span class="istickedoff">withGeneralizedBlackScholesProcess a3 $ \a3' -&gt; </span>
@@ -1432,7 +1432,7 @@ span.spaces    { background: white }
 <span class="lineno"> 1413 </span><span class="spaces">  </span><span class="istickedoff">let {a10' = fromMaybeInt a10} in </span>
 <span class="lineno"> 1414 </span><span class="spaces">  </span><span class="istickedoff">let {a11' = fromIntegral a11} in </span>
 <span class="lineno"> 1415 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a12' -&gt; </span>
-<span class="lineno"> 1416 </span><span class="spaces">  </span><span class="istickedoff">mcForwardEuropeanBSEngine'_ a1' a2' a3' a4' a5' a6' a7' a8' a9' a10' a11' a12' &gt;&gt;= \res -&gt;</span>
+<span class="lineno"> 1416 </span><span class="spaces">  </span><span class="istickedoff">mcForwardEuropeanBsEngine'_ a1' a2' a3' a4' a5' a6' a7' a8' a9' a10' a11' a12' &gt;&gt;= \res -&gt;</span>
 <span class="lineno"> 1417 </span><span class="spaces">  </span><span class="istickedoff">peekPricingEngine res &gt;&gt;= \res' -&gt;</span>
 <span class="lineno"> 1418 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a12'&gt;&gt;</span>
 <span class="lineno"> 1419 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
@@ -1577,12 +1577,12 @@ span.spaces    { background: white }
 <span class="lineno"> 1558 </span>
 <span class="lineno"> 1559 </span>
 <span class="lineno"> 1560 </span>-- |Black-formula cap\/floor engine, taking an optionlet volatility structure
-<span class="lineno"> 1561 </span>blackCapFloorEngine' :: (GenYieldTermStructure y) -&gt; (GenOptionletVolatilityStructure ov) -&gt; IO ((PricingEngine))
-<span class="lineno"> 1562 </span><span class="decl"><span class="istickedoff">blackCapFloorEngine' a1 a2 =</span>
+<span class="lineno"> 1561 </span>blackCapFloorEngineWithVolatilityStructure :: (GenYieldTermStructure y) -&gt; (GenOptionletVolatilityStructure ov) -&gt; IO ((PricingEngine))
+<span class="lineno"> 1562 </span><span class="decl"><span class="istickedoff">blackCapFloorEngineWithVolatilityStructure a1 a2 =</span>
 <span class="lineno"> 1563 </span><span class="spaces">  </span><span class="istickedoff">withYieldTermStructure a1 $ \a1' -&gt; </span>
 <span class="lineno"> 1564 </span><span class="spaces">  </span><span class="istickedoff">withOptionletVolatilityStructure a2 $ \a2' -&gt; </span>
 <span class="lineno"> 1565 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
-<span class="lineno"> 1566 </span><span class="spaces">  </span><span class="istickedoff">blackCapFloorEngine''_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
+<span class="lineno"> 1566 </span><span class="spaces">  </span><span class="istickedoff">blackCapFloorEngineWithVolatilityStructure'_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
 <span class="lineno"> 1567 </span><span class="spaces">  </span><span class="istickedoff">peekPricingEngine res &gt;&gt;= \res' -&gt;</span>
 <span class="lineno"> 1568 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
 <span class="lineno"> 1569 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
@@ -1635,12 +1635,12 @@ span.spaces    { background: white }
 <span class="lineno"> 1616 </span>
 <span class="lineno"> 1617 </span>
 <span class="lineno"> 1618 </span>-- |shifted-lognormal Black-formula swaption engine, taking a swaption volatility structure
-<span class="lineno"> 1619 </span>blackSwaptionEngine' :: (GenYieldTermStructure y) -&gt; (GenSwaptionVolatilityStructure sv) -&gt; IO ((PricingEngine))
-<span class="lineno"> 1620 </span><span class="decl"><span class="istickedoff">blackSwaptionEngine' a1 a2 =</span>
+<span class="lineno"> 1619 </span>blackSwaptionEngineWithVolatilityStructure :: (GenYieldTermStructure y) -&gt; (GenSwaptionVolatilityStructure sv) -&gt; IO ((PricingEngine))
+<span class="lineno"> 1620 </span><span class="decl"><span class="istickedoff">blackSwaptionEngineWithVolatilityStructure a1 a2 =</span>
 <span class="lineno"> 1621 </span><span class="spaces">  </span><span class="istickedoff">withYieldTermStructure a1 $ \a1' -&gt; </span>
 <span class="lineno"> 1622 </span><span class="spaces">  </span><span class="istickedoff">withSwaptionVolatilityStructure a2 $ \a2' -&gt; </span>
 <span class="lineno"> 1623 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
-<span class="lineno"> 1624 </span><span class="spaces">  </span><span class="istickedoff">blackSwaptionEngine''_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
+<span class="lineno"> 1624 </span><span class="spaces">  </span><span class="istickedoff">blackSwaptionEngineWithVolatilityStructure'_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
 <span class="lineno"> 1625 </span><span class="spaces">  </span><span class="istickedoff">peekPricingEngine res &gt;&gt;= \res' -&gt;</span>
 <span class="lineno"> 1626 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
 <span class="lineno"> 1627 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
@@ -1648,12 +1648,12 @@ span.spaces    { background: white }
 <span class="lineno"> 1629 </span>
 <span class="lineno"> 1630 </span>
 <span class="lineno"> 1631 </span>-- |Bachelier (normal) cap\/floor engine, taking an optionlet volatility structure
-<span class="lineno"> 1632 </span>bachelierCapFloorEngine' :: (GenYieldTermStructure y) -&gt; (GenOptionletVolatilityStructure ov) -&gt; IO ((PricingEngine))
-<span class="lineno"> 1633 </span><span class="decl"><span class="istickedoff">bachelierCapFloorEngine' a1 a2 =</span>
+<span class="lineno"> 1632 </span>bachelierCapFloorEngineWithVolatilityStructure :: (GenYieldTermStructure y) -&gt; (GenOptionletVolatilityStructure ov) -&gt; IO ((PricingEngine))
+<span class="lineno"> 1633 </span><span class="decl"><span class="istickedoff">bachelierCapFloorEngineWithVolatilityStructure a1 a2 =</span>
 <span class="lineno"> 1634 </span><span class="spaces">  </span><span class="istickedoff">withYieldTermStructure a1 $ \a1' -&gt; </span>
 <span class="lineno"> 1635 </span><span class="spaces">  </span><span class="istickedoff">withOptionletVolatilityStructure a2 $ \a2' -&gt; </span>
 <span class="lineno"> 1636 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
-<span class="lineno"> 1637 </span><span class="spaces">  </span><span class="istickedoff">bachelierCapFloorEngine''_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
+<span class="lineno"> 1637 </span><span class="spaces">  </span><span class="istickedoff">bachelierCapFloorEngineWithVolatilityStructure'_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
 <span class="lineno"> 1638 </span><span class="spaces">  </span><span class="istickedoff">peekPricingEngine res &gt;&gt;= \res' -&gt;</span>
 <span class="lineno"> 1639 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
 <span class="lineno"> 1640 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
@@ -1727,11 +1727,11 @@ span.spaces    { background: white }
 <span class="lineno"> 1708 </span>-- |The only 'QuantLib.Instrument.InflationCapFloor.CPICapFloor' pricing engine in QL 1.43 --
 <span class="lineno"> 1709 </span>-- prices purely by interpolating a market price surface, no stochastic-vol model (see that
 <span class="lineno"> 1710 </span>-- type's own haddock for the CPI\/YoY asymmetry).
-<span class="lineno"> 1711 </span>interpolatingCPICapFloorEngine :: (CPICapFloorTermPriceSurface) -&gt; IO ((PricingEngine))
-<span class="lineno"> 1712 </span><span class="decl"><span class="istickedoff">interpolatingCPICapFloorEngine a1 =</span>
+<span class="lineno"> 1711 </span>interpolatingCpiCapFloorEngine :: (CPICapFloorTermPriceSurface) -&gt; IO ((PricingEngine))
+<span class="lineno"> 1712 </span><span class="decl"><span class="istickedoff">interpolatingCpiCapFloorEngine a1 =</span>
 <span class="lineno"> 1713 </span><span class="spaces">  </span><span class="istickedoff">withGenTermStructure a1 $ \a1' -&gt; </span>
 <span class="lineno"> 1714 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
-<span class="lineno"> 1715 </span><span class="spaces">  </span><span class="istickedoff">interpolatingCPICapFloorEngine'_ a1' a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno"> 1715 </span><span class="spaces">  </span><span class="istickedoff">interpolatingCpiCapFloorEngine'_ a1' a2' &gt;&gt;= \res -&gt;</span>
 <span class="lineno"> 1716 </span><span class="spaces">  </span><span class="istickedoff">peekPricingEngine res &gt;&gt;= \res' -&gt;</span>
 <span class="lineno"> 1717 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
 <span class="lineno"> 1718 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
@@ -1755,12 +1755,12 @@ span.spaces    { background: white }
 <span class="lineno"> 1736 </span>
 <span class="lineno"> 1737 </span>
 <span class="lineno"> 1738 </span>-- |Bachelier (normal) swaption engine, taking a swaption volatility structure
-<span class="lineno"> 1739 </span>bachelierSwaptionEngine' :: (GenYieldTermStructure y) -&gt; (GenSwaptionVolatilityStructure sv) -&gt; IO ((PricingEngine))
-<span class="lineno"> 1740 </span><span class="decl"><span class="istickedoff">bachelierSwaptionEngine' a1 a2 =</span>
+<span class="lineno"> 1739 </span>bachelierSwaptionEngineWithVolatilityStructure :: (GenYieldTermStructure y) -&gt; (GenSwaptionVolatilityStructure sv) -&gt; IO ((PricingEngine))
+<span class="lineno"> 1740 </span><span class="decl"><span class="istickedoff">bachelierSwaptionEngineWithVolatilityStructure a1 a2 =</span>
 <span class="lineno"> 1741 </span><span class="spaces">  </span><span class="istickedoff">withYieldTermStructure a1 $ \a1' -&gt; </span>
 <span class="lineno"> 1742 </span><span class="spaces">  </span><span class="istickedoff">withSwaptionVolatilityStructure a2 $ \a2' -&gt; </span>
 <span class="lineno"> 1743 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
-<span class="lineno"> 1744 </span><span class="spaces">  </span><span class="istickedoff">bachelierSwaptionEngine''_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
+<span class="lineno"> 1744 </span><span class="spaces">  </span><span class="istickedoff">bachelierSwaptionEngineWithVolatilityStructure'_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
 <span class="lineno"> 1745 </span><span class="spaces">  </span><span class="istickedoff">peekPricingEngine res &gt;&gt;= \res' -&gt;</span>
 <span class="lineno"> 1746 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
 <span class="lineno"> 1747 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
@@ -1768,13 +1768,13 @@ span.spaces    { background: white }
 <span class="lineno"> 1749 </span>
 <span class="lineno"> 1750 </span>
 <span class="lineno"> 1751 </span>-- |analytic European option pricer including stochastic interest rates (Black-Scholes-Merton + Hull-White)
-<span class="lineno"> 1752 </span>analyticBSMHullWhiteEngine :: (Double) -&gt; (GeneralizedBlackScholesProcess) -&gt; (HullWhite) -&gt; IO ((PricingEngine))
-<span class="lineno"> 1753 </span><span class="decl"><span class="nottickedoff">analyticBSMHullWhiteEngine a1 a2 a3 =</span>
+<span class="lineno"> 1752 </span>analyticBsmHullWhiteEngine :: (Double) -&gt; (GeneralizedBlackScholesProcess) -&gt; (HullWhite) -&gt; IO ((PricingEngine))
+<span class="lineno"> 1753 </span><span class="decl"><span class="nottickedoff">analyticBsmHullWhiteEngine a1 a2 a3 =</span>
 <span class="lineno"> 1754 </span><span class="spaces">  </span><span class="nottickedoff">let {a1' = realToFrac a1} in </span>
 <span class="lineno"> 1755 </span><span class="spaces">  </span><span class="nottickedoff">withGeneralizedBlackScholesProcess a2 $ \a2' -&gt; </span>
 <span class="lineno"> 1756 </span><span class="spaces">  </span><span class="nottickedoff">withHullWhite a3 $ \a3' -&gt; </span>
 <span class="lineno"> 1757 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a4' -&gt; </span>
-<span class="lineno"> 1758 </span><span class="spaces">  </span><span class="nottickedoff">analyticBSMHullWhiteEngine'_ a1' a2' a3' a4' &gt;&gt;= \res -&gt;</span>
+<span class="lineno"> 1758 </span><span class="spaces">  </span><span class="nottickedoff">analyticBsmHullWhiteEngine'_ a1' a2' a3' a4' &gt;&gt;= \res -&gt;</span>
 <span class="lineno"> 1759 </span><span class="spaces">  </span><span class="nottickedoff">peekPricingEngine res &gt;&gt;= \res' -&gt;</span>
 <span class="lineno"> 1760 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a4'&gt;&gt;</span>
 <span class="lineno"> 1761 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
@@ -2085,15 +2085,15 @@ span.spaces    { background: white }
 <span class="lineno"> 2066 </span>
 <span class="lineno"> 2067 </span>
 <span class="lineno"> 2068 </span>-- |semi-analytic engine for the Bates model with deterministic jumps, integrating with a fixed relative tolerance and evaluation cap
-<span class="lineno"> 2069 </span>batesDetJumpEngine' :: (BatesDetJumpModel) -&gt; (Double) -- ^relTolerance
+<span class="lineno"> 2069 </span>batesDetJumpEngineWithTolerance :: (BatesDetJumpModel) -&gt; (Double) -- ^relTolerance
 <span class="lineno"> 2070 </span> -&gt; (Word) -- ^maxEvaluations
 <span class="lineno"> 2071 </span> -&gt; IO ((PricingEngine))
-<span class="lineno"> 2072 </span><span class="decl"><span class="nottickedoff">batesDetJumpEngine' a1 a2 a3 =</span>
+<span class="lineno"> 2072 </span><span class="decl"><span class="nottickedoff">batesDetJumpEngineWithTolerance a1 a2 a3 =</span>
 <span class="lineno"> 2073 </span><span class="spaces">  </span><span class="nottickedoff">withBatesDetJumpModel a1 $ \a1' -&gt; </span>
 <span class="lineno"> 2074 </span><span class="spaces">  </span><span class="nottickedoff">let {a2' = realToFrac a2} in </span>
 <span class="lineno"> 2075 </span><span class="spaces">  </span><span class="nottickedoff">let {a3' = fromIntegral a3} in </span>
 <span class="lineno"> 2076 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a4' -&gt; </span>
-<span class="lineno"> 2077 </span><span class="spaces">  </span><span class="nottickedoff">batesDetJumpEngine''_ a1' a2' a3' a4' &gt;&gt;= \res -&gt;</span>
+<span class="lineno"> 2077 </span><span class="spaces">  </span><span class="nottickedoff">batesDetJumpEngineWithTolerance'_ a1' a2' a3' a4' &gt;&gt;= \res -&gt;</span>
 <span class="lineno"> 2078 </span><span class="spaces">  </span><span class="nottickedoff">peekPricingEngine res &gt;&gt;= \res' -&gt;</span>
 <span class="lineno"> 2079 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a4'&gt;&gt;</span>
 <span class="lineno"> 2080 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
@@ -2115,15 +2115,15 @@ span.spaces    { background: white }
 <span class="lineno"> 2096 </span>
 <span class="lineno"> 2097 </span>
 <span class="lineno"> 2098 </span>-- |semi-analytic engine for the double-exponential-jump Bates model with deterministic jumps, integrating with a fixed relative tolerance and evaluation cap
-<span class="lineno"> 2099 </span>batesDoubleExpDetJumpEngine' :: (BatesDoubleExpDetJumpModel) -&gt; (Double) -- ^relTolerance
+<span class="lineno"> 2099 </span>batesDoubleExpDetJumpEngineWithTolerance :: (BatesDoubleExpDetJumpModel) -&gt; (Double) -- ^relTolerance
 <span class="lineno"> 2100 </span> -&gt; (Word) -- ^maxEvaluations
 <span class="lineno"> 2101 </span> -&gt; IO ((PricingEngine))
-<span class="lineno"> 2102 </span><span class="decl"><span class="nottickedoff">batesDoubleExpDetJumpEngine' a1 a2 a3 =</span>
+<span class="lineno"> 2102 </span><span class="decl"><span class="nottickedoff">batesDoubleExpDetJumpEngineWithTolerance a1 a2 a3 =</span>
 <span class="lineno"> 2103 </span><span class="spaces">  </span><span class="nottickedoff">withBatesDoubleExpDetJumpModel a1 $ \a1' -&gt; </span>
 <span class="lineno"> 2104 </span><span class="spaces">  </span><span class="nottickedoff">let {a2' = realToFrac a2} in </span>
 <span class="lineno"> 2105 </span><span class="spaces">  </span><span class="nottickedoff">let {a3' = fromIntegral a3} in </span>
 <span class="lineno"> 2106 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a4' -&gt; </span>
-<span class="lineno"> 2107 </span><span class="spaces">  </span><span class="nottickedoff">batesDoubleExpDetJumpEngine''_ a1' a2' a3' a4' &gt;&gt;= \res -&gt;</span>
+<span class="lineno"> 2107 </span><span class="spaces">  </span><span class="nottickedoff">batesDoubleExpDetJumpEngineWithTolerance'_ a1' a2' a3' a4' &gt;&gt;= \res -&gt;</span>
 <span class="lineno"> 2108 </span><span class="spaces">  </span><span class="nottickedoff">peekPricingEngine res &gt;&gt;= \res' -&gt;</span>
 <span class="lineno"> 2109 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a4'&gt;&gt;</span>
 <span class="lineno"> 2110 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
@@ -2145,15 +2145,15 @@ span.spaces    { background: white }
 <span class="lineno"> 2126 </span>
 <span class="lineno"> 2127 </span>
 <span class="lineno"> 2128 </span>-- |semi-analytic engine for the double-exponential-jump Bates model, integrating with a fixed relative tolerance and evaluation cap
-<span class="lineno"> 2129 </span>batesDoubleExpEngine' :: (GenBatesDoubleExpModel bdem) -&gt; (Double) -- ^relTolerance
+<span class="lineno"> 2129 </span>batesDoubleExpEngineWithTolerance :: (GenBatesDoubleExpModel bdem) -&gt; (Double) -- ^relTolerance
 <span class="lineno"> 2130 </span> -&gt; (Word) -- ^maxEvaluations
 <span class="lineno"> 2131 </span> -&gt; IO ((PricingEngine))
-<span class="lineno"> 2132 </span><span class="decl"><span class="nottickedoff">batesDoubleExpEngine' a1 a2 a3 =</span>
+<span class="lineno"> 2132 </span><span class="decl"><span class="nottickedoff">batesDoubleExpEngineWithTolerance a1 a2 a3 =</span>
 <span class="lineno"> 2133 </span><span class="spaces">  </span><span class="nottickedoff">withBatesDoubleExpModel a1 $ \a1' -&gt; </span>
 <span class="lineno"> 2134 </span><span class="spaces">  </span><span class="nottickedoff">let {a2' = realToFrac a2} in </span>
 <span class="lineno"> 2135 </span><span class="spaces">  </span><span class="nottickedoff">let {a3' = fromIntegral a3} in </span>
 <span class="lineno"> 2136 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a4' -&gt; </span>
-<span class="lineno"> 2137 </span><span class="spaces">  </span><span class="nottickedoff">batesDoubleExpEngine''_ a1' a2' a3' a4' &gt;&gt;= \res -&gt;</span>
+<span class="lineno"> 2137 </span><span class="spaces">  </span><span class="nottickedoff">batesDoubleExpEngineWithTolerance'_ a1' a2' a3' a4' &gt;&gt;= \res -&gt;</span>
 <span class="lineno"> 2138 </span><span class="spaces">  </span><span class="nottickedoff">peekPricingEngine res &gt;&gt;= \res' -&gt;</span>
 <span class="lineno"> 2139 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a4'&gt;&gt;</span>
 <span class="lineno"> 2140 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
@@ -2443,12 +2443,12 @@ span.spaces    { background: white }
 <span class="lineno"> 2424 </span>-- |Synthetic CDO tranche pricing engine using the mid-point approximation, evaluating the
 <span class="lineno"> 2425 </span>-- expected tranche loss at the mid-point of each accrual/protection period. The basket must
 <span class="lineno"> 2426 </span>-- already have a 'QuantLib.Credit.DefaultLossModel' attached.
-<span class="lineno"> 2427 </span>midPointCDOEngine :: (GenYieldTermStructure y) -- ^discountCurve
+<span class="lineno"> 2427 </span>midPointCdoEngine :: (GenYieldTermStructure y) -- ^discountCurve
 <span class="lineno"> 2428 </span> -&gt; IO ((PricingEngine))
-<span class="lineno"> 2429 </span><span class="decl"><span class="istickedoff">midPointCDOEngine a1 =</span>
+<span class="lineno"> 2429 </span><span class="decl"><span class="istickedoff">midPointCdoEngine a1 =</span>
 <span class="lineno"> 2430 </span><span class="spaces">  </span><span class="istickedoff">withYieldTermStructure a1 $ \a1' -&gt; </span>
 <span class="lineno"> 2431 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
-<span class="lineno"> 2432 </span><span class="spaces">  </span><span class="istickedoff">midPointCDOEngine'_ a1' a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno"> 2432 </span><span class="spaces">  </span><span class="istickedoff">midPointCdoEngine'_ a1' a2' &gt;&gt;= \res -&gt;</span>
 <span class="lineno"> 2433 </span><span class="spaces">  </span><span class="istickedoff">peekPricingEngine res &gt;&gt;= \res' -&gt;</span>
 <span class="lineno"> 2434 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
 <span class="lineno"> 2435 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
@@ -2457,14 +2457,14 @@ span.spaces    { background: white }
 <span class="lineno"> 2438 </span>
 <span class="lineno"> 2439 </span>-- |Synthetic CDO tranche pricing engine that integrates the expected tranche loss over
 <span class="lineno"> 2440 </span>-- @stepSize@-sized steps of the tranche's schedule.
-<span class="lineno"> 2441 </span>integralCDOEngine :: (GenYieldTermStructure y) -- ^discountCurve
+<span class="lineno"> 2441 </span>integralCdoEngine :: (GenYieldTermStructure y) -- ^discountCurve
 <span class="lineno"> 2442 </span> -&gt; ((Word,TimeUnit)) -- ^stepSize
 <span class="lineno"> 2443 </span> -&gt; IO ((PricingEngine))
-<span class="lineno"> 2444 </span><span class="decl"><span class="istickedoff">integralCDOEngine a1 a2 =</span>
+<span class="lineno"> 2444 </span><span class="decl"><span class="istickedoff">integralCdoEngine a1 a2 =</span>
 <span class="lineno"> 2445 </span><span class="spaces">  </span><span class="istickedoff">withYieldTermStructure a1 $ \a1' -&gt; </span>
 <span class="lineno"> 2446 </span><span class="spaces">  </span><span class="istickedoff">let {(a2'1, a2'2) = fromEnumQuantity a2} in </span>
 <span class="lineno"> 2447 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
-<span class="lineno"> 2448 </span><span class="spaces">  </span><span class="istickedoff">integralCDOEngine'_ a1' a2'1  a2'2 a3' &gt;&gt;= \res -&gt;</span>
+<span class="lineno"> 2448 </span><span class="spaces">  </span><span class="istickedoff">integralCdoEngine'_ a1' a2'1  a2'2 a3' &gt;&gt;= \res -&gt;</span>
 <span class="lineno"> 2449 </span><span class="spaces">  </span><span class="istickedoff">peekPricingEngine res &gt;&gt;= \res' -&gt;</span>
 <span class="lineno"> 2450 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
 <span class="lineno"> 2451 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
@@ -3185,7 +3185,7 @@ span.spaces    { background: white }
 <span class="lineno"> 3166 </span>
 <span class="lineno"> 3167 </span>
 <span class="lineno"> 3168 </span>-- |Monte Carlo pricing engine for discrete arithmetic average-price Asian options
-<span class="lineno"> 3169 </span>mcDiscreteArithmeticAPEngine :: (RngTrait) -&gt; (StatisticsTrait) -&gt; (GeneralizedBlackScholesProcess) -&gt; (Bool) -- ^brownianBridge
+<span class="lineno"> 3169 </span>mcDiscreteArithmeticApEngine :: (RngTrait) -&gt; (StatisticsTrait) -&gt; (GeneralizedBlackScholesProcess) -&gt; (Bool) -- ^brownianBridge
 <span class="lineno"> 3170 </span> -&gt; (Bool) -- ^antitheticVariate
 <span class="lineno"> 3171 </span> -&gt; (Bool) -- ^controlVariate
 <span class="lineno"> 3172 </span> -&gt; (Maybe Word) -- ^requiredSamples
@@ -3193,7 +3193,7 @@ span.spaces    { background: white }
 <span class="lineno"> 3174 </span> -&gt; (Maybe Word) -- ^maxSamples
 <span class="lineno"> 3175 </span> -&gt; (Word) -- ^seed
 <span class="lineno"> 3176 </span> -&gt; IO ((PricingEngine))
-<span class="lineno"> 3177 </span><span class="decl"><span class="istickedoff">mcDiscreteArithmeticAPEngine a1 a2 a3 a4 a5 a6 a7 a8 a9 a10 =</span>
+<span class="lineno"> 3177 </span><span class="decl"><span class="istickedoff">mcDiscreteArithmeticApEngine a1 a2 a3 a4 a5 a6 a7 a8 a9 a10 =</span>
 <span class="lineno"> 3178 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = (fromIntegral . fromEnum) a1} in </span>
 <span class="lineno"> 3179 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = (fromIntegral . fromEnum) a2} in </span>
 <span class="lineno"> 3180 </span><span class="spaces">  </span><span class="istickedoff">withGeneralizedBlackScholesProcess a3 $ \a3' -&gt; </span>
@@ -3205,7 +3205,7 @@ span.spaces    { background: white }
 <span class="lineno"> 3186 </span><span class="spaces">  </span><span class="istickedoff">let {a9' = fromMaybeInt a9} in </span>
 <span class="lineno"> 3187 </span><span class="spaces">  </span><span class="istickedoff">let {a10' = fromIntegral a10} in </span>
 <span class="lineno"> 3188 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a11' -&gt; </span>
-<span class="lineno"> 3189 </span><span class="spaces">  </span><span class="istickedoff">mcDiscreteArithmeticAPEngine'_ a1' a2' a3' a4' a5' a6' a7' a8' a9' a10' a11' &gt;&gt;= \res -&gt;</span>
+<span class="lineno"> 3189 </span><span class="spaces">  </span><span class="istickedoff">mcDiscreteArithmeticApEngine'_ a1' a2' a3' a4' a5' a6' a7' a8' a9' a10' a11' &gt;&gt;= \res -&gt;</span>
 <span class="lineno"> 3190 </span><span class="spaces">  </span><span class="istickedoff">peekPricingEngine res &gt;&gt;= \res' -&gt;</span>
 <span class="lineno"> 3191 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a11'&gt;&gt;</span>
 <span class="lineno"> 3192 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
@@ -3213,14 +3213,14 @@ span.spaces    { background: white }
 <span class="lineno"> 3194 </span>
 <span class="lineno"> 3195 </span>
 <span class="lineno"> 3196 </span>-- |Monte Carlo pricing engine for discrete arithmetic average-strike Asian options
-<span class="lineno"> 3197 </span>mcDiscreteArithmeticASEngine :: (RngTrait) -&gt; (StatisticsTrait) -&gt; (GeneralizedBlackScholesProcess) -&gt; (Bool) -- ^brownianBridge
+<span class="lineno"> 3197 </span>mcDiscreteArithmeticAsEngine :: (RngTrait) -&gt; (StatisticsTrait) -&gt; (GeneralizedBlackScholesProcess) -&gt; (Bool) -- ^brownianBridge
 <span class="lineno"> 3198 </span> -&gt; (Bool) -- ^antitheticVariate
 <span class="lineno"> 3199 </span> -&gt; (Maybe Word) -- ^requiredSamples
 <span class="lineno"> 3200 </span> -&gt; (Maybe Double) -- ^requiredTolerance
 <span class="lineno"> 3201 </span> -&gt; (Maybe Word) -- ^maxSamples
 <span class="lineno"> 3202 </span> -&gt; (Word) -- ^seed
 <span class="lineno"> 3203 </span> -&gt; IO ((PricingEngine))
-<span class="lineno"> 3204 </span><span class="decl"><span class="istickedoff">mcDiscreteArithmeticASEngine a1 a2 a3 a4 a5 a6 a7 a8 a9 =</span>
+<span class="lineno"> 3204 </span><span class="decl"><span class="istickedoff">mcDiscreteArithmeticAsEngine a1 a2 a3 a4 a5 a6 a7 a8 a9 =</span>
 <span class="lineno"> 3205 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = (fromIntegral . fromEnum) a1} in </span>
 <span class="lineno"> 3206 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = (fromIntegral . fromEnum) a2} in </span>
 <span class="lineno"> 3207 </span><span class="spaces">  </span><span class="istickedoff">withGeneralizedBlackScholesProcess a3 $ \a3' -&gt; </span>
@@ -3231,7 +3231,7 @@ span.spaces    { background: white }
 <span class="lineno"> 3212 </span><span class="spaces">  </span><span class="istickedoff">let {a8' = fromMaybeInt a8} in </span>
 <span class="lineno"> 3213 </span><span class="spaces">  </span><span class="istickedoff">let {a9' = fromIntegral a9} in </span>
 <span class="lineno"> 3214 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a10' -&gt; </span>
-<span class="lineno"> 3215 </span><span class="spaces">  </span><span class="istickedoff">mcDiscreteArithmeticASEngine'_ a1' a2' a3' a4' a5' a6' a7' a8' a9' a10' &gt;&gt;= \res -&gt;</span>
+<span class="lineno"> 3215 </span><span class="spaces">  </span><span class="istickedoff">mcDiscreteArithmeticAsEngine'_ a1' a2' a3' a4' a5' a6' a7' a8' a9' a10' &gt;&gt;= \res -&gt;</span>
 <span class="lineno"> 3216 </span><span class="spaces">  </span><span class="istickedoff">peekPricingEngine res &gt;&gt;= \res' -&gt;</span>
 <span class="lineno"> 3217 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a10'&gt;&gt;</span>
 <span class="lineno"> 3218 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
@@ -3239,14 +3239,14 @@ span.spaces    { background: white }
 <span class="lineno"> 3220 </span>
 <span class="lineno"> 3221 </span>
 <span class="lineno"> 3222 </span>-- |Monte Carlo pricing engine for discrete geometric average-price Asian options
-<span class="lineno"> 3223 </span>mcDiscreteGeometricAPEngine :: (RngTrait) -&gt; (StatisticsTrait) -&gt; (GeneralizedBlackScholesProcess) -&gt; (Bool) -- ^brownianBridge
+<span class="lineno"> 3223 </span>mcDiscreteGeometricApEngine :: (RngTrait) -&gt; (StatisticsTrait) -&gt; (GeneralizedBlackScholesProcess) -&gt; (Bool) -- ^brownianBridge
 <span class="lineno"> 3224 </span> -&gt; (Bool) -- ^antitheticVariate
 <span class="lineno"> 3225 </span> -&gt; (Maybe Word) -- ^requiredSamples
 <span class="lineno"> 3226 </span> -&gt; (Maybe Double) -- ^requiredTolerance
 <span class="lineno"> 3227 </span> -&gt; (Maybe Word) -- ^maxSamples
 <span class="lineno"> 3228 </span> -&gt; (Word) -- ^seed
 <span class="lineno"> 3229 </span> -&gt; IO ((PricingEngine))
-<span class="lineno"> 3230 </span><span class="decl"><span class="istickedoff">mcDiscreteGeometricAPEngine a1 a2 a3 a4 a5 a6 a7 a8 a9 =</span>
+<span class="lineno"> 3230 </span><span class="decl"><span class="istickedoff">mcDiscreteGeometricApEngine a1 a2 a3 a4 a5 a6 a7 a8 a9 =</span>
 <span class="lineno"> 3231 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = (fromIntegral . fromEnum) a1} in </span>
 <span class="lineno"> 3232 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = (fromIntegral . fromEnum) a2} in </span>
 <span class="lineno"> 3233 </span><span class="spaces">  </span><span class="istickedoff">withGeneralizedBlackScholesProcess a3 $ \a3' -&gt; </span>
@@ -3257,7 +3257,7 @@ span.spaces    { background: white }
 <span class="lineno"> 3238 </span><span class="spaces">  </span><span class="istickedoff">let {a8' = fromMaybeInt a8} in </span>
 <span class="lineno"> 3239 </span><span class="spaces">  </span><span class="istickedoff">let {a9' = fromIntegral a9} in </span>
 <span class="lineno"> 3240 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a10' -&gt; </span>
-<span class="lineno"> 3241 </span><span class="spaces">  </span><span class="istickedoff">mcDiscreteGeometricAPEngine'_ a1' a2' a3' a4' a5' a6' a7' a8' a9' a10' &gt;&gt;= \res -&gt;</span>
+<span class="lineno"> 3241 </span><span class="spaces">  </span><span class="istickedoff">mcDiscreteGeometricApEngine'_ a1' a2' a3' a4' a5' a6' a7' a8' a9' a10' &gt;&gt;= \res -&gt;</span>
 <span class="lineno"> 3242 </span><span class="spaces">  </span><span class="istickedoff">peekPricingEngine res &gt;&gt;= \res' -&gt;</span>
 <span class="lineno"> 3243 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a10'&gt;&gt;</span>
 <span class="lineno"> 3244 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
@@ -3268,7 +3268,7 @@ span.spaces    { background: white }
 <span class="lineno"> 3249 </span>-- Heston stochastic-volatility model.  Uses one time step per fixing date unless /timeSteps/ or
 <span class="lineno"> 3250 </span>-- /timeStepsPerYear/ overrides the grid. When /controlVariate/ is true, prices the same path
 <span class="lineno"> 3251 </span>-- against 'analyticDiscreteGeometricAveragePriceAsianHestonEngine' as a control variate.
-<span class="lineno"> 3252 </span>mcDiscreteArithmeticAPHestonEngine :: (RngTrait) -&gt; (StatisticsTrait) -&gt; (GenHestonProcess hp) -&gt; (Bool) -- ^antitheticVariate
+<span class="lineno"> 3252 </span>mcDiscreteArithmeticApHestonEngine :: (RngTrait) -&gt; (StatisticsTrait) -&gt; (GenHestonProcess hp) -&gt; (Bool) -- ^antitheticVariate
 <span class="lineno"> 3253 </span> -&gt; (Maybe Word) -- ^requiredSamples
 <span class="lineno"> 3254 </span> -&gt; (Maybe Double) -- ^requiredTolerance
 <span class="lineno"> 3255 </span> -&gt; (Maybe Word) -- ^maxSamples
@@ -3277,7 +3277,7 @@ span.spaces    { background: white }
 <span class="lineno"> 3258 </span> -&gt; (Maybe Word) -- ^timeStepsPerYear
 <span class="lineno"> 3259 </span> -&gt; (Bool) -- ^controlVariate
 <span class="lineno"> 3260 </span> -&gt; IO ((PricingEngine))
-<span class="lineno"> 3261 </span><span class="decl"><span class="istickedoff">mcDiscreteArithmeticAPHestonEngine a1 a2 a3 a4 a5 a6 a7 a8 a9 a10 a11 =</span>
+<span class="lineno"> 3261 </span><span class="decl"><span class="istickedoff">mcDiscreteArithmeticApHestonEngine a1 a2 a3 a4 a5 a6 a7 a8 a9 a10 a11 =</span>
 <span class="lineno"> 3262 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = (fromIntegral . fromEnum) a1} in </span>
 <span class="lineno"> 3263 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = (fromIntegral . fromEnum) a2} in </span>
 <span class="lineno"> 3264 </span><span class="spaces">  </span><span class="istickedoff">withHestonProcess a3 $ \a3' -&gt; </span>
@@ -3290,7 +3290,7 @@ span.spaces    { background: white }
 <span class="lineno"> 3271 </span><span class="spaces">  </span><span class="istickedoff">let {a10' = fromMaybeInt a10} in </span>
 <span class="lineno"> 3272 </span><span class="spaces">  </span><span class="istickedoff">let {a11' = C2HSImp.fromBool a11} in </span>
 <span class="lineno"> 3273 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a12' -&gt; </span>
-<span class="lineno"> 3274 </span><span class="spaces">  </span><span class="istickedoff">mcDiscreteArithmeticAPHestonEngine'_ a1' a2' a3' a4' a5' a6' a7' a8' a9' a10' a11' a12' &gt;&gt;= \res -&gt;</span>
+<span class="lineno"> 3274 </span><span class="spaces">  </span><span class="istickedoff">mcDiscreteArithmeticApHestonEngine'_ a1' a2' a3' a4' a5' a6' a7' a8' a9' a10' a11' a12' &gt;&gt;= \res -&gt;</span>
 <span class="lineno"> 3275 </span><span class="spaces">  </span><span class="istickedoff">peekPricingEngine res &gt;&gt;= \res' -&gt;</span>
 <span class="lineno"> 3276 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a12'&gt;&gt;</span>
 <span class="lineno"> 3277 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
@@ -3300,7 +3300,7 @@ span.spaces    { background: white }
 <span class="lineno"> 3281 </span>-- |Monte Carlo pricing engine for discrete geometric average-price Asian options under the
 <span class="lineno"> 3282 </span>-- Heston stochastic-volatility model.  Uses one time step per fixing date unless /timeSteps/ or
 <span class="lineno"> 3283 </span>-- /timeStepsPerYear/ overrides the grid.
-<span class="lineno"> 3284 </span>mcDiscreteGeometricAPHestonEngine :: (RngTrait) -&gt; (StatisticsTrait) -&gt; (GenHestonProcess hp) -&gt; (Bool) -- ^antitheticVariate
+<span class="lineno"> 3284 </span>mcDiscreteGeometricApHestonEngine :: (RngTrait) -&gt; (StatisticsTrait) -&gt; (GenHestonProcess hp) -&gt; (Bool) -- ^antitheticVariate
 <span class="lineno"> 3285 </span> -&gt; (Maybe Word) -- ^requiredSamples
 <span class="lineno"> 3286 </span> -&gt; (Maybe Double) -- ^requiredTolerance
 <span class="lineno"> 3287 </span> -&gt; (Maybe Word) -- ^maxSamples
@@ -3308,7 +3308,7 @@ span.spaces    { background: white }
 <span class="lineno"> 3289 </span> -&gt; (Maybe Word) -- ^timeSteps
 <span class="lineno"> 3290 </span> -&gt; (Maybe Word) -- ^timeStepsPerYear
 <span class="lineno"> 3291 </span> -&gt; IO ((PricingEngine))
-<span class="lineno"> 3292 </span><span class="decl"><span class="istickedoff">mcDiscreteGeometricAPHestonEngine a1 a2 a3 a4 a5 a6 a7 a8 a9 a10 =</span>
+<span class="lineno"> 3292 </span><span class="decl"><span class="istickedoff">mcDiscreteGeometricApHestonEngine a1 a2 a3 a4 a5 a6 a7 a8 a9 a10 =</span>
 <span class="lineno"> 3293 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = (fromIntegral . fromEnum) a1} in </span>
 <span class="lineno"> 3294 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = (fromIntegral . fromEnum) a2} in </span>
 <span class="lineno"> 3295 </span><span class="spaces">  </span><span class="istickedoff">withHestonProcess a3 $ \a3' -&gt; </span>
@@ -3320,7 +3320,7 @@ span.spaces    { background: white }
 <span class="lineno"> 3301 </span><span class="spaces">  </span><span class="istickedoff">let {a9' = fromMaybeInt a9} in </span>
 <span class="lineno"> 3302 </span><span class="spaces">  </span><span class="istickedoff">let {a10' = fromMaybeInt a10} in </span>
 <span class="lineno"> 3303 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a11' -&gt; </span>
-<span class="lineno"> 3304 </span><span class="spaces">  </span><span class="istickedoff">mcDiscreteGeometricAPHestonEngine'_ a1' a2' a3' a4' a5' a6' a7' a8' a9' a10' a11' &gt;&gt;= \res -&gt;</span>
+<span class="lineno"> 3304 </span><span class="spaces">  </span><span class="istickedoff">mcDiscreteGeometricApHestonEngine'_ a1' a2' a3' a4' a5' a6' a7' a8' a9' a10' a11' &gt;&gt;= \res -&gt;</span>
 <span class="lineno"> 3305 </span><span class="spaces">  </span><span class="istickedoff">peekPricingEngine res &gt;&gt;= \res' -&gt;</span>
 <span class="lineno"> 3306 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a11'&gt;&gt;</span>
 <span class="lineno"> 3307 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
@@ -4163,12 +4163,12 @@ span.spaces    { background: white }
 <span class="lineno"> 4144 </span>
 <span class="lineno"> 4145 </span>
 <span class="lineno"> 4146 </span>-- |volatility is the quoted fwd yield volatility, not price vol
-<span class="lineno"> 4147 </span>blackCallableFixedRateBondEngine' :: (CallableBondVolatilityStructure) -&gt; (GenYieldTermStructure y) -&gt; IO ((PricingEngine))
-<span class="lineno"> 4148 </span><span class="decl"><span class="nottickedoff">blackCallableFixedRateBondEngine' a1 a2 =</span>
+<span class="lineno"> 4147 </span>blackCallableFixedRateBondEngineWithVolatilityStructure :: (CallableBondVolatilityStructure) -&gt; (GenYieldTermStructure y) -&gt; IO ((PricingEngine))
+<span class="lineno"> 4148 </span><span class="decl"><span class="nottickedoff">blackCallableFixedRateBondEngineWithVolatilityStructure a1 a2 =</span>
 <span class="lineno"> 4149 </span><span class="spaces">  </span><span class="nottickedoff">withGenTermStructure a1 $ \a1' -&gt; </span>
 <span class="lineno"> 4150 </span><span class="spaces">  </span><span class="nottickedoff">withYieldTermStructure a2 $ \a2' -&gt; </span>
 <span class="lineno"> 4151 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a3' -&gt; </span>
-<span class="lineno"> 4152 </span><span class="spaces">  </span><span class="nottickedoff">blackCallableFixedRateBondEngine''_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
+<span class="lineno"> 4152 </span><span class="spaces">  </span><span class="nottickedoff">blackCallableFixedRateBondEngineWithVolatilityStructure'_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
 <span class="lineno"> 4153 </span><span class="spaces">  </span><span class="nottickedoff">peekPricingEngine res &gt;&gt;= \res' -&gt;</span>
 <span class="lineno"> 4154 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a3'&gt;&gt;</span>
 <span class="lineno"> 4155 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
@@ -4189,12 +4189,12 @@ span.spaces    { background: white }
 <span class="lineno"> 4170 </span>
 <span class="lineno"> 4171 </span>
 <span class="lineno"> 4172 </span>-- |volatility is the quoted fwd yield volatility, not price vol
-<span class="lineno"> 4173 </span>blackCallableZeroCouponBondEngine' :: (CallableBondVolatilityStructure) -&gt; (GenYieldTermStructure y) -&gt; IO ((PricingEngine))
-<span class="lineno"> 4174 </span><span class="decl"><span class="nottickedoff">blackCallableZeroCouponBondEngine' a1 a2 =</span>
+<span class="lineno"> 4173 </span>blackCallableZeroCouponBondEngineWithVolatilityStructure :: (CallableBondVolatilityStructure) -&gt; (GenYieldTermStructure y) -&gt; IO ((PricingEngine))
+<span class="lineno"> 4174 </span><span class="decl"><span class="nottickedoff">blackCallableZeroCouponBondEngineWithVolatilityStructure a1 a2 =</span>
 <span class="lineno"> 4175 </span><span class="spaces">  </span><span class="nottickedoff">withGenTermStructure a1 $ \a1' -&gt; </span>
 <span class="lineno"> 4176 </span><span class="spaces">  </span><span class="nottickedoff">withYieldTermStructure a2 $ \a2' -&gt; </span>
 <span class="lineno"> 4177 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a3' -&gt; </span>
-<span class="lineno"> 4178 </span><span class="spaces">  </span><span class="nottickedoff">blackCallableZeroCouponBondEngine''_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
+<span class="lineno"> 4178 </span><span class="spaces">  </span><span class="nottickedoff">blackCallableZeroCouponBondEngineWithVolatilityStructure'_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
 <span class="lineno"> 4179 </span><span class="spaces">  </span><span class="nottickedoff">peekPricingEngine res &gt;&gt;= \res' -&gt;</span>
 <span class="lineno"> 4180 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a3'&gt;&gt;</span>
 <span class="lineno"> 4181 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
@@ -4311,19 +4311,19 @@ span.spaces    { background: white }
 <span class="lineno"> 4292 </span>
 <span class="lineno"> 4293 </span>
 <span class="lineno"> 4294 </span>-- |Black 1976 option-price calculator, from the option type and strike directly
-<span class="lineno"> 4295 </span>blackCalculator' :: (OptionType) -&gt; (Double) -- ^strike
+<span class="lineno"> 4295 </span>blackCalculator :: (OptionType) -&gt; (Double) -- ^strike
 <span class="lineno"> 4296 </span> -&gt; (Double) -- ^forward
 <span class="lineno"> 4297 </span> -&gt; (Double) -- ^stdDev
 <span class="lineno"> 4298 </span> -&gt; (Double) -- ^discount
 <span class="lineno"> 4299 </span> -&gt; IO ((BlackCalculator))
-<span class="lineno"> 4300 </span><span class="decl"><span class="istickedoff">blackCalculator' a1 a2 a3 a4 a5 =</span>
+<span class="lineno"> 4300 </span><span class="decl"><span class="istickedoff">blackCalculator a1 a2 a3 a4 a5 =</span>
 <span class="lineno"> 4301 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = fromEnumC a1} in </span>
 <span class="lineno"> 4302 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = realToFrac a2} in </span>
 <span class="lineno"> 4303 </span><span class="spaces">  </span><span class="istickedoff">let {a3' = realToFrac a3} in </span>
 <span class="lineno"> 4304 </span><span class="spaces">  </span><span class="istickedoff">let {a4' = realToFrac a4} in </span>
 <span class="lineno"> 4305 </span><span class="spaces">  </span><span class="istickedoff">let {a5' = realToFrac a5} in </span>
 <span class="lineno"> 4306 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a6' -&gt; </span>
-<span class="lineno"> 4307 </span><span class="spaces">  </span><span class="istickedoff">blackCalculator''_ a1' a2' a3' a4' a5' a6' &gt;&gt;= \res -&gt;</span>
+<span class="lineno"> 4307 </span><span class="spaces">  </span><span class="istickedoff">blackCalculator'_ a1' a2' a3' a4' a5' a6' &gt;&gt;= \res -&gt;</span>
 <span class="lineno"> 4308 </span><span class="spaces">  </span><span class="istickedoff">peekBlackCalculator res &gt;&gt;= \res' -&gt;</span>
 <span class="lineno"> 4309 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a6'&gt;&gt;</span>
 <span class="lineno"> 4310 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
@@ -4331,17 +4331,17 @@ span.spaces    { background: white }
 <span class="lineno"> 4312 </span>
 <span class="lineno"> 4313 </span>
 <span class="lineno"> 4314 </span>-- |Black 1976 option-price calculator, from a striked payoff
-<span class="lineno"> 4315 </span>blackCalculator :: (StrikedPayoff) -&gt; (Double) -- ^forward
+<span class="lineno"> 4315 </span>blackCalculatorFromPayoff :: (StrikedPayoff) -&gt; (Double) -- ^forward
 <span class="lineno"> 4316 </span> -&gt; (Double) -- ^stdDev
 <span class="lineno"> 4317 </span> -&gt; (Double) -- ^discount
 <span class="lineno"> 4318 </span> -&gt; IO ((BlackCalculator))
-<span class="lineno"> 4319 </span><span class="decl"><span class="istickedoff">blackCalculator a1 a2 a3 a4 =</span>
+<span class="lineno"> 4319 </span><span class="decl"><span class="istickedoff">blackCalculatorFromPayoff a1 a2 a3 a4 =</span>
 <span class="lineno"> 4320 </span><span class="spaces">  </span><span class="istickedoff">withStrikedPayoff a1 $ \a1' -&gt; </span>
 <span class="lineno"> 4321 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = realToFrac a2} in </span>
 <span class="lineno"> 4322 </span><span class="spaces">  </span><span class="istickedoff">let {a3' = realToFrac a3} in </span>
 <span class="lineno"> 4323 </span><span class="spaces">  </span><span class="istickedoff">let {a4' = realToFrac a4} in </span>
 <span class="lineno"> 4324 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a5' -&gt; </span>
-<span class="lineno"> 4325 </span><span class="spaces">  </span><span class="istickedoff">blackCalculator'_ a1' a2' a3' a4' a5' &gt;&gt;= \res -&gt;</span>
+<span class="lineno"> 4325 </span><span class="spaces">  </span><span class="istickedoff">blackCalculatorFromPayoff'_ a1' a2' a3' a4' a5' &gt;&gt;= \res -&gt;</span>
 <span class="lineno"> 4326 </span><span class="spaces">  </span><span class="istickedoff">peekBlackCalculator res &gt;&gt;= \res' -&gt;</span>
 <span class="lineno"> 4327 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a5'&gt;&gt;</span>
 <span class="lineno"> 4328 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
@@ -4591,13 +4591,13 @@ span.spaces    { background: white }
 <span class="lineno"> 4572 </span>
 <span class="lineno"> 4573 </span>
 <span class="lineno"> 4574 </span>-- |Black-Scholes-Merton option-price calculator, from the option type and strike directly
-<span class="lineno"> 4575 </span>blackScholesCalculator' :: (OptionType) -&gt; (Double) -- ^strike
+<span class="lineno"> 4575 </span>blackScholesCalculator :: (OptionType) -&gt; (Double) -- ^strike
 <span class="lineno"> 4576 </span> -&gt; (Double) -- ^spot
 <span class="lineno"> 4577 </span> -&gt; (Double) -- ^growth
 <span class="lineno"> 4578 </span> -&gt; (Double) -- ^stdDev
 <span class="lineno"> 4579 </span> -&gt; (Double) -- ^discount
 <span class="lineno"> 4580 </span> -&gt; IO ((BlackScholesCalculator))
-<span class="lineno"> 4581 </span><span class="decl"><span class="istickedoff">blackScholesCalculator' a1 a2 a3 a4 a5 a6 =</span>
+<span class="lineno"> 4581 </span><span class="decl"><span class="istickedoff">blackScholesCalculator a1 a2 a3 a4 a5 a6 =</span>
 <span class="lineno"> 4582 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = fromEnumC a1} in </span>
 <span class="lineno"> 4583 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = realToFrac a2} in </span>
 <span class="lineno"> 4584 </span><span class="spaces">  </span><span class="istickedoff">let {a3' = realToFrac a3} in </span>
@@ -4605,7 +4605,7 @@ span.spaces    { background: white }
 <span class="lineno"> 4586 </span><span class="spaces">  </span><span class="istickedoff">let {a5' = realToFrac a5} in </span>
 <span class="lineno"> 4587 </span><span class="spaces">  </span><span class="istickedoff">let {a6' = realToFrac a6} in </span>
 <span class="lineno"> 4588 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a7' -&gt; </span>
-<span class="lineno"> 4589 </span><span class="spaces">  </span><span class="istickedoff">blackScholesCalculator''_ a1' a2' a3' a4' a5' a6' a7' &gt;&gt;= \res -&gt;</span>
+<span class="lineno"> 4589 </span><span class="spaces">  </span><span class="istickedoff">blackScholesCalculator'_ a1' a2' a3' a4' a5' a6' a7' &gt;&gt;= \res -&gt;</span>
 <span class="lineno"> 4590 </span><span class="spaces">  </span><span class="istickedoff">peekBlackScholesCalculator res &gt;&gt;= \res' -&gt;</span>
 <span class="lineno"> 4591 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a7'&gt;&gt;</span>
 <span class="lineno"> 4592 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
@@ -4613,19 +4613,19 @@ span.spaces    { background: white }
 <span class="lineno"> 4594 </span>
 <span class="lineno"> 4595 </span>
 <span class="lineno"> 4596 </span>-- |Black-Scholes-Merton option-price calculator, from a striked payoff and spot price
-<span class="lineno"> 4597 </span>blackScholesCalculator :: (StrikedPayoff) -&gt; (Double) -- ^spot
+<span class="lineno"> 4597 </span>blackScholesCalculatorFromPayoff :: (StrikedPayoff) -&gt; (Double) -- ^spot
 <span class="lineno"> 4598 </span> -&gt; (Double) -- ^growth
 <span class="lineno"> 4599 </span> -&gt; (Double) -- ^stdDev
 <span class="lineno"> 4600 </span> -&gt; (Double) -- ^discount
 <span class="lineno"> 4601 </span> -&gt; IO ((BlackScholesCalculator))
-<span class="lineno"> 4602 </span><span class="decl"><span class="istickedoff">blackScholesCalculator a1 a2 a3 a4 a5 =</span>
+<span class="lineno"> 4602 </span><span class="decl"><span class="istickedoff">blackScholesCalculatorFromPayoff a1 a2 a3 a4 a5 =</span>
 <span class="lineno"> 4603 </span><span class="spaces">  </span><span class="istickedoff">withStrikedPayoff a1 $ \a1' -&gt; </span>
 <span class="lineno"> 4604 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = realToFrac a2} in </span>
 <span class="lineno"> 4605 </span><span class="spaces">  </span><span class="istickedoff">let {a3' = realToFrac a3} in </span>
 <span class="lineno"> 4606 </span><span class="spaces">  </span><span class="istickedoff">let {a4' = realToFrac a4} in </span>
 <span class="lineno"> 4607 </span><span class="spaces">  </span><span class="istickedoff">let {a5' = realToFrac a5} in </span>
 <span class="lineno"> 4608 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a6' -&gt; </span>
-<span class="lineno"> 4609 </span><span class="spaces">  </span><span class="istickedoff">blackScholesCalculator'_ a1' a2' a3' a4' a5' a6' &gt;&gt;= \res -&gt;</span>
+<span class="lineno"> 4609 </span><span class="spaces">  </span><span class="istickedoff">blackScholesCalculatorFromPayoff'_ a1' a2' a3' a4' a5' a6' &gt;&gt;= \res -&gt;</span>
 <span class="lineno"> 4610 </span><span class="spaces">  </span><span class="istickedoff">peekBlackScholesCalculator res &gt;&gt;= \res' -&gt;</span>
 <span class="lineno"> 4611 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a6'&gt;&gt;</span>
 <span class="lineno"> 4612 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
@@ -4699,19 +4699,19 @@ span.spaces    { background: white }
 <span class="lineno"> 4680 </span>-- |Bachelier (normal-model) analogue of 'BlackCalculator', for options on a rate rather than a
 <span class="lineno"> 4681 </span>-- price. No subclass hierarchy upstream, unlike BlackCalculator\/BlackScholesCalculator, so this
 <span class="lineno"> 4682 </span>-- is a single leaf type with its own methods rather than a 'GenBlackCalculator' instance.
-<span class="lineno"> 4683 </span>bachelierCalculator' :: (OptionType) -&gt; (Double) -- ^strike
+<span class="lineno"> 4683 </span>bachelierCalculator :: (OptionType) -&gt; (Double) -- ^strike
 <span class="lineno"> 4684 </span> -&gt; (Double) -- ^forward
 <span class="lineno"> 4685 </span> -&gt; (Double) -- ^stdDev
 <span class="lineno"> 4686 </span> -&gt; (Double) -- ^discount
 <span class="lineno"> 4687 </span> -&gt; IO ((BachelierCalculator))
-<span class="lineno"> 4688 </span><span class="decl"><span class="istickedoff">bachelierCalculator' a1 a2 a3 a4 a5 =</span>
+<span class="lineno"> 4688 </span><span class="decl"><span class="istickedoff">bachelierCalculator a1 a2 a3 a4 a5 =</span>
 <span class="lineno"> 4689 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = fromEnumC a1} in </span>
 <span class="lineno"> 4690 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = realToFrac a2} in </span>
 <span class="lineno"> 4691 </span><span class="spaces">  </span><span class="istickedoff">let {a3' = realToFrac a3} in </span>
 <span class="lineno"> 4692 </span><span class="spaces">  </span><span class="istickedoff">let {a4' = realToFrac a4} in </span>
 <span class="lineno"> 4693 </span><span class="spaces">  </span><span class="istickedoff">let {a5' = realToFrac a5} in </span>
 <span class="lineno"> 4694 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a6' -&gt; </span>
-<span class="lineno"> 4695 </span><span class="spaces">  </span><span class="istickedoff">bachelierCalculator''_ a1' a2' a3' a4' a5' a6' &gt;&gt;= \res -&gt;</span>
+<span class="lineno"> 4695 </span><span class="spaces">  </span><span class="istickedoff">bachelierCalculator'_ a1' a2' a3' a4' a5' a6' &gt;&gt;= \res -&gt;</span>
 <span class="lineno"> 4696 </span><span class="spaces">  </span><span class="istickedoff">peekBachelierCalculator res &gt;&gt;= \res' -&gt;</span>
 <span class="lineno"> 4697 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a6'&gt;&gt;</span>
 <span class="lineno"> 4698 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
@@ -4719,17 +4719,17 @@ span.spaces    { background: white }
 <span class="lineno"> 4700 </span>
 <span class="lineno"> 4701 </span>
 <span class="lineno"> 4702 </span>-- |Bachelier (normal-model) option-price calculator, from a striked payoff
-<span class="lineno"> 4703 </span>bachelierCalculator :: (StrikedPayoff) -&gt; (Double) -- ^forward
+<span class="lineno"> 4703 </span>bachelierCalculatorFromPayoff :: (StrikedPayoff) -&gt; (Double) -- ^forward
 <span class="lineno"> 4704 </span> -&gt; (Double) -- ^stdDev
 <span class="lineno"> 4705 </span> -&gt; (Double) -- ^discount
 <span class="lineno"> 4706 </span> -&gt; IO ((BachelierCalculator))
-<span class="lineno"> 4707 </span><span class="decl"><span class="istickedoff">bachelierCalculator a1 a2 a3 a4 =</span>
+<span class="lineno"> 4707 </span><span class="decl"><span class="istickedoff">bachelierCalculatorFromPayoff a1 a2 a3 a4 =</span>
 <span class="lineno"> 4708 </span><span class="spaces">  </span><span class="istickedoff">withStrikedPayoff a1 $ \a1' -&gt; </span>
 <span class="lineno"> 4709 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = realToFrac a2} in </span>
 <span class="lineno"> 4710 </span><span class="spaces">  </span><span class="istickedoff">let {a3' = realToFrac a3} in </span>
 <span class="lineno"> 4711 </span><span class="spaces">  </span><span class="istickedoff">let {a4' = realToFrac a4} in </span>
 <span class="lineno"> 4712 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a5' -&gt; </span>
-<span class="lineno"> 4713 </span><span class="spaces">  </span><span class="istickedoff">bachelierCalculator'_ a1' a2' a3' a4' a5' &gt;&gt;= \res -&gt;</span>
+<span class="lineno"> 4713 </span><span class="spaces">  </span><span class="istickedoff">bachelierCalculatorFromPayoff'_ a1' a2' a3' a4' a5' &gt;&gt;= \res -&gt;</span>
 <span class="lineno"> 4714 </span><span class="spaces">  </span><span class="istickedoff">peekBachelierCalculator res &gt;&gt;= \res' -&gt;</span>
 <span class="lineno"> 4715 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a5'&gt;&gt;</span>
 <span class="lineno"> 4716 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
@@ -5128,19 +5128,19 @@ span.spaces    { background: white }
 <span class="lineno"> 5109 </span>
 <span class="lineno"> 5110 </span>
 <span class="lineno"> 5111 </span>-- |Black 1976 formula /Warning/ instead of volatility it uses standard deviation, i.e. volatility*sqrt(timeToMaturity)
-<span class="lineno"> 5112 </span>blackFormula' :: (PlainVanillaPayoff) -&gt; (Double) -- ^forward
+<span class="lineno"> 5112 </span>blackFormulaFromPayoff :: (PlainVanillaPayoff) -&gt; (Double) -- ^forward
 <span class="lineno"> 5113 </span> -&gt; (Double) -- ^stdDev
 <span class="lineno"> 5114 </span> -&gt; (Double) -- ^discount
 <span class="lineno"> 5115 </span> -&gt; (Double) -- ^displacement
 <span class="lineno"> 5116 </span> -&gt; IO ((Double))
-<span class="lineno"> 5117 </span><span class="decl"><span class="istickedoff">blackFormula' a1 a2 a3 a4 a5 =</span>
+<span class="lineno"> 5117 </span><span class="decl"><span class="istickedoff">blackFormulaFromPayoff a1 a2 a3 a4 a5 =</span>
 <span class="lineno"> 5118 </span><span class="spaces">  </span><span class="istickedoff">withPlainVanillaPayoff a1 $ \a1' -&gt; </span>
 <span class="lineno"> 5119 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = realToFrac a2} in </span>
 <span class="lineno"> 5120 </span><span class="spaces">  </span><span class="istickedoff">let {a3' = realToFrac a3} in </span>
 <span class="lineno"> 5121 </span><span class="spaces">  </span><span class="istickedoff">let {a4' = realToFrac a4} in </span>
 <span class="lineno"> 5122 </span><span class="spaces">  </span><span class="istickedoff">let {a5' = realToFrac a5} in </span>
 <span class="lineno"> 5123 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a6' -&gt; </span>
-<span class="lineno"> 5124 </span><span class="spaces">  </span><span class="istickedoff">blackFormula''_ a1' a2' a3' a4' a5' a6' &gt;&gt;= \res -&gt;</span>
+<span class="lineno"> 5124 </span><span class="spaces">  </span><span class="istickedoff">blackFormulaFromPayoff'_ a1' a2' a3' a4' a5' a6' &gt;&gt;= \res -&gt;</span>
 <span class="lineno"> 5125 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
 <span class="lineno"> 5126 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a6'&gt;&gt;</span>
 <span class="lineno"> 5127 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
@@ -5171,17 +5171,17 @@ span.spaces    { background: white }
 <span class="lineno"> 5152 </span>
 <span class="lineno"> 5153 </span>
 <span class="lineno"> 5154 </span>-- |Black 1976 probability of being in the money (in the bond martingale measure), i.e. N(d2). It is a risk-neutral probability, not the real world one. /Warning/ instead of volatility it uses standard deviation, i.e. volatility*sqrt(timeToMaturity)
-<span class="lineno"> 5155 </span>blackCashItmProbability' :: (PlainVanillaPayoff) -&gt; (Double) -- ^forward
+<span class="lineno"> 5155 </span>blackCashItmProbabilityFromPayoff :: (PlainVanillaPayoff) -&gt; (Double) -- ^forward
 <span class="lineno"> 5156 </span> -&gt; (Double) -- ^stdDev
 <span class="lineno"> 5157 </span> -&gt; (Double) -- ^displacement
 <span class="lineno"> 5158 </span> -&gt; IO ((Double))
-<span class="lineno"> 5159 </span><span class="decl"><span class="nottickedoff">blackCashItmProbability' a1 a2 a3 a4 =</span>
+<span class="lineno"> 5159 </span><span class="decl"><span class="nottickedoff">blackCashItmProbabilityFromPayoff a1 a2 a3 a4 =</span>
 <span class="lineno"> 5160 </span><span class="spaces">  </span><span class="nottickedoff">withPlainVanillaPayoff a1 $ \a1' -&gt; </span>
 <span class="lineno"> 5161 </span><span class="spaces">  </span><span class="nottickedoff">let {a2' = realToFrac a2} in </span>
 <span class="lineno"> 5162 </span><span class="spaces">  </span><span class="nottickedoff">let {a3' = realToFrac a3} in </span>
 <span class="lineno"> 5163 </span><span class="spaces">  </span><span class="nottickedoff">let {a4' = realToFrac a4} in </span>
 <span class="lineno"> 5164 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a5' -&gt; </span>
-<span class="lineno"> 5165 </span><span class="spaces">  </span><span class="nottickedoff">blackCashItmProbability''_ a1' a2' a3' a4' a5' &gt;&gt;= \res -&gt;</span>
+<span class="lineno"> 5165 </span><span class="spaces">  </span><span class="nottickedoff">blackCashItmProbabilityFromPayoff'_ a1' a2' a3' a4' a5' &gt;&gt;= \res -&gt;</span>
 <span class="lineno"> 5166 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = realToFrac res} in</span>
 <span class="lineno"> 5167 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a5'&gt;&gt;</span>
 <span class="lineno"> 5168 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
@@ -5208,7 +5208,7 @@ span.spaces    { background: white }
 <span class="lineno"> 5189 </span>
 <span class="lineno"> 5190 </span>
 <span class="lineno"> 5191 </span>-- |Black 1976 implied standard deviation, i.e. volatility*sqrt(timeToMaturity)
-<span class="lineno"> 5192 </span>blackImpliedStdDev' :: (PlainVanillaPayoff) -&gt; (Double) -- ^forward
+<span class="lineno"> 5192 </span>blackImpliedStdDevFromPayoff :: (PlainVanillaPayoff) -&gt; (Double) -- ^forward
 <span class="lineno"> 5193 </span> -&gt; (Double) -- ^blackPrice
 <span class="lineno"> 5194 </span> -&gt; (Double) -- ^discount
 <span class="lineno"> 5195 </span> -&gt; (Double) -- ^displacement
@@ -5216,7 +5216,7 @@ span.spaces    { background: white }
 <span class="lineno"> 5197 </span> -&gt; (Double) -- ^accuracy
 <span class="lineno"> 5198 </span> -&gt; (Word) -- ^maxIterations
 <span class="lineno"> 5199 </span> -&gt; IO ((Double))
-<span class="lineno"> 5200 </span><span class="decl"><span class="istickedoff">blackImpliedStdDev' a1 a2 a3 a4 a5 a6 a7 a8 =</span>
+<span class="lineno"> 5200 </span><span class="decl"><span class="istickedoff">blackImpliedStdDevFromPayoff a1 a2 a3 a4 a5 a6 a7 a8 =</span>
 <span class="lineno"> 5201 </span><span class="spaces">  </span><span class="istickedoff">withPlainVanillaPayoff a1 $ \a1' -&gt; </span>
 <span class="lineno"> 5202 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = realToFrac a2} in </span>
 <span class="lineno"> 5203 </span><span class="spaces">  </span><span class="istickedoff">let {a3' = realToFrac a3} in </span>
@@ -5226,7 +5226,7 @@ span.spaces    { background: white }
 <span class="lineno"> 5207 </span><span class="spaces">  </span><span class="istickedoff">let {a7' = realToFrac a7} in </span>
 <span class="lineno"> 5208 </span><span class="spaces">  </span><span class="istickedoff">let {a8' = fromIntegral a8} in </span>
 <span class="lineno"> 5209 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a9' -&gt; </span>
-<span class="lineno"> 5210 </span><span class="spaces">  </span><span class="istickedoff">blackImpliedStdDev''_ a1' a2' a3' a4' a5' a6' a7' a8' a9' &gt;&gt;= \res -&gt;</span>
+<span class="lineno"> 5210 </span><span class="spaces">  </span><span class="istickedoff">blackImpliedStdDevFromPayoff'_ a1' a2' a3' a4' a5' a6' a7' a8' a9' &gt;&gt;= \res -&gt;</span>
 <span class="lineno"> 5211 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
 <span class="lineno"> 5212 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a9'&gt;&gt;</span>
 <span class="lineno"> 5213 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
@@ -5262,19 +5262,19 @@ span.spaces    { background: white }
 <span class="lineno"> 5243 </span>
 <span class="lineno"> 5244 </span>
 <span class="lineno"> 5245 </span>-- |Approximated Black 1976 implied standard deviation, i.e. volatility*sqrt(timeToMaturity).It is calculated using Brenner and Subrahmanyan (1988) and Feinstein (1988) approximation for at-the-money forward option, with the extended moneyness approximation by Corrado and Miller (1996)
-<span class="lineno"> 5246 </span>blackImpliedStdDevApproximation' :: (PlainVanillaPayoff) -&gt; (Double) -- ^forward
+<span class="lineno"> 5246 </span>blackImpliedStdDevApproximationFromPayoff :: (PlainVanillaPayoff) -&gt; (Double) -- ^forward
 <span class="lineno"> 5247 </span> -&gt; (Double) -- ^blackPrice
 <span class="lineno"> 5248 </span> -&gt; (Double) -- ^discount
 <span class="lineno"> 5249 </span> -&gt; (Double) -- ^displacement
 <span class="lineno"> 5250 </span> -&gt; IO ((Double))
-<span class="lineno"> 5251 </span><span class="decl"><span class="istickedoff">blackImpliedStdDevApproximation' a1 a2 a3 a4 a5 =</span>
+<span class="lineno"> 5251 </span><span class="decl"><span class="istickedoff">blackImpliedStdDevApproximationFromPayoff a1 a2 a3 a4 a5 =</span>
 <span class="lineno"> 5252 </span><span class="spaces">  </span><span class="istickedoff">withPlainVanillaPayoff a1 $ \a1' -&gt; </span>
 <span class="lineno"> 5253 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = realToFrac a2} in </span>
 <span class="lineno"> 5254 </span><span class="spaces">  </span><span class="istickedoff">let {a3' = realToFrac a3} in </span>
 <span class="lineno"> 5255 </span><span class="spaces">  </span><span class="istickedoff">let {a4' = realToFrac a4} in </span>
 <span class="lineno"> 5256 </span><span class="spaces">  </span><span class="istickedoff">let {a5' = realToFrac a5} in </span>
 <span class="lineno"> 5257 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a6' -&gt; </span>
-<span class="lineno"> 5258 </span><span class="spaces">  </span><span class="istickedoff">blackImpliedStdDevApproximation''_ a1' a2' a3' a4' a5' a6' &gt;&gt;= \res -&gt;</span>
+<span class="lineno"> 5258 </span><span class="spaces">  </span><span class="istickedoff">blackImpliedStdDevApproximationFromPayoff'_ a1' a2' a3' a4' a5' a6' &gt;&gt;= \res -&gt;</span>
 <span class="lineno"> 5259 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
 <span class="lineno"> 5260 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a6'&gt;&gt;</span>
 <span class="lineno"> 5261 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
@@ -5304,19 +5304,19 @@ span.spaces    { background: white }
 <span class="lineno"> 5285 </span>
 <span class="lineno"> 5286 </span>
 <span class="lineno"> 5287 </span>-- |Black 1976 formula for standard deviation derivative /Warning/ instead of volatility it uses standard deviation, i.e. volatility*sqrt(timeToMaturity), and it returns the derivative with respect to the standard deviation. If T is the time to maturity Black vega would be blackStdDevDerivative(strike, forward, stdDev)*sqrt(T)
-<span class="lineno"> 5288 </span>blackStdDevDerivative' :: (PlainVanillaPayoff) -&gt; (Double) -- ^forward
+<span class="lineno"> 5288 </span>blackStdDevDerivativeFromPayoff :: (PlainVanillaPayoff) -&gt; (Double) -- ^forward
 <span class="lineno"> 5289 </span> -&gt; (Double) -- ^stdDev
 <span class="lineno"> 5290 </span> -&gt; (Double) -- ^discount
 <span class="lineno"> 5291 </span> -&gt; (Double) -- ^displacement
 <span class="lineno"> 5292 </span> -&gt; IO ((Double))
-<span class="lineno"> 5293 </span><span class="decl"><span class="istickedoff">blackStdDevDerivative' a1 a2 a3 a4 a5 =</span>
+<span class="lineno"> 5293 </span><span class="decl"><span class="istickedoff">blackStdDevDerivativeFromPayoff a1 a2 a3 a4 a5 =</span>
 <span class="lineno"> 5294 </span><span class="spaces">  </span><span class="istickedoff">withPlainVanillaPayoff a1 $ \a1' -&gt; </span>
 <span class="lineno"> 5295 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = realToFrac a2} in </span>
 <span class="lineno"> 5296 </span><span class="spaces">  </span><span class="istickedoff">let {a3' = realToFrac a3} in </span>
 <span class="lineno"> 5297 </span><span class="spaces">  </span><span class="istickedoff">let {a4' = realToFrac a4} in </span>
 <span class="lineno"> 5298 </span><span class="spaces">  </span><span class="istickedoff">let {a5' = realToFrac a5} in </span>
 <span class="lineno"> 5299 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a6' -&gt; </span>
-<span class="lineno"> 5300 </span><span class="spaces">  </span><span class="istickedoff">blackStdDevDerivative''_ a1' a2' a3' a4' a5' a6' &gt;&gt;= \res -&gt;</span>
+<span class="lineno"> 5300 </span><span class="spaces">  </span><span class="istickedoff">blackStdDevDerivativeFromPayoff'_ a1' a2' a3' a4' a5' a6' &gt;&gt;= \res -&gt;</span>
 <span class="lineno"> 5301 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
 <span class="lineno"> 5302 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a6'&gt;&gt;</span>
 <span class="lineno"> 5303 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
@@ -5368,17 +5368,17 @@ span.spaces    { background: white }
 <span class="lineno"> 5349 </span>
 <span class="lineno"> 5350 </span>
 <span class="lineno"> 5351 </span>-- |Black style formula when forward is normal rather than log-normal. This is essentially the model of Bachelier. /Warning/ Bachelier model needs absolute volatility, not percentage volatility. Standard deviation is absoluteVolatility*sqrt(timeToMaturity)
-<span class="lineno"> 5352 </span>bachelierBlackFormula' :: (PlainVanillaPayoff) -&gt; (Double) -- ^forward
+<span class="lineno"> 5352 </span>bachelierBlackFormulaFromPayoff :: (PlainVanillaPayoff) -&gt; (Double) -- ^forward
 <span class="lineno"> 5353 </span> -&gt; (Double) -- ^stdDev
 <span class="lineno"> 5354 </span> -&gt; (Double) -- ^discount
 <span class="lineno"> 5355 </span> -&gt; IO ((Double))
-<span class="lineno"> 5356 </span><span class="decl"><span class="nottickedoff">bachelierBlackFormula' a1 a2 a3 a4 =</span>
+<span class="lineno"> 5356 </span><span class="decl"><span class="nottickedoff">bachelierBlackFormulaFromPayoff a1 a2 a3 a4 =</span>
 <span class="lineno"> 5357 </span><span class="spaces">  </span><span class="nottickedoff">withPlainVanillaPayoff a1 $ \a1' -&gt; </span>
 <span class="lineno"> 5358 </span><span class="spaces">  </span><span class="nottickedoff">let {a2' = realToFrac a2} in </span>
 <span class="lineno"> 5359 </span><span class="spaces">  </span><span class="nottickedoff">let {a3' = realToFrac a3} in </span>
 <span class="lineno"> 5360 </span><span class="spaces">  </span><span class="nottickedoff">let {a4' = realToFrac a4} in </span>
 <span class="lineno"> 5361 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a5' -&gt; </span>
-<span class="lineno"> 5362 </span><span class="spaces">  </span><span class="nottickedoff">bachelierBlackFormula''_ a1' a2' a3' a4' a5' &gt;&gt;= \res -&gt;</span>
+<span class="lineno"> 5362 </span><span class="spaces">  </span><span class="nottickedoff">bachelierBlackFormulaFromPayoff'_ a1' a2' a3' a4' a5' &gt;&gt;= \res -&gt;</span>
 <span class="lineno"> 5363 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = realToFrac res} in</span>
 <span class="lineno"> 5364 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a5'&gt;&gt;</span>
 <span class="lineno"> 5365 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
@@ -5406,19 +5406,19 @@ span.spaces    { background: white }
 <span class="lineno"> 5387 </span>
 <span class="lineno"> 5388 </span>
 <span class="lineno"> 5389 </span>-- |Black 1976 formula for the derivative with respect to the forward
-<span class="lineno"> 5390 </span>blackForwardDerivative' :: (PlainVanillaPayoff) -&gt; (Double) -- ^forward
+<span class="lineno"> 5390 </span>blackForwardDerivativeFromPayoff :: (PlainVanillaPayoff) -&gt; (Double) -- ^forward
 <span class="lineno"> 5391 </span> -&gt; (Double) -- ^stdDev
 <span class="lineno"> 5392 </span> -&gt; (Double) -- ^discount
 <span class="lineno"> 5393 </span> -&gt; (Double) -- ^displacement
 <span class="lineno"> 5394 </span> -&gt; IO ((Double))
-<span class="lineno"> 5395 </span><span class="decl"><span class="istickedoff">blackForwardDerivative' a1 a2 a3 a4 a5 =</span>
+<span class="lineno"> 5395 </span><span class="decl"><span class="istickedoff">blackForwardDerivativeFromPayoff a1 a2 a3 a4 a5 =</span>
 <span class="lineno"> 5396 </span><span class="spaces">  </span><span class="istickedoff">withPlainVanillaPayoff a1 $ \a1' -&gt; </span>
 <span class="lineno"> 5397 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = realToFrac a2} in </span>
 <span class="lineno"> 5398 </span><span class="spaces">  </span><span class="istickedoff">let {a3' = realToFrac a3} in </span>
 <span class="lineno"> 5399 </span><span class="spaces">  </span><span class="istickedoff">let {a4' = realToFrac a4} in </span>
 <span class="lineno"> 5400 </span><span class="spaces">  </span><span class="istickedoff">let {a5' = realToFrac a5} in </span>
 <span class="lineno"> 5401 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a6' -&gt; </span>
-<span class="lineno"> 5402 </span><span class="spaces">  </span><span class="istickedoff">blackForwardDerivative''_ a1' a2' a3' a4' a5' a6' &gt;&gt;= \res -&gt;</span>
+<span class="lineno"> 5402 </span><span class="spaces">  </span><span class="istickedoff">blackForwardDerivativeFromPayoff'_ a1' a2' a3' a4' a5' a6' &gt;&gt;= \res -&gt;</span>
 <span class="lineno"> 5403 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
 <span class="lineno"> 5404 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a6'&gt;&gt;</span>
 <span class="lineno"> 5405 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
@@ -5448,13 +5448,13 @@ span.spaces    { background: white }
 <span class="lineno"> 5429 </span>
 <span class="lineno"> 5430 </span>
 <span class="lineno"> 5431 </span>-- |Approximated Black 1976 implied standard deviation following Chambers and Nawalkha, /The Financial Review/ 2001, 89-100. The at-the-money option price must be known to use this method.
-<span class="lineno"> 5432 </span>blackImpliedStdDevChambers' :: (PlainVanillaPayoff) -&gt; (Double) -- ^forward
+<span class="lineno"> 5432 </span>blackImpliedStdDevChambersFromPayoff :: (PlainVanillaPayoff) -&gt; (Double) -- ^forward
 <span class="lineno"> 5433 </span> -&gt; (Double) -- ^blackPrice
 <span class="lineno"> 5434 </span> -&gt; (Double) -- ^blackAtmPrice
 <span class="lineno"> 5435 </span> -&gt; (Double) -- ^discount
 <span class="lineno"> 5436 </span> -&gt; (Double) -- ^displacement
 <span class="lineno"> 5437 </span> -&gt; IO ((Double))
-<span class="lineno"> 5438 </span><span class="decl"><span class="istickedoff">blackImpliedStdDevChambers' a1 a2 a3 a4 a5 a6 =</span>
+<span class="lineno"> 5438 </span><span class="decl"><span class="istickedoff">blackImpliedStdDevChambersFromPayoff a1 a2 a3 a4 a5 a6 =</span>
 <span class="lineno"> 5439 </span><span class="spaces">  </span><span class="istickedoff">withPlainVanillaPayoff a1 $ \a1' -&gt; </span>
 <span class="lineno"> 5440 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = realToFrac a2} in </span>
 <span class="lineno"> 5441 </span><span class="spaces">  </span><span class="istickedoff">let {a3' = realToFrac a3} in </span>
@@ -5462,7 +5462,7 @@ span.spaces    { background: white }
 <span class="lineno"> 5443 </span><span class="spaces">  </span><span class="istickedoff">let {a5' = realToFrac a5} in </span>
 <span class="lineno"> 5444 </span><span class="spaces">  </span><span class="istickedoff">let {a6' = realToFrac a6} in </span>
 <span class="lineno"> 5445 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a7' -&gt; </span>
-<span class="lineno"> 5446 </span><span class="spaces">  </span><span class="istickedoff">blackImpliedStdDevChambers''_ a1' a2' a3' a4' a5' a6' a7' &gt;&gt;= \res -&gt;</span>
+<span class="lineno"> 5446 </span><span class="spaces">  </span><span class="istickedoff">blackImpliedStdDevChambersFromPayoff'_ a1' a2' a3' a4' a5' a6' a7' &gt;&gt;= \res -&gt;</span>
 <span class="lineno"> 5447 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
 <span class="lineno"> 5448 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a7'&gt;&gt;</span>
 <span class="lineno"> 5449 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
@@ -5494,19 +5494,19 @@ span.spaces    { background: white }
 <span class="lineno"> 5475 </span>
 <span class="lineno"> 5476 </span>
 <span class="lineno"> 5477 </span>-- |Approximated Black 1976 implied standard deviation following Radoicic and Stefanica, /An Explicit Implicit Volatility Formula/
-<span class="lineno"> 5478 </span>blackImpliedStdDevApproximationRS' :: (PlainVanillaPayoff) -&gt; (Double) -- ^forward
+<span class="lineno"> 5478 </span>blackImpliedStdDevApproximationRsFromPayoff :: (PlainVanillaPayoff) -&gt; (Double) -- ^forward
 <span class="lineno"> 5479 </span> -&gt; (Double) -- ^blackPrice
 <span class="lineno"> 5480 </span> -&gt; (Double) -- ^discount
 <span class="lineno"> 5481 </span> -&gt; (Double) -- ^displacement
 <span class="lineno"> 5482 </span> -&gt; IO ((Double))
-<span class="lineno"> 5483 </span><span class="decl"><span class="istickedoff">blackImpliedStdDevApproximationRS' a1 a2 a3 a4 a5 =</span>
+<span class="lineno"> 5483 </span><span class="decl"><span class="istickedoff">blackImpliedStdDevApproximationRsFromPayoff a1 a2 a3 a4 a5 =</span>
 <span class="lineno"> 5484 </span><span class="spaces">  </span><span class="istickedoff">withPlainVanillaPayoff a1 $ \a1' -&gt; </span>
 <span class="lineno"> 5485 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = realToFrac a2} in </span>
 <span class="lineno"> 5486 </span><span class="spaces">  </span><span class="istickedoff">let {a3' = realToFrac a3} in </span>
 <span class="lineno"> 5487 </span><span class="spaces">  </span><span class="istickedoff">let {a4' = realToFrac a4} in </span>
 <span class="lineno"> 5488 </span><span class="spaces">  </span><span class="istickedoff">let {a5' = realToFrac a5} in </span>
 <span class="lineno"> 5489 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a6' -&gt; </span>
-<span class="lineno"> 5490 </span><span class="spaces">  </span><span class="istickedoff">blackImpliedStdDevApproximationRS''_ a1' a2' a3' a4' a5' a6' &gt;&gt;= \res -&gt;</span>
+<span class="lineno"> 5490 </span><span class="spaces">  </span><span class="istickedoff">blackImpliedStdDevApproximationRsFromPayoff'_ a1' a2' a3' a4' a5' a6' &gt;&gt;= \res -&gt;</span>
 <span class="lineno"> 5491 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
 <span class="lineno"> 5492 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a6'&gt;&gt;</span>
 <span class="lineno"> 5493 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
@@ -5514,13 +5514,13 @@ span.spaces    { background: white }
 <span class="lineno"> 5495 </span>
 <span class="lineno"> 5496 </span>
 <span class="lineno"> 5497 </span>-- |Approximated Black 1976 implied standard deviation following Radoicic and Stefanica, /An Explicit Implicit Volatility Formula/
-<span class="lineno"> 5498 </span>blackImpliedStdDevApproximationRS :: (OptionType) -&gt; (Double) -- ^strike
+<span class="lineno"> 5498 </span>blackImpliedStdDevApproximationRs :: (OptionType) -&gt; (Double) -- ^strike
 <span class="lineno"> 5499 </span> -&gt; (Double) -- ^forward
 <span class="lineno"> 5500 </span> -&gt; (Double) -- ^blackPrice
 <span class="lineno"> 5501 </span> -&gt; (Double) -- ^discount
 <span class="lineno"> 5502 </span> -&gt; (Double) -- ^displacement
 <span class="lineno"> 5503 </span> -&gt; IO ((Double))
-<span class="lineno"> 5504 </span><span class="decl"><span class="istickedoff">blackImpliedStdDevApproximationRS a1 a2 a3 a4 a5 a6 =</span>
+<span class="lineno"> 5504 </span><span class="decl"><span class="istickedoff">blackImpliedStdDevApproximationRs a1 a2 a3 a4 a5 a6 =</span>
 <span class="lineno"> 5505 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = fromEnumC a1} in </span>
 <span class="lineno"> 5506 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = realToFrac a2} in </span>
 <span class="lineno"> 5507 </span><span class="spaces">  </span><span class="istickedoff">let {a3' = realToFrac a3} in </span>
@@ -5528,7 +5528,7 @@ span.spaces    { background: white }
 <span class="lineno"> 5509 </span><span class="spaces">  </span><span class="istickedoff">let {a5' = realToFrac a5} in </span>
 <span class="lineno"> 5510 </span><span class="spaces">  </span><span class="istickedoff">let {a6' = realToFrac a6} in </span>
 <span class="lineno"> 5511 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a7' -&gt; </span>
-<span class="lineno"> 5512 </span><span class="spaces">  </span><span class="istickedoff">blackImpliedStdDevApproximationRS'_ a1' a2' a3' a4' a5' a6' a7' &gt;&gt;= \res -&gt;</span>
+<span class="lineno"> 5512 </span><span class="spaces">  </span><span class="istickedoff">blackImpliedStdDevApproximationRs'_ a1' a2' a3' a4' a5' a6' a7' &gt;&gt;= \res -&gt;</span>
 <span class="lineno"> 5513 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
 <span class="lineno"> 5514 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a7'&gt;&gt;</span>
 <span class="lineno"> 5515 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
@@ -5536,7 +5536,7 @@ span.spaces    { background: white }
 <span class="lineno"> 5517 </span>
 <span class="lineno"> 5518 </span>
 <span class="lineno"> 5519 </span>-- |Black 1976 implied standard deviation by the Li-Rational-Substitution solver, started from the Radoicic-Stefanica approximation. Pass 'Nothing' for the guess to let QuantLib pick the starting point.
-<span class="lineno"> 5520 </span>blackImpliedStdDevLiRS' :: (PlainVanillaPayoff) -&gt; (Double) -- ^forward
+<span class="lineno"> 5520 </span>blackImpliedStdDevLiRsFromPayoff :: (PlainVanillaPayoff) -&gt; (Double) -- ^forward
 <span class="lineno"> 5521 </span> -&gt; (Double) -- ^blackPrice
 <span class="lineno"> 5522 </span> -&gt; (Double) -- ^discount
 <span class="lineno"> 5523 </span> -&gt; (Double) -- ^displacement
@@ -5545,7 +5545,7 @@ span.spaces    { background: white }
 <span class="lineno"> 5526 </span> -&gt; (Double) -- ^accuracy
 <span class="lineno"> 5527 </span> -&gt; (Word) -- ^maxIterations
 <span class="lineno"> 5528 </span> -&gt; IO ((Double))
-<span class="lineno"> 5529 </span><span class="decl"><span class="istickedoff">blackImpliedStdDevLiRS' a1 a2 a3 a4 a5 a6 a7 a8 a9 =</span>
+<span class="lineno"> 5529 </span><span class="decl"><span class="istickedoff">blackImpliedStdDevLiRsFromPayoff a1 a2 a3 a4 a5 a6 a7 a8 a9 =</span>
 <span class="lineno"> 5530 </span><span class="spaces">  </span><span class="istickedoff">withPlainVanillaPayoff a1 $ \a1' -&gt; </span>
 <span class="lineno"> 5531 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = realToFrac a2} in </span>
 <span class="lineno"> 5532 </span><span class="spaces">  </span><span class="istickedoff">let {a3' = realToFrac a3} in </span>
@@ -5556,7 +5556,7 @@ span.spaces    { background: white }
 <span class="lineno"> 5537 </span><span class="spaces">  </span><span class="istickedoff">let {a8' = realToFrac a8} in </span>
 <span class="lineno"> 5538 </span><span class="spaces">  </span><span class="istickedoff">let {a9' = fromIntegral a9} in </span>
 <span class="lineno"> 5539 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a10' -&gt; </span>
-<span class="lineno"> 5540 </span><span class="spaces">  </span><span class="istickedoff">blackImpliedStdDevLiRS''_ a1' a2' a3' a4' a5' a6' a7' a8' a9' a10' &gt;&gt;= \res -&gt;</span>
+<span class="lineno"> 5540 </span><span class="spaces">  </span><span class="istickedoff">blackImpliedStdDevLiRsFromPayoff'_ a1' a2' a3' a4' a5' a6' a7' a8' a9' a10' &gt;&gt;= \res -&gt;</span>
 <span class="lineno"> 5541 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
 <span class="lineno"> 5542 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a10'&gt;&gt;</span>
 <span class="lineno"> 5543 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
@@ -5564,7 +5564,7 @@ span.spaces    { background: white }
 <span class="lineno"> 5545 </span>
 <span class="lineno"> 5546 </span>
 <span class="lineno"> 5547 </span>-- |Black 1976 implied standard deviation by the Li-Rational-Substitution solver, started from the Radoicic-Stefanica approximation. Pass 'Nothing' for the guess to let QuantLib pick the starting point.
-<span class="lineno"> 5548 </span>blackImpliedStdDevLiRS :: (OptionType) -&gt; (Double) -- ^strike
+<span class="lineno"> 5548 </span>blackImpliedStdDevLiRs :: (OptionType) -&gt; (Double) -- ^strike
 <span class="lineno"> 5549 </span> -&gt; (Double) -- ^forward
 <span class="lineno"> 5550 </span> -&gt; (Double) -- ^blackPrice
 <span class="lineno"> 5551 </span> -&gt; (Double) -- ^discount
@@ -5574,7 +5574,7 @@ span.spaces    { background: white }
 <span class="lineno"> 5555 </span> -&gt; (Double) -- ^accuracy
 <span class="lineno"> 5556 </span> -&gt; (Word) -- ^maxIterations
 <span class="lineno"> 5557 </span> -&gt; IO ((Double))
-<span class="lineno"> 5558 </span><span class="decl"><span class="istickedoff">blackImpliedStdDevLiRS a1 a2 a3 a4 a5 a6 a7 a8 a9 a10 =</span>
+<span class="lineno"> 5558 </span><span class="decl"><span class="istickedoff">blackImpliedStdDevLiRs a1 a2 a3 a4 a5 a6 a7 a8 a9 a10 =</span>
 <span class="lineno"> 5559 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = fromEnumC a1} in </span>
 <span class="lineno"> 5560 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = realToFrac a2} in </span>
 <span class="lineno"> 5561 </span><span class="spaces">  </span><span class="istickedoff">let {a3' = realToFrac a3} in </span>
@@ -5586,7 +5586,7 @@ span.spaces    { background: white }
 <span class="lineno"> 5567 </span><span class="spaces">  </span><span class="istickedoff">let {a9' = realToFrac a9} in </span>
 <span class="lineno"> 5568 </span><span class="spaces">  </span><span class="istickedoff">let {a10' = fromIntegral a10} in </span>
 <span class="lineno"> 5569 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a11' -&gt; </span>
-<span class="lineno"> 5570 </span><span class="spaces">  </span><span class="istickedoff">blackImpliedStdDevLiRS'_ a1' a2' a3' a4' a5' a6' a7' a8' a9' a10' a11' &gt;&gt;= \res -&gt;</span>
+<span class="lineno"> 5570 </span><span class="spaces">  </span><span class="istickedoff">blackImpliedStdDevLiRs'_ a1' a2' a3' a4' a5' a6' a7' a8' a9' a10' a11' &gt;&gt;= \res -&gt;</span>
 <span class="lineno"> 5571 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
 <span class="lineno"> 5572 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a11'&gt;&gt;</span>
 <span class="lineno"> 5573 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
@@ -5594,17 +5594,17 @@ span.spaces    { background: white }
 <span class="lineno"> 5575 </span>
 <span class="lineno"> 5576 </span>
 <span class="lineno"> 5577 </span>-- |Black 1976 probability of being in the money in the asset martingale measure, i.e. N(d1). It is a risk-neutral probability, not the real world one.
-<span class="lineno"> 5578 </span>blackAssetItmProbability' :: (PlainVanillaPayoff) -&gt; (Double) -- ^forward
+<span class="lineno"> 5578 </span>blackAssetItmProbabilityFromPayoff :: (PlainVanillaPayoff) -&gt; (Double) -- ^forward
 <span class="lineno"> 5579 </span> -&gt; (Double) -- ^stdDev
 <span class="lineno"> 5580 </span> -&gt; (Double) -- ^displacement
 <span class="lineno"> 5581 </span> -&gt; IO ((Double))
-<span class="lineno"> 5582 </span><span class="decl"><span class="istickedoff">blackAssetItmProbability' a1 a2 a3 a4 =</span>
+<span class="lineno"> 5582 </span><span class="decl"><span class="istickedoff">blackAssetItmProbabilityFromPayoff a1 a2 a3 a4 =</span>
 <span class="lineno"> 5583 </span><span class="spaces">  </span><span class="istickedoff">withPlainVanillaPayoff a1 $ \a1' -&gt; </span>
 <span class="lineno"> 5584 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = realToFrac a2} in </span>
 <span class="lineno"> 5585 </span><span class="spaces">  </span><span class="istickedoff">let {a3' = realToFrac a3} in </span>
 <span class="lineno"> 5586 </span><span class="spaces">  </span><span class="istickedoff">let {a4' = realToFrac a4} in </span>
 <span class="lineno"> 5587 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a5' -&gt; </span>
-<span class="lineno"> 5588 </span><span class="spaces">  </span><span class="istickedoff">blackAssetItmProbability''_ a1' a2' a3' a4' a5' &gt;&gt;= \res -&gt;</span>
+<span class="lineno"> 5588 </span><span class="spaces">  </span><span class="istickedoff">blackAssetItmProbabilityFromPayoff'_ a1' a2' a3' a4' a5' &gt;&gt;= \res -&gt;</span>
 <span class="lineno"> 5589 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
 <span class="lineno"> 5590 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a5'&gt;&gt;</span>
 <span class="lineno"> 5591 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
@@ -5632,19 +5632,19 @@ span.spaces    { background: white }
 <span class="lineno"> 5613 </span>
 <span class="lineno"> 5614 </span>
 <span class="lineno"> 5615 </span>-- |Black 1976 formula for the second derivative with respect to the standard deviation. /Warning/ instead of volatility it uses standard deviation, i.e. volatility*sqrt(timeToMaturity)
-<span class="lineno"> 5616 </span>blackStdDevSecondDerivative' :: (PlainVanillaPayoff) -&gt; (Double) -- ^forward
+<span class="lineno"> 5616 </span>blackStdDevSecondDerivativeFromPayoff :: (PlainVanillaPayoff) -&gt; (Double) -- ^forward
 <span class="lineno"> 5617 </span> -&gt; (Double) -- ^stdDev
 <span class="lineno"> 5618 </span> -&gt; (Double) -- ^discount
 <span class="lineno"> 5619 </span> -&gt; (Double) -- ^displacement
 <span class="lineno"> 5620 </span> -&gt; IO ((Double))
-<span class="lineno"> 5621 </span><span class="decl"><span class="istickedoff">blackStdDevSecondDerivative' a1 a2 a3 a4 a5 =</span>
+<span class="lineno"> 5621 </span><span class="decl"><span class="istickedoff">blackStdDevSecondDerivativeFromPayoff a1 a2 a3 a4 a5 =</span>
 <span class="lineno"> 5622 </span><span class="spaces">  </span><span class="istickedoff">withPlainVanillaPayoff a1 $ \a1' -&gt; </span>
 <span class="lineno"> 5623 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = realToFrac a2} in </span>
 <span class="lineno"> 5624 </span><span class="spaces">  </span><span class="istickedoff">let {a3' = realToFrac a3} in </span>
 <span class="lineno"> 5625 </span><span class="spaces">  </span><span class="istickedoff">let {a4' = realToFrac a4} in </span>
 <span class="lineno"> 5626 </span><span class="spaces">  </span><span class="istickedoff">let {a5' = realToFrac a5} in </span>
 <span class="lineno"> 5627 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a6' -&gt; </span>
-<span class="lineno"> 5628 </span><span class="spaces">  </span><span class="istickedoff">blackStdDevSecondDerivative''_ a1' a2' a3' a4' a5' a6' &gt;&gt;= \res -&gt;</span>
+<span class="lineno"> 5628 </span><span class="spaces">  </span><span class="istickedoff">blackStdDevSecondDerivativeFromPayoff'_ a1' a2' a3' a4' a5' a6' &gt;&gt;= \res -&gt;</span>
 <span class="lineno"> 5629 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
 <span class="lineno"> 5630 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a6'&gt;&gt;</span>
 <span class="lineno"> 5631 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
@@ -5673,17 +5673,17 @@ span.spaces    { background: white }
 <span class="lineno"> 5654 </span>
 <span class="lineno"> 5655 </span>
 <span class="lineno"> 5656 </span>-- |Bachelier formula for the derivative with respect to the forward. /Warning/ the Bachelier model needs absolute volatility, not percentage volatility; standard deviation is absoluteVolatility*sqrt(timeToMaturity)
-<span class="lineno"> 5657 </span>bachelierForwardDerivative' :: (PlainVanillaPayoff) -&gt; (Double) -- ^forward
+<span class="lineno"> 5657 </span>bachelierForwardDerivativeFromPayoff :: (PlainVanillaPayoff) -&gt; (Double) -- ^forward
 <span class="lineno"> 5658 </span> -&gt; (Double) -- ^stdDev
 <span class="lineno"> 5659 </span> -&gt; (Double) -- ^discount
 <span class="lineno"> 5660 </span> -&gt; IO ((Double))
-<span class="lineno"> 5661 </span><span class="decl"><span class="istickedoff">bachelierForwardDerivative' a1 a2 a3 a4 =</span>
+<span class="lineno"> 5661 </span><span class="decl"><span class="istickedoff">bachelierForwardDerivativeFromPayoff a1 a2 a3 a4 =</span>
 <span class="lineno"> 5662 </span><span class="spaces">  </span><span class="istickedoff">withPlainVanillaPayoff a1 $ \a1' -&gt; </span>
 <span class="lineno"> 5663 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = realToFrac a2} in </span>
 <span class="lineno"> 5664 </span><span class="spaces">  </span><span class="istickedoff">let {a3' = realToFrac a3} in </span>
 <span class="lineno"> 5665 </span><span class="spaces">  </span><span class="istickedoff">let {a4' = realToFrac a4} in </span>
 <span class="lineno"> 5666 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a5' -&gt; </span>
-<span class="lineno"> 5667 </span><span class="spaces">  </span><span class="istickedoff">bachelierForwardDerivative''_ a1' a2' a3' a4' a5' &gt;&gt;= \res -&gt;</span>
+<span class="lineno"> 5667 </span><span class="spaces">  </span><span class="istickedoff">bachelierForwardDerivativeFromPayoff'_ a1' a2' a3' a4' a5' &gt;&gt;= \res -&gt;</span>
 <span class="lineno"> 5668 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
 <span class="lineno"> 5669 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a5'&gt;&gt;</span>
 <span class="lineno"> 5670 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
@@ -5755,17 +5755,17 @@ span.spaces    { background: white }
 <span class="lineno"> 5736 </span>
 <span class="lineno"> 5737 </span>
 <span class="lineno"> 5738 </span>-- |Bachelier formula for the standard deviation derivative. /Warning/ it returns the derivative with respect to the standard deviation; Bachelier vega is this times sqrt(T).
-<span class="lineno"> 5739 </span>bachelierStdDevDerivative' :: (PlainVanillaPayoff) -&gt; (Double) -- ^forward
+<span class="lineno"> 5739 </span>bachelierStdDevDerivativeFromPayoff :: (PlainVanillaPayoff) -&gt; (Double) -- ^forward
 <span class="lineno"> 5740 </span> -&gt; (Double) -- ^stdDev
 <span class="lineno"> 5741 </span> -&gt; (Double) -- ^discount
 <span class="lineno"> 5742 </span> -&gt; IO ((Double))
-<span class="lineno"> 5743 </span><span class="decl"><span class="istickedoff">bachelierStdDevDerivative' a1 a2 a3 a4 =</span>
+<span class="lineno"> 5743 </span><span class="decl"><span class="istickedoff">bachelierStdDevDerivativeFromPayoff a1 a2 a3 a4 =</span>
 <span class="lineno"> 5744 </span><span class="spaces">  </span><span class="istickedoff">withPlainVanillaPayoff a1 $ \a1' -&gt; </span>
 <span class="lineno"> 5745 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = realToFrac a2} in </span>
 <span class="lineno"> 5746 </span><span class="spaces">  </span><span class="istickedoff">let {a3' = realToFrac a3} in </span>
 <span class="lineno"> 5747 </span><span class="spaces">  </span><span class="istickedoff">let {a4' = realToFrac a4} in </span>
 <span class="lineno"> 5748 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a5' -&gt; </span>
-<span class="lineno"> 5749 </span><span class="spaces">  </span><span class="istickedoff">bachelierStdDevDerivative''_ a1' a2' a3' a4' a5' &gt;&gt;= \res -&gt;</span>
+<span class="lineno"> 5749 </span><span class="spaces">  </span><span class="istickedoff">bachelierStdDevDerivativeFromPayoff'_ a1' a2' a3' a4' a5' &gt;&gt;= \res -&gt;</span>
 <span class="lineno"> 5750 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
 <span class="lineno"> 5751 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a5'&gt;&gt;</span>
 <span class="lineno"> 5752 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
@@ -5792,15 +5792,15 @@ span.spaces    { background: white }
 <span class="lineno"> 5773 </span>
 <span class="lineno"> 5774 </span>
 <span class="lineno"> 5775 </span>-- |Bachelier probability of being in the money in the asset martingale measure, i.e. N(d). It is a risk-neutral probability, not the real world one.
-<span class="lineno"> 5776 </span>bachelierAssetItmProbability' :: (PlainVanillaPayoff) -&gt; (Double) -- ^forward
+<span class="lineno"> 5776 </span>bachelierAssetItmProbabilityFromPayoff :: (PlainVanillaPayoff) -&gt; (Double) -- ^forward
 <span class="lineno"> 5777 </span> -&gt; (Double) -- ^stdDev
 <span class="lineno"> 5778 </span> -&gt; IO ((Double))
-<span class="lineno"> 5779 </span><span class="decl"><span class="istickedoff">bachelierAssetItmProbability' a1 a2 a3 =</span>
+<span class="lineno"> 5779 </span><span class="decl"><span class="istickedoff">bachelierAssetItmProbabilityFromPayoff a1 a2 a3 =</span>
 <span class="lineno"> 5780 </span><span class="spaces">  </span><span class="istickedoff">withPlainVanillaPayoff a1 $ \a1' -&gt; </span>
 <span class="lineno"> 5781 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = realToFrac a2} in </span>
 <span class="lineno"> 5782 </span><span class="spaces">  </span><span class="istickedoff">let {a3' = realToFrac a3} in </span>
 <span class="lineno"> 5783 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a4' -&gt; </span>
-<span class="lineno"> 5784 </span><span class="spaces">  </span><span class="istickedoff">bachelierAssetItmProbability''_ a1' a2' a3' a4' &gt;&gt;= \res -&gt;</span>
+<span class="lineno"> 5784 </span><span class="spaces">  </span><span class="istickedoff">bachelierAssetItmProbabilityFromPayoff'_ a1' a2' a3' a4' &gt;&gt;= \res -&gt;</span>
 <span class="lineno"> 5785 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
 <span class="lineno"> 5786 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a4'&gt;&gt;</span>
 <span class="lineno"> 5787 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
@@ -6197,7 +6197,7 @@ span.spaces    { background: white }
 <span class="lineno"> 6178 </span>  analyticDigitalAmericanEngine'_ :: ((C2HSImp.Ptr (CGeneralizedBlackScholesProcess')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CPricingEngine)))))
 <span class="lineno"> 6179 </span>
 <span class="lineno"> 6180 </span>foreign import ccall safe &quot;QuantLib/PricingEngine.chs.h qlAnalyticDigitalAmericanKOEngine&quot;
-<span class="lineno"> 6181 </span>  analyticDigitalAmericanKOEngine'_ :: ((C2HSImp.Ptr (CGeneralizedBlackScholesProcess')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CPricingEngine)))))
+<span class="lineno"> 6181 </span>  analyticDigitalAmericanKoEngine'_ :: ((C2HSImp.Ptr (CGeneralizedBlackScholesProcess')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CPricingEngine)))))
 <span class="lineno"> 6182 </span>
 <span class="lineno"> 6183 </span>foreign import ccall safe &quot;QuantLib/PricingEngine.chs.h qlAnalyticDiscreteGeometricAveragePriceAsianEngine&quot;
 <span class="lineno"> 6184 </span>  analyticDiscreteGeometricAveragePriceAsianEngine'_ :: ((C2HSImp.Ptr (CGeneralizedBlackScholesProcess')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CPricingEngine)))))
@@ -6230,7 +6230,7 @@ span.spaces    { background: white }
 <span class="lineno"> 6211 </span>  forwardFdBlackScholesVanillaEngine'_ :: ((C2HSImp.Ptr (CGeneralizedBlackScholesProcess')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CPricingEngine)))))
 <span class="lineno"> 6212 </span>
 <span class="lineno"> 6213 </span>foreign import ccall safe &quot;QuantLib/PricingEngine.chs.h qlMCForwardEuropeanBSEngine1&quot;
-<span class="lineno"> 6214 </span>  mcForwardEuropeanBSEngine'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CGeneralizedBlackScholesProcess')) -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CPricingEngine)))))))))))))))
+<span class="lineno"> 6214 </span>  mcForwardEuropeanBsEngine'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CGeneralizedBlackScholesProcess')) -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CPricingEngine)))))))))))))))
 <span class="lineno"> 6215 </span>
 <span class="lineno"> 6216 </span>foreign import ccall safe &quot;QuantLib/PricingEngine.chs.h qlMCForwardEuropeanHestonEngine1&quot;
 <span class="lineno"> 6217 </span>  mcForwardEuropeanHestonEngine'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CHestonProcess')) -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CPricingEngine)))))))))))))))
@@ -6254,7 +6254,7 @@ span.spaces    { background: white }
 <span class="lineno"> 6235 </span>  quantoDoubleBarrierEngine'_ :: ((C2HSImp.Ptr (CGeneralizedBlackScholesProcess')) -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; ((C2HSImp.Ptr (CBlackVolTermStructure')) -&gt; ((C2HSImp.Ptr (CQuote')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CPricingEngine))))))))
 <span class="lineno"> 6236 </span>
 <span class="lineno"> 6237 </span>foreign import ccall safe &quot;QuantLib/PricingEngine.chs.h qlBlackCapFloorEngine1&quot;
-<span class="lineno"> 6238 </span>  blackCapFloorEngine''_ :: ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; ((C2HSImp.Ptr (COptionletVolatilityStructure')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CPricingEngine))))))
+<span class="lineno"> 6238 </span>  blackCapFloorEngineWithVolatilityStructure'_ :: ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; ((C2HSImp.Ptr (COptionletVolatilityStructure')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CPricingEngine))))))
 <span class="lineno"> 6239 </span>
 <span class="lineno"> 6240 </span>foreign import ccall safe &quot;QuantLib/PricingEngine.chs.h qlBlackCapFloorEngine&quot;
 <span class="lineno"> 6241 </span>  blackCapFloorEngine'_ :: ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; ((C2HSImp.Ptr (CQuote')) -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CPricingEngine))))))))
@@ -6266,10 +6266,10 @@ span.spaces    { background: white }
 <span class="lineno"> 6247 </span>  haganIrregularSwaptionEngine'_ :: ((C2HSImp.Ptr (CSwaptionVolatilityStructure')) -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CPricingEngine))))))
 <span class="lineno"> 6248 </span>
 <span class="lineno"> 6249 </span>foreign import ccall safe &quot;QuantLib/PricingEngine.chs.h qlBlackSwaptionEngine1&quot;
-<span class="lineno"> 6250 </span>  blackSwaptionEngine''_ :: ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; ((C2HSImp.Ptr (CSwaptionVolatilityStructure')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CPricingEngine))))))
+<span class="lineno"> 6250 </span>  blackSwaptionEngineWithVolatilityStructure'_ :: ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; ((C2HSImp.Ptr (CSwaptionVolatilityStructure')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CPricingEngine))))))
 <span class="lineno"> 6251 </span>
 <span class="lineno"> 6252 </span>foreign import ccall safe &quot;QuantLib/PricingEngine.chs.h qlBachelierCapFloorEngine1&quot;
-<span class="lineno"> 6253 </span>  bachelierCapFloorEngine''_ :: ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; ((C2HSImp.Ptr (COptionletVolatilityStructure')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CPricingEngine))))))
+<span class="lineno"> 6253 </span>  bachelierCapFloorEngineWithVolatilityStructure'_ :: ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; ((C2HSImp.Ptr (COptionletVolatilityStructure')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CPricingEngine))))))
 <span class="lineno"> 6254 </span>
 <span class="lineno"> 6255 </span>foreign import ccall safe &quot;QuantLib/PricingEngine.chs.h qlBachelierCapFloorEngine&quot;
 <span class="lineno"> 6256 </span>  bachelierCapFloorEngine'_ :: ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; ((C2HSImp.Ptr (CQuote')) -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CPricingEngine)))))))
@@ -6284,16 +6284,16 @@ span.spaces    { background: white }
 <span class="lineno"> 6265 </span>  yoyInflationBachelierCapFloorEngine'_ :: ((C2HSImp.Ptr (CYoYInflationIndex')) -&gt; ((C2HSImp.Ptr (CYoYOptionletVolatilitySurface')) -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CPricingEngine)))))))
 <span class="lineno"> 6266 </span>
 <span class="lineno"> 6267 </span>foreign import ccall safe &quot;QuantLib/PricingEngine.chs.h qlInterpolatingCPICapFloorEngine&quot;
-<span class="lineno"> 6268 </span>  interpolatingCPICapFloorEngine'_ :: ((C2HSImp.Ptr (CCPICapFloorTermPriceSurface')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CPricingEngine)))))
+<span class="lineno"> 6268 </span>  interpolatingCpiCapFloorEngine'_ :: ((C2HSImp.Ptr (CCPICapFloorTermPriceSurface')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CPricingEngine)))))
 <span class="lineno"> 6269 </span>
 <span class="lineno"> 6270 </span>foreign import ccall safe &quot;QuantLib/PricingEngine.chs.h qlBachelierSwaptionEngine&quot;
 <span class="lineno"> 6271 </span>  bachelierSwaptionEngine'_ :: ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; ((C2HSImp.Ptr (CQuote')) -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CPricingEngine))))))))
 <span class="lineno"> 6272 </span>
 <span class="lineno"> 6273 </span>foreign import ccall safe &quot;QuantLib/PricingEngine.chs.h qlBachelierSwaptionEngine1&quot;
-<span class="lineno"> 6274 </span>  bachelierSwaptionEngine''_ :: ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; ((C2HSImp.Ptr (CSwaptionVolatilityStructure')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CPricingEngine))))))
+<span class="lineno"> 6274 </span>  bachelierSwaptionEngineWithVolatilityStructure'_ :: ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; ((C2HSImp.Ptr (CSwaptionVolatilityStructure')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CPricingEngine))))))
 <span class="lineno"> 6275 </span>
 <span class="lineno"> 6276 </span>foreign import ccall safe &quot;QuantLib/PricingEngine.chs.h qlAnalyticBSMHullWhiteEngine&quot;
-<span class="lineno"> 6277 </span>  analyticBSMHullWhiteEngine'_ :: (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (CGeneralizedBlackScholesProcess')) -&gt; ((C2HSImp.Ptr (CHullWhite')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CPricingEngine)))))))
+<span class="lineno"> 6277 </span>  analyticBsmHullWhiteEngine'_ :: (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (CGeneralizedBlackScholesProcess')) -&gt; ((C2HSImp.Ptr (CHullWhite')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CPricingEngine)))))))
 <span class="lineno"> 6278 </span>
 <span class="lineno"> 6279 </span>foreign import ccall safe &quot;QuantLib/PricingEngine.chs.h qlAnalyticCapFloorEngine&quot;
 <span class="lineno"> 6280 </span>  analyticCapFloorEngine'_ :: ((C2HSImp.Ptr (CAffineModel')) -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CPricingEngine))))))
@@ -6350,19 +6350,19 @@ span.spaces    { background: white }
 <span class="lineno"> 6331 </span>  baroneAdesiWhaleyApproximationEngine'_ :: ((C2HSImp.Ptr (CGeneralizedBlackScholesProcess')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CPricingEngine)))))
 <span class="lineno"> 6332 </span>
 <span class="lineno"> 6333 </span>foreign import ccall safe &quot;QuantLib/PricingEngine.chs.h qlBatesDetJumpEngine1&quot;
-<span class="lineno"> 6334 </span>  batesDetJumpEngine''_ :: ((C2HSImp.Ptr (CBatesDetJumpModel')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CPricingEngine)))))))
+<span class="lineno"> 6334 </span>  batesDetJumpEngineWithTolerance'_ :: ((C2HSImp.Ptr (CBatesDetJumpModel')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CPricingEngine)))))))
 <span class="lineno"> 6335 </span>
 <span class="lineno"> 6336 </span>foreign import ccall safe &quot;QuantLib/PricingEngine.chs.h qlBatesDetJumpEngine&quot;
 <span class="lineno"> 6337 </span>  batesDetJumpEngine'_ :: ((C2HSImp.Ptr (CBatesDetJumpModel')) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CPricingEngine))))))
 <span class="lineno"> 6338 </span>
 <span class="lineno"> 6339 </span>foreign import ccall safe &quot;QuantLib/PricingEngine.chs.h qlBatesDoubleExpDetJumpEngine1&quot;
-<span class="lineno"> 6340 </span>  batesDoubleExpDetJumpEngine''_ :: ((C2HSImp.Ptr (CBatesDoubleExpDetJumpModel')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CPricingEngine)))))))
+<span class="lineno"> 6340 </span>  batesDoubleExpDetJumpEngineWithTolerance'_ :: ((C2HSImp.Ptr (CBatesDoubleExpDetJumpModel')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CPricingEngine)))))))
 <span class="lineno"> 6341 </span>
 <span class="lineno"> 6342 </span>foreign import ccall safe &quot;QuantLib/PricingEngine.chs.h qlBatesDoubleExpDetJumpEngine&quot;
 <span class="lineno"> 6343 </span>  batesDoubleExpDetJumpEngine'_ :: ((C2HSImp.Ptr (CBatesDoubleExpDetJumpModel')) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CPricingEngine))))))
 <span class="lineno"> 6344 </span>
 <span class="lineno"> 6345 </span>foreign import ccall safe &quot;QuantLib/PricingEngine.chs.h qlBatesDoubleExpEngine1&quot;
-<span class="lineno"> 6346 </span>  batesDoubleExpEngine''_ :: ((C2HSImp.Ptr (CBatesDoubleExpModel')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CPricingEngine)))))))
+<span class="lineno"> 6346 </span>  batesDoubleExpEngineWithTolerance'_ :: ((C2HSImp.Ptr (CBatesDoubleExpModel')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CPricingEngine)))))))
 <span class="lineno"> 6347 </span>
 <span class="lineno"> 6348 </span>foreign import ccall safe &quot;QuantLib/PricingEngine.chs.h qlBatesDoubleExpEngine&quot;
 <span class="lineno"> 6349 </span>  batesDoubleExpEngine'_ :: ((C2HSImp.Ptr (CBatesDoubleExpModel')) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CPricingEngine))))))
@@ -6410,10 +6410,10 @@ span.spaces    { background: white }
 <span class="lineno"> 6391 </span>  midPointCdsEngine'_ :: ((C2HSImp.Ptr (CDefaultProbabilityTermStructure')) -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CPricingEngine))))))))
 <span class="lineno"> 6392 </span>
 <span class="lineno"> 6393 </span>foreign import ccall safe &quot;QuantLib/PricingEngine.chs.h qlMidPointCDOEngine&quot;
-<span class="lineno"> 6394 </span>  midPointCDOEngine'_ :: ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CPricingEngine)))))
+<span class="lineno"> 6394 </span>  midPointCdoEngine'_ :: ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CPricingEngine)))))
 <span class="lineno"> 6395 </span>
 <span class="lineno"> 6396 </span>foreign import ccall safe &quot;QuantLib/PricingEngine.chs.h qlIntegralCDOEngine&quot;
-<span class="lineno"> 6397 </span>  integralCDOEngine'_ :: ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CPricingEngine)))))))
+<span class="lineno"> 6397 </span>  integralCdoEngine'_ :: ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CPricingEngine)))))))
 <span class="lineno"> 6398 </span>
 <span class="lineno"> 6399 </span>foreign import ccall safe &quot;QuantLib/PricingEngine.chs.h qlIntegralNtdEngine&quot;
 <span class="lineno"> 6400 </span>  integralNtdEngine'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CPricingEngine)))))))
@@ -6506,19 +6506,19 @@ span.spaces    { background: white }
 <span class="lineno"> 6487 </span>  mcDigitalEngine'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CGeneralizedBlackScholesProcess')) -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CPricingEngine)))))))))))))))
 <span class="lineno"> 6488 </span>
 <span class="lineno"> 6489 </span>foreign import ccall safe &quot;QuantLib/PricingEngine.chs.h qlMCDiscreteArithmeticAPEngine1&quot;
-<span class="lineno"> 6490 </span>  mcDiscreteArithmeticAPEngine'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CGeneralizedBlackScholesProcess')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CPricingEngine))))))))))))))
+<span class="lineno"> 6490 </span>  mcDiscreteArithmeticApEngine'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CGeneralizedBlackScholesProcess')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CPricingEngine))))))))))))))
 <span class="lineno"> 6491 </span>
 <span class="lineno"> 6492 </span>foreign import ccall safe &quot;QuantLib/PricingEngine.chs.h qlMCDiscreteArithmeticASEngine1&quot;
-<span class="lineno"> 6493 </span>  mcDiscreteArithmeticASEngine'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CGeneralizedBlackScholesProcess')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CPricingEngine)))))))))))))
+<span class="lineno"> 6493 </span>  mcDiscreteArithmeticAsEngine'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CGeneralizedBlackScholesProcess')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CPricingEngine)))))))))))))
 <span class="lineno"> 6494 </span>
 <span class="lineno"> 6495 </span>foreign import ccall safe &quot;QuantLib/PricingEngine.chs.h qlMCDiscreteGeometricAPEngine1&quot;
-<span class="lineno"> 6496 </span>  mcDiscreteGeometricAPEngine'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CGeneralizedBlackScholesProcess')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CPricingEngine)))))))))))))
+<span class="lineno"> 6496 </span>  mcDiscreteGeometricApEngine'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CGeneralizedBlackScholesProcess')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CPricingEngine)))))))))))))
 <span class="lineno"> 6497 </span>
 <span class="lineno"> 6498 </span>foreign import ccall safe &quot;QuantLib/PricingEngine.chs.h qlMCDiscreteArithmeticAPHestonEngine1&quot;
-<span class="lineno"> 6499 </span>  mcDiscreteArithmeticAPHestonEngine'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CHestonProcess')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CPricingEngine)))))))))))))))
+<span class="lineno"> 6499 </span>  mcDiscreteArithmeticApHestonEngine'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CHestonProcess')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CPricingEngine)))))))))))))))
 <span class="lineno"> 6500 </span>
 <span class="lineno"> 6501 </span>foreign import ccall safe &quot;QuantLib/PricingEngine.chs.h qlMCDiscreteGeometricAPHestonEngine1&quot;
-<span class="lineno"> 6502 </span>  mcDiscreteGeometricAPHestonEngine'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CHestonProcess')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CPricingEngine))))))))))))))
+<span class="lineno"> 6502 </span>  mcDiscreteGeometricApHestonEngine'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CHestonProcess')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CPricingEngine))))))))))))))
 <span class="lineno"> 6503 </span>
 <span class="lineno"> 6504 </span>foreign import ccall safe &quot;QuantLib/PricingEngine.chs.h qlMCEuropeanEngine1&quot;
 <span class="lineno"> 6505 </span>  mcEuropeanEngine'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CGeneralizedBlackScholesProcess')) -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CPricingEngine)))))))))))))))
@@ -6614,13 +6614,13 @@ span.spaces    { background: white }
 <span class="lineno"> 6595 </span>  binomialConvertibleEngine'_ :: (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CGeneralizedBlackScholesProcess')) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (CQuote')) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr (CDividend))) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CPricingEngine))))))))))
 <span class="lineno"> 6596 </span>
 <span class="lineno"> 6597 </span>foreign import ccall safe &quot;QuantLib/PricingEngine.chs.h qlBlackCallableFixedRateBondEngine1&quot;
-<span class="lineno"> 6598 </span>  blackCallableFixedRateBondEngine''_ :: ((C2HSImp.Ptr (CCallableBondVolatilityStructure')) -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CPricingEngine))))))
+<span class="lineno"> 6598 </span>  blackCallableFixedRateBondEngineWithVolatilityStructure'_ :: ((C2HSImp.Ptr (CCallableBondVolatilityStructure')) -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CPricingEngine))))))
 <span class="lineno"> 6599 </span>
 <span class="lineno"> 6600 </span>foreign import ccall safe &quot;QuantLib/PricingEngine.chs.h qlBlackCallableFixedRateBondEngine&quot;
 <span class="lineno"> 6601 </span>  blackCallableFixedRateBondEngine'_ :: ((C2HSImp.Ptr (CQuote')) -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CPricingEngine))))))
 <span class="lineno"> 6602 </span>
 <span class="lineno"> 6603 </span>foreign import ccall safe &quot;QuantLib/PricingEngine.chs.h qlBlackCallableZeroCouponBondEngine1&quot;
-<span class="lineno"> 6604 </span>  blackCallableZeroCouponBondEngine''_ :: ((C2HSImp.Ptr (CCallableBondVolatilityStructure')) -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CPricingEngine))))))
+<span class="lineno"> 6604 </span>  blackCallableZeroCouponBondEngineWithVolatilityStructure'_ :: ((C2HSImp.Ptr (CCallableBondVolatilityStructure')) -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CPricingEngine))))))
 <span class="lineno"> 6605 </span>
 <span class="lineno"> 6606 </span>foreign import ccall safe &quot;QuantLib/PricingEngine.chs.h qlBlackCallableZeroCouponBondEngine&quot;
 <span class="lineno"> 6607 </span>  blackCallableZeroCouponBondEngine'_ :: ((C2HSImp.Ptr (CQuote')) -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CPricingEngine))))))
@@ -6644,10 +6644,10 @@ span.spaces    { background: white }
 <span class="lineno"> 6625 </span>  qlBlackCalculatorBeta'_ :: ((C2HSImp.Ptr (CBlackCalculator')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))
 <span class="lineno"> 6626 </span>
 <span class="lineno"> 6627 </span>foreign import ccall safe &quot;QuantLib/PricingEngine.chs.h qlBlackCalculator1&quot;
-<span class="lineno"> 6628 </span>  blackCalculator''_ :: (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CBlackCalculator')))))))))
+<span class="lineno"> 6628 </span>  blackCalculator'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CBlackCalculator')))))))))
 <span class="lineno"> 6629 </span>
 <span class="lineno"> 6630 </span>foreign import ccall safe &quot;QuantLib/PricingEngine.chs.h qlBlackCalculator&quot;
-<span class="lineno"> 6631 </span>  blackCalculator'_ :: ((QlStrikedTypePayoff) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CBlackCalculator'))))))))
+<span class="lineno"> 6631 </span>  blackCalculatorFromPayoff'_ :: ((QlStrikedTypePayoff) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CBlackCalculator'))))))))
 <span class="lineno"> 6632 </span>
 <span class="lineno"> 6633 </span>foreign import ccall safe &quot;QuantLib/PricingEngine.chs.h qlBlackCalculatorDelta&quot;
 <span class="lineno"> 6634 </span>  qlBlackCalculatorDelta'_ :: ((C2HSImp.Ptr (CBlackCalculator')) -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble))))
@@ -6704,10 +6704,10 @@ span.spaces    { background: white }
 <span class="lineno"> 6685 </span>  qlBlackCalculatorVolga'_ :: ((C2HSImp.Ptr (CBlackCalculator')) -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble))))
 <span class="lineno"> 6686 </span>
 <span class="lineno"> 6687 </span>foreign import ccall safe &quot;QuantLib/PricingEngine.chs.h qlBlackScholesCalculator1&quot;
-<span class="lineno"> 6688 </span>  blackScholesCalculator''_ :: (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CBlackScholesCalculator'))))))))))
+<span class="lineno"> 6688 </span>  blackScholesCalculator'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CBlackScholesCalculator'))))))))))
 <span class="lineno"> 6689 </span>
 <span class="lineno"> 6690 </span>foreign import ccall safe &quot;QuantLib/PricingEngine.chs.h qlBlackScholesCalculator&quot;
-<span class="lineno"> 6691 </span>  blackScholesCalculator'_ :: ((QlStrikedTypePayoff) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CBlackScholesCalculator')))))))))
+<span class="lineno"> 6691 </span>  blackScholesCalculatorFromPayoff'_ :: ((QlStrikedTypePayoff) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CBlackScholesCalculator')))))))))
 <span class="lineno"> 6692 </span>
 <span class="lineno"> 6693 </span>foreign import ccall safe &quot;QuantLib/PricingEngine.chs.h qlBlackScholesCalculatorDelta&quot;
 <span class="lineno"> 6694 </span>  blackScholesDelta'_ :: ((C2HSImp.Ptr (CBlackScholesCalculator')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))
@@ -6725,10 +6725,10 @@ span.spaces    { background: white }
 <span class="lineno"> 6706 </span>  blackScholesThetaPerDay'_ :: ((C2HSImp.Ptr (CBlackScholesCalculator')) -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble))))
 <span class="lineno"> 6707 </span>
 <span class="lineno"> 6708 </span>foreign import ccall safe &quot;QuantLib/PricingEngine.chs.h qlBachelierCalculator1&quot;
-<span class="lineno"> 6709 </span>  bachelierCalculator''_ :: (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CBachelierCalculator)))))))))
+<span class="lineno"> 6709 </span>  bachelierCalculator'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CBachelierCalculator)))))))))
 <span class="lineno"> 6710 </span>
 <span class="lineno"> 6711 </span>foreign import ccall safe &quot;QuantLib/PricingEngine.chs.h qlBachelierCalculator&quot;
-<span class="lineno"> 6712 </span>  bachelierCalculator'_ :: ((QlStrikedTypePayoff) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CBachelierCalculator))))))))
+<span class="lineno"> 6712 </span>  bachelierCalculatorFromPayoff'_ :: ((QlStrikedTypePayoff) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CBachelierCalculator))))))))
 <span class="lineno"> 6713 </span>
 <span class="lineno"> 6714 </span>foreign import ccall safe &quot;QuantLib/PricingEngine.chs.h qlBachelierCalculatorAlpha&quot;
 <span class="lineno"> 6715 </span>  qlBachelierCalculatorAlpha'_ :: ((C2HSImp.Ptr (CBachelierCalculator)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))
@@ -6803,31 +6803,31 @@ span.spaces    { background: white }
 <span class="lineno"> 6784 </span>  atmStrike'_ :: ((C2HSImp.Ptr (CBlackDeltaCalculator)) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble))))
 <span class="lineno"> 6785 </span>
 <span class="lineno"> 6786 </span>foreign import ccall safe &quot;QuantLib/PricingEngine.chs.h qlQuantLibBlackFormula1&quot;
-<span class="lineno"> 6787 </span>  blackFormula''_ :: ((QlPlainVanillaPayoff) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))))))
+<span class="lineno"> 6787 </span>  blackFormulaFromPayoff'_ :: ((QlPlainVanillaPayoff) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))))))
 <span class="lineno"> 6788 </span>
 <span class="lineno"> 6789 </span>foreign import ccall safe &quot;QuantLib/PricingEngine.chs.h qlQuantLibBlackFormula&quot;
 <span class="lineno"> 6790 </span>  blackFormula'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble))))))))
 <span class="lineno"> 6791 </span>
 <span class="lineno"> 6792 </span>foreign import ccall safe &quot;QuantLib/PricingEngine.chs.h qlQuantLibBlackFormulaCashItmProbability1&quot;
-<span class="lineno"> 6793 </span>  blackCashItmProbability''_ :: ((QlPlainVanillaPayoff) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble))))))
+<span class="lineno"> 6793 </span>  blackCashItmProbabilityFromPayoff'_ :: ((QlPlainVanillaPayoff) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble))))))
 <span class="lineno"> 6794 </span>
 <span class="lineno"> 6795 </span>foreign import ccall safe &quot;QuantLib/PricingEngine.chs.h qlQuantLibBlackFormulaCashItmProbability&quot;
 <span class="lineno"> 6796 </span>  blackCashItmProbability'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))))))
 <span class="lineno"> 6797 </span>
 <span class="lineno"> 6798 </span>foreign import ccall safe &quot;QuantLib/PricingEngine.chs.h qlQuantLibBlackFormulaImpliedStdDev1&quot;
-<span class="lineno"> 6799 </span>  blackImpliedStdDev''_ :: ((QlPlainVanillaPayoff) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble))))))))))
+<span class="lineno"> 6799 </span>  blackImpliedStdDevFromPayoff'_ :: ((QlPlainVanillaPayoff) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble))))))))))
 <span class="lineno"> 6800 </span>
 <span class="lineno"> 6801 </span>foreign import ccall safe &quot;QuantLib/PricingEngine.chs.h qlQuantLibBlackFormulaImpliedStdDev&quot;
 <span class="lineno"> 6802 </span>  blackImpliedStdDev'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))))))))))
 <span class="lineno"> 6803 </span>
 <span class="lineno"> 6804 </span>foreign import ccall safe &quot;QuantLib/PricingEngine.chs.h qlQuantLibBlackFormulaImpliedStdDevApproximation1&quot;
-<span class="lineno"> 6805 </span>  blackImpliedStdDevApproximation''_ :: ((QlPlainVanillaPayoff) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))))))
+<span class="lineno"> 6805 </span>  blackImpliedStdDevApproximationFromPayoff'_ :: ((QlPlainVanillaPayoff) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))))))
 <span class="lineno"> 6806 </span>
 <span class="lineno"> 6807 </span>foreign import ccall safe &quot;QuantLib/PricingEngine.chs.h qlQuantLibBlackFormulaImpliedStdDevApproximation&quot;
 <span class="lineno"> 6808 </span>  blackImpliedStdDevApproximation'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble))))))))
 <span class="lineno"> 6809 </span>
 <span class="lineno"> 6810 </span>foreign import ccall safe &quot;QuantLib/PricingEngine.chs.h qlQuantLibBlackFormulaStdDevDerivative1&quot;
-<span class="lineno"> 6811 </span>  blackStdDevDerivative''_ :: ((QlPlainVanillaPayoff) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))))))
+<span class="lineno"> 6811 </span>  blackStdDevDerivativeFromPayoff'_ :: ((QlPlainVanillaPayoff) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))))))
 <span class="lineno"> 6812 </span>
 <span class="lineno"> 6813 </span>foreign import ccall safe &quot;QuantLib/PricingEngine.chs.h qlQuantLibBlackFormulaStdDevDerivative&quot;
 <span class="lineno"> 6814 </span>  blackStdDevDerivative'_ :: (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))))))
@@ -6836,49 +6836,49 @@ span.spaces    { background: white }
 <span class="lineno"> 6817 </span>  blackVolDerivative'_ :: (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble))))))))
 <span class="lineno"> 6818 </span>
 <span class="lineno"> 6819 </span>foreign import ccall safe &quot;QuantLib/PricingEngine.chs.h qlQuantLibBachelierBlackFormula1&quot;
-<span class="lineno"> 6820 </span>  bachelierBlackFormula''_ :: ((QlPlainVanillaPayoff) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble))))))
+<span class="lineno"> 6820 </span>  bachelierBlackFormulaFromPayoff'_ :: ((QlPlainVanillaPayoff) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble))))))
 <span class="lineno"> 6821 </span>
 <span class="lineno"> 6822 </span>foreign import ccall safe &quot;QuantLib/PricingEngine.chs.h qlQuantLibBachelierBlackFormula&quot;
 <span class="lineno"> 6823 </span>  bachelierBlackFormula'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))))))
 <span class="lineno"> 6824 </span>
 <span class="lineno"> 6825 </span>foreign import ccall safe &quot;QuantLib/PricingEngine.chs.h qlQuantLibBlackFormulaForwardDerivative1&quot;
-<span class="lineno"> 6826 </span>  blackForwardDerivative''_ :: ((QlPlainVanillaPayoff) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))))))
+<span class="lineno"> 6826 </span>  blackForwardDerivativeFromPayoff'_ :: ((QlPlainVanillaPayoff) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))))))
 <span class="lineno"> 6827 </span>
 <span class="lineno"> 6828 </span>foreign import ccall safe &quot;QuantLib/PricingEngine.chs.h qlQuantLibBlackFormulaForwardDerivative&quot;
 <span class="lineno"> 6829 </span>  blackForwardDerivative'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble))))))))
 <span class="lineno"> 6830 </span>
 <span class="lineno"> 6831 </span>foreign import ccall safe &quot;QuantLib/PricingEngine.chs.h qlQuantLibBlackFormulaImpliedStdDevChambers1&quot;
-<span class="lineno"> 6832 </span>  blackImpliedStdDevChambers''_ :: ((QlPlainVanillaPayoff) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble))))))))
+<span class="lineno"> 6832 </span>  blackImpliedStdDevChambersFromPayoff'_ :: ((QlPlainVanillaPayoff) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble))))))))
 <span class="lineno"> 6833 </span>
 <span class="lineno"> 6834 </span>foreign import ccall safe &quot;QuantLib/PricingEngine.chs.h qlQuantLibBlackFormulaImpliedStdDevChambers&quot;
 <span class="lineno"> 6835 </span>  blackImpliedStdDevChambers'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))))))))
 <span class="lineno"> 6836 </span>
 <span class="lineno"> 6837 </span>foreign import ccall safe &quot;QuantLib/PricingEngine.chs.h qlQuantLibBlackFormulaImpliedStdDevApproximationRS1&quot;
-<span class="lineno"> 6838 </span>  blackImpliedStdDevApproximationRS''_ :: ((QlPlainVanillaPayoff) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))))))
+<span class="lineno"> 6838 </span>  blackImpliedStdDevApproximationRsFromPayoff'_ :: ((QlPlainVanillaPayoff) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))))))
 <span class="lineno"> 6839 </span>
 <span class="lineno"> 6840 </span>foreign import ccall safe &quot;QuantLib/PricingEngine.chs.h qlQuantLibBlackFormulaImpliedStdDevApproximationRS&quot;
-<span class="lineno"> 6841 </span>  blackImpliedStdDevApproximationRS'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble))))))))
+<span class="lineno"> 6841 </span>  blackImpliedStdDevApproximationRs'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble))))))))
 <span class="lineno"> 6842 </span>
 <span class="lineno"> 6843 </span>foreign import ccall safe &quot;QuantLib/PricingEngine.chs.h qlQuantLibBlackFormulaImpliedStdDevLiRS1&quot;
-<span class="lineno"> 6844 </span>  blackImpliedStdDevLiRS''_ :: ((QlPlainVanillaPayoff) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))))))))))
+<span class="lineno"> 6844 </span>  blackImpliedStdDevLiRsFromPayoff'_ :: ((QlPlainVanillaPayoff) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))))))))))
 <span class="lineno"> 6845 </span>
 <span class="lineno"> 6846 </span>foreign import ccall safe &quot;QuantLib/PricingEngine.chs.h qlQuantLibBlackFormulaImpliedStdDevLiRS&quot;
-<span class="lineno"> 6847 </span>  blackImpliedStdDevLiRS'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble))))))))))))
+<span class="lineno"> 6847 </span>  blackImpliedStdDevLiRs'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble))))))))))))
 <span class="lineno"> 6848 </span>
 <span class="lineno"> 6849 </span>foreign import ccall safe &quot;QuantLib/PricingEngine.chs.h qlQuantLibBlackFormulaAssetItmProbability1&quot;
-<span class="lineno"> 6850 </span>  blackAssetItmProbability''_ :: ((QlPlainVanillaPayoff) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble))))))
+<span class="lineno"> 6850 </span>  blackAssetItmProbabilityFromPayoff'_ :: ((QlPlainVanillaPayoff) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble))))))
 <span class="lineno"> 6851 </span>
 <span class="lineno"> 6852 </span>foreign import ccall safe &quot;QuantLib/PricingEngine.chs.h qlQuantLibBlackFormulaAssetItmProbability&quot;
 <span class="lineno"> 6853 </span>  blackAssetItmProbability'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))))))
 <span class="lineno"> 6854 </span>
 <span class="lineno"> 6855 </span>foreign import ccall safe &quot;QuantLib/PricingEngine.chs.h qlQuantLibBlackFormulaStdDevSecondDerivative1&quot;
-<span class="lineno"> 6856 </span>  blackStdDevSecondDerivative''_ :: ((QlPlainVanillaPayoff) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))))))
+<span class="lineno"> 6856 </span>  blackStdDevSecondDerivativeFromPayoff'_ :: ((QlPlainVanillaPayoff) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))))))
 <span class="lineno"> 6857 </span>
 <span class="lineno"> 6858 </span>foreign import ccall safe &quot;QuantLib/PricingEngine.chs.h qlQuantLibBlackFormulaStdDevSecondDerivative&quot;
 <span class="lineno"> 6859 </span>  blackStdDevSecondDerivative'_ :: (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))))))
 <span class="lineno"> 6860 </span>
 <span class="lineno"> 6861 </span>foreign import ccall safe &quot;QuantLib/PricingEngine.chs.h qlQuantLibBachelierBlackFormulaForwardDerivative1&quot;
-<span class="lineno"> 6862 </span>  bachelierForwardDerivative''_ :: ((QlPlainVanillaPayoff) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble))))))
+<span class="lineno"> 6862 </span>  bachelierForwardDerivativeFromPayoff'_ :: ((QlPlainVanillaPayoff) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble))))))
 <span class="lineno"> 6863 </span>
 <span class="lineno"> 6864 </span>foreign import ccall safe &quot;QuantLib/PricingEngine.chs.h qlQuantLibBachelierBlackFormulaForwardDerivative&quot;
 <span class="lineno"> 6865 </span>  bachelierForwardDerivative'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))))))
@@ -6890,13 +6890,13 @@ span.spaces    { background: white }
 <span class="lineno"> 6871 </span>  bachelierImpliedVolChoi'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble))))))))
 <span class="lineno"> 6872 </span>
 <span class="lineno"> 6873 </span>foreign import ccall safe &quot;QuantLib/PricingEngine.chs.h qlQuantLibBachelierBlackFormulaStdDevDerivative1&quot;
-<span class="lineno"> 6874 </span>  bachelierStdDevDerivative''_ :: ((QlPlainVanillaPayoff) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble))))))
+<span class="lineno"> 6874 </span>  bachelierStdDevDerivativeFromPayoff'_ :: ((QlPlainVanillaPayoff) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble))))))
 <span class="lineno"> 6875 </span>
 <span class="lineno"> 6876 </span>foreign import ccall safe &quot;QuantLib/PricingEngine.chs.h qlQuantLibBachelierBlackFormulaStdDevDerivative&quot;
 <span class="lineno"> 6877 </span>  bachelierStdDevDerivative'_ :: (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble))))))
 <span class="lineno"> 6878 </span>
 <span class="lineno"> 6879 </span>foreign import ccall safe &quot;QuantLib/PricingEngine.chs.h qlQuantLibBachelierBlackFormulaAssetItmProbability1&quot;
-<span class="lineno"> 6880 </span>  bachelierAssetItmProbability''_ :: ((QlPlainVanillaPayoff) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))))
+<span class="lineno"> 6880 </span>  bachelierAssetItmProbabilityFromPayoff'_ :: ((QlPlainVanillaPayoff) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))))
 <span class="lineno"> 6881 </span>
 <span class="lineno"> 6882 </span>foreign import ccall safe &quot;QuantLib/PricingEngine.chs.h qlQuantLibBachelierBlackFormulaAssetItmProbability&quot;
 <span class="lineno"> 6883 </span>  bachelierAssetItmProbability'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble))))))

@@ -103,14 +103,14 @@ span.spaces    { background: white }
 <span class="lineno">   84 </span>  , bpsFromYield
 <span class="lineno">   85 </span>  , bps
 <span class="lineno">   86 </span>  , cleanPrice
-<span class="lineno">   87 </span>  , cleanPrice'
+<span class="lineno">   87 </span>  , cleanPriceWithZSpread
 <span class="lineno">   88 </span>  , convexity
 <span class="lineno">   89 </span>  , duration
 <span class="lineno">   90 </span>  , nextCashFlowAmount
 <span class="lineno">   91 </span>  , previousCashFlowAmount
 <span class="lineno">   92 </span>  , referencePeriodEnd
 <span class="lineno">   93 </span>  , referencePeriodStart
-<span class="lineno">   94 </span>  , yieldFromPrice'
+<span class="lineno">   94 </span>  , yieldFromPriceWithGuess
 <span class="lineno">   95 </span>  , yieldValueBasisPoint
 <span class="lineno">   96 </span>  , zSpread
 <span class="lineno">   97 </span>
@@ -1052,11 +1052,11 @@ span.spaces    { background: white }
 <span class="lineno"> 1033 </span>
 <span class="lineno"> 1034 </span>
 <span class="lineno"> 1035 </span>-- |clean price given a discount curve, a Z-spread over it, compounding and frequency
-<span class="lineno"> 1036 </span>cleanPrice' :: (GenBond b) -&gt; (GenYieldTermStructure y) -- ^discount
+<span class="lineno"> 1036 </span>cleanPriceWithZSpread :: (GenBond b) -&gt; (GenYieldTermStructure y) -- ^discount
 <span class="lineno"> 1037 </span> -&gt; (Double) -- ^zSpread
 <span class="lineno"> 1038 </span> -&gt; (Compounding) -&gt; (Frequency) -&gt; (Day) -- ^settlementDate
 <span class="lineno"> 1039 </span> -&gt; IO ((Double))
-<span class="lineno"> 1040 </span><span class="decl"><span class="nottickedoff">cleanPrice' a1 a2 a3 a4 a5 a6 =</span>
+<span class="lineno"> 1040 </span><span class="decl"><span class="nottickedoff">cleanPriceWithZSpread a1 a2 a3 a4 a5 a6 =</span>
 <span class="lineno"> 1041 </span><span class="spaces">  </span><span class="nottickedoff">withBond a1 $ \a1' -&gt; </span>
 <span class="lineno"> 1042 </span><span class="spaces">  </span><span class="nottickedoff">withYieldTermStructure a2 $ \a2' -&gt; </span>
 <span class="lineno"> 1043 </span><span class="spaces">  </span><span class="nottickedoff">let {a3' = realToFrac a3} in </span>
@@ -1064,7 +1064,7 @@ span.spaces    { background: white }
 <span class="lineno"> 1045 </span><span class="spaces">  </span><span class="nottickedoff">let {a5' = (fromIntegral . fromEnum) a5} in </span>
 <span class="lineno"> 1046 </span><span class="spaces">  </span><span class="nottickedoff">withDay a6 $ \a6' -&gt; </span>
 <span class="lineno"> 1047 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a7' -&gt; </span>
-<span class="lineno"> 1048 </span><span class="spaces">  </span><span class="nottickedoff">cleanPrice''_ a1' a2' a3' a4' a5' a6' a7' &gt;&gt;= \res -&gt;</span>
+<span class="lineno"> 1048 </span><span class="spaces">  </span><span class="nottickedoff">cleanPriceWithZSpread'_ a1' a2' a3' a4' a5' a6' a7' &gt;&gt;= \res -&gt;</span>
 <span class="lineno"> 1049 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = realToFrac res} in</span>
 <span class="lineno"> 1050 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a7'&gt;&gt;</span>
 <span class="lineno"> 1051 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
@@ -1170,12 +1170,12 @@ span.spaces    { background: white }
 <span class="lineno"> 1151 </span>
 <span class="lineno"> 1152 </span>
 <span class="lineno"> 1153 </span>-- |yield given a (clean) price and settlement date, solved to the given accuracy
-<span class="lineno"> 1154 </span>yieldFromPrice' :: (GenBond b) -&gt; (Double,BondPriceType) -&gt; (DayCounter) -&gt; (Compounding) -&gt; (Frequency) -&gt; (Day) -- ^settlementDate
+<span class="lineno"> 1154 </span>yieldFromPriceWithGuess :: (GenBond b) -&gt; (Double,BondPriceType) -&gt; (DayCounter) -&gt; (Compounding) -&gt; (Frequency) -&gt; (Day) -- ^settlementDate
 <span class="lineno"> 1155 </span> -&gt; (Double) --  ^accuracy
 <span class="lineno"> 1156 </span> -&gt; (Word) -- ^maxIterations
 <span class="lineno"> 1157 </span> -&gt; (Double) -- ^guess
 <span class="lineno"> 1158 </span> -&gt; IO ((Double))
-<span class="lineno"> 1159 </span><span class="decl"><span class="nottickedoff">yieldFromPrice' a1 a2 a3 a4 a5 a6 a7 a8 a9 =</span>
+<span class="lineno"> 1159 </span><span class="decl"><span class="nottickedoff">yieldFromPriceWithGuess a1 a2 a3 a4 a5 a6 a7 a8 a9 =</span>
 <span class="lineno"> 1160 </span><span class="spaces">  </span><span class="nottickedoff">withBond a1 $ \a1' -&gt; </span>
 <span class="lineno"> 1161 </span><span class="spaces">  </span><span class="nottickedoff">let {(a2'1, a2'2) = fromEnumDouble a2} in </span>
 <span class="lineno"> 1162 </span><span class="spaces">  </span><span class="nottickedoff">withDayCounter a3 $ \a3' -&gt; </span>
@@ -1186,7 +1186,7 @@ span.spaces    { background: white }
 <span class="lineno"> 1167 </span><span class="spaces">  </span><span class="nottickedoff">let {a8' = fromIntegral a8} in </span>
 <span class="lineno"> 1168 </span><span class="spaces">  </span><span class="nottickedoff">let {a9' = realToFrac a9} in </span>
 <span class="lineno"> 1169 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a10' -&gt; </span>
-<span class="lineno"> 1170 </span><span class="spaces">  </span><span class="nottickedoff">yieldFromPrice''_ a1' a2'1  a2'2 a3' a4' a5' a6' a7' a8' a9' a10' &gt;&gt;= \res -&gt;</span>
+<span class="lineno"> 1170 </span><span class="spaces">  </span><span class="nottickedoff">yieldFromPriceWithGuess'_ a1' a2'1  a2'2 a3' a4' a5' a6' a7' a8' a9' a10' &gt;&gt;= \res -&gt;</span>
 <span class="lineno"> 1171 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = realToFrac res} in</span>
 <span class="lineno"> 1172 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a10'&gt;&gt;</span>
 <span class="lineno"> 1173 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
@@ -1773,7 +1773,7 @@ span.spaces    { background: white }
 <span class="lineno"> 1754 </span>  cleanPrice'_ :: ((C2HSImp.Ptr (CBond')) -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))))
 <span class="lineno"> 1755 </span>
 <span class="lineno"> 1756 </span>foreign import ccall safe &quot;QuantLib/Instrument/Bond.chs.h qlBondFunctionsCleanPrice3&quot;
-<span class="lineno"> 1757 </span>  cleanPrice''_ :: ((C2HSImp.Ptr (CBond')) -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble))))))))
+<span class="lineno"> 1757 </span>  cleanPriceWithZSpread'_ :: ((C2HSImp.Ptr (CBond')) -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble))))))))
 <span class="lineno"> 1758 </span>
 <span class="lineno"> 1759 </span>foreign import ccall safe &quot;QuantLib/Instrument/Bond.chs.h qlBondFunctionsCleanPrice4&quot;
 <span class="lineno"> 1760 </span>  cleanPriceFromYield'_ :: ((C2HSImp.Ptr (CBond')) -&gt; ((C2HSImp.Ptr (CInterestRate)) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))))
@@ -1797,7 +1797,7 @@ span.spaces    { background: white }
 <span class="lineno"> 1778 </span>  referencePeriodStart'_ :: ((C2HSImp.Ptr (CBond')) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CInt))))
 <span class="lineno"> 1779 </span>
 <span class="lineno"> 1780 </span>foreign import ccall safe &quot;QuantLib/Instrument/Bond.chs.h qlBondFunctionsYield2&quot;
-<span class="lineno"> 1781 </span>  yieldFromPrice''_ :: ((C2HSImp.Ptr (CBond')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble))))))))))))
+<span class="lineno"> 1781 </span>  yieldFromPriceWithGuess'_ :: ((C2HSImp.Ptr (CBond')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble))))))))))))
 <span class="lineno"> 1782 </span>
 <span class="lineno"> 1783 </span>foreign import ccall safe &quot;QuantLib/Instrument/Bond.chs.h qlBondFunctionsYieldValueBasisPoint&quot;
 <span class="lineno"> 1784 </span>  yieldValueBasisPoint'_ :: ((C2HSImp.Ptr (CBond')) -&gt; ((C2HSImp.Ptr (CInterestRate)) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))))

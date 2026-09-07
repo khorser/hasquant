@@ -47,10 +47,10 @@ span.spaces    { background: white }
 <span class="lineno">   28 </span>  , iborCoupon
 <span class="lineno">   29 </span>  , IborCoupon
 <span class="lineno">   30 </span>  , AverageBMACoupon
-<span class="lineno">   31 </span>  , averageBMACoupon
-<span class="lineno">   32 </span>  , averageBMACouponAsFloatingRateCoupon
-<span class="lineno">   33 </span>  , averageBMACouponFixingDates
-<span class="lineno">   34 </span>  , averageBMACouponIndexFixings
+<span class="lineno">   31 </span>  , averageBmaCoupon
+<span class="lineno">   32 </span>  , averageBmaCouponAsFloatingRateCoupon
+<span class="lineno">   33 </span>  , averageBmaCouponFixingDates
+<span class="lineno">   34 </span>  , averageBmaCouponIndexFixings
 <span class="lineno">   35 </span>  , cappedFlooredCoupon
 <span class="lineno">   36 </span>  , StrippedCappedFlooredCoupon
 <span class="lineno">   37 </span>  , strippedCappedFlooredCoupon
@@ -129,7 +129,7 @@ span.spaces    { background: white }
 <span class="lineno">  110 </span>  , nextCouponRate
 <span class="lineno">  111 </span>  , nominal
 <span class="lineno">  112 </span>  , npvFromYield
-<span class="lineno">  113 </span>  , npv'
+<span class="lineno">  113 </span>  , npvWithZSpread
 <span class="lineno">  114 </span>  , npv
 <span class="lineno">  115 </span>  , npvBps
 <span class="lineno">  116 </span>  , previousCashFlowAmount
@@ -145,17 +145,17 @@ span.spaces    { background: white }
 <span class="lineno">  126 </span>  , couponAccrualStartDates
 <span class="lineno">  127 </span>
 <span class="lineno">  128 </span>  , fixedDividend
-<span class="lineno">  129 </span>  , fractionalDividend'
+<span class="lineno">  129 </span>  , fractionalDividendFromRate
 <span class="lineno">  130 </span>  , fractionalDividend
 <span class="lineno">  131 </span>
-<span class="lineno">  132 </span>  , averageBMALeg
+<span class="lineno">  132 </span>  , averageBmaLeg
 <span class="lineno">  133 </span>  , fixedRateLeg
 <span class="lineno">  134 </span>  , iborLeg
-<span class="lineno">  135 </span>  , iborLegFull
+<span class="lineno">  135 </span>  , iborLegWithOptions
 <span class="lineno">  136 </span>  , IborLegOpts(..)
 <span class="lineno">  137 </span>  , defaultIborLegOpts
 <span class="lineno">  138 </span>  , cmsLeg
-<span class="lineno">  139 </span>  , cmsLegFull
+<span class="lineno">  139 </span>  , cmsLegWithOptions
 <span class="lineno">  140 </span>  , CmsLegOpts(..)
 <span class="lineno">  141 </span>  , defaultCmsLegOpts
 <span class="lineno">  142 </span>  , FloatingRateCoupon
@@ -209,10 +209,10 @@ span.spaces    { background: white }
 <span class="lineno">  190 </span>  , cpiLeg
 <span class="lineno">  191 </span>  , yoyInflationLeg
 <span class="lineno">  192 </span>  , YoYInflationCouponPricer
-<span class="lineno">  193 </span>  , blackYoYInflationCouponPricer
-<span class="lineno">  194 </span>  , unitDisplacedBlackYoYInflationCouponPricer
-<span class="lineno">  195 </span>  , bachelierYoYInflationCouponPricer
-<span class="lineno">  196 </span>  , setYoYInflationCouponPricer
+<span class="lineno">  193 </span>  , blackYoyInflationCouponPricer
+<span class="lineno">  194 </span>  , unitDisplacedBlackYoyInflationCouponPricer
+<span class="lineno">  195 </span>  , bachelierYoyInflationCouponPricer
+<span class="lineno">  196 </span>  , setYoyInflationCouponPricer
 <span class="lineno">  197 </span>  , ZeroInflationCashFlow
 <span class="lineno">  198 </span>  , zeroInflationCashFlow
 <span class="lineno">  199 </span>  , zeroInflationCashFlowAsCashFlow
@@ -379,7 +379,7 @@ span.spaces    { background: white }
 <span class="lineno">  360 </span>-- call site -- see OISRateHelperOpts (QuantLib.TermStructure.Yield) for the worked
 <span class="lineno">  361 </span>-- example this follows. The Calendar fields are Maybe here (unlike the raw bindings'
 <span class="lineno">  362 </span>-- plain Calendar) since a real Calendar is only obtainable in IO (`calendar Null`) and
-<span class="lineno">  363 </span>-- can't live in a pure default record value -- iborLegFull/cmsLegFull substitute a fresh
+<span class="lineno">  363 </span>-- can't live in a pure default record value -- iborLegWithOptions/cmsLegWithOptions substitute a fresh
 <span class="lineno">  364 </span>-- Null calendar for Nothing. This splice must stay textually before every
 <span class="lineno">  365 </span>-- {#fun#}-generated binding in this file: c2hs always appends its raw foreign-import
 <span class="lineno">  366 </span>-- stubs at the physical end of the generated module regardless of where in the .chs a
@@ -411,11 +411,11 @@ span.spaces    { background: white }
 <span class="lineno">  392 </span>$<span class="nottickedoff"><span class="istickedoff"><span class="nottickedoff"><span class="istickedoff"><span class="nottickedoff"><span class="istickedoff">(deriveOptionsRecord &quot;DigitalCmsLegOpts&quot; []</span></span></span></span></span></span>
 <span class="lineno">  393 </span><span class="spaces">  </span><span class="nottickedoff"><span class="istickedoff"><span class="nottickedoff"><span class="istickedoff"><span class="nottickedoff"><span class="istickedoff">[ (&quot;dcmlCallStrikes&quot;, [t|[Double]|], [|[]|])</span></span></span></span></span></span>
 <span class="lineno">  394 </span><span class="spaces">  </span><span class="nottickedoff"><span class="istickedoff"><span class="nottickedoff"><span class="istickedoff"><span class="nottickedoff"><span class="istickedoff">, (&quot;dcmlCallPosition&quot;, [t|PositionType|], [|Long|])</span></span></span></span></span></span>
-<span class="lineno">  395 </span><span class="spaces">  </span><span class="nottickedoff"><span class="istickedoff"><span class="nottickedoff"><span class="istickedoff"><span class="nottickedoff"><span class="istickedoff">, (&quot;dcmlCallATM&quot;, [t|Bool|], [|False|])</span></span></span></span></span></span>
+<span class="lineno">  395 </span><span class="spaces">  </span><span class="nottickedoff"><span class="istickedoff"><span class="nottickedoff"><span class="istickedoff"><span class="nottickedoff"><span class="istickedoff">, (&quot;dcmlCallAtm&quot;, [t|Bool|], [|False|])</span></span></span></span></span></span>
 <span class="lineno">  396 </span><span class="spaces">  </span><span class="nottickedoff"><span class="istickedoff"><span class="nottickedoff"><span class="istickedoff"><span class="nottickedoff"><span class="istickedoff">, (&quot;dcmlCallPayoffs&quot;, [t|[Double]|], [|[]|])</span></span></span></span></span></span>
 <span class="lineno">  397 </span><span class="spaces">  </span><span class="nottickedoff"><span class="istickedoff"><span class="nottickedoff"><span class="istickedoff"><span class="nottickedoff"><span class="istickedoff">, (&quot;dcmlPutStrikes&quot;, [t|[Double]|], [|[]|])</span></span></span></span></span></span>
 <span class="lineno">  398 </span><span class="spaces">  </span><span class="nottickedoff"><span class="istickedoff"><span class="nottickedoff"><span class="istickedoff"><span class="nottickedoff"><span class="istickedoff">, (&quot;dcmlPutPosition&quot;, [t|PositionType|], [|Long|])</span></span></span></span></span></span>
-<span class="lineno">  399 </span><span class="spaces">  </span><span class="nottickedoff"><span class="istickedoff"><span class="nottickedoff"><span class="istickedoff"><span class="nottickedoff"><span class="istickedoff">, (&quot;dcmlPutATM&quot;, [t|Bool|], [|False|])</span></span></span></span></span></span>
+<span class="lineno">  399 </span><span class="spaces">  </span><span class="nottickedoff"><span class="istickedoff"><span class="nottickedoff"><span class="istickedoff"><span class="nottickedoff"><span class="istickedoff">, (&quot;dcmlPutAtm&quot;, [t|Bool|], [|False|])</span></span></span></span></span></span>
 <span class="lineno">  400 </span><span class="spaces">  </span><span class="nottickedoff"><span class="istickedoff"><span class="nottickedoff"><span class="istickedoff"><span class="nottickedoff"><span class="istickedoff">, (&quot;dcmlPutPayoffs&quot;, [t|[Double]|], [|[]|])</span></span></span></span></span></span>
 <span class="lineno">  401 </span><span class="spaces">  </span><span class="nottickedoff"><span class="istickedoff"><span class="nottickedoff"><span class="istickedoff"><span class="nottickedoff"><span class="istickedoff">, (&quot;dcmlReplication&quot;, [t|Maybe DigitalReplication|], [|Nothing|])</span></span></span></span></span></span>
 <span class="lineno">  402 </span><span class="spaces">  </span><span class="nottickedoff"><span class="istickedoff"><span class="nottickedoff"><span class="istickedoff"><span class="nottickedoff"><span class="istickedoff">, (&quot;dcmlNakedOption&quot;, [t|Bool|], [|False|])</span></span></span></span></span></span>
@@ -427,19 +427,19 @@ span.spaces    { background: white }
 <span class="lineno">  408 </span>$<span class="nottickedoff"><span class="istickedoff"><span class="nottickedoff"><span class="istickedoff"><span class="nottickedoff"><span class="istickedoff">(deriveOptionsRecord &quot;DigitalCmsSpreadLegOpts&quot; []</span></span></span></span></span></span>
 <span class="lineno">  409 </span><span class="spaces">  </span><span class="nottickedoff"><span class="istickedoff"><span class="nottickedoff"><span class="istickedoff"><span class="nottickedoff"><span class="istickedoff">[ (&quot;dcmslCallStrikes&quot;, [t|[Double]|], [|[]|])</span></span></span></span></span></span>
 <span class="lineno">  410 </span><span class="spaces">  </span><span class="nottickedoff"><span class="istickedoff"><span class="nottickedoff"><span class="istickedoff"><span class="nottickedoff"><span class="istickedoff">, (&quot;dcmslCallPosition&quot;, [t|PositionType|], [|Long|])</span></span></span></span></span></span>
-<span class="lineno">  411 </span><span class="spaces">  </span><span class="nottickedoff"><span class="istickedoff"><span class="nottickedoff"><span class="istickedoff"><span class="nottickedoff"><span class="istickedoff">, (&quot;dcmslCallATM&quot;, [t|Bool|], [|False|])</span></span></span></span></span></span>
+<span class="lineno">  411 </span><span class="spaces">  </span><span class="nottickedoff"><span class="istickedoff"><span class="nottickedoff"><span class="istickedoff"><span class="nottickedoff"><span class="istickedoff">, (&quot;dcmslCallAtm&quot;, [t|Bool|], [|False|])</span></span></span></span></span></span>
 <span class="lineno">  412 </span><span class="spaces">  </span><span class="nottickedoff"><span class="istickedoff"><span class="nottickedoff"><span class="istickedoff"><span class="nottickedoff"><span class="istickedoff">, (&quot;dcmslCallPayoffs&quot;, [t|[Double]|], [|[]|])</span></span></span></span></span></span>
 <span class="lineno">  413 </span><span class="spaces">  </span><span class="nottickedoff"><span class="istickedoff"><span class="nottickedoff"><span class="istickedoff"><span class="nottickedoff"><span class="istickedoff">, (&quot;dcmslPutStrikes&quot;, [t|[Double]|], [|[]|])</span></span></span></span></span></span>
 <span class="lineno">  414 </span><span class="spaces">  </span><span class="nottickedoff"><span class="istickedoff"><span class="nottickedoff"><span class="istickedoff"><span class="nottickedoff"><span class="istickedoff">, (&quot;dcmslPutPosition&quot;, [t|PositionType|], [|Long|])</span></span></span></span></span></span>
-<span class="lineno">  415 </span><span class="spaces">  </span><span class="nottickedoff"><span class="istickedoff"><span class="nottickedoff"><span class="istickedoff"><span class="nottickedoff"><span class="istickedoff">, (&quot;dcmslPutATM&quot;, [t|Bool|], [|False|])</span></span></span></span></span></span>
+<span class="lineno">  415 </span><span class="spaces">  </span><span class="nottickedoff"><span class="istickedoff"><span class="nottickedoff"><span class="istickedoff"><span class="nottickedoff"><span class="istickedoff">, (&quot;dcmslPutAtm&quot;, [t|Bool|], [|False|])</span></span></span></span></span></span>
 <span class="lineno">  416 </span><span class="spaces">  </span><span class="nottickedoff"><span class="istickedoff"><span class="nottickedoff"><span class="istickedoff"><span class="nottickedoff"><span class="istickedoff">, (&quot;dcmslPutPayoffs&quot;, [t|[Double]|], [|[]|])</span></span></span></span></span></span>
 <span class="lineno">  417 </span><span class="spaces">  </span><span class="nottickedoff"><span class="istickedoff"><span class="nottickedoff"><span class="istickedoff"><span class="nottickedoff"><span class="istickedoff">, (&quot;dcmslReplication&quot;, [t|Maybe DigitalReplication|], [|Nothing|])</span></span></span></span></span></span>
 <span class="lineno">  418 </span><span class="spaces">  </span><span class="nottickedoff"><span class="istickedoff"><span class="nottickedoff"><span class="istickedoff"><span class="nottickedoff"><span class="istickedoff">, (&quot;dcmslNakedOption&quot;, [t|Bool|], [|False|])</span></span></span></span></span></span>
 <span class="lineno">  419 </span><span class="spaces">  </span><span class="nottickedoff"><span class="istickedoff"><span class="nottickedoff"><span class="istickedoff"><span class="nottickedoff"><span class="istickedoff">])</span></span></span></span></span></span>
 <span class="lineno">  420 </span>
 <span class="lineno">  421 </span>$<span class="nottickedoff">(deriveOptionsRecord &quot;DigitalIborLegOpts&quot; []</span>
-<span class="lineno">  422 </span><span class="spaces">  </span><span class="nottickedoff">[ (&quot;dilCallStrikes&quot;, [t|[Double]|], [|[]|]), (&quot;dilCallPosition&quot;, [t|PositionType|], [|Long|]), (&quot;dilCallATM&quot;, [t|Bool|], [|False|]), (&quot;dilCallPayoffs&quot;, [t|[Double]|], [|[]|])</span>
-<span class="lineno">  423 </span><span class="spaces">  </span><span class="nottickedoff">, (&quot;dilPutStrikes&quot;, [t|[Double]|], [|[]|]), (&quot;dilPutPosition&quot;, [t|PositionType|], [|Long|]), (&quot;dilPutATM&quot;, [t|Bool|], [|False|]), (&quot;dilPutPayoffs&quot;, [t|[Double]|], [|[]|])</span>
+<span class="lineno">  422 </span><span class="spaces">  </span><span class="nottickedoff">[ (&quot;dilCallStrikes&quot;, [t|[Double]|], [|[]|]), (&quot;dilCallPosition&quot;, [t|PositionType|], [|Long|]), (&quot;dilCallAtm&quot;, [t|Bool|], [|False|]), (&quot;dilCallPayoffs&quot;, [t|[Double]|], [|[]|])</span>
+<span class="lineno">  423 </span><span class="spaces">  </span><span class="nottickedoff">, (&quot;dilPutStrikes&quot;, [t|[Double]|], [|[]|]), (&quot;dilPutPosition&quot;, [t|PositionType|], [|Long|]), (&quot;dilPutAtm&quot;, [t|Bool|], [|False|]), (&quot;dilPutPayoffs&quot;, [t|[Double]|], [|[]|])</span>
 <span class="lineno">  424 </span><span class="spaces">  </span><span class="nottickedoff">, (&quot;dilReplication&quot;, [t|Maybe DigitalReplication|], [|Nothing|]), (&quot;dilNakedOption&quot;, [t|Bool|], [|False|]) ])</span>
 <span class="lineno">  425 </span>
 <span class="lineno">  426 </span>$<span class="nottickedoff"><span class="istickedoff">(deriveOptionsRecord &quot;MultipleResetsLegOpts&quot; []</span></span>
@@ -641,7 +641,7 @@ span.spaces    { background: white }
 <span class="lineno">  622 </span>
 <span class="lineno">  623 </span>
 <span class="lineno">  624 </span>-- |A BMA-index coupon with explicitly supplied accrual and reference dates.
-<span class="lineno">  625 </span>averageBMACoupon :: (Day) -- ^paymentDate
+<span class="lineno">  625 </span>averageBmaCoupon :: (Day) -- ^paymentDate
 <span class="lineno">  626 </span> -&gt; (Double) -- ^nominal
 <span class="lineno">  627 </span> -&gt; (Day) -- ^accrualStartDate
 <span class="lineno">  628 </span> -&gt; (Day) -- ^accrualEndDate
@@ -652,7 +652,7 @@ span.spaces    { background: white }
 <span class="lineno">  633 </span> -&gt; (Maybe Day) -- ^referencePeriodEnd
 <span class="lineno">  634 </span> -&gt; (DayCounter) -- ^dayCounter
 <span class="lineno">  635 </span> -&gt; IO ((AverageBMACoupon))
-<span class="lineno">  636 </span><span class="decl"><span class="istickedoff">averageBMACoupon a1 a2 a3 a4 a5 a6 a7 a8 a9 a10 =</span>
+<span class="lineno">  636 </span><span class="decl"><span class="istickedoff">averageBmaCoupon a1 a2 a3 a4 a5 a6 a7 a8 a9 a10 =</span>
 <span class="lineno">  637 </span><span class="spaces">  </span><span class="istickedoff">withDay a1 $ \a1' -&gt; </span>
 <span class="lineno">  638 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = realToFrac a2} in </span>
 <span class="lineno">  639 </span><span class="spaces">  </span><span class="istickedoff">withDay a3 $ \a3' -&gt; </span>
@@ -664,7 +664,7 @@ span.spaces    { background: white }
 <span class="lineno">  645 </span><span class="spaces">  </span><span class="istickedoff">withMaybeDay a9 $ \a9' -&gt; </span>
 <span class="lineno">  646 </span><span class="spaces">  </span><span class="istickedoff">withDayCounter a10 $ \a10' -&gt; </span>
 <span class="lineno">  647 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a11' -&gt; </span>
-<span class="lineno">  648 </span><span class="spaces">  </span><span class="istickedoff">averageBMACoupon'_ a1' a2' a3' a4' a5' a6' a7' a8' a9' a10' a11' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  648 </span><span class="spaces">  </span><span class="istickedoff">averageBmaCoupon'_ a1' a2' a3' a4' a5' a6' a7' a8' a9' a10' a11' &gt;&gt;= \res -&gt;</span>
 <span class="lineno">  649 </span><span class="spaces">  </span><span class="istickedoff">peekAverageBMACoupon res &gt;&gt;= \res' -&gt;</span>
 <span class="lineno">  650 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a11'&gt;&gt;</span>
 <span class="lineno">  651 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
@@ -672,35 +672,35 @@ span.spaces    { background: white }
 <span class="lineno">  653 </span>
 <span class="lineno">  654 </span>
 <span class="lineno">  655 </span>-- |Widen an 'AverageBMACoupon' to the generic 'FloatingRateCoupon'.
-<span class="lineno">  656 </span>averageBMACouponAsFloatingRateCoupon :: (AverageBMACoupon) -&gt; IO ((FloatingRateCoupon))
-<span class="lineno">  657 </span><span class="decl"><span class="nottickedoff">averageBMACouponAsFloatingRateCoupon a1 =</span>
+<span class="lineno">  656 </span>averageBmaCouponAsFloatingRateCoupon :: (AverageBMACoupon) -&gt; IO ((FloatingRateCoupon))
+<span class="lineno">  657 </span><span class="decl"><span class="nottickedoff">averageBmaCouponAsFloatingRateCoupon a1 =</span>
 <span class="lineno">  658 </span><span class="spaces">  </span><span class="nottickedoff">withAverageBMACoupon a1 $ \a1' -&gt; </span>
-<span class="lineno">  659 </span><span class="spaces">  </span><span class="nottickedoff">averageBMACouponAsFloatingRateCoupon'_ a1' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  659 </span><span class="spaces">  </span><span class="nottickedoff">averageBmaCouponAsFloatingRateCoupon'_ a1' &gt;&gt;= \res -&gt;</span>
 <span class="lineno">  660 </span><span class="spaces">  </span><span class="nottickedoff">peekFloatingRateCoupon res &gt;&gt;= \res' -&gt;</span>
 <span class="lineno">  661 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
 <span class="lineno">  662 </span>
 <span class="lineno">  663 </span>
 <span class="lineno">  664 </span>
 <span class="lineno">  665 </span>-- |The fixing dates of the individual BMA rates being averaged over this coupon's accrual period.
-<span class="lineno">  666 </span>averageBMACouponFixingDates :: (AverageBMACoupon) -&gt; IO (([Day]))
-<span class="lineno">  667 </span><span class="decl"><span class="istickedoff">averageBMACouponFixingDates a1 =</span>
+<span class="lineno">  666 </span>averageBmaCouponFixingDates :: (AverageBMACoupon) -&gt; IO (([Day]))
+<span class="lineno">  667 </span><span class="decl"><span class="istickedoff">averageBmaCouponFixingDates a1 =</span>
 <span class="lineno">  668 </span><span class="spaces">  </span><span class="istickedoff">withAverageBMACoupon a1 $ \a1' -&gt; </span>
 <span class="lineno">  669 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a2'1, a2'2) -&gt; </span>
 <span class="lineno">  670 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
-<span class="lineno">  671 </span><span class="spaces">  </span><span class="istickedoff">averageBMACouponFixingDates'_ a1' a2'1  a2'2 a3' &gt;&gt;</span>
+<span class="lineno">  671 </span><span class="spaces">  </span><span class="istickedoff">averageBmaCouponFixingDates'_ a1' a2'1  a2'2 a3' &gt;&gt;</span>
 <span class="lineno">  672 </span><span class="spaces">  </span><span class="istickedoff">peekDayArray  a2'1  a2'2&gt;&gt;= \a2'' -&gt; </span>
 <span class="lineno">  673 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
 <span class="lineno">  674 </span><span class="spaces">  </span><span class="istickedoff">return (a2'')</span></span>
 <span class="lineno">  675 </span>
 <span class="lineno">  676 </span>
 <span class="lineno">  677 </span>
-<span class="lineno">  678 </span>-- |The individual BMA fixings being averaged, in the same order as 'averageBMACouponFixingDates'.
-<span class="lineno">  679 </span>averageBMACouponIndexFixings :: (AverageBMACoupon) -&gt; IO (([Double]))
-<span class="lineno">  680 </span><span class="decl"><span class="istickedoff">averageBMACouponIndexFixings a1 =</span>
+<span class="lineno">  678 </span>-- |The individual BMA fixings being averaged, in the same order as 'averageBmaCouponFixingDates'.
+<span class="lineno">  679 </span>averageBmaCouponIndexFixings :: (AverageBMACoupon) -&gt; IO (([Double]))
+<span class="lineno">  680 </span><span class="decl"><span class="istickedoff">averageBmaCouponIndexFixings a1 =</span>
 <span class="lineno">  681 </span><span class="spaces">  </span><span class="istickedoff">withAverageBMACoupon a1 $ \a1' -&gt; </span>
 <span class="lineno">  682 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a2'1, a2'2) -&gt; </span>
 <span class="lineno">  683 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
-<span class="lineno">  684 </span><span class="spaces">  </span><span class="istickedoff">averageBMACouponIndexFixings'_ a1' a2'1  a2'2 a3' &gt;&gt;</span>
+<span class="lineno">  684 </span><span class="spaces">  </span><span class="istickedoff">averageBmaCouponIndexFixings'_ a1' a2'1  a2'2 a3' &gt;&gt;</span>
 <span class="lineno">  685 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a2'1  a2'2&gt;&gt;= \a2'' -&gt; </span>
 <span class="lineno">  686 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
 <span class="lineno">  687 </span><span class="spaces">  </span><span class="istickedoff">return (a2'')</span></span>
@@ -1950,12 +1950,12 @@ span.spaces    { background: white }
 <span class="lineno"> 1931 </span>
 <span class="lineno"> 1932 </span>-- |NPV of the cash flows.
 <span class="lineno"> 1933 </span>-- For details on z-spread refer to: &quot;Credit Spreads Explained&quot;, Lehman Brothers European Fixed Income Research - March 2004, D. O'KaneThe NPV is the sum of the cash flows, each discounted according to the z-spreaded term structure. The result is affected by the choice of the z-spread compounding and the relative frequency and day counter.
-<span class="lineno"> 1934 </span>npv' :: (GenLeg l) -&gt; (GenYieldTermStructure y) -&gt; (Double) -- ^zSpread
+<span class="lineno"> 1934 </span>npvWithZSpread :: (GenLeg l) -&gt; (GenYieldTermStructure y) -&gt; (Double) -- ^zSpread
 <span class="lineno"> 1935 </span> -&gt; (Compounding) -&gt; (Frequency) -&gt; (Bool) -- ^includeSettlementDateFlows
 <span class="lineno"> 1936 </span> -&gt; (Maybe Day) -- ^settlementDate
 <span class="lineno"> 1937 </span> -&gt; (Maybe Day) -- ^npvDate
 <span class="lineno"> 1938 </span> -&gt; IO ((Double))
-<span class="lineno"> 1939 </span><span class="decl"><span class="istickedoff">npv' a1 a2 a3 a4 a5 a6 a7 a8 =</span>
+<span class="lineno"> 1939 </span><span class="decl"><span class="istickedoff">npvWithZSpread a1 a2 a3 a4 a5 a6 a7 a8 =</span>
 <span class="lineno"> 1940 </span><span class="spaces">  </span><span class="istickedoff">withLeg a1 $ \a1' -&gt; </span>
 <span class="lineno"> 1941 </span><span class="spaces">  </span><span class="istickedoff">withYieldTermStructure a2 $ \a2' -&gt; </span>
 <span class="lineno"> 1942 </span><span class="spaces">  </span><span class="istickedoff">let {a3' = realToFrac a3} in </span>
@@ -1965,7 +1965,7 @@ span.spaces    { background: white }
 <span class="lineno"> 1946 </span><span class="spaces">  </span><span class="istickedoff">withMaybeDay a7 $ \a7' -&gt; </span>
 <span class="lineno"> 1947 </span><span class="spaces">  </span><span class="istickedoff">withMaybeDay a8 $ \a8' -&gt; </span>
 <span class="lineno"> 1948 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a9' -&gt; </span>
-<span class="lineno"> 1949 </span><span class="spaces">  </span><span class="istickedoff">npv''_ a1' a2' a3' a4' a5' a6' a7' a8' a9' &gt;&gt;= \res -&gt;</span>
+<span class="lineno"> 1949 </span><span class="spaces">  </span><span class="istickedoff">npvWithZSpread'_ a1' a2' a3' a4' a5' a6' a7' a8' a9' &gt;&gt;= \res -&gt;</span>
 <span class="lineno"> 1950 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
 <span class="lineno"> 1951 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a9'&gt;&gt;</span>
 <span class="lineno"> 1952 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
@@ -2204,16 +2204,16 @@ span.spaces    { background: white }
 <span class="lineno"> 2185 </span>
 <span class="lineno"> 2186 </span>
 <span class="lineno"> 2187 </span>-- |Predetermined cash flow paying /rate/ times /nominal/ at /date/.
-<span class="lineno"> 2188 </span>fractionalDividend' :: (Double) -- ^rate
+<span class="lineno"> 2188 </span>fractionalDividendFromRate :: (Double) -- ^rate
 <span class="lineno"> 2189 </span> -&gt; (Double) -- ^nominal
 <span class="lineno"> 2190 </span> -&gt; (Day) -- ^date
 <span class="lineno"> 2191 </span> -&gt; IO ((Dividend))
-<span class="lineno"> 2192 </span><span class="decl"><span class="nottickedoff">fractionalDividend' a1 a2 a3 =</span>
+<span class="lineno"> 2192 </span><span class="decl"><span class="nottickedoff">fractionalDividendFromRate a1 a2 a3 =</span>
 <span class="lineno"> 2193 </span><span class="spaces">  </span><span class="nottickedoff">let {a1' = realToFrac a1} in </span>
 <span class="lineno"> 2194 </span><span class="spaces">  </span><span class="nottickedoff">let {a2' = realToFrac a2} in </span>
 <span class="lineno"> 2195 </span><span class="spaces">  </span><span class="nottickedoff">withDay a3 $ \a3' -&gt; </span>
 <span class="lineno"> 2196 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a4' -&gt; </span>
-<span class="lineno"> 2197 </span><span class="spaces">  </span><span class="nottickedoff">fractionalDividend''_ a1' a2' a3' a4' &gt;&gt;= \res -&gt;</span>
+<span class="lineno"> 2197 </span><span class="spaces">  </span><span class="nottickedoff">fractionalDividendFromRate'_ a1' a2' a3' a4' &gt;&gt;= \res -&gt;</span>
 <span class="lineno"> 2198 </span><span class="spaces">  </span><span class="nottickedoff">peekDividend res &gt;&gt;= \res' -&gt;</span>
 <span class="lineno"> 2199 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a4'&gt;&gt;</span>
 <span class="lineno"> 2200 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
@@ -2236,11 +2236,11 @@ span.spaces    { background: white }
 <span class="lineno"> 2217 </span>
 <span class="lineno"> 2218 </span>
 <span class="lineno"> 2219 </span>-- |Build a leg of average-BMA coupons.
-<span class="lineno"> 2220 </span>averageBMALeg :: (Schedule) -&gt; (BMAIndex) -&gt; (NonEmpty Double) -- ^notionals
+<span class="lineno"> 2220 </span>averageBmaLeg :: (Schedule) -&gt; (BMAIndex) -&gt; (NonEmpty Double) -- ^notionals
 <span class="lineno"> 2221 </span> -&gt; (DayCounter) -&gt; (BusinessDayConvention) -&gt; ([Double]) -- ^gearings
 <span class="lineno"> 2222 </span> -&gt; ([Double]) -- ^spreads
 <span class="lineno"> 2223 </span> -&gt; IO ((Leg))
-<span class="lineno"> 2224 </span><span class="decl"><span class="nottickedoff">averageBMALeg a1 a2 a3 a4 a5 a6 a7 =</span>
+<span class="lineno"> 2224 </span><span class="decl"><span class="nottickedoff">averageBmaLeg a1 a2 a3 a4 a5 a6 a7 =</span>
 <span class="lineno"> 2225 </span><span class="spaces">  </span><span class="nottickedoff">withSchedule a1 $ \a1' -&gt; </span>
 <span class="lineno"> 2226 </span><span class="spaces">  </span><span class="nottickedoff">withBMAIndex a2 $ \a2' -&gt; </span>
 <span class="lineno"> 2227 </span><span class="spaces">  </span><span class="nottickedoff">withNonEmptyDoubleArray a3 $ \(a3'1, a3'2) -&gt; </span>
@@ -2249,7 +2249,7 @@ span.spaces    { background: white }
 <span class="lineno"> 2230 </span><span class="spaces">  </span><span class="nottickedoff">withDoubleArray a6 $ \(a6'1, a6'2) -&gt; </span>
 <span class="lineno"> 2231 </span><span class="spaces">  </span><span class="nottickedoff">withDoubleArray a7 $ \(a7'1, a7'2) -&gt; </span>
 <span class="lineno"> 2232 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a8' -&gt; </span>
-<span class="lineno"> 2233 </span><span class="spaces">  </span><span class="nottickedoff">averageBMALeg'_ a1' a2' a3'1  a3'2 a4' a5' a6'1  a6'2 a7'1  a7'2 a8' &gt;&gt;= \res -&gt;</span>
+<span class="lineno"> 2233 </span><span class="spaces">  </span><span class="nottickedoff">averageBmaLeg'_ a1' a2' a3'1  a3'2 a4' a5' a6'1  a6'2 a7'1  a7'2 a8' &gt;&gt;= \res -&gt;</span>
 <span class="lineno"> 2234 </span><span class="spaces">  </span><span class="nottickedoff">peekLeg res &gt;&gt;= \res' -&gt;</span>
 <span class="lineno"> 2235 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a8'&gt;&gt;</span>
 <span class="lineno"> 2236 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
@@ -2283,7 +2283,7 @@ span.spaces    { background: white }
 <span class="lineno"> 2264 </span>-- |iborLeg keeps its original 12-arg signature -- existing callers are unaffected -- but
 <span class="lineno"> 2265 </span>-- now delegates to iborLeg_, the raw binding widened to IborLeg's full builder surface,
 <span class="lineno"> 2266 </span>-- hardcoding upstream's own defaults for the params iborLeg doesn't expose. Use
-<span class="lineno"> 2267 </span>-- 'iborLegFull' to reach those (payment lag\/calendar, ex-coupon period, fixing
+<span class="lineno"> 2267 </span>-- 'iborLegWithOptions' to reach those (payment lag\/calendar, ex-coupon period, fixing
 <span class="lineno"> 2268 </span>-- convention, indexed\/at-par coupons) via 'IborLegOpts'.
 <span class="lineno"> 2269 </span>iborLeg :: Schedule -&gt; GenIborIndex ibor -&gt; NonEmpty Double -&gt; DayCounter -&gt; BusinessDayConvention
 <span class="lineno"> 2270 </span>  -&gt; [Word] -&gt; [Double] -&gt; [Double] -&gt; [Double] -&gt; [Double] -&gt; Bool -&gt; Bool -&gt; IO Leg
@@ -2295,17 +2295,17 @@ span.spaces    { background: white }
 <span class="lineno"> 2276 </span><span class="spaces">    </span><span class="istickedoff">(ilgFixingConvention defaultIborLegOpts) (ilgUseIndexedCoupons defaultIborLegOpts)</span></span>
 <span class="lineno"> 2277 </span>
 <span class="lineno"> 2278 </span>-- |'iborLeg' widened to every 'IborLeg' builder-method param via 'IborLegOpts'.
-<span class="lineno"> 2279 </span>iborLegFull :: Schedule -&gt; GenIborIndex ibor -&gt; NonEmpty Double -&gt; DayCounter -&gt; BusinessDayConvention
+<span class="lineno"> 2279 </span>iborLegWithOptions :: Schedule -&gt; GenIborIndex ibor -&gt; NonEmpty Double -&gt; DayCounter -&gt; BusinessDayConvention
 <span class="lineno"> 2280 </span>  -&gt; [Word] -&gt; [Double] -&gt; [Double] -&gt; [Double] -&gt; [Double] -&gt; Bool -&gt; Bool -&gt; IborLegOpts
 <span class="lineno"> 2281 </span>  -&gt; IO Leg
-<span class="lineno"> 2282 </span><span class="decl"><span class="istickedoff">iborLegFull schedule idx notionals dc adj fixingDays gearings spreads caps floors inArrears zp opts = do</span>
+<span class="lineno"> 2282 </span><span class="decl"><span class="istickedoff">iborLegWithOptions schedule idx notionals dc adj fixingDays gearings spreads caps floors inArrears zp opts = do</span>
 <span class="lineno"> 2283 </span><span class="spaces">  </span><span class="istickedoff">cal &lt;- calendar Null</span>
 <span class="lineno"> 2284 </span><span class="spaces">  </span><span class="istickedoff">iborLeg_ schedule idx notionals dc adj fixingDays gearings spreads caps floors inArrears zp</span>
 <span class="lineno"> 2285 </span><span class="spaces">    </span><span class="istickedoff">(ilgPaymentLag opts) (fromMaybe cal (ilgPaymentCalendar opts)) (ilgExCouponPeriod opts)</span>
 <span class="lineno"> 2286 </span><span class="spaces">    </span><span class="istickedoff">(fromMaybe cal (ilgExCouponCalendar opts)) (ilgExCouponConvention opts)</span>
 <span class="lineno"> 2287 </span><span class="spaces">    </span><span class="istickedoff">(ilgExCouponEndOfMonth opts) (ilgFixingConvention opts) (ilgUseIndexedCoupons opts)</span></span>
 <span class="lineno"> 2288 </span>
-<span class="lineno"> 2289 </span>-- |Raw binding for 'iborLeg'\/'iborLegFull': builds a leg of capped\/floored Ibor-rate coupons.
+<span class="lineno"> 2289 </span>-- |Raw binding for 'iborLeg'\/'iborLegWithOptions': builds a leg of capped\/floored Ibor-rate coupons.
 <span class="lineno"> 2290 </span>iborLeg_ :: (Schedule) -&gt; (GenIborIndex ibor) -&gt; (NonEmpty Double) -- ^notionals
 <span class="lineno"> 2291 </span> -&gt; (DayCounter) -&gt; (BusinessDayConvention) -- ^paymentAdjustment
 <span class="lineno"> 2292 </span> -&gt; ([Word]) -- ^fixingDays
@@ -2354,7 +2354,7 @@ span.spaces    { background: white }
 <span class="lineno"> 2335 </span>
 <span class="lineno"> 2336 </span>
 <span class="lineno"> 2337 </span>-- |CMS leg builder (analog of 'iborLeg'), 12-arg core shape -- same defaults-hardcoding
-<span class="lineno"> 2338 </span>-- pattern as 'iborLeg' for the params not in this signature. Use 'cmsLegFull' to reach
+<span class="lineno"> 2338 </span>-- pattern as 'iborLeg' for the params not in this signature. Use 'cmsLegWithOptions' to reach
 <span class="lineno"> 2339 </span>-- them ('CmsLegOpts').
 <span class="lineno"> 2340 </span>cmsLeg :: Schedule -&gt; GenSwapIndex sidx -&gt; NonEmpty Double -&gt; DayCounter -&gt; BusinessDayConvention
 <span class="lineno"> 2341 </span>  -&gt; [Word] -&gt; [Double] -&gt; [Double] -&gt; [Double] -&gt; [Double] -&gt; Bool -&gt; Bool -&gt; IO Leg
@@ -2365,16 +2365,16 @@ span.spaces    { background: white }
 <span class="lineno"> 2346 </span><span class="spaces">    </span><span class="istickedoff">(cmslExCouponEndOfMonth defaultCmsLegOpts) (cmslFixingConvention defaultCmsLegOpts)</span></span>
 <span class="lineno"> 2347 </span>
 <span class="lineno"> 2348 </span>-- |'cmsLeg' widened to every 'CmsLeg' builder-method param via 'CmsLegOpts'.
-<span class="lineno"> 2349 </span>cmsLegFull :: Schedule -&gt; GenSwapIndex sidx -&gt; NonEmpty Double -&gt; DayCounter -&gt; BusinessDayConvention
+<span class="lineno"> 2349 </span>cmsLegWithOptions :: Schedule -&gt; GenSwapIndex sidx -&gt; NonEmpty Double -&gt; DayCounter -&gt; BusinessDayConvention
 <span class="lineno"> 2350 </span>  -&gt; [Word] -&gt; [Double] -&gt; [Double] -&gt; [Double] -&gt; [Double] -&gt; Bool -&gt; Bool -&gt; CmsLegOpts
 <span class="lineno"> 2351 </span>  -&gt; IO Leg
-<span class="lineno"> 2352 </span><span class="decl"><span class="istickedoff">cmsLegFull schedule idx notionals dc adj fixingDays gearings spreads caps floors inArrears zp opts = do</span>
+<span class="lineno"> 2352 </span><span class="decl"><span class="istickedoff">cmsLegWithOptions schedule idx notionals dc adj fixingDays gearings spreads caps floors inArrears zp opts = do</span>
 <span class="lineno"> 2353 </span><span class="spaces">  </span><span class="istickedoff">cal &lt;- calendar Null</span>
 <span class="lineno"> 2354 </span><span class="spaces">  </span><span class="istickedoff">cmsLeg_ schedule idx notionals dc adj fixingDays gearings spreads caps floors inArrears zp</span>
 <span class="lineno"> 2355 </span><span class="spaces">    </span><span class="istickedoff">(cmslExCouponPeriod opts) (fromMaybe cal (cmslExCouponCalendar opts))</span>
 <span class="lineno"> 2356 </span><span class="spaces">    </span><span class="istickedoff">(cmslExCouponConvention opts) (cmslExCouponEndOfMonth opts) (cmslFixingConvention opts)</span></span>
 <span class="lineno"> 2357 </span>
-<span class="lineno"> 2358 </span>-- |Raw binding for 'cmsLeg'\/'cmsLegFull': builds a leg of capped\/floored CMS-rate coupons.
+<span class="lineno"> 2358 </span>-- |Raw binding for 'cmsLeg'\/'cmsLegWithOptions': builds a leg of capped\/floored CMS-rate coupons.
 <span class="lineno"> 2359 </span>cmsLeg_ :: (Schedule) -&gt; (GenSwapIndex sidx) -&gt; (NonEmpty Double) -- ^notionals
 <span class="lineno"> 2360 </span> -&gt; (DayCounter) -&gt; (BusinessDayConvention) -- ^paymentAdjustment
 <span class="lineno"> 2361 </span> -&gt; ([Word]) -- ^fixingDays
@@ -2502,8 +2502,8 @@ span.spaces    { background: white }
 <span class="lineno"> 2483 </span>
 <span class="lineno"> 2484 </span>-- |Year-on-year inflation-linked coupons (a 'YoYInflationCoupon' leg). Non-empty /caps/\//floors/
 <span class="lineno"> 2485 </span>-- build 'CappedFlooredYoYInflationCoupon's instead of plain ones -- but /any/ resulting coupon
-<span class="lineno"> 2486 </span>-- (capped or not) still needs a pricer set via 'setYoYInflationCouponPricer' before its
-<span class="lineno"> 2487 </span>-- 'QuantLib.CashFlow.npv'\/'amount' can be computed: upstream's @InflationCoupon::rate()@
+<span class="lineno"> 2486 </span>-- (capped or not) still needs a pricer set via 'setYoyInflationCouponPricer' before its
+<span class="lineno"> 2487 </span>-- 'QuantLib.CashFlow.npvWithZSpread\/'amount' can be computed: upstream's @InflationCoupon::rate()@
 <span class="lineno"> 2488 </span>-- requires @pricer_@ unconditionally, not just for the capped\/floored case (confirmed by reading
 <span class="lineno"> 2489 </span>-- @inflationcoupon.cpp@). CPI-leg ('cpiLeg') caps\/floors have no equivalent in QL 1.43 (no
 <span class="lineno"> 2490 </span>-- @CappedFlooredCPICoupon@ class exists upstream, see README.md's TODO) -- this is a
@@ -2950,13 +2950,13 @@ span.spaces    { background: white }
 <span class="lineno"> 2931 </span>
 <span class="lineno"> 2932 </span>
 <span class="lineno"> 2933 </span>-- |Black-formula pricer for capped\/floored 'yoyInflationLeg' coupons.
-<span class="lineno"> 2934 </span>blackYoYInflationCouponPricer :: (YoYOptionletVolatilitySurface) -&gt; (GenYieldTermStructure y) -- ^nominalTermStructure
+<span class="lineno"> 2934 </span>blackYoyInflationCouponPricer :: (YoYOptionletVolatilitySurface) -&gt; (GenYieldTermStructure y) -- ^nominalTermStructure
 <span class="lineno"> 2935 </span> -&gt; IO ((YoYInflationCouponPricer))
-<span class="lineno"> 2936 </span><span class="decl"><span class="istickedoff">blackYoYInflationCouponPricer a1 a2 =</span>
+<span class="lineno"> 2936 </span><span class="decl"><span class="istickedoff">blackYoyInflationCouponPricer a1 a2 =</span>
 <span class="lineno"> 2937 </span><span class="spaces">  </span><span class="istickedoff">withGenVolatilityTermStructure a1 $ \a1' -&gt; </span>
 <span class="lineno"> 2938 </span><span class="spaces">  </span><span class="istickedoff">withYieldTermStructure a2 $ \a2' -&gt; </span>
 <span class="lineno"> 2939 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
-<span class="lineno"> 2940 </span><span class="spaces">  </span><span class="istickedoff">blackYoYInflationCouponPricer'_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
+<span class="lineno"> 2940 </span><span class="spaces">  </span><span class="istickedoff">blackYoyInflationCouponPricer'_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
 <span class="lineno"> 2941 </span><span class="spaces">  </span><span class="istickedoff">peekYoYInflationCouponPricer res &gt;&gt;= \res' -&gt;</span>
 <span class="lineno"> 2942 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
 <span class="lineno"> 2943 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
@@ -2964,13 +2964,13 @@ span.spaces    { background: white }
 <span class="lineno"> 2945 </span>
 <span class="lineno"> 2946 </span>
 <span class="lineno"> 2947 </span>-- |Unit-Displaced-Black-formula pricer for capped\/floored 'yoyInflationLeg' coupons.
-<span class="lineno"> 2948 </span>unitDisplacedBlackYoYInflationCouponPricer :: (YoYOptionletVolatilitySurface) -&gt; (GenYieldTermStructure y) -- ^nominalTermStructure
+<span class="lineno"> 2948 </span>unitDisplacedBlackYoyInflationCouponPricer :: (YoYOptionletVolatilitySurface) -&gt; (GenYieldTermStructure y) -- ^nominalTermStructure
 <span class="lineno"> 2949 </span> -&gt; IO ((YoYInflationCouponPricer))
-<span class="lineno"> 2950 </span><span class="decl"><span class="nottickedoff">unitDisplacedBlackYoYInflationCouponPricer a1 a2 =</span>
+<span class="lineno"> 2950 </span><span class="decl"><span class="nottickedoff">unitDisplacedBlackYoyInflationCouponPricer a1 a2 =</span>
 <span class="lineno"> 2951 </span><span class="spaces">  </span><span class="nottickedoff">withGenVolatilityTermStructure a1 $ \a1' -&gt; </span>
 <span class="lineno"> 2952 </span><span class="spaces">  </span><span class="nottickedoff">withYieldTermStructure a2 $ \a2' -&gt; </span>
 <span class="lineno"> 2953 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a3' -&gt; </span>
-<span class="lineno"> 2954 </span><span class="spaces">  </span><span class="nottickedoff">unitDisplacedBlackYoYInflationCouponPricer'_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
+<span class="lineno"> 2954 </span><span class="spaces">  </span><span class="nottickedoff">unitDisplacedBlackYoyInflationCouponPricer'_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
 <span class="lineno"> 2955 </span><span class="spaces">  </span><span class="nottickedoff">peekYoYInflationCouponPricer res &gt;&gt;= \res' -&gt;</span>
 <span class="lineno"> 2956 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a3'&gt;&gt;</span>
 <span class="lineno"> 2957 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
@@ -2978,13 +2978,13 @@ span.spaces    { background: white }
 <span class="lineno"> 2959 </span>
 <span class="lineno"> 2960 </span>
 <span class="lineno"> 2961 </span>-- |Bachelier-formula pricer for capped\/floored 'yoyInflationLeg' coupons.
-<span class="lineno"> 2962 </span>bachelierYoYInflationCouponPricer :: (YoYOptionletVolatilitySurface) -&gt; (GenYieldTermStructure y) -- ^nominalTermStructure
+<span class="lineno"> 2962 </span>bachelierYoyInflationCouponPricer :: (YoYOptionletVolatilitySurface) -&gt; (GenYieldTermStructure y) -- ^nominalTermStructure
 <span class="lineno"> 2963 </span> -&gt; IO ((YoYInflationCouponPricer))
-<span class="lineno"> 2964 </span><span class="decl"><span class="nottickedoff">bachelierYoYInflationCouponPricer a1 a2 =</span>
+<span class="lineno"> 2964 </span><span class="decl"><span class="nottickedoff">bachelierYoyInflationCouponPricer a1 a2 =</span>
 <span class="lineno"> 2965 </span><span class="spaces">  </span><span class="nottickedoff">withGenVolatilityTermStructure a1 $ \a1' -&gt; </span>
 <span class="lineno"> 2966 </span><span class="spaces">  </span><span class="nottickedoff">withYieldTermStructure a2 $ \a2' -&gt; </span>
 <span class="lineno"> 2967 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a3' -&gt; </span>
-<span class="lineno"> 2968 </span><span class="spaces">  </span><span class="nottickedoff">bachelierYoYInflationCouponPricer'_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
+<span class="lineno"> 2968 </span><span class="spaces">  </span><span class="nottickedoff">bachelierYoyInflationCouponPricer'_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
 <span class="lineno"> 2969 </span><span class="spaces">  </span><span class="nottickedoff">peekYoYInflationCouponPricer res &gt;&gt;= \res' -&gt;</span>
 <span class="lineno"> 2970 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a3'&gt;&gt;</span>
 <span class="lineno"> 2971 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
@@ -2993,15 +2993,15 @@ span.spaces    { background: white }
 <span class="lineno"> 2974 </span>
 <span class="lineno"> 2975 </span>-- |Set the pricer of every 'QuantLib.Instrument.InflationCapFloor.YoYInflationCapFloor'-ready
 <span class="lineno"> 2976 </span>-- 'YoYInflationCoupon'\/'CappedFlooredYoYInflationCoupon' in /leg/. Required before pricing (via
-<span class="lineno"> 2977 </span>-- 'QuantLib.CashFlow.npv' or an 'QuantLib.Instrument.setPricingEngine'd instrument built on the
+<span class="lineno"> 2977 </span>-- 'QuantLib.CashFlow.npvWithZSpread or an 'QuantLib.Instrument.setPricingEngine'd instrument built on the
 <span class="lineno"> 2978 </span>-- leg) any 'yoyInflationLeg' built with non-empty caps\/floors -- 'yoyInflationLeg' auto-attaches
 <span class="lineno"> 2979 </span>-- a default (non-vol) pricer only when caps and floors are both empty.
-<span class="lineno"> 2980 </span>setYoYInflationCouponPricer :: (GenLeg l) -&gt; (YoYInflationCouponPricer) -&gt; IO ()
-<span class="lineno"> 2981 </span><span class="decl"><span class="istickedoff">setYoYInflationCouponPricer a1 a2 =</span>
+<span class="lineno"> 2980 </span>setYoyInflationCouponPricer :: (GenLeg l) -&gt; (YoYInflationCouponPricer) -&gt; IO ()
+<span class="lineno"> 2981 </span><span class="decl"><span class="istickedoff">setYoyInflationCouponPricer a1 a2 =</span>
 <span class="lineno"> 2982 </span><span class="spaces">  </span><span class="istickedoff">withLeg a1 $ \a1' -&gt; </span>
 <span class="lineno"> 2983 </span><span class="spaces">  </span><span class="istickedoff">withYoYInflationCouponPricer a2 $ \a2' -&gt; </span>
 <span class="lineno"> 2984 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
-<span class="lineno"> 2985 </span><span class="spaces">  </span><span class="istickedoff">setYoYInflationCouponPricer'_ a1' a2' a3' &gt;&gt;</span>
+<span class="lineno"> 2985 </span><span class="spaces">  </span><span class="istickedoff">setYoyInflationCouponPricer'_ a1' a2' a3' &gt;&gt;</span>
 <span class="lineno"> 2986 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
 <span class="lineno"> 2987 </span><span class="spaces">  </span><span class="istickedoff">return <span class="nottickedoff">()</span></span></span>
 <span class="lineno"> 2988 </span>
@@ -3597,21 +3597,21 @@ span.spaces    { background: white }
 <span class="lineno"> 3578 </span>digitalCmsLeg :: Schedule -&gt; GenSwapIndex sidx -&gt; NonEmpty Double -&gt; DayCounter -&gt; BusinessDayConvention -&gt; [Word] -&gt; [Double] -&gt; [Double] -&gt; Bool -&gt; DigitalCmsLegOpts -&gt; IO Leg
 <span class="lineno"> 3579 </span><span class="decl"><span class="istickedoff">digitalCmsLeg schedule index notionals dc adjustment fixingDays gearings spreads inArrears opts =</span>
 <span class="lineno"> 3580 </span><span class="spaces">  </span><span class="istickedoff">digitalCmsLeg_ schedule index notionals dc adjustment fixingDays gearings spreads inArrears</span>
-<span class="lineno"> 3581 </span><span class="spaces">    </span><span class="istickedoff">(dcmlCallStrikes opts) (dcmlCallPosition opts) (dcmlCallATM opts) (dcmlCallPayoffs opts)</span>
-<span class="lineno"> 3582 </span><span class="spaces">    </span><span class="istickedoff">(dcmlPutStrikes opts) (dcmlPutPosition opts) (dcmlPutATM opts) (dcmlPutPayoffs opts)</span>
+<span class="lineno"> 3581 </span><span class="spaces">    </span><span class="istickedoff">(dcmlCallStrikes opts) (dcmlCallPosition opts) (dcmlCallAtm opts) (dcmlCallPayoffs opts)</span>
+<span class="lineno"> 3582 </span><span class="spaces">    </span><span class="istickedoff">(dcmlPutStrikes opts) (dcmlPutPosition opts) (dcmlPutAtm opts) (dcmlPutPayoffs opts)</span>
 <span class="lineno"> 3583 </span><span class="spaces">    </span><span class="istickedoff">(dcmlReplication opts) (dcmlNakedOption opts)</span></span>
 <span class="lineno"> 3584 </span>
 <span class="lineno"> 3585 </span>digitalIborLeg :: Schedule -&gt; GenIborIndex ibor -&gt; NonEmpty Double -&gt; DayCounter -&gt; BusinessDayConvention -&gt; [Word] -&gt; [Double] -&gt; [Double] -&gt; Bool -&gt; DigitalIborLegOpts -&gt; IO Leg
 <span class="lineno"> 3586 </span><span class="decl"><span class="nottickedoff">digitalIborLeg schedule index notionals dc adjustment fixingDays gearings spreads inArrears opts =</span>
-<span class="lineno"> 3587 </span><span class="spaces">  </span><span class="nottickedoff">digitalIborLeg_ schedule index notionals dc adjustment fixingDays gearings spreads inArrears (dilCallStrikes opts) (dilCallPosition opts) (dilCallATM opts) (dilCallPayoffs opts) (dilPutStrikes opts) (dilPutPosition opts) (dilPutATM opts) (dilPutPayoffs opts) (dilReplication opts) (dilNakedOption opts)</span></span>
+<span class="lineno"> 3587 </span><span class="spaces">  </span><span class="nottickedoff">digitalIborLeg_ schedule index notionals dc adjustment fixingDays gearings spreads inArrears (dilCallStrikes opts) (dilCallPosition opts) (dilCallAtm opts) (dilCallPayoffs opts) (dilPutStrikes opts) (dilPutPosition opts) (dilPutAtm opts) (dilPutPayoffs opts) (dilReplication opts) (dilNakedOption opts)</span></span>
 <span class="lineno"> 3588 </span>
 <span class="lineno"> 3589 </span>-- |Build a sequence of digital CMS-spread-rate coupons.  The options record covers all digital
 <span class="lineno"> 3590 </span>-- call/put and replication choices, exactly as 'digitalCmsLeg' does for the plain CMS index case.
 <span class="lineno"> 3591 </span>digitalCmsSpreadLeg :: Schedule -&gt; SwapSpreadIndex -&gt; NonEmpty Double -&gt; DayCounter -&gt; BusinessDayConvention -&gt; [Word] -&gt; [Double] -&gt; [Double] -&gt; Bool -&gt; DigitalCmsSpreadLegOpts -&gt; IO Leg
 <span class="lineno"> 3592 </span><span class="decl"><span class="istickedoff">digitalCmsSpreadLeg schedule index notionals dc adjustment fixingDays gearings spreads inArrears opts =</span>
 <span class="lineno"> 3593 </span><span class="spaces">  </span><span class="istickedoff">digitalCmsSpreadLeg_ schedule index notionals dc adjustment fixingDays gearings spreads inArrears</span>
-<span class="lineno"> 3594 </span><span class="spaces">    </span><span class="istickedoff">(dcmslCallStrikes opts) (dcmslCallPosition opts) (dcmslCallATM opts) (dcmslCallPayoffs opts)</span>
-<span class="lineno"> 3595 </span><span class="spaces">    </span><span class="istickedoff">(dcmslPutStrikes opts) (dcmslPutPosition opts) (dcmslPutATM opts) (dcmslPutPayoffs opts)</span>
+<span class="lineno"> 3594 </span><span class="spaces">    </span><span class="istickedoff">(dcmslCallStrikes opts) (dcmslCallPosition opts) (dcmslCallAtm opts) (dcmslCallPayoffs opts)</span>
+<span class="lineno"> 3595 </span><span class="spaces">    </span><span class="istickedoff">(dcmslPutStrikes opts) (dcmslPutPosition opts) (dcmslPutAtm opts) (dcmslPutPayoffs opts)</span>
 <span class="lineno"> 3596 </span><span class="spaces">    </span><span class="istickedoff">(dcmslReplication opts) (dcmslNakedOption opts)</span></span>
 <span class="lineno"> 3597 </span>
 <span class="lineno"> 3598 </span>multipleResetsLeg :: Schedule -&gt; GenIborIndex ibor -&gt; Word -&gt; DayCounter -&gt; BusinessDayConvention -&gt; MultipleResetsLegOpts -&gt; IO Leg
@@ -3931,16 +3931,16 @@ span.spaces    { background: white }
 <span class="lineno"> 3912 </span>  iborCoupon'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (CIborIndex')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CIborCoupon'))))))))))))))))))
 <span class="lineno"> 3913 </span>
 <span class="lineno"> 3914 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlAverageBMACoupon&quot;
-<span class="lineno"> 3915 </span>  averageBMACoupon'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CBMAIndex')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CAverageBMACoupon'))))))))))))))
+<span class="lineno"> 3915 </span>  averageBmaCoupon'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CBMAIndex')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CAverageBMACoupon'))))))))))))))
 <span class="lineno"> 3916 </span>
 <span class="lineno"> 3917 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlAverageBMACouponAsFloatingRateCoupon&quot;
-<span class="lineno"> 3918 </span>  averageBMACouponAsFloatingRateCoupon'_ :: ((C2HSImp.Ptr (CAverageBMACoupon')) -&gt; (IO (C2HSImp.Ptr (CFloatingRateCoupon'))))
+<span class="lineno"> 3918 </span>  averageBmaCouponAsFloatingRateCoupon'_ :: ((C2HSImp.Ptr (CAverageBMACoupon')) -&gt; (IO (C2HSImp.Ptr (CFloatingRateCoupon'))))
 <span class="lineno"> 3919 </span>
 <span class="lineno"> 3920 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlAverageBMACouponFixingDates&quot;
-<span class="lineno"> 3921 </span>  averageBMACouponFixingDates'_ :: ((C2HSImp.Ptr (CAverageBMACoupon')) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CInt)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ())))))
+<span class="lineno"> 3921 </span>  averageBmaCouponFixingDates'_ :: ((C2HSImp.Ptr (CAverageBMACoupon')) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CInt)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ())))))
 <span class="lineno"> 3922 </span>
 <span class="lineno"> 3923 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlAverageBMACouponIndexFixings&quot;
-<span class="lineno"> 3924 </span>  averageBMACouponIndexFixings'_ :: ((C2HSImp.Ptr (CAverageBMACoupon')) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ())))))
+<span class="lineno"> 3924 </span>  averageBmaCouponIndexFixings'_ :: ((C2HSImp.Ptr (CAverageBMACoupon')) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ())))))
 <span class="lineno"> 3925 </span>
 <span class="lineno"> 3926 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCappedFlooredCoupon&quot;
 <span class="lineno"> 3927 </span>  cappedFlooredCoupon'_ :: ((C2HSImp.Ptr (CFloatingRateCoupon')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CFloatingRateCoupon')))))))
@@ -4150,7 +4150,7 @@ span.spaces    { background: white }
 <span class="lineno"> 4131 </span>  bps'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))))))
 <span class="lineno"> 4132 </span>
 <span class="lineno"> 4133 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCashFlowsNpv3&quot;
-<span class="lineno"> 4134 </span>  npv''_ :: ((C2HSImp.Ptr (CLeg')) -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble))))))))))
+<span class="lineno"> 4134 </span>  npvWithZSpread'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble))))))))))
 <span class="lineno"> 4135 </span>
 <span class="lineno"> 4136 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCashFlowsNpv&quot;
 <span class="lineno"> 4137 </span>  npv'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))))))
@@ -4189,13 +4189,13 @@ span.spaces    { background: white }
 <span class="lineno"> 4170 </span>  fixedDividend'_ :: (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CDividend))))))
 <span class="lineno"> 4171 </span>
 <span class="lineno"> 4172 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlFractionalDividend1&quot;
-<span class="lineno"> 4173 </span>  fractionalDividend''_ :: (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CDividend)))))))
+<span class="lineno"> 4173 </span>  fractionalDividendFromRate'_ :: (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CDividend)))))))
 <span class="lineno"> 4174 </span>
 <span class="lineno"> 4175 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlFractionalDividend&quot;
 <span class="lineno"> 4176 </span>  fractionalDividend'_ :: (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CDividend))))))
 <span class="lineno"> 4177 </span>
 <span class="lineno"> 4178 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlAverageBMALeg&quot;
-<span class="lineno"> 4179 </span>  averageBMALeg'_ :: ((C2HSImp.Ptr (CSchedule)) -&gt; ((C2HSImp.Ptr (CBMAIndex')) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CLeg'))))))))))))))
+<span class="lineno"> 4179 </span>  averageBmaLeg'_ :: ((C2HSImp.Ptr (CSchedule)) -&gt; ((C2HSImp.Ptr (CBMAIndex')) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CLeg'))))))))))))))
 <span class="lineno"> 4180 </span>
 <span class="lineno"> 4181 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlFixedRateLeg&quot;
 <span class="lineno"> 4182 </span>  fixedRateLeg_'_ :: ((C2HSImp.Ptr (CSchedule)) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr (CInterestRate))) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; ((C2HSImp.Ptr (CCalendar)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CLeg'))))))))))))
@@ -4285,16 +4285,16 @@ span.spaces    { background: white }
 <span class="lineno"> 4266 </span>  rangeAccrualPricerByBgm'_ :: (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (CSmileSection)) -&gt; ((C2HSImp.Ptr (CSmileSection)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CFloatingRateCouponPricer')))))))))
 <span class="lineno"> 4267 </span>
 <span class="lineno"> 4268 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlBlackYoYInflationCouponPricer&quot;
-<span class="lineno"> 4269 </span>  blackYoYInflationCouponPricer'_ :: ((C2HSImp.Ptr (CYoYOptionletVolatilitySurface')) -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CYoYInflationCouponPricer))))))
+<span class="lineno"> 4269 </span>  blackYoyInflationCouponPricer'_ :: ((C2HSImp.Ptr (CYoYOptionletVolatilitySurface')) -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CYoYInflationCouponPricer))))))
 <span class="lineno"> 4270 </span>
 <span class="lineno"> 4271 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlUnitDisplacedBlackYoYInflationCouponPricer&quot;
-<span class="lineno"> 4272 </span>  unitDisplacedBlackYoYInflationCouponPricer'_ :: ((C2HSImp.Ptr (CYoYOptionletVolatilitySurface')) -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CYoYInflationCouponPricer))))))
+<span class="lineno"> 4272 </span>  unitDisplacedBlackYoyInflationCouponPricer'_ :: ((C2HSImp.Ptr (CYoYOptionletVolatilitySurface')) -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CYoYInflationCouponPricer))))))
 <span class="lineno"> 4273 </span>
 <span class="lineno"> 4274 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlBachelierYoYInflationCouponPricer&quot;
-<span class="lineno"> 4275 </span>  bachelierYoYInflationCouponPricer'_ :: ((C2HSImp.Ptr (CYoYOptionletVolatilitySurface')) -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CYoYInflationCouponPricer))))))
+<span class="lineno"> 4275 </span>  bachelierYoyInflationCouponPricer'_ :: ((C2HSImp.Ptr (CYoYOptionletVolatilitySurface')) -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CYoYInflationCouponPricer))))))
 <span class="lineno"> 4276 </span>
 <span class="lineno"> 4277 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlSetYoYInflationCouponPricer&quot;
-<span class="lineno"> 4278 </span>  setYoYInflationCouponPricer'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; ((C2HSImp.Ptr (CYoYInflationCouponPricer)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ()))))
+<span class="lineno"> 4278 </span>  setYoyInflationCouponPricer'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; ((C2HSImp.Ptr (CYoYInflationCouponPricer)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ()))))
 <span class="lineno"> 4279 </span>
 <span class="lineno"> 4280 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlQuantLibSetCouponPricer&quot;
 <span class="lineno"> 4281 </span>  setCouponPricer'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; ((C2HSImp.Ptr (CFloatingRateCouponPricer')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ()))))

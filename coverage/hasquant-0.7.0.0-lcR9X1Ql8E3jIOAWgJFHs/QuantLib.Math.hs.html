@@ -73,7 +73,7 @@ span.spaces    { background: white }
 <span class="lineno">   54 </span>  , TimeGrid
 <span class="lineno">   55 </span>  , timeGrid
 <span class="lineno">   56 </span>  , timeGridFromVector
-<span class="lineno">   57 </span>  , timeGridFromVector'
+<span class="lineno">   57 </span>  , timeGridFromVectorWithSteps
 <span class="lineno">   58 </span>  , timeAt
 <span class="lineno">   59 </span>  , size
 <span class="lineno">   60 </span>  , points
@@ -432,14 +432,14 @@ span.spaces    { background: white }
 <span class="lineno">  413 </span>
 <span class="lineno">  414 </span>-- |Time grid with mandatory time points.
 <span class="lineno">  415 </span>-- Mandatory points are guaranteed to belong to the grid. Additional points are then added with regular spacing between pairs of mandatory times in order to reach the desired number of steps.
-<span class="lineno">  416 </span>timeGridFromVector' :: (NonEmptyVector Double) -- ^mandatoryTimes
+<span class="lineno">  416 </span>timeGridFromVectorWithSteps :: (NonEmptyVector Double) -- ^mandatoryTimes
 <span class="lineno">  417 </span> -&gt; (Word) -- ^steps
 <span class="lineno">  418 </span> -&gt; IO ((TimeGrid))
-<span class="lineno">  419 </span><span class="decl"><span class="istickedoff">timeGridFromVector' a1 a2 =</span>
+<span class="lineno">  419 </span><span class="decl"><span class="istickedoff">timeGridFromVectorWithSteps a1 a2 =</span>
 <span class="lineno">  420 </span><span class="spaces">  </span><span class="istickedoff">withNonEmptyRealVector a1 $ \(a1'1, a1'2) -&gt; </span>
 <span class="lineno">  421 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = fromIntegral a2} in </span>
 <span class="lineno">  422 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
-<span class="lineno">  423 </span><span class="spaces">  </span><span class="istickedoff">timeGridFromVector''_ a1'1  a1'2 a2' a3' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  423 </span><span class="spaces">  </span><span class="istickedoff">timeGridFromVectorWithSteps'_ a1'1  a1'2 a2' a3' &gt;&gt;= \res -&gt;</span>
 <span class="lineno">  424 </span><span class="spaces">  </span><span class="istickedoff">peekTimeGrid res &gt;&gt;= \res' -&gt;</span>
 <span class="lineno">  425 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
 <span class="lineno">  426 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
@@ -821,7 +821,7 @@ span.spaces    { background: white }
 <span class="lineno">  802 </span>  timeGridFromVector'_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CTimeGrid))))))
 <span class="lineno">  803 </span>
 <span class="lineno">  804 </span>foreign import ccall safe &quot;QuantLib/Math.chs.h qlTimeGrid3&quot;
-<span class="lineno">  805 </span>  timeGridFromVector''_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CTimeGrid)))))))
+<span class="lineno">  805 </span>  timeGridFromVectorWithSteps'_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CTimeGrid)))))))
 <span class="lineno">  806 </span>
 <span class="lineno">  807 </span>foreign import ccall safe &quot;QuantLib/Math.chs.h qlTimeGridSize&quot;
 <span class="lineno">  808 </span>  size'_ :: ((C2HSImp.Ptr (CTimeGrid)) -&gt; (IO C2HSImp.CUInt))

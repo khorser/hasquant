@@ -57,7 +57,7 @@ span.spaces    { background: white }
 <span class="lineno">   38 </span>  , basketProbAtLeastNEvents
 <span class="lineno">   39 </span>
 <span class="lineno">   40 </span>  , DefaultLossModel
-<span class="lineno">   41 </span>  , gaussianLHPLossModel
+<span class="lineno">   41 </span>  , gaussianLhpLossModel
 <span class="lineno">   42 </span>
 <span class="lineno">   43 </span>  , DigitalLossModel
 <span class="lineno">   44 </span>  , constantLossModel
@@ -491,8 +491,8 @@ span.spaces    { background: white }
 <span class="lineno">  472 </span>
 <span class="lineno">  473 </span>
 <span class="lineno">  474 </span>-- |One-factor Gaussian-copula LHP loss model. @recoveries@ follow basket-name order.
-<span class="lineno">  475 </span>gaussianLHPLossModel :: GenQuote q -&gt; NonEmpty Double -&gt; IO DefaultLossModel
-<span class="lineno">  476 </span><span class="decl"><span class="istickedoff">gaussianLHPLossModel correlQuote recoveries = qlGaussianLHPLossModel correlQuote (toList recoveries)</span></span>
+<span class="lineno">  475 </span>gaussianLhpLossModel :: GenQuote q -&gt; NonEmpty Double -&gt; IO DefaultLossModel
+<span class="lineno">  476 </span><span class="decl"><span class="istickedoff">gaussianLhpLossModel correlQuote recoveries = qlGaussianLHPLossModel correlQuote (toList recoveries)</span></span>
 <span class="lineno">  477 </span>qlGaussianLHPLossModel :: (GenQuote q) -- ^correlQuote
 <span class="lineno">  478 </span> -&gt; ([Double]) -&gt; IO ((DefaultLossModel))
 <span class="lineno">  479 </span><span class="decl"><span class="istickedoff">qlGaussianLHPLossModel a1 a2 =</span>

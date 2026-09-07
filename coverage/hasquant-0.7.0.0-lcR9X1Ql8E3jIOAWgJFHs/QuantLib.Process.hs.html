@@ -76,7 +76,7 @@ span.spaces    { background: white }
 <span class="lineno">   57 </span>  , evolve
 <span class="lineno">   58 </span>  , expectation
 <span class="lineno">   59 </span>  , stdDeviation
-<span class="lineno">   60 </span>  , extOUWithJumpsProcess
+<span class="lineno">   60 </span>  , extOuWithJumpsProcess
 <span class="lineno">   61 </span>  , factors
 <span class="lineno">   62 </span>  , initialValues
 <span class="lineno">   63 </span>  , g2ForwardProcess
@@ -90,7 +90,7 @@ span.spaces    { background: white }
 <span class="lineno">   71 </span>  , hullWhiteForwardProcess
 <span class="lineno">   72 </span>  , hullWhiteProcess
 <span class="lineno">   73 </span>  , hybridHestonHullWhiteProcess
-<span class="lineno">   74 </span>  , klugeExtOUProcess
+<span class="lineno">   74 </span>  , klugeExtOuProcess
 <span class="lineno">   75 </span>  , liborForwardModelProcess
 <span class="lineno">   76 </span>  , fixingDates
 <span class="lineno">   77 </span>  , fixingTimes
@@ -459,19 +459,19 @@ span.spaces    { background: white }
 <span class="lineno">  440 </span>
 <span class="lineno">  441 </span>-- |Kluge model: an extended Ornstein-Uhlenbeck process plus an exponential-jump component,
 <span class="lineno">  442 </span>-- S = exp(X + Y) with dX = alpha (mu(t) - X) dt + sigma dW and dY = -beta Y dt + J dN.
-<span class="lineno">  443 </span>extOUWithJumpsProcess :: (ExtendedOrnsteinUhlenbeckProcess) -&gt; (Double) -- ^Y0
+<span class="lineno">  443 </span>extOuWithJumpsProcess :: (ExtendedOrnsteinUhlenbeckProcess) -&gt; (Double) -- ^Y0
 <span class="lineno">  444 </span> -&gt; (Double) -- ^beta
 <span class="lineno">  445 </span> -&gt; (Double) -- ^jumpIntensity
 <span class="lineno">  446 </span> -&gt; (Double) -- ^eta
 <span class="lineno">  447 </span> -&gt; IO ((ExtOUWithJumpsProcess))
-<span class="lineno">  448 </span><span class="decl"><span class="nottickedoff">extOUWithJumpsProcess a1 a2 a3 a4 a5 =</span>
+<span class="lineno">  448 </span><span class="decl"><span class="nottickedoff">extOuWithJumpsProcess a1 a2 a3 a4 a5 =</span>
 <span class="lineno">  449 </span><span class="spaces">  </span><span class="nottickedoff">withGenStochasticProcess1D a1 $ \a1' -&gt; </span>
 <span class="lineno">  450 </span><span class="spaces">  </span><span class="nottickedoff">let {a2' = realToFrac a2} in </span>
 <span class="lineno">  451 </span><span class="spaces">  </span><span class="nottickedoff">let {a3' = realToFrac a3} in </span>
 <span class="lineno">  452 </span><span class="spaces">  </span><span class="nottickedoff">let {a4' = realToFrac a4} in </span>
 <span class="lineno">  453 </span><span class="spaces">  </span><span class="nottickedoff">let {a5' = realToFrac a5} in </span>
 <span class="lineno">  454 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a6' -&gt; </span>
-<span class="lineno">  455 </span><span class="spaces">  </span><span class="nottickedoff">extOUWithJumpsProcess'_ a1' a2' a3' a4' a5' a6' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  455 </span><span class="spaces">  </span><span class="nottickedoff">extOuWithJumpsProcess'_ a1' a2' a3' a4' a5' a6' &gt;&gt;= \res -&gt;</span>
 <span class="lineno">  456 </span><span class="spaces">  </span><span class="nottickedoff">peekExtOUWithJumpsProcess res &gt;&gt;= \res' -&gt;</span>
 <span class="lineno">  457 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a6'&gt;&gt;</span>
 <span class="lineno">  458 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
@@ -1166,15 +1166,15 @@ span.spaces    { background: white }
 <span class="lineno"> 1147 </span>
 <span class="lineno"> 1148 </span>
 <span class="lineno"> 1149 </span>
-<span class="lineno"> 1150 </span>-- |joint correlated Kluge ('extOUWithJumpsProcess') and extended Ornstein-Uhlenbeck process.
-<span class="lineno"> 1151 </span>klugeExtOUProcess :: (Double) -- ^rho
+<span class="lineno"> 1150 </span>-- |joint correlated Kluge ('extOuWithJumpsProcess') and extended Ornstein-Uhlenbeck process.
+<span class="lineno"> 1151 </span>klugeExtOuProcess :: (Double) -- ^rho
 <span class="lineno"> 1152 </span> -&gt; (ExtOUWithJumpsProcess) -&gt; (ExtendedOrnsteinUhlenbeckProcess) -&gt; IO ((KlugeExtOUProcess))
-<span class="lineno"> 1153 </span><span class="decl"><span class="nottickedoff">klugeExtOUProcess a1 a2 a3 =</span>
+<span class="lineno"> 1153 </span><span class="decl"><span class="nottickedoff">klugeExtOuProcess a1 a2 a3 =</span>
 <span class="lineno"> 1154 </span><span class="spaces">  </span><span class="nottickedoff">let {a1' = realToFrac a1} in </span>
 <span class="lineno"> 1155 </span><span class="spaces">  </span><span class="nottickedoff">withGenStochasticProcess a2 $ \a2' -&gt; </span>
 <span class="lineno"> 1156 </span><span class="spaces">  </span><span class="nottickedoff">withGenStochasticProcess1D a3 $ \a3' -&gt; </span>
 <span class="lineno"> 1157 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a4' -&gt; </span>
-<span class="lineno"> 1158 </span><span class="spaces">  </span><span class="nottickedoff">klugeExtOUProcess'_ a1' a2' a3' a4' &gt;&gt;= \res -&gt;</span>
+<span class="lineno"> 1158 </span><span class="spaces">  </span><span class="nottickedoff">klugeExtOuProcess'_ a1' a2' a3' a4' &gt;&gt;= \res -&gt;</span>
 <span class="lineno"> 1159 </span><span class="spaces">  </span><span class="nottickedoff">peekKlugeExtOUProcess res &gt;&gt;= \res' -&gt;</span>
 <span class="lineno"> 1160 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a4'&gt;&gt;</span>
 <span class="lineno"> 1161 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
@@ -1407,7 +1407,7 @@ span.spaces    { background: white }
 <span class="lineno"> 1388 </span>foreign import ccall safe &quot;QuantLib/Process.chs.h qlExtendedBlackScholesMertonProcess&quot;
 <span class="lineno"> 1389 </span>  extendedBlackScholesMertonProcess'_ :: ((C2HSImp.Ptr (CQuote')) -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; ((C2HSImp.Ptr (CBlackVolTermStructure')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CGeneralizedBlackScholesProcess'))))))))))
 <span class="lineno"> 1390 </span>
-<span class="lineno"> 1391 </span>foreign import ccall safe &quot;QuantLib/Process.chs.h qlGarmanKohlagenProcess&quot;
+<span class="lineno"> 1391 </span>foreign import ccall safe &quot;QuantLib/Process.chs.h qlGarmanKohlhagenProcess&quot;
 <span class="lineno"> 1392 </span>  garmanKohlhagenProcess'_ :: ((C2HSImp.Ptr (CQuote')) -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; ((C2HSImp.Ptr (CBlackVolTermStructure')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CGeneralizedBlackScholesProcess'))))))))))
 <span class="lineno"> 1393 </span>
 <span class="lineno"> 1394 </span>foreign import ccall safe &quot;QuantLib/Process.chs.h qlGeneralizedBlackScholesProcess&quot;
@@ -1423,7 +1423,7 @@ span.spaces    { background: white }
 <span class="lineno"> 1404 </span>  batesProcess'_ :: ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; ((C2HSImp.Ptr (CQuote')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CBatesProcess'))))))))))))))))
 <span class="lineno"> 1405 </span>
 <span class="lineno"> 1406 </span>foreign import ccall safe &quot;QuantLib/Process.chs.h qlExtOUWithJumpsProcess&quot;
-<span class="lineno"> 1407 </span>  extOUWithJumpsProcess'_ :: ((C2HSImp.Ptr (CExtendedOrnsteinUhlenbeckProcess')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CExtOUWithJumpsProcess')))))))))
+<span class="lineno"> 1407 </span>  extOuWithJumpsProcess'_ :: ((C2HSImp.Ptr (CExtendedOrnsteinUhlenbeckProcess')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CExtOUWithJumpsProcess')))))))))
 <span class="lineno"> 1408 </span>
 <span class="lineno"> 1409 </span>foreign import ccall safe &quot;QuantLib/Process.chs.h qlG2ForwardProcess&quot;
 <span class="lineno"> 1410 </span>  g2ForwardProcess'_ :: (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CG2ForwardProcess'))))))))))
@@ -1519,7 +1519,7 @@ span.spaces    { background: white }
 <span class="lineno"> 1500 </span>  hybridHestonHullWhiteProcess'_ :: ((C2HSImp.Ptr (CHestonProcess')) -&gt; ((C2HSImp.Ptr (CHullWhiteForwardProcess')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CHybridHestonHullWhiteProcess'))))))))
 <span class="lineno"> 1501 </span>
 <span class="lineno"> 1502 </span>foreign import ccall safe &quot;QuantLib/Process.chs.h qlKlugeExtOUProcess&quot;
-<span class="lineno"> 1503 </span>  klugeExtOUProcess'_ :: (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (CExtOUWithJumpsProcess')) -&gt; ((C2HSImp.Ptr (CExtendedOrnsteinUhlenbeckProcess')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CKlugeExtOUProcess')))))))
+<span class="lineno"> 1503 </span>  klugeExtOuProcess'_ :: (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (CExtOUWithJumpsProcess')) -&gt; ((C2HSImp.Ptr (CExtendedOrnsteinUhlenbeckProcess')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CKlugeExtOUProcess')))))))
 <span class="lineno"> 1504 </span>
 <span class="lineno"> 1505 </span>foreign import ccall safe &quot;QuantLib/Process.chs.h qlLiborForwardModelProcess&quot;
 <span class="lineno"> 1506 </span>  liborForwardModelProcess'_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (CIborIndex')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CLiborForwardModelProcess'))))))

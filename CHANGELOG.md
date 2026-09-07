@@ -8,6 +8,17 @@ Added more functionality in FD area to reach more parity with SWIG bingings, add
 
 Reworked API to use NonEmpty lists and unboxed vectors and matrices where seemed applicable.
 
+The unreleased API received a breaking naming and overload cleanup. Exported values no longer use
+trailing primes or unexplained numeric suffixes to distinguish overloads; alternate inputs,
+additional configuration, coordinates, and evaluation-date-relative structures now use `From`,
+`With`, `At`, and `Moving` names. Acronyms in values and record selectors use normal camel case.
+Genuine Cartesian overload families now take `OptionMaturity`, `SwapMaturity`, `RatePoint`,
+`RateInterval`, `IntegrationControl`, `LatticeTime`, or `FdmGrid`, and identical operations shared
+by related types use public capability classes. Redundant scalar market-data overloads, the obsolete `bond'`
+constructor, and specialized moving piecewise-yield bootstrap entry points were removed. Tests,
+examples, applications, and C shim spelling were migrated atomically, with a compiled-interface
+test guarding the public naming policy.
+
 C++ shims refactored to use more modern approaches.
 
 ## 0.6.0.0 (2026)

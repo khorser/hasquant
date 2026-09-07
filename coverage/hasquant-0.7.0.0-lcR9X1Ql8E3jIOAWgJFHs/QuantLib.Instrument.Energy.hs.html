@@ -283,7 +283,7 @@ span.spaces    { background: white }
 <span class="lineno">  264 </span>
 <span class="lineno">  265 </span>-- |The currency-resolved secondary costs computed during the most recent pricing
 <span class="lineno">  266 </span>-- (@performCalculations()@) of this 'Commodity'\/'EnergyCommodity' leaf -- a plain member read, not
-<span class="lineno">  267 </span>-- itself a pricing trigger, so call 'QuantLib.Instrument.npv' first if it hasn't been priced yet.
+<span class="lineno">  267 </span>-- itself a pricing trigger, so call 'QuantLib.Instrument.npvWithZSpread first if it hasn't been priced yet.
 <span class="lineno">  268 </span>secondaryCostAmounts :: GenCommodity c -&gt; IO SecondaryCostAmounts
 <span class="lineno">  269 </span><span class="decl"><span class="nottickedoff">secondaryCostAmounts o = do</span>
 <span class="lineno">  270 </span><span class="spaces">  </span><span class="nottickedoff">(keys, amts, ccys) &lt;- qlCommoditySecondaryCostAmounts_ o</span>
@@ -401,7 +401,7 @@ span.spaces    { background: white }
 <span class="lineno">  382 </span>
 <span class="lineno">  383 </span>
 <span class="lineno">  384 </span>-- |The per-day pricing breakdown computed during this 'EnergySwap' leaf's most recent
-<span class="lineno">  385 </span>-- @performCalculations()@ -- populated only after pricing (call 'QuantLib.Instrument.npv' first).
+<span class="lineno">  385 </span>-- @performCalculations()@ -- populated only after pricing (call 'QuantLib.Instrument.npvWithZSpread first).
 <span class="lineno">  386 </span>dailyPositions :: GenEnergySwap s -&gt; IO EnergyDailyPositions
 <span class="lineno">  387 </span><span class="decl"><span class="nottickedoff">dailyPositions s = do</span>
 <span class="lineno">  388 </span><span class="spaces">  </span><span class="nottickedoff">(dates, qtyAmts, payPrices, recvPrices, riskDeltas, unrealized) &lt;- qlEnergySwapDailyPositions_ s</span>

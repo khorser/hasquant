@@ -61,7 +61,7 @@ span.spaces    { background: white }
 <span class="lineno">   42 </span>
 <span class="lineno">   43 </span>  , overnightIndexedSwapIndex
 <span class="lineno">   44 </span>  , swapIndex
-<span class="lineno">   45 </span>  , swapIndex'
+<span class="lineno">   45 </span>  , swapIndexWithDiscountCurve
 <span class="lineno">   46 </span>  , swapSpreadIndex
 <span class="lineno">   47 </span>
 <span class="lineno">   48 </span>  -- The bundled names are the fixed-tenor shortcut pattern synonyms defined below;
@@ -86,7 +86,7 @@ span.spaces    { background: white }
 <span class="lineno">   67 </span>  , endOfMonth
 <span class="lineno">   68 </span>
 <span class="lineno">   69 </span>  , underlyingSwap
-<span class="lineno">   70 </span>  , underlyingOIS
+<span class="lineno">   70 </span>  , underlyingOis
 <span class="lineno">   71 </span>
 <span class="lineno">   72 </span>  , historicalRatesAnalysis
 <span class="lineno">   73 </span>  ) where
@@ -949,14 +949,14 @@ span.spaces    { background: white }
 <span class="lineno">  930 </span>
 <span class="lineno">  931 </span>
 <span class="lineno">  932 </span>-- |Creates a swap-rate index with a discounting curve distinct from the forwarding curve of the underlying ibor index.
-<span class="lineno">  933 </span>swapIndex' :: (String) -- ^familyName
+<span class="lineno">  933 </span>swapIndexWithDiscountCurve :: (String) -- ^familyName
 <span class="lineno">  934 </span> -&gt; ((Int,TimeUnit)) -- ^tenor
 <span class="lineno">  935 </span> -&gt; (Word) -- ^settlementDays
 <span class="lineno">  936 </span> -&gt; (Currency) -&gt; (Calendar) -&gt; ((Int,TimeUnit)) -- ^fixedLegTenor
 <span class="lineno">  937 </span> -&gt; (BusinessDayConvention) -- ^fixedLegConvention
 <span class="lineno">  938 </span> -&gt; (DayCounter) -- ^fixedLegDayCounter
 <span class="lineno">  939 </span> -&gt; (GenIborIndex ibor) -&gt; (GenYieldTermStructure y) -&gt; IO ((SwapIndex))
-<span class="lineno">  940 </span><span class="decl"><span class="nottickedoff">swapIndex' a1 a2 a3 a4 a5 a6 a7 a8 a9 a10 =</span>
+<span class="lineno">  940 </span><span class="decl"><span class="nottickedoff">swapIndexWithDiscountCurve a1 a2 a3 a4 a5 a6 a7 a8 a9 a10 =</span>
 <span class="lineno">  941 </span><span class="spaces">  </span><span class="nottickedoff">C2HSImp.withCString a1 $ \a1' -&gt; </span>
 <span class="lineno">  942 </span><span class="spaces">  </span><span class="nottickedoff">let {(a2'1, a2'2) = fromEnumQuantity a2} in </span>
 <span class="lineno">  943 </span><span class="spaces">  </span><span class="nottickedoff">let {a3' = fromIntegral a3} in </span>
@@ -968,7 +968,7 @@ span.spaces    { background: white }
 <span class="lineno">  949 </span><span class="spaces">  </span><span class="nottickedoff">withIborIndex a9 $ \a9' -&gt; </span>
 <span class="lineno">  950 </span><span class="spaces">  </span><span class="nottickedoff">withYieldTermStructure a10 $ \a10' -&gt; </span>
 <span class="lineno">  951 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a11' -&gt; </span>
-<span class="lineno">  952 </span><span class="spaces">  </span><span class="nottickedoff">swapIndex''_ a1' a2'1  a2'2 a3' a4' a5' a6'1  a6'2 a7' a8' a9' a10' a11' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  952 </span><span class="spaces">  </span><span class="nottickedoff">swapIndexWithDiscountCurve'_ a1' a2'1  a2'2 a3' a4' a5' a6'1  a6'2 a7' a8' a9' a10' a11' &gt;&gt;= \res -&gt;</span>
 <span class="lineno">  953 </span><span class="spaces">  </span><span class="nottickedoff">peekSwapIndex res &gt;&gt;= \res' -&gt;</span>
 <span class="lineno">  954 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a11'&gt;&gt;</span>
 <span class="lineno">  955 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
@@ -1145,12 +1145,12 @@ span.spaces    { background: white }
 <span class="lineno"> 1126 </span>
 <span class="lineno"> 1127 </span>
 <span class="lineno"> 1128 </span>-- |Returns the overnight-indexed swap underlying the index for a given fixing date. Relinking the index's term structure afterwards has no effect on the returned swap.
-<span class="lineno"> 1129 </span>underlyingOIS :: (OvernightIndexedSwapIndex) -&gt; (Day) -&gt; IO ((OvernightIndexedSwap))
-<span class="lineno"> 1130 </span><span class="decl"><span class="nottickedoff">underlyingOIS a1 a2 =</span>
+<span class="lineno"> 1129 </span>underlyingOis :: (OvernightIndexedSwapIndex) -&gt; (Day) -&gt; IO ((OvernightIndexedSwap))
+<span class="lineno"> 1130 </span><span class="decl"><span class="nottickedoff">underlyingOis a1 a2 =</span>
 <span class="lineno"> 1131 </span><span class="spaces">  </span><span class="nottickedoff">withOvernightIndexedSwapIndex a1 $ \a1' -&gt; </span>
 <span class="lineno"> 1132 </span><span class="spaces">  </span><span class="nottickedoff">withDay a2 $ \a2' -&gt; </span>
 <span class="lineno"> 1133 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a3' -&gt; </span>
-<span class="lineno"> 1134 </span><span class="spaces">  </span><span class="nottickedoff">underlyingOIS'_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
+<span class="lineno"> 1134 </span><span class="spaces">  </span><span class="nottickedoff">underlyingOis'_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
 <span class="lineno"> 1135 </span><span class="spaces">  </span><span class="nottickedoff">peekOvernightIndexedSwap res &gt;&gt;= \res' -&gt;</span>
 <span class="lineno"> 1136 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a3'&gt;&gt;</span>
 <span class="lineno"> 1137 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
@@ -1220,7 +1220,7 @@ span.spaces    { background: white }
 <span class="lineno"> 1201 </span>  swapIndex'_ :: ((C2HSImp.Ptr C2HSImp.CChar) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (CCurrency)) -&gt; ((C2HSImp.Ptr (CCalendar)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; ((C2HSImp.Ptr (CIborIndex')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CSwapIndex')))))))))))))))
 <span class="lineno"> 1202 </span>
 <span class="lineno"> 1203 </span>foreign import ccall safe &quot;QuantLib/Index/InterestRate.chs.h qlSwapIndex1&quot;
-<span class="lineno"> 1204 </span>  swapIndex''_ :: ((C2HSImp.Ptr C2HSImp.CChar) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (CCurrency)) -&gt; ((C2HSImp.Ptr (CCalendar)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; ((C2HSImp.Ptr (CIborIndex')) -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CSwapIndex'))))))))))))))))
+<span class="lineno"> 1204 </span>  swapIndexWithDiscountCurve'_ :: ((C2HSImp.Ptr C2HSImp.CChar) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (CCurrency)) -&gt; ((C2HSImp.Ptr (CCalendar)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; ((C2HSImp.Ptr (CIborIndex')) -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CSwapIndex'))))))))))))))))
 <span class="lineno"> 1205 </span>
 <span class="lineno"> 1206 </span>foreign import ccall safe &quot;QuantLib/Index/InterestRate.chs.h qlSwapSpreadIndex&quot;
 <span class="lineno"> 1207 </span>  swapSpreadIndex'_ :: ((C2HSImp.Ptr C2HSImp.CChar) -&gt; ((C2HSImp.Ptr (CSwapIndex')) -&gt; ((C2HSImp.Ptr (CSwapIndex')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CSwapSpreadIndex')))))))))
@@ -1250,7 +1250,7 @@ span.spaces    { background: white }
 <span class="lineno"> 1231 </span>  endOfMonth'_ :: ((C2HSImp.Ptr (CIborIndex')) -&gt; (IO C2HSImp.CInt))
 <span class="lineno"> 1232 </span>
 <span class="lineno"> 1233 </span>foreign import ccall safe &quot;QuantLib/Index/InterestRate.chs.h qlOvernightIndexedSwapIndexUnderlyingSwap&quot;
-<span class="lineno"> 1234 </span>  underlyingOIS'_ :: ((C2HSImp.Ptr (COvernightIndexedSwapIndex')) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (COvernightIndexedSwap'))))))
+<span class="lineno"> 1234 </span>  underlyingOis'_ :: ((C2HSImp.Ptr (COvernightIndexedSwapIndex')) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (COvernightIndexedSwap'))))))
 <span class="lineno"> 1235 </span>
 <span class="lineno"> 1236 </span>foreign import ccall safe &quot;QuantLib/Index/InterestRate.chs.h qlSwapIndexUnderlyingSwap&quot;
 <span class="lineno"> 1237 </span>  underlyingSwap'_ :: ((C2HSImp.Ptr (CSwapIndex')) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CVanillaSwap'))))))

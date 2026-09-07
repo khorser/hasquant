@@ -30,13 +30,13 @@ span.spaces    { background: white }
 <span class="lineno">   11 </span>  , InterestRate
 <span class="lineno">   12 </span>  , interestRate
 <span class="lineno">   13 </span>  , compoundFactor
-<span class="lineno">   14 </span>  , compoundFactor'
+<span class="lineno">   14 </span>  , compoundFactorBetween
 <span class="lineno">   15 </span>  , discountFactor
-<span class="lineno">   16 </span>  , discountFactor'
+<span class="lineno">   16 </span>  , discountFactorBetween
 <span class="lineno">   17 </span>  , equivalentRate
-<span class="lineno">   18 </span>  , equivalentRate'
+<span class="lineno">   18 </span>  , equivalentRateBetween
 <span class="lineno">   19 </span>  , impliedRate
-<span class="lineno">   20 </span>  , impliedRate'
+<span class="lineno">   20 </span>  , impliedRateBetween
 <span class="lineno">   21 </span>  , rate
 <span class="lineno">   22 </span>  ) where
 <span class="lineno">   23 </span>import qualified Foreign.C.Types as C2HSImp
@@ -124,19 +124,19 @@ span.spaces    { background: white }
 <span class="lineno">  105 </span>
 <span class="lineno">  106 </span>-- |compound factor implied by the rate compounded between two dates
 <span class="lineno">  107 </span>-- returns the compound (a.k.a capitalization) factor implied by the rate compounded between two dates.
-<span class="lineno">  108 </span>compoundFactor' :: (InterestRate) -&gt; (Day) -- ^d1
+<span class="lineno">  108 </span>compoundFactorBetween :: (InterestRate) -&gt; (Day) -- ^d1
 <span class="lineno">  109 </span> -&gt; (Day) -- ^d2
 <span class="lineno">  110 </span> -&gt; (Day) -- ^refStart
 <span class="lineno">  111 </span> -&gt; (Day) -- ^refEnd
 <span class="lineno">  112 </span> -&gt; IO ((Double))
-<span class="lineno">  113 </span><span class="decl"><span class="istickedoff">compoundFactor' a1 a2 a3 a4 a5 =</span>
+<span class="lineno">  113 </span><span class="decl"><span class="istickedoff">compoundFactorBetween a1 a2 a3 a4 a5 =</span>
 <span class="lineno">  114 </span><span class="spaces">  </span><span class="istickedoff">withInterestRate a1 $ \a1' -&gt; </span>
 <span class="lineno">  115 </span><span class="spaces">  </span><span class="istickedoff">withDay a2 $ \a2' -&gt; </span>
 <span class="lineno">  116 </span><span class="spaces">  </span><span class="istickedoff">withDay a3 $ \a3' -&gt; </span>
 <span class="lineno">  117 </span><span class="spaces">  </span><span class="istickedoff">withDay a4 $ \a4' -&gt; </span>
 <span class="lineno">  118 </span><span class="spaces">  </span><span class="istickedoff">withDay a5 $ \a5' -&gt; </span>
 <span class="lineno">  119 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a6' -&gt; </span>
-<span class="lineno">  120 </span><span class="spaces">  </span><span class="istickedoff">compoundFactor''_ a1' a2' a3' a4' a5' a6' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  120 </span><span class="spaces">  </span><span class="istickedoff">compoundFactorBetween'_ a1' a2' a3' a4' a5' a6' &gt;&gt;= \res -&gt;</span>
 <span class="lineno">  121 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
 <span class="lineno">  122 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a6'&gt;&gt;</span>
 <span class="lineno">  123 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
@@ -159,19 +159,19 @@ span.spaces    { background: white }
 <span class="lineno">  140 </span>
 <span class="lineno">  141 </span>
 <span class="lineno">  142 </span>-- |discount factor implied by the rate compounded between two dates
-<span class="lineno">  143 </span>discountFactor' :: (InterestRate) -&gt; (Day) -- ^d1
+<span class="lineno">  143 </span>discountFactorBetween :: (InterestRate) -&gt; (Day) -- ^d1
 <span class="lineno">  144 </span> -&gt; (Day) -- ^d2
 <span class="lineno">  145 </span> -&gt; (Day) -- ^refStart
 <span class="lineno">  146 </span> -&gt; (Day) -- ^refEnd
 <span class="lineno">  147 </span> -&gt; IO ((Double))
-<span class="lineno">  148 </span><span class="decl"><span class="istickedoff">discountFactor' a1 a2 a3 a4 a5 =</span>
+<span class="lineno">  148 </span><span class="decl"><span class="istickedoff">discountFactorBetween a1 a2 a3 a4 a5 =</span>
 <span class="lineno">  149 </span><span class="spaces">  </span><span class="istickedoff">withInterestRate a1 $ \a1' -&gt; </span>
 <span class="lineno">  150 </span><span class="spaces">  </span><span class="istickedoff">withDay a2 $ \a2' -&gt; </span>
 <span class="lineno">  151 </span><span class="spaces">  </span><span class="istickedoff">withDay a3 $ \a3' -&gt; </span>
 <span class="lineno">  152 </span><span class="spaces">  </span><span class="istickedoff">withDay a4 $ \a4' -&gt; </span>
 <span class="lineno">  153 </span><span class="spaces">  </span><span class="istickedoff">withDay a5 $ \a5' -&gt; </span>
 <span class="lineno">  154 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a6' -&gt; </span>
-<span class="lineno">  155 </span><span class="spaces">  </span><span class="istickedoff">discountFactor''_ a1' a2' a3' a4' a5' a6' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  155 </span><span class="spaces">  </span><span class="istickedoff">discountFactorBetween'_ a1' a2' a3' a4' a5' a6' &gt;&gt;= \res -&gt;</span>
 <span class="lineno">  156 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
 <span class="lineno">  157 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a6'&gt;&gt;</span>
 <span class="lineno">  158 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
@@ -194,13 +194,13 @@ span.spaces    { background: white }
 <span class="lineno">  175 </span>
 <span class="lineno">  176 </span>-- |equivalent rate for a compounding period between two dates
 <span class="lineno">  177 </span>-- The resulting rate is calculated taking the required day-counting rule into account.
-<span class="lineno">  178 </span>equivalentRate' :: (InterestRate) -&gt; (DayCounter) -- ^resultDC
+<span class="lineno">  178 </span>equivalentRateBetween :: (InterestRate) -&gt; (DayCounter) -- ^resultDC
 <span class="lineno">  179 </span> -&gt; (Compounding) -&gt; (Frequency) -&gt; (Day) -- ^d1
 <span class="lineno">  180 </span> -&gt; (Day) -- ^d2
 <span class="lineno">  181 </span> -&gt; (Day) -- ^refStart
 <span class="lineno">  182 </span> -&gt; (Day) -- ^refEnd
 <span class="lineno">  183 </span> -&gt; IO ((InterestRate))
-<span class="lineno">  184 </span><span class="decl"><span class="istickedoff">equivalentRate' a1 a2 a3 a4 a5 a6 a7 a8 =</span>
+<span class="lineno">  184 </span><span class="decl"><span class="istickedoff">equivalentRateBetween a1 a2 a3 a4 a5 a6 a7 a8 =</span>
 <span class="lineno">  185 </span><span class="spaces">  </span><span class="istickedoff">withInterestRate a1 $ \a1' -&gt; </span>
 <span class="lineno">  186 </span><span class="spaces">  </span><span class="istickedoff">withDayCounter a2 $ \a2' -&gt; </span>
 <span class="lineno">  187 </span><span class="spaces">  </span><span class="istickedoff">let {a3' = (fromIntegral . fromEnum) a3} in </span>
@@ -210,7 +210,7 @@ span.spaces    { background: white }
 <span class="lineno">  191 </span><span class="spaces">  </span><span class="istickedoff">withDay a7 $ \a7' -&gt; </span>
 <span class="lineno">  192 </span><span class="spaces">  </span><span class="istickedoff">withDay a8 $ \a8' -&gt; </span>
 <span class="lineno">  193 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a9' -&gt; </span>
-<span class="lineno">  194 </span><span class="spaces">  </span><span class="istickedoff">equivalentRate''_ a1' a2' a3' a4' a5' a6' a7' a8' a9' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  194 </span><span class="spaces">  </span><span class="istickedoff">equivalentRateBetween'_ a1' a2' a3' a4' a5' a6' a7' a8' a9' &gt;&gt;= \res -&gt;</span>
 <span class="lineno">  195 </span><span class="spaces">  </span><span class="istickedoff">peekInterestRate res &gt;&gt;= \res' -&gt;</span>
 <span class="lineno">  196 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a9'&gt;&gt;</span>
 <span class="lineno">  197 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
@@ -236,13 +236,13 @@ span.spaces    { background: white }
 <span class="lineno">  217 </span>
 <span class="lineno">  218 </span>-- |implied rate for a given compound factor between two dates.
 <span class="lineno">  219 </span>-- The resulting rate is calculated taking the required day-counting rule into account.
-<span class="lineno">  220 </span>impliedRate' :: (InterestRate) -&gt; (Double) -- ^compound
+<span class="lineno">  220 </span>impliedRateBetween :: (InterestRate) -&gt; (Double) -- ^compound
 <span class="lineno">  221 </span> -&gt; (DayCounter) -&gt; (Compounding) -&gt; (Frequency) -&gt; (Day) -- ^d1
 <span class="lineno">  222 </span> -&gt; (Day) -- ^d2
 <span class="lineno">  223 </span> -&gt; (Day) -- ^refStart
 <span class="lineno">  224 </span> -&gt; (Day) -- ^refEnd
 <span class="lineno">  225 </span> -&gt; IO ((InterestRate))
-<span class="lineno">  226 </span><span class="decl"><span class="nottickedoff">impliedRate' a1 a2 a3 a4 a5 a6 a7 a8 a9 =</span>
+<span class="lineno">  226 </span><span class="decl"><span class="nottickedoff">impliedRateBetween a1 a2 a3 a4 a5 a6 a7 a8 a9 =</span>
 <span class="lineno">  227 </span><span class="spaces">  </span><span class="nottickedoff">withInterestRate a1 $ \a1' -&gt; </span>
 <span class="lineno">  228 </span><span class="spaces">  </span><span class="nottickedoff">let {a2' = realToFrac a2} in </span>
 <span class="lineno">  229 </span><span class="spaces">  </span><span class="nottickedoff">withDayCounter a3 $ \a3' -&gt; </span>
@@ -253,7 +253,7 @@ span.spaces    { background: white }
 <span class="lineno">  234 </span><span class="spaces">  </span><span class="nottickedoff">withDay a8 $ \a8' -&gt; </span>
 <span class="lineno">  235 </span><span class="spaces">  </span><span class="nottickedoff">withDay a9 $ \a9' -&gt; </span>
 <span class="lineno">  236 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a10' -&gt; </span>
-<span class="lineno">  237 </span><span class="spaces">  </span><span class="nottickedoff">impliedRate''_ a1' a2' a3' a4' a5' a6' a7' a8' a9' a10' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  237 </span><span class="spaces">  </span><span class="nottickedoff">impliedRateBetween'_ a1' a2' a3' a4' a5' a6' a7' a8' a9' a10' &gt;&gt;= \res -&gt;</span>
 <span class="lineno">  238 </span><span class="spaces">  </span><span class="nottickedoff">peekInterestRate res &gt;&gt;= \res' -&gt;</span>
 <span class="lineno">  239 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a10'&gt;&gt;</span>
 <span class="lineno">  240 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
@@ -297,25 +297,25 @@ span.spaces    { background: white }
 <span class="lineno">  278 </span>  interestRate'_ :: (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CInterestRate))))))))
 <span class="lineno">  279 </span>
 <span class="lineno">  280 </span>foreign import ccall safe &quot;QuantLib/InterestRate.chs.h qlInterestRateCompoundFactor1&quot;
-<span class="lineno">  281 </span>  compoundFactor''_ :: ((C2HSImp.Ptr (CInterestRate)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))))))
+<span class="lineno">  281 </span>  compoundFactorBetween'_ :: ((C2HSImp.Ptr (CInterestRate)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))))))
 <span class="lineno">  282 </span>
 <span class="lineno">  283 </span>foreign import ccall safe &quot;QuantLib/InterestRate.chs.h qlInterestRateCompoundFactor&quot;
 <span class="lineno">  284 </span>  compoundFactor'_ :: ((C2HSImp.Ptr (CInterestRate)) -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble))))
 <span class="lineno">  285 </span>
 <span class="lineno">  286 </span>foreign import ccall safe &quot;QuantLib/InterestRate.chs.h qlInterestRateDiscountFactor1&quot;
-<span class="lineno">  287 </span>  discountFactor''_ :: ((C2HSImp.Ptr (CInterestRate)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))))))
+<span class="lineno">  287 </span>  discountFactorBetween'_ :: ((C2HSImp.Ptr (CInterestRate)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))))))
 <span class="lineno">  288 </span>
 <span class="lineno">  289 </span>foreign import ccall safe &quot;QuantLib/InterestRate.chs.h qlInterestRateDiscountFactor&quot;
 <span class="lineno">  290 </span>  discountFactor'_ :: ((C2HSImp.Ptr (CInterestRate)) -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble))))
 <span class="lineno">  291 </span>
 <span class="lineno">  292 </span>foreign import ccall safe &quot;QuantLib/InterestRate.chs.h qlInterestRateEquivalentRate1&quot;
-<span class="lineno">  293 </span>  equivalentRate''_ :: ((C2HSImp.Ptr (CInterestRate)) -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CInterestRate))))))))))))
+<span class="lineno">  293 </span>  equivalentRateBetween'_ :: ((C2HSImp.Ptr (CInterestRate)) -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CInterestRate))))))))))))
 <span class="lineno">  294 </span>
 <span class="lineno">  295 </span>foreign import ccall safe &quot;QuantLib/InterestRate.chs.h qlInterestRateEquivalentRate&quot;
 <span class="lineno">  296 </span>  equivalentRate'_ :: ((C2HSImp.Ptr (CInterestRate)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CInterestRate))))))))
 <span class="lineno">  297 </span>
 <span class="lineno">  298 </span>foreign import ccall safe &quot;QuantLib/InterestRate.chs.h qlInterestRateImpliedRate1&quot;
-<span class="lineno">  299 </span>  impliedRate''_ :: ((C2HSImp.Ptr (CInterestRate)) -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CInterestRate)))))))))))))
+<span class="lineno">  299 </span>  impliedRateBetween'_ :: ((C2HSImp.Ptr (CInterestRate)) -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CInterestRate)))))))))))))
 <span class="lineno">  300 </span>
 <span class="lineno">  301 </span>foreign import ccall safe &quot;QuantLib/InterestRate.chs.h qlInterestRateImpliedRate&quot;
 <span class="lineno">  302 </span>  impliedRate'_ :: ((C2HSImp.Ptr (CInterestRate)) -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CInterestRate))))))))))

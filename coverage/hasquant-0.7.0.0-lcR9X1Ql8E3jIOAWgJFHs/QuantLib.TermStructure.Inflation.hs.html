@@ -36,8 +36,8 @@ span.spaces    { background: white }
 <span class="lineno">   17 </span>  , yearOnYearInflationSwapHelperSwap
 <span class="lineno">   18 </span>
 <span class="lineno">   19 </span>  , piecewiseZeroInflationCurve
-<span class="lineno">   20 </span>  , piecewiseYoYInflationCurve
-<span class="lineno">   21 </span>  , interpolatedYoYInflationCurve
+<span class="lineno">   20 </span>  , piecewiseYoyInflationCurve
+<span class="lineno">   21 </span>  , interpolatedYoyInflationCurve
 <span class="lineno">   22 </span>
 <span class="lineno">   23 </span>  , zeroRate
 <span class="lineno">   24 </span>  , yoyRate
@@ -192,12 +192,12 @@ span.spaces    { background: white }
 <span class="lineno">  173 </span>
 <span class="lineno">  174 </span>
 <span class="lineno">  175 </span>
-<span class="lineno">  176 </span>piecewiseYoYInflationCurve :: Day -- ^referenceDate
+<span class="lineno">  176 </span>piecewiseYoyInflationCurve :: Day -- ^referenceDate
 <span class="lineno">  177 </span>  -&gt; Day -- ^baseDate
 <span class="lineno">  178 </span>  -&gt; Double -- ^baseYoYRate
 <span class="lineno">  179 </span>  -&gt; Frequency -&gt; DayCounter -&gt; NonEmpty YearOnYearInflationSwapHelper -&gt; Interpolation
 <span class="lineno">  180 </span>  -&gt; IO YoYInflationTermStructure
-<span class="lineno">  181 </span><span class="decl"><span class="istickedoff">piecewiseYoYInflationCurve r b y f dc h i = uncurryNested (qlPiecewiseYoYInflationCurve r b y f dc (toList h)) (qlInterpolation i)</span></span>
+<span class="lineno">  181 </span><span class="decl"><span class="istickedoff">piecewiseYoyInflationCurve r b y f dc h i = uncurryNested (qlPiecewiseYoYInflationCurve r b y f dc (toList h)) (qlInterpolation i)</span></span>
 <span class="lineno">  182 </span>-- |Bootstraps a year-on-year inflation term structure piecewise from a set of helpers,
 <span class="lineno">  183 </span>-- interpolating between the bootstrapped nodes with the given 'Interpolation'.
 <span class="lineno">  184 </span>qlPiecewiseYoYInflationCurve :: (Day) -&gt; (Day) -&gt; (Double) -&gt; (Frequency) -&gt; (DayCounter) -&gt; ([YearOnYearInflationSwapHelper]) -&gt; (Int) -&gt; (Int) -&gt; (Int) -&gt; IO ((YoYInflationTermStructure))
@@ -220,14 +220,14 @@ span.spaces    { background: white }
 <span class="lineno">  201 </span>
 <span class="lineno">  202 </span>
 <span class="lineno">  203 </span>-- |A YoY-inflation curve interpolating directly between given (date, rate) nodes, unlike
-<span class="lineno">  204 </span>-- 'piecewiseYoYInflationCurve''s bootstrap from swap helpers -- useful when the rates are
+<span class="lineno">  204 </span>-- 'piecewiseYoyInflationCurve' bootstrap from swap helpers -- useful when the rates are
 <span class="lineno">  205 </span>-- already known market YoY levels rather than swap quotes to calibrate against. The first
 <span class="lineno">  206 </span>-- node is the curve's own base date\/rate.
-<span class="lineno">  207 </span>interpolatedYoYInflationCurve :: Day -- ^referenceDate
+<span class="lineno">  207 </span>interpolatedYoyInflationCurve :: Day -- ^referenceDate
 <span class="lineno">  208 </span>  -&gt; NonEmpty (Day, Double) -- ^dates, rates
 <span class="lineno">  209 </span>  -&gt; Frequency -&gt; DayCounter -&gt; Interpolation
 <span class="lineno">  210 </span>  -&gt; IO YoYInflationTermStructure
-<span class="lineno">  211 </span><span class="decl"><span class="istickedoff">interpolatedYoYInflationCurve r dr f dc i = uncurryNested (qlInterpolatedYoYInflationCurve r ds rs f dc) (qlInterpolation i)</span>
+<span class="lineno">  211 </span><span class="decl"><span class="istickedoff">interpolatedYoyInflationCurve r dr f dc i = uncurryNested (qlInterpolatedYoYInflationCurve r ds rs f dc) (qlInterpolation i)</span>
 <span class="lineno">  212 </span><span class="spaces">  </span><span class="istickedoff">where (ds, rs) = unzip (toList dr)</span></span>
 <span class="lineno">  213 </span>qlInterpolatedYoYInflationCurve :: (Day) -&gt; ([Day]) -&gt; ([Double]) -&gt; (Frequency) -&gt; (DayCounter) -&gt; (Int) -&gt; (Int) -&gt; (Int) -&gt; IO ((YoYInflationTermStructure))
 <span class="lineno">  214 </span><span class="decl"><span class="istickedoff">qlInterpolatedYoYInflationCurve a1 a2 a3 a4 a5 a6 a7 a8 =</span>

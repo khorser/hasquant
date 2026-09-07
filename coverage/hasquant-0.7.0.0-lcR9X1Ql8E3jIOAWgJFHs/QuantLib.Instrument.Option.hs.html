@@ -73,10 +73,10 @@ span.spaces    { background: white }
 <span class="lineno">   54 </span>  , softBarrierOptionImpliedVolatility
 <span class="lineno">   55 </span>  , forwardVanillaOption
 <span class="lineno">   56 </span>  , compoundOption
-<span class="lineno">   57 </span>  , delta1
-<span class="lineno">   58 </span>  , delta2
-<span class="lineno">   59 </span>  , gamma1
-<span class="lineno">   60 </span>  , gamma2
+<span class="lineno">   57 </span>  , firstAssetDelta
+<span class="lineno">   58 </span>  , secondAssetDelta
+<span class="lineno">   59 </span>  , firstAssetGamma
+<span class="lineno">   60 </span>  , secondAssetGamma
 <span class="lineno">   61 </span>  , margrabeOption
 <span class="lineno">   62 </span>  , simpleChooserOption
 <span class="lineno">   63 </span>  , complexChooserOption
@@ -448,11 +448,11 @@ span.spaces    { background: white }
 <span class="lineno">  429 </span>
 <span class="lineno">  430 </span>
 <span class="lineno">  431 </span>-- |Sensitivity of a MargrabeOption's value to the price of the first asset.
-<span class="lineno">  432 </span>delta1 :: (MargrabeOption) -&gt; IO ((Double))
-<span class="lineno">  433 </span><span class="decl"><span class="istickedoff">delta1 a1 =</span>
+<span class="lineno">  432 </span>firstAssetDelta :: (MargrabeOption) -&gt; IO ((Double))
+<span class="lineno">  433 </span><span class="decl"><span class="istickedoff">firstAssetDelta a1 =</span>
 <span class="lineno">  434 </span><span class="spaces">  </span><span class="istickedoff">withMargrabeOption a1 $ \a1' -&gt; </span>
 <span class="lineno">  435 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
-<span class="lineno">  436 </span><span class="spaces">  </span><span class="istickedoff">delta1'_ a1' a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  436 </span><span class="spaces">  </span><span class="istickedoff">firstAssetDelta'_ a1' a2' &gt;&gt;= \res -&gt;</span>
 <span class="lineno">  437 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
 <span class="lineno">  438 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
 <span class="lineno">  439 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
@@ -460,11 +460,11 @@ span.spaces    { background: white }
 <span class="lineno">  441 </span>
 <span class="lineno">  442 </span>
 <span class="lineno">  443 </span>-- |Sensitivity of a MargrabeOption's value to the price of the second asset.
-<span class="lineno">  444 </span>delta2 :: (MargrabeOption) -&gt; IO ((Double))
-<span class="lineno">  445 </span><span class="decl"><span class="istickedoff">delta2 a1 =</span>
+<span class="lineno">  444 </span>secondAssetDelta :: (MargrabeOption) -&gt; IO ((Double))
+<span class="lineno">  445 </span><span class="decl"><span class="istickedoff">secondAssetDelta a1 =</span>
 <span class="lineno">  446 </span><span class="spaces">  </span><span class="istickedoff">withMargrabeOption a1 $ \a1' -&gt; </span>
 <span class="lineno">  447 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
-<span class="lineno">  448 </span><span class="spaces">  </span><span class="istickedoff">delta2'_ a1' a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  448 </span><span class="spaces">  </span><span class="istickedoff">secondAssetDelta'_ a1' a2' &gt;&gt;= \res -&gt;</span>
 <span class="lineno">  449 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
 <span class="lineno">  450 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
 <span class="lineno">  451 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
@@ -472,11 +472,11 @@ span.spaces    { background: white }
 <span class="lineno">  453 </span>
 <span class="lineno">  454 </span>
 <span class="lineno">  455 </span>-- |Second derivative of a MargrabeOption's value with respect to the price of the first asset.
-<span class="lineno">  456 </span>gamma1 :: (MargrabeOption) -&gt; IO ((Double))
-<span class="lineno">  457 </span><span class="decl"><span class="istickedoff">gamma1 a1 =</span>
+<span class="lineno">  456 </span>firstAssetGamma :: (MargrabeOption) -&gt; IO ((Double))
+<span class="lineno">  457 </span><span class="decl"><span class="istickedoff">firstAssetGamma a1 =</span>
 <span class="lineno">  458 </span><span class="spaces">  </span><span class="istickedoff">withMargrabeOption a1 $ \a1' -&gt; </span>
 <span class="lineno">  459 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
-<span class="lineno">  460 </span><span class="spaces">  </span><span class="istickedoff">gamma1'_ a1' a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  460 </span><span class="spaces">  </span><span class="istickedoff">firstAssetGamma'_ a1' a2' &gt;&gt;= \res -&gt;</span>
 <span class="lineno">  461 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
 <span class="lineno">  462 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
 <span class="lineno">  463 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
@@ -484,11 +484,11 @@ span.spaces    { background: white }
 <span class="lineno">  465 </span>
 <span class="lineno">  466 </span>
 <span class="lineno">  467 </span>-- |Second derivative of a MargrabeOption's value with respect to the price of the second asset.
-<span class="lineno">  468 </span>gamma2 :: (MargrabeOption) -&gt; IO ((Double))
-<span class="lineno">  469 </span><span class="decl"><span class="istickedoff">gamma2 a1 =</span>
+<span class="lineno">  468 </span>secondAssetGamma :: (MargrabeOption) -&gt; IO ((Double))
+<span class="lineno">  469 </span><span class="decl"><span class="istickedoff">secondAssetGamma a1 =</span>
 <span class="lineno">  470 </span><span class="spaces">  </span><span class="istickedoff">withMargrabeOption a1 $ \a1' -&gt; </span>
 <span class="lineno">  471 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
-<span class="lineno">  472 </span><span class="spaces">  </span><span class="istickedoff">gamma2'_ a1' a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  472 </span><span class="spaces">  </span><span class="istickedoff">secondAssetGamma'_ a1' a2' &gt;&gt;= \res -&gt;</span>
 <span class="lineno">  473 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
 <span class="lineno">  474 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
 <span class="lineno">  475 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
@@ -1377,16 +1377,16 @@ span.spaces    { background: white }
 <span class="lineno"> 1358 </span>  holderExtensibleOption'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; ((QlStrikedTypePayoff) -&gt; ((QlExercise) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (COneAssetOption'))))))))))
 <span class="lineno"> 1359 </span>
 <span class="lineno"> 1360 </span>foreign import ccall safe &quot;QuantLib/Instrument/Option.chs.h qlMargrabeOptionDelta1&quot;
-<span class="lineno"> 1361 </span>  delta1'_ :: ((C2HSImp.Ptr (CMargrabeOption')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))
+<span class="lineno"> 1361 </span>  firstAssetDelta'_ :: ((C2HSImp.Ptr (CMargrabeOption')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))
 <span class="lineno"> 1362 </span>
 <span class="lineno"> 1363 </span>foreign import ccall safe &quot;QuantLib/Instrument/Option.chs.h qlMargrabeOptionDelta2&quot;
-<span class="lineno"> 1364 </span>  delta2'_ :: ((C2HSImp.Ptr (CMargrabeOption')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))
+<span class="lineno"> 1364 </span>  secondAssetDelta'_ :: ((C2HSImp.Ptr (CMargrabeOption')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))
 <span class="lineno"> 1365 </span>
 <span class="lineno"> 1366 </span>foreign import ccall safe &quot;QuantLib/Instrument/Option.chs.h qlMargrabeOptionGamma1&quot;
-<span class="lineno"> 1367 </span>  gamma1'_ :: ((C2HSImp.Ptr (CMargrabeOption')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))
+<span class="lineno"> 1367 </span>  firstAssetGamma'_ :: ((C2HSImp.Ptr (CMargrabeOption')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))
 <span class="lineno"> 1368 </span>
 <span class="lineno"> 1369 </span>foreign import ccall safe &quot;QuantLib/Instrument/Option.chs.h qlMargrabeOptionGamma2&quot;
-<span class="lineno"> 1370 </span>  gamma2'_ :: ((C2HSImp.Ptr (CMargrabeOption')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))
+<span class="lineno"> 1370 </span>  secondAssetGamma'_ :: ((C2HSImp.Ptr (CMargrabeOption')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))
 <span class="lineno"> 1371 </span>
 <span class="lineno"> 1372 </span>foreign import ccall safe &quot;QuantLib/Instrument/Option.chs.h qlOneAssetOptionDeltaForward&quot;
 <span class="lineno"> 1373 </span>  deltaForward'_ :: ((C2HSImp.Ptr (COneAssetOption')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))
