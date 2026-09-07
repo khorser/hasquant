@@ -152,6 +152,7 @@ forwardRate'	forwardRateBetweenDates
 fxSwapRateHelper'	fxSwapRateHelperBetweenDates
 oisRateHelper'	oisRateHelperBetweenDates
 oisRateHelperFull'	oisRateHelperBetweenDatesWithOptions
+oisRateHelperFull	oisRateHelperWithOptions
 fraIborRateHelper'	fraRateHelperFromIndex
 fraRateHelper'	fraRateHelperFromPeriod
 futuresRateHelper'	futuresRateHelperBetweenDates
@@ -159,6 +160,10 @@ fittedBondDiscountCurveMoving	fittedBondDiscountCurve
 fittedBondDiscountCurve'	fittedBondDiscountCurve
 piecewiseYieldCurveFull	piecewiseYieldCurve
 piecewiseYieldCurveMoving	piecewiseYieldCurve
+
+iborLegFull	iborLegWithOptions
+cmsLegFull	cmsLegWithOptions
+blackVolatilitySurfaceDeltaFull	blackVolatilitySurfaceDeltaWithOptions
 
 ecbDate'	ecbDateFromCode
 nextEcbCode'	nextEcbCodeFromCode

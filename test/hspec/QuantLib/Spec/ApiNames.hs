@@ -2,7 +2,7 @@ module QuantLib.Spec.ApiNames (spec) where
 
 import Control.Monad (unless)
 import Data.Char (isAlphaNum, isDigit, isLower)
-import Data.List (isInfixOf, isPrefixOf, nub, sort)
+import Data.List (isInfixOf, isPrefixOf, isSuffixOf, nub, sort)
 import System.Directory (doesDirectoryExist, doesFileExist, getCurrentDirectory)
 import System.Environment (getExecutablePath)
 import System.FilePath ((</>), (<.>), joinPath, takeDirectory)
@@ -11,7 +11,7 @@ import Test.Hspec
 
 spec :: Spec
 spec = describe "public API names" $ do
-  it "rejects primes, unexplained numeric suffixes, and reviewed acronym spellings" $ do
+  it "rejects primes, Full/numeric suffixes, and reviewed acronym spellings" $ do
     repoRoot <- findAncestorWith "package.yaml" =<< getCurrentDirectory
     buildRoot <- findBuildRoot =<< getExecutablePath
     modules <- exposedModules <$> readFile (repoRoot </> "package.yaml")
@@ -22,6 +22,7 @@ spec = describe "public API names" $ do
         retiredNames = filter (`notElem` newNames) oldNames
         failures =
           [ "trailing apostrophe: " ++ name | name <- names, last name == '\'' ] ++
+          [ "unexplained Full suffix: " ++ name | name <- names, "Full" `isSuffixOf` name ] ++
           [ "unexplained numeric suffix: " ++ name
           | name <- names, isDigit (last name), name `notElem` allowedNumericNames ] ++
           [ "banned acronym spelling: " ++ name

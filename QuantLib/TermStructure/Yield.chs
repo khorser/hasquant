@@ -41,7 +41,7 @@ module QuantLib.TermStructure.Yield
   , oisRateHelperBetweenDates
   , OISRateHelperOpts(..)
   , defaultOisRateHelperOpts
-  , oisRateHelperFull
+  , oisRateHelperWithOptions
   , oisRateHelperBetweenDatesWithOptions
   , swapRateHelper
   , forwardSpreadedTermStructure
@@ -165,7 +165,7 @@ import QuantLib.Internal.Type
 -- second entry point instead of widening oisRateHelper/oisRateHelperBetweenDates
 -- themselves. The three Calendar fields are Maybe here (unlike the raw binding's plain
 -- Calendar) since a real Calendar is only obtainable in IO (`calendar Null`) and can't
--- live in a pure default record value -- oisRateHelperFull/oisRateHelperBetweenDatesWithOptions
+-- live in a pure default record value -- oisRateHelperWithOptions/oisRateHelperBetweenDatesWithOptions
 -- substitute a fresh Null calendar for Nothing, same as the narrow constructors do
 -- today. This splice must stay textually before every {#fun#}-generated binding in
 -- this file: c2hs always appends its raw foreign-import stubs at the physical end of
@@ -446,7 +446,7 @@ bondHelper cleanPrice bond priceType = bondHelper_ cleanPrice bond (fromEnum pri
 {#fun qlBondHelper as bondHelper_{withQuote*`GenQuote q',withBond*`Bond',`Int' -- ^priceType
   ,preErrorCheck-`String'errorCheck*-}->`BondHelper'peekBondHelper*#}
 -- oisRateHelper/oisRateHelperBetweenDates keep their original 5-param signatures (below);
--- both call the same full-arity raw bindings as oisRateHelperFull/oisRateHelperBetweenDatesWithOptions
+-- both call the same full-arity raw bindings as oisRateHelperWithOptions/oisRateHelperBetweenDatesWithOptions
 -- (the options-record wrappers spliced further down in this file), hardcoding
 -- upstream's own defaults for every trailing param -- widening the underlying C
 -- shim was cheaper than maintaining a second near-duplicate one (see
@@ -519,9 +519,9 @@ oisRateHelperBetweenDates startDate endDate fixedRate idx discountingCurve = do
   ,fromEnumC`BusinessDayConvention' -- ^convention (q1.k.q1. overnightConvention)
   ,preErrorCheck-`String'errorCheck*-}->`OISRateHelper'peekOISRateHelper*#}
 
-oisRateHelperFull :: Word -> (Int, TimeUnit) -> GenQuote q -> OvernightIborIndex
+oisRateHelperWithOptions :: Word -> (Int, TimeUnit) -> GenQuote q -> OvernightIborIndex
   -> Maybe (GenYieldTermStructure y) -> OISRateHelperOpts m -> IO OISRateHelper
-oisRateHelperFull settlementDays tenor fixedRate idx discountingCurve opts = do
+oisRateHelperWithOptions settlementDays tenor fixedRate idx discountingCurve opts = do
   cal <- calendar Null
   oisRateHelper_ settlementDays tenor fixedRate idx discountingCurve
     (oisTelescopicValueDates opts) (oisPaymentLag opts) (oisPaymentConvention opts)

@@ -1507,9 +1507,9 @@ spec = do
                 ]
               linearOpts = Vol.defaultBlackVolatilitySurfaceDeltaOpts
               cubicOpts = linearOpts { Vol.bvsdInterpolationMethod = Vol.CubicSpline }
-          surfaceLinear <- Vol.blackVolatilitySurfaceDeltaFull refDate [d1M, d6M, d1Y, d2Y] [-0.25] [0.25] True vols
+          surfaceLinear <- Vol.blackVolatilitySurfaceDeltaWithOptions refDate [d1M, d6M, d1Y, d2Y] [-0.25] [0.25] True vols
                              dc cal spot dts fts linearOpts
-          surfaceCubic <- Vol.blackVolatilitySurfaceDeltaFull refDate [d1M, d6M, d1Y, d2Y] [-0.25] [0.25] True vols
+          surfaceCubic <- Vol.blackVolatilitySurfaceDeltaWithOptions refDate [d1M, d6M, d1Y, d2Y] [-0.25] [0.25] True vols
                              dc cal spot dts fts cubicOpts
           smileLinear <- Vol.blackVolSmile surfaceLinear (Vol.DatePoint d6M)
           smileCubic <- Vol.blackVolSmile surfaceCubic (Vol.DatePoint d6M)

@@ -1616,7 +1616,7 @@ spec evalDate = do
 
           legNpv `shouldSatisfy` closePrec refNpv 1.0e-8
 
-      it "CMS and Ibor legs, CMS-rate bonds, and their full options price with effective caps, floors, and amortization" $
+      it "CMS and Ibor legs, CMS-rate bonds, and their options records price with effective caps, floors, and amortization" $
         Settings.keepingSettingsGc $ do
           Settings.setEvaluationDate (Just refDate)
           cal <- calendar TARGET
@@ -1663,12 +1663,12 @@ spec evalDate = do
           iborCapped `shouldSatisfy` (< iborUncapped)
           iborFloored `shouldSatisfy` (> iborUncapped)
 
-          iborFull <- CF.iborLegFull sch euribor6m [1000000] thirty360bb Following [2] [1.0] [0.0] [] [] False False
+          iborFull <- CF.iborLegWithOptions sch euribor6m [1000000] thirty360bb Following [2] [1.0] [0.0] [] [] False False
             CF.defaultIborLegOpts { CF.ilgPaymentLag = 2, CF.ilgExCouponPeriod = (2, Days) }
           CF.setCouponPricer iborFull iborPricer
           iborFullNpv <- CF.npv iborFull ts False Nothing Nothing
           iborFullNpv `shouldSatisfy` (> 0)
-          cmsFull <- CF.cmsLegFull sch swapBase [1000000] thirty360bb Following [2] [1.0] [0.0] [] [] False False
+          cmsFull <- CF.cmsLegWithOptions sch swapBase [1000000] thirty360bb Following [2] [1.0] [0.0] [] [] False False
             CF.defaultCmsLegOpts { CF.cmslExCouponPeriod = (2, Days) }
           CF.setCouponPricer cmsFull cmsPricer
           cmsFullNpv <- CF.npv cmsFull ts False Nothing Nothing

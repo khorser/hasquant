@@ -4,12 +4,12 @@
 -- TH infra -- see the add-quantlib-options-record skill). Two things this
 -- checks that a green `stack build` alone would not:
 --  1. defaultOisRateHelperOpts's field order/types actually line up with the raw
---     full-arity binding oisRateHelperFull threads them into -- a silent field
+--     full-arity binding oisRateHelperWithOptions threads them into -- a silent field
 --     transposition (deriveOptionsRecord builds the record purely from the inline
 --     splice list, with no reification against the underlying binding to catch
 --     drift) would show up as a wrong/garbage discount factor here, not a compile
 --     error.
---  2. oisRateHelperFull with an all-defaults options record reproduces exactly the
+--  2. oisRateHelperWithOptions with an all-defaults options record reproduces exactly the
 --     same discount as the narrow oisRateHelper called with the same leading args --
 --     both are supposed to hit the same upstream ctor with the same upstream
 --     defaults, just via two different Haskell entry points.
@@ -48,22 +48,22 @@ main = do
   hNarrow <- oisRateHelper 2 (1, Years) q idx Nothing
   dNarrow <- endToEndDiscount hNarrow
 
-  hFullDefaults <- oisRateHelperFull 2 (1, Years) q idx Nothing defaultOisRateHelperOpts
-  dFullDefaults <- endToEndDiscount hFullDefaults
+  hWithDefaults <- oisRateHelperWithOptions 2 (1, Years) q idx Nothing defaultOisRateHelperOpts
+  dWithDefaults <- endToEndDiscount hWithDefaults
 
   putStrLn ("narrow          -> discount " ++ show dNarrow)
-  putStrLn ("full (defaults) -> discount " ++ show dFullDefaults)
+  putStrLn ("with options (defaults) -> discount " ++ show dWithDefaults)
   -- exact equality is intended: both paths must build an identical helper
-  checkWith "full-with-defaults matches narrow"
+  checkWith "with-options defaults match narrow"
     "identical discount (a difference means field order/type drift in the options record)"
-    (dNarrow == dFullDefaults)
+    (dNarrow == dWithDefaults)
 
-  hOverridden <- oisRateHelperFull 2 (1, Years) q idx Nothing
+  hOverridden <- oisRateHelperWithOptions 2 (1, Years) q idx Nothing
     defaultOisRateHelperOpts{oisTelescopicValueDates = True, oisPaymentFrequency = Semiannual, oisAveragingMethod = AveragingSimple}
   dOverridden <- endToEndDiscount hOverridden
-  putStrLn ("full (overridden) -> discount " ++ show dOverridden)
+  putStrLn ("with options (overridden) -> discount " ++ show dOverridden)
   checkWith "override path takes effect"
     "discount differs from defaults (equality means the overrides are being dropped)"
-    (dOverridden /= dFullDefaults)
+    (dOverridden /= dWithDefaults)
   where
     today = 2 `january` 2024

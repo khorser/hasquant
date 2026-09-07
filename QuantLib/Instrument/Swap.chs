@@ -509,7 +509,7 @@ makeVanillaSwap (swLen, swUnit) index fixedRate forwardStart mSettlementDays
 -- override, CMS-leg\/floating-leg termination-date-convention\/rule\/end-of-month\/
 -- first-date\/next-to-last-date overrides (always @ModifiedFollowing@\/@Backward@\/@False@\/
 -- unset, matching @MakeCms@'s own defaults for the CMS leg), CMS coupon gearing\/caps\/floors
--- (use 'QuantLib.CashFlow.cmsLegFull' and 'swap' directly for those), an ATM-spread lookup, a
+-- (use 'QuantLib.CashFlow.cmsLegWithOptions' and 'swap' directly for those), an ATM-spread lookup, a
 -- discounting term structure or custom pricing engine (use 'QuantLib.Instrument.setPricingEngine'
 -- on the result instead). A 'Nothing' @settlementDays@ behaves as @Just 0@, rather than
 -- replicating upstream's index-@valueDate@-based spot-date convention (matching

@@ -158,7 +158,7 @@ module QuantLib.TermStructure.Volatility
   , blackVarianceSurface
   , piecewiseBlackVarianceSurface
   , blackVolatilitySurfaceDelta
-  , blackVolatilitySurfaceDeltaFull
+  , blackVolatilitySurfaceDeltaWithOptions
   , blackVolSmile
   , swaptionVolatilityMatrix
   , SwaptionVolatilityMatrix
@@ -1593,7 +1593,7 @@ piecewiseBlackVarianceSurface d ds s (RealMatrix mr mc md) dc = qlPiecewiseBlack
 
 -- |A Black volatility surface parameterized by market deltas (put\/call deltas and, optionally,
 -- an ATM quote) rather than fixed strikes -- the standard FX vol quoting convention. Constructed
--- with upstream's own defaults for the trailing options; use 'blackVolatilitySurfaceDeltaFull'
+-- with upstream's own defaults for the trailing options; use 'blackVolatilitySurfaceDeltaWithOptions'
 -- to override them.
 blackVolatilitySurfaceDelta :: Day -> [Day] -- ^dates
   -> [Double] -- ^putDeltas
@@ -1610,10 +1610,10 @@ blackVolatilitySurfaceDelta d ds pd cd hasAtm (RealMatrix mr mc md) dc cal spot 
 
 -- |As 'blackVolatilitySurfaceDelta', but takes a 'BlackVolatilitySurfaceDeltaOpts' record for
 -- the trailing options instead of hardcoding upstream's defaults.
-blackVolatilitySurfaceDeltaFull :: Day -> [Day] -> [Double] -> [Double] -> Bool -> RealMatrix
+blackVolatilitySurfaceDeltaWithOptions :: Day -> [Day] -> [Double] -> [Double] -> Bool -> RealMatrix
   -> DayCounter -> Calendar -> GenQuote q -> GenYieldTermStructure y1 -> GenYieldTermStructure y2
   -> BlackVolatilitySurfaceDeltaOpts -> IO BlackVolatilitySurfaceDelta
-blackVolatilitySurfaceDeltaFull d ds pd cd hasAtm (RealMatrix mr mc md) dc cal spot dts fts opts =
+blackVolatilitySurfaceDeltaWithOptions d ds pd cd hasAtm (RealMatrix mr mc md) dc cal spot dts fts opts =
   blackVolatilitySurfaceDelta_ d ds pd cd hasAtm mr mc md dc cal spot dts fts
     (bvsdDeltaType opts) (bvsdAtmType opts) (bvsdAtmDeltaType opts)
     (bvsdInterpolationMethod opts) (bvsdFlatStrikeExtrapolation opts) (bvsdTimeExtrapolationType opts)
