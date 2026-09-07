@@ -98,7 +98,7 @@ run = do
   euribor6m <- IR.iborIndex IR.Euribor6M (Just yts6m)
 
   volQuote <- simpleQuote volLevel
-  swaptionVol <- constantSwaptionVolatilityMoving 0 cal ModifiedFollowing volQuote dc365 ShiftedLognormal 0.0
+  swaptionVol <- constantSwaptionVolatility (CalendarSettlementDays 0) cal ModifiedFollowing volQuote dc365 ShiftedLognormal 0.0
 
   effectiveDate <- advance cal refDate (2, Days) Following False
   maturity <- advance cal effectiveDate (10, Years) Following False

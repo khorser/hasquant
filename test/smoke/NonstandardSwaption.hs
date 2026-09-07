@@ -84,7 +84,7 @@ main = do
 
   swapBase <- IR.liborSwapIndex IR.EuriborSwapIsdaFixA (10, Years) (Just ts) (Just ts)
   swaptionVolQ <- simpleQuote 0.20
-  swaptionVolTS <- constantSwaptionVolatilityMoving 0 cal ModifiedFollowing swaptionVolQ dc365 ShiftedLognormal 0.0
+  swaptionVolTS <- constantSwaptionVolatility (CalendarSettlementDays 0) cal ModifiedFollowing swaptionVolQ dc365 ShiftedLognormal 0.0
   basketNaive <- calibrationBasket swpn1 swapBase swaptionVolTS CalibrationBasketNaive
   basketMSDG <- calibrationBasket swpn1 swapBase swaptionVolTS MaturityStrikeByDeltaGamma
   putStrLn ("Naive basket size: " ++ show (length basketNaive))

@@ -53,7 +53,7 @@ spec = do
         divQ <- simpleQuote dividend
         divTS <- flatForward (ReferenceDate evalDate) divQ dc Continuous Annual
         volQ <- simpleQuote vol
-        volTS <- calendar TARGET >>= $(free2nd 'blackConstantVol) evalDate volQ dc
+        volTS <- calendar TARGET >>= $(free2nd 'blackConstantVol) (CalendarReferenceDate evalDate) volQ dc
         let payoff = PlainVanilla $ PlainVanillaPayoff optType strike
         bsmProc <- blackScholesMertonProcess underQ divTS ts volTS EulerDiscretization False
         americanOpt <- vanillaOption payoff (American Nothing maturity False)
@@ -85,7 +85,7 @@ spec = do
         leg <- iborLeg floatSch idx [1000000] floatDC ModifiedFollowing [2] [1.0] [0.0] [] [] False False
         capfl <- cap leg [0.03]
         volQ <- simpleQuote 0.20
-        vol0 <- constantOptionletVolatility today' cal ModifiedFollowing volQ dc ShiftedLognormal 0
+        vol0 <- constantOptionletVolatility (CalendarReferenceDate today') cal ModifiedFollowing volQ dc ShiftedLognormal 0
         eng <- blackCapFloorEngineWithVolatilityStructure discountTS vol0
         setPricingEngine capfl eng
         _ <- npv capfl

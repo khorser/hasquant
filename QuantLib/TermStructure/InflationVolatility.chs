@@ -52,7 +52,7 @@ import QuantLib.Internal.Common
 {#pointer *QlCPIVolatilitySurface as CPIVolatilitySurface foreign -> CCPIVolatilitySurface' nocode#}
 
 -- |Constant YoY-inflation optionlet vol surface, no maturity\/strike dependence. Mirrors
--- 'QuantLib.TermStructure.Volatility.constantOptionletVolatilityMoving', taking a 'GenQuote' rather
+-- 'QuantLib.TermStructure.Volatility.constantOptionletVolatility', taking a 'GenQuote' rather
 -- than a plain 'Double' per the @std::variant@\/overload-collapse rule (the flat case is already
 -- reachable via 'QuantLib.Quote.simpleQuote'). Not the only concrete leaf of this type any
 -- more -- see 'kInterpolatedYoyOptionletVolatilitySurfaceBlack' for the market-quote-bootstrapped

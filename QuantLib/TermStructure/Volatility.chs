@@ -37,6 +37,8 @@ module QuantLib.TermStructure.Volatility
   , RelinkableSwaptionVolatilityStructure
   , OptionMaturity(..)
   , SwapMaturity(..)
+  , Reference(..)
+  , CalendarReference(..)
   , HasBlackVariance(..)
   , HasVolatility(..)
   , VolatilityTermStructure
@@ -54,7 +56,6 @@ module QuantLib.TermStructure.Volatility
 
   , localVolSurface
   , constantOptionletVolatility
-  , constantOptionletVolatilityMoving
   , capletVarianceCurve
   , optionletStripper
   , optionletStripperWithAtm
@@ -64,12 +65,10 @@ module QuantLib.TermStructure.Volatility
   , spreadsVol
 
   , impliedVolTermStructure
-  , blackConstantVolMoving
   , blackConstantVol
   , relinkableBlackVolTermStructure
   , linkBlackVolTo
   , constantSwaptionVolatility
-  , constantSwaptionVolatilityMoving
   , maxSwapLength
   , maxSwapTenor
   , smileSection
@@ -111,7 +110,6 @@ module QuantLib.TermStructure.Volatility
   , noArbSabrInterpolatedSmileSectionEndCriteria
   , swapLengthBetweenDates
   , swapLength
-  , callableBondConstantVolatilityMoving
   , callableBondConstantVolatility
   , callableBondSmileSectionAtDate
   , callableBondSmileSectionForTenors
@@ -119,7 +117,6 @@ module QuantLib.TermStructure.Volatility
   , minStrike
   , maxStrike
   , constantCapFloorTermVolatility
-  , constantCapFloorTermVolatilityMoving
   , capFloorVolatilityForPeriod
   , capFloorVolatilityForDate
   , capFloorVolatilityForTime
@@ -161,13 +158,10 @@ module QuantLib.TermStructure.Volatility
   , linkSwaptionVolTo
   , relinkableOptionletVolatilityStructure
   , linkOptionletVolTo
-  , localConstantVolMoving
   , localConstantVol
   , localVolCurve
-  , capFloorTermVolCurveMoving
   , capFloorTermVolCurve
   , blackVarianceCurve
-  , capFloorTermVolSurfaceMoving
   , capFloorTermVolSurface
   , blackVarianceSurface
   , piecewiseBlackVarianceSurface
@@ -232,6 +226,7 @@ import QuantLib.Internal
 import QuantLib.Internal.Type
 import QuantLib.Internal.Common
 import QuantLib.Internal.Syntax(deriveOptionsRecord)
+import QuantLib.TermStructure(Reference(..), CalendarReference(..))
 import QuantLib.Time.Schedule(dayCounter, DayCounterConstructor(..))
 import Data.List.NonEmpty(NonEmpty, toList)
 import Foreign.Marshal.Alloc(alloca)
@@ -476,15 +471,19 @@ andreasenHugeVolatilityInterpolationCalibrationError x = do
   ,`Bool' -- ^extrapolate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
--- |Constant caplet volatility, no time-strike dependence
--- floating reference date, floating market data
-{#fun qlConstantOptionletVol1 as constantOptionletVolatilityMoving{fromIntegral`Word',withCalendar*`Calendar',fromEnumC`BusinessDayConvention',withQuote*`GenQuote q',withDayCounter*`DayCounter'
+-- |Constant caplet volatility with either a fixed or evaluation-date-relative reference point.
+constantOptionletVolatility :: CalendarReference -> Calendar -> BusinessDayConvention
+  -> GenQuote q -> DayCounter -> VolatilityType -> Double -> IO OptionletVolatilityStructure
+constantOptionletVolatility reference cal = case reference of
+  CalendarReferenceDate d -> constantOptionletVolatilityFixed d cal
+  CalendarSettlementDays n -> constantOptionletVolatilityMovingRaw n cal
+
+{#fun qlConstantOptionletVol1 as constantOptionletVolatilityMovingRaw{fromIntegral`Word',withCalendar*`Calendar',fromEnumC`BusinessDayConvention',withQuote*`GenQuote q',withDayCounter*`DayCounter'
   ,`VolatilityType' -- ^type
   ,`Double' -- ^displacement
   ,preErrorCheck-`String'errorCheck*-}->`OptionletVolatilityStructure'peekOptionletVolatilityStructure*#}
 
--- |fixed reference date, floating market data
-{#fun qlConstantOptionletVolatility as constantOptionletVolatility{withDay*`Day',withCalendar*`Calendar',fromEnumC`BusinessDayConvention',withQuote*`GenQuote q',withDayCounter*`DayCounter'
+{#fun qlConstantOptionletVolatility as constantOptionletVolatilityFixed{withDay*`Day',withCalendar*`Calendar',fromEnumC`BusinessDayConvention',withQuote*`GenQuote q',withDayCounter*`DayCounter'
   ,`VolatilityType' -- ^type
   ,`Double' -- ^displacement
   ,preErrorCheck-`String'errorCheck*-}->`OptionletVolatilityStructure'peekOptionletVolatilityStructure*#}
@@ -566,12 +565,13 @@ capletVarianceCurve referenceDate nodes = qlCapletVarianceCurve referenceDate da
 {#fun qlRelinkableOptionletVolatilityStructureLinkTo as linkOptionletVolTo{withRelinkableOptionletVolatilityStructure*`RelinkableOptionletVolatilityStructure'
   ,withOptionletVolatilityStructure*`GenOptionletVolatilityStructure ov',preErrorCheck-`String'errorCheck*-}->`()'#}
 
--- |A constant Black volatility, no time-strike dependence -- floating reference date, floating
--- market data
-{#fun qlBlackConstantVol1 as blackConstantVolMoving{fromIntegral`Word',withCalendar*`Calendar',withQuote*`GenQuote q',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`BlackVolTermStructure'peekBlackVolTermStructure*#}
-
--- |as 'blackConstantVol\'', but a fixed reference date
-{#fun qlBlackConstantVol as blackConstantVol{withDay*`Day',withCalendar*`Calendar',withQuote*`GenQuote q',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`BlackVolTermStructure'peekBlackVolTermStructure*#}
+-- |A constant Black volatility with either a fixed or evaluation-date-relative reference point.
+blackConstantVol :: CalendarReference -> Calendar -> GenQuote q -> DayCounter -> IO BlackVolTermStructure
+blackConstantVol reference cal = case reference of
+  CalendarReferenceDate d -> blackConstantVolFixed d cal
+  CalendarSettlementDays n -> blackConstantVolMovingRaw n cal
+{#fun qlBlackConstantVol1 as blackConstantVolMovingRaw{fromIntegral`Word',withCalendar*`Calendar',withQuote*`GenQuote q',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`BlackVolTermStructure'peekBlackVolTermStructure*#}
+{#fun qlBlackConstantVol as blackConstantVolFixed{withDay*`Day',withCalendar*`Calendar',withQuote*`GenQuote q',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`BlackVolTermStructure'peekBlackVolTermStructure*#}
 
 -- |A Black vol surface behind a relinkable handle. The result /is/ a 'BlackVolTermStructure':
 -- pass it anywhere one is expected and everything built on it keeps tracking whatever the
@@ -587,14 +587,18 @@ capletVarianceCurve referenceDate nodes = qlCapletVarianceCurve referenceDate da
 {#fun qlRelinkableBlackVolTermStructureLinkTo as linkBlackVolTo{withRelinkableBlackVolTermStructure*`RelinkableBlackVolTermStructure'
   ,withBlackVolTermStructure*`GenBlackVolTermStructure bv',preErrorCheck-`String'errorCheck*-}->`()'#}
 
--- |fixed reference date, floating market data
-{#fun qlConstantSwaptionVolatility1 as constantSwaptionVolatility{withDay*`Day',withCalendar*`Calendar',fromEnumC`BusinessDayConvention',withQuote*`GenQuote q',withDayCounter*`DayCounter'
+-- |Constant swaption volatility with either a fixed or evaluation-date-relative reference point.
+constantSwaptionVolatility :: CalendarReference -> Calendar -> BusinessDayConvention
+  -> GenQuote q -> DayCounter -> VolatilityType -> Double -> IO SwaptionVolatilityStructure
+constantSwaptionVolatility reference cal = case reference of
+  CalendarReferenceDate d -> constantSwaptionVolatilityFixed d cal
+  CalendarSettlementDays n -> constantSwaptionVolatilityMovingRaw n cal
+{#fun qlConstantSwaptionVolatility1 as constantSwaptionVolatilityFixed{withDay*`Day',withCalendar*`Calendar',fromEnumC`BusinessDayConvention',withQuote*`GenQuote q',withDayCounter*`DayCounter'
   ,`VolatilityType' -- ^type
   ,`Double' -- ^shift
   ,preErrorCheck-`String'errorCheck*-}->`SwaptionVolatilityStructure'peekSwaptionVolatilityStructure*#}
 
--- |floating reference date, floating market data
-{#fun qlConstantSwaptionVolatility as constantSwaptionVolatilityMoving{fromIntegral`Word',withCalendar*`Calendar',fromEnumC`BusinessDayConvention',withQuote*`GenQuote q',withDayCounter*`DayCounter'
+{#fun qlConstantSwaptionVolatility as constantSwaptionVolatilityMovingRaw{fromIntegral`Word',withCalendar*`Calendar',fromEnumC`BusinessDayConvention',withQuote*`GenQuote q',withDayCounter*`DayCounter'
   ,`VolatilityType' -- ^type
   ,`Double' -- ^shift
   ,preErrorCheck-`String'errorCheck*-}->`SwaptionVolatilityStructure'peekSwaptionVolatilityStructure*#}
@@ -1188,12 +1192,14 @@ swaptionVolatility sv optionMaturity swapMaturity =
     (OptionTime t, SwapLength l) -> volatilityTimeLength sv t l
     (OptionTenor o, SwapTenor s) -> volatilityTenorTenor sv o s
 
--- |A constant callable-bond volatility, no time-strike dependence -- floating reference date,
--- floating market data
-{#fun qlCallableBondConstantVolatility1 as callableBondConstantVolatilityMoving{fromIntegral`Word',withCalendar*`Calendar',withQuote*`GenQuote q',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`CallableBondVolatilityStructure'peekCallableBondVolatilityStructure*#}
-
--- |as 'callableBondConstantVolatility\'', but a fixed reference date
-{#fun qlCallableBondConstantVolatility as callableBondConstantVolatility{withDay*`Day',withQuote*`GenQuote q',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`CallableBondVolatilityStructure'peekCallableBondVolatilityStructure*#}
+-- |A constant callable-bond volatility with either a fixed or evaluation-date-relative
+-- reference point.
+callableBondConstantVolatility :: Reference -> GenQuote q -> DayCounter -> IO CallableBondVolatilityStructure
+callableBondConstantVolatility reference = case reference of
+  ReferenceDate d -> callableBondConstantVolatilityFixed d
+  SettlementDays n cal -> callableBondConstantVolatilityMovingRaw n cal
+{#fun qlCallableBondConstantVolatility1 as callableBondConstantVolatilityMovingRaw{fromIntegral`Word',withCalendar*`Calendar',withQuote*`GenQuote q',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`CallableBondVolatilityStructure'peekCallableBondVolatilityStructure*#}
+{#fun qlCallableBondConstantVolatility as callableBondConstantVolatilityFixed{withDay*`Day',withQuote*`GenQuote q',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`CallableBondVolatilityStructure'peekCallableBondVolatilityStructure*#}
 
 -- |The volatility for a given option time and bond length.
 {#fun qlCallableBondVolatilityStructureVolatilityForTime{withGenTermStructure*`CallableBondVolatilityStructure'
@@ -1293,11 +1299,15 @@ instance HasBlackVariance CallableBondVolatilityStructure (Word, TimeUnit) (Word
 -- |The maximum strike for which the structure can return vols.
 {#fun qlCallableBondVolatilityStructureMaxStrike as maxStrike{withGenTermStructure*`CallableBondVolatilityStructure',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
--- |fixed reference date, floating market data
-{#fun qlConstantCapFloorTermVolatility1 as constantCapFloorTermVolatility{withDay*`Day',withCalendar*`Calendar',fromEnumC`BusinessDayConvention',withQuote*`GenQuote q',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`CapFloorTermVolatilityStructure'peekCapFloorTermVolatilityStructure*#}
-
--- |floating reference date, floating market data
-{#fun qlConstantCapFloorTermVolatility as constantCapFloorTermVolatilityMoving{fromIntegral`Word',withCalendar*`Calendar',fromEnumC`BusinessDayConvention',withQuote*`GenQuote q',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`CapFloorTermVolatilityStructure'peekCapFloorTermVolatilityStructure*#}
+-- |Constant cap/floor term volatility with either a fixed or evaluation-date-relative reference
+-- point.
+constantCapFloorTermVolatility :: CalendarReference -> Calendar -> BusinessDayConvention
+  -> GenQuote q -> DayCounter -> IO CapFloorTermVolatilityStructure
+constantCapFloorTermVolatility reference cal = case reference of
+  CalendarReferenceDate d -> constantCapFloorTermVolatilityFixed d cal
+  CalendarSettlementDays n -> constantCapFloorTermVolatilityMovingRaw n cal
+{#fun qlConstantCapFloorTermVolatility1 as constantCapFloorTermVolatilityFixed{withDay*`Day',withCalendar*`Calendar',fromEnumC`BusinessDayConvention',withQuote*`GenQuote q',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`CapFloorTermVolatilityStructure'peekCapFloorTermVolatilityStructure*#}
+{#fun qlConstantCapFloorTermVolatility as constantCapFloorTermVolatilityMovingRaw{fromIntegral`Word',withCalendar*`Calendar',fromEnumC`BusinessDayConvention',withQuote*`GenQuote q',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`CapFloorTermVolatilityStructure'peekCapFloorTermVolatilityStructure*#}
 
 -- |returns the volatility for a given option tenor and strike
 {#fun qlCapFloorTermVolatilityStructureVolatilityForPeriod as capFloorVolatilityForPeriod{withGenCapFloorTermVolatilityStructure*`GenCapFloorTermVolatilityStructure c'
@@ -1495,13 +1505,13 @@ sabrVolSurface ix atm ntenors spreads (Matrix vr vc vd) =
 {#fun qlRelinkableSwaptionVolatilityStructureLinkTo as linkSwaptionVolTo{withRelinkableSwaptionVolatilityStructure*`RelinkableSwaptionVolatilityStructure'
   ,withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure sv',preErrorCheck-`String'errorCheck*-}->`()'#}
 
--- |A constant local volatility, no time-asset dependence -- floating reference date, floating
--- market data. Local and Black volatility coincide when volatility is at most time dependent, so
--- this is effectively a proxy for 'blackConstantVolMoving'.
-{#fun qlLocalConstantVol1 as localConstantVolMoving{fromIntegral`Word',withCalendar*`Calendar',withQuote*`GenQuote q',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`LocalVolTermStructure'peekLocalVolTermStructure*#}
-
--- |As 'localConstantVolMoving', but with a fixed reference date.
-{#fun qlLocalConstantVol as localConstantVol{withDay*`Day',withQuote*`GenQuote q',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`LocalVolTermStructure'peekLocalVolTermStructure*#}
+-- |A constant local volatility with either a fixed or evaluation-date-relative reference point.
+localConstantVol :: Reference -> GenQuote q -> DayCounter -> IO LocalVolTermStructure
+localConstantVol reference = case reference of
+  ReferenceDate d -> localConstantVolFixed d
+  SettlementDays n cal -> localConstantVolMovingRaw n cal
+{#fun qlLocalConstantVol1 as localConstantVolMovingRaw{fromIntegral`Word',withCalendar*`Calendar',withQuote*`GenQuote q',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`LocalVolTermStructure'peekLocalVolTermStructure*#}
+{#fun qlLocalConstantVol as localConstantVolFixed{withDay*`Day',withQuote*`GenQuote q',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`LocalVolTermStructure'peekLocalVolTermStructure*#}
 
 -- |a local vol term structure derived from a 'BlackVarianceCurve' (no strike dependence): local
 -- vol at time @t@ is the derivative of the Black variance curve's total variance
@@ -1511,15 +1521,15 @@ sabrVolSurface ix atm ntenors spreads (Matrix vr vc vd) =
 -- financially sensible for a time-dependent (not asset-dependent) source structure.
 {#fun qlImpliedVolTermStructure as impliedVolTermStructure{withBlackVolTermStructure*`GenBlackVolTermStructure bv',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`BlackVolTermStructure'peekBlackVolTermStructure*#}
 
--- |fixed reference date, floating market data
-capFloorTermVolCurve :: Day -> Calendar -> BusinessDayConvention -> NonEmpty (Word, TimeUnit, GenQuote q) -> DayCounter -> IO CapFloorTermVolCurve
-capFloorTermVolCurve d c bd ntq = qlCapFloorTermVolCurve1 d c bd n t q where (n, t, q) = unzip3 (toList ntq)
-{#fun qlCapFloorTermVolCurve1{withDay*`Day',withCalendar*`Calendar',fromEnumC`BusinessDayConvention',withIntArray*`[Word]'&,withEnumArray*`[TimeUnit]'&,withQuoteArray*`[GenQuote q]'&,withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`CapFloorTermVolCurve'peekCapFloorTermVolCurve*#}
-
--- |floating reference date, floating market data
-capFloorTermVolCurveMoving :: Word -> Calendar -> BusinessDayConvention -> NonEmpty (Word, TimeUnit, GenQuote q) -> DayCounter -> IO CapFloorTermVolCurve
-capFloorTermVolCurveMoving d c bd ntq = qlCapFloorTermVolCurve d c bd n t q where (n, t, q) = unzip3 (toList ntq)
-{#fun qlCapFloorTermVolCurve{fromIntegral`Word',withCalendar*`Calendar',fromEnumC`BusinessDayConvention',withIntArray*`[Word]'&,withEnumArray*`[TimeUnit]'&,withQuoteArray*`[GenQuote q]'&,withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`CapFloorTermVolCurve'peekCapFloorTermVolCurve*#}
+-- |A cap/floor term-volatility curve with either a fixed or evaluation-date-relative reference.
+capFloorTermVolCurve :: CalendarReference -> Calendar -> BusinessDayConvention
+  -> NonEmpty (Word, TimeUnit, GenQuote q) -> DayCounter -> IO CapFloorTermVolCurve
+capFloorTermVolCurve reference c bd ntq = case reference of
+  CalendarReferenceDate d -> qlCapFloorTermVolCurveFixed d c bd n t q
+  CalendarSettlementDays d -> qlCapFloorTermVolCurveMovingRaw d c bd n t q
+  where (n, t, q) = unzip3 (toList ntq)
+{#fun qlCapFloorTermVolCurve1 as qlCapFloorTermVolCurveFixed{withDay*`Day',withCalendar*`Calendar',fromEnumC`BusinessDayConvention',withIntArray*`[Word]'&,withEnumArray*`[TimeUnit]'&,withQuoteArray*`[GenQuote q]'&,withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`CapFloorTermVolCurve'peekCapFloorTermVolCurve*#}
+{#fun qlCapFloorTermVolCurve as qlCapFloorTermVolCurveMovingRaw{fromIntegral`Word',withCalendar*`Calendar',fromEnumC`BusinessDayConvention',withIntArray*`[Word]'&,withEnumArray*`[TimeUnit]'&,withQuoteArray*`[GenQuote q]'&,withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`CapFloorTermVolCurve'peekCapFloorTermVolCurve*#}
 
 -- |A Black volatility curve built from time-dependent (ATM) market vols, interpolating on total
 -- variance (linear by default, or the given 'Interpolation') -- no strike dependence; see
@@ -1615,21 +1625,17 @@ blackVolatilitySurfaceDeltaFull d ds pd cd hasAtm (RealMatrix mr mc md) dc cal s
   ,withDay*`Day' -- ^d
   ,preErrorCheck-`String'errorCheck*-}->`SmileSection'peekSmileSection*#}
 
--- |floating reference date, floating market data
-capFloorTermVolSurfaceMoving :: Word -> Calendar -> BusinessDayConvention -> [(Word, TimeUnit)] -- ^optionTenors
+-- |A cap/floor term-volatility surface with either a fixed or evaluation-date-relative reference.
+capFloorTermVolSurface :: CalendarReference -> Calendar -> BusinessDayConvention -> [(Word, TimeUnit)] -- ^optionTenors
   -> [Double] -- ^strikes
   -> Matrix (GenQuote q) -- ^volatilities
   -> DayCounter -> IO CapFloorTermVolSurface
-capFloorTermVolSurfaceMoving d c bd t s (Matrix mr mc md) = qlCapFloorTermVolSurface d c bd pl pu s mr mc md where (pl, pu) = unzip t
-{#fun qlCapFloorTermVolSurface{fromIntegral`Word',withCalendar*`Calendar',fromEnumC`BusinessDayConvention',withIntArray*`[Word]'&,withEnumArray*`[TimeUnit]'&,withDoubleArray*`[Double]'&,fromIntegral`Word',fromIntegral`Word',withQuoteArrayRaw*`[GenQuote q]',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`CapFloorTermVolSurface'peekCapFloorTermVolSurface*#}
-
--- |fixed reference date, floating market data
-capFloorTermVolSurface :: Day -> Calendar -> BusinessDayConvention -> [(Word, TimeUnit)] -- ^optionTenors
-  -> [Double] -- ^strikes
-  -> Matrix (GenQuote q) -- ^volatilities
-  -> DayCounter -> IO CapFloorTermVolSurface
-capFloorTermVolSurface d c bd t s (Matrix mr mc md) = qlCapFloorTermVolSurface1 d c bd pl pu s mr mc md where (pl, pu) = unzip t
-{#fun qlCapFloorTermVolSurface1{withDay*`Day',withCalendar*`Calendar',fromEnumC`BusinessDayConvention',withIntArray*`[Word]'&,withEnumArray*`[TimeUnit]'&,withDoubleArray*`[Double]'&,fromIntegral`Word',fromIntegral`Word',withQuoteArrayRaw*`[GenQuote q]',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`CapFloorTermVolSurface'peekCapFloorTermVolSurface*#}
+capFloorTermVolSurface reference c bd t s (Matrix mr mc md) = case reference of
+  CalendarReferenceDate d -> qlCapFloorTermVolSurfaceFixed d c bd pl pu s mr mc md
+  CalendarSettlementDays d -> qlCapFloorTermVolSurfaceMovingRaw d c bd pl pu s mr mc md
+  where (pl, pu) = unzip t
+{#fun qlCapFloorTermVolSurface as qlCapFloorTermVolSurfaceMovingRaw{fromIntegral`Word',withCalendar*`Calendar',fromEnumC`BusinessDayConvention',withIntArray*`[Word]'&,withEnumArray*`[TimeUnit]'&,withDoubleArray*`[Double]'&,fromIntegral`Word',fromIntegral`Word',withQuoteArrayRaw*`[GenQuote q]',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`CapFloorTermVolSurface'peekCapFloorTermVolSurface*#}
+{#fun qlCapFloorTermVolSurface1 as qlCapFloorTermVolSurfaceFixed{withDay*`Day',withCalendar*`Calendar',fromEnumC`BusinessDayConvention',withIntArray*`[Word]'&,withEnumArray*`[TimeUnit]'&,withDoubleArray*`[Double]'&,fromIntegral`Word',fromIntegral`Word',withQuoteArrayRaw*`[GenQuote q]',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`CapFloorTermVolSurface'peekCapFloorTermVolSurface*#}
 
 -- |fixed reference date, floating market data. Pass an empty 'RealMatrix'
 -- (@realMatrixFromVector 0 0 Data.Vector.Storable.empty@) for @shifts@
@@ -1730,7 +1736,7 @@ sabrSwaptionVolatilityCube :: GenSwaptionVolatilityStructure sv -- ^atmVolStruct
   -- (e.g. 'swaptionVolatilityMatrix' or another cube) -- upstream's ATM-recalibration path
   -- ('denseSabrParameters'\/one branch of 'volCubeAtmCalibrated') downcasts it to
   -- @SwaptionVolatilityDiscrete@ and dereferences the result unchecked, which crashes given a
-  -- flat 'constantSwaptionVolatility'\/'constantSwaptionVolatilityMoving'.
+  -- flat 'constantSwaptionVolatility'.
   -> Maybe Double -- ^maxErrorTolerance
   -> Maybe Double -- ^errorAccept
   -> Bool -- ^useMaxError

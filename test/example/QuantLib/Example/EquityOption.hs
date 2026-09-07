@@ -117,7 +117,7 @@ run = do
   divQ <- simpleQuote dividend
   divTS <- flatForward (ReferenceDate settl) divQ dc Continuous Annual
   volQ <- simpleQuote vol
-  volTS <- calendar TARGET >>= $(free2nd 'blackConstantVol) settl volQ dc
+  volTS <- calendar TARGET >>= $(free2nd 'blackConstantVol) (CalendarReferenceDate settl) volQ dc
   let payoff = PlainVanilla $ PlainVanillaPayoff optType strike
   bsmProc <- blackScholesMertonProcess underQ divTS ts volTS EulerDiscretization False
   europeanOpt <- vanillaOption payoff europeanEx

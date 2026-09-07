@@ -21,7 +21,7 @@ import QuantLib.Time.Calendar(calendar, CalendarConstructor(TARGET))
 import QuantLib.Time.Date(addPeriod, march)
 import QuantLib.Time.Schedule(dayCounter, DayCounterConstructor(Actual365FixedStandard), TimeUnit(Months), Frequency(Annual))
 import QuantLib.TermStructure.Yield(Reference(..), flatForward, discountAtDate)
-import QuantLib.TermStructure.Volatility(blackConstantVol)
+import QuantLib.TermStructure.Volatility(CalendarReference(..), blackConstantVol)
 import QuantLib.InterestRate(Compounding(Continuous))
 
 check :: String -> Bool -> IO ()
@@ -47,8 +47,8 @@ main = keepingSettingsGc $ do
   rTS <- flatForward (ReferenceDate today) rQ dc Continuous Annual
   v1Q <- simpleQuote 0.25
   v2Q <- simpleQuote 0.35
-  vol1TS <- blackConstantVol today cal v1Q dc
-  vol2TS <- blackConstantVol today cal v2Q dc
+  vol1TS <- blackConstantVol (CalendarReferenceDate today) cal v1Q dc
+  vol2TS <- blackConstantVol (CalendarReferenceDate today) cal v2Q dc
   s1 <- simpleQuote f1
   s2 <- simpleQuote f2
   p1 <- blackScholesMertonProcess s1 rTS rTS vol1TS EulerDiscretization False
@@ -83,8 +83,8 @@ main = keepingSettingsGc $ do
       f2' = 90 * dq2 / dfR
   v1Q' <- simpleQuote 0.3
   v2Q' <- simpleQuote 0.2
-  vol1TS' <- blackConstantVol today cal v1Q' dc
-  vol2TS' <- blackConstantVol today cal v2Q' dc
+  vol1TS' <- blackConstantVol (CalendarReferenceDate today) cal v1Q' dc
+  vol2TS' <- blackConstantVol (CalendarReferenceDate today) cal v2Q' dc
   f1Q <- simpleQuote f1'
   f2Q <- simpleQuote f2'
   bp1' <- blackProcess f1Q rTS vol1TS' EulerDiscretization False
@@ -141,8 +141,8 @@ main = keepingSettingsGc $ do
   brTS <- flatForward (ReferenceDate today) brQ dc Continuous Annual
   bv1 <- simpleQuote 0.3
   bv2 <- simpleQuote 0.3
-  bvolTS1 <- blackConstantVol today cal bv1 dc
-  bvolTS2 <- blackConstantVol today cal bv2 dc
+  bvolTS1 <- blackConstantVol (CalendarReferenceDate today) cal bv1 dc
+  bvolTS2 <- blackConstantVol (CalendarReferenceDate today) cal bv2 dc
   bs1Q <- simpleQuote bs1
   bs2Q <- simpleQuote bs2
   bp1 <- blackScholesMertonProcess bs1Q bqTS1 brTS bvolTS1 EulerDiscretization False

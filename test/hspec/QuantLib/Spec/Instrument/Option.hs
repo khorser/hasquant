@@ -32,7 +32,7 @@ import QuantLib.Math(Matrix, boxedRealMatrix, realMatrixFromVector, RealMatrix, 
 import QuantLib.Instrument(npv, setPricingEngine, errorEstimate, BarrierType(..), AverageType(..))
 import QuantLib.Instrument.Option hiding(theta)
 import QuantLib.Instrument.Swap(varianceOption, varianceSwap, variance)
-import QuantLib.TermStructure.Volatility(blackConstantVol, blackVarianceSurface, BlackVarianceSurfaceExtrapolation(..))
+import QuantLib.TermStructure.Volatility(CalendarReference(..), blackConstantVol, blackVarianceSurface, BlackVarianceSurfaceExtrapolation(..))
 import QuantLib.PricingEngine hiding(theta)
 import QuantLib.Spec.Helpers(closePrec)
 
@@ -60,7 +60,7 @@ flatProcess evalDate spot q r vol = do
   rTS <- simpleQuote r >>= \rQ -> flatForward (ReferenceDate evalDate) rQ dc Continuous Annual
   volQ <- simpleQuote vol
   cal <- calendar Null
-  volTS <- blackConstantVol evalDate cal volQ dc
+  volTS <- blackConstantVol (CalendarReferenceDate evalDate) cal volQ dc
   blackScholesMertonProcess spotQ qTS rTS volTS EulerDiscretization False
 
 europeanIn :: Word -> Day -> Exercise

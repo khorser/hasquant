@@ -35,7 +35,7 @@ run = do
   dc <- dayCounter Actual365FixedStandard
   cal <- calendar Null
   flatRate <- flatForward (SettlementDays 0 cal) riskFreeRate dc Continuous Annual
-  flatVol <- blackConstantVolMoving 0 cal vol dc
+  flatVol <- blackConstantVol (CalendarSettlementDays 0) cal vol dc
   let ex = European $ EuropeanExercise maturity
       payoff = PlainVanilla $ PlainVanillaPayoff optionType strike
   bsProcess <- blackScholesProcess underlyingQuote flatRate flatVol EulerDiscretization False

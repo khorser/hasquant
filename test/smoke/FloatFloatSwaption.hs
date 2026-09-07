@@ -74,7 +74,7 @@ main = do
   -- Leg 0 is a CMS leg (index1 = swapBase) -- CMS coupons always need a pricer, unlike the
   -- plain Euribor leg 1, which computes its forecast fixing directly.
   swaptionVolQ <- simpleQuote 0.20
-  swaptionVolTS <- constantSwaptionVolatilityMoving 0 cal ModifiedFollowing swaptionVolQ dc365 ShiftedLognormal 0.0
+  swaptionVolTS <- constantSwaptionVolatility (CalendarSettlementDays 0) cal ModifiedFollowing swaptionVolQ dc365 ShiftedLognormal 0.0
   reversionQ <- simpleQuote 0.01
   cmsPricer <- CF.linearTsrPricer swaptionVolTS reversionQ Nothing
     (CF.LinearTsrPricerSettings CF.LinearTsrRateBound Nothing)

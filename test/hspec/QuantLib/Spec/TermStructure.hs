@@ -583,7 +583,7 @@ spec = do
             divTS <- flatForward (ReferenceDate (11 `december` 2012)) divQ dc IR.Continuous Annual
             volQ <- Quote.simpleQuote 0.20
             cal <- Calendar.calendar TARGET
-            vol0 <- Vol.blackConstantVol (11 `december` 2012) cal volQ dc
+            vol0 <- Vol.blackConstantVol (Vol.CalendarReferenceDate (11 `december` 2012)) cal volQ dc
             volH <- Vol.relinkableBlackVolTermStructure (Just vol0)
             proc <- blackScholesMertonProcess underQ divTS ts volH EulerDiscretization False
             opt <- vanillaOption (PlainVanilla (PlainVanillaPayoff Call 100))
@@ -599,7 +599,7 @@ spec = do
           cal <- Calendar.calendar TARGET
           dc <- dayCounter Actual365FixedStandard
           q <- Quote.simpleQuote 0.40
-          vol1 <- Vol.blackConstantVol (11 `december` 2012) cal q dc
+          vol1 <- Vol.blackConstantVol (Vol.CalendarReferenceDate (11 `december` 2012)) cal q dc
           Vol.linkBlackVolTo volH vol1
           npvAfter <- npv opt
           abs (npvAfter - npvBefore) `shouldSatisfy` (> 0.5)
@@ -612,7 +612,7 @@ spec = do
             cal <- Calendar.calendar TARGET
             dc <- dayCounter Actual365FixedStandard
             volQ <- Quote.simpleQuote 0.20
-            vol0 <- Vol.constantSwaptionVolatility (11 `december` 2012) cal ModifiedFollowing volQ dc IR.ShiftedLognormal 0
+            vol0 <- Vol.constantSwaptionVolatility (Vol.CalendarReferenceDate (11 `december` 2012)) cal ModifiedFollowing volQ dc IR.ShiftedLognormal 0
             volH <- Vol.relinkableSwaptionVolatilityStructure (Just vol0)
             eng <- blackSwaptionEngineWithVolatilityStructure discountH volH
             -- the Black swaption engine requires a spot-starting swaption: the exercise date
@@ -629,7 +629,7 @@ spec = do
           cal <- Calendar.calendar TARGET
           dc <- dayCounter Actual365FixedStandard
           q <- Quote.simpleQuote 0.60
-          vol1 <- Vol.constantSwaptionVolatility (11 `december` 2012) cal ModifiedFollowing q dc IR.ShiftedLognormal 0
+          vol1 <- Vol.constantSwaptionVolatility (Vol.CalendarReferenceDate (11 `december` 2012)) cal ModifiedFollowing q dc IR.ShiftedLognormal 0
           Vol.linkSwaptionVolTo volH vol1
           npvAfter <- npv swpn
           abs (npvAfter - npvBefore) `shouldSatisfy` (> 0.5)
@@ -649,7 +649,7 @@ spec = do
             capfl <- cap leg [0.03]
             dc <- dayCounter Actual365FixedStandard
             volQ <- Quote.simpleQuote 0.20
-            vol0 <- Vol.constantOptionletVolatility (11 `december` 2012) cal ModifiedFollowing volQ dc IR.ShiftedLognormal 0
+            vol0 <- Vol.constantOptionletVolatility (Vol.CalendarReferenceDate (11 `december` 2012)) cal ModifiedFollowing volQ dc IR.ShiftedLognormal 0
             volH <- Vol.relinkableOptionletVolatilityStructure (Just vol0)
             eng <- blackCapFloorEngineWithVolatilityStructure discountH volH
             setPricingEngine capfl eng
@@ -663,7 +663,7 @@ spec = do
           cal <- Calendar.calendar TARGET
           dc <- dayCounter Actual365FixedStandard
           q <- Quote.simpleQuote 0.60
-          vol1 <- Vol.constantOptionletVolatility (11 `december` 2012) cal ModifiedFollowing q dc IR.ShiftedLognormal 0
+          vol1 <- Vol.constantOptionletVolatility (Vol.CalendarReferenceDate (11 `december` 2012)) cal ModifiedFollowing q dc IR.ShiftedLognormal 0
           Vol.linkOptionletVolTo volH vol1
           npvAfter <- npv capfl
           abs (npvAfter - npvBefore) `shouldSatisfy` (> 0.5)
@@ -691,7 +691,7 @@ spec = do
 
           flatVolQ <- Quote.simpleQuote 0.18
           let volMatrix = either error id $ objectMatrix 10 3 (replicate 30 flatVolQ)
-          capVolSurface <- Vol.capFloorTermVolSurfaceMoving 0 cal Following
+          capVolSurface <- Vol.capFloorTermVolSurface (Vol.CalendarSettlementDays 0) cal Following
             [(n, Years) | n <- [1 .. 10]] [0.02, 0.05, 0.08] volMatrix dc
           strippedVol <- Vol.optionletStripper capVolSurface idx Nothing 1.0e-6 100
             (Just discountH) IR.ShiftedLognormal 0 False Nothing
@@ -700,7 +700,7 @@ spec = do
           priceStripped <- npv capfl
 
           constVolQ <- Quote.simpleQuote 0.18
-          constVol <- Vol.constantOptionletVolatility (11 `december` 2012) cal Following constVolQ dc
+          constVol <- Vol.constantOptionletVolatility (Vol.CalendarReferenceDate (11 `december` 2012)) cal Following constVolQ dc
             IR.ShiftedLognormal 0
           constEng <- blackCapFloorEngineWithVolatilityStructure discountH constVol
           setPricingEngine capfl constEng
@@ -723,7 +723,7 @@ spec = do
 
           flatVolQ <- Quote.simpleQuote 0.18
           let volMatrix = either error id $ objectMatrix 10 3 (replicate 30 flatVolQ)
-          capVolSurface <- Vol.capFloorTermVolSurfaceMoving 0 cal Following tenors [0.02, 0.05, 0.08] volMatrix dc
+          capVolSurface <- Vol.capFloorTermVolSurface (Vol.CalendarSettlementDays 0) cal Following tenors [0.02, 0.05, 0.08] volMatrix dc
           volFromSurface <- Vol.capFloorVolatilityForPeriod capVolSurface (5, Years) 0.05 False
           volFromSurface `shouldBe` 0.18
           surfaceDates <- Vol.capFloorTermVolSurfaceOptionDates capVolSurface
@@ -732,7 +732,7 @@ spec = do
           length surfaceTimes `shouldBe` 10
 
           curveVolQ <- mapM (const (Quote.simpleQuote 0.18)) tenors
-          capVolCurve <- Vol.capFloorTermVolCurveMoving 0 cal Following (fromList $ zipWith (\(n, u) q -> (n, u, q)) tenors curveVolQ) dc
+          capVolCurve <- Vol.capFloorTermVolCurve (Vol.CalendarSettlementDays 0) cal Following (fromList $ zipWith (\(n, u) q -> (n, u, q)) tenors curveVolQ) dc
           volFromCurve <- Vol.capFloorVolatilityForPeriod capVolCurve (5, Years) 0.05 False
           volFromCurve `shouldBe` 0.18
           curveDates <- Vol.capFloorTermVolCurveOptionDates capVolCurve
@@ -741,7 +741,7 @@ spec = do
           length curveTimes `shouldBe` 10
 
           constVolQ <- Quote.simpleQuote 0.18
-          constVol <- Vol.constantCapFloorTermVolatilityMoving 0 cal Following constVolQ dc
+          constVol <- Vol.constantCapFloorTermVolatility (Vol.CalendarSettlementDays 0) cal Following constVolQ dc
           volFromConst <- Vol.capFloorVolatilityForPeriod constVol (5, Years) 0.05 False
           volFromConst `shouldBe` 0.18
 
@@ -761,7 +761,7 @@ spec = do
           -- 'volatility' needs (via optionDateFromTenor); use the
           -- floating-reference-date overload with an explicit calendar instead, exactly as
           -- the cap/floor test above does for 'constantCapFloorTermVolatility'.
-          cbVol <- Vol.callableBondConstantVolatilityMoving 0 cal cbVolQ dc
+          cbVol <- Vol.callableBondConstantVolatility (Vol.SettlementDays 0 cal) cbVolQ dc
           let optionDate = addDays (365 * 3) evalDate
               optionTime = 3.0 :: Double
               bondLength = 5.0 :: Double
@@ -811,9 +811,9 @@ spec = do
 
           flatVolQ <- Quote.simpleQuote 0.18
           let volMatrix = either error id $ objectMatrix 10 3 (replicate 30 flatVolQ)
-          capVolSurface <- Vol.capFloorTermVolSurfaceMoving 0 cal Following tenors [0.02, 0.05, 0.08] volMatrix dc
+          capVolSurface <- Vol.capFloorTermVolSurface (Vol.CalendarSettlementDays 0) cal Following tenors [0.02, 0.05, 0.08] volMatrix dc
           curveVolQs <- mapM (const (Quote.simpleQuote 0.18)) tenors
-          capVolCurve <- Vol.capFloorTermVolCurveMoving 0 cal Following (fromList $ zipWith (\(n, u) q -> (n, u, q)) tenors curveVolQs) dc
+          capVolCurve <- Vol.capFloorTermVolCurve (Vol.CalendarSettlementDays 0) cal Following (fromList $ zipWith (\(n, u) q -> (n, u, q)) tenors curveVolQs) dc
 
           stripper1 <- Vol.optionletStripper capVolSurface idx Nothing 1.0e-6 100
             (Just discountH) IR.ShiftedLognormal 0 False Nothing
@@ -910,7 +910,7 @@ spec = do
           swpn <- swaption sw (European (EuropeanExercise (12 `december` 2012))) Physical PhysicalOTC
 
           normalVolQ <- Quote.simpleQuote 0.0075
-          normalVol <- Vol.constantSwaptionVolatility (11 `december` 2012) cal ModifiedFollowing normalVolQ dc IR.Normal 0
+          normalVol <- Vol.constantSwaptionVolatility (Vol.CalendarReferenceDate (11 `december` 2012)) cal ModifiedFollowing normalVolQ dc IR.Normal 0
           normalVolH <- Vol.relinkableSwaptionVolatilityStructure (Just normalVol)
           bachelierEng <- bachelierSwaptionEngineWithVolatilityStructure discountH normalVolH
           setPricingEngine swpn bachelierEng
@@ -918,7 +918,7 @@ spec = do
           npvBachelier `shouldSatisfy` (not . isNaN)
 
           lognormalVolQ <- Quote.simpleQuote 0.20
-          lognormalVol <- Vol.constantSwaptionVolatility (11 `december` 2012) cal ModifiedFollowing lognormalVolQ dc IR.ShiftedLognormal 0
+          lognormalVol <- Vol.constantSwaptionVolatility (Vol.CalendarReferenceDate (11 `december` 2012)) cal ModifiedFollowing lognormalVolQ dc IR.ShiftedLognormal 0
           lognormalVolH <- Vol.relinkableSwaptionVolatilityStructure (Just lognormalVol)
           blackEng <- blackSwaptionEngineWithVolatilityStructure discountH lognormalVolH
           setPricingEngine swpn blackEng
@@ -942,7 +942,7 @@ spec = do
           dc <- dayCounter Actual365FixedStandard
 
           normalVolQ <- Quote.simpleQuote 0.0075
-          normalVol <- Vol.constantOptionletVolatility (11 `december` 2012) cal ModifiedFollowing normalVolQ dc IR.Normal 0
+          normalVol <- Vol.constantOptionletVolatility (Vol.CalendarReferenceDate (11 `december` 2012)) cal ModifiedFollowing normalVolQ dc IR.Normal 0
           normalVolH <- Vol.relinkableOptionletVolatilityStructure (Just normalVol)
           bachelierEng <- bachelierCapFloorEngineWithVolatilityStructure discountH normalVolH
           setPricingEngine capfl bachelierEng
@@ -950,7 +950,7 @@ spec = do
           npvBachelier `shouldSatisfy` (not . isNaN)
 
           lognormalVolQ <- Quote.simpleQuote 0.20
-          lognormalVol <- Vol.constantOptionletVolatility (11 `december` 2012) cal ModifiedFollowing lognormalVolQ dc IR.ShiftedLognormal 0
+          lognormalVol <- Vol.constantOptionletVolatility (Vol.CalendarReferenceDate (11 `december` 2012)) cal ModifiedFollowing lognormalVolQ dc IR.ShiftedLognormal 0
           lognormalVolH <- Vol.relinkableOptionletVolatilityStructure (Just lognormalVol)
           blackEng <- blackCapFloorEngineWithVolatilityStructure discountH lognormalVolH
           setPricingEngine capfl blackEng
@@ -1395,7 +1395,7 @@ spec = do
           piecewise <- Vol.piecewiseBlackVarianceSurface refDate [otherDate, nodeDate]
                          [80, 100, 120] volMatrix dc
           q <- Quote.simpleQuote nodeVol
-          flat <- Vol.blackConstantVol refDate cal q dc
+          flat <- Vol.blackConstantVol (Vol.CalendarReferenceDate refDate) cal q dc
           npvPiecewise <- mkNpv piecewise
           npvFlat <- mkNpv flat
           npvPiecewise `shouldSatisfy` closePrec npvFlat tolerance
@@ -1578,7 +1578,7 @@ spec = do
           cal <- Calendar.calendar TARGET
           dc <- dayCounter Actual365FixedStandard
           volQ <- Quote.simpleQuote 0.20
-          flatVol <- Vol.constantSwaptionVolatility refDate cal ModifiedFollowing volQ dc IR.ShiftedLognormal 0
+          flatVol <- Vol.constantSwaptionVolatility (Vol.CalendarReferenceDate refDate) cal ModifiedFollowing volQ dc IR.ShiftedLognormal 0
           optionDate <- advance cal refDate (1, Years) ModifiedFollowing False
           let coordinates :: [(Vol.OptionMaturity, Vol.SwapMaturity)]
               coordinates =
@@ -1610,7 +1610,7 @@ spec = do
           grid <- Vol.swaptionVolatilityMatrix refDate cal ModifiedFollowing optionTenors swapTenors
                     volMatrix dc False IR.ShiftedLognormal shiftMatrix
           volQ <- Quote.simpleQuote v
-          flatVol <- Vol.constantSwaptionVolatility refDate cal ModifiedFollowing volQ dc IR.ShiftedLognormal 0
+          flatVol <- Vol.constantSwaptionVolatility (Vol.CalendarReferenceDate refDate) cal ModifiedFollowing volQ dc IR.ShiftedLognormal 0
           optionDate <- advance cal refDate (1, Years) ModifiedFollowing False
           fromGrid <- Vol.volatility grid (Vol.OptionDate optionDate) (Vol.SwapTenor (2, Years)) 0.02 False
           fromFlat <- Vol.volatility flatVol (Vol.OptionDate optionDate) (Vol.SwapTenor (2, Years)) 0.02 False
@@ -1668,7 +1668,7 @@ spec = do
             swapIndexBase <- liborSwapIndex EurLiborSwapIsdaFixA (10, Years) (Just fwdCurve) (Just fwdCurve)
             shortSwapIndexBase <- liborSwapIndex EurLiborSwapIsdaFixA (1, Years) (Just fwdCurve) (Just fwdCurve)
             volQ <- Quote.simpleQuote flatVol
-            atmVol <- Vol.constantSwaptionVolatility refDate cal ModifiedFollowing volQ dc IR.ShiftedLognormal 0
+            atmVol <- Vol.constantSwaptionVolatility (Vol.CalendarReferenceDate refDate) cal ModifiedFollowing volQ dc IR.ShiftedLognormal 0
             zeroSpreadQuotes <- replicateM (length optionTenors * length swapTenors * length strikeSpreads) (Quote.simpleQuote 0)
             let volSpreads = either error id $ objectMatrix (fromIntegral (length optionTenors * length swapTenors)) (fromIntegral (length strikeSpreads)) zeroSpreadQuotes
             guessQuotes <- concat <$> replicateM (length optionTenors * length swapTenors) (mapM Quote.simpleQuote [0.03, 0.5, 0.3, 0.0])
@@ -2009,7 +2009,7 @@ spec = do
           divTS <- flatForward (ReferenceDate (17 `may` 1998)) divQ dc IR.Continuous Annual
           volQ <- Quote.simpleQuote 0.20
           cal <- Calendar.calendar TARGET
-          vol0 <- Vol.blackConstantVol (17 `may` 1998) cal volQ dc
+          vol0 <- Vol.blackConstantVol (Vol.CalendarReferenceDate (17 `may` 1998)) cal volQ dc
           proc <- blackScholesMertonProcess underQ divTS ts vol0 EulerDiscretization False
           opt <- vanillaOption (PlainVanilla (PlainVanillaPayoff Put 40))
                                 (American Nothing (17 `may` 1999) False)
@@ -2036,7 +2036,7 @@ spec = do
           leg <- iborLeg floatSch idx [1000000] floatDC ModifiedFollowing [2] [1.0] [0.0] [] [] False False
           capfl <- cap leg [0.03]
           volQ <- Quote.simpleQuote 0.20
-          vol0 <- Vol.constantOptionletVolatility (11 `december` 2012) cal ModifiedFollowing volQ dc IR.ShiftedLognormal 0
+          vol0 <- Vol.constantOptionletVolatility (Vol.CalendarReferenceDate (11 `december` 2012)) cal ModifiedFollowing volQ dc IR.ShiftedLognormal 0
           eng <- blackCapFloorEngineWithVolatilityStructure discountTS vol0
           setPricingEngine capfl eng
           _ <- npv capfl

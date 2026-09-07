@@ -41,7 +41,7 @@ main = do
   volQ <- simpleQuote vol
   ts <- flatForward (ReferenceDate evalDate) riskFreeQ dc Continuous Annual
   divTS <- flatForward (ReferenceDate evalDate) divQ dc Continuous Annual
-  volTS <- calendar TARGET >>= $(free2nd 'blackConstantVol) evalDate volQ dc
+  volTS <- calendar TARGET >>= $(free2nd 'blackConstantVol) (CalendarReferenceDate evalDate) volQ dc
   bsmProc <- blackScholesMertonProcess underQ divTS ts volTS EulerDiscretization False
 
   let vanillaPayoff = PlainVanilla (PlainVanillaPayoff Call strike)

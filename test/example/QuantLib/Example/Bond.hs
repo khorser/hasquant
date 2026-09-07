@@ -233,8 +233,8 @@ buildBonds md = do
                                    (Just $ fromGregorian 2005 10 21)
                                    (0, Days) (nyseCal md) Unadjusted False ModifiedFollowing
   volval <- simpleQuote 0
-  vol <- constantOptionletVolatilityMoving
-          settlementDays (targetCal md) ModifiedFollowing volval (actual365Fixeddc md) ShiftedLognormal 0.0
+  vol <- constantOptionletVolatility
+          (CalendarSettlementDays settlementDays) (targetCal md) ModifiedFollowing volval (actual365Fixeddc md) ShiftedLognormal 0.0
   cf <- cashFlows floater
   CF.blackIborCouponPricer vol CF.Black76 Nothing Nothing >>= CF.setCouponPricer cf
 

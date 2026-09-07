@@ -640,7 +640,7 @@ spec = do
           rfQ <- simpleQuote 0.03
           rf <- flatForward (ReferenceDate refDate) rfQ dc Continuous Annual
           volQ <- simpleQuote 0.20
-          vol <- blackConstantVol refDate cal volQ dc
+          vol <- blackConstantVol (CalendarReferenceDate refDate) cal volQ dc
           blackScholesProcess spot rf vol EulerDiscretization False
 
         europeanNpvUnder stat = do
@@ -771,7 +771,7 @@ spec = do
         qTS <- flatForward (ReferenceDate today') qQ dc Continuous Annual
         rTS <- flatForward (ReferenceDate today') rQ dc Continuous Annual
         tgt <- calendar TARGET
-        volTS <- blackConstantVol today' tgt volQ dc
+        volTS <- blackConstantVol (CalendarReferenceDate today') tgt volQ dc
         proc <- blackScholesMertonProcess spotQ qTS rTS volTS EulerDiscretization False
 
         let payoff = PlainVanilla (PlainVanillaPayoff Call strike)
@@ -798,7 +798,7 @@ spec = do
         qTS <- flatForward (ReferenceDate today') qQ dc Continuous Annual
         rTS <- flatForward (ReferenceDate today') rQ dc Continuous Annual
         tgt <- calendar TARGET
-        volTS <- blackConstantVol today' tgt volQ dc
+        volTS <- blackConstantVol (CalendarReferenceDate today') tgt volQ dc
         proc <- blackScholesMertonProcess spotQ qTS rTS volTS EulerDiscretization False
 
         let payoff = PlainVanilla (PlainVanillaPayoff Call strike)
@@ -823,7 +823,7 @@ spec = do
         qTS <- flatForward (ReferenceDate today') qQ dc Continuous Annual
         rTS <- flatForward (ReferenceDate today') rQ dc Continuous Annual
         tgt <- calendar TARGET
-        volTS <- blackConstantVol today' tgt volQ dc
+        volTS <- blackConstantVol (CalendarReferenceDate today') tgt volQ dc
         proc <- blackScholesMertonProcess spotQ qTS rTS volTS EulerDiscretization False
 
         let payoff = PlainVanilla (PlainVanillaPayoff Call 100)
@@ -909,7 +909,7 @@ spec = do
         qTS <- flatForward (ReferenceDate today') qQ dc Continuous Annual
         rTS <- flatForward (ReferenceDate today') rQ dc Continuous Annual
         tgt <- calendar TARGET
-        volTS <- blackConstantVol today' tgt volQ dc
+        volTS <- blackConstantVol (CalendarReferenceDate today') tgt volQ dc
         proc <- blackScholesMertonProcess spotQ qTS rTS volTS EulerDiscretization False
         let payoff = PlainVanilla (PlainVanillaPayoff Call 100.0)
             exercise = European (EuropeanExercise (addDays 360 today'))
@@ -936,7 +936,7 @@ spec = do
             volQ <- simpleQuote vol
             qTS <- flatForward (SettlementDays 0 cal) qQ dc Continuous Annual
             rTS <- flatForward (SettlementDays 0 cal) rQ dc Continuous Annual
-            volTS <- blackConstantVolMoving 0 cal volQ dc
+            volTS <- blackConstantVol (CalendarSettlementDays 0) cal volQ dc
             process <- blackScholesMertonProcess spotQ qTS rTS volTS EulerDiscretization False
             engine <- if knockIn then analyticDigitalAmericanEngine process
                                   else analyticDigitalAmericanKoEngine process
@@ -988,7 +988,7 @@ spec = do
           qTS <- flatForward (ReferenceDate evalDate') qQ dc Continuous Annual
           rTS <- flatForward (ReferenceDate evalDate') rQ dc Continuous Annual
           tgt <- calendar TARGET
-          volTS <- blackConstantVol evalDate' tgt volQ dc
+          volTS <- blackConstantVol (CalendarReferenceDate evalDate') tgt volQ dc
           proc <- blackScholesMertonProcess spotQ qTS rTS volTS EulerDiscretization False
           let exDate = addDays (round (t * 360 :: Double)) evalDate'
           opt <- europeanOption (CashOrNothing ty strike 15.0) (American (Just evalDate') exDate False)
@@ -1026,7 +1026,7 @@ spec = do
           qTS <- flatForward (ReferenceDate today') qQ dc Continuous Annual
           rTS <- flatForward (ReferenceDate today') rQ dc Continuous Annual
           tgt <- calendar TARGET
-          volTS <- blackConstantVol today' tgt volQ dc
+          volTS <- blackConstantVol (CalendarReferenceDate today') tgt volQ dc
           process <- blackScholesMertonProcess spotQ qTS rTS volTS EulerDiscretization False
           let exDate = addDays 3650 today'
           opt <- vanillaOption (PlainVanilla (PlainVanillaPayoff ty strike)) (American Nothing exDate False)
@@ -1074,9 +1074,9 @@ spec = do
           corrQ <- simpleQuote corr
           qTS <- flatForward (ReferenceDate today') qQ dc Continuous Annual
           rTS <- flatForward (ReferenceDate today') rQ dc Continuous Annual
-          volTS <- blackConstantVol today' tgt volQ dc
+          volTS <- blackConstantVol (CalendarReferenceDate today') tgt volQ dc
           fxrTS <- flatForward (ReferenceDate today') fxrQ dc Continuous Annual
-          fxVolTS <- blackConstantVol today' tgt fxvQ dc
+          fxVolTS <- blackConstantVol (CalendarReferenceDate today') tgt fxvQ dc
           proc <- blackScholesMertonProcess spotQ qTS rTS volTS EulerDiscretization False
           return (proc, fxrTS, fxVolTS, corrQ)
 
@@ -1122,9 +1122,9 @@ spec = do
         corrQ <- simpleQuote (0.0 :: Double)
         qTS <- flatForward (SettlementDays 0 tgt) qRateQ dc Continuous Annual
         rTS <- flatForward (SettlementDays 0 tgt) rRateQ dc Continuous Annual
-        volTS <- blackConstantVolMoving 0 tgt volQ dc
+        volTS <- blackConstantVol (CalendarSettlementDays 0) tgt volQ dc
         fxrTS <- flatForward (SettlementDays 0 tgt) fxRateQ dc Continuous Annual
-        fxVolTS <- blackConstantVolMoving 0 tgt fxVolQ dc
+        fxVolTS <- blackConstantVol (CalendarSettlementDays 0) tgt fxVolQ dc
         proc <- blackScholesMertonProcess spotQ qTS rTS volTS EulerDiscretization False
         engine <- quantoEuropeanEngine proc fxrTS fxVolTS corrQ
         let u = 100.0 :: Double
@@ -1264,9 +1264,9 @@ spec = do
         corrQ <- simpleQuote (0.0 :: Double)
         qTS <- flatForward (SettlementDays 0 tgt) qRateQ dc Continuous Annual
         rTS <- flatForward (SettlementDays 0 tgt) rRateQ dc Continuous Annual
-        volTS <- blackConstantVolMoving 0 tgt volQ dc
+        volTS <- blackConstantVol (CalendarSettlementDays 0) tgt volQ dc
         fxrTS <- flatForward (SettlementDays 0 tgt) fxRateQ dc Continuous Annual
-        fxVolTS <- blackConstantVolMoving 0 tgt fxVolQ dc
+        fxVolTS <- blackConstantVol (CalendarSettlementDays 0) tgt fxVolQ dc
         proc <- blackScholesMertonProcess spotQ qTS rTS volTS EulerDiscretization False
         engine <- quantoForwardEuropeanEngine proc fxrTS fxVolTS corrQ
         let u = 100.0 :: Double
@@ -1453,13 +1453,13 @@ spec = do
         divQ <- simpleQuote q
         divTS <- flatForward (ReferenceDate today') divQ dc Continuous Annual
         volQ <- simpleQuote vol
-        volTS <- blackConstantVol today' tgt volQ dc
+        volTS <- blackConstantVol (CalendarReferenceDate today') tgt volQ dc
         spotQ <- simpleQuote s
         bsmProcess <- blackScholesMertonProcess spotQ divTS domesticTS volTS EulerDiscretization False
         foreignRQ <- simpleQuote foreignR
         foreignTS <- flatForward (ReferenceDate today') foreignRQ dc Continuous Annual
         fxVolQ <- simpleQuote fxVol
-        fxVolTS <- blackConstantVol today' tgt fxVolQ dc
+        fxVolTS <- blackConstantVol (CalendarReferenceDate today') tgt fxVolQ dc
         fdmHelper <- fdmQuantoHelper domesticTS foreignTS fxVolTS equityFxCorrelation exchRateATMlevel
 
         calculatedQuantoAdj <- fdmQuantoHelperQuantoAdjustment fdmHelper vol 0.0 1.0
@@ -1506,12 +1506,12 @@ spec = do
           divQ <- simpleQuote q
           divTS <- flatForward (ReferenceDate today') divQ dc Continuous Annual
           volQ <- simpleQuote vol
-          volTS <- blackConstantVol today' tgt volQ dc
+          volTS <- blackConstantVol (CalendarReferenceDate today') tgt volQ dc
           bsmProcess <- blackScholesMertonProcess spotQ divTS domesticTS volTS EulerDiscretization False
           foreignRQ <- simpleQuote fxr
           foreignTS <- flatForward (ReferenceDate today') foreignRQ dc Continuous Annual
           fxVolQ <- simpleQuote fxv
-          fxVolTS <- blackConstantVol today' tgt fxVolQ dc
+          fxVolTS <- blackConstantVol (CalendarReferenceDate today') tgt fxVolQ dc
           quantoHelper <- fdmQuantoHelper domesticTS foreignTS fxVolTS corr 1.0
           let exDate = addDays (round (t * 360 :: Double)) today'
           opt <- vanillaOption (PlainVanilla (PlainVanillaPayoff ty strike)) (European (EuropeanExercise exDate))
@@ -1553,13 +1553,13 @@ spec = do
         divTS <- flatForward (ReferenceDate today') divQ dc Continuous Annual
         volQ <- simpleQuote vol
         tgt <- calendar TARGET
-        volTS <- blackConstantVol today' tgt volQ dc
+        volTS <- blackConstantVol (CalendarReferenceDate today') tgt volQ dc
         spotQ <- simpleQuote (100.0 :: Double)
         bsmProcess <- blackScholesMertonProcess spotQ divTS domesticTS volTS EulerDiscretization False
         foreignRQ <- simpleQuote foreignR
         foreignTS <- flatForward (ReferenceDate today') foreignRQ dc Continuous Annual
         fxVolQ <- simpleQuote fxVol
-        fxVolTS <- blackConstantVol today' tgt fxVolQ dc
+        fxVolTS <- blackConstantVol (CalendarReferenceDate today') tgt fxVolQ dc
         quantoHelper <- fdmQuantoHelper domesticTS foreignTS fxVolTS equityFxCorrelation 1.0
 
         divDate <- addPeriod today' (6, Months)
@@ -1597,7 +1597,7 @@ spec = do
         closePrec expected tol hestonCalculated `shouldBe` True
 
         constVolQ <- simpleQuote (2.0 :: Double)
-        localConstVol <- localConstantVol today' constVolQ dc
+        localConstVol <- localConstantVol (ReferenceDate today') constVolQ dc
         hp05 <- hestonProcess domesticTS (Just divTS) spotQ (0.25 * v0) kappa (0.25 * theta0) sigma hestonRho QuadraticExponentialMartingale
         hm05 <- hestonModel hp05
         hestonSlvEngine <- fdHestonVanillaEngineQuanto hm05 dividends (Just quantoHelper) 100 400 3 1 Hundsdorfer (Just localConstVol) 1.0
@@ -1633,8 +1633,8 @@ spec = do
           rhoQ <- simpleQuote corr
           q1TS <- flatForward (ReferenceDate today') q1Q dc Continuous Annual
           q2TS <- flatForward (ReferenceDate today') q2Q dc Continuous Annual
-          vol1TS <- blackConstantVol today' tgt v1Q dc
-          vol2TS <- blackConstantVol today' tgt v2Q dc
+          vol1TS <- blackConstantVol (CalendarReferenceDate today') tgt v1Q dc
+          vol2TS <- blackConstantVol (CalendarReferenceDate today') tgt v2Q dc
           proc1 <- blackScholesMertonProcess s1Q q1TS rTS vol1TS EulerDiscretization False
           proc2 <- blackScholesMertonProcess s2Q q2TS rTS vol2TS EulerDiscretization False
           engine <- analyticTwoAssetBarrierEngine proc1 proc2 rhoQ
@@ -1684,7 +1684,7 @@ spec = do
 
         swapBase <- IR.liborSwapIndex IR.EuriborSwapIsdaFixA (10, Years) (Just ts) (Just ts)
         swaptionVolQ <- simpleQuote 0.20
-        swaptionVol <- constantSwaptionVolatility evalDate cal ModifiedFollowing swaptionVolQ dc365 ShiftedLognormal 0.0
+        swaptionVol <- constantSwaptionVolatility (CalendarReferenceDate evalDate) cal ModifiedFollowing swaptionVolQ dc365 ShiftedLognormal 0.0
         cmsExpiries <- mapM (\n -> advance cal evalDate (n, Years) Following False) [1, 2, 3 :: Int]
         markov <- markovFunctional ts 0.01 0.01 [] swaptionVol (fromList $ zip cmsExpiries $ replicate 3 (10, Years)) swapBase 16
         markovVols <- volatilities markov
@@ -1697,7 +1697,7 @@ spec = do
 
         capletExpiries <- CF.toCouponLeg floatLeg >>= CF.couponAccrualStartDates
         capletVolQ <- simpleQuote 0.20
-        capletVol <- constantOptionletVolatilityMoving 0 cal ModifiedFollowing capletVolQ dc365 ShiftedLognormal 0.0
+        capletVol <- constantOptionletVolatility (CalendarSettlementDays 0) cal ModifiedFollowing capletVolQ dc365 ShiftedLognormal 0.0
         markovCaplet <- markovFunctionalCaplet ts 0.01 0.01 [] capletVol (fromList capletExpiries) euribor6m 16
         markovCapletModel <- markovFunctionalAsGaussian1dModel markovCaplet
         blackEngine <- blackCapFloorEngineWithVolatilityStructure ts capletVol
@@ -1749,8 +1749,8 @@ spec = do
           rTS <- flatForward (ReferenceDate evalDate) rQ dc Continuous Annual
           vQ1 <- simpleQuote v1
           vQ2 <- simpleQuote v2
-          volTS1 <- blackConstantVol evalDate cal vQ1 dc
-          volTS2 <- blackConstantVol evalDate cal vQ2 dc
+          volTS1 <- blackConstantVol (CalendarReferenceDate evalDate) cal vQ1 dc
+          volTS2 <- blackConstantVol (CalendarReferenceDate evalDate) cal vQ2 dc
 
           (analyticEngine, p1, p2) <- case basketType of
             2 -> do
@@ -1816,9 +1816,9 @@ spec = do
         vQ1 <- simpleQuote 0.20
         vQ2 <- simpleQuote 0.30
         vQ3 <- simpleQuote 0.50
-        volTS1 <- blackConstantVol evalDate cal vQ1 dc
-        volTS2 <- blackConstantVol evalDate cal vQ2 dc
-        volTS3 <- blackConstantVol evalDate cal vQ3 dc
+        volTS1 <- blackConstantVol (CalendarReferenceDate evalDate) cal vQ1 dc
+        volTS2 <- blackConstantVol (CalendarReferenceDate evalDate) cal vQ2 dc
+        volTS3 <- blackConstantVol (CalendarReferenceDate evalDate) cal vQ3 dc
         p1 <- blackScholesMertonProcess spot1 qTS rTS volTS1 EulerDiscretization False
         p2 <- blackScholesMertonProcess spot2 qTS rTS volTS2 EulerDiscretization False
         p3 <- blackScholesMertonProcess spot3 qTS rTS volTS3 EulerDiscretization False
@@ -1856,9 +1856,9 @@ spec = do
         vQ1 <- simpleQuote 0.20
         vQ2 <- simpleQuote 0.20
         vQ3 <- simpleQuote 0.20
-        volTS1 <- blackConstantVol evalDate cal vQ1 dc
-        volTS2 <- blackConstantVol evalDate cal vQ2 dc
-        volTS3 <- blackConstantVol evalDate cal vQ3 dc
+        volTS1 <- blackConstantVol (CalendarReferenceDate evalDate) cal vQ1 dc
+        volTS2 <- blackConstantVol (CalendarReferenceDate evalDate) cal vQ2 dc
+        volTS3 <- blackConstantVol (CalendarReferenceDate evalDate) cal vQ3 dc
         p1 <- blackScholesMertonProcess spot1 qTS rTS volTS1 EulerDiscretization False
         p2 <- blackScholesMertonProcess spot2 qTS rTS volTS2 EulerDiscretization False
         p3 <- blackScholesMertonProcess spot3 qTS rTS volTS3 EulerDiscretization False
@@ -1896,7 +1896,7 @@ spec = do
         rQ <- simpleQuote 0.06
         rTS <- flatForward (ReferenceDate evalDate) rQ dc Continuous Annual
         vQ1 <- simpleQuote 0.4
-        volTS1 <- blackConstantVol evalDate cal vQ1 dc
+        volTS1 <- blackConstantVol (CalendarReferenceDate evalDate) cal vQ1 dc
         p1 <- blackScholesMertonProcess spot1 qTS rTS volTS1 EulerDiscretization False
         rhoMatrix <- either error pure (boxedRealMatrix 1 1 [1])
         procArr <- stochasticProcessArray (p1 :| []) rhoMatrix
@@ -1922,7 +1922,7 @@ spec = do
         rQ <- simpleQuote 0.06
         rTS <- flatForward (ReferenceDate evalDate) rQ dc Continuous Annual
         vQ1 <- simpleQuote 0.4
-        volTS1 <- blackConstantVol evalDate cal vQ1 dc
+        volTS1 <- blackConstantVol (CalendarReferenceDate evalDate) cal vQ1 dc
         p1 <- blackScholesMertonProcess spot1 qTS rTS volTS1 EulerDiscretization False
         rhoMatrix <- either error pure (boxedRealMatrix 1 1 [1])
         procArr <- stochasticProcessArray (p1 :| []) rhoMatrix
@@ -1989,7 +1989,7 @@ spec = do
         rQ <- simpleQuote 0.013
         rTS <- flatForward (ReferenceDate evalDate) rQ dc Continuous Annual
         vQ <- simpleQuote 0.2
-        volTS <- blackConstantVol evalDate cal vQ dc
+        volTS <- blackConstantVol (CalendarReferenceDate evalDate) cal vQ dc
 
         p1 <- blackProcess spot1 rTS volTS EulerDiscretization False
         p2 <- blackProcess spot2 rTS volTS EulerDiscretization False
@@ -2038,8 +2038,8 @@ spec = do
         rTS <- flatForward (ReferenceDate evalDate) rQ dc Continuous Annual
         v1Q <- simpleQuote 0.25
         v2Q <- simpleQuote 0.35
-        vol1TS <- blackConstantVol evalDate cal v1Q dc
-        vol2TS <- blackConstantVol evalDate cal v2Q dc
+        vol1TS <- blackConstantVol (CalendarReferenceDate evalDate) cal v1Q dc
+        vol2TS <- blackConstantVol (CalendarReferenceDate evalDate) cal v2Q dc
         s1 <- simpleQuote f1
         s2 <- simpleQuote f2
         p1 <- blackScholesMertonProcess s1 rTS rTS vol1TS EulerDiscretization False
@@ -2079,8 +2079,8 @@ spec = do
             f2' = 90 * dq2 / dfR
         v1Q' <- simpleQuote 0.3
         v2Q' <- simpleQuote 0.2
-        vol1TS' <- blackConstantVol evalDate cal v1Q' dc
-        vol2TS' <- blackConstantVol evalDate cal v2Q' dc
+        vol1TS' <- blackConstantVol (CalendarReferenceDate evalDate) cal v1Q' dc
+        vol2TS' <- blackConstantVol (CalendarReferenceDate evalDate) cal v2Q' dc
         f1Q <- simpleQuote f1'
         f2Q <- simpleQuote f2'
         bp1' <- blackProcess f1Q rTS vol1TS' EulerDiscretization False
@@ -2122,7 +2122,7 @@ spec = do
         dc <- dayCounter Actual365FixedStandard
         cal <- calendar TARGET
         rTS <- simpleQuote 0.05 >>= \rQ -> flatForward (ReferenceDate evalDate) rQ dc Continuous Annual
-        vol2TS <- simpleQuote 0.2 >>= \vQ -> blackConstantVol evalDate cal vQ dc
+        vol2TS <- simpleQuote 0.2 >>= \vQ -> blackConstantVol (CalendarReferenceDate evalDate) cal vQ dc
 
         let s1 = 110.0 :: Double
             s2 = 90.0 :: Double
@@ -2147,7 +2147,7 @@ spec = do
           dr <- discountAtDate rTS maturityDate False
           let f1 = s1 / dr
               f2 = s2 / dr
-          vol1TS <- simpleQuote vol1 >>= \vQ -> blackConstantVol evalDate cal vQ dc
+          vol1TS <- simpleQuote vol1 >>= \vQ -> blackConstantVol (CalendarReferenceDate evalDate) cal vQ dc
           f1Q <- simpleQuote f1
           f2Q <- simpleQuote f2
           p1 <- blackProcess f1Q rTS vol1TS EulerDiscretization False
@@ -2187,8 +2187,8 @@ spec = do
         rTS <- flatForward (ReferenceDate evalDate) rQ dc Continuous Annual
         v1Q <- simpleQuote 0.25
         v2Q <- simpleQuote 0.4
-        vol1TS <- blackConstantVol evalDate cal v1Q dc
-        vol2TS <- blackConstantVol evalDate cal v2Q dc
+        vol1TS <- blackConstantVol (CalendarReferenceDate evalDate) cal v1Q dc
+        vol2TS <- blackConstantVol (CalendarReferenceDate evalDate) cal v2Q dc
         bp1 <- blackProcess s1Q rTS vol1TS EulerDiscretization False
         bp2 <- blackProcess s2Q rTS vol2TS EulerDiscretization False
         p1 <- asGeneralizedBlackScholesProcess bp1
@@ -2269,8 +2269,8 @@ spec = do
         brTS <- flatForward (ReferenceDate evalDate) brQ dc Continuous Annual
         bv1 <- simpleQuote 0.3
         bv2 <- simpleQuote 0.3
-        bvolTS1 <- blackConstantVol evalDate cal bv1 dc
-        bvolTS2 <- blackConstantVol evalDate cal bv2 dc
+        bvolTS1 <- blackConstantVol (CalendarReferenceDate evalDate) cal bv1 dc
+        bvolTS2 <- blackConstantVol (CalendarReferenceDate evalDate) cal bv2 dc
         bs1Q <- simpleQuote 100
         bs2Q <- simpleQuote 100
         bp1 <- blackScholesMertonProcess bs1Q bqTS1 brTS bvolTS1 EulerDiscretization False
@@ -2325,8 +2325,8 @@ spec = do
             f2' = 90 * dq2 / dfR
         v1Q' <- simpleQuote 0.3
         v2Q' <- simpleQuote 0.2
-        vol1TS' <- blackConstantVol evalDate cal v1Q' dc
-        vol2TS' <- blackConstantVol evalDate cal v2Q' dc
+        vol1TS' <- blackConstantVol (CalendarReferenceDate evalDate) cal v1Q' dc
+        vol2TS' <- blackConstantVol (CalendarReferenceDate evalDate) cal v2Q' dc
         f1Q <- simpleQuote f1'
         f2Q <- simpleQuote f2'
         bp1' <- blackProcess f1Q rTS vol1TS' EulerDiscretization False
@@ -2513,7 +2513,7 @@ spec = do
         qTS <- flatForward (ReferenceDate evalDate) qQ dc Continuous Annual
         volQ <- simpleQuote sigmaBs
         cal <- calendar Null
-        volTS <- blackConstantVol evalDate cal volQ dc
+        volTS <- blackConstantVol (CalendarReferenceDate evalDate) cal volQ dc
         spotQ <- simpleQuote s
         bsProcess <- blackScholesMertonProcess spotQ qTS rTS volTS EulerDiscretization False
         analyticEngine <- forwardEuropeanEngine bsProcess
@@ -2552,7 +2552,7 @@ spec = do
         qTS <- flatForward (ReferenceDate evalDate) qQ dc Continuous Annual
         rTS <- flatForward (ReferenceDate evalDate) rQ dc Continuous Annual
         tgt <- calendar TARGET
-        volTS <- blackConstantVol evalDate tgt volQ dc
+        volTS <- blackConstantVol (CalendarReferenceDate evalDate) tgt volQ dc
         process <- blackScholesMertonProcess s0 qTS rTS volTS EulerDiscretization False
         maturity <- addPeriod evalDate (5, Years)
         engine <- fdBlackScholesShoutEngine process [] 400 200 0 Hundsdorfer
@@ -2575,7 +2575,7 @@ spec = do
         qTS <- flatForward (ReferenceDate evalDate) qQ dc Continuous Annual
         rTS <- flatForward (ReferenceDate evalDate) rQ dc Continuous Annual
         tgt <- calendar TARGET
-        volTS <- blackConstantVol evalDate tgt volQ dc
+        volTS <- blackConstantVol (CalendarReferenceDate evalDate) tgt volQ dc
         process <- blackScholesMertonProcess s0 qTS rTS volTS EulerDiscretization False
         maturity <- addPeriod evalDate (1, Years)
         divDate <- addPeriod evalDate (3, Months)
@@ -2611,7 +2611,7 @@ spec = do
         qTS <- flatForward (ReferenceDate evalDate) qQ dc Continuous Annual
         rTS <- flatForward (ReferenceDate evalDate) rQ dc Continuous Annual
         tgt <- calendar TARGET
-        volTS <- blackConstantVol evalDate tgt volQ dc
+        volTS <- blackConstantVol (CalendarReferenceDate evalDate) tgt volQ dc
         process <- blackScholesMertonProcess s0 qTS rTS volTS EulerDiscretization False
         maturity <- addPeriod evalDate (6, Months)
         divDate <- addPeriod evalDate (3, Months)
@@ -2658,7 +2658,7 @@ spec = do
         hp <- hestonProcess rTS (Just qTS) s0 0.09 1.0 0.06 0.4 (-0.75) HestonFullTruncation
         hm <- hestonModel hp
         end <- addPeriod evalDate (1, Years)
-        localVolTS <- localConstantVol evalDate localVolQ dc
+        localVolTS <- localConstantVol (ReferenceDate evalDate) localVolQ dc
         factory <- sobolBrownianGeneratorFactory Diagonal 1234 JoeKuoD7
         mc <- hestonSlvMcModel localVolTS hm factory end 91 201 32768 [] 1.0
         mcLeverage <- leverageFunction mc
@@ -2715,7 +2715,7 @@ spec = do
         hp <- hestonProcess rTS (Just qTS) s0 v0 kappa theta_ sigma rho_ QuadraticExponentialMartingale
         hm <- hestonModel hp
         leverageQ <- simpleQuote 0.25
-        leverageFct <- localConstantVol evalDate leverageQ dc
+        leverageFct <- localConstantVol (ReferenceDate evalDate) leverageQ dc
         fdEngine <- fdHestonVanillaEngine hm [] 51 401 101 0 ModifiedCraigSneyd (Just leverageFct) 1.0
 
         mixHp <- hestonProcess rTS (Just qTS) s0 v0 kappa theta_ (sigma * 10) rho_ QuadraticExponentialMartingale

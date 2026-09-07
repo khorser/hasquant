@@ -58,7 +58,7 @@ run = do
   qTS <- flatForward (ReferenceDate evalDate) qQ dc Continuous Annual
   rTS <- flatForward (ReferenceDate evalDate) rQ dc Continuous Annual
   volQ <- simpleQuote vol
-  volTS <- calendar TARGET >>= $(free2nd 'blackConstantVol) evalDate volQ dc
+  volTS <- calendar TARGET >>= $(free2nd 'blackConstantVol) (CalendarReferenceDate evalDate) volQ dc
   bsmProc <- blackScholesMertonProcess spotQ qTS rTS volTS EulerDiscretization False
 
   let payoff t = PlainVanilla $ PlainVanillaPayoff t 0.0
