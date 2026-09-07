@@ -43,7 +43,7 @@ main = do
   eq' <- asIndex eq
   hia <- historicalIndexAnalysis startDate (last ds) (1, Months) [ibor', eq']
 
-  skipped <- historicalIndexAnalysisSkipped hia
+  skipped <- skipped hia
   checkWith "no skipped dates for a fully-fixed mixed index list" "expected []" (null skipped)
 
   -- The char** spine this returns is the only one in cbits/ that used to escape trackAllocations
@@ -52,16 +52,16 @@ main = do
   checkWith "skipped-date diagnostics are paired"
     "expected one message per skipped date" (not (any (null . snd) skipped))
 
-  means <- historicalIndexAnalysisMean hia
+  means <- mean hia
   checkWith "mean has one entry per index" "expected length 2" (length means == 2)
 
-  vars <- historicalIndexAnalysisValueAtRisk hia 0.9
+  vars <- valueAtRisk hia 0.9
   checkWith "valueAtRisk non-negative for both indexes" "expected all >= 0" (all (>= 0) vars)
 
-  ess <- historicalIndexAnalysisExpectedShortfall hia 0.9
+  ess <- expectedShortfall hia 0.9
   checkWith "expectedShortfall non-negative for both indexes" "expected all >= 0" (all (>= 0) ess)
 
-  badCentile <- try (historicalIndexAnalysisValueAtRisk hia 0.5) :: IO (Either SomeException [Double])
+  badCentile <- try (valueAtRisk hia 0.5) :: IO (Either SomeException [Double])
   case badCentile of
     Left _ -> checkWith "valueAtRisk rejects centile outside [0.9, 1.0)" "threw" True
     Right _ -> checkWith "valueAtRisk rejects centile outside [0.9, 1.0)" "should have thrown" False

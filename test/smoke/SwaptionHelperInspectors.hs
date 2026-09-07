@@ -1,15 +1,15 @@
 -- Smoke test for the SwaptionHelper leaf type and its inspectors (QuantLib/Model.chs's
--- swaptionHelperUnderlying/swaptionHelperSwaption/volatility), added alongside the
+-- underlying/swaption/volatility), added alongside the
 -- Gaussian1dModels.cpp port's calibration-basket work. These getters need SwaptionHelper to be
 -- its own dedicated leaf under BlackCalibrationHelper (not the generic BlackCalibrationHelper
 -- swaptionHelper used to return) so that underlying()/swaption() are reachable without a
 -- dynamic_pointer_cast -- see CLAUDE.md's GenBlackCalibrationHelper/FixedVsFloatingSwap bullets.
 --
 -- Checks:
---  1. swaptionHelperUnderlying's FixedVsFloatingSwap has the fixed rate/nominal the helper was
+--  1. underlying's FixedVsFloatingSwap has the fixed rate/nominal the helper was
 --     built with (via the generic HasFixedLeg/fairRate-style accessors, now bound generically
 --     over GenFixedVsFloatingSwap rather than the concrete VanillaSwap).
---  2. swaptionHelperSwaption prices under blackSwaptionEngine to (approximately) the same value
+--  2. swaption prices under blackSwaptionEngine to (approximately) the same value
 --     as SwaptionHelper's own blackPrice at the helper's quoted volatility -- both price the
 --     "same" European swaption, just via two different upstream code paths, so they should agree.
 --  3. volatility (generic, base BlackCalibrationHelper-level, no cast) round-trips the vol quote.
@@ -58,7 +58,7 @@ main = do
   h <- swaptionHelper (5, Years) (5, Years) volQ euribor6m (1, Years) thirty360bb act360 ts
     RelativePriceError (Just strike) nominal ShiftedLognormal 0.0 (Just 2) CF.AveragingCompound
 
-  underlying <- swaptionHelperUnderlying h
+  underlying <- helperUnderlying h
   fr <- fairRate underlying
   _fl <- fixedLeg underlying -- just confirm it materializes without throwing
   putStrLn ("underlying fairRate: " ++ show fr)
@@ -69,16 +69,16 @@ main = do
     exitFailure
   putStrLn "OK: volatility round-trips the quote the helper was built with"
 
-  swpn <- swaptionHelperSwaption h
+  swpn <- helperSwaption h
   engine <- blackSwaptionEngine ts volQ dc365 0.0 SwapRate
   I.setPricingEngine swpn engine
   npvSwaption <- I.npv swpn
   bp <- blackPrice h volValue
   putStrLn ("swaption NPV: " ++ show npvSwaption ++ ", helper blackPrice: " ++ show bp)
   unless (close npvSwaption bp) $ do
-    putStrLn "MISMATCH: swaptionHelperSwaption's NPV should agree with the helper's own blackPrice"
+    putStrLn "MISMATCH: swaption's NPV should agree with the helper's own blackPrice"
     exitFailure
-  putStrLn "OK: swaptionHelperSwaption prices consistently with the helper's own blackPrice"
+  putStrLn "OK: swaption prices consistently with the helper's own blackPrice"
 
   bch <- asBlackCalibrationHelper h
   setPricingEngine bch engine

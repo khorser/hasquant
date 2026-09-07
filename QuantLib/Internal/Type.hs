@@ -535,7 +535,7 @@ withSmileSection = withStandalone . getCSmileSection
 -- |a dedicated leaf, not a downcast target: 'QuantLib.TermStructure.Volatility.sabrInterpolatedSmileSection'
 -- returns this concrete type directly so its alpha\/beta\/nu\/rho\/etc getters need no
 -- runtime cast to reach them (see CLAUDE.md's "avoid dynamic_cast unless upstream forces it"
--- rule). Use 'QuantLib.TermStructure.Volatility.sabrInterpolatedSmileSectionAsSmileSection' to
+-- rule). Use 'QuantLib.TermStructure.Volatility.sabrAsSmileSection' to
 -- pass one into anything that wants the generic 'SmileSection' interface.
 data CSabrInterpolatedSmileSection
 newtype SabrInterpolatedSmileSection = SabrInterpolatedSmileSection {getCSabrInterpolatedSmileSection :: Standalone CSabrInterpolatedSmileSection}
@@ -548,7 +548,7 @@ withSabrInterpolatedSmileSection = withStandalone . getCSabrInterpolatedSmileSec
 
 -- |a dedicated leaf, same reasoning and 'SmileSection' escape hatch as 'CSabrInterpolatedSmileSection'
 -- above -- see 'QuantLib.TermStructure.Volatility.sviInterpolatedSmileSection'\/
--- 'QuantLib.TermStructure.Volatility.sviInterpolatedSmileSectionAsSmileSection'.
+-- 'QuantLib.TermStructure.Volatility.sviAsSmileSection'.
 data CSviInterpolatedSmileSection
 newtype SviInterpolatedSmileSection = SviInterpolatedSmileSection {getCSviInterpolatedSmileSection :: Standalone CSviInterpolatedSmileSection}
 foreign import ccall unsafe "ql.h &qlFreeSviInterpolatedSmileSection" qlFreeSviInterpolatedSmileSection :: FinalizerPtr CSviInterpolatedSmileSection
@@ -560,7 +560,7 @@ withSviInterpolatedSmileSection = withStandalone . getCSviInterpolatedSmileSecti
 
 -- |a dedicated leaf, same reasoning and 'SmileSection' escape hatch as 'CSabrInterpolatedSmileSection'
 -- above -- see 'QuantLib.TermStructure.Volatility.noArbSabrInterpolatedSmileSection'\/
--- 'QuantLib.TermStructure.Volatility.noArbSabrInterpolatedSmileSectionAsSmileSection'.
+-- 'QuantLib.TermStructure.Volatility.noArbSabrAsSmileSection'.
 data CNoArbSabrInterpolatedSmileSection
 newtype NoArbSabrInterpolatedSmileSection = NoArbSabrInterpolatedSmileSection {getCNoArbSabrInterpolatedSmileSection :: Standalone CNoArbSabrInterpolatedSmileSection}
 foreign import ccall unsafe "ql.h &qlFreeNoArbSabrInterpolatedSmileSection" qlFreeNoArbSabrInterpolatedSmileSection :: FinalizerPtr CNoArbSabrInterpolatedSmileSection
@@ -723,7 +723,7 @@ peekMultipleResetsCoupon = GenFloatingRateCoupon <.> newGenForeignPtr
 withMultipleResetsCoupon :: MultipleResetsCoupon -> (Ptr CMultipleResetsCoupon' -> IO b) -> IO b
 withMultipleResetsCoupon = withForeignPtr . ptr . getFloatingRateCoupon
 
--- |Concrete CPI coupon; convert with 'QuantLib.CashFlow.cpiCouponAsCashFlow' when needed.
+-- |Concrete CPI coupon; convert with 'QuantLib.CashFlow.asCashFlow' when needed.
 data CCPICoupon
 newtype CPICoupon = CPICoupon {getCCPICoupon :: Standalone CCPICoupon}
 foreign import ccall unsafe "ql.h &qlFreeCPICoupon" qlFreeCPICoupon :: FinalizerPtr CCPICoupon
@@ -1256,8 +1256,8 @@ withCashFlowArray = withStandaloneArray getCCashFlow
 -- | 'FixedRateCoupon': a standalone 'CashFlow' subclass, following the same
 -- ZeroInflationCashFlow\/CPICashFlow\/CommodityCashFlow precedent (no polymorphic @CashFlow@
 -- family is modelled here) -- gets its own concrete leaf, distinct from the generic 'CashFlow',
--- for its own 'QuantLib.CashFlow.fixedRateCouponInterestRate' getter. Convert with
--- 'QuantLib.CashFlow.fixedRateCouponAsCashFlow' to combine it with other cash flows in a 'Leg'.
+-- for its own 'QuantLib.CashFlow.interestRate' getter. Convert with
+-- 'QuantLib.CashFlow.asCashFlow' to combine it with other cash flows in a 'Leg'.
 data CFixedRateCoupon
 newtype FixedRateCoupon = FixedRateCoupon {getCFixedRateCoupon :: Standalone CFixedRateCoupon}
 foreign import ccall unsafe "ql.h &qlFreeFixedRateCoupon" qlFreeFixedRateCoupon :: FinalizerPtr CFixedRateCoupon
@@ -2326,7 +2326,7 @@ peekCommodityCurve = GenTermStructure <.> newGenForeignPtr
 withMaybeCommodityCurve :: Maybe CommodityCurve -> (Ptr CCommodityCurve' -> IO b) -> IO b
 withMaybeCommodityCurve x f = maybe (f nullPtr) (`withGenTermStructure` f) x
 -- |Peek a possibly-null @CommodityCurve*@ -- @basisOfCurve_@ is a @nullptr@ 'shared_ptr' when no
--- basis curve has been set via 'QuantLib.TermStructure.Commodity.setCommodityCurveBasisOfCurve',
+-- basis curve has been set via 'QuantLib.TermStructure.Commodity.setBasisOfCurve',
 -- not an empty-'Data'-style placeholder (unlike 'peekMaybeCommodityType' et al.).
 peekMaybeCommodityCurve :: Ptr CCommodityCurve' -> IO (Maybe CommodityCurve)
 peekMaybeCommodityCurve p
@@ -3818,7 +3818,7 @@ withCommodityCashFlow :: CommodityCashFlow -> (Ptr CCommodityCashFlow -> IO b) -
 withCommodityCashFlow = withStandalone . getCCommodityCashFlow
 -- |An array of freshly-constructed 'CommodityCashFlow's -- 'EnergySwap.paymentCashFlows()''s
 -- @map<Date, shared_ptr<CommodityCashFlow>>@, read as a plain list (each element's own
--- 'QuantLib.Instrument.Energy.commodityCashFlowDate' already carries the map key, so it isn't
+-- 'QuantLib.Instrument.Energy.date' already carries the map key, so it isn't
 -- duplicated as a separate tuple field).
 peekCommodityCashFlowArray :: Ptr CUInt -> Ptr (Ptr (Ptr CCommodityCashFlow)) -> IO [CommodityCashFlow]
 peekCommodityCashFlowArray = peekPtrArray peekCommodityCashFlow

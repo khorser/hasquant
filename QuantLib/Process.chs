@@ -62,7 +62,7 @@ module QuantLib.Process
   , geometricBrownianMotionProcess
   , gjrGarchProcess
   , hestonProcess
-  , hestonProcessPdf
+  , pdf
   , hestonSlvProcess
   , hullWhiteForwardProcess
   , hullWhiteProcess
@@ -84,11 +84,11 @@ module QuantLib.Process
   , HasShortRate(..)
   , HasForwardMeasureTime(..)
   , HasAlpha(..)
-  , hullWhiteForwardB
-  , hullWhiteForwardM
-  , hybridHestonHullWhiteNumeraire
+  , bFunction
+  , mFunction
+  , numeraire
 
-  , blackScholesTheta
+  , thetaAt
   ) where
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"
@@ -448,7 +448,7 @@ covariance p t0 x0 dt = toMatrixDouble <$> qlStochasticProcessCovariance p t0 x0
 -- |Probability density of @(x = ln S, v)@ at time /t/, evaluated via the Heston
 -- characteristic-function inversion (the same machinery as 'QuantLib.PricingEngine.analyticPDFHestonEngine').
 -- /eps/ is the requested integration accuracy.
-{#fun qlHestonProcessPdf as hestonProcessPdf{withHestonProcess*`GenHestonProcess hp' -- ^process
+{#fun qlHestonProcessPdf as pdf{withHestonProcess*`GenHestonProcess hp' -- ^process
   ,`Double' -- ^x
   ,`Double' -- ^v
   ,`Double' -- ^t
@@ -500,13 +500,13 @@ covariance p t0 x0 dt = toMatrixDouble <$> qlStochasticProcessCovariance p t0 x0
 
 -- |the Hull-White B(t, T) = (1 - exp(-a (T - t))) \/ a factor of the affine discount-bond
 -- formula P(t, T) = A(t, T) exp(-B(t, T) r_t).
-{#fun qlHullWhiteForwardProcessB as hullWhiteForwardB{withGenStochasticProcess1D*`HullWhiteForwardProcess',`Double' -- ^t
+{#fun qlHullWhiteForwardProcessB as bFunction{withGenStochasticProcess1D*`HullWhiteForwardProcess',`Double' -- ^t
   ,`Double' -- ^T
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |the T-forward-measure drift adjustment M_T(s, t, T) the process applies between /s/ and
 -- /t/ when the numeraire is the /T/-maturity zero bond.
-{#fun qlHullWhiteForwardProcessMT as hullWhiteForwardM{withGenStochasticProcess1D*`HullWhiteForwardProcess',`Double' -- ^s
+{#fun qlHullWhiteForwardProcessMT as mFunction{withGenStochasticProcess1D*`HullWhiteForwardProcess',`Double' -- ^s
   ,`Double' -- ^t
   ,`Double' -- ^T
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
@@ -523,7 +523,7 @@ covariance p t0 x0 dt = toMatrixDouble <$> qlStochasticProcessCovariance p t0 x0
 -- /T/ is captured when the hybrid process is /constructed/, from the
 -- 'hullWhiteForwardProcess''s forward-measure time -- so 'setForwardMeasureTime' must be
 -- called on that process /before/ 'hybridHestonHullWhiteProcess', not after.
-{#fun qlHybridHestonHullWhiteProcessNumeraire as hybridHestonHullWhiteNumeraire{withGenStochasticProcess*`HybridHestonHullWhiteProcess'
+{#fun qlHybridHestonHullWhiteProcessNumeraire as numeraire{withGenStochasticProcess*`HybridHestonHullWhiteProcess'
   ,`Double' -- ^t
   ,withDoubleArray*`[Double]'& -- ^x
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
@@ -622,7 +622,7 @@ stochasticProcessArray a (Matrix mr mc md) = qlStochasticProcessArray (toList a)
 {#fun qlStochasticProcessArray{withStochasticProcess1DArray*`[GenStochasticProcess1D p1d]'&,fromIntegral`Word',fromIntegral`Word',withDoubleArrayRaw*`[Double]',preErrorCheck-`String'errorCheck*-}->`StochasticProcessArray'peekStochasticProcessArray*#}
 
 -- |default theta calculation for Black-Scholes options
-{#fun qlQuantLibBlackScholesTheta as blackScholesTheta{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',`Double' -- ^value
+{#fun qlQuantLibBlackScholesTheta as thetaAt{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',`Double' -- ^value
   ,`Double' -- ^delta
   ,`Double' -- ^gamma
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}

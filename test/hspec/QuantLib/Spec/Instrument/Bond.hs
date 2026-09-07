@@ -88,21 +88,21 @@ rendistatoSpec = describe "RendistatoBasket / RendistatoCalculator" $
       basket <- rendistatoBasket (fromList [(b1, 100.0, p1), (b2, 100.0, p2), (b3, 100.0, p3)])
       rc <- rendistatoCalculator basket (6, Months) (Just curve) curve
 
-      lengths <- rendistatoCalculatorSwapLengths rc
+      lengths <- rendistatoSwapLengths rc
       lengths `shouldBe` [1 .. 15]
 
-      yields <- rendistatoCalculatorYields rc
+      yields <- rendistatoYields rc
       length yields `shouldBe` 3
 
-      durations <- rendistatoCalculatorDurations rc
+      durations <- rendistatoDurations rc
       length durations `shouldBe` 3
 
-      y <- rendistatoCalculatorYield rc
-      rate <- rendistatoCalculatorEquivalentSwapRate rc
-      spread <- rendistatoCalculatorEquivalentSwapSpread rc
+      y <- rendistatoYield rc
+      rate <- rendistatoEquivalentSwapRate rc
+      spread <- rendistatoEquivalentSwapSpread rc
       spread `shouldSatisfy` closePrec (y - rate) 1e-9
 
-      len <- rendistatoCalculatorEquivalentSwapLength rc
+      len <- rendistatoEquivalentSwapLength rc
       lengthQuote <- rendistatoEquivalentSwapLengthQuote rc
       lengthQuoteValue <- value lengthQuote
       lengthQuoteValue `shouldSatisfy` closePrec len 1e-9
@@ -111,8 +111,8 @@ rendistatoSpec = describe "RendistatoBasket / RendistatoCalculator" $
       spreadQuoteValue <- value spreadQuote
       spreadQuoteValue `shouldSatisfy` closePrec spread 1e-9
 
-      _ <- rendistatoCalculatorEquivalentSwap rc
-      _ <- rendistatoCalculatorSwapRates rc
-      _ <- rendistatoCalculatorSwapYields rc
-      _ <- rendistatoCalculatorSwapDurations rc
+      _ <- rendistatoEquivalentSwap rc
+      _ <- rendistatoSwapRates rc
+      _ <- rendistatoSwapYields rc
+      _ <- rendistatoSwapDurations rc
       pure ()

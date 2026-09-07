@@ -19,7 +19,10 @@ constructor, and specialized moving piecewise-yield bootstrap entry points were 
 examples, applications, and C shim spelling were migrated atomically, with a compiled-interface
 test guarding the public naming policy. Secondary multiple-inheritance interfaces now use the
 `AsAffineModel` and `AsGaussian1dModel` capability classes instead of leaf-prefixed conversion
-families, while retaining explicit, owned interface materialization.
+families, while retaining explicit, owned interface materialization. Receiver-only inspectors now
+use short topical names such as `floorRate`, `convexityAdjustment`, and `impliedQuote`; shared
+cash-flow operations use capability classes instead of repeating concrete object names at every
+call site.
 
 C++ shims refactored to use more modern approaches.
 

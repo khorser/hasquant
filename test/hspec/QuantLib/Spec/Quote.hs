@@ -225,5 +225,5 @@ spec = do
       volQuote <- simpleQuote 0.01 >>= asQuote
       meanRevQuote <- simpleQuote 0.03 >>= asQuote
       q <- futuresConvAdjustmentQuote idx futuresDate futuresQuote volQuote meanRevQuote
-      fv <- futuresConvAdjustmentQuoteFuturesValue q
+      fv <- futuresValue q
       fv `shouldSatisfy` closePrec 95.0 1.0e-12

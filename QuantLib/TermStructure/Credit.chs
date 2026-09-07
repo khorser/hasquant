@@ -16,7 +16,7 @@ module QuantLib.TermStructure.Credit
   , defaultProbabilityBetween
   , spreadCdsHelper
   , upfrontCdsHelper
-  , defaultProbabilityHelperImpliedQuote
+  , impliedQuote
   , interpolatedDefaultDensityCurve
   , interpolatedHazardRateCurve
   , interpolatedSurvivalProbabilityCurve
@@ -154,7 +154,7 @@ defaultProbabilityBetween curve interval = case interval of
 -- |The fair running-spread/upfront quote implied by the helper's current market data and pricing
 -- engine -- the value that would make the quoted instrument re-price at par. Requires the helper
 -- to have already been used to bootstrap a curve (throws otherwise, per upstream).
-{#fun qlDefaultProbabilityHelperImpliedQuote as defaultProbabilityHelperImpliedQuote{withDefaultProbabilityHelper*`DefaultProbabilityHelper'
+{#fun qlDefaultProbabilityHelperImpliedQuote as impliedQuote{withDefaultProbabilityHelper*`DefaultProbabilityHelper'
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 interpolatedDefaultDensityCurve :: NonEmpty (Day, Double) -> DayCounter -> Calendar -> [(Day, GenQuote q)] -- ^jumps

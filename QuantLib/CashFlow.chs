@@ -1,4 +1,6 @@
+{-# LANGUAGE FlexibleInstances #-}
 {-# LANGUAGE TemplateHaskell #-}
+{-# LANGUAGE TypeSynonymInstances #-}
 module QuantLib.CashFlow
   (
     Leg
@@ -18,51 +20,42 @@ module QuantLib.CashFlow
   , indexedCashFlow
   , FixedRateCoupon
   , fixedRateCoupon
-  , fixedRateCouponAsCashFlow
-  , fixedRateCouponInterestRate
+  , interestRate
   , floatingRateCoupon
   , iborCoupon
   , IborCoupon
   , AverageBMACoupon
   , averageBmaCoupon
-  , averageBmaCouponAsFloatingRateCoupon
-  , averageBmaCouponFixingDates
-  , averageBmaCouponIndexFixings
+  , AsFloatingRateCoupon(..)
+  , HasFixingDates(..)
+  , HasIndexFixings(..)
   , cappedFlooredCoupon
   , StrippedCappedFlooredCoupon
   , strippedCappedFlooredCoupon
-  , strippedCappedFlooredCouponCap
-  , strippedCappedFlooredCouponFloor
-  , strippedCappedFlooredCouponEffectiveCap
-  , strippedCappedFlooredCouponEffectiveFloor
-  , strippedCappedFlooredCouponIsCap
-  , strippedCappedFlooredCouponIsFloor
-  , strippedCappedFlooredCouponIsCollar
+  , capRate
+  , floorRate
+  , effectiveCap
+  , effectiveFloor
+  , isCap
+  , isFloor
+  , isCollar
   , cappedFlooredIborCoupon
   , digitalIborCoupon
   , DigitalCoupon
   , digitalCoupon
-  , digitalCouponConvexityAdjustment
-  , digitalCouponCallOptionRate
-  , digitalCouponPutOptionRate
-  , digitalCouponRate
+  , HasDigitalOptionRates(..)
   , MultipleResetsCoupon
   , multipleResetsCoupon
-  , multipleResetsCouponAsFloatingRateCoupon
-  , multipleResetsCouponFixingDates
   , RangeAccrualFloatersCoupon
   , rangeAccrualFloatersCoupon
-  , rangeAccrualFloatersCouponPriceWithoutOptionality
+  , priceWithoutOptionality
   , YoYInflationCoupon
   , yoyInflationCoupon
-  , yoyInflationCouponAsCashFlow
-  , yoyInflationCouponAdjustedFixing
+  , adjustedFixing
   , averagingMultipleResetsPricer
   , compoundingMultipleResetsPricer
   , OvernightIndexedCoupon
   , overnightIndexedCoupon
-  , overnightIndexedCouponFixingDates
-  , overnightIndexedCouponIndexFixings
   , cappedFlooredOvernightIndexedCoupon
   , compoundingOvernightIndexedCouponPricer
   , arithmeticAveragedOvernightIndexedCouponPricer
@@ -76,8 +69,7 @@ module QuantLib.CashFlow
   , cpiCouponPricer
   , cpiCouponPricerWithVol
   , setCpiCouponPricer
-  , cpiCouponAsCashFlow
-  , cpiCouponIndexRatio
+  , indexRatio
   , redemption
   , amortizingPayment
   , cashFlowLeg
@@ -137,19 +129,20 @@ module QuantLib.CashFlow
   , defaultCmsLegOpts
   , FloatingRateCoupon
   , GenFloatingRateCoupon
-  , asFloatingRateCoupon
-  , asCashFlow
-  , floatingRateCouponRate
-  , floatingRateCouponAmount
+  , AsCashFlow(..)
+  , HasAmount(..)
+  , HasBaseFixing(..)
+  , HasIndexFixing(..)
+  , rate
   , setFloatingRateCouponPricer
-  , floatingRateCouponPrice
-  , floatingRateCouponConvexityAdjustment
-  , floatingRateCouponPricerSwapletRate
-  , floatingRateCouponPricerSwapletPrice
-  , floatingRateCouponPricerCapletPrice
-  , floatingRateCouponPricerCapletRate
-  , floatingRateCouponPricerFloorletPrice
-  , floatingRateCouponPricerFloorletRate
+  , price
+  , convexityAdjustment
+  , swapletRate
+  , swapletPrice
+  , capletPrice
+  , capletRate
+  , floorletPrice
+  , floorletRate
   , CmsCoupon
   , cmsCoupon
   , cappedFlooredCmsCoupon
@@ -159,16 +152,12 @@ module QuantLib.CashFlow
   , ReplicationType(..)
   , DigitalReplication
   , digitalReplication
-  , digitalReplicationType
-  , digitalReplicationGap
+  , replicationType
+  , gap
   , DigitalCmsCoupon
   , digitalCmsCoupon
-  , digitalCmsCouponCallOptionRate
-  , digitalCmsCouponPutOptionRate
   , DigitalCmsSpreadCoupon
   , digitalCmsSpreadCoupon
-  , digitalCmsSpreadCouponCallOptionRate
-  , digitalCmsSpreadCouponPutOptionRate
   , digitalCmsLeg
   , DigitalCmsLegOpts(..)
   , defaultDigitalCmsLegOpts
@@ -192,22 +181,10 @@ module QuantLib.CashFlow
   , setYoyInflationCouponPricer
   , ZeroInflationCashFlow
   , zeroInflationCashFlow
-  , zeroInflationCashFlowAsCashFlow
-  , zeroInflationCashFlowAmount
-  , zeroInflationCashFlowBaseFixing
-  , zeroInflationCashFlowIndexFixing
   , CPICashFlow
   , cpiCashFlow
-  , cpiCashFlowAsCashFlow
-  , cpiCashFlowAmount
-  , cpiCashFlowBaseFixing
-  , cpiCashFlowIndexFixing
   , EquityCashFlow
   , equityCashFlow
-  , equityCashFlowAsCashFlow
-  , equityCashFlowAmount
-  , equityCashFlowBaseFixing
-  , equityCashFlowIndexFixing
   , setEquityCashFlowPricer
   , YieldCurveModel(..)
 
@@ -234,7 +211,8 @@ import QuantLib.Internal
 {#import QuantLib.InterestRate#}(Compounding, VolatilityType)
 {#import QuantLib.Time.Schedule#}(Frequency)
 import QuantLib.Time.Calendar(calendar, CalendarConstructor(..))
-import QuantLib.Internal.Type
+import QuantLib.Internal.Type hiding (asFloatingRateCoupon)
+import qualified QuantLib.Internal.Type as InternalType (asFloatingRateCoupon)
 import QuantLib.Internal.Common
 import QuantLib.Internal.Syntax(deriveOptionsRecord)
 import Data.Maybe(fromMaybe)
@@ -388,7 +366,7 @@ leg f = qlLeg fs ds where (ds, fs) = unzip f
 
 -- |A fixed coupon with explicitly supplied payment, accrual, reference-period, and ex-coupon
 -- dates.  'Nothing' for a reference or ex-coupon date passes QuantLib's empty @Date()@. Convert
--- with 'fixedRateCouponAsCashFlow' to combine it with other cash flows in a 'Leg'.
+-- with 'asCashFlow' to combine it with other cash flows in a 'Leg'.
 {#fun qlFixedRateCoupon as fixedRateCoupon{withDay*`Day' -- ^paymentDate
   ,`Double' -- ^nominal
   ,`Double' -- ^rate
@@ -402,12 +380,12 @@ leg f = qlLeg fs ds where (ds, fs) = unzip f
 
 -- |Widen a 'FixedRateCoupon' to the generic 'CashFlow' -- needed to combine it with other cash
 -- flows via 'cashFlowLeg' or similar.
-{#fun qlFixedRateCouponAsCashFlow as fixedRateCouponAsCashFlow{withFixedRateCoupon*`FixedRateCoupon'}->`CashFlow'peekCashFlow*#}
+{#fun qlFixedRateCouponAsCashFlow as fixedRateCouponAsCashFlowRaw{withFixedRateCoupon*`FixedRateCoupon'}->`CashFlow'peekCashFlow*#}
 
 -- |The coupon's own fixed rate, as an 'InterestRate' (rate value plus day counter/compounding/
--- frequency) rather than a bare rate -- distinct from 'floatingRateCouponRate', which returns a
+-- frequency) rather than a bare rate -- distinct from 'rate', which returns a
 -- bare @Double@ for the (possibly index-derived) accrual rate.
-{#fun qlFixedRateCouponInterestRate as fixedRateCouponInterestRate{withFixedRateCoupon*`FixedRateCoupon'}->`InterestRate'peekInterestRate*#}
+{#fun qlFixedRateCouponInterestRate as interestRate{withFixedRateCoupon*`FixedRateCoupon'}->`InterestRate'peekInterestRate*#}
 
 -- |A generic floating-rate coupon.  Attach a 'FloatingRateCouponPricer' to the resulting leg
 -- with 'setCouponPricer' before evaluating a coupon whose rate requires one.  'Nothing' dates
@@ -461,13 +439,13 @@ leg f = qlLeg fs ds where (ds, fs) = unzip f
   ,preErrorCheck-`String'errorCheck*-}->`AverageBMACoupon'peekAverageBMACoupon*#}
 
 -- |Widen an 'AverageBMACoupon' to the generic 'FloatingRateCoupon'.
-{#fun qlAverageBMACouponAsFloatingRateCoupon as averageBmaCouponAsFloatingRateCoupon{withAverageBMACoupon*`AverageBMACoupon'}->`FloatingRateCoupon'peekFloatingRateCoupon*#}
+{#fun qlAverageBMACouponAsFloatingRateCoupon as averageBmaCouponAsFloatingRateCouponRaw{withAverageBMACoupon*`AverageBMACoupon'}->`FloatingRateCoupon'peekFloatingRateCoupon*#}
 
 -- |The fixing dates of the individual BMA rates being averaged over this coupon's accrual period.
-{#fun qlAverageBMACouponFixingDates as averageBmaCouponFixingDates{withAverageBMACoupon*`AverageBMACoupon',preArray-`[Day]'&peekDayArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlAverageBMACouponFixingDates as averageBmaCouponFixingDatesRaw{withAverageBMACoupon*`AverageBMACoupon',preArray-`[Day]'&peekDayArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
--- |The individual BMA fixings being averaged, in the same order as 'averageBmaCouponFixingDates'.
-{#fun qlAverageBMACouponIndexFixings as averageBmaCouponIndexFixings{withAverageBMACoupon*`AverageBMACoupon',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+-- |The individual BMA fixings being averaged, in the same order as 'fixingDates'.
+{#fun qlAverageBMACouponIndexFixings as averageBmaCouponIndexFixingsRaw{withAverageBMACoupon*`AverageBMACoupon',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Wrap a floating-rate coupon with optional cap and floor rates.
 {#fun qlCappedFlooredCoupon as cappedFlooredCoupon{withFloatingRateCoupon*`GenFloatingRateCoupon frc' -- ^underlying
@@ -485,34 +463,34 @@ leg f = qlLeg fs ds where (ds, fs) = unzip f
 
 -- |The cap actually in effect for this coupon, accounting for the sign of /gearing/;
 -- QuantLib's null-rate sentinel means no cap applies.
-{#fun pure qlStrippedCappedFlooredCouponCap as strippedCappedFlooredCouponCap{withStrippedCappedFlooredCoupon*`StrippedCappedFlooredCoupon' -- ^coupon
+{#fun pure qlStrippedCappedFlooredCouponCap as capRate{withStrippedCappedFlooredCoupon*`StrippedCappedFlooredCoupon' -- ^coupon
   }->`Double'#}
 
 -- |The floor actually in effect for this coupon, accounting for the sign of /gearing/;
 -- QuantLib's null-rate sentinel means no floor applies.
-{#fun pure qlStrippedCappedFlooredCouponFloor as strippedCappedFlooredCouponFloor{withStrippedCappedFlooredCoupon*`StrippedCappedFlooredCoupon' -- ^coupon
+{#fun pure qlStrippedCappedFlooredCouponFloor as floorRate{withStrippedCappedFlooredCoupon*`StrippedCappedFlooredCoupon' -- ^coupon
   }->`Double'#}
 
 -- |The cap rate translated back to the underlying index rate (before gearing\/spread);
 -- QuantLib's null-rate sentinel means the coupon is not capped.
-{#fun pure qlStrippedCappedFlooredCouponEffectiveCap as strippedCappedFlooredCouponEffectiveCap{withStrippedCappedFlooredCoupon*`StrippedCappedFlooredCoupon' -- ^coupon
+{#fun pure qlStrippedCappedFlooredCouponEffectiveCap as effectiveCap{withStrippedCappedFlooredCoupon*`StrippedCappedFlooredCoupon' -- ^coupon
   }->`Double'#}
 
 -- |The floor rate translated back to the underlying index rate (before gearing\/spread);
 -- QuantLib's null-rate sentinel means the coupon is not floored.
-{#fun pure qlStrippedCappedFlooredCouponEffectiveFloor as strippedCappedFlooredCouponEffectiveFloor{withStrippedCappedFlooredCoupon*`StrippedCappedFlooredCoupon' -- ^coupon
+{#fun pure qlStrippedCappedFlooredCouponEffectiveFloor as effectiveFloor{withStrippedCappedFlooredCoupon*`StrippedCappedFlooredCoupon' -- ^coupon
   }->`Double'#}
 
 -- |Whether this coupon has a cap in effect.
-{#fun pure qlStrippedCappedFlooredCouponIsCap as strippedCappedFlooredCouponIsCap{withStrippedCappedFlooredCoupon*`StrippedCappedFlooredCoupon' -- ^coupon
+{#fun pure qlStrippedCappedFlooredCouponIsCap as isCap{withStrippedCappedFlooredCoupon*`StrippedCappedFlooredCoupon' -- ^coupon
   }->`Bool'#}
 
 -- |Whether this coupon has a floor in effect.
-{#fun pure qlStrippedCappedFlooredCouponIsFloor as strippedCappedFlooredCouponIsFloor{withStrippedCappedFlooredCoupon*`StrippedCappedFlooredCoupon' -- ^coupon
+{#fun pure qlStrippedCappedFlooredCouponIsFloor as isFloor{withStrippedCappedFlooredCoupon*`StrippedCappedFlooredCoupon' -- ^coupon
   }->`Bool'#}
 
 -- |Whether this coupon is both capped and floored (a collar).
-{#fun pure qlStrippedCappedFlooredCouponIsCollar as strippedCappedFlooredCouponIsCollar{withStrippedCappedFlooredCoupon*`StrippedCappedFlooredCoupon' -- ^coupon
+{#fun pure qlStrippedCappedFlooredCouponIsCollar as isCollar{withStrippedCappedFlooredCoupon*`StrippedCappedFlooredCoupon' -- ^coupon
   }->`Bool'#}
 
 -- |Ibor coupon with optional cap and floor rates.
@@ -555,13 +533,8 @@ leg f = qlLeg fs ds where (ds, fs) = unzip f
   ,fromMaybeDouble`Maybe Double',fromEnumC`PositionType',`Bool',fromMaybeDouble`Maybe Double'
   ,withMaybeDigitalReplication*`Maybe DigitalReplication',`Bool'
   ,preErrorCheck-`String'errorCheck*-}->`DigitalCoupon'peekDigitalCoupon*#}
-{#fun qlDigitalCouponConvexityAdjustment as digitalCouponConvexityAdjustment{withDigitalCoupon*`DigitalCoupon',preErrorCheck-`String'errorCheck*-}->`Double'#}
-{#fun qlDigitalCouponCallOptionRate as digitalCouponCallOptionRate{withDigitalCoupon*`DigitalCoupon',preErrorCheck-`String'errorCheck*-}->`Double'#}
-{#fun qlDigitalCouponPutOptionRate as digitalCouponPutOptionRate{withDigitalCoupon*`DigitalCoupon',preErrorCheck-`String'errorCheck*-}->`Double'#}
-
--- |The digital coupon's overall rate: the underlying floating rate plus the call/put digital
--- option payoffs (as adjusted rates via 'digitalCouponCallOptionRate'\/'digitalCouponPutOptionRate').
-{#fun qlDigitalCouponRate as digitalCouponRate{withDigitalCoupon*`DigitalCoupon',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlDigitalCouponCallOptionRate as digitalCouponCallOptionRateRaw{withDigitalCoupon*`DigitalCoupon',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlDigitalCouponPutOptionRate as digitalCouponPutOptionRateRaw{withDigitalCoupon*`DigitalCoupon',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Ibor coupon whose rate averages multiple reset dates in each accrual period.
 {#fun qlMultipleResetsCoupon as multipleResetsCoupon{withDay*`Day' -- ^paymentDate
@@ -579,22 +552,22 @@ leg f = qlLeg fs ds where (ds, fs) = unzip f
   ,preErrorCheck-`String'errorCheck*-}->`MultipleResetsCoupon'peekMultipleResetsCoupon*#}
 
 -- |Widen a 'MultipleResetsCoupon' to the generic 'FloatingRateCoupon'.
-{#fun qlMultipleResetsCouponAsFloatingRateCoupon as multipleResetsCouponAsFloatingRateCoupon{withMultipleResetsCoupon*`MultipleResetsCoupon'}->`FloatingRateCoupon'peekFloatingRateCoupon*#}
+{#fun qlMultipleResetsCouponAsFloatingRateCoupon as multipleResetsCouponAsFloatingRateCouponRaw{withMultipleResetsCoupon*`MultipleResetsCoupon'}->`FloatingRateCoupon'peekFloatingRateCoupon*#}
 
 -- |Fixing dates for the rates being compounded over this coupon's reset schedule.
-{#fun qlMultipleResetsCouponFixingDates as multipleResetsCouponFixingDates{withMultipleResetsCoupon*`MultipleResetsCoupon',preArray-`[Day]'&peekDayArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlMultipleResetsCouponFixingDates as multipleResetsCouponFixingDatesRaw{withMultipleResetsCoupon*`MultipleResetsCoupon',preArray-`[Day]'&peekDayArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |A range-accrual coupon.  Attach the existing range-accrual pricer before
--- asking for its rate; 'rangeAccrualFloatersCouponPriceWithoutOptionality'
+-- asking for its rate; 'priceWithoutOptionality'
 -- needs only a discount curve.
 {#fun qlRangeAccrualFloatersCoupon as rangeAccrualFloatersCoupon{withDay*`Day',`Double',withIborIndex*`GenIborIndex ibor',withDay*`Day',withDay*`Day',fromIntegral`Word',withDayCounter*`DayCounter',`Double',`Double',withMaybeDay*`Maybe Day',withMaybeDay*`Maybe Day',withSchedule*`Schedule',`Double',`Double',preErrorCheck-`String'errorCheck*-}->`RangeAccrualFloatersCoupon'peekRangeAccrualFloatersCoupon*#}
-{#fun qlRangeAccrualFloatersCouponPriceWithoutOptionality as rangeAccrualFloatersCouponPriceWithoutOptionality{withRangeAccrualFloatersCoupon*`RangeAccrualFloatersCoupon',withYieldTermStructure*`GenYieldTermStructure y',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlRangeAccrualFloatersCouponPriceWithoutOptionality as priceWithoutOptionality{withRangeAccrualFloatersCoupon*`RangeAccrualFloatersCoupon',withYieldTermStructure*`GenYieldTermStructure y',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |A year-on-year inflation coupon.  As for 'yoyInflationLeg', attach a
 -- YoY inflation coupon pricer before evaluating the coupon rate.
 {#fun qlYoYInflationCoupon as yoyInflationCoupon{withDay*`Day',`Double',withDay*`Day',withDay*`Day',fromIntegral`Word',withYoYInflationIndex*`YoYInflationIndex',fromEnumQuantity`(Int,TimeUnit)'&,fromEnumC`CPIInterpolationType',withDayCounter*`DayCounter',`Double',`Double',withMaybeDay*`Maybe Day',withMaybeDay*`Maybe Day',preErrorCheck-`String'errorCheck*-}->`YoYInflationCoupon'peekYoYInflationCoupon*#}
-{#fun qlYoYInflationCouponAsCashFlow as yoyInflationCouponAsCashFlow{withYoYInflationCoupon*`YoYInflationCoupon'}->`CashFlow'peekCashFlow*#}
-{#fun qlYoYInflationCouponAdjustedFixing as yoyInflationCouponAdjustedFixing{withYoYInflationCoupon*`YoYInflationCoupon',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlYoYInflationCouponAsCashFlow as yoyInflationCouponAsCashFlowRaw{withYoYInflationCoupon*`YoYInflationCoupon'}->`CashFlow'peekCashFlow*#}
+{#fun qlYoYInflationCouponAdjustedFixing as adjustedFixing{withYoYInflationCoupon*`YoYInflationCoupon',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Pricer that arithmetically averages multiple Ibor resets.
 {#fun qlAveragingMultipleResetsPricer as averagingMultipleResetsPricer{preErrorCheck-`String'errorCheck*-}->`FloatingRateCouponPricer'peekFloatingRateCouponPricer*#}
@@ -626,13 +599,13 @@ leg f = qlLeg fs ds where (ds, fs) = unzip f
   ,preErrorCheck-`String'errorCheck*-}->`OvernightIndexedCoupon'peekOvernightIndexedCoupon*#}
 
 -- |The dates on which the coupon observes the overnight index, one per accrual sub-period.
-{#fun qlOvernightIndexedCouponFixingDates as overnightIndexedCouponFixingDates{withOvernightIndexedCoupon*`OvernightIndexedCoupon'
+{#fun qlOvernightIndexedCouponFixingDates as overnightIndexedCouponFixingDatesRaw{withOvernightIndexedCoupon*`OvernightIndexedCoupon'
   ,preArray-`[Day]'&peekDayArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
--- |The index fixing observed at each of 'overnightIndexedCouponFixingDates', in the same order.
+-- |The index fixing observed at each of 'fixingDates', in the same order.
 -- Requires the underlying overnight index to already have those fixings available (historical or
 -- forecast via a projection curve).
-{#fun qlOvernightIndexedCouponIndexFixings as overnightIndexedCouponIndexFixings{withOvernightIndexedCoupon*`OvernightIndexedCoupon'
+{#fun qlOvernightIndexedCouponIndexFixings as overnightIndexedCouponIndexFixingsRaw{withOvernightIndexedCoupon*`OvernightIndexedCoupon'
   ,preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Capped/floored overnight-index coupon.
@@ -731,12 +704,12 @@ leg f = qlLeg fs ds where (ds, fs) = unzip f
 
 -- |Convert a CPI coupon to the generic cash-flow representation used by
 -- heterogeneous 'cashFlowLeg' inputs.
-{#fun qlCPICouponAsCashFlow as cpiCouponAsCashFlow{withCPICoupon*`CPICoupon' -- ^coupon
+{#fun qlCPICouponAsCashFlow as cpiCouponAsCashFlowRaw{withCPICoupon*`CPICoupon' -- ^coupon
   }->`CashFlow'peekCashFlow*#}
 
 -- |The ratio of the (possibly interpolated) index value on /d/ to the coupon's base index
 -- value, i.e. the inflation-adjustment factor applied to the coupon's fixed rate.
-{#fun qlCPICouponIndexRatio as cpiCouponIndexRatio{withCPICoupon*`CPICoupon' -- ^coupon
+{#fun qlCPICouponIndexRatio as indexRatio{withCPICoupon*`CPICoupon' -- ^coupon
   ,withDay*`Day' -- ^d
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
@@ -1163,16 +1136,16 @@ cmsLegWithOptions schedule idx notionals dc adj fixingDays gearings spreads caps
 
 -- |Use this zero-inflation cash flow in a heterogeneous 'cashFlowLeg'. The returned generic
 -- 'CashFlow' shares ownership with the original, so both values remain valid independently.
-{#fun qlZeroInflationCashFlowAsCashFlow as zeroInflationCashFlowAsCashFlow{withZeroInflationCashFlow*`ZeroInflationCashFlow'}->`CashFlow'peekCashFlow*#}
+{#fun qlZeroInflationCashFlowAsCashFlow as zeroInflationCashFlowAsCashFlowRaw{withZeroInflationCashFlow*`ZeroInflationCashFlow'}->`CashFlow'peekCashFlow*#}
 
 -- |Amount of the cash flow: the index ratio (times notional), or the ratio minus one if growthOnly.
-{#fun qlZeroInflationCashFlowAmount as zeroInflationCashFlowAmount{withZeroInflationCashFlow*`ZeroInflationCashFlow',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlZeroInflationCashFlowAmount as zeroInflationCashFlowAmountRaw{withZeroInflationCashFlow*`ZeroInflationCashFlow',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Fixing used as the base of the ratio (as of /startDate/, lagged).
-{#fun qlZeroInflationCashFlowBaseFixing as zeroInflationCashFlowBaseFixing{withZeroInflationCashFlow*`ZeroInflationCashFlow',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlZeroInflationCashFlowBaseFixing as zeroInflationCashFlowBaseFixingRaw{withZeroInflationCashFlow*`ZeroInflationCashFlow',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Fixing used as the numerator of the ratio (as of /endDate/, lagged).
-{#fun qlZeroInflationCashFlowIndexFixing as zeroInflationCashFlowIndexFixing{withZeroInflationCashFlow*`ZeroInflationCashFlow',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlZeroInflationCashFlowIndexFixing as zeroInflationCashFlowIndexFixingRaw{withZeroInflationCashFlow*`ZeroInflationCashFlow',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |CPI-linked cash flow (not a coupon -- no accruals), with an optional explicit /baseFixing/
 -- (pass 'Nothing' to derive it from /baseDate/ instead).
@@ -1189,20 +1162,20 @@ cmsLegWithOptions schedule idx notionals dc adj fixingDays gearings spreads caps
 
 -- |Use this CPI cash flow in a heterogeneous 'cashFlowLeg'. The returned generic 'CashFlow'
 -- shares ownership with the original, so both values remain valid independently.
-{#fun qlCPICashFlowAsCashFlow as cpiCashFlowAsCashFlow{withCPICashFlow*`CPICashFlow'}->`CashFlow'peekCashFlow*#}
+{#fun qlCPICashFlowAsCashFlow as cpiCashFlowAsCashFlowRaw{withCPICashFlow*`CPICashFlow'}->`CashFlow'peekCashFlow*#}
 
 -- |Amount of the cash flow: the index ratio (times notional), or the ratio minus one if growthOnly.
-{#fun qlCPICashFlowAmount as cpiCashFlowAmount{withCPICashFlow*`CPICashFlow',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlCPICashFlowAmount as cpiCashFlowAmountRaw{withCPICashFlow*`CPICashFlow',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Fixing used as the base of the ratio: the explicit /baseFixing/ if given at construction, else derived from /baseDate/.
-{#fun qlCPICashFlowBaseFixing as cpiCashFlowBaseFixing{withCPICashFlow*`CPICashFlow',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlCPICashFlowBaseFixing as cpiCashFlowBaseFixingRaw{withCPICashFlow*`CPICashFlow',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Fixing used as the numerator of the ratio (as of /observationDate/, lagged).
-{#fun qlCPICashFlowIndexFixing as cpiCashFlowIndexFixing{withCPICashFlow*`CPICashFlow',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlCPICashFlowIndexFixing as cpiCashFlowIndexFixingRaw{withCPICashFlow*`CPICashFlow',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Cash flow dependent on the total return of an 'QuantLib.Index.Equity.EquityIndex' (not a coupon
 -- -- no accruals): @index(fixingDate)\/index(baseDate)@, or that ratio minus one if /growthOnly/.
--- If no 'EquityCashFlowPricer' is attached via 'setEquityCashFlowPricer', 'equityCashFlowAmount'
+-- If no 'EquityCashFlowPricer' is attached via 'setEquityCashFlowPricer', 'amount'
 -- computes this ratio directly from the index; a pricer (e.g. 'equityQuantoCashFlowPricer') is only
 -- needed to price a quanto-adjusted variant.
 {#fun qlEquityCashFlow as equityCashFlow{`Double' -- ^notional
@@ -1215,17 +1188,17 @@ cmsLegWithOptions schedule idx notionals dc adj fixingDays gearings spreads caps
 
 -- |Use this equity cash flow in a heterogeneous 'cashFlowLeg'. The returned generic 'CashFlow'
 -- shares ownership with the original, so both values remain valid independently.
-{#fun qlEquityCashFlowAsCashFlow as equityCashFlowAsCashFlow{withEquityCashFlow*`EquityCashFlow'}->`CashFlow'peekCashFlow*#}
+{#fun qlEquityCashFlowAsCashFlow as equityCashFlowAsCashFlowRaw{withEquityCashFlow*`EquityCashFlow'}->`CashFlow'peekCashFlow*#}
 
 -- |Amount of the cash flow: the index ratio (times notional), or the ratio minus one if growthOnly --
 -- or, if a pricer is attached, the notional times the pricer's 'price'.
-{#fun qlEquityCashFlowAmount as equityCashFlowAmount{withEquityCashFlow*`EquityCashFlow',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlEquityCashFlowAmount as equityCashFlowAmountRaw{withEquityCashFlow*`EquityCashFlow',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Fixing used as the base of the ratio (as of /baseDate/).
-{#fun qlEquityCashFlowBaseFixing as equityCashFlowBaseFixing{withEquityCashFlow*`EquityCashFlow',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlEquityCashFlowBaseFixing as equityCashFlowBaseFixingRaw{withEquityCashFlow*`EquityCashFlow',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Fixing used as the numerator of the ratio (as of /fixingDate/).
-{#fun qlEquityCashFlowIndexFixing as equityCashFlowIndexFixing{withEquityCashFlow*`EquityCashFlow',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlEquityCashFlowIndexFixing as equityCashFlowIndexFixingRaw{withEquityCashFlow*`EquityCashFlow',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Attach a pricer (e.g. from 'equityQuantoCashFlowPricer') to a single 'EquityCashFlow'; see
 -- 'setEquityLegPricer' to attach one to every 'EquityCashFlow' in a leg instead.
@@ -1314,29 +1287,29 @@ cmsLegWithOptions schedule idx notionals dc adj fixingDays gearings spreads caps
 {#fun qlQuantLibSetCouponPricers as setCouponPricers{withLeg*`GenLeg l',withFloatingRateCouponPricerArray*`[GenFloatingRateCouponPricer frcp]'&,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Rate for a fully-determined coupon period, with no cap\/floor.
-{#fun qlFloatingRateCouponPricerSwapletRate as floatingRateCouponPricerSwapletRate{withFloatingRateCouponPricer*`GenFloatingRateCouponPricer frcp',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlFloatingRateCouponPricerSwapletRate as swapletRate{withFloatingRateCouponPricer*`GenFloatingRateCouponPricer frcp',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Price (NPV contribution) for a fully-determined coupon period, with no cap\/floor.  Not
 -- every pricer supports this: e.g. 'CompoundingOvernightIndexedCouponPricer' throws.
-{#fun qlFloatingRateCouponPricerSwapletPrice as floatingRateCouponPricerSwapletPrice{withFloatingRateCouponPricer*`GenFloatingRateCouponPricer frcp',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlFloatingRateCouponPricerSwapletPrice as swapletPrice{withFloatingRateCouponPricer*`GenFloatingRateCouponPricer frcp',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Price of the caplet with the given effective cap rate.  Not every pricer supports this.
-{#fun qlFloatingRateCouponPricerCapletPrice as floatingRateCouponPricerCapletPrice{withFloatingRateCouponPricer*`GenFloatingRateCouponPricer frcp'
+{#fun qlFloatingRateCouponPricerCapletPrice as capletPrice{withFloatingRateCouponPricer*`GenFloatingRateCouponPricer frcp'
   ,`Double' -- ^effectiveCap
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Rate of the caplet with the given effective cap rate.  Not every pricer supports this.
-{#fun qlFloatingRateCouponPricerCapletRate as floatingRateCouponPricerCapletRate{withFloatingRateCouponPricer*`GenFloatingRateCouponPricer frcp'
+{#fun qlFloatingRateCouponPricerCapletRate as capletRate{withFloatingRateCouponPricer*`GenFloatingRateCouponPricer frcp'
   ,`Double' -- ^effectiveCap
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Price of the floorlet with the given effective floor rate.  Not every pricer supports this.
-{#fun qlFloatingRateCouponPricerFloorletPrice as floatingRateCouponPricerFloorletPrice{withFloatingRateCouponPricer*`GenFloatingRateCouponPricer frcp'
+{#fun qlFloatingRateCouponPricerFloorletPrice as floorletPrice{withFloatingRateCouponPricer*`GenFloatingRateCouponPricer frcp'
   ,`Double' -- ^effectiveFloor
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Rate of the floorlet with the given effective floor rate.  Not every pricer supports this.
-{#fun qlFloatingRateCouponPricerFloorletRate as floatingRateCouponPricerFloorletRate{withFloatingRateCouponPricer*`GenFloatingRateCouponPricer frcp'
+{#fun qlFloatingRateCouponPricerFloorletRate as floorletRate{withFloatingRateCouponPricer*`GenFloatingRateCouponPricer frcp'
   ,`Double' -- ^effectiveFloor
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
@@ -1381,15 +1354,15 @@ cmsLegWithOptions schedule idx notionals dc adj fixingDays gearings spreads caps
 
 -- |Convert any floating-rate coupon to the generic cash-flow representation used by
 -- heterogeneous 'cashFlowLeg' inputs.
-{#fun qlFloatingRateCouponAsCashFlow as asCashFlow{withFloatingRateCoupon*`GenFloatingRateCoupon frc' -- ^coupon
+{#fun qlFloatingRateCouponAsCashFlow as floatingRateCouponAsCashFlowRaw{withFloatingRateCoupon*`GenFloatingRateCoupon frc' -- ^coupon
   }->`CashFlow'peekCashFlow*#}
 
 -- |The coupon rate.  It is calculated by the attached 'FloatingRateCouponPricer'.
-{#fun qlFloatingRateCouponRate as floatingRateCouponRate{withFloatingRateCoupon*`GenFloatingRateCoupon frc' -- ^coupon
+{#fun qlFloatingRateCouponRate as rate{withFloatingRateCoupon*`GenFloatingRateCoupon frc' -- ^coupon
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Cash-flow amount, equal to @rate * accrualPeriod * nominal@.
-{#fun qlFloatingRateCouponAmount as floatingRateCouponAmount{withFloatingRateCoupon*`GenFloatingRateCoupon frc' -- ^coupon
+{#fun qlFloatingRateCouponAmount as floatingRateCouponAmountRaw{withFloatingRateCoupon*`GenFloatingRateCoupon frc' -- ^coupon
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Set the coupon pricer used to calculate a floating-rate coupon's rate.
@@ -1399,13 +1372,13 @@ cmsLegWithOptions schedule idx notionals dc adj fixingDays gearings spreads caps
 
 -- |Net present value of the coupon, i.e. the coupon amount discounted off the given curve.
 -- 'Nothing' uses the coupon's own default discounting (an empty @Handle\<YieldTermStructure\>@).
-{#fun qlFloatingRateCouponPrice as floatingRateCouponPrice{withFloatingRateCoupon*`GenFloatingRateCoupon frc' -- ^coupon
+{#fun qlFloatingRateCouponPrice as price{withFloatingRateCoupon*`GenFloatingRateCoupon frc' -- ^coupon
   ,withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)' -- ^discountingCurve
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |The adjustment (e.g. for coupons that fix in arrears) applied to the plain index fixing to
--- get the effective, convexity-adjusted fixing used in 'floatingRateCouponRate'.
-{#fun qlFloatingRateCouponConvexityAdjustment as floatingRateCouponConvexityAdjustment{withFloatingRateCoupon*`GenFloatingRateCoupon frc' -- ^coupon
+-- get the effective, convexity-adjusted fixing used in 'rate'.
+{#fun qlFloatingRateCouponConvexityAdjustment as convexityAdjustment{withFloatingRateCoupon*`GenFloatingRateCoupon frc' -- ^coupon
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |CMS coupon with optional cap and floor.  This is QuantLib's
@@ -1470,9 +1443,9 @@ cmsLegWithOptions schedule idx notionals dc adj fixingDays gearings spreads caps
 {#fun qlDigitalReplication as digitalReplication{`ReplicationType' -- ^replicationType
   ,`Double' -- ^gap
   ,preErrorCheck-`String'errorCheck*-}->`DigitalReplication'peekDigitalReplication*#}
-{#fun pure qlDigitalReplicationType as digitalReplicationType{withDigitalReplication*`DigitalReplication' -- ^replication
+{#fun pure qlDigitalReplicationType as replicationType{withDigitalReplication*`DigitalReplication' -- ^replication
   }->`ReplicationType'#}
-{#fun pure qlDigitalReplicationGap as digitalReplicationGap{withDigitalReplication*`DigitalReplication' -- ^replication
+{#fun pure qlDigitalReplicationGap as gap{withDigitalReplication*`DigitalReplication' -- ^replication
   }->`Double'#}
 
 -- |CMS-rate coupon with embedded digital call and put options.
@@ -1495,11 +1468,11 @@ cmsLegWithOptions schedule idx notionals dc adj fixingDays gearings spreads caps
   ,preErrorCheck-`String'errorCheck*-}->`DigitalCmsCoupon'peekDigitalCmsCoupon*#}
 
 -- |Call-option rate.  Multiply by @nominal * accrualPeriod * discount@ to obtain the option NPV.
-{#fun qlDigitalCmsCouponCallOptionRate as digitalCmsCouponCallOptionRate{withDigitalCmsCoupon*`DigitalCmsCoupon' -- ^coupon
+{#fun qlDigitalCmsCouponCallOptionRate as digitalCmsCouponCallOptionRateRaw{withDigitalCmsCoupon*`DigitalCmsCoupon' -- ^coupon
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Put-option rate.  Multiply by @nominal * accrualPeriod * discount@ to obtain the option NPV.
-{#fun qlDigitalCmsCouponPutOptionRate as digitalCmsCouponPutOptionRate{withDigitalCmsCoupon*`DigitalCmsCoupon' -- ^coupon
+{#fun qlDigitalCmsCouponPutOptionRate as digitalCmsCouponPutOptionRateRaw{withDigitalCmsCoupon*`DigitalCmsCoupon' -- ^coupon
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |CMS-spread-rate coupon with embedded digital call and put options.  Builds its own
@@ -1534,11 +1507,11 @@ cmsLegWithOptions schedule idx notionals dc adj fixingDays gearings spreads caps
   ,preErrorCheck-`String'errorCheck*-}->`DigitalCmsSpreadCoupon'peekDigitalCmsSpreadCoupon*#}
 
 -- |Call-option rate.  Multiply by @nominal * accrualPeriod * discount@ to obtain the option NPV.
-{#fun qlDigitalCmsSpreadCouponCallOptionRate as digitalCmsSpreadCouponCallOptionRate{withDigitalCmsSpreadCoupon*`DigitalCmsSpreadCoupon' -- ^coupon
+{#fun qlDigitalCmsSpreadCouponCallOptionRate as digitalCmsSpreadCouponCallOptionRateRaw{withDigitalCmsSpreadCoupon*`DigitalCmsSpreadCoupon' -- ^coupon
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Put-option rate.  Multiply by @nominal * accrualPeriod * discount@ to obtain the option NPV.
-{#fun qlDigitalCmsSpreadCouponPutOptionRate as digitalCmsSpreadCouponPutOptionRate{withDigitalCmsSpreadCoupon*`DigitalCmsSpreadCoupon' -- ^coupon
+{#fun qlDigitalCmsSpreadCouponPutOptionRate as digitalCmsSpreadCouponPutOptionRateRaw{withDigitalCmsSpreadCoupon*`DigitalCmsSpreadCoupon' -- ^coupon
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Build a sequence of digital CMS-rate coupons.  The options record covers all digital call/put
@@ -1661,5 +1634,105 @@ lognormalCmsSpreadPricer cmsPricer correlation discountCurve integrationPoints v
 {#fun qlLognormalCmsSpreadPricer as lognormalCmsSpreadPricer_{withCmsCouponPricer*`CmsCouponPricer',withQuote*`GenQuote q',withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)'
   ,fromIntegral`Word',`Bool',`Int',fromMaybeDouble`Maybe Double',fromMaybeDouble`Maybe Double'
   ,preErrorCheck-`String'errorCheck*-}->`FloatingRateCouponPricer'peekFloatingRateCouponPricer*#}
+
+-- |Values that can be widened to the generic floating-rate coupon representation.
+class AsFloatingRateCoupon coupon where
+  asFloatingRateCoupon :: coupon -> IO FloatingRateCoupon
+
+instance AsFloatingRateCoupon (GenFloatingRateCoupon coupon) where
+  asFloatingRateCoupon = InternalType.asFloatingRateCoupon
+instance AsFloatingRateCoupon AverageBMACoupon where
+  asFloatingRateCoupon = averageBmaCouponAsFloatingRateCouponRaw
+instance AsFloatingRateCoupon MultipleResetsCoupon where
+  asFloatingRateCoupon = multipleResetsCouponAsFloatingRateCouponRaw
+
+-- |Coupon types that expose the dates of their component index fixings.
+class HasFixingDates coupon where
+  fixingDates :: coupon -> IO [Day]
+
+instance HasFixingDates AverageBMACoupon where
+  fixingDates = averageBmaCouponFixingDatesRaw
+instance HasFixingDates MultipleResetsCoupon where
+  fixingDates = multipleResetsCouponFixingDatesRaw
+instance HasFixingDates OvernightIndexedCoupon where
+  fixingDates = overnightIndexedCouponFixingDatesRaw
+
+-- |Coupon types that expose their component index fixings.
+class HasIndexFixings coupon where
+  indexFixings :: coupon -> IO [Double]
+
+instance HasIndexFixings AverageBMACoupon where
+  indexFixings = averageBmaCouponIndexFixingsRaw
+instance HasIndexFixings OvernightIndexedCoupon where
+  indexFixings = overnightIndexedCouponIndexFixingsRaw
+
+-- |Digital coupon types with separately priced call and put option components.
+class HasDigitalOptionRates coupon where
+  callOptionRate :: coupon -> IO Double
+  putOptionRate :: coupon -> IO Double
+
+instance HasDigitalOptionRates DigitalCoupon where
+  callOptionRate = digitalCouponCallOptionRateRaw
+  putOptionRate = digitalCouponPutOptionRateRaw
+instance HasDigitalOptionRates DigitalCmsCoupon where
+  callOptionRate = digitalCmsCouponCallOptionRateRaw
+  putOptionRate = digitalCmsCouponPutOptionRateRaw
+instance HasDigitalOptionRates DigitalCmsSpreadCoupon where
+  callOptionRate = digitalCmsSpreadCouponCallOptionRateRaw
+  putOptionRate = digitalCmsSpreadCouponPutOptionRateRaw
+
+-- |Cash-flow-like values that can be widened for a heterogeneous 'cashFlowLeg'.
+class AsCashFlow cashFlow where
+  asCashFlow :: cashFlow -> IO CashFlow
+
+instance AsCashFlow FixedRateCoupon where
+  asCashFlow = fixedRateCouponAsCashFlowRaw
+instance AsCashFlow YoYInflationCoupon where
+  asCashFlow = yoyInflationCouponAsCashFlowRaw
+instance AsCashFlow CPICoupon where
+  asCashFlow = cpiCouponAsCashFlowRaw
+instance AsCashFlow ZeroInflationCashFlow where
+  asCashFlow = zeroInflationCashFlowAsCashFlowRaw
+instance AsCashFlow CPICashFlow where
+  asCashFlow = cpiCashFlowAsCashFlowRaw
+instance AsCashFlow EquityCashFlow where
+  asCashFlow = equityCashFlowAsCashFlowRaw
+instance AsCashFlow (GenFloatingRateCoupon coupon) where
+  asCashFlow = floatingRateCouponAsCashFlowRaw
+
+-- |Cash-flow-like values whose calculated amount is directly observable.
+class HasAmount cashFlow where
+  amount :: cashFlow -> IO Double
+
+instance HasAmount ZeroInflationCashFlow where
+  amount = zeroInflationCashFlowAmountRaw
+instance HasAmount CPICashFlow where
+  amount = cpiCashFlowAmountRaw
+instance HasAmount EquityCashFlow where
+  amount = equityCashFlowAmountRaw
+instance HasAmount (GenFloatingRateCoupon coupon) where
+  amount = floatingRateCouponAmountRaw
+
+-- |Indexed cash flows that expose the fixing used as the base of their return ratio.
+class HasBaseFixing cashFlow where
+  baseFixing :: cashFlow -> IO Double
+
+instance HasBaseFixing ZeroInflationCashFlow where
+  baseFixing = zeroInflationCashFlowBaseFixingRaw
+instance HasBaseFixing CPICashFlow where
+  baseFixing = cpiCashFlowBaseFixingRaw
+instance HasBaseFixing EquityCashFlow where
+  baseFixing = equityCashFlowBaseFixingRaw
+
+-- |Indexed cash flows that expose the fixing used as the numerator of their return ratio.
+class HasIndexFixing cashFlow where
+  indexFixing :: cashFlow -> IO Double
+
+instance HasIndexFixing ZeroInflationCashFlow where
+  indexFixing = zeroInflationCashFlowIndexFixingRaw
+instance HasIndexFixing CPICashFlow where
+  indexFixing = cpiCashFlowIndexFixingRaw
+instance HasIndexFixing EquityCashFlow where
+  indexFixing = equityCashFlowIndexFixingRaw
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

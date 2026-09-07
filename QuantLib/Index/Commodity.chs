@@ -4,9 +4,9 @@ module QuantLib.Index.Commodity
 
   , commodityIndex
 
-  , commodityIndexForwardPrice
-  , commodityIndexLastQuoteDate
-  , commodityIndexEmpty
+  , forwardPrice
+  , lastQuoteDate
+  , isEmpty
   ) where
 import QuantLib.Internal
 import QuantLib.Internal.Type
@@ -29,7 +29,7 @@ import QuantLib.Internal.Type
 -- 'QuantLib.Index.addFixing'). Upstream's constructor also takes an
 -- @ExchangeContracts@\/nearby-offset pair for rolling onto nearby exchange contracts; this binds
 -- only the no-rolling case (a null @exchangeContracts@ and offset 0), the same scope this module's
--- 'QuantLib.TermStructure.Commodity.CommodityCurve' already narrowed 'commodityCurvePrice' to.
+-- 'QuantLib.TermStructure.Commodity.CommodityCurve' already narrowed 'price' to.
 -- No inspector is bound for commodity type\/currency\/unit of measure\/lot quantity\/forward
 -- curve: each is a plain, never-mutated echo of this constructor's own argument -- the caller
 -- already holds whatever it passed in, so a getter would tell it nothing new.
@@ -44,13 +44,13 @@ import QuantLib.Internal.Type
   ,preErrorCheck-`String'errorCheck*-}->`CommodityIndex'peekCommodityIndex*#}
 
 -- |The forecast forward price for a date, from the forward curve.
-{#fun qlCommodityIndexForwardPrice as commodityIndexForwardPrice{withCommodityIndex*`CommodityIndex',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlCommodityIndexForwardPrice as forwardPrice{withCommodityIndex*`CommodityIndex',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |The most recent date with a stored historical fixing. Throws if none has been added yet --
--- check 'commodityIndexEmpty' first if that's a possibility.
-{#fun qlCommodityIndexLastQuoteDate as commodityIndexLastQuoteDate{withCommodityIndex*`CommodityIndex',preErrorCheck-`String'errorCheck*-}->`Day'toDay#}
+-- check 'isEmpty' first if that's a possibility.
+{#fun qlCommodityIndexLastQuoteDate as lastQuoteDate{withCommodityIndex*`CommodityIndex',preErrorCheck-`String'errorCheck*-}->`Day'toDay#}
 
 -- |Whether this index has any stored historical fixings.
-{#fun pure qlCommodityIndexEmpty as commodityIndexEmpty{withCommodityIndex*`CommodityIndex'}->`Bool'#}
+{#fun pure qlCommodityIndexEmpty as isEmpty{withCommodityIndex*`CommodityIndex'}->`Bool'#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

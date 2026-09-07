@@ -28,7 +28,7 @@ garch11Spec = describe "Garch11" $ do
     let day0 = fromGregorian 1962 7 6
         days = [addDays i day0 | i <- [1 .. 10]]
         series = fromList (zip days (replicate 10 0.1))
-    result <- garch11Calculate g series
+    result <- calculate g series
     let expected =
           [ 0.452769, 0.513323, 0.530141, 0.5350841, 0.536558
           , 0.536999, 0.537132, 0.537171, 0.537183, 0.537187
@@ -56,7 +56,7 @@ garch11Spec = describe "Garch11" $ do
       where
         go _ _ _ [] acc = acc
         go d r sigma2 (z : zs) acc =
-          let sigma2' = garch11Forecast g r sigma2
+          let sigma2' = forecast g r sigma2
               r' = z * sqrt sigma2'
           in go (addDays 1 d) r' sigma2' zs ((d, r') : acc)
     -- Only checks that all four 'Garch11Mode' values calibrate without throwing and hand back
@@ -71,8 +71,8 @@ garch11Spec = describe "Garch11" $ do
     -- (seen on Windows CI as a calibrated alpha of -0.85).
     checkCalibration series mode = do
       gc <- garch11Calibrated series mode
-      garch11Alpha gc `shouldSatisfy` finite
-      garch11Beta gc `shouldSatisfy` finite
+      alpha gc `shouldSatisfy` finite
+      beta gc `shouldSatisfy` finite
     finite x = not (isNaN x || isInfinite x)
 
 -- Closed-form checks transcribed directly from ql/models/volatility/garmanklass.hpp, evaluated

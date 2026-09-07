@@ -22,14 +22,15 @@ import qualified QuantLib.InterestRate as IR
 import qualified QuantLib.CashFlow as CF
 import QuantLib.Index(fixingCalendar, addFixing, addFixings, fixing, hasHistoricalFixing, isValidFixingDate, clearFixings
   ,fixingHistory, fixingHistoryNames, clearAllFixingHistories
-  ,historicalIndexAnalysisSkipped, historicalIndexAnalysisMean, historicalIndexAnalysisStandardDeviation
-  ,historicalIndexAnalysisSkewness, historicalIndexAnalysisKurtosis, historicalIndexAnalysisMin, historicalIndexAnalysisMax
-  ,historicalIndexAnalysisSemiVariance, historicalIndexAnalysisSemiDeviation
-  ,historicalIndexAnalysisDownsideVariance, historicalIndexAnalysisDownsideDeviation
-  ,historicalIndexAnalysisPercentile, historicalIndexAnalysisGaussianPercentile
-  ,historicalIndexAnalysisValueAtRisk, historicalIndexAnalysisGaussianValueAtRisk
-  ,historicalIndexAnalysisExpectedShortfall, historicalIndexAnalysisGaussianExpectedShortfall
-  ,historicalIndexAnalysisCovariance, historicalIndexAnalysisCorrelation)
+  ,skipped, mean, standardDeviation
+  ,skewness, kurtosis, minimumReturn, maximumReturn
+  ,semiVariance, semiDeviation
+  ,downsideVariance, downsideDeviation
+  ,percentile, gaussianPercentile
+  ,valueAtRisk, gaussianValueAtRisk
+  ,expectedShortfall, gaussianExpectedShortfall
+  )
+import qualified QuantLib.Index as IndexAnalysis(covariance, correlation)
 import QuantLib.Index.InterestRate(iborIndex, IborConstructor(..), liborSwapIndex, LiborSwapIndexType(..), swapSpreadIndex, forecastFixing
   ,fixingDate, valueDate, maturityDate, historicalRatesAnalysis, overnightIborIndex, OvernightIborIndexType(..), bmaIndex)
 import qualified QuantLib.Index.InterestRate as Ibor(fixingDays, dayCounter)
@@ -233,9 +234,9 @@ spec evalDate = do
           indexed <- CF.indexedCashFlow 100.0 idx baseDate fixingDate' paymentDate False
           growth <- CF.indexedCashFlow 100.0 idx baseDate fixingDate' paymentDate True
           fixedCoupon <- CF.fixedRateCoupon accrualEnd 100.0 0.05 dc paymentDate accrualEnd Nothing Nothing Nothing
-          fixedIR <- CF.fixedRateCouponInterestRate fixedCoupon
+          fixedIR <- CF.interestRate fixedCoupon
           IR.rate fixedIR `shouldSatisfy` closePrec 0.05 1.0e-12
-          fixed <- CF.fixedRateCouponAsCashFlow fixedCoupon
+          fixed <- CF.asCashFlow fixedCoupon
           mixed <- CF.cashFlowLeg [simple, indexed, growth, fixed]
           flows <- CF.cashFlows mixed Nothing Nothing
           let expected = [10.0, 120.0, 20.0, 2.5]
@@ -281,13 +282,13 @@ spec evalDate = do
           addFixing equityIndex baseDate 80.0 False
           addFixing equityIndex fixingDate' 100.0 False
           equity <- CF.equityCashFlow 100.0 equityIndex baseDate fixingDate' paymentDate False
-          zeroAmount <- CF.zeroInflationCashFlowAmount zero
-          cpiAmount <- CF.cpiCashFlowAmount cpi
-          equityAmount <- CF.equityCashFlowAmount equity
+          zeroAmount <- CF.amount zero
+          cpiAmount <- CF.amount cpi
+          equityAmount <- CF.amount equity
           listCloseRel id [120.0, 120.0, 125.0] 1.0e-12 [zeroAmount, cpiAmount, equityAmount] `shouldBe` True
-          zeroFlow <- CF.zeroInflationCashFlowAsCashFlow zero
-          cpiFlow <- CF.cpiCashFlowAsCashFlow cpi
-          equityFlow <- CF.equityCashFlowAsCashFlow equity
+          zeroFlow <- CF.asCashFlow zero
+          cpiFlow <- CF.asCashFlow cpi
+          equityFlow <- CF.asCashFlow equity
           dc <- dayCounter (Actual360 False)
           coupon <- CF.cpiCoupon 100.0 paymentDate 100.0 baseDate paymentDate inflation (2, Months) CPIFlat dc 0.02
             (Just baseDate) (Just paymentDate) Nothing
@@ -296,9 +297,9 @@ spec evalDate = do
           -- indexRatio(paymentDate) reads the index two months (the coupon's own lag) back, at
           -- 1 December 2010, where the fixing added above is 120.0; the coupon's own base CPI
           -- is 100.0, so the ratio is 1.2.
-          indexRatio <- CF.cpiCouponIndexRatio coupon paymentDate
+          indexRatio <- CF.indexRatio coupon paymentDate
           indexRatio `shouldSatisfy` closePrec 1.2 1e-12
-          couponFlow <- CF.cpiCouponAsCashFlow coupon
+          couponFlow <- CF.asCashFlow coupon
           customLeg <- CF.cashFlowLeg [zeroFlow, cpiFlow, equityFlow, couponFlow]
           flows <- CF.cashFlows customLeg Nothing Nothing
           listCloseRel id [120.0, 120.0, 125.0] 1.0e-12 (map (\(_, amount, _) -> amount) (take 3 flows)) `shouldBe` True
@@ -337,23 +338,23 @@ spec evalDate = do
           -- FloatingRateCoupon::rate() is `pricer_->initialize(*this); return pricer_->swapletRate();`,
           -- so calling the coupon's rate first, then reading the (now-initialized) pricer
           -- directly, must agree.
-          rate <- CF.floatingRateCouponRate coupon
-          swapletRate <- CF.floatingRateCouponPricerSwapletRate pricer
+          rate <- CF.rate coupon
+          swapletRate <- CF.swapletRate pricer
           swapletRate `shouldSatisfy` closePrec rate 1e-12
 
-          amount <- CF.floatingRateCouponAmount coupon
+          amount <- CF.amount coupon
           -- FloatingRateCouponPricer::swapletPrice() is *per unit notional*
           -- (swapletRate * accrualPeriod * discount), unlike CashFlow::amount().
-          swapletPrice <- CF.floatingRateCouponPricerSwapletPrice pricer
+          swapletPrice <- CF.swapletPrice pricer
           disc <- discount ts (DatePoint endDate) True
           swapletPrice `shouldSatisfy` closePrec (amount / 100.0 * disc) 1e-10
 
           -- CashFlow::price(discountCurve) = amount() * discountCurve->discount(date()).
-          price <- CF.floatingRateCouponPrice coupon (Just ts)
+          price <- CF.price coupon (Just ts)
           price `shouldSatisfy` closePrec (amount * disc) 1e-10
 
           -- No CMS-style timing adjustment applies to a plain Ibor coupon.
-          convexityAdjustment <- CF.floatingRateCouponConvexityAdjustment coupon
+          convexityAdjustment <- CF.convexityAdjustment coupon
           convexityAdjustment `shouldSatisfy` closePrec 0.0 1e-12
 
           -- Caplet/floorlet put-call parity at a common effective strike: the price difference
@@ -361,11 +362,11 @@ spec evalDate = do
           -- that strike, discounted.
           accrual <- years dc startDate endDate Nothing Nothing
           let effStrike = rate + 0.001
-          capletPrice <- CF.floatingRateCouponPricerCapletPrice pricer effStrike
-          floorletPrice <- CF.floatingRateCouponPricerFloorletPrice pricer effStrike
+          capletPrice <- CF.capletPrice pricer effStrike
+          floorletPrice <- CF.floorletPrice pricer effStrike
           (capletPrice - floorletPrice) `shouldSatisfy` closePrec ((rate - effStrike) * accrual * disc) 1e-8
-          capletRate <- CF.floatingRateCouponPricerCapletRate pricer effStrike
-          floorletRate <- CF.floatingRateCouponPricerFloorletRate pricer effStrike
+          capletRate <- CF.capletRate pricer effStrike
+          floorletRate <- CF.floorletRate pricer effStrike
           (capletRate - floorletRate) `shouldSatisfy` closePrec (rate - effStrike) 1e-8
 
       it "check for segfaulting regression with dynamic cast of coupon in Black pricer" $
@@ -456,7 +457,7 @@ spec evalDate = do
           -- CashFlow::price(discountCurve) = amount() * discountCurve->discount(date()); the
           -- coupon's payment date is always `endDate` from 'digExercise' above, so the already-
           -- computed discount factor is reused rather than re-querying the coupon's own date.
-          digPriceOf disc c = (* disc) <$> CF.floatingRateCouponAmount c
+          digPriceOf disc c = (* disc) <$> CF.amount c
 
       it "deep in-the-money asset-or-nothing digital coupon reprices to its target" $
         Settings.keepingSettingsGc $ do
@@ -473,9 +474,9 @@ spec evalDate = do
             cappedPrice <- digPriceOf disc capped
             cappedPrice `shouldSatisfy` closePrec 0.0 1e-8
             -- DigitalCoupon::rate() must agree with CashFlow::amount() = rate * accrualPeriod * nominal.
-            cappedRate <- CF.digitalCouponRate capped
+            cappedRate <- CF.rate capped
             (cappedRate * digNominal * accrual * disc) `shouldSatisfy` closePrec cappedPrice 1e-8
-            callRate <- CF.digitalCouponCallOptionRate capped
+            callRate <- CF.callOptionRate capped
             (callRate * digNominal * accrual * disc) `shouldSatisfy` closePrec underlyingPrice 1e-8
 
             -- Deep ITM long put (strike 0.99): the put payoff almost always fires too, doubling
@@ -484,10 +485,10 @@ spec evalDate = do
               (Just 0.99) CF.Long False Nothing Nothing False
             CF.setFloatingRateCouponPricer floored pricer
             flooredPrice <- digPriceOf disc floored
-            flooredRate <- CF.digitalCouponRate floored
+            flooredRate <- CF.rate floored
             (flooredRate * digNominal * accrual * disc) `shouldSatisfy` closePrec flooredPrice 1e-8
             flooredPrice `shouldSatisfy` closePrec (2 * underlyingPrice) 2.5e-6
-            putRate <- CF.digitalCouponPutOptionRate floored
+            putRate <- CF.putOptionRate floored
             (putRate * digNominal * accrual * disc) `shouldSatisfy` closePrec underlyingPrice 2.5e-6
 
       it "deep out-of-the-money asset-or-nothing digital coupon reprices to its target" $
@@ -502,7 +503,7 @@ spec evalDate = do
             underlyingPrice <- digPriceOf disc underlying
             cappedPrice <- digPriceOf disc capped
             cappedPrice `shouldSatisfy` closePrec underlyingPrice 1e-10
-            callRate <- CF.digitalCouponCallOptionRate capped
+            callRate <- CF.callOptionRate capped
             (callRate * digNominal * accrual * disc) `shouldSatisfy` closePrec 0.0 1e-8
 
             floored <- CF.digitalCoupon underlying Nothing CF.Long False Nothing
@@ -510,7 +511,7 @@ spec evalDate = do
             CF.setFloatingRateCouponPricer floored pricer
             flooredPrice <- digPriceOf disc floored
             flooredPrice `shouldSatisfy` closePrec underlyingPrice 1e-8
-            putRate <- CF.digitalCouponPutOptionRate floored
+            putRate <- CF.putOptionRate floored
             (putRate * digNominal * accrual * disc) `shouldSatisfy` closePrec 0.0 1e-8
 
       it "deep in-the-money cash-or-nothing digital coupon reprices to its target" $
@@ -527,7 +528,7 @@ spec evalDate = do
             underlyingPrice <- digPriceOf disc underlying
             cappedPrice <- digPriceOf disc capped
             cappedPrice `shouldSatisfy` closePrec (underlyingPrice - targetOptionPrice) 1e-7
-            callRate <- CF.digitalCouponCallOptionRate capped
+            callRate <- CF.callOptionRate capped
             (callRate * digNominal * accrual * disc) `shouldSatisfy` closePrec targetOptionPrice 1e-7
 
             floored <- CF.digitalCoupon underlying Nothing CF.Long False Nothing
@@ -535,7 +536,7 @@ spec evalDate = do
             CF.setFloatingRateCouponPricer floored pricer
             flooredPrice <- digPriceOf disc floored
             flooredPrice `shouldSatisfy` closePrec (underlyingPrice + targetOptionPrice) 1e-7
-            putRate <- CF.digitalCouponPutOptionRate floored
+            putRate <- CF.putOptionRate floored
             (putRate * digNominal * accrual * disc) `shouldSatisfy` closePrec targetOptionPrice 1e-7
 
       it "deep out-of-the-money cash-or-nothing digital coupon reprices to its target" $
@@ -551,7 +552,7 @@ spec evalDate = do
             underlyingPrice <- digPriceOf disc underlying
             cappedPrice <- digPriceOf disc capped
             cappedPrice `shouldSatisfy` closePrec underlyingPrice 1e-10
-            callRate <- CF.digitalCouponCallOptionRate capped
+            callRate <- CF.callOptionRate capped
             (callRate * digNominal * disc) `shouldSatisfy` closePrec 0.0 1e-10
 
             floored <- CF.digitalCoupon underlying Nothing CF.Long False Nothing
@@ -559,7 +560,7 @@ spec evalDate = do
             CF.setFloatingRateCouponPricer floored pricer
             flooredPrice <- digPriceOf disc floored
             flooredPrice `shouldSatisfy` closePrec underlyingPrice 1e-9
-            putRate <- CF.digitalCouponPutOptionRate floored
+            putRate <- CF.putOptionRate floored
             (putRate * digNominal * disc) `shouldSatisfy` closePrec 0.0 1e-10
 
       it "call/put parity holds for European digital coupons" $
@@ -593,7 +594,7 @@ spec evalDate = do
                 CF.setFloatingRateCouponPricer assetPut pricer
                 assetCallPrice <- digPriceOf disc assetCall
                 assetPutPrice <- digPriceOf disc assetPut
-                underlyingRate <- CF.floatingRateCouponRate underlying
+                underlyingRate <- CF.rate underlying
                 (assetCallPrice - assetPutPrice) `shouldSatisfy`
                   closePrec (digNominal * accrual * disc * underlyingRate) 1e-7
 
@@ -724,28 +725,28 @@ spec evalDate = do
                 pure u
 
           plainUnderlying <- mkUnderlying
-          plainRate <- CF.floatingRateCouponRate plainUnderlying
+          plainRate <- CF.rate plainUnderlying
 
           underlying1 <- mkUnderlying
           capped <- CF.cappedFlooredCoupon underlying1 (Just capStrike) Nothing
           CF.setFloatingRateCouponPricer capped pricer
-          cappedRate <- CF.floatingRateCouponRate capped
+          cappedRate <- CF.rate capped
 
           underlying2 <- mkUnderlying
           stripped <- CF.strippedCappedFlooredCoupon underlying2 (Just capStrike) Nothing
           CF.setFloatingRateCouponPricer stripped pricer
-          strippedRate <- CF.floatingRateCouponRate stripped
+          strippedRate <- CF.rate stripped
           (cappedRate + strippedRate) `shouldSatisfy` closePrec plainRate 1.0e-10
 
-          let isCap = CF.strippedCappedFlooredCouponIsCap stripped
-              isFloor = CF.strippedCappedFlooredCouponIsFloor stripped
-              isCollar = CF.strippedCappedFlooredCouponIsCollar stripped
+          let isCap = CF.isCap stripped
+              isFloor = CF.isFloor stripped
+              isCollar = CF.isCollar stripped
           isCap `shouldBe` True
           isFloor `shouldBe` False
           isCollar `shouldBe` False
 
-          let cap' = CF.strippedCappedFlooredCouponCap stripped
-              effCap = CF.strippedCappedFlooredCouponEffectiveCap stripped
+          let cap' = CF.capRate stripped
+              effCap = CF.effectiveCap stripped
           cap' `shouldBe` capStrike
           effCap `shouldBe` capStrike
 
@@ -814,17 +815,17 @@ spec evalDate = do
         bracket_ clearAllFixingHistories clearAllFixingHistories $ Settings.keepingSettingsGc $ do
           sofr <- oisFixture Nothing Nothing
           pastCoupon <- oisMakeCoupon sofr (18 `october` 2021) (18 `november` 2021)
-          rate <- CF.floatingRateCouponRate pastCoupon
+          rate <- CF.rate pastCoupon
           rate `shouldSatisfy` closePrec 0.000987136104 1e-12
-          amount <- CF.floatingRateCouponAmount pastCoupon
+          amount <- CF.amount pastCoupon
           amount `shouldSatisfy` closePrec (10000.0 * 0.000987136104 * 31.0 / 360) 1e-8
 
       it "fixingDates/indexFixings agree with the coupon's own historical fixings, for a wholly past coupon" $
         bracket_ clearAllFixingHistories clearAllFixingHistories $ Settings.keepingSettingsGc $ do
           sofr <- oisFixture Nothing Nothing
           pastCoupon <- oisMakeCoupon sofr (18 `october` 2021) (18 `november` 2021)
-          dates' <- CF.overnightIndexedCouponFixingDates pastCoupon
-          fixings <- CF.overnightIndexedCouponIndexFixings pastCoupon
+          dates' <- CF.fixingDates pastCoupon
+          fixings <- CF.indexFixings pastCoupon
           length fixings `shouldBe` length dates'
           length dates' `shouldSatisfy` (> 0)
           expected <- mapM (\d -> fixing sofr d False) dates'
@@ -839,10 +840,10 @@ spec evalDate = do
           bma <- bmaIndex (Just curve)
           cpn <- CF.averageBmaCoupon (18 `november` 2021) 10000.0 (18 `october` 2021) (18 `november` 2021)
             bma 1.0 0.0 Nothing Nothing dc
-          fdates <- CF.averageBmaCouponFixingDates cpn
+          fdates <- CF.fixingDates cpn
           length fdates `shouldSatisfy` (> 0)
           addFixings bma (zip fdates (replicate (length fdates) 0.0009)) False
-          fixings <- CF.averageBmaCouponIndexFixings cpn
+          fixings <- CF.indexFixings cpn
           length fixings `shouldBe` length fdates
           fixings `shouldSatisfy` all (closePrec 0.0009 1e-15)
 
@@ -854,35 +855,35 @@ spec evalDate = do
                 (18 `october` 2021) (18 `november` 2021) sofr 1.0 0.0001 Nothing Nothing dc
                 False CF.AveragingCompound 0 0 False daily Nothing Nothing Nothing Nothing
           compoundedSpread <- mk True
-          compoundedRate <- CF.floatingRateCouponRate compoundedSpread
+          compoundedRate <- CF.rate compoundedSpread
           compoundedRate `shouldSatisfy` closePrec 0.0010871445057780704 1e-12
           simpleSpread <- mk False
-          rate <- CF.floatingRateCouponRate simpleSpread
+          rate <- CF.rate simpleSpread
           rate `shouldSatisfy` closePrec 0.0010871361040194164 1e-12
 
       it "prices a coupon partly in the past, today fixed and unfixed (testCurrentCouponRate)" $
         bracket_ clearAllFixingHistories clearAllFixingHistories $ Settings.keepingSettingsGc $ do
           sofr <- oisFixture Nothing (Just 0.0010)
           currentCoupon <- oisMakeCoupon sofr (10 `november` 2021) (10 `december` 2021)
-          rate1 <- CF.floatingRateCouponRate currentCoupon
+          rate1 <- CF.rate currentCoupon
           rate1 `shouldSatisfy` closePrec 0.000926701551 1e-12
 
           addFixing sofr (23 `november` 2021) 0.0007 False
-          rate2 <- CF.floatingRateCouponRate currentCoupon
+          rate2 <- CF.rate currentCoupon
           rate2 `shouldSatisfy` closePrec 0.000916700760 1e-12
 
       it "prices a coupon entirely in the future (testFutureCouponRate)" $
         bracket_ clearAllFixingHistories clearAllFixingHistories $ Settings.keepingSettingsGc $ do
           sofr <- oisFixture Nothing (Just 0.0010)
           futureCoupon <- oisMakeCoupon sofr (10 `december` 2021) (10 `january` 2022)
-          rate <- CF.floatingRateCouponRate futureCoupon
+          rate <- CF.rate futureCoupon
           rate `shouldSatisfy` closePrec 0.001000043057 1e-12
 
       it "prices a coupon when the evaluation date is a holiday (testRateWhenTodayIsHoliday)" $
         bracket_ clearAllFixingHistories clearAllFixingHistories $ Settings.keepingSettingsGc $ do
           sofr <- oisFixture (Just (20 `november` 2021)) (Just 0.0010)
           coupon <- oisMakeCoupon sofr (10 `november` 2021) (10 `december` 2021)
-          rate <- CF.floatingRateCouponRate coupon
+          rate <- CF.rate coupon
           rate `shouldSatisfy` closePrec 0.000930035180 1e-12
 
       -- 'CashFlows::accruedAmount(leg, includeSettlementDateFlows, settlementDate)' delegates to
@@ -913,13 +914,13 @@ spec evalDate = do
           lookback <- CF.overnightIndexedCoupon (15 `july` 2019) 10000.0 (1 `july` 2019) (15 `july` 2019)
             sofr 1.0 0.0 Nothing Nothing dc False CF.AveragingCompound 5 0 False False
             Nothing Nothing Nothing Nothing
-          lookbackRate <- CF.floatingRateCouponRate lookback
+          lookbackRate <- CF.rate lookback
           lookbackRate `shouldSatisfy` closePrec 0.024781644454 1e-12
 
           shifted <- CF.overnightIndexedCoupon (31 `july` 2019) 10000.0 (1 `july` 2019) (31 `july` 2019)
             sofr 1.0 0.0 Nothing Nothing dc False CF.AveragingCompound 5 0 True False
             Nothing Nothing Nothing Nothing
-          shiftedRate <- CF.floatingRateCouponRate shifted
+          shiftedRate <- CF.rate shifted
           shiftedRate `shouldSatisfy` closePrec 0.024603611707 1e-12
 
     -- Ported from test-suite/overnightindexedcoupon.cpp's 'BlackONPricerVars' fixture: flat 4%
@@ -961,20 +962,20 @@ spec evalDate = do
         bracket_ clearAllFixingHistories clearAllFixingHistories $ Settings.keepingSettingsGc $ do
           (mkBase, mkCapFloor) <- blackFixture CF.AveragingCompound
           base <- mkBase
-          baseRate <- CF.floatingRateCouponRate base
+          baseRate <- CF.rate base
 
           capped <- mkCapFloor (Just 0.045) Nothing
-          cappedRate <- CF.floatingRateCouponRate capped
+          cappedRate <- CF.rate capped
           cappedRate `shouldSatisfy` closePrec 0.036862168 1e-8
           cappedRate `shouldSatisfy` (<= 0.045 + 1e-8)
 
           floored <- mkCapFloor Nothing (Just 0.035)
-          flooredRate <- CF.floatingRateCouponRate floored
+          flooredRate <- CF.rate floored
           flooredRate `shouldSatisfy` closePrec 0.04281620 1e-8
           flooredRate `shouldSatisfy` (>= 0.035 - 1e-8)
 
           collared <- mkCapFloor (Just 0.045) (Just 0.035)
-          collaredRate <- CF.floatingRateCouponRate collared
+          collaredRate <- CF.rate collared
           collaredRate `shouldSatisfy` closePrec 0.039473179 1e-8
           baseRate `shouldSatisfy` (> 0)
 
@@ -982,20 +983,20 @@ spec evalDate = do
         bracket_ clearAllFixingHistories clearAllFixingHistories $ Settings.keepingSettingsGc $ do
           (mkBase, mkCapFloor) <- blackFixture CF.AveragingSimple
           base <- mkBase
-          _ <- CF.floatingRateCouponRate base
+          _ <- CF.rate base
 
           capped <- mkCapFloor (Just 0.045) Nothing
-          cappedRate <- CF.floatingRateCouponRate capped
+          cappedRate <- CF.rate capped
           cappedRate `shouldSatisfy` closePrec 0.036745802 1e-8
           cappedRate `shouldSatisfy` (<= 0.045 + 1e-8)
 
           floored <- mkCapFloor Nothing (Just 0.035)
-          flooredRate <- CF.floatingRateCouponRate floored
+          flooredRate <- CF.rate floored
           flooredRate `shouldSatisfy` closePrec 0.042671405 1e-8
           flooredRate `shouldSatisfy` (>= 0.035 - 1e-8)
 
           collared <- mkCapFloor (Just 0.045) (Just 0.035)
-          collaredRate <- CF.floatingRateCouponRate collared
+          collaredRate <- CF.rate collared
           collaredRate `shouldSatisfy` closePrec 0.039412858 1e-8
 
     -- Ported from test-suite/multipleresetscoupons.cpp. Its own dynamic reference (iterate the
@@ -1043,7 +1044,7 @@ spec evalDate = do
             cpn <- CF.iborCoupon d1 1.0 d0 d1 fixingDaysN euribor 1.0 rateSpread Nothing Nothing dc
               False Nothing Preceding
             CF.setFloatingRateCouponPricer cpn pricer
-            rate <- CF.floatingRateCouponRate cpn
+            rate <- CF.rate cpn
             idxDc <- Ibor.dayCounter euribor
             accrual <- years idxDc d0 d1 Nothing Nothing
             pure (rate, accrual)
@@ -1066,11 +1067,11 @@ spec evalDate = do
           endDate <- last <$> dates sch
           testCpn <- CF.multipleResetsCoupon endDate 1.0 sch fixingDaysN euribor 1.0 0.0 spread
             Nothing Nothing dc Nothing
-          fixingDates <- CF.multipleResetsCouponFixingDates testCpn
+          fixingDates <- CF.fixingDates testCpn
           length fixingDates `shouldBe` length subs
           pricer <- CF.compoundingMultipleResetsPricer
           CF.setFloatingRateCouponPricer testCpn pricer
-          actual <- CF.floatingRateCouponAmount testCpn
+          actual <- CF.amount testCpn
           -- 1e-7, not upstream's 1e-14: the reference here routes each sub-period rate through
           -- a Black76 pricer (see 'mrSubPeriodRate'), which is a formal identity for a plain
           -- coupon but not bit-identical to 'MultipleResetsPricer''s direct
@@ -1094,7 +1095,7 @@ spec evalDate = do
             Nothing Nothing dc Nothing
           pricer <- CF.averagingMultipleResetsPricer
           CF.setFloatingRateCouponPricer testCpn pricer
-          actual <- CF.floatingRateCouponAmount testCpn
+          actual <- CF.amount testCpn
           actual `shouldSatisfy` closePrec expected 1e-7
 
       -- A coupon whose ex-coupon date sits at or before the settlement date must contribute
@@ -1300,7 +1301,7 @@ spec evalDate = do
           forM_ ([(True, smileOnPayment), (False, smileOnPayment)] :: [(Bool, SmileSection)]) $ \(byCallSpread, smile) -> do
             pricer <- CF.rangeAccrualPricerByBgm 1.0 smileOnExpiry smile True byCallSpread
             CF.setFloatingRateCouponPricer coupon pricer
-            rate <- CF.floatingRateCouponRate coupon
+            rate <- CF.rate coupon
             rate `shouldSatisfy` closePrec indexFixing raRateTolerance
 
     -- No exact cached expected values apply here: test-suite/cms.cpp's own testFairRate is
@@ -1358,11 +1359,11 @@ spec evalDate = do
           numerical <- CF.numericHaganPricer atmVol CF.NonParallelShifts meanRevQ 0.0 1.0 1.0e-6 1.0e100
           couponNumerical <- coupon
           CF.setFloatingRateCouponPricer couponNumerical numerical
-          rateNumerical <- CF.floatingRateCouponRate couponNumerical
+          rateNumerical <- CF.rate couponNumerical
           analytic <- CF.analyticHaganPricer atmVol CF.NonParallelShifts meanRevQ
           couponAnalytic <- coupon
           CF.setFloatingRateCouponPricer couponAnalytic analytic
-          rateAnalytic <- CF.floatingRateCouponRate couponAnalytic
+          rateAnalytic <- CF.rate couponAnalytic
           abs (rateNumerical - rateAnalytic) `shouldSatisfy` (< 2.0e-4)
 
       -- Ported from test-suite/cms.cpp's testParity. All coupons share nominal, dates and
@@ -1380,7 +1381,7 @@ spec evalDate = do
                 c <- coupon mCap mFloor
                 p <- CF.analyticHaganPricer atmVol CF.NonParallelShifts meanRevQ
                 CF.setFloatingRateCouponPricer c p
-                CF.floatingRateCouponRate c
+                CF.rate c
           plainRate <- priced Nothing Nothing
           cappedRate <- priced (Just strike) Nothing
           flooredRate <- priced Nothing (Just strike)
@@ -1398,8 +1399,8 @@ spec evalDate = do
                 1.0 0.0 Nothing Nothing dc False Nothing Preceding
           plain <- coupon
           CF.setFloatingRateCouponPricer plain pricer
-          plainRate <- CF.floatingRateCouponRate plain
-          plainAmount <- CF.floatingRateCouponAmount plain
+          plainRate <- CF.rate plain
+          plainAmount <- CF.amount plain
           plainRate `shouldSatisfy` (> 0)
           plainAmount `shouldSatisfy` (> 0)
 
@@ -1407,8 +1408,8 @@ spec evalDate = do
           digital <- CF.digitalCmsCoupon plain (Just 0.03) CF.Long False (Just 0.005)
             Nothing CF.Long False Nothing (Just replication) False
           CF.setFloatingRateCouponPricer digital pricer
-          digitalRate <- CF.floatingRateCouponRate digital
-          callRate <- CF.digitalCmsCouponCallOptionRate digital
+          digitalRate <- CF.rate digital
+          callRate <- CF.callOptionRate digital
           callRate `shouldSatisfy` (> 0)
           digitalRate `shouldSatisfy` (> plainRate)
 
@@ -1474,12 +1475,12 @@ spec evalDate = do
           CF.setFloatingRateCouponPricer collaredCoupon spreadPricer
           addFixing cms10y spreadRefDate 0.05 False
           addFixing cms2y spreadRefDate 0.03 False
-          rate10 <- CF.floatingRateCouponRate cms10Coupon
-          rate2 <- CF.floatingRateCouponRate cms2Coupon
-          plainRate <- CF.floatingRateCouponRate plainCoupon
-          cappedRate <- CF.floatingRateCouponRate cappedCoupon
-          flooredRate <- CF.floatingRateCouponRate flooredCoupon
-          collaredRate <- CF.floatingRateCouponRate collaredCoupon
+          rate10 <- CF.rate cms10Coupon
+          rate2 <- CF.rate cms2Coupon
+          plainRate <- CF.rate plainCoupon
+          cappedRate <- CF.rate cappedCoupon
+          flooredRate <- CF.rate flooredCoupon
+          collaredRate <- CF.rate collaredCoupon
           plainRate `shouldSatisfy` closePrec 1.0e-12 (rate10 - rate2)
           cappedRate `shouldSatisfy` closePrec 1.0e-12 0.015
           flooredRate `shouldSatisfy` closePrec 1.0e-12 0.03
@@ -1515,16 +1516,16 @@ spec evalDate = do
           plain <- CF.cmsSpreadCoupon payDate 1.0 startDate payDate 2 cms10y2y
             1.0 0.0 Nothing Nothing dc False Nothing Preceding
           CF.setFloatingRateCouponPricer plain spreadPricer
-          plainRate <- CF.floatingRateCouponRate plain
+          plainRate <- CF.rate plain
 
           replication <- CF.digitalReplication CF.ReplicationCentral 1.0e-4
           digital <- CF.digitalCmsSpreadCoupon payDate 1.0 startDate payDate 2 cms10y2y
             1.0 0.0 Nothing Nothing dc False Nothing Preceding
             (Just (-0.05)) CF.Long False (Just 0.005) Nothing CF.Long False Nothing (Just replication) False
           CF.setFloatingRateCouponPricer digital spreadPricer
-          digitalRate <- CF.floatingRateCouponRate digital
-          callRate <- CF.digitalCmsSpreadCouponCallOptionRate digital
-          putRate <- CF.digitalCmsSpreadCouponPutOptionRate digital
+          digitalRate <- CF.rate digital
+          callRate <- CF.callOptionRate digital
+          putRate <- CF.putOptionRate digital
           callRate `shouldSatisfy` (> 0)
           putRate `shouldBe` 0
           digitalRate `shouldSatisfy` (> plainRate)
@@ -1895,55 +1896,55 @@ spec evalDate = do
               expectedStdDev = sqrt (sum [(r - expectedMean) ^ (2 :: Int) | r <- rels] / (nD - 1))
 
           hra <- historicalRatesAnalysis startDate (last ds) (1, Months) [idx, idx]
-          historicalIndexAnalysisSkipped hra `shouldReturn` []
+          skipped hra `shouldReturn` []
 
-          means <- historicalIndexAnalysisMean hra
+          means <- mean hra
           means `shouldSatisfy` all (closePrec expectedMean 1.0e-9)
 
-          stdDevs <- historicalIndexAnalysisStandardDeviation hra
+          stdDevs <- standardDeviation hra
           stdDevs `shouldSatisfy` all (closePrec expectedStdDev 1.0e-9)
 
-          mins <- historicalIndexAnalysisMin hra
-          maxs <- historicalIndexAnalysisMax hra
+          mins <- minimumReturn hra
+          maxs <- maximumReturn hra
           mins `shouldSatisfy` all (closePrec (minimum rels) 1.0e-9)
           maxs `shouldSatisfy` all (closePrec (maximum rels) 1.0e-9)
 
           -- exercise the remaining core/semi-/downside stats: just confirm they don't throw
           -- and come back as sane (non-negative, finite) numbers.
-          _ <- historicalIndexAnalysisSkewness hra
-          _ <- historicalIndexAnalysisKurtosis hra
-          semiVars <- historicalIndexAnalysisSemiVariance hra
-          semiDevs <- historicalIndexAnalysisSemiDeviation hra
-          downVars <- historicalIndexAnalysisDownsideVariance hra
-          downDevs <- historicalIndexAnalysisDownsideDeviation hra
+          _ <- skewness hra
+          _ <- kurtosis hra
+          semiVars <- semiVariance hra
+          semiDevs <- semiDeviation hra
+          downVars <- downsideVariance hra
+          downDevs <- downsideDeviation hra
           mapM_ (`shouldSatisfy` all (>= 0)) ([semiVars, semiDevs, downVars, downDevs] :: [[Double]])
 
           let centile = 0.9 :: Double
-          vars <- historicalIndexAnalysisValueAtRisk hra centile
-          ess <- historicalIndexAnalysisExpectedShortfall hra centile
-          gVars <- historicalIndexAnalysisGaussianValueAtRisk hra centile
-          gEss <- historicalIndexAnalysisGaussianExpectedShortfall hra centile
-          _ <- historicalIndexAnalysisPercentile hra centile
-          _ <- historicalIndexAnalysisGaussianPercentile hra centile
-          historicalIndexAnalysisPercentile hra 0.0 `shouldThrow` anyException
+          vars <- valueAtRisk hra centile
+          ess <- expectedShortfall hra centile
+          gVars <- gaussianValueAtRisk hra centile
+          gEss <- gaussianExpectedShortfall hra centile
+          _ <- percentile hra centile
+          _ <- gaussianPercentile hra centile
+          percentile hra 0.0 `shouldThrow` anyException
           -- VaR/expected shortfall are losses, capped at 0.0 -- expected shortfall (the
           -- average loss beyond the VaR threshold) must be at least as large as VaR itself.
           mapM_ (`shouldSatisfy` all (>= 0)) ([vars, ess, gVars, gEss] :: [[Double]])
           zipWith (>=) ess vars `shouldSatisfy` and
           zipWith (>=) gEss gVars `shouldSatisfy` and
 
-          covariance <- historicalIndexAnalysisCovariance hra
-          (matrixRows covariance, matrixColumns covariance) `shouldBe` (2, 2)
-          let cov = matrixData covariance
+          covarianceMatrix <- IndexAnalysis.covariance hra
+          (matrixRows covarianceMatrix, matrixColumns covarianceMatrix) `shouldBe` (2, 2)
+          let cov = matrixData covarianceMatrix
           case cov of
             [c00, _, _, _] -> cov `shouldSatisfy` all (closePrec c00 1.0e-9)
             _ -> expectationFailure "covariance matrix did not have 4 entries"
 
-          correlation <- historicalIndexAnalysisCorrelation hra
+          correlationMatrix <- IndexAnalysis.correlation hra
           emptyHra <- historicalRatesAnalysis startDate startDate (1, Months) [idx, idx]
-          historicalIndexAnalysisCovariance emptyHra `shouldThrow` anyException
-          (matrixRows correlation, matrixColumns correlation) `shouldBe` (2, 2)
-          let corr = matrixData correlation
+          IndexAnalysis.covariance emptyHra `shouldThrow` anyException
+          (matrixRows correlationMatrix, matrixColumns correlationMatrix) `shouldBe` (2, 2)
+          let corr = matrixData correlationMatrix
           corr `shouldSatisfy` all (closePrec 1.0 1.0e-9)
 
           clearFixings idx

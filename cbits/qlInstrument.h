@@ -686,7 +686,6 @@ extern "C" {
   void qlFreeDigitalCoupon(QlDigitalCoupon*);
   QlFloatingRateCoupon* qlDigitalCouponAsFloatingRateCoupon(QlDigitalCoupon*);
   QlDigitalCoupon* qlDigitalCoupon(QlFloatingRateCoupon *underlying, double callStrike, int callPosition, int callATM, double callPayoff, double putStrike, int putPosition, int putATM, double putPayoff, QlDigitalReplication *replication, int nakedOption, char **e);
-  double qlDigitalCouponConvexityAdjustment(QlDigitalCoupon *o, char **e);
   double qlDigitalCouponCallOptionRate(QlDigitalCoupon *o, char **e);
   double qlDigitalCouponPutOptionRate(QlDigitalCoupon *o, char **e);
   void qlFreeMultipleResetsCoupon(QlMultipleResetsCoupon *o);
@@ -730,7 +729,6 @@ extern "C" {
   void qlFloatingRateCouponSetPricer(QlFloatingRateCoupon* o, QlFloatingRateCouponPricer* pricer, char **e);
   double qlFloatingRateCouponPrice(QlFloatingRateCoupon* o, QlYieldTermStructure* discountingCurve, char **e);
   double qlFloatingRateCouponConvexityAdjustment(QlFloatingRateCoupon* o, char **e);
-  double qlDigitalCouponRate(QlDigitalCoupon *o, char **e);
   double qlCPICouponIndexRatio(QlCPICoupon *o, int d, char **e);
   double qlFloatingRateCouponPricerSwapletRate(QlFloatingRateCouponPricer* o, char **e);
   double qlFloatingRateCouponPricerSwapletPrice(QlFloatingRateCouponPricer* o, char **e);

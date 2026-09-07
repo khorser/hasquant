@@ -85,33 +85,33 @@ module QuantLib.TermStructure.Volatility
   , SabrInterpolatedSmileSectionOpts(..)
   , defaultSabrInterpolatedSmileSectionOpts
   , sabrInterpolatedSmileSection
-  , sabrInterpolatedSmileSectionAsSmileSection
-  , sabrInterpolatedSmileSectionAlpha
-  , sabrInterpolatedSmileSectionBeta
-  , sabrInterpolatedSmileSectionNu
-  , sabrInterpolatedSmileSectionRho
-  , sabrInterpolatedSmileSectionRmsError
-  , sabrInterpolatedSmileSectionMaxError
-  , sabrInterpolatedSmileSectionEndCriteria
+  , sabrAsSmileSection
+  , sabrAlpha
+  , sabrBeta
+  , sabrNu
+  , sabrRho
+  , sabrRmsError
+  , sabrMaxError
+  , sabrCalibrationEndCriteria
   , sviInterpolatedSmileSection
-  , sviInterpolatedSmileSectionAsSmileSection
-  , sviInterpolatedSmileSectionA
-  , sviInterpolatedSmileSectionB
-  , sviInterpolatedSmileSectionSigma
-  , sviInterpolatedSmileSectionRho
-  , sviInterpolatedSmileSectionM
-  , sviInterpolatedSmileSectionRmsError
-  , sviInterpolatedSmileSectionMaxError
-  , sviInterpolatedSmileSectionEndCriteria
+  , sviAsSmileSection
+  , sviA
+  , sviB
+  , sviSigma
+  , sviRho
+  , sviM
+  , sviRmsError
+  , sviMaxError
+  , sviEndCriteria
   , noArbSabrInterpolatedSmileSection
-  , noArbSabrInterpolatedSmileSectionAsSmileSection
-  , noArbSabrInterpolatedSmileSectionAlpha
-  , noArbSabrInterpolatedSmileSectionBeta
-  , noArbSabrInterpolatedSmileSectionNu
-  , noArbSabrInterpolatedSmileSectionRho
-  , noArbSabrInterpolatedSmileSectionRmsError
-  , noArbSabrInterpolatedSmileSectionMaxError
-  , noArbSabrInterpolatedSmileSectionEndCriteria
+  , noArbSabrAsSmileSection
+  , noArbSabrAlpha
+  , noArbSabrBeta
+  , noArbSabrNu
+  , noArbSabrRho
+  , noArbSabrRmsError
+  , noArbSabrMaxError
+  , noArbSabrEndCriteria
   , swapLengthBetweenDates
   , swapLength
   , callableBondConstantVolatility
@@ -128,19 +128,19 @@ module QuantLib.TermStructure.Volatility
   , atmVariance
   , blackVolSurfaceSmileSection
   , abcdAtmVolCurve
-  , abcdAtmVolCurveA
-  , abcdAtmVolCurveB
-  , abcdAtmVolCurveC
-  , abcdAtmVolCurveD
-  , abcdAtmVolCurveRmsError
-  , abcdAtmVolCurveMaxError
-  , abcdAtmVolCurveEndCriteria
-  , abcdAtmVolCurveK
-  , abcdAtmVolCurveKAtTime
+  , abcdA
+  , abcdB
+  , abcdC
+  , abcdD
+  , abcdRmsError
+  , abcdMaxError
+  , abcdEndCriteria
+  , abcdK
+  , abcdKAtTime
   , abcdAtmVolCurveOptionTenors
-  , abcdAtmVolCurveOptionTenorsInInterpolation
-  , abcdAtmVolCurveOptionDates
-  , abcdAtmVolCurveOptionTimes
+  , abcdOptionTenorsInInterpolation
+  , abcdOptionDates
+  , abcdOptionTimes
   , sabrVolSurface
   , sabrVolSurfaceAtmCurve
   , sabrVolSurfaceIndex
@@ -185,10 +185,10 @@ module QuantLib.TermStructure.Volatility
   , gridModelLocalVolSurfaceAsCalibratedModel
   , hestonBlackVolSurface
   , andreasenHugeVolatilityInterpolation
-  , andreasenHugeVolatilityInterpolationCalibrationError
-  , andreasenHugeVolatilityInterpolationFwd
-  , andreasenHugeVolatilityInterpolationOptionPrice
-  , andreasenHugeVolatilityInterpolationLocalVol
+  , andreasenHugeCalibrationError
+  , andreasenHugeForward
+  , andreasenHugeOptionPrice
+  , andreasenHugeLocalVol
   , andreasenHugeVolatilityAdapter
   , andreasenHugeLocalVolAdapter
   , spreadedOptionletVol
@@ -417,26 +417,26 @@ andreasenHugeVolatilityInterpolation xs spot r q = qlAndreasenHugeVolatilityInte
   ,withOptimizationMethod*`OptimizationMethod',withEndCriteria*`EndCriteria',preErrorCheck-`String'errorCheck*-}->`AndreasenHugeVolatilityInterpl'peekAndreasenHugeVolatilityInterpl*#}
 
 -- |Minimum, maximum, and average calibration errors, expressed in volatility units.
-andreasenHugeVolatilityInterpolationCalibrationError :: AndreasenHugeVolatilityInterpl -> IO (Double, Double, Double)
-andreasenHugeVolatilityInterpolationCalibrationError x = do
+andreasenHugeCalibrationError :: AndreasenHugeVolatilityInterpl -> IO (Double, Double, Double)
+andreasenHugeCalibrationError x = do
   [mn, mx, av] <- qlAndreasenHugeVolatilityInterplCalibrationError x
   pure (mn, mx, av)
 {#fun qlAndreasenHugeVolatilityInterplCalibrationError{withAndreasenHugeVolatilityInterpl*`AndreasenHugeVolatilityInterpl',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Forward level implied by an Andreasen-Huge calibration at time @t@.
-{#fun qlAndreasenHugeVolatilityInterplFwd as andreasenHugeVolatilityInterpolationFwd{withAndreasenHugeVolatilityInterpl*`AndreasenHugeVolatilityInterpl' -- ^interpolation
+{#fun qlAndreasenHugeVolatilityInterplFwd as andreasenHugeForward{withAndreasenHugeVolatilityInterpl*`AndreasenHugeVolatilityInterpl' -- ^interpolation
   ,`Double' -- ^t
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Calibrated option price at time, strike, and put/call type.
-{#fun qlAndreasenHugeVolatilityInterplOptionPrice as andreasenHugeVolatilityInterpolationOptionPrice{withAndreasenHugeVolatilityInterpl*`AndreasenHugeVolatilityInterpl' -- ^interpolation
+{#fun qlAndreasenHugeVolatilityInterplOptionPrice as andreasenHugeOptionPrice{withAndreasenHugeVolatilityInterpl*`AndreasenHugeVolatilityInterpl' -- ^interpolation
   ,`Double' -- ^t
   ,`Double' -- ^strike
   ,fromEnumC`OptionType' -- ^optionType
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Calibrated local volatility at time and strike.
-{#fun qlAndreasenHugeVolatilityInterplLocalVol as andreasenHugeVolatilityInterpolationLocalVol{withAndreasenHugeVolatilityInterpl*`AndreasenHugeVolatilityInterpl' -- ^interpolation
+{#fun qlAndreasenHugeVolatilityInterplLocalVol as andreasenHugeLocalVol{withAndreasenHugeVolatilityInterpl*`AndreasenHugeVolatilityInterpl' -- ^interpolation
   ,`Double' -- ^t
   ,`Double' -- ^strike
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
@@ -528,7 +528,7 @@ capletVarianceCurve referenceDate nodes = qlCapletVarianceCurve referenceDate da
   ,preErrorCheck-`String'errorCheck*-}->`OptionletStripper2'peekOptionletStripper2*#}
 
 -- |Fresh construction (a 'StrippedOptionletAdapter' wrapping the 'OptionletStripper2' itself),
--- never a cast -- same idiom as 'sabrInterpolatedSmileSectionAsSmileSection'.
+-- never a cast -- same idiom as 'sabrAsSmileSection'.
 {#fun qlOptionletStripper2AsOptionletVolatilityStructure as asOptionletVolatilityStructure{withOptionletStripper2*`OptionletStripper2',preErrorCheck-`String'errorCheck*-}->`OptionletVolatilityStructure'peekOptionletVolatilityStructure*#}
 
 {#fun qlOptionletStripper2AtmCapFloorStrikes as atmCapFloorStrikes{withOptionletStripper2*`OptionletStripper2',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
@@ -921,29 +921,29 @@ sabrInterpolatedSmileSection optionDate forward strikeVols hasFloatingStrikes at
 
 -- |upcast to the generic 'SmileSection' interface (e.g. for 'smileSectionVolatility'\/'smileSectionVariance').
 -- A fresh-@shared_ptr@ upcast, always safe -- not the reverse (downcast) direction.
-{#fun qlSabrInterpolatedSmileSectionAsSmileSection as sabrInterpolatedSmileSectionAsSmileSection{withSabrInterpolatedSmileSection*`SabrInterpolatedSmileSection',preErrorCheck-`String'errorCheck*-}->`SmileSection'peekSmileSection*#}
+{#fun qlSabrInterpolatedSmileSectionAsSmileSection as sabrAsSmileSection{withSabrInterpolatedSmileSection*`SabrInterpolatedSmileSection',preErrorCheck-`String'errorCheck*-}->`SmileSection'peekSmileSection*#}
 
 -- |calibrated alpha (post-fit; can differ from the initial guess passed to
 -- 'sabrInterpolatedSmileSection' unless @sabrIsAlphaFixed@ was set).
-{#fun qlSabrInterpolatedSmileSectionAlpha as sabrInterpolatedSmileSectionAlpha{withSabrInterpolatedSmileSection*`SabrInterpolatedSmileSection',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlSabrInterpolatedSmileSectionAlpha as sabrAlpha{withSabrInterpolatedSmileSection*`SabrInterpolatedSmileSection',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
--- |calibrated beta, see 'sabrInterpolatedSmileSectionAlpha'
-{#fun qlSabrInterpolatedSmileSectionBeta as sabrInterpolatedSmileSectionBeta{withSabrInterpolatedSmileSection*`SabrInterpolatedSmileSection',preErrorCheck-`String'errorCheck*-}->`Double'#}
+-- |calibrated beta, see 'sabrAlpha'
+{#fun qlSabrInterpolatedSmileSectionBeta as sabrBeta{withSabrInterpolatedSmileSection*`SabrInterpolatedSmileSection',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
--- |calibrated nu, see 'sabrInterpolatedSmileSectionAlpha'
-{#fun qlSabrInterpolatedSmileSectionNu as sabrInterpolatedSmileSectionNu{withSabrInterpolatedSmileSection*`SabrInterpolatedSmileSection',preErrorCheck-`String'errorCheck*-}->`Double'#}
+-- |calibrated nu, see 'sabrAlpha'
+{#fun qlSabrInterpolatedSmileSectionNu as sabrNu{withSabrInterpolatedSmileSection*`SabrInterpolatedSmileSection',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
--- |calibrated rho, see 'sabrInterpolatedSmileSectionAlpha'
-{#fun qlSabrInterpolatedSmileSectionRho as sabrInterpolatedSmileSectionRho{withSabrInterpolatedSmileSection*`SabrInterpolatedSmileSection',preErrorCheck-`String'errorCheck*-}->`Double'#}
+-- |calibrated rho, see 'sabrAlpha'
+{#fun qlSabrInterpolatedSmileSectionRho as sabrRho{withSabrInterpolatedSmileSection*`SabrInterpolatedSmileSection',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |root-mean-square calibration error
-{#fun qlSabrInterpolatedSmileSectionRmsError as sabrInterpolatedSmileSectionRmsError{withSabrInterpolatedSmileSection*`SabrInterpolatedSmileSection',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlSabrInterpolatedSmileSectionRmsError as sabrRmsError{withSabrInterpolatedSmileSection*`SabrInterpolatedSmileSection',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |maximum calibration error
-{#fun qlSabrInterpolatedSmileSectionMaxError as sabrInterpolatedSmileSectionMaxError{withSabrInterpolatedSmileSection*`SabrInterpolatedSmileSection',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlSabrInterpolatedSmileSectionMaxError as sabrMaxError{withSabrInterpolatedSmileSection*`SabrInterpolatedSmileSection',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |the reason the SABR calibration's optimizer stopped
-{#fun qlSabrInterpolatedSmileSectionEndCriteria as sabrInterpolatedSmileSectionEndCriteria{withSabrInterpolatedSmileSection*`SabrInterpolatedSmileSection',preErrorCheck-`String'errorCheck*-}->`EndCriteriaType'#}
+{#fun qlSabrInterpolatedSmileSectionEndCriteria as sabrCalibrationEndCriteria{withSabrInterpolatedSmileSection*`SabrInterpolatedSmileSection',preErrorCheck-`String'errorCheck*-}->`EndCriteriaType'#}
 
 -- |a smile section calibrated to a market smile using Stochastic Volatility Inspired (SVI, Gatheral
 -- 2004) parameterization: total variance at log-moneyness @k = log(strike\/forward)@ is
@@ -1005,32 +1005,32 @@ sviInterpolatedSmileSection optionDate forward strikeVols hasFloatingStrikes atm
 
 -- |upcast to the generic 'SmileSection' interface (e.g. for 'smileSectionVolatility'\/'smileSectionVariance').
 -- A fresh-@shared_ptr@ upcast, always safe -- not the reverse (downcast) direction.
-{#fun qlSviInterpolatedSmileSectionAsSmileSection as sviInterpolatedSmileSectionAsSmileSection{withSviInterpolatedSmileSection*`SviInterpolatedSmileSection',preErrorCheck-`String'errorCheck*-}->`SmileSection'peekSmileSection*#}
+{#fun qlSviInterpolatedSmileSectionAsSmileSection as sviAsSmileSection{withSviInterpolatedSmileSection*`SviInterpolatedSmileSection',preErrorCheck-`String'errorCheck*-}->`SmileSection'peekSmileSection*#}
 
 -- |calibrated @a@ (post-fit; can differ from the initial guess passed to
 -- 'sviInterpolatedSmileSection' unless @aIsFixed@ was set).
-{#fun qlSviInterpolatedSmileSectionA as sviInterpolatedSmileSectionA{withSviInterpolatedSmileSection*`SviInterpolatedSmileSection',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlSviInterpolatedSmileSectionA as sviA{withSviInterpolatedSmileSection*`SviInterpolatedSmileSection',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
--- |calibrated @b@, see 'sviInterpolatedSmileSectionA'
-{#fun qlSviInterpolatedSmileSectionB as sviInterpolatedSmileSectionB{withSviInterpolatedSmileSection*`SviInterpolatedSmileSection',preErrorCheck-`String'errorCheck*-}->`Double'#}
+-- |calibrated @b@, see 'sviA'
+{#fun qlSviInterpolatedSmileSectionB as sviB{withSviInterpolatedSmileSection*`SviInterpolatedSmileSection',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
--- |calibrated @sigma@, see 'sviInterpolatedSmileSectionA'
-{#fun qlSviInterpolatedSmileSectionSigma as sviInterpolatedSmileSectionSigma{withSviInterpolatedSmileSection*`SviInterpolatedSmileSection',preErrorCheck-`String'errorCheck*-}->`Double'#}
+-- |calibrated @sigma@, see 'sviA'
+{#fun qlSviInterpolatedSmileSectionSigma as sviSigma{withSviInterpolatedSmileSection*`SviInterpolatedSmileSection',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
--- |calibrated @rho@, see 'sviInterpolatedSmileSectionA'
-{#fun qlSviInterpolatedSmileSectionRho as sviInterpolatedSmileSectionRho{withSviInterpolatedSmileSection*`SviInterpolatedSmileSection',preErrorCheck-`String'errorCheck*-}->`Double'#}
+-- |calibrated @rho@, see 'sviA'
+{#fun qlSviInterpolatedSmileSectionRho as sviRho{withSviInterpolatedSmileSection*`SviInterpolatedSmileSection',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
--- |calibrated @m@, see 'sviInterpolatedSmileSectionA'
-{#fun qlSviInterpolatedSmileSectionM as sviInterpolatedSmileSectionM{withSviInterpolatedSmileSection*`SviInterpolatedSmileSection',preErrorCheck-`String'errorCheck*-}->`Double'#}
+-- |calibrated @m@, see 'sviA'
+{#fun qlSviInterpolatedSmileSectionM as sviM{withSviInterpolatedSmileSection*`SviInterpolatedSmileSection',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |root-mean-square calibration error
-{#fun qlSviInterpolatedSmileSectionRmsError as sviInterpolatedSmileSectionRmsError{withSviInterpolatedSmileSection*`SviInterpolatedSmileSection',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlSviInterpolatedSmileSectionRmsError as sviRmsError{withSviInterpolatedSmileSection*`SviInterpolatedSmileSection',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |maximum calibration error
-{#fun qlSviInterpolatedSmileSectionMaxError as sviInterpolatedSmileSectionMaxError{withSviInterpolatedSmileSection*`SviInterpolatedSmileSection',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlSviInterpolatedSmileSectionMaxError as sviMaxError{withSviInterpolatedSmileSection*`SviInterpolatedSmileSection',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |the reason the SVI calibration's optimizer stopped
-{#fun qlSviInterpolatedSmileSectionEndCriteria as sviInterpolatedSmileSectionEndCriteria{withSviInterpolatedSmileSection*`SviInterpolatedSmileSection',preErrorCheck-`String'errorCheck*-}->`EndCriteriaType'#}
+{#fun qlSviInterpolatedSmileSectionEndCriteria as sviEndCriteria{withSviInterpolatedSmileSection*`SviInterpolatedSmileSection',preErrorCheck-`String'errorCheck*-}->`EndCriteriaType'#}
 
 -- |a smile section calibrated to a market smile using the arbitrage-free SABR parameterization
 -- (Doust's approach, via 'NoArbSabrModel' -- see 'noArbSabrSmileSection'). Unlike
@@ -1087,29 +1087,29 @@ noArbSabrInterpolatedSmileSection optionDate forward strikeVols hasFloatingStrik
 
 -- |upcast to the generic 'SmileSection' interface (e.g. for 'smileSectionVolatility'\/'smileSectionVariance').
 -- A fresh-@shared_ptr@ upcast, always safe -- not the reverse (downcast) direction.
-{#fun qlNoArbSabrInterpolatedSmileSectionAsSmileSection as noArbSabrInterpolatedSmileSectionAsSmileSection{withNoArbSabrInterpolatedSmileSection*`NoArbSabrInterpolatedSmileSection',preErrorCheck-`String'errorCheck*-}->`SmileSection'peekSmileSection*#}
+{#fun qlNoArbSabrInterpolatedSmileSectionAsSmileSection as noArbSabrAsSmileSection{withNoArbSabrInterpolatedSmileSection*`NoArbSabrInterpolatedSmileSection',preErrorCheck-`String'errorCheck*-}->`SmileSection'peekSmileSection*#}
 
 -- |calibrated @alpha@ (post-fit; can differ from the initial guess passed to
 -- 'noArbSabrInterpolatedSmileSection' unless @isAlphaFixed@ was set).
-{#fun qlNoArbSabrInterpolatedSmileSectionAlpha as noArbSabrInterpolatedSmileSectionAlpha{withNoArbSabrInterpolatedSmileSection*`NoArbSabrInterpolatedSmileSection',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlNoArbSabrInterpolatedSmileSectionAlpha as noArbSabrAlpha{withNoArbSabrInterpolatedSmileSection*`NoArbSabrInterpolatedSmileSection',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
--- |calibrated @beta@, see 'noArbSabrInterpolatedSmileSectionAlpha'
-{#fun qlNoArbSabrInterpolatedSmileSectionBeta as noArbSabrInterpolatedSmileSectionBeta{withNoArbSabrInterpolatedSmileSection*`NoArbSabrInterpolatedSmileSection',preErrorCheck-`String'errorCheck*-}->`Double'#}
+-- |calibrated @beta@, see 'noArbSabrAlpha'
+{#fun qlNoArbSabrInterpolatedSmileSectionBeta as noArbSabrBeta{withNoArbSabrInterpolatedSmileSection*`NoArbSabrInterpolatedSmileSection',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
--- |calibrated @nu@, see 'noArbSabrInterpolatedSmileSectionAlpha'
-{#fun qlNoArbSabrInterpolatedSmileSectionNu as noArbSabrInterpolatedSmileSectionNu{withNoArbSabrInterpolatedSmileSection*`NoArbSabrInterpolatedSmileSection',preErrorCheck-`String'errorCheck*-}->`Double'#}
+-- |calibrated @nu@, see 'noArbSabrAlpha'
+{#fun qlNoArbSabrInterpolatedSmileSectionNu as noArbSabrNu{withNoArbSabrInterpolatedSmileSection*`NoArbSabrInterpolatedSmileSection',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
--- |calibrated @rho@, see 'noArbSabrInterpolatedSmileSectionAlpha'
-{#fun qlNoArbSabrInterpolatedSmileSectionRho as noArbSabrInterpolatedSmileSectionRho{withNoArbSabrInterpolatedSmileSection*`NoArbSabrInterpolatedSmileSection',preErrorCheck-`String'errorCheck*-}->`Double'#}
+-- |calibrated @rho@, see 'noArbSabrAlpha'
+{#fun qlNoArbSabrInterpolatedSmileSectionRho as noArbSabrRho{withNoArbSabrInterpolatedSmileSection*`NoArbSabrInterpolatedSmileSection',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |root-mean-square calibration error
-{#fun qlNoArbSabrInterpolatedSmileSectionRmsError as noArbSabrInterpolatedSmileSectionRmsError{withNoArbSabrInterpolatedSmileSection*`NoArbSabrInterpolatedSmileSection',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlNoArbSabrInterpolatedSmileSectionRmsError as noArbSabrRmsError{withNoArbSabrInterpolatedSmileSection*`NoArbSabrInterpolatedSmileSection',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |maximum calibration error
-{#fun qlNoArbSabrInterpolatedSmileSectionMaxError as noArbSabrInterpolatedSmileSectionMaxError{withNoArbSabrInterpolatedSmileSection*`NoArbSabrInterpolatedSmileSection',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlNoArbSabrInterpolatedSmileSectionMaxError as noArbSabrMaxError{withNoArbSabrInterpolatedSmileSection*`NoArbSabrInterpolatedSmileSection',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |the reason the calibration's optimizer stopped
-{#fun qlNoArbSabrInterpolatedSmileSectionEndCriteria as noArbSabrInterpolatedSmileSectionEndCriteria{withNoArbSabrInterpolatedSmileSection*`NoArbSabrInterpolatedSmileSection',preErrorCheck-`String'errorCheck*-}->`EndCriteriaType'#}
+{#fun qlNoArbSabrInterpolatedSmileSectionEndCriteria as noArbSabrEndCriteria{withNoArbSabrInterpolatedSmileSection*`NoArbSabrInterpolatedSmileSection',preErrorCheck-`String'errorCheck*-}->`EndCriteriaType'#}
 
 -- |implements the conversion between swap dates and swap (time) length
 {#fun qlSwaptionVolatilityStructureSwapLength1 as swapLengthBetweenDates{withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure sv'
@@ -1429,19 +1429,19 @@ abcdAtmVolCurve d c points bdc dc = qlAbcdAtmVolCurve d c n t qs flags bdc dc
         (n, t) = unzip ntenors
 {#fun qlAbcdAtmVolCurve{fromIntegral`Word',withCalendar*`Calendar',withIntArray*`[Word]'&,withEnumArray*`[TimeUnit]'&,withQuoteArray*`[GenQuote q]'&,withBoolArray*`[Bool]'&,fromEnumC`BusinessDayConvention',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`AbcdAtmVolCurve'peekAbcdAtmVolCurve*#}
 
-{#fun qlAbcdAtmVolCurveA as abcdAtmVolCurveA{withAbcdAtmVolCurve*`AbcdAtmVolCurve',preErrorCheck-`String'errorCheck*-}->`Double'#}
-{#fun qlAbcdAtmVolCurveB as abcdAtmVolCurveB{withAbcdAtmVolCurve*`AbcdAtmVolCurve',preErrorCheck-`String'errorCheck*-}->`Double'#}
-{#fun qlAbcdAtmVolCurveC as abcdAtmVolCurveC{withAbcdAtmVolCurve*`AbcdAtmVolCurve',preErrorCheck-`String'errorCheck*-}->`Double'#}
-{#fun qlAbcdAtmVolCurveD as abcdAtmVolCurveD{withAbcdAtmVolCurve*`AbcdAtmVolCurve',preErrorCheck-`String'errorCheck*-}->`Double'#}
-{#fun qlAbcdAtmVolCurveRmsError as abcdAtmVolCurveRmsError{withAbcdAtmVolCurve*`AbcdAtmVolCurve',preErrorCheck-`String'errorCheck*-}->`Double'#}
-{#fun qlAbcdAtmVolCurveMaxError as abcdAtmVolCurveMaxError{withAbcdAtmVolCurve*`AbcdAtmVolCurve',preErrorCheck-`String'errorCheck*-}->`Double'#}
-{#fun qlAbcdAtmVolCurveEndCriteria as abcdAtmVolCurveEndCriteria{withAbcdAtmVolCurve*`AbcdAtmVolCurve',preErrorCheck-`String'errorCheck*-}->`EndCriteriaType'#}
+{#fun qlAbcdAtmVolCurveA as abcdA{withAbcdAtmVolCurve*`AbcdAtmVolCurve',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlAbcdAtmVolCurveB as abcdB{withAbcdAtmVolCurve*`AbcdAtmVolCurve',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlAbcdAtmVolCurveC as abcdC{withAbcdAtmVolCurve*`AbcdAtmVolCurve',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlAbcdAtmVolCurveD as abcdD{withAbcdAtmVolCurve*`AbcdAtmVolCurve',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlAbcdAtmVolCurveRmsError as abcdRmsError{withAbcdAtmVolCurve*`AbcdAtmVolCurve',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlAbcdAtmVolCurveMaxError as abcdMaxError{withAbcdAtmVolCurve*`AbcdAtmVolCurve',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlAbcdAtmVolCurveEndCriteria as abcdEndCriteria{withAbcdAtmVolCurve*`AbcdAtmVolCurve',preErrorCheck-`String'errorCheck*-}->`EndCriteriaType'#}
 
 -- |@k@ adjustment factor at a given time
-{#fun qlAbcdAtmVolCurveKAtTime as abcdAtmVolCurveKAtTime{withAbcdAtmVolCurve*`AbcdAtmVolCurve',`Double',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlAbcdAtmVolCurveKAtTime as abcdKAtTime{withAbcdAtmVolCurve*`AbcdAtmVolCurve',`Double',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |@k@ adjustment factors for every option tenor used in interpolation
-{#fun qlAbcdAtmVolCurveK as abcdAtmVolCurveK{withAbcdAtmVolCurve*`AbcdAtmVolCurve',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlAbcdAtmVolCurveK as abcdK{withAbcdAtmVolCurve*`AbcdAtmVolCurve',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 abcdAtmVolCurveOptionTenors :: AbcdAtmVolCurve -> IO [(Word, TimeUnit)]
 abcdAtmVolCurveOptionTenors o = do
@@ -1450,16 +1450,16 @@ abcdAtmVolCurveOptionTenors o = do
 {#fun qlAbcdAtmVolCurveOptionTenors{withAbcdAtmVolCurve*`AbcdAtmVolCurve',preArray-`[Int]'&peekIntArray*,preArray-`[Int]'&peekIntArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |As 'abcdAtmVolCurveOptionTenors', but only the tenors actually used in the ABCD fit.
-abcdAtmVolCurveOptionTenorsInInterpolation :: AbcdAtmVolCurve -> IO [(Word, TimeUnit)]
-abcdAtmVolCurveOptionTenorsInInterpolation o = do
+abcdOptionTenorsInInterpolation :: AbcdAtmVolCurve -> IO [(Word, TimeUnit)]
+abcdOptionTenorsInInterpolation o = do
   (ns, us) <- qlAbcdAtmVolCurveOptionTenorsInInterpolation o
   pure $ zip (map fromIntegral ns) (map toEnum us)
 {#fun qlAbcdAtmVolCurveOptionTenorsInInterpolation{withAbcdAtmVolCurve*`AbcdAtmVolCurve',preArray-`[Int]'&peekIntArray*,preArray-`[Int]'&peekIntArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
-{#fun qlAbcdAtmVolCurveOptionDates as abcdAtmVolCurveOptionDates{withAbcdAtmVolCurve*`AbcdAtmVolCurve',preArray-`[Day]'&peekDayArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlAbcdAtmVolCurveOptionDates as abcdOptionDates{withAbcdAtmVolCurve*`AbcdAtmVolCurve',preArray-`[Day]'&peekDayArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
--- |As 'abcdAtmVolCurveOptionDates', in year fractions from the curve's reference date.
-{#fun qlAbcdAtmVolCurveOptionTimes as abcdAtmVolCurveOptionTimes{withAbcdAtmVolCurve*`AbcdAtmVolCurve',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+-- |As 'abcdOptionDates', in year fractions from the curve's reference date.
+{#fun qlAbcdAtmVolCurveOptionTimes as abcdOptionTimes{withAbcdAtmVolCurve*`AbcdAtmVolCurve',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |SABR-smile 'BlackVolSurface' built from an interest-rate index, an ATM 'BlackAtmVolCurve', and
 -- per-tenor ATM-rate spreads\/vol-spread matrix. @volSpreads@'s rows follow @optionTenors@ and

@@ -376,7 +376,7 @@ spec = do
         computed <- fairSpread cds
         computed `shouldSatisfy` closePrec quotedSpread 1.0e-6
 
-    it "defaultProbabilityHelperImpliedQuote reproduces each SpreadCdsHelper's own bootstrap quote" $ Settings.keepingSettingsGc $ do
+    it "impliedQuote reproduces each SpreadCdsHelper's own bootstrap quote" $ Settings.keepingSettingsGc $ do
       let refDate = fromGregorian 2015 6 15
           spreads = zip [1, 2, 3, 5] [0.005, 0.006, 0.007, 0.009]
           recovery = 0.4
@@ -399,7 +399,7 @@ spec = do
       -- swap_->recalculate() hits boost::shared_ptr's null-dereference assertion.
       _ <- survivalProbability curve (DatePoint refDate) False
       forM_ (zip helpers spreads) $ \(h, (_, quotedSpread)) -> do
-        implied <- defaultProbabilityHelperImpliedQuote h
+        implied <- impliedQuote h
         implied `shouldSatisfy` closePrec quotedSpread 1.0e-8
 
     it "reproduces CDS spreads for all supported credit traits/interpolators" $ Settings.keepingSettingsGc $ do

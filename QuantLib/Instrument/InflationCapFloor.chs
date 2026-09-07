@@ -4,8 +4,8 @@ module QuantLib.Instrument.InflationCapFloor
   , yoyInflationCap
   , yoyInflationCollar
   , yoyInflationFloor
-  , yoyInflationCapFloorAtmRate
-  , yoyInflationCapFloorOptionlet
+  , atmRate
+  , optionlet
 
   , CPICapFloor
   , cpiCapFloor
@@ -52,12 +52,12 @@ import Data.List.NonEmpty(NonEmpty)
 
 -- |The fair (at-the-money) rate for the cap\/floor's underlying YoY leg, discounted on the
 -- given curve.
-{#fun qlYoYInflationCapFloorAtmRate as yoyInflationCapFloorAtmRate{withGenInstrument*`YoYInflationCapFloor'
+{#fun qlYoYInflationCapFloorAtmRate as atmRate{withGenInstrument*`YoYInflationCapFloor'
   ,withYieldTermStructure*`GenYieldTermStructure y' -- ^discountCurve
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Returns the n-th optionlet as a new YoYInflationCapFloor with only one cash flow.
-{#fun qlYoYInflationCapFloorOptionlet as yoyInflationCapFloorOptionlet{withGenInstrument*`YoYInflationCapFloor'
+{#fun qlYoYInflationCapFloorOptionlet as optionlet{withGenInstrument*`YoYInflationCapFloor'
   ,fromIntegral`Word' -- ^n
   ,preErrorCheck-`String'errorCheck*-}->`YoYInflationCapFloor'peekYoYInflationCapFloor*#}
 

@@ -10,12 +10,12 @@ import QuantLib.Time.Date
 import QuantLib.Time.Calendar(calendar, CalendarConstructor(..))
 import QuantLib.Time.Schedule(dayCounter, DayCounterConstructor(..))
 import QuantLib.Commodity
-import QuantLib.TermStructure.Commodity
+import qualified QuantLib.TermStructure.Commodity as Curve
 
 spec :: Spec
 spec = do
   describe "CommodityCurve" $ do
-    it "round-trips name/commodityType/unitOfMeasure/currency/nodes" $ do
+    it "round-trips name/commodityType/Curve.unitOfMeasure/currency/nodes" $ do
       ho <- commodityType "HO" "Heating Oil"
       bbl <- barrelUnitOfMeasure
       usd <- commoditySettingsCurrency
@@ -24,16 +24,16 @@ spec = do
       let dates = [1 `january` 2024, 1 `february` 2024, 1 `march` 2024]
           prices = [70.0, 71.5, 72.0]
           nodes = fromList (zip dates prices)
-      curve <- commodityCurve "HO curve" ho usd bbl cal nodes dc
-      commodityCurveName curve `shouldReturn` "HO curve"
-      ct <- commodityCurveCommodityType curve
+      curve <- Curve.commodityCurve "HO curve" ho usd bbl cal nodes dc
+      Curve.name curve `shouldReturn` "HO curve"
+      ct <- Curve.commodityType curve
       ct `shouldBe` ho
-      uom <- commodityCurveUnitOfMeasure curve
+      uom <- Curve.unitOfMeasure curve
       uom `shouldBe` bbl
-      ccy <- commodityCurveCurrency curve
+      ccy <- Curve.currency curve
       ccy `shouldBe` usd
-      commodityCurveNodes curve `shouldReturn` zip dates prices
-      commodityCurveEmpty curve `shouldBe` False
+      Curve.nodes curve `shouldReturn` zip dates prices
+      Curve.isEmpty curve `shouldBe` False
 
     it "has no basis curve until one is set, and finds it afterwards" $ do
       ho <- commodityType "HO" "Heating Oil"
@@ -42,12 +42,12 @@ spec = do
       cal <- calendar TARGET
       dc <- dayCounter Actual365FixedStandard
       let dates = [1 `january` 2024, 1 `february` 2024]
-      curve <- commodityCurve "HO curve" ho usd bbl cal (fromList (zip dates [70.0, 71.0])) dc
-      basis <- commodityCurve "HO basis" ho usd bbl cal (fromList (zip dates [1.0, 1.0])) dc
-      before <- commodityCurveBasisOfCurve curve
+      curve <- Curve.commodityCurve "HO curve" ho usd bbl cal (fromList (zip dates [70.0, 71.0])) dc
+      basis <- Curve.commodityCurve "HO basis" ho usd bbl cal (fromList (zip dates [1.0, 1.0])) dc
+      before <- Curve.basisOfCurve curve
       isNothing before `shouldBe` True
-      setCommodityCurveBasisOfCurve curve basis
-      found <- commodityCurveBasisOfCurve curve
+      Curve.setBasisOfCurve curve basis
+      found <- Curve.basisOfCurve curve
       isJust found `shouldBe` True
 
     it "prices at a node date via forward-flat interpolation, plus any chained basis price" $ do
@@ -58,17 +58,17 @@ spec = do
       dc <- dayCounter Actual365FixedStandard
       let d0 = 1 `january` 2024
           d1 = 1 `february` 2024
-      curve <- commodityCurve "HO curve" ho usd bbl cal (fromList [(d0, 70.0), (d1, 71.0)]) dc
-      p0 <- commodityCurvePrice curve d0
+      curve <- Curve.commodityCurve "HO curve" ho usd bbl cal (fromList [(d0, 70.0), (d1, 71.0)]) dc
+      p0 <- Curve.price curve d0
       p0 `shouldBe` 70.0
-      basis <- commodityCurve "HO basis" ho usd bbl cal (fromList [(d0, 1.0), (d1, 1.0)]) dc
-      setCommodityCurveBasisOfCurve curve basis
-      p0' <- commodityCurvePrice curve d0
+      basis <- Curve.commodityCurve "HO basis" ho usd bbl cal (fromList [(d0, 1.0), (d1, 1.0)]) dc
+      Curve.setBasisOfCurve curve basis
+      p0' <- Curve.price curve d0
       p0' `shouldBe` 71.0
-      basisPrice <- commodityCurveBasisOfPrice curve d0
+      basisPrice <- Curve.basisOfPrice curve d0
       basisPrice `shouldBe` 1.0
 
-    it "commodityCurvePriceNearby with no contracts and offset 0 reproduces the flat price exactly" $ do
+    it "Curve.priceNearby with no contracts and offset 0 reproduces the flat price exactly" $ do
       ho <- commodityType "HO" "Heating Oil"
       bbl <- barrelUnitOfMeasure
       usd <- commoditySettingsCurrency
@@ -76,12 +76,12 @@ spec = do
       dc <- dayCounter Actual365FixedStandard
       let d0 = 1 `january` 2024
           d1 = 1 `february` 2024
-      curve <- commodityCurve "HO curve" ho usd bbl cal (fromList [(d0, 70.0), (d1, 71.0)]) dc
-      flat <- commodityCurvePrice curve d0
-      rolled <- commodityCurvePriceNearby curve d0 [] 0
+      curve <- Curve.commodityCurve "HO curve" ho usd bbl cal (fromList [(d0, 70.0), (d1, 71.0)]) dc
+      flat <- Curve.price curve d0
+      rolled <- Curve.priceNearby curve d0 [] 0
       rolled `shouldBe` flat
 
-    it "underlyingPriceDate rolls onto the nearbyOffset'th exchange contract at or after the query date" $ do
+    it "Curve.underlyingPriceDate rolls onto the nearbyOffset'th exchange contract at or after the query date" $ do
       ho <- commodityType "HO" "Heating Oil"
       bbl <- barrelUnitOfMeasure
       usd <- commoditySettingsCurrency
@@ -89,7 +89,7 @@ spec = do
       dc <- dayCounter Actual365FixedStandard
       let d0 = 1 `january` 2024
           d1 = 1 `february` 2024
-      curve <- commodityCurve "HO curve" ho usd bbl cal (fromList [(d0, 70.0), (d1, 71.0)]) dc
+      curve <- Curve.commodityCurve "HO curve" ho usd bbl cal (fromList [(d0, 70.0), (d1, 71.0)]) dc
       let jan1 = 1 `january` 2024
           feb1 = 1 `february` 2024
           mar1 = 1 `march` 2024
@@ -100,11 +100,11 @@ spec = do
                 , (feb1, ("HOG24", feb1, us2, 28 `february` 2024))
                 , (mar1, ("HOH24", mar1, us3, 31 `march` 2024))
                 ]
-      commodityCurveUnderlyingPriceDate curve jan1 ecs 1 `shouldReturn` us1
-      commodityCurveUnderlyingPriceDate curve jan1 ecs 2 `shouldReturn` us2
-      commodityCurveUnderlyingPriceDate curve jan1 ecs 3 `shouldReturn` us3
-      commodityCurveUnderlyingPriceDate curve jan1 ecs 4 `shouldThrow` anyException
-      commodityCurveUnderlyingPriceDate curve jan1 ecs 0 `shouldThrow` anyException
+      Curve.underlyingPriceDate curve jan1 ecs 1 `shouldReturn` us1
+      Curve.underlyingPriceDate curve jan1 ecs 2 `shouldReturn` us2
+      Curve.underlyingPriceDate curve jan1 ecs 3 `shouldReturn` us3
+      Curve.underlyingPriceDate curve jan1 ecs 4 `shouldThrow` anyException
+      Curve.underlyingPriceDate curve jan1 ecs 0 `shouldThrow` anyException
 
   describe "DateInterval" $ do
     it "isDateBetween respects the includeFirst/includeLast flags" $ do

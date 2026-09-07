@@ -182,7 +182,7 @@ module QuantLib.PricingEngine
   , fdBlackScholesVanillaEngine
   , fdBlackScholesVanillaEngineQuanto
   , fdmQuantoHelper
-  , fdmQuantoHelperQuantoAdjustment
+  , quantoAdjustment
   , fdHestonVanillaEngine
   , cosHestonEngine
   , analyticPdfHestonEngine
@@ -1167,7 +1167,7 @@ treeVanillaSwapEngine model latticeTime curve =
   ,preErrorCheck-`String'errorCheck*-}->`FdmQuantoHelper'peekFdmQuantoHelper*#}
 
 -- |quanto drift adjustment @domesticRate - foreignRate + equityFxCorrelation*equityVol*fxVol@ over @[t1,t2]@
-{#fun qlFdmQuantoHelperQuantoAdjustment as fdmQuantoHelperQuantoAdjustment{withFdmQuantoHelper*`FdmQuantoHelper'
+{#fun qlFdmQuantoHelperQuantoAdjustment as quantoAdjustment{withFdmQuantoHelper*`FdmQuantoHelper'
   ,`Double' -- ^equityVol
   ,`Double' -- ^t1
   ,`Double' -- ^t2

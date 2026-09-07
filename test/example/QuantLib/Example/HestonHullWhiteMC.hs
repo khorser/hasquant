@@ -1,6 +1,6 @@
 -- |Monte-Carlo zero-bond and zero-bond-option pricing on the three-factor
 -- 'hybridHestonHullWhiteProcess', discounting each simulated path by the process's own
--- 'hybridHestonHullWhiteNumeraire' rather than by a deterministic curve.
+-- 'numeraire' rather than by a deterministic curve.
 --
 -- Ported from QuantLib's test-suite\/hybridhestonhullwhiteprocess.cpp::testZeroBondPricing,
 -- including its deliberately awkward zero curve (a sine-perturbed monthly 10y-20y grid plus a
@@ -32,7 +32,7 @@ import QuantLib.Math(SobolDirectionIntegers(..), Interpolation(..), timeGridFrom
 import QuantLib.Method(sobolPathGenerator, next, asset)
 import QuantLib.Model(hullWhite, discountBond, discountBondOption)
 import QuantLib.Process(hestonProcess, hullWhiteForwardProcess, setForwardMeasureTime
- , hybridHestonHullWhiteProcess, hybridHestonHullWhiteNumeraire, factors
+ , hybridHestonHullWhiteProcess, numeraire, factors
  , HestonProcessDiscretization(..), HybridHestonHullWhiteProcessDiscretization(..))
 import QuantLib.Quote(simpleQuote)
 import qualified QuantLib.Settings as Settings
@@ -92,7 +92,7 @@ run = Settings.keepingSettingsGc $ do
       sample <- forM [1 .. m - 1] $ \j -> do
         let t = gridTimes !! j
             bigT = gridTimes !! (j + optionTenor)
-        zeroBond <- recip <$> hybridHestonHullWhiteNumeraire joint t [st V.! j | st <- states]
+        zeroBond <- recip <$> numeraire joint t [st V.! j | st <- states]
         bondAtT <- discountBond hwModel t bigT (states !! 2 V.! j)
         pure (Acc zeroBond (zeroBond * max 0.0 (bondAtT - strike)))
       pure (zipWith' addAcc accs sample))

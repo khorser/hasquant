@@ -160,7 +160,7 @@ spec = do
     abs ((capNPV - floorNPV) - collarNPV) `shouldSatisfy` (< 1e-6)
 
     caplets <- forM ([0 .. 2] :: [Word]) $ \n -> do
-      o <- yoyInflationCapFloorOptionlet capInst n
+      o <- optionlet capInst n
       setPricingEngine o engine
       npv o
     abs (capNPV - sum caplets) `shouldSatisfy` (< 1e-6)

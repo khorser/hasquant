@@ -1667,7 +1667,6 @@ QlFloatingRateCoupon* qlDigitalCouponAsFloatingRateCoupon(QlDigitalCoupon* o) {r
 QlDigitalCoupon* qlDigitalCoupon(QlFloatingRateCoupon *underlying, double callStrike, int callPosition, int callATM, double callPayoff, double putStrike, int putPosition, int putATM, double putPayoff, QlDigitalReplication *replication, int nakedOption, char **e) {
   try {return ret(new QlDigitalCoupon(alloc(new DigitalCoupon(*arg(underlying), callStrike, (Position::Type)callPosition, callATM, callPayoff, putStrike, (Position::Type)putPosition, putATM, putPayoff, replication ? *arg(replication) : shared_ptr<DigitalReplication>(), nakedOption))));
   } catch (std::exception& er) {return handleException<QlDigitalCoupon*>(e, er);}}
-double qlDigitalCouponConvexityAdjustment(QlDigitalCoupon* o, char **e) {try {return (*arg(o))->convexityAdjustment();} catch (std::exception& er) {return handleException<double>(e, er);}}
 double qlDigitalCouponCallOptionRate(QlDigitalCoupon* o, char **e) {try {return (*arg(o))->callOptionRate();} catch (std::exception& er) {return handleException<double>(e, er);}}
 double qlDigitalCouponPutOptionRate(QlDigitalCoupon* o, char **e) {try {return (*arg(o))->putOptionRate();} catch (std::exception& er) {return handleException<double>(e, er);}}
 void qlFreeMultipleResetsCoupon(QlMultipleResetsCoupon *o) {del(o);}
@@ -1738,7 +1737,6 @@ void qlFloatingRateCouponSetPricer(QlFloatingRateCoupon* o, QlFloatingRateCoupon
 double qlFloatingRateCouponPrice(QlFloatingRateCoupon* o, QlYieldTermStructure* discountingCurve, char **e) {
   try {return (*arg(o))->price(qlNullableHandle(discountingCurve));} catch (std::exception& er) {return handleException<double>(e, er);}}
 double qlFloatingRateCouponConvexityAdjustment(QlFloatingRateCoupon* o, char **e) {try {return (*arg(o))->convexityAdjustment();} catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlDigitalCouponRate(QlDigitalCoupon* o, char **e) {try {return (*arg(o))->rate();} catch (std::exception& er) {return handleException<double>(e, er);}}
 double qlCPICouponIndexRatio(QlCPICoupon* o, int d, char **e) {try {return (*arg(o))->indexRatio(Date(d));} catch (std::exception& er) {return handleException<double>(e, er);}}
 double qlFloatingRateCouponPricerSwapletRate(QlFloatingRateCouponPricer* o, char **e) {try {return (*arg(o))->swapletRate();} catch (std::exception& er) {return handleException<double>(e, er);}}
 double qlFloatingRateCouponPricerSwapletPrice(QlFloatingRateCouponPricer* o, char **e) {try {return (*arg(o))->swapletPrice();} catch (std::exception& er) {return handleException<double>(e, er);}}

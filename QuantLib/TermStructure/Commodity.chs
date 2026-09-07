@@ -2,20 +2,20 @@ module QuantLib.TermStructure.Commodity
   (
     CommodityCurve
   , commodityCurve
-  , commodityCurveName
-  , commodityCurveCommodityType
-  , commodityCurveUnitOfMeasure
-  , commodityCurveCurrency
-  , commodityCurveNodes
-  , commodityCurveEmpty
-  , commodityCurveBasisOfCurve
-  , setCommodityCurveBasisOfCurve
-  , commodityCurvePrice
-  , commodityCurveBasisOfPrice
+  , name
+  , commodityType
+  , unitOfMeasure
+  , currency
+  , nodes
+  , isEmpty
+  , basisOfCurve
+  , setBasisOfCurve
+  , price
+  , basisOfPrice
   , ExchangeContract
   , ExchangeContracts
-  , commodityCurvePriceNearby
-  , commodityCurveUnderlyingPriceDate
+  , priceNearby
+  , underlyingPriceDate
   ) where
 import QuantLib.Internal
 import QuantLib.Internal.Type
@@ -37,12 +37,13 @@ import Data.List.NonEmpty(NonEmpty, toList)
 -- |Construct a commodity price curve: a named, interpolated (forward-flat) price curve over a
 -- fixed set of dates, for a given commodity type\/currency\/unit of measure. QuantLib's no-dates
 -- constructor (populated later via the mutator @setPrices@) is not bound -- per the standing
--- setter-confirmation rule, only 'setCommodityCurveBasisOfCurve' was confirmed, not @setPrices@ --
+-- setter-confirmation rule, only 'setBasisOfCurve' was confirmed, not @setPrices@ --
 -- so this with-dates constructor is the only way to build one.
 commodityCurve :: String -> CommodityType -> Currency -> UnitOfMeasure -> Calendar
   -> NonEmpty (Day, Double) -> DayCounter -> IO CommodityCurve
-commodityCurve name ct ccy uom cal nodes dc = qlCommodityCurve name ct ccy uom cal dates prices dc
-  where (dates, prices) = unzip (toList nodes)
+commodityCurve curveName ct ccy uom cal curveNodes dc =
+  qlCommodityCurve curveName ct ccy uom cal dates prices dc
+  where (dates, prices) = unzip (toList curveNodes)
 
 {#fun qlCommodityCurve
   {`String' -- ^name
@@ -56,20 +57,20 @@ commodityCurve name ct ccy uom cal nodes dc = qlCommodityCurve name ct ccy uom c
   ,preErrorCheck-`String'errorCheck*-}->`CommodityCurve'peekCommodityCurve*#}
 
 -- |The curve's name, as given at construction.
-{#fun qlCommodityCurveName as commodityCurveName{withGenTermStructure*`CommodityCurve'}->`String'peekDynString*#}
+{#fun qlCommodityCurveName as name{withGenTermStructure*`CommodityCurve'}->`String'peekDynString*#}
 
 -- |The commodity type this curve prices.
-{#fun qlCommodityCurveCommodityType as commodityCurveCommodityType{withGenTermStructure*`CommodityCurve',preErrorCheck-`String'errorCheck*-}->`CommodityType'peekCommodityType*#}
+{#fun qlCommodityCurveCommodityType as commodityType{withGenTermStructure*`CommodityCurve',preErrorCheck-`String'errorCheck*-}->`CommodityType'peekCommodityType*#}
 
 -- |The unit of measure this curve's prices are quoted in.
-{#fun qlCommodityCurveUnitOfMeasure as commodityCurveUnitOfMeasure{withGenTermStructure*`CommodityCurve',preErrorCheck-`String'errorCheck*-}->`UnitOfMeasure'peekUnitOfMeasure*#}
+{#fun qlCommodityCurveUnitOfMeasure as unitOfMeasure{withGenTermStructure*`CommodityCurve',preErrorCheck-`String'errorCheck*-}->`UnitOfMeasure'peekUnitOfMeasure*#}
 
 -- |The currency this curve's prices are quoted in.
-{#fun qlCommodityCurveCurrency as commodityCurveCurrency{withGenTermStructure*`CommodityCurve',preErrorCheck-`String'errorCheck*-}->`Currency'peekCurrency*#}
+{#fun qlCommodityCurveCurrency as currency{withGenTermStructure*`CommodityCurve',preErrorCheck-`String'errorCheck*-}->`Currency'peekCurrency*#}
 
 -- |The curve's nodes, as @(date, price)@ pairs in construction order.
-commodityCurveNodes :: CommodityCurve -> IO [(Day, Double)]
-commodityCurveNodes curve = do
+nodes :: CommodityCurve -> IO [(Day, Double)]
+nodes curve = do
   dates <- qlCommodityCurveDates curve
   prices <- qlCommodityCurvePrices curve
   pure (zip dates prices)
@@ -77,15 +78,15 @@ commodityCurveNodes curve = do
 {#fun qlCommodityCurvePrices as qlCommodityCurvePrices{withGenTermStructure*`CommodityCurve',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Whether this curve has any nodes.
-{#fun pure qlCommodityCurveEmpty as commodityCurveEmpty{withGenTermStructure*`CommodityCurve'}->`Bool'#}
+{#fun pure qlCommodityCurveEmpty as isEmpty{withGenTermStructure*`CommodityCurve'}->`Bool'#}
 
--- |The basis curve this curve was chained to via 'setCommodityCurveBasisOfCurve', if any.
-{#fun qlCommodityCurveBasisOfCurve as commodityCurveBasisOfCurve{withGenTermStructure*`CommodityCurve'}->`Maybe CommodityCurve'peekMaybeCommodityCurve*#}
+-- |The basis curve this curve was chained to via 'setBasisOfCurve', if any.
+{#fun qlCommodityCurveBasisOfCurve as basisOfCurve{withGenTermStructure*`CommodityCurve'}->`Maybe CommodityCurve'peekMaybeCommodityCurve*#}
 
--- |Chain this curve to a basis curve: prices returned by 'commodityCurvePrice'\/'commodityCurveBasisOfPrice'
+-- |Chain this curve to a basis curve: prices returned by 'price'\/'basisOfPrice'
 -- then include the basis curve's price on top of this curve's own. Confirmed with the user as the
 -- one 'CommodityCurve' mutator worth binding (unlike @setPrices@, which stays unbound).
-{#fun qlCommodityCurveSetBasisOfCurve as setCommodityCurveBasisOfCurve{withGenTermStructure*`CommodityCurve',withGenTermStructure*`CommodityCurve',preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlCommodityCurveSetBasisOfCurve as setBasisOfCurve{withGenTermStructure*`CommodityCurve',withGenTermStructure*`CommodityCurve',preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |A dated exchange contract: a code, its expiration date, and the start/end dates of the
 -- underlying delivery period it corresponds to. A plain tuple, per the @Money@/'Quantity'-as-tuple
@@ -94,7 +95,7 @@ commodityCurveNodes curve = do
 type ExchangeContract = (String, Day, Day, Day) -- ^code, expirationDate, underlyingStartDate, underlyingEndDate
 
 -- |QuantLib's @std::map\<Date,ExchangeContract\>@: a set of exchange contracts, keyed by the date
--- 'commodityCurvePriceNearby'\/'commodityCurveUnderlyingPriceDate' roll onto (upstream's own
+-- 'priceNearby'\/'underlyingPriceDate' roll onto (upstream's own
 -- @lower_bound@ walk finds the first key at or after the query date, then steps @nearbyOffset - 1@
 -- further). Marshalled as an association list, not an actual 'Data.Map.Map' -- the C shim rebuilds
 -- the real @std::map@ itself so key order doesn't need to be pre-sorted on the Haskell side.
@@ -125,21 +126,21 @@ splitExchangeContracts ecs =
 
 -- |The curve's price for a date, plus any chained basis curve's price, rolling forward onto
 -- nearby exchange contracts when @nearbyOffset > 0@ (upstream's own @price@ never touches
--- @exchangeContracts@ otherwise). 'commodityCurvePrice' is this with no exchange contracts and
+-- @exchangeContracts@ otherwise). 'price' is this with no exchange contracts and
 -- offset @0@, which reproduces the flat (no-rolling) case exactly.
-commodityCurvePriceNearby :: CommodityCurve -> Day -> ExchangeContracts -> Int -> IO Double
-commodityCurvePriceNearby curve date ecs nearbyOffset =
+priceNearby :: CommodityCurve -> Day -> ExchangeContracts -> Int -> IO Double
+priceNearby curve date ecs nearbyOffset =
   qlCommodityCurvePrice_ curve date keys codes expirations starts ends nearbyOffset
   where (keys, codes, expirations, starts, ends) = splitExchangeContracts ecs
 
 -- |The curve's price for a date, plus any chained basis curve's price. This is
--- 'commodityCurvePriceNearby' with no exchange contracts and offset @0@ -- the flat (no
+-- 'priceNearby' with no exchange contracts and offset @0@ -- the flat (no
 -- nearby-rolling) case, which never touches @exchangeContracts@ upstream either way.
-commodityCurvePrice :: CommodityCurve -> Day -> IO Double
-commodityCurvePrice curve date = commodityCurvePriceNearby curve date [] 0
+price :: CommodityCurve -> Day -> IO Double
+price curve date = priceNearby curve date [] 0
 
 -- |The chained basis curve's price alone (excluding this curve's own price), for a date.
-{#fun qlCommodityCurveBasisOfPrice as commodityCurveBasisOfPrice{withGenTermStructure*`CommodityCurve',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlCommodityCurveBasisOfPrice as basisOfPrice{withGenTermStructure*`CommodityCurve',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 {#fun qlCommodityCurveUnderlyingPriceDate as qlCommodityCurveUnderlyingPriceDate_
   {withGenTermStructure*`CommodityCurve'
@@ -155,8 +156,8 @@ commodityCurvePrice curve date = commodityCurvePriceNearby curve date [] 0
 -- |The date whose price a nearby roll (@nearbyOffset > 0@) actually reads: the underlying
 -- contract's start date at the @nearbyOffset@\'th exchange contract at or after @date@. Throws if
 -- @nearbyOffset <= 0@, or if fewer than @nearbyOffset@ contracts are available from @date@ onward.
-commodityCurveUnderlyingPriceDate :: CommodityCurve -> Day -> ExchangeContracts -> Int -> IO Day
-commodityCurveUnderlyingPriceDate curve date ecs nearbyOffset =
+underlyingPriceDate :: CommodityCurve -> Day -> ExchangeContracts -> Int -> IO Day
+underlyingPriceDate curve date ecs nearbyOffset =
   qlCommodityCurveUnderlyingPriceDate_ curve date keys codes expirations starts ends nearbyOffset
   where (keys, codes, expirations, starts, ends) = splitExchangeContracts ecs
 

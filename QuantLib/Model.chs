@@ -99,8 +99,8 @@ module QuantLib.Model
   , swaptionHelper
   , swaptionHelperFromDate
   , swaptionHelperFromDates
-  , swaptionHelperUnderlying
-  , swaptionHelperSwaption
+  , helperUnderlying
+  , helperSwaption
   , times
 
   , discountBond
@@ -108,8 +108,8 @@ module QuantLib.Model
   , discountBondOptionForward
   , convexityBias
   , fixedReversion
-  , gsrMoveVolatility
-  , gsrMoveReversion
+  , moveVolatility
+  , moveReversion
   , params
   , value
   , blackPrice
@@ -448,13 +448,13 @@ gsr ts initialVol subsequentVols reversion horizon =
 -- |The calibration mask ('calibrate''s @fixParameters@) that fixes every model parameter except
 -- the volatility at step index @i@ (0-based) -- a ready-made @fixParameters@ argument for
 -- calibrating that one volatility in isolation.
-{#fun qlGsrMoveVolatility as gsrMoveVolatility{withGenCalibratedModel*`Gsr'
+{#fun qlGsrMoveVolatility as moveVolatility{withGenCalibratedModel*`Gsr'
   ,fromIntegral`Word' -- ^i
   ,preArray-`[Bool]'&peekBoolArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |The calibration mask that fixes every model parameter except the reversion at index @i@
--- (0-based) -- the reversion counterpart of 'gsrMoveVolatility'.
-{#fun qlGsrMoveReversion as gsrMoveReversion{withGenCalibratedModel*`Gsr'
+-- (0-based) -- the reversion counterpart of 'moveVolatility'.
+{#fun qlGsrMoveReversion as moveReversion{withGenCalibratedModel*`Gsr'
   ,fromIntegral`Word' -- ^i
   ,preArray-`[Bool]'&peekBoolArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
@@ -746,10 +746,10 @@ calibrate m h o e c fp = qlCalibratedModelCalibrate m hh hw o e c fp where (hh, 
   ,preErrorCheck-`String'errorCheck*-}->`SwaptionHelper'peekSwaptionHelper*#}
 
 -- |Upstream's own vanilla swap underlying this helper's swaption.
-{#fun qlSwaptionHelperUnderlying as swaptionHelperUnderlying{withSwaptionHelper*`SwaptionHelper',preErrorCheck-`String'errorCheck*-}->`FixedVsFloatingSwap'peekFixedVsFloatingSwap*#}
+{#fun qlSwaptionHelperUnderlying as helperUnderlying{withSwaptionHelper*`SwaptionHelper',preErrorCheck-`String'errorCheck*-}->`FixedVsFloatingSwap'peekFixedVsFloatingSwap*#}
 
 -- |The 'QuantLib.Instrument.Swap.Swaption' this helper prices internally to compute 'modelValue'.
-{#fun qlSwaptionHelperSwaption as swaptionHelperSwaption{withSwaptionHelper*`SwaptionHelper',preErrorCheck-`String'errorCheck*-}->`Swaption'peekSwaption*#}
+{#fun qlSwaptionHelperSwaption as helperSwaption{withSwaptionHelper*`SwaptionHelper',preErrorCheck-`String'errorCheck*-}->`Swaption'peekSwaption*#}
 
 -- |Times relevant to pricing this calibration helper's instrument, to be added to the model's evolution time grid.
 {#fun qlBlackCalibrationHelperTimes as times{withBlackCalibrationHelper*`GenBlackCalibrationHelper bch',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}

@@ -22,8 +22,8 @@
 -- short-rate leg decorrelated) and 'testZeroBondPricing' as
 -- "QuantLib.Example.HestonHullWhiteMC"; the rest still need bindings this module doesn't have
 -- (a bound 'FdmHestonHullWhiteVanillaEngine', ...) and are left as a further follow-up.
--- 'QuantLib.Process.hybridHestonHullWhiteNumeraire' and the Hull-White process getters
--- ('alpha'\/'hullWhiteForwardB'\/'hullWhiteForwardM') are
+-- 'QuantLib.Process.numeraire' and the Hull-White process getters
+-- ('alpha'\/'bFunction'\/'mFunction') are
 -- checked here against closed forms, and 'stdDeviation'\/'covariance'\/'apply'\/'evolve'
 -- against each other on 'g2Process'.
 {-# LANGUAGE TupleSections #-}
@@ -43,11 +43,11 @@ import QuantLib.TermStructure.Yield(Reference(..), TermPoint(..), RateInterval(.
 import QuantLib.Instrument(npv, setPricingEngine)
 import QuantLib.Instrument.Option(europeanOption, StrikedPayoff(PlainVanilla), PlainVanillaPayoff(..), OptionType(..), Exercise(European), EuropeanExercise(..))
 import qualified QuantLib.Process as Process
-import QuantLib.Process(hestonProcess, hestonProcessPdf, batesProcess, gjrGarchProcess, HestonProcessDiscretization(..), GJRGARCHProcessDiscretization(..)
+import QuantLib.Process(hestonProcess, pdf, batesProcess, gjrGarchProcess, HestonProcessDiscretization(..), GJRGARCHProcessDiscretization(..)
  , g2Process, g2ForwardProcess, phi, setForwardMeasureTime, factors, drift, diffusion, expectation, initialValues, hullWhiteProcess, hullWhiteForwardProcess, hybridHestonHullWhiteProcess, HybridHestonHullWhiteProcessDiscretization(..)
  , liborForwardModelProcess, cashFlows
  , accrualTimes
- , hybridHestonHullWhiteNumeraire, hullWhiteForwardB, hullWhiteForwardM
+ , numeraire, bFunction, mFunction
  , stdDeviation, covariance, apply, evolve)
 import QuantLib.Model(hullWhite, g2, g2Dynamics, shortRate
  , hestonModel, batesModel, gjrGarchModel
@@ -142,11 +142,11 @@ spec = do
         -- exact drift isn't bound, but this is close enough to sit near the density's peak for a
         -- "decays away from it" check.
         let x0 = log spot + (r - q - 0.5 * v0) * t
-        atPeak <- hestonProcessPdf process x0 v0 t 1e-8
+        atPeak <- pdf process x0 v0 t 1e-8
         -- The density well away from the peak, in v or in x, must be markedly smaller than at
         -- the peak.
-        farInV <- hestonProcessPdf process x0 (v0 * 6) t 1e-8
-        farInX <- hestonProcessPdf process (x0 + 4 * sqrt (v0 * t)) v0 t 1e-8
+        farInV <- pdf process x0 (v0 * 6) t 1e-8
+        farInX <- pdf process (x0 + 4 * sqrt (v0 * t)) v0 t 1e-8
         atPeak `shouldSatisfy` (> 0)
         atPeak `shouldSatisfy` (> farInV)
         atPeak `shouldSatisfy` (> farInX)
@@ -581,7 +581,7 @@ spec = do
             mcNpv `shouldSatisfy` closePrec analyticNpv 1.0e-4
           | typ <- [Put, Call], strike <- [80.0, 120.0] ]
 
-    -- 'hybridHestonHullWhiteNumeraire' is by construction P_HW(t, T, x!!2) / P(0, T) -- the
+    -- 'numeraire' is by construction P_HW(t, T, x!!2) / P(0, T) -- the
     -- same Hull-White model the process builds internally from its forward process's a/sigma
     -- and the Heston leg's risk-free curve. Rebuilding that model here and comparing is an
     -- exact identity, not an approximation, so it pins both the formula and the fact that only
@@ -605,7 +605,7 @@ spec = do
 
         sequence_ [ do
             expected <- (/ endDf) <$> discountBond hwModel t bigT r
-            calculated <- hybridHestonHullWhiteNumeraire joint t [100.0, 0.04, r]
+            calculated <- numeraire joint t [100.0, 0.04, r]
             calculated `shouldSatisfy` closePrec expected 1.0e-12
           | t <- [1.0, 3.0, 7.0], r <- [0.0, 0.02, -0.01] ]
 
@@ -625,7 +625,7 @@ spec = do
         setForwardMeasureTime hwFwd 5.0
         joint <- hybridHestonHullWhiteProcess hProcess hwFwd 0.0 HybridHestonHullWhiteEuler
         iv <- initialValues joint
-        calculated <- hybridHestonHullWhiteNumeraire joint 0.0 iv
+        calculated <- numeraire joint 0.0 iv
         calculated `shouldSatisfy` closePrec 1.0 1.0e-12
 
     -- B(t,T) and alpha(t) are the two pieces of Hull-White's affine bond formula
@@ -654,7 +654,7 @@ spec = do
           [0.5, 2.0, 8.0]
 
         mapM_ (\(t, bigT) -> do
-            calculated <- hullWhiteForwardB hwFwd t bigT
+            calculated <- bFunction hwFwd t bigT
             calculated `shouldSatisfy` closePrec ((1 - exp (-a * (bigT - t))) / a) 1.0e-12)
           [(0.0, 1.0), (1.0, 5.0), (3.0, 3.0)]
 
@@ -671,9 +671,9 @@ spec = do
         rTS <- flatForward (ReferenceDate evalDate) rateQ dc Continuous Annual
         hwFwd <- hullWhiteForwardProcess rTS 0.05 0.01
         setForwardMeasureTime hwFwd 10.0
-        zeroStep <- hullWhiteForwardM hwFwd 1.0 1.0 10.0
+        zeroStep <- mFunction hwFwd 1.0 1.0 10.0
         zeroStep `shouldSatisfy` closePrec 0.0 1.0e-14
-        realStep <- hullWhiteForwardM hwFwd 1.0 3.0 10.0
+        realStep <- mFunction hwFwd 1.0 3.0 10.0
         abs realStep `shouldSatisfy` (> 1.0e-8)
 
   where

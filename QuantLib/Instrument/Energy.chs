@@ -10,14 +10,14 @@ module QuantLib.Instrument.Energy
   , CommodityCashFlow
   , CommodityCashFlows
 
-  , commodityCashFlowDate
-  , commodityCashFlowDiscountedAmount
-  , commodityCashFlowUndiscountedAmount
-  , commodityCashFlowDiscountedPaymentAmount
-  , commodityCashFlowUndiscountedPaymentAmount
-  , commodityCashFlowDiscountFactor
-  , commodityCashFlowPaymentDiscountFactor
-  , commodityCashFlowFinalized
+  , date
+  , discountedAmount
+  , undiscountedAmount
+  , discountedPaymentAmount
+  , undiscountedPaymentAmount
+  , discountFactor
+  , paymentDiscountFactor
+  , finalized
 
   , addPricingError
   , secondaryCostAmounts
@@ -108,7 +108,7 @@ type CommodityCashFlows = [CommodityCashFlow]
 
 -- |The cash flow's date -- also the @paymentCashFlows()@ map's own key, so it isn't duplicated as
 -- a separate tuple field alongside the list of 'CommodityCashFlow's.
-{#fun pure qlCommodityCashFlowDate as commodityCashFlowDate{withCommodityCashFlow*`CommodityCashFlow'}->`Day'toDay#}
+{#fun pure qlCommodityCashFlowDate as date{withCommodityCashFlow*`CommodityCashFlow'}->`Day'toDay#}
 
 -- |The discounted amount, in the global commodity base currency ('QuantLib.Commodity.commoditySettingsCurrency').
 --
@@ -116,25 +116,25 @@ type CommodityCashFlows = [CommodityCashFlow]
 -- a C++ exception unwind across the FFI boundary from an 'unsafePerformIO'-backed pure binding is
 -- undefined behavior, so this needs the same 'char **e'\/'preErrorCheck' error channel as any other
 -- throwing call.
-{#fun qlCommodityCashFlowDiscountedAmount as commodityCashFlowDiscountedAmount{withCommodityCashFlow*`CommodityCashFlow',alloca-`Currency'peekCurrencyPtr*,preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlCommodityCashFlowDiscountedAmount as discountedAmount{withCommodityCashFlow*`CommodityCashFlow',alloca-`Currency'peekCurrencyPtr*,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
--- |As 'commodityCashFlowDiscountedAmount', without the discount factor applied.
-{#fun qlCommodityCashFlowUndiscountedAmount as commodityCashFlowUndiscountedAmount{withCommodityCashFlow*`CommodityCashFlow',alloca-`Currency'peekCurrencyPtr*,preErrorCheck-`String'errorCheck*-}->`Double'#}
+-- |As 'discountedAmount', without the discount factor applied.
+{#fun qlCommodityCashFlowUndiscountedAmount as undiscountedAmount{withCommodityCashFlow*`CommodityCashFlow',alloca-`Currency'peekCurrencyPtr*,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |The discounted amount, in the payment (leg) currency.
-{#fun qlCommodityCashFlowDiscountedPaymentAmount as commodityCashFlowDiscountedPaymentAmount{withCommodityCashFlow*`CommodityCashFlow',alloca-`Currency'peekCurrencyPtr*,preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlCommodityCashFlowDiscountedPaymentAmount as discountedPaymentAmount{withCommodityCashFlow*`CommodityCashFlow',alloca-`Currency'peekCurrencyPtr*,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
--- |As 'commodityCashFlowDiscountedPaymentAmount', without the discount factor applied.
-{#fun qlCommodityCashFlowUndiscountedPaymentAmount as commodityCashFlowUndiscountedPaymentAmount{withCommodityCashFlow*`CommodityCashFlow',alloca-`Currency'peekCurrencyPtr*,preErrorCheck-`String'errorCheck*-}->`Double'#}
+-- |As 'discountedPaymentAmount', without the discount factor applied.
+{#fun qlCommodityCashFlowUndiscountedPaymentAmount as undiscountedPaymentAmount{withCommodityCashFlow*`CommodityCashFlow',alloca-`Currency'peekCurrencyPtr*,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |The discount factor applied to the base-currency amount.
-{#fun pure qlCommodityCashFlowDiscountFactor as commodityCashFlowDiscountFactor{withCommodityCashFlow*`CommodityCashFlow'}->`Double'#}
+{#fun pure qlCommodityCashFlowDiscountFactor as discountFactor{withCommodityCashFlow*`CommodityCashFlow'}->`Double'#}
 
 -- |The discount factor applied to the payment-currency amount.
-{#fun pure qlCommodityCashFlowPaymentDiscountFactor as commodityCashFlowPaymentDiscountFactor{withCommodityCashFlow*`CommodityCashFlow'}->`Double'#}
+{#fun pure qlCommodityCashFlowPaymentDiscountFactor as paymentDiscountFactor{withCommodityCashFlow*`CommodityCashFlow'}->`Double'#}
 
 -- |Whether this cash flow's payment date has already occurred as of the evaluation date.
-{#fun pure qlCommodityCashFlowFinalized as commodityCashFlowFinalized{withCommodityCashFlow*`CommodityCashFlow'}->`Bool'#}
+{#fun pure qlCommodityCashFlowFinalized as finalized{withCommodityCashFlow*`CommodityCashFlow'}->`Bool'#}
 
 -- |Record a pricing diagnostic against a 'Commodity'\/'EnergyCommodity' leaf (any of 'EnergyFuture',
 -- 'EnergyVanillaSwap', 'EnergyBasisSwap'), retrievable afterwards via 'pricingErrors'. Mirrors

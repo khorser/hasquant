@@ -3,7 +3,7 @@
 -- "QuantLib.TermStructure.Volatility", which covers forward-looking implied-volatility
 -- surfaces and smiles. None of these classes have any calculations of their own beyond a
 -- single @calculate@ call and are never needed as an argument type elsewhere, so only
--- 'Garch11' -- whose calibrated state ('garch11Alpha' etc.) is queried repeatedly -- gets a
+-- 'Garch11' -- whose calibrated state ('alpha' etc.) is queried repeatedly -- gets a
 -- dedicated Haskell type; every GarmanKlass variant, 'ConstantEstimator', and
 -- 'SimpleLocalEstimator' are bound as a single construct-and-calculate function each.
 module QuantLib.VolatilityModel
@@ -12,13 +12,13 @@ module QuantLib.VolatilityModel
   , Garch11
   , garch11
   , garch11Calibrated
-  , garch11Alpha
-  , garch11Beta
-  , garch11Omega
-  , garch11LtVol
-  , garch11LogLikelihood
-  , garch11Forecast
-  , garch11Calculate
+  , alpha
+  , beta
+  , omega
+  , longTermVolatility
+  , logLikelihood
+  , forecast
+  , calculate
 
   , garmanKlassSimpleSigma
   , garmanKlassSigma1
@@ -66,23 +66,23 @@ garch11Calibrated series = qlGarch11Calibrated dates vals
   ,preErrorCheck-`String'errorCheck*-}->`Garch11'peekGarch11*#}
 
 -- |the calibrated (or constructor-supplied) alpha coefficient
-{#fun pure qlGarch11Alpha as garch11Alpha{withGarch11*`Garch11'}->`Double'#}
+{#fun pure qlGarch11Alpha as alpha{withGarch11*`Garch11'}->`Double'#}
 
 -- |the calibrated (or constructor-supplied) beta coefficient
-{#fun pure qlGarch11Beta as garch11Beta{withGarch11*`Garch11'}->`Double'#}
+{#fun pure qlGarch11Beta as beta{withGarch11*`Garch11'}->`Double'#}
 
 -- |the calibrated (or derived) omega coefficient, @vl * (1 - alpha - beta)@
-{#fun pure qlGarch11Omega as garch11Omega{withGarch11*`Garch11'}->`Double'#}
+{#fun pure qlGarch11Omega as omega{withGarch11*`Garch11'}->`Double'#}
 
 -- |the calibrated (or constructor-supplied) long-term volatility
-{#fun pure qlGarch11LtVol as garch11LtVol{withGarch11*`Garch11'}->`Double'#}
+{#fun pure qlGarch11LtVol as longTermVolatility{withGarch11*`Garch11'}->`Double'#}
 
 -- |the log-likelihood of the calibrated fit; @0@ for a direct-parameter ('garch11') model
-{#fun pure qlGarch11LogLikelihood as garch11LogLikelihood{withGarch11*`Garch11'}->`Double'#}
+{#fun pure qlGarch11LogLikelihood as logLikelihood{withGarch11*`Garch11'}->`Double'#}
 
 -- |one-step-ahead variance forecast: @gamma*vl + alpha*r^2 + beta*sigma2@, given the latest
 -- return @r@ and the previous step's variance @sigma2@.
-{#fun pure qlGarch11Forecast as garch11Forecast{withGarch11*`Garch11'
+{#fun pure qlGarch11Forecast as forecast{withGarch11*`Garch11'
   ,`Double' -- ^r
   ,`Double' -- ^sigma2
   }->`Double'#}
@@ -92,9 +92,9 @@ garch11Calibrated series = qlGarch11Calibrated dates vals
 -- point has nothing to forecast from, so it is dropped, and one extra point is extrapolated one
 -- step past the input series' last date -- an @n@-point input still produces an @n@-point
 -- output, just shifted forward by one date.
-garch11Calculate :: Garch11 -> NonEmpty (Day, Double) -- ^return series
+calculate :: Garch11 -> NonEmpty (Day, Double) -- ^return series
   -> IO [(Day, Double)]
-garch11Calculate g series = do
+calculate g series = do
   (ds, vs) <- qlGarch11Calculate g dates vals
   return $ zip ds vs
   where (dates, vals) = unzip (toList series)

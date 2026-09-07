@@ -872,21 +872,21 @@ spec = do
           let tenors = [(n, Years) | n <- [1 .. 10]]
           qs <- mapM (const (Quote.simpleQuote 0.18)) tenors
           curve <- Vol.abcdAtmVolCurve 0 cal (fromList $ zip3 tenors qs (replicate 10 True)) Following dc
-          rmsErr <- Vol.abcdAtmVolCurveRmsError curve
+          rmsErr <- Vol.abcdRmsError curve
           rmsErr `shouldSatisfy` (< 0.05)
-          maxErr <- Vol.abcdAtmVolCurveMaxError curve
+          maxErr <- Vol.abcdMaxError curve
           maxErr `shouldSatisfy` (< 0.05)
-          _ <- Vol.abcdAtmVolCurveA curve
-          _ <- Vol.abcdAtmVolCurveB curve
-          _ <- Vol.abcdAtmVolCurveC curve
-          _ <- Vol.abcdAtmVolCurveD curve
-          _ <- Vol.abcdAtmVolCurveEndCriteria curve
-          ks <- Vol.abcdAtmVolCurveK curve
+          _ <- Vol.abcdA curve
+          _ <- Vol.abcdB curve
+          _ <- Vol.abcdC curve
+          _ <- Vol.abcdD curve
+          _ <- Vol.abcdEndCriteria curve
+          ks <- Vol.abcdK curve
           length ks `shouldBe` 10
           returnedTenors <- Vol.abcdAtmVolCurveOptionTenors curve
           length returnedTenors `shouldBe` 10
-          optionDates <- Vol.abcdAtmVolCurveOptionDates curve
-          optionTimes <- Vol.abcdAtmVolCurveOptionTimes curve
+          optionDates <- Vol.abcdOptionDates curve
+          optionTimes <- Vol.abcdOptionTimes curve
           let maturityCoordinates = [ Vol.OptionTenor (5, Years)
                                     , Vol.OptionDate (optionDates !! 4)
                                     , Vol.OptionTime (optionTimes !! 4)
@@ -1949,14 +1949,14 @@ spec = do
             Vol.AndreasenHugeInterpolationCubicSpline Vol.AndreasenHugeCalibrationAndreasenHugeCall 100
             Nothing Nothing (LevenbergMarquardt 1.0e-8 1.0e-8 1.0e-8 False)
             (EndCriteria 100 20 1.0e-10 1.0e-10 1.0e-10)
-          (_, maxError, avgError) <- Vol.andreasenHugeVolatilityInterpolationCalibrationError interpl
+          (_, maxError, avgError) <- Vol.andreasenHugeCalibrationError interpl
           maxError `shouldSatisfy` (< 0.05)
           avgError `shouldSatisfy` (< 0.05)
-          fwd <- Vol.andreasenHugeVolatilityInterpolationFwd interpl 1.0
+          fwd <- Vol.andreasenHugeForward interpl 1.0
           fwd `shouldSatisfy` closePrec 100.0 1.0e-10
-          price <- Vol.andreasenHugeVolatilityInterpolationOptionPrice interpl 1.0 100 Call
+          price <- Vol.andreasenHugeOptionPrice interpl 1.0 100 Call
           price `shouldSatisfy` (> 0.0)
-          directLocal <- Vol.andreasenHugeVolatilityInterpolationLocalVol interpl 1.0 100
+          directLocal <- Vol.andreasenHugeLocalVol interpl 1.0 100
           directLocal `shouldSatisfy` (> 0.0)
           _ <- Vol.andreasenHugeVolatilityAdapter interpl 1.0e-6
           local <- Vol.andreasenHugeLocalVolAdapter interpl
@@ -2032,7 +2032,7 @@ spec = do
             Vol.AndreasenHugeInterpolationCubicSpline Vol.AndreasenHugeCalibrationAndreasenHugePut 500
             Nothing Nothing (LevenbergMarquardt 1.0e-8 1.0e-8 1.0e-8 False)
             (EndCriteria 500 100 1.0e-12 1.0e-10 1.0e-10)
-          (_, maxError, avgError) <- Vol.andreasenHugeVolatilityInterpolationCalibrationError interpl
+          (_, maxError, avgError) <- Vol.andreasenHugeCalibrationError interpl
           maxError `shouldSatisfy` (< 0.0015)
           avgError `shouldSatisfy` (< 0.00035)
 

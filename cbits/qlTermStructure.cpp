@@ -1402,7 +1402,7 @@ double qlCommodityIndexForwardPrice(QlCommodityIndex *o, int date, char **e) {
 
 // lastQuoteDate() -> timeSeries().lastDate(), which QL_REQUIREs a non-empty historical fixing
 // series -- check emptiness first (via CommodityIndex::empty(), itself just timeSeries().empty())
-// rather than catching the exception, so callers can check commodityIndexEmpty first if they want.
+// rather than catching the exception, so callers can check isEmpty first if they want.
 int qlCommodityIndexLastQuoteDate(QlCommodityIndex *o, char **e) {
   try {return (*arg(o))->lastQuoteDate().serialNumber();
   } catch (std::exception& er) {return handleException<int>(e, er);}}

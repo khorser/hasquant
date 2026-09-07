@@ -30,7 +30,7 @@ import QuantLib.Instrument.Option hiding(deltaForward, vega, rho, dividendRho, s
 import qualified QuantLib.Instrument.Option as Opt(rho, vega, dividendRho)
 import QuantLib.Instrument.CapFloor(cap)
 import QuantLib.Instrument.Swap(varianceSwap, vanillaSwap, floatingLeg, SwapType(..))
-import QuantLib.Process hiding(blackScholesTheta)
+import QuantLib.Process hiding(thetaAt)
 import QuantLib.Model hiding(setPricingEngine, value)
 import QuantLib.Math(RngTrait(..), StatisticsTrait(..), PolynomialType(..), BinomialTree(..), FdmScheme(..), boxedRealMatrix, ComplexLogFormula(..)
   ,SobolDirectionIntegers(..), realMatrixRows, realMatrixColumns, realMatrixData)
@@ -493,14 +493,14 @@ spec = do
         refVolQuotes <- mapM simpleQuote refVols
         interp <- sabrInterpolatedSmileSection optionDate forwardQuote (fromList $ zip strikes refVolQuotes) False atmVolQ
           alpha_ beta_ nu rho_ defaultSabrInterpolatedSmileSectionOpts
-        rms <- sabrInterpolatedSmileSectionRmsError interp
-        maxErr <- sabrInterpolatedSmileSectionMaxError interp
+        rms <- sabrRmsError interp
+        maxErr <- sabrMaxError interp
         rms `shouldSatisfy` (< 1e-6)
         maxErr `shouldSatisfy` (< 1e-6)
 
         -- the upcast escape hatch: volatility through the generic SmileSection interface (only
         -- reachable this way now that the concrete type has no smileSectionVolatility of its own).
-        generic <- sabrInterpolatedSmileSectionAsSmileSection interp
+        generic <- sabrAsSmileSection interp
         forM_ (zip strikes refVols) $ \(k, expected) -> do
           got <- smileSectionVolatility generic k
           got `shouldSatisfy` closePrec expected 1e-6
@@ -534,14 +534,14 @@ spec = do
         refVolQuotes <- mapM simpleQuote refVols
         interp <- sviInterpolatedSmileSection optionDate forwardQuote (fromList $ zip strikes refVolQuotes)
           False atmVolQ a_ b_ sigma_ rho_ m_ False False False False False True Nothing Nothing act365
-        rms <- sviInterpolatedSmileSectionRmsError interp
-        maxErr <- sviInterpolatedSmileSectionMaxError interp
+        rms <- sviRmsError interp
+        maxErr <- sviMaxError interp
         rms `shouldSatisfy` (< 1e-6)
         maxErr `shouldSatisfy` (< 1e-6)
 
         -- the upcast escape hatch: volatility through the generic SmileSection interface (only
         -- reachable this way now that the concrete type has no smileSectionVolatility of its own).
-        genericSection <- sviInterpolatedSmileSectionAsSmileSection interp
+        genericSection <- sviAsSmileSection interp
         forM_ (zip strikes refVols) $ \(k, expected) -> do
           got <- smileSectionVolatility genericSection k
           got `shouldSatisfy` closePrec expected 1e-6
@@ -561,9 +561,9 @@ spec = do
         refVolQuotes <- mapM simpleQuote refVols
         interp <- sviInterpolatedSmileSection optionDate forwardQuote (fromList $ zip strikes refVolQuotes)
           False atmVolQ a_ b_ sigma_ rho_ m_ False False False False True True Nothing Nothing act365
-        calibratedM <- sviInterpolatedSmileSectionM interp
+        calibratedM <- sviM interp
         calibratedM `shouldBe` m_
-        rms <- sviInterpolatedSmileSectionRmsError interp
+        rms <- sviRmsError interp
         rms `shouldSatisfy` (< 1e-6)
 
   -- NoArbSabrInterpolatedSmileSection has no upstream test-suite fixture of its own either (only
@@ -590,14 +590,14 @@ spec = do
         refVolQuotes <- mapM simpleQuote refVols
         interp <- noArbSabrInterpolatedSmileSection optionDate forwardQuote (fromList $ zip strikes refVolQuotes)
           False atmVolQ alpha_ beta_ nu rho_ False False False False True Nothing Nothing act365
-        rms <- noArbSabrInterpolatedSmileSectionRmsError interp
-        maxErr <- noArbSabrInterpolatedSmileSectionMaxError interp
+        rms <- noArbSabrRmsError interp
+        maxErr <- noArbSabrMaxError interp
         rms `shouldSatisfy` (< 1e-6)
         maxErr `shouldSatisfy` (< 1e-6)
 
         -- the upcast escape hatch: volatility through the generic SmileSection interface (only
         -- reachable this way now that the concrete type has no smileSectionVolatility of its own).
-        genericSection <- noArbSabrInterpolatedSmileSectionAsSmileSection interp
+        genericSection <- noArbSabrAsSmileSection interp
         forM_ (zip strikes refVols) $ \(k, expected) -> do
           got <- smileSectionVolatility genericSection k
           got `shouldSatisfy` closePrec expected 1e-6
@@ -1462,7 +1462,7 @@ spec = do
         fxVolTS <- blackConstantVol (CalendarReferenceDate today') tgt fxVolQ dc
         fdmHelper <- fdmQuantoHelper domesticTS foreignTS fxVolTS equityFxCorrelation exchRateATMlevel
 
-        calculatedQuantoAdj <- fdmQuantoHelperQuantoAdjustment fdmHelper vol 0.0 1.0
+        calculatedQuantoAdj <- quantoAdjustment fdmHelper vol 0.0 1.0
         let expectedQuantoAdj = domesticR - foreignR + equityFxCorrelation * vol * fxVol
         calculatedQuantoAdj `shouldSatisfy` closePrec expectedQuantoAdj 1.0e-10
 

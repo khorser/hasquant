@@ -17,32 +17,32 @@ module QuantLib.Index
 
   , HistoricalIndexAnalysis
   , historicalIndexAnalysis
-  , historicalIndexAnalysisSkipped
-  , historicalIndexAnalysisMean
-  , historicalIndexAnalysisStandardDeviation
-  , historicalIndexAnalysisSkewness
-  , historicalIndexAnalysisKurtosis
-  , historicalIndexAnalysisMin
-  , historicalIndexAnalysisMax
-  , historicalIndexAnalysisSemiVariance
-  , historicalIndexAnalysisSemiDeviation
-  , historicalIndexAnalysisDownsideVariance
-  , historicalIndexAnalysisDownsideDeviation
-  , historicalIndexAnalysisPercentile
-  , historicalIndexAnalysisGaussianPercentile
-  , historicalIndexAnalysisValueAtRisk
-  , historicalIndexAnalysisPotentialUpside
-  , historicalIndexAnalysisGaussianPotentialUpside
-  , historicalIndexAnalysisRegret
-  , historicalIndexAnalysisShortfall
-  , historicalIndexAnalysisGaussianShortfall
-  , historicalIndexAnalysisAverageShortfall
-  , historicalIndexAnalysisGaussianAverageShortfall
-  , historicalIndexAnalysisGaussianValueAtRisk
-  , historicalIndexAnalysisExpectedShortfall
-  , historicalIndexAnalysisGaussianExpectedShortfall
-  , historicalIndexAnalysisCovariance
-  , historicalIndexAnalysisCorrelation
+  , skipped
+  , mean
+  , standardDeviation
+  , skewness
+  , kurtosis
+  , minimumReturn
+  , maximumReturn
+  , semiVariance
+  , semiDeviation
+  , downsideVariance
+  , downsideDeviation
+  , percentile
+  , gaussianPercentile
+  , valueAtRisk
+  , potentialUpside
+  , gaussianPotentialUpside
+  , regret
+  , shortfall
+  , gaussianShortfall
+  , averageShortfall
+  , gaussianAverageShortfall
+  , gaussianValueAtRisk
+  , expectedShortfall
+  , gaussianExpectedShortfall
+  , covariance
+  , correlation
   ) where
 import QuantLib.Internal
 import QuantLib.Internal.Common
@@ -109,7 +109,7 @@ fixingHistory i = do
 -- and downside-variance and -deviation\/percentiles\/value-at-risk\/expected shortfall,
 -- empirical and gaussian-assumption\/covariance\/correlation) over historical fixings of the
 -- given indexes, sampled every @step@ between @startDate@ and @endDate@. A date/index pair whose
--- fixing is unavailable is recorded in 'historicalIndexAnalysisSkipped' rather than failing the whole analysis.
+-- fixing is unavailable is recorded in 'skipped' rather than failing the whole analysis.
 -- 'SequenceStatistics' itself isn't given a dedicated Haskell type: it's only ever the
 -- accumulator this constructor fills internally, with no other use in hasquant, so its full
 -- risk-statistics surface is exposed directly as accessors here (see CLAUDE.md's \"don't mirror
@@ -121,8 +121,8 @@ fixingHistory i = do
   ,preErrorCheck-`String'errorCheck*-}->`HistoricalIndexAnalysis'peekHistoricalIndexAnalysis*#}
 
 -- |Skipped fixing dates paired with the reason no complete fixing vector was available.
-historicalIndexAnalysisSkipped :: HistoricalIndexAnalysis -> IO [(Day, String)]
-historicalIndexAnalysisSkipped analysis = do
+skipped :: HistoricalIndexAnalysis -> IO [(Day, String)]
+skipped analysis = do
   dates <- qlHistoricalIndexAnalysisSkippedDates analysis
   messages <- qlHistoricalIndexAnalysisSkippedMessages analysis
   pure (zip dates messages)
@@ -130,102 +130,102 @@ historicalIndexAnalysisSkipped analysis = do
 {#fun qlHistoricalIndexAnalysisSkippedDatesErrorMessage as qlHistoricalIndexAnalysisSkippedMessages{withHistoricalIndexAnalysis*`HistoricalIndexAnalysis',preArray-`[String]'&peekCStringArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Per-index mean of the historical relative returns actually sampled.
-{#fun qlHistoricalIndexAnalysisMean as historicalIndexAnalysisMean{withHistoricalIndexAnalysis*`HistoricalIndexAnalysis',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlHistoricalIndexAnalysisMean as mean{withHistoricalIndexAnalysis*`HistoricalIndexAnalysis',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Per-index standard deviation of the historical relative returns actually sampled.
-{#fun qlHistoricalIndexAnalysisStandardDeviation as historicalIndexAnalysisStandardDeviation{withHistoricalIndexAnalysis*`HistoricalIndexAnalysis',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlHistoricalIndexAnalysisStandardDeviation as standardDeviation{withHistoricalIndexAnalysis*`HistoricalIndexAnalysis',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Per-index skewness of the historical relative returns actually sampled.
-{#fun qlHistoricalIndexAnalysisSkewness as historicalIndexAnalysisSkewness{withHistoricalIndexAnalysis*`HistoricalIndexAnalysis',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlHistoricalIndexAnalysisSkewness as skewness{withHistoricalIndexAnalysis*`HistoricalIndexAnalysis',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Per-index (excess) kurtosis of the historical relative returns actually sampled.
-{#fun qlHistoricalIndexAnalysisKurtosis as historicalIndexAnalysisKurtosis{withHistoricalIndexAnalysis*`HistoricalIndexAnalysis',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlHistoricalIndexAnalysisKurtosis as kurtosis{withHistoricalIndexAnalysis*`HistoricalIndexAnalysis',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Per-index minimum of the historical relative returns actually sampled.
-{#fun qlHistoricalIndexAnalysisMin as historicalIndexAnalysisMin{withHistoricalIndexAnalysis*`HistoricalIndexAnalysis',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlHistoricalIndexAnalysisMin as minimumReturn{withHistoricalIndexAnalysis*`HistoricalIndexAnalysis',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Per-index maximum of the historical relative returns actually sampled.
-{#fun qlHistoricalIndexAnalysisMax as historicalIndexAnalysisMax{withHistoricalIndexAnalysis*`HistoricalIndexAnalysis',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlHistoricalIndexAnalysisMax as maximumReturn{withHistoricalIndexAnalysis*`HistoricalIndexAnalysis',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Per-index variance of the historical relative returns falling below the mean.
-{#fun qlHistoricalIndexAnalysisSemiVariance as historicalIndexAnalysisSemiVariance{withHistoricalIndexAnalysis*`HistoricalIndexAnalysis',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlHistoricalIndexAnalysisSemiVariance as semiVariance{withHistoricalIndexAnalysis*`HistoricalIndexAnalysis',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
--- |Per-index square root of 'historicalIndexAnalysisSemiVariance'.
-{#fun qlHistoricalIndexAnalysisSemiDeviation as historicalIndexAnalysisSemiDeviation{withHistoricalIndexAnalysis*`HistoricalIndexAnalysis',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+-- |Per-index square root of 'semiVariance'.
+{#fun qlHistoricalIndexAnalysisSemiDeviation as semiDeviation{withHistoricalIndexAnalysis*`HistoricalIndexAnalysis',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Per-index variance of the historical relative returns falling below zero.
-{#fun qlHistoricalIndexAnalysisDownsideVariance as historicalIndexAnalysisDownsideVariance{withHistoricalIndexAnalysis*`HistoricalIndexAnalysis',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlHistoricalIndexAnalysisDownsideVariance as downsideVariance{withHistoricalIndexAnalysis*`HistoricalIndexAnalysis',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
--- |Per-index square root of 'historicalIndexAnalysisDownsideVariance'.
-{#fun qlHistoricalIndexAnalysisDownsideDeviation as historicalIndexAnalysisDownsideDeviation{withHistoricalIndexAnalysis*`HistoricalIndexAnalysis',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+-- |Per-index square root of 'downsideVariance'.
+{#fun qlHistoricalIndexAnalysisDownsideDeviation as downsideDeviation{withHistoricalIndexAnalysis*`HistoricalIndexAnalysis',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Per-index empirical @y@-th percentile of the historical relative returns actually sampled;
 -- @y@ must lie in @[0.9, 1.0)@.
-{#fun qlHistoricalIndexAnalysisPercentile as historicalIndexAnalysisPercentile{withHistoricalIndexAnalysis*`HistoricalIndexAnalysis'
+{#fun qlHistoricalIndexAnalysisPercentile as percentile{withHistoricalIndexAnalysis*`HistoricalIndexAnalysis'
   ,`Double' -- ^y
   ,preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Per-index @y@-th percentile assuming the historical relative returns are gaussian; @y@ must lie in @[0.9, 1.0)@.
-{#fun qlHistoricalIndexAnalysisGaussianPercentile as historicalIndexAnalysisGaussianPercentile{withHistoricalIndexAnalysis*`HistoricalIndexAnalysis'
+{#fun qlHistoricalIndexAnalysisGaussianPercentile as gaussianPercentile{withHistoricalIndexAnalysis*`HistoricalIndexAnalysis'
   ,`Double' -- ^y
   ,preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Per-index empirical value-at-risk at the given @centile@, which must lie in @[0.9, 1.0)@.
-{#fun qlHistoricalIndexAnalysisValueAtRisk as historicalIndexAnalysisValueAtRisk{withHistoricalIndexAnalysis*`HistoricalIndexAnalysis'
+{#fun qlHistoricalIndexAnalysisValueAtRisk as valueAtRisk{withHistoricalIndexAnalysis*`HistoricalIndexAnalysis'
   ,`Double' -- ^centile
   ,preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Per-index value-at-risk at the given @centile@ assuming the historical relative returns are gaussian; @centile@ must lie in @[0.9, 1.0)@.
-{#fun qlHistoricalIndexAnalysisGaussianValueAtRisk as historicalIndexAnalysisGaussianValueAtRisk{withHistoricalIndexAnalysis*`HistoricalIndexAnalysis'
+{#fun qlHistoricalIndexAnalysisGaussianValueAtRisk as gaussianValueAtRisk{withHistoricalIndexAnalysis*`HistoricalIndexAnalysis'
   ,`Double' -- ^centile
   ,preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Per-index empirical expected shortfall at the given @centile@, which must lie in @[0.9, 1.0)@.
 -- Throws if no sampled return falls below the value-at-risk threshold.
-{#fun qlHistoricalIndexAnalysisExpectedShortfall as historicalIndexAnalysisExpectedShortfall{withHistoricalIndexAnalysis*`HistoricalIndexAnalysis'
+{#fun qlHistoricalIndexAnalysisExpectedShortfall as expectedShortfall{withHistoricalIndexAnalysis*`HistoricalIndexAnalysis'
   ,`Double' -- ^centile
   ,preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Per-index expected shortfall at the given @centile@ assuming the historical relative returns
 -- are gaussian; @centile@ must lie in @[0.9, 1.0)@.
-{#fun qlHistoricalIndexAnalysisGaussianExpectedShortfall as historicalIndexAnalysisGaussianExpectedShortfall{withHistoricalIndexAnalysis*`HistoricalIndexAnalysis'
+{#fun qlHistoricalIndexAnalysisGaussianExpectedShortfall as gaussianExpectedShortfall{withHistoricalIndexAnalysis*`HistoricalIndexAnalysis'
   ,`Double' -- ^centile
   ,preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Per-index empirical potential upside at the given @centile@, which must lie in @[0.9, 1.0)@ --
--- the upside counterpart of 'historicalIndexAnalysisValueAtRisk'.
-{#fun qlHistoricalIndexAnalysisPotentialUpside as historicalIndexAnalysisPotentialUpside{withHistoricalIndexAnalysis*`HistoricalIndexAnalysis'
+-- the upside counterpart of 'valueAtRisk'.
+{#fun qlHistoricalIndexAnalysisPotentialUpside as potentialUpside{withHistoricalIndexAnalysis*`HistoricalIndexAnalysis'
   ,`Double' -- ^centile
   ,preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Per-index potential upside at the given @centile@ assuming the historical relative returns
 -- are gaussian; @centile@ must lie in @[0.9, 1.0)@.
-{#fun qlHistoricalIndexAnalysisGaussianPotentialUpside as historicalIndexAnalysisGaussianPotentialUpside{withHistoricalIndexAnalysis*`HistoricalIndexAnalysis'
+{#fun qlHistoricalIndexAnalysisGaussianPotentialUpside as gaussianPotentialUpside{withHistoricalIndexAnalysis*`HistoricalIndexAnalysis'
   ,`Double' -- ^centile
   ,preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Per-index regret at the given @target@: expected loss below target, conditional on being below it.
-{#fun qlHistoricalIndexAnalysisRegret as historicalIndexAnalysisRegret{withHistoricalIndexAnalysis*`HistoricalIndexAnalysis'
+{#fun qlHistoricalIndexAnalysisRegret as regret{withHistoricalIndexAnalysis*`HistoricalIndexAnalysis'
   ,`Double' -- ^target
   ,preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Per-index empirical probability of falling below @target@.
-{#fun qlHistoricalIndexAnalysisShortfall as historicalIndexAnalysisShortfall{withHistoricalIndexAnalysis*`HistoricalIndexAnalysis'
+{#fun qlHistoricalIndexAnalysisShortfall as shortfall{withHistoricalIndexAnalysis*`HistoricalIndexAnalysis'
   ,`Double' -- ^target
   ,preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Per-index probability of falling below @target@ assuming the historical relative returns are gaussian.
-{#fun qlHistoricalIndexAnalysisGaussianShortfall as historicalIndexAnalysisGaussianShortfall{withHistoricalIndexAnalysis*`HistoricalIndexAnalysis'
+{#fun qlHistoricalIndexAnalysisGaussianShortfall as gaussianShortfall{withHistoricalIndexAnalysis*`HistoricalIndexAnalysis'
   ,`Double' -- ^target
   ,preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Per-index empirical average shortfall (expected loss below @target@, unconditional) at the given @target@.
-{#fun qlHistoricalIndexAnalysisAverageShortfall as historicalIndexAnalysisAverageShortfall{withHistoricalIndexAnalysis*`HistoricalIndexAnalysis'
+{#fun qlHistoricalIndexAnalysisAverageShortfall as averageShortfall{withHistoricalIndexAnalysis*`HistoricalIndexAnalysis'
   ,`Double' -- ^target
   ,preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Per-index average shortfall at the given @target@ assuming the historical relative returns are gaussian.
-{#fun qlHistoricalIndexAnalysisGaussianAverageShortfall as historicalIndexAnalysisGaussianAverageShortfall{withHistoricalIndexAnalysis*`HistoricalIndexAnalysis'
+{#fun qlHistoricalIndexAnalysisGaussianAverageShortfall as gaussianAverageShortfall{withHistoricalIndexAnalysis*`HistoricalIndexAnalysis'
   ,`Double' -- ^target
   ,preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
@@ -233,15 +233,15 @@ toMatrixDouble :: (Word, Word, [Double]) -> Matrix Double
 toMatrixDouble (r, c, d) = Matrix r c d
 
 -- |Covariance matrix of the historical relative returns across indexes.
-historicalIndexAnalysisCovariance :: HistoricalIndexAnalysis -> IO (Matrix Double)
-historicalIndexAnalysisCovariance hra = toMatrixDouble <$> qlHistoricalIndexAnalysisCovariance hra
+covariance :: HistoricalIndexAnalysis -> IO (Matrix Double)
+covariance hra = toMatrixDouble <$> qlHistoricalIndexAnalysisCovariance hra
 {#fun qlHistoricalIndexAnalysisCovariance{withHistoricalIndexAnalysis*`HistoricalIndexAnalysis'
   ,prePtr-`Word'peekWord*,prePtr-`Word'peekWord*,preArray-`[Double]'&peekDoubleArray*
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Correlation matrix of the historical relative returns across indexes.
-historicalIndexAnalysisCorrelation :: HistoricalIndexAnalysis -> IO (Matrix Double)
-historicalIndexAnalysisCorrelation hra = toMatrixDouble <$> qlHistoricalIndexAnalysisCorrelation hra
+correlation :: HistoricalIndexAnalysis -> IO (Matrix Double)
+correlation hra = toMatrixDouble <$> qlHistoricalIndexAnalysisCorrelation hra
 {#fun qlHistoricalIndexAnalysisCorrelation{withHistoricalIndexAnalysis*`HistoricalIndexAnalysis'
   ,prePtr-`Word'peekWord*,prePtr-`Word'peekWord*,preArray-`[Double]'&peekDoubleArray*
   ,preErrorCheck-`String'errorCheck*-}->`()'#}

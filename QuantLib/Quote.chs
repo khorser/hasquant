@@ -24,7 +24,7 @@ module QuantLib.Quote
   , forwardValueQuote
   , futuresConvAdjustmentQuoteFromImmCode
   , futuresConvAdjustmentQuote
-  , futuresConvAdjustmentQuoteFuturesValue
+  , futuresValue
   , impliedStdDevQuote
   , lastFixingQuote
   , relinkableQuote
@@ -130,7 +130,7 @@ import QuantLib.Internal.Type
   ,preErrorCheck-`String'errorCheck*-}->`FuturesConvAdjustmentQuote'peekFuturesConvAdjustmentQuote*#}
 
 -- |The futures-vs-forward-rate value implied by the futures quote alone (@futuresQuote_->value()@).
-{#fun qlFuturesConvAdjustmentQuoteFuturesValue as futuresConvAdjustmentQuoteFuturesValue{withGenQuote*`FuturesConvAdjustmentQuote',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlFuturesConvAdjustmentQuoteFuturesValue as futuresValue{withGenQuote*`FuturesConvAdjustmentQuote',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |implied standard deviation of an underlying, solved from its option price at a given strike
 {#fun qlImpliedStdDevQuote as impliedStdDevQuote{fromEnumC`OptionType',withQuote*`GenQuote q1' -- ^forward
