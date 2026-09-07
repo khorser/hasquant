@@ -508,6 +508,8 @@ extern "C" {
   QlYieldTermStructure* qlZeroSpreadedTermStructure(QlYieldTermStructure* x0, QlQuote* spread, int comp, int freq, char **e);
   int qlTermStructureReferenceDate(QlTermStructure* o, char **e);
   int qlTermStructureMaxDate(QlTermStructure* o, char **e);
+  int qlTermStructureAllowsExtrapolation(QlTermStructure* o);
+  void qlTermStructureSetExtrapolation(QlTermStructure* o, int enabled);
   void qlFreeTermStructure(QlTermStructure *o);
   QlTermStructure* qlYieldTermStructureAsTermStructure(QlYieldTermStructure *o);
   QlYieldTermStructure* qlImpliedTermStructure(QlYieldTermStructure* x0, int referenceDate, char **e);

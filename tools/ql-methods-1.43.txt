@@ -4297,9 +4297,9 @@
 | |ql/math/interpolations/cubicinterpolation.hpp|Real CubicInterpolationImpl::derivative(Real x) const;
 | |ql/math/interpolations/cubicinterpolation.hpp|Real CubicInterpolationImpl::secondDerivative(Real x) const;
 | |ql/math/interpolations/extrapolation.hpp|Extrapolator::Extrapolator();
-| |ql/math/interpolations/extrapolation.hpp|void Extrapolator::enableExtrapolation(bool b = true);
-| |ql/math/interpolations/extrapolation.hpp|void Extrapolator::disableExtrapolation(bool b = true);
-| |ql/math/interpolations/extrapolation.hpp|bool Extrapolator::allowsExtrapolation() const;
+|v|ql/math/interpolations/extrapolation.hpp|void Extrapolator::enableExtrapolation(bool b = true);
+|x|ql/math/interpolations/extrapolation.hpp|void Extrapolator::disableExtrapolation(bool b = true);
+|v|ql/math/interpolations/extrapolation.hpp|bool Extrapolator::allowsExtrapolation() const;
 | |ql/math/interpolations/flatextrapolation.hpp|FlatExtrapolator::FlatExtrapolator(ext::shared_ptr<Interpolation> decoratedInterpolation);
 | |ql/math/interpolations/flatextrapolation.hpp|FlatExtrapolatorImpl::FlatExtrapolatorImpl(ext::shared_ptr<Interpolation> decoratedInterpolation);
 | |ql/math/interpolations/flatextrapolation2d.hpp|FlatExtrapolator2D::FlatExtrapolator2D(const ext::shared_ptr<Interpolation2D> & decoratedInterpolation);

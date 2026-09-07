@@ -1908,6 +1908,8 @@ QlOvernightIndexedSwap* qlOISRateHelperSwap(QlOISRateHelper* o, char **e) {
 QlVanillaSwap* qlSwapRateHelperSwap(QlSwapRateHelper* o, char **e) {try {return ret(new QlVanillaSwap((*arg(o))->swap()));} catch (std::exception& er) {return handleException<QlVanillaSwap*>(e, er);} }
 int qlTermStructureReferenceDate(QlTermStructure* o, char **e) {try {return (*arg(o))->referenceDate().serialNumber();} catch (std::exception& er) {return handleException<int>(e, er);}}
 int qlTermStructureMaxDate(QlTermStructure* o, char **e) {try {return (*arg(o))->maxDate().serialNumber();} catch (std::exception& er) {return handleException<int>(e, er);}}
+int qlTermStructureAllowsExtrapolation(QlTermStructure* o) {return (*arg(o))->allowsExtrapolation();}
+void qlTermStructureSetExtrapolation(QlTermStructure* o, int enabled) {(*arg(o))->enableExtrapolation(enabled);}
 QlYieldTermStructure* qlImpliedTermStructure(QlYieldTermStructure* x0, int referenceDate, char **e) {
   try {return ret(new QlYieldTermStructure(shared_ptr<YieldTermStructure>(alloc(new ImpliedTermStructure(*arg(x0), Date(referenceDate))))));
   } catch (std::exception& er) {return handleException<QlYieldTermStructure*>(e, er);}}

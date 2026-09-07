@@ -102,6 +102,16 @@ spec = do
 
         mapM_ (\(x1, x2) -> x1 `shouldSatisfy` areClose x2) (zip expected calculated)
 
+      it "controls extrapolation through the common term-structure interface" $ do
+        flatRate <- Quote.simpleQuote 0.03
+        dc <- dayCounter (Actual360 False)
+        ts <- flatForward (fromGregorian 2025 1 2) flatRate dc IR.Continuous Annual
+        allowsExtrapolation ts `shouldReturn` False
+        setExtrapolation ts True
+        allowsExtrapolation ts `shouldReturn` True
+        setExtrapolation ts False
+        allowsExtrapolation ts `shouldReturn` False
+
       it "implied" $
         Settings.keepingSettingsGc $ do
           (cal, settlementDays, ts) <- setup

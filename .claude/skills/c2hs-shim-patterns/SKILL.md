@@ -11,6 +11,13 @@ C shim suffixes exist only to disambiguate ABI symbols. Do not expose them as tr
 
 Prefer a public capability class over repeated type-prefixed names for related bound types that provide an operation with exactly the same type and semantics. Do not use a class solely to avoid qualified imports, and do not merge same-named upstream methods whose remaining arguments or meanings differ. Multi-parameter instances may encode supported coordinate combinations; a sum-typed argument is the better fit when one operation accepts a closed set of genuinely interchangeable representations.
 
+Fixed-date and evaluation-date-relative constructor overloads with the same remaining surface use
+`QuantLib.TermStructure.Reference`; constructors whose fixed and moving overloads both take a
+separate calendar use `CalendarReference`. Keep their C entry points separate and dispatch in a
+small Haskell wrapper: reference selection is construction-time data, not a mutable property, and
+abstracting variable-arity constructor functions through TH obscures the public type. A genuinely
+different upstream tail remains an explicit `Moving` function.
+
 ## `{#pointer#}` flags and bare-backtick return specs
 
 **`{#pointer#}` flags decide what a bare-backtick `{#fun#}` return spec
