@@ -51,7 +51,7 @@ run = do
       Nothing TS.LastRelevantDate Nothing False Nothing Nothing Nothing
       >>= TS.asRateHelper
 
-  swapTS <- TS.piecewiseYieldCurveMoving 2 cal (fromList swapHelpers) actActISDA []
+  swapTS <- TS.piecewiseYieldCurve (TS.SettlementDays 2 cal) (fromList swapHelpers) actActISDA []
     (TS.Iterative TS.Discount LogLinear TS.defaultIterativeBootstrapOpts) True
 
   riskFreeEngine <- discountingSwapEngine swapTS Nothing Nothing Nothing

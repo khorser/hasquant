@@ -54,7 +54,7 @@ mkCurve :: Double -> IO TS.YieldTermStructure
 mkCurve r = do
   q <- simpleQuote r
   dc <- dayCounter Actual365FixedStandard
-  TS.flatForward valueDate q dc Continuous Annual
+  TS.flatForward (TS.ReferenceDate valueDate) q dc Continuous Annual
 
 -- |Hand the curve to a consumer and return only the consumer. The curve's ForeignPtr dies
 -- here; the consumer's copied Handle, and the Link it shares, are all that keep it alive.

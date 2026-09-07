@@ -153,7 +153,7 @@ run = do
   idx1 <- customZeroInflationIndex "WL CPI" reg False Monthly obsLagI gbp (Just zeroCurve)
 
   nominalQ <- simpleQuote nominalRate
-  nominalCurve <- flatForward evalDate nominalQ dc Continuous Annual
+  nominalCurve <- flatForward (ReferenceDate evalDate) nominalQ dc Continuous Annual
   swapEngine <- discountingSwapEngine nominalCurve Nothing Nothing Nothing
   bondEngine <- discountingBondEngine nominalCurve Nothing
 

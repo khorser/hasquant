@@ -38,7 +38,7 @@ run = do
   setEvaluationDate $ Just evalDate
   flatRate <- simpleQuote 0.01
   dc <- dayCounter Actual365FixedStandard
-  ts <- flatForward evalDate flatRate dc Continuous Annual
+  ts <- flatForward (ReferenceDate evalDate) flatRate dc Continuous Annual
   settlementDate <- advance cal evalDate (1, Days) Following False
   maturities <- mapM (addPeriod settlementDate . (, Months)) [3, 6, 12, 24] >>= mapM (\d -> adjust cal d Following)
 

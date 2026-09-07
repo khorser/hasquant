@@ -45,7 +45,7 @@ cachedFixture = do
   let startDate = 18 `march` 2002
   dc <- dayCounter (Actual360 False)
   q <- simpleQuote 0.05
-  ts <- flatForward startDate q dc Continuous Annual
+  ts <- flatForward (ReferenceDate startDate) q dc Continuous Annual
   idx <- iborIndex Euribor6M (Just ts)
   endDate <- advance cal startDate (20, Years) ModifiedFollowing False
   sch <- schedule (Just startDate) endDate (6, Months) cal ModifiedFollowing ModifiedFollowing
@@ -62,7 +62,7 @@ spec = do
         dc <- dayCounter (Actual360 False)
         volQ <- simpleQuote 0.20
         q <- simpleQuote 0.05
-        ts <- flatForward (18 `march` 2002) q dc Continuous Annual
+        ts <- flatForward (ReferenceDate (18 `march` 2002)) q dc Continuous Annual
         volDC <- dayCounter Actual365FixedStandard
         eng <- blackCapFloorEngine ts volQ volDC 0.0
         capfl <- cap leg [0.07]
@@ -81,7 +81,7 @@ spec = do
         dc <- dayCounter (Actual360 False)
         volQ <- simpleQuote 0.20
         q <- simpleQuote 0.05
-        ts <- flatForward (18 `march` 2002) q dc Continuous Annual
+        ts <- flatForward (ReferenceDate (18 `march` 2002)) q dc Continuous Annual
         volDC <- dayCounter Actual365FixedStandard
         eng <- blackCapFloorEngine ts volQ volDC 0.0
 
@@ -111,7 +111,7 @@ spec = do
         settle <- advance cal (11 `december` 2012) (2, Days) ModifiedFollowing False
         dc <- dayCounter Actual365FixedStandard
         q <- simpleQuote 0.05
-        ts <- flatForward settle q dc Continuous Annual
+        ts <- flatForward (ReferenceDate settle) q dc Continuous Annual
         idx <- iborIndex Euribor6M (Just ts)
         maturity <- advance cal settle (10, Years) ModifiedFollowing False
         sch <- schedule (Just settle) maturity (6, Months) cal ModifiedFollowing ModifiedFollowing
@@ -139,7 +139,7 @@ spec = do
         settle <- advance cal (11 `december` 2012) (2, Days) ModifiedFollowing False
         dc <- dayCounter (Actual360 False)
         q <- simpleQuote 0.05
-        ts <- flatForward settle q dc Continuous Annual
+        ts <- flatForward (ReferenceDate settle) q dc Continuous Annual
         idx <- iborIndex Euribor6M (Just ts)
         maturity <- advance cal settle (10, Years) ModifiedFollowing False
         sch <- schedule (Just settle) maturity (6, Months) cal ModifiedFollowing ModifiedFollowing

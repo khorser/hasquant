@@ -10,7 +10,7 @@ import QuantLib.Time.Calendar(calendar, CalendarConstructor(..))
 import QuantLib.Time.Schedule(dayCounter, DayCounterConstructor(..), Frequency(..))
 import QuantLib.InterestRate(Compounding(..))
 import QuantLib.Quote(simpleQuote)
-import QuantLib.TermStructure.Yield(YieldTermStructure, flatForward)
+import QuantLib.TermStructure.Yield(Reference(..), YieldTermStructure, flatForward)
 import QuantLib.Commodity
 import QuantLib.TermStructure.Commodity(commodityCurve)
 import QuantLib.Index.Commodity(CommodityIndex, commodityIndex)
@@ -26,7 +26,7 @@ flatZeroCurve :: Day -> IO YieldTermStructure
 flatZeroCurve evalDate = do
   q <- simpleQuote 0.0
   dc <- dayCounter Actual365FixedStandard
-  flatForward evalDate q dc Continuous Annual
+  flatForward (ReferenceDate evalDate) q dc Continuous Annual
 
 -- |A flat @price@ 'CommodityIndex' over @ct@\/@bbl@: one historical fixing well before
 -- @evalDate@ (so every date in the pricing window below falls after 'lastQuoteDate' and is priced

@@ -3,7 +3,7 @@
 --
 -- The hspec specs check the arithmetic. What they cannot check is the claim the bindings exist
 -- for: a composed quote is a live node in QuantLib's observer graph, so a *curve* bootstrapped
--- off one keeps tracking its inputs. This drives that end to end -- build a flatForward off
+-- off one keeps tracking its inputs. This drives that end to end -- build a flatForward (ReferenceDate off)
 -- `base + spread`, read a discount factor, move `base`, read again -- which is exactly the thing
 -- a Haskell-side recomputation could not do, since a snapshot quote never notifies the curve.
 --
@@ -19,7 +19,7 @@ import QuantLib.InterestRate
 import QuantLib.Quote
 import QuantLib.Settings
 import QuantLib.Time.Schedule
-import QuantLib.TermStructure.Yield(flatForward, discountAtDate)
+import QuantLib.TermStructure.Yield(Reference(..), flatForward, discountAtDate)
 
 
 import SmokeCheck
@@ -41,20 +41,20 @@ main = do
   q <- compositeQuote QuoteAdd base spread
   checkClose "composite quote value" 0.0305 `flip` 1.0e-12 =<< value q
 
-  curve <- flatForward evalDate q dc Continuous Annual
+  curve <- flatForward (ReferenceDate evalDate) q dc Continuous Annual
   df0 <- discountAtDate curve maturity True
   _ <- setValue base 0.04
   df1 <- discountAtDate curve maturity True
   checkWith "curve reprices after base quote moves"
     "discount factor must change, i.e. the curve heard the notification" (df0 /= df1)
   -- The whole point: not merely "different", but exactly the curve for the new composed rate.
-  ref <- simpleQuote 0.0405 >>= \r -> flatForward evalDate r dc Continuous Annual
+  ref <- simpleQuote 0.0405 >>= \r -> flatForward (ReferenceDate evalDate) r dc Continuous Annual
   dfRef <- discountAtDate ref maturity True
   checkClose "curve matches the composed rate 0.0405" dfRef df1 1.0e-14
 
   _ <- setValue spread 0.001
   df2 <- discountAtDate curve maturity True
-  ref2 <- simpleQuote 0.041 >>= \r -> flatForward evalDate r dc Continuous Annual
+  ref2 <- simpleQuote 0.041 >>= \r -> flatForward (ReferenceDate evalDate) r dc Continuous Annual
   dfRef2 <- discountAtDate ref2 maturity True
   checkClose "curve matches after the spread quote moves too" dfRef2 df2 1.0e-14
 
@@ -63,11 +63,11 @@ main = do
   base' <- simpleQuote 0.03
   withDerivedQuote (* 1.5) base' $ \dq -> do
     checkClose "derived quote value" 0.045 `flip` 1.0e-12 =<< value dq
-    curve' <- flatForward evalDate dq dc Continuous Annual
+    curve' <- flatForward (ReferenceDate evalDate) dq dc Continuous Annual
     dfA <- discountAtDate curve' maturity True
     _ <- setValue base' 0.02
     dfB <- discountAtDate curve' maturity True
-    refB <- simpleQuote 0.03 >>= \r -> flatForward evalDate r dc Continuous Annual
+    refB <- simpleQuote 0.03 >>= \r -> flatForward (ReferenceDate evalDate) r dc Continuous Annual
     dfRefB <- discountAtDate refB maturity True
     checkWith "callback-derived curve moved" "discount factor must change" (dfA /= dfB)
     checkClose "callback-derived curve matches f(0.02) = 0.03" dfRefB dfB 1.0e-14

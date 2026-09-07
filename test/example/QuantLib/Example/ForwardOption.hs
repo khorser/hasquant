@@ -55,8 +55,8 @@ run = do
   spotQ <- simpleQuote spot
   qQ <- simpleQuote divYield
   rQ <- simpleQuote riskFreeRate
-  qTS <- flatForward evalDate qQ dc Continuous Annual
-  rTS <- flatForward evalDate rQ dc Continuous Annual
+  qTS <- flatForward (ReferenceDate evalDate) qQ dc Continuous Annual
+  rTS <- flatForward (ReferenceDate evalDate) rQ dc Continuous Annual
   volQ <- simpleQuote vol
   volTS <- calendar TARGET >>= $(free2nd 'blackConstantVol) evalDate volQ dc
   bsmProc <- blackScholesMertonProcess spotQ qTS rTS volTS EulerDiscretization False

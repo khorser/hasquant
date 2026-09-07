@@ -30,7 +30,7 @@ run = do
   setEvaluationDate $ Just evalDate
   bbdc <- dayCounter ActualActualBond
   q <- simpleQuote 0.055
-  flatRate <- flatForward evalDate q bbdc Compounded Semiannual
+  flatRate <- flatForward (ReferenceDate evalDate) q bbdc Compounded Semiannual
 
   callDates <- (firstCallDate :) <$> buildSchedule 23 firstCallDate
   let callSchedule = map (Callability (100.0, Clean) CallabilityCall) callDates

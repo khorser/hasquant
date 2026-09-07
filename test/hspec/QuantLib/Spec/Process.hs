@@ -39,7 +39,7 @@ import QuantLib.Time.Date(today, addPeriod, september)
 import QuantLib.Time.Schedule(dayCounter, years, DayCounterConstructor(..), Frequency(..), TimeUnit(..))
 import QuantLib.InterestRate(Compounding(..), VolatilityType(..), rate)
 import QuantLib.Quote(simpleQuote, setValue)
-import QuantLib.TermStructure.Yield(flatForward, forwardRate, discount, YieldTermStructure, interpolatedZeroCurve)
+import QuantLib.TermStructure.Yield(Reference(..), flatForward, forwardRate, discount, YieldTermStructure, interpolatedZeroCurve)
 import QuantLib.Instrument(npv, setPricingEngine)
 import QuantLib.Instrument.Option(europeanOption, StrikedPayoff(PlainVanilla), PlainVanillaPayoff(..), OptionType(..), Exercise(European), EuropeanExercise(..))
 import qualified QuantLib.Process as Process
@@ -95,8 +95,8 @@ spec = do
             v0 = 0.05
         rQ <- simpleQuote r
         qQ <- simpleQuote q
-        rTS <- flatForward evalDate rQ dc Continuous Annual
-        qTS <- flatForward evalDate qQ dc Continuous Annual
+        rTS <- flatForward (ReferenceDate evalDate) rQ dc Continuous Annual
+        qTS <- flatForward (ReferenceDate evalDate) qQ dc Continuous Annual
         s0 <- simpleQuote spot
         process <- hestonProcess rTS (Just qTS) s0 v0 5.0 0.05 1.0e-4 0.0 QuadraticExponentialMartingale
         model <- hestonModel process
@@ -134,8 +134,8 @@ spec = do
             t = 1.0
         rQ <- simpleQuote r
         qQ <- simpleQuote q
-        rTS <- flatForward evalDate rQ dc Continuous Annual
-        qTS <- flatForward evalDate qQ dc Continuous Annual
+        rTS <- flatForward (ReferenceDate evalDate) rQ dc Continuous Annual
+        qTS <- flatForward (ReferenceDate evalDate) qQ dc Continuous Annual
         s0 <- simpleQuote spot
         process <- hestonProcess rTS (Just qTS) s0 v0 1.5 0.04 0.3 (-0.5) QuadraticExponentialMartingale
         -- Approximate mean log-price at t (Ito correction for the log transform); the process's
@@ -167,8 +167,8 @@ spec = do
             v0 = 0.05
         rQ <- simpleQuote r
         qQ <- simpleQuote q
-        rTS <- flatForward evalDate rQ dc Continuous Annual
-        qTS <- flatForward evalDate qQ dc Continuous Annual
+        rTS <- flatForward (ReferenceDate evalDate) rQ dc Continuous Annual
+        qTS <- flatForward (ReferenceDate evalDate) qQ dc Continuous Annual
         s0 <- simpleQuote spot
         process <- batesProcess rTS qTS s0 v0 5.0 0.05 1.0e-4 0.0 0.0001 0.0 0.0001 QuadraticExponentialMartingale
         model <- batesModel process
@@ -193,8 +193,8 @@ spec = do
           evalDate <- today
           Settings.setEvaluationDate (Just evalDate)
           dc <- dayCounter ActualActualISDA
-          rTS <- simpleQuote 0.05 >>= \rQ -> flatForward evalDate rQ dc Continuous Annual
-          qTS <- simpleQuote 0.0 >>= \qQ -> flatForward evalDate qQ dc Continuous Annual
+          rTS <- simpleQuote 0.05 >>= \rQ -> flatForward (ReferenceDate evalDate) rQ dc Continuous Annual
+          qTS <- simpleQuote 0.0 >>= \qQ -> flatForward (ReferenceDate evalDate) qQ dc Continuous Annual
           s0 <- simpleQuote 50.0
           let omega = 2.0e-6; alpha = 0.024; beta = 0.93; gamma = 0.059; lambda = 0.0
               daysPerYear = 365.0
@@ -317,7 +317,7 @@ spec = do
         Settings.setEvaluationDate (Just evalDate)
         dc <- dayCounter Actual365FixedStandard
         rateQ <- simpleQuote 0.02
-        curve <- flatForward evalDate rateQ dc Continuous Annual
+        curve <- flatForward (ReferenceDate evalDate) rateQ dc Continuous Annual
         process <- g2Process 0.1 0.01 0.2 0.013 (-0.5) (Just curve)
         let t = 2.0
         phiBefore <- phi process t
@@ -334,7 +334,7 @@ spec = do
         Settings.setEvaluationDate (Just evalDate)
         dc <- dayCounter Actual365FixedStandard
         rateQ <- simpleQuote 0.035
-        curve <- flatForward evalDate rateQ dc Continuous Annual
+        curve <- flatForward (ReferenceDate evalDate) rateQ dc Continuous Annual
         fwd <- g2ForwardProcess 0.1 0.01 0.2 0.013 (-0.5) (Just curve)
         Process.shortRate fwd 1.0 0.002 (-0.001) `shouldSatisfy` closePrec 0.001 1.0e-12
 
@@ -353,7 +353,7 @@ spec = do
         Settings.setEvaluationDate (Just evalDate)
         dc <- dayCounter Actual365FixedStandard
         rateQ <- simpleQuote 0.03
-        curve <- flatForward evalDate rateQ dc Continuous Annual
+        curve <- flatForward (ReferenceDate evalDate) rateQ dc Continuous Annual
         process <- g2Process 0.1 0.01 0.2 0.013 (-0.3) (Just curve)
         nf <- factors process
         nf `shouldBe` 2
@@ -379,7 +379,7 @@ spec = do
         dc <- dayCounter Actual365FixedStandard
         let a = 0.1; sigma = 0.01; b = 0.2; eta = 0.013; rho = -0.5
         rateQ <- simpleQuote 0.03
-        curve <- flatForward evalDate rateQ dc Continuous Annual
+        curve <- flatForward (ReferenceDate evalDate) rateQ dc Continuous Annual
         process <- g2Process a sigma b eta rho (Just curve)
 
         mapM_ (\t -> do
@@ -405,7 +405,7 @@ spec = do
         dc <- dayCounter Actual365FixedStandard
         let a = 0.12; sigma = 0.011; b = 0.17; eta = 0.009; rho = -0.3
         rateQ <- simpleQuote 0.025
-        curve <- flatForward evalDate rateQ dc Continuous Annual
+        curve <- flatForward (ReferenceDate evalDate) rateQ dc Continuous Annual
         process <- g2Process a sigma b eta rho (Just curve)
         model <- g2 curve a sigma b eta rho
         dyn <- g2Dynamics model
@@ -437,7 +437,7 @@ spec = do
         dc <- dayCounter Actual365FixedStandard
         let a = 0.1; sigma = 0.01; b = 0.2; eta = 0.013; rho = -0.5
         rateQ <- simpleQuote 0.04
-        curve <- flatForward evalDate rateQ dc Continuous Annual
+        curve <- flatForward (ReferenceDate evalDate) rateQ dc Continuous Annual
         paramOnly <- g2Process a sigma b eta rho Nothing
         withCurve <- g2Process a sigma b eta rho (Just curve)
         let t = 1.5; z = [0.002, -0.003]
@@ -465,7 +465,7 @@ spec = do
         Settings.setEvaluationDate (Just evalDate)
         dc <- dayCounter Actual365FixedStandard
         rateQ <- simpleQuote 0.035
-        curve <- flatForward evalDate rateQ dc Continuous Annual
+        curve <- flatForward (ReferenceDate evalDate) rateQ dc Continuous Annual
         process <- g2Process 0.1 0.01 0.2 0.013 (-0.4) (Just curve)
         iv <- initialValues process
 
@@ -488,7 +488,7 @@ spec = do
         let a = 0.1; sigma = 0.01; b = 0.2; eta = 0.013; rho = -0.5
             t = 1.5; bigT = 12.0; z = [0.003, -0.001]
         rateQ <- simpleQuote 0.03
-        curve <- flatForward evalDate rateQ dc Continuous Annual
+        curve <- flatForward (ReferenceDate evalDate) rateQ dc Continuous Annual
         process <- g2ForwardProcess a sigma b eta rho (Just curve)
 
         setForwardMeasureTime process t
@@ -514,7 +514,7 @@ spec = do
         Settings.setEvaluationDate (Just evalDate)
         dc <- dayCounter Actual365FixedStandard
         rateQ <- simpleQuote 0.03
-        curve <- flatForward evalDate rateQ dc Continuous Annual
+        curve <- flatForward (ReferenceDate evalDate) rateQ dc Continuous Annual
         process <- g2Process 0.1 0.01 0.2 0.013 (-0.5) (Just curve)
         let t0 = 1.0; dt = 0.25; x0 = [0.004, -0.002]
 
@@ -593,7 +593,7 @@ spec = do
         dc <- dayCounter (Actual360 False)
         let a = 0.05; sigma = 0.01
         rateQ <- simpleQuote 0.04
-        rTS <- flatForward evalDate rateQ dc Continuous Annual
+        rTS <- flatForward (ReferenceDate evalDate) rateQ dc Continuous Annual
         s0 <- simpleQuote 100.0
         hProcess <- hestonProcess rTS Nothing s0 0.04 1.0 0.04 0.2 (-0.5) QuadraticExponentialMartingale
         hwFwd <- hullWhiteForwardProcess rTS a sigma
@@ -618,7 +618,7 @@ spec = do
         Settings.setEvaluationDate (Just evalDate)
         dc <- dayCounter (Actual360 False)
         rateQ <- simpleQuote 0.03
-        rTS <- flatForward evalDate rateQ dc Continuous Annual
+        rTS <- flatForward (ReferenceDate evalDate) rateQ dc Continuous Annual
         s0 <- simpleQuote 100.0
         hProcess <- hestonProcess rTS Nothing s0 0.04 1.0 0.04 0.2 (-0.5) QuadraticExponentialMartingale
         hwFwd <- hullWhiteForwardProcess rTS 0.05 0.01
@@ -638,7 +638,7 @@ spec = do
         dc <- dayCounter Actual365FixedStandard
         let a = 0.07; sigma = 0.012
         rateQ <- simpleQuote 0.035
-        rTS <- flatForward evalDate rateQ dc Continuous Annual
+        rTS <- flatForward (ReferenceDate evalDate) rateQ dc Continuous Annual
         hw <- hullWhiteProcess rTS a sigma
         hwFwd <- hullWhiteForwardProcess rTS a sigma
         setForwardMeasureTime hwFwd 10.0
@@ -668,7 +668,7 @@ spec = do
         Settings.setEvaluationDate (Just evalDate)
         dc <- dayCounter Actual365FixedStandard
         rateQ <- simpleQuote 0.03
-        rTS <- flatForward evalDate rateQ dc Continuous Annual
+        rTS <- flatForward (ReferenceDate evalDate) rateQ dc Continuous Annual
         hwFwd <- hullWhiteForwardProcess rTS 0.05 0.01
         setForwardMeasureTime hwFwd 10.0
         zeroStep <- hullWhiteForwardM hwFwd 1.0 1.0 10.0

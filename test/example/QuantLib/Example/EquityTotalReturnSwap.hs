@@ -14,7 +14,7 @@ import qualified QuantLib.InterestRate as IR2
 import QuantLib.PricingEngine
 import QuantLib.Quote(simpleQuote)
 import QuantLib.Settings(setEvaluationDate)
-import QuantLib.TermStructure.Yield(flatForward)
+import QuantLib.TermStructure.Yield(Reference(..), flatForward)
 import QuantLib.Time.Calendar
 import QuantLib.Time.Date
 import QuantLib.Time.Schedule
@@ -40,8 +40,8 @@ run = do
 
   interestQ <- simpleQuote 0.0375
   dividendQ <- simpleQuote 0.005
-  interestCurve <- flatForward evalDate interestQ dc IR2.Continuous Annual
-  dividendCurve <- flatForward evalDate dividendQ dc IR2.Continuous Annual
+  interestCurve <- flatForward (ReferenceDate evalDate) interestQ dc IR2.Continuous Annual
+  dividendCurve <- flatForward (ReferenceDate evalDate) dividendQ dc IR2.Continuous Annual
 
   spotQ <- simpleQuote 8700.0
   eqIndex <- equityIndex "eqIndex" cal usd (Just interestCurve) (Just dividendCurve) (Just spotQ)

@@ -34,7 +34,7 @@ flat :: Double -> IO YieldTermStructure
 flat r = do
   q <- simpleQuote r
   dc <- dayCounter Actual365FixedStandard
-  flatForward valueDate q dc Continuous Annual
+  flatForward (ReferenceDate valueDate) q dc Continuous Annual
 
 main :: IO ()
 main = do

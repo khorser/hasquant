@@ -136,13 +136,11 @@ public:
 // compile failure. Templated over Trait/Interp (same shape makeCurveLocalBootstrap already uses
 // for LocalBootstrap below) so each trait/interpolator combination is one dispatch arm instead of
 // a hand-duplicated block.
-template <class Trait, class Interp>
-YieldTermStructure *makeGlobalBootstrapCurve(unsigned settl, const Calendar &cal,
-    const std::vector<shared_ptr<RateHelper> >& instr, const DayCounter& dayCount,
-    const std::vector<Handle<Quote> >& jumps, const std::vector<Date>& jumpDates,
-    const Interp& interp, double accuracy, const std::vector<double>& instrumentWeights) {
+template <class Trait, class Interp, class... Args>
+YieldTermStructure *makeGlobalBootstrapCurve(const Interp& interp, double accuracy,
+    const std::vector<double>& instrumentWeights, Args&&... args) {
   using CurveType = PiecewiseYieldCurve<Trait, Interp, QuantLib::GlobalBootstrap>;
-  return new CurveType(settl, cal, instr, dayCount, jumps, jumpDates, interp,
+  return new CurveType(std::forward<Args>(args)..., interp,
       typename CurveType::bootstrap_type(accuracy, nullptr, nullptr, instrumentWeights));
 }
 
@@ -152,35 +150,34 @@ YieldTermStructure *makeGlobalBootstrapCurve(unsigned settl, const Calendar &cal
 // other two IterativeBootstrap traits paired with the cheapest interpolator, see issue #15) --
 // not the full trait x interpolator matrix; CLAUDE.md is explicit about not building dispatch for
 // hypothetical future combinations.
-YieldTermStructure *dispatchTraitGlobalBootstrap(int trait, int interpolator, unsigned settl,
-    const Calendar &cal, const std::vector<shared_ptr<RateHelper> >& instr,
-    const DayCounter& dayCount, const std::vector<Handle<Quote> >& jumps,
-    const std::vector<Date>& jumpDates, double accuracy, const std::vector<double>& instrumentWeights) {
+template <class... Args>
+YieldTermStructure *dispatchTraitGlobalBootstrap(int trait, int interpolator, double accuracy,
+    const std::vector<double>& instrumentWeights, Args&&... args) {
   switch (trait) {
   case hasquant::Discount:
     QL_REQUIRE(interpolator == hasquant::LogLinear,
         "GlobalBootstrap-based PiecewiseYieldCurve construction with trait=Discount only "
         "supports interpolator=LogLinear (got interpolator " << interpolator << ")");
-    return makeGlobalBootstrapCurve<QuantLib::Discount>(settl, cal, instr, dayCount, jumps,
-        jumpDates, QuantLib::LogLinear(), accuracy, instrumentWeights);
+    return makeGlobalBootstrapCurve<QuantLib::Discount>(QuantLib::LogLinear(), accuracy,
+        instrumentWeights, std::forward<Args>(args)...);
   case hasquant::SimpleZeroYield:
     QL_REQUIRE(interpolator == hasquant::Linear,
         "GlobalBootstrap-based PiecewiseYieldCurve construction with trait=SimpleZeroYield "
         "only supports interpolator=Linear (got interpolator " << interpolator << ")");
-    return makeGlobalBootstrapCurve<QuantLib::SimpleZeroYield>(settl, cal, instr, dayCount, jumps,
-        jumpDates, QuantLib::Linear(), accuracy, instrumentWeights);
+    return makeGlobalBootstrapCurve<QuantLib::SimpleZeroYield>(QuantLib::Linear(), accuracy,
+        instrumentWeights, std::forward<Args>(args)...);
   case hasquant::ForwardRate:
     QL_REQUIRE(interpolator == hasquant::Linear,
         "GlobalBootstrap-based PiecewiseYieldCurve construction with trait=ForwardRate only "
         "supports interpolator=Linear (got interpolator " << interpolator << ")");
-    return makeGlobalBootstrapCurve<QuantLib::ForwardRate>(settl, cal, instr, dayCount, jumps,
-        jumpDates, QuantLib::Linear(), accuracy, instrumentWeights);
+    return makeGlobalBootstrapCurve<QuantLib::ForwardRate>(QuantLib::Linear(), accuracy,
+        instrumentWeights, std::forward<Args>(args)...);
   case hasquant::ZeroYield:
     QL_REQUIRE(interpolator == hasquant::Linear,
         "GlobalBootstrap-based PiecewiseYieldCurve construction with trait=ZeroYield only "
         "supports interpolator=Linear (got interpolator " << interpolator << ")");
-    return makeGlobalBootstrapCurve<QuantLib::ZeroYield>(settl, cal, instr, dayCount, jumps,
-        jumpDates, QuantLib::Linear(), accuracy, instrumentWeights);
+    return makeGlobalBootstrapCurve<QuantLib::ZeroYield>(QuantLib::Linear(), accuracy,
+        instrumentWeights, std::forward<Args>(args)...);
   default:
     QL_FAIL("GlobalBootstrap-based PiecewiseYieldCurve construction is only supported for "
         "trait=Discount/interpolator=LogLinear, trait=ForwardRate/interpolator=Linear, "
@@ -196,13 +193,14 @@ YieldTermStructure *dispatchTraitGlobalBootstrap(int trait, int interpolator, un
 // bootstrap==1 branch (not a widened version of it): that branch's plain accuracy/
 // instrumentWeights constructor and this functor constructor are different GlobalBootstrap
 // overloads entirely, not more parameters on the same one.
-YieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrapFullAux(unsigned settl, const Calendar &cal,
+template <class... Args>
+YieldTermStructure *piecewiseYieldCurveGlobalBootstrapFull(
     const std::vector<shared_ptr<RateHelper> >& instr,
     const DayCounter& dayCount,
     const std::vector<Handle<Quote> >& jumps, const std::vector<Date>& jumpDates,
     const std::vector<shared_ptr<RateHelper> >& additionalHelpers,
     const std::vector<Date>& additionalDates,
-    double accuracy) {
+    double accuracy, Args&&... reference) {
   // AdditionalErrors returns additionalHelpers.size()-2 equations; GlobalBootstrap requires
   // #equations == #unknowns, so additionalDates must supply exactly that many extra unknowns
   // (confirmed empirically by an earlier standalone spike, which crashed at runtime with
@@ -220,9 +218,29 @@ YieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrapFullAux(unsigned settl, 
   using CurveType = PiecewiseYieldCurve<QuantLib::SimpleZeroYield, QuantLib::Linear, QuantLib::GlobalBootstrap>;
   // CurveType::bootstrap_type(...) naming order -- see the comment on the plain-constructor
   // GlobalBootstrap branch in qlPiecewiseYieldCurveAux1, same [temp.inst] reason.
-  return new CurveType(settl, cal, instr, dayCount, jumps, jumpDates, QuantLib::Linear(),
+  return new CurveType(std::forward<Args>(reference)..., instr, dayCount, jumps, jumpDates,
+      QuantLib::Linear(),
       CurveType::bootstrap_type(additionalHelpers, AdditionalDates(additionalDates),
           AdditionalErrors(additionalHelpers), accuracy, nullptr, nullptr));
+}
+
+YieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrapFullAux(const Date& date,
+    const std::vector<shared_ptr<RateHelper> >& instr, const DayCounter& dayCount,
+    const std::vector<Handle<Quote> >& jumps, const std::vector<Date>& jumpDates,
+    const std::vector<shared_ptr<RateHelper> >& additionalHelpers,
+    const std::vector<Date>& additionalDates, double accuracy) {
+  return piecewiseYieldCurveGlobalBootstrapFull(instr, dayCount, jumps, jumpDates,
+      additionalHelpers, additionalDates, accuracy, date);
+}
+
+YieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrapFullAux(unsigned settl,
+    const Calendar &cal, const std::vector<shared_ptr<RateHelper> >& instr,
+    const DayCounter& dayCount, const std::vector<Handle<Quote> >& jumps,
+    const std::vector<Date>& jumpDates,
+    const std::vector<shared_ptr<RateHelper> >& additionalHelpers,
+    const std::vector<Date>& additionalDates, double accuracy) {
+  return piecewiseYieldCurveGlobalBootstrapFull(instr, dayCount, jumps, jumpDates,
+      additionalHelpers, additionalDates, accuracy, settl, cal);
 }
 
 // LocalBootstrap requires its Interpolator to provide localInterpolate(), which upstream only
@@ -281,6 +299,16 @@ YieldTermStructure *qlPiecewiseYieldCurveLocalBootstrapAux1(unsigned settl, cons
       localisation, forcePositive, accuracy, settl, cal, instr, dayCount, jumps, jumpDates);
 }
 
+YieldTermStructure *qlPiecewiseYieldCurveLocalBootstrapAux(const Date& date,
+    const std::vector<shared_ptr<RateHelper> >& instr,
+    const DayCounter& dayCount,
+    const std::vector<Handle<Quote> >& jumps, const std::vector<Date>& jumpDates,
+    int trait, Size localisation, bool forcePositive, double accuracy,
+    double quadraticity, double monotonicity, bool convexForcePositive) {
+  return dispatchTraitLocalBootstrap(trait, ConvexMonotone(quadraticity, monotonicity, convexForcePositive),
+      localisation, forcePositive, accuracy, date, instr, dayCount, jumps, jumpDates);
+}
+
 // extracted some template-heavy stuff into a separate file to speed up the compilation
 YieldTermStructure *qlPiecewiseYieldCurveAux(const Date &date,
     const std::vector<shared_ptr<RateHelper> >& instr,
@@ -300,11 +328,22 @@ YieldTermStructure *qlPiecewiseYieldCurveAux1(unsigned settl, const Calendar &ca
     int bootstrap, double accuracy, const std::vector<double>& instrumentWeights,
     const QlIterativeBootstrapOpts& bootstrapOpts) {
   if (bootstrap == 1) {
-    return dispatchTraitGlobalBootstrap(trait, interpolator, settl, cal, instr, dayCount, jumps,
-        jumpDates, accuracy, instrumentWeights);
+    return dispatchTraitGlobalBootstrap(trait, interpolator, accuracy, instrumentWeights,
+        settl, cal, instr, dayCount, jumps, jumpDates);
   }
   return dispatchTrait(trait, interpolator, approximator, approximatorArg, bootstrapOpts,
       settl, cal, instr, dayCount, jumps, jumpDates);
+}
+
+
+YieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrapAux(const Date& date,
+    const std::vector<shared_ptr<RateHelper> >& instr,
+    const DayCounter& dayCount,
+    const std::vector<Handle<Quote> >& jumps, const std::vector<Date>& jumpDates,
+    int trait, int interpolator, double accuracy,
+    const std::vector<double>& instrumentWeights) {
+  return dispatchTraitGlobalBootstrap(trait, interpolator, accuracy, instrumentWeights,
+      date, instr, dayCount, jumps, jumpDates);
 }
 
 

@@ -42,7 +42,7 @@ main = do
   endDate <- advance cal today (13, Months) ModifiedFollowing False
 
   let endToEndDiscount h = do
-        curve <- piecewiseYieldCurve today [h] dc [] Discount LogLinear
+        curve <- piecewiseYieldCurve (ReferenceDate today) [h] dc [] (Iterative Discount LogLinear defaultIterativeBootstrapOpts) False
         discountAtDate curve endDate True
 
   hNarrow <- oisRateHelper 2 (1, Years) q idx Nothing

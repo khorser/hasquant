@@ -11,7 +11,7 @@ import QuantLib.Time.Schedule(dayCounter, DayCounterConstructor(ActualActualISDA
 import qualified QuantLib.InterestRate as IR
 import QuantLib.Index(fixing)
 import QuantLib.Index.InterestRate(iborIndex, IborConstructor(Euribor1Y))
-import QuantLib.TermStructure.Yield(flatForward)
+import QuantLib.TermStructure.Yield(Reference(..), flatForward)
 import QuantLib.PricingEngine(blackFormula)
 import QuantLib.Instrument.Option(OptionType(Call))
 import QuantLib.Spec.Helpers(closePrec)
@@ -201,7 +201,7 @@ spec = do
       cal <- calendar TARGET
       dc <- dayCounter ActualActualISDA
       forwardQuote <- simpleQuote 0.05
-      yc <- flatForward today forwardQuote dc IR.Continuous Annual
+      yc <- flatForward (ReferenceDate today) forwardQuote dc IR.Continuous Annual
       idx <- iborIndex Euribor1Y (Just yc)
       fixingDate <- advance cal today (1, Years) Following False
       q <- forwardValueQuote idx fixingDate

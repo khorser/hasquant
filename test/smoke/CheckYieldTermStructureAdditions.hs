@@ -35,7 +35,7 @@ main = do
   cal <- calendar TARGET
   actual360dc <- dayCounter (Actual360 False)
   flatRate <- Quote.simpleQuote 0.03
-  base <- flatForwardMoving 2 cal flatRate actual360dc IR.Continuous Annual
+  base <- flatForward (SettlementDays 2 cal) flatRate actual360dc IR.Continuous Annual
   refDate <- asTermStructure base >>= referenceDate
 
   -- 1. ultimateForwardTermStructure: below the first smoothing point (fsp) it must reproduce
@@ -68,7 +68,7 @@ main = do
   let inputRate = 0.05
   q <- Quote.simpleQuote inputRate
   rh <- multipleResetsSwapRateHelper 0 (2, Years) q euribor3m 2 Nothing AveragingCompound 0.0 NoFrequency actual360dc ModifiedFollowing
-  ts <- piecewiseYieldCurve curveToday [rh] actual360dc [] Discount LogLinear
+  ts <- piecewiseYieldCurve (ReferenceDate curveToday) [rh] actual360dc [] (Iterative Discount LogLinear defaultIterativeBootstrapOpts) False
   _ <- discountAtDate ts curveToday False
   implied <- impliedQuote rh
   report "multiple-resets swap rate helper implied quote" (show implied)

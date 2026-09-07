@@ -25,7 +25,7 @@ import QuantLib.Time.Date
 import QuantLib.Time.Schedule
 import QuantLib.InterestRate(Compounding(..))
 import QuantLib.Quote(simpleQuote)
-import QuantLib.TermStructure.Yield(flatForward)
+import QuantLib.TermStructure.Yield(Reference(..), flatForward)
 import QuantLib.TermStructure.Volatility
 import QuantLib.Process
 import QuantLib.Model
@@ -54,8 +54,8 @@ body = Settings.keepingSettingsGc $ do
   dc <- dayCounter Actual365FixedStandard
   rQ <- simpleQuote 0.01
   qQ <- simpleQuote 0.02
-  rTS <- flatForward today rQ dc Continuous Annual
-  qTS <- flatForward today qQ dc Continuous Annual
+  rTS <- flatForward (ReferenceDate today) rQ dc Continuous Annual
+  qTS <- flatForward (ReferenceDate today) qQ dc Continuous Annual
   s0 <- simpleQuote 100.0
   localVolQ <- simpleQuote 0.3
   hp <- hestonProcess rTS (Just qTS) s0 0.09 1.0 0.06 0.4 (-0.75) HestonFullTruncation

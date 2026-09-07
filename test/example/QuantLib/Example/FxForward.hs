@@ -11,7 +11,7 @@ import qualified QuantLib.InterestRate as IR
 import QuantLib.PricingEngine(discountingFxForwardEngine)
 import QuantLib.Quote(simpleQuote)
 import QuantLib.Settings(setEvaluationDate)
-import QuantLib.TermStructure.Yield(flatForward)
+import QuantLib.TermStructure.Yield(Reference(..), flatForward)
 import QuantLib.Time.Calendar
 import QuantLib.Time.Date
 import QuantLib.Time.Schedule(dayCounter, DayCounterConstructor(..), Frequency(..), TimeUnit(..))
@@ -31,8 +31,8 @@ run = do
   cal <- calendar Null
   sourceQ <- simpleQuote sourceRate
   targetQ <- simpleQuote targetRate
-  sourceCurve <- flatForward evalDate sourceQ dc IR.Continuous Annual
-  targetCurve <- flatForward evalDate targetQ dc IR.Continuous Annual
+  sourceCurve <- flatForward (ReferenceDate evalDate) sourceQ dc IR.Continuous Annual
+  targetCurve <- flatForward (ReferenceDate evalDate) targetQ dc IR.Continuous Annual
   spotFxQ <- simpleQuote spotFx
   eur <- currency EUR
   usd <- currency USD

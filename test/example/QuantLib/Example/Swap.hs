@@ -74,9 +74,9 @@ run = do
 
   tsDC <- dayCounter ActualActualISDA
 
-  depoSwapTS <- TS.piecewiseYieldCurve settleDate (fromList (depoHelpers++swapHelpers)) tsDC [] TS.Discount LogLinear
-  depoFutSwapTS <- TS.piecewiseYieldCurve settleDate (fromList (take 2 depoHelpers++futHelpers++drop 1 swapHelpers)) tsDC [] TS.Discount LogLinear
-  depoFraSwapTS <- TS.piecewiseYieldCurve settleDate (fromList (take 3 depoHelpers++fraHelpers++swapHelpers)) tsDC [] TS.Discount LogLinear
+  depoSwapTS <- TS.piecewiseYieldCurve (TS.ReferenceDate settleDate) (fromList (depoHelpers++swapHelpers)) tsDC [] (TS.Iterative TS.Discount LogLinear TS.defaultIterativeBootstrapOpts) False
+  depoFutSwapTS <- TS.piecewiseYieldCurve (TS.ReferenceDate settleDate) (fromList (take 2 depoHelpers++futHelpers++drop 1 swapHelpers)) tsDC [] (TS.Iterative TS.Discount LogLinear TS.defaultIterativeBootstrapOpts) False
+  depoFraSwapTS <- TS.piecewiseYieldCurve (TS.ReferenceDate settleDate) (fromList (take 3 depoHelpers++fraHelpers++swapHelpers)) tsDC [] (TS.Iterative TS.Discount LogLinear TS.defaultIterativeBootstrapOpts) False
 
   i1 <- forM [depoSwapTS, depoFutSwapTS, depoFraSwapTS] (\ts -> valuateSwap settleDate ts ts)
 

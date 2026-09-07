@@ -15,7 +15,7 @@ import QuantLib.Quote(simpleQuote)
 import QuantLib.Settings(setEvaluationDate)
 import QuantLib.Instrument.Swap(fairRate)
 import QuantLib.TermStructure.Inflation
-import QuantLib.TermStructure.Yield(flatForward, PillarChoice(..))
+import QuantLib.TermStructure.Yield(Reference(..), flatForward, PillarChoice(..))
 import QuantLib.Time.Calendar
 import QuantLib.Time.Date
 import QuantLib.Time.Schedule(dayCounter, DayCounterConstructor(..), Frequency(..), TimeUnit(..))
@@ -55,7 +55,7 @@ run = do
   yii <- yoyInflationIndex YYUKRPI
   forM_ (zip [1 :: Double ..] fixingDates) $ \(i, d) -> addFixing yii d (flatRate + i * 0.0001) False
   nominalQ <- simpleQuote 0.02
-  nominalCurve <- flatForward evalDate nominalQ dc IR.Continuous Annual
+  nominalCurve <- flatForward (ReferenceDate evalDate) nominalQ dc IR.Continuous Annual
   qy1 <- simpleQuote flatRate
   qy2 <- simpleQuote flatRate
   hy1 <- yearOnYearInflationSwapHelper qy1 obsLag maturity1 cal Unadjusted dc yii CPILinear nominalCurve LastRelevantDate Nothing

@@ -108,7 +108,8 @@ callableBondSmileSectionForPeriod	callableBondSmileSectionForTenors
 depositRateHelper'	depositRateHelperFromIndex
 discount'	discountAtDate
 swapRateHelper'	swapRateHelperWithConventions
-flatForward'	flatForwardMoving
+flatForward'	flatForward
+flatForwardMoving	flatForward
 zeroRate'	zeroRateAtDate
 forwardRate'	forwardRateBetweenDates
 fxSwapRateHelper'	fxSwapRateHelperBetweenDates
@@ -117,8 +118,10 @@ oisRateHelperFull'	oisRateHelperBetweenDatesWithOptions
 fraIborRateHelper'	fraRateHelperFromIndex
 fraRateHelper'	fraRateHelperFromPeriod
 futuresRateHelper'	futuresRateHelperBetweenDates
-fittedBondDiscountCurve	fittedBondDiscountCurveMoving
+fittedBondDiscountCurveMoving	fittedBondDiscountCurve
 fittedBondDiscountCurve'	fittedBondDiscountCurve
+piecewiseYieldCurveFull	piecewiseYieldCurve
+piecewiseYieldCurveMoving	piecewiseYieldCurve
 
 ecbDate'	ecbDateFromCode
 nextEcbCode'	nextEcbCodeFromCode

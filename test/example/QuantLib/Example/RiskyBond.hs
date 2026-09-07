@@ -36,7 +36,7 @@ run = do
   defaultProbability <- flatHazardRateMoving 0 target hazardRate actual360dc
 
   riskFreeRate <- simpleQuote 0.02
-  riskFree <- flatForward evalDate riskFreeRate actual360dc Continuous Annual
+  riskFree <- flatForward (ReferenceDate evalDate) riskFreeRate actual360dc Continuous Annual
 
   sch1 <- schedule (Just $ 30 `november` 2004) (30 `november` 2008) (6, Months)
             usGovBond Unadjusted Unadjusted Backward False Nothing Nothing

@@ -44,14 +44,14 @@ run gc = do
   bondDayCountConvention <- dayCounter Thirty360BondBasis
   setEvaluationDate $ Just repoSettlementDate
   bondQuote <- simpleQuote 0.01
-  bondCurve <- flatForward repoSettlementDate bondQuote bondDayCountConvention IR.Compounded bondCouponFrequency
+  bondCurve <- flatForward (ReferenceDate repoSettlementDate) bondQuote bondDayCountConvention IR.Compounded bondCouponFrequency
   bondSchedule <- schedule (Just bondDatedDate) bondMaturityDate
     (6, Months) bondCalendar bondBusinessDayConvention bondBusinessDayConvention Backward False
     Nothing Nothing
   (fwd, clP, accr1, accr2, clF, fP, dp) <- doBond bondCalendar bondSchedule bondQuote repoDayCountConvention bondDayCountConvention bondCurve
   when gc (collectGarbage >> hPutStrLn stderr "GC complete")
   repoCurve <- simpleQuote repoRate >>=
-        $(free2nd 'flatForward) repoSettlementDate repoDayCountConvention repoCompounding repoCompoundFreq
+        $(free2nd 'flatForward) (ReferenceDate repoSettlementDate) repoDayCountConvention repoCompounding repoCompoundFreq
   spotInc <- spotIncome fwd repoCurve
   disc <- discountAtDate repoCurve repoDeliveryDate False
   np <- npv fwd
@@ -105,7 +105,7 @@ run gc = do
           discountingBondEngine bondCurve Nothing >>= setPricingEngine b
           void $ yieldFromPrice b (bondCleanPrice, Clean) bondDayCountConvention IR.Compounded bondCouponFrequency repoSettlementDate 1e-8 100 >>= setValue bondQuote
           repoCurve <- simpleQuote repoRate >>=
-            $(free2nd 'flatForward) repoSettlementDate repoDayCountConvention repoCompounding repoCompoundFreq
+            $(free2nd 'flatForward) (ReferenceDate repoSettlementDate) repoDayCountConvention repoCompounding repoCompoundFreq
           bondFwd <- bondForward repoSettlementDate repoDeliveryDate fwdType dummyStrike
             repoSettlementDays
             repoDayCountConvention bondCalendar bondBusinessDayConvention b

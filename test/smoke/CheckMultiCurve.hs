@@ -44,14 +44,14 @@ main = do
   settleFix <- advance cal curveToday (2, Days) Following False
 
   discQ <- Quote.simpleQuote 0.02
-  discountCurve <- flatForwardMoving 0 cal discQ euriborDC IR.Continuous Annual
+  discountCurve <- flatForward (SettlementDays 0 cal) discQ euriborDC IR.Continuous Annual
 
   -- 1. One curve through the new GlobalBootstrap dispatch path, standalone (no cycle): a
   -- plain FRA-only curve is enough to exercise qlPiecewiseYieldCurveGlobalBootstrap1 and the
   -- Discount/LogLinear branch added to qlPiecewiseYieldCurveAux1.
   q <- Quote.simpleQuote 0.03
   standaloneHelpers <- mapM (\i -> fraRateHelper q i (i + 3) 2 cal ModifiedFollowing True euriborDC LastRelevantDate Nothing False) [1 .. 5]
-  standaloneCurve <- piecewiseYieldCurveMoving 0 cal (fromList standaloneHelpers) euriborDC []
+  standaloneCurve <- piecewiseYieldCurve (SettlementDays 0 cal) (fromList standaloneHelpers) euriborDC []
     (GlobalDiscountLogLinear 1.0e-10 []) False
   sixM <- advance cal settleFix (6, Months) ModifiedFollowing True
   standaloneDiscount <- discountAtDate standaloneCurve sixM False
@@ -73,9 +73,9 @@ main = do
   helpers6mSwap <- mapM (\i -> swapRateHelperWithConventions q (i, Years) cal Annual Following euriborDC euribor6m Nothing (0, Days) (Just discountCurve)
                                   Nothing LastRelevantDate Nothing False Nothing Nothing Nothing) [2 .. 4]
     >>= mapM asRateHelper
-  ptr3m <- piecewiseYieldCurveMoving 0 cal (fromList $ helpers3mFra ++ helpers3mBasis) euriborDC []
+  ptr3m <- piecewiseYieldCurve (SettlementDays 0 cal) (fromList $ helpers3mFra ++ helpers3mBasis) euriborDC []
     (GlobalDiscountLogLinear 1.0e-10 []) False
-  ptr6m <- piecewiseYieldCurveMoving 0 cal (fromList $ helpers6mBasis ++ helpers6mSwap) euriborDC []
+  ptr6m <- piecewiseYieldCurve (SettlementDays 0 cal) (fromList $ helpers6mBasis ++ helpers6mSwap) euriborDC []
     (GlobalDiscountLogLinear 1.0e-10 []) False
   mc <- multiCurve 1.0e-10
   curve3m <- addBootstrappedCurve mc intcurve3m ptr3m

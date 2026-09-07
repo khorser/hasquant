@@ -48,7 +48,7 @@ main = do
   thirty360bb <- dayCounter Thirty360BondBasis
   act360 <- dayCounter (Actual360 False)
   flatQ <- Q.simpleQuote 0.03
-  ts <- TS.flatForward settl flatQ dc365 Continuous Annual
+  ts <- TS.flatForward (TS.ReferenceDate settl) flatQ dc365 Continuous Annual
   euribor6m <- IR.iborIndex IR.Euribor6M (Just ts)
   let volValue = 0.15
   volQ <- Q.simpleQuote volValue

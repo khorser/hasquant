@@ -99,9 +99,9 @@ run = do
   dc <- dayCounter Actual365FixedStandard
   underQ <- simpleQuote under
   riskFreeQ <- simpleQuote riskFreeRate
-  ts <- flatForward settl riskFreeQ dc Continuous Annual
+  ts <- flatForward (ReferenceDate settl) riskFreeQ dc Continuous Annual
   divQ <- simpleQuote dividend
-  divTS <- flatForward settl divQ dc Continuous Annual
+  divTS <- flatForward (ReferenceDate settl) divQ dc Continuous Annual
   volQ <- simpleQuote vol
   volTS <- calendar TARGET >>= $(free2nd 'blackConstantVol) settl volQ dc
   bsmProc <- blackScholesMertonProcess underQ divTS ts volTS EulerDiscretization False

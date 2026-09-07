@@ -20,7 +20,7 @@ import qualified QuantLib.Settings as Settings
 import QuantLib.Time.Calendar(calendar, CalendarConstructor(TARGET))
 import QuantLib.Time.Date(addPeriod, march)
 import QuantLib.Time.Schedule(dayCounter, DayCounterConstructor(Actual365FixedStandard), TimeUnit(Months), Frequency(Annual))
-import QuantLib.TermStructure.Yield(flatForward, discountAtDate)
+import QuantLib.TermStructure.Yield(Reference(..), flatForward, discountAtDate)
 import QuantLib.TermStructure.Volatility(blackConstantVol)
 import QuantLib.InterestRate(Compounding(Continuous))
 
@@ -44,7 +44,7 @@ main = keepingSettingsGc $ do
       rho = 0.75 :: Double
       spreadStrike = 5 :: Double
   rQ <- simpleQuote 0.05
-  rTS <- flatForward today rQ dc Continuous Annual
+  rTS <- flatForward (ReferenceDate today) rQ dc Continuous Annual
   v1Q <- simpleQuote 0.25
   v2Q <- simpleQuote 0.35
   vol1TS <- blackConstantVol today cal v1Q dc
@@ -74,8 +74,8 @@ main = keepingSettingsGc $ do
   -- inputs (f1=110*dq1/df, f2=90*dq2/df), Kirk-vs-Strang(First/Second) golden table (a few rows)
   dq1Q <- simpleQuote 0.03
   dq2Q <- simpleQuote 0.02
-  dq1TS <- flatForward today dq1Q dc Continuous Annual
-  dq2TS <- flatForward today dq2Q dc Continuous Annual
+  dq1TS <- flatForward (ReferenceDate today) dq1Q dc Continuous Annual
+  dq2TS <- flatForward (ReferenceDate today) dq2Q dc Continuous Annual
   dfR <- discountAtDate rTS maturity False
   dq1 <- discountAtDate dq1TS maturity False
   dq2 <- discountAtDate dq2TS maturity False
@@ -135,10 +135,10 @@ main = keepingSettingsGc $ do
       brho = 0.3 :: Double
   bq1 <- simpleQuote 0.0
   bq2 <- simpleQuote 0.0
-  bqTS1 <- flatForward today bq1 dc Continuous Annual
-  bqTS2 <- flatForward today bq2 dc Continuous Annual
+  bqTS1 <- flatForward (ReferenceDate today) bq1 dc Continuous Annual
+  bqTS2 <- flatForward (ReferenceDate today) bq2 dc Continuous Annual
   brQ <- simpleQuote 0.05
-  brTS <- flatForward today brQ dc Continuous Annual
+  brTS <- flatForward (ReferenceDate today) brQ dc Continuous Annual
   bv1 <- simpleQuote 0.3
   bv2 <- simpleQuote 0.3
   bvolTS1 <- blackConstantVol today cal bv1 dc

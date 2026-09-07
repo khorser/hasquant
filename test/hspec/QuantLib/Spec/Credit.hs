@@ -12,7 +12,7 @@ import QuantLib.InterestRate(Compounding(..))
 import QuantLib.Math(Interpolation(..))
 import QuantLib.Quote(simpleQuote, setValue)
 import QuantLib.TermStructure.Credit
-import QuantLib.TermStructure.Yield(flatForward, interpolatedDiscountCurve)
+import QuantLib.TermStructure.Yield(Reference(..), flatForward, interpolatedDiscountCurve)
 import QuantLib.Instrument(setPricingEngine, PricingModel(..))
 import QuantLib.Instrument.Credit(Claim(..), ProtectionSide(..), creditDefaultSwap, syntheticCdo, fairPremium, nthToDefault, ntdFairPremium)
 import QuantLib.Instrument.Swap(fairSpread)
@@ -93,7 +93,7 @@ spec = do
       p <- pool (fromList [(n, iss, key) | n <- names])
 
       rateQuote <- simpleQuote 0.05
-      yieldTS <- flatForward refDate rateQuote act360 Continuous Annual
+      yieldTS <- flatForward (ReferenceDate refDate) rateQuote act360 Continuous Annual
 
       correlQuote <- simpleQuote 0.1
       lossModel <- gaussianLhpLossModel correlQuote (fromList (replicate poolSize recovery))
@@ -159,7 +159,7 @@ spec = do
       p <- pool (fromList [(n, iss, key) | n <- names])
 
       rateQuote <- simpleQuote 0.05
-      yieldTS <- flatForward refDate rateQuote dc365 Continuous Annual
+      yieldTS <- flatForward (ReferenceDate refDate) rateQuote dc365 Continuous Annual
 
       target <- calendar TARGET
       sched <- schedule (Just $ fromGregorian 2006 9 1) (fromGregorian 2011 9 1) (3, Months) target
@@ -328,7 +328,7 @@ spec = do
       helperDc <- dayCounter Thirty360BondBasis
       discountDc <- dayCounter (Actual360 False)
       discountQuote <- simpleQuote 0.06
-      discountCurve <- flatForward refDate discountQuote discountDc Continuous Annual
+      discountCurve <- flatForward (ReferenceDate refDate) discountQuote discountDc Continuous Annual
       helpers <- forM spreads $ \(years, spread) -> do
         q <- simpleQuote spread
         spreadCdsHelper q (years, Years) 1 cal Quarterly Following TwentiethIMM helperDc recovery discountCurve True True Nothing helperDc True Midpoint
@@ -368,7 +368,7 @@ spec = do
       helperDc <- dayCounter Thirty360BondBasis
       discountDc <- dayCounter (Actual360 False)
       discountQuote <- simpleQuote 0.06
-      discountCurve <- flatForward refDate discountQuote discountDc Continuous Annual
+      discountCurve <- flatForward (ReferenceDate refDate) discountQuote discountDc Continuous Annual
       helpers <- forM spreads $ \(years, spread) -> do
         q <- simpleQuote spread
         spreadCdsHelper q (years, Years) 1 cal Quarterly Following TwentiethIMM helperDc recovery discountCurve True True Nothing helperDc True Midpoint
@@ -400,7 +400,7 @@ spec = do
       helperDc <- dayCounter Thirty360BondBasis
       discountDc <- dayCounter (Actual360 False)
       discountQuote <- simpleQuote 0.06
-      discountCurve <- flatForward refDate discountQuote discountDc Continuous Annual
+      discountCurve <- flatForward (ReferenceDate refDate) discountQuote discountDc Continuous Annual
       helpers <- forM spreads $ \(years, spread) -> do
         q <- simpleQuote spread
         spreadCdsHelper q (years, Years) 1 cal Quarterly Following TwentiethIMM helperDc recovery discountCurve True True Nothing helperDc True Midpoint

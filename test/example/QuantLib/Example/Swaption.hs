@@ -35,7 +35,7 @@ run = do
 
   act365 <- dayCounter Actual365FixedStandard
   flatQuote <- simpleQuote 0.05
-  ts <- TS.flatForward settlementDate flatQuote act365 Continuous Annual
+  ts <- TS.flatForward (TS.ReferenceDate settlementDate) flatQuote act365 Continuous Annual
 
   euribor6m <- IR.iborIndex IR.Euribor6M (Just ts)
   cal <- fixingCalendar euribor6m

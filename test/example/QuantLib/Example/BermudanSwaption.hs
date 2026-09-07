@@ -75,7 +75,7 @@ run = do
   setEvaluationDate $ Just evalDate
   flatRate <- simpleQuote 0.04875825 >>= asQuote -- just to test that explicit casting works
   dc365 <- dayCounter Actual365FixedStandard
-  ts <- flatForward settl flatRate dc365 Continuous Annual
+  ts <- flatForward (ReferenceDate settl) flatRate dc365 Continuous Annual
   fixedDC <- dayCounter Thirty360European
   index6m <- IRI.iborIndex IRI.Euribor6M (Just ts)
   start <- advance cal settl (1, Years) floatConv False

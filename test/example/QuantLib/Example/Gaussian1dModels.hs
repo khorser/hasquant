@@ -93,8 +93,8 @@ run = do
 
   forward6mQuote <- simpleQuote forward6mLevel
   oisQuote <- simpleQuote oisLevel
-  yts6m <- TS.flatForward refDate forward6mQuote dc365 Continuous Annual
-  ytsOis <- TS.flatForward refDate oisQuote dc365 Continuous Annual
+  yts6m <- TS.flatForward (TS.ReferenceDate refDate) forward6mQuote dc365 Continuous Annual
+  ytsOis <- TS.flatForward (TS.ReferenceDate refDate) oisQuote dc365 Continuous Annual
   euribor6m <- IR.iborIndex IR.Euribor6M (Just yts6m)
 
   volQuote <- simpleQuote volLevel

@@ -31,7 +31,7 @@ main = do
     customPillarDate <- advance cal today (3, Months) ModifiedFollowing False
     h <- fraRateHelper q 1 4 2 cal ModifiedFollowing True dc pillar
       (if pillar == CustomDate then Just customPillarDate else Nothing) True
-    curve <- piecewiseYieldCurve today [h] dc [] Discount LogLinear
+    curve <- piecewiseYieldCurve (ReferenceDate today) [h] dc [] (Iterative Discount LogLinear defaultIterativeBootstrapOpts) False
     endDate <- advance cal today (5, Months) ModifiedFollowing False
     d <- discountAtDate curve endDate True
     putStrLn (show pillar ++ " -> discount " ++ show d)
@@ -40,7 +40,7 @@ main = do
   forM_ ([(IMM, imm), (ASX, 8 `march` 2024), (Custom, imm)] :: [(FuturesType, Day)]) $ \(ty, futDate) -> do
     q <- simpleQuote 99.0
     h <- futuresRateHelper q futDate 3 cal ModifiedFollowing True dc Nothing ty
-    curve <- piecewiseYieldCurve today [h] dc [] Discount LogLinear
+    curve <- piecewiseYieldCurve (ReferenceDate today) [h] dc [] (Iterative Discount LogLinear defaultIterativeBootstrapOpts) False
     d <- discountAtDate curve futDate True
     putStrLn (show ty ++ " -> discount " ++ show d)
   where

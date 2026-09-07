@@ -34,7 +34,7 @@ run = do
   vol <- simpleQuote 0.20
   dc <- dayCounter Actual365FixedStandard
   cal <- calendar Null
-  flatRate <- flatForwardMoving 0 cal riskFreeRate dc Continuous Annual
+  flatRate <- flatForward (SettlementDays 0 cal) riskFreeRate dc Continuous Annual
   flatVol <- blackConstantVolMoving 0 cal vol dc
   let ex = European $ EuropeanExercise maturity
       payoff = PlainVanilla $ PlainVanillaPayoff optionType strike

@@ -50,7 +50,7 @@ makeSwap today' lengthYears fixedRate floatingSpread = do
   -- before it and require a historical Euribor6M fixing that was never registered.
   adjToday <- adjust cal today' Following
   settle <- advance cal adjToday (2, Days) Following False
-  ts <- flatForward settle q discDC Continuous Annual
+  ts <- flatForward (ReferenceDate settle) q discDC Continuous Annual
   idx <- IR.iborIndex IR.Euribor6M (Just ts)
   maturity <- advance cal settle (lengthYears, Years) ModifiedFollowing False
   fixedSch <- schedule (Just settle) maturity (1, Years) cal Unadjusted Unadjusted Forward False Nothing Nothing
@@ -106,7 +106,7 @@ spec = do
         irregular <- irregularSwap Payer fixed floating
         dc <- dayCounter Actual365FixedStandard
         q <- simpleQuote 0.05
-        curve <- flatForward today' q dc Continuous Annual
+        curve <- flatForward (ReferenceDate today') q dc Continuous Annual
         engine <- discountingSwapEngine curve Nothing Nothing Nothing
         setPricingEngine irregular engine
         rate' <- fairRate irregular
@@ -125,7 +125,7 @@ spec = do
         eur <- currency EUR
         flatDC <- dayCounter Actual365FixedStandard
         q <- simpleQuote 0.03
-        curve <- flatForward today' q flatDC Continuous Annual
+        curve <- flatForward (ReferenceDate today') q flatDC Continuous Annual
         fxQuote <- simpleQuote 1.0
         legDC <- dayCounter (Actual360 False)
         usdLibor3m <- IR.iborIndex (IR.UsdLibor (3, Months)) (Just curve)
@@ -186,7 +186,7 @@ spec = do
         cal <- calendar TARGET
         discDC <- dayCounter Actual365FixedStandard
         q <- simpleQuote 0.05
-        ts <- flatForward evalDate q discDC Continuous Annual
+        ts <- flatForward (ReferenceDate evalDate) q discDC Continuous Annual
         euribor6m <- IR.iborIndex IR.Euribor6M (Just ts)
         floatDC <- dayCounter (Actual360 False)
 
@@ -235,7 +235,7 @@ spec = do
         dc <- dayCounter Actual365FixedStandard
         settle <- advance cal today' (2, Days) Following False
         q <- simpleQuote 0.007
-        ts <- flatForward settle q dc Continuous Annual
+        ts <- flatForward (ReferenceDate settle) q dc Continuous Annual
         euribor6m <- IR.iborIndex IR.Euribor6M (Just ts)
 
         let paymentDelay = 1 :: Word
@@ -269,7 +269,7 @@ spec = do
         dc <- dayCounter Actual365FixedStandard
         settle <- advance cal today' (2, Days) Following False
         q <- simpleQuote 0.007
-        ts <- flatForward settle q dc Continuous Annual
+        ts <- flatForward (ReferenceDate settle) q dc Continuous Annual
         euribor6m <- IR.iborIndex IR.Euribor6M (Just ts)
         engine <- discountingSwapEngine ts Nothing Nothing Nothing
         let end = 12 `february` 2041

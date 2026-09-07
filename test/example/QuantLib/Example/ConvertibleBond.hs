@@ -70,8 +70,8 @@ run = do
   volQ <- simpleQuote vol
   creditSpreadQ <- simpleQuote spreadRate
 
-  ts <- flatForward settl riskFreeQ dc Continuous Annual
-  dts <- flatForward settl divQ dc Continuous Annual
+  ts <- flatForward (ReferenceDate settl) riskFreeQ dc Continuous Annual
+  dts <- flatForward (ReferenceDate settl) divQ dc Continuous Annual
   vts <- blackConstantVol settl cal volQ dc
 
   bsmProc <- simpleQuote under >>= $(free1st 'blackScholesMertonProcess) dts ts vts EulerDiscretization False

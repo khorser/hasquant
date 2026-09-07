@@ -375,7 +375,6 @@ extern "C" {
   QlRateHelper *qlDepositRateHelper(QlQuote *quote, int, int, unsigned fixDays, Calendar *calendar, int conv, int eom, DayCounter *dayCount, char **e);
   QlBondHelper *qlFixedRateBondHelper(QlQuote *quote, unsigned settlDays, double face, Schedule *sched, unsigned cLen, double *coupons, DayCounter *dayCount, int conv, double redemption, int issue, char **e);
   QlBondHelper *qlCPIBondHelper(QlQuote *quote, unsigned settlementDays, double faceAmount, double baseCPI, int obsLagLen, int obsLagUnit, QlZeroInflationIndex* index, int observationInterpolation, Schedule *schedule, unsigned couponsLen, double *coupons, DayCounter *accrualDayCounter, int paymentConvention, int issueDate, Calendar *paymentCalendar, char **e);
-  QlYieldTermStructure *qlPiecewiseYieldCurve(int date, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen, QlQuote **quotes, unsigned datesLen, int *dates, int trait, int interpolator, int approximator, int approximatorArg, char **e);
   QlYieldTermStructure *qlPiecewiseYieldCurve1(unsigned settl, Calendar *cal, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen, QlQuote **quotes, unsigned datesLen, int *dates, int trait, int interpolator, int approximator, int approximatorArg, int extrapolate, char **e);
   // Full-arity counterparts of the two above, additionally taking every IterativeBootstrap
   // constructor parameter (ql/termstructures/iterativebootstrap.hpp). Separate entry points
@@ -388,25 +387,31 @@ extern "C" {
   // the shim itself (see qlTermStructureAux.cpp) rather than taking those as Haskell-visible
   // params -- CLAUDE.md's "dedicated constructor hardcodes the enum value" pattern.
   QlYieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrap1(unsigned settl, Calendar *cal, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen, QlQuote **quotes, unsigned datesLen, int *dates, double accuracy, unsigned weightsLen, double *weights, int extrapolate, char **e);
+  QlYieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrapFixed1(int date, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen, QlQuote **quotes, unsigned datesLen, int *dates, double accuracy, unsigned weightsLen, double *weights, int extrapolate, char **e);
   // Same shape as qlPiecewiseYieldCurveGlobalBootstrap1, hardcoding trait=SimpleZeroYield/
   // interpolator=Linear instead -- QuantLib-SWIG's only bound GlobalBootstrap combination
   // (GlobalLinearSimpleZeroCurve).
   QlYieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrap2(unsigned settl, Calendar *cal, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen, QlQuote **quotes, unsigned datesLen, int *dates, double accuracy, unsigned weightsLen, double *weights, int extrapolate, char **e);
+  QlYieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrapFixed2(int date, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen, QlQuote **quotes, unsigned datesLen, int *dates, double accuracy, unsigned weightsLen, double *weights, int extrapolate, char **e);
   // Same shape as qlPiecewiseYieldCurveGlobalBootstrap1/2, hardcoding trait=ForwardRate/
   // interpolator=Linear and trait=ZeroYield/interpolator=Linear respectively -- issue #15's two
   // next-cheapest, most generically useful GlobalBootstrap combinations.
   QlYieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrap4(unsigned settl, Calendar *cal, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen, QlQuote **quotes, unsigned datesLen, int *dates, double accuracy, unsigned weightsLen, double *weights, int extrapolate, char **e);
   QlYieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrap5(unsigned settl, Calendar *cal, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen, QlQuote **quotes, unsigned datesLen, int *dates, double accuracy, unsigned weightsLen, double *weights, int extrapolate, char **e);
+  QlYieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrapFixed4(int date, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen, QlQuote **quotes, unsigned datesLen, int *dates, double accuracy, unsigned weightsLen, double *weights, int extrapolate, char **e);
+  QlYieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrapFixed5(int date, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen, QlQuote **quotes, unsigned datesLen, int *dates, double accuracy, unsigned weightsLen, double *weights, int extrapolate, char **e);
   // trait=SimpleZeroYield/interpolator=Linear via GlobalBootstrap's functor-callback
   // constructor (canned AdditionalErrors/AdditionalDates -- see qlTermStructureAux.cpp).
   // additionalDatesLen must equal additionalRateLen - 2.
   QlYieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrap3(unsigned settl, Calendar *cal, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen, QlQuote **quotes, unsigned datesLen, int *dates, unsigned additionalRateLen, QlRateHelper **additionalRatehelpers, unsigned additionalDatesLen, int *additionalDates, double accuracy, int extrapolate, char **e);
+  QlYieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrapFixed3(int date, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen, QlQuote **quotes, unsigned datesLen, int *dates, unsigned additionalRateLen, QlRateHelper **additionalRatehelpers, unsigned additionalDatesLen, int *additionalDates, double accuracy, int extrapolate, char **e);
   // Dedicated LocalBootstrap entry point: interpolator is always ConvexMonotone (the only
   // upstream interpolator LocalBootstrap works with -- see qlTermStructureAux.cpp), so trait is
   // the only Haskell-visible dispatch axis here; localisation/forcePositive/accuracy are
   // LocalBootstrap's own constructor params, quadraticity/monotonicity/convexForcePositive are
   // ConvexMonotone's.
   QlYieldTermStructure *qlPiecewiseYieldCurveLocalBootstrap1(unsigned settl, Calendar *cal, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen, QlQuote **quotes, unsigned datesLen, int *dates, int trait, unsigned localisation, int forcePositive, double accuracy, double quadraticity, double monotonicity, int convexForcePositive, int extrapolate, char **e);
+  QlYieldTermStructure *qlPiecewiseYieldCurveLocalBootstrapFixed(int date, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen, QlQuote **quotes, unsigned datesLen, int *dates, int trait, unsigned localisation, int forcePositive, double accuracy, double quadraticity, double monotonicity, int convexForcePositive, int extrapolate, char **e);
 
   QlMultiCurve *qlMultiCurve(double accuracy, char **e);
   void qlFreeMultiCurve(QlMultiCurve *o);

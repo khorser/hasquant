@@ -104,9 +104,9 @@ run = do
   cal <- calendar TARGET
   underQs <- mapM simpleQuote spots
   riskFreeQ <- simpleQuote riskFreeRate
-  ts <- flatForward evalDate riskFreeQ dc Continuous Annual
+  ts <- flatForward (ReferenceDate evalDate) riskFreeQ dc Continuous Annual
   divQ <- simpleQuote 0.0
-  divTS <- flatForward evalDate divQ dc Continuous Annual
+  divTS <- flatForward (ReferenceDate evalDate) divQ dc Continuous Annual
   volQs <- mapM simpleQuote vols
   volTSs <- mapM (\vq -> $(free2nd 'blackConstantVol) evalDate vq dc cal) volQs
   procs1D <- zipWithM (\uq vts -> blackScholesMertonProcess uq divTS ts vts EulerDiscretization False) underQs volTSs

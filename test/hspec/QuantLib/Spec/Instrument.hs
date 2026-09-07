@@ -49,9 +49,9 @@ spec = do
             optType = Put
         underQ <- simpleQuote under
         riskFreeQ <- simpleQuote riskFreeRate
-        ts <- flatForward evalDate riskFreeQ dc Continuous Annual
+        ts <- flatForward (ReferenceDate evalDate) riskFreeQ dc Continuous Annual
         divQ <- simpleQuote dividend
-        divTS <- flatForward evalDate divQ dc Continuous Annual
+        divTS <- flatForward (ReferenceDate evalDate) divQ dc Continuous Annual
         volQ <- simpleQuote vol
         volTS <- calendar TARGET >>= $(free2nd 'blackConstantVol) evalDate volQ dc
         let payoff = PlainVanilla $ PlainVanillaPayoff optType strike
@@ -77,7 +77,7 @@ spec = do
         settle <- advance cal today' (2, Days) Following False
         discQ <- simpleQuote 0.02
         dc <- dayCounter Actual365FixedStandard
-        discountTS <- flatForward today' discQ dc Continuous Annual
+        discountTS <- flatForward (ReferenceDate today') discQ dc Continuous Annual
         idx <- iborIndex Euribor6M (Just discountTS)
         floatDC <- dayCounter (Actual360 False)
         floatSch <- schedule (Just settle) (11 `december` 2017) (6, Months) cal
@@ -143,8 +143,8 @@ spec = do
         cal <- calendar (Bespoke "PerpetualFutures" [])
         domesticQuote <- simpleQuote domesticRate
         foreignQuote <- simpleQuote foreignRate
-        domesticCurve <- flatForward evalDate domesticQuote dc Continuous Annual
-        foreignCurve <- flatForward evalDate foreignQuote dc Continuous Annual
+        domesticCurve <- flatForward (ReferenceDate evalDate) domesticQuote dc Continuous Annual
+        foreignCurve <- flatForward (ReferenceDate evalDate) foreignQuote dc Continuous Annual
         spotQuote <- simpleQuote spot
         forM_ cases $ \(payoff, fundingType, frequency) -> do
           future <- perpetualFutures payoff fundingType frequency cal dc

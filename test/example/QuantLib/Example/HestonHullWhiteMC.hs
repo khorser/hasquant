@@ -37,7 +37,7 @@ import QuantLib.Process(hestonProcess, hullWhiteForwardProcess, setForwardMeasur
 import QuantLib.Quote(simpleQuote)
 import qualified QuantLib.Settings as Settings
 import QuantLib.InterestRate(Compounding(..))
-import QuantLib.TermStructure.Yield(interpolatedZeroCurve, flatForward, discount)
+import QuantLib.TermStructure.Yield(Reference(..), interpolatedZeroCurve, flatForward, discount)
 import QuantLib.Time.Calendar(calendar, CalendarConstructor(..))
 import QuantLib.Time.Date(today, addPeriod)
 import QuantLib.Time.Schedule(Frequency(..), dayCounter, years, DayCounterConstructor(..), TimeUnit(..))
@@ -70,7 +70,7 @@ run = Settings.keepingSettingsGc $ do
   -- a flat 0% dividend curve, as upstream: the joint process dereferences the handle, so it
   -- cannot be left empty here
   zeroQ <- simpleQuote 0.0
-  qTS <- flatForward evalDate zeroQ dc Continuous Annual
+  qTS <- flatForward (ReferenceDate evalDate) zeroQ dc Continuous Annual
   hProcess <- hestonProcess rTS (Just qTS) s0 0.02 1.0 0.2 0.5 (-0.8) QuadraticExponentialMartingale
   hwFwd <- hullWhiteForwardProcess rTS hwA hwSigma
   -- must precede the joint process's construction, which captures T at that point

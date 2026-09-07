@@ -85,7 +85,7 @@ spec = do
                   Nothing LastRelevantDate Nothing False Nothing Nothing Nothing >>= asRateHelper)
               swapData
 
-            ts <- piecewiseYieldCurve settlement (fromList (deposits ++ swaps)) actual360dc [] Discount LogLinear
+            ts <- piecewiseYieldCurve (ReferenceDate settlement) (fromList (deposits ++ swaps)) actual360dc [] (Iterative Discount LogLinear defaultIterativeBootstrapOpts) False
             return (cal, settlementDays, ts)
       it "referenceChange" $ Settings.keepingSettingsGc $ do
         let ds = [10, 30, 60, 120, 360, 720]
@@ -93,7 +93,7 @@ spec = do
         flatRate <- Quote.simpleQuote 0.03
         cal <- calendar Null
         actual360dc <- dayCounter (Actual360 False)
-        ts <- flatForwardMoving settlementDays cal flatRate actual360dc IR.Continuous Annual
+        ts <- flatForward (SettlementDays settlementDays cal) flatRate actual360dc IR.Continuous Annual
         td <- Settings.evaluationDate
 
         expected <- mapM (\d -> discountAtDate ts (addDays d td) False) ds
@@ -105,7 +105,7 @@ spec = do
       it "controls extrapolation through the common term-structure interface" $ do
         flatRate <- Quote.simpleQuote 0.03
         dc <- dayCounter (Actual360 False)
-        ts <- flatForward (fromGregorian 2025 1 2) flatRate dc IR.Continuous Annual
+        ts <- flatForward (ReferenceDate (fromGregorian 2025 1 2)) flatRate dc IR.Continuous Annual
         allowsExtrapolation ts `shouldReturn` False
         setExtrapolation ts True
         allowsExtrapolation ts `shouldReturn` True
@@ -161,8 +161,8 @@ spec = do
           dc <- dayCounter Actual365FixedStandard
           q1 <- Quote.simpleQuote 0.03
           q2 <- Quote.simpleQuote 0.01
-          c1 <- flatForward refDate q1 dc IR.Continuous NoFrequency
-          c2 <- flatForward refDate q2 dc IR.Continuous NoFrequency
+          c1 <- flatForward (ReferenceDate refDate) q1 dc IR.Continuous NoFrequency
+          c2 <- flatForward (ReferenceDate refDate) q2 dc IR.Continuous NoFrequency
           withCompositeZeroYieldStructure (-) c1 c2 IR.Continuous NoFrequency $ \composite -> do
             initial <- IR.rate <$> zeroRateAtDate composite queryDate dc IR.Continuous NoFrequency False
             _ <- Quote.setValue q1 0.04
@@ -300,13 +300,18 @@ spec = do
               price <- Quote.simpleQuote 100.0
               fixedRateBondHelper price 3 100.0 sch [coupon] thirty360dc Following 100.0 Nothing)
             [((2, Years), 0.03), ((5, Years), 0.035), ((10, Years), 0.04)]
-          curve <- do
-            let optMethod = Simplex 0.1
-            fittedBondDiscountCurveMoving 3 cal (fromList helpers) thirty360dc
-              (ExponentialSplines True [] [] 0.0 1.0e6 9 Nothing Nothing (Just optMethod))
-              1.0e-10 10000 [] 1.0
-          d <- discountAtDate curve (5 `january` 2029) False
-          d `shouldSatisfy` (\x -> x > 0 && x < 1)
+          let build reference = do
+                let optMethod = Simplex 0.1
+                fittedBondDiscountCurve reference (fromList helpers) thirty360dc
+                  (ExponentialSplines True [] [] 0.0 1.0e6 9 Nothing Nothing (Just optMethod))
+                  1.0e-10 10000 [] 1.0 False
+          fixedReference <- advance cal (2 `january` 2024) (3, Days) Following False
+          movingCurve <- build (SettlementDays 3 cal)
+          fixedCurve <- build (ReferenceDate fixedReference)
+          movingDiscount <- discountAtDate movingCurve (5 `january` 2029) False
+          fixedDiscount <- discountAtDate fixedCurve (5 `january` 2029) False
+          movingDiscount `shouldSatisfy` (\x -> x > 0 && x < 1)
+          fixedDiscount `shouldSatisfy` closePrec movingDiscount 1.0e-6
 
     -- No upstream test-suite fixture exists for FxSwapRateHelper (unlike the other rate
     -- helpers ported elsewhere in this file), so this is a self-consistency check instead of
@@ -325,12 +330,12 @@ spec = do
           let fixingDays = 2 :: Word
           settlement <- advance cal (2 `january` 2024) (2, Days) Following False
           collRate <- Quote.simpleQuote 0.03
-          collateralCurve <- flatForwardMoving fixingDays cal collRate actual360dc IR.Continuous Annual
+          collateralCurve <- flatForward (SettlementDays fixingDays cal) collRate actual360dc IR.Continuous Annual
           spotFx <- Quote.simpleQuote 1.10
           fwdPoint <- Quote.simpleQuote 0.0025
           rh <- fxSwapRateHelper fwdPoint spotFx (1, Years) fixingDays cal ModifiedFollowing False
                   True collateralCurve tradingCal
-          ts <- piecewiseYieldCurve settlement [rh] actual360dc [] Discount LogLinear
+          ts <- piecewiseYieldCurve (ReferenceDate settlement) [rh] actual360dc [] (Iterative Discount LogLinear defaultIterativeBootstrapOpts) False
           -- PiecewiseYieldCurve is a lazy QuantLib object: bootstrapping (and the
           -- setTermStructure call on each helper) only runs on first calculation, not on
           -- construction, so the curve must be queried before impliedQuote is meaningful.
@@ -361,7 +366,7 @@ spec = do
             (\tenor -> multipleResetsSwapRateHelper 0 tenor q euribor3m 2 Nothing AveragingCompound 0.0 NoFrequency actual360dc ModifiedFollowing)
             [(1, Years), (2, Years), (3, Years)]
 
-          ts <- piecewiseYieldCurve today' (fromList helpers) actual360dc [] Discount LogLinear
+          ts <- piecewiseYieldCurve (ReferenceDate today') (fromList helpers) actual360dc [] (Iterative Discount LogLinear defaultIterativeBootstrapOpts) False
           _ <- discountAtDate ts today' False
           implieds <- mapM impliedQuote helpers
           mapM_ (`shouldSatisfy` closePrec inputRate 1.0e-6) implieds
@@ -385,7 +390,7 @@ spec = do
           maturityDate <- advance cal valueDate (3, Months) ModifiedFollowing False
           price <- Quote.simpleQuote 95.0
           rh <- overnightIndexFutureRateHelper price valueDate maturityDate ois Nothing AveragingCompound LastRelevantDate Nothing
-          ts <- piecewiseYieldCurve valueDate [rh] actual360dc [] Discount LogLinear
+          ts <- piecewiseYieldCurve (ReferenceDate valueDate) [rh] actual360dc [] (Iterative Discount LogLinear defaultIterativeBootstrapOpts) False
           _ <- discountAtDate ts valueDate False
           implied <- impliedQuote rh
           priceVal <- Quote.value price
@@ -433,7 +438,7 @@ spec = do
           let settlement = 2 `january` 2024
           price <- Quote.simpleQuote 95.0
           rh <- sofrFutureRateHelper price QuantLib.Time.Date.March 2024 Quarterly Nothing LastRelevantDate Nothing
-          ts <- piecewiseYieldCurve settlement [rh] actual360dc [] Discount LogLinear
+          ts <- piecewiseYieldCurve (ReferenceDate settlement) [rh] actual360dc [] (Iterative Discount LogLinear defaultIterativeBootstrapOpts) False
           _ <- discountAtDate ts settlement False
           implied <- impliedQuote rh
           priceVal <- Quote.value price
@@ -457,11 +462,11 @@ spec = do
           price <- Quote.simpleQuote 95.0
 
           sofrRh <- sofrFutureRateHelper price QuantLib.Time.Date.March 2024 Quarterly Nothing LastRelevantDate Nothing
-          sofrTs <- piecewiseYieldCurve settlement [sofrRh] actual360dc [] Discount LogLinear
+          sofrTs <- piecewiseYieldCurve (ReferenceDate settlement) [sofrRh] actual360dc [] (Iterative Discount LogLinear defaultIterativeBootstrapOpts) False
           sofrDf <- discountAtDate sofrTs maturityDate False
 
           explicitRh <- overnightIndexFutureRateHelper price valueDate maturityDate ois Nothing AveragingCompound LastRelevantDate Nothing
-          explicitTs <- piecewiseYieldCurve settlement [explicitRh] actual360dc [] Discount LogLinear
+          explicitTs <- piecewiseYieldCurve (ReferenceDate settlement) [explicitRh] actual360dc [] (Iterative Discount LogLinear defaultIterativeBootstrapOpts) False
           explicitDf <- discountAtDate explicitTs maturityDate False
 
           sofrDf `shouldSatisfy` closePrec explicitDf 1.0e-8
@@ -476,7 +481,7 @@ spec = do
       let flat r = do
             q <- Quote.simpleQuote r
             dc <- dayCounter Actual365FixedStandard
-            flatForward (11 `december` 2012) q dc IR.Continuous Annual
+            flatForward (ReferenceDate (11 `december` 2012)) q dc IR.Continuous Annual
           -- one swap and one engine, built once and never rebuilt; the relinks below all
           -- act on the already-constructed objects
           setupSwap = do
@@ -547,7 +552,7 @@ spec = do
           q02 <- Quote.simpleQuote 0.02
           qh <- Quote.relinkableQuote (Just q02)
           dc <- dayCounter Actual365FixedStandard
-          c <- flatForward (11 `december` 2012) qh dc IR.Continuous Annual
+          c <- flatForward (ReferenceDate (11 `december` 2012)) qh dc IR.Continuous Annual
           npvBefore <- discount c 5.0 False
           Quote.simpleQuote 0.05 >>= Quote.linkTo qh
           npvAfter <- discount c 5.0 False
@@ -559,7 +564,7 @@ spec = do
           q02 <- Quote.simpleQuote 0.02
           qh <- Quote.relinkableQuote (Just q02)
           dc <- dayCounter Actual365FixedStandard
-          c <- flatForward (11 `december` 2012) qh dc IR.Continuous Annual
+          c <- flatForward (ReferenceDate (11 `december` 2012)) qh dc IR.Continuous Annual
           npvBefore <- discount c 5.0 False
           Quote.simpleQuote 0.05 >>= Quote.linkTo qh
           Quote.simpleQuote 0.02 >>= Quote.linkTo qh
@@ -573,9 +578,9 @@ spec = do
             underQ <- Quote.simpleQuote 100
             riskFreeQ <- Quote.simpleQuote 0.03
             dc <- dayCounter Actual365FixedStandard
-            ts <- flatForward (11 `december` 2012) riskFreeQ dc IR.Continuous Annual
+            ts <- flatForward (ReferenceDate (11 `december` 2012)) riskFreeQ dc IR.Continuous Annual
             divQ <- Quote.simpleQuote 0.0
-            divTS <- flatForward (11 `december` 2012) divQ dc IR.Continuous Annual
+            divTS <- flatForward (ReferenceDate (11 `december` 2012)) divQ dc IR.Continuous Annual
             volQ <- Quote.simpleQuote 0.20
             cal <- Calendar.calendar TARGET
             vol0 <- Vol.blackConstantVol (11 `december` 2012) cal volQ dc
@@ -996,7 +1001,7 @@ spec = do
             thirty360 <- dayCounter Thirty360BondBasis
             settleFix <- advance cal curveToday (2, Days) Following False
             discQ <- Quote.simpleQuote 0.02
-            discountCurve <- flatForwardMoving 0 cal discQ euriborDC IR.Continuous Annual
+            discountCurve <- flatForward (SettlementDays 0 cal) discQ euriborDC IR.Continuous Annual
             -- the internal handles: empty until addBootstrappedCurve links them below
             intcurve3m <- relinkableYieldTermStructure Nothing
             intcurve6m <- relinkableYieldTermStructure Nothing
@@ -1012,10 +1017,10 @@ spec = do
               >>= mapM asRateHelper -- swapRateHelperWithConventions returns the concrete SwapRateHelper; upcast to the generic RateHelper the other helpers already are, so the list below is homogeneous
             -- helpers3m/helpers6m each reference the *other* curve's not-yet-bootstrapped
             -- internal handle (via euribor3m/euribor6m) -- this is exactly the cycle a plain
-            -- piecewiseYieldCurveMoving with IterativeBootstrap can't resolve.
-            ptr3m <- piecewiseYieldCurveMoving 0 cal (fromList (helpers3mFra ++ helpers3mBasis)) euriborDC []
+            -- piecewiseYieldCurve (SettlementDays with IterativeBootstrap) can't resolve.
+            ptr3m <- piecewiseYieldCurve (SettlementDays 0 cal) (fromList (helpers3mFra ++ helpers3mBasis)) euriborDC []
               (GlobalDiscountLogLinear 1.0e-10 []) False
-            ptr6m <- piecewiseYieldCurveMoving 0 cal (fromList (helpers6mBasis ++ helpers6mSwap)) euriborDC []
+            ptr6m <- piecewiseYieldCurve (SettlementDays 0 cal) (fromList (helpers6mBasis ++ helpers6mSwap)) euriborDC []
               (GlobalDiscountLogLinear 1.0e-10 []) False
             mc <- multiCurve 1.0e-10
             curve3m <- addBootstrappedCurve mc intcurve3m ptr3m
@@ -1092,7 +1097,7 @@ spec = do
             helpers3m <- mapM (\i -> swapRateHelperWithConventions q (i, Years) cal Annual Following thirty360 euribor3m Nothing (0, Days) (Just intcurveois)
                                         Nothing LastRelevantDate Nothing False Nothing Nothing Nothing
                                       >>= asRateHelper) [1 .. 10 :: Int]
-            ptr3m <- piecewiseYieldCurveMoving 0 cal (fromList helpers3m) euriborDC []
+            ptr3m <- piecewiseYieldCurve (SettlementDays 0 cal) (fromList helpers3m) euriborDC []
               (GlobalDiscountLogLinear 1.0e-10 []) False
             mc <- multiCurve 1.0e-10
             curve3m <- addBootstrappedCurve mc intcurve3m ptr3m
@@ -1139,9 +1144,9 @@ spec = do
           h1 <- depositRateHelper q1 (6, Months) 2 cal ModifiedFollowing True euriborDC
           h2 <- depositRateHelper q2 (6, Months) 2 cal ModifiedFollowing True euriborDC
           let helpers = [h1, h2]
-          curveMostlyQ2 <- piecewiseYieldCurveMoving 0 cal helpers euriborDC []
+          curveMostlyQ2 <- piecewiseYieldCurve (SettlementDays 0 cal) helpers euriborDC []
             (GlobalDiscountLogLinear 1.0e-10 [0.1, 0.9]) False
-          curveMostlyQ1 <- piecewiseYieldCurveMoving 0 cal helpers euriborDC []
+          curveMostlyQ1 <- piecewiseYieldCurve (SettlementDays 0 cal) helpers euriborDC []
             (GlobalDiscountLogLinear 1.0e-10 [0.9, 0.1]) False
           settleFix <- advance cal curveToday (2, Days) Following False
           pillar <- advance cal settleFix (6, Months) ModifiedFollowing True
@@ -1176,9 +1181,9 @@ spec = do
           q <- Quote.simpleQuote 0.03
           helpersDiscount <- mapM (\i -> depositRateHelper q (i, Months) 2 cal ModifiedFollowing True euriborDC) [1 .. 5 :: Int]
           helpersZero <- mapM (\i -> depositRateHelper q (i, Months) 2 cal ModifiedFollowing True euriborDC) [1 .. 5 :: Int]
-          discountCurve <- piecewiseYieldCurveMoving 0 cal (fromList helpersDiscount) euriborDC []
+          discountCurve <- piecewiseYieldCurve (SettlementDays 0 cal) (fromList helpersDiscount) euriborDC []
             (GlobalDiscountLogLinear 1.0e-10 []) False
-          zeroCurve <- piecewiseYieldCurveMoving 0 cal (fromList helpersZero) euriborDC []
+          zeroCurve <- piecewiseYieldCurve (SettlementDays 0 cal) (fromList helpersZero) euriborDC []
             (GlobalSimpleZeroLinear 1.0e-10 []) False
           settleFix <- advance cal curveToday (2, Days) Following False
           mapM_ (\i -> do
@@ -1194,7 +1199,7 @@ spec = do
       -- default Bootstrap for any Traits/Interpolator combination -- was reachable only through
       -- the GlobalBootstrap-specific entry points above, never with plain IterativeBootstrap.
       -- Same pillar-discount-factor comparison as the GlobalBootstrap test above, but through
-      -- piecewiseYieldCurveMoving with IterativeBootstrap (no GlobalBootstrap involved), to confirm the trait now
+      -- piecewiseYieldCurve (SettlementDays with IterativeBootstrap) (no GlobalBootstrap involved), to confirm the trait now
       -- dispatches instead of hitting dispatchTrait's "Unsupported trait" QL_FAIL.
       it "SimpleZeroYield reprices to the same pillar discount factors as Discount under IterativeBootstrap" $
         Settings.keepingSettingsGc $ do
@@ -1204,9 +1209,9 @@ spec = do
           q <- Quote.simpleQuote 0.03
           helpersDiscount <- mapM (\i -> depositRateHelper q (i, Months) 2 cal ModifiedFollowing True euriborDC) [1 .. 5 :: Int]
           helpersZero <- mapM (\i -> depositRateHelper q (i, Months) 2 cal ModifiedFollowing True euriborDC) [1 .. 5 :: Int]
-          discountCurve <- piecewiseYieldCurveMoving 0 cal (fromList helpersDiscount) euriborDC []
+          discountCurve <- piecewiseYieldCurve (SettlementDays 0 cal) (fromList helpersDiscount) euriborDC []
             (Iterative Discount Linear defaultIterativeBootstrapOpts) False
-          zeroCurve <- piecewiseYieldCurveMoving 0 cal (fromList helpersZero) euriborDC []
+          zeroCurve <- piecewiseYieldCurve (SettlementDays 0 cal) (fromList helpersZero) euriborDC []
             (Iterative SimpleZeroYield Linear defaultIterativeBootstrapOpts) False
           settleFix <- advance cal curveToday (2, Days) Following False
           mapM_ (\i -> do
@@ -1253,7 +1258,7 @@ spec = do
           -- spurious 2-day discounting gap -- confirmed by comparing against a settl=0 curve,
           -- whose discount() came out identical to a plain (non-functor) curve but consistently
           -- off from the hand-computed expectation.
-          curve <- piecewiseYieldCurveMoving 2 cal helpers euriborDC []
+          curve <- piecewiseYieldCurve (SettlementDays 2 cal) helpers euriborDC []
             (GlobalSimpleZeroLinearFull helpers extraDates 1.0e-10) False
           mapM_ (\i -> do
               pillar <- advance cal settleFix (i, Months) ModifiedFollowing True
@@ -1285,7 +1290,7 @@ spec = do
           q <- Quote.simpleQuote 0.03
           qVal <- Quote.value q
           helpers <- fromList <$> mapM (\i -> depositRateHelper q (i, Months) 2 cal ModifiedFollowing True euriborDC) [1 .. 5 :: Int]
-          curve <- piecewiseYieldCurveMoving 2 cal helpers euriborDC []
+          curve <- piecewiseYieldCurve (SettlementDays 2 cal) helpers euriborDC []
             (Local LForwardRate 2 True 1.0e-10 0.3 0.7 True) False
           mapM_ (\i -> do
               pillar <- advance cal settleFix (i, Months) ModifiedFollowing True
@@ -1294,9 +1299,9 @@ spec = do
               df `shouldSatisfy` closePrec (1 / (1 + qVal * tau)) tolerance
             ) ([1 .. 5] :: [Int])
 
-      -- piecewiseYieldCurveMoving unifies every moving bootstrapper behind one Bootstrap ADT.
+      -- piecewiseYieldCurve unifies both anchors and every bootstrapper behind ADTs.
       -- Exercise every constructor and check that each curve reprices its own instruments.
-      it "piecewiseYieldCurveMoving dispatches every Bootstrap constructor to a curve that reprices its own instruments" $
+      it "piecewiseYieldCurve dispatches every Bootstrap constructor to a curve that reprices its own instruments" $
         Settings.keepingSettingsGc $ do
           Settings.setEvaluationDate (Just curveToday)
           cal <- Calendar.calendar TARGET
@@ -1314,18 +1319,20 @@ spec = do
                   df <- discountAtDate curve pillar False
                   df `shouldSatisfy` closePrec (1 / (1 + qVal * tau)) tolerance
                 ) ([1 .. 5] :: [Int])
-          piecewiseYieldCurveMoving 2 cal helpers euriborDC [] (Iterative ForwardRate Linear defaultIterativeBootstrapOpts) False >>= checkCurve
-          piecewiseYieldCurveMoving 2 cal helpers euriborDC [] (GlobalDiscountLogLinear 1.0e-10 []) False >>= checkCurve
-          piecewiseYieldCurveMoving 2 cal helpers euriborDC [] (GlobalSimpleZeroLinear 1.0e-10 []) False >>= checkCurve
-          piecewiseYieldCurveMoving 2 cal helpers euriborDC [] (GlobalSimpleZeroLinearFull helpers extraDates 1.0e-10) False >>= checkCurve
-          piecewiseYieldCurveMoving 2 cal helpers euriborDC [] (GlobalForwardRateLinear 1.0e-10 []) False >>= checkCurve
-          piecewiseYieldCurveMoving 2 cal helpers euriborDC [] (GlobalZeroYieldLinear 1.0e-10 []) False >>= checkCurve
-          piecewiseYieldCurveMoving 2 cal helpers euriborDC [] (Local LForwardRate 2 True 1.0e-10 0.3 0.7 True) False >>= checkCurve
+              checkReference reference = do
+                piecewiseYieldCurve reference helpers euriborDC [] (Iterative ForwardRate Linear defaultIterativeBootstrapOpts) False >>= checkCurve
+                piecewiseYieldCurve reference helpers euriborDC [] (GlobalDiscountLogLinear 1.0e-10 []) False >>= checkCurve
+                piecewiseYieldCurve reference helpers euriborDC [] (GlobalSimpleZeroLinear 1.0e-10 []) False >>= checkCurve
+                piecewiseYieldCurve reference helpers euriborDC [] (GlobalSimpleZeroLinearFull helpers extraDates 1.0e-10) False >>= checkCurve
+                piecewiseYieldCurve reference helpers euriborDC [] (GlobalForwardRateLinear 1.0e-10 []) False >>= checkCurve
+                piecewiseYieldCurve reference helpers euriborDC [] (GlobalZeroYieldLinear 1.0e-10 []) False >>= checkCurve
+                piecewiseYieldCurve reference helpers euriborDC [] (Local LForwardRate 2 True 1.0e-10 0.3 0.7 True) False >>= checkCurve
+          mapM_ checkReference ([ReferenceDate settleFix, SettlementDays 2 cal] :: [Reference])
 
       -- issue #15: GlobalBootstrap widened to ForwardRate/Linear and ZeroYield/Linear, the other
       -- two IterativeBootstrap traits paired with the cheapest interpolator. Same
       -- reprices-its-own-instruments property as the SimpleZeroYield GlobalBootstrap test above,
-      -- through their own dedicated named entry points rather than piecewiseYieldCurveMoving directly.
+      -- through the common piecewiseYieldCurve dispatcher.
       it "ForwardRate/ZeroYield GlobalBootstrap curves reprice to the same pillar discount factors as Discount" $
         Settings.keepingSettingsGc $ do
           Settings.setEvaluationDate (Just curveToday)
@@ -1334,11 +1341,11 @@ spec = do
           settleFix <- advance cal curveToday (2, Days) Following False
           q <- Quote.simpleQuote 0.03
           helpers <- fromList <$> mapM (\i -> depositRateHelper q (i, Months) 2 cal ModifiedFollowing True euriborDC) [1 .. 5 :: Int]
-          discountCurve <- piecewiseYieldCurveMoving 0 cal helpers euriborDC []
+          discountCurve <- piecewiseYieldCurve (SettlementDays 0 cal) helpers euriborDC []
             (GlobalDiscountLogLinear 1.0e-10 []) False
-          forwardCurve <- piecewiseYieldCurveMoving 0 cal helpers euriborDC []
+          forwardCurve <- piecewiseYieldCurve (SettlementDays 0 cal) helpers euriborDC []
             (GlobalForwardRateLinear 1.0e-10 []) False
-          zeroCurve <- piecewiseYieldCurveMoving 0 cal helpers euriborDC []
+          zeroCurve <- piecewiseYieldCurve (SettlementDays 0 cal) helpers euriborDC []
             (GlobalZeroYieldLinear 1.0e-10 []) False
           mapM_ (\i -> do
               pillar <- advance cal settleFix (i, Months) ModifiedFollowing True
@@ -1370,9 +1377,9 @@ spec = do
           underQ <- Quote.simpleQuote 100
           riskFreeQ <- Quote.simpleQuote 0.03
           dc <- dayCounter Actual365FixedStandard
-          ts <- flatForward refDate riskFreeQ dc IR.Continuous Annual
+          ts <- flatForward (ReferenceDate refDate) riskFreeQ dc IR.Continuous Annual
           divQ <- Quote.simpleQuote 0.0
-          divTS <- flatForward refDate divQ dc IR.Continuous Annual
+          divTS <- flatForward (ReferenceDate refDate) divQ dc IR.Continuous Annual
           cal <- Calendar.calendar TARGET
           let mkNpv vol = do
                 proc <- blackScholesMertonProcess underQ divTS ts vol EulerDiscretization False
@@ -1415,9 +1422,9 @@ spec = do
           cal <- Calendar.calendar TARGET
           spot <- Quote.simpleQuote 1.18
           dtsQ <- Quote.simpleQuote 0.02
-          dts <- flatForwardMoving 0 cal dtsQ dc IR.Continuous Annual
+          dts <- flatForward (SettlementDays 0 cal) dtsQ dc IR.Continuous Annual
           ftsQ <- Quote.simpleQuote 0.035
-          fts <- flatForwardMoving 0 cal ftsQ dc IR.Continuous Annual
+          fts <- flatForward (SettlementDays 0 cal) ftsQ dc IR.Continuous Annual
           let vols = either error id $ realMatrixFromVector 4 3 $ V.fromList
                 [ 0.15, 0.13, 0.135
                 , 0.14, 0.11, 0.125
@@ -1460,9 +1467,9 @@ spec = do
           cal <- Calendar.calendar TARGET
           spot <- Quote.simpleQuote 1.18
           dtsQ <- Quote.simpleQuote 0.02
-          dts <- flatForwardMoving 0 cal dtsQ dc IR.Continuous Annual
+          dts <- flatForward (SettlementDays 0 cal) dtsQ dc IR.Continuous Annual
           ftsQ <- Quote.simpleQuote 0.035
-          fts <- flatForwardMoving 0 cal ftsQ dc IR.Continuous Annual
+          fts <- flatForward (SettlementDays 0 cal) ftsQ dc IR.Continuous Annual
           let vols = either error id $ realMatrixFromVector 4 3 $ V.fromList
                 [ 0.15, 0.13, 0.135
                 , 0.14, 0.11, 0.125
@@ -1657,7 +1664,7 @@ spec = do
             cal <- Calendar.calendar TARGET
             dc <- dayCounter Actual365FixedStandard
             fwdRateQ <- Quote.simpleQuote 0.03
-            fwdCurve <- flatForwardMoving 0 cal fwdRateQ dc IR.Continuous Annual
+            fwdCurve <- flatForward (SettlementDays 0 cal) fwdRateQ dc IR.Continuous Annual
             swapIndexBase <- liborSwapIndex EurLiborSwapIsdaFixA (10, Years) (Just fwdCurve) (Just fwdCurve)
             shortSwapIndexBase <- liborSwapIndex EurLiborSwapIsdaFixA (1, Years) (Just fwdCurve) (Just fwdCurve)
             volQ <- Quote.simpleQuote flatVol
@@ -1816,9 +1823,9 @@ spec = do
           Settings.setEvaluationDate (Just refDate)
           dc <- dayCounter Actual365FixedStandard
           rQ <- Quote.simpleQuote 0.025
-          rTS <- flatForward refDate rQ dc IR.Continuous Annual
+          rTS <- flatForward (ReferenceDate refDate) rQ dc IR.Continuous Annual
           qQ <- Quote.simpleQuote 0.0
-          qTS <- flatForward refDate qQ dc IR.Continuous Annual
+          qTS <- flatForward (ReferenceDate refDate) qQ dc IR.Continuous Annual
           s0 <- Quote.simpleQuote 75
           proc <- hestonProcess rTS (Just qTS) s0 0.04 1.5 0.04 0.3 (-0.9) QuadraticExponentialMartingale
           model <- hestonModel proc
@@ -1838,9 +1845,9 @@ spec = do
           Settings.setEvaluationDate (Just refDate)
           dc <- dayCounter Actual365FixedStandard
           rQ <- Quote.simpleQuote 0.025
-          rTS <- flatForward refDate rQ dc IR.Continuous Annual
+          rTS <- flatForward (ReferenceDate refDate) rQ dc IR.Continuous Annual
           qQ <- Quote.simpleQuote 0.0
-          qTS <- flatForward refDate qQ dc IR.Continuous Annual
+          qTS <- flatForward (ReferenceDate refDate) qQ dc IR.Continuous Annual
           s0 <- Quote.simpleQuote 75
           proc <- hestonProcess rTS (Just qTS) s0 0.04 1.5 0.04 0.3 (-0.9) QuadraticExponentialMartingale
           model <- hestonModel proc
@@ -1877,9 +1884,9 @@ spec = do
           Settings.setEvaluationDate (Just refDate)
           dc <- dayCounter Actual365FixedStandard
           zero <- Quote.simpleQuote 0.0
-          rTS <- flatForward refDate zero dc IR.Continuous Annual
+          rTS <- flatForward (ReferenceDate refDate) zero dc IR.Continuous Annual
           qZero <- Quote.simpleQuote 0.0
-          qTS <- flatForward refDate qZero dc IR.Continuous Annual
+          qTS <- flatForward (ReferenceDate refDate) qZero dc IR.Continuous Annual
           spot <- Quote.simpleQuote 100
           o1 <- optSpec 90 Put
           o2 <- optSpec 100 Call
@@ -1952,9 +1959,9 @@ spec = do
           Settings.setEvaluationDate (Just today')
           dc <- dayCounter Actual365FixedStandard
           zero <- Quote.simpleQuote 0.0
-          rTS <- flatForward today' zero dc IR.Continuous Annual
+          rTS <- flatForward (ReferenceDate today') zero dc IR.Continuous Annual
           qZero <- Quote.simpleQuote 0.0
-          qTS <- flatForward today' qZero dc IR.Continuous Annual
+          qTS <- flatForward (ReferenceDate today') qZero dc IR.Continuous Annual
           spot <- Quote.simpleQuote spotVal
           calibList <- concat <$> mapM
             (\(ratio, vols) -> do
@@ -1997,9 +2004,9 @@ spec = do
           underQ <- Quote.simpleQuote 36
           riskFreeQ <- Quote.simpleQuote 0.06
           dc <- dayCounter Actual365FixedStandard
-          ts <- flatForward (17 `may` 1998) riskFreeQ dc IR.Continuous Annual
+          ts <- flatForward (ReferenceDate (17 `may` 1998)) riskFreeQ dc IR.Continuous Annual
           divQ <- Quote.simpleQuote 0.0
-          divTS <- flatForward (17 `may` 1998) divQ dc IR.Continuous Annual
+          divTS <- flatForward (ReferenceDate (17 `may` 1998)) divQ dc IR.Continuous Annual
           volQ <- Quote.simpleQuote 0.20
           cal <- Calendar.calendar TARGET
           vol0 <- Vol.blackConstantVol (17 `may` 1998) cal volQ dc
@@ -2021,7 +2028,7 @@ spec = do
           settle <- advance cal (11 `december` 2012) (2, Days) Following False
           discQ <- Quote.simpleQuote 0.02
           dc <- dayCounter Actual365FixedStandard
-          discountTS <- flatForward (11 `december` 2012) discQ dc IR.Continuous Annual
+          discountTS <- flatForward (ReferenceDate (11 `december` 2012)) discQ dc IR.Continuous Annual
           idx <- iborIndex Euribor6M (Just discountTS)
           floatDC <- dayCounter (Actual360 False)
           floatSch <- schedule (Just settle) (11 `december` 2017) (6, Months) cal

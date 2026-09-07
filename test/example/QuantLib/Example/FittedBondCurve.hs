@@ -123,7 +123,7 @@ run = do
 
       let (instrA, instrB) = unzip helpers
 
-      ts0 <- TS.piecewiseYieldCurveMoving curveSettleDays cal (fromList instrB) dc []
+      ts0 <- TS.piecewiseYieldCurve (TS.SettlementDays curveSettleDays cal) (fromList instrB) dc []
         (TS.Iterative TS.Discount LogLinear TS.defaultIterativeBootstrapOpts) False
 
       curves <- fitCurves cal dc instrA
@@ -143,7 +143,7 @@ run = do
     step3 :: Day -> DayCounter -> Calendar -> Day -> [TS.BondHelper] -> [TS.RateHelper]
              -> IO (Rate, TS.YieldTermStructure, [TS.FittedBondDiscountCurve])
     step3 evalDate dc cal bondSettle iA iB = do
-      ts00 <- TS.piecewiseYieldCurveMoving curveSettleDays cal (fromList iB) dc []
+      ts00 <- TS.piecewiseYieldCurve (TS.SettlementDays curveSettleDays cal) (fromList iB) dc []
         (TS.Iterative TS.Discount LogLinear TS.defaultIterativeBootstrapOpts) False
 
       curves <- fitCurves cal dc iA
@@ -154,7 +154,7 @@ run = do
     -- Keep the fixture in one place. Results depend on QLC's optimization options.
     fitCurves :: Calendar -> DayCounter -> [TS.BondHelper] -> IO [TS.FittedBondDiscountCurve]
     fitCurves cal dc instr = mapM
-        (\f -> TS.fittedBondDiscountCurveMoving curveSettleDays cal (fromList instr) dc f tolerance maxEvals [] 1.0)
+        (\f -> TS.fittedBondDiscountCurve (TS.SettlementDays curveSettleDays cal) (fromList instr) dc f tolerance maxEvals [] 1.0 False)
         fittings
       where
         noCutoff = 1.0e6 :: Double -- stands in for QuantLib's QL_MAX_REAL default (effectively "no cutoff")

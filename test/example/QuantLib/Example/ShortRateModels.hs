@@ -103,7 +103,7 @@ runCachedHullWhite fixParams a0 sigma0 cachedAv cachedSigmaV = do
   setEvaluationDate (Just calibrationEvalDate)
   ac365 <- dayCounter Actual365FixedStandard
   q <- simpleQuote 0.04875825
-  ts <- TS.flatForward calibrationSettlement q ac365 Continuous Annual
+  ts <- TS.flatForward (TS.ReferenceDate calibrationSettlement) q ac365 Continuous Annual
   model <- hullWhite ts a0 sigma0
   index <- IR.iborIndex IR.Euribor6M (Just ts)
   runCalibration model index ts fixParams cachedAv cachedSigmaV
@@ -115,7 +115,7 @@ runCachedHullWhite2 = do
   setEvaluationDate (Just calibrationEvalDate)
   ac365 <- dayCounter Actual365FixedStandard
   q <- simpleQuote 0.04875825
-  ts <- TS.flatForward calibrationSettlement q ac365 Continuous Annual
+  ts <- TS.flatForward (TS.ReferenceDate calibrationSettlement) q ac365 Continuous Annual
   model <- hullWhite ts 0.1 0.01
   index <- IR.iborIndex IR.Euribor6M (Just ts)
   tenr <- IR.tenor index
@@ -219,7 +219,7 @@ runExtendedCirDiscountFactor = do
   evalDate <- evaluationDate
   ac365 <- dayCounter Actual365FixedStandard
   q <- simpleQuote rate
-  rts <- TS.flatForward evalDate q ac365 Continuous Annual
+  rts <- TS.flatForward (TS.ReferenceDate evalDate) q ac365 Continuous Annual
   model <- extendedCoxIngersollRoss rts rate 1.0 1e-4 rate True
   dNow <- TS.discount rts now False
   dMat <- TS.discount rts maturity False

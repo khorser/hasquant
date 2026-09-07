@@ -32,7 +32,7 @@ import QuantLib.Time.Date(today)
 import QuantLib.Time.Schedule(dayCounter, DayCounterConstructor(Actual365FixedStandard), Frequency(Annual))
 import QuantLib.InterestRate(Compounding(Continuous))
 import QuantLib.TermStructure.Volatility(blackConstantVol)
-import QuantLib.TermStructure.Yield(flatForward)
+import QuantLib.TermStructure.Yield(Reference(..), flatForward)
 import QuantLib.Time.Calendar(calendar, CalendarConstructor(TARGET))
 
 data Result = Result
@@ -59,8 +59,8 @@ run = do
   rQ <- simpleQuote r
   divQ <- simpleQuote 0.0
   sigmaQ <- simpleQuote sigma
-  riskFreeTS <- flatForward evalDate rQ dc Continuous Annual
-  dividendTS <- flatForward evalDate divQ dc Continuous Annual
+  riskFreeTS <- flatForward (ReferenceDate evalDate) rQ dc Continuous Annual
+  dividendTS <- flatForward (ReferenceDate evalDate) divQ dc Continuous Annual
   volTS <- blackConstantVol evalDate cal sigmaQ dc
   process <- blackScholesMertonProcess s0Q dividendTS riskFreeTS volTS EulerDiscretization False
 

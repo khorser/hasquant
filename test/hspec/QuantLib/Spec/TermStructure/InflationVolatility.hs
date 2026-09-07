@@ -16,7 +16,7 @@ import QuantLib.PricingEngine(yoyInflationUnitDisplacedBlackCapFloorEngine, yoyI
 import QuantLib.Quote(simpleQuote)
 import QuantLib.TermStructure.Inflation
 import QuantLib.TermStructure.InflationVolatility
-import QuantLib.TermStructure.Yield(YieldTermStructure, interpolatedZeroCurve, flatForward)
+import QuantLib.TermStructure.Yield(Reference(..), YieldTermStructure, interpolatedZeroCurve, flatForward)
 import QuantLib.Time.Calendar
 import QuantLib.Time.Date
 import QuantLib.Time.Schedule
@@ -265,7 +265,7 @@ spec = do
     yii <- yoyInflationIndex YYUKRPI
     addFixing yii (1 `january` 2020) 0.03 False
     nominalQ <- simpleQuote 0.02
-    nominalCurve <- flatForward evalDate nominalQ dc IR.Continuous Annual
+    nominalCurve <- flatForward (ReferenceDate evalDate) nominalQ dc IR.Continuous Annual
     _ <- yoyInflationUnitDisplacedBlackCapFloorEngine yii vol nominalCurve
     _ <- yoyInflationBachelierCapFloorEngine yii vol nominalCurve
     pure ()

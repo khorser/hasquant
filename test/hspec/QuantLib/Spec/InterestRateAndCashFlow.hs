@@ -224,7 +224,7 @@ spec evalDate = do
           Settings.setEvaluationDate (Just baseDate)
           dc <- dayCounter (Actual360 False)
           q <- Quote.simpleQuote 0.03 >>= Quote.asQuote
-          curve <- flatForward baseDate q dc IR.Continuous Annual
+          curve <- flatForward (ReferenceDate baseDate) q dc IR.Continuous Annual
           idx <- iborIndex (UsdLibor (3, Months)) (Just curve)
           addFixing idx baseDate 100.0 True
           addFixing idx fixingDate' 120.0 True
@@ -253,7 +253,7 @@ spec evalDate = do
           Settings.setEvaluationDate (Just start)
           dc <- dayCounter (Actual360 False)
           q <- Quote.simpleQuote 0.03 >>= Quote.asQuote
-          curve <- flatForward start q dc IR.Continuous Annual
+          curve <- flatForward (ReferenceDate start) q dc IR.Continuous Annual
           idx <- iborIndex (UsdLibor (3, Months)) (Just curve)
           floating <- CF.floatingRateCoupon end 100.0 start end 2 idx 1.0 0.0 Nothing Nothing dc False Nothing Preceding
           ibor <- CF.iborCoupon end 100.0 start end 2 idx 1.0 0.0 Nothing Nothing dc False Nothing Preceding
@@ -323,7 +323,7 @@ spec evalDate = do
           cal <- calendar TARGET
           dc <- dayCounter Actual365FixedStandard
           q <- Quote.simpleQuote 0.04875825 >>= Quote.asQuote
-          ts <- flatForward (9 `april` 2010) q dc IR.Continuous Annual
+          ts <- flatForward (ReferenceDate (9 `april` 2010)) q dc IR.Continuous Annual
           v <- Quote.simpleQuote 0.10
           vol <- constantOptionletVolatilityMoving 2 cal ModifiedFollowing v dc IR.ShiftedLognormal 0.0
           let p = (3, Months)
@@ -374,7 +374,7 @@ spec evalDate = do
           cal <- calendar TARGET
           dc <- dayCounter Actual365FixedStandard
           q <- Quote.simpleQuote 0.04875825 >>= Quote.asQuote
-          ts <- flatForward (9 `april` 2010) q dc IR.Continuous Annual
+          ts <- flatForward (ReferenceDate (9 `april` 2010)) q dc IR.Continuous Annual
           v <- Quote.simpleQuote 0.10
           vol <- constantOptionletVolatilityMoving 2 cal ModifiedFollowing v dc IR.ShiftedLognormal 0.0
           let p = (3, Months)
@@ -392,7 +392,7 @@ spec evalDate = do
           cal <- calendar TARGET
           dc <- dayCounter Actual365FixedStandard
           q <- Quote.simpleQuote 0.04875825 >>= Quote.asQuote
-          ts <- flatForward (9 `april` 2010) q dc IR.Continuous Annual
+          ts <- flatForward (ReferenceDate (9 `april` 2010)) q dc IR.Continuous Annual
           v <- Quote.simpleQuote 0.10
           vol <- constantOptionletVolatilityMoving 2 cal ModifiedFollowing v dc IR.ShiftedLognormal 0.0
           let p = (3, Months)
@@ -430,7 +430,7 @@ spec evalDate = do
             settlement <- advance cal today' (2, Days) Following False
             euriborDc <- dayCounter (Actual360 False)
             rateQ <- Quote.simpleQuote 0.05 >>= Quote.asQuote
-            curve <- flatForward settlement rateQ euriborDc IR.Continuous Annual
+            curve <- flatForward (ReferenceDate settlement) rateQ euriborDc IR.Continuous Annual
             idx <- iborIndex Euribor6M (Just curve)
             pure (cal, settlement, euriborDc, curve, idx)
 
@@ -643,7 +643,7 @@ spec evalDate = do
             settlement <- advance cal today' (2, Days) ModifiedFollowing False
             aa <- dayCounter ActualActualISDA
             rateQ <- Quote.simpleQuote 0.05 >>= Quote.asQuote
-            curve <- flatForward settlement rateQ aa IR.Continuous Annual
+            curve <- flatForward (ReferenceDate settlement) rateQ aa IR.Continuous Annual
             idx <- iborIndex Euribor1Y (Just curve)
             endDate <- advance cal settlement (cfLength, Years) ModifiedFollowing False
             sch <- schedule (Just settlement) endDate (1, Years) cal ModifiedFollowing ModifiedFollowing Forward False Nothing Nothing
@@ -796,7 +796,7 @@ spec evalDate = do
                 nullCal <- calendar Null
                 dc <- dayCounter (Actual360 False)
                 q <- Quote.simpleQuote r >>= Quote.asQuote
-                Just <$> flatForwardMoving 0 nullCal q dc IR.Continuous Annual
+                Just <$> flatForward (SettlementDays 0 nullCal) q dc IR.Continuous Annual
             sofr <- overnightIborIndex Sofr curve
             addFixings sofr (zip oisPastDates oisPastRates) False
             pure sofr
@@ -835,7 +835,7 @@ spec evalDate = do
           Settings.setEvaluationDate (Just (1 `december` 2021))
           dc <- dayCounter (Actual360 False)
           rateQuote <- Quote.simpleQuote 0.0009 >>= Quote.asQuote
-          curve <- flatForward (1 `december` 2021) rateQuote dc IR.Continuous Annual
+          curve <- flatForward (ReferenceDate (1 `december` 2021)) rateQuote dc IR.Continuous Annual
           bma <- bmaIndex (Just curve)
           cpn <- CF.averageBmaCoupon (18 `november` 2021) 10000.0 (18 `october` 2021) (18 `november` 2021)
             bma 1.0 0.0 Nothing Nothing dc
@@ -932,7 +932,7 @@ spec evalDate = do
             dc <- dayCounter (Actual360 False)
             nullCal <- calendar Null
             fq <- Quote.simpleQuote 0.04 >>= Quote.asQuote
-            curve <- flatForwardMoving 0 nullCal fq dc IR.Continuous Annual
+            curve <- flatForward (SettlementDays 0 nullCal) fq dc IR.Continuous Annual
             sofr <- overnightIborIndex Sofr (Just curve)
             cal <- calendar TARGET
             volQ <- Quote.simpleQuote 0.1 >>= Quote.asQuote
@@ -1017,7 +1017,7 @@ spec evalDate = do
             cal <- fixingCalendar euribor0
             dc <- dayCounter Actual365FixedStandard
             curveRate <- Quote.simpleQuote 0.007 >>= Quote.asQuote
-            curve <- flatForward today' curveRate dc IR.Continuous Annual
+            curve <- flatForward (ReferenceDate today') curveRate dc IR.Continuous Annual
             euribor <- iborIndex Euribor1M (Just curve)
             -- Fixings are keyed globally by index name, so adding them once (on either object)
             -- makes them visible through 'euribor' too.
@@ -1236,7 +1236,7 @@ spec evalDate = do
           (l, dc, _) <- mkFixedLeg
           td <- Settings.evaluationDate
           q <- Quote.simpleQuote 0.03 >>= Quote.asQuote
-          curve <- flatForward td q dc IR.Continuous Annual
+          curve <- flatForward (ReferenceDate td) q dc IR.Continuous Annual
 
           n1 <- CF.npv l curve False Nothing Nothing
           n2 <- CF.npvWithZSpread l curve 0.0 IR.Continuous Annual False Nothing Nothing
@@ -1277,7 +1277,7 @@ spec evalDate = do
             cal <- calendar TARGET
             dc <- dayCounter Actual365FixedStandard
             rateQ <- Quote.simpleQuote 0.03
-            curve <- flatForward raRefDate rateQ dc IR.Continuous Annual
+            curve <- flatForward (ReferenceDate raRefDate) rateQ dc IR.Continuous Annual
             idx <- iborIndex Euribor6M (Just curve)
             startDate <- advance cal raRefDate (10, Years) Following False
             endDate <- advance cal startDate (6, Months) Following False
@@ -1316,7 +1316,7 @@ spec evalDate = do
             cal <- calendar TARGET
             dc <- dayCounter Actual365FixedStandard
             fwdRateQ <- Quote.simpleQuote 0.05
-            fwdCurve <- flatForwardMoving 0 cal fwdRateQ dc IR.Continuous Annual
+            fwdCurve <- flatForward (SettlementDays 0 cal) fwdRateQ dc IR.Continuous Annual
             swapIdx <- liborSwapIndex EurLiborSwapIsdaFixA (10, Years) (Just fwdCurve) (Just fwdCurve)
             volQ <- Quote.simpleQuote 0.15
             atmVol <- constantSwaptionVolatility refDate cal ModifiedFollowing volQ dc IR.ShiftedLognormal 0
@@ -1440,7 +1440,7 @@ spec evalDate = do
           cal <- calendar TARGET
           dc <- dayCounter (Actual360 False)
           fwdRateQ <- Quote.simpleQuote 0.02
-          fwdCurve <- flatForwardMoving 0 cal fwdRateQ dc IR.Continuous Annual
+          fwdCurve <- flatForward (SettlementDays 0 cal) fwdRateQ dc IR.Continuous Annual
           cms10y <- liborSwapIndex EurLiborSwapIsdaFixA (10, Years) (Just fwdCurve) (Just fwdCurve)
           cms2y <- liborSwapIndex EurLiborSwapIsdaFixA (2, Years) (Just fwdCurve) (Just fwdCurve)
           cms10y2y <- swapSpreadIndex "cms10y2y" cms10y cms2y 1.0 (-1.0)
@@ -1497,7 +1497,7 @@ spec evalDate = do
           cal <- calendar TARGET
           dc <- dayCounter (Actual360 False)
           fwdRateQ <- Quote.simpleQuote 0.02
-          fwdCurve <- flatForwardMoving 0 cal fwdRateQ dc IR.Continuous Annual
+          fwdCurve <- flatForward (SettlementDays 0 cal) fwdRateQ dc IR.Continuous Annual
           cms10y <- liborSwapIndex EurLiborSwapIsdaFixA (10, Years) (Just fwdCurve) (Just fwdCurve)
           cms2y <- liborSwapIndex EurLiborSwapIsdaFixA (2, Years) (Just fwdCurve) (Just fwdCurve)
           cms10y2y <- swapSpreadIndex "cms10y2y" cms10y cms2y 1.0 (-1.0)
@@ -1543,7 +1543,7 @@ spec evalDate = do
           cal <- calendar TARGET
           dc <- dayCounter (Actual360 False)
           fwdRateQ <- Quote.simpleQuote 0.02
-          fwdCurve <- flatForwardMoving 0 cal fwdRateQ dc IR.Continuous Annual
+          fwdCurve <- flatForward (SettlementDays 0 cal) fwdRateQ dc IR.Continuous Annual
           cms10y <- liborSwapIndex EurLiborSwapIsdaFixA (10, Years) (Just fwdCurve) (Just fwdCurve)
           cms2y <- liborSwapIndex EurLiborSwapIsdaFixA (2, Years) (Just fwdCurve) (Just fwdCurve)
           cms10y2y <- swapSpreadIndex "cms10y2y" cms10y cms2y 1.0 (-1.0)
@@ -1580,7 +1580,7 @@ spec evalDate = do
           cal <- calendar TARGET
           dc <- dayCounter (Actual360 False)
           fwdRateQ <- Quote.simpleQuote 0.02
-          fwdCurve <- flatForwardMoving 0 cal fwdRateQ dc IR.Continuous Annual
+          fwdCurve <- flatForward (SettlementDays 0 cal) fwdRateQ dc IR.Continuous Annual
           cms10y <- liborSwapIndex EurLiborSwapIsdaFixA (10, Years) (Just fwdCurve) (Just fwdCurve)
           cms2y <- liborSwapIndex EurLiborSwapIsdaFixA (2, Years) (Just fwdCurve) (Just fwdCurve)
           cms10y2y <- swapSpreadIndex "cms10y2y" cms10y cms2y 1.0 (-1.0)
@@ -1624,7 +1624,7 @@ spec evalDate = do
           dc365 <- dayCounter Actual365FixedStandard
           thirty360bb <- dayCounter Thirty360BondBasis
           flatQ <- Quote.simpleQuote 0.03
-          ts <- flatForward refDate flatQ dc365 IR.Continuous Annual
+          ts <- flatForward (ReferenceDate refDate) flatQ dc365 IR.Continuous Annual
           swapBase <- liborSwapIndex EuriborSwapIsdaFixA (10, Years) (Just ts) (Just ts)
           euribor6m <- iborIndex Euribor6M (Just ts)
           volQ <- Quote.simpleQuote 0.20
@@ -1766,7 +1766,7 @@ spec evalDate = do
           cal <- calendar TARGET
           dc <- dayCounter Actual365FixedStandard
           fwdRateQ <- Quote.simpleQuote 0.05
-          fwdCurve <- flatForwardMoving 0 cal fwdRateQ dc IR.Continuous Annual
+          fwdCurve <- flatForward (SettlementDays 0 cal) fwdRateQ dc IR.Continuous Annual
           swapIdx <- liborSwapIndex EurLiborSwapIsdaFixA (10, Years) (Just fwdCurve) (Just fwdCurve)
           idx6m <- iborIndex (Euribor (6, Months)) (Just fwdCurve)
           -- forwardStart of 1Y (not spot-starting) keeps the first coupon's fixing date safely
@@ -1974,7 +1974,7 @@ spec evalDate = do
           let refDate = 31 `january` 2024
           Settings.setEvaluationDate (Just refDate)
           q <- Quote.simpleQuote 0.03
-          curve <- flatForward refDate q dc IR.Continuous Annual
+          curve <- flatForward (ReferenceDate refDate) q dc IR.Continuous Annual
           idxStdMaturity <- iborIndex (CustomIbor "TestStd" (3, Months) 0 eur stdCal stdCal stdCal
                                           ModifiedFollowing False dc) (Just curve)
           idxWedThuMaturity <- iborIndex (CustomIbor "TestWedThu" (3, Months) 0 eur stdCal stdCal wedThuCal

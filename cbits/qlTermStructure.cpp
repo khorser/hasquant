@@ -1487,11 +1487,6 @@ static QlYieldTermStructure *piecewiseYieldCurveImpl(int date, unsigned rateLen,
     return ret(new QlYieldTermStructure(ts));
   } catch (std::exception& er) {return handleException<QlYieldTermStructure *>(e, er);}}
 
-QlYieldTermStructure *qlPiecewiseYieldCurve(int date, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen, QlQuote **quotes, unsigned datesLen, int *dates, int trait, int interpolator, int approximator, int approximatorArg, char **e) {
-  return piecewiseYieldCurveImpl(date, rateLen, ratehelpers, dayCount, quoteLen, quotes, datesLen, dates,
-      trait, interpolator, approximator, approximatorArg, defaultBootstrapOpts(), e);
-}
-
 QlYieldTermStructure *qlPiecewiseYieldCurveFull(int date, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen, QlQuote **quotes, unsigned datesLen, int *dates, int trait, int interpolator, int approximator, int approximatorArg,
   double accuracy, double minValue, double maxValue, unsigned maxAttempts, double maxFactor, double minFactor, int dontThrow, unsigned dontThrowSteps, unsigned maxEvaluations, char **e) {
   return piecewiseYieldCurveImpl(date, rateLen, ratehelpers, dayCount, quoteLen, quotes, datesLen, dates,
@@ -1558,6 +1553,37 @@ QlYieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrap1(unsigned settl, Cale
     return ret(new QlYieldTermStructure(ts));
   } catch (std::exception& er) {return handleException<QlYieldTermStructure *>(e, er);}}
 
+static QlYieldTermStructure *piecewiseYieldCurveGlobalBootstrapFixed(int date, unsigned rateLen,
+  QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen, QlQuote **quotes,
+  unsigned datesLen, int *dates, int trait, int interpolator, double accuracy,
+  unsigned weightsLen, double *weights, int extrapolate, char **e) {
+  try {
+    auto ts = allocShared(qlPiecewiseYieldCurveGlobalBootstrapAux(Date(date),
+        qlVector(ratehelpers, rateLen), *arg(dayCount), qlHandleVector(quotes, quoteLen),
+        qlDateVector(dates, datesLen), trait, interpolator, accuracy,
+        std::vector<double>(weights, weights + weightsLen)));
+    if (extrapolate) ts->enableExtrapolation();
+    return ret(new QlYieldTermStructure(ts));
+  } catch (std::exception& er) {return handleException<QlYieldTermStructure *>(e, er);}}
+
+QlYieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrapFixed1(int date, unsigned rateLen,
+  QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen, QlQuote **quotes,
+  unsigned datesLen, int *dates, double accuracy, unsigned weightsLen, double *weights,
+  int extrapolate, char **e) {
+  return piecewiseYieldCurveGlobalBootstrapFixed(date, rateLen, ratehelpers, dayCount, quoteLen,
+      quotes, datesLen, dates, hasquant::Discount, hasquant::LogLinear, accuracy, weightsLen,
+      weights, extrapolate, e);
+}
+
+QlYieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrapFixed2(int date, unsigned rateLen,
+  QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen, QlQuote **quotes,
+  unsigned datesLen, int *dates, double accuracy, unsigned weightsLen, double *weights,
+  int extrapolate, char **e) {
+  return piecewiseYieldCurveGlobalBootstrapFixed(date, rateLen, ratehelpers, dayCount, quoteLen,
+      quotes, datesLen, dates, hasquant::SimpleZeroYield, hasquant::Linear, accuracy, weightsLen,
+      weights, extrapolate, e);
+}
+
 QlYieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrap2(unsigned settl, Calendar *cal, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen,
   QlQuote **quotes, unsigned datesLen, int *dates, double accuracy, unsigned weightsLen, double *weights, int extrapolate, char **e) {
   try {
@@ -1588,6 +1614,24 @@ QlYieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrap5(unsigned settl, Cale
     return ret(new QlYieldTermStructure(ts));
   } catch (std::exception& er) {return handleException<QlYieldTermStructure *>(e, er);}}
 
+QlYieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrapFixed4(int date, unsigned rateLen,
+  QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen, QlQuote **quotes,
+  unsigned datesLen, int *dates, double accuracy, unsigned weightsLen, double *weights,
+  int extrapolate, char **e) {
+  return piecewiseYieldCurveGlobalBootstrapFixed(date, rateLen, ratehelpers, dayCount, quoteLen,
+      quotes, datesLen, dates, hasquant::ForwardRate, hasquant::Linear, accuracy, weightsLen,
+      weights, extrapolate, e);
+}
+
+QlYieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrapFixed5(int date, unsigned rateLen,
+  QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen, QlQuote **quotes,
+  unsigned datesLen, int *dates, double accuracy, unsigned weightsLen, double *weights,
+  int extrapolate, char **e) {
+  return piecewiseYieldCurveGlobalBootstrapFixed(date, rateLen, ratehelpers, dayCount, quoteLen,
+      quotes, datesLen, dates, hasquant::ZeroYield, hasquant::Linear, accuracy, weightsLen,
+      weights, extrapolate, e);
+}
+
 QlYieldTermStructure *qlPiecewiseYieldCurveLocalBootstrap1(unsigned settl, Calendar *cal, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen,
   QlQuote **quotes, unsigned datesLen, int *dates, int trait, unsigned localisation, int forcePositive, double accuracy,
   double quadraticity, double monotonicity, int convexForcePositive, int extrapolate, char **e) {
@@ -1598,12 +1642,40 @@ QlYieldTermStructure *qlPiecewiseYieldCurveLocalBootstrap1(unsigned settl, Calen
     return ret(new QlYieldTermStructure(ts));
   } catch (std::exception& er) {return handleException<QlYieldTermStructure *>(e, er);}}
 
+QlYieldTermStructure *qlPiecewiseYieldCurveLocalBootstrapFixed(int date, unsigned rateLen,
+  QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen, QlQuote **quotes,
+  unsigned datesLen, int *dates, int trait, unsigned localisation, int forcePositive,
+  double accuracy, double quadraticity, double monotonicity, int convexForcePositive,
+  int extrapolate, char **e) {
+  try {
+    auto ts = allocShared(qlPiecewiseYieldCurveLocalBootstrapAux(Date(date),
+        qlVector(ratehelpers, rateLen), *arg(dayCount), qlHandleVector(quotes, quoteLen),
+        qlDateVector(dates, datesLen), trait, localisation, forcePositive != 0, accuracy,
+        quadraticity, monotonicity, convexForcePositive != 0));
+    if (extrapolate) ts->enableExtrapolation();
+    return ret(new QlYieldTermStructure(ts));
+  } catch (std::exception& er) {return handleException<QlYieldTermStructure *>(e, er);}}
+
 QlYieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrap3(unsigned settl, Calendar *cal, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen,
   QlQuote **quotes, unsigned datesLen, int *dates, unsigned additionalRateLen, QlRateHelper **additionalRatehelpers, unsigned additionalDatesLen, int *additionalDates,
   double accuracy, int extrapolate, char **e) {
   try {
     auto ts = allocShared(qlPiecewiseYieldCurveGlobalBootstrapFullAux(settl, *arg(cal), qlVector(ratehelpers, rateLen), *arg(dayCount), qlHandleVector(quotes, quoteLen),
         qlDateVector(dates, datesLen), qlVector(additionalRatehelpers, additionalRateLen), qlDateVector(additionalDates, additionalDatesLen), accuracy));
+    if (extrapolate) ts->enableExtrapolation();
+    return ret(new QlYieldTermStructure(ts));
+  } catch (std::exception& er) {return handleException<QlYieldTermStructure *>(e, er);}}
+
+QlYieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrapFixed3(int date, unsigned rateLen,
+  QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen, QlQuote **quotes,
+  unsigned datesLen, int *dates, unsigned additionalRateLen,
+  QlRateHelper **additionalRatehelpers, unsigned additionalDatesLen, int *additionalDates,
+  double accuracy, int extrapolate, char **e) {
+  try {
+    auto ts = allocShared(qlPiecewiseYieldCurveGlobalBootstrapFullAux(Date(date),
+        qlVector(ratehelpers, rateLen), *arg(dayCount), qlHandleVector(quotes, quoteLen),
+        qlDateVector(dates, datesLen), qlVector(additionalRatehelpers, additionalRateLen),
+        qlDateVector(additionalDates, additionalDatesLen), accuracy));
     if (extrapolate) ts->enableExtrapolation();
     return ret(new QlYieldTermStructure(ts));
   } catch (std::exception& er) {return handleException<QlYieldTermStructure *>(e, er);}}

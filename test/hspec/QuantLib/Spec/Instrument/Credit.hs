@@ -43,7 +43,7 @@ spec = do
         hazardQ <- simpleQuote 0.01234
         probCurve <- flatHazardRateMoving 0 cal hazardQ dc
         discQ <- simpleQuote 0.06
-        discountCurve <- flatForward today' discQ dc Continuous Annual
+        discountCurve <- flatForward (ReferenceDate today') discQ dc Continuous Annual
 
         issueDate <- advance cal today' (-1, Years) ModifiedFollowing False
         maturity <- advance cal issueDate (10, Years) ModifiedFollowing False
@@ -100,7 +100,7 @@ spec = do
         hazardQ <- simpleQuote 0.01234
         probCurve <- flatHazardRateMoving 0 cal hazardQ dc
         discQ <- simpleQuote 0.06
-        discountCurve <- flatForward today' discQ dc Continuous Annual
+        discountCurve <- flatForward (ReferenceDate today') discQ dc Continuous Annual
         eng <- midPointCdsEngine probCurve 0.4 discountCurve Nothing
 
         issueDate <- advance cal today' (-1, Years) Following False
@@ -131,7 +131,7 @@ spec = do
         hazardQ <- simpleQuote 0.01234
         probCurve <- flatHazardRateMoving 0 cal hazardQ dc
         discQ <- simpleQuote 0.06
-        discountCurve <- flatForward today' discQ dc Continuous Annual
+        discountCurve <- flatForward (ReferenceDate today') discQ dc Continuous Annual
         eng <- midPointCdsEngine probCurve 0.4 discountCurve (Just True)
 
         maturity <- advance cal today' (10, Years) Following False
@@ -159,7 +159,7 @@ spec = do
         cal <- calendar TARGET
         dc <- dayCounter (Actual360 False)
         discQ <- simpleQuote 0.03
-        discountCurve <- flatForward today' discQ dc Continuous Annual
+        discountCurve <- flatForward (ReferenceDate today') discQ dc Continuous Annual
 
         issueDate <- advance cal today' (-6, Months) ModifiedFollowing False
         forM_ [0.30, 0.35, 0.40 :: Double] $ \h -> do

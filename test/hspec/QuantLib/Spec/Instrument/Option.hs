@@ -26,7 +26,7 @@ import QuantLib.Time.Calendar(calendar, CalendarConstructor(..))
 import QuantLib.Time.Schedule(dayCounter, DayCounterConstructor(..), Frequency(..))
 import QuantLib.InterestRate(Compounding(..))
 import QuantLib.Quote(simpleQuote, Quote)
-import QuantLib.TermStructure.Yield(flatForward)
+import QuantLib.TermStructure.Yield(Reference(..), flatForward)
 import QuantLib.Process hiding(drift, fixingDates)
 import QuantLib.Math(Matrix, boxedRealMatrix, realMatrixFromVector, RealMatrix, PolynomialType(..), RngTrait(..), StatisticsTrait(..), Interpolation2D(..))
 import QuantLib.Instrument(npv, setPricingEngine, errorEstimate, BarrierType(..), AverageType(..))
@@ -56,8 +56,8 @@ flatProcess :: Day -> Double -> Double -> Double -> Double -> IO GeneralizedBlac
 flatProcess evalDate spot q r vol = do
   dc <- dayCounter (Actual360 False)
   spotQ <- simpleQuote spot
-  qTS <- simpleQuote q >>= \qQ -> flatForward evalDate qQ dc Continuous Annual
-  rTS <- simpleQuote r >>= \rQ -> flatForward evalDate rQ dc Continuous Annual
+  qTS <- simpleQuote q >>= \qQ -> flatForward (ReferenceDate evalDate) qQ dc Continuous Annual
+  rTS <- simpleQuote r >>= \rQ -> flatForward (ReferenceDate evalDate) rQ dc Continuous Annual
   volQ <- simpleQuote vol
   cal <- calendar Null
   volTS <- blackConstantVol evalDate cal volQ dc
@@ -332,8 +332,8 @@ spec = do
           rQ <- simpleQuote 0.05
           qQ <- simpleQuote 0.0
           dc <- dayCounter Actual365FixedStandard
-          rTS <- flatForward evalDate rQ dc Continuous Annual
-          qTS <- flatForward evalDate qQ dc Continuous Annual
+          rTS <- flatForward (ReferenceDate evalDate) rQ dc Continuous Annual
+          qTS <- flatForward (ReferenceDate evalDate) qQ dc Continuous Annual
           s0 <- simpleQuote 100.0
           hestonProcess rTS (Just qTS) s0 0.09 1.15 0.0348 0.39 (-0.64) QuadraticExponentialMartingale
         -- upstream builds weekly fixings counting back from the expiry date
@@ -393,8 +393,8 @@ spec = do
         rQ <- simpleQuote 0.05
         qQ <- simpleQuote 0.0
         dc <- dayCounter (Actual360 False)
-        rTS <- flatForward evalDate rQ dc Continuous Annual
-        qTS <- flatForward evalDate qQ dc Continuous Annual
+        rTS <- flatForward (ReferenceDate evalDate) rQ dc Continuous Annual
+        qTS <- flatForward (ReferenceDate evalDate) qQ dc Continuous Annual
         s0 <- simpleQuote 120.0
         process <- hestonProcess rTS (Just qTS) s0 0.09 11.35 0.022 0.618 (-0.5) QuadraticExponentialMartingale
         Settings.setEvaluationDate (Just evalDate)
@@ -659,7 +659,7 @@ spec = do
           Settings.setEvaluationDate (Just evalDate)
           dc <- dayCounter (Actual360 False)
           s0 <- simpleQuote 1.0
-          rTS <- simpleQuote 0.0 >>= \rQ -> flatForward evalDate rQ dc Continuous Annual
+          rTS <- simpleQuote 0.0 >>= \rQ -> flatForward (ReferenceDate evalDate) rQ dc Continuous Annual
           process <- hestonProcess rTS Nothing s0 v0 2.0 0.01 0.1 (-0.5) QuadraticExponentialMartingale
           eng <- integralHestonVarianceOptionEngine process
           opt <- varianceOption (Type (Striked (PlainVanilla (PlainVanillaPayoff ty strike))))
@@ -679,8 +679,8 @@ spec = do
         Settings.setEvaluationDate (Just evalDate)
         dc <- dayCounter Actual365FixedStandard
         spotQ <- simpleQuote 100.0
-        qTS <- simpleQuote 0.0 >>= \qQ -> flatForward evalDate qQ dc Continuous Annual
-        rTS <- simpleQuote 0.05 >>= \rQ -> flatForward evalDate rQ dc Continuous Annual
+        qTS <- simpleQuote 0.0 >>= \qQ -> flatForward (ReferenceDate evalDate) qQ dc Continuous Annual
+        rTS <- simpleQuote 0.05 >>= \rQ -> flatForward (ReferenceDate evalDate) rQ dc Continuous Annual
         -- upstream: "maturity t corrected from 0.25 to 0.246575, corresponding to Jan 1, 1999
         -- to Apr 1, 1999" -- i.e. exactly 90 calendar days, not a t=0.246575 day-fraction to round.
         let exDate = addDays 90 evalDate

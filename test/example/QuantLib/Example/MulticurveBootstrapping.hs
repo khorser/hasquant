@@ -18,7 +18,7 @@
 --    Expected values below are therefore recorded from an actual run of this code, not
 --    copied from upstream's printed output.
 --  * enableExtrapolation() has no binding (it would be a setter), so both curves are
---    built through piecewiseYieldCurveMoving, which takes extrapolation as a construction
+--    built through piecewiseYieldCurve, which takes extrapolation as a construction
 --    argument. Passing settlementDays 0 and 2 reproduces upstream's two reference
 --    dates -- todaysDate for EONIA, settlementDate for Euribor 6M.
 module QuantLib.Example.MulticurveBootstrapping
@@ -88,7 +88,7 @@ run = do
     TS.oisRateHelperBetweenDates start end q eonia (Nothing :: Maybe TS.YieldTermStructure)
       >>= TS.asRateHelper
 
-  eoniaCurve <- TS.piecewiseYieldCurveMoving 0 cal (fromList (depoHelpers ++ oisHelpers ++ datedOisHelpers))
+  eoniaCurve <- TS.piecewiseYieldCurve (TS.SettlementDays 0 cal) (fromList (depoHelpers ++ oisHelpers ++ datedOisHelpers))
     termStructureDC [] (TS.Iterative TS.Discount monotonicLogCubic TS.defaultIterativeBootstrapOpts) True
 
   -- Euribor 6M curve: one deposit, FRAs, and swaps discounted off the EONIA curve
@@ -110,12 +110,12 @@ run = do
         pure (d6M : fras ++ swaps)
 
   dualHelpers <- euriborHelpers (Just eoniaCurve)
-  euriborCurve <- TS.piecewiseYieldCurveMoving 2 cal (fromList dualHelpers) termStructureDC []
+  euriborCurve <- TS.piecewiseYieldCurve (TS.SettlementDays 2 cal) (fromList dualHelpers) termStructureDC []
     (TS.Iterative TS.Discount monotonicLogCubic TS.defaultIterativeBootstrapOpts) True
 
   -- the negative control: same helpers, no discounting curve
   singleHelpers <- euriborHelpers (Nothing :: Maybe TS.YieldTermStructure)
-  singleCurve <- TS.piecewiseYieldCurveMoving 2 cal (fromList singleHelpers) termStructureDC []
+  singleCurve <- TS.piecewiseYieldCurve (TS.SettlementDays 2 cal) (fromList singleHelpers) termStructureDC []
     (TS.Iterative TS.Discount monotonicLogCubic TS.defaultIterativeBootstrapOpts) True
 
   let priceOn forecastCurve start = do

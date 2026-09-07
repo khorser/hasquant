@@ -118,12 +118,12 @@ buildMarketData = do
             actActBond' Unadjusted redemption i >>= asRateHelper)
     $ zip4 quotes couponRates issueDates maturities
   ts <- piecewiseYieldCurve
-          settlDate'
+          (ReferenceDate settlDate')
           (fromList (discDepoHelpers ++ discBondHelpers))
           actActISDA'
           []
-          Discount
-          LogLinear
+          (Iterative Discount LogLinear defaultIterativeBootstrapOpts)
+          False
           --(Cubic $ NaturalSpline True)
           --(LogCubic $ Parabolic False)
           --(LogCubic Kruger)
@@ -197,12 +197,12 @@ buildBonds md = do
           zip liborSwapQuotes liborSwapTerms
 
   fwdCurve <- piecewiseYieldCurve
-                (settlDate md)
+                (ReferenceDate (settlDate md))
                 (fromList (depoLiborHelpers ++ swapLiborHelpers))
                 (actActISDA md)
                 []
-                Discount
-                LogLinear
+                (Iterative Discount LogLinear defaultIterativeBootstrapOpts)
+                False
 
   usd3m <- I.iborIndex (I.UsdLibor (3, Months)) (Just fwdCurve)
   I.asInterestRateIndex usd3m >>= asIndex >>= (\i -> addFixing i (fromGregorian 2008 07 17) 0.0278625 False)

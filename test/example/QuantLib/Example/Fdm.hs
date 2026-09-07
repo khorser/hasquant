@@ -171,8 +171,8 @@ run = do
   riskFreeQ <- simpleQuote r
   divQ <- simpleQuote q
   volQ <- simpleQuote vol
-  ts <- flatForward evalDate riskFreeQ dc Continuous Annual
-  divTS <- flatForward evalDate divQ dc Continuous Annual
+  ts <- flatForward (ReferenceDate evalDate) riskFreeQ dc Continuous Annual
+  divTS <- flatForward (ReferenceDate evalDate) divQ dc Continuous Annual
   volTS <- calendar TARGET >>= $(free2nd 'blackConstantVol) evalDate volQ dc
   bsmProc <- blackScholesMertonProcess underQ divTS ts volTS EulerDiscretization False
 
@@ -180,7 +180,7 @@ run = do
   -- a plain vanilla swap, plus HullWhite\/G2 models built directly off its own flat curve (so
   -- their initial fit is exact).
   irQ <- simpleQuote irRate
-  irTs <- flatForward evalDate irQ dc Continuous Annual
+  irTs <- flatForward (ReferenceDate evalDate) irQ dc Continuous Annual
   euribor6m <- IRI.iborIndex IRI.Euribor6M (Just irTs)
   irCal <- fixingCalendar euribor6m
   swapStart <- advance irCal evalDate (1, Years) Following False

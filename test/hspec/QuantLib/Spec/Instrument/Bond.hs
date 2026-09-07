@@ -13,7 +13,7 @@ import QuantLib.Time.Date
 import QuantLib.Time.Calendar
 import QuantLib.Time.Schedule
 import QuantLib.Quote
-import QuantLib.TermStructure.Yield(flatForward)
+import QuantLib.TermStructure.Yield(Reference(..), flatForward)
 import QuantLib.InterestRate(Compounding(..))
 import QuantLib.Instrument.Bond
 import qualified QuantLib.CashFlow as CF
@@ -77,7 +77,7 @@ rendistatoSpec = describe "RendistatoBasket / RendistatoCalculator" $
       Settings.setEvaluationDate (Just today')
       dc <- dayCounter Actual365FixedStandard
       q <- simpleQuote 0.03
-      curve <- flatForward today' q dc Continuous NoFrequency
+      curve <- flatForward (ReferenceDate today') q dc Continuous NoFrequency
 
       b1 <- btp (1 `september` 2027) 0.025 Nothing Nothing
       b2 <- btp (1 `september` 2030) 0.03 Nothing Nothing

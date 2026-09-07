@@ -33,7 +33,7 @@ spec = do
         Settings.setEvaluationDate (Just today')
         q <- simpleQuote 0.035
         dc <- dayCounter (Actual360 False)
-        ts <- flatForward today' q dc Continuous Annual
+        ts <- flatForward (ReferenceDate today') q dc Continuous Annual
         eu3m <- I.iborIndex I.Euribor3M (Just ts)
         cal <- fixingCalendar eu3m
         idxDC <- I.dayCounter eu3m

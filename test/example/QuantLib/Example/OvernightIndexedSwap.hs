@@ -37,7 +37,7 @@ run = do
 
   act360 <- dayCounter (Actual360 False)
   flatQuote <- simpleQuote 0.05
-  estrTS <- TS.flatForward settlementDate flatQuote act360 Continuous Annual
+  estrTS <- TS.flatForward (TS.ReferenceDate settlementDate) flatQuote act360 Continuous Annual
   estrIndex <- IR.overnightIborIndex IR.Estr (Just estrTS)
 
   sched <- schedule (Just settlementDate) endDate (1, Years) cal

@@ -38,7 +38,7 @@ buildCurve opts = do
   q <- Quote.simpleQuote 0.03
   helpers <- mapM (\n -> depositRateHelper q (n, Months) 2 cal ModifiedFollowing False dc)
                   [1, 3, 6, 12]
-  piecewiseYieldCurveMoving 0 cal (fromList helpers) dc [] (Iterative Discount Linear opts) False
+  piecewiseYieldCurve (SettlementDays 0 cal) (fromList helpers) dc [] (Iterative Discount Linear opts) False
 
 -- Force the lazy bootstrap and report whether it survived. The `try` spans construction as
 -- well as the discount call: which of the two a failing bootstrap surfaces from is

@@ -66,7 +66,7 @@ npvUnder interp = do
             interp
   spot <- simpleQuote 100.0
   rfQ <- simpleQuote 0.03
-  rf <- flatForward refDate rfQ dc Continuous Annual
+  rf <- flatForward (ReferenceDate refDate) rfQ dc Continuous Annual
   proc' <- blackScholesProcess spot rf surf EulerDiscretization False
   opt <- vanillaOption (PlainVanilla $ PlainVanillaPayoff Call optionStrike)
                        (European $ EuropeanExercise optionExpiry)

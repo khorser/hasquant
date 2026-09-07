@@ -23,7 +23,7 @@ import QuantLib.Math(Interpolation(..), Interpolation2D(..), RealMatrix, realMat
 import QuantLib.PricingEngine(PricingEngine, yoyInflationBlackCapFloorEngine, interpolatingCpiCapFloorEngine)
 import QuantLib.Quote(simpleQuote)
 import QuantLib.TermStructure.InflationVolatility
-import QuantLib.TermStructure.Yield(flatForward, PillarChoice(..))
+import QuantLib.TermStructure.Yield(Reference(..), flatForward, PillarChoice(..))
 import QuantLib.Time.Calendar
 import QuantLib.Time.Date
 import QuantLib.Time.Schedule
@@ -65,7 +65,7 @@ linkedYoYIndex evalDate = do
   fixingDates <- mapM (\n -> advance cal evalDate (n, Months) Unadjusted False) [-96 .. 12 :: Int]
   forM_ (zip [1 :: Double ..] fixingDates) $ \(i, d) -> addFixing yii0 d (0.03 + i * 0.0001) False
   nominalQ <- simpleQuote 0.02
-  nominalCurve <- flatForward evalDate nominalQ dc IR.Continuous Annual
+  nominalCurve <- flatForward (ReferenceDate evalDate) nominalQ dc IR.Continuous Annual
   maturity1 <- advance cal evalDate (2, Years) Unadjusted False
   maturity2 <- advance cal evalDate (5, Years) Unadjusted False
   q1 <- simpleQuote 0.03
@@ -95,7 +95,7 @@ setupEngine yii evalDate = do
   cal <- calendar Null
   dc <- dayCounter Actual365FixedStandard
   nominalQ <- simpleQuote 0.02
-  nominalCurve <- flatForward evalDate nominalQ dc IR.Continuous Annual
+  nominalCurve <- flatForward (ReferenceDate evalDate) nominalQ dc IR.Continuous Annual
   volQ <- simpleQuote 0.02
   vol <- constantYoyOptionletVolatility volQ 0 cal Unadjusted dc (3, Months) Annual False (-1.0) 100.0 ShiftedLognormal 0.0
   yoyInflationBlackCapFloorEngine yii vol nominalCurve
@@ -186,7 +186,7 @@ spec = do
     uncappedLeg <- yoyInflationLeg sch cal yii (3, Months) CPIFlat [1000000] dc Unadjusted [0] [1.0] [0.0] [] []
 
     nominalQ <- simpleQuote 0.02
-    nominalCurve <- flatForward todayD nominalQ dc IR.Continuous Annual
+    nominalCurve <- flatForward (ReferenceDate todayD) nominalQ dc IR.Continuous Annual
     volQ <- simpleQuote 0.02
     vol <- constantYoyOptionletVolatility volQ 0 cal Unadjusted dc (3, Months) Annual False (-1.0) 100.0 ShiftedLognormal 0.0
     pricer <- blackYoyInflationCouponPricer vol nominalCurve
@@ -224,7 +224,7 @@ spec = do
     cal <- calendar Null
     dc <- dayCounter Actual365FixedStandard
     nominalQ <- simpleQuote 0.02
-    nominalCurve <- flatForward today' nominalQ dc IR.Continuous Annual
+    nominalCurve <- flatForward (ReferenceDate today') nominalQ dc IR.Continuous Annual
     zii <- customZeroIndex today'
     maturity5Y <- advance cal today' (5, Years) Unadjusted False
 
@@ -268,7 +268,7 @@ spec = do
     cal <- calendar Null
     dc <- dayCounter Actual365FixedStandard
     nominalQ <- simpleQuote 0.02
-    nominalCurve <- flatForward today' nominalQ dc IR.Continuous Annual
+    nominalCurve <- flatForward (ReferenceDate today') nominalQ dc IR.Continuous Annual
     zii <- customZeroIndex today'
     maturity5Y <- advance cal today' (5, Years) Unadjusted False
 

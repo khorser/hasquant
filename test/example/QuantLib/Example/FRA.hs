@@ -17,7 +17,8 @@ import QuantLib.Time.Schedule(TimeUnit(..), dayCounter, DayCounterConstructor(..
 import qualified QuantLib.InterestRate as IR
 import QuantLib.Quote
 import QuantLib.Settings
-import QuantLib.TermStructure.Yield(piecewiseYieldCurve, fraRateHelper, BootstrapTrait(..), zeroRateAtDate, PillarChoice(..))
+import QuantLib.TermStructure.Yield(piecewiseYieldCurve, fraRateHelper, BootstrapTrait(..),
+  Bootstrap(..), Reference(..), defaultIterativeBootstrapOpts, zeroRateAtDate, PillarChoice(..))
 import QuantLib.Math
 
 data IterationResult = IterationResult { fwdRateR :: Double
@@ -46,7 +47,7 @@ run = do
     zip3 fraQuotes starts periods
 
   tsdc <- dayCounter ActualActualISDA
-  fraTS <- piecewiseYieldCurve settleDate (fromList fraInstruments) tsdc [] Discount LogLinear
+  fraTS <- piecewiseYieldCurve (ReferenceDate settleDate) (fromList fraInstruments) tsdc [] (Iterative Discount LogLinear defaultIterativeBootstrapOpts) False
 
   it1 <- valuateFRA convention fraDayCounter settleDate fraTS
   forM_ fraQuotes $ \sq -> value sq >>= \v -> setValue sq (v + bpsShift)

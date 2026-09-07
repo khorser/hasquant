@@ -10,7 +10,7 @@ import QuantLib.Time.Schedule(dayCounter, DayCounterConstructor(..), TimeUnit(..
 import QuantLib.InterestRate(Compounding(..))
 import QuantLib.Quote(simpleQuote)
 import QuantLib.TermStructure.Credit(flatHazardRate)
-import QuantLib.TermStructure.Yield(flatForward)
+import QuantLib.TermStructure.Yield(Reference(..), flatForward)
 import QuantLib.Settings(setEvaluationDate)
 import QuantLib.Instrument(setPricingEngine)
 import QuantLib.Instrument.Credit(Claim(..), ProtectionSide(..), nthToDefault, ntdFairPremium)
@@ -37,7 +37,7 @@ main = do
   p <- pool (fromList [(n, iss, key) | n <- names])
 
   rateQuote <- simpleQuote 0.05
-  yieldTS <- flatForward refDate rateQuote dc Continuous Annual
+  yieldTS <- flatForward (ReferenceDate refDate) rateQuote dc Continuous Annual
 
   target <- calendar TARGET
   sched <- schedule (Just $ fromGregorian 2006 9 1) (fromGregorian 2011 9 1) (3, Months) target

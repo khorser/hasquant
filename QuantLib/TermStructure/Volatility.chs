@@ -1701,7 +1701,7 @@ swaptionVolatilityMatrixLocate = qlSwaptionVolatilityMatrixLocate
 -- side (see the qlaux.h comment above the QlEndCriteria\/QlOptimizationMethod typedefs) -- the
 -- copy 'SabrSwaptionVolatilityCube' keeps as its own @shared_ptr@ member survives regardless of
 -- when Haskell's own handle is collected, same as 'sabrInterpolatedSmileSection' and
--- 'QuantLib.TermStructure.Yield.fittedBondDiscountCurveMoving' fitting methods.
+-- 'QuantLib.TermStructure.Yield.fittedBondDiscountCurve' fitting methods.
 --
 -- @volSpreads@ and @parametersGuess@ are both flattened over the (optionTenor x swapTenor)
 -- product as the *outer* index (row = j*nSwapTenors+k, j over @optionTenors@, k over

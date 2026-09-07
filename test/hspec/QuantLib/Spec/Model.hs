@@ -41,7 +41,7 @@ gaussian1dSpec =
         settlement <- advance cal evalDate (2, Days) Following False
         dc <- dayCounter Actual365FixedStandard
         flatQ <- simpleQuote 0.03
-        ts <- flatForward settlement flatQ dc Continuous Annual
+        ts <- flatForward (ReferenceDate settlement) flatQ dc Continuous Annual
 
         volQuote <- simpleQuote 0.01
         reversionQuote <- simpleQuote 0.01
@@ -110,7 +110,7 @@ affineModelSpec =
         settlement <- advance cal evalDate (2, Days) Following False
         dc <- dayCounter Actual365FixedStandard
         flatQ <- simpleQuote 0.03
-        ts <- flatForward settlement flatQ dc Continuous Annual
+        ts <- flatForward (ReferenceDate settlement) flatQ dc Continuous Annual
         hw <- hullWhite ts 0.1 0.01
 
         -- A single fixed-vs-float period, with the exercise date set to the period's own start

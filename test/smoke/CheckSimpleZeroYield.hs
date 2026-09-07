@@ -34,10 +34,10 @@ main = do
   q <- Quote.simpleQuote 0.03
   helpers <- mapM (\i -> fraRateHelper q i (i + 3) 2 cal ModifiedFollowing True euriborDC LastRelevantDate Nothing False) [1 .. 5]
 
-  discountCurve <- piecewiseYieldCurveMoving 0 cal (fromList helpers) euriborDC []
+  discountCurve <- piecewiseYieldCurve (SettlementDays 0 cal) (fromList helpers) euriborDC []
     (GlobalDiscountLogLinear 1.0e-10 []) False
   helpers2 <- mapM (\i -> fraRateHelper q i (i + 3) 2 cal ModifiedFollowing True euriborDC LastRelevantDate Nothing False) [1 .. 5]
-  zeroCurve <- piecewiseYieldCurveMoving 0 cal (fromList helpers2) euriborDC []
+  zeroCurve <- piecewiseYieldCurve (SettlementDays 0 cal) (fromList helpers2) euriborDC []
     (GlobalSimpleZeroLinear 1.0e-10 []) False
 
   -- A date strictly between two pillars: the two curves reprice the input instruments
