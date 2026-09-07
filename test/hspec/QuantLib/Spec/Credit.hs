@@ -1,6 +1,6 @@
 module QuantLib.Spec.Credit (spec) where
 
-import Control.Monad(forM, forM_)
+import Control.Monad(forM, forM_, unless)
 import Test.Hspec
 import Data.List.NonEmpty(fromList)
 import Data.Time.Calendar(fromGregorian, addDays, addGregorianYearsClip)
@@ -186,8 +186,9 @@ spec = do
         mapM_ (\(rank, spreads) -> do
           fair <- (* 1e4) <$> ntdFairPremium (gaussNtds !! (rank - 1))
           let expected = spreads !! j
-          (abs (fair - expected) < 1.0 || abs ((fair - expected) / expected) < 0.015)
-            `shouldBe` True
+          unless (abs (fair - expected) < 1.0 || abs ((fair - expected) / expected) < 0.015) $
+            expectationFailure $ "Gaussian rank " ++ show rank ++ ", correlation " ++ show corr
+              ++ ": expected " ++ show expected ++ "bp, got " ++ show fair ++ "bp"
           ) hwData
         ) (zip [0 ..] hwCorrelation)
 
@@ -204,8 +205,9 @@ spec = do
         ) [1 .. poolSize]
       mapM_ (\(rank, expected) -> do
         fair <- (* 1e4) <$> ntdFairPremium (studentNtds !! (rank - 1))
-        (abs (fair - expected) < 1.0 || abs ((fair - expected) / expected) < 0.017)
-          `shouldBe` True
+        unless (abs (fair - expected) < 1.0 || abs ((fair - expected) / expected) < 0.017) $
+          expectationFailure $ "Student-T rank " ++ show rank
+            ++ ": expected " ++ show expected ++ "bp, got " ++ show fair ++ "bp"
         ) hwDataStudent
 
     -- No golden reference exists for these (upstream has none either); checks structural
