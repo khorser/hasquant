@@ -37,7 +37,7 @@ import QuantLib.Process(hestonProcess, hullWhiteForwardProcess, setForwardMeasur
 import QuantLib.Quote(simpleQuote)
 import qualified QuantLib.Settings as Settings
 import QuantLib.InterestRate(Compounding(..))
-import QuantLib.TermStructure.Yield(Reference(..), interpolatedZeroCurve, flatForward, discount)
+import QuantLib.TermStructure.Yield(Reference(..), TermPoint(..), interpolatedZeroCurve, flatForward, discount)
 import QuantLib.Time.Calendar(calendar, CalendarConstructor(..))
 import QuantLib.Time.Date(today, addPeriod)
 import QuantLib.Time.Schedule(Frequency(..), dayCounter, years, DayCounterConstructor(..), TimeUnit(..))
@@ -102,7 +102,7 @@ run = Settings.keepingSettingsGc $ do
     let t = gridTimes !! j
         bigT = gridTimes !! (j + optionTenor)
         n = fromIntegral nrTrails
-    expectedBond <- discount rTS t False
+    expectedBond <- discount rTS (TimePoint t) False
     expectedOption <- discountBondOption hwModel Call strike t bigT
     pure (abs (zb / n - expectedBond), abs (zo / n - expectedOption))
 

@@ -80,11 +80,11 @@ run = do
     parRate ts ds dc = do
       dfs <- mapM (\(d1, d2) -> do
               dt <- years dc d1 d2 Nothing Nothing
-              df <- TS.discountAtDate ts d2 False
+              df <- TS.discount ts (TS.DatePoint d2) False
               return $ df * dt) $
                 zip (init ds) (tail ds)
-      df1 <- TS.discountAtDate ts (head ds) False
-      df2 <- TS.discountAtDate ts (last ds) False
+      df1 <- TS.discount ts (TS.DatePoint (head ds)) False
+      df2 <- TS.discount ts (TS.DatePoint (last ds)) False
       return $ 100.0 * (df1 - df2) / sum dfs
 
     rates :: TS.YieldTermStructure -> DayCounter -> Day -> Day -> [TS.FittedBondDiscountCurve] -> [TS.BondHelper] -> IO Rate

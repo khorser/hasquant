@@ -39,7 +39,7 @@ import QuantLib.Time.Date(today, addPeriod, september)
 import QuantLib.Time.Schedule(dayCounter, years, DayCounterConstructor(..), Frequency(..), TimeUnit(..))
 import QuantLib.InterestRate(Compounding(..), VolatilityType(..), rate)
 import QuantLib.Quote(simpleQuote, setValue)
-import QuantLib.TermStructure.Yield(Reference(..), flatForward, forwardRate, discount, YieldTermStructure, interpolatedZeroCurve)
+import QuantLib.TermStructure.Yield(Reference(..), TermPoint(..), flatForward, forwardRate, discount, YieldTermStructure, interpolatedZeroCurve)
 import QuantLib.Instrument(npv, setPricingEngine)
 import QuantLib.Instrument.Option(europeanOption, StrikedPayoff(PlainVanilla), PlainVanillaPayoff(..), OptionType(..), Exercise(European), EuropeanExercise(..))
 import qualified QuantLib.Process as Process
@@ -601,7 +601,7 @@ spec = do
         setForwardMeasureTime hwFwd bigT
         joint <- hybridHestonHullWhiteProcess hProcess hwFwd (-0.4) HybridHestonHullWhiteEuler
         hwModel <- hullWhite rTS a sigma
-        endDf <- discount rTS bigT False
+        endDf <- discount rTS (TimePoint bigT) False
 
         sequence_ [ do
             expected <- (/ endDf) <$> discountBond hwModel t bigT r

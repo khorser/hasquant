@@ -59,8 +59,8 @@ computeXva npvs curves t0Discount cptyPoints ownPoints cptyRecovery ownRecovery 
   dc <- dayCounter Actual365FixedStandard
   cal <- calendar UnitedStatesNYSE
 
-  cptyDTS <- Credit.interpolatedSurvivalProbabilityCurve cptyPoints dc cal [] LogLinear
-  ownDTS <- Credit.interpolatedSurvivalProbabilityCurve ownPoints dc cal [] LogLinear
+  cptyDTS <- Credit.interpolatedSurvivalProbabilityCurve cptyPoints dc cal [] LogLinear False
+  ownDTS <- Credit.interpolatedSurvivalProbabilityCurve ownPoints dc cal [] LogLinear False
 
   let tss = sort [ts | (s, ts) <- Map.keys curves, s == 0]
       thisDates = [fst (curves Map.! (0, ts)) | ts <- tss]
@@ -76,9 +76,9 @@ computeXva npvs curves t0Discount cptyPoints ownPoints cptyRecovery ownRecovery 
       ene ts = mean (map (max 0 . negate) (npvsAt ts))
 
   buckets <- forM (zip3 tss prevDates thisDates) $ \(ts, dPrev, dThis) -> do
-    pdCpty <- Credit.defaultProbabilityBetween cptyDTS dPrev dThis True
-    pdOwn <- Credit.defaultProbabilityBetween ownDTS dPrev dThis True
-    df <- TS.discountAtDate t0Discount dThis True
+    pdCpty <- Credit.defaultProbabilityBetween cptyDTS (Credit.DateInterval dPrev dThis) True
+    pdOwn <- Credit.defaultProbabilityBetween ownDTS (Credit.DateInterval dPrev dThis) True
+    df <- TS.discount t0Discount (TS.DatePoint dThis) True
     pure (df * ee ts * pdCpty, df * ene ts * pdOwn, (dThis, quantile percentile (npvsAt ts)))
 
   let (cvaTerms, dvaTerms, pfe) = unzip3 buckets

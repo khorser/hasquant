@@ -8,6 +8,7 @@ import Data.Time.Calendar(fromGregorian, addDays, addGregorianYearsClip)
 import QuantLib.Currency(currency, Ccy(..))
 import QuantLib.Time.Calendar(calendar, adjust, CalendarConstructor(..), BusinessDayConvention(..))
 import QuantLib.Time.Schedule(dayCounter, DayCounterConstructor(..), TimeUnit(..), schedule, DateGenerationRule(..), Frequency(..))
+import qualified QuantLib.Time.Schedule as Schedule
 import QuantLib.InterestRate(Compounding(..))
 import QuantLib.Math(Interpolation(..))
 import QuantLib.Quote(simpleQuote, setValue)
@@ -310,14 +311,32 @@ spec = do
       cal <- calendar TARGET
 
       hazard <- interpolatedHazardRateCurve (fromList [(refDate, 0.02), (d1, 0.018), (d2, 0.016)]) dc cal [] BackwardFlat False
-      hazardRate hazard d1 False `shouldReturn` 0.018
+      t1 <- Schedule.years dc refDate d1 Nothing Nothing
+      t2 <- Schedule.years dc refDate d2 Nothing Nothing
+      hazardAtDate <- hazardRate hazard (DatePoint d1) False
+      hazardAtTime <- hazardRate hazard (TimePoint t1) False
+      hazardAtDate `shouldBe` 0.018
+      hazardAtTime `shouldSatisfy` closePrec hazardAtDate 1.0e-10
 
       survival <- interpolatedSurvivalProbabilityCurve (fromList [(refDate, 1.0), (d1, 0.98), (d2, 0.95)]) dc cal [] LogLinear True
-      survivalProbability survival d2 False `shouldReturn` 0.95
+      survivalAtDate <- survivalProbability survival (DatePoint d2) False
+      survivalAtTime <- survivalProbability survival (TimePoint t2) False
+      survivalAtDate `shouldBe` 0.95
+      survivalAtTime `shouldSatisfy` closePrec survivalAtDate 1.0e-10
       allowsExtrapolation survival `shouldReturn` True
 
       density <- interpolatedDefaultDensityCurve (fromList [(refDate, 0.02), (d1, 0.018), (d2, 0.016)]) dc cal [] Linear False
-      defaultDensity density d1 False `shouldReturn` 0.018
+      densityAtDate <- defaultDensity density (DatePoint d1) False
+      densityAtTime <- defaultDensity density (TimePoint t1) False
+      densityAtDate `shouldBe` 0.018
+      densityAtTime `shouldSatisfy` closePrec densityAtDate 1.0e-10
+
+      defaultAtDate <- defaultProbability hazard (DatePoint d1) False
+      defaultAtTime <- defaultProbability hazard (TimePoint t1) False
+      defaultAtTime `shouldSatisfy` closePrec defaultAtDate 1.0e-10
+      betweenDates <- defaultProbabilityBetween hazard (DateInterval refDate d1) False
+      betweenTimes <- defaultProbabilityBetween hazard (TimeInterval 0 t1) False
+      betweenTimes `shouldSatisfy` closePrec betweenDates 1.0e-10
 
     it "matches fixed and moving references at default bootstrap settings" $ Settings.keepingSettingsGc $ do
       let refDate = fromGregorian 2015 6 15
@@ -338,8 +357,8 @@ spec = do
       fixedCurve <- piecewiseDefaultCurve (ReferenceDate refDate) hs helperDc [] HazardRate BackwardFlat defaultIterativeBootstrapOpts False
       movingCurve <- piecewiseDefaultCurve (SettlementDays 0 cal) hs helperDc [] HazardRate BackwardFlat defaultIterativeBootstrapOpts False
 
-      fixedP <- survivalProbability fixedCurve queryDate False
-      movingP <- survivalProbability movingCurve queryDate False
+      fixedP <- survivalProbability fixedCurve (DatePoint queryDate) False
+      movingP <- survivalProbability movingCurve (DatePoint queryDate) False
       movingP `shouldSatisfy` closePrec fixedP 1.0e-12
 
       let (_, quotedSpread) = spreads !! 2
@@ -376,7 +395,7 @@ spec = do
       -- calculate()-triggering call, not at construction. Force it before calling
       -- impliedQuote on the helpers, or swap_ is still null and QuantLib's
       -- swap_->recalculate() hits boost::shared_ptr's null-dereference assertion.
-      _ <- survivalProbability curve refDate False
+      _ <- survivalProbability curve (DatePoint refDate) False
       forM_ (zip helpers spreads) $ \(h, (_, quotedSpread)) -> do
         implied <- defaultProbabilityHelperImpliedQuote h
         implied `shouldSatisfy` closePrec quotedSpread 1.0e-8
@@ -453,7 +472,7 @@ spec = do
         spreadCdsHelper q tenor 1 cal Quarterly Following CDS2015 cdsDc recovery discountCurve True True Nothing lastDc True Midpoint
       let hs = fromList helpers
       defaultCurve <- piecewiseDefaultCurve (ReferenceDate asof) hs tsDc [] SurvivalProbability LogLinear defaultIterativeBootstrapOpts False
-      survivalProbability defaultCurve testDate False `shouldThrow` anyException
+      survivalProbability defaultCurve (DatePoint testDate) False `shouldThrow` anyException
 
       fallbackCurve <- piecewiseDefaultCurve (ReferenceDate asof) hs tsDc [] SurvivalProbability LogLinear
         defaultIterativeBootstrapOpts
@@ -464,7 +483,7 @@ spec = do
           , ibDontThrowSteps = 2
           }
         False
-      _ <- survivalProbability fallbackCurve testDate False
+      _ <- survivalProbability fallbackCurve (DatePoint testDate) False
       pure ()
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

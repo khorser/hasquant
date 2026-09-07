@@ -345,7 +345,7 @@ spec evalDate = do
           -- FloatingRateCouponPricer::swapletPrice() is *per unit notional*
           -- (swapletRate * accrualPeriod * discount), unlike CashFlow::amount().
           swapletPrice <- CF.floatingRateCouponPricerSwapletPrice pricer
-          disc <- discountAtDate ts endDate True
+          disc <- discount ts (DatePoint endDate) True
           swapletPrice `shouldSatisfy` closePrec (amount / 100.0 * disc) 1e-10
 
           -- CashFlow::price(discountCurve) = amount() * discountCurve->discount(date()).
@@ -450,7 +450,7 @@ spec evalDate = do
             underlying <- CF.iborCoupon endDate digNominal startDate endDate digFixingDays idx
               1.0 0.0 Nothing Nothing euriborDc False Nothing Preceding
             accrual <- years euriborDc startDate endDate Nothing Nothing
-            disc <- discountAtDate curve endDate True
+            disc <- discount curve (DatePoint endDate) True
             pure (underlying, accrual, disc)
 
           -- CashFlow::price(discountCurve) = amount() * discountCurve->discount(date()); the

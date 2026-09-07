@@ -13,6 +13,7 @@ module QuantLib.TermStructure.Yield
   , FittedBondDiscountCurve
   , fittedBondDiscountCurve
   , Reference(..)
+  , TermPoint(..)
   , RelinkableYieldTermStructure
   , relinkableYieldTermStructure
   , linkTo
@@ -26,7 +27,6 @@ module QuantLib.TermStructure.Yield
   , depositRateHelper
   , fixedRateBondHelper
   , cpiBondHelper
-  , discountAtDate
   , swapRateHelperWithConventions
   , flatForward
   , zeroRateAtDate
@@ -104,7 +104,7 @@ import QuantLib.Internal.Syntax(deriveOptionsRecord)
 import Language.Haskell.TH(mkName)
 import Language.Haskell.TH.Lib(varT)
 import QuantLib.Quote hiding(linkTo)
-import QuantLib.TermStructure (Reference(..), setExtrapolation)
+import QuantLib.TermStructure (Reference(..), TermPoint(..), setExtrapolation)
 import Data.Maybe(fromMaybe)
 import Data.List.NonEmpty(NonEmpty, toList)
 import Foreign.Ptr(FunPtr, Ptr)
@@ -240,8 +240,7 @@ nullableDouble = realToFrac . fromMaybeDouble
   ,withCalendar*`Calendar' -- ^paymentCalendar
   ,preErrorCheck-`String'errorCheck*-}->`BondHelper'peekBondHelper*#}
 
--- |Returns a discount factor from the given YieldTermStructure object
-{#fun qlYieldTSDiscount as discountAtDate{withYieldTermStructure*`GenYieldTermStructure y'
+{#fun qlYieldTSDiscount as discountAtDateRaw{withYieldTermStructure*`GenYieldTermStructure y'
   ,withDay*`Day' -- ^d
   ,`Bool' -- ^extrapolate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
@@ -301,8 +300,14 @@ flatForward (SettlementDays n cal) = flatForwardMovingRaw n cal
 {#fun qlYieldTermStructureZeroRate1 as zeroRate{withYieldTermStructure*`GenYieldTermStructure y',`Double',`Compounding',`Frequency',`Bool' -- ^extrapolate
   ,preErrorCheck-`String'errorCheck*-}->`InterestRate'peekInterestRate*#}
 
+-- |Returns a discount factor at a date or year-fraction coordinate.
+discount :: GenYieldTermStructure y -> TermPoint -> Bool -> IO Double
+discount curve point = case point of
+  DatePoint d -> discountAtDateRaw curve d
+  TimePoint t -> discountAtTimeRaw curve t
+
 -- |The same day-counting rule used by the term structure should be used for calculating the passed time t.
-{#fun qlYieldTermStructureDiscount1 as discount{withYieldTermStructure*`GenYieldTermStructure y',`Double',`Bool' -- ^extrapolate
+{#fun qlYieldTermStructureDiscount1 as discountAtTimeRaw{withYieldTermStructure*`GenYieldTermStructure y',`Double',`Bool' -- ^extrapolate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Rate helper for bootstrapping over FRA rates.

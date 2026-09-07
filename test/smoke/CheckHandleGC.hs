@@ -82,7 +82,7 @@ livenessChecks = do
     base <- mkCurve 0.02
     spread <- simpleQuote 0.0
     c <- TS.forwardSpreadedTermStructure base spread
-    TS.discount c 5.0 False
+    TS.discount c (TS.TimePoint 5.0) False
 
   -- Check 1: the base curve is dropped and collected, then read through the derived curve
   -- that holds it via a Handle. Exact equality: it is the same arithmetic on the same
@@ -90,7 +90,7 @@ livenessChecks = do
   do
     c <- spreadedCurveDroppingBase
     collectGarbage
-    d <- TS.discount c 5.0 False
+    d <- TS.discount c (TS.TimePoint 5.0) False
     checkEq "derived curve outlives its dropped base" refSpreaded d
 
   -- Check 2: same, but through a real consumer -- a DiscountingSwapEngine, which stores
@@ -160,7 +160,7 @@ growthLoop n = do
     base <- mkCurve (0.02 + fromIntegral (i `mod` 7) * 1.0e-4)
     spread <- simpleQuote 0.0
     derived <- TS.forwardSpreadedTermStructure base spread
-    _ <- TS.discount derived 5.0 False
+    _ <- TS.discount derived (TS.TimePoint 5.0) False
     e <- discountingSwapEngine derived Nothing Nothing Nothing
     _ <- swapNpvWithEngine e
     when (i `mod` 100 == 0) collectGarbage

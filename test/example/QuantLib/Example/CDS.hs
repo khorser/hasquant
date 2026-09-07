@@ -48,7 +48,7 @@ run = do
       [3, 6, 12, 24]
 
   hts <- piecewiseDefaultCurve (ReferenceDate evalDate) (fromList instruments) dc [] HazardRate BackwardFlat defaultIterativeBootstrapOpts False
-  probs <- mapM (\y -> survivalProbability hts (addGregorianYearsClip y evalDate) False) [1, 2]
+  probs <- mapM (\y -> survivalProbability hts (DatePoint (addGregorianYearsClip y evalDate)) False) [1, 2]
   eng <- midPointCdsEngine hts recoveryRate ts Nothing
 
   sched <- forM maturities

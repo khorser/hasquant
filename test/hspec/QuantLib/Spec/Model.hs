@@ -50,14 +50,14 @@ gaussian1dSpec =
 
         -- zerobond(maturity, y=0) must equal the curve's own discount factor.
         let maturity = addGregorianYearsClip 5 settlement
-        curveDf <- discountAtDate ts maturity False
+        curveDf <- discount ts (DatePoint maturity) False
         modelDf <- gaussian1dZerobond model maturity Nothing 0 Nothing
         modelDf `shouldSatisfy` closePrec curveDf 1.0e-6
 
         -- numeraire(referenceDate=curve's own reference date, y=0) reduces (Gsr::numeraireImpl,
         -- t=0 branch) to the curve's own discount factor at the model's forward-measure time,
         -- which for Gsr is exactly the constructor's horizon argument T (60.0 here).
-        curveDfHorizon <- discount ts 60.0 True
+        curveDfHorizon <- discount ts (TimePoint 60.0) True
         num <- numeraire model settlement 0 Nothing
         num `shouldSatisfy` closePrec curveDfHorizon 1.0e-6
 

@@ -55,8 +55,8 @@ main = do
   let d1 = addYears 1 refDate
       spreadDf1 = 0.95
   spreaded <- interpolatedSpreadDiscountCurve base [(refDate, 1.0), (d1, spreadDf1), (addYears 2 refDate, 0.90)] Linear
-  baseD1 <- discountAtDate base d1 False
-  spreadedD1 <- discountAtDate spreaded d1 False
+  baseD1 <- discount base (DatePoint d1) False
+  spreadedD1 <- discount spreaded (DatePoint d1) False
   report "spread discount curve at 1y node" (show spreadedD1)
   checkClose "equals base discount * spread df" (baseD1 * spreadDf1) spreadedD1 1.0e-8
 
@@ -69,7 +69,7 @@ main = do
   q <- Quote.simpleQuote inputRate
   rh <- multipleResetsSwapRateHelper 0 (2, Years) q euribor3m 2 Nothing AveragingCompound 0.0 NoFrequency actual360dc ModifiedFollowing
   ts <- piecewiseYieldCurve (ReferenceDate curveToday) [rh] actual360dc [] (Iterative Discount LogLinear defaultIterativeBootstrapOpts) False
-  _ <- discountAtDate ts curveToday False
+  _ <- discount ts (DatePoint curveToday) False
   implied <- impliedQuote rh
   report "multiple-resets swap rate helper implied quote" (show implied)
   checkWith "reprices to its own input rate" "close to 0.05"

@@ -117,7 +117,7 @@ run = do
   t <- years dc evalDate maturity Nothing Nothing
   grid <- timeGrid t timeSteps
   times <- V.toList <$> points grid
-  discFactors@(df0h:_) <- mapM (\x -> discount ts x False) times
+  discFactors@(df0h:_) <- mapM (\x -> discount ts (TimePoint x) False) times
   let dfs = zipWith (flip (/)) discFactors (drop 1 discFactors)
 
   genCalib <- pathGenerator PseudoRandom procs grid seedCalib (fromIntegral dim * (size grid - 1)) False

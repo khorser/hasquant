@@ -53,7 +53,7 @@ run gc = do
   repoCurve <- simpleQuote repoRate >>=
         $(free2nd 'flatForward) (ReferenceDate repoSettlementDate) repoDayCountConvention repoCompounding repoCompoundFreq
   spotInc <- spotIncome fwd repoCurve
-  disc <- discountAtDate repoCurve repoDeliveryDate False
+  disc <- discount repoCurve (DatePoint repoDeliveryDate) False
   np <- npv fwd
 
   impR <- impliedYield fwd dp dummyStrike repoSettlementDate

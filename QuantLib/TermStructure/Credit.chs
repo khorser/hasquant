@@ -4,19 +4,16 @@ module QuantLib.TermStructure.Credit
   , DefaultProbabilityTermStructure
   , DefaultProbabilityHelper
   , Reference(..)
+  , TermPoint(..)
+  , TermInterval(..)
   , factorSpreadedHazardRateCurve
   , flatHazardRate
   , spreadedHazardRateCurve
   , defaultProbability
-  , hazardRateAtTime
   , hazardRate
-  , survivalProbabilityAtTime
   , survivalProbability
-  , defaultDensityAtTime
   , defaultDensity
-  , defaultProbabilityAtTime
   , defaultProbabilityBetween
-  , defaultProbabilityBetweenTimes
   , spreadCdsHelper
   , upfrontCdsHelper
   , defaultProbabilityHelperImpliedQuote
@@ -37,7 +34,7 @@ import QuantLib.Internal
 import QuantLib.Internal.Type
 {#import QuantLib.Time.Schedule#}(DateGenerationRule, Frequency)
 import QuantLib.Internal.Common
-import QuantLib.TermStructure (Reference(..), setExtrapolation)
+import QuantLib.TermStructure (Reference(..), TermPoint(..), TermInterval(..), setExtrapolation)
 import Data.List.NonEmpty(NonEmpty, toList)
 
 {#enum ProbabilityTrait{} deriving(Show, Eq, Read)#}
@@ -63,45 +60,65 @@ flatHazardRate (SettlementDays n cal) = flatHazardRateMovingRaw n cal
 -- |a curve whose survival probability is another curve's, multiplied by a spread factor
 {#fun qlSpreadedHazardRateCurve as spreadedHazardRateCurve{withGenTermStructure*`DefaultProbabilityTermStructure',withQuote*`GenQuote q',preErrorCheck-`String'errorCheck*-}->`DefaultProbabilityTermStructure'peekDefaultProbabilityTermStructure*#}
 
--- |default probability from the reference date until a given date
-{#fun qlDefaultProbabilityTermStructureDefaultProbability as defaultProbability{withGenTermStructure*`DefaultProbabilityTermStructure',withDay*`Day',`Bool' -- ^extrapolate
+{#fun qlDefaultProbabilityTermStructureDefaultProbability as defaultProbabilityAtDateRaw{withGenTermStructure*`DefaultProbabilityTermStructure',withDay*`Day',`Bool' -- ^extrapolate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
--- |hazard rate at a given time, with annual frequency and continuous compounding
-{#fun qlDefaultProbabilityTermStructureHazardRate1 as hazardRateAtTime{withGenTermStructure*`DefaultProbabilityTermStructure',`Double',`Bool' -- ^extrapolate
+{#fun qlDefaultProbabilityTermStructureHazardRate1 as hazardRateAtTimeRaw{withGenTermStructure*`DefaultProbabilityTermStructure',`Double',`Bool' -- ^extrapolate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
--- |hazard rate at a given date, with annual frequency and continuous compounding
-{#fun qlDefaultProbabilityTermStructureHazardRate as hazardRate{withGenTermStructure*`DefaultProbabilityTermStructure',withDay*`Day',`Bool' -- ^extrapolate
+{#fun qlDefaultProbabilityTermStructureHazardRate as hazardRateAtDateRaw{withGenTermStructure*`DefaultProbabilityTermStructure',withDay*`Day',`Bool' -- ^extrapolate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
--- |The same day-counting rule used by the term structure should be used for calculating the passed time t.
-{#fun qlDefaultProbabilityTermStructureSurvivalProbability1 as survivalProbabilityAtTime{withGenTermStructure*`DefaultProbabilityTermStructure',`Double',`Bool' -- ^extrapolate
+{#fun qlDefaultProbabilityTermStructureSurvivalProbability1 as survivalProbabilityAtTimeRaw{withGenTermStructure*`DefaultProbabilityTermStructure',`Double',`Bool' -- ^extrapolate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
--- |survival probability from the reference date until a given date
-{#fun qlDefaultProbabilityTermStructureSurvivalProbability as survivalProbability{withGenTermStructure*`DefaultProbabilityTermStructure',withDay*`Day',`Bool' -- ^extrapolate
+{#fun qlDefaultProbabilityTermStructureSurvivalProbability as survivalProbabilityAtDateRaw{withGenTermStructure*`DefaultProbabilityTermStructure',withDay*`Day',`Bool' -- ^extrapolate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
--- |The same day-counting rule used by the term structure should be used for calculating the passed time t.
-{#fun qlDefaultProbabilityTermStructureDefaultDensity1 as defaultDensityAtTime{withGenTermStructure*`DefaultProbabilityTermStructure',`Double',`Bool' -- ^extrapolate
+{#fun qlDefaultProbabilityTermStructureDefaultDensity1 as defaultDensityAtTimeRaw{withGenTermStructure*`DefaultProbabilityTermStructure',`Double',`Bool' -- ^extrapolate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
--- |default density at a given date
-{#fun qlDefaultProbabilityTermStructureDefaultDensity as defaultDensity{withGenTermStructure*`DefaultProbabilityTermStructure',withDay*`Day',`Bool' -- ^extrapolate
+{#fun qlDefaultProbabilityTermStructureDefaultDensity as defaultDensityAtDateRaw{withGenTermStructure*`DefaultProbabilityTermStructure',withDay*`Day',`Bool' -- ^extrapolate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
--- |The same day-counting rule used by the term structure should be used for calculating the passed time t.
-{#fun qlDefaultProbabilityTermStructureDefaultProbability1 as defaultProbabilityAtTime{withGenTermStructure*`DefaultProbabilityTermStructure',`Double',`Bool' -- ^extrapolate
+{#fun qlDefaultProbabilityTermStructureDefaultProbability1 as defaultProbabilityAtTimeRaw{withGenTermStructure*`DefaultProbabilityTermStructure',`Double',`Bool' -- ^extrapolate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
--- |probability of default between two given dates
-{#fun qlDefaultProbabilityTermStructureDefaultProbability2 as defaultProbabilityBetween{withGenTermStructure*`DefaultProbabilityTermStructure',withDay*`Day',withDay*`Day',`Bool' -- ^extrapolate
+{#fun qlDefaultProbabilityTermStructureDefaultProbability2 as defaultProbabilityBetweenDatesRaw{withGenTermStructure*`DefaultProbabilityTermStructure',withDay*`Day',withDay*`Day',`Bool' -- ^extrapolate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
--- |probability of default between two given times
-{#fun qlDefaultProbabilityTermStructureDefaultProbability3 as defaultProbabilityBetweenTimes{withGenTermStructure*`DefaultProbabilityTermStructure',`Double',`Double',`Bool' -- ^extrapolate
+{#fun qlDefaultProbabilityTermStructureDefaultProbability3 as defaultProbabilityBetweenTimesRaw{withGenTermStructure*`DefaultProbabilityTermStructure',`Double',`Double',`Bool' -- ^extrapolate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |Hazard rate at a date or year fraction, with annual frequency and continuous compounding.
+hazardRate :: DefaultProbabilityTermStructure -> TermPoint -> Bool -> IO Double
+hazardRate curve point = case point of
+  DatePoint d -> hazardRateAtDateRaw curve d
+  TimePoint t -> hazardRateAtTimeRaw curve t
+
+-- |Survival probability from the reference point to a date or year fraction.
+survivalProbability :: DefaultProbabilityTermStructure -> TermPoint -> Bool -> IO Double
+survivalProbability curve point = case point of
+  DatePoint d -> survivalProbabilityAtDateRaw curve d
+  TimePoint t -> survivalProbabilityAtTimeRaw curve t
+
+-- |Default density at a date or year fraction.
+defaultDensity :: DefaultProbabilityTermStructure -> TermPoint -> Bool -> IO Double
+defaultDensity curve point = case point of
+  DatePoint d -> defaultDensityAtDateRaw curve d
+  TimePoint t -> defaultDensityAtTimeRaw curve t
+
+-- |Default probability from the reference point to a date or year fraction.
+defaultProbability :: DefaultProbabilityTermStructure -> TermPoint -> Bool -> IO Double
+defaultProbability curve point = case point of
+  DatePoint d -> defaultProbabilityAtDateRaw curve d
+  TimePoint t -> defaultProbabilityAtTimeRaw curve t
+
+-- |Default probability over a same-representation date or year-fraction interval.
+defaultProbabilityBetween :: DefaultProbabilityTermStructure -> TermInterval -> Bool -> IO Double
+defaultProbabilityBetween curve interval = case interval of
+  DateInterval d1 d2 -> defaultProbabilityBetweenDatesRaw curve d1 d2
+  TimeInterval t1 t2 -> defaultProbabilityBetweenTimesRaw curve t1 t2
 
 -- |bootstrap helper for a CDS quoted by running spread
 {#fun qlSpreadCdsHelper as spreadCdsHelper{withQuote*`GenQuote q' -- ^runningSpread

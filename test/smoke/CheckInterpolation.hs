@@ -11,7 +11,7 @@ import Control.Monad
 import Data.List.NonEmpty(fromList)
 import QuantLib.Math(Approximation(..), Interpolation(..))
 import QuantLib.Quote(simpleQuote)
-import QuantLib.TermStructure.Yield(interpolatedZeroCurve, discountAtDate)
+import QuantLib.TermStructure.Yield(TermPoint(..), interpolatedZeroCurve, discount)
 import QuantLib.Time.Calendar
 import QuantLib.Time.Date
 import QuantLib.Time.Schedule(dayCounter, DayCounterConstructor(..))
@@ -42,5 +42,5 @@ main = do
       queryDate = 1 `july` 2025 -- between knots -- exercises the interpolator, not just endpoints
   forM_ interpolations $ \(nm, interp) -> do
     curve <- interpolatedZeroCurve (fromList knots) dc cal [] interp
-    d <- discountAtDate curve queryDate True
+    d <- discount curve (DatePoint queryDate) True
     putStrLn (nm ++ ": discount(" ++ show queryDate ++ ") = " ++ show d)

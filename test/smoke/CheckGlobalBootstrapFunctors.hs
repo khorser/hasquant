@@ -49,7 +49,7 @@ main = do
   curve <- piecewiseYieldCurve (SettlementDays 0 cal) nonEmptyHelpers euriborDC []
     (GlobalSimpleZeroLinearFull nonEmptyHelpers goodDates 1.0e-10) False
   sampleDate <- advance cal settleFix (4, Months) ModifiedFollowing True
-  df <- discountAtDate curve sampleDate False
+  df <- discount curve (DatePoint sampleDate) False
   checkWith "functor-based GlobalBootstrap curve produces a sane discount factor"
             "confirms qlPiecewiseYieldCurveGlobalBootstrap3 actually dispatched, not just linked"
             (df > 0 && df < 1)
@@ -59,7 +59,7 @@ main = do
   badDates <- mapM (\i -> advance cal settleFix (i, Months) ModifiedFollowing True) [1, 2, 3, 4 :: Int]
   result <- try (piecewiseYieldCurve (SettlementDays 0 cal) nonEmptyHelpers euriborDC []
     (GlobalSimpleZeroLinearFull nonEmptyHelpers badDates 1.0e-10) False
-                    >>= \c -> discountAtDate c sampleDate False >>= evaluate) :: IO (Either SomeException Double)
+                    >>= \c -> discount c (DatePoint sampleDate) False >>= evaluate) :: IO (Either SomeException Double)
   checkWith "mismatched additionalDates/additionalHelpers pillar count raises"
             "confirms the QL_REQUIRE guard fires instead of silently misbootstrapping"
             (either (const True) (const False) result)

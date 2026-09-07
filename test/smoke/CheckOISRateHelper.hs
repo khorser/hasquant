@@ -43,7 +43,7 @@ main = do
 
   let endToEndDiscount h = do
         curve <- piecewiseYieldCurve (ReferenceDate today) [h] dc [] (Iterative Discount LogLinear defaultIterativeBootstrapOpts) False
-        discountAtDate curve endDate True
+        discount curve (DatePoint endDate) True
 
   hNarrow <- oisRateHelper 2 (1, Years) q idx Nothing
   dNarrow <- endToEndDiscount hNarrow

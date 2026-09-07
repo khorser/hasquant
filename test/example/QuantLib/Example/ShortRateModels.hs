@@ -221,8 +221,8 @@ runExtendedCirDiscountFactor = do
   q <- simpleQuote rate
   rts <- TS.flatForward (TS.ReferenceDate evalDate) q ac365 Continuous Annual
   model <- extendedCoxIngersollRoss rts rate 1.0 1e-4 rate True
-  dNow <- TS.discount rts now False
-  dMat <- TS.discount rts maturity False
+  dNow <- TS.discount rts (TS.TimePoint now) False
+  dMat <- TS.discount rts (TS.TimePoint maturity) False
   calculated <- discountBond model now maturity rate
   pure DiscountCheck { expectedDF = dMat / dNow, calculatedDF = calculated }
   where

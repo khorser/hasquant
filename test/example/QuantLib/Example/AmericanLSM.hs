@@ -109,7 +109,7 @@ run = do
   t <- years dc settl maturity Nothing Nothing
   grid <- timeGrid t timeSteps
   times <- points grid
-  discFactors <- V.mapM (\x -> discount ts x False) times
+  discFactors <- V.mapM (\x -> discount ts (TimePoint x) False) times
   let dfs = V.zipWith (flip (/)) discFactors (V.tail discFactors)
       d0 = discFactors V.! 0
       d1 = discFactors V.! 1

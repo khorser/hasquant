@@ -229,7 +229,7 @@ run gc = do
   t <- years dc settl maturity Nothing Nothing
   grid <- timeGrid t timeSteps
   times <- points grid
-  discFactors <- mapM (\x -> discount ts x False) (V.toList times)
+  discFactors <- mapM (\x -> discount ts (TimePoint x) False) (V.toList times)
   let dfs = zipWith (flip (/)) discFactors (drop 1 discFactors)
       dfsRev = reverse (drop 1 dfs) -- one-step discount factors for exercise dates, latest first
       df0 = case discFactors of

@@ -63,11 +63,16 @@ bachelierAssetItmProbability'	bachelierAssetItmProbabilityFromPayoff
 
 flatHazardRate'	flatHazardRate
 flatHazardRateMoving	flatHazardRate
-hazardRate'	hazardRateAtTime
-survivalProbability'	survivalProbabilityAtTime
-defaultDensity'	defaultDensityAtTime
-defaultProbability'	defaultProbabilityAtTime
-defaultProbabilityBetween'	defaultProbabilityBetweenTimes
+hazardRate'	hazardRate
+hazardRateAtTime	hazardRate
+survivalProbability'	survivalProbability
+survivalProbabilityAtTime	survivalProbability
+defaultDensity'	defaultDensity
+defaultDensityAtTime	defaultDensity
+defaultProbability'	defaultProbability
+defaultProbabilityAtTime	defaultProbability
+defaultProbabilityBetween'	defaultProbabilityBetween
+defaultProbabilityBetweenTimes	defaultProbabilityBetween
 piecewiseDefaultCurve'	piecewiseDefaultCurve
 piecewiseDefaultCurveMoving	piecewiseDefaultCurve
 piecewiseDefaultCurveFull	piecewiseDefaultCurve
@@ -137,7 +142,8 @@ sabrVolSurfaceVolatilitySpreadsForPeriod	volatilitySpreads
 sabrVolSurfaceVolatilitySpreadsForDate	volatilitySpreads
 
 depositRateHelper'	depositRateHelperFromIndex
-discount'	discountAtDate
+discount'	discount
+discountAtDate	discount
 swapRateHelper'	swapRateHelperWithConventions
 flatForward'	flatForward
 flatForwardMoving	flatForward

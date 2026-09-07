@@ -149,7 +149,7 @@ run = do
   t <- years dc settl maturity Nothing Nothing
   grid <- timeGrid t timeSteps
   times <- points grid
-  discFactors <- mapM (\x -> discount ts x False) (V.toList times)
+  discFactors <- mapM (\x -> discount ts (TimePoint x) False) (V.toList times)
   -- dfs !! i brings a cashflow observed at grid index i+1 back to index i.
   let dfs = zipWith (flip (/)) discFactors (drop 1 discFactors)
       dt = t / fromIntegral timeSteps

@@ -54,7 +54,7 @@ main = do
   standaloneCurve <- piecewiseYieldCurve (SettlementDays 0 cal) (fromList standaloneHelpers) euriborDC []
     (GlobalDiscountLogLinear 1.0e-10 []) False
   sixM <- advance cal settleFix (6, Months) ModifiedFollowing True
-  standaloneDiscount <- discountAtDate standaloneCurve sixM False
+  standaloneDiscount <- discount standaloneCurve (DatePoint sixM) False
   checkWith "standalone GlobalBootstrap curve produces a sane discount factor"
             "confirms qlPiecewiseYieldCurveGlobalBootstrap1 actually dispatched, not just linked"
             (standaloneDiscount > 0 && standaloneDiscount < 1)
@@ -99,8 +99,8 @@ main = do
 
   -- curve3m/curve6m are the external handles addBootstrappedCurve hands back; confirm they're
   -- usable YieldTermStructures independent of the swap check above.
-  d3m <- discountAtDate curve3m maturity False
-  d6m <- discountAtDate curve6m maturity False
+  d3m <- discount curve3m (DatePoint maturity) False
+  d6m <- discount curve6m (DatePoint maturity) False
   checkWith "both external curve handles from the MultiCurve cycle give sane discount factors"
             "d3m/d6m come from addBootstrappedCurve's returned Handle<YieldTermStructure>"
             (d3m > 0 && d3m < 1 && d6m > 0 && d6m < 1)

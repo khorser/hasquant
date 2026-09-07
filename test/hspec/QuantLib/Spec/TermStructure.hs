@@ -96,9 +96,9 @@ spec = do
         ts <- flatForward (SettlementDays settlementDays cal) flatRate actual360dc IR.Continuous Annual
         td <- Settings.evaluationDate
 
-        expected <- mapM (\d -> discountAtDate ts (addDays d td) False) ds
+        expected <- mapM (\d -> discount ts (DatePoint (addDays d td)) False) ds
         Settings.setEvaluationDate (Just $ addDays 30 td)
-        calculated <- mapM (\d -> discountAtDate ts (addDays (30+d) td) False) ds
+        calculated <- mapM (\d -> discount ts (DatePoint (addDays (30+d) td)) False) ds
 
         mapM_ (\(x1, x2) -> x1 `shouldSatisfy` areClose x2) (zip expected calculated)
 
@@ -120,9 +120,9 @@ spec = do
           newSettlement <- advance cal newToday (fromIntegral settlementDays, Days) Following False
           let testDate = addGregorianYearsClip 5 newSettlement
           implied <- impliedTermStructure ts newSettlement
-          baseDiscount <- discountAtDate ts newSettlement False
-          dsc <- discountAtDate ts testDate False
-          impliedDiscount <- discountAtDate implied testDate False
+          baseDiscount <- discount ts (DatePoint newSettlement) False
+          dsc <- discount ts (DatePoint testDate) False
+          impliedDiscount <- discount implied (DatePoint testDate) False
 
           (dsc - baseDiscount * impliedDiscount) `shouldSatisfy` (<= 1.0e-10)
 
@@ -241,8 +241,8 @@ spec = do
               spreadDf1 = 0.95
           spreaded <- interpolatedSpreadDiscountCurve ts [(refDate, 1.0), (d1, spreadDf1), (d2, 0.90)] Linear
 
-          baseD1 <- discountAtDate ts d1 False
-          spreadedD1 <- discountAtDate spreaded d1 False
+          baseD1 <- discount ts (DatePoint d1) False
+          spreadedD1 <- discount spreaded (DatePoint d1) False
 
           spreadedD1 `shouldSatisfy` closePrec (baseD1 * spreadDf1) 1.0e-8
 
@@ -308,8 +308,8 @@ spec = do
           fixedReference <- advance cal (2 `january` 2024) (3, Days) Following False
           movingCurve <- build (SettlementDays 3 cal)
           fixedCurve <- build (ReferenceDate fixedReference)
-          movingDiscount <- discountAtDate movingCurve (5 `january` 2029) False
-          fixedDiscount <- discountAtDate fixedCurve (5 `january` 2029) False
+          movingDiscount <- discount movingCurve (DatePoint (5 `january` 2029)) False
+          fixedDiscount <- discount fixedCurve (DatePoint (5 `january` 2029)) False
           movingDiscount `shouldSatisfy` (\x -> x > 0 && x < 1)
           fixedDiscount `shouldSatisfy` closePrec movingDiscount 1.0e-6
 
@@ -339,7 +339,7 @@ spec = do
           -- PiecewiseYieldCurve is a lazy QuantLib object: bootstrapping (and the
           -- setTermStructure call on each helper) only runs on first calculation, not on
           -- construction, so the curve must be queried before impliedQuote is meaningful.
-          _ <- discountAtDate ts settlement False
+          _ <- discount ts (DatePoint settlement) False
           implied <- impliedQuote rh
           fwdVal <- Quote.value fwdPoint
           implied `shouldSatisfy` closePrec fwdVal 1.0e-8
@@ -367,7 +367,7 @@ spec = do
             [(1, Years), (2, Years), (3, Years)]
 
           ts <- piecewiseYieldCurve (ReferenceDate today') (fromList helpers) actual360dc [] (Iterative Discount LogLinear defaultIterativeBootstrapOpts) False
-          _ <- discountAtDate ts today' False
+          _ <- discount ts (DatePoint today') False
           implieds <- mapM impliedQuote helpers
           mapM_ (`shouldSatisfy` closePrec inputRate 1.0e-6) implieds
 
@@ -391,7 +391,7 @@ spec = do
           price <- Quote.simpleQuote 95.0
           rh <- overnightIndexFutureRateHelper price valueDate maturityDate ois Nothing AveragingCompound LastRelevantDate Nothing
           ts <- piecewiseYieldCurve (ReferenceDate valueDate) [rh] actual360dc [] (Iterative Discount LogLinear defaultIterativeBootstrapOpts) False
-          _ <- discountAtDate ts valueDate False
+          _ <- discount ts (DatePoint valueDate) False
           implied <- impliedQuote rh
           priceVal <- Quote.value price
           implied `shouldSatisfy` closePrec priceVal 1.0e-6
@@ -439,7 +439,7 @@ spec = do
           price <- Quote.simpleQuote 95.0
           rh <- sofrFutureRateHelper price QuantLib.Time.Date.March 2024 Quarterly Nothing LastRelevantDate Nothing
           ts <- piecewiseYieldCurve (ReferenceDate settlement) [rh] actual360dc [] (Iterative Discount LogLinear defaultIterativeBootstrapOpts) False
-          _ <- discountAtDate ts settlement False
+          _ <- discount ts (DatePoint settlement) False
           implied <- impliedQuote rh
           priceVal <- Quote.value price
           implied `shouldSatisfy` closePrec priceVal 1.0e-6
@@ -463,11 +463,11 @@ spec = do
 
           sofrRh <- sofrFutureRateHelper price QuantLib.Time.Date.March 2024 Quarterly Nothing LastRelevantDate Nothing
           sofrTs <- piecewiseYieldCurve (ReferenceDate settlement) [sofrRh] actual360dc [] (Iterative Discount LogLinear defaultIterativeBootstrapOpts) False
-          sofrDf <- discountAtDate sofrTs maturityDate False
+          sofrDf <- discount sofrTs (DatePoint maturityDate) False
 
           explicitRh <- overnightIndexFutureRateHelper price valueDate maturityDate ois Nothing AveragingCompound LastRelevantDate Nothing
           explicitTs <- piecewiseYieldCurve (ReferenceDate settlement) [explicitRh] actual360dc [] (Iterative Discount LogLinear defaultIterativeBootstrapOpts) False
-          explicitDf <- discountAtDate explicitTs maturityDate False
+          explicitDf <- discount explicitTs (DatePoint maturityDate) False
 
           sofrDf `shouldSatisfy` closePrec explicitDf 1.0e-8
 
@@ -553,9 +553,9 @@ spec = do
           qh <- Quote.relinkableQuote (Just q02)
           dc <- dayCounter Actual365FixedStandard
           c <- flatForward (ReferenceDate (11 `december` 2012)) qh dc IR.Continuous Annual
-          npvBefore <- discount c 5.0 False
+          npvBefore <- discount c (TimePoint 5.0) False
           Quote.simpleQuote 0.05 >>= Quote.linkTo qh
-          npvAfter <- discount c 5.0 False
+          npvAfter <- discount c (TimePoint 5.0) False
           abs (npvAfter - npvBefore) `shouldSatisfy` (> 0.01)
 
       it "relinking a quote back restores the original value exactly" $
@@ -565,11 +565,11 @@ spec = do
           qh <- Quote.relinkableQuote (Just q02)
           dc <- dayCounter Actual365FixedStandard
           c <- flatForward (ReferenceDate (11 `december` 2012)) qh dc IR.Continuous Annual
-          npvBefore <- discount c 5.0 False
+          npvBefore <- discount c (TimePoint 5.0) False
           Quote.simpleQuote 0.05 >>= Quote.linkTo qh
           Quote.simpleQuote 0.02 >>= Quote.linkTo qh
           -- exact, not approximate: same reasoning as the curve-relink-back check above
-          discount c 5.0 False `shouldReturn` npvBefore
+          discount c (TimePoint 5.0) False `shouldReturn` npvBefore
 
       -- A relinkable Black vol surface propagates the same way: an option engine built on it
       -- keeps tracking whatever surface the handle currently points at, so relinking reprices
@@ -1175,8 +1175,8 @@ spec = do
             (GlobalDiscountLogLinear 1.0e-10 [0.9, 0.1]) False
           settleFix <- advance cal curveToday (2, Days) Following False
           pillar <- advance cal settleFix (6, Months) ModifiedFollowing True
-          d1 <- discountAtDate curveMostlyQ1 pillar False
-          d2 <- discountAtDate curveMostlyQ2 pillar False
+          d1 <- discount curveMostlyQ1 (DatePoint pillar) False
+          d2 <- discount curveMostlyQ2 (DatePoint pillar) False
           -- higher weight on the higher rate (q2) means a lower discount factor at the pillar
           d2 `shouldSatisfy` (< d1)
 
@@ -1213,8 +1213,8 @@ spec = do
           settleFix <- advance cal curveToday (2, Days) Following False
           mapM_ (\i -> do
               pillar <- advance cal settleFix (i, Months) ModifiedFollowing True
-              dDiscount <- discountAtDate discountCurve pillar False
-              dZero <- discountAtDate zeroCurve pillar False
+              dDiscount <- discount discountCurve (DatePoint pillar) False
+              dZero <- discount zeroCurve (DatePoint pillar) False
               dZero `shouldSatisfy` closePrec dDiscount tolerance
             ) ([1 .. 5] :: [Int])
 
@@ -1241,8 +1241,8 @@ spec = do
           settleFix <- advance cal curveToday (2, Days) Following False
           mapM_ (\i -> do
               pillar <- advance cal settleFix (i, Months) ModifiedFollowing True
-              dDiscount <- discountAtDate discountCurve pillar False
-              dZero <- discountAtDate zeroCurve pillar False
+              dDiscount <- discount discountCurve (DatePoint pillar) False
+              dZero <- discount zeroCurve (DatePoint pillar) False
               dZero `shouldSatisfy` closePrec dDiscount tolerance
             ) ([1 .. 5] :: [Int])
 
@@ -1291,7 +1291,7 @@ spec = do
               -- exists (CLAUDE.md's "bind few inspectors" rule), and diffDays/360 reproduces it
               -- exactly since Actual360 is a plain actual-days-over-360 day counter.
               let tau = fromIntegral (diffDays pillar settleFix) / 360 :: Double
-              df <- discountAtDate curve pillar False
+              df <- discount curve (DatePoint pillar) False
               -- simple-compounding deposit relation: df = 1 / (1 + qVal * tau)
               df `shouldSatisfy` closePrec (1 / (1 + qVal * tau)) tolerance
             ) ([1 .. 5] :: [Int])
@@ -1320,7 +1320,7 @@ spec = do
           mapM_ (\i -> do
               pillar <- advance cal settleFix (i, Months) ModifiedFollowing True
               let tau = fromIntegral (diffDays pillar settleFix) / 360 :: Double
-              df <- discountAtDate curve pillar False
+              df <- discount curve (DatePoint pillar) False
               df `shouldSatisfy` closePrec (1 / (1 + qVal * tau)) tolerance
             ) ([1 .. 5] :: [Int])
 
@@ -1341,7 +1341,7 @@ spec = do
           let checkCurve curve = mapM_ (\i -> do
                   pillar <- advance cal settleFix (i, Months) ModifiedFollowing True
                   let tau = fromIntegral (diffDays pillar settleFix) / 360 :: Double
-                  df <- discountAtDate curve pillar False
+                  df <- discount curve (DatePoint pillar) False
                   df `shouldSatisfy` closePrec (1 / (1 + qVal * tau)) tolerance
                 ) ([1 .. 5] :: [Int])
               checkReference reference = do
@@ -1374,9 +1374,9 @@ spec = do
             (GlobalZeroYieldLinear 1.0e-10 []) False
           mapM_ (\i -> do
               pillar <- advance cal settleFix (i, Months) ModifiedFollowing True
-              dfDiscount <- discountAtDate discountCurve pillar False
-              dfForward <- discountAtDate forwardCurve pillar False
-              dfZero <- discountAtDate zeroCurve pillar False
+              dfDiscount <- discount discountCurve (DatePoint pillar) False
+              dfForward <- discount forwardCurve (DatePoint pillar) False
+              dfZero <- discount zeroCurve (DatePoint pillar) False
               dfForward `shouldSatisfy` closePrec dfDiscount tolerance
               dfZero `shouldSatisfy` closePrec dfDiscount tolerance
             ) ([1 .. 5] :: [Int])

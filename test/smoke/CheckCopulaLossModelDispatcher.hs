@@ -13,7 +13,7 @@ import QuantLib.TermStructure.Credit(Reference(..), flatHazardRate)
 import QuantLib.TermStructure.Yield(Reference(..), flatForward)
 import QuantLib.Settings(setEvaluationDate)
 import QuantLib.Instrument(setPricingEngine)
-import QuantLib.Instrument.Credit(Reference(..), Claim(..), ProtectionSide(..), nthToDefault, ntdFairPremium)
+import QuantLib.Instrument.Credit(Claim(..), ProtectionSide(..), nthToDefault, ntdFairPremium)
 import QuantLib.PricingEngine(integralNtdEngine)
 import QuantLib.Credit
 

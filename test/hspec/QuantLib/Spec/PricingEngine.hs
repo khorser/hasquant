@@ -739,8 +739,8 @@ spec = do
         volAtmQ <- simpleQuote volAtm
         vol25CallQ <- simpleQuote vol25Call
 
-        qDisc <- discount qTS t False
-        rDisc <- discount rTS t False
+        qDisc <- discount qTS (TimePoint t) False
+        rDisc <- discount rTS (TimePoint t) False
         let forward = s * qDisc / rDisc
         bsVanillaPrice <- blackFormula Call strike forward (vol * sqrt t) rDisc 0.0
 
@@ -849,8 +849,8 @@ spec = do
 
         dblOpt <- doubleBarrierOption KnockOut 70 130 0 payoff exercise >>= asOneAssetOption
         let dblT = 180 / 365 :: Double
-        qDisc <- discount qTS dblT False
-        rDisc <- discount rTS dblT False
+        qDisc <- discount qTS (TimePoint dblT) False
+        rDisc <- discount rTS (TimePoint dblT) False
         bsVanillaPrice <- blackFormula Call 100 (100 * qDisc / rDisc) (0.2 * sqrt dblT) rDisc 0.0
         volAtmQ <- simpleQuote 0.2
         vol25PutQ <- simpleQuote 0.22
@@ -2054,7 +2054,7 @@ spec = do
         callOpt <- basketOption (Spread (plainVanillaPayoff (PlainVanillaPayoff Call spreadStrike))) (European (EuropeanExercise maturity))
         setPricingEngine callOpt bjEngine
         callNPV <- npv callOpt
-        df <- discountAtDate rTS maturity False
+        df <- discount rTS (DatePoint maturity) False
         ((callNPV - putNPV) / df) `shouldSatisfy` closePrec (f1 - f2 - spreadStrike) 1.0e-3
 
     it "testOperatorSplittingSpreadEngine: reproduces the full Kirk-vs-Strang(First/Second) rho table" $
@@ -2072,9 +2072,9 @@ spec = do
         dq2Q <- simpleQuote 0.02
         dq1TS <- flatForward (ReferenceDate evalDate) dq1Q dc Continuous Annual
         dq2TS <- flatForward (ReferenceDate evalDate) dq2Q dc Continuous Annual
-        dfR <- discountAtDate rTS maturity False
-        dq1 <- discountAtDate dq1TS maturity False
-        dq2 <- discountAtDate dq2TS maturity False
+        dfR <- discount rTS (DatePoint maturity) False
+        dq1 <- discount dq1TS (DatePoint maturity) False
+        dq2 <- discount dq2TS (DatePoint maturity) False
         let f1' = 110 * dq1 / dfR
             f2' = 90 * dq2 / dfR
         v1Q' <- simpleQuote 0.3
@@ -2144,7 +2144,7 @@ spec = do
                 [(Double, Double, Double, Double, Double, Double, Double)]
         forM_ rows $ \(t, strike, vol1, rho_, kirkNPV, strang1, strang2) -> do
           let maturityDate = addDays (round (t * 365 :: Double)) evalDate
-          dr <- discountAtDate rTS maturityDate False
+          dr <- discount rTS (DatePoint maturityDate) False
           let f1 = s1 / dr
               f2 = s2 / dr
           vol1TS <- simpleQuote vol1 >>= \vQ -> blackConstantVol (CalendarReferenceDate evalDate) cal vQ dc
@@ -2318,9 +2318,9 @@ spec = do
         dq2Q <- simpleQuote 0.02
         dq1TS <- flatForward (ReferenceDate evalDate) dq1Q dc Continuous Annual
         dq2TS <- flatForward (ReferenceDate evalDate) dq2Q dc Continuous Annual
-        dfR <- discountAtDate rTS maturity False
-        dq1 <- discountAtDate dq1TS maturity False
-        dq2 <- discountAtDate dq2TS maturity False
+        dfR <- discount rTS (DatePoint maturity) False
+        dq1 <- discount dq1TS (DatePoint maturity) False
+        dq2 <- discount dq2TS (DatePoint maturity) False
         let f1' = 110 * dq1 / dfR
             f2' = 90 * dq2 / dfR
         v1Q' <- simpleQuote 0.3
@@ -2593,8 +2593,8 @@ spec = do
         setPricingEngine shoutOpt shoutEngine
         shoutNPV <- npv shoutInst
 
-        rMaturityDf <- discountAtDate rTS maturity True
-        rDivDateDf <- discountAtDate rTS divDate True
+        rMaturityDf <- discount rTS (DatePoint maturity) True
+        rDivDateDf <- discount rTS (DatePoint divDate) True
         let df = rMaturityDf / rDivDateDf
         (shoutNPV / df) `shouldSatisfy` closePrec americanNPV 1.0e-3
 
@@ -2629,8 +2629,8 @@ spec = do
         setPricingEngine refOpt refEngine
         refNPV <- npv refInst
 
-        rMaturityDf <- discountAtDate rTS maturity True
-        rDivDateDf <- discountAtDate rTS divDate True
+        rMaturityDf <- discount rTS (DatePoint maturity) True
+        rDivDateDf <- discount rTS (DatePoint divDate) True
         let expected = refNPV * rMaturityDf / rDivDateDf
         calculated `shouldSatisfy` closePrec expected 5.0e-2
 

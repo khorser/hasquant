@@ -20,7 +20,7 @@ import qualified QuantLib.Settings as Settings
 import QuantLib.Time.Calendar(calendar, CalendarConstructor(TARGET))
 import QuantLib.Time.Date(addPeriod, march)
 import QuantLib.Time.Schedule(dayCounter, DayCounterConstructor(Actual365FixedStandard), TimeUnit(Months), Frequency(Annual))
-import QuantLib.TermStructure.Yield(Reference(..), flatForward, discountAtDate)
+import QuantLib.TermStructure.Yield(Reference(..), TermPoint(..), flatForward, discount)
 import QuantLib.TermStructure.Volatility(CalendarReference(..), blackConstantVol)
 import QuantLib.InterestRate(Compounding(Continuous))
 
@@ -65,7 +65,7 @@ main = keepingSettingsGc $ do
   callOpt <- basketOption (Spread (plainVanillaPayoff (PlainVanillaPayoff Call spreadStrike))) (European (EuropeanExercise maturity))
   setPricingEngine callOpt bjEngine
   callNPV <- npv callOpt
-  df <- discountAtDate rTS maturity False
+  df <- discount rTS (DatePoint maturity) False
   let fwd = (callNPV - putNPV) / df
   printf "BjerksundStenslandSpreadEngine call-put parity fwd diff: %.6f\n" (fwd - (f1 - f2 - spreadStrike))
   check "BjerksundStenslandSpreadEngine call-put parity" (approx 1e-3 (f1 - f2 - spreadStrike) fwd)
@@ -76,9 +76,9 @@ main = keepingSettingsGc $ do
   dq2Q <- simpleQuote 0.02
   dq1TS <- flatForward (ReferenceDate today) dq1Q dc Continuous Annual
   dq2TS <- flatForward (ReferenceDate today) dq2Q dc Continuous Annual
-  dfR <- discountAtDate rTS maturity False
-  dq1 <- discountAtDate dq1TS maturity False
-  dq2 <- discountAtDate dq2TS maturity False
+  dfR <- discount rTS (DatePoint maturity) False
+  dq1 <- discount dq1TS (DatePoint maturity) False
+  dq2 <- discount dq2TS (DatePoint maturity) False
   let f1' = 110 * dq1 / dfR
       f2' = 90 * dq2 / dfR
   v1Q' <- simpleQuote 0.3

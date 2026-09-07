@@ -48,8 +48,8 @@ run = do
   ycILS <- interpolatedDiscountCurve (fromList dfILS) dcILS calILS [] LogLinear False
   ycEUR <- interpolatedDiscountCurve (fromList dfEUR) dcEUR calEUR [] LogLinear False
 
-  dfILS' <- points grid >>= mapM (\d -> discount ycILS d False) . V.toList
-  dfEUR' <- points grid >>= mapM (\d -> discount ycEUR d False) . V.toList
+  dfILS' <- points grid >>= mapM (\d -> discount ycILS (TimePoint d) False) . V.toList
+  dfEUR' <- points grid >>= mapM (\d -> discount ycEUR (TimePoint d) False) . V.toList
   let fwds = map ((`roundTo` fxrateDigits) . (* spot)) $ zipWith (/) dfEUR' dfILS'
   -- -- alternatively you can use Black-Scholes process
   -- let dsILS = map fst dfILS
