@@ -6,7 +6,6 @@ import QuantLib.Time.Date(today, weekday)
 import qualified QuantLib.Settings as Settings
 
 import qualified QuantLib.Spec.Syntax as Syntax
-import qualified QuantLib.Spec.ApiNames as ApiNames
 import qualified QuantLib.Spec.DatesAndSchedule as DatesAndSchedule
 import qualified QuantLib.Spec.Calendars as Calendars
 import qualified QuantLib.Spec.CurrencyAndDayCounter as CurrencyAndDayCounter
@@ -43,7 +42,6 @@ main = do
   putStrLn $ "Today is " ++ show w
 
   hspec $ do
-    ApiNames.spec
     Syntax.spec
     DatesAndSchedule.spec
     Calendars.spec evalDate

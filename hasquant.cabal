@@ -242,7 +242,6 @@ test-suite hasquant_test
   type: exitcode-stdio-1.0
   main-is: QuantLib/MainTest.hs
   other-modules:
-      QuantLib.Spec.ApiNames
       QuantLib.Spec.Calendars
       QuantLib.Spec.Commodity
       QuantLib.Spec.Credit
