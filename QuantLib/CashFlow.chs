@@ -777,7 +777,7 @@ leg f = qlLeg fs ds where (ds, fs) = unzip f
   ,preArray-`[Double]'&peekDoubleArray*,preArray-`[Day]'&peekDayArray*,preArray-`[Bool]'&peekBoolArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |return cash flows together with an indicator whether they occurred as of /settlementDate/
-cashFlows :: Leg
+cashFlows :: GenLeg l
   -> Maybe Bool -- ^includeSettlementDateFlows
   -> Maybe Day -- ^settlementDate
   -> IO [(Day, Double, Bool)] -- ^date, amount, hasOccurred
