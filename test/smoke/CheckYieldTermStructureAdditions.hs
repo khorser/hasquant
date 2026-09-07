@@ -45,8 +45,8 @@ main = do
   let fsp = (10, Years)
       cutOffDate = addYears 10 refDate
   ufrTs <- ultimateForwardTermStructure base llfr ufr fsp 0.1 Nothing IR.Compounded Annual
-  baseZero <- IR.rate <$> zeroRateAtDate base cutOffDate actual360dc IR.Continuous NoFrequency True
-  ufrZero <- IR.rate <$> zeroRateAtDate ufrTs cutOffDate actual360dc IR.Continuous NoFrequency True
+  baseZero <- IR.rate <$> zeroRate base (RateAtDate cutOffDate actual360dc) IR.Continuous NoFrequency True
+  ufrZero <- IR.rate <$> zeroRate ufrTs (RateAtDate cutOffDate actual360dc) IR.Continuous NoFrequency True
   report "UFR curve zero rate at the first smoothing point" (show ufrZero)
   checkClose "matches the base curve's own zero rate at fsp" baseZero ufrZero 1.0e-8
 

@@ -112,6 +112,23 @@ spec = do
         setExtrapolation ts False
         allowsExtrapolation ts `shouldReturn` False
 
+      it "dispatches yield rates across date and time coordinates" $ do
+        let refDate = fromGregorian 2025 1 2
+            endDate = addGregorianYearsClip 1 refDate
+            expected = 0.03
+            tolerance = 1.0e-6 * expected
+        flatRate <- Quote.simpleQuote expected
+        dc <- dayCounter Actual365FixedStandard
+        ts <- flatForward (ReferenceDate refDate) flatRate dc IR.Continuous Annual
+        zeroAtDate <- IR.rate <$> zeroRate ts (RateAtDate endDate dc) IR.Continuous NoFrequency False
+        zeroAtTime <- IR.rate <$> zeroRate ts (RateAtTime 1.0) IR.Continuous NoFrequency False
+        forwardBetweenDates <- IR.rate <$> forwardRate ts (RateBetweenDates refDate endDate dc) IR.Continuous NoFrequency False
+        forwardBetweenTimes <- IR.rate <$> forwardRate ts (RateBetweenTimes 0.0 1.0) IR.Continuous NoFrequency False
+        forwardForPeriod <- IR.rate <$> forwardRateForPeriod ts refDate (1, Years) dc IR.Continuous NoFrequency False
+        let results :: [Double]
+            results = [zeroAtDate, zeroAtTime, forwardBetweenDates, forwardBetweenTimes, forwardForPeriod]
+        mapM_ (`shouldSatisfy` closePrec expected tolerance) results
+
       it "implied" $
         Settings.keepingSettingsGc $ do
           (cal, settlementDays, ts) <- setup
@@ -135,8 +152,8 @@ spec = do
           refDate <- asTermStructure ts >>= referenceDate
           let testDate = addGregorianYearsClip 5 refDate
           actual360dc <- dayCounter (Actual360 False)
-          forward <- IR.rate <$> forwardRateBetweenDates ts testDate testDate actual360dc IR.Continuous NoFrequency False
-          spreadedForward <- IR.rate <$> forwardRateBetweenDates spreaded testDate testDate actual360dc IR.Continuous NoFrequency False
+          forward <- IR.rate <$> forwardRate ts (RateBetweenDates testDate testDate actual360dc) IR.Continuous NoFrequency False
+          spreadedForward <- IR.rate <$> forwardRate spreaded (RateBetweenDates testDate testDate actual360dc) IR.Continuous NoFrequency False
 
           (forward - (spreadedForward - val)) `shouldSatisfy` (<= 1.0e-10)
       it "z-spreaded" $
@@ -148,8 +165,8 @@ spec = do
           spreaded <- zeroSpreadedTermStructure ts q IR.Continuous NoFrequency
           refDate <- asTermStructure ts >>= referenceDate
           let testDate = addGregorianYearsClip 5 refDate
-          zero <- IR.rate <$> zeroRateAtDate ts testDate actual360dc IR.Continuous NoFrequency False
-          spreadedZero <- IR.rate <$> zeroRateAtDate spreaded testDate actual360dc IR.Continuous NoFrequency False
+          zero <- IR.rate <$> zeroRate ts (RateAtDate testDate actual360dc) IR.Continuous NoFrequency False
+          spreadedZero <- IR.rate <$> zeroRate spreaded (RateAtDate testDate actual360dc) IR.Continuous NoFrequency False
 
           (zero - (spreadedZero - val)) `shouldSatisfy` (<= 1.0e-10)
 
@@ -164,9 +181,9 @@ spec = do
           c1 <- flatForward (ReferenceDate refDate) q1 dc IR.Continuous NoFrequency
           c2 <- flatForward (ReferenceDate refDate) q2 dc IR.Continuous NoFrequency
           withCompositeZeroYieldStructure (-) c1 c2 IR.Continuous NoFrequency $ \composite -> do
-            initial <- IR.rate <$> zeroRateAtDate composite queryDate dc IR.Continuous NoFrequency False
+            initial <- IR.rate <$> zeroRate composite (RateAtDate queryDate dc) IR.Continuous NoFrequency False
             _ <- Quote.setValue q1 0.04
-            updated <- IR.rate <$> zeroRateAtDate composite queryDate dc IR.Continuous NoFrequency False
+            updated <- IR.rate <$> zeroRate composite (RateAtDate queryDate dc) IR.Continuous NoFrequency False
             initial `shouldSatisfy` closePrec 0.02 (1.0e-6 * 0.02)
             updated `shouldSatisfy` closePrec 0.03 (1.0e-6 * 0.03)
 
@@ -183,13 +200,13 @@ spec = do
           spreaded <- piecewiseZeroSpreadedTermStructure ts (fromList [(refDate, q), (d1, q)]) IR.Continuous NoFrequency Linear
           actual360dc <- dayCounter (Actual360 False)
           let testDate = addGregorianYearsClip 5 refDate
-          zero <- IR.rate <$> zeroRateAtDate ts testDate actual360dc IR.Continuous NoFrequency False
-          spreadedZero <- IR.rate <$> zeroRateAtDate spreaded testDate actual360dc IR.Continuous NoFrequency False
+          zero <- IR.rate <$> zeroRate ts (RateAtDate testDate actual360dc) IR.Continuous NoFrequency False
+          spreadedZero <- IR.rate <$> zeroRate spreaded (RateAtDate testDate actual360dc) IR.Continuous NoFrequency False
           (zero - (spreadedZero - val)) `shouldSatisfy` (<= 1.0e-10)
 
           -- spot-check a second interpolation builds and queries without crashing
           spreadedCubic <- piecewiseZeroSpreadedTermStructure ts (fromList [(refDate, q), (d1, q)]) IR.Continuous NoFrequency (Cubic Kruger)
-          cubicZero <- IR.rate <$> zeroRateAtDate spreadedCubic testDate actual360dc IR.Continuous NoFrequency False
+          cubicZero <- IR.rate <$> zeroRate spreadedCubic (RateAtDate testDate actual360dc) IR.Continuous NoFrequency False
           cubicZero `shouldSatisfy` (not . isNaN)
 
       -- Mirrors upstream's ultimateforwardtermstructure.cpp testZeroRateAtFirstSmoothingPoint:
@@ -206,8 +223,8 @@ spec = do
               cutOffDate = addGregorianYearsClip 10 refDate
           ufrTs <- ultimateForwardTermStructure ts llfr ufr fsp 0.1 Nothing IR.Compounded Annual
 
-          base <- IR.rate <$> zeroRateAtDate ts cutOffDate actual360dc IR.Continuous NoFrequency True
-          extrap <- IR.rate <$> zeroRateAtDate ufrTs cutOffDate actual360dc IR.Continuous NoFrequency True
+          base <- IR.rate <$> zeroRate ts (RateAtDate cutOffDate actual360dc) IR.Continuous NoFrequency True
+          extrap <- IR.rate <$> zeroRate ufrTs (RateAtDate cutOffDate actual360dc) IR.Continuous NoFrequency True
 
           extrap `shouldSatisfy` closePrec base 1.0e-8
 
@@ -226,7 +243,7 @@ spec = do
               farDate = addGregorianYearsClip 150 refDate
           ufrTs <- ultimateForwardTermStructure ts llfr ufr fsp 0.1 Nothing IR.Compounded Annual
 
-          farZero <- IR.rate <$> zeroRateAtDate ufrTs farDate actual360dc IR.Continuous NoFrequency True
+          farZero <- IR.rate <$> zeroRate ufrTs (RateAtDate farDate actual360dc) IR.Continuous NoFrequency True
           farZero `shouldSatisfy` closePrec ufrVal 3.0e-3
 
       -- Multiplicative discount spread: at the input node dates the spread curve's own discount
@@ -1134,8 +1151,8 @@ spec = do
         Settings.keepingSettingsGc $ do
           (_, _, _, b, curveois, curve3m) <- setupSpreadedMultiCurve
           bVal <- Quote.value b
-          zOis <- IR.rate <$> zeroRate curveois 1.0 IR.Continuous NoFrequency False
-          z3m <- IR.rate <$> zeroRate curve3m 1.0 IR.Continuous NoFrequency False
+          zOis <- IR.rate <$> zeroRate curveois (RateAtTime 1.0) IR.Continuous NoFrequency False
+          z3m <- IR.rate <$> zeroRate curve3m (RateAtTime 1.0) IR.Continuous NoFrequency False
           (zOis - z3m) `shouldSatisfy` closePrec bVal tolerance
 
       it "swaps priced on the spreaded curve, discounted through the cycle, reprice to zero" $

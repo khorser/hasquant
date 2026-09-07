@@ -147,8 +147,10 @@ discountAtDate	discount
 swapRateHelper'	swapRateHelperWithConventions
 flatForward'	flatForward
 flatForwardMoving	flatForward
-zeroRate'	zeroRateAtDate
-forwardRate'	forwardRateBetweenDates
+zeroRate'	zeroRate
+zeroRateAtDate	zeroRate
+forwardRate'	forwardRate
+forwardRateBetweenDates	forwardRate
 fxSwapRateHelper'	fxSwapRateHelperBetweenDates
 oisRateHelper'	oisRateHelperBetweenDates
 oisRateHelperFull'	oisRateHelperBetweenDatesWithOptions

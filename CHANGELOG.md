@@ -12,9 +12,9 @@ The unreleased API received a breaking naming and overload cleanup. Exported val
 trailing primes or unexplained numeric suffixes to distinguish overloads; alternate inputs,
 additional configuration, coordinates, and evaluation-date-relative structures now use `From`,
 `With`, `At`, and `Moving` names. Acronyms in values and record selectors use normal camel case.
-Genuine Cartesian overload families now take `OptionMaturity`, `SwapMaturity`,
-`IntegrationControl`, `LatticeTime`, or `FdmGrid`, and identical operations shared by related
-types use public capability classes. Redundant scalar market-data overloads, the obsolete `bond'`
+Genuine Cartesian overload families now take `OptionMaturity`, `SwapMaturity`, `RatePoint`,
+`RateInterval`, `IntegrationControl`, `LatticeTime`, or `FdmGrid`, and identical operations shared
+by related types use public capability classes. Redundant scalar market-data overloads, the obsolete `bond'`
 constructor, and specialized moving piecewise-yield bootstrap entry points were removed. Tests,
 examples, applications, and C shim spelling were migrated atomically, with a compiled-interface
 test guarding the public naming policy.

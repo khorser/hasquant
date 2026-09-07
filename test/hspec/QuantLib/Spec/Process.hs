@@ -39,7 +39,7 @@ import QuantLib.Time.Date(today, addPeriod, september)
 import QuantLib.Time.Schedule(dayCounter, years, DayCounterConstructor(..), Frequency(..), TimeUnit(..))
 import QuantLib.InterestRate(Compounding(..), VolatilityType(..), rate)
 import QuantLib.Quote(simpleQuote, setValue)
-import QuantLib.TermStructure.Yield(Reference(..), TermPoint(..), flatForward, forwardRate, discount, YieldTermStructure, interpolatedZeroCurve)
+import QuantLib.TermStructure.Yield(Reference(..), TermPoint(..), RateInterval(..), flatForward, forwardRate, discount, YieldTermStructure, interpolatedZeroCurve)
 import QuantLib.Instrument(npv, setPricingEngine)
 import QuantLib.Instrument.Option(europeanOption, StrikedPayoff(PlainVanilla), PlainVanillaPayoff(..), OptionType(..), Exercise(European), EuropeanExercise(..))
 import qualified QuantLib.Process as Process
@@ -644,7 +644,7 @@ spec = do
         setForwardMeasureTime hwFwd 10.0
 
         mapM_ (\t -> do
-            fwdIR <- forwardRate rTS t t Continuous NoFrequency True
+            fwdIR <- forwardRate rTS (RateBetweenTimes t t) Continuous NoFrequency True
             let alfa = (sigma / a) * (1 - exp (-a * t))
                 expected = 0.5 * alfa * alfa + rate fwdIR
             plain <- Process.alpha hw t
@@ -694,7 +694,7 @@ spec = do
     -- check 'phi' against a closed form independent of G2Process's own implementation.
     referencePhi :: YieldTermStructure -> Double -> Double -> Double -> Double -> Double -> Double -> IO Double
     referencePhi curve t a sigma b eta rho = do
-      fwdIR <- forwardRate curve t t Continuous NoFrequency True
+      fwdIR <- forwardRate curve (RateBetweenTimes t t) Continuous NoFrequency True
       let fwd = rate fwdIR
           temp1 = sigma * (1 - exp (-a * t)) / a
           temp2 = eta * (1 - exp (-b * t)) / b

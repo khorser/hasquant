@@ -59,7 +59,7 @@ run gc = do
   impR <- impliedYield fwd dp dummyStrike repoSettlementDate
     repoCompounding repoDayCountConvention
 
-  z <- zeroRateAtDate repoCurve repoDeliveryDate repoDayCountConvention
+  z <- zeroRate repoCurve (RateAtDate repoDeliveryDate repoDayCountConvention)
     repoCompounding repoCompoundFreq False
 
   return Result {

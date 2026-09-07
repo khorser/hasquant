@@ -53,8 +53,8 @@ run = do
   let fwds = map ((`roundTo` fxrateDigits) . (* spot)) $ zipWith (/) dfEUR' dfILS'
   -- -- alternatively you can use Black-Scholes process
   -- let dsILS = map fst dfILS
-  -- zrILS <- mapM (\x -> rate <$> zeroRateAtDate ycILS x dcILS Continuous Once False) dsILS
-  -- zrEUR <- mapM (\x -> rate <$> zeroRateAtDate ycEUR x dcILS Continuous Once False) dsILS
+  -- zrILS <- mapM (\x -> rate <$> zeroRate ycILS (RateAtDate x dcILS) Continuous Once False) dsILS
+  -- zrEUR <- mapM (\x -> rate <$> zeroRate ycEUR (RateAtDate x dcILS) Continuous Once False) dsILS
   -- let mins = zipWith (-) zrEUR zrILS
   -- yc <- interpolatedZeroCurve (zip dsILS mins) dcILS calILS [] Linear
   -- proc <- blackScholesProcess spotQuote yc volEURILS EulerDiscretization >>= asStochasticProcess1D >>= asStochasticProcess
