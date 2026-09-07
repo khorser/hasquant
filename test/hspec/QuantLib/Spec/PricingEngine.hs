@@ -21,7 +21,7 @@ import QuantLib.Time.Schedule
 import QuantLib.InterestRate(Compounding(..), VolatilityType(..))
 import QuantLib.Quote hiding(value)
 import QuantLib.TermStructure.Yield
-import QuantLib.TermStructure.Volatility
+import QuantLib.TermStructure.Volatility hiding(atmStrike, atmVol)
 import QuantLib.CashFlow(fixedDividend)
 import qualified QuantLib.CashFlow as CF
 import qualified QuantLib.Index.InterestRate as IR

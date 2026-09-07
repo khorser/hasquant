@@ -724,16 +724,20 @@ spec = do
           flatVolQ <- Quote.simpleQuote 0.18
           let volMatrix = either error id $ objectMatrix 10 3 (replicate 30 flatVolQ)
           capVolSurface <- Vol.capFloorTermVolSurface (Vol.CalendarSettlementDays 0) cal Following tenors [0.02, 0.05, 0.08] volMatrix dc
-          volFromSurface <- Vol.capFloorVolatilityForPeriod capVolSurface (5, Years) 0.05 False
+          volFromSurface <- Vol.capFloorVolatility capVolSurface (Vol.OptionTenor (5, Years)) 0.05 False
           volFromSurface `shouldBe` 0.18
           surfaceDates <- Vol.capFloorTermVolSurfaceOptionDates capVolSurface
           surfaceTimes <- Vol.capFloorTermVolSurfaceOptionTimes capVolSurface
           length surfaceDates `shouldBe` 10
           length surfaceTimes `shouldBe` 10
+          Vol.capFloorVolatility capVolSurface (Vol.OptionDate (surfaceDates !! 4)) 0.05 False
+            `shouldReturn` volFromSurface
+          Vol.capFloorVolatility capVolSurface (Vol.OptionTime (surfaceTimes !! 4)) 0.05 False
+            `shouldReturn` volFromSurface
 
           curveVolQ <- mapM (const (Quote.simpleQuote 0.18)) tenors
           capVolCurve <- Vol.capFloorTermVolCurve (Vol.CalendarSettlementDays 0) cal Following (fromList $ zipWith (\(n, u) q -> (n, u, q)) tenors curveVolQ) dc
-          volFromCurve <- Vol.capFloorVolatilityForPeriod capVolCurve (5, Years) 0.05 False
+          volFromCurve <- Vol.capFloorVolatility capVolCurve (Vol.OptionTenor (5, Years)) 0.05 False
           volFromCurve `shouldBe` 0.18
           curveDates <- Vol.capFloorTermVolCurveOptionDates capVolCurve
           curveTimes <- Vol.capFloorTermVolCurveOptionTimes capVolCurve
@@ -742,7 +746,7 @@ spec = do
 
           constVolQ <- Quote.simpleQuote 0.18
           constVol <- Vol.constantCapFloorTermVolatility (Vol.CalendarSettlementDays 0) cal Following constVolQ dc
-          volFromConst <- Vol.capFloorVolatilityForPeriod constVol (5, Years) 0.05 False
+          volFromConst <- Vol.capFloorVolatility constVol (Vol.OptionTenor (5, Years)) 0.05 False
           volFromConst `shouldBe` 0.18
 
       -- CallableBondVolatilityStructure's query methods, checked against a constant
@@ -779,8 +783,8 @@ spec = do
           varDate `shouldSatisfy` closePrec varTime 1.0e-6
           varPeriod <- Vol.blackVariance cbVol optionTenor bondTenor 0.05 False
           varPeriod `shouldSatisfy` closePrec varTime 1.0e-6
-          _smileByDate <- Vol.callableBondSmileSectionAtDate cbVol optionDate bondTenor
-          _smileByPeriod <- Vol.callableBondSmileSectionForTenors cbVol optionTenor bondTenor
+          _smileByDate <- Vol.bondSmileSection cbVol optionDate bondTenor
+          _smileByPeriod <- Vol.bondSmileSection cbVol optionTenor bondTenor
           maxTenor <- Vol.maxBondTenor cbVol
           maxTenor `shouldBe` (100, Years)
           minK <- Vol.minStrike cbVol
@@ -864,8 +868,23 @@ spec = do
           length ks `shouldBe` 10
           returnedTenors <- Vol.abcdAtmVolCurveOptionTenors curve
           length returnedTenors `shouldBe` 10
-          atmv <- Vol.atmVolForPeriod curve (5, Years) False
-          atmv `shouldSatisfy` (\v -> v > 0.1 && v < 0.3)
+          optionDates <- Vol.abcdAtmVolCurveOptionDates curve
+          optionTimes <- Vol.abcdAtmVolCurveOptionTimes curve
+          let maturityCoordinates = [ Vol.OptionTenor (5, Years)
+                                    , Vol.OptionDate (optionDates !! 4)
+                                    , Vol.OptionTime (optionTimes !! 4)
+                                    ]
+          atmVols <- mapM (\m -> Vol.atmVol curve m False) maturityCoordinates
+          atmVols `shouldSatisfy` all (\v -> v > 0.1 && v < 0.3)
+          case atmVols of
+            expectedVol : remainingVols ->
+              forM_ remainingVols $ \v -> v `shouldSatisfy` closePrec expectedVol 1.0e-8
+            [] -> expectationFailure "expected ATM volatility results"
+          atmVariances <- mapM (\m -> Vol.atmVariance curve m False) maturityCoordinates
+          case atmVariances of
+            expectedVariance : remainingVariances ->
+              forM_ remainingVariances $ \v -> v `shouldSatisfy` closePrec expectedVariance 1.0e-8
+            [] -> expectationFailure "expected ATM variance results"
 
       -- SabrVolSurface's own volatilitySpreads(Date) linearly interpolates the raw quoted
       -- vol-spread quotes across optionTenors -- at a date that lands exactly on a grid tenor,
@@ -885,14 +904,20 @@ spec = do
           spreadQs <- mapM (const (Quote.simpleQuote 0.02)) [1 .. (5 * 3 :: Int)]
           let volSpreads = either error id $ objectMatrix 5 3 spreadQs
           surf <- Vol.sabrVolSurface idx atmCurve (fromList tenors) (fromList spreads) volSpreads
-          vs <- Vol.sabrVolSurfaceVolatilitySpreadsForPeriod surf (3, Years)
+          vs <- Vol.volatilitySpreads surf (tenors !! 2)
           length vs `shouldBe` 3
           vs `shouldSatisfy` all (\v -> abs (v - 0.02) < 1.0e-8)
           _ <- Vol.sabrVolSurfaceIndex surf
           d <- Vol.sabrVolSurfaceOptionDateFromTenor surf (3, Years)
           d `shouldSatisfy` (> 11 `december` 2012)
+          vsAtDate <- Vol.volatilitySpreads surf d
+          vsAtDate `shouldSatisfy` all (\v -> abs (v - 0.02) < 1.0e-8)
+          t <- years dc (11 `december` 2012) d Nothing Nothing
+          _ <- Vol.blackVolSurfaceSmileSection surf (Vol.OptionTenor (3, Years)) False
+          _ <- Vol.blackVolSurfaceSmileSection surf (Vol.OptionDate d) False
+          _ <- Vol.blackVolSurfaceSmileSection surf (Vol.OptionTime t) False
           curveBack <- Vol.sabrVolSurfaceAtmCurve surf
-          v <- Vol.atmVolForPeriod curveBack (3, Years) False
+          v <- Vol.atmVol curveBack (Vol.OptionTenor (3, Years)) False
           abs (v - 0.18) `shouldSatisfy` (< 1.0e-6)
 
       -- Bachelier (normal-vol) engines use a different pricing formula from their Black
@@ -1402,7 +1427,7 @@ spec = do
 
     -- BlackVolatilitySurfaceDelta: cached fixture ported from upstream's
     -- testBlackVolSurfaceDeltaNonConstantVol (test-suite/blackvolsurfacedelta.cpp), which
-    -- exercises blackVolSmileAtTime directly -- the one binding-specific getter this class adds over
+    -- exercises blackVolSmile directly -- the one binding-specific getter this class adds over
     -- the generic BlackVolTermStructure -- so no extra generic blackVol(t,k) inspector is
     -- needed just to reuse it.
     describe "black volatility surface delta" $
@@ -1433,16 +1458,20 @@ spec = do
                 ]
           surface <- Vol.blackVolatilitySurfaceDelta refDate [d1M, d6M, d1Y, d2Y] [-0.25] [0.25] True vols
                        dc cal spot dts fts
-          smile1M <- Vol.blackVolSmileAtDate surface d1M
+          smile1M <- Vol.blackVolSmile surface (Vol.DatePoint d1M)
           vol1M <- Vol.smileSectionVolatility smile1M atmStrike
           vol1M `shouldSatisfy` closePrec 0.13010360399 tolerance
-          smile15D <- Vol.blackVolSmileAtDate surface d15D
+          t1M <- years dc refDate d1M Nothing Nothing
+          smile1MAtTime <- Vol.blackVolSmile surface (Vol.TimePoint t1M)
+          vol1MAtTime <- Vol.smileSectionVolatility smile1MAtTime atmStrike
+          vol1MAtTime `shouldSatisfy` closePrec vol1M tolerance
+          smile15D <- Vol.blackVolSmile surface (Vol.DatePoint d15D)
           vol15D <- Vol.smileSectionVolatility smile15D atmStrike
           vol15D `shouldSatisfy` closePrec 0.13007226607 tolerance
-          smile3M <- Vol.blackVolSmileAtDate surface d3M
+          smile3M <- Vol.blackVolSmile surface (Vol.DatePoint d3M)
           vol3M <- Vol.smileSectionVolatility smile3M atmStrike
           vol3M `shouldSatisfy` closePrec 0.115077252583 tolerance
-          smile6M <- Vol.blackVolSmileAtDate surface d6M
+          smile6M <- Vol.blackVolSmile surface (Vol.DatePoint d6M)
           volLow <- Vol.smileSectionVolatility smile6M 1.10
           volHigh <- Vol.smileSectionVolatility smile6M 1.30
           volLow `shouldSatisfy` closePrec 0.1411379628132 tolerance
@@ -1482,8 +1511,8 @@ spec = do
                              dc cal spot dts fts linearOpts
           surfaceCubic <- Vol.blackVolatilitySurfaceDeltaFull refDate [d1M, d6M, d1Y, d2Y] [-0.25] [0.25] True vols
                              dc cal spot dts fts cubicOpts
-          smileLinear <- Vol.blackVolSmileAtDate surfaceLinear d6M
-          smileCubic <- Vol.blackVolSmileAtDate surfaceCubic d6M
+          smileLinear <- Vol.blackVolSmile surfaceLinear (Vol.DatePoint d6M)
+          smileCubic <- Vol.blackVolSmile surfaceCubic (Vol.DatePoint d6M)
           volLinear <- Vol.smileSectionVolatility smileLinear offGridStrike
           volCubic <- Vol.smileSectionVolatility smileCubic offGridStrike
           volLinear `shouldNotBe` volCubic
@@ -1729,7 +1758,7 @@ spec = do
           mapM_ (`shouldSatisfy` (> 0)) (byRow [4])
           mapM_ (`shouldSatisfy` (\r -> r >= -1 && r <= 1)) (byRow [5])
 
-      it "sabrSwaptionVolatilityCubeAtmStrikeAtTime returns a finite, plausible rate" $
+      it "atmStrike returns a finite, plausible rate for a SABR cube" $
         Settings.keepingSettingsGc $ do
           (_, _, atmVol, swapIndexBase, shortSwapIndexBase, volSpreads, parametersGuess) <- mkFixture
           cube <- Vol.sabrSwaptionVolatilityCube atmVol optionTenors swapTenors strikeSpreads volSpreads
@@ -1737,8 +1766,10 @@ spec = do
                     -- beta fixed: 3 strikeSpreads can't identify 4 free SABR params
                     -- ("less functions than available variables"), so pin beta at the guess.
                     False True False False False Nothing Nothing False 50 False 0.0001 Nothing Nothing
-          k <- Vol.sabrSwaptionVolatilityCubeAtmStrikeAtTime cube (1, Years) (2, Years)
+          k <- Vol.atmStrike cube (1 :: Word, Years) (2 :: Word, Years)
           k `shouldSatisfy` (\x -> x > -0.05 && x < 0.20)
+          kAtDate <- Vol.atmStrike cube (10 `december` 2013) (2 :: Word, Years)
+          kAtDate `shouldSatisfy` (\x -> x > -0.05 && x < 0.20)
 
       -- Proves the QlEndCriteria/QlOptimizationMethod shared_ptr boxing actually keeps the
       -- calibration objects alive for the cube's full lifetime: unlike every test above (which
@@ -1759,9 +1790,8 @@ spec = do
               swapIndexBase shortSwapIndexBase False parametersGuess
               False True False False False Nothing Nothing False 50 False 0.0001
               (Just endCriteria) (Just optMethod)
-          k <- Vol.sabrSwaptionVolatilityCubeAtmStrikeAtTime cube (1, Years) (2, Years)
+          k <- Vol.atmStrike cube (1 :: Word, Years) (2 :: Word, Years)
           k `shouldSatisfy` (\x -> x > -0.05 && x < 0.20)
-
       -- NoArbSabrSwaptionVolatilityCube is the same XabrSwaptionVolatilityCube construction one
       -- model policy over (arbitrage-free SABR instead of Hagan-formula SABR) -- same fixture,
       -- same self-consistency shape as the sabrSwaptionVolatilityCube checks above. The fixture's
@@ -1780,14 +1810,16 @@ spec = do
           -- least-squares fit, not exact recovery -- same looser tolerance as the SABR cube check.
           abs (v - flatVol) `shouldSatisfy` (< 1.0e-2)
 
-      it "noArbSabrSwaptionVolatilityCubeAtmStrikeAtTime returns a finite, plausible rate" $
+      it "atmStrike returns a finite, plausible rate for a no-arbitrage SABR cube" $
         Settings.keepingSettingsGc $ do
           (_, _, atmVol, swapIndexBase, shortSwapIndexBase, volSpreads, parametersGuess) <- mkFixture
           cube <- Vol.noArbSabrSwaptionVolatilityCube atmVol optionTenors swapTenors strikeSpreads volSpreads
                     swapIndexBase shortSwapIndexBase False parametersGuess
                     False True False False False Nothing Nothing False 50 False 0.0001 Nothing Nothing
-          k <- Vol.noArbSabrSwaptionVolatilityCubeAtmStrikeAtTime cube (1, Years) (2, Years)
+          k <- Vol.atmStrike cube (1 :: Word, Years) (2 :: Word, Years)
           k `shouldSatisfy` (\x -> x > -0.05 && x < 0.20)
+          kAtDate <- Vol.atmStrike cube (10 `december` 2013) (2 :: Word, Years)
+          kAtDate `shouldSatisfy` (\x -> x > -0.05 && x < 0.20)
 
       it "interpolatedSwaptionVolatilityCube reprices close to its own flat ATM input at zero spread" $
         Settings.keepingSettingsGc $ do
@@ -1796,8 +1828,10 @@ spec = do
                     swapIndexBase shortSwapIndexBase False
           v <- Vol.volatility cube (Vol.OptionDate (10 `december` 2013)) (Vol.SwapTenor (2, Years)) 0.03 False
           abs (v - flatVol) `shouldSatisfy` (< 1.0e-2)
-          k <- Vol.interpolatedSwaptionVolatilityCubeAtmStrikeAtTime cube (1, Years) (2, Years)
+          k <- Vol.atmStrike cube (1 :: Word, Years) (2 :: Word, Years)
           k `shouldSatisfy` (\x -> x > -0.05 && x < 0.20)
+          kAtDate <- Vol.atmStrike cube (10 `december` 2013) (2 :: Word, Years)
+          kAtDate `shouldSatisfy` (\x -> x > -0.05 && x < 0.20)
 
       it "interpolatedSwaptionVolatilityCubeVolSpreads reports the zero spreads the cube was built with" $
         Settings.keepingSettingsGc $ do

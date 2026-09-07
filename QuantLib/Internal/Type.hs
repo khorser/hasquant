@@ -1777,11 +1777,10 @@ type RelinkableOptionletVolatilityStructure = GenOptionletVolatilityStructure CR
 type GenCapFloorTermVolatilityStructure c = GenVolatilityTermStructure (AnyOf CCapFloorTermVolatilityStructure' c)
 type CCapFloorTermVolatilityStructure = ForeignPtr CCapFloorTermVolatilityStructure'
 -- | The abstract root shared by 'ConstantCapFloorTermVolatility' (erased straight to this type at
--- construction, having no calc\/getter of its own beyond 'capFloorVolatilityForPeriod' et al.,
+-- construction, having no calc\/getter of its own beyond 'capFloorVolatility',
 -- mirroring 'ConstantOptionletVolatility' \/\'OptionletVolatilityStructure'), and the two dedicated
 -- leaves below. Promoted out of a flat 'VolatilityTermStructure' leaf (the way
--- 'YoYOptionletVolatilitySurface' still is) specifically so 'capFloorVolatilityForPeriod'\/
--- 'capFloorVolatilityForDate'\/'capFloorVolatilityForTime' -- declared on
+-- 'YoYOptionletVolatilitySurface' still is) specifically so 'capFloorVolatility' -- declared on
 -- @CapFloorTermVolatilityStructure@ upstream, not on 'VolatilityTermStructure' -- can be bound
 -- generically without a @dynamic_pointer_cast@ in the shim.
 type CapFloorTermVolatilityStructure = GenCapFloorTermVolatilityStructure CCapFloorTermVolatilityStructure
