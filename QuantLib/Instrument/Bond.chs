@@ -122,7 +122,6 @@ import Data.List.NonEmpty(NonEmpty, toList)
 {#pointer *QlQuote as Quote foreign -> CQuote' nocode#}
 {#pointer *QlCallability foreign -> CQlCallability nocode#}
 {#pointer *InterestRate foreign -> CInterestRate nocode#}
-
 {#pointer *QlBond as Bond foreign -> CBond' nocode#}
 {#pointer *QlInstrument as Instrument foreign -> CInstrument' nocode#}
 {#pointer *QlZeroInflationIndex as ZeroInflationIndex foreign -> CZeroInflationIndex' nocode#}
@@ -615,37 +614,50 @@ rendistatoBasket xs = qlRendistatoBasket btps outstandings quotes
 -- |the basket's outstanding-weighted BTP yield: @sum (weights * yields)@ -- a near-tautology
 -- over 'rendistatoCalculatorYields', kept because it is upstream's own published aggregate.
 {#fun qlRendistatoCalculatorYield as rendistatoCalculatorYield{withRendistatoCalculator*`RendistatoCalculator',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |the basket's outstanding-weighted BTP (modified) duration.
 {#fun qlRendistatoCalculatorDuration as rendistatoCalculatorDuration{withRendistatoCalculator*`RendistatoCalculator',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |per-bond yields, in basket order.
 {#fun qlRendistatoCalculatorYields as rendistatoCalculatorYields{withRendistatoCalculator*`RendistatoCalculator'
   ,preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+
 -- |per-bond (modified) durations, in basket order.
 {#fun qlRendistatoCalculatorDurations as rendistatoCalculatorDurations{withRendistatoCalculator*`RendistatoCalculator'
   ,preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+
 -- |the fixed 1..15Y comparison-swap ladder's lengths, in years -- pairs positionally with
 -- 'rendistatoCalculatorSwapRates'\/'rendistatoCalculatorSwapYields'\/'rendistatoCalculatorSwapDurations'.
 {#fun qlRendistatoCalculatorSwapLengths as rendistatoCalculatorSwapLengths{withRendistatoCalculator*`RendistatoCalculator'
   ,preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+
 -- |each ladder swap's fair (par) rate.
 {#fun qlRendistatoCalculatorSwapRates as rendistatoCalculatorSwapRates{withRendistatoCalculator*`RendistatoCalculator'
   ,preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+
 -- |each ladder swap's fixed leg, repriced as a par bond and re-expressed as a BTP-convention yield.
 {#fun qlRendistatoCalculatorSwapYields as rendistatoCalculatorSwapYields{withRendistatoCalculator*`RendistatoCalculator'
   ,preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+
 -- |each ladder swap's fixed leg (modified) duration, on the same par-bond proxy.
 {#fun qlRendistatoCalculatorSwapDurations as rendistatoCalculatorSwapDurations{withRendistatoCalculator*`RendistatoCalculator'
   ,preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+
 -- |the ladder swap whose duration is closest to (without exceeding) the basket's own duration.
 {#fun qlRendistatoCalculatorEquivalentSwap as rendistatoCalculatorEquivalentSwap{withRendistatoCalculator*`RendistatoCalculator',preErrorCheck-`String'errorCheck*-}->`VanillaSwap'peekVanillaSwap*#}
+
 -- |the equivalent swap's fair rate.
 {#fun qlRendistatoCalculatorEquivalentSwapRate as rendistatoCalculatorEquivalentSwapRate{withRendistatoCalculator*`RendistatoCalculator',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |the equivalent swap's par-bond-proxy yield.
 {#fun qlRendistatoCalculatorEquivalentSwapYield as rendistatoCalculatorEquivalentSwapYield{withRendistatoCalculator*`RendistatoCalculator',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |the equivalent swap's par-bond-proxy duration.
 {#fun qlRendistatoCalculatorEquivalentSwapDuration as rendistatoCalculatorEquivalentSwapDuration{withRendistatoCalculator*`RendistatoCalculator',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |the equivalent swap's length, in years.
 {#fun qlRendistatoCalculatorEquivalentSwapLength as rendistatoCalculatorEquivalentSwapLength{withRendistatoCalculator*`RendistatoCalculator',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |@rendistatoCalculatorYield - rendistatoCalculatorEquivalentSwapRate@: the basket's spread over
 -- its equivalent swap.
 {#fun qlRendistatoCalculatorEquivalentSwapSpread as rendistatoCalculatorEquivalentSwapSpread{withRendistatoCalculator*`RendistatoCalculator',preErrorCheck-`String'errorCheck*-}->`Double'#}
@@ -654,6 +666,7 @@ rendistatoBasket xs = qlRendistatoBasket btps outstandings quotes
 -- access rather than snapshotting it, so it can be wired into curve bootstrapping like any other
 -- quote.
 {#fun qlRendistatoEquivalentSwapLengthQuote as rendistatoEquivalentSwapLengthQuote{withRendistatoCalculator*`RendistatoCalculator',preErrorCheck-`String'errorCheck*-}->`Quote'peekQuote*#}
+
 -- |A live 'Quote' tracking 'rendistatoCalculatorEquivalentSwapSpread'.
 {#fun qlRendistatoEquivalentSwapSpreadQuote as rendistatoEquivalentSwapSpreadQuote{withRendistatoCalculator*`RendistatoCalculator',preErrorCheck-`String'errorCheck*-}->`Quote'peekQuote*#}
 

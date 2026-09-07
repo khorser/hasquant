@@ -67,12 +67,16 @@ garch11Calibrated series = qlGarch11Calibrated dates vals
 
 -- |the calibrated (or constructor-supplied) alpha coefficient
 {#fun pure qlGarch11Alpha as garch11Alpha{withGarch11*`Garch11'}->`Double'#}
+
 -- |the calibrated (or constructor-supplied) beta coefficient
 {#fun pure qlGarch11Beta as garch11Beta{withGarch11*`Garch11'}->`Double'#}
+
 -- |the calibrated (or derived) omega coefficient, @vl * (1 - alpha - beta)@
 {#fun pure qlGarch11Omega as garch11Omega{withGarch11*`Garch11'}->`Double'#}
+
 -- |the calibrated (or constructor-supplied) long-term volatility
 {#fun pure qlGarch11LtVol as garch11LtVol{withGarch11*`Garch11'}->`Double'#}
+
 -- |the log-likelihood of the calibrated fit; @0@ for a direct-parameter ('garch11') model
 {#fun pure qlGarch11LogLikelihood as garch11LogLikelihood{withGarch11*`Garch11'}->`Double'#}
 

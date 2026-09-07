@@ -246,12 +246,9 @@ import Data.List.NonEmpty(NonEmpty(..), toList)
 
 #include "ql.h"
 
--- These are deliberately local: c2hs fixes each {#fun#}'s raw pointee type
--- when it expands that hook.
 {#pointer *QlDigitalCoupon as DigitalCoupon foreign -> CDigitalCoupon' nocode#}
 {#pointer *QlRangeAccrualFloatersCoupon as RangeAccrualFloatersCoupon foreign -> CRangeAccrualFloatersCoupon' nocode#}
 {#pointer *QlYoYInflationCoupon as YoYInflationCoupon foreign -> CYoYInflationCoupon nocode#}
-
 {#pointer *Calendar foreign -> CCalendar nocode#}
 {#pointer *Leg foreign -> CLeg' nocode#}
 {#pointer *CouponLeg foreign -> CCouponLeg' nocode#}

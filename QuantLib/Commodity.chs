@@ -134,18 +134,25 @@ import Foreign.Marshal.Alloc(alloca)
 
 -- |The lot, a dimensionless 'UnitOfMeasure::Quantity' unit.
 {#fun qlLotUnitOfMeasure as lotUnitOfMeasure{preErrorCheck-`String'errorCheck*-}->`UnitOfMeasure'peekUnitOfMeasure*#}
+
 -- |Barrels (BBL), the base petroleum volume unit.
 {#fun qlBarrelUnitOfMeasure as barrelUnitOfMeasure{preErrorCheck-`String'errorCheck*-}->`UnitOfMeasure'peekUnitOfMeasure*#}
+
 -- |Metric tonnes (MT).
 {#fun qlMTUnitOfMeasure as mtUnitOfMeasure{preErrorCheck-`String'errorCheck*-}->`UnitOfMeasure'peekUnitOfMeasure*#}
+
 -- |Thousand barrels (MB).
 {#fun qlMBUnitOfMeasure as mbUnitOfMeasure{preErrorCheck-`String'errorCheck*-}->`UnitOfMeasure'peekUnitOfMeasure*#}
+
 -- |US gallons.
 {#fun qlGallonUnitOfMeasure as gallonUnitOfMeasure{preErrorCheck-`String'errorCheck*-}->`UnitOfMeasure'peekUnitOfMeasure*#}
+
 -- |Litres.
 {#fun qlLitreUnitOfMeasure as litreUnitOfMeasure{preErrorCheck-`String'errorCheck*-}->`UnitOfMeasure'peekUnitOfMeasure*#}
+
 -- |Kilolitres.
 {#fun qlKilolitreUnitOfMeasure as kilolitreUnitOfMeasure{preErrorCheck-`String'errorCheck*-}->`UnitOfMeasure'peekUnitOfMeasure*#}
+
 -- |Tokyo kilolitres.
 {#fun qlTokyoKilolitreUnitOfMeasure as tokyoKilolitreUnitOfMeasure{preErrorCheck-`String'errorCheck*-}->`UnitOfMeasure'peekUnitOfMeasure*#}
 

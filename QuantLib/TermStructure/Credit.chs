@@ -44,7 +44,6 @@ import Data.List.NonEmpty(NonEmpty, toList)
 {#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure' nocode#}
 {#pointer *QlTermStructure as TermStructure foreign -> CTermStructure' nocode#}
 {#pointer *QlQuote as Quote foreign -> CQuote' nocode#}
-
 {#pointer *QlDefaultProbabilityHelper as DefaultProbabilityHelper foreign -> CDefaultProbabilityHelper nocode#}
 
 -- |a curve whose hazard rate is another curve's, scaled by a spread factor

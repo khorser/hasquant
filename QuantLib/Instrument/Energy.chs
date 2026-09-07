@@ -117,16 +117,22 @@ type CommodityCashFlows = [CommodityCashFlow]
 -- undefined behavior, so this needs the same 'char **e'\/'preErrorCheck' error channel as any other
 -- throwing call.
 {#fun qlCommodityCashFlowDiscountedAmount as commodityCashFlowDiscountedAmount{withCommodityCashFlow*`CommodityCashFlow',alloca-`Currency'peekCurrencyPtr*,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |As 'commodityCashFlowDiscountedAmount', without the discount factor applied.
 {#fun qlCommodityCashFlowUndiscountedAmount as commodityCashFlowUndiscountedAmount{withCommodityCashFlow*`CommodityCashFlow',alloca-`Currency'peekCurrencyPtr*,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |The discounted amount, in the payment (leg) currency.
 {#fun qlCommodityCashFlowDiscountedPaymentAmount as commodityCashFlowDiscountedPaymentAmount{withCommodityCashFlow*`CommodityCashFlow',alloca-`Currency'peekCurrencyPtr*,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |As 'commodityCashFlowDiscountedPaymentAmount', without the discount factor applied.
 {#fun qlCommodityCashFlowUndiscountedPaymentAmount as commodityCashFlowUndiscountedPaymentAmount{withCommodityCashFlow*`CommodityCashFlow',alloca-`Currency'peekCurrencyPtr*,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |The discount factor applied to the base-currency amount.
 {#fun pure qlCommodityCashFlowDiscountFactor as commodityCashFlowDiscountFactor{withCommodityCashFlow*`CommodityCashFlow'}->`Double'#}
+
 -- |The discount factor applied to the payment-currency amount.
 {#fun pure qlCommodityCashFlowPaymentDiscountFactor as commodityCashFlowPaymentDiscountFactor{withCommodityCashFlow*`CommodityCashFlow'}->`Double'#}
+
 -- |Whether this cash flow's payment date has already occurred as of the evaluation date.
 {#fun pure qlCommodityCashFlowFinalized as commodityCashFlowFinalized{withCommodityCashFlow*`CommodityCashFlow'}->`Bool'#}
 

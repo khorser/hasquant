@@ -284,26 +284,15 @@ import Foreign.Marshal.Alloc(alloca)
 {#pointer *SamplePath as SamplePath foreign -> CSamplePath nocode#}
 {#pointer *PolymorphicGaussianRsg as GaussianRsg foreign -> CGaussianRsg nocode#}
 {#pointer *QlStochasticProcess as StochasticProcess foreign -> CStochasticProcess' nocode#}
--- Local redeclaration needed for fdmRollback's FdmScheme argument -- c2hs's cross-module enum\/
--- pointer-type import needs the pointee type known in *this* file (see the c2hs-shim-patterns
--- skill's "Cross-module enum imports" section); QuantLib.PricingEngine has the same declaration.
 {#pointer *FdmSchemeDesc as QlFdmSchemeDesc foreign -> CFdmSchemeDesc nocode#}
--- Local redeclarations for the mesher-constructor argument types, same reasoning as
--- FdmSchemeDesc above -- QuantLib.PricingEngine has the same declarations.
 {#pointer *QlDividend as Dividend foreign -> CDividend nocode#}
 {#pointer *QlGeneralizedBlackScholesProcess as GeneralizedBlackScholesProcess foreign -> CGeneralizedBlackScholesProcess' nocode#}
 {#pointer *QlStochasticProcess1D as StochasticProcess1D foreign -> CStochasticProcess1D' nocode#}
 {#pointer *QlHestonProcess as HestonProcess foreign -> CHestonProcess' nocode#}
 {#pointer *QlLocalVolTermStructure as LocalVolTermStructure foreign -> CLocalVolTermStructure' nocode#}
 {#pointer *QlFdmQuantoHelper as FdmQuantoHelper foreign -> CFdmQuantoHelper nocode#}
--- Local redeclaration for Payoff arguments (fdmCellAveragingInnerValue/fdmLogInnerValue/
--- fdmLogBasketInnerValue), same reasoning as the redeclarations above -- QuantLib.Internal.Common
--- has the same declaration.
 {#pointer *QlPayoff nocode#}
 {#pointer *QlBasketPayoff nocode#}
--- Local redeclarations for fdmAffineG2ModelSwapInnerValue/fdmAffineHullWhiteModelSwapInnerValue's
--- argument types, same reasoning as the redeclarations above -- QuantLib.Model and
--- QuantLib.Instrument.Swap have the same declarations.
 {#pointer *QlG2 as G2 foreign -> CG2' nocode#}
 {#pointer *QlHullWhite as HullWhite foreign -> CHullWhite' nocode#}
 {#pointer *QlFixedVsFloatingSwap as FixedVsFloatingSwap foreign -> CFixedVsFloatingSwap' nocode#}

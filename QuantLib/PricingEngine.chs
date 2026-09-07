@@ -308,10 +308,8 @@ data FdmGrid
 
 {#pointer *DayCounter foreign -> CDayCounter nocode#}
 {#pointer *Currency foreign -> CCurrency nocode#}
-
 {#pointer *QlDividend as Dividend foreign -> CDividend nocode#}
 {#pointer *QlQuote as Quote foreign -> CQuote' nocode#}
-
 {#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure' nocode#}
 {#pointer *QlBlackVolTermStructure as BlackVolTermStructure foreign -> CBlackVolTermStructure' nocode#}
 {#pointer *QlCallableBondVolatilityStructure as CallableBondVolatilityStructure foreign -> CCallableBondVolatilityStructure' nocode#}
@@ -321,7 +319,6 @@ data FdmGrid
 {#pointer *QlYoYOptionletVolatilitySurface as YoYOptionletVolatilitySurface foreign -> CYoYOptionletVolatilitySurface' nocode#}
 {#pointer *QlYoYInflationIndex as YoYInflationIndex foreign -> CYoYInflationIndex' nocode#}
 {#pointer *QlCPICapFloorTermPriceSurface as CPICapFloorTermPriceSurface foreign -> CCPICapFloorTermPriceSurface' nocode#}
-
 {#pointer *QlGJRGARCHModel as GJRGARCHModel foreign -> CGJRGARCHModel' nocode#}
 {#pointer *QlHestonModel as HestonModel foreign -> CHestonModel' nocode#}
 {#pointer *QlBatesModel as BatesModel foreign -> CBatesModel' nocode#}
@@ -337,7 +334,6 @@ data FdmGrid
 {#pointer *QlBatesDetJumpModel as BatesDetJumpModel foreign -> CBatesDetJumpModel' nocode#}
 {#pointer *QlBatesDoubleExpDetJumpModel as BatesDoubleExpDetJumpModel foreign -> CBatesDoubleExpDetJumpModel' nocode#}
 {#pointer *QlBatesDoubleExpModel as BatesDoubleExpModel foreign -> CBatesDoubleExpModel' nocode#}
-
 {#pointer *QlGeneralizedBlackScholesProcess as GeneralizedBlackScholesProcess foreign -> CGeneralizedBlackScholesProcess' nocode#}
 {#pointer *QlStochasticProcess1D as StochasticProcess1D foreign -> CStochasticProcess1D' nocode#}
 {#pointer *QlStochasticProcess as StochasticProcess foreign -> CStochasticProcess' nocode#}
@@ -355,7 +351,6 @@ data FdmGrid
 {#pointer *QlMerton76Process as Merton76Process foreign -> CMerton76Process' nocode#}
 {#pointer *QlHullWhiteProcess as HullWhiteProcess foreign -> CHullWhiteProcess' nocode#}
 {#pointer *QlHullWhiteForwardProcess as HullWhiteForwardProcess foreign -> CHullWhiteForwardProcess' nocode#}
-
 {#pointer *QlBlackCalculator as BlackCalculator foreign -> CBlackCalculator' nocode#}
 {#pointer *QlBlackScholesCalculator as BlackScholesCalculator foreign -> CBlackScholesCalculator' nocode#}
 {#pointer *QlBachelierCalculator as BachelierCalculator foreign -> CBachelierCalculator nocode#}
@@ -363,6 +358,9 @@ data FdmGrid
 {#pointer *QlPricingEngine as PricingEngine foreign -> CPricingEngine nocode#}
 {#pointer *QlStrikedTypePayoff nocode#}
 {#pointer *QlPlainVanillaPayoff nocode#}
+{#pointer *QlLocalVolTermStructure as LocalVolTermStructure foreign -> CLocalVolTermStructure' nocode#}
+{#pointer *QlFdmQuantoHelper as FdmQuantoHelper foreign -> CFdmQuantoHelper nocode#}
+{#pointer *FdmSchemeDesc as QlFdmSchemeDesc foreign -> CFdmSchemeDesc nocode#}
 
 -- |discounts a bond's cash flows off a yield term structure
 {#fun qlDiscountingBondEngine as discountingBondEngine{withYieldTermStructure*`GenYieldTermStructure y',fromMaybeBool`Maybe Bool' -- ^includeSettlementDateFlows
@@ -1158,9 +1156,6 @@ treeVanillaSwapEngine model latticeTime curve =
     TimeSteps steps -> treeVanillaSwapEngineTimeSteps model steps curve
     ExplicitTimeGrid grid -> treeVanillaSwapEngineTimeGrid model grid curve
 
-{#pointer *QlLocalVolTermStructure as LocalVolTermStructure foreign -> CLocalVolTermStructure' nocode#}
-{#pointer *QlFdmQuantoHelper as FdmQuantoHelper foreign -> CFdmQuantoHelper nocode#}
-
 -- |Snapshots @rTS@/@fTS@/@fxVolTS@ at construction time (their underlying @shared_ptr@s are copied
 -- out of their handles): a later relink of a 'RelinkableYieldTermStructure' or
 -- 'RelinkableBlackVolTermStructure' passed in here will /not/ be reflected in this 'FdmQuantoHelper'.
@@ -1177,8 +1172,6 @@ treeVanillaSwapEngine model latticeTime curve =
   ,`Double' -- ^t1
   ,`Double' -- ^t2
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
-
-{#pointer *FdmSchemeDesc as QlFdmSchemeDesc foreign -> CFdmSchemeDesc nocode#}
 
 -- |two-dimensional finite-differences Black-Scholes basket-option pricing engine
 {#fun qlFd2dBlackScholesVanillaEngine as fd2dBlackScholesVanillaEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',`Double' -- ^correlation

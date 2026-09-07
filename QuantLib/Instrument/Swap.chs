@@ -753,6 +753,7 @@ instance HasFairSpread ConstNotionalCrossCurrencyFixedVsFloatingSwap where
   ,fromMaybeDouble`Maybe Double' -- ^nonParRepayment
   ,withMaybeDay*`Maybe Day' -- ^dealMaturity
   ,preErrorCheck-`String'errorCheck*-}->`AssetSwap'peekAssetSwap*#}
+
 -- OvernightIndexedSwap
 -- |Fixed vs compounded-overnight-rate swap, with a single flat nominal for both legs.
 {#fun qlOvernightIndexedSwap as overnightIndexedSwap{`SwapType',`Double' -- ^nominal

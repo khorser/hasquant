@@ -178,7 +178,6 @@ data HestonSLVFDMLogEntry = HestonSLVFDMLogEntry
 {#pointer *QlLmCorrelationModel foreign -> CLmCorrelationModel nocode#}
 {#pointer *QlLmVolatilityModel foreign -> CLmVolatilityModel nocode#}
 {#pointer *QlLfmHullWhiteParameterization as LfmHullWhiteParameterization foreign -> CLfmHullWhiteParameterization nocode#}
-
 {#pointer *QlGJRGARCHModel as GJRGARCHModel foreign -> CGJRGARCHModel' nocode#}
 {#pointer *QlHestonModel as HestonModel foreign -> CHestonModel' nocode#}
 {#pointer *QlLocalVolTermStructure as LocalVolTermStructure foreign -> CLocalVolTermStructure' nocode#}
@@ -204,13 +203,11 @@ data HestonSLVFDMLogEntry = HestonSLVFDMLogEntry
 {#pointer *QlGaussian1dModel foreign -> CGaussian1dModel' nocode#}
 {#pointer *QlSwapIndex as SwapIndex foreign -> CSwapIndex' nocode#}
 {#pointer *QlSwaptionVolatilityStructure as SwaptionVolatilityStructure foreign -> CSwaptionVolatilityStructure' nocode#}
-
 {#pointer *QlCalibrationHelper as CalibrationHelper foreign -> CCalibrationHelper' nocode#}
 {#pointer *QlBlackCalibrationHelper as BlackCalibrationHelper foreign -> CBlackCalibrationHelper' nocode#}
 {#pointer *QlSwaptionHelper as SwaptionHelper foreign -> CSwaptionHelper' nocode#}
 {#pointer *QlFixedVsFloatingSwap as FixedVsFloatingSwap foreign -> CFixedVsFloatingSwap' nocode#}
 {#pointer *QlSwaption as Swaption foreign -> CSwaption' nocode#}
-
 {#pointer *QlGeneralizedBlackScholesProcess as GeneralizedBlackScholesProcess foreign -> CGeneralizedBlackScholesProcess' nocode#}
 {#pointer *QlStochasticProcess1D as StochasticProcess1D foreign -> CStochasticProcess1D' nocode#}
 {#pointer *QlStochasticProcess as StochasticProcess foreign -> CStochasticProcess' nocode#}

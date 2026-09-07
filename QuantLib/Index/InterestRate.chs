@@ -96,7 +96,6 @@ import Data.List.NonEmpty(NonEmpty, toList)
 {#pointer *Calendar foreign -> CCalendar nocode#}
 {#pointer *DayCounter foreign -> CDayCounter nocode#}
 {#pointer *Schedule foreign -> CSchedule nocode#}
-
 {#pointer *QlInterestRateIndex as InterestRateIndex foreign -> CInterestRateIndex' nocode#}
 {#pointer *QlBMAIndex as BMAIndex foreign -> CBMAIndex' nocode#}
 {#pointer *QlOvernightIndex as OvernightIndex foreign -> COvernightIndex' nocode#}
@@ -106,10 +105,8 @@ import Data.List.NonEmpty(NonEmpty, toList)
 {#pointer *QlSwapSpreadIndex as SwapSpreadIndex foreign -> CSwapSpreadIndex' nocode#}
 {#pointer *QlOvernightIndex as OvernightIborIndex foreign -> COvernightIndex' nocode#}
 {#pointer *QlOvernightIndexedSwapIndex as OvernightIndexedSwapIndex foreign -> COvernightIndexedSwapIndex' nocode#}
-
 {#pointer *QlVanillaSwap as VanillaSwap foreign -> CVanillaSwap' nocode#}
 {#pointer *QlOvernightIndexedSwap as OvernightIndexedSwap foreign -> COvernightIndexedSwap' nocode#}
-
 {#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure' nocode#}
 
 {#enum OvernightIborIndexType{} deriving (Show, Eq, Read)#}

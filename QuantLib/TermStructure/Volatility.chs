@@ -229,7 +229,6 @@ import Foreign.Marshal.Alloc(alloca)
 {#pointer *QlSabrInterpolatedSmileSection as SabrInterpolatedSmileSection foreign -> CSabrInterpolatedSmileSection nocode#}
 {#pointer *QlSviInterpolatedSmileSection as SviInterpolatedSmileSection foreign -> CSviInterpolatedSmileSection nocode#}
 {#pointer *QlNoArbSabrInterpolatedSmileSection as NoArbSabrInterpolatedSmileSection foreign -> CNoArbSabrInterpolatedSmileSection nocode#}
-
 {#pointer *QlVolatilityTermStructure as VolatilityTermStructure foreign -> CVolatilityTermStructure' nocode#}
 {#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure' nocode#}
 {#pointer *QlTermStructure as TermStructure foreign -> CTermStructure' nocode#}
@@ -428,12 +427,14 @@ andreasenHugeVolatilityInterpolationCalibrationError x = do
 {#fun qlAndreasenHugeVolatilityInterplFwd as andreasenHugeVolatilityInterpolationFwd{withAndreasenHugeVolatilityInterpl*`AndreasenHugeVolatilityInterpl' -- ^interpolation
   ,`Double' -- ^t
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |Calibrated option price at time, strike, and put/call type.
 {#fun qlAndreasenHugeVolatilityInterplOptionPrice as andreasenHugeVolatilityInterpolationOptionPrice{withAndreasenHugeVolatilityInterpl*`AndreasenHugeVolatilityInterpl' -- ^interpolation
   ,`Double' -- ^t
   ,`Double' -- ^strike
   ,fromEnumC`OptionType' -- ^optionType
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |Calibrated local volatility at time and strike.
 {#fun qlAndreasenHugeVolatilityInterplLocalVol as andreasenHugeVolatilityInterpolationLocalVol{withAndreasenHugeVolatilityInterpl*`AndreasenHugeVolatilityInterpl' -- ^interpolation
   ,`Double' -- ^t
@@ -444,6 +445,7 @@ andreasenHugeVolatilityInterpolationCalibrationError x = do
 {#fun qlAndreasenHugeVolatilityAdapter as andreasenHugeVolatilityAdapter{withAndreasenHugeVolatilityInterpl*`AndreasenHugeVolatilityInterpl' -- ^interpolation
   ,`Double' -- ^eps
   ,preErrorCheck-`String'errorCheck*-}->`BlackVolTermStructure'peekBlackVolTermStructure*#}
+
 -- |Adapts an Andreasen-Huge interpolation to QuantLib's local-volatility term-structure interface.
 {#fun qlAndreasenHugeLocalVolAdapter as andreasenHugeLocalVolAdapter{withAndreasenHugeVolatilityInterpl*`AndreasenHugeVolatilityInterpl' -- ^interpolation
   ,preErrorCheck-`String'errorCheck*-}->`LocalVolTermStructure'peekLocalVolTermStructure*#}
