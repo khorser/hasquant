@@ -1349,7 +1349,6 @@ double qlOneFactorAffineModelDiscountBondOptionForward(QlOneFactorAffineModel* o
 double qlHullWhiteConvexityBias(double futurePrice, double t, double T, double sigma, double a, char **e) {
   try {return HullWhite::convexityBias(futurePrice, t, T, sigma, a);
   } catch (std::exception& er) {return handleException<double>(e, er);}}
-QlAffineModel* qlHullWhiteAsAffineModel(QlHullWhite *o) {return ret(new QlAffineModel(*arg(o)));}
 QlAffineModel* qlOneFactorAffineModelAsAffineModel(QlOneFactorAffineModel *o) {return ret(new QlAffineModel(*arg(o)));}
 void qlFreeLiborForwardModel(QlLiborForwardModel *o) {del(o);}
 QlAffineModel* qlLiborForwardModelAsAffineModel(QlLiborForwardModel *o) {return ret(new QlAffineModel(*arg(o)));}

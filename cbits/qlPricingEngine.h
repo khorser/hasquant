@@ -383,7 +383,6 @@ extern "C" {
   double qlOneFactorAffineModelDiscountBondOption(QlOneFactorAffineModel* o, int type, double strike, double maturity, double bondMaturity, char **e);
   double qlOneFactorAffineModelDiscountBondOptionForward(QlOneFactorAffineModel* o, int type, double strike, double maturity, double bondStart, double bondMaturity, char **e);
   double qlHullWhiteConvexityBias(double futurePrice, double t, double T, double sigma, double a, char **e);
-  QlAffineModel* qlHullWhiteAsAffineModel(QlHullWhite *o);
   QlAffineModel* qlOneFactorAffineModelAsAffineModel(QlOneFactorAffineModel *o);
   void qlFreeLiborForwardModel(QlLiborForwardModel *o);
   QlAffineModel* qlLiborForwardModelAsAffineModel(QlLiborForwardModel *o);

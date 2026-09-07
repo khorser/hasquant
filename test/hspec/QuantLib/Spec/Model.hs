@@ -46,7 +46,7 @@ gaussian1dSpec =
         volQuote <- simpleQuote 0.01
         reversionQuote <- simpleQuote 0.01
         gsrModel <- gsr ts volQuote [] reversionQuote 60.0
-        model <- gsrAsGaussian1dModel gsrModel
+        model <- asGaussian1dModel gsrModel >>= asGaussian1dModel
 
         -- zerobond(maturity, y=0) must equal the curve's own discount factor.
         let maturity = addGregorianYearsClip 5 settlement
@@ -100,7 +100,29 @@ gaussian1dSpec =
 
 affineModelSpec :: Spec
 affineModelSpec =
-  describe "AffineModel.discountBondOption" $
+  describe "AffineModel" $ do
+    it "materializes every short-rate-model instance and reuses an interface handle" $
+      Settings.keepingSettingsGc $ do
+        cal <- calendar TARGET
+        originalEvalDate <- Settings.evaluationDate
+        evalDate <- adjust cal originalEvalDate Following
+        Settings.setEvaluationDate (Just evalDate)
+        settlement <- advance cal evalDate (2, Days) Following False
+        dc <- dayCounter Actual365FixedStandard
+        flatQ <- simpleQuote 0.03
+        ts <- flatForward (ReferenceDate settlement) flatQ dc Continuous Annual
+
+        hw <- hullWhite ts 0.1 0.01
+        hwAffine <- asAffineModel hw
+        oneFactor <- asOneFactorAffineModel hw
+        oneFactorAffine <- asAffineModel oneFactor
+        g2Model <- g2 ts 0.1 0.01 0.1 0.01 (-0.75)
+        g2Affine <- asAffineModel g2Model
+        reusedAffine <- asAffineModel hwAffine
+
+        mapM_ (\model -> analyticCapFloorEngine model Nothing >>= (`seq` pure ()))
+          [hwAffine, oneFactorAffine, g2Affine, reusedAffine]
+
     it "reproduces JamshidianSwaptionEngine's own single-period bond-option decomposition" $
       Settings.keepingSettingsGc $ do
         cal <- calendar TARGET

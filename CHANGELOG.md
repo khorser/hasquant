@@ -17,7 +17,9 @@ Genuine Cartesian overload families now take `OptionMaturity`, `SwapMaturity`, `
 by related types use public capability classes. Redundant scalar market-data overloads, the obsolete `bond'`
 constructor, and specialized moving piecewise-yield bootstrap entry points were removed. Tests,
 examples, applications, and C shim spelling were migrated atomically, with a compiled-interface
-test guarding the public naming policy.
+test guarding the public naming policy. Secondary multiple-inheritance interfaces now use the
+`AsAffineModel` and `AsGaussian1dModel` capability classes instead of leaf-prefixed conversion
+families, while retaining explicit, owned interface materialization.
 
 C++ shims refactored to use more modern approaches.
 

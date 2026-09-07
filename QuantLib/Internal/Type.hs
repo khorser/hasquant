@@ -2850,17 +2850,21 @@ withG2 = withForeignPtr . ptr . peel . getCalibratedModel
 foreign import ccall "ql.h qlOneFactorAffineModelAsAffineModel" qlOneFactorAffineModelAsAffineModel :: Ptr COneFactorAffineModel' -> IO (Ptr CAffineModel')
 foreign import ccall "ql.h qlLiborForwardModelAsAffineModel" qlLiborForwardModelAsAffineModel :: Ptr CLiborForwardModel' -> IO (Ptr CAffineModel')
 foreign import ccall "ql.h qlG2AsAffineModel" qlG2AsAffineModel :: Ptr CG2' -> IO (Ptr CAffineModel')
-foreign import ccall "ql.h qlHullWhiteAsAffineModel" qlHullWhiteAsAffineModel :: Ptr CHullWhite' -> IO (Ptr CAffineModel')
 
 type AffineModel = Standalone CAffineModel'
-hullWhiteAsAffineModel :: HullWhite -> IO AffineModel
-hullWhiteAsAffineModel m = withHullWhite m qlHullWhiteAsAffineModel >>= peekStandalone
-g2AsAffineModel :: G2 -> IO AffineModel
-g2AsAffineModel m = withG2 m qlG2AsAffineModel >>= peekStandalone
-oneFactorAffineModelAsAffineModel :: OneFactorAffineModel -> IO AffineModel
-oneFactorAffineModelAsAffineModel m = withOneFactorAffineModel m qlOneFactorAffineModelAsAffineModel >>= peekStandalone
-liborForwardModelAsAffineModel :: LiborForwardModel -> IO AffineModel
-liborForwardModelAsAffineModel m = withGenCalibratedModel m qlLiborForwardModelAsAffineModel >>= peekStandalone
+
+-- |Models that can be materialized as QuantLib's secondary @AffineModel@ interface.
+-- The result owns a shared handle to the same underlying model.
+class AsAffineModel model where
+  asAffineModel :: model -> IO AffineModel
+instance AsAffineModel (GenOneFactorAffineModel model) where
+  asAffineModel m = withOneFactorAffineModel m qlOneFactorAffineModelAsAffineModel >>= peekStandalone
+instance AsAffineModel G2 where
+  asAffineModel m = withG2 m qlG2AsAffineModel >>= peekStandalone
+instance AsAffineModel LiborForwardModel where
+  asAffineModel m = withGenCalibratedModel m qlLiborForwardModelAsAffineModel >>= peekStandalone
+instance AsAffineModel AffineModel where
+  asAffineModel = pure
 
 -- |The two-factor short-rate dynamics (state variables @x@, @y@ with @r_t = phi(t) + x_t + y_t@)
 -- underlying a 'G2' model, as returned by @TwoFactorModel::dynamics()@.
@@ -2872,10 +2876,17 @@ instance Finalizable CGaussian1dModel' where finalize = qlFreeGaussian1dModel
 foreign import ccall "ql.h qlGsrAsGaussian1dModel" qlGsrAsGaussian1dModel :: Ptr CGsr' -> IO (Ptr CGaussian1dModel')
 foreign import ccall "ql.h qlMarkovFunctionalAsGaussian1dModel" qlMarkovFunctionalAsGaussian1dModel :: Ptr CMarkovFunctional' -> IO (Ptr CGaussian1dModel')
 type Gaussian1dModel = Standalone CGaussian1dModel'
-gsrAsGaussian1dModel :: Gsr -> IO Gaussian1dModel
-gsrAsGaussian1dModel m = withGenCalibratedModel m qlGsrAsGaussian1dModel >>= peekStandalone
-markovFunctionalAsGaussian1dModel :: MarkovFunctional -> IO Gaussian1dModel
-markovFunctionalAsGaussian1dModel m = withGenCalibratedModel m qlMarkovFunctionalAsGaussian1dModel >>= peekStandalone
+
+-- |Models that can be materialized as QuantLib's secondary @Gaussian1dModel@ interface.
+-- The result owns a shared handle to the same underlying model.
+class AsGaussian1dModel model where
+  asGaussian1dModel :: model -> IO Gaussian1dModel
+instance AsGaussian1dModel Gsr where
+  asGaussian1dModel m = withGenCalibratedModel m qlGsrAsGaussian1dModel >>= peekStandalone
+instance AsGaussian1dModel MarkovFunctional where
+  asGaussian1dModel m = withGenCalibratedModel m qlMarkovFunctionalAsGaussian1dModel >>= peekStandalone
+instance AsGaussian1dModel Gaussian1dModel where
+  asGaussian1dModel = pure
 
 -- | > Instrument*
 -- >  Forward*

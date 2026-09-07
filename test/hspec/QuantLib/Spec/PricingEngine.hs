@@ -1676,7 +1676,7 @@ spec = do
         gsrModel <- gsr ts gsrInitialVolQuote (zip stepDates gsrStepVolQuotes) gsrReversionQuote 60.0
         gsrVols <- volatilities gsrModel
         gsrVols `shouldSatisfy` (\xs -> length xs == 3 && all (closePrec 0.01 1.0e-12) xs)
-        gsrModel' <- gsrAsGaussian1dModel gsrModel
+        gsrModel' <- asGaussian1dModel gsrModel
         gsrEngine <- gaussian1dCapFloorEngine gsrModel' 64 7.0 True False (Just ts)
         setPricingEngine capfl gsrEngine
         gsrNpv <- npv capfl
@@ -1689,7 +1689,7 @@ spec = do
         markov <- markovFunctional ts 0.01 0.01 [] swaptionVol (fromList $ zip cmsExpiries $ replicate 3 (10, Years)) swapBase 16
         markovVols <- volatilities markov
         markovVols `shouldSatisfy` (\xs -> not (null xs) && all (\x -> not (isNaN x || isInfinite x)) xs)
-        markovModel <- markovFunctionalAsGaussian1dModel markov
+        markovModel <- asGaussian1dModel markov
         markovEngine <- gaussian1dCapFloorEngine markovModel 8 5.0 True False (Just ts)
         setPricingEngine capfl markovEngine
         markovNpv <- npv capfl
@@ -1699,7 +1699,7 @@ spec = do
         capletVolQ <- simpleQuote 0.20
         capletVol <- constantOptionletVolatility (CalendarSettlementDays 0) cal ModifiedFollowing capletVolQ dc365 ShiftedLognormal 0.0
         markovCaplet <- markovFunctionalCaplet ts 0.01 0.01 [] capletVol (fromList capletExpiries) euribor6m 16
-        markovCapletModel <- markovFunctionalAsGaussian1dModel markovCaplet
+        markovCapletModel <- asGaussian1dModel markovCaplet
         blackEngine <- blackCapFloorEngineWithVolatilityStructure ts capletVol
         setPricingEngine capfl blackEngine
         blackNpv <- npv capfl

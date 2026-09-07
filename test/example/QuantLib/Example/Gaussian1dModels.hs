@@ -122,7 +122,7 @@ run = do
   gsrStepVolQuotes <- replicateM (length stepDates) (simpleQuote 0.01)
   gsrReversionQuote <- simpleQuote reversion
   gsrModel <- gsr yts6m gsrInitialVolQuote (zip stepDates gsrStepVolQuotes) gsrReversionQuote 60.0
-  gsrGm <- gsrAsGaussian1dModel gsrModel
+  gsrGm <- asGaussian1dModel gsrModel
 
   swaptionEngine <- gaussian1dSwaptionEngine gsrGm 64 7.0 True False (Just ytsOis) None
   nonstandardSwaptionEngine <- gaussian1dNonstandardSwaptionEngine gsrGm 64 7.0 True False Nothing (Just ytsOis) None
@@ -216,7 +216,7 @@ run = do
       cmsTenors = replicate (length markovStepDates) (10, Years) :: [(Word, TimeUnit)]
   markov <- markovFunctional yts6m reversion markovInitialSigma (zip markovStepDates markovStepSigmas)
     swaptionVol (fromList $ zip markovStepDates cmsTenors) swapBase 16
-  markovGm <- markovFunctionalAsGaussian1dModel markov
+  markovGm <- asGaussian1dModel markov
 
   swaptionEngineMarkov <- gaussian1dSwaptionEngine markovGm 8 5.0 True False (Just ytsOis) None
   floatEngineMarkov <- gaussian1dFloatFloatSwaptionEngine markovGm 16 7.0 True False Nothing (Just ytsOis) True None

@@ -28,6 +28,13 @@ free1st'	free1stWithArity
 free2nd'	free2ndWithArity
 freeNth'	freeNthWithArity
 
+hullWhiteAsAffineModel	asAffineModel
+g2AsAffineModel	asAffineModel
+oneFactorAffineModelAsAffineModel	asAffineModel
+liborForwardModelAsAffineModel	asAffineModel
+gsrAsGaussian1dModel	asGaussian1dModel
+markovFunctionalAsGaussian1dModel	asGaussian1dModel
+
 blackCapFloorEngine'	blackCapFloorEngineWithVolatilityStructure
 blackSwaptionEngine'	blackSwaptionEngineWithVolatilityStructure
 bachelierCapFloorEngine'	bachelierCapFloorEngineWithVolatilityStructure

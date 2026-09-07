@@ -54,12 +54,8 @@ module QuantLib.Model
   , asOneFactorAffineModel
   , asBatesModel
   , asBatesDoubleExpModel
-  , hullWhiteAsAffineModel
-  , g2AsAffineModel
-  , oneFactorAffineModelAsAffineModel
-  , liborForwardModelAsAffineModel
-  , gsrAsGaussian1dModel
-  , markovFunctionalAsGaussian1dModel
+  , AsAffineModel(..)
+  , AsGaussian1dModel(..)
 
   , HasLeverageFunction(..)
   , HasVolatilities(..)

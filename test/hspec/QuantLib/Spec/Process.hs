@@ -51,7 +51,7 @@ import QuantLib.Process(hestonProcess, hestonProcessPdf, batesProcess, gjrGarchP
  , stdDeviation, covariance, apply, evolve)
 import QuantLib.Model(hullWhite, g2, g2Dynamics, shortRate
  , hestonModel, batesModel, gjrGarchModel
- , liborForwardModel, liborForwardModelS0, liborForwardModelAsAffineModel, lfmHullWhiteParameterization, lfmHullWhiteCovariance, setCovarParam, LmVolatilityModel(..), LmCorrelationModel(..)
+ , liborForwardModel, liborForwardModelS0, asAffineModel, lfmHullWhiteParameterization, lfmHullWhiteCovariance, setCovarParam, LmVolatilityModel(..), LmCorrelationModel(..)
  , discountBond)
 import QuantLib.PricingEngine(analyticHestonHullWhiteEngine, mcHestonHullWhiteEngine
  , analyticHestonEngine, IntegrationControl(..), batesEngine, analyticGjrGarchEngine, mcEuropeanGjrGarchEngine, blackFormula, analyticCapFloorEngine)
@@ -261,7 +261,7 @@ spec = do
         let fwds = drop 1 x0
         s0 `shouldSatisfy` (>= minimum fwds - 1e-12)
         s0 `shouldSatisfy` (<= maximum fwds + 1e-12)
-        affineModel <- liborForwardModelAsAffineModel model
+        affineModel <- asAffineModel model
         eng <- analyticCapFloorEngine affineModel (Just rTS)
         capInstr <- cap leg (fromList $ replicate (fromIntegral size) 0.04)
         setPricingEngine capInstr eng

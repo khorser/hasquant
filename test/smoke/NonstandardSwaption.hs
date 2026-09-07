@@ -78,7 +78,7 @@ main = do
   gsrReversionQuote <- simpleQuote 0.01
   stepDates <- forM [1, 2 :: Int] $ \yr -> advance cal today (yr, Years) Following False
   gsrModel <- gsr ts gsrInitialVolQuote (zip stepDates gsrStepVolQuotes) gsrReversionQuote 60.0
-  gsrGm <- gsrAsGaussian1dModel gsrModel
+  gsrGm <- asGaussian1dModel gsrModel
   engine <- gaussian1dNonstandardSwaptionEngine gsrGm 32 5.0 True False Nothing (Just ts) None
   forM_ [swpn1, swpn2] (`setPricingEngine` engine)
 
