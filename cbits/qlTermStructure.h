@@ -605,8 +605,8 @@ extern "C" {
 
   double qlZeroInflationIndexFixing(QlZeroInflationIndex* o, int fixingDate, char **e);
   double qlYoYInflationIndexFixing(QlYoYInflationIndex* o, int fixingDate, char **e);
-  int qlZeroInflationIndexNeedsForecast(QlZeroInflationIndex* o, int fixingDate);
-  int qlYoYInflationIndexNeedsForecast(QlYoYInflationIndex* o, int fixingDate);
+  int qlZeroInflationIndexNeedsForecast(QlZeroInflationIndex* o, int fixingDate, char **e);
+  int qlYoYInflationIndexNeedsForecast(QlYoYInflationIndex* o, int fixingDate, char **e);
 
   /* YoYOptionletVolatilitySurface */
   QlYoYOptionletVolatilitySurface *qlConstantYoYOptionletVolatility(QlQuote *v, unsigned settlementDays,

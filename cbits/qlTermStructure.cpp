@@ -290,27 +290,21 @@ void qlAbcdAtmVolCurveK(QlAbcdAtmVolCurve* o, unsigned *count, double **ks, char
   try {fillVectorOut([&] {return (*arg(o))->k();}, count, ks);
   } catch (std::exception& er) {(void)handleException<int>(e, er);}}
 void qlAbcdAtmVolCurveOptionTenors(QlAbcdAtmVolCurve* o, unsigned *count, int **n, unsigned *count2, int **u, char **e) {
-  *count = 0; *count2 = 0; *n = nullptr; *u = nullptr;
-  int *lengths = nullptr, *units = nullptr;
+  OutArrayResult<int> lengthResult(count, n), unitResult(count2, u);
   try {
     const std::vector<Period> &p = (*arg(o))->optionTenors();
-    lengths = qlAllocateInts(p.size()); units = qlAllocateInts(p.size());
+    int *lengths = lengthResult.allocate((unsigned)p.size()), *units = unitResult.allocate((unsigned)p.size());
     for (size_t i = 0; i < p.size(); ++i) {lengths[i] = p[i].length(); units[i] = (int)p[i].units();}
-    *count = *count2 = p.size(); *n = lengths; *u = units;
-  } catch (const std::exception& er) {
-    qlFreeInts(lengths); qlFreeInts(units); *e = tracedup(er.what());
-  }}
+    lengthResult.commit(); unitResult.commit();
+  } catch (const std::exception& er) {*e = tracedup(er.what());}}
 void qlAbcdAtmVolCurveOptionTenorsInInterpolation(QlAbcdAtmVolCurve* o, unsigned *count, int **n, unsigned *count2, int **u, char **e) {
-  *count = 0; *count2 = 0; *n = nullptr; *u = nullptr;
-  int *lengths = nullptr, *units = nullptr;
+  OutArrayResult<int> lengthResult(count, n), unitResult(count2, u);
   try {
     const std::vector<Period> &p = (*arg(o))->optionTenorsInInterpolation();
-    lengths = qlAllocateInts(p.size()); units = qlAllocateInts(p.size());
+    int *lengths = lengthResult.allocate((unsigned)p.size()), *units = unitResult.allocate((unsigned)p.size());
     for (size_t i = 0; i < p.size(); ++i) {lengths[i] = p[i].length(); units[i] = (int)p[i].units();}
-    *count = *count2 = p.size(); *n = lengths; *u = units;
-  } catch (const std::exception& er) {
-    qlFreeInts(lengths); qlFreeInts(units); *e = tracedup(er.what());
-  }}
+    lengthResult.commit(); unitResult.commit();
+  } catch (const std::exception& er) {*e = tracedup(er.what());}}
 void qlAbcdAtmVolCurveOptionDates(QlAbcdAtmVolCurve* o, unsigned *count, int **days, char **e) {
   OutArrayResult<int> result(count, days);
   try {
@@ -721,47 +715,43 @@ QlVolatilityTermStructure* qlCapFloorTermVolatilityStructureAsVolatilityTermStru
 void qlFreeCapFloorTermVolCurve(QlCapFloorTermVolCurve *o) {del(o);}
 QlCapFloorTermVolatilityStructure* qlCapFloorTermVolCurveAsCapFloorTermVolatilityStructure(QlCapFloorTermVolCurve *o) {return ret(new QlCapFloorTermVolatilityStructure(*arg(o)));}
 void qlCapFloorTermVolCurveOptionDates(QlCapFloorTermVolCurve *o, unsigned *count, int **days, char **e) {
-  *count = 0; *days = nullptr;
-  int *out = nullptr;
+  OutArrayResult<int> result(count, days);
   try {
     const std::vector<Date> &dates = (*arg(o))->optionDates();
-    out = qlAllocateInts(dates.size());
+    int *out = result.allocate((unsigned)dates.size());
     for (size_t i = 0; i < dates.size(); ++i) out[i] = dates[i].serialNumber();
-    *count = dates.size(); *days = out;
-  } catch (const std::exception& er) {qlFreeInts(out); *e = tracedup(er.what());}
+    result.commit();
+  } catch (const std::exception& er) {*e = tracedup(er.what());}
 }
 void qlCapFloorTermVolCurveOptionTimes(QlCapFloorTermVolCurve *o, unsigned *count, double **times, char **e) {
-  *count = 0; *times = nullptr;
-  double *out = nullptr;
+  OutArrayResult<double> result(count, times);
   try {
     const std::vector<Time> &t = (*arg(o))->optionTimes();
-    out = qlAllocateDoubles(t.size());
+    double *out = result.allocate((unsigned)t.size());
     for (size_t i = 0; i < t.size(); ++i) out[i] = t[i];
-    *count = t.size(); *times = out;
-  } catch (const std::exception& er) {qlFreeDoubles(out); *e = tracedup(er.what());}
+    result.commit();
+  } catch (const std::exception& er) {*e = tracedup(er.what());}
 }
 
 void qlFreeCapFloorTermVolSurface(QlCapFloorTermVolSurface *o) {del(o);}
 QlCapFloorTermVolatilityStructure* qlCapFloorTermVolSurfaceAsCapFloorTermVolatilityStructure(QlCapFloorTermVolSurface *o) {return ret(new QlCapFloorTermVolatilityStructure(*arg(o)));}
 void qlCapFloorTermVolSurfaceOptionDates(QlCapFloorTermVolSurface *o, unsigned *count, int **days, char **e) {
-  *count = 0; *days = nullptr;
-  int *out = nullptr;
+  OutArrayResult<int> result(count, days);
   try {
     const std::vector<Date> &dates = (*arg(o))->optionDates();
-    out = qlAllocateInts(dates.size());
+    int *out = result.allocate((unsigned)dates.size());
     for (size_t i = 0; i < dates.size(); ++i) out[i] = dates[i].serialNumber();
-    *count = dates.size(); *days = out;
-  } catch (const std::exception& er) {qlFreeInts(out); *e = tracedup(er.what());}
+    result.commit();
+  } catch (const std::exception& er) {*e = tracedup(er.what());}
 }
 void qlCapFloorTermVolSurfaceOptionTimes(QlCapFloorTermVolSurface *o, unsigned *count, double **times, char **e) {
-  *count = 0; *times = nullptr;
-  double *out = nullptr;
+  OutArrayResult<double> result(count, times);
   try {
     const std::vector<Time> &t = (*arg(o))->optionTimes();
-    out = qlAllocateDoubles(t.size());
+    double *out = result.allocate((unsigned)t.size());
     for (size_t i = 0; i < t.size(); ++i) out[i] = t[i];
-    *count = t.size(); *times = out;
-  } catch (const std::exception& er) {qlFreeDoubles(out); *e = tracedup(er.what());}
+    result.commit();
+  } catch (const std::exception& er) {*e = tracedup(er.what());}
 }
 void qlFreeLocalVolTermStructure(QlLocalVolTermStructure *o) {del(o);}
 QlVolatilityTermStructure* qlLocalVolTermStructureAsVolatilityTermStructure(QlLocalVolTermStructure *o) {return ret(new QlVolatilityTermStructure(*arg(o)));}
@@ -2011,9 +2001,8 @@ void qlIndexAddFixings(QlIndex *i, unsigned datesLen, int *dates, double *values
   } catch (std::exception& er) {(void)handleException<void *>(e, er);}}
 void qlIndexClearFixings(QlIndex *i, char **e) {try {(*arg(i))->clearFixings();} catch (std::exception& er) {(void)handleException<void *>(e, er);}}
 void qlIndexFixingHistory(QlIndex *i, unsigned *datesLen, int **dates, unsigned *valuesLen, double **values, char **e) {
-  int *ds = 0;
-  double *vs = 0;
-  *datesLen = 0; *dates = 0; *valuesLen = 0; *values = 0;
+  OutArrayResult<int> dateResult(datesLen, dates);
+  OutArrayResult<double> valueResult(valuesLen, values);
   try {
     const std::string& name = (*arg(i))->name();
     const std::vector<std::string> names = IndexManager::instance().histories();
@@ -2024,27 +2013,21 @@ void qlIndexFixingHistory(QlIndex *i, unsigned *datesLen, int **dates, unsigned 
     const TimeSeries<Real>& history = (*arg(i))->timeSeries();
     const std::vector<Date> historyDates = history.dates();
     const std::vector<Real> historyValues = history.values();
-    ds = qlAllocateInts(historyDates.size());
-    vs = qlAllocateDoubles(historyValues.size());
+    int *ds = dateResult.allocate((unsigned)historyDates.size());
+    double *vs = valueResult.allocate((unsigned)historyValues.size());
     for (unsigned n = 0; n < historyDates.size(); ++n) ds[n] = historyDates[n].serialNumber();
     for (unsigned n = 0; n < historyValues.size(); ++n) vs[n] = historyValues[n];
-    *datesLen = historyDates.size(); *dates = ds;
-    *valuesLen = historyValues.size(); *values = vs;
-  } catch (std::exception& er) {
-    qlFreeInts(ds); qlFreeDoubles(vs); *e = tracedup(er.what());
-  }}
+    dateResult.commit(); valueResult.commit();
+  } catch (std::exception& er) {*e = tracedup(er.what());}}
 void qlIndexManagerHistories(unsigned *count, char ***names, char **e) {
-  char **ns = 0;
-  unsigned n = 0;
-  *count = 0; *names = 0;
+  OutStringArrayResult result(count, names);
   try {
     const std::vector<std::string> histories = IndexManager::instance().histories();
-    ns = ret(new char*[histories.size()]());
-    for (; n < histories.size(); ++n) ns[n] = tracedup(histories[n].c_str());
-    *count = histories.size(); *names = ns;
-  } catch (std::exception& er) {
-    qlFreeStringArray(n, ns); *e = tracedup(er.what());
-  }}
+    const unsigned n = (unsigned)histories.size();
+    char **ns = result.allocate(n);
+    for (unsigned i = 0; i < n; ++i) ns[i] = tracedup(histories[i].c_str());
+    result.commit();
+  } catch (std::exception& er) {*e = tracedup(er.what());}}
 void qlIndexManagerClearHistories(char **e) {
   try {IndexManager::instance().clearHistories();}
   catch (std::exception& er) {*e = tracedup(er.what());}}
@@ -2352,12 +2335,15 @@ double qlZeroInflationIndexFixing(QlZeroInflationIndex* o, int fixingDate, char 
 double qlYoYInflationIndexFixing(QlYoYInflationIndex* o, int fixingDate, char **e) {
   try {return (*arg(o))->fixing(Date(fixingDate));
   } catch (std::exception& er) {return handleException<double>(e, er);}}
-int qlZeroInflationIndexNeedsForecast(QlZeroInflationIndex* o, int fixingDate) {
-  return (*arg(o))->needsForecast(Date(fixingDate));
-}
-int qlYoYInflationIndexNeedsForecast(QlYoYInflationIndex* o, int fixingDate) {
-  return (*arg(o))->needsForecast(Date(fixingDate));
-}
+// Both reach inflationPeriod(), which QL_FAILs on a frequency outside Annual..Monthly -- and the
+// index constructors above take an unconstrained one -- so these need an error channel despite
+// looking like plain getters.
+int qlZeroInflationIndexNeedsForecast(QlZeroInflationIndex* o, int fixingDate, char **e) {
+  try {return (*arg(o))->needsForecast(Date(fixingDate));
+  } catch (std::exception& er) {return handleException<int>(e, er);}}
+int qlYoYInflationIndexNeedsForecast(QlYoYInflationIndex* o, int fixingDate, char **e) {
+  try {return (*arg(o))->needsForecast(Date(fixingDate));
+  } catch (std::exception& er) {return handleException<int>(e, er);}}
 
 /* YoYOptionletVolatilitySurface */
 
@@ -2506,34 +2492,29 @@ int qlYoYCapFloorTermPriceSurfaceBaseDate(QlYoYCapFloorTermPriceSurface *o, char
 
 void qlYoYCapFloorTermPriceSurfaceAtmYoYSwapDateRates(QlYoYCapFloorTermPriceSurface *o,
     unsigned *dl, int **date, unsigned *rl, double **rate, char **e) {
-  *dl = 0; *rl = 0; *date = nullptr; *rate = nullptr;
-  int *dates = nullptr;
-  double *rates = nullptr;
+  OutArrayResult<int> dateResult(dl, date);
+  OutArrayResult<double> rateResult(rl, rate);
   try {
     const auto &dr = (*arg(o))->atmYoYSwapDateRates();
-    dates = qlAllocateInts(dr.first.size()); rates = qlAllocateDoubles(dr.second.size());
+    int *dates = dateResult.allocate((unsigned)dr.first.size());
+    double *rates = rateResult.allocate((unsigned)dr.second.size());
     for (unsigned i = 0; i < dr.first.size(); ++i) dates[i] = dr.first[i].serialNumber();
     for (unsigned i = 0; i < dr.second.size(); ++i) rates[i] = dr.second[i];
-    *dl = dr.first.size(); *rl = dr.second.size(); *date = dates; *rate = rates;
-  } catch (const std::exception& er) {
-    qlFreeInts(dates); qlFreeDoubles(rates); *e = tracedup(er.what());
-  }
+    dateResult.commit(); rateResult.commit();
+  } catch (const std::exception& er) {*e = tracedup(er.what());}
 }
 
 void qlYoYCapFloorTermPriceSurfaceAtmYoYSwapTimeRates(QlYoYCapFloorTermPriceSurface *o,
     unsigned *tl, double **time, unsigned *rl, double **rate, char **e) {
-  *tl = 0; *rl = 0; *time = nullptr; *rate = nullptr;
-  double *times = nullptr;
-  double *rates = nullptr;
+  OutArrayResult<double> timeResult(tl, time), rateResult(rl, rate);
   try {
     const auto &tr = (*arg(o))->atmYoYSwapTimeRates();
-    times = qlAllocateDoubles(tr.first.size()); rates = qlAllocateDoubles(tr.second.size());
+    double *times = timeResult.allocate((unsigned)tr.first.size());
+    double *rates = rateResult.allocate((unsigned)tr.second.size());
     for (unsigned i = 0; i < tr.first.size(); ++i) times[i] = tr.first[i];
     for (unsigned i = 0; i < tr.second.size(); ++i) rates[i] = tr.second[i];
-    *tl = tr.first.size(); *rl = tr.second.size(); *time = times; *rate = rates;
-  } catch (const std::exception& er) {
-    qlFreeDoubles(times); qlFreeDoubles(rates); *e = tracedup(er.what());
-  }
+    timeResult.commit(); rateResult.commit();
+  } catch (const std::exception& er) {*e = tracedup(er.what());}
 }
 
 double qlYoYCapFloorTermPriceSurfaceAtmYoYSwapRate(QlYoYCapFloorTermPriceSurface *o, int d,
@@ -2548,14 +2529,13 @@ double qlYoYCapFloorTermPriceSurfaceAtmYoYRate(QlYoYCapFloorTermPriceSurface *o,
   } catch (std::exception& er) {return handleException<double>(e, er);}}
 
 void qlYoYCapFloorTermPriceSurfaceStrikes(QlYoYCapFloorTermPriceSurface *o, unsigned *sl, double **strike, char **e) {
-  *sl = 0; *strike = nullptr;
-  double *out = nullptr;
+  OutArrayResult<double> result(sl, strike);
   try {
     const std::vector<Rate> &ks = (*arg(o))->strikes();
-    out = qlAllocateDoubles(ks.size());
+    double *out = result.allocate((unsigned)ks.size());
     for (unsigned i = 0; i < ks.size(); ++i) out[i] = ks[i];
-    *sl = ks.size(); *strike = out;
-  } catch (const std::exception& er) {qlFreeDoubles(out); *e = tracedup(er.what());}
+    result.commit();
+  } catch (const std::exception& er) {*e = tracedup(er.what());}
 }
 
 /* KInterpolatedYoYOptionletVolatilitySurface */

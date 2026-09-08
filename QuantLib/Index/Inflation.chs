@@ -104,9 +104,12 @@ import QuantLib.Internal.Type
 -- |Whether 'fixing' at the given date would have to be forecast rather than served from a stored
 -- historical fixing -- true once the date falls after the latest period a fixing could plausibly
 -- already be published for, given the index's publication lag.
-{#fun pure qlZeroInflationIndexNeedsForecast as needsForecast{withZeroInflationIndex*`ZeroInflationIndex',withDay*`Day'}->`Bool'#}
+-- /Warning/ It raises an exception if the index was built with a frequency outside
+-- @Annual@..@Monthly@, which the inflation-period calculation does not handle.
+{#fun qlZeroInflationIndexNeedsForecast as needsForecast{withZeroInflationIndex*`ZeroInflationIndex',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Bool'#}
 
 -- |The year-on-year counterpart of 'needsForecast', for 'yoyFixing'.
-{#fun pure qlYoYInflationIndexNeedsForecast as yoyNeedsForecast{withYoYInflationIndex*`YoYInflationIndex',withDay*`Day'}->`Bool'#}
+-- /Warning/ It raises an exception on an unhandled frequency, as 'needsForecast' does.
+{#fun qlYoYInflationIndexNeedsForecast as yoyNeedsForecast{withYoYInflationIndex*`YoYInflationIndex',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Bool'#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

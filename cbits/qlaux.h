@@ -33,6 +33,10 @@ double *qlAllocateDoubles(size_t size);
 // halves of the string's lifecycle. The tracing verbs themselves are at the bottom of this
 // file, below the ObjClassName table they name their subjects from.
 char *tracedup(const char *p);
+// tracedup()'s release counterpart, defined with the other C-linkage frees in qlMisc.cpp.
+// Declared here so the string-array staging class below can free its elements the same way
+// qlFreeStringArray does, keeping both paths under one trace label.
+extern "C" void qlFreeString(char *p);
 
 #ifdef QLTRACK_ALLOCATIONS
 # include <fstream>
@@ -1659,8 +1663,13 @@ template <class T> T ret(T p) {trace("returned", p); return p;}
 template <class T> void del(T p) {trace("deleting", p); delete p; trace("deleted", p);}
 // The delete[] counterpart of del(), for the array types Haskell frees through qlFreeInts and
 // friends. Separate rather than a flag on del() because the array/scalar delete form has to be
-// chosen at the call site anyway.
-template <class T> void delArray(T p) {trace("deleting", p); delete[] p; trace("deleted", p);}
+// chosen at the call site anyway. delArrayAs<Label> is the relabelling form -- delArray()'s
+// analogue of allocAs/retPtrArray -- for a spine whose free-time type is not its own (a T*[n]
+// pointer array is released through qlFreePointerArray as void**, see OutPtrArrayResult below).
+template <class Label, class T> void delArrayAs(T p) {
+  traceAs<Label>("deleting", p); delete[] p; traceAs<Label>("deleted", p);
+}
+template <class T> void delArray(T p) {delArrayAs<T>(p);}
 
 template <class T> T* allocateOutArray(unsigned);
 template <> inline int* allocateOutArray<int>(unsigned n) {return qlAllocateInts(n);}
@@ -1732,6 +1741,81 @@ template <class T> T** retPtrArray(T **p) {traceAs<void**>("returned", p); retur
 // under Base -- a spurious leak/over-free pair in alloc-summary.py despite correct actual memory
 // behavior.
 template <class Base, class Derived> Derived* allocAs(Derived *p) {traceAs<Base*>("allocated", p); return p;}
+
+// Stages a pointer-array out-parameter -- the T*[n] spine plus the n objects hanging off it --
+// on the same contract as OutArrayResult: the constructor neutralises the caller's storage so
+// c2hs can peek it safely on an exception, allocate() takes the array, and only commit() hands
+// it over. A separate class rather than an OutArrayResult<T*> because the destructor also has to
+// free the elements.
+//
+// The spine is value-initialised, so an exception part-way through filling it leaves every
+// unwritten slot null and the destructor can free the full allocated length unconditionally --
+// no call site tracks how far its loop got. It is traced under void**, matching both
+// retPtrArray() on the way in and qlFreePointerArray() (which Haskell releases a committed spine
+// through) on the way out, so all three land under one class name in alloc-summary.py.
+template <class T> class OutPtrArrayResult {
+  unsigned *outLen_;
+  T ***out_;
+  unsigned len_ = 0;
+  T **value_ = nullptr;
+public:
+  OutPtrArrayResult(unsigned *outLen, T ***out) : outLen_(outLen), out_(out) {
+    *outLen_ = 0;
+    *out_ = nullptr;
+  }
+  OutPtrArrayResult(const OutPtrArrayResult&) = delete;
+  OutPtrArrayResult& operator=(const OutPtrArrayResult&) = delete;
+  ~OutPtrArrayResult() {
+    if (!value_) return;
+    for (unsigned i = 0; i < len_; ++i) del(value_[i]);
+    delArrayAs<void**>(value_);
+  }
+  T** allocate(unsigned len) {
+    value_ = retPtrArray(new T*[len]());
+    len_ = len;
+    return value_;
+  }
+  T** data() {return value_;}
+  void commit() noexcept {
+    *outLen_ = len_;
+    *out_ = value_;
+    value_ = nullptr;
+  }
+};
+
+// The char** counterpart of OutPtrArrayResult, for spines of tracedup()'d strings. Separate
+// rather than an instantiation of it because the elements are freed with qlFreeString() rather
+// than del(), and because a committed spine goes back through qlFreeStringArray, whose own
+// parameter is char** -- so this one keeps ret()/delArray() instead of the void** relabelling.
+class OutStringArrayResult {
+  unsigned *outLen_;
+  char ***out_;
+  unsigned len_ = 0;
+  char **value_ = nullptr;
+public:
+  OutStringArrayResult(unsigned *outLen, char ***out) : outLen_(outLen), out_(out) {
+    *outLen_ = 0;
+    *out_ = nullptr;
+  }
+  OutStringArrayResult(const OutStringArrayResult&) = delete;
+  OutStringArrayResult& operator=(const OutStringArrayResult&) = delete;
+  ~OutStringArrayResult() {
+    if (!value_) return;
+    for (unsigned i = 0; i < len_; ++i) qlFreeString(value_[i]);
+    delArray(value_);
+  }
+  char** allocate(unsigned len) {
+    value_ = ret(new char*[len]());
+    len_ = len;
+    return value_;
+  }
+  char** data() {return value_;}
+  void commit() noexcept {
+    *outLen_ = len_;
+    *out_ = value_;
+    value_ = nullptr;
+  }
+};
 
 const Date qlNullableDate(int serialNumber);
 int qlNullableDate(const Date &date);

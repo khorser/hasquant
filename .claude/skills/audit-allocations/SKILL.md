@@ -61,6 +61,9 @@ Grep for each and check the exceptions:
   `qlFreeAdditionalResults` in `cbits/qlInstrument.cpp`. A free whose `delete` lives in another
   translation unit uses `delWith(p, auxFree)` (`qlFreePathGenerator`, `qlFreeGaussianRsg`). Neither
   needs a hand-written null guard or a hand-written trace pair — that is what the verb is for.
+  `delArrayAs<Label>(p)` is `delArray`'s relabelling form — the free-side counterpart of
+  `allocAs`/`retPtrArray` — for a spine whose free-time type is not its own; `OutPtrArrayResult`
+  is its only caller today.
 - A pointer reinterpreted to a narrower/different type before freeing (`qlFreeUInts` frees an
   `unsigned*` that was actually allocated as `int*` — there's no `qlAllocateUInts`) must be traced
   under the type it was *actually allocated as*, not its free-time type, or the class names won't
@@ -94,13 +97,31 @@ against the constructor's argument type, not by code inspection alone.)
 
 **4. Partial-construction/exception safety.** For any function allocating **more than one**
 independent heap object, or filling a struct/array with **more than one** pointer field per
-element, before its final return: verify every earlier-succeeded allocation is either already
-owned by RAII (a local `shared_ptr`/vector-of-`shared_ptr` adopted it in the same full-expression
-as the `new`) by the time a later step can throw, or is freed — and, per (1)/(2)/(3), *traced* — in
-the `catch`, for every element already filled *and* for a partially-filled current element. A
-value-initialised array (`new T[n]()`, trailing `()`) makes every not-yet-filled slot null-safe to
-pass to a null-guarded free, which is the standard idiom here (see `qlInstrumentAdditionalResults`
-and its many siblings for the pattern).
+element, before its final return: verify every earlier-succeeded allocation is owned by RAII by
+the time a later step can throw — a local `shared_ptr`/vector-of-`shared_ptr` adopted it in the
+same full-expression as the `new`, or it lives in one of the staging classes below. **A
+hand-written `catch` that frees anything is a finding, not the idiom.**
+
+**The staging classes** (`cbits/qlaux.h`), one per out-parameter, all on the same contract: the
+constructor neutralises the caller's storage so c2hs can peek it safely on an exception, an
+`allocate(n)`/`set(v)` call takes the value, and only `commit() noexcept` — reached when the
+whole shim has succeeded — hands it over. Anything not committed is freed by the destructor, with
+the right trace label, on the way out. Copy and assignment are deleted on all four.
+
+| Class | Out-parameter | Frees with |
+|---|---|---|
+| `OutValue<T>` | `T *out` | nothing (scalar) |
+| `OutArrayResult<T>` | `unsigned *len, T **out` | `delArray` |
+| `OutPtrArrayResult<T>` | `unsigned *len, T ***out` | `del` per element, then `delArrayAs<void**>` |
+| `OutStringArrayResult` | `unsigned *len, char ***out` | `qlFreeString` per element, then `delArray` |
+
+Declare them above the `try`, one per array, and `commit()` them together as the last statement
+inside it — `qlCommodityPricingErrors` and the `createPricingPeriods` shim (six arrays) in
+`cbits/qlInstrument.cpp` are the worked examples. The two pointer-array classes value-initialise
+the spine (`new T*[n]()`), so an exception part-way through the fill leaves every unwritten slot
+null and the destructor frees the full allocated length unconditionally: **no call site tracks
+how far its loop got**, and a live loop counter in place of the length is a bug waiting to
+happen. An early `return` inside the `try` is safe for the same reason (`qlIndexFixingHistory`).
 
 **4b. Hold a not-yet-handed-out allocation in a smart pointer, not a raw pointer above the `try`.**
 The old shape here was a raw pointer hoisted above the `try` and released by `del()` in the `catch`;
@@ -125,17 +146,27 @@ std::unique_ptr<UnitOfMeasure> uom(new UnitOfMeasure(q.unitOfMeasure()));
 `qlUnitOfMeasureConversionConvert` (`cbits/qlMisc.cpp`), `qlEnergyCommodityQuantity`
 (`cbits/qlInstrument.cpp`) and `qlLeg`/`qlLegToCouponLeg` are the worked examples of the second
 shape; every `qlPiecewise*`/`qlInterpolated*` curve in `cbits/qlTermStructure.cpp` is the first.
+For an *out-parameter* rather than a return value, use the staging classes in point 4 instead —
+they are this same idea with the commit point made explicit.
 The rule of thumb that motivated the old text still holds and is what these shapes satisfy
 structurally: scan for the *last tracing verb that runs before each throw point*, and make sure
 nothing already traced as `returned` can be dropped without a matching free.
 
-**5. The old `X *raw = 0; try { ... } catch (...) { delete raw; }` shape is gone — don't reintroduce
-it, and don't re-flag its absence.** It carried a real (if narrow) double-free window: if the outer
-`new QlX(...)` threw `bad_alloc` *after* adopting `raw`, the `catch` deleted it a second time. It
-was used at ~25 sites and accepted as not worth chasing; the `allocShared`/`unique_ptr` shapes in
-point 4b close it structurally, so the window no longer exists anywhere in `cbits/`. The
-still-common one-liner `return ret(new QlX(alloc(new X(...))));` has no such window — there is no
-second reference to leak or double-free — and needs no conversion.
+**5. No raw pointer is hoisted above a `try` anywhere in `cbits/` — keep it that way.** The rule
+is mechanical and greppable: **no `catch` block frees anything.** A `catch` body is
+`handleException<T>(e, er)` or `*e = tracedup(er.what())`, nothing more.
+
+Two shapes carried this historically and both are gone. The single-object one
+(`X *raw = 0; try { ... } catch (...) { delete raw; }`) had a real if narrow double-free window —
+if the outer `new QlX(...)` threw `bad_alloc` after adopting `raw`, the `catch` deleted it a
+second time — closed by the `allocShared`/`unique_ptr` shapes in point 4b. The multi-output one
+(raw array pointers above the `try`, a `catch` looping `del(arr[i])` and calling
+`qlFreePointerArray((void**)arr)`) survived at ten sites behind the old wording of point 4, which
+blessed its value-initialised array as "the standard idiom"; it is closed by the staging classes,
+which own exactly that reasoning. Both `(void**)` casts went with it.
+
+The still-common one-liner `return ret(new QlX(alloc(new X(...))));` has no such window — there is
+no second reference to leak or double-free — and needs no conversion.
 
 **6. Null pointers would create permanent tracing noise, and the guard is central — don't re-add a
 local one.** `del(p)`/`qlFreeInts(p)`/etc. called with `p == nullptr` (a legitimately no-op free —
@@ -166,6 +197,35 @@ forced:
 `char**`/`void**` deliberately have no specialization (only `void*` does): both sides of a spine's
 lifecycle get the same fallback label, and `alloc-summary.py` pairs per `(class, pointer)`, so they
 balance correctly under the mangled name.
+
+## The FFI boundary: which shims need a `char **e`
+
+An exception escaping an `extern "C"` shim unwinds into the Haskell RTS — `std::terminate`, no
+message — instead of reaching Haskell as a `CPlusPlusException`. A shim with no `try` is only safe
+if it genuinely cannot throw. Four findings from the audit that established the current state;
+re-deriving them costs a day, so start here:
+
+- **`catch (std::exception& er)` is complete.** `QuantLib::Error` derives from `std::exception`
+  (`ql/errors.hpp`), as does everything the standard library throws. A `catch (...)` fallback, or
+  a sweep replacing the ~1500 existing `try`/`catch` pairs with a wrapper, catches nothing that
+  can actually occur. Don't propose it.
+- **`cbits/*Aux.cpp` is not a boundary.** Its headers declare nothing `extern "C"` and every call
+  site is inside a try-wrapped caller in the main `.cpp`. Its dispatchers correctly have no `try`.
+- **A `Date(serial)` shim needs no error channel.** `toSerial` (`QuantLib/Internal.hs`) checks
+  `dayIsValid` before any date crosses the boundary, so the `QL_REQUIRE` in QuantLib's `Date`
+  constructor is unreachable from Haskell. This covers `qlWeekday`, `qlDateDayOfYear`,
+  `qlDateEndOfMonth`, `qlDateNextWeekday` and every sibling of that shape. Check the `.chs`
+  marshaller before classifying any argument as unvalidated.
+- **`bad_alloc` from an allocating accessor is an accepted window** — the `qlXAsBase` upcast
+  shims, `qlCouponLegAsLeg`, `qlCommodityCurveBasisOfCurve`. Same tolerance as point 5's one-liner.
+
+So a shim needs a `char **e` only when a **non-date argument, or a construction-time setting no
+marshaller constrains, can fail a `QL_REQUIRE`**. The three that qualify today, all found by
+reading the callee rather than the shim: `qlDateNthWeekday` (`nth` is a caller-supplied count,
+required in 1..5), and `qlZeroInflationIndexNeedsForecast`/`qlYoYInflationIndexNeedsForecast`
+(both reach `inflationPeriod`, which `QL_FAIL`s on a frequency outside Annual..Monthly, and the
+index constructors accept an unconstrained one). Adding the parameter changes the `.chs`
+signature — and drops `pure` if it had it — so confirm with the user before converting.
 
 ## Two label helpers (avoid raw casts)
 

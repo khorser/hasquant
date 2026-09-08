@@ -374,46 +374,40 @@ namespace {
   void realSeriesCalculate(const std::function<TimeSeries<Volatility>(const TimeSeries<Real>&)>& calc,
       unsigned len, int *dates, double *values,
       unsigned *outDatesLen, int **outDates, unsigned *outValuesLen, double **outValues, char **e) {
-    int *ds = 0;
-    double *vs = 0;
-    *outDatesLen = 0; *outDates = 0; *outValuesLen = 0; *outValues = 0;
+    OutArrayResult<int> dateResult(outDatesLen, outDates);
+    OutArrayResult<double> valueResult(outValuesLen, outValues);
     try {
       TimeSeries<Real> ts;
       for (unsigned n = 0; n < len; ++n) ts[Date(dates[n])] = values[n];
       TimeSeries<Volatility> out = calc(ts);
       const std::vector<Date> outDs = out.dates();
       const std::vector<Volatility> outVs = out.values();
-      ds = qlAllocateInts(outDs.size());
-      vs = qlAllocateDoubles(outVs.size());
+      int *ds = dateResult.allocate((unsigned)outDs.size());
+      double *vs = valueResult.allocate((unsigned)outVs.size());
       for (unsigned n = 0; n < outDs.size(); ++n) ds[n] = outDs[n].serialNumber();
       for (unsigned n = 0; n < outVs.size(); ++n) vs[n] = outVs[n];
-      *outDatesLen = outDs.size(); *outDates = ds; *outValuesLen = outVs.size(); *outValues = vs;
-    } catch (std::exception& er) {
-      qlFreeInts(ds); qlFreeDoubles(vs); *e = tracedup(er.what());
-    }
+      dateResult.commit(); valueResult.commit();
+    } catch (std::exception& er) {*e = tracedup(er.what());}
   }
 
   // Same shape, for the GarmanKlass family's TimeSeries<IntervalPrice> input.
   void intervalPriceSeriesCalculate(const std::function<TimeSeries<Volatility>(const TimeSeries<IntervalPrice>&)>& calc,
       unsigned len, int *dates, double *opens, double *closes, double *highs, double *lows,
       unsigned *outDatesLen, int **outDates, unsigned *outValuesLen, double **outValues, char **e) {
-    int *ds = 0;
-    double *vs = 0;
-    *outDatesLen = 0; *outDates = 0; *outValuesLen = 0; *outValues = 0;
+    OutArrayResult<int> dateResult(outDatesLen, outDates);
+    OutArrayResult<double> valueResult(outValuesLen, outValues);
     try {
       TimeSeries<IntervalPrice> ts;
       for (unsigned n = 0; n < len; ++n) ts[Date(dates[n])] = IntervalPrice(opens[n], closes[n], highs[n], lows[n]);
       TimeSeries<Volatility> out = calc(ts);
       const std::vector<Date> outDs = out.dates();
       const std::vector<Volatility> outVs = out.values();
-      ds = qlAllocateInts(outDs.size());
-      vs = qlAllocateDoubles(outVs.size());
+      int *ds = dateResult.allocate((unsigned)outDs.size());
+      double *vs = valueResult.allocate((unsigned)outVs.size());
       for (unsigned n = 0; n < outDs.size(); ++n) ds[n] = outDs[n].serialNumber();
       for (unsigned n = 0; n < outVs.size(); ++n) vs[n] = outVs[n];
-      *outDatesLen = outDs.size(); *outDates = ds; *outValuesLen = outVs.size(); *outValues = vs;
-    } catch (std::exception& er) {
-      qlFreeInts(ds); qlFreeDoubles(vs); *e = tracedup(er.what());
-    }
+      dateResult.commit(); valueResult.commit();
+    } catch (std::exception& er) {*e = tracedup(er.what());}
   }
 }
 
@@ -840,7 +834,12 @@ int qlDateDayOfYear(int o) {return Date(o).dayOfYear();}
 int qlDateEndOfMonth(int d) {return Date::endOfMonth(Date(d)).serialNumber();}
 int qlDateIsEndOfMonth(int d) {return Date::isEndOfMonth(Date(d));}
 int qlDateNextWeekday(int d, int w) {return Date::nextWeekday(Date(d), (Weekday)w).serialNumber();}
-int qlDateNthWeekday(unsigned n, int w, int m, int y) {return Date::nthWeekday(n, (Weekday)w, (Month)m, y).serialNumber();}
+// Needs an error channel where its Date-taking siblings above do not: `n' is a caller-supplied
+// count, not a date, so no Haskell-side marshaller constrains it, and Date::nthWeekday requires
+// 0 < n < 6.
+int qlDateNthWeekday(unsigned n, int w, int m, int y, char **e) {
+  try {return Date::nthWeekday(n, (Weekday)w, (Month)m, y).serialNumber();
+  } catch (std::exception& er) {return handleException<int>(e, er);}}
 int qlIMMIsIMMcode(char* in, int mainCycle) {return IMM::isIMMcode(std::string(arg(in)), mainCycle);}
 int qlIMMIsIMMdate(int d, int mainCycle) {return IMM::isIMMdate(Date(d), mainCycle);}
 char* qlIMMNextCode(int d, int mainCycle) {return tracedup(IMM::nextCode(Date(d), mainCycle).c_str());}
@@ -1025,15 +1024,14 @@ Schedule *qlScheduleUntil(Schedule *sched, int date, char **e) {
   try {return alloc(new Schedule(arg(sched)->until(Date(date))));
   } catch (std::exception& er) {return handleException<Schedule *>(e, er);}}
 void qlScheduleDates(Schedule *sched, unsigned *count, int **days, char **e) {
-  *count = 0; *days = nullptr;
-  int *out = nullptr;
+  OutArrayResult<int> result(count, days);
   try {
     const std::vector<Date> &dates = arg(sched)->dates();
-    out = qlAllocateInts(dates.size());
+    int *out = result.allocate((unsigned)dates.size());
     for (size_t i = 0; i < dates.size(); ++i)
       out[i] = dates[i].serialNumber();
-    *count = dates.size(); *days = out;
-  } catch (std::exception& er) {qlFreeInts(out); *e = tracedup(er.what());}
+    result.commit();
+  } catch (std::exception& er) {*e = tracedup(er.what());}
 }
 
 int qlPeriodFromFrequency1(int freq, int *u, char **e) {
@@ -1308,29 +1306,24 @@ QlHistoricalIndexAnalysis *qlHistoricalIndexAnalysis(int startDate, int endDate,
 void qlFreeHistoricalIndexAnalysis(QlHistoricalIndexAnalysis *o) {del(o);}
 
 void qlHistoricalIndexAnalysisSkippedDates(QlHistoricalIndexAnalysis *o, unsigned *count, int **days, char **e) {
-  *count = 0; *days = nullptr;
-  int *out = nullptr;
+  OutArrayResult<int> result(count, days);
   try {
     const std::vector<Date> &dates = (*arg(o))->skippedDates();
-    out = qlAllocateInts(dates.size());
+    int *out = result.allocate((unsigned)dates.size());
     for (unsigned i = 0; i < dates.size(); ++i) out[i] = dates[i].serialNumber();
-    *count = dates.size(); *days = out;
-  } catch (std::exception& er) {qlFreeInts(out); *e = tracedup(er.what());}
+    result.commit();
+  } catch (std::exception& er) {*e = tracedup(er.what());}
 }
 
 void qlHistoricalIndexAnalysisSkippedDatesErrorMessage(QlHistoricalIndexAnalysis *o, unsigned *count, char ***msgs, char **e) {
-  *count = 0; *msgs = 0;
-  unsigned n = 0;
-  char **ms = nullptr;
+  OutStringArrayResult result(count, msgs);
   try {
     const std::vector<std::string> &m = (*arg(o))->skippedDatesErrorMessage();
-    n = (unsigned)m.size();
-    // ret() (not retPtrArray()): this spine is released by qlFreeStringArray, whose char**
-    // parameter is what its own trace names -- see qlCommodityPricingErrors for the same pairing.
-    ms = ret(new char*[n]());
+    const unsigned n = (unsigned)m.size();
+    char **ms = result.allocate(n);
     for (unsigned i = 0; i < n; ++i) ms[i] = tracedup(m[i].c_str());
-    *msgs = ms; *count = n;
-  } catch (std::exception& er) {qlFreeStringArray(n, ms); *e = tracedup(er.what());}
+    result.commit();
+  } catch (std::exception& er) {*e = tracedup(er.what());}
 }
 
 void qlHistoricalIndexAnalysisMean(QlHistoricalIndexAnalysis *o, unsigned *len, double **vs, char **e) {

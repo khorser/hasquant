@@ -141,7 +141,8 @@ today = do
 
 -- |n-th given weekday in the given month and year
 -- E.g., the 4th Thursday of March, 1998 was March 26th, 1998.see http://www.cpearson.com/excel/DateTimeWS.htm
-{#fun qlDateNthWeekday as nthWeekday{fromIntegral`Word',`Weekday',`Month',`Int'}->`Day'toDay#}
+-- /Warning/ It raises an exception unless the n-th falls in 1..5
+{#fun qlDateNthWeekday as nthWeekday{fromIntegral`Word',`Weekday',`Month',`Int',preErrorCheck-`String'errorCheck*-}->`Day'toDay#}
 
 -- |returns the IMM code for the given date (e.g. H3 for March 20th, 2013). /Warning/ It raises an exception if the input date is not an IMM date
 {#fun qlIMMCode as immCode{withDay*`Day',preErrorCheck-`String'errorCheck*-}->`String'peekDynString*#}

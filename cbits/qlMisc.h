@@ -181,7 +181,7 @@ extern "C" {
   int qlDateEndOfMonth(int d);
   int qlDateIsEndOfMonth(int d);
   int qlDateNextWeekday(int d, int w);
-  int qlDateNthWeekday(unsigned n, int w, int m, int y);
+  int qlDateNthWeekday(unsigned n, int w, int m, int y, char **e);
 
   char* qlIMMCode(int immDate, char **e);
   int qlIMMDate(char* immCode, int referenceDate, char **e);

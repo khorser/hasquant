@@ -80,6 +80,19 @@ spec = do
               $ take 40 immCodes)
            ([minDate .. (addGregorianMonthsClip (-121) maxDate)] :: [Day])
 
+    describe "nthWeekday" $ do
+      it "returns the nth weekday for every n QuantLib accepts" $ do
+        -- The 3rd Wednesday of March 2024 is the 20th (a known IMM date).
+        nthWeekday 3 Date.Wednesday Date.March 2024 `shouldReturn` fromGregorian 2024 3 20
+        nthWeekday 1 Date.Wednesday Date.March 2024 `shouldReturn` fromGregorian 2024 3 6
+
+      -- `n' is a plain count, so unlike every Date-taking binding no Haskell-side marshaller
+      -- constrains it; the shim's own error channel is what turns QuantLib's 0 < n < 6 QL_REQUIRE
+      -- into an exception here instead of an abort through the FFI boundary.
+      it "raises a C++ exception for an n outside 1..5" $ do
+        nthWeekday 0 Date.Wednesday Date.March 2024 `shouldThrow` anyException
+        nthWeekday 6 Date.Wednesday Date.March 2024 `shouldThrow` anyException
+
     describe "frequencies and periods" $ do
       it "frequency to period" $ do
         toFrequency (1, Months) `shouldReturn` Monthly
