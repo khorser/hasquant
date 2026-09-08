@@ -438,7 +438,7 @@ spec = do
     it "matches unsafeShiftedSabrVolatility for both VolatilityType cases, and Normal /= ShiftedLognormal" $
       Settings.keepingSettingsGc $ do
         forM_ [ShiftedLognormal, Normal] $ \volType -> do
-          section <- sabrSmileSection expiry forward alpha_ beta_ nu rho_ shift volType
+          section <- sabrSmileSection (RateAtTime expiry) forward alpha_ beta_ nu rho_ Nothing shift volType
           forM_ [0.01, 0.02, 0.03, 0.04, 0.05 :: Double] $ \strike -> do
             got <- smileSectionVolatility section strike
             expected <- unsafeShiftedSabrVolatility strike forward expiry alpha_ beta_ nu rho_ shift volType
@@ -446,9 +446,9 @@ spec = do
             var <- smileSectionVariance section strike
             var `shouldSatisfy` closePrec (expected * expected * expiry) 1e-12
 
-        volShiftedLognormal <- sabrSmileSection expiry forward alpha_ beta_ nu rho_ shift ShiftedLognormal
+        volShiftedLognormal <- sabrSmileSection (RateAtTime expiry) forward alpha_ beta_ nu rho_ Nothing shift ShiftedLognormal
         volAtAtm1 <- smileSectionVolatility volShiftedLognormal forward
-        volNormal <- sabrSmileSection expiry forward alpha_ beta_ nu rho_ shift Normal
+        volNormal <- sabrSmileSection (RateAtTime expiry) forward alpha_ beta_ nu rho_ Nothing shift Normal
         volAtAtm2 <- smileSectionVolatility volNormal forward
         volAtAtm1 `shouldNotBe` volAtAtm2
 
@@ -462,15 +462,15 @@ spec = do
         optionDate <- addPeriod refDate (expiryDays, Days)
         act365 <- dayCounter Actual365FixedStandard
 
-        sectionByTime <- sabrSmileSection expiryFromDays forward alpha_ beta_ nu rho_ shift ShiftedLognormal
-        sectionByDate <- sabrSmileSectionAtDate optionDate forward alpha_ beta_ nu rho_ (Just refDate) act365 shift ShiftedLognormal
+        sectionByTime <- sabrSmileSection (RateAtTime expiryFromDays) forward alpha_ beta_ nu rho_ Nothing shift ShiftedLognormal
+        sectionByDate <- sabrSmileSection (RateAtDate optionDate act365) forward alpha_ beta_ nu rho_ (Just refDate) shift ShiftedLognormal
         forM_ [0.01, 0.02, 0.03, 0.04, 0.05 :: Double] $ \strike -> do
           volT <- smileSectionVolatility sectionByTime strike
           volD <- smileSectionVolatility sectionByDate strike
           volD `shouldSatisfy` closePrec volT 1e-12
 
-        noArbByTime <- noArbSabrSmileSection expiryFromDays forward alpha_ beta_ nu rho_ shift ShiftedLognormal
-        noArbByDate <- noArbSabrSmileSectionAtDate optionDate forward alpha_ beta_ nu rho_ act365 shift ShiftedLognormal
+        noArbByTime <- noArbSabrSmileSection (RateAtTime expiryFromDays) forward alpha_ beta_ nu rho_ shift ShiftedLognormal
+        noArbByDate <- noArbSabrSmileSection (RateAtDate optionDate act365) forward alpha_ beta_ nu rho_ shift ShiftedLognormal
         differences <- forM [0.01, 0.02, 0.03, 0.04, 0.05 :: Double] $ \strike -> do
           volT <- smileSectionVolatility noArbByTime strike
           volD <- smileSectionVolatility noArbByDate strike
@@ -581,7 +581,7 @@ spec = do
         Settings.setEvaluationDate (Just refDate)
         optionDate <- addPeriod refDate (round (5.0 * 365 :: Double) :: Int, Days)
         act365 <- dayCounter Actual365FixedStandard
-        generating <- noArbSabrSmileSectionAtDate optionDate forward alpha_ beta_ nu rho_ act365 0 ShiftedLognormal
+        generating <- noArbSabrSmileSection (RateAtDate optionDate act365) forward alpha_ beta_ nu rho_ 0 ShiftedLognormal
         refVols <- mapM (smileSectionVolatility generating) strikes
         atmVol <- smileSectionVolatility generating forward
 
@@ -614,10 +614,10 @@ spec = do
           gamma_ = 1.0
           strikes = [0.0001, 0.0071 .. 0.70] :: [Double]
           tol = 1e-4
-      sabr <- sabrSmileSection tau forward alpha_ beta_ nu rho_ 0 ShiftedLognormal
+      sabr <- sabrSmileSection (RateAtTime tau) forward alpha_ beta_ nu rho_ Nothing 0 ShiftedLognormal
       forM_ [(ZabrShortMaturityLognormal, 5), (ZabrShortMaturityNormal, 5),
              (ZabrLocalVolatility, 5), (ZabrFullFd, 2)] $ \(evaluation, fdRefinement) -> do
-        zabr <- zabrSmileSection evaluation tau forward alpha_ beta_ nu rho_ gamma_ [] fdRefinement
+        zabr <- zabrSmileSection evaluation (RateAtTime tau) forward alpha_ beta_ nu rho_ gamma_ [] fdRefinement
         forM_ strikes $ \k -> do
           c0 <- smileSectionOptionPrice sabr k Call 1.0
           z <- smileSectionOptionPrice zabr k Call 1.0

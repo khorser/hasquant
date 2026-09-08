@@ -40,6 +40,7 @@ module QuantLib.TermStructure.Volatility
   , Reference(..)
   , CalendarReference(..)
   , TermPoint(..)
+  , RatePoint(..)
   , HasBlackVariance(..)
   , HasVolatility(..)
   , HasBondSmileSection(..)
@@ -77,9 +78,7 @@ module QuantLib.TermStructure.Volatility
   , maxSwapTenor
   , smileSection
   , sabrSmileSection
-  , sabrSmileSectionAtDate
   , noArbSabrSmileSection
-  , noArbSabrSmileSectionAtDate
   , smileSectionVolatility
   , smileSectionVariance
   , SabrInterpolatedSmileSectionOpts(..)
@@ -202,7 +201,6 @@ module QuantLib.TermStructure.Volatility
   , atmSmileSection
   , sviSmileSection
   , zabrSmileSection
-  , zabrSmileSectionAtDate
   ) where
 import QuantLib.Internal
 {#import QuantLib.InterestRate#}(VolatilityType)
@@ -211,7 +209,7 @@ import QuantLib.Internal
 import QuantLib.Internal.Type
 import QuantLib.Internal.Common
 import QuantLib.Internal.Syntax(deriveOptionsRecord)
-import QuantLib.TermStructure(Reference(..), CalendarReference(..), TermPoint(..))
+import QuantLib.TermStructure(Reference(..), CalendarReference(..), TermPoint(..), RatePoint(..))
 import QuantLib.Time.Schedule(dayCounter, DayCounterConstructor(..))
 import Data.List.NonEmpty(NonEmpty, toList)
 import Foreign.Marshal.Alloc(alloca)
@@ -708,9 +706,16 @@ smileSection sv optionMaturity swapMaturity =
     (OptionTime t, SwapLength l) -> smileSectionTimeLength sv t l
     (OptionTenor o, SwapTenor s) -> smileSectionTenorTenor sv o s
 
--- |a smile section built directly from SABR parameters (Hagan et al. 2002), rather than
--- interpolated from a 'SwaptionVolatilityStructure'
-{#fun qlSabrSmileSection as sabrSmileSection{`Double' -- ^timeToExpiry
+-- |A smile section built directly from SABR parameters (Hagan et al. 2002), rather than
+-- interpolated from a 'SwaptionVolatilityStructure'. For 'RateAtDate', 'referenceDate' uses
+-- QuantLib's default when 'Nothing'; it is ignored for 'RateAtTime'.
+sabrSmileSection :: RatePoint -> Double -> Double -> Double -> Double -> Double -> Maybe Day
+  -> Double -> VolatilityType -> IO SmileSection
+sabrSmileSection point forward alpha beta nu rho referenceDate = case point of
+  RateAtDate d dc -> sabrSmileSectionAtDateRaw d forward alpha beta nu rho referenceDate dc
+  RateAtTime t -> sabrSmileSectionAtTimeRaw t forward alpha beta nu rho
+
+{#fun qlSabrSmileSection as sabrSmileSectionAtTimeRaw{`Double' -- ^timeToExpiry
   ,`Double' -- ^forward
   ,`Double' -- ^alpha
   ,`Double' -- ^beta
@@ -720,9 +725,7 @@ smileSection sv optionMaturity swapMaturity =
   ,`VolatilityType' -- ^volatilityType
   ,preErrorCheck-`String'errorCheck*-}->`SmileSection'peekSmileSection*#}
 
--- |as 'sabrSmileSection', but the time to expiry is derived from a date, reference date and day
--- counter rather than given directly
-{#fun qlSabrSmileSection1 as sabrSmileSectionAtDate{withDay*`Day' -- ^optionDate
+{#fun qlSabrSmileSection1 as sabrSmileSectionAtDateRaw{withDay*`Day' -- ^optionDate
   ,`Double' -- ^forward
   ,`Double' -- ^alpha
   ,`Double' -- ^beta
@@ -734,9 +737,17 @@ smileSection sv optionMaturity swapMaturity =
   ,`VolatilityType' -- ^volatilityType
   ,preErrorCheck-`String'errorCheck*-}->`SmileSection'peekSmileSection*#}
 
--- |an arbitrage-free SABR smile section (Doust's approach via 'NoArbSabrSmileSection'), built
--- directly from SABR parameters like 'sabrSmileSection' but guaranteeing a proper terminal density
-{#fun qlNoArbSabrSmileSection as noArbSabrSmileSection{`Double' -- ^timeToExpiry
+-- |An arbitrage-free SABR smile section (Doust's approach via 'NoArbSabrSmileSection'), built
+-- directly from SABR parameters like 'sabrSmileSection' but guaranteeing a proper terminal density.
+noArbSabrSmileSection :: RatePoint -> Double -> Double -> Double -> Double -> Double -> Double
+  -> VolatilityType -> IO SmileSection
+noArbSabrSmileSection point forward alpha beta nu rho shift volatilityType = case point of
+  RateAtDate d dc ->
+    noArbSabrSmileSectionAtDateRaw d forward alpha beta nu rho dc shift volatilityType
+  RateAtTime t ->
+    noArbSabrSmileSectionAtTimeRaw t forward alpha beta nu rho shift volatilityType
+
+{#fun qlNoArbSabrSmileSection as noArbSabrSmileSectionAtTimeRaw{`Double' -- ^timeToExpiry
   ,`Double' -- ^forward
   ,`Double' -- ^alpha
   ,`Double' -- ^beta
@@ -746,9 +757,7 @@ smileSection sv optionMaturity swapMaturity =
   ,`VolatilityType' -- ^volatilityType
   ,preErrorCheck-`String'errorCheck*-}->`SmileSection'peekSmileSection*#}
 
--- |as 'noArbSabrSmileSection', but the time to expiry is derived from a date and day counter
--- rather than given directly
-{#fun qlNoArbSabrSmileSection1 as noArbSabrSmileSectionAtDate{withDay*`Day' -- ^optionDate
+{#fun qlNoArbSabrSmileSection1 as noArbSabrSmileSectionAtDateRaw{withDay*`Day' -- ^optionDate
   ,`Double' -- ^forward
   ,`Double' -- ^alpha
   ,`Double' -- ^beta
@@ -836,7 +845,7 @@ smileSection sv optionMaturity swapMaturity =
   ,withDayCounter*`DayCounter'
   ,preErrorCheck-`String'errorCheck*-}->`SmileSection'peekSmileSection*#}
 
--- |a ZABR (Andreasen\/Huge 2011) smile section: direct evaluation (no calibration) of a SABR-like
+-- |A ZABR (Andreasen\/Huge 2011) smile section: direct evaluation (no calibration) of a SABR-like
 -- model widened by a fifth parameter, @gamma@, that controls the backbone shape away from
 -- @gamma = 1@ (which reduces exactly to Hagan\'s SABR). @evaluation@ selects how the price\/vol at
 -- a strike is computed -- see 'ZabrEvaluation'. @moneyness@ is the strike grid (as multiples of
@@ -844,7 +853,16 @@ smileSection sv optionMaturity swapMaturity =
 -- solve; an empty list reproduces upstream\'s own 21-point default grid, and it is ignored by the
 -- two closed-form evaluation modes. @fdRefinement@ subdivides each grid interval for the FD
 -- solve\'s accuracy\/speed tradeoff (upstream\'s own default is 5).
-{#fun qlZabrSmileSection as zabrSmileSection{`ZabrEvaluation'
+zabrSmileSection :: ZabrEvaluation -> RatePoint -> Double -> Double -> Double -> Double -> Double
+  -> Double -> [Double] -> Word -> IO SmileSection
+zabrSmileSection evaluation point forward alpha beta nu rho gamma moneyness fdRefinement =
+  case point of
+    RateAtDate d dc ->
+      zabrSmileSectionAtDateRaw evaluation d forward alpha beta nu rho gamma dc moneyness fdRefinement
+    RateAtTime t ->
+      zabrSmileSectionAtTimeRaw evaluation t forward alpha beta nu rho gamma moneyness fdRefinement
+
+{#fun qlZabrSmileSection as zabrSmileSectionAtTimeRaw{`ZabrEvaluation'
   ,`Double' -- ^timeToExpiry
   ,`Double' -- ^forward
   ,`Double' -- ^alpha
@@ -856,9 +874,7 @@ smileSection sv optionMaturity swapMaturity =
   ,fromIntegral`Word' -- ^fdRefinement
   ,preErrorCheck-`String'errorCheck*-}->`SmileSection'peekSmileSection*#}
 
--- |as 'zabrSmileSection', but the time to expiry is derived from a date and day counter rather
--- than given directly.
-{#fun qlZabrSmileSection1 as zabrSmileSectionAtDate{`ZabrEvaluation'
+{#fun qlZabrSmileSection1 as zabrSmileSectionAtDateRaw{`ZabrEvaluation'
   ,withDay*`Day' -- ^optionDate
   ,`Double' -- ^forward
   ,`Double' -- ^alpha

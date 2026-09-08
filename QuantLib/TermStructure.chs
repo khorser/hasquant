@@ -6,6 +6,7 @@ module QuantLib.TermStructure
   , CalendarReference(..)
   , TermPoint(..)
   , TermInterval(..)
+  , RatePoint(..)
   , asTermStructure
   , referenceDate
   , maxDate
@@ -46,6 +47,12 @@ data TermPoint = DatePoint Day | TimePoint Double
 data TermInterval
   = DateInterval Day Day
   | TimeInterval Double Double
+  deriving (Eq, Show)
+
+-- |A date or year-fraction coordinate where a date needs its day-counting rule.
+data RatePoint
+  = RateAtDate Day DayCounter
+  | RateAtTime Double
   deriving (Eq, Show)
 
 -- |the date at which discount = 1.0 and/or variance = 0.0

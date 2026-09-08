@@ -104,7 +104,7 @@ import QuantLib.Internal.Syntax(deriveOptionsRecord)
 import Language.Haskell.TH(mkName)
 import Language.Haskell.TH.Lib(varT)
 import QuantLib.Quote hiding(linkTo)
-import QuantLib.TermStructure (Reference(..), TermPoint(..), setExtrapolation)
+import QuantLib.TermStructure (Reference(..), TermPoint(..), RatePoint(..), setExtrapolation)
 import Data.Maybe(fromMaybe)
 import Data.List.NonEmpty(NonEmpty, toList)
 import Foreign.Ptr(FunPtr, Ptr)
@@ -275,13 +275,6 @@ flatForward (SettlementDays n cal) = flatForwardMovingRaw n cal
 {#fun qlFlatForward as flatForwardFixed{withDay*`Day',withQuote*`GenQuote q',withDayCounter*`DayCounter',`Compounding',`Frequency',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
 {#fun qlFlatForward1 as flatForwardMovingRaw{fromIntegral`Word' -- ^settlementDays
   ,withCalendar*`Calendar',withQuote*`GenQuote q',withDayCounter*`DayCounter',`Compounding',`Frequency',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
-
--- |A zero-rate coordinate. Date-based queries carry the day-counting rule for the
--- resulting interest rate; time-based queries use the curve's own rule.
-data RatePoint
-  = RateAtDate Day DayCounter
-  | RateAtTime Double
-  deriving (Eq, Show)
 
 -- |A forward-rate interval whose endpoints use the same coordinate representation.
 -- Date-based queries carry the day-counting rule for the resulting interest rate.
