@@ -29,22 +29,22 @@ span.spaces    { background: white }
 <span class="lineno">   10 </span>  , CalendarReference(..)
 <span class="lineno">   11 </span>  , TermPoint(..)
 <span class="lineno">   12 </span>  , TermInterval(..)
-<span class="lineno">   13 </span>  , asTermStructure
-<span class="lineno">   14 </span>  , referenceDate
-<span class="lineno">   15 </span>  , maxDate
-<span class="lineno">   16 </span>  , allowsExtrapolation
-<span class="lineno">   17 </span>  , setExtrapolation
-<span class="lineno">   18 </span>  ) where
-<span class="lineno">   19 </span>import qualified Foreign.C.Types as C2HSImp
-<span class="lineno">   20 </span>import qualified Foreign.ForeignPtr as C2HSImp
-<span class="lineno">   21 </span>import qualified Foreign.Marshal.Utils as C2HSImp
-<span class="lineno">   22 </span>import qualified Foreign.Ptr as C2HSImp
-<span class="lineno">   23 </span>
-<span class="lineno">   24 </span>
-<span class="lineno">   25 </span>import QuantLib.Internal hiding(maxDate)
-<span class="lineno">   26 </span>import QuantLib.Internal.Type
-<span class="lineno">   27 </span>
-<span class="lineno">   28 </span>
+<span class="lineno">   13 </span>  , RatePoint(..)
+<span class="lineno">   14 </span>  , asTermStructure
+<span class="lineno">   15 </span>  , referenceDate
+<span class="lineno">   16 </span>  , maxDate
+<span class="lineno">   17 </span>  , allowsExtrapolation
+<span class="lineno">   18 </span>  , setExtrapolation
+<span class="lineno">   19 </span>  , timeFromReference
+<span class="lineno">   20 </span>  ) where
+<span class="lineno">   21 </span>import qualified Foreign.C.Types as C2HSImp
+<span class="lineno">   22 </span>import qualified Foreign.ForeignPtr as C2HSImp
+<span class="lineno">   23 </span>import qualified Foreign.Marshal.Utils as C2HSImp
+<span class="lineno">   24 </span>import qualified Foreign.Ptr as C2HSImp
+<span class="lineno">   25 </span>
+<span class="lineno">   26 </span>
+<span class="lineno">   27 </span>import QuantLib.Internal hiding(maxDate)
+<span class="lineno">   28 </span>import QuantLib.Internal.Type
 <span class="lineno">   29 </span>
 <span class="lineno">   30 </span>
 <span class="lineno">   31 </span>
@@ -53,88 +53,114 @@ span.spaces    { background: white }
 <span class="lineno">   34 </span>
 <span class="lineno">   35 </span>
 <span class="lineno">   36 </span>
-<span class="lineno">   37 </span>-- |A term-structure reference point. 'ReferenceDate' stays fixed for the object's lifetime;
-<span class="lineno">   38 </span>-- 'SettlementDays' follows the global evaluation date using the supplied calendar.
-<span class="lineno">   39 </span>data Reference
-<span class="lineno">   40 </span>  = ReferenceDate Day
-<span class="lineno">   41 </span>  | SettlementDays Word Calendar
-<span class="lineno">   42 </span>  deriving (<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Eq</span></span></span></span>, <span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Show</span></span></span></span></span></span>)
-<span class="lineno">   43 </span>
-<span class="lineno">   44 </span>-- |Reference-point variants for constructors that take a calendar independently in both
-<span class="lineno">   45 </span>-- upstream overloads.
-<span class="lineno">   46 </span>data CalendarReference
-<span class="lineno">   47 </span>  = CalendarReferenceDate Day
-<span class="lineno">   48 </span>  | CalendarSettlementDays Word
-<span class="lineno">   49 </span>  deriving (<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Eq</span></span></span></span>, <span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Show</span></span></span></span></span></span>)
-<span class="lineno">   50 </span>
-<span class="lineno">   51 </span>-- |A date or year-fraction coordinate measured from a term structure's reference date.
-<span class="lineno">   52 </span>data TermPoint = DatePoint Day | TimePoint Double
-<span class="lineno">   53 </span>  deriving (<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Eq</span></span></span></span>, <span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Show</span></span></span></span></span></span>)
-<span class="lineno">   54 </span>
-<span class="lineno">   55 </span>-- |A same-representation interval. Keeping both endpoints in one constructor prevents mixed
-<span class="lineno">   56 </span>-- date/time intervals that upstream does not accept.
-<span class="lineno">   57 </span>data TermInterval
-<span class="lineno">   58 </span>  = DateInterval Day Day
-<span class="lineno">   59 </span>  | TimeInterval Double Double
-<span class="lineno">   60 </span>  deriving (<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Eq</span></span></span></span>, <span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Show</span></span></span></span></span></span>)
-<span class="lineno">   61 </span>
-<span class="lineno">   62 </span>-- |the date at which discount = 1.0 and/or variance = 0.0
-<span class="lineno">   63 </span>referenceDate :: (GenTermStructure t) -&gt; IO ((Day))
-<span class="lineno">   64 </span><span class="decl"><span class="istickedoff">referenceDate a1 =</span>
-<span class="lineno">   65 </span><span class="spaces">  </span><span class="istickedoff">withTermStructure a1 $ \a1' -&gt; </span>
-<span class="lineno">   66 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
-<span class="lineno">   67 </span><span class="spaces">  </span><span class="istickedoff">referenceDate'_ a1' a2' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">   68 </span><span class="spaces">  </span><span class="istickedoff">let {res' = toDay res} in</span>
-<span class="lineno">   69 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
-<span class="lineno">   70 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">   71 </span>
-<span class="lineno">   72 </span>
-<span class="lineno">   73 </span>
-<span class="lineno">   74 </span>-- |the latest date for which the curve can return values
-<span class="lineno">   75 </span>maxDate :: (GenTermStructure t) -&gt; IO ((Day))
-<span class="lineno">   76 </span><span class="decl"><span class="nottickedoff">maxDate a1 =</span>
-<span class="lineno">   77 </span><span class="spaces">  </span><span class="nottickedoff">withTermStructure a1 $ \a1' -&gt; </span>
-<span class="lineno">   78 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a2' -&gt; </span>
-<span class="lineno">   79 </span><span class="spaces">  </span><span class="nottickedoff">maxDate'_ a1' a2' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">   80 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = toDay res} in</span>
-<span class="lineno">   81 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a2'&gt;&gt;</span>
-<span class="lineno">   82 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
-<span class="lineno">   83 </span>
-<span class="lineno">   84 </span>
-<span class="lineno">   85 </span>
-<span class="lineno">   86 </span>-- |Whether calls beyond the term structure's maximum date are allowed by default.
-<span class="lineno">   87 </span>allowsExtrapolation :: (GenTermStructure t) -&gt; IO ((Bool))
-<span class="lineno">   88 </span><span class="decl"><span class="istickedoff">allowsExtrapolation a1 =</span>
-<span class="lineno">   89 </span><span class="spaces">  </span><span class="istickedoff">withTermStructure a1 $ \a1' -&gt; </span>
-<span class="lineno">   90 </span><span class="spaces">  </span><span class="istickedoff">allowsExtrapolation'_ a1' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">   91 </span><span class="spaces">  </span><span class="istickedoff">let {res' = C2HSImp.toBool res} in</span>
-<span class="lineno">   92 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">   37 </span>
+<span class="lineno">   38 </span>
+<span class="lineno">   39 </span>-- |A term-structure reference point. 'ReferenceDate' stays fixed for the object's lifetime;
+<span class="lineno">   40 </span>-- 'SettlementDays' follows the global evaluation date using the supplied calendar.
+<span class="lineno">   41 </span>data Reference
+<span class="lineno">   42 </span>  = ReferenceDate Day
+<span class="lineno">   43 </span>  | SettlementDays Word Calendar
+<span class="lineno">   44 </span>  deriving (<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Eq</span></span></span></span>, <span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Show</span></span></span></span></span></span>)
+<span class="lineno">   45 </span>
+<span class="lineno">   46 </span>-- |Reference-point variants for constructors that take a calendar independently in both
+<span class="lineno">   47 </span>-- upstream overloads.
+<span class="lineno">   48 </span>data CalendarReference
+<span class="lineno">   49 </span>  = CalendarReferenceDate Day
+<span class="lineno">   50 </span>  | CalendarSettlementDays Word
+<span class="lineno">   51 </span>  deriving (<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Eq</span></span></span></span>, <span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Show</span></span></span></span></span></span>)
+<span class="lineno">   52 </span>
+<span class="lineno">   53 </span>-- |A date or year-fraction coordinate measured from a term structure's reference date.
+<span class="lineno">   54 </span>data TermPoint = DatePoint Day | TimePoint Double
+<span class="lineno">   55 </span>  deriving (<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Eq</span></span></span></span>, <span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Show</span></span></span></span></span></span>)
+<span class="lineno">   56 </span>
+<span class="lineno">   57 </span>-- |A same-representation interval. Keeping both endpoints in one constructor prevents mixed
+<span class="lineno">   58 </span>-- date/time intervals that upstream does not accept.
+<span class="lineno">   59 </span>data TermInterval
+<span class="lineno">   60 </span>  = DateInterval Day Day
+<span class="lineno">   61 </span>  | TimeInterval Double Double
+<span class="lineno">   62 </span>  deriving (<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Eq</span></span></span></span>, <span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Show</span></span></span></span></span></span>)
+<span class="lineno">   63 </span>
+<span class="lineno">   64 </span>-- |A date or year-fraction coordinate where a date needs its day-counting rule.
+<span class="lineno">   65 </span>data RatePoint
+<span class="lineno">   66 </span>  = RateAtDate Day DayCounter
+<span class="lineno">   67 </span>  | RateAtTime Double
+<span class="lineno">   68 </span>  deriving (<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Eq</span></span></span></span>, <span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Show</span></span></span></span></span></span>)
+<span class="lineno">   69 </span>
+<span class="lineno">   70 </span>-- |the date at which discount = 1.0 and/or variance = 0.0
+<span class="lineno">   71 </span>referenceDate :: (GenTermStructure t) -&gt; IO ((Day))
+<span class="lineno">   72 </span><span class="decl"><span class="istickedoff">referenceDate a1 =</span>
+<span class="lineno">   73 </span><span class="spaces">  </span><span class="istickedoff">withTermStructure a1 $ \a1' -&gt; </span>
+<span class="lineno">   74 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
+<span class="lineno">   75 </span><span class="spaces">  </span><span class="istickedoff">referenceDate'_ a1' a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">   76 </span><span class="spaces">  </span><span class="istickedoff">let {res' = toDay res} in</span>
+<span class="lineno">   77 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
+<span class="lineno">   78 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">   79 </span>
+<span class="lineno">   80 </span>
+<span class="lineno">   81 </span>
+<span class="lineno">   82 </span>-- |the latest date for which the curve can return values
+<span class="lineno">   83 </span>maxDate :: (GenTermStructure t) -&gt; IO ((Day))
+<span class="lineno">   84 </span><span class="decl"><span class="nottickedoff">maxDate a1 =</span>
+<span class="lineno">   85 </span><span class="spaces">  </span><span class="nottickedoff">withTermStructure a1 $ \a1' -&gt; </span>
+<span class="lineno">   86 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a2' -&gt; </span>
+<span class="lineno">   87 </span><span class="spaces">  </span><span class="nottickedoff">maxDate'_ a1' a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">   88 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = toDay res} in</span>
+<span class="lineno">   89 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a2'&gt;&gt;</span>
+<span class="lineno">   90 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno">   91 </span>
+<span class="lineno">   92 </span>
 <span class="lineno">   93 </span>
-<span class="lineno">   94 </span>
-<span class="lineno">   95 </span>
-<span class="lineno">   96 </span>-- |Enable or disable default extrapolation for any term structure.
-<span class="lineno">   97 </span>setExtrapolation :: (GenTermStructure t) -&gt; (Bool) -&gt; IO ()
-<span class="lineno">   98 </span><span class="decl"><span class="istickedoff">setExtrapolation a1 a2 =</span>
-<span class="lineno">   99 </span><span class="spaces">  </span><span class="istickedoff">withTermStructure a1 $ \a1' -&gt; </span>
-<span class="lineno">  100 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = C2HSImp.fromBool a2} in </span>
-<span class="lineno">  101 </span><span class="spaces">  </span><span class="istickedoff">setExtrapolation'_ a1' a2' &gt;&gt;</span>
-<span class="lineno">  102 </span><span class="spaces">  </span><span class="istickedoff">return <span class="nottickedoff">()</span></span></span>
+<span class="lineno">   94 </span>-- |Whether calls beyond the term structure's maximum date are allowed by default.
+<span class="lineno">   95 </span>allowsExtrapolation :: (GenTermStructure t) -&gt; IO ((Bool))
+<span class="lineno">   96 </span><span class="decl"><span class="istickedoff">allowsExtrapolation a1 =</span>
+<span class="lineno">   97 </span><span class="spaces">  </span><span class="istickedoff">withTermStructure a1 $ \a1' -&gt; </span>
+<span class="lineno">   98 </span><span class="spaces">  </span><span class="istickedoff">allowsExtrapolation'_ a1' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">   99 </span><span class="spaces">  </span><span class="istickedoff">let {res' = C2HSImp.toBool res} in</span>
+<span class="lineno">  100 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  101 </span>
+<span class="lineno">  102 </span>
 <span class="lineno">  103 </span>
-<span class="lineno">  104 </span>
-<span class="lineno">  105 </span>
-<span class="lineno">  106 </span>-- vim: set ff=unix ts=8 sts=2 sw=2 et:
-<span class="lineno">  107 </span>
-<span class="lineno">  108 </span>foreign import ccall safe &quot;QuantLib/TermStructure.chs.h qlTermStructureReferenceDate&quot;
-<span class="lineno">  109 </span>  referenceDate'_ :: ((C2HSImp.Ptr (CTermStructure')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CInt)))
-<span class="lineno">  110 </span>
-<span class="lineno">  111 </span>foreign import ccall safe &quot;QuantLib/TermStructure.chs.h qlTermStructureMaxDate&quot;
-<span class="lineno">  112 </span>  maxDate'_ :: ((C2HSImp.Ptr (CTermStructure')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CInt)))
+<span class="lineno">  104 </span>-- |Enable or disable default extrapolation for any term structure.
+<span class="lineno">  105 </span>setExtrapolation :: (GenTermStructure t) -&gt; (Bool) -&gt; IO ()
+<span class="lineno">  106 </span><span class="decl"><span class="istickedoff">setExtrapolation a1 a2 =</span>
+<span class="lineno">  107 </span><span class="spaces">  </span><span class="istickedoff">withTermStructure a1 $ \a1' -&gt; </span>
+<span class="lineno">  108 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = C2HSImp.fromBool a2} in </span>
+<span class="lineno">  109 </span><span class="spaces">  </span><span class="istickedoff">setExtrapolation'_ a1' a2' &gt;&gt;</span>
+<span class="lineno">  110 </span><span class="spaces">  </span><span class="istickedoff">return <span class="nottickedoff">()</span></span></span>
+<span class="lineno">  111 </span>
+<span class="lineno">  112 </span>
 <span class="lineno">  113 </span>
-<span class="lineno">  114 </span>foreign import ccall safe &quot;QuantLib/TermStructure.chs.h qlTermStructureAllowsExtrapolation&quot;
-<span class="lineno">  115 </span>  allowsExtrapolation'_ :: ((C2HSImp.Ptr (CTermStructure')) -&gt; (IO C2HSImp.CInt))
-<span class="lineno">  116 </span>
-<span class="lineno">  117 </span>foreign import ccall safe &quot;QuantLib/TermStructure.chs.h qlTermStructureSetExtrapolation&quot;
-<span class="lineno">  118 </span>  setExtrapolation'_ :: ((C2HSImp.Ptr (CTermStructure')) -&gt; (C2HSImp.CInt -&gt; (IO ())))
+<span class="lineno">  114 </span>-- |Converts a date to a time (as a fraction of year) according to the term structure's day counter.
+<span class="lineno">  115 </span>timeFromReference :: (GenTermStructure t) -- ^term structure
+<span class="lineno">  116 </span> -&gt; (Day) -- ^date
+<span class="lineno">  117 </span> -&gt; IO ((Double))
+<span class="lineno">  118 </span><span class="decl"><span class="istickedoff">timeFromReference a1 a2 =</span>
+<span class="lineno">  119 </span><span class="spaces">  </span><span class="istickedoff">withTermStructure a1 $ \a1' -&gt; </span>
+<span class="lineno">  120 </span><span class="spaces">  </span><span class="istickedoff">withDay a2 $ \a2' -&gt; </span>
+<span class="lineno">  121 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
+<span class="lineno">  122 </span><span class="spaces">  </span><span class="istickedoff">timeFromReference'_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  123 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno">  124 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
+<span class="lineno">  125 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  126 </span>
+<span class="lineno">  127 </span>
+<span class="lineno">  128 </span>
+<span class="lineno">  129 </span>-- vim: set ff=unix ts=8 sts=2 sw=2 et:
+<span class="lineno">  130 </span>
+<span class="lineno">  131 </span>foreign import ccall safe &quot;QuantLib/TermStructure.chs.h qlTermStructureReferenceDate&quot;
+<span class="lineno">  132 </span>  referenceDate'_ :: ((C2HSImp.Ptr (CTermStructure')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CInt)))
+<span class="lineno">  133 </span>
+<span class="lineno">  134 </span>foreign import ccall safe &quot;QuantLib/TermStructure.chs.h qlTermStructureMaxDate&quot;
+<span class="lineno">  135 </span>  maxDate'_ :: ((C2HSImp.Ptr (CTermStructure')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CInt)))
+<span class="lineno">  136 </span>
+<span class="lineno">  137 </span>foreign import ccall safe &quot;QuantLib/TermStructure.chs.h qlTermStructureAllowsExtrapolation&quot;
+<span class="lineno">  138 </span>  allowsExtrapolation'_ :: ((C2HSImp.Ptr (CTermStructure')) -&gt; (IO C2HSImp.CInt))
+<span class="lineno">  139 </span>
+<span class="lineno">  140 </span>foreign import ccall safe &quot;QuantLib/TermStructure.chs.h qlTermStructureSetExtrapolation&quot;
+<span class="lineno">  141 </span>  setExtrapolation'_ :: ((C2HSImp.Ptr (CTermStructure')) -&gt; (C2HSImp.CInt -&gt; (IO ())))
+<span class="lineno">  142 </span>
+<span class="lineno">  143 </span>foreign import ccall safe &quot;QuantLib/TermStructure.chs.h qlTermStructureTimeFromReference&quot;
+<span class="lineno">  144 </span>  timeFromReference'_ :: ((C2HSImp.Ptr (CTermStructure')) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble))))
 
 </pre>
 </body>
