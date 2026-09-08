@@ -135,7 +135,7 @@ module QuantLib.TermStructure.Volatility
   , abcdMaxError
   , abcdEndCriteria
   , abcdK
-  , abcdKAtTime
+  , abcdKs
   , abcdAtmVolCurveOptionTenors
   , abcdOptionTenorsInInterpolation
   , abcdOptionDates
@@ -1454,10 +1454,10 @@ abcdAtmVolCurve d c points bdc dc = qlAbcdAtmVolCurve d c n t qs flags bdc dc
 {#fun qlAbcdAtmVolCurveEndCriteria as abcdEndCriteria{withAbcdAtmVolCurve*`AbcdAtmVolCurve',preErrorCheck-`String'errorCheck*-}->`EndCriteriaType'#}
 
 -- |@k@ adjustment factor at a given time
-{#fun qlAbcdAtmVolCurveKAtTime as abcdKAtTime{withAbcdAtmVolCurve*`AbcdAtmVolCurve',`Double',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlAbcdAtmVolCurveKAtTime as abcdK{withAbcdAtmVolCurve*`AbcdAtmVolCurve',`Double',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |@k@ adjustment factors for every option tenor used in interpolation
-{#fun qlAbcdAtmVolCurveK as abcdK{withAbcdAtmVolCurve*`AbcdAtmVolCurve',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlAbcdAtmVolCurveK as abcdKs{withAbcdAtmVolCurve*`AbcdAtmVolCurve',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 abcdAtmVolCurveOptionTenors :: AbcdAtmVolCurve -> IO [(Word, TimeUnit)]
 abcdAtmVolCurveOptionTenors o = do

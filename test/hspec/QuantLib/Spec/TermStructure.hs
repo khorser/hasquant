@@ -890,7 +890,7 @@ spec = do
           _ <- Vol.abcdC curve
           _ <- Vol.abcdD curve
           _ <- Vol.abcdEndCriteria curve
-          ks <- Vol.abcdK curve
+          ks <- Vol.abcdKs curve
           length ks `shouldBe` 10
           returnedTenors <- Vol.abcdAtmVolCurveOptionTenors curve
           length returnedTenors `shouldBe` 10

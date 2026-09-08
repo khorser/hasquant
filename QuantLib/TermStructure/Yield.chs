@@ -295,11 +295,6 @@ zeroRate curve point = case point of
 forwardRate :: GenYieldTermStructure y -> RatePoint -> RatePoint -> Compounding -> Frequency -> Bool
   -> IO InterestRate
 forwardRate ts (RateAtDate d1 dc1) (RateAtDate d2 dc2) cmp f e | dc1 == dc2 = forwardRateBetweenDatesRaw ts d1 d2 dc1 cmp f e
-forwardRate ts (RateAtDate d1 dc1) (RateAtDate d2 dc2) cmp f e = do
-  r <- referenceDate ts
-  t1 <- yearFraction dc1 r d1 Nothing Nothing
-  t2 <- yearFraction dc2 r d2 Nothing Nothing
-  forwardRateBetweenTimesRaw ts t1 t2 cmp f e
 forwardRate ts (RateAtTime t1) (RateAtTime t2) cmp f e = forwardRateBetweenTimesRaw ts t1 t2 cmp f e
 forwardRate ts (RateAtDate d1 dc1) t2 cmp f e = do
   r <- referenceDate ts

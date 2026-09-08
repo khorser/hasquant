@@ -412,8 +412,8 @@ abcdAtmVolCurveD	abcdD
 abcdAtmVolCurveRmsError	abcdRmsError
 abcdAtmVolCurveMaxError	abcdMaxError
 abcdAtmVolCurveEndCriteria	abcdEndCriteria
-abcdAtmVolCurveK	abcdK
-abcdAtmVolCurveKAtTime	abcdKAtTime
+abcdAtmVolCurveK	abcdKs
+abcdAtmVolCurveKAtTime	abcdK
 abcdAtmVolCurveOptionTenorsInInterpolation	abcdOptionTenorsInInterpolation
 abcdAtmVolCurveOptionDates	abcdOptionDates
 abcdAtmVolCurveOptionTimes	abcdOptionTimes
@@ -428,3 +428,4 @@ garch11LtVol	longTermVolatility
 garch11LogLikelihood	logLikelihood
 garch11Forecast	forecast
 garch11Calculate	calculate
+years	yearFraction
