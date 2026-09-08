@@ -1,4 +1,4 @@
-|u|ql/cashflow.hpp|Real CashFlow::amount() const;
+|v|ql/cashflow.hpp|Real CashFlow::amount() const;
 | |ql/cashflow.hpp|Date CashFlow::exCouponDate() const;
 | |ql/cashflow.hpp|bool CashFlow::tradingExCoupon(const Date & refDate = Date()) const;
 | |ql/cashflow.hpp|ext::shared_ptr<Coupon> CashFlow::coupon_cast(const ext::shared_ptr<CashFlow> &);
@@ -381,8 +381,8 @@
 |x|ql/cashflows/indexedcashflow.hpp|Date IndexedCashFlow::fixingDate() const;
 |x|ql/cashflows/indexedcashflow.hpp|ext::shared_ptr<Index> IndexedCashFlow::index() const;
 |x|ql/cashflows/indexedcashflow.hpp|bool IndexedCashFlow::growthOnly() const;
-|u|ql/cashflows/indexedcashflow.hpp|Real IndexedCashFlow::baseFixing() const;
-|u|ql/cashflows/indexedcashflow.hpp|Real IndexedCashFlow::indexFixing() const;
+|v|ql/cashflows/indexedcashflow.hpp|Real IndexedCashFlow::baseFixing() const;
+|v|ql/cashflows/indexedcashflow.hpp|Real IndexedCashFlow::indexFixing() const;
 | |ql/cashflows/indexedcashflow.hpp|void accept(AcyclicVisitor & v);
 |x|ql/cashflows/inflationcoupon.hpp|InflationCoupon::InflationCoupon(const Date & paymentDate, Real nominal, const Date & startDate, const Date & endDate, Natural fixingDays, ext::shared_ptr<InflationIndex> index, const Period & observationLag, DayCounter dayCounter, const Date & refPeriodStart = Date(), const Date & refPeriodEnd = Date(), const Date & exCouponDate = Date());
 |x|ql/cashflows/inflationcoupon.hpp|Real InflationCoupon::price(const Handle<YieldTermStructure> & discountingCurve) const;
@@ -782,7 +782,7 @@
 | |ql/discretizedasset.hpp|bool isOnTime(Time t) const;
 | |ql/discretizedasset.hpp|void applyExerciseCondition();
 | |ql/errors.hpp|Error::Error(const std::string & file, long line, const std::string & functionName, const std::string & message = "");
-| |ql/event.hpp|Date Event::date() const;
+|v|ql/event.hpp|Date Event::date() const;
 | |ql/event.hpp|bool Event::hasOccurred(const Date & refDate = Date(), ext::optional<bool> includeRefDate = ext::nullopt) const;
 | |ql/event.hpp|void Event::accept(AcyclicVisitor &);
 | |ql/event.hpp|simple_event::simple_event(const Date & date);

@@ -191,7 +191,7 @@ buildBonds md = do
     mapM (\(q, n) ->
       do
         quote <- simpleQuote q
-        swapRateHelperWithConventions quote (n, Years) (targetCal md) Annual Unadjusted
+        swapRateHelperFromConventions quote (n, Years) (targetCal md) Annual Unadjusted
                               (thirty360Europeandc md) eur6M Nothing (1, Days) Nothing
                               Nothing LastRelevantDate Nothing False Nothing Nothing Nothing >>= asRateHelper) $
           zip liborSwapQuotes liborSwapTerms

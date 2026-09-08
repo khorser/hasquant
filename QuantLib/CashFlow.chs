@@ -14,9 +14,15 @@ module QuantLib.CashFlow
   , CPIInterpolationType(..)
   , GenLeg
   , CashFlow
+  , GenCashFlow
+  , asCashFlow
+  , amount
+  , date
 
   , leg
   , simpleCashFlow
+  , IndexedCashFlow
+  , GenIndexedCashFlow
   , indexedCashFlow
   , FixedRateCoupon
   , fixedRateCoupon
@@ -26,7 +32,7 @@ module QuantLib.CashFlow
   , IborCoupon
   , AverageBMACoupon
   , averageBmaCoupon
-  , AsFloatingRateCoupon(..)
+  , asFloatingRateCoupon
   , HasFixingDates(..)
   , HasIndexFixings(..)
   , cappedFlooredCoupon
@@ -42,8 +48,10 @@ module QuantLib.CashFlow
   , cappedFlooredIborCoupon
   , digitalIborCoupon
   , DigitalCoupon
+  , GenDigitalCoupon
   , digitalCoupon
-  , HasDigitalOptionRates(..)
+  , callOptionRate
+  , putOptionRate
   , MultipleResetsCoupon
   , multipleResetsCoupon
   , RangeAccrualFloatersCoupon
@@ -114,7 +122,7 @@ module QuantLib.CashFlow
   , couponAccrualStartDates
 
   , fixedDividend
-  , fractionalDividendFromRate
+  , fractionalDividendWithNominal
   , fractionalDividend
 
   , averageBmaLeg
@@ -129,10 +137,8 @@ module QuantLib.CashFlow
   , defaultCmsLegOpts
   , FloatingRateCoupon
   , GenFloatingRateCoupon
-  , AsCashFlow(..)
-  , HasAmount(..)
-  , HasBaseFixing(..)
-  , HasIndexFixing(..)
+  , baseFixing
+  , indexFixing
   , rate
   , setFloatingRateCouponPricer
   , price
@@ -211,8 +217,7 @@ import QuantLib.Internal
 {#import QuantLib.InterestRate#}(Compounding, VolatilityType)
 {#import QuantLib.Time.Schedule#}(Frequency)
 import QuantLib.Time.Calendar(calendar, CalendarConstructor(..))
-import QuantLib.Internal.Type hiding (asFloatingRateCoupon)
-import qualified QuantLib.Internal.Type as InternalType (asFloatingRateCoupon)
+import QuantLib.Internal.Type
 import QuantLib.Internal.Common
 import QuantLib.Internal.Syntax(deriveOptionsRecord)
 import Data.Maybe(fromMaybe)
@@ -226,13 +231,14 @@ import Data.List.NonEmpty(NonEmpty(..), toList)
 
 {#pointer *QlDigitalCoupon as DigitalCoupon foreign -> CDigitalCoupon' nocode#}
 {#pointer *QlRangeAccrualFloatersCoupon as RangeAccrualFloatersCoupon foreign -> CRangeAccrualFloatersCoupon' nocode#}
-{#pointer *QlYoYInflationCoupon as YoYInflationCoupon foreign -> CYoYInflationCoupon nocode#}
+{#pointer *QlYoYInflationCoupon as YoYInflationCoupon foreign -> CYoYInflationCoupon' nocode#}
 {#pointer *Calendar foreign -> CCalendar nocode#}
 {#pointer *Leg foreign -> CLeg' nocode#}
 {#pointer *CouponLeg foreign -> CCouponLeg' nocode#}
 {#pointer *QlQuote as Quote foreign -> CQuote' nocode#}
-{#pointer *QlCashFlow as CashFlow foreign -> CCashFlow nocode#}
-{#pointer *QlFixedRateCoupon as FixedRateCoupon foreign -> CFixedRateCoupon nocode#}
+{#pointer *QlCashFlow as CashFlow foreign -> CCashFlow' nocode#}
+{#pointer *QlIndexedCashFlow as IndexedCashFlow foreign -> CIndexedCashFlow' nocode#}
+{#pointer *QlFixedRateCoupon as FixedRateCoupon foreign -> CFixedRateCoupon' nocode#}
 {#pointer *InterestRate foreign -> CInterestRate nocode#}
 {#pointer *QlIndex as Index foreign -> CIndex' nocode#}
 {#pointer *QlInterestRateIndex as InterestRateIndex foreign -> CInterestRateIndex' nocode#}
@@ -246,9 +252,9 @@ import Data.List.NonEmpty(NonEmpty(..), toList)
 {#pointer *QlOptionletVolatilityStructure as OptionletVolatilityStructure foreign -> COptionletVolatilityStructure' nocode#}
 {#pointer *QlZeroInflationIndex as ZeroInflationIndex foreign -> CZeroInflationIndex' nocode#}
 {#pointer *QlEquityIndex as EquityIndex foreign -> CEquityIndex' nocode#}
-{#pointer *QlZeroInflationCashFlow as ZeroInflationCashFlow foreign -> CZeroInflationCashFlow nocode#}
-{#pointer *QlCPICashFlow as CPICashFlow foreign -> CCPICashFlow nocode#}
-{#pointer *QlEquityCashFlow as EquityCashFlow foreign -> CEquityCashFlow nocode#}
+{#pointer *QlZeroInflationCashFlow as ZeroInflationCashFlow foreign -> CZeroInflationCashFlow' nocode#}
+{#pointer *QlCPICashFlow as CPICashFlow foreign -> CCPICashFlow' nocode#}
+{#pointer *QlEquityCashFlow as EquityCashFlow foreign -> CEquityCashFlow' nocode#}
 {#pointer *QlBlackVolTermStructure as BlackVolTermStructure foreign -> CBlackVolTermStructure' nocode#}
 {#pointer *QlYoYInflationIndex as YoYInflationIndex foreign -> CYoYInflationIndex' nocode#}
 {#pointer *QlFloatingRateCouponPricer as FloatingRateCouponPricer foreign -> CFloatingRateCouponPricer' nocode#}
@@ -259,7 +265,7 @@ import Data.List.NonEmpty(NonEmpty(..), toList)
 {#pointer *QlOvernightIndexedCoupon as OvernightIndexedCoupon foreign -> COvernightIndexedCoupon' nocode#}
 {#pointer *QlAverageBMACoupon as AverageBMACoupon foreign -> CAverageBMACoupon' nocode#}
 {#pointer *QlMultipleResetsCoupon as MultipleResetsCoupon foreign -> CMultipleResetsCoupon' nocode#}
-{#pointer *QlCPICoupon as CPICoupon foreign -> CCPICoupon nocode#}
+{#pointer *QlCPICoupon as CPICoupon foreign -> CCPICoupon' nocode#}
 {#pointer *QlCPICouponPricer as CPICouponPricer foreign -> CCPICouponPricer nocode#}
 {#pointer *QlCPIVolatilitySurface as CPIVolatilitySurface foreign -> CCPIVolatilitySurface' nocode#}
 
@@ -352,6 +358,14 @@ leg f = qlLeg fs ds where (ds, fs) = unzip f
   ,withDay*`Day' -- ^payment date
   ,preErrorCheck-`String'errorCheck*-}->`CashFlow'peekCashFlow*#}
 
+-- |The undiscounted amount paid by a cash flow on its payment date.
+{#fun qlCashFlowAmount as amount{withCashFlow*`GenCashFlow cf' -- ^cashFlow
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |The payment date of a cash flow.
+{#fun pure qlCashFlowDate as date{withCashFlow*`GenCashFlow cf' -- ^cashFlow
+  }->`Day'toDay#}
+
 -- |A payment of @notional * i(fixingDate) \/ i(baseDate)@, or the same ratio minus one when
 -- /growthOnly/ is true.  QuantLib does no date adjustment here; callers supply the already
 -- adjusted fixing and payment dates.  This is the generic building block behind the specialized
@@ -362,11 +376,20 @@ leg f = qlLeg fs ds where (ds, fs) = unzip f
   ,withDay*`Day' -- ^fixing date
   ,withDay*`Day' -- ^payment date
   ,`Bool' -- ^growthOnly
-  ,preErrorCheck-`String'errorCheck*-}->`CashFlow'peekCashFlow*#}
+  ,preErrorCheck-`String'errorCheck*-}->`IndexedCashFlow'peekIndexedCashFlow*#}
+
+-- |The fixing used as the base of an indexed cash flow's return ratio.
+{#fun qlIndexedCashFlowBaseFixing as baseFixing{withIndexedCashFlow*`GenIndexedCashFlow icf'
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |The fixing used as the numerator of an indexed cash flow's return ratio.
+{#fun qlIndexedCashFlowIndexFixing as indexFixing{withIndexedCashFlow*`GenIndexedCashFlow icf'
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |A fixed coupon with explicitly supplied payment, accrual, reference-period, and ex-coupon
--- dates.  'Nothing' for a reference or ex-coupon date passes QuantLib's empty @Date()@. Convert
--- with 'asCashFlow' to combine it with other cash flows in a 'Leg'.
+-- dates.  'Nothing' for a reference or ex-coupon date passes QuantLib's empty @Date()@. A
+-- homogeneous list of fixed coupons can be passed directly to 'cashFlowLeg'; use 'asCashFlow'
+-- only when mixing it with other cash-flow types.
 {#fun qlFixedRateCoupon as fixedRateCoupon{withDay*`Day' -- ^paymentDate
   ,`Double' -- ^nominal
   ,`Double' -- ^rate
@@ -377,10 +400,6 @@ leg f = qlLeg fs ds where (ds, fs) = unzip f
   ,withMaybeDay*`Maybe Day' -- ^referencePeriodEnd
   ,withMaybeDay*`Maybe Day' -- ^exCouponDate
   ,preErrorCheck-`String'errorCheck*-}->`FixedRateCoupon'peekFixedRateCoupon*#}
-
--- |Widen a 'FixedRateCoupon' to the generic 'CashFlow' -- needed to combine it with other cash
--- flows via 'cashFlowLeg' or similar.
-{#fun qlFixedRateCouponAsCashFlow as fixedRateCouponAsCashFlowRaw{withFixedRateCoupon*`FixedRateCoupon'}->`CashFlow'peekCashFlow*#}
 
 -- |The coupon's own fixed rate, as an 'InterestRate' (rate value plus day counter/compounding/
 -- frequency) rather than a bare rate -- distinct from 'rate', which returns a
@@ -404,7 +423,7 @@ leg f = qlLeg fs ds where (ds, fs) = unzip f
   ,`Bool' -- ^inArrears
   ,withMaybeDay*`Maybe Day' -- ^exCouponDate
   ,fromEnumC`BusinessDayConvention' -- ^fixingConvention
-  ,preErrorCheck-`String'errorCheck*-}->`CashFlow'peekCashFlow*#}
+  ,preErrorCheck-`String'errorCheck*-}->`FloatingRateCoupon'peekFloatingRateCoupon*#}
 
 -- |An Ibor-specific floating coupon.  Prefer this to 'floatingRateCoupon' when the index is
 -- Ibor: QuantLib then uses IborCoupon's fixing value/maturity-date logic rather than the base
@@ -437,9 +456,6 @@ leg f = qlLeg fs ds where (ds, fs) = unzip f
   ,withMaybeDay*`Maybe Day' -- ^referencePeriodEnd
   ,withDayCounter*`DayCounter' -- ^dayCounter
   ,preErrorCheck-`String'errorCheck*-}->`AverageBMACoupon'peekAverageBMACoupon*#}
-
--- |Widen an 'AverageBMACoupon' to the generic 'FloatingRateCoupon'.
-{#fun qlAverageBMACouponAsFloatingRateCoupon as averageBmaCouponAsFloatingRateCouponRaw{withAverageBMACoupon*`AverageBMACoupon'}->`FloatingRateCoupon'peekFloatingRateCoupon*#}
 
 -- |The fixing dates of the individual BMA rates being averaged over this coupon's accrual period.
 {#fun qlAverageBMACouponFixingDates as averageBmaCouponFixingDatesRaw{withAverageBMACoupon*`AverageBMACoupon',preArray-`[Day]'&peekDayArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
@@ -524,7 +540,7 @@ leg f = qlLeg fs ds where (ds, fs) = unzip f
   ,fromMaybeDouble`Maybe Double' -- ^putDigitalPayoff
   ,withMaybeDigitalReplication*`Maybe DigitalReplication' -- ^replication
   ,`Bool' -- ^nakedOption
-  ,preErrorCheck-`String'errorCheck*-}->`FloatingRateCoupon'peekFloatingRateCoupon*#}
+  ,preErrorCheck-`String'errorCheck*-}->`DigitalCoupon'peekDigitalCoupon*#}
 
 -- |A floating coupon with replicated digital call and put payoffs.  Optional
 -- strikes/payoffs use 'Nothing' for QuantLib's null-rate sentinel.
@@ -533,8 +549,8 @@ leg f = qlLeg fs ds where (ds, fs) = unzip f
   ,fromMaybeDouble`Maybe Double',fromEnumC`PositionType',`Bool',fromMaybeDouble`Maybe Double'
   ,withMaybeDigitalReplication*`Maybe DigitalReplication',`Bool'
   ,preErrorCheck-`String'errorCheck*-}->`DigitalCoupon'peekDigitalCoupon*#}
-{#fun qlDigitalCouponCallOptionRate as digitalCouponCallOptionRateRaw{withDigitalCoupon*`DigitalCoupon',preErrorCheck-`String'errorCheck*-}->`Double'#}
-{#fun qlDigitalCouponPutOptionRate as digitalCouponPutOptionRateRaw{withDigitalCoupon*`DigitalCoupon',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlDigitalCouponCallOptionRate as callOptionRate{withDigitalCoupon*`GenDigitalCoupon dc',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlDigitalCouponPutOptionRate as putOptionRate{withDigitalCoupon*`GenDigitalCoupon dc',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Ibor coupon whose rate averages multiple reset dates in each accrual period.
 {#fun qlMultipleResetsCoupon as multipleResetsCoupon{withDay*`Day' -- ^paymentDate
@@ -551,9 +567,6 @@ leg f = qlLeg fs ds where (ds, fs) = unzip f
   ,withMaybeDay*`Maybe Day' -- ^exCouponDate
   ,preErrorCheck-`String'errorCheck*-}->`MultipleResetsCoupon'peekMultipleResetsCoupon*#}
 
--- |Widen a 'MultipleResetsCoupon' to the generic 'FloatingRateCoupon'.
-{#fun qlMultipleResetsCouponAsFloatingRateCoupon as multipleResetsCouponAsFloatingRateCouponRaw{withMultipleResetsCoupon*`MultipleResetsCoupon'}->`FloatingRateCoupon'peekFloatingRateCoupon*#}
-
 -- |Fixing dates for the rates being compounded over this coupon's reset schedule.
 {#fun qlMultipleResetsCouponFixingDates as multipleResetsCouponFixingDatesRaw{withMultipleResetsCoupon*`MultipleResetsCoupon',preArray-`[Day]'&peekDayArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
@@ -566,7 +579,6 @@ leg f = qlLeg fs ds where (ds, fs) = unzip f
 -- |A year-on-year inflation coupon.  As for 'yoyInflationLeg', attach a
 -- YoY inflation coupon pricer before evaluating the coupon rate.
 {#fun qlYoYInflationCoupon as yoyInflationCoupon{withDay*`Day',`Double',withDay*`Day',withDay*`Day',fromIntegral`Word',withYoYInflationIndex*`YoYInflationIndex',fromEnumQuantity`(Int,TimeUnit)'&,fromEnumC`CPIInterpolationType',withDayCounter*`DayCounter',`Double',`Double',withMaybeDay*`Maybe Day',withMaybeDay*`Maybe Day',preErrorCheck-`String'errorCheck*-}->`YoYInflationCoupon'peekYoYInflationCoupon*#}
-{#fun qlYoYInflationCouponAsCashFlow as yoyInflationCouponAsCashFlowRaw{withYoYInflationCoupon*`YoYInflationCoupon'}->`CashFlow'peekCashFlow*#}
 {#fun qlYoYInflationCouponAdjustedFixing as adjustedFixing{withYoYInflationCoupon*`YoYInflationCoupon',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Pricer that arithmetically averages multiple Ibor resets.
@@ -702,11 +714,6 @@ leg f = qlLeg fs ds where (ds, fs) = unzip f
   ,withCPICouponPricer*`CPICouponPricer' -- ^pricer
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
--- |Convert a CPI coupon to the generic cash-flow representation used by
--- heterogeneous 'cashFlowLeg' inputs.
-{#fun qlCPICouponAsCashFlow as cpiCouponAsCashFlowRaw{withCPICoupon*`CPICoupon' -- ^coupon
-  }->`CashFlow'peekCashFlow*#}
-
 -- |The ratio of the (possibly interpolated) index value on /d/ to the coupon's base index
 -- value, i.e. the inflation-adjustment factor applied to the coupon's fixed rate.
 {#fun qlCPICouponIndexRatio as indexRatio{withCPICoupon*`CPICoupon' -- ^coupon
@@ -723,9 +730,10 @@ leg f = qlLeg fs ds where (ds, fs) = unzip f
   ,withDay*`Day' -- ^date
   ,preErrorCheck-`String'errorCheck*-}->`CashFlow'peekCashFlow*#}
 
--- |Build a heterogeneous 'Leg' from cash-flow building blocks.  The leg takes shared ownership
--- of each flow, so it remains valid when the individual 'CashFlow' values are no longer retained.
-{#fun qlCashFlowLeg as cashFlowLeg{withCashFlowArray*`[CashFlow]'& -- ^cashFlows
+-- |Build a 'Leg' from a homogeneous cash-flow subtype, or from explicitly erased 'CashFlow'
+-- values when the elements are heterogeneous. The leg takes shared ownership of each flow, so
+-- it remains valid when the individual values are no longer retained.
+{#fun qlCashFlowLeg as cashFlowLeg{withCashFlowArray*`[GenCashFlow cf]'& -- ^cashFlows
   ,preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
 
 -- |Returns the start (i.e. first accrual) date for the given Leg
@@ -955,7 +963,7 @@ cashFlows l i d = do{(as, ds, hs) <- qlLegCashFlows l i d; return $ zip3 ds as h
   ,preErrorCheck-`String'errorCheck*-}->`Dividend'peekDividend*#}
 
 -- |Predetermined cash flow paying /rate/ times /nominal/ at /date/.
-{#fun qlFractionalDividend1 as fractionalDividendFromRate{`Double' -- ^rate
+{#fun qlFractionalDividend1 as fractionalDividendWithNominal{`Double' -- ^rate
   ,`Double' -- ^nominal
   ,withDay*`Day' -- ^date
   ,preErrorCheck-`String'errorCheck*-}->`Dividend'peekDividend*#}
@@ -1117,9 +1125,9 @@ cmsLegWithOptions schedule idx notionals dc adj fixingDays gearings spreads caps
   ,withDoubleArray*`[Double]'& -- ^caps
   ,withDoubleArray*`[Double]'& -- ^floors
   ,preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
-{#pointer *QlZeroInflationCashFlow as ZeroInflationCashFlow foreign -> CZeroInflationCashFlow nocode#}
-{#pointer *QlCPICashFlow as CPICashFlow foreign -> CCPICashFlow nocode#}
-{#pointer *QlEquityCashFlow as EquityCashFlow foreign -> CEquityCashFlow nocode#}
+{#pointer *QlZeroInflationCashFlow as ZeroInflationCashFlow foreign -> CZeroInflationCashFlow' nocode#}
+{#pointer *QlCPICashFlow as CPICashFlow foreign -> CCPICashFlow' nocode#}
+{#pointer *QlEquityCashFlow as EquityCashFlow foreign -> CEquityCashFlow' nocode#}
 {#pointer *QlEquityCashFlowPricer as EquityCashFlowPricer foreign -> CEquityCashFlowPricer nocode#}
 
 -- |Cash flow dependent on a 'ZeroInflationIndex' ratio (not a coupon -- no accruals).
@@ -1134,19 +1142,6 @@ cmsLegWithOptions schedule idx notionals dc adj fixingDays gearings spreads caps
   ,`Bool' -- ^growthOnly
   ,preErrorCheck-`String'errorCheck*-}->`ZeroInflationCashFlow'peekZeroInflationCashFlow*#}
 
--- |Use this zero-inflation cash flow in a heterogeneous 'cashFlowLeg'. The returned generic
--- 'CashFlow' shares ownership with the original, so both values remain valid independently.
-{#fun qlZeroInflationCashFlowAsCashFlow as zeroInflationCashFlowAsCashFlowRaw{withZeroInflationCashFlow*`ZeroInflationCashFlow'}->`CashFlow'peekCashFlow*#}
-
--- |Amount of the cash flow: the index ratio (times notional), or the ratio minus one if growthOnly.
-{#fun qlZeroInflationCashFlowAmount as zeroInflationCashFlowAmountRaw{withZeroInflationCashFlow*`ZeroInflationCashFlow',preErrorCheck-`String'errorCheck*-}->`Double'#}
-
--- |Fixing used as the base of the ratio (as of /startDate/, lagged).
-{#fun qlZeroInflationCashFlowBaseFixing as zeroInflationCashFlowBaseFixingRaw{withZeroInflationCashFlow*`ZeroInflationCashFlow',preErrorCheck-`String'errorCheck*-}->`Double'#}
-
--- |Fixing used as the numerator of the ratio (as of /endDate/, lagged).
-{#fun qlZeroInflationCashFlowIndexFixing as zeroInflationCashFlowIndexFixingRaw{withZeroInflationCashFlow*`ZeroInflationCashFlow',preErrorCheck-`String'errorCheck*-}->`Double'#}
-
 -- |CPI-linked cash flow (not a coupon -- no accruals), with an optional explicit /baseFixing/
 -- (pass 'Nothing' to derive it from /baseDate/ instead).
 {#fun qlCPICashFlow as cpiCashFlow{`Double' -- ^notional
@@ -1160,19 +1155,6 @@ cmsLegWithOptions schedule idx notionals dc adj fixingDays gearings spreads caps
   ,`Bool' -- ^growthOnly
   ,preErrorCheck-`String'errorCheck*-}->`CPICashFlow'peekCPICashFlow*#}
 
--- |Use this CPI cash flow in a heterogeneous 'cashFlowLeg'. The returned generic 'CashFlow'
--- shares ownership with the original, so both values remain valid independently.
-{#fun qlCPICashFlowAsCashFlow as cpiCashFlowAsCashFlowRaw{withCPICashFlow*`CPICashFlow'}->`CashFlow'peekCashFlow*#}
-
--- |Amount of the cash flow: the index ratio (times notional), or the ratio minus one if growthOnly.
-{#fun qlCPICashFlowAmount as cpiCashFlowAmountRaw{withCPICashFlow*`CPICashFlow',preErrorCheck-`String'errorCheck*-}->`Double'#}
-
--- |Fixing used as the base of the ratio: the explicit /baseFixing/ if given at construction, else derived from /baseDate/.
-{#fun qlCPICashFlowBaseFixing as cpiCashFlowBaseFixingRaw{withCPICashFlow*`CPICashFlow',preErrorCheck-`String'errorCheck*-}->`Double'#}
-
--- |Fixing used as the numerator of the ratio (as of /observationDate/, lagged).
-{#fun qlCPICashFlowIndexFixing as cpiCashFlowIndexFixingRaw{withCPICashFlow*`CPICashFlow',preErrorCheck-`String'errorCheck*-}->`Double'#}
-
 -- |Cash flow dependent on the total return of an 'QuantLib.Index.Equity.EquityIndex' (not a coupon
 -- -- no accruals): @index(fixingDate)\/index(baseDate)@, or that ratio minus one if /growthOnly/.
 -- If no 'EquityCashFlowPricer' is attached via 'setEquityCashFlowPricer', 'amount'
@@ -1185,20 +1167,6 @@ cmsLegWithOptions schedule idx notionals dc adj fixingDays gearings spreads caps
   ,withDay*`Day' -- ^paymentDate
   ,`Bool' -- ^growthOnly
   ,preErrorCheck-`String'errorCheck*-}->`EquityCashFlow'peekEquityCashFlow*#}
-
--- |Use this equity cash flow in a heterogeneous 'cashFlowLeg'. The returned generic 'CashFlow'
--- shares ownership with the original, so both values remain valid independently.
-{#fun qlEquityCashFlowAsCashFlow as equityCashFlowAsCashFlowRaw{withEquityCashFlow*`EquityCashFlow'}->`CashFlow'peekCashFlow*#}
-
--- |Amount of the cash flow: the index ratio (times notional), or the ratio minus one if growthOnly --
--- or, if a pricer is attached, the notional times the pricer's 'price'.
-{#fun qlEquityCashFlowAmount as equityCashFlowAmountRaw{withEquityCashFlow*`EquityCashFlow',preErrorCheck-`String'errorCheck*-}->`Double'#}
-
--- |Fixing used as the base of the ratio (as of /baseDate/).
-{#fun qlEquityCashFlowBaseFixing as equityCashFlowBaseFixingRaw{withEquityCashFlow*`EquityCashFlow',preErrorCheck-`String'errorCheck*-}->`Double'#}
-
--- |Fixing used as the numerator of the ratio (as of /fixingDate/).
-{#fun qlEquityCashFlowIndexFixing as equityCashFlowIndexFixingRaw{withEquityCashFlow*`EquityCashFlow',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Attach a pricer (e.g. from 'equityQuantoCashFlowPricer') to a single 'EquityCashFlow'; see
 -- 'setEquityLegPricer' to attach one to every 'EquityCashFlow' in a leg instead.
@@ -1352,17 +1320,8 @@ cmsLegWithOptions schedule idx notionals dc adj fixingDays gearings spreads caps
   ,fromEnumC`BusinessDayConvention' -- ^fixingConvention
   ,preErrorCheck-`String'errorCheck*-}->`FloatingRateCoupon'peekFloatingRateCoupon*#}
 
--- |Convert any floating-rate coupon to the generic cash-flow representation used by
--- heterogeneous 'cashFlowLeg' inputs.
-{#fun qlFloatingRateCouponAsCashFlow as floatingRateCouponAsCashFlowRaw{withFloatingRateCoupon*`GenFloatingRateCoupon frc' -- ^coupon
-  }->`CashFlow'peekCashFlow*#}
-
 -- |The coupon rate.  It is calculated by the attached 'FloatingRateCouponPricer'.
 {#fun qlFloatingRateCouponRate as rate{withFloatingRateCoupon*`GenFloatingRateCoupon frc' -- ^coupon
-  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
-
--- |Cash-flow amount, equal to @rate * accrualPeriod * nominal@.
-{#fun qlFloatingRateCouponAmount as floatingRateCouponAmountRaw{withFloatingRateCoupon*`GenFloatingRateCoupon frc' -- ^coupon
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Set the coupon pricer used to calculate a floating-rate coupon's rate.
@@ -1467,14 +1426,6 @@ cmsLegWithOptions schedule idx notionals dc adj fixingDays gearings spreads caps
   ,`Bool' -- ^nakedOption
   ,preErrorCheck-`String'errorCheck*-}->`DigitalCmsCoupon'peekDigitalCmsCoupon*#}
 
--- |Call-option rate.  Multiply by @nominal * accrualPeriod * discount@ to obtain the option NPV.
-{#fun qlDigitalCmsCouponCallOptionRate as digitalCmsCouponCallOptionRateRaw{withDigitalCmsCoupon*`DigitalCmsCoupon' -- ^coupon
-  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
-
--- |Put-option rate.  Multiply by @nominal * accrualPeriod * discount@ to obtain the option NPV.
-{#fun qlDigitalCmsCouponPutOptionRate as digitalCmsCouponPutOptionRateRaw{withDigitalCmsCoupon*`DigitalCmsCoupon' -- ^coupon
-  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
-
 -- |CMS-spread-rate coupon with embedded digital call and put options.  Builds its own
 -- underlying 'CmsSpreadCoupon' from /paymentDate/ through /fixingConvention/ (as
 -- 'cmsSpreadCoupon' does), then wraps it exactly as 'digitalCmsCoupon' wraps a 'CmsCoupon'.
@@ -1505,14 +1456,6 @@ cmsLegWithOptions schedule idx notionals dc adj fixingDays gearings spreads caps
   ,withMaybeDigitalReplication*`Maybe DigitalReplication' -- ^replication
   ,`Bool' -- ^nakedOption
   ,preErrorCheck-`String'errorCheck*-}->`DigitalCmsSpreadCoupon'peekDigitalCmsSpreadCoupon*#}
-
--- |Call-option rate.  Multiply by @nominal * accrualPeriod * discount@ to obtain the option NPV.
-{#fun qlDigitalCmsSpreadCouponCallOptionRate as digitalCmsSpreadCouponCallOptionRateRaw{withDigitalCmsSpreadCoupon*`DigitalCmsSpreadCoupon' -- ^coupon
-  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
-
--- |Put-option rate.  Multiply by @nominal * accrualPeriod * discount@ to obtain the option NPV.
-{#fun qlDigitalCmsSpreadCouponPutOptionRate as digitalCmsSpreadCouponPutOptionRateRaw{withDigitalCmsSpreadCoupon*`DigitalCmsSpreadCoupon' -- ^coupon
-  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Build a sequence of digital CMS-rate coupons.  The options record covers all digital call/put
 -- and replication choices.
@@ -1635,17 +1578,6 @@ lognormalCmsSpreadPricer cmsPricer correlation discountCurve integrationPoints v
   ,fromIntegral`Word',`Bool',`Int',fromMaybeDouble`Maybe Double',fromMaybeDouble`Maybe Double'
   ,preErrorCheck-`String'errorCheck*-}->`FloatingRateCouponPricer'peekFloatingRateCouponPricer*#}
 
--- |Values that can be widened to the generic floating-rate coupon representation.
-class AsFloatingRateCoupon coupon where
-  asFloatingRateCoupon :: coupon -> IO FloatingRateCoupon
-
-instance AsFloatingRateCoupon (GenFloatingRateCoupon coupon) where
-  asFloatingRateCoupon = InternalType.asFloatingRateCoupon
-instance AsFloatingRateCoupon AverageBMACoupon where
-  asFloatingRateCoupon = averageBmaCouponAsFloatingRateCouponRaw
-instance AsFloatingRateCoupon MultipleResetsCoupon where
-  asFloatingRateCoupon = multipleResetsCouponAsFloatingRateCouponRaw
-
 -- |Coupon types that expose the dates of their component index fixings.
 class HasFixingDates coupon where
   fixingDates :: coupon -> IO [Day]
@@ -1665,74 +1597,5 @@ instance HasIndexFixings AverageBMACoupon where
   indexFixings = averageBmaCouponIndexFixingsRaw
 instance HasIndexFixings OvernightIndexedCoupon where
   indexFixings = overnightIndexedCouponIndexFixingsRaw
-
--- |Digital coupon types with separately priced call and put option components.
-class HasDigitalOptionRates coupon where
-  callOptionRate :: coupon -> IO Double
-  putOptionRate :: coupon -> IO Double
-
-instance HasDigitalOptionRates DigitalCoupon where
-  callOptionRate = digitalCouponCallOptionRateRaw
-  putOptionRate = digitalCouponPutOptionRateRaw
-instance HasDigitalOptionRates DigitalCmsCoupon where
-  callOptionRate = digitalCmsCouponCallOptionRateRaw
-  putOptionRate = digitalCmsCouponPutOptionRateRaw
-instance HasDigitalOptionRates DigitalCmsSpreadCoupon where
-  callOptionRate = digitalCmsSpreadCouponCallOptionRateRaw
-  putOptionRate = digitalCmsSpreadCouponPutOptionRateRaw
-
--- |Cash-flow-like values that can be widened for a heterogeneous 'cashFlowLeg'.
-class AsCashFlow cashFlow where
-  asCashFlow :: cashFlow -> IO CashFlow
-
-instance AsCashFlow FixedRateCoupon where
-  asCashFlow = fixedRateCouponAsCashFlowRaw
-instance AsCashFlow YoYInflationCoupon where
-  asCashFlow = yoyInflationCouponAsCashFlowRaw
-instance AsCashFlow CPICoupon where
-  asCashFlow = cpiCouponAsCashFlowRaw
-instance AsCashFlow ZeroInflationCashFlow where
-  asCashFlow = zeroInflationCashFlowAsCashFlowRaw
-instance AsCashFlow CPICashFlow where
-  asCashFlow = cpiCashFlowAsCashFlowRaw
-instance AsCashFlow EquityCashFlow where
-  asCashFlow = equityCashFlowAsCashFlowRaw
-instance AsCashFlow (GenFloatingRateCoupon coupon) where
-  asCashFlow = floatingRateCouponAsCashFlowRaw
-
--- |Cash-flow-like values whose calculated amount is directly observable.
-class HasAmount cashFlow where
-  amount :: cashFlow -> IO Double
-
-instance HasAmount ZeroInflationCashFlow where
-  amount = zeroInflationCashFlowAmountRaw
-instance HasAmount CPICashFlow where
-  amount = cpiCashFlowAmountRaw
-instance HasAmount EquityCashFlow where
-  amount = equityCashFlowAmountRaw
-instance HasAmount (GenFloatingRateCoupon coupon) where
-  amount = floatingRateCouponAmountRaw
-
--- |Indexed cash flows that expose the fixing used as the base of their return ratio.
-class HasBaseFixing cashFlow where
-  baseFixing :: cashFlow -> IO Double
-
-instance HasBaseFixing ZeroInflationCashFlow where
-  baseFixing = zeroInflationCashFlowBaseFixingRaw
-instance HasBaseFixing CPICashFlow where
-  baseFixing = cpiCashFlowBaseFixingRaw
-instance HasBaseFixing EquityCashFlow where
-  baseFixing = equityCashFlowBaseFixingRaw
-
--- |Indexed cash flows that expose the fixing used as the numerator of their return ratio.
-class HasIndexFixing cashFlow where
-  indexFixing :: cashFlow -> IO Double
-
-instance HasIndexFixing ZeroInflationCashFlow where
-  indexFixing = zeroInflationCashFlowIndexFixingRaw
-instance HasIndexFixing CPICashFlow where
-  indexFixing = cpiCashFlowIndexFixingRaw
-instance HasIndexFixing EquityCashFlow where
-  indexFixing = equityCashFlowIndexFixingRaw
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

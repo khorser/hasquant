@@ -88,19 +88,19 @@ module QuantLib.PricingEngine
   , quantoForwardPerformanceEuropeanEngine
   , quantoBarrierEngine
   , quantoDoubleBarrierEngine
-  , blackCapFloorEngineWithVolatilityStructure
+  , blackCapFloorEngineFromVolatilityStructure
   , blackCapFloorEngine
   , blackSwaptionEngine
   , haganIrregularSwaptionEngine
-  , blackSwaptionEngineWithVolatilityStructure
-  , bachelierCapFloorEngineWithVolatilityStructure
+  , blackSwaptionEngineFromVolatilityStructure
+  , bachelierCapFloorEngineFromVolatilityStructure
   , bachelierCapFloorEngine
   , yoyInflationBlackCapFloorEngine
   , yoyInflationUnitDisplacedBlackCapFloorEngine
   , yoyInflationBachelierCapFloorEngine
   , interpolatingCpiCapFloorEngine
   , bachelierSwaptionEngine
-  , bachelierSwaptionEngineWithVolatilityStructure
+  , bachelierSwaptionEngineFromVolatilityStructure
   , analyticBsmHullWhiteEngine
   , analyticCapFloorEngine
   , gaussian1dCapFloorEngine
@@ -192,9 +192,9 @@ module QuantLib.PricingEngine
   , fdHestonHullWhiteVanillaEngine
 
   , binomialConvertibleEngine
-  , blackCallableFixedRateBondEngineWithVolatilityStructure
+  , blackCallableFixedRateBondEngineFromVolatilityStructure
   , blackCallableFixedRateBondEngine
-  , blackCallableZeroCouponBondEngineWithVolatilityStructure
+  , blackCallableZeroCouponBondEngineFromVolatilityStructure
   , blackCallableZeroCouponBondEngine
   , treeCallableFixedRateBondEngine
   , treeCallableZeroCouponBondEngine
@@ -727,7 +727,7 @@ discountingPerpetualFuturesEngine domestic foreignCurve spot funding interpolati
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |Black-formula cap\/floor engine, taking an optionlet volatility structure
-{#fun qlBlackCapFloorEngine1 as blackCapFloorEngineWithVolatilityStructure{withYieldTermStructure*`GenYieldTermStructure y',withOptionletVolatilityStructure*`GenOptionletVolatilityStructure ov',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+{#fun qlBlackCapFloorEngine1 as blackCapFloorEngineFromVolatilityStructure{withYieldTermStructure*`GenYieldTermStructure y',withOptionletVolatilityStructure*`GenOptionletVolatilityStructure ov',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |Black-formula cap\/floor engine, taking a flat volatility quote
 {#fun qlBlackCapFloorEngine as blackCapFloorEngine{withYieldTermStructure*`GenYieldTermStructure y',withQuote*`GenQuote q',withDayCounter*`DayCounter'
@@ -742,10 +742,10 @@ discountingPerpetualFuturesEngine domestic foreignCurve spot funding interpolati
 {#fun qlHaganIrregularSwaptionEngine as haganIrregularSwaptionEngine{withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure sv',withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |shifted-lognormal Black-formula swaption engine, taking a swaption volatility structure
-{#fun qlBlackSwaptionEngine1 as blackSwaptionEngineWithVolatilityStructure{withYieldTermStructure*`GenYieldTermStructure y',withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure sv',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+{#fun qlBlackSwaptionEngine1 as blackSwaptionEngineFromVolatilityStructure{withYieldTermStructure*`GenYieldTermStructure y',withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure sv',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |Bachelier (normal) cap\/floor engine, taking an optionlet volatility structure
-{#fun qlBachelierCapFloorEngine1 as bachelierCapFloorEngineWithVolatilityStructure{withYieldTermStructure*`GenYieldTermStructure y',withOptionletVolatilityStructure*`GenOptionletVolatilityStructure ov',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+{#fun qlBachelierCapFloorEngine1 as bachelierCapFloorEngineFromVolatilityStructure{withYieldTermStructure*`GenYieldTermStructure y',withOptionletVolatilityStructure*`GenOptionletVolatilityStructure ov',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |Bachelier (normal) cap\/floor engine, taking a flat volatility quote
 {#fun qlBachelierCapFloorEngine as bachelierCapFloorEngine{withYieldTermStructure*`GenYieldTermStructure y',withQuote*`GenQuote q',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
@@ -781,7 +781,7 @@ discountingPerpetualFuturesEngine domestic foreignCurve spot funding interpolati
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |Bachelier (normal) swaption engine, taking a swaption volatility structure
-{#fun qlBachelierSwaptionEngine1 as bachelierSwaptionEngineWithVolatilityStructure{withYieldTermStructure*`GenYieldTermStructure y',withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure sv',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+{#fun qlBachelierSwaptionEngine1 as bachelierSwaptionEngineFromVolatilityStructure{withYieldTermStructure*`GenYieldTermStructure y',withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure sv',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |analytic European option pricer including stochastic interest rates (Black-Scholes-Merton + Hull-White)
 {#fun qlAnalyticBSMHullWhiteEngine as analyticBsmHullWhiteEngine{`Double',withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',withHullWhite*`HullWhite',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
@@ -1756,13 +1756,13 @@ fdHestonHullWhiteVanillaEngine heston hullWhite dividends =
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |volatility is the quoted fwd yield volatility, not price vol
-{#fun qlBlackCallableFixedRateBondEngine1 as blackCallableFixedRateBondEngineWithVolatilityStructure{withGenTermStructure*`CallableBondVolatilityStructure',withYieldTermStructure*`GenYieldTermStructure y',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+{#fun qlBlackCallableFixedRateBondEngine1 as blackCallableFixedRateBondEngineFromVolatilityStructure{withGenTermStructure*`CallableBondVolatilityStructure',withYieldTermStructure*`GenYieldTermStructure y',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |volatility is the quoted fwd yield volatility, not price vol
 {#fun qlBlackCallableFixedRateBondEngine as blackCallableFixedRateBondEngine{withQuote*`GenQuote q',withYieldTermStructure*`GenYieldTermStructure y',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |volatility is the quoted fwd yield volatility, not price vol
-{#fun qlBlackCallableZeroCouponBondEngine1 as blackCallableZeroCouponBondEngineWithVolatilityStructure{withGenTermStructure*`CallableBondVolatilityStructure',withYieldTermStructure*`GenYieldTermStructure y',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+{#fun qlBlackCallableZeroCouponBondEngine1 as blackCallableZeroCouponBondEngineFromVolatilityStructure{withGenTermStructure*`CallableBondVolatilityStructure',withYieldTermStructure*`GenYieldTermStructure y',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |volatility is the quoted fwd yield volatility, not price vol
 {#fun qlBlackCallableZeroCouponBondEngine as blackCallableZeroCouponBondEngine{withQuote*`GenQuote q',withYieldTermStructure*`GenYieldTermStructure y',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}

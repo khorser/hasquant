@@ -68,7 +68,7 @@ run = do
   swFixedDC <- dayCounter Thirty360European
   eu6m <- IR.iborIndex IR.Euribor6M Nothing
   swapHelpers <- mapM (\(q, y) ->
-    TS.swapRateHelperWithConventions q (y, Years) cal Annual Unadjusted swFixedDC eu6m Nothing (0, Days) Nothing
+    TS.swapRateHelperFromConventions q (y, Years) cal Annual Unadjusted swFixedDC eu6m Nothing (0, Days) Nothing
       Nothing TS.LastRelevantDate Nothing False Nothing Nothing Nothing >>= TS.asRateHelper) $
       zip swapQuotes swapYears
 

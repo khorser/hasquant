@@ -21,8 +21,9 @@ test guarding the public naming policy. Secondary multiple-inheritance interface
 `AsAffineModel` and `AsGaussian1dModel` capability classes instead of leaf-prefixed conversion
 families, while retaining explicit, owned interface materialization. Receiver-only inspectors now
 use short topical names such as `floorRate`, `convexityAdjustment`, and `impliedQuote`; shared
-cash-flow operations use capability classes instead of repeating concrete object names at every
-call site.
+cash-flow operations now use an owned `GenCashFlow` hierarchy, including floating-rate, indexed,
+and digital intermediate families. Homogeneous cash-flow lists therefore need no conversion;
+heterogeneous lists explicitly materialize their common `CashFlow` root.
 
 C++ shims refactored to use more modern approaches.
 

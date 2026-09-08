@@ -28,7 +28,7 @@ module QuantLib.TermStructure.Yield
   , depositRateHelper
   , fixedRateBondHelper
   , cpiBondHelper
-  , swapRateHelperWithConventions
+  , swapRateHelperFromConventions
   , flatForward
   , forwardRate
   , forwardRateForPeriod
@@ -247,7 +247,7 @@ nullableDouble = realToFrac . fromMaybeDouble
 -- |Rate helper for bootstrapping over swap rates, built from explicit tenor\/calendar\/
 -- frequency\/day-count\/index conventions rather than a 'GenSwapIndex' bundling them
 -- (as 'swapRateHelper' does).
-{#fun qlSwapRateHelper1 as swapRateHelperWithConventions{withQuote*`GenQuote q1' -- ^rate
+{#fun qlSwapRateHelper1 as swapRateHelperFromConventions{withQuote*`GenQuote q1' -- ^rate
   ,fromEnumQuantity`(Int,TimeUnit)'& -- ^tenor
   ,withCalendar*`Calendar' -- ^calendar
   ,`Frequency' -- ^fixedFrequency

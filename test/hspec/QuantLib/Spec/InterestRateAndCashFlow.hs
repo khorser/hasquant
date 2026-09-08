@@ -233,11 +233,20 @@ spec evalDate = do
           simple <- CF.simpleCashFlow 10.0 paymentDate
           indexed <- CF.indexedCashFlow 100.0 idx baseDate fixingDate' paymentDate False
           growth <- CF.indexedCashFlow 100.0 idx baseDate fixingDate' paymentDate True
+          CF.amount simple `shouldReturn` 10.0
+          CF.date simple `shouldBe` paymentDate
+          CF.baseFixing indexed >>= (`shouldSatisfy` closePrec 100.0 1.0e-12)
+          CF.indexFixing indexed >>= (`shouldSatisfy` closePrec 120.0 1.0e-12)
           fixedCoupon <- CF.fixedRateCoupon accrualEnd 100.0 0.05 dc paymentDate accrualEnd Nothing Nothing Nothing
           fixedIR <- CF.interestRate fixedCoupon
           IR.rate fixedIR `shouldSatisfy` closePrec 0.05 1.0e-12
+          fixedLeg <- CF.cashFlowLeg [fixedCoupon, fixedCoupon]
+          fixedFlows <- CF.cashFlows fixedLeg Nothing Nothing
+          length fixedFlows `shouldBe` 2
+          indexedFlow <- CF.asCashFlow indexed
+          growthFlow <- CF.asCashFlow growth
           fixed <- CF.asCashFlow fixedCoupon
-          mixed <- CF.cashFlowLeg [simple, indexed, growth, fixed]
+          mixed <- CF.cashFlowLeg [simple, indexedFlow, growthFlow, fixed]
           flows <- CF.cashFlows mixed Nothing Nothing
           let expected = [10.0, 120.0, 20.0, 2.5]
           listCloseRel id expected 1.0e-12 (map (\(_, amount, _) -> amount) flows) `shouldBe` True
@@ -258,8 +267,8 @@ spec evalDate = do
           idx <- iborIndex (UsdLibor (3, Months)) (Just curve)
           floating <- CF.floatingRateCoupon end 100.0 start end 2 idx 1.0 0.0 Nothing Nothing dc False Nothing Preceding
           ibor <- CF.iborCoupon end 100.0 start end 2 idx 1.0 0.0 Nothing Nothing dc False Nothing Preceding
-          iborFlow <- CF.asCashFlow ibor
-          customLeg <- CF.cashFlowLeg [floating, iborFlow]
+          iborBase <- CF.asFloatingRateCoupon ibor
+          customLeg <- CF.cashFlowLeg [floating, iborBase]
           CF.startDate customLeg `shouldReturn` start
 
       it "uses CPI, zero-inflation, and equity cash flows in a custom leg" $
@@ -282,9 +291,15 @@ spec evalDate = do
           addFixing equityIndex baseDate 80.0 False
           addFixing equityIndex fixingDate' 100.0 False
           equity <- CF.equityCashFlow 100.0 equityIndex baseDate fixingDate' paymentDate False
+          equityLeg <- CF.cashFlowLeg [equity, equity]
+          equityFlows <- CF.cashFlows equityLeg Nothing Nothing
+          map (\(_, cash, _) -> cash) equityFlows `shouldBe` [125.0, 125.0]
           zeroAmount <- CF.amount zero
           cpiAmount <- CF.amount cpi
           equityAmount <- CF.amount equity
+          CF.date equity `shouldBe` paymentDate
+          CF.baseFixing equity >>= (`shouldSatisfy` closePrec 80.0 1.0e-12)
+          CF.indexFixing equity >>= (`shouldSatisfy` closePrec 100.0 1.0e-12)
           listCloseRel id [120.0, 120.0, 125.0] 1.0e-12 [zeroAmount, cpiAmount, equityAmount] `shouldBe` True
           zeroFlow <- CF.asCashFlow zero
           cpiFlow <- CF.asCashFlow cpi

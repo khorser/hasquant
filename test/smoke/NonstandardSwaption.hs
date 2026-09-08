@@ -64,7 +64,7 @@ main = do
   swpn2 <- nonstandardSwaption underlying2 ex Physical PhysicalOTC
 
   -- 1c. Vector gearing/spread ctor (full coverage; not used by the upstream example).
-  underlying3 <- nonstandardSwapWithGearings Payer nominalFixed (concatMap (\x -> [x, x]) nominalFixed) fixedSchedule strikes thirty360bb floatSchedule euribor6m (replicate (2 * n) 1.0) (replicate (2 * n) 0.0) act360 False False Nothing
+  underlying3 <- nonstandardSwapFromGearingsAndSpreads Payer nominalFixed (concatMap (\x -> [x, x]) nominalFixed) fixedSchedule strikes thirty360bb floatSchedule euribor6m (replicate (2 * n) 1.0) (replicate (2 * n) 0.0) act360 False False Nothing
   _swpn3 <- nonstandardSwaption underlying3 ex Physical PhysicalOTC
 
   -- 2. From-Swaption ctor.

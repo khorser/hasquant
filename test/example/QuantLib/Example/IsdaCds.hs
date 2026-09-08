@@ -52,7 +52,7 @@ run = do
       swapQuotes = [ 0.011907, 0.01699, 0.021198, 0.02444, 0.026937, 0.028967, 0.030504
                    , 0.031719, 0.03279, 0.034535, 0.036217, 0.036981, 0.037246, 0.037605 ]
   swapHelpers <- mapM
-    (\(t, q) -> simpleQuote q >>= \sq -> swapRateHelperWithConventions sq (t, Years) weekendsOnly Semiannual ModifiedFollowing
+    (\(t, q) -> simpleQuote q >>= \sq -> swapRateHelperFromConventions sq (t, Years) weekendsOnly Semiannual ModifiedFollowing
         thirty360bb isdaIbor Nothing (0, Days) Nothing Nothing LastRelevantDate Nothing False Nothing Nothing Nothing)
     (zip swapTenors swapQuotes)
 

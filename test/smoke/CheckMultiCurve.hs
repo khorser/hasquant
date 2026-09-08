@@ -70,7 +70,7 @@ main = do
   helpers3mFra <- mapM (\i -> fraRateHelper q i (i + 3) 2 cal ModifiedFollowing True euriborDC LastRelevantDate Nothing False) [1 .. 3]
   helpers3mBasis <- mapM (\i -> iborIborBasisSwapRateHelper b (i, Years) 2 cal ModifiedFollowing True euribor3m euribor6m discountCurve True) [2 .. 4]
   helpers6mBasis <- mapM (\i -> iborIborBasisSwapRateHelper b (i * 6, Months) 2 cal ModifiedFollowing True euribor3m euribor6m discountCurve False) [1 .. 2]
-  helpers6mSwap <- mapM (\i -> swapRateHelperWithConventions q (i, Years) cal Annual Following euriborDC euribor6m Nothing (0, Days) (Just discountCurve)
+  helpers6mSwap <- mapM (\i -> swapRateHelperFromConventions q (i, Years) cal Annual Following euriborDC euribor6m Nothing (0, Days) (Just discountCurve)
                                   Nothing LastRelevantDate Nothing False Nothing Nothing Nothing) [2 .. 4]
     >>= mapM asRateHelper
   ptr3m <- piecewiseYieldCurve (SettlementDays 0 cal) (fromList $ helpers3mFra ++ helpers3mBasis) euriborDC []

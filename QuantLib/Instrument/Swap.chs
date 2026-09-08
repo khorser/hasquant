@@ -45,10 +45,10 @@ module QuantLib.Instrument.Swap
   , vanillaSwap
   , nonstandardSwapFromVanilla
   , nonstandardSwap
-  , nonstandardSwapWithGearings
+  , nonstandardSwapFromGearingsAndSpreads
   , nonstandardSwapFixedRate
   , floatFloatSwap
-  , floatFloatSwapWithNominals
+  , floatFloatSwapFromNominals
   , firstLegFairSpread
   , secondLegFairSpread
   , makeVanillaSwap
@@ -122,7 +122,7 @@ module QuantLib.Instrument.Swap
 
   -- OvernightIndexedSwap
   , overnightIndexedSwap
-  , overnightIndexedSwapWithNominals
+  , overnightIndexedSwapFromNominals
 
   , overnightLeg
   , overnightLegBps
@@ -312,7 +312,7 @@ swapFromLegs = (uncurry qlSwap1) . unzip
 
 -- |'VanillaSwap' generalized to per-period fixed/floating nominals and fixed rates, plus
 -- optional intermediate\/final notional exchange -- a single 'Double' gearing\/spread shared
--- across all floating periods. See 'nonstandardSwapWithGearings' for per-period gearing\/spread.
+-- across all floating periods. See 'nonstandardSwapFromGearingsAndSpreads' for per-period gearing\/spread.
 {#fun qlNonstandardSwap as nonstandardSwap{`SwapType'
   ,withDoubleArray*`[Double]'& -- ^fixedNominal
   ,withDoubleArray*`[Double]'& -- ^floatingNominal
@@ -330,7 +330,7 @@ swapFromLegs = (uncurry qlSwap1) . unzip
   ,preErrorCheck-`String'errorCheck*-}->`NonstandardSwap'peekNonstandardSwap*#}
 
 -- |As 'nonstandardSwap', but with a per-period gearing and spread instead of one shared value.
-{#fun qlNonstandardSwap2 as nonstandardSwapWithGearings{`SwapType'
+{#fun qlNonstandardSwap2 as nonstandardSwapFromGearingsAndSpreads{`SwapType'
   ,withDoubleArray*`[Double]'& -- ^fixedNominal
   ,withDoubleArray*`[Double]'& -- ^floatingNominal
   ,withSchedule*`Schedule' -- ^fixedSchedule
@@ -347,7 +347,7 @@ swapFromLegs = (uncurry qlSwap1) . unzip
   ,preErrorCheck-`String'errorCheck*-}->`NonstandardSwap'peekNonstandardSwap*#}
 
 -- |Per-period fixed rate, one entry per fixed-leg accrual period. For a swap built via
--- 'nonstandardSwap'\/'nonstandardSwapWithGearings', this simply echoes the constructor's @fixedRate@; for
+-- 'nonstandardSwap'\/'nonstandardSwapFromGearingsAndSpreads', this simply echoes the constructor's @fixedRate@; for
 -- one built via 'nonstandardSwapFromVanilla' it is derived from the underlying vanilla swap's
 -- fixed leg coupons.
 {#fun qlNonstandardSwapFixedRate as nonstandardSwapFixedRate{withNonstandardSwap*`NonstandardSwap',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
@@ -355,7 +355,7 @@ swapFromLegs = (uncurry qlSwap1) . unzip
 -- |Swap exchanging capped\/floored Libor or CMS coupons with a single flat nominal on each leg.
 -- 'FloatFloatSwapOpts' bundles every trailing param the C++ constructor defaults (gearing\/
 -- spread\/cap\/floor per leg, capital exchange, payment conventions); override only what's
--- needed via record-update syntax on 'defaultFloatFloatSwapOpts'. See 'floatFloatSwapWithNominals' for the
+-- needed via record-update syntax on 'defaultFloatFloatSwapOpts'. See 'floatFloatSwapFromNominals' for the
 -- per-period-nominal overload.
 floatFloatSwap :: SwapType -> Double -> Double -> Schedule -> GenInterestRateIndex ridx1
   -> DayCounter -> Schedule -> GenInterestRateIndex ridx2 -> DayCounter -> FloatFloatSwapOpts
@@ -390,12 +390,12 @@ floatFloatSwap ty nominal1 nominal2 schedule1 index1 dayCount1 schedule2 index2 
   ,fromMaybeEnum`Maybe BusinessDayConvention' -- ^paymentConvention2
   ,preErrorCheck-`String'errorCheck*-}->`FloatFloatSwap'peekFloatFloatSwap*#}
 
--- |As 'floatFloatSwap', but with a per-period nominal on each leg instead of a single flat value
--- (full coverage; not used by the upstream example).
-floatFloatSwapWithNominals :: SwapType -> [Double] -> [Double] -> Schedule -> GenInterestRateIndex ridx1
+-- |As 'floatFloatSwap', but with per-period nominals on each leg. 'FloatFloatSwapVaryingOpts'
+-- also supplies the per-period gearings, spreads, caps, and floors for both legs.
+floatFloatSwapFromNominals :: SwapType -> [Double] -> [Double] -> Schedule -> GenInterestRateIndex ridx1
   -> DayCounter -> Schedule -> GenInterestRateIndex ridx2 -> DayCounter
   -> FloatFloatSwapVaryingOpts -> IO FloatFloatSwap
-floatFloatSwapWithNominals ty nominal1 nominal2 schedule1 index1 dayCount1 schedule2 index2 dayCount2 opts =
+floatFloatSwapFromNominals ty nominal1 nominal2 schedule1 index1 dayCount1 schedule2 index2 dayCount2 opts =
   floatFloatSwap2_ ty nominal1 nominal2 schedule1 index1 dayCount1 schedule2 index2 dayCount2
     (ffsvIntermediateCapitalExchange opts) (ffsvFinalCapitalExchange opts)
     (ffsvFirstLegGearing opts) (ffsvFirstLegSpread opts) (ffsvFirstLegCappedRate opts) (ffsvFirstLegFlooredRate opts)
@@ -771,7 +771,7 @@ instance HasFairSpread ConstNotionalCrossCurrencyFixedVsFloatingSwap where
   ,preErrorCheck-`String'errorCheck*-}->`OvernightIndexedSwap'peekOvernightIndexedSwap*#}
 
 -- |As 'overnightIndexedSwap', but with a per-period nominal schedule instead of a single flat nominal.
-{#fun qlOvernightIndexedSwap1 as overnightIndexedSwapWithNominals{`SwapType',withDoubleArray*`[Double]'& -- ^nominals
+{#fun qlOvernightIndexedSwap1 as overnightIndexedSwapFromNominals{`SwapType',withDoubleArray*`[Double]'& -- ^nominals
   ,withSchedule*`Schedule' -- ^schedule
   ,`Double' -- ^fixedRate
   ,withDayCounter*`DayCounter' -- ^fixedDC

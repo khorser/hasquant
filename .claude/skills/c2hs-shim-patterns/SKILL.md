@@ -344,6 +344,8 @@ Mnemonic table:
 |---|---|---|---|---|---|
 | GenQuote | `q` | GenIndex | `idx` | GenGeneralizedBlackScholesProcess | `gbs` |
 | GenInstrument | `i` | GenInterestRateIndex | `ridx` | GenCalibratedModel | `m` |
+| GenCashFlow | `cf` | GenFloatingRateCoupon | `frc` | GenIndexedCashFlow | `icf` |
+| GenDigitalCoupon | `dc` | | | | |
 | GenOption | `o` | GenInflationIndex | `iidx` | GenHestonModel | `hm` |
 | GenTermStructure | `t` | GenZeroInflationIndex | `zidx` | GenShortRateModel | `sm` |
 | GenYieldTermStructure | `y` | GenYoYInflationIndex | `yidx` | GenBatesModel | `bm` |

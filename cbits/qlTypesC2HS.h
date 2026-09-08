@@ -161,6 +161,7 @@ typedef struct QlHullWhiteProcess QlHullWhiteProcess;
 typedef struct QlHybridHestonHullWhiteProcess QlHybridHestonHullWhiteProcess;
 typedef struct QlIborIndex QlIborIndex;
 typedef struct QlIndex QlIndex;
+typedef struct QlIndexedCashFlow QlIndexedCashFlow;
 typedef struct QlInflationIndex QlInflationIndex;
 typedef struct QlInstrument QlInstrument;
 typedef struct QlInterpolatedSwaptionVolatilityCube QlInterpolatedSwaptionVolatilityCube;

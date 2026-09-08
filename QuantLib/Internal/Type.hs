@@ -496,32 +496,6 @@ peekFdmInnerValueCalculator = FdmInnerValueCalculator <.> peekStandalone
 withFdmInnerValueCalculator :: FdmInnerValueCalculator -> (Ptr CFdmInnerValueCalculator -> IO b) -> IO b
 withFdmInnerValueCalculator = withStandalone . getCFdmInnerValueCalculator
 
-data CZeroInflationCashFlow
-newtype ZeroInflationCashFlow = ZeroInflationCashFlow {getCZeroInflationCashFlow :: Standalone CZeroInflationCashFlow}
-foreign import ccall unsafe "ql.h &qlFreeZeroInflationCashFlow" qlFreeZeroInflationCashFlow :: FinalizerPtr CZeroInflationCashFlow
-instance Finalizable CZeroInflationCashFlow where finalize = qlFreeZeroInflationCashFlow
-peekZeroInflationCashFlow :: Ptr CZeroInflationCashFlow -> IO ZeroInflationCashFlow
-peekZeroInflationCashFlow = ZeroInflationCashFlow <.> peekStandalone
-withZeroInflationCashFlow :: ZeroInflationCashFlow -> (Ptr CZeroInflationCashFlow -> IO b) -> IO b
-withZeroInflationCashFlow = withStandalone . getCZeroInflationCashFlow
-
-data CCPICashFlow
-newtype CPICashFlow = CPICashFlow {getCCPICashFlow :: Standalone CCPICashFlow}
-foreign import ccall unsafe "ql.h &qlFreeCPICashFlow" qlFreeCPICashFlow :: FinalizerPtr CCPICashFlow
-instance Finalizable CCPICashFlow where finalize = qlFreeCPICashFlow
-peekCPICashFlow :: Ptr CCPICashFlow -> IO CPICashFlow
-peekCPICashFlow = CPICashFlow <.> peekStandalone
-withCPICashFlow :: CPICashFlow -> (Ptr CCPICashFlow -> IO b) -> IO b
-withCPICashFlow = withStandalone . getCCPICashFlow
-
-data CEquityCashFlow
-newtype EquityCashFlow = EquityCashFlow {getCEquityCashFlow :: Standalone CEquityCashFlow}
-foreign import ccall unsafe "ql.h &qlFreeEquityCashFlow" qlFreeEquityCashFlow :: FinalizerPtr CEquityCashFlow
-instance Finalizable CEquityCashFlow where finalize = qlFreeEquityCashFlow
-peekEquityCashFlow :: Ptr CEquityCashFlow -> IO EquityCashFlow
-peekEquityCashFlow = EquityCashFlow <.> peekStandalone
-withEquityCashFlow :: EquityCashFlow -> (Ptr CEquityCashFlow -> IO b) -> IO b
-withEquityCashFlow = withStandalone . getCEquityCashFlow
 
 data CSmileSection
 newtype SmileSection = SmileSection {getCSmileSection :: Standalone CSmileSection}
@@ -652,17 +626,21 @@ withCmsCouponPricer = withForeignPtr . ptr . getFloatingRateCouponPricer
 --
 -- Base floating-rate coupon class. Its cash-flow amount is rate times accrual period and nominal.
 data CFloatingRateCoupon'
-newtype GenFloatingRateCoupon frc = GenFloatingRateCoupon {getFloatingRateCoupon :: GenForeignPtr frc CFloatingRateCoupon'}
+type GenFloatingRateCoupon frc = GenCashFlow (AnyOf CFloatingRateCoupon' frc)
 type CFloatingRateCoupon = ForeignPtr CFloatingRateCoupon'
 type FloatingRateCoupon = GenFloatingRateCoupon CFloatingRateCoupon
 foreign import ccall unsafe "ql.h &qlFreeFloatingRateCoupon" qlFreeFloatingRateCoupon :: FinalizerPtr CFloatingRateCoupon'
 instance Finalizable CFloatingRateCoupon' where finalize = qlFreeFloatingRateCoupon
+foreign import ccall "ql.h qlFloatingRateCouponAsCashFlow" qlFloatingRateCouponAsCashFlow :: Ptr CFloatingRateCoupon' -> IO (Ptr CCashFlow')
+instance Upcastable CFloatingRateCoupon' where {type Base CFloatingRateCoupon' = CCashFlow'; upcast = qlFloatingRateCouponAsCashFlow}
 asFloatingRateCoupon :: GenFloatingRateCoupon frc -> IO FloatingRateCoupon
-asFloatingRateCoupon = transferGenForeignPtr peekFloatingRateCoupon . getFloatingRateCoupon
+asFloatingRateCoupon = transferGenForeignPtr peekFloatingRateCoupon . peel . getCashFlow
 peekFloatingRateCoupon :: Ptr CFloatingRateCoupon' -> IO FloatingRateCoupon
-peekFloatingRateCoupon = GenFloatingRateCoupon <.> newCastForeignPtr
+peekFloatingRateCoupon = newCastForeignPtr >=> newGenFloatingRateCoupon
+newGenFloatingRateCoupon :: GenForeignPtr frc CFloatingRateCoupon' -> IO (GenFloatingRateCoupon frc)
+newGenFloatingRateCoupon = pure . GenCashFlow . newAnyOf
 withFloatingRateCoupon :: GenFloatingRateCoupon frc -> (Ptr CFloatingRateCoupon' -> IO b) -> IO b
-withFloatingRateCoupon = withGenForeignPtr . getFloatingRateCoupon
+withFloatingRateCoupon = withGenForeignPtr . peel . getCashFlow
 
 data CCmsCoupon'
 type CCmsCoupon = ForeignPtr CCmsCoupon'
@@ -672,9 +650,9 @@ instance Finalizable CCmsCoupon' where finalize = qlFreeCmsCoupon
 foreign import ccall "ql.h qlCmsCouponAsFloatingRateCoupon" qlCmsCouponAsFloatingRateCoupon :: Ptr CCmsCoupon' -> IO (Ptr CFloatingRateCoupon')
 instance Upcastable CCmsCoupon' where {type Base CCmsCoupon' = CFloatingRateCoupon'; upcast = qlCmsCouponAsFloatingRateCoupon}
 peekCmsCoupon :: Ptr CCmsCoupon' -> IO CmsCoupon
-peekCmsCoupon = GenFloatingRateCoupon <.> newGenForeignPtr
+peekCmsCoupon = newGenForeignPtr >=> newGenFloatingRateCoupon
 withCmsCoupon :: CmsCoupon -> (Ptr CCmsCoupon' -> IO b) -> IO b
-withCmsCoupon = withForeignPtr . ptr . getFloatingRateCoupon
+withCmsCoupon = withForeignPtr . ptr . peel . getCashFlow
 
 -- |Concrete Ibor coupon required by subtype-specific constructors.
 data CIborCoupon'
@@ -685,9 +663,9 @@ instance Finalizable CIborCoupon' where finalize = qlFreeIborCoupon
 foreign import ccall "ql.h qlIborCouponAsFloatingRateCoupon" qlIborCouponAsFloatingRateCoupon :: Ptr CIborCoupon' -> IO (Ptr CFloatingRateCoupon')
 instance Upcastable CIborCoupon' where {type Base CIborCoupon' = CFloatingRateCoupon'; upcast = qlIborCouponAsFloatingRateCoupon}
 peekIborCoupon :: Ptr CIborCoupon' -> IO IborCoupon
-peekIborCoupon = GenFloatingRateCoupon <.> newGenForeignPtr
+peekIborCoupon = newGenForeignPtr >=> newGenFloatingRateCoupon
 withIborCoupon :: IborCoupon -> (Ptr CIborCoupon' -> IO b) -> IO b
-withIborCoupon = withForeignPtr . ptr . getFloatingRateCoupon
+withIborCoupon = withForeignPtr . ptr . peel . getCashFlow
 
 data COvernightIndexedCoupon'
 type COvernightIndexedCoupon = ForeignPtr COvernightIndexedCoupon'
@@ -697,9 +675,9 @@ instance Finalizable COvernightIndexedCoupon' where finalize = qlFreeOvernightIn
 foreign import ccall "ql.h qlOvernightIndexedCouponAsFloatingRateCoupon" qlOvernightIndexedCouponAsFloatingRateCoupon :: Ptr COvernightIndexedCoupon' -> IO (Ptr CFloatingRateCoupon')
 instance Upcastable COvernightIndexedCoupon' where {type Base COvernightIndexedCoupon' = CFloatingRateCoupon'; upcast = qlOvernightIndexedCouponAsFloatingRateCoupon}
 peekOvernightIndexedCoupon :: Ptr COvernightIndexedCoupon' -> IO OvernightIndexedCoupon
-peekOvernightIndexedCoupon = GenFloatingRateCoupon <.> newGenForeignPtr
+peekOvernightIndexedCoupon = newGenForeignPtr >=> newGenFloatingRateCoupon
 withOvernightIndexedCoupon :: OvernightIndexedCoupon -> (Ptr COvernightIndexedCoupon' -> IO b) -> IO b
-withOvernightIndexedCoupon = withForeignPtr . ptr . getFloatingRateCoupon
+withOvernightIndexedCoupon = withForeignPtr . ptr . peel . getCashFlow
 data CAverageBMACoupon'
 type CAverageBMACoupon = ForeignPtr CAverageBMACoupon'
 type AverageBMACoupon = GenFloatingRateCoupon CAverageBMACoupon
@@ -708,9 +686,9 @@ instance Finalizable CAverageBMACoupon' where finalize = qlFreeAverageBMACoupon
 foreign import ccall "ql.h qlAverageBMACouponAsFloatingRateCoupon" qlAverageBMACouponAsFloatingRateCoupon :: Ptr CAverageBMACoupon' -> IO (Ptr CFloatingRateCoupon')
 instance Upcastable CAverageBMACoupon' where {type Base CAverageBMACoupon' = CFloatingRateCoupon'; upcast = qlAverageBMACouponAsFloatingRateCoupon}
 peekAverageBMACoupon :: Ptr CAverageBMACoupon' -> IO AverageBMACoupon
-peekAverageBMACoupon = GenFloatingRateCoupon <.> newGenForeignPtr
+peekAverageBMACoupon = newGenForeignPtr >=> newGenFloatingRateCoupon
 withAverageBMACoupon :: AverageBMACoupon -> (Ptr CAverageBMACoupon' -> IO b) -> IO b
-withAverageBMACoupon = withForeignPtr . ptr . getFloatingRateCoupon
+withAverageBMACoupon = withForeignPtr . ptr . peel . getCashFlow
 data CMultipleResetsCoupon'
 type CMultipleResetsCoupon = ForeignPtr CMultipleResetsCoupon'
 type MultipleResetsCoupon = GenFloatingRateCoupon CMultipleResetsCoupon
@@ -719,19 +697,21 @@ instance Finalizable CMultipleResetsCoupon' where finalize = qlFreeMultipleReset
 foreign import ccall "ql.h qlMultipleResetsCouponAsFloatingRateCoupon" qlMultipleResetsCouponAsFloatingRateCoupon :: Ptr CMultipleResetsCoupon' -> IO (Ptr CFloatingRateCoupon')
 instance Upcastable CMultipleResetsCoupon' where {type Base CMultipleResetsCoupon' = CFloatingRateCoupon'; upcast = qlMultipleResetsCouponAsFloatingRateCoupon}
 peekMultipleResetsCoupon :: Ptr CMultipleResetsCoupon' -> IO MultipleResetsCoupon
-peekMultipleResetsCoupon = GenFloatingRateCoupon <.> newGenForeignPtr
+peekMultipleResetsCoupon = newGenForeignPtr >=> newGenFloatingRateCoupon
 withMultipleResetsCoupon :: MultipleResetsCoupon -> (Ptr CMultipleResetsCoupon' -> IO b) -> IO b
-withMultipleResetsCoupon = withForeignPtr . ptr . getFloatingRateCoupon
+withMultipleResetsCoupon = withForeignPtr . ptr . peel . getCashFlow
 
--- |Concrete CPI coupon; convert with 'QuantLib.CashFlow.asCashFlow' when needed.
-data CCPICoupon
-newtype CPICoupon = CPICoupon {getCCPICoupon :: Standalone CCPICoupon}
-foreign import ccall unsafe "ql.h &qlFreeCPICoupon" qlFreeCPICoupon :: FinalizerPtr CCPICoupon
-instance Finalizable CCPICoupon where finalize = qlFreeCPICoupon
-peekCPICoupon :: Ptr CCPICoupon -> IO CPICoupon
-peekCPICoupon = CPICoupon <.> peekStandalone
-withCPICoupon :: CPICoupon -> (Ptr CCPICoupon -> IO b) -> IO b
-withCPICoupon = withStandalone . getCCPICoupon
+data CCPICoupon'
+type CCPICoupon = ForeignPtr CCPICoupon'
+type CPICoupon = GenCashFlow CCPICoupon
+foreign import ccall unsafe "ql.h &qlFreeCPICoupon" qlFreeCPICoupon :: FinalizerPtr CCPICoupon'
+instance Finalizable CCPICoupon' where finalize = qlFreeCPICoupon
+foreign import ccall "ql.h qlCPICouponAsCashFlow" qlCPICouponAsCashFlow :: Ptr CCPICoupon' -> IO (Ptr CCashFlow')
+instance Upcastable CCPICoupon' where {type Base CCPICoupon' = CCashFlow'; upcast = qlCPICouponAsCashFlow}
+peekCPICoupon :: Ptr CCPICoupon' -> IO CPICoupon
+peekCPICoupon = GenCashFlow <.> newGenForeignPtr
+withCPICoupon :: CPICoupon -> (Ptr CCPICoupon' -> IO b) -> IO b
+withCPICoupon = withForeignPtr . ptr . getCashFlow
 
 data CCPICouponPricer
 newtype CPICouponPricer = CPICouponPricer {getCCPICouponPricer :: Standalone CCPICouponPricer}
@@ -755,27 +735,27 @@ withMaybeDigitalReplication = maybe ($ nullPtr) withDigitalReplication
 
 data CDigitalCmsCoupon'
 type CDigitalCmsCoupon = ForeignPtr CDigitalCmsCoupon'
-type DigitalCmsCoupon = GenFloatingRateCoupon CDigitalCmsCoupon
+type DigitalCmsCoupon = GenDigitalCoupon CDigitalCmsCoupon
 foreign import ccall unsafe "ql.h &qlFreeDigitalCmsCoupon" qlFreeDigitalCmsCoupon :: FinalizerPtr CDigitalCmsCoupon'
 instance Finalizable CDigitalCmsCoupon' where finalize = qlFreeDigitalCmsCoupon
-foreign import ccall "ql.h qlDigitalCmsCouponAsFloatingRateCoupon" qlDigitalCmsCouponAsFloatingRateCoupon :: Ptr CDigitalCmsCoupon' -> IO (Ptr CFloatingRateCoupon')
-instance Upcastable CDigitalCmsCoupon' where {type Base CDigitalCmsCoupon' = CFloatingRateCoupon'; upcast = qlDigitalCmsCouponAsFloatingRateCoupon}
+foreign import ccall "ql.h qlDigitalCmsCouponAsDigitalCoupon" qlDigitalCmsCouponAsDigitalCoupon :: Ptr CDigitalCmsCoupon' -> IO (Ptr CDigitalCoupon')
+instance Upcastable CDigitalCmsCoupon' where {type Base CDigitalCmsCoupon' = CDigitalCoupon'; upcast = qlDigitalCmsCouponAsDigitalCoupon}
 peekDigitalCmsCoupon :: Ptr CDigitalCmsCoupon' -> IO DigitalCmsCoupon
-peekDigitalCmsCoupon = GenFloatingRateCoupon <.> newGenForeignPtr
+peekDigitalCmsCoupon = newGenForeignPtr >=> newGenDigitalCoupon
 withDigitalCmsCoupon :: DigitalCmsCoupon -> (Ptr CDigitalCmsCoupon' -> IO b) -> IO b
-withDigitalCmsCoupon = withForeignPtr . ptr . getFloatingRateCoupon
+withDigitalCmsCoupon = withForeignPtr . ptr . peel . peel . getCashFlow
 
 data CDigitalCmsSpreadCoupon'
 type CDigitalCmsSpreadCoupon = ForeignPtr CDigitalCmsSpreadCoupon'
-type DigitalCmsSpreadCoupon = GenFloatingRateCoupon CDigitalCmsSpreadCoupon
+type DigitalCmsSpreadCoupon = GenDigitalCoupon CDigitalCmsSpreadCoupon
 foreign import ccall unsafe "ql.h &qlFreeDigitalCmsSpreadCoupon" qlFreeDigitalCmsSpreadCoupon :: FinalizerPtr CDigitalCmsSpreadCoupon'
 instance Finalizable CDigitalCmsSpreadCoupon' where finalize = qlFreeDigitalCmsSpreadCoupon
-foreign import ccall "ql.h qlDigitalCmsSpreadCouponAsFloatingRateCoupon" qlDigitalCmsSpreadCouponAsFloatingRateCoupon :: Ptr CDigitalCmsSpreadCoupon' -> IO (Ptr CFloatingRateCoupon')
-instance Upcastable CDigitalCmsSpreadCoupon' where {type Base CDigitalCmsSpreadCoupon' = CFloatingRateCoupon'; upcast = qlDigitalCmsSpreadCouponAsFloatingRateCoupon}
+foreign import ccall "ql.h qlDigitalCmsSpreadCouponAsDigitalCoupon" qlDigitalCmsSpreadCouponAsDigitalCoupon :: Ptr CDigitalCmsSpreadCoupon' -> IO (Ptr CDigitalCoupon')
+instance Upcastable CDigitalCmsSpreadCoupon' where {type Base CDigitalCmsSpreadCoupon' = CDigitalCoupon'; upcast = qlDigitalCmsSpreadCouponAsDigitalCoupon}
 peekDigitalCmsSpreadCoupon :: Ptr CDigitalCmsSpreadCoupon' -> IO DigitalCmsSpreadCoupon
-peekDigitalCmsSpreadCoupon = GenFloatingRateCoupon <.> newGenForeignPtr
+peekDigitalCmsSpreadCoupon = newGenForeignPtr >=> newGenDigitalCoupon
 withDigitalCmsSpreadCoupon :: DigitalCmsSpreadCoupon -> (Ptr CDigitalCmsSpreadCoupon' -> IO b) -> IO b
-withDigitalCmsSpreadCoupon = withForeignPtr . ptr . getFloatingRateCoupon
+withDigitalCmsSpreadCoupon = withForeignPtr . ptr . peel . peel . getCashFlow
 
 data CStrippedCappedFlooredCoupon'
 type CStrippedCappedFlooredCoupon = ForeignPtr CStrippedCappedFlooredCoupon'
@@ -785,22 +765,24 @@ instance Finalizable CStrippedCappedFlooredCoupon' where finalize = qlFreeStripp
 foreign import ccall "ql.h qlStrippedCappedFlooredCouponAsFloatingRateCoupon" qlStrippedCappedFlooredCouponAsFloatingRateCoupon :: Ptr CStrippedCappedFlooredCoupon' -> IO (Ptr CFloatingRateCoupon')
 instance Upcastable CStrippedCappedFlooredCoupon' where {type Base CStrippedCappedFlooredCoupon' = CFloatingRateCoupon'; upcast = qlStrippedCappedFlooredCouponAsFloatingRateCoupon}
 peekStrippedCappedFlooredCoupon :: Ptr CStrippedCappedFlooredCoupon' -> IO StrippedCappedFlooredCoupon
-peekStrippedCappedFlooredCoupon = GenFloatingRateCoupon <.> newGenForeignPtr
+peekStrippedCappedFlooredCoupon = newGenForeignPtr >=> newGenFloatingRateCoupon
 withStrippedCappedFlooredCoupon :: StrippedCappedFlooredCoupon -> (Ptr CStrippedCappedFlooredCoupon' -> IO b) -> IO b
-withStrippedCappedFlooredCoupon = withForeignPtr . ptr . getFloatingRateCoupon
+withStrippedCappedFlooredCoupon = withForeignPtr . ptr . peel . getCashFlow
 
--- |Concrete digital coupon exposing option-rate results.
 data CDigitalCoupon'
+type GenDigitalCoupon dc = GenFloatingRateCoupon (AnyOf CDigitalCoupon' dc)
 type CDigitalCoupon = ForeignPtr CDigitalCoupon'
-type DigitalCoupon = GenFloatingRateCoupon CDigitalCoupon
+type DigitalCoupon = GenDigitalCoupon CDigitalCoupon
 foreign import ccall unsafe "ql.h &qlFreeDigitalCoupon" qlFreeDigitalCoupon :: FinalizerPtr CDigitalCoupon'
 instance Finalizable CDigitalCoupon' where finalize = qlFreeDigitalCoupon
 foreign import ccall "ql.h qlDigitalCouponAsFloatingRateCoupon" qlDigitalCouponAsFloatingRateCoupon :: Ptr CDigitalCoupon' -> IO (Ptr CFloatingRateCoupon')
 instance Upcastable CDigitalCoupon' where {type Base CDigitalCoupon' = CFloatingRateCoupon'; upcast = qlDigitalCouponAsFloatingRateCoupon}
 peekDigitalCoupon :: Ptr CDigitalCoupon' -> IO DigitalCoupon
-peekDigitalCoupon = GenFloatingRateCoupon <.> newGenForeignPtr
-withDigitalCoupon :: DigitalCoupon -> (Ptr CDigitalCoupon' -> IO b) -> IO b
-withDigitalCoupon = withForeignPtr . ptr . getFloatingRateCoupon
+peekDigitalCoupon = newCastForeignPtr >=> newGenDigitalCoupon
+newGenDigitalCoupon :: GenForeignPtr dc CDigitalCoupon' -> IO (GenDigitalCoupon dc)
+newGenDigitalCoupon = pure . GenCashFlow . newAnyOf . newAnyOf
+withDigitalCoupon :: GenDigitalCoupon dc -> (Ptr CDigitalCoupon' -> IO b) -> IO b
+withDigitalCoupon = withGenForeignPtr . peel . peel . getCashFlow
 
 -- | A range-accrual coupon is concrete for its no-optionality price helper.
 data CRangeAccrualFloatersCoupon'
@@ -811,19 +793,21 @@ instance Finalizable CRangeAccrualFloatersCoupon' where finalize = qlFreeRangeAc
 foreign import ccall "ql.h qlRangeAccrualFloatersCouponAsFloatingRateCoupon" qlRangeAccrualFloatersCouponAsFloatingRateCoupon :: Ptr CRangeAccrualFloatersCoupon' -> IO (Ptr CFloatingRateCoupon')
 instance Upcastable CRangeAccrualFloatersCoupon' where {type Base CRangeAccrualFloatersCoupon' = CFloatingRateCoupon'; upcast = qlRangeAccrualFloatersCouponAsFloatingRateCoupon}
 peekRangeAccrualFloatersCoupon :: Ptr CRangeAccrualFloatersCoupon' -> IO RangeAccrualFloatersCoupon
-peekRangeAccrualFloatersCoupon = GenFloatingRateCoupon <.> newGenForeignPtr
+peekRangeAccrualFloatersCoupon = newGenForeignPtr >=> newGenFloatingRateCoupon
 withRangeAccrualFloatersCoupon :: RangeAccrualFloatersCoupon -> (Ptr CRangeAccrualFloatersCoupon' -> IO b) -> IO b
-withRangeAccrualFloatersCoupon = withForeignPtr . ptr . getFloatingRateCoupon
+withRangeAccrualFloatersCoupon = withForeignPtr . ptr . peel . getCashFlow
 
--- |Concrete YoY coupon exposing 'adjustedFixing'.
-data CYoYInflationCoupon
-newtype YoYInflationCoupon = YoYInflationCoupon {getCYoYInflationCoupon :: Standalone CYoYInflationCoupon}
-foreign import ccall unsafe "ql.h &qlFreeYoYInflationCoupon" qlFreeYoYInflationCoupon :: FinalizerPtr CYoYInflationCoupon
-instance Finalizable CYoYInflationCoupon where finalize = qlFreeYoYInflationCoupon
-peekYoYInflationCoupon :: Ptr CYoYInflationCoupon -> IO YoYInflationCoupon
-peekYoYInflationCoupon = YoYInflationCoupon <.> peekStandalone
-withYoYInflationCoupon :: YoYInflationCoupon -> (Ptr CYoYInflationCoupon -> IO b) -> IO b
-withYoYInflationCoupon = withStandalone . getCYoYInflationCoupon
+data CYoYInflationCoupon'
+type CYoYInflationCoupon = ForeignPtr CYoYInflationCoupon'
+type YoYInflationCoupon = GenCashFlow CYoYInflationCoupon
+foreign import ccall unsafe "ql.h &qlFreeYoYInflationCoupon" qlFreeYoYInflationCoupon :: FinalizerPtr CYoYInflationCoupon'
+instance Finalizable CYoYInflationCoupon' where finalize = qlFreeYoYInflationCoupon
+foreign import ccall "ql.h qlYoYInflationCouponAsCashFlow" qlYoYInflationCouponAsCashFlow :: Ptr CYoYInflationCoupon' -> IO (Ptr CCashFlow')
+instance Upcastable CYoYInflationCoupon' where {type Base CYoYInflationCoupon' = CCashFlow'; upcast = qlYoYInflationCouponAsCashFlow}
+peekYoYInflationCoupon :: Ptr CYoYInflationCoupon' -> IO YoYInflationCoupon
+peekYoYInflationCoupon = GenCashFlow <.> newGenForeignPtr
+withYoYInflationCoupon :: YoYInflationCoupon -> (Ptr CYoYInflationCoupon' -> IO b) -> IO b
+withYoYInflationCoupon = withForeignPtr . ptr . getCashFlow
 
 data CEquityCashFlowPricer
 newtype EquityCashFlowPricer = EquityCashFlowPricer {getCEquityCashFlowPricer :: Standalone CEquityCashFlowPricer}
@@ -1243,29 +1227,107 @@ foreign import ccall "ql.h qlRebatedExerciseAsExercise" qlRebatedExerciseAsExerc
 
 data CLeg'
 data CCouponLeg'
-data CCashFlow
-newtype CashFlow = CashFlow {getCCashFlow :: Standalone CCashFlow}
-foreign import ccall unsafe "ql.h &qlFreeCashFlow" qlFreeCashFlow :: FinalizerPtr CCashFlow
-instance Finalizable CCashFlow where finalize = qlFreeCashFlow
-peekCashFlow :: Ptr CCashFlow -> IO CashFlow
-peekCashFlow = CashFlow <.> peekStandalone
-withCashFlow :: CashFlow -> (Ptr CCashFlow -> IO b) -> IO b
-withCashFlow = withStandalone . getCCashFlow
-withCashFlowArray :: [CashFlow] -> ((CUInt, Ptr (Ptr CCashFlow)) -> IO b) -> IO b
-withCashFlowArray = withStandaloneArray getCCashFlow
--- | 'FixedRateCoupon': a standalone 'CashFlow' subclass, following the same
--- ZeroInflationCashFlow\/CPICashFlow\/CommodityCashFlow precedent (no polymorphic @CashFlow@
--- family is modelled here) -- gets its own concrete leaf, distinct from the generic 'CashFlow',
--- for its own 'QuantLib.CashFlow.interestRate' getter. Convert with
--- 'QuantLib.CashFlow.asCashFlow' to combine it with other cash flows in a 'Leg'.
-data CFixedRateCoupon
-newtype FixedRateCoupon = FixedRateCoupon {getCFixedRateCoupon :: Standalone CFixedRateCoupon}
-foreign import ccall unsafe "ql.h &qlFreeFixedRateCoupon" qlFreeFixedRateCoupon :: FinalizerPtr CFixedRateCoupon
-instance Finalizable CFixedRateCoupon where finalize = qlFreeFixedRateCoupon
-peekFixedRateCoupon :: Ptr CFixedRateCoupon -> IO FixedRateCoupon
-peekFixedRateCoupon = FixedRateCoupon <.> peekStandalone
-withFixedRateCoupon :: FixedRateCoupon -> (Ptr CFixedRateCoupon -> IO b) -> IO b
-withFixedRateCoupon = withStandalone . getCFixedRateCoupon
+-- | > CashFlow
+-- >   FixedRateCoupon
+-- >   FloatingRateCoupon
+-- >     AverageBMACoupon
+-- >     CmsCoupon
+-- >     DigitalCoupon
+-- >       DigitalCmsCoupon
+-- >       DigitalCmsSpreadCoupon
+-- >     IborCoupon
+-- >     MultipleResetsCoupon
+-- >     OvernightIndexedCoupon
+-- >     RangeAccrualFloatersCoupon
+-- >     StrippedCappedFlooredCoupon
+-- >   IndexedCashFlow
+-- >     CPICashFlow
+-- >     EquityCashFlow
+-- >     ZeroInflationCashFlow
+-- >   CPICoupon
+-- >   CommodityCashFlow
+-- >   YoYInflationCoupon
+--
+-- Cash-flow hierarchy. Coupon and InflationCoupon are intentionally elided because no bound API
+-- consumes either intermediate type.
+data CCashFlow'
+newtype GenCashFlow cf = GenCashFlow {getCashFlow :: GenForeignPtr cf CCashFlow'}
+type CCashFlow = ForeignPtr CCashFlow'
+type CashFlow = GenCashFlow CCashFlow
+foreign import ccall unsafe "ql.h &qlFreeCashFlow" qlFreeCashFlow :: FinalizerPtr CCashFlow'
+instance Finalizable CCashFlow' where finalize = qlFreeCashFlow
+asCashFlow :: GenCashFlow cf -> IO CashFlow
+asCashFlow = transferGenForeignPtr peekCashFlow . getCashFlow
+peekCashFlow :: Ptr CCashFlow' -> IO CashFlow
+peekCashFlow = GenCashFlow <.> newCastForeignPtr
+withCashFlow :: GenCashFlow cf -> (Ptr CCashFlow' -> IO b) -> IO b
+withCashFlow = withGenForeignPtr . getCashFlow
+withCashFlowArray :: [GenCashFlow cf] -> ((CUInt, Ptr (Ptr CCashFlow')) -> IO b) -> IO b
+withCashFlowArray = withGenArray withCashFlow
+
+data CFixedRateCoupon'
+type CFixedRateCoupon = ForeignPtr CFixedRateCoupon'
+type FixedRateCoupon = GenCashFlow CFixedRateCoupon
+foreign import ccall unsafe "ql.h &qlFreeFixedRateCoupon" qlFreeFixedRateCoupon :: FinalizerPtr CFixedRateCoupon'
+instance Finalizable CFixedRateCoupon' where finalize = qlFreeFixedRateCoupon
+foreign import ccall "ql.h qlFixedRateCouponAsCashFlow" qlFixedRateCouponAsCashFlow :: Ptr CFixedRateCoupon' -> IO (Ptr CCashFlow')
+instance Upcastable CFixedRateCoupon' where {type Base CFixedRateCoupon' = CCashFlow'; upcast = qlFixedRateCouponAsCashFlow}
+peekFixedRateCoupon :: Ptr CFixedRateCoupon' -> IO FixedRateCoupon
+peekFixedRateCoupon = GenCashFlow <.> newGenForeignPtr
+withFixedRateCoupon :: FixedRateCoupon -> (Ptr CFixedRateCoupon' -> IO b) -> IO b
+withFixedRateCoupon = withForeignPtr . ptr . getCashFlow
+
+data CIndexedCashFlow'
+type GenIndexedCashFlow icf = GenCashFlow (AnyOf CIndexedCashFlow' icf)
+type CIndexedCashFlow = ForeignPtr CIndexedCashFlow'
+type IndexedCashFlow = GenIndexedCashFlow CIndexedCashFlow
+foreign import ccall unsafe "ql.h &qlFreeIndexedCashFlow" qlFreeIndexedCashFlow :: FinalizerPtr CIndexedCashFlow'
+instance Finalizable CIndexedCashFlow' where finalize = qlFreeIndexedCashFlow
+foreign import ccall "ql.h qlIndexedCashFlowAsCashFlow" qlIndexedCashFlowAsCashFlow :: Ptr CIndexedCashFlow' -> IO (Ptr CCashFlow')
+instance Upcastable CIndexedCashFlow' where {type Base CIndexedCashFlow' = CCashFlow'; upcast = qlIndexedCashFlowAsCashFlow}
+peekIndexedCashFlow :: Ptr CIndexedCashFlow' -> IO IndexedCashFlow
+peekIndexedCashFlow = newCastForeignPtr >=> newGenIndexedCashFlow
+newGenIndexedCashFlow :: GenForeignPtr icf CIndexedCashFlow' -> IO (GenIndexedCashFlow icf)
+newGenIndexedCashFlow = pure . GenCashFlow . newAnyOf
+withIndexedCashFlow :: GenIndexedCashFlow icf -> (Ptr CIndexedCashFlow' -> IO b) -> IO b
+withIndexedCashFlow = withGenForeignPtr . peel . getCashFlow
+
+data CZeroInflationCashFlow'
+type CZeroInflationCashFlow = ForeignPtr CZeroInflationCashFlow'
+type ZeroInflationCashFlow = GenIndexedCashFlow CZeroInflationCashFlow
+foreign import ccall unsafe "ql.h &qlFreeZeroInflationCashFlow" qlFreeZeroInflationCashFlow :: FinalizerPtr CZeroInflationCashFlow'
+instance Finalizable CZeroInflationCashFlow' where finalize = qlFreeZeroInflationCashFlow
+foreign import ccall "ql.h qlZeroInflationCashFlowAsIndexedCashFlow" qlZeroInflationCashFlowAsIndexedCashFlow :: Ptr CZeroInflationCashFlow' -> IO (Ptr CIndexedCashFlow')
+instance Upcastable CZeroInflationCashFlow' where {type Base CZeroInflationCashFlow' = CIndexedCashFlow'; upcast = qlZeroInflationCashFlowAsIndexedCashFlow}
+peekZeroInflationCashFlow :: Ptr CZeroInflationCashFlow' -> IO ZeroInflationCashFlow
+peekZeroInflationCashFlow = newGenForeignPtr >=> newGenIndexedCashFlow
+withZeroInflationCashFlow :: ZeroInflationCashFlow -> (Ptr CZeroInflationCashFlow' -> IO b) -> IO b
+withZeroInflationCashFlow = withForeignPtr . ptr . peel . getCashFlow
+
+data CCPICashFlow'
+type CCPICashFlow = ForeignPtr CCPICashFlow'
+type CPICashFlow = GenIndexedCashFlow CCPICashFlow
+foreign import ccall unsafe "ql.h &qlFreeCPICashFlow" qlFreeCPICashFlow :: FinalizerPtr CCPICashFlow'
+instance Finalizable CCPICashFlow' where finalize = qlFreeCPICashFlow
+foreign import ccall "ql.h qlCPICashFlowAsIndexedCashFlow" qlCPICashFlowAsIndexedCashFlow :: Ptr CCPICashFlow' -> IO (Ptr CIndexedCashFlow')
+instance Upcastable CCPICashFlow' where {type Base CCPICashFlow' = CIndexedCashFlow'; upcast = qlCPICashFlowAsIndexedCashFlow}
+peekCPICashFlow :: Ptr CCPICashFlow' -> IO CPICashFlow
+peekCPICashFlow = newGenForeignPtr >=> newGenIndexedCashFlow
+withCPICashFlow :: CPICashFlow -> (Ptr CCPICashFlow' -> IO b) -> IO b
+withCPICashFlow = withForeignPtr . ptr . peel . getCashFlow
+
+data CEquityCashFlow'
+type CEquityCashFlow = ForeignPtr CEquityCashFlow'
+type EquityCashFlow = GenIndexedCashFlow CEquityCashFlow
+foreign import ccall unsafe "ql.h &qlFreeEquityCashFlow" qlFreeEquityCashFlow :: FinalizerPtr CEquityCashFlow'
+instance Finalizable CEquityCashFlow' where finalize = qlFreeEquityCashFlow
+foreign import ccall "ql.h qlEquityCashFlowAsIndexedCashFlow" qlEquityCashFlowAsIndexedCashFlow :: Ptr CEquityCashFlow' -> IO (Ptr CIndexedCashFlow')
+instance Upcastable CEquityCashFlow' where {type Base CEquityCashFlow' = CIndexedCashFlow'; upcast = qlEquityCashFlowAsIndexedCashFlow}
+peekEquityCashFlow :: Ptr CEquityCashFlow' -> IO EquityCashFlow
+peekEquityCashFlow = newGenForeignPtr >=> newGenIndexedCashFlow
+withEquityCashFlow :: EquityCashFlow -> (Ptr CEquityCashFlow' -> IO b) -> IO b
+withEquityCashFlow = withForeignPtr . ptr . peel . getCashFlow
+
 newtype GenLeg l = GenLeg {getLeg :: GenForeignPtr l CLeg'}
 type CLeg = ForeignPtr CLeg'
 type Leg = GenLeg CLeg
@@ -1880,7 +1942,7 @@ type CYoYOptionletVolatilitySurface = ForeignPtr CYoYOptionletVolatilitySurface'
 -- 'VolatilityTermStructure' leaf like 'CapFloorTermVolSurface', constructed and consumed via a
 -- @Handle@ (mirroring 'OptionletVolatilityStructure', since it feeds
 -- 'QuantLib.PricingEngine.yoyInflationBlackCapFloorEngine' et al. exactly the way
--- 'OptionletVolatilityStructure' feeds 'QuantLib.PricingEngine.blackCapFloorEngineWithVolatilityStructure').
+-- 'OptionletVolatilityStructure' feeds 'QuantLib.PricingEngine.blackCapFloorEngineFromVolatilityStructure').
 type YoYOptionletVolatilitySurface = GenVolatilityTermStructure CYoYOptionletVolatilitySurface
 type CCPIVolatilitySurface = ForeignPtr CCPIVolatilitySurface'
 -- | A CPI (zero-inflation) volatility surface, quoted via 'volatility'\/'totalVariance' at
@@ -3804,23 +3866,22 @@ peekEnergyBasisSwap = newGenForeignPtr >=> newGenEnergySwap
 withEnergyBasisSwap :: EnergyBasisSwap -> (Ptr CEnergyBasisSwap' -> IO b) -> IO b
 withEnergyBasisSwap = withForeignPtr . ptr . peel . peel . peel . getInstrument
 
--- |'CommodityCashFlow': a standalone 'CashFlow' subclass, following the same
--- ZeroInflationCashFlow\/CPICashFlow\/EquityCashFlow precedent (no polymorphic @CashFlow@ family is
--- modelled here -- see those types in 'QuantLib.CashFlow' -- each concrete cash flow class is its
--- own standalone foreign-pointer type instead).
-data CCommodityCashFlow
-newtype CommodityCashFlow = CommodityCashFlow {getCCommodityCashFlow :: Standalone CCommodityCashFlow}
-foreign import ccall unsafe "ql.h &qlFreeCommodityCashFlow" qlFreeCommodityCashFlow :: FinalizerPtr CCommodityCashFlow
-instance Finalizable CCommodityCashFlow where finalize = qlFreeCommodityCashFlow
-peekCommodityCashFlow :: Ptr CCommodityCashFlow -> IO CommodityCashFlow
-peekCommodityCashFlow = CommodityCashFlow <.> peekStandalone
-withCommodityCashFlow :: CommodityCashFlow -> (Ptr CCommodityCashFlow -> IO b) -> IO b
-withCommodityCashFlow = withStandalone . getCCommodityCashFlow
+data CCommodityCashFlow'
+type CCommodityCashFlow = ForeignPtr CCommodityCashFlow'
+type CommodityCashFlow = GenCashFlow CCommodityCashFlow
+foreign import ccall unsafe "ql.h &qlFreeCommodityCashFlow" qlFreeCommodityCashFlow :: FinalizerPtr CCommodityCashFlow'
+instance Finalizable CCommodityCashFlow' where finalize = qlFreeCommodityCashFlow
+foreign import ccall "ql.h qlCommodityCashFlowAsCashFlow" qlCommodityCashFlowAsCashFlow :: Ptr CCommodityCashFlow' -> IO (Ptr CCashFlow')
+instance Upcastable CCommodityCashFlow' where {type Base CCommodityCashFlow' = CCashFlow'; upcast = qlCommodityCashFlowAsCashFlow}
+peekCommodityCashFlow :: Ptr CCommodityCashFlow' -> IO CommodityCashFlow
+peekCommodityCashFlow = GenCashFlow <.> newGenForeignPtr
+withCommodityCashFlow :: CommodityCashFlow -> (Ptr CCommodityCashFlow' -> IO b) -> IO b
+withCommodityCashFlow = withForeignPtr . ptr . getCashFlow
 -- |An array of freshly-constructed 'CommodityCashFlow's -- 'EnergySwap.paymentCashFlows()''s
 -- @map<Date, shared_ptr<CommodityCashFlow>>@, read as a plain list (each element's own
--- 'QuantLib.Instrument.Energy.date' already carries the map key, so it isn't
+-- 'QuantLib.CashFlow.date' already carries the map key, so it isn't
 -- duplicated as a separate tuple field).
-peekCommodityCashFlowArray :: Ptr CUInt -> Ptr (Ptr (Ptr CCommodityCashFlow)) -> IO [CommodityCashFlow]
+peekCommodityCashFlowArray :: Ptr CUInt -> Ptr (Ptr (Ptr CCommodityCashFlow')) -> IO [CommodityCashFlow]
 peekCommodityCashFlowArray = peekPtrArray peekCommodityCashFlow
 
 withInstrumentArray :: [GenInstrument i] -> ((CUInt, Ptr (Ptr CInstrument')) -> IO b) -> IO b

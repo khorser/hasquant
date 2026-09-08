@@ -103,7 +103,7 @@ run = do
             False depositDC TS.LastRelevantDate Nothing True
         swaps <- forM swapQuotes $ \(yrs, rate) -> do
           q <- simpleQuote rate
-          TS.swapRateHelperWithConventions q (yrs, Years) cal Annual Unadjusted fixedLegDC euribor6M
+          TS.swapRateHelperFromConventions q (yrs, Years) cal Annual Unadjusted fixedLegDC euribor6M
             Nothing (0, Days) discounting
             Nothing TS.LastRelevantDate Nothing False Nothing Nothing Nothing
             >>= TS.asRateHelper
