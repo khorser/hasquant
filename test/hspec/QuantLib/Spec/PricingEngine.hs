@@ -1700,7 +1700,7 @@ spec = do
         capletVol <- constantOptionletVolatility (CalendarSettlementDays 0) cal ModifiedFollowing capletVolQ dc365 ShiftedLognormal 0.0
         markovCaplet <- markovFunctionalCaplet ts 0.01 0.01 [] capletVol (fromList capletExpiries) euribor6m 16
         markovCapletModel <- asGaussian1dModel markovCaplet
-        blackEngine <- blackCapFloorEngineWithVolatilityStructure ts capletVol
+        blackEngine <- blackCapFloorEngineFromVolatilityStructure ts capletVol
         setPricingEngine capfl blackEngine
         blackNpv <- npv capfl
         markovCapletEngine <- gaussian1dCapFloorEngine markovCapletModel 64 7.0 True False (Just ts)

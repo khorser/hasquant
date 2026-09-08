@@ -36,7 +36,7 @@ import QuantLib.Instrument.Option(vanillaOption, EuropeanExercise(..), PlainVani
 import qualified QuantLib.Instrument.Forward as Fwd
 import QuantLib.Process(blackScholesMertonProcess, ProcessDiscretization(EulerDiscretization), hestonProcess, HestonProcessDiscretization(..))
 import qualified QuantLib.TermStructure.Volatility as Vol
-import QuantLib.PricingEngine(discountingSwapEngine, analyticEuropeanEngine, blackSwaptionEngineWithVolatilityStructure, blackCapFloorEngineWithVolatilityStructure, bachelierSwaptionEngineWithVolatilityStructure, bachelierCapFloorEngineWithVolatilityStructure, bjerksundStenslandApproximationEngine, analyticHestonEngine, IntegrationControl(..), fdHestonVanillaEngine)
+import QuantLib.PricingEngine(discountingSwapEngine, analyticEuropeanEngine, blackSwaptionEngineFromVolatilityStructure, blackCapFloorEngineFromVolatilityStructure, bachelierSwaptionEngineFromVolatilityStructure, bachelierCapFloorEngineFromVolatilityStructure, bjerksundStenslandApproximationEngine, analyticHestonEngine, IntegrationControl(..), fdHestonVanillaEngine)
 
 import QuantLib.Spec.Helpers(areClose, closePrec)
 
@@ -81,7 +81,7 @@ spec = do
             swaps <- mapM
               (\(n, u, r) -> do
                 q <- Quote.simpleQuote (r/100)
-                swapRateHelperWithConventions q (n, u) cal Annual Unadjusted thirty360dc index Nothing (0, Days) Nothing
+                swapRateHelperFromConventions q (n, u) cal Annual Unadjusted thirty360dc index Nothing (0, Days) Nothing
                   Nothing LastRelevantDate Nothing False Nothing Nothing Nothing >>= asRateHelper)
               swapData
 
@@ -283,7 +283,7 @@ spec = do
 
           ccy <- currency EUR
           ibor <- iborIndex (Ibor "dummy" (6, Months) 2 ccy cal ModifiedFollowing False actual360dc) Nothing
-          vanilla <- swapRateHelperWithConventions q (5, Years) cal Annual Unadjusted thirty360dc ibor Nothing (0, Days) Nothing
+          vanilla <- swapRateHelperFromConventions q (5, Years) cal Annual Unadjusted thirty360dc ibor Nothing (0, Days) Nothing
             Nothing LastRelevantDate Nothing False Nothing Nothing Nothing >>= swapRateHelperSwap
           (Swap.asSwap vanilla >>= Swap.maturityDate) `shouldReturn` Just (4 `january` 2029)
 
@@ -631,7 +631,7 @@ spec = do
             volQ <- Quote.simpleQuote 0.20
             vol0 <- Vol.constantSwaptionVolatility (Vol.CalendarReferenceDate (11 `december` 2012)) cal ModifiedFollowing volQ dc IR.ShiftedLognormal 0
             volH <- Vol.relinkableSwaptionVolatilityStructure (Just vol0)
-            eng <- blackSwaptionEngineWithVolatilityStructure discountH volH
+            eng <- blackSwaptionEngineFromVolatilityStructure discountH volH
             -- the Black swaption engine requires a spot-starting swaption: the exercise date
             -- must fall on or before the swap's start date (13 december 2012)
             swpn <- swaption sw (European (EuropeanExercise (12 `december` 2012))) Physical PhysicalOTC
@@ -668,7 +668,7 @@ spec = do
             volQ <- Quote.simpleQuote 0.20
             vol0 <- Vol.constantOptionletVolatility (Vol.CalendarReferenceDate (11 `december` 2012)) cal ModifiedFollowing volQ dc IR.ShiftedLognormal 0
             volH <- Vol.relinkableOptionletVolatilityStructure (Just vol0)
-            eng <- blackCapFloorEngineWithVolatilityStructure discountH volH
+            eng <- blackCapFloorEngineFromVolatilityStructure discountH volH
             setPricingEngine capfl eng
             pure (capfl, volH)
 
@@ -712,14 +712,14 @@ spec = do
             [(n, Years) | n <- [1 .. 10]] [0.02, 0.05, 0.08] volMatrix dc
           strippedVol <- Vol.optionletStripper capVolSurface idx Nothing 1.0e-6 100
             (Just discountH) IR.ShiftedLognormal 0 False Nothing
-          strippedEng <- blackCapFloorEngineWithVolatilityStructure discountH strippedVol
+          strippedEng <- blackCapFloorEngineFromVolatilityStructure discountH strippedVol
           setPricingEngine capfl strippedEng
           priceStripped <- npv capfl
 
           constVolQ <- Quote.simpleQuote 0.18
           constVol <- Vol.constantOptionletVolatility (Vol.CalendarReferenceDate (11 `december` 2012)) cal Following constVolQ dc
             IR.ShiftedLognormal 0
-          constEng <- blackCapFloorEngineWithVolatilityStructure discountH constVol
+          constEng <- blackCapFloorEngineFromVolatilityStructure discountH constVol
           setPricingEngine capfl constEng
           priceConst <- npv capfl
 
@@ -842,11 +842,11 @@ spec = do
             (Just discountH) IR.ShiftedLognormal 0 False Nothing capVolCurve
           vol2 <- Vol.asOptionletVolatilityStructure stripper2
 
-          eng1 <- blackCapFloorEngineWithVolatilityStructure discountH stripper1
+          eng1 <- blackCapFloorEngineFromVolatilityStructure discountH stripper1
           setPricingEngine capfl eng1
           price1 <- npv capfl
 
-          eng2 <- blackCapFloorEngineWithVolatilityStructure discountH vol2
+          eng2 <- blackCapFloorEngineFromVolatilityStructure discountH vol2
           setPricingEngine capfl eng2
           price2 <- npv capfl
 
@@ -954,7 +954,7 @@ spec = do
           normalVolQ <- Quote.simpleQuote 0.0075
           normalVol <- Vol.constantSwaptionVolatility (Vol.CalendarReferenceDate (11 `december` 2012)) cal ModifiedFollowing normalVolQ dc IR.Normal 0
           normalVolH <- Vol.relinkableSwaptionVolatilityStructure (Just normalVol)
-          bachelierEng <- bachelierSwaptionEngineWithVolatilityStructure discountH normalVolH
+          bachelierEng <- bachelierSwaptionEngineFromVolatilityStructure discountH normalVolH
           setPricingEngine swpn bachelierEng
           npvBachelier <- npv swpn
           npvBachelier `shouldSatisfy` (not . isNaN)
@@ -962,7 +962,7 @@ spec = do
           lognormalVolQ <- Quote.simpleQuote 0.20
           lognormalVol <- Vol.constantSwaptionVolatility (Vol.CalendarReferenceDate (11 `december` 2012)) cal ModifiedFollowing lognormalVolQ dc IR.ShiftedLognormal 0
           lognormalVolH <- Vol.relinkableSwaptionVolatilityStructure (Just lognormalVol)
-          blackEng <- blackSwaptionEngineWithVolatilityStructure discountH lognormalVolH
+          blackEng <- blackSwaptionEngineFromVolatilityStructure discountH lognormalVolH
           setPricingEngine swpn blackEng
           npvBlack <- npv swpn
           npvBlack `shouldSatisfy` (not . isNaN)
@@ -986,7 +986,7 @@ spec = do
           normalVolQ <- Quote.simpleQuote 0.0075
           normalVol <- Vol.constantOptionletVolatility (Vol.CalendarReferenceDate (11 `december` 2012)) cal ModifiedFollowing normalVolQ dc IR.Normal 0
           normalVolH <- Vol.relinkableOptionletVolatilityStructure (Just normalVol)
-          bachelierEng <- bachelierCapFloorEngineWithVolatilityStructure discountH normalVolH
+          bachelierEng <- bachelierCapFloorEngineFromVolatilityStructure discountH normalVolH
           setPricingEngine capfl bachelierEng
           npvBachelier <- npv capfl
           npvBachelier `shouldSatisfy` (not . isNaN)
@@ -994,7 +994,7 @@ spec = do
           lognormalVolQ <- Quote.simpleQuote 0.20
           lognormalVol <- Vol.constantOptionletVolatility (Vol.CalendarReferenceDate (11 `december` 2012)) cal ModifiedFollowing lognormalVolQ dc IR.ShiftedLognormal 0
           lognormalVolH <- Vol.relinkableOptionletVolatilityStructure (Just lognormalVol)
-          blackEng <- blackCapFloorEngineWithVolatilityStructure discountH lognormalVolH
+          blackEng <- blackCapFloorEngineFromVolatilityStructure discountH lognormalVolH
           setPricingEngine capfl blackEng
           npvBlack <- npv capfl
           npvBlack `shouldSatisfy` (not . isNaN)
@@ -1054,9 +1054,9 @@ spec = do
             helpers3mFra <- mapM (\i -> fraRateHelper q i (i + 3) 2 cal ModifiedFollowing True euriborDC LastRelevantDate Nothing False) [1 .. 9]
             helpers3mBasis <- mapM (\i -> iborIborBasisSwapRateHelper b (i, Years) 2 cal ModifiedFollowing True euribor3m euribor6m discountCurve True) [2 .. 10]
             helpers6mBasis <- mapM (\i -> iborIborBasisSwapRateHelper b (i * 6, Months) 2 cal ModifiedFollowing True euribor3m euribor6m discountCurve False) [1 .. 3]
-            helpers6mSwap <- mapM (\i -> swapRateHelperWithConventions q (i, Years) cal Annual Following thirty360 euribor6m Nothing (0, Days) (Just discountCurve)
+            helpers6mSwap <- mapM (\i -> swapRateHelperFromConventions q (i, Years) cal Annual Following thirty360 euribor6m Nothing (0, Days) (Just discountCurve)
                                             Nothing LastRelevantDate Nothing False Nothing Nothing Nothing) [2 .. 10]
-              >>= mapM asRateHelper -- swapRateHelperWithConventions returns the concrete SwapRateHelper; upcast to the generic RateHelper the other helpers already are, so the list below is homogeneous
+              >>= mapM asRateHelper -- swapRateHelperFromConventions returns the concrete SwapRateHelper; upcast to the generic RateHelper the other helpers already are, so the list below is homogeneous
             -- helpers3m/helpers6m each reference the *other* curve's not-yet-bootstrapped
             -- internal handle (via euribor3m/euribor6m) -- this is exactly the cycle a plain
             -- piecewiseYieldCurve (SettlementDays with IterativeBootstrap) can't resolve.
@@ -1136,7 +1136,7 @@ spec = do
             b <- Quote.simpleQuote (-0.01)
             -- these helpers discount off intcurveois, which is not yet linked to anything --
             -- it is itself a spread over the curve being bootstrapped from these very helpers.
-            helpers3m <- mapM (\i -> swapRateHelperWithConventions q (i, Years) cal Annual Following thirty360 euribor3m Nothing (0, Days) (Just intcurveois)
+            helpers3m <- mapM (\i -> swapRateHelperFromConventions q (i, Years) cal Annual Following thirty360 euribor3m Nothing (0, Days) (Just intcurveois)
                                         Nothing LastRelevantDate Nothing False Nothing Nothing Nothing
                                       >>= asRateHelper) [1 .. 10 :: Int]
             ptr3m <- piecewiseYieldCurve (SettlementDays 0 cal) (fromList helpers3m) euriborDC []
@@ -2088,7 +2088,7 @@ spec = do
           capfl <- cap leg [0.03]
           volQ <- Quote.simpleQuote 0.20
           vol0 <- Vol.constantOptionletVolatility (Vol.CalendarReferenceDate (11 `december` 2012)) cal ModifiedFollowing volQ dc IR.ShiftedLognormal 0
-          eng <- blackCapFloorEngineWithVolatilityStructure discountTS vol0
+          eng <- blackCapFloorEngineFromVolatilityStructure discountTS vol0
           setPricingEngine capfl eng
           _ <- npv capfl
           res <- additionalResults capfl

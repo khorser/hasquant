@@ -3,7 +3,7 @@
 -- swaption built at ex/Gaussian1dModels.cpp:468-473 (gearing2/spread2 nonzero, everything else
 -- upstream's default). Checks:
 -- 1. Both FloatFloatSwap constructors materialize (flat-nominal via floatFloatSwap/
---    FloatFloatSwapOpts, per-period-nominal via floatFloatSwapWithNominals/FloatFloatSwapVaryingOpts).
+--    FloatFloatSwapOpts, per-period-nominal via floatFloatSwapFromNominals/FloatFloatSwapVaryingOpts).
 -- 2. firstLegFairSpread/secondLegFairSpread run without crashing once a pricing engine is attached.
 -- 3. FloatFloatSwaption materializes from both underlyings and calibrationBasket returns a
 --    non-empty basket in both CalibrationBasketNaive/MaturityStrikeByDeltaGamma modes -- reusing
@@ -63,7 +63,7 @@ main = do
   -- exchanges two floating legs, so use the generic Swap 'leg' accessor instead of 'fixedLeg'.
   bermudanDates <- leg underlying1 0 >>= CF.toCouponLeg >>= CF.couponAccrualStartDates
   let n = length bermudanDates
-  underlying2 <- floatFloatSwapWithNominals Payer (replicate n 1.0) (replicate (2 * n) 1.0) fixedSchedule
+  underlying2 <- floatFloatSwapFromNominals Payer (replicate n 1.0) (replicate (2 * n) 1.0) fixedSchedule
     swapBase thirty360bb floatSchedule euribor6m act360
     defaultFloatFloatSwapVaryingOpts{ffsvSecondLegSpread = replicate (2 * n) 0.0010}
 

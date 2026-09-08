@@ -46,7 +46,7 @@ run = do
 
   swapQuotes <- mapM simpleQuote ratesSwapMkt
   swapHelpers <- forM (zip swapQuotes tenorsSwapMkt) $ \(q, t) ->
-    TS.swapRateHelperWithConventions q (t, Years) cal Quarterly ModifiedFollowing actActISDA yieldIndex
+    TS.swapRateHelperFromConventions q (t, Years) cal Quarterly ModifiedFollowing actActISDA yieldIndex
       Nothing (0, Days) Nothing
       Nothing TS.LastRelevantDate Nothing False Nothing Nothing Nothing
       >>= TS.asRateHelper

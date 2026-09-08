@@ -122,7 +122,7 @@ module QuantLib.CashFlow
   , couponAccrualStartDates
 
   , fixedDividend
-  , fractionalDividendFromRate
+  , fractionalDividendWithNominal
   , fractionalDividend
 
   , averageBmaLeg
@@ -963,7 +963,7 @@ cashFlows l i d = do{(as, ds, hs) <- qlLegCashFlows l i d; return $ zip3 ds as h
   ,preErrorCheck-`String'errorCheck*-}->`Dividend'peekDividend*#}
 
 -- |Predetermined cash flow paying /rate/ times /nominal/ at /date/.
-{#fun qlFractionalDividend1 as fractionalDividendFromRate{`Double' -- ^rate
+{#fun qlFractionalDividend1 as fractionalDividendWithNominal{`Double' -- ^rate
   ,`Double' -- ^nominal
   ,withDay*`Day' -- ^date
   ,preErrorCheck-`String'errorCheck*-}->`Dividend'peekDividend*#}

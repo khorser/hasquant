@@ -1942,7 +1942,7 @@ type CYoYOptionletVolatilitySurface = ForeignPtr CYoYOptionletVolatilitySurface'
 -- 'VolatilityTermStructure' leaf like 'CapFloorTermVolSurface', constructed and consumed via a
 -- @Handle@ (mirroring 'OptionletVolatilityStructure', since it feeds
 -- 'QuantLib.PricingEngine.yoyInflationBlackCapFloorEngine' et al. exactly the way
--- 'OptionletVolatilityStructure' feeds 'QuantLib.PricingEngine.blackCapFloorEngineWithVolatilityStructure').
+-- 'OptionletVolatilityStructure' feeds 'QuantLib.PricingEngine.blackCapFloorEngineFromVolatilityStructure').
 type YoYOptionletVolatilitySurface = GenVolatilityTermStructure CYoYOptionletVolatilitySurface
 type CCPIVolatilitySurface = ForeignPtr CCPIVolatilitySurface'
 -- | A CPI (zero-inflation) volatility surface, quoted via 'volatility'\/'totalVariance' at
