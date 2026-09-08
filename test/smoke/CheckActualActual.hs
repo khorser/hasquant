@@ -32,8 +32,8 @@ main = do
   let d1 = fromGregorian 2026 3 1
       d2 = fromGregorian 2026 9 1
 
-  yOld <- years dcOld d1 d2 Nothing Nothing
-  yNew <- years dcWithSchedule d1 d2 Nothing Nothing
+  yOld <- yearFraction dcOld d1 d2 Nothing Nothing
+  yNew <- yearFraction dcWithSchedule d1 d2 Nothing Nothing
 
   putStrLn ("ActualActualBond (unchanged path):      yearFraction = " ++ show yOld)
   putStrLn ("ActualActualBond' sched (new, schedule-aware): yearFraction = " ++ show yNew)

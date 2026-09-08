@@ -9,7 +9,7 @@ module QuantLib.Time.Schedule
   , DayCounter
   , dayCounter
   , days
-  , years
+  , yearFraction
 
   , Schedule
   , schedule
@@ -73,7 +73,10 @@ dayCounter x = uncurry qlDayCounter $ mapDayCounter x
 {#fun qlDayCounterDayCount as days{withDayCounter*`DayCounter',withDay*`Day',withDay*`Day'}->`Int'#}
 
 -- |Returns the period between two dates as a fraction of year.
-{#fun qlDayCounterYearFraction as years{withDayCounter*`DayCounter',withDay*`Day',withDay*`Day',withMaybeDay*`Maybe Day',withMaybeDay*`Maybe Day',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlDayCounterYearFraction as yearFraction{withDayCounter*`DayCounter',withDay*`Day',withDay*`Day'
+  ,withMaybeDay*`Maybe Day' -- ^refPeriodStart
+  ,withMaybeDay*`Maybe Day' -- ^refPeriodEnd
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Builds a payment schedule by generating dates between effective and termination dates according to the given tenor and rule.
 {#fun qlSchedule as schedule{withMaybeDay*`Maybe Day' -- ^effectiveDate

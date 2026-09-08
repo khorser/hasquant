@@ -79,7 +79,7 @@ run = do
     parRate :: TS.GenYieldTermStructure y -> NonEmpty Day -> DayCounter -> IO Double
     parRate ts ds dc = do
       dfs <- mapM (\(d1, d2) -> do
-              dt <- years dc d1 d2 Nothing Nothing
+              dt <- yearFraction dc d1 d2 Nothing Nothing
               df <- TS.discount ts (TS.DatePoint d2) False
               return $ df * dt) $
                 zip (init ds) (tail ds)
@@ -101,7 +101,7 @@ run = do
               -- NonEmpty that already includes bondSettle keeps this total, and shares
               -- the one value the two parRate calls below both need
               cfDates = bondSettle :| ds
-          m <- years dc evalDate (maximum cfDates) Nothing Nothing
+          m <- yearFraction dc evalDate (maximum cfDates) Nothing Nothing
           r1 <- parRate ts0 cfDates dc
           r2 <- forM curves $ $(free1stWithArity 3) parRate cfDates dc --before the migration off type classes an implicit cast to YieldTermStructure was needed
           return (m, r1:r2)

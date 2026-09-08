@@ -158,9 +158,9 @@ affineModelSpec =
         setPricingEngine swpn engine
         engineNPV <- npv swpn
 
-        maturityT <- years dc settlement start Nothing Nothing
-        payT <- years dc settlement end Nothing Nothing
-        accrual <- years fixedDC start end Nothing Nothing
+        maturityT <- yearFraction dc settlement start Nothing Nothing
+        payT <- yearFraction dc settlement end Nothing Nothing
+        accrual <- yearFraction fixedDC start end Nothing Nothing
         let amount = notional * (1 + fixedRate * accrual)
             strike = notional / amount
         -- Payer swaption <-> Put on the underlying discount bond (JamshidianSwaptionEngine's

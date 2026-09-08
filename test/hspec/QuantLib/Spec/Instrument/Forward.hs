@@ -44,7 +44,7 @@ spec = do
         fra <- forwardRateAgreement eu3m valueDate maturityDate Long strike notional (Just ts)
         fwdRate <- forwardRate fra
         let f = IR.rate fwdRate
-        t <- years idxDC valueDate maturityDate Nothing Nothing
+        t <- yearFraction idxDC valueDate maturityDate Nothing Nothing
         let expected = notional * (f - strike) * t / (1 + f * t)
         actual <- amount fra
         actual `shouldSatisfy` closePrec expected 1e-8

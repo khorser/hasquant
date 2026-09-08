@@ -111,7 +111,7 @@ spec = do
             mapM_ (\d -> do
               calculated <- mapM (\p -> do
                 end <- addPeriod d p
-                years dc d end Nothing Nothing)
+                yearFraction dc d end Nothing Nothing)
                 periods
               calculated `shouldSatisfy` listClose id expected 1.0e-12)
               ds
@@ -119,7 +119,7 @@ spec = do
         Settings.keepingSettingsGc $
           mapM_ (\(c, s, e, rs, re, t) -> do
                     dc <- dayCounter c
-                    f <- years dc s e rs re
+                    f <- yearFraction dc s e rs re
                     abs(t - f) `shouldSatisfy` (<= 1.0e-10))
             ([(ActualActualISDA, 1 `november` 2003, 1 `may` 2004, Nothing, Nothing, 0.497724380567),
               (ActualActualISMA, 1 `november` 2003, 1 `may` 2004, Just $ 1 `november` 2003, Just $ 1 `may` 2004, 0.500000000000),
@@ -189,7 +189,7 @@ spec = do
                         2.214285714286,
                         6.84126984127]
           dc <- calendar BrazilSettlement >>= dayCounter . Business252
-          fractions <- mapM (\(s, e) -> years dc s e Nothing Nothing) (zip (toList ds) (tail ds))
+          fractions <- mapM (\(s, e) -> yearFraction dc s e Nothing Nothing) (zip (toList ds) (tail ds))
           fractions `shouldSatisfy` listClose id expected 1.0e-12
 
     describe "rounding" $ do

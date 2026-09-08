@@ -313,8 +313,8 @@ spec = do
       cal <- calendar TARGET
 
       hazard <- interpolatedHazardRateCurve (fromList [(refDate, 0.02), (d1, 0.018), (d2, 0.016)]) dc cal [] BackwardFlat False
-      t1 <- Schedule.years dc refDate d1 Nothing Nothing
-      t2 <- Schedule.years dc refDate d2 Nothing Nothing
+      t1 <- Schedule.yearFraction dc refDate d1 Nothing Nothing
+      t2 <- Schedule.yearFraction dc refDate d2 Nothing Nothing
       hazardAtDate <- hazardRate hazard (DatePoint d1) False
       hazardAtTime <- hazardRate hazard (TimePoint t1) False
       hazardAtDate `shouldBe` 0.018

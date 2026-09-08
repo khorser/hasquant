@@ -360,7 +360,7 @@ spec evalDate = do
           -- Caplet/floorlet put-call parity at a common effective strike: the price difference
           -- must equal the (undiscounted) intrinsic value of the underlying swaplet relative to
           -- that strike, discounted.
-          accrual <- years dc startDate endDate Nothing Nothing
+          accrual <- yearFraction dc startDate endDate Nothing Nothing
           let effStrike = rate + 0.001
           capletPrice <- CF.capletPrice pricer effStrike
           floorletPrice <- CF.floorletPrice pricer effStrike
@@ -450,7 +450,7 @@ spec evalDate = do
             endDate <- advance cal settlement (k + 2, Years) Following False
             underlying <- CF.iborCoupon endDate digNominal startDate endDate digFixingDays idx
               1.0 0.0 Nothing Nothing euriborDc False Nothing Preceding
-            accrual <- years euriborDc startDate endDate Nothing Nothing
+            accrual <- yearFraction euriborDc startDate endDate Nothing Nothing
             disc <- discount curve (DatePoint endDate) True
             pure (underlying, accrual, disc)
 
@@ -1046,7 +1046,7 @@ spec evalDate = do
             CF.setFloatingRateCouponPricer cpn pricer
             rate <- CF.rate cpn
             idxDc <- Ibor.dayCounter euribor
-            accrual <- years idxDc d0 d1 Nothing Nothing
+            accrual <- yearFraction idxDc d0 d1 Nothing Nothing
             pure (rate, accrual)
 
           mrExpected cal dc euribor fixingDaysN rateSpread sch = do

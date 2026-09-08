@@ -226,7 +226,7 @@ run gc = do
   volTS <- calendar TARGET >>= $(free2nd 'blackConstantVol) (CalendarReferenceDate settl) volQ dc
   bsmProc <- blackScholesMertonProcess underQ divTS ts volTS EulerDiscretization False
 
-  t <- years dc settl maturity Nothing Nothing
+  t <- yearFraction dc settl maturity Nothing Nothing
   grid <- timeGrid t timeSteps
   times <- points grid
   discFactors <- mapM (\x -> discount ts (TimePoint x) False) (V.toList times)

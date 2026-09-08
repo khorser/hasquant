@@ -1204,7 +1204,7 @@ spec = do
               _ <- setValue corrQ corr
               let expQlambda = (corrValueP - corrValueM) / (2 * dcorr)
 
-              dTyears <- years dc (addDays (-1) today') (addDays 1 today') Nothing Nothing
+              dTyears <- yearFraction dc (addDays (-1) today') (addDays 1 today') Nothing Nothing
               Settings.setEvaluationDate (Just (addDays (-1) today'))
               thetaValueM <- npv optInst
               Settings.setEvaluationDate (Just (addDays 1 today'))
@@ -1348,7 +1348,7 @@ spec = do
                 _ <- setValue corrQ corr
                 let expQlambda = (corrValueP - corrValueM) / (2 * dcorr)
 
-                dTyears <- years dc (addDays (-1) today') (addDays 1 today') Nothing Nothing
+                dTyears <- yearFraction dc (addDays (-1) today') (addDays 1 today') Nothing Nothing
                 Settings.setEvaluationDate (Just (addDays (-1) today'))
                 thetaValueM <- npv optInst
                 Settings.setEvaluationDate (Just (addDays 1 today'))
@@ -1467,7 +1467,7 @@ spec = do
         calculatedQuantoAdj `shouldSatisfy` closePrec expectedQuantoAdj 1.0e-10
 
         maturityDate <- addPeriod today' (6, Months)
-        maturityTime <- years dc today' maturityDate Nothing Nothing
+        maturityTime <- yearFraction dc today' maturityDate Nothing Nothing
         let eps = 0.0002 :: Double
             scalingFactor = 1.25 :: Double
         mesher1d <- fdmBlackScholesMesher 3 bsmProcess maturityTime s Nothing Nothing eps scalingFactor Nothing Nothing [] (Just fdmHelper) 0.0

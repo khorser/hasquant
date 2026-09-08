@@ -929,7 +929,7 @@ spec = do
           d `shouldSatisfy` (> 11 `december` 2012)
           vsAtDate <- Vol.volatilitySpreads surf d
           vsAtDate `shouldSatisfy` all (\v -> abs (v - 0.02) < 1.0e-8)
-          t <- years dc (11 `december` 2012) d Nothing Nothing
+          t <- yearFraction dc (11 `december` 2012) d Nothing Nothing
           _ <- Vol.blackVolSurfaceSmileSection surf (Vol.OptionTenor (3, Years)) False
           _ <- Vol.blackVolSurfaceSmileSection surf (Vol.OptionDate d) False
           _ <- Vol.blackVolSurfaceSmileSection surf (Vol.OptionTime t) False
@@ -1478,7 +1478,7 @@ spec = do
           smile1M <- Vol.blackVolSmile surface (Vol.DatePoint d1M)
           vol1M <- Vol.smileSectionVolatility smile1M atmStrike
           vol1M `shouldSatisfy` closePrec 0.13010360399 tolerance
-          t1M <- years dc refDate d1M Nothing Nothing
+          t1M <- yearFraction dc refDate d1M Nothing Nothing
           smile1MAtTime <- Vol.blackVolSmile surface (Vol.TimePoint t1M)
           vol1MAtTime <- Vol.smileSectionVolatility smile1MAtTime atmStrike
           vol1MAtTime `shouldSatisfy` closePrec vol1M tolerance

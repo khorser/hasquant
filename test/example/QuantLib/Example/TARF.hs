@@ -41,7 +41,7 @@ run = do
   sched <- schedule (Just $ 2 `november` 2022) (2 `october` 2023) (1, Months) calEUR ModifiedFollowing ModifiedFollowing Forward False Nothing Nothing
   ds_ <- dates sched
   let ds = fromList ds_
-  mandatory <- V.fromList <$> mapM (\x -> years dcILS valDate x Nothing Nothing) (toList ds)
+  mandatory <- V.fromList <$> mapM (\x -> yearFraction dcILS valDate x Nothing Nothing) (toList ds)
   grid <- maybe (fail "TARF: empty mandatory time grid") timeGridFromVector (nonEmptyVector mandatory)
   vols <- mapM (\(d, q) -> parse d >>= \x -> advance calEURILS valDate x ModifiedFollowing False >>= \dd -> return (dd, q/100)) vEURILS
   volEURILS <- blackVarianceCurve valDate (fromList vols) dcILS True (Just Linear)

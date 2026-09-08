@@ -114,7 +114,7 @@ run = do
       corrMat = either error id $ boxedRealMatrix (fromIntegral dim) (fromIntegral dim) corrFlat
   procs <- stochasticProcessArray (fromList procs1D) corrMat
 
-  t <- years dc evalDate maturity Nothing Nothing
+  t <- yearFraction dc evalDate maturity Nothing Nothing
   grid <- timeGrid t timeSteps
   times <- V.toList <$> points grid
   discFactors@(df0h:_) <- mapM (\x -> discount ts (TimePoint x) False) times

@@ -40,7 +40,7 @@ import QuantLib.InterestRate(Compounding(..))
 import QuantLib.TermStructure.Yield(Reference(..), TermPoint(..), interpolatedZeroCurve, flatForward, discount)
 import QuantLib.Time.Calendar(calendar, CalendarConstructor(..))
 import QuantLib.Time.Date(today, addPeriod)
-import QuantLib.Time.Schedule(Frequency(..), dayCounter, years, DayCounterConstructor(..), TimeUnit(..))
+import QuantLib.Time.Schedule(Frequency(..), dayCounter, yearFraction, DayCounterConstructor(..), TimeUnit(..))
 
 data Result = Result
   { zeroBondError :: !Double    -- ^largest @|MC mean of 1\/numeraire - P(0,t)|@ over the grid
@@ -64,7 +64,7 @@ run = Settings.keepingSettingsGc $ do
   let rates = 0.02 : [0.02 + 0.0002 * exp (sin (fromIntegral i / 8.0)) | i <- months] ++ [0.04]
       dates = evalDate : monthDates ++ [maturity]
   rTS <- interpolatedZeroCurve (fromList (zip dates rates)) dc cal [] Linear
-  times <- mapM (\d -> years dc evalDate d Nothing Nothing) dates
+  times <- mapM (\d -> yearFraction dc evalDate d Nothing Nothing) dates
 
   s0 <- simpleQuote 100.0
   -- a flat 0% dividend curve, as upstream: the joint process dereferences the handle, so it

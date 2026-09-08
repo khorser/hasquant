@@ -36,7 +36,7 @@ import Data.List.NonEmpty(fromList)
 
 import qualified QuantLib.Settings as Settings
 import QuantLib.Time.Date(today, addPeriod, september)
-import QuantLib.Time.Schedule(dayCounter, years, DayCounterConstructor(..), Frequency(..), TimeUnit(..))
+import QuantLib.Time.Schedule(dayCounter, yearFraction, DayCounterConstructor(..), Frequency(..), TimeUnit(..))
 import QuantLib.InterestRate(Compounding(..), VolatilityType(..), rate)
 import QuantLib.Quote(simpleQuote, setValue)
 import QuantLib.TermStructure.Yield(Reference(..), TermPoint(..), RateInterval(..), flatForward, forwardRate, discount, YieldTermStructure, interpolatedZeroCurve)
@@ -110,7 +110,7 @@ spec = do
         -- exercise date -- matches test-suite/hestonmodel.cpp::testAnalyticVsBlack exactly now
         -- that 'years' (DayCounter::yearFraction) is bound, rather than a hand-picked t=0.5
         -- reconciled against a day-rounded exercise date.
-        t <- years dc evalDate exerciseDate Nothing Nothing
+        t <- yearFraction dc evalDate exerciseDate Nothing Nothing
         let forwardPrice = spot * exp ((r - q) * t)
         expected <- blackFormula Put strike forwardPrice (sqrt (v0 * t)) (exp (-r * t)) 0.0
         calculated `shouldSatisfy` closePrec expected 2.0e-7
@@ -178,7 +178,7 @@ spec = do
         setPricingEngine opt eng
         calculated <- npv opt
 
-        t <- years dc evalDate exerciseDate Nothing Nothing
+        t <- yearFraction dc evalDate exerciseDate Nothing Nothing
         let forwardPrice = spot * exp ((r - q) * t)
         expected <- blackFormula Put strike forwardPrice (sqrt (v0 * t)) (exp (-r * t)) 0.0
         calculated `shouldSatisfy` closePrec expected 2.0e-7
@@ -561,7 +561,7 @@ spec = do
         hModel <- hestonModel hProcess
 
         hwFwdProcess <- hullWhiteForwardProcess rTS 0.01 0.01
-        maturityT <- years dc evalDate maturity Nothing Nothing
+        maturityT <- yearFraction dc evalDate maturity Nothing Nothing
         setForwardMeasureTime hwFwdProcess maturityT
         hwModel <- hullWhite rTS 0.01 0.01
         analyticEng <- analyticHestonHullWhiteEngine hModel hwModel (IntegrationOrder 128)
