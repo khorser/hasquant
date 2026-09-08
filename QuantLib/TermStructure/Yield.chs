@@ -15,7 +15,6 @@ module QuantLib.TermStructure.Yield
   , Reference(..)
   , TermPoint(..)
   , RatePoint(..)
-  , RateInterval(..)
   , RelinkableYieldTermStructure
   , relinkableYieldTermStructure
   , linkTo
@@ -31,8 +30,8 @@ module QuantLib.TermStructure.Yield
   , cpiBondHelper
   , swapRateHelperWithConventions
   , flatForward
-  , forwardRateForPeriod
   , forwardRate
+  , forwardRateForPeriod
   , zeroRate
   , discount
   , fraRateHelper
@@ -104,7 +103,7 @@ import QuantLib.Internal.Syntax(deriveOptionsRecord)
 import Language.Haskell.TH(mkName)
 import Language.Haskell.TH.Lib(varT)
 import QuantLib.Quote hiding(linkTo)
-import QuantLib.TermStructure (Reference(..), TermPoint(..), RatePoint(..), setExtrapolation)
+import QuantLib.TermStructure (Reference(..), TermPoint(..), RatePoint(..), setExtrapolation, referenceDate)
 import Data.Maybe(fromMaybe)
 import Data.List.NonEmpty(NonEmpty, toList)
 import Foreign.Ptr(FunPtr, Ptr)
@@ -114,7 +113,7 @@ import qualified QuantLib.Instrument.Bond as Bond (BondPriceType)
 {#import QuantLib.CashFlow#}(RateAveragingType(..))
 import QuantLib.Time.Calendar(calendar, CalendarConstructor(..))
 import QuantLib.Internal.Type
-{#import QuantLib.Time.Schedule#}(Frequency(..), DateGenerationRule(..))
+{#import QuantLib.Time.Schedule#}(Frequency(..), DateGenerationRule(..), yearFraction)
 {#import QuantLib.Time.Date#}(Month(..))
 
 #include "qlTypesC2HS.h"
@@ -276,13 +275,6 @@ flatForward (SettlementDays n cal) = flatForwardMovingRaw n cal
 {#fun qlFlatForward1 as flatForwardMovingRaw{fromIntegral`Word' -- ^settlementDays
   ,withCalendar*`Calendar',withQuote*`GenQuote q',withDayCounter*`DayCounter',`Compounding',`Frequency',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
 
--- |A forward-rate interval whose endpoints use the same coordinate representation.
--- Date-based queries carry the day-counting rule for the resulting interest rate.
-data RateInterval
-  = RateBetweenDates Day Day DayCounter
-  | RateBetweenTimes Double Double
-  deriving (Eq, Show)
-
 -- |The zero rate at a date or year-fraction coordinate.
 zeroRate :: GenYieldTermStructure y -> RatePoint -> Compounding -> Frequency -> Bool
   -> IO InterestRate
@@ -300,11 +292,23 @@ zeroRate curve point = case point of
   ,preErrorCheck-`String'errorCheck*-}->`InterestRate'peekInterestRate*#}
 
 -- |The forward rate over a date or year-fraction interval.
-forwardRate :: GenYieldTermStructure y -> RateInterval -> Compounding -> Frequency -> Bool
+forwardRate :: GenYieldTermStructure y -> RatePoint -> RatePoint -> Compounding -> Frequency -> Bool
   -> IO InterestRate
-forwardRate curve interval = case interval of
-  RateBetweenDates d1 d2 dc -> forwardRateBetweenDatesRaw curve d1 d2 dc
-  RateBetweenTimes t1 t2 -> forwardRateBetweenTimesRaw curve t1 t2
+forwardRate ts (RateAtDate d1 dc1) (RateAtDate d2 dc2) cmp f e | dc1 == dc2 = forwardRateBetweenDatesRaw ts d1 d2 dc1 cmp f e
+forwardRate ts (RateAtDate d1 dc1) (RateAtDate d2 dc2) cmp f e = do
+  r <- referenceDate ts
+  t1 <- yearFraction dc1 r d1 Nothing Nothing
+  t2 <- yearFraction dc2 r d2 Nothing Nothing
+  forwardRateBetweenTimesRaw ts t1 t2 cmp f e
+forwardRate ts (RateAtTime t1) (RateAtTime t2) cmp f e = forwardRateBetweenTimesRaw ts t1 t2 cmp f e
+forwardRate ts (RateAtDate d1 dc1) t2 cmp f e = do
+  r <- referenceDate ts
+  t1 <- yearFraction dc1 r d1 Nothing Nothing
+  forwardRate ts (RateAtTime t1) t2 cmp f e
+forwardRate ts t1 (RateAtDate d2 dc2) cmp f e = do
+  r <- referenceDate ts
+  t2 <- yearFraction dc2 r d2 Nothing Nothing
+  forwardRate ts t1 (RateAtTime t2) cmp f e
 
 {#fun qlYieldTermStructureForwardRate as forwardRateBetweenDatesRaw{withYieldTermStructure*`GenYieldTermStructure y',withDay*`Day',withDay*`Day',withDayCounter*`DayCounter',`Compounding',`Frequency'
   ,`Bool' -- ^extrapolate

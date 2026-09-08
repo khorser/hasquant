@@ -131,8 +131,8 @@ spec = do
         ts <- flatForward (ReferenceDate refDate) flatRate dc IR.Continuous Annual
         zeroAtDate <- IR.rate <$> zeroRate ts (RateAtDate endDate dc) IR.Continuous NoFrequency False
         zeroAtTime <- IR.rate <$> zeroRate ts (RateAtTime 1.0) IR.Continuous NoFrequency False
-        forwardBetweenDates <- IR.rate <$> forwardRate ts (RateBetweenDates refDate endDate dc) IR.Continuous NoFrequency False
-        forwardBetweenTimes <- IR.rate <$> forwardRate ts (RateBetweenTimes 0.0 1.0) IR.Continuous NoFrequency False
+        forwardBetweenDates <- IR.rate <$> forwardRate ts (RateAtDate refDate dc) (RateAtDate endDate dc) IR.Continuous NoFrequency False
+        forwardBetweenTimes <- IR.rate <$> forwardRate ts (RateAtTime 0.0) (RateAtTime 1.0) IR.Continuous NoFrequency False
         forwardForPeriod <- IR.rate <$> forwardRateForPeriod ts refDate (1, Years) dc IR.Continuous NoFrequency False
         let results :: [Double]
             results = [zeroAtDate, zeroAtTime, forwardBetweenDates, forwardBetweenTimes, forwardForPeriod]
@@ -161,8 +161,8 @@ spec = do
           refDate <- asTermStructure ts >>= referenceDate
           let testDate = addGregorianYearsClip 5 refDate
           actual360dc <- dayCounter (Actual360 False)
-          forward <- IR.rate <$> forwardRate ts (RateBetweenDates testDate testDate actual360dc) IR.Continuous NoFrequency False
-          spreadedForward <- IR.rate <$> forwardRate spreaded (RateBetweenDates testDate testDate actual360dc) IR.Continuous NoFrequency False
+          forward <- IR.rate <$> forwardRate ts (RateAtDate testDate actual360dc) (RateAtDate testDate actual360dc) IR.Continuous NoFrequency False
+          spreadedForward <- IR.rate <$> forwardRate spreaded (RateAtDate testDate actual360dc) (RateAtDate testDate actual360dc) IR.Continuous NoFrequency False
 
           (forward - (spreadedForward - val)) `shouldSatisfy` (<= 1.0e-10)
       it "z-spreaded" $
