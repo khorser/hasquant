@@ -1,4 +1,3 @@
-{-# LANGUAGE TemplateHaskell #-}
 module QuantLib.Example.ForwardOption
   (
     Result(..)
@@ -20,7 +19,6 @@ import QuantLib.Time.Date
 import QuantLib.Time.Schedule
 import QuantLib.TermStructure.Volatility
 import QuantLib.TermStructure.Yield
-import QuantLib.Syntax
 
 -- | Forward-starting (\"cliquet-style\") vanilla options, reproducing
 -- QuantLib's own @forwardoption.cpp@ @testValues@ golden case (Haug,
@@ -58,7 +56,7 @@ run = do
   qTS <- flatForward (ReferenceDate evalDate) qQ dc Continuous Annual
   rTS <- flatForward (ReferenceDate evalDate) rQ dc Continuous Annual
   volQ <- simpleQuote vol
-  volTS <- calendar TARGET >>= $(free2nd 'blackConstantVol) (CalendarReferenceDate evalDate) volQ dc
+  volTS <- calendar TARGET >>= \cal -> blackConstantVol (CalendarReferenceDate evalDate) cal volQ dc
   bsmProc <- blackScholesMertonProcess spotQ qTS rTS volTS EulerDiscretization False
 
   let payoff t = PlainVanilla $ PlainVanillaPayoff t 0.0

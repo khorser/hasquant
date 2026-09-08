@@ -11,6 +11,11 @@ explorable: overloads now use semantic names and coordinate types, acronyms foll
 case, common capabilities use narrowly scoped classes, and the cash-flow hierarchy is uniform.
 This is expected to be the last repository-wide rename.
 
+Breaking change: removed the `QuantLib.Syntax` module and its Template Haskell partial-call
+helpers (`free1st`, `free2nd`, `freeNth`, their `WithArity` variants, `cutAt`,
+`cutAtWithArity`, and `cut`). Ordinary lambdas and `do` bindings are clearer at the affected
+call sites and avoid Template Haskell staging and arity-reification constraints.
+
 ## 0.6.0.0 (2026)
 
 Rethought multiple inheritance for secondary interfaces (`AffineModel`, `Gaussian1dModel`): instead of a second `Upcastable` node, each leaf now gets a standalone, eagerly-materialized upcast (e.g. `hullWhiteAsAffineModel`). This traded a pure wrap at the call site for an explicit `IO`-sequenced conversion, so a few call sites that used to be pure functions are now `IO` actions — a small, deliberate cost for one fewer hand-rolled sum type per interface. Also generalized several accessor return types one `AnyOf` layer deeper (`SwaptionHelper`, `FixedVsFloatingSwap`) to keep them cast-free, and added a further batch of bindings: Gaussian1d model instruments/engines, YoY/CPI inflation vol surfaces and cap/floors, commodities, cross-currency swaps, and BlackAtmVolCurve/SabrVolSurface/OptionletStripper2.

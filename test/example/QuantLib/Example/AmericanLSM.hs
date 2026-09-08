@@ -1,4 +1,3 @@
-{-# LANGUAGE TemplateHaskell #-}
 -- |Prices an American put with a Haskell-defined @max(K-S,0)@ payoff by driving QuantLib's
 -- Longstaff-Schwartz regression primitive ('QuantLib.Method.lsmRegress') from a hand-written
 -- backward-induction loop, instead of going through a bound 'QuantLib.Instrument.Option.Payoff'
@@ -29,7 +28,6 @@ import QuantLib.Time.Date
 import QuantLib.Time.Schedule
 import QuantLib.TermStructure.Yield
 import QuantLib.TermStructure.Volatility
-import QuantLib.Syntax
 
 data Result = Result
   { lsmPrice :: !Double        -- ^custom LSM loop, out-of-sample pricing paths priced against a fit from a separate calibration path set (unbiased)
@@ -103,7 +101,7 @@ run = do
   divQ <- simpleQuote dividend
   divTS <- flatForward (ReferenceDate settl) divQ dc Continuous Annual
   volQ <- simpleQuote vol
-  volTS <- calendar TARGET >>= $(free2nd 'blackConstantVol) (CalendarReferenceDate settl) volQ dc
+  volTS <- calendar TARGET >>= \cal -> blackConstantVol (CalendarReferenceDate settl) cal volQ dc
   bsmProc <- blackScholesMertonProcess underQ divTS ts volTS EulerDiscretization False
 
   t <- yearFraction dc settl maturity Nothing Nothing

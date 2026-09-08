@@ -1,4 +1,4 @@
-{-# LANGUAGE TemplateHaskell, TupleSections #-}
+{-# LANGUAGE TupleSections #-}
 module QuantLib.Example.CDS
   (
     Result(..)
@@ -21,7 +21,6 @@ import QuantLib.TermStructure.Yield
 import QuantLib.Time.Date
 import QuantLib.Time.Calendar
 import QuantLib.Time.Schedule
-import QuantLib.Syntax
 
 data Result = Result
   { probsR :: [Double]
@@ -43,9 +42,11 @@ run = do
   maturities <- mapM (addPeriod settlementDate . (, Months)) [3, 6, 12, 24] >>= mapM (\d -> adjust cal d Following)
 
   instruments <- mapM
-    (\t -> simpleQuote quotedSpread >>=
-        $(free1st 'spreadCdsHelper) (t, Months) 1 cal Quarterly Following TwentiethIMM dc recoveryRate ts True True Nothing dc True Midpoint)
-      [3, 6, 12, 24]
+    (\t -> do
+        spread <- simpleQuote quotedSpread
+        spreadCdsHelper spread (t, Months) 1 cal Quarterly Following TwentiethIMM dc
+          recoveryRate ts True True Nothing dc True Midpoint)
+    [3, 6, 12, 24]
 
   hts <- piecewiseDefaultCurve (ReferenceDate evalDate) (fromList instruments) dc [] HazardRate BackwardFlat defaultIterativeBootstrapOpts False
   probs <- mapM (\y -> survivalProbability hts (DatePoint (addGregorianYearsClip y evalDate)) False) [1, 2]

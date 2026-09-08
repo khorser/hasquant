@@ -23,10 +23,6 @@ equivalentRate'	equivalentRateBetween
 impliedRate'	impliedRateBetween
 timeGridFromVector'	timeGridFromVectorWithSteps
 futuresConvAdjustmentQuote'	futuresConvAdjustmentQuoteFromImmCode
-cutAt'	cutAtWithArity
-free1st'	free1stWithArity
-free2nd'	free2ndWithArity
-freeNth'	freeNthWithArity
 
 hullWhiteAsAffineModel	asAffineModel
 g2AsAffineModel	asAffineModel

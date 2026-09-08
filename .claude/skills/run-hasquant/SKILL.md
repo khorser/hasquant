@@ -147,13 +147,13 @@ matters if you're mid-debugging a `.chs`-side compile error when you run
 this).
 
 A **gcov/`--coverage`-on-`cbits/`** route was tried first and abandoned:
-GHC's in-process TH interpreter segfaults loading a `--coverage`-
-instrumented `.dylib` for any module with a real TH splice (i.e. any
-`$(free1st/free2nd/...)` use from `QuantLib.Syntax`, which is most of
-`test/example/`), and forcing `-fexternal-interpreter` swaps that for a
-"duplicate object code" load error from gcov's global counter symbols
-instead. Not revisited unless the Haskell-side HPC route above turns out
-insufficient.
+GHC's in-process TH interpreter segfaulted loading a `--coverage`-
+instrumented `.dylib` for modules with real TH splices, and forcing
+`-fexternal-interpreter` swapped that for a "duplicate object code" load
+error from gcov's global counter symbols. The example-side splices that
+originally exposed this have since been removed, but the route has not been
+retested and library-side generator splices remain. Revisit it only if the
+Haskell-side HPC route above turns out insufficient.
 
 ## Gotchas
 

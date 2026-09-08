@@ -1,4 +1,3 @@
-{-# LANGUAGE TemplateHaskell #-}
 -- |Drives 'QuantLib.Method.fdmRollback' -- hasquant's Haskell-callback-driven FDM PDE solver --
 -- with a hand-rolled 1D Black-Scholes operator in log-spot space (see CLAUDE.md's "coarsen the
 -- language-boundary crossing" bullet and 'QuantLib.Internal.Type.withFdmApply' et al., which
@@ -84,7 +83,6 @@ import QuantLib.PricingEngine
 import QuantLib.Process
 import QuantLib.Quote
 import QuantLib.Settings
-import QuantLib.Syntax
 import QuantLib.Time.Calendar
 import QuantLib.Time.Date
 import QuantLib.Time.Schedule
@@ -173,7 +171,7 @@ run = do
   volQ <- simpleQuote vol
   ts <- flatForward (ReferenceDate evalDate) riskFreeQ dc Continuous Annual
   divTS <- flatForward (ReferenceDate evalDate) divQ dc Continuous Annual
-  volTS <- calendar TARGET >>= $(free2nd 'blackConstantVol) (CalendarReferenceDate evalDate) volQ dc
+  volTS <- calendar TARGET >>= \cal -> blackConstantVol (CalendarReferenceDate evalDate) cal volQ dc
   bsmProc <- blackScholesMertonProcess underQ divTS ts volTS EulerDiscretization False
 
   -- Separate fixture for the FdmAffineModelSwapInnerValue<G2>/<HullWhite> node-level checks below:

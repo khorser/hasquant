@@ -1,4 +1,4 @@
-{-# LANGUAGE TemplateHaskell, OverloadedLists #-}
+{-# LANGUAGE OverloadedLists #-}
 module QuantLib.Example.FittedBondCurve
   (
     Result(..)
@@ -21,7 +21,6 @@ import qualified QuantLib.TermStructure.Yield as TS
 import QuantLib.Time.Calendar
 import QuantLib.Time.Date
 import QuantLib.Time.Schedule
-import QuantLib.Syntax
 
 data Result = Result { bondSettleR :: Day
   , rates1R :: Rate
@@ -94,8 +93,9 @@ run = do
 
       r <- forM instrA $
         \h -> do
-          cfs <- TS.bondHelperBond h >>= cashFlows >>=
-            $(free1st 'CF.cashFlows) (Just False) (Just bondSettle)
+          b <- TS.bondHelperBond h
+          leg <- cashFlows b
+          cfs <- CF.cashFlows leg (Just False) (Just bondSettle)
           let (ds, _, _) = unzip3 $ filter (\(_, _, oc) -> not oc) cfs
               -- `ds` comes from a filter and can be empty; taking the maximum over the
               -- NonEmpty that already includes bondSettle keeps this total, and shares
@@ -103,7 +103,7 @@ run = do
               cfDates = bondSettle :| ds
           m <- yearFraction dc evalDate (maximum cfDates) Nothing Nothing
           r1 <- parRate ts0 cfDates dc
-          r2 <- forM curves $ $(free1stWithArity 3) parRate cfDates dc --before the migration off type classes an implicit cast to YieldTermStructure was needed
+          r2 <- forM curves $ \curve -> parRate curve cfDates dc
           return (m, r1:r2)
       let (tenors, rs) = unzip r
       return Rate {refDateR = refDate, numIterR = numIter, tenorsR = tenors, ratesR = rs}

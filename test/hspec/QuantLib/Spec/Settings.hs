@@ -1,5 +1,4 @@
-{-# LANGUAGE TemplateHaskell #-}
-module QuantLib.Spec.Syntax (spec) where
+module QuantLib.Spec.Settings (spec) where
 
 import Test.Hspec
 import Test.Hspec.QuickCheck(prop)
@@ -11,35 +10,10 @@ import Data.Time.Calendar
 import QuantLib.Time.Date as Date
 import QuantLib.Type
 import qualified QuantLib.Settings as Settings
-import QuantLib.Syntax(free1st, free2nd, cutAt, cutAtWithArity, cut)
-import QuantLib.Example.SyntaxHelpers(syntaxTestF, HasSyntaxLabel(..))
-
 import QuantLib.Spec.Helpers(ValidDay(..), InvalidDay(..))
 
 spec :: Spec
 spec = do
-    describe "syntax" $ do
-      it "cutAt [1] matches free1st" $ do
-        $(cutAt [1] 'syntaxTestF) 2 3 4 1 `shouldBe` syntaxTestF 1 2 3 4
-        $(cutAt [1] 'syntaxTestF) 2 3 4 1 `shouldBe` $(free1st 'syntaxTestF) 2 3 4 1
-      it "cutAt [2] matches free2nd" $ do
-        $(cutAt [2] 'syntaxTestF) 1 3 4 2 `shouldBe` syntaxTestF 1 2 3 4
-        $(cutAt [2] 'syntaxTestF) 1 3 4 2 `shouldBe` $(free2nd 'syntaxTestF) 1 3 4 2
-      it "cutAt frees two non-adjacent positions" $
-        $(cutAt [1,3] 'syntaxTestF) 2 4 1 3 `shouldBe` syntaxTestF 1 2 3 4
-      it "cut substitutes holes in order of occurrence" $
-        $(cut [| syntaxTestF _ 2 _ 4 |]) 1 3 `shouldBe` syntaxTestF 1 2 3 4
-      it "cut treats distinct named holes the same as bare _" $
-        $(cut [| syntaxTestF _a 2 _b 4 |]) 1 3 `shouldBe` syntaxTestF 1 2 3 4
-      it "cut shares one parameter between repeats of a named hole" $
-        $(cut [| syntaxTestF _a 2 _a 4 |]) 1 `shouldBe` syntaxTestF 1 2 1 4
-      it "cut orders shared holes by first occurrence" $
-        $(cut [| syntaxTestF _b 2 _a _b |]) 1 3 `shouldBe` syntaxTestF 1 2 3 1
-      it "cutAt, cutAtWithArity and cut all work on a typeclass method" $ do
-        $(cutAt [1] 'syntaxLabelWith) 1 2 3 True `shouldBe` syntaxLabelWith True 1 2 3
-        $(cutAtWithArity [1] 4) syntaxLabelWith 1 2 3 True `shouldBe` syntaxLabelWith True 1 2 3
-        $(cut [| syntaxLabelWith _ 1 2 3 |]) True `shouldBe` syntaxLabelWith True 1 2 3
-
     describe "settings" $ do
       describe "evaluaton date" $ do
         it "default is today" $ do

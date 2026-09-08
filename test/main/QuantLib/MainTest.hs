@@ -5,7 +5,7 @@ import Test.Hspec
 import QuantLib.Time.Date(today, weekday)
 import qualified QuantLib.Settings as Settings
 
-import qualified QuantLib.Spec.Syntax as Syntax
+import qualified QuantLib.Spec.Settings as SettingsSpec
 import qualified QuantLib.Spec.DatesAndSchedule as DatesAndSchedule
 import qualified QuantLib.Spec.Calendars as Calendars
 import qualified QuantLib.Spec.CurrencyAndDayCounter as CurrencyAndDayCounter
@@ -42,7 +42,7 @@ main = do
   putStrLn $ "Today is " ++ show w
 
   hspec $ do
-    Syntax.spec
+    SettingsSpec.spec
     DatesAndSchedule.spec
     Calendars.spec evalDate
     CurrencyAndDayCounter.spec

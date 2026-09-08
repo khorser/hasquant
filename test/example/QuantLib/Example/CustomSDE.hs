@@ -1,4 +1,3 @@
-{-# LANGUAGE TemplateHaskell #-}
 -- |Simulates a stochastic process QuantLib does /not/ bind -- a CEV diffusion
 -- @dS = mu S dt + sigma S^beta dW@ -- by drawing standard normals from
 -- 'QuantLib.Method.gaussianRsg' and writing the evolution step in Haskell, then pricing an
@@ -52,7 +51,6 @@ import QuantLib.Process hiding(drift)
 import QuantLib.PricingEngine
 import QuantLib.Quote
 import QuantLib.Settings
-import QuantLib.Syntax
 import QuantLib.Time.Calendar
 import QuantLib.Time.Date
 import QuantLib.Time.Schedule
@@ -143,7 +141,7 @@ run = do
   divQ <- simpleQuote dividend
   divTS <- flatForward (ReferenceDate settl) divQ dc Continuous Annual
   volQ <- simpleQuote vol
-  volTS <- calendar TARGET >>= $(free2nd 'blackConstantVol) (CalendarReferenceDate settl) volQ dc
+  volTS <- calendar TARGET >>= \cal -> blackConstantVol (CalendarReferenceDate settl) cal volQ dc
   bsmProc <- blackScholesMertonProcess underQ divTS ts volTS EulerDiscretization False
 
   t <- yearFraction dc settl maturity Nothing Nothing

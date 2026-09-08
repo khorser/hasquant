@@ -1,4 +1,3 @@
-{-# LANGUAGE TemplateHaskell #-}
 module QuantLib.Example.TARF
   (
     run
@@ -21,7 +20,6 @@ import QuantLib.TermStructure.Yield
 import QuantLib.TermStructure.Volatility
 import QuantLib.Method
 import QuantLib.Settings
-import QuantLib.Syntax
 
 data State = State{_remPL :: !Double, _flows :: ![Double]}
 
@@ -59,10 +57,12 @@ run = do
   -- yc <- interpolatedZeroCurve (zip dsILS mins) dcILS calILS [] Linear
   -- proc <- blackScholesProcess spotQuote yc volEURILS EulerDiscretization >>= asStochasticProcess1D >>= asStochasticProcess
 
-  --proc <- simpleQuote spot >>=
-  --  $(free1st 'blackScholesMertonProcess) ycILS ycEUR volEURILS EulerDiscretization >>= asStochasticProcess1D >>= asStochasticProcess
-  proc <- simpleQuote spot >>=
-    $(free1st 'garmanKohlhagenProcess) ycEUR ycILS volEURILS EulerDiscretization False >>= asStochasticProcess1D >>= asStochasticProcess
+  -- spotQuote <- simpleQuote spot
+  -- proc <- blackScholesMertonProcess spotQuote ycILS ycEUR volEURILS EulerDiscretization False
+  --   >>= asStochasticProcess1D >>= asStochasticProcess
+  spotQuote <- simpleQuote spot
+  proc <- garmanKohlhagenProcess spotQuote ycEUR ycILS volEURILS EulerDiscretization False
+    >>= asStochasticProcess1D >>= asStochasticProcess
   -- fixed nonzero seed (0 means "seed from entropy" in QuantLib's
   -- MersenneTwisterUniformRng) so the simulated path set, and hence rnpv/simFwds,
   -- is reproducible for `test/QuantLib/Spec/Examples.hs`'s "check values" assertion

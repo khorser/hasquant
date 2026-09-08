@@ -1,4 +1,3 @@
-{-# LANGUAGE TemplateHaskell #-}
 module QuantLib.Example.EquityOption
   (
     Result(..)
@@ -21,7 +20,6 @@ import QuantLib.Time.Date
 import QuantLib.Time.Schedule
 import QuantLib.TermStructure.Volatility
 import QuantLib.TermStructure.Yield
-import QuantLib.Syntax
 
 data Result = Result
   { analyticEuroR :: [Double]
@@ -117,7 +115,7 @@ run = do
   divQ <- simpleQuote dividend
   divTS <- flatForward (ReferenceDate settl) divQ dc Continuous Annual
   volQ <- simpleQuote vol
-  volTS <- calendar TARGET >>= $(free2nd 'blackConstantVol) (CalendarReferenceDate settl) volQ dc
+  volTS <- calendar TARGET >>= \cal -> blackConstantVol (CalendarReferenceDate settl) cal volQ dc
   let payoff = PlainVanilla $ PlainVanillaPayoff optType strike
   bsmProc <- blackScholesMertonProcess underQ divTS ts volTS EulerDiscretization False
   europeanOpt <- vanillaOption payoff europeanEx

@@ -11,7 +11,6 @@
 -- Run with:
 --   cabal exec -- ghc -package hasquant test/smoke/CheckFdmNativeInnerValueCalculators.hs \
 --     -o /tmp/checkfdm -outputdir /tmp/checkfdm_build && /tmp/checkfdm
-{-# LANGUAGE TemplateHaskell #-}
 import Control.Exception(SomeException, try)
 import Data.Time.Calendar(addDays)
 import qualified Data.Vector.Storable as V
@@ -24,7 +23,6 @@ import QuantLib.PricingEngine
 import QuantLib.Process
 import QuantLib.Quote
 import QuantLib.Settings
-import QuantLib.Syntax
 import QuantLib.Time.Calendar
 import QuantLib.Time.Date
 import QuantLib.Time.Schedule
@@ -41,7 +39,7 @@ main = do
   volQ <- simpleQuote vol
   ts <- flatForward (ReferenceDate evalDate) riskFreeQ dc Continuous Annual
   divTS <- flatForward (ReferenceDate evalDate) divQ dc Continuous Annual
-  volTS <- calendar TARGET >>= $(free2nd 'blackConstantVol) (CalendarReferenceDate evalDate) volQ dc
+  volTS <- calendar TARGET >>= \cal -> blackConstantVol (CalendarReferenceDate evalDate) cal volQ dc
   bsmProc <- blackScholesMertonProcess underQ divTS ts volTS EulerDiscretization False
 
   let vanillaPayoff = PlainVanilla (PlainVanillaPayoff Call strike)

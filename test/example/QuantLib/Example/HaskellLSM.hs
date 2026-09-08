@@ -1,4 +1,3 @@
-{-# LANGUAGE TemplateHaskell #-}
 -- |Benchmarks 'QuantLib.Method.lsmRegress' (the coarsened primitive CLAUDE.md's callback-shape
 -- rule prescribes -- one batched regression call per exercise date, using QuantLib's own
 -- Eigen-backed least-squares solve) against the naive alternative: the identical backward
@@ -46,7 +45,6 @@ import QuantLib.Time.Date
 import QuantLib.Time.Schedule
 import QuantLib.TermStructure.Yield
 import QuantLib.TermStructure.Volatility
-import QuantLib.Syntax
 
 data Result = Result
   { lsmPrice :: !Double        -- ^lsmRegress-driven backward induction (as QuantLib.Example.AmericanLSM)
@@ -223,7 +221,7 @@ run gc = do
   divQ <- simpleQuote dividend
   divTS <- flatForward (ReferenceDate settl) divQ dc Continuous Annual
   volQ <- simpleQuote vol
-  volTS <- calendar TARGET >>= $(free2nd 'blackConstantVol) (CalendarReferenceDate settl) volQ dc
+  volTS <- calendar TARGET >>= \cal -> blackConstantVol (CalendarReferenceDate settl) cal volQ dc
   bsmProc <- blackScholesMertonProcess underQ divTS ts volTS EulerDiscretization False
 
   t <- yearFraction dc settl maturity Nothing Nothing

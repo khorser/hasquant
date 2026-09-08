@@ -1,4 +1,3 @@
-{-# LANGUAGE TemplateHaskell #-}
 -- |Prices a 3-asset American basket put (payoff on the maximum of three correlated underlyings)
 -- with a Haskell-defined payoff, generalizing "QuantLib.Example.AmericanLSM"'s backward-induction
 -- pattern from the scalar 'QuantLib.Method.lsmRegress' to the multi-asset
@@ -30,7 +29,6 @@ import QuantLib.Time.Date
 import QuantLib.Time.Schedule
 import QuantLib.TermStructure.Yield
 import QuantLib.TermStructure.Volatility
-import QuantLib.Syntax
 
 data Result = Result
   { lsmPrice :: !Double        -- ^custom multi-asset LSM loop, out-of-sample pricing paths priced against a fit from a separate calibration path set (unbiased)
@@ -108,7 +106,7 @@ run = do
   divQ <- simpleQuote 0.0
   divTS <- flatForward (ReferenceDate evalDate) divQ dc Continuous Annual
   volQs <- mapM simpleQuote vols
-  volTSs <- mapM (\vq -> $(free2nd 'blackConstantVol) (CalendarReferenceDate evalDate) vq dc cal) volQs
+  volTSs <- mapM (\vq -> blackConstantVol (CalendarReferenceDate evalDate) cal vq dc) volQs
   procs1D <- zipWithM (\uq vts -> blackScholesMertonProcess uq divTS ts vts EulerDiscretization False) underQs volTSs
   let corrFlat = concat [ [ if i == j then 1 else assetCorrelation | j <- [0 .. dim-1] ] | i <- [0 .. dim-1] ]
       corrMat = either error id $ boxedRealMatrix (fromIntegral dim) (fromIntegral dim) corrFlat

@@ -11,7 +11,7 @@
 -- engine stores a type this binding can't name, so the fourth discriminant ('UnsupportedVal',
 -- the RTTI-name fallback) isn't exercised here -- its C++ side is a trivial, visibly-correct
 -- @else@, and its Haskell side is a compiler-checked exhaustive @case@.
-{-# LANGUAGE TemplateHaskell, OverloadedLists #-}
+{-# LANGUAGE OverloadedLists #-}
 module QuantLib.Spec.Instrument (spec) where
 
 import Data.Time.Calendar(fromGregorian)
@@ -27,7 +27,6 @@ import QuantLib.Index.InterestRate(iborIndex, IborConstructor(Euribor6M))
 import QuantLib.PricingEngine
 import QuantLib.Process
 import qualified QuantLib.Settings as Settings
-import QuantLib.Syntax
 import QuantLib.TermStructure.Volatility
 import QuantLib.TermStructure.Yield
 import QuantLib.Time.Calendar
@@ -53,7 +52,7 @@ spec = do
         divQ <- simpleQuote dividend
         divTS <- flatForward (ReferenceDate evalDate) divQ dc Continuous Annual
         volQ <- simpleQuote vol
-        volTS <- calendar TARGET >>= $(free2nd 'blackConstantVol) (CalendarReferenceDate evalDate) volQ dc
+        volTS <- calendar TARGET >>= \cal -> blackConstantVol (CalendarReferenceDate evalDate) cal volQ dc
         let payoff = PlainVanilla $ PlainVanillaPayoff optType strike
         bsmProc <- blackScholesMertonProcess underQ divTS ts volTS EulerDiscretization False
         americanOpt <- vanillaOption payoff (American Nothing maturity False)

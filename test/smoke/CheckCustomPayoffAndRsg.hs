@@ -16,7 +16,6 @@
 -- Run with:
 --   cabal exec -- ghc -package hasquant test/smoke/CheckCustomPayoffAndRsg.hs \
 --     -o /tmp/checkcustom -outputdir /tmp/checkcustom_build && /tmp/checkcustom
-{-# LANGUAGE TemplateHaskell #-}
 import Control.Monad(unless)
 import Data.Time.Calendar(addDays, fromGregorian)
 import qualified Data.Vector.Storable as V
@@ -29,7 +28,6 @@ import QuantLib.PricingEngine
 import QuantLib.Process
 import QuantLib.Quote
 import QuantLib.Settings
-import QuantLib.Syntax
 import QuantLib.Time.Calendar
 import QuantLib.Time.Date
 import QuantLib.Time.Schedule
@@ -46,7 +44,7 @@ main = do
   volQ <- simpleQuote vol
   ts <- flatForward (ReferenceDate evalDate) riskFreeQ dc Continuous Annual
   divTS <- flatForward (ReferenceDate evalDate) divQ dc Continuous Annual
-  volTS <- calendar TARGET >>= $(free2nd 'blackConstantVol) (CalendarReferenceDate evalDate) volQ dc
+  volTS <- calendar TARGET >>= \cal -> blackConstantVol (CalendarReferenceDate evalDate) cal volQ dc
   bsmProc <- blackScholesMertonProcess underQ divTS ts volTS EulerDiscretization False
 
   let nativePayoff = Type (Striked (PlainVanilla (PlainVanillaPayoff Call strike)))

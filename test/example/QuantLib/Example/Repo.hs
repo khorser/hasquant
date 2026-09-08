@@ -1,4 +1,4 @@
-{-# LANGUAGE TemplateHaskell, OverloadedLists #-}
+{-# LANGUAGE OverloadedLists #-}
 module QuantLib.Example.Repo
   (
     Result(..)
@@ -19,7 +19,6 @@ import QuantLib.TermStructure.Yield
 import QuantLib.Time.Calendar
 import QuantLib.Time.Date
 import QuantLib.Time.Schedule
-import QuantLib.Syntax
 
 -- run tests with stack test --ta '--match /Repo'
 data Result = Result
@@ -50,8 +49,9 @@ run gc = do
     Nothing Nothing
   (fwd, clP, accr1, accr2, clF, fP, dp) <- doBond bondCalendar bondSchedule bondQuote repoDayCountConvention bondDayCountConvention bondCurve
   when gc (collectGarbage >> hPutStrLn stderr "GC complete")
-  repoCurve <- simpleQuote repoRate >>=
-        $(free2nd 'flatForward) (ReferenceDate repoSettlementDate) repoDayCountConvention repoCompounding repoCompoundFreq
+  repoQuote <- simpleQuote repoRate
+  repoCurve <- flatForward (ReferenceDate repoSettlementDate) repoQuote
+    repoDayCountConvention repoCompounding repoCompoundFreq
   spotInc <- spotIncome fwd repoCurve
   disc <- discount repoCurve (DatePoint repoDeliveryDate) False
   np <- npv fwd
@@ -104,8 +104,9 @@ run gc = do
           -- liftM2 setPricingEngine (asInstrument b) (discountingBondEngine bondCurve Nothing)]
           discountingBondEngine bondCurve Nothing >>= setPricingEngine b
           void $ yieldFromPrice b (bondCleanPrice, Clean) bondDayCountConvention IR.Compounded bondCouponFrequency repoSettlementDate 1e-8 100 >>= setValue bondQuote
-          repoCurve <- simpleQuote repoRate >>=
-            $(free2nd 'flatForward) (ReferenceDate repoSettlementDate) repoDayCountConvention repoCompounding repoCompoundFreq
+          repoQuote <- simpleQuote repoRate
+          repoCurve <- flatForward (ReferenceDate repoSettlementDate) repoQuote
+            repoDayCountConvention repoCompounding repoCompoundFreq
           bondFwd <- bondForward repoSettlementDate repoDeliveryDate fwdType dummyStrike
             repoSettlementDays
             repoDayCountConvention bondCalendar bondBusinessDayConvention b

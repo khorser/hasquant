@@ -1,4 +1,4 @@
-{-# LANGUAGE TemplateHaskell, OverloadedLists #-}
+{-# LANGUAGE OverloadedLists #-}
 module QuantLib.Example.CallableBond
   (
     Result(..)
@@ -18,7 +18,6 @@ import QuantLib.TermStructure.Yield
 import QuantLib.Time.Calendar
 import QuantLib.Time.Date
 import QuantLib.Time.Schedule
-import QuantLib.Syntax
 
 data Result = Result
   { pricesR :: [Double]
@@ -56,7 +55,7 @@ run = do
         buildSchedule :: Int -> Day -> IO [Day]
         buildSchedule 0 _ = pure []
         buildSchedule k prev = do
-          n <- calendar Null >>= $(free1st 'advance) prev (3, Months) Following False
+          n <- calendar Null >>= \cal -> advance cal prev (3, Months) Following False
           (n :) <$> buildSchedule (k - 1) n
 
         priceBond ts dc b sigma = do
