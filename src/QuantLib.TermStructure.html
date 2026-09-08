@@ -50,7 +50,7 @@
 </span><span id="line-37"></span><span class="hs-keyword">data</span><span> </span><span id="CalendarReference"><span class="annot"><a href="QuantLib.TermStructure.html#CalendarReference"><span class="hs-identifier hs-var">CalendarReference</span></a></span></span><span>
 </span><span id="line-38"></span><span>  </span><span class="hs-glyph">=</span><span> </span><span id="CalendarReferenceDate"><span class="annot"><a href="QuantLib.TermStructure.html#CalendarReferenceDate"><span class="hs-identifier hs-var">CalendarReferenceDate</span></a></span></span><span> </span><span class="hs-glyph">!</span><span class="annot"><span class="hs-identifier hs-type">Day</span></span><span>
 </span><span id="line-39"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="CalendarSettlementDays"><span class="annot"><a href="QuantLib.TermStructure.html#CalendarSettlementDays"><span class="hs-identifier hs-var">CalendarSettlementDays</span></a></span></span><span> </span><span class="hs-glyph">!</span><span class="annot"><span class="hs-identifier hs-type">Word</span></span><span>
-</span><span id="line-40"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680429161"><span id="local-6989586621680429167"><span class="annot"><span class="annottext">CalendarReference -&gt; CalendarReference -&gt; Bool
+</span><span id="line-40"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680425265"><span id="local-6989586621680425271"><span class="annot"><span class="annottext">CalendarReference -&gt; CalendarReference -&gt; Bool
 (CalendarReference -&gt; CalendarReference -&gt; Bool)
 -&gt; (CalendarReference -&gt; CalendarReference -&gt; Bool)
 -&gt; Eq CalendarReference
@@ -59,7 +59,7 @@ $c== :: CalendarReference -&gt; CalendarReference -&gt; Bool
 == :: CalendarReference -&gt; CalendarReference -&gt; Bool
 $c/= :: CalendarReference -&gt; CalendarReference -&gt; Bool
 /= :: CalendarReference -&gt; CalendarReference -&gt; Bool
-</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680429171"><span id="local-6989586621680429177"><span id="local-6989586621680429181"><span class="annot"><span class="annottext">Int -&gt; CalendarReference -&gt; ShowS
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680425275"><span id="local-6989586621680425281"><span id="local-6989586621680425285"><span class="annot"><span class="annottext">Int -&gt; CalendarReference -&gt; ShowS
 [CalendarReference] -&gt; ShowS
 CalendarReference -&gt; String
 (Int -&gt; CalendarReference -&gt; ShowS)
@@ -78,7 +78,7 @@ showList :: [CalendarReference] -&gt; ShowS
 </span><span id="line-41"></span><span>
 </span><span id="line-42"></span><span class="annot"><span class="hs-comment">-- |A date or year-fraction coordinate measured from a term structure's reference date.</span></span><span>
 </span><span id="line-43"></span><span class="hs-keyword">data</span><span> </span><span id="TermPoint"><span class="annot"><a href="QuantLib.TermStructure.html#TermPoint"><span class="hs-identifier hs-var">TermPoint</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span id="DatePoint"><span class="annot"><a href="QuantLib.TermStructure.html#DatePoint"><span class="hs-identifier hs-var">DatePoint</span></a></span></span><span> </span><span class="hs-glyph">!</span><span class="annot"><span class="hs-identifier hs-type">Day</span></span><span> </span><span class="hs-glyph">|</span><span> </span><span id="TimePoint"><span class="annot"><a href="QuantLib.TermStructure.html#TimePoint"><span class="hs-identifier hs-var">TimePoint</span></a></span></span><span> </span><span class="hs-glyph">!</span><span class="annot"><span class="hs-identifier hs-type">Double</span></span><span>
-</span><span id="line-44"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680429186"><span id="local-6989586621680429193"><span class="annot"><span class="annottext">TermPoint -&gt; TermPoint -&gt; Bool
+</span><span id="line-44"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680425290"><span id="local-6989586621680425297"><span class="annot"><span class="annottext">TermPoint -&gt; TermPoint -&gt; Bool
 (TermPoint -&gt; TermPoint -&gt; Bool)
 -&gt; (TermPoint -&gt; TermPoint -&gt; Bool) -&gt; Eq TermPoint
 forall a. (a -&gt; a -&gt; Bool) -&gt; (a -&gt; a -&gt; Bool) -&gt; Eq a
@@ -86,7 +86,7 @@ $c== :: TermPoint -&gt; TermPoint -&gt; Bool
 == :: TermPoint -&gt; TermPoint -&gt; Bool
 $c/= :: TermPoint -&gt; TermPoint -&gt; Bool
 /= :: TermPoint -&gt; TermPoint -&gt; Bool
-</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680429197"><span id="local-6989586621680429204"><span id="local-6989586621680429208"><span class="annot"><span class="annottext">Int -&gt; TermPoint -&gt; ShowS
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680425301"><span id="local-6989586621680425308"><span id="local-6989586621680425312"><span class="annot"><span class="annottext">Int -&gt; TermPoint -&gt; ShowS
 [TermPoint] -&gt; ShowS
 TermPoint -&gt; String
 (Int -&gt; TermPoint -&gt; ShowS)
@@ -108,7 +108,7 @@ showList :: [TermPoint] -&gt; ShowS
 </span><span id="line-48"></span><span class="hs-keyword">data</span><span> </span><span id="TermInterval"><span class="annot"><a href="QuantLib.TermStructure.html#TermInterval"><span class="hs-identifier hs-var">TermInterval</span></a></span></span><span>
 </span><span id="line-49"></span><span>  </span><span class="hs-glyph">=</span><span> </span><span id="DateInterval"><span class="annot"><a href="QuantLib.TermStructure.html#DateInterval"><span class="hs-identifier hs-var">DateInterval</span></a></span></span><span> </span><span class="hs-glyph">!</span><span class="annot"><span class="hs-identifier hs-type">Day</span></span><span> </span><span class="hs-glyph">!</span><span class="annot"><span class="hs-identifier hs-type">Day</span></span><span>
 </span><span id="line-50"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="TimeInterval"><span class="annot"><a href="QuantLib.TermStructure.html#TimeInterval"><span class="hs-identifier hs-var">TimeInterval</span></a></span></span><span> </span><span class="hs-glyph">!</span><span class="annot"><span class="hs-identifier hs-type">Double</span></span><span> </span><span class="hs-glyph">!</span><span class="annot"><span class="hs-identifier hs-type">Double</span></span><span>
-</span><span id="line-51"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680429213"><span id="local-6989586621680429221"><span class="annot"><span class="annottext">TermInterval -&gt; TermInterval -&gt; Bool
+</span><span id="line-51"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680425317"><span id="local-6989586621680425325"><span class="annot"><span class="annottext">TermInterval -&gt; TermInterval -&gt; Bool
 (TermInterval -&gt; TermInterval -&gt; Bool)
 -&gt; (TermInterval -&gt; TermInterval -&gt; Bool) -&gt; Eq TermInterval
 forall a. (a -&gt; a -&gt; Bool) -&gt; (a -&gt; a -&gt; Bool) -&gt; Eq a
@@ -116,7 +116,7 @@ $c== :: TermInterval -&gt; TermInterval -&gt; Bool
 == :: TermInterval -&gt; TermInterval -&gt; Bool
 $c/= :: TermInterval -&gt; TermInterval -&gt; Bool
 /= :: TermInterval -&gt; TermInterval -&gt; Bool
-</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680429225"><span id="local-6989586621680429233"><span id="local-6989586621680429237"><span class="annot"><span class="annottext">Int -&gt; TermInterval -&gt; ShowS
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680425329"><span id="local-6989586621680425337"><span id="local-6989586621680425341"><span class="annot"><span class="annottext">Int -&gt; TermInterval -&gt; ShowS
 [TermInterval] -&gt; ShowS
 TermInterval -&gt; String
 (Int -&gt; TermInterval -&gt; ShowS)
@@ -137,7 +137,7 @@ showList :: [TermInterval] -&gt; ShowS
 </span><span id="line-54"></span><span class="hs-keyword">data</span><span> </span><span id="RatePoint"><span class="annot"><a href="QuantLib.TermStructure.html#RatePoint"><span class="hs-identifier hs-var">RatePoint</span></a></span></span><span>
 </span><span id="line-55"></span><span>  </span><span class="hs-glyph">=</span><span> </span><span id="RateAtDate"><span class="annot"><a href="QuantLib.TermStructure.html#RateAtDate"><span class="hs-identifier hs-var">RateAtDate</span></a></span></span><span> </span><span class="hs-glyph">!</span><span class="annot"><span class="hs-identifier hs-type">Day</span></span><span> </span><span class="hs-glyph">!</span><span class="annot"><a href="QuantLib.Internal.Type.html#DayCounter"><span class="hs-identifier hs-type">DayCounter</span></a></span><span>
 </span><span id="line-56"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="RateAtTime"><span class="annot"><a href="QuantLib.TermStructure.html#RateAtTime"><span class="hs-identifier hs-var">RateAtTime</span></a></span></span><span> </span><span class="hs-glyph">!</span><span class="annot"><span class="hs-identifier hs-type">Double</span></span><span>
-</span><span id="line-57"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680429242"><span id="local-6989586621680429250"><span class="annot"><span class="annottext">RatePoint -&gt; RatePoint -&gt; Bool
+</span><span id="line-57"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680425346"><span id="local-6989586621680425354"><span class="annot"><span class="annottext">RatePoint -&gt; RatePoint -&gt; Bool
 (RatePoint -&gt; RatePoint -&gt; Bool)
 -&gt; (RatePoint -&gt; RatePoint -&gt; Bool) -&gt; Eq RatePoint
 forall a. (a -&gt; a -&gt; Bool) -&gt; (a -&gt; a -&gt; Bool) -&gt; Eq a
@@ -145,7 +145,7 @@ $c== :: RatePoint -&gt; RatePoint -&gt; Bool
 == :: RatePoint -&gt; RatePoint -&gt; Bool
 $c/= :: RatePoint -&gt; RatePoint -&gt; Bool
 /= :: RatePoint -&gt; RatePoint -&gt; Bool
-</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680429254"><span id="local-6989586621680429262"><span id="local-6989586621680429266"><span class="annot"><span class="annottext">Int -&gt; RatePoint -&gt; ShowS
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680425358"><span id="local-6989586621680425366"><span id="local-6989586621680425370"><span class="annot"><span class="annottext">Int -&gt; RatePoint -&gt; ShowS
 [RatePoint] -&gt; ShowS
 RatePoint -&gt; String
 (Int -&gt; RatePoint -&gt; ShowS)
@@ -163,41 +163,41 @@ showList :: [RatePoint] -&gt; ShowS
 </span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Show</span></span></span></span></span><span class="hs-special">)</span><span>
 </span><span id="line-58"></span><span>
 </span><span id="line-59"></span><span class="annot"><span class="hs-comment">-- |the date at which discount = 1.0 and/or variance = 0.0</span></span><span>
-</span><span id="line-60"></span><span id="local-6989586621680429083"><span class="annot"><a href="QuantLib.TermStructure.html#referenceDate"><span class="hs-identifier hs-type">referenceDate</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-special">(</span><span class="annot"><a href="QuantLib.Internal.Type.html#GenTermStructure"><span class="hs-identifier hs-type">GenTermStructure</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680429083"><span class="hs-identifier hs-type">t</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">IO</span></span><span> </span><span class="hs-special">(</span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Day</span></span><span class="hs-special">)</span><span class="hs-special">)</span></span><span>
+</span><span id="line-60"></span><span id="local-6989586621680425187"><span class="annot"><a href="QuantLib.TermStructure.html#referenceDate"><span class="hs-identifier hs-type">referenceDate</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-special">(</span><span class="annot"><a href="QuantLib.Internal.Type.html#GenTermStructure"><span class="hs-identifier hs-type">GenTermStructure</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680425187"><span class="hs-identifier hs-type">t</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">IO</span></span><span> </span><span class="hs-special">(</span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Day</span></span><span class="hs-special">)</span><span class="hs-special">)</span></span><span>
 </span><span id="line-61"></span><span id="referenceDate"><span class="annot"><span class="annottext">referenceDate :: forall t. GenTermStructure t -&gt; IO Day
-</span><a href="QuantLib.TermStructure.html#referenceDate"><span class="hs-identifier hs-var hs-var">referenceDate</span></a></span></span><span> </span><span id="local-6989586621680429272"><span class="annot"><span class="annottext">GenTermStructure t
-</span><a href="#local-6989586621680429272"><span class="hs-identifier hs-var">a1</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
+</span><a href="QuantLib.TermStructure.html#referenceDate"><span class="hs-identifier hs-var hs-var">referenceDate</span></a></span></span><span> </span><span id="local-6989586621680425376"><span class="annot"><span class="annottext">GenTermStructure t
+</span><a href="#local-6989586621680425376"><span class="hs-identifier hs-var">a1</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
 </span><span id="line-62"></span><span>  </span><span class="annot"><span class="annottext">GenTermStructure t -&gt; (Ptr CTermStructure' -&gt; IO Day) -&gt; IO Day
 forall t b.
 GenTermStructure t -&gt; (Ptr CTermStructure' -&gt; IO b) -&gt; IO b
 </span><a href="QuantLib.Internal.Type.html#withTermStructure"><span class="hs-identifier hs-var">withTermStructure</span></a></span><span> </span><span class="annot"><span class="annottext">GenTermStructure t
-</span><a href="#local-6989586621680429272"><span class="hs-identifier hs-var">a1</span></a></span><span> </span><span class="annot"><span class="annottext">((Ptr CTermStructure' -&gt; IO Day) -&gt; IO Day)
+</span><a href="#local-6989586621680425376"><span class="hs-identifier hs-var">a1</span></a></span><span> </span><span class="annot"><span class="annottext">((Ptr CTermStructure' -&gt; IO Day) -&gt; IO Day)
 -&gt; (Ptr CTermStructure' -&gt; IO Day) -&gt; IO Day
 forall a b. (a -&gt; b) -&gt; a -&gt; b
-</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680429274"><span class="annot"><span class="annottext">Ptr CTermStructure'
-</span><a href="#local-6989586621680429274"><span class="hs-identifier hs-var">a1'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span id="local-6989586621680429275"></span><span> </span><span>
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680425378"><span class="annot"><span class="annottext">Ptr CTermStructure'
+</span><a href="#local-6989586621680425378"><span class="hs-identifier hs-var">a1'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span id="local-6989586621680425379"></span><span> </span><span>
 </span><span id="line-63"></span><span>  </span><span class="annot"><span class="annottext">(Ptr (Ptr CChar) -&gt; IO Day) -&gt; IO Day
 forall a b. (Ptr (Ptr a) -&gt; IO b) -&gt; IO b
 </span><a href="QuantLib.Internal.html#preErrorCheck"><span class="hs-identifier hs-var">preErrorCheck</span></a></span><span> </span><span class="annot"><span class="annottext">((Ptr (Ptr CChar) -&gt; IO Day) -&gt; IO Day)
 -&gt; (Ptr (Ptr CChar) -&gt; IO Day) -&gt; IO Day
 forall a b. (a -&gt; b) -&gt; a -&gt; b
-</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680429277"><span class="annot"><span class="annottext">Ptr (Ptr CChar)
-</span><a href="#local-6989586621680429277"><span class="hs-identifier hs-var">a2'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680425381"><span class="annot"><span class="annottext">Ptr (Ptr CChar)
+</span><a href="#local-6989586621680425381"><span class="hs-identifier hs-var">a2'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
 </span><span id="line-64"></span><span>  </span><span class="annot"><span class="annottext">Ptr CTermStructure' -&gt; Ptr (Ptr CChar) -&gt; IO CInt
 </span><a href="QuantLib.TermStructure.html#referenceDate%27_"><span class="hs-identifier hs-var">referenceDate'_</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr CTermStructure'
-</span><a href="#local-6989586621680429274"><span class="hs-identifier hs-var">a1'</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr (Ptr CChar)
-</span><a href="#local-6989586621680429277"><span class="hs-identifier hs-var">a2'</span></a></span><span> </span><span class="annot"><span class="annottext">IO CInt -&gt; (CInt -&gt; IO Day) -&gt; IO Day
+</span><a href="#local-6989586621680425378"><span class="hs-identifier hs-var">a1'</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr (Ptr CChar)
+</span><a href="#local-6989586621680425381"><span class="hs-identifier hs-var">a2'</span></a></span><span> </span><span class="annot"><span class="annottext">IO CInt -&gt; (CInt -&gt; IO Day) -&gt; IO Day
 forall a b. IO a -&gt; (a -&gt; IO b) -&gt; IO b
 forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; (a -&gt; m b) -&gt; m b
-</span><span class="hs-operator hs-var">&gt;&gt;=</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680429279"><span class="annot"><span class="annottext">CInt
-</span><a href="#local-6989586621680429279"><span class="hs-identifier hs-var">res</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
-</span><span id="line-65"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span id="local-6989586621680429280"><span class="annot"><span class="annottext">res' :: Day
-</span><a href="#local-6989586621680429280"><span class="hs-identifier hs-var hs-var">res'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">CInt -&gt; Day
+</span><span class="hs-operator hs-var">&gt;&gt;=</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680425383"><span class="annot"><span class="annottext">CInt
+</span><a href="#local-6989586621680425383"><span class="hs-identifier hs-var">res</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><span id="line-65"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span id="local-6989586621680425384"><span class="annot"><span class="annottext">res' :: Day
+</span><a href="#local-6989586621680425384"><span class="hs-identifier hs-var hs-var">res'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">CInt -&gt; Day
 </span><a href="QuantLib.Internal.html#toDay"><span class="hs-identifier hs-var">toDay</span></a></span><span> </span><span class="annot"><span class="annottext">CInt
-</span><a href="#local-6989586621680429279"><span class="hs-identifier hs-var">res</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span id="local-6989586621680429282"></span><span>
+</span><a href="#local-6989586621680425383"><span class="hs-identifier hs-var">res</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span id="local-6989586621680425386"></span><span>
 </span><span id="line-66"></span><span>  </span><span class="annot"><span class="annottext">Ptr (Ptr CChar) -&gt; IO ()
 </span><a href="QuantLib.Internal.html#errorCheck"><span class="hs-identifier hs-var">errorCheck</span></a></span><span>  </span><span class="annot"><span class="annottext">Ptr (Ptr CChar)
-</span><a href="#local-6989586621680429277"><span class="hs-identifier hs-var">a2'</span></a></span><span class="annot"><span class="annottext">IO () -&gt; IO Day -&gt; IO Day
+</span><a href="#local-6989586621680425381"><span class="hs-identifier hs-var">a2'</span></a></span><span class="annot"><span class="annottext">IO () -&gt; IO Day -&gt; IO Day
 forall a b. IO a -&gt; IO b -&gt; IO b
 forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; m b -&gt; m b
 </span><span class="hs-operator hs-var">&gt;&gt;</span></span><span>
@@ -205,7 +205,7 @@ forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; m b -&gt; m b
 forall a. a -&gt; IO a
 forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
 </span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Day
-</span><a href="#local-6989586621680429280"><span class="hs-identifier hs-var">res'</span></a></span><span class="hs-special">)</span><span>
+</span><a href="#local-6989586621680425384"><span class="hs-identifier hs-var">res'</span></a></span><span class="hs-special">)</span><span>
 </span><span id="line-68"></span><span>
 </span><span id="line-69"></span><span class="hs-pragma">{-# LINE 60 &quot;./QuantLib/TermStructure.chs&quot; #-}</span><span>
 </span><span id="line-60"></span><span>
