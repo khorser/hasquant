@@ -112,6 +112,15 @@ spec = do
         setExtrapolation ts False
         allowsExtrapolation ts `shouldReturn` False
 
+      it "converts a date to a time using the term structure's day counter" $ do
+        let refDate = fromGregorian 2025 1 2
+            queryDate = addGregorianYearsClip 1 refDate
+        flatRate <- Quote.simpleQuote 0.03
+        dc <- dayCounter Actual365FixedStandard
+        ts <- flatForward (ReferenceDate refDate) flatRate dc IR.Continuous Annual
+        expected <- yearFraction dc refDate queryDate Nothing Nothing
+        timeFromReference ts queryDate `shouldReturn` expected
+
       it "dispatches yield rates across date and time coordinates" $ do
         let refDate = fromGregorian 2025 1 2
             endDate = addGregorianYearsClip 1 refDate

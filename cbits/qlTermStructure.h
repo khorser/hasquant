@@ -515,6 +515,7 @@ extern "C" {
   int qlTermStructureMaxDate(QlTermStructure* o, char **e);
   int qlTermStructureAllowsExtrapolation(QlTermStructure* o);
   void qlTermStructureSetExtrapolation(QlTermStructure* o, int enabled);
+  double qlTermStructureTimeFromReference(QlTermStructure* o, int date, char **e);
   void qlFreeTermStructure(QlTermStructure *o);
   QlTermStructure* qlYieldTermStructureAsTermStructure(QlYieldTermStructure *o);
   QlYieldTermStructure* qlImpliedTermStructure(QlYieldTermStructure* x0, int referenceDate, char **e);

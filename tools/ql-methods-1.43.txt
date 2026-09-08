@@ -7954,13 +7954,13 @@
 | |ql/termstructure.hpp|TermStructure::TermStructure(const Date & referenceDate, Calendar calendar = Calendar(), DayCounter dc = DayCounter());
 | |ql/termstructure.hpp|TermStructure::TermStructure(Natural settlementDays, Calendar, DayCounter dc = DayCounter());
 |x|ql/termstructure.hpp|DayCounter TermStructure::dayCounter() const;
-| |ql/termstructure.hpp|Time TermStructure::timeFromReference(const Date & date) const;
+|v|ql/termstructure.hpp|Time TermStructure::timeFromReference(const Date & date) const;
 |v|ql/termstructure.hpp|Date TermStructure::maxDate() const;
 | |ql/termstructure.hpp|Time TermStructure::maxTime() const;
 |v|ql/termstructure.hpp|const Date & TermStructure::referenceDate() const;
 |x|ql/termstructure.hpp|Calendar TermStructure::calendar() const;
 | |ql/termstructure.hpp|Natural TermStructure::settlementDays() const;
-| |ql/termstructure.hpp|Time timeFromReference(const Date & d) const;
+|v|ql/termstructure.hpp|Time timeFromReference(const Date & d) const;
 | |ql/termstructures/bootstraperror.hpp|BootstrapError::BootstrapError<Curve>(const Curve * curve, ext::shared_ptr<typename Traits::helper> instrument, Size segment);
 | |ql/termstructures/bootstraperror.hpp|Real BootstrapError::operator()(Rate guess) const;
 |x|ql/termstructures/bootstraperror.hpp|const ext::shared_ptr<typename Traits::helper> & BootstrapError::helper();

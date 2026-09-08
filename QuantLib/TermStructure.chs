@@ -12,6 +12,7 @@ module QuantLib.TermStructure
   , maxDate
   , allowsExtrapolation
   , setExtrapolation
+  , timeFromReference
   ) where
 import QuantLib.Internal hiding(maxDate)
 import QuantLib.Internal.Type
@@ -66,5 +67,10 @@ data RatePoint
 
 -- |Enable or disable default extrapolation for any term structure.
 {#fun qlTermStructureSetExtrapolation as setExtrapolation{withTermStructure*`GenTermStructure t',`Bool'}->`()'#}
+
+-- |Converts a date to a time (as a fraction of year) according to the term structure's day counter.
+{#fun qlTermStructureTimeFromReference as timeFromReference{withTermStructure*`GenTermStructure t' -- ^term structure
+  ,withDay*`Day' -- ^date
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:
