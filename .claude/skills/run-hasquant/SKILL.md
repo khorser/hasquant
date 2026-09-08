@@ -35,6 +35,8 @@ under `OverloadedLists` over-generalised to an `IsList`-polymorphic type and
 failed with `Illegal equational constraint`; fix: give the helper an
 explicit signature).
 
+In case you need multiple rebuilds, prefer `docker compose run --rm -t hasquant bash` and execute commands in it to keep build artifacts.
+
 ## Run (agent path)
 
 The driver builds `lib:hasquant` via `cabal`, registers it in a global GHC
