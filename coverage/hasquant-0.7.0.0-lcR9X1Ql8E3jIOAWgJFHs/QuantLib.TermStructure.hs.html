@@ -58,32 +58,32 @@ span.spaces    { background: white }
 <span class="lineno">   39 </span>-- |A term-structure reference point. 'ReferenceDate' stays fixed for the object's lifetime;
 <span class="lineno">   40 </span>-- 'SettlementDays' follows the global evaluation date using the supplied calendar.
 <span class="lineno">   41 </span>data Reference
-<span class="lineno">   42 </span>  = ReferenceDate Day
-<span class="lineno">   43 </span>  | SettlementDays Word Calendar
+<span class="lineno">   42 </span>  = ReferenceDate !Day
+<span class="lineno">   43 </span>  | SettlementDays !Word !Calendar
 <span class="lineno">   44 </span>  deriving (<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Eq</span></span></span></span>, <span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Show</span></span></span></span></span></span>)
 <span class="lineno">   45 </span>
 <span class="lineno">   46 </span>-- |Reference-point variants for constructors that take a calendar independently in both
 <span class="lineno">   47 </span>-- upstream overloads.
 <span class="lineno">   48 </span>data CalendarReference
-<span class="lineno">   49 </span>  = CalendarReferenceDate Day
-<span class="lineno">   50 </span>  | CalendarSettlementDays Word
+<span class="lineno">   49 </span>  = CalendarReferenceDate !Day
+<span class="lineno">   50 </span>  | CalendarSettlementDays !Word
 <span class="lineno">   51 </span>  deriving (<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Eq</span></span></span></span>, <span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Show</span></span></span></span></span></span>)
 <span class="lineno">   52 </span>
 <span class="lineno">   53 </span>-- |A date or year-fraction coordinate measured from a term structure's reference date.
-<span class="lineno">   54 </span>data TermPoint = DatePoint Day | TimePoint Double
+<span class="lineno">   54 </span>data TermPoint = DatePoint !Day | TimePoint !Double
 <span class="lineno">   55 </span>  deriving (<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Eq</span></span></span></span>, <span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Show</span></span></span></span></span></span>)
 <span class="lineno">   56 </span>
 <span class="lineno">   57 </span>-- |A same-representation interval. Keeping both endpoints in one constructor prevents mixed
 <span class="lineno">   58 </span>-- date/time intervals that upstream does not accept.
 <span class="lineno">   59 </span>data TermInterval
-<span class="lineno">   60 </span>  = DateInterval Day Day
-<span class="lineno">   61 </span>  | TimeInterval Double Double
+<span class="lineno">   60 </span>  = DateInterval !Day !Day
+<span class="lineno">   61 </span>  | TimeInterval !Double !Double
 <span class="lineno">   62 </span>  deriving (<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Eq</span></span></span></span>, <span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Show</span></span></span></span></span></span>)
 <span class="lineno">   63 </span>
 <span class="lineno">   64 </span>-- |A date or year-fraction coordinate where a date needs its day-counting rule.
 <span class="lineno">   65 </span>data RatePoint
-<span class="lineno">   66 </span>  = RateAtDate Day DayCounter
-<span class="lineno">   67 </span>  | RateAtTime Double
+<span class="lineno">   66 </span>  = RateAtDate !Day !DayCounter
+<span class="lineno">   67 </span>  | RateAtTime !Double
 <span class="lineno">   68 </span>  deriving (<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Eq</span></span></span></span>, <span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Show</span></span></span></span></span></span>)
 <span class="lineno">   69 </span>
 <span class="lineno">   70 </span>-- |the date at which discount = 1.0 and/or variance = 0.0

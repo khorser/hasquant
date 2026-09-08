@@ -1,31 +1,15 @@
 ## 0.7.0.0 (2026)
 
-Haskell callbacks reaching into QuantLib's hot loops instead of stopping at the FFI boundary: `qlLsmRegress`/`lsmRegressMulti` let a Haskell-defined payoff drive Longstaff-Schwartz regression (single-asset and basket), `qlOptimize` hands `CostFunction`/`OptimizationMethod` to a Haskell-side objective, and `FdmBackwardSolver` rollback (`fdmRollback`) exposes the operator and step-condition per timestep as Haskell-driven callbacks, with `FdmInnerValueCalculator` (`fdmSolve`) going one step further to callback per grid node. Each is backed by a worked example (`AmericanLSM`, `HaskellLSM` — which benchmarks `lsmRegress` against a hand-rolled Haskell regression, `Fdm`) rather than just a binding.
+The final broad API-coverage batch adds Haskell callbacks for payoffs, optimization, regression and
+finite-difference workflows, wider pricing and curve support, index history analysis, a standalone
+SOFR-OIS exposure example, and substantially more upstream-derived test coverage. Collections now
+encode emptiness and numeric scale more precisely, and the C++ shims share more of their template
+dispatch and allocation plumbing.
 
-Also added callbacks for custom `Payoff` objects which can be priced through FD, basket and Monte Carlo engines.
-
-Added more functionality in FD area to reach more parity with SWIG bingings, added historical analysis for indices, `app/SofrXva` grew into a real standalone SOFR-OIS exposure-profile executable. An HPC coverage report now publishes alongside Haddock. Added around 600+ new constructors/methods, ported more upstream tests (500+ in total). This is the last blanket extension of API coverage.
-
-Reworked API to use NonEmpty lists and unboxed vectors and matrices where seemed applicable.
-
-The unreleased API received a breaking naming and overload cleanup. Exported values no longer use
-trailing primes or unexplained numeric suffixes to distinguish overloads; alternate inputs,
-additional configuration, coordinates, and evaluation-date-relative structures now use `From`,
-`With`, `At`, and `Moving` names. Acronyms in values and record selectors use normal camel case.
-Genuine Cartesian overload families now take `OptionMaturity`, `SwapMaturity`, `RatePoint`,
-`RateInterval`, `IntegrationControl`, `LatticeTime`, or `FdmGrid`, and identical operations shared
-by related types use public capability classes. Redundant scalar market-data overloads, the obsolete `bond'`
-constructor, and specialized moving piecewise-yield bootstrap entry points were removed. Tests,
-examples, applications, and C shim spelling were migrated atomically, with a compiled-interface
-test guarding the public naming policy. Secondary multiple-inheritance interfaces now use the
-`AsAffineModel` and `AsGaussian1dModel` capability classes instead of leaf-prefixed conversion
-families, while retaining explicit, owned interface materialization. Receiver-only inspectors now
-use short topical names such as `floorRate`, `convexityAdjustment`, and `impliedQuote`; shared
-cash-flow operations now use an owned `GenCashFlow` hierarchy, including floating-rate, indexed,
-and digital intermediate families. Homogeneous cash-flow lists therefore need no conversion;
-heterogeneous lists explicitly materialize their common `CashFlow` root.
-
-C++ shims refactored to use more modern approaches.
+The size of this batch made a breaking naming and overload cleanup necessary to keep the API
+explorable: overloads now use semantic names and coordinate types, acronyms follow normal camel
+case, common capabilities use narrowly scoped classes, and the cash-flow hierarchy is uniform.
+This is expected to be the last repository-wide rename.
 
 ## 0.6.0.0 (2026)
 

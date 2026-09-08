@@ -3825,88 +3825,87 @@ span.spaces    { background: white }
 <span class="lineno"> 3806 </span>withEnergyCommodity :: GenEnergyCommodity e -&gt; (Ptr CEnergyCommodity' -&gt; IO b) -&gt; IO b
 <span class="lineno"> 3807 </span><span class="decl"><span class="nottickedoff">withEnergyCommodity = withGenForeignPtr . peel . peel . getInstrument</span></span>
 <span class="lineno"> 3808 </span>
-<span class="lineno"> 3809 </span>-- |'EnergyFuture': a leaf directly under 'EnergyCommodity' (Stage 6). 2 peels reach
-<span class="lineno"> 3810 </span>-- 'CEnergyFuture'' -- through the Commodity and EnergyCommodity layers -- the same depth
-<span class="lineno"> 3811 </span>-- 'VanillaSwap' needs under 'GenFixedVsFloatingSwap' (Swap + FixedVsFloatingSwap).
-<span class="lineno"> 3812 </span>data CEnergyFuture'
-<span class="lineno"> 3813 </span>type CEnergyFuture = ForeignPtr CEnergyFuture'
-<span class="lineno"> 3814 </span>type EnergyFuture = GenEnergyCommodity CEnergyFuture
-<span class="lineno"> 3815 </span>foreign import ccall unsafe &quot;ql.h &amp;qlFreeEnergyFuture&quot; qlFreeEnergyFuture :: FinalizerPtr CEnergyFuture'
-<span class="lineno"> 3816 </span>instance Finalizable CEnergyFuture' where <span class="decl"><span class="istickedoff">finalize = qlFreeEnergyFuture</span></span>
-<span class="lineno"> 3817 </span>foreign import ccall &quot;ql.h qlEnergyFutureAsEnergyCommodity&quot; qlEnergyFutureAsEnergyCommodity :: Ptr CEnergyFuture' -&gt; IO (Ptr CEnergyCommodity')
-<span class="lineno"> 3818 </span>instance Upcastable CEnergyFuture' where {type Base CEnergyFuture' = CEnergyCommodity'; <span class="decl"><span class="istickedoff">upcast = qlEnergyFutureAsEnergyCommodity</span></span>}
-<span class="lineno"> 3819 </span>peekEnergyFuture :: Ptr CEnergyFuture' -&gt; IO EnergyFuture
-<span class="lineno"> 3820 </span><span class="decl"><span class="istickedoff">peekEnergyFuture = newGenForeignPtr &gt;=&gt; newGenEnergyCommodity</span></span>
-<span class="lineno"> 3821 </span>withEnergyFuture :: EnergyFuture -&gt; (Ptr CEnergyFuture' -&gt; IO b) -&gt; IO b
-<span class="lineno"> 3822 </span><span class="decl"><span class="nottickedoff">withEnergyFuture = withForeignPtr . ptr . peel . peel . getInstrument</span></span>
-<span class="lineno"> 3823 </span>
-<span class="lineno"> 3824 </span>-- |'EnergySwap' is abstract-here: it binds a public constructor upstream, but never overrides
-<span class="lineno"> 3825 </span>-- 'performCalculations', so calling it directly falls through to 'Instrument's null-engine
-<span class="lineno"> 3826 </span>-- @QL_REQUIRE@ and throws -- reachable only as an upcast target from 'EnergyVanillaSwap'\/
-<span class="lineno"> 3827 </span>-- 'EnergyBasisSwap', exactly like 'FixedVsFloatingSwap'\/'VanillaSwap'. Its own accessors
-<span class="lineno"> 3828 </span>-- (calendar, payCurrency, receiveCurrency, pricingPeriods, dailyPositions, paymentCashFlows,
-<span class="lineno"> 3829 </span>-- commodityType, quantity) are bound generically over 'GenEnergySwap' in
-<span class="lineno"> 3830 </span>-- 'QuantLib.Instrument.Energy' so both leaves inherit them for free, mirroring
-<span class="lineno"> 3831 </span>-- 'GenFixedVsFloatingSwap's fairRate\/fixedLeg*\/floatingLeg* getters.
-<span class="lineno"> 3832 </span>data CEnergySwap'
-<span class="lineno"> 3833 </span>type GenEnergySwap s = GenEnergyCommodity (AnyOf CEnergySwap' s)
-<span class="lineno"> 3834 </span>type CEnergySwap = ForeignPtr CEnergySwap'
-<span class="lineno"> 3835 </span>type EnergySwap = GenEnergySwap CEnergySwap
-<span class="lineno"> 3836 </span>foreign import ccall unsafe &quot;ql.h &amp;qlFreeEnergySwap&quot; qlFreeEnergySwap :: FinalizerPtr CEnergySwap'
-<span class="lineno"> 3837 </span>instance Finalizable CEnergySwap' where <span class="decl"><span class="istickedoff">finalize = qlFreeEnergySwap</span></span>
-<span class="lineno"> 3838 </span>foreign import ccall &quot;ql.h qlEnergySwapAsEnergyCommodity&quot; qlEnergySwapAsEnergyCommodity :: Ptr CEnergySwap' -&gt; IO (Ptr CEnergyCommodity')
-<span class="lineno"> 3839 </span>instance Upcastable CEnergySwap' where {type Base CEnergySwap' = CEnergyCommodity'; <span class="decl"><span class="istickedoff">upcast = qlEnergySwapAsEnergyCommodity</span></span>}
-<span class="lineno"> 3840 </span>newGenEnergySwap :: GenForeignPtr s CEnergySwap' -&gt; IO (GenEnergySwap s)
-<span class="lineno"> 3841 </span><span class="decl"><span class="istickedoff">newGenEnergySwap = pure . GenInstrument . newAnyOf . newAnyOf . newAnyOf</span></span>
-<span class="lineno"> 3842 </span>withEnergySwap :: GenEnergySwap s -&gt; (Ptr CEnergySwap' -&gt; IO b) -&gt; IO b
-<span class="lineno"> 3843 </span><span class="decl"><span class="nottickedoff">withEnergySwap = withGenForeignPtr . peel . peel . peel . getInstrument</span></span>
-<span class="lineno"> 3844 </span>
-<span class="lineno"> 3845 </span>data CEnergyVanillaSwap'
-<span class="lineno"> 3846 </span>type CEnergyVanillaSwap = ForeignPtr CEnergyVanillaSwap'
-<span class="lineno"> 3847 </span>type EnergyVanillaSwap = GenEnergySwap CEnergyVanillaSwap
-<span class="lineno"> 3848 </span>foreign import ccall unsafe &quot;ql.h &amp;qlFreeEnergyVanillaSwap&quot; qlFreeEnergyVanillaSwap :: FinalizerPtr CEnergyVanillaSwap'
-<span class="lineno"> 3849 </span>instance Finalizable CEnergyVanillaSwap' where <span class="decl"><span class="istickedoff">finalize = qlFreeEnergyVanillaSwap</span></span>
-<span class="lineno"> 3850 </span>foreign import ccall &quot;ql.h qlEnergyVanillaSwapAsEnergySwap&quot; qlEnergyVanillaSwapAsEnergySwap :: Ptr CEnergyVanillaSwap' -&gt; IO (Ptr CEnergySwap')
-<span class="lineno"> 3851 </span>instance Upcastable CEnergyVanillaSwap' where {type Base CEnergyVanillaSwap' = CEnergySwap'; <span class="decl"><span class="istickedoff">upcast = qlEnergyVanillaSwapAsEnergySwap</span></span>}
-<span class="lineno"> 3852 </span>peekEnergyVanillaSwap :: Ptr CEnergyVanillaSwap' -&gt; IO EnergyVanillaSwap
-<span class="lineno"> 3853 </span><span class="decl"><span class="istickedoff">peekEnergyVanillaSwap = newGenForeignPtr &gt;=&gt; newGenEnergySwap</span></span>
-<span class="lineno"> 3854 </span>withEnergyVanillaSwap :: EnergyVanillaSwap -&gt; (Ptr CEnergyVanillaSwap' -&gt; IO b) -&gt; IO b
-<span class="lineno"> 3855 </span><span class="decl"><span class="nottickedoff">withEnergyVanillaSwap = withForeignPtr . ptr . peel . peel . peel . getInstrument</span></span>
-<span class="lineno"> 3856 </span>
-<span class="lineno"> 3857 </span>data CEnergyBasisSwap'
-<span class="lineno"> 3858 </span>type CEnergyBasisSwap = ForeignPtr CEnergyBasisSwap'
-<span class="lineno"> 3859 </span>type EnergyBasisSwap = GenEnergySwap CEnergyBasisSwap
-<span class="lineno"> 3860 </span>foreign import ccall unsafe &quot;ql.h &amp;qlFreeEnergyBasisSwap&quot; qlFreeEnergyBasisSwap :: FinalizerPtr CEnergyBasisSwap'
-<span class="lineno"> 3861 </span>instance Finalizable CEnergyBasisSwap' where <span class="decl"><span class="istickedoff">finalize = qlFreeEnergyBasisSwap</span></span>
-<span class="lineno"> 3862 </span>foreign import ccall &quot;ql.h qlEnergyBasisSwapAsEnergySwap&quot; qlEnergyBasisSwapAsEnergySwap :: Ptr CEnergyBasisSwap' -&gt; IO (Ptr CEnergySwap')
-<span class="lineno"> 3863 </span>instance Upcastable CEnergyBasisSwap' where {type Base CEnergyBasisSwap' = CEnergySwap'; <span class="decl"><span class="istickedoff">upcast = qlEnergyBasisSwapAsEnergySwap</span></span>}
-<span class="lineno"> 3864 </span>peekEnergyBasisSwap :: Ptr CEnergyBasisSwap' -&gt; IO EnergyBasisSwap
-<span class="lineno"> 3865 </span><span class="decl"><span class="istickedoff">peekEnergyBasisSwap = newGenForeignPtr &gt;=&gt; newGenEnergySwap</span></span>
-<span class="lineno"> 3866 </span>withEnergyBasisSwap :: EnergyBasisSwap -&gt; (Ptr CEnergyBasisSwap' -&gt; IO b) -&gt; IO b
-<span class="lineno"> 3867 </span><span class="decl"><span class="nottickedoff">withEnergyBasisSwap = withForeignPtr . ptr . peel . peel . peel . getInstrument</span></span>
-<span class="lineno"> 3868 </span>
-<span class="lineno"> 3869 </span>data CCommodityCashFlow'
-<span class="lineno"> 3870 </span>type CCommodityCashFlow = ForeignPtr CCommodityCashFlow'
-<span class="lineno"> 3871 </span>type CommodityCashFlow = GenCashFlow CCommodityCashFlow
-<span class="lineno"> 3872 </span>foreign import ccall unsafe &quot;ql.h &amp;qlFreeCommodityCashFlow&quot; qlFreeCommodityCashFlow :: FinalizerPtr CCommodityCashFlow'
-<span class="lineno"> 3873 </span>instance Finalizable CCommodityCashFlow' where <span class="decl"><span class="nottickedoff">finalize = qlFreeCommodityCashFlow</span></span>
-<span class="lineno"> 3874 </span>foreign import ccall &quot;ql.h qlCommodityCashFlowAsCashFlow&quot; qlCommodityCashFlowAsCashFlow :: Ptr CCommodityCashFlow' -&gt; IO (Ptr CCashFlow')
-<span class="lineno"> 3875 </span>instance Upcastable CCommodityCashFlow' where {type Base CCommodityCashFlow' = CCashFlow'; <span class="decl"><span class="nottickedoff">upcast = qlCommodityCashFlowAsCashFlow</span></span>}
-<span class="lineno"> 3876 </span>peekCommodityCashFlow :: Ptr CCommodityCashFlow' -&gt; IO CommodityCashFlow
-<span class="lineno"> 3877 </span><span class="decl"><span class="nottickedoff">peekCommodityCashFlow = GenCashFlow &lt;.&gt; newGenForeignPtr</span></span>
-<span class="lineno"> 3878 </span>withCommodityCashFlow :: CommodityCashFlow -&gt; (Ptr CCommodityCashFlow' -&gt; IO b) -&gt; IO b
-<span class="lineno"> 3879 </span><span class="decl"><span class="nottickedoff">withCommodityCashFlow = withForeignPtr . ptr . getCashFlow</span></span>
-<span class="lineno"> 3880 </span>-- |An array of freshly-constructed 'CommodityCashFlow's -- 'EnergySwap.paymentCashFlows()''s
-<span class="lineno"> 3881 </span>-- @map&lt;Date, shared_ptr&lt;CommodityCashFlow&gt;&gt;@, read as a plain list (each element's own
-<span class="lineno"> 3882 </span>-- 'QuantLib.CashFlow.date' already carries the map key, so it isn't
-<span class="lineno"> 3883 </span>-- duplicated as a separate tuple field).
-<span class="lineno"> 3884 </span>peekCommodityCashFlowArray :: Ptr CUInt -&gt; Ptr (Ptr (Ptr CCommodityCashFlow')) -&gt; IO [CommodityCashFlow]
-<span class="lineno"> 3885 </span><span class="decl"><span class="nottickedoff">peekCommodityCashFlowArray = peekPtrArray peekCommodityCashFlow</span></span>
-<span class="lineno"> 3886 </span>
-<span class="lineno"> 3887 </span>withInstrumentArray :: [GenInstrument i] -&gt; ((CUInt, Ptr (Ptr CInstrument')) -&gt; IO b) -&gt; IO b
-<span class="lineno"> 3888 </span><span class="decl"><span class="istickedoff">withInstrumentArray = withGenArray withInstrument</span></span>
-<span class="lineno"> 3889 </span>
-<span class="lineno"> 3890 </span>-- vim: set ff=unix ts=8 sts=2 sw=2 et:
+<span class="lineno"> 3809 </span>-- |'EnergyFuture' is a leaf under 'EnergyCommodity'; two peels cross the Commodity and
+<span class="lineno"> 3810 </span>-- EnergyCommodity layers to reach 'CEnergyFuture''.
+<span class="lineno"> 3811 </span>data CEnergyFuture'
+<span class="lineno"> 3812 </span>type CEnergyFuture = ForeignPtr CEnergyFuture'
+<span class="lineno"> 3813 </span>type EnergyFuture = GenEnergyCommodity CEnergyFuture
+<span class="lineno"> 3814 </span>foreign import ccall unsafe &quot;ql.h &amp;qlFreeEnergyFuture&quot; qlFreeEnergyFuture :: FinalizerPtr CEnergyFuture'
+<span class="lineno"> 3815 </span>instance Finalizable CEnergyFuture' where <span class="decl"><span class="istickedoff">finalize = qlFreeEnergyFuture</span></span>
+<span class="lineno"> 3816 </span>foreign import ccall &quot;ql.h qlEnergyFutureAsEnergyCommodity&quot; qlEnergyFutureAsEnergyCommodity :: Ptr CEnergyFuture' -&gt; IO (Ptr CEnergyCommodity')
+<span class="lineno"> 3817 </span>instance Upcastable CEnergyFuture' where {type Base CEnergyFuture' = CEnergyCommodity'; <span class="decl"><span class="istickedoff">upcast = qlEnergyFutureAsEnergyCommodity</span></span>}
+<span class="lineno"> 3818 </span>peekEnergyFuture :: Ptr CEnergyFuture' -&gt; IO EnergyFuture
+<span class="lineno"> 3819 </span><span class="decl"><span class="istickedoff">peekEnergyFuture = newGenForeignPtr &gt;=&gt; newGenEnergyCommodity</span></span>
+<span class="lineno"> 3820 </span>withEnergyFuture :: EnergyFuture -&gt; (Ptr CEnergyFuture' -&gt; IO b) -&gt; IO b
+<span class="lineno"> 3821 </span><span class="decl"><span class="nottickedoff">withEnergyFuture = withForeignPtr . ptr . peel . peel . getInstrument</span></span>
+<span class="lineno"> 3822 </span>
+<span class="lineno"> 3823 </span>-- |'EnergySwap' is abstract-here: it binds a public constructor upstream, but never overrides
+<span class="lineno"> 3824 </span>-- 'performCalculations', so calling it directly falls through to 'Instrument's null-engine
+<span class="lineno"> 3825 </span>-- @QL_REQUIRE@ and throws -- reachable only as an upcast target from 'EnergyVanillaSwap'\/
+<span class="lineno"> 3826 </span>-- 'EnergyBasisSwap', exactly like 'FixedVsFloatingSwap'\/'VanillaSwap'. Its own accessors
+<span class="lineno"> 3827 </span>-- (calendar, payCurrency, receiveCurrency, pricingPeriods, dailyPositions, paymentCashFlows,
+<span class="lineno"> 3828 </span>-- commodityType, quantity) are bound generically over 'GenEnergySwap' in
+<span class="lineno"> 3829 </span>-- 'QuantLib.Instrument.Energy' so both leaves inherit them for free, mirroring
+<span class="lineno"> 3830 </span>-- 'GenFixedVsFloatingSwap's fairRate\/fixedLeg*\/floatingLeg* getters.
+<span class="lineno"> 3831 </span>data CEnergySwap'
+<span class="lineno"> 3832 </span>type GenEnergySwap s = GenEnergyCommodity (AnyOf CEnergySwap' s)
+<span class="lineno"> 3833 </span>type CEnergySwap = ForeignPtr CEnergySwap'
+<span class="lineno"> 3834 </span>type EnergySwap = GenEnergySwap CEnergySwap
+<span class="lineno"> 3835 </span>foreign import ccall unsafe &quot;ql.h &amp;qlFreeEnergySwap&quot; qlFreeEnergySwap :: FinalizerPtr CEnergySwap'
+<span class="lineno"> 3836 </span>instance Finalizable CEnergySwap' where <span class="decl"><span class="istickedoff">finalize = qlFreeEnergySwap</span></span>
+<span class="lineno"> 3837 </span>foreign import ccall &quot;ql.h qlEnergySwapAsEnergyCommodity&quot; qlEnergySwapAsEnergyCommodity :: Ptr CEnergySwap' -&gt; IO (Ptr CEnergyCommodity')
+<span class="lineno"> 3838 </span>instance Upcastable CEnergySwap' where {type Base CEnergySwap' = CEnergyCommodity'; <span class="decl"><span class="istickedoff">upcast = qlEnergySwapAsEnergyCommodity</span></span>}
+<span class="lineno"> 3839 </span>newGenEnergySwap :: GenForeignPtr s CEnergySwap' -&gt; IO (GenEnergySwap s)
+<span class="lineno"> 3840 </span><span class="decl"><span class="istickedoff">newGenEnergySwap = pure . GenInstrument . newAnyOf . newAnyOf . newAnyOf</span></span>
+<span class="lineno"> 3841 </span>withEnergySwap :: GenEnergySwap s -&gt; (Ptr CEnergySwap' -&gt; IO b) -&gt; IO b
+<span class="lineno"> 3842 </span><span class="decl"><span class="nottickedoff">withEnergySwap = withGenForeignPtr . peel . peel . peel . getInstrument</span></span>
+<span class="lineno"> 3843 </span>
+<span class="lineno"> 3844 </span>data CEnergyVanillaSwap'
+<span class="lineno"> 3845 </span>type CEnergyVanillaSwap = ForeignPtr CEnergyVanillaSwap'
+<span class="lineno"> 3846 </span>type EnergyVanillaSwap = GenEnergySwap CEnergyVanillaSwap
+<span class="lineno"> 3847 </span>foreign import ccall unsafe &quot;ql.h &amp;qlFreeEnergyVanillaSwap&quot; qlFreeEnergyVanillaSwap :: FinalizerPtr CEnergyVanillaSwap'
+<span class="lineno"> 3848 </span>instance Finalizable CEnergyVanillaSwap' where <span class="decl"><span class="istickedoff">finalize = qlFreeEnergyVanillaSwap</span></span>
+<span class="lineno"> 3849 </span>foreign import ccall &quot;ql.h qlEnergyVanillaSwapAsEnergySwap&quot; qlEnergyVanillaSwapAsEnergySwap :: Ptr CEnergyVanillaSwap' -&gt; IO (Ptr CEnergySwap')
+<span class="lineno"> 3850 </span>instance Upcastable CEnergyVanillaSwap' where {type Base CEnergyVanillaSwap' = CEnergySwap'; <span class="decl"><span class="istickedoff">upcast = qlEnergyVanillaSwapAsEnergySwap</span></span>}
+<span class="lineno"> 3851 </span>peekEnergyVanillaSwap :: Ptr CEnergyVanillaSwap' -&gt; IO EnergyVanillaSwap
+<span class="lineno"> 3852 </span><span class="decl"><span class="istickedoff">peekEnergyVanillaSwap = newGenForeignPtr &gt;=&gt; newGenEnergySwap</span></span>
+<span class="lineno"> 3853 </span>withEnergyVanillaSwap :: EnergyVanillaSwap -&gt; (Ptr CEnergyVanillaSwap' -&gt; IO b) -&gt; IO b
+<span class="lineno"> 3854 </span><span class="decl"><span class="nottickedoff">withEnergyVanillaSwap = withForeignPtr . ptr . peel . peel . peel . getInstrument</span></span>
+<span class="lineno"> 3855 </span>
+<span class="lineno"> 3856 </span>data CEnergyBasisSwap'
+<span class="lineno"> 3857 </span>type CEnergyBasisSwap = ForeignPtr CEnergyBasisSwap'
+<span class="lineno"> 3858 </span>type EnergyBasisSwap = GenEnergySwap CEnergyBasisSwap
+<span class="lineno"> 3859 </span>foreign import ccall unsafe &quot;ql.h &amp;qlFreeEnergyBasisSwap&quot; qlFreeEnergyBasisSwap :: FinalizerPtr CEnergyBasisSwap'
+<span class="lineno"> 3860 </span>instance Finalizable CEnergyBasisSwap' where <span class="decl"><span class="istickedoff">finalize = qlFreeEnergyBasisSwap</span></span>
+<span class="lineno"> 3861 </span>foreign import ccall &quot;ql.h qlEnergyBasisSwapAsEnergySwap&quot; qlEnergyBasisSwapAsEnergySwap :: Ptr CEnergyBasisSwap' -&gt; IO (Ptr CEnergySwap')
+<span class="lineno"> 3862 </span>instance Upcastable CEnergyBasisSwap' where {type Base CEnergyBasisSwap' = CEnergySwap'; <span class="decl"><span class="istickedoff">upcast = qlEnergyBasisSwapAsEnergySwap</span></span>}
+<span class="lineno"> 3863 </span>peekEnergyBasisSwap :: Ptr CEnergyBasisSwap' -&gt; IO EnergyBasisSwap
+<span class="lineno"> 3864 </span><span class="decl"><span class="istickedoff">peekEnergyBasisSwap = newGenForeignPtr &gt;=&gt; newGenEnergySwap</span></span>
+<span class="lineno"> 3865 </span>withEnergyBasisSwap :: EnergyBasisSwap -&gt; (Ptr CEnergyBasisSwap' -&gt; IO b) -&gt; IO b
+<span class="lineno"> 3866 </span><span class="decl"><span class="nottickedoff">withEnergyBasisSwap = withForeignPtr . ptr . peel . peel . peel . getInstrument</span></span>
+<span class="lineno"> 3867 </span>
+<span class="lineno"> 3868 </span>data CCommodityCashFlow'
+<span class="lineno"> 3869 </span>type CCommodityCashFlow = ForeignPtr CCommodityCashFlow'
+<span class="lineno"> 3870 </span>type CommodityCashFlow = GenCashFlow CCommodityCashFlow
+<span class="lineno"> 3871 </span>foreign import ccall unsafe &quot;ql.h &amp;qlFreeCommodityCashFlow&quot; qlFreeCommodityCashFlow :: FinalizerPtr CCommodityCashFlow'
+<span class="lineno"> 3872 </span>instance Finalizable CCommodityCashFlow' where <span class="decl"><span class="nottickedoff">finalize = qlFreeCommodityCashFlow</span></span>
+<span class="lineno"> 3873 </span>foreign import ccall &quot;ql.h qlCommodityCashFlowAsCashFlow&quot; qlCommodityCashFlowAsCashFlow :: Ptr CCommodityCashFlow' -&gt; IO (Ptr CCashFlow')
+<span class="lineno"> 3874 </span>instance Upcastable CCommodityCashFlow' where {type Base CCommodityCashFlow' = CCashFlow'; <span class="decl"><span class="nottickedoff">upcast = qlCommodityCashFlowAsCashFlow</span></span>}
+<span class="lineno"> 3875 </span>peekCommodityCashFlow :: Ptr CCommodityCashFlow' -&gt; IO CommodityCashFlow
+<span class="lineno"> 3876 </span><span class="decl"><span class="nottickedoff">peekCommodityCashFlow = GenCashFlow &lt;.&gt; newGenForeignPtr</span></span>
+<span class="lineno"> 3877 </span>withCommodityCashFlow :: CommodityCashFlow -&gt; (Ptr CCommodityCashFlow' -&gt; IO b) -&gt; IO b
+<span class="lineno"> 3878 </span><span class="decl"><span class="nottickedoff">withCommodityCashFlow = withForeignPtr . ptr . getCashFlow</span></span>
+<span class="lineno"> 3879 </span>-- |An array of freshly-constructed 'CommodityCashFlow's -- 'EnergySwap.paymentCashFlows()''s
+<span class="lineno"> 3880 </span>-- @map&lt;Date, shared_ptr&lt;CommodityCashFlow&gt;&gt;@, read as a plain list (each element's own
+<span class="lineno"> 3881 </span>-- 'QuantLib.CashFlow.date' already carries the map key, so it isn't
+<span class="lineno"> 3882 </span>-- duplicated as a separate tuple field).
+<span class="lineno"> 3883 </span>peekCommodityCashFlowArray :: Ptr CUInt -&gt; Ptr (Ptr (Ptr CCommodityCashFlow')) -&gt; IO [CommodityCashFlow]
+<span class="lineno"> 3884 </span><span class="decl"><span class="nottickedoff">peekCommodityCashFlowArray = peekPtrArray peekCommodityCashFlow</span></span>
+<span class="lineno"> 3885 </span>
+<span class="lineno"> 3886 </span>withInstrumentArray :: [GenInstrument i] -&gt; ((CUInt, Ptr (Ptr CInstrument')) -&gt; IO b) -&gt; IO b
+<span class="lineno"> 3887 </span><span class="decl"><span class="istickedoff">withInstrumentArray = withGenArray withInstrument</span></span>
+<span class="lineno"> 3888 </span>
+<span class="lineno"> 3889 </span>-- vim: set ff=unix ts=8 sts=2 sw=2 et:
 
 </pre>
 </body>
