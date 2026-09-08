@@ -791,13 +791,13 @@ piecewiseZeroSpreadedTermStructure ts qd c f i = uncurryNested (qlPiecewiseZeroS
 -- interpolation and restricts the trait to 'LocalBootstrapTrait', because @Discount@ produces
 -- invalid results with QuantLib's local bootstrapper.
 data Bootstrap rh2
-  = Iterative BootstrapTrait Interpolation IterativeBootstrapOpts
-  | GlobalDiscountLogLinear Double [Double] -- ^accuracy, instrumentWeights
-  | GlobalSimpleZeroLinear Double [Double] -- ^accuracy, instrumentWeights
-  | GlobalSimpleZeroLinearFull (NonEmpty (GenRateHelper rh2)) [Day] Double -- ^additionalHelpers, additionalDates, accuracy
-  | GlobalForwardRateLinear Double [Double] -- ^accuracy, instrumentWeights
-  | GlobalZeroYieldLinear Double [Double] -- ^accuracy, instrumentWeights
-  | Local LocalBootstrapTrait Word Bool Double Double Double Bool
+  = Iterative !BootstrapTrait !Interpolation !IterativeBootstrapOpts
+  | GlobalDiscountLogLinear !Double ![Double] -- ^accuracy, instrumentWeights
+  | GlobalSimpleZeroLinear !Double ![Double] -- ^accuracy, instrumentWeights
+  | GlobalSimpleZeroLinearFull !(NonEmpty (GenRateHelper rh2)) ![Day] !Double -- ^additionalHelpers, additionalDates, accuracy
+  | GlobalForwardRateLinear !Double ![Double] -- ^accuracy, instrumentWeights
+  | GlobalZeroYieldLinear !Double ![Double] -- ^accuracy, instrumentWeights
+  | Local !LocalBootstrapTrait !Word !Bool !Double !Double !Double !Bool
     -- ^trait, localisation, forcePositive (LocalBootstrap's), accuracy, quadraticity, monotonicity, convexForcePositive (ConvexMonotone's)
 
 -- |Bootstrap traits that are numerically usable with @LocalBootstrap@ and
