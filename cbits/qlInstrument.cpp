@@ -1857,18 +1857,14 @@ QlVarianceOption* qlVarianceOption(QlPayoff* payoff, double notional, int startD
   try {return ret(new QlVarianceOption(alloc(new VarianceOption(*arg(payoff), notional, Date(startDate), Date(maturityDate)))));
   } catch (std::exception& er) {return handleException<QlVarianceOption*>(e, er);}}
 
-// Commodity/EnergyCommodity bind no constructor -- both are abstract-here (Commodity is never
-// constructed directly upstream; EnergyCommodity::quantity() is pure virtual). They're reachable
-// only as upcast targets once a Stage-6 leaf (EnergyFuture, EnergyVanillaSwap, EnergyBasisSwap)
-// exists. secondaryCosts()/commodityType() are plain, never-mutated echoes of each class's own
-// constructor argument -- not bound, per CLAUDE.md's trivial-getter rule.
+// Commodity and EnergyCommodity are abstract binding roots reached through their concrete leaves.
+// Their constructor-echo getters are intentionally not bound.
 void qlFreeCommodity(QlCommodity *o) {del(o);}
 QlInstrument* qlCommodityAsInstrument(QlCommodity *o) {return ret(new QlInstrument(*arg(o)));}
 void qlFreeEnergyCommodity(QlEnergyCommodity *o) {del(o);}
 QlCommodity* qlEnergyCommodityAsCommodity(QlEnergyCommodity *o) {return ret(new QlCommodity(*arg(o)));}
 
-/* Commodity -- base-level getters generalized over any leaf (Stage 6). Neither can throw: both
-   are plain reads of (or, for addPricingError, a push_back onto) already-computed mutable state. */
+/* Commodity base-level operations shared by every leaf. */
 void qlCommodityAddPricingError(QlCommodity *o, int level, char *error, char *detail) {
   (*arg(o))->addPricingError((PricingError::Level)level, arg(error), arg(detail));
 }
@@ -1955,10 +1951,8 @@ double qlEnergyCommodityQuantity(QlEnergyCommodity *o, CommodityType **outCt, Un
   }
 }
 
-/* EnergyFuture -- tradePrice()/index() are plain, never-mutated echoes of this constructor's own
-   arguments (energyfuture.hpp's inline getters each just `return foo_;`) -- not bound, per
-   CLAUDE.md's trivial-getter rule (the same call Stage 4 made for CommodityIndex's own
-   constructor-echo getters). quantity() is bound once, generically, above. */
+/* tradePrice()/index() are constructor echoes and intentionally not bound. quantity() is exposed
+   once through the EnergyCommodity base. */
 void qlFreeEnergyFuture(QlEnergyFuture *o) {del(o);}
 QlEnergyCommodity* qlEnergyFutureAsEnergyCommodity(QlEnergyFuture *o) {return ret(new QlEnergyCommodity(*arg(o)));}
 QlEnergyFuture* qlEnergyFuture(int buySell,
@@ -2142,10 +2136,7 @@ double qlCommodityCashFlowDiscountFactor(QlCommodityCashFlow *o) {return (*arg(o
 double qlCommodityCashFlowPaymentDiscountFactor(QlCommodityCashFlow *o) {return (*arg(o))->paymentDiscountFactor();}
 int qlCommodityCashFlowFinalized(QlCommodityCashFlow *o) {return (*arg(o))->finalized();}
 
-/* CommodityPricingHelper::createPricingPeriods -- the one static method worth binding (the other
-   three -- calculateFxConversionFactor/calculateUomConversionFactor/calculateUnitCost -- duplicate
-   logic already reachable via lookupUomConversion/lookupExchangeRate (Stage 2) and are skipped per
-   minimalism, per the plan). */
+/* The other CommodityPricingHelper static methods duplicate conversion APIs already bound. */
 void qlCreatePricingPeriods(int startDate, int endDate, CommodityType *qCt, UnitOfMeasure *qUom, double qAmount,
     int deliverySchedule, int qtyPeriodicity, PaymentTerm *paymentTerm,
     unsigned *len, int **ppStartDates, unsigned *len2, int **ppEndDates, unsigned *len3, int **ppPaymentDates,

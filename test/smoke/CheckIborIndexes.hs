@@ -3,14 +3,8 @@
 -- IborIndexType/IborDailyTenorIndexType/IborONIndexType, not the shortcut/generic Extra
 -- cases) and assert the constructed index's tenor accessor round-trips the requested tenor.
 --
--- This specifically targets two failure modes a successful build alone wouldn't reveal:
--- (1) the original bug where a constructor was added to IborConstructor/iborIndexOrdinal but
--- its iborIndexTenor clause was forgotten (Nibor silently got tenor (0, Days) instead of the
--- requested one); (2) a wrong flat-array offset or a lambda left in the wrong slot in
--- cbits/qlTermStructure.cpp:iborIndices after the IborIndexType/IborDailyTenorIndexType/
--- IborONIndexType split -- either would silently construct the wrong underlying index.
---
--- Run with: cabal exec -- ghc -ismoke -package hasquant smoke/CheckIborIndexes.hs -o /tmp/checkibor -outputdir /tmp/checkibor_build && /tmp/checkibor
+-- This catches missing tenor propagation and wrong factory-table offsets, both of which can build
+-- successfully while constructing the wrong underlying index.
 import QuantLib.Index.InterestRate
 import QuantLib.Time.Schedule (TimeUnit(..))
 import Control.Monad
@@ -34,11 +28,8 @@ dailyTenorCases =
 overnightCases :: [IborConstructor]
 overnightCases = [CadLiborON, EurLiborON, GbpLiborON, UsdLiborON]
 
--- Spot checks on the fixed-tenor shortcut pattern synonyms: one per family, plus every
--- SW ("spot week") one, since the single case that was previously wrong was Euribor365_SW
--- (it expanded to Euribor (365, Weeks) -- wrong family and wrong tenor). The synonyms are
--- definitionally aliases now, so what this actually pins is that the family each expands to
--- still routes to the index whose tenor comes back as expected.
+-- Spot-check one fixed-tenor shortcut per family and every SW shortcut. This pins each synonym to
+-- the intended family and tenor.
 shortcutCases :: [((Word, TimeUnit), IborConstructor)]
 shortcutCases =
   [ ((1, Weeks), BiborSW), ((1, Weeks), EuriborSW)

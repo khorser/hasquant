@@ -1,5 +1,6 @@
 module QuantLib.Commodity
   (
+    -- * Commodity types
     CommodityType
   , commodityType
   , nullCommodityType
@@ -7,6 +8,7 @@ module QuantLib.Commodity
   , commodityTypeName
   , commodityTypeEmpty
 
+    -- * Units of measure
   , UnitOfMeasure
   , UnitOfMeasureType(..)
   , unitOfMeasure
@@ -23,6 +25,7 @@ module QuantLib.Commodity
   , kilolitreUnitOfMeasure
   , tokyoKilolitreUnitOfMeasure
 
+    -- * Payment terms
   , PaymentTerm
   , PaymentTermEventType(..)
   , paymentTerm
@@ -33,6 +36,7 @@ module QuantLib.Commodity
   , paymentTermEmpty
   , paymentTermGetPaymentDate
 
+    -- * Quantities and costs
   , Quantity
   , roundedQuantity
   , closeQuantity
@@ -40,6 +44,7 @@ module QuantLib.Commodity
 
   , CommodityUnitCost
 
+    -- * Date intervals and pricing periods
   , DateInterval
   , isDateBetween
   , intersection
@@ -52,6 +57,7 @@ module QuantLib.Commodity
   , PricingPeriods
   , pricingPeriod
 
+    -- * Unit conversions
   , UnitOfMeasureConversion
   , UnitOfMeasureConversionType(..)
   , unitOfMeasureConversion
@@ -64,10 +70,12 @@ module QuantLib.Commodity
   , convertQuantity
   , chainUnitOfMeasureConversion
 
+    -- * Conversion repository
   , lookupUomConversion
   , addUomConversion
   , clearUomConversions
 
+    -- * Global commodity settings
   , commoditySettingsCurrency
   , setCommoditySettingsCurrency
   , commoditySettingsUnitOfMeasure
@@ -249,10 +257,8 @@ intersection (s1, e1) (s2, e2)
   | (s1 < s2 && e1 < s2) || (s1 > e2 && e1 > e2) = Nothing
   | otherwise = Just (max s1 s2, min e1 e2)
 
--- |A 'DateInterval' over which a fixed 'Quantity' of a commodity is priced, paid on
--- 'pricingPeriodPaymentDate'. Unlike 'Quantity'\/'CommodityUnitCost', this is a real record
--- rather than a tuple, per the user's explicit choice -- it's used as a named unit across every
--- energy-swap constructor (Stage 6), where a flat tuple would be unreadable positionally.
+-- |A 'DateInterval' over which a fixed 'Quantity' is priced, paid on
+-- 'pricingPeriodPaymentDate'. Named fields keep the value readable across energy-swap APIs.
 data PricingPeriod = PricingPeriod
   { pricingPeriodStartDate :: Day
   , pricingPeriodEndDate :: Day

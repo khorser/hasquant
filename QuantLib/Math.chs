@@ -2,18 +2,22 @@
 -- 'RealMatrix' stores dense numeric grids; boxed 'Matrix' supports small or object-valued data.
 module QuantLib.Math
   (
+    -- * Rounding and optimization
     RoundingType(..)
   , Rounding(..)
   , applyRounding
   , optimize
 
+    -- * Numerical configuration
   , EndCriteriaType(..)
   , HistogramAlgorithm(..)
 
+    -- * Interpolation
   , Approximation(..)
   , Interpolation(..)
   , Interpolation2D(..)
 
+    -- * Simulation, finite-difference and calibration types
   , RngTrait(..)
   , StatisticsTrait(..)
   , BinomialTree(..)
@@ -28,6 +32,7 @@ module QuantLib.Math
   , Constraint(..)
   , SobolDirectionIntegers(..)
 
+    -- * Matrices
   , Matrix
   , matrixRows
   , matrixColumns
@@ -40,6 +45,7 @@ module QuantLib.Math
   , realMatrixFromVector
   , objectMatrix
 
+    -- * Vectors
   , RealVector
   , NonEmptyVector
   , singletonNonEmptyVector
@@ -47,6 +53,7 @@ module QuantLib.Math
   , nonEmptyVector
   , nonEmptyVectorToVector
 
+    -- * Time grids
   , TimeGrid
   , timeGrid
   , timeGridFromVector
@@ -55,6 +62,7 @@ module QuantLib.Math
   , size
   , points
 
+    -- * Risk statistics
   , riskStatisticsMean
   , riskStatisticsStandardDeviation
   , riskStatisticsVariance

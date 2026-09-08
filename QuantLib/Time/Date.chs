@@ -1,5 +1,6 @@
 module QuantLib.Time.Date
   (
+    -- * Date values and fields
     Day
   , minDate
   , maxDate
@@ -9,10 +10,12 @@ module QuantLib.Time.Date
   , month
   , weekday
 
+    -- * Calendar enums
   , Month(..)
   , Weekday(..)
   , ImmMonth(..)
 
+    -- * Month constructors
   , january
   , february
   , march
@@ -26,6 +29,7 @@ module QuantLib.Time.Date
   , november
   , december
 
+    -- * Date queries and arithmetic
   , dayOfYear
 
   , endOfMonth
@@ -33,6 +37,7 @@ module QuantLib.Time.Date
   , nextWeekday
   , nthWeekday
 
+    -- * IMM dates and codes
   , immCode
   , immDate
   , isImmCode
@@ -44,6 +49,7 @@ module QuantLib.Time.Date
 
   , addPeriod
 
+    -- * ECB maintenance dates
   , addEcbDate
   , ecbCode
   , ecbDateFromCode

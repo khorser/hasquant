@@ -250,7 +250,7 @@ spec = do
     vol <- yoyOptionletVolatility yoySurf d1 strike1st Nothing True
     vol `shouldSatisfy` (not . isNaN)
 
- -- Ported from test/smoke/CheckInflationVolatility.hs's UnitDisplacedBlack/Bachelier half
+ -- UnitDisplacedBlack/Bachelier coverage
  -- (the Black engine + constantYoyOptionletVolatility path is already covered in
  -- Instrument/InflationCapFloor.hs) -- constructs the two remaining YoY inflation cap/floor
  -- engines against the same constant vol surface, confirming the shim signatures actually work.
@@ -270,7 +270,7 @@ spec = do
     _ <- yoyInflationBachelierCapFloorEngine yii vol nominalCurve
     pure ()
 
- -- Ported from test/smoke/CheckInflationVolatility.hs: ConstantCpiVolatility has no engine/
+ -- ConstantCpiVolatility has no engine/
  -- pricer consuming it in QL 1.43 (see its own haddock in QuantLib.Internal.Type), so this only
  -- exercises construction + query, same as the smoke script did.
  describe "ConstantCpiVolatility" $

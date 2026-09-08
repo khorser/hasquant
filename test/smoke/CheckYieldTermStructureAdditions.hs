@@ -1,13 +1,8 @@
 {-# LANGUAGE OverloadedLists #-}
 
--- Smoke test for the three termstructures/yield/ additions: ultimateForwardTermStructure,
--- interpolatedSpreadDiscountCurve and multipleResetsSwapRateHelper. Each has a hspec check in
--- main/test/QuantLib/Spec/TermStructure.hs already; this exists because a compiled `stack
--- build` alone doesn't prove the generated c2hs code is fresh (a stale build silently keeps
--- the old .o -- see CLAUDE.md's "Stale builds" section), so each binding is exercised end to
--- end here too, standalone, against a freshly-built library.
---
--- Run with: cabal exec -- ghc -ismoke -package hasquant smoke/CheckYieldTermStructureAdditions.hs -o /tmp/checkyts -outputdir /tmp/checkyts_build && /tmp/checkyts
+-- End-to-end marshalling checks for ultimateForwardTermStructure,
+-- interpolatedSpreadDiscountCurve and multipleResetsSwapRateHelper. These supplement Hspec because
+-- a stale c2hs object can otherwise make a successful build misleading.
 import Data.Time.Calendar(addGregorianYearsClip)
 
 import QuantLib.CashFlow(RateAveragingType(..))

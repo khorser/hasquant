@@ -217,6 +217,7 @@
 -- the callback shape genuinely can't express (none has, so far).
 module QuantLib.Method
   (
+    -- * Path generation
     PathGenerator
   , SamplePath
   , pathGenerator
@@ -228,15 +229,18 @@ module QuantLib.Method
   , pathSize
   , assetAt
   , asset
+    -- * Random sequence generation
   , GaussianRsg
   , gaussianRsg
   , sobolGaussianRsg
   , rsgDimension
   , nextSequence
   , lastSequence
+    -- * Longstaff-Schwartz regression
   , lsmRegress
   , lsmBasisSize
   , lsmRegressMulti
+    -- * Finite-difference rollback and meshers
   , fdmRollback
   , Fdm1dMesher
   , FdmMesher
@@ -253,6 +257,7 @@ module QuantLib.Method
   , fdmHestonLocalVolatilityVarianceMesher
   , fdmMesherComposite
   , fdmMesherLocations
+    -- * Finite-difference inner-value calculators
   , FdmInnerValueCalculator
   , withCustomFdmInnerValueCalculator
   , fdmZeroInnerValue

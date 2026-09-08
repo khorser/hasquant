@@ -1,5 +1,6 @@
 module QuantLib.Index
   (
+    -- * Index hierarchy and fixings
     Index
   , GenIndex
 
@@ -15,6 +16,7 @@ module QuantLib.Index
   , clearAllFixingHistories
   , asIndex
 
+    -- * Historical return analysis
   , HistoricalIndexAnalysis
   , historicalIndexAnalysis
   , skipped

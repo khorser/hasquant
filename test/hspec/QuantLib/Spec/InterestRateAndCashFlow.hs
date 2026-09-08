@@ -1712,7 +1712,7 @@ spec evalDate = do
           doubledCouponNpv `shouldSatisfy` (> couponNpv)
           doubledRedemptionNpv `shouldSatisfy` (> redemptionNpv)
 
-      -- Ported from test/smoke/CheckLinearTsrPricer.hs: LinearTsrPricer's Settings strategy is
+      -- LinearTsrPricer's Settings strategy is
       -- dispatched through a plain int switch in cbits/qlInstrument.cpp (qlLinearTsrPricer), not
       -- a c2hs {#enum#} -- see the CPIInterpolationType gotcha in CLAUDE.md for why an
       -- enum-dispatched shim needs an end-to-end value check, not just a clean build. Builds the

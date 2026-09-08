@@ -304,14 +304,8 @@ spec = do
                     >>= bondHelperBond
           Bond.maturityDate bond `shouldReturn` Just bondMaturity
 
-    -- Proves the QlOptimizationMethod shared_ptr boxing keeps the optimizer alive for a fitting
-    -- method's -- and, once FittedBondDiscountCurve clones it, the curve's -- full lifetime:
-    -- unlike a Nothing (letting the fit fall back to QuantLib's internal LevenbergMarquardt),
-    -- this passes a real OptimizationMethod, lets Haskell's own reference to it go out of scope,
-    -- and forces a collection before the resulting curve is queried. Under the old raw-pointer/
-    -- Standalone scheme this is exactly the sequence that would use-after-free -- Haskell's
-    -- ForeignPtr finalizer would delete the OptimizationMethod out from under the fitting
-    -- method's (and then the curve's cloned fitting method's) own shared_ptr member.
+    -- Drop Haskell's OptimizationMethod reference and collect before querying the curve. The
+    -- fitting method and its clone must retain shared ownership for the curve's full lifetime.
     describe "fitted bond discount curve fitting methods" $
       it "keeps a caller-supplied OptimizationMethod alive past Haskell's own GC" $
         Settings.keepingSettingsGc $ do
@@ -1244,14 +1238,8 @@ spec = do
               dZero `shouldSatisfy` closePrec dDiscount tolerance
             ) ([1 .. 5] :: [Int])
 
-      -- dispatchTrait (cbits/qlTermStructureAux.cpp) used to have switch arms for
-      -- Discount/ForwardRate/ZeroYield only, so SimpleZeroYield -- a BootstrapTrait value with
-      -- no structural reason to be excluded, since IterativeBootstrap is PiecewiseYieldCurve's
-      -- default Bootstrap for any Traits/Interpolator combination -- was reachable only through
-      -- the GlobalBootstrap-specific entry points above, never with plain IterativeBootstrap.
-      -- Same pillar-discount-factor comparison as the GlobalBootstrap test above, but through
-      -- piecewiseYieldCurve (SettlementDays with IterativeBootstrap) (no GlobalBootstrap involved), to confirm the trait now
-      -- dispatches instead of hitting dispatchTrait's "Unsupported trait" QL_FAIL.
+      -- SimpleZeroYield is a valid IterativeBootstrap trait. Compare its pillar discounts with
+      -- Discount to pin the dispatch arm independently of GlobalBootstrap.
       it "SimpleZeroYield reprices to the same pillar discount factors as Discount under IterativeBootstrap" $
         Settings.keepingSettingsGc $ do
           Settings.setEvaluationDate (Just curveToday)
@@ -1503,7 +1491,7 @@ spec = do
           volLow `shouldSatisfy` closePrec 0.1411379628132 tolerance
           volHigh `shouldSatisfy` closePrec 0.136291154962 tolerance
 
-    -- Ported from test/smoke/CheckBlackVolatilitySurfaceDelta.hs: the plain-Matrix constructor
+    -- The plain-Matrix constructor
     -- above always uses SmileLinear; this guards that 'Vol.CubicSpline' (reached only via the
     -- full options-record entry point) is actually wired to a different upstream enum value --
     -- an off-grid strike is where the two interpolation schemes have room to disagree, so an
@@ -1543,7 +1531,7 @@ spec = do
           volCubic <- Vol.smileSectionVolatility smileCubic offGridStrike
           volLinear `shouldNotBe` volCubic
 
-    -- Ported from test/smoke/CheckFixedLocalVolSurfaceExtrapolation.hs. ConstantExtrapolation
+    -- ConstantExtrapolation
     -- and InterpolatorDefaultExtrapolation agree everywhere *inside* the strike grid (both
     -- reproduce the interpolated surface there), so an in-grid query would pass no matter how
     -- the enum is wired -- this queries a strike strictly above the grid's maximum strike,
@@ -1797,15 +1785,8 @@ spec = do
           kAtDate <- Vol.atmStrike cube (10 `december` 2013) (2 :: Word, Years)
           kAtDate `shouldSatisfy` (\x -> x > -0.05 && x < 0.20)
 
-      -- Proves the QlEndCriteria/QlOptimizationMethod shared_ptr boxing actually keeps the
-      -- calibration objects alive for the cube's full lifetime: unlike every test above (which
-      -- passes Nothing/Nothing, letting SabrSwaptionVolatilityCube fall back to its own internal
-      -- defaults and never touch a Haskell-owned EndCriteria/OptimizationMethod at all), this
-      -- passes real values and lets Haskell's own reference to them go out of scope (the `do`
-      -- block computing the cube ends and the endCriteria/optMethod bindings are never used
-      -- again) before forcing a collection. Under the old raw-pointer/Standalone scheme this is
-      -- exactly the sequence that would use-after-free -- Haskell's ForeignPtr finalizer would
-      -- delete the EndCriteria/OptimizationMethod out from under the cube's own shared_ptr member.
+      -- Drop Haskell's EndCriteria and OptimizationMethod references before collection. The cube
+      -- must retain shared ownership of both calibration objects.
       it "keeps a caller-supplied EndCriteria/OptimizationMethod alive past Haskell's own GC" $
         Settings.keepingSettingsGc $ do
           (_, _, atmVol, swapIndexBase, shortSwapIndexBase, volSpreads, parametersGuess) <- mkFixture

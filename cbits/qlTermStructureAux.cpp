@@ -35,11 +35,8 @@ C makeCubic(int approximator, int approximatorArg) {
 // callable as `typename decltype(t)::type`.
 template <class T> struct Tag { using type = T; };
 
-// The single interpolator x approximation dispatch for this whole file. `make` is a generic
-// lambda; it is called once, with a *constructed* interpolator instance of the selected type, and
-// spells its own `new SomeCurve<decltype(i)>(..., i)`. Before this there were ~18 hand-duplicated
-// copies of this two-level switch, one per curve template, each repeating its constructor
-// argument list six to ten times.
+// The shared interpolator x approximation dispatch. `make` receives a constructed interpolator
+// instance, so each caller spells its curve constructor once.
 //
 // The result type is an explicit leading template argument
 // (`dispatchInterpolation<YieldTermStructure*>(...)`), not a trailing
@@ -90,14 +87,9 @@ YieldTermStructure *dispatchTrait(int trait, int interpolator, int approximator,
   }
 }
 
-// Upstream QuantLib-SWIG's canned-functor GlobalBootstrap construction (SWIG/piecewiseyieldcurve.i
-// :186-282's AdditionalErrors/AdditionalDates), confirmed to compile against both clang and
-// g++-16 by an earlier standalone spike (see README's # TODO). AdditionalErrors is a fixed linear-
-// interpolation formula between the first and last additional helper's implied quote -- not a
-// user-supplied callback -- so it needs no Haskell-side marshalling; it and AdditionalDates are
-// trait-independent (Traits::helper is BootstrapHelper<YieldTermStructure> == RateHelper for
-// every trait this file dispatches, per ratehelpers.hpp/bootstraptraits.hpp), so they live here
-// once rather than duplicated per trait x interpolator combination that ends up using them.
+// QuantLib-SWIG's canned GlobalBootstrap functors (SWIG/piecewiseyieldcurve.i:186-282).
+// AdditionalErrors is a fixed interpolation formula, not a user callback, and both functors are
+// trait-independent, so they need neither Haskell marshalling nor per-trait definitions.
 
 class AdditionalErrors {
   std::vector<shared_ptr<RateHelper> > additionalHelpers_;
@@ -347,17 +339,9 @@ YieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrapAux(const Date& date,
 }
 
 
-// Every function below is one `dispatchInterpolation` call whose generic lambda spells the
-// curve's own constructor once, with `decltype(i)` as the Interpolator template argument. The
-// curve's base-class pointer is the dispatcher's explicit `Ret` argument, so each of the six arms
-// deduces its own concrete pointer type and converts on the way out.
-//
-// The interpolator instance is now passed explicitly in every arm, including the four that used
-// to rely on the constructor's `const Interpolator& i = Interpolator()` default argument -- a
-// default-constructed BackwardFlat/ForwardFlat/Linear/LogLinear is exactly what that default
-// produced. Where a constructor has parameters *between* the data and the interpolator
-// (seasonality/accuracy on the inflation curves), those are likewise spelled out with the same
-// values upstream defaults them to, checked against the headers.
+// Each function below spells its curve constructor once inside dispatchInterpolation. Interpolator
+// instances and any intervening constructor defaults are explicit so every dispatch arm has the
+// same shape.
 
 YieldTermStructure *qlInterpolatedDiscountCurveAux(
     const std::vector<Date> &dfDates,
@@ -367,10 +351,7 @@ YieldTermStructure *qlInterpolatedDiscountCurveAux(
     const std::vector<Handle<Quote> >& jumps,
     const std::vector<Date>& jumpDates,
     int interpolator, int approximator, int approximatorArg) {
-  // NB: this function's LogCubic/NaturalSpline arm used to hardcode `false` for
-  // CubicInterpolation's `monotonic` flag where every sibling passes approximatorArg -- i.e. it
-  // silently ignored the Bool the Haskell-side `LogCubic (NaturalSpline monotonic)` carries.
-  // Routing through makeCubic<LogCubic> honours it, matching every other curve here.
+  // makeCubic carries NaturalSpline's monotonic flag through the LogCubic arm.
   return dispatchInterpolation<YieldTermStructure*>(interpolator, approximator, approximatorArg,
 [&](auto i) {
         return new InterpolatedDiscountCurve<decltype(i)>(dfDates, dfs, dayCount, cal, jumps, jumpDates, i);
@@ -589,10 +570,8 @@ YoYInflationTermStructure *qlInterpolatedYoYInflationCurveAux(
 }
 
 // ---------------------------------------------------------------------------------------------
-// Moved here from qlTermStructure.cpp (see qlTermStructureAux.h): these instantiate a QuantLib
-// class template per Interpolation, which is exactly the kind of work this TU exists to hold.
-// Each takes the raw interpolator/approximator enum ints, so the caller over there no longer
-// names an interpolator type at all.
+// These entry points keep per-interpolation template instantiation in the auxiliary translation
+// unit. Callers pass raw enum values and never name an interpolator type.
 // ---------------------------------------------------------------------------------------------
 
 // Interpolation set after construction rather than through a template parameter -- these two
@@ -642,9 +621,7 @@ CPICapFloorTermPriceSurface *qlCPICapFloorTermPriceSurfaceAux(
   });
 }
 
-// Both interpolator axes at once: the 2-D price grid and the inner 1-D per-maturity curve. The
-// four non-cubic 1-D arms used to omit the trailing `I2D(), interp` pair and rely on the
-// constructor's defaults; passing them explicitly is the same default-constructed value.
+// Dispatch both interpolator axes: the 2-D price grid and the inner 1-D per-maturity curve.
 YoYCapFloorTermPriceSurface *qlYoYCapFloorTermPriceSurfaceAux(
     Natural fixingDays, const Period &yyLag, const shared_ptr<YoYInflationIndex> &yii,
     CPI::InterpolationType interpolation, const Handle<YieldTermStructure> &nominal,
@@ -697,17 +674,8 @@ YoYOptionletVolatilitySurface *qlKInterpolatedYoYOptionletVolatilitySurfaceAux(
   case hasquant::Linear: return make(Linear());
   case hasquant::LogLinear: return make(LogLinear());
   case hasquant::Cubic: return make(makeCubic<Cubic>(approximator, approximatorArg));
-  // LogCubic is deliberately not instantiated here: unlike Cubic, QuantLib's LogCubic
-  // (ql/math/interpolations/loginterpolation.hpp) has no default constructor -- its
-  // DerivativeApprox parameter is required, no default value. InterpolatedYoYOptionletStripper's
-  // own initialize() (interpolatedyoyoptionletstripper.hpp) builds a
-  // PiecewiseYoYOptionletVolatilityCurve<Interpolator1D> via that curve's own default-arg'd
-  // Interpolator1D ctor parameter -- and since that's a virtual member, instantiating
-  // InterpolatedYoYOptionletStripper<LogCubic> at all (even just to hold it in a shared_ptr,
-  // never calling initialize) forces the compiler to instantiate initialize() to build the
-  // vtable, which fails to compile: "no matching constructor for initialization of
-  // QuantLib::LogCubic". This is a real upstream restriction, not a hasquant gap -- confirmed
-  // by reading loginterpolation.hpp's LogCubic ctor (no default 'da' argument, unlike Cubic's).
+  // LogCubic cannot instantiate InterpolatedYoYOptionletStripper: its virtual initialize()
+  // default-constructs the interpolator, but QuantLib's LogCubic requires DerivativeApprox.
   case hasquant::LogCubic:
     QL_FAIL("LogCubic cannot back InterpolatedYoYOptionletStripper/KInterpolatedYoYOptionletVolatilitySurface -- "
             "see the comment above this case");

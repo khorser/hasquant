@@ -1,7 +1,5 @@
-// Discriminants for QlAdditionalResult.type, read by both the C++ shim and c2hs. Declared here,
-// before the `#ifdef __cplusplus` guard that wraps the function prototypes, so c2hs (whose
-// preprocessor does NOT define __cplusplus) can see and bind them with `{#enum ... #}`; the C++
-// shim references the same names below.
+// Discriminants shared by the C++ shim and c2hs. They must remain outside the __cplusplus guard
+// because the c2hs preprocessor does not define it.
 enum AdditionalResultType {
   AdditionalResultDouble       = 0,  // value holds a Real (double)
   AdditionalResultString       = 1,  // value holds a std::string
@@ -779,10 +777,8 @@ extern "C" {
   void qlFreeEnergyCommodity(QlEnergyCommodity *o);
   QlCommodity* qlEnergyCommodityAsCommodity(QlEnergyCommodity *o);
 
-  /* Commodity -- base-level getters generalized over any leaf (Stage 6). Each output array below
-     is its own independent c2hs `preArray-` out-parameter pair (its own `unsigned*` length cell,
-     even though every array in one call always carries the same length), mirroring
-     qlInstrumentAdditionalResults' own multi-out-param shape. */
+  /* Commodity base-level getters. Each output array needs its own c2hs `preArray-` length cell,
+     even though arrays returned by one call have equal lengths. */
   void qlCommodityAddPricingError(QlCommodity *o, int level, char *error, char *detail);
   void qlCommoditySecondaryCostAmounts(QlCommodity *o, unsigned *len, char ***keys,
       unsigned *len2, double **amounts, unsigned *len3, Currency ***currencies, char **e);

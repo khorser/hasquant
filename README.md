@@ -139,7 +139,11 @@ The image persists Stack, GHCup, and Cabal caches and keeps build outputs off th
 
 # On Types
 
-Public APIs use concrete types; typeclasses are almost entirely internal plumbing. This is deliberate: public constraints would expose implementation details and can rule out otherwise valid callers, while concrete types and explicit upcasts keep the library type-safe without limiting the abstractions users can build above it.
+Public APIs use concrete types by default. Public capability classes are reserved for genuine
+multiple-inheritance interfaces and operations shared by related types with the same signature and
+semantics. Blanket constraints still expose implementation details and can rule out otherwise valid
+callers; concrete types and explicit upcasts remain the better choice when no common capability is
+being expressed.
 
 The practical exception is collections of related QuantLib objects. Types such as `[GenQuote q]` and `NonEmpty (GenRateHelper rh)` carry one shared phantom parameter, so every element must have the same type. Supporting an arbitrary mixture of sibling types directly would require existential wrappers or additional public constraints throughout higher-level APIs. Instead, callers explicitly upcast elements to their common parent before putting them in one list.
 

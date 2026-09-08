@@ -3,18 +3,9 @@
 -- Calendar/Currency/DayCounter objects with no Read instance of their own -- see
 -- deriveReadPlain's comment in QuantLib/Internal/Syntax.hs.
 --
--- Note the asymmetry this implies, caught by an earlier version of this very test: `show`
--- and `read` are NOT inverses for Joint2/Joint3/Joint4/Business252/Ibor/Libor/
--- DailyTenorLibor/CustomIbor. `deriving instance Show CalendarConstructor` prints a live
--- Calendar field via *its own* Show instance -- the calendar's actual QuantLib name (e.g.
--- "New York stock exchange"), not anything shaped like a CalendarConstructor -- while `Read`
--- expects that field written as a nested CalendarConstructor expression (e.g.
--- "UnitedStatesNYSE"). `read (show x) == x` genuinely fails for these constructors; it's not
--- a bug, it's what "no readable proxy for a live object's *display* form, only for
--- *constructing* one" looks like in practice. So this checks two different things depending
--- on the constructor: `read (show x) == x` for the plain tags and Bespoke (all fields
--- directly Read, so Show/Read really are inverses there), and `read <literal text> ==
--- <independently-constructed value>` for everything with a live field.
+-- Show and Read are not inverses for constructors carrying live objects: Show uses the object's
+-- QuantLib display name, while Read expects a nested constructor expression. Plain tags and
+-- Bespoke round-trip; live-field cases are checked from constructor-shaped literals instead.
 {-# LANGUAGE ScopedTypeVariables #-}
 import QuantLib.Time.Calendar
 import QuantLib.Time.Schedule

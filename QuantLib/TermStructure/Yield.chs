@@ -1,6 +1,7 @@
 {-# LANGUAGE TemplateHaskell #-}
 module QuantLib.TermStructure.Yield
   (
+    -- * Yield-curve types and references
     YieldTermStructure
   , GenYieldTermStructure
   , BondHelper
@@ -20,6 +21,7 @@ module QuantLib.TermStructure.Yield
   , linkTo
   , GenRateHelper
 
+    -- * Curves, queries and rate helpers
   , BootstrapTrait(..)
   , PillarChoice(..)
   , FuturesType(..)
@@ -61,15 +63,18 @@ module QuantLib.TermStructure.Yield
   , impliedQuote
   , impliedTermStructure
 
+    -- * Hierarchy conversion
   , asYieldTermStructure
   , asRateHelper
 
+    -- * Derived term structures and fitting results
   , piecewiseZeroSpreadedTermStructure
   , quantoTermStructure
   , ultimateForwardTermStructure
   , minimumCostValue
   , numberOfIterations
 
+    -- * Bootstrapped and interpolated curves
   , piecewiseYieldCurve
   , IterativeBootstrapOpts(..)
   , defaultIterativeBootstrapOpts
@@ -80,11 +85,13 @@ module QuantLib.TermStructure.Yield
   , interpolatedDiscountCurve
   , interpolatedSpreadDiscountCurve
 
+    -- * Multi-curve bootstrapping
   , MultiCurve
   , multiCurve
   , addBootstrappedCurve
   , addNonBootstrappedCurve
 
+    -- * Basis and cross-currency helpers
   , iborIborBasisSwapRateHelper
   , overnightIborBasisSwapRateHelper
   , constNotionalCrossCurrencyBasisSwapRateHelper
@@ -93,6 +100,7 @@ module QuantLib.TermStructure.Yield
   , fxSwapRateHelper
   , fxSwapRateHelperBetweenDates
 
+    -- * Helper instruments
   , bondHelperBond
   , swapRateHelperSwap
   , oisRateHelperSwap

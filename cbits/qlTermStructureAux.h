@@ -245,12 +245,8 @@ QuantLib::YoYInflationTermStructure *qlInterpolatedYoYInflationCurveAux(
     const QuantLib::DayCounter& dayCounter,
     int interpolator, int approximator, int approximatorArg);
 
-// Everything below is here for the same reason as the curves above -- it instantiates a QuantLib
-// class template once per Interpolation (and, for the two price surfaces, per 2-D interpolator
-// too), which is the expensive kind of code to have sitting in the 2000-line qlTermStructure.cpp
-// TU. The `int interpolator*`/`approximator`/`approximatorArg` dispatch that used to live at each
-// call site there is absorbed into these entry points, so the caller passes the raw enum values
-// straight through and never names an interpolator type.
+// Keep per-interpolation template instantiation in this auxiliary translation unit. These entry
+// points absorb the enum dispatch so callers pass raw values and never name interpolator types.
 
 // BlackVarianceCurve/BlackVarianceSurface configure their interpolation after construction rather
 // than through a template parameter, so these are setters rather than factories; the

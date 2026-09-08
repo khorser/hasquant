@@ -335,25 +335,9 @@ spec = do
     describe "CDS example" $
       it "check values" $ do
         (CDSExample.Result probs fairSpread npv defNpv cpnNpv) <- Settings.keepingSettingsGc CDSExample.run
-        -- Previously recorded as diverging ~24% between the aarch64/macOS and
-        -- x86_64/GHC-8.10.6 container builds, with defNpv/cpnNpv left unasserted and a
-        -- coarse tolerance on fairSpread/npv. That divergence was a stale Docker build
-        -- volume (the compose `hasquant-work`/`stack-root` volumes persist across runs,
-        -- same class of problem as CLAUDE.md's "Stale builds" note, just triggered by
-        -- volume staleness rather than a `.chs`/header edit), not a real numerical or
-        -- structural difference: a `stack --resolver lts-18.8 clean hasquant` before
-        -- rebuilding reproduces the macOS values to ~1e-10 relative or tighter on every
-        -- field, confirmed independently against unmodified upstream
-        -- `Examples/CDS/CDS.cpp` compiled natively on both platforms.
-        --
-        -- The example itself was also brought in line with upstream while investigating:
-        -- it had been scheduling CDS legs from the evaluation date directly, where
-        -- `Examples/CDS/CDS.cpp`'s `example01` advances one business day to a
-        -- `settlementDate` first (also passed as `SpreadCdsHelper`'s settlementDays) and
-        -- schedules from there. With that fix the repriced fair spread now lands
-        -- (to ~1e-13) exactly on the quoted 1.50% and NPV at ~0 -- the FIXME-tagged
-        -- expectation that had originally kept this block disabled, and which upstream's
-        -- own example only prints rather than asserts.
+        -- Matches upstream Examples/CDS/CDS.cpp: the schedule begins at the one-business-day
+        -- settlement date, so repricing recovers the quoted 1.50% spread and zero NPV. A clean
+        -- GHC 8.10 build agrees across architectures; persistent Docker volumes can mask this.
         probs `shouldSatisfy` listClose id [97.040077, 94.175796] 1.0e-6
         fairSpread `shouldSatisfy` listClose id [1.5, 1.5, 1.5, 1.5] 1.0e-6
         npv `shouldSatisfy` listClose id [0, 0, 0, 0] 1.0e-6
@@ -384,17 +368,14 @@ spec = do
     describe "Callable bond example" $
       it "check values" $ do
         (CallableBondExample.Result ps ys) <- Settings.keepingSettingsGc CallableBondExample.run
-        -- re-based: prices moved ~+0.04, yields ~-0.01 against the recorded 2dp figures.
-        -- Recorded at full precision now, so the old 1.0e-2 tolerance is no longer
-        -- doing the work of hiding a systematic shift.
+        -- Full-precision references keep the tolerance from hiding a systematic shift.
         ps `shouldSatisfy` listClose id [96.511051, 95.680519, 92.347988, 87.116570, 77.371192] 1.0e-3
         ys `shouldSatisfy` listClose id [5.465052, 5.664060, 6.482665, 7.837569, 10.627035] 1.0e-3
 
     describe "Bermudan swaption example (LONG)" $
       it "check values" $ do
         (BermudanSwaptionExample.Result g2v g2p hwv hwp hw2v hw2p bkv bkp npvA npvO npvI) <- Settings.keepingSettingsGc BermudanSwaptionExample.run
-        -- g2v tightened from the 1.0e-4 both G2 vectors used to share: it now holds at
-        -- 1.0e-5 on Windows. g2p keeps 1.0e-4 -- element 3 lands 1.2e-5 out on GHC
+        -- g2v holds at 1.0e-5 on Windows. g2p needs 1.0e-4: element 3 lands 1.2e-5 out on GHC
         -- 9.10.3 there (0.0500647 against 0.0500532) while 9.14.1 matches, the other
         -- four staying within 3e-6. A calibrated parameter differing by GHC version is
         -- the optimiser divergence CLAUDE.md documents for the CDS/G2 case, not the x87
@@ -471,10 +452,8 @@ spec = do
         implFwds `shouldSatisfy` listCloseRel id
           [3.3084, 3.3112, 3.3129, 3.3153, 3.3179, 3.3199, 3.3215, 3.3228, 3.324,
            3.3249, 3.3258, 3.3267, 3.3275] 1.0e-6
-        -- the Monte Carlo leg is reproducible now that TARF.hs's path generator
-        -- uses a fixed nonzero seed rather than 0 ("seed from entropy" in
-        -- QuantLib's MersenneTwisterUniformRng); MT19937's integer draw sequence is
-        -- identical across platforms, so only the FP transform/evolution differs
+        -- A fixed nonzero seed makes the Monte Carlo leg reproducible. MT19937's integer draw
+        -- sequence is platform-independent, leaving only FP transform/evolution differences.
         rnpv `shouldSatisfy` closePrec (-75637.39) 10.0
         -- simFwds must track implFwds under the risk-neutral measure (a martingale
         -- check caught garmanKohlhagenProcess's foreign/domestic curve args being

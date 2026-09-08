@@ -3,6 +3,7 @@
 {-# OPTIONS_GHC -Wno-unused-top-binds #-}
 module QuantLib.Index.InterestRate
   (
+    -- * Interest-rate index hierarchy
     InterestRateIndex
   , BMAIndex
   , OvernightIborIndex
@@ -14,8 +15,10 @@ module QuantLib.Index.InterestRate
   , GenIborIndex
   , GenSwapIndex
 
+    -- * BMA indices
   , bmaIndex
 
+    -- * Index dates and conventions
   , fixingSchedule
   , forecastFixing
   , currency
@@ -26,10 +29,12 @@ module QuantLib.Index.InterestRate
   , valueDate
   , maturityDate
 
+    -- * Hierarchy conversion
   , asInterestRateIndex
   , asIborIndex
   , asSwapIndex
 
+    -- * Overnight and swap indices
   , OvernightIborIndexType(..)
   , overnightIborIndex
 
@@ -40,6 +45,8 @@ module QuantLib.Index.InterestRate
   , swapIndex
   , swapIndexWithDiscountCurve
   , swapSpreadIndex
+
+    -- * Ibor index catalogue
 
   -- The bundled names are the fixed-tenor shortcut pattern synonyms defined below;
   -- @Euribor3M@ and @Euribor (3, Months)@ are the same value, usable interchangeably
@@ -62,6 +69,7 @@ module QuantLib.Index.InterestRate
   , businessDayConvention
   , endOfMonth
 
+    -- * Underlying swaps and history
   , underlyingSwap
   , underlyingOis
 
@@ -166,12 +174,9 @@ $(deriveReadInstance ''IborConstructor
     , ("DayCounter", 'Sched.dayCounter)
     ])
 
--- Fixed-tenor shortcuts, mirroring upstream's thin @Euribor3M@-style subclasses (whose
--- constructors only delegate to the parameterized one). They are bidirectional pattern
--- synonyms, not constructors: each is *defined* as the parameterized case it stands for,
--- so there is a single list to keep right and no separate dispatch clause that can drift
--- out of step with it -- @Euribor365_SW@ used to expand, via such a clause, to
--- @Euribor (365, Weeks)@: wrong family and wrong tenor both.
+-- Fixed-tenor shortcuts mirroring upstream's thin @Euribor3M@-style subclasses. Bidirectional
+-- pattern synonyms keep family and tenor in the parameterized value instead of a second dispatch
+-- table that could drift.
 pattern Bbsw1M, Bbsw2M, Bbsw3M, Bbsw4M, Bbsw5M, Bbsw6M :: IborConstructor
 pattern Bbsw1M = Bbsw (1, Months)
 pattern Bbsw2M = Bbsw (2, Months)

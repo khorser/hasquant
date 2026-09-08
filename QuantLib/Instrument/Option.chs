@@ -1,6 +1,7 @@
 {-# LANGUAGE FlexibleInstances #-}
 module QuantLib.Instrument.Option
   (
+    -- * Option hierarchy
     Option
   , asOption
   , asOneAssetOption
@@ -18,15 +19,18 @@ module QuantLib.Instrument.Option
   , SoftBarrierOption
   , VanillaOption
 
+    -- * Exercises
   , ExerciseType(..)
   , Exercise(..)
   , EuropeanExercise(..)
   , BermudanExercise(..)
   , SwingExercise(..)
 
+    -- * Option conventions
   , OptionType(..)
   , PositionType(..)
 
+    -- * Payoffs
   , StrikedPayoff(..)
   , PlainVanillaPayoff(..)
   , PercentageStrikePayoff(..)
@@ -34,6 +38,7 @@ module QuantLib.Instrument.Option
   , Payoff(..)
   , TypePayoff(..)
 
+    -- * Payoff and exercise construction
   , strikedPayoff
   , plainVanillaPayoff
   , percentageStrikePayoff
@@ -42,6 +47,7 @@ module QuantLib.Instrument.Option
   , withCustomBasketPayoff
   , swingExercise
 
+    -- * Barrier, chooser and multi-asset options
   , barrierOption
   , partialTimeBarrierOption
   , doubleBarrierOption
@@ -61,6 +67,7 @@ module QuantLib.Instrument.Option
   , writerExtensibleOption
   , holderExtensibleOption
 
+    -- * Vanilla, quanto and path-dependent options
   , multiAssetOption
   , deltaForward
   , elasticity
@@ -90,6 +97,7 @@ module QuantLib.Instrument.Option
   , vanillaSwingOption
   , europeanOption
 
+    -- * Shared option capabilities
   , HasImpliedVol(..)
   , HasQuanto(..)
   , HasGreeks(..)

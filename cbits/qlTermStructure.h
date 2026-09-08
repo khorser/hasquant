@@ -346,11 +346,8 @@ extern "C" {
       unsigned ecLen3, int *ecExpirations, unsigned ecLen4, int *ecStarts,
       unsigned ecLen5, int *ecEnds, int nearbyOffset, char **e);
 
-  /* CommodityIndex -- an Index leaf, per qlaux.h's QlCommodityIndex comment. The
-     ExchangeContracts/nearbyOffset constructor args are not exposed (see Stage 3's
-     CommodityCurve::price binding note): a null exchangeContracts + nearbyOffset 0 are passed
-     to upstream, which is exactly the branch forwardPrice's own price() call never varies on
-     exchangeContracts for. */
+  /* CommodityIndex is an Index leaf. ExchangeContracts/nearbyOffset are constructor echoes and
+     not exposed; the shim selects the empty-contract branch used by forwardPrice. */
   QlCommodityIndex* qlCommodityIndex(char *name, CommodityType *commodityType, Currency *currency,
                                      UnitOfMeasure *unitOfMeasure, Calendar *calendar,
                                      double lotQuantity, QlCommodityCurve *forwardCurve, char **e);

@@ -1,10 +1,5 @@
--- Smoke test for the SwaptionVolatilityMatrix leaf type added alongside the exclusion-audit
--- leaf-widening pass (SwaptionVolatilityMatrix::locate). SwaptionVolatilityMatrix used to
--- construct straight to the generic SwaptionVolatilityStructure; it is now its own concrete
--- leaf one AnyOf layer under SwaptionVolatilityStructure (mirrors SabrSwaptionVolatilityCube/
--- InterpolatedSwaptionVolatilityCube), so this checks the upcast-on-peek machinery actually
--- resolves to the right concrete type at both the concrete leaf level and after widening two
--- AnyOf layers up to the ultimate VolatilityTermStructure root.
+-- Checks SwaptionVolatilityMatrix at its concrete leaf and through both levels of its
+-- VolatilityTermStructure upcast chain.
 --
 -- Checks:
 --  1. swaptionVolatilityMatrixLocate (concrete-leaf-only) resolves correctly on a freshly
@@ -15,7 +10,6 @@
 --     SwaptionVolatilityStructure -> VolatilityTermStructure) still resolves to a live object
 --     whose referenceDate matches what the matrix was built with.
 --
--- Run with: .claude/skills/run-hasquant/driver.sh test/smoke/SwaptionVolatilityMatrixLeaf.hs
 import Control.Monad (unless)
 import System.Exit (exitFailure)
 import qualified Data.Vector.Storable as V

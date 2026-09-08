@@ -1,13 +1,7 @@
 -- Shared assertion helpers for the smoke/ scripts.
 --
--- Each smoke script is compiled standalone (see the "Run with:" line in its header),
--- so this is a plain module with no cabal stanza -- ghc picks it up from the same
--- directory automatically. Before this existed, five scripts had each grown their own
--- spelling of "check a value and shout if it's wrong", in four different output
--- formats, three of which reported neither the tolerance nor the delta on failure.
---
--- Failures call `error`, which is what the scripts already did: a smoke script is a
--- pass/fail executable, and a non-zero exit with the offending numbers is the point.
+-- Smoke scripts compile this plain module directly from the same directory. Assertions report
+-- the relevant values and fail the executable through `error`.
 module SmokeCheck
   ( checkClose
   , checkEq

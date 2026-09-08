@@ -366,22 +366,10 @@ camelInitialism name =
 -- DayCounterConstructor's hand-written instance leaves them permanently unparseable by
 -- design: no alternative means `read`/`reads` falls through to the standard "no parse".
 --
--- Generating the *function* here but hand-writing the *instance* elsewhere (rather than
--- generating the whole instance in one place, as deriveReadInstance below does for
--- IborConstructor) works around a genuine c2hs constraint: c2hs appends every
--- `{#fun#}`-generated `foreign import ..._'_` stub at the *physical end* of the file it
--- preprocesses, regardless of where the `{#fun#}` pragma establishing it sits. A top-level TH
--- splice forces GHC to split the module into declaration groups at that point, so any
--- `{#fun#}` wrapper function textually before the splice loses sight of its own stub (still
--- to come, in the final group) -- "Variable not in scope: qlJointCalendar2'_" and
--- similarly-named errors, in a module (QuantLib.Time.Calendar) that compiled fine before a
--- splice referencing `calendar` was added there. A splice is only safe in a `.chs` file if it
--- comes before every `{#fun#}` pragma in that file, or the file has none at all. CalendarEnum
--- has no `{#fun#}` pragmas, but the *instance* needs `calendar`/`dayCounter` -- defined in
--- Calendar.chs/Schedule.chs, which both have `{#fun#}` pragmas splattered throughout and
--- already import CalendarEnum back (so splicing the instance there too would also be a
--- cycle) -- hence generating only the live-object-free *function* here, splicing that where
--- it's declared, and hand-writing the *instance* where the materializer lives.
+-- Generate only the parser function here and define the instance beside its materializers.
+-- c2hs emits foreign stubs at the physical end of a file, so a TH splice after any `{#fun#}`
+-- separates wrappers from their stubs; Calendar and Schedule also import CalendarEnum, ruling out
+-- moving the instance there without a cycle.
 liveObjectTypeNames :: [String]
 liveObjectTypeNames = ["Calendar", "Currency", "DayCounter", "Schedule"]
 

@@ -840,19 +840,12 @@ using QlBatesDoubleExpModel = shared_ptr<BatesDoubleExpModel>;
 using QlBatesModel = shared_ptr<BatesModel>;
 using QlBatesProcess = shared_ptr<BatesProcess>;
 using QlBermudanExercise = shared_ptr<BermudanExercise>;
-// BlackAtmVolCurve is the family root: upstream speaks Handle<BlackAtmVolCurve> itself
-// (SabrVolSurface's ctor/atmCurve(), VolatilityCube), same reasoning as
-// QlOptionletVolatilityStructure/QlSwaptionVolatilityStructure/QlBlackVolTermStructure above --
-// Handle, not shared_ptr. AbcdAtmVolCurve/SabrVolSurface are dedicated leaves with their own
-// calc/getters (per CLAUDE.md), so each gets its own shared_ptr-wrapped type, same as
-// QlSabrSwaptionVolatilityCube/QlInterpolatedSwaptionVolatilityCube under the Handle-wrapped
-// QlSwaptionVolatilityStructure root.
+// BlackAtmVolCurve is a Handle-based family root because upstream accepts that handle directly.
+// Leaves with class-specific calculations retain dedicated shared_ptr-wrapped types.
 using QlBlackAtmVolCurve = Handle<BlackAtmVolCurve>;
 using QlAbcdAtmVolCurve = shared_ptr<AbcdAtmVolCurve>;
-// BlackVolSurface itself is never spoken of as Handle<BlackVolSurface> upstream (grep confirms),
-// so it's a plain shared_ptr intermediate -- only used to route SabrVolSurface's Upcastable chain
-// through its own smileSection getter, exactly like QlFixedVsFloatingSwap routes VanillaSwap's
-// upcast chain up to QlSwap.
+// BlackVolSurface is a shared_ptr intermediate in SabrVolSurface's primary upcast chain; upstream
+// does not expose Handle<BlackVolSurface>.
 using QlBlackVolSurface = shared_ptr<BlackVolSurface>;
 using QlSabrVolSurface = shared_ptr<SabrVolSurface>;
 using QlBlackCalculator = shared_ptr<BlackCalculator>;

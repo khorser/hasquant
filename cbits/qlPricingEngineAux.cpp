@@ -94,8 +94,7 @@ Ret dispatchStat(int stattrait, F&& make) {
   QL_FAIL("Unknown Statistics "<< stattrait);
 }
 
-// The RNG x Statistics product every MC engine here is templated over. This nesting is what the
-// per-engine `template <class RNG> ...AuxStat` helpers used to do by hand, once each.
+// The shared RNG x Statistics dispatch used by every templated Monte Carlo engine in this file.
 template <class Ret, class F>
 Ret dispatchRngStat(int rngtrait, int stattrait, F&& make) {
   return dispatchRng<Ret>(rngtrait, [&](auto r) {

@@ -480,21 +480,11 @@ void qlFreeSavedSettings(void *settings) {del((SavedSettingsWithObservable *)set
 const char *qlVersion() {return QL_VERSION;}
 const char *qlBoostVersion() {return BOOST_LIB_VERSION;}
 
-// By the time Haskell code runs, the x87 unit is at 53-bit precision (control word
-// 0x027f), where a binary linked by clang++ rather than ghc has 64-bit extended (0x037f).
-// Every 80-bit long double operation is then silently rounded to double, which breaks boost::math's default
-// promote_double policy: its algorithms assume the precision they asked for. It surfaced
-// as quantile(non_central_chi_squared) failing to converge on the lower tail inside
-// SquareRootProcessRNDCalculator::invcdf, throwing out of hestonSlvFdmModel on Windows
-// and nowhere else. See WINDOWS.md and tools/debug/hestonslv-probe.cpp.
-//
-// Exposed rather than done automatically. Setting it from a namespace-scope initializer
-// was measured not to stick -- the test still failed on Windows with one in place -- and
-// the RTS hooks that could run earlier are one-shot per process, which cannot be right
-// for a per-thread register. The alternative, re-asserting it on every crossing from
-// Haskell, buys ordering at the cost of FP-state side effects in the marshalling path. fldcw rather than
-// _controlfp_s because MSVC's CRT documents _MCW_PC as unsupported on x64. The word is
-// per-thread. Haskell's own Double arithmetic is SSE/MXCSR and is unaffected.
+// GHC leaves the per-thread x87 control word at 53-bit precision on Windows, but Boost.Math's
+// promote_double algorithms require 64-bit extended precision. Call this on each pricing thread;
+// process initializers and one-shot RTS hooks cannot establish per-thread state. Use fldcw because
+// MSVC documents _MCW_PC as unsupported on x64. Haskell Double arithmetic uses SSE/MXCSR and is
+// unaffected. See WINDOWS.md and tools/debug/hestonslv-probe.cpp.
 void qlSetExtendedPrecision() {
 #if defined(_WIN32) && (defined(__x86_64__) || defined(__i386__))
   unsigned short cw = 0;
@@ -1262,10 +1252,7 @@ void qlCommoditySettingsSetUnitOfMeasure(UnitOfMeasure *u) {CommoditySettings::i
 /* HistoricalIndexAnalysis */
 
 namespace QuantLib {
-  // hasquant-local: generalizes upstream's HistoricalRatesAnalysis (InterestRateIndex-only,
-  // ql/models/marketmodels/historicalratesanalysis.hpp) to any Index. Mirrors that class's own
-  // accessor shape (stats()/skippedDates()/skippedDatesErrorMessage()) so the shim functions
-  // below read identically to how they read the upstream class before this generalization.
+  // Index-generic counterpart of upstream HistoricalRatesAnalysis, with the same result shape.
   class HistoricalIndexAnalysis {
     public:
       HistoricalIndexAnalysis(shared_ptr<SequenceStatistics> stats,
@@ -1291,9 +1278,7 @@ QlHistoricalIndexAnalysis *qlHistoricalIndexAnalysis(int startDate, int endDate,
     std::vector<Date> skippedDates;
     std::vector<std::string> skippedDatesErrorMessage;
 
-    // Transcribed from ql/models/marketmodels/historicalratesanalysis.cpp's free function,
-    // generalized from InterestRateIndex to the generic Index base (fixing/fixingCalendar are
-    // both declared there already) so it isn't limited to interest-rate underlyings.
+    // Follow upstream historicalratesanalysis.cpp over the generic Index interface.
     std::vector<Real> sample(nIdx), prevSample(nIdx), sampleDiff(nIdx);
     Calendar cal = (*arg(indexes[0]))->fixingCalendar();
     Date currentDate = cal.advance(Date(startDate), 1*Days, Following);

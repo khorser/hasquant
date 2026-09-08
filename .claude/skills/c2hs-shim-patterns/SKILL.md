@@ -9,7 +9,7 @@ Reference patterns for `.chs` pragmas and `cbits/` marshalling. Use it when a bi
 
 C shim suffixes exist only to disambiguate ABI symbols. Do not expose them as trailing apostrophes or unexplained numeric suffixes in Haskell. Name alternate representations with `From`, added configuration with `With`, coordinates with `At`, and evaluation-date-relative term structures with `Moving`. Reusing a short name in separate topical modules is intentional and preferable to encoding the module name in the value. Treat acronyms as camel-case words in exported values and record selectors (`npvBps`, `gjrGarchModel`, `hestonSlvFdmModel`, `nextImmDate`); ABI-facing C names, C tags, Haskell types, and constructors keep their existing spelling unless the representation itself changes.
 
-Prefer a public capability class over repeated type-prefixed names for related bound types that provide an operation with exactly the same type and semantics. Do not use a class solely to avoid qualified imports, and do not merge same-named upstream methods whose remaining arguments or meanings differ. Multi-parameter instances may encode supported coordinate combinations; a sum-typed argument is the better fit when one operation accepts a closed set of genuinely interchangeable representations.
+Use a public capability class for a genuine secondary interface or common functionality provided by related bound types with exactly the same type and semantics. Do not add blanket constraints solely to avoid qualified imports, and do not merge same-named upstream methods whose remaining arguments or meanings differ. Multi-parameter instances may encode supported coordinate combinations; a sum-typed argument is the better fit when one operation accepts a closed set of genuinely interchangeable representations.
 
 Fixed-date and evaluation-date-relative constructor overloads with the same remaining surface use
 `QuantLib.TermStructure.Reference`; constructors whose fixed and moving overloads both take a
@@ -246,30 +246,21 @@ returns); reuse it for a new hierarchy edge without re-deriving it.
 
 ## Multiple inheritance (secondary interfaces)
 
-**Multiple inheritance where the second base is an interface needed by one
-consumer** (`AffineModel`, needed only by `analyticCapFloorEngine`;
-`Gaussian1dModel`, needed only by the `gaussian1d*Engine` family): don't add
-a second `Upcastable` node — `Upcastable` is single-parent (one `Base` per
-type), so a second real base has nowhere to go. Mirror the `AffineModel`
-pattern in `Internal/Type.hs` (search `CAffineModel'`): keep the leaf's one
-`Upcastable` instance pointed at its true hierarchy parent, and separately
-add a standalone (non-`Upcastable`) `qlXAsInterfaceY :: Ptr CX' -> IO (Ptr
-CInterfaceY')` shim per leaf, give the interface itself a `type InterfaceY =
-Standalone CInterfaceY'` (the same `Standalone`/`peekStandalone`/
-`withStandalone` machinery already used for `Calendar`/`Currency`), and one
-`xAsInterfaceY :: X -> IO InterfaceY` per leaf that eagerly materializes the
-upcast: `xAsInterfaceY m = withX m qlXAsInterfaceY >>= peekStandalone`. The
-consuming engine's `.chs` argument marshals with the already-generic
-`` withStandalone*`InterfaceY' `` — no hand-written per-hierarchy marshaller
-needed. This trades a pure wrap at the call site (the old
-`AffineModel (HullWhite hw)`) for an explicit `IO`-sequenced conversion
-(`hw' <- hullWhiteAsAffineModel hw`), and the upcast handle's lifetime moves
-from transient-and-freed-per-call to eagerly-owned-and-GC-finalized — a
-deliberate, small trade for one fewer hand-rolled sum type and no
-`withInterfaceY` pattern-match to maintain per leaf. ADT adaptors and this
-`Standalone`-per-leaf variant are both for passing an object as an argument;
-common/overloaded methods are mostly modelled as type classes instead
-(`HasImpliedVol`, `HasQuanto`).
+**A secondary C++ base is a public capability, not a second `Upcastable`
+parent.** `Upcastable` has one `Base` per type, so keep each leaf in its primary
+hierarchy and represent the secondary interface as an owned `Standalone`
+handle. `AffineModel` and `Gaussian1dModel` are the reference implementations:
+`AsAffineModel` and `AsGaussian1dModel` expose one common materialization
+operation for all supported leaves, while each leaf instance calls a statically
+typed `qlXAsInterfaceY :: Ptr CX' -> IO (Ptr CInterfaceY')` shim and finishes
+with `peekStandalone`. The interface itself marshals through the generic
+``withStandalone*`InterfaceY'`` hook.
+
+This is an appropriate public type class because it expresses a real C++
+interface shared by several models. It does not justify adding type-class
+constraints to unrelated signatures or using classes as namespace shortcuts.
+The conversion remains `IO`-sequenced because it eagerly allocates an owned
+upcast handle that is finalized by the GC.
 
 ## Cross-module enum imports
 

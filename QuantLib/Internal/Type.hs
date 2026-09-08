@@ -3806,9 +3806,8 @@ newGenEnergyCommodity = pure . GenInstrument . newAnyOf . newAnyOf
 withEnergyCommodity :: GenEnergyCommodity e -> (Ptr CEnergyCommodity' -> IO b) -> IO b
 withEnergyCommodity = withGenForeignPtr . peel . peel . getInstrument
 
--- |'EnergyFuture': a leaf directly under 'EnergyCommodity' (Stage 6). 2 peels reach
--- 'CEnergyFuture'' -- through the Commodity and EnergyCommodity layers -- the same depth
--- 'VanillaSwap' needs under 'GenFixedVsFloatingSwap' (Swap + FixedVsFloatingSwap).
+-- |'EnergyFuture' is a leaf under 'EnergyCommodity'; two peels cross the Commodity and
+-- EnergyCommodity layers to reach 'CEnergyFuture''.
 data CEnergyFuture'
 type CEnergyFuture = ForeignPtr CEnergyFuture'
 type EnergyFuture = GenEnergyCommodity CEnergyFuture

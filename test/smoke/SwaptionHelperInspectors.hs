@@ -1,9 +1,5 @@
--- Smoke test for the SwaptionHelper leaf type and its inspectors (QuantLib/Model.chs's
--- underlying/swaption/volatility), added alongside the
--- Gaussian1dModels.cpp port's calibration-basket work. These getters need SwaptionHelper to be
--- its own dedicated leaf under BlackCalibrationHelper (not the generic BlackCalibrationHelper
--- swaptionHelper used to return) so that underlying()/swaption() are reachable without a
--- dynamic_pointer_cast -- see CLAUDE.md's GenBlackCalibrationHelper/FixedVsFloatingSwap bullets.
+-- Checks the concrete SwaptionHelper leaf, its inspectors and its cast-free
+-- BlackCalibrationHelper upcast.
 --
 -- Checks:
 --  1. underlying's FixedVsFloatingSwap has the fixed rate/nominal the helper was
@@ -17,7 +13,6 @@
 --     BlackCalibrationHelper (e.g. for calibrateVolatilitiesIterative's [GenBlackCalibrationHelper
 --     bch] argument), and blackPrice/modelValue-style accessors keep working after the upcast.
 --
--- Run with: .claude/skills/run-hasquant/driver.sh test/smoke/SwaptionHelperInspectors.hs
 import Control.Monad (unless)
 import System.Exit (exitFailure)
 

@@ -1,6 +1,7 @@
 {-# LANGUAGE TemplateHaskell, FlexibleInstances #-}
 module QuantLib.Instrument.Swap
   (
+    -- * Swap and swaption types
     Swaption
   , IrregularSwaption
   , NonstandardSwaption
@@ -25,6 +26,7 @@ module QuantLib.Instrument.Swap
   , ConstNotionalCrossCurrencyBasisSwap
   , ConstNotionalCrossCurrencyFixedVsFloatingSwap
 
+    -- * Hierarchy conversion and configuration
   , asSwap
 
   , impliedVolatility
@@ -39,6 +41,7 @@ module QuantLib.Instrument.Swap
   , ConstNotionalCrossCurrencyBasisSwapOpts(..)
   , defaultConstNotionalCrossCurrencyBasisSwapOpts
 
+    -- * Swap construction and product-specific results
   , swapFromLegs
   , swap
   , bmaSwap
@@ -69,6 +72,7 @@ module QuantLib.Instrument.Swap
   , variance
   , varianceOption
 
+    -- * Common swap inspectors
   , endDiscounts
   , leg
   , legBps
@@ -78,7 +82,7 @@ module QuantLib.Instrument.Swap
   , startDate
   , startDiscounts
 
-  -- ConstNotionalCrossCurrencySwap family
+    -- * Cross-currency swaps
   , constNotionalCrossCurrencySwap
   , constNotionalCrossCurrencySwapFromLegs
   , legCurrency
@@ -90,6 +94,7 @@ module QuantLib.Instrument.Swap
   , fairRecSpread
   , constNotionalCrossCurrencyFixedVsFloatingSwap
 
+    -- * BMA swaps
   , bmaLeg
   , bmaLegBps
   , bmaLegNpv
@@ -100,6 +105,7 @@ module QuantLib.Instrument.Swap
   , liborLegBps
   , liborLegNpv
 
+    -- * Swaptions and calibration baskets
   , swaption
   , irregularSwaption
   , irregularSwap
@@ -109,7 +115,7 @@ module QuantLib.Instrument.Swap
   , calibrationBasket
   , floatFloatSwaptionCalibrationBasket
 
-  -- AssetSwap
+    -- * Asset swaps
   , assetSwap
 
   , bondLeg
@@ -120,7 +126,7 @@ module QuantLib.Instrument.Swap
   , parSwap
   , payBondCoupon
 
-  -- OvernightIndexedSwap
+    -- * Overnight-indexed swaps
   , overnightIndexedSwap
   , overnightIndexedSwapFromNominals
 
@@ -128,6 +134,7 @@ module QuantLib.Instrument.Swap
   , overnightLegBps
   , overnightLegNpv
 
+    -- * Shared swap capabilities
   , HasFixedLeg(..)
   , HasFloatingLeg(..)
   , HasFairRate(..)

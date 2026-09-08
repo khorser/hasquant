@@ -1,6 +1,7 @@
 {-# LANGUAGE FlexibleInstances #-}
 module QuantLib.Model
   (
+    -- * Model types and configuration
     CalibrationErrorType(..)
   , SobolBrownianOrdering(..)
   , HestonSLVGreensAlgorithm(..)
@@ -48,6 +49,7 @@ module QuantLib.Model
   , asCalibrationHelper
   , asBlackCalibrationHelper
 
+    -- * Hierarchy and secondary-interface conversion
   , asCalibratedModel
   , asHestonModel
   , asShortRateModel
@@ -57,6 +59,7 @@ module QuantLib.Model
   , AsAffineModel(..)
   , AsGaussian1dModel(..)
 
+    -- * Shared capabilities and Gaussian model operations
   , HasLeverageFunction(..)
   , HasVolatilities(..)
   , numeraire
@@ -68,6 +71,7 @@ module QuantLib.Model
   , gaussian1dYGrid
   , stateProcess
 
+    -- * Model construction
   , batesModel
   , blackKarasinski
   , coxIngersollRoss
@@ -92,6 +96,7 @@ module QuantLib.Model
   , markovFunctional
   , markovFunctionalCaplet
 
+    -- * Calibration
   , calibrate
   , calibrateVolatilitiesIterative
   , capHelper
@@ -103,6 +108,7 @@ module QuantLib.Model
   , helperSwaption
   , times
 
+    -- * Model calculations and inspectors
   , discountBond
   , discountBondOption
   , discountBondOptionForward

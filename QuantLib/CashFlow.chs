@@ -3,6 +3,7 @@
 {-# LANGUAGE TypeSynonymInstances #-}
 module QuantLib.CashFlow
   (
+    -- * Cash-flow and leg hierarchy
     Leg
   , CouponLeg
   , asLeg
@@ -19,6 +20,7 @@ module QuantLib.CashFlow
   , amount
   , date
 
+    -- * Cash flows and coupons
   , leg
   , simpleCashFlow
   , IndexedCashFlow
@@ -86,6 +88,7 @@ module QuantLib.CashFlow
   , previousCashFlows
   , cashFlows
 
+    -- * Leg analytics
   , duration
   , accrualDays
   , accrualEndDate
@@ -118,13 +121,16 @@ module QuantLib.CashFlow
   , yieldValueBasisPoint
   , zSpread
 
+    -- * Coupon-leg conversion
   , toCouponLeg
   , couponAccrualStartDates
 
+    -- * Dividends
   , fixedDividend
   , fractionalDividendWithNominal
   , fractionalDividend
 
+    -- * Coupon legs and specialized cash flows
   , averageBmaLeg
   , fixedRateLeg
   , iborLeg
@@ -149,6 +155,7 @@ module QuantLib.CashFlow
   , capletRate
   , floorletPrice
   , floorletRate
+    -- * CMS coupons and digital replication
   , CmsCoupon
   , cmsCoupon
   , cappedFlooredCmsCoupon
@@ -173,6 +180,7 @@ module QuantLib.CashFlow
   , DigitalIborLegOpts(..)
   , defaultDigitalIborLegOpts
   , digitalIborLeg
+    -- * Overnight, multiple-reset and inflation legs
   , MultipleResetsLegOpts(..)
   , defaultMultipleResetsLegOpts
   , multipleResetsLeg
@@ -194,6 +202,7 @@ module QuantLib.CashFlow
   , setEquityCashFlowPricer
   , YieldCurveModel(..)
 
+    -- * Coupon-pricer hierarchy
   , FloatingRateCouponPricer
   , GenFloatingRateCouponPricer
   , asFloatingRateCouponPricer

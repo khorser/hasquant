@@ -1,12 +1,8 @@
--- | Coverage for 'QuantLib.Instrument.Swap''s plain 'VanillaSwap' path and the
--- ConstNotionalCrossCurrency* family, which had no dedicated hspec Spec module before this
--- (see CLAUDE.md: coverage is only measured over @test\/hspec\/**@ + @test\/example\/**@).
+-- |Coverage for the plain 'VanillaSwap' path and constant-notional cross-currency swaps.
 --
 -- \"VanillaSwap\" golden values are ported from QuantLib's own test-suite/swap.cpp. The
 -- ConstNotionalCrossCurrency* block is ported from @test\/smoke\/CheckConstNotionalCrossCurrencySwap.hs@,
--- which had no cached upstream golden values available (see CLAUDE.md's guidance to prefer
--- them where available -- a full port of test-suite/constnotionalcrosscurrency*.cpp's fixtures
--- is left as follow-up work) and instead used martingale-style self-consistency checks: with
+-- which uses martingale-style self-consistency checks: with
 -- both legs built from the same index/schedule/nominal/spread, matching discount curves, and
 -- spotFX=1, the pay and receive legs must have equal in-currency NPV, so the swap's total NPV
 -- (and, for the basis swap, its fair pay/rec spreads) must come out at zero.

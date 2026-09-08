@@ -1,8 +1,6 @@
 {-# LANGUAGE OverloadedLists #-}
 
--- Smoke test for OISRateHelperOpts/deriveOptionsRecord (Batch 8's new options-record
--- TH infra -- see the add-quantlib-options-record skill). Two things this
--- checks that a green `stack build` alone would not:
+-- End-to-end check for OISRateHelperOpts and deriveOptionsRecord. It verifies:
 --  1. defaultOisRateHelperOpts's field order/types actually line up with the raw
 --     full-arity binding oisRateHelperWithOptions threads them into -- a silent field
 --     transposition (deriveOptionsRecord builds the record purely from the inline
@@ -13,13 +11,8 @@
 --     same discount as the narrow oisRateHelper called with the same leading args --
 --     both are supposed to hit the same upstream ctor with the same upstream
 --     defaults, just via two different Haskell entry points.
--- Also constructs one helper with several non-default fields (telescopicValueDates,
--- paymentFrequency, averagingMethod) via record-update syntax, to exercise the
--- override path itself, not just the defaults -- CDS2015/MaturityDate combinations
--- were tried first but need historical fixing data this smoke test doesn't provide,
--- so the override case below sticks to fields that don't change the accrual schedule.
---
--- Run with: cabal exec -- ghc -ismoke -package hasquant smoke/CheckOISRateHelper.hs -o /tmp/checkois -outputdir /tmp/checkois_build && /tmp/checkois
+-- It also exercises non-default telescopicValueDates, paymentFrequency and averagingMethod
+-- fields without introducing a historical-fixing dependency.
 import QuantLib.CashFlow(RateAveragingType(..))
 import QuantLib.Index.InterestRate hiding(dayCounter)
 import QuantLib.Math(Interpolation(..))

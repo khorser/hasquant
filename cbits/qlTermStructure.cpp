@@ -950,15 +950,8 @@ void qlSwaptionVolatilityMatrixLocate(QlSwaptionVolatilityMatrix *o, int optionD
     iResult.set(ij.first); jResult.set(ij.second); iResult.commit(); jResult.commit();
   } catch (std::exception& er) {(void)handleException<void*>(e, er);}}
 
-// SabrSwaptionVolatilityCube, InterpolatedSwaptionVolatilityCube, and SwaptionVolatilityMatrix each
-// get their own dedicated Haskell-visible type (QlSabrSwaptionVolatilityCube/
-// QlInterpolatedSwaptionVolatilityCube/QlSwaptionVolatilityMatrix) rather than returning the
-// generic QlSwaptionVolatilityStructure the way constantSwaptionVolatility does: each class has
-// its own real getters (sparseSabrParameters etc., atmStrike, locate), so per CLAUDE.md's
-// "introduce a dedicated type when the class has its own calc/getter" rule it earns a leaf, and
-// every diagnostic below takes the concrete pointer directly -- no QL_REQUIRE-guarded
-// dynamic_pointer_cast anywhere in this file, for these three classes or for
-// SabrInterpolatedSmileSection above (which used to need one). Use
+// These classes have dedicated Haskell types because they expose class-specific calculations.
+// Their diagnostics take concrete pointers without runtime downcasts. Use
 // qlSabrSwaptionVolatilityCubeAsSwaptionVolatilityStructure/
 // qlInterpolatedSwaptionVolatilityCubeAsSwaptionVolatilityStructure/
 // qlSwaptionVolatilityMatrixAsSwaptionVolatilityStructure (below) to pass any of them into
@@ -1864,10 +1857,7 @@ QlRelinkableYieldTermStructure* qlRelinkableYieldTermStructure(QlYieldTermStruct
 void qlFreeRelinkableYieldTermStructure(QlRelinkableYieldTermStructure *o) {del(o);}
 void qlRelinkableYieldTermStructureLinkTo(QlRelinkableYieldTermStructure *o, QlYieldTermStructure *c, char **e) {
   try {arg(o)->linkTo(handlePtr(arg(c)));} catch (std::exception& er) {(void)handleException<void *>(e, er);}}
-// The hierarchy upcast. Copy-constructing Handle<YieldTermStructure> from
-// RelinkableHandle<YieldTermStructure> is the same T, so link_ is shared and relinking
-// through the original still reaches everything built on the upcast copy. This is the
-// whole reason the design works.
+// The same-T Handle copy shares link_, so dependents built from this upcast follow relinking.
 QlYieldTermStructure* qlRelinkableYieldTermStructureAsYieldTermStructure(QlRelinkableYieldTermStructure *o) {
   return ret(new QlYieldTermStructure(*arg(o)));}
 void qlFreeFittedBondDiscountCurve(QlFittedBondDiscountCurve *o) {del(o);}

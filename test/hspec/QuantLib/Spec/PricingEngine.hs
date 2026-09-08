@@ -56,7 +56,7 @@ allTrees =
 
 spec :: Spec
 spec = do
-  -- Ported from test/smoke/CheckCalculators.hs. Leans on invariants that hold for *any*
+  -- Leans on invariants that hold for any
   -- correct implementation of the Black-76/Bachelier formula (value = discount*(forward*alpha
   -- + x*beta), with alpha/beta's *derivatives* independent of Call-vs-Put) rather than
   -- hand-derived reference numbers: ctor-pair agreement, put-call parity, Call/Put agreement
@@ -425,7 +425,7 @@ spec = do
       callNVolga `shouldSatisfy` closePrec (d * d / bachelierStdDev * callNVega) 1e-9
       callNVega `shouldSatisfy` closePrec (disc * sqrt maturity * nd) 1e-9
 
-  -- Ported from test/smoke/CheckSabrSmileSection.hs. volatility(strike)/variance(strike) must
+  -- volatility(strike)/variance(strike) must
   -- exactly match the already-bound unsafeShiftedSabrVolatility formula (enum-dispatched
   -- through a C-side VolatilityType cast, same class of bug as the CPIInterpolationType
   -- incident); the Date- and Time-based ctors of SabrSmileSection/NoArbSabrSmileSection must
@@ -623,8 +623,7 @@ spec = do
           z <- smileSectionOptionPrice zabr k Call 1.0
           z `shouldSatisfy` closePrec c0 tol
 
-  -- Ported from test/smoke/CheckMCEngineStatistics.hs and CheckMCVarianceSwapEngineStatistics.hs:
-  -- the StatisticsTrait axis added to every MC pricing engine actually reaches each engine's
+  -- Verify that the StatisticsTrait axis reaches each Monte Carlo engine's
   -- second template parameter. Nothing in the type system catches a StatisticsTrait value
   -- being silently ignored (a copy-paste slip could alias all four cases to the same
   -- instantiation), so each case is constructed and priced under a fixed nonzero seed.
@@ -691,7 +690,7 @@ spec = do
         let mn = minimum results; mx = maximum results
         ((mx - mn) / abs mn) `shouldSatisfy` (< 1e-6)
 
-  -- Ported from test/smoke/CheckBarrierEngines.hs: BlackDeltaCalculator against cached rows
+  -- Check BlackDeltaCalculator against cached rows
   -- from blackdeltacalculator.cpp's testDeltaValues, VannaVolgaBarrierEngine and
   -- AnalyticDoubleBarrierEngine against cached NPVs from barrieroption.cpp/
   -- doublebarrieroption.cpp, AnalyticPartialTimeBarrierOptionEngine against
@@ -919,7 +918,7 @@ spec = do
         v <- npv opt
         v `shouldSatisfy` closePrec expected (2.0e-2 * expected)
 
-  -- Ported from test/smoke/CheckDigitalAmericanKO.hs. Golden values are lifted verbatim from
+  -- Golden values come from
   -- digitaloption.cpp's testCashAtExpiryOrNothingAmericanValues and
   -- testAssetAtExpiryOrNothingAmericanValues, on a payoff-at-expiry American exercise --
   -- knockin picks AnalyticDigitalAmericanEngine vs. AnalyticDigitalAmericanKOEngine.
@@ -2634,15 +2633,11 @@ spec = do
         let expected = refNPV * rMaturityDf / rDivDateDf
         calculated `shouldSatisfy` closePrec expected 5.0e-2
 
-  -- Ported from test/smoke/HestonSLVModels.hs (deleted -- it exercised no marshalling/pointer
-  -- concern hspec can't express as well, per AGENTS.md's Hspec-vs-smoke test-placement rule),
-  -- itself built after hestonslvmodel.cpp's model-construction fixture -- same FDM params, but
+  -- Uses hestonslvmodel.cpp's model-construction fixture and FDM parameters, but
   -- a flat local vol and a plain Heston parameter set in place of upstream's
   -- createSmoothImpliedVol surface and its implied-calibrated parameters. The density-grid
-  -- shape check (rows = varianceGrid length, cols = spotGrid length) is the first real
-  -- verification of the 'RealMatrix' layout review item B4 flagged as unverified inference; the
-  -- trailing @logging = False@ check pins B0 (an empty log used to enumerate as a 'Word', so
-  -- @n - 1@ at @n == 0@ underflowed to 'maxBound' -- see 'hestonSlvFdmLogEntries''s haddock).
+  -- shape check pins the 'RealMatrix' layout (rows = varianceGrid length, cols = spotGrid length).
+  -- The @logging = False@ case also pins empty-log handling; see 'hestonSlvFdmLogEntries'.
   describe "HestonSLV model" $ do
     it "builds MC/FDM Heston-SLV models with a consistent density-grid layout (LONG)" $
       Settings.keepingSettingsGc $ do

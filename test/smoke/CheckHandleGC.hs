@@ -1,14 +1,9 @@
--- Spike probe for relinkable-plan.md's PREREQUISITE: does making QlYieldTermStructure a
--- Handle<YieldTermStructure> keep ownership sound under Haskell GC?
+-- Ownership and liveness checks for Handle<YieldTermStructure> under Haskell GC.
 --
 -- Two questions the ordinary test suite structurally cannot answer:
 --
---  1. LIVENESS. Before the change, a consumer copied the curve's shared_ptr directly, so
---     Haskell dropping its reference could not matter. After it, the consumer copies a
---     Handle and reaches the curve through a shared Link. If the Link did not keep the
---     curve alive, dropping the Haskell reference and collecting would leave the consumer
---     pointing at freed memory. The suite never drops a curve mid-computation, so it would
---     never see this.
+--  1. LIVENESS. A consumer's copied Handle and shared Link must keep the curve alive after the
+--     Haskell reference is dropped.
 --
 --  2. LEAKS AND CYCLES. A Link owns its curve strongly, and the Link is internal to C++ --
 --     it is never traced, so tools/alloc-summary.py sees only the Handle objects (as
@@ -16,17 +11,8 @@
 --     reference cycle through one, is invisible to it. The only way to see that is to build
 --     and drop curves in bulk and watch the process footprint.
 --
--- Run with:
---   cabal exec -- ghc -ismoke -package hasquant smoke/CheckHandleGC.hs -o /tmp/checkgc -outputdir /tmp/checkgc_build
---   /tmp/checkgc                 # checks 1-3 (liveness)
---   /usr/bin/time -l /tmp/checkgc 2000    # growth loop, N iterations; compare peak RSS across N
---
--- For the growth check, run it at several N (200 / 2000 / 20000) and compare maximum
--- resident set size. Flat across N means no Link leak and no cycle. RSS rising roughly
--- linearly in N is the signature of exactly the failure alloc-summary.py cannot see.
--- Measuring peak RSS externally avoids needing an in-process reading of the C++ heap,
--- which GHC.Stats does not cover -- it reports the Haskell heap only, and a leaked Link
--- is not on it.
+-- For the optional growth check, compare peak RSS across increasing iteration counts. External
+-- RSS includes the C++ Link allocation that GHC.Stats cannot observe.
 import Control.Monad (forM_, when)
 import System.Environment (getArgs)
 

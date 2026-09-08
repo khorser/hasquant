@@ -1,6 +1,7 @@
 {-# LANGUAGE FlexibleInstances #-}
 module QuantLib.PricingEngine
   (
+    -- * Core engine and configuration types
     PricingEngine
   , BlackCalculator
   , BlackScholesCalculator
@@ -20,10 +21,12 @@ module QuantLib.PricingEngine
   , LatticeTime(..)
   , FdmGrid(..)
 
+    -- * Option-calculator capability
   , GenBlackCalculator
   , asBlackCalculator
   , HasOptionCalculator(..)
 
+    -- * Discounting and counterparty engines
   , discountingBondEngine
   , riskyBondEngine
   , discountingSwapEngine
@@ -33,6 +36,7 @@ module QuantLib.PricingEngine
   , PerpetualFuturesInterpolationType(..)
   , discountingPerpetualFuturesEngine
 
+    -- * Analytic, lattice and Monte Carlo engines
   , analyticBarrierEngine
   , analyticTwoAssetBarrierEngine
   , analyticSoftBarrierEngine
@@ -88,6 +92,7 @@ module QuantLib.PricingEngine
   , quantoForwardPerformanceEuropeanEngine
   , quantoBarrierEngine
   , quantoDoubleBarrierEngine
+    -- ** Rates and inflation
   , blackCapFloorEngineFromVolatilityStructure
   , blackCapFloorEngine
   , blackSwaptionEngine
@@ -104,6 +109,7 @@ module QuantLib.PricingEngine
   , analyticBsmHullWhiteEngine
   , analyticCapFloorEngine
   , gaussian1dCapFloorEngine
+    -- ** Equity, stochastic-volatility and exotic products
   , analyticGjrGarchEngine
   , analyticHestonEngine
   , analyticHestonHullWhiteEngine
@@ -148,6 +154,7 @@ module QuantLib.PricingEngine
   , qdPlusAmericanEngine
   , qdFpAmericanEngine
   , continuousArithmeticAsianVecerEngine
+    -- ** Credit and spread products
   , integralCdsEngine
   , integralEngine
   , isdaCdsEngine
@@ -176,6 +183,7 @@ module QuantLib.PricingEngine
   , singleFactorBsmBasketEngine
   , lfmSwaptionEngine
 
+    -- * Finite-difference engines
   , fdG2SwaptionEngine
   , fdHullWhiteSwaptionEngine
   , binomialVanillaEngine
@@ -191,6 +199,7 @@ module QuantLib.PricingEngine
   , fdHestonVanillaEngineQuanto
   , fdHestonHullWhiteVanillaEngine
 
+    -- * Convertible and callable bond engines
   , binomialConvertibleEngine
   , blackCallableFixedRateBondEngineFromVolatilityStructure
   , blackCallableFixedRateBondEngine
@@ -199,6 +208,7 @@ module QuantLib.PricingEngine
   , treeCallableFixedRateBondEngine
   , treeCallableZeroCouponBondEngine
 
+    -- * Black and Bachelier calculators
   , blackCalculator
   , blackCalculatorFromPayoff
   , blackVanna
@@ -214,6 +224,7 @@ module QuantLib.PricingEngine
   , bachelierCalculatorFromPayoff
   , bachelierVanna
 
+    -- * Formulae, probabilities and SABR helpers
   , blackDeltaCalculator
   , deltaFromStrike
   , strikeFromDelta

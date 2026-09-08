@@ -46,9 +46,7 @@ main = do
   skipped <- skipped hia
   checkWith "no skipped dates for a fully-fixed mixed index list" "expected []" (null skipped)
 
-  -- The char** spine this returns is the only one in cbits/ that used to escape trackAllocations
-  -- tracing; the paired API still reaches it while preventing callers from separating messages
-  -- from their dates.
+  -- Exercise allocation tracing for the char** spine while keeping messages paired with dates.
   checkWith "skipped-date diagnostics are paired"
     "expected one message per skipped date" (not (any (null . snd) skipped))
 

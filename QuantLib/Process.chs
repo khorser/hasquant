@@ -1,12 +1,14 @@
 {-# LANGUAGE FlexibleInstances #-}
 module QuantLib.Process
   (
+    -- * Discretization schemes
     ProcessDiscretization(..)
   , ExtendedBlackScholesMertonProcessDiscretization(..)
   , HestonProcessDiscretization(..)
   , GJRGARCHProcessDiscretization(..)
   , HybridHestonHullWhiteProcessDiscretization(..)
 
+    -- * Process hierarchy
   , GeneralizedBlackScholesProcess
   , StochasticProcess1D
   , GenStochasticProcess1D
@@ -31,11 +33,13 @@ module QuantLib.Process
   , HullWhiteProcess
   , HullWhiteForwardProcess
 
+    -- * Hierarchy conversion
   , asStochasticProcess
   , asStochasticProcess1D
   , asGeneralizedBlackScholesProcess
   , asHestonProcess
 
+    -- * Black-Scholes processes
   , blackProcess
   , blackScholesMertonProcess
   , blackScholesProcess
@@ -45,6 +49,7 @@ module QuantLib.Process
   , squareRootProcess
   , vegaStressedBlackScholesProcess
 
+    -- * Process construction and evolution
   , apply
   , batesProcess
   , covariance
@@ -80,6 +85,7 @@ module QuantLib.Process
   , varianceGammaProcess
   , stochasticProcessArray
 
+    -- * Short-rate and forward-measure capabilities
   , HasPhi(..)
   , HasShortRate(..)
   , HasForwardMeasureTime(..)

@@ -124,7 +124,7 @@ spec = do
             r = 0.03
             q = 0.01
             v0 = 0.04
-            -- t = 0.5 (the original choice) lands HestonProcess::pdf's Cornish-Fisher upper-bound
+            -- t = 0.5 lands HestonProcess::pdf's Cornish-Fisher upper-bound
             -- estimate (ql/processes/hestonprocess.cpp: cornishFisherEps, a 4th-order finite
             -- difference of the CIR characteristic function divided by d^4 = 1e-8) in a
             -- numerically fragile spot: reproduced in raw C++ against the installed QuantLib, it
@@ -689,9 +689,8 @@ spec = do
           y = 1 - (((((a5 * t' + a4) * t') + a3) * t' + a2) * t' + a1) * t' * exp (-ax * ax)
       in sign * y
 
-    -- reference implementation of the G2++ deterministic offset phi(t), copied from
-    -- G2::FittingParameter::Impl::value in ql/models/shortrate/twofactormodels/g2.hpp; used to
-    -- check 'phi' against a closed form independent of G2Process's own implementation.
+    -- G2++ deterministic offset from G2::FittingParameter::Impl::value, used as a closed-form
+    -- reference independent of G2Process.
     referencePhi :: YieldTermStructure -> Double -> Double -> Double -> Double -> Double -> Double -> IO Double
     referencePhi curve t a sigma b eta rho = do
       fwdIR <- forwardRate curve (RateAtTime t) (RateAtTime t) Continuous NoFrequency True

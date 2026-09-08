@@ -1,6 +1,7 @@
 {-# LANGUAGE TemplateHaskell, FlexibleInstances, MultiParamTypeClasses #-}
 module QuantLib.TermStructure.Volatility
   (
+    -- * Configuration and extrapolation
     BlackVarianceSurfaceExtrapolation(..)
   , ExtendedBlackVarianceSurfaceExtrapolation(..)
   , FixedLocalVolSurfaceExtrapolation(..)
@@ -8,6 +9,7 @@ module QuantLib.TermStructure.Volatility
   , AndreasenHugeCalibrationType(..)
   , ZabrEvaluation(..)
 
+    -- * Volatility hierarchies and capabilities
   , BlackVarianceCurve
   , BlackVolatilitySurfaceDelta
   , SmileInterpolationMethod(..)
@@ -56,9 +58,11 @@ module QuantLib.TermStructure.Volatility
   , SabrVolSurface
   , OptionletStripper2
 
+    -- * Hierarchy conversions
   , asVolatilityTermStructure
   , asBlackVolTermStructure
 
+    -- * Optionlet and cap-floor volatility
   , localVolSurface
   , constantOptionletVolatility
   , capletVarianceCurve
@@ -69,6 +73,7 @@ module QuantLib.TermStructure.Volatility
   , atmCapFloorPrices
   , spreadsVol
 
+    -- * Black, local and swaption volatility
   , impliedVolTermStructure
   , blackConstantVol
   , relinkableBlackVolTermStructure
@@ -77,6 +82,7 @@ module QuantLib.TermStructure.Volatility
   , maxSwapLength
   , maxSwapTenor
   , smileSection
+    -- * Smile sections and parametrizations
   , sabrSmileSection
   , noArbSabrSmileSection
   , smileSectionVolatility
@@ -113,6 +119,7 @@ module QuantLib.TermStructure.Volatility
   , noArbSabrEndCriteria
   , swapLengthBetweenDates
   , swapLength
+    -- * Bond and cap-floor inspectors
   , callableBondConstantVolatility
   , maxBondTenor
   , minStrike
@@ -126,6 +133,7 @@ module QuantLib.TermStructure.Volatility
   , atmVol
   , atmVariance
   , blackVolSurfaceSmileSection
+    -- * ATM curves and SABR surfaces
   , abcdAtmVolCurve
   , abcdA
   , abcdB
@@ -144,11 +152,13 @@ module QuantLib.TermStructure.Volatility
   , sabrVolSurfaceAtmCurve
   , sabrVolSurfaceIndex
   , sabrVolSurfaceOptionDateFromTenor
+    -- * Relinkable and spreaded structures
   , spreadedSwaptionVolatility
   , relinkableSwaptionVolatilityStructure
   , linkSwaptionVolTo
   , relinkableOptionletVolatilityStructure
   , linkOptionletVolTo
+    -- * Curves and surfaces
   , localConstantVol
   , localVolCurve
   , capFloorTermVolCurve
@@ -159,6 +169,7 @@ module QuantLib.TermStructure.Volatility
   , blackVolatilitySurfaceDelta
   , blackVolatilitySurfaceDeltaWithOptions
   , blackVolSmile
+    -- * Swaption matrices and cubes
   , swaptionVolatilityMatrix
   , SwaptionVolatilityMatrix
   , swaptionVolatilityMatrixLocate
@@ -178,6 +189,7 @@ module QuantLib.TermStructure.Volatility
   , noArbSabrMarketVolCube
   , noArbSabrVolCubeAtmCalibrated
   , swaptionVolatilityMatrixMoving
+    -- * Local-volatility and Andreasen-Huge models
   , noExceptLocalVolSurface
   , fixedLocalVolSurface
   , gridModelLocalVolSurface
@@ -190,6 +202,7 @@ module QuantLib.TermStructure.Volatility
   , andreasenHugeLocalVol
   , andreasenHugeVolatilityAdapter
   , andreasenHugeLocalVolAdapter
+    -- * Smile and local-volatility queries
   , spreadedOptionletVol
   , localVol
   , smileSectionAtmLevel

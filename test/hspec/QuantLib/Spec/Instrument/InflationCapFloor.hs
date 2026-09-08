@@ -58,10 +58,7 @@ linkedYoYIndex evalDate = do
   cal <- calendar Null
   dc <- dayCounter Actual365FixedStandard
   yii0 <- customYoYIndex Nothing
-  -- Fixings span [today-8y, today+1y] (not a hardcoded absolute range) so this test keeps
-  -- working as the real wall-clock 'today' advances across future runs -- an absolute
-  -- 2018-01..2026-01 window (this test's original form) silently falls out of range once
-  -- 'today' itself passes 2026, since 'baseDate' below is derived from 'today'.
+  -- Derive the fixing window from today so it cannot expire as the wall clock advances.
   fixingDates <- mapM (\n -> advance cal evalDate (n, Months) Unadjusted False) [-96 .. 12 :: Int]
   forM_ (zip [1 :: Double ..] fixingDates) $ \(i, d) -> addFixing yii0 d (0.03 + i * 0.0001) False
   nominalQ <- simpleQuote 0.02
@@ -134,13 +131,8 @@ spec :: Spec
 spec = do
  describe "YoY inflation cap/floor" $ do
   it "cap - floor = collar, and the sum of optionlets equals the parent NPV" $ Settings.keepingSettingsGc $ do
-    -- Anchored to the real wall-clock date (like 'QuantLib.Spec.Examples`'s SimpleChooserOption),
-    -- not a hardcoded past date: every maturity derived below is then always in the future, so a
-    -- later test in the suite changing the global evaluation date can never see this test's
-    -- still-alive curve/swap objects as stale. (An earlier version of this test hardcoded
-    -- "2 january 2024" and relied on 'performGC' alone to finalize those objects before the next
-    -- test moved the clock forward -- but 'performGC' only schedules finalizers, it doesn't run
-    -- them synchronously, so that was a race rather than a fix.)
+    -- Anchor all maturities to today so later evaluation-date changes cannot encounter live,
+    -- already-expired observers from this test.
     todayD <- today
     Settings.setEvaluationDate (Just todayD)
     yii <- linkedYoYIndex todayD
