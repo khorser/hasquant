@@ -1295,24 +1295,27 @@ Leg *qlLeg(unsigned len, double *amounts, int *dates, char **e) {
   } catch (std::exception& er) {return handleException<Leg*>(e, er);}}
 
 void qlFreeCashFlow(QlCashFlow *o) {del(o);}
+double qlCashFlowAmount(QlCashFlow *o, char **e) {try {return (*arg(o))->amount();} catch (std::exception& er) {return handleException<double>(e, er);}}
+int qlCashFlowDate(QlCashFlow *o) {return (*arg(o))->date().serialNumber();}
 QlCashFlow *qlSimpleCashFlow(double amount, int date, char **e) {
   try {return ret(new QlCashFlow(alloc(new SimpleCashFlow(amount, Date(date)))));
   } catch (std::exception& er) {return handleException<QlCashFlow*>(e, er);}}
-QlCashFlow *qlIndexedCashFlow(double notional, QlIndex *index, int baseDate, int fixingDate, int paymentDate, int growthOnly, char **e) {
-  try {return ret(new QlCashFlow(alloc(new IndexedCashFlow(notional, *arg(index), Date(baseDate), Date(fixingDate), Date(paymentDate), growthOnly))));
-  } catch (std::exception& er) {return handleException<QlCashFlow*>(e, er);}}
+void qlFreeIndexedCashFlow(QlIndexedCashFlow *o) {del(o);}
+QlCashFlow *qlIndexedCashFlowAsCashFlow(QlIndexedCashFlow *o) {return ret(new QlCashFlow(*arg(o)));}
+QlIndexedCashFlow *qlIndexedCashFlow(double notional, QlIndex *index, int baseDate, int fixingDate, int paymentDate, int growthOnly, char **e) {
+  try {return ret(new QlIndexedCashFlow(alloc(new IndexedCashFlow(notional, *arg(index), Date(baseDate), Date(fixingDate), Date(paymentDate), growthOnly))));
+  } catch (std::exception& er) {return handleException<QlIndexedCashFlow*>(e, er);}}
+double qlIndexedCashFlowBaseFixing(QlIndexedCashFlow *o, char **e) {try {return (*arg(o))->baseFixing();} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlIndexedCashFlowIndexFixing(QlIndexedCashFlow *o, char **e) {try {return (*arg(o))->indexFixing();} catch (std::exception& er) {return handleException<double>(e, er);}}
 QlFixedRateCoupon *qlFixedRateCoupon(int paymentDate, double nominal, double rate, DayCounter *dayCounter, int accrualStartDate, int accrualEndDate, int refPeriodStart, int refPeriodEnd, int exCouponDate, char **e) {
   try {return ret(new QlFixedRateCoupon(alloc(new FixedRateCoupon(Date(paymentDate), nominal, rate, *arg(dayCounter), Date(accrualStartDate), Date(accrualEndDate), qlNullableDate(refPeriodStart), qlNullableDate(refPeriodEnd), qlNullableDate(exCouponDate)))));
   } catch (std::exception& er) {return handleException<QlFixedRateCoupon*>(e, er);}}
 void qlFreeFixedRateCoupon(QlFixedRateCoupon *o) {del(o);}
 QlCashFlow* qlFixedRateCouponAsCashFlow(QlFixedRateCoupon *o) {return ret(new QlCashFlow(*arg(o)));}
 InterestRate* qlFixedRateCouponInterestRate(QlFixedRateCoupon *o) {return ret(new InterestRate((*arg(o))->interestRate()));}
-QlCashFlow *qlFloatingRateCoupon(int paymentDate, double nominal, int startDate, int endDate, unsigned fixingDays, QlInterestRateIndex *index, double gearing, double spread, int refPeriodStart, int refPeriodEnd, DayCounter *dayCounter, int inArrears, int exCouponDate, int fixingConvention, char **e) {
-  try {return ret(new QlCashFlow(alloc(new FloatingRateCoupon(Date(paymentDate), nominal, Date(startDate), Date(endDate), fixingDays, *arg(index), gearing, spread, qlNullableDate(refPeriodStart), qlNullableDate(refPeriodEnd), *arg(dayCounter), inArrears, qlNullableDate(exCouponDate), (BusinessDayConvention)fixingConvention))));
-  } catch (std::exception& er) {return handleException<QlCashFlow*>(e, er);}}
-QlCashFlow *qlIborCoupon(int paymentDate, double nominal, int startDate, int endDate, unsigned fixingDays, QlIborIndex *index, double gearing, double spread, int refPeriodStart, int refPeriodEnd, DayCounter *dayCounter, int inArrears, int exCouponDate, int fixingConvention, char **e) {
-  try {return ret(new QlCashFlow(alloc(new IborCoupon(Date(paymentDate), nominal, Date(startDate), Date(endDate), fixingDays, *arg(index), gearing, spread, qlNullableDate(refPeriodStart), qlNullableDate(refPeriodEnd), *arg(dayCounter), inArrears, qlNullableDate(exCouponDate), (BusinessDayConvention)fixingConvention))));
-  } catch (std::exception& er) {return handleException<QlCashFlow*>(e, er);}}
+QlFloatingRateCoupon *qlFloatingRateCoupon(int paymentDate, double nominal, int startDate, int endDate, unsigned fixingDays, QlInterestRateIndex *index, double gearing, double spread, int refPeriodStart, int refPeriodEnd, DayCounter *dayCounter, int inArrears, int exCouponDate, int fixingConvention, char **e) {
+  try {return ret(new QlFloatingRateCoupon(alloc(new FloatingRateCoupon(Date(paymentDate), nominal, Date(startDate), Date(endDate), fixingDays, *arg(index), gearing, spread, qlNullableDate(refPeriodStart), qlNullableDate(refPeriodEnd), *arg(dayCounter), inArrears, qlNullableDate(exCouponDate), (BusinessDayConvention)fixingConvention))));
+  } catch (std::exception& er) {return handleException<QlFloatingRateCoupon*>(e, er);}}
 Leg *qlCashFlowLeg(unsigned len, QlCashFlow **cashFlows, char **e) {
   try {return ret(new Leg(qlVector(cashFlows, len)));
   } catch (std::exception& er) {return handleException<Leg*>(e, er);}}
@@ -1537,34 +1540,25 @@ void qlSetYoYInflationCouponPricer(Leg* leg, QlYoYInflationCouponPricer* pricer,
   try {return setCouponPricer(*arg(leg), *arg(pricer));} catch (std::exception& er) {(void)handleException<int>(e, er);}}
 
 void qlFreeZeroInflationCashFlow(QlZeroInflationCashFlow *o) {del(o);}
-QlCashFlow *qlZeroInflationCashFlowAsCashFlow(QlZeroInflationCashFlow *o) {return ret(new QlCashFlow(*arg(o)));}
+QlIndexedCashFlow *qlZeroInflationCashFlowAsIndexedCashFlow(QlZeroInflationCashFlow *o) {return ret(new QlIndexedCashFlow(*arg(o)));}
 QlZeroInflationCashFlow* qlZeroInflationCashFlow(double notional, QlZeroInflationIndex* index, int observationInterpolation, int startDate, int endDate, int obsLagLen, int obsLagUnit, int paymentDate, int growthOnly, char **e) {
   try {return ret(new QlZeroInflationCashFlow(alloc(new ZeroInflationCashFlow(notional, *arg(index), (CPI::InterpolationType)observationInterpolation,
         Date(startDate), Date(endDate), Period(obsLagLen, (TimeUnit)obsLagUnit), Date(paymentDate), growthOnly))));
   } catch (std::exception& er) {return handleException<QlZeroInflationCashFlow*>(e, er);}}
-double qlZeroInflationCashFlowAmount(QlZeroInflationCashFlow* o, char **e) {try {return (*arg(o))->amount();} catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlZeroInflationCashFlowBaseFixing(QlZeroInflationCashFlow* o, char **e) {try {return (*arg(o))->baseFixing();} catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlZeroInflationCashFlowIndexFixing(QlZeroInflationCashFlow* o, char **e) {try {return (*arg(o))->indexFixing();} catch (std::exception& er) {return handleException<double>(e, er);}}
 
 void qlFreeCPICashFlow(QlCPICashFlow *o) {del(o);}
-QlCashFlow *qlCPICashFlowAsCashFlow(QlCPICashFlow *o) {return ret(new QlCashFlow(*arg(o)));}
+QlIndexedCashFlow *qlCPICashFlowAsIndexedCashFlow(QlCPICashFlow *o) {return ret(new QlIndexedCashFlow(*arg(o)));}
 QlCPICashFlow* qlCPICashFlow(double notional, QlZeroInflationIndex* index, int baseDate, double baseFixing, int observationDate, int obsLagLen, int obsLagUnit, int interpolation, int paymentDate, int growthOnly, char **e) {
   try {return ret(new QlCPICashFlow(alloc(new CPICashFlow(notional, *arg(index), qlNullableDate(baseDate), baseFixing,
         Date(observationDate), Period(obsLagLen, (TimeUnit)obsLagUnit), (CPI::InterpolationType)interpolation, Date(paymentDate), growthOnly))));
   } catch (std::exception& er) {return handleException<QlCPICashFlow*>(e, er);}}
-double qlCPICashFlowAmount(QlCPICashFlow* o, char **e) {try {return (*arg(o))->amount();} catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlCPICashFlowBaseFixing(QlCPICashFlow* o, char **e) {try {return (*arg(o))->baseFixing();} catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlCPICashFlowIndexFixing(QlCPICashFlow* o, char **e) {try {return (*arg(o))->indexFixing();} catch (std::exception& er) {return handleException<double>(e, er);}}
 
 void qlFreeEquityCashFlow(QlEquityCashFlow *o) {del(o);}
-QlCashFlow *qlEquityCashFlowAsCashFlow(QlEquityCashFlow *o) {return ret(new QlCashFlow(*arg(o)));}
+QlIndexedCashFlow *qlEquityCashFlowAsIndexedCashFlow(QlEquityCashFlow *o) {return ret(new QlIndexedCashFlow(*arg(o)));}
 QlEquityCashFlow* qlEquityCashFlow(double notional, QlEquityIndex* index, int baseDate, int fixingDate, int paymentDate, int growthOnly, char **e) {
   try {return ret(new QlEquityCashFlow(alloc(new EquityCashFlow(notional, *arg(index),
         Date(baseDate), Date(fixingDate), Date(paymentDate), growthOnly))));
   } catch (std::exception& er) {return handleException<QlEquityCashFlow*>(e, er);}}
-double qlEquityCashFlowAmount(QlEquityCashFlow* o, char **e) {try {return (*arg(o))->amount();} catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlEquityCashFlowBaseFixing(QlEquityCashFlow* o, char **e) {try {return (*arg(o))->baseFixing();} catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlEquityCashFlowIndexFixing(QlEquityCashFlow* o, char **e) {try {return (*arg(o))->indexFixing();} catch (std::exception& er) {return handleException<double>(e, er);}}
 void qlEquityCashFlowSetPricer(QlEquityCashFlow* o, QlEquityCashFlowPricer* pricer, char **e) {
   try {(*arg(o))->setPricer(*arg(pricer));
   } catch (std::exception& er) {(void)handleException<int>(e, er);}}
@@ -1659,9 +1653,9 @@ int qlStrippedCappedFlooredCouponIsCollar(QlStrippedCappedFlooredCoupon *o) {ret
 QlFloatingRateCoupon* qlCappedFlooredIborCoupon(int paymentDate, double nominal, int startDate, int endDate, unsigned fixingDays, QlIborIndex *index, double gearing, double spread, double cap, double floor, int refPeriodStart, int refPeriodEnd, DayCounter *dayCounter, int inArrears, int exCouponDate, int fixingConvention, char **e) {
   try {return ret(new QlFloatingRateCoupon(alloc(new CappedFlooredIborCoupon(Date(paymentDate), nominal, Date(startDate), Date(endDate), fixingDays, *arg(index), gearing, spread, cap, floor, qlNullableDate(refPeriodStart), qlNullableDate(refPeriodEnd), *arg(dayCounter), inArrears, qlNullableDate(exCouponDate), (BusinessDayConvention)fixingConvention))));
   } catch (std::exception& er) {return handleException<QlFloatingRateCoupon*>(e, er);}}
-QlFloatingRateCoupon* qlDigitalIborCoupon(QlIborCoupon *underlying, double callStrike, int callPosition, int callATM, double callPayoff, double putStrike, int putPosition, int putATM, double putPayoff, QlDigitalReplication *replication, int nakedOption, char **e) {
-  try {return ret(new QlFloatingRateCoupon(alloc(new DigitalIborCoupon(*arg(underlying), callStrike, (Position::Type)callPosition, callATM, callPayoff, putStrike, (Position::Type)putPosition, putATM, putPayoff, replication ? *arg(replication) : shared_ptr<DigitalReplication>(), nakedOption))));
-  } catch (std::exception& er) {return handleException<QlFloatingRateCoupon*>(e, er);}}
+QlDigitalCoupon* qlDigitalIborCoupon(QlIborCoupon *underlying, double callStrike, int callPosition, int callATM, double callPayoff, double putStrike, int putPosition, int putATM, double putPayoff, QlDigitalReplication *replication, int nakedOption, char **e) {
+  try {return ret(new QlDigitalCoupon(alloc(new DigitalIborCoupon(*arg(underlying), callStrike, (Position::Type)callPosition, callATM, callPayoff, putStrike, (Position::Type)putPosition, putATM, putPayoff, replication ? *arg(replication) : shared_ptr<DigitalReplication>(), nakedOption))));
+  } catch (std::exception& er) {return handleException<QlDigitalCoupon*>(e, er);}}
 void qlFreeDigitalCoupon(QlDigitalCoupon* o) {del(o);}
 QlFloatingRateCoupon* qlDigitalCouponAsFloatingRateCoupon(QlDigitalCoupon* o) {return ret(new QlFloatingRateCoupon(*arg(o)));}
 QlDigitalCoupon* qlDigitalCoupon(QlFloatingRateCoupon *underlying, double callStrike, int callPosition, int callATM, double callPayoff, double putStrike, int putPosition, int putATM, double putPayoff, QlDigitalReplication *replication, int nakedOption, char **e) {
@@ -1730,7 +1724,6 @@ QlCashFlow* qlRedemption(double amount, int date, char **e) {try {return ret(new
 QlCashFlow* qlAmortizingPayment(double amount, int date, char **e) {try {return ret(new QlCashFlow(alloc(new AmortizingPayment(amount, Date(date)))));} catch (std::exception& er) {return handleException<QlCashFlow*>(e, er);}}
 QlCashFlow* qlFloatingRateCouponAsCashFlow(QlFloatingRateCoupon* o) {return ret(new QlCashFlow(*arg(o)));}
 double qlFloatingRateCouponRate(QlFloatingRateCoupon* o, char **e) {try {return (*arg(o))->rate();} catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlFloatingRateCouponAmount(QlFloatingRateCoupon* o, char **e) {try {return (*arg(o))->amount();} catch (std::exception& er) {return handleException<double>(e, er);}}
 void qlFloatingRateCouponSetPricer(QlFloatingRateCoupon* o, QlFloatingRateCouponPricer* pricer, char **e) {
   try {(*arg(o))->setPricer(*arg(pricer));
   } catch (std::exception& er) {(void)handleException<int>(e, er);}}
@@ -1773,15 +1766,13 @@ Leg* qlCmsSpreadLeg(Schedule* schedule, QlSwapSpreadIndex* swapSpreadIndex, unsi
   } catch (std::exception& er) {return handleException<Leg*>(e, er);}}
 
 void qlFreeDigitalCmsSpreadCoupon(QlDigitalCmsSpreadCoupon *o) {del(o);}
-QlFloatingRateCoupon* qlDigitalCmsSpreadCouponAsFloatingRateCoupon(QlDigitalCmsSpreadCoupon* o) {return ret(new QlFloatingRateCoupon(*arg(o)));}
+QlDigitalCoupon* qlDigitalCmsSpreadCouponAsDigitalCoupon(QlDigitalCmsSpreadCoupon* o) {return ret(new QlDigitalCoupon(*arg(o)));}
 QlDigitalCmsSpreadCoupon* qlDigitalCmsSpreadCoupon(int paymentDate, double nominal, int startDate, int endDate, unsigned fixingDays, QlSwapSpreadIndex* index, double gearing, double spread, int refPeriodStart, int refPeriodEnd, DayCounter* dayCounter, int inArrears, int exCouponDate, int fixingConvention, double callStrike, int callPosition, int callATM, double callPayoff, double putStrike, int putPosition, int putATM, double putPayoff, QlDigitalReplication* replication, int nakedOption, char **e) {
   try {auto underlying = ext::make_shared<CmsSpreadCoupon>(Date(paymentDate), nominal, Date(startDate), Date(endDate), fixingDays,
       *arg(index), gearing, spread, qlNullableDate(refPeriodStart), qlNullableDate(refPeriodEnd), *arg(dayCounter), inArrears, qlNullableDate(exCouponDate), (BusinessDayConvention)fixingConvention);
     return ret(new QlDigitalCmsSpreadCoupon(alloc(new DigitalCmsSpreadCoupon(underlying, callStrike, (Position::Type)callPosition, callATM,
       callPayoff, putStrike, (Position::Type)putPosition, putATM, putPayoff, replication ? *arg(replication) : shared_ptr<DigitalReplication>(), nakedOption))));
   } catch (std::exception& er) {return handleException<QlDigitalCmsSpreadCoupon*>(e, er);}}
-double qlDigitalCmsSpreadCouponCallOptionRate(QlDigitalCmsSpreadCoupon* o, char **e) {try {return (*arg(o))->callOptionRate();} catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlDigitalCmsSpreadCouponPutOptionRate(QlDigitalCmsSpreadCoupon* o, char **e) {try {return (*arg(o))->putOptionRate();} catch (std::exception& er) {return handleException<double>(e, er);}}
 Leg* qlDigitalCmsSpreadLeg(Schedule* schedule, QlSwapSpreadIndex* index, unsigned notionalsLen, double* notionals, DayCounter* paymentDayCounter, int paymentAdjustment, unsigned fixingDaysLen, unsigned* fixingDays, unsigned gearingsLen, double* gearings, unsigned spreadsLen, double* spreads, int inArrears, unsigned callStrikesLen, double* callStrikes, int callPosition, int callATM, unsigned callPayoffsLen, double* callPayoffs, unsigned putStrikesLen, double* putStrikes, int putPosition, int putATM, unsigned putPayoffsLen, double* putPayoffs, QlDigitalReplication* replication, int nakedOption, char **e) {
   try {DigitalCmsSpreadLeg builder(*arg(schedule), *arg(index));
     builder.withNotionals(std::vector<Real>(notionals, notionals + notionalsLen))
@@ -1817,13 +1808,11 @@ int qlDigitalReplicationType(QlDigitalReplication* o) {return qlReplicationTypeO
 double qlDigitalReplicationGap(QlDigitalReplication* o) {return (*arg(o))->gap();}
 
 void qlFreeDigitalCmsCoupon(QlDigitalCmsCoupon *o) {del(o);}
-QlFloatingRateCoupon* qlDigitalCmsCouponAsFloatingRateCoupon(QlDigitalCmsCoupon* o) {return ret(new QlFloatingRateCoupon(*arg(o)));}
+QlDigitalCoupon* qlDigitalCmsCouponAsDigitalCoupon(QlDigitalCmsCoupon* o) {return ret(new QlDigitalCoupon(*arg(o)));}
 QlDigitalCmsCoupon* qlDigitalCmsCoupon(QlCmsCoupon* underlying, double callStrike, int callPosition, int callATM, double callPayoff, double putStrike, int putPosition, int putATM, double putPayoff, QlDigitalReplication* replication, int nakedOption, char **e) {
   try {return ret(new QlDigitalCmsCoupon(alloc(new DigitalCmsCoupon(*arg(underlying), callStrike, (Position::Type)callPosition, callATM,
       callPayoff, putStrike, (Position::Type)putPosition, putATM, putPayoff, replication ? *arg(replication) : shared_ptr<DigitalReplication>(), nakedOption))));
   } catch (std::exception& er) {return handleException<QlDigitalCmsCoupon*>(e, er);}}
-double qlDigitalCmsCouponCallOptionRate(QlDigitalCmsCoupon* o, char **e) {try {return (*arg(o))->callOptionRate();} catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlDigitalCmsCouponPutOptionRate(QlDigitalCmsCoupon* o, char **e) {try {return (*arg(o))->putOptionRate();} catch (std::exception& er) {return handleException<double>(e, er);}}
 
 Leg* qlDigitalCmsLeg(Schedule* schedule, QlSwapIndex* index, unsigned notionalsLen, double* notionals, DayCounter* paymentDayCounter, int paymentAdjustment, unsigned fixingDaysLen, unsigned* fixingDays, unsigned gearingsLen, double* gearings, unsigned spreadsLen, double* spreads, int inArrears, unsigned callStrikesLen, double* callStrikes, int callPosition, int callATM, unsigned callPayoffsLen, double* callPayoffs, unsigned putStrikesLen, double* putStrikes, int putPosition, int putATM, unsigned putPayoffsLen, double* putPayoffs, QlDigitalReplication* replication, int nakedOption, char **e) {
   try {DigitalCmsLeg builder(*arg(schedule), *arg(index));
@@ -2116,7 +2105,7 @@ QlEnergyBasisSwap* qlEnergyBasisSwap(Calendar *calendar,
    each shim also does `ret(new Currency(...))`, which is a bad_alloc-only throw point -- char **e
    guards that, not the upstream call. */
 void qlFreeCommodityCashFlow(QlCommodityCashFlow *o) {del(o);}
-int qlCommodityCashFlowDate(QlCommodityCashFlow *o) {return (*arg(o))->date().serialNumber();}
+QlCashFlow *qlCommodityCashFlowAsCashFlow(QlCommodityCashFlow *o) {return ret(new QlCashFlow(*arg(o)));}
 double qlCommodityCashFlowDiscountedAmount(QlCommodityCashFlow *o, Currency **outCcy, char **e) {
   *outCcy = 0;
   try {

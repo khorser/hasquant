@@ -10,7 +10,6 @@ module QuantLib.Instrument.Energy
   , CommodityCashFlow
   , CommodityCashFlows
 
-  , date
   , discountedAmount
   , undiscountedAmount
   , discountedPaymentAmount
@@ -68,7 +67,7 @@ import Foreign.Marshal.Utils(fromBool)
 {#pointer *QlEnergySwap as EnergySwap foreign -> CEnergySwap' nocode#}
 {#pointer *QlEnergyVanillaSwap as EnergyVanillaSwap foreign -> CEnergyVanillaSwap' nocode#}
 {#pointer *QlEnergyBasisSwap as EnergyBasisSwap foreign -> CEnergyBasisSwap' nocode#}
-{#pointer *QlCommodityCashFlow as CommodityCashFlow foreign -> CCommodityCashFlow nocode#}
+{#pointer *QlCommodityCashFlow as CommodityCashFlow foreign -> CCommodityCashFlow' nocode#}
 
 -- |QuantLib's @map<string, ext::any>@, used with exactly two concrete alternatives across the
 -- module (@CommodityUnitCost@\/@Money@, confirmed from @energycommodity.cpp@'s two @any_cast@
@@ -105,10 +104,6 @@ data EnergyDailyPosition = EnergyDailyPosition
 type EnergyDailyPositions = [EnergyDailyPosition]
 
 type CommodityCashFlows = [CommodityCashFlow]
-
--- |The cash flow's date -- also the @paymentCashFlows()@ map's own key, so it isn't duplicated as
--- a separate tuple field alongside the list of 'CommodityCashFlow's.
-{#fun pure qlCommodityCashFlowDate as date{withCommodityCashFlow*`CommodityCashFlow'}->`Day'toDay#}
 
 -- |The discounted amount, in the global commodity base currency ('QuantLib.Commodity.commoditySettingsCurrency').
 --

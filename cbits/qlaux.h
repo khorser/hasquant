@@ -50,6 +50,7 @@ namespace QuantLib {
   class RendistatoEquivalentSwapSpreadQuote;
   class FixedRateCoupon;
   class CashFlow;
+  class IndexedCashFlow;
   class FixedVsFloatingSwap;
   class FloatingRateBond;
   class ZeroCouponBond;
@@ -457,6 +458,7 @@ using QuantLib::MultipleResetsCoupon;
 using QuantLib::CPICoupon;
 using QuantLib::CPICouponPricer;
 using QuantLib::Index;
+using QuantLib::IndexedCashFlow;
 using QuantLib::FloatingRateCouponPricer;
 using QuantLib::CmsCouponPricer;
 using QuantLib::FloatingRateCoupon;
@@ -792,6 +794,7 @@ using QlRelinkableYieldTermStructure = RelinkableHandle<YieldTermStructure>;
 using QlPricingEngine = shared_ptr<PricingEngine>;
 using QlIborIndex = shared_ptr<IborIndex>;
 using QlIndex = shared_ptr<Index>;
+using QlIndexedCashFlow = shared_ptr<IndexedCashFlow>;
 using QlFloatingRateCouponPricer = shared_ptr<FloatingRateCouponPricer>;
 using QlCmsCouponPricer = shared_ptr<CmsCouponPricer>;
 using QlFloatingRateCoupon = shared_ptr<FloatingRateCoupon>;
@@ -1159,6 +1162,7 @@ QL_TRACE_NAME(CapFloorTermVolatilityStructure)
 QL_TRACE_NAME(CapFloorTermVolCurve)
 QL_TRACE_NAME(CapFloorTermVolSurface)
 QL_TRACE_NAME(CashFlow)
+QL_TRACE_NAME(IndexedCashFlow)
 QL_TRACE_NAME(FixedRateCoupon)
 QL_TRACE_NAME(CapHelper)
 QL_TRACE_NAME(CashOrNothingPayoff)
@@ -1370,6 +1374,7 @@ QL_TRACE_NAME(QlCapFloorTermVolatilityStructure)
 QL_TRACE_NAME(QlCapFloorTermVolCurve)
 QL_TRACE_NAME(QlCapFloorTermVolSurface)
 QL_TRACE_NAME(QlCashFlow)
+QL_TRACE_NAME(QlIndexedCashFlow)
 QL_TRACE_NAME(QlFixedRateCoupon)
 QL_TRACE_NAME(QlCommodityCurve)
 QL_TRACE_NAME(QlCommodityIndex)

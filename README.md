@@ -157,3 +157,8 @@ type CallableBond = GenBond CCallableBond
 ```
 
 `GenInstrument a` (for example, `npv`) accepts every instrument. An implicit upcast allocates a temporary C-side handle and frees it after the call, so reuse `asBond` or `asInstrument` when making repeated calls through a common parent type.
+
+Cash flows follow the same pattern: `GenCashFlow cf` is the common root, with
+`GenFloatingRateCoupon`, `GenIndexedCashFlow`, and `GenDigitalCoupon` preserving useful
+intermediate families. A homogeneous subtype list can be passed directly to `cashFlowLeg`;
+heterogeneous lists explicitly materialize `CashFlow` elements with `asCashFlow` first.
