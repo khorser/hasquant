@@ -224,38 +224,23 @@ module QuantLib.PricingEngine
   , deltaFromStrike
   , strikeFromDelta
   , atmStrike
-  , blackFormulaFromPayoff
   , blackFormula
-  , blackCashItmProbabilityFromPayoff
   , blackCashItmProbability
-  , blackImpliedStdDevFromPayoff
   , blackImpliedStdDev
-  , blackImpliedStdDevApproximationFromPayoff
   , blackImpliedStdDevApproximation
-  , blackStdDevDerivativeFromPayoff
   , blackStdDevDerivative
   , blackVolDerivative
-  , bachelierBlackFormulaFromPayoff
   , bachelierBlackFormula
-  , blackForwardDerivativeFromPayoff
   , blackForwardDerivative
-  , blackImpliedStdDevChambersFromPayoff
   , blackImpliedStdDevChambers
-  , blackImpliedStdDevApproximationRsFromPayoff
   , blackImpliedStdDevApproximationRs
-  , blackImpliedStdDevLiRsFromPayoff
   , blackImpliedStdDevLiRs
-  , blackAssetItmProbabilityFromPayoff
   , blackAssetItmProbability
-  , blackStdDevSecondDerivativeFromPayoff
   , blackStdDevSecondDerivative
-  , bachelierForwardDerivativeFromPayoff
   , bachelierForwardDerivative
   , bachelierImpliedVol
   , bachelierImpliedVolChoi
-  , bachelierStdDevDerivativeFromPayoff
   , bachelierStdDevDerivative
-  , bachelierAssetItmProbabilityFromPayoff
   , bachelierAssetItmProbability
   , defaultThetaPerDay
   , unsafeSabrLogNormalVolatility
@@ -2115,13 +2100,6 @@ instance HasOptionCalculator BachelierCalculator where
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Black 1976 formula /Warning/ instead of volatility it uses standard deviation, i.e. volatility*sqrt(timeToMaturity)
-{#fun qlQuantLibBlackFormula1 as blackFormulaFromPayoff{withPlainVanillaPayoff*`PlainVanillaPayoff',`Double' -- ^forward
-  ,`Double' -- ^stdDev
-  ,`Double' -- ^discount
-  ,`Double' -- ^displacement
-  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
-
--- |Black 1976 formula /Warning/ instead of volatility it uses standard deviation, i.e. volatility*sqrt(timeToMaturity)
 {#fun qlQuantLibBlackFormula as blackFormula{fromEnumC`OptionType',`Double' -- ^strike
   ,`Double' -- ^forward
   ,`Double' -- ^stdDev
@@ -2131,26 +2109,10 @@ instance HasOptionCalculator BachelierCalculator where
 
 
 -- |Black 1976 probability of being in the money (in the bond martingale measure), i.e. N(d2). It is a risk-neutral probability, not the real world one. /Warning/ instead of volatility it uses standard deviation, i.e. volatility*sqrt(timeToMaturity)
-{#fun qlQuantLibBlackFormulaCashItmProbability1 as blackCashItmProbabilityFromPayoff{withPlainVanillaPayoff*`PlainVanillaPayoff',`Double' -- ^forward
-  ,`Double' -- ^stdDev
-  ,`Double' -- ^displacement
-  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
-
--- |Black 1976 probability of being in the money (in the bond martingale measure), i.e. N(d2). It is a risk-neutral probability, not the real world one. /Warning/ instead of volatility it uses standard deviation, i.e. volatility*sqrt(timeToMaturity)
 {#fun qlQuantLibBlackFormulaCashItmProbability as blackCashItmProbability{fromEnumC`OptionType',`Double'
   ,`Double' -- ^forward
   ,`Double' -- ^stdDev
   ,`Double' -- ^displacement
-  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
-
--- |Black 1976 implied standard deviation, i.e. volatility*sqrt(timeToMaturity)
-{#fun qlQuantLibBlackFormulaImpliedStdDev1 as blackImpliedStdDevFromPayoff{withPlainVanillaPayoff*`PlainVanillaPayoff',`Double' -- ^forward
-  ,`Double' -- ^blackPrice
-  ,`Double' -- ^discount
-  ,`Double' -- ^displacement
-  ,`Double' -- ^guess
-  ,`Double' -- ^accuracy
-  ,fromIntegral`Word' -- ^maxIterations
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Black 1976 implied standard deviation, i.e. volatility*sqrt(timeToMaturity)
@@ -2165,23 +2127,9 @@ instance HasOptionCalculator BachelierCalculator where
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Approximated Black 1976 implied standard deviation, i.e. volatility*sqrt(timeToMaturity).It is calculated using Brenner and Subrahmanyan (1988) and Feinstein (1988) approximation for at-the-money forward option, with the extended moneyness approximation by Corrado and Miller (1996)
-{#fun qlQuantLibBlackFormulaImpliedStdDevApproximation1 as blackImpliedStdDevApproximationFromPayoff{withPlainVanillaPayoff*`PlainVanillaPayoff',`Double' -- ^forward
-  ,`Double' -- ^blackPrice
-  ,`Double' -- ^discount
-  ,`Double' -- ^displacement
-  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
-
--- |Approximated Black 1976 implied standard deviation, i.e. volatility*sqrt(timeToMaturity).It is calculated using Brenner and Subrahmanyan (1988) and Feinstein (1988) approximation for at-the-money forward option, with the extended moneyness approximation by Corrado and Miller (1996)
 {#fun qlQuantLibBlackFormulaImpliedStdDevApproximation as blackImpliedStdDevApproximation{fromEnumC`OptionType',`Double' -- ^strike
   ,`Double' -- ^forward
   ,`Double' -- ^blackPrice
-  ,`Double' -- ^discount
-  ,`Double' -- ^displacement
-  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
-
--- |Black 1976 formula for standard deviation derivative /Warning/ instead of volatility it uses standard deviation, i.e. volatility*sqrt(timeToMaturity), and it returns the derivative with respect to the standard deviation. If T is the time to maturity Black vega would be blackStdDevDerivative(strike, forward, stdDev)*sqrt(T)
-{#fun qlQuantLibBlackFormulaStdDevDerivative1 as blackStdDevDerivativeFromPayoff{withPlainVanillaPayoff*`PlainVanillaPayoff',`Double' -- ^forward
-  ,`Double' -- ^stdDev
   ,`Double' -- ^discount
   ,`Double' -- ^displacement
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
@@ -2204,37 +2152,16 @@ instance HasOptionCalculator BachelierCalculator where
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Black style formula when forward is normal rather than log-normal. This is essentially the model of Bachelier. /Warning/ Bachelier model needs absolute volatility, not percentage volatility. Standard deviation is absoluteVolatility*sqrt(timeToMaturity)
-{#fun qlQuantLibBachelierBlackFormula1 as bachelierBlackFormulaFromPayoff{withPlainVanillaPayoff*`PlainVanillaPayoff',`Double' -- ^forward
-  ,`Double' -- ^stdDev
-  ,`Double' -- ^discount
-  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
-
--- |Black style formula when forward is normal rather than log-normal. This is essentially the model of Bachelier. /Warning/ Bachelier model needs absolute volatility, not percentage volatility. Standard deviation is absoluteVolatility*sqrt(timeToMaturity)
 {#fun qlQuantLibBachelierBlackFormula as bachelierBlackFormula{fromEnumC`OptionType',`Double' -- ^strike
   ,`Double' -- ^forward
   ,`Double' -- ^stdDev
   ,`Double' -- ^discount
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
--- |Black 1976 formula for the derivative with respect to the forward
-{#fun qlQuantLibBlackFormulaForwardDerivative1 as blackForwardDerivativeFromPayoff{withPlainVanillaPayoff*`PlainVanillaPayoff',`Double' -- ^forward
-  ,`Double' -- ^stdDev
-  ,`Double' -- ^discount
-  ,`Double' -- ^displacement
-  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
-
 -- |Black 1976 formula for the derivative with respect to the forward. /Warning/ instead of volatility it uses standard deviation, i.e. volatility*sqrt(timeToMaturity)
 {#fun qlQuantLibBlackFormulaForwardDerivative as blackForwardDerivative{fromEnumC`OptionType',`Double' -- ^strike
   ,`Double' -- ^forward
   ,`Double' -- ^stdDev
-  ,`Double' -- ^discount
-  ,`Double' -- ^displacement
-  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
-
--- |Approximated Black 1976 implied standard deviation following Chambers and Nawalkha, /The Financial Review/ 2001, 89-100. The at-the-money option price must be known to use this method.
-{#fun qlQuantLibBlackFormulaImpliedStdDevChambers1 as blackImpliedStdDevChambersFromPayoff{withPlainVanillaPayoff*`PlainVanillaPayoff',`Double' -- ^forward
-  ,`Double' -- ^blackPrice
-  ,`Double' -- ^blackAtmPrice
   ,`Double' -- ^discount
   ,`Double' -- ^displacement
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
@@ -2249,29 +2176,11 @@ instance HasOptionCalculator BachelierCalculator where
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Approximated Black 1976 implied standard deviation following Radoicic and Stefanica, /An Explicit Implicit Volatility Formula/
-{#fun qlQuantLibBlackFormulaImpliedStdDevApproximationRS1 as blackImpliedStdDevApproximationRsFromPayoff{withPlainVanillaPayoff*`PlainVanillaPayoff',`Double' -- ^forward
-  ,`Double' -- ^blackPrice
-  ,`Double' -- ^discount
-  ,`Double' -- ^displacement
-  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
-
--- |Approximated Black 1976 implied standard deviation following Radoicic and Stefanica, /An Explicit Implicit Volatility Formula/
 {#fun qlQuantLibBlackFormulaImpliedStdDevApproximationRS as blackImpliedStdDevApproximationRs{fromEnumC`OptionType',`Double' -- ^strike
   ,`Double' -- ^forward
   ,`Double' -- ^blackPrice
   ,`Double' -- ^discount
   ,`Double' -- ^displacement
-  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
-
--- |Black 1976 implied standard deviation by the Li-Rational-Substitution solver, started from the Radoicic-Stefanica approximation. Pass 'Nothing' for the guess to let QuantLib pick the starting point.
-{#fun qlQuantLibBlackFormulaImpliedStdDevLiRS1 as blackImpliedStdDevLiRsFromPayoff{withPlainVanillaPayoff*`PlainVanillaPayoff',`Double' -- ^forward
-  ,`Double' -- ^blackPrice
-  ,`Double' -- ^discount
-  ,`Double' -- ^displacement
-  ,fromMaybeDouble`Maybe Double' -- ^guess
-  ,`Double' -- ^omega
-  ,`Double' -- ^accuracy
-  ,fromIntegral`Word' -- ^maxIterations
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Black 1976 implied standard deviation by the Li-Rational-Substitution solver, started from the Radoicic-Stefanica approximation. Pass 'Nothing' for the guess to let QuantLib pick the starting point.
@@ -2287,22 +2196,9 @@ instance HasOptionCalculator BachelierCalculator where
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Black 1976 probability of being in the money in the asset martingale measure, i.e. N(d1). It is a risk-neutral probability, not the real world one.
-{#fun qlQuantLibBlackFormulaAssetItmProbability1 as blackAssetItmProbabilityFromPayoff{withPlainVanillaPayoff*`PlainVanillaPayoff',`Double' -- ^forward
-  ,`Double' -- ^stdDev
-  ,`Double' -- ^displacement
-  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
-
--- |Black 1976 probability of being in the money in the asset martingale measure, i.e. N(d1). It is a risk-neutral probability, not the real world one.
 {#fun qlQuantLibBlackFormulaAssetItmProbability as blackAssetItmProbability{fromEnumC`OptionType',`Double' -- ^strike
   ,`Double' -- ^forward
   ,`Double' -- ^stdDev
-  ,`Double' -- ^displacement
-  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
-
--- |Black 1976 formula for the second derivative with respect to the standard deviation. /Warning/ instead of volatility it uses standard deviation, i.e. volatility*sqrt(timeToMaturity)
-{#fun qlQuantLibBlackFormulaStdDevSecondDerivative1 as blackStdDevSecondDerivativeFromPayoff{withPlainVanillaPayoff*`PlainVanillaPayoff',`Double' -- ^forward
-  ,`Double' -- ^stdDev
-  ,`Double' -- ^discount
   ,`Double' -- ^displacement
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
@@ -2312,12 +2208,6 @@ instance HasOptionCalculator BachelierCalculator where
   ,`Double' -- ^stdDev
   ,`Double' -- ^discount
   ,`Double' -- ^displacement
-  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
-
--- |Bachelier formula for the derivative with respect to the forward. /Warning/ the Bachelier model needs absolute volatility, not percentage volatility; standard deviation is absoluteVolatility*sqrt(timeToMaturity)
-{#fun qlQuantLibBachelierBlackFormulaForwardDerivative1 as bachelierForwardDerivativeFromPayoff{withPlainVanillaPayoff*`PlainVanillaPayoff',`Double' -- ^forward
-  ,`Double' -- ^stdDev
-  ,`Double' -- ^discount
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Bachelier formula for the derivative with respect to the forward. /Warning/ the Bachelier model needs absolute volatility, not percentage volatility; standard deviation is absoluteVolatility*sqrt(timeToMaturity)
@@ -2344,21 +2234,10 @@ instance HasOptionCalculator BachelierCalculator where
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Bachelier formula for the standard deviation derivative. /Warning/ it returns the derivative with respect to the standard deviation; Bachelier vega is this times sqrt(T).
-{#fun qlQuantLibBachelierBlackFormulaStdDevDerivative1 as bachelierStdDevDerivativeFromPayoff{withPlainVanillaPayoff*`PlainVanillaPayoff',`Double' -- ^forward
-  ,`Double' -- ^stdDev
-  ,`Double' -- ^discount
-  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
-
--- |Bachelier formula for the standard deviation derivative. /Warning/ it returns the derivative with respect to the standard deviation; Bachelier vega is this times sqrt(T).
 {#fun qlQuantLibBachelierBlackFormulaStdDevDerivative as bachelierStdDevDerivative{`Double' -- ^strike
   ,`Double' -- ^forward
   ,`Double' -- ^stdDev
   ,`Double' -- ^discount
-  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
-
--- |Bachelier probability of being in the money in the asset martingale measure, i.e. N(d). It is a risk-neutral probability, not the real world one.
-{#fun qlQuantLibBachelierBlackFormulaAssetItmProbability1 as bachelierAssetItmProbabilityFromPayoff{withPlainVanillaPayoff*`PlainVanillaPayoff',`Double' -- ^forward
-  ,`Double' -- ^stdDev
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Bachelier probability of being in the money in the asset martingale measure, i.e. N(d). It is a risk-neutral probability, not the real world one.

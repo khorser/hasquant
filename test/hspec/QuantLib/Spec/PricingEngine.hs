@@ -85,16 +85,10 @@ spec = do
     -- test-suite/blackformula.cpp: testRadoicicStefanicaImpliedVol. Same fixture (T=1.7, r=0.1,
     -- forward=100, vol=0.3, the same 11 strikes) and the same 0.02 vol tolerance; the RS
     -- approximation is closed-form, so this is an accuracy bound, not a solver convergence check.
-    it "blackImpliedStdDevApproximationRs recovers the generating vol to upstream's 0.02 tolerance,\
-       \ and the payoff overload agrees with the type+strike one" $
+    it "blackImpliedStdDevApproximationRs recovers the generating vol to upstream's 0.02 tolerance" $
       forM_ strikes $ \k -> forM_ types $ \t -> do
-        let payoff = PlainVanillaPayoff t k
         mv <- blackFormula t k fwd sd df 0.0
-        mv' <- blackFormulaFromPayoff payoff fwd sd df 0.0
-        mv' `shouldBe` mv
         estSd <- blackImpliedStdDevApproximationRs t k fwd mv df 0.0
-        estSd' <- blackImpliedStdDevApproximationRsFromPayoff payoff fwd mv df 0.0
-        estSd' `shouldBe` estSd
         (estSd / sqrt tte) `shouldSatisfy` closePrec vol 0.02
 
     -- test-suite/blackformula.cpp: testRadoicicStefanicaLowerBound, the figure-3.1 sweep from
@@ -115,21 +109,18 @@ spec = do
     -- the guess is upstream's Null<Real>(), i.e. "start from the RS approximation"; upstream
     -- allows 10x the requested solver accuracy as the assertion tolerance.
     it "blackImpliedStdDevLiRs inverts blackFormula to 10x its requested accuracy, over\
-       \ displacements, and the payoff overload agrees" $ do
+       \ displacements" $ do
       let tol = 1e-8
       forM_ strikes $ \k -> forM_ types $ \t -> forM_ [0.0, 0.01, 0.05 :: Double] $ \displacement -> do
-        let payoff = PlainVanillaPayoff t k
-        mv <- blackFormulaFromPayoff payoff fwd sd df displacement
-        impl <- blackImpliedStdDevLiRsFromPayoff payoff fwd mv df displacement Nothing 1.0 tol 100
+        mv <- blackFormula t k fwd sd df displacement
+        impl <- blackImpliedStdDevLiRs t k fwd mv df displacement Nothing 1.0 tol 100
         impl `shouldSatisfy` closePrec sd (10 * tol)
-        impl2 <- blackImpliedStdDevLiRs t k fwd mv df displacement Nothing 1.0 tol 100
-        impl2 `shouldSatisfy` closePrec sd (10 * tol)
 
     -- test-suite/blackformula.cpp: testChambersImpliedVol. Chambers-Nawalkha needs the ATM
     -- premium as a second input; upstream measures its error moneyness-weighted and one-sided
     -- (the approximation may undershoot freely, but must not overshoot by more than 5e-4).
     it "blackImpliedStdDevChambers does not overshoot the true stdDev beyond upstream's\
-       \ moneyness-weighted 5e-4, and the payoff overload agrees" $ do
+       \ moneyness-weighted 5e-4" $ do
       let tol = 5.0e-4
           displacements = [0.0, 0.001, 0.005, 0.01, 0.02] :: [Double]
           fwds = [-0.001, 0.0, 0.005, 0.01, 0.02, 0.05] :: [Double]
@@ -139,12 +130,9 @@ spec = do
       forM_ types $ \t -> forM_ displacements $ \displacement -> forM_ fwds $ \f ->
         forM_ ks $ \k -> forM_ sds $ \s -> forM_ discounts $ \disc ->
           when (f + displacement > 0.0 && k + displacement > 0.0) $ do
-            let payoff = PlainVanillaPayoff t k
             premium <- blackFormula t k f s disc displacement
             atmPremium <- blackFormula t f f s disc displacement
             iSd <- blackImpliedStdDevChambers t k f premium atmPremium disc displacement
-            iSd' <- blackImpliedStdDevChambersFromPayoff payoff f premium atmPremium disc displacement
-            iSd' `shouldBe` iSd
             let moneyness0 = (k + displacement) / (f + displacement)
                 moneyness = if moneyness0 > 1.0 then 1.0 / moneyness0 else moneyness0
             ((iSd - s) / s * moneyness) `shouldSatisfy` (<= tol)
@@ -179,18 +167,13 @@ spec = do
         \(bpvol, ks) -> do
           let bsd = bpvol * sqrt btte
           forM_ ks $ \k -> forM_ types $ \t -> do
-            let payoff = PlainVanillaPayoff t k
             d <- blackForwardDerivative t k bfwd bsd bdisc displacement
-            d' <- blackForwardDerivativeFromPayoff payoff bfwd bsd bdisc displacement
-            d' `shouldBe` d
             bd <- blackForwardDerivative t k (bfwd + bump) bsd bdisc displacement
             p0 <- blackFormula t k bfwd bsd bdisc displacement
             p1 <- blackFormula t k (bfwd + bump) bsd bdisc displacement
             brackets d bd ((p1 - p0) / bump) `shouldBe` True
 
             bad <- bachelierForwardDerivative t k bfwd bsd bdisc
-            bad' <- bachelierForwardDerivativeFromPayoff payoff bfwd bsd bdisc
-            bad' `shouldBe` bad
             bbd <- bachelierForwardDerivative t k (bfwd + bump) bsd bdisc
             bp0 <- bachelierBlackFormula t k bfwd bsd bdisc
             bp1 <- bachelierBlackFormula t k (bfwd + bump) bsd bdisc
@@ -203,10 +186,7 @@ spec = do
     it "blackAssetItmProbability satisfies the Black decomposition and equals\
        \ blackForwardDerivative/discount" $
       forM_ strikes $ \k -> forM_ types $ \t -> do
-        let payoff = PlainVanillaPayoff t k
         pa <- blackAssetItmProbability t k fwd sd 0.0
-        pa' <- blackAssetItmProbabilityFromPayoff payoff fwd sd 0.0
-        pa' `shouldBe` pa
         pc <- blackCashItmProbability t k fwd sd 0.0
         premium <- blackFormula t k fwd sd df 0.0
         let sign = if t == Call then 1.0 else -1.0
@@ -220,12 +200,9 @@ spec = do
        \ bachelierForwardDerivative/discount" $ do
       let bfwd = 1.0; bsd = 0.01 * sqrt 10.0; bdisc = 0.95
       forM_ [0.9, 0.95, 1.0, 1.05, 1.1 :: Double] $ \k -> forM_ types $ \t -> do
-        let payoff = PlainVanillaPayoff t k
-            sign = if t == Call then 1.0 else -1.0
+        let sign = if t == Call then 1.0 else -1.0
             d = sign * (bfwd - k) / bsd
         pa <- bachelierAssetItmProbability t k bfwd bsd
-        pa' <- bachelierAssetItmProbabilityFromPayoff payoff bfwd bsd
-        pa' `shouldBe` pa
         prem <- bachelierBlackFormula t k bfwd bsd bdisc
         (bdisc * (sign * (bfwd - k) * pa + bsd * normalPdf d)) `shouldSatisfy` closePrec prem 1e-14
         fd <- bachelierForwardDerivative t k bfwd bsd bdisc
@@ -241,17 +218,12 @@ spec = do
        \ bachelierStdDevDerivative match central differences of what they differentiate" $ do
       let h = 1e-5
       forM_ strikes $ \k -> do
-        let payoff = PlainVanillaPayoff Call k
         d1v <- blackStdDevDerivative k fwd sd df 0.0
-        d1v' <- blackStdDevDerivativeFromPayoff payoff fwd sd df 0.0
-        d1v' `shouldBe` d1v
         pUp <- blackFormula Call k fwd (sd + h) df 0.0
         pDn <- blackFormula Call k fwd (sd - h) df 0.0
         d1v `shouldSatisfy` closePrec ((pUp - pDn) / (2 * h)) (1e-6 * max 1 (abs d1v))
 
         d2v <- blackStdDevSecondDerivative k fwd sd df 0.0
-        d2v' <- blackStdDevSecondDerivativeFromPayoff payoff fwd sd df 0.0
-        d2v' `shouldBe` d2v
         dUp <- blackStdDevDerivative k fwd (sd + h) df 0.0
         dDn <- blackStdDevDerivative k fwd (sd - h) df 0.0
         d2v `shouldSatisfy` closePrec ((dUp - dDn) / (2 * h)) (1e-5 * max 1 (abs d2v))
@@ -260,8 +232,6 @@ spec = do
         volD `shouldSatisfy` closePrec (sqrt tte * d1v) (1e-9 * max 1 (abs volD))
 
         bd <- bachelierStdDevDerivative k fwd sd df
-        bd' <- bachelierStdDevDerivativeFromPayoff payoff fwd sd df
-        bd' `shouldBe` bd
         bUp <- bachelierBlackFormula Call k fwd (sd + h) df
         bDn <- bachelierBlackFormula Call k fwd (sd - h) df
         bd `shouldSatisfy` closePrec ((bUp - bDn) / (2 * h)) (1e-6 * max 1 (abs bd))
@@ -275,15 +245,10 @@ spec = do
     it "blackImpliedStdDev inverts blackFormula, and blackImpliedStdDevApproximation is accurate\
        \ near the money and a finite seed in the wings" $
       forM_ strikes $ \k -> forM_ types $ \t -> do
-        let payoff = PlainVanillaPayoff t k
         mv <- blackFormula t k fwd sd df 0.0
         impl <- blackImpliedStdDev t k fwd mv df 0.0 sd 1e-10 100
         impl `shouldSatisfy` closePrec sd 1e-8
-        impl' <- blackImpliedStdDevFromPayoff payoff fwd mv df 0.0 sd 1e-10 100
-        impl' `shouldSatisfy` closePrec sd 1e-8
         appr <- blackImpliedStdDevApproximation t k fwd mv df 0.0
-        appr' <- blackImpliedStdDevApproximationFromPayoff payoff fwd mv df 0.0
-        appr' `shouldBe` appr
         appr `shouldSatisfy` (\v -> v > 0 && not (isNaN v) && not (isInfinite v))
         when (k >= 80 && k <= 125) $ (appr / sqrt tte) `shouldSatisfy` closePrec vol 0.01
 
