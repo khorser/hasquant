@@ -56,7 +56,6 @@ module QuantLib.Instrument.Bond
   , maturityDate
   , yield
   , accruedAmount
-  , cleanPriceFromYield
   , dirtyPriceFromYield
   , nextCashFlowDate
   , nextCouponRate
@@ -82,10 +81,10 @@ module QuantLib.Instrument.Bond
   , accruedPeriod
   , atmRate
   , basisPointValue
-  , bpsFromYield
+  , Discounting(..)
+  , BpsDiscounting(..)
   , bps
   , cleanPrice
-  , cleanPriceWithZSpread
   , convexity
   , duration
   , nextCashFlowAmount
@@ -113,6 +112,7 @@ import QuantLib.Internal.Type
 {#import QuantLib.CashFlow#}(DurationType)
 {#import QuantLib.InterestRate#}(Compounding)
 import QuantLib.Internal.Common
+import QuantLib.CashFlow(Discounting(..), BpsDiscounting(..))
 import QuantLib.Internal.Syntax(deriveOptionsRecord)
 import QuantLib.Time.Calendar(calendar, CalendarConstructor(..))
 import Data.Maybe(fromMaybe)
@@ -466,22 +466,35 @@ amortizingFloatingRateBond settlementDays notionalsArg schedule idx accrualDayCo
 {#fun qlBondFunctionsBasisPointValue as basisPointValue{withBond*`GenBond b',withInterestRate*`InterestRate',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |bps (Basis Point Sensitivity) given an 'InterestRate' yield
-{#fun qlBondFunctionsBps1 as bpsFromYield{withBond*`GenBond b',withInterestRate*`InterestRate',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlBondFunctionsBps1 as bpsFromYieldRaw{withBond*`GenBond b',withInterestRate*`InterestRate',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |bps (Basis Point Sensitivity) given a discount curve
-{#fun qlBondFunctionsBps as bps{withBond*`GenBond b',withYieldTermStructure*`GenYieldTermStructure y',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlBondFunctionsBps as bpsFromCurveRaw{withBond*`GenBond b',withYieldTermStructure*`GenYieldTermStructure y',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |clean price given a discount curve and settlement date
-{#fun qlBondFunctionsCleanPrice2 as cleanPrice{withBond*`GenBond b',withYieldTermStructure*`GenYieldTermStructure y',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlBondFunctionsCleanPrice2 as cleanPriceFromCurveRaw{withBond*`GenBond b',withYieldTermStructure*`GenYieldTermStructure y',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |clean price given a discount curve, a Z-spread over it, compounding and frequency
-{#fun qlBondFunctionsCleanPrice3 as cleanPriceWithZSpread{withBond*`GenBond b',withYieldTermStructure*`GenYieldTermStructure y' -- ^discount
+{#fun qlBondFunctionsCleanPrice3 as cleanPriceWithZSpreadRaw{withBond*`GenBond b',withYieldTermStructure*`GenYieldTermStructure y' -- ^discount
   ,`Double' -- ^zSpread
   ,`Compounding',`Frequency',withDay*`Day' -- ^settlementDate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |clean price given an 'InterestRate' yield
-{#fun qlBondFunctionsCleanPrice4 as cleanPriceFromYield{withBond*`GenBond b',withInterestRate*`InterestRate',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlBondFunctionsCleanPrice4 as cleanPriceFromYieldRaw{withBond*`GenBond b',withInterestRate*`InterestRate',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |Clean price under the given discounting, at a settlement date.
+cleanPrice :: GenBond b -> Discounting y -> Day -> IO Double
+cleanPrice instr discounting = case discounting of
+  DiscountingCurve curve -> cleanPriceFromCurveRaw instr curve
+  DiscountingZSpread curve z comp freq -> cleanPriceWithZSpreadRaw instr curve z comp freq
+  DiscountingYield y -> cleanPriceFromYieldRaw instr y
+
+-- |Basis-point sensitivity under the given discounting, at a settlement date.
+bps :: GenBond b -> BpsDiscounting y -> Day -> IO Double
+bps instr discounting = case discounting of
+  BpsDiscountingCurve curve -> bpsFromCurveRaw instr curve
+  BpsDiscountingYield y -> bpsFromYieldRaw instr y
 
 -- |convexity given an 'InterestRate' yield
 {#fun qlBondFunctionsConvexity as convexity{withBond*`GenBond b',withInterestRate*`InterestRate' -- ^yield

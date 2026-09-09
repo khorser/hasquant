@@ -142,7 +142,7 @@ spec evalDate = do
           checkNPV :: CF.Leg -> IR.InterestRate -> Bool -> Double -> IO ()
           checkNPV l r includeRef expected = do
             td <- Settings.evaluationDate
-            v <- CF.npvFromYield l r includeRef (Just td) (Just td)
+            v <- CF.npv l (CF.DiscountingYield r) includeRef (Just td) (Just td)
             abs(v - expected) `shouldSatisfy` (<= 1.0e-6)
 
       it "misc variants of settings" $
@@ -657,7 +657,7 @@ spec evalDate = do
                 subP `shouldSatisfy` (<= centralP + tolerance)
                 centralP `shouldSatisfy` (<= overP + tolerance)
 
-    -- Ported from test-suite/capflooredcoupon.cpp. Uses 'CF.npvWithZSpread to discount a leg directly
+    -- Ported from test-suite/capflooredcoupon.cpp. Uses 'CF.npv' with a Z-spread to discount a leg directly
     -- rather than upstream's zero-rate-fixed-leg/Swap trick (there only to reuse Swap's NPV
     -- machinery); it computes the identical CashFlows::npv a DiscountingSwapEngine would.
     describe "Capped/floored coupon" $ do
@@ -700,8 +700,8 @@ spec evalDate = do
           -- reference date; passing it explicitly as both settlement and npv date matches
           -- what 'discountingSwapEngine' does internally and avoids asking the curve to
           -- discount to the evaluation date itself, which sits before its reference date.
-          npvVanilla <- CF.npv floatLeg curve False (Just settlement) (Just settlement)
-          npvCollar <- CF.npv collaredLeg curve False (Just settlement) (Just settlement)
+          npvVanilla <- CF.npv floatLeg (CF.DiscountingCurve curve) False (Just settlement) (Just settlement)
+          npvCollar <- CF.npv collaredLeg (CF.DiscountingCurve curve) False (Just settlement) (Just settlement)
           npvCollar `shouldSatisfy` closePrec npvVanilla 1e-8
 
       -- Base case only (gearing = 1, spread = 0): upstream also checks the decomposition
@@ -712,7 +712,7 @@ spec evalDate = do
           (aa, curve, idx, sch, pricer, capfloorEngine, settlement) <- cfFixture
           let capStrike = 0.10
               floorStrike = 0.05
-              legNpv leg = CF.npv leg curve False (Just settlement) (Just settlement)
+              legNpv leg = CF.npv leg (CF.DiscountingCurve curve) False (Just settlement) (Just settlement)
           floatLeg <- cfLeg aa idx sch pricer [] []
           npvVanilla <- legNpv floatLeg
 
@@ -1130,7 +1130,7 @@ spec evalDate = do
 
       -- A coupon whose ex-coupon date sits at or before the settlement date must contribute
       -- zero to the leg's NPV (testExCouponCashFlow); unlike the two tests above, this needs an
-      -- actual 'Leg' (for 'CF.npvWithZSpread), so it goes through 'multipleResetsLeg' rather than the
+      -- actual 'Leg' (for 'CF.npv' with a Z-spread), so it goes through 'multipleResetsLeg' rather than the
       -- standalone constructor. 'multipleResetsLeg's outer schedule carries the *sub-fixing*
       -- dates (one coupon per 'resets'-sized group of periods, matching upstream's own
       -- 'createMultipleResetsLeg', which reuses its monthly 'createSchedule' this way) -- so a
@@ -1145,7 +1145,7 @@ spec evalDate = do
             CF.defaultMultipleResetsLegOpts { CF.mrlNotionals = 1.0 NE.:| []
               , CF.mrlExCouponPeriod = (2, Days), CF.mrlExCouponCalendar = Just cal
               , CF.mrlPaymentLag = 1 }
-          npv <- CF.npv leg curve False (Just today') (Just today')
+          npv <- CF.npv leg (CF.DiscountingCurve curve) False (Just today') (Just today')
           npv `shouldSatisfy` closePrec 0.0 1e-12
 
       it "leg construction throws on mismatched notionals/fixing-days/gearings/spreads (testMultipleResetsLegConsistencyChecks)" $
@@ -1245,11 +1245,11 @@ spec evalDate = do
           (l, dc, cpn) <- mkFixedLeg
           shifted <- IR.interestRate 0.0301 dc IR.Simple Annual
           bpv <- CF.basisPointValue l cpn False Nothing Nothing
-          bfy <- CF.bpsFromYield l cpn False Nothing Nothing
+          bfy <- CF.bps l (CF.BpsDiscountingYield cpn) False Nothing Nothing
           cvx <- CF.convexity l cpn False Nothing Nothing
           dur <- CF.duration l cpn CF.Simple False Nothing Nothing
-          npv0 <- CF.npvFromYield l cpn False Nothing Nothing
-          npv1 <- CF.npvFromYield l shifted False Nothing Nothing
+          npv0 <- CF.npv l (CF.DiscountingYield cpn) False Nothing Nothing
+          npv1 <- CF.npv l (CF.DiscountingYield shifted) False Nothing Nothing
           yvbp <- CF.yieldValueBasisPoint l cpn False Nothing Nothing
           bpv `shouldSatisfy` relClose 1.0e-6 (npv1 - npv0)
           forM_ ([bfy, cvx, dur, yvbp] :: [Double])
@@ -1258,24 +1258,24 @@ spec evalDate = do
       it "yield recovers the coupon rate from the leg's own NPV" $
         Settings.keepingSettingsGc $ do
           (l, dc, cpn) <- mkFixedLeg
-          npv0 <- CF.npvFromYield l cpn False Nothing Nothing
+          npv0 <- CF.npv l (CF.DiscountingYield cpn) False Nothing Nothing
           impliedYield <- CF.yield l npv0 dc IR.Simple Annual False Nothing Nothing 1.0e-10 1000 0.03
           impliedYield `shouldSatisfy` relClose 1.0e-6 0.03
 
-      it "term-structure NPV analytics: npv vs npvWithZSpread (zero z-spread), npvBps decomposition, zSpread round-trip, atmRate repricing" $
+      it "term-structure NPV analytics: npv vs npv with a zero z-spread, npvBps decomposition, zSpread round-trip, atmRate repricing" $
         Settings.keepingSettingsGc $ do
           (l, dc, _) <- mkFixedLeg
           td <- Settings.evaluationDate
           q <- Quote.simpleQuote 0.03 >>= Quote.asQuote
           curve <- flatForward (ReferenceDate td) q dc IR.Continuous Annual
 
-          n1 <- CF.npv l curve False Nothing Nothing
-          n2 <- CF.npvWithZSpread l curve 0.0 IR.Continuous Annual False Nothing Nothing
+          n1 <- CF.npv l (CF.DiscountingCurve curve) False Nothing Nothing
+          n2 <- CF.npv l (CF.DiscountingZSpread curve 0.0 IR.Continuous Annual) False Nothing Nothing
           n2 `shouldSatisfy` relClose 1.0e-6 n1
 
           (npvbpsN, npvbpsB) <- CF.npvBps l curve False td td
           npvbpsN `shouldSatisfy` relClose 1.0e-9 n1
-          b1 <- CF.bps l curve False Nothing Nothing
+          b1 <- CF.bps l (CF.BpsDiscountingCurve curve) False Nothing Nothing
           npvbpsB `shouldSatisfy` relClose 1.0e-9 b1
 
           zs <- CF.zSpread l n1 curve IR.Continuous Annual False Nothing Nothing 1.0e-10 1000 0.0
@@ -1286,7 +1286,7 @@ spec evalDate = do
           sch2 <- schedule (Just $ addGregorianMonthsClip (-2) td) (addGregorianMonthsClip 4 td) (6, Months) cal Unadjusted Unadjusted Backward False Nothing Nothing
           cpnAtm <- IR.interestRate atm dc IR.Simple Annual
           lAtm <- CF.fixedRateLeg sch2 [100.0] [cpnAtm] Following dc cal
-          nAtm <- CF.npv lAtm curve False Nothing Nothing
+          nAtm <- CF.npv lAtm (CF.DiscountingCurve curve) False Nothing Nothing
           nAtm `shouldSatisfy` relClose 1.0e-6 n1
 
     -- Ported from test-suite/rangeaccrual.cpp's testInfiniteRange. Its only check with no
@@ -1452,7 +1452,7 @@ spec evalDate = do
               priceLeg legOpts = do
                 leg <- CF.digitalCmsLeg sch swapIdx [1.0] dc Unadjusted [fixingDays] [1.0] [0.0] False legOpts
                 CF.setCouponPricer leg pricer
-                CF.npv leg curve False Nothing Nothing
+                CF.npv leg (CF.DiscountingCurve curve) False Nothing Nothing
           defaultNpv <- priceLeg opts
           explicitFalseNpv <- priceLeg (opts { CF.dcmlNakedOption = False })
           nakedNpv <- priceLeg (opts { CF.dcmlNakedOption = True })
@@ -1594,11 +1594,11 @@ spec evalDate = do
           CF.setFloatingRateCouponPricer standalone spreadPricer
           standaloneCf <- CF.asCashFlow standalone
           refLeg <- CF.cashFlowLeg [standaloneCf]
-          refNpv <- CF.npv refLeg fwdCurve False Nothing Nothing
+          refNpv <- CF.npv refLeg (CF.DiscountingCurve fwdCurve) False Nothing Nothing
 
           leg <- CF.cmsSpreadLeg sch cms10y2y [10000] dc Unadjusted [2] [1.0] [0.0] [] [] False False
           CF.setCouponPricer leg spreadPricer
-          legNpv <- CF.npv leg fwdCurve False Nothing Nothing
+          legNpv <- CF.npv leg (CF.DiscountingCurve fwdCurve) False Nothing Nothing
 
           legNpv `shouldSatisfy` closePrec refNpv 1.0e-8
 
@@ -1634,7 +1634,7 @@ spec evalDate = do
           CF.setFloatingRateCouponPricer standalone spreadPricer
           standaloneCf <- CF.asCashFlow standalone
           refLeg <- CF.cashFlowLeg [standaloneCf]
-          refNpv <- CF.npv refLeg fwdCurve False Nothing Nothing
+          refNpv <- CF.npv refLeg (CF.DiscountingCurve fwdCurve) False Nothing Nothing
 
           let opts = CF.defaultDigitalCmsSpreadLegOpts
                 { CF.dcmslCallStrikes = [-0.05]
@@ -1643,7 +1643,7 @@ spec evalDate = do
                 }
           leg <- CF.digitalCmsSpreadLeg sch cms10y2y [10000] dc Unadjusted [2] [1.0] [0.0] False opts
           CF.setCouponPricer leg spreadPricer
-          legNpv <- CF.npv leg fwdCurve False Nothing Nothing
+          legNpv <- CF.npv leg (CF.DiscountingCurve fwdCurve) False Nothing Nothing
 
           legNpv `shouldSatisfy` closePrec refNpv 1.0e-8
 
@@ -1671,16 +1671,16 @@ spec evalDate = do
           let priceCmsLeg caps floors = do
                 leg <- CF.cmsLeg sch swapBase [1000000] thirty360bb Following [2] [1.0] [0.0] caps floors False False
                 CF.setCouponPricer leg cmsPricer
-                CF.npv leg ts False Nothing Nothing
+                CF.npv leg (CF.DiscountingCurve ts) False Nothing Nothing
               priceIborLeg caps floors = do
                 leg <- CF.iborLeg sch euribor6m [1000000] thirty360bb Following [2] [1.0] [0.0] caps floors False False
                 CF.setCouponPricer leg iborPricer
-                CF.npv leg ts False Nothing Nothing
+                CF.npv leg (CF.DiscountingCurve ts) False Nothing Nothing
               priceCmsBond caps floors = do
                 bond <- Bond.cmsRateBond 2 100 sch swapBase thirty360bb Following 2 [1.0] [0.0] caps floors False 100 Nothing
                 leg <- Bond.cashFlows bond
                 CF.setCouponPricer leg cmsPricer
-                CF.npv leg ts False Nothing Nothing
+                CF.npv leg (CF.DiscountingCurve ts) False Nothing Nothing
 
           cmsUncapped <- priceCmsLeg [] []
           cmsCapped <- priceCmsLeg [0.03] []
@@ -1697,12 +1697,12 @@ spec evalDate = do
           iborFull <- CF.iborLegWithOptions sch euribor6m [1000000] thirty360bb Following [2] [1.0] [0.0] [] [] False False
             CF.defaultIborLegOpts { CF.ilgPaymentLag = 2, CF.ilgExCouponPeriod = (2, Days) }
           CF.setCouponPricer iborFull iborPricer
-          iborFullNpv <- CF.npv iborFull ts False Nothing Nothing
+          iborFullNpv <- CF.npv iborFull (CF.DiscountingCurve ts) False Nothing Nothing
           iborFullNpv `shouldSatisfy` (> 0)
           cmsFull <- CF.cmsLegWithOptions sch swapBase [1000000] thirty360bb Following [2] [1.0] [0.0] [] [] False False
             CF.defaultCmsLegOpts { CF.cmslExCouponPeriod = (2, Days) }
           CF.setCouponPricer cmsFull cmsPricer
-          cmsFullNpv <- CF.npv cmsFull ts False Nothing Nothing
+          cmsFullNpv <- CF.npv cmsFull (CF.DiscountingCurve ts) False Nothing Nothing
           cmsFullNpv `shouldSatisfy` (> 0)
 
           bondUncapped <- priceCmsBond [] []
@@ -1717,9 +1717,9 @@ spec evalDate = do
                 bond <- Bond.amortizingCmsRateBond 2 ns sch swapBase thirty360bb Following 2 [1.0] [0.0] [] [] False Nothing rs
                 couponLeg <- Bond.cashFlows bond
                 CF.setCouponPricer couponLeg cmsPricer
-                couponNpv <- CF.npv couponLeg ts False Nothing Nothing
+                couponNpv <- CF.npv couponLeg (CF.DiscountingCurve ts) False Nothing Nothing
                 redemptionLeg <- Bond.redemptions bond
-                redemptionNpv <- CF.npv redemptionLeg ts False Nothing Nothing
+                redemptionNpv <- CF.npv redemptionLeg (CF.DiscountingCurve ts) False Nothing Nothing
                 pure (couponNpv, redemptionNpv)
           (couponNpv, redemptionNpv) <- priceAmortizing notionals redemptions
           (doubledCouponNpv, _) <- priceAmortizing (fmap (* 2) notionals) redemptions

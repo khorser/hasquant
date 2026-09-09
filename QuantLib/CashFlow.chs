@@ -99,7 +99,8 @@ module QuantLib.CashFlow
   , accruedPeriod
   , atmRate
   , basisPointValue
-  , bpsFromYield
+  , Discounting(..)
+  , BpsDiscounting(..)
   , bps
   , convexity
   , isExpired
@@ -108,8 +109,6 @@ module QuantLib.CashFlow
   , nextCashFlowDate
   , nextCouponRate
   , nominal
-  , npvFromYield
-  , npvWithZSpread
   , npv
   , npvBps
   , previousCashFlowAmount
@@ -821,9 +820,20 @@ cashFlows l i d = do{(as, ds, hs) <- qlLegCashFlows l i d; return $ zip3 ds as h
   ,withMaybeDay*`Maybe Day' -- ^npvDate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
+-- |Where discount factors come from.
+data Discounting y
+  = DiscountingCurve !(GenYieldTermStructure y)
+  | DiscountingZSpread !(GenYieldTermStructure y) !Double !Compounding !Frequency -- ^curve, zSpread, compounding, frequency
+  | DiscountingYield !InterestRate
+
+-- |'Discounting' restricted to the cases 'bps' supports: upstream has no Z-spreaded bps.
+data BpsDiscounting y
+  = BpsDiscountingCurve !(GenYieldTermStructure y)
+  | BpsDiscountingYield !InterestRate
+
 -- |Basis-point sensitivity of the cash flows.
 -- The result is the change in NPV due to a uniform 1-basis-point change in the rate paid by the cash flows. The change for each coupon is discounted according to the given constant interest rate. The result is affected by the choice of the interest-rate compounding and the relative frequency and day counter.
-{#fun qlCashFlowsBps1 as bpsFromYield{withLeg*`GenLeg l',withInterestRate*`InterestRate'
+{#fun qlCashFlowsBps1 as bpsFromYieldRaw{withLeg*`GenLeg l',withInterestRate*`InterestRate'
   ,`Bool' -- ^includeSettlementDateFlows
   ,withMaybeDay*`Maybe Day' -- ^settlementDate
   ,withMaybeDay*`Maybe Day' -- ^npvDate
@@ -867,7 +877,7 @@ cashFlows l i d = do{(as, ds, hs) <- qlLegCashFlows l i d; return $ zip3 ds as h
 
 -- |NPV of the cash flows.
 -- The IRR is the interest rate at which the NPV of the cash flows equals the dirty price.The NPV is the sum of the cash flows, each discounted according to the given constant interest rate. The result is affected by the choice of the interest-rate compounding and the relative frequency and day counter.
-{#fun qlCashFlowsNpv1 as npvFromYield{withLeg*`GenLeg l',withInterestRate*`InterestRate',`Bool' -- ^includeSettlementDateFlows
+{#fun qlCashFlowsNpv1 as npvFromYieldRaw{withLeg*`GenLeg l',withInterestRate*`InterestRate',`Bool' -- ^includeSettlementDateFlows
   ,withMaybeDay*`Maybe Day' -- ^settlementDate
   ,withMaybeDay*`Maybe Day' -- ^npvDate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
@@ -882,14 +892,14 @@ cashFlows l i d = do{(as, ds, hs) <- qlLegCashFlows l i d; return $ zip3 ds as h
 
 -- |Basis-point sensitivity of the cash flows.
 -- The result is the change in NPV due to a uniform 1-basis-point change in the rate paid by the cash flows. The change for each coupon is discounted according to the given term structure.
-{#fun qlCashFlowsBps as bps{withLeg*`GenLeg l',withYieldTermStructure*`GenYieldTermStructure y',`Bool' -- ^includeSettlementDateFlows
+{#fun qlCashFlowsBps as bpsFromCurveRaw{withLeg*`GenLeg l',withYieldTermStructure*`GenYieldTermStructure y',`Bool' -- ^includeSettlementDateFlows
   ,withMaybeDay*`Maybe Day' -- ^settlementDate
   ,withMaybeDay*`Maybe Day' -- ^npvDate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |NPV of the cash flows.
 -- For details on z-spread refer to: "Credit Spreads Explained", Lehman Brothers European Fixed Income Research - March 2004, D. O'KaneThe NPV is the sum of the cash flows, each discounted according to the z-spreaded term structure. The result is affected by the choice of the z-spread compounding and the relative frequency and day counter.
-{#fun qlCashFlowsNpv3 as npvWithZSpread{withLeg*`GenLeg l',withYieldTermStructure*`GenYieldTermStructure y',`Double' -- ^zSpread
+{#fun qlCashFlowsNpv3 as npvWithZSpreadRaw{withLeg*`GenLeg l',withYieldTermStructure*`GenYieldTermStructure y',`Double' -- ^zSpread
   ,`Compounding',`Frequency',`Bool' -- ^includeSettlementDateFlows
   ,withMaybeDay*`Maybe Day' -- ^settlementDate
   ,withMaybeDay*`Maybe Day' -- ^npvDate
@@ -897,10 +907,23 @@ cashFlows l i d = do{(as, ds, hs) <- qlLegCashFlows l i d; return $ zip3 ds as h
 
 -- |NPV of the cash flows.
 -- The NPV is the sum of the cash flows, each discounted according to the given term structure.
-{#fun qlCashFlowsNpv as npv{withLeg*`GenLeg l',withYieldTermStructure*`GenYieldTermStructure y',`Bool' -- ^includeSettlementDateFlows
+{#fun qlCashFlowsNpv as npvFromCurveRaw{withLeg*`GenLeg l',withYieldTermStructure*`GenYieldTermStructure y',`Bool' -- ^includeSettlementDateFlows
   ,withMaybeDay*`Maybe Day' -- ^settlementDate
   ,withMaybeDay*`Maybe Day' -- ^npvDate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |NPV of the cash flows under the given discounting.
+npv :: GenLeg l -> Discounting y -> Bool -> Maybe Day -> Maybe Day -> IO Double
+npv cashflows discounting = case discounting of
+  DiscountingCurve curve -> npvFromCurveRaw cashflows curve
+  DiscountingZSpread curve z comp freq -> npvWithZSpreadRaw cashflows curve z comp freq
+  DiscountingYield y -> npvFromYieldRaw cashflows y
+
+-- |Basis-point sensitivity of the cash flows under the given discounting.
+bps :: GenLeg l -> BpsDiscounting y -> Bool -> Maybe Day -> Maybe Day -> IO Double
+bps cashflows discounting = case discounting of
+  BpsDiscountingCurve curve -> bpsFromCurveRaw cashflows curve
+  BpsDiscountingYield y -> bpsFromYieldRaw cashflows y
 
 -- |NPV and BPS of the cash flows.
 -- The NPV and BPS of the cash flows calculated together for performance reason

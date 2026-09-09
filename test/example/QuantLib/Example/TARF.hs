@@ -92,7 +92,7 @@ run = do
       sim <- asset s 0
       let State _ fs = foldl genFlows (State ilsTarget []) $ map (`roundTo` fxrateDigits) (V.toList sim)
       l <- leg $ zip ds fs
-      v <- (`roundTo` notionalDigits) <$> npv l yc True Nothing Nothing
+      v <- (`roundTo` notionalDigits) <$> npv l (DiscountingCurve yc) True Nothing Nothing
       return (v, V.toList sim)
 
     genFlows :: State -> Double -> State

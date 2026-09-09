@@ -112,7 +112,7 @@ run gc = do
             repoDayCountConvention bondCalendar bondBusinessDayConvention b
             (Just repoCurve) (Just repoCurve)
 
-          clP <- cleanPrice b bondCurve repoSettlementDate
+          clP <- cleanPrice b (DiscountingCurve bondCurve) repoSettlementDate
           accr1 <- accruedAmount b repoSettlementDate
           let dp = clP + accr1
           accr2 <- accruedAmount b repoDeliveryDate

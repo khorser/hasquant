@@ -184,8 +184,8 @@ spec = do
     pricer <- blackYoyInflationCouponPricer vol nominalCurve
     setYoyInflationCouponPricer cappedLeg pricer
 
-    cappedNPV <- CF.npv cappedLeg nominalCurve True Nothing Nothing
-    uncappedNPV <- CF.npv uncappedLeg nominalCurve True Nothing Nothing
+    cappedNPV <- CF.npv cappedLeg (CF.DiscountingCurve nominalCurve) True Nothing Nothing
+    uncappedNPV <- CF.npv uncappedLeg (CF.DiscountingCurve nominalCurve) True Nothing Nothing
 
     capEngine <- yoyInflationBlackCapFloorEngine yii vol nominalCurve
     capInst <- yoyInflationCap uncappedLeg [capRate]

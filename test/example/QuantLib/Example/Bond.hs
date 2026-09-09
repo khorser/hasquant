@@ -246,16 +246,16 @@ priceBonds md pricing allBonds@(fixedBond, _, floater) = do
 
   -- some cash flows smoke check
   cfs <- cashFlows fixedBond
-  cfnpv <- CF.npv cfs (discountCurve md) True (Just $ 1 `may` 2012) (Just $ 3 `may` 2012)
+  cfnpv <- CF.npv cfs (CF.DiscountingCurve (discountCurve md)) True (Just $ 1 `may` 2012) (Just $ 3 `may` 2012)
   cfnpvbps <- CF.npvBps cfs (discountCurve md) True (1 `may` 2012) (3 `may` 2012)
-  bbps <- bps fixedBond (discountCurve md) (3 `may` 2012)
+  bbps <- bps fixedBond (BpsDiscountingCurve (discountCurve md)) (3 `may` 2012)
 
   bNpv <-
     mapTriple (asInstrument >=>
       (\y -> setPricingEngine y pricing >> npv y))
     allBonds
 
-  bCleanPrice <- mapTriple (\b -> cleanPrice b (discountCurve md) (settlDate md)) allBonds
+  bCleanPrice <- mapTriple (\b -> cleanPrice b (DiscountingCurve (discountCurve md)) (settlDate md)) allBonds
   bYield <- mapTriple (\b -> yield b (actual360dc md) Compounded Annual 1e-8 100 (0.05, Clean)) allBonds
   bAccruedAmount <- mapTriple (`accruedAmount` settlDate md) allBonds
   bPreviousCoupon <- mapPair (`previousCouponRate` todaysDate md) twoBonds
@@ -264,7 +264,7 @@ priceBonds md pricing allBonds@(fixedBond, _, floater) = do
   let (_, _, floaterYield) = bYield
       (_, _, floaterCleanPrice) = bCleanPrice
   floaterRate <- interestRate floaterYield (actual360dc md) Compounded Annual
-  fCleanFromYield <- cleanPriceFromYield floater floaterRate (settlDate md)
+  fCleanFromYield <- cleanPrice floater (DiscountingYield floaterRate) (settlDate md)
   fYieldFromClean <- yieldFromPrice floater (floaterCleanPrice, Clean) (actual360dc md) Compounded Annual (settlDate md) 1e-8 100
 
   let bDirtyPrice = zipTriple (+) bCleanPrice bAccruedAmount

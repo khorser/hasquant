@@ -112,8 +112,8 @@ main = do
   midMonthSchedule <- fromDates [3 `january` 2024, 20 `february` 2024] cal Unadjusted Nothing Nothing Nothing Nothing
   legFlat <- CF.cpiLeg midMonthSchedule zii 260.0 obsLag [100.0] [0.05] dc Unadjusted cal CPIFlat True
   legLinear <- CF.cpiLeg midMonthSchedule zii 260.0 obsLag [100.0] [0.05] dc Unadjusted cal CPILinear True
-  npvFlat <- CF.npv legFlat nominalCurve True Nothing Nothing
-  npvLinear <- CF.npv legLinear nominalCurve True Nothing Nothing
+  npvFlat <- CF.npv legFlat (CF.DiscountingCurve nominalCurve) True Nothing Nothing
+  npvLinear <- CF.npv legLinear (CF.DiscountingCurve nominalCurve) True Nothing Nothing
   putStrLn ("cpiLeg NPV: CPIFlat=" ++ show npvFlat ++ ", CPILinear=" ++ show npvLinear ++ " (must differ)")
   checkWith "cpiLeg CPIFlat vs CPILinear"
     "NPVs differ (equality means the CPIInterpolationType mapping may be stale)"
