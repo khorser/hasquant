@@ -1970,6 +1970,25 @@ spec evalDate = do
             [c00, _, _, _] -> cov `shouldSatisfy` all (closePrec c00 1.0e-9)
             _ -> expectationFailure "covariance matrix did not have 4 entries"
 
+          -- The empirical covariance feeds the ql/math/matrixutilities decompositions: both
+          -- indexes here are the same one, so the matrix is a rank-1 [[c,c],[c,c]] whose
+          -- eigenvalues are exactly 2c and 0, and whose pseudo square root reproduces the
+          -- per-index variance row by row.
+          (eigenvalues, eigenvectors) <- symmetricSchurDecomposition covarianceMatrix
+          (matrixRows eigenvectors, matrixColumns eigenvectors) `shouldBe` (2, 2)
+          case (cov, eigenvalues) of
+            (c00 : _, [e0, e1]) -> do
+              e0 `shouldSatisfy` closePrec (2 * c00) (c00 * 1.0e-9)
+              e1 `shouldSatisfy` closePrec 0.0 (c00 * 1.0e-9)
+            _ -> expectationFailure "unexpected covariance/eigenvalue shape"
+          factors <- pseudoSqrt covarianceMatrix Spectral
+          (matrixRows factors, matrixColumns factors) `shouldBe` (2, 2)
+          case (cov, matrixData factors) of
+            (c00 : _, [s00, s01, s10, s11]) ->
+              ([s00 * s00 + s01 * s01, s10 * s10 + s11 * s11] :: [Double])
+                `shouldSatisfy` all (closePrec c00 (c00 * 1.0e-9))
+            _ -> expectationFailure "unexpected pseudoSqrt shape"
+
           correlationMatrix <- IndexAnalysis.correlation hra
           emptyHra <- historicalRatesAnalysis startDate startDate (1, Months) [idx, idx]
           IndexAnalysis.covariance emptyHra `shouldThrow` anyException
