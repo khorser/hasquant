@@ -84,6 +84,7 @@ module QuantLib.TermStructure.Volatility
   , smileSection
     -- * Smile sections and parametrizations
   , sabrSmileSection
+  , sabrSmileSectionAtDate
   , noArbSabrSmileSection
   , smileSectionVolatility
   , smileSectionVariance
@@ -719,16 +720,9 @@ smileSection sv optionMaturity swapMaturity =
     (OptionTime t, SwapLength l) -> smileSectionTimeLength sv t l
     (OptionTenor o, SwapTenor s) -> smileSectionTenorTenor sv o s
 
--- |A smile section built directly from SABR parameters (Hagan et al. 2002), rather than
--- interpolated from a 'SwaptionVolatilityStructure'. For 'RateAtDate', 'referenceDate' uses
--- QuantLib's default when 'Nothing'; it is ignored for 'RateAtTime'.
-sabrSmileSection :: RatePoint -> Double -> Double -> Double -> Double -> Double -> Maybe Day
-  -> Double -> VolatilityType -> IO SmileSection
-sabrSmileSection point forward alpha beta nu rho referenceDate = case point of
-  RateAtDate d dc -> sabrSmileSectionAtDateRaw d forward alpha beta nu rho referenceDate dc
-  RateAtTime t -> sabrSmileSectionAtTimeRaw t forward alpha beta nu rho
-
-{#fun qlSabrSmileSection as sabrSmileSectionAtTimeRaw{`Double' -- ^timeToExpiry
+-- |A smile section built directly from SABR parameters (Hagan et al. 2002) at a year-fraction
+-- expiry, rather than interpolated from a 'SwaptionVolatilityStructure'.
+{#fun qlSabrSmileSection as sabrSmileSection{`Double' -- ^timeToExpiry
   ,`Double' -- ^forward
   ,`Double' -- ^alpha
   ,`Double' -- ^beta
@@ -737,6 +731,14 @@ sabrSmileSection point forward alpha beta nu rho referenceDate = case point of
   ,`Double' -- ^shift
   ,`VolatilityType' -- ^volatilityType
   ,preErrorCheck-`String'errorCheck*-}->`SmileSection'peekSmileSection*#}
+
+-- |As 'sabrSmileSection', at an option date. A 'Just' reference date pins the section; 'Nothing'
+-- makes it float, registering with the evaluation date and recomputing the exercise time whenever
+-- the evaluation date moves.
+sabrSmileSectionAtDate :: Day -> DayCounter -> Maybe Day
+  -> Double -> Double -> Double -> Double -> Double -> Double -> VolatilityType -> IO SmileSection
+sabrSmileSectionAtDate optionDate dc refDate forward alpha beta nu rho shift volatilityType =
+  sabrSmileSectionAtDateRaw optionDate forward alpha beta nu rho refDate dc shift volatilityType
 
 {#fun qlSabrSmileSection1 as sabrSmileSectionAtDateRaw{withDay*`Day' -- ^optionDate
   ,`Double' -- ^forward

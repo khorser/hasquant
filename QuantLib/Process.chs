@@ -241,11 +241,9 @@ import Foreign.Ptr(FunPtr)
   ,preErrorCheck-`String'errorCheck*-}->`ExtendedOrnsteinUhlenbeckProcess'peekExtendedOrnsteinUhlenbeckProcess*#}
 
 -- |An extended Ornstein-Uhlenbeck process @dx = speed*(b(t) - x)dt + sigma*dW@ with an arbitrary
--- deterministic mean-reversion level @b@, usable with 'QuantLib.Method.pathGenerator'. This is the
--- only producer of 'ExtendedOrnsteinUhlenbeckProcess', so 'extOuWithJumpsProcess' and
--- 'klugeExtOuProcess' must be called from inside this continuation too. The 'FunPtr' backing @b@ is
--- kept alive only for the continuation's duration; do not let the process escape it (same rule as
--- 'QuantLib.Quote.withDerivedQuote').
+-- deterministic mean-reversion level @b@, usable with 'QuantLib.Method.pathGenerator'. The
+-- 'FunPtr' backing @b@ is kept alive only for the continuation's duration. The process and any
+-- dependent process must not escape it (same rule as 'QuantLib.Quote.withDerivedQuote').
 withExtendedOrnsteinUhlenbeckProcess :: Double -- ^speed
   -> Double -- ^sigma
   -> Double -- ^x0
@@ -256,11 +254,9 @@ withExtendedOrnsteinUhlenbeckProcess :: Double -- ^speed
 withExtendedOrnsteinUhlenbeckProcess speed sigma x0 b d intEps k =
   withPayoffFun b (\fp -> qlExtendedOrnsteinUhlenbeckProcess speed sigma x0 fp d intEps >>= k)
 
--- |'withExtendedOrnsteinUhlenbeckProcess' with @b@ fixed to the standard Lucia-Schwartz-style
--- linear-plus-seasonal deseasonalization form @b(t) = a + k*t + c*sin(2*pi*t + phase)@, computed
--- natively in C++ instead of calling back into Haskell on every diffusion step. Covers a constant
--- level (@k = c = 0@) and a pure linear trend (@c = 0@) as special cases. Use
--- 'withExtendedOrnsteinUhlenbeckProcess' for any other @b@.
+-- |An extended Ornstein-Uhlenbeck process with the Lucia-Schwartz-style level
+-- @b(t) = a + k*t + c*sin(2*pi*t + phase)@, computed natively. Setting @k = c = 0@ gives a
+-- constant level and @c = 0@ gives a linear trend.
 {#fun qlLinearSeasonalOrnsteinUhlenbeckProcess as linearSeasonalOrnsteinUhlenbeckProcess
   {`Double' -- ^speed
   ,`Double' -- ^sigma (volatility)
@@ -274,9 +270,8 @@ withExtendedOrnsteinUhlenbeckProcess speed sigma x0 b d intEps k =
   ,preErrorCheck-`String'errorCheck*-}->`ExtendedOrnsteinUhlenbeckProcess'peekExtendedOrnsteinUhlenbeckProcess*#}
 
 -- |Kluge model: an extended Ornstein-Uhlenbeck process plus an exponential-jump component,
--- S = exp(X + Y) with dX = alpha (mu(t) - X) dt + sigma dW and dY = -beta Y dt + J dN. The
--- 'ExtendedOrnsteinUhlenbeckProcess' argument can only come from 'withExtendedOrnsteinUhlenbeckProcess',
--- so call this from inside that continuation.
+-- S = exp(X + Y) with dX = alpha (mu(t) - X) dt + sigma dW and dY = -beta Y dt + J dN. When the
+-- extended process is callback-backed, this result must remain inside the same continuation.
 {#fun qlExtOUWithJumpsProcess as extOuWithJumpsProcess{withGenStochasticProcess1D*`ExtendedOrnsteinUhlenbeckProcess',`Double' -- ^Y0
   ,`Double' -- ^beta
   ,`Double' -- ^jumpIntensity
@@ -595,8 +590,8 @@ covariance p t0 x0 dt = toMatrixDouble <$> qlStochasticProcessCovariance p t0 x0
   ,`Double' -- ^corrEquityShortRate
   ,`HybridHestonHullWhiteProcessDiscretization',preErrorCheck-`String'errorCheck*-}->`HybridHestonHullWhiteProcess'peekHybridHestonHullWhiteProcess*#}
 
--- |joint correlated Kluge ('extOuWithJumpsProcess') and extended Ornstein-Uhlenbeck process. Both
--- process arguments are only producible from inside 'withExtendedOrnsteinUhlenbeckProcess'.
+-- |Joint correlated Kluge ('extOuWithJumpsProcess') and extended Ornstein-Uhlenbeck process. When
+-- either input retains a Haskell callback, this result must remain inside that callback's scope.
 {#fun qlKlugeExtOUProcess as klugeExtOuProcess{`Double' -- ^rho
   ,withGenStochasticProcess*`ExtOUWithJumpsProcess',withGenStochasticProcess1D*`ExtendedOrnsteinUhlenbeckProcess',preErrorCheck-`String'errorCheck*-}->`KlugeExtOUProcess'peekKlugeExtOUProcess*#}
 

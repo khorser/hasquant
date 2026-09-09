@@ -124,8 +124,7 @@ how far its loop got**, and a live loop counter in place of the length is a bug 
 happen. An early `return` inside the `try` is safe for the same reason (`qlIndexFixingHistory`).
 
 **4b. Hold a not-yet-handed-out allocation in a smart pointer, not a raw pointer above the `try`.**
-The old shape here was a raw pointer hoisted above the `try` and released by `del()` in the `catch`;
-it is gone from `cbits/`, and a new one should not appear. Two replacements, by destination:
+Choose the holder from the destination:
 
 ```cpp
 // Destined for a shared_ptr: adopt and trace in one expression. If anything later in the try
@@ -148,22 +147,12 @@ std::unique_ptr<UnitOfMeasure> uom(new UnitOfMeasure(q.unitOfMeasure()));
 shape; every `qlPiecewise*`/`qlInterpolated*` curve in `cbits/qlTermStructure.cpp` is the first.
 For an *out-parameter* rather than a return value, use the staging classes in point 4 instead —
 they are this same idea with the commit point made explicit.
-The rule of thumb that motivated the old text still holds and is what these shapes satisfy
-structurally: scan for the *last tracing verb that runs before each throw point*, and make sure
-nothing already traced as `returned` can be dropped without a matching free.
+At each throw point, make sure every traced allocation is owned and no pointer traced as
+`returned` can become unreachable without a matching free.
 
 **5. No raw pointer is hoisted above a `try` anywhere in `cbits/` — keep it that way.** The rule
 is mechanical and greppable: **no `catch` block frees anything.** A `catch` body is
 `handleException<T>(e, er)` or `*e = tracedup(er.what())`, nothing more.
-
-Two shapes carried this historically and both are gone. The single-object one
-(`X *raw = 0; try { ... } catch (...) { delete raw; }`) had a real if narrow double-free window —
-if the outer `new QlX(...)` threw `bad_alloc` after adopting `raw`, the `catch` deleted it a
-second time — closed by the `allocShared`/`unique_ptr` shapes in point 4b. The multi-output one
-(raw array pointers above the `try`, a `catch` looping `del(arr[i])` and calling
-`qlFreePointerArray((void**)arr)`) survived at ten sites behind the old wording of point 4, which
-blessed its value-initialised array as "the standard idiom"; it is closed by the staging classes,
-which own exactly that reasoning. Both `(void**)` casts went with it.
 
 The still-common one-liner `return ret(new QlX(alloc(new X(...))));` has no such window — there is
 no second reference to leak or double-free — and needs no conversion.

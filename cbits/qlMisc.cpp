@@ -80,13 +80,8 @@ namespace {
       SavedSettings savedSettings_;
   };
 
-  // Wraps a Haskell-defined cost function -- passed down as a C function pointer produced by
-  // Haskell's `foreign import ccall "wrapper"` (QuantLib.Internal.Type.withCostFunction) -- as a
-  // QuantLib CostFunction. value() crosses back into Haskell once per outer optimizer iteration,
-  // over the whole parameter vector, mirroring QuantLib-SWIG's PyCostFunction (SWIG/functions.i)
-  // rather than a per-component callback; see the CLAUDE.md "coarsen the language-boundary
-  // crossing" bullet. values() (the Jacobian-style multi-output variant) is left unimplemented,
-  // same as PyCostFunction's own -- no bound caller needs it yet.
+  // Adapts a Haskell callback to CostFunction, crossing the FFI once per whole-vector value().
+  // No bound caller requires the multi-output values() operation.
   class HsCostFunction : public CostFunction {
     public:
       explicit HsCostFunction(double (*fn)(double*, unsigned)) : fn_(fn) {}
@@ -101,17 +96,8 @@ namespace {
       double (*fn_)(double*, unsigned);
   };
 
-  // Quote composition. DerivedQuote/CompositeQuote/MultiCompositeQuote are templates over an
-  // arbitrary functor; each is instantiated exactly twice here -- once over a functor that
-  // switches on a QuoteOp/MultiQuoteOp at runtime (the fixed catalogue), once over a plain C
-  // function pointer (an arbitrary Haskell function). The enum does *not* select a template
-  // argument, so this needs no generic-lambda dispatcher in an *Aux.cpp: one instantiation
-  // covers the whole catalogue.
-  //
-  // These are the only quotes here that are not leaf values: they registerWith() their inputs and
-  // notifyObservers() on update, which is the entire reason they are bound at all -- a Haskell-side
-  // recomputation cannot join QuantLib's Observer graph, so a curve bootstrapped off one would
-  // silently keep a stale number when the underlying quote moves.
+  // Quote composition remains inside QuantLib's observer graph so dependent objects update.
+  // Runtime operation catalogues and Haskell callbacks each need one functor instantiation.
   struct QuoteUnaryOp {
     int op;
     Real operand;
@@ -175,10 +161,7 @@ namespace {
     s.addSequence(xs, xs+n);
     return s;
   }
-  // Marshals a real-valued TimeSeries<Real> in from parallel date/value arrays, and a
-  // TimeSeries<Volatility> result back out through the four out-params -- shared by
-  // Garch11::calculate, ConstantEstimator, and SimpleLocalEstimator (Volatility and Real are
-  // the same type, ql/types.hpp).
+  // Shared TimeSeries<Real> marshalling for real-valued volatility estimators.
   void realSeriesCalculate(const std::function<TimeSeries<Volatility>(const TimeSeries<Real>&)>& calc,
       unsigned len, int *dates, double *values,
       unsigned *outDatesLen, int **outDates, unsigned *outValuesLen, double **outValues, char **e) {
@@ -198,7 +181,7 @@ namespace {
     } catch (std::exception& er) {*e = tracedup(er.what());}
   }
 
-  // Same shape, for the GarmanKlass family's TimeSeries<IntervalPrice> input.
+  // TimeSeries<IntervalPrice> marshalling for the Garman-Klass estimators.
   void intervalPriceSeriesCalculate(const std::function<TimeSeries<Volatility>(const TimeSeries<IntervalPrice>&)>& calc,
       unsigned len, int *dates, double *opens, double *closes, double *highs, double *lows,
       unsigned *outDatesLen, int **outDates, unsigned *outValuesLen, double **outValues, char **e) {

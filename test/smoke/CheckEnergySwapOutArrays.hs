@@ -1,12 +1,4 @@
--- Smoke test for the four EnergySwap/Commodity out-array bindings the hspec suite never calls:
--- secondaryCostAmounts, pricingErrors, dailyPositions and paymentCashFlows. Each is a
--- multi-out-array shim staged through OutStringArrayResult/OutArrayResult/OutPtrArrayResult
--- (cbits/qlaux.h), so this is the only place that exercises those spines end to end -- run it
--- under QLTRACK_ALLOCATIONS and tools/alloc-summary.py to prove they balance. Ownership, not
--- pricing, is the point: the values asserted here are the ones the construction fixes.
---
--- Run with: cabal exec -- ghc -itest/smoke -package hasquant test/smoke/CheckEnergySwapOutArrays.hs \
---   -o /tmp/checkenergyswapoutarrays -outputdir /tmp/checkenergyswapoutarrays_build && /tmp/checkenergyswapoutarrays
+-- Exercises the EnergySwap out-array bindings with non-empty results for allocation tracing.
 import Data.List.NonEmpty (fromList)
 import Data.Time.Calendar (addDays)
 
@@ -26,8 +18,7 @@ import QuantLib.Time.Schedule (dayCounter, DayCounterConstructor(..), Frequency(
 
 import SmokeCheck (checkEq, checkWith)
 
--- A flat zero curve, as in the Energy hspec spec: pay/receive/discount all point at it, so the
--- legs discount identically and the arithmetic below stays exact.
+-- A zero curve keeps payment discount factors exact.
 flatZeroCurve :: Day -> IO YieldTermStructure
 flatZeroCurve evalDate = do
   q <- simpleQuote 0.0
@@ -57,16 +48,13 @@ main = Settings.keepingSettingsGc $ do
   ts <- flatZeroCurve evalDate
   let pp = pricingPeriod (addDays 10 evalDate) (addDays 14 evalDate) (addDays 20 evalDate)
              (ct, bbl, 1000)
-      -- Two secondary costs, so the three parallel arrays of secondaryCostAmounts (keys as a
-      -- char** spine, amounts as a double array, currencies as a Currency** spine) are all
-      -- non-empty and of the same length.
+      -- Exercise all three parallel secondary-cost arrays with non-empty results.
       secCosts = [ ("brokerage", Right (25.0, usd))
                  , ("freight", Left (0.5, usd, bbl))
                  ]
   swp <- energyVanillaSwap True cal (100, usd) bbl idx usd usd [pp] ct secCosts ts ts ts
 
-  -- Pricing populates dailyPositions/paymentCashFlows/secondaryCostAmounts; before it they are
-  -- all empty, which would exercise only the zero-length spine.
+  -- Pricing populates the result arrays.
   _ <- npv swp
 
   amounts <- secondaryCostAmounts swp
@@ -74,9 +62,7 @@ main = Settings.keepingSettingsGc $ do
   checkWith "secondaryCostAmounts currencies" "every entry resolves to the base currency" $
     all ((== usd) . snd . snd) amounts
 
-  -- Two more diagnostics on top of whatever pricing itself recorded, so both char** spines of
-  -- qlCommodityPricingErrors carry several entries -- and the upstream-recorded ones prove the
-  -- spine is not just echoing what this test put in.
+  -- Added diagnostics exercise both string-array spines alongside pricing-generated entries.
   addPricingError swp Warning "smoke warning" "first detail"
   addPricingError swp Fatal "smoke error" "second detail"
   errs <- pricingErrors swp

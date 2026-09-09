@@ -491,26 +491,15 @@ markovFunctionalCaplet ts reversion initialVol steps capletVol expiries ibor gri
 
 -- |Price of a discount bond paying 1 at @maturity@, given the model's state @factors@ at time
 -- @now@ -- @AffineModel::discountBond(Time,Time,Array)@. @factors@ is model-specific: a
--- one-element list of the short rate for 'OneFactorAffineModel'\/'HullWhite' (reproducing the
--- old scalar-'Rate' convenience overload exactly, since @OneFactorAffineModel::discountBond@
--- just forwards @factors[0]@), a two-element list of the two G2 factors, or ignored entirely by
--- 'LiborForwardModel' (whose override just calls 'discount'). Not 'pure' for the same
--- relinkable-curve reason as 'discount'.
+-- one-element list of the short rate for 'OneFactorAffineModel'\/'HullWhite', a two-element list
+-- for G2, or ignored by 'LiborForwardModel'. Not 'pure' for the same relinkable-curve reason as
+-- 'discount'.
 {#fun qlAffineModelDiscountBond as discountBond{withStandalone*`AffineModel'
   ,`Double' -- ^now
   ,`Double' -- ^maturity
   ,withDoubleArray*`[Double]'& -- ^factors
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
--- |Analytic (Jamshidian) price of a European option of @type@ with @strike@, expiring at
--- @maturity@, on a discount bond that itself pays 1 at @bondMaturity@ -- the closed-form
--- cross-check for the tree\/Jamshidian swaption engines built on the same model.
--- @bondStart@ of 'Nothing' uses upstream's own 4-arg @AffineModel::discountBondOption@ overload
--- (equivalent to @bondStart == maturity@\/the underlying bond starting to accrue exactly at
--- option expiry); @'Just' bondStart@ reaches the 5-arg overload for a bond spanning
--- @[bondStart, bondMaturity]@ instead. Only 'HullWhite' gives the two overloads distinct
--- values; every other model's 5-arg overload just ignores @bondStart@ and forwards to the
--- 4-arg one, so passing 'Nothing' vs. @'Just' maturity@ is observably identical there.
 {#fun qlAffineModelDiscountBondOption as discountBondOption_{withStandalone*`AffineModel'
   ,fromEnumC`OptionType' -- ^type
   ,`Double' -- ^strike
@@ -520,8 +509,9 @@ markovFunctionalCaplet ts reversion initialVol steps capletVol expiries ibor gri
   ,`Double' -- ^bondMaturity
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
--- |As 'discountBondOption_', unifying upstream's 4-arg and 5-arg @AffineModel::discountBondOption@
--- overloads behind one 'Maybe' argument.
+-- |Analytic price of a European option on a discount bond paying 1 at @bondMaturity@. 'Nothing'
+-- starts the bond at option expiry; 'Just' supplies a distinct bond start. Only 'HullWhite'
+-- distinguishes the two upstream overloads.
 discountBondOption :: AffineModel -> OptionType -> Double -> Double -> Maybe Double -> Double -> IO Double
 discountBondOption model typ strike maturity bondStart bondMaturity =
   discountBondOption_ model typ strike maturity (maybe False (const True) bondStart) (fromMaybe 0 bondStart) bondMaturity

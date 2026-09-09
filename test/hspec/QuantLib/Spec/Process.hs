@@ -39,7 +39,7 @@ import QuantLib.Time.Date(today, addPeriod, september)
 import QuantLib.Time.Schedule(dayCounter, yearFraction, DayCounterConstructor(..), Frequency(..), TimeUnit(..))
 import QuantLib.InterestRate(Compounding(..), VolatilityType(..), rate)
 import QuantLib.Quote(simpleQuote, setValue)
-import QuantLib.TermStructure.Yield(Reference(..), TermPoint(..), RatePoint(..), flatForward, forwardRate, discount, YieldTermStructure, interpolatedZeroCurve)
+import QuantLib.TermStructure.Yield(Reference(..), TermPoint(..), flatForward, forwardRateBetweenTimes, discount, YieldTermStructure, interpolatedZeroCurve)
 import QuantLib.Instrument(npv, setPricingEngine)
 import QuantLib.Instrument.Option(europeanOption, StrikedPayoff(PlainVanilla), PlainVanillaPayoff(..), OptionType(..), Exercise(European), EuropeanExercise(..))
 import qualified QuantLib.Process as Process
@@ -537,9 +537,7 @@ spec = do
         zipWithM_ (\c e -> c `shouldSatisfy` closePrec e 1.0e-12) evolved expected
 
   describe "ExtendedOrnsteinUhlenbeckProcess (withExtendedOrnsteinUhlenbeckProcess)" $ do
-    -- ported from test-suite/swingoption.cpp::testExtendedOrnsteinUhlenbeckProcess: a constant b
-    -- makes the extended process' evolve identical to the plain ornsteinUhlenbeckProcess, step
-    -- for step.
+    -- A constant level reduces to the ordinary Ornstein-Uhlenbeck process.
     it "agrees with ornsteinUhlenbeckProcess for a constant level" $ do
       let speed = 2.5; vol = 0.70; x0 = 0.0; level = 1.43; dt = 0.01
           dws = [0.31, -0.42, 0.05, 0.88, -1.1, 0.2, -0.6]
@@ -552,8 +550,7 @@ spec = do
                   pure (t + dt, xE', xR'))
                (0.0 :: Double, x0, x0) dws
 
-    -- same fixture, but with a non-constant b: the three discretization schemes must agree with
-    -- each other (GaussLobatto with a tight intEps as the reference).
+    -- Gauss-Lobatto with tight integration tolerance is the reference discretization.
     it "MidPoint/Trapezodial agree with GaussLobatto for a non-constant level" $
       withExtendedOrnsteinUhlenbeckProcess 2.5 0.70 0.0 (+ 1.0) GaussLobatto 1e-6 $ \refProcess ->
         mapM_ (\d ->
@@ -566,11 +563,7 @@ spec = do
                    (0.0 :: Double, 0.0, 0.0) [0.31, -0.42, 0.05, 0.88, -1.1, 0.2, -0.6])
           [MidPoint, Trapezodial]
 
-    -- this is also the only producer of ExtendedOrnsteinUhlenbeckProcess, so construction of
-    -- extOuWithJumpsProcess/klugeExtOuProcess (previously uncallable) must happen inside its
-    -- continuation, mirroring test-suite/swingoption.cpp::createKlugeProcess. Both processes
-    -- leave the base StochasticProcess discretization unset (they hard-code evolve/initialValues
-    -- instead), so expectation/stdDeviation aren't meaningful here -- evolve is.
+    -- Dependent processes remain inside the callback-backed process's continuation.
     it "unlocks extOuWithJumpsProcess and klugeExtOuProcess" $
       withExtendedOrnsteinUhlenbeckProcess 1.0 2.0 3.0 (const 3.0) MidPoint 1e-4 $ \eouProcess -> do
         jumpProcess <- extOuWithJumpsProcess eouProcess 0.0 5.0 1.0 2.0
@@ -586,8 +579,7 @@ spec = do
         length kEvolved `shouldBe` length kx0
 
   describe "ExtendedOrnsteinUhlenbeckProcess (linearSeasonalOrnsteinUhlenbeckProcess)" $ do
-    -- native b(t) = a + k*t + c*sin(2*pi*t + phase) must agree step-for-step with the same
-    -- function fed through the general Haskell-callback constructor.
+    -- Native and callback-backed implementations use the same level function.
     it "agrees with withExtendedOrnsteinUhlenbeckProcess for the same linear+seasonal level" $ do
       let speed = 2.5; vol = 0.70; x0 = 0.0; dt = 0.01
           a = 1.43; k = 0.2; c = 0.5; phase = 0.9
@@ -615,9 +607,7 @@ spec = do
                 pure (t + dt, xN', xR'))
              (0.0 :: Double, x0, x0) dws
 
-    -- the linearSeasonalOrnsteinUhlenbeckProcess handle interoperates with extOuWithJumpsProcess/
-    -- klugeExtOuProcess exactly like a callback-produced one, since both funnel through the same
-    -- ExtendedOrnsteinUhlenbeckProcess handle type.
+    -- Native processes use the same ExtendedOrnsteinUhlenbeckProcess interface.
     it "unlocks extOuWithJumpsProcess and klugeExtOuProcess" $ do
       eouProcess <- linearSeasonalOrnsteinUhlenbeckProcess 1.0 2.0 3.0 3.0 0.0 0.0 0.0 MidPoint 1e-4
       jumpProcess <- extOuWithJumpsProcess eouProcess 0.0 5.0 1.0 2.0
@@ -743,7 +733,7 @@ spec = do
         setForwardMeasureTime hwFwd 10.0
 
         mapM_ (\t -> do
-            fwdIR <- forwardRate rTS (RateAtTime t) (RateAtTime t) Continuous NoFrequency True
+            fwdIR <- forwardRateBetweenTimes rTS t t Continuous NoFrequency True
             let alfa = (sigma / a) * (1 - exp (-a * t))
                 expected = 0.5 * alfa * alfa + rate fwdIR
             plain <- Process.alpha hw t
@@ -792,7 +782,7 @@ spec = do
     -- reference independent of G2Process.
     referencePhi :: YieldTermStructure -> Double -> Double -> Double -> Double -> Double -> Double -> IO Double
     referencePhi curve t a sigma b eta rho = do
-      fwdIR <- forwardRate curve (RateAtTime t) (RateAtTime t) Continuous NoFrequency True
+      fwdIR <- forwardRateBetweenTimes curve t t Continuous NoFrequency True
       let fwd = rate fwdIR
           temp1 = sigma * (1 - exp (-a * t)) / a
           temp2 = eta * (1 - exp (-b * t)) / b

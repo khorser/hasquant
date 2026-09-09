@@ -180,10 +180,6 @@ affineModelSpec =
         manualPlain `shouldSatisfy` closePrec manualForward 1.0e-12
         engineNPV `shouldSatisfy` closePrec expectedNPV 1.0e-8
 
-    -- 'discount'/'discountBond' are bound at the 'AffineModel' level precisely so that models
-    -- other than 'OneFactorAffineModel' benefit too -- exercise a one-factor model (HullWhite),
-    -- a genuine two-factor model (G2, which requires a two-element factors list), and a model
-    -- that ignores factors entirely (LiborForwardModel), not just HullWhite.
     it "discount reproduces the fitted curve, and discountBond(t,t,.) is always 1, for HullWhite and G2" $
       Settings.keepingSettingsGc $ do
         cal <- calendar TARGET
@@ -196,13 +192,7 @@ affineModelSpec =
         ts <- flatForward (ReferenceDate settlement) flatQ dc Continuous Annual
         curveDf <- discount ts (TimePoint 5.0) False
 
-        -- HullWhite: 'discount' fits the curve by construction (AffineModel::discount ==
-        -- discountBond(0, t, r0) for the model's own initial short rate r0, which the fitting
-        -- procedure makes reproduce P(0,t) exactly). 'discountBond' with a one-element [rate]
-        -- reproduces the old scalar-Rate convenience overload exactly, since
-        -- OneFactorAffineModel::discountBond(Array) just forwards factors[0]; at now==maturity
-        -- a bond has price 1 regardless of the state (A(t,t)==1, B(t,t)==0), independent of the
-        -- curve or the chosen rate -- a structural identity rather than a pinned value.
+        -- Hull-White uses one state factor and fits its initial curve.
         hw <- hullWhite ts 0.1 0.01
         hwAffine <- asAffineModel hw
         hwDf <- Model.discount hwAffine 5.0
@@ -210,8 +200,7 @@ affineModelSpec =
         hwBond <- discountBond hwAffine 5.0 5.0 [0.02]
         hwBond `shouldSatisfy` closePrec 1.0 1.0e-10
 
-        -- G2 (two-factor): the same two identities, but discountBond now needs a two-element
-        -- factors list (G2::discountBond requires factors.size()>1).
+        -- G2 requires both state factors.
         g2Model <- g2 ts 0.1 0.01 0.1 0.01 (-0.75)
         g2Affine <- asAffineModel g2Model
         g2Df <- Model.discount g2Affine 5.0
@@ -221,11 +210,7 @@ affineModelSpec =
 
     it "discount/discountBond on LiborForwardModel read the index curve directly, ignoring factors" $
       Settings.keepingSettingsGc $ do
-        -- Fixture shape ported from Spec.Process's LiborForwardModelProcess fixture: a fixed
-        -- historical evaluation date and an index-fixing-lag-aware curve pillar, so the
-        -- process's first period doesn't require a historical Euribor6M fixing that doesn't
-        -- exist. The vol/correlation models' actual values don't matter here -- 'discount'/
-        -- 'discountBond' never consult them, only the index's own forwarding curve.
+        -- The first curve pillar follows the fixing lag so no past Euribor fixing is required.
         let fixtureDate = 4 `september` 2005
             curveEndDate = 4 `september` 2018
             size = 10 :: Word
@@ -238,14 +223,11 @@ affineModelSpec =
         rTS <- interpolatedZeroCurve (fromList [(firstPillar, 0.039), (curveEndDate, 0.041)]) dc cal [] Linear
         idx <- IR.iborIndex IR.Euribor6M (Just rTS)
         process <- Process.liborForwardModelProcess size idx
-        times <- Process.fixingTimes process
-        lfmModel <- liborForwardModel process (FixedVolatility (fromList (map (, 0.1) times))) (ExponentialCorrelation size 0.3)
+        fixingGrid <- Process.fixingTimes process
+        lfmModel <- liborForwardModel process (FixedVolatility (fromList (map (, 0.1) fixingGrid))) (ExponentialCorrelation size 0.3)
         lfmAffine <- asAffineModel lfmModel
 
-        -- LiborForwardModel::discount(t) just reads process_->index()->forwardingTermStructure()
-        -- ->discount(t) -- i.e. the same curve directly, independent of the vol/correlation
-        -- models above -- and LiborForwardModel::discountBond(now,maturity,factors) ignores
-        -- both 'now' and 'factors' entirely, returning discount(maturity).
+        -- LiborForwardModel reads the index curve and ignores now and factors for discount bonds.
         curveDf <- discount rTS (TimePoint 5.0) False
         lfmDf <- Model.discount lfmAffine 5.0
         lfmDf `shouldSatisfy` closePrec curveDf 1.0e-12

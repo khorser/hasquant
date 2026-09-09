@@ -520,12 +520,8 @@ extern "C" {
   QlStochasticProcess* qlExtOUWithJumpsProcessAsStochasticProcess(QlExtOUWithJumpsProcess *o);
   void qlFreeExtendedOrnsteinUhlenbeckProcess(QlExtendedOrnsteinUhlenbeckProcess *o);
   QlStochasticProcess1D* qlExtendedOrnsteinUhlenbeckProcessAsStochasticProcess1D(QlExtendedOrnsteinUhlenbeckProcess *o);
-  // b calls back into Haskell for the whole lifetime of the returned process (evolve/expectation/
-  // pathGenerator all reach it), not just during construction -- caller must keep the FunPtr behind
-  // `b' alive until the process is gone. See QuantLib.Process.withExtendedOrnsteinUhlenbeckProcess.
+  // The returned process retains b; its FunPtr must remain alive for the process lifetime.
   QlExtendedOrnsteinUhlenbeckProcess* qlExtendedOrnsteinUhlenbeckProcess(double speed, double sigma, double x0, double (*b)(double), int discretization, double intEps, char **e);
-  // b(t) = a + k*t + c*sin(2*pi*t + phase), computed natively with no Haskell callback. See
-  // QuantLib.Process.linearSeasonalOrnsteinUhlenbeckProcess.
   QlExtendedOrnsteinUhlenbeckProcess* qlLinearSeasonalOrnsteinUhlenbeckProcess(double speed, double sigma, double x0, double a, double k, double c, double phase, int discretization, double intEps, char **e);
   void qlFreeGJRGARCHProcess(QlGJRGARCHProcess *o);
   QlStochasticProcess* qlGJRGARCHProcessAsStochasticProcess(QlGJRGARCHProcess *o);

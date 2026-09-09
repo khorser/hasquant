@@ -106,34 +106,11 @@ arrays, and `commit()` publishes the completed result without throwing. `fillVec
 getter runs only after the outputs are safe. Use explicit holders for transformed arrays and
 multi-output calls; commit every holder only after all allocations and transformations succeed.
 
-**A `try`/`catch(std::exception&)` wrapping a shim function is not enough
-on its own if the function commits any output only after a loop, or builds
-more than one heap object before returning.** A mid-loop or mid-sequence
-throw after some but not all outputs are allocated leaves the already-`new`'d
-ones unreachable from Haskell (never assigned to an out-param, so never
-freed) — a partial leak, not a crash, so it's easy to ship undetected.
-Fix pattern (already used throughout `cbits/`, `qlInstrumentAdditionalResults`
-is the original instance):
-
-- Declare every out-param's local pointer/count **outside** the `try`,
-  defaulted to `0`/`nullptr` before entering it.
-- If an output is a pointer-array whose *elements* are individually
-  heap-allocated (`CommodityType*`, `Currency*`, …, not primitives),
-  allocate it with `retPtrArray(new T*[n]())` — value-initialized, so every
-  unreached slot is guaranteed null — rather than a bare `new T*[n]`. See
-  `audit-allocations` for why the `retPtrArray` wrapper (and not a plain
-  `ret`) is what makes the spine's trace label match its free.
-- Only assign to the real out-params (`*outX = x;`) after every allocation
-  in the function has succeeded — the `catch` block below relies on the
-  out-params still being their pre-`try` default whenever anything failed.
-- In `catch`, free every local pointer that's non-null (`delete`/`delete[]`,
-  or `qlFreeString`/`free` for `DUP`'d strings), looping up to the local
-  count for a pointer array — safe specifically because of the
-  value-initialization above.
-
-The scalar case (a second `ret(new ...)` that can leak the first, e.g.
-`qlUnitOfMeasureConversionConvert`) is the same idea with one local pointer
-instead of an array.
+**A `try`/`catch(std::exception&)` does not make partial construction safe.** Use the staging
+holders above for out-parameters, `allocShared` for objects immediately adopted by a
+`shared_ptr`, and `unique_ptr` for bare pointers until the final `ret()` hand-off. Pointer-array
+holders value-initialize their spines, so their destructors can release every slot after a
+mid-loop exception. Catch blocks translate exceptions only; they never free allocations.
 
 **Converting a `{#fun pure ...#}` binding to add `char **e`/`preErrorCheck`
 requires dropping `pure` too — a pure/`unsafePerformIO`-backed binding

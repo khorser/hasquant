@@ -29,13 +29,9 @@ struct HestonSLVFDMLogEntries;
 int *qlAllocateInts(size_t size);
 double *qlAllocateDoubles(size_t size);
 
-// strdup() for the FFI boundary (Haskell releases it through qlFreeString), tracing both
-// halves of the string's lifecycle. The tracing verbs themselves are at the bottom of this
-// file, below the ObjClassName table they name their subjects from.
+// strdup() for strings released by Haskell through qlFreeString.
 char *tracedup(const char *p);
-// tracedup()'s release counterpart, defined with the other C-linkage frees in qlMisc.cpp.
-// Declared here so the string-array staging class below can free its elements the same way
-// qlFreeStringArray does, keeping both paths under one trace label.
+// Used by string-array staging so committed and uncommitted strings share a finalizer and trace label.
 extern "C" void qlFreeString(char *p);
 
 #ifdef QLTRACK_ALLOCATIONS
@@ -1742,17 +1738,8 @@ template <class T> T** retPtrArray(T **p) {traceAs<void**>("returned", p); retur
 // behavior.
 template <class Base, class Derived> Derived* allocAs(Derived *p) {traceAs<Base*>("allocated", p); return p;}
 
-// Stages a pointer-array out-parameter -- the T*[n] spine plus the n objects hanging off it --
-// on the same contract as OutArrayResult: the constructor neutralises the caller's storage so
-// c2hs can peek it safely on an exception, allocate() takes the array, and only commit() hands
-// it over. A separate class rather than an OutArrayResult<T*> because the destructor also has to
-// free the elements.
-//
-// The spine is value-initialised, so an exception part-way through filling it leaves every
-// unwritten slot null and the destructor can free the full allocated length unconditionally --
-// no call site tracks how far its loop got. It is traced under void**, matching both
-// retPtrArray() on the way in and qlFreePointerArray() (which Haskell releases a committed spine
-// through) on the way out, so all three land under one class name in alloc-summary.py.
+// Stages a pointer-array and its elements until commit(). The value-initialised spine makes every
+// slot safe to release after a partial fill; its void** trace label matches qlFreePointerArray.
 template <class T> class OutPtrArrayResult {
   unsigned *outLen_;
   T ***out_;
@@ -1783,10 +1770,8 @@ public:
   }
 };
 
-// The char** counterpart of OutPtrArrayResult, for spines of tracedup()'d strings. Separate
-// rather than an instantiation of it because the elements are freed with qlFreeString() rather
-// than del(), and because a committed spine goes back through qlFreeStringArray, whose own
-// parameter is char** -- so this one keeps ret()/delArray() instead of the void** relabelling.
+// Stages a value-initialised char** spine. String elements use qlFreeString and the spine keeps
+// its char** trace label to match qlFreeStringArray.
 class OutStringArrayResult {
   unsigned *outLen_;
   char ***out_;

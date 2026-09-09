@@ -288,10 +288,8 @@ namespace {
     std::copy(v.begin(), v.end(), xs);
     *len = v.size(); *out = xs;
   }
-  // The staging class for a QlAdditionalResult[n] out-parameter. Same contract as the four in
-  // qlaux.h, but local to this file and hand-written because the elements are structs with their
-  // own owned fields rather than plain values or pointers: the release is qlFreeAdditionalResults,
-  // which handles the whole array at once.
+  // Stages QlAdditionalResult structs until commit(); their owned fields require the matching
+  // aggregate finalizer.
   class OutAdditionalResultArray {
     unsigned *outLen_;
     QlAdditionalResult **out_;
@@ -306,9 +304,7 @@ namespace {
     OutAdditionalResultArray& operator=(const OutAdditionalResultArray&) = delete;
     ~OutAdditionalResultArray() {if (value_) qlFreeAdditionalResults(len_, value_);}
     QlAdditionalResult* allocate(unsigned len) {
-      // Value-initialised (the trailing `()`): every field, including the pointers, starts at
-      // zero/null, so a not-yet-filled or half-filled entry is always safe for the destructor to
-      // release -- this is what lets it free the full length without tracking the fill loop.
+      // Value-initialisation makes every entry safe for the aggregate finalizer after a partial fill.
       value_ = alloc(new QlAdditionalResult[len]());
       len_ = len;
       return value_;
@@ -874,8 +870,7 @@ QlNonstandardSwaption* qlNonstandardSwaption1(QlSwaption* fromSwaption, char **e
 QlNonstandardSwaption* qlNonstandardSwaption(QlNonstandardSwap* swap, QlExercise* exercise, int delivery, int settlementMethod, char **e) {
   try {return ret(new QlNonstandardSwaption(alloc(new NonstandardSwaption(*arg(swap), *arg(exercise), (Settlement::Type) delivery, (Settlement::Method) settlementMethod))));
   } catch (std::exception& er) {return handleException<QlNonstandardSwaption*>(e, er);}}
-// Basket is computed internally by QuantLib's calibration-basket algorithm (per CalibrationBasketType);
-// *helpers is written before anything can throw so a mid-loop exception still leaves a safe, freeable array.
+// QuantLib computes the basket according to CalibrationBasketType.
 void qlNonstandardSwaptionCalibrationBasket(QlNonstandardSwaption* o, QlSwapIndex* swapBase, QlSwaptionVolatilityStructure* swaptionVol, int basketType, unsigned* len, QlBlackCalibrationHelper*** helpers, char **e) {
   OutPtrArrayResult<QlBlackCalibrationHelper> result(len, helpers);
   try {
@@ -891,7 +886,6 @@ QlOption* qlFloatFloatSwaptionAsOption(QlFloatFloatSwaption *o) {return ret(new 
 QlFloatFloatSwaption* qlFloatFloatSwaption(QlFloatFloatSwap* swap, QlExercise* exercise, int delivery, int settlementMethod, char **e) {
   try {return ret(new QlFloatFloatSwaption(alloc(new FloatFloatSwaption(*arg(swap), *arg(exercise), (Settlement::Type) delivery, (Settlement::Method) settlementMethod))));
   } catch (std::exception& er) {return handleException<QlFloatFloatSwaption*>(e, er);}}
-// Same shape as qlNonstandardSwaptionCalibrationBasket above, retargeted to FloatFloatSwaption.
 void qlFloatFloatSwaptionCalibrationBasket(QlFloatFloatSwaption* o, QlSwapIndex* swapBase, QlSwaptionVolatilityStructure* swaptionVol, int basketType, unsigned* len, QlBlackCalibrationHelper*** helpers, char **e) {
   OutPtrArrayResult<QlBlackCalibrationHelper> result(len, helpers);
   try {
