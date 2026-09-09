@@ -11,10 +11,7 @@ explorable: overloads now use semantic names and coordinate types, acronyms foll
 case, common capabilities use narrowly scoped classes, and the cash-flow hierarchy is uniform.
 This is expected to be the last repository-wide rename.
 
-Breaking change: removed the `QuantLib.Syntax` module and its Template Haskell partial-call
-helpers (`free1st`, `free2nd`, `freeNth`, their `WithArity` variants, `cutAt`,
-`cutAtWithArity`, and `cut`). Ordinary lambdas and `do` bindings are clearer at the affected
-call sites and avoid Template Haskell staging and arity-reification constraints.
+Another breaking change: removed the `QuantLib.Syntax` module and its Template Haskell partial-call helpers.
 
 ## 0.6.0.0 (2026)
 
