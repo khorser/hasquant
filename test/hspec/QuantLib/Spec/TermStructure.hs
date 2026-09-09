@@ -131,9 +131,9 @@ spec = do
         ts <- flatForward (ReferenceDate refDate) flatRate dc IR.Continuous Annual
         zeroAtDate <- IR.rate <$> zeroRate ts (RateAtDate endDate dc) IR.Continuous NoFrequency False
         zeroAtTime <- IR.rate <$> zeroRate ts (RateAtTime 1.0) IR.Continuous NoFrequency False
-        forwardBetweenDates <- IR.rate <$> forwardRate ts refDate endDate dc IR.Continuous NoFrequency False
-        forwardBetweenTimes <- IR.rate <$> forwardRateBetweenTimes ts 0.0 1.0 IR.Continuous NoFrequency False
-        forwardForPeriod <- IR.rate <$> forwardRateForPeriod ts refDate (1, Years) dc IR.Continuous NoFrequency False
+        forwardBetweenDates <- IR.rate <$> forwardRate ts (RateBetweenDates refDate endDate dc) IR.Continuous NoFrequency False
+        forwardBetweenTimes <- IR.rate <$> forwardRate ts (RateBetweenTimes 0.0 1.0) IR.Continuous NoFrequency False
+        forwardForPeriod <- IR.rate <$> forwardRate ts (RateOverTenor refDate (1, Years) dc) IR.Continuous NoFrequency False
         let results :: [Double]
             results = [zeroAtDate, zeroAtTime, forwardBetweenDates, forwardBetweenTimes, forwardForPeriod]
         mapM_ (`shouldSatisfy` closePrec expected tolerance) results
@@ -141,7 +141,7 @@ spec = do
         -- The day counter is the caller's, not the curve's: the same compound factor over the same
         -- interval reports a different rate under Actual360.
         act360 <- dayCounter (Actual360 False)
-        forwardAct360 <- IR.rate <$> forwardRate ts refDate endDate act360 IR.Continuous NoFrequency False
+        forwardAct360 <- IR.rate <$> forwardRate ts (RateBetweenDates refDate endDate act360) IR.Continuous NoFrequency False
         forwardAct360 `shouldSatisfy` closePrec (expected * 360 / 365) tolerance
 
       it "implied" $
@@ -167,8 +167,8 @@ spec = do
           refDate <- asTermStructure ts >>= referenceDate
           let testDate = addGregorianYearsClip 5 refDate
           actual360dc <- dayCounter (Actual360 False)
-          forward <- IR.rate <$> forwardRate ts testDate testDate actual360dc IR.Continuous NoFrequency False
-          spreadedForward <- IR.rate <$> forwardRate spreaded testDate testDate actual360dc IR.Continuous NoFrequency False
+          forward <- IR.rate <$> forwardRate ts (RateBetweenDates testDate testDate actual360dc) IR.Continuous NoFrequency False
+          spreadedForward <- IR.rate <$> forwardRate spreaded (RateBetweenDates testDate testDate actual360dc) IR.Continuous NoFrequency False
 
           (forward - (spreadedForward - val)) `shouldSatisfy` (<= 1.0e-10)
       it "z-spreaded" $

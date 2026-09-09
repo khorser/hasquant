@@ -564,7 +564,7 @@ InterestRate *qlInterestRate(double r, DayCounter *dc, int comp, int freq, char 
 
 // generated code
 double qlInterestRateCompoundFactor1(InterestRate* o, int d1, int d2, int refStart, int refEnd, char **e) {
-  try {return (arg(o))->compoundFactor(Date(d1), Date(d2), Date(refStart), Date(refEnd));
+  try {return (arg(o))->compoundFactor(Date(d1), Date(d2), qlNullableDate(refStart), qlNullableDate(refEnd));
   } catch (std::exception& er) {return handleException<double>(e, er);}}
 
 double qlInterestRateCompoundFactor(InterestRate* o, double t, char **e) {
@@ -572,7 +572,7 @@ double qlInterestRateCompoundFactor(InterestRate* o, double t, char **e) {
   } catch (std::exception& er) {return handleException<double>(e, er);}}
 
 double qlInterestRateDiscountFactor1(InterestRate* o, int d1, int d2, int refStart, int refEnd, char **e) {
-  try {return (arg(o))->discountFactor(Date(d1), Date(d2), Date(refStart), Date(refEnd));
+  try {return (arg(o))->discountFactor(Date(d1), Date(d2), qlNullableDate(refStart), qlNullableDate(refEnd));
   } catch (std::exception& er) {return handleException<double>(e, er);}}
 
 double qlInterestRateDiscountFactor(InterestRate* o, double t, char **e) {
@@ -580,7 +580,7 @@ double qlInterestRateDiscountFactor(InterestRate* o, double t, char **e) {
   } catch (std::exception& er) {return handleException<double>(e, er);}}
 
 InterestRate* qlInterestRateEquivalentRate1(InterestRate* o, DayCounter* resultDC, int comp, int freq, int d1, int d2, int refStart, int refEnd, char **e) {
-  try {return ret(new InterestRate(arg(o)->equivalentRate(*arg(resultDC), (Compounding)comp, (Frequency)freq, Date(d1), Date(d2), Date(refStart), Date(refEnd))));
+  try {return ret(new InterestRate(arg(o)->equivalentRate(*arg(resultDC), (Compounding)comp, (Frequency)freq, Date(d1), Date(d2), qlNullableDate(refStart), qlNullableDate(refEnd))));
   } catch (std::exception& er) {return handleException<InterestRate*>(e, er);}}
 
 InterestRate* qlInterestRateEquivalentRate(InterestRate* o, int comp, int freq, double t, char **e) {
@@ -588,7 +588,7 @@ InterestRate* qlInterestRateEquivalentRate(InterestRate* o, int comp, int freq, 
   } catch (std::exception& er) {return handleException<InterestRate*>(e, er);}}
 
 InterestRate* qlInterestRateImpliedRate1(InterestRate* o, double compound, DayCounter* resultDC, int comp, int freq, int d1, int d2, int refStart, int refEnd, char **e) {
-  try {return ret(new InterestRate(arg(o)->impliedRate(compound, *arg(resultDC), (Compounding)comp, (Frequency)freq, Date(d1), Date(d2), Date(refStart), Date(refEnd))));
+  try {return ret(new InterestRate(arg(o)->impliedRate(compound, *arg(resultDC), (Compounding)comp, (Frequency)freq, Date(d1), Date(d2), qlNullableDate(refStart), qlNullableDate(refEnd))));
   } catch (std::exception& er) {return handleException<InterestRate*>(e, er);}}
 
 InterestRate* qlInterestRateImpliedRate(InterestRate* o, double compound, DayCounter* resultDC, int comp, int freq, double t, char **e) {

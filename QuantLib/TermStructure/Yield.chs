@@ -16,6 +16,7 @@ module QuantLib.TermStructure.Yield
   , Reference(..)
   , TermPoint(..)
   , RatePoint(..)
+  , RateInterval(..)
   , RelinkableYieldTermStructure
   , relinkableYieldTermStructure
   , linkTo
@@ -33,8 +34,6 @@ module QuantLib.TermStructure.Yield
   , swapRateHelperFromConventions
   , flatForward
   , forwardRate
-  , forwardRateBetweenTimes
-  , forwardRateForPeriod
   , zeroRate
   , discount
   , fraRateHelper
@@ -112,7 +111,7 @@ import QuantLib.Internal.Syntax(deriveOptionsRecord)
 import Language.Haskell.TH(mkName)
 import Language.Haskell.TH.Lib(varT)
 import QuantLib.Quote hiding(linkTo)
-import QuantLib.TermStructure (Reference(..), TermPoint(..), RatePoint(..), setExtrapolation)
+import QuantLib.TermStructure (Reference(..), TermPoint(..), RatePoint(..), RateInterval(..), setExtrapolation)
 import Data.Maybe(fromMaybe)
 import Data.List.NonEmpty(NonEmpty, toList)
 import Foreign.Ptr(FunPtr, Ptr)
@@ -296,24 +295,32 @@ zeroRate curve point = case point of
   ,preErrorCheck-`String'errorCheck*-}->`InterestRate'peekInterestRate*#}
 
 -- |The resulting interest rate has the required day-counting rule. /Warning/ dates are not adjusted for holidays
-{#fun qlYieldTermStructureForwardRate1 as forwardRateForPeriod{withYieldTermStructure*`GenYieldTermStructure y',withDay*`Day',fromEnumQuantity`(Int,TimeUnit)'&,withDayCounter*`DayCounter',`Compounding',`Frequency'
+{#fun qlYieldTermStructureForwardRate1 as forwardRateOverTenorRaw{withYieldTermStructure*`GenYieldTermStructure y',withDay*`Day',fromEnumQuantity`(Int,TimeUnit)'&,withDayCounter*`DayCounter',`Compounding',`Frequency'
   ,`Bool' -- ^extrapolate
   ,preErrorCheck-`String'errorCheck*-}->`InterestRate'peekInterestRate*#}
 
 -- |The forward rate between two dates, in the given day-counting rule.
 -- /Warning/ Dates are not adjusted for holidays.
-{#fun qlYieldTermStructureForwardRate as forwardRate{withYieldTermStructure*`GenYieldTermStructure y',withDay*`Day',withDay*`Day',withDayCounter*`DayCounter',`Compounding',`Frequency'
+{#fun qlYieldTermStructureForwardRate as forwardRateBetweenDatesRaw{withYieldTermStructure*`GenYieldTermStructure y',withDay*`Day',withDay*`Day',withDayCounter*`DayCounter',`Compounding',`Frequency'
   ,`Bool' -- ^extrapolate
   ,preErrorCheck-`String'errorCheck*-}->`InterestRate'peekInterestRate*#}
 
 -- |The resulting interest rate has the same day-counting rule used by the term structure. The same rule should be used for calculating the passed times t1 and t2.
-{#fun qlYieldTermStructureForwardRate2 as forwardRateBetweenTimes{withYieldTermStructure*`GenYieldTermStructure y',`Double',`Double',`Compounding',`Frequency'
+{#fun qlYieldTermStructureForwardRate2 as forwardRateBetweenTimesRaw{withYieldTermStructure*`GenYieldTermStructure y',`Double',`Double',`Compounding',`Frequency'
   ,`Bool' -- ^extrapolate
   ,preErrorCheck-`String'errorCheck*-}->`InterestRate'peekInterestRate*#}
 
 -- |The resulting interest rate has the same day-counting rule used by the term structure. The same rule should be used for calculating the passed time t.
 {#fun qlYieldTermStructureZeroRate1 as zeroRateAtTimeRaw{withYieldTermStructure*`GenYieldTermStructure y',`Double',`Compounding',`Frequency',`Bool' -- ^extrapolate
   ,preErrorCheck-`String'errorCheck*-}->`InterestRate'peekInterestRate*#}
+
+-- |The forward rate over a date or year-fraction interval.
+forwardRate :: GenYieldTermStructure y -> RateInterval -> Compounding -> Frequency -> Bool
+  -> IO InterestRate
+forwardRate curve interval = case interval of
+  RateBetweenDates d1 d2 dc -> forwardRateBetweenDatesRaw curve d1 d2 dc
+  RateOverTenor d p dc -> forwardRateOverTenorRaw curve d p dc
+  RateBetweenTimes t1 t2 -> forwardRateBetweenTimesRaw curve t1 t2
 
 -- |Returns a discount factor at a date or year-fraction coordinate.
 discount :: GenYieldTermStructure y -> TermPoint -> Bool -> IO Double

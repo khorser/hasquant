@@ -90,25 +90,40 @@ spec evalDate = do
             dc <- dayCounter (Actual360 False)
             ir <- IR.interestRate r dc comp freq
             let d2 = addDays (truncate $ 360 * t + 0.5) d1
-            compoundf <- IR.compoundFactorBetween ir d1 d2 d1 d2
-            disc <- IR.discountFactorBetween ir d1 d2 d1 d2
+            compoundf <- IR.compoundFactor ir (IR.AccrualBetween d1 d2 (Just d1) (Just d2))
+            disc <- IR.discountFactor ir (IR.AccrualBetween d1 d2 (Just d1) (Just d2))
             abs (disc - 1.0/compoundf) `shouldSatisfy` (<= 1.0e-15)
-            ir2 <- IR.equivalentRateBetween ir dc comp freq d1 d2 d1 d2
+            ir2 <- IR.equivalentRate ir comp freq (IR.EquivalentBetween dc d1 d2 (Just d1) (Just d2))
             abs (IR.rate ir - IR.rate ir2) `shouldSatisfy` (<= 1.0e-15)
 
-            ir3 <- IR.equivalentRateBetween ir dc comp2 freq2 d1 d2 d1 d2
+            ir3 <- IR.equivalentRate ir comp2 freq2 (IR.EquivalentBetween dc d1 d2 (Just d1) (Just d2))
             expectedIR <- IR.interestRate expected dc comp2 freq2
 
             let roundingPrecision = Rounding prec Closest 5
                 r3 = applyRounding roundingPrecision (IR.rate ir3)
             abs(r3 - IR.rate expectedIR) `shouldSatisfy` (<= 1.0e-17)
 
-            ir3' <- IR.equivalentRateBetween ir dc comp2 freq2 d1 d2 d1 d2
+            ir3' <- IR.equivalentRate ir comp2 freq2 (IR.EquivalentBetween dc d1 d2 (Just d1) (Just d2))
             let r3' = applyRounding roundingPrecision (IR.rate ir3')
             abs(r3' - expected) `shouldSatisfy` (<= 1.0e-17)
 
       it "bulk test for conversions" $ do
         Settings.keepingSettingsGc $ mapM_ testCase cases
+
+      -- ActualActual(ISMA) is the case where the reference period actually matters: over an
+      -- irregular period it year-fractions against [refStart, refEnd], not [d1, d2].
+      it "honours an explicit ISMA reference period" $ do
+        dc <- dayCounter ActualActualISMA
+        ir <- IR.interestRate 0.05 dc IR.Compounded Annual
+        let d1 = fromGregorian 2024 2 15
+            d2 = fromGregorian 2024 7 1
+            refStart = fromGregorian 2024 1 1
+            refEnd = fromGregorian 2024 7 1
+        withRef <- IR.compoundFactor ir (IR.AccrualBetween d1 d2 (Just refStart) (Just refEnd))
+        noRef <- IR.compoundFactor ir (IR.AccrualBetween d1 d2 Nothing Nothing)
+        abs (withRef - noRef) `shouldSatisfy` (> 1.0e-9)
+        discWithRef <- IR.discountFactor ir (IR.AccrualBetween d1 d2 (Just refStart) (Just refEnd))
+        abs (discWithRef - 1.0 / withRef) `shouldSatisfy` (<= 1.0e-15)
 
     describe "cash flow leg" $ do
       let checkInclusion :: CF.Leg -> Int -> [(Int, Bool)] -> IO ()
