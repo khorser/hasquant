@@ -6311,8 +6311,8 @@
 | |ql/models/marketmodels/utilities.hpp|std::valarray<bool> isInSubset(const std::vector<Time> & set, const std::vector<Time> & subset);
 | |ql/models/marketmodels/utilities.hpp|void checkIncreasingTimes(const std::vector<Time> & times);
 | |ql/models/marketmodels/utilities.hpp|void checkIncreasingTimesAndCalculateTaus(const std::vector<Time> & times, std::vector<Time> & taus);
-| |ql/models/model.hpp|DiscountFactor AffineModel::discount(Time t) const;
-| |ql/models/model.hpp|Real AffineModel::discountBond(Time now, Time maturity, Array factors) const;
+|v|ql/models/model.hpp|DiscountFactor AffineModel::discount(Time t) const;
+|v|ql/models/model.hpp|Real AffineModel::discountBond(Time now, Time maturity, Array factors) const;
 |v|ql/models/model.hpp|Real AffineModel::discountBondOption(Option::Type type, Real strike, Time maturity, Time bondMaturity) const;
 |v|ql/models/model.hpp|Real AffineModel::discountBondOption(Option::Type type, Real strike, Time maturity, Time bondStart, Time bondMaturity) const;
 | |ql/models/model.hpp|TermStructureConsistentModel::TermStructureConsistentModel(Handle<YieldTermStructure> termStructure);
@@ -6376,7 +6376,7 @@
 | |ql/models/shortrate/onefactormodel.hpp|Real ShortRateTree::probability(Size i, Size index, Size branch) const;
 | |ql/models/shortrate/onefactormodel.hpp|void ShortRateTree::setSpread(Spread spread);
 | |ql/models/shortrate/onefactormodel.hpp|OneFactorAffineModel::OneFactorAffineModel(Size nArguments);
-|v|ql/models/shortrate/onefactormodel.hpp|Real OneFactorAffineModel::discountBond(Time now, Time maturity, Rate rate) const;
+|v|ql/models/shortrate/onefactormodel.hpp|Real OneFactorAffineModel::discountBond(Time now, Time maturity, Rate rate) const; -- reachable via AffineModel::discountBond(Array) (qlAffineModelDiscountBond) with a single-element factors list; OneFactorAffineModel::discountBond(Array) forwards factors[0] straight to this convenience overload, so no dedicated binding is kept
 |v|ql/models/shortrate/onefactormodels/blackkarasinski.hpp|BlackKarasinski::BlackKarasinski(const Handle<YieldTermStructure> & termStructure, Real a = 0.1, Real sigma = 0.1);
 | |ql/models/shortrate/onefactormodels/blackkarasinski.hpp|Dynamics::Dynamics(Parameter fitting, Real alpha, Real sigma);
 |v|ql/models/shortrate/onefactormodels/coxingersollross.hpp|CoxIngersollRoss::CoxIngersollRoss(Rate r0 = 0.05, Real theta = 0.1, Real k = 0.1, Real sigma = 0.1, bool withFellerConstraint = true);

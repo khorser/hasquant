@@ -24,7 +24,7 @@ import QuantLib.TermStructure hiding(maxDate)
 import QuantLib.Math
 import QuantLib.Index(addFixing)
 import QuantLib.Index.InterestRate(iborIndex, IborConstructor(..), overnightIborIndex, OvernightIborIndexType(Sofr), liborSwapIndex, LiborSwapIndexType(EurLiborSwapIsdaFixA))
-import QuantLib.Model(hullWhite, extendedCoxIngersollRoss, discountBond, hestonModel, params)
+import QuantLib.Model(hullWhite, extendedCoxIngersollRoss, discountBond, asAffineModel, hestonModel, params)
 import QuantLib.Currency(currency, Ccy(..))
 import QuantLib.Instrument(npv, setPricingEngine, SettlementType(Physical), SettlementMethod(PhysicalOTC), PositionType(Long), additionalResults, AdditionalResultVal(..))
 import QuantLib.Instrument.Swap(vanillaSwap, swap, makeVanillaSwap, SwapType(Payer), swaption)
@@ -1016,9 +1016,10 @@ spec = do
           c <- flat 0.02
           th <- relinkableYieldTermStructure (Just c)
           model <- hullWhite th 0.1 0.01
-          before <- discountBond model 0.0 5.0 0.02
+          am <- asAffineModel model
+          before <- discountBond am 0.0 5.0 [0.02]
           flat 0.05 >>= linkTo th
-          after <- discountBond model 0.0 5.0 0.02
+          after <- discountBond am 0.0 5.0 [0.02]
           abs (after - before) `shouldSatisfy` (> 0.01)
 
       it "relinking the curve updates ExtendedCoxIngersollRoss's discount bond without rebuilding the model" $
@@ -1027,9 +1028,10 @@ spec = do
           c <- flat 0.02
           th <- relinkableYieldTermStructure (Just c)
           model <- extendedCoxIngersollRoss th 0.02 1.0 1e-4 0.02 True
-          before <- discountBond model 0.0 5.0 0.02
+          am <- asAffineModel model
+          before <- discountBond am 0.0 5.0 [0.02]
           flat 0.05 >>= linkTo th
-          after <- discountBond model 0.0 5.0 0.02
+          after <- discountBond am 0.0 5.0 [0.02]
           abs (after - before) `shouldSatisfy` (> 0.01)
 
       -- The bidirectional dependency cycle RelinkableHandle actually exists for: two Euribor

@@ -109,9 +109,9 @@ module QuantLib.Model
   , times
 
     -- * Model calculations and inspectors
+  , discount
   , discountBond
   , discountBondOption
-  , discountBondOptionForward
   , convexityBias
   , fixedReversion
   , moveVolatility
@@ -142,6 +142,7 @@ import QuantLib.Internal.Common
 import QuantLib.Math(SobolDirectionIntegers)
 import Data.List(genericTake)
 import Data.List.NonEmpty(NonEmpty, toList)
+import Data.Maybe(fromMaybe)
 
 {#enum CalibrationErrorType{} deriving(Show, Eq, Read)#}
 
@@ -206,6 +207,7 @@ data HestonSLVFDMLogEntry = HestonSLVFDMLogEntry
 {#pointer *QlBatesDoubleExpModel as BatesDoubleExpModel foreign -> CBatesDoubleExpModel' nocode#}
 {#pointer *QlGsr as Gsr foreign -> CGsr' nocode#}
 {#pointer *QlMarkovFunctional as MarkovFunctional foreign -> CMarkovFunctional' nocode#}
+{#pointer *QlAffineModel foreign -> CAffineModel' nocode#}
 {#pointer *QlGaussian1dModel foreign -> CGaussian1dModel' nocode#}
 {#pointer *QlSwapIndex as SwapIndex foreign -> CSwapIndex' nocode#}
 {#pointer *QlSwaptionVolatilityStructure as SwaptionVolatilityStructure foreign -> CSwaptionVolatilityStructure' nocode#}
@@ -255,36 +257,6 @@ data HestonSLVFDMLogEntry = HestonSLVFDMLogEntry
   ,`Double' -- ^x0
   ,`Bool' -- ^withFellerConstraint
   ,preErrorCheck-`String'errorCheck*-}->`OneFactorAffineModel'peekOneFactorAffineModel*#}
-
--- |Price of a discount bond paying 1 at @maturity@, given the short rate @rate@ at time @now@.
--- Not 'pure': the model's short-rate fitting function depends on its 'YieldTermStructure' handle,
--- which can be relinked after construction, so the result at fixed arguments can change between
--- two calls -- a genuine 'IO' action, not a value fixed at construction time like the other
--- @{#fun pure ...#}@ bindings in this codebase.
-{#fun qlOneFactorAffineModelDiscountBond as discountBond{withOneFactorAffineModel*`GenOneFactorAffineModel om',`Double' -- ^now
-  ,`Double' -- ^maturity
-  ,`Double' -- ^rate
-  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
-
--- |Analytic (Jamshidian) price of a European option of @type@ with @strike@, expiring at
--- @maturity@, on a discount bond that itself pays 1 at @bondMaturity@ -- the closed-form
--- cross-check for the tree\/Jamshidian swaption engines built on the same model.
-{#fun qlOneFactorAffineModelDiscountBondOption as discountBondOption{withOneFactorAffineModel*`GenOneFactorAffineModel om'
-  ,fromEnumC`OptionType' -- ^type
-  ,`Double' -- ^strike
-  ,`Double' -- ^maturity
-  ,`Double' -- ^bondMaturity
-  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
-
--- |As 'discountBondOption', but for a discount bond that only starts accruing at @bondStart@
--- rather than at @maturity@ (the underlying is a bond spanning @[bondStart, bondMaturity]@).
-{#fun qlOneFactorAffineModelDiscountBondOptionForward as discountBondOptionForward{withOneFactorAffineModel*`GenOneFactorAffineModel om'
-  ,fromEnumC`OptionType' -- ^type
-  ,`Double' -- ^strike
-  ,`Double' -- ^maturity
-  ,`Double' -- ^bondStart
-  ,`Double' -- ^bondMaturity
-  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Two-additive-factor Gaussian (G2) short-rate model: the sum of two correlated Ornstein-Uhlenbeck factors.
 {#fun qlG2 as g2{withYieldTermStructure*`GenYieldTermStructure y',`Double' -- ^y
@@ -509,6 +481,50 @@ markovFunctionalCaplet ts reversion initialVol steps capletVol expiries ibor gri
 
 -- |Volatility step values, as calibrated so far.
 {#fun qlMarkovFunctionalVolatility{withGenCalibratedModel*`MarkovFunctional',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+
+-- |Discount factor at time @t@ under the model's own fitted curve -- @AffineModel::discount@.
+-- Not 'pure': depends on the model's 'YieldTermStructure' handle, which can be relinked after
+-- construction (see 'discountBond' below for the same caveat).
+{#fun qlAffineModelDiscount as discount{withStandalone*`AffineModel'
+  ,`Double' -- ^t
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |Price of a discount bond paying 1 at @maturity@, given the model's state @factors@ at time
+-- @now@ -- @AffineModel::discountBond(Time,Time,Array)@. @factors@ is model-specific: a
+-- one-element list of the short rate for 'OneFactorAffineModel'\/'HullWhite' (reproducing the
+-- old scalar-'Rate' convenience overload exactly, since @OneFactorAffineModel::discountBond@
+-- just forwards @factors[0]@), a two-element list of the two G2 factors, or ignored entirely by
+-- 'LiborForwardModel' (whose override just calls 'discount'). Not 'pure' for the same
+-- relinkable-curve reason as 'discount'.
+{#fun qlAffineModelDiscountBond as discountBond{withStandalone*`AffineModel'
+  ,`Double' -- ^now
+  ,`Double' -- ^maturity
+  ,withDoubleArray*`[Double]'& -- ^factors
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |Analytic (Jamshidian) price of a European option of @type@ with @strike@, expiring at
+-- @maturity@, on a discount bond that itself pays 1 at @bondMaturity@ -- the closed-form
+-- cross-check for the tree\/Jamshidian swaption engines built on the same model.
+-- @bondStart@ of 'Nothing' uses upstream's own 4-arg @AffineModel::discountBondOption@ overload
+-- (equivalent to @bondStart == maturity@\/the underlying bond starting to accrue exactly at
+-- option expiry); @'Just' bondStart@ reaches the 5-arg overload for a bond spanning
+-- @[bondStart, bondMaturity]@ instead. Only 'HullWhite' gives the two overloads distinct
+-- values; every other model's 5-arg overload just ignores @bondStart@ and forwards to the
+-- 4-arg one, so passing 'Nothing' vs. @'Just' maturity@ is observably identical there.
+{#fun qlAffineModelDiscountBondOption as discountBondOption_{withStandalone*`AffineModel'
+  ,fromEnumC`OptionType' -- ^type
+  ,`Double' -- ^strike
+  ,`Double' -- ^maturity
+  ,`Bool' -- ^haveBondStart
+  ,`Double' -- ^bondStart
+  ,`Double' -- ^bondMaturity
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |As 'discountBondOption_', unifying upstream's 4-arg and 5-arg @AffineModel::discountBondOption@
+-- overloads behind one 'Maybe' argument.
+discountBondOption :: AffineModel -> OptionType -> Double -> Double -> Maybe Double -> Double -> IO Double
+discountBondOption model typ strike maturity bondStart bondMaturity =
+  discountBondOption_ model typ strike maturity (maybe False (const True) bondStart) (fromMaybe 0 bondStart) bondMaturity
 
 -- |Numeraire value at @referenceDate@, conditional on the standardized state variable @y@
 -- (0 = the model's expected path). @yts@ overrides the model's own term structure for

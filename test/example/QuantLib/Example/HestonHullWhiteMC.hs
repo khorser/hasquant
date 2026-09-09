@@ -30,7 +30,7 @@ import qualified Data.Vector.Storable as V
 import QuantLib.Instrument.Option(OptionType(..))
 import QuantLib.Math(SobolDirectionIntegers(..), Interpolation(..), timeGridFromVector, nonEmptyVector)
 import QuantLib.Method(sobolPathGenerator, next, asset)
-import QuantLib.Model(hullWhite, discountBond, discountBondOption)
+import QuantLib.Model(hullWhite, asAffineModel, discountBond, discountBondOption)
 import QuantLib.Process(hestonProcess, hullWhiteForwardProcess, setForwardMeasureTime
  , hybridHestonHullWhiteProcess, numeraire, factors
  , HestonProcessDiscretization(..), HybridHestonHullWhiteProcessDiscretization(..))
@@ -77,6 +77,7 @@ run = Settings.keepingSettingsGc $ do
   setForwardMeasureTime hwFwd (last times)
   joint <- hybridHestonHullWhiteProcess hProcess hwFwd (-0.4) BSMHullWhite
   hwModel <- hullWhite rTS hwA hwSigma
+  hwAffine <- asAffineModel hwModel
 
   -- the grid drops the final (maturity) node, as upstream's `times.end()-1` does
   let gridTimes = init times
@@ -93,7 +94,7 @@ run = Settings.keepingSettingsGc $ do
         let t = gridTimes !! j
             bigT = gridTimes !! (j + optionTenor)
         zeroBond <- recip <$> numeraire joint t [st V.! j | st <- states]
-        bondAtT <- discountBond hwModel t bigT (states !! 2 V.! j)
+        bondAtT <- discountBond hwAffine t bigT [states !! 2 V.! j]
         pure (Acc zeroBond (zeroBond * max 0.0 (bondAtT - strike)))
       pure (zipWith' addAcc accs sample))
     zero [1 .. nrTrails :: Int]
@@ -103,7 +104,7 @@ run = Settings.keepingSettingsGc $ do
         bigT = gridTimes !! (j + optionTenor)
         n = fromIntegral nrTrails
     expectedBond <- discount rTS (TimePoint t) False
-    expectedOption <- discountBondOption hwModel Call strike t bigT
+    expectedOption <- discountBondOption hwAffine Call strike t Nothing bigT
     pure (abs (zb / n - expectedBond), abs (zo / n - expectedOption))
 
   pure (Result (maximum (map fst errs)) (maximum (map snd errs)) (length errs))

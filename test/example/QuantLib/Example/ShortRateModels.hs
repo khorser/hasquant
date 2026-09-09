@@ -221,9 +221,10 @@ runExtendedCirDiscountFactor = do
   q <- simpleQuote rate
   rts <- TS.flatForward (TS.ReferenceDate evalDate) q ac365 Continuous Annual
   model <- extendedCoxIngersollRoss rts rate 1.0 1e-4 rate True
+  am <- asAffineModel model
   dNow <- TS.discount rts (TS.TimePoint now) False
   dMat <- TS.discount rts (TS.TimePoint maturity) False
-  calculated <- discountBond model now maturity rate
+  calculated <- discountBond am now maturity [rate]
   pure DiscountCheck { expectedDF = dMat / dNow, calculatedDF = calculated }
   where
     rate = 0.1
@@ -234,7 +235,8 @@ runExtendedCirDiscountFactor = do
 runVasicekSmallMeanReversion :: IO DiscountCheck
 runVasicekSmallMeanReversion = do
   model <- vasicek r0 a b sigma lambda
-  calculated <- discountBond model now maturity r0
+  am <- asAffineModel model
+  calculated <- discountBond am now maturity [r0]
   pure DiscountCheck
     { expectedDF = exp (-r0 * maturity + sigma * sigma * maturity ** 3 / 6.0)
     , calculatedDF = calculated

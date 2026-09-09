@@ -652,10 +652,11 @@ spec = do
         setForwardMeasureTime hwFwd bigT
         joint <- hybridHestonHullWhiteProcess hProcess hwFwd (-0.4) HybridHestonHullWhiteEuler
         hwModel <- hullWhite rTS a sigma
+        hwAffine <- asAffineModel hwModel
         endDf <- discount rTS (TimePoint bigT) False
 
         sequence_ [ do
-            expected <- (/ endDf) <$> discountBond hwModel t bigT r
+            expected <- (/ endDf) <$> discountBond hwAffine t bigT [r]
             calculated <- numeraire joint t [100.0, 0.04, r]
             calculated `shouldSatisfy` closePrec expected 1.0e-12
           | t <- [1.0, 3.0, 7.0], r <- [0.0, 0.02, -0.01] ]

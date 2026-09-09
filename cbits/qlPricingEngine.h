@@ -378,10 +378,10 @@ extern "C" {
   void qlFreePiecewiseTimeDependentHestonModel(QlPiecewiseTimeDependentHestonModel *o);
   void qlFreeShortRateModel(QlShortRateModel *o);
   void qlFreeAffineModel(QlAffineModel *o);
+  double qlAffineModelDiscount(QlAffineModel* o, double t, char **e);
+  double qlAffineModelDiscountBond(QlAffineModel* o, double now, double maturity, unsigned factorsLen, double* factors, char **e);
+  double qlAffineModelDiscountBondOption(QlAffineModel* o, int type, double strike, double maturity, int haveBondStart, double bondStart, double bondMaturity, char **e);
   void qlFreeOneFactorAffineModel(QlOneFactorAffineModel *o);
-  double qlOneFactorAffineModelDiscountBond(QlOneFactorAffineModel* o, double now, double maturity, double rate, char **e);
-  double qlOneFactorAffineModelDiscountBondOption(QlOneFactorAffineModel* o, int type, double strike, double maturity, double bondMaturity, char **e);
-  double qlOneFactorAffineModelDiscountBondOptionForward(QlOneFactorAffineModel* o, int type, double strike, double maturity, double bondStart, double bondMaturity, char **e);
   double qlHullWhiteConvexityBias(double futurePrice, double t, double T, double sigma, double a, char **e);
   QlAffineModel* qlOneFactorAffineModelAsAffineModel(QlOneFactorAffineModel *o);
   void qlFreeLiborForwardModel(QlLiborForwardModel *o);
