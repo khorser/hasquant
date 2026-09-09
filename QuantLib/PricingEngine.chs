@@ -144,11 +144,8 @@ module QuantLib.PricingEngine
   , mcPerformanceEngine
   , mcVarianceSwapEngine
   , baroneAdesiWhaleyApproximationEngine
-  , batesDetJumpEngineWithTolerance
   , batesDetJumpEngine
-  , batesDoubleExpDetJumpEngineWithTolerance
   , batesDoubleExpDetJumpEngine
-  , batesDoubleExpEngineWithTolerance
   , batesDoubleExpEngine
   , bjerksundStenslandApproximationEngine
   , qdPlusAmericanEngine
@@ -910,32 +907,47 @@ batesEngine model control =
 -- |Barone-Adesi and Whaley (1987) quadratic-approximation engine for American options
 {#fun qlBaroneAdesiWhaleyApproximationEngine as baroneAdesiWhaleyApproximationEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
--- |semi-analytic engine for the Bates model with deterministic jumps, integrating with a fixed relative tolerance and evaluation cap
-{#fun qlBatesDetJumpEngine1 as batesDetJumpEngineWithTolerance{withBatesDetJumpModel*`BatesDetJumpModel',`Double' -- ^relTolerance
+{#fun qlBatesDetJumpEngine1 as batesDetJumpEngineTolerance{withBatesDetJumpModel*`BatesDetJumpModel',`Double' -- ^relTolerance
   ,fromIntegral`Word' -- ^maxEvaluations
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
--- |semi-analytic engine for the Bates model with deterministic jumps, integrating with a fixed quadrature order
-{#fun qlBatesDetJumpEngine as batesDetJumpEngine{withBatesDetJumpModel*`BatesDetJumpModel',fromIntegral`Word' -- ^integrationOrder
+{#fun qlBatesDetJumpEngine as batesDetJumpEngineOrder{withBatesDetJumpModel*`BatesDetJumpModel',fromIntegral`Word' -- ^integrationOrder
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
--- |semi-analytic engine for the double-exponential-jump Bates model with deterministic jumps, integrating with a fixed relative tolerance and evaluation cap
-{#fun qlBatesDoubleExpDetJumpEngine1 as batesDoubleExpDetJumpEngineWithTolerance{withBatesDoubleExpDetJumpModel*`BatesDoubleExpDetJumpModel',`Double' -- ^relTolerance
+-- |Semi-analytic engine for the Bates model with deterministic jumps, with fixed-order or tolerance-based integration.
+batesDetJumpEngine :: BatesDetJumpModel -> IntegrationControl -> IO PricingEngine
+batesDetJumpEngine model control =
+  case control of
+    IntegrationOrder order -> batesDetJumpEngineOrder model order
+    IntegrationTolerance tolerance evaluations -> batesDetJumpEngineTolerance model tolerance evaluations
+
+{#fun qlBatesDoubleExpDetJumpEngine1 as batesDoubleExpDetJumpEngineTolerance{withBatesDoubleExpDetJumpModel*`BatesDoubleExpDetJumpModel',`Double' -- ^relTolerance
   ,fromIntegral`Word' -- ^maxEvaluations
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
--- |semi-analytic engine for the double-exponential-jump Bates model with deterministic jumps, integrating with a fixed quadrature order
-{#fun qlBatesDoubleExpDetJumpEngine as batesDoubleExpDetJumpEngine{withBatesDoubleExpDetJumpModel*`BatesDoubleExpDetJumpModel',fromIntegral`Word' -- ^integrationOrder
+{#fun qlBatesDoubleExpDetJumpEngine as batesDoubleExpDetJumpEngineOrder{withBatesDoubleExpDetJumpModel*`BatesDoubleExpDetJumpModel',fromIntegral`Word' -- ^integrationOrder
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
--- |semi-analytic engine for the double-exponential-jump Bates model, integrating with a fixed relative tolerance and evaluation cap
-{#fun qlBatesDoubleExpEngine1 as batesDoubleExpEngineWithTolerance{withBatesDoubleExpModel*`GenBatesDoubleExpModel bdem',`Double' -- ^relTolerance
+-- |Semi-analytic engine for the double-exponential-jump Bates model with deterministic jumps, with fixed-order or tolerance-based integration.
+batesDoubleExpDetJumpEngine :: BatesDoubleExpDetJumpModel -> IntegrationControl -> IO PricingEngine
+batesDoubleExpDetJumpEngine model control =
+  case control of
+    IntegrationOrder order -> batesDoubleExpDetJumpEngineOrder model order
+    IntegrationTolerance tolerance evaluations -> batesDoubleExpDetJumpEngineTolerance model tolerance evaluations
+
+{#fun qlBatesDoubleExpEngine1 as batesDoubleExpEngineTolerance{withBatesDoubleExpModel*`GenBatesDoubleExpModel bdem',`Double' -- ^relTolerance
   ,fromIntegral`Word' -- ^maxEvaluations
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
--- |semi-analytic engine for the double-exponential-jump Bates model, integrating with a fixed quadrature order
-{#fun qlBatesDoubleExpEngine as batesDoubleExpEngine{withBatesDoubleExpModel*`GenBatesDoubleExpModel bdem',fromIntegral`Word' -- ^integrationOrder
+{#fun qlBatesDoubleExpEngine as batesDoubleExpEngineOrder{withBatesDoubleExpModel*`GenBatesDoubleExpModel bdem',fromIntegral`Word' -- ^integrationOrder
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+
+-- |Semi-analytic engine for the double-exponential-jump Bates model, with fixed-order or tolerance-based integration.
+batesDoubleExpEngine :: GenBatesDoubleExpModel bdem -> IntegrationControl -> IO PricingEngine
+batesDoubleExpEngine model control =
+  case control of
+    IntegrationOrder order -> batesDoubleExpEngineOrder model order
+    IntegrationTolerance tolerance evaluations -> batesDoubleExpEngineTolerance model tolerance evaluations
 
 -- |Bjerksund and Stensland (1993) approximation engine for American options
 {#fun qlBjerksundStenslandApproximationEngine as bjerksundStenslandApproximationEngine{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}

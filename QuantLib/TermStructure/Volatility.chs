@@ -1721,7 +1721,7 @@ swaptionVolatilityMatrix d c bdc ot st (Matrix vr vc vd) dc' fe ty (RealMatrix s
   ,fromIntegral`Word',fromIntegral`Word',withRealVectorRaw*`RealVector'
   ,preErrorCheck-`String'errorCheck*-}->`SwaptionVolatilityMatrix'peekSwaptionVolatilityMatrix*#}
 
--- |floating reference date, floating market data. See 'swaptionVolatilityMatrix\'' for the
+-- |floating reference date, floating market data. See 'swaptionVolatilityMatrix' for the
 -- @shifts@ convention
 -- (@realMatrixFromVector 0 0 Data.Vector.Storable.empty@ for "no shift").
 swaptionVolatilityMatrixMoving :: Calendar -> BusinessDayConvention
