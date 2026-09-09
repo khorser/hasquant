@@ -288,6 +288,33 @@ namespace {
     std::copy(v.begin(), v.end(), xs);
     *len = v.size(); *out = xs;
   }
+  // The staging class for a QlAdditionalResult[n] out-parameter. Same contract as the four in
+  // qlaux.h, but local to this file and hand-written because the elements are structs with their
+  // own owned fields rather than plain values or pointers: the release is qlFreeAdditionalResults,
+  // which handles the whole array at once.
+  class OutAdditionalResultArray {
+    unsigned *outLen_;
+    QlAdditionalResult **out_;
+    unsigned len_ = 0;
+    QlAdditionalResult *value_ = nullptr;
+    public:
+    OutAdditionalResultArray(unsigned *outLen, QlAdditionalResult **out) : outLen_(outLen), out_(out) {
+      *outLen_ = 0;
+      *out_ = nullptr;
+    }
+    OutAdditionalResultArray(const OutAdditionalResultArray&) = delete;
+    OutAdditionalResultArray& operator=(const OutAdditionalResultArray&) = delete;
+    ~OutAdditionalResultArray() {if (value_) qlFreeAdditionalResults(len_, value_);}
+    QlAdditionalResult* allocate(unsigned len) {
+      // Value-initialised (the trailing `()`): every field, including the pointers, starts at
+      // zero/null, so a not-yet-filled or half-filled entry is always safe for the destructor to
+      // release -- this is what lets it free the full length without tracking the fill loop.
+      value_ = alloc(new QlAdditionalResult[len]());
+      len_ = len;
+      return value_;
+    }
+    void commit() noexcept {*outLen_ = len_; *out_ = value_; value_ = nullptr;}
+  };
 }
 
 #ifdef QLTRACK_ALLOCATIONS
@@ -312,36 +339,6 @@ QlInstrument* qlPerpetualFutures(int payoffType, int fundingType,
 double qlInstrumentNPV(QlInstrument *instr, char **e) {try {return (*arg(instr))->NPV();} catch (std::exception& er) {return handleException<double>(e, er);}}
 void qlInstrumentSetPricingEngine(QlInstrument *instr, QlPricingEngine *eng, char **e) {try {(*arg(instr))->setPricingEngine(*arg(eng));} catch (std::exception& er) {(void)handleException<int>(e, er);}}
 void qlFreeInstrument(QlInstrument *instr) {del(instr);}
-
-// The staging class for a QlAdditionalResult[n] out-parameter. Same contract as the four in
-// qlaux.h, but local to this file and hand-written because the elements are structs with their
-// own owned fields rather than plain values or pointers: the release is qlFreeAdditionalResults,
-// which handles the whole array at once.
-namespace {
-  class OutAdditionalResultArray {
-    unsigned *outLen_;
-    QlAdditionalResult **out_;
-    unsigned len_ = 0;
-    QlAdditionalResult *value_ = nullptr;
-  public:
-    OutAdditionalResultArray(unsigned *outLen, QlAdditionalResult **out) : outLen_(outLen), out_(out) {
-      *outLen_ = 0;
-      *out_ = nullptr;
-    }
-    OutAdditionalResultArray(const OutAdditionalResultArray&) = delete;
-    OutAdditionalResultArray& operator=(const OutAdditionalResultArray&) = delete;
-    ~OutAdditionalResultArray() {if (value_) qlFreeAdditionalResults(len_, value_);}
-    QlAdditionalResult* allocate(unsigned len) {
-      // Value-initialised (the trailing `()`): every field, including the pointers, starts at
-      // zero/null, so a not-yet-filled or half-filled entry is always safe for the destructor to
-      // release -- this is what lets it free the full length without tracking the fill loop.
-      value_ = alloc(new QlAdditionalResult[len]());
-      len_ = len;
-      return value_;
-    }
-    void commit() noexcept {*outLen_ = len_; *out_ = value_; value_ = nullptr;}
-  };
-}
 
 void qlInstrumentAdditionalResults(QlInstrument *instr, unsigned *len,
     struct QlAdditionalResult **out, char **e) {

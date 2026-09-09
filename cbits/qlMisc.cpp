@@ -56,13 +56,6 @@ namespace hasquant {
 
 using namespace QuantLib;
 
-// Wraps a Haskell-defined cost function -- passed down as a C function pointer produced by
-// Haskell's `foreign import ccall "wrapper"` (QuantLib.Internal.Type.withCostFunction) -- as a
-// QuantLib CostFunction. value() crosses back into Haskell once per outer optimizer iteration,
-// over the whole parameter vector, mirroring QuantLib-SWIG's PyCostFunction (SWIG/functions.i)
-// rather than a per-component callback; see the CLAUDE.md "coarsen the language-boundary
-// crossing" bullet. values() (the Jacobian-style multi-output variant) is left unimplemented,
-// same as PyCostFunction's own -- no bound caller needs it yet.
 namespace {
   class SavedSettingsWithObservable {
     public:
@@ -87,6 +80,13 @@ namespace {
       SavedSettings savedSettings_;
   };
 
+  // Wraps a Haskell-defined cost function -- passed down as a C function pointer produced by
+  // Haskell's `foreign import ccall "wrapper"` (QuantLib.Internal.Type.withCostFunction) -- as a
+  // QuantLib CostFunction. value() crosses back into Haskell once per outer optimizer iteration,
+  // over the whole parameter vector, mirroring QuantLib-SWIG's PyCostFunction (SWIG/functions.i)
+  // rather than a per-component callback; see the CLAUDE.md "coarsen the language-boundary
+  // crossing" bullet. values() (the Jacobian-style multi-output variant) is left unimplemented,
+  // same as PyCostFunction's own -- no bound caller needs it yet.
   class HsCostFunction : public CostFunction {
     public:
       explicit HsCostFunction(double (*fn)(double*, unsigned)) : fn_(fn) {}
@@ -101,17 +101,17 @@ namespace {
       double (*fn_)(double*, unsigned);
   };
 
-// Quote composition. DerivedQuote/CompositeQuote/MultiCompositeQuote are templates over an
-// arbitrary functor; each is instantiated exactly twice here -- once over a functor that
-// switches on a QuoteOp/MultiQuoteOp at runtime (the fixed catalogue), once over a plain C
-// function pointer (an arbitrary Haskell function). The enum does *not* select a template
-// argument, so this needs no generic-lambda dispatcher in an *Aux.cpp: one instantiation
-// covers the whole catalogue.
-//
-// These are the only quotes here that are not leaf values: they registerWith() their inputs and
-// notifyObservers() on update, which is the entire reason they are bound at all -- a Haskell-side
-// recomputation cannot join QuantLib's Observer graph, so a curve bootstrapped off one would
-// silently keep a stale number when the underlying quote moves.
+  // Quote composition. DerivedQuote/CompositeQuote/MultiCompositeQuote are templates over an
+  // arbitrary functor; each is instantiated exactly twice here -- once over a functor that
+  // switches on a QuoteOp/MultiQuoteOp at runtime (the fixed catalogue), once over a plain C
+  // function pointer (an arbitrary Haskell function). The enum does *not* select a template
+  // argument, so this needs no generic-lambda dispatcher in an *Aux.cpp: one instantiation
+  // covers the whole catalogue.
+  //
+  // These are the only quotes here that are not leaf values: they registerWith() their inputs and
+  // notifyObservers() on update, which is the entire reason they are bound at all -- a Haskell-side
+  // recomputation cannot join QuantLib's Observer graph, so a curve bootstrapped off one would
+  // silently keep a stale number when the underlying quote moves.
   struct QuoteUnaryOp {
     int op;
     Real operand;
@@ -174,6 +174,48 @@ namespace {
     RiskStatistics s;
     s.addSequence(xs, xs+n);
     return s;
+  }
+  // Marshals a real-valued TimeSeries<Real> in from parallel date/value arrays, and a
+  // TimeSeries<Volatility> result back out through the four out-params -- shared by
+  // Garch11::calculate, ConstantEstimator, and SimpleLocalEstimator (Volatility and Real are
+  // the same type, ql/types.hpp).
+  void realSeriesCalculate(const std::function<TimeSeries<Volatility>(const TimeSeries<Real>&)>& calc,
+      unsigned len, int *dates, double *values,
+      unsigned *outDatesLen, int **outDates, unsigned *outValuesLen, double **outValues, char **e) {
+    OutArrayResult<int> dateResult(outDatesLen, outDates);
+    OutArrayResult<double> valueResult(outValuesLen, outValues);
+    try {
+      TimeSeries<Real> ts;
+      for (unsigned n = 0; n < len; ++n) ts[Date(dates[n])] = values[n];
+      TimeSeries<Volatility> out = calc(ts);
+      const std::vector<Date> outDs = out.dates();
+      const std::vector<Volatility> outVs = out.values();
+      int *ds = dateResult.allocate((unsigned)outDs.size());
+      double *vs = valueResult.allocate((unsigned)outVs.size());
+      for (unsigned n = 0; n < outDs.size(); ++n) ds[n] = outDs[n].serialNumber();
+      for (unsigned n = 0; n < outVs.size(); ++n) vs[n] = outVs[n];
+      dateResult.commit(); valueResult.commit();
+    } catch (std::exception& er) {*e = tracedup(er.what());}
+  }
+
+  // Same shape, for the GarmanKlass family's TimeSeries<IntervalPrice> input.
+  void intervalPriceSeriesCalculate(const std::function<TimeSeries<Volatility>(const TimeSeries<IntervalPrice>&)>& calc,
+      unsigned len, int *dates, double *opens, double *closes, double *highs, double *lows,
+      unsigned *outDatesLen, int **outDates, unsigned *outValuesLen, double **outValues, char **e) {
+    OutArrayResult<int> dateResult(outDatesLen, outDates);
+    OutArrayResult<double> valueResult(outValuesLen, outValues);
+    try {
+      TimeSeries<IntervalPrice> ts;
+      for (unsigned n = 0; n < len; ++n) ts[Date(dates[n])] = IntervalPrice(opens[n], closes[n], highs[n], lows[n]);
+      TimeSeries<Volatility> out = calc(ts);
+      const std::vector<Date> outDs = out.dates();
+      const std::vector<Volatility> outVs = out.values();
+      int *ds = dateResult.allocate((unsigned)outDs.size());
+      double *vs = valueResult.allocate((unsigned)outVs.size());
+      for (unsigned n = 0; n < outDs.size(); ++n) ds[n] = outDs[n].serialNumber();
+      for (unsigned n = 0; n < outVs.size(); ++n) vs[n] = outVs[n];
+      dateResult.commit(); valueResult.commit();
+    } catch (std::exception& er) {*e = tracedup(er.what());}
   }
 }
 
@@ -365,51 +407,6 @@ static const makeCcy ccys[] = {
   , &makeCurrency<XOFCurrency>
   , &makeCurrency<ZMWCurrency>
 };
-
-namespace {
-  // Marshals a real-valued TimeSeries<Real> in from parallel date/value arrays, and a
-  // TimeSeries<Volatility> result back out through the four out-params -- shared by
-  // Garch11::calculate, ConstantEstimator, and SimpleLocalEstimator (Volatility and Real are
-  // the same type, ql/types.hpp).
-  void realSeriesCalculate(const std::function<TimeSeries<Volatility>(const TimeSeries<Real>&)>& calc,
-      unsigned len, int *dates, double *values,
-      unsigned *outDatesLen, int **outDates, unsigned *outValuesLen, double **outValues, char **e) {
-    OutArrayResult<int> dateResult(outDatesLen, outDates);
-    OutArrayResult<double> valueResult(outValuesLen, outValues);
-    try {
-      TimeSeries<Real> ts;
-      for (unsigned n = 0; n < len; ++n) ts[Date(dates[n])] = values[n];
-      TimeSeries<Volatility> out = calc(ts);
-      const std::vector<Date> outDs = out.dates();
-      const std::vector<Volatility> outVs = out.values();
-      int *ds = dateResult.allocate((unsigned)outDs.size());
-      double *vs = valueResult.allocate((unsigned)outVs.size());
-      for (unsigned n = 0; n < outDs.size(); ++n) ds[n] = outDs[n].serialNumber();
-      for (unsigned n = 0; n < outVs.size(); ++n) vs[n] = outVs[n];
-      dateResult.commit(); valueResult.commit();
-    } catch (std::exception& er) {*e = tracedup(er.what());}
-  }
-
-  // Same shape, for the GarmanKlass family's TimeSeries<IntervalPrice> input.
-  void intervalPriceSeriesCalculate(const std::function<TimeSeries<Volatility>(const TimeSeries<IntervalPrice>&)>& calc,
-      unsigned len, int *dates, double *opens, double *closes, double *highs, double *lows,
-      unsigned *outDatesLen, int **outDates, unsigned *outValuesLen, double **outValues, char **e) {
-    OutArrayResult<int> dateResult(outDatesLen, outDates);
-    OutArrayResult<double> valueResult(outValuesLen, outValues);
-    try {
-      TimeSeries<IntervalPrice> ts;
-      for (unsigned n = 0; n < len; ++n) ts[Date(dates[n])] = IntervalPrice(opens[n], closes[n], highs[n], lows[n]);
-      TimeSeries<Volatility> out = calc(ts);
-      const std::vector<Date> outDs = out.dates();
-      const std::vector<Volatility> outVs = out.values();
-      int *ds = dateResult.allocate((unsigned)outDs.size());
-      double *vs = valueResult.allocate((unsigned)outVs.size());
-      for (unsigned n = 0; n < outDs.size(); ++n) ds[n] = outDs[n].serialNumber();
-      for (unsigned n = 0; n < outVs.size(); ++n) vs[n] = outVs[n];
-      dateResult.commit(); valueResult.commit();
-    } catch (std::exception& er) {*e = tracedup(er.what());}
-  }
-}
 
 extern "C" {
 void qlFreeInts(int *p) {delArray(p);}
