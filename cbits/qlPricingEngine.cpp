@@ -1707,6 +1707,9 @@ void qlG2ForwardProcessSetForwardMeasureTime(QlG2ForwardProcess* o, double t, ch
 QlBatesProcess* qlBatesProcess(QlYieldTermStructure* riskFreeRate, QlYieldTermStructure* dividendYield, QlQuote* s0, double v0, double kappa, double theta, double sigma, double rho, double lambda, double nu, double delta, int d, char **e) {
   try {return ret(new QlBatesProcess(alloc(new BatesProcess(*arg(riskFreeRate), *arg(dividendYield), *arg(s0), v0, kappa, theta, sigma, rho, lambda, nu, delta, (HestonProcess::Discretization)d))));
   } catch (std::exception& er) {return handleException<QlBatesProcess*>(e, er);}}
+QlExtendedOrnsteinUhlenbeckProcess* qlExtendedOrnsteinUhlenbeckProcess(double speed, double sigma, double x0, double (*b)(double), int discretization, double intEps, char **e) {
+  try {return ret(new QlExtendedOrnsteinUhlenbeckProcess(alloc(new ExtendedOrnsteinUhlenbeckProcess(speed, sigma, x0, b, (ExtendedOrnsteinUhlenbeckProcess::Discretization)discretization, intEps))));
+  } catch (std::exception& er) {return handleException<QlExtendedOrnsteinUhlenbeckProcess*>(e, er);}}
 QlExtOUWithJumpsProcess* qlExtOUWithJumpsProcess(QlExtendedOrnsteinUhlenbeckProcess* process, double Y0, double beta, double jumpIntensity, double eta, char **e) {
   try {return ret(new QlExtOUWithJumpsProcess(alloc(new ExtOUWithJumpsProcess(*arg(process), Y0, beta, jumpIntensity, eta))));
   } catch (std::exception& er) {return handleException<QlExtOUWithJumpsProcess*>(e, er);}}

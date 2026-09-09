@@ -484,6 +484,9 @@ enum AndreasenHugeCalibrationType {AndreasenHugeCall = 1, AndreasenHugePut = -1,
 // experimental/processes/extendedblackscholesprocess.hpp
 enum ExtendedBlackScholesMertonProcessDiscretization {ExtendedBSMEuler, Milstein, PredictorCorrector};
 
+// experimental/processes/extendedornsteinuhlenbeckprocess.hpp
+enum ExtendedOrnsteinUhlenbeckProcessDiscretization {MidPoint, Trapezodial, GaussLobatto};
+
 // processes/hestonprocess.hpp
 enum HestonProcessDiscretization {HestonPartialTruncation,
   HestonFullTruncation,

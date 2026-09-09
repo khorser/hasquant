@@ -2273,7 +2273,7 @@
 | |ql/experimental/models/squarerootclvmodel.hpp|MappingFunction::MappingFunction(const SquareRootCLVModel & model);
 | |ql/experimental/models/squarerootclvmodel.hpp|Real MappingFunction::operator()(Time t, Real x) const;
 |v|ql/experimental/processes/extendedblackscholesprocess.hpp|ExtendedBlackScholesMertonProcess::ExtendedBlackScholesMertonProcess(const Handle<Quote> & x0, const Handle<YieldTermStructure> & dividendTS, const Handle<YieldTermStructure> & riskFreeTS, const Handle<BlackVolTermStructure> & blackVolTS, const ext::shared_ptr<discretization> & d = ext::shared_ptr<discretization>(new EulerDiscretization), Discretization evolDisc = Milstein);
-| |ql/experimental/processes/extendedornsteinuhlenbeckprocess.hpp|ExtendedOrnsteinUhlenbeckProcess::ExtendedOrnsteinUhlenbeckProcess(Real speed, Volatility sigma, Real x0, std::function<Real (Real)> b, Discretization discretization = MidPoint, Real intEps = 1e-4);
+|v|ql/experimental/processes/extendedornsteinuhlenbeckprocess.hpp|ExtendedOrnsteinUhlenbeckProcess::ExtendedOrnsteinUhlenbeckProcess(Real speed, Volatility sigma, Real x0, std::function<Real (Real)> b, Discretization discretization = MidPoint, Real intEps = 1e-4);
 |x|ql/experimental/processes/extendedornsteinuhlenbeckprocess.hpp|Real ExtendedOrnsteinUhlenbeckProcess::speed() const;
 |x|ql/experimental/processes/extendedornsteinuhlenbeckprocess.hpp|Real ExtendedOrnsteinUhlenbeckProcess::volatility() const;
 |v|ql/experimental/processes/extouwithjumpsprocess.hpp|ExtOUWithJumpsProcess::ExtOUWithJumpsProcess(ext::shared_ptr<ExtendedOrnsteinUhlenbeckProcess> process, Real Y0, Real beta, Real jumpIntensity, Real eta);

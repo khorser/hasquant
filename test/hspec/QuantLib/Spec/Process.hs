@@ -48,7 +48,9 @@ import QuantLib.Process(hestonProcess, pdf, batesProcess, gjrGarchProcess, Hesto
  , liborForwardModelProcess, cashFlows
  , accrualTimes
  , numeraire, bFunction, mFunction
- , stdDeviation, covariance, apply, evolve)
+ , stdDeviation, covariance, apply, evolve
+ , ornsteinUhlenbeckProcess, withExtendedOrnsteinUhlenbeckProcess, ExtendedOrnsteinUhlenbeckProcessDiscretization(..)
+ , extOuWithJumpsProcess, klugeExtOuProcess)
 import QuantLib.Model(hullWhite, g2, g2Dynamics, shortRate
  , hestonModel, batesModel, gjrGarchModel
  , liborForwardModel, liborForwardModelS0, asAffineModel, lfmHullWhiteParameterization, lfmHullWhiteCovariance, setCovarParam, LmVolatilityModel(..), LmCorrelationModel(..)
@@ -57,7 +59,7 @@ import QuantLib.PricingEngine(analyticHestonHullWhiteEngine, mcHestonHullWhiteEn
  , analyticHestonEngine, IntegrationControl(..), batesEngine, analyticGjrGarchEngine, mcEuropeanGjrGarchEngine, blackFormula, analyticCapFloorEngine)
 import QuantLib.Method(pathGenerator, next, asset)
 import QuantLib.Math(RngTrait(..), StatisticsTrait(..), timeGrid, Interpolation(..), boxedRealMatrix, realMatrixFromVector, matrixRows, matrixColumns, matrixData, realMatrixData)
-import Control.Monad(replicateM, zipWithM_)
+import Control.Monad(replicateM, zipWithM_, foldM_)
 import QuantLib.Instrument.CapFloor(cap)
 import QuantLib.Time.Calendar(adjust, advance, calendar, BusinessDayConvention(..), CalendarConstructor(..))
 import QuantLib.Index.InterestRate(iborIndex, IborConstructor(..))
@@ -533,6 +535,55 @@ spec = do
         evolved <- evolve process t0 x0 dt [0.0, 0.0]
         expected <- expectation process t0 x0 dt
         zipWithM_ (\c e -> c `shouldSatisfy` closePrec e 1.0e-12) evolved expected
+
+  describe "ExtendedOrnsteinUhlenbeckProcess (withExtendedOrnsteinUhlenbeckProcess)" $ do
+    -- ported from test-suite/swingoption.cpp::testExtendedOrnsteinUhlenbeckProcess: a constant b
+    -- makes the extended process' evolve identical to the plain ornsteinUhlenbeckProcess, step
+    -- for step.
+    it "agrees with ornsteinUhlenbeckProcess for a constant level" $ do
+      let speed = 2.5; vol = 0.70; x0 = 0.0; level = 1.43; dt = 0.01
+          dws = [0.31, -0.42, 0.05, 0.88, -1.1, 0.2, -0.6]
+      refProcess <- ornsteinUhlenbeckProcess speed vol x0 level
+      withExtendedOrnsteinUhlenbeckProcess speed vol x0 (const level) GaussLobatto 1e-6 $ \eouProcess ->
+        foldM_ (\(t, xE, xR) dw -> do
+                  [xE'] <- evolve eouProcess t [xE] dt [dw]
+                  [xR'] <- evolve refProcess t [xR] dt [dw]
+                  xE' `shouldSatisfy` closePrec xR' 1.0e-9
+                  pure (t + dt, xE', xR'))
+               (0.0 :: Double, x0, x0) dws
+
+    -- same fixture, but with a non-constant b: the three discretization schemes must agree with
+    -- each other (GaussLobatto with a tight intEps as the reference).
+    it "MidPoint/Trapezodial agree with GaussLobatto for a non-constant level" $
+      withExtendedOrnsteinUhlenbeckProcess 2.5 0.70 0.0 (+ 1.0) GaussLobatto 1e-6 $ \refProcess ->
+        mapM_ (\d ->
+          withExtendedOrnsteinUhlenbeckProcess 2.5 0.70 0.0 (+ 1.0) d 1e-4 $ \process ->
+            foldM_ (\(t, xP, xR) dw -> do
+                      [xP'] <- evolve process t [xP] 0.01 [dw]
+                      [xR'] <- evolve refProcess t [xR] 0.01 [dw]
+                      xP' `shouldSatisfy` closePrec xR' 1.0e-4
+                      pure (t + 0.01, xP', xR'))
+                   (0.0 :: Double, 0.0, 0.0) [0.31, -0.42, 0.05, 0.88, -1.1, 0.2, -0.6])
+          [MidPoint, Trapezodial]
+
+    -- this is also the only producer of ExtendedOrnsteinUhlenbeckProcess, so construction of
+    -- extOuWithJumpsProcess/klugeExtOuProcess (previously uncallable) must happen inside its
+    -- continuation, mirroring test-suite/swingoption.cpp::createKlugeProcess. Both processes
+    -- leave the base StochasticProcess discretization unset (they hard-code evolve/initialValues
+    -- instead), so expectation/stdDeviation aren't meaningful here -- evolve is.
+    it "unlocks extOuWithJumpsProcess and klugeExtOuProcess" $
+      withExtendedOrnsteinUhlenbeckProcess 1.0 2.0 3.0 (const 3.0) MidPoint 1e-4 $ \eouProcess -> do
+        jumpProcess <- extOuWithJumpsProcess eouProcess 0.0 5.0 1.0 2.0
+        jx0 <- initialValues jumpProcess
+        jf <- factors jumpProcess
+        jEvolved <- evolve jumpProcess 0.0 jx0 0.1 (replicate (fromIntegral jf) 0.1)
+        length jEvolved `shouldBe` length jx0
+
+        klugeProcess <- klugeExtOuProcess 0.2 jumpProcess eouProcess
+        kx0 <- initialValues klugeProcess
+        kf <- factors klugeProcess
+        kEvolved <- evolve klugeProcess 0.0 kx0 0.1 (replicate (fromIntegral kf) 0.1)
+        length kEvolved `shouldBe` length kx0
 
   describe "HybridHestonHullWhiteProcess (AnalyticHestonHullWhiteEngine vs. MCHestonHullWhiteEngine)" $ do
     -- ported from test-suite/hybridhestonhullwhiteprocess.cpp::testAnalyticHestonHullWhitePricing:

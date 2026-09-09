@@ -4,6 +4,7 @@ module QuantLib.Process
     -- * Discretization schemes
     ProcessDiscretization(..)
   , ExtendedBlackScholesMertonProcessDiscretization(..)
+  , ExtendedOrnsteinUhlenbeckProcessDiscretization(..)
   , HestonProcessDiscretization(..)
   , GJRGARCHProcessDiscretization(..)
   , HybridHestonHullWhiteProcessDiscretization(..)
@@ -73,6 +74,7 @@ module QuantLib.Process
   , hullWhiteProcess
   , hybridHestonHullWhiteProcess
   , klugeExtOuProcess
+  , withExtendedOrnsteinUhlenbeckProcess
   , liborForwardModelProcess
   , fixingDates
   , fixingTimes
@@ -104,9 +106,11 @@ module QuantLib.Process
 import QuantLib.Internal
 import QuantLib.Internal.Type
 import Data.List.NonEmpty(NonEmpty, toList)
+import Foreign.Ptr(FunPtr)
 
 {#enum ProcessDiscretization{} deriving(Show,Eq, Read)#}
 {#enum ExtendedBlackScholesMertonProcessDiscretization{} deriving(Show, Eq, Read)#}
+{#enum ExtendedOrnsteinUhlenbeckProcessDiscretization{} deriving(Show, Eq, Read)#}
 {#enum HestonProcessDiscretization{} deriving(Show, Eq, Read)#}
 {#enum GJRGARCHProcessDiscretization{} deriving(Show, Eq, Read)#}
 {#enum HybridHestonHullWhiteProcessDiscretization{} deriving(Show, Eq, Read)#}
@@ -226,8 +230,35 @@ import Data.List.NonEmpty(NonEmpty, toList)
   ,`Double' -- ^delta
   ,`HestonProcessDiscretization',preErrorCheck-`String'errorCheck*-}->`BatesProcess'peekBatesProcess*#}
 
+{#fun qlExtendedOrnsteinUhlenbeckProcess
+  {`Double' -- ^speed
+  ,`Double' -- ^sigma (volatility)
+  ,`Double' -- ^x0
+  ,id`FunPtr PayoffFun'
+  ,`ExtendedOrnsteinUhlenbeckProcessDiscretization'
+  ,`Double' -- ^intEps
+  ,preErrorCheck-`String'errorCheck*-}->`ExtendedOrnsteinUhlenbeckProcess'peekExtendedOrnsteinUhlenbeckProcess*#}
+
+-- |An extended Ornstein-Uhlenbeck process @dx = speed*(b(t) - x)dt + sigma*dW@ with an arbitrary
+-- deterministic mean-reversion level @b@, usable with 'QuantLib.Method.pathGenerator'. This is the
+-- only producer of 'ExtendedOrnsteinUhlenbeckProcess', so 'extOuWithJumpsProcess' and
+-- 'klugeExtOuProcess' must be called from inside this continuation too. The 'FunPtr' backing @b@ is
+-- kept alive only for the continuation's duration; do not let the process escape it (same rule as
+-- 'QuantLib.Quote.withDerivedQuote').
+withExtendedOrnsteinUhlenbeckProcess :: Double -- ^speed
+  -> Double -- ^sigma
+  -> Double -- ^x0
+  -> (Double -> Double) -- ^b(t)
+  -> ExtendedOrnsteinUhlenbeckProcessDiscretization
+  -> Double -- ^intEps
+  -> (ExtendedOrnsteinUhlenbeckProcess -> IO a) -> IO a
+withExtendedOrnsteinUhlenbeckProcess speed sigma x0 b d intEps k =
+  withPayoffFun b (\fp -> qlExtendedOrnsteinUhlenbeckProcess speed sigma x0 fp d intEps >>= k)
+
 -- |Kluge model: an extended Ornstein-Uhlenbeck process plus an exponential-jump component,
--- S = exp(X + Y) with dX = alpha (mu(t) - X) dt + sigma dW and dY = -beta Y dt + J dN.
+-- S = exp(X + Y) with dX = alpha (mu(t) - X) dt + sigma dW and dY = -beta Y dt + J dN. The
+-- 'ExtendedOrnsteinUhlenbeckProcess' argument can only come from 'withExtendedOrnsteinUhlenbeckProcess',
+-- so call this from inside that continuation.
 {#fun qlExtOUWithJumpsProcess as extOuWithJumpsProcess{withGenStochasticProcess1D*`ExtendedOrnsteinUhlenbeckProcess',`Double' -- ^Y0
   ,`Double' -- ^beta
   ,`Double' -- ^jumpIntensity
@@ -546,7 +577,8 @@ covariance p t0 x0 dt = toMatrixDouble <$> qlStochasticProcessCovariance p t0 x0
   ,`Double' -- ^corrEquityShortRate
   ,`HybridHestonHullWhiteProcessDiscretization',preErrorCheck-`String'errorCheck*-}->`HybridHestonHullWhiteProcess'peekHybridHestonHullWhiteProcess*#}
 
--- |joint correlated Kluge ('extOuWithJumpsProcess') and extended Ornstein-Uhlenbeck process.
+-- |joint correlated Kluge ('extOuWithJumpsProcess') and extended Ornstein-Uhlenbeck process. Both
+-- process arguments are only producible from inside 'withExtendedOrnsteinUhlenbeckProcess'.
 {#fun qlKlugeExtOUProcess as klugeExtOuProcess{`Double' -- ^rho
   ,withGenStochasticProcess*`ExtOUWithJumpsProcess',withGenStochasticProcess1D*`ExtendedOrnsteinUhlenbeckProcess',preErrorCheck-`String'errorCheck*-}->`KlugeExtOUProcess'peekKlugeExtOUProcess*#}
 
