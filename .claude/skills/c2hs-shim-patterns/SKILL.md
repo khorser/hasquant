@@ -18,6 +18,37 @@ small Haskell wrapper: reference selection is construction-time data, not a muta
 abstracting variable-arity constructor functions through TH obscures the public type. A genuinely
 different upstream tail remains an explicit `Moving` function.
 
+## Collapsing an overload set behind a coordinate ADT
+
+Collapse when one ADT serves **two or more** functions whose remaining arguments are identical;
+a single function behind its own new type is not worth it. Existing types, all dispatched by a
+`case` in a hand-written wrapper over private `…AtDateRaw`/`…AtTimeRaw`/`…Fixed`/`…MovingRaw`
+bindings: `TermPoint`, `TermInterval`, `RatePoint`, `RateInterval` (`QuantLib/TermStructure.chs`),
+`OptionMaturity`/`SwapMaturity` (`TermStructure/Volatility.chs`), `AccrualPeriod`/
+`EquivalentPeriod` (`InterestRate.chs`), `Discounting`/`BpsDiscounting` (`CashFlow.chs`),
+`StrikeSpec`/`IntegrationControl`/`LatticeTime`/`FdmGrid` (`PricingEngine.chs`), `SwaptionSpan`
+(`Model.chs`). `TermStructure/Credit.chs` is the reference implementation.
+
+Rules learned the hard way:
+
+- **Every constructor maps to exactly one upstream shim.** Never synthesize a combination
+  upstream lacks by converting between coordinates (a `yearFraction` call to turn a date into a
+  time changes the result, and hides that it did). If the coordinates must agree, put both
+  endpoints in one constructor — that is what `TermInterval`/`RateInterval` are for, and why two
+  separate point arguments are wrong.
+- **A day counter required only by the date form belongs inside that constructor**, not as a
+  separate parameter: `RatePoint`'s `RateAtDate !Day !DayCounter` against `TermPoint`, and
+  `EquivalentPeriod` against `AccrualPeriod`.
+- **When one function supports fewer cases than its siblings, give it a restricted projection**
+  so the unsupported case cannot type-check — `BpsDiscounting` beside `Discounting` (upstream has
+  no Z-spreaded `bps`), as `LocalBootstrapTrait` does beside `BootstrapTrait`.
+- **Grep the constructor names before committing to them.** `DiscountCurve` was already a
+  `CashAnnuityModel` value, so `Discounting` uses `Discounting*` throughout.
+- Two exports that differ only in a representation Haskell already makes identical are redundant,
+  not collapsible: upstream's `blackFormula` payoff overloads only forwarded a
+  `PlainVanillaPayoff`'s type and strike, which is what the Haskell value already is. Delete
+  those rather than wrapping them in an ADT.
+
 ## `{#pointer#}` flags and bare-backtick return specs
 
 **`{#pointer#}` flags decide what a bare-backtick `{#fun#}` return spec
