@@ -444,6 +444,11 @@ enum EndCriteriaType {EndNone,
 // math/statistics/histogram.hpp
 enum HistogramAlgorithm {HistogramNone, Sturges, FD, Scott};
 
+// math/matrixutilities/pseudosqrt.hpp
+// SalvagingAlgorithm::None is prefixed here because plain "None" already belongs to
+// Probabilities above -- C enumerators share one namespace per TU.
+enum SalvagingAlgorithm {SalvagingNone, Spectral, Hypersphere, LowerDiagonal, Higham, Principal};
+
 // methods/finitedifferences/boundarycondition.hpp
 enum BoundaryConditionSide {BoundaryNone, Upper, Lower};
 

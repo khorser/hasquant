@@ -33,6 +33,9 @@
 #include <ql/math/statistics/sequencestatistics.hpp>
 #include <ql/math/statistics/riskstatistics.hpp>
 #include <ql/math/array.hpp>
+#include <ql/math/matrixutilities/symmetricschurdecomposition.hpp>
+#include <ql/math/matrixutilities/pseudosqrt.hpp>
+#include <ql/math/matrixutilities/choleskydecomposition.hpp>
 #include <ql/prices.hpp>
 #include <ql/models/volatility/garch.hpp>
 #include <ql/models/volatility/garmanklass.hpp>
@@ -718,6 +721,53 @@ double qlRiskStatisticsShortfall(unsigned n, double *xs, double y, char **e) {
 double qlRiskStatisticsAverageShortfall(unsigned n, double *xs, double y, char **e) {
   try {return riskStats(n, xs).averageShortfall(y);
   } catch (std::exception& er) {return handleException<double>(e, er);}}
+
+void qlSymmetricSchurDecomposition(unsigned rows, unsigned cols, double *m,
+    unsigned *valuesLen, double **values,
+    unsigned *vectorRows, unsigned *vectorCols, unsigned *vectorsLen, double **vectors, char **e) {
+  // Both outputs are staged and committed together, so a failure building either leaves neither
+  // array published.
+  OutArrayResult<double> valueResult(valuesLen, values);
+  OutValue<unsigned> rowResult(vectorRows), colResult(vectorCols);
+  OutArrayResult<double> vectorResult(vectorsLen, vectors);
+  try {
+    SymmetricSchurDecomposition dec(qlMatrix(m, rows, cols));
+    const Array& d = dec.eigenvalues();
+    const Matrix& u = dec.eigenvectors();
+    std::copy(d.begin(), d.end(), valueResult.allocate((unsigned)d.size()));
+    std::copy(u.begin(), u.end(), vectorResult.allocate((unsigned)(u.rows() * u.columns())));
+    rowResult.set((unsigned)u.rows());
+    colResult.set((unsigned)u.columns());
+    valueResult.commit();
+    vectorResult.commit();
+    rowResult.commit();
+    colResult.commit();
+  } catch (std::exception& er) {handleException<double*>(e, er);}}
+
+void qlPseudoSqrt(unsigned rows, unsigned cols, double *m, int salvaging,
+    unsigned *outRows, unsigned *outCols, unsigned *len, double **vs, char **e) {
+  try {fillMatrixOut([&] {return pseudoSqrt(qlMatrix(m, rows, cols), (SalvagingAlgorithm::Type)salvaging);},
+      outRows, outCols, len, vs);
+  } catch (std::exception& er) {handleException<double*>(e, er);}}
+
+void qlRankReducedSqrt(unsigned rows, unsigned cols, double *m, unsigned maxRank,
+    double componentRetainedPercentage, int salvaging,
+    unsigned *outRows, unsigned *outCols, unsigned *len, double **vs, char **e) {
+  try {fillMatrixOut([&] {return rankReducedSqrt(qlMatrix(m, rows, cols), maxRank,
+        componentRetainedPercentage, (SalvagingAlgorithm::Type)salvaging);},
+      outRows, outCols, len, vs);
+  } catch (std::exception& er) {handleException<double*>(e, er);}}
+
+void qlCholeskyDecomposition(unsigned rows, unsigned cols, double *m, int flexible,
+    unsigned *outRows, unsigned *outCols, unsigned *len, double **vs, char **e) {
+  try {fillMatrixOut([&] {return CholeskyDecomposition(qlMatrix(m, rows, cols), flexible != 0);},
+      outRows, outCols, len, vs);
+  } catch (std::exception& er) {handleException<double*>(e, er);}}
+
+void qlCholeskySolveFor(unsigned rows, unsigned cols, double *l, unsigned bLen, double *b,
+    unsigned *len, double **vs, char **e) {
+  try {fillVectorOut([&] {return CholeskySolveFor(qlMatrix(l, rows, cols), Array(b, b + bLen));}, len, vs);
+  } catch (std::exception& er) {handleException<double*>(e, er);}}
 
 Rounding* qlRounding(char **e) {try {return alloc(new Rounding());} catch (std::exception& er) {return handleException<Rounding*>(e, er);}}
 Rounding* qlRounding1(int precision, int type, int digit, char **e) {try {return alloc(new Rounding(precision, (Rounding::Type)type, digit));} catch (std::exception& er) {return handleException<Rounding*>(e, er);}}

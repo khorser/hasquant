@@ -4645,8 +4645,8 @@
 | |ql/math/matrixutilities/basisincompleteordered.hpp|Size OrthogonalProjections::numberValidVectors() const;
 | |ql/math/matrixutilities/bicgstab.hpp|BiCGstab::BiCGstab(MatrixMult A, Size maxIter, Real relTol, MatrixMult preConditioner = MatrixMult());
 | |ql/math/matrixutilities/bicgstab.hpp|BiCGStabResult BiCGstab::solve(const Array & b, const Array & x0 = Array()) const;
-| |ql/math/matrixutilities/choleskydecomposition.hpp|Matrix CholeskyDecomposition(const Matrix & m, bool flexible = false);
-| |ql/math/matrixutilities/choleskydecomposition.hpp|Array CholeskySolveFor(const Matrix & L, const Array & b);
+|v|ql/math/matrixutilities/choleskydecomposition.hpp|Matrix CholeskyDecomposition(const Matrix & m, bool flexible = false);
+|v|ql/math/matrixutilities/choleskydecomposition.hpp|Array CholeskySolveFor(const Matrix & L, const Array & b);
 | |ql/math/matrixutilities/expm.hpp|Matrix Expm(const Matrix & M, Real t = 1.0, Real tol = QL_EPSILON);
 | |ql/math/matrixutilities/factorreduction.hpp|std::vector<Real> factorReduction(Matrix mtrx, Size maxIters = 25);
 | |ql/math/matrixutilities/getcovariance.hpp|CovarianceDecomposition::CovarianceDecomposition(const Matrix & covarianceMatrix, Real tolerance = 1.0e-12);
@@ -4662,8 +4662,8 @@
 | |ql/math/matrixutilities/householder.hpp|HouseholderReflection::HouseholderReflection(Array e);
 | |ql/math/matrixutilities/householder.hpp|Array HouseholderReflection::operator()(const Array & a) const;
 | |ql/math/matrixutilities/householder.hpp|Array HouseholderReflection::reflectionVector(const Array & a) const;
-| |ql/math/matrixutilities/pseudosqrt.hpp|Matrix pseudoSqrt(const Matrix &, SalvagingAlgorithm::Type = SalvagingAlgorithm::None);
-| |ql/math/matrixutilities/pseudosqrt.hpp|Matrix rankReducedSqrt(const Matrix &, Size maxRank, Real componentRetainedPercentage, SalvagingAlgorithm::Type);
+|v|ql/math/matrixutilities/pseudosqrt.hpp|Matrix pseudoSqrt(const Matrix &, SalvagingAlgorithm::Type = SalvagingAlgorithm::None);
+|v|ql/math/matrixutilities/pseudosqrt.hpp|Matrix rankReducedSqrt(const Matrix &, Size maxRank, Real componentRetainedPercentage, SalvagingAlgorithm::Type);
 | |ql/math/matrixutilities/qrdecomposition.hpp|std::vector<Size> qrDecomposition(const Matrix & A, Matrix & q, Matrix & r, bool pivot = true);
 | |ql/math/matrixutilities/qrdecomposition.hpp|Array qrSolve(const Matrix & a, const Array & b, bool pivot = true, const Array & d = Array());
 | |ql/math/matrixutilities/sparseilupreconditioner.hpp|SparseILUPreconditioner::SparseILUPreconditioner(const SparseMatrix & A, Integer lfil = 1);
@@ -4680,9 +4680,9 @@
 | |ql/math/matrixutilities/svd.hpp|Real SVD::cond() const;
 | |ql/math/matrixutilities/svd.hpp|Size SVD::rank() const;
 | |ql/math/matrixutilities/svd.hpp|Array SVD::solveFor(const Array &) const;
-| |ql/math/matrixutilities/symmetricschurdecomposition.hpp|SymmetricSchurDecomposition::SymmetricSchurDecomposition(const Matrix & s);
-| |ql/math/matrixutilities/symmetricschurdecomposition.hpp|const Array & SymmetricSchurDecomposition::eigenvalues() const;
-| |ql/math/matrixutilities/symmetricschurdecomposition.hpp|const Matrix & SymmetricSchurDecomposition::eigenvectors() const;
+|v|ql/math/matrixutilities/symmetricschurdecomposition.hpp|SymmetricSchurDecomposition::SymmetricSchurDecomposition(const Matrix & s);
+|v|ql/math/matrixutilities/symmetricschurdecomposition.hpp|const Array & SymmetricSchurDecomposition::eigenvalues() const;
+|v|ql/math/matrixutilities/symmetricschurdecomposition.hpp|const Matrix & SymmetricSchurDecomposition::eigenvectors() const;
 | |ql/math/matrixutilities/symmetricschurdecomposition.hpp|void jacobiRotate_(Matrix & m, Real rot, Real dil, Size j1, Size k1, Size j2, Size k2) const;
 | |ql/math/matrixutilities/tapcorrelations.hpp|Matrix triangularAnglesParametrization(const Array & angles, Size matrixSize, Size rank);
 | |ql/math/matrixutilities/tapcorrelations.hpp|Matrix lmmTriangularAnglesParametrization(const Array & angles, Size matrixSize, Size rank);

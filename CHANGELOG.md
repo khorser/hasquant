@@ -1,8 +1,9 @@
 ## 0.7.0.0 (2026)
 
 The final broad API-coverage batch adds Haskell callbacks for payoffs, optimization, regression and
-finite-difference workflows, wider pricing and curve support, index history analysis, a standalone
-SOFR-OIS exposure example, and substantially more upstream-derived test coverage. Collections now
+finite-difference workflows, wider pricing and curve support, index history analysis with the
+matrix decompositions that feed PCA and correlation salvaging, a standalone SOFR-OIS exposure
+example, and substantially more upstream-derived test coverage. Collections now
 encode emptiness and numeric scale more precisely, and the C++ shims share more of their template
 dispatch and allocation plumbing.
 

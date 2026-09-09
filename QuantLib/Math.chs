@@ -45,6 +45,14 @@ module QuantLib.Math
   , realMatrixFromVector
   , objectMatrix
 
+    -- * Matrix decompositions
+  , SalvagingAlgorithm(..)
+  , symmetricSchurDecomposition
+  , pseudoSqrt
+  , rankReducedSqrt
+  , choleskyDecomposition
+  , choleskySolveFor
+
     -- * Vectors
   , RealVector
   , NonEmptyVector
@@ -109,6 +117,10 @@ import Foreign.Marshal.Alloc(alloca)
 {#enum ComplexLogFormula{} deriving(Show, Eq, Read)#}
 {#enum CmsMarketCalibrationType{} deriving(Show, Eq, Read)#}
 {#enum SobolDirectionIntegers{} deriving(Show, Eq, Read)#}
+
+-- |Algorithm used to salvage a matrix that is not positive semi-definite before taking its
+-- pseudo square root. @Higham@ only works for correlation matrices.
+{#enum SalvagingAlgorithm{} deriving(Show, Eq, Read)#}
 
 {#pointer *TimeGrid foreign -> CTimeGrid nocode#}
 {#pointer *Rounding as QlRounding foreign -> CRounding nocode#}
@@ -276,5 +288,72 @@ import Foreign.Marshal.Alloc(alloca)
 {#fun qlRiskStatisticsAverageShortfall as riskStatisticsAverageShortfall{withRealVector*`RealVector'& -- ^sample
   ,`Double' -- ^target
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+toMatrixDouble :: (Word, Word, [Double]) -> Matrix Double
+toMatrixDouble (r, c, d) = Matrix r c d
+
+-- |Eigenvalues and eigenvectors of a real symmetric matrix, computed by the symmetric threshold
+-- Jacobi algorithm. The eigenvalues come back in decreasing order, and the eigenvectors are the
+-- /columns/ of the returned matrix: column @i@ belongs to the @i@-th eigenvalue.
+symmetricSchurDecomposition :: Matrix Double -- ^symmetric matrix
+  -> IO ([Double], Matrix Double) -- ^eigenvalues, eigenvectors as columns
+symmetricSchurDecomposition (Matrix mr mc md) = do
+  (values, r, c, vectors) <- qlSymmetricSchurDecomposition mr mc md
+  pure (values, Matrix r c vectors)
+{#fun qlSymmetricSchurDecomposition{fromIntegral`Word',fromIntegral`Word',withDoubleArrayRaw*`[Double]'
+  ,preArray-`[Double]'&peekDoubleArray*
+  ,prePtr-`Word'peekWord*,prePtr-`Word'peekWord*,preArray-`[Double]'&peekDoubleArray*
+  ,preErrorCheck-`String'errorCheck*-}->`()'#}
+
+-- |Pseudo square root @S@ of a real symmetric matrix @M@, i.e. the matrix with @S*transpose S == M@.
+-- When @M@ is not positive semi-definite the given 'SalvagingAlgorithm' approximates it; with
+-- 'SalvagingNone' a non-positive-semi-definite input throws instead.
+pseudoSqrt :: Matrix Double -- ^symmetric matrix
+  -> SalvagingAlgorithm
+  -> IO (Matrix Double)
+pseudoSqrt (Matrix mr mc md) salvaging = toMatrixDouble <$> qlPseudoSqrt mr mc md salvaging
+{#fun qlPseudoSqrt{fromIntegral`Word',fromIntegral`Word',withDoubleArrayRaw*`[Double]'
+  ,fromEnumC`SalvagingAlgorithm'
+  ,prePtr-`Word'peekWord*,prePtr-`Word'peekWord*,preArray-`[Double]'&peekDoubleArray*
+  ,preErrorCheck-`String'errorCheck*-}->`()'#}
+
+-- |Rank-reduced pseudo square root of a real symmetric matrix: the result has rank at most
+-- @maxRank@. If @maxRank@ reaches the matrix size, the given percentage of the eigenvalues' sum
+-- is retained instead.
+rankReducedSqrt :: Matrix Double -- ^symmetric matrix
+  -> Word -- ^maxRank
+  -> Double -- ^componentRetainedPercentage
+  -> SalvagingAlgorithm
+  -> IO (Matrix Double)
+rankReducedSqrt (Matrix mr mc md) maxRank retained salvaging =
+  toMatrixDouble <$> qlRankReducedSqrt mr mc md maxRank retained salvaging
+{#fun qlRankReducedSqrt{fromIntegral`Word',fromIntegral`Word',withDoubleArrayRaw*`[Double]'
+  ,fromIntegral`Word',`Double',fromEnumC`SalvagingAlgorithm'
+  ,prePtr-`Word'peekWord*,prePtr-`Word'peekWord*,preArray-`[Double]'&peekDoubleArray*
+  ,preErrorCheck-`String'errorCheck*-}->`()'#}
+
+-- |Cholesky factor @L@ of a symmetric positive-definite matrix @M@, i.e. the lower-triangular
+-- matrix with @L*transpose L == M@. Pass @True@ for @flexible@ to accept a merely positive
+-- /semi/-definite (rank-deficient) input, whose factor is completed with zeroes rather than
+-- producing @nan@.
+choleskyDecomposition :: Matrix Double -- ^symmetric matrix
+  -> Bool -- ^flexible
+  -> IO (Matrix Double)
+choleskyDecomposition (Matrix mr mc md) flexible = toMatrixDouble <$> qlCholeskyDecomposition mr mc md flexible
+{#fun qlCholeskyDecomposition{fromIntegral`Word',fromIntegral`Word',withDoubleArrayRaw*`[Double]'
+  ,`Bool'
+  ,prePtr-`Word'peekWord*,prePtr-`Word'peekWord*,preArray-`[Double]'&peekDoubleArray*
+  ,preErrorCheck-`String'errorCheck*-}->`()'#}
+
+-- |Solves @M*x == b@ given the Cholesky factor @L@ of @M@ -- the first argument is the factor
+-- returned by 'choleskyDecomposition', not @M@ itself.
+choleskySolveFor :: Matrix Double -- ^Cholesky factor L
+  -> [Double] -- ^b
+  -> IO [Double]
+choleskySolveFor (Matrix mr mc md) b = qlCholeskySolveFor mr mc md b
+{#fun qlCholeskySolveFor{fromIntegral`Word',fromIntegral`Word',withDoubleArrayRaw*`[Double]'
+  ,withDoubleArray*`[Double]'&
+  ,preArray-`[Double]'&peekDoubleArray*
+  ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

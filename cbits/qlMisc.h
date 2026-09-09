@@ -123,6 +123,24 @@ extern "C" {
   double qlRiskStatisticsShortfall(unsigned n, double *xs, double y, char **e);
   double qlRiskStatisticsAverageShortfall(unsigned n, double *xs, double y, char **e);
 
+  /* Matrix decompositions (ql/math/matrixutilities/{symmetricschurdecomposition,pseudosqrt,
+     choleskydecomposition}.hpp) -- free functions over a caller-supplied matrix, passed flat
+     row-major as (rows, cols, double*) and returned the same way, with no decomposition object
+     surfaced to Haskell. All of them require a symmetric input; qlCholeskySolveFor takes the
+     lower-triangular factor L, not the original matrix. */
+  void qlSymmetricSchurDecomposition(unsigned rows, unsigned cols, double *m,
+      unsigned *valuesLen, double **values,
+      unsigned *vectorRows, unsigned *vectorCols, unsigned *vectorsLen, double **vectors, char **e);
+  void qlPseudoSqrt(unsigned rows, unsigned cols, double *m, int salvaging,
+      unsigned *outRows, unsigned *outCols, unsigned *len, double **vs, char **e);
+  void qlRankReducedSqrt(unsigned rows, unsigned cols, double *m, unsigned maxRank,
+      double componentRetainedPercentage, int salvaging,
+      unsigned *outRows, unsigned *outCols, unsigned *len, double **vs, char **e);
+  void qlCholeskyDecomposition(unsigned rows, unsigned cols, double *m, int flexible,
+      unsigned *outRows, unsigned *outCols, unsigned *len, double **vs, char **e);
+  void qlCholeskySolveFor(unsigned rows, unsigned cols, double *l, unsigned bLen, double *b,
+      unsigned *len, double **vs, char **e);
+
   void qlFreeRounding(Rounding *o);
   Rounding* qlRounding(char **e);
   Rounding* qlRounding1(int precision, int type, int digit, char **e);

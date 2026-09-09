@@ -129,8 +129,6 @@ module QuantLib.TermStructure.Volatility
     -- * Bond and cap-floor inspectors
   , callableBondConstantVolatility
   , maxBondTenor
-  , minStrike
-  , maxStrike
   , constantCapFloorTermVolatility
   , capFloorVolatility
   , capFloorTermVolCurveOptionDates
