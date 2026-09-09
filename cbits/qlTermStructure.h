@@ -12,6 +12,8 @@ extern "C" {
   QlOptionletVolatilityStructure* qlOptionletStripper1(QlCapFloorTermVolSurface* surface, QlIborIndex* index, double switchStrikes, double accuracy, unsigned maxIter, QlYieldTermStructure* discount, int type, double displacement, int dontThrow, int optionletFrequencyLen, int optionletFrequencyUnit, char **e);
   void qlFreeVolatilityTermStructure(QlVolatilityTermStructure *o);
   QlTermStructure* qlVolatilityTermStructureAsTermStructure(QlVolatilityTermStructure *o);
+  double qlVolatilityTermStructureMinStrike(QlVolatilityTermStructure* o, char **e);
+  double qlVolatilityTermStructureMaxStrike(QlVolatilityTermStructure* o, char **e);
   void qlFreeBlackAtmVolCurve(QlBlackAtmVolCurve *o);
   QlVolatilityTermStructure* qlBlackAtmVolCurveAsVolatilityTermStructure(QlBlackAtmVolCurve *o);
   void qlFreeBlackVolSurface(QlBlackVolSurface *o);
@@ -57,6 +59,14 @@ extern "C" {
   void qlOptionletStripper2SpreadsVol(QlOptionletStripper2* o, unsigned *count, double **vs, char **e);
   void qlFreeBlackVolTermStructure(QlBlackVolTermStructure *o);
   QlVolatilityTermStructure* qlBlackVolTermStructureAsVolatilityTermStructure(QlBlackVolTermStructure *o);
+  double qlBlackVolTermStructureBlackVol(QlBlackVolTermStructure* o, int d, double strike, int extrapolate, char **e);
+  double qlBlackVolTermStructureBlackVol1(QlBlackVolTermStructure* o, double t, double strike, int extrapolate, char **e);
+  double qlBlackVolTermStructureBlackVariance(QlBlackVolTermStructure* o, int d, double strike, int extrapolate, char **e);
+  double qlBlackVolTermStructureBlackVariance1(QlBlackVolTermStructure* o, double t, double strike, int extrapolate, char **e);
+  double qlBlackVolTermStructureBlackForwardVol(QlBlackVolTermStructure* o, int d1, int d2, double strike, int extrapolate, char **e);
+  double qlBlackVolTermStructureBlackForwardVol1(QlBlackVolTermStructure* o, double t1, double t2, double strike, int extrapolate, char **e);
+  double qlBlackVolTermStructureBlackForwardVariance(QlBlackVolTermStructure* o, int d1, int d2, double strike, int extrapolate, char **e);
+  double qlBlackVolTermStructureBlackForwardVariance1(QlBlackVolTermStructure* o, double t1, double t2, double strike, int extrapolate, char **e);
   QlRelinkableBlackVolTermStructure* qlRelinkableBlackVolTermStructure(QlBlackVolTermStructure *initial, char **e);
   void qlFreeRelinkableBlackVolTermStructure(QlRelinkableBlackVolTermStructure *o);
   void qlRelinkableBlackVolTermStructureLinkTo(QlRelinkableBlackVolTermStructure *o, QlBlackVolTermStructure *c, char **e);

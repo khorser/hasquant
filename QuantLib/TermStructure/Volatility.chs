@@ -42,9 +42,11 @@ module QuantLib.TermStructure.Volatility
   , Reference(..)
   , CalendarReference(..)
   , TermPoint(..)
+  , TermInterval(..)
   , RatePoint(..)
   , HasBlackVariance(..)
   , HasVolatility(..)
+  , HasStrikeBounds(..)
   , HasBondSmileSection(..)
   , HasVolatilitySpreads(..)
   , HasAtmStrike(..)
@@ -78,6 +80,10 @@ module QuantLib.TermStructure.Volatility
   , blackConstantVol
   , relinkableBlackVolTermStructure
   , linkBlackVolTo
+  , blackVol
+  , blackVolVariance
+  , blackForwardVol
+  , blackForwardVariance
   , constantSwaptionVolatility
   , maxSwapLength
   , maxSwapTenor
@@ -223,7 +229,7 @@ import QuantLib.Internal
 import QuantLib.Internal.Type
 import QuantLib.Internal.Common
 import QuantLib.Internal.Syntax(deriveOptionsRecord)
-import QuantLib.TermStructure(Reference(..), CalendarReference(..), TermPoint(..), RatePoint(..))
+import QuantLib.TermStructure(Reference(..), CalendarReference(..), TermPoint(..), TermInterval(..), RatePoint(..))
 import QuantLib.Time.Schedule(dayCounter, DayCounterConstructor(..))
 import Data.List.NonEmpty(NonEmpty, toList)
 import Foreign.Marshal.Alloc(alloca)
@@ -585,6 +591,62 @@ blackConstantVol reference cal = case reference of
 -- 'QuantLib.TermStructure.Yield.linkTo' -- see its haddock for why this mutator is justified.
 {#fun qlRelinkableBlackVolTermStructureLinkTo as linkBlackVolTo{withRelinkableBlackVolTermStructure*`RelinkableBlackVolTermStructure'
   ,withBlackVolTermStructure*`GenBlackVolTermStructure bv',preErrorCheck-`String'errorCheck*-}->`()'#}
+
+{#fun qlBlackVolTermStructureBlackVol as blackVolAtDateRaw{withBlackVolTermStructure*`GenBlackVolTermStructure bv',withDay*`Day',`Double' -- ^strike
+  ,`Bool' -- ^extrapolate
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlBlackVolTermStructureBlackVol1 as blackVolAtTimeRaw{withBlackVolTermStructure*`GenBlackVolTermStructure bv',`Double',`Double' -- ^strike
+  ,`Bool' -- ^extrapolate
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |Black volatility for the given maturity and strike.
+blackVol :: GenBlackVolTermStructure bv -> TermPoint -> Double -> Bool -> IO Double
+blackVol surface point strike = case point of
+  DatePoint d -> blackVolAtDateRaw surface d strike
+  TimePoint t -> blackVolAtTimeRaw surface t strike
+
+{#fun qlBlackVolTermStructureBlackVariance as blackVarianceAtDateRaw{withBlackVolTermStructure*`GenBlackVolTermStructure bv',withDay*`Day',`Double' -- ^strike
+  ,`Bool' -- ^extrapolate
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlBlackVolTermStructureBlackVariance1 as blackVarianceAtTimeRaw{withBlackVolTermStructure*`GenBlackVolTermStructure bv',`Double',`Double' -- ^strike
+  ,`Bool' -- ^extrapolate
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |Black variance for the given maturity and strike. Named 'blackVolVariance' (not
+-- 'blackVariance') because that bare name is already the 'HasBlackVariance' class method for the
+-- two-maturity swaption\/callable-bond family, a different arity and semantics.
+blackVolVariance :: GenBlackVolTermStructure bv -> TermPoint -> Double -> Bool -> IO Double
+blackVolVariance surface point strike = case point of
+  DatePoint d -> blackVarianceAtDateRaw surface d strike
+  TimePoint t -> blackVarianceAtTimeRaw surface t strike
+
+{#fun qlBlackVolTermStructureBlackForwardVol as blackForwardVolBetweenDatesRaw{withBlackVolTermStructure*`GenBlackVolTermStructure bv',withDay*`Day',withDay*`Day',`Double' -- ^strike
+  ,`Bool' -- ^extrapolate
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlBlackVolTermStructureBlackForwardVol1 as blackForwardVolBetweenTimesRaw{withBlackVolTermStructure*`GenBlackVolTermStructure bv',`Double',`Double',`Double' -- ^strike
+  ,`Bool' -- ^extrapolate
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |Forward (at-the-money) Black volatility between two dates or year fractions, for the given
+-- strike.
+blackForwardVol :: GenBlackVolTermStructure bv -> TermInterval -> Double -> Bool -> IO Double
+blackForwardVol surface interval strike = case interval of
+  DateInterval d1 d2 -> blackForwardVolBetweenDatesRaw surface d1 d2 strike
+  TimeInterval t1 t2 -> blackForwardVolBetweenTimesRaw surface t1 t2 strike
+
+{#fun qlBlackVolTermStructureBlackForwardVariance as blackForwardVarianceBetweenDatesRaw{withBlackVolTermStructure*`GenBlackVolTermStructure bv',withDay*`Day',withDay*`Day',`Double' -- ^strike
+  ,`Bool' -- ^extrapolate
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlBlackVolTermStructureBlackForwardVariance1 as blackForwardVarianceBetweenTimesRaw{withBlackVolTermStructure*`GenBlackVolTermStructure bv',`Double',`Double',`Double' -- ^strike
+  ,`Bool' -- ^extrapolate
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |Forward (at-the-money) Black variance between two dates or year fractions, for the given
+-- strike.
+blackForwardVariance :: GenBlackVolTermStructure bv -> TermInterval -> Double -> Bool -> IO Double
+blackForwardVariance surface interval strike = case interval of
+  DateInterval d1 d2 -> blackForwardVarianceBetweenDatesRaw surface d1 d2 strike
+  TimeInterval t1 t2 -> blackForwardVarianceBetweenTimesRaw surface t1 t2 strike
 
 -- |Constant swaption volatility with either a fixed or evaluation-date-relative reference point.
 constantSwaptionVolatility :: CalendarReference -> Calendar -> BusinessDayConvention
@@ -1321,11 +1383,26 @@ instance HasBondSmileSection CallableBondVolatilityStructure (Word, TimeUnit) (W
 -- |The largest bond tenor for which the structure can return vols.
 {#fun qlCallableBondVolatilityStructureMaxBondTenor as maxBondTenor{withGenTermStructure*`CallableBondVolatilityStructure',preEnum-`TimeUnit'peekEnum*,preErrorCheck-`String'errorCheck*-}->`Int'#}
 
--- |The minimum strike for which the structure can return vols.
-{#fun qlCallableBondVolatilityStructureMinStrike as minStrike{withGenTermStructure*`CallableBondVolatilityStructure',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlCallableBondVolatilityStructureMinStrike as minStrikeCallableBondRaw{withGenTermStructure*`CallableBondVolatilityStructure',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlCallableBondVolatilityStructureMaxStrike as maxStrikeCallableBondRaw{withGenTermStructure*`CallableBondVolatilityStructure',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
--- |The maximum strike for which the structure can return vols.
-{#fun qlCallableBondVolatilityStructureMaxStrike as maxStrike{withGenTermStructure*`CallableBondVolatilityStructure',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlVolatilityTermStructureMinStrike as minStrikeGenericRaw{withVolatilityTermStructure*`GenVolatilityTermStructure v',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlVolatilityTermStructureMaxStrike as maxStrikeGenericRaw{withVolatilityTermStructure*`GenVolatilityTermStructure v',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |The minimum and maximum strike for which a structure can return vols. 'CallableBondVolatilityStructure'
+-- declares its own unrelated pair (it inherits 'TermStructure' directly, not 'VolatilityTermStructure'),
+-- so the two families need separate instances -- same shape as 'HasVolatility'\/'HasBlackVariance' above.
+class HasStrikeBounds structure where
+  minStrike :: structure -> IO Double
+  maxStrike :: structure -> IO Double
+
+instance HasStrikeBounds CallableBondVolatilityStructure where
+  minStrike = minStrikeCallableBondRaw
+  maxStrike = maxStrikeCallableBondRaw
+
+instance HasStrikeBounds (GenVolatilityTermStructure v) where
+  minStrike = minStrikeGenericRaw
+  maxStrike = maxStrikeGenericRaw
 
 -- |Constant cap/floor term volatility with either a fixed or evaluation-date-relative reference
 -- point.

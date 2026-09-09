@@ -210,6 +210,30 @@ void qlFreeBlackVolTermStructure(QlBlackVolTermStructure *o) {del(o);}
 // VolatilityTermStructure is never a Handle upstream (confirmed by grep), so this is a
 // deliberate snapshot detach -- same reasoning as qlYieldTermStructureAsTermStructure.
 QlVolatilityTermStructure* qlBlackVolTermStructureAsVolatilityTermStructure(QlBlackVolTermStructure *o) {return ret(new QlVolatilityTermStructure(handlePtr(arg(o))));}
+double qlBlackVolTermStructureBlackVol(QlBlackVolTermStructure* o, int d, double strike, int extrapolate, char **e) {
+  try {return (*arg(o))->blackVol(Date(d), strike, extrapolate);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlBlackVolTermStructureBlackVol1(QlBlackVolTermStructure* o, double t, double strike, int extrapolate, char **e) {
+  try {return (*arg(o))->blackVol(t, strike, extrapolate);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlBlackVolTermStructureBlackVariance(QlBlackVolTermStructure* o, int d, double strike, int extrapolate, char **e) {
+  try {return (*arg(o))->blackVariance(Date(d), strike, extrapolate);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlBlackVolTermStructureBlackVariance1(QlBlackVolTermStructure* o, double t, double strike, int extrapolate, char **e) {
+  try {return (*arg(o))->blackVariance(t, strike, extrapolate);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlBlackVolTermStructureBlackForwardVol(QlBlackVolTermStructure* o, int d1, int d2, double strike, int extrapolate, char **e) {
+  try {return (*arg(o))->blackForwardVol(Date(d1), Date(d2), strike, extrapolate);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlBlackVolTermStructureBlackForwardVol1(QlBlackVolTermStructure* o, double t1, double t2, double strike, int extrapolate, char **e) {
+  try {return (*arg(o))->blackForwardVol(t1, t2, strike, extrapolate);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlBlackVolTermStructureBlackForwardVariance(QlBlackVolTermStructure* o, int d1, int d2, double strike, int extrapolate, char **e) {
+  try {return (*arg(o))->blackForwardVariance(Date(d1), Date(d2), strike, extrapolate);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlBlackVolTermStructureBlackForwardVariance1(QlBlackVolTermStructure* o, double t1, double t2, double strike, int extrapolate, char **e) {
+  try {return (*arg(o))->blackForwardVariance(t1, t2, strike, extrapolate);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
 
 // A relinkable handle, empty when `initial` is null -- mirrors qlRelinkableYieldTermStructure.
 QlRelinkableBlackVolTermStructure* qlRelinkableBlackVolTermStructure(QlBlackVolTermStructure *initial, char **e) {
@@ -222,6 +246,12 @@ void qlRelinkableBlackVolTermStructureLinkTo(QlRelinkableBlackVolTermStructure *
 QlBlackVolTermStructure* qlRelinkableBlackVolTermStructureAsBlackVolTermStructure(QlRelinkableBlackVolTermStructure *o) {return ret(new QlBlackVolTermStructure(*arg(o)));}
 void qlFreeVolatilityTermStructure(QlVolatilityTermStructure *o) {del(o);}
 QlTermStructure* qlVolatilityTermStructureAsTermStructure(QlVolatilityTermStructure *o) {return ret(new QlTermStructure(*arg(o)));}
+double qlVolatilityTermStructureMinStrike(QlVolatilityTermStructure* o, char **e) {
+  try {return (*arg(o))->minStrike();
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlVolatilityTermStructureMaxStrike(QlVolatilityTermStructure* o, char **e) {
+  try {return (*arg(o))->maxStrike();
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
 void qlFreeBlackAtmVolCurve(QlBlackAtmVolCurve *o) {del(o);}
 QlVolatilityTermStructure* qlBlackAtmVolCurveAsVolatilityTermStructure(QlBlackAtmVolCurve *o) {return ret(new QlVolatilityTermStructure(handlePtr(arg(o))));}
 void qlFreeBlackVolSurface(QlBlackVolSurface *o) {del(o);}

@@ -1404,12 +1404,52 @@ spec = do
 
     -- PiecewiseBlackVarianceSurface::makeFromGrid: upstream's testMakeFromGrid
     -- (test-suite/piecewiseblackvariancesurface.cpp) has no cached NPV fixture, only
-    -- analytical self-consistency checks (exact reprice at grid nodes, etc). hasquant has no
-    -- blackVariance/blackVol inspector on the generic BlackVolTermStructure, so check the
+    -- analytical self-consistency checks (exact reprice at grid nodes, etc). Check the
     -- reprice-at-a-grid-node property indirectly through pricing: a European option struck and
     -- expiring exactly at a grid node must reprice identically under the piecewise surface and
     -- under a flat blackConstantVol at that node's own vol, since both surfaces have the same
     -- variance there.
+    describe "BlackVolTermStructure blackVol/blackVolVariance/blackForwardVol/blackForwardVariance/minStrike/maxStrike" $
+      it "agree between DatePoint/TimePoint and DateInterval/TimeInterval coordinates, and expose generic strike bounds" $
+        Settings.keepingSettingsGc $ do
+          let refDate = 11 `december` 2012
+              d1 = 11 `june` 2013
+              d2 = 11 `december` 2013
+              strike = 100
+              tolerance = 1.0e-6 :: Double
+          Settings.setEvaluationDate (Just refDate)
+          cal <- Calendar.calendar TARGET
+          q <- Quote.simpleQuote 0.20
+          dc <- dayCounter Actual365FixedStandard
+          surface <- Vol.blackConstantVol (Vol.CalendarReferenceDate refDate) cal q dc
+          t1 <- timeFromReference surface d1
+          t2 <- timeFromReference surface d2
+          volAtDate <- Vol.blackVol surface (DatePoint d1) strike False
+          volAtTime <- Vol.blackVol surface (TimePoint t1) strike False
+          volAtDate `shouldSatisfy` closePrec volAtTime tolerance
+          varAtDate <- Vol.blackVolVariance surface (DatePoint d1) strike False
+          varAtTime <- Vol.blackVolVariance surface (TimePoint t1) strike False
+          varAtDate `shouldSatisfy` closePrec varAtTime tolerance
+          -- constant-vol identity: variance = vol^2 * t
+          varAtDate `shouldSatisfy` closePrec (0.20 * 0.20 * t1) tolerance
+          fwdVolDates <- Vol.blackForwardVol surface (DateInterval d1 d2) strike False
+          fwdVolTimes <- Vol.blackForwardVol surface (TimeInterval t1 t2) strike False
+          fwdVolDates `shouldSatisfy` closePrec fwdVolTimes tolerance
+          fwdVarDates <- Vol.blackForwardVariance surface (DateInterval d1 d2) strike False
+          fwdVarTimes <- Vol.blackForwardVariance surface (TimeInterval t1 t2) strike False
+          fwdVarDates `shouldSatisfy` closePrec fwdVarTimes tolerance
+          -- upstream identity: forward variance between two points is the variance difference
+          varAtD2 <- Vol.blackVolVariance surface (DatePoint d2) strike False
+          fwdVarDates `shouldSatisfy` closePrec (varAtD2 - varAtDate) tolerance
+          -- BlackConstantVol::minStrike/maxStrike return QL_MIN_REAL/QL_MAX_REAL: exercise the
+          -- generic 'HasStrikeBounds (GenVolatilityTermStructure v)' instance through a real
+          -- BlackVolTermStructure value, distinct from the CallableBondVolatilityStructure
+          -- instance already covered below.
+          minK <- Vol.minStrike surface
+          maxK <- Vol.maxStrike surface
+          minK `shouldSatisfy` (< -1.0e300)
+          maxK `shouldSatisfy` (> 1.0e300)
+
     describe "piecewise Black variance surface" $
       it "reproduces the input vol exactly at a grid node" $
         Settings.keepingSettingsGc $ do
@@ -1449,8 +1489,7 @@ spec = do
     -- BlackVolatilitySurfaceDelta: cached fixture ported from upstream's
     -- testBlackVolSurfaceDeltaNonConstantVol (test-suite/blackvolsurfacedelta.cpp), which
     -- exercises blackVolSmile directly -- the one binding-specific getter this class adds over
-    -- the generic BlackVolTermStructure -- so no extra generic blackVol(t,k) inspector is
-    -- needed just to reuse it.
+    -- the generic BlackVolTermStructure.
     describe "black volatility surface delta" $
       it "reproduces upstream's cached smile volatilities" $
         Settings.keepingSettingsGc $ do
