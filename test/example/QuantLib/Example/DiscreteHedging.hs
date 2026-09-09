@@ -25,7 +25,7 @@ import QuantLib.Instrument.Option(OptionType(Call))
 import QuantLib.Math(RngTrait(PseudoRandom), timeGrid)
 import QuantLib.Method(pathGenerator, next, asset)
 import QuantLib.Process(blackScholesMertonProcess, ProcessDiscretization(EulerDiscretization))
-import QuantLib.PricingEngine(blackCalculator, value, delta)
+import QuantLib.PricingEngine(blackCalculator, StrikeSpec(..), value, delta)
 import QuantLib.Quote(simpleQuote)
 import QuantLib.Settings(setEvaluationDate)
 import QuantLib.Time.Date(today)
@@ -64,7 +64,7 @@ run = do
   volTS <- blackConstantVol (CalendarReferenceDate evalDate) cal sigmaQ dc
   process <- blackScholesMertonProcess s0Q dividendTS riskFreeTS volTS EulerDiscretization False
 
-  black0 <- blackCalculator Call strike (s0 * exp (r * maturity)) (sqrt (sigma * sigma * maturity)) (exp (- r * maturity))
+  black0 <- blackCalculator (Strike Call strike) (s0 * exp (r * maturity)) (sqrt (sigma * sigma * maturity)) (exp (- r * maturity))
   optValue <- value black0
 
   (mean21, sd21) <- compute process 21 nSamples
@@ -92,7 +92,7 @@ run = do
     plOfPath path@(s00 : _) = do
       let n = length path - 1
           dt = maturity / fromIntegral n
-      black00 <- blackCalculator Call strike s00 (sqrt (sigma * sigma * maturity)) (exp (- r * maturity))
+      black00 <- blackCalculator (Strike Call strike) s00 (sqrt (sigma * sigma * maturity)) (exp (- r * maturity))
       premium <- value black00
       delta0 <- delta black00 s00
       (moneyAcct, stockAmount) <- rehedge dt (premium - delta0 * s00) delta0 0.0 (take (n - 1) (drop 1 path))
@@ -105,7 +105,7 @@ run = do
           let t' = t + dt
               moneyAcct1 = moneyAcct * exp (r * dt)
               timeToMaturity = maturity - t'
-          black <- blackCalculator Call strike stock (sqrt (sigma * sigma * timeToMaturity)) (exp (- r * timeToMaturity))
+          black <- blackCalculator (Strike Call strike) stock (sqrt (sigma * sigma * timeToMaturity)) (exp (- r * timeToMaturity))
           hedgeDelta <- delta black stock
           rehedge dt (moneyAcct1 - (hedgeDelta - stockAmount) * stock) hedgeDelta t' rest
 

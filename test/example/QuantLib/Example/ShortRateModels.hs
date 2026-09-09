@@ -134,7 +134,7 @@ runCalibration model index ts fixParams cachedAv cachedSigmaV = do
   act360 <- dayCounter (Actual360 False)
   helpers <- forM calibrationData $ \(s, l, v) -> do
     vol <- simpleQuote v
-    h <- swaptionHelper (s, Years) (l, Years) vol index (1, Years) thirty360bb act360 ts RelativePriceError Nothing 1.0 ShiftedLognormal 0.0 Nothing AveragingCompound
+    h <- swaptionHelper (SpanTenors (s, Years) (l, Years)) vol index (1, Years) thirty360bb act360 ts RelativePriceError Nothing 1.0 ShiftedLognormal 0.0 Nothing AveragingCompound
     Model.setPricingEngine h engine
     asCalibrationHelper h
   let method = LevenbergMarquardt 1.0e-8 1.0e-8 1.0e-8 False

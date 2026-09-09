@@ -293,10 +293,10 @@ spec = do
 
     it "BlackCalculator: ctors agree, put-call parity holds, Call/Put share second-order greeks,\
        \ value matches blackFormula, vanna/volga match their closed forms" $ do
-      callBC <- blackCalculator Call strike forward stdDev disc
-      putBC <- blackCalculator Put strike forward stdDev disc
-      callBC2 <- blackCalculatorFromPayoff (PlainVanilla (PlainVanillaPayoff Call strike)) forward stdDev disc
-      putBC2 <- blackCalculatorFromPayoff (PlainVanilla (PlainVanillaPayoff Put strike)) forward stdDev disc
+      callBC <- blackCalculator (Strike Call strike) forward stdDev disc
+      putBC <- blackCalculator (Strike Put strike) forward stdDev disc
+      callBC2 <- blackCalculator (StrikePayoff (PlainVanilla (PlainVanillaPayoff Call strike))) forward stdDev disc
+      putBC2 <- blackCalculator (StrikePayoff (PlainVanilla (PlainVanillaPayoff Put strike))) forward stdDev disc
 
       callVal <- value callBC
       callVal2 <- value callBC2
@@ -332,12 +332,12 @@ spec = do
     it "BlackScholesCalculator: ctors agree, inherited GenBlackCalculator methods match the\
        \ equivalent BlackCalculator exactly, and its own no-spot overrides match BlackCalculator's\
        \ spot-taking versions at its stored spot" $ do
-      callBC <- blackCalculator Call strike forward stdDev disc
+      callBC <- blackCalculator (Strike Call strike) forward stdDev disc
       callVal <- value callBC
       let growth = 1.0
           bscSpot = forward * disc / growth
-      callBSC <- blackScholesCalculator Call strike bscSpot growth stdDev disc
-      callBSC2 <- blackScholesCalculatorFromPayoff (PlainVanilla (PlainVanillaPayoff Call strike)) bscSpot growth stdDev disc
+      callBSC <- blackScholesCalculator (Strike Call strike) bscSpot growth stdDev disc
+      callBSC2 <- blackScholesCalculator (StrikePayoff (PlainVanilla (PlainVanillaPayoff Call strike))) bscSpot growth stdDev disc
       callBSCVal <- Calc.value callBSC
       callBSCVal2 <- Calc.value callBSC2
       callBSCVal2 `shouldBe` callBSCVal
@@ -386,10 +386,10 @@ spec = do
       -- forward/strike spread is needed or every second-order greek degenerates to ~1e-87
       -- in the tail, passing every check without exercising the formula.
       let bachelierStdDev = 8.0
-      callNC <- bachelierCalculator Call strike forward bachelierStdDev disc
-      putNC <- bachelierCalculator Put strike forward bachelierStdDev disc
-      callNC2 <- bachelierCalculatorFromPayoff (PlainVanilla (PlainVanillaPayoff Call strike)) forward bachelierStdDev disc
-      putNC2 <- bachelierCalculatorFromPayoff (PlainVanilla (PlainVanillaPayoff Put strike)) forward bachelierStdDev disc
+      callNC <- bachelierCalculator (Strike Call strike) forward bachelierStdDev disc
+      putNC <- bachelierCalculator (Strike Put strike) forward bachelierStdDev disc
+      callNC2 <- bachelierCalculator (StrikePayoff (PlainVanilla (PlainVanillaPayoff Call strike))) forward bachelierStdDev disc
+      putNC2 <- bachelierCalculator (StrikePayoff (PlainVanilla (PlainVanillaPayoff Put strike))) forward bachelierStdDev disc
 
       callNVal <- Calc.value callNC
       callNVal2 <- Calc.value callNC2

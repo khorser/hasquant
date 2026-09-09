@@ -206,11 +206,10 @@ module QuantLib.PricingEngine
   , treeCallableZeroCouponBondEngine
 
     -- * Black and Bachelier calculators
+  , StrikeSpec(..)
   , blackCalculator
-  , blackCalculatorFromPayoff
   , blackVanna
   , blackScholesCalculator
-  , blackScholesCalculatorFromPayoff
   , blackScholesDelta
   , blackScholesElasticity
   , blackScholesGamma
@@ -218,7 +217,6 @@ module QuantLib.PricingEngine
   , blackScholesThetaPerDay
 
   , bachelierCalculator
-  , bachelierCalculatorFromPayoff
   , bachelierVanna
 
     -- * Formulae, probabilities and SABR helpers
@@ -292,6 +290,11 @@ data IntegrationControl
   = IntegrationOrder Word
   | IntegrationTolerance Double Word
   deriving (Eq, Show)
+
+-- |An option's type and strike, given directly or carried by a striked payoff.
+data StrikeSpec
+  = Strike !OptionType !Double
+  | StrikePayoff !StrikedPayoff
 
 -- |Time discretization for lattice pricing engines.
 data LatticeTime
@@ -1825,14 +1828,14 @@ treeCallableZeroCouponBondEngine model latticeTime curve =
 {#fun qlBlackCalculatorBeta{withBlackCalculator*`GenBlackCalculator bc',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Black 1976 option-price calculator, from the option type and strike directly
-{#fun qlBlackCalculator1 as blackCalculator{fromEnumC`OptionType',`Double' -- ^strike
+{#fun qlBlackCalculator1 as blackCalculatorAtStrikeRaw{fromEnumC`OptionType',`Double' -- ^strike
   ,`Double' -- ^forward
   ,`Double' -- ^stdDev
   ,`Double' -- ^discount
   ,preErrorCheck-`String'errorCheck*-}->`BlackCalculator'peekBlackCalculator*#}
 
 -- |Black 1976 option-price calculator, from a striked payoff
-{#fun qlBlackCalculator as blackCalculatorFromPayoff{withStrikedPayoff*`StrikedPayoff'
+{#fun qlBlackCalculator as blackCalculatorFromPayoffRaw{withStrikedPayoff*`StrikedPayoff'
   ,`Double' -- ^forward
   ,`Double' -- ^stdDev
   ,`Double' -- ^discount
@@ -1906,7 +1909,7 @@ treeCallableZeroCouponBondEngine model latticeTime curve =
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Black-Scholes-Merton option-price calculator, from the option type and strike directly
-{#fun qlBlackScholesCalculator1 as blackScholesCalculator{fromEnumC`OptionType',`Double' -- ^strike
+{#fun qlBlackScholesCalculator1 as blackScholesCalculatorAtStrikeRaw{fromEnumC`OptionType',`Double' -- ^strike
   ,`Double' -- ^spot
   ,`Double' -- ^growth
   ,`Double' -- ^stdDev
@@ -1914,7 +1917,7 @@ treeCallableZeroCouponBondEngine model latticeTime curve =
   ,preErrorCheck-`String'errorCheck*-}->`BlackScholesCalculator'peekBlackScholesCalculator*#}
 
 -- |Black-Scholes-Merton option-price calculator, from a striked payoff and spot price
-{#fun qlBlackScholesCalculator as blackScholesCalculatorFromPayoff{withStrikedPayoff*`StrikedPayoff',`Double' -- ^spot
+{#fun qlBlackScholesCalculator as blackScholesCalculatorFromPayoffRaw{withStrikedPayoff*`StrikedPayoff',`Double' -- ^spot
   ,`Double' -- ^growth
   ,`Double' -- ^stdDev
   ,`Double' -- ^discount
@@ -1940,14 +1943,14 @@ treeCallableZeroCouponBondEngine model latticeTime curve =
 -- |Bachelier (normal-model) analogue of 'BlackCalculator', for options on a rate rather than a
 -- price. No subclass hierarchy upstream, unlike BlackCalculator\/BlackScholesCalculator, so this
 -- is a single leaf type with its own methods rather than a 'GenBlackCalculator' instance.
-{#fun qlBachelierCalculator1 as bachelierCalculator{fromEnumC`OptionType',`Double' -- ^strike
+{#fun qlBachelierCalculator1 as bachelierCalculatorAtStrikeRaw{fromEnumC`OptionType',`Double' -- ^strike
   ,`Double' -- ^forward
   ,`Double' -- ^stdDev
   ,`Double' -- ^discount
   ,preErrorCheck-`String'errorCheck*-}->`BachelierCalculator'peekBachelierCalculator*#}
 
 -- |Bachelier (normal-model) option-price calculator, from a striked payoff
-{#fun qlBachelierCalculator as bachelierCalculatorFromPayoff{withStrikedPayoff*`StrikedPayoff'
+{#fun qlBachelierCalculator as bachelierCalculatorFromPayoffRaw{withStrikedPayoff*`StrikedPayoff'
   ,`Double' -- ^forward
   ,`Double' -- ^stdDev
   ,`Double' -- ^discount
@@ -2465,5 +2468,24 @@ instance HasOptionCalculator BachelierCalculator where
   ,`VolatilityType' -- ^volatilityType
   ,preArray-`[Double]'&peekDoubleArray*
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
+
+-- |Black 1976 option-price calculator.
+blackCalculator :: StrikeSpec -> Double -> Double -> Double -> IO BlackCalculator
+blackCalculator spec = case spec of
+  Strike t k -> blackCalculatorAtStrikeRaw t k
+  StrikePayoff p -> blackCalculatorFromPayoffRaw p
+
+-- |Black-Scholes-Merton option-price calculator.
+blackScholesCalculator :: StrikeSpec -> Double -> Double -> Double -> Double
+  -> IO BlackScholesCalculator
+blackScholesCalculator spec = case spec of
+  Strike t k -> blackScholesCalculatorAtStrikeRaw t k
+  StrikePayoff p -> blackScholesCalculatorFromPayoffRaw p
+
+-- |Bachelier (normal-model) option-price calculator.
+bachelierCalculator :: StrikeSpec -> Double -> Double -> Double -> IO BachelierCalculator
+bachelierCalculator spec = case spec of
+  Strike t k -> bachelierCalculatorAtStrikeRaw t k
+  StrikePayoff p -> bachelierCalculatorFromPayoffRaw p
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

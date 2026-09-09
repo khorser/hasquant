@@ -101,9 +101,8 @@ module QuantLib.Model
   , calibrateVolatilitiesIterative
   , capHelper
   , hestonModelHelper
+  , SwaptionSpan(..)
   , swaptionHelper
-  , swaptionHelperFromDate
-  , swaptionHelperFromDates
   , helperUnderlying
   , helperSwaption
   , times
@@ -710,7 +709,24 @@ calibrate m h o e c fp = qlCalibratedModelCalibrate m hh hw o e c fp where (hh, 
   ,`CalibrationErrorType',preErrorCheck-`String'errorCheck*-}->`BlackCalibrationHelper'peekBlackCalibrationHelper*#}
 
 -- |Calibration helper for a European swaption, with the exercise given as a maturity 'Period' from today.
-{#fun qlSwaptionHelper as swaptionHelper{fromEnumQuantity`(Word,TimeUnit)'& -- ^maturity
+-- |A swaption helper's exercise and underlying-swap span.
+data SwaptionSpan
+  = SpanTenors !(Word, TimeUnit) !(Word, TimeUnit) -- ^maturity, length
+  | SpanFromDate !Day !(Word, TimeUnit) -- ^exerciseDate, length
+  | SpanDates !Day !Day -- ^exerciseDate, endDate
+  deriving (Eq, Show)
+
+-- |Calibration helper for a swaption, over the given exercise/underlying span.
+swaptionHelper :: SwaptionSpan -> GenQuote q -> GenIborIndex ibor -> (Word, TimeUnit)
+  -> DayCounter -> DayCounter -> GenYieldTermStructure y -> CalibrationErrorType
+  -> Maybe Double -> Double -> VolatilityType -> Double -> Maybe Word -> RateAveragingType
+  -> IO SwaptionHelper
+swaptionHelper span' = case span' of
+  SpanTenors m l -> swaptionHelperTenorsRaw m l
+  SpanFromDate d l -> swaptionHelperFromDateRaw d l
+  SpanDates d e -> swaptionHelperFromDatesRaw d e
+
+{#fun qlSwaptionHelper as swaptionHelperTenorsRaw{fromEnumQuantity`(Word,TimeUnit)'& -- ^maturity
   ,fromEnumQuantity`(Word,TimeUnit)'& -- ^length
   ,withQuote*`GenQuote q' -- ^maturity
   ,withIborIndex*`GenIborIndex ibor',fromEnumQuantity`(Word,TimeUnit)'& -- ^fixedLegTenor
@@ -726,7 +742,7 @@ calibrate m h o e c fp = qlCalibratedModelCalibrate m hh hw o e c fp where (hh, 
   ,preErrorCheck-`String'errorCheck*-}->`SwaptionHelper'peekSwaptionHelper*#}
 
 -- |Like 'swaptionHelper', but the option's exercise is given as an explicit date rather than a maturity 'Period'.
-{#fun qlSwaptionHelperFromDate as swaptionHelperFromDate{withDay*`Day' -- ^exerciseDate
+{#fun qlSwaptionHelperFromDate as swaptionHelperFromDateRaw{withDay*`Day' -- ^exerciseDate
   ,fromEnumQuantity`(Word,TimeUnit)'& -- ^length
   ,withQuote*`GenQuote q' -- ^maturity
   ,withIborIndex*`GenIborIndex ibor',fromEnumQuantity`(Word,TimeUnit)'& -- ^fixedLegTenor
@@ -742,7 +758,7 @@ calibrate m h o e c fp = qlCalibratedModelCalibrate m hh hw o e c fp where (hh, 
   ,preErrorCheck-`String'errorCheck*-}->`SwaptionHelper'peekSwaptionHelper*#}
 
 -- |Like 'swaptionHelper', but both the option's exercise and the underlying swap's end are given as explicit dates.
-{#fun qlSwaptionHelperFromDates as swaptionHelperFromDates{withDay*`Day' -- ^exerciseDate
+{#fun qlSwaptionHelperFromDates as swaptionHelperFromDatesRaw{withDay*`Day' -- ^exerciseDate
   ,withDay*`Day' -- ^endDate
   ,withQuote*`GenQuote q' -- ^maturity
   ,withIborIndex*`GenIborIndex ibor',fromEnumQuantity`(Word,TimeUnit)'& -- ^fixedLegTenor

@@ -50,7 +50,7 @@ main = do
   let strike = 0.04
       nominal = 1.0
 
-  h <- swaptionHelper (5, Years) (5, Years) volQ euribor6m (1, Years) thirty360bb act360 ts
+  h <- swaptionHelper (SpanTenors (5, Years) (5, Years)) volQ euribor6m (1, Years) thirty360bb act360 ts
     RelativePriceError (Just strike) nominal ShiftedLognormal 0.0 (Just 2) CF.AveragingCompound
 
   underlying <- helperUnderlying h

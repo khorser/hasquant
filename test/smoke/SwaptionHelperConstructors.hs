@@ -1,12 +1,11 @@
--- Smoke test for the two new SwaptionHelper constructors, swaptionHelperFromDate
--- and swaptionHelperFromDates (QuantLib/Model.chs), added alongside the existing
--- Period-based swaptionHelper.
+-- Smoke test for swaptionHelper's three SwaptionSpan forms (QuantLib/Model.chs):
+-- SpanTenors, SpanFromDate and SpanDates must price identically for equivalent dates.
 --
 -- SwaptionHelper::performCalculations (swaptionhelper.cpp) derives exerciseDate/
 -- startDate/endDate from (maturity, length) when built via the Period-based
 -- constructor. This test reproduces that derivation independently in Haskell via
--- Calendar.advance, then feeds the resulting Dates into swaptionHelperFromDate/
--- swaptionHelperFromDates and checks the three constructors -- which take the
+-- Calendar.advance, then feeds the resulting Dates into SpanFromDate/
+-- SpanDates and checks the three spans -- which take the
 -- exercise/tenor in three different shapes but the same trailing 12 params --
 -- price identically. A swapped constructor argument (e.g. exerciseDate/endDate
 -- transposed in the cbits shim) would either make this fail to build or make
@@ -14,7 +13,7 @@
 -- transposed) would also break the match against the Period-based baseline.
 --
 -- It also checks that transposing exerciseDate/endDate in
--- swaptionHelperFromDates (endDate before exerciseDate) is rejected, which
+-- SpanDates (endDate before exerciseDate) is rejected, which
 -- guards against exactly that kind of argument-order bug going undetected.
 --
 -- Run with: cabal exec -- ghc -package hasquant smoke/SwaptionHelperConstructors.hs -o /tmp/swhctors -outputdir /tmp/swhctors_build && /tmp/swhctors
@@ -55,23 +54,23 @@ main = do
       settlementDays = Just 2 -- avoids index valueDate lookup; matches the Euribor6M fixing-days branch below
       mkHelper h = h volQ euribor6m fixedLegTenor thirty360bb act360 ts RelativePriceError Nothing 1.0 ShiftedLognormal 0.0 settlementDays CF.AveragingCompound
 
-  hPeriod <- mkHelper (swaptionHelper maturity len)
+  hPeriod <- mkHelper (swaptionHelper (SpanTenors maturity len))
 
   -- Reproduce SwaptionHelper::performCalculations' date derivation.
   exerciseDate <- advance cal settl maturityI ModifiedFollowing False
-  hFromDate <- mkHelper (swaptionHelperFromDate exerciseDate len)
+  hFromDate <- mkHelper (swaptionHelper (SpanFromDate exerciseDate len))
 
   startDate <- advance cal exerciseDate (2, Days) ModifiedFollowing False
   endDate <- advance cal startDate lenI ModifiedFollowing False
-  hFromDates <- mkHelper (swaptionHelperFromDates exerciseDate endDate)
+  hFromDates <- mkHelper (swaptionHelper (SpanDates exerciseDate endDate))
 
   let vol = 0.15
   pPeriod <- blackPrice hPeriod vol
   pFromDate <- blackPrice hFromDate vol
   pFromDates <- blackPrice hFromDates vol
-  putStrLn ("swaptionHelper blackPrice: " ++ show pPeriod)
-  putStrLn ("swaptionHelperFromDate blackPrice: " ++ show pFromDate)
-  putStrLn ("swaptionHelperFromDates blackPrice: " ++ show pFromDates)
+  putStrLn ("SpanTenors blackPrice: " ++ show pPeriod)
+  putStrLn ("SpanFromDate blackPrice: " ++ show pFromDate)
+  putStrLn ("SpanDates blackPrice: " ++ show pFromDates)
 
   let close a b = abs (a - b) < 1e-8 * max 1 (abs a)
   unless (close pPeriod pFromDate && close pPeriod pFromDates) $ do
@@ -79,7 +78,7 @@ main = do
     exitFailure
 
   -- exerciseDate/endDate transposed should be rejected (end before start).
-  r <- try (mkHelper (swaptionHelperFromDates endDate exerciseDate) >>= \h -> blackPrice h vol) :: IO (Either SomeException Double)
+  r <- try (mkHelper (swaptionHelper (SpanDates endDate exerciseDate)) >>= \h -> blackPrice h vol) :: IO (Either SomeException Double)
   case r of
     Left _ -> putStrLn "OK: transposed exerciseDate/endDate correctly rejected"
     Right v -> do
