@@ -1712,6 +1712,11 @@ QlBatesProcess* qlBatesProcess(QlYieldTermStructure* riskFreeRate, QlYieldTermSt
 QlExtendedOrnsteinUhlenbeckProcess* qlExtendedOrnsteinUhlenbeckProcess(double speed, double sigma, double x0, double (*b)(double), int discretization, double intEps, char **e) {
   try {return ret(new QlExtendedOrnsteinUhlenbeckProcess(alloc(new ExtendedOrnsteinUhlenbeckProcess(speed, sigma, x0, b, (ExtendedOrnsteinUhlenbeckProcess::Discretization)discretization, intEps))));
   } catch (std::exception& er) {return handleException<QlExtendedOrnsteinUhlenbeckProcess*>(e, er);}}
+QlExtendedOrnsteinUhlenbeckProcess* qlLinearSeasonalOrnsteinUhlenbeckProcess(double speed, double sigma, double x0, double a, double k, double c, double phase, int discretization, double intEps, char **e) {
+  try {
+    std::function<Real(Real)> b = [a, k, c, phase](Real t) { return a + k*t + c*std::sin(2*M_PI*t + phase); };
+    return ret(new QlExtendedOrnsteinUhlenbeckProcess(alloc(new ExtendedOrnsteinUhlenbeckProcess(speed, sigma, x0, b, (ExtendedOrnsteinUhlenbeckProcess::Discretization)discretization, intEps))));
+  } catch (std::exception& er) {return handleException<QlExtendedOrnsteinUhlenbeckProcess*>(e, er);}}
 QlExtOUWithJumpsProcess* qlExtOUWithJumpsProcess(QlExtendedOrnsteinUhlenbeckProcess* process, double Y0, double beta, double jumpIntensity, double eta, char **e) {
   try {return ret(new QlExtOUWithJumpsProcess(alloc(new ExtOUWithJumpsProcess(*arg(process), Y0, beta, jumpIntensity, eta))));
   } catch (std::exception& er) {return handleException<QlExtOUWithJumpsProcess*>(e, er);}}

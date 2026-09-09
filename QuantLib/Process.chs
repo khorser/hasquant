@@ -75,6 +75,7 @@ module QuantLib.Process
   , hybridHestonHullWhiteProcess
   , klugeExtOuProcess
   , withExtendedOrnsteinUhlenbeckProcess
+  , linearSeasonalOrnsteinUhlenbeckProcess
   , liborForwardModelProcess
   , fixingDates
   , fixingTimes
@@ -254,6 +255,23 @@ withExtendedOrnsteinUhlenbeckProcess :: Double -- ^speed
   -> (ExtendedOrnsteinUhlenbeckProcess -> IO a) -> IO a
 withExtendedOrnsteinUhlenbeckProcess speed sigma x0 b d intEps k =
   withPayoffFun b (\fp -> qlExtendedOrnsteinUhlenbeckProcess speed sigma x0 fp d intEps >>= k)
+
+-- |'withExtendedOrnsteinUhlenbeckProcess' with @b@ fixed to the standard Lucia-Schwartz-style
+-- linear-plus-seasonal deseasonalization form @b(t) = a + k*t + c*sin(2*pi*t + phase)@, computed
+-- natively in C++ instead of calling back into Haskell on every diffusion step. Covers a constant
+-- level (@k = c = 0@) and a pure linear trend (@c = 0@) as special cases. Use
+-- 'withExtendedOrnsteinUhlenbeckProcess' for any other @b@.
+{#fun qlLinearSeasonalOrnsteinUhlenbeckProcess as linearSeasonalOrnsteinUhlenbeckProcess
+  {`Double' -- ^speed
+  ,`Double' -- ^sigma (volatility)
+  ,`Double' -- ^x0
+  ,`Double' -- ^a
+  ,`Double' -- ^k (linear trend)
+  ,`Double' -- ^c (seasonal amplitude)
+  ,`Double' -- ^phase
+  ,`ExtendedOrnsteinUhlenbeckProcessDiscretization'
+  ,`Double' -- ^intEps
+  ,preErrorCheck-`String'errorCheck*-}->`ExtendedOrnsteinUhlenbeckProcess'peekExtendedOrnsteinUhlenbeckProcess*#}
 
 -- |Kluge model: an extended Ornstein-Uhlenbeck process plus an exponential-jump component,
 -- S = exp(X + Y) with dX = alpha (mu(t) - X) dt + sigma dW and dY = -beta Y dt + J dN. The

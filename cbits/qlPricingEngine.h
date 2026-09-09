@@ -524,6 +524,9 @@ extern "C" {
   // pathGenerator all reach it), not just during construction -- caller must keep the FunPtr behind
   // `b' alive until the process is gone. See QuantLib.Process.withExtendedOrnsteinUhlenbeckProcess.
   QlExtendedOrnsteinUhlenbeckProcess* qlExtendedOrnsteinUhlenbeckProcess(double speed, double sigma, double x0, double (*b)(double), int discretization, double intEps, char **e);
+  // b(t) = a + k*t + c*sin(2*pi*t + phase), computed natively with no Haskell callback. See
+  // QuantLib.Process.linearSeasonalOrnsteinUhlenbeckProcess.
+  QlExtendedOrnsteinUhlenbeckProcess* qlLinearSeasonalOrnsteinUhlenbeckProcess(double speed, double sigma, double x0, double a, double k, double c, double phase, int discretization, double intEps, char **e);
   void qlFreeGJRGARCHProcess(QlGJRGARCHProcess *o);
   QlStochasticProcess* qlGJRGARCHProcessAsStochasticProcess(QlGJRGARCHProcess *o);
   void qlFreeHestonProcess(QlHestonProcess *o);

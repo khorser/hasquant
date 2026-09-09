@@ -49,7 +49,7 @@ import QuantLib.Process(hestonProcess, pdf, batesProcess, gjrGarchProcess, Hesto
  , accrualTimes
  , numeraire, bFunction, mFunction
  , stdDeviation, covariance, apply, evolve
- , ornsteinUhlenbeckProcess, withExtendedOrnsteinUhlenbeckProcess, ExtendedOrnsteinUhlenbeckProcessDiscretization(..)
+ , ornsteinUhlenbeckProcess, withExtendedOrnsteinUhlenbeckProcess, linearSeasonalOrnsteinUhlenbeckProcess, ExtendedOrnsteinUhlenbeckProcessDiscretization(..)
  , extOuWithJumpsProcess, klugeExtOuProcess)
 import QuantLib.Model(hullWhite, g2, g2Dynamics, shortRate
  , hestonModel, batesModel, gjrGarchModel
@@ -584,6 +584,53 @@ spec = do
         kf <- factors klugeProcess
         kEvolved <- evolve klugeProcess 0.0 kx0 0.1 (replicate (fromIntegral kf) 0.1)
         length kEvolved `shouldBe` length kx0
+
+  describe "ExtendedOrnsteinUhlenbeckProcess (linearSeasonalOrnsteinUhlenbeckProcess)" $ do
+    -- native b(t) = a + k*t + c*sin(2*pi*t + phase) must agree step-for-step with the same
+    -- function fed through the general Haskell-callback constructor.
+    it "agrees with withExtendedOrnsteinUhlenbeckProcess for the same linear+seasonal level" $ do
+      let speed = 2.5; vol = 0.70; x0 = 0.0; dt = 0.01
+          a = 1.43; k = 0.2; c = 0.5; phase = 0.9
+          b t = a + k * t + c * sin (2 * pi * t + phase)
+          dws = [0.31, -0.42, 0.05, 0.88, -1.1, 0.2, -0.6]
+      nativeProcess <- linearSeasonalOrnsteinUhlenbeckProcess speed vol x0 a k c phase GaussLobatto 1e-6
+      withExtendedOrnsteinUhlenbeckProcess speed vol x0 b GaussLobatto 1e-6 $ \refProcess ->
+        foldM_ (\(t, xN, xR) dw -> do
+                  [xN'] <- evolve nativeProcess t [xN] dt [dw]
+                  [xR'] <- evolve refProcess t [xR] dt [dw]
+                  xN' `shouldSatisfy` closePrec xR' 1.0e-9
+                  pure (t + dt, xN', xR'))
+             (0.0 :: Double, x0, x0) dws
+
+    -- k = c = 0 degenerates to a constant level, matching plain ornsteinUhlenbeckProcess.
+    it "degenerates to ornsteinUhlenbeckProcess when k = c = 0" $ do
+      let speed = 2.5; vol = 0.70; x0 = 0.0; level = 1.43; dt = 0.01
+          dws = [0.31, -0.42, 0.05, 0.88, -1.1, 0.2, -0.6]
+      refProcess <- ornsteinUhlenbeckProcess speed vol x0 level
+      nativeProcess <- linearSeasonalOrnsteinUhlenbeckProcess speed vol x0 level 0.0 0.0 0.0 GaussLobatto 1e-6
+      foldM_ (\(t, xN, xR) dw -> do
+                [xN'] <- evolve nativeProcess t [xN] dt [dw]
+                [xR'] <- evolve refProcess t [xR] dt [dw]
+                xN' `shouldSatisfy` closePrec xR' 1.0e-9
+                pure (t + dt, xN', xR'))
+             (0.0 :: Double, x0, x0) dws
+
+    -- the linearSeasonalOrnsteinUhlenbeckProcess handle interoperates with extOuWithJumpsProcess/
+    -- klugeExtOuProcess exactly like a callback-produced one, since both funnel through the same
+    -- ExtendedOrnsteinUhlenbeckProcess handle type.
+    it "unlocks extOuWithJumpsProcess and klugeExtOuProcess" $ do
+      eouProcess <- linearSeasonalOrnsteinUhlenbeckProcess 1.0 2.0 3.0 3.0 0.0 0.0 0.0 MidPoint 1e-4
+      jumpProcess <- extOuWithJumpsProcess eouProcess 0.0 5.0 1.0 2.0
+      jx0 <- initialValues jumpProcess
+      jf <- factors jumpProcess
+      jEvolved <- evolve jumpProcess 0.0 jx0 0.1 (replicate (fromIntegral jf) 0.1)
+      length jEvolved `shouldBe` length jx0
+
+      klugeProcess <- klugeExtOuProcess 0.2 jumpProcess eouProcess
+      kx0 <- initialValues klugeProcess
+      kf <- factors klugeProcess
+      kEvolved <- evolve klugeProcess 0.0 kx0 0.1 (replicate (fromIntegral kf) 0.1)
+      length kEvolved `shouldBe` length kx0
 
   describe "HybridHestonHullWhiteProcess (AnalyticHestonHullWhiteEngine vs. MCHestonHullWhiteEngine)" $ do
     -- ported from test-suite/hybridhestonhullwhiteprocess.cpp::testAnalyticHestonHullWhitePricing:
