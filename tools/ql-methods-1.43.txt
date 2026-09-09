@@ -9264,7 +9264,7 @@
 |v|ql/termstructures/yieldtermstructure.hpp|InterestRate YieldTermStructure::zeroRate(const Date & d, const DayCounter & resultDayCounter, Compounding comp, Frequency freq = Annual, bool extrapolate = false) const;
 |v|ql/termstructures/yieldtermstructure.hpp|InterestRate YieldTermStructure::zeroRate(Time t, Compounding comp, Frequency freq = Annual, bool extrapolate = false) const;
 |v|ql/termstructures/yieldtermstructure.hpp|InterestRate YieldTermStructure::forwardRate(const Date & d1, const Date & d2, const DayCounter & resultDayCounter, Compounding comp, Frequency freq = Annual, bool extrapolate = false) const;
-|v|ql/termstructures/yieldtermstructure.hpp|InterestRate YieldTermStructure::forwardRate(const Date & d, const Period & p, const DayCounter & resultDayCounter, Compounding comp, Frequency freq = Annual, bool extrapolate = false) const;
+|x|ql/termstructures/yieldtermstructure.hpp|InterestRate YieldTermStructure::forwardRate(const Date & d, const Period & p, const DayCounter & resultDayCounter, Compounding comp, Frequency freq = Annual, bool extrapolate = false) const;
 |v|ql/termstructures/yieldtermstructure.hpp|InterestRate YieldTermStructure::forwardRate(Time t1, Time t2, Compounding comp, Frequency freq = Annual, bool extrapolate = false) const;
 | |ql/termstructures/yieldtermstructure.hpp|const std::vector<Date> & YieldTermStructure::jumpDates() const;
 | |ql/termstructures/yieldtermstructure.hpp|const std::vector<Time> & YieldTermStructure::jumpTimes() const;

@@ -20,10 +20,16 @@ different upstream tail remains an explicit `Moving` function.
 
 ## Collapsing an overload set behind a coordinate ADT
 
-Collapse when one ADT serves **two or more** functions whose remaining arguments are identical;
-a single function behind its own new type is not worth it. Existing types, all dispatched by a
-`case` in a hand-written wrapper over private `…AtDateRaw`/`…AtTimeRaw`/`…Fixed`/`…MovingRaw`
-bindings: `TermPoint`, `TermInterval`, `RatePoint`, `RateInterval` (`QuantLib/TermStructure.chs`),
+An ADT earns its place only when **two or more** functions consume it and their remaining
+arguments are identical; one consumer means separate exports, since a sum type behind a single
+function is isomorphic to one function per constructor plus an extra type. Check upstream for a
+second consumer before adding one — `RateInterval` was dropped because `resultDayCounter` occurs
+on `zeroRate` and `forwardRate` alone (`ql/termstructures/yieldtermstructure.hpp`), so its axis
+could never gain one.
+
+Existing types, all dispatched by a `case` in a hand-written wrapper over private
+`…AtDateRaw`/`…AtTimeRaw`/`…Fixed`/`…MovingRaw` bindings: `TermPoint`, `TermInterval`,
+`RatePoint` (`QuantLib/TermStructure.chs`),
 `OptionMaturity`/`SwapMaturity` (`TermStructure/Volatility.chs`), `AccrualPeriod`/
 `EquivalentPeriod` (`InterestRate.chs`), `Discounting`/`BpsDiscounting` (`CashFlow.chs`),
 `StrikeSpec`/`IntegrationControl`/`LatticeTime`/`FdmGrid` (`PricingEngine.chs`), `SwaptionSpan`
@@ -34,8 +40,12 @@ Rules learned the hard way:
 - **Every constructor maps to exactly one upstream shim.** Never synthesize a combination
   upstream lacks by converting between coordinates (a `yearFraction` call to turn a date into a
   time changes the result, and hides that it did). If the coordinates must agree, put both
-  endpoints in one constructor — that is what `TermInterval`/`RateInterval` are for, and why two
-  separate point arguments are wrong.
+  endpoints in one constructor — that is what `TermInterval` is for, and why two separate point
+  arguments are wrong.
+- **A constructor that reduces to another constructor plus an already-bound primitive is sugar**
+  and belongs at the call site, not in the ADT: `RateOverTenor` was `RateBetweenDates d (d+p) dc`,
+  and upstream's tenor overload is literally `forwardRate(d, d+p, …)` with `d+p` already exported
+  as `addPeriod`.
 - **A day counter required only by the date form belongs inside that constructor**, not as a
   separate parameter: `RatePoint`'s `RateAtDate !Day !DayCounter` against `TermPoint`, and
   `EquivalentPeriod` against `AccrualPeriod`.

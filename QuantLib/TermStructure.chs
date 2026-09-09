@@ -7,7 +7,6 @@ module QuantLib.TermStructure
   , TermPoint(..)
   , TermInterval(..)
   , RatePoint(..)
-  , RateInterval(..)
   , asTermStructure
   , referenceDate
   , maxDate
@@ -16,7 +15,6 @@ module QuantLib.TermStructure
   , timeFromReference
   ) where
 import QuantLib.Internal hiding(maxDate)
-import QuantLib.Internal.Common(TimeUnit)
 import QuantLib.Internal.Type
 
 #include "qlTypesC2HS.h"
@@ -50,13 +48,6 @@ data TermPoint = DatePoint !Day | TimePoint !Double
 data TermInterval
   = DateInterval !Day !Day
   | TimeInterval !Double !Double
-  deriving (Eq, Show)
-
--- |A date or year-fraction interval where the date forms need a day-counting rule.
-data RateInterval
-  = RateBetweenDates !Day !Day !DayCounter
-  | RateOverTenor !Day !(Int, TimeUnit) !DayCounter
-  | RateBetweenTimes !Double !Double
   deriving (Eq, Show)
 
 -- |A date or year-fraction coordinate where a date needs its day-counting rule.

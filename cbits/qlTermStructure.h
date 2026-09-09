@@ -478,7 +478,6 @@ extern "C" {
   QlYieldTermStructure* qlCompositeZeroYieldStructure(QlYieldTermStructure* curve1, QlYieldTermStructure* curve2, double (*fn)(double, double), int compounding, int frequency, char **e);
   InterestRate* qlYieldTermStructureZeroRate(QlYieldTermStructure* o, int d, DayCounter* resultDayCounter, int comp, int freq, int extrapolate, char **e);
   InterestRate* qlYieldTermStructureForwardRate(QlYieldTermStructure* o, int d1, int d2, DayCounter* resultDayCounter, int comp, int freq, int extrapolate, char **e);
-  InterestRate* qlYieldTermStructureForwardRate1(QlYieldTermStructure* o, int d, int, int, DayCounter* resultDayCounter, int comp, int freq, int extrapolate, char **e);
   InterestRate* qlYieldTermStructureForwardRate2(QlYieldTermStructure* o, double t1, double t2, int comp, int freq, int extrapolate, char **e);
   InterestRate* qlYieldTermStructureZeroRate1(QlYieldTermStructure* o, double t, int comp, int freq, int extrapolate, char **e);
   double qlYieldTermStructureDiscount1(QlYieldTermStructure* o, double t, int extrapolate, char **e);
