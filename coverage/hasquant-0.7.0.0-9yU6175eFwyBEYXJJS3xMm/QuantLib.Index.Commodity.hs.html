@@ -23,27 +23,27 @@ span.spaces    { background: white }
 <span class="lineno">    4 </span>
 <span class="lineno">    5 </span>module QuantLib.Index.Commodity
 <span class="lineno">    6 </span>  (
-<span class="lineno">    7 </span>    CommodityIndex
-<span class="lineno">    8 </span>
-<span class="lineno">    9 </span>  , commodityIndex
-<span class="lineno">   10 </span>
-<span class="lineno">   11 </span>  , forwardPrice
-<span class="lineno">   12 </span>  , lastQuoteDate
-<span class="lineno">   13 </span>  , isEmpty
-<span class="lineno">   14 </span>  ) where
-<span class="lineno">   15 </span>import qualified Foreign.C.String as C2HSImp
-<span class="lineno">   16 </span>import qualified Foreign.C.Types as C2HSImp
-<span class="lineno">   17 </span>import qualified Foreign.ForeignPtr as C2HSImp
-<span class="lineno">   18 </span>import qualified Foreign.Marshal.Utils as C2HSImp
-<span class="lineno">   19 </span>import qualified Foreign.Ptr as C2HSImp
-<span class="lineno">   20 </span>import qualified System.IO.Unsafe as C2HSImp
-<span class="lineno">   21 </span>
-<span class="lineno">   22 </span>
-<span class="lineno">   23 </span>import QuantLib.Internal
-<span class="lineno">   24 </span>import QuantLib.Internal.Type
+<span class="lineno">    7 </span>    -- * Types
+<span class="lineno">    8 </span>    CommodityIndex
+<span class="lineno">    9 </span>
+<span class="lineno">   10 </span>    -- * Constructors
+<span class="lineno">   11 </span>  , commodityIndex
+<span class="lineno">   12 </span>
+<span class="lineno">   13 </span>    -- * Inspectors
+<span class="lineno">   14 </span>  , forwardPrice
+<span class="lineno">   15 </span>  , lastQuoteDate
+<span class="lineno">   16 </span>  , isEmpty
+<span class="lineno">   17 </span>  ) where
+<span class="lineno">   18 </span>import qualified Foreign.C.String as C2HSImp
+<span class="lineno">   19 </span>import qualified Foreign.C.Types as C2HSImp
+<span class="lineno">   20 </span>import qualified Foreign.ForeignPtr as C2HSImp
+<span class="lineno">   21 </span>import qualified Foreign.Marshal.Utils as C2HSImp
+<span class="lineno">   22 </span>import qualified Foreign.Ptr as C2HSImp
+<span class="lineno">   23 </span>import qualified System.IO.Unsafe as C2HSImp
+<span class="lineno">   24 </span>
 <span class="lineno">   25 </span>
-<span class="lineno">   26 </span>
-<span class="lineno">   27 </span>
+<span class="lineno">   26 </span>import QuantLib.Internal
+<span class="lineno">   27 </span>import QuantLib.Internal.Type
 <span class="lineno">   28 </span>
 <span class="lineno">   29 </span>
 <span class="lineno">   30 </span>
@@ -61,85 +61,87 @@ span.spaces    { background: white }
 <span class="lineno">   42 </span>
 <span class="lineno">   43 </span>
 <span class="lineno">   44 </span>
-<span class="lineno">   45 </span>-- |A named commodity index, whose fixings forecast from an optional forward 'CommodityCurve'
-<span class="lineno">   46 </span>-- (or fall back to a stored historical fixing when none is given -- add one via
-<span class="lineno">   47 </span>-- 'QuantLib.Index.addFixing'). Upstream's constructor also takes an
-<span class="lineno">   48 </span>-- @ExchangeContracts@\/nearby-offset pair for rolling onto nearby exchange contracts; this binds
-<span class="lineno">   49 </span>-- only the no-rolling case (a null @exchangeContracts@ and offset 0), the same scope this module's
-<span class="lineno">   50 </span>-- 'QuantLib.TermStructure.Commodity.CommodityCurve' already narrowed 'price' to.
-<span class="lineno">   51 </span>-- No inspector is bound for commodity type\/currency\/unit of measure\/lot quantity\/forward
-<span class="lineno">   52 </span>-- curve: each is a plain, never-mutated echo of this constructor's own argument -- the caller
-<span class="lineno">   53 </span>-- already holds whatever it passed in, so a getter would tell it nothing new.
-<span class="lineno">   54 </span>commodityIndex :: (String) -- ^name
-<span class="lineno">   55 </span> -&gt; (CommodityType) -&gt; (Currency) -&gt; (UnitOfMeasure) -&gt; (Calendar) -&gt; (Double) -- ^lotQuantity
-<span class="lineno">   56 </span> -&gt; (Maybe CommodityCurve) -- ^forwardCurve
-<span class="lineno">   57 </span> -&gt; IO ((CommodityIndex))
-<span class="lineno">   58 </span><span class="decl"><span class="istickedoff">commodityIndex a1 a2 a3 a4 a5 a6 a7 =</span>
-<span class="lineno">   59 </span><span class="spaces">  </span><span class="istickedoff">C2HSImp.withCString a1 $ \a1' -&gt; </span>
-<span class="lineno">   60 </span><span class="spaces">  </span><span class="istickedoff">withCommodityType a2 $ \a2' -&gt; </span>
-<span class="lineno">   61 </span><span class="spaces">  </span><span class="istickedoff">withCurrency a3 $ \a3' -&gt; </span>
-<span class="lineno">   62 </span><span class="spaces">  </span><span class="istickedoff">withUnitOfMeasure a4 $ \a4' -&gt; </span>
-<span class="lineno">   63 </span><span class="spaces">  </span><span class="istickedoff">withCalendar a5 $ \a5' -&gt; </span>
-<span class="lineno">   64 </span><span class="spaces">  </span><span class="istickedoff">let {a6' = realToFrac a6} in </span>
-<span class="lineno">   65 </span><span class="spaces">  </span><span class="istickedoff">withMaybeCommodityCurve a7 $ \a7' -&gt; </span>
-<span class="lineno">   66 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a8' -&gt; </span>
-<span class="lineno">   67 </span><span class="spaces">  </span><span class="istickedoff">commodityIndex'_ a1' a2' a3' a4' a5' a6' a7' a8' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">   68 </span><span class="spaces">  </span><span class="istickedoff">peekCommodityIndex res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">   69 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a8'&gt;&gt;</span>
-<span class="lineno">   70 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">   71 </span>
-<span class="lineno">   72 </span>
+<span class="lineno">   45 </span>
+<span class="lineno">   46 </span>
+<span class="lineno">   47 </span>
+<span class="lineno">   48 </span>-- |A named commodity index, whose fixings forecast from an optional forward 'CommodityCurve'
+<span class="lineno">   49 </span>-- (or fall back to a stored historical fixing when none is given -- add one via
+<span class="lineno">   50 </span>-- 'QuantLib.Index.addFixing'). Upstream's constructor also takes an
+<span class="lineno">   51 </span>-- @ExchangeContracts@\/nearby-offset pair for rolling onto nearby exchange contracts; this binds
+<span class="lineno">   52 </span>-- only the no-rolling case (a null @exchangeContracts@ and offset 0), the same scope this module's
+<span class="lineno">   53 </span>-- 'QuantLib.TermStructure.Commodity.CommodityCurve' already narrowed 'price' to.
+<span class="lineno">   54 </span>-- Commodity type, currency, unit, lot quantity, and forward curve are not exposed as inspectors
+<span class="lineno">   55 </span>-- because they only echo the constructor arguments.
+<span class="lineno">   56 </span>commodityIndex :: (String) -- ^name
+<span class="lineno">   57 </span> -&gt; (CommodityType) -&gt; (Currency) -&gt; (UnitOfMeasure) -&gt; (Calendar) -&gt; (Double) -- ^lotQuantity
+<span class="lineno">   58 </span> -&gt; (Maybe CommodityCurve) -- ^forwardCurve
+<span class="lineno">   59 </span> -&gt; IO ((CommodityIndex))
+<span class="lineno">   60 </span><span class="decl"><span class="istickedoff">commodityIndex a1 a2 a3 a4 a5 a6 a7 =</span>
+<span class="lineno">   61 </span><span class="spaces">  </span><span class="istickedoff">C2HSImp.withCString a1 $ \a1' -&gt; </span>
+<span class="lineno">   62 </span><span class="spaces">  </span><span class="istickedoff">withCommodityType a2 $ \a2' -&gt; </span>
+<span class="lineno">   63 </span><span class="spaces">  </span><span class="istickedoff">withCurrency a3 $ \a3' -&gt; </span>
+<span class="lineno">   64 </span><span class="spaces">  </span><span class="istickedoff">withUnitOfMeasure a4 $ \a4' -&gt; </span>
+<span class="lineno">   65 </span><span class="spaces">  </span><span class="istickedoff">withCalendar a5 $ \a5' -&gt; </span>
+<span class="lineno">   66 </span><span class="spaces">  </span><span class="istickedoff">let {a6' = realToFrac a6} in </span>
+<span class="lineno">   67 </span><span class="spaces">  </span><span class="istickedoff">withMaybeCommodityCurve a7 $ \a7' -&gt; </span>
+<span class="lineno">   68 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a8' -&gt; </span>
+<span class="lineno">   69 </span><span class="spaces">  </span><span class="istickedoff">commodityIndex'_ a1' a2' a3' a4' a5' a6' a7' a8' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">   70 </span><span class="spaces">  </span><span class="istickedoff">peekCommodityIndex res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">   71 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a8'&gt;&gt;</span>
+<span class="lineno">   72 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
 <span class="lineno">   73 </span>
-<span class="lineno">   74 </span>-- |The forecast forward price for a date, from the forward curve.
-<span class="lineno">   75 </span>forwardPrice :: (CommodityIndex) -&gt; (Day) -&gt; IO ((Double))
-<span class="lineno">   76 </span><span class="decl"><span class="istickedoff">forwardPrice a1 a2 =</span>
-<span class="lineno">   77 </span><span class="spaces">  </span><span class="istickedoff">withCommodityIndex a1 $ \a1' -&gt; </span>
-<span class="lineno">   78 </span><span class="spaces">  </span><span class="istickedoff">withDay a2 $ \a2' -&gt; </span>
-<span class="lineno">   79 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
-<span class="lineno">   80 </span><span class="spaces">  </span><span class="istickedoff">forwardPrice'_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">   81 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
-<span class="lineno">   82 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
-<span class="lineno">   83 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">   84 </span>
-<span class="lineno">   85 </span>
+<span class="lineno">   74 </span>
+<span class="lineno">   75 </span>
+<span class="lineno">   76 </span>-- |The forecast forward price for a date, from the forward curve.
+<span class="lineno">   77 </span>forwardPrice :: (CommodityIndex) -&gt; (Day) -&gt; IO ((Double))
+<span class="lineno">   78 </span><span class="decl"><span class="istickedoff">forwardPrice a1 a2 =</span>
+<span class="lineno">   79 </span><span class="spaces">  </span><span class="istickedoff">withCommodityIndex a1 $ \a1' -&gt; </span>
+<span class="lineno">   80 </span><span class="spaces">  </span><span class="istickedoff">withDay a2 $ \a2' -&gt; </span>
+<span class="lineno">   81 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
+<span class="lineno">   82 </span><span class="spaces">  </span><span class="istickedoff">forwardPrice'_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">   83 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno">   84 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
+<span class="lineno">   85 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
 <span class="lineno">   86 </span>
-<span class="lineno">   87 </span>-- |The most recent date with a stored historical fixing. Throws if none has been added yet --
-<span class="lineno">   88 </span>-- check 'isEmpty' first if that's a possibility.
-<span class="lineno">   89 </span>lastQuoteDate :: (CommodityIndex) -&gt; IO ((Day))
-<span class="lineno">   90 </span><span class="decl"><span class="istickedoff">lastQuoteDate a1 =</span>
-<span class="lineno">   91 </span><span class="spaces">  </span><span class="istickedoff">withCommodityIndex a1 $ \a1' -&gt; </span>
-<span class="lineno">   92 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
-<span class="lineno">   93 </span><span class="spaces">  </span><span class="istickedoff">lastQuoteDate'_ a1' a2' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">   94 </span><span class="spaces">  </span><span class="istickedoff">let {res' = toDay res} in</span>
-<span class="lineno">   95 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
-<span class="lineno">   96 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">   97 </span>
-<span class="lineno">   98 </span>
+<span class="lineno">   87 </span>
+<span class="lineno">   88 </span>
+<span class="lineno">   89 </span>-- |The most recent date with a stored historical fixing. Throws if none has been added yet --
+<span class="lineno">   90 </span>-- check 'isEmpty' first if that's a possibility.
+<span class="lineno">   91 </span>lastQuoteDate :: (CommodityIndex) -&gt; IO ((Day))
+<span class="lineno">   92 </span><span class="decl"><span class="istickedoff">lastQuoteDate a1 =</span>
+<span class="lineno">   93 </span><span class="spaces">  </span><span class="istickedoff">withCommodityIndex a1 $ \a1' -&gt; </span>
+<span class="lineno">   94 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
+<span class="lineno">   95 </span><span class="spaces">  </span><span class="istickedoff">lastQuoteDate'_ a1' a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">   96 </span><span class="spaces">  </span><span class="istickedoff">let {res' = toDay res} in</span>
+<span class="lineno">   97 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
+<span class="lineno">   98 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
 <span class="lineno">   99 </span>
-<span class="lineno">  100 </span>-- |Whether this index has any stored historical fixings.
-<span class="lineno">  101 </span>isEmpty :: (CommodityIndex) -&gt; (Bool)
-<span class="lineno">  102 </span><span class="decl"><span class="istickedoff">isEmpty a1 =</span>
-<span class="lineno">  103 </span><span class="spaces">  </span><span class="istickedoff">C2HSImp.unsafePerformIO $</span>
-<span class="lineno">  104 </span><span class="spaces">  </span><span class="istickedoff">withCommodityIndex a1 $ \a1' -&gt; </span>
-<span class="lineno">  105 </span><span class="spaces">  </span><span class="istickedoff">isEmpty'_ a1' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  106 </span><span class="spaces">  </span><span class="istickedoff">let {res' = C2HSImp.toBool res} in</span>
-<span class="lineno">  107 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">  108 </span>
-<span class="lineno">  109 </span>
+<span class="lineno">  100 </span>
+<span class="lineno">  101 </span>
+<span class="lineno">  102 </span>-- |Whether this index has any stored historical fixings.
+<span class="lineno">  103 </span>isEmpty :: (CommodityIndex) -&gt; (Bool)
+<span class="lineno">  104 </span><span class="decl"><span class="istickedoff">isEmpty a1 =</span>
+<span class="lineno">  105 </span><span class="spaces">  </span><span class="istickedoff">C2HSImp.unsafePerformIO $</span>
+<span class="lineno">  106 </span><span class="spaces">  </span><span class="istickedoff">withCommodityIndex a1 $ \a1' -&gt; </span>
+<span class="lineno">  107 </span><span class="spaces">  </span><span class="istickedoff">isEmpty'_ a1' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  108 </span><span class="spaces">  </span><span class="istickedoff">let {res' = C2HSImp.toBool res} in</span>
+<span class="lineno">  109 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
 <span class="lineno">  110 </span>
-<span class="lineno">  111 </span>-- vim: set ff=unix ts=8 sts=2 sw=2 et:
+<span class="lineno">  111 </span>
 <span class="lineno">  112 </span>
-<span class="lineno">  113 </span>foreign import ccall safe &quot;QuantLib/Index/Commodity.chs.h qlCommodityIndex&quot;
-<span class="lineno">  114 </span>  commodityIndex'_ :: ((C2HSImp.Ptr C2HSImp.CChar) -&gt; ((C2HSImp.Ptr (CCommodityType)) -&gt; ((C2HSImp.Ptr (CCurrency)) -&gt; ((C2HSImp.Ptr (CUnitOfMeasure)) -&gt; ((C2HSImp.Ptr (CCalendar)) -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (CCommodityCurve')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CCommodityIndex')))))))))))
-<span class="lineno">  115 </span>
-<span class="lineno">  116 </span>foreign import ccall safe &quot;QuantLib/Index/Commodity.chs.h qlCommodityIndexForwardPrice&quot;
-<span class="lineno">  117 </span>  forwardPrice'_ :: ((C2HSImp.Ptr (CCommodityIndex')) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble))))
-<span class="lineno">  118 </span>
-<span class="lineno">  119 </span>foreign import ccall safe &quot;QuantLib/Index/Commodity.chs.h qlCommodityIndexLastQuoteDate&quot;
-<span class="lineno">  120 </span>  lastQuoteDate'_ :: ((C2HSImp.Ptr (CCommodityIndex')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CInt)))
-<span class="lineno">  121 </span>
-<span class="lineno">  122 </span>foreign import ccall safe &quot;QuantLib/Index/Commodity.chs.h qlCommodityIndexEmpty&quot;
-<span class="lineno">  123 </span>  isEmpty'_ :: ((C2HSImp.Ptr (CCommodityIndex')) -&gt; (IO C2HSImp.CInt))
+<span class="lineno">  113 </span>-- vim: set ff=unix ts=8 sts=2 sw=2 et:
+<span class="lineno">  114 </span>
+<span class="lineno">  115 </span>foreign import ccall safe &quot;QuantLib/Index/Commodity.chs.h qlCommodityIndex&quot;
+<span class="lineno">  116 </span>  commodityIndex'_ :: ((C2HSImp.Ptr C2HSImp.CChar) -&gt; ((C2HSImp.Ptr (CCommodityType)) -&gt; ((C2HSImp.Ptr (CCurrency)) -&gt; ((C2HSImp.Ptr (CUnitOfMeasure)) -&gt; ((C2HSImp.Ptr (CCalendar)) -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (CCommodityCurve')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CCommodityIndex')))))))))))
+<span class="lineno">  117 </span>
+<span class="lineno">  118 </span>foreign import ccall safe &quot;QuantLib/Index/Commodity.chs.h qlCommodityIndexForwardPrice&quot;
+<span class="lineno">  119 </span>  forwardPrice'_ :: ((C2HSImp.Ptr (CCommodityIndex')) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble))))
+<span class="lineno">  120 </span>
+<span class="lineno">  121 </span>foreign import ccall safe &quot;QuantLib/Index/Commodity.chs.h qlCommodityIndexLastQuoteDate&quot;
+<span class="lineno">  122 </span>  lastQuoteDate'_ :: ((C2HSImp.Ptr (CCommodityIndex')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CInt)))
+<span class="lineno">  123 </span>
+<span class="lineno">  124 </span>foreign import ccall safe &quot;QuantLib/Index/Commodity.chs.h qlCommodityIndexEmpty&quot;
+<span class="lineno">  125 </span>  isEmpty'_ :: ((C2HSImp.Ptr (CCommodityIndex')) -&gt; (IO C2HSImp.CInt))
 
 </pre>
 </body>

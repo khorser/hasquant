@@ -19,21 +19,22 @@ span.spaces    { background: white }
 <pre>
 <span class="lineno">    1 </span>module QuantLib.Type
 <span class="lineno">    2 </span>  (
-<span class="lineno">    3 </span>    Error(..)
-<span class="lineno">    4 </span>  )
-<span class="lineno">    5 </span>where
-<span class="lineno">    6 </span>
-<span class="lineno">    7 </span>import Control.Exception(Exception)
-<span class="lineno">    8 </span>import Data.Time.Calendar(Day)
-<span class="lineno">    9 </span>
-<span class="lineno">   10 </span>data Error = CPlusPlusException String
-<span class="lineno">   11 </span>          | DateConversion Day
-<span class="lineno">   12 </span>          | EnumConversion String
-<span class="lineno">   13 </span>          deriving (<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Show</span></span></span></span></span></span>, <span class="decl"><span class="istickedoff"><span class="decl"><span class="nottickedoff">Eq</span></span></span></span>)
-<span class="lineno">   14 </span>
-<span class="lineno">   15 </span>instance <span class="decl"><span class="istickedoff"><span class="decl"><span class="istickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="istickedoff">Exception Error</span></span></span></span></span></span></span></span>
-<span class="lineno">   16 </span>
-<span class="lineno">   17 </span>-- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:
+<span class="lineno">    3 </span>    -- * Types
+<span class="lineno">    4 </span>    Error(..)
+<span class="lineno">    5 </span>  )
+<span class="lineno">    6 </span>where
+<span class="lineno">    7 </span>
+<span class="lineno">    8 </span>import Control.Exception(Exception)
+<span class="lineno">    9 </span>import Data.Time.Calendar(Day)
+<span class="lineno">   10 </span>
+<span class="lineno">   11 </span>data Error = CPlusPlusException String
+<span class="lineno">   12 </span>          | DateConversion Day
+<span class="lineno">   13 </span>          | EnumConversion String
+<span class="lineno">   14 </span>          deriving (<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Show</span></span></span></span></span></span>, <span class="decl"><span class="istickedoff"><span class="decl"><span class="nottickedoff">Eq</span></span></span></span>)
+<span class="lineno">   15 </span>
+<span class="lineno">   16 </span>instance <span class="decl"><span class="istickedoff"><span class="decl"><span class="istickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="istickedoff">Exception Error</span></span></span></span></span></span></span></span>
+<span class="lineno">   17 </span>
+<span class="lineno">   18 </span>-- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:
 
 </pre>
 </body>

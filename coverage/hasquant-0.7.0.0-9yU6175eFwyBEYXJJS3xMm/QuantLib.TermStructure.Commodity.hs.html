@@ -23,43 +23,43 @@ span.spaces    { background: white }
 <span class="lineno">    4 </span>
 <span class="lineno">    5 </span>module QuantLib.TermStructure.Commodity
 <span class="lineno">    6 </span>  (
-<span class="lineno">    7 </span>    CommodityCurve
-<span class="lineno">    8 </span>  , commodityCurve
-<span class="lineno">    9 </span>  , name
-<span class="lineno">   10 </span>  , commodityType
-<span class="lineno">   11 </span>  , unitOfMeasure
-<span class="lineno">   12 </span>  , currency
-<span class="lineno">   13 </span>  , nodes
-<span class="lineno">   14 </span>  , isEmpty
-<span class="lineno">   15 </span>  , basisOfCurve
+<span class="lineno">    7 </span>    -- * Types
+<span class="lineno">    8 </span>    CommodityCurve
+<span class="lineno">    9 </span>  , ExchangeContract
+<span class="lineno">   10 </span>  , ExchangeContracts
+<span class="lineno">   11 </span>
+<span class="lineno">   12 </span>    -- * Constructors
+<span class="lineno">   13 </span>  , commodityCurve
+<span class="lineno">   14 </span>
+<span class="lineno">   15 </span>    -- * Mutators
 <span class="lineno">   16 </span>  , setBasisOfCurve
-<span class="lineno">   17 </span>  , price
-<span class="lineno">   18 </span>  , basisOfPrice
-<span class="lineno">   19 </span>  , ExchangeContract
-<span class="lineno">   20 </span>  , ExchangeContracts
-<span class="lineno">   21 </span>  , priceNearby
-<span class="lineno">   22 </span>  , underlyingPriceDate
-<span class="lineno">   23 </span>  ) where
-<span class="lineno">   24 </span>import qualified Foreign.C.String as C2HSImp
-<span class="lineno">   25 </span>import qualified Foreign.C.Types as C2HSImp
-<span class="lineno">   26 </span>import qualified Foreign.ForeignPtr as C2HSImp
-<span class="lineno">   27 </span>import qualified Foreign.Marshal.Utils as C2HSImp
-<span class="lineno">   28 </span>import qualified Foreign.Ptr as C2HSImp
-<span class="lineno">   29 </span>import qualified System.IO.Unsafe as C2HSImp
-<span class="lineno">   30 </span>
-<span class="lineno">   31 </span>
-<span class="lineno">   32 </span>import QuantLib.Internal
-<span class="lineno">   33 </span>import QuantLib.Internal.Type
-<span class="lineno">   34 </span>import Data.List.NonEmpty(NonEmpty, toList)
-<span class="lineno">   35 </span>
-<span class="lineno">   36 </span>
-<span class="lineno">   37 </span>
-<span class="lineno">   38 </span>
+<span class="lineno">   17 </span>
+<span class="lineno">   18 </span>    -- * Inspectors
+<span class="lineno">   19 </span>    -- ** Curve metadata and nodes
+<span class="lineno">   20 </span>  , name
+<span class="lineno">   21 </span>  , commodityType
+<span class="lineno">   22 </span>  , unitOfMeasure
+<span class="lineno">   23 </span>  , currency
+<span class="lineno">   24 </span>  , nodes
+<span class="lineno">   25 </span>  , isEmpty
+<span class="lineno">   26 </span>  , basisOfCurve
+<span class="lineno">   27 </span>    -- ** Prices and contracts
+<span class="lineno">   28 </span>  , price
+<span class="lineno">   29 </span>  , basisOfPrice
+<span class="lineno">   30 </span>  , priceNearby
+<span class="lineno">   31 </span>  , underlyingPriceDate
+<span class="lineno">   32 </span>  ) where
+<span class="lineno">   33 </span>import qualified Foreign.C.String as C2HSImp
+<span class="lineno">   34 </span>import qualified Foreign.C.Types as C2HSImp
+<span class="lineno">   35 </span>import qualified Foreign.ForeignPtr as C2HSImp
+<span class="lineno">   36 </span>import qualified Foreign.Marshal.Utils as C2HSImp
+<span class="lineno">   37 </span>import qualified Foreign.Ptr as C2HSImp
+<span class="lineno">   38 </span>import qualified System.IO.Unsafe as C2HSImp
 <span class="lineno">   39 </span>
 <span class="lineno">   40 </span>
-<span class="lineno">   41 </span>
-<span class="lineno">   42 </span>
-<span class="lineno">   43 </span>
+<span class="lineno">   41 </span>import QuantLib.Internal
+<span class="lineno">   42 </span>import QuantLib.Internal.Type
+<span class="lineno">   43 </span>import Data.List.NonEmpty(NonEmpty, toList)
 <span class="lineno">   44 </span>
 <span class="lineno">   45 </span>
 <span class="lineno">   46 </span>
@@ -71,285 +71,290 @@ span.spaces    { background: white }
 <span class="lineno">   52 </span>
 <span class="lineno">   53 </span>
 <span class="lineno">   54 </span>
-<span class="lineno">   55 </span>-- |Construct a commodity price curve: a named, interpolated (forward-flat) price curve over a
-<span class="lineno">   56 </span>-- fixed set of dates, for a given commodity type\/currency\/unit of measure. QuantLib's no-dates
-<span class="lineno">   57 </span>-- constructor (populated later via the mutator @setPrices@) is not bound -- per the standing
-<span class="lineno">   58 </span>-- setter-confirmation rule, only 'setBasisOfCurve' was confirmed, not @setPrices@ --
-<span class="lineno">   59 </span>-- so this with-dates constructor is the only way to build one.
-<span class="lineno">   60 </span>commodityCurve :: String -&gt; CommodityType -&gt; Currency -&gt; UnitOfMeasure -&gt; Calendar
-<span class="lineno">   61 </span>  -&gt; NonEmpty (Day, Double) -&gt; DayCounter -&gt; IO CommodityCurve
-<span class="lineno">   62 </span><span class="decl"><span class="istickedoff">commodityCurve curveName ct ccy uom cal curveNodes dc =</span>
-<span class="lineno">   63 </span><span class="spaces">  </span><span class="istickedoff">qlCommodityCurve curveName ct ccy uom cal dates prices dc</span>
-<span class="lineno">   64 </span><span class="spaces">  </span><span class="istickedoff">where (dates, prices) = unzip (toList curveNodes)</span></span>
-<span class="lineno">   65 </span>
-<span class="lineno">   66 </span>qlCommodityCurve :: (String) -- ^name
-<span class="lineno">   67 </span> -&gt; (CommodityType) -&gt; (Currency) -&gt; (UnitOfMeasure) -&gt; (Calendar) -&gt; ([Day]) -&gt; ([Double]) -&gt; (DayCounter) -&gt; IO ((CommodityCurve))
-<span class="lineno">   68 </span><span class="decl"><span class="istickedoff">qlCommodityCurve a1 a2 a3 a4 a5 a6 a7 a8 =</span>
-<span class="lineno">   69 </span><span class="spaces">  </span><span class="istickedoff">C2HSImp.withCString a1 $ \a1' -&gt; </span>
-<span class="lineno">   70 </span><span class="spaces">  </span><span class="istickedoff">withCommodityType a2 $ \a2' -&gt; </span>
-<span class="lineno">   71 </span><span class="spaces">  </span><span class="istickedoff">withCurrency a3 $ \a3' -&gt; </span>
-<span class="lineno">   72 </span><span class="spaces">  </span><span class="istickedoff">withUnitOfMeasure a4 $ \a4' -&gt; </span>
-<span class="lineno">   73 </span><span class="spaces">  </span><span class="istickedoff">withCalendar a5 $ \a5' -&gt; </span>
-<span class="lineno">   74 </span><span class="spaces">  </span><span class="istickedoff">withDayArray a6 $ \(a6'1, a6'2) -&gt; </span>
-<span class="lineno">   75 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a7 $ \(a7'1, a7'2) -&gt; </span>
-<span class="lineno">   76 </span><span class="spaces">  </span><span class="istickedoff">withDayCounter a8 $ \a8' -&gt; </span>
-<span class="lineno">   77 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a9' -&gt; </span>
-<span class="lineno">   78 </span><span class="spaces">  </span><span class="istickedoff">qlCommodityCurve'_ a1' a2' a3' a4' a5' a6'1  a6'2 a7'1  a7'2 a8' a9' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">   79 </span><span class="spaces">  </span><span class="istickedoff">peekCommodityCurve res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">   80 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a9'&gt;&gt;</span>
-<span class="lineno">   81 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">   82 </span>
-<span class="lineno">   83 </span>
-<span class="lineno">   84 </span>
-<span class="lineno">   85 </span>-- |The curve's name, as given at construction.
-<span class="lineno">   86 </span>name :: (CommodityCurve) -&gt; IO ((String))
-<span class="lineno">   87 </span><span class="decl"><span class="istickedoff">name a1 =</span>
-<span class="lineno">   88 </span><span class="spaces">  </span><span class="istickedoff">withGenTermStructure a1 $ \a1' -&gt; </span>
-<span class="lineno">   89 </span><span class="spaces">  </span><span class="istickedoff">name'_ a1' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">   90 </span><span class="spaces">  </span><span class="istickedoff">peekDynString res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">   91 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">   92 </span>
-<span class="lineno">   93 </span>
-<span class="lineno">   94 </span>
-<span class="lineno">   95 </span>-- |The commodity type this curve prices.
-<span class="lineno">   96 </span>commodityType :: (CommodityCurve) -&gt; IO ((CommodityType))
-<span class="lineno">   97 </span><span class="decl"><span class="istickedoff">commodityType a1 =</span>
-<span class="lineno">   98 </span><span class="spaces">  </span><span class="istickedoff">withGenTermStructure a1 $ \a1' -&gt; </span>
-<span class="lineno">   99 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
-<span class="lineno">  100 </span><span class="spaces">  </span><span class="istickedoff">commodityType'_ a1' a2' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  101 </span><span class="spaces">  </span><span class="istickedoff">peekCommodityType res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">  102 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
-<span class="lineno">  103 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">  104 </span>
-<span class="lineno">  105 </span>
-<span class="lineno">  106 </span>
-<span class="lineno">  107 </span>-- |The unit of measure this curve's prices are quoted in.
-<span class="lineno">  108 </span>unitOfMeasure :: (CommodityCurve) -&gt; IO ((UnitOfMeasure))
-<span class="lineno">  109 </span><span class="decl"><span class="istickedoff">unitOfMeasure a1 =</span>
-<span class="lineno">  110 </span><span class="spaces">  </span><span class="istickedoff">withGenTermStructure a1 $ \a1' -&gt; </span>
-<span class="lineno">  111 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
-<span class="lineno">  112 </span><span class="spaces">  </span><span class="istickedoff">unitOfMeasure'_ a1' a2' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  113 </span><span class="spaces">  </span><span class="istickedoff">peekUnitOfMeasure res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">  114 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
-<span class="lineno">  115 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">  116 </span>
-<span class="lineno">  117 </span>
-<span class="lineno">  118 </span>
-<span class="lineno">  119 </span>-- |The currency this curve's prices are quoted in.
-<span class="lineno">  120 </span>currency :: (CommodityCurve) -&gt; IO ((Currency))
-<span class="lineno">  121 </span><span class="decl"><span class="istickedoff">currency a1 =</span>
-<span class="lineno">  122 </span><span class="spaces">  </span><span class="istickedoff">withGenTermStructure a1 $ \a1' -&gt; </span>
-<span class="lineno">  123 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
-<span class="lineno">  124 </span><span class="spaces">  </span><span class="istickedoff">currency'_ a1' a2' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  125 </span><span class="spaces">  </span><span class="istickedoff">peekCurrency res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">  126 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
-<span class="lineno">  127 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">  128 </span>
-<span class="lineno">  129 </span>
-<span class="lineno">  130 </span>
-<span class="lineno">  131 </span>-- |The curve's nodes, as @(date, price)@ pairs in construction order.
-<span class="lineno">  132 </span>nodes :: CommodityCurve -&gt; IO [(Day, Double)]
-<span class="lineno">  133 </span><span class="decl"><span class="istickedoff">nodes curve = do</span>
-<span class="lineno">  134 </span><span class="spaces">  </span><span class="istickedoff">dates &lt;- qlCommodityCurveDates curve</span>
-<span class="lineno">  135 </span><span class="spaces">  </span><span class="istickedoff">prices &lt;- qlCommodityCurvePrices curve</span>
-<span class="lineno">  136 </span><span class="spaces">  </span><span class="istickedoff">pure (zip dates prices)</span></span>
-<span class="lineno">  137 </span>qlCommodityCurveDates :: (CommodityCurve) -&gt; IO (([Day]))
-<span class="lineno">  138 </span><span class="decl"><span class="istickedoff">qlCommodityCurveDates a1 =</span>
-<span class="lineno">  139 </span><span class="spaces">  </span><span class="istickedoff">withGenTermStructure a1 $ \a1' -&gt; </span>
-<span class="lineno">  140 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a2'1, a2'2) -&gt; </span>
-<span class="lineno">  141 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
-<span class="lineno">  142 </span><span class="spaces">  </span><span class="istickedoff">qlCommodityCurveDates'_ a1' a2'1  a2'2 a3' &gt;&gt;</span>
-<span class="lineno">  143 </span><span class="spaces">  </span><span class="istickedoff">peekDayArray  a2'1  a2'2&gt;&gt;= \a2'' -&gt; </span>
-<span class="lineno">  144 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
-<span class="lineno">  145 </span><span class="spaces">  </span><span class="istickedoff">return (a2'')</span></span>
-<span class="lineno">  146 </span>
-<span class="lineno">  147 </span>
-<span class="lineno">  148 </span>qlCommodityCurvePrices :: (CommodityCurve) -&gt; IO (([Double]))
-<span class="lineno">  149 </span><span class="decl"><span class="istickedoff">qlCommodityCurvePrices a1 =</span>
-<span class="lineno">  150 </span><span class="spaces">  </span><span class="istickedoff">withGenTermStructure a1 $ \a1' -&gt; </span>
-<span class="lineno">  151 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a2'1, a2'2) -&gt; </span>
-<span class="lineno">  152 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
-<span class="lineno">  153 </span><span class="spaces">  </span><span class="istickedoff">qlCommodityCurvePrices'_ a1' a2'1  a2'2 a3' &gt;&gt;</span>
-<span class="lineno">  154 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a2'1  a2'2&gt;&gt;= \a2'' -&gt; </span>
-<span class="lineno">  155 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
-<span class="lineno">  156 </span><span class="spaces">  </span><span class="istickedoff">return (a2'')</span></span>
-<span class="lineno">  157 </span>
-<span class="lineno">  158 </span>
-<span class="lineno">  159 </span>
-<span class="lineno">  160 </span>-- |Whether this curve has any nodes.
-<span class="lineno">  161 </span>isEmpty :: (CommodityCurve) -&gt; (Bool)
-<span class="lineno">  162 </span><span class="decl"><span class="istickedoff">isEmpty a1 =</span>
-<span class="lineno">  163 </span><span class="spaces">  </span><span class="istickedoff">C2HSImp.unsafePerformIO $</span>
-<span class="lineno">  164 </span><span class="spaces">  </span><span class="istickedoff">withGenTermStructure a1 $ \a1' -&gt; </span>
-<span class="lineno">  165 </span><span class="spaces">  </span><span class="istickedoff">isEmpty'_ a1' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  166 </span><span class="spaces">  </span><span class="istickedoff">let {res' = C2HSImp.toBool res} in</span>
-<span class="lineno">  167 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">  168 </span>
-<span class="lineno">  169 </span>
-<span class="lineno">  170 </span>
-<span class="lineno">  171 </span>-- |The basis curve this curve was chained to via 'setBasisOfCurve', if any.
-<span class="lineno">  172 </span>basisOfCurve :: (CommodityCurve) -&gt; IO ((Maybe CommodityCurve))
-<span class="lineno">  173 </span><span class="decl"><span class="istickedoff">basisOfCurve a1 =</span>
-<span class="lineno">  174 </span><span class="spaces">  </span><span class="istickedoff">withGenTermStructure a1 $ \a1' -&gt; </span>
-<span class="lineno">  175 </span><span class="spaces">  </span><span class="istickedoff">basisOfCurve'_ a1' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  176 </span><span class="spaces">  </span><span class="istickedoff">peekMaybeCommodityCurve res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">  177 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">  178 </span>
-<span class="lineno">  179 </span>
-<span class="lineno">  180 </span>
-<span class="lineno">  181 </span>-- |Chain this curve to a basis curve: prices returned by 'price'\/'basisOfPrice'
-<span class="lineno">  182 </span>-- then include the basis curve's price on top of this curve's own. Confirmed with the user as the
-<span class="lineno">  183 </span>-- one 'CommodityCurve' mutator worth binding (unlike @setPrices@, which stays unbound).
-<span class="lineno">  184 </span>setBasisOfCurve :: (CommodityCurve) -&gt; (CommodityCurve) -&gt; IO ()
-<span class="lineno">  185 </span><span class="decl"><span class="istickedoff">setBasisOfCurve a1 a2 =</span>
-<span class="lineno">  186 </span><span class="spaces">  </span><span class="istickedoff">withGenTermStructure a1 $ \a1' -&gt; </span>
-<span class="lineno">  187 </span><span class="spaces">  </span><span class="istickedoff">withGenTermStructure a2 $ \a2' -&gt; </span>
-<span class="lineno">  188 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
-<span class="lineno">  189 </span><span class="spaces">  </span><span class="istickedoff">setBasisOfCurve'_ a1' a2' a3' &gt;&gt;</span>
-<span class="lineno">  190 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
-<span class="lineno">  191 </span><span class="spaces">  </span><span class="istickedoff">return <span class="nottickedoff">()</span></span></span>
-<span class="lineno">  192 </span>
-<span class="lineno">  193 </span>
-<span class="lineno">  194 </span>
-<span class="lineno">  195 </span>-- |A dated exchange contract: a code, its expiration date, and the start/end dates of the
-<span class="lineno">  196 </span>-- underlying delivery period it corresponds to. A plain tuple, per the @Money@/'Quantity'-as-tuple
-<span class="lineno">  197 </span>-- convention -- it carries no calculation of its own upstream, only three inspectors that would
-<span class="lineno">  198 </span>-- just be tuple projections.
-<span class="lineno">  199 </span>type ExchangeContract = (String, Day, Day, Day) -- ^code, expirationDate, underlyingStartDate, underlyingEndDate
+<span class="lineno">   55 </span>
+<span class="lineno">   56 </span>
+<span class="lineno">   57 </span>
+<span class="lineno">   58 </span>
+<span class="lineno">   59 </span>
+<span class="lineno">   60 </span>
+<span class="lineno">   61 </span>
+<span class="lineno">   62 </span>
+<span class="lineno">   63 </span>
+<span class="lineno">   64 </span>-- |Construct a commodity price curve: a named, interpolated (forward-flat) price curve over a
+<span class="lineno">   65 </span>-- fixed set of dates, for a given commodity type\/currency\/unit of measure. QuantLib's no-dates
+<span class="lineno">   66 </span>-- constructor populated later via @setPrices@ is not bound, so this is the only way to build one.
+<span class="lineno">   67 </span>commodityCurve :: String -&gt; CommodityType -&gt; Currency -&gt; UnitOfMeasure -&gt; Calendar
+<span class="lineno">   68 </span>  -&gt; NonEmpty (Day, Double) -&gt; DayCounter -&gt; IO CommodityCurve
+<span class="lineno">   69 </span><span class="decl"><span class="istickedoff">commodityCurve curveName ct ccy uom cal curveNodes dc =</span>
+<span class="lineno">   70 </span><span class="spaces">  </span><span class="istickedoff">qlCommodityCurve curveName ct ccy uom cal dates prices dc</span>
+<span class="lineno">   71 </span><span class="spaces">  </span><span class="istickedoff">where (dates, prices) = unzip (toList curveNodes)</span></span>
+<span class="lineno">   72 </span>
+<span class="lineno">   73 </span>qlCommodityCurve :: (String) -- ^name
+<span class="lineno">   74 </span> -&gt; (CommodityType) -&gt; (Currency) -&gt; (UnitOfMeasure) -&gt; (Calendar) -&gt; ([Day]) -&gt; ([Double]) -&gt; (DayCounter) -&gt; IO ((CommodityCurve))
+<span class="lineno">   75 </span><span class="decl"><span class="istickedoff">qlCommodityCurve a1 a2 a3 a4 a5 a6 a7 a8 =</span>
+<span class="lineno">   76 </span><span class="spaces">  </span><span class="istickedoff">C2HSImp.withCString a1 $ \a1' -&gt; </span>
+<span class="lineno">   77 </span><span class="spaces">  </span><span class="istickedoff">withCommodityType a2 $ \a2' -&gt; </span>
+<span class="lineno">   78 </span><span class="spaces">  </span><span class="istickedoff">withCurrency a3 $ \a3' -&gt; </span>
+<span class="lineno">   79 </span><span class="spaces">  </span><span class="istickedoff">withUnitOfMeasure a4 $ \a4' -&gt; </span>
+<span class="lineno">   80 </span><span class="spaces">  </span><span class="istickedoff">withCalendar a5 $ \a5' -&gt; </span>
+<span class="lineno">   81 </span><span class="spaces">  </span><span class="istickedoff">withDayArray a6 $ \(a6'1, a6'2) -&gt; </span>
+<span class="lineno">   82 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a7 $ \(a7'1, a7'2) -&gt; </span>
+<span class="lineno">   83 </span><span class="spaces">  </span><span class="istickedoff">withDayCounter a8 $ \a8' -&gt; </span>
+<span class="lineno">   84 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a9' -&gt; </span>
+<span class="lineno">   85 </span><span class="spaces">  </span><span class="istickedoff">qlCommodityCurve'_ a1' a2' a3' a4' a5' a6'1  a6'2 a7'1  a7'2 a8' a9' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">   86 </span><span class="spaces">  </span><span class="istickedoff">peekCommodityCurve res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">   87 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a9'&gt;&gt;</span>
+<span class="lineno">   88 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">   89 </span>
+<span class="lineno">   90 </span>
+<span class="lineno">   91 </span>
+<span class="lineno">   92 </span>-- |The curve's name, as given at construction.
+<span class="lineno">   93 </span>name :: (CommodityCurve) -&gt; IO ((String))
+<span class="lineno">   94 </span><span class="decl"><span class="istickedoff">name a1 =</span>
+<span class="lineno">   95 </span><span class="spaces">  </span><span class="istickedoff">withGenTermStructure a1 $ \a1' -&gt; </span>
+<span class="lineno">   96 </span><span class="spaces">  </span><span class="istickedoff">name'_ a1' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">   97 </span><span class="spaces">  </span><span class="istickedoff">peekDynString res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">   98 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">   99 </span>
+<span class="lineno">  100 </span>
+<span class="lineno">  101 </span>
+<span class="lineno">  102 </span>-- |The commodity type this curve prices.
+<span class="lineno">  103 </span>commodityType :: (CommodityCurve) -&gt; IO ((CommodityType))
+<span class="lineno">  104 </span><span class="decl"><span class="istickedoff">commodityType a1 =</span>
+<span class="lineno">  105 </span><span class="spaces">  </span><span class="istickedoff">withGenTermStructure a1 $ \a1' -&gt; </span>
+<span class="lineno">  106 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
+<span class="lineno">  107 </span><span class="spaces">  </span><span class="istickedoff">commodityType'_ a1' a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  108 </span><span class="spaces">  </span><span class="istickedoff">peekCommodityType res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  109 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
+<span class="lineno">  110 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  111 </span>
+<span class="lineno">  112 </span>
+<span class="lineno">  113 </span>
+<span class="lineno">  114 </span>-- |The unit of measure this curve's prices are quoted in.
+<span class="lineno">  115 </span>unitOfMeasure :: (CommodityCurve) -&gt; IO ((UnitOfMeasure))
+<span class="lineno">  116 </span><span class="decl"><span class="istickedoff">unitOfMeasure a1 =</span>
+<span class="lineno">  117 </span><span class="spaces">  </span><span class="istickedoff">withGenTermStructure a1 $ \a1' -&gt; </span>
+<span class="lineno">  118 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
+<span class="lineno">  119 </span><span class="spaces">  </span><span class="istickedoff">unitOfMeasure'_ a1' a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  120 </span><span class="spaces">  </span><span class="istickedoff">peekUnitOfMeasure res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  121 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
+<span class="lineno">  122 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  123 </span>
+<span class="lineno">  124 </span>
+<span class="lineno">  125 </span>
+<span class="lineno">  126 </span>-- |The currency this curve's prices are quoted in.
+<span class="lineno">  127 </span>currency :: (CommodityCurve) -&gt; IO ((Currency))
+<span class="lineno">  128 </span><span class="decl"><span class="istickedoff">currency a1 =</span>
+<span class="lineno">  129 </span><span class="spaces">  </span><span class="istickedoff">withGenTermStructure a1 $ \a1' -&gt; </span>
+<span class="lineno">  130 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
+<span class="lineno">  131 </span><span class="spaces">  </span><span class="istickedoff">currency'_ a1' a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  132 </span><span class="spaces">  </span><span class="istickedoff">peekCurrency res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  133 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
+<span class="lineno">  134 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  135 </span>
+<span class="lineno">  136 </span>
+<span class="lineno">  137 </span>
+<span class="lineno">  138 </span>-- |The curve's nodes, as @(date, price)@ pairs in construction order.
+<span class="lineno">  139 </span>nodes :: CommodityCurve -&gt; IO [(Day, Double)]
+<span class="lineno">  140 </span><span class="decl"><span class="istickedoff">nodes curve = do</span>
+<span class="lineno">  141 </span><span class="spaces">  </span><span class="istickedoff">dates &lt;- qlCommodityCurveDates curve</span>
+<span class="lineno">  142 </span><span class="spaces">  </span><span class="istickedoff">prices &lt;- qlCommodityCurvePrices curve</span>
+<span class="lineno">  143 </span><span class="spaces">  </span><span class="istickedoff">pure (zip dates prices)</span></span>
+<span class="lineno">  144 </span>qlCommodityCurveDates :: (CommodityCurve) -&gt; IO (([Day]))
+<span class="lineno">  145 </span><span class="decl"><span class="istickedoff">qlCommodityCurveDates a1 =</span>
+<span class="lineno">  146 </span><span class="spaces">  </span><span class="istickedoff">withGenTermStructure a1 $ \a1' -&gt; </span>
+<span class="lineno">  147 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a2'1, a2'2) -&gt; </span>
+<span class="lineno">  148 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
+<span class="lineno">  149 </span><span class="spaces">  </span><span class="istickedoff">qlCommodityCurveDates'_ a1' a2'1  a2'2 a3' &gt;&gt;</span>
+<span class="lineno">  150 </span><span class="spaces">  </span><span class="istickedoff">peekDayArray  a2'1  a2'2&gt;&gt;= \a2'' -&gt; </span>
+<span class="lineno">  151 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
+<span class="lineno">  152 </span><span class="spaces">  </span><span class="istickedoff">return (a2'')</span></span>
+<span class="lineno">  153 </span>
+<span class="lineno">  154 </span>
+<span class="lineno">  155 </span>qlCommodityCurvePrices :: (CommodityCurve) -&gt; IO (([Double]))
+<span class="lineno">  156 </span><span class="decl"><span class="istickedoff">qlCommodityCurvePrices a1 =</span>
+<span class="lineno">  157 </span><span class="spaces">  </span><span class="istickedoff">withGenTermStructure a1 $ \a1' -&gt; </span>
+<span class="lineno">  158 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a2'1, a2'2) -&gt; </span>
+<span class="lineno">  159 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
+<span class="lineno">  160 </span><span class="spaces">  </span><span class="istickedoff">qlCommodityCurvePrices'_ a1' a2'1  a2'2 a3' &gt;&gt;</span>
+<span class="lineno">  161 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a2'1  a2'2&gt;&gt;= \a2'' -&gt; </span>
+<span class="lineno">  162 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
+<span class="lineno">  163 </span><span class="spaces">  </span><span class="istickedoff">return (a2'')</span></span>
+<span class="lineno">  164 </span>
+<span class="lineno">  165 </span>
+<span class="lineno">  166 </span>
+<span class="lineno">  167 </span>-- |Whether this curve has any nodes.
+<span class="lineno">  168 </span>isEmpty :: (CommodityCurve) -&gt; (Bool)
+<span class="lineno">  169 </span><span class="decl"><span class="istickedoff">isEmpty a1 =</span>
+<span class="lineno">  170 </span><span class="spaces">  </span><span class="istickedoff">C2HSImp.unsafePerformIO $</span>
+<span class="lineno">  171 </span><span class="spaces">  </span><span class="istickedoff">withGenTermStructure a1 $ \a1' -&gt; </span>
+<span class="lineno">  172 </span><span class="spaces">  </span><span class="istickedoff">isEmpty'_ a1' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  173 </span><span class="spaces">  </span><span class="istickedoff">let {res' = C2HSImp.toBool res} in</span>
+<span class="lineno">  174 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  175 </span>
+<span class="lineno">  176 </span>
+<span class="lineno">  177 </span>
+<span class="lineno">  178 </span>-- |The basis curve this curve was chained to via 'setBasisOfCurve', if any.
+<span class="lineno">  179 </span>basisOfCurve :: (CommodityCurve) -&gt; IO ((Maybe CommodityCurve))
+<span class="lineno">  180 </span><span class="decl"><span class="istickedoff">basisOfCurve a1 =</span>
+<span class="lineno">  181 </span><span class="spaces">  </span><span class="istickedoff">withGenTermStructure a1 $ \a1' -&gt; </span>
+<span class="lineno">  182 </span><span class="spaces">  </span><span class="istickedoff">basisOfCurve'_ a1' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  183 </span><span class="spaces">  </span><span class="istickedoff">peekMaybeCommodityCurve res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  184 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  185 </span>
+<span class="lineno">  186 </span>
+<span class="lineno">  187 </span>
+<span class="lineno">  188 </span>-- |Chain this curve to a basis curve: prices returned by 'price'\/'basisOfPrice'
+<span class="lineno">  189 </span>-- then include the basis curve's price on top of this curve's own.
+<span class="lineno">  190 </span>setBasisOfCurve :: (CommodityCurve) -&gt; (CommodityCurve) -&gt; IO ()
+<span class="lineno">  191 </span><span class="decl"><span class="istickedoff">setBasisOfCurve a1 a2 =</span>
+<span class="lineno">  192 </span><span class="spaces">  </span><span class="istickedoff">withGenTermStructure a1 $ \a1' -&gt; </span>
+<span class="lineno">  193 </span><span class="spaces">  </span><span class="istickedoff">withGenTermStructure a2 $ \a2' -&gt; </span>
+<span class="lineno">  194 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
+<span class="lineno">  195 </span><span class="spaces">  </span><span class="istickedoff">setBasisOfCurve'_ a1' a2' a3' &gt;&gt;</span>
+<span class="lineno">  196 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
+<span class="lineno">  197 </span><span class="spaces">  </span><span class="istickedoff">return <span class="nottickedoff">()</span></span></span>
+<span class="lineno">  198 </span>
+<span class="lineno">  199 </span>
 <span class="lineno">  200 </span>
-<span class="lineno">  201 </span>-- |QuantLib's @std::map\&lt;Date,ExchangeContract\&gt;@: a set of exchange contracts, keyed by the date
-<span class="lineno">  202 </span>-- 'priceNearby'\/'underlyingPriceDate' roll onto (upstream's own
-<span class="lineno">  203 </span>-- @lower_bound@ walk finds the first key at or after the query date, then steps @nearbyOffset - 1@
-<span class="lineno">  204 </span>-- further). Marshalled as an association list, not an actual 'Data.Map.Map' -- the C shim rebuilds
-<span class="lineno">  205 </span>-- the real @std::map@ itself so key order doesn't need to be pre-sorted on the Haskell side.
-<span class="lineno">  206 </span>type ExchangeContracts = [(Day, ExchangeContract)]
-<span class="lineno">  207 </span>
-<span class="lineno">  208 </span>-- |Split an 'ExchangeContracts' into the five parallel lists the low-level bindings below take.
-<span class="lineno">  209 </span>-- Not a single combined marshaller: c2hs's @&amp;@ tuple-splitter only ever consumes two C arguments
-<span class="lineno">  210 </span>-- (confirmed against its source, same reasoning as 'QuantLib.Commodity.Quantity'), so each list is
-<span class="lineno">  211 </span>-- passed as its own flat, individually-marshalled argument instead of one bundled continuation.
-<span class="lineno">  212 </span>splitExchangeContracts :: ExchangeContracts -&gt; ([Day], [String], [Day], [Day], [Day])
-<span class="lineno">  213 </span><span class="decl"><span class="istickedoff">splitExchangeContracts ecs =</span>
-<span class="lineno">  214 </span><span class="spaces">  </span><span class="istickedoff">( map fst ecs</span>
-<span class="lineno">  215 </span><span class="spaces">  </span><span class="istickedoff">, [c | (_, (c, _, _, _)) &lt;- ecs]</span>
-<span class="lineno">  216 </span><span class="spaces">  </span><span class="istickedoff">, [x | (_, (_, x, _, _)) &lt;- ecs]</span>
-<span class="lineno">  217 </span><span class="spaces">  </span><span class="istickedoff">, [s | (_, (_, _, s, _)) &lt;- ecs]</span>
-<span class="lineno">  218 </span><span class="spaces">  </span><span class="istickedoff">, [e | (_, (_, _, _, e)) &lt;- ecs] )</span></span>
-<span class="lineno">  219 </span>
-<span class="lineno">  220 </span>qlCommodityCurvePrice_ :: (CommodityCurve) -&gt; (Day) -&gt; ([Day]) -&gt; ([String]) -&gt; ([Day]) -&gt; ([Day]) -&gt; ([Day]) -&gt; (Int) -- ^nearbyOffset
-<span class="lineno">  221 </span> -&gt; IO ((Double))
-<span class="lineno">  222 </span><span class="decl"><span class="istickedoff">qlCommodityCurvePrice_ a1 a2 a3 a4 a5 a6 a7 a8 =</span>
-<span class="lineno">  223 </span><span class="spaces">  </span><span class="istickedoff">withGenTermStructure a1 $ \a1' -&gt; </span>
-<span class="lineno">  224 </span><span class="spaces">  </span><span class="istickedoff">withDay a2 $ \a2' -&gt; </span>
-<span class="lineno">  225 </span><span class="spaces">  </span><span class="istickedoff">withDayArray a3 $ \(a3'1, a3'2) -&gt; </span>
-<span class="lineno">  226 </span><span class="spaces">  </span><span class="istickedoff">withStringArray a4 $ \(a4'1, a4'2) -&gt; </span>
-<span class="lineno">  227 </span><span class="spaces">  </span><span class="istickedoff">withDayArray a5 $ \(a5'1, a5'2) -&gt; </span>
-<span class="lineno">  228 </span><span class="spaces">  </span><span class="istickedoff">withDayArray a6 $ \(a6'1, a6'2) -&gt; </span>
-<span class="lineno">  229 </span><span class="spaces">  </span><span class="istickedoff">withDayArray a7 $ \(a7'1, a7'2) -&gt; </span>
-<span class="lineno">  230 </span><span class="spaces">  </span><span class="istickedoff">let {a8' = fromIntegral a8} in </span>
-<span class="lineno">  231 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a9' -&gt; </span>
-<span class="lineno">  232 </span><span class="spaces">  </span><span class="istickedoff">qlCommodityCurvePrice_'_ a1' a2' a3'1  a3'2 a4'1  a4'2 a5'1  a5'2 a6'1  a6'2 a7'1  a7'2 a8' a9' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  233 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
-<span class="lineno">  234 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a9'&gt;&gt;</span>
-<span class="lineno">  235 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">  236 </span>
-<span class="lineno">  237 </span>
-<span class="lineno">  238 </span>
-<span class="lineno">  239 </span>-- |The curve's price for a date, plus any chained basis curve's price, rolling forward onto
-<span class="lineno">  240 </span>-- nearby exchange contracts when @nearbyOffset &gt; 0@ (upstream's own @price@ never touches
-<span class="lineno">  241 </span>-- @exchangeContracts@ otherwise). 'price' is this with no exchange contracts and
-<span class="lineno">  242 </span>-- offset @0@, which reproduces the flat (no-rolling) case exactly.
-<span class="lineno">  243 </span>priceNearby :: CommodityCurve -&gt; Day -&gt; ExchangeContracts -&gt; Int -&gt; IO Double
-<span class="lineno">  244 </span><span class="decl"><span class="istickedoff">priceNearby curve date ecs nearbyOffset =</span>
-<span class="lineno">  245 </span><span class="spaces">  </span><span class="istickedoff">qlCommodityCurvePrice_ curve date keys codes expirations starts ends nearbyOffset</span>
-<span class="lineno">  246 </span><span class="spaces">  </span><span class="istickedoff">where (keys, codes, expirations, starts, ends) = splitExchangeContracts ecs</span></span>
-<span class="lineno">  247 </span>
-<span class="lineno">  248 </span>-- |The curve's price for a date, plus any chained basis curve's price. This is
-<span class="lineno">  249 </span>-- 'priceNearby' with no exchange contracts and offset @0@ -- the flat (no
-<span class="lineno">  250 </span>-- nearby-rolling) case, which never touches @exchangeContracts@ upstream either way.
-<span class="lineno">  251 </span>price :: CommodityCurve -&gt; Day -&gt; IO Double
-<span class="lineno">  252 </span><span class="decl"><span class="istickedoff">price curve date = priceNearby curve date [] 0</span></span>
-<span class="lineno">  253 </span>
-<span class="lineno">  254 </span>-- |The chained basis curve's price alone (excluding this curve's own price), for a date.
-<span class="lineno">  255 </span>basisOfPrice :: (CommodityCurve) -&gt; (Day) -&gt; IO ((Double))
-<span class="lineno">  256 </span><span class="decl"><span class="istickedoff">basisOfPrice a1 a2 =</span>
-<span class="lineno">  257 </span><span class="spaces">  </span><span class="istickedoff">withGenTermStructure a1 $ \a1' -&gt; </span>
-<span class="lineno">  258 </span><span class="spaces">  </span><span class="istickedoff">withDay a2 $ \a2' -&gt; </span>
-<span class="lineno">  259 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
-<span class="lineno">  260 </span><span class="spaces">  </span><span class="istickedoff">basisOfPrice'_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  261 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
-<span class="lineno">  262 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
-<span class="lineno">  263 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">  264 </span>
-<span class="lineno">  265 </span>
-<span class="lineno">  266 </span>
-<span class="lineno">  267 </span>qlCommodityCurveUnderlyingPriceDate_ :: (CommodityCurve) -&gt; (Day) -&gt; ([Day]) -&gt; ([String]) -&gt; ([Day]) -&gt; ([Day]) -&gt; ([Day]) -&gt; (Int) -- ^nearbyOffset
-<span class="lineno">  268 </span> -&gt; IO ((Day))
-<span class="lineno">  269 </span><span class="decl"><span class="istickedoff">qlCommodityCurveUnderlyingPriceDate_ a1 a2 a3 a4 a5 a6 a7 a8 =</span>
-<span class="lineno">  270 </span><span class="spaces">  </span><span class="istickedoff">withGenTermStructure a1 $ \a1' -&gt; </span>
-<span class="lineno">  271 </span><span class="spaces">  </span><span class="istickedoff">withDay a2 $ \a2' -&gt; </span>
-<span class="lineno">  272 </span><span class="spaces">  </span><span class="istickedoff">withDayArray a3 $ \(a3'1, a3'2) -&gt; </span>
-<span class="lineno">  273 </span><span class="spaces">  </span><span class="istickedoff">withStringArray a4 $ \(a4'1, a4'2) -&gt; </span>
-<span class="lineno">  274 </span><span class="spaces">  </span><span class="istickedoff">withDayArray a5 $ \(a5'1, a5'2) -&gt; </span>
-<span class="lineno">  275 </span><span class="spaces">  </span><span class="istickedoff">withDayArray a6 $ \(a6'1, a6'2) -&gt; </span>
-<span class="lineno">  276 </span><span class="spaces">  </span><span class="istickedoff">withDayArray a7 $ \(a7'1, a7'2) -&gt; </span>
-<span class="lineno">  277 </span><span class="spaces">  </span><span class="istickedoff">let {a8' = fromIntegral a8} in </span>
-<span class="lineno">  278 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a9' -&gt; </span>
-<span class="lineno">  279 </span><span class="spaces">  </span><span class="istickedoff">qlCommodityCurveUnderlyingPriceDate_'_ a1' a2' a3'1  a3'2 a4'1  a4'2 a5'1  a5'2 a6'1  a6'2 a7'1  a7'2 a8' a9' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  280 </span><span class="spaces">  </span><span class="istickedoff">let {res' = toDay res} in</span>
-<span class="lineno">  281 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a9'&gt;&gt;</span>
-<span class="lineno">  282 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">  283 </span>
-<span class="lineno">  284 </span>
-<span class="lineno">  285 </span>
-<span class="lineno">  286 </span>-- |The date whose price a nearby roll (@nearbyOffset &gt; 0@) actually reads: the underlying
-<span class="lineno">  287 </span>-- contract's start date at the @nearbyOffset@\'th exchange contract at or after @date@. Throws if
-<span class="lineno">  288 </span>-- @nearbyOffset &lt;= 0@, or if fewer than @nearbyOffset@ contracts are available from @date@ onward.
-<span class="lineno">  289 </span>underlyingPriceDate :: CommodityCurve -&gt; Day -&gt; ExchangeContracts -&gt; Int -&gt; IO Day
-<span class="lineno">  290 </span><span class="decl"><span class="istickedoff">underlyingPriceDate curve date ecs nearbyOffset =</span>
-<span class="lineno">  291 </span><span class="spaces">  </span><span class="istickedoff">qlCommodityCurveUnderlyingPriceDate_ curve date keys codes expirations starts ends nearbyOffset</span>
-<span class="lineno">  292 </span><span class="spaces">  </span><span class="istickedoff">where (keys, codes, expirations, starts, ends) = splitExchangeContracts ecs</span></span>
-<span class="lineno">  293 </span>
-<span class="lineno">  294 </span>-- vim: set ff=unix ts=8 sts=2 sw=2 et:
-<span class="lineno">  295 </span>
-<span class="lineno">  296 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Commodity.chs.h qlCommodityCurve&quot;
-<span class="lineno">  297 </span>  qlCommodityCurve'_ :: ((C2HSImp.Ptr C2HSImp.CChar) -&gt; ((C2HSImp.Ptr (CCommodityType)) -&gt; ((C2HSImp.Ptr (CCurrency)) -&gt; ((C2HSImp.Ptr (CUnitOfMeasure)) -&gt; ((C2HSImp.Ptr (CCalendar)) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CCommodityCurve'))))))))))))))
+<span class="lineno">  201 </span>-- |A dated exchange contract: a code, its expiration date, and the start/end dates of the
+<span class="lineno">  202 </span>-- underlying delivery period it corresponds to. A plain tuple, per the @Money@/'Quantity'-as-tuple
+<span class="lineno">  203 </span>-- convention -- it carries no calculation of its own upstream, only three inspectors that would
+<span class="lineno">  204 </span>-- just be tuple projections.
+<span class="lineno">  205 </span>type ExchangeContract = (String, Day, Day, Day) -- ^code, expirationDate, underlyingStartDate, underlyingEndDate
+<span class="lineno">  206 </span>
+<span class="lineno">  207 </span>-- |QuantLib's @std::map\&lt;Date,ExchangeContract\&gt;@: a set of exchange contracts, keyed by the date
+<span class="lineno">  208 </span>-- 'priceNearby'\/'underlyingPriceDate' roll onto (upstream's own
+<span class="lineno">  209 </span>-- @lower_bound@ walk finds the first key at or after the query date, then steps @nearbyOffset - 1@
+<span class="lineno">  210 </span>-- further). Marshalled as an association list, not an actual 'Data.Map.Map' -- the C shim rebuilds
+<span class="lineno">  211 </span>-- the real @std::map@ itself so key order doesn't need to be pre-sorted on the Haskell side.
+<span class="lineno">  212 </span>type ExchangeContracts = [(Day, ExchangeContract)]
+<span class="lineno">  213 </span>
+<span class="lineno">  214 </span>-- |Split an 'ExchangeContracts' into the five parallel lists the low-level bindings below take.
+<span class="lineno">  215 </span>-- Each component uses its own flat marshaller because c2hs's @&amp;@ tuple splitter consumes only
+<span class="lineno">  216 </span>-- two C arguments.
+<span class="lineno">  217 </span>splitExchangeContracts :: ExchangeContracts -&gt; ([Day], [String], [Day], [Day], [Day])
+<span class="lineno">  218 </span><span class="decl"><span class="istickedoff">splitExchangeContracts ecs =</span>
+<span class="lineno">  219 </span><span class="spaces">  </span><span class="istickedoff">( map fst ecs</span>
+<span class="lineno">  220 </span><span class="spaces">  </span><span class="istickedoff">, [c | (_, (c, _, _, _)) &lt;- ecs]</span>
+<span class="lineno">  221 </span><span class="spaces">  </span><span class="istickedoff">, [x | (_, (_, x, _, _)) &lt;- ecs]</span>
+<span class="lineno">  222 </span><span class="spaces">  </span><span class="istickedoff">, [s | (_, (_, _, s, _)) &lt;- ecs]</span>
+<span class="lineno">  223 </span><span class="spaces">  </span><span class="istickedoff">, [e | (_, (_, _, _, e)) &lt;- ecs] )</span></span>
+<span class="lineno">  224 </span>
+<span class="lineno">  225 </span>qlCommodityCurvePrice_ :: (CommodityCurve) -&gt; (Day) -&gt; ([Day]) -&gt; ([String]) -&gt; ([Day]) -&gt; ([Day]) -&gt; ([Day]) -&gt; (Int) -- ^nearbyOffset
+<span class="lineno">  226 </span> -&gt; IO ((Double))
+<span class="lineno">  227 </span><span class="decl"><span class="istickedoff">qlCommodityCurvePrice_ a1 a2 a3 a4 a5 a6 a7 a8 =</span>
+<span class="lineno">  228 </span><span class="spaces">  </span><span class="istickedoff">withGenTermStructure a1 $ \a1' -&gt; </span>
+<span class="lineno">  229 </span><span class="spaces">  </span><span class="istickedoff">withDay a2 $ \a2' -&gt; </span>
+<span class="lineno">  230 </span><span class="spaces">  </span><span class="istickedoff">withDayArray a3 $ \(a3'1, a3'2) -&gt; </span>
+<span class="lineno">  231 </span><span class="spaces">  </span><span class="istickedoff">withStringArray a4 $ \(a4'1, a4'2) -&gt; </span>
+<span class="lineno">  232 </span><span class="spaces">  </span><span class="istickedoff">withDayArray a5 $ \(a5'1, a5'2) -&gt; </span>
+<span class="lineno">  233 </span><span class="spaces">  </span><span class="istickedoff">withDayArray a6 $ \(a6'1, a6'2) -&gt; </span>
+<span class="lineno">  234 </span><span class="spaces">  </span><span class="istickedoff">withDayArray a7 $ \(a7'1, a7'2) -&gt; </span>
+<span class="lineno">  235 </span><span class="spaces">  </span><span class="istickedoff">let {a8' = fromIntegral a8} in </span>
+<span class="lineno">  236 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a9' -&gt; </span>
+<span class="lineno">  237 </span><span class="spaces">  </span><span class="istickedoff">qlCommodityCurvePrice_'_ a1' a2' a3'1  a3'2 a4'1  a4'2 a5'1  a5'2 a6'1  a6'2 a7'1  a7'2 a8' a9' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  238 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno">  239 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a9'&gt;&gt;</span>
+<span class="lineno">  240 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  241 </span>
+<span class="lineno">  242 </span>
+<span class="lineno">  243 </span>
+<span class="lineno">  244 </span>-- |The curve's price for a date, plus any chained basis curve's price, rolling forward onto
+<span class="lineno">  245 </span>-- nearby exchange contracts when @nearbyOffset &gt; 0@ (upstream's own @price@ never touches
+<span class="lineno">  246 </span>-- @exchangeContracts@ otherwise). 'price' is this with no exchange contracts and
+<span class="lineno">  247 </span>-- offset @0@, which reproduces the flat (no-rolling) case exactly.
+<span class="lineno">  248 </span>priceNearby :: CommodityCurve -&gt; Day -&gt; ExchangeContracts -&gt; Int -&gt; IO Double
+<span class="lineno">  249 </span><span class="decl"><span class="istickedoff">priceNearby curve date ecs nearbyOffset =</span>
+<span class="lineno">  250 </span><span class="spaces">  </span><span class="istickedoff">qlCommodityCurvePrice_ curve date keys codes expirations starts ends nearbyOffset</span>
+<span class="lineno">  251 </span><span class="spaces">  </span><span class="istickedoff">where (keys, codes, expirations, starts, ends) = splitExchangeContracts ecs</span></span>
+<span class="lineno">  252 </span>
+<span class="lineno">  253 </span>-- |The curve's price for a date, plus any chained basis curve's price. This is
+<span class="lineno">  254 </span>-- 'priceNearby' with no exchange contracts and offset @0@ -- the flat (no
+<span class="lineno">  255 </span>-- nearby-rolling) case, which never touches @exchangeContracts@ upstream either way.
+<span class="lineno">  256 </span>price :: CommodityCurve -&gt; Day -&gt; IO Double
+<span class="lineno">  257 </span><span class="decl"><span class="istickedoff">price curve date = priceNearby curve date [] 0</span></span>
+<span class="lineno">  258 </span>
+<span class="lineno">  259 </span>-- |The chained basis curve's price alone (excluding this curve's own price), for a date.
+<span class="lineno">  260 </span>basisOfPrice :: (CommodityCurve) -&gt; (Day) -&gt; IO ((Double))
+<span class="lineno">  261 </span><span class="decl"><span class="istickedoff">basisOfPrice a1 a2 =</span>
+<span class="lineno">  262 </span><span class="spaces">  </span><span class="istickedoff">withGenTermStructure a1 $ \a1' -&gt; </span>
+<span class="lineno">  263 </span><span class="spaces">  </span><span class="istickedoff">withDay a2 $ \a2' -&gt; </span>
+<span class="lineno">  264 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
+<span class="lineno">  265 </span><span class="spaces">  </span><span class="istickedoff">basisOfPrice'_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  266 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno">  267 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
+<span class="lineno">  268 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  269 </span>
+<span class="lineno">  270 </span>
+<span class="lineno">  271 </span>
+<span class="lineno">  272 </span>qlCommodityCurveUnderlyingPriceDate_ :: (CommodityCurve) -&gt; (Day) -&gt; ([Day]) -&gt; ([String]) -&gt; ([Day]) -&gt; ([Day]) -&gt; ([Day]) -&gt; (Int) -- ^nearbyOffset
+<span class="lineno">  273 </span> -&gt; IO ((Day))
+<span class="lineno">  274 </span><span class="decl"><span class="istickedoff">qlCommodityCurveUnderlyingPriceDate_ a1 a2 a3 a4 a5 a6 a7 a8 =</span>
+<span class="lineno">  275 </span><span class="spaces">  </span><span class="istickedoff">withGenTermStructure a1 $ \a1' -&gt; </span>
+<span class="lineno">  276 </span><span class="spaces">  </span><span class="istickedoff">withDay a2 $ \a2' -&gt; </span>
+<span class="lineno">  277 </span><span class="spaces">  </span><span class="istickedoff">withDayArray a3 $ \(a3'1, a3'2) -&gt; </span>
+<span class="lineno">  278 </span><span class="spaces">  </span><span class="istickedoff">withStringArray a4 $ \(a4'1, a4'2) -&gt; </span>
+<span class="lineno">  279 </span><span class="spaces">  </span><span class="istickedoff">withDayArray a5 $ \(a5'1, a5'2) -&gt; </span>
+<span class="lineno">  280 </span><span class="spaces">  </span><span class="istickedoff">withDayArray a6 $ \(a6'1, a6'2) -&gt; </span>
+<span class="lineno">  281 </span><span class="spaces">  </span><span class="istickedoff">withDayArray a7 $ \(a7'1, a7'2) -&gt; </span>
+<span class="lineno">  282 </span><span class="spaces">  </span><span class="istickedoff">let {a8' = fromIntegral a8} in </span>
+<span class="lineno">  283 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a9' -&gt; </span>
+<span class="lineno">  284 </span><span class="spaces">  </span><span class="istickedoff">qlCommodityCurveUnderlyingPriceDate_'_ a1' a2' a3'1  a3'2 a4'1  a4'2 a5'1  a5'2 a6'1  a6'2 a7'1  a7'2 a8' a9' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  285 </span><span class="spaces">  </span><span class="istickedoff">let {res' = toDay res} in</span>
+<span class="lineno">  286 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a9'&gt;&gt;</span>
+<span class="lineno">  287 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  288 </span>
+<span class="lineno">  289 </span>
+<span class="lineno">  290 </span>
+<span class="lineno">  291 </span>-- |The date whose price a nearby roll (@nearbyOffset &gt; 0@) actually reads: the underlying
+<span class="lineno">  292 </span>-- contract's start date at the @nearbyOffset@\'th exchange contract at or after @date@. Throws if
+<span class="lineno">  293 </span>-- @nearbyOffset &lt;= 0@, or if fewer than @nearbyOffset@ contracts are available from @date@ onward.
+<span class="lineno">  294 </span>underlyingPriceDate :: CommodityCurve -&gt; Day -&gt; ExchangeContracts -&gt; Int -&gt; IO Day
+<span class="lineno">  295 </span><span class="decl"><span class="istickedoff">underlyingPriceDate curve date ecs nearbyOffset =</span>
+<span class="lineno">  296 </span><span class="spaces">  </span><span class="istickedoff">qlCommodityCurveUnderlyingPriceDate_ curve date keys codes expirations starts ends nearbyOffset</span>
+<span class="lineno">  297 </span><span class="spaces">  </span><span class="istickedoff">where (keys, codes, expirations, starts, ends) = splitExchangeContracts ecs</span></span>
 <span class="lineno">  298 </span>
-<span class="lineno">  299 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Commodity.chs.h qlCommodityCurveName&quot;
-<span class="lineno">  300 </span>  name'_ :: ((C2HSImp.Ptr (CCommodityCurve')) -&gt; (IO (C2HSImp.Ptr C2HSImp.CChar)))
-<span class="lineno">  301 </span>
-<span class="lineno">  302 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Commodity.chs.h qlCommodityCurveCommodityType&quot;
-<span class="lineno">  303 </span>  commodityType'_ :: ((C2HSImp.Ptr (CCommodityCurve')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CCommodityType)))))
-<span class="lineno">  304 </span>
-<span class="lineno">  305 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Commodity.chs.h qlCommodityCurveUnitOfMeasure&quot;
-<span class="lineno">  306 </span>  unitOfMeasure'_ :: ((C2HSImp.Ptr (CCommodityCurve')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CUnitOfMeasure)))))
-<span class="lineno">  307 </span>
-<span class="lineno">  308 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Commodity.chs.h qlCommodityCurveCurrency&quot;
-<span class="lineno">  309 </span>  currency'_ :: ((C2HSImp.Ptr (CCommodityCurve')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CCurrency)))))
-<span class="lineno">  310 </span>
-<span class="lineno">  311 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Commodity.chs.h qlCommodityCurveDates&quot;
-<span class="lineno">  312 </span>  qlCommodityCurveDates'_ :: ((C2HSImp.Ptr (CCommodityCurve')) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CInt)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ())))))
-<span class="lineno">  313 </span>
-<span class="lineno">  314 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Commodity.chs.h qlCommodityCurvePrices&quot;
-<span class="lineno">  315 </span>  qlCommodityCurvePrices'_ :: ((C2HSImp.Ptr (CCommodityCurve')) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ())))))
-<span class="lineno">  316 </span>
-<span class="lineno">  317 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Commodity.chs.h qlCommodityCurveEmpty&quot;
-<span class="lineno">  318 </span>  isEmpty'_ :: ((C2HSImp.Ptr (CCommodityCurve')) -&gt; (IO C2HSImp.CInt))
-<span class="lineno">  319 </span>
-<span class="lineno">  320 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Commodity.chs.h qlCommodityCurveBasisOfCurve&quot;
-<span class="lineno">  321 </span>  basisOfCurve'_ :: ((C2HSImp.Ptr (CCommodityCurve')) -&gt; (IO (C2HSImp.Ptr (CCommodityCurve'))))
-<span class="lineno">  322 </span>
-<span class="lineno">  323 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Commodity.chs.h qlCommodityCurveSetBasisOfCurve&quot;
-<span class="lineno">  324 </span>  setBasisOfCurve'_ :: ((C2HSImp.Ptr (CCommodityCurve')) -&gt; ((C2HSImp.Ptr (CCommodityCurve')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ()))))
-<span class="lineno">  325 </span>
-<span class="lineno">  326 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Commodity.chs.h qlCommodityCurvePrice&quot;
-<span class="lineno">  327 </span>  qlCommodityCurvePrice_'_ :: ((C2HSImp.Ptr (CCommodityCurve')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))))))))))))))
-<span class="lineno">  328 </span>
-<span class="lineno">  329 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Commodity.chs.h qlCommodityCurveBasisOfPrice&quot;
-<span class="lineno">  330 </span>  basisOfPrice'_ :: ((C2HSImp.Ptr (CCommodityCurve')) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble))))
-<span class="lineno">  331 </span>
-<span class="lineno">  332 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Commodity.chs.h qlCommodityCurveUnderlyingPriceDate&quot;
-<span class="lineno">  333 </span>  qlCommodityCurveUnderlyingPriceDate_'_ :: ((C2HSImp.Ptr (CCommodityCurve')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CInt)))))))))))))))
+<span class="lineno">  299 </span>-- vim: set ff=unix ts=8 sts=2 sw=2 et:
+<span class="lineno">  300 </span>
+<span class="lineno">  301 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Commodity.chs.h qlCommodityCurve&quot;
+<span class="lineno">  302 </span>  qlCommodityCurve'_ :: ((C2HSImp.Ptr C2HSImp.CChar) -&gt; ((C2HSImp.Ptr (CCommodityType)) -&gt; ((C2HSImp.Ptr (CCurrency)) -&gt; ((C2HSImp.Ptr (CUnitOfMeasure)) -&gt; ((C2HSImp.Ptr (CCalendar)) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CCommodityCurve'))))))))))))))
+<span class="lineno">  303 </span>
+<span class="lineno">  304 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Commodity.chs.h qlCommodityCurveName&quot;
+<span class="lineno">  305 </span>  name'_ :: ((C2HSImp.Ptr (CCommodityCurve')) -&gt; (IO (C2HSImp.Ptr C2HSImp.CChar)))
+<span class="lineno">  306 </span>
+<span class="lineno">  307 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Commodity.chs.h qlCommodityCurveCommodityType&quot;
+<span class="lineno">  308 </span>  commodityType'_ :: ((C2HSImp.Ptr (CCommodityCurve')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CCommodityType)))))
+<span class="lineno">  309 </span>
+<span class="lineno">  310 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Commodity.chs.h qlCommodityCurveUnitOfMeasure&quot;
+<span class="lineno">  311 </span>  unitOfMeasure'_ :: ((C2HSImp.Ptr (CCommodityCurve')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CUnitOfMeasure)))))
+<span class="lineno">  312 </span>
+<span class="lineno">  313 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Commodity.chs.h qlCommodityCurveCurrency&quot;
+<span class="lineno">  314 </span>  currency'_ :: ((C2HSImp.Ptr (CCommodityCurve')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CCurrency)))))
+<span class="lineno">  315 </span>
+<span class="lineno">  316 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Commodity.chs.h qlCommodityCurveDates&quot;
+<span class="lineno">  317 </span>  qlCommodityCurveDates'_ :: ((C2HSImp.Ptr (CCommodityCurve')) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CInt)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ())))))
+<span class="lineno">  318 </span>
+<span class="lineno">  319 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Commodity.chs.h qlCommodityCurvePrices&quot;
+<span class="lineno">  320 </span>  qlCommodityCurvePrices'_ :: ((C2HSImp.Ptr (CCommodityCurve')) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ())))))
+<span class="lineno">  321 </span>
+<span class="lineno">  322 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Commodity.chs.h qlCommodityCurveEmpty&quot;
+<span class="lineno">  323 </span>  isEmpty'_ :: ((C2HSImp.Ptr (CCommodityCurve')) -&gt; (IO C2HSImp.CInt))
+<span class="lineno">  324 </span>
+<span class="lineno">  325 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Commodity.chs.h qlCommodityCurveBasisOfCurve&quot;
+<span class="lineno">  326 </span>  basisOfCurve'_ :: ((C2HSImp.Ptr (CCommodityCurve')) -&gt; (IO (C2HSImp.Ptr (CCommodityCurve'))))
+<span class="lineno">  327 </span>
+<span class="lineno">  328 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Commodity.chs.h qlCommodityCurveSetBasisOfCurve&quot;
+<span class="lineno">  329 </span>  setBasisOfCurve'_ :: ((C2HSImp.Ptr (CCommodityCurve')) -&gt; ((C2HSImp.Ptr (CCommodityCurve')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ()))))
+<span class="lineno">  330 </span>
+<span class="lineno">  331 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Commodity.chs.h qlCommodityCurvePrice&quot;
+<span class="lineno">  332 </span>  qlCommodityCurvePrice_'_ :: ((C2HSImp.Ptr (CCommodityCurve')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))))))))))))))
+<span class="lineno">  333 </span>
+<span class="lineno">  334 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Commodity.chs.h qlCommodityCurveBasisOfPrice&quot;
+<span class="lineno">  335 </span>  basisOfPrice'_ :: ((C2HSImp.Ptr (CCommodityCurve')) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble))))
+<span class="lineno">  336 </span>
+<span class="lineno">  337 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Commodity.chs.h qlCommodityCurveUnderlyingPriceDate&quot;
+<span class="lineno">  338 </span>  qlCommodityCurveUnderlyingPriceDate_'_ :: ((C2HSImp.Ptr (CCommodityCurve')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CInt)))))))))))))))
 
 </pre>
 </body>
