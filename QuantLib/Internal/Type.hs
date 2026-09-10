@@ -1923,7 +1923,7 @@ data CSabrVolSurface'
 type CSabrVolSurface = ForeignPtr CSabrVolSurface'
 -- | SABR-smile surface built from an interest-rate index, an ATM 'BlackAtmVolCurve', and
 -- per-tenor vol spreads. A dedicated 'BlackVolSurface' leaf (own getters: @atmCurve@,
--- @volatilitySpreads@; plus @index@\/@optionDateFromTenor@ folded in directly from upstream's
+-- @sabrVolatilitySpreads@; plus @index@\/@optionDateFromTenor@ folded in directly from upstream's
 -- @InterestRateVolSurface@, which is not given its own hierarchy level here since
 -- 'SabrVolSurface' is its only concrete member in this binding -- per CLAUDE.md's "don't mirror
 -- the C++ hierarchy 1:1" rule). Two 'AnyOf' layers under 'GenBlackVolSurface' (mirrors

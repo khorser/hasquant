@@ -887,20 +887,20 @@ spec = do
               bondLength = 5.0 :: Double
               optionTenor = (3, Years) :: (Word, TimeUnit)
               bondTenor = (5, Years) :: (Word, TimeUnit)
-          volTime <- Vol.volatility cbVol optionTime bondLength 0.05 False
+          volTime <- Vol.callableBondVolatility cbVol (Vol.CallableBondTimeLength optionTime bondLength) 0.05 False
           volTime `shouldBe` 0.12
-          volDate <- Vol.volatility cbVol optionDate bondTenor 0.05 False
+          volDate <- Vol.callableBondVolatility cbVol (Vol.CallableBondDateTenor optionDate bondTenor) 0.05 False
           volDate `shouldBe` 0.12
-          volPeriod <- Vol.volatility cbVol optionTenor bondTenor 0.05 False
+          volPeriod <- Vol.callableBondVolatility cbVol (Vol.CallableBondTenorTenor optionTenor bondTenor) 0.05 False
           volPeriod `shouldBe` 0.12
-          varTime <- Vol.blackVariance cbVol optionTime bondLength 0.05 False
+          varTime <- Vol.callableBondBlackVariance cbVol (Vol.CallableBondTimeLength optionTime bondLength) 0.05 False
           varTime `shouldSatisfy` closePrec (0.12 * 0.12 * 3.0) 1.0e-10
-          varDate <- Vol.blackVariance cbVol optionDate bondTenor 0.05 False
+          varDate <- Vol.callableBondBlackVariance cbVol (Vol.CallableBondDateTenor optionDate bondTenor) 0.05 False
           varDate `shouldSatisfy` closePrec varTime 1.0e-6
-          varPeriod <- Vol.blackVariance cbVol optionTenor bondTenor 0.05 False
+          varPeriod <- Vol.callableBondBlackVariance cbVol (Vol.CallableBondTenorTenor optionTenor bondTenor) 0.05 False
           varPeriod `shouldSatisfy` closePrec varTime 1.0e-6
-          _smileByDate <- Vol.bondSmileSection cbVol optionDate bondTenor
-          _smileByPeriod <- Vol.bondSmileSection cbVol optionTenor bondTenor
+          _smileByDate <- Vol.callableBondSmileSection cbVol (Vol.CallableBondSmileDateTenor optionDate bondTenor)
+          _smileByPeriod <- Vol.callableBondSmileSection cbVol (Vol.CallableBondSmileTenorTenor optionTenor bondTenor)
           maxTenor <- Vol.maxBondTenor cbVol
           maxTenor `shouldBe` (100, Years)
           minK <- Vol.minStrike cbVol
@@ -1002,7 +1002,7 @@ spec = do
               forM_ remainingVariances $ \v -> v `shouldSatisfy` closePrec expectedVariance 1.0e-8
             [] -> expectationFailure "expected ATM variance results"
 
-      -- SabrVolSurface's own volatilitySpreads(Date) linearly interpolates the raw quoted
+      -- SabrVolSurface's own sabrVolatilitySpreads(Date) linearly interpolates the raw quoted
       -- vol-spread quotes across optionTenors -- at a date that lands exactly on a grid tenor,
       -- that interpolation is the identity, so with flat spread quotes the surface must echo the
       -- input value back exactly. Real self-consistency check, not a hand-derived value.
@@ -1020,13 +1020,13 @@ spec = do
           spreadQs <- mapM (const (Quote.simpleQuote 0.02)) [1 .. (5 * 3 :: Int)]
           let volSpreads = either error id $ objectMatrix 5 3 spreadQs
           surf <- Vol.sabrVolSurface idx atmCurve (fromList tenors) (fromList spreads) volSpreads
-          vs <- Vol.volatilitySpreads surf (tenors !! 2)
+          vs <- Vol.sabrVolatilitySpreads surf (Vol.SabrVolatilitySpreadsTenor (tenors !! 2))
           length vs `shouldBe` 3
           vs `shouldSatisfy` all (\v -> abs (v - 0.02) < 1.0e-8)
           _ <- Vol.sabrVolSurfaceIndex surf
           d <- Vol.sabrVolSurfaceOptionDateFromTenor surf (3, Years)
           d `shouldSatisfy` (> 11 `december` 2012)
-          vsAtDate <- Vol.volatilitySpreads surf d
+          vsAtDate <- Vol.sabrVolatilitySpreads surf (Vol.SabrVolatilitySpreadsDate d)
           vsAtDate `shouldSatisfy` all (\v -> abs (v - 0.02) < 1.0e-8)
           t <- yearFraction dc (11 `december` 2012) d Nothing Nothing
           _ <- Vol.blackVolSurfaceSmileSection surf (Vol.OptionTenor (3, Years)) False
@@ -1770,9 +1770,9 @@ spec = do
                 , (Vol.OptionTenor (1, Years), Vol.SwapTenor (2, Years))
                 ]
           forM_ coordinates $ \(optionMaturity, swapMaturity) -> do
-            v <- Vol.volatility flatVol optionMaturity swapMaturity 0.02 False
+            v <- Vol.swaptionVolatility flatVol optionMaturity swapMaturity 0.02 False
             v `shouldBe` 0.20
-            variance <- Vol.blackVariance flatVol optionMaturity swapMaturity 0.02 False
+            variance <- Vol.swaptionBlackVariance flatVol optionMaturity swapMaturity 0.02 False
             variance `shouldSatisfy` (> 0)
             smile <- Vol.smileSection flatVol optionMaturity swapMaturity False
             smileVol <- Vol.smileSectionVolatility smile 0.02
@@ -1792,8 +1792,8 @@ spec = do
           volQ <- Quote.simpleQuote v
           flatVol <- Vol.constantSwaptionVolatility (Vol.CalendarReferenceDate refDate) cal ModifiedFollowing volQ dc IR.ShiftedLognormal 0
           optionDate <- advance cal refDate (1, Years) ModifiedFollowing False
-          fromGrid <- Vol.volatility grid (Vol.OptionDate optionDate) (Vol.SwapTenor (2, Years)) 0.02 False
-          fromFlat <- Vol.volatility flatVol (Vol.OptionDate optionDate) (Vol.SwapTenor (2, Years)) 0.02 False
+          fromGrid <- Vol.swaptionVolatility grid (Vol.OptionDate optionDate) (Vol.SwapTenor (2, Years)) 0.02 False
+          fromFlat <- Vol.swaptionVolatility flatVol (Vol.OptionDate optionDate) (Vol.SwapTenor (2, Years)) 0.02 False
           abs (fromGrid - fromFlat) `shouldSatisfy` (< 1.0e-6 * max 1 (abs fromFlat))
 
       it "recovers each cell's input volatility exactly at its own grid node" $
@@ -1814,7 +1814,7 @@ spec = do
                       | (od, oVols) <- zip optionDates vols
                       , (st, expected) <- zip swapTenors oVols]
           mapM_ (\(od, st, expected) -> do
-                    v <- Vol.volatility grid (Vol.OptionDate od) (Vol.SwapTenor st) 0.02 False
+                    v <- Vol.swaptionVolatility grid (Vol.OptionDate od) (Vol.SwapTenor st) 0.02 False
                     abs (v - expected) `shouldSatisfy` (< 1.0e-6)
                 ) nodes
 
@@ -1863,7 +1863,7 @@ spec = do
                     -- beta fixed: 3 strikeSpreads can't identify 4 free SABR params
                     -- ("less functions than available variables"), so pin beta at the guess.
                     False True False False False Nothing Nothing False 50 False 0.0001 Nothing Nothing
-          v <- Vol.volatility cube (Vol.OptionDate (10 `december` 2013)) (Vol.SwapTenor (2, Years)) 0.03 False
+          v <- Vol.swaptionVolatility cube (Vol.OptionDate (10 `december` 2013)) (Vol.SwapTenor (2, Years)) 0.03 False
           -- SABR calibration is a least-squares fit, not exact recovery, so this is deliberately a
           -- much looser tolerance than the exact-grid-recovery checks above -- don't tighten it.
           abs (v - flatVol) `shouldSatisfy` (< 1.0e-2)
@@ -1884,7 +1884,7 @@ spec = do
                     -- that path is out of scope for this shape/sanity test.
                     False True False False False Nothing Nothing False 50 False 0.0001 Nothing Nothing
           -- trigger calibration (lazy -- see the shim comment on qlSabrSwaptionVolatilityCube)
-          _ <- Vol.volatility cube (Vol.OptionDate (10 `december` 2013)) (Vol.SwapTenor (2, Years)) 0.03 False
+          _ <- Vol.swaptionVolatility cube (Vol.OptionDate (10 `december` 2013)) (Vol.SwapTenor (2, Years)) 0.03 False
           let n = fromIntegral (length optionTenors * length swapTenors)
           sparse <- Vol.sparseSabrParameters cube
           realMatrixRows sparse `shouldBe` n
@@ -1917,9 +1917,9 @@ spec = do
                     -- beta fixed: 3 strikeSpreads can't identify 4 free SABR params
                     -- ("less functions than available variables"), so pin beta at the guess.
                     False True False False False Nothing Nothing False 50 False 0.0001 Nothing Nothing
-          k <- Vol.atmStrike cube (1 :: Word, Years) (2 :: Word, Years)
+          k <- Vol.atmStrike cube (Vol.AtmStrikeTenor (1, Years)) (2 :: Word, Years)
           k `shouldSatisfy` (\x -> x > -0.05 && x < 0.20)
-          kAtDate <- Vol.atmStrike cube (10 `december` 2013) (2 :: Word, Years)
+          kAtDate <- Vol.atmStrike cube (Vol.AtmStrikeDate (10 `december` 2013)) (2 :: Word, Years)
           kAtDate `shouldSatisfy` (\x -> x > -0.05 && x < 0.20)
 
       -- Drop Haskell's EndCriteria and OptimizationMethod references before collection. The cube
@@ -1934,7 +1934,7 @@ spec = do
               swapIndexBase shortSwapIndexBase False parametersGuess
               False True False False False Nothing Nothing False 50 False 0.0001
               (Just endCriteria) (Just optMethod)
-          k <- Vol.atmStrike cube (1 :: Word, Years) (2 :: Word, Years)
+          k <- Vol.atmStrike cube (Vol.AtmStrikeTenor (1, Years)) (2 :: Word, Years)
           k `shouldSatisfy` (\x -> x > -0.05 && x < 0.20)
       -- NoArbSabrSwaptionVolatilityCube is the same XabrSwaptionVolatilityCube construction one
       -- model policy over (arbitrage-free SABR instead of Hagan-formula SABR) -- same fixture,
@@ -1950,7 +1950,7 @@ spec = do
                     -- beta fixed: 3 strikeSpreads can't identify 4 free SABR params
                     -- ("less functions than available variables"), so pin beta at the guess.
                     False True False False False Nothing Nothing False 50 False 0.0001 Nothing Nothing
-          v <- Vol.volatility cube (Vol.OptionDate (10 `december` 2013)) (Vol.SwapTenor (2, Years)) 0.03 False
+          v <- Vol.swaptionVolatility cube (Vol.OptionDate (10 `december` 2013)) (Vol.SwapTenor (2, Years)) 0.03 False
           -- least-squares fit, not exact recovery -- same looser tolerance as the SABR cube check.
           abs (v - flatVol) `shouldSatisfy` (< 1.0e-2)
 
@@ -1960,9 +1960,9 @@ spec = do
           cube <- Vol.noArbSabrSwaptionVolatilityCube atmVol optionTenors swapTenors strikeSpreads volSpreads
                     swapIndexBase shortSwapIndexBase False parametersGuess
                     False True False False False Nothing Nothing False 50 False 0.0001 Nothing Nothing
-          k <- Vol.atmStrike cube (1 :: Word, Years) (2 :: Word, Years)
+          k <- Vol.atmStrike cube (Vol.AtmStrikeTenor (1, Years)) (2 :: Word, Years)
           k `shouldSatisfy` (\x -> x > -0.05 && x < 0.20)
-          kAtDate <- Vol.atmStrike cube (10 `december` 2013) (2 :: Word, Years)
+          kAtDate <- Vol.atmStrike cube (Vol.AtmStrikeDate (10 `december` 2013)) (2 :: Word, Years)
           kAtDate `shouldSatisfy` (\x -> x > -0.05 && x < 0.20)
 
       it "interpolatedSwaptionVolatilityCube reprices close to its own flat ATM input at zero spread" $
@@ -1970,11 +1970,11 @@ spec = do
           (_, _, atmVol, swapIndexBase, shortSwapIndexBase, volSpreads, _) <- mkFixture
           cube <- Vol.interpolatedSwaptionVolatilityCube atmVol optionTenors swapTenors strikeSpreads volSpreads
                     swapIndexBase shortSwapIndexBase False
-          v <- Vol.volatility cube (Vol.OptionDate (10 `december` 2013)) (Vol.SwapTenor (2, Years)) 0.03 False
+          v <- Vol.swaptionVolatility cube (Vol.OptionDate (10 `december` 2013)) (Vol.SwapTenor (2, Years)) 0.03 False
           abs (v - flatVol) `shouldSatisfy` (< 1.0e-2)
-          k <- Vol.atmStrike cube (1 :: Word, Years) (2 :: Word, Years)
+          k <- Vol.atmStrike cube (Vol.AtmStrikeTenor (1, Years)) (2 :: Word, Years)
           k `shouldSatisfy` (\x -> x > -0.05 && x < 0.20)
-          kAtDate <- Vol.atmStrike cube (10 `december` 2013) (2 :: Word, Years)
+          kAtDate <- Vol.atmStrike cube (Vol.AtmStrikeDate (10 `december` 2013)) (2 :: Word, Years)
           kAtDate `shouldSatisfy` (\x -> x > -0.05 && x < 0.20)
 
       it "interpolatedSwaptionVolatilityCubeVolSpreads reports the zero spreads the cube was built with" $

@@ -1,4 +1,4 @@
-{-# LANGUAGE TemplateHaskell, FlexibleInstances, MultiParamTypeClasses #-}
+{-# LANGUAGE TemplateHaskell, FlexibleInstances #-}
 module QuantLib.TermStructure.Volatility
   (
     -- * Types
@@ -40,16 +40,16 @@ module QuantLib.TermStructure.Volatility
   , RelinkableSwaptionVolatilityStructure
   , OptionMaturity(..)
   , SwapMaturity(..)
+  , CallableBondMaturity(..)
+  , CallableBondSmileMaturity(..)
+  , SabrVolatilitySpreadsMaturity(..)
+  , AtmStrikeMaturity(..)
   , Reference(..)
   , CalendarReference(..)
   , TermPoint(..)
   , TermInterval(..)
   , RatePoint(..)
-  , HasBlackVariance(..)
-  , HasVolatility(..)
   , HasStrikeBounds(..)
-  , HasBondSmileSection(..)
-  , HasVolatilitySpreads(..)
   , HasAtmStrike(..)
   , VolatilityTermStructure
   , GenVolatilityTermStructure
@@ -86,6 +86,8 @@ module QuantLib.TermStructure.Volatility
   , blackForwardVol
   , blackForwardVariance
   , constantSwaptionVolatility
+  , swaptionVolatility
+  , swaptionBlackVariance
   , maxSwapLength
   , maxSwapTenor
   , smileSection
@@ -129,6 +131,9 @@ module QuantLib.TermStructure.Volatility
   , swapLength
     -- ** Bond and cap-floor structures
   , callableBondConstantVolatility
+  , callableBondVolatility
+  , callableBondBlackVariance
+  , callableBondSmileSection
   , maxBondTenor
   , constantCapFloorTermVolatility
   , capFloorVolatility
@@ -158,6 +163,7 @@ module QuantLib.TermStructure.Volatility
   , sabrVolSurfaceAtmCurve
   , sabrVolSurfaceIndex
   , sabrVolSurfaceOptionDateFromTenor
+  , sabrVolatilitySpreads
     -- ** Relinkable and spreaded structures
   , spreadedSwaptionVolatility
   , relinkableSwaptionVolatilityStructure
@@ -321,6 +327,31 @@ data OptionMaturity
 data SwapMaturity
   = SwapLength Double
   | SwapTenor (Word, TimeUnit)
+  deriving (Eq, Show)
+
+-- |Supported option and bond maturity pairs for callable-bond volatility queries.
+data CallableBondMaturity
+  = CallableBondTimeLength !Double !Double
+  | CallableBondDateTenor !Day !(Word, TimeUnit)
+  | CallableBondTenorTenor !(Word, TimeUnit) !(Word, TimeUnit)
+  deriving (Eq, Show)
+
+-- |Supported maturity pairs for callable-bond smile-section queries.
+data CallableBondSmileMaturity
+  = CallableBondSmileDateTenor !Day !(Word, TimeUnit)
+  | CallableBondSmileTenorTenor !(Word, TimeUnit) !(Word, TimeUnit)
+  deriving (Eq, Show)
+
+-- |Option maturities accepted by 'sabrVolatilitySpreads'.
+data SabrVolatilitySpreadsMaturity
+  = SabrVolatilitySpreadsDate !Day
+  | SabrVolatilitySpreadsTenor !(Word, TimeUnit)
+  deriving (Eq, Show)
+
+-- |Option maturities accepted by swaption-cube 'atmStrike' queries.
+data AtmStrikeMaturity
+  = AtmStrikeDate !Day
+  | AtmStrikeTenor !(Word, TimeUnit)
   deriving (Eq, Show)
 
 -- SabrInterpolatedSmileSectionOpts bundles every trailing param
@@ -615,9 +646,8 @@ blackVol surface point strike = case point of
   ,`Bool' -- ^extrapolate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
--- |Black variance for the given maturity and strike. Named 'blackVolVariance' (not
--- 'blackVariance') because that bare name is already the 'HasBlackVariance' class method for the
--- two-maturity swaption\/callable-bond family, a different arity and semantics.
+-- |Black variance for the given maturity and strike. Named 'blackVolVariance' to distinguish it
+-- from the two-maturity swaption and callable-bond queries.
 blackVolVariance :: GenBlackVolTermStructure bv -> TermPoint -> Double -> Bool -> IO Double
 blackVolVariance surface point strike = case point of
   DatePoint d -> blackVarianceAtDateRaw surface d strike
@@ -1332,44 +1362,25 @@ callableBondConstantVolatility reference = case reference of
   ,`Bool' -- ^extrapolate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
--- |Volatility structures that expose the same strike-volatility query for supported maturity
--- representations. Instances encode the valid coordinate pairs, so unsupported callable-bond
--- combinations do not type-check.
-class HasVolatility structure optionMaturity underlyingMaturity where
-  volatility :: structure -> optionMaturity -> underlyingMaturity -> Double -> Bool -> IO Double
+-- |Callable-bond volatility for a supported option and bond maturity pair.
+callableBondVolatility :: CallableBondVolatilityStructure -> CallableBondMaturity -> Double -> Bool -> IO Double
+callableBondVolatility structure maturity = case maturity of
+  CallableBondTimeLength optionTime bondLength ->
+    qlCallableBondVolatilityStructureVolatilityForTime structure optionTime bondLength
+  CallableBondDateTenor optionDate bondTenor ->
+    qlCallableBondVolatilityStructureVolatilityForDate structure optionDate bondTenor
+  CallableBondTenorTenor optionTenor bondTenor ->
+    qlCallableBondVolatilityStructureVolatilityForPeriod structure optionTenor bondTenor
 
-instance HasVolatility (GenSwaptionVolatilityStructure sv) OptionMaturity SwapMaturity where
-  volatility = swaptionVolatility
-instance HasVolatility CallableBondVolatilityStructure Double Double where
-  volatility = qlCallableBondVolatilityStructureVolatilityForTime
-instance HasVolatility CallableBondVolatilityStructure Day (Word, TimeUnit) where
-  volatility = qlCallableBondVolatilityStructureVolatilityForDate
-instance HasVolatility CallableBondVolatilityStructure (Word, TimeUnit) (Word, TimeUnit) where
-  volatility = qlCallableBondVolatilityStructureVolatilityForPeriod
-
--- |Volatility structures that expose Black variance with the same maturity coordinates as
--- 'volatility'.
-class HasBlackVariance structure optionMaturity underlyingMaturity where
-  blackVariance :: structure -> optionMaturity -> underlyingMaturity -> Double -> Bool -> IO Double
-
-instance HasBlackVariance (GenSwaptionVolatilityStructure sv) OptionMaturity SwapMaturity where
-  blackVariance = swaptionBlackVariance
-instance HasBlackVariance CallableBondVolatilityStructure Double Double where
-  blackVariance = qlCallableBondVolatilityStructureBlackVarianceForTime
-instance HasBlackVariance CallableBondVolatilityStructure Day (Word, TimeUnit) where
-  blackVariance = qlCallableBondVolatilityStructureBlackVarianceForDate
-instance HasBlackVariance CallableBondVolatilityStructure (Word, TimeUnit) (Word, TimeUnit) where
-  blackVariance = qlCallableBondVolatilityStructureBlackVarianceForPeriod
-
--- |Callable-bond smile-section coordinates. The instances encode the supported date/tenor and
--- tenor/tenor combinations.
-class HasBondSmileSection structure optionMaturity underlyingMaturity where
-  bondSmileSection :: structure -> optionMaturity -> underlyingMaturity -> IO SmileSection
-
-instance HasBondSmileSection CallableBondVolatilityStructure Day (Word, TimeUnit) where
-  bondSmileSection = callableBondSmileSectionAtDateRaw
-instance HasBondSmileSection CallableBondVolatilityStructure (Word, TimeUnit) (Word, TimeUnit) where
-  bondSmileSection = callableBondSmileSectionForTenorsRaw
+-- |Callable-bond Black variance for a supported option and bond maturity pair.
+callableBondBlackVariance :: CallableBondVolatilityStructure -> CallableBondMaturity -> Double -> Bool -> IO Double
+callableBondBlackVariance structure maturity = case maturity of
+  CallableBondTimeLength optionTime bondLength ->
+    qlCallableBondVolatilityStructureBlackVarianceForTime structure optionTime bondLength
+  CallableBondDateTenor optionDate bondTenor ->
+    qlCallableBondVolatilityStructureBlackVarianceForDate structure optionDate bondTenor
+  CallableBondTenorTenor optionTenor bondTenor ->
+    qlCallableBondVolatilityStructureBlackVarianceForPeriod structure optionTenor bondTenor
 
 -- |The smile section for a given option date and bond tenor.
 {#fun qlCallableBondVolatilityStructureSmileSectionForDate as callableBondSmileSectionAtDateRaw{withGenTermStructure*`CallableBondVolatilityStructure'
@@ -1383,6 +1394,14 @@ instance HasBondSmileSection CallableBondVolatilityStructure (Word, TimeUnit) (W
   ,fromEnumQuantity`(Word,TimeUnit)'& -- ^bondTenor
   ,preErrorCheck-`String'errorCheck*-}->`SmileSection'peekSmileSection*#}
 
+-- |Callable-bond smile section for a supported option and bond maturity pair.
+callableBondSmileSection :: CallableBondVolatilityStructure -> CallableBondSmileMaturity -> IO SmileSection
+callableBondSmileSection structure maturity = case maturity of
+  CallableBondSmileDateTenor optionDate bondTenor ->
+    callableBondSmileSectionAtDateRaw structure optionDate bondTenor
+  CallableBondSmileTenorTenor optionTenor bondTenor ->
+    callableBondSmileSectionForTenorsRaw structure optionTenor bondTenor
+
 -- |The largest bond tenor for which the structure can return vols.
 {#fun qlCallableBondVolatilityStructureMaxBondTenor as maxBondTenor{withGenTermStructure*`CallableBondVolatilityStructure',preEnum-`TimeUnit'peekEnum*,preErrorCheck-`String'errorCheck*-}->`Int'#}
 
@@ -1394,7 +1413,7 @@ instance HasBondSmileSection CallableBondVolatilityStructure (Word, TimeUnit) (W
 
 -- |The minimum and maximum strike for which a structure can return vols. 'CallableBondVolatilityStructure'
 -- declares its own unrelated pair (it inherits 'TermStructure' directly, not 'VolatilityTermStructure'),
--- so the two families need separate instances -- same shape as 'HasVolatility'\/'HasBlackVariance' above.
+-- so the two families need separate instances.
 class HasStrikeBounds structure where
   minStrike :: structure -> IO Double
   maxStrike :: structure -> IO Double
@@ -1592,15 +1611,6 @@ sabrVolSurface ix atm ntenors spreads (Matrix vr vc vd) =
 -- |the 'BlackAtmVolCurve' this surface's ATM level is anchored to
 {#fun qlSabrVolSurfaceAtmCurve as sabrVolSurfaceAtmCurve{withSabrVolSurface*`SabrVolSurface',preErrorCheck-`String'errorCheck*-}->`BlackAtmVolCurve'peekBlackAtmVolCurve*#}
 
--- |Surfaces exposing volatility-spread rows at their supported maturity coordinates.
-class HasVolatilitySpreads structure maturity where
-  volatilitySpreads :: structure -> maturity -> IO [Double]
-
-instance HasVolatilitySpreads SabrVolSurface (Word, TimeUnit) where
-  volatilitySpreads = sabrVolSurfaceVolatilitySpreadsForTenorRaw
-instance HasVolatilitySpreads SabrVolSurface Day where
-  volatilitySpreads = sabrVolSurfaceVolatilitySpreadsAtDateRaw
-
 {#fun qlSabrVolSurfaceVolatilitySpreadsForPeriod as sabrVolSurfaceVolatilitySpreadsForTenorRaw{withSabrVolSurface*`SabrVolSurface'
   ,fromEnumQuantity`(Word,TimeUnit)'& -- ^optionTenor
   ,preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
@@ -1608,6 +1618,14 @@ instance HasVolatilitySpreads SabrVolSurface Day where
 {#fun qlSabrVolSurfaceVolatilitySpreadsForDate as sabrVolSurfaceVolatilitySpreadsAtDateRaw{withSabrVolSurface*`SabrVolSurface'
   ,withDay*`Day' -- ^optionDate
   ,preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+
+-- |Volatility-spread row at an option date or tenor.
+sabrVolatilitySpreads :: SabrVolSurface -> SabrVolatilitySpreadsMaturity -> IO [Double]
+sabrVolatilitySpreads surface maturity = case maturity of
+  SabrVolatilitySpreadsDate optionDate ->
+    sabrVolSurfaceVolatilitySpreadsAtDateRaw surface optionDate
+  SabrVolatilitySpreadsTenor optionTenor ->
+    sabrVolSurfaceVolatilitySpreadsForTenorRaw surface optionTenor
 
 -- |the interest rate index this surface was built from (folded in from upstream's
 -- @InterestRateVolSurface@, not given its own hierarchy level here -- see 'SabrVolSurface').
@@ -2028,23 +2046,24 @@ volCubeAtmCalibrated sv = toRealMatrix <$> qlSabrSwaptionVolatilityCubeVolCubeAt
   ,prePtr-`Word'peekWord*,prePtr-`Word'peekWord*,preArray-`RealVector'&peekRealVector*
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
--- |Swaption cubes exposing the same ATM-strike query. Instances encode the supported option-date
--- and option-tenor coordinates without a misleading @AtTime@ name.
-class HasAtmStrike structure optionMaturity where
-  atmStrike :: structure -> optionMaturity -> (Word, TimeUnit) -> IO Double
+-- |Swaption cubes exposing an ATM-strike query.
+class HasAtmStrike structure where
+  atmStrike :: structure -> AtmStrikeMaturity -> (Word, TimeUnit) -> IO Double
 
-instance HasAtmStrike SabrSwaptionVolatilityCube Day where
-  atmStrike = sabrSwaptionVolatilityCubeAtmStrikeAtDateRaw
-instance HasAtmStrike SabrSwaptionVolatilityCube (Word, TimeUnit) where
-  atmStrike = sabrSwaptionVolatilityCubeAtmStrikeForTenorRaw
-instance HasAtmStrike NoArbSabrSwaptionVolatilityCube Day where
-  atmStrike = noArbSabrSwaptionVolatilityCubeAtmStrikeAtDateRaw
-instance HasAtmStrike NoArbSabrSwaptionVolatilityCube (Word, TimeUnit) where
-  atmStrike = noArbSabrSwaptionVolatilityCubeAtmStrikeForTenorRaw
-instance HasAtmStrike InterpolatedSwaptionVolatilityCube Day where
-  atmStrike = interpolatedSwaptionVolatilityCubeAtmStrikeAtDateRaw
-instance HasAtmStrike InterpolatedSwaptionVolatilityCube (Word, TimeUnit) where
-  atmStrike = interpolatedSwaptionVolatilityCubeAtmStrikeForTenorRaw
+instance HasAtmStrike SabrSwaptionVolatilityCube where
+  atmStrike cube maturity = case maturity of
+    AtmStrikeDate optionDate -> sabrSwaptionVolatilityCubeAtmStrikeAtDateRaw cube optionDate
+    AtmStrikeTenor optionTenor -> sabrSwaptionVolatilityCubeAtmStrikeForTenorRaw cube optionTenor
+
+instance HasAtmStrike NoArbSabrSwaptionVolatilityCube where
+  atmStrike cube maturity = case maturity of
+    AtmStrikeDate optionDate -> noArbSabrSwaptionVolatilityCubeAtmStrikeAtDateRaw cube optionDate
+    AtmStrikeTenor optionTenor -> noArbSabrSwaptionVolatilityCubeAtmStrikeForTenorRaw cube optionTenor
+
+instance HasAtmStrike InterpolatedSwaptionVolatilityCube where
+  atmStrike cube maturity = case maturity of
+    AtmStrikeDate optionDate -> interpolatedSwaptionVolatilityCubeAtmStrikeAtDateRaw cube optionDate
+    AtmStrikeTenor optionTenor -> interpolatedSwaptionVolatilityCubeAtmStrikeForTenorRaw cube optionTenor
 
 {#fun qlSabrSwaptionVolatilityCubeAtmStrike1 as sabrSwaptionVolatilityCubeAtmStrikeAtDateRaw{withSabrSwaptionVolatilityCube*`SabrSwaptionVolatilityCube'
   ,withDay*`Day' -- ^optionDate
