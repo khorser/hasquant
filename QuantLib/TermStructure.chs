@@ -57,7 +57,7 @@ class HasHelperUnderlying h where
   type HelperUnderlying h
   -- |The instrument the helper prices. For helpers that build it internally --
   -- 'QuantLib.TermStructure.Yield.fixedRateBondHelper' and
-  -- 'QuantLib.TermStructure.Yield.cpiBondHelper' among them -- this is the only way to reach it.
+  -- 'QuantLib.TermStructure.Inflation.cpiBondHelper' among them -- this is the only way to reach it.
   helperInstrument :: h -> IO (HelperUnderlying h)
 
 instance HasHelperUnderlying BondHelper where

@@ -13,6 +13,7 @@ module QuantLib.TermStructure.Inflation
     -- ** Helpers
   , zeroCouponInflationSwapHelper
   , yearOnYearInflationSwapHelper
+  , cpiBondHelper
     -- ** Curves
   , piecewiseZeroInflationCurve
   , piecewiseYoyInflationCurve
@@ -47,6 +48,7 @@ import Data.List.NonEmpty(NonEmpty, toList)
 {#pointer *QlYearOnYearInflationSwapHelper as YearOnYearInflationSwapHelper foreign -> CYearOnYearInflationSwapHelper nocode#}
 {#pointer *QlZeroCouponInflationSwap as ZeroCouponInflationSwap foreign -> CZeroCouponInflationSwap' nocode#}
 {#pointer *QlYearOnYearInflationSwap as YearOnYearInflationSwap foreign -> CYearOnYearInflationSwap' nocode#}
+{#pointer *QlBondHelper as BondHelper foreign -> CBondHelper' nocode#}
 
 -- |Bootstrap helper for a zero-coupon inflation swap, at the given (observation lag, maturity).
 {#fun qlZeroCouponInflationSwapHelper as zeroCouponInflationSwapHelper{withQuote*`GenQuote q' -- ^quote
@@ -75,6 +77,22 @@ import Data.List.NonEmpty(NonEmpty, toList)
   ,`PillarChoice' -- ^pillar
   ,withMaybeDay*`Maybe Day' -- ^customPillarDate
   ,preErrorCheck-`String'errorCheck*-}->`YearOnYearInflationSwapHelper'peekYearOnYearInflationSwapHelper*#}
+
+-- |Bootstrap helper for a 'QuantLib.Instrument.Bond.CPIBond' -- a 'CPIBondHelper', which is a
+-- plain 'BondHelper' subclass with no extra methods, so it's returned as the generic
+-- 'BondHelper' type (same shape as 'QuantLib.TermStructure.Yield.fixedRateBondHelper').
+{#fun qlCPIBondHelper as cpiBondHelper{withQuote*`GenQuote q',fromIntegral`Word' -- ^settlementDays
+  ,`Double' -- ^faceAmount
+  ,`Double' -- ^baseCPI
+  ,fromEnumQuantity`(Word,TimeUnit)'& -- ^observationLag
+  ,withZeroInflationIndex*`ZeroInflationIndex'
+  ,fromEnumC`CPIInterpolationType' -- ^observationInterpolation
+  ,withSchedule*`Schedule',withNonEmptyDoubleArray*`NonEmpty Double'& -- ^coupons
+  ,withDayCounter*`DayCounter' -- ^accrualDayCounter
+  ,fromEnumC`BusinessDayConvention' -- ^paymentConvention
+  ,withMaybeDay*`Maybe Day' -- ^issueDate
+  ,withCalendar*`Calendar' -- ^paymentCalendar
+  ,preErrorCheck-`String'errorCheck*-}->`BondHelper'peekBondHelper*#}
 
 piecewiseZeroInflationCurve :: Day -- ^referenceDate
   -> Day -- ^baseDate

@@ -298,8 +298,8 @@ spec evalDate = do
           addFixing inflation (1 `november` 2010) 120.0 False
           addFixing inflation (1 `december` 2010) 120.0 False
           addFixing inflation fixingDate' 120.0 False
-          zero <- CF.zeroInflationCashFlow 100.0 inflation CPIFlat baseDate fixingDate' (2, Months) paymentDate False
-          cpi <- CF.cpiCashFlow 100.0 inflation (Just baseDate) Nothing fixingDate' (2, Months) CPIFlat paymentDate False
+          zero <- CF.zeroInflationCashFlow 100.0 inflation Swap.CPIFlat baseDate fixingDate' (2, Months) paymentDate False
+          cpi <- CF.cpiCashFlow 100.0 inflation (Just baseDate) Nothing fixingDate' (2, Months) Swap.CPIFlat paymentDate False
           cal <- calendar Null
           usd <- currency USD
           equityIndex <- Equity.equityIndex "custom-leg-equity" cal usd Nothing Nothing Nothing
@@ -320,7 +320,7 @@ spec evalDate = do
           cpiFlow <- CF.asCashFlow cpi
           equityFlow <- CF.asCashFlow equity
           dc <- dayCounter (Actual360 False)
-          coupon <- CF.cpiCoupon 100.0 paymentDate 100.0 baseDate paymentDate inflation (2, Months) CPIFlat dc 0.02
+          coupon <- CF.cpiCoupon 100.0 paymentDate 100.0 baseDate paymentDate inflation (2, Months) Swap.CPIFlat dc 0.02
             (Just baseDate) (Just paymentDate) Nothing
           couponPricer <- CF.cpiCouponPricer Nothing
           CF.setCpiCouponPricer coupon couponPricer
