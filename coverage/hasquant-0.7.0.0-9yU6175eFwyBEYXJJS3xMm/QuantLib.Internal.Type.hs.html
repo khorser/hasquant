@@ -1942,7 +1942,7 @@ span.spaces    { background: white }
 <span class="lineno"> 1923 </span>type CSabrVolSurface = ForeignPtr CSabrVolSurface'
 <span class="lineno"> 1924 </span>-- | SABR-smile surface built from an interest-rate index, an ATM 'BlackAtmVolCurve', and
 <span class="lineno"> 1925 </span>-- per-tenor vol spreads. A dedicated 'BlackVolSurface' leaf (own getters: @atmCurve@,
-<span class="lineno"> 1926 </span>-- @volatilitySpreads@; plus @index@\/@optionDateFromTenor@ folded in directly from upstream's
+<span class="lineno"> 1926 </span>-- @sabrVolatilitySpreads@; plus @index@\/@optionDateFromTenor@ folded in directly from upstream's
 <span class="lineno"> 1927 </span>-- @InterestRateVolSurface@, which is not given its own hierarchy level here since
 <span class="lineno"> 1928 </span>-- 'SabrVolSurface' is its only concrete member in this binding -- per CLAUDE.md's &quot;don't mirror
 <span class="lineno"> 1929 </span>-- the C++ hierarchy 1:1&quot; rule). Two 'AnyOf' layers under 'GenBlackVolSurface' (mirrors
