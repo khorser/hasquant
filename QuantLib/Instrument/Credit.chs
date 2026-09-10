@@ -1,14 +1,24 @@
 module QuantLib.Instrument.Credit
   (
+    -- * Types
     CreditDefaultSwap
   , ProtectionSide(..)
   , Claim(..)
+  , SyntheticCDO
+  , NthToDefault
 
+    -- * Constructors
+    -- ** Credit-default swaps and options
   , creditDefaultSwap
   , creditDefaultSwapWithUpfront
-
-  , atmRate
   , cdsOption
+    -- ** Portfolio credit
+  , syntheticCdo
+  , nthToDefault
+
+    -- * Calculations
+    -- ** Credit-default swaps and options
+  , atmRate
   , impliedVolatility
   , riskyAnnuity
 
@@ -22,10 +32,7 @@ module QuantLib.Instrument.Credit
   , impliedHazardRate
   , upfrontBps
   , upfrontNpv
-
-  , SyntheticCDO
-  , syntheticCdo
-
+    -- ** Synthetic CDOs
   , fairPremium
   , fairUpfrontPremium
   , premiumValue
@@ -34,9 +41,7 @@ module QuantLib.Instrument.Credit
   , protectionLegNpv
   , cdoRemainingNotional
   , implicitCorrelation
-
-  , NthToDefault
-  , nthToDefault
+    -- ** Nth-to-default
   , ntdFairPremium
   ) where
 import Data.List.NonEmpty(NonEmpty)

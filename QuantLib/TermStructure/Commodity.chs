@@ -1,7 +1,18 @@
 module QuantLib.TermStructure.Commodity
   (
+    -- * Types
     CommodityCurve
+  , ExchangeContract
+  , ExchangeContracts
+
+    -- * Constructors
   , commodityCurve
+
+    -- * Mutators
+  , setBasisOfCurve
+
+    -- * Inspectors
+    -- ** Curve metadata and nodes
   , name
   , commodityType
   , unitOfMeasure
@@ -9,11 +20,9 @@ module QuantLib.TermStructure.Commodity
   , nodes
   , isEmpty
   , basisOfCurve
-  , setBasisOfCurve
+    -- ** Prices and contracts
   , price
   , basisOfPrice
-  , ExchangeContract
-  , ExchangeContracts
   , priceNearby
   , underlyingPriceDate
   ) where
@@ -36,9 +45,7 @@ import Data.List.NonEmpty(NonEmpty, toList)
 
 -- |Construct a commodity price curve: a named, interpolated (forward-flat) price curve over a
 -- fixed set of dates, for a given commodity type\/currency\/unit of measure. QuantLib's no-dates
--- constructor (populated later via the mutator @setPrices@) is not bound -- per the standing
--- setter-confirmation rule, only 'setBasisOfCurve' was confirmed, not @setPrices@ --
--- so this with-dates constructor is the only way to build one.
+-- constructor populated later via @setPrices@ is not bound, so this is the only way to build one.
 commodityCurve :: String -> CommodityType -> Currency -> UnitOfMeasure -> Calendar
   -> NonEmpty (Day, Double) -> DayCounter -> IO CommodityCurve
 commodityCurve curveName ct ccy uom cal curveNodes dc =
@@ -84,8 +91,7 @@ nodes curve = do
 {#fun qlCommodityCurveBasisOfCurve as basisOfCurve{withGenTermStructure*`CommodityCurve'}->`Maybe CommodityCurve'peekMaybeCommodityCurve*#}
 
 -- |Chain this curve to a basis curve: prices returned by 'price'\/'basisOfPrice'
--- then include the basis curve's price on top of this curve's own. Confirmed with the user as the
--- one 'CommodityCurve' mutator worth binding (unlike @setPrices@, which stays unbound).
+-- then include the basis curve's price on top of this curve's own.
 {#fun qlCommodityCurveSetBasisOfCurve as setBasisOfCurve{withGenTermStructure*`CommodityCurve',withGenTermStructure*`CommodityCurve',preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |A dated exchange contract: a code, its expiration date, and the start/end dates of the
@@ -102,9 +108,8 @@ type ExchangeContract = (String, Day, Day, Day) -- ^code, expirationDate, underl
 type ExchangeContracts = [(Day, ExchangeContract)]
 
 -- |Split an 'ExchangeContracts' into the five parallel lists the low-level bindings below take.
--- Not a single combined marshaller: c2hs's @&@ tuple-splitter only ever consumes two C arguments
--- (confirmed against its source, same reasoning as 'QuantLib.Commodity.Quantity'), so each list is
--- passed as its own flat, individually-marshalled argument instead of one bundled continuation.
+-- Each component uses its own flat marshaller because c2hs's @&@ tuple splitter consumes only
+-- two C arguments.
 splitExchangeContracts :: ExchangeContracts -> ([Day], [String], [Day], [Day], [Day])
 splitExchangeContracts ecs =
   ( map fst ecs

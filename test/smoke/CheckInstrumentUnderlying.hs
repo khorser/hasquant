@@ -1,12 +1,5 @@
--- Smoke test for the HasInstrumentUnderlying capability class: five newly bound
--- underlying-swap accessors on Swaption, NonstandardSwaption, FloatFloatSwaption,
--- IrregularSwaption and CdsOption.
---
--- The check is object identity, not shape: a pricing engine is set on the swap that was
--- passed to the option's constructor, then the swap is pulled back out through the class
--- method and priced through that handle. Equal NPVs prove the accessor returns a handle to
--- the same upstream object (shared_ptr aliasing intact); a structural check like maturityDate
--- would also pass on an unrelated copy, and a nullptr/wrong-type unwrap would crash here.
+-- Exercise every HasInstrumentUnderlying instance. Pricing the returned handle checks that
+-- the accessor preserves the upstream shared object and its configured engine.
 --
 -- Run with: .claude/skills/run-hasquant/driver.sh test/smoke/CheckInstrumentUnderlying.hs
 import Data.List.NonEmpty(fromList)
@@ -55,12 +48,12 @@ main = do
   exDates <- fixedLeg vswp >>= CF.toCouponLeg >>= CF.couponAccrualStartDates
   let bermudan = Bermudan (BermudanExercise (fromList exDates) False)
 
-  -- 1. Swaption -> FixedVsFloatingSwap (upstream's underlying(), not the deprecated underlyingSwap())
+  -- Swaption -> FixedVsFloatingSwap
   swpn <- swaption vswp bermudan Physical PhysicalOTC
   underlyingSwap swpn >>= npv >>= \v ->
     checkWith "Swaption underlying" "same NPV as the swap the swaption was built from" (v == vswpNpv)
 
-  -- 2. NonstandardSwaption -> NonstandardSwap
+  -- NonstandardSwaption -> NonstandardSwap
   nsSwap <- nonstandardSwapFromVanilla vswp
   setPricingEngine nsSwap swapEngine
   nsNpv <- npv nsSwap
@@ -68,7 +61,7 @@ main = do
   underlyingSwap nsSwpn >>= npv >>= \v ->
     checkWith "NonstandardSwaption underlying" "same NPV as the nonstandard swap it wraps" (v == nsNpv)
 
-  -- 3. FloatFloatSwaption -> FloatFloatSwap
+  -- FloatFloatSwaption -> FloatFloatSwap
   -- two Ibor legs, not a CMS leg: a CMS leg would need a coupon pricer before it can price.
   euribor3m <- IR.iborIndex IR.Euribor3M (Just ts)
   ffSwap <- floatFloatSwap Payer 1.0 1.0 fixedSchedule euribor3m thirty360bb floatSchedule
@@ -79,7 +72,7 @@ main = do
   underlyingSwap ffSwpn >>= npv >>= \v ->
     checkWith "FloatFloatSwaption underlying" "same NPV as the float-float swap it wraps" (v == ffNpv)
 
-  -- 4. IrregularSwaption -> IrregularSwap
+  -- IrregularSwaption -> IrregularSwap
   fixedL <- fixedLeg vswp
   floatL <- floatingLeg vswp
   irr <- irregularSwap Payer fixedL floatL
@@ -89,7 +82,7 @@ main = do
   underlyingSwap irrSwpn >>= npv >>= \v ->
     checkWith "IrregularSwaption underlying" "same NPV as the irregular swap it wraps" (v == irrNpv)
 
-  -- 5. CdsOption -> CreditDefaultSwap
+  -- CdsOption -> CreditDefaultSwap
   hazardQ <- simpleQuote 0.01234
   probCurve <- flatHazardRate (SettlementDays 0 cal) hazardQ act360
   cdsIssue <- advance cal today (-1, Years) ModifiedFollowing False

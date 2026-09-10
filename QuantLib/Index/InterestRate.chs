@@ -3,7 +3,8 @@
 {-# OPTIONS_GHC -Wno-unused-top-binds #-}
 module QuantLib.Index.InterestRate
   (
-    -- * Interest-rate index hierarchy
+    -- * Types
+    -- ** Interest-rate index hierarchy
     InterestRateIndex
   , BMAIndex
   , OvernightIborIndex
@@ -15,10 +16,12 @@ module QuantLib.Index.InterestRate
   , GenIborIndex
   , GenSwapIndex
 
-    -- * BMA indices
+    -- * Constructors
+    -- ** BMA indices
   , bmaIndex
 
-    -- * Index dates and conventions
+    -- * Inspectors
+    -- ** Index dates and conventions
   , fixingSchedule
   , forecastFixing
   , currency
@@ -29,12 +32,12 @@ module QuantLib.Index.InterestRate
   , valueDate
   , maturityDate
 
-    -- * Hierarchy conversion
+    -- ** Hierarchy conversion
   , asInterestRateIndex
   , asIborIndex
   , asSwapIndex
 
-    -- * Overnight and swap indices
+    -- ** Overnight and swap indices
   , OvernightIborIndexType(..)
   , overnightIborIndex
 
@@ -46,7 +49,7 @@ module QuantLib.Index.InterestRate
   , swapIndexWithDiscountCurve
   , swapSpreadIndex
 
-    -- * Ibor index catalogue
+    -- ** Ibor index catalogue
 
   -- The bundled names are the fixed-tenor shortcut pattern synonyms defined below;
   -- @Euribor3M@ and @Euribor (3, Months)@ are the same value, usable interchangeably
@@ -69,7 +72,7 @@ module QuantLib.Index.InterestRate
   , businessDayConvention
   , endOfMonth
 
-    -- * Underlying swaps and history
+    -- ** Underlying swaps and history
   , underlyingSwap
   , underlyingOis
 
@@ -83,7 +86,7 @@ import QuantLib.Index (historicalIndexAnalysis)
 -- Plain (non-c2hs) import: QuantLib.CashFlow is later in exposed-modules than
 -- this file, so a {#import#} here would need its .chi before it exists.
 -- overnightIndexedSwapIndex below marshals RateAveragingType as a plain Int
--- via fromEnum instead, per CLAUDE.md's cross-module enum-import workaround.
+-- via fromEnum instead.
 import QuantLib.CashFlow (RateAveragingType)
 -- Only for IborConstructor's Read instance below (deriveReadInstance's materializer
 -- table): this module already defines its own `currency`/`dayCounter` (an
@@ -317,17 +320,14 @@ iborIndex c ts = qlCreateIbor (iborIndexOrdinal c) (iborIndexTenor c) ts
   ,withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y2)' -- ^discounting
   ,preErrorCheck-`String'errorCheck*-}->`SwapIndex'peekSwapIndex*#}
 
--- | Construct an overnight-indexed swap index.
--- RateAveragingType (QuantLib.CashFlow) is later in exposed-modules than this file,
--- so averagingMethod is marshalled as a plain Int via fromEnum in the unexported
--- glue binding below instead of a {#import#}'d enum type, per CLAUDE.md's
--- cross-module workaround. The public signature stays fully typed.
+-- |Construct an overnight-indexed swap index. The private binding marshals
+-- 'RateAveragingType' as an 'Int' to avoid a c2hs cross-module enum-import cycle.
 overnightIndexedSwapIndex :: String -> (Int, TimeUnit) -> Word -> Currency
   -> OvernightIborIndex -> Bool -> RateAveragingType -> IO OvernightIndexedSwapIndex
 overnightIndexedSwapIndex familyName tenr settlementDays ccy idx telescopicValueDates averagingMethod =
   overnightIndexedSwapIndex_ familyName tenr settlementDays ccy idx telescopicValueDates (fromEnum averagingMethod)
 
--- |Low-level glue for 'overnightIndexedSwapIndex': constructs the swap-rate index tracking an overnight-indexed swap, taking the rate-averaging method as a plain Int.
+-- |Private binding for 'overnightIndexedSwapIndex'.
 {#fun qlOvernightIndexedSwapIndex as overnightIndexedSwapIndex_{`String',fromEnumQuantity`(Int,TimeUnit)'&,fromIntegral`Word' -- ^settlementDays
   ,withCurrency*`Currency',withOvernightIborIndex*`OvernightIborIndex'
   ,`Bool' -- ^telescopicValueDates

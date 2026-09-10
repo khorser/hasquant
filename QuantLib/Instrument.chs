@@ -1,5 +1,6 @@
 module QuantLib.Instrument
   (
+    -- * Types
     PositionType(..)
   , SettlementType(..)
   , SettlementMethod(..)
@@ -15,21 +16,27 @@ module QuantLib.Instrument
   , PerpetualFuturesFundingType(..)
 
   , Instrument
-  , asInstrument
   , Callability(..)
 
   , Exercise(..)
   , ExerciseType(..)
 
   , AdditionalResultVal(..)
+
+    -- * Constructors
+  , asInstrument
   , perpetualFutures
+  , composite
+
+    -- * Mutators
+  , setPricingEngine
+
+    -- * Inspectors
   , npv
   , errorEstimate
   , isExpired
   , valuationDate
-  , composite
   , additionalResults
-  , setPricingEngine
   ) where
 import QuantLib.Internal
 import QuantLib.Internal.Type hiding(ptr)

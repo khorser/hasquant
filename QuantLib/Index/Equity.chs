@@ -1,7 +1,9 @@
 module QuantLib.Index.Equity
   (
+    -- * Types
     EquityIndex
 
+    -- * Constructors
   , equityIndex
   ) where
 import QuantLib.Internal

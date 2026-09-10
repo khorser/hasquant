@@ -1,9 +1,12 @@
 module QuantLib.Index.Commodity
   (
+    -- * Types
     CommodityIndex
 
+    -- * Constructors
   , commodityIndex
 
+    -- * Inspectors
   , forwardPrice
   , lastQuoteDate
   , isEmpty
@@ -30,9 +33,8 @@ import QuantLib.Internal.Type
 -- @ExchangeContracts@\/nearby-offset pair for rolling onto nearby exchange contracts; this binds
 -- only the no-rolling case (a null @exchangeContracts@ and offset 0), the same scope this module's
 -- 'QuantLib.TermStructure.Commodity.CommodityCurve' already narrowed 'price' to.
--- No inspector is bound for commodity type\/currency\/unit of measure\/lot quantity\/forward
--- curve: each is a plain, never-mutated echo of this constructor's own argument -- the caller
--- already holds whatever it passed in, so a getter would tell it nothing new.
+-- Commodity type, currency, unit, lot quantity, and forward curve are not exposed as inspectors
+-- because they only echo the constructor arguments.
 {#fun qlCommodityIndex as commodityIndex
   {`String' -- ^name
   ,withCommodityType*`CommodityType'

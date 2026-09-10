@@ -1,12 +1,17 @@
 module QuantLib.Instrument.CapFloor
   (
+    -- * Types
     CapFloor
+
+    -- * Constructors
   , cap
   , collar
   , floor
+  , optionlet
+
+    -- * Calculations
   , atmRate
   , impliedVolatility
-  , optionlet
   ) where
 import Prelude hiding(floor)
 

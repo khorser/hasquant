@@ -1,7 +1,8 @@
 {-# LANGUAGE TemplateHaskell, FlexibleInstances, TypeFamilies #-}
 module QuantLib.Instrument.Swap
   (
-    -- * Swap and swaption types
+    -- * Types
+    -- ** Swap and swaption types
     Swaption
   , IrregularSwaption
   , NonstandardSwaption
@@ -26,7 +27,7 @@ module QuantLib.Instrument.Swap
   , ConstNotionalCrossCurrencyBasisSwap
   , ConstNotionalCrossCurrencyFixedVsFloatingSwap
 
-    -- * Hierarchy conversion and configuration
+    -- ** Configuration and capabilities
   , asSwap
 
   , impliedVolatility
@@ -43,8 +44,14 @@ module QuantLib.Instrument.Swap
   , defaultConstNotionalCrossCurrencyBasisSwapOpts
   , OvernightObservation(..)
   , defaultOvernightObservation
+  , HasFixedLeg(..)
+  , HasFloatingLeg(..)
+  , HasFairRate(..)
+  , HasFairSpread(..)
+  , HasInstrumentUnderlying(..)
 
-    -- * Swap construction and product-specific results
+    -- * Constructors
+    -- ** Swaps
   , swapFromLegs
   , swap
   , bmaSwap
@@ -75,7 +82,8 @@ module QuantLib.Instrument.Swap
   , variance
   , varianceOption
 
-    -- * Common swap inspectors
+    -- * Inspectors
+    -- ** Common swap inspectors
   , endDiscounts
   , leg
   , legBps
@@ -85,7 +93,7 @@ module QuantLib.Instrument.Swap
   , startDate
   , startDiscounts
 
-    -- * Cross-currency swaps
+    -- ** Cross-currency swaps
   , constNotionalCrossCurrencySwap
   , constNotionalCrossCurrencySwapFromLegs
   , legCurrency
@@ -97,7 +105,7 @@ module QuantLib.Instrument.Swap
   , fairRecSpread
   , constNotionalCrossCurrencyFixedVsFloatingSwap
 
-    -- * BMA swaps
+    -- ** BMA swaps
   , bmaLeg
   , bmaLegBps
   , bmaLegNpv
@@ -108,7 +116,7 @@ module QuantLib.Instrument.Swap
   , liborLegBps
   , liborLegNpv
 
-    -- * Swaptions and calibration baskets
+    -- ** Swaptions and calibration baskets
   , swaption
   , irregularSwaption
   , irregularSwap
@@ -118,7 +126,7 @@ module QuantLib.Instrument.Swap
   , calibrationBasket
   , floatFloatSwaptionCalibrationBasket
 
-    -- * Asset swaps
+    -- ** Asset swaps
   , assetSwap
 
   , bondLeg
@@ -129,7 +137,7 @@ module QuantLib.Instrument.Swap
   , parSwap
   , payBondCoupon
 
-    -- * Overnight-indexed swaps
+    -- ** Overnight-indexed swaps
   , overnightIndexedSwap
   , overnightIndexedSwapFromNominals
 
@@ -137,12 +145,6 @@ module QuantLib.Instrument.Swap
   , overnightLegBps
   , overnightLegNpv
 
-    -- * Shared swap capabilities
-  , HasFixedLeg(..)
-  , HasFloatingLeg(..)
-  , HasFairRate(..)
-  , HasFairSpread(..)
-  , HasInstrumentUnderlying(..)
   ) where
 import Data.Maybe(fromMaybe)
 import QuantLib.Internal.Syntax(deriveOptionsRecord)

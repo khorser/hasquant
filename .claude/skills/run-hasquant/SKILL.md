@@ -24,9 +24,7 @@ tools/quiet-build.py stack build --test --no-haddock \
 
 The `app/SofrXva` executable and `test/example` are behind the default-off
 `buildSofrXva`/`buildExample` flags, so a plain `stack build --test` leaves
-them uncompiled and an API change can break them invisibly (it has: the
-`OvernightObservation` collapse broke `app/SofrXva/Pricing.hs` while the
-whole local gate stayed green). Every CI job builds both
+them uncompiled and can miss API breakage. Every CI job builds both
 (`.github/workflows/{linux,macos,windows}.yml`), so run the flagged build
 once before declaring a change done.
 
@@ -200,14 +198,12 @@ Haskell-side HPC route above turns out insufficient.
   whole `build/cbits` directory did. Confirm tracing is compiled in before
   trusting an empty trace: `strings <built .o> | grep -c allocated`.
 
-  Trace destination is the `QLTRACK_ALLOCATIONS` **env var** when set,
+  The trace destination is the `QLTRACK_ALLOCATIONS` **env var** when set,
   falling back to the compile-time path the flag bakes in. Pair the result
   with `tools/alloc-summary.py <trace>`, which matches allocations to
   frees by pointer and reports what is still live, grouped by class; it
   flags over-frees (double free, or freeing through the wrong type)
-  separately from ordinary leaks. **Reading the trace correctly is the
-  whole difficulty** — the tool got it wrong twice before its first real
-  trace:
+  separately from ordinary leaks. Interpret the trace as follows:
   - `ret()` is the pointer handed to Haskell and pairs with `del()`.
   - `del()` traces *twice* (`deleting` then `deleted`) for one free;
     counting both reports everything as double-freed.
@@ -216,8 +212,7 @@ Haskell-side HPC route above turns out insufficient.
     QlYieldTermStructure(alloc(new FlatForward(...))))` the alloc'd object
     goes into a `shared_ptr` and correctly never has a matching free, but
     a value type like `DayCounter` is alloc'd, returned directly, and *is*
-    freed later. Same verb, opposite expectation, distinguishable only per
-    pointer.
+    freed later. Interpret this verb per pointer and ownership path.
 
   Don't re-derive this from the raw log; if you change the tool, re-run it
   against a hand-written trace seeding a leak, a double free, and one of

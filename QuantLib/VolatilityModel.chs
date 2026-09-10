@@ -8,18 +8,17 @@
 -- 'SimpleLocalEstimator' are bound as a single construct-and-calculate function each.
 module QuantLib.VolatilityModel
   (
+    -- * Types
     Garch11Mode(..)
   , Garch11
+
+    -- * Constructors
   , garch11
   , garch11Calibrated
-  , alpha
-  , beta
-  , omega
-  , longTermVolatility
-  , logLikelihood
+
+    -- * Calculations
   , forecast
   , calculate
-
   , garmanKlassSimpleSigma
   , garmanKlassSigma1
   , parkinsonSigma
@@ -29,6 +28,13 @@ module QuantLib.VolatilityModel
   , garmanKlassSigma6
   , constantVolatilityEstimator
   , simpleLocalVolatilityEstimator
+
+    -- * Inspectors
+  , alpha
+  , beta
+  , omega
+  , longTermVolatility
+  , logLikelihood
   ) where
 import Data.List.NonEmpty(NonEmpty, toList)
 import QuantLib.Internal

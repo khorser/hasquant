@@ -1,43 +1,42 @@
 -- |Portfolio-credit types, baskets, and loss models.
 module QuantLib.Credit
   (
+    -- * Types
     Seniority(..)
   , RestructuringType(..)
   , LatentModelIntegrationType(..)
-
   , DefaultProbKey
-  , northAmericaCorpDefaultKey
-
   , Issuer
-  , issuer
-
   , Pool
-  , pool
-
   , Basket
-  , basketNotional
-  , basketRemainingNotional
-  , basketRecoveryRate
-
   , TrancheBasket
+  , DigitalBasket
+  , DefaultLossModel
+  , DigitalLossModel
+
+    -- * Constructors
+  , northAmericaCorpDefaultKey
+  , issuer
+  , pool
   , basket
   , trancheBasketAsBasket
+  , digitalBasket
+  , digitalBasketAsBasket
+  , gaussianLhpLossModel
+  , constantLossModel
+
+    -- * Calculations
   , basketExpectedTrancheLoss
   , basketProbOverLoss
   , basketPercentile
   , basketExpectedShortfall
-
-  , DigitalBasket
-  , digitalBasket
-  , digitalBasketAsBasket
   , basketDefaultCorrelation
   , basketProbAtLeastNEvents
 
-  , DefaultLossModel
-  , gaussianLhpLossModel
-
-  , DigitalLossModel
-  , constantLossModel
+    -- * Inspectors
+  , basketNotional
+  , basketRemainingNotional
+  , basketRecoveryRate
   ) where
 import Data.List.NonEmpty(NonEmpty, toList)
 

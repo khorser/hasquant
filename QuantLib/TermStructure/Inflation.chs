@@ -1,20 +1,24 @@
 module QuantLib.TermStructure.Inflation
   (
+    -- * Types
     ZeroInflationTermStructure
   , YoYInflationTermStructure
   , ZeroCouponInflationSwapHelper
   , YearOnYearInflationSwapHelper
 
   , CPIInterpolationType(..) -- ^re-exported from "QuantLib.Internal.Common"
-
-  , zeroCouponInflationSwapHelper
-  , yearOnYearInflationSwapHelper
   , HasHelperUnderlying(..)
 
+    -- * Constructors
+    -- ** Helpers
+  , zeroCouponInflationSwapHelper
+  , yearOnYearInflationSwapHelper
+    -- ** Curves
   , piecewiseZeroInflationCurve
   , piecewiseYoyInflationCurve
   , interpolatedYoyInflationCurve
 
+    -- * Inspectors
   , zeroRate
   , yoyRate
   ) where
@@ -71,12 +75,6 @@ import Data.List.NonEmpty(NonEmpty, toList)
   ,`PillarChoice' -- ^pillar
   ,withMaybeDay*`Maybe Day' -- ^customPillarDate
   ,preErrorCheck-`String'errorCheck*-}->`YearOnYearInflationSwapHelper'peekYearOnYearInflationSwapHelper*#}
-
--- |The underlying swap the helper builds from its quote, observation lag and maturity.
-
-
--- |The underlying swap the helper builds from its quote, observation lag and maturity.
-
 
 piecewiseZeroInflationCurve :: Day -- ^referenceDate
   -> Day -- ^baseDate

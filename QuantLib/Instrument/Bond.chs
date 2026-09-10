@@ -1,7 +1,8 @@
 {-# LANGUAGE TemplateHaskell #-}
 module QuantLib.Instrument.Bond
   (
-    -- * Bond types
+    -- * Types
+    -- ** Bond types
     Bond
   , FixedRateBond
   , BTP
@@ -11,13 +12,14 @@ module QuantLib.Instrument.Bond
   , CallableBond
   , CPIBond
 
-    -- * Hierarchy conversion and price types
+    -- * Constructors
+    -- ** Hierarchy conversion and price types
   , asBond
 
   , BondPriceType(..)
   , CPIInterpolationType(..)
 
-    -- * Bond construction and baskets
+    -- ** Bonds and baskets
   , bond
   , fixedRateBond
   , btp
@@ -52,7 +54,8 @@ module QuantLib.Instrument.Bond
   , sinkingSchedule
   , sinkingNotionals
 
-    -- * Bond inspectors
+    -- * Inspectors
+    -- ** Bond state
   , maturityDate
   , yield
   , accruedAmount
@@ -72,7 +75,7 @@ module QuantLib.Instrument.Bond
   , settlementDate
   , startDate
 
-    -- * Bond analytics
+    -- ** Bond analytics
   , accrualDays
   , accrualEndDate
   , accrualPeriod
@@ -95,11 +98,11 @@ module QuantLib.Instrument.Bond
   , yieldValueBasisPoint
   , zSpread
 
-    -- * Current prices
+    -- ** Current prices
   , currentCleanPrice
   , currentDirtyPrice
 
-    -- * Callable and convertible bonds
+    -- ** Callable and convertible bonds
   , callableFixedRateBond
   , callableZeroCouponBond
   , convertibleFixedCouponBond

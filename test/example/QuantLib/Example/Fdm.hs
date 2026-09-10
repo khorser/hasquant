@@ -1,14 +1,12 @@
 -- |Drives 'QuantLib.Method.fdmRollback' -- hasquant's Haskell-callback-driven FDM PDE solver --
--- with a hand-rolled 1D Black-Scholes operator in log-spot space (see CLAUDE.md's "coarsen the
--- language-boundary crossing" bullet and 'QuantLib.Internal.Type.withFdmApply' et al., which
--- reuse the same 'QuantLib.Internal.Type.withCostFunction' FunPtr-bracket pattern).
+-- with a hand-rolled 1D Black-Scholes operator in log-spot space. Its callbacks reuse the
+-- 'QuantLib.Internal.Type.withCostFunction' function-pointer lifetime pattern.
 --
 -- The operator itself (@mu*D1 + 0.5*sigma^2*D2 - r*I@, central differences with one-sided,
 -- zero-second-derivative boundary rows) is exactly QuantLib's own @FdmBlackScholesOp::apply@
 -- formula (@ql/methods/finitedifferences/operators/fdmblackscholesop.cpp@), just built directly
--- in Haskell instead of via a bound 'FdmMesher'/'FdmBlackScholesOp' -- there is no mesher binding
--- (per CLAUDE.md's "don't mirror the hierarchy 1:1": the grid is a plain @[Double]@, Haskell-owned
--- end to end). The grid is centred so @log(spot)@ falls exactly on a node, avoiding a need for any
+-- in Haskell instead of via a bound 'FdmBlackScholesOp'; the grid is a plain @[Double]@,
+-- Haskell-owned end to end. It is centred so @log(spot)@ falls exactly on a node, avoiding any
 -- interpolation binding to read the answer back off the grid.
 --
 -- Three checks:
@@ -23,9 +21,8 @@
 --   instead of the hand-built @grid0@ -- reusing the identical operator\/step-condition\/scheme.
 --   This is a strong self-consistency check that 'fdmSolve''s mesher-driven initial condition
 --   reproduces 'fdmRollback''s hand-built one exactly (bit-for-bit, both American and European), on
---   top of the reference-engine checks above. See CLAUDE.md's "coarsen the language-boundary
---   crossing" bullet for why 'withCustomFdmInnerValueCalculator''s
---   'QuantLib.Internal.Type.withFdmInnerValue' callback, unlike every other one here, is a genuine
+--   top of the reference-engine checks above. 'withCustomFdmInnerValueCalculator''s
+--   'QuantLib.Internal.Type.withFdmInnerValue' callback is a genuine
 --   per-grid-node crossing rather than a whole-grid one.
 -- * 'QuantLib.Instrument.Option.withCustomStrikedPayoff' driving
 --   'QuantLib.PricingEngine.fdBlackScholesVanillaEngine' -- the engine that reaches past the
@@ -327,10 +324,8 @@ run = do
     -- evaluating at t = 0, which isn't a t2d key, throws deep inside QuantLib's own exercise-date
     -- lookup). At the swap's own final maturity no cashflows remain, so the value must be exactly 0
     -- regardless of the model -- a model-independent sanity check that the binding actually works
-    -- end to end, in place of the numeric cross-check against an independently computed swap NPV
-    -- originally planned (that check needs reproducing FdmAffineModelSwapInnerValue's own
-    -- analytic-bond-pricing formula in Haskell, out of scope for this stage's effort budget -- see
-    -- CLAUDE.md's "scale back... rather than chasing a nonexistent binding bug" guidance).
+    -- end to end without independently reimplementing FdmAffineModelSwapInnerValue's analytic
+    -- bond-pricing formula in Haskell.
     hwNodeNpv <- fdmAvgInnerValue hwCalc hwMesher [hwIdx0] irMat
 
     ouG2x <- ornsteinUhlenbeckProcess g2A g2Sigma 0 0

@@ -1,16 +1,19 @@
 module QuantLib.Instrument.Forward
   (
+    -- * Types
     Forward
-  , asForward
   , ForwardRateAgreement
   , BondForward
   , FxForward
 
+    -- * Constructors
+  , asForward
   , forwardRateAgreement
   , bondForward
   , fxForward
   , fxForwardFromRate
 
+    -- * Calculations
   , cleanForwardPrice
   , forwardPrice
   , forwardValue
@@ -19,6 +22,7 @@ module QuantLib.Instrument.Forward
   , spotIncome
   , spotValue
 
+    -- * Inspectors
   , amount
   , forwardRate
   , fxForwardRate

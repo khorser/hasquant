@@ -20,12 +20,9 @@ different upstream tail remains an explicit `Moving` function.
 
 ## Collapsing an overload set behind a coordinate ADT
 
-An ADT earns its place only when **two or more** functions consume it and their remaining
-arguments are identical; one consumer means separate exports, since a sum type behind a single
-function is isomorphic to one function per constructor plus an extra type. Check upstream for a
-second consumer before adding one — `RateInterval` was dropped because `resultDayCounter` occurs
-on `zeroRate` and `forwardRate` alone (`ql/termstructures/yieldtermstructure.hpp`), so its axis
-could never gain one.
+Prefer a coordinate ADT when **two or more** functions consume it with identical remaining
+arguments. For a single consumer, weigh separate semantic exports against the consistency gained
+from a closed coordinate type; this API-compaction area is still evolving.
 
 Existing types, all dispatched by a `case` in a hand-written wrapper over private
 `…AtDateRaw`/`…AtTimeRaw`/`…Fixed`/`…MovingRaw` bindings: `TermPoint`, `TermInterval`,
@@ -35,7 +32,7 @@ Existing types, all dispatched by a `case` in a hand-written wrapper over privat
 `StrikeSpec`/`IntegrationControl`/`LatticeTime`/`FdmGrid` (`PricingEngine.chs`), `SwaptionSpan`
 (`Model.chs`). `TermStructure/Credit.chs` is the reference implementation.
 
-Rules learned the hard way:
+Rules:
 
 - **Every constructor maps to exactly one upstream shim.** Never synthesize a combination
   upstream lacks by converting between coordinates (a `yearFraction` call to turn a date into a
@@ -194,18 +191,12 @@ signal, not the theoretical severity. Two traps found doing this pass:
 
 **A bare `tracedup(...)`-only string getter, or a bare `ret(new QlY(*arg(o)))`
 upcast shim, is not itself part of this exception-safety sweep even when
-it sits textually next to fixed siblings.** These are a large (~100+
-sites), pre-existing, deliberately uniform convention across `cbits/` —
+it sits textually next to fixed siblings.** These are a deliberately uniform convention across `cbits/` —
 none of them takes `char **e`, and the only theoretical throw is
 `bad_alloc` from the wrapping allocation itself. Don't retrofit one just
 because a neighboring function in the same audit bullet or file got fixed
-for a different, real reason (three getters — `qlCommodityCurveName`,
-`qlIndexName`, `qlRegionName` — were flagged this way by file-proximity to
-genuinely-anomalous `ret(new ...)`-based siblings during an earlier audit
-pass, and correctly excluded on closer inspection). If a future pass wants
-to add `char **e` to a new upcast shim or string getter "to be safe,"
-check here first — it's the established, confirmed-with-the-user policy,
-not an oversight.
+for a different reason. Adding `char **e` to these shims requires a deliberate
+repository-wide policy change.
 
 ## Yield curves are `Handle`s, not `shared_ptr`s
 
@@ -304,12 +295,7 @@ underlying FFI import. Skip it and c2hs silently defaults the pointee to
 `()`; the error doesn't surface at the missing declaration but downstream,
 as a `Couldn't match type '()' with 'CFoo''`/`Couldn't match 'Ptr (Ptr
 (Ptr ()))' with '...'` at the `with*`/`peek*` call site, which reads like
-a bug in that function rather than a missing import. Hit twice in the
-`NonstandardSwaption`/`calibrationBasket` work: once for `Calendar`
-(already covered above), once for
-`QlBlackCalibrationHelper`/`QlSwapIndex`/`QlSwaptionVolatilityStructure`
-in `Swap.chs`, none of which that file had previously needed as bare
-types.
+a bug in that function rather than a missing import.
 
 ## Fighting the wrong layer
 
@@ -478,9 +464,8 @@ Three things to get right:
   compile-clean file proves nothing.
 - **Pass the selected instance explicitly even where the constructor
   defaults it.** The flat interpolators (`BackwardFlat`/`ForwardFlat`/
-  `Linear`/`LogLinear`) used to rely on `const Interpolator& i =
-  Interpolator()`; spelling them out is what makes one lambda cover all
-  six arms. Where a constructor has parameters *between* the data and the
+  `Linear`/`LogLinear`) must spell out `const Interpolator& i =
+  Interpolator()` so one lambda covers all six arms. Where a constructor has parameters *between* the data and the
   interpolator (`PiecewiseZeroInflationCurve`'s `seasonality`/`accuracy`),
   check the header and spell upstream's own defaults — `{}, 1.0e-14` —
   rather than guessing.

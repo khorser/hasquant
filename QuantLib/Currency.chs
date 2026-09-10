@@ -1,30 +1,43 @@
 module QuantLib.Currency
   (
-   MoneyConversionType(..)
+    -- * Types
+    MoneyConversionType(..)
   , ExchangeRateType(..)
   , Ccy(..)
   , Currency
+  , ExchangeRate
+
+    -- * Constructors
+    -- ** Currencies
   , currency
   , customCurrency
+    -- ** Exchange rates
+  , exchangeRate
+  , chainExchangeRate
+
+    -- * Mutators
+  , addExchangeRate
+  , clearExchangeRates
+  , setMoneyConversionType
+  , setMoneyBaseCurrency
+
+    -- * Calculations
+  , exchange
+  , convertToBaseCurrency
+
+    -- * Inspectors
+    -- ** Currencies
   , code
   , fractionsPerUnit
   , fractionSymbol
   , numericCode
   , symbol
-  , ExchangeRate
-  , exchangeRate
+    -- ** Exchange rates and settings
   , rate
   , exchangeRateType
-  , exchange
-  , chainExchangeRate
-  , addExchangeRate
   , lookupExchangeRate
-  , clearExchangeRates
   , moneyConversionType
-  , setMoneyConversionType
   , moneyBaseCurrency
-  , setMoneyBaseCurrency
-  , convertToBaseCurrency
   ) where
 import QuantLib.Internal
 import QuantLib.Internal.Type

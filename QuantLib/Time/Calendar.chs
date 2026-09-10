@@ -5,23 +5,31 @@
 {-# OPTIONS_GHC -Wno-orphans #-}
 module QuantLib.Time.Calendar
   (
+    -- * Types
     JointCalendarRule(..)
   , CalendarConstructor(..)
-
   , Calendar
+  , BusinessDayConvention(..)
+
+    -- * Constructors
   , calendar
+
+    -- * Mutators
+  , addHoliday
+  , removeHoliday
+
+    -- * Calculations
   , adjust
   , advance
-  , addHoliday
   , businessDaysBetween
   , endOfMonth
+
+    -- * Inspectors
   , isBusinessDay
   , isEndOfMonth
   , isHoliday
   , isWeekend
-  , removeHoliday
   , holidays
-  , BusinessDayConvention(..)
   ) where
 import QuantLib.Internal
 import QuantLib.Internal.Type

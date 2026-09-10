@@ -1,27 +1,30 @@
 module QuantLib.Index.Inflation
   (
+    -- * Types
     InflationIndex
   , ZeroInflationIndex
   , YoYInflationIndex
   , GenInflationIndex
   , GenZeroInflationIndex
   , GenYoYInflationIndex
-
-  , asInflationIndex
-
   , ZeroInflationIndexType(..)
+  , YoYInflationIndexType(..)
+  , Region
+  , RegionType(..)
+
+    -- * Constructors
+    -- ** Hierarchy and regions
+  , asInflationIndex
+  , region
+  , customRegion
+    -- ** Inflation indices
   , zeroInflationIndex
   , customZeroInflationIndex
-  , YoYInflationIndexType(..)
   , yoyInflationIndex
   , customYoyInflationIndex
   , yoyInflationIndexFromZero
 
-  , Region
-  , RegionType(..)
-  , region
-  , customRegion
-
+    -- * Inspectors
   , fixing
   , yoyFixing
   , needsForecast

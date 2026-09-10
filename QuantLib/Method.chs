@@ -154,8 +154,8 @@
 --   rolls it back through time via three Haskell-defined operator callbacks
 --   ('QuantLib.Internal.Type.withFdmApply' et al.) plus an optional step condition (e.g.
 --   American\/Bermudan early exercise). These callbacks cross the language boundary once per outer
---   timestep, over the /whole/ grid -- CLAUDE.md's \"coarsen the language-boundary crossing\"
---   pattern. 'fdmSolve' is the sibling that instead derives its own initial grid from a mesher and
+--   timestep, over the /whole/ grid. 'fdmSolve' is the sibling that instead derives its own
+--   initial grid from a mesher and
 --   an 'FdmInnerValueCalculator' (below), reusing the same operator\/step-condition machinery.
 --
 -- [@Building a grid@] 'Fdm1dMesher's ('predefined1dMesher', 'uniform1dMesher',
@@ -217,33 +217,22 @@
 -- the callback shape genuinely can't express (none has, so far).
 module QuantLib.Method
   (
-    -- * Path generation
+    -- * Types
     PathGenerator
   , SamplePath
-  , pathGenerator
-  , sobolPathGenerator
-  , next
-  , antithetic
-  , weight
-  , assetNumber
-  , pathSize
-  , assetAt
-  , asset
-    -- * Random sequence generation
   , GaussianRsg
-  , gaussianRsg
-  , sobolGaussianRsg
-  , rsgDimension
-  , nextSequence
-  , lastSequence
-    -- * Longstaff-Schwartz regression
-  , lsmRegress
-  , lsmBasisSize
-  , lsmRegressMulti
-    -- * Finite-difference rollback and meshers
-  , fdmRollback
   , Fdm1dMesher
   , FdmMesher
+  , FdmInnerValueCalculator
+
+    -- * Constructors
+    -- ** Path generation
+  , pathGenerator
+  , sobolPathGenerator
+    -- ** Random sequence generation
+  , gaussianRsg
+  , sobolGaussianRsg
+    -- ** Finite-difference meshers
   , predefined1dMesher
   , uniform1dMesher
   , concentrating1dMesher
@@ -256,9 +245,7 @@ module QuantLib.Method
   , fdmHestonVarianceMesher
   , fdmHestonLocalVolatilityVarianceMesher
   , fdmMesherComposite
-  , fdmMesherLocations
-    -- * Finite-difference inner-value calculators
-  , FdmInnerValueCalculator
+    -- ** Finite-difference inner-value calculators
   , withCustomFdmInnerValueCalculator
   , fdmZeroInnerValue
   , fdmCellAveragingInnerValue
@@ -267,9 +254,33 @@ module QuantLib.Method
   , fdmLogBasketInnerValue
   , fdmAffineG2ModelSwapInnerValue
   , fdmAffineHullWhiteModelSwapInnerValue
+
+    -- * Calculations
+    -- ** Path and random sequences
+  , next
+  , antithetic
+  , nextSequence
+    -- ** Longstaff-Schwartz regression
+  , lsmRegress
+  , lsmBasisSize
+  , lsmRegressMulti
+    -- ** Finite differences
+  , fdmRollback
   , fdmInnerValue
   , fdmAvgInnerValue
   , fdmSolve
+
+    -- * Inspectors
+    -- ** Paths
+  , weight
+  , assetNumber
+  , pathSize
+  , assetAt
+  , asset
+    -- ** Random sequences and meshers
+  , rsgDimension
+  , lastSequence
+  , fdmMesherLocations
   ) where
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"
@@ -439,8 +450,8 @@ lsmRegressMulti p order (RealMatrix fr fc fd) t (RealMatrix er ec ed) = qlLsmReg
 -- @apply@\/@apply_direction@\/@solve_splitting@ callbacks) and an optional Haskell-defined step
 -- condition (e.g. American\/Bermudan early exercise, or a barrier), instead of a bound mesher +
 -- @FdmInnerValueCalculator@ as every concrete FDM pricing engine in "QuantLib.PricingEngine"
--- uses. This is the coarsened-callback shape from CLAUDE.md's \"coarsen the language-boundary
--- crossing\" bullet, modeled on QuantLib-SWIG's @FdmLinearOpCompositeDelegate@\/
+-- uses. This coarsened callback shape is modeled on QuantLib-SWIG's
+-- @FdmLinearOpCompositeDelegate@\/
 -- @FdmStepConditionDelegate@ (@SWIG\/fdm.i@): each callback crosses once per outer iteration over
 -- the whole grid array, not once per grid node.
 --
@@ -618,8 +629,7 @@ foreign import ccall "ql.h qlFdmInnerValueCalculatorFromFunctions"
 -- this, which need no such bracket: they hold no Haskell callback). Unlike every callback
 -- 'fdmRollback' takes, this crosses the language boundary once /per grid node/, not once per outer
 -- iteration over the whole grid -- there is no batched \"whole-grid inner value\" shape anywhere
--- in QuantLib or QuantLib-SWIG. Per CLAUDE.md's \"coarsen the language-boundary crossing\" bullet,
--- this is the one case where that coarsening isn't available, so the real per-call FFI cost across
+-- in QuantLib or QuantLib-SWIG. The per-call FFI cost across
 -- every node (and, if a step condition also calls the calculator, every node at every exercise
 -- date) is accepted -- matching QuantLib-SWIG's own accepted-cost precedent,
 -- @FdmInnerValueCalculatorDelegate@ (@SWIG\/fdm.i@).
@@ -661,8 +671,8 @@ foreign import ccall "ql.h qlFdmCellAveragingInnerValueMapped"
 
 -- |As 'fdmCellAveragingInnerValue', but with an explicit @gridMapping :: Double -> Double@ applied
 -- to each node's location before the payoff sees it (e.g. @exp@ on a log-spot grid, reproducing
--- 'fdmLogInnerValue' by hand) -- a genuine per-node Haskell callback (see CLAUDE.md's "coarsen the
--- language-boundary crossing" bullet and 'withCustomFdmInnerValueCalculator' above), so the
+-- 'fdmLogInnerValue' by hand) -- a genuine per-node Haskell callback; see
+-- 'withCustomFdmInnerValueCalculator'. The
 -- resulting 'FdmInnerValueCalculator' is only valid inside this continuation.
 withCustomCellAveragingInnerValue :: Payoff -> FdmMesher -> Int -> (Double -> Double)
   -> (FdmInnerValueCalculator -> IO b) -> IO b

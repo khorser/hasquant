@@ -1,24 +1,29 @@
 module QuantLib.Index
   (
-    -- * Index hierarchy and fixings
+    -- * Types
     Index
   , GenIndex
+  , HistoricalIndexAnalysis
 
+    -- * Constructors
+  , asIndex
+  , historicalIndexAnalysis
+
+    -- * Mutators
   , addFixing
+  , addFixings
+  , clearFixings
+  , clearAllFixingHistories
+
+    -- * Inspectors
+    -- ** Index fixings
   , fixingCalendar
   , fixing
   , hasHistoricalFixing
   , isValidFixingDate
-  , addFixings
-  , clearFixings
   , fixingHistory
   , fixingHistoryNames
-  , clearAllFixingHistories
-  , asIndex
-
-    -- * Historical return analysis
-  , HistoricalIndexAnalysis
-  , historicalIndexAnalysis
+    -- ** Historical return analysis
   , skipped
   , mean
   , standardDeviation
@@ -112,10 +117,8 @@ fixingHistory i = do
 -- empirical and gaussian-assumption\/covariance\/correlation) over historical fixings of the
 -- given indexes, sampled every @step@ between @startDate@ and @endDate@. A date/index pair whose
 -- fixing is unavailable is recorded in 'skipped' rather than failing the whole analysis.
--- 'SequenceStatistics' itself isn't given a dedicated Haskell type: it's only ever the
--- accumulator this constructor fills internally, with no other use in hasquant, so its full
--- risk-statistics surface is exposed directly as accessors here (see CLAUDE.md's \"don't mirror
--- the C++ hierarchy 1:1\").
+-- 'SequenceStatistics' is only the accumulator filled internally by this constructor, so its
+-- risk-statistics surface is exposed directly through these accessors.
 {#fun qlHistoricalIndexAnalysis as historicalIndexAnalysis{withDay*`Day' -- ^startDate
   ,withDay*`Day' -- ^endDate
   ,fromEnumQuantity`(Int,TimeUnit)'& -- ^step

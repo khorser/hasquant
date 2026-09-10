@@ -3,7 +3,8 @@
 {-# LANGUAGE TypeSynonymInstances #-}
 module QuantLib.CashFlow
   (
-    -- * Cash-flow and leg hierarchy
+    -- * Types
+    -- ** Cash-flow and leg hierarchy
     Leg
   , CouponLeg
   , asLeg
@@ -20,7 +21,8 @@ module QuantLib.CashFlow
   , amount
   , date
 
-    -- * Cash flows and coupons
+    -- * Constructors
+    -- ** Cash flows and coupons
   , leg
   , simpleCashFlow
   , IndexedCashFlow
@@ -78,7 +80,6 @@ module QuantLib.CashFlow
   , CPICouponPricer
   , cpiCouponPricer
   , cpiCouponPricerWithVol
-  , setCpiCouponPricer
   , indexRatio
   , redemption
   , amortizingPayment
@@ -88,7 +89,17 @@ module QuantLib.CashFlow
   , previousCashFlows
   , cashFlows
 
-    -- * Leg analytics
+    -- * Mutators
+  , setCpiCouponPricer
+  , setFloatingRateCouponPricer
+  , setYoyInflationCouponPricer
+  , setEquityCashFlowPricer
+  , setCouponPricer
+  , setCouponPricers
+  , setEquityLegPricer
+
+    -- * Calculations
+    -- ** Leg analytics
   , duration
   , accrualDays
   , accrualEndDate
@@ -120,16 +131,16 @@ module QuantLib.CashFlow
   , yieldValueBasisPoint
   , zSpread
 
-    -- * Coupon-leg conversion
+    -- ** Coupon-leg conversion
   , toCouponLeg
   , couponAccrualStartDates
 
-    -- * Dividends
+    -- ** Dividends
   , fixedDividend
   , fractionalDividendWithNominal
   , fractionalDividend
 
-    -- * Coupon legs and specialized cash flows
+    -- ** Coupon legs and specialized cash flows
   , averageBmaLeg
   , fixedRateLeg
   , iborLeg
@@ -145,7 +156,6 @@ module QuantLib.CashFlow
   , baseFixing
   , indexFixing
   , rate
-  , setFloatingRateCouponPricer
   , price
   , convexityAdjustment
   , swapletRate
@@ -154,7 +164,7 @@ module QuantLib.CashFlow
   , capletRate
   , floorletPrice
   , floorletRate
-    -- * CMS coupons and digital replication
+    -- ** CMS coupons and digital replication
   , CmsCoupon
   , cmsCoupon
   , cappedFlooredCmsCoupon
@@ -179,7 +189,7 @@ module QuantLib.CashFlow
   , DigitalIborLegOpts(..)
   , defaultDigitalIborLegOpts
   , digitalIborLeg
-    -- * Overnight, multiple-reset and inflation legs
+    -- ** Overnight, multiple-reset and inflation legs
   , MultipleResetsLegOpts(..)
   , defaultMultipleResetsLegOpts
   , multipleResetsLeg
@@ -191,17 +201,15 @@ module QuantLib.CashFlow
   , blackYoyInflationCouponPricer
   , unitDisplacedBlackYoyInflationCouponPricer
   , bachelierYoyInflationCouponPricer
-  , setYoyInflationCouponPricer
   , ZeroInflationCashFlow
   , zeroInflationCashFlow
   , CPICashFlow
   , cpiCashFlow
   , EquityCashFlow
   , equityCashFlow
-  , setEquityCashFlowPricer
   , YieldCurveModel(..)
 
-    -- * Coupon-pricer hierarchy
+    -- ** Coupon-pricer hierarchy
   , FloatingRateCouponPricer
   , GenFloatingRateCouponPricer
   , asFloatingRateCouponPricer
@@ -209,8 +217,6 @@ module QuantLib.CashFlow
   , blackIborCouponPricer
   , blackIborQuantoCouponPricer
   , rangeAccrualPricerByBgm
-  , setCouponPricer
-  , setCouponPricers
   , analyticHaganPricer
   , numericHaganPricer
   , LinearTsrPricerStrategy(..)
@@ -219,7 +225,6 @@ module QuantLib.CashFlow
   , lognormalCmsSpreadPricer
   , EquityCashFlowPricer
   , equityQuantoCashFlowPricer
-  , setEquityLegPricer
   ) where
 import QuantLib.Internal
 {#import QuantLib.InterestRate#}(Compounding, VolatilityType)

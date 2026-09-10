@@ -1,28 +1,35 @@
 module QuantLib.TermStructure.Credit
   (
+    -- * Types
     ProbabilityTrait(..)
   , DefaultProbabilityTermStructure
   , DefaultProbabilityHelper
   , Reference(..)
   , TermPoint(..)
   , TermInterval(..)
+  , IterativeBootstrapOpts(..)
+
+    -- * Constructors
+    -- ** Flat and spreaded curves
   , factorSpreadedHazardRateCurve
   , flatHazardRate
   , spreadedHazardRateCurve
+    -- ** Helpers and bootstrapped curves
+  , spreadCdsHelper
+  , upfrontCdsHelper
+  , interpolatedDefaultDensityCurve
+  , interpolatedHazardRateCurve
+  , interpolatedSurvivalProbabilityCurve
+  , defaultIterativeBootstrapOpts
+  , piecewiseDefaultCurve
+
+    -- * Inspectors
   , defaultProbability
   , hazardRate
   , survivalProbability
   , defaultDensity
   , defaultProbabilityBetween
-  , spreadCdsHelper
-  , upfrontCdsHelper
   , impliedQuote
-  , interpolatedDefaultDensityCurve
-  , interpolatedHazardRateCurve
-  , interpolatedSurvivalProbabilityCurve
-  , IterativeBootstrapOpts(..)
-  , defaultIterativeBootstrapOpts
-  , piecewiseDefaultCurve
   ) where
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"

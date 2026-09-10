@@ -5,19 +5,25 @@
 {-# OPTIONS_GHC -Wno-orphans #-}
 module QuantLib.Time.Schedule
   (
+    -- * Types
     DayCounterConstructor(..)
   , DayCounter
-  , dayCounter
-  , days
-  , yearFraction
-
   , Schedule
+  , DateGenerationRule(..)
+  , TimeUnit(..)
+  , Frequency(..)
+
+    -- * Constructors
+  , dayCounter
   , schedule
   , fromDates
-  , until
-  , dates
-  , DateGenerationRule(..)
 
+    -- * Calculations
+    -- ** Day counts
+  , days
+  , yearFraction
+    -- ** Schedule and period operations
+  , until
   , fromFrequency
   , toFrequency
   , parse
@@ -25,8 +31,9 @@ module QuantLib.Time.Schedule
   , divide
   , lessThan
   , normalize
-  , TimeUnit(..)
-  , Frequency(..)
+
+    -- * Inspectors
+  , dates
   ) where
 import Prelude hiding(until)
 

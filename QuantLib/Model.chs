@@ -1,7 +1,8 @@
 {-# LANGUAGE FlexibleInstances #-}
 module QuantLib.Model
   (
-    -- * Model types and configuration
+    -- * Types
+    -- ** Models and configuration
     CalibrationErrorType(..)
   , SobolBrownianOrdering(..)
   , HestonSLVGreensAlgorithm(..)
@@ -25,7 +26,6 @@ module QuantLib.Model
   , GenOneFactorAffineModel
   , LiborForwardModel
   , LfmHullWhiteParameterization
-  , setCovarParam
   , HullWhite
   , Gsr
   , MarkovFunctional
@@ -33,8 +33,6 @@ module QuantLib.Model
   , GenCalibratedModel
   , G2
   , ShortRateDynamics
-  , g2Dynamics
-  , shortRate
   , BatesDetJumpModel
   , BatesDoubleExpDetJumpModel
   , BatesDoubleExpModel
@@ -46,32 +44,25 @@ module QuantLib.Model
   , GenBlackCalibrationHelper
   , SwaptionHelper
   , GenCalibrationHelper
-  , asCalibrationHelper
-  , asBlackCalibrationHelper
+  , AsAffineModel(..)
+  , AsGaussian1dModel(..)
+  , HasLeverageFunction(..)
+  , HasVolatilities(..)
+  , SwaptionSpan(..)
+  , HasHelperUnderlying(..)
 
-    -- * Hierarchy and secondary-interface conversion
+    -- * Constructors
+    -- ** Hierarchy and secondary-interface conversion
   , asCalibratedModel
   , asHestonModel
   , asShortRateModel
   , asOneFactorAffineModel
   , asBatesModel
   , asBatesDoubleExpModel
-  , AsAffineModel(..)
-  , AsGaussian1dModel(..)
+  , asCalibrationHelper
+  , asBlackCalibrationHelper
 
-    -- * Shared capabilities and Gaussian model operations
-  , HasLeverageFunction(..)
-  , HasVolatilities(..)
-  , numeraire
-  , gaussian1dZerobond
-  , gaussian1dZerobondOption
-  , gaussian1dForwardRate
-  , gaussian1dSwapRate
-  , gaussian1dSwapAnnuity
-  , gaussian1dYGrid
-  , stateProcess
-
-    -- * Model construction
+    -- ** Model construction
   , batesModel
   , blackKarasinski
   , coxIngersollRoss
@@ -84,46 +75,59 @@ module QuantLib.Model
   , sobolBrownianGeneratorFactory
   , hestonSlvMcModel
   , hestonSlvFdmModel
-  , hestonSlvFdmLogEntries
   , hullWhite
   , varianceGammaModel
   , vasicek
   , liborForwardModel
   , liborForwardModelS0
   , lfmHullWhiteParameterization
-  , lfmHullWhiteCovariance
   , gsr
   , markovFunctional
   , markovFunctionalCaplet
 
-    -- * Calibration
-  , calibrate
-  , calibrateVolatilitiesIterative
+    -- ** Calibration helpers
   , capHelper
   , hestonModelHelper
-  , SwaptionSpan(..)
   , swaptionHelper
-  , HasHelperUnderlying(..)
-  , helperSwaption
-  , times
 
-    -- * Model calculations and inspectors
+    -- * Mutators
+  , setCovarParam
+  , calibrate
+  , calibrateVolatilitiesIterative
+  , moveVolatility
+  , moveReversion
+  , setPricingEngine
+
+    -- * Calculations
   , discount
   , discountBond
   , discountBondOption
   , convexityBias
+  , numeraire
+  , gaussian1dZerobond
+  , gaussian1dZerobondOption
+  , gaussian1dForwardRate
+  , gaussian1dSwapRate
+  , gaussian1dSwapAnnuity
+  , gaussian1dYGrid
+  , lfmHullWhiteCovariance
+  , blackPrice
+  , impliedVolatility
+
+    -- * Inspectors
+  , g2Dynamics
+  , shortRate
+  , stateProcess
+  , hestonSlvFdmLogEntries
+  , helperSwaption
+  , times
   , fixedReversion
-  , moveVolatility
-  , moveReversion
   , params
   , value
-  , blackPrice
   , calibrationError
-  , impliedVolatility
   , marketValue
   , modelValue
   , volatility
-  , setPricingEngine
   ) where
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"
@@ -773,9 +777,6 @@ swaptionHelper span' = case span' of
   ,fromMaybeInt`Maybe Word' -- ^settlementDays
   ,`RateAveragingType' -- ^averagingMethod
   ,preErrorCheck-`String'errorCheck*-}->`SwaptionHelper'peekSwaptionHelper*#}
-
--- |Upstream's own vanilla swap underlying this helper's swaption.
-
 
 -- |The 'QuantLib.Instrument.Swap.Swaption' this helper prices internally to compute 'modelValue'.
 {#fun qlSwaptionHelperSwaption as helperSwaption{withSwaptionHelper*`SwaptionHelper',preErrorCheck-`String'errorCheck*-}->`Swaption'peekSwaption*#}

@@ -1,23 +1,25 @@
 -- |global repository for run-time library settings
 module QuantLib.Settings
   (
-    evaluationDate
-  , setEvaluationDate
-  , enforceTodaysHistoricFixings
+    -- * Mutators
+    setEvaluationDate
   , setEnforceTodaysHistoricFixings
-  , includeTodaysCashFlows
   , setIncludeTodaysCashFlows
-  , includeReferenceDateEvents
   , setIncludeReferenceDateEvents
   , disableUpdates
   , enableUpdates
-  , updatesEnabled
-  , updatesDeferred
-
   , keepingSettings
   , keepingSettingsGc
   , collectGarbage
   , setExtendedPrecision
+
+    -- * Inspectors
+  , evaluationDate
+  , enforceTodaysHistoricFixings
+  , includeTodaysCashFlows
+  , includeReferenceDateEvents
+  , updatesEnabled
+  , updatesDeferred
   , version
   , boostVersion
   , epsilon

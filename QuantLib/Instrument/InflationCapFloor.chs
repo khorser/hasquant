@@ -1,14 +1,18 @@
 module QuantLib.Instrument.InflationCapFloor
   (
+    -- * Types
     YoYInflationCapFloor
+  , CPICapFloor
+
+    -- * Constructors
   , yoyInflationCap
   , yoyInflationCollar
   , yoyInflationFloor
-  , atmRate
   , optionlet
-
-  , CPICapFloor
   , cpiCapFloor
+
+    -- * Calculations
+  , atmRate
   ) where
 import QuantLib.Internal
 import QuantLib.Internal.Type

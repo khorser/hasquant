@@ -2,22 +2,14 @@
 -- 'RealMatrix' stores dense numeric grids; boxed 'Matrix' supports small or object-valued data.
 module QuantLib.Math
   (
-    -- * Rounding and optimization
+    -- * Types
     RoundingType(..)
   , Rounding(..)
-  , applyRounding
-  , optimize
-
-    -- * Numerical configuration
   , EndCriteriaType(..)
   , HistogramAlgorithm(..)
-
-    -- * Interpolation
   , Approximation(..)
   , Interpolation(..)
   , Interpolation2D(..)
-
-    -- * Simulation, finite-difference and calibration types
   , RngTrait(..)
   , StatisticsTrait(..)
   , BinomialTree(..)
@@ -31,46 +23,37 @@ module QuantLib.Math
   , OptimizationMethod(..)
   , Constraint(..)
   , SobolDirectionIntegers(..)
-
-    -- * Matrices
   , Matrix
-  , matrixRows
-  , matrixColumns
-  , matrixData
   , RealMatrix
-  , realMatrixRows
-  , realMatrixColumns
-  , realMatrixData
+  , SalvagingAlgorithm(..)
+  , RealVector
+  , NonEmptyVector
+  , TimeGrid
+
+    -- * Constructors
+    -- ** Matrices and vectors
   , boxedRealMatrix
   , realMatrixFromVector
   , objectMatrix
+  , singletonNonEmptyVector
+  , consNonEmptyVector
+  , nonEmptyVector
+    -- ** Time grids
+  , timeGrid
+  , timeGridFromVector
+  , timeGridFromVectorWithSteps
 
-    -- * Matrix decompositions
-  , SalvagingAlgorithm(..)
+    -- * Calculations
+    -- ** Rounding and optimization
+  , applyRounding
+  , optimize
+    -- ** Matrix decompositions
   , symmetricSchurDecomposition
   , pseudoSqrt
   , rankReducedSqrt
   , choleskyDecomposition
   , choleskySolveFor
-
-    -- * Vectors
-  , RealVector
-  , NonEmptyVector
-  , singletonNonEmptyVector
-  , consNonEmptyVector
-  , nonEmptyVector
-  , nonEmptyVectorToVector
-
-    -- * Time grids
-  , TimeGrid
-  , timeGrid
-  , timeGridFromVector
-  , timeGridFromVectorWithSteps
-  , timeAt
-  , size
-  , points
-
-    -- * Risk statistics
+    -- ** Risk statistics
   , riskStatisticsMean
   , riskStatisticsStandardDeviation
   , riskStatisticsVariance
@@ -93,6 +76,20 @@ module QuantLib.Math
   , riskStatisticsRegret
   , riskStatisticsShortfall
   , riskStatisticsAverageShortfall
+
+    -- * Inspectors
+    -- ** Matrices and vectors
+  , matrixRows
+  , matrixColumns
+  , matrixData
+  , realMatrixRows
+  , realMatrixColumns
+  , realMatrixData
+  , nonEmptyVectorToVector
+    -- ** Time grids
+  , timeAt
+  , size
+  , points
   ) where
 import QuantLib.Internal
 import QuantLib.Internal.Common
@@ -137,9 +134,8 @@ import Foreign.Marshal.Alloc(alloca)
 -- 'Problem'\/'OptimizationMethod' machinery -- unlike 'QuantLib.Model.calibrate', which drives a
 -- 'QuantLib.Model.CalibratedModel''s own built-in calibration error against bound
 -- 'QuantLib.Model.CalibrationHelper's, this takes any 'RealVector -> Double' objective. The cost
--- function crosses back into Haskell once per outer optimizer iteration, over the whole parameter
--- vector, not once per component -- see CLAUDE.md's "coarsen the language-boundary crossing"
--- bullet and 'QuantLib.Internal.Type.withCostFunction'.
+-- function crosses back into Haskell once per outer optimizer iteration over the whole parameter
+-- vector; see 'QuantLib.Internal.Type.withCostFunction'.
 {#fun qlOptimize as optimize{withCostFunction*`RealVector -> Double' -- ^cost function
   ,withRealVector*`RealVector'& -- ^initial guess
   ,withMaybeConstraint*`Maybe Constraint'

@@ -1,43 +1,49 @@
 module QuantLib.Quote
   (
-     Quote
+    -- * Types
+    Quote
    , SimpleQuote
    , DeltaVolQuote
    , FuturesConvAdjustmentQuote
    , RelinkableQuote
    , GenQuote
-
-   , asQuote
    , PriceType(..)
    , IntervalPriceType(..)
    , AtmType(..)
    , DeltaType(..)
+   , QuoteOp(..)
+   , MultiQuoteOp(..)
 
+    -- * Constructors
+    -- ** Basic quotes and conversions
+  , asQuote
   , simpleQuote
   , deltaVolQuote
   , atmVolQuote
-  , value
-  , isValid
-  , setValue
   , eurodollarFuturesImpliedStdDevQuote
   , forwardSwapQuote
   , forwardValueQuote
   , futuresConvAdjustmentQuoteFromImmCode
   , futuresConvAdjustmentQuote
-  , futuresValue
   , impliedStdDevQuote
   , lastFixingQuote
   , relinkableQuote
-  , linkTo
-
-  , QuoteOp(..)
-  , MultiQuoteOp(..)
+    -- ** Composite quotes
   , derivedQuote
   , compositeQuote
   , multiCompositeQuote
   , withDerivedQuote
   , withCompositeQuote
   , withMultiCompositeQuote
+
+    -- * Mutators
+  , setValue
+  , linkTo
+
+    -- * Inspectors
+  , value
+  , isValid
+  , futuresValue
   ) where
 import Foreign.Ptr(FunPtr)
 
@@ -135,7 +141,7 @@ import QuantLib.Internal.Type
 -- |implied standard deviation of an underlying, solved from its option price at a given strike
 {#fun qlImpliedStdDevQuote as impliedStdDevQuote{fromEnumC`OptionType',withQuote*`GenQuote q1' -- ^forward
   ,withQuote*`GenQuote q2' -- ^price
-  ,`Double' -- &strike
+  ,`Double' -- ^strike
   ,`Double' -- ^guess
   ,`Double' -- ^accuracy
   ,fromIntegral`Word' -- ^maxIter

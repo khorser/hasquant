@@ -1,17 +1,22 @@
 module QuantLib.InterestRate
   (
-
+    -- * Types
     Compounding(..)
   , VolatilityType(..)
-
   , InterestRate
-  , interestRate
   , AccrualPeriod(..)
   , EquivalentPeriod(..)
+
+    -- * Constructors
+  , interestRate
+
+    -- * Calculations
   , compoundFactor
   , discountFactor
   , equivalentRate
   , impliedRate
+
+    -- * Inspectors
   , rate
   ) where
 import QuantLib.Internal

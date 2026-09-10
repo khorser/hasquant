@@ -1,6 +1,7 @@
 {-# LANGUAGE TypeFamilies, FlexibleInstances #-}
 module QuantLib.TermStructure
   (
+    -- * Types
     TermStructure
   , GenTermStructure
   , Reference(..)
@@ -8,13 +9,19 @@ module QuantLib.TermStructure
   , TermPoint(..)
   , TermInterval(..)
   , RatePoint(..)
+  , HasHelperUnderlying(..)
+
+    -- * Constructors
   , asTermStructure
+
+    -- * Mutators
+  , setExtrapolation
+
+    -- * Inspectors
   , referenceDate
   , maxDate
   , allowsExtrapolation
-  , setExtrapolation
   , timeFromReference
-  , HasHelperUnderlying(..)
   ) where
 import QuantLib.Internal hiding(maxDate)
 import QuantLib.Internal.Type

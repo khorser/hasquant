@@ -1,31 +1,34 @@
 module QuantLib.TermStructure.InflationVolatility
   (
+    -- * Types
     YoYOptionletVolatilitySurface
+  , YoYCapFloorTermPriceSurface
+  , CPICapFloorTermPriceSurface
+  , CPIVolatilitySurface
 
+    -- * Constructors
+    -- ** YoY volatility and price surfaces
   , constantYoyOptionletVolatility
   , kInterpolatedYoyOptionletVolatilitySurfaceBlack
   , kInterpolatedYoyOptionletVolatilitySurfaceUnitDisplacedBlack
   , kInterpolatedYoyOptionletVolatilitySurfaceBachelier
+  , yoyCapFloorTermPriceSurface
+    -- ** CPI surfaces
+  , cpiCapFloorTermPriceSurface
+  , constantCpiVolatility
 
+    -- * Inspectors
+    -- ** YoY volatility
   , yoyOptionletVolatility
   , yoyOptionletTotalVariance
-
-  , YoYCapFloorTermPriceSurface
-  , yoyCapFloorTermPriceSurface
-
+    -- ** YoY cap-floor prices
   , yoyCapFloorBaseDate
   , yoyCapFloorAtmYoySwapDateRates
   , yoyCapFloorAtmYoySwapTimeRates
   , yoyCapFloorAtmYoySwapRate
   , yoyCapFloorAtmYoyRate
   , yoyCapFloorStrikes
-
-  , CPICapFloorTermPriceSurface
-  , cpiCapFloorTermPriceSurface
-
-  , CPIVolatilitySurface
-  , constantCpiVolatility
-
+    -- ** CPI volatility
   , cpiVolatility
   , cpiTotalVariance
   ) where

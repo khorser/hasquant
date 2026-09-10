@@ -226,10 +226,8 @@ namespace {
   // one callback plus two strings. Unlike qlFdmRollback's whole-grid callbacks, operator() is
   // genuinely per scalar price everywhere upstream -- DiscretizedVanillaOption loops it node by
   // node, FdmCellAveragingInnerValue calls it inside a per-cell Simpson integral, AmericanPathPricer
-  // calls it per path per exercise index -- and nothing anywhere batches an Array. So this is the
-  // uncoarsenable case of CLAUDE.md's "coarsen the language-boundary crossing" bullet, same
-  // accepted cost as HsFdmInnerValueCalculator (qlPricingEngine.cpp) and QuantLib-SWIG's own
-  // FdmInnerValueCalculatorDelegate.
+  // calls it per path per exercise index -- and nothing batches an Array. The per-value callback
+  // is therefore unavoidable, as it is for HsFdmInnerValueCalculator (qlPricingEngine.cpp).
   using PayoffFun = double (*)(double price);
   using BasketAccumulateFun = double (*)(const double* a, unsigned n);
 
@@ -2358,9 +2356,6 @@ QlQuote *qlRendistatoEquivalentSwapSpreadQuote(QlRendistatoCalculator *o, char *
   try {return ret(new QlQuote(shared_ptr<Quote>(alloc(new RendistatoEquivalentSwapSpreadQuote(*arg(o))))));
   } catch (std::exception& er) {return handleException<QlQuote*>(e, er);}}
 
-}
-/* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */
-
 QlFixedVsFloatingSwap* qlSwaptionUnderlying(QlSwaption* o, char **e) {
   try {return ret(new QlFixedVsFloatingSwap((*arg(o))->underlying()));}
   catch (std::exception& er) {return handleException<QlFixedVsFloatingSwap*>(e, er);}}
@@ -2376,3 +2371,6 @@ QlIrregularSwap* qlIrregularSwaptionUnderlyingSwap(QlIrregularSwaption* o, char 
 QlCreditDefaultSwap* qlCdsOptionUnderlyingSwap(QlCdsOption* o, char **e) {
   try {return ret(new QlCreditDefaultSwap((*arg(o))->underlyingSwap()));}
   catch (std::exception& er) {return handleException<QlCreditDefaultSwap*>(e, er);}}
+
+}
+/* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

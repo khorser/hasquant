@@ -1,21 +1,17 @@
 module QuantLib.Time.Date
   (
-    -- * Date values and fields
+    -- * Types
     Day
-  , minDate
-  , maxDate
-  , today
-  , isLeap
-  , year
-  , month
-  , weekday
-
-    -- * Calendar enums
   , Month(..)
   , Weekday(..)
   , ImmMonth(..)
 
-    -- * Month constructors
+    -- * Constructors
+    -- ** Bounds and current date
+  , minDate
+  , maxDate
+  , today
+    -- ** Months
   , january
   , february
   , march
@@ -29,41 +25,48 @@ module QuantLib.Time.Date
   , november
   , december
 
-    -- * Date queries and arithmetic
-  , dayOfYear
+    -- * Mutators
+  , addEcbDate
+  , removeEcbDate
 
+    -- * Calculations
+    -- ** Date arithmetic
   , endOfMonth
-  , isEndOfMonth
   , nextWeekday
   , nthWeekday
-
-    -- * IMM dates and codes
+  , addPeriod
+    -- ** IMM dates and codes
   , immCode
   , immDate
-  , isImmCode
-  , isImmDate
   , nextImmCode
   , nextImmCodeFromCode
   , nextImmDate
   , nextImmDateFromCode
-
-  , addPeriod
-
-    -- * ECB maintenance dates
-  , addEcbDate
+    -- ** ECB maintenance dates
   , ecbCode
   , ecbDateFromCode
   , ecbDate
-  , isEcbCode
-  , isEcbDate
-  , knownEcbDates
   , nextEcbCodeFromCode
   , nextEcbCode
   , nextEcbDateFromCode
   , nextEcbDate
   , nextEcbDatesFromCode
   , nextEcbDates
-  , removeEcbDate
+
+    -- * Inspectors
+    -- ** Date fields
+  , isLeap
+  , year
+  , month
+  , weekday
+  , dayOfYear
+  , isEndOfMonth
+    -- ** IMM and ECB predicates
+  , isImmCode
+  , isImmDate
+  , isEcbCode
+  , isEcbDate
+  , knownEcbDates
   ) where
 import Data.Time.Calendar(toGregorian, isLeapYear, fromGregorian)
 import Data.Time.Clock(getCurrentTime)

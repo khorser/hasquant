@@ -1,5 +1,6 @@
 module QuantLib.Instrument.Energy
   (
+    -- * Types
     SecondaryCosts
   , SecondaryCostAmounts
   , PricingErrorLevel(..)
@@ -9,37 +10,37 @@ module QuantLib.Instrument.Energy
   , EnergyDailyPositions
   , CommodityCashFlow
   , CommodityCashFlows
+  , EnergyFuture
+  , EnergySwap
+  , EnergyVanillaSwap
+  , EnergyBasisSwap
+  , DeliverySchedule(..)
+  , QuantityPeriodicity(..)
 
+    -- * Constructors
+  , energyFuture
+  , energyVanillaSwap
+  , energyBasisSwap
+  , createPricingPeriods
+
+    -- * Mutators
+  , addPricingError
+
+    -- * Calculations
   , discountedAmount
   , undiscountedAmount
   , discountedPaymentAmount
   , undiscountedPaymentAmount
   , discountFactor
   , paymentDiscountFactor
-  , finalized
 
-  , addPricingError
+    -- * Inspectors
+  , finalized
   , secondaryCostAmounts
   , pricingErrors
-
   , quantity
-
-  , EnergyFuture
-  , energyFuture
-
-  , EnergySwap
   , dailyPositions
   , paymentCashFlows
-
-  , EnergyVanillaSwap
-  , energyVanillaSwap
-
-  , EnergyBasisSwap
-  , energyBasisSwap
-
-  , DeliverySchedule(..)
-  , QuantityPeriodicity(..)
-  , createPricingPeriods
   ) where
 import QuantLib.Internal
 import QuantLib.Internal.Type
@@ -187,9 +188,7 @@ quantity o = do
 -- |Construct an energy future: a single mark-to-market position against a 'CommodityIndex',
 -- struck at a fixed 'CommodityUnitCost' trade price. @buySell@ is a signed multiplier (@1@ to buy,
 -- @-1@ to sell), matching upstream's own @Integer buySell@ (not a @Bool@). @tradePrice@\/@index@
--- are not bound as getters -- both are plain, never-mutated echoes of these same constructor
--- arguments (per CLAUDE.md's trivial-getter rule); use 'quantity' for the one genuinely-shared
--- accessor.
+-- are not exposed as getters because they only echo these constructor arguments.
 energyFuture :: Int -- ^buySell
              -> Quantity
              -> CommodityUnitCost -- ^tradePrice
@@ -268,9 +267,8 @@ pricingPeriodsFields pps =
 -- |Construct a vanilla energy swap: fixed 'CommodityUnitCost' price against a floating
 -- 'CommodityIndex' quote, over one or more 'PricingPeriod's. @payer@ selects which leg (fixed or
 -- floating) is paid. @payReceive@\/@fixedPrice@\/@fixedPriceUnitOfMeasure@\/@index@ are not bound
--- as getters -- all are plain, never-mutated echoes of this constructor's own arguments (per
--- CLAUDE.md's trivial-getter rule; @payReceive@ specifically is just @if payer then 1 else 0@,
--- reproducible with no C++ call at all).
+-- as getters because they only echo this constructor's arguments; @payReceive@ is simply
+-- @if payer then 1 else 0@.
 energyVanillaSwap :: Bool -- ^payer
                   -> Calendar
                   -> (Double, Currency) -- ^fixedPrice

@@ -1,21 +1,30 @@
 module QuantLib.Commodity
   (
-    -- * Commodity types
+    -- * Types
+    -- ** Commodity types
     CommodityType
-  , commodityType
-  , nullCommodityType
-  , commodityTypeCode
-  , commodityTypeName
-  , commodityTypeEmpty
-
-    -- * Units of measure
+    -- ** Units of measure
   , UnitOfMeasure
   , UnitOfMeasureType(..)
+    -- ** Payment terms
+  , PaymentTerm
+  , PaymentTermEventType(..)
+    -- ** Quantities and costs
+  , Quantity
+  , CommodityUnitCost
+    -- ** Date intervals and pricing periods
+  , DateInterval
+  , PricingPeriod
+  , PricingPeriods
+    -- ** Unit conversions
+  , UnitOfMeasureConversion
+  , UnitOfMeasureConversionType(..)
+
+    -- * Constructors
+    -- ** Commodity metadata
+  , commodityType
+  , nullCommodityType
   , unitOfMeasure
-  , unitOfMeasureName
-  , unitOfMeasureCode
-  , unitOfMeasureType
-  , unitOfMeasureEmpty
   , lotUnitOfMeasure
   , barrelUnitOfMeasure
   , mtUnitOfMeasure
@@ -24,62 +33,57 @@ module QuantLib.Commodity
   , litreUnitOfMeasure
   , kilolitreUnitOfMeasure
   , tokyoKilolitreUnitOfMeasure
-
-    -- * Payment terms
-  , PaymentTerm
-  , PaymentTermEventType(..)
   , paymentTerm
+  , pricingPeriod
+  , unitOfMeasureConversion
+
+    -- * Mutators
+    -- ** Conversion repository
+  , addUomConversion
+  , clearUomConversions
+    -- ** Global commodity settings
+  , setCommoditySettingsCurrency
+  , setCommoditySettingsUnitOfMeasure
+
+    -- * Calculations
+  , roundedQuantity
+  , closeQuantity
+  , closeEnoughQuantity
+  , isDateBetween
+  , intersection
+  , convertQuantity
+  , chainUnitOfMeasureConversion
+
+    -- * Inspectors
+    -- ** Commodity metadata
+  , commodityTypeCode
+  , commodityTypeName
+  , commodityTypeEmpty
+  , unitOfMeasureName
+  , unitOfMeasureCode
+  , unitOfMeasureType
+  , unitOfMeasureEmpty
   , paymentTermName
   , paymentTermEventType
   , paymentTermOffsetDays
   , paymentTermCalendar
   , paymentTermEmpty
   , paymentTermGetPaymentDate
-
-    -- * Quantities and costs
-  , Quantity
-  , roundedQuantity
-  , closeQuantity
-  , closeEnoughQuantity
-
-  , CommodityUnitCost
-
-    -- * Date intervals and pricing periods
-  , DateInterval
-  , isDateBetween
-  , intersection
-
-  , PricingPeriod
+    -- ** Pricing periods and conversions
   , pricingPeriodStartDate
   , pricingPeriodEndDate
   , pricingPeriodPaymentDate
   , pricingPeriodQuantity
-  , PricingPeriods
-  , pricingPeriod
-
-    -- * Unit conversions
-  , UnitOfMeasureConversion
-  , UnitOfMeasureConversionType(..)
-  , unitOfMeasureConversion
   , unitOfMeasureConversionSource
   , unitOfMeasureConversionTarget
   , unitOfMeasureConversionCommodityType
   , unitOfMeasureConversionType
   , unitOfMeasureConversionFactor
   , unitOfMeasureConversionCode
-  , convertQuantity
-  , chainUnitOfMeasureConversion
-
-    -- * Conversion repository
   , lookupUomConversion
-  , addUomConversion
-  , clearUomConversions
-
-    -- * Global commodity settings
+    -- ** Global commodity settings
   , commoditySettingsCurrency
-  , setCommoditySettingsCurrency
   , commoditySettingsUnitOfMeasure
-  , setCommoditySettingsUnitOfMeasure
   ) where
 import QuantLib.Internal
 import QuantLib.Internal.Type

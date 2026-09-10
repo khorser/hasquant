@@ -1,7 +1,7 @@
 {-# LANGUAGE FlexibleInstances #-}
 module QuantLib.PricingEngine
   (
-    -- * Core engine and configuration types
+    -- * Types
     PricingEngine
   , BlackCalculator
   , BlackScholesCalculator
@@ -21,12 +21,13 @@ module QuantLib.PricingEngine
   , LatticeTime(..)
   , FdmGrid(..)
 
-    -- * Option-calculator capability
+    -- ** Option-calculator capability
   , GenBlackCalculator
   , asBlackCalculator
   , HasOptionCalculator(..)
 
-    -- * Discounting and counterparty engines
+    -- * Constructors
+    -- ** Discounting and counterparty engines
   , discountingBondEngine
   , riskyBondEngine
   , discountingSwapEngine
@@ -36,7 +37,7 @@ module QuantLib.PricingEngine
   , PerpetualFuturesInterpolationType(..)
   , discountingPerpetualFuturesEngine
 
-    -- * Analytic, lattice and Monte Carlo engines
+    -- ** Analytic, lattice and Monte Carlo engines
   , analyticBarrierEngine
   , analyticTwoAssetBarrierEngine
   , analyticSoftBarrierEngine
@@ -180,7 +181,7 @@ module QuantLib.PricingEngine
   , singleFactorBsmBasketEngine
   , lfmSwaptionEngine
 
-    -- * Finite-difference engines
+    -- ** Finite-difference engines
   , fdG2SwaptionEngine
   , fdHullWhiteSwaptionEngine
   , binomialVanillaEngine
@@ -196,7 +197,7 @@ module QuantLib.PricingEngine
   , fdHestonVanillaEngineQuanto
   , fdHestonHullWhiteVanillaEngine
 
-    -- * Convertible and callable bond engines
+    -- ** Convertible and callable bond engines
   , binomialConvertibleEngine
   , blackCallableFixedRateBondEngineFromVolatilityStructure
   , blackCallableFixedRateBondEngine
@@ -205,7 +206,7 @@ module QuantLib.PricingEngine
   , treeCallableFixedRateBondEngine
   , treeCallableZeroCouponBondEngine
 
-    -- * Black and Bachelier calculators
+    -- ** Black and Bachelier calculators
   , StrikeSpec(..)
   , blackCalculator
   , blackVanna
@@ -219,7 +220,8 @@ module QuantLib.PricingEngine
   , bachelierCalculator
   , bachelierVanna
 
-    -- * Formulae, probabilities and SABR helpers
+    -- * Calculations
+    -- ** Formulae, probabilities and SABR helpers
   , blackDeltaCalculator
   , deltaFromStrike
   , strikeFromDelta

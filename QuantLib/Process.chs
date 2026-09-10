@@ -1,7 +1,8 @@
 {-# LANGUAGE FlexibleInstances #-}
 module QuantLib.Process
   (
-    -- * Discretization schemes
+    -- * Types
+    -- ** Discretization schemes
     ProcessDiscretization(..)
   , ExtendedBlackScholesMertonProcessDiscretization(..)
   , ExtendedOrnsteinUhlenbeckProcessDiscretization(..)
@@ -9,7 +10,7 @@ module QuantLib.Process
   , GJRGARCHProcessDiscretization(..)
   , HybridHestonHullWhiteProcessDiscretization(..)
 
-    -- * Process hierarchy
+    -- ** Process hierarchy
   , GeneralizedBlackScholesProcess
   , StochasticProcess1D
   , GenStochasticProcess1D
@@ -34,13 +35,19 @@ module QuantLib.Process
   , HullWhiteProcess
   , HullWhiteForwardProcess
 
-    -- * Hierarchy conversion
+  , HasPhi(..)
+  , HasShortRate(..)
+  , HasForwardMeasureTime(..)
+  , HasAlpha(..)
+
+    -- * Constructors
+    -- ** Hierarchy conversion
   , asStochasticProcess
   , asStochasticProcess1D
   , asGeneralizedBlackScholesProcess
   , asHestonProcess
 
-    -- * Black-Scholes processes
+    -- ** Black-Scholes processes
   , blackProcess
   , blackScholesMertonProcess
   , blackScholesProcess
@@ -50,25 +57,15 @@ module QuantLib.Process
   , squareRootProcess
   , vegaStressedBlackScholesProcess
 
-    -- * Process construction and evolution
-  , apply
+    -- ** Other processes
   , batesProcess
-  , covariance
-  , diffusion
-  , drift
-  , evolve
-  , expectation
-  , stdDeviation
   , extOuWithJumpsProcess
-  , factors
-  , initialValues
   , g2ForwardProcess
   , g2Process
   , gemanRoncoroniProcess
   , geometricBrownianMotionProcess
   , gjrGarchProcess
   , hestonProcess
-  , pdf
   , hestonSlvProcess
   , hullWhiteForwardProcess
   , hullWhiteProcess
@@ -77,22 +74,32 @@ module QuantLib.Process
   , withExtendedOrnsteinUhlenbeckProcess
   , linearSeasonalOrnsteinUhlenbeckProcess
   , liborForwardModelProcess
-  , fixingDates
-  , fixingTimes
-  , cashFlows
-  , index
-  , discountBond
-  , accrualTimes
   , merton76Process
   , ornsteinUhlenbeckProcess
   , varianceGammaProcess
   , stochasticProcessArray
 
-    -- * Short-rate and forward-measure capabilities
-  , HasPhi(..)
-  , HasShortRate(..)
-  , HasForwardMeasureTime(..)
-  , HasAlpha(..)
+    -- * Calculations
+  , apply
+  , covariance
+  , diffusion
+  , drift
+  , evolve
+  , expectation
+  , stdDeviation
+  , pdf
+  , discountBond
+
+    -- * Inspectors
+    -- ** Process state
+  , factors
+  , initialValues
+  , fixingDates
+  , fixingTimes
+  , cashFlows
+  , index
+  , accrualTimes
+    -- ** Short-rate and forward-measure quantities
   , bFunction
   , mFunction
   , numeraire

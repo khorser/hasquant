@@ -1,7 +1,8 @@
 {-# LANGUAGE FlexibleInstances #-}
 module QuantLib.Instrument.Option
   (
-    -- * Option hierarchy
+    -- * Types
+    -- ** Option hierarchy
     Option
   , asOption
   , asOneAssetOption
@@ -19,26 +20,30 @@ module QuantLib.Instrument.Option
   , SoftBarrierOption
   , VanillaOption
 
-    -- * Exercises
+    -- ** Exercises
   , ExerciseType(..)
   , Exercise(..)
   , EuropeanExercise(..)
   , BermudanExercise(..)
   , SwingExercise(..)
 
-    -- * Option conventions
+    -- ** Option conventions
   , OptionType(..)
   , PositionType(..)
 
-    -- * Payoffs
+    -- ** Payoffs
   , StrikedPayoff(..)
   , PlainVanillaPayoff(..)
   , PercentageStrikePayoff(..)
   , BasketPayoff(..)
   , Payoff(..)
   , TypePayoff(..)
+  , HasImpliedVol(..)
+  , HasQuanto(..)
+  , HasGreeks(..)
 
-    -- * Payoff and exercise construction
+    -- * Constructors
+    -- ** Payoffs and exercises
   , strikedPayoff
   , plainVanillaPayoff
   , percentageStrikePayoff
@@ -47,19 +52,13 @@ module QuantLib.Instrument.Option
   , withCustomBasketPayoff
   , swingExercise
 
-    -- * Barrier, chooser and multi-asset options
+    -- ** Barrier, chooser and multi-asset options
   , barrierOption
   , partialTimeBarrierOption
   , doubleBarrierOption
-  , doubleBarrierOptionImpliedVolatility
   , softBarrierOption
-  , softBarrierOptionImpliedVolatility
   , forwardVanillaOption
   , compoundOption
-  , firstAssetDelta
-  , secondAssetDelta
-  , firstAssetGamma
-  , secondAssetGamma
   , margrabeOption
   , simpleChooserOption
   , complexChooserOption
@@ -67,14 +66,9 @@ module QuantLib.Instrument.Option
   , writerExtensibleOption
   , holderExtensibleOption
 
-    -- * Vanilla, quanto and path-dependent options
+    -- ** Vanilla, quanto and path-dependent options
   , multiAssetOption
-  , deltaForward
-  , elasticity
-  , itmCashProbability
   , oneAssetOption
-  , strikeSensitivity
-  , thetaPerDay
   , quantoBarrierOption
   , quantoDoubleBarrierOption
   , quantoForwardVanillaOption
@@ -91,16 +85,27 @@ module QuantLib.Instrument.Option
   , continuousPartialFixedLookbackOption
   , continuousPartialFloatingLookbackOption
   , everestOption
-  , yield
   , discreteAveragingAsianOption
   , vanillaStorageOption
   , vanillaSwingOption
   , europeanOption
 
-    -- * Shared option capabilities
-  , HasImpliedVol(..)
-  , HasQuanto(..)
-  , HasGreeks(..)
+    -- * Calculations
+    -- ** Implied volatility
+  , doubleBarrierOptionImpliedVolatility
+  , softBarrierOptionImpliedVolatility
+    -- ** Sensitivities and probabilities
+  , firstAssetDelta
+  , secondAssetDelta
+  , firstAssetGamma
+  , secondAssetGamma
+  , deltaForward
+  , elasticity
+  , itmCashProbability
+  , strikeSensitivity
+  , thetaPerDay
+  , yield
+
   ) where
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"

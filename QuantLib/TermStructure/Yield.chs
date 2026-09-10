@@ -1,7 +1,8 @@
 {-# LANGUAGE TemplateHaskell #-}
 module QuantLib.TermStructure.Yield
   (
-    -- * Yield-curve types and references
+    -- * Types
+    -- ** Curves and helpers
     YieldTermStructure
   , GenYieldTermStructure
   , BondHelper
@@ -12,46 +13,56 @@ module QuantLib.TermStructure.Yield
   , OvernightIndexFutureRateHelper
   , FittingMethod(..)
   , FittedBondDiscountCurve
-  , fittedBondDiscountCurve
   , Reference(..)
   , TermPoint(..)
   , RatePoint(..)
   , RelinkableYieldTermStructure
-  , relinkableYieldTermStructure
-  , linkTo
   , GenRateHelper
-
-    -- * Curves, queries and rate helpers
+  , MultiCurve
+  , HasHelperUnderlying(..)
+    -- ** Bootstrap and contract configuration
   , BootstrapTrait(..)
   , PillarChoice(..)
   , FuturesType(..)
   , FraTerms(..)
   , FuturesTerms(..)
   , CPIInterpolationType(..)
+  , OISRateHelperOpts(..)
+  , OvernightObservation(..)
+  , IterativeBootstrapOpts(..)
+  , Bootstrap(..)
+  , LocalBootstrapTrait(..)
+
+    -- * Constructors
+    -- ** Hierarchy and handles
+  , asYieldTermStructure
+  , asRateHelper
+  , relinkableYieldTermStructure
+    -- ** Flat, fitted and derived curves
+  , fittedBondDiscountCurve
+  , flatForward
+  , forwardSpreadedTermStructure
+  , zeroSpreadedTermStructure
+  , withCompositeZeroYieldStructure
+  , impliedTermStructure
+  , piecewiseZeroSpreadedTermStructure
+  , quantoTermStructure
+  , ultimateForwardTermStructure
+    -- ** Rate helpers
   , depositRateHelperFromIndex
   , depositRateHelper
   , fixedRateBondHelper
   , cpiBondHelper
   , swapRateHelperFromConventions
-  , flatForward
-  , forwardRate
-  , forwardRateBetweenTimes
-  , zeroRate
-  , discount
   , fraRateHelper
   , bondHelper
   , oisRateHelper
   , oisRateHelperBetweenDates
-  , OISRateHelperOpts(..)
   , defaultOisRateHelperOpts
-  , OvernightObservation(..)
   , defaultOvernightObservation
   , oisRateHelperWithOptions
   , oisRateHelperBetweenDatesWithOptions
   , swapRateHelper
-  , forwardSpreadedTermStructure
-  , zeroSpreadedTermStructure
-  , withCompositeZeroYieldStructure
   , bmaSwapRateHelper
   , multipleResetsSwapRateHelper
   , futuresRateHelper
@@ -59,38 +70,16 @@ module QuantLib.TermStructure.Yield
   , futuresRateHelperConvexityAdjustment
   , overnightIndexFutureRateHelperConvexityAdjustment
   , sofrFutureRateHelper
-  , impliedQuote
-  , impliedTermStructure
-
-    -- * Hierarchy conversion
-  , asYieldTermStructure
-  , asRateHelper
-
-    -- * Derived term structures and fitting results
-  , piecewiseZeroSpreadedTermStructure
-  , quantoTermStructure
-  , ultimateForwardTermStructure
-  , minimumCostValue
-  , numberOfIterations
-
-    -- * Bootstrapped and interpolated curves
+    -- ** Bootstrapped and interpolated curves
   , piecewiseYieldCurve
-  , IterativeBootstrapOpts(..)
   , defaultIterativeBootstrapOpts
-  , Bootstrap(..)
-  , LocalBootstrapTrait(..)
   , interpolatedZeroCurve
   , interpolatedForwardCurve
   , interpolatedDiscountCurve
   , interpolatedSpreadDiscountCurve
-
-    -- * Multi-curve bootstrapping
-  , MultiCurve
+    -- ** Multi-curve bootstrapping
   , multiCurve
-  , addBootstrappedCurve
-  , addNonBootstrappedCurve
-
-    -- * Basis and cross-currency helpers
+    -- ** Basis and cross-currency helpers
   , iborIborBasisSwapRateHelper
   , overnightIborBasisSwapRateHelper
   , constNotionalCrossCurrencyBasisSwapRateHelper
@@ -99,8 +88,21 @@ module QuantLib.TermStructure.Yield
   , fxSwapRateHelper
   , fxSwapRateHelperBetweenDates
 
-    -- * Helper instruments
-  , HasHelperUnderlying(..)
+    -- * Mutators
+  , linkTo
+  , addBootstrappedCurve
+  , addNonBootstrappedCurve
+
+    -- * Calculations
+  , forwardRate
+  , forwardRateBetweenTimes
+  , zeroRate
+  , discount
+
+    -- * Inspectors
+  , impliedQuote
+  , minimumCostValue
+  , numberOfIterations
   ) where
 import QuantLib.Internal hiding(maxDate)
 import QuantLib.Internal.Common
@@ -127,15 +129,11 @@ import QuantLib.Internal.Type
 
 #include "ql.h"
 
--- breaking recursive dependencies with Index.InterestRate TermStructure.Volatilitiy modules
--- if you put all pointer declarations in a separate module
--- ch2s will not attach finalizers to foreign ptrs in other modules
--- I don't want to create extra modules just to workaround the issue with cyclic dependencies and this will not help with finalizers anyway
+-- These local pointer declarations break import cycles while allowing c2hs to attach finalizers.
 {#pointer *Calendar foreign -> CCalendar nocode#}
 {#pointer *QlIborIndex as IborIndex foreign -> CIborIndex' nocode#}
 {#pointer *QlOvernightIndex as OvernightIndex foreign -> COvernightIndex' nocode#}
 {#pointer *QlBMAIndex as BMAIndex foreign -> CBMAIndex' nocode#}
-{#pointer *QlSwapIndex as SwapIndex foreign -> CSwapIndex' nocode#}
 {#pointer *QlSwapIndex as SwapIndex foreign -> CSwapIndex' nocode#}
 {#pointer *QlBlackVolTermStructure as BlackVolTermStructure foreign -> CBlackVolTermStructure' nocode#}
 {#pointer *QlBond as Bond foreign -> CBond' nocode#}
@@ -162,21 +160,10 @@ import QuantLib.Internal.Type
 {#enum PillarChoice{} deriving(Show, Eq, Read)#}
 {#enum FuturesType{} deriving(Show, Eq, Read)#}
 
--- OISRateHelperOpts bundles every trailing param oisRateHelper/oisRateHelperBetweenDates hardcode
--- (see the comment above them, further down), pre-populated with upstream's own
--- defaults via defaultOisRateHelperOpts, overridden through record-update syntax at
--- the call site -- see the add-quantlib-options-record skill for why this exists as a
--- second entry point instead of widening oisRateHelper/oisRateHelperBetweenDates
--- themselves. The three Calendar fields are Maybe here (unlike the raw binding's plain
--- Calendar) since a real Calendar is only obtainable in IO (`calendar Null`) and can't
--- live in a pure default record value -- oisRateHelperWithOptions/oisRateHelperBetweenDatesWithOptions
--- substitute a fresh Null calendar for Nothing, same as the narrow constructors do
--- today. This splice must stay textually before every {#fun#}-generated binding in
--- this file: c2hs always appends its raw foreign-import stubs at the physical end of
--- the generated module regardless of where in the .chs a {#fun#} hook appears, and a
--- top-level TH splice anywhere in between would otherwise split the file into
--- declaration groups that can't see each other, breaking every earlier {#fun#}
--- wrapper's reference to its own (always-last) foreign-import stub.
+-- The optional calendars use 'Nothing' for QuantLib's null calendar because a concrete
+-- 'Calendar' cannot occur in this pure default value. Keep this splice before every {#fun#}:
+-- c2hs appends foreign imports to the generated module, and an intervening top-level splice
+-- would split declarations from the imports their wrappers use.
 $(deriveOptionsRecord "OISRateHelperOpts" ["m"]
   [ ("oisTelescopicValueDates", [t|Bool|], [|False|])
   , ("oisPaymentLag", [t|Int|], [|0|])
@@ -479,20 +466,14 @@ fraRateHelper rate terms = case terms of
   ,preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
 
 -- |/Warning/ Setting a pricing engine to the passed bond from external code will cause the bootstrap to fail or to give wrong results. It is advised to discard the bond after creating the helper, so that the helper has sole ownership of it.
--- BondPriceType (QuantLib.Instrument.Bond) is later in exposed-modules than
--- this file, so priceType is marshalled as a plain Int via fromEnum here
--- instead of a {#import#}'d enum type, per CLAUDE.md's cross-module workaround.
+-- 'BondPriceType' is marshalled as an 'Int' to avoid a c2hs cross-module enum-import cycle.
 bondHelper :: GenQuote q -> Bond -> Bond.BondPriceType -> IO BondHelper
 bondHelper cleanPrice bond priceType = bondHelper_ cleanPrice bond (fromEnum priceType)
 
 {#fun qlBondHelper as bondHelper_{withQuote*`GenQuote q',withBond*`Bond',`Int' -- ^priceType
   ,preErrorCheck-`String'errorCheck*-}->`BondHelper'peekBondHelper*#}
--- oisRateHelper/oisRateHelperBetweenDates keep their original 5-param signatures (below);
--- both call the same full-arity raw bindings as oisRateHelperWithOptions/oisRateHelperBetweenDatesWithOptions
--- (the options-record wrappers spliced further down in this file), hardcoding
--- upstream's own defaults for every trailing param -- widening the underlying C
--- shim was cheaper than maintaining a second near-duplicate one (see
--- cbits/qlTermStructure.cpp's qlOISRateHelper/qlOISRateHelper2).
+-- The narrow and options-record wrappers share the same full-arity bindings; the narrow forms
+-- supply QuantLib's defaults.
 -- forwardStart is explicit rather than an OISRateHelperOpts field because upstream's
 -- ctor2 has none: only the tenor-relative entry points below can honour it.
 oisRateHelper :: Word -> (Int, TimeUnit)
@@ -1023,15 +1004,5 @@ fittedBondDiscountCurve reference hs dc method accuracy maxEvaluations guess sim
   ,withRelinkableYieldTermStructure*`RelinkableYieldTermStructure' -- ^internalHandle
   ,withYieldTermStructure*`GenYieldTermStructure y' -- ^curve
   ,preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
-
--- |The bond the helper prices. For 'fixedRateBondHelper'\/'cpiBondHelper' this is the only way
--- to reach it, since they build the bond internally rather than taking one (unlike 'bondHelper').
-
-
--- |The underlying swap the helper builds from its tenor and index.
-
-
--- |The underlying overnight indexed swap the helper builds from its tenor and index.
-
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:
