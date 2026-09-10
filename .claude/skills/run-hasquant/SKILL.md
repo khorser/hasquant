@@ -16,7 +16,25 @@ QuantLib 1.43 and GHC/Stack/Cabal are expected to be installed. The GHC 8.10 com
 ```bash
 make                                   # C++-only compile check, fast, no Haskell rebuild
 stack build --test --no-haddock        # full build; prefer through tools/quiet-build.py, see Gotchas
+
+# final gate: also compile the two flagged executables, as CI does
+tools/quiet-build.py stack build --test --no-haddock \
+  --flag hasquant:buildExample --flag hasquant:buildSofrXva
 ```
+
+The `app/SofrXva` executable and `test/example` are behind the default-off
+`buildSofrXva`/`buildExample` flags, so a plain `stack build --test` leaves
+them uncompiled and an API change can break them invisibly (it has: the
+`OvernightObservation` collapse broke `app/SofrXva/Pricing.hs` while the
+whole local gate stayed green). Every CI job builds both
+(`.github/workflows/{linux,macos,windows}.yml`), so run the flagged build
+once before declaring a change done.
+
+`test/smoke/*.hs` is the same invisibility class and is larger: those probes
+are in no cabal target at all — `driver.sh` compiles them one at a time — so
+a rename or arity change leaves them stale with every gate green. After any
+API change, grep `test/smoke/` for the affected names and re-run `driver.sh`
+on each hit; compiling them *is* the check.
 
 **GHC 8.10 gate.** The package supports GHC 8.10.6 / base 4.14.3.0, its
 declared floor (`base >=4.14`, set in `package.yaml` — `hasquant.cabal` is
@@ -24,7 +42,7 @@ hpack-generated, so edit the former and let `stack build` regenerate the
 latter). Nothing merges until this passes:
 
 ```bash
-docker compose run --rm hasquant sh -c 'stack build --resolver lts-18.8 --flag hasquant:buildExample --no-haddock && stack --resolver lts-18.8 test'
+docker compose run --rm hasquant sh -c 'stack build --resolver lts-18.8 --flag hasquant:buildExample --flag hasquant:buildSofrXva --no-haddock && stack --resolver lts-18.8 test'
 ```
 
 (no `-it`, which fails without a TTY). It catches two things the local

@@ -19,7 +19,7 @@ import QuantLib.CashFlow (RateAveragingType(..))
 import QuantLib.Index (fixingCalendar, isValidFixingDate, addFixings)
 import qualified QuantLib.Index.InterestRate as IR
 import QuantLib.Instrument (npv, setPricingEngine)
-import QuantLib.Instrument.Swap (SwapType(..), overnightIndexedSwap)
+import QuantLib.Instrument.Swap (SwapType(..), defaultOvernightObservation, overnightIndexedSwap)
 import QuantLib.Math (Interpolation(..))
 import QuantLib.PricingEngine (discountingSwapEngine)
 import QuantLib.Settings (setEvaluationDate)
@@ -61,7 +61,7 @@ buildSofrProfile curves hist quotes = do
   fixedSched <- schedule (Just effectiveDate) terminationDate (6, Months) cal
     ModifiedFollowing ModifiedFollowing Backward False Nothing Nothing
   swap <- overnightIndexedSwap Payer 1000000 fixedSched 0.0278 dc index 0 2
-    ModifiedFollowing paymentCal False AveragingCompound Nothing 0 False
+    ModifiedFollowing paymentCal False AveragingCompound defaultOvernightObservation
   engine <- discountingSwapEngine tsh (Just False) Nothing Nothing
   setPricingEngine swap engine
 
