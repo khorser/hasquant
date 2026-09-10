@@ -1,20 +1,30 @@
 ## 0.7.0.0 (2026)
 
 The final broad API-coverage batch adds Haskell callbacks for payoffs, optimization, regression and
-finite-difference workflows, wider pricing and curve support, index history analysis, a standalone
-SOFR-OIS exposure example, and substantially more upstream-derived test coverage. Collections now
+finite-difference workflows, wider pricing and curve support, index history analysis with the
+matrix decompositions that feed PCA and correlation salvaging, a standalone SOFR-OIS exposure
+example, and substantially more upstream-derived test coverage. Collections now
 encode emptiness and numeric scale more precisely, and the C++ shims share more of their template
 dispatch and allocation plumbing.
 
 The size of this batch made a breaking naming and overload cleanup necessary to keep the API
 explorable: overloads now use semantic names and coordinate types, acronyms follow normal camel
 case, common capabilities use narrowly scoped classes, and the cash-flow hierarchy is uniform.
-This is expected to be the last repository-wide rename.
+This is expected to be the last repository-wide rename. In the same spirit, the FRA and IborIndex-futures
+rate-helper overloads collapse behind the `FraTerms`/`FuturesTerms` coordinate types, and `forwardStart`
+moves from `OISRateHelperOpts` onto the tenor-relative `oisRateHelper`/`oisRateHelperWithOptions`, where
+upstream can actually honour it. Overnight-leg observation settings (lookback, lockout,
+observation shift) collapse into one `OvernightObservation` record shared by the OIS swap
+constructors, the OIS rate helpers and the cross-currency swaps, which also removes the
+inverted field order upstream uses in the cross-currency constructor. Helper and option
+underlying accessors move behind two capability classes, `HasHelperUnderlying`
+(`helperInstrument`, replacing `bondHelperBond`/`swapRateHelperSwap`/`oisRateHelperSwap`/the two
+inflation-helper accessors/`helperUnderlying`) and `HasInstrumentUnderlying` (`underlyingSwap`),
+the latter backed by five newly bound accessors on `Swaption`, `NonstandardSwaption`,
+`FloatFloatSwaption`, `IrregularSwaption` and `CdsOption`. `IrregularSettlementType` is now
+exported, without which `irregularSwaption` could not be called from outside its module.
 
-Breaking change: removed the `QuantLib.Syntax` module and its Template Haskell partial-call
-helpers (`free1st`, `free2nd`, `freeNth`, their `WithArity` variants, `cutAt`,
-`cutAtWithArity`, and `cut`). Ordinary lambdas and `do` bindings are clearer at the affected
-call sites and avoid Template Haskell staging and arity-reification constraints.
+Another breaking change: removed the `QuantLib.Syntax` module and its Template Haskell partial-call helpers.
 
 ## 0.6.0.0 (2026)
 

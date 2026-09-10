@@ -401,8 +401,8 @@ span.spaces    { background: white }
 <span class="lineno">  382 </span>withDayCounter :: DayCounter -&gt; (Ptr CDayCounter -&gt; IO b) -&gt; IO b
 <span class="lineno">  383 </span><span class="decl"><span class="istickedoff">withDayCounter = withStandalone . getCDayCounter</span></span>
 <span class="lineno">  384 </span>foreign import ccall safe &quot;ql.h qlDayCounterName&quot; qlDayCounterName :: Ptr CDayCounter -&gt; IO CString
-<span class="lineno">  385 </span>instance <span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Show DayCounter</span></span></span></span> where <span class="decl"><span class="istickedoff">show x = showStandalone qlDayCounterName (getCDayCounter x)</span></span>
-<span class="lineno">  386 </span>instance <span class="decl"><span class="nottickedoff">Eq DayCounter</span></span> where <span class="decl"><span class="istickedoff">x == y = show x == show y</span></span>
+<span class="lineno">  385 </span>instance <span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Show DayCounter</span></span></span></span> where <span class="decl"><span class="nottickedoff">show x = showStandalone qlDayCounterName (getCDayCounter x)</span></span>
+<span class="lineno">  386 </span>instance <span class="decl"><span class="nottickedoff">Eq DayCounter</span></span> where <span class="decl"><span class="nottickedoff">x == y = show x == show y</span></span>
 <span class="lineno">  387 </span>
 <span class="lineno">  388 </span>data CSchedule
 <span class="lineno">  389 </span>newtype Schedule = Schedule {<span class="istickedoff"><span class="decl"><span class="istickedoff">getCSchedule</span></span></span> :: Standalone CSchedule}
@@ -2141,7 +2141,7 @@ span.spaces    { background: white }
 <span class="lineno"> 2122 </span>foreign import ccall unsafe &quot;ql.h &amp;qlFreeCPICapFloorTermPriceSurface&quot; qlFreeCPICapFloorTermPriceSurface :: FinalizerPtr CCPICapFloorTermPriceSurface'
 <span class="lineno"> 2123 </span>foreign import ccall unsafe &quot;ql.h &amp;qlFreeCommodityCurve&quot; qlFreeCommodityCurve :: FinalizerPtr CCommodityCurve'
 <span class="lineno"> 2124 </span>instance Finalizable CTermStructure' where <span class="decl"><span class="istickedoff">finalize = qlFreeTermStructure</span></span>
-<span class="lineno"> 2125 </span>instance Finalizable CVolatilityTermStructure' where <span class="decl"><span class="nottickedoff">finalize = qlFreeVolatilityTermStructure</span></span>
+<span class="lineno"> 2125 </span>instance Finalizable CVolatilityTermStructure' where <span class="decl"><span class="istickedoff">finalize = qlFreeVolatilityTermStructure</span></span>
 <span class="lineno"> 2126 </span>instance Finalizable COptionletVolatilityStructure' where <span class="decl"><span class="istickedoff">finalize = qlFreeOptionletVolatilityStructure</span></span>
 <span class="lineno"> 2127 </span>instance Finalizable CRelinkableOptionletVolatilityStructure' where <span class="decl"><span class="istickedoff">finalize = qlFreeRelinkableOptionletVolatilityStructure</span></span>
 <span class="lineno"> 2128 </span>instance Finalizable CSwaptionVolatilityStructure' where <span class="decl"><span class="istickedoff">finalize = qlFreeSwaptionVolatilityStructure</span></span>
@@ -2213,7 +2213,7 @@ span.spaces    { background: white }
 <span class="lineno"> 2194 </span>instance Upcastable CYieldTermStructure' where {type Base CYieldTermStructure' = CTermStructure'; <span class="decl"><span class="istickedoff">upcast = qlYieldTermStructureAsTermStructure</span></span>}
 <span class="lineno"> 2195 </span>instance Upcastable CFittedBondDiscountCurve' where {type Base CFittedBondDiscountCurve' = CYieldTermStructure'; <span class="decl"><span class="istickedoff">upcast = qlFittedBondDiscountCurveAsYieldTermStructure</span></span>}
 <span class="lineno"> 2196 </span>instance Upcastable CRelinkableYieldTermStructure' where {type Base CRelinkableYieldTermStructure' = CYieldTermStructure'; <span class="decl"><span class="istickedoff">upcast = qlRelinkableYieldTermStructureAsYieldTermStructure</span></span>}
-<span class="lineno"> 2197 </span>instance Upcastable CVolatilityTermStructure' where {type Base CVolatilityTermStructure' = CTermStructure'; <span class="decl"><span class="nottickedoff">upcast = qlVolatilityTermStructureAsTermStructure</span></span>}
+<span class="lineno"> 2197 </span>instance Upcastable CVolatilityTermStructure' where {type Base CVolatilityTermStructure' = CTermStructure'; <span class="decl"><span class="istickedoff">upcast = qlVolatilityTermStructureAsTermStructure</span></span>}
 <span class="lineno"> 2198 </span>instance Upcastable CCallableBondVolatilityStructure' where {type Base CCallableBondVolatilityStructure' = CTermStructure'; <span class="decl"><span class="nottickedoff">upcast = qlCallableBondVolatilityStructureAsTermStructure</span></span>}
 <span class="lineno"> 2199 </span>instance Upcastable CDefaultProbabilityTermStructure' where {type Base CDefaultProbabilityTermStructure' = CTermStructure'; <span class="decl"><span class="istickedoff">upcast = qlDefaultProbabilityTermStructureAsTermStructure</span></span>}
 <span class="lineno"> 2200 </span>instance Upcastable CZeroInflationTermStructure' where {type Base CZeroInflationTermStructure' = CTermStructure'; <span class="decl"><span class="nottickedoff">upcast = qlZeroInflationTermStructureAsTermStructure</span></span>}
@@ -2221,7 +2221,7 @@ span.spaces    { background: white }
 <span class="lineno"> 2202 </span>instance Upcastable CYoYCapFloorTermPriceSurface' where {type Base CYoYCapFloorTermPriceSurface' = CTermStructure'; <span class="decl"><span class="nottickedoff">upcast = qlYoYCapFloorTermPriceSurfaceAsTermStructure</span></span>}
 <span class="lineno"> 2203 </span>instance Upcastable CCPICapFloorTermPriceSurface' where {type Base CCPICapFloorTermPriceSurface' = CTermStructure'; <span class="decl"><span class="nottickedoff">upcast = qlCPICapFloorTermPriceSurfaceAsTermStructure</span></span>}
 <span class="lineno"> 2204 </span>instance Upcastable CCommodityCurve' where {type Base CCommodityCurve' = CTermStructure'; <span class="decl"><span class="nottickedoff">upcast = qlCommodityCurveAsTermStructure</span></span>}
-<span class="lineno"> 2205 </span>instance Upcastable CBlackVolTermStructure' where {type Base CBlackVolTermStructure' = CVolatilityTermStructure'; <span class="decl"><span class="nottickedoff">upcast = qlBlackVolTermStructureAsVolatilityTermStructure</span></span>}
+<span class="lineno"> 2205 </span>instance Upcastable CBlackVolTermStructure' where {type Base CBlackVolTermStructure' = CVolatilityTermStructure'; <span class="decl"><span class="istickedoff">upcast = qlBlackVolTermStructureAsVolatilityTermStructure</span></span>}
 <span class="lineno"> 2206 </span>instance Upcastable CRelinkableBlackVolTermStructure' where {type Base CRelinkableBlackVolTermStructure' = CBlackVolTermStructure'; <span class="decl"><span class="istickedoff">upcast = qlRelinkableBlackVolTermStructureAsBlackVolTermStructure</span></span>}
 <span class="lineno"> 2207 </span>instance Upcastable CBlackVarianceCurve' where {type Base CBlackVarianceCurve' = CBlackVolTermStructure'; <span class="decl"><span class="istickedoff">upcast = qlBlackVarianceCurveAsBlackVolTermStructure</span></span>}
 <span class="lineno"> 2208 </span>instance Upcastable CBlackVolatilitySurfaceDelta' where {type Base CBlackVolatilitySurfaceDelta' = CBlackVolTermStructure'; <span class="decl"><span class="nottickedoff">upcast = qlBlackVolatilitySurfaceDeltaAsBlackVolTermStructure</span></span>}
@@ -2260,7 +2260,7 @@ span.spaces    { background: white }
 <span class="lineno"> 2241 </span>peekGenVolatilityTermStructure :: (Finalizable v, Upcastable v, Base v ~ CVolatilityTermStructure') =&gt; Ptr v -&gt; IO (GenVolatilityTermStructure (ForeignPtr v))
 <span class="lineno"> 2242 </span><span class="decl"><span class="istickedoff">peekGenVolatilityTermStructure = newGenForeignPtr &gt;=&gt; newGenVolatilityTermStructure</span></span>
 <span class="lineno"> 2243 </span>withVolatilityTermStructure :: GenVolatilityTermStructure v -&gt; (Ptr CVolatilityTermStructure' -&gt; IO b) -&gt; IO b
-<span class="lineno"> 2244 </span><span class="decl"><span class="nottickedoff">withVolatilityTermStructure = withGenForeignPtr . peel . getTermStructure</span></span>
+<span class="lineno"> 2244 </span><span class="decl"><span class="istickedoff">withVolatilityTermStructure = withGenForeignPtr . peel . getTermStructure</span></span>
 <span class="lineno"> 2245 </span>withGenVolatilityTermStructure :: GenVolatilityTermStructure (ForeignPtr v) -&gt; (Ptr v -&gt; IO b) -&gt; IO b
 <span class="lineno"> 2246 </span><span class="decl"><span class="istickedoff">withGenVolatilityTermStructure = withForeignPtr . ptr . peel . getTermStructure</span></span>
 <span class="lineno"> 2247 </span>newGenVolatilityTermStructure :: GenForeignPtr v CVolatilityTermStructure' -&gt; IO (GenVolatilityTermStructure v)
@@ -2542,10 +2542,10 @@ span.spaces    { background: white }
 <span class="lineno"> 2523 </span>foreign import ccall unsafe &quot;ql.h &amp;qlFreeGeneralizedBlackScholesProcess&quot; qlFreeGeneralizedBlackScholesProcess :: FinalizerPtr CGeneralizedBlackScholesProcess'
 <span class="lineno"> 2524 </span>foreign import ccall unsafe &quot;ql.h &amp;qlFreeBlackProcess&quot; qlFreeBlackProcess :: FinalizerPtr CBlackProcess'
 <span class="lineno"> 2525 </span>instance Finalizable CStochasticProcess' where <span class="decl"><span class="istickedoff">finalize = qlFreeStochasticProcess</span></span>
-<span class="lineno"> 2526 </span>instance Finalizable CExtOUWithJumpsProcess' where <span class="decl"><span class="nottickedoff">finalize = qlFreeExtOUWithJumpsProcess</span></span>
+<span class="lineno"> 2526 </span>instance Finalizable CExtOUWithJumpsProcess' where <span class="decl"><span class="istickedoff">finalize = qlFreeExtOUWithJumpsProcess</span></span>
 <span class="lineno"> 2527 </span>instance Finalizable CGJRGARCHProcess' where <span class="decl"><span class="istickedoff">finalize = qlFreeGJRGARCHProcess</span></span>
 <span class="lineno"> 2528 </span>instance Finalizable CHybridHestonHullWhiteProcess' where <span class="decl"><span class="istickedoff">finalize = qlFreeHybridHestonHullWhiteProcess</span></span>
-<span class="lineno"> 2529 </span>instance Finalizable CKlugeExtOUProcess' where <span class="decl"><span class="nottickedoff">finalize = qlFreeKlugeExtOUProcess</span></span>
+<span class="lineno"> 2529 </span>instance Finalizable CKlugeExtOUProcess' where <span class="decl"><span class="istickedoff">finalize = qlFreeKlugeExtOUProcess</span></span>
 <span class="lineno"> 2530 </span>instance Finalizable CLiborForwardModelProcess' where <span class="decl"><span class="istickedoff">finalize = qlFreeLiborForwardModelProcess</span></span>
 <span class="lineno"> 2531 </span>instance Finalizable CStochasticProcessArray' where <span class="decl"><span class="istickedoff">finalize = qlFreeStochasticProcessArray</span></span>
 <span class="lineno"> 2532 </span>instance Finalizable CG2Process' where <span class="decl"><span class="istickedoff">finalize = qlFreeG2Process</span></span>
@@ -2554,7 +2554,7 @@ span.spaces    { background: white }
 <span class="lineno"> 2535 </span>instance Finalizable CHestonSLVProcess' where <span class="decl"><span class="nottickedoff">finalize = qlFreeHestonSLVProcess</span></span>
 <span class="lineno"> 2536 </span>instance Finalizable CStochasticProcess1D' where <span class="decl"><span class="istickedoff">finalize = qlFreeStochasticProcess1D</span></span>
 <span class="lineno"> 2537 </span>instance Finalizable CBatesProcess' where <span class="decl"><span class="istickedoff">finalize = qlFreeBatesProcess</span></span>
-<span class="lineno"> 2538 </span>instance Finalizable CExtendedOrnsteinUhlenbeckProcess' where <span class="decl"><span class="nottickedoff">finalize = qlFreeExtendedOrnsteinUhlenbeckProcess</span></span>
+<span class="lineno"> 2538 </span>instance Finalizable CExtendedOrnsteinUhlenbeckProcess' where <span class="decl"><span class="istickedoff">finalize = qlFreeExtendedOrnsteinUhlenbeckProcess</span></span>
 <span class="lineno"> 2539 </span>instance Finalizable CHullWhiteForwardProcess' where <span class="decl"><span class="istickedoff">finalize = qlFreeHullWhiteForwardProcess</span></span>
 <span class="lineno"> 2540 </span>instance Finalizable CHullWhiteProcess' where <span class="decl"><span class="istickedoff">finalize = qlFreeHullWhiteProcess</span></span>
 <span class="lineno"> 2541 </span>instance Finalizable CMerton76Process' where <span class="decl"><span class="nottickedoff">finalize = qlFreeMerton76Process</span></span>
@@ -2580,10 +2580,10 @@ span.spaces    { background: white }
 <span class="lineno"> 2561 </span>foreign import ccall &quot;ql.h qlVarianceGammaProcessAsStochasticProcess1D&quot; qlVarianceGammaProcessAsStochasticProcess1D :: Ptr CVarianceGammaProcess' -&gt; IO (Ptr CStochasticProcess1D')
 <span class="lineno"> 2562 </span>foreign import ccall &quot;ql.h qlGeneralizedBlackScholesProcessAsStochasticProcess1D&quot; qlGeneralizedBlackScholesProcessAsStochasticProcess1D :: Ptr CGeneralizedBlackScholesProcess' -&gt; IO (Ptr CStochasticProcess1D')
 <span class="lineno"> 2563 </span>foreign import ccall &quot;ql.h qlBlackProcessAsGeneralizedBlackScholesProcess&quot; qlBlackProcessAsGeneralizedBlackScholesProcess :: Ptr CBlackProcess' -&gt; IO (Ptr CGeneralizedBlackScholesProcess')
-<span class="lineno"> 2564 </span>instance Upcastable CExtOUWithJumpsProcess' where {type Base CExtOUWithJumpsProcess' = CStochasticProcess'; <span class="decl"><span class="nottickedoff">upcast = qlExtOUWithJumpsProcessAsStochasticProcess</span></span>}
+<span class="lineno"> 2564 </span>instance Upcastable CExtOUWithJumpsProcess' where {type Base CExtOUWithJumpsProcess' = CStochasticProcess'; <span class="decl"><span class="istickedoff">upcast = qlExtOUWithJumpsProcessAsStochasticProcess</span></span>}
 <span class="lineno"> 2565 </span>instance Upcastable CGJRGARCHProcess' where {type Base CGJRGARCHProcess' = CStochasticProcess'; <span class="decl"><span class="nottickedoff">upcast = qlGJRGARCHProcessAsStochasticProcess</span></span>}
 <span class="lineno"> 2566 </span>instance Upcastable CHybridHestonHullWhiteProcess' where {type Base CHybridHestonHullWhiteProcess' = CStochasticProcess'; <span class="decl"><span class="istickedoff">upcast = qlHybridHestonHullWhiteProcessAsStochasticProcess</span></span>}
-<span class="lineno"> 2567 </span>instance Upcastable CKlugeExtOUProcess' where {type Base CKlugeExtOUProcess' = CStochasticProcess'; <span class="decl"><span class="nottickedoff">upcast = qlKlugeExtOUProcessAsStochasticProcess</span></span>}
+<span class="lineno"> 2567 </span>instance Upcastable CKlugeExtOUProcess' where {type Base CKlugeExtOUProcess' = CStochasticProcess'; <span class="decl"><span class="istickedoff">upcast = qlKlugeExtOUProcessAsStochasticProcess</span></span>}
 <span class="lineno"> 2568 </span>instance Upcastable CLiborForwardModelProcess' where {type Base CLiborForwardModelProcess' = CStochasticProcess'; <span class="decl"><span class="istickedoff">upcast = qlLiborForwardModelProcessAsStochasticProcess</span></span>}
 <span class="lineno"> 2569 </span>instance Upcastable CStochasticProcessArray' where {type Base CStochasticProcessArray' = CStochasticProcess'; <span class="decl"><span class="istickedoff">upcast = qlStochasticProcessArrayAsStochasticProcess</span></span>}
 <span class="lineno"> 2570 </span>instance Upcastable CG2Process' where {type Base CG2Process' = CStochasticProcess'; <span class="decl"><span class="istickedoff">upcast = qlG2ProcessAsStochasticProcess</span></span>}
@@ -2592,7 +2592,7 @@ span.spaces    { background: white }
 <span class="lineno"> 2573 </span>instance Upcastable CHestonSLVProcess' where {type Base CHestonSLVProcess' = CStochasticProcess'; <span class="decl"><span class="nottickedoff">upcast = qlHestonSLVProcessAsStochasticProcess</span></span>}
 <span class="lineno"> 2574 </span>instance Upcastable CStochasticProcess1D' where {type Base CStochasticProcess1D' = CStochasticProcess'; <span class="decl"><span class="istickedoff">upcast = qlStochasticProcess1DAsStochasticProcess</span></span>}
 <span class="lineno"> 2575 </span>instance Upcastable CBatesProcess' where {type Base CBatesProcess' = CHestonProcess'; <span class="decl"><span class="nottickedoff">upcast = qlBatesProcessAsHestonProcess</span></span>}
-<span class="lineno"> 2576 </span>instance Upcastable CExtendedOrnsteinUhlenbeckProcess' where {type Base CExtendedOrnsteinUhlenbeckProcess' = CStochasticProcess1D'; <span class="decl"><span class="nottickedoff">upcast = qlExtendedOrnsteinUhlenbeckProcessAsStochasticProcess1D</span></span>}
+<span class="lineno"> 2576 </span>instance Upcastable CExtendedOrnsteinUhlenbeckProcess' where {type Base CExtendedOrnsteinUhlenbeckProcess' = CStochasticProcess1D'; <span class="decl"><span class="istickedoff">upcast = qlExtendedOrnsteinUhlenbeckProcessAsStochasticProcess1D</span></span>}
 <span class="lineno"> 2577 </span>instance Upcastable CHullWhiteForwardProcess' where {type Base CHullWhiteForwardProcess' = CStochasticProcess1D'; <span class="decl"><span class="nottickedoff">upcast = qlHullWhiteForwardProcessAsStochasticProcess1D</span></span>}
 <span class="lineno"> 2578 </span>instance Upcastable CHullWhiteProcess' where {type Base CHullWhiteProcess' = CStochasticProcess1D'; <span class="decl"><span class="nottickedoff">upcast = qlHullWhiteProcessAsStochasticProcess1D</span></span>}
 <span class="lineno"> 2579 </span>instance Upcastable CMerton76Process' where {type Base CMerton76Process' = CStochasticProcess1D'; <span class="decl"><span class="nottickedoff">upcast = qlMerton76ProcessAsStochasticProcess1D</span></span>}
@@ -2608,13 +2608,13 @@ span.spaces    { background: white }
 <span class="lineno"> 2589 </span>withGenStochasticProcess :: GenStochasticProcess (ForeignPtr p) -&gt; (Ptr p -&gt; IO b) -&gt; IO b
 <span class="lineno"> 2590 </span><span class="decl"><span class="istickedoff">withGenStochasticProcess = withForeignPtr . ptr . getStochasticProcess</span></span>
 <span class="lineno"> 2591 </span>peekExtOUWithJumpsProcess :: Ptr CExtOUWithJumpsProcess' -&gt; IO ExtOUWithJumpsProcess
-<span class="lineno"> 2592 </span><span class="decl"><span class="nottickedoff">peekExtOUWithJumpsProcess = GenStochasticProcess &lt;.&gt; newGenForeignPtr</span></span>
+<span class="lineno"> 2592 </span><span class="decl"><span class="istickedoff">peekExtOUWithJumpsProcess = GenStochasticProcess &lt;.&gt; newGenForeignPtr</span></span>
 <span class="lineno"> 2593 </span>peekGJRGARCHProcess :: Ptr CGJRGARCHProcess' -&gt; IO GJRGARCHProcess
 <span class="lineno"> 2594 </span><span class="decl"><span class="istickedoff">peekGJRGARCHProcess = GenStochasticProcess &lt;.&gt; newGenForeignPtr</span></span>
 <span class="lineno"> 2595 </span>peekHybridHestonHullWhiteProcess :: Ptr CHybridHestonHullWhiteProcess' -&gt; IO HybridHestonHullWhiteProcess
 <span class="lineno"> 2596 </span><span class="decl"><span class="istickedoff">peekHybridHestonHullWhiteProcess = GenStochasticProcess &lt;.&gt; newGenForeignPtr</span></span>
 <span class="lineno"> 2597 </span>peekKlugeExtOUProcess :: Ptr CKlugeExtOUProcess' -&gt; IO KlugeExtOUProcess
-<span class="lineno"> 2598 </span><span class="decl"><span class="nottickedoff">peekKlugeExtOUProcess = GenStochasticProcess &lt;.&gt; newGenForeignPtr</span></span>
+<span class="lineno"> 2598 </span><span class="decl"><span class="istickedoff">peekKlugeExtOUProcess = GenStochasticProcess &lt;.&gt; newGenForeignPtr</span></span>
 <span class="lineno"> 2599 </span>peekLiborForwardModelProcess :: Ptr CLiborForwardModelProcess' -&gt; IO LiborForwardModelProcess
 <span class="lineno"> 2600 </span><span class="decl"><span class="istickedoff">peekLiborForwardModelProcess = GenStochasticProcess &lt;.&gt; newGenForeignPtr</span></span>
 <span class="lineno"> 2601 </span>peekStochasticProcessArray :: Ptr CStochasticProcessArray' -&gt; IO StochasticProcessArray
@@ -2656,7 +2656,7 @@ span.spaces    { background: white }
 <span class="lineno"> 2637 </span>withBatesProcess :: BatesProcess -&gt; (Ptr CBatesProcess' -&gt; IO b) -&gt; IO b
 <span class="lineno"> 2638 </span><span class="decl"><span class="istickedoff">withBatesProcess = withForeignPtr . ptr . peel . getStochasticProcess</span></span>
 <span class="lineno"> 2639 </span>peekExtendedOrnsteinUhlenbeckProcess :: Ptr CExtendedOrnsteinUhlenbeckProcess' -&gt; IO ExtendedOrnsteinUhlenbeckProcess
-<span class="lineno"> 2640 </span><span class="decl"><span class="nottickedoff">peekExtendedOrnsteinUhlenbeckProcess = peekGenStochasticProcess1D</span></span>
+<span class="lineno"> 2640 </span><span class="decl"><span class="istickedoff">peekExtendedOrnsteinUhlenbeckProcess = peekGenStochasticProcess1D</span></span>
 <span class="lineno"> 2641 </span>peekHullWhiteForwardProcess :: Ptr CHullWhiteForwardProcess' -&gt; IO HullWhiteForwardProcess
 <span class="lineno"> 2642 </span><span class="decl"><span class="istickedoff">peekHullWhiteForwardProcess = peekGenStochasticProcess1D</span></span>
 <span class="lineno"> 2643 </span>peekHullWhiteProcess :: Ptr CHullWhiteProcess' -&gt; IO HullWhiteProcess

@@ -302,9 +302,9 @@ span.spaces    { background: white }
 <span class="lineno">  283 </span>
 <span class="lineno">  284 </span>  <span class="decl"><span class="istickedoff">toEnum 1 = <span class="nottickedoff">Sunday</span></span>
 <span class="lineno">  285 </span><span class="spaces">  </span><span class="istickedoff">toEnum 2 = <span class="nottickedoff">Monday</span></span>
-<span class="lineno">  286 </span><span class="spaces">  </span><span class="istickedoff">toEnum 3 = Tuesday</span>
+<span class="lineno">  286 </span><span class="spaces">  </span><span class="istickedoff">toEnum 3 = <span class="nottickedoff">Tuesday</span></span>
 <span class="lineno">  287 </span><span class="spaces">  </span><span class="istickedoff">toEnum 4 = <span class="nottickedoff">Wednesday</span></span>
-<span class="lineno">  288 </span><span class="spaces">  </span><span class="istickedoff">toEnum 5 = <span class="nottickedoff">Thursday</span></span>
+<span class="lineno">  288 </span><span class="spaces">  </span><span class="istickedoff">toEnum 5 = Thursday</span>
 <span class="lineno">  289 </span><span class="spaces">  </span><span class="istickedoff">toEnum 6 = <span class="nottickedoff">Friday</span></span>
 <span class="lineno">  290 </span><span class="spaces">  </span><span class="istickedoff">toEnum 7 = <span class="nottickedoff">Saturday</span></span>
 <span class="lineno">  291 </span><span class="spaces">  </span><span class="istickedoff">toEnum unmatched = <span class="nottickedoff">error (&quot;Weekday.toEnum: Cannot match &quot; ++ show unmatched)</span></span></span>
@@ -485,401 +485,404 @@ span.spaces    { background: white }
 <span class="lineno">  466 </span>
 <span class="lineno">  467 </span>-- |n-th given weekday in the given month and year
 <span class="lineno">  468 </span>-- E.g., the 4th Thursday of March, 1998 was March 26th, 1998.see http://www.cpearson.com/excel/DateTimeWS.htm
-<span class="lineno">  469 </span>nthWeekday :: (Word) -&gt; (Weekday) -&gt; (Month) -&gt; (Int) -&gt; IO ((Day))
-<span class="lineno">  470 </span><span class="decl"><span class="istickedoff">nthWeekday a1 a2 a3 a4 =</span>
-<span class="lineno">  471 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = fromIntegral a1} in </span>
-<span class="lineno">  472 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = (fromIntegral . fromEnum) a2} in </span>
-<span class="lineno">  473 </span><span class="spaces">  </span><span class="istickedoff">let {a3' = (fromIntegral . fromEnum) a3} in </span>
-<span class="lineno">  474 </span><span class="spaces">  </span><span class="istickedoff">let {a4' = fromIntegral a4} in </span>
-<span class="lineno">  475 </span><span class="spaces">  </span><span class="istickedoff">nthWeekday'_ a1' a2' a3' a4' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  476 </span><span class="spaces">  </span><span class="istickedoff">let {res' = toDay res} in</span>
-<span class="lineno">  477 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">  478 </span>
-<span class="lineno">  479 </span>
-<span class="lineno">  480 </span>
-<span class="lineno">  481 </span>-- |returns the IMM code for the given date (e.g. H3 for March 20th, 2013). /Warning/ It raises an exception if the input date is not an IMM date
-<span class="lineno">  482 </span>immCode :: (Day) -&gt; IO ((String))
-<span class="lineno">  483 </span><span class="decl"><span class="nottickedoff">immCode a1 =</span>
-<span class="lineno">  484 </span><span class="spaces">  </span><span class="nottickedoff">withDay a1 $ \a1' -&gt; </span>
-<span class="lineno">  485 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a2' -&gt; </span>
-<span class="lineno">  486 </span><span class="spaces">  </span><span class="nottickedoff">immCode'_ a1' a2' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  487 </span><span class="spaces">  </span><span class="nottickedoff">peekDynString res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">  488 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a2'&gt;&gt;</span>
-<span class="lineno">  489 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
-<span class="lineno">  490 </span>
-<span class="lineno">  491 </span>
-<span class="lineno">  492 </span>
-<span class="lineno">  493 </span>-- |returns the IMM date for the given IMM code (e.g. March 20th, 2013 for H3). /Warning/ It raises an exception if the input string is not an IMM code
-<span class="lineno">  494 </span>immDate :: (String) -&gt; (Day) -&gt; IO ((Day))
-<span class="lineno">  495 </span><span class="decl"><span class="nottickedoff">immDate a1 a2 =</span>
-<span class="lineno">  496 </span><span class="spaces">  </span><span class="nottickedoff">C2HSImp.withCString a1 $ \a1' -&gt; </span>
-<span class="lineno">  497 </span><span class="spaces">  </span><span class="nottickedoff">withDay a2 $ \a2' -&gt; </span>
-<span class="lineno">  498 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a3' -&gt; </span>
-<span class="lineno">  499 </span><span class="spaces">  </span><span class="nottickedoff">immDate'_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  500 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = toDay res} in</span>
-<span class="lineno">  501 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a3'&gt;&gt;</span>
-<span class="lineno">  502 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
-<span class="lineno">  503 </span>
-<span class="lineno">  504 </span>
-<span class="lineno">  505 </span>
-<span class="lineno">  506 </span>-- |returns whether or not the given string is an IMM code
-<span class="lineno">  507 </span>isImmCode :: (String) -- ^immCode
-<span class="lineno">  508 </span> -&gt; (Bool) -- ^mainCycle
-<span class="lineno">  509 </span> -&gt; (Bool)
-<span class="lineno">  510 </span><span class="decl"><span class="nottickedoff">isImmCode a1 a2 =</span>
-<span class="lineno">  511 </span><span class="spaces">  </span><span class="nottickedoff">C2HSImp.unsafePerformIO $</span>
-<span class="lineno">  512 </span><span class="spaces">  </span><span class="nottickedoff">C2HSImp.withCString a1 $ \a1' -&gt; </span>
-<span class="lineno">  513 </span><span class="spaces">  </span><span class="nottickedoff">let {a2' = C2HSImp.fromBool a2} in </span>
-<span class="lineno">  514 </span><span class="spaces">  </span><span class="nottickedoff">isImmCode'_ a1' a2' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  515 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = C2HSImp.toBool res} in</span>
-<span class="lineno">  516 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
-<span class="lineno">  517 </span>
-<span class="lineno">  518 </span>
-<span class="lineno">  519 </span>
-<span class="lineno">  520 </span>-- |returns whether or not the given date is an IMM date
-<span class="lineno">  521 </span>isImmDate :: (Day) -&gt; (Bool) -- ^mainCycle
-<span class="lineno">  522 </span> -&gt; IO ((Bool))
-<span class="lineno">  523 </span><span class="decl"><span class="nottickedoff">isImmDate a1 a2 =</span>
-<span class="lineno">  524 </span><span class="spaces">  </span><span class="nottickedoff">withDay a1 $ \a1' -&gt; </span>
-<span class="lineno">  525 </span><span class="spaces">  </span><span class="nottickedoff">let {a2' = C2HSImp.fromBool a2} in </span>
-<span class="lineno">  526 </span><span class="spaces">  </span><span class="nottickedoff">isImmDate'_ a1' a2' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  527 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = C2HSImp.toBool res} in</span>
-<span class="lineno">  528 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
-<span class="lineno">  529 </span>
-<span class="lineno">  530 </span>
-<span class="lineno">  531 </span>
-<span class="lineno">  532 </span>-- |next IMM code following the given code
-<span class="lineno">  533 </span>-- returns the IMM code for next contract listed in the International Money Market section of the Chicago Mercantile Exchange.
-<span class="lineno">  534 </span>nextImmCodeFromCode :: (String) -&gt; (Bool) -- ^mainCycle
-<span class="lineno">  535 </span> -&gt; (Day) -&gt; IO ((String))
-<span class="lineno">  536 </span><span class="decl"><span class="nottickedoff">nextImmCodeFromCode a1 a2 a3 =</span>
-<span class="lineno">  537 </span><span class="spaces">  </span><span class="nottickedoff">C2HSImp.withCString a1 $ \a1' -&gt; </span>
-<span class="lineno">  538 </span><span class="spaces">  </span><span class="nottickedoff">let {a2' = C2HSImp.fromBool a2} in </span>
-<span class="lineno">  539 </span><span class="spaces">  </span><span class="nottickedoff">withDay a3 $ \a3' -&gt; </span>
-<span class="lineno">  540 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a4' -&gt; </span>
-<span class="lineno">  541 </span><span class="spaces">  </span><span class="nottickedoff">nextImmCodeFromCode'_ a1' a2' a3' a4' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  542 </span><span class="spaces">  </span><span class="nottickedoff">peekDynString res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">  543 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a4'&gt;&gt;</span>
-<span class="lineno">  544 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
-<span class="lineno">  545 </span>
-<span class="lineno">  546 </span>
-<span class="lineno">  547 </span>
-<span class="lineno">  548 </span>-- |next IMM code following the given date
-<span class="lineno">  549 </span>-- returns the IMM code for next contract listed in the International Money Market section of the Chicago Mercantile Exchange.
-<span class="lineno">  550 </span>nextImmCode :: (Day) -&gt; (Bool) -- ^mainCycle
-<span class="lineno">  551 </span> -&gt; IO ((String))
-<span class="lineno">  552 </span><span class="decl"><span class="nottickedoff">nextImmCode a1 a2 =</span>
-<span class="lineno">  553 </span><span class="spaces">  </span><span class="nottickedoff">withDay a1 $ \a1' -&gt; </span>
-<span class="lineno">  554 </span><span class="spaces">  </span><span class="nottickedoff">let {a2' = C2HSImp.fromBool a2} in </span>
-<span class="lineno">  555 </span><span class="spaces">  </span><span class="nottickedoff">nextImmCode'_ a1' a2' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  556 </span><span class="spaces">  </span><span class="nottickedoff">peekDynString res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">  557 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
-<span class="lineno">  558 </span>
-<span class="lineno">  559 </span>
-<span class="lineno">  560 </span>
-<span class="lineno">  561 </span>-- |next IMM date following the given IMM code
-<span class="lineno">  562 </span>-- returns the 1st delivery date for next contract listed in the International Money Market section of the Chicago Mercantile Exchange.
-<span class="lineno">  563 </span>nextImmDateFromCode :: (String) -&gt; (Bool) -- ^mainCycle
-<span class="lineno">  564 </span> -&gt; (Day) -- ^referenceDate
-<span class="lineno">  565 </span> -&gt; IO ((Day))
-<span class="lineno">  566 </span><span class="decl"><span class="nottickedoff">nextImmDateFromCode a1 a2 a3 =</span>
-<span class="lineno">  567 </span><span class="spaces">  </span><span class="nottickedoff">C2HSImp.withCString a1 $ \a1' -&gt; </span>
-<span class="lineno">  568 </span><span class="spaces">  </span><span class="nottickedoff">let {a2' = C2HSImp.fromBool a2} in </span>
-<span class="lineno">  569 </span><span class="spaces">  </span><span class="nottickedoff">withDay a3 $ \a3' -&gt; </span>
-<span class="lineno">  570 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a4' -&gt; </span>
-<span class="lineno">  571 </span><span class="spaces">  </span><span class="nottickedoff">nextImmDateFromCode'_ a1' a2' a3' a4' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  572 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = toDay res} in</span>
-<span class="lineno">  573 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a4'&gt;&gt;</span>
-<span class="lineno">  574 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
-<span class="lineno">  575 </span>
-<span class="lineno">  576 </span>
-<span class="lineno">  577 </span>
-<span class="lineno">  578 </span>-- |next IMM date following the given date
-<span class="lineno">  579 </span>-- returns the 1st delivery date for next contract listed in the International Money Market section of the Chicago Mercantile Exchange.
-<span class="lineno">  580 </span>nextImmDate :: (Day) -&gt; (Bool) -- ^mainCycle
-<span class="lineno">  581 </span> -&gt; IO ((Day))
-<span class="lineno">  582 </span><span class="decl"><span class="istickedoff">nextImmDate a1 a2 =</span>
-<span class="lineno">  583 </span><span class="spaces">  </span><span class="istickedoff">withDay a1 $ \a1' -&gt; </span>
-<span class="lineno">  584 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = C2HSImp.fromBool a2} in </span>
-<span class="lineno">  585 </span><span class="spaces">  </span><span class="istickedoff">nextImmDate'_ a1' a2' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  586 </span><span class="spaces">  </span><span class="istickedoff">let {res' = toDay res} in</span>
-<span class="lineno">  587 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">  588 </span>
-<span class="lineno">  589 </span>
-<span class="lineno">  590 </span>
-<span class="lineno">  591 </span>-- |the given date advanced by a period
-<span class="lineno">  592 </span>addPeriod :: (Day) -&gt; (Int,TimeUnit) -&gt; IO ((Day))
-<span class="lineno">  593 </span><span class="decl"><span class="istickedoff">addPeriod a1 a2 =</span>
-<span class="lineno">  594 </span><span class="spaces">  </span><span class="istickedoff">withDay a1 $ \a1' -&gt; </span>
-<span class="lineno">  595 </span><span class="spaces">  </span><span class="istickedoff">let {(a2'1, a2'2) = fromEnumQuantity a2} in </span>
-<span class="lineno">  596 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
-<span class="lineno">  597 </span><span class="spaces">  </span><span class="istickedoff">addPeriod'_ a1' a2'1  a2'2 a3' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  598 </span><span class="spaces">  </span><span class="istickedoff">let {res' = toDay res} in</span>
-<span class="lineno">  599 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
-<span class="lineno">  600 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">  601 </span>
-<span class="lineno">  602 </span>
-<span class="lineno">  603 </span>
-<span class="lineno">  604 </span>-- |adds a date to the set of known ECB maintenance period start dates
-<span class="lineno">  605 </span>addEcbDate :: (Day) -&gt; IO ()
-<span class="lineno">  606 </span><span class="decl"><span class="istickedoff">addEcbDate a1 =</span>
-<span class="lineno">  607 </span><span class="spaces">  </span><span class="istickedoff">withDay a1 $ \a1' -&gt; </span>
-<span class="lineno">  608 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
-<span class="lineno">  609 </span><span class="spaces">  </span><span class="istickedoff">addEcbDate'_ a1' a2' &gt;&gt;</span>
-<span class="lineno">  610 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
-<span class="lineno">  611 </span><span class="spaces">  </span><span class="istickedoff">return <span class="nottickedoff">()</span></span></span>
-<span class="lineno">  612 </span>
-<span class="lineno">  613 </span>
-<span class="lineno">  614 </span>
-<span class="lineno">  615 </span>-- |returns the ECB code for the given date (e.g. MAR10 for March xxth, 2010).Warning It raises an exception if the input date is not an ECB date
-<span class="lineno">  616 </span>ecbCode :: (Day) -&gt; IO ((String))
-<span class="lineno">  617 </span><span class="decl"><span class="nottickedoff">ecbCode a1 =</span>
-<span class="lineno">  618 </span><span class="spaces">  </span><span class="nottickedoff">withDay a1 $ \a1' -&gt; </span>
-<span class="lineno">  619 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a2' -&gt; </span>
-<span class="lineno">  620 </span><span class="spaces">  </span><span class="nottickedoff">ecbCode'_ a1' a2' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  621 </span><span class="spaces">  </span><span class="nottickedoff">peekDynString res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">  622 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a2'&gt;&gt;</span>
-<span class="lineno">  623 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
-<span class="lineno">  624 </span>
-<span class="lineno">  625 </span>
-<span class="lineno">  626 </span>
-<span class="lineno">  627 </span>-- |returns the ECB date for the given ECB code (e.g. March xxth, 2013 for MAR10).WarningIt raises an exception if the input string is not an ECB code
-<span class="lineno">  628 </span>ecbDateFromCode :: (String) -&gt; (Maybe Day) -&gt; IO ((Day))
-<span class="lineno">  629 </span><span class="decl"><span class="nottickedoff">ecbDateFromCode a1 a2 =</span>
-<span class="lineno">  630 </span><span class="spaces">  </span><span class="nottickedoff">C2HSImp.withCString a1 $ \a1' -&gt; </span>
-<span class="lineno">  631 </span><span class="spaces">  </span><span class="nottickedoff">withMaybeDay a2 $ \a2' -&gt; </span>
-<span class="lineno">  632 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a3' -&gt; </span>
-<span class="lineno">  633 </span><span class="spaces">  </span><span class="nottickedoff">ecbDateFromCode'_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  634 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = toDay res} in</span>
-<span class="lineno">  635 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a3'&gt;&gt;</span>
-<span class="lineno">  636 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
-<span class="lineno">  637 </span>
-<span class="lineno">  638 </span>
-<span class="lineno">  639 </span>
-<span class="lineno">  640 </span>-- |maintenance period start date in the given month/year
-<span class="lineno">  641 </span>ecbDate :: (Month) -&gt; (Int) -&gt; IO ((Day))
-<span class="lineno">  642 </span><span class="decl"><span class="nottickedoff">ecbDate a1 a2 =</span>
-<span class="lineno">  643 </span><span class="spaces">  </span><span class="nottickedoff">let {a1' = (fromIntegral . fromEnum) a1} in </span>
-<span class="lineno">  644 </span><span class="spaces">  </span><span class="nottickedoff">let {a2' = fromIntegral a2} in </span>
-<span class="lineno">  645 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a3' -&gt; </span>
-<span class="lineno">  646 </span><span class="spaces">  </span><span class="nottickedoff">ecbDate'_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  647 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = toDay res} in</span>
-<span class="lineno">  648 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a3'&gt;&gt;</span>
-<span class="lineno">  649 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
-<span class="lineno">  650 </span>
-<span class="lineno">  651 </span>
-<span class="lineno">  652 </span>
-<span class="lineno">  653 </span>-- |returns whether or not the given string is an ECB code
-<span class="lineno">  654 </span>isEcbCode :: (String) -&gt; IO ((Bool))
-<span class="lineno">  655 </span><span class="decl"><span class="nottickedoff">isEcbCode a1 =</span>
-<span class="lineno">  656 </span><span class="spaces">  </span><span class="nottickedoff">C2HSImp.withCString a1 $ \a1' -&gt; </span>
-<span class="lineno">  657 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a2' -&gt; </span>
-<span class="lineno">  658 </span><span class="spaces">  </span><span class="nottickedoff">isEcbCode'_ a1' a2' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  659 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = C2HSImp.toBool res} in</span>
-<span class="lineno">  660 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a2'&gt;&gt;</span>
-<span class="lineno">  661 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
-<span class="lineno">  662 </span>
-<span class="lineno">  663 </span>
-<span class="lineno">  664 </span>
-<span class="lineno">  665 </span>-- |returns whether or not the given date is a maintenance period start date
-<span class="lineno">  666 </span>isEcbDate :: (Day) -&gt; IO ((Bool))
-<span class="lineno">  667 </span><span class="decl"><span class="istickedoff">isEcbDate a1 =</span>
-<span class="lineno">  668 </span><span class="spaces">  </span><span class="istickedoff">withDay a1 $ \a1' -&gt; </span>
-<span class="lineno">  669 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
-<span class="lineno">  670 </span><span class="spaces">  </span><span class="istickedoff">isEcbDate'_ a1' a2' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  671 </span><span class="spaces">  </span><span class="istickedoff">let {res' = C2HSImp.toBool res} in</span>
-<span class="lineno">  672 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
-<span class="lineno">  673 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">  674 </span>
-<span class="lineno">  675 </span>
-<span class="lineno">  676 </span>
-<span class="lineno">  677 </span>-- |the set of known ECB maintenance period start dates
-<span class="lineno">  678 </span>knownEcbDates :: IO (([Day]))
-<span class="lineno">  679 </span><span class="decl"><span class="istickedoff">knownEcbDates =</span>
-<span class="lineno">  680 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a1'1, a1'2) -&gt; </span>
-<span class="lineno">  681 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
-<span class="lineno">  682 </span><span class="spaces">  </span><span class="istickedoff">knownEcbDates'_ a1'1  a1'2 a2' &gt;&gt;</span>
-<span class="lineno">  683 </span><span class="spaces">  </span><span class="istickedoff">peekDayArray  a1'1  a1'2&gt;&gt;= \a1'' -&gt; </span>
-<span class="lineno">  684 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
-<span class="lineno">  685 </span><span class="spaces">  </span><span class="istickedoff">return (a1'')</span></span>
-<span class="lineno">  686 </span>
-<span class="lineno">  687 </span>
-<span class="lineno">  688 </span>
-<span class="lineno">  689 </span>-- |next ECB code following the given code
-<span class="lineno">  690 </span>nextEcbCodeFromCode :: (String) -&gt; IO ((String))
-<span class="lineno">  691 </span><span class="decl"><span class="nottickedoff">nextEcbCodeFromCode a1 =</span>
-<span class="lineno">  692 </span><span class="spaces">  </span><span class="nottickedoff">C2HSImp.withCString a1 $ \a1' -&gt; </span>
-<span class="lineno">  693 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a2' -&gt; </span>
-<span class="lineno">  694 </span><span class="spaces">  </span><span class="nottickedoff">nextEcbCodeFromCode'_ a1' a2' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  695 </span><span class="spaces">  </span><span class="nottickedoff">C2HSImp.peekCString res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">  696 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a2'&gt;&gt;</span>
-<span class="lineno">  697 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
-<span class="lineno">  698 </span>
-<span class="lineno">  699 </span>
-<span class="lineno">  700 </span>
-<span class="lineno">  701 </span>-- |next ECB code following the given date
-<span class="lineno">  702 </span>nextEcbCode :: (Maybe Day) -&gt; IO ((String))
-<span class="lineno">  703 </span><span class="decl"><span class="nottickedoff">nextEcbCode a1 =</span>
-<span class="lineno">  704 </span><span class="spaces">  </span><span class="nottickedoff">withMaybeDay a1 $ \a1' -&gt; </span>
-<span class="lineno">  705 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a2' -&gt; </span>
-<span class="lineno">  706 </span><span class="spaces">  </span><span class="nottickedoff">nextEcbCode'_ a1' a2' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  707 </span><span class="spaces">  </span><span class="nottickedoff">C2HSImp.peekCString res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">  708 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a2'&gt;&gt;</span>
-<span class="lineno">  709 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
-<span class="lineno">  710 </span>
-<span class="lineno">  711 </span>
-<span class="lineno">  712 </span>
-<span class="lineno">  713 </span>-- |next maintenance period start date following the given ECB code
-<span class="lineno">  714 </span>nextEcbDateFromCode :: (String) -&gt; (Maybe Day) -&gt; IO ((Day))
-<span class="lineno">  715 </span><span class="decl"><span class="nottickedoff">nextEcbDateFromCode a1 a2 =</span>
-<span class="lineno">  716 </span><span class="spaces">  </span><span class="nottickedoff">C2HSImp.withCString a1 $ \a1' -&gt; </span>
-<span class="lineno">  717 </span><span class="spaces">  </span><span class="nottickedoff">withMaybeDay a2 $ \a2' -&gt; </span>
-<span class="lineno">  718 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a3' -&gt; </span>
-<span class="lineno">  719 </span><span class="spaces">  </span><span class="nottickedoff">nextEcbDateFromCode'_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  720 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = toDay res} in</span>
-<span class="lineno">  721 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a3'&gt;&gt;</span>
-<span class="lineno">  722 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
-<span class="lineno">  723 </span>
-<span class="lineno">  724 </span>
-<span class="lineno">  725 </span>
-<span class="lineno">  726 </span>-- |next maintenance period start date following the given date
-<span class="lineno">  727 </span>nextEcbDate :: (Maybe Day) -&gt; IO ((Day))
-<span class="lineno">  728 </span><span class="decl"><span class="istickedoff">nextEcbDate a1 =</span>
-<span class="lineno">  729 </span><span class="spaces">  </span><span class="istickedoff">withMaybeDay a1 $ \a1' -&gt; </span>
-<span class="lineno">  730 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
-<span class="lineno">  731 </span><span class="spaces">  </span><span class="istickedoff">nextEcbDate'_ a1' a2' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  732 </span><span class="spaces">  </span><span class="istickedoff">let {res' = toDay res} in</span>
-<span class="lineno">  733 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
-<span class="lineno">  734 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">  735 </span>
-<span class="lineno">  736 </span>
-<span class="lineno">  737 </span>
-<span class="lineno">  738 </span>-- |next maintenance period start dates following the given code
-<span class="lineno">  739 </span>nextEcbDatesFromCode :: (String) -&gt; (Maybe Day) -&gt; IO (([Day]))
-<span class="lineno">  740 </span><span class="decl"><span class="nottickedoff">nextEcbDatesFromCode a1 a2 =</span>
-<span class="lineno">  741 </span><span class="spaces">  </span><span class="nottickedoff">C2HSImp.withCString a1 $ \a1' -&gt; </span>
-<span class="lineno">  742 </span><span class="spaces">  </span><span class="nottickedoff">withMaybeDay a2 $ \a2' -&gt; </span>
-<span class="lineno">  743 </span><span class="spaces">  </span><span class="nottickedoff">preArray $ \(a3'1, a3'2) -&gt; </span>
-<span class="lineno">  744 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a4' -&gt; </span>
-<span class="lineno">  745 </span><span class="spaces">  </span><span class="nottickedoff">nextEcbDatesFromCode'_ a1' a2' a3'1  a3'2 a4' &gt;&gt;</span>
-<span class="lineno">  746 </span><span class="spaces">  </span><span class="nottickedoff">peekDayArray  a3'1  a3'2&gt;&gt;= \a3'' -&gt; </span>
-<span class="lineno">  747 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a4'&gt;&gt;</span>
-<span class="lineno">  748 </span><span class="spaces">  </span><span class="nottickedoff">return (a3'')</span></span>
-<span class="lineno">  749 </span>
-<span class="lineno">  750 </span>
-<span class="lineno">  751 </span>
-<span class="lineno">  752 </span>-- |next maintenance period start dates following the given date
-<span class="lineno">  753 </span>nextEcbDates :: (Maybe Day) -&gt; IO (([Day]))
-<span class="lineno">  754 </span><span class="decl"><span class="istickedoff">nextEcbDates a1 =</span>
-<span class="lineno">  755 </span><span class="spaces">  </span><span class="istickedoff">withMaybeDay a1 $ \a1' -&gt; </span>
-<span class="lineno">  756 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a2'1, a2'2) -&gt; </span>
-<span class="lineno">  757 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
-<span class="lineno">  758 </span><span class="spaces">  </span><span class="istickedoff">nextEcbDates'_ a1' a2'1  a2'2 a3' &gt;&gt;</span>
-<span class="lineno">  759 </span><span class="spaces">  </span><span class="istickedoff">peekDayArray  a2'1  a2'2&gt;&gt;= \a2'' -&gt; </span>
-<span class="lineno">  760 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
-<span class="lineno">  761 </span><span class="spaces">  </span><span class="istickedoff">return (a2'')</span></span>
-<span class="lineno">  762 </span>
-<span class="lineno">  763 </span>
-<span class="lineno">  764 </span>
-<span class="lineno">  765 </span>-- |removes a date from the set of known ECB maintenance period start dates
-<span class="lineno">  766 </span>removeEcbDate :: (Day) -&gt; IO ()
-<span class="lineno">  767 </span><span class="decl"><span class="istickedoff">removeEcbDate a1 =</span>
-<span class="lineno">  768 </span><span class="spaces">  </span><span class="istickedoff">withDay a1 $ \a1' -&gt; </span>
-<span class="lineno">  769 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
-<span class="lineno">  770 </span><span class="spaces">  </span><span class="istickedoff">removeEcbDate'_ a1' a2' &gt;&gt;</span>
-<span class="lineno">  771 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
-<span class="lineno">  772 </span><span class="spaces">  </span><span class="istickedoff">return <span class="nottickedoff">()</span></span></span>
-<span class="lineno">  773 </span>
-<span class="lineno">  774 </span>
-<span class="lineno">  775 </span>
-<span class="lineno">  776 </span>-- vim: set ff=unix ts=8 sts=2 sw=2 et:
+<span class="lineno">  469 </span>-- /Warning/ It raises an exception unless the n-th falls in 1..5
+<span class="lineno">  470 </span>nthWeekday :: (Word) -&gt; (Weekday) -&gt; (Month) -&gt; (Int) -&gt; IO ((Day))
+<span class="lineno">  471 </span><span class="decl"><span class="istickedoff">nthWeekday a1 a2 a3 a4 =</span>
+<span class="lineno">  472 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = fromIntegral a1} in </span>
+<span class="lineno">  473 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = (fromIntegral . fromEnum) a2} in </span>
+<span class="lineno">  474 </span><span class="spaces">  </span><span class="istickedoff">let {a3' = (fromIntegral . fromEnum) a3} in </span>
+<span class="lineno">  475 </span><span class="spaces">  </span><span class="istickedoff">let {a4' = fromIntegral a4} in </span>
+<span class="lineno">  476 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a5' -&gt; </span>
+<span class="lineno">  477 </span><span class="spaces">  </span><span class="istickedoff">nthWeekday'_ a1' a2' a3' a4' a5' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  478 </span><span class="spaces">  </span><span class="istickedoff">let {res' = toDay res} in</span>
+<span class="lineno">  479 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a5'&gt;&gt;</span>
+<span class="lineno">  480 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  481 </span>
+<span class="lineno">  482 </span>
+<span class="lineno">  483 </span>
+<span class="lineno">  484 </span>-- |returns the IMM code for the given date (e.g. H3 for March 20th, 2013). /Warning/ It raises an exception if the input date is not an IMM date
+<span class="lineno">  485 </span>immCode :: (Day) -&gt; IO ((String))
+<span class="lineno">  486 </span><span class="decl"><span class="nottickedoff">immCode a1 =</span>
+<span class="lineno">  487 </span><span class="spaces">  </span><span class="nottickedoff">withDay a1 $ \a1' -&gt; </span>
+<span class="lineno">  488 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a2' -&gt; </span>
+<span class="lineno">  489 </span><span class="spaces">  </span><span class="nottickedoff">immCode'_ a1' a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  490 </span><span class="spaces">  </span><span class="nottickedoff">peekDynString res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  491 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a2'&gt;&gt;</span>
+<span class="lineno">  492 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno">  493 </span>
+<span class="lineno">  494 </span>
+<span class="lineno">  495 </span>
+<span class="lineno">  496 </span>-- |returns the IMM date for the given IMM code (e.g. March 20th, 2013 for H3). /Warning/ It raises an exception if the input string is not an IMM code
+<span class="lineno">  497 </span>immDate :: (String) -&gt; (Day) -&gt; IO ((Day))
+<span class="lineno">  498 </span><span class="decl"><span class="nottickedoff">immDate a1 a2 =</span>
+<span class="lineno">  499 </span><span class="spaces">  </span><span class="nottickedoff">C2HSImp.withCString a1 $ \a1' -&gt; </span>
+<span class="lineno">  500 </span><span class="spaces">  </span><span class="nottickedoff">withDay a2 $ \a2' -&gt; </span>
+<span class="lineno">  501 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a3' -&gt; </span>
+<span class="lineno">  502 </span><span class="spaces">  </span><span class="nottickedoff">immDate'_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  503 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = toDay res} in</span>
+<span class="lineno">  504 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a3'&gt;&gt;</span>
+<span class="lineno">  505 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno">  506 </span>
+<span class="lineno">  507 </span>
+<span class="lineno">  508 </span>
+<span class="lineno">  509 </span>-- |returns whether or not the given string is an IMM code
+<span class="lineno">  510 </span>isImmCode :: (String) -- ^immCode
+<span class="lineno">  511 </span> -&gt; (Bool) -- ^mainCycle
+<span class="lineno">  512 </span> -&gt; (Bool)
+<span class="lineno">  513 </span><span class="decl"><span class="nottickedoff">isImmCode a1 a2 =</span>
+<span class="lineno">  514 </span><span class="spaces">  </span><span class="nottickedoff">C2HSImp.unsafePerformIO $</span>
+<span class="lineno">  515 </span><span class="spaces">  </span><span class="nottickedoff">C2HSImp.withCString a1 $ \a1' -&gt; </span>
+<span class="lineno">  516 </span><span class="spaces">  </span><span class="nottickedoff">let {a2' = C2HSImp.fromBool a2} in </span>
+<span class="lineno">  517 </span><span class="spaces">  </span><span class="nottickedoff">isImmCode'_ a1' a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  518 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = C2HSImp.toBool res} in</span>
+<span class="lineno">  519 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno">  520 </span>
+<span class="lineno">  521 </span>
+<span class="lineno">  522 </span>
+<span class="lineno">  523 </span>-- |returns whether or not the given date is an IMM date
+<span class="lineno">  524 </span>isImmDate :: (Day) -&gt; (Bool) -- ^mainCycle
+<span class="lineno">  525 </span> -&gt; IO ((Bool))
+<span class="lineno">  526 </span><span class="decl"><span class="nottickedoff">isImmDate a1 a2 =</span>
+<span class="lineno">  527 </span><span class="spaces">  </span><span class="nottickedoff">withDay a1 $ \a1' -&gt; </span>
+<span class="lineno">  528 </span><span class="spaces">  </span><span class="nottickedoff">let {a2' = C2HSImp.fromBool a2} in </span>
+<span class="lineno">  529 </span><span class="spaces">  </span><span class="nottickedoff">isImmDate'_ a1' a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  530 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = C2HSImp.toBool res} in</span>
+<span class="lineno">  531 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno">  532 </span>
+<span class="lineno">  533 </span>
+<span class="lineno">  534 </span>
+<span class="lineno">  535 </span>-- |next IMM code following the given code
+<span class="lineno">  536 </span>-- returns the IMM code for next contract listed in the International Money Market section of the Chicago Mercantile Exchange.
+<span class="lineno">  537 </span>nextImmCodeFromCode :: (String) -&gt; (Bool) -- ^mainCycle
+<span class="lineno">  538 </span> -&gt; (Day) -&gt; IO ((String))
+<span class="lineno">  539 </span><span class="decl"><span class="nottickedoff">nextImmCodeFromCode a1 a2 a3 =</span>
+<span class="lineno">  540 </span><span class="spaces">  </span><span class="nottickedoff">C2HSImp.withCString a1 $ \a1' -&gt; </span>
+<span class="lineno">  541 </span><span class="spaces">  </span><span class="nottickedoff">let {a2' = C2HSImp.fromBool a2} in </span>
+<span class="lineno">  542 </span><span class="spaces">  </span><span class="nottickedoff">withDay a3 $ \a3' -&gt; </span>
+<span class="lineno">  543 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a4' -&gt; </span>
+<span class="lineno">  544 </span><span class="spaces">  </span><span class="nottickedoff">nextImmCodeFromCode'_ a1' a2' a3' a4' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  545 </span><span class="spaces">  </span><span class="nottickedoff">peekDynString res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  546 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a4'&gt;&gt;</span>
+<span class="lineno">  547 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno">  548 </span>
+<span class="lineno">  549 </span>
+<span class="lineno">  550 </span>
+<span class="lineno">  551 </span>-- |next IMM code following the given date
+<span class="lineno">  552 </span>-- returns the IMM code for next contract listed in the International Money Market section of the Chicago Mercantile Exchange.
+<span class="lineno">  553 </span>nextImmCode :: (Day) -&gt; (Bool) -- ^mainCycle
+<span class="lineno">  554 </span> -&gt; IO ((String))
+<span class="lineno">  555 </span><span class="decl"><span class="nottickedoff">nextImmCode a1 a2 =</span>
+<span class="lineno">  556 </span><span class="spaces">  </span><span class="nottickedoff">withDay a1 $ \a1' -&gt; </span>
+<span class="lineno">  557 </span><span class="spaces">  </span><span class="nottickedoff">let {a2' = C2HSImp.fromBool a2} in </span>
+<span class="lineno">  558 </span><span class="spaces">  </span><span class="nottickedoff">nextImmCode'_ a1' a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  559 </span><span class="spaces">  </span><span class="nottickedoff">peekDynString res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  560 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno">  561 </span>
+<span class="lineno">  562 </span>
+<span class="lineno">  563 </span>
+<span class="lineno">  564 </span>-- |next IMM date following the given IMM code
+<span class="lineno">  565 </span>-- returns the 1st delivery date for next contract listed in the International Money Market section of the Chicago Mercantile Exchange.
+<span class="lineno">  566 </span>nextImmDateFromCode :: (String) -&gt; (Bool) -- ^mainCycle
+<span class="lineno">  567 </span> -&gt; (Day) -- ^referenceDate
+<span class="lineno">  568 </span> -&gt; IO ((Day))
+<span class="lineno">  569 </span><span class="decl"><span class="nottickedoff">nextImmDateFromCode a1 a2 a3 =</span>
+<span class="lineno">  570 </span><span class="spaces">  </span><span class="nottickedoff">C2HSImp.withCString a1 $ \a1' -&gt; </span>
+<span class="lineno">  571 </span><span class="spaces">  </span><span class="nottickedoff">let {a2' = C2HSImp.fromBool a2} in </span>
+<span class="lineno">  572 </span><span class="spaces">  </span><span class="nottickedoff">withDay a3 $ \a3' -&gt; </span>
+<span class="lineno">  573 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a4' -&gt; </span>
+<span class="lineno">  574 </span><span class="spaces">  </span><span class="nottickedoff">nextImmDateFromCode'_ a1' a2' a3' a4' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  575 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = toDay res} in</span>
+<span class="lineno">  576 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a4'&gt;&gt;</span>
+<span class="lineno">  577 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno">  578 </span>
+<span class="lineno">  579 </span>
+<span class="lineno">  580 </span>
+<span class="lineno">  581 </span>-- |next IMM date following the given date
+<span class="lineno">  582 </span>-- returns the 1st delivery date for next contract listed in the International Money Market section of the Chicago Mercantile Exchange.
+<span class="lineno">  583 </span>nextImmDate :: (Day) -&gt; (Bool) -- ^mainCycle
+<span class="lineno">  584 </span> -&gt; IO ((Day))
+<span class="lineno">  585 </span><span class="decl"><span class="istickedoff">nextImmDate a1 a2 =</span>
+<span class="lineno">  586 </span><span class="spaces">  </span><span class="istickedoff">withDay a1 $ \a1' -&gt; </span>
+<span class="lineno">  587 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = C2HSImp.fromBool a2} in </span>
+<span class="lineno">  588 </span><span class="spaces">  </span><span class="istickedoff">nextImmDate'_ a1' a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  589 </span><span class="spaces">  </span><span class="istickedoff">let {res' = toDay res} in</span>
+<span class="lineno">  590 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  591 </span>
+<span class="lineno">  592 </span>
+<span class="lineno">  593 </span>
+<span class="lineno">  594 </span>-- |the given date advanced by a period
+<span class="lineno">  595 </span>addPeriod :: (Day) -&gt; (Int,TimeUnit) -&gt; IO ((Day))
+<span class="lineno">  596 </span><span class="decl"><span class="istickedoff">addPeriod a1 a2 =</span>
+<span class="lineno">  597 </span><span class="spaces">  </span><span class="istickedoff">withDay a1 $ \a1' -&gt; </span>
+<span class="lineno">  598 </span><span class="spaces">  </span><span class="istickedoff">let {(a2'1, a2'2) = fromEnumQuantity a2} in </span>
+<span class="lineno">  599 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
+<span class="lineno">  600 </span><span class="spaces">  </span><span class="istickedoff">addPeriod'_ a1' a2'1  a2'2 a3' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  601 </span><span class="spaces">  </span><span class="istickedoff">let {res' = toDay res} in</span>
+<span class="lineno">  602 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
+<span class="lineno">  603 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  604 </span>
+<span class="lineno">  605 </span>
+<span class="lineno">  606 </span>
+<span class="lineno">  607 </span>-- |adds a date to the set of known ECB maintenance period start dates
+<span class="lineno">  608 </span>addEcbDate :: (Day) -&gt; IO ()
+<span class="lineno">  609 </span><span class="decl"><span class="istickedoff">addEcbDate a1 =</span>
+<span class="lineno">  610 </span><span class="spaces">  </span><span class="istickedoff">withDay a1 $ \a1' -&gt; </span>
+<span class="lineno">  611 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
+<span class="lineno">  612 </span><span class="spaces">  </span><span class="istickedoff">addEcbDate'_ a1' a2' &gt;&gt;</span>
+<span class="lineno">  613 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
+<span class="lineno">  614 </span><span class="spaces">  </span><span class="istickedoff">return <span class="nottickedoff">()</span></span></span>
+<span class="lineno">  615 </span>
+<span class="lineno">  616 </span>
+<span class="lineno">  617 </span>
+<span class="lineno">  618 </span>-- |returns the ECB code for the given date (e.g. MAR10 for March xxth, 2010).Warning It raises an exception if the input date is not an ECB date
+<span class="lineno">  619 </span>ecbCode :: (Day) -&gt; IO ((String))
+<span class="lineno">  620 </span><span class="decl"><span class="nottickedoff">ecbCode a1 =</span>
+<span class="lineno">  621 </span><span class="spaces">  </span><span class="nottickedoff">withDay a1 $ \a1' -&gt; </span>
+<span class="lineno">  622 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a2' -&gt; </span>
+<span class="lineno">  623 </span><span class="spaces">  </span><span class="nottickedoff">ecbCode'_ a1' a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  624 </span><span class="spaces">  </span><span class="nottickedoff">peekDynString res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  625 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a2'&gt;&gt;</span>
+<span class="lineno">  626 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno">  627 </span>
+<span class="lineno">  628 </span>
+<span class="lineno">  629 </span>
+<span class="lineno">  630 </span>-- |returns the ECB date for the given ECB code (e.g. March xxth, 2013 for MAR10).WarningIt raises an exception if the input string is not an ECB code
+<span class="lineno">  631 </span>ecbDateFromCode :: (String) -&gt; (Maybe Day) -&gt; IO ((Day))
+<span class="lineno">  632 </span><span class="decl"><span class="nottickedoff">ecbDateFromCode a1 a2 =</span>
+<span class="lineno">  633 </span><span class="spaces">  </span><span class="nottickedoff">C2HSImp.withCString a1 $ \a1' -&gt; </span>
+<span class="lineno">  634 </span><span class="spaces">  </span><span class="nottickedoff">withMaybeDay a2 $ \a2' -&gt; </span>
+<span class="lineno">  635 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a3' -&gt; </span>
+<span class="lineno">  636 </span><span class="spaces">  </span><span class="nottickedoff">ecbDateFromCode'_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  637 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = toDay res} in</span>
+<span class="lineno">  638 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a3'&gt;&gt;</span>
+<span class="lineno">  639 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno">  640 </span>
+<span class="lineno">  641 </span>
+<span class="lineno">  642 </span>
+<span class="lineno">  643 </span>-- |maintenance period start date in the given month/year
+<span class="lineno">  644 </span>ecbDate :: (Month) -&gt; (Int) -&gt; IO ((Day))
+<span class="lineno">  645 </span><span class="decl"><span class="nottickedoff">ecbDate a1 a2 =</span>
+<span class="lineno">  646 </span><span class="spaces">  </span><span class="nottickedoff">let {a1' = (fromIntegral . fromEnum) a1} in </span>
+<span class="lineno">  647 </span><span class="spaces">  </span><span class="nottickedoff">let {a2' = fromIntegral a2} in </span>
+<span class="lineno">  648 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a3' -&gt; </span>
+<span class="lineno">  649 </span><span class="spaces">  </span><span class="nottickedoff">ecbDate'_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  650 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = toDay res} in</span>
+<span class="lineno">  651 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a3'&gt;&gt;</span>
+<span class="lineno">  652 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno">  653 </span>
+<span class="lineno">  654 </span>
+<span class="lineno">  655 </span>
+<span class="lineno">  656 </span>-- |returns whether or not the given string is an ECB code
+<span class="lineno">  657 </span>isEcbCode :: (String) -&gt; IO ((Bool))
+<span class="lineno">  658 </span><span class="decl"><span class="nottickedoff">isEcbCode a1 =</span>
+<span class="lineno">  659 </span><span class="spaces">  </span><span class="nottickedoff">C2HSImp.withCString a1 $ \a1' -&gt; </span>
+<span class="lineno">  660 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a2' -&gt; </span>
+<span class="lineno">  661 </span><span class="spaces">  </span><span class="nottickedoff">isEcbCode'_ a1' a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  662 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = C2HSImp.toBool res} in</span>
+<span class="lineno">  663 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a2'&gt;&gt;</span>
+<span class="lineno">  664 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno">  665 </span>
+<span class="lineno">  666 </span>
+<span class="lineno">  667 </span>
+<span class="lineno">  668 </span>-- |returns whether or not the given date is a maintenance period start date
+<span class="lineno">  669 </span>isEcbDate :: (Day) -&gt; IO ((Bool))
+<span class="lineno">  670 </span><span class="decl"><span class="istickedoff">isEcbDate a1 =</span>
+<span class="lineno">  671 </span><span class="spaces">  </span><span class="istickedoff">withDay a1 $ \a1' -&gt; </span>
+<span class="lineno">  672 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
+<span class="lineno">  673 </span><span class="spaces">  </span><span class="istickedoff">isEcbDate'_ a1' a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  674 </span><span class="spaces">  </span><span class="istickedoff">let {res' = C2HSImp.toBool res} in</span>
+<span class="lineno">  675 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
+<span class="lineno">  676 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  677 </span>
+<span class="lineno">  678 </span>
+<span class="lineno">  679 </span>
+<span class="lineno">  680 </span>-- |the set of known ECB maintenance period start dates
+<span class="lineno">  681 </span>knownEcbDates :: IO (([Day]))
+<span class="lineno">  682 </span><span class="decl"><span class="istickedoff">knownEcbDates =</span>
+<span class="lineno">  683 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a1'1, a1'2) -&gt; </span>
+<span class="lineno">  684 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
+<span class="lineno">  685 </span><span class="spaces">  </span><span class="istickedoff">knownEcbDates'_ a1'1  a1'2 a2' &gt;&gt;</span>
+<span class="lineno">  686 </span><span class="spaces">  </span><span class="istickedoff">peekDayArray  a1'1  a1'2&gt;&gt;= \a1'' -&gt; </span>
+<span class="lineno">  687 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
+<span class="lineno">  688 </span><span class="spaces">  </span><span class="istickedoff">return (a1'')</span></span>
+<span class="lineno">  689 </span>
+<span class="lineno">  690 </span>
+<span class="lineno">  691 </span>
+<span class="lineno">  692 </span>-- |next ECB code following the given code
+<span class="lineno">  693 </span>nextEcbCodeFromCode :: (String) -&gt; IO ((String))
+<span class="lineno">  694 </span><span class="decl"><span class="nottickedoff">nextEcbCodeFromCode a1 =</span>
+<span class="lineno">  695 </span><span class="spaces">  </span><span class="nottickedoff">C2HSImp.withCString a1 $ \a1' -&gt; </span>
+<span class="lineno">  696 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a2' -&gt; </span>
+<span class="lineno">  697 </span><span class="spaces">  </span><span class="nottickedoff">nextEcbCodeFromCode'_ a1' a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  698 </span><span class="spaces">  </span><span class="nottickedoff">C2HSImp.peekCString res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  699 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a2'&gt;&gt;</span>
+<span class="lineno">  700 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno">  701 </span>
+<span class="lineno">  702 </span>
+<span class="lineno">  703 </span>
+<span class="lineno">  704 </span>-- |next ECB code following the given date
+<span class="lineno">  705 </span>nextEcbCode :: (Maybe Day) -&gt; IO ((String))
+<span class="lineno">  706 </span><span class="decl"><span class="nottickedoff">nextEcbCode a1 =</span>
+<span class="lineno">  707 </span><span class="spaces">  </span><span class="nottickedoff">withMaybeDay a1 $ \a1' -&gt; </span>
+<span class="lineno">  708 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a2' -&gt; </span>
+<span class="lineno">  709 </span><span class="spaces">  </span><span class="nottickedoff">nextEcbCode'_ a1' a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  710 </span><span class="spaces">  </span><span class="nottickedoff">C2HSImp.peekCString res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  711 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a2'&gt;&gt;</span>
+<span class="lineno">  712 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno">  713 </span>
+<span class="lineno">  714 </span>
+<span class="lineno">  715 </span>
+<span class="lineno">  716 </span>-- |next maintenance period start date following the given ECB code
+<span class="lineno">  717 </span>nextEcbDateFromCode :: (String) -&gt; (Maybe Day) -&gt; IO ((Day))
+<span class="lineno">  718 </span><span class="decl"><span class="nottickedoff">nextEcbDateFromCode a1 a2 =</span>
+<span class="lineno">  719 </span><span class="spaces">  </span><span class="nottickedoff">C2HSImp.withCString a1 $ \a1' -&gt; </span>
+<span class="lineno">  720 </span><span class="spaces">  </span><span class="nottickedoff">withMaybeDay a2 $ \a2' -&gt; </span>
+<span class="lineno">  721 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a3' -&gt; </span>
+<span class="lineno">  722 </span><span class="spaces">  </span><span class="nottickedoff">nextEcbDateFromCode'_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  723 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = toDay res} in</span>
+<span class="lineno">  724 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a3'&gt;&gt;</span>
+<span class="lineno">  725 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno">  726 </span>
+<span class="lineno">  727 </span>
+<span class="lineno">  728 </span>
+<span class="lineno">  729 </span>-- |next maintenance period start date following the given date
+<span class="lineno">  730 </span>nextEcbDate :: (Maybe Day) -&gt; IO ((Day))
+<span class="lineno">  731 </span><span class="decl"><span class="istickedoff">nextEcbDate a1 =</span>
+<span class="lineno">  732 </span><span class="spaces">  </span><span class="istickedoff">withMaybeDay a1 $ \a1' -&gt; </span>
+<span class="lineno">  733 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
+<span class="lineno">  734 </span><span class="spaces">  </span><span class="istickedoff">nextEcbDate'_ a1' a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  735 </span><span class="spaces">  </span><span class="istickedoff">let {res' = toDay res} in</span>
+<span class="lineno">  736 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
+<span class="lineno">  737 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  738 </span>
+<span class="lineno">  739 </span>
+<span class="lineno">  740 </span>
+<span class="lineno">  741 </span>-- |next maintenance period start dates following the given code
+<span class="lineno">  742 </span>nextEcbDatesFromCode :: (String) -&gt; (Maybe Day) -&gt; IO (([Day]))
+<span class="lineno">  743 </span><span class="decl"><span class="nottickedoff">nextEcbDatesFromCode a1 a2 =</span>
+<span class="lineno">  744 </span><span class="spaces">  </span><span class="nottickedoff">C2HSImp.withCString a1 $ \a1' -&gt; </span>
+<span class="lineno">  745 </span><span class="spaces">  </span><span class="nottickedoff">withMaybeDay a2 $ \a2' -&gt; </span>
+<span class="lineno">  746 </span><span class="spaces">  </span><span class="nottickedoff">preArray $ \(a3'1, a3'2) -&gt; </span>
+<span class="lineno">  747 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a4' -&gt; </span>
+<span class="lineno">  748 </span><span class="spaces">  </span><span class="nottickedoff">nextEcbDatesFromCode'_ a1' a2' a3'1  a3'2 a4' &gt;&gt;</span>
+<span class="lineno">  749 </span><span class="spaces">  </span><span class="nottickedoff">peekDayArray  a3'1  a3'2&gt;&gt;= \a3'' -&gt; </span>
+<span class="lineno">  750 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a4'&gt;&gt;</span>
+<span class="lineno">  751 </span><span class="spaces">  </span><span class="nottickedoff">return (a3'')</span></span>
+<span class="lineno">  752 </span>
+<span class="lineno">  753 </span>
+<span class="lineno">  754 </span>
+<span class="lineno">  755 </span>-- |next maintenance period start dates following the given date
+<span class="lineno">  756 </span>nextEcbDates :: (Maybe Day) -&gt; IO (([Day]))
+<span class="lineno">  757 </span><span class="decl"><span class="istickedoff">nextEcbDates a1 =</span>
+<span class="lineno">  758 </span><span class="spaces">  </span><span class="istickedoff">withMaybeDay a1 $ \a1' -&gt; </span>
+<span class="lineno">  759 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a2'1, a2'2) -&gt; </span>
+<span class="lineno">  760 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
+<span class="lineno">  761 </span><span class="spaces">  </span><span class="istickedoff">nextEcbDates'_ a1' a2'1  a2'2 a3' &gt;&gt;</span>
+<span class="lineno">  762 </span><span class="spaces">  </span><span class="istickedoff">peekDayArray  a2'1  a2'2&gt;&gt;= \a2'' -&gt; </span>
+<span class="lineno">  763 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
+<span class="lineno">  764 </span><span class="spaces">  </span><span class="istickedoff">return (a2'')</span></span>
+<span class="lineno">  765 </span>
+<span class="lineno">  766 </span>
+<span class="lineno">  767 </span>
+<span class="lineno">  768 </span>-- |removes a date from the set of known ECB maintenance period start dates
+<span class="lineno">  769 </span>removeEcbDate :: (Day) -&gt; IO ()
+<span class="lineno">  770 </span><span class="decl"><span class="istickedoff">removeEcbDate a1 =</span>
+<span class="lineno">  771 </span><span class="spaces">  </span><span class="istickedoff">withDay a1 $ \a1' -&gt; </span>
+<span class="lineno">  772 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
+<span class="lineno">  773 </span><span class="spaces">  </span><span class="istickedoff">removeEcbDate'_ a1' a2' &gt;&gt;</span>
+<span class="lineno">  774 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
+<span class="lineno">  775 </span><span class="spaces">  </span><span class="istickedoff">return <span class="nottickedoff">()</span></span></span>
+<span class="lineno">  776 </span>
 <span class="lineno">  777 </span>
-<span class="lineno">  778 </span>foreign import ccall safe &quot;QuantLib/Time/Date.chs.h qlWeekday&quot;
-<span class="lineno">  779 </span>  weekday'_ :: (C2HSImp.CInt -&gt; (IO C2HSImp.CInt))
+<span class="lineno">  778 </span>
+<span class="lineno">  779 </span>-- vim: set ff=unix ts=8 sts=2 sw=2 et:
 <span class="lineno">  780 </span>
-<span class="lineno">  781 </span>foreign import ccall safe &quot;QuantLib/Time/Date.chs.h qlDateDayOfYear&quot;
-<span class="lineno">  782 </span>  dayOfYear'_ :: (C2HSImp.CInt -&gt; (IO C2HSImp.CInt))
+<span class="lineno">  781 </span>foreign import ccall safe &quot;QuantLib/Time/Date.chs.h qlWeekday&quot;
+<span class="lineno">  782 </span>  weekday'_ :: (C2HSImp.CInt -&gt; (IO C2HSImp.CInt))
 <span class="lineno">  783 </span>
-<span class="lineno">  784 </span>foreign import ccall safe &quot;QuantLib/Time/Date.chs.h qlDateEndOfMonth&quot;
-<span class="lineno">  785 </span>  endOfMonth'_ :: (C2HSImp.CInt -&gt; (IO C2HSImp.CInt))
+<span class="lineno">  784 </span>foreign import ccall safe &quot;QuantLib/Time/Date.chs.h qlDateDayOfYear&quot;
+<span class="lineno">  785 </span>  dayOfYear'_ :: (C2HSImp.CInt -&gt; (IO C2HSImp.CInt))
 <span class="lineno">  786 </span>
-<span class="lineno">  787 </span>foreign import ccall safe &quot;QuantLib/Time/Date.chs.h qlDateIsEndOfMonth&quot;
-<span class="lineno">  788 </span>  isEndOfMonth'_ :: (C2HSImp.CInt -&gt; (IO C2HSImp.CInt))
+<span class="lineno">  787 </span>foreign import ccall safe &quot;QuantLib/Time/Date.chs.h qlDateEndOfMonth&quot;
+<span class="lineno">  788 </span>  endOfMonth'_ :: (C2HSImp.CInt -&gt; (IO C2HSImp.CInt))
 <span class="lineno">  789 </span>
-<span class="lineno">  790 </span>foreign import ccall safe &quot;QuantLib/Time/Date.chs.h qlDateNextWeekday&quot;
-<span class="lineno">  791 </span>  nextWeekday'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (IO C2HSImp.CInt)))
+<span class="lineno">  790 </span>foreign import ccall safe &quot;QuantLib/Time/Date.chs.h qlDateIsEndOfMonth&quot;
+<span class="lineno">  791 </span>  isEndOfMonth'_ :: (C2HSImp.CInt -&gt; (IO C2HSImp.CInt))
 <span class="lineno">  792 </span>
-<span class="lineno">  793 </span>foreign import ccall safe &quot;QuantLib/Time/Date.chs.h qlDateNthWeekday&quot;
-<span class="lineno">  794 </span>  nthWeekday'_ :: (C2HSImp.CUInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (IO C2HSImp.CInt)))))
+<span class="lineno">  793 </span>foreign import ccall safe &quot;QuantLib/Time/Date.chs.h qlDateNextWeekday&quot;
+<span class="lineno">  794 </span>  nextWeekday'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (IO C2HSImp.CInt)))
 <span class="lineno">  795 </span>
-<span class="lineno">  796 </span>foreign import ccall safe &quot;QuantLib/Time/Date.chs.h qlIMMCode&quot;
-<span class="lineno">  797 </span>  immCode'_ :: (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr C2HSImp.CChar))))
+<span class="lineno">  796 </span>foreign import ccall safe &quot;QuantLib/Time/Date.chs.h qlDateNthWeekday&quot;
+<span class="lineno">  797 </span>  nthWeekday'_ :: (C2HSImp.CUInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CInt))))))
 <span class="lineno">  798 </span>
-<span class="lineno">  799 </span>foreign import ccall safe &quot;QuantLib/Time/Date.chs.h qlIMMDate&quot;
-<span class="lineno">  800 </span>  immDate'_ :: ((C2HSImp.Ptr C2HSImp.CChar) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CInt))))
+<span class="lineno">  799 </span>foreign import ccall safe &quot;QuantLib/Time/Date.chs.h qlIMMCode&quot;
+<span class="lineno">  800 </span>  immCode'_ :: (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr C2HSImp.CChar))))
 <span class="lineno">  801 </span>
-<span class="lineno">  802 </span>foreign import ccall safe &quot;QuantLib/Time/Date.chs.h qlIMMIsIMMcode&quot;
-<span class="lineno">  803 </span>  isImmCode'_ :: ((C2HSImp.Ptr C2HSImp.CChar) -&gt; (C2HSImp.CInt -&gt; (IO C2HSImp.CInt)))
+<span class="lineno">  802 </span>foreign import ccall safe &quot;QuantLib/Time/Date.chs.h qlIMMDate&quot;
+<span class="lineno">  803 </span>  immDate'_ :: ((C2HSImp.Ptr C2HSImp.CChar) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CInt))))
 <span class="lineno">  804 </span>
-<span class="lineno">  805 </span>foreign import ccall safe &quot;QuantLib/Time/Date.chs.h qlIMMIsIMMdate&quot;
-<span class="lineno">  806 </span>  isImmDate'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (IO C2HSImp.CInt)))
+<span class="lineno">  805 </span>foreign import ccall safe &quot;QuantLib/Time/Date.chs.h qlIMMIsIMMcode&quot;
+<span class="lineno">  806 </span>  isImmCode'_ :: ((C2HSImp.Ptr C2HSImp.CChar) -&gt; (C2HSImp.CInt -&gt; (IO C2HSImp.CInt)))
 <span class="lineno">  807 </span>
-<span class="lineno">  808 </span>foreign import ccall safe &quot;QuantLib/Time/Date.chs.h qlIMMNextCode1&quot;
-<span class="lineno">  809 </span>  nextImmCodeFromCode'_ :: ((C2HSImp.Ptr C2HSImp.CChar) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr C2HSImp.CChar))))))
+<span class="lineno">  808 </span>foreign import ccall safe &quot;QuantLib/Time/Date.chs.h qlIMMIsIMMdate&quot;
+<span class="lineno">  809 </span>  isImmDate'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (IO C2HSImp.CInt)))
 <span class="lineno">  810 </span>
-<span class="lineno">  811 </span>foreign import ccall safe &quot;QuantLib/Time/Date.chs.h qlIMMNextCode&quot;
-<span class="lineno">  812 </span>  nextImmCode'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (IO (C2HSImp.Ptr C2HSImp.CChar))))
+<span class="lineno">  811 </span>foreign import ccall safe &quot;QuantLib/Time/Date.chs.h qlIMMNextCode1&quot;
+<span class="lineno">  812 </span>  nextImmCodeFromCode'_ :: ((C2HSImp.Ptr C2HSImp.CChar) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr C2HSImp.CChar))))))
 <span class="lineno">  813 </span>
-<span class="lineno">  814 </span>foreign import ccall safe &quot;QuantLib/Time/Date.chs.h qlIMMNextDate1&quot;
-<span class="lineno">  815 </span>  nextImmDateFromCode'_ :: ((C2HSImp.Ptr C2HSImp.CChar) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CInt)))))
+<span class="lineno">  814 </span>foreign import ccall safe &quot;QuantLib/Time/Date.chs.h qlIMMNextCode&quot;
+<span class="lineno">  815 </span>  nextImmCode'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (IO (C2HSImp.Ptr C2HSImp.CChar))))
 <span class="lineno">  816 </span>
-<span class="lineno">  817 </span>foreign import ccall safe &quot;QuantLib/Time/Date.chs.h qlIMMNextDate&quot;
-<span class="lineno">  818 </span>  nextImmDate'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (IO C2HSImp.CInt)))
+<span class="lineno">  817 </span>foreign import ccall safe &quot;QuantLib/Time/Date.chs.h qlIMMNextDate1&quot;
+<span class="lineno">  818 </span>  nextImmDateFromCode'_ :: ((C2HSImp.Ptr C2HSImp.CChar) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CInt)))))
 <span class="lineno">  819 </span>
-<span class="lineno">  820 </span>foreign import ccall safe &quot;QuantLib/Time/Date.chs.h qlAddPeriod&quot;
-<span class="lineno">  821 </span>  addPeriod'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CInt)))))
+<span class="lineno">  820 </span>foreign import ccall safe &quot;QuantLib/Time/Date.chs.h qlIMMNextDate&quot;
+<span class="lineno">  821 </span>  nextImmDate'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (IO C2HSImp.CInt)))
 <span class="lineno">  822 </span>
-<span class="lineno">  823 </span>foreign import ccall safe &quot;QuantLib/Time/Date.chs.h qlECBAddDate&quot;
-<span class="lineno">  824 </span>  addEcbDate'_ :: (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ())))
+<span class="lineno">  823 </span>foreign import ccall safe &quot;QuantLib/Time/Date.chs.h qlAddPeriod&quot;
+<span class="lineno">  824 </span>  addPeriod'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CInt)))))
 <span class="lineno">  825 </span>
-<span class="lineno">  826 </span>foreign import ccall safe &quot;QuantLib/Time/Date.chs.h qlECBCode&quot;
-<span class="lineno">  827 </span>  ecbCode'_ :: (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr C2HSImp.CChar))))
+<span class="lineno">  826 </span>foreign import ccall safe &quot;QuantLib/Time/Date.chs.h qlECBAddDate&quot;
+<span class="lineno">  827 </span>  addEcbDate'_ :: (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ())))
 <span class="lineno">  828 </span>
-<span class="lineno">  829 </span>foreign import ccall safe &quot;QuantLib/Time/Date.chs.h qlECBDate1&quot;
-<span class="lineno">  830 </span>  ecbDateFromCode'_ :: ((C2HSImp.Ptr C2HSImp.CChar) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CInt))))
+<span class="lineno">  829 </span>foreign import ccall safe &quot;QuantLib/Time/Date.chs.h qlECBCode&quot;
+<span class="lineno">  830 </span>  ecbCode'_ :: (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr C2HSImp.CChar))))
 <span class="lineno">  831 </span>
-<span class="lineno">  832 </span>foreign import ccall safe &quot;QuantLib/Time/Date.chs.h qlECBDate&quot;
-<span class="lineno">  833 </span>  ecbDate'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CInt))))
+<span class="lineno">  832 </span>foreign import ccall safe &quot;QuantLib/Time/Date.chs.h qlECBDate1&quot;
+<span class="lineno">  833 </span>  ecbDateFromCode'_ :: ((C2HSImp.Ptr C2HSImp.CChar) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CInt))))
 <span class="lineno">  834 </span>
-<span class="lineno">  835 </span>foreign import ccall safe &quot;QuantLib/Time/Date.chs.h qlECBIsECBcode&quot;
-<span class="lineno">  836 </span>  isEcbCode'_ :: ((C2HSImp.Ptr C2HSImp.CChar) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CInt)))
+<span class="lineno">  835 </span>foreign import ccall safe &quot;QuantLib/Time/Date.chs.h qlECBDate&quot;
+<span class="lineno">  836 </span>  ecbDate'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CInt))))
 <span class="lineno">  837 </span>
-<span class="lineno">  838 </span>foreign import ccall safe &quot;QuantLib/Time/Date.chs.h qlECBIsECBdate&quot;
-<span class="lineno">  839 </span>  isEcbDate'_ :: (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CInt)))
+<span class="lineno">  838 </span>foreign import ccall safe &quot;QuantLib/Time/Date.chs.h qlECBIsECBcode&quot;
+<span class="lineno">  839 </span>  isEcbCode'_ :: ((C2HSImp.Ptr C2HSImp.CChar) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CInt)))
 <span class="lineno">  840 </span>
-<span class="lineno">  841 </span>foreign import ccall safe &quot;QuantLib/Time/Date.chs.h qlECBKnownDates&quot;
-<span class="lineno">  842 </span>  knownEcbDates'_ :: ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CInt)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ()))))
+<span class="lineno">  841 </span>foreign import ccall safe &quot;QuantLib/Time/Date.chs.h qlECBIsECBdate&quot;
+<span class="lineno">  842 </span>  isEcbDate'_ :: (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CInt)))
 <span class="lineno">  843 </span>
-<span class="lineno">  844 </span>foreign import ccall safe &quot;QuantLib/Time/Date.chs.h qlECBNextCode1&quot;
-<span class="lineno">  845 </span>  nextEcbCodeFromCode'_ :: ((C2HSImp.Ptr C2HSImp.CChar) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr C2HSImp.CChar))))
+<span class="lineno">  844 </span>foreign import ccall safe &quot;QuantLib/Time/Date.chs.h qlECBKnownDates&quot;
+<span class="lineno">  845 </span>  knownEcbDates'_ :: ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CInt)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ()))))
 <span class="lineno">  846 </span>
-<span class="lineno">  847 </span>foreign import ccall safe &quot;QuantLib/Time/Date.chs.h qlECBNextCode&quot;
-<span class="lineno">  848 </span>  nextEcbCode'_ :: (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr C2HSImp.CChar))))
+<span class="lineno">  847 </span>foreign import ccall safe &quot;QuantLib/Time/Date.chs.h qlECBNextCode1&quot;
+<span class="lineno">  848 </span>  nextEcbCodeFromCode'_ :: ((C2HSImp.Ptr C2HSImp.CChar) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr C2HSImp.CChar))))
 <span class="lineno">  849 </span>
-<span class="lineno">  850 </span>foreign import ccall safe &quot;QuantLib/Time/Date.chs.h qlECBNextDate1&quot;
-<span class="lineno">  851 </span>  nextEcbDateFromCode'_ :: ((C2HSImp.Ptr C2HSImp.CChar) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CInt))))
+<span class="lineno">  850 </span>foreign import ccall safe &quot;QuantLib/Time/Date.chs.h qlECBNextCode&quot;
+<span class="lineno">  851 </span>  nextEcbCode'_ :: (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr C2HSImp.CChar))))
 <span class="lineno">  852 </span>
-<span class="lineno">  853 </span>foreign import ccall safe &quot;QuantLib/Time/Date.chs.h qlECBNextDate&quot;
-<span class="lineno">  854 </span>  nextEcbDate'_ :: (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CInt)))
+<span class="lineno">  853 </span>foreign import ccall safe &quot;QuantLib/Time/Date.chs.h qlECBNextDate1&quot;
+<span class="lineno">  854 </span>  nextEcbDateFromCode'_ :: ((C2HSImp.Ptr C2HSImp.CChar) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CInt))))
 <span class="lineno">  855 </span>
-<span class="lineno">  856 </span>foreign import ccall safe &quot;QuantLib/Time/Date.chs.h qlECBNextDates1&quot;
-<span class="lineno">  857 </span>  nextEcbDatesFromCode'_ :: ((C2HSImp.Ptr C2HSImp.CChar) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CInt)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ()))))))
+<span class="lineno">  856 </span>foreign import ccall safe &quot;QuantLib/Time/Date.chs.h qlECBNextDate&quot;
+<span class="lineno">  857 </span>  nextEcbDate'_ :: (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CInt)))
 <span class="lineno">  858 </span>
-<span class="lineno">  859 </span>foreign import ccall safe &quot;QuantLib/Time/Date.chs.h qlECBNextDates&quot;
-<span class="lineno">  860 </span>  nextEcbDates'_ :: (C2HSImp.CInt -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CInt)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ())))))
+<span class="lineno">  859 </span>foreign import ccall safe &quot;QuantLib/Time/Date.chs.h qlECBNextDates1&quot;
+<span class="lineno">  860 </span>  nextEcbDatesFromCode'_ :: ((C2HSImp.Ptr C2HSImp.CChar) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CInt)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ()))))))
 <span class="lineno">  861 </span>
-<span class="lineno">  862 </span>foreign import ccall safe &quot;QuantLib/Time/Date.chs.h qlECBRemoveDate&quot;
-<span class="lineno">  863 </span>  removeEcbDate'_ :: (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ())))
+<span class="lineno">  862 </span>foreign import ccall safe &quot;QuantLib/Time/Date.chs.h qlECBNextDates&quot;
+<span class="lineno">  863 </span>  nextEcbDates'_ :: (C2HSImp.CInt -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CInt)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ())))))
+<span class="lineno">  864 </span>
+<span class="lineno">  865 </span>foreign import ccall safe &quot;QuantLib/Time/Date.chs.h qlECBRemoveDate&quot;
+<span class="lineno">  866 </span>  removeEcbDate'_ :: (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ())))
 
 </pre>
 </body>
