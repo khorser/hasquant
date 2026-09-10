@@ -16,7 +16,6 @@ module QuantLib.TermStructure.Volatility
   , SmileInterpolationMethod(..)
   , BlackVolTimeExtrapolationType(..)
   , BlackVolatilitySurfaceDeltaOpts(..)
-  , defaultBlackVolatilitySurfaceDeltaOpts
   , BlackVolTermStructure
   , GenBlackVolTermStructure
   , RelinkableBlackVolTermStructure
@@ -60,11 +59,20 @@ module QuantLib.TermStructure.Volatility
   , AbcdAtmVolCurve
   , SabrVolSurface
   , OptionletStripper2
+  , SabrInterpolatedSmileSectionOpts(..)
+  , SwaptionVolatilityMatrix
+  , SabrSwaptionVolatilityCube
+  , NoArbSabrSwaptionVolatilityCube
+  , InterpolatedSwaptionVolatilityCube
 
     -- * Constructors
     -- ** Hierarchy conversions
   , asVolatilityTermStructure
   , asBlackVolTermStructure
+  , asOptionletVolatilityStructure
+  , sabrAsSmileSection
+  , sviAsSmileSection
+  , noArbSabrAsSmileSection
 
     -- ** Optionlet and cap-floor volatility
   , localVolSurface
@@ -72,35 +80,104 @@ module QuantLib.TermStructure.Volatility
   , capletVarianceCurve
   , optionletStripper
   , optionletStripperWithAtm
-  , asOptionletVolatilityStructure
-  , atmCapFloorStrikes
-  , atmCapFloorPrices
-  , spreadsVol
 
     -- ** Black, local and swaption volatility
   , impliedVolTermStructure
   , blackConstantVol
   , relinkableBlackVolTermStructure
+  , constantSwaptionVolatility
+    -- ** Smile sections and parametrizations
+  , defaultSabrInterpolatedSmileSectionOpts
+  , sabrSmileSection
+  , sabrSmileSectionAtDate
+  , noArbSabrSmileSection
+  , sabrInterpolatedSmileSection
+  , sviInterpolatedSmileSection
+  , noArbSabrInterpolatedSmileSection
+  , flatSmileSection
+  , spreadedSmileSection
+  , atmSmileSection
+  , sviSmileSection
+  , zabrSmileSection
+    -- ** Bond and cap-floor structures
+  , callableBondConstantVolatility
+  , constantCapFloorTermVolatility
+    -- ** ATM curves and SABR surfaces
+  , abcdAtmVolCurve
+  , sabrVolSurface
+    -- ** Relinkable and spreaded structures
+  , spreadedSwaptionVolatility
+  , spreadedOptionletVol
+  , relinkableSwaptionVolatilityStructure
+  , relinkableOptionletVolatilityStructure
+    -- ** Curves and surfaces
+  , localConstantVol
+  , localVolCurve
+  , capFloorTermVolCurve
+  , blackVarianceCurve
+  , capFloorTermVolSurface
+  , blackVarianceSurface
+  , piecewiseBlackVarianceSurface
+  , blackVolatilitySurfaceDelta
+  , blackVolatilitySurfaceDeltaWithOptions
+  , defaultBlackVolatilitySurfaceDeltaOpts
+    -- ** Swaption matrices and cubes
+  , swaptionVolatilityMatrix
+  , sabrSwaptionVolatilityCube
+  , noArbSabrSwaptionVolatilityCube
+  , interpolatedSwaptionVolatilityCube
+  , swaptionVolatilityMatrixMoving
+    -- ** Local-volatility and Andreasen-Huge models
+  , noExceptLocalVolSurface
+  , fixedLocalVolSurface
+  , gridModelLocalVolSurface
+  , gridModelLocalVolSurfaceAsCalibratedModel
+  , hestonBlackVolSurface
+  , andreasenHugeVolatilityInterpolation
+  , andreasenHugeVolatilityAdapter
+  , andreasenHugeLocalVolAdapter
+    -- * Mutators
+  , linkBlackVolTo
+  , linkSwaptionVolTo
+  , linkOptionletVolTo
+
+    -- * Inspectors
+    -- ** Optionlet and cap-floor volatility
+  , atmCapFloorStrikes
+  , atmCapFloorPrices
+  , spreadsVol
+  , capFloorVolatility
+  , capFloorTermVolCurveOptionDates
+  , capFloorTermVolCurveOptionTimes
+  , capFloorTermVolSurfaceOptionDates
+  , capFloorTermVolSurfaceOptionTimes
+    -- ** Black and local volatility
   , blackVol
   , blackVolVariance
   , blackForwardVol
   , blackForwardVariance
-  , constantSwaptionVolatility
+  , localVol
+  , blackVolSmile
+  , blackVolSurfaceSmileSection
+    -- ** Swaption and callable-bond volatility
   , swaptionVolatility
   , swaptionBlackVariance
   , maxSwapLength
   , maxSwapTenor
   , smileSection
-    -- ** Smile sections and parametrizations
-  , sabrSmileSection
-  , sabrSmileSectionAtDate
-  , noArbSabrSmileSection
+  , swapLengthBetweenDates
+  , swapLength
+  , callableBondVolatility
+  , callableBondBlackVariance
+  , callableBondSmileSection
+  , maxBondTenor
+    -- ** Smile values and calibration results
   , smileSectionVolatility
   , smileSectionVariance
-  , SabrInterpolatedSmileSectionOpts(..)
-  , defaultSabrInterpolatedSmileSectionOpts
-  , sabrInterpolatedSmileSection
-  , sabrAsSmileSection
+  , smileSectionAtmLevel
+  , smileSectionOptionPrice
+  , smileSectionDigitalOptionPrice
+  , smileSectionDensity
   , sabrAlpha
   , sabrBeta
   , sabrNu
@@ -108,8 +185,6 @@ module QuantLib.TermStructure.Volatility
   , sabrRmsError
   , sabrMaxError
   , sabrCalibrationEndCriteria
-  , sviInterpolatedSmileSection
-  , sviAsSmileSection
   , sviA
   , sviB
   , sviSigma
@@ -118,8 +193,6 @@ module QuantLib.TermStructure.Volatility
   , sviRmsError
   , sviMaxError
   , sviEndCriteria
-  , noArbSabrInterpolatedSmileSection
-  , noArbSabrAsSmileSection
   , noArbSabrAlpha
   , noArbSabrBeta
   , noArbSabrNu
@@ -127,25 +200,9 @@ module QuantLib.TermStructure.Volatility
   , noArbSabrRmsError
   , noArbSabrMaxError
   , noArbSabrEndCriteria
-  , swapLengthBetweenDates
-  , swapLength
-    -- ** Bond and cap-floor structures
-  , callableBondConstantVolatility
-  , callableBondVolatility
-  , callableBondBlackVariance
-  , callableBondSmileSection
-  , maxBondTenor
-  , constantCapFloorTermVolatility
-  , capFloorVolatility
-  , capFloorTermVolCurveOptionDates
-  , capFloorTermVolCurveOptionTimes
-  , capFloorTermVolSurfaceOptionDates
-  , capFloorTermVolSurfaceOptionTimes
+    -- ** ATM curves and SABR surfaces
   , atmVol
   , atmVariance
-  , blackVolSurfaceSmileSection
-    -- ** ATM curves and SABR surfaces
-  , abcdAtmVolCurve
   , abcdA
   , abcdB
   , abcdC
@@ -159,36 +216,12 @@ module QuantLib.TermStructure.Volatility
   , abcdOptionTenorsInInterpolation
   , abcdOptionDates
   , abcdOptionTimes
-  , sabrVolSurface
   , sabrVolSurfaceAtmCurve
   , sabrVolSurfaceIndex
   , sabrVolSurfaceOptionDateFromTenor
   , sabrVolatilitySpreads
-    -- ** Relinkable and spreaded structures
-  , spreadedSwaptionVolatility
-  , relinkableSwaptionVolatilityStructure
-  , relinkableOptionletVolatilityStructure
-    -- ** Curves and surfaces
-  , localConstantVol
-  , localVolCurve
-  , capFloorTermVolCurve
-  , blackVarianceCurve
-  , capFloorTermVolSurface
-  , blackVarianceSurface
-  , piecewiseBlackVarianceSurface
-  , blackVolatilitySurfaceDelta
-  , blackVolatilitySurfaceDeltaWithOptions
-  , blackVolSmile
     -- ** Swaption matrices and cubes
-  , swaptionVolatilityMatrix
-  , SwaptionVolatilityMatrix
   , swaptionVolatilityMatrixLocate
-  , SabrSwaptionVolatilityCube
-  , NoArbSabrSwaptionVolatilityCube
-  , InterpolatedSwaptionVolatilityCube
-  , sabrSwaptionVolatilityCube
-  , noArbSabrSwaptionVolatilityCube
-  , interpolatedSwaptionVolatilityCube
   , interpolatedSwaptionVolatilityCubeVolSpreads
   , sparseSabrParameters
   , denseSabrParameters
@@ -198,38 +231,11 @@ module QuantLib.TermStructure.Volatility
   , noArbSabrDenseSabrParameters
   , noArbSabrMarketVolCube
   , noArbSabrVolCubeAtmCalibrated
-  , swaptionVolatilityMatrixMoving
-    -- ** Local-volatility and Andreasen-Huge models
-  , noExceptLocalVolSurface
-  , fixedLocalVolSurface
-  , gridModelLocalVolSurface
-  , gridModelLocalVolSurfaceAsCalibratedModel
-  , hestonBlackVolSurface
-  , andreasenHugeVolatilityInterpolation
+    -- ** Andreasen-Huge results
   , andreasenHugeCalibrationError
   , andreasenHugeForward
   , andreasenHugeOptionPrice
   , andreasenHugeLocalVol
-  , andreasenHugeVolatilityAdapter
-  , andreasenHugeLocalVolAdapter
-    -- * Mutators
-  , linkBlackVolTo
-  , linkSwaptionVolTo
-  , linkOptionletVolTo
-
-    -- * Inspectors
-    -- ** Smile and local-volatility queries
-  , spreadedOptionletVol
-  , localVol
-  , smileSectionAtmLevel
-  , smileSectionOptionPrice
-  , smileSectionDigitalOptionPrice
-  , smileSectionDensity
-  , flatSmileSection
-  , spreadedSmileSection
-  , atmSmileSection
-  , sviSmileSection
-  , zabrSmileSection
   ) where
 import QuantLib.Internal
 {#import QuantLib.InterestRate#}(VolatilityType)
@@ -314,6 +320,8 @@ import Foreign.Marshal.Alloc(alloca)
 -- from short maturities); 'ZabrLocalVolatility' and 'ZabrFullFd' solve a finite-difference PDE
 -- (slower, more accurate). Local to this binding -- not shared with any other cross-cutting enum.
 {#enum ZabrEvaluation{} deriving(Show, Eq, Read)#}
+
+-- |Calibration choice for Andreasen-Huge local-volatility calibration.
 {#enum AndreasenHugeCalibrationType{} add prefix="AndreasenHugeCalibration" deriving(Show, Eq, Read)#}
 
 -- |The option-maturity coordinate of a swaption volatility query.
@@ -455,7 +463,6 @@ gridModelLocalVolSurface d nodes = qlGridModelLocalVolSurface d dates rowSizes v
   ,preErrorCheck-`String'errorCheck*-}->`BlackVolTermStructure'peekBlackVolTermStructure*#}
 
 -- |Interpolation choice for Andreasen-Huge local-volatility calibration.
--- |Calibration choice for Andreasen-Huge local-volatility calibration.
 andreasenHugeVolatilityInterpolation :: NonEmpty (VanillaOption, GenQuote q) -> GenQuote q
   -> GenYieldTermStructure y1 -> GenYieldTermStructure y2
   -> AndreasenHugeInterpolationType -> AndreasenHugeCalibrationType -> Word

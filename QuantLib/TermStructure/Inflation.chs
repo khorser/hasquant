@@ -94,25 +94,27 @@ import Data.List.NonEmpty(NonEmpty, toList)
   ,withCalendar*`Calendar' -- ^paymentCalendar
   ,preErrorCheck-`String'errorCheck*-}->`BondHelper'peekBondHelper*#}
 
+-- |Bootstraps a zero-inflation term structure piecewise from a set of helpers, interpolating
+-- between the bootstrapped nodes with the given 'Interpolation'.
 piecewiseZeroInflationCurve :: Day -- ^referenceDate
   -> Day -- ^baseDate
   -> Frequency -> DayCounter -> NonEmpty ZeroCouponInflationSwapHelper -> Interpolation
   -> IO ZeroInflationTermStructure
 piecewiseZeroInflationCurve r b f dc h i = uncurryNested (qlPiecewiseZeroInflationCurve r b f dc (toList h)) (qlInterpolation i)
--- |Bootstraps a zero-inflation term structure piecewise from a set of helpers, interpolating
--- between the bootstrapped nodes with the given 'Interpolation'.
+
 {#fun qlPiecewiseZeroInflationCurve{withDay*`Day',withDay*`Day',`Frequency',withDayCounter*`DayCounter'
   ,withZeroCouponInflationSwapHelperArray*`[ZeroCouponInflationSwapHelper]'&
   ,`Int',`Int',`Int',preErrorCheck-`String'errorCheck*-}->`ZeroInflationTermStructure'peekZeroInflationTermStructure*#}
 
+-- |Bootstraps a year-on-year inflation term structure piecewise from a set of helpers,
+-- interpolating between the bootstrapped nodes with the given 'Interpolation'.
 piecewiseYoyInflationCurve :: Day -- ^referenceDate
   -> Day -- ^baseDate
   -> Double -- ^baseYoYRate
   -> Frequency -> DayCounter -> NonEmpty YearOnYearInflationSwapHelper -> Interpolation
   -> IO YoYInflationTermStructure
 piecewiseYoyInflationCurve r b y f dc h i = uncurryNested (qlPiecewiseYoYInflationCurve r b y f dc (toList h)) (qlInterpolation i)
--- |Bootstraps a year-on-year inflation term structure piecewise from a set of helpers,
--- interpolating between the bootstrapped nodes with the given 'Interpolation'.
+
 {#fun qlPiecewiseYoYInflationCurve{withDay*`Day',withDay*`Day',`Double',`Frequency',withDayCounter*`DayCounter'
   ,withYearOnYearInflationSwapHelperArray*`[YearOnYearInflationSwapHelper]'&
   ,`Int',`Int',`Int',preErrorCheck-`String'errorCheck*-}->`YoYInflationTermStructure'peekYoYInflationTermStructure*#}

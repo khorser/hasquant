@@ -102,9 +102,10 @@ import QuantLib.Internal.Common
 -- pricing.
 {#fun qlInstrumentAdditionalResults as additionalResults{withInstrument*`GenInstrument i',preArray-`[(String, AdditionalResultVal)]'&peekAdditionalResults*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
+-- |Builds a composite instrument whose NPV is the sum of the given instruments' NPVs, each scaled by its paired multiplier.
 composite :: [(Instrument, Double)] -> IO Instrument
 composite = (uncurry qlCompositeInstrument) . unzip
--- |Builds a composite instrument whose NPV is the sum of the given instruments' NPVs, each scaled by its paired multiplier.
+
 {#fun qlCompositeInstrument{withInstrumentArray*`[GenInstrument i]'& -- ^instruments
   ,withDoubleArray*`[Double]'& -- ^multipliers
   ,preErrorCheck-`String'errorCheck*-}->`Instrument'peekInstrument*#}

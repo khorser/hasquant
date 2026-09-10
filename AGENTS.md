@@ -87,11 +87,20 @@ Scale numeric tolerances to the result magnitude, normally about `1e-6` relative
 
 ## Tracking and documentation
 
+- Organize public Haddock exports as Types, Constructors, Mutators, then Inspectors, with topical
+  subsections inside each group. Constructors create values or perform hierarchy conversions;
+  functions that evaluate, calculate, locate, or extract information are Inspectors, even when
+  they return a complex result.
 - Update the hierarchy tree in `QuantLib/Internal/Type.hs` whenever a hierarchy changes.
 - Update affected lines in `tools/ql-methods-1.43.txt` when binding or rejecting a method. `x` means permanently reviewed and rejected; bulk exclusions must be detector-backed, and coverage audits must verify against `cbits/*.h` rather than trust the dump alone.
 - Put persistent architectural gaps in README.md's Roadmap. Use `plans/README.md` only for subplan status. Remove roadmap items when their feature is completed.
 - Keep `test/main/QuantLib/MainTest.hs` as a thin dispatcher; put specifications in topical `QuantLib.Spec.*` modules and shared helpers in `QuantLib.Spec.Helpers`.
 
-## Modus operandi
+## Planning
 
-Show the todo list for multi-step tasks. Keep comments short and about current purpose or rationale; do not preserve implementation history in source comments. Preserve useful upstream Haddock detail.
+Always show the todo list for multi-step tasks.
+
+## Comments
+
+Keep comments short and about current purpose or rationale; do not preserve implementation history in source comments.
+Comments should not exceeed two lines, unless documenting important concepts or were copied from upstream documentation comments.

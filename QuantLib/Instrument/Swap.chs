@@ -590,7 +590,6 @@ makeCms (swLen, swUnit) swapIndex iborIndex iborSpread forwardStart mSettlementD
 -- |Discount factor at leg j's start date.
 {#fun qlSwapStartDiscounts as startDiscounts{withSwap*`GenSwap s',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
--- ConstNotionalCrossCurrencySwap
 -- |Constructs a cross-currency swap from two legs and their currencies; the first leg is paid, the second received.
 {#fun qlConstNotionalCrossCurrencySwap as constNotionalCrossCurrencySwap{withLeg*`GenLeg l1'
   ,withCurrency*`Currency' -- ^firstLegCcy
@@ -617,7 +616,6 @@ constNotionalCrossCurrencySwapFromLegs legsPayer = qlConstNotionalCrossCurrencyS
 -- |Discount factor at the instrument's NPV date, for leg j.
 {#fun qlConstNotionalCrossCurrencySwapNpvDateDiscounts as npvDateDiscounts{withConstNotionalCrossCurrencySwap*`GenConstNotionalCrossCurrencySwap x',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
--- ConstNotionalCrossCurrencyBasisSwap
 -- |Cross-currency basis swap: pay-currency cashflows on leg 0, receive-currency on leg 1.
 -- 'ConstNotionalCrossCurrencyBasisSwapOpts' bundles every trailing param the C++ constructor
 -- defaults (all OIS-only -- payment lag, compound-spread, lookback, observation shift, lockout,
@@ -674,7 +672,6 @@ constNotionalCrossCurrencyBasisSwap payNominal payCurrency paySchedule payIndex 
 -- |The receive-leg spread that would make the swap's NPV zero.
 {#fun qlConstNotionalCrossCurrencyBasisSwapFairRecSpread as fairRecSpread{withConstNotionalCrossCurrencyBasisSwap*`ConstNotionalCrossCurrencyBasisSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
--- ConstNotionalCrossCurrencyFixedVsFloatingSwap
 -- |Cross-currency fixed-vs-floating swap: 'Payer' pays the fixed leg (leg 0) and receives the
 -- floating leg (leg 1); 'Receiver' the reverse. Every trailing defaulted param of the upstream
 -- constructor is a required argument here (only 4 trailing defaults, under the options-record
@@ -787,7 +784,6 @@ instance HasFairSpread ConstNotionalCrossCurrencyFixedVsFloatingSwap where
   ,preArray-`[BlackCalibrationHelper]'&peekBlackCalibrationHelperArray*
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
--- AssetSwap
 -- |Bullet bond vs Libor swap (par or market asset swap, per /parAssetSwap/).
 {#fun qlAssetSwap as assetSwap{`Bool' -- ^payBondCoupon
   ,withBond*`Bond',`Double' -- ^bondCleanPrice
@@ -800,7 +796,6 @@ instance HasFairSpread ConstNotionalCrossCurrencyFixedVsFloatingSwap where
   ,withMaybeDay*`Maybe Day' -- ^dealMaturity
   ,preErrorCheck-`String'errorCheck*-}->`AssetSwap'peekAssetSwap*#}
 
--- OvernightIndexedSwap
 -- |Fixed vs compounded-overnight-rate swap, with a single flat nominal for both legs.
 overnightIndexedSwap :: SwapType
   -> Double -- ^nominal
@@ -934,7 +929,6 @@ overnightIndexedSwapFromNominals t ns sch r dc idx sprd lag adj cal telescopic a
 -- |NPV of the overnight leg.
 {#fun qlOvernightIndexedSwapOvernightLegNPV as overnightLegNpv{withOvernightIndexedSwap*`OvernightIndexedSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
--- Inflation-linked swaps
 -- |A zero-coupon inflation-indexed swap (ZCIIS): a single fixed-vs-CPI-ratio exchange at
 -- maturity. Per-leg NPV\/BPS use the generic 'leg'\/'legNpv'\/'legBps' (leg 0 = fixed, leg 1 =
 -- inflation).

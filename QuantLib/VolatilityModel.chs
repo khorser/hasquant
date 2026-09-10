@@ -16,7 +16,8 @@ module QuantLib.VolatilityModel
   , garch11
   , garch11Calibrated
 
-    -- * Calculations
+    -- * Inspectors
+    -- ** Evaluation and estimation
   , forecast
   , calculate
   , garmanKlassSimpleSigma
@@ -29,7 +30,7 @@ module QuantLib.VolatilityModel
   , constantVolatilityEstimator
   , simpleLocalVolatilityEstimator
 
-    -- * Inspectors
+    -- ** GARCH parameters
   , alpha
   , beta
   , omega

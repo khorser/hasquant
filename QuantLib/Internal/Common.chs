@@ -336,6 +336,7 @@ data Interpolation =
   deriving (Show, Eq)
 
 data EuropeanExercise = EuropeanExercise Day
+
 -- | Use 'swingExerice' to construct 'Exercise'
 data SwingExercise =
     SwingListExercise !(NonEmpty (Day, Word)) -- ^(dates, seconds)

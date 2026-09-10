@@ -412,6 +412,7 @@ hestonSlvFdmLogEntry snapshot i = do
 -- |Marks the reversion (@a@) fixed and volatility (@sigma@) free for 'calibrate''s @fixParameters@ argument. Mirrors @HullWhite::FixedReversion()@.
 fixedReversion :: [Bool]
 fixedReversion = [True, False]
+
 -- |One-factor GSR model (formulated in the forward measure), with an initial volatility and
 -- piecewise-constant changes at the given dates, plus a single constant reversion.
 gsr :: GenYieldTermStructure y -> GenQuote q1 -> [(Day, GenQuote q1)] -> GenQuote q2 -> Double -> IO Gsr
@@ -713,7 +714,6 @@ calibrate m h o e c fp = qlCalibratedModelCalibrate m hh hw o e c fp where (hh, 
   ,withYieldTermStructure*`GenYieldTermStructure y2' -- ^dividendYield
   ,`CalibrationErrorType',preErrorCheck-`String'errorCheck*-}->`BlackCalibrationHelper'peekBlackCalibrationHelper*#}
 
--- |Calibration helper for a European swaption, with the exercise given as a maturity 'Period' from today.
 -- |A swaption helper's exercise and underlying-swap span.
 data SwaptionSpan
   = SpanTenors !(Word, TimeUnit) !(Word, TimeUnit) -- ^maturity, length
