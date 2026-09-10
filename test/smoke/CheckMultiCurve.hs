@@ -50,7 +50,7 @@ main = do
   -- plain FRA-only curve is enough to exercise qlPiecewiseYieldCurveGlobalBootstrap1 and the
   -- Discount/LogLinear branch added to qlPiecewiseYieldCurveAux1.
   q <- Quote.simpleQuote 0.03
-  standaloneHelpers <- mapM (\i -> fraRateHelper q i (i + 3) 2 cal ModifiedFollowing True euriborDC LastRelevantDate Nothing False) [1 .. 5]
+  standaloneHelpers <- mapM (\i -> fraRateHelper q (FraMonths i (i + 3) 2 cal ModifiedFollowing True euriborDC) LastRelevantDate Nothing False) [1 .. 5]
   standaloneCurve <- piecewiseYieldCurve (SettlementDays 0 cal) (fromList standaloneHelpers) euriborDC []
     (GlobalDiscountLogLinear 1.0e-10 []) False
   sixM <- advance cal settleFix (6, Months) ModifiedFollowing True
@@ -67,7 +67,7 @@ main = do
   euribor3m <- iborIndex Euribor3M (Just intcurve3m)
   euribor6m <- iborIndex Euribor6M (Just intcurve6m)
   b <- Quote.simpleQuote 0.0020
-  helpers3mFra <- mapM (\i -> fraRateHelper q i (i + 3) 2 cal ModifiedFollowing True euriborDC LastRelevantDate Nothing False) [1 .. 3]
+  helpers3mFra <- mapM (\i -> fraRateHelper q (FraMonths i (i + 3) 2 cal ModifiedFollowing True euriborDC) LastRelevantDate Nothing False) [1 .. 3]
   helpers3mBasis <- mapM (\i -> iborIborBasisSwapRateHelper b (i, Years) 2 cal ModifiedFollowing True euribor3m euribor6m discountCurve True) [2 .. 4]
   helpers6mBasis <- mapM (\i -> iborIborBasisSwapRateHelper b (i * 6, Months) 2 cal ModifiedFollowing True euribor3m euribor6m discountCurve False) [1 .. 2]
   helpers6mSwap <- mapM (\i -> swapRateHelperFromConventions q (i, Years) cal Annual Following euriborDC euribor6m Nothing (0, Days) (Just discountCurve)

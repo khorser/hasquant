@@ -32,11 +32,11 @@ main = do
   euriborDC <- dayCounter (Actual360 False)
 
   q <- Quote.simpleQuote 0.03
-  helpers <- mapM (\i -> fraRateHelper q i (i + 3) 2 cal ModifiedFollowing True euriborDC LastRelevantDate Nothing False) [1 .. 5]
+  helpers <- mapM (\i -> fraRateHelper q (FraMonths i (i + 3) 2 cal ModifiedFollowing True euriborDC) LastRelevantDate Nothing False) [1 .. 5]
 
   discountCurve <- piecewiseYieldCurve (SettlementDays 0 cal) (fromList helpers) euriborDC []
     (GlobalDiscountLogLinear 1.0e-10 []) False
-  helpers2 <- mapM (\i -> fraRateHelper q i (i + 3) 2 cal ModifiedFollowing True euriborDC LastRelevantDate Nothing False) [1 .. 5]
+  helpers2 <- mapM (\i -> fraRateHelper q (FraMonths i (i + 3) 2 cal ModifiedFollowing True euriborDC) LastRelevantDate Nothing False) [1 .. 5]
   zeroCurve <- piecewiseYieldCurve (SettlementDays 0 cal) (fromList helpers2) euriborDC []
     (GlobalSimpleZeroLinear 1.0e-10 []) False
 

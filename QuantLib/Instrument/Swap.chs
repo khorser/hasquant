@@ -1,4 +1,4 @@
-{-# LANGUAGE TemplateHaskell, FlexibleInstances #-}
+{-# LANGUAGE TemplateHaskell, FlexibleInstances, TypeFamilies #-}
 module QuantLib.Instrument.Swap
   (
     -- * Swap and swaption types
@@ -32,6 +32,7 @@ module QuantLib.Instrument.Swap
   , impliedVolatility
   , SwapType(..)
   , SwaptionPriceType(..)
+  , IrregularSettlementType(..)
   , CPIInterpolationType(..)
   , CalibrationBasketType(..)
   , FloatFloatSwapOpts(..)
@@ -40,6 +41,8 @@ module QuantLib.Instrument.Swap
   , defaultFloatFloatSwapVaryingOpts
   , ConstNotionalCrossCurrencyBasisSwapOpts(..)
   , defaultConstNotionalCrossCurrencyBasisSwapOpts
+  , OvernightObservation(..)
+  , defaultOvernightObservation
 
     -- * Swap construction and product-specific results
   , swapFromLegs
@@ -139,6 +142,7 @@ module QuantLib.Instrument.Swap
   , HasFloatingLeg(..)
   , HasFairRate(..)
   , HasFairSpread(..)
+  , HasInstrumentUnderlying(..)
   ) where
 import Data.Maybe(fromMaybe)
 import QuantLib.Internal.Syntax(deriveOptionsRecord)
@@ -164,6 +168,9 @@ import QuantLib.Index.InterestRate(tenor, dayCounter, businessDayConvention)
 {#pointer *QlOption as Option foreign -> COption' nocode#}
 {#pointer *QlBond as Bond foreign -> CBond' nocode#}
 {#pointer *QlCreditDefaultSwap as CreditDefaultSwap foreign -> CCreditDefaultSwap' nocode#}
+-- CdsOption is constructed in QuantLib.Instrument.Credit; aliased here only so its
+-- HasInstrumentUnderlying instance stays non-orphan, as CreditDefaultSwap's HasFairSpread does.
+{#pointer *QlCdsOption as CdsOption foreign -> CCdsOption' nocode#}
 {#pointer *Schedule as Schedule foreign -> CSchedule nocode#}
 {#pointer *DayCounter foreign -> CDayCounter nocode#}
 {#pointer *QlExercise nocode#}
@@ -253,20 +260,16 @@ $(deriveOptionsRecord "FloatFloatSwapVaryingOpts" []
 -- observation shift, lockout, averaging method, plus a shared telescopicValueDates), past the
 -- options-record threshold -- see FloatFloatSwapOpts above for why this splice must stay
 -- textually before every {#fun#} in this file. ConstNotionalCrossCurrencyFixedVsFloatingSwap's
--- constructor has only 6 trailing defaults (under the threshold), so it's widened in place
+-- constructor has only 4 trailing defaults (under the threshold), so it's widened in place
 -- instead -- see 'constNotionalCrossCurrencyFixedVsFloatingSwap' below.
 $(deriveOptionsRecord "ConstNotionalCrossCurrencyBasisSwapOpts" []
   [ ("cccbsPayPaymentLag", [t|Int|], [|0|])
   , ("cccbsRecPaymentLag", [t|Int|], [|0|])
   , ("cccbsPayCompoundSpread", [t|Bool|], [|False|])
-  , ("cccbsPayLookbackDays", [t|Maybe Word|], [|Nothing|])
-  , ("cccbsPayObservationShift", [t|Bool|], [|False|])
-  , ("cccbsPayLockoutDays", [t|Word|], [|0|])
+  , ("cccbsPayObservation", [t|OvernightObservation|], [|defaultOvernightObservation|])
   , ("cccbsPayAveragingMethod", [t|RateAveragingType|], [|AveragingCompound|])
   , ("cccbsRecCompoundSpread", [t|Bool|], [|False|])
-  , ("cccbsRecLookbackDays", [t|Maybe Word|], [|Nothing|])
-  , ("cccbsRecObservationShift", [t|Bool|], [|False|])
-  , ("cccbsRecLockoutDays", [t|Word|], [|0|])
+  , ("cccbsRecObservation", [t|OvernightObservation|], [|defaultOvernightObservation|])
   , ("cccbsRecAveragingMethod", [t|RateAveragingType|], [|AveragingCompound|])
   , ("cccbsTelescopicValueDates", [t|Bool|], [|False|])
   ])
@@ -628,11 +631,13 @@ constNotionalCrossCurrencyBasisSwap payNominal payCurrency paySchedule payIndex 
   constNotionalCrossCurrencyBasisSwap_ payNominal payCurrency paySchedule payIndex paySpread payGearing
     recNominal recCurrency recSchedule recIndex recSpread recGearing
     (cccbsPayPaymentLag opts) (cccbsRecPaymentLag opts)
-    (cccbsPayCompoundSpread opts) (cccbsPayLookbackDays opts) (cccbsPayObservationShift opts)
-    (cccbsPayLockoutDays opts) (cccbsPayAveragingMethod opts)
-    (cccbsRecCompoundSpread opts) (cccbsRecLookbackDays opts) (cccbsRecObservationShift opts)
-    (cccbsRecLockoutDays opts) (cccbsRecAveragingMethod opts)
+    (cccbsPayCompoundSpread opts) (lookbackDays payObs) (applyObservationShift payObs)
+    (lockoutDays payObs) (cccbsPayAveragingMethod opts)
+    (cccbsRecCompoundSpread opts) (lookbackDays recObs) (applyObservationShift recObs)
+    (lockoutDays recObs) (cccbsRecAveragingMethod opts)
     (cccbsTelescopicValueDates opts)
+  where payObs = cccbsPayObservation opts
+        recObs = cccbsRecObservation opts
 
 {#fun qlConstNotionalCrossCurrencyBasisSwap as constNotionalCrossCurrencyBasisSwap_{`Double' -- ^payNominal
   ,withCurrency*`Currency' -- ^payCurrency
@@ -670,11 +675,43 @@ constNotionalCrossCurrencyBasisSwap payNominal payCurrency paySchedule payIndex 
 -- ConstNotionalCrossCurrencyFixedVsFloatingSwap
 -- |Cross-currency fixed-vs-floating swap: 'Payer' pays the fixed leg (leg 0) and receives the
 -- floating leg (leg 1); 'Receiver' the reverse. Every trailing defaulted param of the upstream
--- constructor is a required argument here (only 6 trailing defaults, under the options-record
+-- constructor is a required argument here (only 4 trailing defaults, under the options-record
 -- threshold -- see 'ConstNotionalCrossCurrencyBasisSwapOpts' above) -- pass @False@\/@False@\/
--- 'Nothing'\/@False@\/@0@\/'AveragingCompound' to reproduce upstream's own defaults; the
+-- 'defaultOvernightObservation'\/'AveragingCompound' to reproduce upstream's own defaults; the
 -- OIS-only ones are ignored for a plain Ibor 'floatIndex'.
-{#fun qlConstNotionalCrossCurrencyFixedVsFloatingSwap as constNotionalCrossCurrencyFixedVsFloatingSwap{`SwapType'
+--
+-- Upstream declares the three observation parameters as
+-- @floatLookbackDays, floatObservationShift, floatLockoutDays@, inverting the order every
+-- other overnight-leg producer uses; 'OvernightObservation' hides that.
+constNotionalCrossCurrencyFixedVsFloatingSwap :: SwapType
+  -> Double -- ^fixedNominal
+  -> Currency -- ^fixedCurrency
+  -> Schedule -- ^fixedSchedule
+  -> Double -- ^fixedRate
+  -> DayCounter -- ^fixedDayCount
+  -> BusinessDayConvention -- ^fixedPaymentBdc
+  -> Word -- ^fixedPaymentLag
+  -> Calendar -- ^fixedPaymentCalendar
+  -> Double -- ^floatNominal
+  -> Currency -- ^floatCurrency
+  -> Schedule -- ^floatSchedule
+  -> GenIborIndex ibor -- ^floatIndex
+  -> Double -- ^floatSpread
+  -> BusinessDayConvention -- ^floatPaymentBdc
+  -> Word -- ^floatPaymentLag
+  -> Calendar -- ^floatPaymentCalendar
+  -> Bool -- ^telescopicValueDates
+  -> Bool -- ^floatCompoundSpread
+  -> OvernightObservation -- ^floatObservation
+  -> RateAveragingType -- ^floatAveragingMethod
+  -> IO ConstNotionalCrossCurrencyFixedVsFloatingSwap
+constNotionalCrossCurrencyFixedVsFloatingSwap t fxN fxC fxS fxR fxDc fxBdc fxLag fxCal
+  flN flC flS flIdx flSprd flBdc flLag flCal telescopic compound obs avg =
+  constNotionalCrossCurrencyFixedVsFloatingSwapRaw t fxN fxC fxS fxR fxDc fxBdc fxLag fxCal
+    flN flC flS flIdx flSprd flBdc flLag flCal telescopic compound
+    (lookbackDays obs) (applyObservationShift obs) (lockoutDays obs) avg
+
+{#fun qlConstNotionalCrossCurrencyFixedVsFloatingSwap as constNotionalCrossCurrencyFixedVsFloatingSwapRaw{`SwapType'
   ,`Double' -- ^fixedNominal
   ,withCurrency*`Currency' -- ^fixedCurrency
   ,withSchedule*`Schedule' -- ^fixedSchedule
@@ -763,7 +800,25 @@ instance HasFairSpread ConstNotionalCrossCurrencyFixedVsFloatingSwap where
 
 -- OvernightIndexedSwap
 -- |Fixed vs compounded-overnight-rate swap, with a single flat nominal for both legs.
-{#fun qlOvernightIndexedSwap as overnightIndexedSwap{`SwapType',`Double' -- ^nominal
+overnightIndexedSwap :: SwapType
+  -> Double -- ^nominal
+  -> Schedule
+  -> Double -- ^fixedRate
+  -> DayCounter -- ^fixedDC
+  -> OvernightIborIndex
+  -> Double -- ^spread
+  -> Int -- ^paymentLag
+  -> BusinessDayConvention -- ^paymentAdjustment
+  -> Calendar -- ^paymentCalendar
+  -> Bool -- ^telescopicValueDates
+  -> RateAveragingType -- ^averagingMethod
+  -> OvernightObservation
+  -> IO OvernightIndexedSwap
+overnightIndexedSwap t n sch r dc idx sprd lag adj cal telescopic avg obs =
+  overnightIndexedSwapRaw t n sch r dc idx sprd lag adj cal telescopic avg
+    (lookbackDays obs) (lockoutDays obs) (applyObservationShift obs)
+
+{#fun qlOvernightIndexedSwap as overnightIndexedSwapRaw{`SwapType',`Double' -- ^nominal
   ,withSchedule*`Schedule',`Double'  -- ^fixedRate
   ,withDayCounter*`DayCounter' -- ^fixedDC
   ,withOvernightIborIndex*`OvernightIborIndex',`Double' -- ^spread
@@ -778,7 +833,25 @@ instance HasFairSpread ConstNotionalCrossCurrencyFixedVsFloatingSwap where
   ,preErrorCheck-`String'errorCheck*-}->`OvernightIndexedSwap'peekOvernightIndexedSwap*#}
 
 -- |As 'overnightIndexedSwap', but with a per-period nominal schedule instead of a single flat nominal.
-{#fun qlOvernightIndexedSwap1 as overnightIndexedSwapFromNominals{`SwapType',withDoubleArray*`[Double]'& -- ^nominals
+overnightIndexedSwapFromNominals :: SwapType
+  -> [Double] -- ^nominals
+  -> Schedule
+  -> Double -- ^fixedRate
+  -> DayCounter -- ^fixedDC
+  -> OvernightIborIndex
+  -> Double -- ^spread
+  -> Int -- ^paymentLag
+  -> BusinessDayConvention -- ^paymentAdjustment
+  -> Calendar -- ^paymentCalendar
+  -> Bool -- ^telescopicValueDates
+  -> RateAveragingType -- ^averagingMethod
+  -> OvernightObservation
+  -> IO OvernightIndexedSwap
+overnightIndexedSwapFromNominals t ns sch r dc idx sprd lag adj cal telescopic avg obs =
+  overnightIndexedSwapFromNominalsRaw t ns sch r dc idx sprd lag adj cal telescopic avg
+    (lookbackDays obs) (lockoutDays obs) (applyObservationShift obs)
+
+{#fun qlOvernightIndexedSwap1 as overnightIndexedSwapFromNominalsRaw{`SwapType',withDoubleArray*`[Double]'& -- ^nominals
   ,withSchedule*`Schedule' -- ^schedule
   ,`Double' -- ^fixedRate
   ,withDayCounter*`DayCounter' -- ^fixedDC
@@ -1041,6 +1114,33 @@ instance HasFairSpread CPISwap where
   fairSpread = qlCPISwapFairSpread
 instance HasFairSpread IrregularSwap where
   fairSpread = qlIrregularSwapFairSpread
+
+-- |Options that hold the swap they are written on. 'CdsOption' is constructed in
+-- "QuantLib.Instrument.Credit"; import this module as well to reach its underlying swap.
+class HasInstrumentUnderlying a where
+  type InstrumentUnderlying a
+  underlyingSwap :: a -> IO (InstrumentUnderlying a)
+instance HasInstrumentUnderlying Swaption where
+  type InstrumentUnderlying Swaption = FixedVsFloatingSwap
+  underlyingSwap = qlSwaptionUnderlying
+instance HasInstrumentUnderlying NonstandardSwaption where
+  type InstrumentUnderlying NonstandardSwaption = NonstandardSwap
+  underlyingSwap = qlNonstandardSwaptionUnderlyingSwap
+instance HasInstrumentUnderlying FloatFloatSwaption where
+  type InstrumentUnderlying FloatFloatSwaption = FloatFloatSwap
+  underlyingSwap = qlFloatFloatSwaptionUnderlyingSwap
+instance HasInstrumentUnderlying IrregularSwaption where
+  type InstrumentUnderlying IrregularSwaption = IrregularSwap
+  underlyingSwap = qlIrregularSwaptionUnderlyingSwap
+instance HasInstrumentUnderlying CdsOption where
+  type InstrumentUnderlying CdsOption = CreditDefaultSwap
+  underlyingSwap = qlCdsOptionUnderlyingSwap
+
+{#fun qlSwaptionUnderlying{withSwaption*`Swaption',preErrorCheck-`String'errorCheck*-}->`FixedVsFloatingSwap'peekFixedVsFloatingSwap*#}
+{#fun qlNonstandardSwaptionUnderlyingSwap{withNonstandardSwaption*`NonstandardSwaption',preErrorCheck-`String'errorCheck*-}->`NonstandardSwap'peekNonstandardSwap*#}
+{#fun qlFloatFloatSwaptionUnderlyingSwap{withFloatFloatSwaption*`FloatFloatSwaption',preErrorCheck-`String'errorCheck*-}->`FloatFloatSwap'peekFloatFloatSwap*#}
+{#fun qlIrregularSwaptionUnderlyingSwap{withIrregularSwaption*`IrregularSwaption',preErrorCheck-`String'errorCheck*-}->`IrregularSwap'peekIrregularSwap*#}
+{#fun qlCdsOptionUnderlyingSwap{withCdsOption*`CdsOption',preErrorCheck-`String'errorCheck*-}->`CreditDefaultSwap'peekCreditDefaultSwap*#}
 
 class HasFloatingLeg a where
   floatingLeg :: a -> IO Leg

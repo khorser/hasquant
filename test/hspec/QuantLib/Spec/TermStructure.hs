@@ -10,7 +10,7 @@ import Test.QuickCheck((==>))
 
 import Data.Time.Calendar
 import Data.Maybe(catMaybes)
-import Data.List.NonEmpty(fromList)
+import Data.List.NonEmpty(NonEmpty, fromList)
 import qualified Data.Vector.Storable as V
 
 import QuantLib.Time.Date
@@ -292,13 +292,13 @@ spec = do
           q <- Quote.simpleQuote 0.03
 
           ois <- overnightIborIndex Sofr Nothing
-          oisSwap <- oisRateHelper 2 (1, Years) q ois Nothing >>= oisRateHelperSwap
+          oisSwap <- oisRateHelper 2 (1, Years) (0, Days) q ois Nothing >>= helperInstrument
           (Swap.asSwap oisSwap >>= Swap.maturityDate) `shouldReturn` Just (4 `january` 2025)
 
           ccy <- currency EUR
           ibor <- iborIndex (Ibor "dummy" (6, Months) 2 ccy cal ModifiedFollowing False actual360dc) Nothing
           vanilla <- swapRateHelperFromConventions q (5, Years) cal Annual Unadjusted thirty360dc ibor Nothing (0, Days) Nothing
-            Nothing LastRelevantDate Nothing False Nothing Nothing Nothing >>= swapRateHelperSwap
+            Nothing LastRelevantDate Nothing False Nothing Nothing Nothing >>= helperInstrument
           (Swap.asSwap vanilla >>= Swap.maturityDate) `shouldReturn` Just (4 `january` 2029)
 
           bondMaturity <- advance cal (2 `january` 2024) (5, Years) Unadjusted False
@@ -306,7 +306,7 @@ spec = do
                    Backward False Nothing Nothing
           price <- Quote.simpleQuote 100.0
           bond <- fixedRateBondHelper price 3 100.0 sch [0.04] thirty360dc Following 100.0 Nothing
-                    >>= bondHelperBond
+                    >>= helperInstrument
           Bond.maturityDate bond `shouldReturn` Just bondMaturity
 
     -- Drop Haskell's OptimizationMethod reference and collect before querying the curve. The
@@ -448,12 +448,103 @@ spec = do
           price <- Quote.simpleQuote 95.0
           adjQuote <- Quote.simpleQuote 0.0007
           adjQuoteG <- Quote.asQuote adjQuote
-          fhAdj <- futuresRateHelper price immDate' 3 cal ModifiedFollowing True actual360dc (Just adjQuoteG) IMM
+          fhAdj <- futuresRateHelper price (FuturesMonths immDate' 3 cal ModifiedFollowing True actual360dc) (Just adjQuoteG) IMM
           adj <- futuresRateHelperConvexityAdjustment fhAdj
           adj `shouldSatisfy` closePrec 0.0007 1.0e-12
-          fhNone <- futuresRateHelper price immDate' 3 cal ModifiedFollowing True actual360dc Nothing IMM
+          fhNone <- futuresRateHelper price (FuturesMonths immDate' 3 cal ModifiedFollowing True actual360dc) Nothing IMM
           none <- futuresRateHelperConvexityAdjustment fhNone
           none `shouldBe` 0.0
+
+    describe "futures rate helper terms" $ do
+      it "FuturesFromIndex agrees with the equivalent explicit FuturesMonths" $
+        Settings.keepingSettingsGc $ do
+          Settings.setEvaluationDate (Just (2 `january` 2024))
+          cal <- calendar TARGET
+          ccy <- currency EUR
+          actual360dc <- dayCounter (Actual360 False)
+          immDate' <- nextImmDate (2 `january` 2024) True
+          euribor3m <- iborIndex (Ibor "euribor3m" (3, Months) 2 ccy cal ModifiedFollowing False actual360dc) Nothing
+          price <- Quote.simpleQuote 95.0
+          let priced terms = do
+                rh <- futuresRateHelper price terms Nothing IMM >>= asRateHelper
+                ts <- piecewiseYieldCurve (ReferenceDate (2 `january` 2024)) ([rh] :: NonEmpty RateHelper) actual360dc []
+                  (Iterative Discount LogLinear defaultIterativeBootstrapOpts) False
+                discount ts (DatePoint (2 `january` 2025)) True
+          fromIndex <- priced (FuturesFromIndex immDate' euribor3m)
+          explicit <- priced (FuturesMonths immDate' 3 cal ModifiedFollowing False actual360dc)
+          fromIndex `shouldSatisfy` closePrec explicit 1.0e-12
+
+      it "FuturesBetweenDates spans the same period as the equivalent FuturesMonths" $
+        Settings.keepingSettingsGc $ do
+          Settings.setEvaluationDate (Just (2 `january` 2024))
+          cal <- calendar TARGET
+          actual360dc <- dayCounter (Actual360 False)
+          immDate' <- nextImmDate (2 `january` 2024) True
+          endDate <- advance cal immDate' (3, Months) ModifiedFollowing False
+          price <- Quote.simpleQuote 95.0
+          let priced terms = do
+                rh <- futuresRateHelper price terms Nothing IMM >>= asRateHelper
+                ts <- piecewiseYieldCurve (ReferenceDate (2 `january` 2024)) ([rh] :: NonEmpty RateHelper) actual360dc []
+                  (Iterative Discount LogLinear defaultIterativeBootstrapOpts) False
+                discount ts (DatePoint (2 `january` 2025)) True
+          between <- priced (FuturesBetweenDates immDate' endDate actual360dc)
+          explicit <- priced (FuturesMonths immDate' 3 cal ModifiedFollowing False actual360dc)
+          between `shouldSatisfy` closePrec explicit 1.0e-12
+
+      -- FuturesType reaches the index-form shim: upstream validates the start date's shape
+      -- against it, so an IMM date is rejected as an ASX date. Before the shim was widened
+      -- this branch hardcoded IMM and could not fail here.
+      it "FuturesFromIndex honours the futures type" $
+        Settings.keepingSettingsGc $ do
+          Settings.setEvaluationDate (Just (2 `january` 2024))
+          cal <- calendar TARGET
+          ccy <- currency EUR
+          actual360dc <- dayCounter (Actual360 False)
+          immDate' <- nextImmDate (2 `january` 2024) True
+          euribor3m <- iborIndex (Ibor "euribor3m" (3, Months) 2 ccy cal ModifiedFollowing False actual360dc) Nothing
+          price <- Quote.simpleQuote 95.0
+          _ <- futuresRateHelper price (FuturesFromIndex immDate' euribor3m) Nothing Custom
+          futuresRateHelper price (FuturesFromIndex immDate' euribor3m) Nothing ASX
+            `shouldThrow` anyException
+
+    describe "FRA rate helper terms" $ do
+      it "FraPeriod agrees with the equivalent FraMonths" $
+        Settings.keepingSettingsGc $ do
+          Settings.setEvaluationDate (Just (2 `january` 2024))
+          cal <- calendar TARGET
+          actual360dc <- dayCounter (Actual360 False)
+          q <- Quote.simpleQuote 0.03
+          let priced terms = do
+                rh <- fraRateHelper q terms LastRelevantDate Nothing True
+                ts <- piecewiseYieldCurve (ReferenceDate (2 `january` 2024)) ([rh] :: NonEmpty RateHelper) actual360dc []
+                  (Iterative Discount LogLinear defaultIterativeBootstrapOpts) False
+                discount ts (DatePoint (2 `july` 2024)) True
+          months <- priced (FraMonths 3 6 2 cal ModifiedFollowing False actual360dc)
+          period <- priced (FraPeriod (3, Months) 3 2 cal ModifiedFollowing False actual360dc)
+          months `shouldSatisfy` closePrec period 1.0e-12
+
+      -- The index-form ctors derive the FRA's end date from the index's own tenor and
+      -- fixing calendar, so this agreement holds only because euribor3m is built with the
+      -- same conventions as the explicit terms below -- a failure here is a convention
+      -- mismatch, not necessarily a dispatch bug.
+      it "the FromIndex variants agree with the equivalent explicit terms" $
+        Settings.keepingSettingsGc $ do
+          Settings.setEvaluationDate (Just (2 `january` 2024))
+          cal <- calendar TARGET
+          ccy <- currency EUR
+          actual360dc <- dayCounter (Actual360 False)
+          euribor3m <- iborIndex (Ibor "euribor3m" (3, Months) 2 ccy cal ModifiedFollowing False actual360dc) Nothing
+          q <- Quote.simpleQuote 0.03
+          let priced terms = do
+                rh <- fraRateHelper q terms LastRelevantDate Nothing True
+                ts <- piecewiseYieldCurve (ReferenceDate (2 `january` 2024)) ([rh] :: NonEmpty RateHelper) actual360dc []
+                  (Iterative Discount LogLinear defaultIterativeBootstrapOpts) False
+                discount ts (DatePoint (2 `july` 2024)) True
+          explicit <- priced (FraMonths 3 6 2 cal ModifiedFollowing False actual360dc)
+          monthsIdx <- priced (FraMonthsFromIndex 3 euribor3m)
+          periodIdx <- priced (FraPeriodFromIndex (3, Months) euribor3m)
+          monthsIdx `shouldSatisfy` closePrec explicit 1.0e-12
+          periodIdx `shouldSatisfy` closePrec explicit 1.0e-12
 
     describe "sofr future rate helper" $ do
       it "bootstrapped curve reprices the helper's own futures price" $
@@ -1061,7 +1152,7 @@ spec = do
             euribor6m <- iborIndex Euribor6M (Just intcurve6m)
             q <- Quote.simpleQuote 0.03
             b <- Quote.simpleQuote 0.0020
-            helpers3mFra <- mapM (\i -> fraRateHelper q i (i + 3) 2 cal ModifiedFollowing True euriborDC LastRelevantDate Nothing False) [1 .. 9]
+            helpers3mFra <- mapM (\i -> fraRateHelper q (FraMonths i (i + 3) 2 cal ModifiedFollowing True euriborDC) LastRelevantDate Nothing False) [1 .. 9]
             helpers3mBasis <- mapM (\i -> iborIborBasisSwapRateHelper b (i, Years) 2 cal ModifiedFollowing True euribor3m euribor6m discountCurve True) [2 .. 10]
             helpers6mBasis <- mapM (\i -> iborIborBasisSwapRateHelper b (i * 6, Months) 2 cal ModifiedFollowing True euribor3m euribor6m discountCurve False) [1 .. 3]
             helpers6mSwap <- mapM (\i -> swapRateHelperFromConventions q (i, Years) cal Annual Following thirty360 euribor6m Nothing (0, Days) (Just discountCurve)

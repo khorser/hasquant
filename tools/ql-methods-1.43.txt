@@ -1350,7 +1350,7 @@
 | |ql/experimental/credit/cdo.hpp|Rate CDO::protectionValue() const;
 | |ql/experimental/credit/cdo.hpp|Size CDO::error() const;
 |v|ql/experimental/credit/cdsoption.hpp|CdsOption::CdsOption(const ext::shared_ptr<CreditDefaultSwap> & swap, const ext::shared_ptr<Exercise> & exercise, bool knocksOut = true);
-|x|ql/experimental/credit/cdsoption.hpp|const ext::shared_ptr<CreditDefaultSwap> & CdsOption::underlyingSwap() const;
+|v|ql/experimental/credit/cdsoption.hpp|const ext::shared_ptr<CreditDefaultSwap> & CdsOption::underlyingSwap() const;
 |v|ql/experimental/credit/cdsoption.hpp|Rate CdsOption::atmRate() const;
 |v|ql/experimental/credit/cdsoption.hpp|Real CdsOption::riskyAnnuity() const;
 |v|ql/experimental/credit/cdsoption.hpp|Volatility CdsOption::impliedVolatility(Real price, const Handle<YieldTermStructure> & termStructure, const Handle<DefaultProbabilityTermStructure> &, Real recoveryRate, Real accuracy = 1.e-4, Size maxEvaluations = 100, Volatility minVol = 1.0e-7, Volatility maxVol = 4.0) const;
@@ -2359,7 +2359,7 @@
 |v|ql/experimental/swaptions/irregularswaption.hpp|IrregularSwaption::IrregularSwaption(ext::shared_ptr<IrregularSwap> swap, const ext::shared_ptr<Exercise> & exercise, IrregularSettlement::Type delivery = IrregularSettlement::Physical);
 |x|ql/experimental/swaptions/irregularswaption.hpp|IrregularSettlement::Type IrregularSwaption::settlementType() const;
 | |ql/experimental/swaptions/irregularswaption.hpp|Swap::Type IrregularSwaption::type() const;
-|x|ql/experimental/swaptions/irregularswaption.hpp|const ext::shared_ptr<IrregularSwap> & IrregularSwaption::underlyingSwap() const;
+|v|ql/experimental/swaptions/irregularswaption.hpp|const ext::shared_ptr<IrregularSwap> & IrregularSwaption::underlyingSwap() const;
 | |ql/experimental/swaptions/irregularswaption.hpp|Volatility IrregularSwaption::impliedVolatility(Real price, const Handle<YieldTermStructure> & discountCurve, Volatility guess, Real accuracy = 1.0e-4, Natural maxEvaluations = 100, Volatility minVol = 1.0e-7, Volatility maxVol = 4.0) const;
 | |ql/experimental/swaptions/irregularswaption.hpp|arguments::arguments();
 | |ql/experimental/swaptions/irregularswaption.hpp|void arguments::validate() const;
@@ -3236,7 +3236,7 @@
 |x|ql/instruments/floatfloatswaption.hpp|Settlement::Type FloatFloatSwaption::settlementType() const;
 |x|ql/instruments/floatfloatswaption.hpp|Settlement::Method FloatFloatSwaption::settlementMethod() const;
 |x|ql/instruments/floatfloatswaption.hpp|Swap::Type FloatFloatSwaption::type() const;
-|x|ql/instruments/floatfloatswaption.hpp|const ext::shared_ptr<FloatFloatSwap> & FloatFloatSwaption::underlyingSwap() const;
+|v|ql/instruments/floatfloatswaption.hpp|const ext::shared_ptr<FloatFloatSwap> & FloatFloatSwaption::underlyingSwap() const;
 |v|ql/instruments/floatfloatswaption.hpp|std::vector<ext::shared_ptr<BlackCalibrationHelper>> FloatFloatSwaption::calibrationBasket(const ext::shared_ptr<SwapIndex> & standardSwapBase, const ext::shared_ptr<SwaptionVolatilityStructure> & swaptionVolatility, BasketGeneratingEngine::CalibrationBasketType basketType = BasketGeneratingEngine::MaturityStrikeByDeltaGamma) const;
 | |ql/instruments/floatfloatswaption.hpp|arguments::arguments();
 | |ql/instruments/floatfloatswaption.hpp|void arguments::validate() const;
@@ -3532,7 +3532,7 @@
 |x|ql/instruments/nonstandardswaption.hpp|Settlement::Type NonstandardSwaption::settlementType() const;
 |x|ql/instruments/nonstandardswaption.hpp|Settlement::Method NonstandardSwaption::settlementMethod() const;
 |x|ql/instruments/nonstandardswaption.hpp|Swap::Type NonstandardSwaption::type() const;
-|x|ql/instruments/nonstandardswaption.hpp|const ext::shared_ptr<NonstandardSwap> & NonstandardSwaption::underlyingSwap() const;
+|v|ql/instruments/nonstandardswaption.hpp|const ext::shared_ptr<NonstandardSwap> & NonstandardSwaption::underlyingSwap() const;
 |v|ql/instruments/nonstandardswaption.hpp|std::vector<ext::shared_ptr<BlackCalibrationHelper>> NonstandardSwaption::calibrationBasket(const ext::shared_ptr<SwapIndex> & standardSwapBase, const ext::shared_ptr<SwaptionVolatilityStructure> & swaptionVolatility, BasketGeneratingEngine::CalibrationBasketType basketType = BasketGeneratingEngine::MaturityStrikeByDeltaGamma) const;
 | |ql/instruments/nonstandardswaption.hpp|arguments::arguments();
 | |ql/instruments/nonstandardswaption.hpp|void arguments::validate() const;
@@ -3650,7 +3650,7 @@
 |x|ql/instruments/swaption.hpp|Settlement::Type Swaption::settlementType() const;
 |x|ql/instruments/swaption.hpp|Settlement::Method Swaption::settlementMethod() const;
 |x|ql/instruments/swaption.hpp|Swap::Type Swaption::type() const;
-|x|ql/instruments/swaption.hpp|const ext::shared_ptr<FixedVsFloatingSwap> & Swaption::underlying() const;
+|v|ql/instruments/swaption.hpp|const ext::shared_ptr<FixedVsFloatingSwap> & Swaption::underlying() const;
 |v|ql/instruments/swaption.hpp|Volatility Swaption::impliedVolatility(Real price, const Handle<YieldTermStructure> & discountCurve, Volatility guess, Real accuracy = 1.0e-4, Natural maxEvaluations = 100, Volatility minVol = 1.0e-7, Volatility maxVol = 4.0, VolatilityType type = ShiftedLognormal, Real displacement = 0.0, PriceType priceType = Spot) const;
 | |ql/instruments/swaption.hpp|arguments::arguments();
 | |ql/instruments/swaption.hpp|void arguments::validate() const;

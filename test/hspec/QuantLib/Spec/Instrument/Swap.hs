@@ -157,13 +157,13 @@ spec = do
         -- first guess, then rebuild at that rate and confirm the rebuilt swap reprices to zero.
         guess <- constNotionalCrossCurrencyFixedVsFloatingSwap Payer 100 usd sched 0.03 legDC
           ModifiedFollowing 0 cal 100 eur sched usdLibor3m 0 ModifiedFollowing 0 cal
-          False False Nothing False 0 AveragingCompound
+          False False defaultOvernightObservation AveragingCompound
         setPricingEngine guess engine
         fair <- fairRate guess
 
         priced <- constNotionalCrossCurrencyFixedVsFloatingSwap Payer 100 usd sched fair legDC
           ModifiedFollowing 0 cal 100 eur sched usdLibor3m 0 ModifiedFollowing 0 cal
-          False False Nothing False 0 AveragingCompound
+          False False defaultOvernightObservation AveragingCompound
         setPricingEngine priced engine
         pricedNPV <- npv priced
         pricedNPV `shouldSatisfy` closePrec 0 1e-6
@@ -174,6 +174,45 @@ spec = do
   -- bond's own start/maturity here rather than passed as upstream's empty default Schedule (no
   -- hasquant binding exposes that "derive the schedule from the bond" constructor path) -- a
   -- self-consistency check either way, so any valid schedule matching the index's tenor works.
+  -- overnightIndexedSwapFromNominals would otherwise have no call site at all, leaving its
+  -- hand-written OvernightObservation unpacking unexecuted -- the one place a transposed
+  -- lookbackDays/lockoutDays could ship silently.
+  describe "OvernightIndexedSwap" $
+    it "a flat nominal and a constant per-period nominal schedule price identically" $
+      Settings.keepingSettingsGc $ do
+        let today' = 17 `june` 2002
+        Settings.setEvaluationDate (Just today')
+        cal <- calendar TARGET
+        fixedDC <- dayCounter Thirty360BondBasis
+        discDC <- dayCounter Actual365FixedStandard
+        q <- simpleQuote 0.05
+        adjToday <- adjust cal today' Following
+        settle <- advance cal adjToday (2, Days) Following False
+        ts <- flatForward (ReferenceDate settle) q discDC Continuous Annual
+        ois <- IR.overnightIborIndex IR.Sofr (Just ts)
+        maturity <- advance cal settle (2, Years) ModifiedFollowing False
+        sch <- schedule (Just settle) maturity (1, Years) cal ModifiedFollowing ModifiedFollowing
+          Forward False Nothing Nothing
+        eng <- discountingSwapEngine ts Nothing Nothing Nothing
+        let obs = defaultOvernightObservation
+        flatSwap <- overnightIndexedSwap Payer 100 sch 0.05 fixedDC ois 0.0 0 Following cal
+          False AveragingCompound obs
+        setPricingEngine flatSwap eng
+        flatNpv <- npv flatSwap
+        periods <- length <$> dates sch
+        perPeriod <- overnightIndexedSwapFromNominals Payer (replicate (periods - 1) 100) sch 0.05
+          fixedDC ois 0.0 0 Following cal False AveragingCompound obs
+        setPricingEngine perPeriod eng
+        perPeriodNpv <- npv perPeriod
+        perPeriodNpv `shouldSatisfy` closePrec flatNpv 1.0e-12
+        -- and the observation record is actually threaded through this wrapper, not dropped
+        observed <- overnightIndexedSwapFromNominals Payer (replicate (periods - 1) 100) sch 0.05
+          fixedDC ois 0.0 0 Following cal False AveragingCompound
+          obs{lockoutDays = 2}
+        setPricingEngine observed eng
+        observedNpv <- npv observed
+        observedNpv `shouldNotSatisfy` closePrec perPeriodNpv 1.0e-12
+
   describe "AssetSwap" $
     it "fairCleanPrice and fairSpread both reprice the par asset swap to zero NPV" $
       Settings.keepingSettingsGc $ do

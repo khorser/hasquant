@@ -80,7 +80,7 @@ run = do
 
   oisHelpers <- forM (shortOisQuotes ++ longOisQuotes) $ \(tenor, rate) -> do
     q <- simpleQuote rate
-    TS.oisRateHelper 2 tenor q eonia (Nothing :: Maybe TS.YieldTermStructure)
+    TS.oisRateHelper 2 tenor (0, Days) q eonia (Nothing :: Maybe TS.YieldTermStructure)
       >>= TS.asRateHelper
 
   datedOisHelpers <- forM datedOisQuotes $ \(start, end, rate) -> do
@@ -99,8 +99,8 @@ run = do
         d6M <- TS.depositRateHelper d6MQuote (6, Months) 3 cal Following False depositDC
         fras <- forM fraQuotes $ \(monthsToStart, rate) -> do
           q <- simpleQuote rate
-          TS.fraRateHelper q monthsToStart (monthsToStart + 6) 2 cal ModifiedFollowing
-            False depositDC TS.LastRelevantDate Nothing True
+          TS.fraRateHelper q (TS.FraMonths monthsToStart (monthsToStart + 6) 2 cal ModifiedFollowing
+            False depositDC) TS.LastRelevantDate Nothing True
         swaps <- forM swapQuotes $ \(yrs, rate) -> do
           q <- simpleQuote rate
           TS.swapRateHelperFromConventions q (yrs, Years) cal Annual Unadjusted fixedLegDC euribor6M

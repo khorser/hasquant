@@ -57,6 +57,9 @@ module QuantLib.Internal.Common
 
   , CPIInterpolationType(..)
 
+  , OvernightObservation(..)
+  , defaultOvernightObservation
+
   , Constraint(..)
   , QlConstraint
   , withConstraint
@@ -214,6 +217,23 @@ peekPricingErrorLevelArray = peekIntArray' toEnumC
 -- it already).
 {#enum CPIInterpolationType{} deriving (Show, Eq, Read, Bounded)#}
 {#enum CalibrationBasketType{} deriving (Show, Eq, Read, Bounded)#}
+
+-- |How an overnight leg observes its index fixings. Shared by every overnight-leg producer:
+-- the swap constructors, the OIS rate helpers, and the cross-currency swaps. 'lookbackDays'
+-- is 'Nothing' for upstream's @Null@ default, meaning the index's own fixing days.
+--
+-- Declared here rather than in a topical module because its producers span
+-- "QuantLib.Instrument.Swap" and "QuantLib.TermStructure.Yield", whose build order cannot
+-- accommodate one importing the other.
+data OvernightObservation = OvernightObservation
+  { lookbackDays :: !(Maybe Word)
+  , lockoutDays :: !Word
+  , applyObservationShift :: !Bool
+  } deriving (Eq, Show)
+
+-- |Upstream's own defaults: index fixing days, no lockout, no observation shift.
+defaultOvernightObservation :: OvernightObservation
+defaultOvernightObservation = OvernightObservation Nothing 0 False
 
 -- Payoff/Exercise pointer hierarchy: the Finalizable/Upcastable instances and raw phantom
 -- tags (CPayoff' etc.) live in QuantLib.Internal.Type alongside every other class hierarchy;

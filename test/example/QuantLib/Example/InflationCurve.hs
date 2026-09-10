@@ -25,8 +25,8 @@ data Result = Result
   , zeroRate2Y :: Double
   , yoyRate1Y :: Double
   , yoyRate2Y :: Double
-  , zcisHelperFairRate :: Double -- ^fair rate of the swap 'zeroCouponInflationSwapHelperSwap' pulls out of h1
-  , yoyHelperFairRate :: Double  -- ^likewise, via 'yearOnYearInflationSwapHelperSwap' on hy1
+  , zcisHelperFairRate :: Double -- ^fair rate of the swap 'helperInstrument' pulls out of h1
+  , yoyHelperFairRate :: Double  -- ^likewise, via 'helperInstrument' on hy1
   } deriving Show
 
 run :: IO Result
@@ -50,7 +50,7 @@ run = do
   z2 <- zeroRate zeroCurve maturity2 True
   -- the helper builds its swap internally, so this accessor is the only way to reach it;
   -- once the curve is bootstrapped the swap must reprice to the quote it was built from
-  zcisFair <- fairRate =<< zeroCouponInflationSwapHelperSwap h1
+  zcisFair <- fairRate =<< helperInstrument h1
 
   yii <- yoyInflationIndex YYUKRPI
   forM_ (zip [1 :: Double ..] fixingDates) $ \(i, d) -> addFixing yii d (flatRate + i * 0.0001) False
@@ -63,7 +63,7 @@ run = do
   yoyCurve <- piecewiseYoyInflationCurve evalDate baseDate flatRate Monthly dc [hy1, hy2] Linear
   y1 <- yoyRate yoyCurve maturity1 True
   y2 <- yoyRate yoyCurve maturity2 True
-  yoyFair <- fairRate =<< yearOnYearInflationSwapHelperSwap hy1
+  yoyFair <- fairRate =<< helperInstrument hy1
 
   return Result
     { zeroRate1Y = z1

@@ -48,7 +48,7 @@ run = do
     TS.depositRateHelper q p (fromIntegral fixingDays) cal ModifiedFollowing True depoDC) $
       zip depoQuotes depoTerms
   fraHelpers <- mapM (\(q, (m1, m2)) ->
-    TS.fraRateHelper q m1 m2 (fromIntegral fixingDays) cal ModifiedFollowing True depoDC TS.LastRelevantDate Nothing True) $
+    TS.fraRateHelper q (TS.FraMonths m1 m2 (fromIntegral fixingDays) cal ModifiedFollowing True depoDC) TS.LastRelevantDate Nothing True) $
       zip fraQuotes fraTerms
 
   imm1 <- nextImmDate settleDate True
@@ -62,7 +62,7 @@ run = do
   imms <- (imm1 :) <$> nextIMMs (length futPrices - 1) imm1
 
   futHelpers <- mapM (\(q, imm) ->
-    TS.futuresRateHelper q imm 3 cal ModifiedFollowing True depoDC Nothing TS.IMM >>= TS.asRateHelper) $
+    TS.futuresRateHelper q (TS.FuturesMonths imm 3 cal ModifiedFollowing True depoDC) Nothing TS.IMM >>= TS.asRateHelper) $
       zip futQuotes imms
 
   swFixedDC <- dayCounter Thirty360European

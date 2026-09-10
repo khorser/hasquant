@@ -45,7 +45,7 @@ oisRateHelperFull days tenor rate idx curve
   `("oisOvernightSpread", [t|Maybe (GenQuote $(varT (mkName "m")))|], [|Nothing|])`
   and `"m"` must also appear in the record's type-variable list (argument 2).
 - **No pure default available.** A field whose type only exists in IO — `Calendar`, obtainable only via `calendar Null :: IO Calendar` — is `Maybe`-wrapped with a `Nothing` default, and the hand-written wrapper substitutes the real value with `fromMaybe` after constructing one. That's why `OISRateHelperOpts`'s three calendar fields are `Maybe Calendar` while the raw binding takes a plain `Calendar`.
-- **Fields not used by every overload.** When two overloads share one options record, mark the ones a given wrapper ignores in the field's comment — e.g. `oisForwardStart` is ignored by `oisRateHelperBetweenDatesWithOptions`, since the second C constructor has no `forwardStart` parameter.
+- **Fields not used by every overload.** A shared options record must not carry a field one of its wrappers silently ignores — that is an unsupported combination that type-checks, and a comment saying "ignored by X" does not fix it. Hoist such a field out of the record into an explicit parameter on the overloads that can honour it. `forwardStart` is the worked example: upstream's `qlOISRateHelper2` has no `forwardStart`, so it is a parameter of `oisRateHelper`/`oisRateHelperWithOptions` and simply absent from `oisRateHelperBetweenDates`/`oisRateHelperBetweenDatesWithOptions`, rather than an `OISRateHelperOpts` field. Hoisting widens the narrow entry point by one argument; accept that, or give the two overloads separate records if more than a couple of fields diverge.
 
 ## Verification
 

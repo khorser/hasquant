@@ -2360,3 +2360,19 @@ QlQuote *qlRendistatoEquivalentSwapSpreadQuote(QlRendistatoCalculator *o, char *
 
 }
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */
+
+QlFixedVsFloatingSwap* qlSwaptionUnderlying(QlSwaption* o, char **e) {
+  try {return ret(new QlFixedVsFloatingSwap((*arg(o))->underlying()));}
+  catch (std::exception& er) {return handleException<QlFixedVsFloatingSwap*>(e, er);}}
+QlNonstandardSwap* qlNonstandardSwaptionUnderlyingSwap(QlNonstandardSwaption* o, char **e) {
+  try {return ret(new QlNonstandardSwap((*arg(o))->underlyingSwap()));}
+  catch (std::exception& er) {return handleException<QlNonstandardSwap*>(e, er);}}
+QlFloatFloatSwap* qlFloatFloatSwaptionUnderlyingSwap(QlFloatFloatSwaption* o, char **e) {
+  try {return ret(new QlFloatFloatSwap((*arg(o))->underlyingSwap()));}
+  catch (std::exception& er) {return handleException<QlFloatFloatSwap*>(e, er);}}
+QlIrregularSwap* qlIrregularSwaptionUnderlyingSwap(QlIrregularSwaption* o, char **e) {
+  try {return ret(new QlIrregularSwap((*arg(o))->underlyingSwap()));}
+  catch (std::exception& er) {return handleException<QlIrregularSwap*>(e, er);}}
+QlCreditDefaultSwap* qlCdsOptionUnderlyingSwap(QlCdsOption* o, char **e) {
+  try {return ret(new QlCreditDefaultSwap((*arg(o))->underlyingSwap()));}
+  catch (std::exception& er) {return handleException<QlCreditDefaultSwap*>(e, er);}}

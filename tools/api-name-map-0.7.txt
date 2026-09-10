@@ -158,9 +158,9 @@ fxSwapRateHelper'	fxSwapRateHelperBetweenDates
 oisRateHelper'	oisRateHelperBetweenDates
 oisRateHelperFull'	oisRateHelperBetweenDatesWithOptions
 oisRateHelperFull	oisRateHelperWithOptions
-fraIborRateHelper'	fraRateHelperFromIndex
-fraRateHelper'	fraRateHelperFromPeriod
-futuresRateHelper'	futuresRateHelperBetweenDates
+fraIborRateHelper'	fraRateHelper
+fraRateHelper'	fraRateHelper
+futuresRateHelper'	futuresRateHelper
 fittedBondDiscountCurveMoving	fittedBondDiscountCurve
 fittedBondDiscountCurve'	fittedBondDiscountCurve
 piecewiseYieldCurveFull	piecewiseYieldCurve
@@ -425,3 +425,21 @@ garch11LogLikelihood	logLikelihood
 garch11Forecast	forecast
 garch11Calculate	calculate
 years	yearFraction
+# Collapsed into the HasHelperUnderlying capability class (QuantLib.TermStructure).
+bondHelperBond	helperInstrument
+swapRateHelperSwap	helperInstrument
+oisRateHelperSwap	helperInstrument
+zeroCouponInflationSwapHelperSwap	helperInstrument
+yearOnYearInflationSwapHelperSwap	helperInstrument
+helperUnderlying	helperInstrument
+# Type changes, not pure renames: three flat fields become one OvernightObservation field,
+# so a migrated call site also needs its value restructured.
+oisLookbackDays	oisObservation
+oisLockoutDays	oisObservation
+oisApplyObservationShift	oisObservation
+cccbsPayLookbackDays	cccbsPayObservation
+cccbsPayObservationShift	cccbsPayObservation
+cccbsPayLockoutDays	cccbsPayObservation
+cccbsRecLookbackDays	cccbsRecObservation
+cccbsRecObservationShift	cccbsRecObservation
+cccbsRecLockoutDays	cccbsRecObservation

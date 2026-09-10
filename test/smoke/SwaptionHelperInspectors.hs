@@ -53,7 +53,7 @@ main = do
   h <- swaptionHelper (SpanTenors (5, Years) (5, Years)) volQ euribor6m (1, Years) thirty360bb act360 ts
     RelativePriceError (Just strike) nominal ShiftedLognormal 0.0 (Just 2) CF.AveragingCompound
 
-  underlying <- helperUnderlying h
+  underlying <- helperInstrument h
   fr <- fairRate underlying
   _fl <- fixedLeg underlying -- just confirm it materializes without throwing
   putStrLn ("underlying fairRate: " ++ show fr)

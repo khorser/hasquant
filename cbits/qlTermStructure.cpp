@@ -1952,8 +1952,8 @@ QlRateHelper* qlFraRateHelper3(QlQuote* rate, int l, int u, QlIborIndex* iborInd
 QlFuturesRateHelper* qlFuturesRateHelper1(QlQuote* price, int immStartDate, int endDate, DayCounter* dayCounter, QlQuote* convexityAdjustment, int type, char **e) {
   try {return ret(new QlFuturesRateHelper(alloc(new FuturesRateHelper(*arg(price), Date(immStartDate), Date(endDate), *arg(dayCounter), qlNullableHandle(arg(convexityAdjustment)), (Futures::Type)type))));
   } catch (std::exception& er) {return handleException<QlFuturesRateHelper*>(e, er);}}
-QlFuturesRateHelper* qlFuturesRateHelper2(QlQuote* price, int immDate, QlIborIndex* iborIndex, QlQuote* convexityAdjustment, char **e) {
-  try {return ret(new QlFuturesRateHelper(alloc(new FuturesRateHelper(*arg(price), Date(immDate), *arg(iborIndex), qlNullableHandle(arg(convexityAdjustment))))));
+QlFuturesRateHelper* qlFuturesRateHelper2(QlQuote* price, int immDate, QlIborIndex* iborIndex, QlQuote* convexityAdjustment, int type, char **e) {
+  try {return ret(new QlFuturesRateHelper(alloc(new FuturesRateHelper(*arg(price), Date(immDate), *arg(iborIndex), qlNullableHandle(arg(convexityAdjustment)), (Futures::Type)type))));
   } catch (std::exception& er) {return handleException<QlFuturesRateHelper*>(e, er);}}
 QlFuturesRateHelper* qlFuturesRateHelper(QlQuote* price, int immDate, unsigned lengthInMonths, Calendar* calendar, int convention, int endOfMonth, DayCounter* dayCounter, QlQuote* convexityAdjustment, int type, char **e) {
   try {return ret(new QlFuturesRateHelper(alloc(new FuturesRateHelper(*arg(price), Date(immDate), lengthInMonths, *arg(calendar), (BusinessDayConvention)convention, endOfMonth, *arg(dayCounter), qlNullableHandle(arg(convexityAdjustment)), (Futures::Type)type))));

@@ -9,8 +9,7 @@ module QuantLib.TermStructure.Inflation
 
   , zeroCouponInflationSwapHelper
   , yearOnYearInflationSwapHelper
-  , zeroCouponInflationSwapHelperSwap
-  , yearOnYearInflationSwapHelperSwap
+  , HasHelperUnderlying(..)
 
   , piecewiseZeroInflationCurve
   , piecewiseYoyInflationCurve
@@ -23,6 +22,7 @@ import QuantLib.Internal
 import QuantLib.Internal.Type
 {#import QuantLib.Time.Schedule#}(Frequency)
 import QuantLib.Internal.Common
+import QuantLib.TermStructure(HasHelperUnderlying(..))
 import Data.List.NonEmpty(NonEmpty, toList)
 {#import QuantLib.TermStructure.Yield#}(PillarChoice)
 
@@ -73,10 +73,10 @@ import Data.List.NonEmpty(NonEmpty, toList)
   ,preErrorCheck-`String'errorCheck*-}->`YearOnYearInflationSwapHelper'peekYearOnYearInflationSwapHelper*#}
 
 -- |The underlying swap the helper builds from its quote, observation lag and maturity.
-{#fun qlZeroCouponInflationSwapHelperSwap as zeroCouponInflationSwapHelperSwap{withZeroCouponInflationSwapHelper*`ZeroCouponInflationSwapHelper',preErrorCheck-`String'errorCheck*-}->`ZeroCouponInflationSwap'peekZeroCouponInflationSwap*#}
+
 
 -- |The underlying swap the helper builds from its quote, observation lag and maturity.
-{#fun qlYearOnYearInflationSwapHelperSwap as yearOnYearInflationSwapHelperSwap{withYearOnYearInflationSwapHelper*`YearOnYearInflationSwapHelper',preErrorCheck-`String'errorCheck*-}->`YearOnYearInflationSwap'peekYearOnYearInflationSwap*#}
+
 
 piecewiseZeroInflationCurve :: Day -- ^referenceDate
   -> Day -- ^baseDate

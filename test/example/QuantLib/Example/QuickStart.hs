@@ -51,7 +51,7 @@ run = do
     ModifiedFollowing ModifiedFollowing Backward False Nothing Nothing
 
   ois <- overnightIndexedSwap Payer 10000000 sched 0.035 dc sofr 0.0
-    0 Following cal False AveragingCompound Nothing 0 False
+    0 Following cal False AveragingCompound defaultOvernightObservation
 
   engine <- discountingSwapEngine curve (Just False) Nothing Nothing
   setPricingEngine ois engine

@@ -53,7 +53,7 @@ run = do
 
   (rates3, ts00, curves3) <- step3 newtod dc cal newBondSettle iA iB
   mapM_ (\(price, q, i) -> do
-      b <- TS.bondHelperBond i
+      b <- TS.helperInstrument i
       ytm <- yieldFromPriceWithGuess b (price, Clean) dc IR.Compounded Annual newtod 1e-10 100 0.05
       ytmRate <- IR.interestRate ytm dc IR.Compounded Annual
       dur <- duration b ytmRate CF.Modified newtod
@@ -93,7 +93,7 @@ run = do
 
       r <- forM instrA $
         \h -> do
-          b <- TS.bondHelperBond h
+          b <- TS.helperInstrument h
           leg <- cashFlows b
           cfs <- CF.cashFlows leg (Just False) (Just bondSettle)
           let (ds, _, _) = unzip3 $ filter (\(_, _, oc) -> not oc) cfs

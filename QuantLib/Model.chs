@@ -103,7 +103,7 @@ module QuantLib.Model
   , hestonModelHelper
   , SwaptionSpan(..)
   , swaptionHelper
-  , helperUnderlying
+  , HasHelperUnderlying(..)
   , helperSwaption
   , times
 
@@ -138,6 +138,7 @@ import QuantLib.Internal
 {#import QuantLib.CashFlow#}(RateAveragingType)
 import QuantLib.Internal.Type
 import QuantLib.Internal.Common
+import QuantLib.TermStructure(HasHelperUnderlying(..))
 import QuantLib.Math(SobolDirectionIntegers)
 import Data.List(genericTake)
 import Data.List.NonEmpty(NonEmpty, toList)
@@ -774,7 +775,7 @@ swaptionHelper span' = case span' of
   ,preErrorCheck-`String'errorCheck*-}->`SwaptionHelper'peekSwaptionHelper*#}
 
 -- |Upstream's own vanilla swap underlying this helper's swaption.
-{#fun qlSwaptionHelperUnderlying as helperUnderlying{withSwaptionHelper*`SwaptionHelper',preErrorCheck-`String'errorCheck*-}->`FixedVsFloatingSwap'peekFixedVsFloatingSwap*#}
+
 
 -- |The 'QuantLib.Instrument.Swap.Swaption' this helper prices internally to compute 'modelValue'.
 {#fun qlSwaptionHelperSwaption as helperSwaption{withSwaptionHelper*`SwaptionHelper',preErrorCheck-`String'errorCheck*-}->`Swaption'peekSwaption*#}

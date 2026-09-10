@@ -38,10 +38,10 @@ main = do
         curve <- piecewiseYieldCurve (ReferenceDate today) [h] dc [] (Iterative Discount LogLinear defaultIterativeBootstrapOpts) False
         discount curve (DatePoint endDate) True
 
-  hNarrow <- oisRateHelper 2 (1, Years) q idx Nothing
+  hNarrow <- oisRateHelper 2 (1, Years) (0, Days) q idx Nothing
   dNarrow <- endToEndDiscount hNarrow
 
-  hWithDefaults <- oisRateHelperWithOptions 2 (1, Years) q idx Nothing defaultOisRateHelperOpts
+  hWithDefaults <- oisRateHelperWithOptions 2 (1, Years) (0, Days) q idx Nothing defaultOisRateHelperOpts
   dWithDefaults <- endToEndDiscount hWithDefaults
 
   putStrLn ("narrow          -> discount " ++ show dNarrow)
@@ -51,12 +51,25 @@ main = do
     "identical discount (a difference means field order/type drift in the options record)"
     (dNarrow == dWithDefaults)
 
-  hOverridden <- oisRateHelperWithOptions 2 (1, Years) q idx Nothing
+  hOverridden <- oisRateHelperWithOptions 2 (1, Years) (0, Days) q idx Nothing
     defaultOisRateHelperOpts{oisTelescopicValueDates = True, oisPaymentFrequency = Semiannual, oisAveragingMethod = AveragingSimple}
   dOverridden <- endToEndDiscount hOverridden
   putStrLn ("with options (overridden) -> discount " ++ show dOverridden)
   checkWith "override path takes effect"
     "discount differs from defaults (equality means the overrides are being dropped)"
     (dOverridden /= dWithDefaults)
+
+  -- OvernightObservation reaches the shim: a non-default observation must move the curve.
+  -- If the record were dropped or its fields transposed, this would equal the default run.
+  -- lookback/observation-shift rather than lockout: lockout pushes the last coupon's required
+  -- fixing range past the maturity of the very curve being bootstrapped, so it cannot solve.
+  hObserved <- oisRateHelperWithOptions 2 (1, Years) (0, Days) q idx Nothing
+    defaultOisRateHelperOpts{oisObservation =
+      defaultOvernightObservation{lookbackDays = Just 2, applyObservationShift = True}}
+  dObserved <- endToEndDiscount hObserved
+  putStrLn ("with options (lookback 2, shifted) -> discount " ++ show dObserved)
+  checkWith "OvernightObservation field is threaded through"
+    "discount differs from defaults (equality means oisObservation is being dropped)"
+    (dObserved /= dWithDefaults)
   where
     today = 2 `january` 2024
