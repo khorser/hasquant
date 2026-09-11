@@ -1,10 +1,21 @@
 module QuantLib.Instrument
   (
     -- * Types
-    PositionType(..)
+    -- ** Instrument hierarchy
+    GenInstrument
+  , Instrument
+  , AdditionalResultVal(..)
+
+    -- ** Exercises and callability
+  , Exercise(..)
+  , ExerciseType(..)
+  , Callability(..)
+  , CallabilityType(..)
+
+    -- ** Conventions
+  , PositionType(..)
   , SettlementType(..)
   , SettlementMethod(..)
-  , CallabilityType(..)
   , OptionType(..)
   , BarrierType(..)
   , DoubleBarrierType(..)
@@ -14,15 +25,6 @@ module QuantLib.Instrument
   , PricingModel(..)
   , PerpetualFuturesPayoffType(..)
   , PerpetualFuturesFundingType(..)
-
-  , Instrument
-  , GenInstrument
-  , Callability(..)
-
-  , Exercise(..)
-  , ExerciseType(..)
-
-  , AdditionalResultVal(..)
 
     -- * Constructors
   , asInstrument

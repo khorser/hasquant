@@ -1,12 +1,12 @@
 module QuantLib.Index.Inflation
   (
     -- * Types
-    InflationIndex
-  , ZeroInflationIndex
-  , YoYInflationIndex
-  , GenInflationIndex
+    GenInflationIndex
+  , InflationIndex
   , GenZeroInflationIndex
+  , ZeroInflationIndex
   , GenYoYInflationIndex
+  , YoYInflationIndex
   , ZeroInflationIndexType(..)
   , YoYInflationIndexType(..)
   , Region

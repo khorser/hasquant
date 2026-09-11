@@ -3,32 +3,41 @@
 module QuantLib.Math
   (
     -- * Types
-    RoundingType(..)
-  , Rounding(..)
-  , EndCriteriaType(..)
-  , HistogramAlgorithm(..)
-  , Approximation(..)
-  , Interpolation(..)
-  , Interpolation2D(..)
-  , RngTrait(..)
-  , StatisticsTrait(..)
-  , BinomialTree(..)
-  , BoundaryConditionSide(..)
-  , FdmSchemeType(..)
-  , FdmScheme(..)
-  , PolynomialType(..)
-  , ComplexLogFormula(..)
-  , CmsMarketCalibrationType(..)
-  , EndCriteria(..)
-  , OptimizationMethod(..)
-  , Constraint(..)
-  , SobolDirectionIntegers(..)
-  , Matrix
+    -- ** Matrices, vectors and grids
+    Matrix
   , RealMatrix
-  , SalvagingAlgorithm(..)
   , RealVector
   , NonEmptyVector
   , TimeGrid
+
+    -- ** Rounding and optimization
+  , RoundingType(..)
+  , Rounding(..)
+  , EndCriteriaType(..)
+  , EndCriteria(..)
+  , OptimizationMethod(..)
+  , Constraint(..)
+
+    -- ** Interpolation and numerical traits
+  , Interpolation(..)
+  , Interpolation2D(..)
+  , Approximation(..)
+  , PolynomialType(..)
+  , ComplexLogFormula(..)
+  , SalvagingAlgorithm(..)
+  , BinomialTree(..)
+  , HistogramAlgorithm(..)
+  , CmsMarketCalibrationType(..)
+
+    -- ** Random sequences and statistics
+  , RngTrait(..)
+  , StatisticsTrait(..)
+  , SobolDirectionIntegers(..)
+
+    -- ** Finite-difference schemes
+  , BoundaryConditionSide(..)
+  , FdmSchemeType(..)
+  , FdmScheme(..)
 
     -- * Constructors
     -- ** Matrices and vectors

@@ -1,7 +1,19 @@
 module QuantLib.Instrument.Energy
   (
     -- * Types
-    SecondaryCosts
+    -- ** Commodity instrument hierarchy
+    GenCommodity
+  , Commodity
+  , GenEnergyCommodity
+  , EnergyCommodity
+  , GenEnergySwap
+  , EnergySwap
+  , EnergyFuture
+  , EnergyVanillaSwap
+  , EnergyBasisSwap
+
+    -- ** Costs, errors and positions
+  , SecondaryCosts
   , SecondaryCostAmounts
   , PricingErrorLevel(..)
   , PricingError(..)
@@ -10,10 +22,8 @@ module QuantLib.Instrument.Energy
   , EnergyDailyPositions
   , CommodityCashFlow
   , CommodityCashFlows
-  , EnergyFuture
-  , EnergySwap
-  , EnergyVanillaSwap
-  , EnergyBasisSwap
+
+    -- ** Configuration
   , DeliverySchedule(..)
   , QuantityPeriodicity(..)
 

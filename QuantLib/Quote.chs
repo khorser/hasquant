@@ -1,18 +1,21 @@
 module QuantLib.Quote
   (
     -- * Types
-    Quote
-   , SimpleQuote
-   , DeltaVolQuote
-   , FuturesConvAdjustmentQuote
-   , RelinkableQuote
-   , GenQuote
-   , PriceType(..)
-   , IntervalPriceType(..)
-   , AtmType(..)
-   , DeltaType(..)
-   , QuoteOp(..)
-   , MultiQuoteOp(..)
+    -- ** Quote hierarchy
+    GenQuote
+  , Quote
+  , SimpleQuote
+  , DeltaVolQuote
+  , FuturesConvAdjustmentQuote
+  , RelinkableQuote
+
+    -- ** Configuration
+  , PriceType(..)
+  , IntervalPriceType(..)
+  , AtmType(..)
+  , DeltaType(..)
+  , QuoteOp(..)
+  , MultiQuoteOp(..)
 
     -- * Constructors
     -- ** Basic quotes and conversions

@@ -5,7 +5,6 @@ module QuantLib.TermStructure.Inflation
   , YoYInflationTermStructure
   , ZeroCouponInflationSwapHelper
   , YearOnYearInflationSwapHelper
-
   , CPIInterpolationType(..) -- ^re-exported from "QuantLib.Internal.Common"
 
     -- * Constructors

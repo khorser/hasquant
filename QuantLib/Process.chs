@@ -11,17 +11,18 @@ module QuantLib.Process
   , HybridHestonHullWhiteProcessDiscretization(..)
 
     -- ** Process hierarchy
-  , GeneralizedBlackScholesProcess
-  , StochasticProcess1D
-  , GenStochasticProcess1D
-  , StochasticProcess
   , GenStochasticProcess
+  , StochasticProcess
+  , GenStochasticProcess1D
+  , StochasticProcess1D
+  , GenGeneralizedBlackScholesProcess
+  , GeneralizedBlackScholesProcess
   , BlackProcess
   , ExtOUWithJumpsProcess
   , ExtendedOrnsteinUhlenbeckProcess
   , GJRGARCHProcess
-  , HestonProcess
   , GenHestonProcess
+  , HestonProcess
   , HestonSLVProcess
   , BatesProcess
   , G2Process

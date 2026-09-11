@@ -2,57 +2,53 @@
 module QuantLib.Instrument.Bond
   (
     -- * Types
-    -- ** Bond types
-    Bond
+    -- ** Bond hierarchy
+    GenBond
+  , Bond
+  , GenFixedRateBond
   , FixedRateBond
   , BTP
+  , CPIBond
+  , CallableBond
+  , ConvertibleBond
   , RendistatoBasket
   , RendistatoCalculator
-  , ConvertibleBond
-  , CallableBond
-  , CPIBond
 
-    -- * Constructors
-    -- ** Hierarchy conversion and price types
-  , asBond
-
+    -- ** Configuration
   , BondPriceType(..)
   , CPIInterpolationType(..)
+  , Discounting(..)
+  , BpsDiscounting(..)
+  , AmortizingFloatingRateBondOpts(..)
+  , defaultAmortizingFloatingRateBondOpts
+
+    -- * Constructors
+    -- ** Hierarchy conversion
+  , asBond
 
     -- ** Bonds and baskets
   , bond
   , fixedRateBond
   , btp
   , btpWithRedemption
-  , rendistatoBasket
-  , rendistatoCalculator
-  , rendistatoYield
-  , rendistatoDuration
-  , rendistatoYields
-  , rendistatoDurations
-  , rendistatoSwapLengths
-  , rendistatoSwapRates
-  , rendistatoSwapYields
-  , rendistatoSwapDurations
-  , rendistatoEquivalentSwap
-  , rendistatoEquivalentSwapRate
-  , rendistatoEquivalentSwapYield
-  , rendistatoEquivalentSwapDuration
-  , rendistatoEquivalentSwapLength
-  , rendistatoEquivalentSwapSpread
-  , rendistatoEquivalentSwapLengthQuote
-  , rendistatoEquivalentSwapSpreadQuote
   , zeroCouponBond
   , floatingRateBond
   , cmsRateBond
   , cpiBond
   , amortizingFixedRateBond
   , amortizingCmsRateBond
-  , AmortizingFloatingRateBondOpts(..)
-  , defaultAmortizingFloatingRateBondOpts
   , amortizingFloatingRateBond
   , sinkingSchedule
   , sinkingNotionals
+  , rendistatoBasket
+  , rendistatoCalculator
+
+    -- ** Callable and convertible bonds
+  , callableFixedRateBond
+  , callableZeroCouponBond
+  , convertibleFixedCouponBond
+  , convertibleFloatingRateBond
+  , convertibleZeroCouponBond
 
     -- * Inspectors
     -- ** Bond state
@@ -84,8 +80,6 @@ module QuantLib.Instrument.Bond
   , accruedPeriod
   , atmRate
   , basisPointValue
-  , Discounting(..)
-  , BpsDiscounting(..)
   , bps
   , cleanPrice
   , convexity
@@ -102,12 +96,23 @@ module QuantLib.Instrument.Bond
   , currentCleanPrice
   , currentDirtyPrice
 
-    -- ** Callable and convertible bonds
-  , callableFixedRateBond
-  , callableZeroCouponBond
-  , convertibleFixedCouponBond
-  , convertibleFloatingRateBond
-  , convertibleZeroCouponBond
+    -- ** Rendistato basket analytics
+  , rendistatoYield
+  , rendistatoDuration
+  , rendistatoYields
+  , rendistatoDurations
+  , rendistatoSwapLengths
+  , rendistatoSwapRates
+  , rendistatoSwapYields
+  , rendistatoSwapDurations
+  , rendistatoEquivalentSwap
+  , rendistatoEquivalentSwapRate
+  , rendistatoEquivalentSwapYield
+  , rendistatoEquivalentSwapDuration
+  , rendistatoEquivalentSwapLength
+  , rendistatoEquivalentSwapSpread
+  , rendistatoEquivalentSwapLengthQuote
+  , rendistatoEquivalentSwapSpreadQuote
   ) where
 import QuantLib.Internal
 import QuantLib.Internal.Type

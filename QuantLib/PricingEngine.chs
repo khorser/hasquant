@@ -2,11 +2,18 @@
 module QuantLib.PricingEngine
   (
     -- * Types
+    -- ** Engines
     PricingEngine
+  , FdmQuantoHelper
+
+    -- ** Option calculators
+  , GenBlackCalculator
   , BlackCalculator
   , BlackScholesCalculator
   , BachelierCalculator
   , BlackDeltaCalculator
+
+    -- ** Configuration
   , CashAnnuityModel(..)
   , Probabilities(..)
   , CashDividendModel(..)
@@ -16,13 +23,9 @@ module QuantLib.PricingEngine
   , SolverType(..)
   , FixedPointEquation(..)
   , QdFpScheme(..)
-  , FdmQuantoHelper
   , IntegrationControl(..)
   , LatticeTime(..)
   , FdmGrid(..)
-
-    -- ** Option calculators
-  , GenBlackCalculator
 
     -- * Constructors
     -- ** Discounting and counterparty engines
@@ -208,23 +211,24 @@ module QuantLib.PricingEngine
   , StrikeSpec(..)
   , asBlackCalculator
   , blackCalculator
-  , blackVanna
   , blackScholesCalculator
-  , blackScholesDelta
-  , blackScholesElasticity
-  , blackScholesGamma
-  , blackScholesTheta
-  , blackScholesThetaPerDay
-
   , bachelierCalculator
-  , bachelierVanna
+  , blackDeltaCalculator
 
     -- * Inspectors
     -- ** Option-calculator capability
   , HasOptionCalculator(..)
 
+    -- ** Calculator sensitivities
+  , blackVanna
+  , blackScholesDelta
+  , blackScholesElasticity
+  , blackScholesGamma
+  , blackScholesTheta
+  , blackScholesThetaPerDay
+  , bachelierVanna
+
     -- ** Formulae, probabilities and SABR helpers
-  , blackDeltaCalculator
   , deltaFromStrike
   , strikeFromDelta
   , atmStrike

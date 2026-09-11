@@ -1,8 +1,8 @@
 module QuantLib.Index
   (
     -- * Types
-    Index
-  , GenIndex
+    GenIndex
+  , Index
   , HistoricalIndexAnalysis
 
     -- * Constructors

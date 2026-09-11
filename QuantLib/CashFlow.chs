@@ -4,20 +4,72 @@
 module QuantLib.CashFlow
   (
     -- * Types
-    -- ** Cash-flow and leg hierarchy
-    Leg
-  , CouponLeg
+    -- ** Cash-flow hierarchy
+    GenCashFlow
+  , CashFlow
+  , GenCoupon
+  , Coupon
+  , GenFloatingRateCoupon
+  , FloatingRateCoupon
+  , GenDigitalCoupon
+  , DigitalCoupon
+  , GenIndexedCashFlow
+  , IndexedCashFlow
+  , FixedRateCoupon
+  , IborCoupon
+  , AverageBMACoupon
+  , StrippedCappedFlooredCoupon
+  , CmsCoupon
+  , DigitalCmsCoupon
+  , DigitalCmsSpreadCoupon
+  , MultipleResetsCoupon
+  , OvernightIndexedCoupon
+  , RangeAccrualFloatersCoupon
+  , CPICoupon
+  , YoYInflationCoupon
+  , ZeroInflationCashFlow
+  , CPICashFlow
+  , EquityCashFlow
   , Dividend
+
+    -- ** Legs
+  , GenLeg
+  , Leg
+  , CouponLeg
+
+    -- ** Coupon pricers
+  , GenFloatingRateCouponPricer
+  , FloatingRateCouponPricer
+  , CmsCouponPricer
+  , CPICouponPricer
+  , YoYInflationCouponPricer
+  , EquityCashFlowPricer
+
+    -- ** Configuration
   , DurationType(..)
   , RateAveragingType(..)
   , TimingAdjustment(..)
   , PositionType(..)
   , CPIInterpolationType(..)
-  , GenLeg
-  , CashFlow
-  , GenCashFlow
-  , Coupon
-  , GenCoupon
+  , YieldCurveModel(..)
+  , Discounting(..)
+  , BpsDiscounting(..)
+  , ReplicationType(..)
+  , DigitalReplication
+  , LinearTsrPricerStrategy(..)
+  , LinearTsrPricerSettings(..)
+  , IborLegOpts(..)
+  , defaultIborLegOpts
+  , CmsLegOpts(..)
+  , defaultCmsLegOpts
+  , DigitalIborLegOpts(..)
+  , defaultDigitalIborLegOpts
+  , DigitalCmsLegOpts(..)
+  , defaultDigitalCmsLegOpts
+  , DigitalCmsSpreadLegOpts(..)
+  , defaultDigitalCmsSpreadLegOpts
+  , MultipleResetsLegOpts(..)
+  , defaultMultipleResetsLegOpts
 
     -- * Constructors
     -- ** Hierarchy conversion
@@ -26,149 +78,86 @@ module QuantLib.CashFlow
   , asCoupon
   , asFloatingRateCoupon
   , asFloatingRateCouponPricer
+  , toCouponLeg
 
     -- ** Cash flows and coupons
   , leg
+  , cashFlowLeg
   , simpleCashFlow
-  , IndexedCashFlow
-  , GenIndexedCashFlow
   , indexedCashFlow
-  , FixedRateCoupon
+  , redemption
+  , amortizingPayment
   , fixedRateCoupon
-  , interestRate
   , floatingRateCoupon
   , iborCoupon
-  , IborCoupon
-  , AverageBMACoupon
   , averageBmaCoupon
   , cappedFlooredCoupon
-  , StrippedCappedFlooredCoupon
   , strippedCappedFlooredCoupon
-  , capRate
-  , floorRate
-  , effectiveCap
-  , effectiveFloor
-  , isCap
-  , isFloor
-  , isCollar
   , cappedFlooredIborCoupon
   , digitalIborCoupon
-  , DigitalCoupon
-  , GenDigitalCoupon
   , digitalCoupon
-  , callOptionRate
-  , putOptionRate
-  , MultipleResetsCoupon
   , multipleResetsCoupon
-  , RangeAccrualFloatersCoupon
   , rangeAccrualFloatersCoupon
-  , priceWithoutOptionality
-  , YoYInflationCoupon
-  , yoyInflationCoupon
-  , adjustedFixing
-  , averagingMultipleResetsPricer
-  , compoundingMultipleResetsPricer
-  , OvernightIndexedCoupon
   , overnightIndexedCoupon
   , cappedFlooredOvernightIndexedCoupon
-  , compoundingOvernightIndexedCouponPricer
-  , arithmeticAveragedOvernightIndexedCouponPricer
-  , blackCompoundingOvernightIndexedCouponPricer
-  , blackAveragingOvernightIndexedCouponPricer
-  , CPICoupon
   , cpiCoupon
   , cpiCouponFromBaseDate
   , cpiCouponWithBaseDate
-  , CPICouponPricer
-  , cpiCouponPricer
-  , cpiCouponPricerWithVol
-  , indexRatio
-  , redemption
-  , amortizingPayment
-  , cashFlowLeg
-  , startDate
-  , nextCashFlows
-  , previousCashFlows
-  , cashFlows
+  , yoyInflationCoupon
+  , zeroInflationCashFlow
+  , cpiCashFlow
+  , equityCashFlow
 
-    -- ** Coupon-leg conversion
-  , toCouponLeg
+    -- ** CMS coupons and digital replication
+  , cmsCoupon
+  , cappedFlooredCmsCoupon
+  , cmsSpreadCoupon
+  , cappedFlooredCmsSpreadCoupon
+  , digitalReplication
+  , digitalCmsCoupon
+  , digitalCmsSpreadCoupon
 
     -- ** Dividends
   , fixedDividend
   , fractionalDividendWithNominal
   , fractionalDividend
 
-    -- ** Coupon legs and specialized cash flows
-  , averageBmaLeg
+    -- ** Coupon legs
   , fixedRateLeg
+  , averageBmaLeg
   , iborLeg
   , iborLegWithOptions
-  , IborLegOpts(..)
-  , defaultIborLegOpts
+  , digitalIborLeg
   , cmsLeg
   , cmsLegWithOptions
-  , CmsLegOpts(..)
-  , defaultCmsLegOpts
-  , FloatingRateCoupon
-  , GenFloatingRateCoupon
-    -- ** CMS coupons and digital replication
-  , CmsCoupon
-  , cmsCoupon
-  , cappedFlooredCmsCoupon
-  , cmsSpreadCoupon
-  , cappedFlooredCmsSpreadCoupon
   , cmsSpreadLeg
-  , ReplicationType(..)
-  , DigitalReplication
-  , digitalReplication
-  , DigitalCmsCoupon
-  , digitalCmsCoupon
-  , DigitalCmsSpreadCoupon
-  , digitalCmsSpreadCoupon
   , digitalCmsLeg
-  , DigitalCmsLegOpts(..)
-  , defaultDigitalCmsLegOpts
   , digitalCmsSpreadLeg
-  , DigitalCmsSpreadLegOpts(..)
-  , defaultDigitalCmsSpreadLegOpts
-  , DigitalIborLegOpts(..)
-  , defaultDigitalIborLegOpts
-  , digitalIborLeg
-    -- ** Overnight, multiple-reset and inflation legs
-  , MultipleResetsLegOpts(..)
-  , defaultMultipleResetsLegOpts
   , multipleResetsLeg
   , overnightLeg
   , rangeAccrualLeg
   , cpiLeg
   , yoyInflationLeg
-  , YoYInflationCouponPricer
+
+    -- ** Coupon pricers
+  , blackIborCouponPricer
+  , blackIborQuantoCouponPricer
+  , analyticHaganPricer
+  , numericHaganPricer
+  , linearTsrPricer
+  , lognormalCmsSpreadPricer
+  , rangeAccrualPricerByBgm
+  , averagingMultipleResetsPricer
+  , compoundingMultipleResetsPricer
+  , compoundingOvernightIndexedCouponPricer
+  , arithmeticAveragedOvernightIndexedCouponPricer
+  , blackCompoundingOvernightIndexedCouponPricer
+  , blackAveragingOvernightIndexedCouponPricer
+  , cpiCouponPricer
+  , cpiCouponPricerWithVol
   , blackYoyInflationCouponPricer
   , unitDisplacedBlackYoyInflationCouponPricer
   , bachelierYoyInflationCouponPricer
-  , ZeroInflationCashFlow
-  , zeroInflationCashFlow
-  , CPICashFlow
-  , cpiCashFlow
-  , EquityCashFlow
-  , equityCashFlow
-  , YieldCurveModel(..)
-
-    -- ** Coupon pricers
-  , FloatingRateCouponPricer
-  , GenFloatingRateCouponPricer
-  , CmsCouponPricer
-  , blackIborCouponPricer
-  , blackIborQuantoCouponPricer
-  , rangeAccrualPricerByBgm
-  , analyticHaganPricer
-  , numericHaganPricer
-  , LinearTsrPricerStrategy(..)
-  , LinearTsrPricerSettings(..)
-  , linearTsrPricer
-  , lognormalCmsSpreadPricer
-  , EquityCashFlowPricer
   , equityQuantoCashFlowPricer
 
     -- * Mutators
@@ -184,6 +173,9 @@ module QuantLib.CashFlow
     -- ** Coupon fixings
   , HasFixingDates(..)
   , HasIndexFixings(..)
+  , baseFixing
+  , indexFixing
+  , adjustedFixing
 
     -- ** Leg analytics
   , amount
@@ -198,21 +190,23 @@ module QuantLib.CashFlow
   , accruedPeriod
   , atmRate
   , basisPointValue
-  , Discounting(..)
-  , BpsDiscounting(..)
   , bps
   , convexity
   , isExpired
   , maturityDate
+  , startDate
+  , cashFlows
+  , nextCashFlows
   , nextCashFlowAmount
   , nextCashFlowDate
   , nextCouponRate
-  , nominal
-  , npv
-  , npvBps
+  , previousCashFlows
   , previousCashFlowAmount
   , previousCashFlowDate
   , previousCouponRate
+  , nominal
+  , npv
+  , npvBps
   , referencePeriodEnd
   , referencePeriodStart
   , yield
@@ -223,10 +217,10 @@ module QuantLib.CashFlow
   , coupons
   , couponAccrualStartDates
   , couponAccruedAmount
-  , baseFixing
-  , indexFixing
   , rate
   , price
+  , interestRate
+  , indexRatio
   , convexityAdjustment
   , swapletRate
   , swapletPrice
@@ -237,6 +231,17 @@ module QuantLib.CashFlow
   , replicationType
   , gap
 
+    -- ** Capped and floored coupons
+  , capRate
+  , floorRate
+  , effectiveCap
+  , effectiveFloor
+  , isCap
+  , isFloor
+  , isCollar
+  , callOptionRate
+  , putOptionRate
+  , priceWithoutOptionality
   ) where
 import QuantLib.Internal
 {#import QuantLib.InterestRate#}(Compounding, VolatilityType)

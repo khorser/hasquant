@@ -3,14 +3,17 @@ module QuantLib.Instrument.Option
   (
     -- * Types
     -- ** Option hierarchy
-    Option
+    GenOption
+  , Option
+  , GenOneAssetOption
+  , OneAssetOption
+  , GenMultiAssetOption
+  , MultiAssetOption
   , CdsOption
   , BarrierOption
   , DoubleBarrierOption
   , EverestOption
   , MargrabeOption
-  , MultiAssetOption
-  , OneAssetOption
   , QuantoBarrierOption
   , QuantoDoubleBarrierOption
   , QuantoForwardVanillaOption

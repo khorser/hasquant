@@ -2,66 +2,69 @@
 module QuantLib.TermStructure.Volatility
   (
     -- * Types
+    -- ** Volatility hierarchies
+    GenVolatilityTermStructure
+  , VolatilityTermStructure
+  , GenBlackVolTermStructure
+  , BlackVolTermStructure
+  , RelinkableBlackVolTermStructure
+  , BlackVarianceCurve
+  , BlackVolatilitySurfaceDelta
+  , GenBlackAtmVolCurve
+  , BlackAtmVolCurve
+  , AbcdAtmVolCurve
+  , GenBlackVolSurface
+  , BlackVolSurface
+  , SabrVolSurface
+  , GenLocalVolTermStructure
+  , LocalVolTermStructure
+  , GridModelLocalVolSurface
+  , AndreasenHugeVolatilityInterpl
+  , GenCapFloorTermVolatilityStructure
+  , CapFloorTermVolatilityStructure
+  , CapFloorTermVolCurve
+  , CapFloorTermVolSurface
+  , GenOptionletVolatilityStructure
+  , OptionletVolatilityStructure
+  , RelinkableOptionletVolatilityStructure
+  , OptionletStripper2
+  , GenSwaptionVolatilityStructure
+  , SwaptionVolatilityStructure
+  , RelinkableSwaptionVolatilityStructure
+  , SwaptionVolatilityMatrix
+  , SabrSwaptionVolatilityCube
+  , NoArbSabrSwaptionVolatilityCube
+  , InterpolatedSwaptionVolatilityCube
+  , CallableBondVolatilityStructure
+  , SmileSection
+  , SabrInterpolatedSmileSection
+  , SviInterpolatedSmileSection
+  , NoArbSabrInterpolatedSmileSection
+
     -- ** Configuration and extrapolation
-    BlackVarianceSurfaceExtrapolation(..)
+  , BlackVarianceSurfaceExtrapolation(..)
   , ExtendedBlackVarianceSurfaceExtrapolation(..)
   , FixedLocalVolSurfaceExtrapolation(..)
   , AndreasenHugeInterpolationType(..)
   , AndreasenHugeCalibrationType(..)
   , ZabrEvaluation(..)
-
-    -- ** Volatility hierarchies
-  , BlackVarianceCurve
-  , BlackVolatilitySurfaceDelta
   , SmileInterpolationMethod(..)
   , BlackVolTimeExtrapolationType(..)
   , BlackVolatilitySurfaceDeltaOpts(..)
-  , BlackVolTermStructure
-  , GenBlackVolTermStructure
-  , RelinkableBlackVolTermStructure
-  , CallableBondVolatilityStructure
-  , CapFloorTermVolatilityStructure
-  , GenCapFloorTermVolatilityStructure
-  , CapFloorTermVolCurve
-  , CapFloorTermVolSurface
-  , LocalVolTermStructure
-  , GenLocalVolTermStructure
-  , GridModelLocalVolSurface
-  , AndreasenHugeVolatilityInterpl
-  , OptionletVolatilityStructure
-  , GenOptionletVolatilityStructure
-  , RelinkableOptionletVolatilityStructure
-  , SmileSection
-  , SabrInterpolatedSmileSection
-  , SviInterpolatedSmileSection
-  , NoArbSabrInterpolatedSmileSection
-  , SwaptionVolatilityStructure
-  , RelinkableSwaptionVolatilityStructure
+  , SabrInterpolatedSmileSectionOpts(..)
+
+    -- ** Coordinates
+  , Reference(..)
+  , CalendarReference(..)
+  , TermPoint(..)
+  , TermInterval(..)
+  , RatePoint(..)
   , OptionMaturity(..)
   , SwapMaturity(..)
   , CallableBondMaturity(..)
   , CallableBondSmileMaturity(..)
   , SabrVolatilitySpreadsMaturity(..)
   , AtmStrikeMaturity(..)
-  , Reference(..)
-  , CalendarReference(..)
-  , TermPoint(..)
-  , TermInterval(..)
-  , RatePoint(..)
-  , VolatilityTermStructure
-  , GenVolatilityTermStructure
-  , BlackAtmVolCurve
-  , GenBlackAtmVolCurve
-  , BlackVolSurface
-  , GenBlackVolSurface
-  , AbcdAtmVolCurve
-  , SabrVolSurface
-  , OptionletStripper2
-  , SabrInterpolatedSmileSectionOpts(..)
-  , SwaptionVolatilityMatrix
-  , SabrSwaptionVolatilityCube
-  , NoArbSabrSwaptionVolatilityCube
-  , InterpolatedSwaptionVolatilityCube
 
     -- * Constructors
     -- ** Hierarchy conversions

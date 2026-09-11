@@ -5,16 +5,16 @@ module QuantLib.Index.InterestRate
   (
     -- * Types
     -- ** Interest-rate index hierarchy
-    InterestRateIndex
+    GenInterestRateIndex
+  , InterestRateIndex
+  , GenIborIndex
+  , IborIndex
+  , GenSwapIndex
+  , SwapIndex
   , BMAIndex
   , OvernightIborIndex
-  , IborIndex
-  , SwapIndex
   , SwapSpreadIndex
   , OvernightIndexedSwapIndex
-  , GenInterestRateIndex
-  , GenIborIndex
-  , GenSwapIndex
 
     -- * Constructors
     -- ** BMA indices

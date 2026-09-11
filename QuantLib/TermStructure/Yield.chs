@@ -3,23 +3,26 @@ module QuantLib.TermStructure.Yield
   (
     -- * Types
     -- ** Curves and helpers
-    YieldTermStructure
-  , GenYieldTermStructure
-  , BondHelper
+    GenYieldTermStructure
+  , YieldTermStructure
+  , RelinkableYieldTermStructure
+  , FittedBondDiscountCurve
+  , MultiCurve
+  , GenRateHelper
   , RateHelper
+  , BondHelper
   , SwapRateHelper
   , OISRateHelper
   , FuturesRateHelper
   , OvernightIndexFutureRateHelper
-  , FittingMethod(..)
-  , FittedBondDiscountCurve
+
+    -- ** Coordinates
   , Reference(..)
   , TermPoint(..)
   , RatePoint(..)
-  , RelinkableYieldTermStructure
-  , GenRateHelper
-  , MultiCurve
+
     -- ** Bootstrap and contract configuration
+  , FittingMethod(..)
   , BootstrapTrait(..)
   , PillarChoice(..)
   , FuturesType(..)
@@ -64,8 +67,6 @@ module QuantLib.TermStructure.Yield
   , multipleResetsSwapRateHelper
   , futuresRateHelper
   , overnightIndexFutureRateHelper
-  , futuresRateHelperConvexityAdjustment
-  , overnightIndexFutureRateHelperConvexityAdjustment
   , sofrFutureRateHelper
     -- ** Bootstrapped and interpolated curves
   , piecewiseYieldCurve
@@ -97,6 +98,8 @@ module QuantLib.TermStructure.Yield
   , zeroRate
   , discount
   , impliedQuote
+  , futuresRateHelperConvexityAdjustment
+  , overnightIndexFutureRateHelperConvexityAdjustment
   , minimumCostValue
   , numberOfIterations
   ) where

@@ -2,48 +2,52 @@
 module QuantLib.Model
   (
     -- * Types
-    -- ** Models and configuration
-    CalibrationErrorType(..)
+    -- ** Model hierarchy
+    GenCalibratedModel
+  , CalibratedModel
+  , GenShortRateModel
+  , ShortRateModel
+  , GenOneFactorAffineModel
+  , OneFactorAffineModel
+  , HullWhite
+  , G2
+  , GenHestonModel
+  , HestonModel
+  , PiecewiseTimeDependentHestonModel
+  , GenBatesModel
+  , BatesModel
+  , BatesDetJumpModel
+  , GenBatesDoubleExpModel
+  , BatesDoubleExpModel
+  , BatesDoubleExpDetJumpModel
+  , GJRGARCHModel
+  , Gaussian1dModel
+  , Gsr
+  , MarkovFunctional
+  , LiborForwardModel
+  , HestonSLVMCModel
+  , HestonSLVFDMModel
+  , AffineModel
+  , ShortRateDynamics
+
+    -- ** Calibration helpers
+  , GenCalibrationHelper
+  , CalibrationHelper
+  , GenBlackCalibrationHelper
+  , BlackCalibrationHelper
+  , SwaptionHelper
+  , BrownianGeneratorFactory
+
+    -- ** Configuration
+  , CalibrationErrorType(..)
   , SobolBrownianOrdering(..)
   , HestonSLVGreensAlgorithm(..)
   , HestonSLVVarianceTransformation(..)
   , HestonSLVFokkerPlanckFdmParams(..)
   , HestonSLVFDMLogEntry(..)
-  , BrownianGeneratorFactory
-  , HestonSLVMCModel
-  , HestonSLVFDMModel
-  , GJRGARCHModel
-  , HestonModel
-  , GenHestonModel
-  , BatesModel
-  , GenBatesModel
-  , PiecewiseTimeDependentHestonModel
-  , ShortRateModel
-  , GenShortRateModel
-  , AffineModel
-  , Gaussian1dModel
-  , OneFactorAffineModel
-  , GenOneFactorAffineModel
-  , LiborForwardModel
   , LfmHullWhiteParameterization
-  , HullWhite
-  , Gsr
-  , MarkovFunctional
-  , CalibratedModel
-  , GenCalibratedModel
-  , G2
-  , ShortRateDynamics
-  , BatesDetJumpModel
-  , BatesDoubleExpDetJumpModel
-  , BatesDoubleExpModel
-  , GenBatesDoubleExpModel
   , LmCorrelationModel(..)
   , LmVolatilityModel(..)
-  , CalibrationHelper
-  , BlackCalibrationHelper
-  , GenBlackCalibrationHelper
-  , SwaptionHelper
-  , GenCalibrationHelper
   , SwaptionSpan(..)
 
     -- * Constructors
@@ -76,7 +80,6 @@ module QuantLib.Model
   , varianceGammaModel
   , vasicek
   , liborForwardModel
-  , liborForwardModelS0
   , lfmHullWhiteParameterization
   , gsr
   , markovFunctional
@@ -109,6 +112,7 @@ module QuantLib.Model
   , gaussian1dSwapAnnuity
   , gaussian1dYGrid
   , lfmHullWhiteCovariance
+  , liborForwardModelS0
   , blackPrice
   , impliedVolatility
 

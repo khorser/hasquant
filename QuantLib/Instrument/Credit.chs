@@ -21,7 +21,6 @@ module QuantLib.Instrument.Credit
   , atmRate
   , impliedVolatility
   , riskyAnnuity
-
   , accrualRebateNpv
   , conventionalSpread
   , couponLegBps

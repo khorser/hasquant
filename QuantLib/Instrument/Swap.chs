@@ -2,17 +2,15 @@
 module QuantLib.Instrument.Swap
   (
     -- * Types
-    -- ** Swap and swaption types
-    Swaption
-  , IrregularSwaption
-  , NonstandardSwaption
+    -- ** Swap hierarchy
+    GenSwap
   , Swap
-  , IrregularSwap
+  , GenFixedVsFloatingSwap
   , FixedVsFloatingSwap
   , VanillaSwap
   , NonstandardSwap
+  , IrregularSwap
   , FloatFloatSwap
-  , FloatFloatSwaption
   , AssetSwap
   , OvernightIndexedSwap
   , BMASwap
@@ -22,10 +20,17 @@ module QuantLib.Instrument.Swap
   , ZeroCouponSwap
   , EquityTotalReturnSwap
   , VarianceSwap
-  , VarianceOption
+  , GenConstNotionalCrossCurrencySwap
   , ConstNotionalCrossCurrencySwap
   , ConstNotionalCrossCurrencyBasisSwap
   , ConstNotionalCrossCurrencyFixedVsFloatingSwap
+
+    -- ** Swaptions and variance options
+  , Swaption
+  , IrregularSwaption
+  , NonstandardSwaption
+  , FloatFloatSwaption
+  , VarianceOption
 
     -- ** Configuration
   , SwapType(..)
@@ -54,11 +59,8 @@ module QuantLib.Instrument.Swap
   , nonstandardSwapFromVanilla
   , nonstandardSwap
   , nonstandardSwapFromGearingsAndSpreads
-  , nonstandardSwapFixedRate
   , floatFloatSwap
   , floatFloatSwapFromNominals
-  , firstLegFairSpread
-  , secondLegFairSpread
   , makeVanillaSwap
   , makeCms
   , zeroCouponInflationSwap
@@ -66,15 +68,9 @@ module QuantLib.Instrument.Swap
   , cpiSwap
   , zeroCouponSwap
   , zeroCouponSwapFromRate
-  , fairFixedPayment
-  , fairFixedRate
   , equityTotalReturnSwapIbor
   , equityTotalReturnSwapOvernight
-  , equityLegNpv
-  , interestRateLegNpv
-  , fairMargin
   , varianceSwap
-  , variance
   , varianceOption
 
     -- ** Cross-currency swaps
@@ -112,6 +108,7 @@ module QuantLib.Instrument.Swap
   , npvDateDiscount
   , startDate
   , startDiscounts
+  , nonstandardSwapFixedRate
 
     -- ** Cross-currency swaps
   , legCurrency
@@ -144,6 +141,18 @@ module QuantLib.Instrument.Swap
   , nonParRepayment
   , parSwap
   , payBondCoupon
+
+    -- ** Float-float swaps
+  , firstLegFairSpread
+  , secondLegFairSpread
+
+    -- ** Zero-coupon, equity and variance swaps
+  , fairFixedPayment
+  , fairFixedRate
+  , equityLegNpv
+  , interestRateLegNpv
+  , fairMargin
+  , variance
 
     -- ** Overnight-indexed swaps
   , overnightLeg

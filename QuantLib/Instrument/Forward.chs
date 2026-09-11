@@ -1,7 +1,8 @@
 module QuantLib.Instrument.Forward
   (
     -- * Types
-    Forward
+    GenForward
+  , Forward
   , ForwardRateAgreement
   , BondForward
   , FxForward
