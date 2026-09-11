@@ -10,13 +10,11 @@ module QuantLib.InterestRate
     -- * Constructors
   , interestRate
 
-    -- * Calculations
+    -- * Inspectors
   , compoundFactor
   , discountFactor
   , equivalentRate
   , impliedRate
-
-    -- * Inspectors
   , rate
   ) where
 import QuantLib.Internal

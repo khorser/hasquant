@@ -11,7 +11,7 @@ module QuantLib.Instrument.InflationCapFloor
   , optionlet
   , cpiCapFloor
 
-    -- * Calculations
+    -- * Inspectors
   , atmRate
   ) where
 import QuantLib.Internal

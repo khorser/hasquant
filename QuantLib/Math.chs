@@ -43,7 +43,7 @@ module QuantLib.Math
   , timeGridFromVector
   , timeGridFromVectorWithSteps
 
-    -- * Calculations
+    -- * Inspectors
     -- ** Rounding and optimization
   , applyRounding
   , optimize
@@ -76,8 +76,6 @@ module QuantLib.Math
   , riskStatisticsRegret
   , riskStatisticsShortfall
   , riskStatisticsAverageShortfall
-
-    -- * Inspectors
     -- ** Matrices and vectors
   , matrixRows
   , matrixColumns

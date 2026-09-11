@@ -19,7 +19,6 @@ module QuantLib.TermStructure.Yield
   , RelinkableYieldTermStructure
   , GenRateHelper
   , MultiCurve
-  , HasHelperUnderlying(..)
     -- ** Bootstrap and contract configuration
   , BootstrapTrait(..)
   , PillarChoice(..)
@@ -91,13 +90,12 @@ module QuantLib.TermStructure.Yield
   , addBootstrappedCurve
   , addNonBootstrappedCurve
 
-    -- * Calculations
+    -- * Inspectors
+  , HasHelperUnderlying(..)
   , forwardRate
   , forwardRateBetweenTimes
   , zeroRate
   , discount
-
-    -- * Inspectors
   , impliedQuote
   , minimumCostValue
   , numberOfIterations

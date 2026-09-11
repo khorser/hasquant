@@ -7,7 +7,6 @@ module QuantLib.TermStructure.Inflation
   , YearOnYearInflationSwapHelper
 
   , CPIInterpolationType(..) -- ^re-exported from "QuantLib.Internal.Common"
-  , HasHelperUnderlying(..)
 
     -- * Constructors
     -- ** Helpers
@@ -20,6 +19,7 @@ module QuantLib.TermStructure.Inflation
   , interpolatedYoyInflationCurve
 
     -- * Inspectors
+  , HasHelperUnderlying(..)
   , zeroRate
   , yoyRate
   ) where

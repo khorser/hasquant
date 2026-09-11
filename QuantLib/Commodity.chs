@@ -45,7 +45,8 @@ module QuantLib.Commodity
   , setCommoditySettingsCurrency
   , setCommoditySettingsUnitOfMeasure
 
-    -- * Calculations
+    -- * Inspectors
+    -- ** Quantity, period and conversion calculations
   , roundedQuantity
   , closeQuantity
   , closeEnoughQuantity
@@ -53,8 +54,6 @@ module QuantLib.Commodity
   , intersection
   , convertQuantity
   , chainUnitOfMeasureConversion
-
-    -- * Inspectors
     -- ** Commodity metadata
   , commodityTypeCode
   , commodityTypeName

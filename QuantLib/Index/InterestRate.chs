@@ -20,18 +20,6 @@ module QuantLib.Index.InterestRate
     -- ** BMA indices
   , bmaIndex
 
-    -- * Inspectors
-    -- ** Index dates and conventions
-  , fixingSchedule
-  , forecastFixing
-  , currency
-  , dayCounter
-  , fixingDays
-  , tenor
-  , fixingDate
-  , valueDate
-  , maturityDate
-
     -- ** Hierarchy conversion
   , asInterestRateIndex
   , asIborIndex
@@ -69,6 +57,18 @@ module QuantLib.Index.InterestRate
                       , EurLibor7M, EurLibor8M, EurLibor9M, EurLibor10M, EurLibor11M, EurLibor1Y)
   , iborIndex
   , overnightIndex
+
+    -- * Inspectors
+    -- ** Index dates and conventions
+  , fixingSchedule
+  , forecastFixing
+  , currency
+  , dayCounter
+  , fixingDays
+  , tenor
+  , fixingDate
+  , valueDate
+  , maturityDate
   , businessDayConvention
   , endOfMonth
 

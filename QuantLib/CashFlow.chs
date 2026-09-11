@@ -7,7 +7,6 @@ module QuantLib.CashFlow
     -- ** Cash-flow and leg hierarchy
     Leg
   , CouponLeg
-  , asLeg
   , Dividend
   , DurationType(..)
   , RateAveragingType(..)
@@ -17,11 +16,14 @@ module QuantLib.CashFlow
   , GenLeg
   , CashFlow
   , GenCashFlow
-  , asCashFlow
-  , amount
-  , date
 
     -- * Constructors
+    -- ** Hierarchy conversion
+  , asLeg
+  , asCashFlow
+  , asFloatingRateCoupon
+  , asFloatingRateCouponPricer
+
     -- ** Cash flows and coupons
   , leg
   , simpleCashFlow
@@ -36,9 +38,6 @@ module QuantLib.CashFlow
   , IborCoupon
   , AverageBMACoupon
   , averageBmaCoupon
-  , asFloatingRateCoupon
-  , HasFixingDates(..)
-  , HasIndexFixings(..)
   , cappedFlooredCoupon
   , StrippedCappedFlooredCoupon
   , strippedCappedFlooredCoupon
@@ -89,51 +88,8 @@ module QuantLib.CashFlow
   , previousCashFlows
   , cashFlows
 
-    -- * Mutators
-  , setCpiCouponPricer
-  , setFloatingRateCouponPricer
-  , setYoyInflationCouponPricer
-  , setEquityCashFlowPricer
-  , setCouponPricer
-  , setCouponPricers
-  , setEquityLegPricer
-
-    -- * Calculations
-    -- ** Leg analytics
-  , duration
-  , accrualDays
-  , accrualEndDate
-  , accrualPeriod
-  , accrualStartDate
-  , accruedAmount
-  , accruedDays
-  , accruedPeriod
-  , atmRate
-  , basisPointValue
-  , Discounting(..)
-  , BpsDiscounting(..)
-  , bps
-  , convexity
-  , isExpired
-  , maturityDate
-  , nextCashFlowAmount
-  , nextCashFlowDate
-  , nextCouponRate
-  , nominal
-  , npv
-  , npvBps
-  , previousCashFlowAmount
-  , previousCashFlowDate
-  , previousCouponRate
-  , referencePeriodEnd
-  , referencePeriodStart
-  , yield
-  , yieldValueBasisPoint
-  , zSpread
-
     -- ** Coupon-leg conversion
   , toCouponLeg
-  , couponAccrualStartDates
 
     -- ** Dividends
   , fixedDividend
@@ -153,17 +109,6 @@ module QuantLib.CashFlow
   , defaultCmsLegOpts
   , FloatingRateCoupon
   , GenFloatingRateCoupon
-  , baseFixing
-  , indexFixing
-  , rate
-  , price
-  , convexityAdjustment
-  , swapletRate
-  , swapletPrice
-  , capletPrice
-  , capletRate
-  , floorletPrice
-  , floorletRate
     -- ** CMS coupons and digital replication
   , CmsCoupon
   , cmsCoupon
@@ -174,8 +119,6 @@ module QuantLib.CashFlow
   , ReplicationType(..)
   , DigitalReplication
   , digitalReplication
-  , replicationType
-  , gap
   , DigitalCmsCoupon
   , digitalCmsCoupon
   , DigitalCmsSpreadCoupon
@@ -209,10 +152,9 @@ module QuantLib.CashFlow
   , equityCashFlow
   , YieldCurveModel(..)
 
-    -- ** Coupon-pricer hierarchy
+    -- ** Coupon pricers
   , FloatingRateCouponPricer
   , GenFloatingRateCouponPricer
-  , asFloatingRateCouponPricer
   , CmsCouponPricer
   , blackIborCouponPricer
   , blackIborQuantoCouponPricer
@@ -225,6 +167,71 @@ module QuantLib.CashFlow
   , lognormalCmsSpreadPricer
   , EquityCashFlowPricer
   , equityQuantoCashFlowPricer
+
+    -- * Mutators
+  , setCpiCouponPricer
+  , setFloatingRateCouponPricer
+  , setYoyInflationCouponPricer
+  , setEquityCashFlowPricer
+  , setCouponPricer
+  , setCouponPricers
+  , setEquityLegPricer
+
+    -- * Inspectors
+    -- ** Coupon fixings
+  , HasFixingDates(..)
+  , HasIndexFixings(..)
+
+    -- ** Leg analytics
+  , amount
+  , date
+  , duration
+  , accrualDays
+  , accrualEndDate
+  , accrualPeriod
+  , accrualStartDate
+  , accruedAmount
+  , accruedDays
+  , accruedPeriod
+  , atmRate
+  , basisPointValue
+  , Discounting(..)
+  , BpsDiscounting(..)
+  , bps
+  , convexity
+  , isExpired
+  , maturityDate
+  , nextCashFlowAmount
+  , nextCashFlowDate
+  , nextCouponRate
+  , nominal
+  , npv
+  , npvBps
+  , previousCashFlowAmount
+  , previousCashFlowDate
+  , previousCouponRate
+  , referencePeriodEnd
+  , referencePeriodStart
+  , yield
+  , yieldValueBasisPoint
+  , zSpread
+
+    -- ** Coupon rates and prices
+  , couponAccrualStartDates
+  , baseFixing
+  , indexFixing
+  , rate
+  , price
+  , convexityAdjustment
+  , swapletRate
+  , swapletPrice
+  , capletPrice
+  , capletRate
+  , floorletPrice
+  , floorletRate
+  , replicationType
+  , gap
+
   ) where
 import QuantLib.Internal
 {#import QuantLib.InterestRate#}(Compounding, VolatilityType)

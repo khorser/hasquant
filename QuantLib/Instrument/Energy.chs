@@ -26,15 +26,13 @@ module QuantLib.Instrument.Energy
     -- * Mutators
   , addPricingError
 
-    -- * Calculations
+    -- * Inspectors
   , discountedAmount
   , undiscountedAmount
   , discountedPaymentAmount
   , undiscountedPaymentAmount
   , discountFactor
   , paymentDiscountFactor
-
-    -- * Inspectors
   , finalized
   , secondaryCostAmounts
   , pricingErrors

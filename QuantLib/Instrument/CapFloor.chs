@@ -9,7 +9,7 @@ module QuantLib.Instrument.CapFloor
   , floor
   , optionlet
 
-    -- * Calculations
+    -- * Inspectors
   , atmRate
   , impliedVolatility
   ) where

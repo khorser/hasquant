@@ -255,7 +255,7 @@ module QuantLib.Method
   , fdmAffineG2ModelSwapInnerValue
   , fdmAffineHullWhiteModelSwapInnerValue
 
-    -- * Calculations
+    -- * Inspectors
     -- ** Path and random sequences
   , next
   , antithetic
@@ -269,8 +269,6 @@ module QuantLib.Method
   , fdmInnerValue
   , fdmAvgInnerValue
   , fdmSolve
-
-    -- * Inspectors
     -- ** Paths
   , weight
   , assetNumber

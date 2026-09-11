@@ -21,11 +21,10 @@ module QuantLib.Currency
   , setMoneyConversionType
   , setMoneyBaseCurrency
 
-    -- * Calculations
+    -- * Inspectors
+    -- ** Currency conversion
   , exchange
   , convertToBaseCurrency
-
-    -- * Inspectors
     -- ** Currencies
   , code
   , fractionsPerUnit

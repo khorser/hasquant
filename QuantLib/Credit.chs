@@ -25,15 +25,13 @@ module QuantLib.Credit
   , gaussianLhpLossModel
   , constantLossModel
 
-    -- * Calculations
+    -- * Inspectors
   , basketExpectedTrancheLoss
   , basketProbOverLoss
   , basketPercentile
   , basketExpectedShortfall
   , basketDefaultCorrelation
   , basketProbAtLeastNEvents
-
-    -- * Inspectors
   , basketNotional
   , basketRemainingNotional
   , basketRecoveryRate

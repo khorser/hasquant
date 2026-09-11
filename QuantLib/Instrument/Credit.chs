@@ -16,7 +16,7 @@ module QuantLib.Instrument.Credit
   , syntheticCdo
   , nthToDefault
 
-    -- * Calculations
+    -- * Inspectors
     -- ** Credit-default swaps and options
   , atmRate
   , impliedVolatility

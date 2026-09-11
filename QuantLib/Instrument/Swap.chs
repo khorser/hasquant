@@ -27,10 +27,7 @@ module QuantLib.Instrument.Swap
   , ConstNotionalCrossCurrencyBasisSwap
   , ConstNotionalCrossCurrencyFixedVsFloatingSwap
 
-    -- ** Configuration and capabilities
-  , asSwap
-
-  , impliedVolatility
+    -- ** Configuration
   , SwapType(..)
   , SwaptionPriceType(..)
   , IrregularSettlementType(..)
@@ -44,13 +41,11 @@ module QuantLib.Instrument.Swap
   , defaultConstNotionalCrossCurrencyBasisSwapOpts
   , OvernightObservation(..)
   , defaultOvernightObservation
-  , HasFixedLeg(..)
-  , HasFloatingLeg(..)
-  , HasFairRate(..)
-  , HasFairSpread(..)
-  , HasInstrumentUnderlying(..)
 
     -- * Constructors
+    -- ** Hierarchy conversion
+  , asSwap
+
     -- ** Swaps
   , swapFromLegs
   , swap
@@ -82,8 +77,33 @@ module QuantLib.Instrument.Swap
   , variance
   , varianceOption
 
+    -- ** Cross-currency swaps
+  , constNotionalCrossCurrencySwap
+  , constNotionalCrossCurrencySwapFromLegs
+  , constNotionalCrossCurrencyBasisSwap
+  , constNotionalCrossCurrencyFixedVsFloatingSwap
+
+    -- ** Overnight-indexed and asset swaps
+  , overnightIndexedSwap
+  , overnightIndexedSwapFromNominals
+  , assetSwap
+
+    -- ** Swaptions
+  , swaption
+  , irregularSwaption
+  , irregularSwap
+  , nonstandardSwaptionFromSwaption
+  , nonstandardSwaption
+  , floatFloatSwaption
+
     -- * Inspectors
     -- ** Common swap inspectors
+  , HasFixedLeg(..)
+  , HasFloatingLeg(..)
+  , HasFairRate(..)
+  , HasFairSpread(..)
+  , HasInstrumentUnderlying(..)
+  , impliedVolatility
   , endDiscounts
   , leg
   , legBps
@@ -94,16 +114,12 @@ module QuantLib.Instrument.Swap
   , startDiscounts
 
     -- ** Cross-currency swaps
-  , constNotionalCrossCurrencySwap
-  , constNotionalCrossCurrencySwapFromLegs
   , legCurrency
   , inCcyLegBps
   , inCcyLegNpv
   , npvDateDiscounts
-  , constNotionalCrossCurrencyBasisSwap
   , fairPaySpread
   , fairRecSpread
-  , constNotionalCrossCurrencyFixedVsFloatingSwap
 
     -- ** BMA swaps
   , bmaLeg
@@ -116,19 +132,11 @@ module QuantLib.Instrument.Swap
   , liborLegBps
   , liborLegNpv
 
-    -- ** Swaptions and calibration baskets
-  , swaption
-  , irregularSwaption
-  , irregularSwap
-  , nonstandardSwaptionFromSwaption
-  , nonstandardSwaption
-  , floatFloatSwaption
+    -- ** Swaption calibration baskets
   , calibrationBasket
   , floatFloatSwaptionCalibrationBasket
 
     -- ** Asset swaps
-  , assetSwap
-
   , bondLeg
   , cleanPrice
   , fairCleanPrice
@@ -138,9 +146,6 @@ module QuantLib.Instrument.Swap
   , payBondCoupon
 
     -- ** Overnight-indexed swaps
-  , overnightIndexedSwap
-  , overnightIndexedSwapFromNominals
-
   , overnightLeg
   , overnightLegBps
   , overnightLegNpv

@@ -9,7 +9,6 @@ module QuantLib.TermStructure
   , TermPoint(..)
   , TermInterval(..)
   , RatePoint(..)
-  , HasHelperUnderlying(..)
 
     -- * Constructors
   , asTermStructure
@@ -18,6 +17,7 @@ module QuantLib.TermStructure
   , setExtrapolation
 
     -- * Inspectors
+  , HasHelperUnderlying(..)
   , referenceDate
   , maxDate
   , allowsExtrapolation

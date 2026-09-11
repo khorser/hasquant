@@ -29,7 +29,7 @@ module QuantLib.Time.Date
   , addEcbDate
   , removeEcbDate
 
-    -- * Calculations
+    -- * Inspectors
     -- ** Date arithmetic
   , endOfMonth
   , nextWeekday
@@ -52,8 +52,6 @@ module QuantLib.Time.Date
   , nextEcbDate
   , nextEcbDatesFromCode
   , nextEcbDates
-
-    -- * Inspectors
     -- ** Date fields
   , isLeap
   , year

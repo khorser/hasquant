@@ -10,7 +10,7 @@ module QuantLib.TermStructure.Volatility
   , AndreasenHugeCalibrationType(..)
   , ZabrEvaluation(..)
 
-    -- ** Volatility hierarchies and capabilities
+    -- ** Volatility hierarchies
   , BlackVarianceCurve
   , BlackVolatilitySurfaceDelta
   , SmileInterpolationMethod(..)
@@ -48,8 +48,6 @@ module QuantLib.TermStructure.Volatility
   , TermPoint(..)
   , TermInterval(..)
   , RatePoint(..)
-  , HasStrikeBounds(..)
-  , HasAtmStrike(..)
   , VolatilityTermStructure
   , GenVolatilityTermStructure
   , BlackAtmVolCurve
@@ -142,6 +140,10 @@ module QuantLib.TermStructure.Volatility
   , linkOptionletVolTo
 
     -- * Inspectors
+    -- ** Strike and maturity capabilities
+  , HasStrikeBounds(..)
+  , HasAtmStrike(..)
+
     -- ** Optionlet and cap-floor volatility
   , atmCapFloorStrikes
   , atmCapFloorPrices

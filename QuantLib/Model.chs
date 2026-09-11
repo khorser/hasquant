@@ -44,15 +44,12 @@ module QuantLib.Model
   , GenBlackCalibrationHelper
   , SwaptionHelper
   , GenCalibrationHelper
-  , AsAffineModel(..)
-  , AsGaussian1dModel(..)
-  , HasLeverageFunction(..)
-  , HasVolatilities(..)
   , SwaptionSpan(..)
-  , HasHelperUnderlying(..)
 
     -- * Constructors
     -- ** Hierarchy and secondary-interface conversion
+  , AsAffineModel(..)
+  , AsGaussian1dModel(..)
   , asCalibratedModel
   , asHestonModel
   , asShortRateModel
@@ -98,7 +95,8 @@ module QuantLib.Model
   , moveReversion
   , setPricingEngine
 
-    -- * Calculations
+    -- * Inspectors
+    -- ** Pricing and rate calculations
   , discount
   , discountBond
   , discountBondOption
@@ -114,7 +112,10 @@ module QuantLib.Model
   , blackPrice
   , impliedVolatility
 
-    -- * Inspectors
+    -- ** Model state and calibration
+  , HasLeverageFunction(..)
+  , HasVolatilities(..)
+  , HasHelperUnderlying(..)
   , g2Dynamics
   , shortRate
   , stateProcess

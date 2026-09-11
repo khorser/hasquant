@@ -18,13 +18,11 @@ module QuantLib.Time.Calendar
   , addHoliday
   , removeHoliday
 
-    -- * Calculations
+    -- * Inspectors
   , adjust
   , advance
   , businessDaysBetween
   , endOfMonth
-
-    -- * Inspectors
   , isBusinessDay
   , isEndOfMonth
   , isHoliday

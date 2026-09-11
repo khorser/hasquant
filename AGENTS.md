@@ -90,7 +90,13 @@ Scale numeric tolerances to the result magnitude, normally about `1e-6` relative
 - Organize public Haddock exports as Types, Constructors, Mutators, then Inspectors, with topical
   subsections inside each group. Constructors create values or perform hierarchy conversions;
   functions that evaluate, calculate, locate, or extract information are Inspectors, even when
-  they return a complex result.
+  they return a complex result. `Calculations` is a subsection of Inspectors, never a top-level
+  group.
+- Place a capability class by what its methods do, not by the fact that it is a class: casting
+  classes (`As*`) and `as*` conversion functions go with the Constructors, query and calculation
+  classes (`Has*`) with the Inspectors, and a class whose methods mutate with the Mutators. A
+  class's associated type travels with it in the `(..)` export rather than staying behind under
+  Types.
 - Update the hierarchy tree in `QuantLib/Internal/Type.hs` whenever a hierarchy changes.
 - Update affected lines in `tools/ql-methods-1.43.txt` when binding or rejecting a method. `x` means permanently reviewed and rejected; bulk exclusions must be detector-backed, and coverage audits must verify against `cbits/*.h` rather than trust the dump alone.
 - Put persistent architectural gaps in README.md's Roadmap. Use `plans/README.md` only for subplan status. Remove roadmap items when their feature is completed.

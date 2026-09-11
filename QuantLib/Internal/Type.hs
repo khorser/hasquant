@@ -619,14 +619,12 @@ withCmsCouponPricer = withForeignPtr . ptr . getFloatingRateCouponPricer
 -- >   AverageBMACoupon
 -- >   MultipleResetsCoupon
 -- >   DigitalCmsCoupon
--- >   DigitalCmsSpreadCoupon
+-- >     DigitalCmsSpreadCoupon
 -- >   DigitalCoupon
 -- >   RangeAccrualFloatersCoupon
 -- >   StrippedCappedFlooredCoupon
---
--- Base floating-rate coupon class. Its cash-flow amount is rate times accrual period and nominal.
-data CFloatingRateCoupon'
 type GenFloatingRateCoupon frc = GenCashFlow (AnyOf CFloatingRateCoupon' frc)
+data CFloatingRateCoupon'
 type CFloatingRateCoupon = ForeignPtr CFloatingRateCoupon'
 type FloatingRateCoupon = GenFloatingRateCoupon CFloatingRateCoupon
 foreign import ccall unsafe "ql.h &qlFreeFloatingRateCoupon" qlFreeFloatingRateCoupon :: FinalizerPtr CFloatingRateCoupon'
@@ -1746,9 +1744,6 @@ withCommodityIndex = withForeignPtr . ptr . getIndex
 -- >  YieldTermStructure = GenYieldTermStructure y = GenTermStructure t
 -- >    FittedBondDiscountCurve = GenYieldTermStructure ...
 -- >    RelinkableYieldTermStructure = GenYieldTermStructure ...
--- (MultiCurve, below with the other standalone leaves, is not a YieldTermStructure member --
--- it manages a cycle of them, handing out 'YieldTermStructure' handles via addBootstrappedCurve
--- \/ addNonBootstrappedCurve. See its own definition's comment.)
 -- >  VolatilityTermStructure
 -- >    OptionletVolatilityStructure
 -- >      RelinkableOptionletVolatilityStructure

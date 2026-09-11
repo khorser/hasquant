@@ -13,7 +13,7 @@ module QuantLib.Instrument.Forward
   , fxForward
   , fxForwardFromRate
 
-    -- * Calculations
+    -- * Inspectors
   , cleanForwardPrice
   , forwardPrice
   , forwardValue
@@ -21,8 +21,6 @@ module QuantLib.Instrument.Forward
   , settlementDate
   , spotIncome
   , spotValue
-
-    -- * Inspectors
   , amount
   , forwardRate
   , fxForwardRate

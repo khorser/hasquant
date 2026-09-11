@@ -21,10 +21,8 @@ module QuantLib.PricingEngine
   , LatticeTime(..)
   , FdmGrid(..)
 
-    -- ** Option-calculator capability
+    -- ** Option calculators
   , GenBlackCalculator
-  , asBlackCalculator
-  , HasOptionCalculator(..)
 
     -- * Constructors
     -- ** Discounting and counterparty engines
@@ -208,6 +206,7 @@ module QuantLib.PricingEngine
 
     -- ** Black and Bachelier calculators
   , StrikeSpec(..)
+  , asBlackCalculator
   , blackCalculator
   , blackVanna
   , blackScholesCalculator
@@ -220,7 +219,10 @@ module QuantLib.PricingEngine
   , bachelierCalculator
   , bachelierVanna
 
-    -- * Calculations
+    -- * Inspectors
+    -- ** Option-calculator capability
+  , HasOptionCalculator(..)
+
     -- ** Formulae, probabilities and SABR helpers
   , blackDeltaCalculator
   , deltaFromStrike

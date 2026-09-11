@@ -35,11 +35,6 @@ module QuantLib.Process
   , HullWhiteProcess
   , HullWhiteForwardProcess
 
-  , HasPhi(..)
-  , HasShortRate(..)
-  , HasForwardMeasureTime(..)
-  , HasAlpha(..)
-
     -- * Constructors
     -- ** Hierarchy conversion
   , asStochasticProcess
@@ -79,7 +74,11 @@ module QuantLib.Process
   , varianceGammaProcess
   , stochasticProcessArray
 
-    -- * Calculations
+    -- * Mutators
+  , HasForwardMeasureTime(..)
+
+    -- * Inspectors
+    -- ** Process dynamics
   , apply
   , covariance
   , diffusion
@@ -89,8 +88,6 @@ module QuantLib.Process
   , stdDeviation
   , pdf
   , discountBond
-
-    -- * Inspectors
     -- ** Process state
   , factors
   , initialValues
@@ -100,6 +97,9 @@ module QuantLib.Process
   , index
   , accrualTimes
     -- ** Short-rate and forward-measure quantities
+  , HasPhi(..)
+  , HasShortRate(..)
+  , HasAlpha(..)
   , bFunction
   , mFunction
   , numeraire

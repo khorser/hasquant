@@ -4,8 +4,6 @@ module QuantLib.Instrument.Option
     -- * Types
     -- ** Option hierarchy
     Option
-  , asOption
-  , asOneAssetOption
   , CdsOption
   , BarrierOption
   , DoubleBarrierOption
@@ -38,11 +36,12 @@ module QuantLib.Instrument.Option
   , BasketPayoff(..)
   , Payoff(..)
   , TypePayoff(..)
-  , HasImpliedVol(..)
-  , HasQuanto(..)
-  , HasGreeks(..)
 
     -- * Constructors
+    -- ** Hierarchy conversion
+  , asOption
+  , asOneAssetOption
+
     -- ** Payoffs and exercises
   , strikedPayoff
   , plainVanillaPayoff
@@ -90,11 +89,14 @@ module QuantLib.Instrument.Option
   , vanillaSwingOption
   , europeanOption
 
-    -- * Calculations
+    -- * Inspectors
     -- ** Implied volatility
+  , HasImpliedVol(..)
   , doubleBarrierOptionImpliedVolatility
   , softBarrierOptionImpliedVolatility
     -- ** Sensitivities and probabilities
+  , HasGreeks(..)
+  , HasQuanto(..)
   , firstAssetDelta
   , secondAssetDelta
   , firstAssetGamma

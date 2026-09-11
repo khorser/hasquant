@@ -18,7 +18,7 @@ module QuantLib.Time.Schedule
   , schedule
   , fromDates
 
-    -- * Calculations
+    -- * Inspectors
     -- ** Day counts
   , days
   , yearFraction
@@ -32,7 +32,7 @@ module QuantLib.Time.Schedule
   , lessThan
   , normalize
 
-    -- * Inspectors
+    -- ** Schedule fields
   , dates
   ) where
 import Prelude hiding(until)
