@@ -6,9 +6,9 @@
 module QuantLib.Time.Calendar
   (
     -- * Types
-    JointCalendarRule(..)
+    Calendar
   , CalendarConstructor(..)
-  , Calendar
+  , JointCalendarRule(..)
   , BusinessDayConvention(..)
 
     -- * Constructors

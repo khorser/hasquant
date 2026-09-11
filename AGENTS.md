@@ -99,10 +99,10 @@ Scale numeric tolerances to the result magnitude, normally about `1e-6` relative
   class's associated type travels with it in the `(..)` export rather than staying behind under
   Types.
 - Update the hierarchy tree in `QuantLib/Internal/Type.hs` whenever a hierarchy changes.
-- Inside a module's Types group, the hierarchy's root `Gen<Root>` is the first export, each
-  `Gen<X>` immediately precedes its concrete `<X>`, and enums, options records, and coordinate
-  ADTs follow in their own subsections. Every `Gen*` type is exported, from the module that owns
-  its concrete siblings.
+- Inside a module's Types group, opaque handle types come first -- for a hierarchy, the root
+  `Gen<Root>` leads and each `Gen<X>` immediately precedes its concrete `<X>` -- and enums,
+  options records, and coordinate ADTs follow in their own subsections. Every `Gen*` type is
+  exported, from the module that owns its concrete siblings.
 - Update affected lines in `tools/ql-methods-1.43.txt` when binding or rejecting a method. `x` means permanently reviewed and rejected; bulk exclusions must be detector-backed, and coverage audits must verify against `cbits/*.h` rather than trust the dump alone.
 - Put persistent architectural gaps in README.md's Roadmap. Use `plans/README.md` only for subplan status. Remove roadmap items when their feature is completed.
 - Keep `test/main/QuantLib/MainTest.hs` as a thin dispatcher; put specifications in topical `QuantLib.Spec.*` modules and shared helpers in `QuantLib.Spec.Helpers`.

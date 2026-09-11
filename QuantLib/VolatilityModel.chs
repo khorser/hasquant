@@ -9,8 +9,8 @@
 module QuantLib.VolatilityModel
   (
     -- * Types
-    Garch11Mode(..)
-  , Garch11
+    Garch11
+  , Garch11Mode(..)
 
     -- * Constructors
   , garch11

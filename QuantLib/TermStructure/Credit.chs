@@ -1,9 +1,9 @@
 module QuantLib.TermStructure.Credit
   (
     -- * Types
-    ProbabilityTrait(..)
-  , DefaultProbabilityTermStructure
+    DefaultProbabilityTermStructure
   , DefaultProbabilityHelper
+  , ProbabilityTrait(..)
   , Reference(..)
   , TermPoint(..)
   , TermInterval(..)

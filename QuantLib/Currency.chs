@@ -1,11 +1,13 @@
 module QuantLib.Currency
   (
     -- * Types
-    MoneyConversionType(..)
-  , ExchangeRateType(..)
+    -- ** Currencies
+    Currency
   , Ccy(..)
-  , Currency
+    -- ** Exchange rates and money
   , ExchangeRate
+  , ExchangeRateType(..)
+  , MoneyConversionType(..)
 
     -- * Constructors
     -- ** Currencies

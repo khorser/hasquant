@@ -2,10 +2,10 @@ module QuantLib.Instrument.Credit
   (
     -- * Types
     CreditDefaultSwap
-  , ProtectionSide(..)
-  , Claim(..)
   , SyntheticCDO
   , NthToDefault
+  , ProtectionSide(..)
+  , Claim(..)
 
     -- * Constructors
     -- ** Credit-default swaps and options

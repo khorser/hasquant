@@ -2,17 +2,20 @@
 module QuantLib.Credit
   (
     -- * Types
-    Seniority(..)
-  , RestructuringType(..)
-  , LatentModelIntegrationType(..)
-  , DefaultProbKey
+    -- ** Issuers, pools and baskets
+    DefaultProbKey
   , Issuer
   , Pool
   , Basket
   , TrancheBasket
   , DigitalBasket
+    -- ** Loss models
   , DefaultLossModel
   , DigitalLossModel
+    -- ** Configuration
+  , Seniority(..)
+  , RestructuringType(..)
+  , LatentModelIntegrationType(..)
 
     -- * Constructors
   , northAmericaCorpDefaultKey

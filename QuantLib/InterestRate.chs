@@ -1,9 +1,9 @@
 module QuantLib.InterestRate
   (
     -- * Types
-    Compounding(..)
+    InterestRate
+  , Compounding(..)
   , VolatilityType(..)
-  , InterestRate
   , AccrualPeriod(..)
   , EquivalentPeriod(..)
 

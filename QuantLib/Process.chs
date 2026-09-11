@@ -2,16 +2,8 @@
 module QuantLib.Process
   (
     -- * Types
-    -- ** Discretization schemes
-    ProcessDiscretization(..)
-  , ExtendedBlackScholesMertonProcessDiscretization(..)
-  , ExtendedOrnsteinUhlenbeckProcessDiscretization(..)
-  , HestonProcessDiscretization(..)
-  , GJRGARCHProcessDiscretization(..)
-  , HybridHestonHullWhiteProcessDiscretization(..)
-
     -- ** Process hierarchy
-  , GenStochasticProcess
+    GenStochasticProcess
   , StochasticProcess
   , GenStochasticProcess1D
   , StochasticProcess1D
@@ -35,6 +27,14 @@ module QuantLib.Process
   , Merton76Process
   , HullWhiteProcess
   , HullWhiteForwardProcess
+
+    -- ** Discretization schemes
+  , ProcessDiscretization(..)
+  , ExtendedBlackScholesMertonProcessDiscretization(..)
+  , ExtendedOrnsteinUhlenbeckProcessDiscretization(..)
+  , HestonProcessDiscretization(..)
+  , GJRGARCHProcessDiscretization(..)
+  , HybridHestonHullWhiteProcessDiscretization(..)
 
     -- * Constructors
     -- ** Hierarchy conversion

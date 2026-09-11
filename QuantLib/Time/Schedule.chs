@@ -6,9 +6,9 @@
 module QuantLib.Time.Schedule
   (
     -- * Types
-    DayCounterConstructor(..)
-  , DayCounter
+    DayCounter
   , Schedule
+  , DayCounterConstructor(..)
   , DateGenerationRule(..)
   , TimeUnit(..)
   , Frequency(..)
