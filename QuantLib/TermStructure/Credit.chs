@@ -1,12 +1,17 @@
 module QuantLib.TermStructure.Credit
   (
     -- * Types
+    -- ** Curves and helpers
     DefaultProbabilityTermStructure
   , DefaultProbabilityHelper
-  , ProbabilityTrait(..)
+
+    -- ** Coordinates
   , Reference(..)
   , TermPoint(..)
   , TermInterval(..)
+
+    -- ** Bootstrap configuration
+  , ProbabilityTrait(..)
   , IterativeBootstrapOpts(..)
 
     -- * Constructors

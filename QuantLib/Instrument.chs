@@ -4,6 +4,8 @@ module QuantLib.Instrument
     -- ** Instrument hierarchy
     GenInstrument
   , Instrument
+
+    -- ** Additional results
   , AdditionalResultVal(..)
 
     -- ** Exercises and callability

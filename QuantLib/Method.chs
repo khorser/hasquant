@@ -218,9 +218,12 @@
 module QuantLib.Method
   (
     -- * Types
+    -- ** Path and random sequences
     PathGenerator
   , SamplePath
   , GaussianRsg
+
+    -- ** Finite differences
   , Fdm1dMesher
   , FdmMesher
   , FdmInnerValueCalculator

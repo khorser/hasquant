@@ -2,8 +2,11 @@
 module QuantLib.TermStructure
   (
     -- * Types
+    -- ** Term-structure hierarchy
     GenTermStructure
   , TermStructure
+
+    -- ** Coordinates
   , Reference(..)
   , CalendarReference(..)
   , TermPoint(..)

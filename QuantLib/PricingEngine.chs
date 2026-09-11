@@ -26,6 +26,9 @@ module QuantLib.PricingEngine
   , IntegrationControl(..)
   , LatticeTime(..)
   , FdmGrid(..)
+  , OperatorSplittingOrder(..)
+  , PerpetualFuturesInterpolationType(..)
+  , StrikeSpec(..)
 
     -- * Constructors
     -- ** Discounting and counterparty engines
@@ -35,7 +38,6 @@ module QuantLib.PricingEngine
   , discountingFxForwardEngine
   , discountingConstNotionalCrossCurrencySwapEngine
   , counterpartyAdjSwapEngine
-  , PerpetualFuturesInterpolationType(..)
   , discountingPerpetualFuturesEngine
 
     -- ** Analytic, lattice and Monte Carlo engines
@@ -171,7 +173,6 @@ module QuantLib.PricingEngine
   , replicatingVarianceSwapEngine
   , stulzEngine
   , bjerksundStenslandSpreadEngine
-  , OperatorSplittingOrder(..)
   , operatorSplittingSpreadEngine
   , pearsonSpreadEngine
   , gaussianCopulaSpreadEngine
@@ -208,7 +209,6 @@ module QuantLib.PricingEngine
   , treeCallableZeroCouponBondEngine
 
     -- ** Black and Bachelier calculators
-  , StrikeSpec(..)
   , asBlackCalculator
   , blackCalculator
   , blackScholesCalculator
