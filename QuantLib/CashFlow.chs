@@ -16,11 +16,14 @@ module QuantLib.CashFlow
   , GenLeg
   , CashFlow
   , GenCashFlow
+  , Coupon
+  , GenCoupon
 
     -- * Constructors
     -- ** Hierarchy conversion
   , asLeg
   , asCashFlow
+  , asCoupon
   , asFloatingRateCoupon
   , asFloatingRateCouponPricer
 
@@ -217,7 +220,9 @@ module QuantLib.CashFlow
   , zSpread
 
     -- ** Coupon rates and prices
+  , coupons
   , couponAccrualStartDates
+  , couponAccruedAmount
   , baseFixing
   , indexFixing
   , rate
@@ -257,6 +262,7 @@ import Data.List.NonEmpty(NonEmpty(..), toList)
 {#pointer *CouponLeg foreign -> CCouponLeg' nocode#}
 {#pointer *QlQuote as Quote foreign -> CQuote' nocode#}
 {#pointer *QlCashFlow as CashFlow foreign -> CCashFlow' nocode#}
+{#pointer *QlCoupon as Coupon foreign -> CCoupon' nocode#}
 {#pointer *QlIndexedCashFlow as IndexedCashFlow foreign -> CIndexedCashFlow' nocode#}
 {#pointer *QlFixedRateCoupon as FixedRateCoupon foreign -> CFixedRateCoupon' nocode#}
 {#pointer *InterestRate foreign -> CInterestRate nocode#}
@@ -389,7 +395,7 @@ leg f = qlLeg fs ds where (ds, fs) = unzip f
 -- |A payment of @notional * i(fixingDate) \/ i(baseDate)@, or the same ratio minus one when
 -- /growthOnly/ is true.  QuantLib does no date adjustment here; callers supply the already
 -- adjusted fixing and payment dates.  This is the generic building block behind the specialized
--- CPI and equity cash flows, and accepts any bound 'GenIndex'.
+-- CPI and equity cash flows, and accepts any bound t'GenIndex'.
 {#fun qlIndexedCashFlow as indexedCashFlow{`Double' -- ^notional
   ,withIndex*`GenIndex idx' -- ^index
   ,withDay*`Day' -- ^base date
@@ -1232,6 +1238,11 @@ cmsLegWithOptions schedule idx notionals dc adj fixingDays gearings spreads caps
 -- don't blame me, it's how QuantLib works
 {#fun qlLegToCouponLeg as toCouponLeg{withLeg*`GenLeg l',preErrorCheck-`String'errorCheck*-}->`CouponLeg'peekCouponLeg*#}
 
+-- |The individual coupons of a coupon leg, e.g. to ask each one its own 'rate' or
+-- 'couponAccruedAmount'.  Pair with 'toCouponLeg' to get here from a 'Leg'.
+{#fun qlCouponLegCoupons as coupons{withGenLeg*`CouponLeg' -- ^leg
+  ,preArray-`[Coupon]'&peekCouponArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+
 {#enum YieldCurveModel{} deriving(Show, Eq, Read)#}
 
 {#pointer *QlCmsCouponPricer as CmsCouponPricer foreign -> CCmsCouponPricer' nocode#}
@@ -1364,8 +1375,18 @@ cmsLegWithOptions schedule idx notionals dc adj fixingDays gearings spreads caps
   ,fromEnumC`BusinessDayConvention' -- ^fixingConvention
   ,preErrorCheck-`String'errorCheck*-}->`FloatingRateCoupon'peekFloatingRateCoupon*#}
 
--- |The coupon rate.  It is calculated by the attached 'FloatingRateCouponPricer'.
-{#fun qlFloatingRateCouponRate as rate{withFloatingRateCoupon*`GenFloatingRateCoupon frc' -- ^coupon
+-- |The coupon rate, at the 'Coupon' level every accruing cash flow shares.  How it is obtained
+-- is the subtype's business: a 'FixedRateCoupon' returns its own rate, a 'CPICoupon' its fixed
+-- rate times the index ratio, and a 'FloatingRateCoupon' requires an attached
+-- 'FloatingRateCouponPricer' and throws without one (see 'setFloatingRateCouponPricer').
+{#fun qlCouponRate as rate{withCoupon*`GenCoupon c' -- ^coupon
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |Interest accrued on a single coupon up to the given date -- nominal times 'rate' times the
+-- accrued fraction of the accrual period.  Named apart from the leg-level 'accruedAmount', which
+-- sums a whole 'Leg' and takes settlement-date arguments this does not.
+{#fun qlCouponAccruedAmount as couponAccruedAmount{withCoupon*`GenCoupon c' -- ^coupon
+  ,withDay*`Day' -- ^date
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Set the coupon pricer used to calculate a floating-rate coupon's rate.

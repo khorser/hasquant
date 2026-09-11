@@ -1,7 +1,7 @@
 |v|ql/cashflow.hpp|Real CashFlow::amount() const;
 | |ql/cashflow.hpp|Date CashFlow::exCouponDate() const;
 | |ql/cashflow.hpp|bool CashFlow::tradingExCoupon(const Date & refDate = Date()) const;
-| |ql/cashflow.hpp|ext::shared_ptr<Coupon> CashFlow::coupon_cast(const ext::shared_ptr<CashFlow> &);
+|v|ql/cashflow.hpp|ext::shared_ptr<Coupon> CashFlow::coupon_cast(const ext::shared_ptr<CashFlow> &);
 | |ql/cashflow.hpp|bool earlier_than::operator()(const CashFlow & c1, const CashFlow & c2) const;
 |v|ql/cashflows/averagebmacoupon.hpp|AverageBMACoupon::AverageBMACoupon(const Date & paymentDate, Real nominal, const Date & startDate, const Date & endDate, const ext::shared_ptr<BMAIndex> & index, Real gearing = 1.0, Spread spread = 0.0, const Date & refPeriodStart = Date(), const Date & refPeriodEnd = Date(), const DayCounter & dayCounter = DayCounter());
 |v|ql/cashflows/averagebmacoupon.hpp|std::vector<Date> AverageBMACoupon::fixingDates() const;
@@ -148,11 +148,11 @@
 |x|ql/cashflows/coupon.hpp|const Date & Coupon::referencePeriodEnd() const;
 |x|ql/cashflows/coupon.hpp|Time Coupon::accrualPeriod() const;
 |x|ql/cashflows/coupon.hpp|Date::serial_type Coupon::accrualDays() const;
-|x|ql/cashflows/coupon.hpp|Rate Coupon::rate() const;
+|v|ql/cashflows/coupon.hpp|Rate Coupon::rate() const;
 |x|ql/cashflows/coupon.hpp|DayCounter Coupon::dayCounter() const;
 |x|ql/cashflows/coupon.hpp|Time Coupon::accruedPeriod(const Date &) const;
 |x|ql/cashflows/coupon.hpp|Date::serial_type Coupon::accruedDays(const Date &) const;
-|x|ql/cashflows/coupon.hpp|Real Coupon::accruedAmount(const Date &) const;
+|v|ql/cashflows/coupon.hpp|Real Coupon::accruedAmount(const Date &) const;
 | |ql/cashflows/coupon.hpp|ext::shared_ptr<Coupon> coupon_cast(const ext::shared_ptr<CashFlow> & cf);
 |v|ql/cashflows/couponpricer.hpp|Real FloatingRateCouponPricer::swapletPrice() const;
 |v|ql/cashflows/couponpricer.hpp|Rate FloatingRateCouponPricer::swapletRate() const;
@@ -604,7 +604,7 @@
 |v|ql/cashflows/yoyinflationcoupon.hpp|YoYInflationCoupon::YoYInflationCoupon(const Date & paymentDate, Real nominal, const Date & startDate, const Date & endDate, Natural fixingDays, const ext::shared_ptr<YoYInflationIndex> & index, const Period & observationLag, CPI::InterpolationType interpolation, const DayCounter & dayCounter, Real gearing = 1.0, Spread spread = 0.0, const Date & refPeriodStart = Date(), const Date & refPeriodEnd = Date());
 |x|ql/cashflows/yoyinflationcoupon.hpp|Real YoYInflationCoupon::gearing() const;
 |x|ql/cashflows/yoyinflationcoupon.hpp|Spread YoYInflationCoupon::spread() const;
-|x|ql/cashflows/yoyinflationcoupon.hpp|Rate YoYInflationCoupon::adjustedFixing() const;
+|v|ql/cashflows/yoyinflationcoupon.hpp|Rate YoYInflationCoupon::adjustedFixing() const;
 |x|ql/cashflows/yoyinflationcoupon.hpp|const ext::shared_ptr<YoYInflationIndex> & YoYInflationCoupon::yoyIndex() const;
 |x|ql/cashflows/yoyinflationcoupon.hpp|CPI::InterpolationType YoYInflationCoupon::interpolation() const;
 |v|ql/cashflows/yoyinflationcoupon.hpp|yoyInflationLeg::yoyInflationLeg(Schedule schedule, Calendar cal, ext::shared_ptr<YoYInflationIndex> index, const Period & observationLag, CPI::InterpolationType interpolation);

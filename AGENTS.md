@@ -48,6 +48,7 @@ Scale numeric tolerances to the result magnitude, normally about `1e-6` relative
 ## API design
 
 - Exported value names never use a trailing apostrophe or an unexplained numeric suffix to distinguish overloads. Use `From` for an alternate representation, `With` for added configuration, `At` for coordinates, and `Moving` for evaluation-date-relative term structures. The same short name may appear in different topical modules; callers can qualify imports.
+- When a per-object getter and a whole-collection analytic share a name in one module, the collection-level `CashFlows::`-style binding keeps the bare name and the per-object one takes the object as a prefix (`couponAccruedAmount` beside the leg-level `accruedAmount`). The two take different arguments, so a capability class does not apply.
 - Treat acronyms as camel-case words in exported values and record selectors: `legNpv`, `npvBps`, `gjrGarchModel`, `hestonSlvFdmModel`, and `nextImmDate`. Keep C shim names, C tags, Haskell types, and data constructors unchanged unless a representation change requires otherwise.
 - Bind only the requested surface by default, but include a neighboring binding when it reuses the same open header, marshalling, and fixture without separate investigation.
 - Do not mirror the C++ hierarchy mechanically. A class needs a dedicated Haskell type only when it has a meaningful class-specific calculation/getter or must be accepted at that exact type. Thin constructors may return an existing parent type.

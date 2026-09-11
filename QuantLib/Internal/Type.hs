@@ -435,7 +435,7 @@ withTimeGrid :: TimeGrid -> (Ptr CTimeGrid -> IO b) -> IO b
 withTimeGrid = withStandalone . getCTimeGrid
 
 -- |Never subclassed and never passed polymorphically elsewhere, so it gets the plain
--- 'Standalone' shape (like 'TimeGrid') rather than a 'GenX'/'AnyOf' hierarchy root.
+-- 'Standalone' shape (like 'TimeGrid') rather than a @GenX@/'AnyOf' hierarchy root.
 data CHistoricalIndexAnalysis
 newtype HistoricalIndexAnalysis = HistoricalIndexAnalysis {getCHistoricalIndexAnalysis :: Standalone CHistoricalIndexAnalysis}
 foreign import ccall unsafe "ql.h &qlFreeHistoricalIndexAnalysis" qlFreeHistoricalIndexAnalysis :: FinalizerPtr CHistoricalIndexAnalysis
@@ -578,13 +578,14 @@ peekBlackDeltaCalculator = BlackDeltaCalculator <.> peekStandalone
 withBlackDeltaCalculator :: BlackDeltaCalculator -> (Ptr CBlackDeltaCalculator -> IO b) -> IO b
 withBlackDeltaCalculator = withStandalone . getCBlackDeltaCalculator
 
--- | > FloatingRateCouponPricer
--- >   CmsCouponPricer
---
 -- Generic floating-rate coupon pricer; CMS pricers retain a concrete subtype.
 data CFloatingRateCouponPricer'
+
+-- | > FloatingRateCouponPricer
+-- >   CmsCouponPricer
 newtype GenFloatingRateCouponPricer frcp = GenFloatingRateCouponPricer {getFloatingRateCouponPricer :: GenForeignPtr frcp CFloatingRateCouponPricer'}
 type CFloatingRateCouponPricer = ForeignPtr CFloatingRateCouponPricer'
+-- |The root of the hierarchy shown under t'GenFloatingRateCouponPricer'.
 type FloatingRateCouponPricer = GenFloatingRateCouponPricer CFloatingRateCouponPricer
 foreign import ccall unsafe "ql.h &qlFreeFloatingCouponPricer" qlFreeFloatingRateCouponPricer :: FinalizerPtr CFloatingRateCouponPricer'
 instance Finalizable CFloatingRateCouponPricer' where finalize = qlFreeFloatingRateCouponPricer
@@ -602,6 +603,7 @@ withMaybeFloatingRateCouponPricer = maybe ($ nullPtr) withFloatingRateCouponPric
 -- |CMS coupon-pricer subtype required by CMS consumers.
 data CCmsCouponPricer'
 type CCmsCouponPricer = ForeignPtr CCmsCouponPricer'
+-- |A 'FloatingRateCouponPricer'; see the hierarchy under t'GenFloatingRateCouponPricer'.
 type CmsCouponPricer = GenFloatingRateCouponPricer CCmsCouponPricer
 foreign import ccall unsafe "ql.h &qlFreeCmsCouponPricer" qlFreeCmsCouponPricer :: FinalizerPtr CCmsCouponPricer'
 instance Finalizable CCmsCouponPricer' where finalize = qlFreeCmsCouponPricer
@@ -612,36 +614,28 @@ peekCmsCouponPricer = GenFloatingRateCouponPricer <.> newGenForeignPtr
 withCmsCouponPricer :: CmsCouponPricer -> (Ptr CCmsCouponPricer' -> IO b) -> IO b
 withCmsCouponPricer = withForeignPtr . ptr . getFloatingRateCouponPricer
 
--- | > FloatingRateCoupon
--- >   CmsCoupon
--- >   IborCoupon
--- >   OvernightIndexedCoupon
--- >   AverageBMACoupon
--- >   MultipleResetsCoupon
--- >   DigitalCmsCoupon
--- >     DigitalCmsSpreadCoupon
--- >   DigitalCoupon
--- >   RangeAccrualFloatersCoupon
--- >   StrippedCappedFlooredCoupon
-type GenFloatingRateCoupon frc = GenCashFlow (AnyOf CFloatingRateCoupon' frc)
+-- |A 'FloatingRateCoupon' or one of its leaves; see the hierarchy under t'GenCashFlow'.
+type GenFloatingRateCoupon frc = GenCoupon (AnyOf CFloatingRateCoupon' frc)
 data CFloatingRateCoupon'
 type CFloatingRateCoupon = ForeignPtr CFloatingRateCoupon'
+-- |A 'Coupon'; see the hierarchy under t'GenCashFlow'.
 type FloatingRateCoupon = GenFloatingRateCoupon CFloatingRateCoupon
 foreign import ccall unsafe "ql.h &qlFreeFloatingRateCoupon" qlFreeFloatingRateCoupon :: FinalizerPtr CFloatingRateCoupon'
 instance Finalizable CFloatingRateCoupon' where finalize = qlFreeFloatingRateCoupon
-foreign import ccall "ql.h qlFloatingRateCouponAsCashFlow" qlFloatingRateCouponAsCashFlow :: Ptr CFloatingRateCoupon' -> IO (Ptr CCashFlow')
-instance Upcastable CFloatingRateCoupon' where {type Base CFloatingRateCoupon' = CCashFlow'; upcast = qlFloatingRateCouponAsCashFlow}
+foreign import ccall "ql.h qlFloatingRateCouponAsCoupon" qlFloatingRateCouponAsCoupon :: Ptr CFloatingRateCoupon' -> IO (Ptr CCoupon')
+instance Upcastable CFloatingRateCoupon' where {type Base CFloatingRateCoupon' = CCoupon'; upcast = qlFloatingRateCouponAsCoupon}
 asFloatingRateCoupon :: GenFloatingRateCoupon frc -> IO FloatingRateCoupon
-asFloatingRateCoupon = transferGenForeignPtr peekFloatingRateCoupon . peel . getCashFlow
+asFloatingRateCoupon = transferGenForeignPtr peekFloatingRateCoupon . peel . peel . getCashFlow
 peekFloatingRateCoupon :: Ptr CFloatingRateCoupon' -> IO FloatingRateCoupon
 peekFloatingRateCoupon = newCastForeignPtr >=> newGenFloatingRateCoupon
 newGenFloatingRateCoupon :: GenForeignPtr frc CFloatingRateCoupon' -> IO (GenFloatingRateCoupon frc)
-newGenFloatingRateCoupon = pure . GenCashFlow . newAnyOf
+newGenFloatingRateCoupon = pure . GenCashFlow . newAnyOf . newAnyOf
 withFloatingRateCoupon :: GenFloatingRateCoupon frc -> (Ptr CFloatingRateCoupon' -> IO b) -> IO b
-withFloatingRateCoupon = withGenForeignPtr . peel . getCashFlow
+withFloatingRateCoupon = withGenForeignPtr . peel . peel . getCashFlow
 
 data CCmsCoupon'
 type CCmsCoupon = ForeignPtr CCmsCoupon'
+-- |A 'FloatingRateCoupon'; see the hierarchy under t'GenCashFlow'.
 type CmsCoupon = GenFloatingRateCoupon CCmsCoupon
 foreign import ccall unsafe "ql.h &qlFreeCmsCoupon" qlFreeCmsCoupon :: FinalizerPtr CCmsCoupon'
 instance Finalizable CCmsCoupon' where finalize = qlFreeCmsCoupon
@@ -650,11 +644,12 @@ instance Upcastable CCmsCoupon' where {type Base CCmsCoupon' = CFloatingRateCoup
 peekCmsCoupon :: Ptr CCmsCoupon' -> IO CmsCoupon
 peekCmsCoupon = newGenForeignPtr >=> newGenFloatingRateCoupon
 withCmsCoupon :: CmsCoupon -> (Ptr CCmsCoupon' -> IO b) -> IO b
-withCmsCoupon = withForeignPtr . ptr . peel . getCashFlow
+withCmsCoupon = withForeignPtr . ptr . peel . peel . getCashFlow
 
 -- |Concrete Ibor coupon required by subtype-specific constructors.
 data CIborCoupon'
 type CIborCoupon = ForeignPtr CIborCoupon'
+-- |A 'FloatingRateCoupon'; see the hierarchy under t'GenCashFlow'.
 type IborCoupon = GenFloatingRateCoupon CIborCoupon
 foreign import ccall unsafe "ql.h &qlFreeIborCoupon" qlFreeIborCoupon :: FinalizerPtr CIborCoupon'
 instance Finalizable CIborCoupon' where finalize = qlFreeIborCoupon
@@ -663,10 +658,11 @@ instance Upcastable CIborCoupon' where {type Base CIborCoupon' = CFloatingRateCo
 peekIborCoupon :: Ptr CIborCoupon' -> IO IborCoupon
 peekIborCoupon = newGenForeignPtr >=> newGenFloatingRateCoupon
 withIborCoupon :: IborCoupon -> (Ptr CIborCoupon' -> IO b) -> IO b
-withIborCoupon = withForeignPtr . ptr . peel . getCashFlow
+withIborCoupon = withForeignPtr . ptr . peel . peel . getCashFlow
 
 data COvernightIndexedCoupon'
 type COvernightIndexedCoupon = ForeignPtr COvernightIndexedCoupon'
+-- |A 'FloatingRateCoupon'; see the hierarchy under t'GenCashFlow'.
 type OvernightIndexedCoupon = GenFloatingRateCoupon COvernightIndexedCoupon
 foreign import ccall unsafe "ql.h &qlFreeOvernightIndexedCoupon" qlFreeOvernightIndexedCoupon :: FinalizerPtr COvernightIndexedCoupon'
 instance Finalizable COvernightIndexedCoupon' where finalize = qlFreeOvernightIndexedCoupon
@@ -675,9 +671,10 @@ instance Upcastable COvernightIndexedCoupon' where {type Base COvernightIndexedC
 peekOvernightIndexedCoupon :: Ptr COvernightIndexedCoupon' -> IO OvernightIndexedCoupon
 peekOvernightIndexedCoupon = newGenForeignPtr >=> newGenFloatingRateCoupon
 withOvernightIndexedCoupon :: OvernightIndexedCoupon -> (Ptr COvernightIndexedCoupon' -> IO b) -> IO b
-withOvernightIndexedCoupon = withForeignPtr . ptr . peel . getCashFlow
+withOvernightIndexedCoupon = withForeignPtr . ptr . peel . peel . getCashFlow
 data CAverageBMACoupon'
 type CAverageBMACoupon = ForeignPtr CAverageBMACoupon'
+-- |A 'FloatingRateCoupon'; see the hierarchy under t'GenCashFlow'.
 type AverageBMACoupon = GenFloatingRateCoupon CAverageBMACoupon
 foreign import ccall unsafe "ql.h &qlFreeAverageBMACoupon" qlFreeAverageBMACoupon :: FinalizerPtr CAverageBMACoupon'
 instance Finalizable CAverageBMACoupon' where finalize = qlFreeAverageBMACoupon
@@ -686,9 +683,10 @@ instance Upcastable CAverageBMACoupon' where {type Base CAverageBMACoupon' = CFl
 peekAverageBMACoupon :: Ptr CAverageBMACoupon' -> IO AverageBMACoupon
 peekAverageBMACoupon = newGenForeignPtr >=> newGenFloatingRateCoupon
 withAverageBMACoupon :: AverageBMACoupon -> (Ptr CAverageBMACoupon' -> IO b) -> IO b
-withAverageBMACoupon = withForeignPtr . ptr . peel . getCashFlow
+withAverageBMACoupon = withForeignPtr . ptr . peel . peel . getCashFlow
 data CMultipleResetsCoupon'
 type CMultipleResetsCoupon = ForeignPtr CMultipleResetsCoupon'
+-- |A 'FloatingRateCoupon'; see the hierarchy under t'GenCashFlow'.
 type MultipleResetsCoupon = GenFloatingRateCoupon CMultipleResetsCoupon
 foreign import ccall unsafe "ql.h &qlFreeMultipleResetsCoupon" qlFreeMultipleResetsCoupon :: FinalizerPtr CMultipleResetsCoupon'
 instance Finalizable CMultipleResetsCoupon' where finalize = qlFreeMultipleResetsCoupon
@@ -697,19 +695,20 @@ instance Upcastable CMultipleResetsCoupon' where {type Base CMultipleResetsCoupo
 peekMultipleResetsCoupon :: Ptr CMultipleResetsCoupon' -> IO MultipleResetsCoupon
 peekMultipleResetsCoupon = newGenForeignPtr >=> newGenFloatingRateCoupon
 withMultipleResetsCoupon :: MultipleResetsCoupon -> (Ptr CMultipleResetsCoupon' -> IO b) -> IO b
-withMultipleResetsCoupon = withForeignPtr . ptr . peel . getCashFlow
+withMultipleResetsCoupon = withForeignPtr . ptr . peel . peel . getCashFlow
 
 data CCPICoupon'
 type CCPICoupon = ForeignPtr CCPICoupon'
-type CPICoupon = GenCashFlow CCPICoupon
+-- |A 'Coupon'; see the hierarchy under t'GenCashFlow'.
+type CPICoupon = GenCoupon CCPICoupon
 foreign import ccall unsafe "ql.h &qlFreeCPICoupon" qlFreeCPICoupon :: FinalizerPtr CCPICoupon'
 instance Finalizable CCPICoupon' where finalize = qlFreeCPICoupon
-foreign import ccall "ql.h qlCPICouponAsCashFlow" qlCPICouponAsCashFlow :: Ptr CCPICoupon' -> IO (Ptr CCashFlow')
-instance Upcastable CCPICoupon' where {type Base CCPICoupon' = CCashFlow'; upcast = qlCPICouponAsCashFlow}
+foreign import ccall "ql.h qlCPICouponAsCoupon" qlCPICouponAsCoupon :: Ptr CCPICoupon' -> IO (Ptr CCoupon')
+instance Upcastable CCPICoupon' where {type Base CCPICoupon' = CCoupon'; upcast = qlCPICouponAsCoupon}
 peekCPICoupon :: Ptr CCPICoupon' -> IO CPICoupon
-peekCPICoupon = GenCashFlow <.> newGenForeignPtr
+peekCPICoupon = newGenForeignPtr >=> newGenCoupon
 withCPICoupon :: CPICoupon -> (Ptr CCPICoupon' -> IO b) -> IO b
-withCPICoupon = withForeignPtr . ptr . getCashFlow
+withCPICoupon = withForeignPtr . ptr . peel . getCashFlow
 
 data CCPICouponPricer
 newtype CPICouponPricer = CPICouponPricer {getCCPICouponPricer :: Standalone CCPICouponPricer}
@@ -733,6 +732,7 @@ withMaybeDigitalReplication = maybe ($ nullPtr) withDigitalReplication
 
 data CDigitalCmsCoupon'
 type CDigitalCmsCoupon = ForeignPtr CDigitalCmsCoupon'
+-- |A 'DigitalCoupon'; see the hierarchy under t'GenCashFlow'.
 type DigitalCmsCoupon = GenDigitalCoupon CDigitalCmsCoupon
 foreign import ccall unsafe "ql.h &qlFreeDigitalCmsCoupon" qlFreeDigitalCmsCoupon :: FinalizerPtr CDigitalCmsCoupon'
 instance Finalizable CDigitalCmsCoupon' where finalize = qlFreeDigitalCmsCoupon
@@ -741,10 +741,11 @@ instance Upcastable CDigitalCmsCoupon' where {type Base CDigitalCmsCoupon' = CDi
 peekDigitalCmsCoupon :: Ptr CDigitalCmsCoupon' -> IO DigitalCmsCoupon
 peekDigitalCmsCoupon = newGenForeignPtr >=> newGenDigitalCoupon
 withDigitalCmsCoupon :: DigitalCmsCoupon -> (Ptr CDigitalCmsCoupon' -> IO b) -> IO b
-withDigitalCmsCoupon = withForeignPtr . ptr . peel . peel . getCashFlow
+withDigitalCmsCoupon = withForeignPtr . ptr . peel . peel . peel . getCashFlow
 
 data CDigitalCmsSpreadCoupon'
 type CDigitalCmsSpreadCoupon = ForeignPtr CDigitalCmsSpreadCoupon'
+-- |A 'DigitalCoupon'; see the hierarchy under t'GenCashFlow'.
 type DigitalCmsSpreadCoupon = GenDigitalCoupon CDigitalCmsSpreadCoupon
 foreign import ccall unsafe "ql.h &qlFreeDigitalCmsSpreadCoupon" qlFreeDigitalCmsSpreadCoupon :: FinalizerPtr CDigitalCmsSpreadCoupon'
 instance Finalizable CDigitalCmsSpreadCoupon' where finalize = qlFreeDigitalCmsSpreadCoupon
@@ -753,10 +754,11 @@ instance Upcastable CDigitalCmsSpreadCoupon' where {type Base CDigitalCmsSpreadC
 peekDigitalCmsSpreadCoupon :: Ptr CDigitalCmsSpreadCoupon' -> IO DigitalCmsSpreadCoupon
 peekDigitalCmsSpreadCoupon = newGenForeignPtr >=> newGenDigitalCoupon
 withDigitalCmsSpreadCoupon :: DigitalCmsSpreadCoupon -> (Ptr CDigitalCmsSpreadCoupon' -> IO b) -> IO b
-withDigitalCmsSpreadCoupon = withForeignPtr . ptr . peel . peel . getCashFlow
+withDigitalCmsSpreadCoupon = withForeignPtr . ptr . peel . peel . peel . getCashFlow
 
 data CStrippedCappedFlooredCoupon'
 type CStrippedCappedFlooredCoupon = ForeignPtr CStrippedCappedFlooredCoupon'
+-- |A 'FloatingRateCoupon'; see the hierarchy under t'GenCashFlow'.
 type StrippedCappedFlooredCoupon = GenFloatingRateCoupon CStrippedCappedFlooredCoupon
 foreign import ccall unsafe "ql.h &qlFreeStrippedCappedFlooredCoupon" qlFreeStrippedCappedFlooredCoupon :: FinalizerPtr CStrippedCappedFlooredCoupon'
 instance Finalizable CStrippedCappedFlooredCoupon' where finalize = qlFreeStrippedCappedFlooredCoupon
@@ -765,11 +767,13 @@ instance Upcastable CStrippedCappedFlooredCoupon' where {type Base CStrippedCapp
 peekStrippedCappedFlooredCoupon :: Ptr CStrippedCappedFlooredCoupon' -> IO StrippedCappedFlooredCoupon
 peekStrippedCappedFlooredCoupon = newGenForeignPtr >=> newGenFloatingRateCoupon
 withStrippedCappedFlooredCoupon :: StrippedCappedFlooredCoupon -> (Ptr CStrippedCappedFlooredCoupon' -> IO b) -> IO b
-withStrippedCappedFlooredCoupon = withForeignPtr . ptr . peel . getCashFlow
+withStrippedCappedFlooredCoupon = withForeignPtr . ptr . peel . peel . getCashFlow
 
 data CDigitalCoupon'
+-- |A 'DigitalCoupon' or one of its leaves; see the hierarchy under t'GenCashFlow'.
 type GenDigitalCoupon dc = GenFloatingRateCoupon (AnyOf CDigitalCoupon' dc)
 type CDigitalCoupon = ForeignPtr CDigitalCoupon'
+-- |A 'FloatingRateCoupon'; see the hierarchy under t'GenCashFlow'.
 type DigitalCoupon = GenDigitalCoupon CDigitalCoupon
 foreign import ccall unsafe "ql.h &qlFreeDigitalCoupon" qlFreeDigitalCoupon :: FinalizerPtr CDigitalCoupon'
 instance Finalizable CDigitalCoupon' where finalize = qlFreeDigitalCoupon
@@ -778,13 +782,14 @@ instance Upcastable CDigitalCoupon' where {type Base CDigitalCoupon' = CFloating
 peekDigitalCoupon :: Ptr CDigitalCoupon' -> IO DigitalCoupon
 peekDigitalCoupon = newCastForeignPtr >=> newGenDigitalCoupon
 newGenDigitalCoupon :: GenForeignPtr dc CDigitalCoupon' -> IO (GenDigitalCoupon dc)
-newGenDigitalCoupon = pure . GenCashFlow . newAnyOf . newAnyOf
+newGenDigitalCoupon = pure . GenCashFlow . newAnyOf . newAnyOf . newAnyOf
 withDigitalCoupon :: GenDigitalCoupon dc -> (Ptr CDigitalCoupon' -> IO b) -> IO b
-withDigitalCoupon = withGenForeignPtr . peel . peel . getCashFlow
+withDigitalCoupon = withGenForeignPtr . peel . peel . peel . getCashFlow
 
 -- | A range-accrual coupon is concrete for its no-optionality price helper.
 data CRangeAccrualFloatersCoupon'
 type CRangeAccrualFloatersCoupon = ForeignPtr CRangeAccrualFloatersCoupon'
+-- |A 'FloatingRateCoupon'; see the hierarchy under t'GenCashFlow'.
 type RangeAccrualFloatersCoupon = GenFloatingRateCoupon CRangeAccrualFloatersCoupon
 foreign import ccall unsafe "ql.h &qlFreeRangeAccrualFloatersCoupon" qlFreeRangeAccrualFloatersCoupon :: FinalizerPtr CRangeAccrualFloatersCoupon'
 instance Finalizable CRangeAccrualFloatersCoupon' where finalize = qlFreeRangeAccrualFloatersCoupon
@@ -793,19 +798,20 @@ instance Upcastable CRangeAccrualFloatersCoupon' where {type Base CRangeAccrualF
 peekRangeAccrualFloatersCoupon :: Ptr CRangeAccrualFloatersCoupon' -> IO RangeAccrualFloatersCoupon
 peekRangeAccrualFloatersCoupon = newGenForeignPtr >=> newGenFloatingRateCoupon
 withRangeAccrualFloatersCoupon :: RangeAccrualFloatersCoupon -> (Ptr CRangeAccrualFloatersCoupon' -> IO b) -> IO b
-withRangeAccrualFloatersCoupon = withForeignPtr . ptr . peel . getCashFlow
+withRangeAccrualFloatersCoupon = withForeignPtr . ptr . peel . peel . getCashFlow
 
 data CYoYInflationCoupon'
 type CYoYInflationCoupon = ForeignPtr CYoYInflationCoupon'
-type YoYInflationCoupon = GenCashFlow CYoYInflationCoupon
+-- |A 'Coupon'; see the hierarchy under t'GenCashFlow'.
+type YoYInflationCoupon = GenCoupon CYoYInflationCoupon
 foreign import ccall unsafe "ql.h &qlFreeYoYInflationCoupon" qlFreeYoYInflationCoupon :: FinalizerPtr CYoYInflationCoupon'
 instance Finalizable CYoYInflationCoupon' where finalize = qlFreeYoYInflationCoupon
-foreign import ccall "ql.h qlYoYInflationCouponAsCashFlow" qlYoYInflationCouponAsCashFlow :: Ptr CYoYInflationCoupon' -> IO (Ptr CCashFlow')
-instance Upcastable CYoYInflationCoupon' where {type Base CYoYInflationCoupon' = CCashFlow'; upcast = qlYoYInflationCouponAsCashFlow}
+foreign import ccall "ql.h qlYoYInflationCouponAsCoupon" qlYoYInflationCouponAsCoupon :: Ptr CYoYInflationCoupon' -> IO (Ptr CCoupon')
+instance Upcastable CYoYInflationCoupon' where {type Base CYoYInflationCoupon' = CCoupon'; upcast = qlYoYInflationCouponAsCoupon}
 peekYoYInflationCoupon :: Ptr CYoYInflationCoupon' -> IO YoYInflationCoupon
-peekYoYInflationCoupon = GenCashFlow <.> newGenForeignPtr
+peekYoYInflationCoupon = newGenForeignPtr >=> newGenCoupon
 withYoYInflationCoupon :: YoYInflationCoupon -> (Ptr CYoYInflationCoupon' -> IO b) -> IO b
-withYoYInflationCoupon = withForeignPtr . ptr . getCashFlow
+withYoYInflationCoupon = withForeignPtr . ptr . peel . getCashFlow
 
 data CEquityCashFlowPricer
 newtype EquityCashFlowPricer = EquityCashFlowPricer {getCEquityCashFlowPricer :: Standalone CEquityCashFlowPricer}
@@ -820,7 +826,7 @@ data CYoYInflationCouponPricer
 -- | Pricer for capped\/floored 'QuantLib.CashFlow.yoyInflationLeg' coupons. All 3 concrete
 -- upstream pricers (Black\/UnitDisplacedBlack\/Bachelier) share one ctor shape and are bound as
 -- constructors of this single type, mirroring 'FloatingRateCouponPricer'\/'EquityCashFlowPricer'
--- (a standalone pricer type, not part of any 'GenX' hierarchy).
+-- (a standalone pricer type, not part of any @GenX@ hierarchy).
 newtype YoYInflationCouponPricer = YoYInflationCouponPricer {getCYoYInflationCouponPricer :: Standalone CYoYInflationCouponPricer}
 foreign import ccall unsafe "ql.h &qlFreeYoYInflationCouponPricer" qlFreeYoYInflationCouponPricer :: FinalizerPtr CYoYInflationCouponPricer
 instance Finalizable CYoYInflationCouponPricer where finalize = qlFreeYoYInflationCouponPricer
@@ -1086,26 +1092,31 @@ withCurrencyArray = withGenArray withCurrency
 peekCurrencyArray :: Ptr CUInt -> Ptr (Ptr (Ptr CCurrency)) -> IO [Currency]
 peekCurrencyArray = peekPtrArray peekCurrency
 
--- | > Quote
--- >   SimpleQuote
--- >   DeltaVolQuote
--- >   FuturesConvAdjustmentQuote
--- >   RelinkableQuote
+-- |The root of the hierarchy shown under t'GenQuote'.
 type Quote = GenQuote CQuote
 data CQuote'
 data CSimpleQuote'
 data CDeltaVolQuote'
 data CFuturesConvAdjustmentQuote'
 data CRelinkableQuote'
+-- | > Quote
+-- >   SimpleQuote
+-- >   DeltaVolQuote
+-- >   FuturesConvAdjustmentQuote
+-- >   RelinkableQuote
 newtype GenQuote q = GenQuote {getQuote :: GenForeignPtr q CQuote'}
 type CQuote = ForeignPtr CQuote'
 type CSimpleQuote = ForeignPtr CSimpleQuote'
+-- |A 'Quote'; see the hierarchy under t'GenQuote'.
 type SimpleQuote = GenQuote CSimpleQuote
 type CDeltaVolQuote = ForeignPtr CDeltaVolQuote'
+-- |A 'Quote'; see the hierarchy under t'GenQuote'.
 type DeltaVolQuote = GenQuote CDeltaVolQuote
 type CFuturesConvAdjustmentQuote = ForeignPtr CFuturesConvAdjustmentQuote'
+-- |A 'Quote'; see the hierarchy under t'GenQuote'.
 type FuturesConvAdjustmentQuote = GenQuote CFuturesConvAdjustmentQuote
 type CRelinkableQuote = ForeignPtr CRelinkableQuote'
+-- |A 'Quote'; see the hierarchy under t'GenQuote'.
 type RelinkableQuote = GenQuote CRelinkableQuote
 foreign import ccall unsafe "ql.h &qlFreeQuote" qlFreeQuote :: FinalizerPtr CQuote'
 foreign import ccall unsafe "ql.h &qlFreeSimpleQuote" qlFreeSimpleQuote :: FinalizerPtr CSimpleQuote'
@@ -1225,32 +1236,34 @@ foreign import ccall "ql.h qlRebatedExerciseAsExercise" qlRebatedExerciseAsExerc
 
 data CLeg'
 data CCouponLeg'
+-- Upstream's InflationCoupon, between Coupon and the two inflation coupons, is elided from the
+-- hierarchy below: no bound API consumes it.
+data CCashFlow'
+
 -- | > CashFlow
--- >   FixedRateCoupon
--- >   FloatingRateCoupon
--- >     AverageBMACoupon
--- >     CmsCoupon
--- >     DigitalCoupon
--- >       DigitalCmsCoupon
--- >       DigitalCmsSpreadCoupon
--- >     IborCoupon
--- >     MultipleResetsCoupon
--- >     OvernightIndexedCoupon
--- >     RangeAccrualFloatersCoupon
--- >     StrippedCappedFlooredCoupon
+-- >   Coupon
+-- >     FixedRateCoupon
+-- >     FloatingRateCoupon
+-- >       AverageBMACoupon
+-- >       CmsCoupon
+-- >       DigitalCoupon
+-- >         DigitalCmsCoupon
+-- >         DigitalCmsSpreadCoupon
+-- >       IborCoupon
+-- >       MultipleResetsCoupon
+-- >       OvernightIndexedCoupon
+-- >       RangeAccrualFloatersCoupon
+-- >       StrippedCappedFlooredCoupon
+-- >     CPICoupon
+-- >     YoYInflationCoupon
 -- >   IndexedCashFlow
 -- >     CPICashFlow
 -- >     EquityCashFlow
 -- >     ZeroInflationCashFlow
--- >   CPICoupon
 -- >   CommodityCashFlow
--- >   YoYInflationCoupon
---
--- Cash-flow hierarchy. Coupon and InflationCoupon are intentionally elided because no bound API
--- consumes either intermediate type.
-data CCashFlow'
 newtype GenCashFlow cf = GenCashFlow {getCashFlow :: GenForeignPtr cf CCashFlow'}
 type CCashFlow = ForeignPtr CCashFlow'
+-- |The root of the hierarchy shown under t'GenCashFlow'.
 type CashFlow = GenCashFlow CCashFlow
 foreign import ccall unsafe "ql.h &qlFreeCashFlow" qlFreeCashFlow :: FinalizerPtr CCashFlow'
 instance Finalizable CCashFlow' where finalize = qlFreeCashFlow
@@ -1263,21 +1276,47 @@ withCashFlow = withGenForeignPtr . getCashFlow
 withCashFlowArray :: [GenCashFlow cf] -> ((CUInt, Ptr (Ptr CCashFlow')) -> IO b) -> IO b
 withCashFlowArray = withGenArray withCashFlow
 
+data CCoupon'
+
+-- |Shared base of every accruing cash flow: a nominal, an accrual period, and a rate.
+-- See the hierarchy under t'GenCashFlow'.
+type GenCoupon c = GenCashFlow (AnyOf CCoupon' c)
+type CCoupon = ForeignPtr CCoupon'
+-- |A 'CashFlow'; see the hierarchy under t'GenCashFlow'.
+type Coupon = GenCoupon CCoupon
+foreign import ccall unsafe "ql.h &qlFreeCoupon" qlFreeCoupon :: FinalizerPtr CCoupon'
+instance Finalizable CCoupon' where finalize = qlFreeCoupon
+foreign import ccall "ql.h qlCouponAsCashFlow" qlCouponAsCashFlow :: Ptr CCoupon' -> IO (Ptr CCashFlow')
+instance Upcastable CCoupon' where {type Base CCoupon' = CCashFlow'; upcast = qlCouponAsCashFlow}
+asCoupon :: GenCoupon c -> IO Coupon
+asCoupon = transferGenForeignPtr peekCoupon . peel . getCashFlow
+peekCoupon :: Ptr CCoupon' -> IO Coupon
+peekCoupon = newCastForeignPtr >=> newGenCoupon
+newGenCoupon :: GenForeignPtr c CCoupon' -> IO (GenCoupon c)
+newGenCoupon = pure . GenCashFlow . newAnyOf
+withCoupon :: GenCoupon c -> (Ptr CCoupon' -> IO b) -> IO b
+withCoupon = withGenForeignPtr . peel . getCashFlow
+peekCouponArray :: Ptr CUInt -> Ptr (Ptr (Ptr CCoupon')) -> IO [Coupon]
+peekCouponArray = peekPtrArray peekCoupon
+
 data CFixedRateCoupon'
 type CFixedRateCoupon = ForeignPtr CFixedRateCoupon'
-type FixedRateCoupon = GenCashFlow CFixedRateCoupon
+-- |A 'Coupon'; see the hierarchy under t'GenCashFlow'.
+type FixedRateCoupon = GenCoupon CFixedRateCoupon
 foreign import ccall unsafe "ql.h &qlFreeFixedRateCoupon" qlFreeFixedRateCoupon :: FinalizerPtr CFixedRateCoupon'
 instance Finalizable CFixedRateCoupon' where finalize = qlFreeFixedRateCoupon
-foreign import ccall "ql.h qlFixedRateCouponAsCashFlow" qlFixedRateCouponAsCashFlow :: Ptr CFixedRateCoupon' -> IO (Ptr CCashFlow')
-instance Upcastable CFixedRateCoupon' where {type Base CFixedRateCoupon' = CCashFlow'; upcast = qlFixedRateCouponAsCashFlow}
+foreign import ccall "ql.h qlFixedRateCouponAsCoupon" qlFixedRateCouponAsCoupon :: Ptr CFixedRateCoupon' -> IO (Ptr CCoupon')
+instance Upcastable CFixedRateCoupon' where {type Base CFixedRateCoupon' = CCoupon'; upcast = qlFixedRateCouponAsCoupon}
 peekFixedRateCoupon :: Ptr CFixedRateCoupon' -> IO FixedRateCoupon
-peekFixedRateCoupon = GenCashFlow <.> newGenForeignPtr
+peekFixedRateCoupon = newGenForeignPtr >=> newGenCoupon
 withFixedRateCoupon :: FixedRateCoupon -> (Ptr CFixedRateCoupon' -> IO b) -> IO b
-withFixedRateCoupon = withForeignPtr . ptr . getCashFlow
+withFixedRateCoupon = withForeignPtr . ptr . peel . getCashFlow
 
 data CIndexedCashFlow'
+-- |An 'IndexedCashFlow' or one of its leaves; see the hierarchy under t'GenCashFlow'.
 type GenIndexedCashFlow icf = GenCashFlow (AnyOf CIndexedCashFlow' icf)
 type CIndexedCashFlow = ForeignPtr CIndexedCashFlow'
+-- |A 'CashFlow'; see the hierarchy under t'GenCashFlow'.
 type IndexedCashFlow = GenIndexedCashFlow CIndexedCashFlow
 foreign import ccall unsafe "ql.h &qlFreeIndexedCashFlow" qlFreeIndexedCashFlow :: FinalizerPtr CIndexedCashFlow'
 instance Finalizable CIndexedCashFlow' where finalize = qlFreeIndexedCashFlow
@@ -1292,6 +1331,7 @@ withIndexedCashFlow = withGenForeignPtr . peel . getCashFlow
 
 data CZeroInflationCashFlow'
 type CZeroInflationCashFlow = ForeignPtr CZeroInflationCashFlow'
+-- |An 'IndexedCashFlow'; see the hierarchy under t'GenCashFlow'.
 type ZeroInflationCashFlow = GenIndexedCashFlow CZeroInflationCashFlow
 foreign import ccall unsafe "ql.h &qlFreeZeroInflationCashFlow" qlFreeZeroInflationCashFlow :: FinalizerPtr CZeroInflationCashFlow'
 instance Finalizable CZeroInflationCashFlow' where finalize = qlFreeZeroInflationCashFlow
@@ -1304,6 +1344,7 @@ withZeroInflationCashFlow = withForeignPtr . ptr . peel . getCashFlow
 
 data CCPICashFlow'
 type CCPICashFlow = ForeignPtr CCPICashFlow'
+-- |An 'IndexedCashFlow'; see the hierarchy under t'GenCashFlow'.
 type CPICashFlow = GenIndexedCashFlow CCPICashFlow
 foreign import ccall unsafe "ql.h &qlFreeCPICashFlow" qlFreeCPICashFlow :: FinalizerPtr CCPICashFlow'
 instance Finalizable CCPICashFlow' where finalize = qlFreeCPICashFlow
@@ -1316,6 +1357,7 @@ withCPICashFlow = withForeignPtr . ptr . peel . getCashFlow
 
 data CEquityCashFlow'
 type CEquityCashFlow = ForeignPtr CEquityCashFlow'
+-- |An 'IndexedCashFlow'; see the hierarchy under t'GenCashFlow'.
 type EquityCashFlow = GenIndexedCashFlow CEquityCashFlow
 foreign import ccall unsafe "ql.h &qlFreeEquityCashFlow" qlFreeEquityCashFlow :: FinalizerPtr CEquityCashFlow'
 instance Finalizable CEquityCashFlow' where finalize = qlFreeEquityCashFlow
@@ -1326,10 +1368,14 @@ peekEquityCashFlow = newGenForeignPtr >=> newGenIndexedCashFlow
 withEquityCashFlow :: EquityCashFlow -> (Ptr CEquityCashFlow' -> IO b) -> IO b
 withEquityCashFlow = withForeignPtr . ptr . peel . getCashFlow
 
+-- | > Leg
+-- >   CouponLeg
 newtype GenLeg l = GenLeg {getLeg :: GenForeignPtr l CLeg'}
 type CLeg = ForeignPtr CLeg'
+-- |The root of the hierarchy shown under t'GenLeg'.
 type Leg = GenLeg CLeg
 type CCouponLeg = ForeignPtr CCouponLeg'
+-- |A 'Leg'; see the hierarchy under t'GenLeg'.
 type CouponLeg = GenLeg CCouponLeg
 foreign import ccall unsafe "ql.h &qlFreeLeg" qlFreeLeg :: FinalizerPtr CLeg'
 foreign import ccall unsafe "ql.h &qlFreeCouponLeg" qlFreeCouponLeg :: FinalizerPtr CCouponLeg'
@@ -1350,14 +1396,15 @@ withGenLeg = withForeignPtr . ptr . getLeg
 peekCouponLeg :: Ptr CCouponLeg' -> IO CouponLeg
 peekCouponLeg = GenLeg <.> newGenForeignPtr
 
+-- |The root of the hierarchy shown under t'GenRateHelper'.
+type RateHelper = GenRateHelper CRateHelper
+data CRateHelper'
 -- | > RateHelper
 -- >   BondHelper
 -- >   SwapRateHelper
 -- >   OISRateHelper
 -- >   FuturesRateHelper
 -- >   OvernightIndexFutureRateHelper
-type RateHelper = GenRateHelper CRateHelper
-data CRateHelper'
 newtype GenRateHelper rh = GenRateHelper {getRateHelper :: GenForeignPtr rh CRateHelper'}
 type CRateHelper = ForeignPtr CRateHelper'
 foreign import ccall unsafe "ql.h &qlFreeRateHelper" qlFreeRateHelper :: FinalizerPtr CRateHelper'
@@ -1374,6 +1421,7 @@ withRateHelperArray :: [GenRateHelper rh] -> ((CUInt, Ptr (Ptr CRateHelper')) ->
 withRateHelperArray = withGenArray withRateHelper
 data CBondHelper'
 type CBondHelper = ForeignPtr CBondHelper'
+-- |A 'RateHelper'; see the hierarchy under t'GenRateHelper'.
 type BondHelper = GenRateHelper CBondHelper
 foreign import ccall unsafe "ql.h &qlFreeBondHelper" qlFreeBondHelper :: FinalizerPtr CBondHelper'
 instance Finalizable CBondHelper' where finalize = qlFreeBondHelper
@@ -1385,6 +1433,7 @@ withBondHelperArray :: [BondHelper] -> ((CUInt, Ptr (Ptr CBondHelper')) -> IO b)
 withBondHelperArray = withGenArray withGenRateHelper
 data CSwapRateHelper'
 type CSwapRateHelper = ForeignPtr CSwapRateHelper'
+-- |A 'RateHelper'; see the hierarchy under t'GenRateHelper'.
 type SwapRateHelper = GenRateHelper CSwapRateHelper
 foreign import ccall unsafe "ql.h &qlFreeSwapRateHelper" qlFreeSwapRateHelper :: FinalizerPtr CSwapRateHelper'
 instance Finalizable CSwapRateHelper' where finalize = qlFreeSwapRateHelper
@@ -1394,6 +1443,7 @@ peekSwapRateHelper :: Ptr CSwapRateHelper' -> IO SwapRateHelper
 peekSwapRateHelper = GenRateHelper <.> newGenForeignPtr
 data COISRateHelper'
 type COISRateHelper = ForeignPtr COISRateHelper'
+-- |A 'RateHelper'; see the hierarchy under t'GenRateHelper'.
 type OISRateHelper = GenRateHelper COISRateHelper
 foreign import ccall unsafe "ql.h &qlFreeOISRateHelper" qlFreeOISRateHelper :: FinalizerPtr COISRateHelper'
 instance Finalizable COISRateHelper' where finalize = qlFreeOISRateHelper
@@ -1403,6 +1453,7 @@ peekOISRateHelper :: Ptr COISRateHelper' -> IO OISRateHelper
 peekOISRateHelper = GenRateHelper <.> newGenForeignPtr
 data CFuturesRateHelper'
 type CFuturesRateHelper = ForeignPtr CFuturesRateHelper'
+-- |A 'RateHelper'; see the hierarchy under t'GenRateHelper'.
 type FuturesRateHelper = GenRateHelper CFuturesRateHelper
 foreign import ccall unsafe "ql.h &qlFreeFuturesRateHelper" qlFreeFuturesRateHelper :: FinalizerPtr CFuturesRateHelper'
 instance Finalizable CFuturesRateHelper' where finalize = qlFreeFuturesRateHelper
@@ -1412,6 +1463,7 @@ peekFuturesRateHelper :: Ptr CFuturesRateHelper' -> IO FuturesRateHelper
 peekFuturesRateHelper = GenRateHelper <.> newGenForeignPtr
 data COvernightIndexFutureRateHelper'
 type COvernightIndexFutureRateHelper = ForeignPtr COvernightIndexFutureRateHelper'
+-- |A 'RateHelper'; see the hierarchy under t'GenRateHelper'.
 type OvernightIndexFutureRateHelper = GenRateHelper COvernightIndexFutureRateHelper
 foreign import ccall unsafe "ql.h &qlFreeOvernightIndexFutureRateHelper" qlFreeOvernightIndexFutureRateHelper :: FinalizerPtr COvernightIndexFutureRateHelper'
 instance Finalizable COvernightIndexFutureRateHelper' where finalize = qlFreeOvernightIndexFutureRateHelper
@@ -1420,23 +1472,27 @@ instance Upcastable COvernightIndexFutureRateHelper' where {type Base COvernight
 peekOvernightIndexFutureRateHelper :: Ptr COvernightIndexFutureRateHelper' -> IO OvernightIndexFutureRateHelper
 peekOvernightIndexFutureRateHelper = GenRateHelper <.> newGenForeignPtr
 
--- | > CalibrationHelper
--- >   BlackCalibrationHelper*
--- >     SwaptionHelper
+-- |The root of the hierarchy shown under t'GenCalibrationHelper'.
+type CalibrationHelper = GenCalibrationHelper CCalibrationHelper
+
 -- BlackCalibrationHelper is a proper one-AnyOf-layer family (mirrors GenSwap/GenOption under
--- GenInstrument), not a plain leaf directly under CalibrationHelper as before, so a concrete
--- subtype (SwaptionHelper) can be given its own getters without a runtime cast: SwaptionHelper's
--- own underlying()/swaption() need the real SwaptionHelper pointer, while the pre-existing
+-- GenInstrument), not a plain leaf directly under CalibrationHelper, so a concrete subtype
+-- (SwaptionHelper) can be given its own getters without a runtime cast: SwaptionHelper's
+-- own underlying()/swaption() need the real SwaptionHelper pointer, while the
 -- BlackCalibrationHelper-level accessors (times, blackPrice, impliedVolatility, ...) are
 -- generalized to 'GenBlackCalibrationHelper bch' so they keep working on any leaf, SwaptionHelper
 -- included, without an explicit upcast at each call site.
-type CalibrationHelper = GenCalibrationHelper CCalibrationHelper
 data CCalibrationHelper'
 data CBlackCalibrationHelper'
+-- | > CalibrationHelper
+-- >   BlackCalibrationHelper*
+-- >     SwaptionHelper
 newtype GenCalibrationHelper ch = GenCalibrationHelper {getCalibrationHelper :: GenForeignPtr ch CCalibrationHelper'}
 type CCalibrationHelper = ForeignPtr CCalibrationHelper'
+-- |A 'BlackCalibrationHelper' or one of its leaves; see the hierarchy under t'GenCalibrationHelper'.
 type GenBlackCalibrationHelper bch = GenCalibrationHelper (AnyOf CBlackCalibrationHelper' bch)
 type CBlackCalibrationHelper = ForeignPtr CBlackCalibrationHelper'
+-- |A 'CalibrationHelper'; see the hierarchy under t'GenCalibrationHelper'.
 type BlackCalibrationHelper = GenBlackCalibrationHelper CBlackCalibrationHelper
 foreign import ccall unsafe "ql.h &qlFreeCalibrationHelper" qlFreeCalibrationHelper :: FinalizerPtr CCalibrationHelper'
 foreign import ccall unsafe "ql.h &qlFreeBlackCalibrationHelper" qlFreeBlackCalibrationHelper :: FinalizerPtr CBlackCalibrationHelper'
@@ -1477,6 +1533,7 @@ peekBlackCalibrationHelperArray = peekPtrArray peekBlackCalibrationHelper
 -- deliberately not offered there.
 data CSwaptionHelper'
 type CSwaptionHelper = ForeignPtr CSwaptionHelper'
+-- |A 'BlackCalibrationHelper'; see the hierarchy under t'GenCalibrationHelper'.
 type SwaptionHelper = GenBlackCalibrationHelper CSwaptionHelper
 foreign import ccall unsafe "ql.h &qlFreeSwaptionHelper" qlFreeSwaptionHelper :: FinalizerPtr CSwaptionHelper'
 instance Finalizable CSwaptionHelper' where finalize = qlFreeSwaptionHelper
@@ -1487,14 +1544,16 @@ peekSwaptionHelper = newGenForeignPtr >=> newGenBlackCalibrationHelper
 withSwaptionHelper :: SwaptionHelper -> (Ptr CSwaptionHelper' -> IO b) -> IO b
 withSwaptionHelper = withForeignPtr . ptr . peel . getCalibrationHelper
 
--- | > BlackCalculator
--- >   BlackScholesCalculator
+-- |The root of the hierarchy shown under t'GenBlackCalculator'.
 type BlackCalculator = GenBlackCalculator CBlackCalculator
 data CBlackCalculator'
 data CBlackScholesCalculator'
+-- | > BlackCalculator
+-- >   BlackScholesCalculator
 newtype GenBlackCalculator bc = GenBlackCalculator {getBlackCalculator :: GenForeignPtr bc CBlackCalculator'}
 type CBlackCalculator = ForeignPtr CBlackCalculator'
 type CBlackScholesCalculator = ForeignPtr CBlackScholesCalculator'
+-- |A 'BlackCalculator'; see the hierarchy under t'GenBlackCalculator'.
 type BlackScholesCalculator = GenBlackCalculator CBlackScholesCalculator
 foreign import ccall unsafe "ql.h &qlFreeBlackCalculator" qlFreeBlackCalculator :: FinalizerPtr CBlackCalculator'
 foreign import ccall unsafe "ql.h &qlFreeBlackScholesCalculator" qlFreeBlackScholesCalculator :: FinalizerPtr CBlackScholesCalculator'
@@ -1513,10 +1572,11 @@ withGenBlackCalculator = withForeignPtr . ptr . getBlackCalculator
 peekBlackScholesCalculator :: Ptr CBlackScholesCalculator' -> IO BlackScholesCalculator
 peekBlackScholesCalculator = GenBlackCalculator <.> newGenForeignPtr
 
--- | > BachelierCalculator
 -- no subclasses upstream, unlike BlackCalculator/BlackScholesCalculator above, so this is a
 -- plain leaf (Standalone), not a GenX/Upcastable hierarchy
 data CBachelierCalculator
+
+-- | > BachelierCalculator
 newtype BachelierCalculator = BachelierCalculator {getCBachelierCalculator :: Standalone CBachelierCalculator}
 foreign import ccall unsafe "ql.h &qlFreeBachelierCalculator" qlFreeBachelierCalculator :: FinalizerPtr CBachelierCalculator
 instance Finalizable CBachelierCalculator where finalize = qlFreeBachelierCalculator
@@ -1525,6 +1585,19 @@ peekBachelierCalculator = BachelierCalculator <.> peekStandalone
 withBachelierCalculator :: BachelierCalculator -> (Ptr CBachelierCalculator -> IO b) -> IO b
 withBachelierCalculator = withStandalone . getCBachelierCalculator
 
+-- |The root of the hierarchy shown under t'GenIndex'.
+type Index = GenIndex CIndex
+data CIndex'
+data CInterestRateIndex'
+data CInflationIndex'
+data CZeroInflationIndex'
+data CYoYInflationIndex'
+data CBMAIndex'
+data CIborIndex'
+data COvernightIndex'
+data CSwapIndex'
+data CSwapSpreadIndex'
+data COvernightIndexedSwapIndex'
 -- MULTILEVEL HIERARCHIES
 -- | > Index
 -- >  InterestRateIndex
@@ -1539,18 +1612,6 @@ withBachelierCalculator = withStandalone . getCBachelierCalculator
 -- >    ZeroInflationIndex
 -- >  EquityIndex
 -- >  CommodityIndex
-type Index = GenIndex CIndex
-data CIndex'
-data CInterestRateIndex'
-data CInflationIndex'
-data CZeroInflationIndex'
-data CYoYInflationIndex'
-data CBMAIndex'
-data CIborIndex'
-data COvernightIndex'
-data CSwapIndex'
-data CSwapSpreadIndex'
-data COvernightIndexedSwapIndex'
 newtype GenIndex idx = GenIndex {getIndex :: GenForeignPtr idx CIndex'}
 type CIndex = ForeignPtr CIndex'
 
@@ -1561,31 +1622,47 @@ showIndex = unsafePerformIO . (`withIndex` (qlIndexName >=> peekDynString))
 
 instance Show (GenIndex idx) where show = showIndex
 
+-- |An 'InterestRateIndex' or one of its leaves; see the hierarchy under t'GenIndex'.
 type GenInterestRateIndex ridx = GenIndex (AnyOf CInterestRateIndex' ridx)
 type CInterestRateIndex = ForeignPtr CInterestRateIndex'
+-- |An 'Index'; see the hierarchy under t'GenIndex'.
 type InterestRateIndex = GenInterestRateIndex CInterestRateIndex
+-- |An 'InflationIndex' or one of its leaves; see the hierarchy under t'GenIndex'.
 type GenInflationIndex iidx = GenIndex (AnyOf CInflationIndex' iidx)
 type CInflationIndex = ForeignPtr CInflationIndex'
+-- |An 'Index'; see the hierarchy under t'GenIndex'.
 type InflationIndex = GenInflationIndex CInflationIndex
+-- |A 'ZeroInflationIndex' or one of its leaves; see the hierarchy under t'GenIndex'.
 type GenZeroInflationIndex zidx = GenInflationIndex (AnyOf CZeroInflationIndex' zidx)
 type CZeroInflationIndex = ForeignPtr CZeroInflationIndex'
+-- |An 'InflationIndex'; see the hierarchy under t'GenIndex'.
 type ZeroInflationIndex = GenZeroInflationIndex CZeroInflationIndex
+-- |A 'YoYInflationIndex' or one of its leaves; see the hierarchy under t'GenIndex'.
 type GenYoYInflationIndex yidx = GenInflationIndex (AnyOf CYoYInflationIndex' yidx)
 type CYoYInflationIndex = ForeignPtr CYoYInflationIndex'
+-- |An 'InflationIndex'; see the hierarchy under t'GenIndex'.
 type YoYInflationIndex = GenYoYInflationIndex CYoYInflationIndex
 type CBMAIndex = ForeignPtr CBMAIndex'
+-- |An 'InterestRateIndex'; see the hierarchy under t'GenIndex'.
 type BMAIndex = GenInterestRateIndex CBMAIndex
 type CIborIndex = ForeignPtr CIborIndex'
+-- |An 'InterestRateIndex'; see the hierarchy under t'GenIndex'.
 type IborIndex = GenIborIndex CIborIndex
 type COvernightIndex = ForeignPtr COvernightIndex'
+-- |An 'IborIndex'; see the hierarchy under t'GenIndex'.
 type OvernightIborIndex = GenIborIndex COvernightIndex
 type CSwapIndex = ForeignPtr CSwapIndex'
+-- |An 'InterestRateIndex'; see the hierarchy under t'GenIndex'.
 type SwapIndex = GenSwapIndex CSwapIndex
 type CSwapSpreadIndex = ForeignPtr CSwapSpreadIndex'
+-- |An 'InterestRateIndex'; see the hierarchy under t'GenIndex'.
 type SwapSpreadIndex = GenInterestRateIndex CSwapSpreadIndex
+-- |An 'IborIndex' or one of its leaves; see the hierarchy under t'GenIndex'.
 type GenIborIndex ibor = GenInterestRateIndex (AnyOf CIborIndex' ibor)
+-- |A 'SwapIndex' or one of its leaves; see the hierarchy under t'GenIndex'.
 type GenSwapIndex sidx = GenInterestRateIndex (AnyOf CSwapIndex' sidx)
 type COvernightIndexedSwapIndex = ForeignPtr COvernightIndexedSwapIndex'
+-- |A 'SwapIndex'; see the hierarchy under t'GenIndex'.
 type OvernightIndexedSwapIndex = GenSwapIndex COvernightIndexedSwapIndex
 foreign import ccall unsafe "ql.h &qlFreeIndex" qlFreeIndex :: FinalizerPtr CIndex'
 foreign import ccall unsafe "ql.h &qlFreeInterestRateIndex" qlFreeInterestRateIndex :: FinalizerPtr CInterestRateIndex'
@@ -1717,6 +1794,7 @@ withOvernightIndexedSwapIndex = withForeignPtr  .ptr . peel . peel . getIndex
 
 data CEquityIndex'
 type CEquityIndex = ForeignPtr CEquityIndex'
+-- |An 'Index'; see the hierarchy under t'GenIndex'.
 type EquityIndex = GenIndex CEquityIndex
 foreign import ccall unsafe "ql.h &qlFreeEquityIndex" qlFreeEquityIndex :: FinalizerPtr CEquityIndex'
 instance Finalizable CEquityIndex' where finalize = qlFreeEquityIndex
@@ -1730,6 +1808,7 @@ withEquityIndex = withForeignPtr . ptr . getIndex
 -- | A plain 'Index' leaf, mirroring 'EquityIndex' -- no subclasses upstream.
 data CCommodityIndex'
 type CCommodityIndex = ForeignPtr CCommodityIndex'
+-- |An 'Index'; see the hierarchy under t'GenIndex'.
 type CommodityIndex = GenIndex CCommodityIndex
 foreign import ccall unsafe "ql.h &qlFreeCommodityIndex" qlFreeCommodityIndex :: FinalizerPtr CCommodityIndex'
 instance Finalizable CCommodityIndex' where finalize = qlFreeCommodityIndex
@@ -1740,6 +1819,37 @@ peekCommodityIndex = GenIndex <.> newGenForeignPtr
 withCommodityIndex :: CommodityIndex -> (Ptr CCommodityIndex' -> IO b) -> IO b
 withCommodityIndex = withForeignPtr . ptr . getIndex
 
+-- |The root of the hierarchy shown under t'GenTermStructure'.
+type TermStructure = GenTermStructure CTermStructure
+data CTermStructure'
+data CVolatilityTermStructure'
+data COptionletVolatilityStructure'
+data CRelinkableOptionletVolatilityStructure'
+data CSwaptionVolatilityStructure'
+data CRelinkableSwaptionVolatilityStructure'
+data CSabrSwaptionVolatilityCube'
+data CNoArbSabrSwaptionVolatilityCube'
+data CInterpolatedSwaptionVolatilityCube'
+data CCapFloorTermVolatilityStructure'
+data CCapFloorTermVolCurve'
+data CCapFloorTermVolSurface'
+data CLocalVolTermStructure'
+data CGridModelLocalVolSurface'
+data CAndreasenHugeVolatilityInterpl
+data CYoYOptionletVolatilitySurface'
+data CCPIVolatilitySurface'
+data CBlackVolTermStructure'
+data CRelinkableBlackVolTermStructure'
+data CBlackVarianceCurve'
+data CBlackVolatilitySurfaceDelta'
+data CYieldTermStructure'
+data CFittedBondDiscountCurve'
+data CRelinkableYieldTermStructure'
+data CCallableBondVolatilityStructure'
+data CDefaultProbabilityTermStructure'
+data CZeroInflationTermStructure'
+data CYoYInflationTermStructure'
+data CCommodityCurve'
 -- | > TermStructure = GenTermStructure t
 -- >  YieldTermStructure = GenYieldTermStructure y = GenTermStructure t
 -- >    FittedBondDiscountCurve = GenYieldTermStructure ...
@@ -1775,54 +1885,32 @@ withCommodityIndex = withForeignPtr . ptr . getIndex
 -- >  YoYCapFloorTermPriceSurface
 -- >  CPICapFloorTermPriceSurface
 -- >  CommodityCurve
-type TermStructure = GenTermStructure CTermStructure
-data CTermStructure'
-data CVolatilityTermStructure'
-data COptionletVolatilityStructure'
-data CRelinkableOptionletVolatilityStructure'
-data CSwaptionVolatilityStructure'
-data CRelinkableSwaptionVolatilityStructure'
-data CSabrSwaptionVolatilityCube'
-data CNoArbSabrSwaptionVolatilityCube'
-data CInterpolatedSwaptionVolatilityCube'
-data CCapFloorTermVolatilityStructure'
-data CCapFloorTermVolCurve'
-data CCapFloorTermVolSurface'
-data CLocalVolTermStructure'
-data CGridModelLocalVolSurface'
-data CAndreasenHugeVolatilityInterpl
-data CYoYOptionletVolatilitySurface'
-data CCPIVolatilitySurface'
-data CBlackVolTermStructure'
-data CRelinkableBlackVolTermStructure'
-data CBlackVarianceCurve'
-data CBlackVolatilitySurfaceDelta'
-data CYieldTermStructure'
-data CFittedBondDiscountCurve'
-data CRelinkableYieldTermStructure'
-data CCallableBondVolatilityStructure'
-data CDefaultProbabilityTermStructure'
-data CZeroInflationTermStructure'
-data CYoYInflationTermStructure'
-data CCommodityCurve'
 newtype GenTermStructure t = GenTermStructure {getTermStructure :: GenForeignPtr t CTermStructure'}
 type CTermStructure = ForeignPtr CTermStructure'
+-- |A 'YieldTermStructure' or one of its leaves; see the hierarchy under t'GenTermStructure'.
 type GenYieldTermStructure y = GenTermStructure (AnyOf CYieldTermStructure' y)
 type CYieldTermStructure = ForeignPtr CYieldTermStructure'
+-- |A 'TermStructure'; see the hierarchy under t'GenTermStructure'.
 type YieldTermStructure = GenYieldTermStructure CYieldTermStructure
 type CFittedBondDiscountCurve = ForeignPtr CFittedBondDiscountCurve'
+-- |A 'YieldTermStructure'; see the hierarchy under t'GenTermStructure'.
 type FittedBondDiscountCurve = GenYieldTermStructure CFittedBondDiscountCurve
 type CRelinkableYieldTermStructure = ForeignPtr CRelinkableYieldTermStructure'
 -- | A curve held behind a relinkable handle. It /is/ a 'YieldTermStructure' -- pass it
 -- anywhere a curve is expected and it upcasts like any other hierarchy member, sharing its
 -- @Link@ so that a later 'QuantLib.TermStructure.Yield.linkTo' reaches everything already
 -- built on it.
+-- See the hierarchy under t'GenTermStructure'.
 type RelinkableYieldTermStructure = GenYieldTermStructure CRelinkableYieldTermStructure
+-- |A 'VolatilityTermStructure' or one of its leaves; see the hierarchy under t'GenTermStructure'.
 type GenVolatilityTermStructure v = GenTermStructure (AnyOf CVolatilityTermStructure' v)
 type CVolatilityTermStructure = ForeignPtr CVolatilityTermStructure'
+-- |A 'TermStructure'; see the hierarchy under t'GenTermStructure'.
 type VolatilityTermStructure = GenVolatilityTermStructure CVolatilityTermStructure
+-- |An 'OptionletVolatilityStructure' or one of its leaves; see the hierarchy under t'GenTermStructure'.
 type GenOptionletVolatilityStructure ov = GenVolatilityTermStructure (AnyOf COptionletVolatilityStructure' ov)
 type COptionletVolatilityStructure = ForeignPtr COptionletVolatilityStructure'
+-- |A 'VolatilityTermStructure'; see the hierarchy under t'GenTermStructure'.
 type OptionletVolatilityStructure = GenOptionletVolatilityStructure COptionletVolatilityStructure
 type CRelinkableOptionletVolatilityStructure = ForeignPtr CRelinkableOptionletVolatilityStructure'
 -- | An optionlet vol surface held behind a relinkable handle. It /is/ an
@@ -1830,7 +1918,9 @@ type CRelinkableOptionletVolatilityStructure = ForeignPtr CRelinkableOptionletVo
 -- other hierarchy member, sharing its @Link@ so that a later
 -- 'QuantLib.TermStructure.Volatility.linkOptionletVolTo' reaches everything already built on
 -- it. Mirrors 'RelinkableSwaptionVolatilityStructure'.
+-- See the hierarchy under t'GenTermStructure'.
 type RelinkableOptionletVolatilityStructure = GenOptionletVolatilityStructure CRelinkableOptionletVolatilityStructure
+-- |A 'CapFloorTermVolatilityStructure' or one of its leaves; see the hierarchy under t'GenTermStructure'.
 type GenCapFloorTermVolatilityStructure c = GenVolatilityTermStructure (AnyOf CCapFloorTermVolatilityStructure' c)
 type CCapFloorTermVolatilityStructure = ForeignPtr CCapFloorTermVolatilityStructure'
 -- | The abstract root shared by 'ConstantCapFloorTermVolatility' (erased straight to this type at
@@ -1840,6 +1930,7 @@ type CCapFloorTermVolatilityStructure = ForeignPtr CCapFloorTermVolatilityStruct
 -- 'YoYOptionletVolatilitySurface' still is) specifically so 'capFloorVolatility' -- declared on
 -- @CapFloorTermVolatilityStructure@ upstream, not on 'VolatilityTermStructure' -- can be bound
 -- generically without a @dynamic_pointer_cast@ in the shim.
+-- See the hierarchy under t'GenTermStructure'.
 type CapFloorTermVolatilityStructure = GenCapFloorTermVolatilityStructure CCapFloorTermVolatilityStructure
 type CCapFloorTermVolCurve = ForeignPtr CCapFloorTermVolCurve'
 -- | An ATM-only cap\/floor term vol curve (no strike dimension, unlike 'CapFloorTermVolSurface').
@@ -1847,11 +1938,14 @@ type CCapFloorTermVolCurve = ForeignPtr CCapFloorTermVolCurve'
 -- 'ConstantCapFloorTermVolatility' does) so a future binding of @OptionletStripper2@ -- which takes
 -- a concrete @Handle\<CapFloorTermVolCurve\>@ upstream -- has a type to reach for without another
 -- breaking change here.
+-- See the hierarchy under t'GenTermStructure'.
 type CapFloorTermVolCurve = GenCapFloorTermVolatilityStructure CCapFloorTermVolCurve
 type CCapFloorTermVolSurface = ForeignPtr CCapFloorTermVolSurface'
+-- |A 'CapFloorTermVolatilityStructure'; see the hierarchy under t'GenTermStructure'.
 type CapFloorTermVolSurface = GenCapFloorTermVolatilityStructure CCapFloorTermVolSurface
 type GenSwaptionVolatilityStructure sv = GenVolatilityTermStructure (AnyOf CSwaptionVolatilityStructure' sv)
 type CSwaptionVolatilityStructure = ForeignPtr CSwaptionVolatilityStructure'
+-- |A 'VolatilityTermStructure'; see the hierarchy under t'GenTermStructure'.
 type SwaptionVolatilityStructure = GenSwaptionVolatilityStructure CSwaptionVolatilityStructure
 type CRelinkableSwaptionVolatilityStructure = ForeignPtr CRelinkableSwaptionVolatilityStructure'
 -- | A swaption vol surface held behind a relinkable handle. It /is/ a
@@ -1859,6 +1953,7 @@ type CRelinkableSwaptionVolatilityStructure = ForeignPtr CRelinkableSwaptionVola
 -- other hierarchy member, sharing its @Link@ so that a later
 -- 'QuantLib.TermStructure.Volatility.linkSwaptionVolTo' reaches everything already built on
 -- it. Mirrors 'RelinkableBlackVolTermStructure'.
+-- See the hierarchy under t'GenTermStructure'.
 type RelinkableSwaptionVolatilityStructure = GenSwaptionVolatilityStructure CRelinkableSwaptionVolatilityStructure
 type CSabrSwaptionVolatilityCube = ForeignPtr CSabrSwaptionVolatilityCube'
 -- | A SABR-calibrated swaption vol cube. It /is/ a 'SwaptionVolatilityStructure' -- pass it
@@ -1866,18 +1961,21 @@ type CSabrSwaptionVolatilityCube = ForeignPtr CSabrSwaptionVolatilityCube'
 -- calibrated vol cubes, ATM strike) are bound directly against this concrete type rather than
 -- via a downcast: it has real calculations of its own beyond the generic interface, so per the
 -- API-design rule in CLAUDE.md it earns a dedicated leaf.
+-- See the hierarchy under t'GenTermStructure'.
 type SabrSwaptionVolatilityCube = GenSwaptionVolatilityStructure CSabrSwaptionVolatilityCube
 type CNoArbSabrSwaptionVolatilityCube = ForeignPtr CNoArbSabrSwaptionVolatilityCube'
 -- | An arbitrage-free (Doust) SABR-calibrated swaption vol cube -- the same underlying
 -- @XabrSwaptionVolatilityCube@ template as 'SabrSwaptionVolatilityCube', one model policy over
 -- (@SwaptionVolCubeNoArbSabrModel@ instead of @SwaptionVolCubeSabrModel@), same dedicated-leaf
 -- reasoning and identical getter surface.
+-- See the hierarchy under t'GenTermStructure'.
 type NoArbSabrSwaptionVolatilityCube = GenSwaptionVolatilityStructure CNoArbSabrSwaptionVolatilityCube
 type CInterpolatedSwaptionVolatilityCube = ForeignPtr CInterpolatedSwaptionVolatilityCube'
 -- | The non-SABR, linear-interpolation swaption vol cube. It /is/ a
 -- 'SwaptionVolatilityStructure' -- pass it anywhere one is expected. Gets the same dedicated-leaf
 -- treatment as 'SabrSwaptionVolatilityCube' for its 'atmStrike' getter (inherited, in upstream,
 -- from the same abstract @SwaptionVolatilityCube@ base both concrete cubes share).
+-- See the hierarchy under t'GenTermStructure'.
 type InterpolatedSwaptionVolatilityCube = GenSwaptionVolatilityStructure CInterpolatedSwaptionVolatilityCube
 data CSwaptionVolatilityMatrix'
 type CSwaptionVolatilityMatrix = ForeignPtr CSwaptionVolatilityMatrix'
@@ -1886,6 +1984,7 @@ type CSwaptionVolatilityMatrix = ForeignPtr CSwaptionVolatilityMatrix'
 -- its own 'swaptionVolatilityMatrixLocate' inspector (the lower grid-corner indexes surrounding
 -- a given option date\/swap tenor), same reasoning as 'SabrSwaptionVolatilityCube'\/
 -- 'InterpolatedSwaptionVolatilityCube' above.
+-- See the hierarchy under t'GenTermStructure'.
 type SwaptionVolatilityMatrix = GenSwaptionVolatilityStructure CSwaptionVolatilityMatrix
 -- | Black at-the-money (no-smile) volatility curve, abstract here (hasquant binds no
 -- @qlBlackAtmVolCurve@ constructor -- @BlackAtmVolCurve@ has no bindable constructor upstream
@@ -1893,9 +1992,11 @@ type SwaptionVolatilityMatrix = GenSwaptionVolatilityStructure CSwaptionVolatili
 -- 'CapFloorTermVolatilityStructure'\/'SwaptionVolatilityStructure' directly off
 -- 'VolatilityTermStructure'. Reachable as a value via 'SabrVolSurface''s @atmCurve@ getter (any
 -- concrete member may be held there), and as the argument type of 'sabrVolSurface'.
+-- See the hierarchy under t'GenTermStructure'.
 type GenBlackAtmVolCurve b = GenVolatilityTermStructure (AnyOf CBlackAtmVolCurve' b)
 data CBlackAtmVolCurve'
 type CBlackAtmVolCurve = ForeignPtr CBlackAtmVolCurve'
+-- |A 'VolatilityTermStructure'; see the hierarchy under t'GenTermStructure'.
 type BlackAtmVolCurve = GenBlackAtmVolCurve CBlackAtmVolCurve
 -- | Black volatility (smile) surface: adds a strike\/smile dimension over 'BlackAtmVolCurve'.
 -- Abstract here (no bindable constructor of its own -- only 'SabrVolSurface' constructs one in
@@ -1903,9 +2004,11 @@ type BlackAtmVolCurve = GenBlackAtmVolCurve CBlackAtmVolCurve
 -- (unlike @InterestRateVolSurface@, deliberately not given its own level -- see 'SabrVolSurface')
 -- because its own calculation, @smileSection@, is the defining feature of the "surface" vs
 -- "curve" distinction, not a thin pass-through inspector.
+-- See the hierarchy under t'GenTermStructure'.
 type GenBlackVolSurface b = GenBlackAtmVolCurve (AnyOf CBlackVolSurface' b)
 data CBlackVolSurface'
 type CBlackVolSurface = ForeignPtr CBlackVolSurface'
+-- |A 'BlackAtmVolCurve'; see the hierarchy under t'GenTermStructure'.
 type BlackVolSurface = GenBlackVolSurface CBlackVolSurface
 data CAbcdAtmVolCurve'
 type CAbcdAtmVolCurve = ForeignPtr CAbcdAtmVolCurve'
@@ -1913,6 +2016,7 @@ type CAbcdAtmVolCurve = ForeignPtr CAbcdAtmVolCurve'
 -- 'BlackAtmVolCurve' leaf (real calc\/getters of its own -- @a@\/@b@\/@c@\/@d@\/@rmsError@\/etc --
 -- per the API-design rule in CLAUDE.md), one 'AnyOf' layer under 'GenBlackAtmVolCurve', same depth
 -- as 'CapFloorTermVolCurve' under 'GenCapFloorTermVolatilityStructure'.
+-- See the hierarchy under t'GenTermStructure'.
 type AbcdAtmVolCurve = GenBlackAtmVolCurve CAbcdAtmVolCurve
 data CSabrVolSurface'
 type CSabrVolSurface = ForeignPtr CSabrVolSurface'
@@ -1923,11 +2027,15 @@ type CSabrVolSurface = ForeignPtr CSabrVolSurface'
 -- 'SabrVolSurface' is its only concrete member in this binding -- per CLAUDE.md's "don't mirror
 -- the C++ hierarchy 1:1" rule). Two 'AnyOf' layers under 'GenBlackVolSurface' (mirrors
 -- 'VanillaSwap' under 'FixedVsFloatingSwap' under 'GenSwap').
+-- See the hierarchy under t'GenTermStructure'.
 type SabrVolSurface = GenBlackVolSurface CSabrVolSurface
+-- |A 'LocalVolTermStructure' or one of its leaves; see the hierarchy under t'GenTermStructure'.
 type GenLocalVolTermStructure lv = GenVolatilityTermStructure (AnyOf CLocalVolTermStructure' lv)
 type CLocalVolTermStructure = ForeignPtr CLocalVolTermStructure'
+-- |A 'VolatilityTermStructure'; see the hierarchy under t'GenTermStructure'.
 type LocalVolTermStructure = GenLocalVolTermStructure CLocalVolTermStructure
 type CGridModelLocalVolSurface = ForeignPtr CGridModelLocalVolSurface'
+-- |A 'LocalVolTermStructure'; see the hierarchy under t'GenTermStructure'.
 type GridModelLocalVolSurface = GenLocalVolTermStructure CGridModelLocalVolSurface
 type AndreasenHugeVolatilityInterpl = Standalone CAndreasenHugeVolatilityInterpl
 type CYoYOptionletVolatilitySurface = ForeignPtr CYoYOptionletVolatilitySurface'
@@ -1938,6 +2046,7 @@ type CYoYOptionletVolatilitySurface = ForeignPtr CYoYOptionletVolatilitySurface'
 -- @Handle@ (mirroring 'OptionletVolatilityStructure', since it feeds
 -- 'QuantLib.PricingEngine.yoyInflationBlackCapFloorEngine' et al. exactly the way
 -- 'OptionletVolatilityStructure' feeds 'QuantLib.PricingEngine.blackCapFloorEngineFromVolatilityStructure').
+-- See the hierarchy under t'GenTermStructure'.
 type YoYOptionletVolatilitySurface = GenVolatilityTermStructure CYoYOptionletVolatilitySurface
 type CCPIVolatilitySurface = ForeignPtr CCPIVolatilitySurface'
 -- | A CPI (zero-inflation) volatility surface, quoted via 'volatility'\/'totalVariance' at
@@ -1949,23 +2058,31 @@ type CCPIVolatilitySurface = ForeignPtr CCPIVolatilitySurface'
 -- would consume this) is itself explicitly unfinished upstream for vol-dependent coupons (no
 -- concrete descendant exists to bind, unlike 'YoYInflationCouponPricer's three) -- so this type
 -- stands alone as a queryable surface, not (yet) as engine\/pricer plumbing.
+-- See the hierarchy under t'GenTermStructure'.
 type CPIVolatilitySurface = GenVolatilityTermStructure CCPIVolatilitySurface
+-- |A 'BlackVolTermStructure' or one of its leaves; see the hierarchy under t'GenTermStructure'.
 type GenBlackVolTermStructure bv = GenVolatilityTermStructure (AnyOf CBlackVolTermStructure' bv)
 type CBlackVolTermStructure = ForeignPtr CBlackVolTermStructure'
+-- |A 'VolatilityTermStructure'; see the hierarchy under t'GenTermStructure'.
 type BlackVolTermStructure = GenBlackVolTermStructure CBlackVolTermStructure
 type CRelinkableBlackVolTermStructure = ForeignPtr CRelinkableBlackVolTermStructure'
 -- | A Black vol surface held behind a relinkable handle. It /is/ a 'BlackVolTermStructure' --
 -- pass it anywhere one is expected and it upcasts like any other hierarchy member, sharing its
 -- @Link@ so that a later 'QuantLib.TermStructure.Volatility.linkBlackVolTo' reaches everything
 -- already built on it. Mirrors 'RelinkableYieldTermStructure'.
+-- See the hierarchy under t'GenTermStructure'.
 type RelinkableBlackVolTermStructure = GenBlackVolTermStructure CRelinkableBlackVolTermStructure
 type CBlackVarianceCurve = ForeignPtr CBlackVarianceCurve'
+-- |A 'BlackVolTermStructure'; see the hierarchy under t'GenTermStructure'.
 type BlackVarianceCurve = GenBlackVolTermStructure CBlackVarianceCurve
 type CBlackVolatilitySurfaceDelta = ForeignPtr CBlackVolatilitySurfaceDelta'
+-- |A 'BlackVolTermStructure'; see the hierarchy under t'GenTermStructure'.
 type BlackVolatilitySurfaceDelta = GenBlackVolTermStructure CBlackVolatilitySurfaceDelta
 type CCallableBondVolatilityStructure = ForeignPtr CCallableBondVolatilityStructure'
+-- |A 'TermStructure'; see the hierarchy under t'GenTermStructure'.
 type CallableBondVolatilityStructure = GenTermStructure CCallableBondVolatilityStructure
 type CDefaultProbabilityTermStructure = ForeignPtr CDefaultProbabilityTermStructure'
+-- |A 'TermStructure'; see the hierarchy under t'GenTermStructure'.
 type DefaultProbabilityTermStructure = GenTermStructure CDefaultProbabilityTermStructure
 withDefaultProbabilityTermStructureArray :: [DefaultProbabilityTermStructure] -> ((CUInt, Ptr (Ptr CDefaultProbabilityTermStructure')) -> IO b) -> IO b
 withDefaultProbabilityTermStructureArray = withGenArray withGenTermStructure
@@ -2049,13 +2166,16 @@ withDigitalLossModel :: DigitalLossModel -> (Ptr CDefaultLossModel -> IO b) -> I
 withDigitalLossModel = withStandalone . getCDigitalLossModel
 
 type CZeroInflationTermStructure = ForeignPtr CZeroInflationTermStructure'
+-- |A 'TermStructure'; see the hierarchy under t'GenTermStructure'.
 type ZeroInflationTermStructure = GenTermStructure CZeroInflationTermStructure
 type CYoYInflationTermStructure = ForeignPtr CYoYInflationTermStructure'
+-- |A 'TermStructure'; see the hierarchy under t'GenTermStructure'.
 type YoYInflationTermStructure = GenTermStructure CYoYInflationTermStructure
 type CCommodityCurve = ForeignPtr CCommodityCurve'
 -- | A plain 'TermStructure' leaf (not a 'YieldTermStructure' -- it has no discount-factor
 -- semantics, just an interpolated price curve), constructed and consumed by @shared_ptr@ like
 -- 'CallableBondVolatilityStructure'\/'DefaultProbabilityTermStructure', never a @Handle@.
+-- See the hierarchy under t'GenTermStructure'.
 type CommodityCurve = GenTermStructure CCommodityCurve
 data CYoYCapFloorTermPriceSurface'
 type CYoYCapFloorTermPriceSurface = ForeignPtr CYoYCapFloorTermPriceSurface'
@@ -2068,6 +2188,7 @@ type CYoYCapFloorTermPriceSurface = ForeignPtr CYoYCapFloorTermPriceSurface'
 -- a different template (@InterpolatedYoYCapFloorTermPriceSurface@) from
 -- 'CPICapFloorTermPriceSurface's @InterpolatedCPICapFloorTermPriceSurface@, hence the separate
 -- 2-D\/1-D pair rather than 'CPICapFloorTermPriceSurface's single 'Interpolation2D'.
+-- See the hierarchy under t'GenTermStructure'.
 type YoYCapFloorTermPriceSurface = GenTermStructure CYoYCapFloorTermPriceSurface
 data CCPICapFloorTermPriceSurface'
 type CCPICapFloorTermPriceSurface = ForeignPtr CCPICapFloorTermPriceSurface'
@@ -2079,6 +2200,7 @@ type CCPICapFloorTermPriceSurface = ForeignPtr CCPICapFloorTermPriceSurface'
 -- (@InterpolatedCPICapFloorTermPriceSurface@) from 'YoYCapFloorTermPriceSurface's
 -- @InterpolatedYoYCapFloorTermPriceSurface@, hence its own single 2-D slot rather than
 -- 'YoYCapFloorTermPriceSurface's separate 2-D\/1-D pair.
+-- See the hierarchy under t'GenTermStructure'.
 type CPICapFloorTermPriceSurface = GenTermStructure CCPICapFloorTermPriceSurface
 foreign import ccall unsafe "ql.h &qlFreeTermStructure" qlFreeTermStructure :: FinalizerPtr CTermStructure'
 foreign import ccall unsafe "ql.h &qlFreeVolatilityTermStructure" qlFreeVolatilityTermStructure :: FinalizerPtr CVolatilityTermStructure'
@@ -2413,26 +2535,7 @@ withRelinkableYieldTermStructure = withForeignPtr . ptr . peel . getTermStructur
 withFittedBondDiscountCurve :: FittedBondDiscountCurve -> (Ptr CFittedBondDiscountCurve' -> IO b) -> IO b
 withFittedBondDiscountCurve = withForeignPtr . ptr . peel . getTermStructure
 
--- | > StochasticProcess
--- >   ExtOUWithJumpsProcess
--- >   GJRGARCHProcess
--- >   HybridHestonHullWhiteProcess
--- >   KlugeExtOUProcess
--- >   LiborForwardModelProcess
--- >   StochasticProcessArray
--- >   G2Process
--- >   G2ForwardProcess
--- >   HestonProcess
--- >     BatesProcess
--- >   HestonSLVProcess
--- >   StochasticProcess1D
--- >     ExtendedOrnsteinUhlenbeckProcess
--- >     HullWhiteForwardProcess
--- >     HullWhiteProcess
--- >     Merton76Process
--- >     VarianceGammaProcess
--- >     GeneralizedBlackScholesProcess
--- >       BlackProcess
+-- |The root of the hierarchy shown under t'GenStochasticProcess'.
 type StochasticProcess = GenStochasticProcess CStochasticProcess
 data CStochasticProcess'
 data CExtOUWithJumpsProcess'
@@ -2454,48 +2557,89 @@ data CMerton76Process'
 data CVarianceGammaProcess'
 data CGeneralizedBlackScholesProcess'
 data CBlackProcess'
+-- | > StochasticProcess
+-- >   ExtOUWithJumpsProcess
+-- >   GJRGARCHProcess
+-- >   HybridHestonHullWhiteProcess
+-- >   KlugeExtOUProcess
+-- >   LiborForwardModelProcess
+-- >   StochasticProcessArray
+-- >   G2Process
+-- >   G2ForwardProcess
+-- >   HestonProcess
+-- >     BatesProcess
+-- >   HestonSLVProcess
+-- >   StochasticProcess1D
+-- >     ExtendedOrnsteinUhlenbeckProcess
+-- >     HullWhiteForwardProcess
+-- >     HullWhiteProcess
+-- >     Merton76Process
+-- >     VarianceGammaProcess
+-- >     GeneralizedBlackScholesProcess
+-- >       BlackProcess
 newtype GenStochasticProcess p = GenStochasticProcess {getStochasticProcess :: GenForeignPtr p CStochasticProcess'}
 type CStochasticProcess = ForeignPtr CStochasticProcess'
 type CExtOUWithJumpsProcess = ForeignPtr CExtOUWithJumpsProcess'
+-- |A 'StochasticProcess'; see the hierarchy under t'GenStochasticProcess'.
 type ExtOUWithJumpsProcess = GenStochasticProcess CExtOUWithJumpsProcess
 type CGJRGARCHProcess = ForeignPtr CGJRGARCHProcess'
+-- |A 'StochasticProcess'; see the hierarchy under t'GenStochasticProcess'.
 type GJRGARCHProcess = GenStochasticProcess CGJRGARCHProcess
 type CHybridHestonHullWhiteProcess = ForeignPtr CHybridHestonHullWhiteProcess'
+-- |A 'StochasticProcess'; see the hierarchy under t'GenStochasticProcess'.
 type HybridHestonHullWhiteProcess = GenStochasticProcess CHybridHestonHullWhiteProcess
 type CKlugeExtOUProcess = ForeignPtr CKlugeExtOUProcess'
+-- |A 'StochasticProcess'; see the hierarchy under t'GenStochasticProcess'.
 type KlugeExtOUProcess = GenStochasticProcess CKlugeExtOUProcess
 type CLiborForwardModelProcess = ForeignPtr CLiborForwardModelProcess'
+-- |A 'StochasticProcess'; see the hierarchy under t'GenStochasticProcess'.
 type LiborForwardModelProcess = GenStochasticProcess CLiborForwardModelProcess
 type CStochasticProcessArray = ForeignPtr CStochasticProcessArray'
+-- |A 'StochasticProcess'; see the hierarchy under t'GenStochasticProcess'.
 type StochasticProcessArray = GenStochasticProcess CStochasticProcessArray
 type CG2Process = ForeignPtr CG2Process'
+-- |A 'StochasticProcess'; see the hierarchy under t'GenStochasticProcess'.
 type G2Process = GenStochasticProcess CG2Process
 type CG2ForwardProcess = ForeignPtr CG2ForwardProcess'
+-- |A 'StochasticProcess'; see the hierarchy under t'GenStochasticProcess'.
 type G2ForwardProcess = GenStochasticProcess CG2ForwardProcess
+-- |A 'HestonProcess' or one of its leaves; see the hierarchy under t'GenStochasticProcess'.
 type GenHestonProcess hp = GenStochasticProcess (AnyOf CHestonProcess' hp)
 type CHestonProcess = ForeignPtr CHestonProcess'
+-- |A 'StochasticProcess'; see the hierarchy under t'GenStochasticProcess'.
 type HestonProcess = GenHestonProcess CHestonProcess
 type CHestonSLVProcess = ForeignPtr CHestonSLVProcess'
+-- |A 'StochasticProcess'; see the hierarchy under t'GenStochasticProcess'.
 type HestonSLVProcess = GenStochasticProcess CHestonSLVProcess
+-- |A 'StochasticProcess1D' or one of its leaves; see the hierarchy under t'GenStochasticProcess'.
 type GenStochasticProcess1D p1d = GenStochasticProcess (AnyOf CStochasticProcess1D' p1d)
 type CStochasticProcess1D = ForeignPtr CStochasticProcess1D'
+-- |A 'StochasticProcess'; see the hierarchy under t'GenStochasticProcess'.
 type StochasticProcess1D = GenStochasticProcess1D CStochasticProcess1D
 type CMerton76Process = ForeignPtr CMerton76Process'
+-- |A 'StochasticProcess1D'; see the hierarchy under t'GenStochasticProcess'.
 type Merton76Process = GenStochasticProcess1D CMerton76Process
 type CVarianceGammaProcess = ForeignPtr CVarianceGammaProcess'
+-- |A 'StochasticProcess1D'; see the hierarchy under t'GenStochasticProcess'.
 type VarianceGammaProcess = GenStochasticProcess1D CVarianceGammaProcess
 type GenGeneralizedBlackScholesProcess gbs = GenStochasticProcess1D (AnyOf CGeneralizedBlackScholesProcess' gbs)
 type CGeneralizedBlackScholesProcess = ForeignPtr CGeneralizedBlackScholesProcess'
+-- |A 'StochasticProcess1D'; see the hierarchy under t'GenStochasticProcess'.
 type GeneralizedBlackScholesProcess = GenGeneralizedBlackScholesProcess CGeneralizedBlackScholesProcess
 type CBlackProcess = ForeignPtr CBlackProcess'
+-- |A 'GeneralizedBlackScholesProcess'; see the hierarchy under t'GenStochasticProcess'.
 type BlackProcess = GenGeneralizedBlackScholesProcess CBlackProcess
 type CBatesProcess = ForeignPtr CBatesProcess'
+-- |A 'HestonProcess'; see the hierarchy under t'GenStochasticProcess'.
 type BatesProcess = GenHestonProcess CBatesProcess
 type CHullWhiteProcess = ForeignPtr CHullWhiteProcess'
+-- |A 'StochasticProcess1D'; see the hierarchy under t'GenStochasticProcess'.
 type HullWhiteProcess = GenStochasticProcess1D CHullWhiteProcess
 type CHullWhiteForwardProcess = ForeignPtr CHullWhiteForwardProcess'
+-- |A 'StochasticProcess1D'; see the hierarchy under t'GenStochasticProcess'.
 type HullWhiteForwardProcess = GenStochasticProcess1D CHullWhiteForwardProcess
 type CExtendedOrnsteinUhlenbeckProcess = ForeignPtr CExtendedOrnsteinUhlenbeckProcess'
+-- |A 'StochasticProcess1D'; see the hierarchy under t'GenStochasticProcess'.
 type ExtendedOrnsteinUhlenbeckProcess = GenStochasticProcess1D CExtendedOrnsteinUhlenbeckProcess
 foreign import ccall unsafe "ql.h &qlFreeStochasticProcess" qlFreeStochasticProcess :: FinalizerPtr CStochasticProcess'
 foreign import ccall unsafe "ql.h &qlFreeExtOUWithJumpsProcess" qlFreeExtOUWithJumpsProcess :: FinalizerPtr CExtOUWithJumpsProcess'
@@ -2656,22 +2800,6 @@ peekBlackProcess = newGenForeignPtr >=> newGenGeneralizedBlackScholesProcess
 withBlackProcess :: BlackProcess -> (Ptr CBlackProcess' -> IO b) -> IO b
 withBlackProcess = withForeignPtr . ptr . peel . peel . getStochasticProcess
 
--- | > CalibratedModel
--- >  LiborForwardModel + AffineModel
--- >  GJRGARCHModel
--- >  PiecewiseTimeDependentHestonModel
--- >  HestonModel
--- >    BatesModel
--- >      BatesDetJumpModel
--- >    BatesDoubleExpModel
--- >      BatesDoubleExpDetJumpModel
--- >  ShortRateModel
--- >    G2 + AffineModel
--- >    OneFactorAffineModel + AffineModel
--- >      HullWhite + AffineModel
--- >  Gsr + Gaussian1dModel
--- >  MarkovFunctional + Gaussian1dModel
---
 -- Heston SLV calibrators and Brownian factories are standalone objects.
 data CBrownianGeneratorFactory'
 data CHestonSLVMCModel'
@@ -2705,6 +2833,8 @@ peekHestonSLVFDMLogEntries :: Ptr CHestonSLVFDMLogEntries -> IO HestonSLVFDMLogE
 peekHestonSLVFDMLogEntries = peekStandalone
 withHestonSLVFDMLogEntries :: HestonSLVFDMLogEntries -> (Ptr CHestonSLVFDMLogEntries -> IO b) -> IO b
 withHestonSLVFDMLogEntries = withStandalone
+
+-- |The root of the hierarchy shown under t'GenCalibratedModel'.
 type CalibratedModel = GenCalibratedModel CCalibratedModel
 data CCalibratedModel'
 data CGJRGARCHModel'
@@ -2723,40 +2853,74 @@ data CHullWhite'
 data CG2'
 data CAffineModel'
 data CShortRateDynamics'
+-- | > CalibratedModel
+-- >  LiborForwardModel + AffineModel
+-- >  GJRGARCHModel
+-- >  PiecewiseTimeDependentHestonModel
+-- >  HestonModel
+-- >    BatesModel
+-- >      BatesDetJumpModel
+-- >    BatesDoubleExpModel
+-- >      BatesDoubleExpDetJumpModel
+-- >  ShortRateModel
+-- >    G2 + AffineModel
+-- >    OneFactorAffineModel + AffineModel
+-- >      HullWhite + AffineModel
+-- >  Gsr + Gaussian1dModel
+-- >  MarkovFunctional + Gaussian1dModel
 newtype GenCalibratedModel m = GenCalibratedModel {getCalibratedModel :: GenForeignPtr m CCalibratedModel'}
 type CCalibratedModel = ForeignPtr CCalibratedModel'
 type CLiborForwardModel = ForeignPtr CLiborForwardModel'
+-- |A 'CalibratedModel'; see the hierarchy under t'GenCalibratedModel'.
 type LiborForwardModel = GenCalibratedModel CLiborForwardModel
 type CGJRGARCHModel = ForeignPtr CGJRGARCHModel'
+-- |A 'CalibratedModel'; see the hierarchy under t'GenCalibratedModel'.
 type GJRGARCHModel = GenCalibratedModel CGJRGARCHModel
 type CGsr = ForeignPtr CGsr'
+-- |A 'CalibratedModel'; see the hierarchy under t'GenCalibratedModel'.
 type Gsr = GenCalibratedModel CGsr
 type CMarkovFunctional = ForeignPtr CMarkovFunctional'
+-- |A 'CalibratedModel'; see the hierarchy under t'GenCalibratedModel'.
 type MarkovFunctional = GenCalibratedModel CMarkovFunctional
 type CPiecewiseTimeDependentHestonModel = ForeignPtr CPiecewiseTimeDependentHestonModel'
+-- |A 'CalibratedModel'; see the hierarchy under t'GenCalibratedModel'.
 type PiecewiseTimeDependentHestonModel = GenCalibratedModel CPiecewiseTimeDependentHestonModel
+-- |A 'HestonModel' or one of its leaves; see the hierarchy under t'GenCalibratedModel'.
 type GenHestonModel hm = GenCalibratedModel (AnyOf CHestonModel' hm)
 type CHestonModel = ForeignPtr CHestonModel'
+-- |A 'CalibratedModel'; see the hierarchy under t'GenCalibratedModel'.
 type HestonModel = GenHestonModel CHestonModel
+-- |A 'ShortRateModel' or one of its leaves; see the hierarchy under t'GenCalibratedModel'.
 type GenShortRateModel sm = GenCalibratedModel (AnyOf CShortRateModel' sm)
 type CShortRateModel = ForeignPtr CShortRateModel'
+-- |A 'CalibratedModel'; see the hierarchy under t'GenCalibratedModel'.
 type ShortRateModel = GenShortRateModel CShortRateModel
+-- |A 'BatesModel' or one of its leaves; see the hierarchy under t'GenCalibratedModel'.
 type GenBatesModel bm = GenHestonModel (AnyOf CBatesModel' bm)
 type CBatesModel = ForeignPtr CBatesModel'
+-- |A 'HestonModel'; see the hierarchy under t'GenCalibratedModel'.
 type BatesModel = GenBatesModel CBatesModel
 type CBatesDetJumpModel = ForeignPtr CBatesDetJumpModel'
+-- |A 'BatesModel'; see the hierarchy under t'GenCalibratedModel'.
 type BatesDetJumpModel = GenBatesModel CBatesDetJumpModel
+-- |A 'BatesDoubleExpModel' or one of its leaves; see the hierarchy under t'GenCalibratedModel'.
 type GenBatesDoubleExpModel bdem = GenHestonModel (AnyOf CBatesDoubleExpModel' bdem)
 type CBatesDoubleExpModel = ForeignPtr CBatesDoubleExpModel'
+-- |A 'HestonModel'; see the hierarchy under t'GenCalibratedModel'.
 type BatesDoubleExpModel = GenBatesDoubleExpModel CBatesDoubleExpModel
 type CBatesDoubleExpDetJumpModel = ForeignPtr CBatesDoubleExpDetJumpModel'
+-- |A 'BatesDoubleExpModel'; see the hierarchy under t'GenCalibratedModel'.
 type BatesDoubleExpDetJumpModel = GenBatesDoubleExpModel CBatesDoubleExpDetJumpModel
+-- |An 'OneFactorAffineModel' or one of its leaves; see the hierarchy under t'GenCalibratedModel'.
 type GenOneFactorAffineModel om = GenShortRateModel (AnyOf COneFactorAffineModel' om)
 type COneFactorAffineModel = ForeignPtr COneFactorAffineModel'
+-- |A 'ShortRateModel'; see the hierarchy under t'GenCalibratedModel'.
 type OneFactorAffineModel = GenOneFactorAffineModel COneFactorAffineModel
 type CHullWhite = ForeignPtr CHullWhite'
+-- |An 'OneFactorAffineModel'; see the hierarchy under t'GenCalibratedModel'.
 type HullWhite = GenOneFactorAffineModel CHullWhite
 type CG2 = ForeignPtr CG2'
+-- |A 'ShortRateModel'; see the hierarchy under t'GenCalibratedModel'.
 type G2 = GenShortRateModel CG2
 foreign import ccall unsafe "ql.h &qlFreeCalibratedModel" qlFreeCalibratedModel :: FinalizerPtr CCalibratedModel'
 foreign import ccall unsafe "ql.h &qlFreeLiborForwardModel" qlFreeLiborForwardModel :: FinalizerPtr CLiborForwardModel'
@@ -2945,6 +3109,9 @@ instance AsGaussian1dModel MarkovFunctional where
 instance AsGaussian1dModel Gaussian1dModel where
   asGaussian1dModel = pure
 
+-- |The root of the hierarchy shown under t'GenInstrument'.
+type Instrument = GenInstrument CInstrument
+data CInstrument'
 -- | > Instrument*
 -- >  Forward*
 -- >    BondForward
@@ -3005,8 +3172,6 @@ instance AsGaussian1dModel Gaussian1dModel where
 -- >      EnergySwap*
 -- >        EnergyVanillaSwap
 -- >        EnergyBasisSwap
-type Instrument = GenInstrument CInstrument
-data CInstrument'
 newtype GenInstrument i = GenInstrument {getInstrument :: GenForeignPtr i CInstrument'}
 type CInstrument = ForeignPtr CInstrument'
 foreign import ccall unsafe "ql.h &qlFreeInstrument" qlFreeInstrument :: FinalizerPtr CInstrument'
@@ -3022,6 +3187,7 @@ withGenInstrument = withForeignPtr . ptr . getInstrument
 
 data CForwardRateAgreement'
 type CForwardRateAgreement = ForeignPtr CForwardRateAgreement'
+-- |An 'Instrument'; see the hierarchy under t'GenInstrument'.
 type ForwardRateAgreement = GenInstrument CForwardRateAgreement
 foreign import ccall unsafe "ql.h &qlFreeForwardRateAgreement" qlFreeForwardRateAgreement :: FinalizerPtr CForwardRateAgreement'
 instance Finalizable CForwardRateAgreement' where finalize = qlFreeForwardRateAgreement
@@ -3032,6 +3198,7 @@ peekForwardRateAgreement = GenInstrument <.> newGenForeignPtr
 
 data CFxForward'
 type CFxForward = ForeignPtr CFxForward'
+-- |An 'Instrument'; see the hierarchy under t'GenInstrument'.
 type FxForward = GenInstrument CFxForward
 foreign import ccall unsafe "ql.h &qlFreeFxForward" qlFreeFxForward :: FinalizerPtr CFxForward'
 instance Finalizable CFxForward' where finalize = qlFreeFxForward
@@ -3042,6 +3209,7 @@ peekFxForward = GenInstrument <.> newGenForeignPtr
 
 data CCreditDefaultSwap'
 type CCreditDefaultSwap = ForeignPtr CCreditDefaultSwap'
+-- |An 'Instrument'; see the hierarchy under t'GenInstrument'.
 type CreditDefaultSwap = GenInstrument CCreditDefaultSwap
 foreign import ccall unsafe "ql.h &qlFreeCreditDefaultSwap" qlFreeCreditDefaultSwap :: FinalizerPtr CCreditDefaultSwap'
 instance Finalizable CCreditDefaultSwap' where finalize = qlFreeCreditDefaultSwap
@@ -3052,6 +3220,7 @@ peekCreditDefaultSwap = GenInstrument <.> newGenForeignPtr
 
 data CSyntheticCDO'
 type CSyntheticCDO = ForeignPtr CSyntheticCDO'
+-- |An 'Instrument'; see the hierarchy under t'GenInstrument'.
 type SyntheticCDO = GenInstrument CSyntheticCDO
 foreign import ccall unsafe "ql.h &qlFreeSyntheticCDO" qlFreeSyntheticCDO :: FinalizerPtr CSyntheticCDO'
 instance Finalizable CSyntheticCDO' where finalize = qlFreeSyntheticCDO
@@ -3062,6 +3231,7 @@ peekSyntheticCDO = GenInstrument <.> newGenForeignPtr
 
 data CNthToDefault'
 type CNthToDefault = ForeignPtr CNthToDefault'
+-- |An 'Instrument'; see the hierarchy under t'GenInstrument'.
 type NthToDefault = GenInstrument CNthToDefault
 foreign import ccall unsafe "ql.h &qlFreeNthToDefault" qlFreeNthToDefault :: FinalizerPtr CNthToDefault'
 instance Finalizable CNthToDefault' where finalize = qlFreeNthToDefault
@@ -3072,6 +3242,7 @@ peekNthToDefault = GenInstrument <.> newGenForeignPtr
 
 data CVarianceSwap'
 type CVarianceSwap = ForeignPtr CVarianceSwap'
+-- |An 'Instrument'; see the hierarchy under t'GenInstrument'.
 type VarianceSwap = GenInstrument CVarianceSwap
 foreign import ccall unsafe "ql.h &qlFreeVarianceSwap" qlFreeVarianceSwap :: FinalizerPtr CVarianceSwap'
 instance Finalizable CVarianceSwap' where finalize = qlFreeVarianceSwap
@@ -3082,6 +3253,7 @@ peekVarianceSwap = GenInstrument <.> newGenForeignPtr
 
 data CVarianceOption'
 type CVarianceOption = ForeignPtr CVarianceOption'
+-- |An 'Instrument'; see the hierarchy under t'GenInstrument'.
 type VarianceOption = GenInstrument CVarianceOption
 foreign import ccall unsafe "ql.h &qlFreeVarianceOption" qlFreeVarianceOption :: FinalizerPtr CVarianceOption'
 instance Finalizable CVarianceOption' where finalize = qlFreeVarianceOption
@@ -3092,6 +3264,7 @@ peekVarianceOption = GenInstrument <.> newGenForeignPtr
 
 data CCapFloor'
 type CCapFloor = ForeignPtr CCapFloor'
+-- |An 'Instrument'; see the hierarchy under t'GenInstrument'.
 type CapFloor = GenInstrument CCapFloor
 foreign import ccall unsafe "ql.h &qlFreeCapFloor" qlFreeCapFloor :: FinalizerPtr CCapFloor'
 instance Finalizable CCapFloor' where finalize = qlFreeCapFloor
@@ -3107,6 +3280,7 @@ type CYoYInflationCapFloor = ForeignPtr CYoYInflationCapFloor'
 -- 'yoyInflationCollar'\/'yoyInflationFloor' each construct this one flat leaf directly, mirroring
 -- how 'CapFloor' collapses @Cap@\/@Collar@\/@Floor@). Unlike 'CapFloor', it shares no C++ base
 -- below 'Instrument' with the nominal cap/floor, so it's a separate sibling leaf, not a subtype.
+-- See the hierarchy under t'GenInstrument'.
 type YoYInflationCapFloor = GenInstrument CYoYInflationCapFloor
 foreign import ccall unsafe "ql.h &qlFreeYoYInflationCapFloor" qlFreeYoYInflationCapFloor :: FinalizerPtr CYoYInflationCapFloor'
 instance Finalizable CYoYInflationCapFloor' where finalize = qlFreeYoYInflationCapFloor
@@ -3121,6 +3295,7 @@ type CCPICapFloor = ForeignPtr CCPICapFloor'
 -- cumulative inflation up to maturity, like a ZCIIS option) rather than a strip of optionlets --
 -- flat sibling leaf under 'Instrument', sharing no C++ base with either 'CapFloor' or
 -- 'YoYInflationCapFloor'.
+-- See the hierarchy under t'GenInstrument'.
 type CPICapFloor = GenInstrument CCPICapFloor
 foreign import ccall unsafe "ql.h &qlFreeCPICapFloor" qlFreeCPICapFloor :: FinalizerPtr CCPICapFloor'
 instance Finalizable CCPICapFloor' where finalize = qlFreeCPICapFloor
@@ -3132,6 +3307,7 @@ peekCPICapFloor = GenInstrument <.> newGenForeignPtr
 data CForward'
 type GenForward f = GenInstrument (AnyOf CForward' f)
 type CForward = ForeignPtr CForward'
+-- |An 'Instrument'; see the hierarchy under t'GenInstrument'.
 type Forward = GenForward CForward
 foreign import ccall unsafe "ql.h &qlFreeForward" qlFreeForward :: FinalizerPtr CForward'
 instance Finalizable CForward' where finalize = qlFreeForward
@@ -3153,6 +3329,7 @@ withGenForward = withForeignPtr . ptr . peel . getInstrument
 data COption'
 type GenOption o = GenInstrument (AnyOf COption' o)
 type COption = ForeignPtr COption'
+-- |An 'Instrument'; see the hierarchy under t'GenInstrument'.
 type Option = GenOption COption
 foreign import ccall unsafe "ql.h &qlFreeOption" qlFreeOption :: FinalizerPtr COption'
 instance Finalizable COption' where finalize = qlFreeOption
@@ -3174,6 +3351,7 @@ withGenOption = withForeignPtr . ptr . peel . getInstrument
 data CSwap'
 type GenSwap s = GenInstrument (AnyOf CSwap' s)
 type CSwap = ForeignPtr CSwap'
+-- |An 'Instrument'; see the hierarchy under t'GenInstrument'.
 type Swap = GenSwap CSwap
 foreign import ccall unsafe "ql.h &qlFreeSwap" qlFreeSwap :: FinalizerPtr CSwap'
 instance Finalizable CSwap' where finalize = qlFreeSwap
@@ -3194,6 +3372,7 @@ withGenSwap = withForeignPtr . ptr . peel . getInstrument
 
 data CIrregularSwap'
 type CIrregularSwap = ForeignPtr CIrregularSwap'
+-- |A 'Swap'; see the hierarchy under t'GenInstrument'.
 type IrregularSwap = GenSwap CIrregularSwap
 foreign import ccall unsafe "ql.h &qlFreeIrregularSwap" qlFreeIrregularSwap :: FinalizerPtr CIrregularSwap'
 instance Finalizable CIrregularSwap' where finalize = qlFreeIrregularSwap
@@ -3207,6 +3386,7 @@ withIrregularSwap = withForeignPtr . ptr . peel . getInstrument
 data CBond'
 type GenBond b = GenInstrument (AnyOf CBond' b)
 type CBond = ForeignPtr CBond'
+-- |An 'Instrument'; see the hierarchy under t'GenInstrument'.
 type Bond = GenBond CBond
 foreign import ccall unsafe "ql.h &qlFreeBond" qlFreeBond :: FinalizerPtr CBond'
 instance Finalizable CBond' where finalize = qlFreeBond
@@ -3227,6 +3407,7 @@ withGenBond = withForeignPtr . ptr . peel . getInstrument
 
 data CBondForward'
 type CBondForward = ForeignPtr CBondForward'
+-- |A 'Forward'; see the hierarchy under t'GenInstrument'.
 type BondForward = GenForward CBondForward
 foreign import ccall unsafe "ql.h &qlFreeBondForward" qlFreeBondForward :: FinalizerPtr CBondForward'
 instance Finalizable CBondForward' where finalize = qlFreeBondForward
@@ -3239,6 +3420,7 @@ withBondForward = withForeignPtr . ptr . peel . getInstrument
 
 data CConvertibleBond'
 type CConvertibleBond = ForeignPtr CConvertibleBond'
+-- |A 'Bond'; see the hierarchy under t'GenInstrument'.
 type ConvertibleBond = GenBond CConvertibleBond
 foreign import ccall unsafe "ql.h &qlFreeConvertibleBond" qlFreeConvertibleBond :: FinalizerPtr CConvertibleBond'
 instance Finalizable CConvertibleBond' where finalize = qlFreeConvertibleBond
@@ -3257,6 +3439,7 @@ withConvertibleBond = withForeignPtr . ptr . peel . getInstrument
 data CFixedRateBond'
 type GenFixedRateBond fb = GenBond (AnyOf CFixedRateBond' fb)
 type CFixedRateBond = ForeignPtr CFixedRateBond'
+-- |A 'Bond'; see the hierarchy under t'GenInstrument'.
 type FixedRateBond = GenFixedRateBond CFixedRateBond
 foreign import ccall unsafe "ql.h &qlFreeFixedRateBond" qlFreeFixedRateBond :: FinalizerPtr CFixedRateBond'
 instance Finalizable CFixedRateBond' where finalize = qlFreeFixedRateBond
@@ -3274,6 +3457,7 @@ newGenFixedRateBond = pure . GenInstrument . newAnyOf . newAnyOf
 -- calendar, par redemption unless overridden) -- see 'QuantLib.Instrument.Bond.btp'.
 data CBTP'
 type CBTP = ForeignPtr CBTP'
+-- |A 'FixedRateBond'; see the hierarchy under t'GenInstrument'.
 type BTP = GenFixedRateBond CBTP
 foreign import ccall unsafe "ql.h &qlFreeBtp" qlFreeBtp :: FinalizerPtr CBTP'
 instance Finalizable CBTP' where finalize = qlFreeBtp
@@ -3310,6 +3494,7 @@ withRendistatoCalculator = withStandalone . getCRendistatoCalculator
 
 data CCPIBond'
 type CCPIBond = ForeignPtr CCPIBond'
+-- |A 'Bond'; see the hierarchy under t'GenInstrument'.
 type CPIBond = GenBond CCPIBond
 foreign import ccall unsafe "ql.h &qlFreeCPIBond" qlFreeCPIBond :: FinalizerPtr CCPIBond'
 instance Finalizable CCPIBond' where finalize = qlFreeCPIBond
@@ -3322,6 +3507,7 @@ withCPIBond = withForeignPtr . ptr . peel . getInstrument
 
 data CCallableBond'
 type CCallableBond = ForeignPtr CCallableBond'
+-- |A 'Bond'; see the hierarchy under t'GenInstrument'.
 type CallableBond = GenBond CCallableBond
 foreign import ccall unsafe "ql.h &qlFreeCallableBond" qlFreeCallableBond :: FinalizerPtr CCallableBond'
 instance Finalizable CCallableBond' where finalize = qlFreeCallableBond
@@ -3344,9 +3530,11 @@ withCallableBond = withForeignPtr . ptr . peel . getInstrument
 data CFixedVsFloatingSwap'
 type GenFixedVsFloatingSwap f = GenSwap (AnyOf CFixedVsFloatingSwap' f)
 type CFixedVsFloatingSwap = ForeignPtr CFixedVsFloatingSwap'
+-- |A 'Swap'; see the hierarchy under t'GenInstrument'.
 type FixedVsFloatingSwap = GenFixedVsFloatingSwap CFixedVsFloatingSwap
 data CVanillaSwap'
 type CVanillaSwap = ForeignPtr CVanillaSwap'
+-- |A 'FixedVsFloatingSwap'; see the hierarchy under t'GenInstrument'.
 type VanillaSwap = GenFixedVsFloatingSwap CVanillaSwap
 foreign import ccall unsafe "ql.h &qlFreeFixedVsFloatingSwap" qlFreeFixedVsFloatingSwap :: FinalizerPtr CFixedVsFloatingSwap'
 foreign import ccall unsafe "ql.h &qlFreeVanillaSwap" qlFreeVanillaSwap :: FinalizerPtr CVanillaSwap'
@@ -3380,12 +3568,15 @@ withVanillaSwap = withForeignPtr . ptr . peel . peel . getInstrument
 data CConstNotionalCrossCurrencySwap'
 type GenConstNotionalCrossCurrencySwap x = GenSwap (AnyOf CConstNotionalCrossCurrencySwap' x)
 type CConstNotionalCrossCurrencySwap = ForeignPtr CConstNotionalCrossCurrencySwap'
+-- |A 'Swap'; see the hierarchy under t'GenInstrument'.
 type ConstNotionalCrossCurrencySwap = GenConstNotionalCrossCurrencySwap CConstNotionalCrossCurrencySwap
 data CConstNotionalCrossCurrencyBasisSwap'
 type CConstNotionalCrossCurrencyBasisSwap = ForeignPtr CConstNotionalCrossCurrencyBasisSwap'
+-- |A 'ConstNotionalCrossCurrencySwap'; see the hierarchy under t'GenInstrument'.
 type ConstNotionalCrossCurrencyBasisSwap = GenConstNotionalCrossCurrencySwap CConstNotionalCrossCurrencyBasisSwap
 data CConstNotionalCrossCurrencyFixedVsFloatingSwap'
 type CConstNotionalCrossCurrencyFixedVsFloatingSwap = ForeignPtr CConstNotionalCrossCurrencyFixedVsFloatingSwap'
+-- |A 'ConstNotionalCrossCurrencySwap'; see the hierarchy under t'GenInstrument'.
 type ConstNotionalCrossCurrencyFixedVsFloatingSwap = GenConstNotionalCrossCurrencySwap CConstNotionalCrossCurrencyFixedVsFloatingSwap
 foreign import ccall unsafe "ql.h &qlFreeConstNotionalCrossCurrencySwap" qlFreeConstNotionalCrossCurrencySwap :: FinalizerPtr CConstNotionalCrossCurrencySwap'
 foreign import ccall unsafe "ql.h &qlFreeConstNotionalCrossCurrencyBasisSwap" qlFreeConstNotionalCrossCurrencyBasisSwap :: FinalizerPtr CConstNotionalCrossCurrencyBasisSwap'
@@ -3418,6 +3609,7 @@ withConstNotionalCrossCurrencyFixedVsFloatingSwap = withForeignPtr . ptr . peel 
 
 data CNonstandardSwap'
 type CNonstandardSwap = ForeignPtr CNonstandardSwap'
+-- |A 'Swap'; see the hierarchy under t'GenInstrument'.
 type NonstandardSwap = GenSwap CNonstandardSwap
 foreign import ccall unsafe "ql.h &qlFreeNonstandardSwap" qlFreeNonstandardSwap :: FinalizerPtr CNonstandardSwap'
 instance Finalizable CNonstandardSwap' where finalize = qlFreeNonstandardSwap
@@ -3430,6 +3622,7 @@ withNonstandardSwap = withForeignPtr . ptr . peel . getInstrument
 
 data CFloatFloatSwap'
 type CFloatFloatSwap = ForeignPtr CFloatFloatSwap'
+-- |A 'Swap'; see the hierarchy under t'GenInstrument'.
 type FloatFloatSwap = GenSwap CFloatFloatSwap
 foreign import ccall unsafe "ql.h &qlFreeFloatFloatSwap" qlFreeFloatFloatSwap :: FinalizerPtr CFloatFloatSwap'
 instance Finalizable CFloatFloatSwap' where finalize = qlFreeFloatFloatSwap
@@ -3442,6 +3635,7 @@ withFloatFloatSwap = withForeignPtr . ptr . peel . getInstrument
 
 data CAssetSwap'
 type CAssetSwap = ForeignPtr CAssetSwap'
+-- |A 'Swap'; see the hierarchy under t'GenInstrument'.
 type AssetSwap = GenSwap CAssetSwap
 foreign import ccall unsafe "ql.h &qlFreeAssetSwap" qlFreeAssetSwap :: FinalizerPtr CAssetSwap'
 instance Finalizable CAssetSwap' where finalize = qlFreeAssetSwap
@@ -3454,6 +3648,7 @@ withAssetSwap = withForeignPtr . ptr . peel . getInstrument
 
 data CBMASwap'
 type CBMASwap = ForeignPtr CBMASwap'
+-- |A 'Swap'; see the hierarchy under t'GenInstrument'.
 type BMASwap = GenSwap CBMASwap
 foreign import ccall unsafe "ql.h &qlFreeBMASwap" qlFreeBMASwap :: FinalizerPtr CBMASwap'
 instance Finalizable CBMASwap' where finalize = qlFreeBMASwap
@@ -3466,6 +3661,7 @@ withBMASwap = withForeignPtr . ptr . peel . getInstrument
 
 data COvernightIndexedSwap'
 type COvernightIndexedSwap = ForeignPtr COvernightIndexedSwap'
+-- |A 'Swap'; see the hierarchy under t'GenInstrument'.
 type OvernightIndexedSwap = GenSwap COvernightIndexedSwap
 foreign import ccall unsafe "ql.h &qlFreeOvernightIndexedSwap" qlFreeOvernightIndexedSwap :: FinalizerPtr COvernightIndexedSwap'
 instance Finalizable COvernightIndexedSwap' where finalize = qlFreeOvernightIndexedSwap
@@ -3478,6 +3674,7 @@ withOvernightIndexedSwap = withForeignPtr . ptr . peel . getInstrument
 
 data CZeroCouponInflationSwap'
 type CZeroCouponInflationSwap = ForeignPtr CZeroCouponInflationSwap'
+-- |A 'Swap'; see the hierarchy under t'GenInstrument'.
 type ZeroCouponInflationSwap = GenSwap CZeroCouponInflationSwap
 foreign import ccall unsafe "ql.h &qlFreeZeroCouponInflationSwap" qlFreeZeroCouponInflationSwap :: FinalizerPtr CZeroCouponInflationSwap'
 instance Finalizable CZeroCouponInflationSwap' where finalize = qlFreeZeroCouponInflationSwap
@@ -3490,6 +3687,7 @@ withZeroCouponInflationSwap = withForeignPtr . ptr . peel . getInstrument
 
 data CYearOnYearInflationSwap'
 type CYearOnYearInflationSwap = ForeignPtr CYearOnYearInflationSwap'
+-- |A 'Swap'; see the hierarchy under t'GenInstrument'.
 type YearOnYearInflationSwap = GenSwap CYearOnYearInflationSwap
 foreign import ccall unsafe "ql.h &qlFreeYearOnYearInflationSwap" qlFreeYearOnYearInflationSwap :: FinalizerPtr CYearOnYearInflationSwap'
 instance Finalizable CYearOnYearInflationSwap' where finalize = qlFreeYearOnYearInflationSwap
@@ -3502,6 +3700,7 @@ withYearOnYearInflationSwap = withForeignPtr . ptr . peel . getInstrument
 
 data CCPISwap'
 type CCPISwap = ForeignPtr CCPISwap'
+-- |A 'Swap'; see the hierarchy under t'GenInstrument'.
 type CPISwap = GenSwap CCPISwap
 foreign import ccall unsafe "ql.h &qlFreeCPISwap" qlFreeCPISwap :: FinalizerPtr CCPISwap'
 instance Finalizable CCPISwap' where finalize = qlFreeCPISwap
@@ -3514,6 +3713,7 @@ withCPISwap = withForeignPtr . ptr . peel . getInstrument
 
 data CZeroCouponSwap'
 type CZeroCouponSwap = ForeignPtr CZeroCouponSwap'
+-- |A 'Swap'; see the hierarchy under t'GenInstrument'.
 type ZeroCouponSwap = GenSwap CZeroCouponSwap
 foreign import ccall unsafe "ql.h &qlFreeZeroCouponSwap" qlFreeZeroCouponSwap :: FinalizerPtr CZeroCouponSwap'
 instance Finalizable CZeroCouponSwap' where finalize = qlFreeZeroCouponSwap
@@ -3526,6 +3726,7 @@ withZeroCouponSwap = withForeignPtr . ptr . peel . getInstrument
 
 data CEquityTotalReturnSwap'
 type CEquityTotalReturnSwap = ForeignPtr CEquityTotalReturnSwap'
+-- |A 'Swap'; see the hierarchy under t'GenInstrument'.
 type EquityTotalReturnSwap = GenSwap CEquityTotalReturnSwap
 foreign import ccall unsafe "ql.h &qlFreeEquityTotalReturnSwap" qlFreeEquityTotalReturnSwap :: FinalizerPtr CEquityTotalReturnSwap'
 instance Finalizable CEquityTotalReturnSwap' where finalize = qlFreeEquityTotalReturnSwap
@@ -3538,6 +3739,7 @@ withEquityTotalReturnSwap = withForeignPtr . ptr . peel . getInstrument
 
 data CCdsOption'
 type CCdsOption = ForeignPtr CCdsOption'
+-- |An 'Option'; see the hierarchy under t'GenInstrument'.
 type CdsOption = GenOption CCdsOption
 foreign import ccall unsafe "ql.h &qlFreeCdsOption" qlFreeCdsOption :: FinalizerPtr CCdsOption'
 instance Finalizable CCdsOption' where finalize = qlFreeCdsOption
@@ -3550,6 +3752,7 @@ withCdsOption = withForeignPtr . ptr . peel . getInstrument
 
 data CSwaption'
 type CSwaption = ForeignPtr CSwaption'
+-- |An 'Option'; see the hierarchy under t'GenInstrument'.
 type Swaption = GenOption CSwaption
 foreign import ccall unsafe "ql.h &qlFreeSwaption" qlFreeSwaption :: FinalizerPtr CSwaption'
 instance Finalizable CSwaption' where finalize = qlFreeSwaption
@@ -3562,6 +3765,7 @@ withSwaption = withForeignPtr . ptr . peel . getInstrument
 
 data CIrregularSwaption'
 type CIrregularSwaption = ForeignPtr CIrregularSwaption'
+-- |An 'Option'; see the hierarchy under t'GenInstrument'.
 type IrregularSwaption = GenOption CIrregularSwaption
 foreign import ccall unsafe "ql.h &qlFreeIrregularSwaption" qlFreeIrregularSwaption :: FinalizerPtr CIrregularSwaption'
 instance Finalizable CIrregularSwaption' where finalize = qlFreeIrregularSwaption
@@ -3574,6 +3778,7 @@ withIrregularSwaption = withForeignPtr . ptr . peel . getInstrument
 
 data CNonstandardSwaption'
 type CNonstandardSwaption = ForeignPtr CNonstandardSwaption'
+-- |An 'Option'; see the hierarchy under t'GenInstrument'.
 type NonstandardSwaption = GenOption CNonstandardSwaption
 foreign import ccall unsafe "ql.h &qlFreeNonstandardSwaption" qlFreeNonstandardSwaption :: FinalizerPtr CNonstandardSwaption'
 instance Finalizable CNonstandardSwaption' where finalize = qlFreeNonstandardSwaption
@@ -3586,6 +3791,7 @@ withNonstandardSwaption = withForeignPtr . ptr . peel . getInstrument
 
 data CFloatFloatSwaption'
 type CFloatFloatSwaption = ForeignPtr CFloatFloatSwaption'
+-- |An 'Option'; see the hierarchy under t'GenInstrument'.
 type FloatFloatSwaption = GenOption CFloatFloatSwaption
 foreign import ccall unsafe "ql.h &qlFreeFloatFloatSwaption" qlFreeFloatFloatSwaption :: FinalizerPtr CFloatFloatSwaption'
 instance Finalizable CFloatFloatSwaption' where finalize = qlFreeFloatFloatSwaption
@@ -3601,10 +3807,13 @@ data CMargrabeOption'
 data CEverestOption'
 type GenMultiAssetOption mo = GenOption (AnyOf CMultiAssetOption' mo)
 type CMultiAssetOption = ForeignPtr CMultiAssetOption'
+-- |An 'Option'; see the hierarchy under t'GenInstrument'.
 type MultiAssetOption = GenMultiAssetOption CMultiAssetOption
 type CMargrabeOption = ForeignPtr CMargrabeOption'
+-- |A 'MultiAssetOption'; see the hierarchy under t'GenInstrument'.
 type MargrabeOption = GenMultiAssetOption CMargrabeOption
 type CEverestOption = ForeignPtr CEverestOption'
+-- |A 'MultiAssetOption'; see the hierarchy under t'GenInstrument'.
 type EverestOption = GenMultiAssetOption CEverestOption
 foreign import ccall unsafe "ql.h &qlFreeMultiAssetOption" qlFreeMultiAssetOption :: FinalizerPtr CMultiAssetOption'
 foreign import ccall unsafe "ql.h &qlFreeMargrabeOption" qlFreeMargrabeOption :: FinalizerPtr CMargrabeOption'
@@ -3640,6 +3849,7 @@ withEverestOption = withForeignPtr . ptr . peel . peel . getInstrument
 data COneAssetOption'
 type GenOneAssetOption oo = GenOption (AnyOf COneAssetOption' oo)
 type COneAssetOption = ForeignPtr COneAssetOption'
+-- |An 'Option'; see the hierarchy under t'GenInstrument'.
 type OneAssetOption = GenOneAssetOption COneAssetOption
 foreign import ccall unsafe "ql.h &qlFreeOneAssetOption" qlFreeOneAssetOption :: FinalizerPtr COneAssetOption'
 instance Finalizable COneAssetOption' where finalize = qlFreeOneAssetOption
@@ -3656,6 +3866,7 @@ newGenOneAssetOption = pure . GenInstrument . newAnyOf . newAnyOf
 
 data CBarrierOption'
 type CBarrierOption = ForeignPtr CBarrierOption'
+-- |An 'OneAssetOption'; see the hierarchy under t'GenInstrument'.
 type BarrierOption = GenOneAssetOption CBarrierOption
 foreign import ccall unsafe "ql.h &qlFreeBarrierOption" qlFreeBarrierOption :: FinalizerPtr CBarrierOption'
 instance Finalizable CBarrierOption' where finalize = qlFreeBarrierOption
@@ -3668,6 +3879,7 @@ withBarrierOption = withForeignPtr . ptr . peel . peel . getInstrument
 
 data CSoftBarrierOption'
 type CSoftBarrierOption = ForeignPtr CSoftBarrierOption'
+-- |An 'OneAssetOption'; see the hierarchy under t'GenInstrument'.
 type SoftBarrierOption = GenOneAssetOption CSoftBarrierOption
 foreign import ccall unsafe "ql.h &qlFreeSoftBarrierOption" qlFreeSoftBarrierOption :: FinalizerPtr CSoftBarrierOption'
 instance Finalizable CSoftBarrierOption' where finalize = qlFreeSoftBarrierOption
@@ -3680,6 +3892,7 @@ withSoftBarrierOption = withForeignPtr . ptr . peel . peel . getInstrument
 
 data CDoubleBarrierOption'
 type CDoubleBarrierOption = ForeignPtr CDoubleBarrierOption'
+-- |An 'OneAssetOption'; see the hierarchy under t'GenInstrument'.
 type DoubleBarrierOption = GenOneAssetOption CDoubleBarrierOption
 foreign import ccall unsafe "ql.h &qlFreeDoubleBarrierOption" qlFreeDoubleBarrierOption :: FinalizerPtr CDoubleBarrierOption'
 instance Finalizable CDoubleBarrierOption' where finalize = qlFreeDoubleBarrierOption
@@ -3692,6 +3905,7 @@ withDoubleBarrierOption = withForeignPtr . ptr . peel . peel . getInstrument
 
 data CQuantoForwardVanillaOption'
 type CQuantoForwardVanillaOption = ForeignPtr CQuantoForwardVanillaOption'
+-- |An 'OneAssetOption'; see the hierarchy under t'GenInstrument'.
 type QuantoForwardVanillaOption = GenOneAssetOption CQuantoForwardVanillaOption
 foreign import ccall unsafe "ql.h &qlFreeQuantoForwardVanillaOption" qlFreeQuantoForwardVanillaOption :: FinalizerPtr CQuantoForwardVanillaOption'
 instance Finalizable CQuantoForwardVanillaOption' where finalize = qlFreeQuantoForwardVanillaOption
@@ -3704,6 +3918,7 @@ withQuantoForwardVanillaOption = withForeignPtr . ptr . peel . peel . getInstrum
 
 data CQuantoVanillaOption'
 type CQuantoVanillaOption = ForeignPtr CQuantoVanillaOption'
+-- |An 'OneAssetOption'; see the hierarchy under t'GenInstrument'.
 type QuantoVanillaOption = GenOneAssetOption CQuantoVanillaOption
 foreign import ccall unsafe "ql.h &qlFreeQuantoVanillaOption" qlFreeQuantoVanillaOption :: FinalizerPtr CQuantoVanillaOption'
 instance Finalizable CQuantoVanillaOption' where finalize = qlFreeQuantoVanillaOption
@@ -3716,6 +3931,7 @@ withQuantoVanillaOption = withForeignPtr . ptr . peel . peel . getInstrument
 
 data CVanillaOption'
 type CVanillaOption = ForeignPtr CVanillaOption'
+-- |An 'OneAssetOption'; see the hierarchy under t'GenInstrument'.
 type VanillaOption = GenOneAssetOption CVanillaOption
 foreign import ccall unsafe "ql.h &qlFreeVanillaOption" qlFreeVanillaOption :: FinalizerPtr CVanillaOption'
 instance Finalizable CVanillaOption' where finalize = qlFreeVanillaOption
@@ -3730,6 +3946,7 @@ withVanillaOptionArray = withGenArray withVanillaOption
 
 data CQuantoBarrierOption'
 type CQuantoBarrierOption = ForeignPtr CQuantoBarrierOption'
+-- |An 'OneAssetOption'; see the hierarchy under t'GenInstrument'.
 type QuantoBarrierOption = GenOneAssetOption CQuantoBarrierOption
 foreign import ccall unsafe "ql.h &qlFreeQuantoBarrierOption" qlFreeQuantoBarrierOption :: FinalizerPtr CQuantoBarrierOption'
 instance Finalizable CQuantoBarrierOption' where finalize = qlFreeQuantoBarrierOption
@@ -3742,6 +3959,7 @@ withQuantoBarrierOption = withForeignPtr . ptr . peel . peel . getInstrument
 
 data CQuantoDoubleBarrierOption'
 type CQuantoDoubleBarrierOption = ForeignPtr CQuantoDoubleBarrierOption'
+-- |An 'OneAssetOption'; see the hierarchy under t'GenInstrument'.
 type QuantoDoubleBarrierOption = GenOneAssetOption CQuantoDoubleBarrierOption
 foreign import ccall unsafe "ql.h &qlFreeQuantoDoubleBarrierOption" qlFreeQuantoDoubleBarrierOption :: FinalizerPtr CQuantoDoubleBarrierOption'
 instance Finalizable CQuantoDoubleBarrierOption' where finalize = qlFreeQuantoDoubleBarrierOption
@@ -3765,6 +3983,7 @@ withQuantoDoubleBarrierOption = withForeignPtr . ptr . peel . peel . getInstrume
 data CCommodity'
 type GenCommodity c = GenInstrument (AnyOf CCommodity' c)
 type CCommodity = ForeignPtr CCommodity'
+-- |An 'Instrument'; see the hierarchy under t'GenInstrument'.
 type Commodity = GenCommodity CCommodity
 foreign import ccall unsafe "ql.h &qlFreeCommodity" qlFreeCommodity :: FinalizerPtr CCommodity'
 instance Finalizable CCommodity' where finalize = qlFreeCommodity
@@ -3783,7 +4002,7 @@ instance Upcastable CEnergyCommodity' where {type Base CEnergyCommodity' = CComm
 -- |Generalizes 'Commodity's base-level getters (secondaryCostAmounts, pricingErrors,
 -- addPricingError) across every leaf in the Commodity\/EnergyCommodity\/EnergySwap subtree -- the
 -- same move as 'withFixedVsFloatingSwap' generalizing its own base-level getters. One peel:
--- Commodity is the (only, so far) 'AnyOf' layer directly under 'GenInstrument' here.
+-- Commodity is the (only, so far) 'AnyOf' layer directly under t'GenInstrument' here.
 withCommodity :: GenCommodity c -> (Ptr CCommodity' -> IO b) -> IO b
 withCommodity = withGenForeignPtr . peel . getInstrument
 
@@ -3805,6 +4024,7 @@ withEnergyCommodity = withGenForeignPtr . peel . peel . getInstrument
 -- EnergyCommodity layers to reach 'CEnergyFuture''.
 data CEnergyFuture'
 type CEnergyFuture = ForeignPtr CEnergyFuture'
+-- |An 'EnergyCommodity'; see the hierarchy under t'GenInstrument'.
 type EnergyFuture = GenEnergyCommodity CEnergyFuture
 foreign import ccall unsafe "ql.h &qlFreeEnergyFuture" qlFreeEnergyFuture :: FinalizerPtr CEnergyFuture'
 instance Finalizable CEnergyFuture' where finalize = qlFreeEnergyFuture
@@ -3826,6 +4046,7 @@ withEnergyFuture = withForeignPtr . ptr . peel . peel . getInstrument
 data CEnergySwap'
 type GenEnergySwap s = GenEnergyCommodity (AnyOf CEnergySwap' s)
 type CEnergySwap = ForeignPtr CEnergySwap'
+-- |An 'EnergyCommodity'; see the hierarchy under t'GenInstrument'.
 type EnergySwap = GenEnergySwap CEnergySwap
 foreign import ccall unsafe "ql.h &qlFreeEnergySwap" qlFreeEnergySwap :: FinalizerPtr CEnergySwap'
 instance Finalizable CEnergySwap' where finalize = qlFreeEnergySwap
@@ -3838,6 +4059,7 @@ withEnergySwap = withGenForeignPtr . peel . peel . peel . getInstrument
 
 data CEnergyVanillaSwap'
 type CEnergyVanillaSwap = ForeignPtr CEnergyVanillaSwap'
+-- |An 'EnergySwap'; see the hierarchy under t'GenInstrument'.
 type EnergyVanillaSwap = GenEnergySwap CEnergyVanillaSwap
 foreign import ccall unsafe "ql.h &qlFreeEnergyVanillaSwap" qlFreeEnergyVanillaSwap :: FinalizerPtr CEnergyVanillaSwap'
 instance Finalizable CEnergyVanillaSwap' where finalize = qlFreeEnergyVanillaSwap
@@ -3850,6 +4072,7 @@ withEnergyVanillaSwap = withForeignPtr . ptr . peel . peel . peel . getInstrumen
 
 data CEnergyBasisSwap'
 type CEnergyBasisSwap = ForeignPtr CEnergyBasisSwap'
+-- |An 'EnergySwap'; see the hierarchy under t'GenInstrument'.
 type EnergyBasisSwap = GenEnergySwap CEnergyBasisSwap
 foreign import ccall unsafe "ql.h &qlFreeEnergyBasisSwap" qlFreeEnergyBasisSwap :: FinalizerPtr CEnergyBasisSwap'
 instance Finalizable CEnergyBasisSwap' where finalize = qlFreeEnergyBasisSwap
@@ -3862,6 +4085,7 @@ withEnergyBasisSwap = withForeignPtr . ptr . peel . peel . peel . getInstrument
 
 data CCommodityCashFlow'
 type CCommodityCashFlow = ForeignPtr CCommodityCashFlow'
+-- |A 'CashFlow'; see the hierarchy under t'GenCashFlow'.
 type CommodityCashFlow = GenCashFlow CCommodityCashFlow
 foreign import ccall unsafe "ql.h &qlFreeCommodityCashFlow" qlFreeCommodityCashFlow :: FinalizerPtr CCommodityCashFlow'
 instance Finalizable CCommodityCashFlow' where finalize = qlFreeCommodityCashFlow

@@ -1931,7 +1931,7 @@ treeCallableZeroCouponBondEngine model latticeTime curve =
 
 -- |Bachelier (normal-model) analogue of 'BlackCalculator', for options on a rate rather than a
 -- price. No subclass hierarchy upstream, unlike BlackCalculator\/BlackScholesCalculator, so this
--- is a single leaf type with its own methods rather than a 'GenBlackCalculator' instance.
+-- is a single leaf type with its own methods rather than a t'GenBlackCalculator' instance.
 {#fun qlBachelierCalculator1 as bachelierCalculatorAtStrikeRaw{fromEnumC`OptionType',`Double' -- ^strike
   ,`Double' -- ^forward
   ,`Double' -- ^stdDev

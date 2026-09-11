@@ -1,6 +1,7 @@
--- Exercises owned materialization through IborCoupon -> FloatingRateCoupon -> CashFlow.
--- The leaf and intermediate handles leave scope before collection, after which the root
--- must still be usable without a dangling pointer or double free.
+-- Exercises owned materialization through IborCoupon -> FloatingRateCoupon -> Coupon -> CashFlow.
+-- The leaf and both intermediate handles leave scope before collection, after which the root
+-- must still be usable without a dangling pointer or double free.  Each upcast allocates a
+-- fresh shared_ptr, so the four-level chain is where a mislabeled finalizer would show up.
 import Data.Time.Calendar (fromGregorian)
 
 import qualified QuantLib.CashFlow as CashFlow
@@ -26,8 +27,9 @@ main = Settings.keepingSettingsGc $ do
     index <- iborIndex (UsdLibor (3, Months)) (Just curve)
     leaf <- CashFlow.iborCoupon accrualEnd 100 accrualStart accrualEnd 2 index
       1 0 Nothing Nothing dc False Nothing Preceding
-    intermediate <- CashFlow.asFloatingRateCoupon leaf
-    CashFlow.asCashFlow intermediate
+    floating <- CashFlow.asFloatingRateCoupon leaf
+    coupon <- CashFlow.asCoupon floating
+    CashFlow.asCashFlow coupon
   Settings.collectGarbage
   let paymentDate = CashFlow.date root
   leg <- CashFlow.cashFlowLeg [root]

@@ -16,6 +16,7 @@ module QuantLib.Instrument
   , PerpetualFuturesFundingType(..)
 
   , Instrument
+  , GenInstrument
   , Callability(..)
 
   , Exercise(..)

@@ -443,6 +443,47 @@ spec evalDate = do
           quantoAmount `shouldSatisfy` (/= 0)
           abs (quantoAmount - ordinaryAmount) `shouldSatisfy` (> 1e-12)
 
+    -- QuantLib's Coupon, the shared base of every accruing cash flow. No upstream fixture
+    -- exercises it on its own, so these are self-consistency checks against the simple-interest
+    -- identity and against the leg the coupons were extracted from.
+    describe "Coupon" $ do
+      it "reads rate and accrued amount through the Coupon base of a fixed-rate coupon" $
+        Settings.keepingSettingsGc $ do
+          let start = 15 `january` 2024
+              mid = 15 `april` 2024
+              end = 15 `july` 2024
+          Settings.setEvaluationDate (Just start)
+          dc <- dayCounter (Actual360 False)
+          cpn <- CF.fixedRateCoupon end 1000.0 0.05 dc start end Nothing Nothing Nothing
+          CF.rate cpn >>= (`shouldSatisfy` closePrec 0.05 1.0e-12)
+          -- accrued to the accrual end is the whole coupon amount; to an interior date it is
+          -- nominal * rate * the day counter's own year fraction.
+          full <- CF.couponAccruedAmount cpn end
+          CF.amount cpn >>= (`shouldSatisfy` closePrec full 1.0e-12)
+          part <- CF.couponAccruedAmount cpn mid
+          partFraction <- yearFraction dc start mid Nothing Nothing
+          part `shouldSatisfy` closePrec (1000.0 * 0.05 * partFraction) 1.0e-10
+          CF.couponAccruedAmount cpn start `shouldReturn` 0.0
+
+      it "pulls the individual coupons back out of a leg" $
+        Settings.keepingSettingsGc $ do
+          let start = 15 `january` 2024
+          Settings.setEvaluationDate (Just start)
+          cal <- calendar TARGET
+          dc <- dayCounter (Actual360 False)
+          sch <- schedule (Just start) (15 `january` 2026) (6, Months) cal Unadjusted Unadjusted Backward False Nothing Nothing
+          ir <- IR.interestRate 0.03 dc IR.Simple Annual
+          l <- CF.fixedRateLeg sch (NE.fromList [100.0]) (NE.fromList [ir]) Following dc cal
+          flows <- CF.cashFlows l Nothing Nothing
+          cpns <- CF.toCouponLeg l >>= CF.coupons
+          length cpns `shouldBe` length flows
+          -- every coupon reports the leg's own rate, and its accrued-to-end matches the
+          -- amount the leg reported for the same flow
+          rates <- mapM CF.rate cpns
+          rates `shouldSatisfy` all (closePrec 0.03 1.0e-12)
+          amounts <- mapM CF.amount cpns
+          amounts `shouldBe` [a | (_, a, _) <- flows]
+
     -- Ported from test-suite/digitalcoupon.cpp. Its Cox-Rubinstein N(d1)-formula cases
     -- (testAssetOrNothing/testCashOrNothing) need QuantLib's CumulativeNormalDistribution,
     -- which hasquant doesn't bind, so only the purely self-consistent cases are ported here:
@@ -1031,15 +1072,15 @@ spec evalDate = do
 
     -- Ported from test-suite/multipleresetscoupons.cpp. Its own dynamic reference (iterate the
     -- coupon's fixing-date IborLeg, sum accrualPeriod*(fixing+spread)) isn't reproducible via a
-    -- public API here: hasquant has no way to pull individual coupons back out of a 'Leg' (see
-    -- plans/review-2026-09-02.md A1), so the reference is instead a matching set of standalone
+    -- public API here: 'CF.coupons' yields a leg's coupons only at the 'Coupon' base, which has no
+    -- fixing-date accessor, so the reference is instead a matching set of standalone
     -- 'iborCoupon's built over the same sub-period dates -- since 'MultipleResetsCoupon' and
     -- 'IborCoupon' resolve a plain (non-in-arrears) fixing identically (gearing*fixing+spread,
     -- confirmed against couponpricer.cpp's 'BlackIborCouponPricer::adjustedFixing'), this is the
     -- same computation upstream's cast-and-sum loop performs, just sourced from fresh coupons
     -- instead of ones extracted from a leg. 'testMultipleResetsLegRegression' (checks each
-    -- coupon's internal fixing-date *count*) is skipped: there is no 'fixingDates' accessor
-    -- bound, and no way to iterate a leg's individual coupons to call it on regardless.
+    -- coupon's internal fixing-date *count*) is skipped: 'fixingDates' is bound through
+    -- 'HasFixingDates', but a leg's coupons come back as 'Coupon', which has no instance.
     describe "Multiple resets coupon" $ do
       let mrFixture = do
             let today' = 15 `march` 2021

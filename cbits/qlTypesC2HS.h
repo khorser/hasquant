@@ -57,6 +57,7 @@ typedef struct QlBond QlBond;
 typedef struct QlBondHelper QlBondHelper;
 typedef struct QlCalibratedModel QlCalibratedModel;
 typedef struct QlCashFlow QlCashFlow;
+typedef struct QlCoupon QlCoupon;
 typedef struct QlFixedRateCoupon QlFixedRateCoupon;
 typedef struct QlCalibrationHelper QlCalibrationHelper;
 typedef struct QlBlackCalibrationHelper QlBlackCalibrationHelper;

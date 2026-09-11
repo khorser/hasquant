@@ -939,7 +939,7 @@ noArbSabrSmileSection point forward alpha beta nu rho shift volatilityType = cas
   ,preErrorCheck-`String'errorCheck*-}->`SmileSection'peekSmileSection*#}
 
 -- |a 'SmileSection' whose volatility at every strike is @source@'s plus @spread@ (which may
--- change over time, since it's a live 'GenQuote' rather than a fixed number)
+-- change over time, since it's a live t'GenQuote' rather than a fixed number)
 {#fun qlSpreadedSmileSection as spreadedSmileSection{withSmileSection*`SmileSection'
   ,withQuote*`GenQuote q'
   ,preErrorCheck-`String'errorCheck*-}->`SmileSection'peekSmileSection*#}
@@ -1647,7 +1647,7 @@ sabrVolatilitySpreads surface maturity = case maturity of
   ,preErrorCheck-`String'errorCheck*-}->`Day'toDay#}
 
 -- |A 'SwaptionVolatilityStructure' whose volatility at every point is @source@'s plus @spread@
--- (which may change over time, since it's a live 'GenQuote' rather than a fixed number)
+-- (which may change over time, since it's a live t'GenQuote' rather than a fixed number)
 {#fun qlSpreadedSwaptionVolatility as spreadedSwaptionVolatility{withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure sv',withQuote*`GenQuote q',preErrorCheck-`String'errorCheck*-}->`SwaptionVolatilityStructure'peekSwaptionVolatilityStructure*#}
 
 -- |as 'spreadedSwaptionVolatility', for 'OptionletVolatilityStructure' rather than
