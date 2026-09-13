@@ -20,7 +20,7 @@ import Control.Exception(SomeException, try)
 import Foreign.C.String(CString, withCString)
 import System.IO(BufferMode(LineBuffering), hSetBuffering, stdout)
 
-import qualified QuantLib.Settings as Settings
+import qualified QuantLib.Context as Context
 import QuantLib.Time.Date
 import QuantLib.Time.Schedule
 import QuantLib.InterestRate(Compounding(..))
@@ -48,9 +48,9 @@ main = do
   fpState "after hasquant driver"
 
 body :: IO ()
-body = Settings.keepingSettingsGc $ do
+body = Context.keepingSettingsGc $ do
   let today = 5 `march` 2016
-  Settings.setEvaluationDate (Just today)
+  Context.setEvaluationDate (Just today)
   dc <- dayCounter Actual365FixedStandard
   rQ <- simpleQuote 0.01
   qQ <- simpleQuote 0.02
