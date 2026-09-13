@@ -1962,7 +1962,7 @@ span.spaces    { background: white }
 <span class="lineno"> 1943 </span>
 <span class="lineno"> 1944 </span>-- |Discount factors interpolated as a multiplicative spread applied on top of 'baseCurve'.
 <span class="lineno"> 1945 </span>-- Upstream requires the first discount factor to be exactly @1.0@, flagging its date as the
-<span class="lineno"> 1946 </span>-- curve's own reference date; a mismatched leading value throws a 'QuantLib.Type.Error'.
+<span class="lineno"> 1946 </span>-- curve's own reference date; a mismatched leading value throws a 'QuantLib.Context.Error'.
 <span class="lineno"> 1947 </span>interpolatedSpreadDiscountCurve :: GenYieldTermStructure y
 <span class="lineno"> 1948 </span>  -&gt; NonEmpty (Day, Double) -- ^dates, dfs
 <span class="lineno"> 1949 </span>  -&gt; Interpolation -- ^interpolator

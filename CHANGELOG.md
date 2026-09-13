@@ -7,10 +7,11 @@ example, and substantially more upstream-derived test coverage. Collections now
 encode emptiness and numeric scale more precisely, and the C++ shims share more of their template
 dispatch and allocation plumbing.
 
-The breaking rename is an attempt to make the API easier to explore and discover; the compact
+Many functions have been renamed and/or compacted where a single function accepts a sum type and
+calls different internal functions depending on its arguments. The breaking rename is an attempt to make the API easier to explore and discover; the compact
 API is still in flux.
 
-Another breaking change: removed the `QuantLib.Syntax` module and its Template Haskell partial-call helpers.
+Another breaking change is the removal of the `QuantLib.Syntax` module and its Template Haskell partial-call helpers.
 
 ## 0.6.0.0 (2026)
 

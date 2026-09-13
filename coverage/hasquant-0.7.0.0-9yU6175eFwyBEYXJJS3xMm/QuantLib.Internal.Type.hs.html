@@ -52,7 +52,7 @@ span.spaces    { background: white }
 <span class="lineno">   33 </span><span class="decl"><span class="istickedoff">withStandaloneArray c x f = withMany withStandalone (map c x) (`withArray` (\px -&gt; f (fromIntegral $ length x, px)))</span></span>
 <span class="lineno">   34 </span>-- The name of a QuantLib object is fixed for its lifetime, so reading it through
 <span class="lineno">   35 </span>-- unsafePerformIO is safe; NOINLINE keeps GHC from duplicating or floating the C++
-<span class="lineno">   36 </span>-- call, matching how QuantLib.Settings guards its own unsafePerformIO sites.
+<span class="lineno">   36 </span>-- call, matching how QuantLib.Context guards its own unsafePerformIO sites.
 <span class="lineno">   37 </span>showStandalone :: (Ptr a -&gt; IO CString) -&gt; Standalone a -&gt; String
 <span class="lineno">   38 </span><span class="decl"><span class="istickedoff">showStandalone f x = unsafePerformIO $ withStandalone x (f &gt;=&gt; peekDynString)</span></span>
 <span class="lineno">   39 </span>{-# NOINLINE showStandalone #-}
@@ -434,7 +434,7 @@ span.spaces    { background: white }
 <span class="lineno">  415 </span>withInterestRateArray :: [InterestRate] -&gt; ((CUInt, Ptr (Ptr CInterestRate)) -&gt; IO b) -&gt; IO b
 <span class="lineno">  416 </span><span class="decl"><span class="istickedoff">withInterestRateArray = withStandaloneArray getCInterestRate</span></span>
 <span class="lineno">  417 </span>
-<span class="lineno">  418 </span>-- |a GARCH(1,1) volatility model -- see 'QuantLib.VolatilityModel.garch11'\/'garch11Calibrated'.
+<span class="lineno">  418 </span>-- |a GARCH(1,1) volatility model -- see 'QuantLib.Model.garch11'\/'garch11Calibrated'.
 <span class="lineno">  419 </span>data CGarch11
 <span class="lineno">  420 </span>newtype Garch11 = Garch11 {<span class="istickedoff"><span class="decl"><span class="istickedoff">getCGarch11</span></span></span> :: Standalone CGarch11}
 <span class="lineno">  421 </span>foreign import ccall unsafe &quot;ql.h &amp;qlFreeGarch11&quot; qlFreeGarch11 :: FinalizerPtr CGarch11
