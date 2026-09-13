@@ -173,7 +173,7 @@ import QuantLib.Internal.Common
 import Data.List.NonEmpty(NonEmpty((:|)))
 import QuantLib.Time.Schedule(schedule, DateGenerationRule(..))
 import QuantLib.Time.Date(addPeriod)
-import QuantLib.Settings(evaluationDate)
+import QuantLib.Context(evaluationDate)
 import QuantLib.Index(fixingCalendar)
 import QuantLib.Index.InterestRate(tenor, dayCounter, businessDayConvention)
 

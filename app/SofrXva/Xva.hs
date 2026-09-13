@@ -24,7 +24,7 @@ import Data.Time.Calendar (Day)
 import qualified Data.Map.Strict as Map
 
 import QuantLib.Math (Interpolation(..))
-import QuantLib.Settings (setEvaluationDate)
+import QuantLib.Context (setEvaluationDate)
 import qualified QuantLib.TermStructure.Credit as Credit
 import qualified QuantLib.TermStructure.Yield as TS
 import QuantLib.Time.Calendar (CalendarConstructor(..), calendar)

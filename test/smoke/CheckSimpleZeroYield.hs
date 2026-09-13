@@ -14,7 +14,7 @@
 
 import Data.List.NonEmpty(fromList)
 import qualified QuantLib.Quote as Quote
-import QuantLib.Settings(setEvaluationDate)
+import QuantLib.Context(setEvaluationDate)
 import QuantLib.TermStructure.Yield
 import QuantLib.Time.Calendar
 import QuantLib.Time.Date

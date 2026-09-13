@@ -28,7 +28,7 @@ import qualified QuantLib.TermStructure.Yield as TS
 import QuantLib.Time.Calendar
 import QuantLib.Time.Date
 import QuantLib.Time.Schedule
-import QuantLib.Settings
+import QuantLib.Context
 
 close :: Double -> Double -> Bool
 close a b = abs (a - b) < 1e-6 * max 1 (abs a)

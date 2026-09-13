@@ -10,7 +10,7 @@ import QuantLib.Instrument.Forward
 import qualified QuantLib.InterestRate as IR
 import QuantLib.PricingEngine(discountingFxForwardEngine)
 import QuantLib.Quote(simpleQuote)
-import QuantLib.Settings(setEvaluationDate)
+import QuantLib.Context(setEvaluationDate)
 import QuantLib.TermStructure.Yield(Reference(..), flatForward)
 import QuantLib.Time.Calendar
 import QuantLib.Time.Date

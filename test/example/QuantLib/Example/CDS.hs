@@ -15,7 +15,7 @@ import QuantLib.Instrument.Credit
 import QuantLib.Math
 import QuantLib.Quote
 import QuantLib.PricingEngine
-import QuantLib.Settings
+import QuantLib.Context
 import QuantLib.TermStructure.Credit
 import QuantLib.TermStructure.Yield
 import QuantLib.Time.Date

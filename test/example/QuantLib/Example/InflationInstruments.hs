@@ -18,7 +18,7 @@ import QuantLib.Instrument.Bond
 import QuantLib.Instrument.Swap
 import QuantLib.PricingEngine
 import QuantLib.Quote
-import QuantLib.Settings
+import QuantLib.Context
 import QuantLib.TermStructure.Inflation
 import QuantLib.TermStructure.Yield
 import QuantLib.Time.Calendar

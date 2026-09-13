@@ -14,7 +14,7 @@ import qualified Data.Vector.Storable as V
 import Data.List(unzip6)
 import Data.List.NonEmpty(fromList, NonEmpty((:|)))
 
-import qualified QuantLib.Settings as Settings
+import qualified QuantLib.Context as Context
 import QuantLib.Time.Date
 import QuantLib.Time.Calendar
 import QuantLib.Time.Schedule
@@ -401,7 +401,7 @@ spec = do
     let forward = 0.03; expiry = 5.0; alpha_ = 0.04; beta_ = 0.5; nu = 0.4; rho_ = -0.2; shift = 0.0
 
     it "matches unsafeShiftedSabrVolatility for both VolatilityType cases, and Normal /= ShiftedLognormal" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         forM_ [ShiftedLognormal, Normal] $ \volType -> do
           section <- sabrSmileSection expiry forward alpha_ beta_ nu rho_ shift volType
           forM_ [0.01, 0.02, 0.03, 0.04, 0.05 :: Double] $ \strike -> do
@@ -419,9 +419,9 @@ spec = do
 
     it "SabrSmileSection/NoArbSabrSmileSection Date- and Time-based ctors agree, and NoArb\
        \ differs from the plain SabrSmileSection" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         refDate <- today
-        Settings.setEvaluationDate (Just refDate)
+        Context.setEvaluationDate (Just refDate)
         let expiryDays = 1826 :: Int -- ~5y in actual days
             expiryFromDays = fromIntegral expiryDays / 365.0 :: Double
         optionDate <- addPeriod refDate (expiryDays, Days)
@@ -446,12 +446,12 @@ spec = do
 
     it "SabrInterpolatedSmileSection calibrates back to the generating SABR parameters,\
        \ including through the AsSmileSection upcast" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         let strikes = [0.01, 0.02, 0.03, 0.04, 0.05]
         refVols <- mapM (\k -> unsafeShiftedSabrVolatility k forward expiry alpha_ beta_ nu rho_ shift ShiftedLognormal) strikes
         atmVol <- unsafeShiftedSabrVolatility forward forward expiry alpha_ beta_ nu rho_ shift ShiftedLognormal
         now <- today
-        Settings.setEvaluationDate (Just now)
+        Context.setEvaluationDate (Just now)
         optionDate <- addPeriod now (round (expiry * 365) :: Int, Days)
         forwardQuote <- simpleQuote forward
         atmVolQ <- simpleQuote atmVol
@@ -485,9 +485,9 @@ spec = do
 
     it "calibrates back to the generating SVI parameters, including through the\
        \ AsSmileSection upcast" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         refDate <- today
-        Settings.setEvaluationDate (Just refDate)
+        Context.setEvaluationDate (Just refDate)
         optionDate <- addPeriod refDate (180, Days)
         act365 <- dayCounter Actual365FixedStandard
         generating <- sviSmileSection optionDate forward a_ b_ sigma_ rho_ m_ act365
@@ -512,9 +512,9 @@ spec = do
           got `shouldSatisfy` closePrec expected 1e-6
 
     it "mIsFixed pins m at the seed value while the other four parameters still calibrate" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         refDate <- today
-        Settings.setEvaluationDate (Just refDate)
+        Context.setEvaluationDate (Just refDate)
         optionDate <- addPeriod refDate (180, Days)
         act365 <- dayCounter Actual365FixedStandard
         generating <- sviSmileSection optionDate forward a_ b_ sigma_ rho_ m_ act365
@@ -539,11 +539,11 @@ spec = do
   describe "NoArbSabrInterpolatedSmileSection" $
     it "calibrates back to the generating no-arb SABR parameters, including through the\
        \ AsSmileSection upcast" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         let forward = 0.03; alpha_ = 0.04; beta_ = 0.5; nu = 0.4; rho_ = -0.2
             strikes = [0.01, 0.02, 0.03, 0.04, 0.05]
         refDate <- today
-        Settings.setEvaluationDate (Just refDate)
+        Context.setEvaluationDate (Just refDate)
         optionDate <- addPeriod refDate (round (5.0 * 365 :: Double) :: Int, Days)
         act365 <- dayCounter Actual365FixedStandard
         generating <- noArbSabrSmileSection (RateAtDate optionDate act365) forward alpha_ beta_ nu rho_ 0 ShiftedLognormal
@@ -635,21 +635,21 @@ spec = do
           npv sw
 
     it "mcEuropeanEngine: every StatisticsTrait case constructs and prices finitely" $
-      Settings.keepingSettingsGc $ do
-        Settings.setEvaluationDate (Just refDate)
+      Context.keepingSettingsGc $ do
+        Context.setEvaluationDate (Just refDate)
         results <- mapM europeanNpvUnder stats
         allFinite results `shouldBe` True
 
     it "mcAmericanEngine: every StatisticsTrait case constructs and prices finitely" $
-      Settings.keepingSettingsGc $ do
-        Settings.setEvaluationDate (Just refDate)
+      Context.keepingSettingsGc $ do
+        Context.setEvaluationDate (Just refDate)
         results <- mapM americanNpvUnder stats
         allFinite results `shouldBe` True
 
     it "mcVarianceSwapEngine: every StatisticsTrait case constructs, prices finitely, and\
        \ (same seed/process/timesteps) agrees closely across accumulators" $
-      Settings.keepingSettingsGc $ do
-        Settings.setEvaluationDate (Just refDate)
+      Context.keepingSettingsGc $ do
+        Context.setEvaluationDate (Just refDate)
         results <- mapM varianceSwapNpvUnder stats
         allFinite results `shouldBe` True
         let mn = minimum results; mx = maximum results
@@ -688,11 +688,11 @@ spec = do
       abs (fwdStrike - putCall50Strike) `shouldSatisfy` (> 1.0e-6)
 
     it "VannaVolgaBarrierEngine reproduces the cached UpOut EUR call value from barrieroption.cpp" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         let today' = 5 `march` 2013
             barrier = 1.5; strike = 1.13321; s = 1.30265; q = 0.0003541; r = 0.0033871; t = 1 :: Double
             vol25Put = 0.10087; volAtm = 0.08925; vol25Call = 0.08463; vol = 0.11638
-        Settings.setEvaluationDate (Just today')
+        Context.setEvaluationDate (Just today')
         dc <- dayCounter Actual365FixedStandard
         spotQ <- simpleQuote s
         qQ <- simpleQuote q
@@ -722,11 +722,11 @@ spec = do
         price `shouldSatisfy` closePrec 0.148127 2.0e-3
 
     it "AnalyticDoubleBarrierEngine reproduces the cached KnockOut call value from doublebarrieroption.cpp" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         let today' = 1 `january` 2020
             barrierLo = 50.0; barrierHi = 150.0; strike = 100.0
             s = 100.0; q = 0.0; r = 0.1; t = 0.25 :: Double; vol = 0.15
-        Settings.setEvaluationDate (Just today')
+        Context.setEvaluationDate (Just today')
         dc <- dayCounter (Actual360 False)
         spotQ <- simpleQuote s
         qQ <- simpleQuote q
@@ -749,11 +749,11 @@ spec = do
 
     it "AnalyticPartialTimeBarrierOptionEngine reproduces the cached DownOut/EndB1 value from\
        \ partialtimebarrieroption.cpp" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         let today' = 1 `january` 2020
             barrier = 100.0; rebate = 0.0; strike = 90.0
             s = 95.0; q = 0.0; r = 0.1 :: Double; vol = 0.25
-        Settings.setEvaluationDate (Just today')
+        Context.setEvaluationDate (Just today')
         dc <- dayCounter (Actual360 False)
         spotQ <- simpleQuote s
         qQ <- simpleQuote q
@@ -776,9 +776,9 @@ spec = do
 
     it "every remaining barrier/double-barrier engine constructs and prices finitely, over every\
        \ BinomialTree/RngTrait case" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         let today' = 1 `january` 2020 :: Day
-        Settings.setEvaluationDate (Just today')
+        Context.setEvaluationDate (Just today')
         dc <- dayCounter Actual365FixedStandard
         spotQ <- simpleQuote 100
         qQ <- simpleQuote 0.01
@@ -861,10 +861,10 @@ spec = do
       -- expected 0.07187): analytic (AnalyticBarrierEngine) and MC (MakeMCBarrierEngine) are
       -- both checked against the same literal there, so the MC engine is checked here too,
       -- at upstream's own relative tolerance.
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         let today' = 1 `january` 2020
             expected = 0.07187 :: Double
-        Settings.setEvaluationDate (Just today')
+        Context.setEvaluationDate (Just today')
         dc <- dayCounter (Actual360 False)
         spotQ <- simpleQuote 100.0
         qQ <- simpleQuote 0.02
@@ -890,8 +890,8 @@ spec = do
   describe "AnalyticDigitalAmericanEngine / AnalyticDigitalAmericanKoEngine" $ do
     let today' = 28 `august` 2026
         priceCase mkPayoff (ty, strike, spot, q, r, tDays, vol, knockIn, _expected) =
-          Settings.keepingSettingsGc $ do
-            Settings.setEvaluationDate (Just today')
+          Context.keepingSettingsGc $ do
+            Context.setEvaluationDate (Just today')
             dc <- dayCounter (Actual360 False)
             cal <- calendar Null
             spotQ <- simpleQuote spot
@@ -937,12 +937,12 @@ spec = do
     -- American digital, priced via MakeMCDigitalEngine (default payoffAtExpiry=False, i.e. the
     -- cash is paid at the moment the strike is hit, not at exercise).
     it "mcDigitalEngine reproduces digitaloption.cpp's cash-at-hit values" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         let evalDate' = 1 `january` 2020
             cases = [ (Put, 100.0, 105.0, 0.20, 0.10, 0.5 :: Double, 0.20, 12.2715 :: Double)
                     , (Call, 100.0, 95.0, 0.20, 0.10, 0.5, 0.20, 8.9109)
                     ]
-        Settings.setEvaluationDate (Just evalDate')
+        Context.setEvaluationDate (Just evalDate')
         dc <- dayCounter (Actual360 False)
         forM_ cases $ \(ty, strike, spot, q, r, t, vol, expected) -> do
           spotQ <- simpleQuote spot
@@ -997,8 +997,8 @@ spec = do
           pure (process, opt)
 
     it "qdPlusAmericanEngine reproduces americanoption.cpp's standard put/call cached values" $
-      Settings.keepingSettingsGc $ do
-        Settings.setEvaluationDate (Just today')
+      Context.keepingSettingsGc $ do
+        Context.setEvaluationDate (Just today')
         forM_ cases $ \(ty, spot, strike, r, q) -> do
           (process, opt) <- mkOption ty spot strike r q
           eng <- qdPlusAmericanEngine process 8 Halley 1e-10 Nothing
@@ -1007,8 +1007,8 @@ spec = do
           v `shouldSatisfy` closePrec qdPlusExpected 1e-8
 
     it "qdFpAmericanEngine agrees with a converged binomial price across every scheme/equation" $
-      Settings.keepingSettingsGc $ do
-        Settings.setEvaluationDate (Just today')
+      Context.keepingSettingsGc $ do
+        Context.setEvaluationDate (Just today')
         let (ty, spot, strike, r, q) = putCase
         (biProcess, biOpt) <- mkOption ty spot strike r q
         biEng <- binomialVanillaEngine LeisenReimer biProcess 20001
@@ -1045,8 +1045,8 @@ spec = do
           return (proc, fxrTS, fxVolTS, corrQ)
 
     it "QuantoEngine<VanillaOption,AnalyticEuropeanEngine> reproduces testValues" $
-      Settings.keepingSettingsGc $ do
-        Settings.setEvaluationDate (Just today')
+      Context.keepingSettingsGc $ do
+        Context.setEvaluationDate (Just today')
         dc <- dayCounter (Actual360 False)
         tgt <- calendar TARGET
         let cases = [ (Call, 105.0, 100.0, 0.04, 0.08, 0.5 :: Double, 0.2, 0.05, 0.10, 0.3, 5.3280 / 1.5 :: Double)
@@ -1073,8 +1073,8 @@ spec = do
     -- across the whole sweep is ~3.1e-4 (Put, strike=150, vol=1.2, fxVol=1.2, corr=0.9), so 5e-4
     -- keeps this a real check while accommodating it, per CLAUDE.md's numeric-tolerance rule.
     it "QuantoEngine<VanillaOption,AnalyticEuropeanEngine> reproduces testGreeks" $
-      Settings.keepingSettingsGc $ do
-        Settings.setEvaluationDate (Just today')
+      Context.keepingSettingsGc $ do
+        Context.setEvaluationDate (Just today')
         dc <- dayCounter (Actual360 False)
         tgt <- calendar TARGET
         spotQ <- simpleQuote (0.0 :: Double)
@@ -1169,11 +1169,11 @@ spec = do
               let expQlambda = (corrValueP - corrValueM) / (2 * dcorr)
 
               dTyears <- yearFraction dc (addDays (-1) today') (addDays 1 today') Nothing Nothing
-              Settings.setEvaluationDate (Just (addDays (-1) today'))
+              Context.setEvaluationDate (Just (addDays (-1) today'))
               thetaValueM <- npv optInst
-              Settings.setEvaluationDate (Just (addDays 1 today'))
+              Context.setEvaluationDate (Just (addDays 1 today'))
               thetaValueP <- npv optInst
-              Settings.setEvaluationDate (Just today')
+              Context.setEvaluationDate (Just today')
               let expTheta = (thetaValueP - thetaValueM) / dTyears
                   relErr expctd calcd = abs (expctd - calcd) / u
 
@@ -1188,8 +1188,8 @@ spec = do
               relErr expQlambda calcQlambda `shouldSatisfy` (< 1.0e-5)
 
     it "QuantoEngine<ForwardVanillaOption,ForwardVanillaEngine<AnalyticEuropeanEngine>> reproduces testForwardValues" $
-      Settings.keepingSettingsGc $ do
-        Settings.setEvaluationDate (Just today')
+      Context.keepingSettingsGc $ do
+        Context.setEvaluationDate (Just today')
         dc <- dayCounter (Actual360 False)
         tgt <- calendar TARGET
         let cases = [ (Call, 1.05 :: Double, 100.0, 0.04, 0.08, 0.00 :: Double, 0.5 :: Double, 0.20, 0.05, 0.10, 0.3, 5.3280 / 1.5 :: Double)
@@ -1215,8 +1215,8 @@ spec = do
     -- nonlinear, and the measured worst case across the sweep is ~2.5e-3 (Put, moneyness=1.1,
     -- reset=6m, vol=1.2, fxVol=1.2, corr=0.9); every other greek still holds 1e-5.
     it "QuantoEngine<ForwardVanillaOption,ForwardVanillaEngine<AnalyticEuropeanEngine>> reproduces testForwardGreeks" $
-      Settings.keepingSettingsGc $ do
-        Settings.setEvaluationDate (Just today')
+      Context.keepingSettingsGc $ do
+        Context.setEvaluationDate (Just today')
         dc <- dayCounter (Actual360 False)
         tgt <- calendar TARGET
         spotQ <- simpleQuote (0.0 :: Double)
@@ -1313,11 +1313,11 @@ spec = do
                 let expQlambda = (corrValueP - corrValueM) / (2 * dcorr)
 
                 dTyears <- yearFraction dc (addDays (-1) today') (addDays 1 today') Nothing Nothing
-                Settings.setEvaluationDate (Just (addDays (-1) today'))
+                Context.setEvaluationDate (Just (addDays (-1) today'))
                 thetaValueM <- npv optInst
-                Settings.setEvaluationDate (Just (addDays 1 today'))
+                Context.setEvaluationDate (Just (addDays 1 today'))
                 thetaValueP <- npv optInst
-                Settings.setEvaluationDate (Just today')
+                Context.setEvaluationDate (Just today')
                 let expTheta = (thetaValueP - thetaValueM) / dTyears
                     relErr expctd calcd = abs (expctd - calcd) / u
 
@@ -1332,8 +1332,8 @@ spec = do
                 relErr expQlambda calcQlambda `shouldSatisfy` (< 1.0e-5)
 
     it "QuantoEngine<ForwardVanillaOption,ForwardPerformanceVanillaEngine<AnalyticEuropeanEngine>> reproduces testForwardPerformanceValues" $
-      Settings.keepingSettingsGc $ do
-        Settings.setEvaluationDate (Just today')
+      Context.keepingSettingsGc $ do
+        Context.setEvaluationDate (Just today')
         dc <- dayCounter (Actual360 False)
         tgt <- calendar TARGET
         let cases = [ (Call, 1.05 :: Double, 100.0, 0.04, 0.08, 0.00 :: Double, 0.5 :: Double, 0.20, 0.05, 0.10, 0.3, 5.3280 / 150 :: Double)
@@ -1353,8 +1353,8 @@ spec = do
           v `shouldSatisfy` closePrec expected 1.0e-4
 
     it "QuantoEngine<BarrierOption,AnalyticBarrierEngine> reproduces testBarrierValues" $
-      Settings.keepingSettingsGc $ do
-        Settings.setEvaluationDate (Just today')
+      Context.keepingSettingsGc $ do
+        Context.setEvaluationDate (Just today')
         dc <- dayCounter (Actual360 False)
         tgt <- calendar TARGET
         let cases = [ (DownOut, 95.0 :: Double, 3.0 :: Double, Call, 100.0 :: Double, 90.0 :: Double, 0.04, 0.0212, 0.50 :: Double, 0.25, 0.05, 0.2, 0.3, 8.247 :: Double, 0.5 :: Double)
@@ -1372,8 +1372,8 @@ spec = do
           v `shouldSatisfy` closePrec expected tol
 
     it "QuantoEngine<DoubleBarrierOption,AnalyticDoubleBarrierEngine> reproduces testDoubleBarrierValues" $
-      Settings.keepingSettingsGc $ do
-        Settings.setEvaluationDate (Just today')
+      Context.keepingSettingsGc $ do
+        Context.setEvaluationDate (Just today')
         dc <- dayCounter (Actual360 False)
         tgt <- calendar TARGET
         let cases = [ (KnockOut, 50.0 :: Double, 150.0 :: Double, 0.0 :: Double, Call, 100.0 :: Double, 100.0 :: Double, 0.00 :: Double, 0.1 :: Double, 0.25 :: Double, 0.15, 0.05, 0.2, 0.3, 3.4623 :: Double)
@@ -1399,7 +1399,7 @@ spec = do
   -- fdBlackScholesVanillaEngineQuanto and fdHestonVanillaEngineQuanto.
   describe "FdmQuantoHelper / FD quanto engines" $ do
     it "FdmQuantoHelper.quantoAdjustment and FdmBlackScholesMesher grid bounds reproduce testFDMQuantoHelper" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         let today' = 22 `april` 2019
             s = 100.0 :: Double
             domesticR = 0.1 :: Double
@@ -1409,7 +1409,7 @@ spec = do
             fxVol = 0.2 :: Double
             exchRateATMlevel = 1.0 :: Double
             equityFxCorrelation = -0.75 :: Double
-        Settings.setEvaluationDate (Just today')
+        Context.setEvaluationDate (Just today')
         dc <- dayCounter (Actual360 False)
         tgt <- calendar TARGET
         domesticRQ <- simpleQuote domesticR
@@ -1460,8 +1460,8 @@ spec = do
                   , (Call, 0.0,   100.0, 0.04, 0.08, 0.3,  0.3,  0.05, 0.10,  0.75)
                   ]
       forM_ cases $ \(ty, strike, s, q, r, t, vol, fxr, fxv, corr) ->
-        Settings.keepingSettingsGc $ do
-          Settings.setEvaluationDate (Just today')
+        Context.keepingSettingsGc $ do
+          Context.setEvaluationDate (Just today')
           dc <- dayCounter (Actual360 False)
           tgt <- calendar TARGET
           spotQ <- simpleQuote s
@@ -1497,7 +1497,7 @@ spec = do
           closePrec expDelta 1.0e-4 calcDelta `shouldBe` True
 
     it "quanto FD engines with dividends reproduce testAmericanQuantoOption" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         let today' = 21 `april` 2019
             domesticR = 0.025 :: Double
             foreignR = 0.075 :: Double
@@ -1508,7 +1508,7 @@ spec = do
             strike = 105.0 :: Double
             expected = 8.90611734 :: Double
             tol = 1.0e-4 :: Double
-        Settings.setEvaluationDate (Just today')
+        Context.setEvaluationDate (Just today')
         dc <- dayCounter Actual365FixedStandard
         maturity <- addPeriod today' (9, Months)
         domesticRQ <- simpleQuote domesticR
@@ -1574,14 +1574,14 @@ spec = do
   -- is monitored against the barrier (Heynen and Kat's formulas via AnalyticTwoAssetBarrierEngine).
   describe "Two-asset barrier engine" $
     it "AnalyticTwoAssetBarrierEngine reproduces twoassetbarrieroption.cpp's testHaugValues" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         let today' = 1 `january` 2020
             cases = [ (DownOut, Call, 95.0 :: Double, 90.0 :: Double, 0.5 :: Double, 0.08 :: Double, 6.6592 :: Double)
                     , (UpOut,   Call, 105.0, 90.0, -0.5, 0.08, 4.6670)
                     , (DownOut, Put,  95.0, 90.0, -0.5, 0.08, 0.6184)
                     , (UpOut,   Put,  105.0, 100.0, 0.0, 0.08, 0.8246)
                     ]
-        Settings.setEvaluationDate (Just today')
+        Context.setEvaluationDate (Just today')
         dc <- dayCounter (Actual360 False)
         tgt <- calendar TARGET
         rQ <- simpleQuote (0.0 :: Double)
@@ -1613,11 +1613,11 @@ spec = do
   -- used by test-suite/markovfunctional.cpp's testVanillaEngines.
   describe "Gaussian1d cap/floor engine" $
     it "prices a cap for GSR and MarkovFunctional, and the caplet-calibrated Markov model agrees with Black" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         cal <- calendar TARGET
-        originalEvalDate <- Settings.evaluationDate
+        originalEvalDate <- Context.evaluationDate
         evalDate <- adjust cal originalEvalDate Following
-        Settings.setEvaluationDate (Just evalDate)
+        Context.setEvaluationDate (Just evalDate)
         settlement <- advance cal evalDate (2, Days) Following False
         dc365 <- dayCounter Actual365FixedStandard
         thirty360bb <- dayCounter Thirty360BondBasis
@@ -1679,9 +1679,9 @@ spec = do
   -- test/smoke/CheckBasketSpreadEngines.hs, which stays as the standalone smoke version.
   describe "Basket and spread pricing engines" $ do
     it "testEuroTwoValues: StulzEngine/KirkEngine vs. Fd2dBlackScholesVanillaEngine/MCEuropeanBasketEngine on a representative row subset" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         let evalDate = 1 `march` 2024
-        Settings.setEvaluationDate (Just evalDate)
+        Context.setEvaluationDate (Just evalDate)
         dc <- dayCounter (Actual360 False)
         cal <- calendar TARGET
         -- basketType: 0=Min, 1=Max, 2=Spread
@@ -1754,8 +1754,8 @@ spec = do
           mcCalculated `shouldSatisfy` closePrec result (0.01 * s1)
 
     it "testBarraquandThreeValues: MCEuropeanBasketEngine/MCAmericanBasketEngine reproduce Barraquand-Martineau Table 3" $
-      Settings.keepingSettingsGc $ do
-        evalDate <- Settings.evaluationDate
+      Context.keepingSettingsGc $ do
+        evalDate <- Context.evaluationDate
         dc <- dayCounter (Actual360 False)
         cal <- calendar TARGET
         let rows :: [(OptionType, Double, Double, Double, Double, Double)]
@@ -1806,8 +1806,8 @@ spec = do
           amCalculated `shouldSatisfy` closePrec amValue (0.01 * 40.0)
 
     it "testTavellaValues: MCAmericanBasketEngine reproduces Tavella's cached three-asset American call value" $
-      Settings.keepingSettingsGc $ do
-        evalDate <- Settings.evaluationDate
+      Context.keepingSettingsGc $ do
+        evalDate <- Context.evaluationDate
         dc <- dayCounter (Actual360 False)
         cal <- calendar TARGET
         spot1 <- simpleQuote 100.0
@@ -1841,8 +1841,8 @@ spec = do
         est `shouldSatisfy` (\x -> not (isNaN x || isInfinite x))
 
     it "testOneDAmericanValues: single-asset MaxBasketPayoff American reduces to the 1-D put table (sliceOne)" $
-      Settings.keepingSettingsGc $ do
-        evalDate <- Settings.evaluationDate
+      Context.keepingSettingsGc $ do
+        evalDate <- Context.evaluationDate
         dc <- dayCounter (Actual360 False)
         cal <- calendar TARGET
         let rows :: [(Double, Double, Double)]
@@ -1876,8 +1876,8 @@ spec = do
           calculated `shouldSatisfy` closePrec expected (tol * s)
 
     it "testOddSamples: MCAmericanBasketEngine survives an odd required-sample count (antithetic off-by-one regression)" $
-      Settings.keepingSettingsGc $ do
-        evalDate <- Settings.evaluationDate
+      Context.keepingSettingsGc $ do
+        evalDate <- Context.evaluationDate
         dc <- dayCounter (Actual360 False)
         cal <- calendar TARGET
         spot1 <- simpleQuote 80.0
@@ -1900,9 +1900,9 @@ spec = do
         calculated `shouldSatisfy` closePrec 21.6059 (1.0e-2 * 80.0)
 
     it "testLocalVolatilitySpreadOption: Fd2dBlackScholesVanillaEngine on two Heston-implied local-vol surfaces" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         let evalDate = 21 `september` 2017
-        Settings.setEvaluationDate (Just evalDate)
+        Context.setEvaluationDate (Just evalDate)
         dc <- dayCounter (Actual360 False)
         maturity <- addPeriod evalDate (3, Months)
 
@@ -1937,8 +1937,8 @@ spec = do
         calculated `shouldSatisfy` closePrec 2.561 0.01
 
     it "test2DPDEGreeks: Fd2dBlackScholesVanillaEngine's delta/gamma vs. KirkEngine bump-and-reprice" $
-      Settings.keepingSettingsGc $ do
-        evalDate <- Settings.evaluationDate
+      Context.keepingSettingsGc $ do
+        evalDate <- Context.evaluationDate
         dc <- dayCounter Actual365FixedStandard
         let maturity = addDays 1095 evalDate
 
@@ -1987,9 +1987,9 @@ spec = do
         calculatedGamma `shouldSatisfy` closePrec expectedGamma tol
 
     it "testBjerksundStenslandSpreadEngine: reproduces the cached put value and call-put parity" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         let evalDate = 1 `march` 2024
-        Settings.setEvaluationDate (Just evalDate)
+        Context.setEvaluationDate (Just evalDate)
         dc <- dayCounter Actual365FixedStandard
         cal <- calendar TARGET
         maturity <- addPeriod evalDate (12, Months)
@@ -2022,9 +2022,9 @@ spec = do
         ((callNPV - putNPV) / df) `shouldSatisfy` closePrec (f1 - f2 - spreadStrike) 1.0e-3
 
     it "testOperatorSplittingSpreadEngine: reproduces the full Kirk-vs-Strang(First/Second) rho table" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         let evalDate = 1 `march` 2024
-        Settings.setEvaluationDate (Just evalDate)
+        Context.setEvaluationDate (Just evalDate)
         dc <- dayCounter Actual365FixedStandard
         cal <- calendar TARGET
         maturity <- addPeriod evalDate (12, Months)
@@ -2080,9 +2080,9 @@ spec = do
           v2 `shouldSatisfy` closePrec exp2 5.0e-3
 
     it "testStrangSplittingSpreadEngineVsMathematica: Kirk/OperatorSplitting(First/Second) reproduce cached Mathematica values" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         let evalDate = 27 `may` 2024
-        Settings.setEvaluationDate (Just evalDate)
+        Context.setEvaluationDate (Just evalDate)
         dc <- dayCounter Actual365FixedStandard
         cal <- calendar TARGET
         rTS <- simpleQuote 0.05 >>= \rQ -> flatForward (ReferenceDate evalDate) rQ dc Continuous Annual
@@ -2137,9 +2137,9 @@ spec = do
           strang2Calc `shouldSatisfy` closePrec strang2 (1.0e-4 * abs strang2)
 
     it "testPDEvsApproximations: Kirk/BjerksundStensland/OperatorSplitting/Pearson/GaussianCopula track Fd2d across type/rho_/rate/spot" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         let evalDate = 5 `february` 2024
-        Settings.setEvaluationDate (Just evalDate)
+        Context.setEvaluationDate (Just evalDate)
         dc <- dayCounter Actual365FixedStandard
         cal <- calendar TARGET
         maturity <- addPeriod evalDate (6, Months)
@@ -2215,9 +2215,9 @@ spec = do
         stdDev gaussDiffs `shouldSatisfy` (< 0.02)
 
     it "ChoiBasketEngine/DengLiZhouBasketEngine/SingleFactorBsmBasketEngine self-consistency vs. MCEuropeanBasketEngine" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         let evalDate = 1 `march` 2024
-        Settings.setEvaluationDate (Just evalDate)
+        Context.setEvaluationDate (Just evalDate)
         dc <- dayCounter Actual365FixedStandard
         cal <- calendar TARGET
         maturity <- addPeriod evalDate (12, Months)
@@ -2269,9 +2269,9 @@ spec = do
         sfbV1 `shouldSatisfy` closePrec mcAvgV1 (0.02 * mcAvgV1)
 
     it "FdndimBlackScholesVanillaEngine (both grid forms) vs. Fd2dBlackScholesVanillaEngine" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         let evalDate = 1 `march` 2024
-        Settings.setEvaluationDate (Just evalDate)
+        Context.setEvaluationDate (Just evalDate)
         dc <- dayCounter Actual365FixedStandard
         cal <- calendar TARGET
         maturity <- addPeriod evalDate (12, Months)
@@ -2325,7 +2325,7 @@ spec = do
     let closeRel expected relTol actual = abs (actual - expected) < relTol * abs expected
 
     it "reproduces hestonmodel.cpp's testAlanLewisReferencePrices" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         let evalDate = 5 `july` 2002
             maturity = 5 `july` 2003
             v0 = 0.04; kappa = 4.0; theta_ = 0.25; sigma = 1.0; rho_ = -0.5 :: Double
@@ -2336,7 +2336,7 @@ spec = do
               , (110.0, 23.017825898442800538908781834822560777763225722188, 12.132211516709844867860534767549426052805766831181)
               , (120.0, 29.811026202682471843340682293165857439167301370697, 9.024913483457835636553375454092357136489051667150)
               ]
-        Settings.setEvaluationDate (Just evalDate)
+        Context.setEvaluationDate (Just evalDate)
         dc <- dayCounter Actual365FixedStandard
         rQ <- simpleQuote 0.01
         qQ <- simpleQuote 0.02
@@ -2360,10 +2360,10 @@ spec = do
           callV `shouldSatisfy` closeRel expectedCall 1.0e-12
 
     it "reproduces hestonmodel.cpp's testCosHestonEngineTruncation (near-zero deep OTM price)" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         let evalDate = 22 `august` 2022
             maturity = 23 `august` 2022
-        Settings.setEvaluationDate (Just evalDate)
+        Context.setEvaluationDate (Just evalDate)
         dc <- dayCounter Actual365FixedStandard
         rQ <- simpleQuote 0.0
         qQ <- simpleQuote 0.0
@@ -2386,10 +2386,10 @@ spec = do
   -- to within upstream's tolerance of the semi-analytic AnalyticHestonEngine.
   describe "Analytic PDF Heston engine" $
     it "reproduces hestonmodel.cpp's testAnalyticPDFHestonEngine plain-vanilla case" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         let evalDate = 5 `january` 2014
             maturity = 5 `july` 2014
-        Settings.setEvaluationDate (Just evalDate)
+        Context.setEvaluationDate (Just evalDate)
         dc <- dayCounter Actual365FixedStandard
         rQ <- simpleQuote 0.07
         qQ <- simpleQuote 0.185
@@ -2420,7 +2420,7 @@ spec = do
   -- four named model fixtures.
   describe "FD Bates vanilla engine" $
     it "reproduces batesmodel.cpp's testAnalyticVsMCPricing FD-vs-analytic case" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         let evalDate = 30 `march` 2007
             maturity = 30 `march` 2012
             strike = 100.0 :: Double
@@ -2431,7 +2431,7 @@ spec = do
               , ("Kahl-Jaeckel", 0.16, 1.0, 0.16, 2.0, -0.8, 0.0, 0.0)
               , ("Equity case", 0.07, 2.0, 0.04, 0.55, -0.8, 0.03, 0.035)
               ]
-        Settings.setEvaluationDate (Just evalDate)
+        Context.setEvaluationDate (Just evalDate)
         dc <- dayCounter ActualActualISDA
         forM_ cases $ \(name, v0, kappa, theta_, sigma, rho_, r, q) -> do
           rQ <- simpleQuote r
@@ -2460,7 +2460,7 @@ spec = do
   -- out of scope for "MC forward Heston engine" coverage specifically).
   describe "MC forward Heston engine" $
     it "reproduces forwardoption.cpp's testHestonMCPrices flat-Heston-vs-analytic-BS case" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         let evalDate = 2 `january` 2024
             maturity = addGregorianYearsClip 1 evalDate
             reset = addDays 182 evalDate
@@ -2469,7 +2469,7 @@ spec = do
             moneyness = [0.8, 0.9, 1.0, 1.1, 1.2 :: Double]
             tolCall = [7.0e-4, 8.0e-4, 6.0e-4, 5.0e-4, 5.0e-4]
             tolPut = [6.0e-4, 5.0e-4, 6.0e-4, 1.0e-3, 1.0e-3]
-        Settings.setEvaluationDate (Just evalDate)
+        Context.setEvaluationDate (Just evalDate)
         dc <- dayCounter (Actual360 False)
         rQ <- simpleQuote r
         qQ <- simpleQuote q
@@ -2499,7 +2499,7 @@ spec = do
   -- and testLargeDividendShoutNPV (both self-consistency).
   describe "FdBlackScholesShoutEngine" $ do
     it "reproduces americanoption.cpp's testFDShoutNPV" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         let evalDate = 4 `february` 2021
             cases =
               [ (Put, 105.0 :: Double, 19.136 :: Double)
@@ -2507,7 +2507,7 @@ spec = do
               , (Put, 120.0, 28.02)
               , (Call, 80.0, 40.785)
               ]
-        Settings.setEvaluationDate (Just evalDate)
+        Context.setEvaluationDate (Just evalDate)
         dc <- dayCounter Actual365FixedStandard
         s0 <- simpleQuote 100.0
         qQ <- simpleQuote 0.03
@@ -2528,9 +2528,9 @@ spec = do
           v `shouldSatisfy` closePrec expected 2.0e-2
 
     it "reproduces americanoption.cpp's testZeroVolFDShoutNPV (shout with a discrete dividend matches the American NPV once undiscounted through the ex-date)" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         let evalDate = 14 `february` 2021
-        Settings.setEvaluationDate (Just evalDate)
+        Context.setEvaluationDate (Just evalDate)
         dc <- dayCounter Actual365FixedStandard
         s0 <- simpleQuote 100.0
         qQ <- simpleQuote 0.03
@@ -2563,10 +2563,10 @@ spec = do
         (shoutNPV / df) `shouldSatisfy` closePrec americanNPV 1.0e-3
 
     it "reproduces americanoption.cpp's testLargeDividendShoutNPV" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         let evalDate = 21 `february` 2021
             strike = 80.0 :: Double
-        Settings.setEvaluationDate (Just evalDate)
+        Context.setEvaluationDate (Just evalDate)
         dc <- dayCounter Actual365FixedStandard
         s0 <- simpleQuote 100.0
         qQ <- simpleQuote 0.0
@@ -2605,9 +2605,9 @@ spec = do
   -- The @logging = False@ case also pins empty-log handling; see 'hestonSlvFdmLogEntries'.
   describe "HestonSLV model" $ do
     it "builds MC/FDM Heston-SLV models with a consistent density-grid layout (LONG)" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         let evalDate = 5 `march` 2016
-        Settings.setEvaluationDate (Just evalDate)
+        Context.setEvaluationDate (Just evalDate)
         dc <- dayCounter Actual365FixedStandard
         rQ <- simpleQuote 0.01
         qQ <- simpleQuote 0.02
@@ -2660,11 +2660,11 @@ spec = do
     -- 'mcEuropeanHestonEngine' requires, so that specific engine/process combination isn't
     -- constructible from hasquant's current bindings.
     it "reproduces hestonslvmodel.cpp's testMonteCarloVsFdmPricing mixing-factor FDM consistency (LONG)" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         let evalDate = 5 `december` 2015
             v0 = 0.19; kappa = 2.0; theta_ = 0.18; sigma = 0.8; rho_ = -0.75 :: Double
             strikes = [100.0, 110.0 :: Double]
-        Settings.setEvaluationDate (Just evalDate)
+        Context.setEvaluationDate (Just evalDate)
         maturity <- addPeriod evalDate (1, Years)
         dc <- dayCounter ActualActualISDA
         s0 <- simpleQuote 100.0

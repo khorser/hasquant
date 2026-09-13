@@ -15,7 +15,7 @@ import Control.Monad(forM_)
 
 import Test.Hspec
 
-import qualified QuantLib.Settings as Settings
+import qualified QuantLib.Context as Context
 import QuantLib.Time.Date
 import QuantLib.Time.Calendar
 import QuantLib.Time.Schedule
@@ -35,9 +35,9 @@ spec = do
   describe "testCachedValue" $
     it "NPV and fairSpread reproduce creditdefaultswap.cpp's cached values under\
        \ MidPointCdsEngine and IntegralCdsEngine (1 day and 1 week steps)" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         let today' = 9 `june` 2006
-        Settings.setEvaluationDate (Just today')
+        Context.setEvaluationDate (Just today')
         cal <- calendar TARGET
         dc <- dayCounter (Actual360 False)
         hazardQ <- simpleQuote 0.01234
@@ -90,11 +90,11 @@ spec = do
 
   describe "testFairSpread" $
     it "rebuilding at the CDS's own fairSpread reprices it to ~0" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         today' <- today >>= \d -> do
           cal <- calendar TARGET
           adjust cal d Following
-        Settings.setEvaluationDate (Just today')
+        Context.setEvaluationDate (Just today')
         cal <- calendar TARGET
         dc <- dayCounter (Actual360 False)
         hazardQ <- simpleQuote 0.01234
@@ -121,11 +121,11 @@ spec = do
 
   describe "testFairUpfront" $
     it "rebuilding at the CDS's own fairUpfront reprices it to ~0" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         today' <- today >>= \d -> do
           cal <- calendar TARGET
           adjust cal d Following
-        Settings.setEvaluationDate (Just today')
+        Context.setEvaluationDate (Just today')
         cal <- calendar TARGET
         dc <- dayCounter (Actual360 False)
         hazardQ <- simpleQuote 0.01234
@@ -151,11 +151,11 @@ spec = do
 
   describe "testImpliedHazardRate" $
     it "round-trips impliedHazardRate against the flat hazard rate used to build the CDS's NPV" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         today' <- today >>= \d -> do
           cal <- calendar TARGET
           adjust cal d Following
-        Settings.setEvaluationDate (Just today')
+        Context.setEvaluationDate (Just today')
         cal <- calendar TARGET
         dc <- dayCounter (Actual360 False)
         discQ <- simpleQuote 0.03

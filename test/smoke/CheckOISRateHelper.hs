@@ -17,7 +17,7 @@ import QuantLib.CashFlow(RateAveragingType(..))
 import QuantLib.Index.InterestRate hiding(dayCounter)
 import QuantLib.Math(Interpolation(..))
 import QuantLib.Quote(simpleQuote)
-import QuantLib.Settings(setEvaluationDate)
+import QuantLib.Context(setEvaluationDate)
 import QuantLib.TermStructure.Yield
 import QuantLib.Time.Calendar
 import QuantLib.Time.Date

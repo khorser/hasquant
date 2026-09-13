@@ -8,7 +8,7 @@ module QuantLib.Spec.Instrument.Bond (spec) where
 import Test.Hspec
 import Data.List.NonEmpty(fromList)
 
-import qualified QuantLib.Settings as Settings
+import qualified QuantLib.Context as Context
 import QuantLib.Time.Date
 import QuantLib.Time.Calendar
 import QuantLib.Time.Schedule
@@ -28,12 +28,12 @@ spec = describe "Bond (BTP, Rendistato)" $ do
 btpSpec :: Spec
 btpSpec = describe "BTP" $ do
   it "matches a hand-built FixedRateBond using btp.cpp's own hardcoded conventions, except accruedAmount's ClosestRounding(5)" $
-    Settings.keepingSettingsGc $ do
+    Context.keepingSettingsGc $ do
       let maturity = 1 `september` 2030
           start = 1 `september` 2020
           fixedRate = 0.03
           settle = 15 `march` 2025
-      Settings.setEvaluationDate (Just start)
+      Context.setEvaluationDate (Just start)
       target <- calendar TARGET
       nullCal <- calendar Null
       isma <- dayCounter ActualActualISMA
@@ -72,9 +72,9 @@ btpSpec = describe "BTP" $ do
 rendistatoSpec :: Spec
 rendistatoSpec = describe "RendistatoBasket / RendistatoCalculator" $
   it "aggregates a basket of BTPs against a flat EUR curve" $
-    Settings.keepingSettingsGc $ do
+    Context.keepingSettingsGc $ do
       let today' = 1 `september` 2024
-      Settings.setEvaluationDate (Just today')
+      Context.setEvaluationDate (Just today')
       dc <- dayCounter Actual365FixedStandard
       q <- simpleQuote 0.03
       curve <- flatForward (ReferenceDate today') q dc Continuous NoFrequency

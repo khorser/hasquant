@@ -13,7 +13,7 @@ import QuantLib.Instrument.Bond
 import QuantLib.Model
 import QuantLib.Quote
 import QuantLib.PricingEngine
-import QuantLib.Settings
+import QuantLib.Context
 import QuantLib.TermStructure.Yield
 import QuantLib.Time.Calendar
 import QuantLib.Time.Date

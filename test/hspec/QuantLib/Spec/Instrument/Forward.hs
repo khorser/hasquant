@@ -8,7 +8,7 @@ module QuantLib.Spec.Instrument.Forward (spec) where
 
 import Test.Hspec
 
-import qualified QuantLib.Settings as Settings
+import qualified QuantLib.Context as Context
 import QuantLib.Time.Date
 import QuantLib.Time.Calendar
 import QuantLib.Time.Schedule
@@ -28,9 +28,9 @@ spec :: Spec
 spec = do
   describe "ForwardRateAgreement" $
     it "amount matches upstream's closed form: notional*sign*(F-K)*T/(1+F*T)" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         let today' = 23 `may` 2006
-        Settings.setEvaluationDate (Just today')
+        Context.setEvaluationDate (Just today')
         q <- simpleQuote 0.035
         dc <- dayCounter (Actual360 False)
         ts <- flatForward (ReferenceDate today') q dc Continuous Annual
@@ -51,9 +51,9 @@ spec = do
 
   describe "FxForward" $
     it "fxForwardRate equals targetNominal/sourceNominal for the nominal-based constructor" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         let today' = 23 `may` 2006
-        Settings.setEvaluationDate (Just today')
+        Context.setEvaluationDate (Just today')
         usd <- currency USD
         eur <- currency EUR
         cal <- calendar TARGET

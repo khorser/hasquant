@@ -34,7 +34,7 @@ import qualified Data.Vector.Storable as V
 import Data.Time.Calendar(addDays)
 import Data.List.NonEmpty(fromList)
 
-import qualified QuantLib.Settings as Settings
+import qualified QuantLib.Context as Context
 import QuantLib.Time.Date(today, addPeriod, september)
 import QuantLib.Time.Schedule(dayCounter, yearFraction, DayCounterConstructor(..), Frequency(..), TimeUnit(..))
 import QuantLib.InterestRate(Compounding(..), VolatilityType(..), rate)
@@ -86,9 +86,9 @@ spec = do
     -- vol-of-vol Heston process (sigma=1e-4) should reproduce the flat-vol Black price almost
     -- exactly.
     it "reproduces the Black price at near-zero vol-of-vol" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         evalDate <- today
-        Settings.setEvaluationDate (Just evalDate)
+        Context.setEvaluationDate (Just evalDate)
         dc <- dayCounter ActualActualISDA
         let strike = 30.0
             spot = 32.0
@@ -118,9 +118,9 @@ spec = do
         calculated `shouldSatisfy` closePrec expected 2.0e-7
 
     it "pdf(x, v, t) decays away from the peak near (log forward, v0)" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         evalDate <- today
-        Settings.setEvaluationDate (Just evalDate)
+        Context.setEvaluationDate (Just evalDate)
         dc <- dayCounter ActualActualISDA
         let spot = 100.0
             r = 0.03
@@ -158,9 +158,9 @@ spec = do
     -- vol-of-vol setup as the Heston case above, plus a near-zero jump intensity/size so the
     -- Bates (Heston-plus-jumps) price should likewise reproduce the flat-vol Black price.
     it "reproduces the Black price at near-zero vol-of-vol and jump intensity" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         evalDate <- today
-        Settings.setEvaluationDate (Just evalDate)
+        Context.setEvaluationDate (Just evalDate)
         dc <- dayCounter ActualActualISDA
         let strike = 30.0
             spot = 32.0
@@ -191,9 +191,9 @@ spec = do
     -- upstream's own cached analytic and Monte Carlo values, at upstream's own tolerance.
     mapM_ (\(strike, analyticExpected, mcExpected) ->
       it ("matches upstream's cached analytic/MC values at strike=" ++ show strike) $
-        Settings.keepingSettingsGc $ do
+        Context.keepingSettingsGc $ do
           evalDate <- today
-          Settings.setEvaluationDate (Just evalDate)
+          Context.setEvaluationDate (Just evalDate)
           dc <- dayCounter ActualActualISDA
           rTS <- simpleQuote 0.05 >>= \rQ -> flatForward (ReferenceDate evalDate) rQ dc Continuous Annual
           qTS <- simpleQuote 0.0 >>= \qQ -> flatForward (ReferenceDate evalDate) qQ dc Continuous Annual
@@ -229,14 +229,14 @@ spec = do
     -- coupons are enabled; hasquant does not expose that global IborCoupon setting, so use the
     -- portable branch's tolerance for the shared cached value.
     it "reproduces libormarketmodel.cpp's cached cap NPV" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         let fixtureDate = 4 `september` 2005
             curveEndDate = 4 `september` 2018
             size = 10 :: Word
             capletVols = [0.1440, 0.1715, 0.1681, 0.1664, 0.1617, 0.1578, 0.1540, 0.1521, 0.1486]
         cal <- calendar TARGET
         evalDate <- adjust cal fixtureDate Following
-        Settings.setEvaluationDate (Just evalDate)
+        Context.setEvaluationDate (Just evalDate)
         dc <- dayCounter (Actual360 False)
         emptyIndex <- iborIndex Euribor6M Nothing
         firstPillar <- advance cal evalDate (fromIntegral (Ibor.fixingDays emptyIndex), Days) Following False
@@ -275,13 +275,13 @@ spec = do
     -- the factors themselves. Also covers 'setCovarParam', without which the process holds no
     -- covariance parameterization and drift/diffusion/factors dereference a null pointer.
     it "discountBond is the running product of its accrual-period discount factors" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         let fixtureDate = 4 `september` 2005
             curveEndDate = 4 `september` 2018
             size = 10 :: Word
         cal <- calendar TARGET
         evalDate <- adjust cal fixtureDate Following
-        Settings.setEvaluationDate (Just evalDate)
+        Context.setEvaluationDate (Just evalDate)
         dc <- dayCounter (Actual360 False)
         emptyIndex <- iborIndex Euribor6M Nothing
         firstPillar <- advance cal evalDate (fromIntegral (Ibor.fixingDays emptyIndex), Days) Following False
@@ -314,9 +314,9 @@ spec = do
     -- just the curve's forward rate at t -- so bumping a flat rate by 300bp must raise phi by
     -- the same 300bp.
     it "phi(t) tracks a term-structure bump one-for-one" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         evalDate <- today
-        Settings.setEvaluationDate (Just evalDate)
+        Context.setEvaluationDate (Just evalDate)
         dc <- dayCounter Actual365FixedStandard
         rateQ <- simpleQuote 0.02
         curve <- flatForward (ReferenceDate evalDate) rateQ dc Continuous Annual
@@ -331,9 +331,9 @@ spec = do
     -- z1, z2) is just z1+z2 regardless of the curve (or its absence -- unlike phi, which throws
     -- with no term structure).
     it "shortRate sums the simulated components, with or without a curve" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         evalDate <- today
-        Settings.setEvaluationDate (Just evalDate)
+        Context.setEvaluationDate (Just evalDate)
         dc <- dayCounter Actual365FixedStandard
         rateQ <- simpleQuote 0.035
         curve <- flatForward (ReferenceDate evalDate) rateQ dc Continuous Annual
@@ -350,9 +350,9 @@ spec = do
     -- CLAUDE.md on DiscreteHedging for the same reduction, and its tolerance scaled up by the
     -- resulting ~1/sqrt(n) increase in MC standard error).
     it "MC path mean of r(t) converges to phi(t)" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         evalDate <- today
-        Settings.setEvaluationDate (Just evalDate)
+        Context.setEvaluationDate (Just evalDate)
         dc <- dayCounter Actual365FixedStandard
         rateQ <- simpleQuote 0.03
         curve <- flatForward (ReferenceDate evalDate) rateQ dc Continuous Annual
@@ -375,9 +375,9 @@ spec = do
     -- correctly to a bump, as the first case above checks), shortRate(t, z1, z2) is just z1+z2,
     -- and initialValues sums to phi(0).
     it "phi(t) matches the closed-form G2 fitting-parameter formula" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         evalDate <- today
-        Settings.setEvaluationDate (Just evalDate)
+        Context.setEvaluationDate (Just evalDate)
         dc <- dayCounter Actual365FixedStandard
         let a = 0.1; sigma = 0.01; b = 0.2; eta = 0.013; rho = -0.5
         rateQ <- simpleQuote 0.03
@@ -401,9 +401,9 @@ spec = do
     -- must match G2's own short-rate dynamics fitting parameter -- dyn->shortRate(t, 0, 0)
     -- collapses to fitting_(t), i.e. phi(t), since shortRate(t, x, y) = fitting_(t) + x + y.
     it "phi matches the G2 model's own short-rate dynamics at x=y=0" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         evalDate <- today
-        Settings.setEvaluationDate (Just evalDate)
+        Context.setEvaluationDate (Just evalDate)
         dc <- dayCounter Actual365FixedStandard
         let a = 0.12; sigma = 0.011; b = 0.17; eta = 0.009; rho = -0.3
         rateQ <- simpleQuote 0.025
@@ -433,9 +433,9 @@ spec = do
     -- from the curveless case by exactly a*phi(t) + phi'(t) (a numerical derivative, matching
     -- G2Process's own implementation), the same shift 'phi' reports.
     it "drift/diffusion pick up the term-structure shift only in the x-component" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         evalDate <- today
-        Settings.setEvaluationDate (Just evalDate)
+        Context.setEvaluationDate (Just evalDate)
         dc <- dayCounter Actual365FixedStandard
         let a = 0.1; sigma = 0.01; b = 0.2; eta = 0.013; rho = -0.5
         rateQ <- simpleQuote 0.04
@@ -462,9 +462,9 @@ spec = do
     -- starting from the process's own initial state, E[z1(t)+z2(t)] must equal phi(t) --
     -- z2(0) is zero and y is a zero-mean OU factor, so the whole expected shift lands on phi.
     it "expectation from the initial state reproduces phi(t)" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         evalDate <- today
-        Settings.setEvaluationDate (Just evalDate)
+        Context.setEvaluationDate (Just evalDate)
         dc <- dayCounter Actual365FixedStandard
         rateQ <- simpleQuote 0.035
         curve <- flatForward (ReferenceDate evalDate) rateQ dc Continuous Annual
@@ -483,9 +483,9 @@ spec = do
     -- zeroes both corrections, which makes the difference against any other T exactly the two
     -- closed forms from g2process.cpp.
     it "setForwardMeasureTime drives drift's measure correction" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         evalDate <- today
-        Settings.setEvaluationDate (Just evalDate)
+        Context.setEvaluationDate (Just evalDate)
         dc <- dayCounter Actual365FixedStandard
         let a = 0.1; sigma = 0.01; b = 0.2; eta = 0.013; rho = -0.5
             t = 1.5; bigT = 12.0; z = [0.003, -0.001]
@@ -511,9 +511,9 @@ spec = do
     -- covariance = stdDeviation stdDeviation^T, apply is plain addition in this state space,
     -- and evolve with a zero draw is the expectation.
     it "stdDeviation/covariance/apply/evolve agree with each other" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         evalDate <- today
-        Settings.setEvaluationDate (Just evalDate)
+        Context.setEvaluationDate (Just evalDate)
         dc <- dayCounter Actual365FixedStandard
         rateQ <- simpleQuote 0.03
         curve <- flatForward (ReferenceDate evalDate) rateQ dc Continuous Annual
@@ -631,9 +631,9 @@ spec = do
     -- reads them back off the forward process via a()/sigma(), which aren't bound here -- but
     -- the fixture already knows the values it constructed the process with).
     it "MC and analytic engines agree once the short-rate leg is decorrelated" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         evalDate <- today
-        Settings.setEvaluationDate (Just evalDate)
+        Context.setEvaluationDate (Just evalDate)
         dc <- dayCounter (Actual360 False)
         cal <- calendar TARGET
         let yrs = [0 .. 40 :: Int]
@@ -675,9 +675,9 @@ spec = do
     -- exact identity, not an approximation, so it pins both the formula and the fact that only
     -- the third state component is read.
     it "numeraire equals the Hull-White discount bond over the curve's own P(0,T)" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         evalDate <- today
-        Settings.setEvaluationDate (Just evalDate)
+        Context.setEvaluationDate (Just evalDate)
         dc <- dayCounter (Actual360 False)
         let a = 0.05; sigma = 0.01
         rateQ <- simpleQuote 0.04
@@ -702,9 +702,9 @@ spec = do
     -- P(0, T, 0) = P(0, T) and the numeraire collapses to 1 -- the sanity check that the
     -- division by the curve's end discount is the right way round.
     it "numeraire is 1 at time 0 in the initial state" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         evalDate <- today
-        Settings.setEvaluationDate (Just evalDate)
+        Context.setEvaluationDate (Just evalDate)
         dc <- dayCounter (Actual360 False)
         rateQ <- simpleQuote 0.03
         rTS <- flatForward (ReferenceDate evalDate) rateQ dc Continuous Annual
@@ -721,9 +721,9 @@ spec = do
     -- P(t,T) = A(t,T) exp(-B(t,T) r_t); both have closed forms independent of the process's
     -- own implementation (alpha's second term is the curve's instantaneous forward rate).
     it "alpha and B match their closed forms" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         evalDate <- today
-        Settings.setEvaluationDate (Just evalDate)
+        Context.setEvaluationDate (Just evalDate)
         dc <- dayCounter Actual365FixedStandard
         let a = 0.07; sigma = 0.012
         rateQ <- simpleQuote 0.035
@@ -752,9 +752,9 @@ spec = do
     -- x0 e^{-a dt} + alpha(t0+dt) - alpha(t0) e^{-a dt} - M_T(t0, t0+dt, T), which ties the
     -- three getters together without re-deriving M_T's closed form here.
     it "M_T vanishes over a zero-length step and is nonzero over a real one" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         evalDate <- today
-        Settings.setEvaluationDate (Just evalDate)
+        Context.setEvaluationDate (Just evalDate)
         dc <- dayCounter Actual365FixedStandard
         rateQ <- simpleQuote 0.03
         rTS <- flatForward (ReferenceDate evalDate) rateQ dc Continuous Annual

@@ -14,7 +14,7 @@ import Data.List.NonEmpty(NonEmpty, fromList)
 import qualified Data.Vector.Storable as V
 
 import QuantLib.Time.Date
-import qualified QuantLib.Settings as Settings
+import qualified QuantLib.Context as Context
 import QuantLib.Time.Calendar as Calendar
 import QuantLib.Time.Schedule hiding(dates)
 import qualified QuantLib.InterestRate as IR
@@ -67,7 +67,7 @@ spec = do
             cal <- calendar TARGET
             d <- today
             today' <- adjust cal d Following
-            Settings.setEvaluationDate (Just today')
+            Context.setEvaluationDate (Just today')
             settlement <- advance cal today' (fromIntegral settlementDays, Days) Following False
             actual360dc <- dayCounter (Actual360 False)
             deposits <- mapM
@@ -87,17 +87,17 @@ spec = do
 
             ts <- piecewiseYieldCurve (ReferenceDate settlement) (fromList (deposits ++ swaps)) actual360dc [] (Iterative Discount LogLinear defaultIterativeBootstrapOpts) False
             return (cal, settlementDays, ts)
-      it "referenceChange" $ Settings.keepingSettingsGc $ do
+      it "referenceChange" $ Context.keepingSettingsGc $ do
         let ds = [10, 30, 60, 120, 360, 720]
         (_calendar, settlementDays, _ts) <- setup
         flatRate <- Quote.simpleQuote 0.03
         cal <- calendar Null
         actual360dc <- dayCounter (Actual360 False)
         ts <- flatForward (SettlementDays settlementDays cal) flatRate actual360dc IR.Continuous Annual
-        td <- Settings.evaluationDate
+        td <- Context.evaluationDate
 
         expected <- mapM (\d -> discount ts (DatePoint (addDays d td)) False) ds
-        Settings.setEvaluationDate (Just $ addDays 30 td)
+        Context.setEvaluationDate (Just $ addDays 30 td)
         calculated <- mapM (\d -> discount ts (DatePoint (addDays (30+d) td)) False) ds
 
         mapM_ (\(x1, x2) -> x1 `shouldSatisfy` areClose x2) (zip expected calculated)
@@ -144,9 +144,9 @@ spec = do
         forwardAct360 `shouldSatisfy` closePrec (expected * 360 / 365) tolerance
 
       it "implied" $
-        Settings.keepingSettingsGc $ do
+        Context.keepingSettingsGc $ do
           (cal, settlementDays, ts) <- setup
-          td <- Settings.evaluationDate
+          td <- Context.evaluationDate
           let newToday = addGregorianYearsClip 3 td
           newSettlement <- advance cal newToday (fromIntegral settlementDays, Days) Following False
           let testDate = addGregorianYearsClip 5 newSettlement
@@ -158,7 +158,7 @@ spec = do
           (dsc - baseDiscount * impliedDiscount) `shouldSatisfy` (<= 1.0e-10)
 
       it "fwd spreaded" $
-        Settings.keepingSettingsGc $ do
+        Context.keepingSettingsGc $ do
           (_calendar, _settlementDays, ts) <- setup
           me <- Quote.simpleQuote 0.01
           val <- Quote.value me
@@ -171,7 +171,7 @@ spec = do
 
           (forward - (spreadedForward - val)) `shouldSatisfy` (<= 1.0e-10)
       it "z-spreaded" $
-        Settings.keepingSettingsGc $ do
+        Context.keepingSettingsGc $ do
           (_calendar, _settlementDays, ts) <- setup
           q <- Quote.simpleQuote 0.01
           val <- Quote.value q
@@ -185,10 +185,10 @@ spec = do
           (zero - (spreadedZero - val)) `shouldSatisfy` (<= 1.0e-10)
 
       it "composite zero yield" $
-        Settings.keepingSettingsGc $ do
+        Context.keepingSettingsGc $ do
           let refDate = 11 `december` 2012
               queryDate = addGregorianYearsClip 5 refDate
-          Settings.setEvaluationDate (Just refDate)
+          Context.setEvaluationDate (Just refDate)
           dc <- dayCounter Actual365FixedStandard
           q1 <- Quote.simpleQuote 0.03
           q2 <- Quote.simpleQuote 0.01
@@ -205,7 +205,7 @@ spec = do
       -- of the (piecewise-bootstrapped) spread, the spread at any date between them equals that
       -- common value, so this reduces to the same check as 'zeroSpreadedTermStructure' above.
       it "piecewise z-spreaded" $
-        Settings.keepingSettingsGc $ do
+        Context.keepingSettingsGc $ do
           (_calendar, _settlementDays, ts) <- setup
           q <- Quote.simpleQuote 0.01
           val <- Quote.value q
@@ -227,7 +227,7 @@ spec = do
       -- below the first smoothing point (fsp) the UFR curve must exactly reproduce the base
       -- curve's own zero rate, since extrapolation only kicks in past fsp.
       it "ultimate forward: zero rate at the first smoothing point matches the base curve" $
-        Settings.keepingSettingsGc $ do
+        Context.keepingSettingsGc $ do
           (_calendar, _settlementDays, ts) <- setup
           llfr <- Quote.simpleQuote 0.0125
           ufr <- Quote.simpleQuote 0.02
@@ -246,7 +246,7 @@ spec = do
       -- formula's beta term decays to ~0, so the continuously-compounded zero rate converges to
       -- the UFR quote itself -- a property only the extrapolation branch can produce.
       it "ultimate forward: zero rate far past the first smoothing point converges to the UFR" $
-        Settings.keepingSettingsGc $ do
+        Context.keepingSettingsGc $ do
           (_calendar, _settlementDays, ts) <- setup
           llfr <- Quote.simpleQuote 0.0125
           let ufrVal = 0.02
@@ -264,7 +264,7 @@ spec = do
       -- factor is by construction the given df, so the combined curve's discount there must equal
       -- baseCurve.discount(date) * df exactly (to interpolation/numerical precision).
       it "interpolated spread discount curve applies a multiplicative spread over the base curve" $
-        Settings.keepingSettingsGc $ do
+        Context.keepingSettingsGc $ do
           (_calendar, _settlementDays, ts) <- setup
           refDate <- asTermStructure ts >>= referenceDate
           let d1 = addGregorianYearsClip 1 refDate
@@ -284,8 +284,8 @@ spec = do
     -- helper's.
     describe "rate helper underlying instruments" $
       it "each accessor returns the instrument built from the helper's own tenor" $
-        Settings.keepingSettingsGc $ do
-          Settings.setEvaluationDate (Just (2 `january` 2024))
+        Context.keepingSettingsGc $ do
+          Context.setEvaluationDate (Just (2 `january` 2024))
           cal <- calendar Null
           actual360dc <- dayCounter (Actual360 False)
           thirty360dc <- dayCounter Thirty360BondBasis
@@ -313,8 +313,8 @@ spec = do
     -- fitting method and its clone must retain shared ownership for the curve's full lifetime.
     describe "fitted bond discount curve fitting methods" $
       it "keeps a caller-supplied OptimizationMethod alive past Haskell's own GC" $
-        Settings.keepingSettingsGc $ do
-          Settings.setEvaluationDate (Just (2 `january` 2024))
+        Context.keepingSettingsGc $ do
+          Context.setEvaluationDate (Just (2 `january` 2024))
           cal <- calendar Null
           thirty360dc <- dayCounter Thirty360BondBasis
           helpers <- mapM
@@ -347,8 +347,8 @@ spec = do
     -- solver), not something specific to FX swaps.
     describe "fx swap rate helper" $
       it "bootstrapped curve reprices the helper's own forward points" $
-        Settings.keepingSettingsGc $ do
-          Settings.setEvaluationDate (Just (2 `january` 2024))
+        Context.keepingSettingsGc $ do
+          Context.setEvaluationDate (Just (2 `january` 2024))
           cal <- calendar TARGET
           tradingCal <- calendar Null
           actual360dc <- dayCounter (Actual360 False)
@@ -376,9 +376,9 @@ spec = do
     -- impliedQuote() reproduces the quote each helper was built from once the curve is solved.
     describe "multiple resets swap rate helper" $
       it "bootstrapped curve reprices each helper's own fixed rate" $
-        Settings.keepingSettingsGc $ do
+        Context.keepingSettingsGc $ do
           let today' = 15 `january` 2024
-          Settings.setEvaluationDate (Just today')
+          Context.setEvaluationDate (Just today')
           cal <- calendar TARGET
           actual360dc <- dayCounter (Actual360 False)
           ccy <- currency EUR
@@ -406,8 +406,8 @@ spec = do
     -- but paired with a discriminating check that can actually fail on a wiring mistake.
     describe "overnight index future rate helper" $ do
       it "bootstrapped curve reprices the helper's own futures price" $
-        Settings.keepingSettingsGc $ do
-          Settings.setEvaluationDate (Just (2 `january` 2024))
+        Context.keepingSettingsGc $ do
+          Context.setEvaluationDate (Just (2 `january` 2024))
           cal <- calendar TARGET
           actual360dc <- dayCounter (Actual360 False)
           ois <- overnightIborIndex Sofr Nothing
@@ -422,8 +422,8 @@ spec = do
           implied `shouldSatisfy` closePrec priceVal 1.0e-6
 
       it "convexityAdjustment echoes the quote it was built with, and defaults to 0" $
-        Settings.keepingSettingsGc $ do
-          Settings.setEvaluationDate (Just (2 `january` 2024))
+        Context.keepingSettingsGc $ do
+          Context.setEvaluationDate (Just (2 `january` 2024))
           cal <- calendar TARGET
           ois <- overnightIborIndex Sofr Nothing
           let valueDate = 2 `january` 2024
@@ -440,8 +440,8 @@ spec = do
 
     describe "futures rate helper" $
       it "convexityAdjustment echoes the quote it was built with, and defaults to 0" $
-        Settings.keepingSettingsGc $ do
-          Settings.setEvaluationDate (Just (2 `january` 2024))
+        Context.keepingSettingsGc $ do
+          Context.setEvaluationDate (Just (2 `january` 2024))
           cal <- calendar TARGET
           actual360dc <- dayCounter (Actual360 False)
           immDate' <- nextImmDate (2 `january` 2024) True
@@ -457,8 +457,8 @@ spec = do
 
     describe "futures rate helper terms" $ do
       it "FuturesFromIndex agrees with the equivalent explicit FuturesMonths" $
-        Settings.keepingSettingsGc $ do
-          Settings.setEvaluationDate (Just (2 `january` 2024))
+        Context.keepingSettingsGc $ do
+          Context.setEvaluationDate (Just (2 `january` 2024))
           cal <- calendar TARGET
           ccy <- currency EUR
           actual360dc <- dayCounter (Actual360 False)
@@ -475,8 +475,8 @@ spec = do
           fromIndex `shouldSatisfy` closePrec explicit 1.0e-12
 
       it "FuturesBetweenDates spans the same period as the equivalent FuturesMonths" $
-        Settings.keepingSettingsGc $ do
-          Settings.setEvaluationDate (Just (2 `january` 2024))
+        Context.keepingSettingsGc $ do
+          Context.setEvaluationDate (Just (2 `january` 2024))
           cal <- calendar TARGET
           actual360dc <- dayCounter (Actual360 False)
           immDate' <- nextImmDate (2 `january` 2024) True
@@ -495,8 +495,8 @@ spec = do
       -- against it, so an IMM date is rejected as an ASX date. Before the shim was widened
       -- this branch hardcoded IMM and could not fail here.
       it "FuturesFromIndex honours the futures type" $
-        Settings.keepingSettingsGc $ do
-          Settings.setEvaluationDate (Just (2 `january` 2024))
+        Context.keepingSettingsGc $ do
+          Context.setEvaluationDate (Just (2 `january` 2024))
           cal <- calendar TARGET
           ccy <- currency EUR
           actual360dc <- dayCounter (Actual360 False)
@@ -509,8 +509,8 @@ spec = do
 
     describe "FRA rate helper terms" $ do
       it "FraPeriod agrees with the equivalent FraMonths" $
-        Settings.keepingSettingsGc $ do
-          Settings.setEvaluationDate (Just (2 `january` 2024))
+        Context.keepingSettingsGc $ do
+          Context.setEvaluationDate (Just (2 `january` 2024))
           cal <- calendar TARGET
           actual360dc <- dayCounter (Actual360 False)
           q <- Quote.simpleQuote 0.03
@@ -528,8 +528,8 @@ spec = do
       -- same conventions as the explicit terms below -- a failure here is a convention
       -- mismatch, not necessarily a dispatch bug.
       it "the FromIndex variants agree with the equivalent explicit terms" $
-        Settings.keepingSettingsGc $ do
-          Settings.setEvaluationDate (Just (2 `january` 2024))
+        Context.keepingSettingsGc $ do
+          Context.setEvaluationDate (Just (2 `january` 2024))
           cal <- calendar TARGET
           ccy <- currency EUR
           actual360dc <- dayCounter (Actual360 False)
@@ -548,8 +548,8 @@ spec = do
 
     describe "sofr future rate helper" $ do
       it "bootstrapped curve reprices the helper's own futures price" $
-        Settings.keepingSettingsGc $ do
-          Settings.setEvaluationDate (Just (2 `january` 2024))
+        Context.keepingSettingsGc $ do
+          Context.setEvaluationDate (Just (2 `january` 2024))
           actual360dc <- dayCounter (Actual360 False)
           let settlement = 2 `january` 2024
           price <- Quote.simpleQuote 95.0
@@ -568,8 +568,8 @@ spec = do
       -- base-class delegation: a wrong Month/Frequency/averaging wiring makes the two curves
       -- disagree even though each one's own impliedQuote() self-check (above) still passes.
       it "agrees with an explicitly-dated overnight index future rate helper" $
-        Settings.keepingSettingsGc $ do
-          Settings.setEvaluationDate (Just (2 `january` 2024))
+        Context.keepingSettingsGc $ do
+          Context.setEvaluationDate (Just (2 `january` 2024))
           actual360dc <- dayCounter (Actual360 False)
           ois <- overnightIborIndex Sofr Nothing
           let settlement = 2 `january` 2024
@@ -620,16 +620,16 @@ spec = do
             pure (sw, discountH, forecastH)
 
       it "a relinkable handle is accepted wherever a curve is" $
-        Settings.keepingSettingsGc $ do
-          Settings.setEvaluationDate (Just (11 `december` 2012))
+        Context.keepingSettingsGc $ do
+          Context.setEvaluationDate (Just (11 `december` 2012))
           -- no sibling function, no wrapper: it upcasts like any hierarchy member
           (sw, _, _) <- setupSwap
           v <- npv sw
           v `shouldSatisfy` (not . isNaN)
 
       it "relinking the discount curve reprices without rebuilding" $
-        Settings.keepingSettingsGc $ do
-          Settings.setEvaluationDate (Just (11 `december` 2012))
+        Context.keepingSettingsGc $ do
+          Context.setEvaluationDate (Just (11 `december` 2012))
           (sw, discountH, _) <- setupSwap
           npvBefore <- npv sw
           flat 0.05 >>= linkTo discountH
@@ -637,8 +637,8 @@ spec = do
           abs (npvAfter - npvBefore) `shouldSatisfy` (> 1.0)
 
       it "relinking back restores the original value exactly" $
-        Settings.keepingSettingsGc $ do
-          Settings.setEvaluationDate (Just (11 `december` 2012))
+        Context.keepingSettingsGc $ do
+          Context.setEvaluationDate (Just (11 `december` 2012))
           (sw, discountH, _) <- setupSwap
           npvBefore <- npv sw
           flat 0.05 >>= linkTo discountH
@@ -648,8 +648,8 @@ spec = do
           npv sw `shouldReturn` npvBefore
 
       it "relinking the forecast curve reprices without rebuilding" $
-        Settings.keepingSettingsGc $ do
-          Settings.setEvaluationDate (Just (11 `december` 2012))
+        Context.keepingSettingsGc $ do
+          Context.setEvaluationDate (Just (11 `december` 2012))
           -- the case with no workaround today: an IborIndex is cloned into every floating
           -- coupon at construction, so without a handle this needs the swap rebuilt
           (sw, _, forecastH) <- setupSwap
@@ -663,8 +663,8 @@ spec = do
       -- relinked, because Quote.relinkableQuote/linkTo share one Link exactly like the curve
       -- case above.
       it "relinking a quote reprices the curve built on it, without rebuilding" $
-        Settings.keepingSettingsGc $ do
-          Settings.setEvaluationDate (Just (11 `december` 2012))
+        Context.keepingSettingsGc $ do
+          Context.setEvaluationDate (Just (11 `december` 2012))
           q02 <- Quote.simpleQuote 0.02
           qh <- Quote.relinkableQuote (Just q02)
           dc <- dayCounter Actual365FixedStandard
@@ -675,8 +675,8 @@ spec = do
           abs (npvAfter - npvBefore) `shouldSatisfy` (> 0.01)
 
       it "relinking a quote back restores the original value exactly" $
-        Settings.keepingSettingsGc $ do
-          Settings.setEvaluationDate (Just (11 `december` 2012))
+        Context.keepingSettingsGc $ do
+          Context.setEvaluationDate (Just (11 `december` 2012))
           q02 <- Quote.simpleQuote 0.02
           qh <- Quote.relinkableQuote (Just q02)
           dc <- dayCounter Actual365FixedStandard
@@ -708,8 +708,8 @@ spec = do
             pure (opt, volH)
 
       it "relinking a Black vol surface reprices the option, without rebuilding the engine" $
-        Settings.keepingSettingsGc $ do
-          Settings.setEvaluationDate (Just (11 `december` 2012))
+        Context.keepingSettingsGc $ do
+          Context.setEvaluationDate (Just (11 `december` 2012))
           (opt, volH) <- mkOption
           npvBefore <- npv opt
           cal <- Calendar.calendar TARGET
@@ -738,8 +738,8 @@ spec = do
             pure (swpn, volH)
 
       it "relinking a swaption vol surface reprices the swaption, without rebuilding the engine" $
-        Settings.keepingSettingsGc $ do
-          Settings.setEvaluationDate (Just (11 `december` 2012))
+        Context.keepingSettingsGc $ do
+          Context.setEvaluationDate (Just (11 `december` 2012))
           (swpn, volH) <- mkSwaption
           npvBefore <- npv swpn
           cal <- Calendar.calendar TARGET
@@ -772,8 +772,8 @@ spec = do
             pure (capfl, volH)
 
       it "relinking an optionlet vol surface reprices the cap, without rebuilding the engine" $
-        Settings.keepingSettingsGc $ do
-          Settings.setEvaluationDate (Just (11 `december` 2012))
+        Context.keepingSettingsGc $ do
+          Context.setEvaluationDate (Just (11 `december` 2012))
           (capfl, volH) <- mkCap
           npvBefore <- npv capfl
           cal <- Calendar.calendar TARGET
@@ -792,8 +792,8 @@ spec = do
       -- exactly on the surface's own grid nodes through the stripped vol must reprice the same
       -- cap priced directly off a constant-vol surface at that flat vol.
       it "stripping a flat cap vol surface reprices a cap struck on its own grid" $
-        Settings.keepingSettingsGc $ do
-          Settings.setEvaluationDate (Just (11 `december` 2012))
+        Context.keepingSettingsGc $ do
+          Context.setEvaluationDate (Just (11 `december` 2012))
           (_, discountH, forecastH) <- setupSwap
           cal <- Calendar.calendar TARGET
           settle <- advance cal (11 `december` 2012) (2, Days) Following False
@@ -831,8 +831,8 @@ spec = do
       -- CapFloorTermVolSurface), plus the calendar/day-counter-derived optionDates/optionTimes
       -- getters on the two LazyObject leaves.
       it "queries a flat cap/floor vol surface, curve and constant structure at their own grid" $
-        Settings.keepingSettingsGc $ do
-          Settings.setEvaluationDate (Just (11 `december` 2012))
+        Context.keepingSettingsGc $ do
+          Context.setEvaluationDate (Just (11 `december` 2012))
           cal <- Calendar.calendar TARGET
           dc <- dayCounter Actual365FixedStandard
           let tenors = [(n, Years) | n <- [1 .. 10]]
@@ -871,9 +871,9 @@ spec = do
       -- and the constant leaf's own maxBondTenor/minStrike/maxStrike (100 years,
       -- QL_MIN_REAL/QL_MAX_REAL per callablebondconstantvol.hpp) come through unmarshalled.
       it "queries a constant callable-bond volatility structure across all overloads" $
-        Settings.keepingSettingsGc $ do
+        Context.keepingSettingsGc $ do
           let evalDate = 11 `december` 2012
-          Settings.setEvaluationDate (Just evalDate)
+          Context.setEvaluationDate (Just evalDate)
           cal <- Calendar.calendar TARGET
           dc <- dayCounter Actual365FixedStandard
           cbVolQ <- Quote.simpleQuote 0.12
@@ -915,8 +915,8 @@ spec = do
       -- structure's engine gives matching NPVs -- a real self-consistency check, not a hand-derived
       -- golden value.
       it "OptionletStripper2 reprices a cap the same as OptionletStripper1 on flat term vol inputs" $
-        Settings.keepingSettingsGc $ do
-          Settings.setEvaluationDate (Just (11 `december` 2012))
+        Context.keepingSettingsGc $ do
+          Context.setEvaluationDate (Just (11 `december` 2012))
           (_, discountH, forecastH) <- setupSwap
           cal <- Calendar.calendar TARGET
           settle <- advance cal (11 `december` 2012) (2, Days) Following False
@@ -964,8 +964,8 @@ spec = do
       -- construction-plus-getters smoke test: with flat input quotes the fit should stay close to
       -- flat and converge with a small rms error.
       it "constructs an AbcdAtmVolCurve and queries its fit diagnostics" $
-        Settings.keepingSettingsGc $ do
-          Settings.setEvaluationDate (Just (11 `december` 2012))
+        Context.keepingSettingsGc $ do
+          Context.setEvaluationDate (Just (11 `december` 2012))
           cal <- Calendar.calendar TARGET
           dc <- dayCounter Actual365FixedStandard
           let tenors = [(n, Years) | n <- [1 .. 10]]
@@ -1007,8 +1007,8 @@ spec = do
       -- that interpolation is the identity, so with flat spread quotes the surface must echo the
       -- input value back exactly. Real self-consistency check, not a hand-derived value.
       it "constructs a SabrVolSurface anchored to an AbcdAtmVolCurve and echoes its vol spreads at a grid tenor" $
-        Settings.keepingSettingsGc $ do
-          Settings.setEvaluationDate (Just (11 `december` 2012))
+        Context.keepingSettingsGc $ do
+          Context.setEvaluationDate (Just (11 `december` 2012))
           cal <- Calendar.calendar TARGET
           dc <- dayCounter Actual365FixedStandard
           (_, _, forecastH) <- setupSwap
@@ -1043,8 +1043,8 @@ spec = do
       -- No cached NPV to match against: upstream's Bachelier tests check deltas via finite
       -- differences, not NPVs (see swaption.cpp/capfloor.cpp).
       it "Bachelier swaption engine prices differently from the Black engine on the same swaption" $
-        Settings.keepingSettingsGc $ do
-          Settings.setEvaluationDate (Just (11 `december` 2012))
+        Context.keepingSettingsGc $ do
+          Context.setEvaluationDate (Just (11 `december` 2012))
           (sw, discountH, _) <- setupSwap
           cal <- Calendar.calendar TARGET
           dc <- dayCounter Actual365FixedStandard
@@ -1069,8 +1069,8 @@ spec = do
           abs (npvBachelier - npvBlack) `shouldSatisfy` (> 0.5)
 
       it "Bachelier cap/floor engine prices differently from the Black engine on the same cap" $
-        Settings.keepingSettingsGc $ do
-          Settings.setEvaluationDate (Just (11 `december` 2012))
+        Context.keepingSettingsGc $ do
+          Context.setEvaluationDate (Just (11 `december` 2012))
           (_, discountH, forecastH) <- setupSwap
           cal <- Calendar.calendar TARGET
           settle <- advance cal (11 `december` 2012) (2, Days) Following False
@@ -1107,8 +1107,8 @@ spec = do
       -- same relink-propagation property as the curve/quote/vol-surface cases above, just
       -- surfaced through the model instead of an instrument.
       it "relinking the curve updates HullWhite's discount bond without rebuilding the model" $
-        Settings.keepingSettingsGc $ do
-          Settings.setEvaluationDate (Just (11 `december` 2012))
+        Context.keepingSettingsGc $ do
+          Context.setEvaluationDate (Just (11 `december` 2012))
           c <- flat 0.02
           th <- relinkableYieldTermStructure (Just c)
           model <- hullWhite th 0.1 0.01
@@ -1119,8 +1119,8 @@ spec = do
           abs (after - before) `shouldSatisfy` (> 0.01)
 
       it "relinking the curve updates ExtendedCoxIngersollRoss's discount bond without rebuilding the model" $
-        Settings.keepingSettingsGc $ do
-          Settings.setEvaluationDate (Just (11 `december` 2012))
+        Context.keepingSettingsGc $ do
+          Context.setEvaluationDate (Just (11 `december` 2012))
           c <- flat 0.02
           th <- relinkableYieldTermStructure (Just c)
           model <- extendedCoxIngersollRoss th 0.02 1.0 1e-4 0.02 True
@@ -1138,7 +1138,7 @@ spec = do
       let curveToday = 23 `october` 2025
           tolerance = 1.0e-6 :: Double
           setupMultiCurve = do
-            Settings.setEvaluationDate (Just curveToday)
+            Context.setEvaluationDate (Just curveToday)
             cal <- Calendar.calendar TARGET
             euriborDC <- dayCounter (Actual360 False)
             thirty360 <- dayCounter Thirty360BondBasis
@@ -1171,7 +1171,7 @@ spec = do
             pure (cal, settleFix, euriborDC, thirty360, euribor3m, euribor6m, q, b, discountCurve, curve3m, curve6m)
 
       it "FRA-implied forward rates match the input quote once the 3m/6m curves are bootstrapped together" $
-        Settings.keepingSettingsGc $ do
+        Context.keepingSettingsGc $ do
           (cal, settleFix, _, _, euribor3m, _, q, _, _, curve3m, _) <- setupMultiCurve
           qVal <- Quote.value q
           mapM_ (\i -> do
@@ -1188,7 +1188,7 @@ spec = do
             ) ([1 .. 9] :: [Int])
 
       it "3m/6m ibor-ibor basis swaps built from the bootstrapped curves reprice to zero" $
-        Settings.keepingSettingsGc $ do
+        Context.keepingSettingsGc $ do
           (cal, settleFix, euriborDC, _, euribor3m, euribor6m, _, b, discountCurve, _, _) <- setupMultiCurve
           bVal <- Quote.value b
           eng <- discountingSwapEngine discountCurve Nothing Nothing Nothing
@@ -1206,7 +1206,7 @@ spec = do
           mapM_ (\i -> checkBasisSwap (i * 6, Months)) ([1 .. 3] :: [Int])
 
       it "a makeVanillaSwap-built 6m swap on the bootstrapped curves reprices to zero" $
-        Settings.keepingSettingsGc $ do
+        Context.keepingSettingsGc $ do
           (_, _, _, thirty360, _, euribor6m, q, _, discountCurve, _, _) <- setupMultiCurve
           qVal <- Quote.value q
           eng <- discountingSwapEngine discountCurve Nothing Nothing Nothing
@@ -1226,7 +1226,7 @@ spec = do
       -- terms of the other, resolved the same way as the two-curve cycle above via
       -- 'addBootstrappedCurve'\/'addNonBootstrappedCurve'.
       let setupSpreadedMultiCurve = do
-            Settings.setEvaluationDate (Just curveToday)
+            Context.setEvaluationDate (Just curveToday)
             cal <- Calendar.calendar TARGET
             euriborDC <- dayCounter (Actual360 False)
             thirty360 <- dayCounter Thirty360BondBasis
@@ -1249,7 +1249,7 @@ spec = do
             pure (thirty360, euribor3m, q, b, curveois, curve3m)
 
       it "a fixed spread over a bootstrapped curve reprices to that spread" $
-        Settings.keepingSettingsGc $ do
+        Context.keepingSettingsGc $ do
           (_, _, _, b, curveois, curve3m) <- setupSpreadedMultiCurve
           bVal <- Quote.value b
           zOis <- IR.rate <$> zeroRate curveois (RateAtTime 1.0) IR.Continuous NoFrequency False
@@ -1257,7 +1257,7 @@ spec = do
           (zOis - z3m) `shouldSatisfy` closePrec bVal tolerance
 
       it "swaps priced on the spreaded curve, discounted through the cycle, reprice to zero" $
-        Settings.keepingSettingsGc $ do
+        Context.keepingSettingsGc $ do
           (thirty360, euribor3m, q, _, curveois, _) <- setupSpreadedMultiCurve
           qVal <- Quote.value q
           eng <- discountingSwapEngine curveois Nothing Nothing Nothing
@@ -1276,8 +1276,8 @@ spec = do
       -- construction, is not ported: that overload needs GlobalBootstrap's functor-callback
       -- constructors, which are not bound (see README's # TODO).
       it "instrumentWeights shifts an overdetermined fit toward the more heavily weighted quote" $
-        Settings.keepingSettingsGc $ do
-          Settings.setEvaluationDate (Just curveToday)
+        Context.keepingSettingsGc $ do
+          Context.setEvaluationDate (Just curveToday)
           cal <- Calendar.calendar TARGET
           euriborDC <- dayCounter (Actual360 False)
           -- two deposits over the same period at different rates: with no unique fit, the
@@ -1317,8 +1317,8 @@ spec = do
       -- solved pillar values genuinely disagreed -- not a test bug, but the wrong instrument
       -- choice for isolating "same pillars" from "same interpolation".
       it "SimpleZeroYield GlobalBootstrap curve reprices to the same pillar discount factors as Discount" $
-        Settings.keepingSettingsGc $ do
-          Settings.setEvaluationDate (Just curveToday)
+        Context.keepingSettingsGc $ do
+          Context.setEvaluationDate (Just curveToday)
           cal <- Calendar.calendar TARGET
           euriborDC <- dayCounter (Actual360 False)
           q <- Quote.simpleQuote 0.03
@@ -1339,8 +1339,8 @@ spec = do
       -- SimpleZeroYield is a valid IterativeBootstrap trait. Compare its pillar discounts with
       -- Discount to pin the dispatch arm independently of GlobalBootstrap.
       it "SimpleZeroYield reprices to the same pillar discount factors as Discount under IterativeBootstrap" $
-        Settings.keepingSettingsGc $ do
-          Settings.setEvaluationDate (Just curveToday)
+        Context.keepingSettingsGc $ do
+          Context.setEvaluationDate (Just curveToday)
           cal <- Calendar.calendar TARGET
           euriborDC <- dayCounter (Actual360 False)
           q <- Quote.simpleQuote 0.03
@@ -1376,8 +1376,8 @@ spec = do
       -- and satisfied without breaking the primary instruments' own fit (each deposit still
       -- reprices to its own input quote via the standard simple-compounding relation).
       it "GlobalBootstrapFull reprices its own instruments correctly with additionalHelpers/additionalDates present" $
-        Settings.keepingSettingsGc $ do
-          Settings.setEvaluationDate (Just curveToday)
+        Context.keepingSettingsGc $ do
+          Context.setEvaluationDate (Just curveToday)
           cal <- Calendar.calendar TARGET
           euriborDC <- dayCounter (Actual360 False)
           settleFix <- advance cal curveToday (2, Days) Following False
@@ -1419,8 +1419,8 @@ spec = do
       -- ConvexMonotone -- see the QL_FAIL for that combination in qlTermStructureAux.cpp, and
       -- upstream's own testLocalBootstrapConsistency, which likewise only exercises ForwardRate.
       it "LocalBootstrap reprices its own instruments correctly" $
-        Settings.keepingSettingsGc $ do
-          Settings.setEvaluationDate (Just curveToday)
+        Context.keepingSettingsGc $ do
+          Context.setEvaluationDate (Just curveToday)
           cal <- Calendar.calendar TARGET
           euriborDC <- dayCounter (Actual360 False)
           settleFix <- advance cal curveToday (2, Days) Following False
@@ -1439,8 +1439,8 @@ spec = do
       -- piecewiseYieldCurve unifies both anchors and every bootstrapper behind ADTs.
       -- Exercise every constructor and check that each curve reprices its own instruments.
       it "piecewiseYieldCurve dispatches every Bootstrap constructor to a curve that reprices its own instruments" $
-        Settings.keepingSettingsGc $ do
-          Settings.setEvaluationDate (Just curveToday)
+        Context.keepingSettingsGc $ do
+          Context.setEvaluationDate (Just curveToday)
           cal <- Calendar.calendar TARGET
           euriborDC <- dayCounter (Actual360 False)
           settleFix <- advance cal curveToday (2, Days) Following False
@@ -1471,8 +1471,8 @@ spec = do
       -- reprices-its-own-instruments property as the SimpleZeroYield GlobalBootstrap test above,
       -- through the common piecewiseYieldCurve dispatcher.
       it "ForwardRate/ZeroYield GlobalBootstrap curves reprice to the same pillar discount factors as Discount" $
-        Settings.keepingSettingsGc $ do
-          Settings.setEvaluationDate (Just curveToday)
+        Context.keepingSettingsGc $ do
+          Context.setEvaluationDate (Just curveToday)
           cal <- Calendar.calendar TARGET
           euriborDC <- dayCounter (Actual360 False)
           settleFix <- advance cal curveToday (2, Days) Following False
@@ -1502,13 +1502,13 @@ spec = do
     -- variance there.
     describe "BlackVolTermStructure blackVol/blackVolVariance/blackForwardVol/blackForwardVariance/minStrike/maxStrike" $
       it "agree between DatePoint/TimePoint and DateInterval/TimeInterval coordinates, and expose generic strike bounds" $
-        Settings.keepingSettingsGc $ do
+        Context.keepingSettingsGc $ do
           let refDate = 11 `december` 2012
               d1 = 11 `june` 2013
               d2 = 11 `december` 2013
               strike = 100
               tolerance = 1.0e-6 :: Double
-          Settings.setEvaluationDate (Just refDate)
+          Context.setEvaluationDate (Just refDate)
           cal <- Calendar.calendar TARGET
           q <- Quote.simpleQuote 0.20
           dc <- dayCounter Actual365FixedStandard
@@ -1543,14 +1543,14 @@ spec = do
 
     describe "piecewise Black variance surface" $
       it "reproduces the input vol exactly at a grid node" $
-        Settings.keepingSettingsGc $ do
+        Context.keepingSettingsGc $ do
           let refDate = 11 `december` 2012
               otherDate = 11 `june` 2013
               nodeDate = 11 `december` 2013
               nodeStrike = 100
               nodeVol = 0.22
               tolerance = 1.0e-6 :: Double
-          Settings.setEvaluationDate (Just refDate)
+          Context.setEvaluationDate (Just refDate)
           underQ <- Quote.simpleQuote 100
           riskFreeQ <- Quote.simpleQuote 0.03
           dc <- dayCounter Actual365FixedStandard
@@ -1583,11 +1583,11 @@ spec = do
     -- the generic BlackVolTermStructure.
     describe "black volatility surface delta" $
       it "reproduces upstream's cached smile volatilities" $
-        Settings.keepingSettingsGc $ do
+        Context.keepingSettingsGc $ do
           let refDate = 1 `january` 2010
               atmStrike = 1.18
               tolerance = 1.0e-8 :: Double
-          Settings.setEvaluationDate (Just refDate)
+          Context.setEvaluationDate (Just refDate)
           d1M <- addPeriod refDate (1, Months)
           d6M <- addPeriod refDate (6, Months)
           d1Y <- addPeriod refDate (1, Years)
@@ -1635,10 +1635,10 @@ spec = do
     -- equal result there would mean SmileInterpolationMethod's mapping had gone stale.
     describe "black volatility surface delta (SmileInterpolationMethod)" $
       it "CubicSpline disagrees with SmileLinear at an off-grid strike" $
-        Settings.keepingSettingsGc $ do
+        Context.keepingSettingsGc $ do
           let refDate = 1 `january` 2010
               offGridStrike = 1.15
-          Settings.setEvaluationDate (Just refDate)
+          Context.setEvaluationDate (Just refDate)
           d1M <- addPeriod refDate (1, Months)
           d6M <- addPeriod refDate (6, Months)
           d1Y <- addPeriod refDate (1, Years)
@@ -1675,7 +1675,7 @@ spec = do
     -- where the two diverge. Same shape of guard as the SmileInterpolationMethod check above.
     describe "FixedLocalVolSurface extrapolation" $
       it "ConstantExtrapolation and InterpolatorDefaultExtrapolation disagree off-grid" $
-        Settings.keepingSettingsGc $ do
+        Context.keepingSettingsGc $ do
           let refDate = 15 `january` 2024
               queryDate = 15 `july` 2025
               offGridStrike = 200
@@ -1728,13 +1728,13 @@ spec = do
     -- closed-form check (not a numerical-tolerance one).
     describe "SviSmileSection" $
       it "atmLevel is the forward, and variance at k=m collapses to a + b*sigma" $
-        Settings.keepingSettingsGc $ do
+        Context.keepingSettingsGc $ do
           let today' = 1 `march` 2010
               expiry = addDays 11 today'
               forward = 123.45
               a = -0.0666; b = 0.229; sigma = 0.337; rho = 0.439; m = 0.193
               strike = forward * exp m
-          Settings.setEvaluationDate (Just today')
+          Context.setEvaluationDate (Just today')
           dc <- dayCounter Actual365FixedStandard
           svi <- Vol.sviSmileSection expiry forward a b sigma rho m dc
           Vol.smileSectionAtmLevel svi `shouldReturn` forward
@@ -1753,8 +1753,8 @@ spec = do
           refDate = 11 `december` 2012
 
       it "dispatches every option- and swap-maturity representation" $
-        Settings.keepingSettingsGc $ do
-          Settings.setEvaluationDate (Just refDate)
+        Context.keepingSettingsGc $ do
+          Context.setEvaluationDate (Just refDate)
           cal <- Calendar.calendar TARGET
           dc <- dayCounter Actual365FixedStandard
           volQ <- Quote.simpleQuote 0.20
@@ -1779,8 +1779,8 @@ spec = do
             smileVol `shouldSatisfy` closePrec 0.20 1.0e-12
 
       it "a constant grid agrees with constantSwaptionVolatility at the same point" $
-        Settings.keepingSettingsGc $ do
-          Settings.setEvaluationDate (Just refDate)
+        Context.keepingSettingsGc $ do
+          Context.setEvaluationDate (Just refDate)
           cal <- Calendar.calendar TARGET
           dc <- dayCounter Actual365FixedStandard
           let v = 0.20
@@ -1797,8 +1797,8 @@ spec = do
           abs (fromGrid - fromFlat) `shouldSatisfy` (< 1.0e-6 * max 1 (abs fromFlat))
 
       it "recovers each cell's input volatility exactly at its own grid node" $
-        Settings.keepingSettingsGc $ do
-          Settings.setEvaluationDate (Just refDate)
+        Context.keepingSettingsGc $ do
+          Context.setEvaluationDate (Just refDate)
           cal <- Calendar.calendar TARGET
           dc <- dayCounter Actual365FixedStandard
           -- rows are option tenors, columns are swap tenors, matching SwaptionVolatilityMatrix's
@@ -1840,7 +1840,7 @@ spec = do
           refDate = 11 `december` 2012
           flatVol = 0.20
           mkFixture = do
-            Settings.setEvaluationDate (Just refDate)
+            Context.setEvaluationDate (Just refDate)
             cal <- Calendar.calendar TARGET
             dc <- dayCounter Actual365FixedStandard
             fwdRateQ <- Quote.simpleQuote 0.03
@@ -1856,7 +1856,7 @@ spec = do
             pure (cal, dc, atmVol, swapIndexBase, shortSwapIndexBase, volSpreads, parametersGuess)
 
       it "sabrSwaptionVolatilityCube reprices close to its own flat ATM input at zero spread" $
-        Settings.keepingSettingsGc $ do
+        Context.keepingSettingsGc $ do
           (_, _, atmVol, swapIndexBase, shortSwapIndexBase, volSpreads, parametersGuess) <- mkFixture
           cube <- Vol.sabrSwaptionVolatilityCube atmVol optionTenors swapTenors strikeSpreads volSpreads
                     swapIndexBase shortSwapIndexBase False parametersGuess
@@ -1869,7 +1869,7 @@ spec = do
           abs (v - flatVol) `shouldSatisfy` (< 1.0e-2)
 
       it "sabrSwaptionVolatilityCube's diagnostic getters report plausible, correctly-shaped output" $
-        Settings.keepingSettingsGc $ do
+        Context.keepingSettingsGc $ do
           (_, _, atmVol, swapIndexBase, shortSwapIndexBase, volSpreads, parametersGuess) <- mkFixture
           cube <- Vol.sabrSwaptionVolatilityCube atmVol optionTenors swapTenors strikeSpreads volSpreads
                     swapIndexBase shortSwapIndexBase False parametersGuess
@@ -1910,7 +1910,7 @@ spec = do
           mapM_ (`shouldSatisfy` (\r -> r >= -1 && r <= 1)) (byRow [5])
 
       it "atmStrike returns a finite, plausible rate for a SABR cube" $
-        Settings.keepingSettingsGc $ do
+        Context.keepingSettingsGc $ do
           (_, _, atmVol, swapIndexBase, shortSwapIndexBase, volSpreads, parametersGuess) <- mkFixture
           cube <- Vol.sabrSwaptionVolatilityCube atmVol optionTenors swapTenors strikeSpreads volSpreads
                     swapIndexBase shortSwapIndexBase False parametersGuess
@@ -1925,7 +1925,7 @@ spec = do
       -- Drop Haskell's EndCriteria and OptimizationMethod references before collection. The cube
       -- must retain shared ownership of both calibration objects.
       it "keeps a caller-supplied EndCriteria/OptimizationMethod alive past Haskell's own GC" $
-        Settings.keepingSettingsGc $ do
+        Context.keepingSettingsGc $ do
           (_, _, atmVol, swapIndexBase, shortSwapIndexBase, volSpreads, parametersGuess) <- mkFixture
           cube <- do
             let endCriteria = EndCriteria 1000 100 1.0e-8 1.0e-8 1.0e-8
@@ -1943,7 +1943,7 @@ spec = do
       -- NoArbSabrModel's admissible domain (sigmaI = alpha*forward^(beta-1) ~= 0.17, within
       -- [0.05,1.00]; beta within [0.01,0.99]; nu within [0.01,0.80]; rho within [-0.99,0.99]).
       it "noArbSabrSwaptionVolatilityCube reprices close to its own flat ATM input at zero spread" $
-        Settings.keepingSettingsGc $ do
+        Context.keepingSettingsGc $ do
           (_, _, atmVol, swapIndexBase, shortSwapIndexBase, volSpreads, parametersGuess) <- mkFixture
           cube <- Vol.noArbSabrSwaptionVolatilityCube atmVol optionTenors swapTenors strikeSpreads volSpreads
                     swapIndexBase shortSwapIndexBase False parametersGuess
@@ -1955,7 +1955,7 @@ spec = do
           abs (v - flatVol) `shouldSatisfy` (< 1.0e-2)
 
       it "atmStrike returns a finite, plausible rate for a no-arbitrage SABR cube" $
-        Settings.keepingSettingsGc $ do
+        Context.keepingSettingsGc $ do
           (_, _, atmVol, swapIndexBase, shortSwapIndexBase, volSpreads, parametersGuess) <- mkFixture
           cube <- Vol.noArbSabrSwaptionVolatilityCube atmVol optionTenors swapTenors strikeSpreads volSpreads
                     swapIndexBase shortSwapIndexBase False parametersGuess
@@ -1966,7 +1966,7 @@ spec = do
           kAtDate `shouldSatisfy` (\x -> x > -0.05 && x < 0.20)
 
       it "interpolatedSwaptionVolatilityCube reprices close to its own flat ATM input at zero spread" $
-        Settings.keepingSettingsGc $ do
+        Context.keepingSettingsGc $ do
           (_, _, atmVol, swapIndexBase, shortSwapIndexBase, volSpreads, _) <- mkFixture
           cube <- Vol.interpolatedSwaptionVolatilityCube atmVol optionTenors swapTenors strikeSpreads volSpreads
                     swapIndexBase shortSwapIndexBase False
@@ -1978,7 +1978,7 @@ spec = do
           kAtDate `shouldSatisfy` (\x -> x > -0.05 && x < 0.20)
 
       it "interpolatedSwaptionVolatilityCubeVolSpreads reports the zero spreads the cube was built with" $
-        Settings.keepingSettingsGc $ do
+        Context.keepingSettingsGc $ do
           (_, _, atmVol, swapIndexBase, shortSwapIndexBase, volSpreads, _) <- mkFixture
           cube <- Vol.interpolatedSwaptionVolatilityCube atmVol optionTenors swapTenors strikeSpreads volSpreads
                     swapIndexBase shortSwapIndexBase False
@@ -1996,9 +1996,9 @@ spec = do
     -- self-consistency check against the model's own inputs.
     describe "FD Heston engines" $
       it "fdHestonVanillaEngine agrees with analyticHestonEngine on the same Heston model" $
-        Settings.keepingSettingsGc $ do
+        Context.keepingSettingsGc $ do
           let refDate = 28 `march` 2004
-          Settings.setEvaluationDate (Just refDate)
+          Context.setEvaluationDate (Just refDate)
           dc <- dayCounter Actual365FixedStandard
           rQ <- Quote.simpleQuote 0.025
           rTS <- flatForward (ReferenceDate refDate) rQ dc IR.Continuous Annual
@@ -2018,9 +2018,9 @@ spec = do
 
     describe "equity-model volatility surfaces" $ do
       it "HestonBlackVolSurface reproduces a Heston European price through Black-Scholes" $
-        Settings.keepingSettingsGc $ do
+        Context.keepingSettingsGc $ do
           let refDate = 28 `march` 2004
-          Settings.setEvaluationDate (Just refDate)
+          Context.setEvaluationDate (Just refDate)
           dc <- dayCounter Actual365FixedStandard
           rQ <- Quote.simpleQuote 0.025
           rTS <- flatForward (ReferenceDate refDate) rQ dc IR.Continuous Annual
@@ -2041,7 +2041,7 @@ spec = do
           blackPrice `shouldSatisfy` closePrec hestonPrice (1.0e-6 * abs hestonPrice)
 
       it "GridModelLocalVolSurface marshals strike rows and exposes CalibratedModel" $
-        Settings.keepingSettingsGc $ do
+        Context.keepingSettingsGc $ do
           let refDate = 1 `march` 2010
           dc <- dayCounter Actual365FixedStandard
           d1 <- addPeriod refDate (90, Days)
@@ -2053,13 +2053,13 @@ spec = do
           params model `shouldReturn` replicate 6 1.0
 
       it "Andreasen-Huge calibrates option-vol quotes and constructs both adapters" $
-        Settings.keepingSettingsGc $ do
+        Context.keepingSettingsGc $ do
           let refDate = 1 `march` 2010
               optSpec strike typ = do
                 expiry <- addPeriod refDate (365, Days)
                 vanillaOption (PlainVanilla (PlainVanillaPayoff typ strike))
                   (European (EuropeanExercise expiry))
-          Settings.setEvaluationDate (Just refDate)
+          Context.setEvaluationDate (Just refDate)
           dc <- dayCounter Actual365FixedStandard
           zero <- Quote.simpleQuote 0.0
           rTS <- flatForward (ReferenceDate refDate) zero dc IR.Continuous Annual
@@ -2096,7 +2096,7 @@ spec = do
       -- upstream's cached calibration-error bounds -- tighter and non-arbitrary,
       -- unlike the ad-hoc "< 0.05" spot-check above.
       it "Andreasen-Huge Put calibration reproduces upstream's cached errors" $
-        Settings.keepingSettingsGc $ do
+        Context.keepingSettingsGc $ do
           let today' = 1 `march` 2010
               spotVal = 2772.7
               maturityTimes :: [Double]
@@ -2134,7 +2134,7 @@ spec = do
                 , (1.3927, [0,0,0,0,0,0,0,0,0.1930,0.2002,0.2054,0.2135])
                 , (1.4660, [0,0,0,0,0,0,0,0,0.1849,0.1964,0.2012,0])
                 ]
-          Settings.setEvaluationDate (Just today')
+          Context.setEvaluationDate (Just today')
           dc <- dayCounter Actual365FixedStandard
           zero <- Quote.simpleQuote 0.0
           rTS <- flatForward (ReferenceDate today') zero dc IR.Continuous Annual
@@ -2174,8 +2174,8 @@ spec = do
     -- compiler-checked exhaustive `case` (QuantLib.Instrument.convertResult).
     describe "Instrument additionalResults" $ do
       it "Bjerksund-Stensland engine reports exerciseType/strikeGamma" $
-        Settings.keepingSettingsGc $ do
-          Settings.setEvaluationDate (Just (17 `may` 1998))
+        Context.keepingSettingsGc $ do
+          Context.setEvaluationDate (Just (17 `may` 1998))
           -- A zero-dividend American call is never optimally exercised early, so the engine
           -- prices it as "European" -- a put (or a call with dividends) is what actually takes
           -- the "American" branch upstream (bjerksundstenslandengine.cpp).
@@ -2200,8 +2200,8 @@ spec = do
             other -> expectationFailure $ "strikeGamma missing or wrong type: " ++ show other
 
       it "Black cap/floor engine reports optionletsPrice as a RealVectorVal" $
-        Settings.keepingSettingsGc $ do
-          Settings.setEvaluationDate (Just (11 `december` 2012))
+        Context.keepingSettingsGc $ do
+          Context.setEvaluationDate (Just (11 `december` 2012))
           cal <- Calendar.calendar TARGET
           settle <- advance cal (11 `december` 2012) (2, Days) Following False
           discQ <- Quote.simpleQuote 0.02

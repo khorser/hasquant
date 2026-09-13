@@ -5,7 +5,7 @@ import Control.Monad(forM_)
 import Test.Hspec
 
 import QuantLib.Quote
-import qualified QuantLib.Settings as Settings
+import qualified QuantLib.Context as Context
 import QuantLib.Time.Calendar(calendar, CalendarConstructor(TARGET), advance, BusinessDayConvention(Following))
 import QuantLib.Time.Schedule(dayCounter, DayCounterConstructor(ActualActualISDA), Frequency(Annual), TimeUnit(Years))
 import qualified QuantLib.InterestRate as IR
@@ -161,7 +161,7 @@ spec = do
       stdev <- value q
       repriced <- blackFormula Call strike forwardRate stdev 1.0 0.0
       repriced `shouldSatisfy` closePrec price 1.0e-8
-      Settings.collectGarbage
+      Context.collectGarbage
 
     it "re-solves after the price quote moves" $ do
       forwardQuote <- simpleQuote forwardRate
@@ -173,7 +173,7 @@ spec = do
       stdev1 `shouldNotSatisfy` closePrec stdev0 1.0e-6
       repriced <- blackFormula Call strike forwardRate stdev1 1.0 0.0
       repriced `shouldSatisfy` closePrec 0.011 1.0e-8
-      Settings.collectGarbage
+      Context.collectGarbage
 
   -- The Eurodollar variant of the same idea: the stdev is solved from a call and a put price at
   -- the same strike, so both must reprice.
@@ -191,13 +191,13 @@ spec = do
       -- Eurodollar future quotes 100 minus the rate, so a call on the rate is a put on the price.
       callPrice <- blackFormula Call (1 - strike) (1 - forwardRate) stdev 1.0 0.0
       callPrice `shouldSatisfy` (> 0)
-      Settings.collectGarbage
+      Context.collectGarbage
 
   -- quotes.cpp:testForwardValueQuoteAndImpliedStdevQuote's first half. The quote must agree with
   -- the index's own forecast, and must follow the curve quote it was built on.
   describe "ForwardValueQuote" $
     it "agrees with the index's own fixing, and tracks the curve quote" $ do
-      today <- Settings.evaluationDate
+      today <- Context.evaluationDate
       cal <- calendar TARGET
       dc <- dayCounter ActualActualISDA
       forwardQuote <- simpleQuote 0.05
@@ -213,11 +213,11 @@ spec = do
       v' <- value q
       v' `shouldSatisfy` closePrec expected' 1.0e-15
       v' `shouldNotSatisfy` closePrec v 1.0e-9
-      Settings.collectGarbage
+      Context.collectGarbage
 
   describe "FuturesConvAdjustmentQuote" $
     it "futuresValue reports the futures quote's own value, independent of volatility/meanReversion" $ do
-      today <- Settings.evaluationDate
+      today <- Context.evaluationDate
       cal <- calendar TARGET
       idx <- iborIndex Euribor1Y Nothing
       futuresDate <- advance cal today (1, Years) Following False

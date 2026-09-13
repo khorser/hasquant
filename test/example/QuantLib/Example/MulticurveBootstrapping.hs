@@ -41,7 +41,7 @@ import qualified QuantLib.TermStructure.Yield as TS
 import QuantLib.Time.Calendar
 import QuantLib.Time.Date
 import QuantLib.Time.Schedule
-import QuantLib.Settings(setEvaluationDate)
+import QuantLib.Context(setEvaluationDate)
 
 data SwapResult = SwapResult { swapNpv :: Double
                              , swapFairSpread :: Double

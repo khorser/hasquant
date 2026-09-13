@@ -13,7 +13,7 @@ import QuantLib.Instrument.Option(BermudanExercise(..), EuropeanExercise(..))
 import QuantLib.Instrument.Swap
 import QuantLib.PricingEngine
 import QuantLib.Quote(simpleQuote)
-import QuantLib.Settings
+import QuantLib.Context
 import QuantLib.TermStructure.Credit
 import QuantLib.TermStructure.Yield
 import QuantLib.Time.Calendar

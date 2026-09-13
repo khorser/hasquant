@@ -34,7 +34,7 @@ import QuantLib.Model(lfmHullWhiteParameterization, setCovarParam)
 import QuantLib.Process(liborForwardModelProcess, fixingDates
  , fixingTimes, accrualTimes
  , discountBond, factors)
-import qualified QuantLib.Settings as Settings
+import qualified QuantLib.Context as Context
 import QuantLib.TermStructure.Yield(interpolatedZeroCurve)
 import qualified QuantLib.TermStructure.Volatility as Vol(capletVarianceCurve)
 import QuantLib.Time.Calendar(adjust, advance, calendar, BusinessDayConvention(..), CalendarConstructor(..))
@@ -47,13 +47,13 @@ data Result = Result
   } deriving Show
 
 run :: IO Result
-run = Settings.keepingSettingsGc $ do
+run = Context.keepingSettingsGc $ do
   let fixtureDate = 4 `september` 2005
       curveEndDate = 4 `september` 2018
       len = 10 :: Word
   cal <- calendar TARGET
   evalDate <- adjust cal fixtureDate Following
-  Settings.setEvaluationDate (Just evalDate)
+  Context.setEvaluationDate (Just evalDate)
   dc <- dayCounter (Actual360 False)
   emptyIndex <- iborIndex Euribor1Y Nothing
   firstPillar <- advance cal evalDate (fromIntegral (Ibor.fixingDays emptyIndex), Days) Following False

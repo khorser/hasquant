@@ -14,7 +14,7 @@ import QuantLib.Instrument.Forward
 import qualified QuantLib.InterestRate as IR
 import QuantLib.PricingEngine(discountingBondEngine)
 import QuantLib.Quote(setValue, simpleQuote, SimpleQuote)
-import QuantLib.Settings(collectGarbage, setEvaluationDate)
+import QuantLib.Context(collectGarbage, setEvaluationDate)
 import QuantLib.TermStructure.Yield
 import QuantLib.Time.Calendar
 import QuantLib.Time.Date

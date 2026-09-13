@@ -12,7 +12,7 @@
 import Control.Monad
 import QuantLib.Math(Interpolation(..))
 import QuantLib.Quote(simpleQuote)
-import QuantLib.Settings(setEvaluationDate)
+import QuantLib.Context(setEvaluationDate)
 import QuantLib.TermStructure.Yield
 import QuantLib.Time.Calendar
 import QuantLib.Time.Date

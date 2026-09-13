@@ -17,7 +17,7 @@ import Data.List.NonEmpty(fromList)
 
 import QuantLib.Math (Interpolation(..))
 import qualified QuantLib.Quote as Quote
-import QuantLib.Settings (setEvaluationDate)
+import QuantLib.Context (setEvaluationDate)
 import QuantLib.TermStructure.Yield
 import QuantLib.Time.Calendar
 import QuantLib.Time.Date
@@ -44,7 +44,7 @@ buildCurve opts = do
 -- well as the discount call: which of the two a failing bootstrap surfaces from is
 -- QuantLib's business, not something this check should pin.
 --
--- Caught as SomeException, deliberately, not as QuantLib.Error.Error: a smoke script is
+-- Caught as SomeException, deliberately, not as QuantLib.Context.Error: a smoke script is
 -- compiled standalone with `-ismoke` from the repo root, so ghc compiles QuantLib/Error.hs
 -- from source rather than taking it from the installed package. The local `Error` is then a
 -- *different* type from the one the library throws, and `try` silently never matches -- the

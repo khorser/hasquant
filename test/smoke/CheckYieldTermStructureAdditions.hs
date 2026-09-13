@@ -12,7 +12,7 @@ import QuantLib.Index.InterestRate(iborIndex, IborConstructor(..))
 import qualified QuantLib.InterestRate as IR
 import QuantLib.Math(Interpolation(..))
 import qualified QuantLib.Quote as Quote
-import QuantLib.Settings(setEvaluationDate)
+import QuantLib.Context(setEvaluationDate)
 import QuantLib.TermStructure hiding(maxDate)
 import QuantLib.TermStructure.Yield
 import QuantLib.Time.Calendar

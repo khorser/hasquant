@@ -14,8 +14,8 @@ import Data.Time.Calendar
 
 import QuantLib.Time.Date
 import qualified QuantLib.Time.Date as Date
-import QuantLib.Error
-import qualified QuantLib.Settings as Settings
+import QuantLib.Context
+import qualified QuantLib.Context as Context
 import QuantLib.Time.Calendar
 import QuantLib.Time.Schedule
 import qualified QuantLib.InterestRate as IR
@@ -108,7 +108,7 @@ spec evalDate = do
             abs(r3' - expected) `shouldSatisfy` (<= 1.0e-17)
 
       it "bulk test for conversions" $ do
-        Settings.keepingSettingsGc $ mapM_ testCase cases
+        Context.keepingSettingsGc $ mapM_ testCase cases
 
       -- ActualActual(ISMA) is the case where the reference period actually matters: over an
       -- irregular period it year-fractions against [refStart, refEnd], not [d1, d2].
@@ -128,7 +128,7 @@ spec evalDate = do
     describe "cash flow leg" $ do
       let checkInclusion :: CF.Leg -> Int -> [(Int, Bool)] -> IO ()
           checkInclusion l n x = do
-            td <- Settings.evaluationDate
+            td <- Context.evaluationDate
             mapM_ (\(ds, expected) -> do
               cfs <- CF.cashFlows l Nothing (Just $ addDays (fromIntegral ds) td)
               -- `cfs` comes back from C++, so its length is not statically known;
@@ -141,12 +141,12 @@ spec evalDate = do
 
           checkNPV :: CF.Leg -> IR.InterestRate -> Bool -> Double -> IO ()
           checkNPV l r includeRef expected = do
-            td <- Settings.evaluationDate
+            td <- Context.evaluationDate
             v <- CF.npv l (CF.DiscountingYield r) includeRef (Just td) (Just td)
             abs(v - expected) `shouldSatisfy` (<= 1.0e-6)
 
       it "misc variants of settings" $
-        Settings.keepingSettingsGc $ do
+        Context.keepingSettingsGc $ do
           let cases12 l = do
                 checkInclusion l 0 [(0, False), (1, False)]
                 checkInclusion l 1 [(0, True), (1, False), (2, False)]
@@ -157,37 +157,37 @@ spec evalDate = do
                 checkInclusion l 1 [(0, True), (1, True), (2, False)]
                 checkInclusion l 2 [(1, True), (2, True), (3, False)]
           td <- today
-          Settings.setEvaluationDate (Just td)
+          Context.setEvaluationDate (Just td)
           l <- CF.leg $ map (, 1.0) [td .. addDays 2 td]
 
-          Settings.setIncludeReferenceDateEvents False
-          Settings.setIncludeTodaysCashFlows Nothing
+          Context.setIncludeReferenceDateEvents False
+          Context.setIncludeTodaysCashFlows Nothing
           cases12 l
 
           -- 2)
-          Settings.setIncludeReferenceDateEvents False
-          Settings.setIncludeTodaysCashFlows (Just False)
+          Context.setIncludeReferenceDateEvents False
+          Context.setIncludeTodaysCashFlows (Just False)
           cases12 l
           -- 3)
-          Settings.setIncludeReferenceDateEvents True
-          Settings.setIncludeTodaysCashFlows Nothing
+          Context.setIncludeReferenceDateEvents True
+          Context.setIncludeTodaysCashFlows Nothing
           cases34 l
 
           -- 4)
-          Settings.setIncludeReferenceDateEvents True
-          Settings.setIncludeTodaysCashFlows $ Just True
+          Context.setIncludeReferenceDateEvents True
+          Context.setIncludeTodaysCashFlows $ Just True
           cases34 l
 
           -- 5)
-          Settings.setIncludeReferenceDateEvents True
-          Settings.setIncludeTodaysCashFlows $ Just False
+          Context.setIncludeReferenceDateEvents True
+          Context.setIncludeTodaysCashFlows $ Just False
           checkInclusion l 0 [(0, False), (1, False)]
           checkInclusion l 1 [(0, True), (1, True), (2, False)]
           checkInclusion l 2 [(1, True), (2, True), (3, False)]
 
           -- 5)
-          Settings.setIncludeReferenceDateEvents True
-          Settings.setIncludeTodaysCashFlows $ Just False
+          Context.setIncludeReferenceDateEvents True
+          Context.setIncludeTodaysCashFlows $ Just False
           checkInclusion l 0 [(0, False), (1, False)]
           checkInclusion l 1 [(0, True), (1, True), (2, False)]
           checkInclusion l 2 [(1, True), (2, True), (3, False)]
@@ -195,16 +195,16 @@ spec evalDate = do
           dc <- dayCounter Actual365FixedStandard
           noDisc <- IR.interestRate 0.0 dc IR.Continuous Annual
 
-          Settings.setIncludeTodaysCashFlows Nothing
+          Context.setIncludeTodaysCashFlows Nothing
           checkNPV l noDisc False 2.0
           checkNPV l noDisc True 3.0
 
-          Settings.setIncludeTodaysCashFlows $ Just False
+          Context.setIncludeTodaysCashFlows $ Just False
           checkNPV l noDisc False 2.0
           checkNPV l noDisc True 2.0
 
       it "fixed rate leg as of default settlement date" $ do
-        td <- Settings.evaluationDate
+        td <- Context.evaluationDate
         cal <- calendar TARGET
         sch <- schedule (Just $ addGregorianMonthsClip (-2) td) (addGregorianMonthsClip 4 td) (6, Months) cal Unadjusted Unadjusted Backward False Nothing Nothing
         dc <- dayCounter (Actual360 False)
@@ -232,19 +232,19 @@ spec evalDate = do
         (CF.leg [(evalDate, 100), (addDays (-10) evalDate, 1000), (addDays 10 evalDate, -2000)] >>= CF.startDate) `shouldReturn` addDays (-10) evalDate
 
       it "builds a mixed custom leg from simple, indexed, and coupon cash flows" $
-        Settings.keepingSettingsGc $ do
+        Context.keepingSettingsGc $ do
           let baseDate = 7 `april` 2010
               fixingDate' = 8 `april` 2010
               paymentDate = 7 `april` 2011
               accrualEnd = addDays 180 paymentDate
-          Settings.setEvaluationDate (Just baseDate)
+          Context.setEvaluationDate (Just baseDate)
           dc <- dayCounter (Actual360 False)
           q <- Quote.simpleQuote 0.03 >>= Quote.asQuote
           curve <- flatForward (ReferenceDate baseDate) q dc IR.Continuous Annual
           idx <- iborIndex (UsdLibor (3, Months)) (Just curve)
           addFixing idx baseDate 100.0 True
           addFixing idx fixingDate' 120.0 True
-          Settings.setEvaluationDate (Just $ addDays 1 fixingDate')
+          Context.setEvaluationDate (Just $ addDays 1 fixingDate')
           simple <- CF.simpleCashFlow 10.0 paymentDate
           indexed <- CF.indexedCashFlow 100.0 idx baseDate fixingDate' paymentDate False
           growth <- CF.indexedCashFlow 100.0 idx baseDate fixingDate' paymentDate True
@@ -272,10 +272,10 @@ spec evalDate = do
           listCloseRel id expected 1.0e-12 (map (\(_, amount, _) -> amount) received) `shouldBe` True
 
       it "constructs generic floating and Ibor coupons for a custom leg" $
-        Settings.keepingSettingsGc $ do
+        Context.keepingSettingsGc $ do
           let start = 7 `april` 2010
               end = addGregorianMonthsClip 3 start
-          Settings.setEvaluationDate (Just start)
+          Context.setEvaluationDate (Just start)
           dc <- dayCounter (Actual360 False)
           q <- Quote.simpleQuote 0.03 >>= Quote.asQuote
           curve <- flatForward (ReferenceDate start) q dc IR.Continuous Annual
@@ -287,11 +287,11 @@ spec evalDate = do
           CF.startDate customLeg `shouldReturn` start
 
       it "uses CPI, zero-inflation, and equity cash flows in a custom leg" $
-        Settings.keepingSettingsGc $ do
+        Context.keepingSettingsGc $ do
           let baseDate = 1 `january` 2010
               fixingDate' = 1 `january` 2011
               paymentDate = 1 `february` 2011
-          Settings.setEvaluationDate (Just paymentDate)
+          Context.setEvaluationDate (Just paymentDate)
           inflation <- Inflation.zeroInflationIndex Inflation.UKRPI
           addFixing inflation (1 `november` 2009) 100.0 False
           addFixing inflation baseDate 100.0 False
@@ -349,8 +349,8 @@ spec evalDate = do
               run $ (CF.leg f >>= CF.startDate) `shouldReturn` minimum ds
 
       it "FloatingRateCoupon price/convexityAdjustment and the generic FloatingRateCouponPricer accessors agree with the coupon's own rate/amount" $
-        Settings.keepingSettingsGc $ do
-          Settings.setEvaluationDate (Just $ 7 `april` 2010)
+        Context.keepingSettingsGc $ do
+          Context.setEvaluationDate (Just $ 7 `april` 2010)
           cal <- calendar TARGET
           dc <- dayCounter Actual365FixedStandard
           q <- Quote.simpleQuote 0.04875825 >>= Quote.asQuote
@@ -400,8 +400,8 @@ spec evalDate = do
           (capletRate - floorletRate) `shouldSatisfy` closePrec (rate - effStrike) 1e-8
 
       it "check for segfaulting regression with dynamic cast of coupon in Black pricer" $
-        Settings.keepingSettingsGc $ do
-          Settings.setEvaluationDate (Just $ 7 `april` 2010)
+        Context.keepingSettingsGc $ do
+          Context.setEvaluationDate (Just $ 7 `april` 2010)
           cal <- calendar TARGET
           dc <- dayCounter Actual365FixedStandard
           q <- Quote.simpleQuote 0.04875825 >>= Quote.asQuote
@@ -418,8 +418,8 @@ spec evalDate = do
           ret `shouldSatisfy` const True
 
       it "prices an Ibor coupon with a quanto Black pricer" $
-        Settings.keepingSettingsGc $ do
-          Settings.setEvaluationDate (Just $ 7 `april` 2010)
+        Context.keepingSettingsGc $ do
+          Context.setEvaluationDate (Just $ 7 `april` 2010)
           cal <- calendar TARGET
           dc <- dayCounter Actual365FixedStandard
           q <- Quote.simpleQuote 0.04875825 >>= Quote.asQuote
@@ -448,11 +448,11 @@ spec evalDate = do
     -- identity and against the leg the coupons were extracted from.
     describe "Coupon" $ do
       it "reads rate and accrued amount through the Coupon base of a fixed-rate coupon" $
-        Settings.keepingSettingsGc $ do
+        Context.keepingSettingsGc $ do
           let start = 15 `january` 2024
               mid = 15 `april` 2024
               end = 15 `july` 2024
-          Settings.setEvaluationDate (Just start)
+          Context.setEvaluationDate (Just start)
           dc <- dayCounter (Actual360 False)
           cpn <- CF.fixedRateCoupon end 1000.0 0.05 dc start end Nothing Nothing Nothing
           CF.rate cpn >>= (`shouldSatisfy` closePrec 0.05 1.0e-12)
@@ -466,9 +466,9 @@ spec evalDate = do
           CF.couponAccruedAmount cpn start `shouldReturn` 0.0
 
       it "pulls the individual coupons back out of a leg" $
-        Settings.keepingSettingsGc $ do
+        Context.keepingSettingsGc $ do
           let start = 15 `january` 2024
-          Settings.setEvaluationDate (Just start)
+          Context.setEvaluationDate (Just start)
           cal <- calendar TARGET
           dc <- dayCounter (Actual360 False)
           sch <- schedule (Just start) (15 `january` 2026) (6, Months) cal Unadjusted Unadjusted Backward False Nothing Nothing
@@ -498,7 +498,7 @@ spec evalDate = do
           digFixture = do
             cal <- calendar TARGET
             today' <- adjust cal digRefDate Following
-            Settings.setEvaluationDate (Just today')
+            Context.setEvaluationDate (Just today')
             settlement <- advance cal today' (2, Days) Following False
             euriborDc <- dayCounter (Actual360 False)
             rateQ <- Quote.simpleQuote 0.05 >>= Quote.asQuote
@@ -509,7 +509,7 @@ spec evalDate = do
           digPricer cal capletVol = do
             volQ <- Quote.simpleQuote capletVol >>= Quote.asQuote
             optDc <- dayCounter (Actual360 False)
-            today' <- Settings.evaluationDate
+            today' <- Context.evaluationDate
             vol <- constantOptionletVolatility (CalendarReferenceDate today') cal Following volQ optDc IR.ShiftedLognormal 0.0
             CF.blackIborCouponPricer vol CF.Black76 Nothing Nothing
 
@@ -531,7 +531,7 @@ spec evalDate = do
           digPriceOf disc c = (* disc) <$> CF.amount c
 
       it "deep in-the-money asset-or-nothing digital coupon reprices to its target" $
-        Settings.keepingSettingsGc $ do
+        Context.keepingSettingsGc $ do
           (cal, settlement, euriborDc, curve, idx) <- digFixture
           pricer <- digPricer cal 0.0001
           forM_ ([0 .. 9] :: [Int]) $ \k -> do
@@ -563,7 +563,7 @@ spec evalDate = do
             (putRate * digNominal * accrual * disc) `shouldSatisfy` closePrec underlyingPrice 2.5e-6
 
       it "deep out-of-the-money asset-or-nothing digital coupon reprices to its target" $
-        Settings.keepingSettingsGc $ do
+        Context.keepingSettingsGc $ do
           (cal, settlement, euriborDc, curve, idx) <- digFixture
           pricer <- digPricer cal 0.0001
           forM_ ([0 .. 9] :: [Int]) $ \k -> do
@@ -586,7 +586,7 @@ spec evalDate = do
             (putRate * digNominal * accrual * disc) `shouldSatisfy` closePrec 0.0 1e-8
 
       it "deep in-the-money cash-or-nothing digital coupon reprices to its target" $
-        Settings.keepingSettingsGc $ do
+        Context.keepingSettingsGc $ do
           (cal, settlement, euriborDc, curve, idx) <- digFixture
           pricer <- digPricer cal 0.0001
           let cashRate = 0.01
@@ -611,7 +611,7 @@ spec evalDate = do
             (putRate * digNominal * accrual * disc) `shouldSatisfy` closePrec targetOptionPrice 1e-7
 
       it "deep out-of-the-money cash-or-nothing digital coupon reprices to its target" $
-        Settings.keepingSettingsGc $ do
+        Context.keepingSettingsGc $ do
           (cal, settlement, euriborDc, curve, idx) <- digFixture
           pricer <- digPricer cal 0.0001
           let cashRate = 0.01
@@ -635,7 +635,7 @@ spec evalDate = do
             (putRate * digNominal * disc) `shouldSatisfy` closePrec 0.0 1e-10
 
       it "call/put parity holds for European digital coupons" $
-        Settings.keepingSettingsGc $ do
+        Context.keepingSettingsGc $ do
           (cal, settlement, euriborDc, curve, idx) <- digFixture
           let vols = [0.05, 0.15, 0.30] :: [Double]
               strikes = [0.01, 0.02 .. 0.07] :: [Double]
@@ -672,7 +672,7 @@ spec evalDate = do
       -- Upstream checks this ordering across long/short call/put combinations; the long-call
       -- case here is representative of the same replication-scheme guarantee.
       it "sub/central/super replication prices a digital coupon in non-decreasing order" $
-        Settings.keepingSettingsGc $ do
+        Context.keepingSettingsGc $ do
           (cal, settlement, euriborDc, curve, idx) <- digFixture
           let vols = [0.05, 0.15, 0.30] :: [Double]
               strikes = [0.01, 0.02 .. 0.07] :: [Double]
@@ -711,7 +711,7 @@ spec evalDate = do
           cfFixture = do
             cal <- calendar TARGET
             today' <- adjust cal cfRefDate ModifiedFollowing
-            Settings.setEvaluationDate (Just today')
+            Context.setEvaluationDate (Just today')
             settlement <- advance cal today' (2, Days) ModifiedFollowing False
             aa <- dayCounter ActualActualISDA
             rateQ <- Quote.simpleQuote 0.05 >>= Quote.asQuote
@@ -733,7 +733,7 @@ spec evalDate = do
             pure leg
 
       it "collared leg with strike 0/100 reprices to the vanilla floating leg (testLargeRates)" $
-        Settings.keepingSettingsGc $ do
+        Context.keepingSettingsGc $ do
           (aa, curve, idx, sch, pricer, _, settlement) <- cfFixture
           floatLeg <- cfLeg aa idx sch pricer [] []
           collaredLeg <- cfLeg aa idx sch pricer (replicate cfLength 100.0) (replicate cfLength 0.0)
@@ -749,7 +749,7 @@ spec evalDate = do
       -- holds under a positive and a negative gearing/spread, which is additional robustness
       -- beyond what's needed to exercise 'cappedFlooredCoupon'/'cappedFlooredIborCoupon'.
       it "capped/floored/collared leg decomposes into vanilla leg plus cap/floor/collar NPV (testDecomposition)" $
-        Settings.keepingSettingsGc $ do
+        Context.keepingSettingsGc $ do
           (aa, curve, idx, sch, pricer, capfloorEngine, settlement) <- cfFixture
           let capStrike = 0.10
               floorStrike = 0.05
@@ -786,7 +786,7 @@ spec evalDate = do
       -- underlying's own rate. cap/floor/effectiveCap/effectiveFloor/isCap/isFloor/isCollar are
       -- checked against the gearing=1,spread=0 closed forms (cap()=cap_, effectiveCap()=cap_-spread).
       it "cap/floor/effectiveCap/effectiveFloor/isCap/isFloor/isCollar, and cappedRate+strippedRate=plainRate" $
-        Settings.keepingSettingsGc $ do
+        Context.keepingSettingsGc $ do
           (aa, _, idx, sch, pricer, _, _) <- cfFixture
           (accrualStart:accrualEnd:_) <- dates sch
           let capStrike = 0.03
@@ -861,7 +861,7 @@ spec evalDate = do
           -- per-object), so every caller must run under 'clearAllFixingHistories'.
           oisFixture mEvalDate mCurveRate = do
             let today' = fromMaybe (23 `november` 2021) mEvalDate
-            Settings.setEvaluationDate (Just today')
+            Context.setEvaluationDate (Just today')
             curve <- case mCurveRate of
               Nothing -> pure Nothing
               Just r -> do
@@ -883,7 +883,7 @@ spec evalDate = do
               False CF.AveragingCompound 0 0 False False Nothing Nothing Nothing Nothing
 
       it "prices a coupon entirely in the past (testPastCouponRate)" $
-        bracket_ clearAllFixingHistories clearAllFixingHistories $ Settings.keepingSettingsGc $ do
+        bracket_ clearAllFixingHistories clearAllFixingHistories $ Context.keepingSettingsGc $ do
           sofr <- oisFixture Nothing Nothing
           pastCoupon <- oisMakeCoupon sofr (18 `october` 2021) (18 `november` 2021)
           rate <- CF.rate pastCoupon
@@ -892,7 +892,7 @@ spec evalDate = do
           amount `shouldSatisfy` closePrec (10000.0 * 0.000987136104 * 31.0 / 360) 1e-8
 
       it "fixingDates/indexFixings agree with the coupon's own historical fixings, for a wholly past coupon" $
-        bracket_ clearAllFixingHistories clearAllFixingHistories $ Settings.keepingSettingsGc $ do
+        bracket_ clearAllFixingHistories clearAllFixingHistories $ Context.keepingSettingsGc $ do
           sofr <- oisFixture Nothing Nothing
           pastCoupon <- oisMakeCoupon sofr (18 `october` 2021) (18 `november` 2021)
           dates' <- CF.fixingDates pastCoupon
@@ -903,8 +903,8 @@ spec evalDate = do
           fixings `shouldBe` expected
 
       it "AverageBMACoupon fixingDates/indexFixings agree with the coupon's own seeded fixings" $
-        bracket_ clearAllFixingHistories clearAllFixingHistories $ Settings.keepingSettingsGc $ do
-          Settings.setEvaluationDate (Just (1 `december` 2021))
+        bracket_ clearAllFixingHistories clearAllFixingHistories $ Context.keepingSettingsGc $ do
+          Context.setEvaluationDate (Just (1 `december` 2021))
           dc <- dayCounter (Actual360 False)
           rateQuote <- Quote.simpleQuote 0.0009 >>= Quote.asQuote
           curve <- flatForward (ReferenceDate (1 `december` 2021)) rateQuote dc IR.Continuous Annual
@@ -919,7 +919,7 @@ spec evalDate = do
           fixings `shouldSatisfy` all (closePrec 0.0009 1e-15)
 
       it "prices a past coupon with a compounded/simple spread (testPastSpreadedCouponRate)" $
-        bracket_ clearAllFixingHistories clearAllFixingHistories $ Settings.keepingSettingsGc $ do
+        bracket_ clearAllFixingHistories clearAllFixingHistories $ Context.keepingSettingsGc $ do
           sofr <- oisFixture Nothing Nothing
           dc <- dayCounter (Actual360 False)
           let mk daily = CF.overnightIndexedCoupon (18 `november` 2021) 10000.0
@@ -933,7 +933,7 @@ spec evalDate = do
           rate `shouldSatisfy` closePrec 0.0010871361040194164 1e-12
 
       it "prices a coupon partly in the past, today fixed and unfixed (testCurrentCouponRate)" $
-        bracket_ clearAllFixingHistories clearAllFixingHistories $ Settings.keepingSettingsGc $ do
+        bracket_ clearAllFixingHistories clearAllFixingHistories $ Context.keepingSettingsGc $ do
           sofr <- oisFixture Nothing (Just 0.0010)
           currentCoupon <- oisMakeCoupon sofr (10 `november` 2021) (10 `december` 2021)
           rate1 <- CF.rate currentCoupon
@@ -944,14 +944,14 @@ spec evalDate = do
           rate2 `shouldSatisfy` closePrec 0.000916700760 1e-12
 
       it "prices a coupon entirely in the future (testFutureCouponRate)" $
-        bracket_ clearAllFixingHistories clearAllFixingHistories $ Settings.keepingSettingsGc $ do
+        bracket_ clearAllFixingHistories clearAllFixingHistories $ Context.keepingSettingsGc $ do
           sofr <- oisFixture Nothing (Just 0.0010)
           futureCoupon <- oisMakeCoupon sofr (10 `december` 2021) (10 `january` 2022)
           rate <- CF.rate futureCoupon
           rate `shouldSatisfy` closePrec 0.001000043057 1e-12
 
       it "prices a coupon when the evaluation date is a holiday (testRateWhenTodayIsHoliday)" $
-        bracket_ clearAllFixingHistories clearAllFixingHistories $ Settings.keepingSettingsGc $ do
+        bracket_ clearAllFixingHistories clearAllFixingHistories $ Context.keepingSettingsGc $ do
           sofr <- oisFixture (Just (20 `november` 2021)) (Just 0.0010)
           coupon <- oisMakeCoupon sofr (10 `november` 2021) (10 `december` 2021)
           rate <- CF.rate coupon
@@ -963,7 +963,7 @@ spec evalDate = do
       -- -- there's no route from a standalone 'OvernightIndexedCoupon' into a 'Leg' otherwise
       -- (see plans/review-2026-09-02.md A1).
       it "computes accrued amount as of a past/future holiday (testAccruedAmountOn{Past,Future}Holiday)" $
-        bracket_ clearAllFixingHistories clearAllFixingHistories $ Settings.keepingSettingsGc $ do
+        bracket_ clearAllFixingHistories clearAllFixingHistories $ Context.keepingSettingsGc $ do
           dc <- dayCounter (Actual360 False)
           nullCal <- calendar Null
           sofrPast <- oisFixture Nothing Nothing
@@ -979,7 +979,7 @@ spec evalDate = do
           futureAccrued `shouldSatisfy` closePrec (10000.0 * 0.000100005012) 1e-8
 
       it "prices a past coupon with a lookback period, with/without observation shift (testPastCouponRateWithLookback[AndObservationShift])" $
-        bracket_ clearAllFixingHistories clearAllFixingHistories $ Settings.keepingSettingsGc $ do
+        bracket_ clearAllFixingHistories clearAllFixingHistories $ Context.keepingSettingsGc $ do
           sofr <- oisFixture Nothing Nothing
           dc <- dayCounter (Actual360 False)
           lookback <- CF.overnightIndexedCoupon (15 `july` 2019) 10000.0 (1 `july` 2019) (15 `july` 2019)
@@ -1000,7 +1000,7 @@ spec evalDate = do
     describe "Black-pricer overnight indexed cap/floor" $ do
       let blackFixture avg = do
             let today' = 1 `july` 2025
-            Settings.setEvaluationDate (Just today')
+            Context.setEvaluationDate (Just today')
             dc <- dayCounter (Actual360 False)
             nullCal <- calendar Null
             fq <- Quote.simpleQuote 0.04 >>= Quote.asQuote
@@ -1030,7 +1030,7 @@ spec evalDate = do
             pure (mkBase, mkCapFloor)
 
       it "compounding pricer: caplet/floorlet/collar rates (testBlackOvernightIndexedCouponPricerCapletFloorlet)" $
-        bracket_ clearAllFixingHistories clearAllFixingHistories $ Settings.keepingSettingsGc $ do
+        bracket_ clearAllFixingHistories clearAllFixingHistories $ Context.keepingSettingsGc $ do
           (mkBase, mkCapFloor) <- blackFixture CF.AveragingCompound
           base <- mkBase
           baseRate <- CF.rate base
@@ -1051,7 +1051,7 @@ spec evalDate = do
           baseRate `shouldSatisfy` (> 0)
 
       it "averaging pricer: caplet/floorlet/collar rates (testBlackAverageONIndexedCouponPricerCapletFloorlet)" $
-        bracket_ clearAllFixingHistories clearAllFixingHistories $ Settings.keepingSettingsGc $ do
+        bracket_ clearAllFixingHistories clearAllFixingHistories $ Context.keepingSettingsGc $ do
           (mkBase, mkCapFloor) <- blackFixture CF.AveragingSimple
           base <- mkBase
           _ <- CF.rate base
@@ -1084,7 +1084,7 @@ spec evalDate = do
     describe "Multiple resets coupon" $ do
       let mrFixture = do
             let today' = 15 `march` 2021
-            Settings.setEvaluationDate (Just today')
+            Context.setEvaluationDate (Just today')
             euribor0 <- iborIndex Euribor1M Nothing
             cal <- fixingCalendar euribor0
             dc <- dayCounter Actual365FixedStandard
@@ -1125,7 +1125,7 @@ spec evalDate = do
             mapM (mrSubPeriodRate cal dc euribor fixingDaysN rateSpread) (zip ds (drop 1 ds))
 
       it "replicates a compounded multiple-resets coupon (testCompoundedCouponWithMultipleResets)" $
-        bracket_ clearAllFixingHistories clearAllFixingHistories $ Settings.keepingSettingsGc $ do
+        bracket_ clearAllFixingHistories clearAllFixingHistories $ Context.keepingSettingsGc $ do
           (cal, dc, euribor, _) <- mrFixture
           let start = addGregorianMonthsClip (-2) (15 `march` 2021)
               end = addGregorianMonthsClip 6 start
@@ -1151,7 +1151,7 @@ spec evalDate = do
           actual `shouldSatisfy` closePrec expected 1e-7
 
       it "replicates an averaged multiple-resets coupon (testAveragedCouponWithMultipleResets)" $
-        bracket_ clearAllFixingHistories clearAllFixingHistories $ Settings.keepingSettingsGc $ do
+        bracket_ clearAllFixingHistories clearAllFixingHistories $ Context.keepingSettingsGc $ do
           (cal, dc, euribor, _) <- mrFixture
           let start = addGregorianMonthsClip (-2) (15 `march` 2021)
               end = addGregorianMonthsClip 6 start
@@ -1177,7 +1177,7 @@ spec evalDate = do
       -- 'createMultipleResetsLeg', which reuses its monthly 'createSchedule' this way) -- so a
       -- 6-period monthly schedule with resets=6 gives the single 6-month coupon this test wants.
       it "an ex-coupon multiple-resets cash flow contributes zero to leg NPV (testExCouponCashFlow)" $
-        bracket_ clearAllFixingHistories clearAllFixingHistories $ Settings.keepingSettingsGc $ do
+        bracket_ clearAllFixingHistories clearAllFixingHistories $ Context.keepingSettingsGc $ do
           (cal, dc, euribor, curve) <- mrFixture
           let today' = 15 `march` 2021
               start = addGregorianMonthsClip (-6) today'
@@ -1190,7 +1190,7 @@ spec evalDate = do
           npv `shouldSatisfy` closePrec 0.0 1e-12
 
       it "leg construction throws on mismatched notionals/fixing-days/gearings/spreads (testMultipleResetsLegConsistencyChecks)" $
-        bracket_ clearAllFixingHistories clearAllFixingHistories $ Settings.keepingSettingsGc $ do
+        bracket_ clearAllFixingHistories clearAllFixingHistories $ Context.keepingSettingsGc $ do
           (cal, dc, euribor, _) <- mrFixture
           let today' = 15 `march` 2021
           outerSch <- mrSchedule cal today' (addGregorianMonthsClip 12 today')
@@ -1210,7 +1210,7 @@ spec evalDate = do
     -- exact same fixture.
     describe "cash flow analytics" $ do
       let mkFixedLeg = do
-            td <- Settings.evaluationDate
+            td <- Context.evaluationDate
             cal <- calendar TARGET
             sch <- schedule (Just $ addGregorianMonthsClip (-2) td) (addGregorianMonthsClip 4 td) (6, Months) cal Unadjusted Unadjusted Backward False Nothing Nothing
             dc <- dayCounter (Actual360 False)
@@ -1222,7 +1222,7 @@ spec evalDate = do
           relClose eps expected actual = abs (actual - expected) <= eps * max 1.0 (abs expected)
 
       it "accrual-window and next-cash-flow getters agree with the coupon's own schedule" $
-        Settings.keepingSettingsGc $ do
+        Context.keepingSettingsGc $ do
           (l, _, _) <- mkFixedLeg
           aStart <- CF.accrualStartDate l False Nothing
           aEnd <- CF.accrualEndDate l False Nothing
@@ -1259,7 +1259,7 @@ spec evalDate = do
             _ -> expectationFailure "single-coupon leg's next cash flows should have exactly one entry"
 
       it "previous-cash-flow getters and isExpired agree once settlement is past maturity" $
-        Settings.keepingSettingsGc $ do
+        Context.keepingSettingsGc $ do
           (l, _, _) <- mkFixedLeg
           nextD0 <- CF.nextCashFlowDate l False Nothing
           case nextD0 of
@@ -1282,7 +1282,7 @@ spec evalDate = do
               length prevFlows `shouldBe` 1
 
       it "InterestRate-taking analytics remain coherent after removing decomposed-rate overloads" $
-        Settings.keepingSettingsGc $ do
+        Context.keepingSettingsGc $ do
           (l, dc, cpn) <- mkFixedLeg
           shifted <- IR.interestRate 0.0301 dc IR.Simple Annual
           bpv <- CF.basisPointValue l cpn False Nothing Nothing
@@ -1297,16 +1297,16 @@ spec evalDate = do
             (`shouldSatisfy` (\x -> not (isNaN x || isInfinite x)))
 
       it "yield recovers the coupon rate from the leg's own NPV" $
-        Settings.keepingSettingsGc $ do
+        Context.keepingSettingsGc $ do
           (l, dc, cpn) <- mkFixedLeg
           npv0 <- CF.npv l (CF.DiscountingYield cpn) False Nothing Nothing
           impliedYield <- CF.yield l npv0 dc IR.Simple Annual False Nothing Nothing 1.0e-10 1000 0.03
           impliedYield `shouldSatisfy` relClose 1.0e-6 0.03
 
       it "term-structure NPV analytics: npv vs npv with a zero z-spread, npvBps decomposition, zSpread round-trip, atmRate repricing" $
-        Settings.keepingSettingsGc $ do
+        Context.keepingSettingsGc $ do
           (l, dc, _) <- mkFixedLeg
-          td <- Settings.evaluationDate
+          td <- Context.evaluationDate
           q <- Quote.simpleQuote 0.03 >>= Quote.asQuote
           curve <- flatForward (ReferenceDate td) q dc IR.Continuous Annual
 
@@ -1345,7 +1345,7 @@ spec evalDate = do
           raRateTolerance = 2.0e-8 :: Double
 
           raFixture = do
-            Settings.setEvaluationDate (Just raRefDate)
+            Context.setEvaluationDate (Just raRefDate)
             cal <- calendar TARGET
             dc <- dayCounter Actual365FixedStandard
             rateQ <- Quote.simpleQuote 0.03
@@ -1360,7 +1360,7 @@ spec evalDate = do
             pure (cal, dc, curve, idx, startDate, endDate, obsSchedule, smileOnExpiry, smileOnPayment)
 
       it "an infinite-range range-accrual coupon reprices to the plain index fixing" $
-        Settings.keepingSettingsGc $ do
+        Context.keepingSettingsGc $ do
           (cal, dc, _, idx, startDate, endDate, obsSchedule, smileOnExpiry, smileOnPayment) <- raFixture
           coupon <- CF.rangeAccrualFloatersCoupon endDate raNominal idx startDate endDate 2 dc
             1.0 0.0 (Just startDate) (Just endDate) obsSchedule raInfiniteLower raInfiniteUpper
@@ -1384,7 +1384,7 @@ spec evalDate = do
     describe "CMS" $ do
       let refDate = 11 `december` 2012
           mkFixture = do
-            Settings.setEvaluationDate (Just refDate)
+            Context.setEvaluationDate (Just refDate)
             cal <- calendar TARGET
             dc <- dayCounter Actual365FixedStandard
             fwdRateQ <- Quote.simpleQuote 0.05
@@ -1400,7 +1400,7 @@ spec evalDate = do
             pure (cal, dc, fwdCurve, atmVol, meanRevQ, mkLeg, swapIdx, startDate, endDate)
 
       it "linearTsrPricer agrees with analyticHaganPricer(NonParallelShifts) within test-suite/cms.cpp's tolerance" $
-        Settings.keepingSettingsGc $ do
+        Context.keepingSettingsGc $ do
           (_, _, _, atmVol, meanRevQ, mkLeg, _, _, _) <- mkFixture
           legLinear <- mkLeg
           pricerLinear <- CF.linearTsrPricer atmVol meanRevQ Nothing
@@ -1422,7 +1422,7 @@ spec evalDate = do
       -- CappedFlooredCmsCoupon is intentionally returned as FloatingRateCoupon, so both the
       -- construction result and its inherited pricing methods must marshal correctly.
       it "direct cappedFlooredCmsCoupon agrees between numerical and analytic Hagan pricers" $
-        Settings.keepingSettingsGc $ do
+        Context.keepingSettingsGc $ do
           (_, dc, _, atmVol, meanRevQ, _, swapIdx, startDate, endDate) <- mkFixture
           let fixingDays = Ibor.fixingDays swapIdx
               coupon = CF.cappedFlooredCmsCoupon endDate 1.0 startDate endDate fixingDays swapIdx
@@ -1442,7 +1442,7 @@ spec evalDate = do
       -- specifically verifies that capped/floored constructors erased to FloatingRateCoupon
       -- retain their concrete QuantLib behaviour through the shared accessors.
       it "direct capped/floored CMS coupons satisfy put-call parity" $
-        Settings.keepingSettingsGc $ do
+        Context.keepingSettingsGc $ do
           (_, dc, _, atmVol, meanRevQ, _, swapIdx, startDate, endDate) <- mkFixture
           let fixingDays = Ibor.fixingDays swapIdx
               strike = 0.03
@@ -1462,7 +1462,7 @@ spec evalDate = do
       -- the remaining unique coverage: a digital coupon's embedded call and the DigitalCmsLeg
       -- options record must both affect the priced result.
       it "digital CMS coupon and leg options affect the priced result" $
-        Settings.keepingSettingsGc $ do
+        Context.keepingSettingsGc $ do
           (cal, dc, curve, atmVol, meanRevQ, _, swapIdx, startDate, endDate) <- mkFixture
           pricer <- CF.analyticHaganPricer atmVol CF.NonParallelShifts meanRevQ
           let fixingDays = Ibor.fixingDays swapIdx
@@ -1506,9 +1506,9 @@ spec evalDate = do
       -- generic floating-rate coupon wiring.  This is the concrete-base hierarchy path that
       -- requires CmsCouponPricer without exposing implementation-specific Hagan/TSR leaves.
       it "CMS-spread coupons reproduce the geared component fixing, including caps/floors/collars" $
-        Settings.keepingSettingsGc $ do
+        Context.keepingSettingsGc $ do
           let spreadRefDate = 23 `february` 2018
-          Settings.setEvaluationDate (Just spreadRefDate)
+          Context.setEvaluationDate (Just spreadRefDate)
           cal <- calendar TARGET
           dc <- dayCounter (Actual360 False)
           fwdRateQ <- Quote.simpleQuote 0.02
@@ -1563,9 +1563,9 @@ spec evalDate = do
       -- test-suite file). Mirrors the "digital CMS coupon and leg options" self-consistency check
       -- above with the CmsSpreadCoupon analogue and 'lognormalCmsSpreadPricer'.
       it "digital CMS-spread coupon: a deep in-the-money call raises the coupon rate above the plain spread coupon" $
-        Settings.keepingSettingsGc $ do
+        Context.keepingSettingsGc $ do
           let spreadRefDate = 23 `february` 2018
-          Settings.setEvaluationDate (Just spreadRefDate)
+          Context.setEvaluationDate (Just spreadRefDate)
           cal <- calendar TARGET
           dc <- dayCounter (Actual360 False)
           fwdRateQ <- Quote.simpleQuote 0.02
@@ -1609,9 +1609,9 @@ spec evalDate = do
       -- pinned to the accrual dates here match FloatingLeg's own refStart=start/refEnd=end for
       -- exactly this (regular, non-stub) case.
       it "cmsSpreadLeg produces the same single coupon as the standalone cmsSpreadCoupon" $
-        Settings.keepingSettingsGc $ do
+        Context.keepingSettingsGc $ do
           let spreadRefDate = 23 `february` 2018
-          Settings.setEvaluationDate (Just spreadRefDate)
+          Context.setEvaluationDate (Just spreadRefDate)
           cal <- calendar TARGET
           dc <- dayCounter (Actual360 False)
           fwdRateQ <- Quote.simpleQuote 0.02
@@ -1646,9 +1646,9 @@ spec evalDate = do
       -- Same cross-check for digitalCmsSpreadLeg, reusing the "digital CMS-spread coupon" test's
       -- fixture and call/put parameters via 'DigitalCmsSpreadLegOpts'.
       it "digitalCmsSpreadLeg produces the same single coupon as the standalone digitalCmsSpreadCoupon" $
-        Settings.keepingSettingsGc $ do
+        Context.keepingSettingsGc $ do
           let spreadRefDate = 23 `february` 2018
-          Settings.setEvaluationDate (Just spreadRefDate)
+          Context.setEvaluationDate (Just spreadRefDate)
           cal <- calendar TARGET
           dc <- dayCounter (Actual360 False)
           fwdRateQ <- Quote.simpleQuote 0.02
@@ -1689,8 +1689,8 @@ spec evalDate = do
           legNpv `shouldSatisfy` closePrec refNpv 1.0e-8
 
       it "CMS and Ibor legs, CMS-rate bonds, and their options records price with effective caps, floors, and amortization" $
-        Settings.keepingSettingsGc $ do
-          Settings.setEvaluationDate (Just refDate)
+        Context.keepingSettingsGc $ do
+          Context.setEvaluationDate (Just refDate)
           cal <- calendar TARGET
           settlement <- advance cal refDate (2, Days) Following False
           dc365 <- dayCounter Actual365FixedStandard
@@ -1776,7 +1776,7 @@ spec evalDate = do
       -- coupon rates pairwise differ; a stale/misordered switch case would silently alias two
       -- strategies to the same behaviour instead.
       it "LinearTsrPricer strategy actually changes the coupon rate (enum-dispatch guard)" $
-        Settings.keepingSettingsGc $ do
+        Context.keepingSettingsGc $ do
           (_, _, _, atmVol, meanRevQ, mkLeg, _, _, _) <- mkFixture
           let bounds = Just (0.0001, 2.0)
               rateUnder settings = do
@@ -1806,7 +1806,7 @@ spec evalDate = do
       -- very same numbers this Just already pins, collapsing both to the identical adjusted lower
       -- bound (-2.0) and masking the wiring entirely.
       it "LinearTsrPricerSettings Just vs Nothing bounds differ under Normal vol (haveBounds/defaultBounds_ wiring guard)" $
-        Settings.keepingSettingsGc $ do
+        Context.keepingSettingsGc $ do
           (_, dc, _, _, meanRevQ, mkLeg, _, _, _) <- mkFixture
           normalVolQ <- Quote.simpleQuote 0.008
           cal <- calendar TARGET
@@ -1833,8 +1833,8 @@ spec evalDate = do
       -- flip which leg is CMS instead.
       forM_ ([Swap.Payer, Swap.Receiver] :: [Swap.SwapType]) $ \swapType ->
         it ("makeCms builds a priceable Swap from the CMS and floating legs (" ++ show swapType ++ ")") $
-          Settings.keepingSettingsGc $ do
-          Settings.setEvaluationDate (Just refDate)
+          Context.keepingSettingsGc $ do
+          Context.setEvaluationDate (Just refDate)
           cal <- calendar TARGET
           dc <- dayCounter Actual365FixedStandard
           fwdRateQ <- Quote.simpleQuote 0.05
@@ -1859,7 +1859,7 @@ spec evalDate = do
 
     describe "Index fixings" $ do
       it "calculates convention-aware fixing, value, and maturity dates" $
-        Settings.keepingSettingsGc $ do
+        Context.keepingSettingsGc $ do
           cal <- calendar TARGET
           eur <- currency EUR
           dc <- dayCounter (Actual360 False)
@@ -1871,7 +1871,7 @@ spec evalDate = do
           maturityDate idx value `shouldReturn` (30 `april` 2024)
 
       it "uses CustomIbor's separate value and maturity calendars for date calculations" $
-        Settings.keepingSettingsGc $ do
+        Context.keepingSettingsGc $ do
           fixingCal <- calendar (Bespoke "DateRuleFixing" [Date.Saturday, Date.Sunday])
           valueMaturityCal <- calendar (Bespoke "DateRuleValueMaturity" [Date.Wednesday, Date.Thursday])
           eur <- currency EUR
@@ -1885,7 +1885,7 @@ spec evalDate = do
           maturityDate idx value `shouldReturn` (3 `may` 2024)
 
       it "rejects a non-business fixing date when calculating its value date" $
-        Settings.keepingSettingsGc $ do
+        Context.keepingSettingsGc $ do
           cal <- calendar TARGET
           eur <- currency EUR
           dc <- dayCounter (Actual360 False)
@@ -1895,7 +1895,7 @@ spec evalDate = do
           valueDate idx (28 `january` 2024) `shouldThrow` cPlusPlusEx
 
       it "addFixing/fixing round-trip, hasHistoricalFixing/isValidFixingDate, addFixings and clearFixings" $
-        Settings.keepingSettingsGc $ do
+        Context.keepingSettingsGc $ do
           idx <- iborIndex (Euribor (6, Months)) Nothing
           cal <- fixingCalendar idx
           d1 <- adjust cal (16 `august` 2021) Following
@@ -1945,7 +1945,7 @@ spec evalDate = do
       -- [0.9, 1.0) centile would find no samples below their target and throw "no data
       -- below the target" (see ql/math/statistics/riskstatistics.hpp).
       it "mean/standardDeviation/min/max match hand-computed values; VaR/ES/gaussian* don't throw and are self-consistent; covariance/correlation are self-consistent for a series against itself" $
-        Settings.keepingSettingsGc $ do
+        Context.keepingSettingsGc $ do
           idx <- iborIndex (Euribor (6, Months)) Nothing
           cal <- fixingCalendar idx
           clearFixings idx
@@ -2041,7 +2041,7 @@ spec evalDate = do
 
     describe "CustomIborIndex" $ do
       it "fixingCalendar reflects the given fixing calendar, not the value/maturity ones" $
-        Settings.keepingSettingsGc $ do
+        Context.keepingSettingsGc $ do
           ukCal <- calendar UnitedKingdomSettlement
           targetCal <- calendar TARGET
           eur <- currency EUR
@@ -2053,7 +2053,7 @@ spec evalDate = do
           show cal `shouldNotBe` show targetCal
 
       it "maturityCalendar is actually used to adjust the maturity date, not silently dropped or aliased to fixingCalendar" $
-        Settings.keepingSettingsGc $ do
+        Context.keepingSettingsGc $ do
           -- Bespoke calendars with disjoint weekend sets so any date is a business day
           -- for exactly one of them, making the 3M-forward maturity date's business-day
           -- adjustment -- and hence the accrual period and forecast fixing -- depend on
@@ -2063,7 +2063,7 @@ spec evalDate = do
           eur <- currency EUR
           dc <- dayCounter (Actual360 False)
           let refDate = 31 `january` 2024
-          Settings.setEvaluationDate (Just refDate)
+          Context.setEvaluationDate (Just refDate)
           q <- Quote.simpleQuote 0.03
           curve <- flatForward (ReferenceDate refDate) q dc IR.Continuous Annual
           idxStdMaturity <- iborIndex (CustomIbor "TestStd" (3, Months) 0 eur stdCal stdCal stdCal

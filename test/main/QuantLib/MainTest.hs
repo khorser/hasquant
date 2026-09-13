@@ -3,9 +3,9 @@ module Main where
 import Test.Hspec
 
 import QuantLib.Time.Date(today, weekday)
-import qualified QuantLib.Settings as Settings
+import qualified QuantLib.Context as Context
 
-import qualified QuantLib.Spec.Settings as SettingsSpec
+import qualified QuantLib.Spec.Context as ContextSpec
 import qualified QuantLib.Spec.DatesAndSchedule as DatesAndSchedule
 import qualified QuantLib.Spec.Calendars as Calendars
 import qualified QuantLib.Spec.CurrencyAndDayCounter as CurrencyAndDayCounter
@@ -37,13 +37,13 @@ import qualified QuantLib.Spec.Examples as Examples
 main :: IO ()
 main = do
   putStrLn ">>>"
-  putStrLn $ "QuantLib version " ++ Settings.version ++ ", Boost " ++ Settings.boostVersion
+  putStrLn $ "QuantLib version " ++ Context.version ++ ", Boost " ++ Context.boostVersion
   evalDate <- today
   w <- weekday evalDate
   putStrLn $ "Today is " ++ show w
 
   hspec $ do
-    SettingsSpec.spec
+    ContextSpec.spec
     DatesAndSchedule.spec
     Calendars.spec evalDate
     CurrencyAndDayCounter.spec

@@ -10,7 +10,7 @@ import Control.Monad(forM_)
 import Data.Time.Calendar
 import Data.List.NonEmpty(fromList)
 
-import qualified QuantLib.Settings as Settings
+import qualified QuantLib.Context as Context
 import QuantLib.Time.Calendar
 import QuantLib.Time.Schedule(dayCounter, schedule, DayCounterConstructor(..), TimeUnit(..), Frequency(..), DateGenerationRule(..))
 import qualified QuantLib.CashFlow as CF
@@ -61,7 +61,7 @@ spec :: Spec
 spec = do
     describe "Bond Example" $
       it "check values"  $ do
-        r <- Settings.keepingSettingsGc BondExample.run
+        r <- Context.keepingSettingsGc BondExample.run
         let (fixnpv, znpv, fnpv) = BondExample.npvR r
             (fixy, zy, fy) = BondExample.yieldR r
             (fixclean, zclean, fclean) = BondExample.cleanPriceR r
@@ -105,7 +105,7 @@ spec = do
     describe "Risky bond example" $
       it "reproduces upstream's RiskyBondEngine NPV/cleanPrice" $ do
         -- ported from ~/Src/QuantLib/test-suite/bonds.cpp:testRiskyBondWithGivenDates
-        r <- Settings.keepingSettingsGc RiskyBondExample.run
+        r <- Context.keepingSettingsGc RiskyBondExample.run
         RiskyBondExample.npvR r `shouldSatisfy` closePrec 888458.819055 1.0
         RiskyBondExample.cleanPriceR r `shouldSatisfy` closePrec 87.407883 1e-4
 
@@ -181,7 +181,7 @@ spec = do
 
     describe "FRA Example" $
       it "check values" $ do
-        (FRAExample.Result it1 it2) <- Settings.keepingSettingsGc FRAExample.run
+        (FRAExample.Result it1 it2) <- Context.keepingSettingsGc FRAExample.run
         let
           fwdRates1   = [3.0e-2, 3.1e-2, 3.2e-2, 3.3e-2, 3.4e-2]
           zRates1     = [3.00399e-2, 3.06805e-2, 3.11347e-2, 3.19277e-2, 3.26419e-2]
@@ -198,7 +198,7 @@ spec = do
 
     describe "Swap example" $
       it "check values" $ do
-        (SwapExample.Result it1 it2) <- Settings.keepingSettingsGc SwapExample.run
+        (SwapExample.Result it1 it2) <- Context.keepingSettingsGc SwapExample.run
         let
           spotNpvs1         = [19065.88091, 19076.13635, 19056.02274]
           spotFairSpreads1  = [-4.19298e-3, -4.19258e-3, -4.19271e-3]
@@ -230,7 +230,7 @@ spec = do
 
     describe "Multicurve bootstrapping example" $
       it "check values" $ do
-        r <- Settings.keepingSettingsGc MulticurveExample.run
+        r <- Context.keepingSettingsGc MulticurveExample.run
         let spot = MulticurveExample.spot5Y r
             fwd  = MulticurveExample.forward1Y5Y r
             single = MulticurveExample.singleCurveSpot5Y r
@@ -260,7 +260,7 @@ spec = do
 
     describe "Repo example" $
       it "check values" $ do
-        r <- Settings.keepingSettingsGc $ RepoExample.run False
+        r <- Context.keepingSettingsGc $ RepoExample.run False
         RepoExample.cleanPriceR r `shouldSatisfy` closePrec 89.9769 1e-4
         RepoExample.dirtyPriceR r `shouldSatisfy` closePrec 93.2880 1e-4
         RepoExample.accruedAmountSettlement r `shouldSatisfy` closePrec 3.3111 1e-4
@@ -275,7 +275,7 @@ spec = do
 
     describe "FxForward example" $
       it "check values" $ do
-        r <- Settings.keepingSettingsGc FxForwardExample.run
+        r <- Context.keepingSettingsGc FxForwardExample.run
         FxForwardExample.npvR r `shouldSatisfy` closePrec (-19162.41040215391) 1e-4
         FxForwardExample.fairForwardRateR r `shouldSatisfy` closePrec 1.1221599841264838 1e-7
         FxForwardExample.npvSourceCurrencyR r `shouldSatisfy` closePrec (-19162.41040215391) 1e-4
@@ -284,13 +284,13 @@ spec = do
 
     describe "EquityTotalReturnSwap example" $
       it "check values" $ do
-        r <- Settings.keepingSettingsGc EquityTotalReturnSwapExample.run
+        r <- Context.keepingSettingsGc EquityTotalReturnSwapExample.run
         EquityTotalReturnSwapExample.parNpvIborR r `shouldSatisfy` closePrec 0.0 1e-4
         EquityTotalReturnSwapExample.parNpvOvernightR r `shouldSatisfy` closePrec 0.0 1e-4
 
     describe "Inflation curve example" $
       it "check values" $ do
-        r <- Settings.keepingSettingsGc InflationCurveExample.run
+        r <- Context.keepingSettingsGc InflationCurveExample.run
         InflationCurveExample.zeroRate1Y r `shouldSatisfy` closePrec 3.0029877159296493e-2 1e-9
         InflationCurveExample.zeroRate2Y r `shouldSatisfy` closePrec 3.001286439212614e-2 1e-9
         InflationCurveExample.yoyRate1Y r `shouldSatisfy` closePrec 3.0000000000000002e-2 1e-9
@@ -302,7 +302,7 @@ spec = do
 
     describe "Inflation instruments example" $
       it "check values" $ do
-        r <- Settings.keepingSettingsGc InflationInstrumentsExample.run
+        r <- Context.keepingSettingsGc InflationInstrumentsExample.run
         InflationInstrumentsExample.zcisNpvAtFairRate r `shouldSatisfy` closePrec 0.0 1e-6
         InflationInstrumentsExample.cpiSwapNpvAtFairRate r `shouldSatisfy` closePrec 0.0 1e-6
         InflationInstrumentsExample.yoySwapNpvAtFairRate r `shouldSatisfy` closePrec 0.0 1e-6
@@ -327,14 +327,14 @@ spec = do
     -- test, just a non-portable one.
     describe "Replication example" $
       it "check values" $ do
-        (ReplicationExample.Result npvInit npvOut npvIn) <- Settings.keepingSettingsGc ReplicationExample.run
+        (ReplicationExample.Result npvInit npvOut npvIn) <- Context.keepingSettingsGc ReplicationExample.run
         npvInit `shouldSatisfy` listClose id [4.260726, 4.322358, 4.295464, 4.280909] 1.0e-6
         npvOut  `shouldSatisfy` listClose id [2.513058, 2.539365, 2.528362, 2.522105] 1.0e-6
         npvIn   `shouldSatisfy` listClose id [5.739125, 5.851239, 5.799867, 5.773678] 1.0e-6
 
     describe "CDS example" $
       it "check values" $ do
-        (CDSExample.Result probs fairSpread npv defNpv cpnNpv) <- Settings.keepingSettingsGc CDSExample.run
+        (CDSExample.Result probs fairSpread npv defNpv cpnNpv) <- Context.keepingSettingsGc CDSExample.run
         -- Matches upstream Examples/CDS/CDS.cpp: the schedule begins at the one-business-day
         -- settlement date, so repricing recovers the quoted 1.50% spread and zero NPV. A clean
         -- GHC 8.10 build agrees across architectures; persistent Docker volumes can mask this.
@@ -351,12 +351,12 @@ spec = do
         -- test with cached Markit-published upfront values, rather than falling back to a
         -- self-consistency check. Each builder default below was transcribed from
         -- ql/instruments/makecds.cpp.
-        (IsdaCdsExample.Result upfront) <- Settings.keepingSettingsGc IsdaCdsExample.run
+        (IsdaCdsExample.Result upfront) <- Context.keepingSettingsGc IsdaCdsExample.run
         upfront `shouldSatisfy` closePrec (-97798.29358) 0.1
 
     describe "Convertible bond example" $
       it "check values" $ do
-        (ConvertibleBondExample.Result jr crr ad tr ti lr j) <- Settings.keepingSettingsGc ConvertibleBondExample.run
+        (ConvertibleBondExample.Result jr crr ad tr ti lr j) <- Context.keepingSettingsGc ConvertibleBondExample.run
         jr `shouldSatisfy` listClose id [105.690844, 108.141608] 1.0e-6
         crr `shouldSatisfy` listClose id [105.698533, 108.166210] 1.0e-6
         ad `shouldSatisfy` listClose id [105.626388, 108.085800] 1.0e-6
@@ -367,14 +367,14 @@ spec = do
 
     describe "Callable bond example" $
       it "check values" $ do
-        (CallableBondExample.Result ps ys) <- Settings.keepingSettingsGc CallableBondExample.run
+        (CallableBondExample.Result ps ys) <- Context.keepingSettingsGc CallableBondExample.run
         -- Full-precision references keep the tolerance from hiding a systematic shift.
         ps `shouldSatisfy` listClose id [96.511051, 95.680519, 92.347988, 87.116570, 77.371192] 1.0e-3
         ys `shouldSatisfy` listClose id [5.465052, 5.664060, 6.482665, 7.837569, 10.627035] 1.0e-3
 
     describe "Bermudan swaption example (LONG)" $
       it "check values" $ do
-        (BermudanSwaptionExample.Result g2v g2p hwv hwp hw2v hw2p bkv bkp npvA npvO npvI) <- Settings.keepingSettingsGc BermudanSwaptionExample.run
+        (BermudanSwaptionExample.Result g2v g2p hwv hwp hw2v hw2p bkv bkp npvA npvO npvI) <- Context.keepingSettingsGc BermudanSwaptionExample.run
         -- g2v holds at 1.0e-5 on Windows. g2p needs 1.0e-4: element 3 lands 1.2e-5 out on GHC
         -- 9.10.3 there (0.0500647 against 0.0500532) while 9.14.1 matches, the other
         -- four staying within 3e-6. A calibrated parameter differing by GHC version is
@@ -396,7 +396,7 @@ spec = do
 
     describe "Equity option example" $
       it "check values" $ do
-        (EquityOptionExample.Result analyticEuro analyticHeston bates baw bjs bin int fd (mcE, mcE2, mcA)) <- Settings.keepingSettingsGc EquityOptionExample.run
+        (EquityOptionExample.Result analyticEuro analyticHeston bates baw bjs bin int fd (mcE, mcE2, mcA)) <- Context.keepingSettingsGc EquityOptionExample.run
         analyticEuro   `shouldSatisfy` listClose id [3.844308] 1.0e-6
         analyticHeston `shouldSatisfy` listClose id [3.844306] 1.0e-6
         bates          `shouldSatisfy` listClose id [3.844306] 1.0e-6
@@ -421,7 +421,7 @@ spec = do
     -- The example executable does not assert these results.
     describe "CVA IRS example" $
       it "check values" $ do
-        (CVAIRSExample.Result rows) <- Settings.keepingSettingsGc CVAIRSExample.run
+        (CVAIRSExample.Result rows) <- Context.keepingSettingsGc CVAIRSExample.run
         map CVAIRSExample.tenorR rows `shouldBe` [5, 10, 15, 20, 25, 30]
         -- fairRateR is a bootstrap round-trip of the input market quotes, not
         -- independent content, but pinning it tightly still catches a broken curve
@@ -447,7 +447,7 @@ spec = do
 
     describe "TARF example" $
       it "check values" $ do
-        (TARFExample.Result rnpv implFwds simFwds) <- Settings.keepingSettingsGc TARFExample.run
+        (TARFExample.Result rnpv implFwds simFwds) <- Context.keepingSettingsGc TARFExample.run
         -- purely from the input EUR/ILS discount tables, no randomness involved
         implFwds `shouldSatisfy` listCloseRel id
           [3.3084, 3.3112, 3.3129, 3.3153, 3.3179, 3.3199, 3.3215, 3.3228, 3.324,
@@ -466,7 +466,7 @@ spec = do
 
     describe "American LSM example" $
       it "check values" $ do
-        (AmericanLSMExample.Result lsmP calibP mcP exProb) <- Settings.keepingSettingsGc AmericanLSMExample.run
+        (AmericanLSMExample.Result lsmP calibP mcP exProb) <- Context.keepingSettingsGc AmericanLSMExample.run
         -- lsmP prices a Haskell-defined max(K-S,0) payoff via the custom lsmRegress backward
         -- induction loop (out-of-sample pricing paths, coefficients fit only on the calibration
         -- paths). It should land close to both mcP -- QuantLib's own mcAmericanEngine pricing the
@@ -508,7 +508,7 @@ spec = do
 
     describe "Basket LSM example" $
       it "check values" $ do
-        r <- Settings.keepingSettingsGc BasketLSMExample.run
+        r <- Context.keepingSettingsGc BasketLSMExample.run
         -- Multi-asset counterpart of the American LSM example above: lsmPrice drives early
         -- exercise of a Haskell-defined max(K-max(S1,S2,S3),0) basket payoff via the custom
         -- lsmRegressMulti backward-induction loop, generalizing lsmRegress from a scalar to a
@@ -537,7 +537,7 @@ spec = do
 
     describe "Haskell-regression LSM benchmark" $
       it "matches lsmRegress's price and is not faster" $ do
-        r <- Settings.keepingSettingsGc $ HaskellLSMExample.run False
+        r <- Context.keepingSettingsGc $ HaskellLSMExample.run False
         -- same fixture/paths as the American LSM example above; the two regressions (QuantLib's
         -- lsmRegress vs. a hand-rolled Haskell normal-equations solve) should agree on price --
         -- only the compute path differs, not the math
@@ -555,7 +555,7 @@ spec = do
     -- StochasticProcess half -- the inner primitive rather than a per-timestep callback).
     describe "Custom SDE example (gaussianRsg-driven path evolution)" $
       it "check values" $ do
-        r <- Settings.keepingSettingsGc CustomSDEExample.run
+        r <- Context.keepingSettingsGc CustomSDEExample.run
         -- The strongest check here: with the exact lognormal step QuantLib's own
         -- GeneralizedBlackScholesProcess::evolve uses, a Haskell-evolved path must reproduce
         -- pathGenerator's own path for the same trait/dimension/seed. That pins the draw order
@@ -573,7 +573,7 @@ spec = do
 
     describe "Short rate models example" $
       it "check values" $ do
-        r <- Settings.keepingSettingsGc ShortRateModelsExample.run
+        r <- Context.keepingSettingsGc ShortRateModelsExample.run
         let checkCalibration tol cr = do
               ShortRateModelsExample.calculatedA cr `shouldSatisfy`
                 closePrec (ShortRateModelsExample.cachedA cr) tol
@@ -607,7 +607,7 @@ spec = do
     -- taken on different days -- asserted structurally instead of pinning values.
     describe "Fitted bond curve example (LONG)" $
       it "check values" $ do
-        r <- Settings.keepingSettingsGc FittedBondCurveExample.run
+        r <- Context.keepingSettingsGc FittedBondCurveExample.run
         let coupons = [0.0200, 0.0225, 0.0250, 0.0275, 0.0300,
                        0.0325, 0.0350, 0.0375, 0.0400, 0.0425,
                        0.0450, 0.0475, 0.0500, 0.0525, 0.0550]
@@ -658,7 +658,7 @@ spec = do
         -- and -- the strongest reachable calibration-quality signal, what upstream's
         -- printModelCalibration actually displays -- that each calibrated helper's modelValue
         -- matches its marketValue and reprices to the 20% flat input vol.
-        r <- Settings.keepingSettingsGc Gaussian1dModelsExample.run
+        r <- Context.keepingSettingsGc Gaussian1dModelsExample.run
         Gaussian1dModelsExample.basketNaiveLen r `shouldBe` 9
         Gaussian1dModelsExample.basketMsdgLen r `shouldBe` 9
         Gaussian1dModelsExample.amortizingBasketLen r `shouldBe` 9
@@ -723,7 +723,7 @@ spec = do
     -- mcDiscreteArithmeticApEngine on the same instrument.
     describe "Asian option example" $
       it "check values" $ do
-        r <- Settings.keepingSettingsGc AsianOptionExample.run
+        r <- Context.keepingSettingsGc AsianOptionExample.run
         AsianOptionExample.twR r `shouldSatisfy` closePrec 1.7255070456 3.0e-2
         AsianOptionExample.fdR r `shouldSatisfy` closePrec 1.7255070456 3.0e-2
         AsianOptionExample.mcR r `shouldSatisfy` closePrec 1.7255070456 2.0e-2
@@ -735,7 +735,7 @@ spec = do
     -- QuantLib.Example.ForwardOption's haddock for the rationale of each check).
     describe "Forward option example" $
       it "check values" $ do
-        r <- Settings.keepingSettingsGc ForwardOptionExample.run
+        r <- Context.keepingSettingsGc ForwardOptionExample.run
         let call = ForwardOptionExample.europeanCallR r
         call `shouldSatisfy` closePrec 4.4064 1.0e-3
         ForwardOptionExample.europeanPutR r `shouldSatisfy` closePrec 8.2971 1.0e-3
@@ -754,7 +754,7 @@ spec = do
     -- telescopic and non-telescopic value dates.
     describe "OvernightIndexedSwap example" $
       it "check values" $ do
-        r <- Settings.keepingSettingsGc OvernightIndexedSwapExample.run
+        r <- Context.keepingSettingsGc OvernightIndexedSwapExample.run
         let cachedNPV = 0.001730450147
         OvernightIndexedSwapExample.npvNonTelescopic r `shouldSatisfy` closePrec cachedNPV 1.0e-6
         OvernightIndexedSwapExample.npvTelescopic r `shouldSatisfy` closePrec cachedNPV 1.0e-6
@@ -764,7 +764,7 @@ spec = do
     -- so this stays in sync if either the demo or the binding changes.
     describe "QuickStart example" $
       it "check values" $ do
-        r <- Settings.keepingSettingsGc QuickStartExample.run
+        r <- Context.keepingSettingsGc QuickStartExample.run
         QuickStartExample.quickNpv r `shouldSatisfy` closePrec 70994.8441727506 1.0e-2
         QuickStartExample.quickFairRate r `shouldSatisfy` closePrec 3.6554153626327204e-2 1.0e-8
 
@@ -774,7 +774,7 @@ spec = do
     -- flat 5% discount curve.
     describe "Swaption example" $
       it "check values" $ do
-        r <- Settings.keepingSettingsGc SwaptionExample.run
+        r <- Context.keepingSettingsGc SwaptionExample.run
         SwaptionExample.npv1 r `shouldSatisfy` closePrec 0.036418158579 1.0e-9
 
     -- Minimizes the classic 2D Rosenbrock function (global minimum f=0 at (1,1)) via
@@ -783,7 +783,7 @@ spec = do
     -- analytic fact about this function, independent of which optimizer is used.
     describe "Optimizer example (Rosenbrock via optimize)" $
       it "check values" $ do
-        r <- Settings.keepingSettingsGc OptimizerExample.run
+        r <- Context.keepingSettingsGc OptimizerExample.run
         case OptimizerExample.solution r of
           [x, y] -> do
             x `shouldSatisfy` closePrec 1.0 1.0e-3
@@ -799,7 +799,7 @@ spec = do
     -- (American, with an early-exercise step condition), both already-bound reference engines.
     describe "Fdm example (Haskell-driven PDE rollback via fdmRollback)" $
       it "check values" $ do
-        r <- Settings.keepingSettingsGc FdmExample.run
+        r <- Context.keepingSettingsGc FdmExample.run
         FdmExample.fdmEuropeanR r `shouldSatisfy` closePrec (FdmExample.analyticEuropeanR r) (2.0e-3 * FdmExample.analyticEuropeanR r)
         FdmExample.fdmAmericanR r `shouldSatisfy` closePrec (FdmExample.fdAmericanR r) (2.0e-3 * FdmExample.fdAmericanR r)
         -- withCustomStrikedPayoff driving fdBlackScholesVanillaEngine -- the engine that
@@ -841,7 +841,7 @@ spec = do
 
     describe "Discrete hedging example (LONG)" $
       it "check values" $ do
-        r <- Settings.keepingSettingsGc DiscreteHedgingExample.run
+        r <- Context.keepingSettingsGc DiscreteHedgingExample.run
         -- discretely-hedged P&L should scatter around 0 on average, and -- Derman & Kamal's own
         -- qualitative point -- scatter less as the hedger rebalances more often.
         abs (DiscreteHedgingExample.plMean21 r) `shouldSatisfy` (< 0.1 * DiscreteHedgingExample.optionValue r)

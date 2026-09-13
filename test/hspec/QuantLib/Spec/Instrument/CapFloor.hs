@@ -14,7 +14,7 @@ import Control.Monad(forM_)
 
 import Test.Hspec
 
-import qualified QuantLib.Settings as Settings
+import qualified QuantLib.Context as Context
 import QuantLib.Time.Date
 import QuantLib.Time.Calendar
 import QuantLib.Time.Schedule
@@ -40,7 +40,7 @@ closeToEither a b v = closePrec a 1.0e-8 v || closePrec b 1.0e-8 v
 -- date pinned to 14 March 2002).
 cachedFixture :: IO Leg
 cachedFixture = do
-  Settings.setEvaluationDate (Just (14 `march` 2002))
+  Context.setEvaluationDate (Just (14 `march` 2002))
   cal <- calendar TARGET
   let startDate = 18 `march` 2002
   dc <- dayCounter (Actual360 False)
@@ -57,7 +57,7 @@ spec :: Spec
 spec = do
   describe "testCachedValue" $
     it "Black cap/floor NPV reproduces capfloor.cpp's cached values" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         leg <- cachedFixture
         dc <- dayCounter (Actual360 False)
         volQ <- simpleQuote 0.20
@@ -76,7 +76,7 @@ spec = do
 
   describe "testCachedValueFromOptionLets" $
     it "sums additionalResults[optionletsPrice] to the same cached cap/floor NPVs" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         leg <- cachedFixture
         dc <- dayCounter (Actual360 False)
         volQ <- simpleQuote 0.20
@@ -105,8 +105,8 @@ spec = do
 
   describe "testATMRate" $
     it "cap atmRate == floor atmRate, and a VanillaSwap struck there reprices to ~0" $
-      Settings.keepingSettingsGc $ do
-        Settings.setEvaluationDate (Just (11 `december` 2012))
+      Context.keepingSettingsGc $ do
+        Context.setEvaluationDate (Just (11 `december` 2012))
         cal <- calendar TARGET
         settle <- advance cal (11 `december` 2012) (2, Days) ModifiedFollowing False
         dc <- dayCounter Actual365FixedStandard
@@ -133,8 +133,8 @@ spec = do
 
   describe "testImpliedVolatility" $
     it "round-trips impliedVolatility against the vol used to build the cap's price" $
-      Settings.keepingSettingsGc $ do
-        Settings.setEvaluationDate (Just (11 `december` 2012))
+      Context.keepingSettingsGc $ do
+        Context.setEvaluationDate (Just (11 `december` 2012))
         cal <- calendar TARGET
         settle <- advance cal (11 `december` 2012) (2, Days) ModifiedFollowing False
         dc <- dayCounter (Actual360 False)

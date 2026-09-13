@@ -1,6 +1,8 @@
 module QuantLib.Internal
   (
-    Day -- reexport for simplicity
+    Error(..)
+
+  , Day -- reexport for simplicity
   , minDate
   , maxDate
 
@@ -90,7 +92,7 @@ import Foreign.Marshal.Utils(with, toBool, fromBool, withMany)
 import Foreign.Storable(peek, Storable)
 import Foreign.Marshal.Alloc(alloca)
 
-import Control.Exception(throwIO)
+import Control.Exception(Exception, throwIO)
 import Control.Monad(when)
 import Data.Time.Calendar(Day(ModifiedJulianDay), toModifiedJulianDay, fromGregorian)
 import Data.List.NonEmpty(NonEmpty, toList)
@@ -98,7 +100,12 @@ import Data.List.NonEmpty(NonEmpty, toList)
 import Data.Vector.Storable(Vector, unsafeFromForeignPtr0)
 import qualified Data.Vector.Storable as V
 
-import QuantLib.Error(Error(DateConversion, CPlusPlusException))
+data Error = CPlusPlusException String
+           | DateConversion Day
+           | EnumConversion String
+           deriving (Show, Eq)
+
+instance Exception Error
 
 errorCheck :: Ptr CString -> IO ()
 errorCheck p = do

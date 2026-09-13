@@ -16,7 +16,7 @@ import QuantLib.Time.Calendar(BusinessDayConvention(..), advance)
 import QuantLib.Time.Schedule(TimeUnit(..), dayCounter, DayCounterConstructor(..), Frequency(..))
 import qualified QuantLib.InterestRate as IR
 import QuantLib.Quote
-import QuantLib.Settings
+import QuantLib.Context
 import QuantLib.TermStructure.Yield(piecewiseYieldCurve, fraRateHelper, FraTerms(..), BootstrapTrait(..),
   Bootstrap(..), Reference(..), RatePoint(..), defaultIterativeBootstrapOpts, zeroRate, PillarChoice(..))
 import QuantLib.Math

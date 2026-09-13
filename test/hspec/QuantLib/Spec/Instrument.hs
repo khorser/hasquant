@@ -26,7 +26,7 @@ import QuantLib.CashFlow hiding(npv, leg)
 import QuantLib.Index.InterestRate(iborIndex, IborConstructor(Euribor6M))
 import QuantLib.PricingEngine
 import QuantLib.Process
-import qualified QuantLib.Settings as Settings
+import qualified QuantLib.Context as Context
 import QuantLib.TermStructure.Volatility
 import QuantLib.TermStructure.Yield
 import QuantLib.Time.Calendar
@@ -39,8 +39,8 @@ spec :: Spec
 spec = do
   describe "additionalResults" $ do
     it "Bjerksund-Stensland American option engine: exerciseType (StringVal) and strikeGamma (RealVal, > 0)" $
-      Settings.keepingSettingsGc $ do
-        Settings.setEvaluationDate $ Just (fromGregorian 1998 5 15)
+      Context.keepingSettingsGc $ do
+        Context.setEvaluationDate $ Just (fromGregorian 1998 5 15)
         dc <- dayCounter Actual365FixedStandard
         let evalDate = 17 `may` 1998
             maturity = 17 `may` 1999
@@ -69,9 +69,9 @@ spec = do
         length addl `shouldSatisfy` (> 0)
 
     it "Black cap/floor engine: optionletsPrice (RealVectorVal, non-empty and non-negative)" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         let today' = 11 `december` 2012
-        Settings.setEvaluationDate (Just today')
+        Context.setEvaluationDate (Just today')
         cal <- calendar TARGET
         settle <- advance cal today' (2, Days) Following False
         discQ <- simpleQuote 0.02
@@ -98,7 +98,7 @@ spec = do
 
   describe "PerpetualFutures" $
     it "reproduces perpetualfutures.cpp's constant-parameter analytic values" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         let evalDate = fromGregorian 2024 1 2
             spot = 10000.0
             domesticRate = 0.04
@@ -137,7 +137,7 @@ spec = do
                         spot * (exp (domesticRate * dt) - exp (foreignRate * dt) + fundingRate * exp (foreignRate * dt)) /
                         (fundingRate - interestRateDiff) / exp (foreignRate * dt)
                       (_, _) -> error "Quanto is unsupported by the engine"
-        Settings.setEvaluationDate (Just evalDate)
+        Context.setEvaluationDate (Just evalDate)
         dc <- dayCounter ActualActualISDA
         cal <- calendar (Bespoke "PerpetualFutures" [])
         domesticQuote <- simpleQuote domesticRate

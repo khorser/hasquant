@@ -12,7 +12,7 @@ import QuantLib.Index(addFixing)
 import QuantLib.Index.Inflation
 import QuantLib.Math(Interpolation(..))
 import QuantLib.Quote(simpleQuote)
-import QuantLib.Settings(setEvaluationDate)
+import QuantLib.Context(setEvaluationDate)
 import QuantLib.Instrument.Swap(fairRate)
 import QuantLib.TermStructure.Inflation
 import QuantLib.TermStructure.Yield(Reference(..), flatForward, PillarChoice(..))

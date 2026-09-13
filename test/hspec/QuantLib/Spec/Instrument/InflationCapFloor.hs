@@ -7,7 +7,7 @@ import Data.Time.Calendar(toGregorian, fromGregorian)
 import qualified Data.Vector.Storable as V
 import Test.Hspec
 
-import qualified QuantLib.Settings as Settings
+import qualified QuantLib.Context as Context
 import QuantLib.CashFlow(Leg, yoyInflationLeg, blackYoyInflationCouponPricer, setYoyInflationCouponPricer)
 import qualified QuantLib.CashFlow as CF
 import QuantLib.Currency(currency, Ccy(GBP))
@@ -130,11 +130,11 @@ customZeroIndex evalDate = do
 spec :: Spec
 spec = do
  describe "YoY inflation cap/floor" $ do
-  it "cap - floor = collar, and the sum of optionlets equals the parent NPV" $ Settings.keepingSettingsGc $ do
+  it "cap - floor = collar, and the sum of optionlets equals the parent NPV" $ Context.keepingSettingsGc $ do
     -- Anchor all maturities to today so later evaluation-date changes cannot encounter live,
     -- already-expired observers from this test.
     todayD <- today
-    Settings.setEvaluationDate (Just todayD)
+    Context.setEvaluationDate (Just todayD)
     yii <- linkedYoYIndex todayD
     leg <- setupLeg yii todayD
     engine <- setupEngine yii todayD
@@ -157,7 +157,7 @@ spec = do
       npv o
     abs (capNPV - sum caplets) `shouldSatisfy` (< 1e-6)
 
-  it "a capped yoyInflationLeg's NPV decomposes as uncapped leg NPV minus the equivalent cap's NPV" $ Settings.keepingSettingsGc $ do
+  it "a capped yoyInflationLeg's NPV decomposes as uncapped leg NPV minus the equivalent cap's NPV" $ Context.keepingSettingsGc $ do
     -- Confirmed by reading inflationcoupon.cpp: InflationCoupon::rate() unconditionally requires
     -- a pricer (QL_REQUIRE(pricer_, "pricer not set")), capped or not -- yoyInflationLeg's own
     -- operator Leg() (yoyinflationcoupon.cpp) auto-attaches a default (non-vol) pricer only when
@@ -166,7 +166,7 @@ spec = do
     -- ran (leaving it out reproduces "pricer not set", not a silently-wrong number) -- so this
     -- doubles as the setter's own regression check.
     todayD <- today
-    Settings.setEvaluationDate (Just todayD)
+    Context.setEvaluationDate (Just todayD)
     yii <- linkedYoYIndex todayD
     cal <- calendar Null
     dc <- dayCounter Actual365FixedStandard
@@ -206,13 +206,13 @@ spec = do
   -- maturity itself) and a maturity/strike that exactly match one price-surface grid node.
   -- baseCPI is a required constructor argument but never touched by this engine's calculate()
   -- (confirmed by reading cpicapfloorengines.cpp) so an arbitrary placeholder is fine.
-  it "reproduces the exact grid price at a matching strike/maturity node" $ Settings.keepingSettingsGc $ do
+  it "reproduces the exact grid price at a matching strike/maturity node" $ Context.keepingSettingsGc $ do
     -- First-of-month, derived from the real wall-clock date rather than hardcoded, so
     -- CPI::Flat's period-start sampling (see the comment above) lands exactly on the raw date
     -- without pinning the test to a date that will eventually become stale/past.
     (y, m, _) <- toGregorian <$> today
     let today' = fromGregorian y m 1
-    Settings.setEvaluationDate (Just today')
+    Context.setEvaluationDate (Just today')
     cal <- calendar Null
     dc <- dayCounter Actual365FixedStandard
     nominalQ <- simpleQuote 0.02
@@ -253,10 +253,10 @@ spec = do
   -- No upstream fixture covers a non-Bilinear Interpolation2D, so this is a
   -- construction/sanity check only, same reasoning as the yoyCapFloorTermPriceSurface
   -- spot-check in QuantLib.Spec.TermStructure.InflationVolatility.
-  it "cpiCapFloorTermPriceSurface: Bicubic builds and reproduces the same grid price" $ Settings.keepingSettingsGc $ do
+  it "cpiCapFloorTermPriceSurface: Bicubic builds and reproduces the same grid price" $ Context.keepingSettingsGc $ do
     (y, m, _) <- toGregorian <$> today
     let today' = fromGregorian y m 1
-    Settings.setEvaluationDate (Just today')
+    Context.setEvaluationDate (Just today')
     cal <- calendar Null
     dc <- dayCounter Actual365FixedStandard
     nominalQ <- simpleQuote 0.02

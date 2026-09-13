@@ -13,7 +13,7 @@ import QuantLib.InterestRate
 import QuantLib.Quote
 import QuantLib.PricingEngine
 import QuantLib.Process
-import QuantLib.Settings
+import QuantLib.Context
 import QuantLib.TermStructure.Volatility
 import QuantLib.TermStructure.Yield
 import QuantLib.Time.Calendar

@@ -10,7 +10,7 @@ import Control.Monad (forM_)
 import qualified QuantLib.CashFlow as CF
 import QuantLib.Index(addFixing)
 import QuantLib.Index.Inflation
-import QuantLib.Settings(setEvaluationDate)
+import QuantLib.Context(setEvaluationDate)
 import QuantLib.Time.Calendar
 import QuantLib.Time.Date
 import QuantLib.Time.Schedule(dayCounter, fromDates, DayCounterConstructor(..), TimeUnit(Months))

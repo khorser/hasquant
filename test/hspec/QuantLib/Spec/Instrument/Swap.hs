@@ -12,7 +12,7 @@ module QuantLib.Spec.Instrument.Swap (spec) where
 
 import Test.Hspec
 
-import qualified QuantLib.Settings as Settings
+import qualified QuantLib.Context as Context
 import QuantLib.Time.Date
 import QuantLib.Time.Calendar
 import QuantLib.Time.Schedule
@@ -62,16 +62,16 @@ spec = do
   describe "VanillaSwap" $ do
     it "testCachedValue: 10Y swap NPV reproduces swap.cpp's cached value (either at-par or\
        \ index-fixing coupon pricing, since hasquant has no binding to select between them)" $
-      Settings.keepingSettingsGc $ do
-        Settings.setEvaluationDate (Just (17 `june` 2002))
+      Context.keepingSettingsGc $ do
+        Context.setEvaluationDate (Just (17 `june` 2002))
         swp <- makeSwap (17 `june` 2002) 10 0.06 0.001
         v <- npv swp
         v `shouldSatisfy` (\x -> closePrec (-5.872863313209) 1e-8 x || closePrec (-5.872342992212) 1e-8 x)
 
     it "testFairRate: rebuilding at the swap's own fairRate reprices it to ~0" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         today' <- today
-        Settings.setEvaluationDate (Just today')
+        Context.setEvaluationDate (Just today')
         mapM_ (\(len, spread) -> do
                  swap0 <- makeSwap today' len 0.0 spread
                  fair <- fairRate swap0
@@ -81,9 +81,9 @@ spec = do
           [(len, spread) | len <- [1, 2, 5, 10, 20], spread <- [-0.001, -0.01, 0.0, 0.01, 0.001]]
 
     it "testFairSpread: rebuilding at the swap's own fairSpread reprices it to ~0" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         today' <- today
-        Settings.setEvaluationDate (Just today')
+        Context.setEvaluationDate (Just today')
         mapM_ (\(len, rate) -> do
                  swap0 <- makeSwap today' len rate 0.0
                  fair <- fairSpread swap0
@@ -93,9 +93,9 @@ spec = do
           [(len, rate) | len <- [1, 2, 5, 10, 20], rate <- [0.04, 0.05, 0.06, 0.07]]
 
     it "exposes fairRate and fairSpread through the irregular-swap capabilities" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         today' <- today
-        Settings.setEvaluationDate (Just today')
+        Context.setEvaluationDate (Just today')
         base <- makeSwap today' 5 0.05 0
         fixed <- fixedLeg base
         floating <- floatingLeg base
@@ -112,10 +112,10 @@ spec = do
 
   describe "ConstNotionalCrossCurrency{Swap,BasisSwap,FixedVsFloatingSwap}" $
     it "symmetric legs (same index/schedule/nominal/spread, matching curves, spotFX=1) NPV to zero" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         let today' = 11 `september` 2018
         cal <- calendar UnitedStatesSettlement
-        Settings.setEvaluationDate (Just today')
+        Context.setEvaluationDate (Just today')
 
         usd <- currency USD
         eur <- currency EUR
@@ -179,9 +179,9 @@ spec = do
   -- lookbackDays/lockoutDays could ship silently.
   describe "OvernightIndexedSwap" $
     it "a flat nominal and a constant per-period nominal schedule price identically" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         let today' = 17 `june` 2002
-        Settings.setEvaluationDate (Just today')
+        Context.setEvaluationDate (Just today')
         cal <- calendar TARGET
         fixedDC <- dayCounter Thirty360BondBasis
         discDC <- dayCounter Actual365FixedStandard
@@ -215,9 +215,9 @@ spec = do
 
   describe "AssetSwap" $
     it "fairCleanPrice and fairSpread both reprice the par asset swap to zero NPV" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         let evalDate = 24 `april` 2007
-        Settings.setEvaluationDate (Just evalDate)
+        Context.setEvaluationDate (Just evalDate)
         cal <- calendar TARGET
         discDC <- dayCounter Actual365FixedStandard
         q <- simpleQuote 0.05
@@ -263,9 +263,9 @@ spec = do
   -- fixing, unlike the "ongoing" cases in the same functions, which are left as follow-up work.
   describe "ZeroCouponSwap" $ do
     it "fairFixedPayment and fairFixedRate both reprice a spot-starting swap to zero NPV" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         let today' = 15 `march` 2021
-        Settings.setEvaluationDate (Just today')
+        Context.setEvaluationDate (Just today')
         cal <- calendar TARGET
         dc <- dayCounter Actual365FixedStandard
         settle <- advance cal today' (2, Days) Following False
@@ -297,9 +297,9 @@ spec = do
     -- (zerocouponswap.cpp), i.e. exactly the already-bound generic leg 0/1 legNpv -- so this
     -- checks the *identity* claim rather than binding a redundant getter.
     it "fixedLegNpv/floatingLegNpv equal the generic leg 0/1 legNpv, and sum to the swap's NPV" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         let today' = 15 `march` 2021
-        Settings.setEvaluationDate (Just today')
+        Context.setEvaluationDate (Just today')
         cal <- calendar TARGET
         dc <- dayCounter Actual365FixedStandard
         settle <- advance cal today' (2, Days) Following False

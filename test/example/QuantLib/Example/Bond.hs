@@ -21,7 +21,7 @@ import QuantLib.Instrument.Bond
 import QuantLib.Math
 import QuantLib.PricingEngine
 import QuantLib.Quote
-import QuantLib.Settings
+import QuantLib.Context
 import QuantLib.TermStructure.Volatility
 import QuantLib.TermStructure.Yield
 import QuantLib.Time.Calendar

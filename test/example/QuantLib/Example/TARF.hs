@@ -19,7 +19,7 @@ import QuantLib.Quote
 import QuantLib.TermStructure.Yield
 import QuantLib.TermStructure.Volatility
 import QuantLib.Method
-import QuantLib.Settings
+import QuantLib.Context
 
 data State = State{_remPL :: !Double, _flows :: ![Double]}
 

@@ -33,7 +33,7 @@ withStandaloneArray :: (t -> Standalone a) -> [t] -> ((CUInt, Ptr (Ptr a)) -> IO
 withStandaloneArray c x f = withMany withStandalone (map c x) (`withArray` (\px -> f (fromIntegral $ length x, px)))
 -- The name of a QuantLib object is fixed for its lifetime, so reading it through
 -- unsafePerformIO is safe; NOINLINE keeps GHC from duplicating or floating the C++
--- call, matching how QuantLib.Settings guards its own unsafePerformIO sites.
+-- call, matching how QuantLib.Context guards its own unsafePerformIO sites.
 showStandalone :: (Ptr a -> IO CString) -> Standalone a -> String
 showStandalone f x = unsafePerformIO $ withStandalone x (f >=> peekDynString)
 {-# NOINLINE showStandalone #-}

@@ -8,7 +8,7 @@ import Test.Hspec
 import Data.List.NonEmpty(NonEmpty, toList, tail)
 
 import QuantLib.Time.Date
-import qualified QuantLib.Settings as Settings
+import qualified QuantLib.Context as Context
 import QuantLib.Currency
 import QuantLib.Time.Calendar(calendar, CalendarConstructor(..))
 import QuantLib.Time.Schedule
@@ -107,7 +107,7 @@ spec = do
 
     describe "day counter" $ do
       let checkCounter :: DayCounter -> [Day] -> [(Int, TimeUnit)] -> [Double] -> IO ()
-          checkCounter dc ds periods expected = Settings.keepingSettingsGc $
+          checkCounter dc ds periods expected = Context.keepingSettingsGc $
             mapM_ (\d -> do
               calculated <- mapM (\p -> do
                 end <- addPeriod d p
@@ -116,7 +116,7 @@ spec = do
               calculated `shouldSatisfy` listClose id expected 1.0e-12)
               ds
       it "Actual/Actual" $
-        Settings.keepingSettingsGc $
+        Context.keepingSettingsGc $
           mapM_ (\(c, s, e, rs, re, t) -> do
                     dc <- dayCounter c
                     f <- yearFraction dc s e rs re
@@ -158,7 +158,7 @@ spec = do
           [1.0, 1.0, 1.0]
 
       it "Business 252" $
-        Settings.keepingSettingsGc $ do
+        Context.keepingSettingsGc $ do
           let ds :: NonEmpty Day = [1 `february` 2002,
                         4 `february` 2002,
                         16 `may` 2003,

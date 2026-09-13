@@ -19,7 +19,7 @@ import QuantLib.Instrument.Swap
 import QuantLib.Index.InterestRate(iborIndex, IborConstructor(Euribor6M))
 import QuantLib.PricingEngine
 import QuantLib.Quote hiding(linkTo)
-import QuantLib.Settings
+import QuantLib.Context
 import QuantLib.TermStructure.Yield
 import QuantLib.Time.Calendar
 import QuantLib.Time.Date

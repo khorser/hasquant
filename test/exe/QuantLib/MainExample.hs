@@ -4,7 +4,7 @@ import Control.Monad(forM_, void)
 import Text.Printf(printf)
 import Data.List(intercalate)
 
-import QuantLib.Settings
+import QuantLib.Context
 import QuantLib.Time.Date
 
 import qualified QuantLib.Example.QuickStart as QuickStart

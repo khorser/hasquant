@@ -16,7 +16,7 @@ import qualified Data.Vector.Storable as V
 import Data.Time.Calendar(addGregorianYearsClip, fromGregorian, addDays)
 import Data.List.NonEmpty(NonEmpty(..), fromList)
 
-import qualified QuantLib.Settings as Settings
+import qualified QuantLib.Context as Context
 import QuantLib.Time.Calendar
 import QuantLib.Time.Date(september)
 import QuantLib.Time.Schedule
@@ -47,11 +47,11 @@ gaussian1dSpec :: Spec
 gaussian1dSpec =
   describe "Gaussian1dModel" $
     it "reproduces the fitted curve's own discount factors, forward rate, and fair swap rate at y=0" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         cal <- calendar TARGET
-        originalEvalDate <- Settings.evaluationDate
+        originalEvalDate <- Context.evaluationDate
         evalDate <- adjust cal originalEvalDate Following
-        Settings.setEvaluationDate (Just evalDate)
+        Context.setEvaluationDate (Just evalDate)
         settlement <- advance cal evalDate (2, Days) Following False
         dc <- dayCounter Actual365FixedStandard
         flatQ <- simpleQuote 0.03
@@ -116,11 +116,11 @@ affineModelSpec :: Spec
 affineModelSpec =
   describe "AffineModel" $ do
     it "materializes every short-rate-model instance and reuses an interface handle" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         cal <- calendar TARGET
-        originalEvalDate <- Settings.evaluationDate
+        originalEvalDate <- Context.evaluationDate
         evalDate <- adjust cal originalEvalDate Following
-        Settings.setEvaluationDate (Just evalDate)
+        Context.setEvaluationDate (Just evalDate)
         settlement <- advance cal evalDate (2, Days) Following False
         dc <- dayCounter Actual365FixedStandard
         flatQ <- simpleQuote 0.03
@@ -138,11 +138,11 @@ affineModelSpec =
           [hwAffine, oneFactorAffine, g2Affine, reusedAffine]
 
     it "reproduces JamshidianSwaptionEngine's own single-period bond-option decomposition" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         cal <- calendar TARGET
-        originalEvalDate <- Settings.evaluationDate
+        originalEvalDate <- Context.evaluationDate
         evalDate <- adjust cal originalEvalDate Following
-        Settings.setEvaluationDate (Just evalDate)
+        Context.setEvaluationDate (Just evalDate)
         settlement <- advance cal evalDate (2, Days) Following False
         dc <- dayCounter Actual365FixedStandard
         flatQ <- simpleQuote 0.03
@@ -189,11 +189,11 @@ affineModelSpec =
         engineNPV `shouldSatisfy` closePrec expectedNPV 1.0e-8
 
     it "discount reproduces the fitted curve, and discountBond(t,t,.) is always 1, for HullWhite and G2" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         cal <- calendar TARGET
-        originalEvalDate <- Settings.evaluationDate
+        originalEvalDate <- Context.evaluationDate
         evalDate <- adjust cal originalEvalDate Following
-        Settings.setEvaluationDate (Just evalDate)
+        Context.setEvaluationDate (Just evalDate)
         settlement <- advance cal evalDate (2, Days) Following False
         dc <- dayCounter Actual365FixedStandard
         flatQ <- simpleQuote 0.03
@@ -217,14 +217,14 @@ affineModelSpec =
         g2Bond `shouldSatisfy` closePrec 1.0 1.0e-10
 
     it "discount/discountBond on LiborForwardModel read the index curve directly, ignoring factors" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         -- The first curve pillar follows the fixing lag so no past Euribor fixing is required.
         let fixtureDate = 4 `september` 2005
             curveEndDate = 4 `september` 2018
             size = 10 :: Word
         cal <- calendar TARGET
         evalDate <- adjust cal fixtureDate Following
-        Settings.setEvaluationDate (Just evalDate)
+        Context.setEvaluationDate (Just evalDate)
         dc <- dayCounter (Actual360 False)
         emptyIndex <- IR.iborIndex IR.Euribor6M Nothing
         firstPillar <- advance cal evalDate (fromIntegral (IR.fixingDays emptyIndex), Days) Following False

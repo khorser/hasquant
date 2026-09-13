@@ -20,7 +20,7 @@ import QuantLib.TermStructure
 import QuantLib.Time.Calendar
 import QuantLib.Time.Date
 import QuantLib.Time.Schedule
-import QuantLib.Settings
+import QuantLib.Context
 
 data SwapResult = SwapResult { spotNpvR :: Double
                               , spotFairSpreadR :: Double

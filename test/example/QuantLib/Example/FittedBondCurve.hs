@@ -15,7 +15,7 @@ import qualified QuantLib.InterestRate as IR
 import QuantLib.Instrument.Bond
 import QuantLib.Math
 import QuantLib.Quote
-import QuantLib.Settings
+import QuantLib.Context
 import QuantLib.TermStructure
 import qualified QuantLib.TermStructure.Yield as TS
 import QuantLib.Time.Calendar

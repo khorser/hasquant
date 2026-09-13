@@ -17,7 +17,7 @@ import Data.Time.Calendar(Day, fromGregorian)
 
 import QuantLib.InterestRate
 import QuantLib.Quote
-import QuantLib.Settings
+import QuantLib.Context
 import QuantLib.Time.Schedule
 import QuantLib.TermStructure.Yield(Reference(..), TermPoint(..), flatForward, discount)
 

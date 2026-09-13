@@ -25,7 +25,7 @@ import QuantLib.Instrument.Swap(swap)
 import qualified QuantLib.InterestRate as IR
 import QuantLib.PricingEngine(discountingSwapEngine)
 import qualified QuantLib.Quote as Quote
-import QuantLib.Settings(setEvaluationDate)
+import QuantLib.Context(setEvaluationDate)
 import QuantLib.TermStructure.Yield
 import QuantLib.Time.Calendar
 import QuantLib.Time.Date

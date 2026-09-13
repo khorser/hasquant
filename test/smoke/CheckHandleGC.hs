@@ -22,7 +22,7 @@ import qualified QuantLib.Index.InterestRate as IR
 import QuantLib.PricingEngine
 import QuantLib.InterestRate
 import QuantLib.Quote
-import QuantLib.Settings
+import QuantLib.Context
 import qualified QuantLib.TermStructure.Yield as TS
 import QuantLib.Time.Calendar
 import QuantLib.Time.Date

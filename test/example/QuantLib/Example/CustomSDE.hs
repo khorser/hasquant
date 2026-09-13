@@ -50,7 +50,7 @@ import QuantLib.Method
 import QuantLib.Process hiding(drift)
 import QuantLib.PricingEngine
 import QuantLib.Quote
-import QuantLib.Settings
+import QuantLib.Context
 import QuantLib.Time.Calendar
 import QuantLib.Time.Date
 import QuantLib.Time.Schedule

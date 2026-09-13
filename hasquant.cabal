@@ -66,14 +66,13 @@ flag usePkgConfig
 
 library
   exposed-modules:
-      QuantLib.Error
       QuantLib.Math
       QuantLib.Currency
       QuantLib.Commodity
       QuantLib.Time.Date
       QuantLib.Time.Calendar
       QuantLib.Time.Schedule
-      QuantLib.Settings
+      QuantLib.Context
       QuantLib.InterestRate
       QuantLib.Index
       QuantLib.Instrument
@@ -240,6 +239,7 @@ test-suite hasquant_test
   other-modules:
       QuantLib.Spec.Calendars
       QuantLib.Spec.Commodity
+      QuantLib.Spec.Context
       QuantLib.Spec.Credit
       QuantLib.Spec.CurrencyAndDayCounter
       QuantLib.Spec.DatesAndSchedule
@@ -262,7 +262,6 @@ test-suite hasquant_test
       QuantLib.Spec.PricingEngine
       QuantLib.Spec.Process
       QuantLib.Spec.Quote
-      QuantLib.Spec.Settings
       QuantLib.Spec.Statistics
       QuantLib.Spec.TermStructure
       QuantLib.Spec.TermStructure.Commodity

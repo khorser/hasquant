@@ -900,7 +900,7 @@ interpolatedZeroCurve r dc c qd i = uncurryNested (qlInterpolatedZeroCurve rs rd
 
 -- |Discount factors interpolated as a multiplicative spread applied on top of 'baseCurve'.
 -- Upstream requires the first discount factor to be exactly @1.0@, flagging its date as the
--- curve's own reference date; a mismatched leading value throws a 'QuantLib.Error.Error'.
+-- curve's own reference date; a mismatched leading value throws a 'QuantLib.Context.Error'.
 interpolatedSpreadDiscountCurve :: GenYieldTermStructure y
   -> NonEmpty (Day, Double) -- ^dates, dfs
   -> Interpolation -- ^interpolator

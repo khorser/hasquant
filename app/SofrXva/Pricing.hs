@@ -22,7 +22,7 @@ import QuantLib.Instrument (npv, setPricingEngine)
 import QuantLib.Instrument.Swap (SwapType(..), defaultOvernightObservation, overnightIndexedSwap)
 import QuantLib.Math (Interpolation(..))
 import QuantLib.PricingEngine (discountingSwapEngine)
-import QuantLib.Settings (setEvaluationDate)
+import QuantLib.Context (setEvaluationDate)
 import qualified QuantLib.TermStructure.Yield as TS
 import QuantLib.Time.Calendar (CalendarConstructor(..), calendar, BusinessDayConvention(..))
 import QuantLib.Time.Schedule (DayCounterConstructor(..), DateGenerationRule(..), TimeUnit(..), dayCounter, schedule)

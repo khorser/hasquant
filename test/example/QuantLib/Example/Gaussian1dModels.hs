@@ -25,7 +25,7 @@ import qualified QuantLib.TermStructure.Yield as TS
 import QuantLib.Time.Calendar
 import QuantLib.Time.Date
 import QuantLib.Time.Schedule
-import QuantLib.Settings
+import QuantLib.Context
 
 -- |Per-helper (modelValue, marketValue, impliedVolatility) after calibrating a basket --
 -- what upstream's @printModelCalibration@ prints, and the strongest reachable calibration

@@ -14,7 +14,7 @@ import QuantLib.Model
 import QuantLib.PricingEngine
 import QuantLib.Process
 import QuantLib.Quote
-import QuantLib.Settings
+import QuantLib.Context
 import QuantLib.Time.Calendar
 import QuantLib.Time.Date
 import QuantLib.Time.Schedule

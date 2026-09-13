@@ -17,7 +17,7 @@ import qualified QuantLib.TermStructure.Yield as TS
 import QuantLib.Time.Calendar
 import QuantLib.Time.Date
 import QuantLib.Time.Schedule
-import QuantLib.Settings
+import QuantLib.Context
 
 -- |Minimal end-to-end demo: a 5yr SOFR-based OIS priced off a zero curve
 -- built from a handful of hardcoded zero rates. Referenced from README.md's

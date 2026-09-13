@@ -16,7 +16,7 @@ import qualified QuantLib.TermStructure.Yield as TS
 import QuantLib.Time.Calendar
 import QuantLib.Time.Date
 import QuantLib.Time.Schedule
-import QuantLib.Settings
+import QuantLib.Context
 
 -- |Ports overnightindexedswap.cpp's testCachedValue: a 1yr ESTR-based OIS
 -- against a flat 5% discount curve, checked with both telescopic and

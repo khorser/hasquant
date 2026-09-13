@@ -8,18 +8,18 @@ import qualified QuantLib.CashFlow as CashFlow
 import QuantLib.Index.InterestRate (IborConstructor (UsdLibor), iborIndex)
 import qualified QuantLib.InterestRate as InterestRate
 import qualified QuantLib.Quote as Quote
-import qualified QuantLib.Settings as Settings
+import qualified QuantLib.Context as Context
 import QuantLib.TermStructure.Yield (Reference (ReferenceDate), flatForward)
 import QuantLib.Time.Calendar (BusinessDayConvention (Preceding))
 import QuantLib.Time.Schedule
   (DayCounterConstructor (Actual360), Frequency (Annual), TimeUnit (Months), dayCounter)
 
 main :: IO ()
-main = Settings.keepingSettingsGc $ do
+main = Context.keepingSettingsGc $ do
   let evaluationDate = fromGregorian 2025 1 2
       accrualStart = fromGregorian 2025 4 1
       accrualEnd = fromGregorian 2025 7 1
-  Settings.setEvaluationDate (Just evaluationDate)
+  Context.setEvaluationDate (Just evaluationDate)
   root <- do
     dc <- dayCounter (Actual360 False)
     quote <- Quote.simpleQuote 0.03 >>= Quote.asQuote
@@ -30,7 +30,7 @@ main = Settings.keepingSettingsGc $ do
     floating <- CashFlow.asFloatingRateCoupon leaf
     coupon <- CashFlow.asCoupon floating
     CashFlow.asCashFlow coupon
-  Settings.collectGarbage
+  Context.collectGarbage
   let paymentDate = CashFlow.date root
   leg <- CashFlow.cashFlowLeg [root]
   legStart <- CashFlow.startDate leg

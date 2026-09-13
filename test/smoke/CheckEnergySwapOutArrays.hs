@@ -2,7 +2,7 @@
 import Data.List.NonEmpty (fromList)
 import Data.Time.Calendar (addDays)
 
-import qualified QuantLib.Settings as Settings
+import qualified QuantLib.Context as Context
 import QuantLib.Commodity
 import QuantLib.Index (addFixing)
 import QuantLib.Index.Commodity (CommodityIndex, commodityIndex)
@@ -37,9 +37,9 @@ flatIndex ct bbl evalDate price = do
   pure idx
 
 main :: IO ()
-main = Settings.keepingSettingsGc $ do
+main = Context.keepingSettingsGc $ do
   evalDate <- today
-  Settings.setEvaluationDate (Just evalDate)
+  Context.setEvaluationDate (Just evalDate)
   ct <- commodityType "CL" "Crude Oil"
   bbl <- barrelUnitOfMeasure
   usd <- commoditySettingsCurrency

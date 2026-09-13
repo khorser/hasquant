@@ -13,7 +13,7 @@ import QuantLib.Instrument.Swap
 import qualified QuantLib.InterestRate as IR2
 import QuantLib.PricingEngine
 import QuantLib.Quote(simpleQuote)
-import QuantLib.Settings(setEvaluationDate)
+import QuantLib.Context(setEvaluationDate)
 import QuantLib.TermStructure.Yield(Reference(..), flatForward)
 import QuantLib.Time.Calendar
 import QuantLib.Time.Date

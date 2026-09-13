@@ -17,7 +17,7 @@ import qualified QuantLib.TermStructure.Yield as TS
 import QuantLib.Time.Calendar
 import QuantLib.Time.Date
 import QuantLib.Time.Schedule
-import QuantLib.Settings
+import QuantLib.Context
 
 -- |Ports swaption.cpp's testCachedValue (the plain 'VanillaSwap' half of it,
 -- not the overnight-indexed one): a physically-settled European payer

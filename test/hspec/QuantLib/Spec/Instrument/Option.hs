@@ -20,7 +20,7 @@ import Data.Word(Word64)
 import Data.List.NonEmpty(iterate, tail, fromList, drop, toList)
 import qualified Data.Vector.Storable as V
 
-import qualified QuantLib.Settings as Settings
+import qualified QuantLib.Context as Context
 import QuantLib.Time.Date
 import QuantLib.Time.Calendar(calendar, CalendarConstructor(..))
 import QuantLib.Time.Schedule(dayCounter, DayCounterConstructor(..), Frequency(..))
@@ -116,9 +116,9 @@ spec = do
     -- cached reference from QuantLib test-suite/chooseroption.cpp::testAnalyticSimpleChooserEngine
     -- (Haug, "Complete Guide to Option Pricing Formulas", pp.39-40).
     it "reproduces Haug's simple chooser option value" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         evalDate <- today
-        Settings.setEvaluationDate (Just evalDate)
+        Context.setEvaluationDate (Just evalDate)
         process <- flatProcess evalDate 50.0 0.0 0.08 0.25
         eng <- analyticSimpleChooserEngine process
         opt <- simpleChooserOption (addDays 90 evalDate) 50.0 (europeanIn 180 evalDate)
@@ -129,9 +129,9 @@ spec = do
   describe "ComplexChooserOption" $
     -- cached reference from QuantLib test-suite/chooseroption.cpp::testAnalyticComplexChooserEngine
     it "reproduces Haug's complex chooser option value" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         evalDate <- today
-        Settings.setEvaluationDate (Just evalDate)
+        Context.setEvaluationDate (Just evalDate)
         process <- flatProcess evalDate 50.0 0.05 0.10 0.35
         eng <- analyticComplexChooserEngine process
         opt <- complexChooserOption (addDays 90 evalDate) 55.0 48.0
@@ -151,9 +151,9 @@ spec = do
     -- This looks like a genuine date-arithmetic quirk in the new upstream engine, not a
     -- hasquant marshalling bug; matching the test-suite's own fixture date is the correct fix.
     it "reproduces Haug's soft barrier option value" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         let evalDate = 8 `august` 2025
-        Settings.setEvaluationDate (Just evalDate)
+        Context.setEvaluationDate (Just evalDate)
         process <- flatProcess evalDate 100.0 0.05 0.1 0.1
         eng <- analyticSoftBarrierEngine process
         opt <- softBarrierOption DownOut 95.0 95.0 (PlainVanilla (PlainVanillaPayoff Call 100.0)) (europeanIn 180 evalDate)
@@ -162,9 +162,9 @@ spec = do
         v `shouldSatisfy` closePrec 3.8075 1e-4
 
     it "round-trips its own implied volatility" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         let evalDate = 8 `august` 2025
-        Settings.setEvaluationDate (Just evalDate)
+        Context.setEvaluationDate (Just evalDate)
         process <- flatProcess evalDate 100.0 0.05 0.1 0.1
         eng <- analyticSoftBarrierEngine process
         opt <- softBarrierOption DownOut 95.0 95.0 (PlainVanilla (PlainVanillaPayoff Call 100.0)) (europeanIn 180 evalDate)
@@ -176,9 +176,9 @@ spec = do
   describe "TwoAssetCorrelationOption" $
     -- cached reference from QuantLib test-suite/twoassetcorrelationoption.cpp::testAnalyticEngine
     it "reproduces the upstream two-asset correlation option value" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         evalDate <- today
-        Settings.setEvaluationDate (Just evalDate)
+        Context.setEvaluationDate (Just evalDate)
         process1 <- flatProcess evalDate 52.0 0.0 0.1 0.2
         process2 <- flatProcess evalDate 65.0 0.0 0.1 0.3
         corr <- simpleQuote 0.75
@@ -197,9 +197,9 @@ spec = do
     -- single-asset case), so the American engine is expected to land on the same value as the
     -- European one, not a materially higher one.
     it "European and American two-asset max-basket MC engines both reproduce Haug's analytic value" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         evalDate <- today
-        Settings.setEvaluationDate (Just evalDate)
+        Context.setEvaluationDate (Just evalDate)
         process1 <- flatProcess evalDate 100.0 0.0 0.05 0.30 >>= asStochasticProcess1D
         process2 <- flatProcess evalDate 100.0 0.0 0.05 0.30 >>= asStochasticProcess1D
         procs <- stochasticProcessArray (fromList [process1, process2]) (matrix 2 2 [1.0, 0.5, 0.5, 1.0])
@@ -232,9 +232,9 @@ spec = do
 
   describe "WriterExtensibleOption" $
     it "matches an independent Monte Carlo simulation of its own payoff definition" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         evalDate <- today
-        Settings.setEvaluationDate (Just evalDate)
+        Context.setEvaluationDate (Just evalDate)
         let s0 = 100.0; q = 0.0; r = 0.05; vol = 0.2
             t1 = 0.5; t2 = 1.0; x1 = 100.0; x2 = 110.0
         process <- flatProcess evalDate s0 q r vol
@@ -250,9 +250,9 @@ spec = do
   describe "HolderExtensibleOption" $
     -- cached reference from QuantLib test-suite/extensibleoptions.cpp::testAnalyticHolderExtensibleOptionEngine
     it "reproduces the upstream holder-extensible option value" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         evalDate <- today
-        Settings.setEvaluationDate (Just evalDate)
+        Context.setEvaluationDate (Just evalDate)
         process <- flatProcess evalDate 100.0 0.0 0.08 0.25
         eng <- analyticHolderExtensibleOptionEngine process
         opt <- holderExtensibleOption Call 1.0 (addDays 270 evalDate) 105.0
@@ -265,9 +265,9 @@ spec = do
     -- cached reference from QuantLib test-suite/asianoptions.cpp::testAnalyticContinuousGeometricAveragePrice
     -- (Haug, "Option Pricing Formulas", pp.96-97).
     it "reproduces Haug's continuous geometric average-price value" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         evalDate <- today
-        Settings.setEvaluationDate (Just evalDate)
+        Context.setEvaluationDate (Just evalDate)
         process <- flatProcess evalDate 80.0 (-0.03) 0.05 0.20
         eng <- analyticContinuousGeometricAveragePriceAsianEngine process
         opt <- continuousAveragingAsianOption Geometric (PlainVanilla (PlainVanillaPayoff Put 85.0))
@@ -280,9 +280,9 @@ spec = do
     -- (Clewlow & Strickland, "Implementing Derivatives Model", pp.118-123): 10 future fixings,
     -- evenly spaced every round(360/10)=36 days out to a 360-day maturity.
     it "reproduces Clewlow & Strickland's discrete geometric average-price value" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         evalDate <- today
-        Settings.setEvaluationDate (Just evalDate)
+        Context.setEvaluationDate (Just evalDate)
         process <- flatProcess evalDate 100.0 0.03 0.06 0.20
         eng <- analyticDiscreteGeometricAveragePriceAsianEngine process
         opt <- discreteAveragingAsianOption Geometric 1.0 0 (discreteAsianFixingDates evalDate)
@@ -293,9 +293,9 @@ spec = do
         v `shouldSatisfy` closePrec 5.3425606635 1e-6
 
     it "reproduces the discrete geometric average-strike value" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         evalDate <- today
-        Settings.setEvaluationDate (Just evalDate)
+        Context.setEvaluationDate (Just evalDate)
         process <- flatProcess evalDate 100.0 0.03 0.06 0.20
         eng <- analyticDiscreteGeometricAverageStrikeAsianEngine process
         opt <- discreteAveragingAsianOption Geometric 1.0 0 (discreteAsianFixingDates evalDate)
@@ -309,9 +309,9 @@ spec = do
     -- the MC engine is checked against the analytic one above, not an independent literal (upstream
     -- does the same -- both engines price the identical option/process pair).
     it "MC discrete geometric average-price engine matches its own analytic engine" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         evalDate <- today
-        Settings.setEvaluationDate (Just evalDate)
+        Context.setEvaluationDate (Just evalDate)
         process <- flatProcess evalDate 100.0 0.03 0.06 0.20
         opt <- discreteAveragingAsianOption Geometric 1.0 0 (discreteAsianFixingDates evalDate)
                                              (PlainVanilla (PlainVanillaPayoff Call 100.0))
@@ -341,9 +341,9 @@ spec = do
         weeklyFixingsTo expiry futureFixings = [addDays (-7 * fromIntegral i) expiry | i <- [0 .. futureFixings - 1]]
 
     it "reproduces the continuous geometric value under Heston" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         evalDate <- today
-        Settings.setEvaluationDate (Just evalDate)
+        Context.setEvaluationDate (Just evalDate)
         process <- asianHestonProcess evalDate
         eng <- analyticContinuousGeometricAveragePriceAsianHestonEngine process 50 100.0
         opt <- continuousAveragingAsianOption Geometric (PlainVanilla (PlainVanillaPayoff Call 100.0))
@@ -353,9 +353,9 @@ spec = do
         v `shouldSatisfy` closePrec 11.9959 1.0e-2
 
     it "reproduces the discrete geometric value under Heston" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         evalDate <- today
-        Settings.setEvaluationDate (Just evalDate)
+        Context.setEvaluationDate (Just evalDate)
         process <- asianHestonProcess evalDate
         eng <- analyticDiscreteGeometricAveragePriceAsianHestonEngine process 100.0
         let expiry = addDays 1095 evalDate
@@ -368,9 +368,9 @@ spec = do
         v `shouldSatisfy` closePrec 12.0639 2.0e-1
 
     it "MC discrete geometric-price engine under Heston matches the analytic value" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         evalDate <- today
-        Settings.setEvaluationDate (Just evalDate)
+        Context.setEvaluationDate (Just evalDate)
         process <- asianHestonProcess evalDate
         let expiry = addDays 1095 evalDate
             fixingDates = weeklyFixingsTo expiry (1095 `div` 7)
@@ -388,7 +388,7 @@ spec = do
     -- (2007), section 4: the reference value ("22.48 to 22.52") is for the arithmetic-average
     -- case, matching asianoptions.cpp::testMCDiscreteArithmeticAveragePriceHeston.
     it "reproduces Ballestra/Pacelli/Zirilli's arithmetic value under Heston (MC, fixed seed)" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         evalDate <- today
         rQ <- simpleQuote 0.05
         qQ <- simpleQuote 0.0
@@ -397,7 +397,7 @@ spec = do
         qTS <- flatForward (ReferenceDate evalDate) qQ dc Continuous Annual
         s0 <- simpleQuote 120.0
         process <- hestonProcess rTS (Just qTS) s0 0.09 11.35 0.022 0.618 (-0.5) QuadraticExponentialMartingale
-        Settings.setEvaluationDate (Just evalDate)
+        Context.setEvaluationDate (Just evalDate)
         let fixings = 12 :: Int
             firstFixing = 1 / 12 :: Double
             len = 11 / 12 :: Double
@@ -420,9 +420,9 @@ spec = do
     -- 11/12y to maturity), at 26 and 100 equally spaced fixings.
     mapM_ (\(fixings, expected) ->
       it ("matches Levy's value at " ++ show fixings ++ " fixings") $
-        Settings.keepingSettingsGc $ do
+        Context.keepingSettingsGc $ do
           evalDate <- today
-          Settings.setEvaluationDate (Just evalDate)
+          Context.setEvaluationDate (Just evalDate)
           process <- flatProcess evalDate 90.0 0.06 0.025 0.13
           let len = 11 / 12 :: Double
               dt = len / fromIntegral (fixings - 1 :: Int)
@@ -441,9 +441,9 @@ spec = do
     -- (Haug 1998 pp.61-62; Broadie/Glasserman/Kou 1999 pp.70-74). q=0, r constant per row.
     mapM_ (\(typ, minmax, s, q, r, t, vol, expected) ->
       it ("matches the floating-strike lookback value at s=" ++ show s ++ " t=" ++ show t) $
-        Settings.keepingSettingsGc $ do
+        Context.keepingSettingsGc $ do
           evalDate <- today
-          Settings.setEvaluationDate (Just evalDate)
+          Context.setEvaluationDate (Just evalDate)
           process <- flatProcess evalDate s q r vol
           eng <- analyticContinuousFloatingLookbackEngine process
           opt <- continuousFloatingLookbackOption minmax (Floating (typ :: OptionType))
@@ -460,9 +460,9 @@ spec = do
     -- (Haug 1998 pp.63-64).
     mapM_ (\(strike, minmax, s, q, r, t, vol, expected) ->
       it ("matches the fixed-strike lookback value at strike=" ++ show strike ++ " vol=" ++ show vol) $
-        Settings.keepingSettingsGc $ do
+        Context.keepingSettingsGc $ do
           evalDate <- today
-          Settings.setEvaluationDate (Just evalDate)
+          Context.setEvaluationDate (Just evalDate)
           process <- flatProcess evalDate s q r vol
           eng <- analyticContinuousFixedLookbackEngine process
           opt <- continuousFixedLookbackOption minmax (PlainVanilla (PlainVanillaPayoff Call strike))
@@ -478,9 +478,9 @@ spec = do
     -- cached reference from QuantLib test-suite/lookbackoptions.cpp::testAnalyticContinuousPartialFloatingLookback
     -- (Haug 2006 p.146).
     it "matches the partial-time floating-strike lookback value" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         evalDate <- today
-        Settings.setEvaluationDate (Just evalDate)
+        Context.setEvaluationDate (Just evalDate)
         process <- flatProcess evalDate 90.0 0.0 0.06 0.1
         eng <- analyticContinuousPartialFloatingLookbackEngine process
         opt <- continuousPartialFloatingLookbackOption 90.0 1.0 (dateOffset evalDate 0.25)
@@ -492,9 +492,9 @@ spec = do
     -- cached reference from QuantLib test-suite/lookbackoptions.cpp::testAnalyticContinuousPartialFixedLookback
     -- (Haug 2006 p.148).
     it "matches the partial-time fixed-strike lookback value" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         evalDate <- today
-        Settings.setEvaluationDate (Just evalDate)
+        Context.setEvaluationDate (Just evalDate)
         process <- flatProcess evalDate 100.0 0.0 0.06 0.1
         eng <- analyticContinuousPartialFixedLookbackEngine process
         opt <- continuousPartialFixedLookbackOption (dateOffset evalDate 0.25)
@@ -511,9 +511,9 @@ spec = do
 
     mapM_ (\ty ->
       it ("partial-time fixed-strike MC engine matches its analytic engine for " ++ show ty) $
-        Settings.keepingSettingsGc $ do
+        Context.keepingSettingsGc $ do
           evalDate <- today
-          Settings.setEvaluationDate (Just evalDate)
+          Context.setEvaluationDate (Just evalDate)
           process <- flatProcess evalDate 100.0 0.0 0.06 0.1
           let lookbackStart = dateOffset evalDate 0.25
               exercise = europeanIn 360 evalDate
@@ -530,9 +530,9 @@ spec = do
 
     mapM_ (\ty ->
       it ("fixed-strike MC engine matches its analytic engine for " ++ show ty) $
-        Settings.keepingSettingsGc $ do
+        Context.keepingSettingsGc $ do
           evalDate <- today
-          Settings.setEvaluationDate (Just evalDate)
+          Context.setEvaluationDate (Just evalDate)
           process <- flatProcess evalDate 100.0 0.0 0.06 0.1
           let exercise = europeanIn 360 evalDate
               payoff = PlainVanilla (PlainVanillaPayoff ty 90.0)
@@ -548,9 +548,9 @@ spec = do
 
     mapM_ (\ty ->
       it ("partial-time floating-strike MC engine matches its analytic engine for " ++ show ty) $
-        Settings.keepingSettingsGc $ do
+        Context.keepingSettingsGc $ do
           evalDate <- today
-          Settings.setEvaluationDate (Just evalDate)
+          Context.setEvaluationDate (Just evalDate)
           process <- flatProcess evalDate 100.0 0.0 0.06 0.1
           let lookbackEnd = dateOffset evalDate 0.25
               exercise = europeanIn 360 evalDate
@@ -566,9 +566,9 @@ spec = do
 
     mapM_ (\ty ->
       it ("floating-strike MC engine matches its analytic engine for " ++ show ty) $
-        Settings.keepingSettingsGc $ do
+        Context.keepingSettingsGc $ do
           evalDate <- today
-          Settings.setEvaluationDate (Just evalDate)
+          Context.setEvaluationDate (Just evalDate)
           process <- flatProcess evalDate 100.0 0.0 0.06 0.1
           let exercise = europeanIn 360 evalDate
           opt <- continuousFloatingLookbackOption 100.0 (Floating ty) exercise
@@ -586,9 +586,9 @@ spec = do
     mapM_ (\(spot, r, vol, strike, len, expected, tol) ->
       it ("matches the Vecer reference value at spot=" ++ show spot ++ " r=" ++ show r ++
           " vol=" ++ show vol ++ " length=" ++ show len ++ "y") $
-        Settings.keepingSettingsGc $ do
+        Context.keepingSettingsGc $ do
           evalDate <- today
-          Settings.setEvaluationDate (Just evalDate)
+          Context.setEvaluationDate (Just evalDate)
           process <- flatProcess evalDate spot 0.0 r vol
           let maturity = dateOffset evalDate len
           eng <- continuousArithmeticAsianVecerEngine process (Nothing :: Maybe Quote) evalDate 200 200 (-1.0) 1.0
@@ -609,9 +609,9 @@ spec = do
   describe "EverestOption" $
     -- cached reference from QuantLib test-suite/everestoption.cpp::testCached.
     it "matches the cached MCEverestEngine value" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         evalDate <- today
-        Settings.setEvaluationDate (Just evalDate)
+        Context.setEvaluationDate (Just evalDate)
         p1 <- flatProcess evalDate 1.0 0.01 0.05 0.30 >>= asStochasticProcess1D
         p2 <- flatProcess evalDate 1.0 0.05 0.05 0.35 >>= asStochasticProcess1D
         p3 <- flatProcess evalDate 1.0 0.04 0.05 0.25 >>= asStochasticProcess1D
@@ -636,9 +636,9 @@ spec = do
   describe "CliquetOption" $
     -- cached reference from QuantLib test-suite/cliquetoption.cpp::testValues (Haug, p.37).
     it "reproduces Haug's cliquet option value" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         evalDate <- today
-        Settings.setEvaluationDate (Just evalDate)
+        Context.setEvaluationDate (Just evalDate)
         process <- flatProcess evalDate 60.0 0.04 0.08 0.30
         eng <- analyticCliquetEngine process
         opt <- cliquetOption (PercentageStrikePayoff Call 1.1) (EuropeanExercise (addDays 360 evalDate))
@@ -654,9 +654,9 @@ spec = do
     -- a process with a non-empty dividend handle, per hestonProcess's own haddock.
     mapM_ (\(v0, strike, ty, t, expected) ->
       it ("reproduces the cached NPV at v0=" ++ show v0 ++ " strike=" ++ show strike) $
-        Settings.keepingSettingsGc $ do
+        Context.keepingSettingsGc $ do
           evalDate <- today
-          Settings.setEvaluationDate (Just evalDate)
+          Context.setEvaluationDate (Just evalDate)
           dc <- dayCounter (Actual360 False)
           s0 <- simpleQuote 1.0
           rTS <- simpleQuote 0.0 >>= \rQ -> flatForward (ReferenceDate evalDate) rQ dc Continuous Annual
@@ -674,9 +674,9 @@ spec = do
     -- (Derman, Kamal & Zou 1999). The replicating strip's 11 put strikes (50..100) and 8 call
     -- strikes (100..135) come straight from upstream's own two data tables.
     it "reproduces the Derman/Kamal/Zou replicating-cost variance" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         evalDate <- today
-        Settings.setEvaluationDate (Just evalDate)
+        Context.setEvaluationDate (Just evalDate)
         dc <- dayCounter Actual365FixedStandard
         spotQ <- simpleQuote 100.0
         qTS <- simpleQuote 0.0 >>= \qQ -> flatForward (ReferenceDate evalDate) qQ dc Continuous Annual
@@ -708,9 +708,9 @@ spec = do
     -- the generic MultiAssetOption theta/rho (those need an upcast this step doesn't add).
     mapM_ (\(s1, s2, q1n, q2n, div1, div2, r, t, v1, v2, correlation, expV, expD1, expD2, expG1, expG2) ->
       it ("matches the European exchange-option value/greeks at s1=" ++ show s1 ++ " s2=" ++ show s2 ++ " rho=" ++ show correlation) $
-        Settings.keepingSettingsGc $ do
+        Context.keepingSettingsGc $ do
           evalDate <- today
-          Settings.setEvaluationDate (Just evalDate)
+          Context.setEvaluationDate (Just evalDate)
           process1 <- flatProcess evalDate s1 div1 r v1
           process2 <- flatProcess evalDate s2 div2 r v2
           eng <- analyticEuropeanMargrabeEngine process1 process2 correlation
@@ -752,9 +752,9 @@ spec = do
     -- cached references from QuantLib test-suite/margrabeoption.cpp::testAmericanExchangeTwoAssets (Haug).
     mapM_ (\(s1, s2, q1n, q2n, div1, div2, r, t, v1, v2, correlation, expV) ->
       it ("matches the American exchange-option value at s1=" ++ show s1 ++ " s2=" ++ show s2 ++ " t=" ++ show t ++ " rho=" ++ show correlation) $
-        Settings.keepingSettingsGc $ do
+        Context.keepingSettingsGc $ do
           evalDate <- today
-          Settings.setEvaluationDate (Just evalDate)
+          Context.setEvaluationDate (Just evalDate)
           process1 <- flatProcess evalDate s1 div1 r v1
           process2 <- flatProcess evalDate s2 div2 r v2
           eng <- analyticAmericanMargrabeEngine process1 process2 correlation

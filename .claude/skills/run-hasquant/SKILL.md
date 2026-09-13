@@ -254,16 +254,16 @@ Haskell-side HPC route above turns out insufficient.
   actually run it. This is what catches the staleness above and any
   enum/factory-table order mismatch; `test/` won't, since it doesn't know
   about cases it was never written to check.
-- **Never spell a GC nudge by hand: `QuantLib.Settings.collectGarbage` is
+- **Never spell a GC nudge by hand: `QuantLib.Context.collectGarbage` is
   the one exported name for it.** It is `performGC >> performGC`, with
   haddock saying plainly that `performGC` only *schedules* finalizers, so it
   is a nudge rather than a guarantee. If a site ever needs a `threadDelay`
   for the finalizer thread to actually get scheduled, add it *inside*
   `collectGarbage` and re-run everything -- do not re-scatter the idiom
   across call sites, which is exactly the state it was consolidated out of.
-- **A new hspec test that sets `Settings.evaluationDate` must wrap its body in
-  `Settings.keepingSettingsGc`, not a manual trailing `collectGarbage`.**
-  `QuantLib.Settings.keepingSettingsGc` is a `bracket`-based helper that
+- **A new hspec test that sets `Context.evaluationDate` must wrap its body in
+  `Context.keepingSettingsGc`, not a manual trailing `collectGarbage`.**
+  `QuantLib.Context.keepingSettingsGc` is a `bracket`-based helper that
   already runs `collectGarbage` right before restoring the saved `Settings`
   singleton — on normal completion *and* on an exception, which a manual
   trailing call does not cover. Nearly every hspec test that mutates the
@@ -278,18 +278,20 @@ Haskell-side HPC route above turns out insufficient.
   schedule (a term price surface, a piecewise curve with a maturity decades
   out): without the bracket's GC, a still-alive `LazyObject` from that test
   can crash an unrelated *later* test once a subsequent
-  `Settings.setEvaluationDate` call notifies observers and the old object's
+  `Context.setEvaluationDate` call notifies observers and the old object's
   now-past termination date trips `effective date ... later than or equal
   to termination date ...` deep in QuantLib. `keepingSettingsGc`/
   `keepingSettings`'s own restore-on-exception behavior has a direct
   regression test in `test/hspec/QuantLib/Spec/DatesAndSchedule.hs`
   (`describe "settings"`) — extend it, don't re-derive it, if this ever
   needs re-verifying.
-- **A smoke script must not `try`/`catch` on `QuantLib.Error.Error`.**
-  Compiled standalone from the repo root, ghc finds `QuantLib/Error.hs` as
-  *source* and recompiles it, so the script's `Error` is a different type
-  from the one the installed library throws: `try` never matches, and the
-  script dies with the very message it was written to catch — with no type
-  error, since both sides typecheck against their own `Error`. Catch
+- **A smoke script must not `try`/`catch` on `QuantLib.Context.Error`.**
+  `Error` is defined in `QuantLib.Internal` and re-exported by
+  `QuantLib.Context`. Compiled standalone from the repo root, ghc finds
+  `QuantLib/Internal.hs` as *source* (via `Context.chs`'s import) and
+  recompiles it, so the script's `Error` is a different type from the one
+  the installed library throws: `try` never matches, and the script dies
+  with the very message it was written to catch — with no type error,
+  since both sides typecheck against their own `Error`. Catch
   `SomeException` instead (`test/smoke/CheckIterativeBootstrap.hs` does,
   with the reason inline).

@@ -20,7 +20,7 @@ import Test.QuickCheck(elements, Arbitrary(arbitrary))
 
 import QuantLib.Time.Date(minDate, maxDate)
 import QuantLib.Time.Schedule(Frequency(..))
-import qualified QuantLib.Settings as Settings
+import qualified QuantLib.Context as Context
 
 instance Arbitrary Frequency where
   arbitrary = elements $ OtherFrequency `delete` [minBound .. ]
@@ -42,8 +42,8 @@ instance Arbitrary InvalidDay where
 -- literal translation of close from ql/math/comparison.hpp
 areClose :: Double -> Double -> Bool
 areClose x1 x2 = x1 == x2
-            || x1 * x2 == 0 && diff < Settings.epsilon * Settings.epsilon
-            || diff <= Settings.epsilon * abs x1 && diff <= Settings.epsilon * abs x2
+            || x1 * x2 == 0 && diff < Context.epsilon * Context.epsilon
+            || diff <= Context.epsilon * abs x1 && diff <= Context.epsilon * abs x2
             where diff = abs(x1 - x2)
 
 closePrec :: Double -> Double -> Double -> Bool

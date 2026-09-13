@@ -9,7 +9,7 @@ import QuantLib.Instrument
 import QuantLib.Instrument.Bond
 import QuantLib.PricingEngine
 import QuantLib.Quote
-import QuantLib.Settings
+import QuantLib.Context
 import QuantLib.TermStructure.Credit hiding(hazardRate, defaultProbability)
 import QuantLib.TermStructure.Yield
 import QuantLib.Time.Calendar

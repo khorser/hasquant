@@ -4,7 +4,7 @@ import Test.Hspec
 import Data.Time.Calendar(addDays)
 import Data.List.NonEmpty(fromList)
 
-import qualified QuantLib.Settings as Settings
+import qualified QuantLib.Context as Context
 import QuantLib.Time.Date
 import QuantLib.Time.Calendar(calendar, CalendarConstructor(..))
 import QuantLib.Time.Schedule(dayCounter, DayCounterConstructor(..), Frequency(..))
@@ -47,9 +47,9 @@ spec :: Spec
 spec = do
   describe "EnergyFuture" $ do
     it "nets to zero when the trade price matches the index's flat quote" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         evalDate <- today
-        Settings.setEvaluationDate (Just evalDate)
+        Context.setEvaluationDate (Just evalDate)
         ct <- commodityType "CL" "Crude Oil"
         bbl <- barrelUnitOfMeasure
         usd <- commoditySettingsCurrency
@@ -58,9 +58,9 @@ spec = do
         npv fut `shouldReturn` 0
 
     it "control: a below-market trade price nets to a positive, formula-predicted NPV" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         evalDate <- today
-        Settings.setEvaluationDate (Just evalDate)
+        Context.setEvaluationDate (Just evalDate)
         ct <- commodityType "CL" "Crude Oil"
         bbl <- barrelUnitOfMeasure
         usd <- commoditySettingsCurrency
@@ -72,9 +72,9 @@ spec = do
 
   describe "EnergyVanillaSwap" $ do
     it "nets to zero (before financing cost) when the fixed price matches the flat floating quote" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         evalDate <- today
-        Settings.setEvaluationDate (Just evalDate)
+        Context.setEvaluationDate (Just evalDate)
         ct <- commodityType "CL" "Crude Oil"
         bbl <- barrelUnitOfMeasure
         usd <- commoditySettingsCurrency
@@ -86,9 +86,9 @@ spec = do
         npv swp `shouldReturn` 0
 
     it "control: paying a below-market fixed price nets to a positive NPV" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         evalDate <- today
-        Settings.setEvaluationDate (Just evalDate)
+        Context.setEvaluationDate (Just evalDate)
         ct <- commodityType "CL" "Crude Oil"
         bbl <- barrelUnitOfMeasure
         usd <- commoditySettingsCurrency
@@ -102,9 +102,9 @@ spec = do
 
   describe "EnergyBasisSwap" $ do
     it "nets to zero (before financing cost) with a zero basis and matching flat quotes" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         evalDate <- today
-        Settings.setEvaluationDate (Just evalDate)
+        Context.setEvaluationDate (Just evalDate)
         ct <- commodityType "CL" "Crude Oil"
         bbl <- barrelUnitOfMeasure
         usd <- commoditySettingsCurrency
@@ -116,9 +116,9 @@ spec = do
         npv swp `shouldReturn` 0
 
     it "control: a nonzero basis added to the pay leg nets to a negative NPV" $
-      Settings.keepingSettingsGc $ do
+      Context.keepingSettingsGc $ do
         evalDate <- today
-        Settings.setEvaluationDate (Just evalDate)
+        Context.setEvaluationDate (Just evalDate)
         ct <- commodityType "CL" "Crude Oil"
         bbl <- barrelUnitOfMeasure
         usd <- commoditySettingsCurrency

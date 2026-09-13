@@ -19,7 +19,7 @@ import QuantLib.Instrument(setPricingEngine, PricingModel(..))
 import QuantLib.Instrument.Credit(Claim(..), ProtectionSide(..), creditDefaultSwap, syntheticCdo, fairPremium, nthToDefault, ntdFairPremium)
 import QuantLib.Instrument.Swap(fairSpread)
 import QuantLib.PricingEngine(midPointCdsEngine, midPointCdoEngine, integralCdoEngine, integralNtdEngine)
-import qualified QuantLib.Settings as Settings
+import qualified QuantLib.Context as Context
 import QuantLib.Credit
 import QuantLib.Spec.Helpers(closePrec)
 
@@ -33,12 +33,12 @@ import QuantLib.Spec.Helpers(closePrec)
 spec :: Spec
 spec = do
   describe "portfolio credit scaffolding (Pool, Issuer, Basket, GaussianLHPLossModel)" $ do
-    it "wires a basket to a Gaussian LHP loss model over a small pool" $ Settings.keepingSettingsGc $ do
+    it "wires a basket to a Gaussian LHP loss model over a small pool" $ Context.keepingSettingsGc $ do
       let refDate = fromGregorian 2006 8 31
           names = ["issuer-0", "issuer-1", "issuer-2", "issuer-3", "issuer-4"]
           notionalPerName = 100.0
 
-      Settings.setEvaluationDate (Just refDate)
+      Context.setEvaluationDate (Just refDate)
 
       eur <- currency EUR
       dc <- dayCounter (Actual360 False)
@@ -68,7 +68,7 @@ spec = do
     -- absolute / 50% relative, cdo.cpp's absoluteTolerance/relativeToleranceMidp[3]) -- LHP is a
     -- crude approximation for a 100-name pool, so this is a wiring check against Hull-White
     -- Table 7, not a tight numeric regression. Do not tighten this tolerance later.
-    it "prices a synthetic CDO tranche against Hull-White Table 7 (Gaussian LHP)" $ Settings.keepingSettingsGc $ do
+    it "prices a synthetic CDO tranche against Hull-White Table 7 (Gaussian LHP)" $ Context.keepingSettingsGc $ do
       let refDate = fromGregorian 2006 8 31
           poolSize = 100 :: Int
           names = ["issuer-" ++ show i | i <- [0 .. poolSize - 1]]
@@ -83,7 +83,7 @@ spec = do
           absTol = 10.0 :: Double
           relTol = 0.5 :: Double
 
-      Settings.setEvaluationDate (Just refDate)
+      Context.setEvaluationDate (Just refDate)
 
       eur <- currency EUR
       key <- northAmericaCorpDefaultKey eur SeniorSec (0, Weeks) 10.0 FullRestructuring
@@ -129,7 +129,7 @@ spec = do
     -- correlation on a shared SimpleQuote (mutating it re-prices without rebuilding the basket
     -- or loss model, since ConstantLossModel holds a Handle<Quote> onto it) and checked against
     -- Hull-White Table 3, at upstream's own tolerances.
-    it "prices nth-to-default swaps against Hull-White Table 3" $ Settings.keepingSettingsGc $ do
+    it "prices nth-to-default swaps against Hull-White Table 3" $ Context.keepingSettingsGc $ do
       let refDate = fromGregorian 2006 8 31
           poolSize = 10 :: Int
           names = ["Name" ++ show i | i <- [0 .. poolSize - 1]]
@@ -148,7 +148,7 @@ spec = do
           hwDataStudent :: [(Int, Double)]
           hwDataStudent = zip [1 .. poolSize] [455, 116, 44, 22, 13, 8, 5, 4, 2, 1]
 
-      Settings.setEvaluationDate (Just refDate)
+      Context.setEvaluationDate (Just refDate)
 
       eur <- currency EUR
       key <- northAmericaCorpDefaultKey eur SeniorSec (0, Days) 1.0 FullRestructuring
@@ -214,14 +214,14 @@ spec = do
     -- invariants of GaussianLHPLossModel's risk surface on the equity tranche of the CDO
     -- fixture above (correlation 0.1, 100 names) -- an equity tranche (attach = 0) is what
     -- makes "any portfolio loss at all reaches the tranche" a true invariant.
-    it "computes tranche-loss risk outputs on a Basket" $ Settings.keepingSettingsGc $ do
+    it "computes tranche-loss risk outputs on a Basket" $ Context.keepingSettingsGc $ do
       let refDate = fromGregorian 2006 8 31
           poolSize = 100 :: Int
           names = ["issuer-" ++ show i | i <- [0 .. poolSize - 1]]
           notionals = replicate poolSize 100.0
           recovery = 0.4
 
-      Settings.setEvaluationDate (Just refDate)
+      Context.setEvaluationDate (Just refDate)
 
       eur <- currency EUR
       key <- northAmericaCorpDefaultKey eur SeniorSec (0, Weeks) 10.0 FullRestructuring
@@ -266,14 +266,14 @@ spec = do
     -- have closed forms at the diagonal/n=0 edge cases (derived above from
     -- DefaultLatentModel::defaultCorrelation/probAtLeastNEvents), so these are exact checks,
     -- not pinned regression values.
-    it "computes digital-loss risk outputs on a Basket" $ Settings.keepingSettingsGc $ do
+    it "computes digital-loss risk outputs on a Basket" $ Context.keepingSettingsGc $ do
       let refDate = fromGregorian 2006 8 31
           poolSize = 10 :: Int
           names = ["Name" ++ show i | i <- [0 .. poolSize - 1]]
           namesNotional = 100.0
           recovery = 0.4
 
-      Settings.setEvaluationDate (Just refDate)
+      Context.setEvaluationDate (Just refDate)
 
       eur <- currency EUR
       key <- northAmericaCorpDefaultKey eur SeniorSec (0, Days) 1.0 FullRestructuring
@@ -304,11 +304,11 @@ spec = do
       (p0 >= p1 && p1 >= p2) `shouldBe` True
 
   describe "default-probability curves" $ do
-    it "constructs direct hazard, survival, and density curves" $ Settings.keepingSettingsGc $ do
+    it "constructs direct hazard, survival, and density curves" $ Context.keepingSettingsGc $ do
       let refDate = fromGregorian 2024 1 2
           d1 = addGregorianYearsClip 1 refDate
           d2 = addGregorianYearsClip 2 refDate
-      Settings.setEvaluationDate (Just refDate)
+      Context.setEvaluationDate (Just refDate)
       dc <- dayCounter Actual365FixedStandard
       cal <- calendar TARGET
 
@@ -340,13 +340,13 @@ spec = do
       betweenTimes <- defaultProbabilityBetween hazard (TimeInterval 0 t1) False
       betweenTimes `shouldSatisfy` closePrec betweenDates 1.0e-10
 
-    it "matches fixed and moving references at default bootstrap settings" $ Settings.keepingSettingsGc $ do
+    it "matches fixed and moving references at default bootstrap settings" $ Context.keepingSettingsGc $ do
       let refDate = fromGregorian 2015 6 15
           spreads = zip [1, 2, 3, 5] [0.005, 0.006, 0.007, 0.009]
           recovery = 0.4
           queryDate = addGregorianYearsClip 4 refDate
-      Settings.setEvaluationDate (Just refDate)
-      Settings.setIncludeTodaysCashFlows (Just True)
+      Context.setEvaluationDate (Just refDate)
+      Context.setIncludeTodaysCashFlows (Just True)
       cal <- calendar TARGET
       helperDc <- dayCounter Thirty360BondBasis
       discountDc <- dayCounter (Actual360 False)
@@ -376,12 +376,12 @@ spec = do
         computed <- fairSpread cds
         computed `shouldSatisfy` closePrec quotedSpread 1.0e-6
 
-    it "impliedQuote reproduces each SpreadCdsHelper's own bootstrap quote" $ Settings.keepingSettingsGc $ do
+    it "impliedQuote reproduces each SpreadCdsHelper's own bootstrap quote" $ Context.keepingSettingsGc $ do
       let refDate = fromGregorian 2015 6 15
           spreads = zip [1, 2, 3, 5] [0.005, 0.006, 0.007, 0.009]
           recovery = 0.4
-      Settings.setEvaluationDate (Just refDate)
-      Settings.setIncludeTodaysCashFlows (Just True)
+      Context.setEvaluationDate (Just refDate)
+      Context.setIncludeTodaysCashFlows (Just True)
       cal <- calendar TARGET
       helperDc <- dayCounter Thirty360BondBasis
       discountDc <- dayCounter (Actual360 False)
@@ -402,7 +402,7 @@ spec = do
         implied <- impliedQuote h
         implied `shouldSatisfy` closePrec quotedSpread 1.0e-8
 
-    it "reproduces CDS spreads for all supported credit traits/interpolators" $ Settings.keepingSettingsGc $ do
+    it "reproduces CDS spreads for all supported credit traits/interpolators" $ Context.keepingSettingsGc $ do
       let refDate = fromGregorian 2015 6 15
           spreads = zip [1, 2, 3, 5] [0.005, 0.006, 0.007, 0.009]
           recovery = 0.4
@@ -412,8 +412,8 @@ spec = do
             , (DefaultDensity, Linear)
             , (SurvivalProbability, LogLinear)
             ]
-      Settings.setEvaluationDate (Just refDate)
-      Settings.setIncludeTodaysCashFlows (Just True)
+      Context.setEvaluationDate (Just refDate)
+      Context.setIncludeTodaysCashFlows (Just True)
       cal <- calendar TARGET
       helperDc <- dayCounter Thirty360BondBasis
       discountDc <- dayCounter (Actual360 False)
@@ -439,7 +439,7 @@ spec = do
           computed <- fairSpread cds
           computed `shouldSatisfy` closePrec quotedSpread 1.0e-6
 
-    it "supports retry/fallback settings for a distressed inverted spread curve" $ Settings.keepingSettingsGc $ do
+    it "supports retry/fallback settings for a distressed inverted spread curve" $ Context.keepingSettingsGc $ do
       let asof = fromGregorian 2020 4 1
           curveNodes = fromList $ zip
             [ fromGregorian 2020 4 1, fromGregorian 2020 4 2, fromGregorian 2020 4 14
@@ -463,7 +463,7 @@ spec = do
                        , ((3, Years), 2.844498960), ((4, Years), 2.769234420), ((5, Years), 2.713474100)]
           recovery = 0.035
           testDate = fromGregorian 2020 12 21
-      Settings.setEvaluationDate (Just asof)
+      Context.setEvaluationDate (Just asof)
       tsDc <- dayCounter Actual365FixedStandard
       cdsDc <- dayCounter (Actual360 False)
       lastDc <- dayCounter (Actual360 True)

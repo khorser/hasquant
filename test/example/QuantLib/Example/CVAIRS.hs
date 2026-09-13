@@ -18,7 +18,7 @@ import qualified QuantLib.TermStructure.Yield as TS
 import QuantLib.Time.Calendar
 import QuantLib.Time.Date
 import QuantLib.Time.Schedule
-import QuantLib.Settings
+import QuantLib.Context
 
 -- |Reproduces Table 2 on page 11 of "A Formula for Interest Rate Swaps
 -- Valuation under Counterparty Risk in presence of Netting Agreements"

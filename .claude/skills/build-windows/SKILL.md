@@ -87,7 +87,7 @@ Notes that are only relevant when an agent drives the build:
     (`defaultsHook` and friends) are the wrong shape twice over: one-shot
     per process for a per-thread register, and a library defining one
     collides with any program that defines the same. hasquant exposes
-    `QuantLib.Settings.setExtendedPrecision` for the caller to invoke at
+    `QuantLib.Context.setExtendedPrecision` for the caller to invoke at
     startup instead of hooking the marshalling path.
   - When diagnosing, note that mingw's `printf` has no `%Lg`: it prints
     subnormal nonsense (`…e-312`) for a long double in the *passing* binary

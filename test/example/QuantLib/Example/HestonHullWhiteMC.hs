@@ -35,7 +35,7 @@ import QuantLib.Process(hestonProcess, hullWhiteForwardProcess, setForwardMeasur
  , hybridHestonHullWhiteProcess, numeraire, factors
  , HestonProcessDiscretization(..), HybridHestonHullWhiteProcessDiscretization(..))
 import QuantLib.Quote(simpleQuote)
-import qualified QuantLib.Settings as Settings
+import qualified QuantLib.Context as Context
 import QuantLib.InterestRate(Compounding(..))
 import QuantLib.TermStructure.Yield(Reference(..), TermPoint(..), interpolatedZeroCurve, flatForward, discount)
 import QuantLib.Time.Calendar(calendar, CalendarConstructor(..))
@@ -52,9 +52,9 @@ data Result = Result
 data Acc = Acc !Double !Double
 
 run :: IO Result
-run = Settings.keepingSettingsGc $ do
+run = Context.keepingSettingsGc $ do
   evalDate <- today
-  Settings.setEvaluationDate (Just evalDate)
+  Context.setEvaluationDate (Just evalDate)
   dc <- dayCounter (Actual360 False)
   cal <- calendar TARGET
 

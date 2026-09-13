@@ -1,8 +1,12 @@
--- |global repository for run-time library settings
-module QuantLib.Settings
+-- |process-global evaluation context: run-time library settings and the exception type
+-- raised across the FFI boundary
+module QuantLib.Context
   (
+    -- * Types
+    Error(..)
+
     -- * Mutators
-    setEvaluationDate
+  , setEvaluationDate
   , setEnforceTodaysHistoricFixings
   , setIncludeTodaysCashFlows
   , setIncludeReferenceDateEvents

@@ -11,7 +11,7 @@ import Data.Time.Calendar (fromGregorian)
 
 import QuantLib.Instrument
 import QuantLib.Instrument.Option
-import QuantLib.Settings
+import QuantLib.Context
 
 main :: IO ()
 main = do

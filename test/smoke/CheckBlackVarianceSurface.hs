@@ -19,7 +19,7 @@ import QuantLib.Math (RealMatrix, realMatrixFromVector, Interpolation2D(..))
 import QuantLib.PricingEngine (analyticEuropeanEngine)
 import QuantLib.Process (blackScholesProcess, ProcessDiscretization(..))
 import QuantLib.Quote (simpleQuote)
-import QuantLib.Settings (setEvaluationDate)
+import QuantLib.Context (setEvaluationDate)
 import QuantLib.TermStructure.Volatility
 import QuantLib.TermStructure.Yield (flatForward)
 import QuantLib.Time.Calendar (calendar, CalendarConstructor(..))
