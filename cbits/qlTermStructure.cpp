@@ -21,6 +21,7 @@
 #include <ql/termstructures/volatility/swaption/swaptionvolmatrix.hpp>
 #include <ql/termstructures/volatility/swaption/sabrswaptionvolatilitycube.hpp>
 #include <ql/termstructures/volatility/swaption/interpolatedswaptionvolatilitycube.hpp>
+#include <ql/termstructures/volatility/swaption/gaussian1dswaptionvolatility.hpp>
 #include <ql/termstructures/volatility/sabrsmilesection.hpp>
 #include <ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp>
 #include <ql/experimental/volatility/noarbsabrsmilesection.hpp>
@@ -54,6 +55,8 @@
 #include <ql/indexes/inflation/all.hpp>
 #include <ql/termstructures/inflation/inflationhelpers.hpp>
 #include <ql/termstructures/inflation/interpolatedyoyinflationcurve.hpp>
+#include <ql/termstructures/inflation/interpolatedzeroinflationcurve.hpp>
+#include <ql/termstructures/inflation/seasonality.hpp>
 #include <ql/indexes/equityindex.hpp>
 #include <ql/experimental/commodities/commoditycurve.hpp>
 #include <ql/experimental/commodities/commodityindex.hpp>
@@ -137,6 +140,17 @@ namespace {
     b.maxAttempts = maxAttempts; b.maxFactor = maxFactor; b.minFactor = minFactor;
     b.dontThrow = dontThrow; b.dontThrowSteps = dontThrowSteps; b.maxEvaluations = maxEvaluations;
     return b;
+  }
+
+  // kind: -1 none, 0 MultiplicativePriceSeasonality, 1 KerkhofSeasonality (monthly, freq ignored).
+  shared_ptr<Seasonality> qlSeasonality(int kind, int baseDate, int freq, unsigned len, double *factors) {
+    std::vector<Rate> fs(factors, factors + len);
+    switch (kind) {
+    case -1: return shared_ptr<Seasonality>();
+    case 0: return QuantLib::ext::make_shared<MultiplicativePriceSeasonality>(Date(baseDate), (Frequency)freq, fs);
+    case 1: return QuantLib::ext::make_shared<KerkhofSeasonality>(Date(baseDate), fs);
+    default: QL_FAIL("Unsupported seasonality kind " << kind);
+    }
   }
 
   template <class Build>
@@ -736,6 +750,11 @@ double qlCapFloorTermVolatilityStructureVolatilityForTime(QlCapFloorTermVolatili
 QlSwaptionVolatilityStructure* qlSpreadedSwaptionVolatility(QlSwaptionVolatilityStructure* x0, QlQuote* spread, char **e) {
   try {return ret(new QlSwaptionVolatilityStructure(shared_ptr<SwaptionVolatilityStructure>(alloc(new SpreadedSwaptionVolatility(*arg(x0), *arg(spread))))));
   } catch (std::exception& er) {return handleException<QlSwaptionVolatilityStructure*>(e, er);}}
+// The engine argument is left null so each smile section builds upstream's default
+// Gaussian1dSwaptionEngine; hasquant's engines are type-erased PricingEngines.
+QlSwaptionVolatilityStructure* qlGaussian1dSwaptionVolatility(Calendar* cal, int bdc, QlSwapIndex* indexBase, QlGaussian1dModel* model, DayCounter* dc, char **e) {
+  try {return ret(new QlSwaptionVolatilityStructure(allocShared(new Gaussian1dSwaptionVolatility(*arg(cal), (BusinessDayConvention)bdc, *arg(indexBase), *arg(model), *arg(dc)))));
+  } catch (std::exception& er) {return handleException<QlSwaptionVolatilityStructure*>(e, er);}}
 QlOptionletVolatilityStructure* qlSpreadedOptionletVolatility(QlOptionletVolatilityStructure* x0, QlQuote* spread, char **e) {
   try {return ret(new QlOptionletVolatilityStructure(shared_ptr<OptionletVolatilityStructure>(alloc(new SpreadedOptionletVolatility(*arg(x0), *arg(spread))))));
   } catch (std::exception& er) {return handleException<QlOptionletVolatilityStructure*>(e, er);}}
@@ -1085,6 +1104,59 @@ double qlNoArbSabrSwaptionVolatilityCubeAtmStrike1(QlNoArbSabrSwaptionVolatility
   try {return (*arg(o))->atmStrike(Date(optionDate), Period(n, (TimeUnit)u));
   } catch (std::exception& er) {return handleException<double>(e, er);}}
 double qlNoArbSabrSwaptionVolatilityCubeAtmStrike(QlNoArbSabrSwaptionVolatilityCube* o, int optionN, int optionU, int n, int u, char **e) {
+  try {return (*arg(o))->atmStrike(Period(optionN, (TimeUnit)optionU), Period(n, (TimeUnit)u));
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+
+// ZabrSwaptionVolatilityCube is the Xabr cube with the default ZABR kernel: NoArb's shims with a
+// fifth (gamma) parameter column and fixed flag.
+QlZabrSwaptionVolatilityCube* qlZabrSwaptionVolatilityCube(QlSwaptionVolatilityStructure* atmVolStructure,
+    unsigned optionTenorsLen, int *optionTenorsNum, unsigned, int *optionTenorsUnit,
+    unsigned swapTenorsLen, int *swapTenorsNum, unsigned, int *swapTenorsUnit,
+    unsigned strikeSpreadsLen, double* strikeSpreads,
+    unsigned volSpreadsRows, unsigned volSpreadsCols, QlQuote** volSpreads,
+    QlSwapIndex* swapIndexBase, QlSwapIndex* shortSwapIndexBase,
+    int vegaWeightedSmileFit,
+    unsigned parametersGuessRows, unsigned parametersGuessCols, QlQuote** parametersGuess,
+    int isAlphaFixed, int isBetaFixed, int isNuFixed, int isRhoFixed, int isGammaFixed,
+    int isAtmCalibrated,
+    QlEndCriteria* endCriteria, QlOptimizationMethod* method,
+    double maxErrorTolerance, double errorAccept, int useMaxError, unsigned maxGuesses,
+    int backwardFlat, double cutoffStrike, char **e) {
+  try {
+    return ret(new QlZabrSwaptionVolatilityCube(alloc(new ZabrSwaptionVolatilityCube(
+            *arg(atmVolStructure),
+            qlPeriodVector(optionTenorsNum, optionTenorsUnit, optionTenorsLen),
+            qlPeriodVector(swapTenorsNum, swapTenorsUnit, swapTenorsLen),
+            std::vector<Real>(strikeSpreads, strikeSpreads + strikeSpreadsLen),
+            qlHandleMatrix(volSpreads, volSpreadsRows, volSpreadsCols),
+            *arg(swapIndexBase), *arg(shortSwapIndexBase),
+            (bool)vegaWeightedSmileFit,
+            qlHandleMatrix(parametersGuess, parametersGuessRows, parametersGuessCols),
+            std::vector<bool>{(bool)isAlphaFixed, (bool)isBetaFixed, (bool)isNuFixed, (bool)isRhoFixed, (bool)isGammaFixed},
+            (bool)isAtmCalibrated,
+            endCriteria ? *arg(endCriteria) : shared_ptr<EndCriteria>(), maxErrorTolerance,
+            method ? *arg(method) : shared_ptr<OptimizationMethod>(),
+            errorAccept, (bool)useMaxError, maxGuesses, (bool)backwardFlat, cutoffStrike))));
+  } catch (std::exception& er) {return handleException<QlZabrSwaptionVolatilityCube*>(e, er);}}
+void qlFreeZabrSwaptionVolatilityCube(QlZabrSwaptionVolatilityCube *o) {del(o);}
+QlSwaptionVolatilityStructure* qlZabrSwaptionVolatilityCubeAsSwaptionVolatilityStructure(QlZabrSwaptionVolatilityCube *o) {
+  return ret(new QlSwaptionVolatilityStructure(*arg(o)));}
+void qlZabrSwaptionVolatilityCubeSparseSabrParameters(QlZabrSwaptionVolatilityCube* o, unsigned* rows, unsigned* cols, unsigned* len, double** vs, char** e) {
+  try {fillMatrixOut([&] {return (*arg(o))->sparseSabrParameters();}, rows, cols, len, vs);
+  } catch (std::exception& er) {handleException<double*>(e, er);}}
+void qlZabrSwaptionVolatilityCubeDenseSabrParameters(QlZabrSwaptionVolatilityCube* o, unsigned* rows, unsigned* cols, unsigned* len, double** vs, char** e) {
+  try {fillMatrixOut([&] {return (*arg(o))->denseSabrParameters();}, rows, cols, len, vs);
+  } catch (std::exception& er) {handleException<double*>(e, er);}}
+void qlZabrSwaptionVolatilityCubeMarketVolCube(QlZabrSwaptionVolatilityCube* o, unsigned* rows, unsigned* cols, unsigned* len, double** vs, char** e) {
+  try {fillMatrixOut([&] {return (*arg(o))->marketVolCube();}, rows, cols, len, vs);
+  } catch (std::exception& er) {handleException<double*>(e, er);}}
+void qlZabrSwaptionVolatilityCubeVolCubeAtmCalibrated(QlZabrSwaptionVolatilityCube* o, unsigned* rows, unsigned* cols, unsigned* len, double** vs, char** e) {
+  try {fillMatrixOut([&] {return (*arg(o))->volCubeAtmCalibrated();}, rows, cols, len, vs);
+  } catch (std::exception& er) {handleException<double*>(e, er);}}
+double qlZabrSwaptionVolatilityCubeAtmStrike1(QlZabrSwaptionVolatilityCube* o, int optionDate, int n, int u, char **e) {
+  try {return (*arg(o))->atmStrike(Date(optionDate), Period(n, (TimeUnit)u));
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlZabrSwaptionVolatilityCubeAtmStrike(QlZabrSwaptionVolatilityCube* o, int optionN, int optionU, int n, int u, char **e) {
   try {return (*arg(o))->atmStrike(Period(optionN, (TimeUnit)optionU), Period(n, (TimeUnit)u));
   } catch (std::exception& er) {return handleException<double>(e, er);}}
 
@@ -1438,7 +1510,8 @@ QlYearOnYearInflationSwapHelper* qlYearOnYearInflationSwapHelper(QlQuote* quote,
 QlZeroCouponInflationSwap* qlZeroCouponInflationSwapHelperSwap(QlZeroCouponInflationSwapHelper* o, char **e) {try {return ret(new QlZeroCouponInflationSwap((*arg(o))->swap()));} catch (std::exception& er) {return handleException<QlZeroCouponInflationSwap*>(e, er);}}
 QlYearOnYearInflationSwap* qlYearOnYearInflationSwapHelperSwap(QlYearOnYearInflationSwapHelper* o, char **e) {try {return ret(new QlYearOnYearInflationSwap((*arg(o))->swap()));} catch (std::exception& er) {return handleException<QlYearOnYearInflationSwap*>(e, er);}}
 
-QlZeroInflationTermStructure* qlPiecewiseZeroInflationCurve(int referenceDate, int baseDate, int frequency, DayCounter* dayCounter, unsigned instrumentsLen, QlZeroCouponInflationSwapHelper** instruments, int interpolator, int approximator, int approximatorArg, char **e) {
+QlZeroInflationTermStructure* qlPiecewiseZeroInflationCurve(int referenceDate, int baseDate, int frequency, DayCounter* dayCounter, unsigned instrumentsLen, QlZeroCouponInflationSwapHelper** instruments,
+    int seasKind, int seasBaseDate, int seasFreq, unsigned seasLen, double *seasFactors, int interpolator, int approximator, int approximatorArg, char **e) {
   try {
     // instruments[i] is shared_ptr<ZeroCouponInflationSwapHelper>*; push_back upcasts each
     // element to shared_ptr<BootstrapHelper<ZeroInflationTermStructure>> (PiecewiseZeroInflationCurve's
@@ -1448,32 +1521,39 @@ QlZeroInflationTermStructure* qlPiecewiseZeroInflationCurve(int referenceDate, i
     instr.reserve(instrumentsLen);
     for (unsigned i = 0; i < instrumentsLen; ++i) instr.push_back(*instruments[i]);
     auto ts = allocShared(qlPiecewiseZeroInflationCurveAux(Date(referenceDate), Date(baseDate), (Frequency)frequency, *arg(dayCounter),
-        instr, interpolator, approximator, approximatorArg));
+        instr, qlSeasonality(seasKind, seasBaseDate, seasFreq, seasLen, seasFactors), interpolator, approximator, approximatorArg));
     return ret(new QlZeroInflationTermStructure(ts));
   } catch (std::exception& er) {return handleException<QlZeroInflationTermStructure*>(e, er);}}
-QlYoYInflationTermStructure* qlPiecewiseYoYInflationCurve(int referenceDate, int baseDate, double baseYoYRate, int frequency, DayCounter* dayCounter, unsigned instrumentsLen, QlYearOnYearInflationSwapHelper** instruments, int interpolator, int approximator, int approximatorArg, char **e) {
+QlYoYInflationTermStructure* qlPiecewiseYoYInflationCurve(int referenceDate, int baseDate, double baseYoYRate, int frequency, DayCounter* dayCounter, unsigned instrumentsLen, QlYearOnYearInflationSwapHelper** instruments,
+    int seasKind, int seasBaseDate, int seasFreq, unsigned seasLen, double *seasFactors, int interpolator, int approximator, int approximatorArg, char **e) {
   try {
     std::vector<shared_ptr<BootstrapHelper<YoYInflationTermStructure> > > instr;
     instr.reserve(instrumentsLen);
     for (unsigned i = 0; i < instrumentsLen; ++i) instr.push_back(*instruments[i]);
     auto ts = allocShared(qlPiecewiseYoYInflationCurveAux(Date(referenceDate), Date(baseDate), baseYoYRate, (Frequency)frequency, *arg(dayCounter),
-        instr, interpolator, approximator, approximatorArg));
+        instr, qlSeasonality(seasKind, seasBaseDate, seasFreq, seasLen, seasFactors), interpolator, approximator, approximatorArg));
     return ret(new QlYoYInflationTermStructure(ts));
   } catch (std::exception& er) {return handleException<QlYoYInflationTermStructure*>(e, er);}}
 
-// InterpolatedYoYInflationCurve<Interpolator> -- direct (dates, rates) curve, unlike
-// qlPiecewiseYoYInflationCurve's bootstrap from swap helpers. No seasonality (unbound elsewhere
-// in hasquant).
+// Interpolated (dates, rates) inflation curves, unlike the piecewise bootstraps from swap helpers.
 QlYoYInflationTermStructure* qlInterpolatedYoYInflationCurve(int referenceDate,
     unsigned datesLen, int *dates, double *rates, int frequency, DayCounter *dayCounter,
+    int seasKind, int seasBaseDate, int seasFreq, unsigned seasLen, double *seasFactors,
     int interpolator, int approximator, int approximatorArg, char **e) {
   try {
-    std::vector<Date> ds(datesLen);
-    for (unsigned i = 0; i < datesLen; ++i) ds[i] = Date(dates[i]);
-    auto ts = allocShared(qlInterpolatedYoYInflationCurveAux(Date(referenceDate), ds, std::vector<Rate>(rates, rates+datesLen),
-        (Frequency)frequency, *arg(dayCounter), interpolator, approximator, approximatorArg));
+    auto ts = allocShared(qlInterpolatedYoYInflationCurveAux(Date(referenceDate), qlDateVector(dates, datesLen), std::vector<Rate>(rates, rates+datesLen),
+        (Frequency)frequency, *arg(dayCounter), qlSeasonality(seasKind, seasBaseDate, seasFreq, seasLen, seasFactors), interpolator, approximator, approximatorArg));
     return ret(new QlYoYInflationTermStructure(ts));
   } catch (std::exception& er) {return handleException<QlYoYInflationTermStructure*>(e, er);}}
+QlZeroInflationTermStructure* qlInterpolatedZeroInflationCurve(int referenceDate,
+    unsigned datesLen, int *dates, double *rates, int frequency, DayCounter *dayCounter,
+    int seasKind, int seasBaseDate, int seasFreq, unsigned seasLen, double *seasFactors,
+    int interpolator, int approximator, int approximatorArg, char **e) {
+  try {
+    auto ts = allocShared(qlInterpolatedZeroInflationCurveAux(Date(referenceDate), qlDateVector(dates, datesLen), std::vector<Rate>(rates, rates+datesLen),
+        (Frequency)frequency, *arg(dayCounter), qlSeasonality(seasKind, seasBaseDate, seasFreq, seasLen, seasFactors), interpolator, approximator, approximatorArg));
+    return ret(new QlZeroInflationTermStructure(ts));
+  } catch (std::exception& er) {return handleException<QlZeroInflationTermStructure*>(e, er);}}
 
 QlRateHelper *qlDepositRateHelper(QlQuote *quote, int l, int u, unsigned fixDays, Calendar *calendar, int conv, int eom, DayCounter *dayCount, char **e) {
   try {return ret(new QlRateHelper(alloc(new DepositRateHelper( *arg(quote), Period(l, (TimeUnit)u), fixDays,
@@ -1532,6 +1612,11 @@ QlYieldTermStructure *qlInterpolatedZeroCurve(unsigned yieldLen, double *yields,
   QlQuote **quotes, unsigned datesLen, int *dates, int interpolator, int approximator, int approximatorArg, char **e) {
   return qlInterpolatedCurve(&qlInterpolatedZeroCurveAux, yieldLen, yields, ydatesLen, yieldDates,
     dayCount, cal, quoteLen, quotes,  datesLen, dates, interpolator, approximator, approximatorArg, /*extrapolate=*/0, e);
+}
+QlYieldTermStructure *qlInterpolatedSimpleZeroCurve(unsigned yieldLen, double *yields, unsigned ydatesLen, int *yieldDates, DayCounter *dayCount, Calendar *cal, unsigned quoteLen,
+  QlQuote **quotes, unsigned datesLen, int *dates, int interpolator, int approximator, int approximatorArg, char **e) {
+  return qlInterpolatedCurve(&qlInterpolatedSimpleZeroCurveAux, yieldLen, yields, ydatesLen, yieldDates,
+    dayCount, cal, quoteLen, quotes, datesLen, dates, interpolator, approximator, approximatorArg, /*extrapolate=*/0, e);
 }
 static QlYieldTermStructure *piecewiseYieldCurve1Impl(unsigned settl, Calendar *cal, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen,
   QlQuote **quotes, unsigned datesLen, int *dates, int trait, int interpolator, int approximator, int approximatorArg, const QlIterativeBootstrapOpts& b, int extrapolate, char **e) {
@@ -1998,6 +2083,26 @@ QlYieldTermStructure* qlPiecewiseZeroSpreadedTermStructure(QlYieldTermStructure*
   try {
     YieldTermStructure *ts = qlPiecewiseZeroSpreadedTermStructureAux(qlNullableHandle(arg(x0)), qlHandleVector(spreads, spreadsLen), qlDateVector(dates, datesLen), (Compounding)comp, (Frequency)freq, interpolator, approximator, approximatorArg);
     return ret(new QlYieldTermStructure(shared_ptr<YieldTermStructure>(alloc(ts))));
+  } catch (std::exception& er) {return handleException<QlYieldTermStructure*>(e, er);}}
+QlYieldTermStructure* qlPiecewiseForwardSpreadedTermStructure(QlYieldTermStructure* x0, unsigned spreadsLen, QlQuote** spreads, unsigned datesLen, int* dates, int interpolator, int approximator, int approximatorArg, char **e) {
+  try {
+    auto ts = allocShared(qlPiecewiseForwardSpreadedTermStructureAux(qlNullableHandle(arg(x0)), qlHandleVector(spreads, spreadsLen), qlDateVector(dates, datesLen), interpolator, approximator, approximatorArg));
+    return ret(new QlYieldTermStructure(ts));
+  } catch (std::exception& er) {return handleException<QlYieldTermStructure*>(e, er);}}
+QlYieldTermStructure* qlPiecewiseSpreadYieldCurve(QlYieldTermStructure* baseCurve, unsigned rateLen, QlRateHelper** helpers, int interpolator, int approximator, int approximatorArg,
+    double accuracy, double minValue, double maxValue, unsigned maxAttempts, double maxFactor, double minFactor, int dontThrow, unsigned dontThrowSteps, unsigned maxEvaluations, int extrapolate, char **e) {
+  try {
+    auto ts = allocShared(qlPiecewiseSpreadYieldCurveAux(qlNullableHandle(arg(baseCurve)), qlVector(helpers, rateLen), interpolator, approximator, approximatorArg,
+        bootstrapOpts(accuracy, minValue, maxValue, maxAttempts, maxFactor, minFactor, dontThrow, dontThrowSteps, maxEvaluations)));
+    if (extrapolate) ts->enableExtrapolation();
+    return ret(new QlYieldTermStructure(ts));
+  } catch (std::exception& er) {return handleException<QlYieldTermStructure*>(e, er);}}
+QlYieldTermStructure* qlPiecewiseSpreadYieldCurveGlobalBootstrap(QlYieldTermStructure* baseCurve, unsigned rateLen, QlRateHelper** helpers, double accuracy, unsigned weightsLen, double* weights, int extrapolate, char **e) {
+  try {
+    auto ts = allocShared(qlPiecewiseSpreadYieldCurveGlobalBootstrapAux(qlNullableHandle(arg(baseCurve)), qlVector(helpers, rateLen), accuracy,
+        std::vector<double>(weights, weights + weightsLen)));
+    if (extrapolate) ts->enableExtrapolation();
+    return ret(new QlYieldTermStructure(ts));
   } catch (std::exception& er) {return handleException<QlYieldTermStructure*>(e, er);}}
 QlYieldTermStructure* qlQuantoTermStructure(QlYieldTermStructure* underlyingDividendTS, QlYieldTermStructure* riskFreeTS, QlYieldTermStructure* foreignRiskFreeTS, QlBlackVolTermStructure* underlyingBlackVolTS, double strike, QlBlackVolTermStructure* exchRateBlackVolTS, double exchRateATMlevel, double underlyingExchRateCorrelation, char **e) {
   try {return ret(new QlYieldTermStructure(shared_ptr<YieldTermStructure>(alloc(new QuantoTermStructure(*arg(underlyingDividendTS), *arg(riskFreeTS), *arg(foreignRiskFreeTS), *arg(underlyingBlackVolTS), strike, *arg(exchRateBlackVolTS), exchRateATMlevel, underlyingExchRateCorrelation)))));

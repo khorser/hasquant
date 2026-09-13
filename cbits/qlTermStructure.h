@@ -157,6 +157,7 @@ extern "C" {
   QlCapFloorTermVolatilityStructure* qlConstantCapFloorTermVolatility1(int referenceDate, Calendar* cal, int bdc, QlQuote* volatility, DayCounter* dc, char **e);
   QlCapFloorTermVolatilityStructure* qlConstantCapFloorTermVolatility(unsigned settlementDays, Calendar* cal, int bdc, QlQuote* volatility, DayCounter* dc, char **e);
   QlSwaptionVolatilityStructure* qlSpreadedSwaptionVolatility(QlSwaptionVolatilityStructure* x0, QlQuote* spread, char **e);
+  QlSwaptionVolatilityStructure* qlGaussian1dSwaptionVolatility(Calendar* cal, int bdc, QlSwapIndex* indexBase, QlGaussian1dModel* model, DayCounter* dc, char **e);
   QlOptionletVolatilityStructure* qlSpreadedOptionletVolatility(QlOptionletVolatilityStructure* x0, QlQuote* spread, char **e);
 
   void qlFreeCapFloorTermVolatilityStructure(QlCapFloorTermVolatilityStructure *o);
@@ -257,6 +258,26 @@ extern "C" {
   void qlNoArbSabrSwaptionVolatilityCubeVolCubeAtmCalibrated(QlNoArbSabrSwaptionVolatilityCube* o, unsigned* rows, unsigned* cols, unsigned* len, double** vs, char** e);
   double qlNoArbSabrSwaptionVolatilityCubeAtmStrike1(QlNoArbSabrSwaptionVolatilityCube* o, int optionDate, int n, int u, char **e);
   double qlNoArbSabrSwaptionVolatilityCubeAtmStrike(QlNoArbSabrSwaptionVolatilityCube* o, int optionN, int optionU, int n, int u, char **e);
+  QlZabrSwaptionVolatilityCube* qlZabrSwaptionVolatilityCube(QlSwaptionVolatilityStructure* atmVolStructure,
+      unsigned, int*, unsigned, int*, unsigned, int*, unsigned, int*,
+      unsigned strikeSpreadsLen, double* strikeSpreads,
+      unsigned volSpreadsRows, unsigned volSpreadsCols, QlQuote** volSpreads,
+      QlSwapIndex* swapIndexBase, QlSwapIndex* shortSwapIndexBase,
+      int vegaWeightedSmileFit,
+      unsigned parametersGuessRows, unsigned parametersGuessCols, QlQuote** parametersGuess,
+      int isAlphaFixed, int isBetaFixed, int isNuFixed, int isRhoFixed, int isGammaFixed,
+      int isAtmCalibrated,
+      QlEndCriteria* endCriteria, QlOptimizationMethod* method,
+      double maxErrorTolerance, double errorAccept, int useMaxError, unsigned maxGuesses,
+      int backwardFlat, double cutoffStrike, char **e);
+  void qlFreeZabrSwaptionVolatilityCube(QlZabrSwaptionVolatilityCube *o);
+  QlSwaptionVolatilityStructure* qlZabrSwaptionVolatilityCubeAsSwaptionVolatilityStructure(QlZabrSwaptionVolatilityCube *o);
+  void qlZabrSwaptionVolatilityCubeSparseSabrParameters(QlZabrSwaptionVolatilityCube* o, unsigned* rows, unsigned* cols, unsigned* len, double** vs, char** e);
+  void qlZabrSwaptionVolatilityCubeDenseSabrParameters(QlZabrSwaptionVolatilityCube* o, unsigned* rows, unsigned* cols, unsigned* len, double** vs, char** e);
+  void qlZabrSwaptionVolatilityCubeMarketVolCube(QlZabrSwaptionVolatilityCube* o, unsigned* rows, unsigned* cols, unsigned* len, double** vs, char** e);
+  void qlZabrSwaptionVolatilityCubeVolCubeAtmCalibrated(QlZabrSwaptionVolatilityCube* o, unsigned* rows, unsigned* cols, unsigned* len, double** vs, char** e);
+  double qlZabrSwaptionVolatilityCubeAtmStrike1(QlZabrSwaptionVolatilityCube* o, int optionDate, int n, int u, char **e);
+  double qlZabrSwaptionVolatilityCubeAtmStrike(QlZabrSwaptionVolatilityCube* o, int optionN, int optionU, int n, int u, char **e);
   QlInterpolatedSwaptionVolatilityCube* qlInterpolatedSwaptionVolatilityCube(QlSwaptionVolatilityStructure* atmVolStructure,
       unsigned, int*, unsigned, int*, unsigned, int*, unsigned, int*,
       unsigned strikeSpreadsLen, double* strikeSpreads,
@@ -374,10 +395,15 @@ extern "C" {
   QlZeroCouponInflationSwap* qlZeroCouponInflationSwapHelperSwap(QlZeroCouponInflationSwapHelper* o, char **e);
   QlYearOnYearInflationSwap* qlYearOnYearInflationSwapHelperSwap(QlYearOnYearInflationSwapHelper* o, char **e);
 
-  QlZeroInflationTermStructure* qlPiecewiseZeroInflationCurve(int referenceDate, int baseDate, int frequency, DayCounter* dayCounter, unsigned instrumentsLen, QlZeroCouponInflationSwapHelper** instruments, int interpolator, int approximator, int approximatorArg, char **e);
-  QlYoYInflationTermStructure* qlPiecewiseYoYInflationCurve(int referenceDate, int baseDate, double baseYoYRate, int frequency, DayCounter* dayCounter, unsigned instrumentsLen, QlYearOnYearInflationSwapHelper** instruments, int interpolator, int approximator, int approximatorArg, char **e);
+  // seasKind: -1 none, 0 MultiplicativePriceSeasonality, 1 KerkhofSeasonality.
+  QlZeroInflationTermStructure* qlPiecewiseZeroInflationCurve(int referenceDate, int baseDate, int frequency, DayCounter* dayCounter, unsigned instrumentsLen, QlZeroCouponInflationSwapHelper** instruments,
+      int seasKind, int seasBaseDate, int seasFreq, unsigned seasLen, double *seasFactors, int interpolator, int approximator, int approximatorArg, char **e);
+  QlYoYInflationTermStructure* qlPiecewiseYoYInflationCurve(int referenceDate, int baseDate, double baseYoYRate, int frequency, DayCounter* dayCounter, unsigned instrumentsLen, QlYearOnYearInflationSwapHelper** instruments,
+      int seasKind, int seasBaseDate, int seasFreq, unsigned seasLen, double *seasFactors, int interpolator, int approximator, int approximatorArg, char **e);
   QlYoYInflationTermStructure* qlInterpolatedYoYInflationCurve(int referenceDate, unsigned datesLen, int *dates, double *rates, int frequency, DayCounter* dayCounter,
-      int interpolator, int approximator, int approximatorArg, char **e);
+      int seasKind, int seasBaseDate, int seasFreq, unsigned seasLen, double *seasFactors, int interpolator, int approximator, int approximatorArg, char **e);
+  QlZeroInflationTermStructure* qlInterpolatedZeroInflationCurve(int referenceDate, unsigned datesLen, int *dates, double *rates, int frequency, DayCounter* dayCounter,
+      int seasKind, int seasBaseDate, int seasFreq, unsigned seasLen, double *seasFactors, int interpolator, int approximator, int approximatorArg, char **e);
 
   QlRateHelper *qlDepositRateHelper(QlQuote *quote, int, int, unsigned fixDays, Calendar *calendar, int conv, int eom, DayCounter *dayCount, char **e);
   QlBondHelper *qlFixedRateBondHelper(QlQuote *quote, unsigned settlDays, double face, Schedule *sched, unsigned cLen, double *coupons, DayCounter *dayCount, int conv, double redemption, int issue, char **e);
@@ -501,6 +527,9 @@ extern "C" {
   QlYieldTermStructure *qlInterpolatedZeroCurve(unsigned yieldLen,
     double *yields, unsigned ydatesLen, int *yieldDates, DayCounter *dayCount, Calendar *cal, unsigned quoteLen,
     QlQuote **quotes, unsigned datesLen, int *dates, int interpolator, int approximator, int approximatorArg, char **e);
+  QlYieldTermStructure *qlInterpolatedSimpleZeroCurve(unsigned yieldLen,
+    double *yields, unsigned ydatesLen, int *yieldDates, DayCounter *dayCount, Calendar *cal, unsigned quoteLen,
+    QlQuote **quotes, unsigned datesLen, int *dates, int interpolator, int approximator, int approximatorArg, char **e);
   void qlFreeFittedBondDiscountCurveFittingMethod(FittedBondDiscountCurveFittingMethod *o);
   FittedBondDiscountCurveFittingMethod* qlCubicBSplinesFitting(unsigned knotVectorLen, double * knotVector, int constrainAtZero, unsigned weightsLen, double *weights, unsigned l2Len, double *l2, double minCutoffTime, double maxCutoffTime, QlOptimizationMethod* method, Constraint* constraint, char **e);
   FittedBondDiscountCurveFittingMethod* qlExponentialSplinesFitting(int constrainAtZero, unsigned weightsLen, double *weights, unsigned l2Len, double *l2, double minCutoffTime, double maxCutoffTime, unsigned numCoeffs, double fixedKappa, QlOptimizationMethod* method, Constraint* constraint, char **e);
@@ -526,6 +555,9 @@ extern "C" {
   QlTermStructure* qlYieldTermStructureAsTermStructure(QlYieldTermStructure *o);
   QlYieldTermStructure* qlImpliedTermStructure(QlYieldTermStructure* x0, int referenceDate, char **e);
   QlYieldTermStructure* qlPiecewiseZeroSpreadedTermStructure(QlYieldTermStructure* x0, unsigned spreadsLen, QlQuote** spreads, unsigned datesLen, int* dates, int comp, int freq, int interpolator, int approximator, int approximatorArg, char **e);
+  QlYieldTermStructure* qlPiecewiseForwardSpreadedTermStructure(QlYieldTermStructure* x0, unsigned spreadsLen, QlQuote** spreads, unsigned datesLen, int* dates, int interpolator, int approximator, int approximatorArg, char **e);
+  QlYieldTermStructure* qlPiecewiseSpreadYieldCurve(QlYieldTermStructure* baseCurve, unsigned rateLen, QlRateHelper** helpers, int interpolator, int approximator, int approximatorArg, double accuracy, double minValue, double maxValue, unsigned maxAttempts, double maxFactor, double minFactor, int dontThrow, unsigned dontThrowSteps, unsigned maxEvaluations, int extrapolate, char **e);
+  QlYieldTermStructure* qlPiecewiseSpreadYieldCurveGlobalBootstrap(QlYieldTermStructure* baseCurve, unsigned rateLen, QlRateHelper** helpers, double accuracy, unsigned weightsLen, double* weights, int extrapolate, char **e);
   QlYieldTermStructure* qlQuantoTermStructure(QlYieldTermStructure* underlyingDividendTS, QlYieldTermStructure* riskFreeTS, QlYieldTermStructure* foreignRiskFreeTS, QlBlackVolTermStructure* underlyingBlackVolTS, double strike, QlBlackVolTermStructure* exchRateBlackVolTS, double exchRateATMlevel, double underlyingExchRateCorrelation, char **e);
   QlYieldTermStructure* qlUltimateForwardTermStructure(QlYieldTermStructure* x0, QlQuote* lastLiquidForwardRate, QlQuote* ultimateForwardRate, int fspLen, int fspUnit, double alpha, int roundingDigits, int compounding, int frequency, char **e);
   QlYieldTermStructure* qlInterpolatedSpreadDiscountCurve(QlYieldTermStructure* baseCurve, unsigned dfsLen, double *dfs, unsigned datesLen, int *dates, int interpolator, int approximator, int approximatorArg, char **e);

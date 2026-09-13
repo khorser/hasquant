@@ -6,6 +6,8 @@ module QuantLib.TermStructure.Inflation
   , ZeroCouponInflationSwapHelper
   , YearOnYearInflationSwapHelper
   , CPIInterpolationType(..) -- ^re-exported from "QuantLib.Internal.Common"
+    -- ** Seasonality
+  , Seasonality(..)
 
     -- * Constructors
     -- ** Helpers
@@ -16,6 +18,7 @@ module QuantLib.TermStructure.Inflation
   , piecewiseZeroInflationCurve
   , piecewiseYoyInflationCurve
   , interpolatedYoyInflationCurve
+  , interpolatedZeroInflationCurve
 
     -- * Inspectors
   , HasHelperUnderlying(..)
@@ -24,7 +27,7 @@ module QuantLib.TermStructure.Inflation
   ) where
 import QuantLib.Internal
 import QuantLib.Internal.Type
-{#import QuantLib.Time.Schedule#}(Frequency)
+{#import QuantLib.Time.Schedule#}(Frequency(..))
 import QuantLib.Internal.Common
 import QuantLib.TermStructure(HasHelperUnderlying(..))
 import Data.List.NonEmpty(NonEmpty, toList)
@@ -93,12 +96,14 @@ import Data.List.NonEmpty(NonEmpty, toList)
 -- between the bootstrapped nodes with the given 'Interpolation'.
 piecewiseZeroInflationCurve :: Day -- ^referenceDate
   -> Day -- ^baseDate
-  -> Frequency -> DayCounter -> NonEmpty ZeroCouponInflationSwapHelper -> Interpolation
+  -> Frequency -> DayCounter -> NonEmpty ZeroCouponInflationSwapHelper -> Maybe Seasonality -> Interpolation
   -> IO ZeroInflationTermStructure
-piecewiseZeroInflationCurve r b f dc h i = uncurryNested (qlPiecewiseZeroInflationCurve r b f dc (toList h)) (qlInterpolation i)
+piecewiseZeroInflationCurve r b f dc h s i = seasonalityArgs r s $ \sk sd sf sfs ->
+  uncurryNested (qlPiecewiseZeroInflationCurve r b f dc (toList h) sk sd sf sfs) (qlInterpolation i)
 
 {#fun qlPiecewiseZeroInflationCurve{withDay*`Day',withDay*`Day',`Frequency',withDayCounter*`DayCounter'
   ,withZeroCouponInflationSwapHelperArray*`[ZeroCouponInflationSwapHelper]'&
+  ,`Int',withDay*`Day',`Frequency',withDoubleArray*`[Double]'&
   ,`Int',`Int',`Int',preErrorCheck-`String'errorCheck*-}->`ZeroInflationTermStructure'peekZeroInflationTermStructure*#}
 
 -- |Bootstraps a year-on-year inflation term structure piecewise from a set of helpers,
@@ -106,12 +111,14 @@ piecewiseZeroInflationCurve r b f dc h i = uncurryNested (qlPiecewiseZeroInflati
 piecewiseYoyInflationCurve :: Day -- ^referenceDate
   -> Day -- ^baseDate
   -> Double -- ^baseYoYRate
-  -> Frequency -> DayCounter -> NonEmpty YearOnYearInflationSwapHelper -> Interpolation
+  -> Frequency -> DayCounter -> NonEmpty YearOnYearInflationSwapHelper -> Maybe Seasonality -> Interpolation
   -> IO YoYInflationTermStructure
-piecewiseYoyInflationCurve r b y f dc h i = uncurryNested (qlPiecewiseYoYInflationCurve r b y f dc (toList h)) (qlInterpolation i)
+piecewiseYoyInflationCurve r b y f dc h s i = seasonalityArgs r s $ \sk sd sf sfs ->
+  uncurryNested (qlPiecewiseYoYInflationCurve r b y f dc (toList h) sk sd sf sfs) (qlInterpolation i)
 
 {#fun qlPiecewiseYoYInflationCurve{withDay*`Day',withDay*`Day',`Double',`Frequency',withDayCounter*`DayCounter'
   ,withYearOnYearInflationSwapHelperArray*`[YearOnYearInflationSwapHelper]'&
+  ,`Int',withDay*`Day',`Frequency',withDoubleArray*`[Double]'&
   ,`Int',`Int',`Int',preErrorCheck-`String'errorCheck*-}->`YoYInflationTermStructure'peekYoYInflationTermStructure*#}
 
 -- |A YoY-inflation curve interpolating directly between given (date, rate) nodes, unlike
@@ -120,13 +127,43 @@ piecewiseYoyInflationCurve r b y f dc h i = uncurryNested (qlPiecewiseYoYInflati
 -- node is the curve's own base date\/rate.
 interpolatedYoyInflationCurve :: Day -- ^referenceDate
   -> NonEmpty (Day, Double) -- ^dates, rates
-  -> Frequency -> DayCounter -> Interpolation
+  -> Frequency -> DayCounter -> Maybe Seasonality -> Interpolation
   -> IO YoYInflationTermStructure
-interpolatedYoyInflationCurve r dr f dc i = uncurryNested (qlInterpolatedYoYInflationCurve r ds rs f dc) (qlInterpolation i)
+interpolatedYoyInflationCurve r dr f dc s i = seasonalityArgs r s $ \sk sd sf sfs ->
+  uncurryNested (qlInterpolatedYoYInflationCurve r ds rs f dc sk sd sf sfs) (qlInterpolation i)
   where (ds, rs) = unzip (toList dr)
 {#fun qlInterpolatedYoYInflationCurve{withDay*`Day',withDayArray*`[Day]'&,withDoubleArrayRaw*`[Double]'
   ,`Frequency',withDayCounter*`DayCounter'
+  ,`Int',withDay*`Day',`Frequency',withDoubleArray*`[Double]'&
   ,`Int',`Int',`Int',preErrorCheck-`String'errorCheck*-}->`YoYInflationTermStructure'peekYoYInflationTermStructure*#}
+
+-- |A zero-coupon inflation curve interpolating directly between given (date, rate) nodes. The
+-- first node is the curve's base date.
+interpolatedZeroInflationCurve :: Day -- ^referenceDate
+  -> NonEmpty (Day, Double) -- ^dates, rates
+  -> Frequency -> DayCounter -> Maybe Seasonality -> Interpolation
+  -> IO ZeroInflationTermStructure
+interpolatedZeroInflationCurve r dr f dc s i = seasonalityArgs r s $ \sk sd sf sfs ->
+  uncurryNested (qlInterpolatedZeroInflationCurve r ds rs f dc sk sd sf sfs) (qlInterpolation i)
+  where (ds, rs) = unzip (toList dr)
+{#fun qlInterpolatedZeroInflationCurve{withDay*`Day',withDayArray*`[Day]'&,withDoubleArrayRaw*`[Double]'
+  ,`Frequency',withDayCounter*`DayCounter'
+  ,`Int',withDay*`Day',`Frequency',withDoubleArray*`[Double]'&
+  ,`Int',`Int',`Int',preErrorCheck-`String'errorCheck*-}->`ZeroInflationTermStructure'peekZeroInflationTermStructure*#}
+
+-- |Multiplicative price seasonality applied by an inflation curve's zero and year-on-year rates.
+-- Factors repeat every whole multiple of a year and are normalized to the curve's base date;
+-- multi-year factors inconsistent at whole years around that date make construction throw.
+data Seasonality
+  = MultiplicativePriceSeasonality !Day !Frequency ![Double] -- ^seasonalityBaseDate, frequency, factors
+  | KerkhofSeasonality !Day ![Double] -- ^seasonalityBaseDate, monthly factors
+
+-- Flattens an optional seasonality into the shims' kind, base date, frequency and factors.
+seasonalityArgs :: Day -> Maybe Seasonality -> (Int -> Day -> Frequency -> [Double] -> r) -> r
+seasonalityArgs d s k = case s of
+  Nothing -> k (-1) d NoFrequency []
+  Just (MultiplicativePriceSeasonality b f fs) -> k 0 b f fs
+  Just (KerkhofSeasonality b fs) -> k 1 b Monthly fs
 
 -- |Zero-coupon inflation rate implied by the curve.
 {#fun qlZeroInflationTermStructureZeroRate as zeroRate{withGenTermStructure*`ZeroInflationTermStructure',withDay*`Day',`Bool' -- ^extrapolate

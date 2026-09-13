@@ -148,7 +148,7 @@ run = do
   q2 <- simpleQuote flatRate
   h1 <- zeroCouponInflationSwapHelper q1 obsLag maturity2Y cal Unadjusted dc idx0 CPILinear LastRelevantDate Nothing
   h2 <- zeroCouponInflationSwapHelper q2 obsLag maturity5Y cal Unadjusted dc idx0 CPILinear LastRelevantDate Nothing
-  zeroCurve <- piecewiseZeroInflationCurve evalDate baseDate Monthly dc [h1, h2] Linear
+  zeroCurve <- piecewiseZeroInflationCurve evalDate baseDate Monthly dc [h1, h2] Nothing Linear
   -- curve-linked index (same name/region/etc, picks up idx0's fixings automatically)
   idx1 <- customZeroInflationIndex "WL CPI" reg False Monthly obsLagI gbp (Just zeroCurve)
 
@@ -183,7 +183,7 @@ run = do
   qy2 <- simpleQuote flatRate
   hy1 <- yearOnYearInflationSwapHelper qy1 obsLag maturity2Y cal Unadjusted dc yidx0 CPILinear nominalCurve LastRelevantDate Nothing
   hy2 <- yearOnYearInflationSwapHelper qy2 obsLag maturity5Y cal Unadjusted dc yidx0 CPILinear nominalCurve LastRelevantDate Nothing
-  yoyCurve <- piecewiseYoyInflationCurve evalDate baseDate flatRate Monthly dc [hy1, hy2] Linear
+  yoyCurve <- piecewiseYoyInflationCurve evalDate baseDate flatRate Monthly dc [hy1, hy2] Nothing Linear
   yidx1 <- customYoyInflationIndex "WL YoY CPI" reg False Monthly obsLagI gbp (Just yoyCurve)
   yoySchedule <- schedule (Just evalDate) maturity5Y (6, Months) cal Unadjusted Unadjusted Backward False Nothing Nothing
   yoySwap0 <- yearOnYearInflationSwap Payer nominal fixedSchedule flatRate dc yoySchedule yidx1 obsLag CPILinear 0.0 dc cal Unadjusted
@@ -209,7 +209,7 @@ run = do
 
   q3 <- simpleQuote (flatRate + 0.02) -- higher expected inflation
   h3 <- zeroCouponInflationSwapHelper q3 obsLag maturity5Y cal Unadjusted dc idx0 CPILinear LastRelevantDate Nothing
-  hiZeroCurve <- piecewiseZeroInflationCurve evalDate baseDate Monthly dc [h1, h3] Linear
+  hiZeroCurve <- piecewiseZeroInflationCurve evalDate baseDate Monthly dc [h1, h3] Nothing Linear
   hiIdx <- customZeroInflationIndex "WL CPI" reg False Monthly obsLagI gbp (Just hiZeroCurve)
   cbHi <- cpiBond settlementDays faceAmount baseCPI0 obsLag hiIdx CPILinear cpiBondSchedule [couponRate]
     dc Unadjusted (Just evalDate) cal (0, Days) cal Unadjusted False

@@ -217,6 +217,7 @@ typedef struct QlNoArbSabrInterpolatedSmileSection QlNoArbSabrInterpolatedSmileS
 typedef struct QlSabrSwaptionVolatilityCube QlSabrSwaptionVolatilityCube;
 typedef struct QlSwaptionVolatilityMatrix QlSwaptionVolatilityMatrix;
 typedef struct QlNoArbSabrSwaptionVolatilityCube QlNoArbSabrSwaptionVolatilityCube;
+typedef struct QlZabrSwaptionVolatilityCube QlZabrSwaptionVolatilityCube;
 typedef struct QlShortRateDynamics QlShortRateDynamics;
 typedef struct QlShortRateModel QlShortRateModel;
 typedef struct QlSimpleQuote QlSimpleQuote;

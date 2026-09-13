@@ -19,6 +19,8 @@
 // (XabrSwaptionVolatilityCube<SwaptionVolCubeNoArbSabrModel>) -- also a typedef of a template
 // instantiation, also pulled in fully rather than forward-declared.
 #include <ql/experimental/volatility/noarbsabrswaptionvolatilitycube.hpp>
+// ZabrSwaptionVolatilityCube is another XabrSwaptionVolatilityCube typedef.
+#include <ql/termstructures/volatility/swaption/zabrswaptionvolatilitycube.hpp>
 // TwoFactorModel::ShortRateDynamics is a nested class -- referring to it (even just as a
 // shared_ptr<> template argument below) requires TwoFactorModel to be a complete type, so
 // (like SabrSwaptionVolatilityCube above) it can't be left as a forward declaration.
@@ -673,6 +675,7 @@ using QuantLib::MultiCurve;
 using QuantLib::NelsonSiegelFitting;
 using QuantLib::NoArbSabrInterpolatedSmileSection;
 using QuantLib::NoArbSabrSwaptionVolatilityCube;
+using QuantLib::ZabrSwaptionVolatilityCube;
 using QuantLib::NoConstraint;
 using QuantLib::NonstandardSwap;
 using QuantLib::NonstandardSwaption;
@@ -1033,6 +1036,7 @@ using QlSwaptionHelper = shared_ptr<SwaptionHelper>;
 using QlSwaptionVolatilityMatrix = shared_ptr<SwaptionVolatilityMatrix>;
 using QlSabrSwaptionVolatilityCube = shared_ptr<SabrSwaptionVolatilityCube>;
 using QlNoArbSabrSwaptionVolatilityCube = shared_ptr<NoArbSabrSwaptionVolatilityCube>;
+using QlZabrSwaptionVolatilityCube = shared_ptr<ZabrSwaptionVolatilityCube>;
 using QlInterpolatedSwaptionVolatilityCube = shared_ptr<InterpolatedSwaptionVolatilityCube>;
 // A vol structure is a Handle, same reasoning as QlBlackVolTermStructure above.
 using QlSwaptionVolatilityStructure = Handle<SwaptionVolatilityStructure>;
@@ -1537,6 +1541,7 @@ QL_TRACE_NAME(QlRelinkableSwaptionVolatilityStructure)
 QL_TRACE_NAME(QlSabrSwaptionVolatilityCube)
 QL_TRACE_NAME(QlSwaptionVolatilityMatrix)
 QL_TRACE_NAME(QlNoArbSabrSwaptionVolatilityCube)
+QL_TRACE_NAME(QlZabrSwaptionVolatilityCube)
 QL_TRACE_NAME(QlInterpolatedSwaptionVolatilityCube)
 QL_TRACE_NAME(QlSwingExercise)
 QL_TRACE_NAME(QlTermStructure)

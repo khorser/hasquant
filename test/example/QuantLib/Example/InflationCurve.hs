@@ -45,7 +45,7 @@ run = do
   q2 <- simpleQuote flatRate
   h1 <- zeroCouponInflationSwapHelper q1 obsLag maturity1 cal Unadjusted dc zii CPILinear LastRelevantDate Nothing
   h2 <- zeroCouponInflationSwapHelper q2 obsLag maturity2 cal Unadjusted dc zii CPILinear LastRelevantDate Nothing
-  zeroCurve <- piecewiseZeroInflationCurve evalDate baseDate Monthly dc [h1, h2] Linear
+  zeroCurve <- piecewiseZeroInflationCurve evalDate baseDate Monthly dc [h1, h2] Nothing Linear
   z1 <- zeroRate zeroCurve maturity1 True
   z2 <- zeroRate zeroCurve maturity2 True
   -- the helper builds its swap internally, so this accessor is the only way to reach it;
@@ -60,7 +60,7 @@ run = do
   qy2 <- simpleQuote flatRate
   hy1 <- yearOnYearInflationSwapHelper qy1 obsLag maturity1 cal Unadjusted dc yii CPILinear nominalCurve LastRelevantDate Nothing
   hy2 <- yearOnYearInflationSwapHelper qy2 obsLag maturity2 cal Unadjusted dc yii CPILinear nominalCurve LastRelevantDate Nothing
-  yoyCurve <- piecewiseYoyInflationCurve evalDate baseDate flatRate Monthly dc [hy1, hy2] Linear
+  yoyCurve <- piecewiseYoyInflationCurve evalDate baseDate flatRate Monthly dc [hy1, hy2] Nothing Linear
   y1 <- yoyRate yoyCurve maturity1 True
   y2 <- yoyRate yoyCurve maturity2 True
   yoyFair <- fairRate =<< helperInstrument hy1

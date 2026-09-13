@@ -75,7 +75,7 @@ main = do
   q2 <- simpleQuote 0.03
   h1 <- zeroCouponInflationSwapHelper q1 obsLag maturity1 cal Unadjusted dc zii CPILinear LastRelevantDate Nothing
   h2 <- zeroCouponInflationSwapHelper q2 obsLag maturity2 cal Unadjusted dc zii CPILinear LastRelevantDate Nothing
-  curve <- piecewiseZeroInflationCurve today baseDate Monthly dc [h1, h2] Linear
+  curve <- piecewiseZeroInflationCurve today baseDate Monthly dc [h1, h2] Nothing Linear
   r1 <- zeroRate curve maturity1 True
   r2 <- zeroRate curve maturity2 True
   putStrLn ("zeroRate @1Y = " ++ show r1 ++ ", @2Y = " ++ show r2 ++ " (both should be ~0.03)")
@@ -88,7 +88,7 @@ main = do
   qy2 <- simpleQuote 0.03
   hy1 <- yearOnYearInflationSwapHelper qy1 obsLag maturity1 cal Unadjusted dc yii CPILinear nominalCurve LastRelevantDate Nothing
   hy2 <- yearOnYearInflationSwapHelper qy2 obsLag maturity2 cal Unadjusted dc yii CPILinear nominalCurve LastRelevantDate Nothing
-  yoyCurve <- piecewiseYoyInflationCurve today baseDate 0.03 Monthly dc [hy1, hy2] Linear
+  yoyCurve <- piecewiseYoyInflationCurve today baseDate 0.03 Monthly dc [hy1, hy2] Nothing Linear
   ry1 <- yoyRate yoyCurve maturity1 True
   ry2 <- yoyRate yoyCurve maturity2 True
   putStrLn ("yoyRate @1Y = " ++ show ry1 ++ ", @2Y = " ++ show ry2 ++ " (both should be ~0.03)")

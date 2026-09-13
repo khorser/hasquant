@@ -34,6 +34,7 @@ module QuantLib.TermStructure.Volatility
   , SwaptionVolatilityMatrix
   , SabrSwaptionVolatilityCube
   , NoArbSabrSwaptionVolatilityCube
+  , ZabrSwaptionVolatilityCube
   , InterpolatedSwaptionVolatilityCube
   , CallableBondVolatilityStructure
   , SmileSection
@@ -108,6 +109,7 @@ module QuantLib.TermStructure.Volatility
   , sabrVolSurface
     -- ** Relinkable and spreaded structures
   , spreadedSwaptionVolatility
+  , gaussian1dSwaptionVolatility
   , spreadedOptionletVol
   , relinkableSwaptionVolatilityStructure
   , relinkableOptionletVolatilityStructure
@@ -126,6 +128,7 @@ module QuantLib.TermStructure.Volatility
   , swaptionVolatilityMatrix
   , sabrSwaptionVolatilityCube
   , noArbSabrSwaptionVolatilityCube
+  , zabrSwaptionVolatilityCube
   , interpolatedSwaptionVolatilityCube
   , swaptionVolatilityMatrixMoving
     -- ** Local-volatility and Andreasen-Huge models
@@ -236,6 +239,10 @@ module QuantLib.TermStructure.Volatility
   , noArbSabrDenseSabrParameters
   , noArbSabrMarketVolCube
   , noArbSabrVolCubeAtmCalibrated
+  , zabrSparseParameters
+  , zabrDenseParameters
+  , zabrMarketVolCube
+  , zabrVolCubeAtmCalibrated
     -- ** Andreasen-Huge results
   , andreasenHugeCalibrationError
   , andreasenHugeForward
@@ -290,6 +297,8 @@ import Foreign.Marshal.Alloc(alloca)
 {#pointer *QlSwaptionVolatilityMatrix as SwaptionVolatilityMatrix foreign -> CSwaptionVolatilityMatrix' nocode#}
 {#pointer *QlSabrSwaptionVolatilityCube as SabrSwaptionVolatilityCube foreign -> CSabrSwaptionVolatilityCube' nocode#}
 {#pointer *QlNoArbSabrSwaptionVolatilityCube as NoArbSabrSwaptionVolatilityCube foreign -> CNoArbSabrSwaptionVolatilityCube' nocode#}
+{#pointer *QlZabrSwaptionVolatilityCube as ZabrSwaptionVolatilityCube foreign -> CZabrSwaptionVolatilityCube' nocode#}
+{#pointer *QlGaussian1dModel foreign -> CGaussian1dModel' nocode#}
 {#pointer *QlInterpolatedSwaptionVolatilityCube as InterpolatedSwaptionVolatilityCube foreign -> CInterpolatedSwaptionVolatilityCube' nocode#}
 {#pointer *QlBlackAtmVolCurve as BlackAtmVolCurve foreign -> CBlackAtmVolCurve' nocode#}
 {#pointer *QlBlackVolSurface as BlackVolSurface foreign -> CBlackVolSurface' nocode#}
@@ -1649,6 +1658,20 @@ sabrVolatilitySpreads surface maturity = case maturity of
 -- (which may change over time, since it's a live t'GenQuote' rather than a fixed number)
 {#fun qlSpreadedSwaptionVolatility as spreadedSwaptionVolatility{withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure sv',withQuote*`GenQuote q',preErrorCheck-`String'errorCheck*-}->`SwaptionVolatilityStructure'peekSwaptionVolatilityStructure*#}
 
+-- |Swaption volatilities implied from a Gaussian one-factor model: each smile section prices
+-- swaptions with upstream's default @Gaussian1dSwaptionEngine@ and inverts Black's formula.
+-- The reference date is the model curve's; every query reprices, and the max date is unbounded.
+--
+-- __Warning:__ with QuantLib 1.43 every volatility is @0@. Upstream's smile section builds its
+-- swaptions with the fixing-date @MakeSwaption@ constructor, which leaves the nominal
+-- uninitialized, and then discards the resulting pricing error.
+{#fun qlGaussian1dSwaptionVolatility as gaussian1dSwaptionVolatility{withCalendar*`Calendar' -- ^cal
+  ,fromEnumC`BusinessDayConvention' -- ^bdc
+  ,withSwapIndex*`GenSwapIndex sidx' -- ^indexBase
+  ,withStandalone*`Gaussian1dModel' -- ^model
+  ,withDayCounter*`DayCounter' -- ^dc
+  ,preErrorCheck-`String'errorCheck*-}->`SwaptionVolatilityStructure'peekSwaptionVolatilityStructure*#}
+
 -- |as 'spreadedSwaptionVolatility', for 'OptionletVolatilityStructure' rather than
 -- 'SwaptionVolatilityStructure'
 {#fun qlSpreadedOptionletVolatility as spreadedOptionletVol{withOptionletVolatilityStructure*`GenOptionletVolatilityStructure ov',withQuote*`GenQuote q',preErrorCheck-`String'errorCheck*-}->`OptionletVolatilityStructure'peekOptionletVolatilityStructure*#}
@@ -1986,6 +2009,54 @@ noArbSabrSwaptionVolatilityCube atm ot st ss (Matrix vr vc vd) sidx1 sidx2 vw (M
   ,`Bool',`Double'
   ,preErrorCheck-`String'errorCheck*-}->`NoArbSabrSwaptionVolatilityCube'peekNoArbSabrSwaptionVolatilityCube*#}
 
+-- |A ZABR swaption volatility cube: 'sabrSwaptionVolatilityCube' with a fifth model parameter,
+-- gamma (1 approximates SABR), using the short-maturity lognormal kernel. Same shapes and lazy
+-- calibration; shifted or normal ATM volatilities are rejected when a node is calibrated.
+zabrSwaptionVolatilityCube :: GenSwaptionVolatilityStructure sv -- ^atmVolStructure
+  -> [(Word, TimeUnit)] -- ^optionTenors
+  -> [(Word, TimeUnit)] -- ^swapTenors
+  -> [Double] -- ^strikeSpreads
+  -> Matrix (GenQuote q1) -- ^volSpreads
+  -> GenSwapIndex sidx1 -- ^swapIndexBase
+  -> GenSwapIndex sidx2 -- ^shortSwapIndexBase
+  -> Bool -- ^vegaWeightedSmileFit
+  -> Matrix (GenQuote q2) -- ^parametersGuess (alpha, beta, nu, rho, gamma per node)
+  -> Bool -- ^isAlphaFixed
+  -> Bool -- ^isBetaFixed
+  -> Bool -- ^isNuFixed
+  -> Bool -- ^isRhoFixed
+  -> Bool -- ^isGammaFixed
+  -> Bool -- ^isAtmCalibrated, see 'sabrSwaptionVolatilityCube'
+  -> Maybe Double -- ^maxErrorTolerance
+  -> Maybe Double -- ^errorAccept
+  -> Bool -- ^useMaxError
+  -> Word -- ^maxGuesses
+  -> Bool -- ^backwardFlat
+  -> Double -- ^cutoffStrike
+  -> Maybe EndCriteria -- ^endCriteria
+  -> Maybe OptimizationMethod -- ^optMethod
+  -> IO ZabrSwaptionVolatilityCube
+zabrSwaptionVolatilityCube atm ot st ss (Matrix vr vc vd) sidx1 sidx2 vw (Matrix pr pc pd)
+  iaf ibf inf irf igf iac met eat ume mg bf cs ec om =
+  qlZabrSwaptionVolatilityCube atm opl opu spl spu ss vr vc vd sidx1 sidx2 vw pr pc pd
+    iaf ibf inf irf igf iac ec om met eat ume mg bf cs
+  where (opl, opu) = unzip ot; (spl, spu) = unzip st
+{#fun qlZabrSwaptionVolatilityCube{withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure sv'
+  ,withIntArray*`[Word]'&,withEnumArray*`[TimeUnit]'&
+  ,withIntArray*`[Word]'&,withEnumArray*`[TimeUnit]'&
+  ,withDoubleArray*`[Double]'&
+  ,fromIntegral`Word',fromIntegral`Word',withQuoteArrayRaw*`[GenQuote q1]'
+  ,withSwapIndex*`GenSwapIndex sidx1',withSwapIndex*`GenSwapIndex sidx2'
+  ,`Bool'
+  ,fromIntegral`Word',fromIntegral`Word',withQuoteArrayRaw*`[GenQuote q2]'
+  ,`Bool',`Bool',`Bool',`Bool',`Bool'
+  ,`Bool'
+  ,withMaybeEndCriteria*`Maybe EndCriteria'
+  ,withMaybeOptimizationMethod*`Maybe OptimizationMethod'
+  ,fromMaybeDouble`Maybe Double',fromMaybeDouble`Maybe Double',`Bool',fromIntegral`Word'
+  ,`Bool',`Double'
+  ,preErrorCheck-`String'errorCheck*-}->`ZabrSwaptionVolatilityCube'peekZabrSwaptionVolatilityCube*#}
+
 -- |The non-SABR, linear-interpolation swaption volatility cube: interpolates the given
 -- @volSpreads@ rather than calibrating a smile model. No 'EndCriteria'\/'OptimizationMethod'
 -- hazard here -- this class never calibrates anything. See 'sabrSwaptionVolatilityCube' for the
@@ -2068,6 +2139,11 @@ instance HasAtmStrike NoArbSabrSwaptionVolatilityCube where
     AtmStrikeDate optionDate -> noArbSabrSwaptionVolatilityCubeAtmStrikeAtDateRaw cube optionDate
     AtmStrikeTenor optionTenor -> noArbSabrSwaptionVolatilityCubeAtmStrikeForTenorRaw cube optionTenor
 
+instance HasAtmStrike ZabrSwaptionVolatilityCube where
+  atmStrike cube maturity = case maturity of
+    AtmStrikeDate optionDate -> zabrSwaptionVolatilityCubeAtmStrikeAtDateRaw cube optionDate
+    AtmStrikeTenor optionTenor -> zabrSwaptionVolatilityCubeAtmStrikeForTenorRaw cube optionTenor
+
 instance HasAtmStrike InterpolatedSwaptionVolatilityCube where
   atmStrike cube maturity = case maturity of
     AtmStrikeDate optionDate -> interpolatedSwaptionVolatilityCubeAtmStrikeAtDateRaw cube optionDate
@@ -2121,6 +2197,47 @@ noArbSabrVolCubeAtmCalibrated sv = toRealMatrix <$> qlNoArbSabrSwaptionVolatilit
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 {#fun qlNoArbSabrSwaptionVolatilityCubeAtmStrike as noArbSabrSwaptionVolatilityCubeAtmStrikeForTenorRaw{withNoArbSabrSwaptionVolatilityCube*`NoArbSabrSwaptionVolatilityCube'
+  ,fromEnumQuantity`(Word,TimeUnit)'& -- ^optionTenor
+  ,fromEnumQuantity`(Word,TimeUnit)'& -- ^swapTenor
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |Per-node calibrated ZABR parameters (alpha, beta, nu, rho, gamma columns) before ATM
+-- recalibration, see 'sparseSabrParameters'.
+zabrSparseParameters :: ZabrSwaptionVolatilityCube -> IO RealMatrix
+zabrSparseParameters sv = toRealMatrix <$> qlZabrSwaptionVolatilityCubeSparseSabrParameters sv
+{#fun qlZabrSwaptionVolatilityCubeSparseSabrParameters{withZabrSwaptionVolatilityCube*`ZabrSwaptionVolatilityCube'
+  ,prePtr-`Word'peekWord*,prePtr-`Word'peekWord*,preArray-`RealVector'&peekRealVector*
+  ,preErrorCheck-`String'errorCheck*-}->`()'#}
+
+-- |Per-node calibrated ZABR parameters, meaningfully populated only when the cube was built with
+-- @isAtmCalibrated = True@, see 'denseSabrParameters'.
+zabrDenseParameters :: ZabrSwaptionVolatilityCube -> IO RealMatrix
+zabrDenseParameters sv = toRealMatrix <$> qlZabrSwaptionVolatilityCubeDenseSabrParameters sv
+{#fun qlZabrSwaptionVolatilityCubeDenseSabrParameters{withZabrSwaptionVolatilityCube*`ZabrSwaptionVolatilityCube'
+  ,prePtr-`Word'peekWord*,prePtr-`Word'peekWord*,preArray-`RealVector'&peekRealVector*
+  ,preErrorCheck-`String'errorCheck*-}->`()'#}
+
+-- |The raw market vol grid the cube's ZABR fit targets, see 'marketVolCube'.
+zabrMarketVolCube :: ZabrSwaptionVolatilityCube -> IO RealMatrix
+zabrMarketVolCube sv = toRealMatrix <$> qlZabrSwaptionVolatilityCubeMarketVolCube sv
+{#fun qlZabrSwaptionVolatilityCubeMarketVolCube{withZabrSwaptionVolatilityCube*`ZabrSwaptionVolatilityCube'
+  ,prePtr-`Word'peekWord*,prePtr-`Word'peekWord*,preArray-`RealVector'&peekRealVector*
+  ,preErrorCheck-`String'errorCheck*-}->`()'#}
+
+-- |Like 'zabrMarketVolCube', adjusted so the ATM row is consistent with @atmVolStructure@;
+-- meaningfully populated only when the cube was built with @isAtmCalibrated = True@.
+zabrVolCubeAtmCalibrated :: ZabrSwaptionVolatilityCube -> IO RealMatrix
+zabrVolCubeAtmCalibrated sv = toRealMatrix <$> qlZabrSwaptionVolatilityCubeVolCubeAtmCalibrated sv
+{#fun qlZabrSwaptionVolatilityCubeVolCubeAtmCalibrated{withZabrSwaptionVolatilityCube*`ZabrSwaptionVolatilityCube'
+  ,prePtr-`Word'peekWord*,prePtr-`Word'peekWord*,preArray-`RealVector'&peekRealVector*
+  ,preErrorCheck-`String'errorCheck*-}->`()'#}
+
+{#fun qlZabrSwaptionVolatilityCubeAtmStrike1 as zabrSwaptionVolatilityCubeAtmStrikeAtDateRaw{withZabrSwaptionVolatilityCube*`ZabrSwaptionVolatilityCube'
+  ,withDay*`Day' -- ^optionDate
+  ,fromEnumQuantity`(Word,TimeUnit)'& -- ^swapTenor
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+{#fun qlZabrSwaptionVolatilityCubeAtmStrike as zabrSwaptionVolatilityCubeAtmStrikeForTenorRaw{withZabrSwaptionVolatilityCube*`ZabrSwaptionVolatilityCube'
   ,fromEnumQuantity`(Word,TimeUnit)'& -- ^optionTenor
   ,fromEnumQuantity`(Word,TimeUnit)'& -- ^swapTenor
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}

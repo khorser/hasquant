@@ -26,10 +26,11 @@ import QuantLib.TermStructure.Yield
 import qualified QuantLib.Index.InterestRate as IR
 import QuantLib.Instrument
 import QuantLib.Instrument.Option(EuropeanExercise(..))
-import QuantLib.Instrument.Swap(fairRate, fixedLegBps, vanillaSwap, swaption, SwapType(..))
+import QuantLib.Instrument.Swap(fairRate, fixedLegBps, vanillaSwap, makeVanillaSwap, swaption, SwapType(..))
 import QuantLib.Model hiding(setPricingEngine, value, discount)
 import qualified QuantLib.Model as Model
 import qualified QuantLib.Process as Process
+import qualified QuantLib.TermStructure.Volatility as Vol
 import QuantLib.Math(Interpolation(..))
 import QuantLib.PricingEngine
 
@@ -45,7 +46,7 @@ spec = do
 
 gaussian1dSpec :: Spec
 gaussian1dSpec =
-  describe "Gaussian1dModel" $
+  describe "Gaussian1dModel" $ do
     it "reproduces the fitted curve's own discount factors, forward rate, and fair swap rate at y=0" $
       Context.keepingSettingsGc $ do
         cal <- calendar TARGET
@@ -111,6 +112,40 @@ gaussian1dSpec =
 
         proc1D <- stateProcess model
         proc1D `seq` return ()
+
+    -- The surface inverts Black's formula on model swaption prices, so a Black engine on it must
+    -- reprice the model's own ATM swaption. Pending: QuantLib 1.43's fixing-date MakeSwaption leaves
+    -- its nominal uninitialized, so Gaussian1dSmileSection reports zero volatilities.
+    xit "gaussian1dSwaptionVolatility reprices the model's swaption under a Black engine" $
+      Context.keepingSettingsGc $ do
+        cal <- calendar TARGET
+        originalEvalDate <- Context.evaluationDate
+        evalDate <- adjust cal originalEvalDate Following
+        Context.setEvaluationDate (Just evalDate)
+        settlement <- advance cal evalDate (2, Days) Following False
+        dc <- dayCounter Actual365FixedStandard
+        flatQ <- simpleQuote 0.03
+        ts <- flatForward (ReferenceDate settlement) flatQ dc Continuous Annual
+        volQuote <- simpleQuote 0.01
+        reversionQuote <- simpleQuote 0.01
+        gsrModel <- gsr ts volQuote [] reversionQuote 60.0
+        model <- asGaussian1dModel gsrModel
+        swapBase <- IR.liborSwapIndex IR.EuriborSwapIsdaFixA (10, Years) (Just ts) (Just ts)
+        euribor6m <- IR.iborIndex IR.Euribor6M (Just ts)
+        thirty360 <- dayCounter Thirty360BondBasis
+        -- the swap index's own underlying starts two business days after its fixing date
+        startDate <- adjust cal (addGregorianYearsClip 5 settlement) Following
+        fixingDate <- advance cal startDate (-2, Days) Following False
+        strike <- gaussian1dSwapRate model fixingDate (10, Years) Nothing 0 (Just swapBase)
+        underlying <- makeVanillaSwap (10, Years) euribor6m strike (5, Years) (Just 2) (1, Years) thirty360
+          Nothing Nothing Nothing Nothing Nothing Nothing
+        swpn <- swaption underlying (European (EuropeanExercise fixingDate)) Physical PhysicalOTC
+        gaussian1dSwaptionEngine model 64 7.0 True False (Just ts) None >>= setPricingEngine swpn
+        modelNpv <- npv swpn
+        surface <- Vol.gaussian1dSwaptionVolatility cal ModifiedFollowing swapBase model dc
+        blackSwaptionEngineFromVolatilityStructure ts surface >>= setPricingEngine swpn
+        blackNpv <- npv swpn
+        blackNpv `shouldSatisfy` closePrec modelNpv (1.0e-4 * modelNpv)
 
 affineModelSpec :: Spec
 affineModelSpec =

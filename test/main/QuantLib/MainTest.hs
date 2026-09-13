@@ -13,6 +13,7 @@ import qualified QuantLib.Spec.Commodity as Commodity
 import qualified QuantLib.Spec.InterestRateAndCashFlow as InterestRateAndCashFlow
 import qualified QuantLib.Spec.TermStructure as TermStructure
 import qualified QuantLib.Spec.TermStructure.Commodity as TermStructureCommodity
+import qualified QuantLib.Spec.TermStructure.Inflation as TermStructureInflation
 import qualified QuantLib.Spec.TermStructure.InflationVolatility as TermStructureInflationVolatility
 import qualified QuantLib.Spec.Index.Commodity as IndexCommodity
 import qualified QuantLib.Spec.Index.Inflation as IndexInflation
@@ -51,6 +52,7 @@ main = do
     InterestRateAndCashFlow.spec evalDate
     TermStructure.spec
     TermStructureCommodity.spec
+    TermStructureInflation.spec
     TermStructureInflationVolatility.spec
     IndexCommodity.spec
     IndexInflation.spec

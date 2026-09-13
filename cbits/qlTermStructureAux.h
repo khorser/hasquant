@@ -11,6 +11,7 @@
 #include <ql/termstructures/inflation/piecewisezeroinflationcurve.hpp>
 #include <ql/termstructures/inflation/piecewiseyoyinflationcurve.hpp>
 #include <ql/termstructures/inflation/interpolatedyoyinflationcurve.hpp>
+#include <ql/termstructures/inflation/interpolatedzeroinflationcurve.hpp>
 #include <ql/termstructures/volatility/equityfx/blackvariancecurve.hpp>
 #include <ql/termstructures/volatility/equityfx/blackvariancesurface.hpp>
 #include <ql/termstructures/volatility/zabrsmilesection.hpp>
@@ -153,6 +154,15 @@ QuantLib::YieldTermStructure *qlInterpolatedZeroCurveAux(
   const std::vector<QuantLib::Date>& jumpDates,
   int interpolator, int approximator, int approximatorArg);
 
+QuantLib::YieldTermStructure *qlInterpolatedSimpleZeroCurveAux(
+  const std::vector<QuantLib::Date>& dates,
+  const std::vector<double>& yields,
+  const QuantLib::DayCounter& dayCount,
+  const QuantLib::Calendar& cal,
+  const std::vector<QuantLib::Handle<QuantLib::Quote> >& jumps,
+  const std::vector<QuantLib::Date>& jumpDates,
+  int interpolator, int approximator, int approximatorArg);
+
 QuantLib::YieldTermStructure *qlInterpolatedSpreadDiscountCurveAux(
   const QuantLib::Handle<QuantLib::YieldTermStructure>& baseCurve,
   const std::vector<QuantLib::Date>& dates,
@@ -165,6 +175,27 @@ QuantLib::YieldTermStructure *qlPiecewiseZeroSpreadedTermStructureAux(
   const std::vector<QuantLib::Date>& dates,
   QuantLib::Compounding comp, QuantLib::Frequency freq,
   int interpolator, int approximator, int approximatorArg);
+
+// Rejects LogLinear/LogCubic: the zero rate integrates the spread, and log interpolations have
+// no primitive.
+QuantLib::YieldTermStructure *qlPiecewiseForwardSpreadedTermStructureAux(
+  const QuantLib::Handle<QuantLib::YieldTermStructure>& baseCurve,
+  const std::vector<QuantLib::Handle<QuantLib::Quote> >& spreads,
+  const std::vector<QuantLib::Date>& dates,
+  int interpolator, int approximator, int approximatorArg);
+
+// PiecewiseSpreadYieldCurve<Discount, Interpolator, IterativeBootstrap>.
+QuantLib::YieldTermStructure *qlPiecewiseSpreadYieldCurveAux(
+  const QuantLib::Handle<QuantLib::YieldTermStructure>& baseCurve,
+  const std::vector<QuantLib::ext::shared_ptr<QuantLib::RateHelper> >& instr,
+  int interpolator, int approximator, int approximatorArg,
+  const QlIterativeBootstrapOpts& bootstrapOpts);
+
+// PiecewiseSpreadYieldCurve<Discount, LogLinear, GlobalBootstrap>.
+QuantLib::YieldTermStructure *qlPiecewiseSpreadYieldCurveGlobalBootstrapAux(
+  const QuantLib::Handle<QuantLib::YieldTermStructure>& baseCurve,
+  const std::vector<QuantLib::ext::shared_ptr<QuantLib::RateHelper> >& instr,
+  double accuracy, const std::vector<double>& instrumentWeights);
 
 // some credit stuff
 QuantLib::DefaultProbabilityTermStructure *qlInterpolatedDefaultDensityCurveAux(
@@ -226,6 +257,7 @@ QuantLib::ZeroInflationTermStructure *qlPiecewiseZeroInflationCurveAux(
     QuantLib::Frequency frequency,
     const QuantLib::DayCounter& dayCounter,
     const std::vector<QuantLib::ext::shared_ptr<QuantLib::BootstrapHelper<QuantLib::ZeroInflationTermStructure> > >& instruments,
+    const QuantLib::ext::shared_ptr<QuantLib::Seasonality>& seasonality,
     int interpolator, int approximator, int approximatorArg);
 
 QuantLib::YoYInflationTermStructure *qlPiecewiseYoYInflationCurveAux(
@@ -235,6 +267,7 @@ QuantLib::YoYInflationTermStructure *qlPiecewiseYoYInflationCurveAux(
     QuantLib::Frequency frequency,
     const QuantLib::DayCounter& dayCounter,
     const std::vector<QuantLib::ext::shared_ptr<QuantLib::BootstrapHelper<QuantLib::YoYInflationTermStructure> > >& instruments,
+    const QuantLib::ext::shared_ptr<QuantLib::Seasonality>& seasonality,
     int interpolator, int approximator, int approximatorArg);
 
 QuantLib::YoYInflationTermStructure *qlInterpolatedYoYInflationCurveAux(
@@ -243,6 +276,16 @@ QuantLib::YoYInflationTermStructure *qlInterpolatedYoYInflationCurveAux(
     const std::vector<QuantLib::Rate> &rates,
     QuantLib::Frequency frequency,
     const QuantLib::DayCounter& dayCounter,
+    const QuantLib::ext::shared_ptr<QuantLib::Seasonality>& seasonality,
+    int interpolator, int approximator, int approximatorArg);
+
+QuantLib::ZeroInflationTermStructure *qlInterpolatedZeroInflationCurveAux(
+    const QuantLib::Date &referenceDate,
+    const std::vector<QuantLib::Date> &dates,
+    const std::vector<QuantLib::Rate> &rates,
+    QuantLib::Frequency frequency,
+    const QuantLib::DayCounter& dayCounter,
+    const QuantLib::ext::shared_ptr<QuantLib::Seasonality>& seasonality,
     int interpolator, int approximator, int approximatorArg);
 
 // Keep per-interpolation template instantiation in this auxiliary translation unit. These entry

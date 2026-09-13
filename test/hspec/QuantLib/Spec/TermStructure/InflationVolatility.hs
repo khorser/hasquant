@@ -131,7 +131,7 @@ setup = do
   baseDate <- advance cal eval (-1, Months) Unadjusted False
   capStartDate <- advance cal eval (-2, Months) ModifiedFollowing False
   yoyDates <- (baseDate :) <$> mapM (\n -> advance cal capStartDate (n, Years) ModifiedFollowing False) [1 .. length yoyEURrates - 1]
-  yoyEU <- interpolatedYoyInflationCurve eval (fromList (zip yoyDates yoyEURrates)) Monthly dc Linear
+  yoyEU <- interpolatedYoyInflationCurve eval (fromList (zip yoyDates yoyEURrates)) Monthly dc Nothing Linear
 
   zii <- zeroInflationIndex EUHICP
   yoyIndexEU <- yoyInflationIndexFromZero zii (Just yoyEU)
@@ -155,8 +155,8 @@ spec = do
     capStartDate <- advance cal eval (-2, Months) ModifiedFollowing False
     yoyDates <- (baseDate :) <$> mapM (\n -> advance cal capStartDate (n, Years) ModifiedFollowing False) [1 .. length yoyEURrates - 1]
     let mid = addDays 180 (yoyDates !! 1)
-    yoyLinear <- interpolatedYoyInflationCurve eval (fromList (zip yoyDates yoyEURrates)) Monthly dc Linear
-    yoyCubic <- interpolatedYoyInflationCurve eval (fromList (zip yoyDates yoyEURrates)) Monthly dc (Cubic Kruger)
+    yoyLinear <- interpolatedYoyInflationCurve eval (fromList (zip yoyDates yoyEURrates)) Monthly dc Nothing Linear
+    yoyCubic <- interpolatedYoyInflationCurve eval (fromList (zip yoyDates yoyEURrates)) Monthly dc Nothing (Cubic Kruger)
     rLinear <- yoyRate yoyLinear mid True
     rCubic <- yoyRate yoyCubic mid True
     -- both interpolators agree at the nodes themselves; a mid-node query is where a genuinely
@@ -218,7 +218,7 @@ spec = do
     baseDate <- advance cal eval (-1, Months) Unadjusted False
     capStartDate <- advance cal eval (-2, Months) ModifiedFollowing False
     yoyDates <- (baseDate :) <$> mapM (\n -> advance cal capStartDate (n, Years) ModifiedFollowing False) [1 .. length yoyEURrates - 1]
-    yoyEU <- interpolatedYoyInflationCurve eval (fromList (zip yoyDates yoyEURrates)) Monthly dc Linear
+    yoyEU <- interpolatedYoyInflationCurve eval (fromList (zip yoyDates yoyEURrates)) Monthly dc Nothing Linear
     zii <- zeroInflationIndex EUHICP
     yoyIndexEU <- yoyInflationIndexFromZero zii (Just yoyEU)
 

@@ -21,6 +21,7 @@ import qualified QuantLib.InterestRate as IR
 import qualified QuantLib.Quote as Quote
 import QuantLib.TermStructure.Yield
 import QuantLib.TermStructure hiding(maxDate)
+import qualified QuantLib.TermStructure as TS
 import QuantLib.Math
 import QuantLib.Index(addFixing)
 import QuantLib.Index.InterestRate(iborIndex, IborConstructor(..), overnightIborIndex, OvernightIborIndexType(Sofr), liborSwapIndex, LiborSwapIndexType(EurLiborSwapIsdaFixA))
@@ -276,6 +277,97 @@ spec = do
           spreadedD1 <- discount spreaded (DatePoint d1) False
 
           spreadedD1 `shouldSatisfy` closePrec (baseD1 * spreadDf1) 1.0e-8
+
+      -- Ports upstream termstructures.cpp's spreaded-forward interpolation tests: between spread
+      -- nodes the instantaneous forward is the base forward plus the interpolated spread.
+      it "piecewise forward-spreaded term structure interpolates instantaneous forward spreads" $
+        Context.keepingSettingsGc $ do
+          (cal, _settlementDays, ts) <- setup
+          todayD <- Context.evaluationDate
+          let businessDays n = advance cal todayD (n, Days) Following False
+              instFwd curve t = IR.rate <$> forwardRateBetweenTimes curve t t IR.Continuous NoFrequency True
+          q2 <- Quote.simpleQuote 0.02
+          q3 <- Quote.simpleQuote 0.03
+          q4 <- Quote.simpleQuote 0.04
+
+          d100 <- businessDays 100
+          d150 <- businessDays 150
+          d120 <- businessDays 120
+          t100 <- timeFromReference ts d100
+          t150 <- timeFromReference ts d150
+          t120 <- timeFromReference ts d120
+          linear <- piecewiseForwardSpreadedTermStructure ts (fromList [(d100, q2), (d150, q3)]) Linear
+          base120 <- instFwd ts t120
+          instFwd linear t120 >>= (`shouldSatisfy` closePrec (base120 + (0.03 - 0.02) / (t150 - t100) * (t120 - t100) + 0.02) 1.0e-9)
+
+          d75 <- businessDays 75
+          d260 <- businessDays 260
+          t100' <- timeFromReference ts d100
+          forwardFlat <- piecewiseForwardSpreadedTermStructure ts (fromList [(d75, q2), (d260, q3)]) ForwardFlat
+          base100 <- instFwd ts t100'
+          instFwd forwardFlat t100' >>= (`shouldSatisfy` closePrec (base100 + 0.02) 1.0e-9)
+
+          d200 <- businessDays 200
+          d300 <- businessDays 300
+          d110 <- businessDays 110
+          t110 <- timeFromReference ts d110
+          backwardFlat <- piecewiseForwardSpreadedTermStructure ts (fromList [(d100, q2), (d200, q3), (d300, q4)]) BackwardFlat
+          base110 <- instFwd ts t110
+          instFwd backwardFlat t110 >>= (`shouldSatisfy` closePrec (base110 + 0.03) 1.0e-9)
+
+          piecewiseForwardSpreadedTermStructure ts (fromList [(d100, q2), (d150, q3)]) LogLinear `shouldThrow` anyException
+
+      -- Mirrors upstream piecewiseyieldcurve.cpp's testPiecewiseSpreadYieldCurve: fewer swaps
+      -- bootstrapped as a spread over the base curve reprice, and the forward spread stays flat
+      -- past the base curve's max date.
+      it "piecewise spread yield curve reprices its instruments over the base curve" $
+        Context.keepingSettingsGc $ do
+          (cal, settlementDays, ts) <- setup
+          setExtrapolation ts True
+          refDate <- referenceDate ts
+          actual360dc <- dayCounter (Actual360 False)
+          thirty360dc <- dayCounter Thirty360BondBasis
+          ccy <- currency EUR
+          index <- iborIndex (Ibor "spread3m" (3, Months) settlementDays ccy cal ModifiedFollowing False actual360dc) Nothing
+          let swapData = [(1, 4.44), (3, 4.55), (6, 4.81), (9, 5.01), (15, 5.25), (30, 5.36)] :: [(Int, Double)]
+              mkHelpers = mapM (\(n, r) -> do
+                q <- Quote.simpleQuote (r / 100)
+                h <- swapRateHelperFromConventions q (n, Years) cal Annual Unadjusted thirty360dc index Nothing (0, Days) Nothing
+                  Nothing LastRelevantDate Nothing False Nothing Nothing Nothing >>= asRateHelper
+                pure (h, r / 100)) swapData
+              repricing bootstrap = do
+                hs <- mkHelpers
+                curve <- piecewiseSpreadYieldCurve ts (fromList (map fst hs)) bootstrap True
+                _ <- discount curve (DatePoint (addGregorianYearsClip 1 refDate)) True
+                mapM_ (\(h, r) -> impliedQuote h >>= (`shouldSatisfy` closePrec r 1.0e-8)) hs
+                pure curve
+              flatFwd curve t1 t2 = IR.rate <$> forwardRateBetweenTimes curve t1 t2 IR.Continuous NoFrequency True
+          logLinear <- repricing (SpreadIterative LogLinear defaultIterativeBootstrapOpts)
+          _ <- repricing (SpreadIterative Linear defaultIterativeBootstrapOpts)
+          _ <- repricing (SpreadGlobalLogLinear 1.0e-10 [])
+
+          curveMax <- TS.maxDate logLinear
+          baseMax <- TS.maxDate ts
+          curveMax `shouldBe` baseMax
+          tMax <- timeFromReference ts curveMax
+          before <- (-) <$> flatFwd logLinear (tMax - 1) tMax <*> flatFwd ts (tMax - 1) tMax
+          after <- (-) <$> flatFwd logLinear tMax (tMax + 1) <*> flatFwd ts tMax (tMax + 1)
+          after `shouldSatisfy` closePrec before 1.0e-9
+
+      it "interpolated simple zero curve reproduces its simply-compounded node rates" $
+        Context.keepingSettingsGc $ do
+          let refDate = 15 `january` 2024
+              nodes = [(refDate, 0.02), (addGregorianYearsClip 1 refDate, 0.021), (addGregorianYearsClip 2 refDate, 0.022), (addGregorianYearsClip 5 refDate, 0.025)] :: [(Day, Double)]
+          Context.setEvaluationDate (Just refDate)
+          cal <- Calendar.calendar TARGET
+          dc <- dayCounter Actual365FixedStandard
+          curve <- interpolatedSimpleZeroCurve (fromList nodes) dc cal [] Linear
+          forM_ (drop 1 nodes) $ \(d, r) -> do
+            z <- IR.rate <$> zeroRate curve (RateAtDate d dc) IR.Simple Annual False
+            z `shouldSatisfy` closePrec r 1.0e-10
+            t <- timeFromReference curve d
+            df <- discount curve (DatePoint d) False
+            df `shouldSatisfy` closePrec (1 / (1 + r * t)) 1.0e-12
 
     -- The three rate helpers below build their instrument internally rather than taking
     -- one, so these accessors are the only way to reach it. Checking the instrument's own
@@ -1964,6 +2056,26 @@ spec = do
           k `shouldSatisfy` (\x -> x > -0.05 && x < 0.20)
           kAtDate <- Vol.atmStrike cube (Vol.AtmStrikeDate (10 `december` 2013)) (2 :: Word, Years)
           kAtDate `shouldSatisfy` (\x -> x > -0.05 && x < 0.20)
+
+      -- The same fixture with a fifth (gamma) guess column; gamma = 1 approximates SABR, and beta
+      -- and gamma stay fixed because three strikes cannot identify five parameters.
+      it "zabrSwaptionVolatilityCube reprices close to its own flat ATM input and reports ZABR nodes" $
+        Context.keepingSettingsGc $ do
+          (_, _, atmVol, swapIndexBase, shortSwapIndexBase, volSpreads, _) <- mkFixture
+          let nodeCount = length optionTenors * length swapTenors
+          guessQuotes <- concat <$> replicateM nodeCount (mapM Quote.simpleQuote ([0.03, 0.5, 0.3, 0.0, 1.0] :: [Double]))
+          let parametersGuess = either error id $ objectMatrix (fromIntegral nodeCount) 5 guessQuotes
+          cube <- Vol.zabrSwaptionVolatilityCube atmVol optionTenors swapTenors strikeSpreads volSpreads
+                    swapIndexBase shortSwapIndexBase False parametersGuess
+                    False True False False True False Nothing Nothing False 50 False 0.0001 Nothing Nothing
+          v <- Vol.swaptionVolatility cube (Vol.OptionDate (10 `december` 2013)) (Vol.SwapTenor (2, Years)) 0.03 False
+          abs (v - flatVol) `shouldSatisfy` (< 1.0e-2)
+          sparse <- Vol.zabrSparseParameters cube
+          realMatrixRows sparse `shouldBe` fromIntegral nodeCount
+          -- 2 metadata columns + 5 ZABR params + forward/error/maxError/endCriteria
+          realMatrixColumns sparse `shouldBe` 11
+          k <- Vol.atmStrike cube (Vol.AtmStrikeTenor (1, Years)) (2 :: Word, Years)
+          k `shouldSatisfy` (\x -> x > -0.05 && x < 0.20)
 
       it "interpolatedSwaptionVolatilityCube reprices close to its own flat ATM input at zero spread" $
         Context.keepingSettingsGc $ do

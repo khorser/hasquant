@@ -80,6 +80,7 @@ Out of scope:
 - Join forces with [HQuantLib](https://github.com/paulrzcz/hquantlib): a bivariate copula CDF catalogue
 - Build a declarative composition DSL as a sibling project.
 - Expose that DSL through an agent-callable tool, so an LLM can construct and price products through validated hasquant operations rather than generated pricing logic.
+- Enable the pending `gaussian1dSwaptionVolatility` repricing test once QuantLib initializes `MakeSwaption`'s nominal in its fixing-date constructor; until then QuantLib 1.43 returns zero volatilities.
 - See [github issues](https://github.com/khorser/hasquant/issues) for more formalized tasks
 
 # Testing

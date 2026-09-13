@@ -5,7 +5,7 @@ cabal-version: 2.2
 -- see: https://github.com/sol/hpack
 
 name:           hasquant
-version:        0.7.0.0
+version:        0.8.0.0
 synopsis:       Bindings to QuantLib
 description:    Bindings to the QuantLib library.
 category:       Finance,FFI,Library
@@ -265,6 +265,7 @@ test-suite hasquant_test
       QuantLib.Spec.Statistics
       QuantLib.Spec.TermStructure
       QuantLib.Spec.TermStructure.Commodity
+      QuantLib.Spec.TermStructure.Inflation
       QuantLib.Spec.TermStructure.InflationVolatility
       QuantLib.Example.AmericanLSM
       QuantLib.Example.AsianOption

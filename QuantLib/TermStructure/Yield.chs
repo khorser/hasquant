@@ -33,6 +33,7 @@ module QuantLib.TermStructure.Yield
   , IterativeBootstrapOpts(..)
   , Bootstrap(..)
   , LocalBootstrapTrait(..)
+  , SpreadBootstrap(..)
 
     -- * Constructors
     -- ** Hierarchy and handles
@@ -47,6 +48,7 @@ module QuantLib.TermStructure.Yield
   , withCompositeZeroYieldStructure
   , impliedTermStructure
   , piecewiseZeroSpreadedTermStructure
+  , piecewiseForwardSpreadedTermStructure
   , quantoTermStructure
   , ultimateForwardTermStructure
     -- ** Rate helpers
@@ -70,8 +72,10 @@ module QuantLib.TermStructure.Yield
   , sofrFutureRateHelper
     -- ** Bootstrapped and interpolated curves
   , piecewiseYieldCurve
+  , piecewiseSpreadYieldCurve
   , defaultIterativeBootstrapOpts
   , interpolatedZeroCurve
+  , interpolatedSimpleZeroCurve
   , interpolatedForwardCurve
   , interpolatedDiscountCurve
   , interpolatedSpreadDiscountCurve
@@ -733,6 +737,17 @@ piecewiseZeroSpreadedTermStructure ts qd c f i = uncurryNested (qlPiecewiseZeroS
 {#fun qlPiecewiseZeroSpreadedTermStructure{withYieldTermStructure*`GenYieldTermStructure y',withQuoteArray*`[GenQuote q]'&,withDayArray*`[Day]'&,`Compounding',`Frequency'
   ,`Int',`Int',`Int',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
 
+-- |A yield curve adding interpolated instantaneous-forward spreads to 'baseCurve', flat outside
+-- the spread dates. Linked to the base curve and quotes; its max date is the earlier of the base
+-- curve's and the last spread date. @LogLinear@ and @LogCubic@ throw: the spread is integrated.
+piecewiseForwardSpreadedTermStructure :: GenYieldTermStructure y
+  -> NonEmpty (Day, GenQuote q)  -- ^spreads
+  -> Interpolation -> IO YieldTermStructure
+piecewiseForwardSpreadedTermStructure ts qd i = uncurryNested (qlPiecewiseForwardSpreadedTermStructure ts qs ds) (qlInterpolation i)
+  where (ds, qs) = unzip (toList qd)
+{#fun qlPiecewiseForwardSpreadedTermStructure{withYieldTermStructure*`GenYieldTermStructure y',withQuoteArray*`[GenQuote q]'&,withDayArray*`[Day]'&
+  ,`Int',`Int',`Int',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
+
 -- |Quanto term structure, modelling the quanto effect in option pricing. Stays linked to all
 -- four inputs.
 {#fun qlQuantoTermStructure as quantoTermStructure{withYieldTermStructure*`GenYieldTermStructure y1' -- ^underlyingDividendTS
@@ -819,6 +834,12 @@ fromBootstrapTrait LForwardRate = ForwardRate
 fromBootstrapTrait LZeroYield = ZeroYield
 fromBootstrapTrait LSimpleZeroYield = SimpleZeroYield
 
+-- |Bootstrapper for 'piecewiseSpreadYieldCurve', whose nodes are always discount-factor spreads.
+-- @LogLinear@ interpolation gives piecewise-constant forward spreads, upstream's canonical choice.
+data SpreadBootstrap
+  = SpreadIterative !Interpolation !IterativeBootstrapOpts
+  | SpreadGlobalLogLinear !Double ![Double] -- ^accuracy, instrumentWeights (empty for equal weights)
+
 -- |Bootstraps a term structure with either a fixed or evaluation-date-relative reference point.
 -- 'Bootstrap' selects iterative, global, or local construction; the final flag controls
 -- extrapolation past the curve's maximum date.
@@ -856,6 +877,24 @@ piecewiseYieldCurve reference r dc qd bootstrap ex = case (reference, bootstrap)
           setExtrapolation curve True
           pure curve
 
+-- |Bootstraps multiplicative discount-factor spreads over 'baseCurve' so that each instrument
+-- reprices on the combined curve. Reference date, calendar and day counter come from the linked
+-- base curve; past the last node the forward spread stays flat.
+piecewiseSpreadYieldCurve :: GenYieldTermStructure y -- ^baseCurve
+  -> NonEmpty (GenRateHelper rh) -- ^instruments
+  -> SpreadBootstrap -- ^bootstrapper choice
+  -> Bool -- ^extrapolate past the curve's max date
+  -> IO YieldTermStructure
+piecewiseSpreadYieldCurve base r bootstrap ex = case bootstrap of
+  SpreadIterative i b -> uncurryNested (qlPiecewiseSpreadYieldCurve base rs) (qlInterpolation i)
+    (nullableDouble (ibAccuracy b)) (nullableDouble (ibMinValue b)) (nullableDouble (ibMaxValue b))
+    (ibMaxAttempts b) (ibMaxFactor b) (ibMinFactor b) (ibDontThrow b) (ibDontThrowSteps b) (ibMaxEvaluations b) ex
+  SpreadGlobalLogLinear acc w -> qlPiecewiseSpreadYieldCurveGlobalBootstrap base rs acc w ex
+  where rs = toList r
+{#fun qlPiecewiseSpreadYieldCurve{withYieldTermStructure*`GenYieldTermStructure y',withRateHelperArray*`[GenRateHelper rh]'&,`Int',`Int',`Int',`Double',`Double',`Double',fromIntegral`Word',`Double',`Double',`Bool',fromIntegral`Word',fromIntegral`Word',`Bool',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
+
+{#fun qlPiecewiseSpreadYieldCurveGlobalBootstrap{withYieldTermStructure*`GenYieldTermStructure y',withRateHelperArray*`[GenRateHelper rh]'&,`Double',withDoubleArray*`[Double]'&,`Bool',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
+
 -- |Yield curve interpolating discount factors directly between the given dates.
 interpolatedDiscountCurve :: NonEmpty (Day, Double) -- ^dates, dfs
   -> DayCounter -- ^dayCounter
@@ -888,6 +927,16 @@ interpolatedZeroCurve :: NonEmpty (Day, Double) -- ^dates, yields
   -> IO YieldTermStructure
 interpolatedZeroCurve r dc c qd i = uncurryNested (qlInterpolatedZeroCurve rs rd dc c qs ds) (qlInterpolation i) where {(rd, rs) = unzip (toList r); (ds, qs) = unzip qd}
 {#fun qlInterpolatedZeroCurve{withDoubleArray*`[Double]'&,withDayArray*`[Day]'&,withDayCounter*`DayCounter',withCalendar*`Calendar',withQuoteArray*`[GenQuote q]'&,withDayArray*`[Day]'&,`Int',`Int',`Int',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
+
+-- |Yield curve interpolating simply-compounded zero rates directly between the given dates.
+interpolatedSimpleZeroCurve :: NonEmpty (Day, Double) -- ^dates, yields
+  -> DayCounter -- ^dayCounter
+  -> Calendar -- ^cal
+  -> [(Day, GenQuote q)] -- ^jumps, jumpDates
+  -> Interpolation -- ^interpolator
+  -> IO YieldTermStructure
+interpolatedSimpleZeroCurve r dc c qd i = uncurryNested (qlInterpolatedSimpleZeroCurve rs rd dc c qs ds) (qlInterpolation i) where {(rd, rs) = unzip (toList r); (ds, qs) = unzip qd}
+{#fun qlInterpolatedSimpleZeroCurve{withDoubleArray*`[Double]'&,withDayArray*`[Day]'&,withDayCounter*`DayCounter',withCalendar*`Calendar',withQuoteArray*`[GenQuote q]'&,withDayArray*`[Day]'&,`Int',`Int',`Int',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
 
 -- |Discount factors interpolated as a multiplicative spread applied on top of 'baseCurve'.
 -- Upstream requires the first discount factor to be exactly @1.0@, flagging its date as the

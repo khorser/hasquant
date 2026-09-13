@@ -386,6 +386,20 @@ YieldTermStructure *qlInterpolatedZeroCurveAux(
       });
 }
 
+YieldTermStructure *qlInterpolatedSimpleZeroCurveAux(
+    const std::vector<Date> &yDates,
+    const std::vector<double>& yields,
+    const DayCounter& dayCount,
+    const Calendar& cal,
+    const std::vector<Handle<Quote> >& jumps,
+    const std::vector<Date>& jumpDates,
+    int interpolator, int approximator, int approximatorArg) {
+  return dispatchInterpolation<YieldTermStructure*>(interpolator, approximator, approximatorArg,
+[&](auto i) {
+        return new InterpolatedSimpleZeroCurve<decltype(i)>(yDates, yields, dayCount, cal, jumps, jumpDates, i);
+      });
+}
+
 YieldTermStructure *qlInterpolatedSpreadDiscountCurveAux(
     const Handle<YieldTermStructure>& baseCurve,
     const std::vector<Date>& dates,
@@ -407,6 +421,42 @@ YieldTermStructure *qlPiecewiseZeroSpreadedTermStructureAux(
 [&](auto i) {
         return new InterpolatedPiecewiseZeroSpreadedTermStructure<decltype(i)>(baseCurve, spreads, dates, comp, freq, i);
       });
+}
+
+YieldTermStructure *qlPiecewiseForwardSpreadedTermStructureAux(
+    const Handle<YieldTermStructure>& baseCurve,
+    const std::vector<Handle<Quote> >& spreads,
+    const std::vector<Date>& dates,
+    int interpolator, int approximator, int approximatorArg) {
+  QL_REQUIRE(interpolator != hasquant::LogLinear && interpolator != hasquant::LogCubic,
+      "piecewise forward-spreaded term structure needs an interpolation with a primitive; "
+      "LogLinear and LogCubic are not supported");
+  return dispatchInterpolation<YieldTermStructure*>(interpolator, approximator, approximatorArg,
+[&](auto i) {
+        return new InterpolatedPiecewiseForwardSpreadedTermStructure<decltype(i)>(baseCurve, spreads, dates, i);
+      });
+}
+
+YieldTermStructure *qlPiecewiseSpreadYieldCurveAux(
+    const Handle<YieldTermStructure>& baseCurve,
+    const std::vector<shared_ptr<RateHelper> >& instr,
+    int interpolator, int approximator, int approximatorArg,
+    const QlIterativeBootstrapOpts& b) {
+  return dispatchInterpolation<YieldTermStructure*>(interpolator, approximator, approximatorArg,
+[&](auto i) {
+        using CurveType = PiecewiseSpreadYieldCurve<QuantLib::Discount, decltype(i)>;
+        return new CurveType(baseCurve, instr, i, makeIterativeBootstrap<CurveType>(b));
+      });
+}
+
+// Bootstrap spelled through CurveType::bootstrap_type, as in makeGlobalBootstrapCurve.
+YieldTermStructure *qlPiecewiseSpreadYieldCurveGlobalBootstrapAux(
+    const Handle<YieldTermStructure>& baseCurve,
+    const std::vector<shared_ptr<RateHelper> >& instr,
+    double accuracy, const std::vector<double>& instrumentWeights) {
+  using CurveType = PiecewiseSpreadYieldCurve<QuantLib::Discount, QuantLib::LogLinear, QuantLib::GlobalBootstrap>;
+  return new CurveType(baseCurve, instr, QuantLib::LogLinear(),
+      typename CurveType::bootstrap_type(accuracy, nullptr, nullptr, instrumentWeights));
 }
 
 // some credit stuff
@@ -523,20 +573,20 @@ DefaultLossModel* qlConstantLossModelAux(const Handle<Quote>& mktCorrel,
   });
 }
 
-// The `{}` seasonality and the 1.0e-14 / 1.0e-12 accuracy below are upstream's own default
-// arguments, spelled explicitly only because the interpolator sits after them
-// (piecewisezeroinflationcurve.hpp / piecewiseyoyinflationcurve.hpp).
+// The 1.0e-14 / 1.0e-12 accuracies below are upstream's own defaults, spelled explicitly because
+// the interpolator follows them (piecewisezeroinflationcurve.hpp / piecewiseyoyinflationcurve.hpp).
 ZeroInflationTermStructure *qlPiecewiseZeroInflationCurveAux(
     const Date &referenceDate,
     const Date &baseDate,
     Frequency frequency,
     const DayCounter& dayCounter,
     const std::vector<shared_ptr<BootstrapHelper<ZeroInflationTermStructure> > >& instruments,
+    const shared_ptr<Seasonality>& seasonality,
     int interpolator, int approximator, int approximatorArg) {
   return dispatchInterpolation<ZeroInflationTermStructure*>(interpolator, approximator, approximatorArg,
 [&](auto i) {
         return new PiecewiseZeroInflationCurve<decltype(i)>(referenceDate, baseDate, frequency,
-            dayCounter, instruments, {}, 1.0e-14, i);
+            dayCounter, instruments, seasonality, 1.0e-14, i);
       });
 }
 
@@ -547,11 +597,12 @@ YoYInflationTermStructure *qlPiecewiseYoYInflationCurveAux(
     Frequency frequency,
     const DayCounter& dayCounter,
     const std::vector<shared_ptr<BootstrapHelper<YoYInflationTermStructure> > >& instruments,
+    const shared_ptr<Seasonality>& seasonality,
     int interpolator, int approximator, int approximatorArg) {
   return dispatchInterpolation<YoYInflationTermStructure*>(interpolator, approximator, approximatorArg,
 [&](auto i) {
         return new PiecewiseYoYInflationCurve<decltype(i)>(referenceDate, baseDate, baseYoYRate,
-            frequency, dayCounter, instruments, {}, 1.0e-12, i);
+            frequency, dayCounter, instruments, seasonality, 1.0e-12, i);
       });
 }
 
@@ -561,11 +612,27 @@ YoYInflationTermStructure *qlInterpolatedYoYInflationCurveAux(
     const std::vector<Rate> &rates,
     Frequency frequency,
     const DayCounter& dayCounter,
+    const shared_ptr<Seasonality>& seasonality,
     int interpolator, int approximator, int approximatorArg) {
   return dispatchInterpolation<YoYInflationTermStructure*>(interpolator, approximator, approximatorArg,
 [&](auto i) {
         return new InterpolatedYoYInflationCurve<decltype(i)>(referenceDate, dates, rates,
-            frequency, dayCounter, {}, i);
+            frequency, dayCounter, seasonality, i);
+      });
+}
+
+ZeroInflationTermStructure *qlInterpolatedZeroInflationCurveAux(
+    const Date &referenceDate,
+    const std::vector<Date> &dates,
+    const std::vector<Rate> &rates,
+    Frequency frequency,
+    const DayCounter& dayCounter,
+    const shared_ptr<Seasonality>& seasonality,
+    int interpolator, int approximator, int approximatorArg) {
+  return dispatchInterpolation<ZeroInflationTermStructure*>(interpolator, approximator, approximatorArg,
+[&](auto i) {
+        return new InterpolatedZeroInflationCurve<decltype(i)>(referenceDate, dates, rates,
+            frequency, dayCounter, seasonality, i);
       });
 }
 

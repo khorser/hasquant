@@ -1,3 +1,16 @@
+## 0.8.0.0 (2026)
+
+Adds the remaining comparable term structures: piecewise forward-spreaded curves, bootstrapped
+spread yield curves (`SpreadBootstrap`), interpolated simple-zero and zero-inflation curves, the
+ZABR swaption volatility cube, and Gaussian one-factor implied swaption volatilities.
+
+Breaking change: `piecewiseZeroInflationCurve`, `piecewiseYoyInflationCurve` and
+`interpolatedYoyInflationCurve` take a `Maybe Seasonality` before the interpolation, supporting
+multiplicative and Kerkhof price seasonality at construction.
+
+`gaussian1dSwaptionVolatility` returns zero volatilities with QuantLib 1.43 because of an upstream
+`MakeSwaption` bug; its repricing test is pending until QuantLib ships the fix.
+
 ## 0.7.0.0 (2026)
 
 The final broad API-coverage batch adds Haskell callbacks for payoffs, optimization, regression and
