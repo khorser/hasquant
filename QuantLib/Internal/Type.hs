@@ -415,7 +415,7 @@ withInterestRate = withStandalone . getCInterestRate
 withInterestRateArray :: [InterestRate] -> ((CUInt, Ptr (Ptr CInterestRate)) -> IO b) -> IO b
 withInterestRateArray = withStandaloneArray getCInterestRate
 
--- |a GARCH(1,1) volatility model -- see 'QuantLib.VolatilityModel.garch11'\/'garch11Calibrated'.
+-- |a GARCH(1,1) volatility model -- see 'QuantLib.Model.garch11'\/'garch11Calibrated'.
 data CGarch11
 newtype Garch11 = Garch11 {getCGarch11 :: Standalone CGarch11}
 foreign import ccall unsafe "ql.h &qlFreeGarch11" qlFreeGarch11 :: FinalizerPtr CGarch11

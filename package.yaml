@@ -65,7 +65,6 @@ library:
     - QuantLib.Time.Schedule
     - QuantLib.Settings
     - QuantLib.InterestRate
-    - QuantLib.VolatilityModel
     - QuantLib.Index
     - QuantLib.Instrument
     - QuantLib.Quote
