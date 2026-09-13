@@ -181,25 +181,12 @@ import QuantLib.Index.InterestRate(tenor, dayCounter, businessDayConvention)
 {#pointer *QlOvernightIndex as OvernightIborIndex foreign -> COvernightIndex' nocode#}
 {#pointer *QlBond as Bond foreign -> CBond' nocode#}
 {#pointer *QlCreditDefaultSwap as CreditDefaultSwap foreign -> CCreditDefaultSwap' nocode#}
--- CdsOption is constructed in QuantLib.Instrument.Credit; aliased here only so its
--- HasInstrumentUnderlying instance stays non-orphan, as CreditDefaultSwap's HasFairSpread does.
 {#pointer *QlCdsOption as CdsOption foreign -> CCdsOption' nocode#}
 {#pointer *Schedule as Schedule foreign -> CSchedule nocode#}
 {#pointer *DayCounter foreign -> CDayCounter nocode#}
 {#pointer *QlExercise nocode#}
 {#pointer *QlZeroInflationIndex as ZeroInflationIndex foreign -> CZeroInflationIndex' nocode#}
 {#pointer *QlYoYInflationIndex as YoYInflationIndex foreign -> CYoYInflationIndex' nocode#}
-
-#include "qlTypesC2HS.h"
-#include "qlEnumC2HS.h"
-#include "qlEnumObjects.h"
-
-#include "ql.h"
-
-{#enum SwapType{} deriving(Show, Eq, Read)#}
-{#enum SwaptionPriceType{} add prefix="Swaption" deriving(Show, Eq, Read)#}
-{#enum IrregularSettlementType{} deriving(Show, Eq, Read)#}
-
 {#pointer *Leg foreign -> CLeg' nocode#}
 {#pointer *QlSwaption as Swaption foreign -> CSwaption' nocode#}
 {#pointer *QlIrregularSwaption as IrregularSwaption foreign -> CIrregularSwaption' nocode#}
@@ -225,6 +212,16 @@ import QuantLib.Index.InterestRate(tenor, dayCounter, businessDayConvention)
 {#pointer *QlConstNotionalCrossCurrencyBasisSwap as ConstNotionalCrossCurrencyBasisSwap foreign -> CConstNotionalCrossCurrencyBasisSwap' nocode#}
 {#pointer *QlConstNotionalCrossCurrencyFixedVsFloatingSwap as ConstNotionalCrossCurrencyFixedVsFloatingSwap foreign -> CConstNotionalCrossCurrencyFixedVsFloatingSwap' nocode#}
 {#pointer *Currency foreign -> CCurrency nocode#}
+
+#include "qlTypesC2HS.h"
+#include "qlEnumC2HS.h"
+#include "qlEnumObjects.h"
+
+#include "ql.h"
+
+{#enum SwapType{} deriving(Show, Eq, Read)#}
+{#enum SwaptionPriceType{} add prefix="Swaption" deriving(Show, Eq, Read)#}
+{#enum IrregularSettlementType{} deriving(Show, Eq, Read)#}
 
 -- FloatFloatSwapOpts/FloatFloatSwapVaryingOpts bundle every trailing param of FloatFloatSwap's
 -- two constructors (floatfloatswap.hpp) -- 12 trailing defaulted params each, past the

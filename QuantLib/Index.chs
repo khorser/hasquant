@@ -63,6 +63,7 @@ import QuantLib.Internal.Type
 
 {#pointer *Calendar foreign -> CCalendar nocode#}
 {#pointer *QlIndex as Index foreign -> CIndex' nocode#}
+{#pointer *QlHistoricalIndexAnalysis as HistoricalIndexAnalysis foreign -> CHistoricalIndexAnalysis nocode#}
 
 -- |stores the historical fixing at the given date; the date must be the actual calendar date of the fixing, not a settlement date
 {#fun qlIndexAddFixing as addFixing{withIndex*`GenIndex idx',withDay*`Day',`Double' -- ^fixing
@@ -109,8 +110,6 @@ fixingHistory i = do
 -- |Clears every native fixing history in QuantLib's process-global store, for all index names.
 -- This affects other index instances and is intended for explicit session or test cleanup.
 {#fun qlIndexManagerClearHistories as clearAllFixingHistories{preErrorCheck-`String'errorCheck*-}->`()'#}
-
-{#pointer *QlHistoricalIndexAnalysis as HistoricalIndexAnalysis foreign -> CHistoricalIndexAnalysis nocode#}
 
 -- |Computes 'SequenceStatistics' (mean\/standard deviation\/skewness\/kurtosis\/min\/max\/semi-
 -- and downside-variance and -deviation\/percentiles\/value-at-risk\/expected shortfall,

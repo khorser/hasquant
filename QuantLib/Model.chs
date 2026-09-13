@@ -186,6 +186,7 @@ import Data.List.NonEmpty(NonEmpty, toList)
 import Data.Maybe(fromMaybe)
 
 {#enum CalibrationErrorType{} deriving(Show, Eq, Read)#}
+{#enum Garch11Mode{} deriving(Show, Eq, Read)#}
 
 -- |Sobol Brownian-bridge coordinate ordering.
 data SobolBrownianOrdering = Factors | Steps | Diagonal deriving (Show, Eq, Read, Enum, Bounded)
@@ -254,6 +255,7 @@ data HestonSLVFDMLogEntry = HestonSLVFDMLogEntry
 {#pointer *QlBatesProcess as BatesProcess foreign -> CBatesProcess' nocode#}
 {#pointer *QlLiborForwardModelProcess as LiborForwardModelProcess foreign -> CLiborForwardModelProcess' nocode#}
 {#pointer *QlVarianceGammaProcess as VarianceGammaProcess foreign -> CVarianceGammaProcess' nocode#}
+{#pointer *Garch11 foreign -> CGarch11 nocode#}
 
 -- |Bates stochastic-volatility model: extends Heston with jumps in the underlying's return process.
 {#fun qlBatesModel as batesModel{withBatesProcess*`BatesProcess',preErrorCheck-`String'errorCheck*-}->`BatesModel'peekBatesModel*#}
@@ -830,9 +832,6 @@ swaptionHelper span' = case span' of
 
 -- |Sets the pricing engine used to compute this calibration helper's model value.
 {#fun qlBlackCalibrationHelperSetPricingEngine as setPricingEngine{withBlackCalibrationHelper*`GenBlackCalibrationHelper bch',withPricingEngine*`PricingEngine',preErrorCheck-`String'errorCheck*-}->`()'#}
-
-{#enum Garch11Mode{} deriving(Show, Eq, Read)#}
-{#pointer *Garch11 foreign -> CGarch11 nocode#}
 
 -- |Direct-parameter GARCH(1,1) model: @vl@ is the long-term (unconditional) volatility: the
 -- model's persistence @gamma = 1 - alpha - beta@ and @omega = vl * gamma@ are derived from it.

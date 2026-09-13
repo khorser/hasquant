@@ -57,6 +57,7 @@ import QuantLib.Internal.Common
 {#pointer *QlInstrument as Instrument foreign -> CInstrument' nocode#}
 {#pointer *Calendar foreign -> CCalendar nocode#}
 {#pointer *DayCounter foreign -> CDayCounter nocode#}
+{#pointer *QlAdditionalResult as RawResultPtr nocode#}
 
 {#enum SettlementType{} deriving(Show, Eq, Read)#}
 {#enum SettlementMethod{} deriving(Show, Eq, Read)#}
@@ -94,10 +95,6 @@ import QuantLib.Internal.Common
 
 -- |returns the date the net present value refers to.
 {#fun qlInstrumentValuationDate as valuationDate{withInstrument*`GenInstrument i',preErrorCheck-`String'errorCheck*-}->`Day'toDay#}
-
--- Re-registers QlAdditionalResult with c2hs's (per-file) pointer table as RawResultPtr,
--- so the {#fun#} below infers the right out-parameter type instead of an opaque Ptr (Ptr ()).
-{#pointer *QlAdditionalResult as RawResultPtr nocode#}
 
 -- |Returns QuantLib's `additionalResults()` map for the given Instrument, as an association list
 -- keyed by the C++ result name. The map's values are populated by the pricing engine;

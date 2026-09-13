@@ -299,10 +299,20 @@ import Data.List.NonEmpty(NonEmpty(..), toList)
 {#pointer *QlCPICoupon as CPICoupon foreign -> CCPICoupon' nocode#}
 {#pointer *QlCPICouponPricer as CPICouponPricer foreign -> CCPICouponPricer nocode#}
 {#pointer *QlCPIVolatilitySurface as CPIVolatilitySurface foreign -> CCPIVolatilitySurface' nocode#}
+{#pointer *QlCmsCouponPricer as CmsCouponPricer foreign -> CCmsCouponPricer' nocode#}
+{#pointer *QlCmsCoupon as CmsCoupon foreign -> CCmsCoupon' nocode#}
+{#pointer *QlSwapSpreadIndex as SwapSpreadIndex foreign -> CSwapSpreadIndex' nocode#}
+{#pointer *QlDigitalCmsCoupon as DigitalCmsCoupon foreign -> CDigitalCmsCoupon' nocode#}
+{#pointer *QlDigitalCmsSpreadCoupon as DigitalCmsSpreadCoupon foreign -> CDigitalCmsSpreadCoupon' nocode#}
+{#pointer *QlSmileSection as SmileSection foreign -> CSmileSection nocode#}
+{#pointer *QlYoYOptionletVolatilitySurface as YoYOptionletVolatilitySurface foreign -> CYoYOptionletVolatilitySurface' nocode#}
+{#pointer *QlYoYInflationCouponPricer as YoYInflationCouponPricer foreign -> CYoYInflationCouponPricer nocode#}
 
 {#enum DurationType{} deriving(Show, Eq, Read)#}
 {#enum RateAveragingType{} add prefix="Averaging" deriving(Show, Eq, Read)#}
 {#enum TimingAdjustment{} deriving(Show, Eq, Read)#}
+{#enum YieldCurveModel{} deriving(Show, Eq, Read)#}
+{#enum ReplicationType{} deriving(Show, Eq, Read)#}
 
 -- IborLegOpts/CmsLegOpts bundle every IborLeg/CmsLeg builder-method param beyond
 -- iborLeg/cmsLeg's original 12-arg shape, pre-populated with upstream's own defaults via
@@ -1243,18 +1253,6 @@ cmsLegWithOptions schedule idx notionals dc adj fixingDays gearings spreads caps
 -- 'couponAccruedAmount'.  Pair with 'toCouponLeg' to get here from a 'Leg'.
 {#fun qlCouponLegCoupons as coupons{withGenLeg*`CouponLeg' -- ^leg
   ,preArray-`[Coupon]'&peekCouponArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
-
-{#enum YieldCurveModel{} deriving(Show, Eq, Read)#}
-
-{#pointer *QlCmsCouponPricer as CmsCouponPricer foreign -> CCmsCouponPricer' nocode#}
-{#pointer *QlCmsCoupon as CmsCoupon foreign -> CCmsCoupon' nocode#}
-{#pointer *QlSwapSpreadIndex as SwapSpreadIndex foreign -> CSwapSpreadIndex' nocode#}
-{#pointer *QlDigitalCmsCoupon as DigitalCmsCoupon foreign -> CDigitalCmsCoupon' nocode#}
-{#pointer *QlDigitalCmsSpreadCoupon as DigitalCmsSpreadCoupon foreign -> CDigitalCmsSpreadCoupon' nocode#}
-{#pointer *QlSmileSection as SmileSection foreign -> CSmileSection nocode#}
-{#pointer *QlYoYOptionletVolatilitySurface as YoYOptionletVolatilitySurface foreign -> CYoYOptionletVolatilitySurface' nocode#}
-{#pointer *QlYoYInflationCouponPricer as YoYInflationCouponPricer foreign -> CYoYInflationCouponPricer nocode#}
-{#enum ReplicationType{} deriving(Show, Eq, Read)#}
 
 -- |Black-formula pricer for capped/floored Ibor coupons
 {#fun qlBlackIborCouponPricer as blackIborCouponPricer{withOptionletVolatilityStructure*`GenOptionletVolatilityStructure ov'

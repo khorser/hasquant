@@ -280,6 +280,11 @@ peekPtr = pure
 {#pointer *QlLmCorrelationModel foreign -> CLmCorrelationModel nocode#}
 {#pointer *QlLmVolatilityModel foreign -> CLmVolatilityModel nocode#}
 {#pointer *Rounding as QlRounding foreign -> CRounding nocode#}
+{#pointer *QlAdditionalResult as RawResultPtr nocode#}
+
+-- |Discriminants for `QlAdditionalResult.type`, bound from `enum AdditionalResultType` in
+-- `cbits/qlInstrument.h` (read from the header, not hardcoded).
+{#enum AdditionalResultType {} deriving (Show, Eq, Read) #}
 
 -- monotonic flag for CubicInterpolation::Spline/::Parabolic -- tells deriveCrossEnum to give
 -- these two values a runtime Bool field instead of cross-producting named sub-values (same
@@ -1079,16 +1084,6 @@ swingExercise = Bermudan . Swing
 data AdditionalResultVal = RealVal Double | StringVal String | RealVectorVal [Double] | UnsupportedVal String
   deriving (Show, Eq)
 
--- |Discriminants for `QlAdditionalResult.type`, bound from `enum AdditionalResultType` in
--- `cbits/qlInstrument.h` (read from the header, not hardcoded).
-{#enum AdditionalResultType {} deriving (Show, Eq, Read) #}
-
--- |Registers `struct QlAdditionalResult*` with c2hs as `RawResultPtr`, `nocode` since we supply
--- the Haskell type ourselves (below) rather than a c2hs-generated wrapper. This is what lets the
--- `additionalResults` `{#fun#}` binding (in `QuantLib.Instrument`)'s low-level array-of-structs
--- out-parameter (C type `struct QlAdditionalResult **`) be typed `Ptr RawResultPtr` =
--- `Ptr (Ptr RawResult)`, instead of defaulting to an opaque `Ptr (Ptr ())`.
-{#pointer *QlAdditionalResult as RawResultPtr nocode#}
 type RawResultPtr = Ptr RawResult
 
 -- |One raw `QlAdditionalResult` entry, peeked field-by-field via c2hs `{#get#}` hooks. Its

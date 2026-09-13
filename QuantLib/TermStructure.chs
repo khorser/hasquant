@@ -35,10 +35,6 @@ import QuantLib.Internal.Type
 
 #include "ql.h"
 
--- Pointer aliases for the HasHelperUnderlying instances below. The helper types and the
--- instruments they build are declared in QuantLib.Internal.Type; these are the c2hs-local
--- mappings the {#fun#} hooks need, copied from the modules that construct them
--- (QuantLib.TermStructure.Yield, .Inflation, QuantLib.Model).
 {#pointer *QlBondHelper as BondHelper foreign -> CBondHelper' nocode#}
 {#pointer *QlSwapRateHelper as SwapRateHelper foreign -> CSwapRateHelper' nocode#}
 {#pointer *QlOISRateHelper as OISRateHelper foreign -> COISRateHelper' nocode#}
@@ -51,6 +47,7 @@ import QuantLib.Internal.Type
 {#pointer *QlZeroCouponInflationSwap as ZeroCouponInflationSwap foreign -> CZeroCouponInflationSwap' nocode#}
 {#pointer *QlYearOnYearInflationSwap as YearOnYearInflationSwap foreign -> CYearOnYearInflationSwap' nocode#}
 {#pointer *QlFixedVsFloatingSwap as FixedVsFloatingSwap foreign -> CFixedVsFloatingSwap' nocode#}
+{#pointer *QlTermStructure as TermStructure foreign -> CTermStructure' nocode#}
 
 -- |Bootstrap and calibration helpers that build and hold the instrument whose market quote
 -- they match. The class lives here, in the term-structure root module, because its instances
@@ -89,8 +86,6 @@ instance HasHelperUnderlying SwaptionHelper where
 {#fun qlZeroCouponInflationSwapHelperSwap{withZeroCouponInflationSwapHelper*`ZeroCouponInflationSwapHelper',preErrorCheck-`String'errorCheck*-}->`ZeroCouponInflationSwap'peekZeroCouponInflationSwap*#}
 {#fun qlYearOnYearInflationSwapHelperSwap{withYearOnYearInflationSwapHelper*`YearOnYearInflationSwapHelper',preErrorCheck-`String'errorCheck*-}->`YearOnYearInflationSwap'peekYearOnYearInflationSwap*#}
 {#fun qlSwaptionHelperUnderlying{withSwaptionHelper*`SwaptionHelper',preErrorCheck-`String'errorCheck*-}->`FixedVsFloatingSwap'peekFixedVsFloatingSwap*#}
-
-{#pointer *QlTermStructure as TermStructure foreign -> CTermStructure' nocode#}
 
 -- |A term-structure reference point. 'ReferenceDate' stays fixed for the object's lifetime;
 -- 'SettlementDays' follows the global evaluation date using the supplied calendar.
