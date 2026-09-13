@@ -235,6 +235,7 @@ QL_TRACE_NAME(OpMultiCompositeQuote)
 QL_TRACE_NAME(HsDerivedQuote)
 QL_TRACE_NAME(HsCompositeQuote)
 QL_TRACE_NAME(HsMultiCompositeQuote)
+QL_TRACE_NAME(SavedSettingsWithObservable)
 #endif
 
 int *qlAllocateInts(size_t size) {return ret(new int[size]);}
