@@ -251,8 +251,8 @@ garch11Spec = describe "Garch11" $ do
   it "reproduces garch.cpp::testCalculation's calculated series" $ do
     g <- garch11 0.2 0.3 0.4
     let day0 = fromGregorian 1962 7 6
-        days = [addDays i day0 | i <- [1 .. 10]]
-        series = fromList (zip days (replicate 10 0.1))
+        sampleDays = [addDays i day0 | i <- [1 .. 10]]
+        series = fromList (zip sampleDays (replicate 10 0.1))
     result <- calculate g series
     let expected =
           [ 0.452769, 0.513323, 0.530141, 0.5350841, 0.536558
@@ -262,7 +262,7 @@ garch11Spec = describe "Garch11" $ do
         -- input point has nothing to forecast from, so it's dropped, and one extra point is
         -- extrapolated one step past the input series' last date (garch.cpp's
         -- Garch11::calculate, not this binding's marshalling).
-        outputDays = map (addDays 1) days
+        outputDays = map (addDays 1) sampleDays
     map fst result `shouldBe` outputDays
     map snd result `shouldSatisfy` listClose id expected 1.0e-6
 
@@ -306,7 +306,7 @@ garch11Spec = describe "Garch11" $ do
 garmanKlassSpec :: Spec
 garmanKlassSpec = describe "GarmanKlass family" $ do
   it "garmanKlassSimpleSigma matches ln(close\\/open)^2, scaled by yearFraction" $ do
-    result <- garmanKlassSimpleSigma yearFraction bars
+    result <- garmanKlassSimpleSigma dt bars
     map fst result `shouldBe` [day1, day2]
     case result of
       (r0:r1:_) -> do
@@ -315,25 +315,25 @@ garmanKlassSpec = describe "GarmanKlass family" $ do
       _ -> expectationFailure "expected at least two bars"
 
   it "parkinsonSigma matches the high-low estimator" $ do
-    result <- parkinsonSigma yearFraction bars
+    result <- parkinsonSigma dt bars
     case result of
       (_:r1:_) -> r1 `shouldSatisfy` (\(_, v) -> closePrec (parkinsonSigma' o2 h2 l2) 1.0e-9 v)
       _ -> expectationFailure "expected at least two bars"
 
   it "garmanKlassSigma4 matches its published high-low\\/close-open coefficients" $ do
-    result <- garmanKlassSigma4 yearFraction bars
+    result <- garmanKlassSigma4 dt bars
     case result of
       (_:r1:_) -> r1 `shouldSatisfy` (\(_, v) -> closePrec (sigma4Formula o2 c2 h2 l2) 1.0e-9 v)
       _ -> expectationFailure "expected at least two bars"
 
   it "garmanKlassSigma5 matches its published high-low\\/close-open coefficients" $ do
-    result <- garmanKlassSigma5 yearFraction bars
+    result <- garmanKlassSigma5 dt bars
     case result of
       (_:r1:_) -> r1 `shouldSatisfy` (\(_, v) -> closePrec (sigma5Formula o2 c2 h2 l2) 1.0e-9 v)
       _ -> expectationFailure "expected at least two bars"
 
   it "garmanKlassSigma1 blends simpleSigma with the overnight jump, dropping the first bar" $ do
-    result <- garmanKlassSigma1 yearFraction marketOpenFraction bars
+    result <- garmanKlassSigma1 dt marketOpenFraction bars
     map fst result `shouldBe` [day2]
     let simpleBase = log (c2 / o2) ** 2
         expected = openCloseBlend marketOpenFraction 0.5 simpleBase
@@ -342,7 +342,7 @@ garmanKlassSpec = describe "GarmanKlass family" $ do
       [] -> expectationFailure "expected at least one bar"
 
   it "garmanKlassSigma3 blends parkinsonSigma with the overnight jump, dropping the first bar" $ do
-    result <- garmanKlassSigma3 yearFraction marketOpenFraction bars
+    result <- garmanKlassSigma3 dt marketOpenFraction bars
     let parkinsonBase = (log (h2 / o2) - log (l2 / o2)) ** 2 / (4 * log 2)
         expected = openCloseBlend marketOpenFraction 0.17 parkinsonBase
     case result of
@@ -350,7 +350,7 @@ garmanKlassSpec = describe "GarmanKlass family" $ do
       [] -> expectationFailure "expected at least one bar"
 
   it "garmanKlassSigma6 blends garmanKlassSigma4 with the overnight jump, dropping the first bar" $ do
-    result <- garmanKlassSigma6 yearFraction marketOpenFraction bars
+    result <- garmanKlassSigma6 dt marketOpenFraction bars
     let sigma4Base =
           let u = log (h2 / o2); d = log (l2 / o2); cc = log (c2 / o2)
           in 0.511 * (u - d) ** 2 - 0.019 * (cc * (u + d) - 2 * u * d) - 0.383 * cc * cc
@@ -364,19 +364,19 @@ garmanKlassSpec = describe "GarmanKlass family" $ do
     (o1, c1, h1, l1) = (100.0, 102.0, 103.0, 99.0)
     (o2, c2, h2, l2) = (101.0, 105.0, 106.0, 100.0)
     bars = (day1, o1, c1, h1, l1) :| [(day2, o2, c2, h2, l2)]
-    yearFraction = 1.0 / 252.0
+    dt = 1.0 / 252.0
     marketOpenFraction = 0.5 :: Double
 
-    simpleSigma o c = sqrt (abs (log (c / o) ** 2) / yearFraction)
-    parkinsonSigma' o h l = sqrt (abs ((log (h / o) - log (l / o)) ** 2 / (4 * log 2)) / yearFraction)
+    simpleSigma o c = sqrt (abs (log (c / o) ** 2) / dt)
+    parkinsonSigma' o h l = sqrt (abs ((log (h / o) - log (l / o)) ** 2 / (4 * log 2)) / dt)
     sigma4Formula o c h l =
       let u = log (h / o); d = log (l / o); cc = log (c / o)
-      in sqrt (abs (0.511 * (u - d) ** 2 - 0.019 * (cc * (u + d) - 2 * u * d) - 0.383 * cc * cc) / yearFraction)
+      in sqrt (abs (0.511 * (u - d) ** 2 - 0.019 * (cc * (u + d) - 2 * u * d) - 0.383 * cc * cc) / dt)
     sigma5Formula o c h l =
       let u = log (h / o); d = log (l / o); cc = log (c / o)
-      in sqrt (abs (0.5 * (u - d) ** 2 - (2 * log 2 - 1) * cc * cc) / yearFraction)
+      in sqrt (abs (0.5 * (u - d) ** 2 - (2 * log 2 - 1) * cc * cc) / dt)
     -- jump = ln(cur.open) - ln(prev.close); a is the per-variant blend weight (0.5/0.17/0.012).
-    openCloseBlend f a base = sqrt ((a * jump ** 2 / f + (1 - a) * base / (1 - f)) / yearFraction)
+    openCloseBlend f a base = sqrt ((a * jump ** 2 / f + (1 - a) * base / (1 - f)) / dt)
       where jump = log o2 - log c1
 
 -- ConstantEstimator: hand-computed over a 5-point series with windowSize=3
@@ -386,22 +386,22 @@ constantAndLocalEstimatorSpec :: Spec
 constantAndLocalEstimatorSpec = describe "ConstantEstimator and SimpleLocalEstimator" $ do
   it "constantVolatilityEstimator matches the windowed sample-variance formula" $ do
     let day0 = fromGregorian 2021 1 1
-        days = [addDays i day0 | i <- [0 .. 4]]
+        sampleDays = [addDays i day0 | i <- [0 .. 4]]
         vals = [1.0, 2.0, 3.0, 2.0, 1.0]
-        series = fromList (zip days vals)
+        series = fromList (zip sampleDays vals)
         windowed ws = sqrt (sum (map (** 2) ws) / n - sum ws ** 2 / n / (n + 1))
           where n = fromIntegral (length ws)
     result <- constantVolatilityEstimator 3 series
-    map fst result `shouldBe` drop 3 days
+    map fst result `shouldBe` drop 3 sampleDays
     map snd result `shouldSatisfy` listClose id [windowed [1, 2, 3], windowed [2, 3, 2]] 1.0e-9
 
   it "simpleLocalVolatilityEstimator matches |ln(p_i\\/p_{i-1})| \\/ sqrt(yearFraction)" $ do
     let day0 = fromGregorian 2021 1 1
-        days = [addDays i day0 | i <- [0 .. 2]]
+        sampleDays = [addDays i day0 | i <- [0 .. 2]]
         prices = [100.0, 105.0, 110.0]
-        series = fromList (zip days prices)
-        yearFraction = 1.0 / 252.0
-        expected = [abs (log (p1 / p0)) / sqrt yearFraction | (p0, p1) <- zip prices (drop 1 prices)]
-    result <- simpleLocalVolatilityEstimator yearFraction series
-    map fst result `shouldBe` drop 1 days
+        series = fromList (zip sampleDays prices)
+        dt = 1.0 / 252.0
+        expected = [abs (log (p1 / p0)) / sqrt dt | (p0, p1) <- zip prices (drop 1 prices)]
+    result <- simpleLocalVolatilityEstimator dt series
+    map fst result `shouldBe` drop 1 sampleDays
     map snd result `shouldSatisfy` listClose id expected 1.0e-9
