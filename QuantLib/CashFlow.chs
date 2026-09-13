@@ -1240,7 +1240,6 @@ cmsLegWithOptions schedule idx notionals dc adj fixingDays gearings spreads caps
 {#fun qlQuantLibSetEquityCashFlowPricer as setEquityLegPricer{withLeg*`GenLeg l',withEquityCashFlowPricer*`EquityCashFlowPricer',preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |try to downcast leg to a coupon leg
--- don't blame me, it's how QuantLib works
 {#fun qlLegToCouponLeg as toCouponLeg{withLeg*`GenLeg l',preErrorCheck-`String'errorCheck*-}->`CouponLeg'peekCouponLeg*#}
 
 -- |The individual coupons of a coupon leg, e.g. to ask each one its own 'rate' or

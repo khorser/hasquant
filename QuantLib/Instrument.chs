@@ -53,6 +53,11 @@ import QuantLib.Internal.Common
 
 #include "ql.h"
 
+{#pointer *QlPricingEngine as PricingEngine foreign -> CPricingEngine nocode#}
+{#pointer *QlInstrument as Instrument foreign -> CInstrument' nocode#}
+{#pointer *Calendar foreign -> CCalendar nocode#}
+{#pointer *DayCounter foreign -> CDayCounter nocode#}
+
 {#enum SettlementType{} deriving(Show, Eq, Read)#}
 {#enum SettlementMethod{} deriving(Show, Eq, Read)#}
 {#enum BarrierType{} deriving(Show, Eq, Read)#}
@@ -65,11 +70,6 @@ import QuantLib.Internal.Common
 {#enum AtomicDefaultType{} deriving(Show, Eq, Read)#}
 {#enum PerpetualFuturesPayoffType{} deriving(Show, Eq, Read)#}
 {#enum PerpetualFuturesFundingType{} deriving(Show, Eq, Read)#}
-
-{#pointer *QlPricingEngine as PricingEngine foreign -> CPricingEngine nocode#}
-{#pointer *QlInstrument as Instrument foreign -> CInstrument' nocode#}
-{#pointer *Calendar foreign -> CCalendar nocode#}
-{#pointer *DayCounter foreign -> CDayCounter nocode#}
 
 -- |Constructs a perpetual future. Linear contracts settle and margin in the
 -- domestic currency of the underlying FOR/DOM pair; Inverse contracts do so
@@ -95,10 +95,8 @@ import QuantLib.Internal.Common
 -- |returns the date the net present value refers to.
 {#fun qlInstrumentValuationDate as valuationDate{withInstrument*`GenInstrument i',preErrorCheck-`String'errorCheck*-}->`Day'toDay#}
 
--- |Re-registers `struct QlAdditionalResult*` with c2hs as `RawResultPtr` (the type is defined in
--- `QuantLib.Internal.Common`, `nocode` here too) -- c2hs's pointer-type table is per-file, so
--- without this the `{#fun#}` below infers the out-parameter as the opaque `Ptr (Ptr ())` instead
--- of `Ptr RawResultPtr`, which fails to typecheck against `peekAdditionalResults`'s signature.
+-- Re-registers QlAdditionalResult with c2hs's (per-file) pointer table as RawResultPtr,
+-- so the {#fun#} below infers the right out-parameter type instead of an opaque Ptr (Ptr ()).
 {#pointer *QlAdditionalResult as RawResultPtr nocode#}
 
 -- |Returns QuantLib's `additionalResults()` map for the given Instrument, as an association list

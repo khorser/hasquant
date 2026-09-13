@@ -36,37 +36,30 @@ import QuantLib.Internal
 #include "qlTypesC2HS.h"
 #include "ql.h"
 
--- |Sets the x87 floating-point unit to 64-bit extended precision.
---
--- Call this once at program start on Windows, before any pricing. By the time Haskell
--- code runs there, the x87 unit sits at 53-bit precision, where a binary linked by
--- clang++ rather than ghc has 64-bit; every 80-bit @long double@ operation inside
--- QuantLib is then silently rounded to double. That matters because @boost::math@ promotes @double@
--- arguments to @long double@ by default, so its distributions lose the precision their
--- algorithms assume -- returning quietly less accurate answers, or failing to converge
--- outright (@hestonSlvFdmModel@ throws out of @quantile(non_central_chi_squared)@
--- without this).
---
--- A no-op on every other platform and on non-x86 Windows. The control word is
--- per-thread, so with a threaded runtime call it on each OS thread that prices. Only
--- the x87 unit is touched: Haskell's own 'Double' arithmetic is SSE\/MXCSR and is
--- unaffected either way.
+-- |Sets the x87 floating-point unit to 64-bit extended precision. On Windows, call on
+-- each OS thread before it prices, since the control word is per-thread; a no-op elsewhere.
 {#fun qlSetExtendedPrecision as setExtendedPrecision{}->`()'#}
 
--- |returns the current value of the Evaluation Date:
--- the date at which pricing is to be performed
+-- Padding: being the file's first {#fun#}, this entry absorbs c2hs's module-header
+-- line-count drift; without enough real distance to the next entry, Haddock
+-- misattaches this doc to that one (see c2hs-shim-patterns's LINE-pragma note).
+
+
+
+
+-- |returns the current value of the Evaluation Date: the date at which pricing is to be performed
 {#fun qlSettingsEvaluationDate as evaluationDate{}->`Day'toDay#}
 
--- |sets the value of the Evaluation Date
--- |Nothing sets the evaluation date to Date::todaysDate() and allow it to change at midnight. This comes at the price of losing some performance, since the evaluation date is re-evaluated each time it is read.
+-- |sets the value of the Evaluation Date.
+-- Nothing sets the evaluation date to Date::todaysDate() and allow it to change at midnight.
+-- This comes at the price of losing some performance, since the evaluation date is re-evaluated each time it is read.
 {#fun qlSettingsSetEvaluationDate as setEvaluationDate{withMaybeDay*`Maybe Day',preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |returns the current value of the boolean which enforce the usage of historic
 -- fixings for today's date
 {#fun qlSettingsEnforceTodaysHistoricFixings as enforceTodaysHistoricFixings{}->`Bool'#}
 
--- |sets the value of the boolean which enforce the usage of historic fixings
--- for today's date
+-- |sets the value of the boolean which enforce the usage of historic fixings for today's date
 {#fun qlSettingsSetEnforceTodaysHistoricFixings as setEnforceTodaysHistoricFixings{`Bool'}->`()'#}
 
 -- |if set, whether CashFlows occurring on today's date should enter the NPV; when the NPV date

@@ -674,3 +674,52 @@ one-line delegating C shim sidesteps the question entirely). Recognize this shap
 capability/permission distinction is invented purely on the Haskell side over one concrete,
 non-polymorphic upstream class -- check for it before assuming every "leaf under a family" case
 needs the heavier `Upcastable` machinery.
+
+## Rendered Haddock can swap adjacent doc comments (c2hs LINE-pragma artifact)
+
+c2hs emits `{-# LINE n "Foo.chs" #-}` *after* each generated `{#fun#}` block, not before it, so
+while GHC parses a block's `-- |` comment and declaration it is still using the *previous*
+block's line mapping. Haddock associates a doc comment with its declaration by comparing these
+remapped source positions, so if one block's *apparent* (stale-mapped) line number ends up
+numerically past the *next* block's corrected line number, Haddock attaches each comment to the
+wrong neighboring declaration -- e.g. one binding's doc rendering under the next binding's name
+instead, and vice versa. Confirmed by inspecting Haddock's own line-numbered source view, where
+two adjacent declarations were shown at overlapping/out-of-order remapped line numbers.
+
+**The trigger is not primarily comment length -- it's being the file's first `{#fun#}`.** Every
+c2hs-generated module carries a constant line-count drift through its header (c2hs injects
+`import qualified Foreign.C.Types as C2HSImp`-style lines and reformats the export list; none of
+that maps 1:1 back to real `.chs` lines, and nothing corrects the drift until the *first* embedded
+`LINE` pragma fires, i.e. after the file's first `{#fun#}`). That first entry's own comment+decl
+are numbered using this uncorrected drift, so its apparent line is inflated by a roughly constant
+offset (~5-10 lines here) regardless of how short its comment is -- shortening a 15-line comment
+to 2 lines in `QuantLib/Settings.chs` did *not* fix the swap between `setExtendedPrecision` (the
+file's first `{#fun#}`) and `evaluationDate` (the second), because the offset alone still exceeded
+the real 2-line gap between them. Reordering only relocates the bug to whichever pair ends up
+first+second; it doesn't remove the underlying drift.
+
+**Fix: widen the real (not apparent) `.chs` distance between the first and second `{#fun#}` past
+the drift's size**, by inserting blank lines (with a one-line plain `--` comment explaining why,
+so they don't get "cleaned up") between the first entry's pragma and the second entry's comment.
+Verify empirically in the built HTML after any change here -- there's no fixed number of lines
+that's correct for every module, since the drift magnitude depends on that module's own import
+list and export-list length.
+
+**Two more Haddock-mangling shapes involve `nocode` pragmas specifically:**
+
+- **A comment placed directly before a `nocode` pointer/enum pragma has nothing to attach to**
+  (`nocode` generates no Haskell declaration), so it silently attaches to the *next* real
+  declaration instead. Fix: demote the note from `-- |` to a plain `--` comment -- an ordinary
+  (non-Haddock) comment is not pulled into the next declaration's doc the way a `-- |`/`-- ^`
+  comment is; no need to also relocate it.
+- **Several consecutive no-op (`nocode`) pragmas immediately before a `-- |` comment can make
+  Haddock drop that comment entirely**, rendering only the per-argument `-- ^` table with no
+  top-level description -- present correctly in the generated `.hs` (so not the LINE-drift swap
+  above) but absent from the built HTML. Fix: move the `nocode` pointer/enum declarations away
+  from being immediately adjacent to the documented `{#fun#}` (e.g. up near the module's
+  `#include`s) so the comment is no longer preceded by a run of no-op pragmas.
+
+Check `nocode` pragma placement and first-`{#fun#}` position first when a rendered doc looks
+wrong; they're cheaper to spot than computing generated-line drift by hand. After any fix here,
+rebuild (`stack haddock hasquant:lib --fast`) and re-grep the specific rendered HTML for that
+declaration -- a plausible-sounding cause is not confirmed until the fresh build shows it fixed.
