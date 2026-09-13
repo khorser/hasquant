@@ -85,7 +85,7 @@ import QuantLib.Time.Date
 import QuantLib.Time.Schedule
 import QuantLib.TermStructure.Volatility
 import QuantLib.TermStructure.Yield
-import QuantLib.Type(Error)
+import QuantLib.Error(Error)
 
 data Result = Result
   { fdmEuropeanR :: !Double

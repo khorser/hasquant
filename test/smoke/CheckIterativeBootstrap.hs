@@ -44,8 +44,8 @@ buildCurve opts = do
 -- well as the discount call: which of the two a failing bootstrap surfaces from is
 -- QuantLib's business, not something this check should pin.
 --
--- Caught as SomeException, deliberately, not as QuantLib.Type.Error: a smoke script is
--- compiled standalone with `-ismoke` from the repo root, so ghc compiles QuantLib/Type.hs
+-- Caught as SomeException, deliberately, not as QuantLib.Error.Error: a smoke script is
+-- compiled standalone with `-ismoke` from the repo root, so ghc compiles QuantLib/Error.hs
 -- from source rather than taking it from the installed package. The local `Error` is then a
 -- *different* type from the one the library throws, and `try` silently never matches -- the
 -- exception sails straight past and the script dies with the very message it was meant to

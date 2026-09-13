@@ -56,7 +56,7 @@ library:
   verbatim:
     - build-tool-depends: c2hs:c2hs >= 0.28.8 && < 0.29
   exposed-modules: # the order is important as it defines the order used by c2hs
-    - QuantLib.Type
+    - QuantLib.Error
     - QuantLib.Math
     - QuantLib.Currency
     - QuantLib.Commodity

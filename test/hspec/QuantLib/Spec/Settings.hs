@@ -8,7 +8,7 @@ import Test.QuickCheck.Monadic(monadicIO, pick, run)
 import Data.Time.Calendar
 
 import QuantLib.Time.Date as Date
-import QuantLib.Type
+import QuantLib.Error
 import qualified QuantLib.Settings as Settings
 import QuantLib.Spec.Helpers(ValidDay(..), InvalidDay(..))
 

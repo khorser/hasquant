@@ -285,8 +285,8 @@ Haskell-side HPC route above turns out insufficient.
   regression test in `test/hspec/QuantLib/Spec/DatesAndSchedule.hs`
   (`describe "settings"`) — extend it, don't re-derive it, if this ever
   needs re-verifying.
-- **A smoke script must not `try`/`catch` on `QuantLib.Type.Error`.**
-  Compiled standalone from the repo root, ghc finds `QuantLib/Type.hs` as
+- **A smoke script must not `try`/`catch` on `QuantLib.Error.Error`.**
+  Compiled standalone from the repo root, ghc finds `QuantLib/Error.hs` as
   *source* and recompiles it, so the script's `Error` is a different type
   from the one the installed library throws: `try` never matches, and the
   script dies with the very message it was written to catch — with no type

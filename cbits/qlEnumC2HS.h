@@ -568,7 +568,7 @@ enum PaymentTermEventType {TradeDate, PricingDate};
 enum UnitOfMeasureConversionType {UomDirect, UomDerived};
 
 // experimental/commodities/commodity.hpp (PricingError::Level). Grepped clean of any clash --
-// 'Error' the data constructor doesn't collide with QuantLib.Type's 'Error' type (separate
+// 'Error' the data constructor doesn't collide with QuantLib.Error's 'Error' type (separate
 // namespaces), and 'Info'/'Warning'/'Fatal' are otherwise unused as constructors here.
 enum PricingErrorLevel {Info, Warning, Error, Fatal};
 

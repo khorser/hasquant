@@ -1,4 +1,4 @@
-module QuantLib.Type
+module QuantLib.Error
   (
     -- * Types
     Error(..)
