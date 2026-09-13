@@ -45,7 +45,6 @@ import QuantLib.Internal.Type
 
 #include "ql.h"
 
-{#pointer *QlInflationIndex as InflationIndex foreign -> CInflationIndex' nocode#}
 {#pointer *QlZeroInflationIndex as ZeroInflationIndex foreign -> CZeroInflationIndex' nocode#}
 {#pointer *QlYoYInflationIndex as YoYInflationIndex foreign -> CYoYInflationIndex' nocode#}
 {#pointer *Currency foreign -> CCurrency nocode#}

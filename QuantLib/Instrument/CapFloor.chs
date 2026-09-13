@@ -29,7 +29,6 @@ import Data.List.NonEmpty(NonEmpty)
 {#pointer *Leg foreign -> CLeg' nocode#}
 {#pointer *QlCapFloor as CapFloor foreign -> CCapFloor' nocode#}
 {#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure' nocode#}
-{#pointer *QlInstrument as Instrument foreign -> CInstrument' nocode#}
 
 -- |constructs a cap: pays the excess of the floating leg's rate over each exercise rate, if positive
 {#fun qlCap as cap{withLeg*`GenLeg l' -- ^floatingLeg

@@ -1180,9 +1180,6 @@ cmsLegWithOptions schedule idx notionals dc adj fixingDays gearings spreads caps
   ,withDoubleArray*`[Double]'& -- ^caps
   ,withDoubleArray*`[Double]'& -- ^floors
   ,preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
-{#pointer *QlZeroInflationCashFlow as ZeroInflationCashFlow foreign -> CZeroInflationCashFlow' nocode#}
-{#pointer *QlCPICashFlow as CPICashFlow foreign -> CCPICashFlow' nocode#}
-{#pointer *QlEquityCashFlow as EquityCashFlow foreign -> CEquityCashFlow' nocode#}
 {#pointer *QlEquityCashFlowPricer as EquityCashFlowPricer foreign -> CEquityCashFlowPricer nocode#}
 
 -- |Cash flow dependent on a 'ZeroInflationIndex' ratio (not a coupon -- no accruals).

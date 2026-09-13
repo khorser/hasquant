@@ -297,6 +297,41 @@ as a `Couldn't match type '()' with 'CFoo''`/`Couldn't match 'Ptr (Ptr
 (Ptr ()))' with '...'` at the `with*`/`peek*` call site, which reads like
 a bug in that function rather than a missing import.
 
+**Finding a genuinely dead local re-declaration.** For the common
+`{#pointer *QlXxx as Xxx foreign -> CXxx' nocode#}` form specifically:
+if the literal backtick spelling `` `Xxx' `` (the alias, backtick-quoted,
+exactly as it would appear in a `{#fun#}` argument/return spec) does not
+occur anywhere else in that same file, the declaration is definitely dead
+— nothing in the file can be relying on it, since a `nocode` pointer
+pragma generates no code itself and only supplies the local, file-scoped
+type lookup that `{#fun#}` bare-backtick specs and hand-written
+`with*`/`peek*` calls consult. The search must also cover the wrapped
+spellings the alias commonly appears under, not just the bare form: an
+optional argument reads `` `Maybe Xxx' `` (e.g. `` `Maybe Rounding' ``),
+and a `Handle`-backed coordinate type reads `` `GenXxx tvar' `` with a
+trailing type-variable name (e.g. `` `GenYieldTermStructure y' ``) — see
+`GenX` mnemonics below. Checking only the unwrapped `` `Xxx' `` form will
+report a false "dead" for a declaration that's actually only ever used
+`Maybe`-wrapped or through its `GenX` handle form. This check does *not*
+extend to the bare
+`{#pointer *QlXxx nocode#}` form used for the `Payoff`/`Exercise`
+raw-`Ptr CFoo'` convention (see `add-quantlib-adt`): there, c2hs resolves
+the C pointee type straight from the actual C header prototype of the
+`{#fun qlSomeFunc ...#}` being bound, with no literal trace of the type
+name anywhere in the `.chs` source or the generated `.hs` — absence of
+text proves nothing for that form, and only an isolated build-and-restore
+can tell. Also check for an exact duplicate of the same declaration line
+elsewhere in the file (a copy-paste leftover) before concluding a unique
+one is unused — a duplicate can each individually look required to
+whichever one of the two you keep, since it's the *pair* that's redundant,
+not either specific line, and *both* can look removable if tested
+in isolation without also checking for the sibling.
+Always confirm a candidate removal with `stack build hasquant`
+(and restore-on-failure) before committing to it; do not remove a batch of
+candidates without a full clean rebuild afterward, since a duplicate pair
+tested independently can each look individually removable, masking that at
+least one copy is genuinely required.
+
 ## Fighting the wrong layer
 
 `GenForeignPtr`'s `_access` and `_mayFree` fields are an intentional manual dictionary. Do not replace them with a public `Access` constraint: c2hs emits explicit signatures for every hook, so polymorphic `GenX` hooks would each need hand-written constraints, including awkward prime-bearing C tag names. The existing result types already pin `newCastForeignPtr` and `newGenForeignPtr` correctly.

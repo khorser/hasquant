@@ -29,7 +29,6 @@ import Data.List.NonEmpty(NonEmpty)
 {#pointer *Leg foreign -> CLeg' nocode#}
 {#pointer *QlYoYInflationCapFloor as YoYInflationCapFloor foreign -> CYoYInflationCapFloor' nocode#}
 {#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure' nocode#}
-{#pointer *QlInstrument as Instrument foreign -> CInstrument' nocode#}
 {#pointer *QlZeroInflationIndex as ZeroInflationIndex foreign -> CZeroInflationIndex' nocode#}
 {#pointer *QlCPICapFloor as CPICapFloor foreign -> CCPICapFloor' nocode#}
 

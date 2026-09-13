@@ -218,8 +218,6 @@ data HestonSLVFDMLogEntry = HestonSLVFDMLogEntry
 
 {#pointer *QlQuote as Quote foreign -> CQuote' nocode#}
 {#pointer *QlPricingEngine as PricingEngine foreign -> CPricingEngine nocode#}
-{#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure' nocode#}
-{#pointer *QlIborIndex as IborIndex foreign -> CIborIndex' nocode#}
 {#pointer *QlOptimizationMethod as QlOptimizationMethod foreign -> COptimizationMethod nocode#}
 {#pointer *QlEndCriteria as QlEndCriteria foreign -> CEndCriteria nocode#}
 {#pointer *Constraint as QlConstraint foreign -> CConstraint nocode#}
@@ -235,7 +233,6 @@ data HestonSLVFDMLogEntry = HestonSLVFDMLogEntry
 {#pointer *HestonSLVFDMLogEntries as HestonSLVFDMLogEntries foreign -> CHestonSLVFDMLogEntries nocode#}
 {#pointer *FdmSchemeDesc as QlFdmSchemeDesc foreign -> CFdmSchemeDesc nocode#}
 {#pointer *QlBatesModel as BatesModel foreign -> CBatesModel' nocode#}
-{#pointer *QlPiecewiseTimeDependentHestonModel as PiecewiseTimeDependentHestonModel foreign -> CPiecewiseTimeDependentHestonModel' nocode#}
 {#pointer *QlShortRateModel as ShortRateModel foreign -> CShortRateModel' nocode#}
 {#pointer *QlOneFactorAffineModel as OneFactorAffineModel foreign -> COneFactorAffineModel' nocode#}
 {#pointer *QlLiborForwardModel as LiborForwardModel foreign -> CLiborForwardModel' nocode#}
@@ -243,37 +240,20 @@ data HestonSLVFDMLogEntry = HestonSLVFDMLogEntry
 {#pointer *QlCalibratedModel as CalibratedModel foreign -> CCalibratedModel' nocode#}
 {#pointer *QlG2 as G2 foreign -> CG2' nocode#}
 {#pointer *QlShortRateDynamics as ShortRateDynamics foreign -> CShortRateDynamics' nocode#}
-{#pointer *QlBatesDetJumpModel as BatesDetJumpModel foreign -> CBatesDetJumpModel' nocode#}
-{#pointer *QlBatesDoubleExpDetJumpModel as BatesDoubleExpDetJumpModel foreign -> CBatesDoubleExpDetJumpModel' nocode#}
-{#pointer *QlBatesDoubleExpModel as BatesDoubleExpModel foreign -> CBatesDoubleExpModel' nocode#}
 {#pointer *QlGsr as Gsr foreign -> CGsr' nocode#}
 {#pointer *QlMarkovFunctional as MarkovFunctional foreign -> CMarkovFunctional' nocode#}
 {#pointer *QlAffineModel foreign -> CAffineModel' nocode#}
 {#pointer *QlGaussian1dModel foreign -> CGaussian1dModel' nocode#}
-{#pointer *QlSwapIndex as SwapIndex foreign -> CSwapIndex' nocode#}
-{#pointer *QlSwaptionVolatilityStructure as SwaptionVolatilityStructure foreign -> CSwaptionVolatilityStructure' nocode#}
 {#pointer *QlCalibrationHelper as CalibrationHelper foreign -> CCalibrationHelper' nocode#}
 {#pointer *QlBlackCalibrationHelper as BlackCalibrationHelper foreign -> CBlackCalibrationHelper' nocode#}
 {#pointer *QlSwaptionHelper as SwaptionHelper foreign -> CSwaptionHelper' nocode#}
-{#pointer *QlFixedVsFloatingSwap as FixedVsFloatingSwap foreign -> CFixedVsFloatingSwap' nocode#}
 {#pointer *QlSwaption as Swaption foreign -> CSwaption' nocode#}
-{#pointer *QlGeneralizedBlackScholesProcess as GeneralizedBlackScholesProcess foreign -> CGeneralizedBlackScholesProcess' nocode#}
 {#pointer *QlStochasticProcess1D as StochasticProcess1D foreign -> CStochasticProcess1D' nocode#}
-{#pointer *QlStochasticProcess as StochasticProcess foreign -> CStochasticProcess' nocode#}
-{#pointer *QlBlackProcess as BlackProcess foreign -> CBlackProcess' nocode#}
-{#pointer *QlExtOUWithJumpsProcess as ExtOUWithJumpsProcess foreign -> CExtOUWithJumpsProcess' nocode#}
-{#pointer *QlExtendedOrnsteinUhlenbeckProcess as ExtendedOrnsteinUhlenbeckProcess foreign -> CExtendedOrnsteinUhlenbeckProcess' nocode#}
 {#pointer *QlGJRGARCHProcess as GJRGARCHProcess foreign -> CGJRGARCHProcess' nocode#}
 {#pointer *QlHestonProcess as HestonProcess foreign -> CHestonProcess' nocode#}
 {#pointer *QlBatesProcess as BatesProcess foreign -> CBatesProcess' nocode#}
-{#pointer *QlHybridHestonHullWhiteProcess as HybridHestonHullWhiteProcess foreign -> CHybridHestonHullWhiteProcess' nocode#}
-{#pointer *QlKlugeExtOUProcess as KlugeExtOUProcess foreign -> CKlugeExtOUProcess' nocode#}
 {#pointer *QlLiborForwardModelProcess as LiborForwardModelProcess foreign -> CLiborForwardModelProcess' nocode#}
-{#pointer *QlStochasticProcessArray as StochasticProcessArray foreign -> CStochasticProcessArray' nocode#}
 {#pointer *QlVarianceGammaProcess as VarianceGammaProcess foreign -> CVarianceGammaProcess' nocode#}
-{#pointer *QlMerton76Process as Merton76Process foreign -> CMerton76Process' nocode#}
-{#pointer *QlHullWhiteProcess as HullWhiteProcess foreign -> CHullWhiteProcess' nocode#}
-{#pointer *QlHullWhiteForwardProcess as HullWhiteForwardProcess foreign -> CHullWhiteForwardProcess' nocode#}
 
 -- |Bates stochastic-volatility model: extends Heston with jumps in the underlying's return process.
 {#fun qlBatesModel as batesModel{withBatesProcess*`BatesProcess',preErrorCheck-`String'errorCheck*-}->`BatesModel'peekBatesModel*#}

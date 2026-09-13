@@ -261,15 +261,12 @@ import Foreign.Marshal.Alloc(alloca)
 
 {#pointer *Calendar foreign -> CCalendar nocode#}
 {#pointer *DayCounter foreign -> CDayCounter nocode#}
-{#pointer *QlQuote as Quote foreign -> CQuote' nocode#}
-{#pointer *QlIborIndex as IborIndex foreign -> CIborIndex' nocode#}
 {#pointer *QlSmileSection as SmileSection foreign -> CSmileSection nocode#}
 {#pointer *QlSabrInterpolatedSmileSection as SabrInterpolatedSmileSection foreign -> CSabrInterpolatedSmileSection nocode#}
 {#pointer *QlSviInterpolatedSmileSection as SviInterpolatedSmileSection foreign -> CSviInterpolatedSmileSection nocode#}
 {#pointer *QlNoArbSabrInterpolatedSmileSection as NoArbSabrInterpolatedSmileSection foreign -> CNoArbSabrInterpolatedSmileSection nocode#}
 {#pointer *QlVolatilityTermStructure as VolatilityTermStructure foreign -> CVolatilityTermStructure' nocode#}
 {#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure' nocode#}
-{#pointer *QlTermStructure as TermStructure foreign -> CTermStructure' nocode#}
 {#pointer *QlOptionletVolatilityStructure as OptionletVolatilityStructure foreign -> COptionletVolatilityStructure' nocode#}
 {#pointer *QlRelinkableOptionletVolatilityStructure as RelinkableOptionletVolatilityStructure foreign -> CRelinkableOptionletVolatilityStructure' nocode#}
 {#pointer *QlLocalVolTermStructure as LocalVolTermStructure foreign -> CLocalVolTermStructure' nocode#}
@@ -294,7 +291,6 @@ import Foreign.Marshal.Alloc(alloca)
 {#pointer *QlSabrSwaptionVolatilityCube as SabrSwaptionVolatilityCube foreign -> CSabrSwaptionVolatilityCube' nocode#}
 {#pointer *QlNoArbSabrSwaptionVolatilityCube as NoArbSabrSwaptionVolatilityCube foreign -> CNoArbSabrSwaptionVolatilityCube' nocode#}
 {#pointer *QlInterpolatedSwaptionVolatilityCube as InterpolatedSwaptionVolatilityCube foreign -> CInterpolatedSwaptionVolatilityCube' nocode#}
-{#pointer *QlSwapIndex as SwapIndex foreign -> CSwapIndex' nocode#}
 {#pointer *QlBlackAtmVolCurve as BlackAtmVolCurve foreign -> CBlackAtmVolCurve' nocode#}
 {#pointer *QlBlackVolSurface as BlackVolSurface foreign -> CBlackVolSurface' nocode#}
 {#pointer *QlAbcdAtmVolCurve as AbcdAtmVolCurve foreign -> CAbcdAtmVolCurve' nocode#}

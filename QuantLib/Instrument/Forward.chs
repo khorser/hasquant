@@ -45,7 +45,6 @@ import QuantLib.Internal.Type
 {#pointer *QlForward as Forward foreign -> CForward' nocode#}
 {#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure' nocode#}
 {#pointer *QlIborIndex as IborIndex foreign -> CIborIndex' nocode#}
-{#pointer *QlFixedRateBond as FixedRateBond foreign -> CFixedRateBond' nocode#}
 {#pointer *QlForwardRateAgreement as ForwardRateAgreement foreign -> CForwardRateAgreement' nocode#}
 {#pointer *QlBondForward as BondForward foreign -> CBondForward' nocode#}
 {#pointer *QlFxForward as FxForward foreign -> CFxForward' nocode#}

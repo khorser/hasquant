@@ -62,8 +62,6 @@ import QuantLib.Internal.Type
 {#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure' nocode#}
 {#pointer *QlDefaultProbabilityTermStructure as DefaultProbabilityTermStructure foreign -> CDefaultProbabilityTermStructure' nocode#}
 {#pointer *QlCdsOption as CdsOption foreign -> CCdsOption' nocode#}
-{#pointer *QlBond as Bond foreign -> CBond' nocode#}
-{#pointer *QlInstrument as Instrument foreign -> CInstrument' nocode#}
 {#pointer *DayCounter foreign -> CDayCounter nocode#}
 {#pointer *Leg foreign -> CLeg' nocode#}
 {#pointer *Schedule foreign -> CSchedule nocode#}

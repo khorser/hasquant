@@ -109,9 +109,7 @@ import Data.List.NonEmpty(NonEmpty, toList)
 {#pointer *Schedule foreign -> CSchedule nocode#}
 {#pointer *QlInterestRateIndex as InterestRateIndex foreign -> CInterestRateIndex' nocode#}
 {#pointer *QlBMAIndex as BMAIndex foreign -> CBMAIndex' nocode#}
-{#pointer *QlOvernightIndex as OvernightIndex foreign -> COvernightIndex' nocode#}
 {#pointer *QlIborIndex as IborIndex foreign -> CIborIndex' nocode#}
-{#pointer *QlIndex as Index foreign -> CIndex' nocode#}
 {#pointer *QlSwapIndex as SwapIndex foreign -> CSwapIndex' nocode#}
 {#pointer *QlSwapSpreadIndex as SwapSpreadIndex foreign -> CSwapSpreadIndex' nocode#}
 {#pointer *QlOvernightIndex as OvernightIborIndex foreign -> COvernightIndex' nocode#}

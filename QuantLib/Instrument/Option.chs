@@ -124,8 +124,6 @@ import QuantLib.Internal.Type
 import QuantLib.Internal.Common
 import Data.List.NonEmpty(NonEmpty, toList)
 
-{#pointer *QlOption as Option foreign -> COption' nocode#}
-{#pointer *QlCdsOption as CdsOption foreign -> CCdsOption' nocode#}
 {#pointer *QlInstrument as Instrument foreign -> CInstrument' nocode#}
 {#pointer *QlBarrierOption as BarrierOption foreign -> CBarrierOption' nocode#}
 {#pointer *QlDoubleBarrierOption as DoubleBarrierOption foreign -> CDoubleBarrierOption' nocode#}

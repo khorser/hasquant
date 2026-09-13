@@ -177,11 +177,8 @@ import QuantLib.Context(evaluationDate)
 import QuantLib.Index(fixingCalendar)
 import QuantLib.Index.InterestRate(tenor, dayCounter, businessDayConvention)
 
-{#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure' nocode#}
-{#pointer *QlIborIndex as IborIndex foreign -> CIborIndex' nocode#}
 {#pointer *QlBMAIndex as BMAIndex foreign -> CBMAIndex' nocode#}
 {#pointer *QlOvernightIndex as OvernightIborIndex foreign -> COvernightIndex' nocode#}
-{#pointer *QlOption as Option foreign -> COption' nocode#}
 {#pointer *QlBond as Bond foreign -> CBond' nocode#}
 {#pointer *QlCreditDefaultSwap as CreditDefaultSwap foreign -> CCreditDefaultSwap' nocode#}
 -- CdsOption is constructed in QuantLib.Instrument.Credit; aliased here only so its
@@ -213,8 +210,6 @@ import QuantLib.Index.InterestRate(tenor, dayCounter, businessDayConvention)
 {#pointer *QlNonstandardSwap as NonstandardSwap foreign -> CNonstandardSwap' nocode#}
 {#pointer *QlNonstandardSwaption as NonstandardSwaption foreign -> CNonstandardSwaption' nocode#}
 {#pointer *QlBlackCalibrationHelper as BlackCalibrationHelper foreign -> CBlackCalibrationHelper' nocode#}
-{#pointer *QlSwapIndex as SwapIndex foreign -> CSwapIndex' nocode#}
-{#pointer *QlSwaptionVolatilityStructure as SwaptionVolatilityStructure foreign -> CSwaptionVolatilityStructure' nocode#}
 {#pointer *QlAssetSwap as AssetSwap foreign -> CAssetSwap' nocode#}
 {#pointer *QlBMASwap as BMASwap foreign -> CBMASwap' nocode#}
 {#pointer *QlOvernightIndexedSwap as OvernightIndexedSwap foreign -> COvernightIndexedSwap' nocode#}
@@ -226,7 +221,6 @@ import QuantLib.Index.InterestRate(tenor, dayCounter, businessDayConvention)
 {#pointer *QlEquityIndex as EquityIndex foreign -> CEquityIndex' nocode#}
 {#pointer *QlFloatFloatSwap as FloatFloatSwap foreign -> CFloatFloatSwap' nocode#}
 {#pointer *QlFloatFloatSwaption as FloatFloatSwaption foreign -> CFloatFloatSwaption' nocode#}
-{#pointer *QlInterestRateIndex as InterestRateIndex foreign -> CInterestRateIndex' nocode#}
 {#pointer *QlConstNotionalCrossCurrencySwap as ConstNotionalCrossCurrencySwap foreign -> CConstNotionalCrossCurrencySwap' nocode#}
 {#pointer *QlConstNotionalCrossCurrencyBasisSwap as ConstNotionalCrossCurrencyBasisSwap foreign -> CConstNotionalCrossCurrencyBasisSwap' nocode#}
 {#pointer *QlConstNotionalCrossCurrencyFixedVsFloatingSwap as ConstNotionalCrossCurrencyFixedVsFloatingSwap foreign -> CConstNotionalCrossCurrencyFixedVsFloatingSwap' nocode#}

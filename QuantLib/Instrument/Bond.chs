@@ -138,11 +138,7 @@ import Data.List.NonEmpty(NonEmpty, toList)
 {#pointer *QlCallability foreign -> CQlCallability nocode#}
 {#pointer *InterestRate foreign -> CInterestRate nocode#}
 {#pointer *QlBond as Bond foreign -> CBond' nocode#}
-{#pointer *QlInstrument as Instrument foreign -> CInstrument' nocode#}
 {#pointer *QlZeroInflationIndex as ZeroInflationIndex foreign -> CZeroInflationIndex' nocode#}
-{#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure' nocode#}
-{#pointer *QlIborIndex as IborIndex foreign -> CIborIndex' nocode#}
-{#pointer *QlSwapIndex as SwapIndex foreign -> CSwapIndex' nocode#}
 {#pointer *QlFixedRateBond as FixedRateBond foreign -> CFixedRateBond' nocode#}
 {#pointer *QlBTP as BTP foreign -> CBTP' nocode#}
 {#pointer *QlRendistatoBasket as RendistatoBasket foreign -> CRendistatoBasket nocode#}

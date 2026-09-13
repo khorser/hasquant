@@ -17,7 +17,6 @@ import QuantLib.Internal.Type
 
 {#pointer *Calendar foreign -> CCalendar nocode#}
 {#pointer *Currency foreign -> CCurrency nocode#}
-{#pointer *QlIndex as Index foreign -> CIndex' nocode#}
 {#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure' nocode#}
 {#pointer *QlQuote as Quote foreign -> CQuote' nocode#}
 {#pointer *QlEquityIndex as EquityIndex foreign -> CEquityIndex' nocode#}

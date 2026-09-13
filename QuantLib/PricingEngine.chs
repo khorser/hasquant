@@ -313,7 +313,6 @@ data FdmGrid
 {#pointer *DayCounter foreign -> CDayCounter nocode#}
 {#pointer *Currency foreign -> CCurrency nocode#}
 {#pointer *QlDividend as Dividend foreign -> CDividend nocode#}
-{#pointer *QlQuote as Quote foreign -> CQuote' nocode#}
 {#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure' nocode#}
 {#pointer *QlBlackVolTermStructure as BlackVolTermStructure foreign -> CBlackVolTermStructure' nocode#}
 {#pointer *QlCallableBondVolatilityStructure as CallableBondVolatilityStructure foreign -> CCallableBondVolatilityStructure' nocode#}
@@ -326,35 +325,25 @@ data FdmGrid
 {#pointer *QlGJRGARCHModel as GJRGARCHModel foreign -> CGJRGARCHModel' nocode#}
 {#pointer *QlHestonModel as HestonModel foreign -> CHestonModel' nocode#}
 {#pointer *QlBatesModel as BatesModel foreign -> CBatesModel' nocode#}
-{#pointer *QlPiecewiseTimeDependentHestonModel as PiecewiseTimeDependentHestonModel foreign -> CPiecewiseTimeDependentHestonModel' nocode#}
 {#pointer *QlShortRateModel as ShortRateModel foreign -> CShortRateModel' nocode#}
 {#pointer *QlAffineModel foreign -> CAffineModel' nocode#}
 {#pointer *QlGaussian1dModel foreign -> CGaussian1dModel' nocode#}
 {#pointer *QlOneFactorAffineModel as OneFactorAffineModel foreign -> COneFactorAffineModel' nocode#}
 {#pointer *QlLiborForwardModel as LiborForwardModel foreign -> CLiborForwardModel' nocode#}
 {#pointer *QlHullWhite as HullWhite foreign -> CHullWhite' nocode#}
-{#pointer *QlCalibratedModel as CalibratedModel foreign -> CCalibratedModel' nocode#}
 {#pointer *QlG2 as G2 foreign -> CG2' nocode#}
 {#pointer *QlBatesDetJumpModel as BatesDetJumpModel foreign -> CBatesDetJumpModel' nocode#}
 {#pointer *QlBatesDoubleExpDetJumpModel as BatesDoubleExpDetJumpModel foreign -> CBatesDoubleExpDetJumpModel' nocode#}
 {#pointer *QlBatesDoubleExpModel as BatesDoubleExpModel foreign -> CBatesDoubleExpModel' nocode#}
 {#pointer *QlGeneralizedBlackScholesProcess as GeneralizedBlackScholesProcess foreign -> CGeneralizedBlackScholesProcess' nocode#}
-{#pointer *QlStochasticProcess1D as StochasticProcess1D foreign -> CStochasticProcess1D' nocode#}
-{#pointer *QlStochasticProcess as StochasticProcess foreign -> CStochasticProcess' nocode#}
 {#pointer *QlBlackProcess as BlackProcess foreign -> CBlackProcess' nocode#}
-{#pointer *QlExtOUWithJumpsProcess as ExtOUWithJumpsProcess foreign -> CExtOUWithJumpsProcess' nocode#}
-{#pointer *QlExtendedOrnsteinUhlenbeckProcess as ExtendedOrnsteinUhlenbeckProcess foreign -> CExtendedOrnsteinUhlenbeckProcess' nocode#}
 {#pointer *QlGJRGARCHProcess as GJRGARCHProcess foreign -> CGJRGARCHProcess' nocode#}
 {#pointer *QlHestonProcess as HestonProcess foreign -> CHestonProcess' nocode#}
-{#pointer *QlBatesProcess as BatesProcess foreign -> CBatesProcess' nocode#}
 {#pointer *QlHybridHestonHullWhiteProcess as HybridHestonHullWhiteProcess foreign -> CHybridHestonHullWhiteProcess' nocode#}
-{#pointer *QlKlugeExtOUProcess as KlugeExtOUProcess foreign -> CKlugeExtOUProcess' nocode#}
-{#pointer *QlLiborForwardModelProcess as LiborForwardModelProcess foreign -> CLiborForwardModelProcess' nocode#}
 {#pointer *QlStochasticProcessArray as StochasticProcessArray foreign -> CStochasticProcessArray' nocode#}
 {#pointer *QlVarianceGammaProcess as VarianceGammaProcess foreign -> CVarianceGammaProcess' nocode#}
 {#pointer *QlMerton76Process as Merton76Process foreign -> CMerton76Process' nocode#}
 {#pointer *QlHullWhiteProcess as HullWhiteProcess foreign -> CHullWhiteProcess' nocode#}
-{#pointer *QlHullWhiteForwardProcess as HullWhiteForwardProcess foreign -> CHullWhiteForwardProcess' nocode#}
 {#pointer *QlBlackCalculator as BlackCalculator foreign -> CBlackCalculator' nocode#}
 {#pointer *QlBlackScholesCalculator as BlackScholesCalculator foreign -> CBlackScholesCalculator' nocode#}
 {#pointer *QlBachelierCalculator as BachelierCalculator foreign -> CBachelierCalculator nocode#}
