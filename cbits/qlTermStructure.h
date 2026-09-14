@@ -149,6 +149,17 @@ extern "C" {
   double qlNoArbSabrInterpolatedSmileSectionRmsError(QlNoArbSabrInterpolatedSmileSection* o, char **e);
   double qlNoArbSabrInterpolatedSmileSectionMaxError(QlNoArbSabrInterpolatedSmileSection* o, char **e);
   int qlNoArbSabrInterpolatedSmileSectionEndCriteria(QlNoArbSabrInterpolatedSmileSection* o, char **e);
+  QlZabrInterpolatedSmileSection* qlZabrInterpolatedSmileSection(int evaluation, int optionDate, QlQuote* forward, unsigned strikesLen, double* strikes, int hasFloatingStrikes, QlQuote* atmVolatility, unsigned volsLen, QlQuote** vols, double alpha, double beta, double nu, double rho, double gamma, int isAlphaFixed, int isBetaFixed, int isNuFixed, int isRhoFixed, int isGammaFixed, int vegaWeighted, QlEndCriteria* endCriteria, QlOptimizationMethod* method, DayCounter* dc, char **e);
+  void qlFreeZabrInterpolatedSmileSection(QlZabrInterpolatedSmileSection* p);
+  QlSmileSection* qlZabrInterpolatedSmileSectionAsSmileSection(QlZabrInterpolatedSmileSection* o, char **e);
+  double qlZabrInterpolatedSmileSectionAlpha(QlZabrInterpolatedSmileSection* o, char **e);
+  double qlZabrInterpolatedSmileSectionBeta(QlZabrInterpolatedSmileSection* o, char **e);
+  double qlZabrInterpolatedSmileSectionNu(QlZabrInterpolatedSmileSection* o, char **e);
+  double qlZabrInterpolatedSmileSectionRho(QlZabrInterpolatedSmileSection* o, char **e);
+  double qlZabrInterpolatedSmileSectionGamma(QlZabrInterpolatedSmileSection* o, char **e);
+  double qlZabrInterpolatedSmileSectionRmsError(QlZabrInterpolatedSmileSection* o, char **e);
+  double qlZabrInterpolatedSmileSectionMaxError(QlZabrInterpolatedSmileSection* o, char **e);
+  int qlZabrInterpolatedSmileSectionEndCriteria(QlZabrInterpolatedSmileSection* o, char **e);
   double qlSwaptionVolatilityStructureSwapLength1(QlSwaptionVolatilityStructure* o, int start, int end, char **e);
   double qlSwaptionVolatilityStructureSwapLength(QlSwaptionVolatilityStructure* o, int, int, char **e);
   double qlSwaptionVolatilityStructureVolatility1(QlSwaptionVolatilityStructure* o, int optionDate, int, int, double strike, int extrapolate, char **e);

@@ -601,6 +601,47 @@ spec = do
           z <- smileSectionOptionPrice zabr k Call 1.0
           z `shouldSatisfy` closePrec c0 tol
 
+  -- ZabrInterpolatedSmileSection has no upstream test-suite fixture of its own either -- same
+  -- round-trip shape as SviInterpolatedSmileSection/NoArbSabrInterpolatedSmileSection above:
+  -- generate vols at known ZABR parameters via the already-bound zabrSmileSection, feed them back
+  -- in as quotes, and require calibration to reproduce them closely. Also exercises gamma (the
+  -- one getter with no Sabr/NoArbSabr/Svi analogue) and the tag-carrying handle behind it (see
+  -- ZabrInterpolatedSmileSectionHandle in cbits/qlTermStructureAux.h) surviving a full round trip.
+  describe "ZabrInterpolatedSmileSection" $
+    it "calibrates back to the generating ZABR parameters, including gamma, through the\
+       \ AsSmileSection upcast" $
+      Context.keepingSettingsGc $ do
+        let forward = 0.03; alpha_ = 0.08; beta_ = 0.70; nu = 0.20; rho_ = -0.30; gamma_ = 0.85
+            strikes = [0.01, 0.02, 0.03, 0.04, 0.05, 0.06]
+        refDate <- today
+        Context.setEvaluationDate (Just refDate)
+        optionDate <- addPeriod refDate (round (5.0 * 365 :: Double) :: Int, Days)
+        act365 <- dayCounter Actual365FixedStandard
+        generating <- zabrSmileSection ZabrShortMaturityLognormal (RateAtDate optionDate act365)
+          forward alpha_ beta_ nu rho_ gamma_ [] 5
+        refVols <- mapM (smileSectionVolatility generating) strikes
+        atmVol <- smileSectionVolatility generating forward
+
+        forwardQuote <- simpleQuote forward
+        atmVolQ <- simpleQuote atmVol
+        refVolQuotes <- mapM simpleQuote refVols
+        interp <- zabrInterpolatedSmileSection ZabrShortMaturityLognormal optionDate forwardQuote
+          (fromList $ zip strikes refVolQuotes) False atmVolQ alpha_ beta_ nu rho_ gamma_
+          False False False False False True Nothing Nothing act365
+        rms <- zabrInterpolatedRmsError interp
+        maxErr <- zabrInterpolatedMaxError interp
+        rms `shouldSatisfy` (< 1e-6)
+        maxErr `shouldSatisfy` (< 1e-6)
+        calibratedGamma <- zabrInterpolatedGamma interp
+        calibratedGamma `shouldSatisfy` closePrec gamma_ 1e-4
+
+        -- the upcast escape hatch: volatility through the generic SmileSection interface (only
+        -- reachable this way now that the concrete type has no smileSectionVolatility of its own).
+        genericSection <- zabrInterpolatedAsSmileSection interp
+        forM_ (zip strikes refVols) $ \(k, expected) -> do
+          got <- smileSectionVolatility genericSection k
+          got `shouldSatisfy` closePrec expected 1e-6
+
   -- Verify that the StatisticsTrait axis reaches each Monte Carlo engine's
   -- second template parameter. Nothing in the type system catches a StatisticsTrait value
   -- being silently ignored (a copy-paste slip could alias all four cases to the same

@@ -41,6 +41,7 @@ module QuantLib.TermStructure.Volatility
   , SabrInterpolatedSmileSection
   , SviInterpolatedSmileSection
   , NoArbSabrInterpolatedSmileSection
+  , ZabrInterpolatedSmileSection
 
     -- ** Configuration and extrapolation
   , BlackVarianceSurfaceExtrapolation(..)
@@ -75,6 +76,7 @@ module QuantLib.TermStructure.Volatility
   , sabrAsSmileSection
   , sviAsSmileSection
   , noArbSabrAsSmileSection
+  , zabrInterpolatedAsSmileSection
 
     -- ** Optionlet and cap-floor volatility
   , localVolSurface
@@ -97,6 +99,7 @@ module QuantLib.TermStructure.Volatility
   , sabrInterpolatedSmileSection
   , sviInterpolatedSmileSection
   , noArbSabrInterpolatedSmileSection
+  , zabrInterpolatedSmileSection
   , flatSmileSection
   , spreadedSmileSection
   , atmSmileSection
@@ -212,6 +215,14 @@ module QuantLib.TermStructure.Volatility
   , noArbSabrRmsError
   , noArbSabrMaxError
   , noArbSabrEndCriteria
+  , zabrInterpolatedAlpha
+  , zabrInterpolatedBeta
+  , zabrInterpolatedNu
+  , zabrInterpolatedRho
+  , zabrInterpolatedGamma
+  , zabrInterpolatedRmsError
+  , zabrInterpolatedMaxError
+  , zabrInterpolatedEndCriteria
     -- ** ATM curves and SABR surfaces
   , atmVol
   , atmVariance
@@ -276,6 +287,7 @@ import Foreign.Marshal.Alloc(alloca)
 {#pointer *QlSabrInterpolatedSmileSection as SabrInterpolatedSmileSection foreign -> CSabrInterpolatedSmileSection nocode#}
 {#pointer *QlSviInterpolatedSmileSection as SviInterpolatedSmileSection foreign -> CSviInterpolatedSmileSection nocode#}
 {#pointer *QlNoArbSabrInterpolatedSmileSection as NoArbSabrInterpolatedSmileSection foreign -> CNoArbSabrInterpolatedSmileSection nocode#}
+{#pointer *QlZabrInterpolatedSmileSection as ZabrInterpolatedSmileSection foreign -> CZabrInterpolatedSmileSection nocode#}
 {#pointer *QlVolatilityTermStructure as VolatilityTermStructure foreign -> CVolatilityTermStructure' nocode#}
 {#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure' nocode#}
 {#pointer *QlOptionletVolatilityStructure as OptionletVolatilityStructure foreign -> COptionletVolatilityStructure' nocode#}
@@ -1272,6 +1284,95 @@ noArbSabrInterpolatedSmileSection optionDate forward strikeVols hasFloatingStrik
 
 -- |the reason the calibration's optimizer stopped
 {#fun qlNoArbSabrInterpolatedSmileSectionEndCriteria as noArbSabrEndCriteria{withNoArbSabrInterpolatedSmileSection*`NoArbSabrInterpolatedSmileSection',preErrorCheck-`String'errorCheck*-}->`EndCriteriaType'#}
+
+-- |a smile section calibrated to a market smile using the ZABR parameterization (SABR extended
+-- with a @gamma@ shape parameter -- see 'zabrSmileSection'). Unlike 'zabrSmileSection', which
+-- takes fixed calibrated parameters directly, this runs the alpha\/beta\/nu\/rho\/gamma
+-- calibration itself against the given strike\/volatility quotes -- eagerly, at construction,
+-- same as 'sabrInterpolatedSmileSection'\/'noArbSabrInterpolatedSmileSection'.
+-- @alpha@\/@beta@\/@nu@\/@rho@\/@gamma@ are the calibration's initial guess;
+-- @isAlphaFixed@\/@isBetaFixed@\/@isNuFixed@\/@isRhoFixed@\/@isGammaFixed@ default to 'False'
+-- upstream. 'ZabrEvaluation' picks the same short-maturity\/local-volatility\/full-PDE evaluation
+-- method as 'zabrSmileSection'.
+zabrInterpolatedSmileSection :: ZabrEvaluation
+  -> Day -- ^optionDate
+  -> GenQuote q1 -- ^forward
+  -> NonEmpty (Double, GenQuote q3) -- ^strike/volatility quotes
+  -> Bool -- ^hasFloatingStrikes
+  -> GenQuote q2 -- ^atmVolatility
+  -> Double -- ^alpha
+  -> Double -- ^beta
+  -> Double -- ^nu
+  -> Double -- ^rho
+  -> Double -- ^gamma
+  -> Bool -- ^isAlphaFixed
+  -> Bool -- ^isBetaFixed
+  -> Bool -- ^isNuFixed
+  -> Bool -- ^isRhoFixed
+  -> Bool -- ^isGammaFixed
+  -> Bool -- ^vegaWeighted
+  -> Maybe EndCriteria
+  -> Maybe OptimizationMethod
+  -> DayCounter -> IO ZabrInterpolatedSmileSection
+zabrInterpolatedSmileSection evaluation optionDate forward strikeVols hasFloatingStrikes atmVolatility
+  alpha beta nu rho gamma isAlphaFixed isBetaFixed isNuFixed isRhoFixed isGammaFixed vegaWeighted
+  endCriteria method dc =
+  zabrInterpolatedSmileSection_ evaluation optionDate forward strikes hasFloatingStrikes atmVolatility vols
+    alpha beta nu rho gamma isAlphaFixed isBetaFixed isNuFixed isRhoFixed isGammaFixed vegaWeighted
+    endCriteria method dc
+  where (strikes, vols) = unzip (toList strikeVols)
+
+{#fun qlZabrInterpolatedSmileSection as zabrInterpolatedSmileSection_{`ZabrEvaluation'
+  ,withDay*`Day'
+  ,withQuote*`GenQuote q1' -- ^forward
+  ,withDoubleArray*`[Double]'& -- ^strikes
+  ,`Bool' -- ^hasFloatingStrikes
+  ,withQuote*`GenQuote q2' -- ^atmVolatility
+  ,withQuoteArray*`[GenQuote q3]'& -- ^vols
+  ,`Double' -- ^alpha
+  ,`Double' -- ^beta
+  ,`Double' -- ^nu
+  ,`Double' -- ^rho
+  ,`Double' -- ^gamma
+  ,`Bool' -- ^isAlphaFixed
+  ,`Bool' -- ^isBetaFixed
+  ,`Bool' -- ^isNuFixed
+  ,`Bool' -- ^isRhoFixed
+  ,`Bool' -- ^isGammaFixed
+  ,`Bool' -- ^vegaWeighted
+  ,withMaybeEndCriteria*`Maybe EndCriteria'
+  ,withMaybeOptimizationMethod*`Maybe OptimizationMethod'
+  ,withDayCounter*`DayCounter'
+  ,preErrorCheck-`String'errorCheck*-}->`ZabrInterpolatedSmileSection'peekZabrInterpolatedSmileSection*#}
+
+-- |upcast to the generic 'SmileSection' interface (e.g. for 'smileSectionVolatility'\/'smileSectionVariance').
+-- A fresh-@shared_ptr@ upcast, always safe -- not the reverse (downcast) direction.
+{#fun qlZabrInterpolatedSmileSectionAsSmileSection as zabrInterpolatedAsSmileSection{withZabrInterpolatedSmileSection*`ZabrInterpolatedSmileSection',preErrorCheck-`String'errorCheck*-}->`SmileSection'peekSmileSection*#}
+
+-- |calibrated @alpha@ (post-fit; can differ from the initial guess passed to
+-- 'zabrInterpolatedSmileSection' unless @isAlphaFixed@ was set).
+{#fun qlZabrInterpolatedSmileSectionAlpha as zabrInterpolatedAlpha{withZabrInterpolatedSmileSection*`ZabrInterpolatedSmileSection',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |calibrated @beta@, see 'zabrInterpolatedAlpha'
+{#fun qlZabrInterpolatedSmileSectionBeta as zabrInterpolatedBeta{withZabrInterpolatedSmileSection*`ZabrInterpolatedSmileSection',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |calibrated @nu@, see 'zabrInterpolatedAlpha'
+{#fun qlZabrInterpolatedSmileSectionNu as zabrInterpolatedNu{withZabrInterpolatedSmileSection*`ZabrInterpolatedSmileSection',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |calibrated @rho@, see 'zabrInterpolatedAlpha'
+{#fun qlZabrInterpolatedSmileSectionRho as zabrInterpolatedRho{withZabrInterpolatedSmileSection*`ZabrInterpolatedSmileSection',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |calibrated @gamma@, see 'zabrInterpolatedAlpha'
+{#fun qlZabrInterpolatedSmileSectionGamma as zabrInterpolatedGamma{withZabrInterpolatedSmileSection*`ZabrInterpolatedSmileSection',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |root-mean-square calibration error
+{#fun qlZabrInterpolatedSmileSectionRmsError as zabrInterpolatedRmsError{withZabrInterpolatedSmileSection*`ZabrInterpolatedSmileSection',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |maximum calibration error
+{#fun qlZabrInterpolatedSmileSectionMaxError as zabrInterpolatedMaxError{withZabrInterpolatedSmileSection*`ZabrInterpolatedSmileSection',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |the reason the calibration's optimizer stopped
+{#fun qlZabrInterpolatedSmileSectionEndCriteria as zabrInterpolatedEndCriteria{withZabrInterpolatedSmileSection*`ZabrInterpolatedSmileSection',preErrorCheck-`String'errorCheck*-}->`EndCriteriaType'#}
 
 -- |implements the conversion between swap dates and swap (time) length
 {#fun qlSwaptionVolatilityStructureSwapLength1 as swapLengthBetweenDates{withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure sv'

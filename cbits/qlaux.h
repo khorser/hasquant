@@ -1034,6 +1034,20 @@ using QlSviInterpolatedSmileSection = shared_ptr<SviInterpolatedSmileSection>;
 // NoArbSabrInterpolatedSmileSection is a dedicated leaf, same shape/reasoning as
 // QlSabrInterpolatedSmileSection above.
 using QlNoArbSabrInterpolatedSmileSection = shared_ptr<NoArbSabrInterpolatedSmileSection>;
+// ZabrInterpolatedSmileSection<Evaluation> is templated over the same evaluation-tag axis as
+// ZabrSmileSection (see qlTermStructureAux.cpp's dispatchZabrEvaluation), but unlike
+// ZabrSmileSection it has its own calibration-diagnostic getters (alpha/beta/nu/rho/gamma/
+// rmsError/maxError/endCriteria) declared directly on the template class, not through any
+// virtual SmileSection slot -- so a type-erased shared_ptr<SmileSection> alone can't reach them,
+// and there is no single concrete C++ type to alias a leaf pointer to (each Evaluation is a
+// distinct instantiation). ZabrInterpolatedSmileSectionHandle (defined in qlTermStructureAux.h,
+// alongside the dispatch that builds it) captures the diagnostics as closures over the concrete
+// instantiation at construction time, alongside the type-erased SmileSection base for
+// AsSmileSection/pricing use -- avoids any dynamic_cast or a caller-supplied discriminant
+// re-dispatch on every accessor call. Forward-declared here (like the Aux-only types above) so
+// qlaux.h itself stays free of the zabrinterpolatedsmilesection.hpp include.
+struct ZabrInterpolatedSmileSectionHandle;
+using QlZabrInterpolatedSmileSection = shared_ptr<ZabrInterpolatedSmileSectionHandle>;
 using QlSwapIndex = shared_ptr<SwapIndex>;
 using QlSwapRateHelper = shared_ptr<SwapRateHelper>;
 using QlSwaption = shared_ptr<Swaption>;
@@ -1537,6 +1551,7 @@ QL_TRACE_NAME(QlStochasticProcessArray)
 QL_TRACE_NAME(QlStrikedTypePayoff)
 QL_TRACE_NAME(QlSviInterpolatedSmileSection)
 QL_TRACE_NAME(QlNoArbSabrInterpolatedSmileSection)
+QL_TRACE_NAME(QlZabrInterpolatedSmileSection)
 QL_TRACE_NAME(QlSwap)
 QL_TRACE_NAME(QlFixedVsFloatingSwap)
 QL_TRACE_NAME(QlSwapIndex)

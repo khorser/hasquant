@@ -16,6 +16,8 @@
 #include <ql/termstructures/volatility/equityfx/blackvariancecurve.hpp>
 #include <ql/termstructures/volatility/equityfx/blackvariancesurface.hpp>
 #include <ql/termstructures/volatility/zabrsmilesection.hpp>
+#include <ql/termstructures/volatility/zabrinterpolatedsmilesection.hpp>
+#include <functional>
 #include <ql/experimental/inflation/cpicapfloortermpricesurface.hpp>
 #include <ql/experimental/inflation/yoycapfloortermpricesurface.hpp>
 #include <ql/experimental/inflation/interpolatedyoyoptionletstripper.hpp>
@@ -354,5 +356,35 @@ QuantLib::SmileSection *qlZabrSmileSectionAux1(
     int evaluation, const QuantLib::Date &d, double forward,
     const std::vector<QuantLib::Real> &params, const QuantLib::DayCounter &dc,
     const std::vector<QuantLib::Real> &moneyness, QuantLib::Size fdRefinement);
+
+// ZabrInterpolatedSmileSection<Evaluation> is templated over the same evaluation-tag axis as
+// ZabrSmileSection above, but unlike ZabrSmileSection it has its own calibration-diagnostic
+// getters (alpha/beta/nu/rho/gamma/rmsError/maxError/endCriteria) declared directly on the
+// template class, not through any virtual SmileSection slot -- a type-erased
+// shared_ptr<SmileSection> alone can't reach them, and there is no single concrete C++ type to
+// alias a leaf pointer to (each Evaluation is a distinct instantiation). This handle captures the
+// diagnostics as closures over the concrete instantiation at construction time (inside the
+// dispatch lambda in qlTermStructureAux.cpp, where the type is known), alongside the type-erased
+// SmileSection base for AsSmileSection/pricing use -- avoids any dynamic_cast or a caller-supplied
+// discriminant re-dispatch on every accessor call. qlaux.h only forward-declares this (to stay
+// free of the zabrinterpolatedsmilesection.hpp include); qlTermStructure.cpp includes both headers
+// so the complete type is visible wherever the handle is actually dereferenced.
+struct ZabrInterpolatedSmileSectionHandle {
+  QuantLib::ext::shared_ptr<QuantLib::SmileSection> section;
+  std::function<QuantLib::Real()> alphaFn, betaFn, nuFn, rhoFn, gammaFn, rmsErrorFn, maxErrorFn;
+  std::function<QuantLib::EndCriteria::Type()> endCriteriaFn;
+};
+
+// ZabrInterpolatedSmileSection<Evaluation>'s own evaluation-tag dispatch, same rule as
+// qlZabrSmileSectionAux above.
+ZabrInterpolatedSmileSectionHandle *qlZabrInterpolatedSmileSectionAux(
+    int evaluation, const QuantLib::Date &optionDate, const QuantLib::Handle<QuantLib::Quote> &forward,
+    const std::vector<QuantLib::Rate> &strikes, bool hasFloatingStrikes,
+    const QuantLib::Handle<QuantLib::Quote> &atmVolatility,
+    const std::vector<QuantLib::Handle<QuantLib::Quote>> &volHandles,
+    QuantLib::Real alpha, QuantLib::Real beta, QuantLib::Real nu, QuantLib::Real rho, QuantLib::Real gamma,
+    bool isAlphaFixed, bool isBetaFixed, bool isNuFixed, bool isRhoFixed, bool isGammaFixed,
+    bool vegaWeighted, const QuantLib::ext::shared_ptr<QuantLib::EndCriteria> &endCriteria,
+    const QuantLib::ext::shared_ptr<QuantLib::OptimizationMethod> &method, const QuantLib::DayCounter &dc);
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

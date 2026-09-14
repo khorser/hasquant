@@ -764,6 +764,47 @@ double qlNoArbSabrInterpolatedSmileSectionMaxError(QlNoArbSabrInterpolatedSmileS
 int qlNoArbSabrInterpolatedSmileSectionEndCriteria(QlNoArbSabrInterpolatedSmileSection* o, char **e) {
   try {return (int)(*arg(o))->endCriteria();
   } catch (std::exception& er) {return handleException<int>(e, er);}}
+// ZabrInterpolatedSmileSection<Evaluation>'s evaluation-tag dispatch lives in
+// qlTermStructureAux.cpp; see the ZabrInterpolatedSmileSectionHandle comment in qlaux.h for why
+// this wraps a handle of closures rather than a dedicated leaf or a type-erased SmileSection.
+QlZabrInterpolatedSmileSection* qlZabrInterpolatedSmileSection(int evaluation, int optionDate, QlQuote* forward, unsigned strikesLen, double* strikes, int hasFloatingStrikes, QlQuote* atmVolatility, unsigned volsLen, QlQuote** vols, double alpha, double beta, double nu, double rho, double gamma, int isAlphaFixed, int isBetaFixed, int isNuFixed, int isRhoFixed, int isGammaFixed, int vegaWeighted, QlEndCriteria* endCriteria, QlOptimizationMethod* method, DayCounter* dc, char **e) {
+  try {
+    auto handle = qlZabrInterpolatedSmileSectionAux(evaluation, Date(optionDate), *arg(forward),
+        std::vector<Real>(strikes, strikes + strikesLen), hasFloatingStrikes, *arg(atmVolatility),
+        qlHandleVector(vols, volsLen), alpha, beta, nu, rho, gamma,
+        isAlphaFixed, isBetaFixed, isNuFixed, isRhoFixed, isGammaFixed, vegaWeighted,
+        endCriteria ? *arg(endCriteria) : shared_ptr<EndCriteria>(),
+        method ? *arg(method) : shared_ptr<OptimizationMethod>(), *arg(dc));
+    return ret(new QlZabrInterpolatedSmileSection(alloc(shared_ptr<ZabrInterpolatedSmileSectionHandle>(handle))));
+  } catch (std::exception& er) {return handleException<QlZabrInterpolatedSmileSection*>(e, er);}}
+void qlFreeZabrInterpolatedSmileSection(QlZabrInterpolatedSmileSection* p) {del(p);}
+QlSmileSection* qlZabrInterpolatedSmileSectionAsSmileSection(QlZabrInterpolatedSmileSection* o, char **e) {
+  try {return ret(new QlSmileSection((*arg(o))->section));
+  } catch (std::exception& er) {return handleException<QlSmileSection*>(e, er);}}
+double qlZabrInterpolatedSmileSectionAlpha(QlZabrInterpolatedSmileSection* o, char **e) {
+  try {return (*arg(o))->alphaFn();
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlZabrInterpolatedSmileSectionBeta(QlZabrInterpolatedSmileSection* o, char **e) {
+  try {return (*arg(o))->betaFn();
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlZabrInterpolatedSmileSectionNu(QlZabrInterpolatedSmileSection* o, char **e) {
+  try {return (*arg(o))->nuFn();
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlZabrInterpolatedSmileSectionRho(QlZabrInterpolatedSmileSection* o, char **e) {
+  try {return (*arg(o))->rhoFn();
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlZabrInterpolatedSmileSectionGamma(QlZabrInterpolatedSmileSection* o, char **e) {
+  try {return (*arg(o))->gammaFn();
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlZabrInterpolatedSmileSectionRmsError(QlZabrInterpolatedSmileSection* o, char **e) {
+  try {return (*arg(o))->rmsErrorFn();
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlZabrInterpolatedSmileSectionMaxError(QlZabrInterpolatedSmileSection* o, char **e) {
+  try {return (*arg(o))->maxErrorFn();
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+int qlZabrInterpolatedSmileSectionEndCriteria(QlZabrInterpolatedSmileSection* o, char **e) {
+  try {return (int)(*arg(o))->endCriteriaFn();
+  } catch (std::exception& er) {return handleException<int>(e, er);}}
 double qlSwaptionVolatilityStructureSwapLength1(QlSwaptionVolatilityStructure* o, int start, int end, char **e) {
   try {return (*arg(o))->swapLength(Date(start), Date(end));
   } catch (std::exception& er) {return handleException<double>(e, er);}}

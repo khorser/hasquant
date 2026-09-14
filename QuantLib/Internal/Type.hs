@@ -544,6 +544,21 @@ peekNoArbSabrInterpolatedSmileSection = NoArbSabrInterpolatedSmileSection <.> pe
 withNoArbSabrInterpolatedSmileSection :: NoArbSabrInterpolatedSmileSection -> (Ptr CNoArbSabrInterpolatedSmileSection -> IO b) -> IO b
 withNoArbSabrInterpolatedSmileSection = withStandalone . getCNoArbSabrInterpolatedSmileSection
 
+-- |a dedicated leaf, same reasoning and 'SmileSection' escape hatch as 'CSabrInterpolatedSmileSection'
+-- above -- see 'QuantLib.TermStructure.Volatility.zabrInterpolatedSmileSection'\/
+-- 'QuantLib.TermStructure.Volatility.zabrInterpolatedAsSmileSection'. Wraps a
+-- @ZabrInterpolatedSmileSectionHandle@ on the C++ side, not the templated
+-- @ZabrInterpolatedSmileSection\<Evaluation\>@ itself directly -- see the handle's own comment
+-- in @cbits\/qlTermStructureAux.h@ for why.
+data CZabrInterpolatedSmileSection
+newtype ZabrInterpolatedSmileSection = ZabrInterpolatedSmileSection {getCZabrInterpolatedSmileSection :: Standalone CZabrInterpolatedSmileSection}
+foreign import ccall unsafe "ql.h &qlFreeZabrInterpolatedSmileSection" qlFreeZabrInterpolatedSmileSection :: FinalizerPtr CZabrInterpolatedSmileSection
+instance Finalizable CZabrInterpolatedSmileSection where finalize = qlFreeZabrInterpolatedSmileSection
+peekZabrInterpolatedSmileSection :: Ptr CZabrInterpolatedSmileSection -> IO ZabrInterpolatedSmileSection
+peekZabrInterpolatedSmileSection = ZabrInterpolatedSmileSection <.> peekStandalone
+withZabrInterpolatedSmileSection :: ZabrInterpolatedSmileSection -> (Ptr CZabrInterpolatedSmileSection -> IO b) -> IO b
+withZabrInterpolatedSmileSection = withStandalone . getCZabrInterpolatedSmileSection
+
 -- |a dedicated leaf, not a downcast target: 'QuantLib.TermStructure.Volatility.optionletStripperWithAtm'
 -- fuses construction of an 'OptionletStripper1' underneath (never exposed to Haskell, mirroring
 -- 'QuantLib.TermStructure.Volatility.optionletStripper') and stores the resulting

@@ -798,4 +798,27 @@ SmileSection *qlZabrSmileSectionAux1(int evaluation, const Date &d, double forwa
   });
 }
 
+ZabrInterpolatedSmileSectionHandle *qlZabrInterpolatedSmileSectionAux(
+    int evaluation, const Date &optionDate, const Handle<Quote> &forward,
+    const std::vector<Rate> &strikes, bool hasFloatingStrikes, const Handle<Quote> &atmVolatility,
+    const std::vector<Handle<Quote>> &volHandles, Real alpha, Real beta, Real nu, Real rho, Real gamma,
+    bool isAlphaFixed, bool isBetaFixed, bool isNuFixed, bool isRhoFixed, bool isGammaFixed,
+    bool vegaWeighted, const shared_ptr<EndCriteria> &endCriteria,
+    const shared_ptr<OptimizationMethod> &method, const DayCounter &dc) {
+  return dispatchZabrEvaluation<ZabrInterpolatedSmileSectionHandle*>(evaluation, [&](auto tag) {
+    using Evaluation = typename decltype(tag)::type;
+    auto section = ext::make_shared<ZabrInterpolatedSmileSection<Evaluation>>(
+        optionDate, forward, strikes, hasFloatingStrikes, atmVolatility, volHandles,
+        alpha, beta, nu, rho, gamma, isAlphaFixed, isBetaFixed, isNuFixed, isRhoFixed, isGammaFixed,
+        vegaWeighted, endCriteria, method, dc);
+    section->atmLevel(); // force calibration now, surfacing failures at construction
+    return new ZabrInterpolatedSmileSectionHandle{
+      section,
+      [section]{ return section->alpha(); }, [section]{ return section->beta(); },
+      [section]{ return section->nu(); }, [section]{ return section->rho(); },
+      [section]{ return section->gamma(); }, [section]{ return section->rmsError(); },
+      [section]{ return section->maxError(); }, [section]{ return section->endCriteria(); }};
+  });
+}
+
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */
