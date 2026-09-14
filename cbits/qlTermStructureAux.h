@@ -8,6 +8,7 @@
 #include <ql/termstructures/credit/interpolatedsurvivalprobabilitycurve.hpp>
 #include <ql/termstructures/credit/piecewisedefaultcurve.hpp>
 #include <ql/termstructures/credit/defaultprobabilityhelpers.hpp>
+#include <ql/experimental/credit/interpolatedaffinehazardratecurve.hpp>
 #include <ql/termstructures/inflation/piecewisezeroinflationcurve.hpp>
 #include <ql/termstructures/inflation/piecewiseyoyinflationcurve.hpp>
 #include <ql/termstructures/inflation/interpolatedyoyinflationcurve.hpp>
@@ -211,6 +212,16 @@ QuantLib::DefaultProbabilityTermStructure *qlInterpolatedHazardRateCurveAux(
             const std::vector<QuantLib::Date>& dates,
             const std::vector<double>& hazardRates,
             const QuantLib::DayCounter& dayCounter,
+            const QuantLib::Calendar& cal,
+            const std::vector<QuantLib::Handle<QuantLib::Quote> >& jumps,
+            const std::vector<QuantLib::Date>& jumpDates,
+            int interpolator, int approximator, int approximatorArg);
+
+QuantLib::OneFactorAffineSurvivalStructure *qlInterpolatedAffineHazardRateCurveAux(
+            const std::vector<QuantLib::Date>& dates,
+            const std::vector<double>& hazardRates,
+            const QuantLib::DayCounter& dayCounter,
+            const QuantLib::ext::shared_ptr<QuantLib::OneFactorAffineModel>& model,
             const QuantLib::Calendar& cal,
             const std::vector<QuantLib::Handle<QuantLib::Quote> >& jumps,
             const std::vector<QuantLib::Date>& jumpDates,

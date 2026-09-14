@@ -1848,6 +1848,7 @@ data CFittedBondDiscountCurve'
 data CRelinkableYieldTermStructure'
 data CCallableBondVolatilityStructure'
 data CDefaultProbabilityTermStructure'
+data CAffineHazardRateCurve'
 data CZeroInflationTermStructure'
 data CYoYInflationTermStructure'
 data CCommodityCurve'
@@ -1881,7 +1882,8 @@ data CCommodityCurve'
 -- >    YoYOptionletVolatilitySurface
 -- >    CPIVolatilitySurface
 -- >  CallableBondVolatilityStructure
--- >  DefaultProbabilityTermStructure
+-- >  DefaultProbabilityTermStructure = GenDefaultProbabilityTermStructure d = GenTermStructure t
+-- >    AffineHazardRateCurve = GenDefaultProbabilityTermStructure ...
 -- >  ZeroInflationTermStructure
 -- >  YoYInflationTermStructure
 -- >  YoYCapFloorTermPriceSurface
@@ -2088,13 +2090,18 @@ type BlackVolatilitySurfaceDelta = GenBlackVolTermStructure CBlackVolatilitySurf
 type CCallableBondVolatilityStructure = ForeignPtr CCallableBondVolatilityStructure'
 -- |A 'TermStructure'; see the hierarchy under t'GenTermStructure'.
 type CallableBondVolatilityStructure = GenTermStructure CCallableBondVolatilityStructure
+-- |A 'DefaultProbabilityTermStructure' or one of its leaves; see the hierarchy under t'GenTermStructure'.
+type GenDefaultProbabilityTermStructure d = GenTermStructure (AnyOf CDefaultProbabilityTermStructure' d)
 type CDefaultProbabilityTermStructure = ForeignPtr CDefaultProbabilityTermStructure'
 -- |A 'TermStructure'; see the hierarchy under t'GenTermStructure'.
-type DefaultProbabilityTermStructure = GenTermStructure CDefaultProbabilityTermStructure
+type DefaultProbabilityTermStructure = GenDefaultProbabilityTermStructure CDefaultProbabilityTermStructure
+type CAffineHazardRateCurve = ForeignPtr CAffineHazardRateCurve'
+-- |A 'DefaultProbabilityTermStructure'; see the hierarchy under t'GenTermStructure'.
+type AffineHazardRateCurve = GenDefaultProbabilityTermStructure CAffineHazardRateCurve
 withDefaultProbabilityTermStructureArray :: [DefaultProbabilityTermStructure] -> ((CUInt, Ptr (Ptr CDefaultProbabilityTermStructure')) -> IO b) -> IO b
-withDefaultProbabilityTermStructureArray = withGenArray withGenTermStructure
+withDefaultProbabilityTermStructureArray = withGenArray withDefaultProbabilityTermStructure
 withDefaultProbabilityTermStructureArrayRaw :: [DefaultProbabilityTermStructure] -> (Ptr (Ptr CDefaultProbabilityTermStructure') -> IO b) -> IO b
-withDefaultProbabilityTermStructureArrayRaw x f = withMany withGenTermStructure x (`withArray` f)
+withDefaultProbabilityTermStructureArrayRaw x f = withMany withDefaultProbabilityTermStructure x (`withArray` f)
 
 -- CREDIT: separate types encode tranche-loss and digital-loss capabilities.
 data CDefaultProbKey
@@ -2241,6 +2248,7 @@ foreign import ccall unsafe "ql.h &qlFreeFittedBondDiscountCurve" qlFreeFittedBo
 foreign import ccall unsafe "ql.h &qlFreeRelinkableYieldTermStructure" qlFreeRelinkableYieldTermStructure :: FinalizerPtr CRelinkableYieldTermStructure'
 foreign import ccall unsafe "ql.h &qlFreeCallableBondVolatilityStructure" qlFreeCallableBondVolatilityStructure :: FinalizerPtr CCallableBondVolatilityStructure'
 foreign import ccall unsafe "ql.h &qlFreeDefaultProbabilityTermStructure" qlFreeDefaultProbabilityTermStructure :: FinalizerPtr CDefaultProbabilityTermStructure'
+foreign import ccall unsafe "ql.h &qlFreeAffineHazardRateCurve" qlFreeAffineHazardRateCurve :: FinalizerPtr CAffineHazardRateCurve'
 foreign import ccall unsafe "ql.h &qlFreeZeroInflationTermStructure" qlFreeZeroInflationTermStructure :: FinalizerPtr CZeroInflationTermStructure'
 foreign import ccall unsafe "ql.h &qlFreeYoYInflationTermStructure" qlFreeYoYInflationTermStructure :: FinalizerPtr CYoYInflationTermStructure'
 foreign import ccall unsafe "ql.h &qlFreeYoYCapFloorTermPriceSurface" qlFreeYoYCapFloorTermPriceSurface :: FinalizerPtr CYoYCapFloorTermPriceSurface'
@@ -2278,6 +2286,7 @@ instance Finalizable CFittedBondDiscountCurve' where finalize = qlFreeFittedBond
 instance Finalizable CRelinkableYieldTermStructure' where finalize = qlFreeRelinkableYieldTermStructure
 instance Finalizable CCallableBondVolatilityStructure' where finalize = qlFreeCallableBondVolatilityStructure
 instance Finalizable CDefaultProbabilityTermStructure' where finalize = qlFreeDefaultProbabilityTermStructure
+instance Finalizable CAffineHazardRateCurve' where finalize = qlFreeAffineHazardRateCurve
 instance Finalizable CZeroInflationTermStructure' where finalize = qlFreeZeroInflationTermStructure
 instance Finalizable CYoYInflationTermStructure' where finalize = qlFreeYoYInflationTermStructure
 instance Finalizable CYoYCapFloorTermPriceSurface' where finalize = qlFreeYoYCapFloorTermPriceSurface
@@ -2313,6 +2322,7 @@ foreign import ccall "ql.h qlYoYOptionletVolatilitySurfaceAsVolatilityTermStruct
 foreign import ccall "ql.h qlCPIVolatilitySurfaceAsVolatilityTermStructure" qlCPIVolatilitySurfaceAsVolatilityTermStructure :: Ptr CCPIVolatilitySurface' -> IO (Ptr CVolatilityTermStructure')
 foreign import ccall "ql.h qlCallableBondVolatilityStructureAsTermStructure" qlCallableBondVolatilityStructureAsTermStructure :: Ptr CCallableBondVolatilityStructure' -> IO (Ptr CTermStructure')
 foreign import ccall "ql.h qlDefaultProbabilityTermStructureAsTermStructure" qlDefaultProbabilityTermStructureAsTermStructure :: Ptr CDefaultProbabilityTermStructure' -> IO (Ptr CTermStructure')
+foreign import ccall "ql.h qlAffineHazardRateCurveAsDefaultProbabilityTermStructure" qlAffineHazardRateCurveAsDefaultProbabilityTermStructure :: Ptr CAffineHazardRateCurve' -> IO (Ptr CDefaultProbabilityTermStructure')
 foreign import ccall "ql.h qlZeroInflationTermStructureAsTermStructure" qlZeroInflationTermStructureAsTermStructure :: Ptr CZeroInflationTermStructure' -> IO (Ptr CTermStructure')
 foreign import ccall "ql.h qlYoYInflationTermStructureAsTermStructure" qlYoYInflationTermStructureAsTermStructure :: Ptr CYoYInflationTermStructure' -> IO (Ptr CTermStructure')
 foreign import ccall "ql.h qlYoYCapFloorTermPriceSurfaceAsTermStructure" qlYoYCapFloorTermPriceSurfaceAsTermStructure :: Ptr CYoYCapFloorTermPriceSurface' -> IO (Ptr CTermStructure')
@@ -2324,6 +2334,7 @@ instance Upcastable CRelinkableYieldTermStructure' where {type Base CRelinkableY
 instance Upcastable CVolatilityTermStructure' where {type Base CVolatilityTermStructure' = CTermStructure'; upcast = qlVolatilityTermStructureAsTermStructure}
 instance Upcastable CCallableBondVolatilityStructure' where {type Base CCallableBondVolatilityStructure' = CTermStructure'; upcast = qlCallableBondVolatilityStructureAsTermStructure}
 instance Upcastable CDefaultProbabilityTermStructure' where {type Base CDefaultProbabilityTermStructure' = CTermStructure'; upcast = qlDefaultProbabilityTermStructureAsTermStructure}
+instance Upcastable CAffineHazardRateCurve' where {type Base CAffineHazardRateCurve' = CDefaultProbabilityTermStructure'; upcast = qlAffineHazardRateCurveAsDefaultProbabilityTermStructure}
 instance Upcastable CZeroInflationTermStructure' where {type Base CZeroInflationTermStructure' = CTermStructure'; upcast = qlZeroInflationTermStructureAsTermStructure}
 instance Upcastable CYoYInflationTermStructure' where {type Base CYoYInflationTermStructure' = CTermStructure'; upcast = qlYoYInflationTermStructureAsTermStructure}
 instance Upcastable CYoYCapFloorTermPriceSurface' where {type Base CYoYCapFloorTermPriceSurface' = CTermStructure'; upcast = qlYoYCapFloorTermPriceSurfaceAsTermStructure}
@@ -2499,10 +2510,24 @@ withMaybeLocalVolTermStructure :: Maybe (GenLocalVolTermStructure lv) -> (Ptr CL
 withMaybeLocalVolTermStructure x f = maybe (f nullPtr) (`withGenLocalVolTermStructure` f) x
 peekCallableBondVolatilityStructure :: Ptr CCallableBondVolatilityStructure' -> IO CallableBondVolatilityStructure
 peekCallableBondVolatilityStructure = GenTermStructure <.> newGenForeignPtr
+asDefaultProbabilityTermStructure :: GenDefaultProbabilityTermStructure d -> IO DefaultProbabilityTermStructure
+asDefaultProbabilityTermStructure = transferGenForeignPtr peekDefaultProbabilityTermStructure . peel . getTermStructure
 peekDefaultProbabilityTermStructure :: Ptr CDefaultProbabilityTermStructure' -> IO DefaultProbabilityTermStructure
-peekDefaultProbabilityTermStructure = GenTermStructure <.> newGenForeignPtr
-withMaybeDefaultProbabilityTermStructure :: Maybe DefaultProbabilityTermStructure -> (Ptr CDefaultProbabilityTermStructure' -> IO b) -> IO b
-withMaybeDefaultProbabilityTermStructure x f = maybe (f nullPtr) (`withGenTermStructure` f) x
+peekDefaultProbabilityTermStructure = newCastForeignPtr >=> newGenDefaultProbabilityTermStructure
+withDefaultProbabilityTermStructure :: GenDefaultProbabilityTermStructure d -> (Ptr CDefaultProbabilityTermStructure' -> IO b) -> IO b
+withDefaultProbabilityTermStructure = withGenForeignPtr . peel . getTermStructure
+withMaybeDefaultProbabilityTermStructure :: Maybe (GenDefaultProbabilityTermStructure d) -> (Ptr CDefaultProbabilityTermStructure' -> IO b) -> IO b
+withMaybeDefaultProbabilityTermStructure x f = maybe (f nullPtr) (`withDefaultProbabilityTermStructure` f) x
+newGenDefaultProbabilityTermStructure :: GenForeignPtr d CDefaultProbabilityTermStructure' -> IO (GenDefaultProbabilityTermStructure d)
+newGenDefaultProbabilityTermStructure = pure . GenTermStructure . newAnyOf
+peekAffineHazardRateCurve :: Ptr CAffineHazardRateCurve' -> IO AffineHazardRateCurve
+peekAffineHazardRateCurve = newGenForeignPtr >=> newGenDefaultProbabilityTermStructure
+-- | Reach the concrete leaf itself, for 'QuantLib.TermStructure.Credit.conditionalSurvivalProbability'
+-- (declared on the underlying @OneFactorAffineSurvivalStructure@, not the generic
+-- @DefaultProbabilityTermStructure@ interface). Ordinary curve arguments go through
+-- 'withDefaultProbabilityTermStructure' instead, which upcasts.
+withAffineHazardRateCurve :: AffineHazardRateCurve -> (Ptr CAffineHazardRateCurve' -> IO b) -> IO b
+withAffineHazardRateCurve = withForeignPtr . ptr . peel . getTermStructure
 peekZeroInflationTermStructure :: Ptr CZeroInflationTermStructure' -> IO ZeroInflationTermStructure
 peekZeroInflationTermStructure = GenTermStructure <.> newGenForeignPtr
 withMaybeZeroInflationTermStructure :: Maybe ZeroInflationTermStructure -> (Ptr CZeroInflationTermStructure' -> IO b) -> IO b

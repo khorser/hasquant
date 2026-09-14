@@ -383,7 +383,7 @@ discountingPerpetualFuturesEngine domestic foreignCurve spot funding interpolati
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |discounts a bond's cash flows off a default-risky curve and a flat recovery rate
-{#fun qlRiskyBondEngine as riskyBondEngine{withGenTermStructure*`DefaultProbabilityTermStructure',`Double' -- ^recoveryRate
+{#fun qlRiskyBondEngine as riskyBondEngine{withDefaultProbabilityTermStructure*`GenDefaultProbabilityTermStructure d',`Double' -- ^recoveryRate
   ,withYieldTermStructure*`GenYieldTermStructure y'
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
@@ -421,9 +421,9 @@ discountingPerpetualFuturesEngine domestic foreignCurve spot funding interpolati
 -- match upstream's unilateral-CVA-only defaults.
 {#fun qlCounterpartyAdjSwapEngine as counterpartyAdjSwapEngine{withYieldTermStructure*`GenYieldTermStructure y' -- ^discountCurve
   ,withQuote*`GenQuote q' -- ^blackVol
-  ,withGenTermStructure*`DefaultProbabilityTermStructure' -- ^ctptyDTS
+  ,withDefaultProbabilityTermStructure*`GenDefaultProbabilityTermStructure d1' -- ^ctptyDTS
   ,`Double' -- ^ctptyRecoveryRate
-  ,withMaybeDefaultProbabilityTermStructure*`Maybe DefaultProbabilityTermStructure' -- ^invstDTS
+  ,withMaybeDefaultProbabilityTermStructure*`Maybe (GenDefaultProbabilityTermStructure d2)' -- ^invstDTS
   ,`Double' -- ^invstRecoveryRate
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
@@ -973,7 +973,7 @@ batesDoubleExpEngine model control =
 
 -- |CDS pricing engine that integrates the default-leg payoff over the CDS's step-wise schedule
 {#fun qlIntegralCdsEngine as integralCdsEngine{fromEnumQuantity`(Word,TimeUnit)'& -- ^integrationStep
-  ,withGenTermStructure*`DefaultProbabilityTermStructure',`Double' -- ^recoveryRate
+  ,withDefaultProbabilityTermStructure*`GenDefaultProbabilityTermStructure d',`Double' -- ^recoveryRate
   ,withYieldTermStructure*`GenYieldTermStructure y' -- ^discountCurve
   ,fromMaybeBool`Maybe Bool' -- ^includeSettlementDateFlows
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
@@ -1033,7 +1033,7 @@ batesDoubleExpEngine model control =
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |CDS pricing engine using the mid-point approximation, evaluating the default leg at the mid-point of each accrual period
-{#fun qlMidPointCdsEngine as midPointCdsEngine{withGenTermStructure*`DefaultProbabilityTermStructure',`Double' -- ^recoveryRate
+{#fun qlMidPointCdsEngine as midPointCdsEngine{withDefaultProbabilityTermStructure*`GenDefaultProbabilityTermStructure d',`Double' -- ^recoveryRate
   ,withYieldTermStructure*`GenYieldTermStructure y'
   ,fromMaybeBool`Maybe Bool' -- ^includeSettlementDateFlows
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
@@ -1057,7 +1057,7 @@ batesDoubleExpEngine model control =
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |CDS pricing engine implementing the ISDA standard model
-{#fun qlIsdaCdsEngine as isdaCdsEngine{withGenTermStructure*`DefaultProbabilityTermStructure',`Double' -- ^recoveryRate
+{#fun qlIsdaCdsEngine as isdaCdsEngine{withDefaultProbabilityTermStructure*`GenDefaultProbabilityTermStructure d',`Double' -- ^recoveryRate
   ,withYieldTermStructure*`GenYieldTermStructure y'
   ,fromMaybeBool`Maybe Bool' -- ^includeSettlementDateFlows
   ,`NumericalFix' -- ^numericalFix

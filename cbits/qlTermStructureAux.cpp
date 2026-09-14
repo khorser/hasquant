@@ -488,6 +488,21 @@ DefaultProbabilityTermStructure *qlInterpolatedHazardRateCurveAux(
       });
 }
 
+OneFactorAffineSurvivalStructure *qlInterpolatedAffineHazardRateCurveAux(
+    const std::vector<Date>& dates,
+    const std::vector<double>& hazardRates,
+    const DayCounter& dayCounter,
+    const ext::shared_ptr<OneFactorAffineModel>& model,
+    const Calendar& cal,
+    const std::vector<Handle<Quote> >& jumps,
+    const std::vector<Date>& jumpDates,
+    int interpolator, int approximator, int approximatorArg) {
+  return dispatchInterpolation<OneFactorAffineSurvivalStructure*>(interpolator, approximator, approximatorArg,
+[&](auto i) {
+        return new InterpolatedAffineHazardRateCurve<decltype(i)>(dates, hazardRates, dayCounter, model, cal, jumps, jumpDates, i);
+      });
+}
+
 DefaultProbabilityTermStructure *qlInterpolatedSurvivalProbabilityCurveAux(
     const std::vector<Date>& dates,
     const std::vector<double>& probabilities,

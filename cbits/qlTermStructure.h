@@ -316,12 +316,17 @@ extern "C" {
 
   void qlFreeDefaultProbabilityTermStructure(QlDefaultProbabilityTermStructure *o);
   QlTermStructure* qlDefaultProbabilityTermStructureAsTermStructure(QlDefaultProbabilityTermStructure *o);
+  void qlFreeAffineHazardRateCurve(QlAffineHazardRateCurve *o);
+  QlDefaultProbabilityTermStructure* qlAffineHazardRateCurveAsDefaultProbabilityTermStructure(QlAffineHazardRateCurve *o);
+  double qlAffineHazardRateCurveConditionalSurvivalProbability(QlAffineHazardRateCurve* o, int dFwd, int dTgt, double yVal, int extrapolate, char **e);
+  double qlAffineHazardRateCurveConditionalSurvivalProbability1(QlAffineHazardRateCurve* o, double tFwd, double tTgt, double yVal, int extrapolate, char **e);
   QlDefaultProbabilityTermStructure* qlFactorSpreadedHazardRateCurve(QlDefaultProbabilityTermStructure* originalCurve, QlQuote* spread, char **e);
   QlDefaultProbabilityTermStructure* qlFlatHazardRate1(unsigned settlementDays, Calendar* calendar, QlQuote* hazardRate, DayCounter* x3, char **e);
   QlDefaultProbabilityTermStructure* qlFlatHazardRate(int referenceDate, QlQuote* hazardRate, DayCounter* x2, char **e);
   QlDefaultProbabilityTermStructure* qlSpreadedHazardRateCurve(QlDefaultProbabilityTermStructure* originalCurve, QlQuote* spread, char **e);
   QlDefaultProbabilityTermStructure* qlInterpolatedDefaultDensityCurve(unsigned datesLen, int* dates, unsigned densitiesLen, double* densities, DayCounter* dayCounter, Calendar* calendar, unsigned jumpsLen, QlQuote** jumps, unsigned jDatesLen, int* jumpDates, int interpolator, int approximator, int approximatorArg, char **e);
   QlDefaultProbabilityTermStructure* qlInterpolatedHazardRateCurve(unsigned datesLen, int* dates, unsigned hazardRatesLen, double* hazardRates, DayCounter* dayCounter, Calendar* cal, unsigned jumpsLen, QlQuote** jumps, unsigned jDatesLen, int* jumpDates, int interpolator, int approximator, int approximatorArg, int extrapolate, char **e);
+  QlAffineHazardRateCurve* qlInterpolatedAffineHazardRateCurve(unsigned datesLen, int* dates, unsigned hazardRatesLen, double* hazardRates, DayCounter* dayCounter, QlOneFactorAffineModel* model, Calendar* cal, unsigned jumpsLen, QlQuote** jumps, unsigned jDatesLen, int* jumpDates, int interpolator, int approximator, int approximatorArg, int extrapolate, char **e);
   QlDefaultProbabilityTermStructure* qlInterpolatedSurvivalProbabilityCurve(unsigned datesLen, int* dates, unsigned probabilitiesLen, double* probabilities, DayCounter* dayCounter, Calendar* calendar, unsigned jumpsLen, QlQuote** jumps, unsigned jDatesLen, int* jumpDates, int interpolator, int approximator, int approximatorArg, char **e);
   void qlFreeDefaultProbabilityHelper(QlDefaultProbabilityHelper *o);
   double qlDefaultProbabilityHelperImpliedQuote(QlDefaultProbabilityHelper *o, char **e);

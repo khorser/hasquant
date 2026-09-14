@@ -93,6 +93,7 @@ typedef struct QlNthToDefault QlNthToDefault;
 typedef struct QlPool QlPool;
 typedef struct QlDefaultProbabilityHelper QlDefaultProbabilityHelper;
 typedef struct QlDefaultProbabilityTermStructure QlDefaultProbabilityTermStructure;
+typedef struct QlAffineHazardRateCurve QlAffineHazardRateCurve;
 typedef struct QlDeltaVolQuote QlDeltaVolQuote;
 typedef struct QlFuturesConvAdjustmentQuote QlFuturesConvAdjustmentQuote;
 typedef struct QlDividend QlDividend;

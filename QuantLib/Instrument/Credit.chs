@@ -111,7 +111,7 @@ import QuantLib.Internal.Type
 
 -- |Volatility that reproduces a given option price under the pricing engine's volatility model.
 {#fun qlCdsOptionImpliedVolatility as impliedVolatility{withCdsOption*`CdsOption',`Double' -- ^price
-  ,withYieldTermStructure*`GenYieldTermStructure y',withGenTermStructure*`DefaultProbabilityTermStructure'
+  ,withYieldTermStructure*`GenYieldTermStructure y',withDefaultProbabilityTermStructure*`GenDefaultProbabilityTermStructure d'
   ,`Double' -- ^recoveryRate
   ,`Double' -- ^accuracy
   ,fromIntegral`Word' -- ^maxEvaluations

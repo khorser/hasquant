@@ -43,6 +43,7 @@
 #include <ql/termstructures/credit/flathazardrate.hpp>
 #include <ql/experimental/credit/spreadedhazardratecurve.hpp>
 #include <ql/experimental/credit/factorspreadedhazardratecurve.hpp>
+#include <ql/experimental/credit/interpolatedaffinehazardratecurve.hpp>
 #include <ql/termstructures/credit/defaultprobabilityhelpers.hpp>
 #include <ql/termstructures/yield/all.hpp>
 #include <ql/termstructures/multicurve.hpp>
@@ -1284,6 +1285,14 @@ void qlFreeCallableBondVolatilityStructure(QlCallableBondVolatilityStructure *o)
 QlTermStructure* qlCallableBondVolatilityStructureAsTermStructure(QlCallableBondVolatilityStructure *o) {return ret(new QlTermStructure(*arg(o)));}
 void qlFreeDefaultProbabilityTermStructure(QlDefaultProbabilityTermStructure *o) {del(o);}
 QlTermStructure* qlDefaultProbabilityTermStructureAsTermStructure(QlDefaultProbabilityTermStructure *o) {return ret(new QlTermStructure(*arg(o)));}
+void qlFreeAffineHazardRateCurve(QlAffineHazardRateCurve *o) {del(o);}
+QlDefaultProbabilityTermStructure* qlAffineHazardRateCurveAsDefaultProbabilityTermStructure(QlAffineHazardRateCurve *o) {return ret(new QlDefaultProbabilityTermStructure(*arg(o)));}
+double qlAffineHazardRateCurveConditionalSurvivalProbability(QlAffineHazardRateCurve* o, int dFwd, int dTgt, double yVal, int extrapolate, char **e) {
+  try {return (*arg(o))->conditionalSurvivalProbability(Date(dFwd), Date(dTgt), yVal, extrapolate);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlAffineHazardRateCurveConditionalSurvivalProbability1(QlAffineHazardRateCurve* o, double tFwd, double tTgt, double yVal, int extrapolate, char **e) {
+  try {return (*arg(o))->conditionalSurvivalProbability(tFwd, tTgt, yVal, extrapolate);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
 
 QlCallableBondVolatilityStructure* qlCallableBondConstantVolatility1(unsigned settlementDays, Calendar* x1, QlQuote* volatility, DayCounter* dayCounter, char **e) {
   try {return ret(new QlCallableBondVolatilityStructure(alloc(new CallableBondConstantVolatility(settlementDays, *arg(x1), *arg(volatility), *arg(dayCounter)))));
@@ -1345,6 +1354,12 @@ QlDefaultProbabilityTermStructure* qlInterpolatedHazardRateCurve(unsigned datesL
     if (extrapolate) ts->enableExtrapolation();
     return ret(new QlDefaultProbabilityTermStructure(ts));
   } catch (std::exception& er) {return handleException<QlDefaultProbabilityTermStructure*>(e, er);}}
+QlAffineHazardRateCurve* qlInterpolatedAffineHazardRateCurve(unsigned datesLen, int* dates, unsigned hazardRatesLen, double* hazardRates, DayCounter* dayCounter, QlOneFactorAffineModel* model, Calendar* cal, unsigned jumpsLen, QlQuote** jumps, unsigned jDatesLen, int* jumpDates, int interpolator, int approximator, int approximatorArg, int extrapolate, char **e) {
+  try {
+    auto ts = allocShared(qlInterpolatedAffineHazardRateCurveAux(qlDateVector(dates, datesLen), std::vector<double>(hazardRates, hazardRates+hazardRatesLen), *arg(dayCounter), *arg(model), *arg(cal), qlHandleVector(jumps, jumpsLen), qlDateVector(jumpDates, jDatesLen), interpolator, approximator, approximatorArg));
+    if (extrapolate) ts->enableExtrapolation();
+    return ret(new QlAffineHazardRateCurve(ts));
+  } catch (std::exception& er) {return handleException<QlAffineHazardRateCurve*>(e, er);}}
 QlDefaultProbabilityTermStructure* qlInterpolatedSurvivalProbabilityCurve(unsigned datesLen, int* dates, unsigned probabilitiesLen, double* probabilities, DayCounter* dayCounter, Calendar* calendar, unsigned jumpsLen, QlQuote** jumps, unsigned jDatesLen, int* jumpDates, int interpolator, int approximator, int approximatorArg, char **e) {
   try {return ret(new QlDefaultProbabilityTermStructure(alloc(qlInterpolatedSurvivalProbabilityCurveAux(qlDateVector(dates, datesLen), std::vector<double>(probabilities, probabilities+probabilitiesLen), *arg(dayCounter), *arg(calendar), qlHandleVector(jumps, jumpsLen), qlDateVector(jumpDates, jDatesLen), interpolator, approximator, approximatorArg))));
   } catch (std::exception& er) {return handleException<QlDefaultProbabilityTermStructure*>(e, er);}}

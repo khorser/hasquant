@@ -320,6 +320,7 @@ namespace QuantLib {
   class OISRateHelper;
   class OneAssetOption;
   class OneFactorAffineModel;
+  class OneFactorAffineSurvivalStructure;
   class OptimizationMethod;
   class Option;
   class OvernightIndex;
@@ -684,6 +685,7 @@ using QuantLib::FloatFloatSwaption;
 using QuantLib::OISRateHelper;
 using QuantLib::OneAssetOption;
 using QuantLib::OneFactorAffineModel;
+using QuantLib::OneFactorAffineSurvivalStructure;
 using QuantLib::OptimizationMethod;
 using QuantLib::Option;
 using QuantLib::OvernightIndex;
@@ -923,6 +925,9 @@ using QlCPISwap = shared_ptr<CPISwap>;
 using QlCPIVolatilitySurface = Handle<CPIVolatilitySurface>;
 using QlCreditDefaultSwap = shared_ptr<CreditDefaultSwap>;
 using QlDefaultProbabilityTermStructure = shared_ptr<DefaultProbabilityTermStructure>;
+// Held as OneFactorAffineSurvivalStructure, not the DefaultProbabilityTermStructure base, so
+// conditionalSurvivalProbability (declared on the former) stays reachable without a downcast.
+using QlAffineHazardRateCurve = shared_ptr<OneFactorAffineSurvivalStructure>;
 using QlDeltaVolQuote = shared_ptr<DeltaVolQuote>;
 using QlFuturesConvAdjustmentQuote = shared_ptr<FuturesConvAdjustmentQuote>;
 using QlDividend = shared_ptr<Dividend>;
@@ -1319,6 +1324,7 @@ QL_TRACE_NAME(NoConstraint)
 QL_TRACE_NAME(OISRateHelper)
 QL_TRACE_NAME(OneAssetOption)
 QL_TRACE_NAME(OneFactorAffineModel)
+QL_TRACE_NAME(OneFactorAffineSurvivalStructure)
 QL_TRACE_NAME(OptimizationMethod)
 QL_TRACE_NAME(Option)
 QL_TRACE_NAME(OptionletVolatilityStructure)
@@ -1359,6 +1365,7 @@ QL_TRACE_NAME(QlBlackCalibrationHelper)
 QL_TRACE_NAME(QlBlackProcess)
 QL_TRACE_NAME(QlBlackScholesCalculator)
 QL_TRACE_NAME(QlBlackVarianceCurve)
+QL_TRACE_NAME(QlAffineHazardRateCurve)
 QL_TRACE_NAME(QlBlackVolatilitySurfaceDelta)
 QL_TRACE_NAME(QlBlackVolTermStructure)
 QL_TRACE_NAME(QlRelinkableBlackVolTermStructure)
