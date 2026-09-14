@@ -106,12 +106,17 @@ module QuantLib.TermStructure.Yield
   , overnightIndexFutureRateHelperConvexityAdjustment
   , minimumCostValue
   , numberOfIterations
+  , fittingMethodSize
+  , fittingMethodErrorCode
+  , fittingMethodSolution
+  , fittingMethodDiscount
   ) where
 import QuantLib.Internal hiding(maxDate)
 import QuantLib.Internal.Common
 import QuantLib.Internal.Syntax(deriveOptionsRecord)
 import Language.Haskell.TH(mkName)
 import Language.Haskell.TH.Lib(varT)
+import QuantLib.Math(EndCriteriaType(..))
 import QuantLib.Quote hiding(linkTo)
 import QuantLib.TermStructure (Reference(..), TermPoint(..), RatePoint(..), setExtrapolation, HasHelperUnderlying(..))
 import Data.Maybe(fromMaybe)
@@ -918,7 +923,9 @@ interpolatedForwardCurve :: NonEmpty (Day, Double) -- ^dates, forwards
 interpolatedForwardCurve r dc c qd i = uncurryNested (qlInterpolatedForwardCurve rs rd dc c qs ds) (qlInterpolation i) where {(rd, rs) = unzip (toList r); (ds, qs) = unzip qd}
 {#fun qlInterpolatedForwardCurve{withDoubleArray*`[Double]'&,withDayArray*`[Day]'&,withDayCounter*`DayCounter',withCalendar*`Calendar',withQuoteArray*`[GenQuote q]'&,withDayArray*`[Day]'&,`Int',`Int',`Int',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
 
--- |Yield curve interpolating zero-yield rates directly between the given dates.
+-- |Yield curve interpolating zero-yield rates directly between the given dates. Always uses
+-- upstream's own default compounding (@Continuous@, @Annual@); use 'interpolatedSimpleZeroCurve'
+-- for simple compounding.
 interpolatedZeroCurve :: NonEmpty (Day, Double) -- ^dates, yields
   -> DayCounter -- ^dayCounter
   -> Calendar -- ^cal
@@ -982,6 +989,20 @@ fittedBondDiscountCurve reference hs dc method accuracy maxEvaluations guess sim
 
 -- |final number of iterations used in the optimization problem
 {#fun qlFittedBondDiscountCurveFittingMethodNumberOfIterations as numberOfIterations{withFittedBondDiscountCurve*`FittedBondDiscountCurve',preErrorCheck-`String'errorCheck*-}->`Int'#}
+
+-- |number of unknown parameters found by the fit
+{#fun qlFittedBondDiscountCurveFittingMethodSize as fittingMethodSize{withFittedBondDiscountCurve*`FittedBondDiscountCurve',preErrorCheck-`String'errorCheck*-}->`Word'fromIntegral#}
+
+-- |why the optimization stopped
+fittingMethodErrorCode :: FittedBondDiscountCurve -> IO EndCriteriaType
+fittingMethodErrorCode = fmap toEnum . fittingMethodErrorCodeRaw
+{#fun qlFittedBondDiscountCurveFittingMethodErrorCode as fittingMethodErrorCodeRaw{withFittedBondDiscountCurve*`FittedBondDiscountCurve',preErrorCheck-`String'errorCheck*-}->`Int'#}
+
+-- |the fitted parameters found by the optimization
+{#fun qlFittedBondDiscountCurveFittingMethodSolution as fittingMethodSolution{withFittedBondDiscountCurve*`FittedBondDiscountCurve',preArray-`RealVector'&peekRealVector*,preErrorCheck-`String'errorCheck*-}->`()'#}
+
+-- |the discount factor at time @t@ implied by a given parameter vector, without rebuilding the curve
+{#fun qlFittedBondDiscountCurveFittingMethodDiscount as fittingMethodDiscount{withFittedBondDiscountCurve*`FittedBondDiscountCurve',withDoubleArray*`[Double]'&,`Double',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |A curve behind a relinkable handle. The result /is/ a 'YieldTermStructure': pass it to
 -- any curve-taking function and everything built on it keeps tracking whatever the handle

@@ -151,6 +151,7 @@ module QuantLib.TermStructure.Volatility
     -- ** Strike and maturity capabilities
   , HasStrikeBounds(..)
   , HasAtmStrike(..)
+  , optionDateFromTenor
 
     -- ** Optionlet and cap-floor volatility
   , atmCapFloorStrikes
@@ -188,6 +189,7 @@ module QuantLib.TermStructure.Volatility
   , smileSectionOptionPrice
   , smileSectionDigitalOptionPrice
   , smileSectionDensity
+  , smileSectionVega
   , sabrAlpha
   , sabrBeta
   , sabrNu
@@ -943,6 +945,15 @@ noArbSabrSmileSection point forward alpha beta nu rho shift volatilityType = cas
   ,`Double' -- ^gap
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
+-- |the strike derivative of 'smileSectionOptionPrice', for any 'SmileSection' (however it was constructed)
+{#fun qlSmileSectionVega as smileSectionVega{withSmileSection*`SmileSection'
+  ,`Double' -- ^strike
+  ,`Double' -- ^discount
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+{#fun qlSmileSectionMinStrike as minStrikeSmileSectionRaw{withSmileSection*`SmileSection',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlSmileSectionMaxStrike as maxStrikeSmileSectionRaw{withSmileSection*`SmileSection',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
 -- |a flat-volatility smile section: 'volatility' returns @vol@ for every strike.
 -- 'Nothing'\/'Nothing' reproduce upstream's own defaults for @referenceDate@\/@atmLevel@.
 {#fun qlFlatSmileSection as flatSmileSection{withDay*`Day'
@@ -1436,9 +1447,15 @@ callableBondSmileSection structure maturity = case maturity of
 {#fun qlVolatilityTermStructureMinStrike as minStrikeGenericRaw{withVolatilityTermStructure*`GenVolatilityTermStructure v',preErrorCheck-`String'errorCheck*-}->`Double'#}
 {#fun qlVolatilityTermStructureMaxStrike as maxStrikeGenericRaw{withVolatilityTermStructure*`GenVolatilityTermStructure v',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
+-- |Converts an option tenor to its option date, for any 'GenVolatilityTermStructure' (however it
+-- was constructed).
+{#fun qlVolatilityTermStructureOptionDateFromTenor as optionDateFromTenor{withVolatilityTermStructure*`GenVolatilityTermStructure v'
+  ,fromEnumQuantity`(Word,TimeUnit)'& -- ^optionTenor
+  ,preErrorCheck-`String'errorCheck*-}->`Day'toDay#}
+
 -- |The minimum and maximum strike for which a structure can return vols. 'CallableBondVolatilityStructure'
--- declares its own unrelated pair (it inherits 'TermStructure' directly, not 'VolatilityTermStructure'),
--- so the two families need separate instances.
+-- and 'SmileSection' each declare their own unrelated pair (neither inherits 'VolatilityTermStructure'),
+-- so all three families need separate instances.
 class HasStrikeBounds structure where
   minStrike :: structure -> IO Double
   maxStrike :: structure -> IO Double
@@ -1446,6 +1463,10 @@ class HasStrikeBounds structure where
 instance HasStrikeBounds CallableBondVolatilityStructure where
   minStrike = minStrikeCallableBondRaw
   maxStrike = maxStrikeCallableBondRaw
+
+instance HasStrikeBounds SmileSection where
+  minStrike = minStrikeSmileSectionRaw
+  maxStrike = maxStrikeSmileSectionRaw
 
 instance HasStrikeBounds (GenVolatilityTermStructure v) where
   minStrike = minStrikeGenericRaw

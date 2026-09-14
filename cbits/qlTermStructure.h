@@ -13,6 +13,7 @@ extern "C" {
   void qlFreeVolatilityTermStructure(QlVolatilityTermStructure *o);
   QlTermStructure* qlVolatilityTermStructureAsTermStructure(QlVolatilityTermStructure *o);
   double qlVolatilityTermStructureMinStrike(QlVolatilityTermStructure* o, char **e);
+  int qlVolatilityTermStructureOptionDateFromTenor(QlVolatilityTermStructure* o, int n, int u, char **e);
   double qlVolatilityTermStructureMaxStrike(QlVolatilityTermStructure* o, char **e);
   void qlFreeBlackAtmVolCurve(QlBlackAtmVolCurve *o);
   QlVolatilityTermStructure* qlBlackAtmVolCurveAsVolatilityTermStructure(QlBlackAtmVolCurve *o);
@@ -108,6 +109,9 @@ extern "C" {
   double qlSmileSectionOptionPrice(QlSmileSection* o, double strike, int type, double discount, char **e);
   double qlSmileSectionDigitalOptionPrice(QlSmileSection* o, double strike, int type, double discount, double gap, char **e);
   double qlSmileSectionDensity(QlSmileSection* o, double strike, double discount, double gap, char **e);
+  double qlSmileSectionMinStrike(QlSmileSection* o, char **e);
+  double qlSmileSectionMaxStrike(QlSmileSection* o, char **e);
+  double qlSmileSectionVega(QlSmileSection* o, double strike, double discount, char **e);
   QlSmileSection* qlFlatSmileSection(int d, double vol, DayCounter* dc, int referenceDate, double atmLevel, int type, double shift, char **e);
   QlSmileSection* qlSviSmileSection(int d, double forward, double a, double b, double sigma, double rho, double m, DayCounter* dc, char **e);
   QlSmileSection* qlZabrSmileSection(int evaluation, double timeToExpiry, double forward, double alpha, double beta, double nu, double rho, double gamma, unsigned moneynessLen, double* moneyness, unsigned fdRefinement, char **e);
@@ -551,10 +555,15 @@ extern "C" {
 
   double qlFittedBondDiscountCurveFittingMethodMinimumCostValue(QlFittedBondDiscountCurve* o, char **e);
   int qlFittedBondDiscountCurveFittingMethodNumberOfIterations(QlFittedBondDiscountCurve* o, char **e);
+  unsigned qlFittedBondDiscountCurveFittingMethodSize(QlFittedBondDiscountCurve* o, char **e);
+  int qlFittedBondDiscountCurveFittingMethodErrorCode(QlFittedBondDiscountCurve* o, char **e);
+  void qlFittedBondDiscountCurveFittingMethodSolution(QlFittedBondDiscountCurve* o, unsigned* len, double** vs, char **e);
+  double qlFittedBondDiscountCurveFittingMethodDiscount(QlFittedBondDiscountCurve* o, unsigned xLen, double* x, double t, char **e);
   QlYieldTermStructure* qlForwardSpreadedTermStructure(QlYieldTermStructure* x0, QlQuote* spread, char **e);
   QlYieldTermStructure* qlZeroSpreadedTermStructure(QlYieldTermStructure* x0, QlQuote* spread, int comp, int freq, char **e);
   int qlTermStructureReferenceDate(QlTermStructure* o, char **e);
   int qlTermStructureMaxDate(QlTermStructure* o, char **e);
+  double qlTermStructureMaxTime(QlTermStructure* o, char **e);
   int qlTermStructureAllowsExtrapolation(QlTermStructure* o);
   void qlTermStructureSetExtrapolation(QlTermStructure* o, int enabled);
   double qlTermStructureTimeFromReference(QlTermStructure* o, int date, char **e);

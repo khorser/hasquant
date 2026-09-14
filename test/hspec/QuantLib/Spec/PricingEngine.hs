@@ -417,6 +417,19 @@ spec = do
         volAtAtm2 <- smileSectionVolatility volNormal forward
         volAtAtm1 `shouldNotBe` volAtAtm2
 
+    it "minStrike/maxStrike bracket the strike range and vega (the Black-vol sensitivity of\
+       \ the option price) is positive and linear in the discount factor" $
+      Context.keepingSettingsGc $ do
+        section <- sabrSmileSection expiry forward alpha_ beta_ nu rho_ shift ShiftedLognormal
+        lo <- minStrike section
+        hi <- maxStrike section
+        lo `shouldSatisfy` (< forward)
+        hi `shouldSatisfy` (> forward)
+        vFull <- smileSectionVega section forward 1.0
+        vHalf <- smileSectionVega section forward 0.5
+        vFull `shouldSatisfy` (> 0)
+        vHalf `shouldSatisfy` closePrec (vFull * 0.5) 1.0e-10
+
     it "SabrSmileSection/NoArbSabrSmileSection Date- and Time-based ctors agree, and NoArb\
        \ differs from the plain SabrSmileSection" $
       Context.keepingSettingsGc $ do

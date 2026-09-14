@@ -23,6 +23,7 @@ module QuantLib.TermStructure
   , HasHelperUnderlying(..)
   , referenceDate
   , maxDate
+  , maxTime
   , allowsExtrapolation
   , timeFromReference
   ) where
@@ -123,6 +124,9 @@ data RatePoint
 
 -- |the latest date for which the curve can return values
 {#fun qlTermStructureMaxDate as maxDate{withTermStructure*`GenTermStructure t',preErrorCheck-`String'errorCheck*-}->`Day'toDay#}
+
+-- |'maxDate' expressed as a year fraction from the structure's reference date
+{#fun qlTermStructureMaxTime as maxTime{withTermStructure*`GenTermStructure t',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Whether calls beyond the term structure's maximum date are allowed by default.
 {#fun qlTermStructureAllowsExtrapolation as allowsExtrapolation{withTermStructure*`GenTermStructure t'}->`Bool'#}

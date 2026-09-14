@@ -350,6 +350,8 @@ spec = do
           baseMax <- TS.maxDate ts
           curveMax `shouldBe` baseMax
           tMax <- timeFromReference ts curveMax
+          maxT <- TS.maxTime logLinear
+          maxT `shouldSatisfy` closePrec tMax 1.0e-12
           before <- (-) <$> flatFwd logLinear (tMax - 1) tMax <*> flatFwd ts (tMax - 1) tMax
           after <- (-) <$> flatFwd logLinear tMax (tMax + 1) <*> flatFwd ts tMax (tMax + 1)
           after `shouldSatisfy` closePrec before 1.0e-9
@@ -403,32 +405,54 @@ spec = do
 
     -- Drop Haskell's OptimizationMethod reference and collect before querying the curve. The
     -- fitting method and its clone must retain shared ownership for the curve's full lifetime.
-    describe "fitted bond discount curve fitting methods" $
+    describe "fitted bond discount curve fitting methods" $ do
+      let buildFitted reference = do
+            Context.setEvaluationDate (Just (2 `january` 2024))
+            cal <- calendar Null
+            thirty360dc <- dayCounter Thirty360BondBasis
+            helpers <- mapM
+              (\(tenor, coupon) -> do
+                maturity <- advance cal (2 `january` 2024) tenor Unadjusted False
+                sch <- schedule (Just (2 `january` 2024)) maturity (1, Years) cal Unadjusted Unadjusted
+                         Backward False Nothing Nothing
+                price <- Quote.simpleQuote 100.0
+                fixedRateBondHelper price 3 100.0 sch [coupon] thirty360dc Following 100.0 Nothing)
+              [((2, Years), 0.03), ((5, Years), 0.035), ((10, Years), 0.04)]
+            let optMethod = Simplex 0.1
+            fittedBondDiscountCurve reference (fromList helpers) thirty360dc
+              (ExponentialSplines True [] [] 0.0 1.0e6 9 Nothing Nothing (Just optMethod))
+              1.0e-10 10000 [] 1.0 False
+
       it "keeps a caller-supplied OptimizationMethod alive past Haskell's own GC" $
         Context.keepingSettingsGc $ do
           Context.setEvaluationDate (Just (2 `january` 2024))
           cal <- calendar Null
-          thirty360dc <- dayCounter Thirty360BondBasis
-          helpers <- mapM
-            (\(tenor, coupon) -> do
-              maturity <- advance cal (2 `january` 2024) tenor Unadjusted False
-              sch <- schedule (Just (2 `january` 2024)) maturity (1, Years) cal Unadjusted Unadjusted
-                       Backward False Nothing Nothing
-              price <- Quote.simpleQuote 100.0
-              fixedRateBondHelper price 3 100.0 sch [coupon] thirty360dc Following 100.0 Nothing)
-            [((2, Years), 0.03), ((5, Years), 0.035), ((10, Years), 0.04)]
-          let build reference = do
-                let optMethod = Simplex 0.1
-                fittedBondDiscountCurve reference (fromList helpers) thirty360dc
-                  (ExponentialSplines True [] [] 0.0 1.0e6 9 Nothing Nothing (Just optMethod))
-                  1.0e-10 10000 [] 1.0 False
           fixedReference <- advance cal (2 `january` 2024) (3, Days) Following False
-          movingCurve <- build (SettlementDays 3 cal)
-          fixedCurve <- build (ReferenceDate fixedReference)
+          movingCurve <- buildFitted (SettlementDays 3 cal)
+          fixedCurve <- buildFitted (ReferenceDate fixedReference)
           movingDiscount <- discount movingCurve (DatePoint (5 `january` 2029)) False
           fixedDiscount <- discount fixedCurve (DatePoint (5 `january` 2029)) False
           movingDiscount `shouldSatisfy` (\x -> x > 0 && x < 1)
           fixedDiscount `shouldSatisfy` closePrec movingDiscount 1.0e-6
+
+      it "FittingMethod inspectors report the calibration result consistently" $
+        Context.keepingSettingsGc $ do
+          Context.setEvaluationDate (Just (2 `january` 2024))
+          cal <- calendar Null
+          curve <- buildFitted (SettlementDays 3 cal)
+          n <- fittingMethodSize curve
+          n `shouldBe` 9
+          sol <- fittingMethodSolution curve
+          V.length sol `shouldBe` 9
+          minCost <- minimumCostValue curve
+          minCost `shouldSatisfy` (>= 0)
+          iters <- numberOfIterations curve
+          iters `shouldSatisfy` (>= 0)
+          err <- fittingMethodErrorCode curve
+          err `shouldNotBe` EndNone
+          -- constrainAtZero = True above pins the fitted discount factor at t=0 to 1.
+          d0 <- fittingMethodDiscount curve (V.toList sol) 0.0
+          d0 `shouldSatisfy` closePrec 1.0 1.0e-8
 
     -- No upstream test-suite fixture exists for FxSwapRateHelper (unlike the other rate
     -- helpers ported elsewhere in this file), so this is a self-consistency check instead of
@@ -841,6 +865,18 @@ spec = do
           Vol.linkSwaptionVolTo volH vol1
           npvAfter <- npv swpn
           abs (npvAfter - npvBefore) `shouldSatisfy` (> 0.5)
+
+      it "optionDateFromTenor matches Calendar.advance under the structure's own calendar/convention" $
+        Context.keepingSettingsGc $ do
+          let refDate = 11 `december` 2012
+          Context.setEvaluationDate (Just refDate)
+          cal <- Calendar.calendar TARGET
+          dc <- dayCounter Actual365FixedStandard
+          volQ <- Quote.simpleQuote 0.20
+          vol0 <- Vol.constantSwaptionVolatility (Vol.CalendarReferenceDate refDate) cal ModifiedFollowing volQ dc IR.ShiftedLognormal 0
+          got <- Vol.optionDateFromTenor vol0 (6, Months)
+          expected <- advance cal refDate (6, Months) ModifiedFollowing False
+          got `shouldBe` expected
 
       -- A relinkable optionlet vol surface propagates the same way: an engine built on it
       -- keeps tracking whatever surface the handle currently points at, so relinking reprices

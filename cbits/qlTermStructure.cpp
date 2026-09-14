@@ -315,6 +315,9 @@ double qlVolatilityTermStructureMinStrike(QlVolatilityTermStructure* o, char **e
 double qlVolatilityTermStructureMaxStrike(QlVolatilityTermStructure* o, char **e) {
   try {return (*arg(o))->maxStrike();
   } catch (std::exception& er) {return handleException<double>(e, er);}}
+int qlVolatilityTermStructureOptionDateFromTenor(QlVolatilityTermStructure* o, int n, int u, char **e) {
+  try {return (*arg(o))->optionDateFromTenor(Period(n, (TimeUnit)u)).serialNumber();
+  } catch (std::exception& er) {return handleException<int>(e, er);}}
 void qlFreeBlackAtmVolCurve(QlBlackAtmVolCurve *o) {del(o);}
 QlVolatilityTermStructure* qlBlackAtmVolCurveAsVolatilityTermStructure(QlBlackAtmVolCurve *o) {return ret(new QlVolatilityTermStructure(handlePtr(arg(o))));}
 void qlFreeBlackVolSurface(QlBlackVolSurface *o) {del(o);}
@@ -578,6 +581,15 @@ double qlSmileSectionDigitalOptionPrice(QlSmileSection* o, double strike, int ty
   } catch (std::exception& er) {return handleException<double>(e, er);}}
 double qlSmileSectionDensity(QlSmileSection* o, double strike, double discount, double gap, char **e) {
   try {return (*arg(o))->density(strike, discount, gap);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlSmileSectionMinStrike(QlSmileSection* o, char **e) {
+  try {return (*arg(o))->minStrike();
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlSmileSectionMaxStrike(QlSmileSection* o, char **e) {
+  try {return (*arg(o))->maxStrike();
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlSmileSectionVega(QlSmileSection* o, double strike, double discount, char **e) {
+  try {return (*arg(o))->vega(strike, discount);
   } catch (std::exception& er) {return handleException<double>(e, er);}}
 QlSmileSection* qlFlatSmileSection(int d, double vol, DayCounter* dc, int referenceDate, double atmLevel, int type, double shift, char **e) {
   try {return ret(new QlSmileSection(alloc(ext::shared_ptr<SmileSection>(new FlatSmileSection(
@@ -2021,6 +2033,14 @@ QlFittedBondDiscountCurve* qlFittedBondDiscountCurve1(int referenceDate, unsigne
 
 double qlFittedBondDiscountCurveFittingMethodMinimumCostValue(QlFittedBondDiscountCurve *o, char **e) {try {return (*arg(o))->fitResults().minimumCostValue();} catch (std::exception& er) {return handleException<double>(e, er);}}
 int qlFittedBondDiscountCurveFittingMethodNumberOfIterations(QlFittedBondDiscountCurve *o, char **e) {try {return (*arg(o))->fitResults().numberOfIterations();} catch (std::exception& er) {return handleException<int>(e, er);}}
+unsigned qlFittedBondDiscountCurveFittingMethodSize(QlFittedBondDiscountCurve *o, char **e) {try {return (*arg(o))->fitResults().size();} catch (std::exception& er) {return handleException<unsigned>(e, er);}}
+int qlFittedBondDiscountCurveFittingMethodErrorCode(QlFittedBondDiscountCurve *o, char **e) {try {return (*arg(o))->fitResults().errorCode();} catch (std::exception& er) {return handleException<int>(e, er);}}
+void qlFittedBondDiscountCurveFittingMethodSolution(QlFittedBondDiscountCurve *o, unsigned *len, double **vs, char **e) {
+  try {fillVectorOut([&] {return (*arg(o))->fitResults().solution(); }, len, vs);
+  } catch (std::exception& er) {(void)handleException<double*>(e, er);}}
+double qlFittedBondDiscountCurveFittingMethodDiscount(QlFittedBondDiscountCurve *o, unsigned xLen, double *x, double t, char **e) {
+  try {return (*arg(o))->fitResults().discount(Array(x, x+xLen), t);
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
 void qlFreeYieldTermStructure(QlYieldTermStructure *ts) {del(ts);}
 
 // A relinkable handle, empty when `initial` is null. An empty handle is meaningful, not an
@@ -2145,6 +2165,7 @@ QlOvernightIndexedSwap* qlOISRateHelperSwap(QlOISRateHelper* o, char **e) {
 QlVanillaSwap* qlSwapRateHelperSwap(QlSwapRateHelper* o, char **e) {try {return ret(new QlVanillaSwap((*arg(o))->swap()));} catch (std::exception& er) {return handleException<QlVanillaSwap*>(e, er);} }
 int qlTermStructureReferenceDate(QlTermStructure* o, char **e) {try {return (*arg(o))->referenceDate().serialNumber();} catch (std::exception& er) {return handleException<int>(e, er);}}
 int qlTermStructureMaxDate(QlTermStructure* o, char **e) {try {return (*arg(o))->maxDate().serialNumber();} catch (std::exception& er) {return handleException<int>(e, er);}}
+double qlTermStructureMaxTime(QlTermStructure* o, char **e) {try {return (*arg(o))->maxTime();} catch (std::exception& er) {return handleException<double>(e, er);}}
 int qlTermStructureAllowsExtrapolation(QlTermStructure* o) {return (*arg(o))->allowsExtrapolation();}
 void qlTermStructureSetExtrapolation(QlTermStructure* o, int enabled) {(*arg(o))->enableExtrapolation(enabled);}
 double qlTermStructureTimeFromReference(QlTermStructure* o, int date, char **e) {try {return (*arg(o))->timeFromReference(Date(date));} catch (std::exception& er) {return handleException<double>(e, er);}}
