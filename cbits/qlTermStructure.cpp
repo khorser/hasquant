@@ -8,6 +8,7 @@
 #include <ql/termstructures/volatility/atmsmilesection.hpp>
 #include <ql/experimental/volatility/svismilesection.hpp>
 #include <ql/experimental/volatility/sviinterpolatedsmilesection.hpp>
+#include <ql/experimental/volatility/sabrvoltermstructure.hpp>
 #include <ql/termstructures/volatility/equityfx/all.hpp>
 #include <ql/termstructures/volatility/equityfx/andreasenhugelocalvoladapter.hpp>
 #include <ql/termstructures/volatility/equityfx/andreasenhugevolatilityadapter.hpp>
@@ -474,6 +475,9 @@ QlBlackVolTermStructure* qlBlackConstantVol1(unsigned settlementDays, Calendar* 
   } catch (std::exception& er) {return handleException<QlBlackVolTermStructure*>(e, er);}}
 QlBlackVolTermStructure* qlBlackConstantVol(int referenceDate, Calendar* x1, QlQuote* volatility, DayCounter* dayCounter, char **e) {
   try {return ret(new QlBlackVolTermStructure(shared_ptr<BlackVolTermStructure>(alloc(new BlackConstantVol(Date(referenceDate), *arg(x1), *arg(volatility), *arg(dayCounter))))));
+  } catch (std::exception& er) {return handleException<QlBlackVolTermStructure*>(e, er);}}
+QlBlackVolTermStructure* qlSabrVolTermStructure(double alpha, double beta, double gamma, double rho, double s0, double r, int referenceDate, DayCounter* dc, char **e) {
+  try {return ret(new QlBlackVolTermStructure(shared_ptr<BlackVolTermStructure>(alloc(new SABRVolTermStructure(alpha, beta, gamma, rho, s0, r, Date(referenceDate), *arg(dc))))));
   } catch (std::exception& er) {return handleException<QlBlackVolTermStructure*>(e, er);}}
 QlOptionletVolatilityStructure* qlConstantOptionletVolatility(int referenceDate, Calendar* cal, int bdc, QlQuote* volatility, DayCounter* dc, int type, double displacement, char **e) {
   try {return ret(new QlOptionletVolatilityStructure(shared_ptr<OptionletVolatilityStructure>(alloc(new ConstantOptionletVolatility(Date(referenceDate), *arg(cal), (BusinessDayConvention)bdc, *arg(volatility), (*arg(dc)), (VolatilityType)type, displacement)))));

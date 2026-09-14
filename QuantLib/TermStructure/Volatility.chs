@@ -86,6 +86,7 @@ module QuantLib.TermStructure.Volatility
     -- ** Black, local and swaption volatility
   , impliedVolTermStructure
   , blackConstantVol
+  , sabrVolTermStructure
   , relinkableBlackVolTermStructure
   , constantSwaptionVolatility
     -- ** Smile sections and parametrizations
@@ -628,6 +629,12 @@ blackConstantVol reference cal = case reference of
   CalendarSettlementDays n -> blackConstantVolMovingRaw n cal
 {#fun qlBlackConstantVol1 as blackConstantVolMovingRaw{fromIntegral`Word',withCalendar*`Calendar',withQuote*`GenQuote q',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`BlackVolTermStructure'peekBlackVolTermStructure*#}
 {#fun qlBlackConstantVol as blackConstantVolFixed{withDay*`Day',withCalendar*`Calendar',withQuote*`GenQuote q',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`BlackVolTermStructure'peekBlackVolTermStructure*#}
+
+-- |SABR-parameterized Black volatility term structure. @gamma@ is upstream's vol-of-vol
+-- (@nu@ in the usual SABR notation); @s0@\/@r@ are the initial forward and the
+-- continuously-compounded rate used to roll it forward -- see
+-- 'ql/experimental/volatility/sabrvoltermstructure.hpp'.
+{#fun qlSabrVolTermStructure as sabrVolTermStructure{`Double',`Double',`Double',`Double',`Double',`Double',withDay*`Day',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`BlackVolTermStructure'peekBlackVolTermStructure*#}
 
 -- |A Black vol surface behind a relinkable handle. The result /is/ a 'BlackVolTermStructure':
 -- pass it anywhere one is expected and everything built on it keeps tracking whatever the
