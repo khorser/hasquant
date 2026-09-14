@@ -114,9 +114,8 @@ gaussian1dSpec =
         proc1D `seq` return ()
 
     -- The surface inverts Black's formula on model swaption prices, so a Black engine on it must
-    -- reprice the model's own ATM swaption. Pending: QuantLib 1.43's fixing-date MakeSwaption leaves
-    -- its nominal uninitialized, so Gaussian1dSmileSection reports zero volatilities.
-    xit "gaussian1dSwaptionVolatility reprices the model's swaption under a Black engine" $
+    -- reprice the model's own ATM swaption, which also guards the unit-nominal shim workaround.
+    it "gaussian1dSwaptionVolatility reprices the model's swaption under a Black engine" $
       Context.keepingSettingsGc $ do
         cal <- calendar TARGET
         originalEvalDate <- Context.evaluationDate
@@ -145,7 +144,9 @@ gaussian1dSpec =
         surface <- Vol.gaussian1dSwaptionVolatility cal ModifiedFollowing swapBase model dc
         blackSwaptionEngineFromVolatilityStructure ts surface >>= setPricingEngine swpn
         blackNpv <- npv swpn
-        blackNpv `shouldSatisfy` closePrec modelNpv (1.0e-4 * modelNpv)
+        -- The Black engine queries by time, which the surface maps back to a solved date and a
+        -- whole-month tenor before inverting a model price.
+        blackNpv `shouldSatisfy` closePrec modelNpv (5.0e-4 * modelNpv)
 
 affineModelSpec :: Spec
 affineModelSpec =

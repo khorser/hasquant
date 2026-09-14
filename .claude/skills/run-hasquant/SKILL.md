@@ -290,7 +290,8 @@ Haskell-side HPC route above turns out insufficient.
   probe.cpp -L/opt/homebrew/lib -lQuantLib`; `quantlib-config` omits the Boost include path. Upstream
   smile sections can `catch (...)` and return `0.0` (`Gaussian1dSmileSection::volatilityImpl`), so
   call the uncaught inner step (`optionPrice`) to see the error. QuantLib 1.43's fixing-date
-  `MakeSwaption` constructor leaves its nominal uninitialized, which zeroes `gaussian1dSwaptionVolatility`.
+  `MakeSwaption` constructor leaves its nominal uninitialized; `qlGaussian1dSwaptionVolatility`
+  works around it with shim subclasses overriding the virtual `optionPrice`/`smileSectionImpl`.
 - **A smoke script must not `try`/`catch` on `QuantLib.Context.Error`.**
   `Error` is defined in `QuantLib.Internal` and re-exported by
   `QuantLib.Context`. Compiled standalone from the repo root, ghc finds

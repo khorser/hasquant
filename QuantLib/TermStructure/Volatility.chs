@@ -1661,10 +1661,7 @@ sabrVolatilitySpreads surface maturity = case maturity of
 -- |Swaption volatilities implied from a Gaussian one-factor model: each smile section prices
 -- swaptions with upstream's default @Gaussian1dSwaptionEngine@ and inverts Black's formula.
 -- The reference date is the model curve's; every query reprices, and the max date is unbounded.
---
--- __Warning:__ with QuantLib 1.43 every volatility is @0@. Upstream's smile section builds its
--- swaptions with the fixing-date @MakeSwaption@ constructor, which leaves the nominal
--- uninitialized, and then discards the resulting pricing error.
+-- The shim prices with a unit nominal, working around QuantLib 1.43's uninitialized one.
 {#fun qlGaussian1dSwaptionVolatility as gaussian1dSwaptionVolatility{withCalendar*`Calendar' -- ^cal
   ,fromEnumC`BusinessDayConvention' -- ^bdc
   ,withSwapIndex*`GenSwapIndex sidx' -- ^indexBase

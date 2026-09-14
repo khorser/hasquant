@@ -22,6 +22,8 @@
 #include <ql/termstructures/volatility/swaption/sabrswaptionvolatilitycube.hpp>
 #include <ql/termstructures/volatility/swaption/interpolatedswaptionvolatilitycube.hpp>
 #include <ql/termstructures/volatility/swaption/gaussian1dswaptionvolatility.hpp>
+#include <ql/termstructures/volatility/gaussian1dsmilesection.hpp>
+#include <ql/instruments/makeswaption.hpp>
 #include <ql/termstructures/volatility/sabrsmilesection.hpp>
 #include <ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp>
 #include <ql/experimental/volatility/noarbsabrsmilesection.hpp>
@@ -186,7 +188,51 @@ using makeOnIdx = OvernightIndex *(*)(const QlYieldTermStructure &ts);
 using makeZeroInflIdx = ZeroInflationIndex *(*)();
 using makeYoYInflIdx = YoYInflationIndex *(*)();
 using makeReg = Region *(*)();
+
+// QuantLib 1.43's fixing-date MakeSwaption constructor leaves nominal_ uninitialized, and
+// Gaussian1dSmileSection prices through it. This section repeats that pricing with a unit nominal.
+class UnitNominalGaussian1dSmileSection : public QuantLib::Gaussian1dSmileSection {
+  public:
+    UnitNominalGaussian1dSmileSection(const Date& fixingDate, const shared_ptr<SwapIndex>& swapIndex,
+        const shared_ptr<Gaussian1dModel>& model, const DayCounter& dc)
+    : QuantLib::Gaussian1dSmileSection(fixingDate, swapIndex, model, dc), fixingDate_(fixingDate), swapIndex_(swapIndex),
+      annuity_(model->swapAnnuity(fixingDate, swapIndex->tenor(), Date(), 0.0, swapIndex)),
+      engine_(QuantLib::ext::make_shared<Gaussian1dSwaptionEngine>(model, 64, 7.0, true, false,
+          swapIndex->discountingTermStructure())) {}
+    Real optionPrice(Rate strike, Option::Type type, Real discount) const override {
+      Swaption s = QuantLib::MakeSwaption(swapIndex_, fixingDate_, strike)
+          .withNominal(1.0)
+          .withUnderlyingType(type == Option::Call ? Swap::Payer : Swap::Receiver)
+          .withPricingEngine(engine_);
+      return s.NPV() / annuity_ * discount;
+    }
+  private:
+    Date fixingDate_;
+    shared_ptr<SwapIndex> swapIndex_;
+    Real annuity_;
+    shared_ptr<PricingEngine> engine_;
+};
+
+// Upstream's time-based smile sections delegate to this date overload, so every query is covered.
+class UnitNominalGaussian1dSwaptionVolatility : public QuantLib::Gaussian1dSwaptionVolatility {
+  public:
+    UnitNominalGaussian1dSwaptionVolatility(const Calendar& cal, BusinessDayConvention bdc,
+        const shared_ptr<SwapIndex>& indexBase, const shared_ptr<Gaussian1dModel>& model, const DayCounter& dc)
+    : QuantLib::Gaussian1dSwaptionVolatility(cal, bdc, indexBase, model, dc), indexBase_(indexBase), model_(model) {}
+  protected:
+    using QuantLib::Gaussian1dSwaptionVolatility::smileSectionImpl;
+    shared_ptr<QuantLib::SmileSection> smileSectionImpl(const Date& d, const Period& tenor) const override {
+      return QuantLib::ext::make_shared<UnitNominalGaussian1dSmileSection>(d, indexBase_->clone(tenor), model_, dayCounter());
+    }
+  private:
+    shared_ptr<SwapIndex> indexBase_;
+    shared_ptr<Gaussian1dModel> model_;
+};
 }
+
+#ifdef QLTRACK_ALLOCATIONS
+QL_TRACE_NAME(UnitNominalGaussian1dSwaptionVolatility)
+#endif
 
 extern "C" {
 QlOptionletVolatilityStructure *qlConstantOptionletVol1(unsigned days, Calendar *cal, int conv, QlQuote *q, DayCounter *dc, int type, double displacement, char **e) {
@@ -750,10 +796,10 @@ double qlCapFloorTermVolatilityStructureVolatilityForTime(QlCapFloorTermVolatili
 QlSwaptionVolatilityStructure* qlSpreadedSwaptionVolatility(QlSwaptionVolatilityStructure* x0, QlQuote* spread, char **e) {
   try {return ret(new QlSwaptionVolatilityStructure(shared_ptr<SwaptionVolatilityStructure>(alloc(new SpreadedSwaptionVolatility(*arg(x0), *arg(spread))))));
   } catch (std::exception& er) {return handleException<QlSwaptionVolatilityStructure*>(e, er);}}
-// The engine argument is left null so each smile section builds upstream's default
-// Gaussian1dSwaptionEngine; hasquant's engines are type-erased PricingEngines.
+// Smile sections use upstream's default Gaussian1dSwaptionEngine; hasquant's engines are
+// type-erased PricingEngines.
 QlSwaptionVolatilityStructure* qlGaussian1dSwaptionVolatility(Calendar* cal, int bdc, QlSwapIndex* indexBase, QlGaussian1dModel* model, DayCounter* dc, char **e) {
-  try {return ret(new QlSwaptionVolatilityStructure(allocShared(new Gaussian1dSwaptionVolatility(*arg(cal), (BusinessDayConvention)bdc, *arg(indexBase), *arg(model), *arg(dc)))));
+  try {return ret(new QlSwaptionVolatilityStructure(allocShared(new UnitNominalGaussian1dSwaptionVolatility(*arg(cal), (BusinessDayConvention)bdc, *arg(indexBase), *arg(model), *arg(dc)))));
   } catch (std::exception& er) {return handleException<QlSwaptionVolatilityStructure*>(e, er);}}
 QlOptionletVolatilityStructure* qlSpreadedOptionletVolatility(QlOptionletVolatilityStructure* x0, QlQuote* spread, char **e) {
   try {return ret(new QlOptionletVolatilityStructure(shared_ptr<OptionletVolatilityStructure>(alloc(new SpreadedOptionletVolatility(*arg(x0), *arg(spread))))));
