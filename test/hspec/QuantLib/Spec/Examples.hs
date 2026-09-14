@@ -450,19 +450,19 @@ spec = do
         (TARFExample.Result rnpv implFwds simFwds) <- Context.keepingSettingsGc TARFExample.run
         -- purely from the input EUR/ILS discount tables, no randomness involved
         implFwds `shouldSatisfy` listCloseRel id
-          [3.3084, 3.3112, 3.3129, 3.3153, 3.3179, 3.3199, 3.3215, 3.3228, 3.324,
-           3.3249, 3.3258, 3.3267, 3.3275] 1.0e-6
+          [3.3112, 3.3129, 3.3153, 3.3179, 3.3199, 3.3215, 3.3228, 3.324, 3.3249,
+           3.3258, 3.3267, 3.3275] 1.0e-6
         -- A fixed nonzero seed makes the Monte Carlo leg reproducible. MT19937's integer draw
         -- sequence is platform-independent, leaving only FP transform/evolution differences.
-        rnpv `shouldSatisfy` closePrec (-75637.39) 10.0
+        rnpv `shouldSatisfy` closePrec (-102392.52) 10.0
         -- simFwds must track implFwds under the risk-neutral measure (a martingale
         -- check caught garmanKohlhagenProcess's foreign/domestic curve args being
         -- swapped in TARF.hs: with ILS quoted as ILS-per-EUR, EUR is the foreign
         -- currency and ILS the domestic one, but the args were the other way
         -- around, biasing the drift and making simFwds run ~1% below implFwds)
         simFwds `shouldSatisfy` listCloseRel id
-          [3.3084, 3.3113, 3.3129, 3.3153, 3.3177, 3.3196, 3.3217, 3.3229, 3.3235,
-           3.3247, 3.3253, 3.3267, 3.3278] 1.0e-4
+          [3.3113, 3.3129, 3.3153, 3.3177, 3.3196, 3.3217, 3.3229, 3.3235, 3.3247,
+           3.3253, 3.3267, 3.3278] 1.0e-4
 
     describe "American LSM example" $
       it "check values" $ do

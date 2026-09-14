@@ -3,7 +3,7 @@ module QuantLib.Example.TARF
     run
   , Result(..)
   ) where
-import Control.Monad(replicateM)
+import Control.Monad(replicateM, when)
 import Data.Time.Calendar(fromGregorian)
 import Data.List.NonEmpty(fromList, toList)
 import qualified Data.Vector.Storable as V
@@ -46,8 +46,11 @@ run = do
   ycILS <- interpolatedDiscountCurve (fromList dfILS) dcILS calILS [] LogLinear False
   ycEUR <- interpolatedDiscountCurve (fromList dfEUR) dcEUR calEUR [] LogLinear False
 
-  dfILS' <- points grid >>= mapM (\d -> discount ycILS (TimePoint d) False) . V.toList
-  dfEUR' <- points grid >>= mapM (\d -> discount ycEUR (TimePoint d) False) . V.toList
+  -- the grid prepends t=0 before the first fixing; only fixing times carry forwards/flows
+  fixTimes <- V.toList . V.drop 1 <$> points grid
+  when (length fixTimes /= length ds) $ fail "TARF: fixing times do not match schedule dates"
+  dfILS' <- mapM (\d -> discount ycILS (TimePoint d) False) fixTimes
+  dfEUR' <- mapM (\d -> discount ycEUR (TimePoint d) False) fixTimes
   let fwds = map ((`roundTo` fxrateDigits) . (* spot)) $ zipWith (/) dfEUR' dfILS'
   -- -- alternatively you can use Black-Scholes process
   -- let dsILS = map fst dfILS
@@ -89,7 +92,7 @@ run = do
     nextNPV :: PathGenerator -> [Day] -> GenYieldTermStructure y -> IO (Double, [Double])
     nextNPV g ds yc = do
       s <- next g
-      sim <- asset s 0
+      sim <- V.drop 1 <$> asset s 0
       let State _ fs = foldl genFlows (State ilsTarget []) $ map (`roundTo` fxrateDigits) (V.toList sim)
       l <- leg $ zip ds fs
       v <- (`roundTo` notionalDigits) <$> npv l (DiscountingCurve yc) True Nothing Nothing
