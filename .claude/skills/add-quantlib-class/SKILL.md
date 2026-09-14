@@ -9,6 +9,8 @@ Adding `QlXXX` touches `cbits/` and `QuantLib/`. Select the matching domain `.cp
 
 Do not include or exclude a singleton-like class by analogy. Inspect its upstream inheritance and constructors: confirm `Singleton<T>`, deleted or inaccessible construction/copy/move operations, and process-global `instance()` state. A genuine singleton normally binds as free functions over `X::instance()`, with no Haskell object type.
 
+When searching upstream for subclasses or siblings, grep the installed headers as `grep -r ... /opt/homebrew/include/ql/`, with the trailing slash. `ql` is a Homebrew symlink into `Cellar`, and macOS grep silently returns nothing for a symlinked root without the slash. Treat an empty "none exists" result as suspect until a known class is found by the same command.
+
 Read upstream documentation for every exposed constructor and method. Add concise Haddock covering behavior, units, formulas, warnings, limitations, and intentional scope cuts.
 
 ## Steps
