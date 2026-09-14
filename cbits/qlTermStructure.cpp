@@ -9,6 +9,7 @@
 #include <ql/experimental/volatility/svismilesection.hpp>
 #include <ql/experimental/volatility/sviinterpolatedsmilesection.hpp>
 #include <ql/experimental/volatility/sabrvoltermstructure.hpp>
+#include <ql/experimental/volatility/extendedblackvariancecurve.hpp>
 #include <ql/termstructures/volatility/equityfx/all.hpp>
 #include <ql/termstructures/volatility/equityfx/andreasenhugelocalvoladapter.hpp>
 #include <ql/termstructures/volatility/equityfx/andreasenhugevolatilityadapter.hpp>
@@ -959,6 +960,13 @@ QlBlackVolTermStructure* qlBlackVarianceSurface(int referenceDate, Calendar* cal
     qlSetBlackVarianceSurfaceInterpolationAux(s.get(), interpolator);
     return ret(new QlBlackVolTermStructure(s));
   } catch (std::exception& er) {return handleException<QlBlackVolTermStructure*>(e, er);}}
+QlBlackVolTermStructure* qlExtendedBlackVarianceCurve(int referenceDate, unsigned datesLen, int* dates, unsigned volsLen, QlQuote** vols, DayCounter* dayCounter, int forceMonotoneVariance, char **e) {
+  try {return ret(new QlBlackVolTermStructure(shared_ptr<BlackVolTermStructure>(alloc(new ExtendedBlackVarianceCurve(Date(referenceDate), qlDateVector(dates, datesLen), qlHandleVector(vols, volsLen), *arg(dayCounter), forceMonotoneVariance)))));
+  } catch (std::exception& er) {return handleException<QlBlackVolTermStructure*>(e, er);}}
+// ExtendedBlackVarianceSurface is deliberately not bound: its setVariances() (QuantLib 1.43,
+// extendedblackvariancesurface.cpp:65-78) loops one column past the end of both its times_ and
+// volatilities_ vectors for any grid built to the constructor's own documented size requirement
+// -- a genuine upstream out-of-bounds read, not a hasquant marshalling issue.
 QlBlackVolTermStructure* qlPiecewiseBlackVarianceSurface(int referenceDate, unsigned datesLen, int* dates, unsigned strikesLen, double* strikes, unsigned blackVolsRows, unsigned blackVolsCols, double* blackVols, DayCounter* dayCounter, char **e) {
   try {
     return ret(new QlBlackVolTermStructure(shared_ptr<BlackVolTermStructure>(

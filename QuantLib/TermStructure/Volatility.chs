@@ -119,6 +119,7 @@ module QuantLib.TermStructure.Volatility
   , localVolCurve
   , capFloorTermVolCurve
   , blackVarianceCurve
+  , extendedBlackVarianceCurve
   , capFloorTermVolSurface
   , blackVarianceSurface
   , piecewiseBlackVarianceSurface
@@ -1744,6 +1745,17 @@ blackVarianceSurface :: Day -> Calendar -> [Day] -- ^dates
   -> IO BlackVolTermStructure
 blackVarianceSurface d c ds s (RealMatrix mr mc md) = qlBlackVarianceSurface d c ds s mr mc md
 {#fun qlBlackVarianceSurface{withDay*`Day',withCalendar*`Calendar',withDayArray*`[Day]'&,withDoubleArray*`[Double]'&,fromIntegral`Word',fromIntegral`Word',withRealVectorRaw*`RealVector',withDayCounter*`DayCounter',`BlackVarianceSurfaceExtrapolation',`BlackVarianceSurfaceExtrapolation',fromEnumC`Interpolation2D',preErrorCheck-`String'errorCheck*-}->`BlackVolTermStructure'peekBlackVolTermStructure*#}
+
+-- |Like 'blackVarianceCurve', but volatilities are live quotes -- the curve updates when
+-- any of them changes (e.g. via 'QuantLib.Quote.setValue'). Interpolation is fixed to Linear upstream.
+extendedBlackVarianceCurve :: Day -> NonEmpty (Day, GenQuote q) -> DayCounter -> Bool -- ^forceMonotoneVariance
+  -> IO BlackVolTermStructure
+extendedBlackVarianceCurve d dq dc f = qlExtendedBlackVarianceCurve d dd q dc f where (dd, q) = unzip (toList dq)
+{#fun qlExtendedBlackVarianceCurve{withDay*`Day',withDayArray*`[Day]'&,withQuoteArray*`[GenQuote q]'&,withDayCounter*`DayCounter',`Bool',preErrorCheck-`String'errorCheck*-}->`BlackVolTermStructure'peekBlackVolTermStructure*#}
+
+-- ExtendedBlackVarianceSurface is deliberately not bound: its setVariances() (QuantLib 1.43)
+-- reads one column past the end of its internal vectors for any grid matching its own documented
+-- constructor size requirement -- a genuine upstream out-of-bounds read. See cbits/qlTermStructure.cpp.
 
 -- |Builds a Black volatility surface from a rectangular vol grid via
 -- 'PiecewiseBlackVarianceSurface::makeFromGrid': one interpolated smile section per date

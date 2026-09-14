@@ -81,6 +81,7 @@ Out of scope:
 - Build a declarative composition DSL as a sibling project.
 - Expose that DSL through an agent-callable tool, so an LLM can construct and price products through validated hasquant operations rather than generated pricing logic.
 - Remove the unit-nominal `Gaussian1dSwaptionVolatility` shim subclass once QuantLib initializes `MakeSwaption`'s nominal in its fixing-date constructor.
+- Bind `ExtendedBlackVarianceSurface` once upstream fixes the out-of-bounds read in `setVariances()` (QuantLib 1.43, `ql/experimental/volatility/extendedblackvariancesurface.cpp`): its loop bound is `j<=times_.size()` where it should be `j<=dates.size()`, reading one column past the end of both `times_` and `volatilities_` for any grid matching the constructor's own documented size requirement.
 - See [github issues](https://github.com/khorser/hasquant/issues) for more formalized tasks
 
 # Testing
