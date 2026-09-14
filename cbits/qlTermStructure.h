@@ -218,6 +218,7 @@ extern "C" {
   QlBlackVarianceCurve* qlBlackVarianceCurve(int referenceDate, unsigned datesLen, int* dates, unsigned blackVolCurveLen, double* blackVolCurve, DayCounter* dayCounter, int forceMonotoneVariance, int interpolator, int approximator, int approximatorArg, char **e);
   QlBlackVolTermStructure* qlBlackVarianceSurface(int referenceDate, Calendar* cal, unsigned datesLen, int* dates, unsigned strikesLen, double* strikes, unsigned blackVolMatrixRows, unsigned blackVolMatrixCols, double* blackVolMatrix, DayCounter* dayCounter, int lowerExtrapolation, int upperExtrapolation, int interpolator, char **e);
   QlBlackVolTermStructure* qlExtendedBlackVarianceCurve(int referenceDate, unsigned datesLen, int* dates, unsigned volsLen, QlQuote** vols, DayCounter* dayCounter, int forceMonotoneVariance, char **e);
+  QlBlackVolTermStructure* qlExtendedBlackVarianceSurface(int referenceDate, Calendar* cal, unsigned datesLen, int* dates, unsigned strikesLen, double* strikes, unsigned volRows, unsigned volCols, QlQuote** vols, DayCounter* dayCounter, int lowerExtrapolation, int upperExtrapolation, char **e);
   QlBlackVolTermStructure* qlPiecewiseBlackVarianceSurface(int referenceDate, unsigned datesLen, int* dates, unsigned strikesLen, double* strikes, unsigned blackVolsRows, unsigned blackVolsCols, double* blackVols, DayCounter* dayCounter, char **e);
   void qlFreeBlackVolatilitySurfaceDelta(QlBlackVolatilitySurfaceDelta *o);
   QlBlackVolTermStructure* qlBlackVolatilitySurfaceDeltaAsBlackVolTermStructure(QlBlackVolatilitySurfaceDelta *o);

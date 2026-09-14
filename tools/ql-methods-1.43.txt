@@ -2461,7 +2461,7 @@
 |x|ql/experimental/volatility/extendedblackvariancecurve.hpp|Real minStrike() const;
 |x|ql/experimental/volatility/extendedblackvariancecurve.hpp|Real maxStrike() const;
 |x|ql/experimental/volatility/extendedblackvariancecurve.hpp|void accept(AcyclicVisitor & v);
-|x|ql/experimental/volatility/extendedblackvariancesurface.hpp|ExtendedBlackVarianceSurface::ExtendedBlackVarianceSurface(const Date & referenceDate, const Calendar & calendar, const std::vector<Date> & dates, std::vector<Real> strikes, const std::vector<Handle<Quote>> & volatilities, DayCounter dayCounter, Extrapolation lowerExtrapolation = InterpolatorDefaultExtrapolation, Extrapolation upperExtrapolation = InterpolatorDefaultExtrapolation);
+|v|ql/experimental/volatility/extendedblackvariancesurface.hpp|ExtendedBlackVarianceSurface::ExtendedBlackVarianceSurface(const Date & referenceDate, const Calendar & calendar, const std::vector<Date> & dates, std::vector<Real> strikes, const std::vector<Handle<Quote>> & volatilities, DayCounter dayCounter, Extrapolation lowerExtrapolation = InterpolatorDefaultExtrapolation, Extrapolation upperExtrapolation = InterpolatorDefaultExtrapolation);
 |x|ql/experimental/volatility/extendedblackvariancesurface.hpp|void accept(AcyclicVisitor & v);
 | |ql/experimental/volatility/interestratevolsurface.hpp|InterestRateVolSurface::InterestRateVolSurface(ext::shared_ptr<InterestRateIndex>, BusinessDayConvention bdc = Following, const DayCounter & dc = DayCounter());
 | |ql/experimental/volatility/interestratevolsurface.hpp|InterestRateVolSurface::InterestRateVolSurface(ext::shared_ptr<InterestRateIndex>, const Date & referenceDate, const Calendar & cal = Calendar(), BusinessDayConvention bdc = Following, const DayCounter & dc = DayCounter());

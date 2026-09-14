@@ -123,6 +123,7 @@ module QuantLib.TermStructure.Volatility
   , capFloorTermVolCurve
   , blackVarianceCurve
   , extendedBlackVarianceCurve
+  , extendedBlackVarianceSurface
   , capFloorTermVolSurface
   , blackVarianceSurface
   , piecewiseBlackVarianceSurface
@@ -1875,9 +1876,18 @@ extendedBlackVarianceCurve :: Day -> NonEmpty (Day, GenQuote q) -> DayCounter ->
 extendedBlackVarianceCurve d dq dc f = qlExtendedBlackVarianceCurve d dd q dc f where (dd, q) = unzip (toList dq)
 {#fun qlExtendedBlackVarianceCurve{withDay*`Day',withDayArray*`[Day]'&,withQuoteArray*`[GenQuote q]'&,withDayCounter*`DayCounter',`Bool',preErrorCheck-`String'errorCheck*-}->`BlackVolTermStructure'peekBlackVolTermStructure*#}
 
--- ExtendedBlackVarianceSurface is deliberately not bound: its setVariances() (QuantLib 1.43)
--- reads one column past the end of its internal vectors for any grid matching its own documented
--- constructor size requirement -- a genuine upstream out-of-bounds read. See cbits/qlTermStructure.cpp.
+-- |Like 'blackVarianceSurface', but volatilities are live quotes (rows strikes, columns dates).
+-- On QuantLib 1.43 every construction reads and writes out of bounds and may crash
+-- the process: <https://github.com/lballabio/QuantLib/issues/2791>.
+extendedBlackVarianceSurface :: Day -> Calendar -> [Day] -- ^dates
+  -> [Double] -- ^strikes
+  -> Matrix (GenQuote q) -- ^volatilities
+  -> DayCounter
+  -> ExtendedBlackVarianceSurfaceExtrapolation -- ^lowerExtrapolation
+  -> ExtendedBlackVarianceSurfaceExtrapolation -- ^upperExtrapolation
+  -> IO BlackVolTermStructure
+extendedBlackVarianceSurface d c ds s (Matrix mr mc md) = qlExtendedBlackVarianceSurface d c ds s mr mc md
+{#fun qlExtendedBlackVarianceSurface{withDay*`Day',withCalendar*`Calendar',withDayArray*`[Day]'&,withDoubleArray*`[Double]'&,fromIntegral`Word',fromIntegral`Word',withQuoteArrayRaw*`[GenQuote q]',withDayCounter*`DayCounter',`ExtendedBlackVarianceSurfaceExtrapolation',`ExtendedBlackVarianceSurfaceExtrapolation',preErrorCheck-`String'errorCheck*-}->`BlackVolTermStructure'peekBlackVolTermStructure*#}
 
 -- |Builds a Black volatility surface from a rectangular vol grid via
 -- 'PiecewiseBlackVarianceSurface::makeFromGrid': one interpolated smile section per date

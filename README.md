@@ -80,8 +80,6 @@ Out of scope:
 - Join forces with [HQuantLib](https://github.com/paulrzcz/hquantlib): a bivariate copula CDF catalogue
 - Build a declarative composition DSL as a sibling project.
 - Expose that DSL through an agent-callable tool, so an LLM can construct and price products through validated hasquant operations rather than generated pricing logic.
-- Remove the unit-nominal `Gaussian1dSwaptionVolatility` shim subclass once QuantLib initializes `MakeSwaption`'s nominal in its fixing-date constructor.
-- Bind `ExtendedBlackVarianceSurface` once upstream fixes the out-of-bounds accesses in `setVariances()` (QuantLib 1.43, `ql/experimental/volatility/extendedblackvariancesurface.cpp`): both its zeroing loop (`i<times_.size()+1`, should be `i<times_.size()`) and its fill loop (`j<=times_.size()`, should be `j<times_.size()`) run one column past the end of `times_`, `variances_`, and `volatilities_` for any grid matching the constructor's own documented size requirement.
 - See [github issues](https://github.com/khorser/hasquant/issues) for more formalized tasks
 
 # Testing
