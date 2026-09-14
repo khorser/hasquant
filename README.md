@@ -9,7 +9,7 @@ Supported functionality includes
 - risk statistics (VaR, expected shortfall, ...) over caller-supplied samples;
 - and analytic, tree, finite-difference, and Monte Carlo engines from Black-Scholes through SABR and Heston.
 
-hasquant is a close-to-1:1 `c2hs` wrapper over QuantLib's C++ API, not a framework. It binds 1,900+ constructors and non-trivial methods (around 20% of QuantLib's surface) and deliberately excludes 2000+ methods (mostly mutators or getters that only repeat constructor inputs).
+hasquant is a close-to-1:1 `c2hs` wrapper over QuantLib's C++ API, not a framework. It binds 2,000+ constructors and non-trivial methods (around 20% of QuantLib's surface) and deliberately excludes 2,000+ methods (mostly mutators or getters that only repeat constructor inputs).
 
 Type safety is a primary API goal. Phantom-typed pointers (`GenBond a`, `GenQuote a`, …) preserve the relevant part of QuantLib's object hierarchy in Haskell, so invalid object combinations are compile-time errors rather than failed casts at runtime. The C++ shim uses no runtime downcasts; bindings expose a concrete leaf type when one is needed. Enums mirror upstream values explicitly.
 
@@ -76,12 +76,12 @@ Out of scope:
 - A declarative composition DSL; any such DSL belongs in a sibling project.
 
 ## Roadmap
-- Identify which [OpenSourceRiskEngine](https://opensourcerisk.org) functionality should be bound
+- Identify which [OpenSourceRiskEngine](https://opensourcerisk.org) functionality should be bound, e.g. `https://github.com/OpenSourceRisk/Engine/blob/master/QuantExt/qle/indexes/fallbackiborindex.hpp`
 - Join forces with [HQuantLib](https://github.com/paulrzcz/hquantlib): a bivariate copula CDF catalogue
 - Build a declarative composition DSL as a sibling project.
 - Expose that DSL through an agent-callable tool, so an LLM can construct and price products through validated hasquant operations rather than generated pricing logic.
 - Remove the unit-nominal `Gaussian1dSwaptionVolatility` shim subclass once QuantLib initializes `MakeSwaption`'s nominal in its fixing-date constructor.
-- Bind `ExtendedBlackVarianceSurface` once upstream fixes the out-of-bounds read in `setVariances()` (QuantLib 1.43, `ql/experimental/volatility/extendedblackvariancesurface.cpp`): its loop bound is `j<=times_.size()` where it should be `j<=dates.size()`, reading one column past the end of both `times_` and `volatilities_` for any grid matching the constructor's own documented size requirement.
+- Bind `ExtendedBlackVarianceSurface` once upstream fixes the out-of-bounds accesses in `setVariances()` (QuantLib 1.43, `ql/experimental/volatility/extendedblackvariancesurface.cpp`): both its zeroing loop (`i<times_.size()+1`, should be `i<times_.size()`) and its fill loop (`j<=times_.size()`, should be `j<times_.size()`) run one column past the end of `times_`, `variances_`, and `volatilities_` for any grid matching the constructor's own documented size requirement.
 - See [github issues](https://github.com/khorser/hasquant/issues) for more formalized tasks
 
 # Testing
