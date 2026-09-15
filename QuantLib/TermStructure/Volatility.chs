@@ -1792,7 +1792,8 @@ sabrVolatilitySpreads surface maturity = case maturity of
 -- |Swaption volatilities implied from a Gaussian one-factor model: each smile section prices
 -- swaptions with upstream's default @Gaussian1dSwaptionEngine@ and inverts Black's formula.
 -- The reference date is the model curve's; every query reprices, and the max date is unbounded.
--- The shim prices with a unit nominal, working around QuantLib 1.43's uninitialized one.
+-- On QuantLib <= 1.43 the shim prices with a unit nominal to work around upstream's
+-- uninitialized one; newer versions use @Gaussian1dSwaptionVolatility@ directly.
 {#fun qlGaussian1dSwaptionVolatility as gaussian1dSwaptionVolatility{withCalendar*`Calendar' -- ^cal
   ,fromEnumC`BusinessDayConvention' -- ^bdc
   ,withSwapIndex*`GenSwapIndex sidx' -- ^indexBase
@@ -1877,8 +1878,8 @@ extendedBlackVarianceCurve d dq dc f = qlExtendedBlackVarianceCurve d dd q dc f 
 {#fun qlExtendedBlackVarianceCurve{withDay*`Day',withDayArray*`[Day]'&,withQuoteArray*`[GenQuote q]'&,withDayCounter*`DayCounter',`Bool',preErrorCheck-`String'errorCheck*-}->`BlackVolTermStructure'peekBlackVolTermStructure*#}
 
 -- |Like 'blackVarianceSurface', but volatilities are live quotes (rows strikes, columns dates).
--- On QuantLib 1.43 every construction reads and writes out of bounds and may crash
--- the process: <https://github.com/lballabio/QuantLib/issues/2791>.
+-- On QuantLib <= 1.43 this throws 'CPlusPlusException' instead of invoking upstream code that
+-- accesses the grid out of bounds: <https://github.com/lballabio/QuantLib/issues/2791>.
 extendedBlackVarianceSurface :: Day -> Calendar -> [Day] -- ^dates
   -> [Double] -- ^strikes
   -> Matrix (GenQuote q) -- ^volatilities

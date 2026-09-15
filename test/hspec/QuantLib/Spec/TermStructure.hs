@@ -9,9 +9,12 @@ import Test.QuickCheck.Monadic as Q(monadicIO, run)
 import Test.QuickCheck((==>))
 
 import Data.Time.Calendar
+import Data.Char(isDigit)
 import Data.Maybe(catMaybes)
+import Data.List(isInfixOf)
 import Data.List.NonEmpty(NonEmpty, fromList)
 import qualified Data.Vector.Storable as V
+import Text.Read(readMaybe)
 
 import QuantLib.Time.Date
 import qualified QuantLib.Context as Context
@@ -40,6 +43,13 @@ import qualified QuantLib.TermStructure.Volatility as Vol
 import QuantLib.PricingEngine(discountingSwapEngine, analyticEuropeanEngine, blackSwaptionEngineFromVolatilityStructure, blackCapFloorEngineFromVolatilityStructure, bachelierSwaptionEngineFromVolatilityStructure, bachelierCapFloorEngineFromVolatilityStructure, bjerksundStenslandApproximationEngine, analyticHestonEngine, IntegrationControl(..), fdHestonVanillaEngine)
 
 import QuantLib.Spec.Helpers(areClose, closePrec)
+
+quantLibAtMost143 :: Bool
+quantLibAtMost143 = case break (== '.') Context.version of
+  (major, '.':rest) -> case (readMaybe major, readMaybe (takeWhile isDigit rest)) of
+    (Just major', Just minor') -> (major', minor') <= (1 :: Int, 43 :: Int)
+    _ -> False
+  _ -> False
 
 spec :: Spec
 spec = do
@@ -1704,6 +1714,29 @@ spec = do
           npvPiecewise <- mkNpv piecewise
           npvFlat <- mkNpv flat
           npvPiecewise `shouldSatisfy` closePrec npvFlat tolerance
+
+    describe "extended Black variance surface" $
+      it "rejects QuantLib <= 1.43 before entering its out-of-bounds implementation" $
+        Context.keepingSettingsGc $ do
+          let refDate = 15 `january` 2024
+          Context.setEvaluationDate (Just refDate)
+          d1 <- addPeriod refDate (1, Years)
+          d2 <- addPeriod refDate (2, Years)
+          cal <- Calendar.calendar TARGET
+          dc <- dayCounter Actual365FixedStandard
+          quotes <- mapM Quote.simpleQuote [0.20, 0.21, 0.22, 0.23]
+          let vols = either error id $ objectMatrix 2 2 quotes
+              construct = Vol.extendedBlackVarianceSurface refDate cal [d1, d2] [90, 110] vols dc
+                Vol.ExtendedBlackVarianceSurfaceConstantExtrapolation
+                Vol.ExtendedBlackVarianceSurfaceConstantExtrapolation
+          if quantLibAtMost143
+            then construct `shouldThrow` \err -> case err of
+              Context.CPlusPlusException message ->
+                "implementation accesses the volatility grid out of bounds" `isInfixOf` message
+              _ -> False
+            else do
+              surface <- construct
+              Vol.blackVol surface (DatePoint d1) 90 False `shouldReturn` 0.20
 
     -- BlackVolatilitySurfaceDelta: cached fixture ported from upstream's
     -- testBlackVolSurfaceDeltaNonConstantVol (test-suite/blackvolsurfacedelta.cpp), which

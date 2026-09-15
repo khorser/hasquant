@@ -236,6 +236,8 @@ the compiler's own derived-to-base upcast at the `return` for type safety instea
    traced at all — the stream is opened on first use, so a run that traces nothing leaves no
    file rather than an empty one. That is the flag-didn't-recompile-`cbits` gotcha above,
    not a clean result, and the script exits 1 for it.
+   Every pointer, including `char*`, is formatted as an address through `traceAddress`, so a
+   non-zero skipped-line count is a finding and must be investigated.
 4. Investigate every reported class before assuming it's a real bug or dismissing it as noise —
    this session's audit found genuine tooling false positives (null-pointer frees, per point 6)
    sitting right next to a genuine pre-existing bug (the base/derived mismatch, per point 3) in the

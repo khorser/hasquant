@@ -235,6 +235,7 @@ namespace QuantLib {
   class ExponentialSplinesFitting;
   class ExtOUWithJumpsProcess;
   class ExtendedBlackScholesMertonProcess;
+  class ExtendedBlackVarianceCurve;
   class ExtendedOrnsteinUhlenbeckProcess;
   class FFTVanillaEngine;
   class FaceValueAccrualClaim;
@@ -265,6 +266,7 @@ namespace QuantLib {
   class Garch11;
   class GarmanKohlagenProcess;
   class Gaussian1dModel;
+  class Gaussian1dSwaptionVolatility;
   class GeneralizedBlackScholesProcess;
   class GeneralizedHullWhite;
   class Gsr;
@@ -339,6 +341,7 @@ namespace QuantLib {
   class RebatedExercise;
   class ReplicatingVarianceSwapEngine;
   class Rounding;
+  class SABRVolTermStructure;
   class SabrInterpolatedSmileSection;
   class SabrVolSurface;
   class ShortRateModel;
@@ -597,6 +600,7 @@ using QuantLib::Exercise;
 using QuantLib::ExponentialSplinesFitting;
 using QuantLib::ExtOUWithJumpsProcess;
 using QuantLib::ExtendedBlackScholesMertonProcess;
+using QuantLib::ExtendedBlackVarianceCurve;
 using QuantLib::ExtendedOrnsteinUhlenbeckProcess;
 using QuantLib::FFTVanillaEngine;
 using QuantLib::FaceValueAccrualClaim;
@@ -627,6 +631,7 @@ using QuantLib::GapPayoff;
 using QuantLib::Garch11;
 using QuantLib::GarmanKohlagenProcess;
 using QuantLib::Gaussian1dModel;
+using QuantLib::Gaussian1dSwaptionVolatility;
 using QuantLib::GeneralizedBlackScholesProcess;
 using QuantLib::GeneralizedHullWhite;
 using QuantLib::Gsr;
@@ -705,6 +710,7 @@ using QuantLib::QuantoVanillaOption;
 using QuantLib::RebatedExercise;
 using QuantLib::ReplicatingVarianceSwapEngine;
 using QuantLib::Rounding;
+using QuantLib::SABRVolTermStructure;
 using QuantLib::SabrInterpolatedSmileSection;
 using QuantLib::SabrVolSurface;
 using QuantLib::ShortRateModel;
@@ -1285,6 +1291,7 @@ QL_TRACE_NAME(GapPayoff)
 QL_TRACE_NAME(Garch11)
 QL_TRACE_NAME(GarmanKohlagenProcess)
 QL_TRACE_NAME(Gaussian1dModel)
+QL_TRACE_NAME(Gaussian1dSwaptionVolatility)
 QL_TRACE_NAME(GeneralizedBlackScholesProcess)
 QL_TRACE_NAME(GeneralizedHullWhite)
 QL_TRACE_NAME(Gsr)
@@ -1663,14 +1670,20 @@ QL_TRACE_NAME(ZeroCouponInflationSwapHelper)
 QL_TRACE_NAME(ZeroInflationIndex)
 QL_TRACE_NAME(ZeroInflationTermStructure)
 QL_TRACE_NAME(ZeroSpreadedTermStructure)
+QL_TRACE_NAME(ZabrInterpolatedSmileSectionHandle)
 QL_TRACE_NAME_AS(void, "Ptr")
 
 // The trace destination, opened on first use -- see qlMisc.cpp.
 std::ostream &traceStream();
 
+// Format every pointer as an address. In particular, ostream's char* overload must not read the
+// pointed-to string or produce a trace line the allocation parser cannot recognize.
+template <class T> const void *traceAddress(T *p) {return static_cast<const void*>(p);}
+template <class T> const void *traceAddress(const shared_ptr<T>& p) {return p.get();}
+
 // One line of trace: the verb, the label ObjClassName gives `Label', and the pointer.
 template <class Label, class T> void emit(const char *what, T p) {
-  traceStream() << what << " " << ObjClassName<Label>::name() << ": " << p << std::endl;
+  traceStream() << what << " " << ObjClassName<Label>::name() << ": " << traceAddress(p) << std::endl;
 }
 inline constexpr bool trackAllocations = true;
 #else

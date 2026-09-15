@@ -74,6 +74,7 @@
 #include <ql/experimental/inflation/yoycapfloortermpricesurface.hpp>
 #include <ql/experimental/inflation/interpolatedyoyoptionletstripper.hpp>
 #include <ql/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp>
+#include <ql/version.hpp>
 
 #include "qlaux.h"
 #include "qlMisc.h"
@@ -193,8 +194,9 @@ using makeZeroInflIdx = ZeroInflationIndex *(*)();
 using makeYoYInflIdx = YoYInflationIndex *(*)();
 using makeReg = Region *(*)();
 
-// QuantLib 1.43's fixing-date MakeSwaption leaves nominal_ uninitialized and Gaussian1dSmileSection prices
-// through it, so reprice with a unit nominal: https://github.com/lballabio/QuantLib/issues/2788
+#if QL_HEX_VERSION < 0x01440000
+// QuantLib <= 1.43 leaves MakeSwaption::nominal_ uninitialized, so reprice with a unit nominal:
+// https://github.com/lballabio/QuantLib/issues/2788
 class UnitNominalGaussian1dSmileSection : public QuantLib::Gaussian1dSmileSection {
   public:
     UnitNominalGaussian1dSmileSection(const Date& fixingDate, const shared_ptr<SwapIndex>& swapIndex,
@@ -232,6 +234,7 @@ class UnitNominalGaussian1dSwaptionVolatility : public QuantLib::Gaussian1dSwapt
     shared_ptr<SwapIndex> indexBase_;
     shared_ptr<Gaussian1dModel> model_;
 };
+#endif
 
 // Upstream keeps a reference to its quote vector; this base is constructed first and owns it.
 struct ExtendedBlackVarianceSurfaceQuotes {
@@ -247,7 +250,9 @@ class OwningExtendedBlackVarianceSurface : private ExtendedBlackVarianceSurfaceQ
 }
 
 #ifdef QLTRACK_ALLOCATIONS
+#if QL_HEX_VERSION < 0x01440000
 QL_TRACE_NAME(UnitNominalGaussian1dSwaptionVolatility)
+#endif
 QL_TRACE_NAME(OwningExtendedBlackVarianceSurface)
 #endif
 
@@ -783,13 +788,13 @@ int qlNoArbSabrInterpolatedSmileSectionEndCriteria(QlNoArbSabrInterpolatedSmileS
 // this wraps a handle of closures rather than a dedicated leaf or a type-erased SmileSection.
 QlZabrInterpolatedSmileSection* qlZabrInterpolatedSmileSection(int evaluation, int optionDate, QlQuote* forward, unsigned strikesLen, double* strikes, int hasFloatingStrikes, QlQuote* atmVolatility, unsigned volsLen, QlQuote** vols, double alpha, double beta, double nu, double rho, double gamma, int isAlphaFixed, int isBetaFixed, int isNuFixed, int isRhoFixed, int isGammaFixed, int vegaWeighted, QlEndCriteria* endCriteria, QlOptimizationMethod* method, DayCounter* dc, char **e) {
   try {
-    auto handle = qlZabrInterpolatedSmileSectionAux(evaluation, Date(optionDate), *arg(forward),
+    auto handle = allocShared(qlZabrInterpolatedSmileSectionAux(evaluation, Date(optionDate), *arg(forward),
         std::vector<Real>(strikes, strikes + strikesLen), hasFloatingStrikes, *arg(atmVolatility),
         qlHandleVector(vols, volsLen), alpha, beta, nu, rho, gamma,
         isAlphaFixed, isBetaFixed, isNuFixed, isRhoFixed, isGammaFixed, vegaWeighted,
         endCriteria ? *arg(endCriteria) : shared_ptr<EndCriteria>(),
-        method ? *arg(method) : shared_ptr<OptimizationMethod>(), *arg(dc));
-    return ret(new QlZabrInterpolatedSmileSection(alloc(shared_ptr<ZabrInterpolatedSmileSectionHandle>(handle))));
+        method ? *arg(method) : shared_ptr<OptimizationMethod>(), *arg(dc)));
+    return ret(new QlZabrInterpolatedSmileSection(handle));
   } catch (std::exception& er) {return handleException<QlZabrInterpolatedSmileSection*>(e, er);}}
 void qlFreeZabrInterpolatedSmileSection(QlZabrInterpolatedSmileSection* p) {del(p);}
 QlSmileSection* qlZabrInterpolatedSmileSectionAsSmileSection(QlZabrInterpolatedSmileSection* o, char **e) {
@@ -872,7 +877,11 @@ QlSwaptionVolatilityStructure* qlSpreadedSwaptionVolatility(QlSwaptionVolatility
 // Smile sections use upstream's default Gaussian1dSwaptionEngine; hasquant's engines are
 // type-erased PricingEngines.
 QlSwaptionVolatilityStructure* qlGaussian1dSwaptionVolatility(Calendar* cal, int bdc, QlSwapIndex* indexBase, QlGaussian1dModel* model, DayCounter* dc, char **e) {
+#if QL_HEX_VERSION < 0x01440000
   try {return ret(new QlSwaptionVolatilityStructure(allocShared(new UnitNominalGaussian1dSwaptionVolatility(*arg(cal), (BusinessDayConvention)bdc, *arg(indexBase), *arg(model), *arg(dc)))));
+#else
+  try {return ret(new QlSwaptionVolatilityStructure(allocShared(new Gaussian1dSwaptionVolatility(*arg(cal), (BusinessDayConvention)bdc, *arg(indexBase), *arg(model), *arg(dc)))));
+#endif
   } catch (std::exception& er) {return handleException<QlSwaptionVolatilityStructure*>(e, er);}}
 QlOptionletVolatilityStructure* qlSpreadedOptionletVolatility(QlOptionletVolatilityStructure* x0, QlQuote* spread, char **e) {
   try {return ret(new QlOptionletVolatilityStructure(shared_ptr<OptionletVolatilityStructure>(alloc(new SpreadedOptionletVolatility(*arg(x0), *arg(spread))))));
@@ -1031,14 +1040,22 @@ QlBlackVolTermStructure* qlBlackVarianceSurface(int referenceDate, Calendar* cal
 QlBlackVolTermStructure* qlExtendedBlackVarianceCurve(int referenceDate, unsigned datesLen, int* dates, unsigned volsLen, QlQuote** vols, DayCounter* dayCounter, int forceMonotoneVariance, char **e) {
   try {return ret(new QlBlackVolTermStructure(shared_ptr<BlackVolTermStructure>(alloc(new ExtendedBlackVarianceCurve(Date(referenceDate), qlDateVector(dates, datesLen), qlHandleVector(vols, volsLen), *arg(dayCounter), forceMonotoneVariance)))));
   } catch (std::exception& er) {return handleException<QlBlackVolTermStructure*>(e, er);}}
-// QuantLib 1.43 reads and writes out of bounds on every construction and update:
+// QuantLib <= 1.43 reads and writes out of bounds on every construction and update:
 // https://github.com/lballabio/QuantLib/issues/2791
 QlBlackVolTermStructure* qlExtendedBlackVarianceSurface(int referenceDate, Calendar* cal, unsigned datesLen, int* dates, unsigned strikesLen, double* strikes, unsigned volRows, unsigned volCols, QlQuote** vols, DayCounter* dayCounter, int lowerExtrapolation, int upperExtrapolation, char **e) {
   try {
+#if QL_HEX_VERSION < 0x01440000
+    (void)referenceDate; (void)cal; (void)datesLen; (void)dates;
+    (void)strikesLen; (void)strikes; (void)volRows; (void)volCols; (void)vols;
+    (void)dayCounter; (void)lowerExtrapolation; (void)upperExtrapolation;
+    QL_FAIL("ExtendedBlackVarianceSurface is unavailable with QuantLib " QL_VERSION
+            " because its implementation accesses the volatility grid out of bounds");
+#else
     QL_REQUIRE(volRows == strikesLen && volCols == datesLen, "volatilities need one row per strike and one column per date");
     return ret(new QlBlackVolTermStructure(shared_ptr<BlackVolTermStructure>(alloc(new OwningExtendedBlackVarianceSurface(Date(referenceDate), *arg(cal),
         qlDateVector(dates, datesLen), std::vector<double>(strikes, strikes+strikesLen), qlHandleVector(vols, volRows*volCols), *arg(dayCounter),
         (ExtendedBlackVarianceSurface::Extrapolation)lowerExtrapolation, (ExtendedBlackVarianceSurface::Extrapolation)upperExtrapolation)))));
+#endif
   } catch (std::exception& er) {return handleException<QlBlackVolTermStructure*>(e, er);}}
 QlBlackVolTermStructure* qlPiecewiseBlackVarianceSurface(int referenceDate, unsigned datesLen, int* dates, unsigned strikesLen, double* strikes, unsigned blackVolsRows, unsigned blackVolsCols, double* blackVols, DayCounter* dayCounter, char **e) {
   try {

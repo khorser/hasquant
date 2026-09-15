@@ -8,8 +8,10 @@ Breaking change: `piecewiseZeroInflationCurve`, `piecewiseYoyInflationCurve` and
 `interpolatedYoyInflationCurve` take a `Maybe Seasonality` before the interpolation, supporting
 multiplicative and Kerkhof price seasonality at construction.
 
-`gaussian1dSwaptionVolatility` works around a QuantLib 1.43 bug (an uninitialized `MakeSwaption`
-nominal that zeroes upstream's volatilities) by pricing its smile sections with a unit nominal.
+On QuantLib 1.43, `gaussian1dSwaptionVolatility` works around an uninitialized `MakeSwaption`
+nominal by pricing its smile sections with a unit nominal; newer versions use upstream directly.
+`extendedBlackVarianceSurface` reports an exception on QuantLib 1.43 instead of invoking its
+out-of-bounds implementation.
 
 ## 0.7.0.0 (2026)
 
