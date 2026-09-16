@@ -1,4 +1,4 @@
-{-# LANGUAGE ScopedTypeVariables, OverloadedLists #-}
+{-# LANGUAGE ScopedTypeVariables, OverloadedLists, LambdaCase #-}
 module QuantLib.Spec.TermStructure (spec) where
 
 import Control.Monad(replicateM, forM_)
@@ -1730,7 +1730,7 @@ spec = do
                 Vol.ExtendedBlackVarianceSurfaceConstantExtrapolation
                 Vol.ExtendedBlackVarianceSurfaceConstantExtrapolation
           if quantLibAtMost143
-            then construct `shouldThrow` \err -> case err of
+            then construct `shouldThrow` \case
               Context.CPlusPlusException message ->
                 "implementation accesses the volatility grid out of bounds" `isInfixOf` message
               _ -> False
