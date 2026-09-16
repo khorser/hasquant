@@ -337,7 +337,7 @@ span.spaces    { background: white }
 <span class="lineno">  318 </span>data Probabilities = None
 <span class="lineno">  319 </span>                   | Naive
 <span class="lineno">  320 </span>                   | Digital
-<span class="lineno">  321 </span>  deriving (<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Enum</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Show</span></span></span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Eq</span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Read</span></span></span></span></span></span></span></span>)
+<span class="lineno">  321 </span>  deriving (<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="istickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Enum</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Show</span></span></span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Eq</span></span></span></span>,<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Read</span></span></span></span></span></span></span></span>)
 <span class="lineno">  322 </span>
 <span class="lineno">  323 </span>
 <span class="lineno">  324 </span>data CashDividendModel = CashDividendSpot
@@ -588,10 +588,10 @@ span.spaces    { background: white }
 <span class="lineno">  569 </span>
 <span class="lineno">  570 </span>
 <span class="lineno">  571 </span>-- |discounts a bond's cash flows off a default-risky curve and a flat recovery rate
-<span class="lineno">  572 </span>riskyBondEngine :: (DefaultProbabilityTermStructure) -&gt; (Double) -- ^recoveryRate
+<span class="lineno">  572 </span>riskyBondEngine :: (GenDefaultProbabilityTermStructure d) -&gt; (Double) -- ^recoveryRate
 <span class="lineno">  573 </span> -&gt; (GenYieldTermStructure y) -&gt; IO ((PricingEngine))
 <span class="lineno">  574 </span><span class="decl"><span class="istickedoff">riskyBondEngine a1 a2 a3 =</span>
-<span class="lineno">  575 </span><span class="spaces">  </span><span class="istickedoff">withGenTermStructure a1 $ \a1' -&gt; </span>
+<span class="lineno">  575 </span><span class="spaces">  </span><span class="istickedoff">withDefaultProbabilityTermStructure a1 $ \a1' -&gt; </span>
 <span class="lineno">  576 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = realToFrac a2} in </span>
 <span class="lineno">  577 </span><span class="spaces">  </span><span class="istickedoff">withYieldTermStructure a3 $ \a3' -&gt; </span>
 <span class="lineno">  578 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a4' -&gt; </span>
@@ -676,15 +676,15 @@ span.spaces    { background: white }
 <span class="lineno">  657 </span>-- match upstream's unilateral-CVA-only defaults.
 <span class="lineno">  658 </span>counterpartyAdjSwapEngine :: (GenYieldTermStructure y) -- ^discountCurve
 <span class="lineno">  659 </span> -&gt; (GenQuote q) -- ^blackVol
-<span class="lineno">  660 </span> -&gt; (DefaultProbabilityTermStructure) -- ^ctptyDTS
+<span class="lineno">  660 </span> -&gt; (GenDefaultProbabilityTermStructure d1) -- ^ctptyDTS
 <span class="lineno">  661 </span> -&gt; (Double) -- ^ctptyRecoveryRate
-<span class="lineno">  662 </span> -&gt; (Maybe DefaultProbabilityTermStructure) -- ^invstDTS
+<span class="lineno">  662 </span> -&gt; (Maybe (GenDefaultProbabilityTermStructure d2)) -- ^invstDTS
 <span class="lineno">  663 </span> -&gt; (Double) -- ^invstRecoveryRate
 <span class="lineno">  664 </span> -&gt; IO ((PricingEngine))
 <span class="lineno">  665 </span><span class="decl"><span class="istickedoff">counterpartyAdjSwapEngine a1 a2 a3 a4 a5 a6 =</span>
 <span class="lineno">  666 </span><span class="spaces">  </span><span class="istickedoff">withYieldTermStructure a1 $ \a1' -&gt; </span>
 <span class="lineno">  667 </span><span class="spaces">  </span><span class="istickedoff">withQuote a2 $ \a2' -&gt; </span>
-<span class="lineno">  668 </span><span class="spaces">  </span><span class="istickedoff">withGenTermStructure a3 $ \a3' -&gt; </span>
+<span class="lineno">  668 </span><span class="spaces">  </span><span class="istickedoff">withDefaultProbabilityTermStructure a3 $ \a3' -&gt; </span>
 <span class="lineno">  669 </span><span class="spaces">  </span><span class="istickedoff">let {a4' = realToFrac a4} in </span>
 <span class="lineno">  670 </span><span class="spaces">  </span><span class="istickedoff">withMaybeDefaultProbabilityTermStructure a5 $ \a5' -&gt; </span>
 <span class="lineno">  671 </span><span class="spaces">  </span><span class="istickedoff">let {a6' = realToFrac a6} in </span>
@@ -2256,13 +2256,13 @@ span.spaces    { background: white }
 <span class="lineno"> 2237 </span>
 <span class="lineno"> 2238 </span>-- |CDS pricing engine that integrates the default-leg payoff over the CDS's step-wise schedule
 <span class="lineno"> 2239 </span>integralCdsEngine :: ((Word,TimeUnit)) -- ^integrationStep
-<span class="lineno"> 2240 </span> -&gt; (DefaultProbabilityTermStructure) -&gt; (Double) -- ^recoveryRate
+<span class="lineno"> 2240 </span> -&gt; (GenDefaultProbabilityTermStructure d) -&gt; (Double) -- ^recoveryRate
 <span class="lineno"> 2241 </span> -&gt; (GenYieldTermStructure y) -- ^discountCurve
 <span class="lineno"> 2242 </span> -&gt; (Maybe Bool) -- ^includeSettlementDateFlows
 <span class="lineno"> 2243 </span> -&gt; IO ((PricingEngine))
 <span class="lineno"> 2244 </span><span class="decl"><span class="istickedoff">integralCdsEngine a1 a2 a3 a4 a5 =</span>
 <span class="lineno"> 2245 </span><span class="spaces">  </span><span class="istickedoff">let {(a1'1, a1'2) = fromEnumQuantity a1} in </span>
-<span class="lineno"> 2246 </span><span class="spaces">  </span><span class="istickedoff">withGenTermStructure a2 $ \a2' -&gt; </span>
+<span class="lineno"> 2246 </span><span class="spaces">  </span><span class="istickedoff">withDefaultProbabilityTermStructure a2 $ \a2' -&gt; </span>
 <span class="lineno"> 2247 </span><span class="spaces">  </span><span class="istickedoff">let {a3' = realToFrac a3} in </span>
 <span class="lineno"> 2248 </span><span class="spaces">  </span><span class="istickedoff">withYieldTermStructure a4 $ \a4' -&gt; </span>
 <span class="lineno"> 2249 </span><span class="spaces">  </span><span class="istickedoff">let {a5' = fromMaybeBool a5} in </span>
@@ -2307,19 +2307,19 @@ span.spaces    { background: white }
 <span class="lineno"> 2288 </span> -&gt; (Maybe (GenYieldTermStructure y)) -- ^discountCurve
 <span class="lineno"> 2289 </span> -&gt; (Probabilities) -- ^probabilities
 <span class="lineno"> 2290 </span> -&gt; IO ((PricingEngine))
-<span class="lineno"> 2291 </span><span class="decl"><span class="nottickedoff">gaussian1dSwaptionEngine a1 a2 a3 a4 a5 a6 a7 =</span>
-<span class="lineno"> 2292 </span><span class="spaces">  </span><span class="nottickedoff">withStandalone a1 $ \a1' -&gt; </span>
-<span class="lineno"> 2293 </span><span class="spaces">  </span><span class="nottickedoff">let {a2' = fromIntegral a2} in </span>
-<span class="lineno"> 2294 </span><span class="spaces">  </span><span class="nottickedoff">let {a3' = realToFrac a3} in </span>
-<span class="lineno"> 2295 </span><span class="spaces">  </span><span class="nottickedoff">let {a4' = C2HSImp.fromBool a4} in </span>
-<span class="lineno"> 2296 </span><span class="spaces">  </span><span class="nottickedoff">let {a5' = C2HSImp.fromBool a5} in </span>
-<span class="lineno"> 2297 </span><span class="spaces">  </span><span class="nottickedoff">withMaybeYieldTermStructure a6 $ \a6' -&gt; </span>
-<span class="lineno"> 2298 </span><span class="spaces">  </span><span class="nottickedoff">let {a7' = (fromIntegral . fromEnum) a7} in </span>
-<span class="lineno"> 2299 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a8' -&gt; </span>
-<span class="lineno"> 2300 </span><span class="spaces">  </span><span class="nottickedoff">gaussian1dSwaptionEngine'_ a1' a2' a3' a4' a5' a6' a7' a8' &gt;&gt;= \res -&gt;</span>
-<span class="lineno"> 2301 </span><span class="spaces">  </span><span class="nottickedoff">peekPricingEngine res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno"> 2302 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a8'&gt;&gt;</span>
-<span class="lineno"> 2303 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno"> 2291 </span><span class="decl"><span class="istickedoff">gaussian1dSwaptionEngine a1 a2 a3 a4 a5 a6 a7 =</span>
+<span class="lineno"> 2292 </span><span class="spaces">  </span><span class="istickedoff">withStandalone a1 $ \a1' -&gt; </span>
+<span class="lineno"> 2293 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = fromIntegral a2} in </span>
+<span class="lineno"> 2294 </span><span class="spaces">  </span><span class="istickedoff">let {a3' = realToFrac a3} in </span>
+<span class="lineno"> 2295 </span><span class="spaces">  </span><span class="istickedoff">let {a4' = C2HSImp.fromBool a4} in </span>
+<span class="lineno"> 2296 </span><span class="spaces">  </span><span class="istickedoff">let {a5' = C2HSImp.fromBool a5} in </span>
+<span class="lineno"> 2297 </span><span class="spaces">  </span><span class="istickedoff">withMaybeYieldTermStructure a6 $ \a6' -&gt; </span>
+<span class="lineno"> 2298 </span><span class="spaces">  </span><span class="istickedoff">let {a7' = (fromIntegral . fromEnum) a7} in </span>
+<span class="lineno"> 2299 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a8' -&gt; </span>
+<span class="lineno"> 2300 </span><span class="spaces">  </span><span class="istickedoff">gaussian1dSwaptionEngine'_ a1' a2' a3' a4' a5' a6' a7' a8' &gt;&gt;= \res -&gt;</span>
+<span class="lineno"> 2301 </span><span class="spaces">  </span><span class="istickedoff">peekPricingEngine res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno"> 2302 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a8'&gt;&gt;</span>
+<span class="lineno"> 2303 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
 <span class="lineno"> 2304 </span>
 <span class="lineno"> 2305 </span>
 <span class="lineno"> 2306 </span>
@@ -2422,11 +2422,11 @@ span.spaces    { background: white }
 <span class="lineno"> 2403 </span>
 <span class="lineno"> 2404 </span>
 <span class="lineno"> 2405 </span>-- |CDS pricing engine using the mid-point approximation, evaluating the default leg at the mid-point of each accrual period
-<span class="lineno"> 2406 </span>midPointCdsEngine :: (DefaultProbabilityTermStructure) -&gt; (Double) -- ^recoveryRate
+<span class="lineno"> 2406 </span>midPointCdsEngine :: (GenDefaultProbabilityTermStructure d) -&gt; (Double) -- ^recoveryRate
 <span class="lineno"> 2407 </span> -&gt; (GenYieldTermStructure y) -&gt; (Maybe Bool) -- ^includeSettlementDateFlows
 <span class="lineno"> 2408 </span> -&gt; IO ((PricingEngine))
 <span class="lineno"> 2409 </span><span class="decl"><span class="istickedoff">midPointCdsEngine a1 a2 a3 a4 =</span>
-<span class="lineno"> 2410 </span><span class="spaces">  </span><span class="istickedoff">withGenTermStructure a1 $ \a1' -&gt; </span>
+<span class="lineno"> 2410 </span><span class="spaces">  </span><span class="istickedoff">withDefaultProbabilityTermStructure a1 $ \a1' -&gt; </span>
 <span class="lineno"> 2411 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = realToFrac a2} in </span>
 <span class="lineno"> 2412 </span><span class="spaces">  </span><span class="istickedoff">withYieldTermStructure a3 $ \a3' -&gt; </span>
 <span class="lineno"> 2413 </span><span class="spaces">  </span><span class="istickedoff">let {a4' = fromMaybeBool a4} in </span>
@@ -2486,14 +2486,14 @@ span.spaces    { background: white }
 <span class="lineno"> 2467 </span>
 <span class="lineno"> 2468 </span>
 <span class="lineno"> 2469 </span>-- |CDS pricing engine implementing the ISDA standard model
-<span class="lineno"> 2470 </span>isdaCdsEngine :: (DefaultProbabilityTermStructure) -&gt; (Double) -- ^recoveryRate
+<span class="lineno"> 2470 </span>isdaCdsEngine :: (GenDefaultProbabilityTermStructure d) -&gt; (Double) -- ^recoveryRate
 <span class="lineno"> 2471 </span> -&gt; (GenYieldTermStructure y) -&gt; (Maybe Bool) -- ^includeSettlementDateFlows
 <span class="lineno"> 2472 </span> -&gt; (NumericalFix) -- ^numericalFix
 <span class="lineno"> 2473 </span> -&gt; (AccrualBias) -- ^accrualBias
 <span class="lineno"> 2474 </span> -&gt; (ForwardsInCouponPeriod) -- ^forwardsInCouponPeriod
 <span class="lineno"> 2475 </span> -&gt; IO ((PricingEngine))
 <span class="lineno"> 2476 </span><span class="decl"><span class="istickedoff">isdaCdsEngine a1 a2 a3 a4 a5 a6 a7 =</span>
-<span class="lineno"> 2477 </span><span class="spaces">  </span><span class="istickedoff">withGenTermStructure a1 $ \a1' -&gt; </span>
+<span class="lineno"> 2477 </span><span class="spaces">  </span><span class="istickedoff">withDefaultProbabilityTermStructure a1 $ \a1' -&gt; </span>
 <span class="lineno"> 2478 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = realToFrac a2} in </span>
 <span class="lineno"> 2479 </span><span class="spaces">  </span><span class="istickedoff">withYieldTermStructure a3 $ \a3' -&gt; </span>
 <span class="lineno"> 2480 </span><span class="spaces">  </span><span class="istickedoff">let {a4' = fromMaybeBool a4} in </span>

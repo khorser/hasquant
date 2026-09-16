@@ -806,8 +806,8 @@ span.spaces    { background: white }
 <span class="lineno">  787 </span><span class="spaces">  </span><span class="istickedoff">let floatConv = businessDayConvention index</span>
 <span class="lineno">  788 </span><span class="spaces">      </span><span class="istickedoff">floatCalendar = fromMaybe idxCalendar mFloatCalendar</span>
 <span class="lineno">  789 </span><span class="spaces">      </span><span class="istickedoff">fixedCalendar = fromMaybe idxCalendar mFixedCalendar</span>
-<span class="lineno">  790 </span><span class="spaces">      </span><span class="istickedoff">fixedConvention = fromMaybe <span class="nottickedoff">ModifiedFollowing</span> mFixedConvention</span>
-<span class="lineno">  791 </span><span class="spaces">      </span><span class="istickedoff">fixedTerminationConvention = fromMaybe <span class="nottickedoff">ModifiedFollowing</span> mFixedTerminationConvention</span>
+<span class="lineno">  790 </span><span class="spaces">      </span><span class="istickedoff">fixedConvention = fromMaybe ModifiedFollowing mFixedConvention</span>
+<span class="lineno">  791 </span><span class="spaces">      </span><span class="istickedoff">fixedTerminationConvention = fromMaybe ModifiedFollowing mFixedTerminationConvention</span>
 <span class="lineno">  792 </span><span class="spaces">      </span><span class="istickedoff">settlementDays = fromMaybe <span class="nottickedoff">0</span> mSettlementDays</span>
 <span class="lineno">  793 </span><span class="spaces">      </span><span class="istickedoff">nominal = fromMaybe 1.0 mNominal</span>
 <span class="lineno">  794 </span><span class="spaces">      </span><span class="istickedoff">swapType = fromMaybe Payer mType</span>
@@ -816,7 +816,7 @@ span.spaces    { background: white }
 <span class="lineno">  797 </span><span class="spaces">  </span><span class="istickedoff">startDate0 &lt;- addPeriod spotDate forwardStart</span>
 <span class="lineno">  798 </span><span class="spaces">  </span><span class="istickedoff">swapStartDate &lt;- case compare fsLen 0 of</span>
 <span class="lineno">  799 </span><span class="spaces">    </span><span class="istickedoff">LT -&gt; <span class="nottickedoff">adjust floatCalendar startDate0 Preceding</span></span>
-<span class="lineno">  800 </span><span class="spaces">    </span><span class="istickedoff">GT -&gt; <span class="nottickedoff">adjust floatCalendar startDate0 Following</span></span>
+<span class="lineno">  800 </span><span class="spaces">    </span><span class="istickedoff">GT -&gt; adjust floatCalendar startDate0 Following</span>
 <span class="lineno">  801 </span><span class="spaces">    </span><span class="istickedoff">EQ -&gt; pure startDate0</span>
 <span class="lineno">  802 </span><span class="spaces">  </span><span class="istickedoff">endDate &lt;- addPeriod swapStartDate (fromIntegral swLen, swUnit)</span>
 <span class="lineno">  803 </span><span class="spaces">  </span><span class="istickedoff">fixedSchedule &lt;- schedule (Just swapStartDate) endDate fixedTenor fixedCalendar</span>
