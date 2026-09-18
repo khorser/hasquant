@@ -102,6 +102,7 @@ module QuantLib.Instrument.Swap
   , impliedVolatility
   , endDiscounts
   , leg
+  , numberOfLegs
   , legBps
   , legNpv
   , maturityDate
@@ -582,6 +583,9 @@ makeCms (swLen, swUnit) swapIndex iborIndex iborSpread forwardStart mSettlementD
 
 -- |Discount factor at leg j's end date.
 {#fun qlSwapEndDiscounts as endDiscounts{withSwap*`GenSwap s',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |How many legs this swap has; leg indexes run from 0 to one less than this.
+{#fun qlSwapNumberOfLegs as numberOfLegs{withSwap*`GenSwap s',preErrorCheck-`String'errorCheck*-}->`Word'fromIntegral#}
 
 -- |The j-th leg's cash flows.
 {#fun qlSwapLeg as leg{withSwap*`GenSwap s',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}

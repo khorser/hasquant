@@ -17,6 +17,7 @@ module QuantLib.Index
 
     -- * Inspectors
     -- ** Index fixings
+  , name
   , fixingCalendar
   , fixing
   , hasHistoricalFixing
@@ -69,6 +70,11 @@ import QuantLib.Internal.Type
 {#fun qlIndexAddFixing as addFixing{withIndex*`GenIndex idx',withDay*`Day',`Double' -- ^fixing
   ,`Bool' -- ^forceOverwrite
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
+
+-- |The index's own name, as QuantLib builds it -- for an interest-rate index the family name,
+-- tenor and day counter, e.g. @\"Euribor6M Actual\/360\"@.  This is the key QuantLib's
+-- process-global fixing store uses, so it is the name a stored fixing is filed under.
+{#fun qlIndexName as name{withIndex*`GenIndex idx'}->`String'peekDynString*#}
 
 -- |returns the calendar defining valid fixing dates
 {#fun qlIndexFixingCalendar as fixingCalendar{withIndex*`GenIndex idx',preErrorCheck-`String'errorCheck*-}->`Calendar'peekCalendar*#}

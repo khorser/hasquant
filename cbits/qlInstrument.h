@@ -203,6 +203,7 @@ extern "C" {
   double qlFloatFloatSwapFairSpread1(QlFloatFloatSwap* o, char **e);
   double qlFloatFloatSwapFairSpread2(QlFloatFloatSwap* o, char **e);
   QlSwap* qlSwap(Leg* firstLeg, Leg* secondLeg, char **e);
+  unsigned qlSwapNumberOfLegs(QlSwap* o, char **e);
   Leg* qlSwapLeg(QlSwap* o, unsigned j, char **e);
   Leg* qlFixedVsFloatingSwapFixedLeg(QlFixedVsFloatingSwap* o, char **e);
   Leg* qlFixedVsFloatingSwapFloatingLeg(QlFixedVsFloatingSwap* o, char **e);
@@ -572,6 +573,7 @@ extern "C" {
   Leg *qlNextCashFlows(Leg *leg, int includeSettlementDateFlows, int settlementDate, char **e);
   Leg *qlPreviousCashFlows(Leg *leg, int includeSettlementDateFlows, int settlementDate, char **e);
   void qlLegCashFlows(Leg *leg, int includeSettlementDateFlows, int settlementDate, unsigned *al, double **amount, unsigned *dl, int **date, unsigned *hl, int **hasOccurred, char **e);
+  void qlLegFixingDependencies(Leg *leg, unsigned *nameLen, char ***names, unsigned *dateLen, int **dates, char **e);
 
   double qlCashFlowsDuration(Leg* leg, InterestRate* yield, int type, int includeSettlementDateFlows, int settlementDate, int npvDate, char **e);
   int qlCashFlowsAccrualDays(Leg* leg, int includeSettlementDateFlows, int settlementDate, char **e);

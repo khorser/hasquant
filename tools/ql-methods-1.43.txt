@@ -326,9 +326,9 @@
 | |ql/cashflows/fixedratecoupon.hpp|void accept(AcyclicVisitor & v);
 |v|ql/cashflows/floatingratecoupon.hpp|FloatingRateCoupon::FloatingRateCoupon(const Date & paymentDate, Real nominal, const Date & startDate, const Date & endDate, Natural fixingDays, const ext::shared_ptr<InterestRateIndex> & index, Real gearing = 1.0, Spread spread = 0.0, const Date & refPeriodStart = Date(), const Date & refPeriodEnd = Date(), DayCounter dayCounter = DayCounter(), bool isInArrears = false, const Date & exCouponDate = Date(), BusinessDayConvention fixingConvention = Preceding);
 |v|ql/cashflows/floatingratecoupon.hpp|Real FloatingRateCoupon::price(const Handle<YieldTermStructure> & discountingCurve) const;
-|x|ql/cashflows/floatingratecoupon.hpp|const ext::shared_ptr<InterestRateIndex> & FloatingRateCoupon::index() const;
+|v|ql/cashflows/floatingratecoupon.hpp|const ext::shared_ptr<InterestRateIndex> & FloatingRateCoupon::index() const;
 |x|ql/cashflows/floatingratecoupon.hpp|Natural FloatingRateCoupon::fixingDays() const;
-|x|ql/cashflows/floatingratecoupon.hpp|Date FloatingRateCoupon::fixingDate() const;
+|v|ql/cashflows/floatingratecoupon.hpp|Date FloatingRateCoupon::fixingDate() const;
 |x|ql/cashflows/floatingratecoupon.hpp|Real FloatingRateCoupon::gearing() const;
 |x|ql/cashflows/floatingratecoupon.hpp|Spread FloatingRateCoupon::spread() const;
 |x|ql/cashflows/floatingratecoupon.hpp|Rate FloatingRateCoupon::indexFixing() const;
@@ -3629,7 +3629,7 @@
 | |ql/instruments/stock.hpp|Stock::Stock(Handle<Quote> quote);
 |v|ql/instruments/swap.hpp|Swap::Swap(const Leg & firstLeg, const Leg & secondLeg);
 |v|ql/instruments/swap.hpp|Swap::Swap(const std::vector<Leg> & legs, const std::vector<bool> & payer);
-|x|ql/instruments/swap.hpp|Size Swap::numberOfLegs() const;
+|v|ql/instruments/swap.hpp|Size Swap::numberOfLegs() const;
 |x|ql/instruments/swap.hpp|const std::vector<Leg> & Swap::legs() const;
 |v|ql/instruments/swap.hpp|Date Swap::startDate() const;
 |v|ql/instruments/swap.hpp|Date Swap::maturityDate() const;

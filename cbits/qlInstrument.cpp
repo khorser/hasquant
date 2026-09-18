@@ -309,6 +309,87 @@ namespace {
     }
     void commit() noexcept {*outLen_ = len_; *out_ = value_; value_ = nullptr;}
   };
+
+  // Every fixing a cash flow needs, as (index name, fixing date) pairs, for dependency
+  // extraction. QuantLib 1.43 has no requiredFixings() API and no virtual that answers this, so
+  // the walk is a dynamic_pointer_cast cascade over the cash-flow hierarchy. Two ordering rules
+  // make it correct:
+  //   - a decorating coupon (capped/floored, stripped, digital) is unwrapped first, because it
+  //     derives from FloatingRateCoupon and would otherwise answer for its underlying with a
+  //     single fixing date;
+  //   - the most derived coupon type wins, because a coupon that averages or compounds several
+  //     fixings (overnight, BMA, multiple resets) reports them through its own fixingDates(),
+  //     while FloatingRateCoupon::fixingDate() would give just one.
+  // A cash flow that carries no index -- a redemption, a fixed-rate coupon, a plain payment --
+  // needs no fixing and contributes nothing; that is not an error.
+  void collectIndexFixing(const ext::shared_ptr<Index>& index, const Date& date,
+                          std::vector<std::pair<std::string, Date> >& out) {
+    if (!index || date == Date()) return;
+    // A spread index holds no fixings of its own: SwapSpreadIndex::pastFixing reads both
+    // underlying swap indexes, so those are the names the store must carry.
+    if (auto spread = ext::dynamic_pointer_cast<SwapSpreadIndex>(index)) {
+      collectIndexFixing(spread->swapIndex1(), date, out);
+      collectIndexFixing(spread->swapIndex2(), date, out);
+      return;
+    }
+    out.emplace_back(index->name(), date);
+  }
+
+  // A base fixing is a stored fixing like any other, but a cash flow given a base CPI instead of
+  // a base date has none, and CPICashFlow::baseDate and CPICoupon::baseDate throw rather than
+  // answering (cpicoupon.cpp:159-166). That is a coupon with no base dependency, not a missing
+  // one, so the throw means "nothing to collect".
+  template <class T>
+  void collectBaseDate(const ext::shared_ptr<T>& c,
+                       std::vector<std::pair<std::string, Date> >& out) {
+    try {collectIndexFixing(c->index(), c->baseDate(), out);} catch (const std::exception&) {}
+  }
+
+  void collectFixingDependencies(const ext::shared_ptr<CashFlow>& cf,
+                                 std::vector<std::pair<std::string, Date> >& out) {
+    if (!cf) return;
+
+    // 1. Decorators: ask what they decorate.
+    if (auto c = ext::dynamic_pointer_cast<CappedFlooredOvernightIndexedCoupon>(cf)) {
+      collectFixingDependencies(c->underlying(), out); return;}
+    if (auto c = ext::dynamic_pointer_cast<StrippedCappedFlooredCoupon>(cf)) {
+      collectFixingDependencies(c->underlying(), out); return;}
+    if (auto c = ext::dynamic_pointer_cast<DigitalCoupon>(cf)) {
+      collectFixingDependencies(c->underlying(), out); return;}
+    if (auto c = ext::dynamic_pointer_cast<CappedFlooredCoupon>(cf)) {
+      collectFixingDependencies(c->underlying(), out); return;}
+
+    // 2. Coupons that need several fixings, most derived first.
+    if (auto c = ext::dynamic_pointer_cast<AverageBMACoupon>(cf)) {
+      for (const Date& d : c->fixingDates()) collectIndexFixing(c->index(), d, out);
+      return;}
+    if (auto c = ext::dynamic_pointer_cast<MultipleResetsCoupon>(cf)) {
+      for (const Date& d : c->fixingDates()) collectIndexFixing(c->index(), d, out);
+      return;}
+    if (auto c = ext::dynamic_pointer_cast<OvernightIndexedCoupon>(cf)) {
+      for (const Date& d : c->fixingDates()) collectIndexFixing(c->index(), d, out);
+      return;}
+
+    // 3. One fixing off an interest-rate index: Ibor, CMS, CMS spread, range accrual.
+    if (auto c = ext::dynamic_pointer_cast<FloatingRateCoupon>(cf)) {
+      collectIndexFixing(c->index(), c->fixingDate(), out); return;}
+
+    // 4. Inflation coupons sit beside FloatingRateCoupon under Coupon, not below it. A CPI coupon
+    //    also reads its index on the base date, which is a stored fixing like any other.
+    if (auto c = ext::dynamic_pointer_cast<CPICoupon>(cf)) {
+      collectIndexFixing(c->index(), c->fixingDate(), out);
+      collectBaseDate(c, out);
+      return;}
+    if (auto c = ext::dynamic_pointer_cast<InflationCoupon>(cf)) {
+      collectIndexFixing(c->index(), c->fixingDate(), out); return;}
+
+    // 5. Index-linked payments that are not coupons: CPICashFlow, ZeroInflationCashFlow,
+    //    EquityCashFlow. Their amount is a ratio, so both dates are required.
+    if (auto c = ext::dynamic_pointer_cast<IndexedCashFlow>(cf)) {
+      collectIndexFixing(c->index(), c->fixingDate(), out);
+      collectBaseDate(c, out);
+      return;}
+  }
 }
 
 #ifdef QLTRACK_ALLOCATIONS
@@ -621,6 +702,7 @@ double qlFloatFloatSwapFairSpread2(QlFloatFloatSwap* o, char **e) {try {return (
 
 QlSwap* qlSwap(Leg* firstLeg, Leg* secondLeg, char **e) {try {return ret(new QlSwap(alloc(new Swap(*arg(firstLeg), *arg(secondLeg)))));} catch (std::exception& er) {return handleException<QlSwap*>(e, er);} }
 double qlSwapEndDiscounts(QlSwap* o, unsigned j, char **e) {try {return (*arg(o))->endDiscounts(j);} catch (std::exception& er) {return handleException<double>(e, er);}}
+unsigned qlSwapNumberOfLegs(QlSwap* o, char **e) {try {return (unsigned)(*arg(o))->numberOfLegs();} catch (std::exception& er) {return handleException<unsigned>(e, er);}}
 Leg* qlSwapLeg(QlSwap* o, unsigned j, char **e) {try {return ret(new Leg((*arg(o))->leg(j)));} catch (std::exception& er) {return handleException<Leg*>(e, er);}}
 double qlSwapLegBPS(QlSwap* o, unsigned j, char **e) {try {return (*arg(o))->legBPS(j);} catch (std::exception& er) {return handleException<double>(e, er);}}
 double qlSwapLegNPV(QlSwap* o, unsigned j, char **e) {try {return (*arg(o))->legNPV(j);} catch (std::exception& er) {return handleException<double>(e, er);}}
@@ -1331,6 +1413,27 @@ Leg *qlPreviousCashFlows(Leg *leg, int includeSettlementDateFlows, int settlemen
         includeSettlementDateFlows, qlNullableDate(settlementDate));
     return alloc(new Leg(l.begin(), i.base()));
   } catch (std::exception& er) {return handleException<Leg *>(e, er);}}
+// Every fixing the cash flows of this leg need, as parallel (index name, fixing date) arrays in
+// leg order. QuantLib exposes no such query, so this walks the leg itself; see
+// collectFixingDependencies above for the cast cascade and why its order matters. Names are
+// Index::name(), the same key QuantLib's process-global fixing store uses. Duplicates are left
+// in: two coupons may legitimately fix the same index on the same date, and the caller decides
+// whether that matters.
+void qlLegFixingDependencies(Leg *leg, unsigned *nameLen, char ***names, unsigned *dateLen, int **dates, char **e) {
+  OutStringArrayResult nameResult(nameLen, names);
+  OutArrayResult<int> dateResult(dateLen, dates);
+  try {const Leg& l = *arg(leg);
+    std::vector<std::pair<std::string, Date> > deps;
+    for (unsigned i = 0; i < l.size(); ++i) collectFixingDependencies(l[i], deps);
+    const unsigned n = (unsigned)deps.size();
+    char **ns = nameResult.allocate(n);
+    int *ds = dateResult.allocate(n);
+    for (unsigned i = 0; i < n; ++i) {
+      ns[i] = tracedup(deps[i].first.c_str());
+      ds[i] = deps[i].second.serialNumber();
+    }
+    nameResult.commit(); dateResult.commit();
+  } catch (std::exception& er) {*e = tracedup(er.what());}}
 void qlLegCashFlows(Leg *leg, int includeSettlementDateFlows, int settlementDate,
    unsigned *al, double **amount, unsigned *dl, int **date, unsigned *hl, int **hasOccurred, char **e) {
   OutArrayResult<double> amountResult(al, amount);

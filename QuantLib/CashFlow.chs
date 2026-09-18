@@ -170,6 +170,7 @@ module QuantLib.CashFlow
     -- * Inspectors
     -- ** Coupon fixings
   , HasFixingDates(..)
+  , fixingDependencies
   , HasIndexFixings(..)
   , baseFixing
   , indexFixing
@@ -1641,6 +1642,22 @@ lognormalCmsSpreadPricer cmsPricer correlation discountCurve integrationPoints v
   ,preErrorCheck-`String'errorCheck*-}->`FloatingRateCouponPricer'peekFloatingRateCouponPricer*#}
 
 -- |Coupon types that expose the dates of their component index fixings.
+-- |Every fixing the cash flows of this leg need, as @(index name, fixing date)@ pairs in leg
+-- order.  QuantLib has no @requiredFixings@ query, so this walks the leg itself, unwrapping
+-- decorating coupons (capped\/floored, stripped, digital) and asking each coupon for its own
+-- fixing dates: one for an Ibor, CMS or CMS-spread coupon, one per averaged date for an
+-- overnight, BMA or multiple-resets coupon, and the fixing and base dates for an inflation
+-- coupon or an index-linked payment.  A CMS-spread coupon reports its two underlying swap
+-- indexes rather than the spread index, because that is where the fixings are stored.  Names
+-- are 'QuantLib.Index.name', the key QuantLib\'s process-global fixing store uses.  A cash flow
+-- that needs no fixing -- a redemption, a fixed-rate coupon -- contributes nothing.  Duplicates
+-- are not removed: two coupons may fix the same index on the same date.
+fixingDependencies :: GenLeg l -> IO [(String, Day)]
+fixingDependencies l = uncurry zip <$> qlLegFixingDependencies l
+{#fun qlLegFixingDependencies{withLeg*`GenLeg l'
+  ,preArray-`[String]'&peekCStringArray*,preArray-`[Day]'&peekDayArray*
+  ,preErrorCheck-`String'errorCheck*-}->`()'#}
+
 class HasFixingDates coupon where
   fixingDates :: coupon -> IO [Day]
 

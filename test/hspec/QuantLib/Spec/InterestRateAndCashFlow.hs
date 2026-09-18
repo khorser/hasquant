@@ -31,6 +31,7 @@ import QuantLib.Index(fixingCalendar, addFixing, addFixings, fixing, hasHistoric
   ,expectedShortfall, gaussianExpectedShortfall
   )
 import qualified QuantLib.Index as IndexAnalysis(covariance, correlation)
+import qualified QuantLib.Index as Index(name)
 import QuantLib.Index.InterestRate(iborIndex, IborConstructor(..), liborSwapIndex, LiborSwapIndexType(..), swapSpreadIndex, forecastFixing
   ,fixingDate, valueDate, maturityDate, historicalRatesAnalysis, overnightIborIndex, OvernightIborIndexType(..), bmaIndex)
 import qualified QuantLib.Index.InterestRate as Ibor(fixingDays, dayCounter)
@@ -1856,6 +1857,68 @@ spec evalDate = do
           Instr.setPricingEngine cms engine
           n <- Instr.npv cms
           n `shouldSatisfy` not . isNaN
+
+    -- Dependency extraction: which fixings a leg needs, read off the leg rather than listed by
+    -- hand. QuantLib has no requiredFixings() query, so CF.fixingDependencies walks the cash
+    -- flows itself; these check it against the dates a caller would have computed the long way.
+    describe "Fixing dependencies" $ do
+      it "reads an Ibor leg's fixings off the leg, one per coupon, under the index's own name" $
+        Context.keepingSettingsGc $ do
+          let start = 11 `april` 2013
+          Context.setEvaluationDate (Just start)
+          cal <- calendar TARGET
+          a360 <- dayCounter (Actual360 False)
+          t360 <- dayCounter Thirty360BondBasis
+          q <- Quote.simpleQuote 0.03 >>= Quote.asQuote
+          curve <- flatForward (SettlementDays 0 cal) q a360 IR.Continuous Annual
+          idx <- iborIndex Euribor6M (Just curve)
+          floatSch <- schedule (Just start) (addGregorianYearsClip 5 start) (6, Months) cal
+            ModifiedFollowing ModifiedFollowing Forward False Nothing Nothing
+          fixedSch <- schedule (Just start) (addGregorianYearsClip 5 start) (1, Years) cal
+            Unadjusted Unadjusted Forward False Nothing Nothing
+          floatLeg <- CF.iborLeg floatSch idx (NE.fromList [1000000]) a360 ModifiedFollowing [] [] [] [] [] False False
+          deps <- CF.fixingDependencies floatLeg
+          idxName <- Index.name idx
+          idxName `shouldBe` "Euribor6M Actual/360"
+          map fst deps `shouldBe` replicate 10 idxName
+          -- Each key is the index's own fixing date for that coupon's accrual start -- how a
+          -- caller would have had to work it out by hand, coupon by coupon.
+          starts <- CF.toCouponLeg floatLeg >>= CF.couponAccrualStartDates
+          byHand <- mapM (fixingDate idx) starts
+          map snd deps `shouldBe` byHand
+
+          -- A fixed leg carries no index, so it contributes nothing rather than failing.
+          fixedRate <- IR.interestRate 0.03 t360 IR.Simple Annual
+          nullCal <- calendar Null
+          fixedLeg <- CF.fixedRateLeg fixedSch (NE.fromList [1000000]) (NE.fromList [fixedRate]) Unadjusted t360 nullCal
+          CF.fixingDependencies fixedLeg `shouldReturn` []
+
+          -- Through the instrument: both legs of the swap, which is the whole dependency.
+          swp <- Swap.vanillaSwap Swap.Payer 1000000 fixedSch 0.03 t360 floatSch idx 0 a360 Nothing Nothing
+          n <- Swap.numberOfLegs swp
+          n `shouldBe` 2
+          swapDeps <- concat <$> mapM (\j -> Swap.leg swp j >>= CF.fixingDependencies) ([0 .. n - 1] :: [Word])
+          map fst swapDeps `shouldBe` map fst deps
+          map snd swapDeps `shouldBe` map snd deps
+
+      it "reads every averaged date of an overnight coupon, not just one" $
+        Context.keepingSettingsGc $ do
+          let start = 11 `april` 2013
+          Context.setEvaluationDate (Just start)
+          cal <- calendar TARGET
+          a360 <- dayCounter (Actual360 False)
+          q <- Quote.simpleQuote 0.03 >>= Quote.asQuote
+          curve <- flatForward (SettlementDays 0 cal) q a360 IR.Continuous Annual
+          on <- overnightIborIndex Eonia (Just curve)
+          sch <- schedule (Just start) (addGregorianMonthsClip 3 start) (3, Months) cal
+            ModifiedFollowing ModifiedFollowing Forward False Nothing Nothing
+          onLeg <- CF.overnightLeg sch on (NE.fromList [1000000]) a360 ModifiedFollowing [] []
+          deps <- CF.fixingDependencies onLeg
+          onName <- Index.name on
+          map fst deps `shouldBe` replicate (length deps) onName
+          -- One key per averaged business day, not the single date FloatingRateCoupon would give.
+          length deps `shouldSatisfy` (> 50)
+          all (uncurry (<)) (zip (map snd deps) (drop 1 (map snd deps))) `shouldBe` True
 
     describe "Index fixings" $ do
       it "calculates convention-aware fixing, value, and maturity dates" $
