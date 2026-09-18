@@ -97,6 +97,7 @@ module QuantLib.TermStructure.Yield
 
     -- * Inspectors
   , HasHelperUnderlying(..)
+  , rateHelperFixingDependencies
   , forwardRate
   , forwardRateBetweenTimes
   , zeroRate
@@ -710,6 +711,28 @@ futuresRateHelper price terms = case terms of
 
 -- |The futures-vs-forward convexity adjustment this helper was built with (0 if none was given).
 {#fun qlOvernightIndexFutureRateHelperConvexityAdjustment as overnightIndexFutureRateHelperConvexityAdjustment{withGenRateHelper*`OvernightIndexFutureRateHelper',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |Every fixing this rate helper reads from the store, as @(index name, fixing date)@ pairs.  A
+-- bootstrapped curve cannot be asked what it was built from -- @PiecewiseYieldCurve@ is a
+-- template with no instruments accessor, and an @Observer@ does not expose the observables it
+-- registered with -- so a curve's fixing dependencies are the union of its helpers', and this
+-- answers for one helper.  It walks the helper's underlying instrument the way
+-- 'QuantLib.CashFlow.fixingDependencies' walks a leg, and names each index by
+-- 'QuantLib.Index.name', the key QuantLib\'s process-global fixing store uses.
+--
+-- A swap, OIS, basis-swap or bond helper answers from its underlying.  A deposit, FRA or futures
+-- helper reads no stored fixing and correctly reports none.  A helper whose underlying QuantLib
+-- keeps private -- BMA, multiple resets, cross-currency -- also reports none, and there an empty
+-- list means \"not reachable\" rather than \"needs nothing\".
+--
+-- The dates follow the evaluation date, because a relative-date helper re-initialises its
+-- schedule when that date moves: call this under the date whose fixings are being asked about.
+-- Duplicates are not removed, the same as for a leg.
+rateHelperFixingDependencies :: GenRateHelper rh -> IO [(String, Day)]
+rateHelperFixingDependencies h = uncurry zip <$> qlRateHelperFixingDependencies h
+{#fun qlRateHelperFixingDependencies{withRateHelper*`GenRateHelper rh'
+  ,preArray-`[String]'&peekCStringArray*,preArray-`[Day]'&peekDayArray*
+  ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Rate helper for bootstrapping over CME SOFR futures. Compounds overnight SOFR from the third
 -- Wednesday of 'referenceMonth'\/'referenceYear' (inclusive) to the third Wednesday of the

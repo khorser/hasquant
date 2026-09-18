@@ -131,6 +131,7 @@ namespace hasquant {
 #include <ql/experimental/credit/gaussianlhplossmodel.hpp>
 #include <ql/experimental/credit/syntheticcdo.hpp>
 #include <ql/experimental/credit/nthtodefault.hpp>
+#include <ql/experimental/termstructures/basisswapratehelpers.hpp>
 
 #include "qlaux.h"
 using namespace QuantLib;
@@ -1425,6 +1426,56 @@ void qlLegFixingDependencies(Leg *leg, unsigned *nameLen, char ***names, unsigne
   try {const Leg& l = *arg(leg);
     std::vector<std::pair<std::string, Date> > deps;
     for (unsigned i = 0; i < l.size(); ++i) collectFixingDependencies(l[i], deps);
+    const unsigned n = (unsigned)deps.size();
+    char **ns = nameResult.allocate(n);
+    int *ds = dateResult.allocate(n);
+    for (unsigned i = 0; i < n; ++i) {
+      ns[i] = tracedup(deps[i].first.c_str());
+      ds[i] = deps[i].second.serialNumber();
+    }
+    nameResult.commit(); dateResult.commit();
+  } catch (std::exception& er) {*e = tracedup(er.what());}}
+// The same walk for one of the rate helpers a curve was bootstrapped from. A bootstrapped curve
+// cannot be asked what it was built from: PiecewiseYieldCurve is a template whose only accessors
+// are maxDate/times/dates/data/nodes, and Observer does not expose the observables it registered
+// with, so the helper list stays the caller's. A helper whose underlying instrument QuantLib
+// hands back owns Legs, and a Leg is qlLegFixingDependencies' walk -- the underlying is reached
+// through the only accessors 1.43 gives: SwapRateHelper::swap, OISRateHelper::swap,
+// BondHelper::bond, and the two basis-swap helpers' swap.
+//
+// A deposit, FRA or futures helper contributes nothing, and that is an answer rather than a gap:
+// the convention forms of the first two build their index with a "no-fix" name and the index
+// forms price with fixing(d, true), which forecasts today's rather than reading the store
+// (ratehelpers.cpp:188,214,295,364). A helper whose underlying QuantLib keeps private -- BMA,
+// multiple-resets, cross-currency -- also contributes nothing, and there this walk cannot tell
+// "needs none" from "cannot see it"; the caller is told so in the binding's documentation.
+//
+// The dates follow Settings::evaluationDate, because a relative-date helper re-initialises its
+// schedule when that date moves. Call it on the date whose fixings are being asked about.
+//
+// The alias is local for the reason qlTermStructure.cpp gives where it declares its own:
+// RateHelper is a typedef, so qlaux.h cannot alias it from a forward declaration.
+using QlRateHelper = shared_ptr<RateHelper>;
+void qlRateHelperFixingDependencies(QlRateHelper *helper, unsigned *nameLen, char ***names, unsigned *dateLen, int **dates, char **e) {
+  OutStringArrayResult nameResult(nameLen, names);
+  OutArrayResult<int> dateResult(dateLen, dates);
+  try {const ext::shared_ptr<RateHelper>& h = *arg(helper);
+    ext::shared_ptr<Swap> sw;
+    ext::shared_ptr<Bond> bond;
+    if (auto x = ext::dynamic_pointer_cast<SwapRateHelper>(h)) sw = x->swap();
+    else if (auto x = ext::dynamic_pointer_cast<OISRateHelper>(h)) sw = x->swap();
+    else if (auto x = ext::dynamic_pointer_cast<IborIborBasisSwapRateHelper>(h)) sw = x->swap();
+    else if (auto x = ext::dynamic_pointer_cast<OvernightIborBasisSwapRateHelper>(h)) sw = x->swap();
+    else if (auto x = ext::dynamic_pointer_cast<BondHelper>(h)) bond = x->bond();
+    std::vector<std::pair<std::string, Date> > deps;
+    if (sw) for (Size j = 0; j < sw->numberOfLegs(); ++j) {
+      const Leg& l = sw->leg(j);
+      for (Size i = 0; i < l.size(); ++i) collectFixingDependencies(l[i], deps);
+    }
+    if (bond) {
+      const Leg& l = bond->cashflows();
+      for (Size i = 0; i < l.size(); ++i) collectFixingDependencies(l[i], deps);
+    }
     const unsigned n = (unsigned)deps.size();
     char **ns = nameResult.allocate(n);
     int *ds = dateResult.allocate(n);

@@ -11,7 +11,7 @@ import Test.QuickCheck((==>))
 import Data.Time.Calendar
 import Data.Char(isDigit)
 import Data.Maybe(catMaybes)
-import Data.List(isInfixOf)
+import Data.List(isInfixOf, nub)
 import Data.List.NonEmpty(NonEmpty, fromList)
 import qualified Data.Vector.Storable as V
 import Text.Read(readMaybe)
@@ -27,6 +27,7 @@ import QuantLib.TermStructure hiding(maxDate)
 import qualified QuantLib.TermStructure as TS
 import QuantLib.Math
 import QuantLib.Index(addFixing)
+import qualified QuantLib.Index as Index(name)
 import QuantLib.Index.InterestRate(iborIndex, IborConstructor(..), overnightIborIndex, OvernightIborIndexType(Sofr), liborSwapIndex, LiborSwapIndexType(EurLiborSwapIsdaFixA))
 import QuantLib.Model(hullWhite, extendedCoxIngersollRoss, discountBond, asAffineModel, hestonModel, params)
 import QuantLib.Currency(currency, Ccy(..))
@@ -412,6 +413,89 @@ spec = do
           bond <- fixedRateBondHelper price 3 100.0 sch [0.04] thirty360dc Following 100.0 Nothing
                     >>= helperInstrument
           Bond.maturityDate bond `shouldReturn` Just bondMaturity
+
+    -- Which fixings a bootstrapped curve reads from the store. The curve itself cannot say:
+    -- PiecewiseYieldCurve is a template with no instruments accessor and an Observer does not
+    -- expose what it registered with, so the question is asked of the helpers one at a time and
+    -- rateHelperFixingDependencies walks each helper's underlying instrument.
+    describe "rate helper fixing dependencies" $ do
+      it "reads a swap helper's fixings off its underlying swap" $
+        Context.keepingSettingsGc $ do
+          Context.setEvaluationDate (Just (2 `january` 2024))
+          cal <- calendar TARGET
+          thirty360dc <- dayCounter Thirty360BondBasis
+          q <- Quote.simpleQuote 0.03
+          ibor <- iborIndex Euribor6M Nothing
+          name <- Index.name ibor
+          deps <- swapRateHelperFromConventions q (5, Years) cal Annual Unadjusted thirty360dc ibor Nothing (0, Days) Nothing
+            Nothing LastRelevantDate Nothing False Nothing Nothing Nothing
+            >>= asRateHelper >>= rateHelperFixingDependencies
+          -- One key per semi-annual coupon, named as QuantLib's fixing store names it, and the
+          -- first of them is today: a spot-starting helper's first coupon fixes on the
+          -- evaluation date, which is the fixing a shifted scenario has to supply.
+          map fst deps `shouldBe` replicate 10 name
+          take 1 (map snd deps) `shouldBe` [2 `january` 2024]
+
+      it "reports none for the helpers that read no stored fixing" $
+        Context.keepingSettingsGc $ do
+          Context.setEvaluationDate (Just (2 `january` 2024))
+          cal <- calendar TARGET
+          actual360dc <- dayCounter (Actual360 False)
+          q <- Quote.simpleQuote 0.03
+          ibor <- iborIndex Euribor6M Nothing
+          -- A deposit or FRA helper's convention form builds a "no-fix" index and its index form
+          -- forecasts today's fixing rather than reading it, so an empty list is the answer here
+          -- and not a gap in the walk.
+          (depositRateHelper q (6, Months) 2 cal ModifiedFollowing True actual360dc
+            >>= rateHelperFixingDependencies) `shouldReturn` []
+          (fraRateHelper q (FraMonthsFromIndex 3 ibor) LastRelevantDate Nothing True
+            >>= rateHelperFixingDependencies) `shouldReturn` []
+
+      it "reports one key per averaged business day for an OIS helper" $
+        Context.keepingSettingsGc $ do
+          Context.setEvaluationDate (Just (2 `january` 2024))
+          q <- Quote.simpleQuote 0.03
+          ois <- overnightIborIndex Sofr Nothing
+          deps <- oisRateHelper 2 (1, Years) (0, Days) q ois Nothing
+            >>= asRateHelper >>= rateHelperFixingDependencies
+          -- The overnight leg of a 1Y OIS is one annual coupon: a hand-written list would carry
+          -- one date, where the coupon reads a fixing on every business day it compounds over.
+          length deps `shouldSatisfy` (> 200)
+
+      it "reports both legs' indexes for a basis swap helper" $
+        Context.keepingSettingsGc $ do
+          Context.setEvaluationDate (Just (2 `january` 2024))
+          cal <- calendar TARGET
+          actual365dc <- dayCounter Actual365FixedStandard
+          q <- Quote.simpleQuote 0.03
+          curve <- flatForward (SettlementDays 0 cal) q actual365dc IR.Continuous Annual
+          i3 <- iborIndex Euribor3M (Just curve)
+          i6 <- iborIndex Euribor6M (Just curve)
+          names <- mapM Index.name [i3, i6]
+          basis <- Quote.simpleQuote 0.001
+          deps <- iborIborBasisSwapRateHelper basis (2, Years) 2 cal ModifiedFollowing False i3 i6 curve True
+            >>= rateHelperFixingDependencies
+          -- A basis swap is two floating legs, so both indexes are dependencies; a walk that
+          -- stopped at the helper's "own" index would report half of what the curve reads.
+          nub (map fst deps) `shouldMatchList` names
+
+      it "re-dates with the evaluation date" $
+        Context.keepingSettingsGc $ do
+          Context.setEvaluationDate (Just (2 `january` 2024))
+          cal <- calendar TARGET
+          thirty360dc <- dayCounter Thirty360BondBasis
+          q <- Quote.simpleQuote 0.03
+          ibor <- iborIndex Euribor6M Nothing
+          h <- swapRateHelperFromConventions q (5, Years) cal Annual Unadjusted thirty360dc ibor Nothing (0, Days) Nothing
+            Nothing LastRelevantDate Nothing False Nothing Nothing Nothing >>= asRateHelper
+          before' <- rateHelperFixingDependencies h
+          -- A relative-date helper re-initialises its schedule when the evaluation date moves, so
+          -- the keys must be read under the date whose fixings are being asked about.
+          after' <- do
+            Context.setEvaluationDate (Just (1 `july` 2024))
+            rateHelperFixingDependencies h
+          take 1 (map snd after') `shouldBe` [1 `july` 2024]
+          map snd after' `shouldSatisfy` (/= map snd before')
 
     -- Drop Haskell's OptimizationMethod reference and collect before querying the curve. The
     -- fitting method and its clone must retain shared ownership for the curve's full lifetime.

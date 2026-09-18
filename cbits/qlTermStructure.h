@@ -428,6 +428,10 @@ extern "C" {
   QlZeroInflationTermStructure* qlInterpolatedZeroInflationCurve(int referenceDate, unsigned datesLen, int *dates, double *rates, int frequency, DayCounter* dayCounter,
       int seasKind, int seasBaseDate, int seasFreq, unsigned seasLen, double *seasFactors, int interpolator, int approximator, int approximatorArg, char **e);
 
+  // Every fixing this helper needs, as parallel (index name, fixing date) arrays. Defined beside
+  // qlLegFixingDependencies in qlInstrument.cpp, which is where the cash-flow walk it shares
+  // lives; see the comment there for which helpers can answer and which contribute nothing.
+  void qlRateHelperFixingDependencies(QlRateHelper *helper, unsigned *nameLen, char ***names, unsigned *dateLen, int **dates, char **e);
   QlRateHelper *qlDepositRateHelper(QlQuote *quote, int, int, unsigned fixDays, Calendar *calendar, int conv, int eom, DayCounter *dayCount, char **e);
   QlBondHelper *qlFixedRateBondHelper(QlQuote *quote, unsigned settlDays, double face, Schedule *sched, unsigned cLen, double *coupons, DayCounter *dayCount, int conv, double redemption, int issue, char **e);
   QlBondHelper *qlCPIBondHelper(QlQuote *quote, unsigned settlementDays, double faceAmount, double baseCPI, int obsLagLen, int obsLagUnit, QlZeroInflationIndex* index, int observationInterpolation, Schedule *schedule, unsigned couponsLen, double *coupons, DayCounter *accrualDayCounter, int paymentConvention, int issueDate, Calendar *paymentCalendar, char **e);
