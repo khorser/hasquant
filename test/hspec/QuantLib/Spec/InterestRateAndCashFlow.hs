@@ -1920,6 +1920,39 @@ spec evalDate = do
           length deps `shouldSatisfy` (> 50)
           all (uncurry (<)) (zip (map snd deps) (drop 1 (map snd deps))) `shouldBe` True
 
+      it "visits decorated CMS-spread coupons and retains generic spread-index expansion" $
+        Context.keepingSettingsGc $ do
+          let today' = 2 `january` 2024
+              accrualStart = 4 `january` 2024
+              paymentDate = 4 `january` 2025
+              baseDate = 3 `january` 2024
+          Context.setEvaluationDate (Just today')
+          cal <- calendar TARGET
+          dc <- dayCounter (Actual360 False)
+          q <- Quote.simpleQuote 0.03
+          curve <- flatForward (SettlementDays 0 cal) q dc IR.Continuous Annual
+          cms10y <- liborSwapIndex EurLiborSwapIsdaFixA (10, Years) (Just curve) (Just curve)
+          cms2y <- liborSwapIndex EurLiborSwapIsdaFixA (2, Years) (Just curve) (Just curve)
+          spread <- swapSpreadIndex "dependency-spread" cms10y cms2y 1.0 (-1.0)
+          name10y <- Index.name cms10y
+          name2y <- Index.name cms2y
+
+          decorated <- CF.cappedFlooredCmsSpreadCoupon paymentDate 100.0 accrualStart
+            paymentDate 2 spread 1.0 0.0 (Just 0.05) Nothing Nothing Nothing dc False
+            Nothing Preceding
+          decoratedFlow <- CF.asCashFlow decorated
+          decoratedLeg <- CF.cashFlowLeg [decoratedFlow]
+          decoratedDate <- fixingDate cms10y accrualStart
+          CF.fixingDependencies decoratedLeg `shouldReturn`
+            [(name10y, decoratedDate), (name2y, decoratedDate)]
+
+          indexed <- CF.indexedCashFlow 100.0 spread baseDate accrualStart paymentDate False
+          indexedFlow <- CF.asCashFlow indexed
+          indexedLeg <- CF.cashFlowLeg [indexedFlow]
+          CF.fixingDependencies indexedLeg `shouldReturn`
+            [(name10y, accrualStart), (name2y, accrualStart),
+             (name10y, baseDate), (name2y, baseDate)]
+
     describe "Index fixings" $ do
       it "calculates convention-aware fixing, value, and maturity dates" $
         Context.keepingSettingsGc $ do

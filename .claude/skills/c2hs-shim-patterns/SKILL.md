@@ -253,6 +253,21 @@ This is exactly the ownership pattern `Upcastable`/`AnyOf`/`freeUpcast`
 assume (free the upcast intermediate immediately after the consuming call
 returns); reuse it for a new hierarchy edge without re-deriving it.
 
+## Type-erased upstream collections
+
+When an upstream collection erases concrete objects to a polymorphic base, use its public
+`AcyclicVisitor`/`Visitor<T>` interface before adding a `dynamic_pointer_cast` cascade. Implement a
+`Visitor<Base>` fallback when the base `accept` fails for unsupported visitors and the binding's
+answer for unknown leaves is intentionally empty. Exact visitor callbacks replace order-sensitive
+"most-derived first" tests while keeping the concrete accessor statically typed.
+
+Read every participating `accept` implementation before recursing through decorators. Most
+decorators only visit themselves and require the binding's visitor to visit their `underlying()`;
+`StrippedCappedFlooredCoupon::accept` visits its underlying first, so its exact callback must be a
+no-op or dependencies are duplicated. The visitor machinery's own upstream `dynamic_cast` is the
+supported dispatch. A local cast remains justified when the erased base exposes neither a visitor
+nor a suitable virtual, as with `Index` and `SwapSpreadIndex` dependency expansion.
+
 ## Multiple inheritance (secondary interfaces)
 
 **A secondary C++ base is a public capability, not a second `Upcastable`

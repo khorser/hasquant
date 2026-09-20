@@ -312,22 +312,17 @@ namespace {
   };
 
   // Every fixing a cash flow needs, as (index name, fixing date) pairs, for dependency
-  // extraction. QuantLib 1.43 has no requiredFixings() API and no virtual that answers this, so
-  // the walk is a dynamic_pointer_cast cascade over the cash-flow hierarchy. Two ordering rules
-  // make it correct:
-  //   - a decorating coupon (capped/floored, stripped, digital) is unwrapped first, because it
-  //     derives from FloatingRateCoupon and would otherwise answer for its underlying with a
-  //     single fixing date;
-  //   - the most derived coupon type wins, because a coupon that averages or compounds several
-  //     fixings (overnight, BMA, multiple resets) reports them through its own fixingDates(),
-  //     while FloatingRateCoupon::fixingDate() would give just one.
+  // extraction. QuantLib 1.43 has no requiredFixings() API, so its acyclic visitor supplies the
+  // concrete coupon type after a Leg has erased it to CashFlow.
   // A cash flow that carries no index -- a redemption, a fixed-rate coupon, a plain payment --
   // needs no fixing and contributes nothing; that is not an error.
   void collectIndexFixing(const ext::shared_ptr<Index>& index, const Date& date,
                           std::vector<std::pair<std::string, Date> >& out) {
     if (!index || date == Date()) return;
     // A spread index holds no fixings of its own: SwapSpreadIndex::pastFixing reads both
-    // underlying swap indexes, so those are the names the store must carry.
+    // underlying swap indexes, so those are the names the store must carry. Index has no
+    // accept() or dependency virtual, and generic IndexedCashFlow accepts a base Index, making
+    // this the one upstream-forced downcast in the walk.
     if (auto spread = ext::dynamic_pointer_cast<SwapSpreadIndex>(index)) {
       collectIndexFixing(spread->swapIndex1(), date, out);
       collectIndexFixing(spread->swapIndex2(), date, out);
@@ -341,56 +336,118 @@ namespace {
   // answering (cpicoupon.cpp:159-166). That is a coupon with no base dependency, not a missing
   // one, so the throw means "nothing to collect".
   template <class T>
-  void collectBaseDate(const ext::shared_ptr<T>& c,
+  void collectBaseDate(const T& c,
                        std::vector<std::pair<std::string, Date> >& out) {
-    try {collectIndexFixing(c->index(), c->baseDate(), out);} catch (const std::exception&) {}
+    try {collectIndexFixing(c.index(), c.baseDate(), out);} catch (const std::exception&) {}
   }
+
+  class FixingDependencyVisitor : public AcyclicVisitor,
+                                  public Visitor<CashFlow>,
+                                  public Visitor<CappedFlooredOvernightIndexedCoupon>,
+                                  public Visitor<StrippedCappedFlooredCoupon>,
+                                  public Visitor<DigitalCoupon>,
+                                  public Visitor<CappedFlooredCoupon>,
+                                  public Visitor<AverageBMACoupon>,
+                                  public Visitor<MultipleResetsCoupon>,
+                                  public Visitor<OvernightIndexedCoupon>,
+                                  public Visitor<CmsSpreadCoupon>,
+                                  public Visitor<FloatingRateCoupon>,
+                                  public Visitor<CPICoupon>,
+                                  public Visitor<InflationCoupon>,
+                                  public Visitor<IndexedCashFlow> {
+    std::vector<std::pair<std::string, Date> >& out_;
+
+    void accept(const ext::shared_ptr<CashFlow>& cf) {
+      if (cf) cf->accept(*this);
+    }
+
+  public:
+    explicit FixingDependencyVisitor(std::vector<std::pair<std::string, Date> >& out)
+    : out_(out) {}
+
+    void visit(CashFlow&) override {}
+    void visit(CappedFlooredOvernightIndexedCoupon& c) override {accept(c.underlying());}
+
+    // StrippedCappedFlooredCoupon::accept visits its underlying before visiting itself.
+    void visit(StrippedCappedFlooredCoupon&) override {}
+
+    void visit(DigitalCoupon& c) override {accept(c.underlying());}
+    void visit(CappedFlooredCoupon& c) override {accept(c.underlying());}
+
+    void visit(AverageBMACoupon& c) override {
+      for (const Date& d : c.fixingDates()) collectIndexFixing(c.index(), d, out_);
+    }
+    void visit(MultipleResetsCoupon& c) override {
+      for (const Date& d : c.fixingDates()) collectIndexFixing(c.index(), d, out_);
+    }
+    void visit(OvernightIndexedCoupon& c) override {
+      for (const Date& d : c.fixingDates()) collectIndexFixing(c.index(), d, out_);
+    }
+    void visit(CmsSpreadCoupon& c) override {
+      const ext::shared_ptr<SwapSpreadIndex>& spread = c.swapSpreadIndex();
+      if (!spread || c.fixingDate() == Date()) return;
+      collectIndexFixing(spread->swapIndex1(), c.fixingDate(), out_);
+      collectIndexFixing(spread->swapIndex2(), c.fixingDate(), out_);
+    }
+    void visit(FloatingRateCoupon& c) override {
+      collectIndexFixing(c.index(), c.fixingDate(), out_);
+    }
+    void visit(CPICoupon& c) override {
+      collectIndexFixing(c.index(), c.fixingDate(), out_);
+      collectBaseDate(c, out_);
+    }
+    void visit(InflationCoupon& c) override {
+      collectIndexFixing(c.index(), c.fixingDate(), out_);
+    }
+    void visit(IndexedCashFlow& c) override {
+      collectIndexFixing(c.index(), c.fixingDate(), out_);
+      collectBaseDate(c, out_);
+    }
+  };
 
   void collectFixingDependencies(const ext::shared_ptr<CashFlow>& cf,
                                  std::vector<std::pair<std::string, Date> >& out) {
     if (!cf) return;
-
-    // 1. Decorators: ask what they decorate.
-    if (auto c = ext::dynamic_pointer_cast<CappedFlooredOvernightIndexedCoupon>(cf)) {
-      collectFixingDependencies(c->underlying(), out); return;}
-    if (auto c = ext::dynamic_pointer_cast<StrippedCappedFlooredCoupon>(cf)) {
-      collectFixingDependencies(c->underlying(), out); return;}
-    if (auto c = ext::dynamic_pointer_cast<DigitalCoupon>(cf)) {
-      collectFixingDependencies(c->underlying(), out); return;}
-    if (auto c = ext::dynamic_pointer_cast<CappedFlooredCoupon>(cf)) {
-      collectFixingDependencies(c->underlying(), out); return;}
-
-    // 2. Coupons that need several fixings, most derived first.
-    if (auto c = ext::dynamic_pointer_cast<AverageBMACoupon>(cf)) {
-      for (const Date& d : c->fixingDates()) collectIndexFixing(c->index(), d, out);
-      return;}
-    if (auto c = ext::dynamic_pointer_cast<MultipleResetsCoupon>(cf)) {
-      for (const Date& d : c->fixingDates()) collectIndexFixing(c->index(), d, out);
-      return;}
-    if (auto c = ext::dynamic_pointer_cast<OvernightIndexedCoupon>(cf)) {
-      for (const Date& d : c->fixingDates()) collectIndexFixing(c->index(), d, out);
-      return;}
-
-    // 3. One fixing off an interest-rate index: Ibor, CMS, CMS spread, range accrual.
-    if (auto c = ext::dynamic_pointer_cast<FloatingRateCoupon>(cf)) {
-      collectIndexFixing(c->index(), c->fixingDate(), out); return;}
-
-    // 4. Inflation coupons sit beside FloatingRateCoupon under Coupon, not below it. A CPI coupon
-    //    also reads its index on the base date, which is a stored fixing like any other.
-    if (auto c = ext::dynamic_pointer_cast<CPICoupon>(cf)) {
-      collectIndexFixing(c->index(), c->fixingDate(), out);
-      collectBaseDate(c, out);
-      return;}
-    if (auto c = ext::dynamic_pointer_cast<InflationCoupon>(cf)) {
-      collectIndexFixing(c->index(), c->fixingDate(), out); return;}
-
-    // 5. Index-linked payments that are not coupons: CPICashFlow, ZeroInflationCashFlow,
-    //    EquityCashFlow. Their amount is a ratio, so both dates are required.
-    if (auto c = ext::dynamic_pointer_cast<IndexedCashFlow>(cf)) {
-      collectIndexFixing(c->index(), c->fixingDate(), out);
-      collectBaseDate(c, out);
-      return;}
+    FixingDependencyVisitor visitor(out);
+    cf->accept(visitor);
   }
+
+  void collectLegFixingDependencies(const Leg& leg,
+                                    std::vector<std::pair<std::string, Date> >& out) {
+    for (const auto& cf : leg) collectFixingDependencies(cf, out);
+  }
+
+  void collectSwapFixingDependencies(const Swap& swap,
+                                     std::vector<std::pair<std::string, Date> >& out) {
+    for (Size j = 0; j < swap.numberOfLegs(); ++j)
+      collectLegFixingDependencies(swap.leg(j), out);
+  }
+
+  class RateHelperFixingDependencyVisitor : public AcyclicVisitor,
+                                            public Visitor<RateHelper>,
+                                            public Visitor<SwapRateHelper>,
+                                            public Visitor<OISRateHelper>,
+                                            public Visitor<IborIborBasisSwapRateHelper>,
+                                            public Visitor<OvernightIborBasisSwapRateHelper>,
+                                            public Visitor<BondHelper> {
+    std::vector<std::pair<std::string, Date> >& out_;
+
+  public:
+    explicit RateHelperFixingDependencyVisitor(
+        std::vector<std::pair<std::string, Date> >& out) : out_(out) {}
+
+    // Unsupported helpers preserve the existing "no reachable dependency" answer.
+    void visit(RateHelper&) override {}
+    void visit(SwapRateHelper& h) override {collectSwapFixingDependencies(*h.swap(), out_);}
+    void visit(OISRateHelper& h) override {collectSwapFixingDependencies(*h.swap(), out_);}
+    void visit(IborIborBasisSwapRateHelper& h) override {
+      collectSwapFixingDependencies(*h.swap(), out_);
+    }
+    void visit(OvernightIborBasisSwapRateHelper& h) override {
+      collectSwapFixingDependencies(*h.swap(), out_);
+    }
+    void visit(BondHelper& h) override {collectLegFixingDependencies(h.bond()->cashflows(), out_);}
+  };
 }
 
 #ifdef QLTRACK_ALLOCATIONS
@@ -1425,7 +1482,7 @@ void qlLegFixingDependencies(Leg *leg, unsigned *nameLen, char ***names, unsigne
   OutArrayResult<int> dateResult(dateLen, dates);
   try {const Leg& l = *arg(leg);
     std::vector<std::pair<std::string, Date> > deps;
-    for (unsigned i = 0; i < l.size(); ++i) collectFixingDependencies(l[i], deps);
+    collectLegFixingDependencies(l, deps);
     const unsigned n = (unsigned)deps.size();
     char **ns = nameResult.allocate(n);
     int *ds = dateResult.allocate(n);
@@ -1460,22 +1517,9 @@ void qlRateHelperFixingDependencies(QlRateHelper *helper, unsigned *nameLen, cha
   OutStringArrayResult nameResult(nameLen, names);
   OutArrayResult<int> dateResult(dateLen, dates);
   try {const ext::shared_ptr<RateHelper>& h = *arg(helper);
-    ext::shared_ptr<Swap> sw;
-    ext::shared_ptr<Bond> bond;
-    if (auto x = ext::dynamic_pointer_cast<SwapRateHelper>(h)) sw = x->swap();
-    else if (auto x = ext::dynamic_pointer_cast<OISRateHelper>(h)) sw = x->swap();
-    else if (auto x = ext::dynamic_pointer_cast<IborIborBasisSwapRateHelper>(h)) sw = x->swap();
-    else if (auto x = ext::dynamic_pointer_cast<OvernightIborBasisSwapRateHelper>(h)) sw = x->swap();
-    else if (auto x = ext::dynamic_pointer_cast<BondHelper>(h)) bond = x->bond();
     std::vector<std::pair<std::string, Date> > deps;
-    if (sw) for (Size j = 0; j < sw->numberOfLegs(); ++j) {
-      const Leg& l = sw->leg(j);
-      for (Size i = 0; i < l.size(); ++i) collectFixingDependencies(l[i], deps);
-    }
-    if (bond) {
-      const Leg& l = bond->cashflows();
-      for (Size i = 0; i < l.size(); ++i) collectFixingDependencies(l[i], deps);
-    }
+    RateHelperFixingDependencyVisitor visitor(deps);
+    h->accept(visitor);
     const unsigned n = (unsigned)deps.size();
     char **ns = nameResult.allocate(n);
     int *ds = dateResult.allocate(n);
