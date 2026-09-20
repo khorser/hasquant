@@ -132,6 +132,8 @@ namespace hasquant {
 #include <ql/experimental/credit/syntheticcdo.hpp>
 #include <ql/experimental/credit/nthtodefault.hpp>
 #include <ql/experimental/termstructures/basisswapratehelpers.hpp>
+#include <ql/experimental/termstructures/crosscurrencyratehelpers.hpp>
+#include <ql/termstructures/yield/multipleresetsswaphelper.hpp>
 
 #include "qlaux.h"
 using namespace QuantLib;
@@ -429,14 +431,33 @@ namespace {
                                             public Visitor<OISRateHelper>,
                                             public Visitor<IborIborBasisSwapRateHelper>,
                                             public Visitor<OvernightIborBasisSwapRateHelper>,
-                                            public Visitor<BondHelper> {
+                                            public Visitor<BondHelper>,
+                                            public Visitor<BMASwapRateHelper>,
+                                            public Visitor<MultipleResetsSwapRateHelper>,
+                                            public Visitor<ConstNotionalCrossCurrencyBasisSwapRateHelper>,
+                                            public Visitor<MtMCrossCurrencyBasisSwapRateHelper>,
+                                            public Visitor<ConstNotionalCrossCurrencySwapRateHelper> {
     std::vector<std::pair<std::string, Date> >& out_;
+    bool opaque_;
+
+    // BMA and multiple-resets keep their swap in a protected member: a derived class may name
+    // it through a pointer to member, which reaches it without touching QuantLib.
+    struct BMAPeek : BMASwapRateHelper {
+      static const ext::shared_ptr<BMASwap>& swap(BMASwapRateHelper& h) {return h.*(&BMAPeek::swap_);}
+    };
+    struct MultipleResetsPeek : MultipleResetsSwapRateHelper {
+      static const ext::shared_ptr<MultipleResetsSwap>& swap(MultipleResetsSwapRateHelper& h) {
+        return h.*(&MultipleResetsPeek::swap_);}
+    };
 
   public:
     explicit RateHelperFixingDependencyVisitor(
-        std::vector<std::pair<std::string, Date> >& out) : out_(out) {}
+        std::vector<std::pair<std::string, Date> >& out) : out_(out), opaque_(false) {}
 
-    // Unsupported helpers preserve the existing "no reachable dependency" answer.
+    // True when the helper's instrument is one this walk cannot see, so an empty answer is not "needs nothing".
+    bool opaque() const {return opaque_;}
+
+    // Deposit, FRA and futures helpers land here: they read no stored fixing.
     void visit(RateHelper&) override {}
     void visit(SwapRateHelper& h) override {collectSwapFixingDependencies(*h.swap(), out_);}
     void visit(OISRateHelper& h) override {collectSwapFixingDependencies(*h.swap(), out_);}
@@ -447,6 +468,14 @@ namespace {
       collectSwapFixingDependencies(*h.swap(), out_);
     }
     void visit(BondHelper& h) override {collectLegFixingDependencies(h.bond()->cashflows(), out_);}
+    void visit(BMASwapRateHelper& h) override {collectSwapFixingDependencies(*BMAPeek::swap(h), out_);}
+    void visit(MultipleResetsSwapRateHelper& h) override {
+      collectSwapFixingDependencies(*MultipleResetsPeek::swap(h), out_);
+    }
+    // The legs are built in the constructor and only their dates are kept.
+    void visit(ConstNotionalCrossCurrencyBasisSwapRateHelper&) override {opaque_ = true;}
+    void visit(MtMCrossCurrencyBasisSwapRateHelper&) override {opaque_ = true;}
+    void visit(ConstNotionalCrossCurrencySwapRateHelper&) override {opaque_ = true;}
   };
 }
 
@@ -1498,14 +1527,14 @@ void qlLegFixingDependencies(Leg *leg, unsigned *nameLen, char ***names, unsigne
 // with, so the helper list stays the caller's. A helper whose underlying instrument QuantLib
 // hands back owns Legs, and a Leg is qlLegFixingDependencies' walk -- the underlying is reached
 // through the only accessors 1.43 gives: SwapRateHelper::swap, OISRateHelper::swap,
-// BondHelper::bond, and the two basis-swap helpers' swap.
+// BondHelper::bond, and the two basis-swap helpers' swap; BMA and multiple-resets keep theirs
+// protected, which a derived-class pointer-to-member reaches.
 //
 // A deposit, FRA or futures helper contributes nothing, and that is an answer rather than a gap:
 // the convention forms of the first two build their index with a "no-fix" name and the index
 // forms price with fixing(d, true), which forecasts today's rather than reading the store
-// (ratehelpers.cpp:188,214,295,364). A helper whose underlying QuantLib keeps private -- BMA,
-// multiple-resets, cross-currency -- also contributes nothing, and there this walk cannot tell
-// "needs none" from "cannot see it"; the caller is told so in the binding's documentation.
+// (ratehelpers.cpp:188,214,295,364). A cross-currency helper stores no legs
+// at all, so *reachable is set to 0 for it: an empty answer with reachable == 0 is "cannot see it".
 //
 // The dates follow Settings::evaluationDate, because a relative-date helper re-initialises its
 // schedule when that date moves. Call it on the date whose fixings are being asked about.
@@ -1513,13 +1542,14 @@ void qlLegFixingDependencies(Leg *leg, unsigned *nameLen, char ***names, unsigne
 // The alias is local for the reason qlTermStructure.cpp gives where it declares its own:
 // RateHelper is a typedef, so qlaux.h cannot alias it from a forward declaration.
 using QlRateHelper = shared_ptr<RateHelper>;
-void qlRateHelperFixingDependencies(QlRateHelper *helper, unsigned *nameLen, char ***names, unsigned *dateLen, int **dates, char **e) {
+void qlRateHelperFixingDependencies(QlRateHelper *helper, unsigned *nameLen, char ***names, unsigned *dateLen, int **dates, int *reachable, char **e) {
   OutStringArrayResult nameResult(nameLen, names);
   OutArrayResult<int> dateResult(dateLen, dates);
   try {const ext::shared_ptr<RateHelper>& h = *arg(helper);
     std::vector<std::pair<std::string, Date> > deps;
     RateHelperFixingDependencyVisitor visitor(deps);
     h->accept(visitor);
+    *reachable = !visitor.opaque();
     const unsigned n = (unsigned)deps.size();
     char **ns = nameResult.allocate(n);
     int *ds = dateResult.allocate(n);
