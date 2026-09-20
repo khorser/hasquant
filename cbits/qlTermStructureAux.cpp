@@ -1,5 +1,4 @@
 #include <ql/shared_ptr.hpp>
-#include <type_traits>
 using QuantLib::ext::shared_ptr;
 #include "qlTermStructureAux.h"
 namespace hasquant {

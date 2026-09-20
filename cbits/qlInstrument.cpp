@@ -142,8 +142,6 @@ using namespace QuantLib;
 #include "qlTermStructureAux.h"
 
 #include <cstring>
-#include <any>
-#include <typeinfo>
 
 #ifdef QLTRACK_ALLOCATIONS
 QL_TRACE_NAME(Leg)
@@ -198,10 +196,6 @@ namespace {
                                                     Quantity(*arg(types[i]), *arg(uoms[i]), amounts[i])));
     return pps;
   }
-  // ext::any is std::any in the Homebrew build and boost::any in the Docker build; both expose
-  // .type() returning a std::type_info-compatible name, so we classify by typeid equality rather
-  // than by a string name (which differs between the two).
-  //
   // r's fields are all zero/null on entry (the caller value-initialises the whole array), so any
   // field this leaves untouched is already the correct "unset" value.
   void fillResult(struct QlAdditionalResult &r, const ext::any &v) {
