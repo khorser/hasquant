@@ -7,11 +7,12 @@ Supported functionality includes
 - vanilla, barrier, Asian, compound, variance, and basket options;
 - vanilla, CMS, OIS, CDS, zero-coupon, and portfolio-credit (synthetic CDO, nth-to-default) swaps and instruments;
 - risk statistics (VaR, expected shortfall, ...) over caller-supplied samples;
+- large numeric vectors as `vector`'s storable `Vector Double` and dense matrices compatible with hmatrix;
 - and analytic, tree, finite-difference, and Monte Carlo engines from Black-Scholes through SABR and Heston.
 
 hasquant is a close-to-1:1 `c2hs` wrapper over QuantLib's C++ API, not a framework. It binds 2,000+ constructors and non-trivial methods (around 20% of QuantLib's surface) and deliberately excludes 2,000+ methods (mostly mutators or getters that only repeat constructor inputs).
 
-Type safety is a primary API goal. Phantom-typed pointers (`GenBond a`, `GenQuote a`, …) preserve the relevant part of QuantLib's object hierarchy in Haskell, so invalid object combinations are compile-time errors rather than failed casts at runtime. The C++ shim uses no runtime downcasts; bindings expose a concrete leaf type when one is needed. Enums mirror upstream values explicitly.
+Type safety is a primary API goal. Phantom-typed pointers (`GenBond a`, `GenQuote a`, …) preserve the relevant part of QuantLib's object hierarchy in Haskell, so invalid object combinations are compile-time errors rather than failed casts at runtime. The C++ shim uses runtime downcasts only where QuantLib's architecture dictates them; otherwise, bindings expose a concrete leaf type when one is needed. Enums mirror upstream values explicitly.
 
 hasquant does not depend on [QuantLib-SWIG](https://github.com/lballabio/QuantLib-SWIG). References to it identify prior art for API-shape decisions only.
 
