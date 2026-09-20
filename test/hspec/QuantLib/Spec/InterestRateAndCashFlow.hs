@@ -7,7 +7,7 @@ import Test.QuickCheck.Monadic as Q(monadicIO, run)
 import Test.QuickCheck((==>))
 
 import Control.Exception(bracket_)
-import Control.Monad(forM_)
+import Control.Monad(forM_, (>=>))
 import qualified Data.List.NonEmpty as NE
 import Data.Maybe(fromMaybe)
 import Data.Time.Calendar
@@ -1897,7 +1897,7 @@ spec evalDate = do
           swp <- Swap.vanillaSwap Swap.Payer 1000000 fixedSch 0.03 t360 floatSch idx 0 a360 Nothing Nothing
           n <- Swap.numberOfLegs swp
           n `shouldBe` 2
-          swapDeps <- concat <$> mapM (\j -> Swap.leg swp j >>= CF.fixingDependencies) ([0 .. n - 1] :: [Word])
+          swapDeps <- concat <$> mapM (Swap.leg swp >=> CF.fixingDependencies) ([0 .. n - 1] :: [Word])
           map fst swapDeps `shouldBe` map fst deps
           map snd swapDeps `shouldBe` map snd deps
 

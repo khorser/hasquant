@@ -427,7 +427,7 @@ spec = do
           q <- Quote.simpleQuote 0.03
           ibor <- iborIndex Euribor6M Nothing
           name <- Index.name ibor
-          deps <- swapRateHelperFromConventions q (5, Years) cal Annual Unadjusted thirty360dc ibor Nothing (0, Days) Nothing
+          (Just deps) <- swapRateHelperFromConventions q (5, Years) cal Annual Unadjusted thirty360dc ibor Nothing (0, Days) Nothing
             Nothing LastRelevantDate Nothing False Nothing Nothing Nothing
             >>= asRateHelper >>= rateHelperFixingDependencies
           -- One key per semi-annual coupon, named as QuantLib's fixing store names it, and the
@@ -447,16 +447,16 @@ spec = do
           -- forecasts today's fixing rather than reading it, so an empty list is the answer here
           -- and not a gap in the walk.
           (depositRateHelper q (6, Months) 2 cal ModifiedFollowing True actual360dc
-            >>= rateHelperFixingDependencies) `shouldReturn` []
+            >>= rateHelperFixingDependencies) `shouldReturn` Just []
           (fraRateHelper q (FraMonthsFromIndex 3 ibor) LastRelevantDate Nothing True
-            >>= rateHelperFixingDependencies) `shouldReturn` []
+            >>= rateHelperFixingDependencies) `shouldReturn` Just []
 
       it "reports one key per averaged business day for an OIS helper" $
         Context.keepingSettingsGc $ do
           Context.setEvaluationDate (Just (2 `january` 2024))
           q <- Quote.simpleQuote 0.03
           ois <- overnightIborIndex Sofr Nothing
-          deps <- oisRateHelper 2 (1, Years) (0, Days) q ois Nothing
+          (Just deps) <- oisRateHelper 2 (1, Years) (0, Days) q ois Nothing
             >>= asRateHelper >>= rateHelperFixingDependencies
           -- The overnight leg of a 1Y OIS is one annual coupon: a hand-written list would carry
           -- one date, where the coupon reads a fixing on every business day it compounds over.
@@ -473,7 +473,7 @@ spec = do
           i6 <- iborIndex Euribor6M (Just curve)
           names <- mapM Index.name [i3, i6]
           basis <- Quote.simpleQuote 0.001
-          deps <- iborIborBasisSwapRateHelper basis (2, Years) 2 cal ModifiedFollowing False i3 i6 curve True
+          (Just deps) <- iborIborBasisSwapRateHelper basis (2, Years) 2 cal ModifiedFollowing False i3 i6 curve True
             >>= rateHelperFixingDependencies
           -- A basis swap is two floating legs, so both indexes are dependencies; a walk that
           -- stopped at the helper's "own" index would report half of what the curve reads.
@@ -488,10 +488,10 @@ spec = do
           ibor <- iborIndex Euribor6M Nothing
           h <- swapRateHelperFromConventions q (5, Years) cal Annual Unadjusted thirty360dc ibor Nothing (0, Days) Nothing
             Nothing LastRelevantDate Nothing False Nothing Nothing Nothing >>= asRateHelper
-          before' <- rateHelperFixingDependencies h
+          (Just before') <- rateHelperFixingDependencies h
           -- A relative-date helper re-initialises its schedule when the evaluation date moves, so
           -- the keys must be read under the date whose fixings are being asked about.
-          after' <- do
+          (Just after') <- do
             Context.setEvaluationDate (Just (1 `july` 2024))
             rateHelperFixingDependencies h
           take 1 (map snd after') `shouldBe` [1 `july` 2024]
