@@ -455,6 +455,8 @@ lsmRegressMulti p order (RealMatrix fr fc fd) t (RealMatrix er ec ed) = qlLsmReg
 -- @FdmLinearOpCompositeDelegate@\/
 -- @FdmStepConditionDelegate@ (@SWIG\/fdm.i@): each callback crosses once per outer iteration over
 -- the whole grid array, not once per grid node.
+-- Internally each callback receives one native argument record, avoiding a wide mixed-argument
+-- callback ABI at the Haskell boundary; this does not affect the public callback types.
 --
 -- The grid is a plain @[Double]@ in and out -- no mesher, no @FdmInnerValueCalculator@, no
 -- @FdmSolverDesc@ is bound; callers manage their own grid geometry entirely in Haskell. Boundary

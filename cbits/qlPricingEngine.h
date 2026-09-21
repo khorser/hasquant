@@ -1,6 +1,17 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
+  // A single callback argument keeps the Haskell callback ABI independent of
+  // the platform's mixed integer/floating-point argument register rules.
+  typedef struct FdmCallbackArgs {
+    double s;
+    double t1;
+    double t2;
+    const double *input;
+    double *output;
+    unsigned size;
+    unsigned direction;
+  } FdmCallbackArgs;
   QlPricingEngine *qlDiscountingBondEngine(QlYieldTermStructure *ts, int f, char **e);
   QlPricingEngine* qlDiscountingPerpetualFuturesEngine(
     QlYieldTermStructure* domesticDiscountCurve, QlYieldTermStructure* foreignDiscountCurve,
@@ -275,10 +286,10 @@ extern "C" {
 
   void qlFreeFdmSchemeDesc(FdmSchemeDesc *o);
   void qlFdmRollback(unsigned opSize,
-    void (*applyFn)(const double* in, unsigned n, double t1, double t2, double* out),
-    void (*applyDirFn)(const double* in, unsigned n, unsigned direction, double t1, double t2, double* out),
-    void (*solveSplitFn)(const double* in, unsigned n, unsigned direction, double s, double t1, double t2, double* out),
-    void (*stepCondFn)(const double* in, unsigned n, double t, double* out),
+    void (*applyFn)(const FdmCallbackArgs*),
+    void (*applyDirFn)(const FdmCallbackArgs*),
+    void (*solveSplitFn)(const FdmCallbackArgs*),
+    void (*stepCondFn)(const FdmCallbackArgs*),
     unsigned stoppingTimesLen, double* stoppingTimes,
     FdmSchemeDesc* schemeDesc,
     unsigned gridLen, double* grid,
@@ -344,10 +355,10 @@ extern "C" {
   void qlFdmSolve(QlFdmMesher* mesher,
     QlFdmInnerValueCalculator* calculator,
     unsigned opSize,
-    void (*applyFn)(const double* in, unsigned n, double t1, double t2, double* out),
-    void (*applyDirFn)(const double* in, unsigned n, unsigned direction, double t1, double t2, double* out),
-    void (*solveSplitFn)(const double* in, unsigned n, unsigned direction, double s, double t1, double t2, double* out),
-    void (*stepCondFn)(const double* in, unsigned n, double t, double* out),
+    void (*applyFn)(const FdmCallbackArgs*),
+    void (*applyDirFn)(const FdmCallbackArgs*),
+    void (*solveSplitFn)(const FdmCallbackArgs*),
+    void (*stepCondFn)(const FdmCallbackArgs*),
     unsigned stoppingTimesLen, double* stoppingTimes,
     FdmSchemeDesc* schemeDesc,
     double maturity, double to, unsigned steps, unsigned dampingSteps,

@@ -81,6 +81,13 @@ erroring at the pragma:
   built-in passthrough out-marshaller, so write and name one: `peekPtr ::
   Ptr a -> IO (Ptr a); peekPtr = pure`, then `` ->`T'peekPtr* ``.
 
+## Wide callbacks on Windows
+
+For a callback with several mixed pointer, integer, and floating-point arguments, pass one
+C struct pointer instead of exposing the wide signature to `foreign import ccall "wrapper"`.
+Keep the struct private, assert its C++ layout, and decode it in Haskell; c2hs may represent the
+opaque struct pointer as `Ptr ()`, which is the correct wrapper-boundary type before a local cast.
+
 ## New pointer types need a C-parser-visible typedef
 
 **A brand-new pointer type needs `typedef struct T T;` in

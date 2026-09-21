@@ -148,6 +148,7 @@
 #include <ql/experimental/processes/all.hpp>
 #include <ql/experimental/variancegamma/all.hpp>
 #include <ql/legacy/libormarketmodels/lfmprocess.hpp>
+#include <cstddef>
 
 #include "qlaux.h"
 #include "qlPricingEngineAux.h"
@@ -164,6 +165,12 @@ QL_TRACE_NAME(SamplePath)
 #endif
 
 namespace {
+  static_assert(sizeof(void*) == 8 && offsetof(FdmCallbackArgs, s) == 0 &&
+                offsetof(FdmCallbackArgs, t1) == 8 && offsetof(FdmCallbackArgs, t2) == 16 &&
+                offsetof(FdmCallbackArgs, input) == 24 && offsetof(FdmCallbackArgs, output) == 32 &&
+                offsetof(FdmCallbackArgs, size) == 40 && offsetof(FdmCallbackArgs, direction) == 44,
+                "FdmCallbackArgs must match QuantLib.Internal.Type's decoder");
+
   shared_ptr<StochasticProcess1D::discretization> createDiscretization1D(int n) {
     switch (n) {
     case hasquant::EulerDiscretization:
@@ -182,14 +189,11 @@ namespace {
   // DouglasScheme::step actually calls (size/setTime are plain state, not callbacks -- see below)
   // are implemented; apply_mixed/preconditioner QL_FAIL, so only schemes that never need them
   // (Douglas, Crank-Nicolson in 1D) work through this hook.
-  using FdmApplyFun = void (*)(const double* in, unsigned n, double t1, double t2, double* out);
-  using FdmApplyDirectionFun = void (*)(const double* in, unsigned n, unsigned direction, double t1, double t2, double* out);
-  using FdmSolveSplittingFun = void (*)(const double* in, unsigned n, unsigned direction, double s, double t1, double t2, double* out);
-  using FdmStepConditionFun = void (*)(const double* in, unsigned n, double t, double* out);
+  using FdmCallbackFun = void (*)(const FdmCallbackArgs*);
 
   class HsFdmLinearOpComposite : public FdmLinearOpComposite {
   public:
-    HsFdmLinearOpComposite(Size size, FdmApplyFun applyFn, FdmApplyDirectionFun applyDirFn, FdmSolveSplittingFun solveSplitFn)
+    HsFdmLinearOpComposite(Size size, FdmCallbackFun applyFn, FdmCallbackFun applyDirFn, FdmCallbackFun solveSplitFn)
     : size_(size), applyFn_(applyFn), applyDirFn_(applyDirFn), solveSplitFn_(solveSplitFn), t1_(0.0), t2_(0.0) {}
 
     Size size() const override {return size_;}
@@ -201,17 +205,20 @@ namespace {
 
     Array apply(const Array& r) const override {
       Array out(r.size());
-      applyFn_(r.begin(), (unsigned)r.size(), t1_, t2_, out.begin());
+      FdmCallbackArgs args{0.0, t1_, t2_, r.begin(), out.begin(), (unsigned)r.size(), 0};
+      applyFn_(&args);
       return out;
     }
     Array apply_direction(Size direction, const Array& r) const override {
       Array out(r.size());
-      applyDirFn_(r.begin(), (unsigned)r.size(), (unsigned)direction, t1_, t2_, out.begin());
+      FdmCallbackArgs args{0.0, t1_, t2_, r.begin(), out.begin(), (unsigned)r.size(), (unsigned)direction};
+      applyDirFn_(&args);
       return out;
     }
     Array solve_splitting(Size direction, const Array& r, Real s) const override {
       Array out(r.size());
-      solveSplitFn_(r.begin(), (unsigned)r.size(), (unsigned)direction, s, t1_, t2_, out.begin());
+      FdmCallbackArgs args{s, t1_, t2_, r.begin(), out.begin(), (unsigned)r.size(), (unsigned)direction};
+      solveSplitFn_(&args);
       return out;
     }
     Array apply_mixed(const Array&) const override {
@@ -222,9 +229,9 @@ namespace {
     }
   private:
     Size size_;
-    FdmApplyFun applyFn_;
-    FdmApplyDirectionFun applyDirFn_;
-    FdmSolveSplittingFun solveSplitFn_;
+    FdmCallbackFun applyFn_;
+    FdmCallbackFun applyDirFn_;
+    FdmCallbackFun solveSplitFn_;
     mutable Time t1_, t2_;
   };
 
@@ -235,12 +242,13 @@ namespace {
   // already-overwritten data.
   class HsFdmStepCondition : public StepCondition<Array> {
   public:
-    explicit HsFdmStepCondition(FdmStepConditionFun fn) : fn_(fn) {}
+    explicit HsFdmStepCondition(FdmCallbackFun fn) : fn_(fn) {}
     void applyTo(Array& a, Time t) const override {
-      fn_(a.begin(), (unsigned)a.size(), t, a.begin());
+      FdmCallbackArgs args{0.0, t, 0.0, a.begin(), a.begin(), (unsigned)a.size(), 0};
+      fn_(&args);
     }
   private:
-    FdmStepConditionFun fn_;
+    FdmCallbackFun fn_;
   };
   // Genuine per-grid-node Haskell callback -- see QuantLib.Method's haddock ("coarsen the
   // language-boundary crossing" exception case) and CLAUDE.md's own note on this hook. Unlike
@@ -1033,8 +1041,8 @@ void qlFreeFdmSchemeDesc(FdmSchemeDesc *o) {del(o);}
 // FdmBoundaryConditionSet(); boundary conditions are not bound. A null stepCondFn means no step
 // condition at all (matches FdmBackwardSolver's own null-condition default, an empty
 // FdmStepConditionComposite({}, {})).
-void qlFdmRollback(unsigned opSize, FdmApplyFun applyFn, FdmApplyDirectionFun applyDirFn, FdmSolveSplittingFun solveSplitFn,
-                    FdmStepConditionFun stepCondFn, unsigned stoppingTimesLen, double* stoppingTimes,
+void qlFdmRollback(unsigned opSize, FdmCallbackFun applyFn, FdmCallbackFun applyDirFn, FdmCallbackFun solveSplitFn,
+                    FdmCallbackFun stepCondFn, unsigned stoppingTimesLen, double* stoppingTimes,
                     FdmSchemeDesc* schemeDesc,
                     unsigned gridLen, double* grid,
                     double from, double to, unsigned steps, unsigned dampingSteps,
@@ -1132,8 +1140,8 @@ double qlFdmInnerValueCalculatorAvgEval(QlFdmInnerValueCalculator* calc, QlFdmMe
 // are not bound; a caller wanting interpolation combines this function's result with
 // qlFdmMesherLocations itself.
 void qlFdmSolve(QlFdmMesher* mesher, QlFdmInnerValueCalculator* calculator,
-                unsigned opSize, FdmApplyFun applyFn, FdmApplyDirectionFun applyDirFn, FdmSolveSplittingFun solveSplitFn,
-                FdmStepConditionFun stepCondFn, unsigned stoppingTimesLen, double* stoppingTimes,
+                unsigned opSize, FdmCallbackFun applyFn, FdmCallbackFun applyDirFn, FdmCallbackFun solveSplitFn,
+                FdmCallbackFun stepCondFn, unsigned stoppingTimesLen, double* stoppingTimes,
                 FdmSchemeDesc* schemeDesc,
                 double maturity, double to, unsigned steps, unsigned dampingSteps,
                 unsigned* outLen, double** outValues, char **e) {
