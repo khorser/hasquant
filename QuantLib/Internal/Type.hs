@@ -1,16 +1,15 @@
 {-# LANGUAGE RankNTypes, TypeFamilies, TypeOperators, FlexibleContexts, FlexibleInstances #-}
 module QuantLib.Internal.Type where
-import Foreign.Ptr(Ptr, FunPtr, nullPtr, nullFunPtr, freeHaskellFunPtr, plusPtr, castPtr)
+import Foreign.Ptr(Ptr, FunPtr, nullPtr, freeHaskellFunPtr)
 import Foreign.ForeignPtr(ForeignPtr, FinalizerPtr, newForeignPtr, withForeignPtr)
 import Foreign.C.Types(CUInt(..), CInt, CDouble(..))
 import Foreign.C.String(CString)
-import Foreign.Marshal.Array(withArray, peekArray, copyArray)
-import Foreign.Marshal.Utils(withMany, fillBytes)
-import Foreign.Storable(peek, peekByteOff, sizeOf)
+import Foreign.Marshal.Array(withArray, peekArray)
+import Foreign.Marshal.Utils(withMany)
+import Foreign.Storable(peek)
 
-import Control.Monad((>=>), when)
+import Control.Monad((>=>))
 import System.IO.Unsafe(unsafePerformIO)
-import qualified Data.Vector.Storable as V
 
 import QuantLib.Internal(RealVector, borrowRealVector, peekDynString, preArray, peekDayArray, peekPtrArray)
 import Control.Exception (finally, mask)
@@ -69,98 +68,6 @@ withCostFunction f g = mask $ \restore -> do
     call xs n = do
       x <- borrowRealVector xs n
       pure (realToFrac (f x))
-
--- 'fdmRollback' (QuantLib.Method) is the second callback-into-Haskell hook, driving
--- @FdmBackwardSolver::rollback@ with a Haskell-defined 'FdmLinearOpComposite' (three callbacks:
--- apply/apply_direction/solve_splitting) and an optional step condition -- see CLAUDE.md's
--- "coarsen the language-boundary crossing" bullet and 'withCostFunction' above, whose
--- mask\/finally\/freeHaskellFunPtr bracket this reuses verbatim, once per callback (four
--- independent with-style marshallers, not a single tuple-returning one, so each composes as an
--- ordinary c2hs @{#fun#}@ argument exactly like 'withCostFunction' does for 'optimize').
---
--- Every callback's raw C signature is @(in, n, <extra scalar args>, out)@: a caller-owned input
--- buffer of length @n@, then whatever scalars the specific virtual takes (direction, the
--- splitting parameter @s@, the @(t1,t2)@ time pair QuantLib's own @setTime@ stashes and threads
--- through -- never a callback of its own, since it only ever stores two doubles), then a
--- caller-owned *output* buffer also of length @n@. 'pokeBoundedFdmResult' is the one new safety
--- property beyond 'withCostFunction' (which returns a single scalar, so has no analogous hazard):
--- the C++ side's output buffer is exactly @n@ doubles, so a too-long Haskell result list must
--- never be poked past that -- 'pokeBoundedFdmResult' truncates (a too-short list numerically
--- wrong but safe, implicit-zero-padded).
-pokeBoundedFdmResult :: CUInt -> Ptr CDouble -> RealVector -> IO ()
-pokeBoundedFdmResult n out result = do
-  let expected = fromIntegral n
-      copied = min expected (V.length result)
-  V.unsafeWith result $ \p -> copyArray out (castPtr p) copied
-  when (copied < expected) $ fillBytes (out `plusPtr` (copied * sizeOf (undefined :: CDouble))) 0 ((expected - copied) * sizeOf (undefined :: CDouble))
-
-data CFdmCallbackArgs
--- c2hs represents a pointer to this private C struct as @Ptr ()@ in the
--- generated import; retain that ABI spelling at the wrapper boundary.
-type FdmCallbackFun = Ptr () -> IO ()
-foreign import ccall "wrapper" mkFdmCallbackFunPtr :: FdmCallbackFun -> IO (FunPtr FdmCallbackFun)
-
--- Mirrors cbits/qlPricingEngine.h's FdmCallbackArgs. The C++ shim asserts the
--- 64-bit layout used by every supported target before it invokes this callback.
-withFdmCallbackArgs :: Ptr CFdmCallbackArgs -> (Ptr CDouble -> CUInt -> CUInt -> CDouble -> CDouble -> CDouble -> Ptr CDouble -> IO a) -> IO a
-withFdmCallbackArgs p f = do
-  s <- peekByteOff p 0
-  t1 <- peekByteOff p 8
-  t2 <- peekByteOff p 16
-  input <- peekByteOff p 24
-  output <- peekByteOff p 32
-  n <- peekByteOff p 40
-  direction <- peekByteOff p 44
-  f input n direction s t1 t2 output
-
--- |Wrap a Haskell @(t1,t2) -> grid -> grid'@ function (QuantLib's @FdmLinearOp::apply@\/
--- @FdmLinearOpComposite::apply@, no direction argument) as a 'FdmApplyFun' C callback for the
--- duration of one 'QuantLib.Method.fdmRollback' call.
-withFdmApply :: ((Double, Double) -> RealVector -> RealVector) -> (FunPtr FdmCallbackFun -> IO b) -> IO b
-withFdmApply f g = mask $ \restore -> do
-  fp <- mkFdmCallbackFunPtr call
-  restore (g fp) `finally` freeHaskellFunPtr fp
-  where
-    call args = withFdmCallbackArgs (castPtr args) $ \xs n _dir _s t1 t2 out -> do
-      x <- borrowRealVector xs n
-      pokeBoundedFdmResult n out (f (realToFrac t1, realToFrac t2) x)
-
--- |Wrap a Haskell @direction -> (t1,t2) -> grid -> grid'@ function
--- (@FdmLinearOpComposite::apply_direction@) as an 'FdmApplyDirectionFun' C callback.
-withFdmApplyDirection :: (Int -> (Double, Double) -> RealVector -> RealVector) -> (FunPtr FdmCallbackFun -> IO b) -> IO b
-withFdmApplyDirection f g = mask $ \restore -> do
-  fp <- mkFdmCallbackFunPtr call
-  restore (g fp) `finally` freeHaskellFunPtr fp
-  where
-    call args = withFdmCallbackArgs (castPtr args) $ \xs n dir _s t1 t2 out -> do
-      x <- borrowRealVector xs n
-      pokeBoundedFdmResult n out (f (fromIntegral dir) (realToFrac t1, realToFrac t2) x)
-
--- |Wrap a Haskell @direction -> s -> (t1,t2) -> grid -> grid'@ function
--- (@FdmLinearOpComposite::solve_splitting@) as an 'FdmSolveSplittingFun' C callback.
-withFdmSolveSplitting :: (Int -> Double -> (Double, Double) -> RealVector -> RealVector) -> (FunPtr FdmCallbackFun -> IO b) -> IO b
-withFdmSolveSplitting f g = mask $ \restore -> do
-  fp <- mkFdmCallbackFunPtr call
-  restore (g fp) `finally` freeHaskellFunPtr fp
-  where
-    call args = withFdmCallbackArgs (castPtr args) $ \xs n dir s t1 t2 out -> do
-      x <- borrowRealVector xs n
-      pokeBoundedFdmResult n out (f (fromIntegral dir) (realToFrac s) (realToFrac t1, realToFrac t2) x)
-
--- |Wrap an optional Haskell @t -> grid -> grid'@ early-exercise\/barrier-style step condition
--- (@StepCondition\<Array\>::applyTo@) as an 'FdmStepConditionFun' C callback, or a null 'FunPtr'
--- when there is no step condition -- mirrors the existing @withMaybeX@ convention (e.g.
--- 'withMaybeCurrency' above) of passing a null pointer for 'Nothing' rather than a separate
--- present\/absent flag.
-withMaybeFdmStepCondition :: Maybe (Double -> RealVector -> RealVector) -> (FunPtr FdmCallbackFun -> IO b) -> IO b
-withMaybeFdmStepCondition Nothing g = g nullFunPtr
-withMaybeFdmStepCondition (Just f) g = mask $ \restore -> do
-  fp <- mkFdmCallbackFunPtr call
-  restore (g fp) `finally` freeHaskellFunPtr fp
-  where
-    call args = withFdmCallbackArgs (castPtr args) $ \xs n _dir _s t _t2 out -> do
-      x <- borrowRealVector xs n
-      pokeBoundedFdmResult n out (f (realToFrac t) x)
 
 type FdmInnerValueFun = Ptr CDouble -> CUInt -> CDouble -> IO CDouble
 foreign import ccall "wrapper" mkFdmInnerValueFunPtr :: FdmInnerValueFun -> IO (FunPtr FdmInnerValueFun)

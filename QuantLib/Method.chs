@@ -293,9 +293,15 @@ import QuantLib.Internal.Type
 import QuantLib.Internal.Common
 {#import QuantLib.Math#}
 import Foreign.C.String(CString)
-import Foreign.C.Types(CUInt)
-import Foreign.Ptr(Ptr, FunPtr)
+import Foreign.C.Types(CUInt, CDouble)
+import Foreign.Ptr(Ptr, FunPtr, nullFunPtr, freeHaskellFunPtr, plusPtr, castPtr)
 import Foreign.Marshal.Alloc(alloca)
+import Foreign.Marshal.Array(copyArray)
+import Foreign.Marshal.Utils(fillBytes)
+import Foreign.Storable(sizeOf)
+import Control.Exception(finally, mask)
+import Control.Monad(when)
+import qualified Data.Vector.Storable as V
 
 {#pointer *PolymorphicPathGenerator as PathGenerator foreign -> CPathGenerator nocode#}
 {#pointer *SamplePath as SamplePath foreign -> CSamplePath nocode#}
@@ -316,6 +322,69 @@ import Foreign.Marshal.Alloc(alloca)
 {#pointer *QlFdm1dMesher as Fdm1dMesher foreign -> CFdm1dMesher nocode#}
 {#pointer *QlFdmMesher as FdmMesher foreign -> CFdmMesher nocode#}
 {#pointer *QlFdmInnerValueCalculator as FdmInnerValueCalculator foreign -> CFdmInnerValueCalculator nocode#}
+
+-- FDM callbacks cross the ABI as one C struct pointer. c2hs reads every field offset from
+-- FdmCallbackArgs itself, avoiding a duplicate target-layout contract in Haskell.
+data CFdmCallbackArgs
+-- c2hs erases callback-parameter struct pointers in generated imports, so retain its
+-- @Ptr ()@ ABI here and cast only before the c2hs-generated field reads.
+type FdmCallbackFun = Ptr () -> IO ()
+foreign import ccall "wrapper" mkFdmCallbackFunPtr :: FdmCallbackFun -> IO (FunPtr FdmCallbackFun)
+
+pokeBoundedFdmResult :: CUInt -> Ptr CDouble -> RealVector -> IO ()
+pokeBoundedFdmResult n out result = do
+  let expected = fromIntegral n
+      copied = min expected (V.length result)
+  V.unsafeWith result $ \p -> copyArray out (castPtr p) copied
+  when (copied < expected) $ fillBytes (out `plusPtr` (copied * sizeOf (undefined :: CDouble))) 0 ((expected - copied) * sizeOf (undefined :: CDouble))
+
+withFdmCallbackArgs :: Ptr CFdmCallbackArgs -> (Ptr CDouble -> CUInt -> CUInt -> CDouble -> CDouble -> CDouble -> Ptr CDouble -> IO a) -> IO a
+withFdmCallbackArgs p f = do
+  s <- {#get FdmCallbackArgs.s #} p
+  t1 <- {#get FdmCallbackArgs.t1 #} p
+  t2 <- {#get FdmCallbackArgs.t2 #} p
+  input <- {#get FdmCallbackArgs.input #} p
+  output <- {#get FdmCallbackArgs.output #} p
+  n <- {#get FdmCallbackArgs.size #} p
+  direction <- {#get FdmCallbackArgs.direction #} p
+  f input n direction s t1 t2 output
+
+withFdmApply :: ((Double, Double) -> RealVector -> RealVector) -> (FunPtr FdmCallbackFun -> IO b) -> IO b
+withFdmApply f g = mask $ \restore -> do
+  fp <- mkFdmCallbackFunPtr call
+  restore (g fp) `finally` freeHaskellFunPtr fp
+  where
+    call args = withFdmCallbackArgs (castPtr args) $ \xs n _dir _s t1 t2 out -> do
+      x <- borrowRealVector xs n
+      pokeBoundedFdmResult n out (f (realToFrac t1, realToFrac t2) x)
+
+withFdmApplyDirection :: (Int -> (Double, Double) -> RealVector -> RealVector) -> (FunPtr FdmCallbackFun -> IO b) -> IO b
+withFdmApplyDirection f g = mask $ \restore -> do
+  fp <- mkFdmCallbackFunPtr call
+  restore (g fp) `finally` freeHaskellFunPtr fp
+  where
+    call args = withFdmCallbackArgs (castPtr args) $ \xs n dir _s t1 t2 out -> do
+      x <- borrowRealVector xs n
+      pokeBoundedFdmResult n out (f (fromIntegral dir) (realToFrac t1, realToFrac t2) x)
+
+withFdmSolveSplitting :: (Int -> Double -> (Double, Double) -> RealVector -> RealVector) -> (FunPtr FdmCallbackFun -> IO b) -> IO b
+withFdmSolveSplitting f g = mask $ \restore -> do
+  fp <- mkFdmCallbackFunPtr call
+  restore (g fp) `finally` freeHaskellFunPtr fp
+  where
+    call args = withFdmCallbackArgs (castPtr args) $ \xs n dir s t1 t2 out -> do
+      x <- borrowRealVector xs n
+      pokeBoundedFdmResult n out (f (fromIntegral dir) (realToFrac s) (realToFrac t1, realToFrac t2) x)
+
+withMaybeFdmStepCondition :: Maybe (Double -> RealVector -> RealVector) -> (FunPtr FdmCallbackFun -> IO b) -> IO b
+withMaybeFdmStepCondition Nothing g = g nullFunPtr
+withMaybeFdmStepCondition (Just f) g = mask $ \restore -> do
+  fp <- mkFdmCallbackFunPtr call
+  restore (g fp) `finally` freeHaskellFunPtr fp
+  where
+    call args = withFdmCallbackArgs (castPtr args) $ \xs n _dir _s t _t2 out -> do
+      x <- borrowRealVector xs n
+      pokeBoundedFdmResult n out (f (realToFrac t) x)
 
 -- |build a multi-asset path generator driven by a pseudo-random number generator (Mersenne Twister, Poisson, or Ziggurat, chosen by the RNG trait) over the given process and time grid.
 {#fun qlPathGenerator as pathGenerator{fromEnumC`RngTrait',withStochasticProcess*`GenStochasticProcess p',withTimeGrid*`TimeGrid'
