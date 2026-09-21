@@ -214,7 +214,9 @@ val &lt;- fdmAvgInnerValue basketCalc basketMesher [i, j] tMat   -- inspect one 
  uses. This coarsened callback shape is modeled on QuantLib-SWIG's
  <code>FdmLinearOpCompositeDelegate</code>/
  <code>FdmStepConditionDelegate</code> (<code>SWIG/fdm.i</code>): each callback crosses once per outer iteration over
- the whole grid array, not once per grid node.</p><p>The grid is a plain <code>[Double]</code> in and out -- no mesher, no <code>FdmInnerValueCalculator</code>, no
+ the whole grid array, not once per grid node.
+ Internally each callback receives one native argument record, avoiding a wide mixed-argument
+ callback ABI at the Haskell boundary; this does not affect the public callback types.</p><p>The grid is a plain <code>[Double]</code> in and out -- no mesher, no <code>FdmInnerValueCalculator</code>, no
  <code>FdmSolverDesc</code> is bound; callers manage their own grid geometry entirely in Haskell. Boundary
  conditions are always the empty <code>FdmBoundaryConditionSet()</code> (not bound).</p><p><em>Only DouglasScheme::step's three virtuals are implemented -- <code>apply</code>, <code>apply_direction</code> and</em>
  <em><code>solve_splitting</code>; <code>apply_mixed</code>/<code>preconditioner</code> are unimplemented and <code>QL_FAIL</code> at the C++</em>
