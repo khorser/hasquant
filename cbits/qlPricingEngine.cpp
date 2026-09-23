@@ -148,7 +148,6 @@
 #include <ql/experimental/processes/all.hpp>
 #include <ql/experimental/variancegamma/all.hpp>
 #include <ql/legacy/libormarketmodels/lfmprocess.hpp>
-#include <cstddef>
 
 #include "qlaux.h"
 #include "qlPricingEngineAux.h"
@@ -165,12 +164,6 @@ QL_TRACE_NAME(SamplePath)
 #endif
 
 namespace {
-  static_assert(sizeof(void*) == 8 && offsetof(FdmCallbackArgs, s) == 0 &&
-                offsetof(FdmCallbackArgs, t1) == 8 && offsetof(FdmCallbackArgs, t2) == 16 &&
-                offsetof(FdmCallbackArgs, input) == 24 && offsetof(FdmCallbackArgs, output) == 32 &&
-                offsetof(FdmCallbackArgs, size) == 40 && offsetof(FdmCallbackArgs, direction) == 44,
-                "FdmCallbackArgs must match the generated Haskell decoder");
-
   shared_ptr<StochasticProcess1D::discretization> createDiscretization1D(int n) {
     switch (n) {
     case hasquant::EulerDiscretization:

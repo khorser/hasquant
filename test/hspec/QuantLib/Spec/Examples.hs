@@ -794,7 +794,7 @@ spec = do
 
     -- Rolls a hand-rolled 1D Black-Scholes operator back via QuantLib.Method.fdmRollback --
     -- hasquant's second real Haskell-callback FFI plumbing, this time coarsened to a whole-grid
-    -- crossing per timestep (QuantLib.Internal.Type.withFdmApply et al.). Checked against
+    -- crossing per timestep (QuantLib.Method's withFdmApply et al.). Checked against
     -- analyticEuropeanEngine (European, no step condition) and fdBlackScholesVanillaEngine
     -- (American, with an early-exercise step condition), both already-bound reference engines.
     describe "Fdm example (Haskell-driven PDE rollback via fdmRollback)" $

@@ -85,8 +85,10 @@ erroring at the pragma:
 
 For a callback with several mixed pointer, integer, and floating-point arguments, pass one
 C struct pointer instead of exposing the wide signature to `foreign import ccall "wrapper"`.
-Keep the struct private, assert its C++ layout, and decode it in Haskell; c2hs may represent the
-opaque struct pointer as `Ptr ()`, which is the correct wrapper-boundary type before a local cast.
+Define the struct in the shared `cbits/*.h` and read its fields with c2hs `{#get#}` in the `.chs`
+module, so offsets come from the header; do not hand-write offsets or add C++ layout asserts.
+c2hs may represent the struct pointer as `Ptr ()`, which is the correct wrapper-boundary type
+before a local cast.
 
 ## New pointer types need a C-parser-visible typedef
 

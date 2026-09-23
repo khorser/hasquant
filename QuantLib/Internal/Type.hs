@@ -77,7 +77,7 @@ foreign import ccall "wrapper" mkFdmInnerValueFunPtr :: FdmInnerValueFun -> IO (
 -- 'QuantLib.Method.fdmSolve' and its accompanying haddock for why no batched shape exists here,
 -- matching QuantLib-SWIG's own @FdmInnerValueCalculatorDelegate@). Reuses the same
 -- mask\/finally\/freeHaskellFunPtr bracket as 'withCostFunction' above; unlike the
--- 'FdmApplyFun'-family callbacks, this one returns a single scalar so has no
+-- FDM rollback callbacks in "QuantLib.Method", this one returns a single scalar so has no
 -- 'pokeBoundedFdmResult'-style output-length hazard.
 withFdmInnerValue :: (Double -> [Double] -> Double) -> (FunPtr FdmInnerValueFun -> IO b) -> IO b
 withFdmInnerValue f g = mask $ \restore -> do
