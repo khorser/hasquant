@@ -84,7 +84,7 @@ val &lt;- fdmAvgInnerValue basketCalc basketMesher [i, j] tMat   -- inspect one 
    tests do throughout), or whenever a single point's intrinsic value is all you actually need.</dd></dl><h4>Technical reference</h4><p>The terse version of the above, for a reader who already knows the vocabulary and wants the
  exact contract rather than the walkthrough's prose.</p><dl><dt><code>Rolling a grid back</code></dt><dd><code><a href="QuantLib-Method.html#v:fdmRollback" title="QuantLib.Method">fdmRollback</a></code> takes a precomputed initial grid (a plain <code>[Double]</code>) and
    rolls it back through time via three Haskell-defined operator callbacks
-   (<code><a href="QuantLib-Internal-Type.html#v:withFdmApply" title="QuantLib.Internal.Type">withFdmApply</a></code> et al.) plus an optional step condition (e.g.
+   (<code>withFdmApply</code> et al. below) plus an optional step condition (e.g.
    American/Bermudan early exercise). These callbacks cross the language boundary once per outer
    timestep, over the <em>whole</em> grid. <code><a href="QuantLib-Method.html#v:fdmSolve" title="QuantLib.Method">fdmSolve</a></code> is the sibling that instead derives its own
    initial grid from a mesher and

@@ -157,7 +157,7 @@
 </span><span id="line-152"></span><span class="hs-comment">--</span><span>
 </span><span id="line-153"></span><span class="hs-comment">-- [@Rolling a grid back@] 'fdmRollback' takes a precomputed initial grid (a plain @[Double]@) and</span><span>
 </span><span id="line-154"></span><span class="hs-comment">--   rolls it back through time via three Haskell-defined operator callbacks</span><span>
-</span><span id="line-155"></span><span class="hs-comment">--   ('QuantLib.Internal.Type.withFdmApply' et al.) plus an optional step condition (e.g.</span><span>
+</span><span id="line-155"></span><span class="hs-comment">--   (@withFdmApply@ et al. below) plus an optional step condition (e.g.</span><span>
 </span><span id="line-156"></span><span class="hs-comment">--   American\/Bermudan early exercise). These callbacks cross the language boundary once per outer</span><span>
 </span><span id="line-157"></span><span class="hs-comment">--   timestep, over the /whole/ grid. 'fdmSolve' is the sibling that instead derives its own</span><span>
 </span><span id="line-158"></span><span class="hs-comment">--   initial grid from a mesher and</span><span>

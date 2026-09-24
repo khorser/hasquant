@@ -96,7 +96,7 @@ span.spaces    { background: white }
 <span class="lineno">   77 </span>-- 'QuantLib.Method.fdmSolve' and its accompanying haddock for why no batched shape exists here,
 <span class="lineno">   78 </span>-- matching QuantLib-SWIG's own @FdmInnerValueCalculatorDelegate@). Reuses the same
 <span class="lineno">   79 </span>-- mask\/finally\/freeHaskellFunPtr bracket as 'withCostFunction' above; unlike the
-<span class="lineno">   80 </span>-- 'FdmApplyFun'-family callbacks, this one returns a single scalar so has no
+<span class="lineno">   80 </span>-- FDM rollback callbacks in &quot;QuantLib.Method&quot;, this one returns a single scalar so has no
 <span class="lineno">   81 </span>-- 'pokeBoundedFdmResult'-style output-length hazard.
 <span class="lineno">   82 </span>withFdmInnerValue :: (Double -&gt; [Double] -&gt; Double) -&gt; (FunPtr FdmInnerValueFun -&gt; IO b) -&gt; IO b
 <span class="lineno">   83 </span><span class="decl"><span class="istickedoff">withFdmInnerValue f g = mask $ \restore -&gt; do</span>
