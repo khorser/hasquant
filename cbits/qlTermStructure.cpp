@@ -289,8 +289,7 @@ void qlRelinkableOptionletVolatilityStructureLinkTo(QlRelinkableOptionletVolatil
   try {arg(o)->linkTo(handlePtr(arg(c)));} catch (std::exception& er) {(void)handleException<void *>(e, er);}}
 QlOptionletVolatilityStructure* qlRelinkableOptionletVolatilityStructureAsOptionletVolatilityStructure(QlRelinkableOptionletVolatilityStructure *o) {return ret(new QlOptionletVolatilityStructure(*arg(o)));}
 void qlFreeBlackVolTermStructure(QlBlackVolTermStructure *o) {del(o);}
-// VolatilityTermStructure is never a Handle upstream (confirmed by grep), so this is a
-// deliberate snapshot detach -- same reasoning as qlYieldTermStructureAsTermStructure.
+// VolatilityTermStructure has no Handle upstream, so this conversion detaches a snapshot.
 QlVolatilityTermStructure* qlBlackVolTermStructureAsVolatilityTermStructure(QlBlackVolTermStructure *o) {return ret(new QlVolatilityTermStructure(handlePtr(arg(o))));}
 double qlBlackVolTermStructureBlackVol(QlBlackVolTermStructure* o, int d, double strike, int extrapolate, char **e) {
   try {return (*arg(o))->blackVol(Date(d), strike, extrapolate);
@@ -649,10 +648,8 @@ QlSabrInterpolatedSmileSection* qlSabrInterpolatedSmileSection(int optionDate, Q
     // shared_ptr out of Haskell's QlEndCriteria/QlOptimizationMethod box into this ctor's own
     // shared_ptr member is safe regardless of when Haskell's box is later collected -- see the
     // qlaux.h comment above the QlEndCriteria/QlOptimizationMethod aliases.
-    // Returns the concrete type directly (not QlSmileSection) so alpha/beta/nu/rho/etc below
-    // need no dynamic_pointer_cast -- see the CLAUDE.md API-design rule on preferring a
-    // dedicated leaf over a runtime downcast. qlSabrInterpolatedSmileSectionAsSmileSection
-    // below is the escape hatch for callers that need the generic SmileSection interface.
+    // Keep the concrete type for the parameter getters; the conversion below supplies the
+    // generic SmileSection interface.
     ext::shared_ptr<SabrInterpolatedSmileSection> section(new SabrInterpolatedSmileSection(
         Date(optionDate), *arg(forward), std::vector<Real>(strikes, strikes + strikesLen), hasFloatingStrikes,
         *arg(atmVolatility), qlHandleVector(vols, volsLen), alpha, beta, nu, rho,
@@ -1353,10 +1350,7 @@ void qlSabrSwaptionVolatilityCubeVolCubeAtmCalibrated(QlSabrSwaptionVolatilityCu
   try {fillMatrixOut([&] {return (*arg(o))->volCubeAtmCalibrated();}, rows, cols, len, vs);
   } catch (std::exception& er) {handleException<double*>(e, er);}}
 
-// atmStrike is defined on the abstract SwaptionVolatilityCube base (both concrete subtypes
-// inherit it); bound once per concrete leaf rather than via a shared abstract-base type, since
-// neither subtype otherwise needs one and CLAUDE.md's "no dedicated type for a class with no
-// calcs of its own" argues against adding a node just for this.
+// Both concrete cube types inherit atmStrike; each exposes it through its own binding.
 double qlSabrSwaptionVolatilityCubeAtmStrike1(QlSabrSwaptionVolatilityCube* o, int optionDate, int n, int u, char **e) {
   try {return (*arg(o))->atmStrike(Date(optionDate), Period(n, (TimeUnit)u));
   } catch (std::exception& er) {return handleException<double>(e, er);}}
@@ -1638,10 +1632,6 @@ QlCommodityIndex* qlCommodityIndex(char *name, CommodityType *commodityType, Cur
 
 void qlFreeCommodityIndex(QlCommodityIndex *o) {del(o);}
 QlIndex* qlCommodityIndexAsIndex(QlCommodityIndex *o) {return ret(new QlIndex(*arg(o)));}
-
-// commodityType()/currency()/unitOfMeasure()/lotQuantity()/forwardCurve() are all plain,
-// never-mutated echoes of the constructor's own arguments (commodityindex.hpp's inline getters
-// each just `return foo_;`) -- not bound, per CLAUDE.md's trivial-getter rule.
 
 double qlCommodityIndexForwardPrice(QlCommodityIndex *o, int date, char **e) {
   try {return (*arg(o))->forwardPrice(Date(date));
@@ -1948,11 +1938,8 @@ QlMultiCurve *qlMultiCurve(double accuracy, char **e) {
   } catch (std::exception& er) {return handleException<QlMultiCurve*>(e, er);}}
 void qlFreeMultiCurve(QlMultiCurve *o) {del(o);}
 
-// curve's underlying shared_ptr is copied out of its Handle (currentLink()) and moved into
-// addBootstrappedCurve/addNonBootstrappedCurve -- the caller's own QlYieldTermStructure* still
-// owns/frees its Handle independently afterward. The Handle<YieldTermStructure> this returns is
-// wrapped directly, never rebuilt from a shared_ptr (see the "no Handle<YieldTermStructure>("
-// invariant in CLAUDE.md) -- this is a Handle the API itself handed back, not a fresh one.
+// Pass the curve's current link while retaining the caller's Handle; wrap the returned Handle
+// directly so its relinking behavior is preserved.
 QlYieldTermStructure *qlMultiCurveAddBootstrappedCurve(QlMultiCurve *mc, QlRelinkableYieldTermStructure *internalHandle, QlYieldTermStructure *curve, char **e) {
   try {
     shared_ptr<YieldTermStructure> sp = (*arg(curve)).currentLink();
@@ -2550,10 +2537,6 @@ QlEquityIndex *qlEquityIndex(char *name, Calendar *fixingCalendar, Currency *ccy
   } catch (std::exception& er) {return handleException<QlEquityIndex *>(e, er);}}
 void qlFreeEquityIndex(QlEquityIndex *o) {del(o);}
 QlIndex* qlEquityIndexAsIndex(QlEquityIndex *o) {return ret(new QlIndex(*arg(o)));}
-// currency()/equityInterestRateCurve()/equityDividendCurve()/spot() are all plain,
-// never-mutated echoes of the constructor's own arguments (equityindex.hpp's inline getters
-// each just `return foo_;`) -- not bound, per CLAUDE.md's trivial-getter rule.
-
 // must match the order of qlEnumObjects.h:ZeroInflationIndexType
 static const makeZeroInflIdx zeroInflationIndices[] = {
     []{return static_cast<ZeroInflationIndex *>(new AUCPI(Quarterly, false));} // AU CPI is published quarterly, unlike the other (monthly) named indices

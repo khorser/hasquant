@@ -3,7 +3,6 @@
 -- upcasts to Exercise, and can be used to build a real instrument (a Swaption) without crashing
 -- -- i.e. the recursive withExercise call and the CRebatedExercise' Upcastable wiring are correct.
 --
--- Run with: cabal exec -- ghc -package hasquant test/smoke/RebatedExercise.hs -o /tmp/rebatedexercise -outputdir /tmp/rebatedexercise_build && /tmp/rebatedexercise
 import QuantLib.Instrument (npv, setPricingEngine, SettlementType(..), SettlementMethod(..))
 import QuantLib.Instrument.Option (EuropeanExercise(..), Exercise(..))
 import QuantLib.Instrument.Swap

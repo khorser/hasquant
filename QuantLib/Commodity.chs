@@ -195,13 +195,8 @@ import Foreign.Marshal.Alloc(alloca)
 {#fun qlPaymentTermGetPaymentDate as paymentTermGetPaymentDate
   {withPaymentTerm*`PaymentTerm',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Day'toDay#}
 
--- |An amount of a commodity: a 'CommodityType', a 'UnitOfMeasure', and a plain amount. Marshalled
--- as a flat triple rather than a wrapper type (per the @Money@-as-tuple convention) -- and, unlike
--- 'CommodityUnitCost' below, its three inspectors are just tuple projections, so they need no
--- binding at all. c2hs's @&@ tuple-splitter only ever consumes two C arguments (confirmed against
--- its source, not just by trial), so every function below that takes or returns a 'Quantity'
--- marshals it as three flat 'CommodityType'\/'UnitOfMeasure'\/'Double' arguments instead of one
--- combined tuple.
+-- |A commodity type, unit of measure, and amount. Its FFI arguments are flat because c2hs's
+-- @&@ tuple-splitter supports only pairs.
 type Quantity = (CommodityType, UnitOfMeasure, Double)
 
 {#fun pure qlQuantityRoundedAmount as quantityRoundedAmount{withUnitOfMeasure*`UnitOfMeasure',`Double'}->`Double'#}

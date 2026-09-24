@@ -1,7 +1,6 @@
 -- Exercise every HasInstrumentUnderlying instance. Pricing the returned handle checks that
 -- the accessor preserves the upstream shared object and its configured engine.
 --
--- Run with: .claude/skills/run-hasquant/driver.sh test/smoke/CheckInstrumentUnderlying.hs
 import Data.List.NonEmpty(fromList)
 
 import qualified QuantLib.CashFlow as CF

@@ -1,16 +1,4 @@
--- | Coverage for 'QuantLib.Instrument' entry points ported from
--- @test/smoke/CheckAdditionalResults.hs@ (see CLAUDE.md: coverage is only measured over
--- @test\/hspec\/**@ + @test\/example\/**@, so this proven-correct smoke script was invisible
--- to the coverage number).
---
--- Checks 'additionalResults' end-to-end against two real QuantLib 1.43 engines that exercise
--- three of its four discriminants: the Bjerksund-Stensland American option engine writes
--- @exerciseType@ (std::string -> 'StringVal') and @strikeGamma@ (Real -> 'RealVal'); the Black
--- cap/floor engine writes @optionletsPrice@ as a @vector\<Real\>@ -> 'RealVectorVal',
--- exercising the vector marshalling branch the first check never touches. No shipped 1.43
--- engine stores a type this binding can't name, so the fourth discriminant ('UnsupportedVal',
--- the RTTI-name fallback) isn't exercised here -- its C++ side is a trivial, visibly-correct
--- @else@, and its Haskell side is a compiler-checked exhaustive @case@.
+-- |Checks 'additionalResults' string, scalar, and vector marshalling through real engines.
 {-# LANGUAGE OverloadedLists #-}
 module QuantLib.Spec.Instrument (spec) where
 

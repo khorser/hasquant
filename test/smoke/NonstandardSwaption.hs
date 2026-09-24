@@ -9,7 +9,6 @@
 --    not just that it compiles (run under trackAllocations separately).
 -- 4. Gaussian1dNonstandardSwaptionEngine prices the NonstandardSwaption without crashing.
 --
--- Run with: .claude/skills/run-hasquant/driver.sh test/smoke/NonstandardSwaption.hs
 import Control.Monad (forM, forM_)
 import System.Exit (exitFailure)
 import Data.List.NonEmpty(fromList)

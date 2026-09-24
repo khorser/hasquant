@@ -40,15 +40,8 @@ using namespace QuantLib;
 // an empty `Tag<T>` per axis, so each constructor is written once and recovers types through
 // `typename decltype(r)::type`.
 //
-// Every dispatcher takes its return type as an explicit leading template argument
-// (`dispatchRngStat<PricingEngine*>(...)`) rather than deducing it with a trailing
-// `-> decltype(make(Tag<PseudoRandom>()))`. That is not a style choice. A trailing return type is
-// an *unevaluated* operand, so the probe call it names is the first instantiation of the lambda
-// for that tag -- and clang then emits the engine's constructor but never marks its vtable used,
-// leaving `~Engine()` and its thunks undefined. It links as a missing
-// `..MCPagodaEngine<..,Statistics>..D0Ev` at dlopen time, and *only* for the exact tag named in
-// the probe (`Statistics` here), which is why it looks like a QuantLib packaging problem rather
-// than a bug in this file. Keep the explicit `Ret`; do not "simplify" it back to decltype.
+// Use an explicit result type: a decltype probe can prevent clang from emitting the selected
+// engine's vtable.
 template <class T> struct Tag { using type = T; };
 
 template <class Ret, class F>
@@ -287,9 +280,7 @@ PricingEngine* qlMCLookbackPartialFloatingEngineAux(int rngtrait, int stattrait,
   });
 }
 
-// MCAmericanBasketEngine is templated <RNG> only upstream (its base MCLongstaffSchwartzEngine<BasketOption::engine,
-// MultiVariate,RNG> never forwards a second template argument), so unlike every other engine in this file it has no
-// S axis to expose -- not a gap, a real upstream limitation. See CLAUDE.md/PricingEngine.chs for the note.
+// Upstream MCAmericanBasketEngine has only an RNG template parameter; it has no statistics axis.
 PricingEngine* qlMCAmericanBasketEngine1Aux(int rngtrait, const shared_ptr<StochasticProcessArray> processes, unsigned timeSteps, unsigned timeStepsPerYear, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, unsigned nCalibrationSamples, unsigned polynomialOrder, LsmBasisSystem::PolynomialType polynomialType) {
   return dispatchRng<PricingEngine*>(rngtrait, [&](auto r) {
     return new MCAmericanBasketEngine<typename decltype(r)::type>(processes, timeSteps, timeStepsPerYear, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed, nCalibrationSamples, polynomialOrder, polynomialType);
@@ -356,13 +347,8 @@ PolymorphicPathGenerator* qlSobolPathGeneratorAux(SobolRsg::DirectionIntegers di
   return new PolymorphicPathGenerator(dir, p, grid, seed, dim, brownianBridge);
 }
 
-// The gaussian sequence generator that PolymorphicPathGenerator's MultiPathGenerator merely
-// consumes, lifted out so Haskell can drive its own SDE evolution with no callback in the hot
-// loop -- shape 1 of CLAUDE.md's "coarsen the language-boundary crossing" bullet, the same trick
-// lsmRegress plays on LongstaffSchwartzPathPricer. Same four-way RngTrait switch and the same
-// SobolRsg::DirectionIntegers overload as PolymorphicPathGenerator above, deliberately: the two
-// construct their rsg identically, so a Haskell-evolved path can be compared draw-for-draw
-// against pathGenerator's own.
+// Expose the gaussian sequence generator so Haskell can evolve paths without a hot-loop callback.
+// Match PolymorphicPathGenerator's RNG and Sobol dispatch for draw-for-draw comparisons.
 class PolymorphicGaussianRsg {
 private:
   using PseudoRandomRsg = PseudoRandom::rsg_type;

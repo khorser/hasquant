@@ -1,18 +1,5 @@
--- Stale-build guard for relinkable handles.
+-- Exercise relinkable curve handles against the compiled library.
 --
--- The behavioural checks live in main/test/QuantLib/Spec/TermStructure.hs and run on every
--- `stack test`. This file exists for the one thing test/ structurally cannot catch: editing
--- a C header without touching any .chs leaves cabal/stack silently stale -- neither tracks
--- that a .chs file's #include'd header changed, so the build reports success without
--- re-running c2hs and the tests then pass against the *old* generated code.
---
--- Curves are the widest such surface: QlYieldTermStructure is a typedef in cbits/qlaux.h,
--- so any edit to it changes the ABI of every function taking a curve, and a partial rebuild
--- would link the two shapes against each other with no error and no crash. Compiled
--- standalone against the installed library, this script sees whatever was actually built.
---
--- Run with:
---   cabal exec -- ghc -ismoke -package hasquant smoke/CheckRelinkable.hs -o /tmp/relinkable -outputdir /tmp/relinkable_build && /tmp/relinkable
 import QuantLib.Instrument
 import QuantLib.InterestRate
 import QuantLib.Instrument.Swap

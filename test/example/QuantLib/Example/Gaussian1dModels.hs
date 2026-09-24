@@ -189,9 +189,7 @@ run = do
 
   reversionQuote <- simpleQuote reversion
   cmsPricer <- CF.linearTsrPricer swaptionVol reversionQuote Nothing (CF.LinearTsrPricerSettings CF.LinearTsrRateBound Nothing)
-  -- Only the CMS leg (leg 0) needs an explicit pricer -- a plain (uncapped/unfloored) Euribor
-  -- leg computes its forecast fixing directly, with no pricer required (confirmed in the
-  -- increment 2 smoke test).
+  -- Only the CMS leg needs a pricer; the plain Euribor leg forecasts its fixing directly.
   leg0 <- leg underlying4 0
   CF.setCouponPricer leg0 cmsPricer
 

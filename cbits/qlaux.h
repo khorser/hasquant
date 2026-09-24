@@ -1911,12 +1911,7 @@ template <class T> Handle<T> qlNullableHandle(shared_ptr<T> *p) {return p ? Hand
 // relinking). Null means an empty handle, as with the shared_ptr form above.
 template <class T> Handle<T> qlNullableHandle(Handle<T> *p) {return p ? *(arg(p)) : Handle<T>();}
 
-// Same as the Handle form above, but null means "construct this default" (via the caller's
-// `make`, returning shared_ptr<T>) rather than an empty handle. Still the one accepted shape of
-// Handle<T>(shared_ptr<...>) construction: the default branch has no pre-existing Link to
-// detach from, since `make` builds the object fresh right here. Named and centralised so a
-// call site never has to spell Handle<T>(...) itself -- see qlBlackIborCouponPricer's
-// default-correlation SimpleQuote for the motivating case.
+// Null constructs a fresh default through `make`; an existing Handle keeps its Link.
 template <class T, class F> Handle<T> qlNullableHandleOr(Handle<T> *p, F make) {return p ? *(arg(p)) : Handle<T>(make());}
 
 // Accessors for the QuantLib free functions (BondFunctions::, CashFlows::) that want the

@@ -11,7 +11,6 @@
 -- 4. Gaussian1dFloatFloatSwaptionEngine prices the swaption without crashing.
 -- 5. additionalResults reports "underlyingValue" (Gaussian1dFloatFloatSwaptionEngine-specific).
 --
--- Run with: .claude/skills/run-hasquant/driver.sh test/smoke/FloatFloatSwaption.hs
 import Control.Monad (forM, forM_)
 import Data.Maybe (mapMaybe)
 import Data.List.NonEmpty(fromList)

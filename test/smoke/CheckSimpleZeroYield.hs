@@ -1,16 +1,5 @@
--- Enum guard for the SimpleZeroYield BootstrapTrait case.
+-- Check that SimpleZeroYield bootstraps distinctly from the other BootstrapTrait cases.
 --
--- CLAUDE.md's CPIInterpolationType incident: a new enum case silently renumbered to alias an
--- existing one's C-level value shipped undetected for a full session, with a clean build and
--- passing test suite -- neither catches a mis-numbered enum, only a value-level check that the
--- new case actually behaves differently from an existing one does. SimpleZeroYield is a fourth
--- BootstrapTrait case (cbits/qlEnumObjects.h) consumed only inside a C++ if/else-if
--- (qlPiecewiseYieldCurveAux1, cbits/qlTermStructureAux.cpp) -- exactly the kind of change a
--- stale build can hide (editing a header without touching a .chs leaves cabal/stack silently
--- stale, per smoke/CheckMultiCurve.hs's own doc comment).
---
--- Run with:
---   cabal exec -- ghc -ismoke -package hasquant smoke/CheckSimpleZeroYield.hs -o /tmp/zy_smoke -outputdir /tmp/zy_smoke_build && /tmp/zy_smoke
 
 import Data.List.NonEmpty(fromList)
 import qualified QuantLib.Quote as Quote

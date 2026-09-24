@@ -1,20 +1,6 @@
--- Stale-build guard for GlobalBootstrap's canned-functor binding
--- (piecewiseYieldCurve / qlPiecewiseYieldCurveGlobalBootstrap3
--- / qlPiecewiseYieldCurveGlobalBootstrapFullAux). This is a genuinely new C++ construction path
--- (GlobalBootstrap's functor-callback constructor, not the plain accuracy/instrumentWeights one),
--- added entirely inside cbits/qlTermStructureAux.cpp -- exactly the kind of change a stale build
--- can hide (see smoke/CheckMultiCurve.hs's own doc comment on why this class of change needs a
--- standalone compile).
+-- Exercise GlobalBootstrap's functor constructor and its pillar-count guard.
+-- AdditionalErrors supplies two fewer equations than additionalHelpers.
 --
--- Also exercises the pillar-count guard added alongside the binding: AdditionalErrors' canned
--- formula produces (length additionalHelpers - 2) equations, so additionalDates must supply
--- exactly that many extra unknowns or GlobalBootstrap's optimizer is under/over-determined. An
--- early spike of this construction hit that as a raw QuantLib "less functions than available
--- variables" exception; the binding adds a QL_REQUIRE with a caller-facing message instead,
--- checked here.
---
--- Run with:
---   cabal exec -- ghc -ismoke -package hasquant smoke/CheckGlobalBootstrapFunctors.hs -o /tmp/gbf_smoke -outputdir /tmp/gbf_smoke_build && /tmp/gbf_smoke
 
 import Control.Exception (SomeException, evaluate, try)
 import Data.List.NonEmpty(fromList)

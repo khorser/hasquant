@@ -1,9 +1,4 @@
--- Coverage for 'QuantLib.PricingEngine' entry points ported from proven-correct
--- @test/smoke/*.hs@ scripts that were never wired into @stack test --coverage@ (see
--- CLAUDE.md: coverage is only measured over @test\/hspec\/**@ + @test\/example\/**@).
--- Each block below preserves the source smoke script's own reasoning in its header
--- comment; only the assertion style changed (SmokeCheck's checkClose/checkEq/checkWith,
--- which 'error' on failure, become hspec 'shouldSatisfy'/'shouldBe').
+-- Pricing-engine behavior and numerical reference checks.
 module QuantLib.Spec.PricingEngine (spec) where
 
 import Control.Monad(forM, forM_, when)
@@ -236,12 +231,8 @@ spec = do
         bDn <- bachelierBlackFormula Call k fwd (sd - h) df
         bd `shouldSatisfy` closePrec ((bUp - bDn) / (2 * h)) (1e-6 * max 1 (abs bd))
 
-    -- The pre-existing iterative solver, which had no coverage either. Its cheap closed-form
-    -- sibling is the Brenner-Subrahmanyan\/Feinstein ATM formula extended by Corrado-Miller, so
-    -- it is only accurate near the money: measured across this fixture it is within 0.005 vol
-    -- over strikes 80..125 and degrades to ~0.18 at strike 300. The assertion is split
-    -- accordingly rather than pinned to one invented tolerance -- in the wings it only has to
-    -- stay a usable finite seed for the exact solver, which is all upstream uses it for.
+    -- The closed-form approximation is accurate near the money; in the wings it only needs
+    -- to remain a finite seed for the iterative solver.
     it "blackImpliedStdDev inverts blackFormula, and blackImpliedStdDevApproximation is accurate\
        \ near the money and a finite seed in the wings" $
       forM_ strikes $ \k -> forM_ types $ \t -> do

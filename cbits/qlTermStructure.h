@@ -443,9 +443,7 @@ extern "C" {
   // accuracy/minValue/maxValue take qlNullReal() for "upstream's default".
   QlYieldTermStructure *qlPiecewiseYieldCurveFull(int date, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen, QlQuote **quotes, unsigned datesLen, int *dates, int trait, int interpolator, int approximator, int approximatorArg, double accuracy, double minValue, double maxValue, unsigned maxAttempts, double maxFactor, double minFactor, int dontThrow, unsigned dontThrowSteps, unsigned maxEvaluations, char **e);
   QlYieldTermStructure *qlPiecewiseYieldCurveFull1(unsigned settl, Calendar *cal, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen, QlQuote **quotes, unsigned datesLen, int *dates, int trait, int interpolator, int approximator, int approximatorArg, double accuracy, double minValue, double maxValue, unsigned maxAttempts, double maxFactor, double minFactor, int dontThrow, unsigned dontThrowSteps, unsigned maxEvaluations, int extrapolate, char **e);
-  // Dedicated GlobalBootstrap entry point, hardcoding trait=Discount/interpolator=LogLinear in
-  // the shim itself (see qlTermStructureAux.cpp) rather than taking those as Haskell-visible
-  // params -- CLAUDE.md's "dedicated constructor hardcodes the enum value" pattern.
+  // GlobalBootstrap entry point with fixed Discount/LogLinear dispatch.
   QlYieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrap1(unsigned settl, Calendar *cal, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen, QlQuote **quotes, unsigned datesLen, int *dates, double accuracy, unsigned weightsLen, double *weights, int extrapolate, char **e);
   QlYieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrapFixed1(int date, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen, QlQuote **quotes, unsigned datesLen, int *dates, double accuracy, unsigned weightsLen, double *weights, int extrapolate, char **e);
   // Same shape as qlPiecewiseYieldCurveGlobalBootstrap1, hardcoding trait=SimpleZeroYield/
@@ -453,9 +451,7 @@ extern "C" {
   // (GlobalLinearSimpleZeroCurve).
   QlYieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrap2(unsigned settl, Calendar *cal, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen, QlQuote **quotes, unsigned datesLen, int *dates, double accuracy, unsigned weightsLen, double *weights, int extrapolate, char **e);
   QlYieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrapFixed2(int date, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen, QlQuote **quotes, unsigned datesLen, int *dates, double accuracy, unsigned weightsLen, double *weights, int extrapolate, char **e);
-  // Same shape as qlPiecewiseYieldCurveGlobalBootstrap1/2, hardcoding trait=ForwardRate/
-  // interpolator=Linear and trait=ZeroYield/interpolator=Linear respectively -- issue #15's two
-  // next-cheapest, most generically useful GlobalBootstrap combinations.
+  // ForwardRate/Linear and ZeroYield/Linear GlobalBootstrap variants.
   QlYieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrap4(unsigned settl, Calendar *cal, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen, QlQuote **quotes, unsigned datesLen, int *dates, double accuracy, unsigned weightsLen, double *weights, int extrapolate, char **e);
   QlYieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrap5(unsigned settl, Calendar *cal, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen, QlQuote **quotes, unsigned datesLen, int *dates, double accuracy, unsigned weightsLen, double *weights, int extrapolate, char **e);
   QlYieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrapFixed4(int date, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen, QlQuote **quotes, unsigned datesLen, int *dates, double accuracy, unsigned weightsLen, double *weights, int extrapolate, char **e);

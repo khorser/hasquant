@@ -34,18 +34,8 @@ C makeCubic(int approximator, int approximatorArg) {
 // callable as `typename decltype(t)::type`.
 template <class T> struct Tag { using type = T; };
 
-// The shared interpolator x approximation dispatch. `make` receives a constructed interpolator
-// instance, so each caller spells its curve constructor once.
-//
-// The result type is an explicit leading template argument
-// (`dispatchInterpolation<YieldTermStructure*>(...)`), not a trailing
-// `-> decltype(make(Linear()))`. That is load-bearing: a trailing return type is an *unevaluated*
-// operand, so the probe call it names becomes the first instantiation of the caller's lambda for
-// that interpolator -- and clang then emits the curve's constructor but never marks its vtable
-// used, leaving the destructor and its thunks undefined. It surfaces as a link/dlopen failure for
-// one arm only (whichever type the probe named), which reads like a QuantLib packaging problem
-// rather than a bug here. Keep the explicit `Ret`; the same rule applies to every dispatcher in
-// cbits/qlPricingEngineAux.cpp.
+// Use an explicit result type: a decltype probe can prevent clang from emitting the selected
+// curve's vtable. The same rule applies to the dispatchers in qlPricingEngineAux.cpp.
 template <class Ret, class F>
 Ret dispatchInterpolation(int interpolator, int approximator, int approximatorArg, F&& make) {
   switch (interpolator) {
@@ -56,7 +46,7 @@ Ret dispatchInterpolation(int interpolator, int approximator, int approximatorAr
   case hasquant::Cubic: return make(makeCubic<Cubic>(approximator, approximatorArg));
   case hasquant::LogCubic: return make(makeCubic<LogCubic>(approximator, approximatorArg));
   // hasquant::Abcd (InterpolationType's 7th case) has no arm: QuantLib's Abcd interpolation
-  // isn't usable as a PiecewiseYieldCurve interpolator. Pre-existing gap, preserved.
+  // isn't usable as a PiecewiseYieldCurve interpolator.
   default:
     QL_FAIL("Unsupported interpolation " << interpolator);
   }
@@ -192,12 +182,8 @@ YieldTermStructure *piecewiseYieldCurveGlobalBootstrapFull(
     const std::vector<shared_ptr<RateHelper> >& additionalHelpers,
     const std::vector<Date>& additionalDates,
     double accuracy, Args&&... reference) {
-  // AdditionalErrors returns additionalHelpers.size()-2 equations; GlobalBootstrap requires
-  // #equations == #unknowns, so additionalDates must supply exactly that many extra unknowns
-  // (confirmed empirically by an earlier standalone spike, which crashed at runtime with
-  // QuantLib's own "less functions than available variables" until the two were matched).
-  // Surfaced here with a message in terms of the Haskell-visible arguments, not left to that
-  // internal QuantLib error.
+  // AdditionalErrors supplies two fewer equations than helpers; additionalDates must provide
+  // the remaining unknowns for GlobalBootstrap's square system.
   QL_REQUIRE(additionalHelpers.size() >= 2,
       "GlobalBootstrap's canned AdditionalErrors formula needs at least 2 additionalHelpers "
       "(got " << additionalHelpers.size() << ")");
@@ -240,17 +226,8 @@ YieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrapFullAux(unsigned settl,
 // (interpolator-generic), this dispatches trait only, with the interpolator fixed to
 // ConvexMonotone.
 //
-// Discount is deliberately excluded, unlike dispatchTrait's IterativeBootstrap dispatch (which
-// includes it): a standalone raw-C++ reproduction against this same installed libQuantLib (no
-// hasquant involved) showed PiecewiseYieldCurve<Discount, ConvexMonotone, LocalBootstrap>
-// returning wildly wrong discount factors (>1, growing with maturity) for ordinary deposit-rate
-// inputs, reproducibly across both a flat 3% quote and varied per-tenor quotes, and independent
-// of LocalBootstrap's accuracy parameter -- not a hasquant marshalling bug, a genuine numerical
-// incompatibility between Discount's discount-factor-space guess/updateGuess and ConvexMonotone's
-// localInterpolate. ForwardRate, ZeroYield and SimpleZeroYield all reproduce the expected
-// 1/(1+rate*tau) values correctly under the same fixture. This matches upstream's own
-// test-suite/piecewiseyieldcurve.cpp, whose only LocalBootstrap+ConvexMonotone coverage
-// (testLocalBootstrapConsistency) uses ForwardRate, never Discount.
+// Discount is excluded: its guesses produce invalid discount factors with
+// ConvexMonotone/LocalBootstrap. The supported traits bootstrap ordinary deposit rates.
 template <class Trait, class... Args>
 YieldTermStructure *makeCurveLocalBootstrap(const ConvexMonotone& interp, Size localisation,
     bool forcePositive, double accuracy, Args&&... args) {

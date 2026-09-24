@@ -16,7 +16,6 @@
 -- SpanDates (endDate before exerciseDate) is rejected, which
 -- guards against exactly that kind of argument-order bug going undetected.
 --
--- Run with: cabal exec -- ghc -package hasquant smoke/SwaptionHelperConstructors.hs -o /tmp/swhctors -outputdir /tmp/swhctors_build && /tmp/swhctors
 import Control.Exception (SomeException, try)
 import Control.Monad (unless)
 import System.Exit (exitFailure)

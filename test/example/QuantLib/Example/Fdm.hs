@@ -48,10 +48,7 @@
 --   forces an exact node at each factor's mean-reverting level). Evaluated at @t = @ the sole
 --   exercise date (matching @exerciseDates@'s one entry -- evaluating at @t = 0@, not a key of
 --   that map, throws deep inside QuantLib's own exercise-date lookup): at the swap's own final
---   maturity no cashflows remain, so the value must be exactly 0 regardless of the model. A
---   model-independent sanity check in place of the numeric cross-check against an independently
---   computed swap NPV originally planned, which would need reproducing
---   @FdmAffineModelSwapInnerValue@'s own analytic-bond-pricing formula in Haskell.
+--   maturity no cashflows remain, so the value must be exactly 0 regardless of the model.
 -- * 'gluedMesher' -- splices the grid's left and right halves (split at the center node) back
 --   together, checked against the original @xs@ list (the shared boundary node must be
 --   deduplicated, not doubled); and a negative check that gluing the same two halves in the wrong

@@ -1,10 +1,5 @@
--- Smoke test: exercises the historical-fixings getters (fixing, hasHistoricalFixing,
--- isValidFixingDate) and the batch/clear mutators (addFixings, clearFixings) added
--- alongside the pre-existing addFixing/fixingCalendar. A clean build only proves the
--- shims link; it doesn't prove the fixing actually round-trips through QuantLib's
--- IndexManager singleton, or that clearFixings really empties it out again.
+-- Check fixing reads, batch writes, and clearing through QuantLib's IndexManager.
 --
--- Run with: cabal exec -- ghc -ismoke -package hasquant smoke/CheckIndexFixings.hs -o /tmp/checkindexfixings -outputdir /tmp/checkindexfixings_build && /tmp/checkindexfixings
 import Data.Time (fromGregorian)
 
 import QuantLib.Index

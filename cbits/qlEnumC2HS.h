@@ -563,13 +563,11 @@ enum UnitOfMeasureType {Mass, Volume, Energy, QuantityUnit};
 // experimental/commodities/paymentterm.hpp (PaymentTerm::EventType)
 enum PaymentTermEventType {TradeDate, PricingDate};
 
-// experimental/commodities/unitofmeasureconversion.hpp (UnitOfMeasureConversion::Type). Tags
-// prefixed Uom -- confirmed clash with the already-bound ExchangeRateType{Direct,Derived}.
+// experimental/commodities/unitofmeasureconversion.hpp (UnitOfMeasureConversion::Type).
+// Prefixes avoid a clash with ExchangeRateType's Direct and Derived constructors.
 enum UnitOfMeasureConversionType {UomDirect, UomDerived};
 
-// experimental/commodities/commodity.hpp (PricingError::Level). Grepped clean of any clash --
-// 'Error' the data constructor doesn't collide with QuantLib.Error's 'Error' type (separate
-// namespaces), and 'Info'/'Warning'/'Fatal' are otherwise unused as constructors here.
+// experimental/commodities/commodity.hpp (PricingError::Level).
 enum PricingErrorLevel {Info, Warning, Error, Fatal};
 
 // experimental/commodities/energycommodity.hpp (EnergyCommodity::DeliverySchedule,

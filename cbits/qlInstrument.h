@@ -464,14 +464,9 @@ extern "C" {
     int inArrears, int issue, unsigned redemptionsLen, double *redemptions, char **e);
   QlBond *qlFixedRateBondAsBond(QlFixedRateBond *bond);
 
-  // BTP -- an Italian Treasury bond: FixedRateBond with the market's own hardcoded conventions
-  // (semiannual, Actual/Actual ISMA, ModifiedFollowing, TARGET, par redemption). Kept as its own
-  // leaf type (rather than folded into the generic fixedRateBond, per AGENTS.md's "don't mirror
-  // the hierarchy 1:1" rule) only because RendistatoBasket's constructor genuinely requires
-  // vector<shared_ptr<BTP>> -- BTP::yield and CCTEU are convenience wrappers over already-bound
-  // functionality and are not bound (see tools/ql-methods-1.43.txt / AGENTS.md).
+  // RendistatoBasket requires BTP values, so this Italian Treasury bond has its own type.
   QlBTP *qlBtp(int maturityDate, double fixedRate, int startDate, int issueDate, char **e);
-  // legacy non-par redemption constructor; upstream notes only one such BTP remains.
+  // Non-par redemption constructor.
   QlBTP *qlBtpWithRedemption(int maturityDate, double fixedRate, double redemption, int startDate, int issueDate, char **e);
   void qlFreeBtp(QlBTP *o);
   QlFixedRateBond *qlBtpAsFixedRateBond(QlBTP *o);

@@ -116,8 +116,7 @@ gaussian1dSpec =
         proc1D <- stateProcess model
         proc1D `seq` return ()
 
-    -- The surface inverts Black's formula on model swaption prices, so a Black engine on it must
-    -- reprice the model's own ATM swaption, which also guards the unit-nominal shim workaround.
+    -- A Black engine on the surface must reprice the model's own ATM swaption.
     it "gaussian1dSwaptionVolatility reprices the model's swaption under a Black engine" $
       Context.keepingSettingsGc $ do
         cal <- calendar TARGET

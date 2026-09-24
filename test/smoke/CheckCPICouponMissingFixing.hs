@@ -2,7 +2,6 @@
 
 -- Smoke test: a missing CPI fixing must raise an exception without corrupting array output.
 --
--- Run with: cabal exec -- ghc -itest/smoke -package hasquant test/smoke/CheckCPICouponMissingFixing.hs -o /tmp/checkcpimissing -outputdir /tmp/checkcpimissing_build && /tmp/checkcpimissing
 module Main(main) where
 
 import Control.Exception (SomeException, try)

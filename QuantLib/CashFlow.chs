@@ -337,9 +337,7 @@ $(deriveOptionsRecord "IborLegOpts" []
   , ("ilgUseIndexedCoupons", [t|Maybe Bool|], [|Nothing|])
   ])
 
--- Same shape as IborLegOpts, minus the fields CmsLeg's builder doesn't have
--- (withPaymentLag/withPaymentCalendar/withIndexedCoupons -- confirmed absent from
--- ql/cashflows/cmscoupon.hpp's CmsLeg). Same splice-placement constraint as above.
+-- CmsLegOpts omits the IborLegOpts fields that QuantLib's CmsLeg builder lacks.
 $(deriveOptionsRecord "CmsLegOpts" []
   [ ("cmslExCouponPeriod", [t|(Int, TimeUnit)|], [|(0, Days)|])
   , ("cmslExCouponCalendar", [t|Maybe Calendar|], [|Nothing|])
@@ -1153,9 +1151,8 @@ cmsLegWithOptions schedule idx notionals dc adj fixingDays gearings spreads caps
   ,fromEnumQuantity`(Int,TimeUnit)'& -- ^observationTenor
   ,fromEnumC`BusinessDayConvention',preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
 
--- |Fixed-rate coupons scaled by the ratio of a 'ZeroInflationIndex' fixing to /baseCPI/
--- (a 'CPICoupon' leg -- no capped\/floored variant, unlike 'yoyInflationLeg': QL 1.43 has no
--- @CappedFlooredCPICoupon@ class to build one from, see README.md's TODO).
+-- |Fixed-rate coupons scaled by the ratio of a 'ZeroInflationIndex' fixing to /baseCPI/.
+-- QuantLib 1.43 has no capped or floored CPI coupon variant.
 {#fun qlCPILeg as cpiLeg{withSchedule*`Schedule',withZeroInflationIndex*`GenZeroInflationIndex zidx'
   ,`Double' -- ^baseCPI
   ,fromEnumQuantity`(Word,TimeUnit)'& -- ^observationLag
@@ -1168,14 +1165,9 @@ cmsLegWithOptions schedule idx notionals dc adj fixingDays gearings spreads caps
   ,`Bool' -- ^subtractInflationNominal
   ,preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
 
--- |Year-on-year inflation-linked coupons (a 'YoYInflationCoupon' leg). Non-empty /caps/\//floors/
--- build 'CappedFlooredYoYInflationCoupon's instead of plain ones -- but /any/ resulting coupon
--- (capped or not) still needs a pricer set via 'setYoyInflationCouponPricer' before its
--- 'QuantLib.CashFlow.npvWithZSpread\/'amount' can be computed: upstream's @InflationCoupon::rate()@
--- requires @pricer_@ unconditionally, not just for the capped\/floored case (confirmed by reading
--- @inflationcoupon.cpp@). CPI-leg ('cpiLeg') caps\/floors have no equivalent in QL 1.43 (no
--- @CappedFlooredCPICoupon@ class exists upstream, see README.md's TODO) -- this is a
--- QuantLib-version limitation, not an unbound feature.
+-- |Year-on-year inflation-linked coupons. Non-empty /caps/\//floors/ build
+-- 'CappedFlooredYoYInflationCoupon's. All coupons need 'setYoyInflationCouponPricer' before
+-- calculating amounts. QuantLib 1.43 has no capped or floored CPI coupon counterpart.
 {#fun qlYoYInflationLeg as yoyInflationLeg{withSchedule*`Schedule',withCalendar*`Calendar'
   ,withYoYInflationIndex*`GenYoYInflationIndex yidx'
   ,fromEnumQuantity`(Word,TimeUnit)'& -- ^observationLag

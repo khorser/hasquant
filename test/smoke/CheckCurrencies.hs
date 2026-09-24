@@ -3,7 +3,6 @@
 -- mismatch (see the reconcile-currencies skill's "gotcha" note) that a
 -- successful build alone wouldn't reveal.
 --
--- Run with: cabal exec -- ghc -package hasquant smoke/CheckCurrencies.hs -o /tmp/checkccy -outputdir /tmp/checkccy_build && /tmp/checkccy
 import QuantLib.Currency
 import Control.Monad
 

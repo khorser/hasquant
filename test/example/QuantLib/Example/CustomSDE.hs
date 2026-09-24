@@ -4,17 +4,8 @@
 -- American put on it with 'QuantLib.Method.lsmRegress'. Nothing crosses the FFI boundary inside
 -- the path loop.
 --
--- This is the @StochasticProcess@ half of issue #18, and it is deliberately /not/ a callback.
--- QuantLib's @MultiPathGenerator@ (which 'QuantLib.Method.pathGenerator' wraps) calls
--- @process->evolve@ once per timestep /per path/, so a Haskell-subclassed @StochasticProcess@
--- would put an FFI crossing in the hottest loop there is -- millions of them for a realistic run.
--- The reusable inner primitive sits one level lower: the gaussian sequence generator the path
--- generator merely consumes. Exposing that and letting Haskell drive the evolution is the same
--- decomposition 'QuantLib.Method.lsmRegress' applies to @LongstaffSchwartzPathPricer@, and it
--- costs one crossing per /path/ instead of one per timestep. Little is given up: a Haskell-evolved
--- SDE yields paths rather than a @StochasticProcess@ object, but no stock QuantLib pricing engine
--- would have accepted a custom process anyway -- their constructors are typed on concrete process
--- classes (@GeneralizedBlackScholesProcess@ and friends), not on the abstract base.
+-- 'gaussianRsg' lets Haskell evolve a whole path per FFI call. QuantLib's path generator
+-- would call a custom process once per timestep, while stock engines require concrete processes.
 --
 -- Three checks, on "QuantLib.Example.AmericanLSM"'s fixture (S=36, K=40, r=6%, vol=20%, val date
 -- 15-May-1998, maturity 17-May-1999) so the reference numbers carry over:

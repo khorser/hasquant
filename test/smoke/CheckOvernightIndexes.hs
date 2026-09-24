@@ -4,7 +4,6 @@
 -- "gotcha" notes) or a wrong factory-table entry shows up immediately,
 -- not just "the build succeeded".
 --
--- Run with: cabal exec -- ghc -package hasquant smoke/CheckOvernightIndexes.hs -o /tmp/checkidx -outputdir /tmp/checkidx_build && /tmp/checkidx
 import QuantLib.Index.InterestRate
 import QuantLib.Index
 import Control.Monad

@@ -37,24 +37,9 @@ showStandalone :: (Ptr a -> IO CString) -> Standalone a -> String
 showStandalone f x = unsafePerformIO $ withStandalone x (f >=> peekDynString)
 {-# NOINLINE showStandalone #-}
 
--- On `safe' vs `unsafe' imports, file-wide (this was an open TODO; it is settled):
---   * The `&qlFreeX' finalizer imports below take a symbol *address*, not a call, so their
---     `unsafe' annotation is inert. The call that matters is `callFinalizer' above, plus
---     whatever the GC runs; both are safe.
---   * Everything that runs QuantLib logic stays `safe'. Under the non-threaded RTS an
---     `unsafe' call blocks GC and the scheduler for its whole duration, and pricing or
---     bootstrapping is unbounded.
---   * The qlXAsY upcast shims are the one legitimate `unsafe' candidate -- bare
---     `ret(new QlY(*arg(o)))', no callback into Haskell, bounded work -- but they are
---     already dominated by the QuantLib call they precede, so leave them `safe' absent a
---     measurement; a per-shim rule would break the first time one grows logic.
--- If a Haskell callback is ever passed into C++, every import on that path must be `safe'.
---
--- 'withCostFunction' below is the first such callback: it turns a Haskell @[Double] -> Double@
--- into a C function pointer QuantLib's optimizer calls back into once per outer iteration (the
--- whole parameter vector, not per component) -- the coarsened-callback shape documented in
--- CLAUDE.md's "coarsen the language-boundary crossing" bullet, modeled on QuantLib-SWIG's own
--- @PyCostFunction@ (@SWIG/functions.i@).
+-- QuantLib calls stay `safe': an `unsafe' import can block GC and the scheduler during pricing.
+-- Finalizer imports take symbol addresses; callbacks into Haskell also require `safe' imports.
+-- 'withCostFunction' passes the whole parameter vector to each optimizer callback.
 foreign import ccall "wrapper" mkCostFunPtr
   :: (Ptr CDouble -> CUInt -> IO CDouble) -> IO (FunPtr (Ptr CDouble -> CUInt -> IO CDouble))
 -- Build a C function pointer around a Haskell cost function for the duration of one 'optimize'
@@ -3943,16 +3928,8 @@ peekQuantoDoubleBarrierOption = newGenForeignPtr >=> newGenOneAssetOption
 withQuantoDoubleBarrierOption :: QuantoDoubleBarrierOption -> (Ptr CQuantoDoubleBarrierOption' -> IO b) -> IO b
 withQuantoDoubleBarrierOption = withForeignPtr . ptr . peel . peel . getInstrument
 
--- Commodity/EnergyCommodity are abstract-here: Commodity's own constructor is never called
--- directly upstream (every concrete instrument goes through EnergyCommodity), and
--- EnergyCommodity::quantity() is pure virtual, so neither binds a constructor here -- both are
--- reachable only as upcast targets once a Stage-6 leaf (EnergyFuture, EnergyVanillaSwap,
--- EnergyBasisSwap) exists. Commodity::secondaryCosts()/EnergyCommodity::commodityType() are plain,
--- never-mutated echoes of each class's own constructor argument (commodity.hpp/energycommodity.hpp's
--- inline getters each just `return foo_;`) -- not bound, per CLAUDE.md's trivial-getter rule.
--- secondaryCostAmounts()/pricingErrors()/addPricingError are genuine (mutable, computed during
--- pricing); their generalized 'withCommodity' accessor and marshalling live below, next to the
--- Stage-6 leaves that finally give them a producer to verify against.
+-- Commodity and EnergyCommodity are abstract upcast targets for concrete energy instruments.
+-- Their calculated results use the shared 'withCommodity' accessor below.
 data CCommodity'
 type GenCommodity c = GenInstrument (AnyOf CCommodity' c)
 type CCommodity = ForeignPtr CCommodity'

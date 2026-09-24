@@ -1,14 +1,5 @@
--- Smoke test for the ActualActual DayCounterExtra addition (fixes the
--- long-standing TODO about the missing Schedule argument). Checks:
--- 1. The existing, unchanged schedule-less path (ActualActualBond) still
---    works -- this addition must be purely additive.
--- 2. ActualActualBond' (mandatory Schedule) produces a different, more
---    accurate year-fraction than the schedule-less ActualActualBond for
---    the same date range -- this is the one behavior the whole change
---    exists to add, so it's the one thing worth checking beyond "it
---    builds".
+-- Compare ActualActualBond with its schedule-aware variant for the same dates.
 --
--- Run with: cabal exec -- ghc -package hasquant smoke/CheckActualActual.hs -o /tmp/checkaa -outputdir /tmp/checkaa_build && /tmp/checkaa
 import QuantLib.Time.Schedule
 import QuantLib.Time.Calendar
 import Data.Time.Calendar (fromGregorian)

@@ -5,7 +5,6 @@
 -- InterestRateIndex ones erased to Index via asIndex. Also confirms valueAtRisk/
 -- expectedShortfall reject a centile outside [0.9, 1.0) with a proper errorCheck exception.
 --
--- Run with: cabal exec -- ghc -ismoke -package hasquant smoke/CheckHistoricalIndexAnalysis.hs -o /tmp/checkhistoricalindexanalysis -outputdir /tmp/checkhistoricalindexanalysis_build && /tmp/checkhistoricalindexanalysis
 import Control.Exception (SomeException, try)
 import Control.Monad (forM_)
 

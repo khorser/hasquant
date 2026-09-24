@@ -3,7 +3,6 @@
 -- ExchangeRateType enum dispatch that a successful build alone wouldn't
 -- reveal.
 --
--- Run with: cabal exec -- ghc -package hasquant smoke/CheckExchangeRate.hs -o /tmp/checkexchangerate -outputdir /tmp/checkexchangerate_build && /tmp/checkexchangerate
 import QuantLib.Currency
 import QuantLib.Internal(minDate, maxDate)
 

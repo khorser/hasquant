@@ -158,13 +158,7 @@ spec = do
     abs (capNPV - sum caplets) `shouldSatisfy` (< 1e-6)
 
   it "a capped yoyInflationLeg's NPV decomposes as uncapped leg NPV minus the equivalent cap's NPV" $ Context.keepingSettingsGc $ do
-    -- Confirmed by reading inflationcoupon.cpp: InflationCoupon::rate() unconditionally requires
-    -- a pricer (QL_REQUIRE(pricer_, "pricer not set")), capped or not -- yoyInflationLeg's own
-    -- operator Leg() (yoyinflationcoupon.cpp) auto-attaches a default (non-vol) pricer only when
-    -- caps and floors are BOTH empty; a non-empty cap here means 'setYoyInflationCouponPricer'
-    -- must be called explicitly, and this test's NPV assertion below only succeeds if it actually
-    -- ran (leaving it out reproduces "pricer not set", not a silently-wrong number) -- so this
-    -- doubles as the setter's own regression check.
+    -- A capped YoY leg needs an explicit pricer; uncapped legs receive a default one.
     todayD <- today
     Context.setEvaluationDate (Just todayD)
     yii <- linkedYoYIndex todayD
@@ -204,12 +198,9 @@ spec = do
   -- way: pick an evaluation date on the 1st of a month (so "the start of the inflation period
   -- containing the maturity", what CPI::Flat actually samples, coincides exactly with the
   -- maturity itself) and a maturity/strike that exactly match one price-surface grid node.
-  -- baseCPI is a required constructor argument but never touched by this engine's calculate()
-  -- (confirmed by reading cpicapfloorengines.cpp) so an arbitrary placeholder is fine.
+  -- This engine does not use the required baseCPI constructor argument.
   it "reproduces the exact grid price at a matching strike/maturity node" $ Context.keepingSettingsGc $ do
-    -- First-of-month, derived from the real wall-clock date rather than hardcoded, so
-    -- CPI::Flat's period-start sampling (see the comment above) lands exactly on the raw date
-    -- without pinning the test to a date that will eventually become stale/past.
+    -- CPI::Flat samples the period start, so use the first of the current month.
     (y, m, _) <- toGregorian <$> today
     let today' = fromGregorian y m 1
     Context.setEvaluationDate (Just today')

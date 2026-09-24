@@ -8,7 +8,6 @@
 -- identical inputs, at an expiry and a strike strictly *between* grid nodes, and asserts the
 -- NPVs differ. Same shape as CheckInflation.hs's Flat-vs-Linear check.
 --
--- Run with: cabal exec -- ghc -ismoke -package hasquant smoke/CheckBlackVarianceSurface.hs -o /tmp/checkbvs -outputdir /tmp/checkbvs_build && /tmp/checkbvs
 import Control.Monad (forM)
 import qualified Data.Vector.Storable as V
 

@@ -11,12 +11,8 @@
 -- likely violate at least one of these, since they hold only because the C++ short-circuits on
 -- those exact conditions before touching the model at all.
 --
--- The curve's reference date is fixed to the first pillar date (dates.at(0) in the upstream
--- constructor), not the evaluation date -- confirmed by reading both
--- InterpolatedAffineHazardRateCurve and its InterpolatedHazardRateCurve sibling. All intervals
--- below are therefore measured from the first pillar, not from refDate.
+-- The curve's reference date is its first pillar; measure intervals from that date.
 --
--- Run with: cabal exec -- ghc -ismoke -package hasquant smoke/CheckInterpolatedAffineHazardRateCurve.hs -o /tmp/checkaffine -outputdir /tmp/checkaffine_build && /tmp/checkaffine
 import Data.List.NonEmpty (fromList)
 
 import QuantLib.Context (setEvaluationDate)

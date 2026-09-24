@@ -25,12 +25,8 @@ import QuantLib.Time.Calendar
 import QuantLib.Time.Date
 import QuantLib.Time.Schedule
 
--- |Two 'ZeroInflationIndex' instances sharing a name/region/currency/frequency/lag share
--- fixings via QuantLib's global @IndexManager@ (keyed by name, not per-instance) -- verified
--- with a standalone scratch check before relying on it here. This lets us build a curve from
--- an *unlinked* index (@idx0@), then construct a second, curve-linked index (@idx1@) that can
--- forecast off it, entirely sidestepping the RelinkableHandle-based bootstrap upstream tests
--- use (no @RelinkableHandle@\/@linkTo@ concept exists in hasquant -- see README.md's TODO).
+-- |Indexes with the same identity share fixings through QuantLib's global @IndexManager@.
+-- Build the curve with @idx0@, then forecast through the curve-linked @idx1@.
 data Result = Result
   { zcisNpvBeforeFairRate :: Double
   , zcisNpvAtFairRate :: Double

@@ -1,4 +1,4 @@
--- Smoke test for issue #18's two hooks:
+-- Exercise custom payoffs and the standalone gaussian sequence generator:
 --
 -- A. withCustomPayoff / withCustomBasketPayoff -- a Haskell-defined QuantLib Payoff. Checked by
 --    reproducing a PlainVanilla call as a Haskell lambda and requiring the *native* and *custom*
@@ -13,9 +13,6 @@
 --    pins the draw order MultiPathGenerator consumes (offset (i-1)*factors per timestep) as much
 --    as it pins the binding.
 --
--- Run with:
---   cabal exec -- ghc -package hasquant test/smoke/CheckCustomPayoffAndRsg.hs \
---     -o /tmp/checkcustom -outputdir /tmp/checkcustom_build && /tmp/checkcustom
 import Control.Monad(unless)
 import Data.Time.Calendar(addDays, fromGregorian)
 import qualified Data.Vector.Storable as V

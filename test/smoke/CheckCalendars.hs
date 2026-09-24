@@ -4,7 +4,6 @@
 -- reconcile-calendars skill's "gotcha" note) that a successful build
 -- alone wouldn't reveal.
 --
--- Run with: cabal exec -- ghc -package hasquant smoke/CheckCalendars.hs -o /tmp/checkcal -outputdir /tmp/checkcal_build && /tmp/checkcal
 import QuantLib.Time.Calendar
 import QuantLib.Time.Date
 import Control.Monad

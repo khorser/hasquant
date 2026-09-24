@@ -1110,10 +1110,7 @@ void qlFdmMesherLocations(QlFdmMesher* mesher, unsigned direction, unsigned* out
 
 void qlFreeFdmInnerValueCalculator(QlFdmInnerValueCalculator *o) {del(o);}
 
-// Heap-allocates the same HsFdmInnerValueCalculator qlFdmSolve used to build stack-locally,
-// so a Haskell-defined calculator can be surfaced as a real QlFdmInnerValueCalculator and reused
-// wherever a native one (FdmZeroInnerValue etc., bound alongside this) can be used -- see
-// QuantLib.Method.fdmInnerValueCalculator's haddock.
+// Give Haskell-defined inner-value callbacks a reusable QlFdmInnerValueCalculator lifetime.
 QlFdmInnerValueCalculator* qlFdmInnerValueCalculatorFromFunctions(QlFdmMesher* mesher, FdmInnerValueFun innerValueFn, FdmInnerValueFun avgInnerValueFn, char **e) {
   try {return ret(new QlFdmInnerValueCalculator(alloc(new HsFdmInnerValueCalculator(*arg(mesher), innerValueFn, avgInnerValueFn))));
   } catch (std::exception& er) {return handleException<QlFdmInnerValueCalculator*>(e, er);}}
@@ -1159,12 +1156,7 @@ void qlFdmSolve(QlFdmMesher* mesher, QlFdmInnerValueCalculator* calculator,
   }, outLen, outValues);
   } catch (std::exception& er) {*e = tracedup(er.what());}}
 
-// Native (non-Haskell-callback) FdmInnerValueCalculator subclasses -- QuantLib's own concrete
-// implementations, bound as a peer to qlFdmInnerValueCalculatorFromFunctions above so common cases
-// (a vanilla/basket payoff on the grid) don't pay any per-node FFI cost. All upcast directly to
-// QlFdmInnerValueCalculator at construction, like every other pricing-engine-family constructor
-// here -- none of these classes have their own public methods beyond the ctor, so no dedicated
-// leaf type is needed (see CLAUDE.md's "don't mirror the hierarchy 1:1").
+// Native inner-value calculators avoid per-node Haskell callbacks and return the shared base type.
 QlFdmInnerValueCalculator* qlFdmZeroInnerValue(char **e) {
   try {return ret(new QlFdmInnerValueCalculator(alloc(new FdmZeroInnerValue())));
   } catch (std::exception& er) {return handleException<QlFdmInnerValueCalculator*>(e, er);}}

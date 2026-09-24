@@ -6,7 +6,6 @@
 -- initial values and dropped the handles. This prices the same European option off one curve
 -- before and after bumping one of its underlying SimpleQuotes, and asserts the NPV moves.
 --
--- Run with: cabal exec -- ghc -ismoke -package hasquant smoke/CheckExtendedBlackVariance.hs -o /tmp/checkebv -outputdir /tmp/checkebv_build && /tmp/checkebv
 import Data.List.NonEmpty (fromList)
 
 import QuantLib.Instrument (setPricingEngine, npv)

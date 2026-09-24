@@ -1,20 +1,7 @@
 {-# LANGUAGE OverloadedLists #-}
 
--- Stale-build guard for the GlobalBootstrap dispatch branch and MultiCurve binding.
+-- Exercise MultiCurve with GlobalBootstrap against the compiled library.
 --
--- The behavioural checks live in the "multi-curve bootstrap (GlobalBootstrap + MultiCurve
--- cycle)" block nested inside main/test/QuantLib/Spec/TermStructure.hs's "relinkable handles"
--- describe group, and run on every `stack test`. This file exists for the one thing test/
--- structurally cannot catch: editing a C header without touching any .chs leaves cabal/stack
--- silently stale -- neither tracks that a .chs file's #include'd header changed, so the build
--- reports success without re-running c2hs and the tests then pass against the *old* generated
--- code. qlPiecewiseYieldCurveAux1 gained a new (bootstrap, accuracy) dispatch parameter and
--- QlMultiCurve is a brand-new typedef in cbits/qlaux.h -- both are exactly the kind of change
--- that wouldn't be caught by a stale build. Compiled standalone against the installed library,
--- this script sees whatever was actually built.
---
--- Run with:
---   cabal exec -- ghc -ismoke -package hasquant smoke/CheckMultiCurve.hs -o /tmp/mc_smoke -outputdir /tmp/mc_smoke_build && /tmp/mc_smoke
 
 import QuantLib.CashFlow(iborLeg)
 

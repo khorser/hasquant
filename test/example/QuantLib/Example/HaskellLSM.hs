@@ -1,5 +1,4 @@
--- |Benchmarks 'QuantLib.Method.lsmRegress' (the coarsened primitive CLAUDE.md's callback-shape
--- rule prescribes -- one batched regression call per exercise date, using QuantLib's own
+-- |Benchmarks 'QuantLib.Method.lsmRegress' (one batched call per exercise date, using QuantLib's
 -- Eigen-backed least-squares solve) against the naive alternative: the identical backward
 -- induction, but with the per-date regression re-implemented from scratch in plain Haskell
 -- (normal equations solved by hand-rolled Gauss-Jordan elimination over small lists, no
@@ -7,13 +6,8 @@
 -- exact same calibration\/pricing path sets from "QuantLib.Example.AmericanLSM"'s fixture, so
 -- any timing difference is the regression implementation, not the paths.
 --
--- This is deliberately an apples-to-oranges comparison, not a controlled microbenchmark: the
--- Haskell side uses contiguous vectors for the large path arrays and a textbook
--- (unoptimized, non-pivoted-for-speed) solve over the small regression system, while
--- 'lsmRegress' calls into QuantLib's C++ least-squares machinery. That gap is the point -- it
--- illustrates why CLAUDE.md's "coarsen the language-boundary crossing" pattern reuses QuantLib's
--- own regression primitive instead of shipping the state across the FFI boundary once per path
--- and reimplementing the fit on the Haskell side.
+-- This compares a textbook Haskell solve with QuantLib's optimized least-squares machinery;
+-- it is an end-to-end timing comparison, not a controlled microbenchmark.
 --
 -- Every list traversal below is total: no 'head'\/'tail'\/'last'\/'init'\/@(!!)@\/'maximum', and
 -- no partial conversion of a plain list into a 'NonEmpty'. Genuinely non-empty-by-construction

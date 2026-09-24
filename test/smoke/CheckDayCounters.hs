@@ -7,7 +7,6 @@
 -- Bool sub-choice into the generic qlDayCounter(Int,Int) dispatch table --
 -- This also checks that Actual360's flag reaches QuantLib.
 --
--- Run with: cabal exec -- ghc -package hasquant smoke/CheckDayCounters.hs -o /tmp/checkdc -outputdir /tmp/checkdc_build && /tmp/checkdc
 import QuantLib.Time.Schedule
 import Data.Time.Calendar (fromGregorian)
 import Control.Monad

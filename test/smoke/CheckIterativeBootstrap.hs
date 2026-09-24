@@ -11,7 +11,6 @@
 -- QuantLib bootstraps curves lazily: constructing one never throws, the first `discount` call
 -- does. Every check below therefore reads a discount factor rather than just building a curve.
 --
--- Run with: cabal exec -- ghc -ismoke -package hasquant smoke/CheckIterativeBootstrap.hs -o /tmp/checkib -outputdir /tmp/checkib_build && /tmp/checkib
 import Control.Exception (try, evaluate, SomeException)
 import Data.List.NonEmpty(fromList)
 

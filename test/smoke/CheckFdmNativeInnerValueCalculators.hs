@@ -1,6 +1,4 @@
--- Smoke test for issue #20's finalization: QuantLib's native FdmInnerValueCalculator subclasses
--- (FdmZeroInnerValue, FdmCellAveragingInnerValue, FdmLogInnerValue, FdmLogBasketInnerValue), bound
--- alongside the pre-existing Haskell-callback path (withCustomFdmInnerValueCalculator). Checks:
+-- Exercise native FdmInnerValueCalculator implementations and gluedMesher:
 -- 1. fdmZeroInnerValue is always 0 at any node.
 -- 2. fdmLogInnerValue (native, cell-averaging with gridMapping = exp) driving fdmSolve reprices a
 --    European call close to analyticEuropeanEngine's closed-form value.
@@ -8,9 +6,6 @@
 -- 4. gluedMesher splices two Fdm1dMeshers back into the original grid (dedup'd shared node), and
 --    rejects an overlapping/reversed pair.
 --
--- Run with:
---   cabal exec -- ghc -package hasquant test/smoke/CheckFdmNativeInnerValueCalculators.hs \
---     -o /tmp/checkfdm -outputdir /tmp/checkfdm_build && /tmp/checkfdm
 import Control.Exception(SomeException, try)
 import Data.Time.Calendar(addDays)
 import qualified Data.Vector.Storable as V

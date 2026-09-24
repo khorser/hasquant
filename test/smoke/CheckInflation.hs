@@ -7,7 +7,6 @@
 -- immediately, not just "the build succeeded" (see reconcile-*/
 -- add-quantlib-index skills' "gotcha" notes).
 --
--- Run with: cabal exec -- ghc -ismoke -package hasquant smoke/CheckInflation.hs -o /tmp/checkinfl -outputdir /tmp/checkinfl_build && /tmp/checkinfl
 import Control.Monad
 import qualified QuantLib.CashFlow as CF
 import qualified QuantLib.InterestRate as IR

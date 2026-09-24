@@ -1,8 +1,5 @@
 {-# OPTIONS_GHC -fno-warn-orphans #-}
--- | Shared arbitrary instances and value-comparison helpers used by more than
--- one @QuantLib.Spec.*@ module. Split out of the former single-file
--- @MainTest.hs@ (see CLAUDE.md's "Documentation upkeep" for the module
--- layout this belongs to).
+-- |Shared arbitrary instances and value-comparison helpers for @QuantLib.Spec.*@.
 module QuantLib.Spec.Helpers (
     ValidDay(..)
   , InvalidDay(..)

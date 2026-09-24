@@ -200,21 +200,11 @@ $(deriveOptionsRecord "IterativeBootstrapOpts" []
 {#enum PricingErrorLevel{} deriving (Show, Eq, Read, Bounded)#}
 peekPricingErrorLevelArray :: Ptr CUInt -> Ptr (Ptr CInt) -> IO [PricingErrorLevel]
 peekPricingErrorLevelArray = peekIntArray' toEnumC
--- Confirmed clash (a real one, caught by the build, not assumed): 4 of DeliverySchedule's 8 tags
--- (Daily/Weekly/Monthly/Quarterly) collide with QuantLib.Time.Schedule's own Frequency enum, whose
--- module this file is imported into unqualified. Prefixed Haskell-side only (c2hs's own "add
--- prefix", not a cbits/qlEnumC2HS.h rename) -- same targeted-rename convention as
--- UnitOfMeasureType's Quantity->QuantityUnit above, not a blanket defensive prefix.
+-- Prefix these tags to avoid clashes with QuantLib.Time.Schedule's Frequency constructors.
 {#enum DeliverySchedule{} add prefix = "Delivery" deriving (Show, Eq, Read, Bounded)#}
 {#enum QuantityPeriodicity{} deriving (Show, Eq, Read, Bounded)#}
--- flat/linear interpolation of a CPI index between its publication dates -- skips the
--- deprecated AsIndex upstream case, so cbits/qlEnumObjects.h's values (and thus this
--- c2hs-derived enum's fromEnum) start at 1, not 0; see that header's comment for why a
--- renumbered-from-0 enum here would silently alias to the wrong upstream case. Declared here
--- (not in QuantLib.TermStructure.Inflation, its "natural" home) for the same reason as
--- TimeUnit above: needed by several modules whose build order can't all safely {#import#} that
--- module (built before it, or -- for QuantLib.TermStructure.Yield -- mutually dependent with
--- it already).
+-- CPI interpolation skips upstream's deprecated AsIndex value, so the enum starts at 1.
+-- Shared users import it from here to avoid a module cycle.
 {#enum CPIInterpolationType{} deriving (Show, Eq, Read, Bounded)#}
 {#enum CalibrationBasketType{} deriving (Show, Eq, Read, Bounded)#}
 

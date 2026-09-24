@@ -10,9 +10,6 @@
 -- Also pins the FunPtr-lifetime contract for the callback forms: everything that reads the quote
 -- must happen inside the continuation, and the curve built inside one keeps working there.
 --
--- Run with:
---   cabal exec -- ghc -package hasquant test/smoke/CheckQuoteComposition.hs \
---     -o /tmp/checkquotecomp -outputdir /tmp/checkquotecomp_build && /tmp/checkquotecomp
 import Data.Time.Calendar(Day, fromGregorian)
 
 import QuantLib.InterestRate

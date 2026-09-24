@@ -4,13 +4,7 @@
 -- and undated OIS; then a Euribor 6M forecast curve from a deposit, FRAs and swaps
 -- whose helpers discount off the EONIA curve. Two swaps are then priced on the pair.
 --
--- The point of the port is that multi-curve bootstrapping needs no relinking at all,
--- which is what settles issue #1's "probably would need RelinkableHandle first". Upstream
--- holds both curves in RelinkableHandles but only ever calls linkTo once each, right after
--- its curve is bootstrapped -- semantically just a plain handle over that curve, which is
--- what every curve-taking binding here already builds. Relinking as an actual capability
--- is a separate feature, exercised by the "relinkable handles" block in
--- main/test/QuantLib/Spec/TermStructure.hs.
+-- Both curves are linked once after bootstrapping; the example needs no later relinking.
 --
 -- Two deliberate divergences from upstream:
 --  * The bootstrap accuracy argument (upstream passes 1.0e-15 via an explicit

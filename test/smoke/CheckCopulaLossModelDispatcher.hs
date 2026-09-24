@@ -1,6 +1,5 @@
 -- Smoke test for Gaussian/Student-T copula dispatch through nth-to-default pricing.
 --
--- Run with: .claude/skills/run-hasquant/driver.sh test/smoke/CheckCopulaLossModelDispatcher.hs
 import Data.List.NonEmpty(fromList)
 import Data.Time.Calendar(fromGregorian)
 

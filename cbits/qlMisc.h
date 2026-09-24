@@ -305,9 +305,7 @@ extern "C" {
   int qlPaymentTermEmpty(PaymentTerm *o);
   int qlPaymentTermGetPaymentDate(PaymentTerm *o, int date, char **e);
 
-  /* Quantity -- marshalled as flat (CommodityType, UnitOfMeasure, double) triples throughout,
-     since c2hs's `&` tuple-splitter caps at two C arguments (confirmed against its source: the
-     `twoCVal` marshaller consumes exactly [ct1, ct2], with no three-way variant). */
+  /* Quantity uses flat triples because c2hs's `&` tuple-splitter supports only pairs. */
   double qlQuantityRoundedAmount(UnitOfMeasure *uom, double amount);
   int qlQuantityClose(CommodityType *ct1, UnitOfMeasure *uom1, double amount1,
                       CommodityType *ct2, UnitOfMeasure *uom2, double amount2, int n, char **e);
@@ -340,14 +338,8 @@ extern "C" {
   UnitOfMeasure *qlCommoditySettingsUnitOfMeasure(char **e);
   void qlCommoditySettingsSetUnitOfMeasure(UnitOfMeasure *u);
 
-  /* HistoricalIndexAnalysis -- computes a SequenceStatistics (one dimension per index) over the
-     relative fixing-to-fixing returns of the given indexes between startDate and endDate, sampled
-     every step, generalizing upstream's InterestRateIndex-only HistoricalRatesAnalysis
-     (ql/models/marketmodels/historicalratesanalysis.hpp) to any Index -- see CLAUDE.md's "don't
-     mirror the C++ hierarchy 1:1". SequenceStatistics is, per dimension, a full
-     GenericRiskStatistics<GaussianStatistics> (ql/math/statistics/riskstatistics.hpp), so both its
-     empirical and gaussian-assumption risk measures are exposed here directly as
-     HistoricalIndexAnalysis accessors rather than introducing a dedicated Statistics Haskell type. */
+  /* HistoricalIndexAnalysis samples relative returns for any Index and exposes
+     SequenceStatistics measures per index. */
   QlHistoricalIndexAnalysis *qlHistoricalIndexAnalysis(int startDate, int endDate,
       int stepLen, int stepUnit, unsigned indexesLen, QlIndex **indexes, char **e);
   void qlFreeHistoricalIndexAnalysis(QlHistoricalIndexAnalysis *o);

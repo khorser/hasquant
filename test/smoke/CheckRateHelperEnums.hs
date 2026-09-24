@@ -1,14 +1,7 @@
 {-# LANGUAGE OverloadedLists #-}
 
--- Smoke test: construct a FraRateHelper for every PillarChoice case and a
--- FuturesRateHelper for every FuturesType case, then bootstrap each into a
--- tiny piecewise yield curve and print the implied discount, so a stale
--- c2hs-generated enum (these two are declared directly in
--- QuantLib.TermStructure.Yield -- see the cross-module {#import#} gotcha in
--- CLAUDE.md -- rather than in QuantLib.Internal.Common like most others) shows
--- up immediately, not just "the build succeeded".
+-- Bootstrap a curve for each PillarChoice and FuturesType to check enum dispatch.
 --
--- Run with: cabal exec -- ghc -package hasquant smoke/CheckRateHelperEnums.hs -o /tmp/checkrhe -outputdir /tmp/checkrhe_build && /tmp/checkrhe
 import Control.Monad
 import QuantLib.Math(Interpolation(..))
 import QuantLib.Quote(simpleQuote)

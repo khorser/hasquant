@@ -96,18 +96,8 @@ floorPricesEU = realGrid 6 7 $ V.fromList
 realGrid :: Word -> Word -> V.Vector Double -> RealMatrix
 realGrid rows cols = either error id . realMatrixFromVector rows cols
 
--- |Vol slices at the surface's base date plus 1\/3 years, across the 11-strike union of
--- 'cStrikesEU'\/'fStrikesEU'. NOT upstream's own cached @volATyear1@\/@volATyear3@ (those are
--- @{0.0129, 0.0094, ...}@\/@{0.0080, 0.0058, ...}@) -- those values are stale against the
--- QuantLib 1.43 actually installed here, off by several times this test's tolerance. Confirmed
--- via an independent, minimal C++ program (bypassing hasquant's Haskell layer entirely) built
--- straight from @setup()@\/@setupPriceSurface()@\/@testYoYPriceSurfaceToVol@'s own C++ verbatim,
--- linked against the same installed @libQuantLib@: it reproduces exactly these values, not
--- upstream's cached ones, ruling out a hasquant-side bug and pointing at behavior that changed
--- upstream since this fixture was written (2009) without the cached numbers being refreshed --
--- consistent with both 'KInterpolatedYoYOptionletVolatilitySurface' and
--- 'InterpolatedYoYOptionletStripper' carrying an explicit upstream doc comment of their own,
--- @\\bug Tests currently fail@.
+-- |Vol slices at the surface's base date plus 1\/3 years across the union of
+-- 'cStrikesEU'\/'fStrikesEU'. QuantLib 1.43 yields these values from the upstream fixture.
 volATyear1, volATyear3 :: [Double]
 volATyear1 = [0.0135064, 0.0098650, 0.0087791, 0.0077453, 0.0067549, 0.0060420, 0.0043860, 0.0048649, 0.0056425, 0.0067729, 0.0103381]
 volATyear3 = [0.0085961, 0.0062788, 0.0055840, 0.0049221, 0.0042875, 0.0038286, 0.0027751, 0.0030795, 0.0035763, 0.0042978, 0.0065660]
@@ -232,12 +222,8 @@ spec = do
   -- construction/sanity check only, same reasoning as the spot-checks above. LogCubic is
   -- deliberately not exercised: it can't back this template at all (see the comment on the
   -- LogCubic case in qlInflationVol.cpp's dispatchKInterpolatedYoYOptionletVolatilitySurface).
-  -- Cubic/LogLinear are also skipped here: this fixture's sparse (3-maturity) per-strike vol
-  -- bootstrap (PiecewiseYoYOptionletVolatilityCurve, one per strike, see initialize() in
-  -- interpolatedyoyoptionletstripper.hpp) fails to converge under Cubic's default-constructed
-  -- Kruger derivative estimate with so few points ("root not bracketed") -- a real numerical
-  -- fragility of the bootstrap with this data, not a hasquant bug. BackwardFlat has no derivative
-  -- estimation so it bootstraps fine and still exercises a genuinely different interpolator.
+  -- This sparse fixture does not converge under Cubic; BackwardFlat exercises another
+  -- interpolator without derivative estimation.
   it "kInterpolatedYoyOptionletVolatilitySurfaceUnitDisplacedBlack: a non-Linear interpolation builds and queries" $ Context.keepingSettingsGc $ do
     (_, cal, dc, nominalEUR, yoyIndexEU, priceSurfEU) <- setup
 

@@ -1,15 +1,6 @@
 {-# LANGUAGE OverloadedLists #-}
--- Golden-value tests for the exotic single-/multi-asset options bound
--- alongside their analytic engines: 'simpleChooserOption', 'softBarrierOption',
--- 'twoAssetCorrelationOption' reproduce cached NPVs from QuantLib's own
--- test-suite (chooseroption.cpp, softbarrieroption.cpp,
--- twoassetcorrelationoption.cpp). 'writerExtensibleOption' has no upstream
--- test-suite fixture, so it's checked instead against an independent
--- Monte Carlo simulation of its own payoff definition (see CLAUDE.md's
--- TARF-style self-consistency precedent) -- exact lognormal (GBM) path
--- simulation under the same flat-rate/flat-vol process, entirely
--- self-contained (no 'random' package dependency: a fixed-seed splitmix-style
--- LCG plus Box-Muller, both defined below).
+-- Golden option values use QuantLib fixtures; writer-extensible payoff behavior uses
+-- an independent, fixed-seed Monte Carlo simulation below.
 module QuantLib.Spec.Instrument.Option (spec) where
 
 import Prelude hiding(iterate, tail, drop)
@@ -159,15 +150,8 @@ spec = do
         v `shouldSatisfy` closePrec 6.0508 1e-4
 
   describe "SoftBarrierOption" $ do
-    -- cached reference from QuantLib test-suite/softbarrieroption.cpp::testSoftBarrierHaug
-    -- (Haug 2nd ed., p.166; first DownOut/Call row). Pinned to the upstream test's own
-    -- literal evaluation date (8 August 2025), not a dynamic 'today': AnalyticSoftBarrierEngine
-    -- (a 2025 upstream addition) turns out to price differently for different evaluation dates
-    -- even at identical time-to-maturity T -- confirmed independently against a standalone C++
-    -- program linked against the same installed QuantLib 1.43 (evalDate 2020-01-01/2025-08-08/
-    -- 2026-08-22 with T pinned to exactly 0.5y each gave 3.79624/3.80752/3.78492 respectively).
-    -- This looks like a genuine date-arithmetic quirk in the new upstream engine, not a
-    -- hasquant marshalling bug; matching the test-suite's own fixture date is the correct fix.
+    -- Haug's DownOut/Call reference in QuantLib test-suite/softbarrieroption.cpp uses
+    -- 8 August 2025; this engine's price depends on the evaluation date.
     it "reproduces Haug's soft barrier option value" $
       Context.keepingSettingsGc $ do
         let evalDate = 8 `august` 2025
