@@ -501,7 +501,7 @@ gsrWithReversions ts (initialVol, initialReversion) steps horizon =
 markovFunctional :: GenYieldTermStructure y -> Double -- ^reversion
   -> Double -- ^initial volatility
   -> [(Day, Double)] -- ^subsequent volatility steps
-  -> SwaptionVolatilityStructure
+  -> GenSwaptionVolatilityStructure sv
   -> NonEmpty (Day, (Word, TimeUnit)) -- ^swaption expiry/tenor calibration points
   -> GenSwapIndex sidx -- ^swapIndexBase
   -> Word -- ^yGridPoints
