@@ -93,3 +93,18 @@ Notes that are only relevant when an agent drives the build:
     subnormal nonsense (`…e-312`) for a long double in the *passing* binary
     too, so cast to `double` for display, and distrust an `…e-312` figure in
     a boost error message as evidence about the value itself.
+
+## Symbolizing a CI crash
+
+`windows.yml` runs a stripped `hasquant_test.exe` and, on failure or manual dispatch,
+uploads `windows-test-bin-ghc<ver>-attempt<n>`: stripped and unstripped copies, an
+`nm` map, RTS minidumps (`ci-dumps`), and the QuantLib DLL. Download it with
+`gh run download <run-id>` (or the run's Summary page), then feed the RTS stack trace in:
+
+```bash
+tools/symbolize-windows-trace.py windows-test-bin-ghc9.10.3-attempt1 < trace.txt
+```
+
+Frames `hasquant_test.exe+0x<RVA>` resolve to the nearest map symbol (GHC names
+z-decoded); with `llvm-symbolizer` available (`brew install llvm`), `cbits` frames
+also get file:line. Minidumps need WinDbg or LLVM's `lldb`.
