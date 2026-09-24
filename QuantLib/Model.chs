@@ -94,6 +94,7 @@ module QuantLib.Model
   , liborForwardModel
   , lfmHullWhiteParameterization
   , gsr
+  , gsrWithReversions
   , markovFunctional
   , markovFunctionalCaplet
   , garch11
@@ -108,6 +109,7 @@ module QuantLib.Model
   , setCovarParam
   , calibrate
   , calibrateVolatilitiesIterative
+  , calibrateReversionsIterative
   , moveVolatility
   , moveReversion
   , setPricingEngine
@@ -133,6 +135,7 @@ module QuantLib.Model
     -- ** Model state and calibration
   , HasLeverageFunction(..)
   , HasVolatilities(..)
+  , reversions
   , HasHelperUnderlying(..)
   , g2Dynamics
   , shortRate
@@ -436,16 +439,31 @@ fixedReversion = [True, False]
 -- piecewise-constant changes at the given dates, plus a single constant reversion.
 gsr :: GenYieldTermStructure y -> GenQuote q1 -> [(Day, GenQuote q1)] -> GenQuote q2 -> Double -> IO Gsr
 gsr ts initialVol subsequentVols reversion horizon =
-  qlGsr ts dates (initialVol : vols) reversion horizon
+  qlGsr ts dates (initialVol : vols) [reversion] horizon
   where (dates, vols) = unzip subsequentVols
+
+-- |One-factor GSR model with a piecewise-constant reversion as well as volatility: the initial
+-- (volatility, reversion) pair holds until the first step date, and each step date starts a new
+-- pair. 'calibrateReversionsIterative' needs this form, one reversion per calibration helper.
+gsrWithReversions :: GenYieldTermStructure y -> (GenQuote q1, GenQuote q2) -> [(Day, (GenQuote q1, GenQuote q2))]
+  -> Double -> IO Gsr
+gsrWithReversions ts (initialVol, initialReversion) steps horizon =
+  qlGsr ts dates (initialVol : vols) (initialReversion : reversions') horizon
+  where (dates, pairs) = unzip steps
+        (vols, reversions') = unzip pairs
+
 {#fun qlGsr{withYieldTermStructure*`GenYieldTermStructure y',withDayArray*`[Day]'& -- ^volstepdates
   ,withQuoteArray*`[GenQuote q1]'& -- ^volatilities
-  ,withQuote*`GenQuote q2' -- ^reversion
+  ,withQuoteArray*`[GenQuote q2]'& -- ^reversions: one, or one per volatility
   ,`Double' -- ^T
   ,preErrorCheck-`String'errorCheck*-}->`Gsr'peekGsr*#}
 
 -- |Volatility step values, as calibrated so far.
 {#fun qlGsrVolatility{withGenCalibratedModel*`Gsr',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+
+-- |Reversion values, as calibrated so far: one for a constant reversion, otherwise one per
+-- volatility step.
+{#fun qlGsrReversion as reversions{withGenCalibratedModel*`Gsr',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |The calibration mask ('calibrate''s @fixParameters@) that fixes every model parameter except
 -- the volatility at step index @i@ (0-based) -- a ready-made @fixParameters@ argument for
@@ -455,13 +473,26 @@ gsr ts initialVol subsequentVols reversion horizon =
   ,preArray-`[Bool]'&peekBoolArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |The calibration mask that fixes every model parameter except the reversion at index @i@
--- (0-based) -- the reversion counterpart of 'moveVolatility'.
+-- (0-based) -- the reversion counterpart of 'moveVolatility'. Only index 0 exists unless the model
+-- was built by 'gsrWithReversions'.
 {#fun qlGsrMoveReversion as moveReversion{withGenCalibratedModel*`Gsr'
   ,fromIntegral`Word' -- ^i
   ,preArray-`[Bool]'&peekBoolArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Iteratively calibrates the volatility step values, one at a time, to the given helpers (assumed to have step dates matching the model's volatility step dates).
 {#fun qlGsrCalibrateVolatilitiesIterative as calibrateVolatilitiesIterative{withGenCalibratedModel*`Gsr',withBlackCalibrationHelperArray*`[GenBlackCalibrationHelper bch]'&,withOptimizationMethod*`OptimizationMethod',withEndCriteria*`EndCriteria'
+  ,withMaybeConstraint*`Maybe Constraint'
+  ,withDoubleArray*`[Double]'&
+  ,preErrorCheck-`String'errorCheck*-}->`()'#}
+
+-- |Iteratively calibrates the reversions, one at a time: reversion @i@ is fitted to helper @i@
+-- with every other parameter held. The model needs one reversion per helper at least, so build
+-- it with 'gsrWithReversions'. The end criteria reflect only the last calibration.
+--
+-- A swaption's price depends on the reversion over its swap's life, so helper @i@ should exercise
+-- inside reversion interval @i@ and span it. Helpers expiring at the volatility step dates leave
+-- the fit ill-conditioned, and alternating with 'calibrateVolatilitiesIterative' can diverge.
+{#fun qlGsrCalibrateReversionsIterative as calibrateReversionsIterative{withGenCalibratedModel*`Gsr',withBlackCalibrationHelperArray*`[GenBlackCalibrationHelper bch]'&,withOptimizationMethod*`OptimizationMethod',withEndCriteria*`EndCriteria'
   ,withMaybeConstraint*`Maybe Constraint'
   ,withDoubleArray*`[Double]'&
   ,preErrorCheck-`String'errorCheck*-}->`()'#}

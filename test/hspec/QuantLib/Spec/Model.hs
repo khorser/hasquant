@@ -20,7 +20,7 @@ import qualified QuantLib.Context as Context
 import QuantLib.Time.Calendar
 import QuantLib.Time.Date(september)
 import QuantLib.Time.Schedule
-import QuantLib.InterestRate(Compounding(..))
+import QuantLib.InterestRate(Compounding(..), VolatilityType(ShiftedLognormal))
 import QuantLib.Quote
 import QuantLib.TermStructure.Yield
 import qualified QuantLib.Index.InterestRate as IR
@@ -31,7 +31,9 @@ import QuantLib.Model hiding(setPricingEngine, value, discount)
 import qualified QuantLib.Model as Model
 import qualified QuantLib.Process as Process
 import qualified QuantLib.TermStructure.Volatility as Vol
-import QuantLib.Math(Interpolation(..))
+import QuantLib.Math(Interpolation(..), EndCriteria(..), OptimizationMethod(..))
+import QuantLib.CashFlow(RateAveragingType(AveragingCompound))
+import Control.Monad(forM, forM_)
 import QuantLib.PricingEngine
 
 import QuantLib.Spec.Helpers(closePrec, listClose)
@@ -39,6 +41,7 @@ import QuantLib.Spec.Helpers(closePrec, listClose)
 spec :: Spec
 spec = do
   gaussian1dSpec
+  gsrReversionSpec
   affineModelSpec
   garch11Spec
   garmanKlassSpec
@@ -147,6 +150,88 @@ gaussian1dSpec =
         -- The Black engine queries by time, which the surface maps back to a solved date and a
         -- whole-month tenor before inverting a model price.
         blackNpv `shouldSatisfy` closePrec modelNpv (5.0e-4 * modelNpv)
+
+-- Piecewise reversions: gsr.cpp's testGsrModel equivalence of one reversion and n+1 equal ones,
+-- and a recovery check for 'calibrateReversionsIterative' alternating with the volatility fit.
+gsrReversionSpec :: Spec
+gsrReversionSpec =
+  describe "Gsr reversions" $ do
+    it "prices n+1 equal piecewise reversions as one constant reversion" $
+      Context.keepingSettingsGc $ do
+        (settlement, ts) <- flatCurve
+        let stepDates = [addDays (182 * i) settlement | i <- [1 .. 59]]
+        volQuote <- simpleQuote 0.01
+        reversionQuote <- simpleQuote 0.01
+        constant <- gsr ts volQuote [] reversionQuote 50.0 >>= asGaussian1dModel
+        piecewiseModel <- gsrWithReversions ts (volQuote, reversionQuote)
+          [(d, (volQuote, reversionQuote)) | d <- stepDates] 50.0
+        reversions piecewiseModel >>= (`shouldBe` replicate 60 0.01)
+        piecewise <- asGaussian1dModel piecewiseModel
+        forM_ [(w, t, y) | w <- [1, 5, 20], t <- [2, 10, 30], t > w, y <- [-2, 0, 1.5]] $ \(w, t, y) -> do
+          let refDate = addGregorianYearsClip w settlement
+              maturity = addGregorianYearsClip t settlement
+          a <- gaussian1dZerobond constant maturity (Just refDate) y Nothing
+          b <- gaussian1dZerobond piecewise maturity (Just refDate) y Nothing
+          b `shouldSatisfy` closePrec a 1.0e-8
+
+    it "refuses to fit more reversions than the model has" $
+      Context.keepingSettingsGc $ do
+        (settlement, ts) <- flatCurve
+        volQuote <- simpleQuote 0.01
+        reversionQuote <- simpleQuote 0.01
+        model <- gsr ts volQuote [] reversionQuote 60.0
+        helpers <- mkHelpers settlement ts [(1, 5), (2, 5)]
+        engine <- asGaussian1dModel model >>= \m -> gaussian1dSwaptionEngine m 64 7.0 True False (Just ts) None
+        forM_ (map fst helpers) (`Model.setPricingEngine` engine)
+        calibrateReversionsIterative model (map fst helpers) lm lmCriteria Nothing [] `shouldThrow` anyException
+
+    -- Reversion i is fitted to a swaption starting inside piece i, whose swap spans it. The
+    -- forward-measure numeraire couples the pieces, so the passes repeat.
+    it "fits piecewise reversions to their own swaptions and holds the volatilities" $
+      Context.keepingSettingsGc $ do
+        (settlement, ts) <- flatCurve
+        let fiveYears = addGregorianYearsClip 5 settlement
+        helpers <- mkHelpers settlement ts [(1, 5), (5, 25)]
+        vol0 <- simpleQuote 0.008
+        vol1 <- simpleQuote 0.012
+        rev0 <- simpleQuote 0.02
+        rev1 <- simpleQuote 0.05
+        truth <- gsrWithReversions ts (vol0, rev0) [(fiveYears, (vol1, rev1))] 60.0
+        trueEngine <- asGaussian1dModel truth >>= \m -> gaussian1dSwaptionEngine m 64 7.0 True False (Just ts) None
+        forM_ helpers $ \(h, q) -> do
+          Model.setPricingEngine h trueEngine
+          price <- modelValue h
+          impliedVolatility h price 1.0e-12 1000 0.001 3.0 >>= setValue q
+        guess0 <- simpleQuote 0.01
+        guess1 <- simpleQuote 0.01
+        model <- gsrWithReversions ts (vol0, guess0) [(fiveYears, (vol1, guess1))] 60.0
+        engine <- asGaussian1dModel model >>= \m -> gaussian1dSwaptionEngine m 64 7.0 True False (Just ts) None
+        forM_ helpers $ \(h, _) -> Model.setPricingEngine h engine
+        forM_ [1 .. 4 :: Int] $ \_ -> calibrateReversionsIterative model (map fst helpers) lm lmCriteria Nothing []
+        reversions model >>= (`shouldSatisfy` listClose id [0.02, 0.05] 1.0e-5)
+        volatilities model >>= (`shouldBe` [0.008, 0.012])
+  where
+    flatCurve = do
+      cal <- calendar TARGET
+      originalEvalDate <- Context.evaluationDate
+      evalDate <- adjust cal originalEvalDate Following
+      Context.setEvaluationDate (Just evalDate)
+      settlement <- advance cal evalDate (2, Days) Following False
+      dc <- dayCounter Actual365FixedStandard
+      flatQ <- simpleQuote 0.03
+      ts <- flatForward (ReferenceDate settlement) flatQ dc Continuous Annual
+      pure (settlement, ts)
+    mkHelpers settlement ts spans = do
+      euribor6m <- IR.iborIndex IR.Euribor6M (Just ts)
+      thirty360 <- dayCounter Thirty360BondBasis
+      act360 <- dayCounter (Actual360 False)
+      forM spans $ \(e, end) -> do
+        q <- simpleQuote 0.2
+        h <- swaptionHelper (SpanDates (addGregorianYearsClip e settlement) (addGregorianYearsClip end settlement)) q
+          euribor6m (1, Years) thirty360 act360 ts RelativePriceError Nothing 1 ShiftedLognormal 0 Nothing AveragingCompound
+        pure (h, q)
+    lm = LevenbergMarquardt 1.0e-8 1.0e-8 1.0e-8 False
+    lmCriteria = EndCriteria 1000 10 1.0e-8 1.0e-8 1.0e-8
 
 affineModelSpec :: Spec
 affineModelSpec =

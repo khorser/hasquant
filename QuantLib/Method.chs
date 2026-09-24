@@ -289,7 +289,7 @@ module QuantLib.Method
 #include "ql.h"
 
 import QuantLib.Internal
-import QuantLib.Internal.Type
+import QuantLib.Internal.Type hiding (ptr) -- c2hs {#get#} binds its own `ptr'
 import QuantLib.Internal.Common
 {#import QuantLib.Math#}
 import Foreign.C.String(CString)

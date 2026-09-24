@@ -1399,11 +1399,14 @@ QlCalibratedModel* qlGsrAsCalibratedModel(QlGsr *o) {return ret(new QlCalibrated
 QlCalibratedModel* qlMarkovFunctionalAsCalibratedModel(QlMarkovFunctional *o) {return ret(new QlCalibratedModel(*arg(o)));}
 QlGaussian1dModel* qlGsrAsGaussian1dModel(QlGsr *o) {return ret(new QlGaussian1dModel(*arg(o)));}
 QlGaussian1dModel* qlMarkovFunctionalAsGaussian1dModel(QlMarkovFunctional *o) {return ret(new QlGaussian1dModel(*arg(o)));}
-QlGsr* qlGsr(QlYieldTermStructure* termStructure, unsigned volstepdatesLen, int* volstepdates, unsigned volatilitiesLen, QlQuote** volatilities, QlQuote* reversion, double T, char **e) {
-  try {return ret(new QlGsr(alloc(new Gsr(*arg(termStructure), qlDateVector(volstepdates, volstepdatesLen), qlHandleVector(volatilities, volatilitiesLen), *arg(reversion), T))));
+QlGsr* qlGsr(QlYieldTermStructure* termStructure, unsigned volstepdatesLen, int* volstepdates, unsigned volatilitiesLen, QlQuote** volatilities, unsigned reversionsLen, QlQuote** reversions, double T, char **e) {
+  try {return ret(new QlGsr(alloc(new Gsr(*arg(termStructure), qlDateVector(volstepdates, volstepdatesLen), qlHandleVector(volatilities, volatilitiesLen), qlHandleVector(reversions, reversionsLen), T))));
   } catch (std::exception& er) {return handleException<QlGsr*>(e, er);}}
 void qlGsrVolatility(QlGsr* o, unsigned *len, double **vs, char **e) {
   try {fillVectorOut([&] {return (*arg(o))->volatility();}, len, vs);
+  } catch (std::exception& er) {handleException<double*>(e, er);}}
+void qlGsrReversion(QlGsr* o, unsigned *len, double **vs, char **e) {
+  try {fillVectorOut([&] {return (*arg(o))->reversion();}, len, vs);
   } catch (std::exception& er) {handleException<double*>(e, er);}}
 void qlGsrMoveVolatility(QlGsr* o, unsigned i, unsigned *len, int **fp, char **e) {
   OutArrayResult<int> result(len, fp);
@@ -1421,6 +1424,9 @@ void qlGsrMoveReversion(QlGsr* o, unsigned i, unsigned *len, int **fp, char **e)
   } catch (std::exception& er) {handleException<int*>(e, er);}}
 void qlGsrCalibrateVolatilitiesIterative(QlGsr* o, unsigned helpersLen, QlBlackCalibrationHelper** helpers, QlOptimizationMethod* method, QlEndCriteria* endCriteria, Constraint* constraint, unsigned weightsLen, double* weights, char **e) {
   try {(*arg(o))->calibrateVolatilitiesIterative(qlVector(helpers, helpersLen), **arg(method), **arg(endCriteria), Constraint(constraint ? *arg(constraint) : Constraint()), std::vector<double>(weights, weights+weightsLen));
+  } catch (std::exception& er) {(void)handleException<int>(e, er);}}
+void qlGsrCalibrateReversionsIterative(QlGsr* o, unsigned helpersLen, QlBlackCalibrationHelper** helpers, QlOptimizationMethod* method, QlEndCriteria* endCriteria, Constraint* constraint, unsigned weightsLen, double* weights, char **e) {
+  try {(*arg(o))->calibrateReversionsIterative(qlVector(helpers, helpersLen), **arg(method), **arg(endCriteria), Constraint(constraint ? *arg(constraint) : Constraint()), std::vector<double>(weights, weights+weightsLen));
   } catch (std::exception& er) {(void)handleException<int>(e, er);}}
 QlMarkovFunctional* qlMarkovFunctional(QlYieldTermStructure* termStructure, double reversion, unsigned volstepdatesLen, int* volstepdates, unsigned volatilitiesLen, double* volatilities, QlSwaptionVolatilityStructure* swaptionVol, unsigned expiriesLen, int* swaptionExpiries, unsigned tenorsLen, int* tenorQuantity, unsigned, int* tenorUnit, QlSwapIndex* swapIndexBase, unsigned yGridPoints, char **e) {
   try {return ret(new QlMarkovFunctional(alloc(new MarkovFunctional(*arg(termStructure), reversion, qlDateVector(volstepdates, volstepdatesLen), std::vector<double>(volatilities, volatilities+volatilitiesLen), *arg(swaptionVol), qlDateVector(swaptionExpiries, expiriesLen), qlPeriodVector(tenorQuantity, tenorUnit, tenorsLen), *arg(swapIndexBase), MarkovFunctional::ModelSettings().withYGridPoints(yGridPoints)))));
