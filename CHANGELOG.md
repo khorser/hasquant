@@ -8,6 +8,11 @@ Breaking change: `piecewiseZeroInflationCurve`, `piecewiseYoyInflationCurve` and
 `interpolatedYoyInflationCurve` take a `Maybe Seasonality` before the interpolation, supporting
 multiplicative and Kerkhof price seasonality at construction.
 
+GSR gains piecewise reversions: `gsrWithReversions` pairs a reversion with each volatility step,
+`calibrateReversionsIterative` fits them one helper at a time, and `reversions` reads them back.
+The `qlGsr` shim now takes a reversion array; `gsr` keeps its single-reversion signature.
+`markovFunctional` accepts any swaption volatility structure, such as a `SwaptionVolatilityMatrix`.
+
 On QuantLib 1.43, `gaussian1dSwaptionVolatility` works around an uninitialized `MakeSwaption`
 nominal by pricing its smile sections with a unit nominal; newer versions use upstream directly.
 `extendedBlackVarianceSurface` reports an exception on QuantLib 1.43 instead of invoking its

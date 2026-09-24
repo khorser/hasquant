@@ -320,7 +320,7 @@ span.spaces    { background: white }
 <span class="lineno">  301 </span>
 <span class="lineno">  302 </span>
 <span class="lineno">  303 </span>import QuantLib.Internal
-<span class="lineno">  304 </span>import QuantLib.Internal.Type
+<span class="lineno">  304 </span>import QuantLib.Internal.Type hiding (ptr) -- c2hs {#get#} binds its own `ptr'
 <span class="lineno">  305 </span>import QuantLib.Internal.Common
 <span class="lineno">  306 </span>import QuantLib.Math
 <span class="lineno">  307 </span>
@@ -901,7 +901,7 @@ span.spaces    { background: white }
 <span class="lineno">  882 </span>-- for a Black-Scholes-family process, reusing the same 'GeneralizedBlackScholesProcess'\/
 <span class="lineno">  883 </span>-- 'Dividend'\/'FdmQuantoHelper' plumbing &quot;QuantLib.PricingEngine&quot;'s @fd*@ engines already use.
 <span class="lineno">  884 </span>fdmBlackScholesMesher :: (Word) -- ^size
-<span class="lineno">  885 </span> -&gt; (GeneralizedBlackScholesProcess) -&gt; (Double) -- ^maturity
+<span class="lineno">  885 </span> -&gt; (GenGeneralizedBlackScholesProcess gbs) -&gt; (Double) -- ^maturity
 <span class="lineno">  886 </span> -&gt; (Double) -- ^strike
 <span class="lineno">  887 </span> -&gt; (Maybe Double) -- ^xMinConstraint
 <span class="lineno">  888 </span> -&gt; (Maybe Double) -- ^xMaxConstraint
@@ -988,7 +988,7 @@ span.spaces    { background: white }
 <span class="lineno">  969 </span>-- |'FdmSimpleProcess1dMesher(size, process, maturity, tAvgSteps, epsilon, mandatoryPoint)' --
 <span class="lineno">  970 </span>-- generic mesher for any bound one-dimensional 'StochasticProcess1D'.
 <span class="lineno">  971 </span>fdmSimpleProcess1dMesher :: (Word) -- ^size
-<span class="lineno">  972 </span> -&gt; (StochasticProcess1D) -&gt; (Double) -- ^maturity
+<span class="lineno">  972 </span> -&gt; (GenStochasticProcess1D p1d) -&gt; (Double) -- ^maturity
 <span class="lineno">  973 </span> -&gt; (Word) -- ^tAvgSteps
 <span class="lineno">  974 </span> -&gt; (Double) -- ^epsilon
 <span class="lineno">  975 </span> -&gt; (Maybe Double) -- ^mandatoryPoint

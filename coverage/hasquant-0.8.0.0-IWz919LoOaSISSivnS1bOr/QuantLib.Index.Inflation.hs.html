@@ -347,7 +347,7 @@ span.spaces    { background: white }
 <span class="lineno">  328 </span>
 <span class="lineno">  329 </span>-- |A year-on-year index defined as the ratio of an existing 'ZeroInflationIndex'\'s fixings;
 <span class="lineno">  330 </span>-- stores no fixings of its own.
-<span class="lineno">  331 </span>yoyInflationIndexFromZero :: (ZeroInflationIndex) -&gt; (Maybe YoYInflationTermStructure) -&gt; IO ((YoYInflationIndex))
+<span class="lineno">  331 </span>yoyInflationIndexFromZero :: (GenZeroInflationIndex zidx) -&gt; (Maybe YoYInflationTermStructure) -&gt; IO ((YoYInflationIndex))
 <span class="lineno">  332 </span><span class="decl"><span class="istickedoff">yoyInflationIndexFromZero a1 a2 =</span>
 <span class="lineno">  333 </span><span class="spaces">  </span><span class="istickedoff">withZeroInflationIndex a1 $ \a1' -&gt; </span>
 <span class="lineno">  334 </span><span class="spaces">  </span><span class="istickedoff">withMaybeYoYInflationTermStructure a2 $ \a2' -&gt; </span>
@@ -361,7 +361,7 @@ span.spaces    { background: white }
 <span class="lineno">  342 </span>
 <span class="lineno">  343 </span>-- |The (possibly forecast) fixing at the given date; for a date with no linked term
 <span class="lineno">  344 </span>-- structure this returns the stored historical fixing added via 'QuantLib.Index.addFixing'.
-<span class="lineno">  345 </span>fixing :: (ZeroInflationIndex) -&gt; (Day) -&gt; IO ((Double))
+<span class="lineno">  345 </span>fixing :: (GenZeroInflationIndex zidx) -&gt; (Day) -&gt; IO ((Double))
 <span class="lineno">  346 </span><span class="decl"><span class="istickedoff">fixing a1 a2 =</span>
 <span class="lineno">  347 </span><span class="spaces">  </span><span class="istickedoff">withZeroInflationIndex a1 $ \a1' -&gt; </span>
 <span class="lineno">  348 </span><span class="spaces">  </span><span class="istickedoff">withDay a2 $ \a2' -&gt; </span>
@@ -375,7 +375,7 @@ span.spaces    { background: white }
 <span class="lineno">  356 </span>
 <span class="lineno">  357 </span>-- |The (possibly forecast) year-on-year fixing at the given date; for a date with no linked
 <span class="lineno">  358 </span>-- term structure this returns the stored historical fixing added via 'QuantLib.Index.addFixing'.
-<span class="lineno">  359 </span>yoyFixing :: (YoYInflationIndex) -&gt; (Day) -&gt; IO ((Double))
+<span class="lineno">  359 </span>yoyFixing :: (GenYoYInflationIndex yidx) -&gt; (Day) -&gt; IO ((Double))
 <span class="lineno">  360 </span><span class="decl"><span class="nottickedoff">yoyFixing a1 a2 =</span>
 <span class="lineno">  361 </span><span class="spaces">  </span><span class="nottickedoff">withYoYInflationIndex a1 $ \a1' -&gt; </span>
 <span class="lineno">  362 </span><span class="spaces">  </span><span class="nottickedoff">withDay a2 $ \a2' -&gt; </span>
@@ -392,7 +392,7 @@ span.spaces    { background: white }
 <span class="lineno">  373 </span>-- already be published for, given the index's publication lag.
 <span class="lineno">  374 </span>-- /Warning/ It raises an exception if the index was built with a frequency outside
 <span class="lineno">  375 </span>-- @Annual@..@Monthly@, which the inflation-period calculation does not handle.
-<span class="lineno">  376 </span>needsForecast :: (ZeroInflationIndex) -&gt; (Day) -&gt; IO ((Bool))
+<span class="lineno">  376 </span>needsForecast :: (GenZeroInflationIndex zidx) -&gt; (Day) -&gt; IO ((Bool))
 <span class="lineno">  377 </span><span class="decl"><span class="istickedoff">needsForecast a1 a2 =</span>
 <span class="lineno">  378 </span><span class="spaces">  </span><span class="istickedoff">withZeroInflationIndex a1 $ \a1' -&gt; </span>
 <span class="lineno">  379 </span><span class="spaces">  </span><span class="istickedoff">withDay a2 $ \a2' -&gt; </span>
@@ -406,7 +406,7 @@ span.spaces    { background: white }
 <span class="lineno">  387 </span>
 <span class="lineno">  388 </span>-- |The year-on-year counterpart of 'needsForecast', for 'yoyFixing'.
 <span class="lineno">  389 </span>-- /Warning/ It raises an exception on an unhandled frequency, as 'needsForecast' does.
-<span class="lineno">  390 </span>yoyNeedsForecast :: (YoYInflationIndex) -&gt; (Day) -&gt; IO ((Bool))
+<span class="lineno">  390 </span>yoyNeedsForecast :: (GenYoYInflationIndex yidx) -&gt; (Day) -&gt; IO ((Bool))
 <span class="lineno">  391 </span><span class="decl"><span class="istickedoff">yoyNeedsForecast a1 a2 =</span>
 <span class="lineno">  392 </span><span class="spaces">  </span><span class="istickedoff">withYoYInflationIndex a1 $ \a1' -&gt; </span>
 <span class="lineno">  393 </span><span class="spaces">  </span><span class="istickedoff">withDay a2 $ \a2' -&gt; </span>

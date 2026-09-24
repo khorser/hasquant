@@ -225,7 +225,7 @@ span.spaces    { background: white }
 <span class="lineno">  206 </span>-- 'Calendar' cannot occur in this pure default value. Keep this splice before every {#fun#}:
 <span class="lineno">  207 </span>-- c2hs appends foreign imports to the generated module, and an intervening top-level splice
 <span class="lineno">  208 </span>-- would split declarations from the imports their wrappers use.
-<span class="lineno">  209 </span>$<span class="nottickedoff">(deriveOptionsRecord &quot;OISRateHelperOpts&quot; [&quot;m&quot;]</span>
+<span class="lineno">  209 </span>$<span class="nottickedoff">(deriveOptionsRecord &quot;OISRateHelperOpts&quot; [&quot;m&quot;, &quot;p&quot;]</span>
 <span class="lineno">  210 </span><span class="spaces">  </span><span class="nottickedoff">[ (&quot;oisTelescopicValueDates&quot;, [t|Bool|], [|False|])</span>
 <span class="lineno">  211 </span><span class="spaces">  </span><span class="nottickedoff">, (&quot;oisPaymentLag&quot;, [t|Int|], [|0|])</span>
 <span class="lineno">  212 </span><span class="spaces">  </span><span class="nottickedoff">, (&quot;oisPaymentConvention&quot;, [t|BusinessDayConvention|], [|Following|])</span>
@@ -239,7 +239,7 @@ span.spaces    { background: white }
 <span class="lineno">  220 </span><span class="spaces">  </span><span class="nottickedoff">, (&quot;oisFixedPaymentFrequency&quot;, [t|Maybe Frequency|], [|Nothing|])</span>
 <span class="lineno">  221 </span><span class="spaces">  </span><span class="nottickedoff">, (&quot;oisFixedCalendar&quot;, [t|Maybe Calendar|], [|Nothing|])</span>
 <span class="lineno">  222 </span><span class="spaces">  </span><span class="nottickedoff">, (&quot;oisObservation&quot;, [t|OvernightObservation|], [|defaultOvernightObservation|])</span>
-<span class="lineno">  223 </span><span class="spaces">  </span><span class="nottickedoff">, (&quot;oisPricer&quot;, [t|Maybe FloatingRateCouponPricer|], [|Nothing|])</span>
+<span class="lineno">  223 </span><span class="spaces">  </span><span class="nottickedoff">, (&quot;oisPricer&quot;, [t|Maybe (GenFloatingRateCouponPricer $(varT (mkName &quot;p&quot;)))|], [|Nothing|])</span>
 <span class="lineno">  224 </span><span class="spaces">  </span><span class="nottickedoff">, (&quot;oisRule&quot;, [t|DateGenerationRule|], [|Backward|])</span>
 <span class="lineno">  225 </span><span class="spaces">  </span><span class="nottickedoff">, (&quot;oisOvernightCalendar&quot;, [t|Maybe Calendar|], [|Nothing|])</span>
 <span class="lineno">  226 </span><span class="spaces">  </span><span class="nottickedoff">, (&quot;oisConvention&quot;, [t|BusinessDayConvention|], [|ModifiedFollowing|])</span>
@@ -349,7 +349,7 @@ span.spaces    { background: white }
 <span class="lineno">  330 </span> -&gt; (Bool) -- ^endOfMonth
 <span class="lineno">  331 </span> -&gt; (Maybe Bool) -- ^useIndexedCoupons
 <span class="lineno">  332 </span> -&gt; (Maybe BusinessDayConvention) -- ^floatConvention
-<span class="lineno">  333 </span> -&gt; (Maybe FloatingRateCouponPricer) -- ^couponPricer
+<span class="lineno">  333 </span> -&gt; (Maybe (GenFloatingRateCouponPricer frcp)) -- ^couponPricer
 <span class="lineno">  334 </span> -&gt; IO ((SwapRateHelper))
 <span class="lineno">  335 </span><span class="decl"><span class="istickedoff">swapRateHelperFromConventions a1 a2 a3 a4 a5 a6 a7 a8 a9 a10 a11 a12 a13 a14 a15 a16 a17 =</span>
 <span class="lineno">  336 </span><span class="spaces">  </span><span class="istickedoff">withQuote a1 $ \a1' -&gt; </span>
@@ -830,10 +830,10 @@ span.spaces    { background: white }
 <span class="lineno">  811 </span>
 <span class="lineno">  812 </span>-- |/Warning/ Setting a pricing engine to the passed bond from external code will cause the bootstrap to fail or to give wrong results. It is advised to discard the bond after creating the helper, so that the helper has sole ownership of it.
 <span class="lineno">  813 </span>-- 'BondPriceType' is marshalled as an 'Int' to avoid a c2hs cross-module enum-import cycle.
-<span class="lineno">  814 </span>bondHelper :: GenQuote q -&gt; Bond -&gt; Bond.BondPriceType -&gt; IO BondHelper
+<span class="lineno">  814 </span>bondHelper :: GenQuote q -&gt; GenBond b -&gt; Bond.BondPriceType -&gt; IO BondHelper
 <span class="lineno">  815 </span><span class="decl"><span class="nottickedoff">bondHelper cleanPrice bond priceType = bondHelper_ cleanPrice bond (fromEnum priceType)</span></span>
 <span class="lineno">  816 </span>
-<span class="lineno">  817 </span>bondHelper_ :: (GenQuote q) -&gt; (Bond) -&gt; (Int) -- ^priceType
+<span class="lineno">  817 </span>bondHelper_ :: (GenQuote q) -&gt; (GenBond b) -&gt; (Int) -- ^priceType
 <span class="lineno">  818 </span> -&gt; IO ((BondHelper))
 <span class="lineno">  819 </span><span class="decl"><span class="nottickedoff">bondHelper_ a1 a2 a3 =</span>
 <span class="lineno">  820 </span><span class="spaces">  </span><span class="nottickedoff">withQuote a1 $ \a1' -&gt; </span>
@@ -887,7 +887,7 @@ span.spaces    { background: white }
 <span class="lineno">  868 </span> -&gt; (Maybe Word) -- ^lookbackDays
 <span class="lineno">  869 </span> -&gt; (Word) -- ^lockoutDays
 <span class="lineno">  870 </span> -&gt; (Bool) -- ^applyObservationShift
-<span class="lineno">  871 </span> -&gt; (Maybe FloatingRateCouponPricer) -- ^pricer
+<span class="lineno">  871 </span> -&gt; (Maybe (GenFloatingRateCouponPricer frcp)) -- ^pricer
 <span class="lineno">  872 </span> -&gt; (DateGenerationRule) -- ^rule
 <span class="lineno">  873 </span> -&gt; (Calendar) -- ^overnightCalendar
 <span class="lineno">  874 </span> -&gt; (BusinessDayConvention) -- ^convention (q1.k.q1. overnightConvention)
@@ -943,7 +943,7 @@ span.spaces    { background: white }
 <span class="lineno">  924 </span> -&gt; (Maybe Word) -- ^lookbackDays
 <span class="lineno">  925 </span> -&gt; (Word) -- ^lockoutDays
 <span class="lineno">  926 </span> -&gt; (Bool) -- ^applyObservationShift
-<span class="lineno">  927 </span> -&gt; (Maybe FloatingRateCouponPricer) -- ^pricer
+<span class="lineno">  927 </span> -&gt; (Maybe (GenFloatingRateCouponPricer frcp)) -- ^pricer
 <span class="lineno">  928 </span> -&gt; (DateGenerationRule) -- ^rule
 <span class="lineno">  929 </span> -&gt; (Calendar) -- ^overnightCalendar
 <span class="lineno">  930 </span> -&gt; (BusinessDayConvention) -- ^convention (q1.k.q1. overnightConvention)
@@ -984,7 +984,7 @@ span.spaces    { background: white }
 <span class="lineno">  965 </span>oisRateHelperWithOptions :: Word -&gt; (Int, TimeUnit)
 <span class="lineno">  966 </span>  -&gt; (Int, TimeUnit) -- ^forwardStart
 <span class="lineno">  967 </span>  -&gt; GenQuote q -&gt; OvernightIborIndex
-<span class="lineno">  968 </span>  -&gt; Maybe (GenYieldTermStructure y) -&gt; OISRateHelperOpts m -&gt; IO OISRateHelper
+<span class="lineno">  968 </span>  -&gt; Maybe (GenYieldTermStructure y) -&gt; OISRateHelperOpts m p -&gt; IO OISRateHelper
 <span class="lineno">  969 </span><span class="decl"><span class="nottickedoff">oisRateHelperWithOptions settlementDays tenor forwardStart fixedRate idx discountingCurve opts = do</span>
 <span class="lineno">  970 </span><span class="spaces">  </span><span class="nottickedoff">cal &lt;- calendar Null</span>
 <span class="lineno">  971 </span><span class="spaces">  </span><span class="nottickedoff">oisRateHelper_ settlementDays tenor fixedRate idx discountingCurve</span>
@@ -998,7 +998,7 @@ span.spaces    { background: white }
 <span class="lineno">  979 </span><span class="spaces">  </span><span class="nottickedoff">where obs = oisObservation opts</span></span>
 <span class="lineno">  980 </span>
 <span class="lineno">  981 </span>oisRateHelperBetweenDatesWithOptions :: Day -&gt; Day -&gt; GenQuote q -&gt; OvernightIborIndex
-<span class="lineno">  982 </span>  -&gt; Maybe (GenYieldTermStructure y) -&gt; OISRateHelperOpts m -&gt; IO OISRateHelper
+<span class="lineno">  982 </span>  -&gt; Maybe (GenYieldTermStructure y) -&gt; OISRateHelperOpts m p -&gt; IO OISRateHelper
 <span class="lineno">  983 </span><span class="decl"><span class="nottickedoff">oisRateHelperBetweenDatesWithOptions startDate endDate fixedRate idx discountingCurve opts = do</span>
 <span class="lineno">  984 </span><span class="spaces">  </span><span class="nottickedoff">cal &lt;- calendar Null</span>
 <span class="lineno">  985 </span><span class="spaces">  </span><span class="nottickedoff">oisRateHelper2_ startDate endDate fixedRate idx discountingCurve</span>
@@ -1021,7 +1021,7 @@ span.spaces    { background: white }
 <span class="lineno"> 1002 </span> -&gt; (Maybe Day) -- ^customPillarDate
 <span class="lineno"> 1003 </span> -&gt; (Bool) -- ^endOfMonth
 <span class="lineno"> 1004 </span> -&gt; (Maybe Bool) -- ^useIndexedCoupons
-<span class="lineno"> 1005 </span> -&gt; (Maybe FloatingRateCouponPricer) -- ^couponPricer
+<span class="lineno"> 1005 </span> -&gt; (Maybe (GenFloatingRateCouponPricer frcp)) -- ^couponPricer
 <span class="lineno"> 1006 </span> -&gt; IO ((SwapRateHelper))
 <span class="lineno"> 1007 </span><span class="decl"><span class="nottickedoff">swapRateHelper a1 a2 a3 a4 a5 a6 a7 a8 a9 a10 =</span>
 <span class="lineno"> 1008 </span><span class="spaces">  </span><span class="nottickedoff">withQuote a1 $ \a1' -&gt; </span>

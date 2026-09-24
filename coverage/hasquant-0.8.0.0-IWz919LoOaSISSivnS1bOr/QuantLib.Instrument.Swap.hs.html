@@ -437,10 +437,10 @@ span.spaces    { background: white }
 <span class="lineno">  418 </span>
 <span class="lineno">  419 </span>
 <span class="lineno">  420 </span>-- |Multi leg constructor.
-<span class="lineno">  421 </span>swapFromLegs :: [(Leg, Bool)] -- ^(legs, payer)
+<span class="lineno">  421 </span>swapFromLegs :: [(GenLeg l, Bool)] -- ^(legs, payer)
 <span class="lineno">  422 </span>  -&gt; IO Swap
 <span class="lineno">  423 </span><span class="decl"><span class="istickedoff">swapFromLegs = (uncurry qlSwap1) . unzip</span></span>
-<span class="lineno">  424 </span>qlSwap1 :: ([Leg]) -&gt; ([Bool]) -&gt; IO ((Swap))
+<span class="lineno">  424 </span>qlSwap1 :: ([GenLeg l]) -&gt; ([Bool]) -&gt; IO ((Swap))
 <span class="lineno">  425 </span><span class="decl"><span class="istickedoff">qlSwap1 a1 a2 =</span>
 <span class="lineno">  426 </span><span class="spaces">  </span><span class="istickedoff">withLegArray a1 $ \(a1'1, a1'2) -&gt; </span>
 <span class="lineno">  427 </span><span class="spaces">  </span><span class="istickedoff">withBoolArray a2 $ \(a2'1, a2'2) -&gt; </span>
@@ -1002,11 +1002,11 @@ span.spaces    { background: white }
 <span class="lineno">  983 </span>
 <span class="lineno">  984 </span>
 <span class="lineno">  985 </span>-- |Multi-leg constructor.
-<span class="lineno">  986 </span>constNotionalCrossCurrencySwapFromLegs :: [(Leg, Bool)] -- ^(legs, payer)
+<span class="lineno">  986 </span>constNotionalCrossCurrencySwapFromLegs :: [(GenLeg l, Bool)] -- ^(legs, payer)
 <span class="lineno">  987 </span>  -&gt; [Currency] -&gt; IO ConstNotionalCrossCurrencySwap
 <span class="lineno">  988 </span><span class="decl"><span class="nottickedoff">constNotionalCrossCurrencySwapFromLegs legsPayer = qlConstNotionalCrossCurrencySwap1 legs payer</span>
 <span class="lineno">  989 </span><span class="spaces">  </span><span class="nottickedoff">where (legs, payer) = unzip legsPayer</span></span>
-<span class="lineno">  990 </span>qlConstNotionalCrossCurrencySwap1 :: ([Leg]) -&gt; ([Bool]) -&gt; ([Currency]) -&gt; IO ((ConstNotionalCrossCurrencySwap))
+<span class="lineno">  990 </span>qlConstNotionalCrossCurrencySwap1 :: ([GenLeg l]) -&gt; ([Bool]) -&gt; ([Currency]) -&gt; IO ((ConstNotionalCrossCurrencySwap))
 <span class="lineno">  991 </span><span class="decl"><span class="nottickedoff">qlConstNotionalCrossCurrencySwap1 a1 a2 a3 =</span>
 <span class="lineno">  992 </span><span class="spaces">  </span><span class="nottickedoff">withLegArray a1 $ \(a1'1, a1'2) -&gt; </span>
 <span class="lineno">  993 </span><span class="spaces">  </span><span class="nottickedoff">withBoolArray a2 $ \(a2'1, a2'2) -&gt; </span>
@@ -1444,7 +1444,7 @@ span.spaces    { background: white }
 <span class="lineno"> 1425 </span>
 <span class="lineno"> 1426 </span>-- |Bullet bond vs Libor swap (par or market asset swap, per /parAssetSwap/).
 <span class="lineno"> 1427 </span>assetSwap :: (Bool) -- ^payBondCoupon
-<span class="lineno"> 1428 </span> -&gt; (Bond) -&gt; (Double) -- ^bondCleanPrice
+<span class="lineno"> 1428 </span> -&gt; (GenBond b) -&gt; (Double) -- ^bondCleanPrice
 <span class="lineno"> 1429 </span> -&gt; (GenIborIndex ibor) -&gt; (Double) -- spread
 <span class="lineno"> 1430 </span> -&gt; (Schedule) -- ^floatSchedule
 <span class="lineno"> 1431 </span> -&gt; (DayCounter) -- ^floatingDayCount
@@ -1858,7 +1858,7 @@ span.spaces    { background: white }
 <span class="lineno"> 1839 </span> -&gt; (Day) -- ^maturity
 <span class="lineno"> 1840 </span> -&gt; (Calendar) -&gt; (BusinessDayConvention) -- ^paymentConvention
 <span class="lineno"> 1841 </span> -&gt; (DayCounter) -&gt; (Double) -- ^fixedRate
-<span class="lineno"> 1842 </span> -&gt; (ZeroInflationIndex) -&gt; ((Word,TimeUnit)) -- ^observationLag
+<span class="lineno"> 1842 </span> -&gt; (GenZeroInflationIndex zidx) -&gt; ((Word,TimeUnit)) -- ^observationLag
 <span class="lineno"> 1843 </span> -&gt; (CPIInterpolationType) -- ^observationInterpolation
 <span class="lineno"> 1844 </span> -&gt; (Bool) -- ^adjustInfObsDates
 <span class="lineno"> 1845 </span> -&gt; (Calendar) -- ^infCalendar
@@ -1906,7 +1906,7 @@ span.spaces    { background: white }
 <span class="lineno"> 1887 </span> -&gt; (Double) -- ^fixedRate
 <span class="lineno"> 1888 </span> -&gt; (DayCounter) -- ^fixedDayCount
 <span class="lineno"> 1889 </span> -&gt; (Schedule) -- ^yoySchedule
-<span class="lineno"> 1890 </span> -&gt; (YoYInflationIndex) -&gt; ((Word,TimeUnit)) -- ^observationLag
+<span class="lineno"> 1890 </span> -&gt; (GenYoYInflationIndex yidx) -&gt; ((Word,TimeUnit)) -- ^observationLag
 <span class="lineno"> 1891 </span> -&gt; (CPIInterpolationType) -- ^interpolation
 <span class="lineno"> 1892 </span> -&gt; (Double) -- ^spread
 <span class="lineno"> 1893 </span> -&gt; (DayCounter) -- ^yoyDayCount
@@ -1977,7 +1977,7 @@ span.spaces    { background: white }
 <span class="lineno"> 1958 </span> -&gt; (Schedule) -- ^fixedSchedule
 <span class="lineno"> 1959 </span> -&gt; (BusinessDayConvention) -- ^fixedRoll
 <span class="lineno"> 1960 </span> -&gt; ((Word,TimeUnit)) -- ^observationLag
-<span class="lineno"> 1961 </span> -&gt; (ZeroInflationIndex) -- ^fixedIndex
+<span class="lineno"> 1961 </span> -&gt; (GenZeroInflationIndex zidx) -- ^fixedIndex
 <span class="lineno"> 1962 </span> -&gt; (CPIInterpolationType) -- ^observationInterpolation
 <span class="lineno"> 1963 </span> -&gt; (Maybe Double) -- ^inflationNominal
 <span class="lineno"> 1964 </span> -&gt; IO ((CPISwap))

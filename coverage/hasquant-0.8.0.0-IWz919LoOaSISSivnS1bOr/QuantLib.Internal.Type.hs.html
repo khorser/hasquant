@@ -549,7 +549,7 @@ span.spaces    { background: white }
 <span class="lineno">  530 </span><span class="decl"><span class="istickedoff">withFloatingRateCouponPricer = withGenForeignPtr . getFloatingRateCouponPricer</span></span>
 <span class="lineno">  531 </span>withFloatingRateCouponPricerArray :: [GenFloatingRateCouponPricer frcp] -&gt; ((CUInt, Ptr (Ptr CFloatingRateCouponPricer')) -&gt; IO b) -&gt; IO b
 <span class="lineno">  532 </span><span class="decl"><span class="nottickedoff">withFloatingRateCouponPricerArray = withGenArray withFloatingRateCouponPricer</span></span>
-<span class="lineno">  533 </span>withMaybeFloatingRateCouponPricer :: Maybe FloatingRateCouponPricer -&gt; (Ptr CFloatingRateCouponPricer' -&gt; IO b) -&gt; IO b
+<span class="lineno">  533 </span>withMaybeFloatingRateCouponPricer :: Maybe (GenFloatingRateCouponPricer frcp) -&gt; (Ptr CFloatingRateCouponPricer' -&gt; IO b) -&gt; IO b
 <span class="lineno">  534 </span><span class="decl"><span class="istickedoff">withMaybeFloatingRateCouponPricer = maybe ($ nullPtr) <span class="nottickedoff">withFloatingRateCouponPricer</span></span></span>
 <span class="lineno">  535 </span>
 <span class="lineno">  536 </span>-- |CMS coupon-pricer subtype required by CMS consumers.
@@ -1473,7 +1473,7 @@ span.spaces    { background: white }
 <span class="lineno"> 1454 </span>withCalibrationHelperArray :: [GenCalibrationHelper ch] -&gt; ((CUInt, Ptr (Ptr CCalibrationHelper')) -&gt; IO b) -&gt; IO b
 <span class="lineno"> 1455 </span><span class="decl"><span class="istickedoff">withCalibrationHelperArray = withGenArray withCalibrationHelper</span></span>
 <span class="lineno"> 1456 </span>withBlackCalibrationHelperArray :: [GenBlackCalibrationHelper bch] -&gt; ((CUInt, Ptr (Ptr CBlackCalibrationHelper')) -&gt; IO b) -&gt; IO b
-<span class="lineno"> 1457 </span><span class="decl"><span class="nottickedoff">withBlackCalibrationHelperArray = withGenArray withBlackCalibrationHelper</span></span>
+<span class="lineno"> 1457 </span><span class="decl"><span class="istickedoff">withBlackCalibrationHelperArray = withGenArray withBlackCalibrationHelper</span></span>
 <span class="lineno"> 1458 </span>peekBlackCalibrationHelperArray :: Ptr CUInt -&gt; Ptr (Ptr (Ptr CBlackCalibrationHelper')) -&gt; IO [BlackCalibrationHelper]
 <span class="lineno"> 1459 </span><span class="decl"><span class="nottickedoff">peekBlackCalibrationHelperArray = peekPtrArray peekBlackCalibrationHelper</span></span>
 <span class="lineno"> 1460 </span>
@@ -1665,7 +1665,7 @@ span.spaces    { background: white }
 <span class="lineno"> 1646 </span><span class="decl"><span class="istickedoff">withIndex = withGenForeignPtr . getIndex</span></span>
 <span class="lineno"> 1647 </span>peekIndex :: Ptr CIndex' -&gt; IO Index
 <span class="lineno"> 1648 </span><span class="decl"><span class="istickedoff">peekIndex = GenIndex &lt;.&gt; newCastForeignPtr</span></span>
-<span class="lineno"> 1649 </span>withIndexArray :: [Index] -&gt; ((CUInt, Ptr (Ptr CIndex')) -&gt; IO b) -&gt; IO b
+<span class="lineno"> 1649 </span>withIndexArray :: [GenIndex idx] -&gt; ((CUInt, Ptr (Ptr CIndex')) -&gt; IO b) -&gt; IO b
 <span class="lineno"> 1650 </span><span class="decl"><span class="istickedoff">withIndexArray = withGenArray withIndex</span></span>
 <span class="lineno"> 1651 </span>
 <span class="lineno"> 1652 </span>asInterestRateIndex :: GenInterestRateIndex ridx -&gt; IO InterestRateIndex
@@ -2050,9 +2050,9 @@ span.spaces    { background: white }
 <span class="lineno"> 2031 </span>type CAffineHazardRateCurve = ForeignPtr CAffineHazardRateCurve'
 <span class="lineno"> 2032 </span>-- |A 'DefaultProbabilityTermStructure'; see the hierarchy under t'GenTermStructure'.
 <span class="lineno"> 2033 </span>type AffineHazardRateCurve = GenDefaultProbabilityTermStructure CAffineHazardRateCurve
-<span class="lineno"> 2034 </span>withDefaultProbabilityTermStructureArray :: [DefaultProbabilityTermStructure] -&gt; ((CUInt, Ptr (Ptr CDefaultProbabilityTermStructure')) -&gt; IO b) -&gt; IO b
+<span class="lineno"> 2034 </span>withDefaultProbabilityTermStructureArray :: [GenDefaultProbabilityTermStructure d] -&gt; ((CUInt, Ptr (Ptr CDefaultProbabilityTermStructure')) -&gt; IO b) -&gt; IO b
 <span class="lineno"> 2035 </span><span class="decl"><span class="nottickedoff">withDefaultProbabilityTermStructureArray = withGenArray withDefaultProbabilityTermStructure</span></span>
-<span class="lineno"> 2036 </span>withDefaultProbabilityTermStructureArrayRaw :: [DefaultProbabilityTermStructure] -&gt; (Ptr (Ptr CDefaultProbabilityTermStructure') -&gt; IO b) -&gt; IO b
+<span class="lineno"> 2036 </span>withDefaultProbabilityTermStructureArrayRaw :: [GenDefaultProbabilityTermStructure d] -&gt; (Ptr (Ptr CDefaultProbabilityTermStructure') -&gt; IO b) -&gt; IO b
 <span class="lineno"> 2037 </span><span class="decl"><span class="istickedoff">withDefaultProbabilityTermStructureArrayRaw x f = withMany withDefaultProbabilityTermStructure x (`withArray` f)</span></span>
 <span class="lineno"> 2038 </span>
 <span class="lineno"> 2039 </span>-- CREDIT: separate types encode tranche-loss and digital-loss capabilities.

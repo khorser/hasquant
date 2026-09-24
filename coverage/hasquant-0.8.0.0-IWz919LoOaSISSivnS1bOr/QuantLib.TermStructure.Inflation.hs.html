@@ -90,7 +90,7 @@ span.spaces    { background: white }
 <span class="lineno">   71 </span> -&gt; ((Word,TimeUnit)) -- ^swapObsLag
 <span class="lineno">   72 </span> -&gt; (Day) -- ^maturity
 <span class="lineno">   73 </span> -&gt; (Calendar) -&gt; (BusinessDayConvention) -- ^paymentConvention
-<span class="lineno">   74 </span> -&gt; (DayCounter) -&gt; (ZeroInflationIndex) -&gt; (CPIInterpolationType) -- ^observationInterpolation
+<span class="lineno">   74 </span> -&gt; (DayCounter) -&gt; (GenZeroInflationIndex zidx) -&gt; (CPIInterpolationType) -- ^observationInterpolation
 <span class="lineno">   75 </span> -&gt; (PillarChoice) -- ^pillar
 <span class="lineno">   76 </span> -&gt; (Maybe Day) -- ^customPillarDate
 <span class="lineno">   77 </span> -&gt; IO ((ZeroCouponInflationSwapHelper))
@@ -119,7 +119,7 @@ span.spaces    { background: white }
 <span class="lineno">  100 </span> -&gt; ((Word,TimeUnit)) -- ^swapObsLag
 <span class="lineno">  101 </span> -&gt; (Day) -- ^maturity
 <span class="lineno">  102 </span> -&gt; (Calendar) -&gt; (BusinessDayConvention) -- ^paymentConvention
-<span class="lineno">  103 </span> -&gt; (DayCounter) -&gt; (YoYInflationIndex) -&gt; (CPIInterpolationType) -- ^observationInterpolation
+<span class="lineno">  103 </span> -&gt; (DayCounter) -&gt; (GenYoYInflationIndex yidx) -&gt; (CPIInterpolationType) -- ^observationInterpolation
 <span class="lineno">  104 </span> -&gt; (GenYieldTermStructure y) -- ^nominalTermStructure
 <span class="lineno">  105 </span> -&gt; (PillarChoice) -- ^pillar
 <span class="lineno">  106 </span> -&gt; (Maybe Day) -- ^customPillarDate
@@ -151,7 +151,7 @@ span.spaces    { background: white }
 <span class="lineno">  132 </span> -&gt; (Double) -- ^faceAmount
 <span class="lineno">  133 </span> -&gt; (Double) -- ^baseCPI
 <span class="lineno">  134 </span> -&gt; ((Word,TimeUnit)) -- ^observationLag
-<span class="lineno">  135 </span> -&gt; (ZeroInflationIndex) -&gt; (CPIInterpolationType) -- ^observationInterpolation
+<span class="lineno">  135 </span> -&gt; (GenZeroInflationIndex zidx) -&gt; (CPIInterpolationType) -- ^observationInterpolation
 <span class="lineno">  136 </span> -&gt; (Schedule) -&gt; (NonEmpty Double) -- ^coupons
 <span class="lineno">  137 </span> -&gt; (DayCounter) -- ^accrualDayCounter
 <span class="lineno">  138 </span> -&gt; (BusinessDayConvention) -- ^paymentConvention

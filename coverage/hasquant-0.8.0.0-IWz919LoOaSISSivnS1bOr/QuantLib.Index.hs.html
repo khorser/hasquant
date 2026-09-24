@@ -262,7 +262,7 @@ span.spaces    { background: white }
 <span class="lineno">  243 </span>historicalIndexAnalysis :: (Day) -- ^startDate
 <span class="lineno">  244 </span> -&gt; (Day) -- ^endDate
 <span class="lineno">  245 </span> -&gt; ((Int,TimeUnit)) -- ^step
-<span class="lineno">  246 </span> -&gt; ([Index]) -&gt; IO ((HistoricalIndexAnalysis))
+<span class="lineno">  246 </span> -&gt; ([GenIndex idx]) -&gt; IO ((HistoricalIndexAnalysis))
 <span class="lineno">  247 </span><span class="decl"><span class="istickedoff">historicalIndexAnalysis a1 a2 a3 a4 =</span>
 <span class="lineno">  248 </span><span class="spaces">  </span><span class="istickedoff">withDay a1 $ \a1' -&gt; </span>
 <span class="lineno">  249 </span><span class="spaces">  </span><span class="istickedoff">withDay a2 $ \a2' -&gt; </span>

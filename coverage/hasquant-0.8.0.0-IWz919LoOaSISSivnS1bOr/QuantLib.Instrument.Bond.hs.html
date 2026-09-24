@@ -434,7 +434,7 @@ span.spaces    { background: white }
 <span class="lineno">  415 </span> -&gt; (Double) -- ^faceAmount
 <span class="lineno">  416 </span> -&gt; (Double) -- ^baseCPI
 <span class="lineno">  417 </span> -&gt; ((Word,TimeUnit)) -- ^observationLag
-<span class="lineno">  418 </span> -&gt; (ZeroInflationIndex) -&gt; (CPIInterpolationType) -- ^observationInterpolation
+<span class="lineno">  418 </span> -&gt; (GenZeroInflationIndex zidx) -&gt; (CPIInterpolationType) -- ^observationInterpolation
 <span class="lineno">  419 </span> -&gt; (Schedule) -&gt; (NonEmpty Double) -- ^coupons
 <span class="lineno">  420 </span> -&gt; (DayCounter) -- ^accrualDayCounter
 <span class="lineno">  421 </span> -&gt; (BusinessDayConvention) -- ^paymentConvention

@@ -1137,7 +1137,7 @@ span.spaces    { background: white }
 <span class="lineno"> 1118 </span>
 <span class="lineno"> 1119 </span>-- |A year-on-year inflation coupon.  As for 'yoyInflationLeg', attach a
 <span class="lineno"> 1120 </span>-- YoY inflation coupon pricer before evaluating the coupon rate.
-<span class="lineno"> 1121 </span>yoyInflationCoupon :: (Day) -&gt; (Double) -&gt; (Day) -&gt; (Day) -&gt; (Word) -&gt; (YoYInflationIndex) -&gt; ((Int,TimeUnit)) -&gt; (CPIInterpolationType) -&gt; (DayCounter) -&gt; (Double) -&gt; (Double) -&gt; (Maybe Day) -&gt; (Maybe Day) -&gt; IO ((YoYInflationCoupon))
+<span class="lineno"> 1121 </span>yoyInflationCoupon :: (Day) -&gt; (Double) -&gt; (Day) -&gt; (Day) -&gt; (Word) -&gt; (GenYoYInflationIndex yidx) -&gt; ((Int,TimeUnit)) -&gt; (CPIInterpolationType) -&gt; (DayCounter) -&gt; (Double) -&gt; (Double) -&gt; (Maybe Day) -&gt; (Maybe Day) -&gt; IO ((YoYInflationCoupon))
 <span class="lineno"> 1122 </span><span class="decl"><span class="nottickedoff">yoyInflationCoupon a1 a2 a3 a4 a5 a6 a7 a8 a9 a10 a11 a12 a13 =</span>
 <span class="lineno"> 1123 </span><span class="spaces">  </span><span class="nottickedoff">withDay a1 $ \a1' -&gt; </span>
 <span class="lineno"> 1124 </span><span class="spaces">  </span><span class="nottickedoff">let {a2' = realToFrac a2} in </span>
@@ -1293,7 +1293,7 @@ span.spaces    { background: white }
 <span class="lineno"> 1274 </span>
 <span class="lineno"> 1275 </span>
 <span class="lineno"> 1276 </span>-- |Compounding overnight-index coupon pricer.
-<span class="lineno"> 1277 </span>compoundingOvernightIndexedCouponPricer :: (Maybe OptionletVolatilityStructure) -- ^capletVolatility
+<span class="lineno"> 1277 </span>compoundingOvernightIndexedCouponPricer :: (Maybe (GenOptionletVolatilityStructure ov)) -- ^capletVolatility
 <span class="lineno"> 1278 </span> -&gt; (Bool) -- ^byApprox
 <span class="lineno"> 1279 </span> -&gt; IO ((FloatingRateCouponPricer))
 <span class="lineno"> 1280 </span><span class="decl"><span class="nottickedoff">compoundingOvernightIndexedCouponPricer a1 a2 =</span>
@@ -1311,7 +1311,7 @@ span.spaces    { background: white }
 <span class="lineno"> 1292 </span>arithmeticAveragedOvernightIndexedCouponPricer :: (Double) -- ^meanReversion
 <span class="lineno"> 1293 </span> -&gt; (Double) -- ^volatility
 <span class="lineno"> 1294 </span> -&gt; (Bool) -- ^byApprox
-<span class="lineno"> 1295 </span> -&gt; (Maybe OptionletVolatilityStructure) -- ^capletVolatility
+<span class="lineno"> 1295 </span> -&gt; (Maybe (GenOptionletVolatilityStructure ov)) -- ^capletVolatility
 <span class="lineno"> 1296 </span> -&gt; (Bool) -- ^effective
 <span class="lineno"> 1297 </span> -&gt; IO ((FloatingRateCouponPricer))
 <span class="lineno"> 1298 </span><span class="decl"><span class="nottickedoff">arithmeticAveragedOvernightIndexedCouponPricer a1 a2 a3 a4 a5 =</span>
@@ -1329,7 +1329,7 @@ span.spaces    { background: white }
 <span class="lineno"> 1310 </span>
 <span class="lineno"> 1311 </span>
 <span class="lineno"> 1312 </span>-- |Black-formula compounding overnight-index coupon pricer.
-<span class="lineno"> 1313 </span>blackCompoundingOvernightIndexedCouponPricer :: (Maybe OptionletVolatilityStructure) -- ^capletVolatility
+<span class="lineno"> 1313 </span>blackCompoundingOvernightIndexedCouponPricer :: (Maybe (GenOptionletVolatilityStructure ov)) -- ^capletVolatility
 <span class="lineno"> 1314 </span> -&gt; (Bool) -- ^effective
 <span class="lineno"> 1315 </span> -&gt; IO ((FloatingRateCouponPricer))
 <span class="lineno"> 1316 </span><span class="decl"><span class="istickedoff">blackCompoundingOvernightIndexedCouponPricer a1 a2 =</span>
@@ -1344,7 +1344,7 @@ span.spaces    { background: white }
 <span class="lineno"> 1325 </span>
 <span class="lineno"> 1326 </span>
 <span class="lineno"> 1327 </span>-- |Black-formula arithmetic-average overnight-index coupon pricer.
-<span class="lineno"> 1328 </span>blackAveragingOvernightIndexedCouponPricer :: (Maybe OptionletVolatilityStructure) -- ^capletVolatility
+<span class="lineno"> 1328 </span>blackAveragingOvernightIndexedCouponPricer :: (Maybe (GenOptionletVolatilityStructure ov)) -- ^capletVolatility
 <span class="lineno"> 1329 </span> -&gt; (Bool) -- ^effective
 <span class="lineno"> 1330 </span> -&gt; IO ((FloatingRateCouponPricer))
 <span class="lineno"> 1331 </span><span class="decl"><span class="istickedoff">blackAveragingOvernightIndexedCouponPricer a1 a2 =</span>
@@ -1472,7 +1472,7 @@ span.spaces    { background: white }
 <span class="lineno"> 1453 </span>
 <span class="lineno"> 1454 </span>
 <span class="lineno"> 1455 </span>-- |CPI coupon pricer using an optional nominal yield curve.
-<span class="lineno"> 1456 </span>cpiCouponPricer :: (Maybe YieldTermStructure) -- ^nominalTermStructure
+<span class="lineno"> 1456 </span>cpiCouponPricer :: (Maybe (GenYieldTermStructure y)) -- ^nominalTermStructure
 <span class="lineno"> 1457 </span> -&gt; IO ((CPICouponPricer))
 <span class="lineno"> 1458 </span><span class="decl"><span class="istickedoff">cpiCouponPricer a1 =</span>
 <span class="lineno"> 1459 </span><span class="spaces">  </span><span class="istickedoff">withMaybeYieldTermStructure a1 $ \a1' -&gt; </span>
@@ -1486,7 +1486,7 @@ span.spaces    { background: white }
 <span class="lineno"> 1467 </span>
 <span class="lineno"> 1468 </span>-- |CPI coupon pricer using a CPI volatility surface and optional nominal yield curve.
 <span class="lineno"> 1469 </span>cpiCouponPricerWithVol :: (CPIVolatilitySurface) -- ^volatilitySurface
-<span class="lineno"> 1470 </span> -&gt; (Maybe YieldTermStructure) -- ^nominalTermStructure
+<span class="lineno"> 1470 </span> -&gt; (Maybe (GenYieldTermStructure y)) -- ^nominalTermStructure
 <span class="lineno"> 1471 </span> -&gt; IO ((CPICouponPricer))
 <span class="lineno"> 1472 </span><span class="decl"><span class="nottickedoff">cpiCouponPricerWithVol a1 a2 =</span>
 <span class="lineno"> 1473 </span><span class="spaces">  </span><span class="nottickedoff">withGenVolatilityTermStructure a1 $ \a1' -&gt; </span>
@@ -2540,7 +2540,7 @@ span.spaces    { background: white }
 <span class="lineno"> 2521 </span>-- |Fixed-rate coupons scaled by the ratio of a 'ZeroInflationIndex' fixing to /baseCPI/
 <span class="lineno"> 2522 </span>-- (a 'CPICoupon' leg -- no capped\/floored variant, unlike 'yoyInflationLeg': QL 1.43 has no
 <span class="lineno"> 2523 </span>-- @CappedFlooredCPICoupon@ class to build one from, see README.md's TODO).
-<span class="lineno"> 2524 </span>cpiLeg :: (Schedule) -&gt; (ZeroInflationIndex) -&gt; (Double) -- ^baseCPI
+<span class="lineno"> 2524 </span>cpiLeg :: (Schedule) -&gt; (GenZeroInflationIndex zidx) -&gt; (Double) -- ^baseCPI
 <span class="lineno"> 2525 </span> -&gt; ((Word,TimeUnit)) -- ^observationLag
 <span class="lineno"> 2526 </span> -&gt; (NonEmpty Double) -- ^notionals
 <span class="lineno"> 2527 </span> -&gt; (NonEmpty Double) -- ^fixedRates
@@ -2578,7 +2578,7 @@ span.spaces    { background: white }
 <span class="lineno"> 2559 </span>-- @inflationcoupon.cpp@). CPI-leg ('cpiLeg') caps\/floors have no equivalent in QL 1.43 (no
 <span class="lineno"> 2560 </span>-- @CappedFlooredCPICoupon@ class exists upstream, see README.md's TODO) -- this is a
 <span class="lineno"> 2561 </span>-- QuantLib-version limitation, not an unbound feature.
-<span class="lineno"> 2562 </span>yoyInflationLeg :: (Schedule) -&gt; (Calendar) -&gt; (YoYInflationIndex) -&gt; ((Word,TimeUnit)) -- ^observationLag
+<span class="lineno"> 2562 </span>yoyInflationLeg :: (Schedule) -&gt; (Calendar) -&gt; (GenYoYInflationIndex yidx) -&gt; ((Word,TimeUnit)) -- ^observationLag
 <span class="lineno"> 2563 </span> -&gt; (CPIInterpolationType) -- ^interpolation
 <span class="lineno"> 2564 </span> -&gt; (NonEmpty Double) -- ^notionals
 <span class="lineno"> 2565 </span> -&gt; (DayCounter) -- ^paymentDayCounter
@@ -2616,7 +2616,7 @@ span.spaces    { background: white }
 <span class="lineno"> 2597 </span>-- |Cash flow dependent on a 'ZeroInflationIndex' ratio (not a coupon -- no accruals).
 <span class="lineno"> 2598 </span>-- The ratio is taken between fixings observed at /startDate/ and /endDate/ minus /observationLag/.
 <span class="lineno"> 2599 </span>zeroInflationCashFlow :: (Double) -- ^notional
-<span class="lineno"> 2600 </span> -&gt; (ZeroInflationIndex) -&gt; (CPIInterpolationType) -- ^observationInterpolation
+<span class="lineno"> 2600 </span> -&gt; (GenZeroInflationIndex zidx) -&gt; (CPIInterpolationType) -- ^observationInterpolation
 <span class="lineno"> 2601 </span> -&gt; (Day) -- ^startDate
 <span class="lineno"> 2602 </span> -&gt; (Day) -- ^endDate
 <span class="lineno"> 2603 </span> -&gt; ((Word,TimeUnit)) -- ^observationLag
@@ -2643,7 +2643,7 @@ span.spaces    { background: white }
 <span class="lineno"> 2624 </span>-- |CPI-linked cash flow (not a coupon -- no accruals), with an optional explicit /baseFixing/
 <span class="lineno"> 2625 </span>-- (pass 'Nothing' to derive it from /baseDate/ instead).
 <span class="lineno"> 2626 </span>cpiCashFlow :: (Double) -- ^notional
-<span class="lineno"> 2627 </span> -&gt; (ZeroInflationIndex) -&gt; (Maybe Day) -- ^baseDate
+<span class="lineno"> 2627 </span> -&gt; (GenZeroInflationIndex zidx) -&gt; (Maybe Day) -- ^baseDate
 <span class="lineno"> 2628 </span> -&gt; (Maybe Double) -- ^baseFixing
 <span class="lineno"> 2629 </span> -&gt; (Day) -- ^observationDate
 <span class="lineno"> 2630 </span> -&gt; ((Word,TimeUnit)) -- ^observationLag
