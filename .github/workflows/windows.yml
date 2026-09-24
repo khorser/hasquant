@@ -137,7 +137,7 @@ jobs:
             "package hasquant"
             "  extra-include-dirs: $ql/include $boost"
             "  extra-lib-dirs: $ql/lib"
-            "  ghc-options: -pgmcxx $mingw/bin/clang++ -optl $mingw/lib/libc++.a -optl $mingw/lib/libc++abi.a -optl $mingw/lib/libunwind.a -optcxx -isystem -optcxx $ql/include"
+            "  ghc-options: -pgmcxx $mingw/bin/clang++ -optl $mingw/lib/libc++.a -optl $mingw/lib/libc++abi.a -optl $mingw/lib/libunwind.a -optcxx -isystem -optcxx $ql/include -optcxx-g -with-rtsopts=--generate-crash-dumps"
           )
           $lines -join "`n" | Out-File -FilePath cabal.project.local -Encoding utf8
 
@@ -146,6 +146,74 @@ jobs:
         shell: pwsh
         run: cabal build all --enable-tests -f buildExample -f buildSofrXva
 
-      - name: Test
+      # Runs a stripped copy of the test binary, as a release build would, and keeps the
+      # unstripped one for symbolizing crash offsets; stripping leaves section RVAs unchanged.
+      - name: Stage test binaries
         shell: pwsh
-        run: cabal test all
+        env:
+          GHC_ROOT: ${{ steps.ghc-root.outputs.root }}
+          MSYS2_ROOT: ${{ steps.msys2.outputs.msys2-location }}
+        run: |
+          function Find-Tool([string[]] $names) {
+            foreach ($dir in @("$env:GHC_ROOT\mingw\bin", "$env:MSYS2_ROOT\mingw64\bin")) {
+              foreach ($n in $names) { if (Test-Path "$dir\$n") { return "$dir\$n" } }
+            }
+          }
+          function Find-Tools {
+            $script:strip = Find-Tool @("llvm-strip.exe", "strip.exe")
+            $script:nm = Find-Tool @("llvm-nm.exe", "nm.exe")
+            $script:objdump = Find-Tool @("llvm-objdump.exe", "objdump.exe")
+          }
+          function Invoke-Checked([string] $tool) {
+            & $tool @args
+            if ($LASTEXITCODE -ne 0) { throw "$tool failed with exit code $LASTEXITCODE" }
+          }
+          Find-Tools
+          if (-not $strip -or -not $nm -or -not $objdump) {
+            & "$env:MSYS2_ROOT\usr\bin\bash.exe" -lc "pacman -S --noconfirm --needed mingw-w64-x86_64-llvm-tools"
+            Find-Tools
+          }
+          if (-not $strip -or -not $nm -or -not $objdump) { throw "No strip/nm/objdump tool found" }
+
+          $exe = (cabal list-bin hasquant_test | Select-Object -Last 1).Trim()
+          New-Item -ItemType Directory -Force ci-bin\unstripped, ci-bin\stripped, ci-dumps | Out-Null
+          Copy-Item $exe ci-bin\unstripped\hasquant_test.exe
+          Copy-Item $exe ci-bin\stripped\hasquant_test.exe
+          Invoke-Checked $strip --strip-all ci-bin\stripped\hasquant_test.exe
+          Invoke-Checked $nm -n --demangle ci-bin\unstripped\hasquant_test.exe > ci-bin\hasquant_test.map
+
+          # Every section kept by strip must have the same size and address in both copies.
+          $full = Invoke-Checked $objdump -h ci-bin\unstripped\hasquant_test.exe | Where-Object { $_ -match '^\s*\d+ ' }
+          $kept = Invoke-Checked $objdump -h ci-bin\stripped\hasquant_test.exe | Where-Object { $_ -match '^\s*\d+ ' }
+          $fullKeys = $full | ForEach-Object { ($_ -split '\s+' | Where-Object { $_ })[1..3] -join ' ' }
+          foreach ($line in $kept) {
+            $key = ($line -split '\s+' | Where-Object { $_ })[1..3] -join ' '
+            if ($fullKeys -notcontains $key) { throw "Stripped section differs from unstripped: $key" }
+          }
+          if ((Get-Item ci-bin\stripped\hasquant_test.exe).Length -ge (Get-Item ci-bin\unstripped\hasquant_test.exe).Length) {
+            throw "Stripped test binary is not smaller than the unstripped one"
+          }
+          Get-ChildItem ci-bin -Recurse -File | Format-Table Length, FullName
+
+      # TMP/TEMP point the RTS crash minidump (written to GetTempPath) at ci-dumps.
+      - name: Test
+        shell: cmd
+        run: |
+          set "PATH=%QL_INSTALL%\bin;%QL_INSTALL%\lib;%PATH%"
+          set "TMP=%GITHUB_WORKSPACE%\ci-dumps"
+          set "TEMP=%GITHUB_WORKSPACE%\ci-dumps"
+          ci-bin\stripped\hasquant_test.exe
+
+      # On failure, and on every manual dispatch so the symbolization path stays exercised.
+      - name: Upload test binaries
+        if: failure() || github.event_name == 'workflow_dispatch'
+        uses: actions/upload-artifact@v4
+        with:
+          name: windows-test-bin-ghc${{ matrix.ghc }}-attempt${{ github.run_attempt }}
+          retention-days: 14
+          if-no-files-found: ignore
+          path: |
+            ci-bin
+            ci-dumps
+            ${{ env.QL_INSTALL }}\bin\*.dll
+            ${{ env.QL_INSTALL }}\lib\*.dll
