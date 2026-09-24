@@ -111,10 +111,10 @@ def print_filtered_prototypes(node, current_class_cursor=None):
         # Do not let the generic child walk below revisit either form.
         return
 
-    if node.kind in (clang.cindex.CursorKind.CXX_METHOD, 
-                     clang.cindex.CursorKind.CONSTRUCTOR, 
+    if node.kind in (clang.cindex.CursorKind.CXX_METHOD,
+                     clang.cindex.CursorKind.CONSTRUCTOR,
                      clang.cindex.CursorKind.FUNCTION_DECL):
-        
+
         current_class_name = current_class_cursor.spelling if current_class_cursor else ""
 
         if current_class_cursor and node.access_specifier != clang.cindex.AccessSpecifier.PUBLIC:
@@ -129,7 +129,7 @@ def print_filtered_prototypes(node, current_class_cursor=None):
 
             args_types = ", ".join([arg.type.spelling for arg in node.get_arguments()])
             current_sig_key = f"{node.spelling}({args_types})"
-            
+
             ancestor_signatures = get_all_ancestor_method_signatures(current_class_cursor)
             if current_sig_key in ancestor_signatures:
                 return  # Метод уже есть у родителя

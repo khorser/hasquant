@@ -8,7 +8,7 @@ def get_mac_clang_args():
         sdk_path = subprocess.check_output(['xcrun', '--show-sdk-path'], text=True).strip()
         target = subprocess.check_output(['clang', '-dumpmachine'], text=True).strip()
         resource_dir = subprocess.check_output(['clang', '-print-resource-dir'], text=True).strip()
-        
+
         return [
             '-x', 'c++',
             '-std=c++20',
@@ -26,17 +26,17 @@ def dump_inheritance(node, target_file, visited_classes=None):
     if visited_classes is None:
         visited_classes = set()
 
-    if node.kind in (clang.cindex.CursorKind.CLASS_DECL, 
+    if node.kind in (clang.cindex.CursorKind.CLASS_DECL,
                      clang.cindex.CursorKind.STRUCT_DECL,
                      clang.cindex.CursorKind.CLASS_TEMPLATE):
-        
+
         if node.is_definition():
             class_name = node.spelling
-            
+
             if node.location.file and node.location.file.name.endswith(target_file):
                 if class_name and class_name not in visited_classes:
                     visited_classes.add(class_name)
-                    
+
                     parents = []
                     for child in node.get_children():
                         if child.kind == clang.cindex.CursorKind.CXX_BASE_SPECIFIER:
@@ -45,7 +45,7 @@ def dump_inheritance(node, target_file, visited_classes=None):
                             # Если хотим чистые имена без 'class ' или 'struct ':
                             base_name = child.type.spelling or child.spelling
                             parents.append(base_name)
-                    
+
                     if parents:
                         print(f"{class_name}:{','.join(parents)}")
                     else:
@@ -61,7 +61,7 @@ if __name__ == "__main__":
 
     target_header = sys.argv[1]
     index = clang.cindex.Index.create()
-    
+
     clang_args = get_mac_clang_args() + sys.argv[2:]
     tu = index.parse(target_header, args=clang_args)
 
