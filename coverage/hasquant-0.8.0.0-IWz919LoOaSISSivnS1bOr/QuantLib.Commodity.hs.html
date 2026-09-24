@@ -444,461 +444,456 @@ span.spaces    { background: white }
 <span class="lineno">  425 </span>
 <span class="lineno">  426 </span>
 <span class="lineno">  427 </span>
-<span class="lineno">  428 </span>-- |An amount of a commodity: a 'CommodityType', a 'UnitOfMeasure', and a plain amount. Marshalled
-<span class="lineno">  429 </span>-- as a flat triple rather than a wrapper type (per the @Money@-as-tuple convention) -- and, unlike
-<span class="lineno">  430 </span>-- 'CommodityUnitCost' below, its three inspectors are just tuple projections, so they need no
-<span class="lineno">  431 </span>-- binding at all. c2hs's @&amp;@ tuple-splitter only ever consumes two C arguments (confirmed against
-<span class="lineno">  432 </span>-- its source, not just by trial), so every function below that takes or returns a 'Quantity'
-<span class="lineno">  433 </span>-- marshals it as three flat 'CommodityType'\/'UnitOfMeasure'\/'Double' arguments instead of one
-<span class="lineno">  434 </span>-- combined tuple.
-<span class="lineno">  435 </span>type Quantity = (CommodityType, UnitOfMeasure, Double)
-<span class="lineno">  436 </span>
-<span class="lineno">  437 </span>quantityRoundedAmount :: (UnitOfMeasure) -&gt; (Double) -&gt; (Double)
-<span class="lineno">  438 </span><span class="decl"><span class="istickedoff">quantityRoundedAmount a1 a2 =</span>
-<span class="lineno">  439 </span><span class="spaces">  </span><span class="istickedoff">C2HSImp.unsafePerformIO $</span>
-<span class="lineno">  440 </span><span class="spaces">  </span><span class="istickedoff">withUnitOfMeasure a1 $ \a1' -&gt; </span>
-<span class="lineno">  441 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = realToFrac a2} in </span>
-<span class="lineno">  442 </span><span class="spaces">  </span><span class="istickedoff">quantityRoundedAmount'_ a1' a2' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  443 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
-<span class="lineno">  444 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">  445 </span>
-<span class="lineno">  446 </span>
-<span class="lineno">  447 </span>
-<span class="lineno">  448 </span>-- |Round a quantity's amount per its unit of measure's rounding convention. The commodity type and
-<span class="lineno">  449 </span>-- unit of measure are unaffected by rounding, so they're carried straight through in Haskell
-<span class="lineno">  450 </span>-- rather than round-tripped through the C++ call.
-<span class="lineno">  451 </span>roundedQuantity :: Quantity -&gt; Quantity
-<span class="lineno">  452 </span><span class="decl"><span class="istickedoff">roundedQuantity (ct, uom, amount) = (ct, uom, quantityRoundedAmount uom amount)</span></span>
-<span class="lineno">  453 </span>
-<span class="lineno">  454 </span>qlQuantityClose_ :: (CommodityType) -&gt; (UnitOfMeasure) -&gt; (Double) -&gt; (CommodityType) -&gt; (UnitOfMeasure) -&gt; (Double) -&gt; (Int) -&gt; IO ((Bool))
-<span class="lineno">  455 </span><span class="decl"><span class="istickedoff">qlQuantityClose_ a1 a2 a3 a4 a5 a6 a7 =</span>
-<span class="lineno">  456 </span><span class="spaces">  </span><span class="istickedoff">withCommodityType a1 $ \a1' -&gt; </span>
-<span class="lineno">  457 </span><span class="spaces">  </span><span class="istickedoff">withUnitOfMeasure a2 $ \a2' -&gt; </span>
-<span class="lineno">  458 </span><span class="spaces">  </span><span class="istickedoff">let {a3' = realToFrac a3} in </span>
-<span class="lineno">  459 </span><span class="spaces">  </span><span class="istickedoff">withCommodityType a4 $ \a4' -&gt; </span>
-<span class="lineno">  460 </span><span class="spaces">  </span><span class="istickedoff">withUnitOfMeasure a5 $ \a5' -&gt; </span>
-<span class="lineno">  461 </span><span class="spaces">  </span><span class="istickedoff">let {a6' = realToFrac a6} in </span>
-<span class="lineno">  462 </span><span class="spaces">  </span><span class="istickedoff">let {a7' = fromIntegral a7} in </span>
-<span class="lineno">  463 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a8' -&gt; </span>
-<span class="lineno">  464 </span><span class="spaces">  </span><span class="istickedoff">qlQuantityClose_'_ a1' a2' a3' a4' a5' a6' a7' a8' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  465 </span><span class="spaces">  </span><span class="istickedoff">let {res' = C2HSImp.toBool res} in</span>
-<span class="lineno">  466 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a8'&gt;&gt;</span>
-<span class="lineno">  467 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">  468 </span>
-<span class="lineno">  469 </span>
-<span class="lineno">  470 </span>
-<span class="lineno">  471 </span>-- |Whether two quantities are close to within @n@ ULPs (default 42 upstream), after converting
-<span class="lineno">  472 </span>-- the second to the first's unit of measure if their units differ (which throws unless a
-<span class="lineno">  473 </span>-- conversion is reachable -- see 'lookupUomConversion').
-<span class="lineno">  474 </span>closeQuantity :: Quantity -&gt; Quantity -&gt; Int -&gt; IO Bool
-<span class="lineno">  475 </span><span class="decl"><span class="istickedoff">closeQuantity (ct1, uom1, amt1) (ct2, uom2, amt2) n = qlQuantityClose_ ct1 uom1 amt1 ct2 uom2 amt2 n</span></span>
-<span class="lineno">  476 </span>
-<span class="lineno">  477 </span>qlQuantityCloseEnough_ :: (CommodityType) -&gt; (UnitOfMeasure) -&gt; (Double) -&gt; (CommodityType) -&gt; (UnitOfMeasure) -&gt; (Double) -&gt; (Int) -&gt; IO ((Bool))
-<span class="lineno">  478 </span><span class="decl"><span class="nottickedoff">qlQuantityCloseEnough_ a1 a2 a3 a4 a5 a6 a7 =</span>
-<span class="lineno">  479 </span><span class="spaces">  </span><span class="nottickedoff">withCommodityType a1 $ \a1' -&gt; </span>
-<span class="lineno">  480 </span><span class="spaces">  </span><span class="nottickedoff">withUnitOfMeasure a2 $ \a2' -&gt; </span>
-<span class="lineno">  481 </span><span class="spaces">  </span><span class="nottickedoff">let {a3' = realToFrac a3} in </span>
-<span class="lineno">  482 </span><span class="spaces">  </span><span class="nottickedoff">withCommodityType a4 $ \a4' -&gt; </span>
-<span class="lineno">  483 </span><span class="spaces">  </span><span class="nottickedoff">withUnitOfMeasure a5 $ \a5' -&gt; </span>
-<span class="lineno">  484 </span><span class="spaces">  </span><span class="nottickedoff">let {a6' = realToFrac a6} in </span>
-<span class="lineno">  485 </span><span class="spaces">  </span><span class="nottickedoff">let {a7' = fromIntegral a7} in </span>
-<span class="lineno">  486 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a8' -&gt; </span>
-<span class="lineno">  487 </span><span class="spaces">  </span><span class="nottickedoff">qlQuantityCloseEnough_'_ a1' a2' a3' a4' a5' a6' a7' a8' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  488 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = C2HSImp.toBool res} in</span>
-<span class="lineno">  489 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a8'&gt;&gt;</span>
-<span class="lineno">  490 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
-<span class="lineno">  491 </span>
+<span class="lineno">  428 </span>-- |A commodity type, unit of measure, and amount. Its FFI arguments are flat because c2hs's
+<span class="lineno">  429 </span>-- @&amp;@ tuple-splitter supports only pairs.
+<span class="lineno">  430 </span>type Quantity = (CommodityType, UnitOfMeasure, Double)
+<span class="lineno">  431 </span>
+<span class="lineno">  432 </span>quantityRoundedAmount :: (UnitOfMeasure) -&gt; (Double) -&gt; (Double)
+<span class="lineno">  433 </span><span class="decl"><span class="istickedoff">quantityRoundedAmount a1 a2 =</span>
+<span class="lineno">  434 </span><span class="spaces">  </span><span class="istickedoff">C2HSImp.unsafePerformIO $</span>
+<span class="lineno">  435 </span><span class="spaces">  </span><span class="istickedoff">withUnitOfMeasure a1 $ \a1' -&gt; </span>
+<span class="lineno">  436 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = realToFrac a2} in </span>
+<span class="lineno">  437 </span><span class="spaces">  </span><span class="istickedoff">quantityRoundedAmount'_ a1' a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  438 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno">  439 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  440 </span>
+<span class="lineno">  441 </span>
+<span class="lineno">  442 </span>
+<span class="lineno">  443 </span>-- |Round a quantity's amount per its unit of measure's rounding convention. The commodity type and
+<span class="lineno">  444 </span>-- unit of measure are unaffected by rounding, so they're carried straight through in Haskell
+<span class="lineno">  445 </span>-- rather than round-tripped through the C++ call.
+<span class="lineno">  446 </span>roundedQuantity :: Quantity -&gt; Quantity
+<span class="lineno">  447 </span><span class="decl"><span class="istickedoff">roundedQuantity (ct, uom, amount) = (ct, uom, quantityRoundedAmount uom amount)</span></span>
+<span class="lineno">  448 </span>
+<span class="lineno">  449 </span>qlQuantityClose_ :: (CommodityType) -&gt; (UnitOfMeasure) -&gt; (Double) -&gt; (CommodityType) -&gt; (UnitOfMeasure) -&gt; (Double) -&gt; (Int) -&gt; IO ((Bool))
+<span class="lineno">  450 </span><span class="decl"><span class="istickedoff">qlQuantityClose_ a1 a2 a3 a4 a5 a6 a7 =</span>
+<span class="lineno">  451 </span><span class="spaces">  </span><span class="istickedoff">withCommodityType a1 $ \a1' -&gt; </span>
+<span class="lineno">  452 </span><span class="spaces">  </span><span class="istickedoff">withUnitOfMeasure a2 $ \a2' -&gt; </span>
+<span class="lineno">  453 </span><span class="spaces">  </span><span class="istickedoff">let {a3' = realToFrac a3} in </span>
+<span class="lineno">  454 </span><span class="spaces">  </span><span class="istickedoff">withCommodityType a4 $ \a4' -&gt; </span>
+<span class="lineno">  455 </span><span class="spaces">  </span><span class="istickedoff">withUnitOfMeasure a5 $ \a5' -&gt; </span>
+<span class="lineno">  456 </span><span class="spaces">  </span><span class="istickedoff">let {a6' = realToFrac a6} in </span>
+<span class="lineno">  457 </span><span class="spaces">  </span><span class="istickedoff">let {a7' = fromIntegral a7} in </span>
+<span class="lineno">  458 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a8' -&gt; </span>
+<span class="lineno">  459 </span><span class="spaces">  </span><span class="istickedoff">qlQuantityClose_'_ a1' a2' a3' a4' a5' a6' a7' a8' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  460 </span><span class="spaces">  </span><span class="istickedoff">let {res' = C2HSImp.toBool res} in</span>
+<span class="lineno">  461 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a8'&gt;&gt;</span>
+<span class="lineno">  462 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  463 </span>
+<span class="lineno">  464 </span>
+<span class="lineno">  465 </span>
+<span class="lineno">  466 </span>-- |Whether two quantities are close to within @n@ ULPs (default 42 upstream), after converting
+<span class="lineno">  467 </span>-- the second to the first's unit of measure if their units differ (which throws unless a
+<span class="lineno">  468 </span>-- conversion is reachable -- see 'lookupUomConversion').
+<span class="lineno">  469 </span>closeQuantity :: Quantity -&gt; Quantity -&gt; Int -&gt; IO Bool
+<span class="lineno">  470 </span><span class="decl"><span class="istickedoff">closeQuantity (ct1, uom1, amt1) (ct2, uom2, amt2) n = qlQuantityClose_ ct1 uom1 amt1 ct2 uom2 amt2 n</span></span>
+<span class="lineno">  471 </span>
+<span class="lineno">  472 </span>qlQuantityCloseEnough_ :: (CommodityType) -&gt; (UnitOfMeasure) -&gt; (Double) -&gt; (CommodityType) -&gt; (UnitOfMeasure) -&gt; (Double) -&gt; (Int) -&gt; IO ((Bool))
+<span class="lineno">  473 </span><span class="decl"><span class="nottickedoff">qlQuantityCloseEnough_ a1 a2 a3 a4 a5 a6 a7 =</span>
+<span class="lineno">  474 </span><span class="spaces">  </span><span class="nottickedoff">withCommodityType a1 $ \a1' -&gt; </span>
+<span class="lineno">  475 </span><span class="spaces">  </span><span class="nottickedoff">withUnitOfMeasure a2 $ \a2' -&gt; </span>
+<span class="lineno">  476 </span><span class="spaces">  </span><span class="nottickedoff">let {a3' = realToFrac a3} in </span>
+<span class="lineno">  477 </span><span class="spaces">  </span><span class="nottickedoff">withCommodityType a4 $ \a4' -&gt; </span>
+<span class="lineno">  478 </span><span class="spaces">  </span><span class="nottickedoff">withUnitOfMeasure a5 $ \a5' -&gt; </span>
+<span class="lineno">  479 </span><span class="spaces">  </span><span class="nottickedoff">let {a6' = realToFrac a6} in </span>
+<span class="lineno">  480 </span><span class="spaces">  </span><span class="nottickedoff">let {a7' = fromIntegral a7} in </span>
+<span class="lineno">  481 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a8' -&gt; </span>
+<span class="lineno">  482 </span><span class="spaces">  </span><span class="nottickedoff">qlQuantityCloseEnough_'_ a1' a2' a3' a4' a5' a6' a7' a8' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  483 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = C2HSImp.toBool res} in</span>
+<span class="lineno">  484 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a8'&gt;&gt;</span>
+<span class="lineno">  485 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno">  486 </span>
+<span class="lineno">  487 </span>
+<span class="lineno">  488 </span>
+<span class="lineno">  489 </span>-- |As 'closeQuantity', but using QuantLib's relative (rather than absolute) closeness test.
+<span class="lineno">  490 </span>closeEnoughQuantity :: Quantity -&gt; Quantity -&gt; Int -&gt; IO Bool
+<span class="lineno">  491 </span><span class="decl"><span class="nottickedoff">closeEnoughQuantity (ct1, uom1, amt1) (ct2, uom2, amt2) n = qlQuantityCloseEnough_ ct1 uom1 amt1 ct2 uom2 amt2 n</span></span>
 <span class="lineno">  492 </span>
-<span class="lineno">  493 </span>
-<span class="lineno">  494 </span>-- |As 'closeQuantity', but using QuantLib's relative (rather than absolute) closeness test.
-<span class="lineno">  495 </span>closeEnoughQuantity :: Quantity -&gt; Quantity -&gt; Int -&gt; IO Bool
-<span class="lineno">  496 </span><span class="decl"><span class="nottickedoff">closeEnoughQuantity (ct1, uom1, amt1) (ct2, uom2, amt2) n = qlQuantityCloseEnough_ ct1 uom1 amt1 ct2 uom2 amt2 n</span></span>
+<span class="lineno">  493 </span>-- |A commodity's unit cost: a cash amount (a @(Double, Currency)@ pair, standing in for
+<span class="lineno">  494 </span>-- QuantLib's @Money@) per 'UnitOfMeasure'. A plain tuple, like 'Quantity' -- it carries no
+<span class="lineno">  495 </span>-- calculation of its own upstream.
+<span class="lineno">  496 </span>type CommodityUnitCost = (Double, Currency, UnitOfMeasure)
 <span class="lineno">  497 </span>
-<span class="lineno">  498 </span>-- |A commodity's unit cost: a cash amount (a @(Double, Currency)@ pair, standing in for
-<span class="lineno">  499 </span>-- QuantLib's @Money@) per 'UnitOfMeasure'. A plain tuple, like 'Quantity' -- it carries no
-<span class="lineno">  500 </span>-- calculation of its own upstream.
-<span class="lineno">  501 </span>type CommodityUnitCost = (Double, Currency, UnitOfMeasure)
+<span class="lineno">  498 </span>-- |A date range, inclusive of both ends. No C++ call is needed for either operation below --
+<span class="lineno">  499 </span>-- 'Day' (from @Data.Time.Calendar@) already has the 'Ord' instance QuantLib's own comparisons rely
+<span class="lineno">  500 </span>-- on, so both are plain Haskell functions rather than shim calls.
+<span class="lineno">  501 </span>type DateInterval = (Day, Day)
 <span class="lineno">  502 </span>
-<span class="lineno">  503 </span>-- |A date range, inclusive of both ends. No C++ call is needed for either operation below --
-<span class="lineno">  504 </span>-- 'Day' (from @Data.Time.Calendar@) already has the 'Ord' instance QuantLib's own comparisons rely
-<span class="lineno">  505 </span>-- on, so both are plain Haskell functions rather than shim calls.
-<span class="lineno">  506 </span>type DateInterval = (Day, Day)
-<span class="lineno">  507 </span>
-<span class="lineno">  508 </span>-- |Whether a date falls within the interval, optionally excluding either end.
-<span class="lineno">  509 </span>isDateBetween :: DateInterval
-<span class="lineno">  510 </span>              -&gt; Day -- ^date
-<span class="lineno">  511 </span>              -&gt; Bool -- ^includeFirst
-<span class="lineno">  512 </span>              -&gt; Bool -- ^includeLast
-<span class="lineno">  513 </span>              -&gt; Bool
-<span class="lineno">  514 </span><span class="decl"><span class="istickedoff">isDateBetween (startDate, endDate) date includeFirst includeLast =</span>
-<span class="lineno">  515 </span><span class="spaces">  </span><span class="istickedoff">(if includeFirst then date &gt;= startDate else date &gt; startDate) &amp;&amp;</span>
-<span class="lineno">  516 </span><span class="spaces">  </span><span class="istickedoff">(if includeLast then date &lt;= endDate else date &lt; endDate)</span></span>
-<span class="lineno">  517 </span>
-<span class="lineno">  518 </span>-- |The overlap of two date intervals, or 'Nothing' if they don't overlap at all (upstream returns
-<span class="lineno">  519 </span>-- a default-constructed, both-dates-null 'DateInterval' in this case; a 'Maybe' is the natural
-<span class="lineno">  520 </span>-- Haskell equivalent).
-<span class="lineno">  521 </span>intersection :: DateInterval -&gt; DateInterval -&gt; Maybe DateInterval
-<span class="lineno">  522 </span><span class="decl"><span class="istickedoff">intersection (s1, e1) (s2, e2)</span>
-<span class="lineno">  523 </span><span class="spaces">  </span><span class="istickedoff">| (s1 &lt; s2 &amp;&amp; e1 &lt; s2) || (s1 &gt; e2 &amp;&amp; <span class="nottickedoff">e1 &gt; e2</span>) = Nothing</span>
-<span class="lineno">  524 </span><span class="spaces">  </span><span class="istickedoff">| <span class="tickonlytrue">otherwise</span> = Just (max s1 s2, min e1 e2)</span></span>
-<span class="lineno">  525 </span>
-<span class="lineno">  526 </span>-- |A 'DateInterval' over which a fixed 'Quantity' is priced, paid on
-<span class="lineno">  527 </span>-- 'pricingPeriodPaymentDate'. Named fields keep the value readable across energy-swap APIs.
-<span class="lineno">  528 </span>data PricingPeriod = PricingPeriod
-<span class="lineno">  529 </span>  { <span class="istickedoff"><span class="decl"><span class="istickedoff">pricingPeriodStartDate</span></span></span> :: Day
-<span class="lineno">  530 </span>  , <span class="istickedoff"><span class="decl"><span class="istickedoff">pricingPeriodEndDate</span></span></span> :: Day
-<span class="lineno">  531 </span>  , <span class="istickedoff"><span class="decl"><span class="istickedoff">pricingPeriodPaymentDate</span></span></span> :: Day
-<span class="lineno">  532 </span>  , <span class="istickedoff"><span class="decl"><span class="istickedoff">pricingPeriodQuantity</span></span></span> :: Quantity
-<span class="lineno">  533 </span>  } deriving (<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Show</span></span></span></span></span></span>, <span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Eq</span></span></span></span>)
-<span class="lineno">  534 </span>
-<span class="lineno">  535 </span>type PricingPeriods = [PricingPeriod]
-<span class="lineno">  536 </span>
-<span class="lineno">  537 </span>-- |Construct a 'PricingPeriod', enforcing upstream's @DateInterval@ invariant that the end date
-<span class="lineno">  538 </span>-- is not before the start date.
-<span class="lineno">  539 </span>pricingPeriod :: Day -&gt; Day -&gt; Day -&gt; Quantity -&gt; PricingPeriod
-<span class="lineno">  540 </span><span class="decl"><span class="istickedoff">pricingPeriod startDate endDate</span>
-<span class="lineno">  541 </span><span class="spaces">  </span><span class="istickedoff">| endDate &lt; startDate = error &quot;pricingPeriod: end date must be &gt;= start date&quot;</span>
-<span class="lineno">  542 </span><span class="spaces">  </span><span class="istickedoff">| <span class="tickonlytrue">otherwise</span> = PricingPeriod startDate endDate</span></span>
-<span class="lineno">  543 </span>
-<span class="lineno">  544 </span>-- |Construct a conversion factor between two units of measure for a given commodity type: a unit
-<span class="lineno">  545 </span>-- of @source@ is worth @conversionFactor@ units of @target@.
-<span class="lineno">  546 </span>unitOfMeasureConversion :: (CommodityType) -&gt; (UnitOfMeasure) -- ^source
-<span class="lineno">  547 </span> -&gt; (UnitOfMeasure) -- ^target
-<span class="lineno">  548 </span> -&gt; (Double) -- ^conversionFactor
-<span class="lineno">  549 </span> -&gt; IO ((UnitOfMeasureConversion))
-<span class="lineno">  550 </span><span class="decl"><span class="istickedoff">unitOfMeasureConversion a1 a2 a3 a4 =</span>
-<span class="lineno">  551 </span><span class="spaces">  </span><span class="istickedoff">withCommodityType a1 $ \a1' -&gt; </span>
-<span class="lineno">  552 </span><span class="spaces">  </span><span class="istickedoff">withUnitOfMeasure a2 $ \a2' -&gt; </span>
-<span class="lineno">  553 </span><span class="spaces">  </span><span class="istickedoff">withUnitOfMeasure a3 $ \a3' -&gt; </span>
-<span class="lineno">  554 </span><span class="spaces">  </span><span class="istickedoff">let {a4' = realToFrac a4} in </span>
-<span class="lineno">  555 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a5' -&gt; </span>
-<span class="lineno">  556 </span><span class="spaces">  </span><span class="istickedoff">unitOfMeasureConversion'_ a1' a2' a3' a4' a5' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  557 </span><span class="spaces">  </span><span class="istickedoff">peekUnitOfMeasureConversion res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">  558 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a5'&gt;&gt;</span>
-<span class="lineno">  559 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">  560 </span>
-<span class="lineno">  561 </span>
-<span class="lineno">  562 </span>
-<span class="lineno">  563 </span>-- |The source unit of measure.
-<span class="lineno">  564 </span>unitOfMeasureConversionSource :: (UnitOfMeasureConversion) -&gt; IO ((UnitOfMeasure))
-<span class="lineno">  565 </span><span class="decl"><span class="istickedoff">unitOfMeasureConversionSource a1 =</span>
-<span class="lineno">  566 </span><span class="spaces">  </span><span class="istickedoff">withUnitOfMeasureConversion a1 $ \a1' -&gt; </span>
-<span class="lineno">  567 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
-<span class="lineno">  568 </span><span class="spaces">  </span><span class="istickedoff">unitOfMeasureConversionSource'_ a1' a2' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  569 </span><span class="spaces">  </span><span class="istickedoff">peekUnitOfMeasure res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">  570 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
-<span class="lineno">  571 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">  572 </span>
-<span class="lineno">  573 </span>
-<span class="lineno">  574 </span>
-<span class="lineno">  575 </span>-- |The target unit of measure.
-<span class="lineno">  576 </span>unitOfMeasureConversionTarget :: (UnitOfMeasureConversion) -&gt; IO ((UnitOfMeasure))
-<span class="lineno">  577 </span><span class="decl"><span class="istickedoff">unitOfMeasureConversionTarget a1 =</span>
-<span class="lineno">  578 </span><span class="spaces">  </span><span class="istickedoff">withUnitOfMeasureConversion a1 $ \a1' -&gt; </span>
-<span class="lineno">  579 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
-<span class="lineno">  580 </span><span class="spaces">  </span><span class="istickedoff">unitOfMeasureConversionTarget'_ a1' a2' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  581 </span><span class="spaces">  </span><span class="istickedoff">peekUnitOfMeasure res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">  582 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
-<span class="lineno">  583 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">  584 </span>
-<span class="lineno">  585 </span>
-<span class="lineno">  586 </span>
-<span class="lineno">  587 </span>-- |The commodity type this conversion applies to.
-<span class="lineno">  588 </span>unitOfMeasureConversionCommodityType :: (UnitOfMeasureConversion) -&gt; IO ((CommodityType))
-<span class="lineno">  589 </span><span class="decl"><span class="istickedoff">unitOfMeasureConversionCommodityType a1 =</span>
-<span class="lineno">  590 </span><span class="spaces">  </span><span class="istickedoff">withUnitOfMeasureConversion a1 $ \a1' -&gt; </span>
-<span class="lineno">  591 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
-<span class="lineno">  592 </span><span class="spaces">  </span><span class="istickedoff">unitOfMeasureConversionCommodityType'_ a1' a2' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  593 </span><span class="spaces">  </span><span class="istickedoff">peekCommodityType res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">  594 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
-<span class="lineno">  595 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">  596 </span>
-<span class="lineno">  597 </span>
-<span class="lineno">  598 </span>
-<span class="lineno">  599 </span>-- |Whether the conversion was given directly, or derived by chaining two other conversions.
-<span class="lineno">  600 </span>unitOfMeasureConversionType :: (UnitOfMeasureConversion) -&gt; (UnitOfMeasureConversionType)
-<span class="lineno">  601 </span><span class="decl"><span class="istickedoff">unitOfMeasureConversionType a1 =</span>
-<span class="lineno">  602 </span><span class="spaces">  </span><span class="istickedoff">C2HSImp.unsafePerformIO $</span>
-<span class="lineno">  603 </span><span class="spaces">  </span><span class="istickedoff">withUnitOfMeasureConversion a1 $ \a1' -&gt; </span>
-<span class="lineno">  604 </span><span class="spaces">  </span><span class="istickedoff">unitOfMeasureConversionType'_ a1' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  605 </span><span class="spaces">  </span><span class="istickedoff">let {res' = (toEnum . fromIntegral) res} in</span>
-<span class="lineno">  606 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">  607 </span>
-<span class="lineno">  608 </span>
-<span class="lineno">  609 </span>
-<span class="lineno">  610 </span>-- |The conversion factor: a unit of the source is worth this many units of the target.
-<span class="lineno">  611 </span>unitOfMeasureConversionFactor :: (UnitOfMeasureConversion) -&gt; (Double)
-<span class="lineno">  612 </span><span class="decl"><span class="istickedoff">unitOfMeasureConversionFactor a1 =</span>
-<span class="lineno">  613 </span><span class="spaces">  </span><span class="istickedoff">C2HSImp.unsafePerformIO $</span>
-<span class="lineno">  614 </span><span class="spaces">  </span><span class="istickedoff">withUnitOfMeasureConversion a1 $ \a1' -&gt; </span>
-<span class="lineno">  615 </span><span class="spaces">  </span><span class="istickedoff">unitOfMeasureConversionFactor'_ a1' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  616 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
-<span class="lineno">  617 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">  618 </span>
-<span class="lineno">  619 </span>
-<span class="lineno">  620 </span>
-<span class="lineno">  621 </span>-- |A code identifying the conversion, e.g. \&quot;Heating OilMTBBL\&quot;.
-<span class="lineno">  622 </span>unitOfMeasureConversionCode :: (UnitOfMeasureConversion) -&gt; (String)
-<span class="lineno">  623 </span><span class="decl"><span class="nottickedoff">unitOfMeasureConversionCode a1 =</span>
-<span class="lineno">  624 </span><span class="spaces">  </span><span class="nottickedoff">C2HSImp.unsafePerformIO $</span>
-<span class="lineno">  625 </span><span class="spaces">  </span><span class="nottickedoff">withUnitOfMeasureConversion a1 $ \a1' -&gt; </span>
-<span class="lineno">  626 </span><span class="spaces">  </span><span class="nottickedoff">unitOfMeasureConversionCode'_ a1' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  627 </span><span class="spaces">  </span><span class="nottickedoff">peekDynString res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">  628 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
-<span class="lineno">  629 </span>
-<span class="lineno">  630 </span>
-<span class="lineno">  631 </span>
-<span class="lineno">  632 </span>qlUnitOfMeasureConversionConvert_ :: (UnitOfMeasureConversion) -&gt; (CommodityType) -&gt; (UnitOfMeasure) -&gt; (Double) -&gt; IO ((Double), (CommodityType), (UnitOfMeasure))
-<span class="lineno">  633 </span><span class="decl"><span class="istickedoff">qlUnitOfMeasureConversionConvert_ a1 a2 a3 a4 =</span>
-<span class="lineno">  634 </span><span class="spaces">  </span><span class="istickedoff">withUnitOfMeasureConversion a1 $ \a1' -&gt; </span>
-<span class="lineno">  635 </span><span class="spaces">  </span><span class="istickedoff">withCommodityType a2 $ \a2' -&gt; </span>
-<span class="lineno">  636 </span><span class="spaces">  </span><span class="istickedoff">withUnitOfMeasure a3 $ \a3' -&gt; </span>
-<span class="lineno">  637 </span><span class="spaces">  </span><span class="istickedoff">let {a4' = realToFrac a4} in </span>
-<span class="lineno">  638 </span><span class="spaces">  </span><span class="istickedoff">alloca $ \a5' -&gt; </span>
-<span class="lineno">  639 </span><span class="spaces">  </span><span class="istickedoff">alloca $ \a6' -&gt; </span>
-<span class="lineno">  640 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a7' -&gt; </span>
-<span class="lineno">  641 </span><span class="spaces">  </span><span class="istickedoff">qlUnitOfMeasureConversionConvert_'_ a1' a2' a3' a4' a5' a6' a7' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  642 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
-<span class="lineno">  643 </span><span class="spaces">  </span><span class="istickedoff">peekCommodityTypePtr  a5'&gt;&gt;= \a5'' -&gt; </span>
-<span class="lineno">  644 </span><span class="spaces">  </span><span class="istickedoff">peekUnitOfMeasurePtr  a6'&gt;&gt;= \a6'' -&gt; </span>
-<span class="lineno">  645 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a7'&gt;&gt;</span>
-<span class="lineno">  646 </span><span class="spaces">  </span><span class="istickedoff">return (res', a5'', a6'')</span></span>
-<span class="lineno">  647 </span>
-<span class="lineno">  648 </span>
-<span class="lineno">  649 </span>
-<span class="lineno">  650 </span>-- |Apply the conversion factor to a quantity, converting it from the conversion's source to its
-<span class="lineno">  651 </span>-- target unit of measure (or vice versa). Throws if the quantity's unit of measure is on neither
-<span class="lineno">  652 </span>-- side of the conversion.
-<span class="lineno">  653 </span>convertQuantity :: UnitOfMeasureConversion -&gt; Quantity -&gt; IO Quantity
-<span class="lineno">  654 </span><span class="decl"><span class="istickedoff">convertQuantity conv (ct, uom, amount) = do</span>
-<span class="lineno">  655 </span><span class="spaces">  </span><span class="istickedoff">(amount', ct', uom') &lt;- qlUnitOfMeasureConversionConvert_ conv ct uom amount</span>
-<span class="lineno">  656 </span><span class="spaces">  </span><span class="istickedoff">pure (ct', uom', amount')</span></span>
-<span class="lineno">  657 </span>
-<span class="lineno">  658 </span>-- |Combine two conversions sharing a common unit of measure into a derived conversion between
-<span class="lineno">  659 </span>-- their other two units. Throws if the conversions don't share a common unit.
-<span class="lineno">  660 </span>chainUnitOfMeasureConversion :: (UnitOfMeasureConversion) -&gt; (UnitOfMeasureConversion) -&gt; IO ((UnitOfMeasureConversion))
-<span class="lineno">  661 </span><span class="decl"><span class="istickedoff">chainUnitOfMeasureConversion a1 a2 =</span>
-<span class="lineno">  662 </span><span class="spaces">  </span><span class="istickedoff">withUnitOfMeasureConversion a1 $ \a1' -&gt; </span>
-<span class="lineno">  663 </span><span class="spaces">  </span><span class="istickedoff">withUnitOfMeasureConversion a2 $ \a2' -&gt; </span>
-<span class="lineno">  664 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
-<span class="lineno">  665 </span><span class="spaces">  </span><span class="istickedoff">chainUnitOfMeasureConversion'_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  666 </span><span class="spaces">  </span><span class="istickedoff">peekUnitOfMeasureConversion res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">  667 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
-<span class="lineno">  668 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">  669 </span>
-<span class="lineno">  670 </span>
-<span class="lineno">  671 </span>
-<span class="lineno">  672 </span>-- |Look up a (possibly derived, via triangulation) conversion between two units of measure for a
-<span class="lineno">  673 </span>-- given commodity type. Throws if none can be found. Pre-populated with a set of known petroleum
-<span class="lineno">  674 </span>-- conversion factors even before any 'addUomConversion' call.
-<span class="lineno">  675 </span>lookupUomConversion :: (CommodityType) -&gt; (UnitOfMeasure) -- ^source
-<span class="lineno">  676 </span> -&gt; (UnitOfMeasure) -- ^target
-<span class="lineno">  677 </span> -&gt; (UnitOfMeasureConversionType) -&gt; IO ((UnitOfMeasureConversion))
-<span class="lineno">  678 </span><span class="decl"><span class="istickedoff">lookupUomConversion a1 a2 a3 a4 =</span>
-<span class="lineno">  679 </span><span class="spaces">  </span><span class="istickedoff">withCommodityType a1 $ \a1' -&gt; </span>
-<span class="lineno">  680 </span><span class="spaces">  </span><span class="istickedoff">withUnitOfMeasure a2 $ \a2' -&gt; </span>
-<span class="lineno">  681 </span><span class="spaces">  </span><span class="istickedoff">withUnitOfMeasure a3 $ \a3' -&gt; </span>
-<span class="lineno">  682 </span><span class="spaces">  </span><span class="istickedoff">let {a4' = (fromIntegral . fromEnum) a4} in </span>
-<span class="lineno">  683 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a5' -&gt; </span>
-<span class="lineno">  684 </span><span class="spaces">  </span><span class="istickedoff">lookupUomConversion'_ a1' a2' a3' a4' a5' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  685 </span><span class="spaces">  </span><span class="istickedoff">peekUnitOfMeasureConversion res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">  686 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a5'&gt;&gt;</span>
-<span class="lineno">  687 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">  688 </span>
-<span class="lineno">  689 </span>
-<span class="lineno">  690 </span>
-<span class="lineno">  691 </span>-- |Register a conversion with the global unit-of-measure conversion repository, replacing any
-<span class="lineno">  692 </span>-- existing conversion between the same commodity type and pair of units.
-<span class="lineno">  693 </span>addUomConversion :: (UnitOfMeasureConversion) -&gt; IO ()
-<span class="lineno">  694 </span><span class="decl"><span class="istickedoff">addUomConversion a1 =</span>
-<span class="lineno">  695 </span><span class="spaces">  </span><span class="istickedoff">withUnitOfMeasureConversion a1 $ \a1' -&gt; </span>
-<span class="lineno">  696 </span><span class="spaces">  </span><span class="istickedoff">addUomConversion'_ a1' &gt;&gt;</span>
-<span class="lineno">  697 </span><span class="spaces">  </span><span class="istickedoff">return <span class="nottickedoff">()</span></span></span>
-<span class="lineno">  698 </span>
-<span class="lineno">  699 </span>
-<span class="lineno">  700 </span>
-<span class="lineno">  701 </span>-- |Reset the unit-of-measure conversion repository back to its built-in set of known petroleum
-<span class="lineno">  702 </span>-- conversion factors, discarding anything added via 'addUomConversion'.
-<span class="lineno">  703 </span>clearUomConversions :: IO ()
-<span class="lineno">  704 </span><span class="decl"><span class="istickedoff">clearUomConversions =</span>
-<span class="lineno">  705 </span><span class="spaces">  </span><span class="istickedoff">clearUomConversions'_ &gt;&gt;</span>
-<span class="lineno">  706 </span><span class="spaces">  </span><span class="istickedoff">return <span class="nottickedoff">()</span></span></span>
-<span class="lineno">  707 </span>
-<span class="lineno">  708 </span>
-<span class="lineno">  709 </span>
-<span class="lineno">  710 </span>-- |The global commodity currency setting (defaults to USD).
-<span class="lineno">  711 </span>commoditySettingsCurrency :: IO ((Currency))
-<span class="lineno">  712 </span><span class="decl"><span class="istickedoff">commoditySettingsCurrency =</span>
-<span class="lineno">  713 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a1' -&gt; </span>
-<span class="lineno">  714 </span><span class="spaces">  </span><span class="istickedoff">commoditySettingsCurrency'_ a1' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  715 </span><span class="spaces">  </span><span class="istickedoff">peekCurrency res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">  716 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a1'&gt;&gt;</span>
-<span class="lineno">  717 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">  718 </span>
-<span class="lineno">  719 </span>
-<span class="lineno">  720 </span>
-<span class="lineno">  721 </span>-- |Set the global commodity currency setting.
-<span class="lineno">  722 </span>setCommoditySettingsCurrency :: (Currency) -&gt; IO ()
-<span class="lineno">  723 </span><span class="decl"><span class="nottickedoff">setCommoditySettingsCurrency a1 =</span>
-<span class="lineno">  724 </span><span class="spaces">  </span><span class="nottickedoff">withCurrency a1 $ \a1' -&gt; </span>
-<span class="lineno">  725 </span><span class="spaces">  </span><span class="nottickedoff">setCommoditySettingsCurrency'_ a1' &gt;&gt;</span>
-<span class="lineno">  726 </span><span class="spaces">  </span><span class="nottickedoff">return ()</span></span>
-<span class="lineno">  727 </span>
-<span class="lineno">  728 </span>
-<span class="lineno">  729 </span>
-<span class="lineno">  730 </span>-- |The global commodity unit-of-measure setting (defaults to barrels).
-<span class="lineno">  731 </span>commoditySettingsUnitOfMeasure :: IO ((UnitOfMeasure))
-<span class="lineno">  732 </span><span class="decl"><span class="istickedoff">commoditySettingsUnitOfMeasure =</span>
-<span class="lineno">  733 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a1' -&gt; </span>
-<span class="lineno">  734 </span><span class="spaces">  </span><span class="istickedoff">commoditySettingsUnitOfMeasure'_ a1' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  735 </span><span class="spaces">  </span><span class="istickedoff">peekUnitOfMeasure res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">  736 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a1'&gt;&gt;</span>
-<span class="lineno">  737 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
-<span class="lineno">  738 </span>
-<span class="lineno">  739 </span>
-<span class="lineno">  740 </span>
-<span class="lineno">  741 </span>-- |Set the global commodity unit-of-measure setting.
-<span class="lineno">  742 </span>setCommoditySettingsUnitOfMeasure :: (UnitOfMeasure) -&gt; IO ()
-<span class="lineno">  743 </span><span class="decl"><span class="istickedoff">setCommoditySettingsUnitOfMeasure a1 =</span>
-<span class="lineno">  744 </span><span class="spaces">  </span><span class="istickedoff">withUnitOfMeasure a1 $ \a1' -&gt; </span>
-<span class="lineno">  745 </span><span class="spaces">  </span><span class="istickedoff">setCommoditySettingsUnitOfMeasure'_ a1' &gt;&gt;</span>
-<span class="lineno">  746 </span><span class="spaces">  </span><span class="istickedoff">return <span class="nottickedoff">()</span></span></span>
-<span class="lineno">  747 </span>
-<span class="lineno">  748 </span>
+<span class="lineno">  503 </span>-- |Whether a date falls within the interval, optionally excluding either end.
+<span class="lineno">  504 </span>isDateBetween :: DateInterval
+<span class="lineno">  505 </span>              -&gt; Day -- ^date
+<span class="lineno">  506 </span>              -&gt; Bool -- ^includeFirst
+<span class="lineno">  507 </span>              -&gt; Bool -- ^includeLast
+<span class="lineno">  508 </span>              -&gt; Bool
+<span class="lineno">  509 </span><span class="decl"><span class="istickedoff">isDateBetween (startDate, endDate) date includeFirst includeLast =</span>
+<span class="lineno">  510 </span><span class="spaces">  </span><span class="istickedoff">(if includeFirst then date &gt;= startDate else date &gt; startDate) &amp;&amp;</span>
+<span class="lineno">  511 </span><span class="spaces">  </span><span class="istickedoff">(if includeLast then date &lt;= endDate else date &lt; endDate)</span></span>
+<span class="lineno">  512 </span>
+<span class="lineno">  513 </span>-- |The overlap of two date intervals, or 'Nothing' if they don't overlap at all (upstream returns
+<span class="lineno">  514 </span>-- a default-constructed, both-dates-null 'DateInterval' in this case; a 'Maybe' is the natural
+<span class="lineno">  515 </span>-- Haskell equivalent).
+<span class="lineno">  516 </span>intersection :: DateInterval -&gt; DateInterval -&gt; Maybe DateInterval
+<span class="lineno">  517 </span><span class="decl"><span class="istickedoff">intersection (s1, e1) (s2, e2)</span>
+<span class="lineno">  518 </span><span class="spaces">  </span><span class="istickedoff">| (s1 &lt; s2 &amp;&amp; e1 &lt; s2) || (s1 &gt; e2 &amp;&amp; <span class="nottickedoff">e1 &gt; e2</span>) = Nothing</span>
+<span class="lineno">  519 </span><span class="spaces">  </span><span class="istickedoff">| <span class="tickonlytrue">otherwise</span> = Just (max s1 s2, min e1 e2)</span></span>
+<span class="lineno">  520 </span>
+<span class="lineno">  521 </span>-- |A 'DateInterval' over which a fixed 'Quantity' is priced, paid on
+<span class="lineno">  522 </span>-- 'pricingPeriodPaymentDate'. Named fields keep the value readable across energy-swap APIs.
+<span class="lineno">  523 </span>data PricingPeriod = PricingPeriod
+<span class="lineno">  524 </span>  { <span class="istickedoff"><span class="decl"><span class="istickedoff">pricingPeriodStartDate</span></span></span> :: Day
+<span class="lineno">  525 </span>  , <span class="istickedoff"><span class="decl"><span class="istickedoff">pricingPeriodEndDate</span></span></span> :: Day
+<span class="lineno">  526 </span>  , <span class="istickedoff"><span class="decl"><span class="istickedoff">pricingPeriodPaymentDate</span></span></span> :: Day
+<span class="lineno">  527 </span>  , <span class="istickedoff"><span class="decl"><span class="istickedoff">pricingPeriodQuantity</span></span></span> :: Quantity
+<span class="lineno">  528 </span>  } deriving (<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Show</span></span></span></span></span></span>, <span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Eq</span></span></span></span>)
+<span class="lineno">  529 </span>
+<span class="lineno">  530 </span>type PricingPeriods = [PricingPeriod]
+<span class="lineno">  531 </span>
+<span class="lineno">  532 </span>-- |Construct a 'PricingPeriod', enforcing upstream's @DateInterval@ invariant that the end date
+<span class="lineno">  533 </span>-- is not before the start date.
+<span class="lineno">  534 </span>pricingPeriod :: Day -&gt; Day -&gt; Day -&gt; Quantity -&gt; PricingPeriod
+<span class="lineno">  535 </span><span class="decl"><span class="istickedoff">pricingPeriod startDate endDate</span>
+<span class="lineno">  536 </span><span class="spaces">  </span><span class="istickedoff">| endDate &lt; startDate = error &quot;pricingPeriod: end date must be &gt;= start date&quot;</span>
+<span class="lineno">  537 </span><span class="spaces">  </span><span class="istickedoff">| <span class="tickonlytrue">otherwise</span> = PricingPeriod startDate endDate</span></span>
+<span class="lineno">  538 </span>
+<span class="lineno">  539 </span>-- |Construct a conversion factor between two units of measure for a given commodity type: a unit
+<span class="lineno">  540 </span>-- of @source@ is worth @conversionFactor@ units of @target@.
+<span class="lineno">  541 </span>unitOfMeasureConversion :: (CommodityType) -&gt; (UnitOfMeasure) -- ^source
+<span class="lineno">  542 </span> -&gt; (UnitOfMeasure) -- ^target
+<span class="lineno">  543 </span> -&gt; (Double) -- ^conversionFactor
+<span class="lineno">  544 </span> -&gt; IO ((UnitOfMeasureConversion))
+<span class="lineno">  545 </span><span class="decl"><span class="istickedoff">unitOfMeasureConversion a1 a2 a3 a4 =</span>
+<span class="lineno">  546 </span><span class="spaces">  </span><span class="istickedoff">withCommodityType a1 $ \a1' -&gt; </span>
+<span class="lineno">  547 </span><span class="spaces">  </span><span class="istickedoff">withUnitOfMeasure a2 $ \a2' -&gt; </span>
+<span class="lineno">  548 </span><span class="spaces">  </span><span class="istickedoff">withUnitOfMeasure a3 $ \a3' -&gt; </span>
+<span class="lineno">  549 </span><span class="spaces">  </span><span class="istickedoff">let {a4' = realToFrac a4} in </span>
+<span class="lineno">  550 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a5' -&gt; </span>
+<span class="lineno">  551 </span><span class="spaces">  </span><span class="istickedoff">unitOfMeasureConversion'_ a1' a2' a3' a4' a5' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  552 </span><span class="spaces">  </span><span class="istickedoff">peekUnitOfMeasureConversion res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  553 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a5'&gt;&gt;</span>
+<span class="lineno">  554 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  555 </span>
+<span class="lineno">  556 </span>
+<span class="lineno">  557 </span>
+<span class="lineno">  558 </span>-- |The source unit of measure.
+<span class="lineno">  559 </span>unitOfMeasureConversionSource :: (UnitOfMeasureConversion) -&gt; IO ((UnitOfMeasure))
+<span class="lineno">  560 </span><span class="decl"><span class="istickedoff">unitOfMeasureConversionSource a1 =</span>
+<span class="lineno">  561 </span><span class="spaces">  </span><span class="istickedoff">withUnitOfMeasureConversion a1 $ \a1' -&gt; </span>
+<span class="lineno">  562 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
+<span class="lineno">  563 </span><span class="spaces">  </span><span class="istickedoff">unitOfMeasureConversionSource'_ a1' a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  564 </span><span class="spaces">  </span><span class="istickedoff">peekUnitOfMeasure res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  565 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
+<span class="lineno">  566 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  567 </span>
+<span class="lineno">  568 </span>
+<span class="lineno">  569 </span>
+<span class="lineno">  570 </span>-- |The target unit of measure.
+<span class="lineno">  571 </span>unitOfMeasureConversionTarget :: (UnitOfMeasureConversion) -&gt; IO ((UnitOfMeasure))
+<span class="lineno">  572 </span><span class="decl"><span class="istickedoff">unitOfMeasureConversionTarget a1 =</span>
+<span class="lineno">  573 </span><span class="spaces">  </span><span class="istickedoff">withUnitOfMeasureConversion a1 $ \a1' -&gt; </span>
+<span class="lineno">  574 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
+<span class="lineno">  575 </span><span class="spaces">  </span><span class="istickedoff">unitOfMeasureConversionTarget'_ a1' a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  576 </span><span class="spaces">  </span><span class="istickedoff">peekUnitOfMeasure res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  577 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
+<span class="lineno">  578 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  579 </span>
+<span class="lineno">  580 </span>
+<span class="lineno">  581 </span>
+<span class="lineno">  582 </span>-- |The commodity type this conversion applies to.
+<span class="lineno">  583 </span>unitOfMeasureConversionCommodityType :: (UnitOfMeasureConversion) -&gt; IO ((CommodityType))
+<span class="lineno">  584 </span><span class="decl"><span class="istickedoff">unitOfMeasureConversionCommodityType a1 =</span>
+<span class="lineno">  585 </span><span class="spaces">  </span><span class="istickedoff">withUnitOfMeasureConversion a1 $ \a1' -&gt; </span>
+<span class="lineno">  586 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
+<span class="lineno">  587 </span><span class="spaces">  </span><span class="istickedoff">unitOfMeasureConversionCommodityType'_ a1' a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  588 </span><span class="spaces">  </span><span class="istickedoff">peekCommodityType res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  589 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
+<span class="lineno">  590 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  591 </span>
+<span class="lineno">  592 </span>
+<span class="lineno">  593 </span>
+<span class="lineno">  594 </span>-- |Whether the conversion was given directly, or derived by chaining two other conversions.
+<span class="lineno">  595 </span>unitOfMeasureConversionType :: (UnitOfMeasureConversion) -&gt; (UnitOfMeasureConversionType)
+<span class="lineno">  596 </span><span class="decl"><span class="istickedoff">unitOfMeasureConversionType a1 =</span>
+<span class="lineno">  597 </span><span class="spaces">  </span><span class="istickedoff">C2HSImp.unsafePerformIO $</span>
+<span class="lineno">  598 </span><span class="spaces">  </span><span class="istickedoff">withUnitOfMeasureConversion a1 $ \a1' -&gt; </span>
+<span class="lineno">  599 </span><span class="spaces">  </span><span class="istickedoff">unitOfMeasureConversionType'_ a1' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  600 </span><span class="spaces">  </span><span class="istickedoff">let {res' = (toEnum . fromIntegral) res} in</span>
+<span class="lineno">  601 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  602 </span>
+<span class="lineno">  603 </span>
+<span class="lineno">  604 </span>
+<span class="lineno">  605 </span>-- |The conversion factor: a unit of the source is worth this many units of the target.
+<span class="lineno">  606 </span>unitOfMeasureConversionFactor :: (UnitOfMeasureConversion) -&gt; (Double)
+<span class="lineno">  607 </span><span class="decl"><span class="istickedoff">unitOfMeasureConversionFactor a1 =</span>
+<span class="lineno">  608 </span><span class="spaces">  </span><span class="istickedoff">C2HSImp.unsafePerformIO $</span>
+<span class="lineno">  609 </span><span class="spaces">  </span><span class="istickedoff">withUnitOfMeasureConversion a1 $ \a1' -&gt; </span>
+<span class="lineno">  610 </span><span class="spaces">  </span><span class="istickedoff">unitOfMeasureConversionFactor'_ a1' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  611 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno">  612 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  613 </span>
+<span class="lineno">  614 </span>
+<span class="lineno">  615 </span>
+<span class="lineno">  616 </span>-- |A code identifying the conversion, e.g. \&quot;Heating OilMTBBL\&quot;.
+<span class="lineno">  617 </span>unitOfMeasureConversionCode :: (UnitOfMeasureConversion) -&gt; (String)
+<span class="lineno">  618 </span><span class="decl"><span class="nottickedoff">unitOfMeasureConversionCode a1 =</span>
+<span class="lineno">  619 </span><span class="spaces">  </span><span class="nottickedoff">C2HSImp.unsafePerformIO $</span>
+<span class="lineno">  620 </span><span class="spaces">  </span><span class="nottickedoff">withUnitOfMeasureConversion a1 $ \a1' -&gt; </span>
+<span class="lineno">  621 </span><span class="spaces">  </span><span class="nottickedoff">unitOfMeasureConversionCode'_ a1' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  622 </span><span class="spaces">  </span><span class="nottickedoff">peekDynString res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  623 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno">  624 </span>
+<span class="lineno">  625 </span>
+<span class="lineno">  626 </span>
+<span class="lineno">  627 </span>qlUnitOfMeasureConversionConvert_ :: (UnitOfMeasureConversion) -&gt; (CommodityType) -&gt; (UnitOfMeasure) -&gt; (Double) -&gt; IO ((Double), (CommodityType), (UnitOfMeasure))
+<span class="lineno">  628 </span><span class="decl"><span class="istickedoff">qlUnitOfMeasureConversionConvert_ a1 a2 a3 a4 =</span>
+<span class="lineno">  629 </span><span class="spaces">  </span><span class="istickedoff">withUnitOfMeasureConversion a1 $ \a1' -&gt; </span>
+<span class="lineno">  630 </span><span class="spaces">  </span><span class="istickedoff">withCommodityType a2 $ \a2' -&gt; </span>
+<span class="lineno">  631 </span><span class="spaces">  </span><span class="istickedoff">withUnitOfMeasure a3 $ \a3' -&gt; </span>
+<span class="lineno">  632 </span><span class="spaces">  </span><span class="istickedoff">let {a4' = realToFrac a4} in </span>
+<span class="lineno">  633 </span><span class="spaces">  </span><span class="istickedoff">alloca $ \a5' -&gt; </span>
+<span class="lineno">  634 </span><span class="spaces">  </span><span class="istickedoff">alloca $ \a6' -&gt; </span>
+<span class="lineno">  635 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a7' -&gt; </span>
+<span class="lineno">  636 </span><span class="spaces">  </span><span class="istickedoff">qlUnitOfMeasureConversionConvert_'_ a1' a2' a3' a4' a5' a6' a7' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  637 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno">  638 </span><span class="spaces">  </span><span class="istickedoff">peekCommodityTypePtr  a5'&gt;&gt;= \a5'' -&gt; </span>
+<span class="lineno">  639 </span><span class="spaces">  </span><span class="istickedoff">peekUnitOfMeasurePtr  a6'&gt;&gt;= \a6'' -&gt; </span>
+<span class="lineno">  640 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a7'&gt;&gt;</span>
+<span class="lineno">  641 </span><span class="spaces">  </span><span class="istickedoff">return (res', a5'', a6'')</span></span>
+<span class="lineno">  642 </span>
+<span class="lineno">  643 </span>
+<span class="lineno">  644 </span>
+<span class="lineno">  645 </span>-- |Apply the conversion factor to a quantity, converting it from the conversion's source to its
+<span class="lineno">  646 </span>-- target unit of measure (or vice versa). Throws if the quantity's unit of measure is on neither
+<span class="lineno">  647 </span>-- side of the conversion.
+<span class="lineno">  648 </span>convertQuantity :: UnitOfMeasureConversion -&gt; Quantity -&gt; IO Quantity
+<span class="lineno">  649 </span><span class="decl"><span class="istickedoff">convertQuantity conv (ct, uom, amount) = do</span>
+<span class="lineno">  650 </span><span class="spaces">  </span><span class="istickedoff">(amount', ct', uom') &lt;- qlUnitOfMeasureConversionConvert_ conv ct uom amount</span>
+<span class="lineno">  651 </span><span class="spaces">  </span><span class="istickedoff">pure (ct', uom', amount')</span></span>
+<span class="lineno">  652 </span>
+<span class="lineno">  653 </span>-- |Combine two conversions sharing a common unit of measure into a derived conversion between
+<span class="lineno">  654 </span>-- their other two units. Throws if the conversions don't share a common unit.
+<span class="lineno">  655 </span>chainUnitOfMeasureConversion :: (UnitOfMeasureConversion) -&gt; (UnitOfMeasureConversion) -&gt; IO ((UnitOfMeasureConversion))
+<span class="lineno">  656 </span><span class="decl"><span class="istickedoff">chainUnitOfMeasureConversion a1 a2 =</span>
+<span class="lineno">  657 </span><span class="spaces">  </span><span class="istickedoff">withUnitOfMeasureConversion a1 $ \a1' -&gt; </span>
+<span class="lineno">  658 </span><span class="spaces">  </span><span class="istickedoff">withUnitOfMeasureConversion a2 $ \a2' -&gt; </span>
+<span class="lineno">  659 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
+<span class="lineno">  660 </span><span class="spaces">  </span><span class="istickedoff">chainUnitOfMeasureConversion'_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  661 </span><span class="spaces">  </span><span class="istickedoff">peekUnitOfMeasureConversion res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  662 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
+<span class="lineno">  663 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  664 </span>
+<span class="lineno">  665 </span>
+<span class="lineno">  666 </span>
+<span class="lineno">  667 </span>-- |Look up a (possibly derived, via triangulation) conversion between two units of measure for a
+<span class="lineno">  668 </span>-- given commodity type. Throws if none can be found. Pre-populated with a set of known petroleum
+<span class="lineno">  669 </span>-- conversion factors even before any 'addUomConversion' call.
+<span class="lineno">  670 </span>lookupUomConversion :: (CommodityType) -&gt; (UnitOfMeasure) -- ^source
+<span class="lineno">  671 </span> -&gt; (UnitOfMeasure) -- ^target
+<span class="lineno">  672 </span> -&gt; (UnitOfMeasureConversionType) -&gt; IO ((UnitOfMeasureConversion))
+<span class="lineno">  673 </span><span class="decl"><span class="istickedoff">lookupUomConversion a1 a2 a3 a4 =</span>
+<span class="lineno">  674 </span><span class="spaces">  </span><span class="istickedoff">withCommodityType a1 $ \a1' -&gt; </span>
+<span class="lineno">  675 </span><span class="spaces">  </span><span class="istickedoff">withUnitOfMeasure a2 $ \a2' -&gt; </span>
+<span class="lineno">  676 </span><span class="spaces">  </span><span class="istickedoff">withUnitOfMeasure a3 $ \a3' -&gt; </span>
+<span class="lineno">  677 </span><span class="spaces">  </span><span class="istickedoff">let {a4' = (fromIntegral . fromEnum) a4} in </span>
+<span class="lineno">  678 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a5' -&gt; </span>
+<span class="lineno">  679 </span><span class="spaces">  </span><span class="istickedoff">lookupUomConversion'_ a1' a2' a3' a4' a5' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  680 </span><span class="spaces">  </span><span class="istickedoff">peekUnitOfMeasureConversion res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  681 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a5'&gt;&gt;</span>
+<span class="lineno">  682 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  683 </span>
+<span class="lineno">  684 </span>
+<span class="lineno">  685 </span>
+<span class="lineno">  686 </span>-- |Register a conversion with the global unit-of-measure conversion repository, replacing any
+<span class="lineno">  687 </span>-- existing conversion between the same commodity type and pair of units.
+<span class="lineno">  688 </span>addUomConversion :: (UnitOfMeasureConversion) -&gt; IO ()
+<span class="lineno">  689 </span><span class="decl"><span class="istickedoff">addUomConversion a1 =</span>
+<span class="lineno">  690 </span><span class="spaces">  </span><span class="istickedoff">withUnitOfMeasureConversion a1 $ \a1' -&gt; </span>
+<span class="lineno">  691 </span><span class="spaces">  </span><span class="istickedoff">addUomConversion'_ a1' &gt;&gt;</span>
+<span class="lineno">  692 </span><span class="spaces">  </span><span class="istickedoff">return <span class="nottickedoff">()</span></span></span>
+<span class="lineno">  693 </span>
+<span class="lineno">  694 </span>
+<span class="lineno">  695 </span>
+<span class="lineno">  696 </span>-- |Reset the unit-of-measure conversion repository back to its built-in set of known petroleum
+<span class="lineno">  697 </span>-- conversion factors, discarding anything added via 'addUomConversion'.
+<span class="lineno">  698 </span>clearUomConversions :: IO ()
+<span class="lineno">  699 </span><span class="decl"><span class="istickedoff">clearUomConversions =</span>
+<span class="lineno">  700 </span><span class="spaces">  </span><span class="istickedoff">clearUomConversions'_ &gt;&gt;</span>
+<span class="lineno">  701 </span><span class="spaces">  </span><span class="istickedoff">return <span class="nottickedoff">()</span></span></span>
+<span class="lineno">  702 </span>
+<span class="lineno">  703 </span>
+<span class="lineno">  704 </span>
+<span class="lineno">  705 </span>-- |The global commodity currency setting (defaults to USD).
+<span class="lineno">  706 </span>commoditySettingsCurrency :: IO ((Currency))
+<span class="lineno">  707 </span><span class="decl"><span class="istickedoff">commoditySettingsCurrency =</span>
+<span class="lineno">  708 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a1' -&gt; </span>
+<span class="lineno">  709 </span><span class="spaces">  </span><span class="istickedoff">commoditySettingsCurrency'_ a1' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  710 </span><span class="spaces">  </span><span class="istickedoff">peekCurrency res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  711 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a1'&gt;&gt;</span>
+<span class="lineno">  712 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  713 </span>
+<span class="lineno">  714 </span>
+<span class="lineno">  715 </span>
+<span class="lineno">  716 </span>-- |Set the global commodity currency setting.
+<span class="lineno">  717 </span>setCommoditySettingsCurrency :: (Currency) -&gt; IO ()
+<span class="lineno">  718 </span><span class="decl"><span class="nottickedoff">setCommoditySettingsCurrency a1 =</span>
+<span class="lineno">  719 </span><span class="spaces">  </span><span class="nottickedoff">withCurrency a1 $ \a1' -&gt; </span>
+<span class="lineno">  720 </span><span class="spaces">  </span><span class="nottickedoff">setCommoditySettingsCurrency'_ a1' &gt;&gt;</span>
+<span class="lineno">  721 </span><span class="spaces">  </span><span class="nottickedoff">return ()</span></span>
+<span class="lineno">  722 </span>
+<span class="lineno">  723 </span>
+<span class="lineno">  724 </span>
+<span class="lineno">  725 </span>-- |The global commodity unit-of-measure setting (defaults to barrels).
+<span class="lineno">  726 </span>commoditySettingsUnitOfMeasure :: IO ((UnitOfMeasure))
+<span class="lineno">  727 </span><span class="decl"><span class="istickedoff">commoditySettingsUnitOfMeasure =</span>
+<span class="lineno">  728 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a1' -&gt; </span>
+<span class="lineno">  729 </span><span class="spaces">  </span><span class="istickedoff">commoditySettingsUnitOfMeasure'_ a1' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  730 </span><span class="spaces">  </span><span class="istickedoff">peekUnitOfMeasure res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  731 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a1'&gt;&gt;</span>
+<span class="lineno">  732 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  733 </span>
+<span class="lineno">  734 </span>
+<span class="lineno">  735 </span>
+<span class="lineno">  736 </span>-- |Set the global commodity unit-of-measure setting.
+<span class="lineno">  737 </span>setCommoditySettingsUnitOfMeasure :: (UnitOfMeasure) -&gt; IO ()
+<span class="lineno">  738 </span><span class="decl"><span class="istickedoff">setCommoditySettingsUnitOfMeasure a1 =</span>
+<span class="lineno">  739 </span><span class="spaces">  </span><span class="istickedoff">withUnitOfMeasure a1 $ \a1' -&gt; </span>
+<span class="lineno">  740 </span><span class="spaces">  </span><span class="istickedoff">setCommoditySettingsUnitOfMeasure'_ a1' &gt;&gt;</span>
+<span class="lineno">  741 </span><span class="spaces">  </span><span class="istickedoff">return <span class="nottickedoff">()</span></span></span>
+<span class="lineno">  742 </span>
+<span class="lineno">  743 </span>
+<span class="lineno">  744 </span>
+<span class="lineno">  745 </span>-- vim: set ff=unix ts=8 sts=2 sw=2 et:
+<span class="lineno">  746 </span>
+<span class="lineno">  747 </span>foreign import ccall safe &quot;QuantLib/Commodity.chs.h qlCommodityType&quot;
+<span class="lineno">  748 </span>  commodityType'_ :: ((C2HSImp.Ptr C2HSImp.CChar) -&gt; ((C2HSImp.Ptr C2HSImp.CChar) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CCommodityType))))))
 <span class="lineno">  749 </span>
-<span class="lineno">  750 </span>-- vim: set ff=unix ts=8 sts=2 sw=2 et:
-<span class="lineno">  751 </span>
-<span class="lineno">  752 </span>foreign import ccall safe &quot;QuantLib/Commodity.chs.h qlCommodityType&quot;
-<span class="lineno">  753 </span>  commodityType'_ :: ((C2HSImp.Ptr C2HSImp.CChar) -&gt; ((C2HSImp.Ptr C2HSImp.CChar) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CCommodityType))))))
-<span class="lineno">  754 </span>
-<span class="lineno">  755 </span>foreign import ccall safe &quot;QuantLib/Commodity.chs.h qlNullCommodityType&quot;
-<span class="lineno">  756 </span>  nullCommodityType'_ :: ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CCommodityType))))
-<span class="lineno">  757 </span>
-<span class="lineno">  758 </span>foreign import ccall safe &quot;QuantLib/Commodity.chs.h qlCommodityTypeCode&quot;
-<span class="lineno">  759 </span>  commodityTypeCode'_ :: ((C2HSImp.Ptr (CCommodityType)) -&gt; (IO (C2HSImp.Ptr C2HSImp.CChar)))
-<span class="lineno">  760 </span>
-<span class="lineno">  761 </span>foreign import ccall safe &quot;QuantLib/Commodity.chs.h qlCommodityTypeName&quot;
-<span class="lineno">  762 </span>  commodityTypeName'_ :: ((C2HSImp.Ptr (CCommodityType)) -&gt; (IO (C2HSImp.Ptr C2HSImp.CChar)))
-<span class="lineno">  763 </span>
-<span class="lineno">  764 </span>foreign import ccall safe &quot;QuantLib/Commodity.chs.h qlCommodityTypeEmpty&quot;
-<span class="lineno">  765 </span>  commodityTypeEmpty'_ :: ((C2HSImp.Ptr (CCommodityType)) -&gt; (IO C2HSImp.CInt))
-<span class="lineno">  766 </span>
-<span class="lineno">  767 </span>foreign import ccall safe &quot;QuantLib/Commodity.chs.h qlUnitOfMeasure&quot;
-<span class="lineno">  768 </span>  unitOfMeasure'_ :: ((C2HSImp.Ptr C2HSImp.CChar) -&gt; ((C2HSImp.Ptr C2HSImp.CChar) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CUnitOfMeasure)))))))
-<span class="lineno">  769 </span>
-<span class="lineno">  770 </span>foreign import ccall safe &quot;QuantLib/Commodity.chs.h qlUnitOfMeasureName&quot;
-<span class="lineno">  771 </span>  unitOfMeasureName'_ :: ((C2HSImp.Ptr (CUnitOfMeasure)) -&gt; (IO (C2HSImp.Ptr C2HSImp.CChar)))
-<span class="lineno">  772 </span>
-<span class="lineno">  773 </span>foreign import ccall safe &quot;QuantLib/Commodity.chs.h qlUnitOfMeasureCode&quot;
-<span class="lineno">  774 </span>  unitOfMeasureCode'_ :: ((C2HSImp.Ptr (CUnitOfMeasure)) -&gt; (IO (C2HSImp.Ptr C2HSImp.CChar)))
-<span class="lineno">  775 </span>
-<span class="lineno">  776 </span>foreign import ccall safe &quot;QuantLib/Commodity.chs.h qlUnitOfMeasureUnitType&quot;
-<span class="lineno">  777 </span>  unitOfMeasureType'_ :: ((C2HSImp.Ptr (CUnitOfMeasure)) -&gt; (IO C2HSImp.CInt))
-<span class="lineno">  778 </span>
-<span class="lineno">  779 </span>foreign import ccall safe &quot;QuantLib/Commodity.chs.h qlUnitOfMeasureEmpty&quot;
-<span class="lineno">  780 </span>  unitOfMeasureEmpty'_ :: ((C2HSImp.Ptr (CUnitOfMeasure)) -&gt; (IO C2HSImp.CInt))
-<span class="lineno">  781 </span>
-<span class="lineno">  782 </span>foreign import ccall safe &quot;QuantLib/Commodity.chs.h qlLotUnitOfMeasure&quot;
-<span class="lineno">  783 </span>  lotUnitOfMeasure'_ :: ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CUnitOfMeasure))))
-<span class="lineno">  784 </span>
-<span class="lineno">  785 </span>foreign import ccall safe &quot;QuantLib/Commodity.chs.h qlBarrelUnitOfMeasure&quot;
-<span class="lineno">  786 </span>  barrelUnitOfMeasure'_ :: ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CUnitOfMeasure))))
-<span class="lineno">  787 </span>
-<span class="lineno">  788 </span>foreign import ccall safe &quot;QuantLib/Commodity.chs.h qlMTUnitOfMeasure&quot;
-<span class="lineno">  789 </span>  mtUnitOfMeasure'_ :: ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CUnitOfMeasure))))
-<span class="lineno">  790 </span>
-<span class="lineno">  791 </span>foreign import ccall safe &quot;QuantLib/Commodity.chs.h qlMBUnitOfMeasure&quot;
-<span class="lineno">  792 </span>  mbUnitOfMeasure'_ :: ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CUnitOfMeasure))))
-<span class="lineno">  793 </span>
-<span class="lineno">  794 </span>foreign import ccall safe &quot;QuantLib/Commodity.chs.h qlGallonUnitOfMeasure&quot;
-<span class="lineno">  795 </span>  gallonUnitOfMeasure'_ :: ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CUnitOfMeasure))))
-<span class="lineno">  796 </span>
-<span class="lineno">  797 </span>foreign import ccall safe &quot;QuantLib/Commodity.chs.h qlLitreUnitOfMeasure&quot;
-<span class="lineno">  798 </span>  litreUnitOfMeasure'_ :: ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CUnitOfMeasure))))
-<span class="lineno">  799 </span>
-<span class="lineno">  800 </span>foreign import ccall safe &quot;QuantLib/Commodity.chs.h qlKilolitreUnitOfMeasure&quot;
-<span class="lineno">  801 </span>  kilolitreUnitOfMeasure'_ :: ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CUnitOfMeasure))))
-<span class="lineno">  802 </span>
-<span class="lineno">  803 </span>foreign import ccall safe &quot;QuantLib/Commodity.chs.h qlTokyoKilolitreUnitOfMeasure&quot;
-<span class="lineno">  804 </span>  tokyoKilolitreUnitOfMeasure'_ :: ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CUnitOfMeasure))))
-<span class="lineno">  805 </span>
-<span class="lineno">  806 </span>foreign import ccall safe &quot;QuantLib/Commodity.chs.h qlPaymentTerm&quot;
-<span class="lineno">  807 </span>  paymentTerm'_ :: ((C2HSImp.Ptr C2HSImp.CChar) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CCalendar)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CPaymentTerm))))))))
-<span class="lineno">  808 </span>
-<span class="lineno">  809 </span>foreign import ccall safe &quot;QuantLib/Commodity.chs.h qlPaymentTermName&quot;
-<span class="lineno">  810 </span>  paymentTermName'_ :: ((C2HSImp.Ptr (CPaymentTerm)) -&gt; (IO (C2HSImp.Ptr C2HSImp.CChar)))
-<span class="lineno">  811 </span>
-<span class="lineno">  812 </span>foreign import ccall safe &quot;QuantLib/Commodity.chs.h qlPaymentTermEventType_&quot;
-<span class="lineno">  813 </span>  paymentTermEventType'_ :: ((C2HSImp.Ptr (CPaymentTerm)) -&gt; (IO C2HSImp.CInt))
-<span class="lineno">  814 </span>
-<span class="lineno">  815 </span>foreign import ccall safe &quot;QuantLib/Commodity.chs.h qlPaymentTermOffsetDays&quot;
-<span class="lineno">  816 </span>  paymentTermOffsetDays'_ :: ((C2HSImp.Ptr (CPaymentTerm)) -&gt; (IO C2HSImp.CInt))
-<span class="lineno">  817 </span>
-<span class="lineno">  818 </span>foreign import ccall safe &quot;QuantLib/Commodity.chs.h qlPaymentTermCalendar&quot;
-<span class="lineno">  819 </span>  paymentTermCalendar'_ :: ((C2HSImp.Ptr (CPaymentTerm)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CCalendar)))))
-<span class="lineno">  820 </span>
-<span class="lineno">  821 </span>foreign import ccall safe &quot;QuantLib/Commodity.chs.h qlPaymentTermEmpty&quot;
-<span class="lineno">  822 </span>  paymentTermEmpty'_ :: ((C2HSImp.Ptr (CPaymentTerm)) -&gt; (IO C2HSImp.CInt))
-<span class="lineno">  823 </span>
-<span class="lineno">  824 </span>foreign import ccall safe &quot;QuantLib/Commodity.chs.h qlPaymentTermGetPaymentDate&quot;
-<span class="lineno">  825 </span>  paymentTermGetPaymentDate'_ :: ((C2HSImp.Ptr (CPaymentTerm)) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CInt))))
-<span class="lineno">  826 </span>
-<span class="lineno">  827 </span>foreign import ccall safe &quot;QuantLib/Commodity.chs.h qlQuantityRoundedAmount&quot;
-<span class="lineno">  828 </span>  quantityRoundedAmount'_ :: ((C2HSImp.Ptr (CUnitOfMeasure)) -&gt; (C2HSImp.CDouble -&gt; (IO C2HSImp.CDouble)))
-<span class="lineno">  829 </span>
-<span class="lineno">  830 </span>foreign import ccall safe &quot;QuantLib/Commodity.chs.h qlQuantityClose&quot;
-<span class="lineno">  831 </span>  qlQuantityClose_'_ :: ((C2HSImp.Ptr (CCommodityType)) -&gt; ((C2HSImp.Ptr (CUnitOfMeasure)) -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (CCommodityType)) -&gt; ((C2HSImp.Ptr (CUnitOfMeasure)) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CInt)))))))))
-<span class="lineno">  832 </span>
-<span class="lineno">  833 </span>foreign import ccall safe &quot;QuantLib/Commodity.chs.h qlQuantityCloseEnough&quot;
-<span class="lineno">  834 </span>  qlQuantityCloseEnough_'_ :: ((C2HSImp.Ptr (CCommodityType)) -&gt; ((C2HSImp.Ptr (CUnitOfMeasure)) -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (CCommodityType)) -&gt; ((C2HSImp.Ptr (CUnitOfMeasure)) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CInt)))))))))
-<span class="lineno">  835 </span>
-<span class="lineno">  836 </span>foreign import ccall safe &quot;QuantLib/Commodity.chs.h qlUnitOfMeasureConversion&quot;
-<span class="lineno">  837 </span>  unitOfMeasureConversion'_ :: ((C2HSImp.Ptr (CCommodityType)) -&gt; ((C2HSImp.Ptr (CUnitOfMeasure)) -&gt; ((C2HSImp.Ptr (CUnitOfMeasure)) -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CUnitOfMeasureConversion))))))))
-<span class="lineno">  838 </span>
-<span class="lineno">  839 </span>foreign import ccall safe &quot;QuantLib/Commodity.chs.h qlUnitOfMeasureConversionSource&quot;
-<span class="lineno">  840 </span>  unitOfMeasureConversionSource'_ :: ((C2HSImp.Ptr (CUnitOfMeasureConversion)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CUnitOfMeasure)))))
-<span class="lineno">  841 </span>
-<span class="lineno">  842 </span>foreign import ccall safe &quot;QuantLib/Commodity.chs.h qlUnitOfMeasureConversionTarget&quot;
-<span class="lineno">  843 </span>  unitOfMeasureConversionTarget'_ :: ((C2HSImp.Ptr (CUnitOfMeasureConversion)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CUnitOfMeasure)))))
-<span class="lineno">  844 </span>
-<span class="lineno">  845 </span>foreign import ccall safe &quot;QuantLib/Commodity.chs.h qlUnitOfMeasureConversionCommodityType&quot;
-<span class="lineno">  846 </span>  unitOfMeasureConversionCommodityType'_ :: ((C2HSImp.Ptr (CUnitOfMeasureConversion)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CCommodityType)))))
-<span class="lineno">  847 </span>
-<span class="lineno">  848 </span>foreign import ccall safe &quot;QuantLib/Commodity.chs.h qlUnitOfMeasureConversionType_&quot;
-<span class="lineno">  849 </span>  unitOfMeasureConversionType'_ :: ((C2HSImp.Ptr (CUnitOfMeasureConversion)) -&gt; (IO C2HSImp.CInt))
-<span class="lineno">  850 </span>
-<span class="lineno">  851 </span>foreign import ccall safe &quot;QuantLib/Commodity.chs.h qlUnitOfMeasureConversionFactor&quot;
-<span class="lineno">  852 </span>  unitOfMeasureConversionFactor'_ :: ((C2HSImp.Ptr (CUnitOfMeasureConversion)) -&gt; (IO C2HSImp.CDouble))
-<span class="lineno">  853 </span>
-<span class="lineno">  854 </span>foreign import ccall safe &quot;QuantLib/Commodity.chs.h qlUnitOfMeasureConversionCode&quot;
-<span class="lineno">  855 </span>  unitOfMeasureConversionCode'_ :: ((C2HSImp.Ptr (CUnitOfMeasureConversion)) -&gt; (IO (C2HSImp.Ptr C2HSImp.CChar)))
-<span class="lineno">  856 </span>
-<span class="lineno">  857 </span>foreign import ccall safe &quot;QuantLib/Commodity.chs.h qlUnitOfMeasureConversionConvert&quot;
-<span class="lineno">  858 </span>  qlUnitOfMeasureConversionConvert_'_ :: ((C2HSImp.Ptr (CUnitOfMeasureConversion)) -&gt; ((C2HSImp.Ptr (CCommodityType)) -&gt; ((C2HSImp.Ptr (CUnitOfMeasure)) -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr (CCommodityType))) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr (CUnitOfMeasure))) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble))))))))
-<span class="lineno">  859 </span>
-<span class="lineno">  860 </span>foreign import ccall safe &quot;QuantLib/Commodity.chs.h qlUnitOfMeasureConversionChain&quot;
-<span class="lineno">  861 </span>  chainUnitOfMeasureConversion'_ :: ((C2HSImp.Ptr (CUnitOfMeasureConversion)) -&gt; ((C2HSImp.Ptr (CUnitOfMeasureConversion)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CUnitOfMeasureConversion))))))
-<span class="lineno">  862 </span>
-<span class="lineno">  863 </span>foreign import ccall safe &quot;QuantLib/Commodity.chs.h qlUnitOfMeasureConversionManagerLookup&quot;
-<span class="lineno">  864 </span>  lookupUomConversion'_ :: ((C2HSImp.Ptr (CCommodityType)) -&gt; ((C2HSImp.Ptr (CUnitOfMeasure)) -&gt; ((C2HSImp.Ptr (CUnitOfMeasure)) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CUnitOfMeasureConversion))))))))
-<span class="lineno">  865 </span>
-<span class="lineno">  866 </span>foreign import ccall safe &quot;QuantLib/Commodity.chs.h qlUnitOfMeasureConversionManagerAdd&quot;
-<span class="lineno">  867 </span>  addUomConversion'_ :: ((C2HSImp.Ptr (CUnitOfMeasureConversion)) -&gt; (IO ()))
-<span class="lineno">  868 </span>
-<span class="lineno">  869 </span>foreign import ccall safe &quot;QuantLib/Commodity.chs.h qlUnitOfMeasureConversionManagerClear&quot;
-<span class="lineno">  870 </span>  clearUomConversions'_ :: (IO ())
-<span class="lineno">  871 </span>
-<span class="lineno">  872 </span>foreign import ccall safe &quot;QuantLib/Commodity.chs.h qlCommoditySettingsCurrency&quot;
-<span class="lineno">  873 </span>  commoditySettingsCurrency'_ :: ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CCurrency))))
-<span class="lineno">  874 </span>
-<span class="lineno">  875 </span>foreign import ccall safe &quot;QuantLib/Commodity.chs.h qlCommoditySettingsSetCurrency&quot;
-<span class="lineno">  876 </span>  setCommoditySettingsCurrency'_ :: ((C2HSImp.Ptr (CCurrency)) -&gt; (IO ()))
-<span class="lineno">  877 </span>
-<span class="lineno">  878 </span>foreign import ccall safe &quot;QuantLib/Commodity.chs.h qlCommoditySettingsUnitOfMeasure&quot;
-<span class="lineno">  879 </span>  commoditySettingsUnitOfMeasure'_ :: ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CUnitOfMeasure))))
-<span class="lineno">  880 </span>
-<span class="lineno">  881 </span>foreign import ccall safe &quot;QuantLib/Commodity.chs.h qlCommoditySettingsSetUnitOfMeasure&quot;
-<span class="lineno">  882 </span>  setCommoditySettingsUnitOfMeasure'_ :: ((C2HSImp.Ptr (CUnitOfMeasure)) -&gt; (IO ()))
+<span class="lineno">  750 </span>foreign import ccall safe &quot;QuantLib/Commodity.chs.h qlNullCommodityType&quot;
+<span class="lineno">  751 </span>  nullCommodityType'_ :: ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CCommodityType))))
+<span class="lineno">  752 </span>
+<span class="lineno">  753 </span>foreign import ccall safe &quot;QuantLib/Commodity.chs.h qlCommodityTypeCode&quot;
+<span class="lineno">  754 </span>  commodityTypeCode'_ :: ((C2HSImp.Ptr (CCommodityType)) -&gt; (IO (C2HSImp.Ptr C2HSImp.CChar)))
+<span class="lineno">  755 </span>
+<span class="lineno">  756 </span>foreign import ccall safe &quot;QuantLib/Commodity.chs.h qlCommodityTypeName&quot;
+<span class="lineno">  757 </span>  commodityTypeName'_ :: ((C2HSImp.Ptr (CCommodityType)) -&gt; (IO (C2HSImp.Ptr C2HSImp.CChar)))
+<span class="lineno">  758 </span>
+<span class="lineno">  759 </span>foreign import ccall safe &quot;QuantLib/Commodity.chs.h qlCommodityTypeEmpty&quot;
+<span class="lineno">  760 </span>  commodityTypeEmpty'_ :: ((C2HSImp.Ptr (CCommodityType)) -&gt; (IO C2HSImp.CInt))
+<span class="lineno">  761 </span>
+<span class="lineno">  762 </span>foreign import ccall safe &quot;QuantLib/Commodity.chs.h qlUnitOfMeasure&quot;
+<span class="lineno">  763 </span>  unitOfMeasure'_ :: ((C2HSImp.Ptr C2HSImp.CChar) -&gt; ((C2HSImp.Ptr C2HSImp.CChar) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CUnitOfMeasure)))))))
+<span class="lineno">  764 </span>
+<span class="lineno">  765 </span>foreign import ccall safe &quot;QuantLib/Commodity.chs.h qlUnitOfMeasureName&quot;
+<span class="lineno">  766 </span>  unitOfMeasureName'_ :: ((C2HSImp.Ptr (CUnitOfMeasure)) -&gt; (IO (C2HSImp.Ptr C2HSImp.CChar)))
+<span class="lineno">  767 </span>
+<span class="lineno">  768 </span>foreign import ccall safe &quot;QuantLib/Commodity.chs.h qlUnitOfMeasureCode&quot;
+<span class="lineno">  769 </span>  unitOfMeasureCode'_ :: ((C2HSImp.Ptr (CUnitOfMeasure)) -&gt; (IO (C2HSImp.Ptr C2HSImp.CChar)))
+<span class="lineno">  770 </span>
+<span class="lineno">  771 </span>foreign import ccall safe &quot;QuantLib/Commodity.chs.h qlUnitOfMeasureUnitType&quot;
+<span class="lineno">  772 </span>  unitOfMeasureType'_ :: ((C2HSImp.Ptr (CUnitOfMeasure)) -&gt; (IO C2HSImp.CInt))
+<span class="lineno">  773 </span>
+<span class="lineno">  774 </span>foreign import ccall safe &quot;QuantLib/Commodity.chs.h qlUnitOfMeasureEmpty&quot;
+<span class="lineno">  775 </span>  unitOfMeasureEmpty'_ :: ((C2HSImp.Ptr (CUnitOfMeasure)) -&gt; (IO C2HSImp.CInt))
+<span class="lineno">  776 </span>
+<span class="lineno">  777 </span>foreign import ccall safe &quot;QuantLib/Commodity.chs.h qlLotUnitOfMeasure&quot;
+<span class="lineno">  778 </span>  lotUnitOfMeasure'_ :: ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CUnitOfMeasure))))
+<span class="lineno">  779 </span>
+<span class="lineno">  780 </span>foreign import ccall safe &quot;QuantLib/Commodity.chs.h qlBarrelUnitOfMeasure&quot;
+<span class="lineno">  781 </span>  barrelUnitOfMeasure'_ :: ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CUnitOfMeasure))))
+<span class="lineno">  782 </span>
+<span class="lineno">  783 </span>foreign import ccall safe &quot;QuantLib/Commodity.chs.h qlMTUnitOfMeasure&quot;
+<span class="lineno">  784 </span>  mtUnitOfMeasure'_ :: ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CUnitOfMeasure))))
+<span class="lineno">  785 </span>
+<span class="lineno">  786 </span>foreign import ccall safe &quot;QuantLib/Commodity.chs.h qlMBUnitOfMeasure&quot;
+<span class="lineno">  787 </span>  mbUnitOfMeasure'_ :: ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CUnitOfMeasure))))
+<span class="lineno">  788 </span>
+<span class="lineno">  789 </span>foreign import ccall safe &quot;QuantLib/Commodity.chs.h qlGallonUnitOfMeasure&quot;
+<span class="lineno">  790 </span>  gallonUnitOfMeasure'_ :: ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CUnitOfMeasure))))
+<span class="lineno">  791 </span>
+<span class="lineno">  792 </span>foreign import ccall safe &quot;QuantLib/Commodity.chs.h qlLitreUnitOfMeasure&quot;
+<span class="lineno">  793 </span>  litreUnitOfMeasure'_ :: ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CUnitOfMeasure))))
+<span class="lineno">  794 </span>
+<span class="lineno">  795 </span>foreign import ccall safe &quot;QuantLib/Commodity.chs.h qlKilolitreUnitOfMeasure&quot;
+<span class="lineno">  796 </span>  kilolitreUnitOfMeasure'_ :: ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CUnitOfMeasure))))
+<span class="lineno">  797 </span>
+<span class="lineno">  798 </span>foreign import ccall safe &quot;QuantLib/Commodity.chs.h qlTokyoKilolitreUnitOfMeasure&quot;
+<span class="lineno">  799 </span>  tokyoKilolitreUnitOfMeasure'_ :: ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CUnitOfMeasure))))
+<span class="lineno">  800 </span>
+<span class="lineno">  801 </span>foreign import ccall safe &quot;QuantLib/Commodity.chs.h qlPaymentTerm&quot;
+<span class="lineno">  802 </span>  paymentTerm'_ :: ((C2HSImp.Ptr C2HSImp.CChar) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CCalendar)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CPaymentTerm))))))))
+<span class="lineno">  803 </span>
+<span class="lineno">  804 </span>foreign import ccall safe &quot;QuantLib/Commodity.chs.h qlPaymentTermName&quot;
+<span class="lineno">  805 </span>  paymentTermName'_ :: ((C2HSImp.Ptr (CPaymentTerm)) -&gt; (IO (C2HSImp.Ptr C2HSImp.CChar)))
+<span class="lineno">  806 </span>
+<span class="lineno">  807 </span>foreign import ccall safe &quot;QuantLib/Commodity.chs.h qlPaymentTermEventType_&quot;
+<span class="lineno">  808 </span>  paymentTermEventType'_ :: ((C2HSImp.Ptr (CPaymentTerm)) -&gt; (IO C2HSImp.CInt))
+<span class="lineno">  809 </span>
+<span class="lineno">  810 </span>foreign import ccall safe &quot;QuantLib/Commodity.chs.h qlPaymentTermOffsetDays&quot;
+<span class="lineno">  811 </span>  paymentTermOffsetDays'_ :: ((C2HSImp.Ptr (CPaymentTerm)) -&gt; (IO C2HSImp.CInt))
+<span class="lineno">  812 </span>
+<span class="lineno">  813 </span>foreign import ccall safe &quot;QuantLib/Commodity.chs.h qlPaymentTermCalendar&quot;
+<span class="lineno">  814 </span>  paymentTermCalendar'_ :: ((C2HSImp.Ptr (CPaymentTerm)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CCalendar)))))
+<span class="lineno">  815 </span>
+<span class="lineno">  816 </span>foreign import ccall safe &quot;QuantLib/Commodity.chs.h qlPaymentTermEmpty&quot;
+<span class="lineno">  817 </span>  paymentTermEmpty'_ :: ((C2HSImp.Ptr (CPaymentTerm)) -&gt; (IO C2HSImp.CInt))
+<span class="lineno">  818 </span>
+<span class="lineno">  819 </span>foreign import ccall safe &quot;QuantLib/Commodity.chs.h qlPaymentTermGetPaymentDate&quot;
+<span class="lineno">  820 </span>  paymentTermGetPaymentDate'_ :: ((C2HSImp.Ptr (CPaymentTerm)) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CInt))))
+<span class="lineno">  821 </span>
+<span class="lineno">  822 </span>foreign import ccall safe &quot;QuantLib/Commodity.chs.h qlQuantityRoundedAmount&quot;
+<span class="lineno">  823 </span>  quantityRoundedAmount'_ :: ((C2HSImp.Ptr (CUnitOfMeasure)) -&gt; (C2HSImp.CDouble -&gt; (IO C2HSImp.CDouble)))
+<span class="lineno">  824 </span>
+<span class="lineno">  825 </span>foreign import ccall safe &quot;QuantLib/Commodity.chs.h qlQuantityClose&quot;
+<span class="lineno">  826 </span>  qlQuantityClose_'_ :: ((C2HSImp.Ptr (CCommodityType)) -&gt; ((C2HSImp.Ptr (CUnitOfMeasure)) -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (CCommodityType)) -&gt; ((C2HSImp.Ptr (CUnitOfMeasure)) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CInt)))))))))
+<span class="lineno">  827 </span>
+<span class="lineno">  828 </span>foreign import ccall safe &quot;QuantLib/Commodity.chs.h qlQuantityCloseEnough&quot;
+<span class="lineno">  829 </span>  qlQuantityCloseEnough_'_ :: ((C2HSImp.Ptr (CCommodityType)) -&gt; ((C2HSImp.Ptr (CUnitOfMeasure)) -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (CCommodityType)) -&gt; ((C2HSImp.Ptr (CUnitOfMeasure)) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CInt)))))))))
+<span class="lineno">  830 </span>
+<span class="lineno">  831 </span>foreign import ccall safe &quot;QuantLib/Commodity.chs.h qlUnitOfMeasureConversion&quot;
+<span class="lineno">  832 </span>  unitOfMeasureConversion'_ :: ((C2HSImp.Ptr (CCommodityType)) -&gt; ((C2HSImp.Ptr (CUnitOfMeasure)) -&gt; ((C2HSImp.Ptr (CUnitOfMeasure)) -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CUnitOfMeasureConversion))))))))
+<span class="lineno">  833 </span>
+<span class="lineno">  834 </span>foreign import ccall safe &quot;QuantLib/Commodity.chs.h qlUnitOfMeasureConversionSource&quot;
+<span class="lineno">  835 </span>  unitOfMeasureConversionSource'_ :: ((C2HSImp.Ptr (CUnitOfMeasureConversion)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CUnitOfMeasure)))))
+<span class="lineno">  836 </span>
+<span class="lineno">  837 </span>foreign import ccall safe &quot;QuantLib/Commodity.chs.h qlUnitOfMeasureConversionTarget&quot;
+<span class="lineno">  838 </span>  unitOfMeasureConversionTarget'_ :: ((C2HSImp.Ptr (CUnitOfMeasureConversion)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CUnitOfMeasure)))))
+<span class="lineno">  839 </span>
+<span class="lineno">  840 </span>foreign import ccall safe &quot;QuantLib/Commodity.chs.h qlUnitOfMeasureConversionCommodityType&quot;
+<span class="lineno">  841 </span>  unitOfMeasureConversionCommodityType'_ :: ((C2HSImp.Ptr (CUnitOfMeasureConversion)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CCommodityType)))))
+<span class="lineno">  842 </span>
+<span class="lineno">  843 </span>foreign import ccall safe &quot;QuantLib/Commodity.chs.h qlUnitOfMeasureConversionType_&quot;
+<span class="lineno">  844 </span>  unitOfMeasureConversionType'_ :: ((C2HSImp.Ptr (CUnitOfMeasureConversion)) -&gt; (IO C2HSImp.CInt))
+<span class="lineno">  845 </span>
+<span class="lineno">  846 </span>foreign import ccall safe &quot;QuantLib/Commodity.chs.h qlUnitOfMeasureConversionFactor&quot;
+<span class="lineno">  847 </span>  unitOfMeasureConversionFactor'_ :: ((C2HSImp.Ptr (CUnitOfMeasureConversion)) -&gt; (IO C2HSImp.CDouble))
+<span class="lineno">  848 </span>
+<span class="lineno">  849 </span>foreign import ccall safe &quot;QuantLib/Commodity.chs.h qlUnitOfMeasureConversionCode&quot;
+<span class="lineno">  850 </span>  unitOfMeasureConversionCode'_ :: ((C2HSImp.Ptr (CUnitOfMeasureConversion)) -&gt; (IO (C2HSImp.Ptr C2HSImp.CChar)))
+<span class="lineno">  851 </span>
+<span class="lineno">  852 </span>foreign import ccall safe &quot;QuantLib/Commodity.chs.h qlUnitOfMeasureConversionConvert&quot;
+<span class="lineno">  853 </span>  qlUnitOfMeasureConversionConvert_'_ :: ((C2HSImp.Ptr (CUnitOfMeasureConversion)) -&gt; ((C2HSImp.Ptr (CCommodityType)) -&gt; ((C2HSImp.Ptr (CUnitOfMeasure)) -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr (CCommodityType))) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr (CUnitOfMeasure))) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble))))))))
+<span class="lineno">  854 </span>
+<span class="lineno">  855 </span>foreign import ccall safe &quot;QuantLib/Commodity.chs.h qlUnitOfMeasureConversionChain&quot;
+<span class="lineno">  856 </span>  chainUnitOfMeasureConversion'_ :: ((C2HSImp.Ptr (CUnitOfMeasureConversion)) -&gt; ((C2HSImp.Ptr (CUnitOfMeasureConversion)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CUnitOfMeasureConversion))))))
+<span class="lineno">  857 </span>
+<span class="lineno">  858 </span>foreign import ccall safe &quot;QuantLib/Commodity.chs.h qlUnitOfMeasureConversionManagerLookup&quot;
+<span class="lineno">  859 </span>  lookupUomConversion'_ :: ((C2HSImp.Ptr (CCommodityType)) -&gt; ((C2HSImp.Ptr (CUnitOfMeasure)) -&gt; ((C2HSImp.Ptr (CUnitOfMeasure)) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CUnitOfMeasureConversion))))))))
+<span class="lineno">  860 </span>
+<span class="lineno">  861 </span>foreign import ccall safe &quot;QuantLib/Commodity.chs.h qlUnitOfMeasureConversionManagerAdd&quot;
+<span class="lineno">  862 </span>  addUomConversion'_ :: ((C2HSImp.Ptr (CUnitOfMeasureConversion)) -&gt; (IO ()))
+<span class="lineno">  863 </span>
+<span class="lineno">  864 </span>foreign import ccall safe &quot;QuantLib/Commodity.chs.h qlUnitOfMeasureConversionManagerClear&quot;
+<span class="lineno">  865 </span>  clearUomConversions'_ :: (IO ())
+<span class="lineno">  866 </span>
+<span class="lineno">  867 </span>foreign import ccall safe &quot;QuantLib/Commodity.chs.h qlCommoditySettingsCurrency&quot;
+<span class="lineno">  868 </span>  commoditySettingsCurrency'_ :: ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CCurrency))))
+<span class="lineno">  869 </span>
+<span class="lineno">  870 </span>foreign import ccall safe &quot;QuantLib/Commodity.chs.h qlCommoditySettingsSetCurrency&quot;
+<span class="lineno">  871 </span>  setCommoditySettingsCurrency'_ :: ((C2HSImp.Ptr (CCurrency)) -&gt; (IO ()))
+<span class="lineno">  872 </span>
+<span class="lineno">  873 </span>foreign import ccall safe &quot;QuantLib/Commodity.chs.h qlCommoditySettingsUnitOfMeasure&quot;
+<span class="lineno">  874 </span>  commoditySettingsUnitOfMeasure'_ :: ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CUnitOfMeasure))))
+<span class="lineno">  875 </span>
+<span class="lineno">  876 </span>foreign import ccall safe &quot;QuantLib/Commodity.chs.h qlCommoditySettingsSetUnitOfMeasure&quot;
+<span class="lineno">  877 </span>  setCommoditySettingsUnitOfMeasure'_ :: ((C2HSImp.Ptr (CUnitOfMeasure)) -&gt; (IO ()))
 
 </pre>
 </body>
