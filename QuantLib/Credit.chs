@@ -84,11 +84,11 @@ import QuantLib.Internal.Type
   ,preErrorCheck-`String'errorCheck*-}->`DefaultProbKey'peekDefaultProbKey*#}
 
 -- |An issuer's default-probability term structures, keyed by contract terms.
-issuer :: NonEmpty (DefaultProbKey, DefaultProbabilityTermStructure) -> IO Issuer
+issuer :: NonEmpty (DefaultProbKey, GenDefaultProbabilityTermStructure d) -> IO Issuer
 issuer probs = qlIssuer keys curves
   where (keys, curves) = unzip (toList probs)
 {#fun qlIssuer{withDefaultProbKeyArray*`[DefaultProbKey]'&
-  ,withDefaultProbabilityTermStructureArrayRaw*`[DefaultProbabilityTermStructure]'
+  ,withDefaultProbabilityTermStructureArrayRaw*`[GenDefaultProbabilityTermStructure d]'
   ,preErrorCheck-`String'errorCheck*-}->`Issuer'peekIssuer*#}
 
 -- |A named collection of issuers and their default-probability keys.

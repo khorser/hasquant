@@ -295,10 +295,10 @@ $(deriveOptionsRecord "ConstNotionalCrossCurrencyBasisSwapOpts" []
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Multi leg constructor.
-swapFromLegs :: [(Leg, Bool)] -- ^(legs, payer)
+swapFromLegs :: [(GenLeg l, Bool)] -- ^(legs, payer)
   -> IO Swap
 swapFromLegs = (uncurry qlSwap1) . unzip
-{#fun qlSwap1{withLegArray*`[Leg]'&,withBoolArray*`[Bool]'&,preErrorCheck-`String'errorCheck*-}->`Swap'peekSwap*#}
+{#fun qlSwap1{withLegArray*`[GenLeg l]'&,withBoolArray*`[Bool]'&,preErrorCheck-`String'errorCheck*-}->`Swap'peekSwap*#}
 
 -- |Swap paying Libor against BMA coupons
 {#fun qlBMASwap as bmaSwap{`SwapType',`Double' -- ^nominal
@@ -607,11 +607,11 @@ makeCms (swLen, swUnit) swapIndex iborIndex iborSpread forwardStart mSettlementD
   ,preErrorCheck-`String'errorCheck*-}->`ConstNotionalCrossCurrencySwap'peekConstNotionalCrossCurrencySwap*#}
 
 -- |Multi-leg constructor.
-constNotionalCrossCurrencySwapFromLegs :: [(Leg, Bool)] -- ^(legs, payer)
+constNotionalCrossCurrencySwapFromLegs :: [(GenLeg l, Bool)] -- ^(legs, payer)
   -> [Currency] -> IO ConstNotionalCrossCurrencySwap
 constNotionalCrossCurrencySwapFromLegs legsPayer = qlConstNotionalCrossCurrencySwap1 legs payer
   where (legs, payer) = unzip legsPayer
-{#fun qlConstNotionalCrossCurrencySwap1{withLegArray*`[Leg]'&,withBoolArray*`[Bool]'&,withCurrencyArray*`[Currency]'&,preErrorCheck-`String'errorCheck*-}->`ConstNotionalCrossCurrencySwap'peekConstNotionalCrossCurrencySwap*#}
+{#fun qlConstNotionalCrossCurrencySwap1{withLegArray*`[GenLeg l]'&,withBoolArray*`[Bool]'&,withCurrencyArray*`[Currency]'&,preErrorCheck-`String'errorCheck*-}->`ConstNotionalCrossCurrencySwap'peekConstNotionalCrossCurrencySwap*#}
 
 -- |Leg j's currency.
 {#fun qlConstNotionalCrossCurrencySwapLegCurrency as legCurrency{withConstNotionalCrossCurrencySwap*`GenConstNotionalCrossCurrencySwap x',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`Currency'peekCurrency*#}
@@ -795,7 +795,7 @@ instance HasFairSpread ConstNotionalCrossCurrencyFixedVsFloatingSwap where
 
 -- |Bullet bond vs Libor swap (par or market asset swap, per /parAssetSwap/).
 {#fun qlAssetSwap as assetSwap{`Bool' -- ^payBondCoupon
-  ,withBond*`Bond',`Double' -- ^bondCleanPrice
+  ,withBond*`GenBond b',`Double' -- ^bondCleanPrice
   ,withIborIndex*`GenIborIndex ibor',`Double' -- spread
   ,withSchedule*`Schedule' -- ^floatSchedule
   ,withDayCounter*`DayCounter' -- ^floatingDayCount
@@ -948,7 +948,7 @@ overnightIndexedSwapFromNominals t ns sch r dc idx sprd lag adj cal telescopic a
   ,fromEnumC`BusinessDayConvention' -- ^paymentConvention
   ,withDayCounter*`DayCounter'
   ,`Double' -- ^fixedRate
-  ,withZeroInflationIndex*`ZeroInflationIndex'
+  ,withZeroInflationIndex*`GenZeroInflationIndex zidx'
   ,fromEnumQuantity`(Word,TimeUnit)'& -- ^observationLag
   ,fromEnumC`CPIInterpolationType' -- ^observationInterpolation
   ,`Bool' -- ^adjustInfObsDates
@@ -966,7 +966,7 @@ overnightIndexedSwapFromNominals t ns sch r dc idx sprd lag adj cal telescopic a
   ,`Double' -- ^fixedRate
   ,withDayCounter*`DayCounter' -- ^fixedDayCount
   ,withSchedule*`Schedule' -- ^yoySchedule
-  ,withYoYInflationIndex*`YoYInflationIndex'
+  ,withYoYInflationIndex*`GenYoYInflationIndex yidx'
   ,fromEnumQuantity`(Word,TimeUnit)'& -- ^observationLag
   ,fromEnumC`CPIInterpolationType' -- ^interpolation
   ,`Double' -- ^spread
@@ -999,7 +999,7 @@ overnightIndexedSwapFromNominals t ns sch r dc idx sprd lag adj cal telescopic a
   ,withSchedule*`Schedule' -- ^fixedSchedule
   ,fromEnumC`BusinessDayConvention' -- ^fixedRoll
   ,fromEnumQuantity`(Word,TimeUnit)'& -- ^observationLag
-  ,withZeroInflationIndex*`ZeroInflationIndex' -- ^fixedIndex
+  ,withZeroInflationIndex*`GenZeroInflationIndex zidx' -- ^fixedIndex
   ,fromEnumC`CPIInterpolationType' -- ^observationInterpolation
   ,fromMaybeDouble`Maybe Double' -- ^inflationNominal
   ,preErrorCheck-`String'errorCheck*-}->`CPISwap'peekCPISwap*#}

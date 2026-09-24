@@ -165,7 +165,7 @@ import QuantLib.Internal.Type
 -- 'Calendar' cannot occur in this pure default value. Keep this splice before every {#fun#}:
 -- c2hs appends foreign imports to the generated module, and an intervening top-level splice
 -- would split declarations from the imports their wrappers use.
-$(deriveOptionsRecord "OISRateHelperOpts" ["m"]
+$(deriveOptionsRecord "OISRateHelperOpts" ["m", "p"]
   [ ("oisTelescopicValueDates", [t|Bool|], [|False|])
   , ("oisPaymentLag", [t|Int|], [|0|])
   , ("oisPaymentConvention", [t|BusinessDayConvention|], [|Following|])
@@ -179,7 +179,7 @@ $(deriveOptionsRecord "OISRateHelperOpts" ["m"]
   , ("oisFixedPaymentFrequency", [t|Maybe Frequency|], [|Nothing|])
   , ("oisFixedCalendar", [t|Maybe Calendar|], [|Nothing|])
   , ("oisObservation", [t|OvernightObservation|], [|defaultOvernightObservation|])
-  , ("oisPricer", [t|Maybe FloatingRateCouponPricer|], [|Nothing|])
+  , ("oisPricer", [t|Maybe (GenFloatingRateCouponPricer $(varT (mkName "p")))|], [|Nothing|])
   , ("oisRule", [t|DateGenerationRule|], [|Backward|])
   , ("oisOvernightCalendar", [t|Maybe Calendar|], [|Nothing|])
   , ("oisConvention", [t|BusinessDayConvention|], [|ModifiedFollowing|])
@@ -237,7 +237,7 @@ nullableDouble = realToFrac . fromMaybeDouble
   ,`Bool' -- ^endOfMonth
   ,fromMaybeBool`Maybe Bool' -- ^useIndexedCoupons
   ,fromMaybeEnum`Maybe BusinessDayConvention' -- ^floatConvention
-  ,withMaybeFloatingRateCouponPricer*`Maybe FloatingRateCouponPricer' -- ^couponPricer
+  ,withMaybeFloatingRateCouponPricer*`Maybe (GenFloatingRateCouponPricer frcp)' -- ^couponPricer
   ,preErrorCheck-`String'errorCheck*-}->`SwapRateHelper'peekSwapRateHelper*#}
 
 -- |Flat interest-rate curve with either a fixed or evaluation-date-relative reference point.
@@ -452,10 +452,10 @@ fraRateHelper rate terms = case terms of
 
 -- |/Warning/ Setting a pricing engine to the passed bond from external code will cause the bootstrap to fail or to give wrong results. It is advised to discard the bond after creating the helper, so that the helper has sole ownership of it.
 -- 'BondPriceType' is marshalled as an 'Int' to avoid a c2hs cross-module enum-import cycle.
-bondHelper :: GenQuote q -> Bond -> Bond.BondPriceType -> IO BondHelper
+bondHelper :: GenQuote q -> GenBond b -> Bond.BondPriceType -> IO BondHelper
 bondHelper cleanPrice bond priceType = bondHelper_ cleanPrice bond (fromEnum priceType)
 
-{#fun qlBondHelper as bondHelper_{withQuote*`GenQuote q',withBond*`Bond',`Int' -- ^priceType
+{#fun qlBondHelper as bondHelper_{withQuote*`GenQuote q',withBond*`GenBond b',`Int' -- ^priceType
   ,preErrorCheck-`String'errorCheck*-}->`BondHelper'peekBondHelper*#}
 -- The narrow and options-record wrappers share the same full-arity bindings; the narrow forms
 -- supply QuantLib's defaults.
@@ -500,7 +500,7 @@ oisRateHelperBetweenDates startDate endDate fixedRate idx discountingCurve = do
   ,fromMaybeInt`Maybe Word' -- ^lookbackDays
   ,fromIntegral`Word' -- ^lockoutDays
   ,`Bool' -- ^applyObservationShift
-  ,withMaybeFloatingRateCouponPricer*`Maybe FloatingRateCouponPricer' -- ^pricer
+  ,withMaybeFloatingRateCouponPricer*`Maybe (GenFloatingRateCouponPricer frcp)' -- ^pricer
   ,`DateGenerationRule' -- ^rule
   ,withCalendar*`Calendar' -- ^overnightCalendar
   ,fromEnumC`BusinessDayConvention' -- ^convention (q1.k.q1. overnightConvention)
@@ -525,7 +525,7 @@ oisRateHelperBetweenDates startDate endDate fixedRate idx discountingCurve = do
   ,fromMaybeInt`Maybe Word' -- ^lookbackDays
   ,fromIntegral`Word' -- ^lockoutDays
   ,`Bool' -- ^applyObservationShift
-  ,withMaybeFloatingRateCouponPricer*`Maybe FloatingRateCouponPricer' -- ^pricer
+  ,withMaybeFloatingRateCouponPricer*`Maybe (GenFloatingRateCouponPricer frcp)' -- ^pricer
   ,`DateGenerationRule' -- ^rule
   ,withCalendar*`Calendar' -- ^overnightCalendar
   ,fromEnumC`BusinessDayConvention' -- ^convention (q1.k.q1. overnightConvention)
@@ -534,7 +534,7 @@ oisRateHelperBetweenDates startDate endDate fixedRate idx discountingCurve = do
 oisRateHelperWithOptions :: Word -> (Int, TimeUnit)
   -> (Int, TimeUnit) -- ^forwardStart
   -> GenQuote q -> OvernightIborIndex
-  -> Maybe (GenYieldTermStructure y) -> OISRateHelperOpts m -> IO OISRateHelper
+  -> Maybe (GenYieldTermStructure y) -> OISRateHelperOpts m p -> IO OISRateHelper
 oisRateHelperWithOptions settlementDays tenor forwardStart fixedRate idx discountingCurve opts = do
   cal <- calendar Null
   oisRateHelper_ settlementDays tenor fixedRate idx discountingCurve
@@ -548,7 +548,7 @@ oisRateHelperWithOptions settlementDays tenor forwardStart fixedRate idx discoun
   where obs = oisObservation opts
 
 oisRateHelperBetweenDatesWithOptions :: Day -> Day -> GenQuote q -> OvernightIborIndex
-  -> Maybe (GenYieldTermStructure y) -> OISRateHelperOpts m -> IO OISRateHelper
+  -> Maybe (GenYieldTermStructure y) -> OISRateHelperOpts m p -> IO OISRateHelper
 oisRateHelperBetweenDatesWithOptions startDate endDate fixedRate idx discountingCurve opts = do
   cal <- calendar Null
   oisRateHelper2_ startDate endDate fixedRate idx discountingCurve
@@ -571,7 +571,7 @@ oisRateHelperBetweenDatesWithOptions startDate endDate fixedRate idx discounting
   ,withMaybeDay*`Maybe Day' -- ^customPillarDate
   ,`Bool' -- ^endOfMonth
   ,fromMaybeBool`Maybe Bool' -- ^useIndexedCoupons
-  ,withMaybeFloatingRateCouponPricer*`Maybe FloatingRateCouponPricer' -- ^couponPricer
+  ,withMaybeFloatingRateCouponPricer*`Maybe (GenFloatingRateCouponPricer frcp)' -- ^couponPricer
   ,preErrorCheck-`String'errorCheck*-}->`SwapRateHelper'peekSwapRateHelper*#}
 
 -- |A yield curve offset from 'baseCurve' by a spread added to its instantaneous forward rate,

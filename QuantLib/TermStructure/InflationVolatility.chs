@@ -98,7 +98,7 @@ import QuantLib.Internal.Common
 -- interpolator, 'Interpolation' the per-maturity one.
 yoyCapFloorTermPriceSurface :: Word -- ^fixingDays
   -> (Word, TimeUnit) -- ^yyLag
-  -> YoYInflationIndex -> CPIInterpolationType -> GenYieldTermStructure y -- ^nominal
+  -> GenYoYInflationIndex yidx -> CPIInterpolationType -> GenYieldTermStructure y -- ^nominal
   -> DayCounter -> Calendar -> BusinessDayConvention
   -> [Double] -- ^cStrikes
   -> [Double] -- ^fStrikes
@@ -112,7 +112,7 @@ yoyCapFloorTermPriceSurface fixingDays yyLag yii interp nominal dc cal bdc cStri
   where (maturityNums, maturityUnits) = unzip cfMaturities
 {#fun qlYoYCapFloorTermPriceSurface{fromIntegral`Word' -- ^fixingDays
   ,fromEnumQuantity`(Word,TimeUnit)'& -- ^yyLag
-  ,withYoYInflationIndex*`YoYInflationIndex'
+  ,withYoYInflationIndex*`GenYoYInflationIndex yidx'
   ,fromEnumC`CPIInterpolationType'
   ,withYieldTermStructure*`GenYieldTermStructure y' -- ^nominal
   ,withDayCounter*`DayCounter'
@@ -184,7 +184,7 @@ yoyCapFloorAtmYoySwapTimeRates s = do
 kInterpolatedYoyOptionletVolatilitySurfaceBlack :: Word -- ^settlementDays
   -> Calendar -> BusinessDayConvention -> DayCounter
   -> YoYCapFloorTermPriceSurface -- ^capFloorPrices
-  -> YoYInflationIndex -- ^index
+  -> GenYoYInflationIndex yidx -- ^index
   -> GenYieldTermStructure y -- ^nominalTermStructure
   -> Double -- ^slope
   -> Interpolation
@@ -196,7 +196,7 @@ kInterpolatedYoyOptionletVolatilitySurfaceBlack settlementDays cal bdc dc capFlo
   ,fromEnumC`BusinessDayConvention'
   ,withDayCounter*`DayCounter'
   ,withGenTermStructure*`YoYCapFloorTermPriceSurface' -- ^capFloorPrices
-  ,withYoYInflationIndex*`YoYInflationIndex' -- ^index
+  ,withYoYInflationIndex*`GenYoYInflationIndex yidx' -- ^index
   ,withYieldTermStructure*`GenYieldTermStructure y' -- ^nominalTermStructure
   ,`Double' -- ^slope
   ,`Int',`Int',`Int' -- ^interpolator, approximator, approximatorArg
@@ -206,7 +206,7 @@ kInterpolatedYoyOptionletVolatilitySurfaceBlack settlementDays cal bdc dc capFlo
 kInterpolatedYoyOptionletVolatilitySurfaceUnitDisplacedBlack :: Word -- ^settlementDays
   -> Calendar -> BusinessDayConvention -> DayCounter
   -> YoYCapFloorTermPriceSurface -- ^capFloorPrices
-  -> YoYInflationIndex -- ^index
+  -> GenYoYInflationIndex yidx -- ^index
   -> GenYieldTermStructure y -- ^nominalTermStructure
   -> Double -- ^slope
   -> Interpolation
@@ -218,7 +218,7 @@ kInterpolatedYoyOptionletVolatilitySurfaceUnitDisplacedBlack settlementDays cal 
   ,fromEnumC`BusinessDayConvention'
   ,withDayCounter*`DayCounter'
   ,withGenTermStructure*`YoYCapFloorTermPriceSurface' -- ^capFloorPrices
-  ,withYoYInflationIndex*`YoYInflationIndex' -- ^index
+  ,withYoYInflationIndex*`GenYoYInflationIndex yidx' -- ^index
   ,withYieldTermStructure*`GenYieldTermStructure y' -- ^nominalTermStructure
   ,`Double' -- ^slope
   ,`Int',`Int',`Int' -- ^interpolator, approximator, approximatorArg
@@ -228,7 +228,7 @@ kInterpolatedYoyOptionletVolatilitySurfaceUnitDisplacedBlack settlementDays cal 
 kInterpolatedYoyOptionletVolatilitySurfaceBachelier :: Word -- ^settlementDays
   -> Calendar -> BusinessDayConvention -> DayCounter
   -> YoYCapFloorTermPriceSurface -- ^capFloorPrices
-  -> YoYInflationIndex -- ^index
+  -> GenYoYInflationIndex yidx -- ^index
   -> GenYieldTermStructure y -- ^nominalTermStructure
   -> Double -- ^slope
   -> Interpolation
@@ -240,7 +240,7 @@ kInterpolatedYoyOptionletVolatilitySurfaceBachelier settlementDays cal bdc dc ca
   ,fromEnumC`BusinessDayConvention'
   ,withDayCounter*`DayCounter'
   ,withGenTermStructure*`YoYCapFloorTermPriceSurface' -- ^capFloorPrices
-  ,withYoYInflationIndex*`YoYInflationIndex' -- ^index
+  ,withYoYInflationIndex*`GenYoYInflationIndex yidx' -- ^index
   ,withYieldTermStructure*`GenYieldTermStructure y' -- ^nominalTermStructure
   ,`Double' -- ^slope
   ,`Int',`Int',`Int' -- ^interpolator, approximator, approximatorArg
@@ -254,7 +254,7 @@ cpiCapFloorTermPriceSurface :: Double -- ^nominal
   -> Double -- ^baseRate
   -> (Word, TimeUnit) -- ^observationLag
   -> Calendar -> BusinessDayConvention -> DayCounter
-  -> ZeroInflationIndex -> CPIInterpolationType -> GenYieldTermStructure y
+  -> GenZeroInflationIndex zidx -> CPIInterpolationType -> GenYieldTermStructure y
   -> [Double] -- ^cStrikes
   -> [Double] -- ^fStrikes
   -> [(Word, TimeUnit)] -- ^cfMaturities
@@ -267,7 +267,7 @@ cpiCapFloorTermPriceSurface nom baseRate obsLag cal bdc dc zii interp yts cStrik
   where (maturityNums, maturityUnits) = unzip cfMaturities
 {#fun qlCPICapFloorTermPriceSurface{`Double',`Double',fromEnumQuantity`(Word,TimeUnit)'&
   ,withCalendar*`Calendar',fromEnumC`BusinessDayConvention',withDayCounter*`DayCounter'
-  ,withZeroInflationIndex*`ZeroInflationIndex',fromEnumC`CPIInterpolationType'
+  ,withZeroInflationIndex*`GenZeroInflationIndex zidx',fromEnumC`CPIInterpolationType'
   ,withYieldTermStructure*`GenYieldTermStructure y'
   ,withDoubleArray*`[Double]'& -- ^cStrikes
   ,withDoubleArray*`[Double]'& -- ^fStrikes

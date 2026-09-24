@@ -79,7 +79,7 @@ import Data.List.NonEmpty(NonEmpty)
   ,withCalendar*`Calendar' -- ^payCalendar
   ,fromEnumC`BusinessDayConvention' -- ^payConvention
   ,`Double' -- ^strike
-  ,withZeroInflationIndex*`ZeroInflationIndex'
+  ,withZeroInflationIndex*`GenZeroInflationIndex zidx'
   ,fromEnumQuantity`(Word,TimeUnit)'& -- ^observationLag
   ,fromEnumC`CPIInterpolationType' -- ^observationInterpolation
   ,preErrorCheck-`String'errorCheck*-}->`CPICapFloor'peekCPICapFloor*#}

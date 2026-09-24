@@ -1716,7 +1716,8 @@ spec = do
         capletExpiries <- CF.toCouponLeg floatLeg >>= CF.couponAccrualStartDates
         capletVolQ <- simpleQuote 0.20
         capletVol <- constantOptionletVolatility (CalendarSettlementDays 0) cal ModifiedFollowing capletVolQ dc365 ShiftedLognormal 0.0
-        markovCaplet <- markovFunctionalCaplet ts 0.01 0.01 [] capletVol (fromList capletExpiries) euribor6m 16
+        capletVolHandle <- relinkableOptionletVolatilityStructure (Just capletVol)
+        markovCaplet <- markovFunctionalCaplet ts 0.01 0.01 [] capletVolHandle (fromList capletExpiries) euribor6m 16
         markovCapletModel <- asGaussian1dModel markovCaplet
         blackEngine <- blackCapFloorEngineFromVolatilityStructure ts capletVol
         setPricingEngine capfl blackEngine
@@ -2011,12 +2012,10 @@ spec = do
 
         p1 <- blackProcess spot1 rTS volTS EulerDiscretization False
         p2 <- blackProcess spot2 rTS volTS EulerDiscretization False
-        gp1 <- asGeneralizedBlackScholesProcess p1
-        gp2 <- asGeneralizedBlackScholesProcess p2
 
         opt <- basketOption (Spread (plainVanillaPayoff (PlainVanillaPayoff Call strike))) (European (EuropeanExercise maturity))
 
-        fd2d <- fd2dBlackScholesVanillaEngine gp1 gp2 rho_ 100 100 50 0 Hundsdorfer False (-1.0e10)
+        fd2d <- fd2dBlackScholesVanillaEngine p1 p2 rho_ 100 100 50 0 Hundsdorfer False (-1.0e10)
         setPricingEngine opt fd2d
         calculatedDelta <- delta opt
         calculatedGamma <- gamma opt

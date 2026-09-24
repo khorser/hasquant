@@ -530,7 +530,7 @@ withFloatingRateCouponPricer :: GenFloatingRateCouponPricer frcp -> (Ptr CFloati
 withFloatingRateCouponPricer = withGenForeignPtr . getFloatingRateCouponPricer
 withFloatingRateCouponPricerArray :: [GenFloatingRateCouponPricer frcp] -> ((CUInt, Ptr (Ptr CFloatingRateCouponPricer')) -> IO b) -> IO b
 withFloatingRateCouponPricerArray = withGenArray withFloatingRateCouponPricer
-withMaybeFloatingRateCouponPricer :: Maybe FloatingRateCouponPricer -> (Ptr CFloatingRateCouponPricer' -> IO b) -> IO b
+withMaybeFloatingRateCouponPricer :: Maybe (GenFloatingRateCouponPricer frcp) -> (Ptr CFloatingRateCouponPricer' -> IO b) -> IO b
 withMaybeFloatingRateCouponPricer = maybe ($ nullPtr) withFloatingRateCouponPricer
 
 -- |CMS coupon-pricer subtype required by CMS consumers.
@@ -1646,7 +1646,7 @@ withIndex :: GenIndex idx -> (Ptr CIndex' -> IO b) -> IO b
 withIndex = withGenForeignPtr . getIndex
 peekIndex :: Ptr CIndex' -> IO Index
 peekIndex = GenIndex <.> newCastForeignPtr
-withIndexArray :: [Index] -> ((CUInt, Ptr (Ptr CIndex')) -> IO b) -> IO b
+withIndexArray :: [GenIndex idx] -> ((CUInt, Ptr (Ptr CIndex')) -> IO b) -> IO b
 withIndexArray = withGenArray withIndex
 
 asInterestRateIndex :: GenInterestRateIndex ridx -> IO InterestRateIndex
@@ -2031,9 +2031,9 @@ type DefaultProbabilityTermStructure = GenDefaultProbabilityTermStructure CDefau
 type CAffineHazardRateCurve = ForeignPtr CAffineHazardRateCurve'
 -- |A 'DefaultProbabilityTermStructure'; see the hierarchy under t'GenTermStructure'.
 type AffineHazardRateCurve = GenDefaultProbabilityTermStructure CAffineHazardRateCurve
-withDefaultProbabilityTermStructureArray :: [DefaultProbabilityTermStructure] -> ((CUInt, Ptr (Ptr CDefaultProbabilityTermStructure')) -> IO b) -> IO b
+withDefaultProbabilityTermStructureArray :: [GenDefaultProbabilityTermStructure d] -> ((CUInt, Ptr (Ptr CDefaultProbabilityTermStructure')) -> IO b) -> IO b
 withDefaultProbabilityTermStructureArray = withGenArray withDefaultProbabilityTermStructure
-withDefaultProbabilityTermStructureArrayRaw :: [DefaultProbabilityTermStructure] -> (Ptr (Ptr CDefaultProbabilityTermStructure') -> IO b) -> IO b
+withDefaultProbabilityTermStructureArrayRaw :: [GenDefaultProbabilityTermStructure d] -> (Ptr (Ptr CDefaultProbabilityTermStructure') -> IO b) -> IO b
 withDefaultProbabilityTermStructureArrayRaw x f = withMany withDefaultProbabilityTermStructure x (`withArray` f)
 
 -- CREDIT: separate types encode tranche-loss and digital-loss capabilities.

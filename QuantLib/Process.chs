@@ -681,7 +681,7 @@ stochasticProcessArray a (Matrix mr mc md) = qlStochasticProcessArray (toList a)
 {#fun qlStochasticProcessArray{withStochasticProcess1DArray*`[GenStochasticProcess1D p1d]'&,fromIntegral`Word',fromIntegral`Word',withDoubleArrayRaw*`[Double]',preErrorCheck-`String'errorCheck*-}->`StochasticProcessArray'peekStochasticProcessArray*#}
 
 -- |default theta calculation for Black-Scholes options
-{#fun qlQuantLibBlackScholesTheta as thetaAt{withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess',`Double' -- ^value
+{#fun qlQuantLibBlackScholesTheta as thetaAt{withGeneralizedBlackScholesProcess*`GenGeneralizedBlackScholesProcess gbs',`Double' -- ^value
   ,`Double' -- ^delta
   ,`Double' -- ^gamma
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}

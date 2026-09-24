@@ -112,6 +112,24 @@ writerExtensibleMcNpv halfN s0 q r vol t1 t2 payoff1 payoff2 =
 
 spec :: Spec
 spec = do
+  describe "VanillaOption implied volatility" $
+    it "accepts a BlackProcess directly" $
+      Context.keepingSettingsGc $ do
+        evalDate <- today
+        Context.setEvaluationDate (Just evalDate)
+        dc <- dayCounter (Actual360 False)
+        cal <- calendar Null
+        spot <- simpleQuote 100.0
+        riskFree <- simpleQuote 0.05 >>= \q -> flatForward (ReferenceDate evalDate) q dc Continuous Annual
+        vol <- simpleQuote 0.20 >>= \q -> blackConstantVol (CalendarReferenceDate evalDate) cal q dc
+        process <- blackProcess spot riskFree vol EulerDiscretization False
+        engine <- analyticEuropeanEngine process Nothing
+        option <- vanillaOption (PlainVanilla (PlainVanillaPayoff Call 100.0)) (europeanIn 180 evalDate)
+        setPricingEngine option engine
+        price <- npv option
+        result <- impliedVolatility option price process [] 1e-6 1000 1e-6 4.0
+        result `shouldSatisfy` closePrec 0.20 1e-6
+
   describe "SimpleChooserOption" $
     -- cached reference from QuantLib test-suite/chooseroption.cpp::testAnalyticSimpleChooserEngine
     -- (Haug, "Complete Guide to Option Pricing Formulas", pp.39-40).

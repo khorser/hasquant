@@ -55,7 +55,7 @@ import Data.List.NonEmpty(NonEmpty, toList)
   ,withCalendar*`Calendar'
   ,fromEnumC`BusinessDayConvention' -- ^paymentConvention
   ,withDayCounter*`DayCounter'
-  ,withZeroInflationIndex*`ZeroInflationIndex'
+  ,withZeroInflationIndex*`GenZeroInflationIndex zidx'
   ,fromEnumC`CPIInterpolationType' -- ^observationInterpolation
   ,`PillarChoice' -- ^pillar
   ,withMaybeDay*`Maybe Day' -- ^customPillarDate
@@ -69,7 +69,7 @@ import Data.List.NonEmpty(NonEmpty, toList)
   ,withCalendar*`Calendar'
   ,fromEnumC`BusinessDayConvention' -- ^paymentConvention
   ,withDayCounter*`DayCounter'
-  ,withYoYInflationIndex*`YoYInflationIndex'
+  ,withYoYInflationIndex*`GenYoYInflationIndex yidx'
   ,fromEnumC`CPIInterpolationType' -- ^observationInterpolation
   ,withYieldTermStructure*`GenYieldTermStructure y' -- ^nominalTermStructure
   ,`PillarChoice' -- ^pillar
@@ -83,7 +83,7 @@ import Data.List.NonEmpty(NonEmpty, toList)
   ,`Double' -- ^faceAmount
   ,`Double' -- ^baseCPI
   ,fromEnumQuantity`(Word,TimeUnit)'& -- ^observationLag
-  ,withZeroInflationIndex*`ZeroInflationIndex'
+  ,withZeroInflationIndex*`GenZeroInflationIndex zidx'
   ,fromEnumC`CPIInterpolationType' -- ^observationInterpolation
   ,withSchedule*`Schedule',withNonEmptyDoubleArray*`NonEmpty Double'& -- ^coupons
   ,withDayCounter*`DayCounter' -- ^accrualDayCounter

@@ -266,7 +266,7 @@ $(deriveOptionsRecord "AmortizingFloatingRateBondOpts" []
   ,`Double' -- ^faceAmount
   ,`Double' -- ^baseCPI
   ,fromEnumQuantity`(Word,TimeUnit)'& -- ^observationLag
-  ,withZeroInflationIndex*`ZeroInflationIndex'
+  ,withZeroInflationIndex*`GenZeroInflationIndex zidx'
   ,fromEnumC`CPIInterpolationType' -- ^observationInterpolation
   ,withSchedule*`Schedule'
   ,withNonEmptyDoubleArray*`NonEmpty Double'& -- ^coupons

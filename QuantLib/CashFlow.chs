@@ -618,7 +618,7 @@ leg f = qlLeg fs ds where (ds, fs) = unzip f
 
 -- |A year-on-year inflation coupon.  As for 'yoyInflationLeg', attach a
 -- YoY inflation coupon pricer before evaluating the coupon rate.
-{#fun qlYoYInflationCoupon as yoyInflationCoupon{withDay*`Day',`Double',withDay*`Day',withDay*`Day',fromIntegral`Word',withYoYInflationIndex*`YoYInflationIndex',fromEnumQuantity`(Int,TimeUnit)'&,fromEnumC`CPIInterpolationType',withDayCounter*`DayCounter',`Double',`Double',withMaybeDay*`Maybe Day',withMaybeDay*`Maybe Day',preErrorCheck-`String'errorCheck*-}->`YoYInflationCoupon'peekYoYInflationCoupon*#}
+{#fun qlYoYInflationCoupon as yoyInflationCoupon{withDay*`Day',`Double',withDay*`Day',withDay*`Day',fromIntegral`Word',withYoYInflationIndex*`GenYoYInflationIndex yidx',fromEnumQuantity`(Int,TimeUnit)'&,fromEnumC`CPIInterpolationType',withDayCounter*`DayCounter',`Double',`Double',withMaybeDay*`Maybe Day',withMaybeDay*`Maybe Day',preErrorCheck-`String'errorCheck*-}->`YoYInflationCoupon'peekYoYInflationCoupon*#}
 {#fun qlYoYInflationCouponAdjustedFixing as adjustedFixing{withYoYInflationCoupon*`YoYInflationCoupon',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Pricer that arithmetically averages multiple Ibor resets.
@@ -669,7 +669,7 @@ leg f = qlLeg fs ds where (ds, fs) = unzip f
   ,preErrorCheck-`String'errorCheck*-}->`FloatingRateCoupon'peekFloatingRateCoupon*#}
 
 -- |Compounding overnight-index coupon pricer.
-{#fun qlCompoundingOvernightIndexedCouponPricer as compoundingOvernightIndexedCouponPricer{withMaybeOptionletVolatilityStructure*`Maybe OptionletVolatilityStructure' -- ^capletVolatility
+{#fun qlCompoundingOvernightIndexedCouponPricer as compoundingOvernightIndexedCouponPricer{withMaybeOptionletVolatilityStructure*`Maybe (GenOptionletVolatilityStructure ov)' -- ^capletVolatility
   ,`Bool' -- ^byApprox
   ,preErrorCheck-`String'errorCheck*-}->`FloatingRateCouponPricer'peekFloatingRateCouponPricer*#}
 
@@ -677,17 +677,17 @@ leg f = qlLeg fs ds where (ds, fs) = unzip f
 {#fun qlArithmeticAveragedOvernightIndexedCouponPricer as arithmeticAveragedOvernightIndexedCouponPricer{`Double' -- ^meanReversion
   ,`Double' -- ^volatility
   ,`Bool' -- ^byApprox
-  ,withMaybeOptionletVolatilityStructure*`Maybe OptionletVolatilityStructure' -- ^capletVolatility
+  ,withMaybeOptionletVolatilityStructure*`Maybe (GenOptionletVolatilityStructure ov)' -- ^capletVolatility
   ,`Bool' -- ^effective
   ,preErrorCheck-`String'errorCheck*-}->`FloatingRateCouponPricer'peekFloatingRateCouponPricer*#}
 
 -- |Black-formula compounding overnight-index coupon pricer.
-{#fun qlBlackCompoundingOvernightIndexedCouponPricer as blackCompoundingOvernightIndexedCouponPricer{withMaybeOptionletVolatilityStructure*`Maybe OptionletVolatilityStructure' -- ^capletVolatility
+{#fun qlBlackCompoundingOvernightIndexedCouponPricer as blackCompoundingOvernightIndexedCouponPricer{withMaybeOptionletVolatilityStructure*`Maybe (GenOptionletVolatilityStructure ov)' -- ^capletVolatility
   ,`Bool' -- ^effective
   ,preErrorCheck-`String'errorCheck*-}->`FloatingRateCouponPricer'peekFloatingRateCouponPricer*#}
 
 -- |Black-formula arithmetic-average overnight-index coupon pricer.
-{#fun qlBlackAveragingOvernightIndexedCouponPricer as blackAveragingOvernightIndexedCouponPricer{withMaybeOptionletVolatilityStructure*`Maybe OptionletVolatilityStructure' -- ^capletVolatility
+{#fun qlBlackAveragingOvernightIndexedCouponPricer as blackAveragingOvernightIndexedCouponPricer{withMaybeOptionletVolatilityStructure*`Maybe (GenOptionletVolatilityStructure ov)' -- ^capletVolatility
   ,`Bool' -- ^effective
   ,preErrorCheck-`String'errorCheck*-}->`FloatingRateCouponPricer'peekFloatingRateCouponPricer*#}
 
@@ -741,12 +741,12 @@ leg f = qlLeg fs ds where (ds, fs) = unzip f
   ,preErrorCheck-`String'errorCheck*-}->`CPICoupon'peekCPICoupon*#}
 
 -- |CPI coupon pricer using an optional nominal yield curve.
-{#fun qlCPICouponPricer as cpiCouponPricer{withMaybeYieldTermStructure*`Maybe YieldTermStructure' -- ^nominalTermStructure
+{#fun qlCPICouponPricer as cpiCouponPricer{withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)' -- ^nominalTermStructure
   ,preErrorCheck-`String'errorCheck*-}->`CPICouponPricer'peekCPICouponPricer*#}
 
 -- |CPI coupon pricer using a CPI volatility surface and optional nominal yield curve.
 {#fun qlCPICouponPricerWithVol as cpiCouponPricerWithVol{withGenVolatilityTermStructure*`CPIVolatilitySurface' -- ^volatilitySurface
-  ,withMaybeYieldTermStructure*`Maybe YieldTermStructure' -- ^nominalTermStructure
+  ,withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)' -- ^nominalTermStructure
   ,preErrorCheck-`String'errorCheck*-}->`CPICouponPricer'peekCPICouponPricer*#}
 
 -- |Attach a CPI coupon pricer to a CPI coupon.
@@ -1156,7 +1156,7 @@ cmsLegWithOptions schedule idx notionals dc adj fixingDays gearings spreads caps
 -- |Fixed-rate coupons scaled by the ratio of a 'ZeroInflationIndex' fixing to /baseCPI/
 -- (a 'CPICoupon' leg -- no capped\/floored variant, unlike 'yoyInflationLeg': QL 1.43 has no
 -- @CappedFlooredCPICoupon@ class to build one from, see README.md's TODO).
-{#fun qlCPILeg as cpiLeg{withSchedule*`Schedule',withZeroInflationIndex*`ZeroInflationIndex'
+{#fun qlCPILeg as cpiLeg{withSchedule*`Schedule',withZeroInflationIndex*`GenZeroInflationIndex zidx'
   ,`Double' -- ^baseCPI
   ,fromEnumQuantity`(Word,TimeUnit)'& -- ^observationLag
   ,withNonEmptyDoubleArray*`NonEmpty Double'& -- ^notionals
@@ -1177,7 +1177,7 @@ cmsLegWithOptions schedule idx notionals dc adj fixingDays gearings spreads caps
 -- @CappedFlooredCPICoupon@ class exists upstream, see README.md's TODO) -- this is a
 -- QuantLib-version limitation, not an unbound feature.
 {#fun qlYoYInflationLeg as yoyInflationLeg{withSchedule*`Schedule',withCalendar*`Calendar'
-  ,withYoYInflationIndex*`YoYInflationIndex'
+  ,withYoYInflationIndex*`GenYoYInflationIndex yidx'
   ,fromEnumQuantity`(Word,TimeUnit)'& -- ^observationLag
   ,fromEnumC`CPIInterpolationType' -- ^interpolation
   ,withNonEmptyDoubleArray*`NonEmpty Double'& -- ^notionals
@@ -1194,7 +1194,7 @@ cmsLegWithOptions schedule idx notionals dc adj fixingDays gearings spreads caps
 -- |Cash flow dependent on a 'ZeroInflationIndex' ratio (not a coupon -- no accruals).
 -- The ratio is taken between fixings observed at /startDate/ and /endDate/ minus /observationLag/.
 {#fun qlZeroInflationCashFlow as zeroInflationCashFlow{`Double' -- ^notional
-  ,withZeroInflationIndex*`ZeroInflationIndex'
+  ,withZeroInflationIndex*`GenZeroInflationIndex zidx'
   ,fromEnumC`CPIInterpolationType' -- ^observationInterpolation
   ,withDay*`Day' -- ^startDate
   ,withDay*`Day' -- ^endDate
@@ -1206,7 +1206,7 @@ cmsLegWithOptions schedule idx notionals dc adj fixingDays gearings spreads caps
 -- |CPI-linked cash flow (not a coupon -- no accruals), with an optional explicit /baseFixing/
 -- (pass 'Nothing' to derive it from /baseDate/ instead).
 {#fun qlCPICashFlow as cpiCashFlow{`Double' -- ^notional
-  ,withZeroInflationIndex*`ZeroInflationIndex'
+  ,withZeroInflationIndex*`GenZeroInflationIndex zidx'
   ,withMaybeDay*`Maybe Day' -- ^baseDate
   ,fromMaybeDouble`Maybe Double' -- ^baseFixing
   ,withDay*`Day' -- ^observationDate

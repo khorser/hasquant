@@ -103,7 +103,7 @@ import QuantLib.Internal.Common
 {#fun qlInstrumentAdditionalResults as additionalResults{withInstrument*`GenInstrument i',preArray-`[(String, AdditionalResultVal)]'&peekAdditionalResults*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Builds a composite instrument whose NPV is the sum of the given instruments' NPVs, each scaled by its paired multiplier.
-composite :: [(Instrument, Double)] -> IO Instrument
+composite :: [(GenInstrument i, Double)] -> IO Instrument
 composite = (uncurry qlCompositeInstrument) . unzip
 
 {#fun qlCompositeInstrument{withInstrumentArray*`[GenInstrument i]'& -- ^instruments

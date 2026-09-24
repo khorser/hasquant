@@ -521,14 +521,14 @@ markovFunctional ts reversion initialVol steps svol points = qlMarkovFunctional 
 
 -- |Markov-functional interest-rate model, calibrated to a caplet volatility structure against @iborIndex@.
 markovFunctionalCaplet :: GenYieldTermStructure y -> Double -> Double -> [(Day, Double)]
-  -> OptionletVolatilityStructure -> NonEmpty Day -> GenIborIndex ibor -> Word -> IO MarkovFunctional
+  -> GenOptionletVolatilityStructure ov -> NonEmpty Day -> GenIborIndex ibor -> Word -> IO MarkovFunctional
 markovFunctionalCaplet ts reversion initialVol steps capletVol expiries ibor gridPoints =
   qlMarkovFunctionalCaplet ts reversion dates (initialVol : vols) capletVol (toList expiries) ibor gridPoints
   where (dates, vols) = unzip steps
 {#fun qlMarkovFunctionalCaplet{withYieldTermStructure*`GenYieldTermStructure y',`Double' -- ^reversion
   ,withDayArray*`[Day]'& -- ^volstepdates
   ,withDoubleArray*`[Double]'& -- ^volatilities
-  ,withOptionletVolatilityStructure*`OptionletVolatilityStructure' -- ^capletVol
+  ,withOptionletVolatilityStructure*`GenOptionletVolatilityStructure ov' -- ^capletVol
   ,withDayArray*`[Day]'& -- ^capletExpiries
   ,withIborIndex*`GenIborIndex ibor' -- ^iborIndex
   ,fromIntegral`Word' -- ^yGridPoints

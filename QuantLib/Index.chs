@@ -127,7 +127,7 @@ fixingHistory i = do
 {#fun qlHistoricalIndexAnalysis as historicalIndexAnalysis{withDay*`Day' -- ^startDate
   ,withDay*`Day' -- ^endDate
   ,fromEnumQuantity`(Int,TimeUnit)'& -- ^step
-  ,withIndexArray*`[Index]'&
+  ,withIndexArray*`[GenIndex idx]'&
   ,preErrorCheck-`String'errorCheck*-}->`HistoricalIndexAnalysis'peekHistoricalIndexAnalysis*#}
 
 -- |Skipped fixing dates paired with the reason no complete fixing vector was available.

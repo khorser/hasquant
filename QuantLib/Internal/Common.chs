@@ -1,4 +1,4 @@
-{-# LANGUAGE TemplateHaskell, StandaloneDeriving #-}
+{-# LANGUAGE TemplateHaskell, StandaloneDeriving, ExistentialQuantification #-}
 -- internal utilities to convert special enums: either complex ones or represented as QuantLib objects that I didn't want to expose so I represented them as ADTs
 {-# OPTIONS_GHC -Wno-unused-top-binds #-}
 module QuantLib.Internal.Common
@@ -1048,7 +1048,7 @@ volatilityModelMeta = EnumMeta volatilityModel
 withLmVolatilityModel :: LmVolatilityModel -> (Ptr CLmVolatilityModel -> IO a) -> IO a
 withLmVolatilityModel = withEnumType volatilityModelMeta
 
-data Claim = FaceValue | FaceValueAccrual Bond
+data Claim = FaceValue | forall b. FaceValueAccrual (GenBond b)
 claimMeta :: EnumMeta Claim CQlClaim
 claimMeta = EnumMeta claim
 
@@ -1063,7 +1063,7 @@ claim (FaceValueAccrual b) = qlFaceValueAccrualClaim b
 {#fun qlFaceValueClaim{preErrorCheck-`String'errorCheck*-}->`QlClaim'peekClaim*#}
 
 -- |Claim on the notional of a reference security, including accrual
-{#fun qlFaceValueAccrualClaim{withBond*`Bond',preErrorCheck-`String'errorCheck*-}->`QlClaim'peekClaim*#}
+{#fun qlFaceValueAccrualClaim{withBond*`GenBond b',preErrorCheck-`String'errorCheck*-}->`QlClaim'peekClaim*#}
 
 strikedPayoff :: StrikedPayoff -> Payoff
 strikedPayoff = Type . Striked

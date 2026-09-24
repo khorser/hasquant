@@ -605,7 +605,7 @@ concentrating1dMesherMulti start end sz cPoints tol =
 -- for a Black-Scholes-family process, reusing the same 'GeneralizedBlackScholesProcess'\/
 -- 'Dividend'\/'FdmQuantoHelper' plumbing "QuantLib.PricingEngine"'s @fd*@ engines already use.
 {#fun qlFdmBlackScholesMesher as fdmBlackScholesMesher{fromIntegral`Word' -- ^size
-  ,withGeneralizedBlackScholesProcess*`GeneralizedBlackScholesProcess'
+  ,withGeneralizedBlackScholesProcess*`GenGeneralizedBlackScholesProcess gbs'
   ,`Double' -- ^maturity
   ,`Double' -- ^strike
   ,fromMaybeDouble`Maybe Double' -- ^xMinConstraint
@@ -644,7 +644,7 @@ concentrating1dMesherMulti start end sz cPoints tol =
 -- |'FdmSimpleProcess1dMesher(size, process, maturity, tAvgSteps, epsilon, mandatoryPoint)' --
 -- generic mesher for any bound one-dimensional 'StochasticProcess1D'.
 {#fun qlFdmSimpleProcess1dMesher as fdmSimpleProcess1dMesher{fromIntegral`Word' -- ^size
-  ,withStochasticProcess1D*`StochasticProcess1D'
+  ,withStochasticProcess1D*`GenStochasticProcess1D p1d'
   ,`Double' -- ^maturity
   ,fromIntegral`Word' -- ^tAvgSteps
   ,`Double' -- ^epsilon
