@@ -67,8 +67,8 @@ linkedYoYIndex evalDate = do
   maturity2 <- advance cal evalDate (5, Years) Unadjusted False
   q1 <- simpleQuote 0.03
   q2 <- simpleQuote 0.03
-  h1 <- yearOnYearInflationSwapHelper q1 (3, Months) maturity1 cal Unadjusted dc yii0 CPIFlat nominalCurve LastRelevantDate Nothing
-  h2 <- yearOnYearInflationSwapHelper q2 (3, Months) maturity2 cal Unadjusted dc yii0 CPIFlat nominalCurve LastRelevantDate Nothing
+  h1 <- yearOnYearInflationSwapHelper q1 (3, Months) (InflationSwapToMaturity maturity1) cal Unadjusted dc yii0 CPIFlat nominalCurve LastRelevantDate Nothing
+  h2 <- yearOnYearInflationSwapHelper q2 (3, Months) (InflationSwapToMaturity maturity2) cal Unadjusted dc yii0 CPIFlat nominalCurve LastRelevantDate Nothing
   baseDate <- advance cal evalDate (-2, Months) Unadjusted False
   yoyCurve <- piecewiseYoyInflationCurve evalDate baseDate 0.03 Monthly dc [h1, h2] Nothing Linear
   customYoYIndex (Just yoyCurve)
@@ -121,8 +121,8 @@ customZeroIndex evalDate = do
   maturity2 <- advance cal evalDate (10, Years) Unadjusted False
   q1 <- simpleQuote 0.03
   q2 <- simpleQuote 0.03
-  h1 <- zeroCouponInflationSwapHelper q1 (2, Months) maturity1 cal Unadjusted dc zii0 CPIFlat LastRelevantDate Nothing
-  h2 <- zeroCouponInflationSwapHelper q2 (2, Months) maturity2 cal Unadjusted dc zii0 CPIFlat LastRelevantDate Nothing
+  h1 <- zeroCouponInflationSwapHelper q1 (2, Months) (InflationSwapToMaturity maturity1) cal Unadjusted dc zii0 CPIFlat LastRelevantDate Nothing
+  h2 <- zeroCouponInflationSwapHelper q2 (2, Months) (InflationSwapToMaturity maturity2) cal Unadjusted dc zii0 CPIFlat LastRelevantDate Nothing
   baseDate <- advance cal evalDate (-2, Months) Unadjusted False
   zeroCurve <- piecewiseZeroInflationCurve evalDate baseDate Monthly dc [h1, h2] Nothing Linear
   customZeroInflationIndex "ICFCT Zero" r False Monthly (1, Months) gbp (Just zeroCurve)

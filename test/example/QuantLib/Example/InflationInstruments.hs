@@ -142,8 +142,8 @@ run = do
 
   q1 <- simpleQuote flatRate
   q2 <- simpleQuote flatRate
-  h1 <- zeroCouponInflationSwapHelper q1 obsLag maturity2Y cal Unadjusted dc idx0 CPILinear LastRelevantDate Nothing
-  h2 <- zeroCouponInflationSwapHelper q2 obsLag maturity5Y cal Unadjusted dc idx0 CPILinear LastRelevantDate Nothing
+  h1 <- zeroCouponInflationSwapHelper q1 obsLag (InflationSwapToMaturity maturity2Y) cal Unadjusted dc idx0 CPILinear LastRelevantDate Nothing
+  h2 <- zeroCouponInflationSwapHelper q2 obsLag (InflationSwapToMaturity maturity5Y) cal Unadjusted dc idx0 CPILinear LastRelevantDate Nothing
   zeroCurve <- piecewiseZeroInflationCurve evalDate baseDate Monthly dc [h1, h2] Nothing Linear
   -- curve-linked index (same name/region/etc, picks up idx0's fixings automatically)
   idx1 <- customZeroInflationIndex "WL CPI" reg False Monthly obsLagI gbp (Just zeroCurve)
@@ -177,8 +177,8 @@ run = do
   forM_ (zip [1 :: Double ..] fixingDates) $ \(i, d) -> addFixing yidx0 d (flatRate + i * 0.0001) False
   qy1 <- simpleQuote flatRate
   qy2 <- simpleQuote flatRate
-  hy1 <- yearOnYearInflationSwapHelper qy1 obsLag maturity2Y cal Unadjusted dc yidx0 CPILinear nominalCurve LastRelevantDate Nothing
-  hy2 <- yearOnYearInflationSwapHelper qy2 obsLag maturity5Y cal Unadjusted dc yidx0 CPILinear nominalCurve LastRelevantDate Nothing
+  hy1 <- yearOnYearInflationSwapHelper qy1 obsLag (InflationSwapToMaturity maturity2Y) cal Unadjusted dc yidx0 CPILinear nominalCurve LastRelevantDate Nothing
+  hy2 <- yearOnYearInflationSwapHelper qy2 obsLag (InflationSwapToMaturity maturity5Y) cal Unadjusted dc yidx0 CPILinear nominalCurve LastRelevantDate Nothing
   yoyCurve <- piecewiseYoyInflationCurve evalDate baseDate flatRate Monthly dc [hy1, hy2] Nothing Linear
   yidx1 <- customYoyInflationIndex "WL YoY CPI" reg False Monthly obsLagI gbp (Just yoyCurve)
   yoySchedule <- schedule (Just evalDate) maturity5Y (6, Months) cal Unadjusted Unadjusted Backward False Nothing Nothing
@@ -204,7 +204,7 @@ run = do
   cbAccrued <- accruedAmount cb cbSettlement
 
   q3 <- simpleQuote (flatRate + 0.02) -- higher expected inflation
-  h3 <- zeroCouponInflationSwapHelper q3 obsLag maturity5Y cal Unadjusted dc idx0 CPILinear LastRelevantDate Nothing
+  h3 <- zeroCouponInflationSwapHelper q3 obsLag (InflationSwapToMaturity maturity5Y) cal Unadjusted dc idx0 CPILinear LastRelevantDate Nothing
   hiZeroCurve <- piecewiseZeroInflationCurve evalDate baseDate Monthly dc [h1, h3] Nothing Linear
   hiIdx <- customZeroInflationIndex "WL CPI" reg False Monthly obsLagI gbp (Just hiZeroCurve)
   cbHi <- cpiBond settlementDays faceAmount baseCPI0 obsLag hiIdx CPILinear cpiBondSchedule [couponRate]

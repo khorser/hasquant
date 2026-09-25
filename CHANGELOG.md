@@ -47,6 +47,12 @@ the former `oisRateHelperBetweenDates` dates. `oisRateHelperBetweenDates` and
 `FxSwapTerms`: `FxSwapTenor` holds the tenor, fixing days, calendar, convention, end of month and
 trading calendar, and `FxSwapBetweenDates` holds the former `fxSwapRateHelperBetweenDates` dates.
 
+Breaking change: `zeroCouponInflationSwapHelper` and `yearOnYearInflationSwapHelper` take an
+`InflationSwapPeriod` where they took the maturity: `InflationSwapToMaturity` is the former
+form, and the new `InflationSwapBetweenDates` binds QuantLib's swap between two fixed dates.
+Both helpers used to interpolate linearly whatever they were given: their shim read
+`CPIFlat`, which is 1, as linear. `CPIFlat` now gives flat observation.
+
 ## 0.7.0.0 (2026)
 
 The final broad API-coverage batch adds Haskell callbacks for payoffs, optimization, regression and

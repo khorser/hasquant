@@ -72,8 +72,8 @@ main = do
   forM_ (zip [1 :: Double ..] fixingDates) $ \(i, d) -> addFixing zii d (260.0 + i) False
   q1 <- simpleQuote 0.03
   q2 <- simpleQuote 0.03
-  h1 <- zeroCouponInflationSwapHelper q1 obsLag maturity1 cal Unadjusted dc zii CPILinear LastRelevantDate Nothing
-  h2 <- zeroCouponInflationSwapHelper q2 obsLag maturity2 cal Unadjusted dc zii CPILinear LastRelevantDate Nothing
+  h1 <- zeroCouponInflationSwapHelper q1 obsLag (InflationSwapToMaturity maturity1) cal Unadjusted dc zii CPILinear LastRelevantDate Nothing
+  h2 <- zeroCouponInflationSwapHelper q2 obsLag (InflationSwapToMaturity maturity2) cal Unadjusted dc zii CPILinear LastRelevantDate Nothing
   curve <- piecewiseZeroInflationCurve today baseDate Monthly dc [h1, h2] Nothing Linear
   r1 <- zeroRate curve maturity1 True
   r2 <- zeroRate curve maturity2 True
@@ -85,8 +85,8 @@ main = do
   nominalCurve <- flatForward (ReferenceDate today) nominalQ dc IR.Continuous Annual
   qy1 <- simpleQuote 0.03
   qy2 <- simpleQuote 0.03
-  hy1 <- yearOnYearInflationSwapHelper qy1 obsLag maturity1 cal Unadjusted dc yii CPILinear nominalCurve LastRelevantDate Nothing
-  hy2 <- yearOnYearInflationSwapHelper qy2 obsLag maturity2 cal Unadjusted dc yii CPILinear nominalCurve LastRelevantDate Nothing
+  hy1 <- yearOnYearInflationSwapHelper qy1 obsLag (InflationSwapToMaturity maturity1) cal Unadjusted dc yii CPILinear nominalCurve LastRelevantDate Nothing
+  hy2 <- yearOnYearInflationSwapHelper qy2 obsLag (InflationSwapToMaturity maturity2) cal Unadjusted dc yii CPILinear nominalCurve LastRelevantDate Nothing
   yoyCurve <- piecewiseYoyInflationCurve today baseDate 0.03 Monthly dc [hy1, hy2] Nothing Linear
   ry1 <- yoyRate yoyCurve maturity1 True
   ry2 <- yoyRate yoyCurve maturity2 True

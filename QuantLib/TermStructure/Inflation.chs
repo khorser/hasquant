@@ -6,6 +6,7 @@ module QuantLib.TermStructure.Inflation
   , ZeroCouponInflationSwapHelper
   , YearOnYearInflationSwapHelper
   , CPIInterpolationType(..) -- ^re-exported from "QuantLib.Internal.Common"
+  , InflationSwapPeriod(..)
     -- ** Seasonality
   , Seasonality(..)
 
@@ -48,8 +49,54 @@ import Data.List.NonEmpty(NonEmpty, toList)
 {#pointer *QlYearOnYearInflationSwapHelper as YearOnYearInflationSwapHelper foreign -> CYearOnYearInflationSwapHelper nocode#}
 {#pointer *QlBondHelper as BondHelper foreign -> CBondHelper' nocode#}
 
--- |Bootstrap helper for a zero-coupon inflation swap, at the given (observation lag, maturity).
-{#fun qlZeroCouponInflationSwapHelper as zeroCouponInflationSwapHelper{withQuote*`GenQuote q' -- ^quote
+-- |Which dates an inflation swap helper's swap runs between. 'InflationSwapToMaturity' starts on
+-- the evaluation date and moves with it; 'InflationSwapBetweenDates' is fixed. The fixed form also
+-- takes its observation-interpolation weight from the start date rather than the maturity.
+data InflationSwapPeriod
+  = InflationSwapToMaturity
+      !Day -- ^maturity
+  | InflationSwapBetweenDates
+      !Day -- ^startDate
+      !Day -- ^endDate
+
+-- |Bootstrap helper for a zero-coupon inflation swap, at the given observation lag and period.
+zeroCouponInflationSwapHelper :: GenQuote q -- ^quote
+  -> (Word, TimeUnit) -- ^swapObsLag
+  -> InflationSwapPeriod
+  -> Calendar
+  -> BusinessDayConvention -- ^paymentConvention
+  -> DayCounter
+  -> GenZeroInflationIndex zidx
+  -> CPIInterpolationType -- ^observationInterpolation
+  -> PillarChoice -- ^pillar
+  -> Maybe Day -- ^customPillarDate
+  -> IO ZeroCouponInflationSwapHelper
+zeroCouponInflationSwapHelper quote lag period cal conv dc zii interp pillar customPillarDate = case period of
+  InflationSwapToMaturity m -> zeroCouponInflationSwapHelperRaw quote lag m cal conv dc zii interp pillar customPillarDate
+  InflationSwapBetweenDates s e ->
+    zeroCouponInflationSwapHelperBetweenDatesRaw quote lag s e cal conv dc zii interp pillar customPillarDate
+
+-- |Bootstrap helper for a year-on-year inflation swap. Unlike 'zeroCouponInflationSwapHelper',
+-- also needs the nominal discount curve (the YoY swap's fixed/floating legs discount off it).
+yearOnYearInflationSwapHelper :: GenQuote q -- ^quote
+  -> (Word, TimeUnit) -- ^swapObsLag
+  -> InflationSwapPeriod
+  -> Calendar
+  -> BusinessDayConvention -- ^paymentConvention
+  -> DayCounter
+  -> GenYoYInflationIndex yidx
+  -> CPIInterpolationType -- ^observationInterpolation
+  -> GenYieldTermStructure y -- ^nominalTermStructure
+  -> PillarChoice -- ^pillar
+  -> Maybe Day -- ^customPillarDate
+  -> IO YearOnYearInflationSwapHelper
+yearOnYearInflationSwapHelper quote lag period cal conv dc yii interp nominal pillar customPillarDate = case period of
+  InflationSwapToMaturity m -> yearOnYearInflationSwapHelperRaw quote lag m cal conv dc yii interp nominal pillar customPillarDate
+  InflationSwapBetweenDates s e ->
+    yearOnYearInflationSwapHelperBetweenDatesRaw quote lag s e cal conv dc yii interp nominal pillar customPillarDate
+
+-- Raw inflation swap helper bindings; one per 'InflationSwapPeriod' constructor for each helper.
+{#fun qlZeroCouponInflationSwapHelper as zeroCouponInflationSwapHelperRaw{withQuote*`GenQuote q' -- ^quote
   ,fromEnumQuantity`(Word,TimeUnit)'& -- ^swapObsLag
   ,withDay*`Day' -- ^maturity
   ,withCalendar*`Calendar'
@@ -61,9 +108,34 @@ import Data.List.NonEmpty(NonEmpty, toList)
   ,withMaybeDay*`Maybe Day' -- ^customPillarDate
   ,preErrorCheck-`String'errorCheck*-}->`ZeroCouponInflationSwapHelper'peekZeroCouponInflationSwapHelper*#}
 
--- |Bootstrap helper for a year-on-year inflation swap. Unlike 'zeroCouponInflationSwapHelper',
--- also needs the nominal discount curve (the YoY swap's fixed/floating legs discount off it).
-{#fun qlYearOnYearInflationSwapHelper as yearOnYearInflationSwapHelper{withQuote*`GenQuote q' -- ^quote
+{#fun qlZeroCouponInflationSwapHelper2 as zeroCouponInflationSwapHelperBetweenDatesRaw{withQuote*`GenQuote q' -- ^quote
+  ,fromEnumQuantity`(Word,TimeUnit)'& -- ^swapObsLag
+  ,withDay*`Day' -- ^startDate
+  ,withDay*`Day' -- ^endDate
+  ,withCalendar*`Calendar'
+  ,fromEnumC`BusinessDayConvention' -- ^paymentConvention
+  ,withDayCounter*`DayCounter'
+  ,withZeroInflationIndex*`GenZeroInflationIndex zidx'
+  ,fromEnumC`CPIInterpolationType' -- ^observationInterpolation
+  ,`PillarChoice' -- ^pillar
+  ,withMaybeDay*`Maybe Day' -- ^customPillarDate
+  ,preErrorCheck-`String'errorCheck*-}->`ZeroCouponInflationSwapHelper'peekZeroCouponInflationSwapHelper*#}
+
+{#fun qlYearOnYearInflationSwapHelper2 as yearOnYearInflationSwapHelperBetweenDatesRaw{withQuote*`GenQuote q' -- ^quote
+  ,fromEnumQuantity`(Word,TimeUnit)'& -- ^swapObsLag
+  ,withDay*`Day' -- ^startDate
+  ,withDay*`Day' -- ^endDate
+  ,withCalendar*`Calendar'
+  ,fromEnumC`BusinessDayConvention' -- ^paymentConvention
+  ,withDayCounter*`DayCounter'
+  ,withYoYInflationIndex*`GenYoYInflationIndex yidx'
+  ,fromEnumC`CPIInterpolationType' -- ^observationInterpolation
+  ,withYieldTermStructure*`GenYieldTermStructure y' -- ^nominalTermStructure
+  ,`PillarChoice' -- ^pillar
+  ,withMaybeDay*`Maybe Day' -- ^customPillarDate
+  ,preErrorCheck-`String'errorCheck*-}->`YearOnYearInflationSwapHelper'peekYearOnYearInflationSwapHelper*#}
+
+{#fun qlYearOnYearInflationSwapHelper as yearOnYearInflationSwapHelperRaw{withQuote*`GenQuote q' -- ^quote
   ,fromEnumQuantity`(Word,TimeUnit)'& -- ^swapObsLag
   ,withDay*`Day' -- ^maturity
   ,withCalendar*`Calendar'

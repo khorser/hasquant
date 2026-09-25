@@ -1649,14 +1649,24 @@ void qlFreeZeroCouponInflationSwapHelper(QlZeroCouponInflationSwapHelper *o) {de
 QlZeroCouponInflationSwapHelper* qlZeroCouponInflationSwapHelper(QlQuote* quote, int n, int u, int maturity, Calendar* calendar, int paymentConvention, DayCounter* dayCounter, QlZeroInflationIndex* zii, int observationInterpolation, int pillar, int customPillarDate, char **e) {
   try {return ret(new QlZeroCouponInflationSwapHelper(alloc(new ZeroCouponInflationSwapHelper(*arg(quote), Period(n, (TimeUnit)u), Date(maturity),
           *arg(calendar), (BusinessDayConvention)paymentConvention, *arg(dayCounter), *arg(zii),
-          observationInterpolation == 0 ? CPI::Flat : CPI::Linear, (Pillar::Choice)pillar, qlNullableDate(customPillarDate)))));
+          (CPI::InterpolationType)observationInterpolation, (Pillar::Choice)pillar, qlNullableDate(customPillarDate)))));
+  } catch (std::exception& er) {return handleException<QlZeroCouponInflationSwapHelper*>(e, er);}}
+QlZeroCouponInflationSwapHelper* qlZeroCouponInflationSwapHelper2(QlQuote* quote, int n, int u, int startDate, int endDate, Calendar* calendar, int paymentConvention, DayCounter* dayCounter, QlZeroInflationIndex* zii, int observationInterpolation, int pillar, int customPillarDate, char **e) {
+  try {return ret(new QlZeroCouponInflationSwapHelper(alloc(new ZeroCouponInflationSwapHelper(*arg(quote), Period(n, (TimeUnit)u), Date(startDate), Date(endDate),
+          *arg(calendar), (BusinessDayConvention)paymentConvention, *arg(dayCounter), *arg(zii),
+          (CPI::InterpolationType)observationInterpolation, (Pillar::Choice)pillar, qlNullableDate(customPillarDate)))));
   } catch (std::exception& er) {return handleException<QlZeroCouponInflationSwapHelper*>(e, er);}}
 
 void qlFreeYearOnYearInflationSwapHelper(QlYearOnYearInflationSwapHelper *o) {del(o);}
 QlYearOnYearInflationSwapHelper* qlYearOnYearInflationSwapHelper(QlQuote* quote, int n, int u, int maturity, Calendar* calendar, int paymentConvention, DayCounter* dayCounter, QlYoYInflationIndex* yii, int observationInterpolation, QlYieldTermStructure* nominalTermStructure, int pillar, int customPillarDate, char **e) {
   try {return ret(new QlYearOnYearInflationSwapHelper(alloc(new YearOnYearInflationSwapHelper(*arg(quote), Period(n, (TimeUnit)u), Date(maturity),
           *arg(calendar), (BusinessDayConvention)paymentConvention, *arg(dayCounter), *arg(yii),
-          observationInterpolation == 0 ? CPI::Flat : CPI::Linear, *arg(nominalTermStructure), (Pillar::Choice)pillar, qlNullableDate(customPillarDate)))));
+          (CPI::InterpolationType)observationInterpolation, *arg(nominalTermStructure), (Pillar::Choice)pillar, qlNullableDate(customPillarDate)))));
+  } catch (std::exception& er) {return handleException<QlYearOnYearInflationSwapHelper*>(e, er);}}
+QlYearOnYearInflationSwapHelper* qlYearOnYearInflationSwapHelper2(QlQuote* quote, int n, int u, int startDate, int endDate, Calendar* calendar, int paymentConvention, DayCounter* dayCounter, QlYoYInflationIndex* yii, int observationInterpolation, QlYieldTermStructure* nominalTermStructure, int pillar, int customPillarDate, char **e) {
+  try {return ret(new QlYearOnYearInflationSwapHelper(alloc(new YearOnYearInflationSwapHelper(*arg(quote), Period(n, (TimeUnit)u), Date(startDate), Date(endDate),
+          *arg(calendar), (BusinessDayConvention)paymentConvention, *arg(dayCounter), *arg(yii),
+          (CPI::InterpolationType)observationInterpolation, *arg(nominalTermStructure), (Pillar::Choice)pillar, qlNullableDate(customPillarDate)))));
   } catch (std::exception& er) {return handleException<QlYearOnYearInflationSwapHelper*>(e, er);}}
 
 QlZeroCouponInflationSwap* qlZeroCouponInflationSwapHelperSwap(QlZeroCouponInflationSwapHelper* o, char **e) {try {return ret(new QlZeroCouponInflationSwap((*arg(o))->swap()));} catch (std::exception& er) {return handleException<QlZeroCouponInflationSwap*>(e, er);}}
