@@ -888,9 +888,11 @@ futuresRateHelper price terms = case terms of
 -- date, reads no stored fixing: @Just []@. A 'DepositOnFixingDate' deposit, or a 'FraBetweenDates'
 -- FRA with an indexed coupon, reads its fixing once the fixing date is before the evaluation date,
 -- and reports it from then on; on the fixing date itself it still forecasts.
--- An overnight-index or SOFR futures helper from two weeks before its period starts (it then reads
--- past fixings through a future QuantLib keeps private), and any helper type the walk has no case
--- for, report 'Nothing': "cannot see it", which is not the same as "needs nothing".
+-- An overnight-index or SOFR futures helper reports each business-day fixing from its period start
+-- up to the evaluation date, that date's included because the future reads it when stored. On
+-- QuantLib 1.43, which keeps the future private, it instead reports 'Nothing' from two weeks before
+-- its period starts. Any helper type the walk has no case for reports 'Nothing' too: "cannot see
+-- it", which is not the same as "needs nothing".
 --
 -- The dates follow the evaluation date, because a relative-date helper re-initialises its
 -- schedule when that date moves: call this under the date whose fixings are being asked about.

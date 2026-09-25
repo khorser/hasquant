@@ -248,8 +248,8 @@ namespace {
   // Same callback, but derived from StrikedTypePayoff instead of Payoff, carrying an advisory
   // (type, strike) pair. This is what makes a Haskell payoff usable with the FD vanilla engines:
   // FdBlackScholesVanillaEngine/FdHestonVanillaEngine dynamic_pointer_cast the payoff to
-  // StrikedTypePayoff *without* a QL_REQUIRE and immediately call ->strike()
-  // (fdblackscholesvanillaengine.cpp:154-166), so a plain HsPayoff null-derefs there. They need
+  // StrikedTypePayoff and call ->strike(), so they reject a plain HsPayoff -- and QuantLib <= 1.43,
+  // which omits the QL_REQUIRE, null-derefs there. They need
   // the strike only for mesher geometry -- grid extent and the node-concentration point -- and
   // hand the payoff itself to FdmLogInnerValue, which takes a generic Payoff. So supplying a real
   // strike makes the cast succeed and the engine price the Haskell payoff correctly, rather than
@@ -450,8 +450,9 @@ namespace {
     std::vector<std::pair<std::string, Date> >& out_;
     bool opaque_;
 
-    // BMA, multiple-resets and cross-currency helpers keep their instrument in a protected member:
-    // a derived class may name it through a pointer to member, which reaches it without touching QuantLib.
+    // Helpers that keep their instrument in a protected member: a derived class may name it through
+    // a pointer to member, which reaches it without touching QuantLib.
+#if QL_HEX_VERSION < 0x01440000
     struct BMAPeek : BMASwapRateHelper {
       static const ext::shared_ptr<BMASwap>& swap(BMASwapRateHelper& h) {return h.*(&BMAPeek::swap_);}
     };
@@ -459,15 +460,17 @@ namespace {
       static const ext::shared_ptr<MultipleResetsSwap>& swap(MultipleResetsSwapRateHelper& h) {
         return h.*(&MultipleResetsPeek::swap_);}
     };
+    struct CrossCurrencySwapPeek : ConstNotionalCrossCurrencySwapRateHelper {
+      static const ext::shared_ptr<ConstNotionalCrossCurrencyFixedVsFloatingSwap>& swap(
+          ConstNotionalCrossCurrencySwapRateHelper& h) {return h.*(&CrossCurrencySwapPeek::xccySwap_);}
+    };
+#endif
+    // The basis helpers price these legs; the swap() later versions expose is a unit-notional mirror.
     struct CrossCurrencyBasisPeek : CrossCurrencyBasisSwapRateHelperBase {
       static const Leg& baseLeg(CrossCurrencyBasisSwapRateHelperBase& h) {
         return h.*(&CrossCurrencyBasisPeek::baseCcyIborLeg_);}
       static const Leg& quoteLeg(CrossCurrencyBasisSwapRateHelperBase& h) {
         return h.*(&CrossCurrencyBasisPeek::quoteCcyIborLeg_);}
-    };
-    struct CrossCurrencySwapPeek : ConstNotionalCrossCurrencySwapRateHelper {
-      static const ext::shared_ptr<ConstNotionalCrossCurrencyFixedVsFloatingSwap>& swap(
-          ConstNotionalCrossCurrencySwapRateHelper& h) {return h.*(&CrossCurrencySwapPeek::xccySwap_);}
     };
 
     void collectPastFixing(const std::string& name, const Date& d) {
@@ -519,6 +522,26 @@ namespace {
     }
 #endif
     void visit(BondHelper& h) override {collectLegFixingDependencies(h.bond()->cashflows(), out_);}
+#if QL_HEX_VERSION >= 0x01440000
+    void visit(BMASwapRateHelper& h) override {collectSwapFixingDependencies(*h.swap(), out_);}
+    void visit(MultipleResetsSwapRateHelper& h) override {collectSwapFixingDependencies(*h.swap(), out_);}
+    // OvernightIndexFuture's rate reads the stored fixing of each business day from its value date,
+    // adjusted Preceding, up to today, today's only if present; an expired future reads none.
+    void visit(OvernightIndexFutureRateHelper& h) override {
+      const ext::shared_ptr<OvernightIndexFuture> future = h.future();
+      if (future->isExpired()) return;
+      const ext::shared_ptr<OvernightIndex>& index = future->overnightIndex();
+      const Calendar calendar = index->fixingCalendar();
+      const Date today = Settings::instance().evaluationDate();
+      Date d = future->valueDate();
+      for (Date fixingDate = calendar.adjust(d, Preceding);
+           d < future->maturityDate() && fixingDate <= today; fixingDate = d = calendar.advance(d, 1, Days))
+        out_.emplace_back(index->name(), fixingDate);
+    }
+    void visit(ConstNotionalCrossCurrencySwapRateHelper& h) override {
+      collectSwapFixingDependencies(*h.swap(), out_);
+    }
+#else
     void visit(BMASwapRateHelper& h) override {collectSwapFixingDependencies(*BMAPeek::swap(h), out_);}
     void visit(MultipleResetsSwapRateHelper& h) override {
       collectSwapFixingDependencies(*MultipleResetsPeek::swap(h), out_);
@@ -528,12 +551,12 @@ namespace {
     void visit(OvernightIndexFutureRateHelper& h) override {
       if (h.earliestDate() - 14 <= Settings::instance().evaluationDate()) opaque_ = true;
     }
-    // QuantLib master (after 1.43) also exposes these through swap().
-    void visit(ConstNotionalCrossCurrencyBasisSwapRateHelper& h) override {collectCrossCurrencyBasis(h);}
-    void visit(MtMCrossCurrencyBasisSwapRateHelper& h) override {collectCrossCurrencyBasis(h);}
     void visit(ConstNotionalCrossCurrencySwapRateHelper& h) override {
       collectSwapFixingDependencies(*CrossCurrencySwapPeek::swap(h), out_);
     }
+#endif
+    void visit(ConstNotionalCrossCurrencyBasisSwapRateHelper& h) override {collectCrossCurrencyBasis(h);}
+    void visit(MtMCrossCurrencyBasisSwapRateHelper& h) override {collectCrossCurrencyBasis(h);}
   };
 }
 
