@@ -242,9 +242,9 @@ int *qlAllocateInts(size_t size) {return ret(new int[size]);}
 double *qlAllocateDoubles(size_t size) {return ret(new double[size]);}
 const QuantLib::Date qlNullableDate(int serialNumber) {return !serialNumber ? Date() : Date(serialNumber);}
 int qlNullableDate(const QuantLib::Date &date) {return date == Date() ? 0 : date.serialNumber();}
-ext::optional<bool> qlOptBool(int b) {return b == -1 ? ext::nullopt : ext::optional<bool>(b);}
+optional<bool> qlOptBool(int b) {return b == -1 ? nullopt : optional<bool>(b);}
 int qlOptBool(optional<bool> b) {return b ? *b : -1;}
-ext::optional<BusinessDayConvention> qlOptBusinessDayConvention(int c) {return c == -1 ? ext::nullopt : ext::optional<BusinessDayConvention>((BusinessDayConvention)c);}
+optional<BusinessDayConvention> qlOptBusinessDayConvention(int c) {return c == -1 ? nullopt : optional<BusinessDayConvention>((BusinessDayConvention)c);}
 
 char *tracedup(const char *p) {
   trace("Duplicating string", (void *)p);
@@ -1042,8 +1042,8 @@ Schedule *qlSchedule1(unsigned len, int *dates, Calendar *cal, int conv, int ter
       d.push_back(Date(dates[i]));
     return alloc(new Schedule(d, *arg(cal), (BusinessDayConvention) conv,
       qlOptBusinessDayConvention(termConv),
-      tenorUnit < 0 ? ext::optional<Period>() : ext::optional<Period>(Period(tenorLen, (TimeUnit)tenorUnit)),
-      rule < 0 ? ext::optional<DateGeneration::Rule>() : ext::optional<DateGeneration::Rule>((DateGeneration::Rule)rule),
+      tenorUnit < 0 ? optional<Period>() : optional<Period>(Period(tenorLen, (TimeUnit)tenorUnit)),
+      rule < 0 ? optional<DateGeneration::Rule>() : optional<DateGeneration::Rule>((DateGeneration::Rule)rule),
       qlOptBool(eom)));
   } catch (std::exception& er) {return handleException<Schedule *>(e, er);}}
 Schedule *qlSchedule(int eff, int term, int l, int u, Calendar *cal, int conv, int termConv, int rule, int eom, int first, int nextToLast, char **e) {
