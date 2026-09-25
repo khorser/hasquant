@@ -7,7 +7,14 @@ cabal-version: 2.2
 name:           hasquant
 version:        0.8.0.0
 synopsis:       Bindings to QuantLib
-description:    Bindings to the QuantLib library.
+description:    Haskell bindings to the QuantLib C++ library. hasquant provides
+                pricing, curve-building, and risk primitives, including financial
+                instruments, market indexes, term structures, stochastic models,
+                and analytic, tree, finite-difference, and Monte Carlo engines.
+                .
+                The API stays close to QuantLib while using Haskell types to
+                represent its object hierarchies and catch invalid combinations
+                at compile time.
 category:       Finance,FFI,Library
 homepage:       https://github.com/khorser/hasquant#readme
 bug-reports:    https://github.com/khorser/hasquant/issues
