@@ -414,17 +414,20 @@ withMaybeFdmStepCondition (Just f) g = mask $ \restore -> do
 -- engine would have accepted a custom process anyway: their constructors are typed on concrete
 -- process classes (@GeneralizedBlackScholesProcess@ and friends), not on the abstract base.
 --
--- @dimension@ is the length of each drawn sequence -- for a path set, @assets * timesteps@,
--- matching what 'pathGenerator' is passed. The construction mirrors 'pathGenerator''s exactly
--- (same trait, same seed, same direction integers), so a Haskell-evolved path can be compared
--- draw for draw against a 'pathGenerator' one on a bound process.
+-- @dimension@ is the length of each drawn sequence: (normals drawn per step) * timesteps. For
+-- 'pathGenerator' parity the per-step count is the process's @factors@; a Haskell-evolved model
+-- may draw more normals per step than it has Brownian drivers. The construction mirrors
+-- 'pathGenerator''s exactly (same trait, same seed, same direction integers), so a
+-- Haskell-evolved path can be compared draw for draw against a 'pathGenerator' one on a bound
+-- process.
 {#fun qlGaussianRsg as gaussianRsg{fromEnumC`RngTrait'
   ,fromIntegral`Word' -- ^dimension
   ,fromIntegral`Word' -- ^seed
   ,preErrorCheck-`String'errorCheck*-}->`GaussianRsg'peekGaussianRsg*#}
 
 -- |'gaussianRsg' driven by a low-discrepancy (Sobol) sequence with the given direction integers --
--- the 'sobolPathGenerator' counterpart.
+-- the 'sobolPathGenerator' counterpart. The maximum @dimension@ depends on the direction-integer
+-- set and on QuantLib's build-time @PPMT_MAX_DIM@; a larger one raises an exception.
 {#fun qlSobolGaussianRsg as sobolGaussianRsg{fromEnumC`SobolDirectionIntegers'
   ,fromIntegral`Word' -- ^dimension
   ,fromIntegral`Word' -- ^seed
