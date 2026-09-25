@@ -530,16 +530,17 @@ spec = do
             Annual thirty360dc i6 curve True 0 >>= rateHelperFixingDependencies
           nub (map fst fixedDeps) `shouldBe` drop 1 names
 
-      it "reports a started overnight-index futures contract as unreachable" $
+      it "reports a started overnight-index futures contract's fixings up to the evaluation date" $
         Context.keepingSettingsGc $ do
           Context.setEvaluationDate (Just (2 `january` 2024))
           price <- Quote.simpleQuote 94.8
           (sofrFutureRateHelper price QuantLib.Time.Date.March 2024 Quarterly Nothing LastRelevantDate Nothing
             >>= rateHelperFixingDependencies) `shouldReturn` Just []
-          -- Once the reference period starts it reads past SOFR fixings, but QuantLib keeps the
-          -- future private, so "cannot see it" is the only honest answer.
-          (sofrFutureRateHelper price QuantLib.Time.Date.December 2023 Quarterly Nothing LastRelevantDate Nothing
-            >>= rateHelperFixingDependencies) `shouldReturn` Nothing
+          started <- sofrFutureRateHelper price QuantLib.Time.Date.December 2023 Quarterly Nothing
+            LastRelevantDate Nothing >>= rateHelperFixingDependencies
+          -- QuantLib <= 1.43 keeps the future private, so "cannot see it" is the only honest answer.
+          let sofrDates = map (`december` 2023) [20, 21, 22, 26, 27, 28, 29] ++ [2 `january` 2024]
+          started `shouldBe` if quantLibAtMost143 then Nothing else Just [("SOFRON Actual/360", d) | d <- sofrDates]
 
       it "re-dates with the evaluation date" $
         Context.keepingSettingsGc $ do

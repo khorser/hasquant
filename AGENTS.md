@@ -75,7 +75,7 @@ Scale numeric tolerances to the result magnitude, normally about `1e-6` relative
 - Derive an exercise/query date and its year fraction from the same source; do not independently round a time fraction into a date.
 - If a historical QuantLib golden value disagrees systematically, reproduce the fixture in raw C++ against the installed library before diagnosing the binding.
 - Tests that change `Settings.evaluationDate` must use `Settings.keepingSettingsGc`. Never hand-write the double-`performGC` nudge; use `Settings.collectGarbage` only when finalization is needed outside settings restoration.
-- Document custom-payoff engine compatibility anywhere a public function accepts one; several upstream engines require a striked payoff and two bound FD engines otherwise dereference a failed cast.
+- Document custom-payoff engine compatibility anywhere a public function accepts one; several upstream engines require a striked payoff, and on QuantLib <= 1.43 two bound FD engines dereference a failed cast instead of throwing.
 
 ## C shim and generated code
 
