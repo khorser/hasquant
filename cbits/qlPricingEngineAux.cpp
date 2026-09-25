@@ -30,6 +30,7 @@ namespace hasquant {
 }
 
 using QuantLib::ext::shared_ptr;
+#include "qlStdCompat.h"
 #include "qlPricingEngineAux.h"
 using namespace QuantLib;
 
@@ -138,7 +139,7 @@ PricingEngine* qlMCHestonHullWhiteEngine1Aux(int rngtrait, int stattrait, const 
   });
 }
 
-PricingEngine* qlMCAmericanEngine1Aux(int rngtrait, int stattrait, const shared_ptr<GeneralizedBlackScholesProcess> process, unsigned timeSteps, unsigned timeStepsPerYear, int antitheticVariate, int controlVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, unsigned polynomOrder, LsmBasisSystem::PolynomialType polynomType, unsigned nCalibrationSamples, ext::optional<bool> antitheticVariateCalibration, unsigned seedCalibration) {
+PricingEngine* qlMCAmericanEngine1Aux(int rngtrait, int stattrait, const shared_ptr<GeneralizedBlackScholesProcess> process, unsigned timeSteps, unsigned timeStepsPerYear, int antitheticVariate, int controlVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, unsigned polynomOrder, LsmBasisSystem::PolynomialType polynomType, unsigned nCalibrationSamples, optional<bool> antitheticVariateCalibration, unsigned seedCalibration) {
   return dispatchRngStat<PricingEngine*>(rngtrait, stattrait, [&](auto r, auto st) {
     return new MCAmericanEngine<typename decltype(r)::type, typename decltype(st)::type>(process, timeSteps, timeStepsPerYear, antitheticVariate, controlVariate, requiredSamples, requiredTolerance, maxSamples, seed, polynomOrder, polynomType, nCalibrationSamples, antitheticVariateCalibration, seedCalibration);
   });

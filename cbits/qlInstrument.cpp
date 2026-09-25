@@ -203,16 +203,16 @@ namespace {
   }
   // r's fields are all zero/null on entry (the caller value-initialises the whole array), so any
   // field this leaves untouched is already the correct "unset" value.
-  void fillResult(struct QlAdditionalResult &r, const ext::any &v) {
+  void fillResult(struct QlAdditionalResult &r, const any &v) {
     if (v.type() == typeid(double)) {
       r.type = AdditionalResultDouble;
-      r.dval = ext::any_cast<double>(v);
+      r.dval = any_cast<double>(v);
     } else if (v.type() == typeid(std::string)) {
       r.type = AdditionalResultString;
-      r.sval = tracedup(ext::any_cast<std::string>(v).c_str());
+      r.sval = tracedup(any_cast<std::string>(v).c_str());
     } else if (v.type() == typeid(std::vector<double>)) {
       r.type = AdditionalResultDoubleVector;
-      const std::vector<double> &vec = ext::any_cast<const std::vector<double>&>(v);
+      const std::vector<double> &vec = any_cast<const std::vector<double>&>(v);
       r.vlen = static_cast<unsigned>(vec.size());
       if (r.vlen) {
         double *varr = alloc(new double[r.vlen]);
@@ -587,11 +587,11 @@ void qlInstrumentAdditionalResults(QlInstrument *instr, unsigned *len,
     struct QlAdditionalResult **out, char **e) {
   OutAdditionalResultArray result(len, out);
   try {
-    const std::map<std::string, ext::any> &res = (*arg(instr))->additionalResults();
+    const std::map<std::string, any> &res = (*arg(instr))->additionalResults();
     if (res.empty()) return;
     QlAdditionalResult *arr = result.allocate(static_cast<unsigned>(res.size()));
     unsigned i = 0;
-    for (std::map<std::string, ext::any>::const_iterator it = res.begin(); it != res.end(); ++it, ++i) {
+    for (std::map<std::string, any>::const_iterator it = res.begin(); it != res.end(); ++it, ++i) {
       arr[i].key = tracedup(it->first.c_str());
       fillResult(arr[i], it->second);
     }
@@ -2010,7 +2010,7 @@ QlFloatingRateCouponPricer* qlCompoundingMultipleResetsPricer(char **e) {try {re
 void qlFreeOvernightIndexedCoupon(QlOvernightIndexedCoupon *o) {del(o);}
 QlFloatingRateCoupon* qlOvernightIndexedCouponAsFloatingRateCoupon(QlOvernightIndexedCoupon* o) {return ret(new QlFloatingRateCoupon(*arg(o)));}
 QlOvernightIndexedCoupon* qlOvernightIndexedCoupon(int paymentDate, double nominal, int startDate, int endDate, QlOvernightIndex *index, double gearing, double spread, int refPeriodStart, int refPeriodEnd, DayCounter *dayCounter, int telescopic, int averaging, unsigned lookback, unsigned lockout, int observationShift, int compoundSpread, int rateStart, int rateEnd, int exCouponDate, int rounding, char **e) {
-  try {return ret(new QlOvernightIndexedCoupon(alloc(new OvernightIndexedCoupon(Date(paymentDate), nominal, Date(startDate), Date(endDate), *arg(index), gearing, spread, qlNullableDate(refPeriodStart), qlNullableDate(refPeriodEnd), *arg(dayCounter), telescopic, (RateAveraging::Type)averaging, lookback, lockout, observationShift, compoundSpread, qlNullableDate(rateStart), qlNullableDate(rateEnd), qlNullableDate(exCouponDate), rounding == Null<Integer>() ? ext::optional<Integer>() : ext::optional<Integer>(rounding)))));
+  try {return ret(new QlOvernightIndexedCoupon(alloc(new OvernightIndexedCoupon(Date(paymentDate), nominal, Date(startDate), Date(endDate), *arg(index), gearing, spread, qlNullableDate(refPeriodStart), qlNullableDate(refPeriodEnd), *arg(dayCounter), telescopic, (RateAveraging::Type)averaging, lookback, lockout, observationShift, compoundSpread, qlNullableDate(rateStart), qlNullableDate(rateEnd), qlNullableDate(exCouponDate), rounding == Null<Integer>() ? optional<Integer>() : optional<Integer>(rounding)))));
   } catch (std::exception& er) {return handleException<QlOvernightIndexedCoupon*>(e, er);}}
 QlFloatingRateCoupon* qlCappedFlooredOvernightIndexedCoupon(QlOvernightIndexedCoupon *underlying, double cap, double floor, int naked, int daily, char **e) {
   try {return ret(new QlFloatingRateCoupon(alloc(new CappedFlooredOvernightIndexedCoupon(*arg(underlying), cap, floor, naked, daily))));
@@ -2073,7 +2073,7 @@ QlFloatingRateCoupon* qlCappedFlooredCmsSpreadCoupon(int paymentDate, double nom
   } catch (std::exception& er) {return handleException<QlFloatingRateCoupon*>(e, er);}}
 QlFloatingRateCouponPricer* qlLognormalCmsSpreadPricer(QlCmsCouponPricer* cmsPricer, QlQuote* correlation, QlYieldTermStructure* couponDiscountCurve, unsigned integrationPoints, int haveVolatilityType, int volatilityType, double shift1, double shift2, char **e) {
   try {return ret(new QlFloatingRateCouponPricer(alloc(new LognormalCmsSpreadPricer(*arg(cmsPricer), *arg(correlation), qlNullableHandle(couponDiscountCurve), integrationPoints,
-      haveVolatilityType ? ext::optional<VolatilityType>((VolatilityType)volatilityType) : ext::nullopt, shift1, shift2))));
+      haveVolatilityType ? optional<VolatilityType>((VolatilityType)volatilityType) : nullopt, shift1, shift2))));
   } catch (std::exception& er) {return handleException<QlFloatingRateCouponPricer*>(e, er);}}
 Leg* qlCmsSpreadLeg(Schedule* schedule, QlSwapSpreadIndex* swapSpreadIndex, unsigned notionalsLen, double* notionals, DayCounter* paymentDayCounter, int paymentAdjustment, unsigned fixingDaysLen, unsigned* fixingDays, unsigned gearingsLen, double* gearings, unsigned spreadsLen, double* spreads, unsigned capsLen, double* caps, unsigned floorsLen, double* floors, int inArrears, int zeroPayments, char **e) {
   try {return alloc(new Leg(CmsSpreadLeg(*arg(schedule), *arg(swapSpreadIndex)).withNotionals(std::vector<double>(notionals, notionals+notionalsLen)).withPaymentDayCounter(*arg(paymentDayCounter))
@@ -2567,7 +2567,7 @@ void qlFreeDefaultLossModel(QlDefaultLossModel *o) {del(o);}
 
 QlSyntheticCDO* qlSyntheticCDO(QlBasket* basket, int side, Schedule* schedule, double upfrontRate, double runningRate, DayCounter* dayCounter, int paymentConvention, int haveNotional, double notional, char **e) {
   try {return ret(new QlSyntheticCDO(alloc(new SyntheticCDO(*arg(basket), (Protection::Side)side, *arg(schedule), upfrontRate, runningRate,
-      *arg(dayCounter), (BusinessDayConvention)paymentConvention, haveNotional ? ext::optional<Real>(notional) : ext::nullopt))));
+      *arg(dayCounter), (BusinessDayConvention)paymentConvention, haveNotional ? optional<Real>(notional) : nullopt))));
   } catch (std::exception& er) {return handleException<QlSyntheticCDO*>(e, er);}}
 void qlFreeSyntheticCDO(QlSyntheticCDO *o) {del(o);}
 QlInstrument* qlSyntheticCDOAsInstrument(QlSyntheticCDO *o) {return ret(new QlInstrument(*arg(o)));}

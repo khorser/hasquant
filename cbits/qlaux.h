@@ -4,7 +4,7 @@
 #include <iterator>
 #include <memory>
 #include <vector>
-#include <boost/optional.hpp>
+#include "qlStdCompat.h"
 #include <ql/math/matrix.hpp>
 #include <ql/instruments/varianceswap.hpp>
 #include <ql/instruments/constnotionalcrosscurrencyswap.hpp>
@@ -777,7 +777,6 @@ using QuantLib::ZeroSpreadedTermStructure;
 using QuantLib::Date;
 using QuantLib::Matrix;
 using QuantLib::ext::shared_ptr;
-using QuantLib::ext::optional;
 
 class PolymorphicPathGenerator;
 class PolymorphicGaussianRsg;
