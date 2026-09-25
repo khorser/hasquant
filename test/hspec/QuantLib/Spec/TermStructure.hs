@@ -397,7 +397,7 @@ spec = do
           q <- Quote.simpleQuote 0.03
 
           ois <- overnightIborIndex Sofr Nothing
-          oisSwap <- oisRateHelper 2 (1, Years) (0, Days) q ois Nothing >>= helperInstrument
+          oisSwap <- oisRateHelper (OisTenor 2 (1, Years) (0, Days)) q ois Nothing >>= helperInstrument
           (Swap.asSwap oisSwap >>= Swap.maturityDate) `shouldReturn` Just (4 `january` 2025)
 
           ccy <- currency EUR
@@ -457,7 +457,7 @@ spec = do
           actual365dc <- dayCounter Actual365FixedStandard
           curve <- flatForward (SettlementDays 0 cal) q actual365dc IR.Continuous Annual
           spot <- Quote.simpleQuote 1.1
-          (fxSwapRateHelper q spot (1, Years) 2 cal ModifiedFollowing False True curve cal
+          (fxSwapRateHelper q spot (FxSwapTenor (1, Years) 2 cal ModifiedFollowing False cal) True curve
             >>= rateHelperFixingDependencies) `shouldReturn` Just []
 
       it "reports a fixed-date deposit's or indexed FRA's fixing only once it has passed" $
@@ -485,7 +485,7 @@ spec = do
           Context.setEvaluationDate (Just (2 `january` 2024))
           q <- Quote.simpleQuote 0.03
           ois <- overnightIborIndex Sofr Nothing
-          (Just deps) <- oisRateHelper 2 (1, Years) (0, Days) q ois Nothing
+          (Just deps) <- oisRateHelper (OisTenor 2 (1, Years) (0, Days)) q ois Nothing
             >>= asRateHelper >>= rateHelperFixingDependencies
           -- The overnight leg of a 1Y OIS is one annual coupon: a hand-written list would carry
           -- one date, where the coupon reads a fixing on every business day it compounds over.
@@ -637,7 +637,7 @@ spec = do
     -- fwdPoint quote it was built from -- that is the definition of a successful bootstrap
     -- (RateHelper::quoteError() = quote_->value() - impliedQuote(), driven to ~0 by the
     -- solver), not something specific to FX swaps.
-    describe "fx swap rate helper" $
+    describe "fx swap rate helper" $ do
       it "bootstrapped curve reprices the helper's own forward points" $
         Context.keepingSettingsGc $ do
           Context.setEvaluationDate (Just (2 `january` 2024))
@@ -650,8 +650,8 @@ spec = do
           collateralCurve <- flatForward (SettlementDays fixingDays cal) collRate actual360dc IR.Continuous Annual
           spotFx <- Quote.simpleQuote 1.10
           fwdPoint <- Quote.simpleQuote 0.0025
-          rh <- fxSwapRateHelper fwdPoint spotFx (1, Years) fixingDays cal ModifiedFollowing False
-                  True collateralCurve tradingCal
+          rh <- fxSwapRateHelper fwdPoint spotFx (FxSwapTenor (1, Years) fixingDays cal ModifiedFollowing False tradingCal)
+                  True collateralCurve
           ts <- piecewiseYieldCurve (ReferenceDate settlement) [rh] actual360dc [] (Iterative Discount LogLinear defaultIterativeBootstrapOpts) False
           -- PiecewiseYieldCurve is a lazy QuantLib object: bootstrapping (and the
           -- setTermStructure call on each helper) only runs on first calculation, not on
@@ -660,6 +660,26 @@ spec = do
           implied <- impliedQuote rh
           fwdVal <- Quote.value fwdPoint
           implied `shouldSatisfy` closePrec fwdVal 1.0e-8
+
+      it "FxSwapBetweenDates agrees with the FxSwapTenor landing on the same dates" $
+        Context.keepingSettingsGc $ do
+          Context.setEvaluationDate (Just (2 `january` 2024))
+          cal <- calendar TARGET
+          tradingCal <- calendar Null
+          actual360dc <- dayCounter (Actual360 False)
+          settlement <- advance cal (2 `january` 2024) (2, Days) Following False
+          maturity <- advance cal settlement (1, Years) ModifiedFollowing False
+          collRate <- Quote.simpleQuote 0.03
+          collateralCurve <- flatForward (SettlementDays 2 cal) collRate actual360dc IR.Continuous Annual
+          spotFx <- Quote.simpleQuote 1.10
+          fwdPoint <- Quote.simpleQuote 0.0025
+          let discountOn terms = do
+                rh <- fxSwapRateHelper fwdPoint spotFx terms True collateralCurve
+                ts <- piecewiseYieldCurve (ReferenceDate settlement) [rh] actual360dc [] (Iterative Discount LogLinear defaultIterativeBootstrapOpts) False
+                discount ts (DatePoint (2 `july` 2024)) True
+          tenor <- discountOn (FxSwapTenor (1, Years) 2 cal ModifiedFollowing False tradingCal)
+          dated <- discountOn (FxSwapBetweenDates settlement maturity)
+          dated `shouldSatisfy` closePrec tenor 1.0e-12
 
     -- Adapted from upstream's multipleresetsswap.cpp testRateHelper (a flat-rate quote at 1Y/2Y/3Y
     -- bootstraps a curve under which each helper's fair rate matches the input). hasquant doesn't

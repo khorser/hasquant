@@ -29,6 +29,8 @@ module QuantLib.TermStructure.Yield
   , DepositTerms(..)
   , FraTerms(..)
   , SwapRateTerms(..)
+  , OisTerms(..)
+  , FxSwapTerms(..)
   , FuturesTerms(..)
   , OISRateHelperOpts(..)
   , OvernightObservation(..)
@@ -59,11 +61,9 @@ module QuantLib.TermStructure.Yield
   , fraRateHelper
   , bondHelper
   , oisRateHelper
-  , oisRateHelperBetweenDates
   , defaultOisRateHelperOpts
   , defaultOvernightObservation
   , oisRateHelperWithOptions
-  , oisRateHelperBetweenDatesWithOptions
   , swapRateHelper
   , bmaSwapRateHelper
   , multipleResetsSwapRateHelper
@@ -88,7 +88,6 @@ module QuantLib.TermStructure.Yield
   , mtmCrossCurrencyBasisSwapRateHelper
   , constNotionalCrossCurrencySwapRateHelper
   , fxSwapRateHelper
-  , fxSwapRateHelperBetweenDates
 
     -- * Mutators
   , linkTo
@@ -539,10 +538,37 @@ fraRateHelper rate terms = case terms of
   ,fromIntegral`Int' -- ^paymentLag
   ,preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
 
--- |Bootstrapping helper from FX swap points, tenor-relative. 'collateralCurve' discounts the
--- collateral currency; the curve being bootstrapped is for the other currency. 'fwdPoint' and
--- 'spotFx' must be quoted in the same units (points already scaled to match the spot).
-{#fun qlFxSwapRateHelper as fxSwapRateHelper{withQuote*`GenQuote q1' -- ^fwdPoint
+-- |How an FX swap helper's dates are given. 'FxSwapTenor' is relative to the evaluation date:
+-- the swap starts @fixingDays@ business days after it on @calendar@ and runs for @tenor@, and
+-- @tradingCalendar@ (QuantLib's null calendar for none) is joined with @calendar@ for the spot
+-- date. 'FxSwapBetweenDates' runs between two fixed dates.
+data FxSwapTerms
+  = FxSwapTenor
+      !(Int, TimeUnit) -- ^tenor
+      !Word -- ^fixingDays
+      !Calendar
+      !BusinessDayConvention
+      !Bool -- ^endOfMonth
+      !Calendar -- ^tradingCalendar
+  | FxSwapBetweenDates
+      !Day -- ^startDate
+      !Day -- ^endDate
+
+-- |Bootstrapping helper from FX swap points. 'collateralCurve' discounts the collateral
+-- currency; the curve being bootstrapped is for the other currency. 'fwdPoint' and 'spotFx' must
+-- be quoted in the same units (points already scaled to match the spot).
+fxSwapRateHelper :: GenQuote q1 -- ^fwdPoint
+  -> GenQuote q2 -- ^spotFx
+  -> FxSwapTerms
+  -> Bool -- ^isFxBaseCurrencyCollateralCurrency
+  -> GenYieldTermStructure y -- ^collateralCurve
+  -> IO RateHelper
+fxSwapRateHelper fwdPoint spotFx terms isBase collateral = case terms of
+  FxSwapTenor t fd cal conv eom trading -> fxSwapRateHelperRaw fwdPoint spotFx t fd cal conv eom isBase collateral trading
+  FxSwapBetweenDates s e -> fxSwapRateHelperBetweenDatesRaw fwdPoint spotFx s e isBase collateral
+
+-- Raw FX swap bindings behind 'fxSwapRateHelper'; one per 'FxSwapTerms' constructor.
+{#fun qlFxSwapRateHelper as fxSwapRateHelperRaw{withQuote*`GenQuote q1' -- ^fwdPoint
   ,withQuote*`GenQuote q2' -- ^spotFx
   ,fromEnumQuantity`(Int,TimeUnit)'& -- ^tenor
   ,fromIntegral`Word' -- ^fixingDays
@@ -554,8 +580,7 @@ fraRateHelper rate terms = case terms of
   ,withCalendar*`Calendar' -- ^tradingCalendar
   ,preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
 
--- |Bootstrapping helper from FX swap points, explicit start\/end date.
-{#fun qlFxSwapRateHelper2 as fxSwapRateHelperBetweenDates{withQuote*`GenQuote q1' -- ^fwdPoint
+{#fun qlFxSwapRateHelper2 as fxSwapRateHelperBetweenDatesRaw{withQuote*`GenQuote q1' -- ^fwdPoint
   ,withQuote*`GenQuote q2' -- ^spotFx
   ,withDay*`Day' -- ^startDate
   ,withDay*`Day' -- ^endDate
@@ -570,27 +595,35 @@ bondHelper cleanPrice bond priceType = bondHelper_ cleanPrice bond (fromEnum pri
 
 {#fun qlBondHelper as bondHelper_{withQuote*`GenQuote q',withBond*`GenBond b',`Int' -- ^priceType
   ,preErrorCheck-`String'errorCheck*-}->`BondHelper'peekBondHelper*#}
--- The narrow and options-record wrappers share the same full-arity bindings; the narrow forms
--- supply QuantLib's defaults.
--- forwardStart is explicit rather than an OISRateHelperOpts field because upstream's
--- ctor2 has none: only the tenor-relative entry points below can honour it.
-oisRateHelper :: Word -> (Int, TimeUnit)
-  -> (Int, TimeUnit) -- ^forwardStart
-  -> GenQuote q -> OvernightIborIndex
-  -> Maybe (GenYieldTermStructure y) -> IO OISRateHelper
-oisRateHelper settlementDays tenor forwardStart fixedRate idx discountingCurve = do
-  cal <- calendar Null
-  oisRateHelper_ settlementDays tenor fixedRate idx discountingCurve
-    False 0 Following Annual cal forwardStart Nothing LastRelevantDate Nothing AveragingCompound
-    Nothing Nothing cal Nothing 0 False Nothing Backward cal ModifiedFollowing
+-- |How an OIS helper's dates are given. 'OisTenor' is relative to the evaluation date: the swap
+-- starts @settlementDays@ after it plus @forwardStart@ and runs for @tenor@. 'OisBetweenDates'
+-- runs between two fixed dates; every overnight fixing it compounds over that is before the
+-- evaluation date is read from the store. @forwardStart@ is a field of 'OisTenor' rather than
+-- of 'OISRateHelperOpts' because QuantLib's dated constructor has none.
+data OisTerms
+  = OisTenor
+      !Word -- ^settlementDays
+      !(Int, TimeUnit) -- ^tenor
+      !(Int, TimeUnit) -- ^forwardStart
+  | OisBetweenDates
+      !Day -- ^startDate
+      !Day -- ^endDate
 
-oisRateHelperBetweenDates :: Day -> Day -> GenQuote q -> OvernightIborIndex
+-- |Rate helper for bootstrapping over overnight-indexed swap rates, with QuantLib's defaults for
+-- everything 'oisRateHelperWithOptions' can set. Both share the same full-arity bindings.
+oisRateHelper :: OisTerms -> GenQuote q -> OvernightIborIndex
   -> Maybe (GenYieldTermStructure y) -> IO OISRateHelper
-oisRateHelperBetweenDates startDate endDate fixedRate idx discountingCurve = do
+oisRateHelper terms fixedRate idx discountingCurve = do
   cal <- calendar Null
-  oisRateHelper2_ startDate endDate fixedRate idx discountingCurve
-    False 0 Following Annual cal Nothing LastRelevantDate Nothing AveragingCompound
-    Nothing Nothing cal Nothing 0 False Nothing Backward cal ModifiedFollowing
+  case terms of
+    OisTenor settlementDays tenor forwardStart ->
+      oisRateHelper_ settlementDays tenor fixedRate idx discountingCurve
+        False 0 Following Annual cal forwardStart Nothing LastRelevantDate Nothing AveragingCompound
+        Nothing Nothing cal Nothing 0 False Nothing Backward cal ModifiedFollowing
+    OisBetweenDates startDate endDate ->
+      oisRateHelper2_ startDate endDate fixedRate idx discountingCurve
+        False 0 Following Annual cal Nothing LastRelevantDate Nothing AveragingCompound
+        Nothing Nothing cal Nothing 0 False Nothing Backward cal ModifiedFollowing
 
 {#fun qlOISRateHelper as oisRateHelper_{fromIntegral`Word' -- ^settlementDays
   ,fromEnumQuantity`(Int,TimeUnit)'& -- ^tenor
@@ -644,35 +677,34 @@ oisRateHelperBetweenDates startDate endDate fixedRate idx discountingCurve = do
   ,fromEnumC`BusinessDayConvention' -- ^convention (q1.k.q1. overnightConvention)
   ,preErrorCheck-`String'errorCheck*-}->`OISRateHelper'peekOISRateHelper*#}
 
-oisRateHelperWithOptions :: Word -> (Int, TimeUnit)
-  -> (Int, TimeUnit) -- ^forwardStart
-  -> GenQuote q -> OvernightIborIndex
+-- |'oisRateHelper' with every trailing QuantLib parameter taken from an options record.
+oisRateHelperWithOptions :: OisTerms -> GenQuote q -> OvernightIborIndex
   -> Maybe (GenYieldTermStructure y) -> OISRateHelperOpts m p -> IO OISRateHelper
-oisRateHelperWithOptions settlementDays tenor forwardStart fixedRate idx discountingCurve opts = do
+oisRateHelperWithOptions terms fixedRate idx discountingCurve opts = do
   cal <- calendar Null
-  oisRateHelper_ settlementDays tenor fixedRate idx discountingCurve
-    (oisTelescopicValueDates opts) (oisPaymentLag opts) (oisPaymentConvention opts)
-    (oisPaymentFrequency opts) (fromMaybe cal (oisPaymentCalendar opts))
-    forwardStart (oisOvernightSpread opts) (oisPillar opts) (oisCustomPillarDate opts)
-    (oisAveragingMethod opts) (oisEndOfMonth opts) (oisFixedPaymentFrequency opts)
-    (fromMaybe cal (oisFixedCalendar opts)) (lookbackDays obs) (lockoutDays obs)
-    (applyObservationShift obs) (oisPricer opts) (oisRule opts)
-    (fromMaybe cal (oisOvernightCalendar opts)) (oisConvention opts)
-  where obs = oisObservation opts
-
-oisRateHelperBetweenDatesWithOptions :: Day -> Day -> GenQuote q -> OvernightIborIndex
-  -> Maybe (GenYieldTermStructure y) -> OISRateHelperOpts m p -> IO OISRateHelper
-oisRateHelperBetweenDatesWithOptions startDate endDate fixedRate idx discountingCurve opts = do
-  cal <- calendar Null
-  oisRateHelper2_ startDate endDate fixedRate idx discountingCurve
-    (oisTelescopicValueDates opts) (oisPaymentLag opts) (oisPaymentConvention opts)
-    (oisPaymentFrequency opts) (fromMaybe cal (oisPaymentCalendar opts))
-    (oisOvernightSpread opts) (oisPillar opts) (oisCustomPillarDate opts)
-    (oisAveragingMethod opts) (oisEndOfMonth opts) (oisFixedPaymentFrequency opts)
-    (fromMaybe cal (oisFixedCalendar opts)) (lookbackDays obs) (lockoutDays obs)
-    (applyObservationShift obs) (oisPricer opts) (oisRule opts)
-    (fromMaybe cal (oisOvernightCalendar opts)) (oisConvention opts)
-  where obs = oisObservation opts
+  let obs = oisObservation opts
+      paymentCal = fromMaybe cal (oisPaymentCalendar opts)
+      fixedCal = fromMaybe cal (oisFixedCalendar opts)
+      overnightCal = fromMaybe cal (oisOvernightCalendar opts)
+  case terms of
+    OisTenor settlementDays tenor forwardStart ->
+      oisRateHelper_ settlementDays tenor fixedRate idx discountingCurve
+        (oisTelescopicValueDates opts) (oisPaymentLag opts) (oisPaymentConvention opts)
+        (oisPaymentFrequency opts) paymentCal
+        forwardStart (oisOvernightSpread opts) (oisPillar opts) (oisCustomPillarDate opts)
+        (oisAveragingMethod opts) (oisEndOfMonth opts) (oisFixedPaymentFrequency opts)
+        fixedCal (lookbackDays obs) (lockoutDays obs)
+        (applyObservationShift obs) (oisPricer opts) (oisRule opts)
+        overnightCal (oisConvention opts)
+    OisBetweenDates startDate endDate ->
+      oisRateHelper2_ startDate endDate fixedRate idx discountingCurve
+        (oisTelescopicValueDates opts) (oisPaymentLag opts) (oisPaymentConvention opts)
+        (oisPaymentFrequency opts) paymentCal
+        (oisOvernightSpread opts) (oisPillar opts) (oisCustomPillarDate opts)
+        (oisAveragingMethod opts) (oisEndOfMonth opts) (oisFixedPaymentFrequency opts)
+        fixedCal (lookbackDays obs) (lockoutDays obs)
+        (applyObservationShift obs) (oisPricer opts) (oisRule opts)
+        overnightCal (oisConvention opts)
 
 -- The 'SwapRateFromIndex' binding behind 'swapRateHelper'.
 {#fun qlSwapRateHelper as swapRateHelperFromIndexRaw{withQuote*`GenQuote q1' -- ^rate

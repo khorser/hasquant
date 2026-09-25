@@ -40,6 +40,13 @@ convention. The new `SwapRateBetweenDates` binds QuantLib's swap between two fix
 arguments every form shares follow the terms: spread, discounting curve, pillar, custom pillar
 date, end of month, indexed coupons and pricer.
 
+Breaking change: `oisRateHelper` and `oisRateHelperWithOptions` take an `OisTerms` first, where
+`OisTenor` holds the former settlement days, tenor and forward start and `OisBetweenDates` holds
+the former `oisRateHelperBetweenDates` dates. `oisRateHelperBetweenDates` and
+`oisRateHelperBetweenDatesWithOptions` are gone. Likewise `fxSwapRateHelper` takes an
+`FxSwapTerms`: `FxSwapTenor` holds the tenor, fixing days, calendar, convention, end of month and
+trading calendar, and `FxSwapBetweenDates` holds the former `fxSwapRateHelperBetweenDates` dates.
+
 ## 0.7.0.0 (2026)
 
 The final broad API-coverage batch adds Haskell callbacks for payoffs, optimization, regression and

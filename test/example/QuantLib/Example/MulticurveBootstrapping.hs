@@ -74,12 +74,12 @@ run = do
 
   oisHelpers <- forM (shortOisQuotes ++ longOisQuotes) $ \(tenor, rate) -> do
     q <- simpleQuote rate
-    TS.oisRateHelper 2 tenor (0, Days) q eonia (Nothing :: Maybe TS.YieldTermStructure)
+    TS.oisRateHelper (TS.OisTenor 2 tenor (0, Days)) q eonia (Nothing :: Maybe TS.YieldTermStructure)
       >>= TS.asRateHelper
 
   datedOisHelpers <- forM datedOisQuotes $ \(start, end, rate) -> do
     q <- simpleQuote rate
-    TS.oisRateHelperBetweenDates start end q eonia (Nothing :: Maybe TS.YieldTermStructure)
+    TS.oisRateHelper (TS.OisBetweenDates start end) q eonia (Nothing :: Maybe TS.YieldTermStructure)
       >>= TS.asRateHelper
 
   eoniaCurve <- TS.piecewiseYieldCurve (TS.SettlementDays 0 cal) (fromList (depoHelpers ++ oisHelpers ++ datedOisHelpers))

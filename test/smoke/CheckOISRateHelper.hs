@@ -38,10 +38,10 @@ main = do
         curve <- piecewiseYieldCurve (ReferenceDate today) [h] dc [] (Iterative Discount LogLinear defaultIterativeBootstrapOpts) False
         discount curve (DatePoint endDate) True
 
-  hNarrow <- oisRateHelper 2 (1, Years) (0, Days) q idx Nothing
+  hNarrow <- oisRateHelper (OisTenor 2 (1, Years) (0, Days)) q idx Nothing
   dNarrow <- endToEndDiscount hNarrow
 
-  hWithDefaults <- oisRateHelperWithOptions 2 (1, Years) (0, Days) q idx Nothing defaultOisRateHelperOpts
+  hWithDefaults <- oisRateHelperWithOptions (OisTenor 2 (1, Years) (0, Days)) q idx Nothing defaultOisRateHelperOpts
   dWithDefaults <- endToEndDiscount hWithDefaults
 
   putStrLn ("narrow          -> discount " ++ show dNarrow)
@@ -51,7 +51,7 @@ main = do
     "identical discount (a difference means field order/type drift in the options record)"
     (dNarrow == dWithDefaults)
 
-  hOverridden <- oisRateHelperWithOptions 2 (1, Years) (0, Days) q idx Nothing
+  hOverridden <- oisRateHelperWithOptions (OisTenor 2 (1, Years) (0, Days)) q idx Nothing
     defaultOisRateHelperOpts{oisTelescopicValueDates = True, oisPaymentFrequency = Semiannual, oisAveragingMethod = AveragingSimple}
   dOverridden <- endToEndDiscount hOverridden
   putStrLn ("with options (overridden) -> discount " ++ show dOverridden)
@@ -63,7 +63,7 @@ main = do
   -- If the record were dropped or its fields transposed, this would equal the default run.
   -- lookback/observation-shift rather than lockout: lockout pushes the last coupon's required
   -- fixing range past the maturity of the very curve being bootstrapped, so it cannot solve.
-  hObserved <- oisRateHelperWithOptions 2 (1, Years) (0, Days) q idx Nothing
+  hObserved <- oisRateHelperWithOptions (OisTenor 2 (1, Years) (0, Days)) q idx Nothing
     defaultOisRateHelperOpts{oisObservation =
       defaultOvernightObservation{lookbackDays = Just 2, applyObservationShift = True}}
   dObserved <- endToEndDiscount hObserved

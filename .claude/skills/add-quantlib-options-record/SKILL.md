@@ -11,18 +11,18 @@ For a wide constructor, keep the narrow signature and add a second full-arity fu
 
 ## Shape
 
-Worked example, all in `QuantLib/TermStructure/Yield.chs`: `OISRateHelperOpts` / `defaultOisRateHelperOpts` / `oisRateHelperFull` / `oisRateHelperBetweenDatesWithOptions`.
+Worked example, all in `QuantLib/TermStructure/Yield.chs`: `OISRateHelperOpts` / `defaultOisRateHelperOpts` / `oisRateHelper` / `oisRateHelperWithOptions`, each taking an `OisTerms` that selects the tenor or dated constructor.
 
 Three layers:
 
 1. **Raw c2hs binding at full C arity**, unexported, trailing-underscore name — `oisRateHelper_`, `oisRateHelper2_`. Widen the *C shim* to full arity rather than maintaining a second near-duplicate one (`cbits/qlTermStructure.cpp`'s `qlOISRateHelper`/`qlOISRateHelper2`).
-2. **The existing narrow public functions** keep their original signature and now call that same raw binding, hardcoding upstream's defaults positionally (`oisRateHelper`, `oisRateHelperBetweenDates`).
-3. **The new full-arity public functions** take the leading required args plus one `XxxOpts` record, and expand it into the raw binding (`oisRateHelperFull`, `oisRateHelperBetweenDatesWithOptions`).
+2. **The existing narrow public functions** keep their original signature and now call that same raw binding, hardcoding upstream's defaults positionally (`oisRateHelper`).
+3. **The new full-arity public functions** take the leading required args plus one `XxxOpts` record, and expand it into the raw binding (`oisRateHelperWithOptions`).
 
 Callers override only what they need:
 
 ```haskell
-oisRateHelperFull days tenor rate idx curve
+oisRateHelperWithOptions (OisTenor days tenor forwardStart) rate idx curve
   defaultOisRateHelperOpts { oisPaymentLag = 2, oisTelescopicValueDates = True }
 ```
 
@@ -45,7 +45,7 @@ oisRateHelperFull days tenor rate idx curve
   `("oisOvernightSpread", [t|Maybe (GenQuote $(varT (mkName "m")))|], [|Nothing|])`
   and `"m"` must also appear in the record's type-variable list (argument 2).
 - **No pure default available.** A field whose type only exists in IO — `Calendar`, obtainable only via `calendar Null :: IO Calendar` — is `Maybe`-wrapped with a `Nothing` default, and the hand-written wrapper substitutes the real value with `fromMaybe` after constructing one. That's why `OISRateHelperOpts`'s three calendar fields are `Maybe Calendar` while the raw binding takes a plain `Calendar`.
-- **Fields not used by every overload.** A shared options record must not carry a field one of its wrappers silently ignores — that is an unsupported combination that type-checks, and a comment saying "ignored by X" does not fix it. Hoist such a field out of the record into an explicit parameter on the overloads that can honour it. `forwardStart` is the worked example: upstream's `qlOISRateHelper2` has no `forwardStart`, so it is a parameter of `oisRateHelper`/`oisRateHelperWithOptions` and simply absent from `oisRateHelperBetweenDates`/`oisRateHelperBetweenDatesWithOptions`, rather than an `OISRateHelperOpts` field. Hoisting widens the narrow entry point by one argument; accept that, or give the two overloads separate records if more than a couple of fields diverge.
+- **Fields not used by every overload.** A shared options record must not carry a field one of its wrappers silently ignores — that is an unsupported combination that type-checks, and a comment saying "ignored by X" does not fix it. Hoist such a field out of the record into an explicit parameter on the overloads that can honour it. `forwardStart` is the worked example: upstream's `qlOISRateHelper2` has no `forwardStart`, so it is a field of the `OisTenor` constructor of `OisTerms` and simply absent from `OisBetweenDates`, rather than an `OISRateHelperOpts` field. When the overloads are already collapsed behind a terms ADT, the constructor that alone can honour a field is where it goes; otherwise hoist it into an explicit parameter on those overloads, or give them separate records if more than a couple of fields diverge.
 
 ## Verification
 
