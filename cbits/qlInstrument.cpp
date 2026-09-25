@@ -135,6 +135,10 @@ namespace hasquant {
 #include <ql/experimental/termstructures/crosscurrencyratehelpers.hpp>
 #include <ql/termstructures/yield/multipleresetsswaphelper.hpp>
 #include <ql/termstructures/yield/overnightindexfutureratehelper.hpp>
+#include <ql/version.hpp>
+#if QL_HEX_VERSION >= 0x01440000
+#include <ql/experimental/termstructures/overnightindexedfundingratehelper.hpp>
+#endif
 
 #include "qlaux.h"
 using namespace QuantLib;
@@ -422,10 +426,18 @@ namespace {
 
   class RateHelperFixingDependencyVisitor : public AcyclicVisitor,
                                             public Visitor<RateHelper>,
+                                            public Visitor<DepositRateHelper>,
+                                            public Visitor<FraRateHelper>,
+                                            public Visitor<FuturesRateHelper>,
+                                            public Visitor<FxSwapRateHelper>,
                                             public Visitor<SwapRateHelper>,
                                             public Visitor<OISRateHelper>,
                                             public Visitor<IborIborBasisSwapRateHelper>,
                                             public Visitor<OvernightIborBasisSwapRateHelper>,
+#if QL_HEX_VERSION >= 0x01440000
+                                            public Visitor<OvernightOvernightBasisSwapRateHelper>,
+                                            public Visitor<OvernightIndexedFundingRateHelper>,
+#endif
                                             public Visitor<BondHelper>,
                                             public Visitor<BMASwapRateHelper>,
                                             public Visitor<MultipleResetsSwapRateHelper>,
@@ -468,8 +480,13 @@ namespace {
     // True when the helper's instrument is one this walk cannot see, so an empty answer is not "needs nothing".
     bool opaque() const {return opaque_;}
 
-    // Deposit, FRA and futures helpers land here: they read no stored fixing.
-    void visit(RateHelper&) override {}
+    // A helper with no case below may read stored fixings, so it is "cannot see it" until given one.
+    void visit(RateHelper&) override {opaque_ = true;}
+    // These read no stored fixing; the fixed-date deposit and FRA forms would, and are not bound.
+    void visit(DepositRateHelper&) override {}
+    void visit(FraRateHelper&) override {}
+    void visit(FuturesRateHelper&) override {}
+    void visit(FxSwapRateHelper&) override {}
     void visit(SwapRateHelper& h) override {collectSwapFixingDependencies(*h.swap(), out_);}
     void visit(OISRateHelper& h) override {collectSwapFixingDependencies(*h.swap(), out_);}
     void visit(IborIborBasisSwapRateHelper& h) override {
@@ -478,6 +495,15 @@ namespace {
     void visit(OvernightIborBasisSwapRateHelper& h) override {
       collectSwapFixingDependencies(*h.swap(), out_);
     }
+#if QL_HEX_VERSION >= 0x01440000
+    // Added after 1.43; not bound yet, but a binding needs no visitor change.
+    void visit(OvernightOvernightBasisSwapRateHelper& h) override {
+      collectSwapFixingDependencies(*h.swap(), out_);
+    }
+    void visit(OvernightIndexedFundingRateHelper& h) override {
+      collectSwapFixingDependencies(*h.swap(), out_);
+    }
+#endif
     void visit(BondHelper& h) override {collectLegFixingDependencies(h.bond()->cashflows(), out_);}
     void visit(BMASwapRateHelper& h) override {collectSwapFixingDependencies(*BMAPeek::swap(h), out_);}
     void visit(MultipleResetsSwapRateHelper& h) override {
@@ -1548,13 +1574,14 @@ void qlLegFixingDependencies(Leg *leg, unsigned *nameLen, char ***names, unsigne
 // BondHelper::bond, and the two basis-swap helpers' swap; BMA, multiple-resets and cross-currency
 // helpers keep theirs protected, which a derived-class pointer-to-member reaches.
 //
-// A deposit, FRA or futures helper contributes nothing, and that is an answer rather than a gap:
+// A deposit, FRA, futures or FX swap helper contributes nothing, and that is an answer rather than a gap:
 // the convention forms of the first two build their index with a "no-fix" name and the index
 // forms price with fixing(d, true), which forecasts today's rather than reading the store
 // (ratehelpers.cpp:188,214,295,364). Only the fixed-date deposit and FRA forms, which are not
 // bound, read a past fixing. An overnight-index (or SOFR) futures helper reads past fixings once
 // its reference period is about to start and keeps its future private, so from then *reachable is
-// set to 0 for it: an empty answer with reachable == 0 is "cannot see it".
+// set to 0 for it: an empty answer with reachable == 0 is "cannot see it". So is a helper type
+// the visitor has no case for, which is how a newly bound helper fails until it gets one.
 //
 // The dates follow Settings::evaluationDate, because a relative-date helper re-initialises its
 // schedule when that date moves. Call it on the date whose fixings are being asked about.

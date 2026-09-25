@@ -283,6 +283,10 @@ multiple-resets and cross-currency helper peeks in `qlInstrument.cpp` do this. A
 member cannot be reached, so the shim has to report "cannot see it" (for example
 `OvernightIndexFutureRateHelper::future_`, where `*reachable = 0`), never an empty answer.
 
+A `#if QL_HEX_VERSION ...` guard needs `#include <ql/version.hpp>` above it: `qldefines.hpp` does
+not include it, and the preprocessor reads an undefined macro as 0. A newer-version branch then
+silently never compiles. Check a new guard with `g++ -E` against a newer QuantLib checkout.
+
 ## Multiple inheritance (secondary interfaces)
 
 **A secondary C++ base is a public capability, not a second `Upcastable`

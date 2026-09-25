@@ -21,7 +21,9 @@ out-of-bounds implementation.
 `rateHelperFixingDependencies` now reads the cross-currency helpers' legs instead of reporting
 `Nothing`. Overnight-index and SOFR futures helpers used to report `Just []`, although they read
 past fixings once their reference period has started. From two weeks before that start they now
-report `Nothing`, because QuantLib keeps their future private.
+report `Nothing`, because QuantLib keeps their future private. A helper type the walk has no case
+for now reports `Nothing` too, instead of `Just []`. On QuantLib 1.44 the walk also reads the
+overnight-overnight basis and overnight-indexed funding helpers through their `swap()`.
 
 ## 0.7.0.0 (2026)
 

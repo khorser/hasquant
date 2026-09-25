@@ -450,6 +450,15 @@ spec = do
             >>= rateHelperFixingDependencies) `shouldReturn` Just []
           (fraRateHelper q (FraMonthsFromIndex 3 ibor) LastRelevantDate Nothing True
             >>= rateHelperFixingDependencies) `shouldReturn` Just []
+          -- A futures helper prices off the curve and an FX swap helper off spot and the collateral
+          -- curve. Each has its own case, because an unknown helper now answers Nothing.
+          (futuresRateHelper q (FuturesMonths (17 `january` 2024) 3 cal ModifiedFollowing True actual360dc) Nothing IMM
+            >>= asRateHelper >>= rateHelperFixingDependencies) `shouldReturn` Just []
+          actual365dc <- dayCounter Actual365FixedStandard
+          curve <- flatForward (SettlementDays 0 cal) q actual365dc IR.Continuous Annual
+          spot <- Quote.simpleQuote 1.1
+          (fxSwapRateHelper q spot (1, Years) 2 cal ModifiedFollowing False True curve cal
+            >>= rateHelperFixingDependencies) `shouldReturn` Just []
 
       it "reports one key per averaged business day for an OIS helper" $
         Context.keepingSettingsGc $ do

@@ -723,10 +723,10 @@ futuresRateHelper price terms = case terms of
 -- 'QuantLib.Index.name', the key QuantLib\'s process-global fixing store uses.
 --
 -- A swap, OIS, basis-swap, BMA, multiple-resets, cross-currency or bond helper answers from its
--- underlying.  A deposit, FRA or IBOR futures helper reads no stored fixing and correctly reports
--- @Just []@.  An overnight-index or SOFR futures helper reads past fixings once its reference
--- period has started, and QuantLib keeps its future private, so from two weeks before its start
--- it reports 'Nothing': "cannot see it", which is not the same as "needs nothing".
+-- underlying; a deposit, FRA, IBOR futures or FX swap helper reads no stored fixing: @Just []@.
+-- An overnight-index or SOFR futures helper from two weeks before its period starts (it then reads
+-- past fixings through a future QuantLib keeps private), and any helper type the walk has no case
+-- for, report 'Nothing': "cannot see it", which is not the same as "needs nothing".
 --
 -- The dates follow the evaluation date, because a relative-date helper re-initialises its
 -- schedule when that date moves: call this under the date whose fixings are being asked about.
