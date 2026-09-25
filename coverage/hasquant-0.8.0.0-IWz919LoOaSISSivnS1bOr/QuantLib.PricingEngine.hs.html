@@ -1752,15 +1752,15 @@ span.spaces    { background: white }
 <span class="lineno"> 1733 </span>
 <span class="lineno"> 1734 </span>-- |analytic European option pricer including stochastic interest rates (Black-Scholes-Merton + Hull-White)
 <span class="lineno"> 1735 </span>analyticBsmHullWhiteEngine :: (Double) -&gt; (GenGeneralizedBlackScholesProcess gbs) -&gt; (HullWhite) -&gt; IO ((PricingEngine))
-<span class="lineno"> 1736 </span><span class="decl"><span class="nottickedoff">analyticBsmHullWhiteEngine a1 a2 a3 =</span>
-<span class="lineno"> 1737 </span><span class="spaces">  </span><span class="nottickedoff">let {a1' = realToFrac a1} in </span>
-<span class="lineno"> 1738 </span><span class="spaces">  </span><span class="nottickedoff">withGeneralizedBlackScholesProcess a2 $ \a2' -&gt; </span>
-<span class="lineno"> 1739 </span><span class="spaces">  </span><span class="nottickedoff">withHullWhite a3 $ \a3' -&gt; </span>
-<span class="lineno"> 1740 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a4' -&gt; </span>
-<span class="lineno"> 1741 </span><span class="spaces">  </span><span class="nottickedoff">analyticBsmHullWhiteEngine'_ a1' a2' a3' a4' &gt;&gt;= \res -&gt;</span>
-<span class="lineno"> 1742 </span><span class="spaces">  </span><span class="nottickedoff">peekPricingEngine res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno"> 1743 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a4'&gt;&gt;</span>
-<span class="lineno"> 1744 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno"> 1736 </span><span class="decl"><span class="istickedoff">analyticBsmHullWhiteEngine a1 a2 a3 =</span>
+<span class="lineno"> 1737 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = realToFrac a1} in </span>
+<span class="lineno"> 1738 </span><span class="spaces">  </span><span class="istickedoff">withGeneralizedBlackScholesProcess a2 $ \a2' -&gt; </span>
+<span class="lineno"> 1739 </span><span class="spaces">  </span><span class="istickedoff">withHullWhite a3 $ \a3' -&gt; </span>
+<span class="lineno"> 1740 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a4' -&gt; </span>
+<span class="lineno"> 1741 </span><span class="spaces">  </span><span class="istickedoff">analyticBsmHullWhiteEngine'_ a1' a2' a3' a4' &gt;&gt;= \res -&gt;</span>
+<span class="lineno"> 1742 </span><span class="spaces">  </span><span class="istickedoff">peekPricingEngine res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno"> 1743 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a4'&gt;&gt;</span>
+<span class="lineno"> 1744 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
 <span class="lineno"> 1745 </span>
 <span class="lineno"> 1746 </span>
 <span class="lineno"> 1747 </span>

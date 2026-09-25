@@ -1289,10 +1289,10 @@ span.spaces    { background: white }
 <span class="lineno"> 1270 </span>-- difference and @MCEuropeanEngine@ families all recover the strike by downcasting to
 <span class="lineno"> 1271 </span>-- @StrikedTypePayoff@\/@PlainVanillaPayoff@ first, and a further ~30 engines route through
 <span class="lineno"> 1272 </span>-- @BlackCalculator@, whose @AcyclicVisitor@ knows only the four built-in striked payoffs. Most of
-<span class="lineno"> 1273 </span>-- these fail with a clean QuantLib exception, but
+<span class="lineno"> 1273 </span>-- these fail with a clean QuantLib exception. On QuantLib &lt;= 1.43,
 <span class="lineno"> 1274 </span>-- @QuantLib.PricingEngine.fdBlackScholesVanillaEngine@ and
-<span class="lineno"> 1275 </span>-- @QuantLib.PricingEngine.fdHestonVanillaEngine@ perform that downcast /unchecked/ upstream and
-<span class="lineno"> 1276 </span>-- will __crash the process__, not throw, on a custom payoff. Confirmed-generic consumers:
+<span class="lineno"> 1275 </span>-- @QuantLib.PricingEngine.fdHestonVanillaEngine@ perform that downcast /unchecked/ and
+<span class="lineno"> 1276 </span>-- __crash the process__ on a custom payoff; later versions throw. Confirmed-generic consumers:
 <span class="lineno"> 1277 </span>-- @QuantLib.Method.fdmLogInnerValue@\/@fdmCellAveragingInnerValue@ (and hence @fdmSolve@), and
 <span class="lineno"> 1278 </span>-- @QuantLib.PricingEngine.mcAmericanEngine@ with @controlVariate = False@.
 <span class="lineno"> 1279 </span>withCustomPayoff :: String -- ^name
@@ -1307,13 +1307,13 @@ span.spaces    { background: white }
 <span class="lineno"> 1288 </span>-- __The pair is advisory: it does not define the payoff__ -- @payoff(price)@ alone does, exactly
 <span class="lineno"> 1289 </span>-- as for 'withCustomPayoff'. It exists because QuantLib's finite-difference vanilla engines reach
 <span class="lineno"> 1290 </span>-- past the @Payoff@ interface for a strike when sizing their grid:
-<span class="lineno"> 1291 </span>-- @FdBlackScholesVanillaEngine@ @dynamic_pointer_cast@s to @StrikedTypePayoff@ /without/ a check
-<span class="lineno"> 1292 </span>-- and calls @strike()@ twice -- once for the mesher's extent, once for its node-concentration
-<span class="lineno"> 1293 </span>-- point -- then hands the payoff itself to @FdmLogInnerValue@, which takes a plain @Payoff@. So a
-<span class="lineno"> 1294 </span>-- payoff built here prices correctly through
-<span class="lineno"> 1295 </span>-- 'QuantLib.PricingEngine.fdBlackScholesVanillaEngine' and
-<span class="lineno"> 1296 </span>-- 'QuantLib.PricingEngine.fdHestonVanillaEngine', where one built by 'withCustomPayoff' would
-<span class="lineno"> 1297 </span>-- crash the process on that unchecked cast. Pass the strike you want the grid centred on.
+<span class="lineno"> 1291 </span>-- @FdBlackScholesVanillaEngine@ @dynamic_pointer_cast@s to @StrikedTypePayoff@ and calls
+<span class="lineno"> 1292 </span>-- @strike()@ twice -- once for the mesher's extent, once for its node-concentration point -- then
+<span class="lineno"> 1293 </span>-- hands the payoff itself to @FdmLogInnerValue@, which takes a plain @Payoff@. So a payoff built
+<span class="lineno"> 1294 </span>-- here prices correctly through 'QuantLib.PricingEngine.fdBlackScholesVanillaEngine' and
+<span class="lineno"> 1295 </span>-- 'QuantLib.PricingEngine.fdHestonVanillaEngine', where one built by 'withCustomPayoff' is
+<span class="lineno"> 1296 </span>-- rejected -- and on QuantLib &lt;= 1.43, whose cast is unchecked, crashes the process. Pass the
+<span class="lineno"> 1297 </span>-- strike you want the grid centred on.
 <span class="lineno"> 1298 </span>--
 <span class="lineno"> 1299 </span>-- Everything else matches 'withCustomPayoff', including the continuation-lifetime rule: the
 <span class="lineno"> 1300 </span>-- payoff is valid only inside the continuation, which must span the whole use (pricing included),

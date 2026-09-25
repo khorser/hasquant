@@ -50,22 +50,22 @@
  difference and <code>MCEuropeanEngine</code> families all recover the strike by downcasting to
  <code>StrikedTypePayoff</code>/<code>PlainVanillaPayoff</code> first, and a further ~30 engines route through
  <code>BlackCalculator</code>, whose <code>AcyclicVisitor</code> knows only the four built-in striked payoffs. Most of
- these fail with a clean QuantLib exception, but
+ these fail with a clean QuantLib exception. On QuantLib &lt;= 1.43,
  <code>QuantLib.PricingEngine.fdBlackScholesVanillaEngine</code> and
- <code>QuantLib.PricingEngine.fdHestonVanillaEngine</code> perform that downcast <em>unchecked</em> upstream and
- will <strong>crash the process</strong>, not throw, on a custom payoff. Confirmed-generic consumers:
+ <code>QuantLib.PricingEngine.fdHestonVanillaEngine</code> perform that downcast <em>unchecked</em> and
+ <strong>crash the process</strong> on a custom payoff; later versions throw. Confirmed-generic consumers:
  <code>QuantLib.Method.fdmLogInnerValue</code>/<code>fdmCellAveragingInnerValue</code> (and hence <code>fdmSolve</code>), and
  <code>QuantLib.PricingEngine.mcAmericanEngine</code> with <code>controlVariate = False</code>.</p></div></div><div class="top"><p class="src"><a id="v:withCustomStrikedPayoff" class="def">withCustomStrikedPayoff</a> <a href="src/QuantLib.Internal.Common.html#withCustomStrikedPayoff" class="link">Source</a> <a href="#v:withCustomStrikedPayoff" class="selflink">#</a></p><div class="subs arguments"><p class="caption">Arguments</p><table><tr><td class="src">:: <a href="QuantLib-Instrument-Option.html#t:OptionType" title="QuantLib.Instrument.Option">OptionType</a></td><td class="doc"><p>advisory option type</p></td></tr><tr><td class="src">-&gt; <a href="${pkgroot}/../../../share/doc/ghc-9.10.3/html/libraries/base-4.20.2.0-9cd7/GHC-Exts.html#t:Double" title="GHC.Exts">Double</a></td><td class="doc"><p>advisory strike (grid centring only)</p></td></tr><tr><td class="src">-&gt; <a href="${pkgroot}/../../../share/doc/ghc-9.10.3/html/libraries/base-4.20.2.0-9cd7/Data-String.html#t:String" title="Data.String">String</a></td><td class="doc"><p>name</p></td></tr><tr><td class="src">-&gt; (<a href="${pkgroot}/../../../share/doc/ghc-9.10.3/html/libraries/base-4.20.2.0-9cd7/GHC-Exts.html#t:Double" title="GHC.Exts">Double</a> -&gt; <a href="${pkgroot}/../../../share/doc/ghc-9.10.3/html/libraries/base-4.20.2.0-9cd7/GHC-Exts.html#t:Double" title="GHC.Exts">Double</a>)</td><td class="doc"><p>payoff(price)</p></td></tr><tr><td class="src">-&gt; (<a href="QuantLib-Instrument-Option.html#t:StrikedPayoff" title="QuantLib.Instrument.Option">StrikedPayoff</a> -&gt; <a href="${pkgroot}/../../../share/doc/ghc-9.10.3/html/libraries/base-4.20.2.0-9cd7/Prelude.html#t:IO" title="Prelude">IO</a> b)</td><td class="doc empty">&nbsp;</td></tr><tr><td class="src">-&gt; <a href="${pkgroot}/../../../share/doc/ghc-9.10.3/html/libraries/base-4.20.2.0-9cd7/Prelude.html#t:IO" title="Prelude">IO</a> b</td><td class="doc empty">&nbsp;</td></tr></table></div><div class="doc"><p>As <code><a href="QuantLib-Instrument-Option.html#v:withCustomPayoff" title="QuantLib.Instrument.Option">withCustomPayoff</a></code>, but produces a real QuantLib <code>StrikedTypePayoff</code> carrying an
  <code>(optionType, strike)</code> pair alongside the Haskell function.</p><p><strong>The pair is advisory: it does not define the payoff</strong> -- <code>payoff(price)</code> alone does, exactly
  as for <code><a href="QuantLib-Instrument-Option.html#v:withCustomPayoff" title="QuantLib.Instrument.Option">withCustomPayoff</a></code>. It exists because QuantLib's finite-difference vanilla engines reach
  past the <code>Payoff</code> interface for a strike when sizing their grid:
- <code>FdBlackScholesVanillaEngine</code> <code>dynamic_pointer_cast</code>s to <code>StrikedTypePayoff</code> <em>without</em> a check
- and calls <code>strike()</code> twice -- once for the mesher's extent, once for its node-concentration
- point -- then hands the payoff itself to <code>FdmLogInnerValue</code>, which takes a plain <code>Payoff</code>. So a
- payoff built here prices correctly through
- <code><a href="QuantLib-PricingEngine.html#v:fdBlackScholesVanillaEngine" title="QuantLib.PricingEngine">fdBlackScholesVanillaEngine</a></code> and
- <code><a href="QuantLib-PricingEngine.html#v:fdHestonVanillaEngine" title="QuantLib.PricingEngine">fdHestonVanillaEngine</a></code>, where one built by <code><a href="QuantLib-Instrument-Option.html#v:withCustomPayoff" title="QuantLib.Instrument.Option">withCustomPayoff</a></code> would
- crash the process on that unchecked cast. Pass the strike you want the grid centred on.</p><p>Everything else matches <code><a href="QuantLib-Instrument-Option.html#v:withCustomPayoff" title="QuantLib.Instrument.Option">withCustomPayoff</a></code>, including the continuation-lifetime rule: the
+ <code>FdBlackScholesVanillaEngine</code> <code>dynamic_pointer_cast</code>s to <code>StrikedTypePayoff</code> and calls
+ <code>strike()</code> twice -- once for the mesher's extent, once for its node-concentration point -- then
+ hands the payoff itself to <code>FdmLogInnerValue</code>, which takes a plain <code>Payoff</code>. So a payoff built
+ here prices correctly through <code><a href="QuantLib-PricingEngine.html#v:fdBlackScholesVanillaEngine" title="QuantLib.PricingEngine">fdBlackScholesVanillaEngine</a></code> and
+ <code><a href="QuantLib-PricingEngine.html#v:fdHestonVanillaEngine" title="QuantLib.PricingEngine">fdHestonVanillaEngine</a></code>, where one built by <code><a href="QuantLib-Instrument-Option.html#v:withCustomPayoff" title="QuantLib.Instrument.Option">withCustomPayoff</a></code> is
+ rejected -- and on QuantLib &lt;= 1.43, whose cast is unchecked, crashes the process. Pass the
+ strike you want the grid centred on.</p><p>Everything else matches <code><a href="QuantLib-Instrument-Option.html#v:withCustomPayoff" title="QuantLib.Instrument.Option">withCustomPayoff</a></code>, including the continuation-lifetime rule: the
  payoff is valid only inside the continuation, which must span the whole use (pricing included),
  not just construction. <code>description</code> is not a parameter here -- <code>StrikedTypePayoff</code> derives it
  from the type and strike itself.</p><p>Engines routing through <code>BlackCalculator</code> (the <code>analytic*</code> family) still reject this, as they

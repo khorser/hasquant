@@ -761,7 +761,7 @@ span.spaces    { background: white }
 <span class="lineno">  742 </span>
 <span class="lineno">  743 </span>
 <span class="lineno">  744 </span>-- |Single-factor Hull-White (extended Vasicek) short-rate model: dr = (theta(t) - a r) dt + sigma dW, fitted to the given term structure.
-<span class="lineno">  745 </span>hullWhite :: (GenYieldTermStructure y) -&gt; (Double) -- ^y
+<span class="lineno">  745 </span>hullWhite :: (GenYieldTermStructure y) -&gt; (Double) -- ^a (mean reversion)
 <span class="lineno">  746 </span> -&gt; (Double) -- ^sigma
 <span class="lineno">  747 </span> -&gt; IO ((HullWhite))
 <span class="lineno">  748 </span><span class="decl"><span class="istickedoff">hullWhite a1 a2 a3 =</span>
