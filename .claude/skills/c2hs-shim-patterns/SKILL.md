@@ -277,6 +277,12 @@ no-op or dependencies are duplicated. The visitor machinery's own upstream `dyna
 supported dispatch. A local cast remains justified when the erased base exposes neither a visitor
 nor a suitable virtual, as with `Index` and `SwapSpreadIndex` dependency expansion.
 
+A **protected** member with no accessor can be read without touching QuantLib: a local struct
+derived from the owner names it through a pointer to member (`h.*(&Peek::swap_)`). The BMA,
+multiple-resets and cross-currency helper peeks in `qlInstrument.cpp` do this. A **private**
+member cannot be reached, so the shim has to report "cannot see it" (for example
+`OvernightIndexFutureRateHelper::future_`, where `*reachable = 0`), never an empty answer.
+
 ## Multiple inheritance (secondary interfaces)
 
 **A secondary C++ base is a public capability, not a second `Upcastable`

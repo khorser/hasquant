@@ -479,6 +479,39 @@ spec = do
           -- stopped at the helper's "own" index would report half of what the curve reads.
           nub (map fst deps) `shouldMatchList` names
 
+      it "reads a cross-currency helper's legs through its protected members" $
+        Context.keepingSettingsGc $ do
+          Context.setEvaluationDate (Just (2 `january` 2024))
+          cal <- calendar TARGET
+          actual365dc <- dayCounter Actual365FixedStandard
+          thirty360dc <- dayCounter Thirty360BondBasis
+          q <- Quote.simpleQuote 0.03
+          curve <- flatForward (SettlementDays 0 cal) q actual365dc IR.Continuous Annual
+          i3 <- iborIndex Euribor3M (Just curve)
+          i6 <- iborIndex Euribor6M (Just curve)
+          names <- mapM Index.name [i3, i6]
+          basis <- Quote.simpleQuote 0.001
+          (Just basisDeps) <- constNotionalCrossCurrencyBasisSwapRateHelper basis (2, Years) 2 cal ModifiedFollowing False
+            i3 i6 curve True True Nothing 0 Nothing >>= rateHelperFixingDependencies
+          nub (map fst basisDeps) `shouldMatchList` names
+          (Just mtmDeps) <- mtmCrossCurrencyBasisSwapRateHelper basis (2, Years) 2 cal ModifiedFollowing False
+            i3 i6 curve True True True Nothing 0 Nothing >>= rateHelperFixingDependencies
+          nub (map fst mtmDeps) `shouldMatchList` names
+          (Just fixedDeps) <- constNotionalCrossCurrencySwapRateHelper q (2, Years) 2 cal ModifiedFollowing False
+            Annual thirty360dc i6 curve True 0 >>= rateHelperFixingDependencies
+          nub (map fst fixedDeps) `shouldBe` drop 1 names
+
+      it "reports a started overnight-index futures contract as unreachable" $
+        Context.keepingSettingsGc $ do
+          Context.setEvaluationDate (Just (2 `january` 2024))
+          price <- Quote.simpleQuote 94.8
+          (sofrFutureRateHelper price QuantLib.Time.Date.March 2024 Quarterly Nothing LastRelevantDate Nothing
+            >>= rateHelperFixingDependencies) `shouldReturn` Just []
+          -- Once the reference period starts it reads past SOFR fixings, but QuantLib keeps the
+          -- future private, so "cannot see it" is the only honest answer.
+          (sofrFutureRateHelper price QuantLib.Time.Date.December 2023 Quarterly Nothing LastRelevantDate Nothing
+            >>= rateHelperFixingDependencies) `shouldReturn` Nothing
+
       it "re-dates with the evaluation date" $
         Context.keepingSettingsGc $ do
           Context.setEvaluationDate (Just (2 `january` 2024))

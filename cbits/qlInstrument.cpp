@@ -134,6 +134,7 @@ namespace hasquant {
 #include <ql/experimental/termstructures/basisswapratehelpers.hpp>
 #include <ql/experimental/termstructures/crosscurrencyratehelpers.hpp>
 #include <ql/termstructures/yield/multipleresetsswaphelper.hpp>
+#include <ql/termstructures/yield/overnightindexfutureratehelper.hpp>
 
 #include "qlaux.h"
 using namespace QuantLib;
@@ -428,14 +429,15 @@ namespace {
                                             public Visitor<BondHelper>,
                                             public Visitor<BMASwapRateHelper>,
                                             public Visitor<MultipleResetsSwapRateHelper>,
+                                            public Visitor<OvernightIndexFutureRateHelper>,
                                             public Visitor<ConstNotionalCrossCurrencyBasisSwapRateHelper>,
                                             public Visitor<MtMCrossCurrencyBasisSwapRateHelper>,
                                             public Visitor<ConstNotionalCrossCurrencySwapRateHelper> {
     std::vector<std::pair<std::string, Date> >& out_;
     bool opaque_;
 
-    // BMA and multiple-resets keep their swap in a protected member: a derived class may name
-    // it through a pointer to member, which reaches it without touching QuantLib.
+    // BMA, multiple-resets and cross-currency helpers keep their instrument in a protected member:
+    // a derived class may name it through a pointer to member, which reaches it without touching QuantLib.
     struct BMAPeek : BMASwapRateHelper {
       static const ext::shared_ptr<BMASwap>& swap(BMASwapRateHelper& h) {return h.*(&BMAPeek::swap_);}
     };
@@ -443,6 +445,21 @@ namespace {
       static const ext::shared_ptr<MultipleResetsSwap>& swap(MultipleResetsSwapRateHelper& h) {
         return h.*(&MultipleResetsPeek::swap_);}
     };
+    struct CrossCurrencyBasisPeek : CrossCurrencyBasisSwapRateHelperBase {
+      static const Leg& baseLeg(CrossCurrencyBasisSwapRateHelperBase& h) {
+        return h.*(&CrossCurrencyBasisPeek::baseCcyIborLeg_);}
+      static const Leg& quoteLeg(CrossCurrencyBasisSwapRateHelperBase& h) {
+        return h.*(&CrossCurrencyBasisPeek::quoteCcyIborLeg_);}
+    };
+    struct CrossCurrencySwapPeek : ConstNotionalCrossCurrencySwapRateHelper {
+      static const ext::shared_ptr<ConstNotionalCrossCurrencyFixedVsFloatingSwap>& swap(
+          ConstNotionalCrossCurrencySwapRateHelper& h) {return h.*(&CrossCurrencySwapPeek::xccySwap_);}
+    };
+
+    void collectCrossCurrencyBasis(CrossCurrencyBasisSwapRateHelperBase& h) {
+      collectLegFixingDependencies(CrossCurrencyBasisPeek::baseLeg(h), out_);
+      collectLegFixingDependencies(CrossCurrencyBasisPeek::quoteLeg(h), out_);
+    }
 
   public:
     explicit RateHelperFixingDependencyVisitor(
@@ -466,10 +483,17 @@ namespace {
     void visit(MultipleResetsSwapRateHelper& h) override {
       collectSwapFixingDependencies(*MultipleResetsPeek::swap(h), out_);
     }
-    // The legs are built in the constructor and only their dates are kept.
-    void visit(ConstNotionalCrossCurrencyBasisSwapRateHelper&) override {opaque_ = true;}
-    void visit(MtMCrossCurrencyBasisSwapRateHelper&) override {opaque_ = true;}
-    void visit(ConstNotionalCrossCurrencySwapRateHelper&) override {opaque_ = true;}
+    // The future is private, and reads past fixings from its value date adjusted Preceding on a calendar
+    // it also hides; two weeks before the start covers any holiday run, and before that it reads none.
+    void visit(OvernightIndexFutureRateHelper& h) override {
+      if (h.earliestDate() - 14 <= Settings::instance().evaluationDate()) opaque_ = true;
+    }
+    // QuantLib master (after 1.43) also exposes these through swap().
+    void visit(ConstNotionalCrossCurrencyBasisSwapRateHelper& h) override {collectCrossCurrencyBasis(h);}
+    void visit(MtMCrossCurrencyBasisSwapRateHelper& h) override {collectCrossCurrencyBasis(h);}
+    void visit(ConstNotionalCrossCurrencySwapRateHelper& h) override {
+      collectSwapFixingDependencies(*CrossCurrencySwapPeek::swap(h), out_);
+    }
   };
 }
 
@@ -1521,14 +1545,16 @@ void qlLegFixingDependencies(Leg *leg, unsigned *nameLen, char ***names, unsigne
 // with, so the helper list stays the caller's. A helper whose underlying instrument QuantLib
 // hands back owns Legs, and a Leg is qlLegFixingDependencies' walk -- the underlying is reached
 // through the only accessors 1.43 gives: SwapRateHelper::swap, OISRateHelper::swap,
-// BondHelper::bond, and the two basis-swap helpers' swap; BMA and multiple-resets keep theirs
-// protected, which a derived-class pointer-to-member reaches.
+// BondHelper::bond, and the two basis-swap helpers' swap; BMA, multiple-resets and cross-currency
+// helpers keep theirs protected, which a derived-class pointer-to-member reaches.
 //
 // A deposit, FRA or futures helper contributes nothing, and that is an answer rather than a gap:
 // the convention forms of the first two build their index with a "no-fix" name and the index
 // forms price with fixing(d, true), which forecasts today's rather than reading the store
-// (ratehelpers.cpp:188,214,295,364). A cross-currency helper stores no legs
-// at all, so *reachable is set to 0 for it: an empty answer with reachable == 0 is "cannot see it".
+// (ratehelpers.cpp:188,214,295,364). Only the fixed-date deposit and FRA forms, which are not
+// bound, read a past fixing. An overnight-index (or SOFR) futures helper reads past fixings once
+// its reference period is about to start and keeps its future private, so from then *reachable is
+// set to 0 for it: an empty answer with reachable == 0 is "cannot see it".
 //
 // The dates follow Settings::evaluationDate, because a relative-date helper re-initialises its
 // schedule when that date moves. Call it on the date whose fixings are being asked about.

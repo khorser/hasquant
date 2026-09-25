@@ -722,10 +722,11 @@ futuresRateHelper price terms = case terms of
 -- 'QuantLib.CashFlow.fixingDependencies' walks a leg, and names each index by
 -- 'QuantLib.Index.name', the key QuantLib\'s process-global fixing store uses.
 --
--- A swap, OIS, basis-swap, BMA, multiple-resets or bond helper answers from its underlying.  A
--- deposit, FRA or futures helper reads no stored fixing and correctly reports @Just []@.  A
--- cross-currency helper keeps no legs for QuantLib to hand back, so it reports 'Nothing':
--- "cannot see it", which is not the same as "needs nothing".
+-- A swap, OIS, basis-swap, BMA, multiple-resets, cross-currency or bond helper answers from its
+-- underlying.  A deposit, FRA or IBOR futures helper reads no stored fixing and correctly reports
+-- @Just []@.  An overnight-index or SOFR futures helper reads past fixings once its reference
+-- period has started, and QuantLib keeps its future private, so from two weeks before its start
+-- it reports 'Nothing': "cannot see it", which is not the same as "needs nothing".
 --
 -- The dates follow the evaluation date, because a relative-date helper re-initialises its
 -- schedule when that date moves: call this under the date whose fixings are being asked about.

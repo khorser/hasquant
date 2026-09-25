@@ -18,6 +18,11 @@ nominal by pricing its smile sections with a unit nominal; newer versions use up
 `extendedBlackVarianceSurface` reports an exception on QuantLib 1.43 instead of invoking its
 out-of-bounds implementation.
 
+`rateHelperFixingDependencies` now reads the cross-currency helpers' legs instead of reporting
+`Nothing`. Overnight-index and SOFR futures helpers used to report `Just []`, although they read
+past fixings once their reference period has started. From two weeks before that start they now
+report `Nothing`, because QuantLib keeps their future private.
+
 ## 0.7.0.0 (2026)
 
 The final broad API-coverage batch adds Haskell callbacks for payoffs, optimization, regression and
