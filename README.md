@@ -71,15 +71,12 @@ Two things follow from that split:
 - Calendar, currency, day-counter, and index enums are usable without a pricing engine.
 - Monte Carlo tests and examples use fixed nonzero RNG seeds; QuantLib treats `seed = 0` as entropy.
 
-Out of scope:
-
-- Reimplementing or independently binding QuantLib's interpolation, optimization, linear-algebra, and RNG internals, unless another binding needs one exposed.
-- A declarative composition DSL; any such DSL belongs in a sibling project.
+Out of scope: reimplementing or independently binding QuantLib's interpolation, optimization, linear-algebra, and RNG internals, unless another binding needs one exposed.
 
 ## Roadmap
 - Identify which [OpenSourceRiskEngine](https://opensourcerisk.org) functionality should be bound, e.g. `https://github.com/OpenSourceRisk/Engine/blob/master/QuantExt/qle/indexes/fallbackiborindex.hpp`
 - Join forces with [HQuantLib](https://github.com/paulrzcz/hquantlib), especially its bivariate copula CDF catalogue
-- Build a declarative composition DSL as a sibling project (WIP, unpublished)
+- Build a declarative embedded DSL as a sibling project to define contracts, portfolios, market data, and calculation scenarios (unpublished WIP)
 - Expose that DSL through an agent-callable tool, so an LLM can construct and price products through validated hasquant operations rather than generated pricing logic.
 - Extend XVA sample application to support combinations of short-rate and real-world models for different asset classes
 - See [github issues](https://github.com/khorser/hasquant/issues) for more formalized tasks
