@@ -7,7 +7,14 @@ maintainer: Sergei Khorev <sergey.khorev@gmail.com>
 copyright: (c) 2012-2026 Sergei Khorev
 category: Finance,FFI,Library
 description: |
-  Bindings to the QuantLib library.
+  Haskell bindings to the QuantLib C++ library. hasquant provides
+  pricing, curve-building, and risk primitives, including financial
+  instruments, market indexes, term structures, stochastic models,
+  and analytic, tree, finite-difference, and Monte Carlo engines.
+
+  The API stays close to QuantLib while using Haskell types to
+  represent its object hierarchies and catch invalid combinations
+  at compile time.
 build-type: Simple
 github: khorser/hasquant
 tested-with:
