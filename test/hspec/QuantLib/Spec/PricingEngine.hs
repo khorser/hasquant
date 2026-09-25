@@ -26,7 +26,7 @@ import qualified QuantLib.Instrument.Option as Opt(rho, vega, dividendRho)
 import QuantLib.Instrument.CapFloor(cap)
 import QuantLib.Instrument.Swap(varianceSwap, vanillaSwap, floatingLeg, SwapType(..))
 import QuantLib.Process hiding(thetaAt)
-import QuantLib.Model hiding(setPricingEngine, value, discount)
+import QuantLib.Model hiding(setPricingEngine, value, discount, impliedVolatility)
 import QuantLib.Math(RngTrait(..), StatisticsTrait(..), PolynomialType(..), BinomialTree(..), FdmScheme(..), boxedRealMatrix, ComplexLogFormula(..)
   ,SobolDirectionIntegers(..), realMatrixRows, realMatrixColumns, realMatrixData)
 import QuantLib.Method(fdmBlackScholesMesher, fdmMesherComposite, fdmMesherLocations)
@@ -1436,6 +1436,48 @@ spec = do
           setPricingEngine optInst engine
           v <- npv optInst
           v `shouldSatisfy` closePrec expected 1.0e-4
+
+  -- Ported from hybridhestonhullwhiteprocess.cpp's testBsmHullWhiteEngine: the engine's price
+  -- maps to a flat Black vol under which the plain analytic engine reproduces price and greeks.
+  describe "AnalyticBSMHullWhiteEngine" $
+    it "reproduces testBsmHullWhiteEngine's implied volatilities across equity/short-rate correlations" $
+      Context.keepingSettingsGc $ do
+        let today' = 15 `january` 2024
+            maturity = addGregorianYearsClip 20 today'
+            tol = 1.0e-8
+        Context.setEvaluationDate (Just today')
+        dc <- dayCounter Actual365FixedStandard
+        cal <- calendar Null
+        spotQ <- simpleQuote 100
+        qTS <- simpleQuote 0.04 >>= \q -> flatForward (ReferenceDate today') q dc Continuous Annual
+        rTS <- simpleQuote 0.0525 >>= \q -> flatForward (ReferenceDate today') q dc Continuous Annual
+        let flatVolProcess v = do
+              volTS <- simpleQuote v >>= \q -> blackConstantVol (CalendarReferenceDate today') cal q dc
+              blackScholesMertonProcess spotQ qTS rTS volTS EulerDiscretization False
+        process <- flatVolProcess 0.25
+        hw <- hullWhite rTS 0.00883 0.00526
+        qDisc <- discount qTS (DatePoint maturity) False
+        rDisc <- discount rTS (DatePoint maturity) False
+        let payoff = PlainVanilla (PlainVanillaPayoff Call (100 * qDisc / rDisc))
+            exercise = European (EuropeanExercise maturity)
+        forM_ [ (-0.75, 0.217064577), (-0.25, 0.243995801), (0.0, 0.256402830)
+              , (0.25, 0.268236596), (0.75, 0.290461343) ] $ \(corr, expectedVol) -> do
+          option <- vanillaOption payoff exercise
+          analyticBsmHullWhiteEngine corr process hw >>= setPricingEngine option
+          optionNpv <- npv option
+          bsProcess <- flatVolProcess expectedVol
+          comp <- vanillaOption payoff exercise
+          analyticEuropeanEngine bsProcess Nothing >>= setPricingEngine comp
+          impliedVolatility comp optionNpv bsProcess [] 1.0e-10 100 1.0e-7 4.0
+            >>= (`shouldSatisfy` closePrec expectedVol tol)
+          npv comp >>= (`shouldSatisfy` closePrec optionNpv (tol * optionNpv))
+          option' <- asOneAssetOption option
+          comp' <- asOneAssetOption comp
+          optionDelta <- delta option'
+          delta comp' >>= (`shouldSatisfy` closePrec optionDelta tol)
+          forM_ [gamma, theta] $ \greek -> do
+            expected <- greek option'
+            greek comp' >>= (`shouldSatisfy` closePrec expected (tol * optionNpv))
 
   -- Ported from quantooption.cpp's testFDMQuantoHelper, testPDEOptionValues, and
   -- testAmericanQuantoOption: the FDM-side building blocks (FdmQuantoHelper's own quanto drift
