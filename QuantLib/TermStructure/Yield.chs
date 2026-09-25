@@ -595,6 +595,7 @@ bondHelper cleanPrice bond priceType = bondHelper_ cleanPrice bond (fromEnum pri
 
 {#fun qlBondHelper as bondHelper_{withQuote*`GenQuote q',withBond*`GenBond b',`Int' -- ^priceType
   ,preErrorCheck-`String'errorCheck*-}->`BondHelper'peekBondHelper*#}
+
 -- |How an OIS helper's dates are given. 'OisTenor' is relative to the evaluation date: the swap
 -- starts @settlementDays@ after it plus @forwardStart@ and runs for @tenor@. 'OisBetweenDates'
 -- runs between two fixed dates; every overnight fixing it compounds over that is before the
