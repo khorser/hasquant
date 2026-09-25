@@ -276,7 +276,7 @@ QlOptionletVolatilityStructure* qlOptionletStripper1(QlCapFloorTermVolSurface* s
   try {return ret(new QlOptionletVolatilityStructure(shared_ptr<OptionletVolatilityStructure>(alloc(new StrippedOptionletAdapter(
             shared_ptr<OptionletStripper1>(alloc(new OptionletStripper1(*arg(surface), *arg(index), switchStrikes, accuracy, maxIter,
               qlNullableHandle(arg(discount)), (VolatilityType)type, displacement, (bool)dontThrow,
-              optionletFrequencyUnit < 0 ? ext::optional<Period>() : ext::optional<Period>(Period(optionletFrequencyLen, (TimeUnit)optionletFrequencyUnit))))))))));
+              optionletFrequencyUnit < 0 ? optional<Period>() : optional<Period>(Period(optionletFrequencyLen, (TimeUnit)optionletFrequencyUnit))))))))));
   } catch (std::exception& er) {return handleException<QlOptionletVolatilityStructure*>(e, er);}}
 
 // A relinkable handle, empty when `initial` is null -- mirrors qlRelinkableYieldTermStructure.
@@ -458,7 +458,7 @@ QlOptionletStripper2* qlOptionletStripper2(QlCapFloorTermVolSurface* surface, Ql
   try {
     auto stripper1 = shared_ptr<OptionletStripper1>(alloc(new OptionletStripper1(*arg(surface), *arg(index),
         switchStrikes, accuracy, maxIter, qlNullableHandle(arg(discount)), (VolatilityType)type, displacement,
-        (bool)dontThrow, optionletFrequencyUnit < 0 ? ext::optional<Period>() : ext::optional<Period>(Period(optionletFrequencyLen, (TimeUnit)optionletFrequencyUnit)))));
+        (bool)dontThrow, optionletFrequencyUnit < 0 ? optional<Period>() : optional<Period>(Period(optionletFrequencyLen, (TimeUnit)optionletFrequencyUnit)))));
     return ret(new QlOptionletStripper2(alloc(new OptionletStripper2(stripper1, Handle<CapFloorTermVolCurve>(*arg(atmCurve))))));
   } catch (std::exception& er) {return handleException<QlOptionletStripper2*>(e, er);}}
 void qlFreeOptionletStripper2(QlOptionletStripper2 *o) {del(o);}
@@ -1079,12 +1079,12 @@ QlBlackVolatilitySurfaceDelta* qlBlackVolatilitySurfaceDelta(int referenceDate, 
         hasAtm, qlMatrix(blackVolMatrix, blackVolMatrixRows, blackVolMatrixCols),
         *arg(dayCounter), *arg(cal), *arg(spot), *arg(domesticTS), *arg(foreignTS),
         (DeltaVolQuote::DeltaType)deltaType, (DeltaVolQuote::AtmType)atmType,
-        atmDeltaType < 0 ? ext::nullopt : ext::optional<DeltaVolQuote::DeltaType>((DeltaVolQuote::DeltaType)atmDeltaType),
+        atmDeltaType < 0 ? nullopt : optional<DeltaVolQuote::DeltaType>((DeltaVolQuote::DeltaType)atmDeltaType),
         (BlackVolatilitySurfaceDelta::SmileInterpolationMethod)interpolationMethod,
         flatStrikeExtrapolation, (BlackVolTimeExtrapolation::Type)timeExtrapolationType,
         Period(switchTenorLen, (TimeUnit)switchTenorUnit),
         (DeltaVolQuote::DeltaType)longTermDeltaType, (DeltaVolQuote::AtmType)longTermAtmType,
-        longTermAtmDeltaType < 0 ? ext::nullopt : ext::optional<DeltaVolQuote::DeltaType>((DeltaVolQuote::DeltaType)longTermAtmDeltaType)))));
+        longTermAtmDeltaType < 0 ? nullopt : optional<DeltaVolQuote::DeltaType>((DeltaVolQuote::DeltaType)longTermAtmDeltaType)))));
   } catch (std::exception& er) {return handleException<QlBlackVolatilitySurfaceDelta*>(e, er);}}
 QlSmileSection* qlBlackVolatilitySurfaceDeltaSmile1(QlBlackVolatilitySurfaceDelta* o, double t, char **e) {
   try {return ret(new QlSmileSection((*arg(o))->blackVolSmile(t)));
@@ -1988,9 +1988,9 @@ QlRateHelper *qlConstNotionalCrossCurrencyBasisSwapRateHelper(QlQuote *basis, in
     return ret(new QlRateHelper(alloc(new ConstNotionalCrossCurrencyBasisSwapRateHelper(*arg(basis), Period(tenorLen, (TimeUnit)tenorUnit), fixingDays, *arg(calendar), (BusinessDayConvention)convention, endOfMonth,
       *arg(baseCurrencyIndex), *arg(quoteCurrencyIndex), *arg(collateralCurve),
       isFxBaseCurrencyCollateralCurrency, isBasisOnFxBaseCurrencyLeg,
-      paymentFrequency < 0 ? ext::optional<Frequency>() : ext::optional<Frequency>((Frequency)paymentFrequency),
+      paymentFrequency < 0 ? optional<Frequency>() : optional<Frequency>((Frequency)paymentFrequency),
       paymentLag,
-      quoteCurrencyPaymentFrequency < 0 ? ext::optional<Frequency>() : ext::optional<Frequency>((Frequency)quoteCurrencyPaymentFrequency)))));
+      quoteCurrencyPaymentFrequency < 0 ? optional<Frequency>() : optional<Frequency>((Frequency)quoteCurrencyPaymentFrequency)))));
   } catch (std::exception& er) {return handleException<QlRateHelper*>(e, er);}}
 QlRateHelper *qlMtMCrossCurrencyBasisSwapRateHelper(QlQuote *basis, int tenorLen, int tenorUnit, unsigned fixingDays, Calendar *calendar, int convention, int endOfMonth,
   QlIborIndex *baseCurrencyIndex, QlIborIndex *quoteCurrencyIndex, QlYieldTermStructure *collateralCurve,
@@ -2000,9 +2000,9 @@ QlRateHelper *qlMtMCrossCurrencyBasisSwapRateHelper(QlQuote *basis, int tenorLen
     return ret(new QlRateHelper(alloc(new MtMCrossCurrencyBasisSwapRateHelper(*arg(basis), Period(tenorLen, (TimeUnit)tenorUnit), fixingDays, *arg(calendar), (BusinessDayConvention)convention, endOfMonth,
       *arg(baseCurrencyIndex), *arg(quoteCurrencyIndex), *arg(collateralCurve),
       isFxBaseCurrencyCollateralCurrency, isBasisOnFxBaseCurrencyLeg, isFxBaseCurrencyLegResettable,
-      paymentFrequency < 0 ? ext::optional<Frequency>() : ext::optional<Frequency>((Frequency)paymentFrequency),
+      paymentFrequency < 0 ? optional<Frequency>() : optional<Frequency>((Frequency)paymentFrequency),
       paymentLag,
-      quoteCurrencyPaymentFrequency < 0 ? ext::optional<Frequency>() : ext::optional<Frequency>((Frequency)quoteCurrencyPaymentFrequency)))));
+      quoteCurrencyPaymentFrequency < 0 ? optional<Frequency>() : optional<Frequency>((Frequency)quoteCurrencyPaymentFrequency)))));
   } catch (std::exception& er) {return handleException<QlRateHelper*>(e, er);}}
 QlRateHelper *qlConstNotionalCrossCurrencySwapRateHelper(QlQuote *fixedRate, int tenorLen, int tenorUnit, unsigned fixingDays, Calendar *calendar, int convention, int endOfMonth,
   int fixedFrequency, DayCounter *fixedDayCount, QlIborIndex *floatIndex, QlYieldTermStructure *collateralCurve, int collateralOnFixedLeg, int paymentLag, char **e) {
@@ -2166,7 +2166,7 @@ QlOISRateHelper* qlOISRateHelper(unsigned settlementDays, int l, int u, QlQuote*
     Period(fl, (TimeUnit)fu),
     overnightSpread ? std::variant<Spread, Handle<Quote>>(*arg(overnightSpread)) : std::variant<Spread, Handle<Quote>>(Spread(0.0)),
     (Pillar::Choice)pillar, qlNullableDate(customPillarDate), (RateAveraging::Type)averagingMethod, qlOptBool(endOfMonth),
-    fixedPaymentFrequency < 0 ? ext::optional<Frequency>() : ext::optional<Frequency>((Frequency)fixedPaymentFrequency),
+    fixedPaymentFrequency < 0 ? optional<Frequency>() : optional<Frequency>((Frequency)fixedPaymentFrequency),
     *arg(fixedCalendar), lookbackDays, lockoutDays, applyObservationShift,
     pricer ? *arg(pricer) : ext::shared_ptr<FloatingRateCouponPricer>(), (DateGeneration::Rule)rule, *arg(overnightCalendar), (BusinessDayConvention)convention))));
   } catch (std::exception& er) {return handleException<QlOISRateHelper*>(e, er);}}
@@ -2179,7 +2179,7 @@ QlOISRateHelper* qlOISRateHelper2(int start, int end, QlQuote* fixedRate, QlOver
     telescopicValueDates, paymentLag, (BusinessDayConvention)paymentConvention, (Frequency)paymentFrequency, *arg(paymentCalendar),
     overnightSpread ? std::variant<Spread, Handle<Quote>>(*arg(overnightSpread)) : std::variant<Spread, Handle<Quote>>(Spread(0.0)),
     (Pillar::Choice)pillar, qlNullableDate(customPillarDate), (RateAveraging::Type)averagingMethod, qlOptBool(endOfMonth),
-    fixedPaymentFrequency < 0 ? ext::optional<Frequency>() : ext::optional<Frequency>((Frequency)fixedPaymentFrequency),
+    fixedPaymentFrequency < 0 ? optional<Frequency>() : optional<Frequency>((Frequency)fixedPaymentFrequency),
     *arg(fixedCalendar), lookbackDays, lockoutDays, applyObservationShift,
     pricer ? *arg(pricer) : ext::shared_ptr<FloatingRateCouponPricer>(), (DateGeneration::Rule)rule, *arg(overnightCalendar), (BusinessDayConvention)convention))));
   } catch (std::exception& er) {return handleException<QlOISRateHelper*>(e, er);}}
@@ -2300,7 +2300,7 @@ QlYieldTermStructure* qlQuantoTermStructure(QlYieldTermStructure* underlyingDivi
 
 QlYieldTermStructure* qlUltimateForwardTermStructure(QlYieldTermStructure* x0, QlQuote* lastLiquidForwardRate, QlQuote* ultimateForwardRate, int fspLen, int fspUnit, double alpha, int roundingDigits, int compounding, int frequency, char **e) {
   try {return ret(new QlYieldTermStructure(shared_ptr<YieldTermStructure>(alloc(new UltimateForwardTermStructure(*arg(x0), *arg(lastLiquidForwardRate), *arg(ultimateForwardRate), Period(fspLen, (TimeUnit)fspUnit), alpha,
-      roundingDigits == Null<Integer>() ? ext::optional<Integer>() : ext::optional<Integer>(roundingDigits), (Compounding)compounding, (Frequency)frequency)))));
+      roundingDigits == Null<Integer>() ? optional<Integer>() : optional<Integer>(roundingDigits), (Compounding)compounding, (Frequency)frequency)))));
   } catch (std::exception& er) {return handleException<QlYieldTermStructure*>(e, er);}}
 
 QlYieldTermStructure* qlInterpolatedSpreadDiscountCurve(QlYieldTermStructure* baseCurve, unsigned dfsLen, double *dfs, unsigned datesLen, int *dates, int interpolator, int approximator, int approximatorArg, char **e) {

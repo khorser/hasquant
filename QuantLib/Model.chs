@@ -416,7 +416,7 @@ hestonSlvFdmLogEntry snapshot i = do
 {#fun qlHestonSLVFDMLogEntriesDensity as hestonSlvFdmLogEntriesDensity{withHestonSLVFDMLogEntries*`HestonSLVFDMLogEntries',fromIntegral`Word',prePtr-`Word'peekWord*,prePtr-`Word'peekWord*,preArray-`RealVector'&peekRealVector*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Single-factor Hull-White (extended Vasicek) short-rate model: dr = (theta(t) - a r) dt + sigma dW, fitted to the given term structure.
-{#fun qlHullWhite as hullWhite{withYieldTermStructure*`GenYieldTermStructure y',`Double' -- ^y
+{#fun qlHullWhite as hullWhite{withYieldTermStructure*`GenYieldTermStructure y',`Double' -- ^a (mean reversion)
   ,`Double' -- ^sigma
   ,preErrorCheck-`String'errorCheck*-}->`HullWhite'peekHullWhite*#}
 

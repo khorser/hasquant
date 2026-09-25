@@ -13,7 +13,7 @@ module QuantLib.Spec.Model (spec) where
 
 import Test.Hspec
 import qualified Data.Vector.Storable as V
-import Data.Time.Calendar(addGregorianYearsClip, fromGregorian, addDays)
+import Data.Time.Calendar(addGregorianYearsClip, addGregorianMonthsClip, fromGregorian, addDays)
 import Data.List.NonEmpty(NonEmpty(..), fromList)
 
 import qualified QuantLib.Context as Context
@@ -22,6 +22,7 @@ import QuantLib.Time.Date(september)
 import QuantLib.Time.Schedule
 import QuantLib.InterestRate(Compounding(..), VolatilityType(ShiftedLognormal))
 import QuantLib.Quote
+import QuantLib.TermStructure(timeFromReference)
 import QuantLib.TermStructure.Yield
 import qualified QuantLib.Index.InterestRate as IR
 import QuantLib.Instrument
@@ -31,7 +32,7 @@ import QuantLib.Model hiding(setPricingEngine, value, discount)
 import qualified QuantLib.Model as Model
 import qualified QuantLib.Process as Process
 import qualified QuantLib.TermStructure.Volatility as Vol
-import QuantLib.Math(Interpolation(..), EndCriteria(..), OptimizationMethod(..))
+import QuantLib.Math(Interpolation(..), EndCriteria(..), OptimizationMethod(..), matrixData)
 import QuantLib.CashFlow(RateAveragingType(AveragingCompound))
 import Control.Monad(forM, forM_)
 import QuantLib.PricingEngine
@@ -172,6 +173,35 @@ gsrReversionSpec =
           a <- gaussian1dZerobond constant maturity (Just refDate) y Nothing
           b <- gaussian1dZerobond piecewise maturity (Just refDate) y Nothing
           b `shouldSatisfy` closePrec a 1.0e-8
+
+    -- The rest of testGsrModel: the state is standardized through the GSR state process, and the
+    -- Hull-White short rate adds the flat 3% instantaneous forward to it.
+    it "prices zero bonds as the Hull-White model with the same constant reversion and volatility" $
+      Context.keepingSettingsGc $ do
+        (settlement, ts) <- flatCurve
+        volQuote <- simpleQuote 0.01
+        reversionQuote <- simpleQuote 0.01
+        constant <- gsr ts volQuote [] reversionQuote 50.0
+        piecewise <- gsrWithReversions ts (volQuote, reversionQuote)
+          [(addGregorianMonthsClip (6 * i) settlement, (volQuote, reversionQuote)) | i <- [1 .. 59]] 50.0
+        hwAffine <- hullWhite ts 0.01 0.01 >>= asAffineModel
+        let horizon = addDays (50 * 365) settlement
+        forM_ [constant, piecewise] $ \gsrModel -> do
+          model <- asGaussian1dModel gsrModel
+          sp <- stateProcess model >>= Process.asStochasticProcess
+          forM_ [37, 3689, 10994, 16473] $ \wDays -> do
+            let wDate = addDays wDays settlement
+                tDates = takeWhile (< horizon)
+                  [addDays (wDays + 37 + round (912.5 * fromIntegral k :: Double)) settlement | k <- [0 :: Int ..]]
+            w <- timeFromReference ts wDate
+            [e] <- Process.expectation sp 0 [0] w
+            [sd] <- matrixData <$> Process.stdDeviation sp 0 [0] w
+            forM_ tDates $ \tDate -> do
+              t <- timeFromReference ts tDate
+              forM_ [-0.10 + 0.01 * fromIntegral k | k <- [0 .. 20 :: Int]] $ \xw -> do
+                gsrBond <- gaussian1dZerobond model tDate (Just wDate) ((xw - e) / sd) Nothing
+                hwBond <- discountBond hwAffine w t [xw + 0.03]
+                gsrBond `shouldSatisfy` closePrec hwBond 1.0e-8
 
     it "refuses to fit more reversions than the model has" $
       Context.keepingSettingsGc $ do

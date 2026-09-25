@@ -648,10 +648,10 @@ withPayoff (Custom n d fp) f = qlPayoffFromFunction n d fp >>= newCastForeignPtr
 -- difference and @MCEuropeanEngine@ families all recover the strike by downcasting to
 -- @StrikedTypePayoff@\/@PlainVanillaPayoff@ first, and a further ~30 engines route through
 -- @BlackCalculator@, whose @AcyclicVisitor@ knows only the four built-in striked payoffs. Most of
--- these fail with a clean QuantLib exception, but
+-- these fail with a clean QuantLib exception. On QuantLib <= 1.43,
 -- @QuantLib.PricingEngine.fdBlackScholesVanillaEngine@ and
--- @QuantLib.PricingEngine.fdHestonVanillaEngine@ perform that downcast /unchecked/ upstream and
--- will __crash the process__, not throw, on a custom payoff. Confirmed-generic consumers:
+-- @QuantLib.PricingEngine.fdHestonVanillaEngine@ perform that downcast /unchecked/ and
+-- __crash the process__ on a custom payoff; later versions throw. Confirmed-generic consumers:
 -- @QuantLib.Method.fdmLogInnerValue@\/@fdmCellAveragingInnerValue@ (and hence @fdmSolve@), and
 -- @QuantLib.PricingEngine.mcAmericanEngine@ with @controlVariate = False@.
 withCustomPayoff :: String -- ^name
@@ -666,13 +666,13 @@ withCustomPayoff n d f k = withPayoffFun f (k . Custom n d)
 -- __The pair is advisory: it does not define the payoff__ -- @payoff(price)@ alone does, exactly
 -- as for 'withCustomPayoff'. It exists because QuantLib's finite-difference vanilla engines reach
 -- past the @Payoff@ interface for a strike when sizing their grid:
--- @FdBlackScholesVanillaEngine@ @dynamic_pointer_cast@s to @StrikedTypePayoff@ /without/ a check
--- and calls @strike()@ twice -- once for the mesher's extent, once for its node-concentration
--- point -- then hands the payoff itself to @FdmLogInnerValue@, which takes a plain @Payoff@. So a
--- payoff built here prices correctly through
--- 'QuantLib.PricingEngine.fdBlackScholesVanillaEngine' and
--- 'QuantLib.PricingEngine.fdHestonVanillaEngine', where one built by 'withCustomPayoff' would
--- crash the process on that unchecked cast. Pass the strike you want the grid centred on.
+-- @FdBlackScholesVanillaEngine@ @dynamic_pointer_cast@s to @StrikedTypePayoff@ and calls
+-- @strike()@ twice -- once for the mesher's extent, once for its node-concentration point -- then
+-- hands the payoff itself to @FdmLogInnerValue@, which takes a plain @Payoff@. So a payoff built
+-- here prices correctly through 'QuantLib.PricingEngine.fdBlackScholesVanillaEngine' and
+-- 'QuantLib.PricingEngine.fdHestonVanillaEngine', where one built by 'withCustomPayoff' is
+-- rejected -- and on QuantLib <= 1.43, whose cast is unchecked, crashes the process. Pass the
+-- strike you want the grid centred on.
 --
 -- Everything else matches 'withCustomPayoff', including the continuation-lifetime rule: the
 -- payoff is valid only inside the continuation, which must span the whole use (pricing included),

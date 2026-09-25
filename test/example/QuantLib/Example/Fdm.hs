@@ -26,8 +26,9 @@
 --   per-grid-node crossing rather than a whole-grid one.
 -- * 'QuantLib.Instrument.Option.withCustomStrikedPayoff' driving
 --   'QuantLib.PricingEngine.fdBlackScholesVanillaEngine' -- the engine that reaches past the
---   @Payoff@ interface, downcasting to @StrikedTypePayoff@ with no null check to read a strike for
---   its mesher. A payoff from 'QuantLib.Instrument.Option.withCustomPayoff' crashes there; one
+--   @Payoff@ interface, downcasting to @StrikedTypePayoff@ to read a strike for its mesher. A
+--   payoff from 'QuantLib.Instrument.Option.withCustomPayoff' is rejected there (QuantLib <= 1.43,
+--   which skips the null check, crashes); one
 --   carrying an advisory strike makes the cast succeed and the engine prices the Haskell function
 --   itself. Checked against the native @PlainVanilla@ payoff through the same engine (identical
 --   lambda, identical strike, so identical price).

@@ -207,6 +207,13 @@ because a neighboring function in the same audit bullet or file got fixed
 for a different reason. Adding `char **e` to these shims requires a deliberate
 repository-wide policy change.
 
+## Optional and any arguments
+
+Write `optional<T>`, `nullopt`, `any` and `any_cast` unqualified in `cbits/`; `qlStdCompat.h` (included by
+`qlaux.h`) maps them to `std::` or, on a QuantLib <= 1.43 built without `QL_USE_STD_OPTIONAL`/`QL_USE_STD_ANY`,
+to `boost::`. Never spell `ext::optional`, `ext::nullopt` or `ext::any`: QuantLib 1.44 deprecates them.
+A TU that does not include `qlaux.h` includes `qlStdCompat.h` directly, as `qlPricingEngineAux.cpp` does.
+
 ## Yield curves are `Handle`s, not `shared_ptr`s
 
 **A yield curve is a `Handle`, not a `shared_ptr`** — `typedef
