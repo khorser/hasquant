@@ -387,4 +387,50 @@ ZabrInterpolatedSmileSectionHandle *qlZabrInterpolatedSmileSectionAux(
     bool vegaWeighted, const QuantLib::ext::shared_ptr<QuantLib::EndCriteria> &endCriteria,
     const QuantLib::ext::shared_ptr<QuantLib::OptimizationMethod> &method, const QuantLib::DayCounter &dc);
 
+// The fixed-date deposit and FRA helpers, as hasquant builds them. They are the only deposit and
+// FRA forms that read a stored fixing -- impliedQuote() is iborIndex_->fixing(fixingDate_, true),
+// which reads the store once the fixing date is before the evaluation date -- and QuantLib keeps
+// the fixing date, the index and useIndexedCoupon private, where no pointer-to-member peek
+// reaches. So the subclass keeps its own copy of what the fixing walk
+// (qlRateHelperFixingDependencies) reports, taken from the constructor's arguments, and accept()
+// offers a visitor the subclass before falling back to the base class's own dispatch. Neither
+// date moves: both forms pass updateDates = false.
+class FixedDateDepositRateHelper : public QuantLib::DepositRateHelper {
+ public:
+  FixedDateDepositRateHelper(const QuantLib::Handle<QuantLib::Quote>& rate, const QuantLib::Date& fixingDate,
+                             const QuantLib::ext::shared_ptr<QuantLib::IborIndex>& iborIndex)
+  : DepositRateHelper(rate, fixingDate, iborIndex), indexName_(iborIndex->name()), fixingDate_(fixingDate) {}
+  void accept(QuantLib::AcyclicVisitor& v) override {
+    if (auto* v1 = dynamic_cast<QuantLib::Visitor<FixedDateDepositRateHelper>*>(&v)) v1->visit(*this);
+    else DepositRateHelper::accept(v);
+  }
+  const std::string& indexName() const {return indexName_;}
+  const QuantLib::Date& fixingDate() const {return fixingDate_;}
+ private:
+  std::string indexName_;
+  QuantLib::Date fixingDate_;
+};
+
+// The FRA fixes where FraRateHelper::initializeDates puts it, iborIndex->fixingDate(startDate),
+// and reads that fixing only with useIndexedCoupon; otherwise it prices off the curve.
+class FixedDateFraRateHelper : public QuantLib::FraRateHelper {
+ public:
+  FixedDateFraRateHelper(const QuantLib::Handle<QuantLib::Quote>& rate, const QuantLib::Date& startDate,
+                         const QuantLib::Date& endDate, const QuantLib::ext::shared_ptr<QuantLib::IborIndex>& iborIndex,
+                         QuantLib::Pillar::Choice pillar, const QuantLib::Date& customPillarDate, bool useIndexedCoupon)
+  : FraRateHelper(rate, startDate, endDate, iborIndex, pillar, customPillarDate, useIndexedCoupon),
+    indexName_(iborIndex->name()), fixingDate_(iborIndex->fixingDate(startDate)), useIndexedCoupon_(useIndexedCoupon) {}
+  void accept(QuantLib::AcyclicVisitor& v) override {
+    if (auto* v1 = dynamic_cast<QuantLib::Visitor<FixedDateFraRateHelper>*>(&v)) v1->visit(*this);
+    else FraRateHelper::accept(v);
+  }
+  const std::string& indexName() const {return indexName_;}
+  const QuantLib::Date& fixingDate() const {return fixingDate_;}
+  bool useIndexedCoupon() const {return useIndexedCoupon_;}
+ private:
+  std::string indexName_;
+  QuantLib::Date fixingDate_;
+  bool useIndexedCoupon_;
+};
+
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

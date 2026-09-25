@@ -70,7 +70,7 @@ run = do
 
   depoHelpers <- forM depoQuotes $ \(settlDays, rate) -> do
     q <- simpleQuote rate
-    TS.depositRateHelper q (1, Days) settlDays cal Following False depositDC
+    TS.depositRateHelper q (TS.DepositTenor (1, Days) settlDays cal Following False depositDC)
 
   oisHelpers <- forM (shortOisQuotes ++ longOisQuotes) $ \(tenor, rate) -> do
     q <- simpleQuote rate
@@ -90,7 +90,7 @@ run = do
 
   let euriborHelpers discounting = do
         d6MQuote <- simpleQuote 0.00312
-        d6M <- TS.depositRateHelper d6MQuote (6, Months) 3 cal Following False depositDC
+        d6M <- TS.depositRateHelper d6MQuote (TS.DepositTenor (6, Months) 3 cal Following False depositDC)
         fras <- forM fraQuotes $ \(monthsToStart, rate) -> do
           q <- simpleQuote rate
           TS.fraRateHelper q (TS.FraMonths monthsToStart (monthsToStart + 6) 2 cal ModifiedFollowing

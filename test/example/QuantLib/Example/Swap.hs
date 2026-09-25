@@ -45,7 +45,7 @@ run = do
   depoDC <- dayCounter (Actual360 False)
 
   depoHelpers <- mapM (\(q, p) ->
-    TS.depositRateHelper q p (fromIntegral fixingDays) cal ModifiedFollowing True depoDC) $
+    TS.depositRateHelper q (TS.DepositTenor p (fromIntegral fixingDays) cal ModifiedFollowing True depoDC)) $
       zip depoQuotes depoTerms
   fraHelpers <- mapM (\(q, (m1, m2)) ->
     TS.fraRateHelper q (TS.FraMonths m1 m2 (fromIntegral fixingDays) cal ModifiedFollowing True depoDC) TS.LastRelevantDate Nothing True) $

@@ -781,6 +781,8 @@ using QuantLib::ext::optional;
 
 class PolymorphicPathGenerator;
 class PolymorphicGaussianRsg;
+class FixedDateDepositRateHelper;
+class FixedDateFraRateHelper;
 
 // Haskell CRateHelper is actually a pointer to a shared_ptr, because rate helpers are used via
 // shared_ptr in QuantLib and have no Handle-based counterpart upstream.
@@ -1275,6 +1277,8 @@ QL_TRACE_NAME(DigitalCmsCoupon)
 QL_TRACE_NAME(DigitalCmsSpreadCoupon)
 QL_TRACE_NAME(DigitalReplication)
 QL_TRACE_NAME(StrippedCappedFlooredCoupon)
+QL_TRACE_NAME(FixedDateDepositRateHelper)
+QL_TRACE_NAME(FixedDateFraRateHelper)
 QL_TRACE_NAME(Forward)
 QL_TRACE_NAME(ForwardRateAgreement)
 QL_TRACE_NAME(ForwardSpreadedTermStructure)

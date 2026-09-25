@@ -26,6 +26,7 @@ module QuantLib.TermStructure.Yield
   , BootstrapTrait(..)
   , PillarChoice(..)
   , FuturesType(..)
+  , DepositTerms(..)
   , FraTerms(..)
   , FuturesTerms(..)
   , OISRateHelperOpts(..)
@@ -52,7 +53,6 @@ module QuantLib.TermStructure.Yield
   , quantoTermStructure
   , ultimateForwardTermStructure
     -- ** Rate helpers
-  , depositRateHelperFromIndex
   , depositRateHelper
   , fixedRateBondHelper
   , swapRateHelperFromConventions
@@ -191,11 +191,41 @@ $(deriveOptionsRecord "OISRateHelperOpts" ["m", "p"]
 nullableDouble :: Maybe Double -> Double
 nullableDouble = realToFrac . fromMaybeDouble
 
--- |Rate helper for bootstrapping over deposit rates, taking its conventions from an ibor index.
-{#fun qlDepositRateHelper1 as depositRateHelperFromIndex{withQuote*`GenQuote q',withIborIndex*`GenIborIndex ibor',preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
+-- |How a deposit's period and fixing conventions are given. 'DepositTenor' and 'DepositFromIndex'
+-- are relative to the evaluation date: the deposit starts at spot and its dates move when the
+-- evaluation date does. 'DepositFromIndex' takes the tenor and conventions from the ibor index;
+-- 'DepositTenor' states them and fixes on an index QuantLib names @\"no-fix\"@.
+-- 'DepositOnFixingDate' is the deposit the index fixes on the given date. Its dates never move, and
+-- once that date is before the evaluation date its implied quote is the stored fixing, so
+-- 'rateHelperFixingDependencies' reports it.
+data DepositTerms ibor
+  = DepositTenor
+      !(Int, TimeUnit) -- ^tenor
+      !Word -- ^fixingDays
+      !Calendar
+      !BusinessDayConvention
+      !Bool -- ^endOfMonth
+      !DayCounter
+  | DepositFromIndex
+      !(GenIborIndex ibor)
+  | DepositOnFixingDate
+      !Day -- ^fixingDate
+      !(GenIborIndex ibor)
 
 -- |Rate helper for bootstrapping over deposit rates.
-{#fun qlDepositRateHelper as depositRateHelper{withQuote*`GenQuote q' -- ^rate
+depositRateHelper :: GenQuote q -> DepositTerms ibor -> IO RateHelper
+depositRateHelper rate terms = case terms of
+  DepositTenor t fd cal conv eom dc -> depositRateHelperRaw rate t fd cal conv eom dc
+  DepositFromIndex idx -> depositRateHelperFromIndexRaw rate idx
+  DepositOnFixingDate d idx -> depositRateHelperOnFixingDateRaw rate d idx
+
+-- Raw deposit bindings behind 'depositRateHelper'; one per 'DepositTerms' constructor.
+{#fun qlDepositRateHelper1 as depositRateHelperFromIndexRaw{withQuote*`GenQuote q',withIborIndex*`GenIborIndex ibor',preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
+
+{#fun qlDepositRateHelper2 as depositRateHelperOnFixingDateRaw{withQuote*`GenQuote q',withDay*`Day' -- ^fixingDate
+  ,withIborIndex*`GenIborIndex ibor',preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
+
+{#fun qlDepositRateHelper as depositRateHelperRaw{withQuote*`GenQuote q' -- ^rate
   ,fromEnumQuantity`(Int,TimeUnit)'& -- ^tenor
   ,fromIntegral`Word' -- ^fixingDays
   ,withCalendar*`Calendar' -- ^calendar
@@ -286,8 +316,13 @@ discount curve point = case point of
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |How a FRA's period and fixing conventions are given. The @FromIndex@ variants take the
--- FRA's length and its calendar\/convention\/day-count from the ibor index; the others state
--- them explicitly.
+-- FRA's length and its calendar\/convention\/day-count from the ibor index; the months and
+-- period variants without an index state them explicitly. 'FraImmOffsets' starts and ends the
+-- FRA on the given IMM dates after spot, counting the first as 1, and takes the rest from the
+-- index. All of these are relative to the evaluation date. 'FraBetweenDates' is not: it runs from
+-- the start date to the end date and fixes where the index fixes for the start date, and, with
+-- @useIndexedCoupon@, its implied quote is the stored fixing once that date is before the
+-- evaluation date, which 'rateHelperFixingDependencies' reports.
 data FraTerms ibor
   = FraMonths
       !Word -- ^monthsToStart
@@ -311,6 +346,14 @@ data FraTerms ibor
   | FraPeriodFromIndex
       !(Int, TimeUnit) -- ^periodToStart
       !(GenIborIndex ibor)
+  | FraImmOffsets
+      !Word -- ^immOffsetStart
+      !Word -- ^immOffsetEnd
+      !(GenIborIndex ibor)
+  | FraBetweenDates
+      !Day -- ^startDate
+      !Day -- ^endDate
+      !(GenIborIndex ibor)
 
 -- |Rate helper for bootstrapping over FRA rates.
 fraRateHelper :: GenQuote q
@@ -324,6 +367,8 @@ fraRateHelper rate terms = case terms of
   FraMonthsFromIndex s idx -> fraRateHelperFromIndexRaw rate s idx
   FraPeriod p n fd cal conv eom dc -> fraRateHelperFromPeriodRaw rate p n fd cal conv eom dc
   FraPeriodFromIndex p idx -> fraIborRateHelperRaw rate p idx
+  FraImmOffsets s e idx -> fraImmOffsetsRateHelperRaw rate s e idx
+  FraBetweenDates s e idx -> fraBetweenDatesRateHelperRaw rate s e idx
 
 {#fun qlFraRateHelper as fraRateHelperRaw{withQuote*`GenQuote q' -- ^rate
   ,fromIntegral`Word' -- ^monthsToStart
@@ -649,6 +694,22 @@ withCompositeZeroYieldStructure f c1 c2 comp freq k =
   ,`Bool' -- ^useIndexedCoupon
   ,preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
 
+{#fun qlFraRateHelper5 as fraImmOffsetsRateHelperRaw{withQuote*`GenQuote q',fromIntegral`Word' -- ^immOffsetStart
+  ,fromIntegral`Word' -- ^immOffsetEnd
+  ,withIborIndex*`GenIborIndex ibor'
+  ,`PillarChoice' -- ^pillar
+  ,withMaybeDay*`Maybe Day' -- ^customPillarDate
+  ,`Bool' -- ^useIndexedCoupon
+  ,preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
+
+{#fun qlFraRateHelper4 as fraBetweenDatesRateHelperRaw{withQuote*`GenQuote q',withDay*`Day' -- ^startDate
+  ,withDay*`Day' -- ^endDate
+  ,withIborIndex*`GenIborIndex ibor'
+  ,`PillarChoice' -- ^pillar
+  ,withMaybeDay*`Maybe Day' -- ^customPillarDate
+  ,`Bool' -- ^useIndexedCoupon
+  ,preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
+
 -- |How an IborIndex futures contract's underlying deposit is given. @FuturesFromIndex@ takes
 -- the deposit's length and its calendar\/convention\/day-count from the ibor index; the others
 -- state them explicitly.
@@ -723,7 +784,10 @@ futuresRateHelper price terms = case terms of
 -- 'QuantLib.Index.name', the key QuantLib\'s process-global fixing store uses.
 --
 -- A swap, OIS, basis-swap, BMA, multiple-resets, cross-currency or bond helper answers from its
--- underlying; a deposit, FRA, IBOR futures or FX swap helper reads no stored fixing: @Just []@.
+-- underlying; an IBOR futures or FX swap helper, and a deposit or FRA relative to the evaluation
+-- date, reads no stored fixing: @Just []@. A 'DepositOnFixingDate' deposit, or a 'FraBetweenDates'
+-- FRA with an indexed coupon, reads its fixing once the fixing date is before the evaluation date,
+-- and reports it from then on; on the fixing date itself it still forecasts.
 -- An overnight-index or SOFR futures helper from two weeks before its period starts (it then reads
 -- past fixings through a future QuantLib keeps private), and any helper type the walk has no case
 -- for, report 'Nothing': "cannot see it", which is not the same as "needs nothing".

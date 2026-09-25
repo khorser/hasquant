@@ -427,7 +427,9 @@ namespace {
   class RateHelperFixingDependencyVisitor : public AcyclicVisitor,
                                             public Visitor<RateHelper>,
                                             public Visitor<DepositRateHelper>,
+                                            public Visitor<FixedDateDepositRateHelper>,
                                             public Visitor<FraRateHelper>,
+                                            public Visitor<FixedDateFraRateHelper>,
                                             public Visitor<FuturesRateHelper>,
                                             public Visitor<FxSwapRateHelper>,
                                             public Visitor<SwapRateHelper>,
@@ -468,6 +470,10 @@ namespace {
           ConstNotionalCrossCurrencySwapRateHelper& h) {return h.*(&CrossCurrencySwapPeek::xccySwap_);}
     };
 
+    void collectPastFixing(const std::string& name, const Date& d) {
+      if (d < Settings::instance().evaluationDate()) out_.emplace_back(name, d);
+    }
+
     void collectCrossCurrencyBasis(CrossCurrencyBasisSwapRateHelperBase& h) {
       collectLegFixingDependencies(CrossCurrencyBasisPeek::baseLeg(h), out_);
       collectLegFixingDependencies(CrossCurrencyBasisPeek::quoteLeg(h), out_);
@@ -482,9 +488,17 @@ namespace {
 
     // A helper with no case below may read stored fixings, so it is "cannot see it" until given one.
     void visit(RateHelper&) override {opaque_ = true;}
-    // These read no stored fixing; the fixed-date deposit and FRA forms would, and are not bound.
+    // The relative-date deposit and FRA forms read no stored fixing: they adjust the evaluation date
+    // to a business day before advancing to spot, so they fix on or after it, and fixing(d, true)
+    // forecasts from the evaluation date on.
     void visit(DepositRateHelper&) override {}
     void visit(FraRateHelper&) override {}
+    // The fixed-date forms read the store once their fixing date has passed, and not on it, where
+    // fixing(d, true) still forecasts. The FRA reads it only with an indexed coupon.
+    void visit(FixedDateDepositRateHelper& h) override {collectPastFixing(h.indexName(), h.fixingDate());}
+    void visit(FixedDateFraRateHelper& h) override {
+      if (h.useIndexedCoupon()) collectPastFixing(h.indexName(), h.fixingDate());
+    }
     void visit(FuturesRateHelper&) override {}
     void visit(FxSwapRateHelper&) override {}
     void visit(SwapRateHelper& h) override {collectSwapFixingDependencies(*h.swap(), out_);}
@@ -1574,11 +1588,13 @@ void qlLegFixingDependencies(Leg *leg, unsigned *nameLen, char ***names, unsigne
 // BondHelper::bond, and the two basis-swap helpers' swap; BMA, multiple-resets and cross-currency
 // helpers keep theirs protected, which a derived-class pointer-to-member reaches.
 //
-// A deposit, FRA, futures or FX swap helper contributes nothing, and that is an answer rather than a gap:
-// the convention forms of the first two build their index with a "no-fix" name and the index
-// forms price with fixing(d, true), which forecasts today's rather than reading the store
-// (ratehelpers.cpp:188,214,295,364). Only the fixed-date deposit and FRA forms, which are not
-// bound, read a past fixing. An overnight-index (or SOFR) futures helper reads past fixings once
+// A futures or FX swap helper contributes nothing, and neither does a relative-date deposit or FRA,
+// and that is an answer rather than a gap: the convention forms of the last two build their index
+// with a "no-fix" name, and every relative form fixes on or after the evaluation date, where
+// fixing(d, true) forecasts rather than reading the store. The fixed-date deposit and FRA forms
+// read a fixing once its date has passed, and QuantLib keeps that date private, so hasquant builds
+// them as FixedDateDepositRateHelper and FixedDateFraRateHelper (qlTermStructureAux.h), which keep
+// a copy for this walk and report it from the day after it. An overnight-index (or SOFR) futures helper reads past fixings once
 // its reference period is about to start and keeps its future private, so from then *reachable is
 // set to 0 for it: an empty answer with reachable == 0 is "cannot see it". So is a helper type
 // the visitor has no case for, which is how a newly bound helper fails until it gets one.

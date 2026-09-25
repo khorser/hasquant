@@ -25,6 +25,14 @@ report `Nothing`, because QuantLib keeps their future private. A helper type the
 for now reports `Nothing` too, instead of `Just []`. On QuantLib 1.44 the walk also reads the
 overnight-overnight basis and overnight-indexed funding helpers through their `swap()`.
 
+Breaking change: `depositRateHelper` takes a `DepositTerms`, the way `fraRateHelper` takes a
+`FraTerms`, and `depositRateHelperFromIndex` is gone. `DepositTenor` holds the former explicit
+arguments, and `DepositFromIndex` holds the index. The new `DepositOnFixingDate` binds QuantLib's
+fixed-date deposit. `FraTerms` gains `FraImmOffsets`, a FRA between two IMM dates after spot, and
+`FraBetweenDates`, the fixed-date FRA. The two fixed-date forms are the only deposit and FRA
+helpers that read a stored fixing, once their fixing date has passed. `rateHelperFixingDependencies`
+reports that fixing from the day after it, for the FRA only with an indexed coupon.
+
 ## 0.7.0.0 (2026)
 
 The final broad API-coverage batch adds Haskell callbacks for payoffs, optimization, regression and

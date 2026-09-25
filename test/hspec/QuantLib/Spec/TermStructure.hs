@@ -85,7 +85,7 @@ spec = do
             deposits <- mapM
               (\(n, u, r) -> do
                 q <- Quote.simpleQuote (r/100)
-                depositRateHelper q (n, u) settlementDays cal ModifiedFollowing True actual360dc)
+                depositRateHelper q (DepositTenor (n, u) settlementDays cal ModifiedFollowing True actual360dc))
               depositData
             ccy <- currency EUR
             thirty360dc <- dayCounter Thirty360BondBasis
@@ -443,10 +443,10 @@ spec = do
           actual360dc <- dayCounter (Actual360 False)
           q <- Quote.simpleQuote 0.03
           ibor <- iborIndex Euribor6M Nothing
-          -- A deposit or FRA helper's convention form builds a "no-fix" index and its index form
-          -- forecasts today's fixing rather than reading it, so an empty list is the answer here
-          -- and not a gap in the walk.
-          (depositRateHelper q (6, Months) 2 cal ModifiedFollowing True actual360dc
+          -- A relative-date deposit or FRA helper's convention form builds a "no-fix" index, and
+          -- its index form fixes today or later, which it forecasts rather than reads, so an empty
+          -- list is the answer here and not a gap in the walk.
+          (depositRateHelper q (DepositTenor (6, Months) 2 cal ModifiedFollowing True actual360dc)
             >>= rateHelperFixingDependencies) `shouldReturn` Just []
           (fraRateHelper q (FraMonthsFromIndex 3 ibor) LastRelevantDate Nothing True
             >>= rateHelperFixingDependencies) `shouldReturn` Just []
@@ -459,6 +459,26 @@ spec = do
           spot <- Quote.simpleQuote 1.1
           (fxSwapRateHelper q spot (1, Years) 2 cal ModifiedFollowing False True curve cal
             >>= rateHelperFixingDependencies) `shouldReturn` Just []
+
+      it "reports a fixed-date deposit's or indexed FRA's fixing only once it has passed" $
+        Context.keepingSettingsGc $ do
+          q <- Quote.simpleQuote 0.03
+          ibor <- iborIndex Euribor6M Nothing
+          name <- Index.name ibor
+          -- Euribor6M fixes two TARGET days before its value date: the FRA starting on the 17th
+          -- fixes on the 15th, the date the deposit is given.
+          let fixing = 15 `january` 2024
+          depo <- depositRateHelper q (DepositOnFixingDate fixing ibor)
+          fra <- fraRateHelper q (FraBetweenDates (17 `january` 2024) (17 `july` 2024) ibor) LastRelevantDate Nothing True
+          fraOffCurve <- fraRateHelper q (FraBetweenDates (17 `january` 2024) (17 `july` 2024) ibor) LastRelevantDate Nothing False
+          let depsOn d h = Context.setEvaluationDate (Just d) >> rateHelperFixingDependencies h
+          forM_ ([depo, fra] :: [RateHelper]) $ \h -> do
+            depsOn (12 `january` 2024) h `shouldReturn` Just []
+            -- On the fixing date itself fixing(d, true) still forecasts.
+            depsOn fixing h `shouldReturn` Just []
+            depsOn (16 `january` 2024) h `shouldReturn` Just [(name, fixing)]
+          -- Without an indexed coupon the FRA prices off the curve and reads no fixing at all.
+          depsOn (16 `january` 2024) fraOffCurve `shouldReturn` Just []
 
       it "reports one key per averaged business day for an OIS helper" $
         Context.keepingSettingsGc $ do
@@ -797,6 +817,37 @@ spec = do
           periodIdx <- priced (FraPeriodFromIndex (3, Months) euribor3m)
           monthsIdx `shouldSatisfy` closePrec explicit 1.0e-12
           periodIdx `shouldSatisfy` closePrec explicit 1.0e-12
+
+      -- The fixed-date and IMM forms, against the relative form that lands on the same dates on
+      -- 2 January 2024: spot is the 4th, so the deposit from the index fixes on the 2nd and the
+      -- 3M FRA 3M forward runs from 4 April to 4 July.
+      it "the fixed-date and IMM variants agree with the relative forms on the same dates" $
+        Context.keepingSettingsGc $ do
+          Context.setEvaluationDate (Just (2 `january` 2024))
+          cal <- calendar TARGET
+          ccy <- currency EUR
+          actual360dc <- dayCounter (Actual360 False)
+          euribor3m <- iborIndex (Ibor "euribor3m" (3, Months) 2 ccy cal ModifiedFollowing False actual360dc) Nothing
+          q <- Quote.simpleQuote 0.03
+          let discountOn rh = do
+                ts <- piecewiseYieldCurve (ReferenceDate (2 `january` 2024)) ([rh] :: NonEmpty RateHelper) actual360dc []
+                  (Iterative Discount LogLinear defaultIterativeBootstrapOpts) False
+                discount ts (DatePoint (2 `july` 2024)) True
+              fraDiscount indexed terms = fraRateHelper q terms LastRelevantDate Nothing indexed >>= discountOn
+          relativeDepo <- depositRateHelper q (DepositFromIndex euribor3m) >>= discountOn
+          fixedDepo <- depositRateHelper q (DepositOnFixingDate (2 `january` 2024) euribor3m) >>= discountOn
+          fixedDepo `shouldSatisfy` closePrec relativeDepo 1.0e-12
+          relativeFra <- fraDiscount True (FraPeriodFromIndex (3, Months) euribor3m)
+          fixedFra <- fraDiscount True (FraBetweenDates (4 `april` 2024) (4 `july` 2024) euribor3m)
+          fixedFra `shouldSatisfy` closePrec relativeFra 1.0e-12
+          -- The IMM form starts and ends on the first and second main-cycle IMM dates after spot,
+          -- found the way QuantLib's nthImmDate finds them. Without an indexed coupon the FRA ends
+          -- on the second, not one index tenor after the first.
+          imm1 <- nextImmDate (4 `january` 2024) True
+          imm2 <- nextImmDate imm1 True
+          immFra <- fraDiscount False (FraImmOffsets 1 2 euribor3m)
+          datedFra <- fraDiscount False (FraBetweenDates imm1 imm2 euribor3m)
+          immFra `shouldSatisfy` closePrec datedFra 1.0e-12
 
     describe "sofr future rate helper" $ do
       it "bootstrapped curve reprices the helper's own futures price" $
@@ -1548,8 +1599,8 @@ spec = do
           -- weight on each pins where the (otherwise underdetermined) curve lands.
           q1 <- Quote.simpleQuote 0.01
           q2 <- Quote.simpleQuote 0.02
-          h1 <- depositRateHelper q1 (6, Months) 2 cal ModifiedFollowing True euriborDC
-          h2 <- depositRateHelper q2 (6, Months) 2 cal ModifiedFollowing True euriborDC
+          h1 <- depositRateHelper q1 (DepositTenor (6, Months) 2 cal ModifiedFollowing True euriborDC)
+          h2 <- depositRateHelper q2 (DepositTenor (6, Months) 2 cal ModifiedFollowing True euriborDC)
           let helpers = [h1, h2]
           curveMostlyQ2 <- piecewiseYieldCurve (SettlementDays 0 cal) helpers euriborDC []
             (GlobalDiscountLogLinear 1.0e-10 [0.1, 0.9]) False
@@ -1570,8 +1621,8 @@ spec = do
           cal <- Calendar.calendar TARGET
           euriborDC <- dayCounter (Actual360 False)
           q <- Quote.simpleQuote 0.03
-          helpersDiscount <- mapM (\i -> depositRateHelper q (i, Months) 2 cal ModifiedFollowing True euriborDC) [1 .. 5 :: Int]
-          helpersZero <- mapM (\i -> depositRateHelper q (i, Months) 2 cal ModifiedFollowing True euriborDC) [1 .. 5 :: Int]
+          helpersDiscount <- mapM (\i -> depositRateHelper q (DepositTenor (i, Months) 2 cal ModifiedFollowing True euriborDC)) [1 .. 5 :: Int]
+          helpersZero <- mapM (\i -> depositRateHelper q (DepositTenor (i, Months) 2 cal ModifiedFollowing True euriborDC)) [1 .. 5 :: Int]
           discountCurve <- piecewiseYieldCurve (SettlementDays 0 cal) (fromList helpersDiscount) euriborDC []
             (GlobalDiscountLogLinear 1.0e-10 []) False
           zeroCurve <- piecewiseYieldCurve (SettlementDays 0 cal) (fromList helpersZero) euriborDC []
@@ -1592,8 +1643,8 @@ spec = do
           cal <- Calendar.calendar TARGET
           euriborDC <- dayCounter (Actual360 False)
           q <- Quote.simpleQuote 0.03
-          helpersDiscount <- mapM (\i -> depositRateHelper q (i, Months) 2 cal ModifiedFollowing True euriborDC) [1 .. 5 :: Int]
-          helpersZero <- mapM (\i -> depositRateHelper q (i, Months) 2 cal ModifiedFollowing True euriborDC) [1 .. 5 :: Int]
+          helpersDiscount <- mapM (\i -> depositRateHelper q (DepositTenor (i, Months) 2 cal ModifiedFollowing True euriborDC)) [1 .. 5 :: Int]
+          helpersZero <- mapM (\i -> depositRateHelper q (DepositTenor (i, Months) 2 cal ModifiedFollowing True euriborDC)) [1 .. 5 :: Int]
           discountCurve <- piecewiseYieldCurve (SettlementDays 0 cal) (fromList helpersDiscount) euriborDC []
             (Iterative Discount Linear defaultIterativeBootstrapOpts) False
           zeroCurve <- piecewiseYieldCurve (SettlementDays 0 cal) (fromList helpersZero) euriborDC []
@@ -1615,7 +1666,7 @@ spec = do
           settleFix <- advance cal curveToday (2, Days) Following False
           q <- Quote.simpleQuote 0.03
           qVal <- Quote.value q
-          helpers <- fromList <$> mapM (\i -> depositRateHelper q (i, Months) 2 cal ModifiedFollowing True euriborDC) [1 .. 5 :: Int]
+          helpers <- fromList <$> mapM (\i -> depositRateHelper q (DepositTenor (i, Months) 2 cal ModifiedFollowing True euriborDC)) [1 .. 5 :: Int]
           -- Keep extra dates between pillars so GlobalBootstrap has distinct unknowns.
           extraDates <- mapM (\d -> advance cal settleFix (d, Days) ModifiedFollowing True) [45, 75, 105 :: Int]
           -- Match the helpers' two-day settlement so their start date anchors the discount.
@@ -1648,7 +1699,7 @@ spec = do
           settleFix <- advance cal curveToday (2, Days) Following False
           q <- Quote.simpleQuote 0.03
           qVal <- Quote.value q
-          helpers <- fromList <$> mapM (\i -> depositRateHelper q (i, Months) 2 cal ModifiedFollowing True euriborDC) [1 .. 5 :: Int]
+          helpers <- fromList <$> mapM (\i -> depositRateHelper q (DepositTenor (i, Months) 2 cal ModifiedFollowing True euriborDC)) [1 .. 5 :: Int]
           curve <- piecewiseYieldCurve (SettlementDays 2 cal) helpers euriborDC []
             (Local LForwardRate 2 True 1.0e-10 0.3 0.7 True) False
           mapM_ (\i -> do
@@ -1668,7 +1719,7 @@ spec = do
           settleFix <- advance cal curveToday (2, Days) Following False
           q <- Quote.simpleQuote 0.03
           qVal <- Quote.value q
-          helpers <- fromList <$> mapM (\i -> depositRateHelper q (i, Months) 2 cal ModifiedFollowing True euriborDC) [1 .. 5 :: Int]
+          helpers <- fromList <$> mapM (\i -> depositRateHelper q (DepositTenor (i, Months) 2 cal ModifiedFollowing True euriborDC)) [1 .. 5 :: Int]
           -- additionalDates for GlobalSimpleZeroLinearFull below: deliberately not coincident
           -- with the primary monthly pillars, same reasoning as the GlobalBootstrapFull test above.
           extraDates <- mapM (\d -> advance cal settleFix (d, Days) ModifiedFollowing True) [45, 75, 105 :: Int]
@@ -1696,7 +1747,7 @@ spec = do
           euriborDC <- dayCounter (Actual360 False)
           settleFix <- advance cal curveToday (2, Days) Following False
           q <- Quote.simpleQuote 0.03
-          helpers <- fromList <$> mapM (\i -> depositRateHelper q (i, Months) 2 cal ModifiedFollowing True euriborDC) [1 .. 5 :: Int]
+          helpers <- fromList <$> mapM (\i -> depositRateHelper q (DepositTenor (i, Months) 2 cal ModifiedFollowing True euriborDC)) [1 .. 5 :: Int]
           discountCurve <- piecewiseYieldCurve (SettlementDays 0 cal) helpers euriborDC []
             (GlobalDiscountLogLinear 1.0e-10 []) False
           forwardCurve <- piecewiseYieldCurve (SettlementDays 0 cal) helpers euriborDC []

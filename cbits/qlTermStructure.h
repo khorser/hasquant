@@ -507,9 +507,12 @@ extern "C" {
   QlSwapRateHelper* qlSwapRateHelper(QlQuote* rate, QlSwapIndex* swapIndex, QlQuote* spread, int, int, QlYieldTermStructure* discountingCurve, int pillar, int customPillarDate, int endOfMonth, int useIndexedCoupons, QlFloatingRateCouponPricer *couponPricer, char **e);
   QlRateHelper* qlBMASwapRateHelper(QlQuote* liborFraction, int, int, unsigned settlementDays, Calendar* calendar, int, int, int bmaConvention, DayCounter* bmaDayCount, QlBMAIndex* bmaIndex, QlIborIndex* index, char **e);
   QlRateHelper* qlDepositRateHelper1(QlQuote* rate, QlIborIndex* iborIndex, char **e);
+  QlRateHelper* qlDepositRateHelper2(QlQuote* rate, int fixingDate, QlIborIndex* iborIndex, char **e);
   QlRateHelper* qlFraRateHelper1(QlQuote* rate, unsigned monthsToStart, QlIborIndex* iborIndex, int pillar, int customPillarDate, int useIndexedCoupon, char **e);
   QlRateHelper* qlFraRateHelper2(QlQuote* rate, int, int, unsigned lengthInMonths, unsigned fixingDays, Calendar* calendar, int convention, int endOfMonth, DayCounter* dayCounter, int pillar, int customPillarDate, int useIndexedCoupon, char **e);
   QlRateHelper* qlFraRateHelper3(QlQuote* rate, int, int, QlIborIndex* iborIndex, int pillar, int customPillarDate, int useIndexedCoupon, char **e);
+  QlRateHelper* qlFraRateHelper4(QlQuote* rate, int startDate, int endDate, QlIborIndex* iborIndex, int pillar, int customPillarDate, int useIndexedCoupon, char **e);
+  QlRateHelper* qlFraRateHelper5(QlQuote* rate, unsigned immOffsetStart, unsigned immOffsetEnd, QlIborIndex* iborIndex, int pillar, int customPillarDate, int useIndexedCoupon, char **e);
   QlFuturesRateHelper* qlFuturesRateHelper1(QlQuote* price, int immStartDate, int endDate, DayCounter* dayCounter, QlQuote* convexityAdjustment, int type, char **e);
   QlFuturesRateHelper* qlFuturesRateHelper2(QlQuote* price, int immDate, QlIborIndex* iborIndex, QlQuote* convexityAdjustment, int type, char **e);
   QlFuturesRateHelper* qlFuturesRateHelper(QlQuote* price, int immDate, unsigned lengthInMonths, Calendar* calendar, int convention, int endOfMonth, DayCounter* dayCounter, QlQuote* convexityAdjustment, int type, char **e);

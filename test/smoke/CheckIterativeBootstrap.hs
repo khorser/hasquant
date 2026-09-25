@@ -35,7 +35,7 @@ buildCurve opts = do
   cal <- calendar TARGET
   dc <- dayCounter (Actual360 False)
   q <- Quote.simpleQuote 0.03
-  helpers <- mapM (\n -> depositRateHelper q (n, Months) 2 cal ModifiedFollowing False dc)
+  helpers <- mapM (\n -> depositRateHelper q (DepositTenor (n, Months) 2 cal ModifiedFollowing False dc))
                   [1, 3, 6, 12]
   piecewiseYieldCurve (SettlementDays 0 cal) (fromList helpers) dc [] (Iterative Discount Linear opts) False
 

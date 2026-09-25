@@ -25,7 +25,7 @@ main = do
   settleFix <- advance cal curveToday (2, Days) Following False
 
   q <- Quote.simpleQuote 0.03
-  helpers <- mapM (\i -> depositRateHelper q (i, Months) 2 cal ModifiedFollowing True euriborDC) [1 .. 5 :: Int]
+  helpers <- mapM (\i -> depositRateHelper q (DepositTenor (i, Months) 2 cal ModifiedFollowing True euriborDC)) [1 .. 5 :: Int]
   let nonEmptyHelpers = fromList helpers
 
   -- additionalHelpers reuses the same 5 helpers (mirrors QuantLib-SWIG's own worked example,

@@ -102,12 +102,13 @@ buildMarketData = do
       r <- simpleQuote q
       depositRateHelper
         r
-        (p, Months)
-        fixDays
-        targetCal'
-        ModifiedFollowing
-        True
-        actual365Fixeddc')
+        (DepositTenor
+          (p, Months)
+          fixDays
+          targetCal'
+          ModifiedFollowing
+          True
+          actual365Fixeddc'))
     $ zip zcQuotes zcTenors
   quotes <- mapM simpleQuote marketQuotes
   discBondHelpers <- mapM
@@ -180,9 +181,9 @@ buildBonds md = do
     mapM (\(q, p) ->
       do
         quote <- simpleQuote q
-        depositRateHelper quote p fixDays (targetCal md)
+        depositRateHelper quote (DepositTenor p fixDays (targetCal md)
                                        ModifiedFollowing
-                                       True (actual360dc md)) $
+                                       True (actual360dc md))) $
           zip liborDepoQuotes liborDepoTerms
 
   eur6M <- I.iborIndex I.Euribor6M Nothing

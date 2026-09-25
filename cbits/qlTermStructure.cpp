@@ -2182,6 +2182,9 @@ QlRateHelper* qlBMASwapRateHelper(QlQuote* liborFraction, int tl, int tu, unsign
 QlRateHelper* qlDepositRateHelper1(QlQuote* rate, QlIborIndex* iborIndex, char **e) {
   try {return ret(new QlRateHelper(alloc(new DepositRateHelper(*arg(rate), *arg(iborIndex)))));
   } catch (std::exception& er) {return handleException<QlRateHelper*>(e, er);}}
+QlRateHelper* qlDepositRateHelper2(QlQuote* rate, int fixingDate, QlIborIndex* iborIndex, char **e) {
+  try {return ret(new QlRateHelper(alloc(new FixedDateDepositRateHelper(*arg(rate), Date(fixingDate), *arg(iborIndex)))));
+  } catch (std::exception& er) {return handleException<QlRateHelper*>(e, er);}}
 QlRateHelper* qlFraRateHelper1(QlQuote* rate, unsigned monthsToStart, QlIborIndex* iborIndex, int pillar, int customPillarDate, int useIndexedCoupon, char **e) {
   try {return ret(new QlRateHelper(alloc(new FraRateHelper(*arg(rate), monthsToStart, *arg(iborIndex), (Pillar::Choice)pillar, qlNullableDate(customPillarDate), useIndexedCoupon))));
   } catch (std::exception& er) {return handleException<QlRateHelper*>(e, er);}}
@@ -2190,6 +2193,12 @@ QlRateHelper* qlFraRateHelper2(QlQuote* rate, int l, int u, unsigned lengthInMon
   } catch (std::exception& er) {return handleException<QlRateHelper*>(e, er);}}
 QlRateHelper* qlFraRateHelper3(QlQuote* rate, int l, int u, QlIborIndex* iborIndex, int pillar, int customPillarDate, int useIndexedCoupon, char **e) {
   try {return ret(new QlRateHelper(alloc(new FraRateHelper(*arg(rate), Period(l, (TimeUnit)u), *arg(iborIndex), (Pillar::Choice)pillar, qlNullableDate(customPillarDate), useIndexedCoupon))));
+  } catch (std::exception& er) {return handleException<QlRateHelper*>(e, er);}}
+QlRateHelper* qlFraRateHelper4(QlQuote* rate, int startDate, int endDate, QlIborIndex* iborIndex, int pillar, int customPillarDate, int useIndexedCoupon, char **e) {
+  try {return ret(new QlRateHelper(alloc(new FixedDateFraRateHelper(*arg(rate), Date(startDate), Date(endDate), *arg(iborIndex), (Pillar::Choice)pillar, qlNullableDate(customPillarDate), useIndexedCoupon))));
+  } catch (std::exception& er) {return handleException<QlRateHelper*>(e, er);}}
+QlRateHelper* qlFraRateHelper5(QlQuote* rate, unsigned immOffsetStart, unsigned immOffsetEnd, QlIborIndex* iborIndex, int pillar, int customPillarDate, int useIndexedCoupon, char **e) {
+  try {return ret(new QlRateHelper(alloc(new FraRateHelper(*arg(rate), immOffsetStart, immOffsetEnd, *arg(iborIndex), (Pillar::Choice)pillar, qlNullableDate(customPillarDate), useIndexedCoupon))));
   } catch (std::exception& er) {return handleException<QlRateHelper*>(e, er);}}
 QlFuturesRateHelper* qlFuturesRateHelper1(QlQuote* price, int immStartDate, int endDate, DayCounter* dayCounter, QlQuote* convexityAdjustment, int type, char **e) {
   try {return ret(new QlFuturesRateHelper(alloc(new FuturesRateHelper(*arg(price), Date(immStartDate), Date(endDate), *arg(dayCounter), qlNullableHandle(arg(convexityAdjustment)), (Futures::Type)type))));

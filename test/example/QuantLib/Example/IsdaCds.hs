@@ -43,7 +43,7 @@ run = do
   let depTenors = [1, 2, 3, 6, 9, 12 :: Int]
       depQuotes = [0.003081, 0.005525, 0.007163, 0.012413, 0.014, 0.015488]
   depositHelpers <- mapM
-    (\(t, q) -> simpleQuote q >>= \sq -> depositRateHelper sq (t, Months) 2 weekendsOnly ModifiedFollowing False act360)
+    (\(t, q) -> simpleQuote q >>= \sq -> depositRateHelper sq (DepositTenor (t, Months) 2 weekendsOnly ModifiedFollowing False act360))
     (zip depTenors depQuotes)
 
   isdaIbor <- iborIndex (Ibor "IsdaIbor" (3, Months) 2 usd weekendsOnly ModifiedFollowing False act360) Nothing

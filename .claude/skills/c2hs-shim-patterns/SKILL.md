@@ -281,7 +281,14 @@ A **protected** member with no accessor can be read without touching QuantLib: a
 derived from the owner names it through a pointer to member (`h.*(&Peek::swap_)`). The BMA,
 multiple-resets and cross-currency helper peeks in `qlInstrument.cpp` do this. A **private**
 member cannot be reached, so the shim has to report "cannot see it" (for example
-`OvernightIndexFutureRateHelper::future_`, where `*reachable = 0`), never an empty answer.
+`OvernightIndexFutureRateHelper::future_`, where `*reachable = 0`), never an empty answer —
+unless hasquant constructs the object itself and the private value is a function of the
+constructor's arguments. Then bind that constructor through a thin subclass that keeps its own copy
+and overrides `accept` to offer `Visitor<Subclass>` first, falling back to `Base::accept(v)`. The
+fixed-date deposit and FRA helpers (`FixedDateDepositRateHelper`/`FixedDateFraRateHelper`,
+`qlTermStructureAux.h`) do this: their fixing date and index are private, and they are the only
+deposit/FRA forms that read a stored fixing. Every other visitor still sees the base class, and the
+subclass needs a `QL_TRACE_NAME` like any other `cbits`-local type.
 
 A `#if QL_HEX_VERSION ...` guard needs `#include <ql/version.hpp>` above it: `qldefines.hpp` does
 not include it, and the preprocessor reads an undefined macro as 0. A newer-version branch then
