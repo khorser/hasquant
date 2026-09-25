@@ -482,6 +482,7 @@ extern "C" {
   QlRateHelper *qlFxSwapRateHelper(QlQuote *fwdPoint, QlQuote *spotFx, int tenorLen, int tenorUnit, unsigned fixingDays, Calendar *calendar, int convention, int endOfMonth, int isFxBaseCurrencyCollateralCurrency, QlYieldTermStructure *collateralCurve, Calendar *tradingCalendar, char **e);
   QlRateHelper *qlFxSwapRateHelper2(QlQuote *fwdPoint, QlQuote *spotFx, int startDate, int endDate, int isFxBaseCurrencyCollateralCurrency, QlYieldTermStructure *collateralCurve, char **e);
   QlSwapRateHelper *qlSwapRateHelper1(QlQuote *q, int, int, Calendar *cal, int freq, int conv, DayCounter *dc, QlIborIndex *i, QlQuote *s, int, int, QlYieldTermStructure *ts, unsigned settlementDays, int pillar, int customPillarDate, int endOfMonth, int useIndexedCoupons, int floatConvention, QlFloatingRateCouponPricer *couponPricer, char **e);
+  QlSwapRateHelper *qlSwapRateHelper2(QlQuote *q, int startDate, int endDate, Calendar *cal, int freq, int conv, DayCounter *dc, QlIborIndex *i, QlQuote *s, QlYieldTermStructure *ts, int pillar, int customPillarDate, int endOfMonth, int useIndexedCoupons, int floatConvention, QlFloatingRateCouponPricer *couponPricer, char **e);
   void qlFreeSwapRateHelper(QlSwapRateHelper *o);
   QlRateHelper* qlSwapRateHelperAsRateHelper(QlSwapRateHelper *o);
 

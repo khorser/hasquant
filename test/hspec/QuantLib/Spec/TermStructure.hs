@@ -93,8 +93,8 @@ spec = do
             swaps <- mapM
               (\(n, u, r) -> do
                 q <- Quote.simpleQuote (r/100)
-                swapRateHelperFromConventions q (n, u) cal Annual Unadjusted thirty360dc index Nothing (0, Days) Nothing
-                  Nothing LastRelevantDate Nothing False Nothing Nothing Nothing >>= asRateHelper)
+                swapRateHelper q (SwapRateTenor (n, u) cal Annual Unadjusted thirty360dc index (0, Days) Nothing Nothing) Nothing Nothing
+                  LastRelevantDate Nothing False Nothing Nothing >>= asRateHelper)
               swapData
 
             ts <- piecewiseYieldCurve (ReferenceDate settlement) (fromList (deposits ++ swaps)) actual360dc [] (Iterative Discount LogLinear defaultIterativeBootstrapOpts) False
@@ -343,8 +343,8 @@ spec = do
           let swapData = [(1, 4.44), (3, 4.55), (6, 4.81), (9, 5.01), (15, 5.25), (30, 5.36)] :: [(Int, Double)]
               mkHelpers = mapM (\(n, r) -> do
                 q <- Quote.simpleQuote (r / 100)
-                h <- swapRateHelperFromConventions q (n, Years) cal Annual Unadjusted thirty360dc index Nothing (0, Days) Nothing
-                  Nothing LastRelevantDate Nothing False Nothing Nothing Nothing >>= asRateHelper
+                h <- swapRateHelper q (SwapRateTenor (n, Years) cal Annual Unadjusted thirty360dc index (0, Days) Nothing Nothing) Nothing Nothing
+                  LastRelevantDate Nothing False Nothing Nothing >>= asRateHelper
                 pure (h, r / 100)) swapData
               repricing bootstrap = do
                 hs <- mkHelpers
@@ -402,8 +402,8 @@ spec = do
 
           ccy <- currency EUR
           ibor <- iborIndex (Ibor "dummy" (6, Months) 2 ccy cal ModifiedFollowing False actual360dc) Nothing
-          vanilla <- swapRateHelperFromConventions q (5, Years) cal Annual Unadjusted thirty360dc ibor Nothing (0, Days) Nothing
-            Nothing LastRelevantDate Nothing False Nothing Nothing Nothing >>= helperInstrument
+          vanilla <- swapRateHelper q (SwapRateTenor (5, Years) cal Annual Unadjusted thirty360dc ibor (0, Days) Nothing Nothing) Nothing Nothing
+            LastRelevantDate Nothing False Nothing Nothing >>= helperInstrument
           (Swap.asSwap vanilla >>= Swap.maturityDate) `shouldReturn` Just (4 `january` 2029)
 
           bondMaturity <- advance cal (2 `january` 2024) (5, Years) Unadjusted False
@@ -427,8 +427,8 @@ spec = do
           q <- Quote.simpleQuote 0.03
           ibor <- iborIndex Euribor6M Nothing
           name <- Index.name ibor
-          (Just deps) <- swapRateHelperFromConventions q (5, Years) cal Annual Unadjusted thirty360dc ibor Nothing (0, Days) Nothing
-            Nothing LastRelevantDate Nothing False Nothing Nothing Nothing
+          (Just deps) <- swapRateHelper q (SwapRateTenor (5, Years) cal Annual Unadjusted thirty360dc ibor (0, Days) Nothing Nothing) Nothing Nothing
+            LastRelevantDate Nothing False Nothing Nothing
             >>= asRateHelper >>= rateHelperFixingDependencies
           -- One key per semi-annual coupon, named as QuantLib's fixing store names it, and the
           -- first of them is today: a spot-starting helper's first coupon fixes on the
@@ -548,8 +548,8 @@ spec = do
           thirty360dc <- dayCounter Thirty360BondBasis
           q <- Quote.simpleQuote 0.03
           ibor <- iborIndex Euribor6M Nothing
-          h <- swapRateHelperFromConventions q (5, Years) cal Annual Unadjusted thirty360dc ibor Nothing (0, Days) Nothing
-            Nothing LastRelevantDate Nothing False Nothing Nothing Nothing >>= asRateHelper
+          h <- swapRateHelper q (SwapRateTenor (5, Years) cal Annual Unadjusted thirty360dc ibor (0, Days) Nothing Nothing) Nothing Nothing
+            LastRelevantDate Nothing False Nothing Nothing >>= asRateHelper
           (Just before') <- rateHelperFixingDependencies h
           -- A relative-date helper re-initialises its schedule when the evaluation date moves, so
           -- the keys must be read under the date whose fixings are being asked about.
@@ -558,6 +558,26 @@ spec = do
             rateHelperFixingDependencies h
           take 1 (map snd after') `shouldBe` [1 `july` 2024]
           map snd after' `shouldSatisfy` (/= map snd before')
+
+      it "keeps a fixed-date swap helper's first fixing when the evaluation date moves past it" $
+        Context.keepingSettingsGc $ do
+          Context.setEvaluationDate (Just (2 `january` 2024))
+          cal <- calendar TARGET
+          thirty360dc <- dayCounter Thirty360BondBasis
+          q <- Quote.simpleQuote 0.03
+          ibor <- iborIndex Euribor6M Nothing
+          name <- Index.name ibor
+          h <- swapRateHelper q (SwapRateBetweenDates (4 `january` 2024) (4 `january` 2029) cal Annual Unadjusted thirty360dc ibor Nothing)
+            Nothing Nothing LastRelevantDate Nothing False Nothing Nothing >>= asRateHelper
+          (Just before') <- rateHelperFixingDependencies h
+          (Just after') <- do
+            Context.setEvaluationDate (Just (1 `july` 2024))
+            rateHelperFixingDependencies h
+          -- The dates are the helper's own: the first coupon fixed on 2 January, now past and
+          -- read from the store, and nothing moved with the evaluation date.
+          map fst after' `shouldBe` replicate 10 name
+          take 1 (map snd after') `shouldBe` [2 `january` 2024]
+          after' `shouldBe` before'
 
     -- Drop Haskell's OptimizationMethod reference and collect before querying the curve. The
     -- fitting method and its clone must retain shared ownership for the curve's full lifetime.
@@ -848,6 +868,38 @@ spec = do
           immFra <- fraDiscount False (FraImmOffsets 1 2 euribor3m)
           datedFra <- fraDiscount False (FraBetweenDates imm1 imm2 euribor3m)
           immFra `shouldSatisfy` closePrec datedFra 1.0e-12
+
+    describe "swap rate helper terms" $ do
+      -- On 2 January 2024 spot is the 4th, so a 5Y swap from spot and the swap between 4 January
+      -- 2024 and 4 January 2029 are the same swap.
+      it "SwapRateBetweenDates agrees with the SwapRateTenor landing on the same dates" $
+        Context.keepingSettingsGc $ do
+          Context.setEvaluationDate (Just (2 `january` 2024))
+          cal <- calendar TARGET
+          thirty360dc <- dayCounter Thirty360BondBasis
+          actual360dc <- dayCounter (Actual360 False)
+          q <- Quote.simpleQuote 0.03
+          ibor <- iborIndex Euribor6M Nothing
+          let priced terms = do
+                rh <- swapRateHelper q terms Nothing Nothing LastRelevantDate Nothing False Nothing Nothing >>= asRateHelper
+                ts <- piecewiseYieldCurve (ReferenceDate (2 `january` 2024)) ([rh] :: NonEmpty RateHelper) actual360dc []
+                  (Iterative Discount LogLinear defaultIterativeBootstrapOpts) False
+                discount ts (DatePoint (2 `january` 2027)) True
+          tenor <- priced (SwapRateTenor (5, Years) cal Annual Unadjusted thirty360dc ibor (0, Days) Nothing Nothing)
+          dated <- priced (SwapRateBetweenDates (4 `january` 2024) (4 `january` 2029) cal Annual Unadjusted thirty360dc ibor Nothing)
+          dated `shouldSatisfy` closePrec tenor 1.0e-12
+
+      it "SwapRateFromIndex bootstraps a curve that reprices its own quote" $
+        Context.keepingSettingsGc $ do
+          Context.setEvaluationDate (Just (2 `january` 2024))
+          actual360dc <- dayCounter (Actual360 False)
+          q <- Quote.simpleQuote 0.03
+          idx <- liborSwapIndex EurLiborSwapIsdaFixA (5, Years) (Nothing :: Maybe YieldTermStructure) (Nothing :: Maybe YieldTermStructure)
+          rh <- swapRateHelper q (SwapRateFromIndex idx (0, Days)) Nothing Nothing LastRelevantDate Nothing False Nothing Nothing >>= asRateHelper
+          ts <- piecewiseYieldCurve (ReferenceDate (2 `january` 2024)) ([rh] :: NonEmpty RateHelper) actual360dc []
+            (Iterative Discount LogLinear defaultIterativeBootstrapOpts) False
+          _ <- discount ts (DatePoint (2 `january` 2027)) True
+          impliedQuote rh >>= (`shouldSatisfy` closePrec 0.03 1.0e-8)
 
     describe "sofr future rate helper" $ do
       it "bootstrapped curve reprices the helper's own futures price" $
@@ -1470,9 +1522,9 @@ spec = do
             helpers3mFra <- mapM (\i -> fraRateHelper q (FraMonths i (i + 3) 2 cal ModifiedFollowing True euriborDC) LastRelevantDate Nothing False) [1 .. 9]
             helpers3mBasis <- mapM (\i -> iborIborBasisSwapRateHelper b (i, Years) 2 cal ModifiedFollowing True euribor3m euribor6m discountCurve True) [2 .. 10]
             helpers6mBasis <- mapM (\i -> iborIborBasisSwapRateHelper b (i * 6, Months) 2 cal ModifiedFollowing True euribor3m euribor6m discountCurve False) [1 .. 3]
-            helpers6mSwap <- mapM (\i -> swapRateHelperFromConventions q (i, Years) cal Annual Following thirty360 euribor6m Nothing (0, Days) (Just discountCurve)
-                                            Nothing LastRelevantDate Nothing False Nothing Nothing Nothing) [2 .. 10]
-              >>= mapM asRateHelper -- swapRateHelperFromConventions returns the concrete SwapRateHelper; upcast to the generic RateHelper the other helpers already are, so the list below is homogeneous
+            helpers6mSwap <- mapM (\i -> swapRateHelper q (SwapRateTenor (i, Years) cal Annual Following thirty360 euribor6m (0, Days) Nothing Nothing) Nothing (Just discountCurve)
+                                            LastRelevantDate Nothing False Nothing Nothing) [2 .. 10]
+              >>= mapM asRateHelper -- swapRateHelper returns the concrete SwapRateHelper; upcast to the generic RateHelper the other helpers already are, so the list below is homogeneous
             -- helpers3m/helpers6m each reference the *other* curve's not-yet-bootstrapped
             -- internal handle (via euribor3m/euribor6m) -- this is exactly the cycle a plain
             -- piecewiseYieldCurve (SettlementDays with IterativeBootstrap) can't resolve.
@@ -1552,8 +1604,8 @@ spec = do
             b <- Quote.simpleQuote (-0.01)
             -- these helpers discount off intcurveois, which is not yet linked to anything --
             -- it is itself a spread over the curve being bootstrapped from these very helpers.
-            helpers3m <- mapM (\i -> swapRateHelperFromConventions q (i, Years) cal Annual Following thirty360 euribor3m Nothing (0, Days) (Just intcurveois)
-                                        Nothing LastRelevantDate Nothing False Nothing Nothing Nothing
+            helpers3m <- mapM (\i -> swapRateHelper q (SwapRateTenor (i, Years) cal Annual Following thirty360 euribor3m (0, Days) Nothing Nothing) Nothing (Just intcurveois)
+                                        LastRelevantDate Nothing False Nothing Nothing
                                       >>= asRateHelper) [1 .. 10 :: Int]
             ptr3m <- piecewiseYieldCurve (SettlementDays 0 cal) (fromList helpers3m) euriborDC []
               (GlobalDiscountLogLinear 1.0e-10 []) False

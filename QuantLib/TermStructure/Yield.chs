@@ -28,6 +28,7 @@ module QuantLib.TermStructure.Yield
   , FuturesType(..)
   , DepositTerms(..)
   , FraTerms(..)
+  , SwapRateTerms(..)
   , FuturesTerms(..)
   , OISRateHelperOpts(..)
   , OvernightObservation(..)
@@ -55,7 +56,6 @@ module QuantLib.TermStructure.Yield
     -- ** Rate helpers
   , depositRateHelper
   , fixedRateBondHelper
-  , swapRateHelperFromConventions
   , fraRateHelper
   , bondHelper
   , oisRateHelper
@@ -248,10 +248,78 @@ depositRateHelper rate terms = case terms of
   ,`Bool' -- ^extrapolate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
--- |Rate helper for bootstrapping over swap rates, built from explicit tenor\/calendar\/
--- frequency\/day-count\/index conventions rather than a 'GenSwapIndex' bundling them
--- (as 'swapRateHelper' does).
-{#fun qlSwapRateHelper1 as swapRateHelperFromConventions{withQuote*`GenQuote q1' -- ^rate
+-- |How a swap helper's schedule and legs are given. 'SwapRateFromIndex' takes every convention
+-- from a swap index, 'SwapRateTenor' states them for a swap of the given tenor starting at spot
+-- plus @fwdStart@, and both are relative to the evaluation date: the swap's dates move when it
+-- does. 'SwapRateBetweenDates' is the swap between two fixed dates; once a coupon's fixing date is
+-- before the evaluation date that coupon reads the stored fixing, which
+-- 'rateHelperFixingDependencies' reports with the rest. @settlementDays@ ('Nothing' takes the
+-- index's fixing days) and @floatConvention@ ('Nothing' takes the index's convention) exist only
+-- in the forms that state their conventions.
+data SwapRateTerms sidx ibor
+  = SwapRateFromIndex
+      !(GenSwapIndex sidx)
+      !(Int, TimeUnit) -- ^fwdStart
+  | SwapRateTenor
+      !(Int, TimeUnit) -- ^tenor
+      !Calendar
+      !Frequency -- ^fixedFrequency
+      !BusinessDayConvention -- ^fixedConvention
+      !DayCounter -- ^fixedDayCount
+      !(GenIborIndex ibor)
+      !(Int, TimeUnit) -- ^fwdStart
+      !(Maybe Word) -- ^settlementDays
+      !(Maybe BusinessDayConvention) -- ^floatConvention
+  | SwapRateBetweenDates
+      !Day -- ^startDate
+      !Day -- ^endDate
+      !Calendar
+      !Frequency -- ^fixedFrequency
+      !BusinessDayConvention -- ^fixedConvention
+      !DayCounter -- ^fixedDayCount
+      !(GenIborIndex ibor)
+      !(Maybe BusinessDayConvention) -- ^floatConvention
+
+-- |Rate helper for bootstrapping over swap rates: a fixed-vs-ibor swap whose fair rate is the
+-- quote.
+swapRateHelper :: GenQuote q1 -- ^rate
+  -> SwapRateTerms sidx ibor
+  -> Maybe (GenQuote q2) -- ^spread
+  -> Maybe (GenYieldTermStructure y) -- ^discountingCurve
+  -> PillarChoice -- ^pillar
+  -> Maybe Day -- ^customPillarDate
+  -> Bool -- ^endOfMonth
+  -> Maybe Bool -- ^useIndexedCoupons
+  -> Maybe (GenFloatingRateCouponPricer frcp) -- ^couponPricer
+  -> IO SwapRateHelper
+swapRateHelper rate terms spread disc pillar customPillarDate eom indexed pricer = case terms of
+  SwapRateFromIndex idx fwd ->
+    swapRateHelperFromIndexRaw rate idx spread fwd disc pillar customPillarDate eom indexed pricer
+  SwapRateTenor t cal ff fc fdc ibor fwd sd fl ->
+    swapRateHelperRaw rate t cal ff fc fdc ibor spread fwd disc sd pillar customPillarDate eom indexed fl pricer
+  SwapRateBetweenDates s e cal ff fc fdc ibor fl ->
+    swapRateHelperBetweenDatesRaw rate s e cal ff fc fdc ibor spread disc pillar customPillarDate eom indexed fl pricer
+
+-- Raw swap bindings behind 'swapRateHelper'; one per 'SwapRateTerms' constructor.
+{#fun qlSwapRateHelper2 as swapRateHelperBetweenDatesRaw{withQuote*`GenQuote q1' -- ^rate
+  ,withDay*`Day' -- ^startDate
+  ,withDay*`Day' -- ^endDate
+  ,withCalendar*`Calendar' -- ^calendar
+  ,`Frequency' -- ^fixedFrequency
+  ,fromEnumC`BusinessDayConvention' -- ^fixedConvention
+  ,withDayCounter*`DayCounter' -- ^fixedDayCount
+  ,withIborIndex*`GenIborIndex ibor' -- ^iborIndex
+  ,withMaybeQuote*`Maybe (GenQuote q2)' -- ^spread
+  ,withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)' -- ^discountingCurve
+  ,`PillarChoice' -- ^pillar
+  ,withMaybeDay*`Maybe Day' -- ^customPillarDate
+  ,`Bool' -- ^endOfMonth
+  ,fromMaybeBool`Maybe Bool' -- ^useIndexedCoupons
+  ,fromMaybeEnum`Maybe BusinessDayConvention' -- ^floatConvention
+  ,withMaybeFloatingRateCouponPricer*`Maybe (GenFloatingRateCouponPricer frcp)' -- ^couponPricer
+  ,preErrorCheck-`String'errorCheck*-}->`SwapRateHelper'peekSwapRateHelper*#}
+
+{#fun qlSwapRateHelper1 as swapRateHelperRaw{withQuote*`GenQuote q1' -- ^rate
   ,fromEnumQuantity`(Int,TimeUnit)'& -- ^tenor
   ,withCalendar*`Calendar' -- ^calendar
   ,`Frequency' -- ^fixedFrequency
@@ -606,9 +674,8 @@ oisRateHelperBetweenDatesWithOptions startDate endDate fixedRate idx discounting
     (fromMaybe cal (oisOvernightCalendar opts)) (oisConvention opts)
   where obs = oisObservation opts
 
--- |Rate helper for bootstrapping over swap rates, built from a 'GenSwapIndex' bundling the
--- swap's conventions.
-{#fun qlSwapRateHelper as swapRateHelper{withQuote*`GenQuote q1' -- ^rate
+-- The 'SwapRateFromIndex' binding behind 'swapRateHelper'.
+{#fun qlSwapRateHelper as swapRateHelperFromIndexRaw{withQuote*`GenQuote q1' -- ^rate
   ,withSwapIndex*`GenSwapIndex sidx',withMaybeQuote*`Maybe (GenQuote q2)' -- ^spread
   ,fromEnumQuantity`(Int,TimeUnit)'& -- ^fwdStart
   ,withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)' -- ^discountingCurve

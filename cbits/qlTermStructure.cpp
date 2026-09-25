@@ -2028,6 +2028,19 @@ QlSwapRateHelper *qlSwapRateHelper1(QlQuote *q, int l, int u, Calendar *cal, int
             qlOptBusinessDayConvention(floatConvention),
             couponPricer ? *arg(couponPricer) : ext::shared_ptr<FloatingRateCouponPricer>()))));
   } catch (std::exception& er) {return handleException<QlSwapRateHelper *>(e, er);}}
+QlSwapRateHelper *qlSwapRateHelper2(QlQuote *q, int startDate, int endDate, Calendar *cal, int freq,
+  int conv, DayCounter *dc, QlIborIndex *i, QlQuote *s, QlYieldTermStructure *ts,
+  int pillar, int customPillarDate, int endOfMonth, int useIndexedCoupons,
+  int floatConvention, QlFloatingRateCouponPricer *couponPricer, char **e) {
+  try {
+    return ret(new QlSwapRateHelper(alloc(new SwapRateHelper(*arg(q),
+            Date(startDate), Date(endDate), *arg(cal), (Frequency) freq, (BusinessDayConvention) conv, *arg(dc), *arg(i),
+            qlNullableHandle(arg(s)), qlNullableHandle(arg(ts)),
+            (Pillar::Choice)pillar, qlNullableDate(customPillarDate), endOfMonth,
+            qlOptBool(useIndexedCoupons),
+            qlOptBusinessDayConvention(floatConvention),
+            couponPricer ? *arg(couponPricer) : ext::shared_ptr<FloatingRateCouponPricer>()))));
+  } catch (std::exception& er) {return handleException<QlSwapRateHelper *>(e, er);}}
 QlYieldTermStructure* qlFlatForward(int referenceDate, QlQuote* forward, DayCounter* dayCounter, int compounding, int frequency, char **e) {
 try {return ret(new QlYieldTermStructure(shared_ptr<YieldTermStructure>(alloc(new FlatForward(Date(referenceDate), *arg(forward), *arg(dayCounter), (Compounding)compounding, (Frequency)frequency)))));
   } catch (std::exception& er) {return handleException<QlYieldTermStructure*>(e, er);}}

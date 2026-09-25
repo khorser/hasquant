@@ -33,6 +33,13 @@ fixed-date deposit. `FraTerms` gains `FraImmOffsets`, a FRA between two IMM date
 helpers that read a stored fixing, once their fixing date has passed. `rateHelperFixingDependencies`
 reports that fixing from the day after it, for the FRA only with an indexed coupon.
 
+Breaking change: `swapRateHelper` takes a `SwapRateTerms`, and `swapRateHelperFromConventions` is
+gone. `SwapRateFromIndex` holds the former `swapRateHelper`'s swap index and forward start.
+`SwapRateTenor` holds the former explicit conventions, forward start, settlement days and float
+convention. The new `SwapRateBetweenDates` binds QuantLib's swap between two fixed dates. The
+arguments every form shares follow the terms: spread, discounting curve, pillar, custom pillar
+date, end of month, indexed coupons and pricer.
+
 ## 0.7.0.0 (2026)
 
 The final broad API-coverage batch adds Haskell callbacks for payoffs, optimization, regression and
