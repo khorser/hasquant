@@ -195,8 +195,8 @@ using makeYoYInflIdx = YoYInflationIndex *(*)();
 using makeReg = Region *(*)();
 
 #if QL_HEX_VERSION < 0x01440000
-// QuantLib <= 1.43 leaves MakeSwaption::nominal_ uninitialized, so reprice with a unit nominal:
-// https://github.com/lballabio/QuantLib/issues/2788
+// QuantLib <= 1.43 leaves MakeSwaption::nominal_ uninitialized (fixed in 1.44), so reprice with a
+// unit nominal.
 class UnitNominalGaussian1dSmileSection : public QuantLib::Gaussian1dSmileSection {
   public:
     UnitNominalGaussian1dSmileSection(const Date& fixingDate, const shared_ptr<SwapIndex>& swapIndex,
@@ -1037,8 +1037,7 @@ QlBlackVolTermStructure* qlBlackVarianceSurface(int referenceDate, Calendar* cal
 QlBlackVolTermStructure* qlExtendedBlackVarianceCurve(int referenceDate, unsigned datesLen, int* dates, unsigned volsLen, QlQuote** vols, DayCounter* dayCounter, int forceMonotoneVariance, char **e) {
   try {return ret(new QlBlackVolTermStructure(shared_ptr<BlackVolTermStructure>(alloc(new ExtendedBlackVarianceCurve(Date(referenceDate), qlDateVector(dates, datesLen), qlHandleVector(vols, volsLen), *arg(dayCounter), forceMonotoneVariance)))));
   } catch (std::exception& er) {return handleException<QlBlackVolTermStructure*>(e, er);}}
-// QuantLib <= 1.43 reads and writes out of bounds on every construction and update:
-// https://github.com/lballabio/QuantLib/issues/2791
+// QuantLib <= 1.43 reads and writes out of bounds on every construction and update (fixed in 1.44).
 QlBlackVolTermStructure* qlExtendedBlackVarianceSurface(int referenceDate, Calendar* cal, unsigned datesLen, int* dates, unsigned strikesLen, double* strikes, unsigned volRows, unsigned volCols, QlQuote** vols, DayCounter* dayCounter, int lowerExtrapolation, int upperExtrapolation, char **e) {
   try {
 #if QL_HEX_VERSION < 0x01440000
