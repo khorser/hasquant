@@ -25,16 +25,19 @@ Plain Haskell sum types, one per structural level, in the module that will own t
 
 Even though the ADTs live in `Enum.chs`, the C++ pointer-hierarchy machinery for materializing them (phantom tags, `Finalizable`, `Upcastable`) goes in `Type.hs`, matching every other hierarchy in the codebase — see `[[add-quantlib-class]]` step 4 for the exact declaration shape (`data CXxx'`, `foreign import ccall unsafe "ql.h &qlFreeXxx" ...`, `instance Finalizable CXxx' where finalize = qlFreeXxx`, and for non-root levels `instance Upcastable CXxx' where {type Base CXxx' = CParent'; upcast = qlXxxAsParent}` with `qlXxxAsParent` a plain `foreign import ccall` — **not** a c2hs `{#fun#}` binding). One block per ADT level that has an upstream `qlXxxAsYyy` cast shim.
 
-`Enum.chs` can't define these itself: it already imports `Type.hs`, and `Type.hs` can't import the ADTs back without a cycle. This means `Finalizable`, `Upcastable`, `GenForeignPtr`, `newCastForeignPtr`, `newGenForeignPtr`, `freeUpcast`, and `withGenForeignPtr` — normally private to `Type.hs`, since every other hierarchy only ever needs `Type.hs`'s own finished `with*`/`peek*`/`as*` functions — need to be **added to `Type.hs`'s export list**. This is the one export-surface widening this pattern requires; nothing else in `Type.hs`'s privacy story changes.
+`Common.chs` imports the pointer machinery from `Type.hs`; importing the ADTs back
+would create a cycle. Keep `Finalizable`, `Upcastable`, `withConstructed`,
+`withConstructedUpcast`, and `withUpcast` in `Type.hs`, which exports them to the
+internal materializers. Public modules export the ADTs and their supported consumers.
 
 ### 3. `with*` functions: no `Gen*`/`AnyOf` needed
 
 Unlike pattern 2, skip the `Gen*` newtype / `AnyOf` phantom-flexibility wrapper entirely — there's no long-lived value that needs to satisfy multiple different-specificity consumers, so there's nothing for the phantom to buy. Instead, write one CPS-style `with*` function per ADT level, in `Enum.chs`, with the same signature shape it would have had if hand-rolled: `withX :: X -> (Ptr CX' -> IO a) -> IO a` — in practice spelled via a `type QlX = Ptr CX'` alias kept for backward-compatible signatures, paired with a `{#pointer *QlX nocode#}` declaration and a `peekPtr`-out-marshaller on the raw C constructor bindings (see the `c2hs-shim-patterns` skill's `{#pointer#}` section for exactly why both of those are needed and what happens if you get the pragma flags wrong). Each case in the function body is one of:
 
-- **Own-level construction** (the C constructor already returns exactly this level): `qlConstructX ... >>= newCastForeignPtr >>= flip withGenForeignPtr f`.
-- **A different, more-specific leaf constructed directly by this case, one hop from here, with no separate ADT/`with*` function of its own** (e.g. `AmericanExercise` inside `Exercise`, which has no standalone `withAmericanExercise`): `qlConstructLeaf ... >>= newGenForeignPtr >>= flip withGenForeignPtr f` (`newGenForeignPtr` bakes in exactly one `Upcastable` hop).
-- **A nested ADT that already has its own `with*` function**: delegate to it and add exactly one manual upcast, freed immediately after use: `withSubX sub (\subPtr -> upcast subPtr >>= \p -> f p \`finally\` freeUpcast p)`. This is the composable case — it's what lets `Payoff`'s `Type` case reach 3 hops deep (`PlainVanillaPayoff -> StrikedPayoff -> TypePayoff -> Payoff`) by nesting three single-hop delegations, one per level, instead of hand-computing a multi-hop `newAnyOf` chain up front.
-- **A field that's itself the general ADT one level up** (e.g. `BasketPayoff`'s `Average :: Payoff -> Word -> BasketPayoff`): that's a genuine recursive *materialize*, not an upcast — call `withPayoff` (or whichever ADT it nests) recursively for that field, then construct directly at this level: `withPayoff p (\pp -> qlAverageBasketPayoff pp n >>= newCastForeignPtr >>= flip withGenForeignPtr f)`.
+- **Own-level construction** (the C constructor already returns exactly this level): `withConstructed (qlConstructX ...) f`.
+- **A different, more-specific leaf constructed directly by this case, one hop from here, with no separate ADT/`with*` function of its own** (e.g. `AmericanExercise` inside `Exercise`, which has no standalone `withAmericanExercise`): `withConstructedUpcast (qlConstructLeaf ...) f` (one `Upcastable` hop).
+- **A nested ADT that already has its own `with*` function**: delegate to it and add exactly one manual upcast, freed immediately after use: `withSubX sub (\subPtr -> withUpcast subPtr f)`. This is the composable case — it's what lets `Payoff`'s `Type` case reach 3 hops deep (`PlainVanillaPayoff -> StrikedPayoff -> TypePayoff -> Payoff`) by nesting three single-hop delegations, one per level, instead of hand-computing a multi-hop `newAnyOf` chain up front.
+- **A field that's itself the general ADT one level up** (e.g. `BasketPayoff`'s `Average :: Payoff -> Word -> BasketPayoff`): that's a genuine recursive *materialize*, not an upcast — call `withPayoff` (or whichever ADT it nests) recursively for that field, then construct directly at this level: `withPayoff p (\pp -> withConstructed (qlAverageBasketPayoff pp n) f)`.
 
 ### 4. The C++ side is unchanged from every other hierarchy
 
@@ -51,3 +54,12 @@ Custom payoff compatibility is consumer-specific. Most pricing engines require a
 ## Verification
 
 Run `make` for a quick C++-only compile check, then a **full** (not incremental) `stack build --test --no-haddock` — this pattern touches `{#pointer#}` declarations across multiple `.chs` files, and an incremental build here once reported success while still running stale code. A wrong hop count still type-checks, so add or extend a `smoke/` script exercising the *deepest* case (most upcast hops) end to end: construct via the deepest nested case, consume it, print something derived (e.g. `isExpired`) — see `smoke/CheckPayoffExerciseUpcast.hs`.
+
+## Temporary-handle exception safety
+
+`withConstructed` brackets a raw constructor result directly, and `withUpcast` uses
+the same helper for one upcast. Acquisition and cleanup registration are masked;
+the consumer receives the caller's original masking state. Temporary ADT wrappers
+need no `ForeignPtr`: C++ consumers copy their shared ownership before the bracket
+releases the wrapper. Avoid both an unmasked constructor-to-finalizer handoff and
+``upcast >>= \p -> action p `finally` freeUpcast p``, which installs cleanup too late.

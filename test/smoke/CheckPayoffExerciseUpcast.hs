@@ -8,13 +8,15 @@
 --
 -- SwingListExercise also covers array marshalling into its `seconds` vector.
 import Data.Time.Calendar (fromGregorian)
+import Control.Exception (SomeException, try)
+import Control.Monad (replicateM_, void)
 
 import QuantLib.Instrument
 import QuantLib.Instrument.Option
 import QuantLib.Context
 
 main :: IO ()
-main = do
+main = keepingSettingsGc $ do
   setEvaluationDate $ Just (fromGregorian 2026 1 1)
   let d1 = fromGregorian 2026 6 1
       maturity = fromGregorian 2027 1 1
@@ -39,3 +41,12 @@ main = do
   swingOpt <- vanillaSwingOption (PlainVanilla (PlainVanillaPayoff Call 100)) listSwingEx 0 1
   expired3 <- isExpired swingOpt
   putStrLn ("vanillaSwingOption (SwingListExercise): isExpired = " ++ show expired3)
+
+  -- Failure while materializing the exercise must also release the already-built payoff.
+  replicateM_ 20 $ do
+    result <- try (void (oneAssetOption deepPayoff (European (EuropeanExercise (fromGregorian 1800 1 1)))))
+      :: IO (Either SomeException ())
+    case result of
+      Left _ -> pure ()
+      Right () -> error "expected invalid exercise date"
+  putStrLn "Payoff/exercise failure cleanup: OK"

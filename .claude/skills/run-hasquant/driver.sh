@@ -35,8 +35,19 @@ NAME="$(basename "${SCRIPT%.hs}")"
 OUT="/tmp/hasquant-smoke-${NAME}"
 BUILD_DIR="${OUT}_build"
 
+EXTRA_OBJECTS=()
+case "$NAME" in
+  CheckResultMarshalling|CheckTemporaryOwnership)
+    mkdir -p "$BUILD_DIR"
+    # These probes inject native allocations and count element destruction.
+    "${CXX:-c++}" $(quantlib-config --cflags) -Icbits -isystem/opt/homebrew/include \
+      -c test/smoke/MarshallingFixture.cpp -o "$BUILD_DIR/MarshallingFixture.o"
+    EXTRA_OBJECTS+=("$BUILD_DIR/MarshallingFixture.o")
+    ;;
+esac
+
 echo "==> compiling ${SCRIPT}" >&2
-cabal exec -- ghc -itest/smoke -package hasquant "$SCRIPT" -o "$OUT" -outputdir "$BUILD_DIR" "$@"
+cabal exec -- ghc -itest/smoke -package hasquant "$SCRIPT" "${EXTRA_OBJECTS[@]}" -o "$OUT" -outputdir "$BUILD_DIR" "$@"
 
 echo "==> running ${OUT}" >&2
 "$OUT"

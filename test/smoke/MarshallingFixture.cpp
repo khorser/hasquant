@@ -22,3 +22,4 @@ void testStrings(unsigned* n, char*** out) {
   (*out)[1] = tracedup("beta");
 }
 }
+extern "C" int* testNewElement(int value) {++liveElements; return ret(new int(value));}

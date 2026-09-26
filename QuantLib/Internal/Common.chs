@@ -134,7 +134,6 @@ import Foreign.C.String(CString, peekCString)
 import Foreign.Storable(Storable(..))
 import Foreign.Marshal.Utils(withMany)
 import Foreign.Marshal.Array(withArray, peekArray)
-import Control.Exception(finally)
 import Data.List.NonEmpty(NonEmpty, toList)
 
 import QuantLib.Internal
@@ -376,24 +375,24 @@ data Exercise =
 {#fun qlRebatedExercise{`QlExercise',`Double',fromIntegral`Word',withCalendar*`Calendar',fromEnumC`BusinessDayConvention',preErrorCheck-`String'errorCheck*-}->`QlRebatedExercise'peekPtr*#}
 
 withEuropeanExercise :: EuropeanExercise -> (QlEuropeanExercise -> IO a) -> IO a
-withEuropeanExercise (EuropeanExercise d) f = qlEuropeanExercise d >>= newCastForeignPtr >>= flip withGenForeignPtr f
+withEuropeanExercise (EuropeanExercise d) f = withConstructed (qlEuropeanExercise d) f
 
 withSwingExercise :: SwingExercise -> (QlSwingExercise -> IO a) -> IO a
-withSwingExercise (SwingListExercise ds) f = uncurry qlSwingExercise (unzip (toList ds)) >>= newCastForeignPtr >>= flip withGenForeignPtr f
-withSwingExercise (SwingIntervalExercise d1 d2 s) f = qlSwingExercise1 d1 d2 s >>= newCastForeignPtr >>= flip withGenForeignPtr f
+withSwingExercise (SwingListExercise ds) f = withConstructed (uncurry qlSwingExercise (unzip (toList ds))) f
+withSwingExercise (SwingIntervalExercise d1 d2 s) f = withConstructed (qlSwingExercise1 d1 d2 s) f
 
 withBermudanExercise :: BermudanExercise -> (QlBermudanExercise -> IO a) -> IO a
-withBermudanExercise (BermudanExercise d p) f = qlBermudanExercise (toList d) p >>= newCastForeignPtr >>= flip withGenForeignPtr f
-withBermudanExercise (Swing e) f = withSwingExercise e (\sp -> upcast sp >>= \bp -> f bp `finally` freeUpcast bp)
+withBermudanExercise (BermudanExercise d p) f = withConstructed (qlBermudanExercise (toList d) p) f
+withBermudanExercise (Swing e) f = withSwingExercise e (\sp -> withUpcast sp f)
 
 withExercise :: Exercise -> (QlExercise -> IO a) -> IO a
-withExercise (American Nothing d p) f = qlAmericanExercise1 d p >>= newGenForeignPtr >>= flip withGenForeignPtr f
-withExercise (American (Just d0) d p) f = qlAmericanExercise d0 d p >>= newGenForeignPtr >>= flip withGenForeignPtr f
-withExercise (Early t p) f = qlEarlyExercise t p >>= newCastForeignPtr >>= flip withGenForeignPtr f
-withExercise (Vanilla t) f = qlExercise t >>= newCastForeignPtr >>= flip withGenForeignPtr f
-withExercise (European e) f = withEuropeanExercise e (\ep -> upcast ep >>= \xp -> f xp `finally` freeUpcast xp)
-withExercise (Bermudan e) f = withBermudanExercise e (\bp -> upcast bp >>= \xp -> f xp `finally` freeUpcast xp)
-withExercise (Rebated e rebate days cal bdc) f = withExercise e (\ep -> qlRebatedExercise ep rebate days cal bdc >>= newGenForeignPtr >>= flip withGenForeignPtr f)
+withExercise (American Nothing d p) f = withConstructedUpcast (qlAmericanExercise1 d p) f
+withExercise (American (Just d0) d p) f = withConstructedUpcast (qlAmericanExercise d0 d p) f
+withExercise (Early t p) f = withConstructed (qlEarlyExercise t p) f
+withExercise (Vanilla t) f = withConstructed (qlExercise t) f
+withExercise (European e) f = withEuropeanExercise e (\ep -> withUpcast ep f)
+withExercise (Bermudan e) f = withBermudanExercise e (\bp -> withUpcast bp f)
+withExercise (Rebated e rebate days cal bdc) f = withExercise e (\ep -> withConstructedUpcast (qlRebatedExercise ep rebate days cal bdc) f)
 
 -- | use 'percentageStrikePayoff' to construct 'Payoff'
 data PercentageStrikePayoff = PercentageStrikePayoff
@@ -436,20 +435,20 @@ data StrikedPayoff =
       !(FunPtr PayoffFun)
 
 withPercentageStrikePayoff :: PercentageStrikePayoff -> (QlPercentageStrikePayoff -> IO a) -> IO a
-withPercentageStrikePayoff (PercentageStrikePayoff t m) f = qlPercentageStrikePayoff t m >>= newCastForeignPtr >>= flip withGenForeignPtr f
+withPercentageStrikePayoff (PercentageStrikePayoff t m) f = withConstructed (qlPercentageStrikePayoff t m) f
 
 withPlainVanillaPayoff :: PlainVanillaPayoff -> (QlPlainVanillaPayoff -> IO a) -> IO a
-withPlainVanillaPayoff (PlainVanillaPayoff t s) f = qlPlainVanillaPayoff t s >>= newCastForeignPtr >>= flip withGenForeignPtr f
+withPlainVanillaPayoff (PlainVanillaPayoff t s) f = withConstructed (qlPlainVanillaPayoff t s) f
 
 withStrikedPayoff :: StrikedPayoff -> (QlStrikedTypePayoff -> IO a) -> IO a
-withStrikedPayoff (AssetOrNothing t s) f = qlAssetOrNothingPayoff t s >>= newCastForeignPtr >>= flip withGenForeignPtr f
-withStrikedPayoff (CashOrNothing t s c) f = qlCashOrNothingPayoff t s c >>= newCastForeignPtr >>= flip withGenForeignPtr f
-withStrikedPayoff (Gap t s ss) f = qlGapPayoff t s ss >>= newCastForeignPtr >>= flip withGenForeignPtr f
-withStrikedPayoff (PercentageStrike p) f = withPercentageStrikePayoff p (\pp -> upcast pp >>= \sp -> f sp `finally` freeUpcast sp)
-withStrikedPayoff (PlainVanilla p) f = withPlainVanillaPayoff p (\pp -> upcast pp >>= \sp -> f sp `finally` freeUpcast sp)
-withStrikedPayoff (SuperFund s ss) f = qlSuperFundPayoff s ss >>= newCastForeignPtr >>= flip withGenForeignPtr f
-withStrikedPayoff (SuperSharePayoff s ss c) f = qlSuperSharePayoff s ss c >>= newCastForeignPtr >>= flip withGenForeignPtr f
-withStrikedPayoff (CustomStriked t k n fp) f = qlStrikedPayoffFromFunction t k n fp >>= newCastForeignPtr >>= flip withGenForeignPtr f
+withStrikedPayoff (AssetOrNothing t s) f = withConstructed (qlAssetOrNothingPayoff t s) f
+withStrikedPayoff (CashOrNothing t s c) f = withConstructed (qlCashOrNothingPayoff t s c) f
+withStrikedPayoff (Gap t s ss) f = withConstructed (qlGapPayoff t s ss) f
+withStrikedPayoff (PercentageStrike p) f = withPercentageStrikePayoff p (\pp -> withUpcast pp f)
+withStrikedPayoff (PlainVanilla p) f = withPlainVanillaPayoff p (\pp -> withUpcast pp f)
+withStrikedPayoff (SuperFund s ss) f = withConstructed (qlSuperFundPayoff s ss) f
+withStrikedPayoff (SuperSharePayoff s ss c) f = withConstructed (qlSuperSharePayoff s ss c) f
+withStrikedPayoff (CustomStriked t k n fp) f = withConstructed (qlStrikedPayoffFromFunction t k n fp) f
 
 data TypePayoff = Striked !StrikedPayoff
   | Floating !OptionType -- ^type
@@ -473,16 +472,16 @@ data BasketPayoff =
       !(FunPtr BasketAccumulateFun)
 
 withTypePayoff :: TypePayoff -> (QlTypePayoff -> IO a) -> IO a
-withTypePayoff (Floating t) f = qlFloatingTypePayoff t >>= newCastForeignPtr >>= flip withGenForeignPtr f
-withTypePayoff (Striked s) f = withStrikedPayoff s (\sp -> upcast sp >>= \tp -> f tp `finally` freeUpcast tp)
+withTypePayoff (Floating t) f = withConstructed (qlFloatingTypePayoff t) f
+withTypePayoff (Striked s) f = withStrikedPayoff s (\sp -> withUpcast sp f)
 
 withBasketPayoff :: BasketPayoff -> (QlBasketPayoff -> IO a) -> IO a
-withBasketPayoff (Average p n) f = withPayoff p (\pp -> qlAverageBasketPayoff pp n >>= newCastForeignPtr >>= flip withGenForeignPtr f)
-withBasketPayoff (AverageMultiple p a) f = withPayoff p (\pp -> qlAverageBasketPayoff1 pp a >>= newCastForeignPtr >>= flip withGenForeignPtr f)
-withBasketPayoff (Max p) f = withPayoff p (\pp -> qlMaxBasketPayoff pp >>= newCastForeignPtr >>= flip withGenForeignPtr f)
-withBasketPayoff (Min p) f = withPayoff p (\pp -> qlMinBasketPayoff pp >>= newCastForeignPtr >>= flip withGenForeignPtr f)
-withBasketPayoff (Spread p) f = withPayoff p (\pp -> qlSpreadBasketPayoff pp >>= newCastForeignPtr >>= flip withGenForeignPtr f)
-withBasketPayoff (CustomAccumulate p fp) f = withPayoff p (\pp -> qlBasketPayoffFromFunction pp fp >>= newCastForeignPtr >>= flip withGenForeignPtr f)
+withBasketPayoff (Average p n) f = withPayoff p (\pp -> withConstructed (qlAverageBasketPayoff pp n) f)
+withBasketPayoff (AverageMultiple p a) f = withPayoff p (\pp -> withConstructed (qlAverageBasketPayoff1 pp a) f)
+withBasketPayoff (Max p) f = withPayoff p (\pp -> withConstructed (qlMaxBasketPayoff pp) f)
+withBasketPayoff (Min p) f = withPayoff p (\pp -> withConstructed (qlMinBasketPayoff pp) f)
+withBasketPayoff (Spread p) f = withPayoff p (\pp -> withConstructed (qlSpreadBasketPayoff pp) f)
+withBasketPayoff (CustomAccumulate p fp) f = withPayoff p (\pp -> withConstructed (qlBasketPayoffFromFunction pp fp) f)
 
 -- | > Payoff
 -- >  DoubleStickyRatchet
@@ -618,17 +617,17 @@ data Payoff =
 {#fun qlStrikedPayoffFromFunction{`OptionType',`Double',`String',id`FunPtr PayoffFun',preErrorCheck-`String'errorCheck*-}->`QlStrikedTypePayoff'peekPtr*#}
 
 withPayoff :: Payoff -> (QlPayoff -> IO a) -> IO a
-withPayoff (DoubleStickyRatchet t1 t2 g1 g2 g3 s1 s2 s3 i1 i2 a) f = qlDoubleStickyRatchetPayoff t1 t2 g1 g2 g3 s1 s2 s3 i1 i2 a >>= newCastForeignPtr >>= flip withGenForeignPtr f
-withPayoff (ForwardType t s) f = qlForwardTypePayoff t s >>= newCastForeignPtr >>= flip withGenForeignPtr f
-withPayoff (RatchetMax g1 g2 g3 s1 s2 s3 i1 i2 a) f = qlRatchetMaxPayoff g1 g2 g3 s1 s2 s3 i1 i2 a >>= newCastForeignPtr >>= flip withGenForeignPtr f
-withPayoff (RatchetMin g1 g2 g3 s1 s2 s3 i1 i2 a) f = qlRatchetMinPayoff g1 g2 g3 s1 s2 s3 i1 i2 a >>= newCastForeignPtr >>= flip withGenForeignPtr f
-withPayoff (Ratchet g1 g2 s1 s2 i a) f = qlRatchetPayoff g1 g2 s1 s2 i a >>= newCastForeignPtr >>= flip withGenForeignPtr f
-withPayoff (StickyMax g1 g2 g3 s1 s2 s3 i1 i2 a) f = qlStickyMaxPayoff g1 g2 g3 s1 s2 s3 i1 i2 a >>= newCastForeignPtr >>= flip withGenForeignPtr f
-withPayoff (StickyMin g1 g2 g3 s1 s2 s3 i1 i2 a) f = qlStickyMinPayoff g1 g2 g3 s1 s2 s3 i1 i2 a >>= newCastForeignPtr >>= flip withGenForeignPtr f
-withPayoff (Sticky g1 g2 s1 s2 i a) f = qlStickyPayoff g1 g2 s1 s2 i a >>= newCastForeignPtr >>= flip withGenForeignPtr f
-withPayoff (Type t) f = withTypePayoff t (\tp -> upcast tp >>= \pp -> f pp `finally` freeUpcast pp)
-withPayoff (Basket b) f = withBasketPayoff b (\bp -> upcast bp >>= \pp -> f pp `finally` freeUpcast pp)
-withPayoff (Custom n d fp) f = qlPayoffFromFunction n d fp >>= newCastForeignPtr >>= flip withGenForeignPtr f
+withPayoff (DoubleStickyRatchet t1 t2 g1 g2 g3 s1 s2 s3 i1 i2 a) f = withConstructed (qlDoubleStickyRatchetPayoff t1 t2 g1 g2 g3 s1 s2 s3 i1 i2 a) f
+withPayoff (ForwardType t s) f = withConstructed (qlForwardTypePayoff t s) f
+withPayoff (RatchetMax g1 g2 g3 s1 s2 s3 i1 i2 a) f = withConstructed (qlRatchetMaxPayoff g1 g2 g3 s1 s2 s3 i1 i2 a) f
+withPayoff (RatchetMin g1 g2 g3 s1 s2 s3 i1 i2 a) f = withConstructed (qlRatchetMinPayoff g1 g2 g3 s1 s2 s3 i1 i2 a) f
+withPayoff (Ratchet g1 g2 s1 s2 i a) f = withConstructed (qlRatchetPayoff g1 g2 s1 s2 i a) f
+withPayoff (StickyMax g1 g2 g3 s1 s2 s3 i1 i2 a) f = withConstructed (qlStickyMaxPayoff g1 g2 g3 s1 s2 s3 i1 i2 a) f
+withPayoff (StickyMin g1 g2 g3 s1 s2 s3 i1 i2 a) f = withConstructed (qlStickyMinPayoff g1 g2 g3 s1 s2 s3 i1 i2 a) f
+withPayoff (Sticky g1 g2 s1 s2 i a) f = withConstructed (qlStickyPayoff g1 g2 s1 s2 i a) f
+withPayoff (Type t) f = withTypePayoff t (\tp -> withUpcast tp f)
+withPayoff (Basket b) f = withBasketPayoff b (\bp -> withUpcast bp f)
+withPayoff (Custom n d fp) f = withConstructed (qlPayoffFromFunction n d fp) f
 
 -- |Wrap a Haskell @price -> value@ function as a real QuantLib @Payoff@, usable anywhere a
 -- 'Payoff' is (@QuantLib.Instrument.Option.oneAssetOption@, @multiAssetOption@,

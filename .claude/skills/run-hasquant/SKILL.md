@@ -40,10 +40,12 @@ hpack-generated, so edit the former and let `stack build` regenerate the
 latter). Nothing merges until this passes:
 
 ```bash
-docker compose run --rm hasquant sh -c 'stack build --resolver lts-18.8 --flag hasquant:buildExample --flag hasquant:buildSofrXva --no-haddock && stack --resolver lts-18.8 test'
+docker compose run --rm hasquant sh -c 'stack build --resolver lts-18.8 --flag hasquant:buildExample --flag hasquant:buildSofrXva --no-haddock && stack --resolver lts-18.8 test --flag hasquant:buildExample --flag hasquant:buildSofrXva'
 ```
 
-(no `-it`, which fails without a TTY). It catches two things the local
+(no `-it`, which fails without a TTY). Keep the same flags on both commands;
+dropping the executable flags for `test` reconfigures and rebuilds the library.
+It catches two things the local
 GHC 9.10 build cannot: post-8.10 `base` functions creeping in — often *via*
 an hlint suggestion, e.g. `Data.Functor.unzip` (base 4.19+) — and types 9.10
 infers but 8.10 rejects (a `let`-bound helper containing a list literal
@@ -84,6 +86,9 @@ There's no existing smoke script for what you're checking? Write one in
 `QuantLib.*` modules, construct objects, assert on the results, `error` on
 failure) and pass its path to the driver — that's the whole point of the
 harness.
+
+The driver also compiles `MarshallingFixture.cpp` for the result-marshalling and
+temporary-ownership probes; no manual fixture build is needed for those scripts.
 
 Compiled binaries land at `/tmp/hasquant-smoke-<name>`; build artifacts at
 `/tmp/hasquant-smoke-<name>_build/`.

@@ -12,7 +12,7 @@ import Control.Monad((>=>))
 import System.IO.Unsafe(unsafePerformIO)
 
 import QuantLib.Internal(RealVector, borrowRealVector, peekDynString, preIntArray, prePtrArray, peekDayArray, peekPtrArray)
-import Control.Exception (finally, mask, mask_, onException)
+import Control.Exception (bracket, finally, mask, mask_, onException)
 
 (<.>) :: Functor f => (b -> r) -> (a -> f b) -> a -> f r
 f1 <.> f2 = fmap f1 . f2
@@ -939,6 +939,16 @@ data GenForeignPtr a b = GenForeignPtr {
 
 freeUpcast :: Finalizable b => Ptr b -> IO ()
 freeUpcast = callFinalizer finalize
+
+-- Temporary ADT handles are scoped to their consumer; constructors copy shared ownership.
+withConstructed :: Finalizable a => IO (Ptr a) -> (Ptr a -> IO b) -> IO b
+withConstructed make = bracket make freeUpcast
+
+withUpcast :: (Upcastable a, Finalizable (Base a)) => Ptr a -> (Ptr (Base a) -> IO b) -> IO b
+withUpcast p = withConstructed (upcast p)
+
+withConstructedUpcast :: (Finalizable a, Upcastable a, Finalizable (Base a)) => IO (Ptr a) -> (Ptr (Base a) -> IO b) -> IO b
+withConstructedUpcast make f = withConstructed make (`withUpcast` f)
 
 newtype AnyOf b a = AnyOf { getAnyOf :: GenForeignPtr a b }
 newAnyOf :: (Upcastable b, Finalizable (Base b)) => GenForeignPtr a b -> GenForeignPtr (AnyOf b a) (Base b)
