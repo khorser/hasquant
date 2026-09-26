@@ -1879,7 +1879,7 @@ extendedBlackVarianceCurve d dq dc f = qlExtendedBlackVarianceCurve d dd q dc f 
 
 -- |Like 'blackVarianceSurface', but volatilities are live quotes (rows strikes, columns dates).
 -- On QuantLib <= 1.43 this throws 'CPlusPlusException' instead of invoking upstream code that
--- accesses the grid out of bounds: <https://github.com/lballabio/QuantLib/issues/2791>.
+-- accesses the grid out of bounds (fixed in QuantLib 1.44).
 extendedBlackVarianceSurface :: Day -> Calendar -> [Day] -- ^dates
   -> [Double] -- ^strikes
   -> Matrix (GenQuote q) -- ^volatilities

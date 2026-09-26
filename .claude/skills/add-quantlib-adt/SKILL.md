@@ -46,7 +46,7 @@ If a C++ object stores a Haskell callback and invokes it later, the `FunPtr` bra
 
 Before exposing a callback abstraction, inspect its consumers. Prefer an upstream inner primitive that lets Haskell own the outer loop; otherwise batch the callback to the coarsest granularity the upstream algorithm supports. Keep a fine-grained callback only when upstream itself consumes one element at a time.
 
-Custom payoff compatibility is consumer-specific. Most pricing engines require a built-in `StrikedTypePayoff`; on QuantLib <= 1.43, `FdBlackScholesVanillaEngine` and `FdHestonVanillaEngine` dereference a failed cast instead of throwing (fixed upstream in lballabio/QuantLib#2825). Use the custom striked-payoff form for those engines and document compatibility on every public consumer that accepts a custom payoff. The supplied option type and strike guide the grid; they do not redefine the callback payoff.
+Custom payoff compatibility is consumer-specific. Most pricing engines require a built-in `StrikedTypePayoff`; on QuantLib <= 1.43, `FdBlackScholesVanillaEngine` and `FdHestonVanillaEngine` dereference a failed cast instead of throwing (fixed in QuantLib 1.44). Use the custom striked-payoff form for those engines and document compatibility on every public consumer that accepts a custom payoff. The supplied option type and strike guide the grid; they do not redefine the callback payoff.
 
 ## Verification
 
