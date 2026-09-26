@@ -40,6 +40,7 @@ extra-source-files:
     cbits/qlMisc.h
     cbits/qlPricingEngine.h
     cbits/qlPricingEngineAux.h
+    cbits/qlStdCompat.h
     cbits/qlTermStructure.h
     cbits/qlTermStructureAux.h
     cbits/qlTypesC2HS.h
