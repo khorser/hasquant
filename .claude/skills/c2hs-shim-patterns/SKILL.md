@@ -382,7 +382,7 @@ least one copy is genuinely required.
 
 ## Fighting the wrong layer
 
-`GenForeignPtr`'s `_access` and `_mayFree` fields are an intentional manual dictionary. Do not replace them with a public `Access` constraint: c2hs emits explicit signatures for every hook, so polymorphic `GenX` hooks would each need hand-written constraints, including awkward prime-bearing C tag names. The existing result types already pin `newCastForeignPtr` and `newGenForeignPtr` correctly.
+`GenForeignPtr`'s `_access` and `_ownership` fields are an intentional manual dictionary. Do not replace them with a public `Access` constraint: c2hs emits explicit signatures for every hook, so polymorphic `GenX` hooks would each need hand-written constraints, including awkward prime-bearing C tag names. The existing result types already pin `newCastForeignPtr` and `newGenForeignPtr` correctly.
 
 **A `{#fun#}` argument type reading `import Foreign.ForeignPtr(ForeignPtr)`
 plus a bare `GenX (ForeignPtr a)' `` annotation is a sign you're fighting
@@ -806,3 +806,11 @@ Check `nocode` pragma placement and first-`{#fun#}` position first when a render
 wrong; they're cheaper to spot than computing generated-line drift by hand. After any fix here,
 rebuild (`stack haddock hasquant:lib --fast`) and re-grep the specific rendered HTML for that
 declaration -- a plausible-sounding cause is not confirmed until the fresh build shows it fixed.
+
+## Converting an already-base-typed value
+
+`transferGenForeignPtr` receives either an existing `ForeignPtr` owner or a freshly
+allocated upcast handle. Reuse the former; install a finalizer only on the latter,
+under masking with cleanup if adoption fails. A second `newForeignPtr` on a borrowed
+pointer creates independent finalizers and double-frees the C++ wrapper. The
+`_ownership` dictionary carries this distinction without adding public constraints.
