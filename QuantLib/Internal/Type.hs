@@ -11,8 +11,8 @@ import Foreign.Storable(peek)
 import Control.Monad((>=>))
 import System.IO.Unsafe(unsafePerformIO)
 
-import QuantLib.Internal(RealVector, borrowRealVector, peekDynString, preArray, peekDayArray, peekPtrArray)
-import Control.Exception (finally, mask, onException)
+import QuantLib.Internal(RealVector, borrowRealVector, peekDynString, preIntArray, prePtrArray, peekDayArray, peekPtrArray)
+import Control.Exception (finally, mask, mask_, onException)
 
 (<.>) :: Functor f => (b -> r) -> (a -> f b) -> a -> f r
 f1 <.> f2 = fmap f1 . f2
@@ -34,7 +34,7 @@ withStandaloneArray c x f = withMany withStandalone (map c x) (`withArray` (\px 
 -- unsafePerformIO is safe; NOINLINE keeps GHC from duplicating or floating the C++
 -- call, matching how QuantLib.Context guards its own unsafePerformIO sites.
 showStandalone :: (Ptr a -> IO CString) -> Standalone a -> String
-showStandalone f x = unsafePerformIO $ withStandalone x (f >=> peekDynString)
+showStandalone f x = unsafePerformIO $ mask_ $ withStandalone x (f >=> peekDynString)
 {-# NOINLINE showStandalone #-}
 
 -- QuantLib calls stay `safe': an `unsafe' import can block GC and the scheduler during pricing.
@@ -299,7 +299,7 @@ withSchedule = withStandalone . getCSchedule
 foreign import ccall safe "ql.h qlScheduleDates" qlScheduleDates :: Ptr CSchedule -> Ptr CUInt -> Ptr (Ptr CInt) -> IO ()
 showSchedule :: Schedule -> String
 showSchedule x = unsafePerformIO $ withSchedule x $ \p ->
-  show <$> preArray (\(cp, ap) -> qlScheduleDates p cp ap >> peekDayArray cp ap)
+  show <$> preIntArray (\(cp, ap) -> qlScheduleDates p cp ap >> peekDayArray cp ap)
 {-# NOINLINE showSchedule #-}
 
 instance Show Schedule where
@@ -1000,12 +1000,12 @@ withCommodityTypeArray = withGenArray withCommodityType
 -- producer of a fresh 'QuantLib.Commodity.PricingPeriods' list -- every constructor instead
 -- *consumes* one via 'withCommodityTypeArray').
 peekCommodityTypeArray :: Ptr CUInt -> Ptr (Ptr (Ptr CCommodityType)) -> IO [CommodityType]
-peekCommodityTypeArray = peekPtrArray peekCommodityType
+peekCommodityTypeArray = peekPtrArray freeUpcast peekCommodityType
 
 withUnitOfMeasureArray :: [UnitOfMeasure] -> ((CUInt, Ptr (Ptr CUnitOfMeasure)) -> IO b) -> IO b
 withUnitOfMeasureArray = withGenArray withUnitOfMeasure
 peekUnitOfMeasureArray :: Ptr CUInt -> Ptr (Ptr (Ptr CUnitOfMeasure)) -> IO [UnitOfMeasure]
-peekUnitOfMeasureArray = peekPtrArray peekUnitOfMeasure
+peekUnitOfMeasureArray = peekPtrArray freeUpcast peekUnitOfMeasure
 
 -- |A nullable-per-entry array of 'UnitOfMeasure's -- @SecondaryCosts@' per-entry unit of measure,
 -- present only for its @CommodityUnitCost@ alternative (null for its @Money@ alternative).
@@ -1016,7 +1016,7 @@ withMaybeUnitOfMeasureArray = withGenArray withMaybeUnitOfMeasure
 withCurrencyArray :: [Currency] -> ((CUInt, Ptr (Ptr CCurrency)) -> IO b) -> IO b
 withCurrencyArray = withGenArray withCurrency
 peekCurrencyArray :: Ptr CUInt -> Ptr (Ptr (Ptr CCurrency)) -> IO [Currency]
-peekCurrencyArray = peekPtrArray peekCurrency
+peekCurrencyArray = peekPtrArray freeUpcast peekCurrency
 
 -- |The root of the hierarchy shown under t'GenQuote'.
 type Quote = GenQuote CQuote
@@ -1223,7 +1223,7 @@ newGenCoupon = pure . GenCashFlow . newAnyOf
 withCoupon :: GenCoupon c -> (Ptr CCoupon' -> IO b) -> IO b
 withCoupon = withGenForeignPtr . peel . getCashFlow
 peekCouponArray :: Ptr CUInt -> Ptr (Ptr (Ptr CCoupon')) -> IO [Coupon]
-peekCouponArray = peekPtrArray peekCoupon
+peekCouponArray = peekPtrArray freeUpcast peekCoupon
 
 data CFixedRateCoupon'
 type CFixedRateCoupon = ForeignPtr CFixedRateCoupon'
@@ -1449,7 +1449,7 @@ withCalibrationHelperArray = withGenArray withCalibrationHelper
 withBlackCalibrationHelperArray :: [GenBlackCalibrationHelper bch] -> ((CUInt, Ptr (Ptr CBlackCalibrationHelper')) -> IO b) -> IO b
 withBlackCalibrationHelperArray = withGenArray withBlackCalibrationHelper
 peekBlackCalibrationHelperArray :: Ptr CUInt -> Ptr (Ptr (Ptr CBlackCalibrationHelper')) -> IO [BlackCalibrationHelper]
-peekBlackCalibrationHelperArray = peekPtrArray peekBlackCalibrationHelper
+peekBlackCalibrationHelperArray = peekPtrArray freeUpcast peekBlackCalibrationHelper
 
 -- SwaptionHelper is only reachable as this concrete type when hasquant itself constructs it
 -- (Model.chs's swaptionHelper/swaptionHelperFromDate/swaptionHelperFromDates); a basket returned
@@ -1543,7 +1543,7 @@ type CIndex = ForeignPtr CIndex'
 
 foreign import ccall safe "ql.h qlIndexName" qlIndexName :: Ptr CIndex' -> IO CString
 showIndex :: GenIndex idx -> String
-showIndex = unsafePerformIO . (`withIndex` (qlIndexName >=> peekDynString))
+showIndex = unsafePerformIO . mask_ . (`withIndex` (qlIndexName >=> peekDynString))
 {-# NOINLINE showIndex #-}
 
 instance Show (GenIndex idx) where show = showIndex
@@ -4058,9 +4058,27 @@ withCommodityCashFlow = withForeignPtr . ptr . getCashFlow
 -- 'QuantLib.CashFlow.date' already carries the map key, so it isn't
 -- duplicated as a separate tuple field).
 peekCommodityCashFlowArray :: Ptr CUInt -> Ptr (Ptr (Ptr CCommodityCashFlow')) -> IO [CommodityCashFlow]
-peekCommodityCashFlowArray = peekPtrArray peekCommodityCashFlow
+peekCommodityCashFlowArray = peekPtrArray freeUpcast peekCommodityCashFlow
 
 withInstrumentArray :: [GenInstrument i] -> ((CUInt, Ptr (Ptr CInstrument')) -> IO b) -> IO b
 withInstrumentArray = withGenArray withInstrument
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:
+
+preCommodityTypeArray :: ((Ptr CUInt, Ptr (Ptr (Ptr CCommodityType))) -> IO b) -> IO b
+preCommodityTypeArray = prePtrArray freeUpcast
+
+preUnitOfMeasureArray :: ((Ptr CUInt, Ptr (Ptr (Ptr CUnitOfMeasure))) -> IO b) -> IO b
+preUnitOfMeasureArray = prePtrArray freeUpcast
+
+preCurrencyArray :: ((Ptr CUInt, Ptr (Ptr (Ptr CCurrency))) -> IO b) -> IO b
+preCurrencyArray = prePtrArray freeUpcast
+
+preCouponArray :: ((Ptr CUInt, Ptr (Ptr (Ptr CCoupon'))) -> IO b) -> IO b
+preCouponArray = prePtrArray freeUpcast
+
+preBlackCalibrationHelperArray :: ((Ptr CUInt, Ptr (Ptr (Ptr CBlackCalibrationHelper'))) -> IO b) -> IO b
+preBlackCalibrationHelperArray = prePtrArray freeUpcast
+
+preCommodityCashFlowArray :: ((Ptr CUInt, Ptr (Ptr (Ptr CCommodityCashFlow'))) -> IO b) -> IO b
+preCommodityCashFlowArray = prePtrArray freeUpcast

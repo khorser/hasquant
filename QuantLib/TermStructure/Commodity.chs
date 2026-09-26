@@ -26,6 +26,7 @@ module QuantLib.TermStructure.Commodity
   , priceNearby
   , underlyingPriceDate
   ) where
+import Control.Exception (mask_)
 import QuantLib.Internal
 import QuantLib.Internal.Type
 import Data.List.NonEmpty(NonEmpty, toList)
@@ -64,7 +65,9 @@ commodityCurve curveName ct ccy uom cal curveNodes dc =
   ,preErrorCheck-`String'errorCheck*-}->`CommodityCurve'peekCommodityCurve*#}
 
 -- |The curve's name, as given at construction.
-{#fun qlCommodityCurveName as name{withGenTermStructure*`CommodityCurve'}->`String'peekDynString*#}
+name :: CommodityCurve -> IO String
+name x = mask_ (nameRaw x)
+{#fun qlCommodityCurveName as nameRaw{withGenTermStructure*`CommodityCurve'}->`String'peekDynString*#}
 
 -- |The commodity type this curve prices.
 {#fun qlCommodityCurveCommodityType as commodityType{withGenTermStructure*`CommodityCurve',preErrorCheck-`String'errorCheck*-}->`CommodityType'peekCommodityType*#}
@@ -81,8 +84,8 @@ nodes curve = do
   dates <- qlCommodityCurveDates curve
   prices <- qlCommodityCurvePrices curve
   pure (zip dates prices)
-{#fun qlCommodityCurveDates as qlCommodityCurveDates{withGenTermStructure*`CommodityCurve',preArray-`[Day]'&peekDayArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
-{#fun qlCommodityCurvePrices as qlCommodityCurvePrices{withGenTermStructure*`CommodityCurve',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlCommodityCurveDates as qlCommodityCurveDates{withGenTermStructure*`CommodityCurve',preIntArray-`[Day]'&peekDayArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlCommodityCurvePrices as qlCommodityCurvePrices{withGenTermStructure*`CommodityCurve',preDoubleArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Whether this curve has any nodes.
 {#fun pure qlCommodityCurveEmpty as isEmpty{withGenTermStructure*`CommodityCurve'}->`Bool'#}

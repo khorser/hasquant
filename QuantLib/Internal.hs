@@ -19,6 +19,11 @@ module QuantLib.Internal
   , preEnum
   , preNum
   , preArray
+  , preArrayWith
+  , preIntArray
+  , preDoubleArray
+  , preCStringArray
+  , prePtrArray
   , withEnumArray
   , withIntArray
   , withBoolArray
@@ -89,11 +94,11 @@ import Foreign.Ptr(Ptr, nullPtr, castPtr)
 import Foreign.ForeignPtr(FinalizerPtr, newForeignPtr, newForeignPtr_, castForeignPtr)
 import Foreign.Marshal.Array(peekArray, withArray)
 import Foreign.Marshal.Utils(with, toBool, fromBool, withMany)
-import Foreign.Storable(peek, Storable)
+import Foreign.Storable(peek, poke, peekElemOff, pokeElemOff, Storable)
 import Foreign.Marshal.Alloc(alloca)
 
-import Control.Exception(Exception, throwIO)
-import Control.Monad(when)
+import Control.Exception(Exception, throwIO, mask, mask_, finally, onException)
+import Control.Monad(when, (>=>))
 import Data.Time.Calendar(Day(ModifiedJulianDay), toModifiedJulianDay, fromGregorian)
 import Data.List.NonEmpty(NonEmpty, toList)
 
@@ -112,11 +117,12 @@ errorCheck p = do
   a <- peek p
   when
     (a /= nullPtr)
-    ((peekCString a <* qlFreeString a) >>= throwIO . CPlusPlusException)
+    (poke p nullPtr >> peekDynString a >>= throwIO . CPlusPlusException)
 
 -- like alloca but initializes the allocated pointer with zero
-preErrorCheck :: (Ptr (Ptr a) -> IO b) -> IO b
-preErrorCheck = with nullPtr
+preErrorCheck :: (Ptr CString -> IO b) -> IO b
+preErrorCheck f = mask_ $ with nullPtr $ \p ->
+  f p `finally` (peek p >>= qlFreeString)
 
 fromMaybeBool :: Maybe Bool -> CInt
 fromMaybeBool = maybe (-1) fromBool
@@ -145,7 +151,9 @@ toMaybeBool :: CInt -> Maybe Bool
 toMaybeBool x = if x == -1 then Nothing else Just $ toBool x
 
 peekDynString :: CString -> IO String
-peekDynString x = peekCString x <* qlFreeString x
+peekDynString x
+  | x == nullPtr = pure "" -- The following errorCheck reports a failed C++ call.
+  | otherwise = peekCString x `finally` qlFreeString x
 
 peekEnum :: (Enum a) => Ptr CInt -> IO a
 peekEnum x = toEnum . fromIntegral <$> peek x
@@ -254,32 +262,50 @@ preArray f = with 0 $
   \x -> with nullPtr $
     \y -> f (x, y)
 
-peekIntArray' :: (CInt -> b) -> Ptr CUInt -> Ptr (Ptr CInt) -> IO [b]
-peekIntArray' f pl pp = do
-  l <- peek pl
+-- Protect every output from the FFI return, including arrays not yet converted by c2hs.
+preArrayWith :: (CUInt -> Ptr a -> IO ()) -> ((Ptr CUInt, Ptr (Ptr a)) -> IO b) -> IO b
+preArrayWith freeFn f = mask_ $ preArray $ \slots@(pl, pp) ->
+  f slots `finally` (do n <- peek pl; p <- peek pp; when (p /= nullPtr) (freeFn n p))
+
+preIntArray :: ((Ptr CUInt, Ptr (Ptr CInt)) -> IO b) -> IO b
+preIntArray = preArrayWith (const qlFreeInts)
+
+preDoubleArray :: ((Ptr CUInt, Ptr (Ptr CDouble)) -> IO b) -> IO b
+preDoubleArray = preArrayWith (const qlFreeDoubles)
+
+preCStringArray :: ((Ptr CUInt, Ptr (Ptr CString)) -> IO b) -> IO b
+preCStringArray = preArrayWith qlFreeStringArray
+
+freePtrArray :: (Ptr a -> IO ()) -> CUInt -> Ptr (Ptr a) -> IO ()
+freePtrArray freeOne n p = do
+  mapM_ (peekElemOff p >=> \x -> when (x /= nullPtr) (freeOne x)) [0 .. fromIntegral n - 1]
+  qlFreePointerArray (castPtr p)
+
+prePtrArray :: (Ptr a -> IO ()) -> ((Ptr CUInt, Ptr (Ptr (Ptr a))) -> IO b) -> IO b
+prePtrArray = preArrayWith . freePtrArray
+
+-- Clear the slot while masked before taking responsibility for releasing its allocation.
+consumeArray :: (CUInt -> Ptr a -> IO ()) -> Ptr CUInt -> Ptr (Ptr a) -> (CUInt -> Ptr a -> IO b) -> IO b
+consumeArray freeFn pl pp convert = mask $ \restore -> do
+  n <- peek pl
   p <- peek pp
-  map f <$> peekArray (fromIntegral l) p <* qlFreeInts p
+  poke pp nullPtr
+  restore (convert n p) `finally` freeFn n p
+
+peekIntArray' :: (CInt -> b) -> Ptr CUInt -> Ptr (Ptr CInt) -> IO [b]
+peekIntArray' f pl pp = consumeArray (const qlFreeInts) pl pp $ \n p ->
+  map f <$> peekArray (fromIntegral n) p
 
 peekUIntArray :: Ptr CUInt -> Ptr (Ptr CUInt) -> IO [Word]
-peekUIntArray pl pp = do
-  l <- peek pl
-  p <- peek pp
-  map fromIntegral <$> peekArray (fromIntegral l) p <* qlFreeUInts p
+peekUIntArray pl pp = consumeArray (const qlFreeUInts) pl pp $ \n p ->
+  map fromIntegral <$> peekArray (fromIntegral n) p
 
 peekIntArray :: Ptr CUInt -> Ptr (Ptr CInt) -> IO [Int]
 peekIntArray = peekIntArray' fromIntegral
 
--- |An array of freshly heap-allocated (@DUP@'d) C strings -- the output-side counterpart of
--- 'withStringArray'. Each element is read via 'peekCString' and the whole array (including every
--- individual string) is then released via 'qlFreeStringArray' in one call, mirroring
--- 'peekDoubleArray'\/'peekIntArray'\''s read-then-free shape.
 peekCStringArray :: Ptr CUInt -> Ptr (Ptr CString) -> IO [String]
-peekCStringArray pl pp = do
-  l <- peek pl
-  p <- peek pp
-  raws <- peekArray (fromIntegral l) p
-  strs <- mapM peekCString raws
-  strs <$ qlFreeStringArray l p
+peekCStringArray pl pp = consumeArray qlFreeStringArray pl pp $ \n p ->
+  peekArray (fromIntegral n) p >>= mapM peekCString
 
 peekBoolArray :: Ptr CUInt -> Ptr (Ptr CInt) -> IO [Bool]
 peekBoolArray = peekIntArray' toBool
@@ -288,57 +314,38 @@ peekDayArray :: Ptr CUInt -> Ptr (Ptr CInt) -> IO [Day]
 peekDayArray = peekIntArray' fromSerial
 
 peekDoubleArray :: Ptr CUInt -> Ptr (Ptr CDouble) -> IO [Double]
-peekDoubleArray pl pp = do
-  l <- peek pl
-  p <- peek pp
-  map realToFrac <$> peekArray (fromIntegral l) p <* qlFreeDoubles p
+peekDoubleArray pl pp = consumeArray (const qlFreeDoubles) pl pp $ \n p ->
+  map realToFrac <$> peekArray (fromIntegral n) p
 
 -- |Takes ownership of a C++-allocated @double[]@ result without copying it.
--- The vector's finalizer is the same @qlFreeDoubles@ path used by
--- 'peekDoubleArray'.
 peekRealVector :: Ptr CUInt -> Ptr (Ptr CDouble) -> IO RealVector
-peekRealVector pl pp = do
+peekRealVector pl pp = mask_ $ do
   n <- fromIntegral <$> peek pl
   p <- peek pp
-  fp <- castForeignPtr <$> newForeignPtr qlFreeDoublesFin p
-  pure (unsafeFromForeignPtr0 fp n)
+  poke pp nullPtr
+  fp <- newForeignPtr qlFreeDoublesFin p `onException` qlFreeDoubles p
+  pure (unsafeFromForeignPtr0 (castForeignPtr fp) n)
 
--- |A non-owning vector view valid only for the continuation that receives the
--- C++ callback buffer.  It deliberately has no finalizer.
+-- |A non-owning vector view valid only during the C++ callback.
 borrowRealVector :: Ptr CDouble -> CUInt -> IO RealVector
 borrowRealVector p n = do
   fp <- castForeignPtr <$> newForeignPtr_ p
   pure (unsafeFromForeignPtr0 fp (fromIntegral n))
 
--- |Like 'peekIntArray'\''/'peekDoubleArray', but for an array of a C struct rather than a C
--- primitive: reads the length and pointer out-params, walks the array via 'peekArray' (so the
--- element type just needs a 'Storable' instance -- e.g. one built from c2hs @{#get#}@/@{#sizeof#}@
--- hooks), converts every element via @convert@, /then/ hands the whole array to @freeFn@ to
--- release. The conversion must run before the free -- unlike 'peekIntArray'\''/'peekDoubleArray',
--- whose elements are self-contained primitives, a struct element read here may itself own
--- further heap buffers (e.g. a @char*@/@double*@ field) that @convert@ still needs to dereference
--- (via 'peekCString'/'peekArray' etc.); freeing first would leave it reading already-freed
--- memory. @freeFn@ takes the element count because some frees need it (e.g.
--- 'qlFreeAdditionalResults'); one that doesn't can ignore it.
+-- |Convert before freeing: struct fields may borrow buffers owned by the aggregate.
 peekStructArray :: Storable a => (a -> IO b) -> (CUInt -> Ptr a -> IO ()) -> Ptr CUInt -> Ptr (Ptr a) -> IO [b]
-peekStructArray convert freeFn pl pp = do
-  l <- peek pl
-  p <- peek pp
-  raws <- peekArray (fromIntegral l) p
-  results <- mapM convert raws
-  results <$ freeFn l p
+peekStructArray convert freeFn pl pp = consumeArray freeFn pl pp $ \n p ->
+  peekArray (fromIntegral n) p >>= mapM convert
 
--- |Like 'peekStructArray' but for a @T**@ array of C++-owned pointers to live objects: peeks the
--- length/pointer out-params, converts each raw pointer to a live Haskell value via @peekOne@
--- (installing that value's own finalizer over the pointee), then frees only the array spine via
--- 'qlFreePointerArray' -- not the pointees, whose lifetime @peekOne@ has now taken over.
-peekPtrArray :: (Ptr a -> IO b) -> Ptr CUInt -> Ptr (Ptr (Ptr a)) -> IO [b]
-peekPtrArray peekOne pl pp = do
-  l <- peek pl
-  p <- peek pp
-  ptrs <- peekArray (fromIntegral l) p
-  xs <- mapM peekOne ptrs
-  xs <$ qlFreePointerArray (castPtr p)
+-- |The converter owns an element only on success; cleared slots mark completed handoffs.
+peekPtrArray :: (Ptr a -> IO ()) -> (Ptr a -> IO b) -> Ptr CUInt -> Ptr (Ptr (Ptr a)) -> IO [b]
+peekPtrArray freeOne peekOne pl pp = mask_ $
+  consumeArray (freePtrArray freeOne) pl pp $ \n p ->
+    mapM (\i -> do
+      raw <- peekElemOff p i
+      x <- peekOne raw
+      pokeElemOff p i nullPtr
+      pure x) [0 .. fromIntegral n - 1]
 
 fromEnumQuantity :: (Enum a, Integral b, Integral c) => (b, a) -> (CInt, c)
 fromEnumQuantity (x, u) = (fromIntegral x, fromIntegral $ fromEnum u)

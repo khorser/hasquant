@@ -100,7 +100,7 @@ import QuantLib.Internal.Common
 -- keyed by the C++ result name. The map's values are populated by the pricing engine;
 -- `additionalResults()` calls `calculate()` internally, so this is safe and idempotent after
 -- pricing.
-{#fun qlInstrumentAdditionalResults as additionalResults{withInstrument*`GenInstrument i',preArray-`[(String, AdditionalResultVal)]'&peekAdditionalResults*,preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlInstrumentAdditionalResults as additionalResults{withInstrument*`GenInstrument i',preAdditionalResults-`[(String, AdditionalResultVal)]'&peekAdditionalResults*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Builds a composite instrument whose NPV is the sum of the given instruments' NPVs, each scaled by its paired multiplier.
 composite :: [(GenInstrument i, Double)] -> IO Instrument

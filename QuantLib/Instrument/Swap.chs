@@ -368,7 +368,7 @@ swapFromLegs = (uncurry qlSwap1) . unzip
 -- 'nonstandardSwap'\/'nonstandardSwapFromGearingsAndSpreads', this simply echoes the constructor's @fixedRate@; for
 -- one built via 'nonstandardSwapFromVanilla' it is derived from the underlying vanilla swap's
 -- fixed leg coupons.
-{#fun qlNonstandardSwapFixedRate as nonstandardSwapFixedRate{withNonstandardSwap*`NonstandardSwap',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlNonstandardSwapFixedRate as nonstandardSwapFixedRate{withNonstandardSwap*`NonstandardSwap',preDoubleArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Swap exchanging capped\/floored Libor or CMS coupons with a single flat nominal on each leg.
 -- 'FloatFloatSwapOpts' bundles every trailing param the C++ constructor defaults (gearing\/
@@ -779,7 +779,7 @@ instance HasFairSpread ConstNotionalCrossCurrencyFixedVsFloatingSwap where
   ,withSwapIndex*`GenSwapIndex sidx' -- ^standardSwapBase
   ,withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure sv' -- ^swaptionVolatility
   ,fromEnumC`CalibrationBasketType'
-  ,preArray-`[BlackCalibrationHelper]'&peekBlackCalibrationHelperArray*
+  ,preBlackCalibrationHelperArray-`[BlackCalibrationHelper]'&peekBlackCalibrationHelperArray*
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |An option on a 'FloatFloatSwap'.
@@ -790,7 +790,7 @@ instance HasFairSpread ConstNotionalCrossCurrencyFixedVsFloatingSwap where
   ,withSwapIndex*`GenSwapIndex sidx' -- ^standardSwapBase
   ,withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure sv' -- ^swaptionVolatility
   ,fromEnumC`CalibrationBasketType'
-  ,preArray-`[BlackCalibrationHelper]'&peekBlackCalibrationHelperArray*
+  ,preBlackCalibrationHelperArray-`[BlackCalibrationHelper]'&peekBlackCalibrationHelperArray*
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Bullet bond vs Libor swap (par or market asset swap, per /parAssetSwap/).

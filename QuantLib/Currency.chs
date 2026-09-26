@@ -40,6 +40,8 @@ module QuantLib.Currency
   , moneyConversionType
   , moneyBaseCurrency
   ) where
+import Control.Exception (mask_)
+import System.IO.Unsafe (unsafePerformIO)
 import QuantLib.Internal
 import QuantLib.Internal.Type
 import QuantLib.Internal.Common
@@ -63,7 +65,9 @@ import Foreign.Marshal.Alloc(alloca)
 {#fun qlCurrency as currency{`Ccy',preErrorCheck-`String'errorCheck*-}->`Currency'peekCurrency*#}
 
 -- |The currency's ISO 4217 three-letter code, e.g. \"USD\".
-{#fun pure qlCurrencyCode as code{withCurrency*`Currency'}->`String'peekDynString*#}
+code :: Currency -> String
+code x = unsafePerformIO $ mask_ (codeRaw x)
+{#fun qlCurrencyCode as codeRaw{withCurrency*`Currency'}->`String'peekDynString*#}
 
 -- |The number of fractional units (e.g. cents) in one unit of the currency.
 {#fun pure qlCurrencyFractionsPerUnit as fractionsPerUnit{withCurrency*`Currency'}->`Int'#}

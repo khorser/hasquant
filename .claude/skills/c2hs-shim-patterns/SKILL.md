@@ -814,3 +814,17 @@ allocated upcast handle. Reuse the former; install a finalizer only on the latte
 under masking with cleanup if adoption fails. A second `newForeignPtr` on a borrowed
 pointer creates independent finalizers and double-frees the C++ wrapper. The
 `_ownership` dictionary carries this distinction without adding public constraints.
+
+## Output cleanup across c2hs conversions
+
+Use `preIntArray`, `preDoubleArray`, `preCStringArray`, or the typed pointer/struct
+array pre-marshaller, never bare `preArray` for an owned C result. Each brackets
+its output slot through the complete generated continuation. If conversion of an
+earlier output fails, later outputs still have cleanup installed. Out-marshallers
+clear the slot under masking when taking ownership; pointer-array converters also
+clear each element slot only after its finalizer has been installed successfully.
+A pointer converter must leave its element unowned if it throws.
+
+`preErrorCheck` masks the FFI/result-adoption interval and owns the exception string.
+A string-returning call with no error slot needs a masked wrapper around the call
+and decoding; masking only inside `peekDynString` starts after the handoff window.

@@ -369,14 +369,14 @@ instance HasAlpha HullWhiteForwardProcess where
 
 -- |the process's state at time 0, e.g. @(0, 0)@ for a curveless 'g2Process' or
 -- @(phi(0), 0)@ once a term structure is given.
-{#fun qlStochasticProcessInitialValues as initialValues{withStochasticProcess*`GenStochasticProcess p',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlStochasticProcessInitialValues as initialValues{withStochasticProcess*`GenStochasticProcess p',preDoubleArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |the drift part of the process's SDE at state /x/ and time /t/, i.e. @mu(t, x_t)@ in
 -- @dx_t = mu(t, x_t) dt + sigma(t, x_t) dW_t@.
 {#fun qlStochasticProcessDrift as drift{withStochasticProcess*`GenStochasticProcess p'
   ,`Double' -- ^t
   ,withDoubleArray*`[Double]'& -- ^x
-  ,preArray-`[Double]'&peekDoubleArray*
+  ,preDoubleArray-`[Double]'&peekDoubleArray*
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 toMatrixDouble :: (Word, Word, [Double]) -> Matrix Double
@@ -389,7 +389,7 @@ diffusion p t x = toMatrixDouble <$> qlStochasticProcessDiffusion p t x
 {#fun qlStochasticProcessDiffusion{withStochasticProcess*`GenStochasticProcess p'
   ,`Double' -- ^t
   ,withDoubleArray*`[Double]'& -- ^x
-  ,prePtr-`Word'peekWord*,prePtr-`Word'peekWord*,preArray-`[Double]'&peekDoubleArray*
+  ,prePtr-`Word'peekWord*,prePtr-`Word'peekWord*,preDoubleArray-`[Double]'&peekDoubleArray*
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |E[x_(t0+dt) | x_t0 = x0], the expected state at /t0+dt/ given state /x0/ at time /t0/.
@@ -397,7 +397,7 @@ diffusion p t x = toMatrixDouble <$> qlStochasticProcessDiffusion p t x
   ,`Double' -- ^t0
   ,withDoubleArray*`[Double]'& -- ^x0
   ,`Double' -- ^dt
-  ,preArray-`[Double]'&peekDoubleArray*
+  ,preDoubleArray-`[Double]'&peekDoubleArray*
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |the standard deviation matrix of the process over /dt/ given state /x0/ at time /t0/, i.e.
@@ -410,7 +410,7 @@ stdDeviation p t0 x0 dt = toMatrixDouble <$> qlStochasticProcessStdDeviation p t
   ,`Double' -- ^t0
   ,withDoubleArray*`[Double]'& -- ^x0
   ,`Double' -- ^dt
-  ,prePtr-`Word'peekWord*,prePtr-`Word'peekWord*,preArray-`[Double]'&peekDoubleArray*
+  ,prePtr-`Word'peekWord*,prePtr-`Word'peekWord*,preDoubleArray-`[Double]'&peekDoubleArray*
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |the covariance matrix of the process over /dt/ given state /x0/ at time /t0/; equals
@@ -421,7 +421,7 @@ covariance p t0 x0 dt = toMatrixDouble <$> qlStochasticProcessCovariance p t0 x0
   ,`Double' -- ^t0
   ,withDoubleArray*`[Double]'& -- ^x0
   ,`Double' -- ^dt
-  ,prePtr-`Word'peekWord*,prePtr-`Word'peekWord*,preArray-`[Double]'&peekDoubleArray*
+  ,prePtr-`Word'peekWord*,prePtr-`Word'peekWord*,preDoubleArray-`[Double]'&peekDoubleArray*
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |applies an increment /dx/ to a state /x0/ in the process's own state space -- not always
@@ -430,7 +430,7 @@ covariance p t0 x0 dt = toMatrixDouble <$> qlStochasticProcessCovariance p t0 x0
 {#fun qlStochasticProcessApply as apply{withStochasticProcess*`GenStochasticProcess p'
   ,withDoubleArray*`[Double]'& -- ^x0
   ,withDoubleArray*`[Double]'& -- ^dx
-  ,preArray-`[Double]'&peekDoubleArray*
+  ,preDoubleArray-`[Double]'&peekDoubleArray*
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |one discretized step of the process: the state at /t0+dt/ given state /x0/ at /t0/ and the
@@ -446,7 +446,7 @@ covariance p t0 x0 dt = toMatrixDouble <$> qlStochasticProcessCovariance p t0 x0
   ,withDoubleArray*`[Double]'& -- ^x0
   ,`Double' -- ^dt
   ,withDoubleArray*`[Double]'& -- ^dw
-  ,preArray-`[Double]'&peekDoubleArray*
+  ,preDoubleArray-`[Double]'&peekDoubleArray*
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Geman-Roncoroni process, a mean-reverting jump-diffusion model for electricity spot prices
@@ -610,12 +610,12 @@ covariance p t0 x0 dt = toMatrixDouble <$> qlStochasticProcessCovariance p t0 x0
 
 -- |the reset (fixing) dates of the forward rates this process evolves
 {#fun qlLiborForwardModelProcessFixingDates as fixingDates{withGenStochasticProcess*`LiborForwardModelProcess'
-  ,preArray-`[Day]'&peekDayArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+  ,preIntArray-`[Day]'&peekDayArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |the reset (fixing) times of the forward rates this process evolves, in the process's own
 -- day count fraction from the evaluation date
 {#fun qlLiborForwardModelProcessFixingTimes as fixingTimes{withGenStochasticProcess*`LiborForwardModelProcess'
-  ,preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+  ,preDoubleArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |the leg of Ibor coupons (notional @amount@ each) this process's forward rates reset -- used
 -- e.g. to build the 'QuantLib.Instrument.CapFloor.cap' this process prices via 'liborForwardModel'
@@ -633,7 +633,7 @@ covariance p t0 x0 dt = toMatrixDouble <$> qlStochasticProcessCovariance p t0 x0
 -- individual one-period factors.
 {#fun qlLiborForwardModelProcessDiscountBond as discountBond{withGenStochasticProcess*`LiborForwardModelProcess'
   ,withDoubleArray*`[Double]'& -- ^rates
-  ,preArray-`[Double]'&peekDoubleArray*
+  ,preDoubleArray-`[Double]'&peekDoubleArray*
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |the @(start, end)@ accrual times of the forward rates this process evolves, in its own day
@@ -642,8 +642,8 @@ covariance p t0 x0 dt = toMatrixDouble <$> qlStochasticProcessCovariance p t0 x0
 accrualTimes :: LiborForwardModelProcess -> IO [(Double, Double)]
 accrualTimes p = uncurry zip <$> qlLiborForwardModelProcessAccrualTimes p
 {#fun qlLiborForwardModelProcessAccrualTimes{withGenStochasticProcess*`LiborForwardModelProcess'
-  ,preArray-`[Double]'&peekDoubleArray*
-  ,preArray-`[Double]'&peekDoubleArray*
+  ,preDoubleArray-`[Double]'&peekDoubleArray*
+  ,preDoubleArray-`[Double]'&peekDoubleArray*
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Merton (1976) jump-diffusion process: a Black-Scholes process plus a log-normal jump

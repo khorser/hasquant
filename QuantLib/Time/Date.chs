@@ -66,6 +66,7 @@ module QuantLib.Time.Date
   , isEcbDate
   , knownEcbDates
   ) where
+import Control.Exception (mask_)
 import Data.Time.Calendar(toGregorian, isLeapYear, fromGregorian)
 import Data.Time.Clock(getCurrentTime)
 import Data.Time.LocalTime(localDay, getTimeZone, utcToLocalTime)
@@ -167,7 +168,9 @@ today = do
 
 -- |next IMM code following the given date
 -- returns the IMM code for next contract listed in the International Money Market section of the Chicago Mercantile Exchange.
-{#fun qlIMMNextCode as nextImmCode{withDay*`Day',`Bool' -- ^mainCycle
+nextImmCode :: Day -> Bool -> IO String
+nextImmCode x y = mask_ (nextImmCodeRaw x y)
+{#fun qlIMMNextCode as nextImmCodeRaw{withDay*`Day',`Bool' -- ^mainCycle
   }->`String'peekDynString*#}
 
 -- |next IMM date following the given IMM code
@@ -203,7 +206,7 @@ today = do
 {#fun qlECBIsECBdate as isEcbDate{withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Bool'#}
 
 -- |the set of known ECB maintenance period start dates
-{#fun qlECBKnownDates as knownEcbDates{preArray-`[Day]'&peekDayArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlECBKnownDates as knownEcbDates{preIntArray-`[Day]'&peekDayArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |next ECB code following the given code
 {#fun qlECBNextCode1 as nextEcbCodeFromCode{`String',preErrorCheck-`String'errorCheck*-}->`String'#}
@@ -218,10 +221,10 @@ today = do
 {#fun qlECBNextDate as nextEcbDate{withMaybeDay*`Maybe Day',preErrorCheck-`String'errorCheck*-}->`Day'toDay#}
 
 -- |next maintenance period start dates following the given code
-{#fun qlECBNextDates1 as nextEcbDatesFromCode{`String',withMaybeDay*`Maybe Day',preArray-`[Day]'&peekDayArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlECBNextDates1 as nextEcbDatesFromCode{`String',withMaybeDay*`Maybe Day',preIntArray-`[Day]'&peekDayArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |next maintenance period start dates following the given date
-{#fun qlECBNextDates as nextEcbDates{withMaybeDay*`Maybe Day',preArray-`[Day]'&peekDayArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlECBNextDates as nextEcbDates{withMaybeDay*`Maybe Day',preIntArray-`[Day]'&peekDayArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |removes a date from the set of known ECB maintenance period start dates
 {#fun qlECBRemoveDate as removeEcbDate{withDay*`Day',preErrorCheck-`String'errorCheck*-}->`()'#}

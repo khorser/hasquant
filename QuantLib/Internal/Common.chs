@@ -125,6 +125,7 @@ module QuantLib.Internal.Common
   , RawResultPtr
   , RawResult(..)
   , convertResult
+  , preAdditionalResults
   , peekAdditionalResults
   ) where
 import Foreign.Ptr(Ptr, FunPtr, nullPtr, castPtr)
@@ -1116,3 +1117,6 @@ peekAdditionalResults :: Ptr CUInt -> Ptr RawResultPtr -> IO [(String, Additiona
 peekAdditionalResults = peekStructArray convertResult (\l p -> qlFreeAdditionalResults l (castPtr p))
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:
+
+preAdditionalResults :: ((Ptr CUInt, Ptr RawResultPtr) -> IO b) -> IO b
+preAdditionalResults = preArrayWith (\l p -> qlFreeAdditionalResults l (castPtr p))

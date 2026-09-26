@@ -139,7 +139,7 @@ yoyCapFloorAtmYoySwapDateRates s = do
   (ds, rs) <- qlYoYCapFloorTermPriceSurfaceAtmYoYSwapDateRates s
   return $ zip ds rs
 {#fun qlYoYCapFloorTermPriceSurfaceAtmYoYSwapDateRates{withGenTermStructure*`YoYCapFloorTermPriceSurface'
-  ,preArray-`[Day]'&peekDayArray*,preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+  ,preIntArray-`[Day]'&peekDayArray*,preDoubleArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |The same ATM YoY swap curve as 'yoyCapFloorAtmYoySwapDateRates', but with maturities as year
 -- fractions from the surface's reference date rather than dates.
@@ -148,7 +148,7 @@ yoyCapFloorAtmYoySwapTimeRates s = do
   (ts, rs) <- qlYoYCapFloorTermPriceSurfaceAtmYoYSwapTimeRates s
   return $ zip ts rs
 {#fun qlYoYCapFloorTermPriceSurfaceAtmYoYSwapTimeRates{withGenTermStructure*`YoYCapFloorTermPriceSurface'
-  ,preArray-`[Double]'&peekDoubleArray*,preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+  ,preDoubleArray-`[Double]'&peekDoubleArray*,preDoubleArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |The ATM YoY swap rate at the given maturity date, from put\/call parity on the surface's
 -- cap\/floor price data.
@@ -169,7 +169,7 @@ yoyCapFloorAtmYoySwapTimeRates s = do
 -- 'YoYOptionletVolatilitySurface' (via 'kInterpolatedYoyOptionletVolatilitySurfaceBlack' et al.)
 -- has a bootstrapped vol curve for.
 {#fun qlYoYCapFloorTermPriceSurfaceStrikes as yoyCapFloorStrikes{withGenTermStructure*`YoYCapFloorTermPriceSurface'
-  ,preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+  ,preDoubleArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Strips a 'YoYOptionletVolatilitySurface' from a 'YoYCapFloorTermPriceSurface' by bootstrapping
 -- a per-strike vol curve against Black-priced YoY caps\/floors (mirrors upstream's own

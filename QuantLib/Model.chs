@@ -411,9 +411,9 @@ hestonSlvFdmLogEntry snapshot i = do
 {#fun qlHestonSLVFDMModelLogEntries as hestonSlvFdmLogEntriesSnapshot{withHestonSLVFDMModel*`HestonSLVFDMModel',preErrorCheck-`String'errorCheck*-}->`HestonSLVFDMLogEntries'peekHestonSLVFDMLogEntries*#}
 {#fun pure qlHestonSLVFDMLogEntriesSize as hestonSlvFdmLogEntriesSize{withHestonSLVFDMLogEntries*`HestonSLVFDMLogEntries'}->`Word'fromIntegral#}
 {#fun qlHestonSLVFDMLogEntriesTime as hestonSlvFdmLogEntriesTime{withHestonSLVFDMLogEntries*`HestonSLVFDMLogEntries',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`Double'#}
-{#fun qlHestonSLVFDMLogEntriesSpotGrid as hestonSlvFdmLogEntriesSpotGrid{withHestonSLVFDMLogEntries*`HestonSLVFDMLogEntries',fromIntegral`Word',preArray-`RealVector'&peekRealVector*,preErrorCheck-`String'errorCheck*-}->`()'#}
-{#fun qlHestonSLVFDMLogEntriesVarianceGrid as hestonSlvFdmLogEntriesVarianceGrid{withHestonSLVFDMLogEntries*`HestonSLVFDMLogEntries',fromIntegral`Word',preArray-`RealVector'&peekRealVector*,preErrorCheck-`String'errorCheck*-}->`()'#}
-{#fun qlHestonSLVFDMLogEntriesDensity as hestonSlvFdmLogEntriesDensity{withHestonSLVFDMLogEntries*`HestonSLVFDMLogEntries',fromIntegral`Word',prePtr-`Word'peekWord*,prePtr-`Word'peekWord*,preArray-`RealVector'&peekRealVector*,preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlHestonSLVFDMLogEntriesSpotGrid as hestonSlvFdmLogEntriesSpotGrid{withHestonSLVFDMLogEntries*`HestonSLVFDMLogEntries',fromIntegral`Word',preDoubleArray-`RealVector'&peekRealVector*,preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlHestonSLVFDMLogEntriesVarianceGrid as hestonSlvFdmLogEntriesVarianceGrid{withHestonSLVFDMLogEntries*`HestonSLVFDMLogEntries',fromIntegral`Word',preDoubleArray-`RealVector'&peekRealVector*,preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlHestonSLVFDMLogEntriesDensity as hestonSlvFdmLogEntriesDensity{withHestonSLVFDMLogEntries*`HestonSLVFDMLogEntries',fromIntegral`Word',prePtr-`Word'peekWord*,prePtr-`Word'peekWord*,preDoubleArray-`RealVector'&peekRealVector*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Single-factor Hull-White (extended Vasicek) short-rate model: dr = (theta(t) - a r) dt + sigma dW, fitted to the given term structure.
 {#fun qlHullWhite as hullWhite{withYieldTermStructure*`GenYieldTermStructure y',`Double' -- ^a (mean reversion)
@@ -459,25 +459,25 @@ gsrWithReversions ts (initialVol, initialReversion) steps horizon =
   ,preErrorCheck-`String'errorCheck*-}->`Gsr'peekGsr*#}
 
 -- |Volatility step values, as calibrated so far.
-{#fun qlGsrVolatility{withGenCalibratedModel*`Gsr',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlGsrVolatility{withGenCalibratedModel*`Gsr',preDoubleArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Reversion values, as calibrated so far: one for a constant reversion, otherwise one per
 -- volatility step.
-{#fun qlGsrReversion as reversions{withGenCalibratedModel*`Gsr',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlGsrReversion as reversions{withGenCalibratedModel*`Gsr',preDoubleArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |The calibration mask ('calibrate''s @fixParameters@) that fixes every model parameter except
 -- the volatility at step index @i@ (0-based) -- a ready-made @fixParameters@ argument for
 -- calibrating that one volatility in isolation.
 {#fun qlGsrMoveVolatility as moveVolatility{withGenCalibratedModel*`Gsr'
   ,fromIntegral`Word' -- ^i
-  ,preArray-`[Bool]'&peekBoolArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+  ,preIntArray-`[Bool]'&peekBoolArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |The calibration mask that fixes every model parameter except the reversion at index @i@
 -- (0-based) -- the reversion counterpart of 'moveVolatility'. Only index 0 exists unless the model
 -- was built by 'gsrWithReversions'.
 {#fun qlGsrMoveReversion as moveReversion{withGenCalibratedModel*`Gsr'
   ,fromIntegral`Word' -- ^i
-  ,preArray-`[Bool]'&peekBoolArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+  ,preIntArray-`[Bool]'&peekBoolArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Iteratively calibrates the volatility step values, one at a time, to the given helpers (assumed to have step dates matching the model's volatility step dates).
 {#fun qlGsrCalibrateVolatilitiesIterative as calibrateVolatilitiesIterative{withGenCalibratedModel*`Gsr',withBlackCalibrationHelperArray*`[GenBlackCalibrationHelper bch]'&,withOptimizationMethod*`OptimizationMethod',withEndCriteria*`EndCriteria'
@@ -535,7 +535,7 @@ markovFunctionalCaplet ts reversion initialVol steps capletVol expiries ibor gri
   ,preErrorCheck-`String'errorCheck*-}->`MarkovFunctional'peekMarkovFunctional*#}
 
 -- |Volatility step values, as calibrated so far.
-{#fun qlMarkovFunctionalVolatility{withGenCalibratedModel*`MarkovFunctional',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlMarkovFunctionalVolatility{withGenCalibratedModel*`MarkovFunctional',preDoubleArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Discount factor at time @t@ under the model's own fitted curve -- @AffineModel::discount@.
 -- Not 'pure': depends on the model's 'YieldTermStructure' handle, which can be relinked after
@@ -651,7 +651,7 @@ discountBondOption model typ strike maturity bondStart bondMaturity =
   ,`Double' -- ^bigT
   ,`Double' -- ^t
   ,`Double' -- ^y
-  ,preArray-`RealVector'&peekRealVector*
+  ,preDoubleArray-`RealVector'&peekRealVector*
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |The model's own state process. Throws if the model was constructed without one set.
@@ -729,7 +729,7 @@ lfmHullWhiteCovariance p t x = toMatrixDouble <$> qlLfmHullWhiteCovariance p t x
 {#fun qlLfmHullWhiteCovariance{withStandalone*`LfmHullWhiteParameterization' -- ^parameterization
   ,`Double' -- ^t
   ,withDoubleArray*`[Double]'& -- ^x
-  ,prePtr-`Word'peekWord*,prePtr-`Word'peekWord*,preArray-`[Double]'&peekDoubleArray*
+  ,prePtr-`Word'peekWord*,prePtr-`Word'peekWord*,preDoubleArray-`[Double]'&peekDoubleArray*
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Calibrate to a set of market instruments (caps/swaptions)
@@ -832,10 +832,10 @@ swaptionHelper span' = case span' of
 {#fun qlSwaptionHelperSwaption as helperSwaption{withSwaptionHelper*`SwaptionHelper',preErrorCheck-`String'errorCheck*-}->`Swaption'peekSwaption*#}
 
 -- |Times relevant to pricing this calibration helper's instrument, to be added to the model's evolution time grid.
-{#fun qlBlackCalibrationHelperTimes as times{withBlackCalibrationHelper*`GenBlackCalibrationHelper bch',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlBlackCalibrationHelperTimes as times{withBlackCalibrationHelper*`GenBlackCalibrationHelper bch',preDoubleArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Returns array of arguments on which calibration is done.
-{#fun qlCalibratedModelParams as params{withCalibratedModel*`GenCalibratedModel m',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlCalibratedModelParams as params{withCalibratedModel*`GenCalibratedModel m',preDoubleArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Black price given a volatility.
 {#fun qlBlackCalibrationHelperBlackPrice as blackPrice{withBlackCalibrationHelper*`GenBlackCalibrationHelper bch',`Double' -- ^volatility
@@ -922,7 +922,7 @@ calculate g series = do
   return $ zip ds vs
   where (dates, vals) = unzip (toList series)
 {#fun qlGarch11Calculate{withGarch11*`Garch11',withDayArray*`[Day]'&,withDoubleArray*`[Double]'&
-  ,preArray-`[Day]'&peekDayArray*,preArray-`[Double]'&peekDoubleArray*
+  ,preIntArray-`[Day]'&peekDayArray*,preDoubleArray-`[Double]'&peekDoubleArray*
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Garman-Klass (1980) simple estimator: @sigma^2 = ln(close\/open)^2@, scaled by @yearFraction@.
@@ -936,7 +936,7 @@ garmanKlassSimpleSigma yearFraction bars = do
   where (dates, opens, closes, highs, lows) = unzipBars bars
 {#fun qlGarmanKlassSimpleSigma{`Double',withDayArray*`[Day]'&,withDoubleArray*`[Double]'&
   ,withDoubleArray*`[Double]'&,withDoubleArray*`[Double]'&,withDoubleArray*`[Double]'&
-  ,preArray-`[Day]'&peekDayArray*,preArray-`[Double]'&peekDoubleArray*
+  ,preIntArray-`[Day]'&peekDayArray*,preDoubleArray-`[Double]'&peekDoubleArray*
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Garman-Klass Sigma1: blends 'garmanKlassSimpleSigma' with the overnight (previous close to
@@ -952,7 +952,7 @@ garmanKlassSigma1 yearFraction marketOpenFraction bars = do
   where (dates, opens, closes, highs, lows) = unzipBars bars
 {#fun qlGarmanKlassSigma1{`Double',`Double',withDayArray*`[Day]'&,withDoubleArray*`[Double]'&
   ,withDoubleArray*`[Double]'&,withDoubleArray*`[Double]'&,withDoubleArray*`[Double]'&
-  ,preArray-`[Day]'&peekDayArray*,preArray-`[Double]'&peekDoubleArray*
+  ,preIntArray-`[Day]'&peekDayArray*,preDoubleArray-`[Double]'&peekDoubleArray*
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Parkinson (1980) high-low estimator: @sigma^2 = ln(high\/low)^2 \/ (4 ln 2)@, scaled by
@@ -966,7 +966,7 @@ parkinsonSigma yearFraction bars = do
   where (dates, opens, closes, highs, lows) = unzipBars bars
 {#fun qlParkinsonSigma{`Double',withDayArray*`[Day]'&,withDoubleArray*`[Double]'&
   ,withDoubleArray*`[Double]'&,withDoubleArray*`[Double]'&,withDoubleArray*`[Double]'&
-  ,preArray-`[Day]'&peekDayArray*,preArray-`[Double]'&peekDoubleArray*
+  ,preIntArray-`[Day]'&peekDayArray*,preDoubleArray-`[Double]'&peekDoubleArray*
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Garman-Klass Sigma3: blends 'parkinsonSigma' with the overnight jump, same
@@ -981,7 +981,7 @@ garmanKlassSigma3 yearFraction marketOpenFraction bars = do
   where (dates, opens, closes, highs, lows) = unzipBars bars
 {#fun qlGarmanKlassSigma3{`Double',`Double',withDayArray*`[Day]'&,withDoubleArray*`[Double]'&
   ,withDoubleArray*`[Double]'&,withDoubleArray*`[Double]'&,withDoubleArray*`[Double]'&
-  ,preArray-`[Day]'&peekDayArray*,preArray-`[Double]'&peekDoubleArray*
+  ,preIntArray-`[Day]'&peekDayArray*,preDoubleArray-`[Double]'&peekDoubleArray*
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Garman-Klass (1980) Sigma4 estimator, combining the high-low range with the close-open
@@ -995,7 +995,7 @@ garmanKlassSigma4 yearFraction bars = do
   where (dates, opens, closes, highs, lows) = unzipBars bars
 {#fun qlGarmanKlassSigma4{`Double',withDayArray*`[Day]'&,withDoubleArray*`[Double]'&
   ,withDoubleArray*`[Double]'&,withDoubleArray*`[Double]'&,withDoubleArray*`[Double]'&
-  ,preArray-`[Day]'&peekDayArray*,preArray-`[Double]'&peekDoubleArray*
+  ,preIntArray-`[Day]'&peekDayArray*,preDoubleArray-`[Double]'&peekDoubleArray*
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Garman-Klass (1980) Sigma5 estimator: an alternative high-low\/close-open combination to
@@ -1009,7 +1009,7 @@ garmanKlassSigma5 yearFraction bars = do
   where (dates, opens, closes, highs, lows) = unzipBars bars
 {#fun qlGarmanKlassSigma5{`Double',withDayArray*`[Day]'&,withDoubleArray*`[Double]'&
   ,withDoubleArray*`[Double]'&,withDoubleArray*`[Double]'&,withDoubleArray*`[Double]'&
-  ,preArray-`[Day]'&peekDayArray*,preArray-`[Double]'&peekDoubleArray*
+  ,preIntArray-`[Day]'&peekDayArray*,preDoubleArray-`[Double]'&peekDoubleArray*
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Garman-Klass Sigma6: blends 'garmanKlassSigma5' with the overnight jump, same
@@ -1024,7 +1024,7 @@ garmanKlassSigma6 yearFraction marketOpenFraction bars = do
   where (dates, opens, closes, highs, lows) = unzipBars bars
 {#fun qlGarmanKlassSigma6{`Double',`Double',withDayArray*`[Day]'&,withDoubleArray*`[Double]'&
   ,withDoubleArray*`[Double]'&,withDoubleArray*`[Double]'&,withDoubleArray*`[Double]'&
-  ,preArray-`[Day]'&peekDayArray*,preArray-`[Double]'&peekDoubleArray*
+  ,preIntArray-`[Day]'&peekDayArray*,preDoubleArray-`[Double]'&peekDoubleArray*
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Smooths an already-computed volatility series with a rolling constant estimate over the
@@ -1037,7 +1037,7 @@ constantVolatilityEstimator windowSize series = do
   return $ zip ds vs
   where (dates, vals) = unzip (toList series)
 {#fun qlConstantVolatilityEstimator{fromIntegral`Word',withDayArray*`[Day]'&,withDoubleArray*`[Double]'&
-  ,preArray-`[Day]'&peekDayArray*,preArray-`[Double]'&peekDoubleArray*
+  ,preIntArray-`[Day]'&peekDayArray*,preDoubleArray-`[Double]'&peekDoubleArray*
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Local (point-to-point) volatility estimate from a raw price series: @|ln(p_i\/p_{i-1})| \/
@@ -1051,7 +1051,7 @@ simpleLocalVolatilityEstimator yearFraction series = do
   return $ zip ds vs
   where (dates, vals) = unzip (toList series)
 {#fun qlSimpleLocalVolatilityEstimator{`Double',withDayArray*`[Day]'&,withDoubleArray*`[Double]'&
-  ,preArray-`[Day]'&peekDayArray*,preArray-`[Double]'&peekDoubleArray*
+  ,preIntArray-`[Day]'&peekDayArray*,preDoubleArray-`[Double]'&peekDoubleArray*
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 unzipBars :: NonEmpty (Day, Double, Double, Double, Double) -> ([Day], [Double], [Double], [Double], [Double])

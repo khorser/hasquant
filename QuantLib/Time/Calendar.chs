@@ -104,7 +104,7 @@ calendar x = uncurry qlCalendar $ mapCalendar x
 {#fun qlCalendarHolidayList as holidays{withCalendar*`Calendar',withDay*`Day' -- ^from
   ,withDay*`Day' -- ^to
   ,`Bool' -- ^includeWeekEnds
-  ,preArray-`[Day]'&peekDayArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+  ,preIntArray-`[Day]'&peekDayArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- The name of a QuantLib object is fixed for its lifetime, so materializing one through
 -- unsafePerformIO during Read is as safe as showStandalone's own use of it above; NOINLINE

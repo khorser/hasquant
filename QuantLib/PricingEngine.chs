@@ -2342,7 +2342,7 @@ instance HasOptionCalculator BachelierCalculator where
   ,`Double' -- ^beta
   ,`Double' -- ^shift
   ,`VolatilityType' -- ^volatilityType
-  ,preArray-`[Double]'&peekDoubleArray*
+  ,preDoubleArray-`[Double]'&peekDoubleArray*
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Black 1976 option-price calculator.

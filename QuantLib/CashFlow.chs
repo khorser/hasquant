@@ -496,10 +496,10 @@ leg f = qlLeg fs ds where (ds, fs) = unzip f
   ,preErrorCheck-`String'errorCheck*-}->`AverageBMACoupon'peekAverageBMACoupon*#}
 
 -- |The fixing dates of the individual BMA rates being averaged over this coupon's accrual period.
-{#fun qlAverageBMACouponFixingDates as averageBmaCouponFixingDatesRaw{withAverageBMACoupon*`AverageBMACoupon',preArray-`[Day]'&peekDayArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlAverageBMACouponFixingDates as averageBmaCouponFixingDatesRaw{withAverageBMACoupon*`AverageBMACoupon',preIntArray-`[Day]'&peekDayArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |The individual BMA fixings being averaged, in the same order as 'fixingDates'.
-{#fun qlAverageBMACouponIndexFixings as averageBmaCouponIndexFixingsRaw{withAverageBMACoupon*`AverageBMACoupon',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlAverageBMACouponIndexFixings as averageBmaCouponIndexFixingsRaw{withAverageBMACoupon*`AverageBMACoupon',preDoubleArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Wrap a floating-rate coupon with optional cap and floor rates.
 {#fun qlCappedFlooredCoupon as cappedFlooredCoupon{withFloatingRateCoupon*`GenFloatingRateCoupon frc' -- ^underlying
@@ -606,7 +606,7 @@ leg f = qlLeg fs ds where (ds, fs) = unzip f
   ,preErrorCheck-`String'errorCheck*-}->`MultipleResetsCoupon'peekMultipleResetsCoupon*#}
 
 -- |Fixing dates for the rates being compounded over this coupon's reset schedule.
-{#fun qlMultipleResetsCouponFixingDates as multipleResetsCouponFixingDatesRaw{withMultipleResetsCoupon*`MultipleResetsCoupon',preArray-`[Day]'&peekDayArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlMultipleResetsCouponFixingDates as multipleResetsCouponFixingDatesRaw{withMultipleResetsCoupon*`MultipleResetsCoupon',preIntArray-`[Day]'&peekDayArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |A range-accrual coupon.  Attach the existing range-accrual pricer before
 -- asking for its rate; 'priceWithoutOptionality'
@@ -650,13 +650,13 @@ leg f = qlLeg fs ds where (ds, fs) = unzip f
 
 -- |The dates on which the coupon observes the overnight index, one per accrual sub-period.
 {#fun qlOvernightIndexedCouponFixingDates as overnightIndexedCouponFixingDatesRaw{withOvernightIndexedCoupon*`OvernightIndexedCoupon'
-  ,preArray-`[Day]'&peekDayArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+  ,preIntArray-`[Day]'&peekDayArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |The index fixing observed at each of 'fixingDates', in the same order.
 -- Requires the underlying overnight index to already have those fixings available (historical or
 -- forecast via a projection curve).
 {#fun qlOvernightIndexedCouponIndexFixings as overnightIndexedCouponIndexFixingsRaw{withOvernightIndexedCoupon*`OvernightIndexedCoupon'
-  ,preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+  ,preDoubleArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Capped/floored overnight-index coupon.
 {#fun qlCappedFlooredOvernightIndexedCoupon as cappedFlooredOvernightIndexedCoupon{withOvernightIndexedCoupon*`OvernightIndexedCoupon' -- ^underlying
@@ -790,7 +790,7 @@ leg f = qlLeg fs ds where (ds, fs) = unzip f
 -- |Raw binding for 'cashFlows': dates, amounts, and whether each has occurred as of /settlementDate/.
 {#fun qlLegCashFlows{withLeg*`GenLeg l',fromMaybeBool`Maybe Bool' -- ^includeSettlementDateFlows
   ,withMaybeDay*`Maybe Day' -- ^settlementDate
-  ,preArray-`[Double]'&peekDoubleArray*,preArray-`[Day]'&peekDayArray*,preArray-`[Bool]'&peekBoolArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+  ,preDoubleArray-`[Double]'&peekDoubleArray*,preIntArray-`[Day]'&peekDayArray*,preIntArray-`[Bool]'&peekBoolArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |return cash flows together with an indicator whether they occurred as of /settlementDate/
 cashFlows :: GenLeg l
@@ -1017,7 +1017,7 @@ bps cashflows discounting = case discounting of
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |start of the accrual periods for a coupon leg
-{#fun qlCouponAccrualStartDates as couponAccrualStartDates{withGenLeg*`CouponLeg',preArray-`[Day]'&peekDayArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlCouponAccrualStartDates as couponAccrualStartDates{withGenLeg*`CouponLeg',preIntArray-`[Day]'&peekDayArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Predetermined cash flow paying a fixed /amount/ at /date/.
 {#fun qlFixedDividend as fixedDividend{`Double' -- ^amount
@@ -1243,7 +1243,7 @@ cmsLegWithOptions schedule idx notionals dc adj fixingDays gearings spreads caps
 -- |The individual coupons of a coupon leg, e.g. to ask each one its own 'rate' or
 -- 'couponAccruedAmount'.  Pair with 'toCouponLeg' to get here from a 'Leg'.
 {#fun qlCouponLegCoupons as coupons{withGenLeg*`CouponLeg' -- ^leg
-  ,preArray-`[Coupon]'&peekCouponArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+  ,preCouponArray-`[Coupon]'&peekCouponArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Black-formula pricer for capped/floored Ibor coupons
 {#fun qlBlackIborCouponPricer as blackIborCouponPricer{withOptionletVolatilityStructure*`GenOptionletVolatilityStructure ov'
@@ -1647,7 +1647,7 @@ lognormalCmsSpreadPricer cmsPricer correlation discountCurve integrationPoints v
 fixingDependencies :: GenLeg l -> IO [(String, Day)]
 fixingDependencies l = uncurry zip <$> qlLegFixingDependencies l
 {#fun qlLegFixingDependencies{withLeg*`GenLeg l'
-  ,preArray-`[String]'&peekCStringArray*,preArray-`[Day]'&peekDayArray*
+  ,preCStringArray-`[String]'&peekCStringArray*,preIntArray-`[Day]'&peekDayArray*
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 class HasFixingDates coupon where

@@ -148,7 +148,7 @@ import Foreign.Marshal.Alloc(alloca)
   ,withMaybeConstraint*`Maybe Constraint'
   ,withOptimizationMethod*`OptimizationMethod'
   ,withEndCriteria*`EndCriteria'
-  ,preArray-`RealVector'&peekRealVector* -- ^solution
+  ,preDoubleArray-`RealVector'&peekRealVector* -- ^solution
   ,alloca-`Double'peekDouble* -- ^achieved cost
   ,alloca-`EndCriteriaType'peekEnum* -- ^end criteria reached
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
@@ -178,7 +178,7 @@ import Foreign.Marshal.Alloc(alloca)
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Returns all times on the grid in contiguous storage.
-{#fun qlTimeGridPoints as points{withTimeGrid*`TimeGrid',preArray-`RealVector'&peekRealVector*,preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlTimeGridPoints as points{withTimeGrid*`TimeGrid',preDoubleArray-`RealVector'&peekRealVector*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Mean of a caller-supplied sample. Each @riskStatistics*@ call evaluates a fresh sample.
 {#fun qlRiskStatisticsMean as riskStatisticsMean{withRealVector*`RealVector'& -- ^sample
@@ -304,8 +304,8 @@ symmetricSchurDecomposition (Matrix mr mc md) = do
   (values, r, c, vectors) <- qlSymmetricSchurDecomposition mr mc md
   pure (values, Matrix r c vectors)
 {#fun qlSymmetricSchurDecomposition{fromIntegral`Word',fromIntegral`Word',withDoubleArrayRaw*`[Double]'
-  ,preArray-`[Double]'&peekDoubleArray*
-  ,prePtr-`Word'peekWord*,prePtr-`Word'peekWord*,preArray-`[Double]'&peekDoubleArray*
+  ,preDoubleArray-`[Double]'&peekDoubleArray*
+  ,prePtr-`Word'peekWord*,prePtr-`Word'peekWord*,preDoubleArray-`[Double]'&peekDoubleArray*
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Pseudo square root @S@ of a real symmetric matrix @M@, i.e. the matrix with @S*transpose S == M@.
@@ -317,7 +317,7 @@ pseudoSqrt :: Matrix Double -- ^symmetric matrix
 pseudoSqrt (Matrix mr mc md) salvaging = toMatrixDouble <$> qlPseudoSqrt mr mc md salvaging
 {#fun qlPseudoSqrt{fromIntegral`Word',fromIntegral`Word',withDoubleArrayRaw*`[Double]'
   ,fromEnumC`SalvagingAlgorithm'
-  ,prePtr-`Word'peekWord*,prePtr-`Word'peekWord*,preArray-`[Double]'&peekDoubleArray*
+  ,prePtr-`Word'peekWord*,prePtr-`Word'peekWord*,preDoubleArray-`[Double]'&peekDoubleArray*
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Rank-reduced pseudo square root of a real symmetric matrix: the result has rank at most
@@ -332,7 +332,7 @@ rankReducedSqrt (Matrix mr mc md) maxRank retained salvaging =
   toMatrixDouble <$> qlRankReducedSqrt mr mc md maxRank retained salvaging
 {#fun qlRankReducedSqrt{fromIntegral`Word',fromIntegral`Word',withDoubleArrayRaw*`[Double]'
   ,fromIntegral`Word',`Double',fromEnumC`SalvagingAlgorithm'
-  ,prePtr-`Word'peekWord*,prePtr-`Word'peekWord*,preArray-`[Double]'&peekDoubleArray*
+  ,prePtr-`Word'peekWord*,prePtr-`Word'peekWord*,preDoubleArray-`[Double]'&peekDoubleArray*
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Cholesky factor @L@ of a symmetric positive-definite matrix @M@, i.e. the lower-triangular
@@ -345,7 +345,7 @@ choleskyDecomposition :: Matrix Double -- ^symmetric matrix
 choleskyDecomposition (Matrix mr mc md) flexible = toMatrixDouble <$> qlCholeskyDecomposition mr mc md flexible
 {#fun qlCholeskyDecomposition{fromIntegral`Word',fromIntegral`Word',withDoubleArrayRaw*`[Double]'
   ,`Bool'
-  ,prePtr-`Word'peekWord*,prePtr-`Word'peekWord*,preArray-`[Double]'&peekDoubleArray*
+  ,prePtr-`Word'peekWord*,prePtr-`Word'peekWord*,preDoubleArray-`[Double]'&peekDoubleArray*
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Solves @M*x == b@ given the Cholesky factor @L@ of @M@ -- the first argument is the factor
@@ -356,7 +356,7 @@ choleskySolveFor :: Matrix Double -- ^Cholesky factor L
 choleskySolveFor (Matrix mr mc md) b = qlCholeskySolveFor mr mc md b
 {#fun qlCholeskySolveFor{fromIntegral`Word',fromIntegral`Word',withDoubleArrayRaw*`[Double]'
   ,withDoubleArray*`[Double]'&
-  ,preArray-`[Double]'&peekDoubleArray*
+  ,preDoubleArray-`[Double]'&peekDoubleArray*
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

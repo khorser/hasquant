@@ -902,7 +902,7 @@ rateHelperFixingDependencies h = do
   (ns, ds, ok) <- qlRateHelperFixingDependencies h
   pure $ if ok /= 0 then Just (zip ns ds) else Nothing
 {#fun qlRateHelperFixingDependencies{withRateHelper*`GenRateHelper rh'
-  ,preArray-`[String]'&peekCStringArray*,preArray-`[Day]'&peekDayArray*,alloca-`CInt'peek*
+  ,preCStringArray-`[String]'&peekCStringArray*,preIntArray-`[Day]'&peekDayArray*,alloca-`CInt'peek*
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Rate helper for bootstrapping over CME SOFR futures. Compounds overnight SOFR from the third
@@ -1193,7 +1193,7 @@ fittingMethodErrorCode = fmap toEnum . fittingMethodErrorCodeRaw
 {#fun qlFittedBondDiscountCurveFittingMethodErrorCode as fittingMethodErrorCodeRaw{withFittedBondDiscountCurve*`FittedBondDiscountCurve',preErrorCheck-`String'errorCheck*-}->`Int'#}
 
 -- |the fitted parameters found by the optimization
-{#fun qlFittedBondDiscountCurveFittingMethodSolution as fittingMethodSolution{withFittedBondDiscountCurve*`FittedBondDiscountCurve',preArray-`RealVector'&peekRealVector*,preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlFittedBondDiscountCurveFittingMethodSolution as fittingMethodSolution{withFittedBondDiscountCurve*`FittedBondDiscountCurve',preDoubleArray-`RealVector'&peekRealVector*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |the discount factor at time @t@ implied by a given parameter vector, without rebuilding the curve
 {#fun qlFittedBondDiscountCurveFittingMethodDiscount as fittingMethodDiscount{withFittedBondDiscountCurve*`FittedBondDiscountCurve',withDoubleArray*`[Double]'&,`Double',preErrorCheck-`String'errorCheck*-}->`Double'#}

@@ -439,13 +439,13 @@ withMaybeFdmStepCondition (Just f) g = mask $ \restore -> do
 -- |draw the next sequence of standard normal variates, with its sample weight (1 for every trait
 -- bound here, carried through for symmetry with 'weight').
 {#fun qlGaussianRsgNextSequence as nextSequence{withGaussianRsg*`GaussianRsg'
-  ,preArray-`RealVector'&peekRealVector* -- ^draws
+  ,preDoubleArray-`RealVector'&peekRealVector* -- ^draws
   ,alloca-`Double'peekDouble* -- ^weight
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |re-read the sequence 'nextSequence' last drew, without advancing the generator.
 {#fun qlGaussianRsgLastSequence as lastSequence{withGaussianRsg*`GaussianRsg'
-  ,preArray-`RealVector'&peekRealVector* -- ^draws
+  ,preDoubleArray-`RealVector'&peekRealVector* -- ^draws
   ,alloca-`Double'peekDouble* -- ^weight
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
@@ -470,7 +470,7 @@ withMaybeFdmStepCondition (Just f) g = mask $ \restore -> do
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |The full simulated path (values at every time step) of a single asset.
-{#fun qlSamplePathAssetPath as asset{withSamplePath*`SamplePath',fromIntegral`Word',preArray-`RealVector'&peekRealVector*,preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlSamplePathAssetPath as asset{withSamplePath*`SamplePath',fromIntegral`Word',preDoubleArray-`RealVector'&peekRealVector*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |one step of Longstaff-Schwartz early-exercise regression: fit a polynomial basis of the given
 -- order/type against the (in-the-money) fit states and their continuation targets, then evaluate the
@@ -483,7 +483,7 @@ withMaybeFdmStepCondition (Just f) g = mask $ \restore -> do
   ,withRealVector*`RealVector'& -- ^fit states (in-the-money paths only)
   ,withRealVector*`RealVector'& -- ^fit targets (continuation value at these states)
   ,withRealVector*`RealVector'& -- ^eval states (all paths' state at this date)
-  ,preArray-`RealVector'&peekRealVector* -- ^continuation value estimate per eval state
+  ,preDoubleArray-`RealVector'&peekRealVector* -- ^continuation value estimate per eval state
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |number of basis terms 'lsmRegressMulti' fits for a given number of underlyings and order --
@@ -516,7 +516,7 @@ lsmRegressMulti p order (RealMatrix fr fc fd) t (RealMatrix er ec ed) = qlLsmReg
   ,fromIntegral`Word' -- ^eval rows
   ,fromIntegral`Word' -- ^eval columns (underlyings)
   ,withRealVectorRaw*`RealVector' -- ^eval states, row-major
-  ,preArray-`RealVector'&peekRealVector* -- ^continuation value estimate per eval row
+  ,preDoubleArray-`RealVector'&peekRealVector* -- ^continuation value estimate per eval row
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Drive @FdmBackwardSolver::rollback@ with a Haskell-defined 'FdmLinearOpComposite' (the
@@ -553,7 +553,7 @@ lsmRegressMulti p order (RealMatrix fr fc fd) t (RealMatrix er ec ed) = qlLsmReg
   ,`Double' -- ^to (end time of the rollback, e.g. 0)
   ,fromIntegral`Int' -- ^steps
   ,fromIntegral`Int' -- ^dampingSteps
-  ,preArray-`RealVector'&peekRealVector* -- ^grid values at time \'to\'
+  ,preDoubleArray-`RealVector'&peekRealVector* -- ^grid values at time \'to\'
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |'Predefined1dMesher(points)' -- an 'Fdm1dMesher' over an explicit, caller-supplied set of grid points.
@@ -686,7 +686,7 @@ concentrating1dMesherMulti start end sz cPoints tol =
 -- @x_@ arrays from this same call upstream).
 {#fun qlFdmMesherLocations as fdmMesherLocations{withFdmMesher*`FdmMesher'
   ,fromIntegral`Int' -- ^direction
-  ,preArray-`RealVector'&peekRealVector*
+  ,preDoubleArray-`RealVector'&peekRealVector*
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- Raw import, not a {#fun#}: 'withCustomFdmInnerValueCalculator' below needs the two
@@ -850,7 +850,7 @@ fdmAffineHullWhiteModelSwapInnerValue disModel fwdModel swap exerciseDates =
   ,`Double' -- ^to (end time of the rollback, e.g. 0)
   ,fromIntegral`Int' -- ^steps
   ,fromIntegral`Int' -- ^dampingSteps
-  ,preArray-`RealVector'&peekRealVector* -- ^grid values at time \'to\'
+  ,preDoubleArray-`RealVector'&peekRealVector* -- ^grid values at time \'to\'
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

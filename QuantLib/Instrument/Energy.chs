@@ -151,9 +151,9 @@ type CommodityCashFlows = [CommodityCashFlow]
 
 {#fun qlCommoditySecondaryCostAmounts as qlCommoditySecondaryCostAmounts_
   {withCommodity*`GenCommodity c'
-  ,preArray-`[String]'&peekCStringArray*
-  ,preArray-`[Double]'&peekDoubleArray*
-  ,preArray-`[Currency]'&peekCurrencyArray*
+  ,preCStringArray-`[String]'&peekCStringArray*
+  ,preDoubleArray-`[Double]'&peekDoubleArray*
+  ,preCurrencyArray-`[Currency]'&peekCurrencyArray*
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |The currency-resolved secondary costs computed during the most recent pricing
@@ -166,9 +166,9 @@ secondaryCostAmounts o = do
 
 {#fun qlCommodityPricingErrors as qlCommodityPricingErrors_
   {withCommodity*`GenCommodity c'
-  ,preArray-`[PricingErrorLevel]'&peekPricingErrorLevelArray*
-  ,preArray-`[String]'&peekCStringArray*
-  ,preArray-`[String]'&peekCStringArray*
+  ,preIntArray-`[PricingErrorLevel]'&peekPricingErrorLevelArray*
+  ,preCStringArray-`[String]'&peekCStringArray*
+  ,preCStringArray-`[String]'&peekCStringArray*
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Every pricing diagnostic recorded so far (via upstream's own internal calls, or via
@@ -224,12 +224,12 @@ energyFuture buySell (qCt, qUom, qAmt) (tpAmt, tpCcy, tpUom) index cmdType secCo
 
 {#fun qlEnergySwapDailyPositions as qlEnergySwapDailyPositions_
   {withEnergySwap*`GenEnergySwap s'
-  ,preArray-`[Day]'&peekDayArray*
-  ,preArray-`[Double]'&peekDoubleArray*
-  ,preArray-`[Double]'&peekDoubleArray*
-  ,preArray-`[Double]'&peekDoubleArray*
-  ,preArray-`[Double]'&peekDoubleArray*
-  ,preArray-`[Bool]'&peekBoolArray*
+  ,preIntArray-`[Day]'&peekDayArray*
+  ,preDoubleArray-`[Double]'&peekDoubleArray*
+  ,preDoubleArray-`[Double]'&peekDoubleArray*
+  ,preDoubleArray-`[Double]'&peekDoubleArray*
+  ,preDoubleArray-`[Double]'&peekDoubleArray*
+  ,preIntArray-`[Bool]'&peekBoolArray*
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |The per-day pricing breakdown computed during this 'EnergySwap' leaf's most recent
@@ -243,7 +243,7 @@ dailyPositions s = do
 -- recent @performCalculations()@ -- populated only after pricing.
 {#fun qlEnergySwapPaymentCashFlows as paymentCashFlows
   {withEnergySwap*`GenEnergySwap s'
-  ,preArray-`[CommodityCashFlow]'&peekCommodityCashFlowArray*
+  ,preCommodityCashFlowArray-`[CommodityCashFlow]'&peekCommodityCashFlowArray*
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Split a 'SecondaryCosts' list into the five parallel arrays every energy-instrument
@@ -389,12 +389,12 @@ energyBasisSwap calendar spreadIndex payIndex receiveIndex spreadToPayLeg payCcy
   ,fromEnumC`DeliverySchedule'
   ,fromEnumC`QuantityPeriodicity'
   ,withPaymentTerm*`PaymentTerm'
-  ,preArray-`[Day]'&peekDayArray*
-  ,preArray-`[Day]'&peekDayArray*
-  ,preArray-`[Day]'&peekDayArray*
-  ,preArray-`[CommodityType]'&peekCommodityTypeArray*
-  ,preArray-`[UnitOfMeasure]'&peekUnitOfMeasureArray*
-  ,preArray-`[Double]'&peekDoubleArray*
+  ,preIntArray-`[Day]'&peekDayArray*
+  ,preIntArray-`[Day]'&peekDayArray*
+  ,preIntArray-`[Day]'&peekDayArray*
+  ,preCommodityTypeArray-`[CommodityType]'&peekCommodityTypeArray*
+  ,preUnitOfMeasureArray-`[UnitOfMeasure]'&peekUnitOfMeasureArray*
+  ,preDoubleArray-`[Double]'&peekDoubleArray*
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Split @[startDate, endDate)@ into 'PricingPeriod's of the given quantity, per a

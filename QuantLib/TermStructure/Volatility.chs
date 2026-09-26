@@ -507,7 +507,7 @@ andreasenHugeCalibrationError :: AndreasenHugeVolatilityInterpl -> IO (Double, D
 andreasenHugeCalibrationError x = do
   [mn, mx, av] <- qlAndreasenHugeVolatilityInterplCalibrationError x
   pure (mn, mx, av)
-{#fun qlAndreasenHugeVolatilityInterplCalibrationError{withAndreasenHugeVolatilityInterpl*`AndreasenHugeVolatilityInterpl',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlAndreasenHugeVolatilityInterplCalibrationError{withAndreasenHugeVolatilityInterpl*`AndreasenHugeVolatilityInterpl',preDoubleArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Forward level implied by an Andreasen-Huge calibration at time @t@.
 {#fun qlAndreasenHugeVolatilityInterplFwd as andreasenHugeForward{withAndreasenHugeVolatilityInterpl*`AndreasenHugeVolatilityInterpl' -- ^interpolation
@@ -617,11 +617,11 @@ capletVarianceCurve referenceDate nodes = qlCapletVarianceCurve referenceDate da
 -- never a cast -- same idiom as 'sabrAsSmileSection'.
 {#fun qlOptionletStripper2AsOptionletVolatilityStructure as asOptionletVolatilityStructure{withOptionletStripper2*`OptionletStripper2',preErrorCheck-`String'errorCheck*-}->`OptionletVolatilityStructure'peekOptionletVolatilityStructure*#}
 
-{#fun qlOptionletStripper2AtmCapFloorStrikes as atmCapFloorStrikes{withOptionletStripper2*`OptionletStripper2',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlOptionletStripper2AtmCapFloorStrikes as atmCapFloorStrikes{withOptionletStripper2*`OptionletStripper2',preDoubleArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
-{#fun qlOptionletStripper2AtmCapFloorPrices as atmCapFloorPrices{withOptionletStripper2*`OptionletStripper2',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlOptionletStripper2AtmCapFloorPrices as atmCapFloorPrices{withOptionletStripper2*`OptionletStripper2',preDoubleArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
-{#fun qlOptionletStripper2SpreadsVol as spreadsVol{withOptionletStripper2*`OptionletStripper2',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlOptionletStripper2SpreadsVol as spreadsVol{withOptionletStripper2*`OptionletStripper2',preDoubleArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |An optionlet vol surface behind a relinkable handle. The result /is/ an
 -- 'OptionletVolatilityStructure': pass it anywhere one is expected and everything built on it
@@ -1612,16 +1612,16 @@ capFloorVolatility structure maturity = case maturity of
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |The option-tenor grid's dates, calendar-advanced from the curve's reference date.
-{#fun qlCapFloorTermVolCurveOptionDates as capFloorTermVolCurveOptionDates{withCapFloorTermVolCurve*`CapFloorTermVolCurve',preArray-`[Day]'&peekDayArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlCapFloorTermVolCurveOptionDates as capFloorTermVolCurveOptionDates{withCapFloorTermVolCurve*`CapFloorTermVolCurve',preIntArray-`[Day]'&peekDayArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |As 'capFloorTermVolCurveOptionDates', in year fractions from the curve's reference date.
-{#fun qlCapFloorTermVolCurveOptionTimes as capFloorTermVolCurveOptionTimes{withCapFloorTermVolCurve*`CapFloorTermVolCurve',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlCapFloorTermVolCurveOptionTimes as capFloorTermVolCurveOptionTimes{withCapFloorTermVolCurve*`CapFloorTermVolCurve',preDoubleArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |The option-tenor grid's dates, calendar-advanced from the surface's reference date.
-{#fun qlCapFloorTermVolSurfaceOptionDates as capFloorTermVolSurfaceOptionDates{withCapFloorTermVolSurface*`CapFloorTermVolSurface',preArray-`[Day]'&peekDayArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlCapFloorTermVolSurfaceOptionDates as capFloorTermVolSurfaceOptionDates{withCapFloorTermVolSurface*`CapFloorTermVolSurface',preIntArray-`[Day]'&peekDayArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |As 'capFloorTermVolSurfaceOptionDates', in year fractions from the surface's reference date.
-{#fun qlCapFloorTermVolSurfaceOptionTimes as capFloorTermVolSurfaceOptionTimes{withCapFloorTermVolSurface*`CapFloorTermVolSurface',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlCapFloorTermVolSurfaceOptionTimes as capFloorTermVolSurfaceOptionTimes{withCapFloorTermVolSurface*`CapFloorTermVolSurface',preDoubleArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Spot at-the-money volatility for any supported option-maturity representation.
 atmVol :: GenBlackAtmVolCurve b -> OptionMaturity -> Bool -> IO Double
@@ -1719,25 +1719,25 @@ abcdAtmVolCurve d c points bdc dc = qlAbcdAtmVolCurve d c n t qs flags bdc dc
 {#fun qlAbcdAtmVolCurveKAtTime as abcdK{withAbcdAtmVolCurve*`AbcdAtmVolCurve',`Double',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |@k@ adjustment factors for every option tenor used in interpolation
-{#fun qlAbcdAtmVolCurveK as abcdKs{withAbcdAtmVolCurve*`AbcdAtmVolCurve',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlAbcdAtmVolCurveK as abcdKs{withAbcdAtmVolCurve*`AbcdAtmVolCurve',preDoubleArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 abcdAtmVolCurveOptionTenors :: AbcdAtmVolCurve -> IO [(Word, TimeUnit)]
 abcdAtmVolCurveOptionTenors o = do
   (ns, us) <- qlAbcdAtmVolCurveOptionTenors o
   pure $ zip (map fromIntegral ns) (map toEnum us)
-{#fun qlAbcdAtmVolCurveOptionTenors{withAbcdAtmVolCurve*`AbcdAtmVolCurve',preArray-`[Int]'&peekIntArray*,preArray-`[Int]'&peekIntArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlAbcdAtmVolCurveOptionTenors{withAbcdAtmVolCurve*`AbcdAtmVolCurve',preIntArray-`[Int]'&peekIntArray*,preIntArray-`[Int]'&peekIntArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |As 'abcdAtmVolCurveOptionTenors', but only the tenors actually used in the ABCD fit.
 abcdOptionTenorsInInterpolation :: AbcdAtmVolCurve -> IO [(Word, TimeUnit)]
 abcdOptionTenorsInInterpolation o = do
   (ns, us) <- qlAbcdAtmVolCurveOptionTenorsInInterpolation o
   pure $ zip (map fromIntegral ns) (map toEnum us)
-{#fun qlAbcdAtmVolCurveOptionTenorsInInterpolation{withAbcdAtmVolCurve*`AbcdAtmVolCurve',preArray-`[Int]'&peekIntArray*,preArray-`[Int]'&peekIntArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlAbcdAtmVolCurveOptionTenorsInInterpolation{withAbcdAtmVolCurve*`AbcdAtmVolCurve',preIntArray-`[Int]'&peekIntArray*,preIntArray-`[Int]'&peekIntArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
-{#fun qlAbcdAtmVolCurveOptionDates as abcdOptionDates{withAbcdAtmVolCurve*`AbcdAtmVolCurve',preArray-`[Day]'&peekDayArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlAbcdAtmVolCurveOptionDates as abcdOptionDates{withAbcdAtmVolCurve*`AbcdAtmVolCurve',preIntArray-`[Day]'&peekDayArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |As 'abcdOptionDates', in year fractions from the curve's reference date.
-{#fun qlAbcdAtmVolCurveOptionTimes as abcdOptionTimes{withAbcdAtmVolCurve*`AbcdAtmVolCurve',preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlAbcdAtmVolCurveOptionTimes as abcdOptionTimes{withAbcdAtmVolCurve*`AbcdAtmVolCurve',preDoubleArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |SABR-smile 'BlackVolSurface' built from an interest-rate index, an ATM 'BlackAtmVolCurve', and
 -- per-tenor ATM-rate spreads\/vol-spread matrix. @volSpreads@'s rows follow @optionTenors@ and
@@ -1761,11 +1761,11 @@ sabrVolSurface ix atm ntenors spreads (Matrix vr vc vd) =
 
 {#fun qlSabrVolSurfaceVolatilitySpreadsForPeriod as sabrVolSurfaceVolatilitySpreadsForTenorRaw{withSabrVolSurface*`SabrVolSurface'
   ,fromEnumQuantity`(Word,TimeUnit)'& -- ^optionTenor
-  ,preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+  ,preDoubleArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 {#fun qlSabrVolSurfaceVolatilitySpreadsForDate as sabrVolSurfaceVolatilitySpreadsAtDateRaw{withSabrVolSurface*`SabrVolSurface'
   ,withDay*`Day' -- ^optionDate
-  ,preArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+  ,preDoubleArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Volatility-spread row at an option date or tenor.
 sabrVolatilitySpreads :: SabrVolSurface -> SabrVolatilitySpreadsMaturity -> IO [Double]
@@ -2237,7 +2237,7 @@ interpolatedSwaptionVolatilityCubeVolSpreads :: InterpolatedSwaptionVolatilityCu
 interpolatedSwaptionVolatilityCubeVolSpreads sv i = toRealMatrix <$> qlInterpolatedSwaptionVolatilityCubeVolSpreads sv i
 {#fun qlInterpolatedSwaptionVolatilityCubeVolSpreads{withInterpolatedSwaptionVolatilityCube*`InterpolatedSwaptionVolatilityCube'
   ,fromIntegral`Word' -- ^i
-  ,prePtr-`Word'peekWord*,prePtr-`Word'peekWord*,preArray-`RealVector'&peekRealVector*
+  ,prePtr-`Word'peekWord*,prePtr-`Word'peekWord*,preDoubleArray-`RealVector'&peekRealVector*
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 toRealMatrix :: (Word, Word, RealVector) -> RealMatrix
@@ -2247,7 +2247,7 @@ toRealMatrix (r, c, d) = RealMatrix r c d
 sparseSabrParameters :: SabrSwaptionVolatilityCube -> IO RealMatrix
 sparseSabrParameters sv = toRealMatrix <$> qlSabrSwaptionVolatilityCubeSparseSabrParameters sv
 {#fun qlSabrSwaptionVolatilityCubeSparseSabrParameters{withSabrSwaptionVolatilityCube*`SabrSwaptionVolatilityCube'
-  ,prePtr-`Word'peekWord*,prePtr-`Word'peekWord*,preArray-`RealVector'&peekRealVector*
+  ,prePtr-`Word'peekWord*,prePtr-`Word'peekWord*,preDoubleArray-`RealVector'&peekRealVector*
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Per-node calibrated SABR parameters, meaningfully populated only when the cube was built with
@@ -2255,7 +2255,7 @@ sparseSabrParameters sv = toRealMatrix <$> qlSabrSwaptionVolatilityCubeSparseSab
 denseSabrParameters :: SabrSwaptionVolatilityCube -> IO RealMatrix
 denseSabrParameters sv = toRealMatrix <$> qlSabrSwaptionVolatilityCubeDenseSabrParameters sv
 {#fun qlSabrSwaptionVolatilityCubeDenseSabrParameters{withSabrSwaptionVolatilityCube*`SabrSwaptionVolatilityCube'
-  ,prePtr-`Word'peekWord*,prePtr-`Word'peekWord*,preArray-`RealVector'&peekRealVector*
+  ,prePtr-`Word'peekWord*,prePtr-`Word'peekWord*,preDoubleArray-`RealVector'&peekRealVector*
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |The raw market vol grid the cube's SABR fit targets: ATM vol (interpolated from
@@ -2263,7 +2263,7 @@ denseSabrParameters sv = toRealMatrix <$> qlSabrSwaptionVolatilityCubeDenseSabrP
 marketVolCube :: SabrSwaptionVolatilityCube -> IO RealMatrix
 marketVolCube sv = toRealMatrix <$> qlSabrSwaptionVolatilityCubeMarketVolCube sv
 {#fun qlSabrSwaptionVolatilityCubeMarketVolCube{withSabrSwaptionVolatilityCube*`SabrSwaptionVolatilityCube'
-  ,prePtr-`Word'peekWord*,prePtr-`Word'peekWord*,preArray-`RealVector'&peekRealVector*
+  ,prePtr-`Word'peekWord*,prePtr-`Word'peekWord*,preDoubleArray-`RealVector'&peekRealVector*
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Like 'marketVolCube', adjusted so the cube's own ATM row is consistent with @atmVolStructure@;
@@ -2271,7 +2271,7 @@ marketVolCube sv = toRealMatrix <$> qlSabrSwaptionVolatilityCubeMarketVolCube sv
 volCubeAtmCalibrated :: SabrSwaptionVolatilityCube -> IO RealMatrix
 volCubeAtmCalibrated sv = toRealMatrix <$> qlSabrSwaptionVolatilityCubeVolCubeAtmCalibrated sv
 {#fun qlSabrSwaptionVolatilityCubeVolCubeAtmCalibrated{withSabrSwaptionVolatilityCube*`SabrSwaptionVolatilityCube'
-  ,prePtr-`Word'peekWord*,prePtr-`Word'peekWord*,preArray-`RealVector'&peekRealVector*
+  ,prePtr-`Word'peekWord*,prePtr-`Word'peekWord*,preDoubleArray-`RealVector'&peekRealVector*
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Swaption cubes exposing an ATM-strike query.
@@ -2313,7 +2313,7 @@ instance HasAtmStrike InterpolatedSwaptionVolatilityCube where
 noArbSabrSparseSabrParameters :: NoArbSabrSwaptionVolatilityCube -> IO RealMatrix
 noArbSabrSparseSabrParameters sv = toRealMatrix <$> qlNoArbSabrSwaptionVolatilityCubeSparseSabrParameters sv
 {#fun qlNoArbSabrSwaptionVolatilityCubeSparseSabrParameters{withNoArbSabrSwaptionVolatilityCube*`NoArbSabrSwaptionVolatilityCube'
-  ,prePtr-`Word'peekWord*,prePtr-`Word'peekWord*,preArray-`RealVector'&peekRealVector*
+  ,prePtr-`Word'peekWord*,prePtr-`Word'peekWord*,preDoubleArray-`RealVector'&peekRealVector*
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Per-node calibrated no-arb SABR parameters, meaningfully populated only when the cube was
@@ -2321,14 +2321,14 @@ noArbSabrSparseSabrParameters sv = toRealMatrix <$> qlNoArbSabrSwaptionVolatilit
 noArbSabrDenseSabrParameters :: NoArbSabrSwaptionVolatilityCube -> IO RealMatrix
 noArbSabrDenseSabrParameters sv = toRealMatrix <$> qlNoArbSabrSwaptionVolatilityCubeDenseSabrParameters sv
 {#fun qlNoArbSabrSwaptionVolatilityCubeDenseSabrParameters{withNoArbSabrSwaptionVolatilityCube*`NoArbSabrSwaptionVolatilityCube'
-  ,prePtr-`Word'peekWord*,prePtr-`Word'peekWord*,preArray-`RealVector'&peekRealVector*
+  ,prePtr-`Word'peekWord*,prePtr-`Word'peekWord*,preDoubleArray-`RealVector'&peekRealVector*
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |The raw market vol grid the cube's no-arb SABR fit targets, see 'marketVolCube'.
 noArbSabrMarketVolCube :: NoArbSabrSwaptionVolatilityCube -> IO RealMatrix
 noArbSabrMarketVolCube sv = toRealMatrix <$> qlNoArbSabrSwaptionVolatilityCubeMarketVolCube sv
 {#fun qlNoArbSabrSwaptionVolatilityCubeMarketVolCube{withNoArbSabrSwaptionVolatilityCube*`NoArbSabrSwaptionVolatilityCube'
-  ,prePtr-`Word'peekWord*,prePtr-`Word'peekWord*,preArray-`RealVector'&peekRealVector*
+  ,prePtr-`Word'peekWord*,prePtr-`Word'peekWord*,preDoubleArray-`RealVector'&peekRealVector*
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Like 'noArbSabrMarketVolCube', adjusted so the cube's own ATM row is consistent with
@@ -2337,7 +2337,7 @@ noArbSabrMarketVolCube sv = toRealMatrix <$> qlNoArbSabrSwaptionVolatilityCubeMa
 noArbSabrVolCubeAtmCalibrated :: NoArbSabrSwaptionVolatilityCube -> IO RealMatrix
 noArbSabrVolCubeAtmCalibrated sv = toRealMatrix <$> qlNoArbSabrSwaptionVolatilityCubeVolCubeAtmCalibrated sv
 {#fun qlNoArbSabrSwaptionVolatilityCubeVolCubeAtmCalibrated{withNoArbSabrSwaptionVolatilityCube*`NoArbSabrSwaptionVolatilityCube'
-  ,prePtr-`Word'peekWord*,prePtr-`Word'peekWord*,preArray-`RealVector'&peekRealVector*
+  ,prePtr-`Word'peekWord*,prePtr-`Word'peekWord*,preDoubleArray-`RealVector'&peekRealVector*
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 {#fun qlNoArbSabrSwaptionVolatilityCubeAtmStrike1 as noArbSabrSwaptionVolatilityCubeAtmStrikeAtDateRaw{withNoArbSabrSwaptionVolatilityCube*`NoArbSabrSwaptionVolatilityCube'
@@ -2355,7 +2355,7 @@ noArbSabrVolCubeAtmCalibrated sv = toRealMatrix <$> qlNoArbSabrSwaptionVolatilit
 zabrSparseParameters :: ZabrSwaptionVolatilityCube -> IO RealMatrix
 zabrSparseParameters sv = toRealMatrix <$> qlZabrSwaptionVolatilityCubeSparseSabrParameters sv
 {#fun qlZabrSwaptionVolatilityCubeSparseSabrParameters{withZabrSwaptionVolatilityCube*`ZabrSwaptionVolatilityCube'
-  ,prePtr-`Word'peekWord*,prePtr-`Word'peekWord*,preArray-`RealVector'&peekRealVector*
+  ,prePtr-`Word'peekWord*,prePtr-`Word'peekWord*,preDoubleArray-`RealVector'&peekRealVector*
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Per-node calibrated ZABR parameters, meaningfully populated only when the cube was built with
@@ -2363,14 +2363,14 @@ zabrSparseParameters sv = toRealMatrix <$> qlZabrSwaptionVolatilityCubeSparseSab
 zabrDenseParameters :: ZabrSwaptionVolatilityCube -> IO RealMatrix
 zabrDenseParameters sv = toRealMatrix <$> qlZabrSwaptionVolatilityCubeDenseSabrParameters sv
 {#fun qlZabrSwaptionVolatilityCubeDenseSabrParameters{withZabrSwaptionVolatilityCube*`ZabrSwaptionVolatilityCube'
-  ,prePtr-`Word'peekWord*,prePtr-`Word'peekWord*,preArray-`RealVector'&peekRealVector*
+  ,prePtr-`Word'peekWord*,prePtr-`Word'peekWord*,preDoubleArray-`RealVector'&peekRealVector*
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |The raw market vol grid the cube's ZABR fit targets, see 'marketVolCube'.
 zabrMarketVolCube :: ZabrSwaptionVolatilityCube -> IO RealMatrix
 zabrMarketVolCube sv = toRealMatrix <$> qlZabrSwaptionVolatilityCubeMarketVolCube sv
 {#fun qlZabrSwaptionVolatilityCubeMarketVolCube{withZabrSwaptionVolatilityCube*`ZabrSwaptionVolatilityCube'
-  ,prePtr-`Word'peekWord*,prePtr-`Word'peekWord*,preArray-`RealVector'&peekRealVector*
+  ,prePtr-`Word'peekWord*,prePtr-`Word'peekWord*,preDoubleArray-`RealVector'&peekRealVector*
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Like 'zabrMarketVolCube', adjusted so the ATM row is consistent with @atmVolStructure@;
@@ -2378,7 +2378,7 @@ zabrMarketVolCube sv = toRealMatrix <$> qlZabrSwaptionVolatilityCubeMarketVolCub
 zabrVolCubeAtmCalibrated :: ZabrSwaptionVolatilityCube -> IO RealMatrix
 zabrVolCubeAtmCalibrated sv = toRealMatrix <$> qlZabrSwaptionVolatilityCubeVolCubeAtmCalibrated sv
 {#fun qlZabrSwaptionVolatilityCubeVolCubeAtmCalibrated{withZabrSwaptionVolatilityCube*`ZabrSwaptionVolatilityCube'
-  ,prePtr-`Word'peekWord*,prePtr-`Word'peekWord*,preArray-`RealVector'&peekRealVector*
+  ,prePtr-`Word'peekWord*,prePtr-`Word'peekWord*,preDoubleArray-`RealVector'&peekRealVector*
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 {#fun qlZabrSwaptionVolatilityCubeAtmStrike1 as zabrSwaptionVolatilityCubeAtmStrikeAtDateRaw{withZabrSwaptionVolatilityCube*`ZabrSwaptionVolatilityCube'

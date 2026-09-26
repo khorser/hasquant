@@ -84,6 +84,8 @@ module QuantLib.Commodity
   , commoditySettingsCurrency
   , commoditySettingsUnitOfMeasure
   ) where
+import Control.Exception (mask_)
+import System.IO.Unsafe (unsafePerformIO)
 import QuantLib.Internal
 import QuantLib.Internal.Type
 import QuantLib.Internal.Common
@@ -116,10 +118,14 @@ import Foreign.Marshal.Alloc(alloca)
 {#fun qlNullCommodityType as nullCommodityType{preErrorCheck-`String'errorCheck*-}->`CommodityType'peekCommodityType*#}
 
 -- |The commodity code, e.g. \"HO\".
-{#fun pure qlCommodityTypeCode as commodityTypeCode{withCommodityType*`CommodityType'}->`String'peekDynString*#}
+commodityTypeCode :: CommodityType -> String
+commodityTypeCode x = unsafePerformIO $ mask_ (commodityTypeCodeRaw x)
+{#fun qlCommodityTypeCode as commodityTypeCodeRaw{withCommodityType*`CommodityType'}->`String'peekDynString*#}
 
 -- |The descriptive name, e.g. \"Heating Oil\".
-{#fun pure qlCommodityTypeName as commodityTypeName{withCommodityType*`CommodityType'}->`String'peekDynString*#}
+commodityTypeName :: CommodityType -> String
+commodityTypeName x = unsafePerformIO $ mask_ (commodityTypeNameRaw x)
+{#fun qlCommodityTypeName as commodityTypeNameRaw{withCommodityType*`CommodityType'}->`String'peekDynString*#}
 
 -- |Whether this is a usable instance (as opposed to one built via a default constructor).
 {#fun pure qlCommodityTypeEmpty as commodityTypeEmpty{withCommodityType*`CommodityType'}->`Bool'#}
@@ -132,10 +138,14 @@ import Foreign.Marshal.Alloc(alloca)
   ,preErrorCheck-`String'errorCheck*-}->`UnitOfMeasure'peekUnitOfMeasure*#}
 
 -- |The descriptive name, e.g. \"Barrels\".
-{#fun pure qlUnitOfMeasureName as unitOfMeasureName{withUnitOfMeasure*`UnitOfMeasure'}->`String'peekDynString*#}
+unitOfMeasureName :: UnitOfMeasure -> String
+unitOfMeasureName x = unsafePerformIO $ mask_ (unitOfMeasureNameRaw x)
+{#fun qlUnitOfMeasureName as unitOfMeasureNameRaw{withUnitOfMeasure*`UnitOfMeasure'}->`String'peekDynString*#}
 
 -- |The code, e.g. \"BBL\", \"MT\".
-{#fun pure qlUnitOfMeasureCode as unitOfMeasureCode{withUnitOfMeasure*`UnitOfMeasure'}->`String'peekDynString*#}
+unitOfMeasureCode :: UnitOfMeasure -> String
+unitOfMeasureCode x = unsafePerformIO $ mask_ (unitOfMeasureCodeRaw x)
+{#fun qlUnitOfMeasureCode as unitOfMeasureCodeRaw{withUnitOfMeasure*`UnitOfMeasure'}->`String'peekDynString*#}
 
 -- |The unit's type (mass/volume/energy/quantity).
 {#fun pure qlUnitOfMeasureUnitType as unitOfMeasureType{withUnitOfMeasure*`UnitOfMeasure'}->`UnitOfMeasureType'toEnumC#}
@@ -176,7 +186,9 @@ import Foreign.Marshal.Alloc(alloca)
   ,preErrorCheck-`String'errorCheck*-}->`PaymentTerm'peekPaymentTerm*#}
 
 -- |The payment term's name, e.g. \"Pricing end + 5 days\".
-{#fun pure qlPaymentTermName as paymentTermName{withPaymentTerm*`PaymentTerm'}->`String'peekDynString*#}
+paymentTermName :: PaymentTerm -> String
+paymentTermName x = unsafePerformIO $ mask_ (paymentTermNameRaw x)
+{#fun qlPaymentTermName as paymentTermNameRaw{withPaymentTerm*`PaymentTerm'}->`String'peekDynString*#}
 
 -- |Whether the offset is measured from the trade date or the pricing date.
 {#fun pure qlPaymentTermEventType_ as paymentTermEventType{withPaymentTerm*`PaymentTerm'}->`PaymentTermEventType'toEnumC#}
@@ -298,7 +310,9 @@ pricingPeriod startDate endDate
 {#fun pure qlUnitOfMeasureConversionFactor as unitOfMeasureConversionFactor{withUnitOfMeasureConversion*`UnitOfMeasureConversion'}->`Double'#}
 
 -- |A code identifying the conversion, e.g. \"Heating OilMTBBL\".
-{#fun pure qlUnitOfMeasureConversionCode as unitOfMeasureConversionCode{withUnitOfMeasureConversion*`UnitOfMeasureConversion'}->`String'peekDynString*#}
+unitOfMeasureConversionCode :: UnitOfMeasureConversion -> String
+unitOfMeasureConversionCode x = unsafePerformIO $ mask_ (unitOfMeasureConversionCodeRaw x)
+{#fun qlUnitOfMeasureConversionCode as unitOfMeasureConversionCodeRaw{withUnitOfMeasureConversion*`UnitOfMeasureConversion'}->`String'peekDynString*#}
 
 {#fun qlUnitOfMeasureConversionConvert as qlUnitOfMeasureConversionConvert_
   {withUnitOfMeasureConversion*`UnitOfMeasureConversion'
