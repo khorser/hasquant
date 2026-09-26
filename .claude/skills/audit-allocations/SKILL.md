@@ -261,3 +261,11 @@ the compiler's own derived-to-base upcast at the `return` for type safety instea
    address as a `uintptr_t` before the free and `reinterpret_cast` it back for printing; a
    `void *addr = p;` copy does *not* satisfy GCC, since copies of a freed pointer are equally
    invalid.)
+
+## Factory result before wrapper allocation
+
+Adopt a factory's raw return immediately with `allocShared(factory(...))`. In
+`T *p = factory(); return new Wrapper(shared_ptr<T>(p));`, allocation of `Wrapper`
+precedes evaluation of its constructor arguments: if it fails, no `shared_ptr`
+ever takes ownership of `p`. This differs from `new Wrapper(new T(...))`, where
+the outer allocation precedes creation of the payload itself.

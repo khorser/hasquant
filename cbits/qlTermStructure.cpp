@@ -2270,8 +2270,8 @@ QlYieldTermStructure* qlImpliedTermStructure(QlYieldTermStructure* x0, int refer
 
 QlYieldTermStructure* qlPiecewiseZeroSpreadedTermStructure(QlYieldTermStructure* x0, unsigned spreadsLen, QlQuote** spreads, unsigned datesLen, int* dates, int comp, int freq, int interpolator, int approximator, int approximatorArg, char **e) {
   try {
-    YieldTermStructure *ts = qlPiecewiseZeroSpreadedTermStructureAux(qlNullableHandle(arg(x0)), qlHandleVector(spreads, spreadsLen), qlDateVector(dates, datesLen), (Compounding)comp, (Frequency)freq, interpolator, approximator, approximatorArg);
-    return ret(new QlYieldTermStructure(shared_ptr<YieldTermStructure>(alloc(ts))));
+    auto ts = allocShared(qlPiecewiseZeroSpreadedTermStructureAux(qlNullableHandle(arg(x0)), qlHandleVector(spreads, spreadsLen), qlDateVector(dates, datesLen), (Compounding)comp, (Frequency)freq, interpolator, approximator, approximatorArg));
+    return ret(new QlYieldTermStructure(ts));
   } catch (std::exception& er) {return handleException<QlYieldTermStructure*>(e, er);}}
 QlYieldTermStructure* qlPiecewiseForwardSpreadedTermStructure(QlYieldTermStructure* x0, unsigned spreadsLen, QlQuote** spreads, unsigned datesLen, int* dates, int interpolator, int approximator, int approximatorArg, char **e) {
   try {
@@ -2304,8 +2304,8 @@ QlYieldTermStructure* qlUltimateForwardTermStructure(QlYieldTermStructure* x0, Q
 
 QlYieldTermStructure* qlInterpolatedSpreadDiscountCurve(QlYieldTermStructure* baseCurve, unsigned dfsLen, double *dfs, unsigned datesLen, int *dates, int interpolator, int approximator, int approximatorArg, char **e) {
   try {
-    YieldTermStructure *ts = qlInterpolatedSpreadDiscountCurveAux(qlNullableHandle(arg(baseCurve)), qlDateVector(dates, datesLen), std::vector<double>(dfs, dfs+dfsLen), interpolator, approximator, approximatorArg);
-    return ret(new QlYieldTermStructure(shared_ptr<YieldTermStructure>(alloc(ts))));
+    auto ts = allocShared(qlInterpolatedSpreadDiscountCurveAux(qlNullableHandle(arg(baseCurve)), qlDateVector(dates, datesLen), std::vector<double>(dfs, dfs+dfsLen), interpolator, approximator, approximatorArg));
+    return ret(new QlYieldTermStructure(ts));
   } catch (std::exception& er) {return handleException<QlYieldTermStructure*>(e, er);}}
 
 QlRateHelper* qlMultipleResetsSwapRateHelper(unsigned settlementDays, int tenorLen, int tenorUnit, QlQuote* fixedRate, QlIborIndex* iborIndex, unsigned resetsPerCoupon, QlYieldTermStructure* discountingCurve, int averagingMethod, double spread, int fixedFrequency, DayCounter* fixedDayCount, int fixedConvention, char **e) {
@@ -2374,8 +2374,8 @@ QlSwapIndex* qlCreateLiborSwapIndex(int index, int l, int u, QlYieldTermStructur
       QL_FAIL("Invalid swap index index" << index);
     QlYieldTermStructure ts1 = qlNullableHandle(h1);
     QlYieldTermStructure ts2 = qlNullableHandle(h2);
-    SwapIndex *i = swapIndices[index](Period(l, (TimeUnit)u), ts1, ts2);
-    return ret(new QlSwapIndex(alloc(i)));
+    auto i = allocShared(swapIndices[index](Period(l, (TimeUnit)u), ts1, ts2));
+    return ret(new QlSwapIndex(i));
   } catch (std::exception& er) {return handleException<QlSwapIndex*>(e, er);}}
 
 void qlFreeIndex(QlIndex *i) {del(i);}
@@ -2522,8 +2522,8 @@ QlIborIndex *qlCreateIbor(int index, int l, int u, QlYieldTermStructure *fwd, ch
     if (index < 0 || index >= (int)std::size(iborIndices))
       QL_FAIL("Invalid IBOR index index: " << index);
     QlYieldTermStructure ts = qlNullableHandle(fwd);
-    IborIndex *i = iborIndices[index](l, u, ts);
-    return ret(new QlIborIndex(alloc(i)));
+    auto i = allocShared(iborIndices[index](l, u, ts));
+    return ret(new QlIborIndex(i));
   } catch (std::exception& er) {return handleException<QlIborIndex *>(e, er);}}
 
 // should match the order of qlEnumObjects.h:OvernightIborIndexType
@@ -2551,8 +2551,8 @@ QlOvernightIndex *qlCreateONIndex(int index, QlYieldTermStructure *fwd, char **e
     if (index < 0 || index >= (int)std::size(onIndices))
       QL_FAIL("Invalid O/N index index" << index);
     QlYieldTermStructure ts = qlNullableHandle(fwd);
-    OvernightIndex *i = onIndices[index](ts);
-    return ret(new QlOvernightIndex(alloc(i)));
+    auto i = allocShared(onIndices[index](ts));
+    return ret(new QlOvernightIndex(i));
   } catch (std::exception& er) {return handleException<QlOvernightIndex *>(e, er);}}
 
 QlInterestRateIndex* qlIborIndexAsInterestRateIndex(QlIborIndex *o) {return ret(new QlInterestRateIndex(*arg(o)));}
@@ -2731,10 +2731,10 @@ QlCPICapFloorTermPriceSurface *qlCPICapFloorTermPriceSurface(double nominal, dou
     const std::vector<Period> cfMaturitiesVec = qlPeriodVector(cfMaturitiesNum, cfMaturitiesUnit, cfMaturitiesLen);
     const Matrix cPriceMat = qlMatrix(cPriceData, cPriceRows, cPriceCols);
     const Matrix fPriceMat = qlMatrix(fPriceData, fPriceRows, fPriceCols);
-    CPICapFloorTermPriceSurface *s = qlCPICapFloorTermPriceSurfaceAux(nominal, baseRate, observationLag, *arg(cal),
+    auto s = allocShared(qlCPICapFloorTermPriceSurfaceAux(nominal, baseRate, observationLag, *arg(cal),
         (BusinessDayConvention)bdc, *arg(dc), *arg(zii), (CPI::InterpolationType)interpolationType, *arg(yts),
-        cStrikesVec, fStrikesVec, cfMaturitiesVec, cPriceMat, fPriceMat, interpolator2D);
-    return ret(new QlCPICapFloorTermPriceSurface(alloc(s)));
+        cStrikesVec, fStrikesVec, cfMaturitiesVec, cPriceMat, fPriceMat, interpolator2D));
+    return ret(new QlCPICapFloorTermPriceSurface(s));
   } catch (std::exception& er) {return handleException<QlCPICapFloorTermPriceSurface*>(e, er);}}
 
 /* InterpolatingCPICapFloorEngine -- the only CPICapFloor engine in QL 1.43 */
@@ -2796,11 +2796,11 @@ QlYoYCapFloorTermPriceSurface *qlYoYCapFloorTermPriceSurface(unsigned fixingDays
     const std::vector<Period> cfMaturitiesVec = qlPeriodVector(cfMaturitiesNum, cfMaturitiesUnit, cfMaturitiesLen);
     const Matrix cPriceMat = qlMatrix(cPriceData, cPriceRows, cPriceCols);
     const Matrix fPriceMat = qlMatrix(fPriceData, fPriceRows, fPriceCols);
-    YoYCapFloorTermPriceSurface *s = qlYoYCapFloorTermPriceSurfaceAux(fixingDays, yyLag, yiiRef,
+    auto s = allocShared(qlYoYCapFloorTermPriceSurfaceAux(fixingDays, yyLag, yiiRef,
         (CPI::InterpolationType)interpolationType, nominalRef, *arg(dc), *arg(cal), (BusinessDayConvention)bdc,
         cStrikesVec, fStrikesVec, cfMaturitiesVec, cPriceMat, fPriceMat,
-        interpolator2D, interpolator1D, approximator, approximatorArg);
-    return ret(new QlYoYCapFloorTermPriceSurface(alloc(s)));
+        interpolator2D, interpolator1D, approximator, approximatorArg));
+    return ret(new QlYoYCapFloorTermPriceSurface(s));
   } catch (std::exception& er) {return handleException<QlYoYCapFloorTermPriceSurface*>(e, er);}}
 
 int qlYoYCapFloorTermPriceSurfaceBaseDate(QlYoYCapFloorTermPriceSurface *o, char **e) {
@@ -2865,10 +2865,10 @@ QlYoYOptionletVolatilitySurface *qlKInterpolatedYoYOptionletVolatilitySurfaceBla
   try {
     shared_ptr<YoYInflationCapFloorEngine> engine(new YoYInflationBlackCapFloorEngine(
         *arg(index), qlNullYoYOptionletVolatilitySurfaceHandle(), *arg(nominalTs)));
-    YoYOptionletVolatilitySurface *s = qlKInterpolatedYoYOptionletVolatilitySurfaceAux(
+    auto s = allocShared(qlKInterpolatedYoYOptionletVolatilitySurfaceAux(
         settlementDays, *arg(cal), (BusinessDayConvention)bdc, *arg(dc), *arg(capFloorPrices), engine, slope,
-        interpolator, approximator, approximatorArg);
-    return ret(new QlYoYOptionletVolatilitySurface(Handle<YoYOptionletVolatilitySurface>(shared_ptr<YoYOptionletVolatilitySurface>(alloc(s)))));
+        interpolator, approximator, approximatorArg));
+    return ret(new QlYoYOptionletVolatilitySurface(Handle<YoYOptionletVolatilitySurface>(s)));
   } catch (std::exception& er) {return handleException<QlYoYOptionletVolatilitySurface*>(e, er);}}
 
 QlYoYOptionletVolatilitySurface *qlKInterpolatedYoYOptionletVolatilitySurfaceUnitDisplacedBlack(
@@ -2879,10 +2879,10 @@ QlYoYOptionletVolatilitySurface *qlKInterpolatedYoYOptionletVolatilitySurfaceUni
   try {
     shared_ptr<YoYInflationCapFloorEngine> engine(new YoYInflationUnitDisplacedBlackCapFloorEngine(
         *arg(index), qlNullYoYOptionletVolatilitySurfaceHandle(), *arg(nominalTs)));
-    YoYOptionletVolatilitySurface *s = qlKInterpolatedYoYOptionletVolatilitySurfaceAux(
+    auto s = allocShared(qlKInterpolatedYoYOptionletVolatilitySurfaceAux(
         settlementDays, *arg(cal), (BusinessDayConvention)bdc, *arg(dc), *arg(capFloorPrices), engine, slope,
-        interpolator, approximator, approximatorArg);
-    return ret(new QlYoYOptionletVolatilitySurface(Handle<YoYOptionletVolatilitySurface>(shared_ptr<YoYOptionletVolatilitySurface>(alloc(s)))));
+        interpolator, approximator, approximatorArg));
+    return ret(new QlYoYOptionletVolatilitySurface(Handle<YoYOptionletVolatilitySurface>(s)));
   } catch (std::exception& er) {return handleException<QlYoYOptionletVolatilitySurface*>(e, er);}}
 
 QlYoYOptionletVolatilitySurface *qlKInterpolatedYoYOptionletVolatilitySurfaceBachelier(
@@ -2893,10 +2893,10 @@ QlYoYOptionletVolatilitySurface *qlKInterpolatedYoYOptionletVolatilitySurfaceBac
   try {
     shared_ptr<YoYInflationCapFloorEngine> engine(new YoYInflationBachelierCapFloorEngine(
         *arg(index), qlNullYoYOptionletVolatilitySurfaceHandle(), *arg(nominalTs)));
-    YoYOptionletVolatilitySurface *s = qlKInterpolatedYoYOptionletVolatilitySurfaceAux(
+    auto s = allocShared(qlKInterpolatedYoYOptionletVolatilitySurfaceAux(
         settlementDays, *arg(cal), (BusinessDayConvention)bdc, *arg(dc), *arg(capFloorPrices), engine, slope,
-        interpolator, approximator, approximatorArg);
-    return ret(new QlYoYOptionletVolatilitySurface(Handle<YoYOptionletVolatilitySurface>(shared_ptr<YoYOptionletVolatilitySurface>(alloc(s)))));
+        interpolator, approximator, approximatorArg));
+    return ret(new QlYoYOptionletVolatilitySurface(Handle<YoYOptionletVolatilitySurface>(s)));
   } catch (std::exception& er) {return handleException<QlYoYOptionletVolatilitySurface*>(e, er);}}
 }
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */
