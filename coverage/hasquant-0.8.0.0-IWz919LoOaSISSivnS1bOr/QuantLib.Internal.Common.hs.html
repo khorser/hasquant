@@ -148,23 +148,23 @@ span.spaces    { background: white }
 <span class="lineno">  129 </span>  , RawResultPtr
 <span class="lineno">  130 </span>  , RawResult(..)
 <span class="lineno">  131 </span>  , convertResult
-<span class="lineno">  132 </span>  , peekAdditionalResults
-<span class="lineno">  133 </span>  ) where
-<span class="lineno">  134 </span>import qualified Foreign.C.String as C2HSImp
-<span class="lineno">  135 </span>import qualified Foreign.C.Types as C2HSImp
-<span class="lineno">  136 </span>import qualified Foreign.ForeignPtr as C2HSImp
-<span class="lineno">  137 </span>import qualified Foreign.Marshal.Utils as C2HSImp
-<span class="lineno">  138 </span>import qualified Foreign.Ptr as C2HSImp
-<span class="lineno">  139 </span>import qualified Foreign.Storable as C2HSImp
-<span class="lineno">  140 </span>
+<span class="lineno">  132 </span>  , preAdditionalResults
+<span class="lineno">  133 </span>  , peekAdditionalResults
+<span class="lineno">  134 </span>  ) where
+<span class="lineno">  135 </span>import qualified Foreign.C.String as C2HSImp
+<span class="lineno">  136 </span>import qualified Foreign.C.Types as C2HSImp
+<span class="lineno">  137 </span>import qualified Foreign.ForeignPtr as C2HSImp
+<span class="lineno">  138 </span>import qualified Foreign.Marshal.Utils as C2HSImp
+<span class="lineno">  139 </span>import qualified Foreign.Ptr as C2HSImp
+<span class="lineno">  140 </span>import qualified Foreign.Storable as C2HSImp
 <span class="lineno">  141 </span>
-<span class="lineno">  142 </span>import Foreign.Ptr(Ptr, FunPtr, nullPtr, castPtr)
-<span class="lineno">  143 </span>import Foreign.C.Types(CUInt, CInt, CDouble)
-<span class="lineno">  144 </span>import Foreign.C.String(CString, peekCString)
-<span class="lineno">  145 </span>import Foreign.Storable(Storable(..))
-<span class="lineno">  146 </span>import Foreign.Marshal.Utils(withMany)
-<span class="lineno">  147 </span>import Foreign.Marshal.Array(withArray, peekArray)
-<span class="lineno">  148 </span>import Control.Exception(finally)
+<span class="lineno">  142 </span>
+<span class="lineno">  143 </span>import Foreign.Ptr(Ptr, FunPtr, nullPtr, castPtr)
+<span class="lineno">  144 </span>import Foreign.C.Types(CUInt, CInt, CDouble)
+<span class="lineno">  145 </span>import Foreign.C.String(CString, peekCString)
+<span class="lineno">  146 </span>import Foreign.Storable(Storable(..))
+<span class="lineno">  147 </span>import Foreign.Marshal.Utils(withMany)
+<span class="lineno">  148 </span>import Foreign.Marshal.Array(withArray, peekArray)
 <span class="lineno">  149 </span>import Data.List.NonEmpty(NonEmpty, toList)
 <span class="lineno">  150 </span>
 <span class="lineno">  151 </span>import QuantLib.Internal
@@ -729,24 +729,24 @@ span.spaces    { background: white }
 <span class="lineno">  710 </span>
 <span class="lineno">  711 </span>
 <span class="lineno">  712 </span>withEuropeanExercise :: EuropeanExercise -&gt; (QlEuropeanExercise -&gt; IO a) -&gt; IO a
-<span class="lineno">  713 </span><span class="decl"><span class="istickedoff">withEuropeanExercise (EuropeanExercise d) f = qlEuropeanExercise d &gt;&gt;= newCastForeignPtr &gt;&gt;= flip withGenForeignPtr f</span></span>
+<span class="lineno">  713 </span><span class="decl"><span class="istickedoff">withEuropeanExercise (EuropeanExercise d) f = withConstructed (qlEuropeanExercise d) f</span></span>
 <span class="lineno">  714 </span>
 <span class="lineno">  715 </span>withSwingExercise :: SwingExercise -&gt; (QlSwingExercise -&gt; IO a) -&gt; IO a
-<span class="lineno">  716 </span><span class="decl"><span class="nottickedoff">withSwingExercise (SwingListExercise ds) f = uncurry qlSwingExercise (unzip (toList ds)) &gt;&gt;= newCastForeignPtr &gt;&gt;= flip withGenForeignPtr f</span>
-<span class="lineno">  717 </span><span class="spaces"></span><span class="nottickedoff">withSwingExercise (SwingIntervalExercise d1 d2 s) f = qlSwingExercise1 d1 d2 s &gt;&gt;= newCastForeignPtr &gt;&gt;= flip withGenForeignPtr f</span></span>
+<span class="lineno">  716 </span><span class="decl"><span class="nottickedoff">withSwingExercise (SwingListExercise ds) f = withConstructed (uncurry qlSwingExercise (unzip (toList ds))) f</span>
+<span class="lineno">  717 </span><span class="spaces"></span><span class="nottickedoff">withSwingExercise (SwingIntervalExercise d1 d2 s) f = withConstructed (qlSwingExercise1 d1 d2 s) f</span></span>
 <span class="lineno">  718 </span>
 <span class="lineno">  719 </span>withBermudanExercise :: BermudanExercise -&gt; (QlBermudanExercise -&gt; IO a) -&gt; IO a
-<span class="lineno">  720 </span><span class="decl"><span class="istickedoff">withBermudanExercise (BermudanExercise d p) f = qlBermudanExercise (toList d) p &gt;&gt;= newCastForeignPtr &gt;&gt;= flip withGenForeignPtr f</span>
-<span class="lineno">  721 </span><span class="spaces"></span><span class="istickedoff">withBermudanExercise (Swing e) f = <span class="nottickedoff">withSwingExercise e (\sp -&gt; upcast sp &gt;&gt;= \bp -&gt; f bp `finally` freeUpcast bp)</span></span></span>
+<span class="lineno">  720 </span><span class="decl"><span class="istickedoff">withBermudanExercise (BermudanExercise d p) f = withConstructed (qlBermudanExercise (toList d) p) f</span>
+<span class="lineno">  721 </span><span class="spaces"></span><span class="istickedoff">withBermudanExercise (Swing e) f = <span class="nottickedoff">withSwingExercise e (\sp -&gt; withUpcast sp f)</span></span></span>
 <span class="lineno">  722 </span>
 <span class="lineno">  723 </span>withExercise :: Exercise -&gt; (QlExercise -&gt; IO a) -&gt; IO a
-<span class="lineno">  724 </span><span class="decl"><span class="istickedoff">withExercise (American Nothing d p) f = qlAmericanExercise1 d p &gt;&gt;= newGenForeignPtr &gt;&gt;= flip withGenForeignPtr f</span>
-<span class="lineno">  725 </span><span class="spaces"></span><span class="istickedoff">withExercise (American (Just d0) d p) f = qlAmericanExercise d0 d p &gt;&gt;= newGenForeignPtr &gt;&gt;= flip withGenForeignPtr f</span>
-<span class="lineno">  726 </span><span class="spaces"></span><span class="istickedoff">withExercise (Early t p) f = <span class="nottickedoff">qlEarlyExercise t p &gt;&gt;= newCastForeignPtr &gt;&gt;= flip withGenForeignPtr f</span></span>
-<span class="lineno">  727 </span><span class="spaces"></span><span class="istickedoff">withExercise (Vanilla t) f = <span class="nottickedoff">qlExercise t &gt;&gt;= newCastForeignPtr &gt;&gt;= flip withGenForeignPtr f</span></span>
-<span class="lineno">  728 </span><span class="spaces"></span><span class="istickedoff">withExercise (European e) f = withEuropeanExercise e (\ep -&gt; upcast ep &gt;&gt;= \xp -&gt; f xp `finally` freeUpcast xp)</span>
-<span class="lineno">  729 </span><span class="spaces"></span><span class="istickedoff">withExercise (Bermudan e) f = withBermudanExercise e (\bp -&gt; upcast bp &gt;&gt;= \xp -&gt; f xp `finally` freeUpcast xp)</span>
-<span class="lineno">  730 </span><span class="spaces"></span><span class="istickedoff">withExercise (Rebated e rebate days cal bdc) f = <span class="nottickedoff">withExercise e (\ep -&gt; qlRebatedExercise ep rebate days cal bdc &gt;&gt;= newGenForeignPtr &gt;&gt;= flip withGenForeignPtr f)</span></span></span>
+<span class="lineno">  724 </span><span class="decl"><span class="istickedoff">withExercise (American Nothing d p) f = withConstructedUpcast (qlAmericanExercise1 d p) f</span>
+<span class="lineno">  725 </span><span class="spaces"></span><span class="istickedoff">withExercise (American (Just d0) d p) f = withConstructedUpcast (qlAmericanExercise d0 d p) f</span>
+<span class="lineno">  726 </span><span class="spaces"></span><span class="istickedoff">withExercise (Early t p) f = <span class="nottickedoff">withConstructed (qlEarlyExercise t p) f</span></span>
+<span class="lineno">  727 </span><span class="spaces"></span><span class="istickedoff">withExercise (Vanilla t) f = <span class="nottickedoff">withConstructed (qlExercise t) f</span></span>
+<span class="lineno">  728 </span><span class="spaces"></span><span class="istickedoff">withExercise (European e) f = withEuropeanExercise e (\ep -&gt; withUpcast ep f)</span>
+<span class="lineno">  729 </span><span class="spaces"></span><span class="istickedoff">withExercise (Bermudan e) f = withBermudanExercise e (\bp -&gt; withUpcast bp f)</span>
+<span class="lineno">  730 </span><span class="spaces"></span><span class="istickedoff">withExercise (Rebated e rebate days cal bdc) f = <span class="nottickedoff">withExercise e (\ep -&gt; withConstructedUpcast (qlRebatedExercise ep rebate days cal bdc) f)</span></span></span>
 <span class="lineno">  731 </span>
 <span class="lineno">  732 </span>-- | use 'percentageStrikePayoff' to construct 'Payoff'
 <span class="lineno">  733 </span>data PercentageStrikePayoff = PercentageStrikePayoff
@@ -789,20 +789,20 @@ span.spaces    { background: white }
 <span class="lineno">  770 </span>      !(FunPtr PayoffFun)
 <span class="lineno">  771 </span>
 <span class="lineno">  772 </span>withPercentageStrikePayoff :: PercentageStrikePayoff -&gt; (QlPercentageStrikePayoff -&gt; IO a) -&gt; IO a
-<span class="lineno">  773 </span><span class="decl"><span class="istickedoff">withPercentageStrikePayoff (PercentageStrikePayoff t m) f = qlPercentageStrikePayoff t m &gt;&gt;= newCastForeignPtr &gt;&gt;= flip withGenForeignPtr f</span></span>
+<span class="lineno">  773 </span><span class="decl"><span class="istickedoff">withPercentageStrikePayoff (PercentageStrikePayoff t m) f = withConstructed (qlPercentageStrikePayoff t m) f</span></span>
 <span class="lineno">  774 </span>
 <span class="lineno">  775 </span>withPlainVanillaPayoff :: PlainVanillaPayoff -&gt; (QlPlainVanillaPayoff -&gt; IO a) -&gt; IO a
-<span class="lineno">  776 </span><span class="decl"><span class="istickedoff">withPlainVanillaPayoff (PlainVanillaPayoff t s) f = qlPlainVanillaPayoff t s &gt;&gt;= newCastForeignPtr &gt;&gt;= flip withGenForeignPtr f</span></span>
+<span class="lineno">  776 </span><span class="decl"><span class="istickedoff">withPlainVanillaPayoff (PlainVanillaPayoff t s) f = withConstructed (qlPlainVanillaPayoff t s) f</span></span>
 <span class="lineno">  777 </span>
 <span class="lineno">  778 </span>withStrikedPayoff :: StrikedPayoff -&gt; (QlStrikedTypePayoff -&gt; IO a) -&gt; IO a
-<span class="lineno">  779 </span><span class="decl"><span class="istickedoff">withStrikedPayoff (AssetOrNothing t s) f = qlAssetOrNothingPayoff t s &gt;&gt;= newCastForeignPtr &gt;&gt;= flip withGenForeignPtr f</span>
-<span class="lineno">  780 </span><span class="spaces"></span><span class="istickedoff">withStrikedPayoff (CashOrNothing t s c) f = qlCashOrNothingPayoff t s c &gt;&gt;= newCastForeignPtr &gt;&gt;= flip withGenForeignPtr f</span>
-<span class="lineno">  781 </span><span class="spaces"></span><span class="istickedoff">withStrikedPayoff (Gap t s ss) f = <span class="nottickedoff">qlGapPayoff t s ss &gt;&gt;= newCastForeignPtr &gt;&gt;= flip withGenForeignPtr f</span></span>
-<span class="lineno">  782 </span><span class="spaces"></span><span class="istickedoff">withStrikedPayoff (PercentageStrike p) f = <span class="nottickedoff">withPercentageStrikePayoff p (\pp -&gt; upcast pp &gt;&gt;= \sp -&gt; f sp `finally` freeUpcast sp)</span></span>
-<span class="lineno">  783 </span><span class="spaces"></span><span class="istickedoff">withStrikedPayoff (PlainVanilla p) f = withPlainVanillaPayoff p (\pp -&gt; upcast pp &gt;&gt;= \sp -&gt; f sp `finally` freeUpcast sp)</span>
-<span class="lineno">  784 </span><span class="spaces"></span><span class="istickedoff">withStrikedPayoff (SuperFund s ss) f = <span class="nottickedoff">qlSuperFundPayoff s ss &gt;&gt;= newCastForeignPtr &gt;&gt;= flip withGenForeignPtr f</span></span>
-<span class="lineno">  785 </span><span class="spaces"></span><span class="istickedoff">withStrikedPayoff (SuperSharePayoff s ss c) f = <span class="nottickedoff">qlSuperSharePayoff s ss c &gt;&gt;= newCastForeignPtr &gt;&gt;= flip withGenForeignPtr f</span></span>
-<span class="lineno">  786 </span><span class="spaces"></span><span class="istickedoff">withStrikedPayoff (CustomStriked t k n fp) f = qlStrikedPayoffFromFunction t k n fp &gt;&gt;= newCastForeignPtr &gt;&gt;= flip withGenForeignPtr f</span></span>
+<span class="lineno">  779 </span><span class="decl"><span class="istickedoff">withStrikedPayoff (AssetOrNothing t s) f = withConstructed (qlAssetOrNothingPayoff t s) f</span>
+<span class="lineno">  780 </span><span class="spaces"></span><span class="istickedoff">withStrikedPayoff (CashOrNothing t s c) f = withConstructed (qlCashOrNothingPayoff t s c) f</span>
+<span class="lineno">  781 </span><span class="spaces"></span><span class="istickedoff">withStrikedPayoff (Gap t s ss) f = <span class="nottickedoff">withConstructed (qlGapPayoff t s ss) f</span></span>
+<span class="lineno">  782 </span><span class="spaces"></span><span class="istickedoff">withStrikedPayoff (PercentageStrike p) f = <span class="nottickedoff">withPercentageStrikePayoff p (\pp -&gt; withUpcast pp f)</span></span>
+<span class="lineno">  783 </span><span class="spaces"></span><span class="istickedoff">withStrikedPayoff (PlainVanilla p) f = withPlainVanillaPayoff p (\pp -&gt; withUpcast pp f)</span>
+<span class="lineno">  784 </span><span class="spaces"></span><span class="istickedoff">withStrikedPayoff (SuperFund s ss) f = <span class="nottickedoff">withConstructed (qlSuperFundPayoff s ss) f</span></span>
+<span class="lineno">  785 </span><span class="spaces"></span><span class="istickedoff">withStrikedPayoff (SuperSharePayoff s ss c) f = <span class="nottickedoff">withConstructed (qlSuperSharePayoff s ss c) f</span></span>
+<span class="lineno">  786 </span><span class="spaces"></span><span class="istickedoff">withStrikedPayoff (CustomStriked t k n fp) f = withConstructed (qlStrikedPayoffFromFunction t k n fp) f</span></span>
 <span class="lineno">  787 </span>
 <span class="lineno">  788 </span>data TypePayoff = Striked !StrikedPayoff
 <span class="lineno">  789 </span>  | Floating !OptionType -- ^type
@@ -826,16 +826,16 @@ span.spaces    { background: white }
 <span class="lineno">  807 </span>      !(FunPtr BasketAccumulateFun)
 <span class="lineno">  808 </span>
 <span class="lineno">  809 </span>withTypePayoff :: TypePayoff -&gt; (QlTypePayoff -&gt; IO a) -&gt; IO a
-<span class="lineno">  810 </span><span class="decl"><span class="istickedoff">withTypePayoff (Floating t) f = qlFloatingTypePayoff t &gt;&gt;= newCastForeignPtr &gt;&gt;= flip withGenForeignPtr f</span>
-<span class="lineno">  811 </span><span class="spaces"></span><span class="istickedoff">withTypePayoff (Striked s) f = withStrikedPayoff s (\sp -&gt; upcast sp &gt;&gt;= \tp -&gt; f tp `finally` freeUpcast tp)</span></span>
+<span class="lineno">  810 </span><span class="decl"><span class="istickedoff">withTypePayoff (Floating t) f = withConstructed (qlFloatingTypePayoff t) f</span>
+<span class="lineno">  811 </span><span class="spaces"></span><span class="istickedoff">withTypePayoff (Striked s) f = withStrikedPayoff s (\sp -&gt; withUpcast sp f)</span></span>
 <span class="lineno">  812 </span>
 <span class="lineno">  813 </span>withBasketPayoff :: BasketPayoff -&gt; (QlBasketPayoff -&gt; IO a) -&gt; IO a
-<span class="lineno">  814 </span><span class="decl"><span class="istickedoff">withBasketPayoff (Average p n) f = withPayoff p (\pp -&gt; qlAverageBasketPayoff pp n &gt;&gt;= newCastForeignPtr &gt;&gt;= flip withGenForeignPtr f)</span>
-<span class="lineno">  815 </span><span class="spaces"></span><span class="istickedoff">withBasketPayoff (AverageMultiple p a) f = <span class="nottickedoff">withPayoff p (\pp -&gt; qlAverageBasketPayoff1 pp a &gt;&gt;= newCastForeignPtr &gt;&gt;= flip withGenForeignPtr f)</span></span>
-<span class="lineno">  816 </span><span class="spaces"></span><span class="istickedoff">withBasketPayoff (Max p) f = withPayoff p (\pp -&gt; qlMaxBasketPayoff pp &gt;&gt;= newCastForeignPtr &gt;&gt;= flip withGenForeignPtr f)</span>
-<span class="lineno">  817 </span><span class="spaces"></span><span class="istickedoff">withBasketPayoff (Min p) f = withPayoff p (\pp -&gt; qlMinBasketPayoff pp &gt;&gt;= newCastForeignPtr &gt;&gt;= flip withGenForeignPtr f)</span>
-<span class="lineno">  818 </span><span class="spaces"></span><span class="istickedoff">withBasketPayoff (Spread p) f = withPayoff p (\pp -&gt; qlSpreadBasketPayoff pp &gt;&gt;= newCastForeignPtr &gt;&gt;= flip withGenForeignPtr f)</span>
-<span class="lineno">  819 </span><span class="spaces"></span><span class="istickedoff">withBasketPayoff (CustomAccumulate p fp) f = withPayoff p (\pp -&gt; qlBasketPayoffFromFunction pp fp &gt;&gt;= newCastForeignPtr &gt;&gt;= flip withGenForeignPtr f)</span></span>
+<span class="lineno">  814 </span><span class="decl"><span class="istickedoff">withBasketPayoff (Average p n) f = withPayoff p (\pp -&gt; withConstructed (qlAverageBasketPayoff pp n) f)</span>
+<span class="lineno">  815 </span><span class="spaces"></span><span class="istickedoff">withBasketPayoff (AverageMultiple p a) f = <span class="nottickedoff">withPayoff p (\pp -&gt; withConstructed (qlAverageBasketPayoff1 pp a) f)</span></span>
+<span class="lineno">  816 </span><span class="spaces"></span><span class="istickedoff">withBasketPayoff (Max p) f = withPayoff p (\pp -&gt; withConstructed (qlMaxBasketPayoff pp) f)</span>
+<span class="lineno">  817 </span><span class="spaces"></span><span class="istickedoff">withBasketPayoff (Min p) f = withPayoff p (\pp -&gt; withConstructed (qlMinBasketPayoff pp) f)</span>
+<span class="lineno">  818 </span><span class="spaces"></span><span class="istickedoff">withBasketPayoff (Spread p) f = withPayoff p (\pp -&gt; withConstructed (qlSpreadBasketPayoff pp) f)</span>
+<span class="lineno">  819 </span><span class="spaces"></span><span class="istickedoff">withBasketPayoff (CustomAccumulate p fp) f = withPayoff p (\pp -&gt; withConstructed (qlBasketPayoffFromFunction pp fp) f)</span></span>
 <span class="lineno">  820 </span>
 <span class="lineno">  821 </span>-- | &gt; Payoff
 <span class="lineno">  822 </span>-- &gt;  DoubleStickyRatchet
@@ -1258,17 +1258,17 @@ span.spaces    { background: white }
 <span class="lineno"> 1239 </span>
 <span class="lineno"> 1240 </span>
 <span class="lineno"> 1241 </span>withPayoff :: Payoff -&gt; (QlPayoff -&gt; IO a) -&gt; IO a
-<span class="lineno"> 1242 </span><span class="decl"><span class="istickedoff">withPayoff (DoubleStickyRatchet t1 t2 g1 g2 g3 s1 s2 s3 i1 i2 a) f = <span class="nottickedoff">qlDoubleStickyRatchetPayoff t1 t2 g1 g2 g3 s1 s2 s3 i1 i2 a &gt;&gt;= newCastForeignPtr &gt;&gt;= flip withGenForeignPtr f</span></span>
-<span class="lineno"> 1243 </span><span class="spaces"></span><span class="istickedoff">withPayoff (ForwardType t s) f = <span class="nottickedoff">qlForwardTypePayoff t s &gt;&gt;= newCastForeignPtr &gt;&gt;= flip withGenForeignPtr f</span></span>
-<span class="lineno"> 1244 </span><span class="spaces"></span><span class="istickedoff">withPayoff (RatchetMax g1 g2 g3 s1 s2 s3 i1 i2 a) f = <span class="nottickedoff">qlRatchetMaxPayoff g1 g2 g3 s1 s2 s3 i1 i2 a &gt;&gt;= newCastForeignPtr &gt;&gt;= flip withGenForeignPtr f</span></span>
-<span class="lineno"> 1245 </span><span class="spaces"></span><span class="istickedoff">withPayoff (RatchetMin g1 g2 g3 s1 s2 s3 i1 i2 a) f = <span class="nottickedoff">qlRatchetMinPayoff g1 g2 g3 s1 s2 s3 i1 i2 a &gt;&gt;= newCastForeignPtr &gt;&gt;= flip withGenForeignPtr f</span></span>
-<span class="lineno"> 1246 </span><span class="spaces"></span><span class="istickedoff">withPayoff (Ratchet g1 g2 s1 s2 i a) f = <span class="nottickedoff">qlRatchetPayoff g1 g2 s1 s2 i a &gt;&gt;= newCastForeignPtr &gt;&gt;= flip withGenForeignPtr f</span></span>
-<span class="lineno"> 1247 </span><span class="spaces"></span><span class="istickedoff">withPayoff (StickyMax g1 g2 g3 s1 s2 s3 i1 i2 a) f = <span class="nottickedoff">qlStickyMaxPayoff g1 g2 g3 s1 s2 s3 i1 i2 a &gt;&gt;= newCastForeignPtr &gt;&gt;= flip withGenForeignPtr f</span></span>
-<span class="lineno"> 1248 </span><span class="spaces"></span><span class="istickedoff">withPayoff (StickyMin g1 g2 g3 s1 s2 s3 i1 i2 a) f = <span class="nottickedoff">qlStickyMinPayoff g1 g2 g3 s1 s2 s3 i1 i2 a &gt;&gt;= newCastForeignPtr &gt;&gt;= flip withGenForeignPtr f</span></span>
-<span class="lineno"> 1249 </span><span class="spaces"></span><span class="istickedoff">withPayoff (Sticky g1 g2 s1 s2 i a) f = <span class="nottickedoff">qlStickyPayoff g1 g2 s1 s2 i a &gt;&gt;= newCastForeignPtr &gt;&gt;= flip withGenForeignPtr f</span></span>
-<span class="lineno"> 1250 </span><span class="spaces"></span><span class="istickedoff">withPayoff (Type t) f = withTypePayoff t (\tp -&gt; upcast tp &gt;&gt;= \pp -&gt; f pp `finally` freeUpcast pp)</span>
-<span class="lineno"> 1251 </span><span class="spaces"></span><span class="istickedoff">withPayoff (Basket b) f = <span class="nottickedoff">withBasketPayoff b (\bp -&gt; upcast bp &gt;&gt;= \pp -&gt; f pp `finally` freeUpcast pp)</span></span>
-<span class="lineno"> 1252 </span><span class="spaces"></span><span class="istickedoff">withPayoff (Custom n d fp) f = qlPayoffFromFunction n d fp &gt;&gt;= newCastForeignPtr &gt;&gt;= flip withGenForeignPtr f</span></span>
+<span class="lineno"> 1242 </span><span class="decl"><span class="istickedoff">withPayoff (DoubleStickyRatchet t1 t2 g1 g2 g3 s1 s2 s3 i1 i2 a) f = <span class="nottickedoff">withConstructed (qlDoubleStickyRatchetPayoff t1 t2 g1 g2 g3 s1 s2 s3 i1 i2 a) f</span></span>
+<span class="lineno"> 1243 </span><span class="spaces"></span><span class="istickedoff">withPayoff (ForwardType t s) f = <span class="nottickedoff">withConstructed (qlForwardTypePayoff t s) f</span></span>
+<span class="lineno"> 1244 </span><span class="spaces"></span><span class="istickedoff">withPayoff (RatchetMax g1 g2 g3 s1 s2 s3 i1 i2 a) f = <span class="nottickedoff">withConstructed (qlRatchetMaxPayoff g1 g2 g3 s1 s2 s3 i1 i2 a) f</span></span>
+<span class="lineno"> 1245 </span><span class="spaces"></span><span class="istickedoff">withPayoff (RatchetMin g1 g2 g3 s1 s2 s3 i1 i2 a) f = <span class="nottickedoff">withConstructed (qlRatchetMinPayoff g1 g2 g3 s1 s2 s3 i1 i2 a) f</span></span>
+<span class="lineno"> 1246 </span><span class="spaces"></span><span class="istickedoff">withPayoff (Ratchet g1 g2 s1 s2 i a) f = <span class="nottickedoff">withConstructed (qlRatchetPayoff g1 g2 s1 s2 i a) f</span></span>
+<span class="lineno"> 1247 </span><span class="spaces"></span><span class="istickedoff">withPayoff (StickyMax g1 g2 g3 s1 s2 s3 i1 i2 a) f = <span class="nottickedoff">withConstructed (qlStickyMaxPayoff g1 g2 g3 s1 s2 s3 i1 i2 a) f</span></span>
+<span class="lineno"> 1248 </span><span class="spaces"></span><span class="istickedoff">withPayoff (StickyMin g1 g2 g3 s1 s2 s3 i1 i2 a) f = <span class="nottickedoff">withConstructed (qlStickyMinPayoff g1 g2 g3 s1 s2 s3 i1 i2 a) f</span></span>
+<span class="lineno"> 1249 </span><span class="spaces"></span><span class="istickedoff">withPayoff (Sticky g1 g2 s1 s2 i a) f = <span class="nottickedoff">withConstructed (qlStickyPayoff g1 g2 s1 s2 i a) f</span></span>
+<span class="lineno"> 1250 </span><span class="spaces"></span><span class="istickedoff">withPayoff (Type t) f = withTypePayoff t (\tp -&gt; withUpcast tp f)</span>
+<span class="lineno"> 1251 </span><span class="spaces"></span><span class="istickedoff">withPayoff (Basket b) f = <span class="nottickedoff">withBasketPayoff b (\bp -&gt; withUpcast bp f)</span></span>
+<span class="lineno"> 1252 </span><span class="spaces"></span><span class="istickedoff">withPayoff (Custom n d fp) f = withConstructed (qlPayoffFromFunction n d fp) f</span></span>
 <span class="lineno"> 1253 </span>
 <span class="lineno"> 1254 </span>-- |Wrap a Haskell @price -&gt; value@ function as a real QuantLib @Payoff@, usable anywhere a
 <span class="lineno"> 1255 </span>-- 'Payoff' is (@QuantLib.Instrument.Option.oneAssetOption@, @multiAssetOption@,
@@ -2094,203 +2094,206 @@ span.spaces    { background: white }
 <span class="lineno"> 2075 </span>
 <span class="lineno"> 2076 </span>-- vim: set ff=unix ts=8 sts=2 sw=2 et:
 <span class="lineno"> 2077 </span>
-<span class="lineno"> 2078 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlExercise&quot;
-<span class="lineno"> 2079 </span>  qlExercise'_ :: (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (QlExercise))))
+<span class="lineno"> 2078 </span>preAdditionalResults :: ((Ptr CUInt, Ptr RawResultPtr) -&gt; IO b) -&gt; IO b
+<span class="lineno"> 2079 </span><span class="decl"><span class="istickedoff">preAdditionalResults = preArrayWith <span class="nottickedoff">(\l p -&gt; qlFreeAdditionalResults l (castPtr p))</span></span></span>
 <span class="lineno"> 2080 </span>
-<span class="lineno"> 2081 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlAmericanExercise&quot;
-<span class="lineno"> 2082 </span>  qlAmericanExercise'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (QlAmericanExercise))))))
+<span class="lineno"> 2081 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlExercise&quot;
+<span class="lineno"> 2082 </span>  qlExercise'_ :: (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (QlExercise))))
 <span class="lineno"> 2083 </span>
-<span class="lineno"> 2084 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlAmericanExercise1&quot;
-<span class="lineno"> 2085 </span>  qlAmericanExercise1'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (QlAmericanExercise)))))
+<span class="lineno"> 2084 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlAmericanExercise&quot;
+<span class="lineno"> 2085 </span>  qlAmericanExercise'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (QlAmericanExercise))))))
 <span class="lineno"> 2086 </span>
-<span class="lineno"> 2087 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlBermudanExercise&quot;
-<span class="lineno"> 2088 </span>  qlBermudanExercise'_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (QlBermudanExercise))))))
+<span class="lineno"> 2087 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlAmericanExercise1&quot;
+<span class="lineno"> 2088 </span>  qlAmericanExercise1'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (QlAmericanExercise)))))
 <span class="lineno"> 2089 </span>
-<span class="lineno"> 2090 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlEarlyExercise&quot;
-<span class="lineno"> 2091 </span>  qlEarlyExercise'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (QlExercise)))))
+<span class="lineno"> 2090 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlBermudanExercise&quot;
+<span class="lineno"> 2091 </span>  qlBermudanExercise'_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (QlBermudanExercise))))))
 <span class="lineno"> 2092 </span>
-<span class="lineno"> 2093 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlEuropeanExercise&quot;
-<span class="lineno"> 2094 </span>  qlEuropeanExercise'_ :: (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (QlEuropeanExercise))))
+<span class="lineno"> 2093 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlEarlyExercise&quot;
+<span class="lineno"> 2094 </span>  qlEarlyExercise'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (QlExercise)))))
 <span class="lineno"> 2095 </span>
-<span class="lineno"> 2096 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlSwingExercise&quot;
-<span class="lineno"> 2097 </span>  qlSwingExercise'_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (QlSwingExercise)))))))
+<span class="lineno"> 2096 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlEuropeanExercise&quot;
+<span class="lineno"> 2097 </span>  qlEuropeanExercise'_ :: (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (QlEuropeanExercise))))
 <span class="lineno"> 2098 </span>
-<span class="lineno"> 2099 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlSwingExercise1&quot;
-<span class="lineno"> 2100 </span>  qlSwingExercise1'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (QlSwingExercise))))))
+<span class="lineno"> 2099 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlSwingExercise&quot;
+<span class="lineno"> 2100 </span>  qlSwingExercise'_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (QlSwingExercise)))))))
 <span class="lineno"> 2101 </span>
-<span class="lineno"> 2102 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlRebatedExercise&quot;
-<span class="lineno"> 2103 </span>  qlRebatedExercise'_ :: ((QlExercise) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (CCalendar)) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (QlRebatedExercise))))))))
+<span class="lineno"> 2102 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlSwingExercise1&quot;
+<span class="lineno"> 2103 </span>  qlSwingExercise1'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (QlSwingExercise))))))
 <span class="lineno"> 2104 </span>
-<span class="lineno"> 2105 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlAssetOrNothingPayoff&quot;
-<span class="lineno"> 2106 </span>  qlAssetOrNothingPayoff'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (QlStrikedTypePayoff)))))
+<span class="lineno"> 2105 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlRebatedExercise&quot;
+<span class="lineno"> 2106 </span>  qlRebatedExercise'_ :: ((QlExercise) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (CCalendar)) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (QlRebatedExercise))))))))
 <span class="lineno"> 2107 </span>
-<span class="lineno"> 2108 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlAverageBasketPayoff&quot;
-<span class="lineno"> 2109 </span>  qlAverageBasketPayoff'_ :: ((QlPayoff) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (QlBasketPayoff)))))
+<span class="lineno"> 2108 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlAssetOrNothingPayoff&quot;
+<span class="lineno"> 2109 </span>  qlAssetOrNothingPayoff'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (QlStrikedTypePayoff)))))
 <span class="lineno"> 2110 </span>
-<span class="lineno"> 2111 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlCashOrNothingPayoff&quot;
-<span class="lineno"> 2112 </span>  qlCashOrNothingPayoff'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (QlStrikedTypePayoff))))))
+<span class="lineno"> 2111 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlAverageBasketPayoff&quot;
+<span class="lineno"> 2112 </span>  qlAverageBasketPayoff'_ :: ((QlPayoff) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (QlBasketPayoff)))))
 <span class="lineno"> 2113 </span>
-<span class="lineno"> 2114 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlDoubleStickyRatchetPayoff&quot;
-<span class="lineno"> 2115 </span>  qlDoubleStickyRatchetPayoff'_ :: (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (QlPayoff))))))))))))))
+<span class="lineno"> 2114 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlCashOrNothingPayoff&quot;
+<span class="lineno"> 2115 </span>  qlCashOrNothingPayoff'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (QlStrikedTypePayoff))))))
 <span class="lineno"> 2116 </span>
-<span class="lineno"> 2117 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlFloatingTypePayoff&quot;
-<span class="lineno"> 2118 </span>  qlFloatingTypePayoff'_ :: (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (QlTypePayoff))))
+<span class="lineno"> 2117 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlDoubleStickyRatchetPayoff&quot;
+<span class="lineno"> 2118 </span>  qlDoubleStickyRatchetPayoff'_ :: (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (QlPayoff))))))))))))))
 <span class="lineno"> 2119 </span>
-<span class="lineno"> 2120 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlForwardTypePayoff&quot;
-<span class="lineno"> 2121 </span>  qlForwardTypePayoff'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (QlPayoff)))))
+<span class="lineno"> 2120 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlFloatingTypePayoff&quot;
+<span class="lineno"> 2121 </span>  qlFloatingTypePayoff'_ :: (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (QlTypePayoff))))
 <span class="lineno"> 2122 </span>
-<span class="lineno"> 2123 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlGapPayoff&quot;
-<span class="lineno"> 2124 </span>  qlGapPayoff'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (QlStrikedTypePayoff))))))
+<span class="lineno"> 2123 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlForwardTypePayoff&quot;
+<span class="lineno"> 2124 </span>  qlForwardTypePayoff'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (QlPayoff)))))
 <span class="lineno"> 2125 </span>
-<span class="lineno"> 2126 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlMaxBasketPayoff&quot;
-<span class="lineno"> 2127 </span>  qlMaxBasketPayoff'_ :: ((QlPayoff) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (QlBasketPayoff))))
+<span class="lineno"> 2126 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlGapPayoff&quot;
+<span class="lineno"> 2127 </span>  qlGapPayoff'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (QlStrikedTypePayoff))))))
 <span class="lineno"> 2128 </span>
-<span class="lineno"> 2129 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlMinBasketPayoff&quot;
-<span class="lineno"> 2130 </span>  qlMinBasketPayoff'_ :: ((QlPayoff) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (QlBasketPayoff))))
+<span class="lineno"> 2129 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlMaxBasketPayoff&quot;
+<span class="lineno"> 2130 </span>  qlMaxBasketPayoff'_ :: ((QlPayoff) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (QlBasketPayoff))))
 <span class="lineno"> 2131 </span>
-<span class="lineno"> 2132 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlPercentageStrikePayoff&quot;
-<span class="lineno"> 2133 </span>  qlPercentageStrikePayoff'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (QlPercentageStrikePayoff)))))
+<span class="lineno"> 2132 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlMinBasketPayoff&quot;
+<span class="lineno"> 2133 </span>  qlMinBasketPayoff'_ :: ((QlPayoff) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (QlBasketPayoff))))
 <span class="lineno"> 2134 </span>
-<span class="lineno"> 2135 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlPlainVanillaPayoff&quot;
-<span class="lineno"> 2136 </span>  qlPlainVanillaPayoff'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (QlPlainVanillaPayoff)))))
+<span class="lineno"> 2135 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlPercentageStrikePayoff&quot;
+<span class="lineno"> 2136 </span>  qlPercentageStrikePayoff'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (QlPercentageStrikePayoff)))))
 <span class="lineno"> 2137 </span>
-<span class="lineno"> 2138 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlRatchetMaxPayoff&quot;
-<span class="lineno"> 2139 </span>  qlRatchetMaxPayoff'_ :: (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (QlPayoff))))))))))))
+<span class="lineno"> 2138 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlPlainVanillaPayoff&quot;
+<span class="lineno"> 2139 </span>  qlPlainVanillaPayoff'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (QlPlainVanillaPayoff)))))
 <span class="lineno"> 2140 </span>
-<span class="lineno"> 2141 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlRatchetMinPayoff&quot;
-<span class="lineno"> 2142 </span>  qlRatchetMinPayoff'_ :: (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (QlPayoff))))))))))))
+<span class="lineno"> 2141 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlRatchetMaxPayoff&quot;
+<span class="lineno"> 2142 </span>  qlRatchetMaxPayoff'_ :: (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (QlPayoff))))))))))))
 <span class="lineno"> 2143 </span>
-<span class="lineno"> 2144 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlRatchetPayoff&quot;
-<span class="lineno"> 2145 </span>  qlRatchetPayoff'_ :: (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (QlPayoff)))))))))
+<span class="lineno"> 2144 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlRatchetMinPayoff&quot;
+<span class="lineno"> 2145 </span>  qlRatchetMinPayoff'_ :: (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (QlPayoff))))))))))))
 <span class="lineno"> 2146 </span>
-<span class="lineno"> 2147 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlSpreadBasketPayoff&quot;
-<span class="lineno"> 2148 </span>  qlSpreadBasketPayoff'_ :: ((QlPayoff) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (QlBasketPayoff))))
+<span class="lineno"> 2147 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlRatchetPayoff&quot;
+<span class="lineno"> 2148 </span>  qlRatchetPayoff'_ :: (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (QlPayoff)))))))))
 <span class="lineno"> 2149 </span>
-<span class="lineno"> 2150 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlStickyMaxPayoff&quot;
-<span class="lineno"> 2151 </span>  qlStickyMaxPayoff'_ :: (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (QlPayoff))))))))))))
+<span class="lineno"> 2150 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlSpreadBasketPayoff&quot;
+<span class="lineno"> 2151 </span>  qlSpreadBasketPayoff'_ :: ((QlPayoff) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (QlBasketPayoff))))
 <span class="lineno"> 2152 </span>
-<span class="lineno"> 2153 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlStickyMinPayoff&quot;
-<span class="lineno"> 2154 </span>  qlStickyMinPayoff'_ :: (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (QlPayoff))))))))))))
+<span class="lineno"> 2153 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlStickyMaxPayoff&quot;
+<span class="lineno"> 2154 </span>  qlStickyMaxPayoff'_ :: (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (QlPayoff))))))))))))
 <span class="lineno"> 2155 </span>
-<span class="lineno"> 2156 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlStickyPayoff&quot;
-<span class="lineno"> 2157 </span>  qlStickyPayoff'_ :: (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (QlPayoff)))))))))
+<span class="lineno"> 2156 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlStickyMinPayoff&quot;
+<span class="lineno"> 2157 </span>  qlStickyMinPayoff'_ :: (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (QlPayoff))))))))))))
 <span class="lineno"> 2158 </span>
-<span class="lineno"> 2159 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlSuperFundPayoff&quot;
-<span class="lineno"> 2160 </span>  qlSuperFundPayoff'_ :: (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (QlStrikedTypePayoff)))))
+<span class="lineno"> 2159 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlStickyPayoff&quot;
+<span class="lineno"> 2160 </span>  qlStickyPayoff'_ :: (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (QlPayoff)))))))))
 <span class="lineno"> 2161 </span>
-<span class="lineno"> 2162 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlSuperSharePayoff&quot;
-<span class="lineno"> 2163 </span>  qlSuperSharePayoff'_ :: (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (QlStrikedTypePayoff))))))
+<span class="lineno"> 2162 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlSuperFundPayoff&quot;
+<span class="lineno"> 2163 </span>  qlSuperFundPayoff'_ :: (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (QlStrikedTypePayoff)))))
 <span class="lineno"> 2164 </span>
-<span class="lineno"> 2165 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlAverageBasketPayoff1&quot;
-<span class="lineno"> 2166 </span>  qlAverageBasketPayoff1'_ :: ((QlPayoff) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (QlBasketPayoff))))))
+<span class="lineno"> 2165 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlSuperSharePayoff&quot;
+<span class="lineno"> 2166 </span>  qlSuperSharePayoff'_ :: (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (QlStrikedTypePayoff))))))
 <span class="lineno"> 2167 </span>
-<span class="lineno"> 2168 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlPayoffFromFunction&quot;
-<span class="lineno"> 2169 </span>  qlPayoffFromFunction'_ :: ((C2HSImp.Ptr C2HSImp.CChar) -&gt; ((C2HSImp.Ptr C2HSImp.CChar) -&gt; ((C2HSImp.FunPtr (C2HSImp.CDouble -&gt; (IO C2HSImp.CDouble))) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (QlPayoff))))))
+<span class="lineno"> 2168 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlAverageBasketPayoff1&quot;
+<span class="lineno"> 2169 </span>  qlAverageBasketPayoff1'_ :: ((QlPayoff) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (QlBasketPayoff))))))
 <span class="lineno"> 2170 </span>
-<span class="lineno"> 2171 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlBasketPayoffFromFunction&quot;
-<span class="lineno"> 2172 </span>  qlBasketPayoffFromFunction'_ :: ((QlPayoff) -&gt; ((C2HSImp.FunPtr ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; (IO C2HSImp.CDouble)))) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (QlBasketPayoff)))))
+<span class="lineno"> 2171 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlPayoffFromFunction&quot;
+<span class="lineno"> 2172 </span>  qlPayoffFromFunction'_ :: ((C2HSImp.Ptr C2HSImp.CChar) -&gt; ((C2HSImp.Ptr C2HSImp.CChar) -&gt; ((C2HSImp.FunPtr (C2HSImp.CDouble -&gt; (IO C2HSImp.CDouble))) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (QlPayoff))))))
 <span class="lineno"> 2173 </span>
-<span class="lineno"> 2174 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlStrikedPayoffFromFunction&quot;
-<span class="lineno"> 2175 </span>  qlStrikedPayoffFromFunction'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr C2HSImp.CChar) -&gt; ((C2HSImp.FunPtr (C2HSImp.CDouble -&gt; (IO C2HSImp.CDouble))) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (QlStrikedTypePayoff)))))))
+<span class="lineno"> 2174 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlBasketPayoffFromFunction&quot;
+<span class="lineno"> 2175 </span>  qlBasketPayoffFromFunction'_ :: ((QlPayoff) -&gt; ((C2HSImp.FunPtr ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; (IO C2HSImp.CDouble)))) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (QlBasketPayoff)))))
 <span class="lineno"> 2176 </span>
-<span class="lineno"> 2177 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlSoftCallability&quot;
-<span class="lineno"> 2178 </span>  qlSoftCallability'_ :: (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CQlCallability))))))))
+<span class="lineno"> 2177 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlStrikedPayoffFromFunction&quot;
+<span class="lineno"> 2178 </span>  qlStrikedPayoffFromFunction'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr C2HSImp.CChar) -&gt; ((C2HSImp.FunPtr (C2HSImp.CDouble -&gt; (IO C2HSImp.CDouble))) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (QlStrikedTypePayoff)))))))
 <span class="lineno"> 2179 </span>
-<span class="lineno"> 2180 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlCallability&quot;
-<span class="lineno"> 2181 </span>  qlCallability'_ :: (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CQlCallability))))))))
+<span class="lineno"> 2180 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlSoftCallability&quot;
+<span class="lineno"> 2181 </span>  qlSoftCallability'_ :: (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CQlCallability))))))))
 <span class="lineno"> 2182 </span>
-<span class="lineno"> 2183 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlCubicBSplinesFitting&quot;
-<span class="lineno"> 2184 </span>  qlCubicBSplinesFitting'_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (COptimizationMethod)) -&gt; ((C2HSImp.Ptr (CConstraint)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CFittedBondDiscountCurveFittingMethod)))))))))))))))
+<span class="lineno"> 2183 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlCallability&quot;
+<span class="lineno"> 2184 </span>  qlCallability'_ :: (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CQlCallability))))))))
 <span class="lineno"> 2185 </span>
-<span class="lineno"> 2186 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlExponentialSplinesFitting&quot;
-<span class="lineno"> 2187 </span>  qlExponentialSplinesFitting'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (COptimizationMethod)) -&gt; ((C2HSImp.Ptr (CConstraint)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CFittedBondDiscountCurveFittingMethod)))))))))))))))
+<span class="lineno"> 2186 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlCubicBSplinesFitting&quot;
+<span class="lineno"> 2187 </span>  qlCubicBSplinesFitting'_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (COptimizationMethod)) -&gt; ((C2HSImp.Ptr (CConstraint)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CFittedBondDiscountCurveFittingMethod)))))))))))))))
 <span class="lineno"> 2188 </span>
-<span class="lineno"> 2189 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlNelsonSiegelFitting&quot;
-<span class="lineno"> 2190 </span>  qlNelsonSiegelFitting'_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (COptimizationMethod)) -&gt; ((C2HSImp.Ptr (CConstraint)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CFittedBondDiscountCurveFittingMethod))))))))))))
+<span class="lineno"> 2189 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlExponentialSplinesFitting&quot;
+<span class="lineno"> 2190 </span>  qlExponentialSplinesFitting'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (COptimizationMethod)) -&gt; ((C2HSImp.Ptr (CConstraint)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CFittedBondDiscountCurveFittingMethod)))))))))))))))
 <span class="lineno"> 2191 </span>
-<span class="lineno"> 2192 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlSimplePolynomialFitting&quot;
-<span class="lineno"> 2193 </span>  qlSimplePolynomialFitting'_ :: (C2HSImp.CUInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (COptimizationMethod)) -&gt; ((C2HSImp.Ptr (CConstraint)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CFittedBondDiscountCurveFittingMethod))))))))))))))
+<span class="lineno"> 2192 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlNelsonSiegelFitting&quot;
+<span class="lineno"> 2193 </span>  qlNelsonSiegelFitting'_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (COptimizationMethod)) -&gt; ((C2HSImp.Ptr (CConstraint)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CFittedBondDiscountCurveFittingMethod))))))))))))
 <span class="lineno"> 2194 </span>
-<span class="lineno"> 2195 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlSvenssonFitting&quot;
-<span class="lineno"> 2196 </span>  qlSvenssonFitting'_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (COptimizationMethod)) -&gt; ((C2HSImp.Ptr (CConstraint)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CFittedBondDiscountCurveFittingMethod))))))))))))
+<span class="lineno"> 2195 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlSimplePolynomialFitting&quot;
+<span class="lineno"> 2196 </span>  qlSimplePolynomialFitting'_ :: (C2HSImp.CUInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (COptimizationMethod)) -&gt; ((C2HSImp.Ptr (CConstraint)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CFittedBondDiscountCurveFittingMethod))))))))))))))
 <span class="lineno"> 2197 </span>
-<span class="lineno"> 2198 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlFdmSchemeDesc&quot;
-<span class="lineno"> 2199 </span>  qlFdmSchemeDesc'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CFdmSchemeDesc)))))))
+<span class="lineno"> 2198 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlSvenssonFitting&quot;
+<span class="lineno"> 2199 </span>  qlSvenssonFitting'_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (COptimizationMethod)) -&gt; ((C2HSImp.Ptr (CConstraint)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CFittedBondDiscountCurveFittingMethod))))))))))))
 <span class="lineno"> 2200 </span>
-<span class="lineno"> 2201 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlFdmSchemeDescCraigSneyd&quot;
-<span class="lineno"> 2202 </span>  qlFdmSchemeDescCraigSneyd'_ :: ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CFdmSchemeDesc))))
+<span class="lineno"> 2201 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlFdmSchemeDesc&quot;
+<span class="lineno"> 2202 </span>  qlFdmSchemeDesc'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CFdmSchemeDesc)))))))
 <span class="lineno"> 2203 </span>
-<span class="lineno"> 2204 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlFdmSchemeDescDouglas&quot;
-<span class="lineno"> 2205 </span>  qlFdmSchemeDescDouglas'_ :: ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CFdmSchemeDesc))))
+<span class="lineno"> 2204 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlFdmSchemeDescCraigSneyd&quot;
+<span class="lineno"> 2205 </span>  qlFdmSchemeDescCraigSneyd'_ :: ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CFdmSchemeDesc))))
 <span class="lineno"> 2206 </span>
-<span class="lineno"> 2207 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlFdmSchemeDescExplicitEuler&quot;
-<span class="lineno"> 2208 </span>  qlFdmSchemeDescExplicitEuler'_ :: ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CFdmSchemeDesc))))
+<span class="lineno"> 2207 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlFdmSchemeDescDouglas&quot;
+<span class="lineno"> 2208 </span>  qlFdmSchemeDescDouglas'_ :: ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CFdmSchemeDesc))))
 <span class="lineno"> 2209 </span>
-<span class="lineno"> 2210 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlFdmSchemeDescHundsdorfer&quot;
-<span class="lineno"> 2211 </span>  qlFdmSchemeDescHundsdorfer'_ :: ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CFdmSchemeDesc))))
+<span class="lineno"> 2210 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlFdmSchemeDescExplicitEuler&quot;
+<span class="lineno"> 2211 </span>  qlFdmSchemeDescExplicitEuler'_ :: ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CFdmSchemeDesc))))
 <span class="lineno"> 2212 </span>
-<span class="lineno"> 2213 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlFdmSchemeDescImplicitEuler&quot;
-<span class="lineno"> 2214 </span>  qlFdmSchemeDescImplicitEuler'_ :: ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CFdmSchemeDesc))))
+<span class="lineno"> 2213 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlFdmSchemeDescHundsdorfer&quot;
+<span class="lineno"> 2214 </span>  qlFdmSchemeDescHundsdorfer'_ :: ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CFdmSchemeDesc))))
 <span class="lineno"> 2215 </span>
-<span class="lineno"> 2216 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlFdmSchemeDescModifiedCraigSneyd&quot;
-<span class="lineno"> 2217 </span>  qlFdmSchemeDescModifiedCraigSneyd'_ :: ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CFdmSchemeDesc))))
+<span class="lineno"> 2216 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlFdmSchemeDescImplicitEuler&quot;
+<span class="lineno"> 2217 </span>  qlFdmSchemeDescImplicitEuler'_ :: ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CFdmSchemeDesc))))
 <span class="lineno"> 2218 </span>
-<span class="lineno"> 2219 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlFdmSchemeDescModifiedHundsdorfer&quot;
-<span class="lineno"> 2220 </span>  qlFdmSchemeDescModifiedHundsdorfer'_ :: ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CFdmSchemeDesc))))
+<span class="lineno"> 2219 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlFdmSchemeDescModifiedCraigSneyd&quot;
+<span class="lineno"> 2220 </span>  qlFdmSchemeDescModifiedCraigSneyd'_ :: ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CFdmSchemeDesc))))
 <span class="lineno"> 2221 </span>
-<span class="lineno"> 2222 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlFdmSchemeDescMethodOfLines&quot;
-<span class="lineno"> 2223 </span>  qlFdmSchemeDescMethodOfLines'_ :: (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CFdmSchemeDesc))))))
+<span class="lineno"> 2222 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlFdmSchemeDescModifiedHundsdorfer&quot;
+<span class="lineno"> 2223 </span>  qlFdmSchemeDescModifiedHundsdorfer'_ :: ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CFdmSchemeDesc))))
 <span class="lineno"> 2224 </span>
-<span class="lineno"> 2225 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlBoundaryConstraint&quot;
-<span class="lineno"> 2226 </span>  qlBoundaryConstraint'_ :: (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CConstraint))))))
+<span class="lineno"> 2225 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlFdmSchemeDescMethodOfLines&quot;
+<span class="lineno"> 2226 </span>  qlFdmSchemeDescMethodOfLines'_ :: (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CFdmSchemeDesc))))))
 <span class="lineno"> 2227 </span>
-<span class="lineno"> 2228 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlCompositeConstraint&quot;
-<span class="lineno"> 2229 </span>  qlCompositeConstraint'_ :: ((C2HSImp.Ptr (CConstraint)) -&gt; ((C2HSImp.Ptr (CConstraint)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CConstraint))))))
+<span class="lineno"> 2228 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlBoundaryConstraint&quot;
+<span class="lineno"> 2229 </span>  qlBoundaryConstraint'_ :: (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CConstraint))))))
 <span class="lineno"> 2230 </span>
-<span class="lineno"> 2231 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlNoConstraint&quot;
-<span class="lineno"> 2232 </span>  qlNoConstraint'_ :: ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CConstraint))))
+<span class="lineno"> 2231 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlCompositeConstraint&quot;
+<span class="lineno"> 2232 </span>  qlCompositeConstraint'_ :: ((C2HSImp.Ptr (CConstraint)) -&gt; ((C2HSImp.Ptr (CConstraint)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CConstraint))))))
 <span class="lineno"> 2233 </span>
-<span class="lineno"> 2234 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlPositiveConstraint&quot;
-<span class="lineno"> 2235 </span>  qlPositiveConstraint'_ :: ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CConstraint))))
+<span class="lineno"> 2234 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlNoConstraint&quot;
+<span class="lineno"> 2235 </span>  qlNoConstraint'_ :: ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CConstraint))))
 <span class="lineno"> 2236 </span>
-<span class="lineno"> 2237 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlLevenbergMarquardt&quot;
-<span class="lineno"> 2238 </span>  qlLevenbergMarquardt'_ :: (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (COptimizationMethod))))))))
+<span class="lineno"> 2237 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlPositiveConstraint&quot;
+<span class="lineno"> 2238 </span>  qlPositiveConstraint'_ :: ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CConstraint))))
 <span class="lineno"> 2239 </span>
-<span class="lineno"> 2240 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlSimplex&quot;
-<span class="lineno"> 2241 </span>  qlSimplex'_ :: (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (COptimizationMethod)))))
+<span class="lineno"> 2240 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlLevenbergMarquardt&quot;
+<span class="lineno"> 2241 </span>  qlLevenbergMarquardt'_ :: (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (COptimizationMethod))))))))
 <span class="lineno"> 2242 </span>
-<span class="lineno"> 2243 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlEndCriteria&quot;
-<span class="lineno"> 2244 </span>  qlEndCriteria'_ :: (C2HSImp.CUInt -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CEndCriteria)))))))))
+<span class="lineno"> 2243 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlSimplex&quot;
+<span class="lineno"> 2244 </span>  qlSimplex'_ :: (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (COptimizationMethod)))))
 <span class="lineno"> 2245 </span>
-<span class="lineno"> 2246 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlRounding&quot;
-<span class="lineno"> 2247 </span>  qlRounding'_ :: ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CRounding))))
+<span class="lineno"> 2246 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlEndCriteria&quot;
+<span class="lineno"> 2247 </span>  qlEndCriteria'_ :: (C2HSImp.CUInt -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CEndCriteria)))))))))
 <span class="lineno"> 2248 </span>
-<span class="lineno"> 2249 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlRounding1&quot;
-<span class="lineno"> 2250 </span>  qlRounding1'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CRounding)))))))
+<span class="lineno"> 2249 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlRounding&quot;
+<span class="lineno"> 2250 </span>  qlRounding'_ :: ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CRounding))))
 <span class="lineno"> 2251 </span>
-<span class="lineno"> 2252 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlLmConstWrapperCorrelationModel&quot;
-<span class="lineno"> 2253 </span>  qlLmConstWrapperCorrelationModel'_ :: ((C2HSImp.Ptr (CLmCorrelationModel)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CLmCorrelationModel)))))
+<span class="lineno"> 2252 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlRounding1&quot;
+<span class="lineno"> 2253 </span>  qlRounding1'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CRounding)))))))
 <span class="lineno"> 2254 </span>
-<span class="lineno"> 2255 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlLmExponentialCorrelationModel&quot;
-<span class="lineno"> 2256 </span>  qlLmExponentialCorrelationModel'_ :: (C2HSImp.CUInt -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CLmCorrelationModel))))))
+<span class="lineno"> 2255 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlLmConstWrapperCorrelationModel&quot;
+<span class="lineno"> 2256 </span>  qlLmConstWrapperCorrelationModel'_ :: ((C2HSImp.Ptr (CLmCorrelationModel)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CLmCorrelationModel)))))
 <span class="lineno"> 2257 </span>
-<span class="lineno"> 2258 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlLmLinearExponentialCorrelationModel&quot;
-<span class="lineno"> 2259 </span>  qlLmLinearExponentialCorrelationModel'_ :: (C2HSImp.CUInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CLmCorrelationModel))))))))
+<span class="lineno"> 2258 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlLmExponentialCorrelationModel&quot;
+<span class="lineno"> 2259 </span>  qlLmExponentialCorrelationModel'_ :: (C2HSImp.CUInt -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CLmCorrelationModel))))))
 <span class="lineno"> 2260 </span>
-<span class="lineno"> 2261 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlLmConstWrapperVolatilityModel&quot;
-<span class="lineno"> 2262 </span>  qlLmConstWrapperVolatilityModel'_ :: ((C2HSImp.Ptr (CLmVolatilityModel)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CLmVolatilityModel)))))
+<span class="lineno"> 2261 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlLmLinearExponentialCorrelationModel&quot;
+<span class="lineno"> 2262 </span>  qlLmLinearExponentialCorrelationModel'_ :: (C2HSImp.CUInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CLmCorrelationModel))))))))
 <span class="lineno"> 2263 </span>
-<span class="lineno"> 2264 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlLmFixedVolatilityModel&quot;
-<span class="lineno"> 2265 </span>  qlLmFixedVolatilityModel'_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CLmVolatilityModel))))))))
+<span class="lineno"> 2264 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlLmConstWrapperVolatilityModel&quot;
+<span class="lineno"> 2265 </span>  qlLmConstWrapperVolatilityModel'_ :: ((C2HSImp.Ptr (CLmVolatilityModel)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CLmVolatilityModel)))))
 <span class="lineno"> 2266 </span>
-<span class="lineno"> 2267 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlLmLinearExponentialVolatilityModel&quot;
-<span class="lineno"> 2268 </span>  qlLmLinearExponentialVolatilityModel'_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CLmVolatilityModel))))))))))
+<span class="lineno"> 2267 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlLmFixedVolatilityModel&quot;
+<span class="lineno"> 2268 </span>  qlLmFixedVolatilityModel'_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CLmVolatilityModel))))))))
 <span class="lineno"> 2269 </span>
-<span class="lineno"> 2270 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlFaceValueClaim&quot;
-<span class="lineno"> 2271 </span>  qlFaceValueClaim'_ :: ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CQlClaim))))
+<span class="lineno"> 2270 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlLmLinearExponentialVolatilityModel&quot;
+<span class="lineno"> 2271 </span>  qlLmLinearExponentialVolatilityModel'_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CLmVolatilityModel))))))))))
 <span class="lineno"> 2272 </span>
-<span class="lineno"> 2273 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlFaceValueAccrualClaim&quot;
-<span class="lineno"> 2274 </span>  qlFaceValueAccrualClaim'_ :: ((C2HSImp.Ptr (CBond')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CQlClaim)))))
+<span class="lineno"> 2273 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlFaceValueClaim&quot;
+<span class="lineno"> 2274 </span>  qlFaceValueClaim'_ :: ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CQlClaim))))
+<span class="lineno"> 2275 </span>
+<span class="lineno"> 2276 </span>foreign import ccall safe &quot;QuantLib/Internal/Common.chs.h qlFaceValueAccrualClaim&quot;
+<span class="lineno"> 2277 </span>  qlFaceValueAccrualClaim'_ :: ((C2HSImp.Ptr (CBond')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CQlClaim)))))
 
 </pre>
 </body>

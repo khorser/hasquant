@@ -419,7 +419,7 @@ span.spaces    { background: white }
 <span class="lineno">  400 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = (fromIntegral . fromEnum) a2} in </span>
 <span class="lineno">  401 </span><span class="spaces">  </span><span class="istickedoff">let {a3' = realToFrac a3} in </span>
 <span class="lineno">  402 </span><span class="spaces">  </span><span class="istickedoff">let {a4' = realToFrac a4} in </span>
-<span class="lineno">  403 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a5'1, a5'2) -&gt; </span>
+<span class="lineno">  403 </span><span class="spaces">  </span><span class="istickedoff">preDoubleArray $ \(a5'1, a5'2) -&gt; </span>
 <span class="lineno">  404 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a6' -&gt; </span>
 <span class="lineno">  405 </span><span class="spaces">  </span><span class="istickedoff">sinkingNotionals'_ a1'1  a1'2 a2' a3' a4' a5'1  a5'2 a6' &gt;&gt;</span>
 <span class="lineno">  406 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a5'1  a5'2&gt;&gt;= \a5'' -&gt; </span>
@@ -865,7 +865,7 @@ span.spaces    { background: white }
 <span class="lineno">  846 </span>notionals :: (GenBond b) -&gt; IO (([Double]))
 <span class="lineno">  847 </span><span class="decl"><span class="istickedoff">notionals a1 =</span>
 <span class="lineno">  848 </span><span class="spaces">  </span><span class="istickedoff">withBond a1 $ \a1' -&gt; </span>
-<span class="lineno">  849 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a2'1, a2'2) -&gt; </span>
+<span class="lineno">  849 </span><span class="spaces">  </span><span class="istickedoff">preDoubleArray $ \(a2'1, a2'2) -&gt; </span>
 <span class="lineno">  850 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
 <span class="lineno">  851 </span><span class="spaces">  </span><span class="istickedoff">notionals'_ a1' a2'1  a2'2 a3' &gt;&gt;</span>
 <span class="lineno">  852 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a2'1  a2'2&gt;&gt;= \a2'' -&gt; </span>
@@ -1503,7 +1503,7 @@ span.spaces    { background: white }
 <span class="lineno"> 1484 </span>rendistatoYields :: (RendistatoCalculator) -&gt; IO (([Double]))
 <span class="lineno"> 1485 </span><span class="decl"><span class="istickedoff">rendistatoYields a1 =</span>
 <span class="lineno"> 1486 </span><span class="spaces">  </span><span class="istickedoff">withRendistatoCalculator a1 $ \a1' -&gt; </span>
-<span class="lineno"> 1487 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a2'1, a2'2) -&gt; </span>
+<span class="lineno"> 1487 </span><span class="spaces">  </span><span class="istickedoff">preDoubleArray $ \(a2'1, a2'2) -&gt; </span>
 <span class="lineno"> 1488 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
 <span class="lineno"> 1489 </span><span class="spaces">  </span><span class="istickedoff">rendistatoYields'_ a1' a2'1  a2'2 a3' &gt;&gt;</span>
 <span class="lineno"> 1490 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a2'1  a2'2&gt;&gt;= \a2'' -&gt; </span>
@@ -1516,7 +1516,7 @@ span.spaces    { background: white }
 <span class="lineno"> 1497 </span>rendistatoDurations :: (RendistatoCalculator) -&gt; IO (([Double]))
 <span class="lineno"> 1498 </span><span class="decl"><span class="istickedoff">rendistatoDurations a1 =</span>
 <span class="lineno"> 1499 </span><span class="spaces">  </span><span class="istickedoff">withRendistatoCalculator a1 $ \a1' -&gt; </span>
-<span class="lineno"> 1500 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a2'1, a2'2) -&gt; </span>
+<span class="lineno"> 1500 </span><span class="spaces">  </span><span class="istickedoff">preDoubleArray $ \(a2'1, a2'2) -&gt; </span>
 <span class="lineno"> 1501 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
 <span class="lineno"> 1502 </span><span class="spaces">  </span><span class="istickedoff">rendistatoDurations'_ a1' a2'1  a2'2 a3' &gt;&gt;</span>
 <span class="lineno"> 1503 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a2'1  a2'2&gt;&gt;= \a2'' -&gt; </span>
@@ -1530,7 +1530,7 @@ span.spaces    { background: white }
 <span class="lineno"> 1511 </span>rendistatoSwapLengths :: (RendistatoCalculator) -&gt; IO (([Double]))
 <span class="lineno"> 1512 </span><span class="decl"><span class="istickedoff">rendistatoSwapLengths a1 =</span>
 <span class="lineno"> 1513 </span><span class="spaces">  </span><span class="istickedoff">withRendistatoCalculator a1 $ \a1' -&gt; </span>
-<span class="lineno"> 1514 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a2'1, a2'2) -&gt; </span>
+<span class="lineno"> 1514 </span><span class="spaces">  </span><span class="istickedoff">preDoubleArray $ \(a2'1, a2'2) -&gt; </span>
 <span class="lineno"> 1515 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
 <span class="lineno"> 1516 </span><span class="spaces">  </span><span class="istickedoff">rendistatoSwapLengths'_ a1' a2'1  a2'2 a3' &gt;&gt;</span>
 <span class="lineno"> 1517 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a2'1  a2'2&gt;&gt;= \a2'' -&gt; </span>
@@ -1543,7 +1543,7 @@ span.spaces    { background: white }
 <span class="lineno"> 1524 </span>rendistatoSwapRates :: (RendistatoCalculator) -&gt; IO (([Double]))
 <span class="lineno"> 1525 </span><span class="decl"><span class="istickedoff">rendistatoSwapRates a1 =</span>
 <span class="lineno"> 1526 </span><span class="spaces">  </span><span class="istickedoff">withRendistatoCalculator a1 $ \a1' -&gt; </span>
-<span class="lineno"> 1527 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a2'1, a2'2) -&gt; </span>
+<span class="lineno"> 1527 </span><span class="spaces">  </span><span class="istickedoff">preDoubleArray $ \(a2'1, a2'2) -&gt; </span>
 <span class="lineno"> 1528 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
 <span class="lineno"> 1529 </span><span class="spaces">  </span><span class="istickedoff">rendistatoSwapRates'_ a1' a2'1  a2'2 a3' &gt;&gt;</span>
 <span class="lineno"> 1530 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a2'1  a2'2&gt;&gt;= \a2'' -&gt; </span>
@@ -1556,7 +1556,7 @@ span.spaces    { background: white }
 <span class="lineno"> 1537 </span>rendistatoSwapYields :: (RendistatoCalculator) -&gt; IO (([Double]))
 <span class="lineno"> 1538 </span><span class="decl"><span class="istickedoff">rendistatoSwapYields a1 =</span>
 <span class="lineno"> 1539 </span><span class="spaces">  </span><span class="istickedoff">withRendistatoCalculator a1 $ \a1' -&gt; </span>
-<span class="lineno"> 1540 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a2'1, a2'2) -&gt; </span>
+<span class="lineno"> 1540 </span><span class="spaces">  </span><span class="istickedoff">preDoubleArray $ \(a2'1, a2'2) -&gt; </span>
 <span class="lineno"> 1541 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
 <span class="lineno"> 1542 </span><span class="spaces">  </span><span class="istickedoff">rendistatoSwapYields'_ a1' a2'1  a2'2 a3' &gt;&gt;</span>
 <span class="lineno"> 1543 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a2'1  a2'2&gt;&gt;= \a2'' -&gt; </span>
@@ -1569,7 +1569,7 @@ span.spaces    { background: white }
 <span class="lineno"> 1550 </span>rendistatoSwapDurations :: (RendistatoCalculator) -&gt; IO (([Double]))
 <span class="lineno"> 1551 </span><span class="decl"><span class="istickedoff">rendistatoSwapDurations a1 =</span>
 <span class="lineno"> 1552 </span><span class="spaces">  </span><span class="istickedoff">withRendistatoCalculator a1 $ \a1' -&gt; </span>
-<span class="lineno"> 1553 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a2'1, a2'2) -&gt; </span>
+<span class="lineno"> 1553 </span><span class="spaces">  </span><span class="istickedoff">preDoubleArray $ \(a2'1, a2'2) -&gt; </span>
 <span class="lineno"> 1554 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
 <span class="lineno"> 1555 </span><span class="spaces">  </span><span class="istickedoff">rendistatoSwapDurations'_ a1' a2'1  a2'2 a3' &gt;&gt;</span>
 <span class="lineno"> 1556 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a2'1  a2'2&gt;&gt;= \a2'' -&gt; </span>

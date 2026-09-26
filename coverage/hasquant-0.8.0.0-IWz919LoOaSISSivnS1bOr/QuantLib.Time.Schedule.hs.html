@@ -170,7 +170,7 @@ span.spaces    { background: white }
 <span class="lineno">  151 </span><span class="spaces">  </span><span class="istickedoff">toEnum 6 = Bimonthly</span>
 <span class="lineno">  152 </span><span class="spaces">  </span><span class="istickedoff">toEnum 12 = Monthly</span>
 <span class="lineno">  153 </span><span class="spaces">  </span><span class="istickedoff">toEnum 13 = EveryFourthWeek</span>
-<span class="lineno">  154 </span><span class="spaces">  </span><span class="istickedoff">toEnum 26 = Biweekly</span>
+<span class="lineno">  154 </span><span class="spaces">  </span><span class="istickedoff">toEnum 26 = <span class="nottickedoff">Biweekly</span></span>
 <span class="lineno">  155 </span><span class="spaces">  </span><span class="istickedoff">toEnum 52 = Weekly</span>
 <span class="lineno">  156 </span><span class="spaces">  </span><span class="istickedoff">toEnum 365 = Daily</span>
 <span class="lineno">  157 </span><span class="spaces">  </span><span class="istickedoff">toEnum 999 = <span class="nottickedoff">OtherFrequency</span></span>
@@ -344,7 +344,7 @@ span.spaces    { background: white }
 <span class="lineno">  325 </span>dates :: (Schedule) -&gt; IO (([Day]))
 <span class="lineno">  326 </span><span class="decl"><span class="istickedoff">dates a1 =</span>
 <span class="lineno">  327 </span><span class="spaces">  </span><span class="istickedoff">withSchedule a1 $ \a1' -&gt; </span>
-<span class="lineno">  328 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a2'1, a2'2) -&gt; </span>
+<span class="lineno">  328 </span><span class="spaces">  </span><span class="istickedoff">preIntArray $ \(a2'1, a2'2) -&gt; </span>
 <span class="lineno">  329 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
 <span class="lineno">  330 </span><span class="spaces">  </span><span class="istickedoff">dates'_ a1' a2'1  a2'2 a3' &gt;&gt;</span>
 <span class="lineno">  331 </span><span class="spaces">  </span><span class="istickedoff">peekDayArray  a2'1  a2'2&gt;&gt;= \a2'' -&gt; </span>

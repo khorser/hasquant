@@ -731,7 +731,7 @@ span.spaces    { background: white }
 <span class="lineno">  712 </span>initialValues :: (GenStochasticProcess p) -&gt; IO (([Double]))
 <span class="lineno">  713 </span><span class="decl"><span class="istickedoff">initialValues a1 =</span>
 <span class="lineno">  714 </span><span class="spaces">  </span><span class="istickedoff">withStochasticProcess a1 $ \a1' -&gt; </span>
-<span class="lineno">  715 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a2'1, a2'2) -&gt; </span>
+<span class="lineno">  715 </span><span class="spaces">  </span><span class="istickedoff">preDoubleArray $ \(a2'1, a2'2) -&gt; </span>
 <span class="lineno">  716 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
 <span class="lineno">  717 </span><span class="spaces">  </span><span class="istickedoff">initialValues'_ a1' a2'1  a2'2 a3' &gt;&gt;</span>
 <span class="lineno">  718 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a2'1  a2'2&gt;&gt;= \a2'' -&gt; </span>
@@ -749,7 +749,7 @@ span.spaces    { background: white }
 <span class="lineno">  730 </span><span class="spaces">  </span><span class="istickedoff">withStochasticProcess a1 $ \a1' -&gt; </span>
 <span class="lineno">  731 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = realToFrac a2} in </span>
 <span class="lineno">  732 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a3 $ \(a3'1, a3'2) -&gt; </span>
-<span class="lineno">  733 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a4'1, a4'2) -&gt; </span>
+<span class="lineno">  733 </span><span class="spaces">  </span><span class="istickedoff">preDoubleArray $ \(a4'1, a4'2) -&gt; </span>
 <span class="lineno">  734 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a5' -&gt; </span>
 <span class="lineno">  735 </span><span class="spaces">  </span><span class="istickedoff">drift'_ a1' a2' a3'1  a3'2 a4'1  a4'2 a5' &gt;&gt;</span>
 <span class="lineno">  736 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a4'1  a4'2&gt;&gt;= \a4'' -&gt; </span>
@@ -774,7 +774,7 @@ span.spaces    { background: white }
 <span class="lineno">  755 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a3 $ \(a3'1, a3'2) -&gt; </span>
 <span class="lineno">  756 </span><span class="spaces">  </span><span class="istickedoff">prePtr $ \a4' -&gt; </span>
 <span class="lineno">  757 </span><span class="spaces">  </span><span class="istickedoff">prePtr $ \a5' -&gt; </span>
-<span class="lineno">  758 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a6'1, a6'2) -&gt; </span>
+<span class="lineno">  758 </span><span class="spaces">  </span><span class="istickedoff">preDoubleArray $ \(a6'1, a6'2) -&gt; </span>
 <span class="lineno">  759 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a7' -&gt; </span>
 <span class="lineno">  760 </span><span class="spaces">  </span><span class="istickedoff">qlStochasticProcessDiffusion'_ a1' a2' a3'1  a3'2 a4' a5' a6'1  a6'2 a7' &gt;&gt;</span>
 <span class="lineno">  761 </span><span class="spaces">  </span><span class="istickedoff">peekWord  a4'&gt;&gt;= \a4'' -&gt; </span>
@@ -795,7 +795,7 @@ span.spaces    { background: white }
 <span class="lineno">  776 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = realToFrac a2} in </span>
 <span class="lineno">  777 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a3 $ \(a3'1, a3'2) -&gt; </span>
 <span class="lineno">  778 </span><span class="spaces">  </span><span class="istickedoff">let {a4' = realToFrac a4} in </span>
-<span class="lineno">  779 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a5'1, a5'2) -&gt; </span>
+<span class="lineno">  779 </span><span class="spaces">  </span><span class="istickedoff">preDoubleArray $ \(a5'1, a5'2) -&gt; </span>
 <span class="lineno">  780 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a6' -&gt; </span>
 <span class="lineno">  781 </span><span class="spaces">  </span><span class="istickedoff">expectation'_ a1' a2' a3'1  a3'2 a4' a5'1  a5'2 a6' &gt;&gt;</span>
 <span class="lineno">  782 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a5'1  a5'2&gt;&gt;= \a5'' -&gt; </span>
@@ -821,7 +821,7 @@ span.spaces    { background: white }
 <span class="lineno">  802 </span><span class="spaces">  </span><span class="istickedoff">let {a4' = realToFrac a4} in </span>
 <span class="lineno">  803 </span><span class="spaces">  </span><span class="istickedoff">prePtr $ \a5' -&gt; </span>
 <span class="lineno">  804 </span><span class="spaces">  </span><span class="istickedoff">prePtr $ \a6' -&gt; </span>
-<span class="lineno">  805 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a7'1, a7'2) -&gt; </span>
+<span class="lineno">  805 </span><span class="spaces">  </span><span class="istickedoff">preDoubleArray $ \(a7'1, a7'2) -&gt; </span>
 <span class="lineno">  806 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a8' -&gt; </span>
 <span class="lineno">  807 </span><span class="spaces">  </span><span class="istickedoff">qlStochasticProcessStdDeviation'_ a1' a2' a3'1  a3'2 a4' a5' a6' a7'1  a7'2 a8' &gt;&gt;</span>
 <span class="lineno">  808 </span><span class="spaces">  </span><span class="istickedoff">peekWord  a5'&gt;&gt;= \a5'' -&gt; </span>
@@ -847,7 +847,7 @@ span.spaces    { background: white }
 <span class="lineno">  828 </span><span class="spaces">  </span><span class="istickedoff">let {a4' = realToFrac a4} in </span>
 <span class="lineno">  829 </span><span class="spaces">  </span><span class="istickedoff">prePtr $ \a5' -&gt; </span>
 <span class="lineno">  830 </span><span class="spaces">  </span><span class="istickedoff">prePtr $ \a6' -&gt; </span>
-<span class="lineno">  831 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a7'1, a7'2) -&gt; </span>
+<span class="lineno">  831 </span><span class="spaces">  </span><span class="istickedoff">preDoubleArray $ \(a7'1, a7'2) -&gt; </span>
 <span class="lineno">  832 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a8' -&gt; </span>
 <span class="lineno">  833 </span><span class="spaces">  </span><span class="istickedoff">qlStochasticProcessCovariance'_ a1' a2' a3'1  a3'2 a4' a5' a6' a7'1  a7'2 a8' &gt;&gt;</span>
 <span class="lineno">  834 </span><span class="spaces">  </span><span class="istickedoff">peekWord  a5'&gt;&gt;= \a5'' -&gt; </span>
@@ -868,7 +868,7 @@ span.spaces    { background: white }
 <span class="lineno">  849 </span><span class="spaces">  </span><span class="istickedoff">withStochasticProcess a1 $ \a1' -&gt; </span>
 <span class="lineno">  850 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a2 $ \(a2'1, a2'2) -&gt; </span>
 <span class="lineno">  851 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a3 $ \(a3'1, a3'2) -&gt; </span>
-<span class="lineno">  852 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a4'1, a4'2) -&gt; </span>
+<span class="lineno">  852 </span><span class="spaces">  </span><span class="istickedoff">preDoubleArray $ \(a4'1, a4'2) -&gt; </span>
 <span class="lineno">  853 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a5' -&gt; </span>
 <span class="lineno">  854 </span><span class="spaces">  </span><span class="istickedoff">apply'_ a1' a2'1  a2'2 a3'1  a3'2 a4'1  a4'2 a5' &gt;&gt;</span>
 <span class="lineno">  855 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a4'1  a4'2&gt;&gt;= \a4'' -&gt; </span>
@@ -896,7 +896,7 @@ span.spaces    { background: white }
 <span class="lineno">  877 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a3 $ \(a3'1, a3'2) -&gt; </span>
 <span class="lineno">  878 </span><span class="spaces">  </span><span class="istickedoff">let {a4' = realToFrac a4} in </span>
 <span class="lineno">  879 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a5 $ \(a5'1, a5'2) -&gt; </span>
-<span class="lineno">  880 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a6'1, a6'2) -&gt; </span>
+<span class="lineno">  880 </span><span class="spaces">  </span><span class="istickedoff">preDoubleArray $ \(a6'1, a6'2) -&gt; </span>
 <span class="lineno">  881 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a7' -&gt; </span>
 <span class="lineno">  882 </span><span class="spaces">  </span><span class="istickedoff">evolve'_ a1' a2' a3'1  a3'2 a4' a5'1  a5'2 a6'1  a6'2 a7' &gt;&gt;</span>
 <span class="lineno">  883 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a6'1  a6'2&gt;&gt;= \a6'' -&gt; </span>
@@ -1289,7 +1289,7 @@ span.spaces    { background: white }
 <span class="lineno"> 1270 </span>fixingDates :: (LiborForwardModelProcess) -&gt; IO (([Day]))
 <span class="lineno"> 1271 </span><span class="decl"><span class="istickedoff">fixingDates a1 =</span>
 <span class="lineno"> 1272 </span><span class="spaces">  </span><span class="istickedoff">withGenStochasticProcess a1 $ \a1' -&gt; </span>
-<span class="lineno"> 1273 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a2'1, a2'2) -&gt; </span>
+<span class="lineno"> 1273 </span><span class="spaces">  </span><span class="istickedoff">preIntArray $ \(a2'1, a2'2) -&gt; </span>
 <span class="lineno"> 1274 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
 <span class="lineno"> 1275 </span><span class="spaces">  </span><span class="istickedoff">fixingDates'_ a1' a2'1  a2'2 a3' &gt;&gt;</span>
 <span class="lineno"> 1276 </span><span class="spaces">  </span><span class="istickedoff">peekDayArray  a2'1  a2'2&gt;&gt;= \a2'' -&gt; </span>
@@ -1303,7 +1303,7 @@ span.spaces    { background: white }
 <span class="lineno"> 1284 </span>fixingTimes :: (LiborForwardModelProcess) -&gt; IO (([Double]))
 <span class="lineno"> 1285 </span><span class="decl"><span class="istickedoff">fixingTimes a1 =</span>
 <span class="lineno"> 1286 </span><span class="spaces">  </span><span class="istickedoff">withGenStochasticProcess a1 $ \a1' -&gt; </span>
-<span class="lineno"> 1287 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a2'1, a2'2) -&gt; </span>
+<span class="lineno"> 1287 </span><span class="spaces">  </span><span class="istickedoff">preDoubleArray $ \(a2'1, a2'2) -&gt; </span>
 <span class="lineno"> 1288 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
 <span class="lineno"> 1289 </span><span class="spaces">  </span><span class="istickedoff">fixingTimes'_ a1' a2'1  a2'2 a3' &gt;&gt;</span>
 <span class="lineno"> 1290 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a2'1  a2'2&gt;&gt;= \a2'' -&gt; </span>
@@ -1348,7 +1348,7 @@ span.spaces    { background: white }
 <span class="lineno"> 1329 </span><span class="decl"><span class="istickedoff">discountBond a1 a2 =</span>
 <span class="lineno"> 1330 </span><span class="spaces">  </span><span class="istickedoff">withGenStochasticProcess a1 $ \a1' -&gt; </span>
 <span class="lineno"> 1331 </span><span class="spaces">  </span><span class="istickedoff">withDoubleArray a2 $ \(a2'1, a2'2) -&gt; </span>
-<span class="lineno"> 1332 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a3'1, a3'2) -&gt; </span>
+<span class="lineno"> 1332 </span><span class="spaces">  </span><span class="istickedoff">preDoubleArray $ \(a3'1, a3'2) -&gt; </span>
 <span class="lineno"> 1333 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a4' -&gt; </span>
 <span class="lineno"> 1334 </span><span class="spaces">  </span><span class="istickedoff">discountBond'_ a1' a2'1  a2'2 a3'1  a3'2 a4' &gt;&gt;</span>
 <span class="lineno"> 1335 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a3'1  a3'2&gt;&gt;= \a3'' -&gt; </span>
@@ -1365,8 +1365,8 @@ span.spaces    { background: white }
 <span class="lineno"> 1346 </span>qlLiborForwardModelProcessAccrualTimes :: (LiborForwardModelProcess) -&gt; IO (([Double]), ([Double]))
 <span class="lineno"> 1347 </span><span class="decl"><span class="istickedoff">qlLiborForwardModelProcessAccrualTimes a1 =</span>
 <span class="lineno"> 1348 </span><span class="spaces">  </span><span class="istickedoff">withGenStochasticProcess a1 $ \a1' -&gt; </span>
-<span class="lineno"> 1349 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a2'1, a2'2) -&gt; </span>
-<span class="lineno"> 1350 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a3'1, a3'2) -&gt; </span>
+<span class="lineno"> 1349 </span><span class="spaces">  </span><span class="istickedoff">preDoubleArray $ \(a2'1, a2'2) -&gt; </span>
+<span class="lineno"> 1350 </span><span class="spaces">  </span><span class="istickedoff">preDoubleArray $ \(a3'1, a3'2) -&gt; </span>
 <span class="lineno"> 1351 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a4' -&gt; </span>
 <span class="lineno"> 1352 </span><span class="spaces">  </span><span class="istickedoff">qlLiborForwardModelProcessAccrualTimes'_ a1' a2'1  a2'2 a3'1  a3'2 a4' &gt;&gt;</span>
 <span class="lineno"> 1353 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a2'1  a2'2&gt;&gt;= \a2'' -&gt; </span>

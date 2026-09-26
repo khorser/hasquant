@@ -781,7 +781,7 @@ span.spaces    { background: white }
 <span class="lineno">  762 </span>averageBmaCouponFixingDatesRaw :: (AverageBMACoupon) -&gt; IO (([Day]))
 <span class="lineno">  763 </span><span class="decl"><span class="istickedoff">averageBmaCouponFixingDatesRaw a1 =</span>
 <span class="lineno">  764 </span><span class="spaces">  </span><span class="istickedoff">withAverageBMACoupon a1 $ \a1' -&gt; </span>
-<span class="lineno">  765 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a2'1, a2'2) -&gt; </span>
+<span class="lineno">  765 </span><span class="spaces">  </span><span class="istickedoff">preIntArray $ \(a2'1, a2'2) -&gt; </span>
 <span class="lineno">  766 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
 <span class="lineno">  767 </span><span class="spaces">  </span><span class="istickedoff">averageBmaCouponFixingDatesRaw'_ a1' a2'1  a2'2 a3' &gt;&gt;</span>
 <span class="lineno">  768 </span><span class="spaces">  </span><span class="istickedoff">peekDayArray  a2'1  a2'2&gt;&gt;= \a2'' -&gt; </span>
@@ -794,7 +794,7 @@ span.spaces    { background: white }
 <span class="lineno">  775 </span>averageBmaCouponIndexFixingsRaw :: (AverageBMACoupon) -&gt; IO (([Double]))
 <span class="lineno">  776 </span><span class="decl"><span class="istickedoff">averageBmaCouponIndexFixingsRaw a1 =</span>
 <span class="lineno">  777 </span><span class="spaces">  </span><span class="istickedoff">withAverageBMACoupon a1 $ \a1' -&gt; </span>
-<span class="lineno">  778 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a2'1, a2'2) -&gt; </span>
+<span class="lineno">  778 </span><span class="spaces">  </span><span class="istickedoff">preDoubleArray $ \(a2'1, a2'2) -&gt; </span>
 <span class="lineno">  779 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
 <span class="lineno">  780 </span><span class="spaces">  </span><span class="istickedoff">averageBmaCouponIndexFixingsRaw'_ a1' a2'1  a2'2 a3' &gt;&gt;</span>
 <span class="lineno">  781 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a2'1  a2'2&gt;&gt;= \a2'' -&gt; </span>
@@ -1086,7 +1086,7 @@ span.spaces    { background: white }
 <span class="lineno"> 1067 </span>multipleResetsCouponFixingDatesRaw :: (MultipleResetsCoupon) -&gt; IO (([Day]))
 <span class="lineno"> 1068 </span><span class="decl"><span class="istickedoff">multipleResetsCouponFixingDatesRaw a1 =</span>
 <span class="lineno"> 1069 </span><span class="spaces">  </span><span class="istickedoff">withMultipleResetsCoupon a1 $ \a1' -&gt; </span>
-<span class="lineno"> 1070 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a2'1, a2'2) -&gt; </span>
+<span class="lineno"> 1070 </span><span class="spaces">  </span><span class="istickedoff">preIntArray $ \(a2'1, a2'2) -&gt; </span>
 <span class="lineno"> 1071 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
 <span class="lineno"> 1072 </span><span class="spaces">  </span><span class="istickedoff">multipleResetsCouponFixingDatesRaw'_ a1' a2'1  a2'2 a3' &gt;&gt;</span>
 <span class="lineno"> 1073 </span><span class="spaces">  </span><span class="istickedoff">peekDayArray  a2'1  a2'2&gt;&gt;= \a2'' -&gt; </span>
@@ -1245,7 +1245,7 @@ span.spaces    { background: white }
 <span class="lineno"> 1226 </span>overnightIndexedCouponFixingDatesRaw :: (OvernightIndexedCoupon) -&gt; IO (([Day]))
 <span class="lineno"> 1227 </span><span class="decl"><span class="istickedoff">overnightIndexedCouponFixingDatesRaw a1 =</span>
 <span class="lineno"> 1228 </span><span class="spaces">  </span><span class="istickedoff">withOvernightIndexedCoupon a1 $ \a1' -&gt; </span>
-<span class="lineno"> 1229 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a2'1, a2'2) -&gt; </span>
+<span class="lineno"> 1229 </span><span class="spaces">  </span><span class="istickedoff">preIntArray $ \(a2'1, a2'2) -&gt; </span>
 <span class="lineno"> 1230 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
 <span class="lineno"> 1231 </span><span class="spaces">  </span><span class="istickedoff">overnightIndexedCouponFixingDatesRaw'_ a1' a2'1  a2'2 a3' &gt;&gt;</span>
 <span class="lineno"> 1232 </span><span class="spaces">  </span><span class="istickedoff">peekDayArray  a2'1  a2'2&gt;&gt;= \a2'' -&gt; </span>
@@ -1260,7 +1260,7 @@ span.spaces    { background: white }
 <span class="lineno"> 1241 </span>overnightIndexedCouponIndexFixingsRaw :: (OvernightIndexedCoupon) -&gt; IO (([Double]))
 <span class="lineno"> 1242 </span><span class="decl"><span class="istickedoff">overnightIndexedCouponIndexFixingsRaw a1 =</span>
 <span class="lineno"> 1243 </span><span class="spaces">  </span><span class="istickedoff">withOvernightIndexedCoupon a1 $ \a1' -&gt; </span>
-<span class="lineno"> 1244 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a2'1, a2'2) -&gt; </span>
+<span class="lineno"> 1244 </span><span class="spaces">  </span><span class="istickedoff">preDoubleArray $ \(a2'1, a2'2) -&gt; </span>
 <span class="lineno"> 1245 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
 <span class="lineno"> 1246 </span><span class="spaces">  </span><span class="istickedoff">overnightIndexedCouponIndexFixingsRaw'_ a1' a2'1  a2'2 a3' &gt;&gt;</span>
 <span class="lineno"> 1247 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a2'1  a2'2&gt;&gt;= \a2'' -&gt; </span>
@@ -1624,9 +1624,9 @@ span.spaces    { background: white }
 <span class="lineno"> 1605 </span><span class="spaces">  </span><span class="istickedoff">withLeg a1 $ \a1' -&gt; </span>
 <span class="lineno"> 1606 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = fromMaybeBool a2} in </span>
 <span class="lineno"> 1607 </span><span class="spaces">  </span><span class="istickedoff">withMaybeDay a3 $ \a3' -&gt; </span>
-<span class="lineno"> 1608 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a4'1, a4'2) -&gt; </span>
-<span class="lineno"> 1609 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a5'1, a5'2) -&gt; </span>
-<span class="lineno"> 1610 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a6'1, a6'2) -&gt; </span>
+<span class="lineno"> 1608 </span><span class="spaces">  </span><span class="istickedoff">preDoubleArray $ \(a4'1, a4'2) -&gt; </span>
+<span class="lineno"> 1609 </span><span class="spaces">  </span><span class="istickedoff">preIntArray $ \(a5'1, a5'2) -&gt; </span>
+<span class="lineno"> 1610 </span><span class="spaces">  </span><span class="istickedoff">preIntArray $ \(a6'1, a6'2) -&gt; </span>
 <span class="lineno"> 1611 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a7' -&gt; </span>
 <span class="lineno"> 1612 </span><span class="spaces">  </span><span class="istickedoff">qlLegCashFlows'_ a1' a2' a3' a4'1  a4'2 a5'1  a5'2 a6'1  a6'2 a7' &gt;&gt;</span>
 <span class="lineno"> 1613 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a4'1  a4'2&gt;&gt;= \a4'' -&gt; </span>
@@ -2247,7 +2247,7 @@ span.spaces    { background: white }
 <span class="lineno"> 2228 </span>couponAccrualStartDates :: (CouponLeg) -&gt; IO (([Day]))
 <span class="lineno"> 2229 </span><span class="decl"><span class="istickedoff">couponAccrualStartDates a1 =</span>
 <span class="lineno"> 2230 </span><span class="spaces">  </span><span class="istickedoff">withGenLeg a1 $ \a1' -&gt; </span>
-<span class="lineno"> 2231 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a2'1, a2'2) -&gt; </span>
+<span class="lineno"> 2231 </span><span class="spaces">  </span><span class="istickedoff">preIntArray $ \(a2'1, a2'2) -&gt; </span>
 <span class="lineno"> 2232 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
 <span class="lineno"> 2233 </span><span class="spaces">  </span><span class="istickedoff">couponAccrualStartDates'_ a1' a2'1  a2'2 a3' &gt;&gt;</span>
 <span class="lineno"> 2234 </span><span class="spaces">  </span><span class="istickedoff">peekDayArray  a2'1  a2'2&gt;&gt;= \a2'' -&gt; </span>
@@ -2751,7 +2751,7 @@ span.spaces    { background: white }
 <span class="lineno"> 2732 </span> -&gt; IO (([Coupon]))
 <span class="lineno"> 2733 </span><span class="decl"><span class="istickedoff">coupons a1 =</span>
 <span class="lineno"> 2734 </span><span class="spaces">  </span><span class="istickedoff">withGenLeg a1 $ \a1' -&gt; </span>
-<span class="lineno"> 2735 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a2'1, a2'2) -&gt; </span>
+<span class="lineno"> 2735 </span><span class="spaces">  </span><span class="istickedoff">preCouponArray $ \(a2'1, a2'2) -&gt; </span>
 <span class="lineno"> 2736 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
 <span class="lineno"> 2737 </span><span class="spaces">  </span><span class="istickedoff">coupons'_ a1' a2'1  a2'2 a3' &gt;&gt;</span>
 <span class="lineno"> 2738 </span><span class="spaces">  </span><span class="istickedoff">peekCouponArray  a2'1  a2'2&gt;&gt;= \a2'' -&gt; </span>
@@ -3733,8 +3733,8 @@ span.spaces    { background: white }
 <span class="lineno"> 3714 </span>qlLegFixingDependencies :: (GenLeg l) -&gt; IO (([String]), ([Day]))
 <span class="lineno"> 3715 </span><span class="decl"><span class="istickedoff">qlLegFixingDependencies a1 =</span>
 <span class="lineno"> 3716 </span><span class="spaces">  </span><span class="istickedoff">withLeg a1 $ \a1' -&gt; </span>
-<span class="lineno"> 3717 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a2'1, a2'2) -&gt; </span>
-<span class="lineno"> 3718 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a3'1, a3'2) -&gt; </span>
+<span class="lineno"> 3717 </span><span class="spaces">  </span><span class="istickedoff">preCStringArray $ \(a2'1, a2'2) -&gt; </span>
+<span class="lineno"> 3718 </span><span class="spaces">  </span><span class="istickedoff">preIntArray $ \(a3'1, a3'2) -&gt; </span>
 <span class="lineno"> 3719 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a4' -&gt; </span>
 <span class="lineno"> 3720 </span><span class="spaces">  </span><span class="istickedoff">qlLegFixingDependencies'_ a1' a2'1  a2'2 a3'1  a3'2 a4' &gt;&gt;</span>
 <span class="lineno"> 3721 </span><span class="spaces">  </span><span class="istickedoff">peekCStringArray  a2'1  a2'2&gt;&gt;= \a2'' -&gt; </span>

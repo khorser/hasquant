@@ -607,7 +607,7 @@ span.spaces    { background: white }
 <span class="lineno">  588 </span>nonstandardSwapFixedRate :: (NonstandardSwap) -&gt; IO (([Double]))
 <span class="lineno">  589 </span><span class="decl"><span class="nottickedoff">nonstandardSwapFixedRate a1 =</span>
 <span class="lineno">  590 </span><span class="spaces">  </span><span class="nottickedoff">withNonstandardSwap a1 $ \a1' -&gt; </span>
-<span class="lineno">  591 </span><span class="spaces">  </span><span class="nottickedoff">preArray $ \(a2'1, a2'2) -&gt; </span>
+<span class="lineno">  591 </span><span class="spaces">  </span><span class="nottickedoff">preDoubleArray $ \(a2'1, a2'2) -&gt; </span>
 <span class="lineno">  592 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a3' -&gt; </span>
 <span class="lineno">  593 </span><span class="spaces">  </span><span class="nottickedoff">nonstandardSwapFixedRate'_ a1' a2'1  a2'2 a3' &gt;&gt;</span>
 <span class="lineno">  594 </span><span class="spaces">  </span><span class="nottickedoff">peekDoubleArray  a2'1  a2'2&gt;&gt;= \a2'' -&gt; </span>
@@ -1400,7 +1400,7 @@ span.spaces    { background: white }
 <span class="lineno"> 1381 </span><span class="spaces">  </span><span class="nottickedoff">withSwapIndex a2 $ \a2' -&gt; </span>
 <span class="lineno"> 1382 </span><span class="spaces">  </span><span class="nottickedoff">withSwaptionVolatilityStructure a3 $ \a3' -&gt; </span>
 <span class="lineno"> 1383 </span><span class="spaces">  </span><span class="nottickedoff">let {a4' = fromEnumC a4} in </span>
-<span class="lineno"> 1384 </span><span class="spaces">  </span><span class="nottickedoff">preArray $ \(a5'1, a5'2) -&gt; </span>
+<span class="lineno"> 1384 </span><span class="spaces">  </span><span class="nottickedoff">preBlackCalibrationHelperArray $ \(a5'1, a5'2) -&gt; </span>
 <span class="lineno"> 1385 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a6' -&gt; </span>
 <span class="lineno"> 1386 </span><span class="spaces">  </span><span class="nottickedoff">calibrationBasket'_ a1' a2' a3' a4' a5'1  a5'2 a6' &gt;&gt;</span>
 <span class="lineno"> 1387 </span><span class="spaces">  </span><span class="nottickedoff">peekBlackCalibrationHelperArray  a5'1  a5'2&gt;&gt;= \a5'' -&gt; </span>
@@ -1433,7 +1433,7 @@ span.spaces    { background: white }
 <span class="lineno"> 1414 </span><span class="spaces">  </span><span class="nottickedoff">withSwapIndex a2 $ \a2' -&gt; </span>
 <span class="lineno"> 1415 </span><span class="spaces">  </span><span class="nottickedoff">withSwaptionVolatilityStructure a3 $ \a3' -&gt; </span>
 <span class="lineno"> 1416 </span><span class="spaces">  </span><span class="nottickedoff">let {a4' = fromEnumC a4} in </span>
-<span class="lineno"> 1417 </span><span class="spaces">  </span><span class="nottickedoff">preArray $ \(a5'1, a5'2) -&gt; </span>
+<span class="lineno"> 1417 </span><span class="spaces">  </span><span class="nottickedoff">preBlackCalibrationHelperArray $ \(a5'1, a5'2) -&gt; </span>
 <span class="lineno"> 1418 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a6' -&gt; </span>
 <span class="lineno"> 1419 </span><span class="spaces">  </span><span class="nottickedoff">floatFloatSwaptionCalibrationBasket'_ a1' a2' a3' a4' a5'1  a5'2 a6' &gt;&gt;</span>
 <span class="lineno"> 1420 </span><span class="spaces">  </span><span class="nottickedoff">peekBlackCalibrationHelperArray  a5'1  a5'2&gt;&gt;= \a5'' -&gt; </span>

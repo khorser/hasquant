@@ -1625,8 +1625,8 @@ span.spaces    { background: white }
 <span class="lineno"> 1606 </span>qlRateHelperFixingDependencies :: (GenRateHelper rh) -&gt; IO (([String]), ([Day]), (CInt))
 <span class="lineno"> 1607 </span><span class="decl"><span class="istickedoff">qlRateHelperFixingDependencies a1 =</span>
 <span class="lineno"> 1608 </span><span class="spaces">  </span><span class="istickedoff">withRateHelper a1 $ \a1' -&gt; </span>
-<span class="lineno"> 1609 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a2'1, a2'2) -&gt; </span>
-<span class="lineno"> 1610 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a3'1, a3'2) -&gt; </span>
+<span class="lineno"> 1609 </span><span class="spaces">  </span><span class="istickedoff">preCStringArray $ \(a2'1, a2'2) -&gt; </span>
+<span class="lineno"> 1610 </span><span class="spaces">  </span><span class="istickedoff">preIntArray $ \(a3'1, a3'2) -&gt; </span>
 <span class="lineno"> 1611 </span><span class="spaces">  </span><span class="istickedoff">alloca $ \a4' -&gt; </span>
 <span class="lineno"> 1612 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a5' -&gt; </span>
 <span class="lineno"> 1613 </span><span class="spaces">  </span><span class="istickedoff">qlRateHelperFixingDependencies'_ a1' a2'1  a2'2 a3'1  a3'2 a4' a5' &gt;&gt;</span>
@@ -2471,7 +2471,7 @@ span.spaces    { background: white }
 <span class="lineno"> 2452 </span>fittingMethodSolution :: (FittedBondDiscountCurve) -&gt; IO ((RealVector))
 <span class="lineno"> 2453 </span><span class="decl"><span class="istickedoff">fittingMethodSolution a1 =</span>
 <span class="lineno"> 2454 </span><span class="spaces">  </span><span class="istickedoff">withFittedBondDiscountCurve a1 $ \a1' -&gt; </span>
-<span class="lineno"> 2455 </span><span class="spaces">  </span><span class="istickedoff">preArray $ \(a2'1, a2'2) -&gt; </span>
+<span class="lineno"> 2455 </span><span class="spaces">  </span><span class="istickedoff">preDoubleArray $ \(a2'1, a2'2) -&gt; </span>
 <span class="lineno"> 2456 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
 <span class="lineno"> 2457 </span><span class="spaces">  </span><span class="istickedoff">fittingMethodSolution'_ a1' a2'1  a2'2 a3' &gt;&gt;</span>
 <span class="lineno"> 2458 </span><span class="spaces">  </span><span class="istickedoff">peekRealVector  a2'1  a2'2&gt;&gt;= \a2'' -&gt; </span>
