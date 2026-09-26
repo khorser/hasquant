@@ -95,6 +95,27 @@ Install QuantLib 1.43 or later: [Linux](https://www.quantlib.org/install/linux.s
 
 Linux and macOS are the primary, well-tested platforms. Windows builds work too, but QuantLib has to be rebuilt with GHC's own bundled Clang first — see [`WINDOWS.md`](WINDOWS.md) for the recipe.
 
+hasquant never uses intraday dates, so prefer a QuantLib built without `QL_HIGH_RESOLUTION_DATE` (check `ql/config.hpp`). With it, every `Date` operation goes through boost `posix_time`. In a GSR-calibration-heavy workload that was 59% of CPU, and turning it off cut run times from 309 s to 156 s and from 76 s to 28 s, with bit-identical results. Homebrew's formula turns it on (`--enable-intraday`); CMake leaves it off by default:
+
+```
+cmake -S QuantLib-1.43 -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$HOME/opt/quantlib-1.43 \
+  -DCMAKE_INSTALL_NAME_DIR=$HOME/opt/quantlib-1.43/lib -DQL_BUILD_EXAMPLES=OFF -DQL_BUILD_TEST_SUITE=OFF
+cmake --build build -j && cmake --install build
+brew unlink quantlib
+```
+
+Then, in `cabal.project.local` (substitute your home directory):
+
+```
+package hasquant
+  flags: -usePkgConfig
+  extra-include-dirs: /Users/you/opt/quantlib-1.43/include
+  extra-lib-dirs: /Users/you/opt/quantlib-1.43/lib
+  cxx-options: -I/Users/you/opt/quantlib-1.43/include
+```
+
+The `-I` matters on macOS. `hasquant.cabal` also adds `-isystem /opt/homebrew/opt/quantlib/include`, which `brew unlink` leaves in place, and the setting changes `Date`'s layout: shim code compiled against one setting must not link against a library built with the other.
+
 ## Stack
 
 Minimal build: `stack build --no-haddock --no-test`
