@@ -6324,7 +6324,7 @@
 | |ql/models/model.hpp|EndCriteria::Type CalibratedModel::endCriteria() const;
 | |ql/models/model.hpp|const Array & CalibratedModel::problemValues() const;
 |v|ql/models/model.hpp|Array CalibratedModel::params() const;
-| |ql/models/model.hpp|void CalibratedModel::setParams(const Array & params);
+|v|ql/models/model.hpp|void CalibratedModel::setParams(const Array & params);
 | |ql/models/model.hpp|Integer CalibratedModel::functionEvaluation() const;
 | |ql/models/model.hpp|ShortRateModel::ShortRateModel(Size nArguments);
 | |ql/models/model.hpp|ext::shared_ptr<Lattice> ShortRateModel::tree(const TimeGrid &) const;

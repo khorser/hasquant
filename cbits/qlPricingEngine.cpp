@@ -1522,6 +1522,9 @@ void qlBlackCalibrationHelperTimes(QlBlackCalibrationHelper* o, unsigned *len, d
 void qlCalibratedModelParams(QlCalibratedModel* o, unsigned *len, double** ps, char **e) {
   try {fillVectorOut([&] {return (*arg(o))->params();}, len, ps);
   } catch (std::exception& er) {handleException<double*>(e, er);}}
+void qlCalibratedModelSetParams(QlCalibratedModel* o, unsigned pLen, double* p, char **e) {
+  try {(*arg(o))->setParams(Array(p, p+pLen));
+  } catch (std::exception& er) {(void)handleException<int>(e, er);}}
 double qlBlackCalibrationHelperBlackPrice(QlBlackCalibrationHelper* o, double volatility, char **e) {try {return (*arg(o))->blackPrice(volatility);} catch (std::exception& er) {return handleException<double>(e, er);}}
 double qlBlackCalibrationHelperCalibrationError(QlBlackCalibrationHelper* o, char **e) {try {return (*arg(o))->calibrationError();} catch (std::exception& er) {return handleException<double>(e, er);}}
 double qlBlackCalibrationHelperImpliedVolatility(QlBlackCalibrationHelper* o, double targetValue, double accuracy, unsigned maxEvaluations, double minVol, double maxVol, char **e) {
