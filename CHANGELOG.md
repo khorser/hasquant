@@ -15,6 +15,9 @@ The `qlGsr` shim now takes a reversion array; `gsr` keeps its single-reversion s
 or calibrated from a warm start. A list of the wrong length throws and leaves the model unchanged.
 `markovFunctional` accepts any swaption volatility structure, such as a `SwaptionVolatilityMatrix`.
 
+`fdmRollback` and `fdmSolve` callbacks must return an array of their input's length. Another length
+now throws the new `CallbackResultLength` error instead of being truncated or padded with zeros.
+
 On QuantLib 1.43, `gaussian1dSwaptionVolatility` works around an uninitialized `MakeSwaption`
 nominal by pricing its smile sections with a unit nominal; newer versions use upstream directly.
 `extendedBlackVarianceSurface` reports an exception on QuantLib 1.43 instead of invoking its
