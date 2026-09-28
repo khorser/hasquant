@@ -257,20 +257,15 @@ QL_TRACE_NAME(OwningExtendedBlackVarianceSurface)
 #endif
 
 namespace hasquant {
-  class SharedYieldLink : public Handle<YieldTermStructure> {
-  public:
-    explicit SharedYieldLink(const Handle<YieldTermStructure>& handle) : Handle(handle) {}
-    void retain(const shared_ptr<YieldTermStructure>& owner) {
-      // Handle compares pointee addresses, so change observer state to replace the control block.
-      link_->linkTo(owner, false);
-      link_->linkTo(owner, true);
-    }
-  };
-
+  // Only the Haskell value and the external handles own the group; original handles own just their
+  // member, so members that outlive the group are cut off from it before it releases the rest.
   class ManagedMultiCurve : public MultiCurve {
   public:
     explicit ManagedMultiCurve(double accuracy) : MultiCurve(accuracy) {}
     ~ManagedMultiCurve() override {
+      // The shared bootstrapper holds raw pointers to every member; survivors bootstrap standalone.
+      for (const auto* contributor : contributors_)
+        contributor->setParentBootstrapper(nullptr);
       // Clear non-owning links before the member curves die, including escaped pricing indexes.
       for (auto& handle : internalHandles_) {
         try { handle.linkTo({}, false); } catch (...) {}
@@ -280,18 +275,25 @@ namespace hasquant {
                                    const Handle<YieldTermStructure>& original, bool bootstrap) {
       QL_REQUIRE(internal.empty(), "internal handle must be empty; was the curve added already?");
       auto member = original.currentLink();
+      // A second registration would give the shared bootstrapper the same contributor twice.
       for (const auto& existing : members_)
         QL_REQUIRE(existing.get() != member.get(), "curve already belongs to this MultiCurve");
       // Retain attempted additions too: upstream can register a raw contributor before throwing.
       members_.push_back(member);
       internalHandles_.push_back(internal);
-      SharedYieldLink(original).retain(shared_ptr<YieldTermStructure>(shared_from_this(), member.get()));
+      // Same cross-cast as upstream's addBootstrappedCurve: the contributor has no other accessor.
+      if (bootstrap) {
+        if (auto provider = ext::dynamic_pointer_cast<MultiCurveBootstrapProvider>(member))
+          if (const auto* contributor = provider->multiCurveBootstrapContributor())
+            contributors_.push_back(contributor);
+      }
       return bootstrap ? addBootstrappedCurve(internal, std::move(member))
                        : addNonBootstrappedCurve(internal, std::move(member));
     }
   private:
     std::vector<shared_ptr<YieldTermStructure>> members_;
     std::vector<RelinkableHandle<YieldTermStructure>> internalHandles_;
+    std::vector<const MultiCurveBootstrapContributor*> contributors_;
   };
 }
 #ifdef QLTRACK_ALLOCATIONS
@@ -1984,7 +1986,9 @@ QlYieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrapFixed3(int date, unsig
 
 
 QlMultiCurve *qlMultiCurve(double accuracy, QlError **e) { QlCallScope callbackScope(e);
-  try {return ret(new QlMultiCurve(alloc(new hasquant::ManagedMultiCurve(accuracy))));
+  // Original handles do not own the group, so a callback's GC can release it during a bootstrap.
+  try {return ret(new QlMultiCurve(alloc(new hasquant::ManagedMultiCurve(accuracy)),
+                                   hasquant::DeleteAfterCall<hasquant::ManagedMultiCurve>()));
   } catch (std::exception& er) {return handleException<QlMultiCurve*>(e, er);}}
 void qlFreeMultiCurve(QlMultiCurve *o) {del(o);}
 

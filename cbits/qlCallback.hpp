@@ -5,6 +5,7 @@
 #include <memory>
 #include <string>
 #include <utility>
+#include <vector>
 
 namespace hasquant { class Callback; }
 using QlCallback = std::shared_ptr<hasquant::Callback>;
@@ -28,9 +29,12 @@ public:
   ~QlCallScope();
   QlCallScope(const QlCallScope&) = delete;
   QlCallScope& operator=(const QlCallScope&) = delete;
+  // Deletes an object once the outermost native call on this thread returns, or at once outside one.
+  static void deleteAfterCall(void* object, void (*destroy)(void*)) noexcept;
   QlError** slot;
 private:
   QlCallScope* previous_;
+  std::vector<std::pair<void*, void (*)(void*)>> deferred_;
 };
 
 namespace hasquant {
@@ -57,6 +61,12 @@ namespace hasquant {
     QlCallbackFun fn_;
     QlReleaseStable releaseStable_;
     QlReleaseFun releaseFun_ = nullptr;
+  };
+  // A finalizer run by a callback's GC must not delete an object that the interrupted call uses.
+  template <class T> struct DeleteAfterCall {
+    void operator()(T* object) const noexcept {
+      QlCallScope::deleteAfterCall(object, [](void* p) { delete static_cast<T*>(p); });
+    }
   };
   struct UnaryCallback {
     QlCallback owner;

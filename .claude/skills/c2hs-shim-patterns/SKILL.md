@@ -852,13 +852,30 @@ GHC explicitly supports freeing function/stable pointers from finalizers after r
 stable-pointer-table lock (see [GHC 9.10.3 GC.c](https://github.com/ghc/ghc/blob/ghc-9.10.3-release/rts/sm/GC.c)).
 Pass these C function addresses into the native owner; don't add RTS library dependencies to cbits.
 
+GHC queues C finalizers at one GC and runs them at the start of the next, which a callback's
+allocation can trigger, so objects can lose their last owner while a native call still uses them.
+Owning paths are safe because the calling handle pins what it reaches. For an object that a running
+calculation can reach only through non-owning links (a MultiCurve group), pass
+`hasquant::DeleteAfterCall<T>` as the `shared_ptr` deleter: `QlCallScope::deleteAfterCall`
+postpones the delete until the outermost call scope on that thread ends.
+
 ## MultiCurve internal handles are non-owning
 
 `MultiCurve::addCurve` deliberately relinks internal handles with `null_deleter` and
 disables their notifications. Build pricing indexes on the returned external handles,
 not the internal handles used by rate helpers. Otherwise GC can destroy the complete
-curve cycle while a live index still points into it. The shim's managed MultiCurve promotes original member handles to group ownership and
-clears internal links before member destruction. Existing dependents of original handles therefore
-retain the group too; escaped internal indexes report an empty curve rather than dereference freed
-memory. Internal handles remain inappropriate for external pricing because they omit notifications.
+curve cycle while a live index still points into it.
+
+Only the Haskell `MultiCurve` and the external handles own the group. An original member handle
+keeps only its curve, so a member can outlive the group, yet its `GlobalBootstrap` still shares
+the group's `MultiCurveBootstrap`, which holds raw pointers to every member. `~ManagedMultiCurve`
+therefore detaches each bootstrapped member (`setParentBootstrapper(nullptr)`) and then clears the
+internal links. Survivors bootstrap standalone and report an empty or null curve instead of
+reaching freed members. A group released by a callback's GC during its own bootstrap is deleted
+only after the outermost call returns (`DeleteAfterCall`, above). Internal handles remain
+inappropriate for external pricing because they omit notifications.
+
+Never make a handle that a member can reach own its group, for example by relinking an original
+member handle to an aliasing pointer: a member built on that handle makes the group own itself and
+leak. External handles carry this hazard inside the cycle, which the `multiCurve` Haddock states.
 Exercise dependent instruments after `collectGarbage` and under a small RTS nursery.

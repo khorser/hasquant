@@ -17,7 +17,9 @@ access violation fixed on this evidence alone.
 
 | Finding | Status | Connection to historical crash |
 | --- | --- | --- |
-| MultiCurve pricing indexes used non-owning internal handles after all external owners became unreachable | Fixed in fixtures and the native ownership boundary; original member handles retain the group, expired internal handles become empty | Reproduced a native SIGSEGV on macOS with `-A64k`; no established connection to the historical Windows failure |
+| MultiCurve pricing indexes used non-owning internal handles after all external owners became unreachable | Fixed in fixtures and the native ownership boundary; group destruction detaches surviving members from the shared bootstrapper and empties internal handles | Reproduced a native SIGSEGV on macOS with `-A64k`; no established connection to the historical Windows failure |
+| Original MultiCurve member handles promoted to group owners let a member own its own group | Fixed; original handles own only their curve, and a spreaded member over another member's original handle no longer leaks the group | Found reviewing the ownership fix; a leak, not a crash |
+| A callback's GC could delete a MultiCurve group during its own joint bootstrap | Fixed; the group's deleter defers deletion until the outermost native call returns | Reproduced a SIGSEGV through internal-handle indexes with the previous shim; no established connection to the historical Windows failure |
 | FDM step conditions can return borrowed overlapping storage to `copyArray` | Fixed with `moveArray`; the identity result has a smoke probe, and other lengths throw `CallbackResultLength` (Hspec) | The example's `zipWith` returns fresh storage; no demonstrated trigger there |
 | Allocation analyzer could lose an intermediate over-free after address reuse balanced the ledger | Fixed; chronological unmatched-release events retain line numbers; malformed/empty traces fail | Diagnostic blind spot, not a runtime cause |
 | Raw unwinder PC omitted by symbolizer | Fixed when consistent frames establish the runtime base and bound the address inside the image | Supplied base is `0x7ff7636a0000`; unwinder PC RVA is `0x3fab94` |
@@ -99,17 +101,42 @@ C++'s upstream fixture keeps its local
 MultiCurve alive until scope exit; Haskell does not preserve unused locals that way.
 
 Both MultiCurve fixture builders now construct pricing indexes from external handles.
-The native managed wrapper also promotes the original member handles' shared links to retain
-the group, including indexes constructed before insertion. On group destruction it clears the
-non-owning internal links before destroying curves. An escaped internal index then reports a
-null term structure rather than dereferencing freed memory; external pricing should still use
-owning handles because internal handles suppress notifications. Duplicate member insertion is
-rejected before retaining an alias that would make the group own itself.
+Only the Haskell `MultiCurve` value and the external handles own the group. An original member
+handle owns only its curve, as a moved-in pointer would upstream, so a member can outlive the
+group. Its `GlobalBootstrap` still shares the group's `MultiCurveBootstrap`, which keeps raw
+pointers to every member. On group destruction the managed wrapper therefore detaches each
+bootstrapped member from that bootstrapper, then clears the non-owning internal links, before
+releasing the curves. A survivor bootstraps standalone and reports a null term structure or an
+empty handle rather than dereferencing freed memory. External pricing should still use owning
+handles because internal handles suppress notifications. Duplicate member insertion is rejected
+so the shared bootstrapper never registers one contributor twice.
 
-`CheckMultiCurve` returns only a dependent swap, collects garbage, then first values it.
-External and original-member indexes price successfully under `-A64k`; an internal index raises
-the expected null-term-structure exception. A temporary control using the original implementation
-and internal indexes previously crashed with exit 139.
+An original handle no longer pins the group, so a calculation entered through one can lose the
+group's last owners while its joint bootstrap runs. GHC runs the C finalizers queued by one GC at
+the start of the next, and a quote callback's allocation or explicit collection can start it.
+The group's `shared_ptr` deleter therefore defers deletion until the outermost native call scope
+on that thread ends. The same release already crashed calculations entered through internal-handle
+indexes before this change: valgrind showed `DerivedQuote::value` writing into a quote that the
+group's disposal had freed from inside the finalizer.
+
+The first version of this fix instead promoted each original handle's shared link to own the
+group. A member built on another member's original handle then made the group own itself
+(`hA -> group -> B -> hA`), so the group was never freed. As upstream, a member, helper, or index
+inside the cycle built on an external handle still has that effect; the `multiCurve` Haddock
+states the hazard.
+
+Each `CheckMultiCurve` probe keeps one value alive; all but the last collect garbage before first
+evaluating it. A swap on external indexes prices under `-A64k`. A swap on internal indexes, and
+the original 3m handle after its 6m partner has been freed, raise the null-term-structure
+exception. A spreaded member over the other member's original handle bootstraps, and after GC its
+internal handle is empty, which shows that the group was freed; with the retaining original
+handles the same probe found it still populated. The last probe keeps only the original 6m
+handle, and a quote callback in a 3m helper drops the group's other owners and collects garbage
+inside the joint bootstrap. That call completes, and the next one raises the null-term-structure
+exception. Without the deferred deleter this probe exits with SIGSEGV: valgrind shows
+`GlobalBootstrap::evaluateCostFunction` reading the 3m curve that the finalizer had just freed.
+A temporary control using the original implementation and internal indexes previously crashed
+with exit 139.
 
 ## Reproduction and diagnostics
 
@@ -133,6 +160,13 @@ the current shared header. It invokes every form 1,000 times with guards around 
 c++ -std=c++17 -Icbits -c test/smoke/FdmCallbackFixture.cpp -o /tmp/fdm-callback.o
 ghc -Wall -package-env - -hide-all-packages -package base -i test/smoke/CheckCallbackAbi.hs /tmp/fdm-callback.o -outputdir /tmp/callback-build -o /tmp/callback-abi
 /tmp/callback-abi
+```
+
+The native callback and call-scope check needs only the callback shim and QuantLib:
+
+```sh
+c++ -std=c++17 $(quantlib-config --cflags) -Icbits test/smoke/CheckNativeCallbacks.cpp cbits/qlCallback.cpp -o /tmp/native-callbacks $(quantlib-config --libs)
+/tmp/native-callbacks
 ```
 
 On Windows use GHC's bundled `clang++`, `.exe` output names, and the Windows workflow's link
@@ -181,7 +215,8 @@ the original exception. This replaces the C shim's string error slots and callba
 `CheckCallbackFailure` verifies original exception type/payload through escaped quotes and every
 FDM callback position. `CheckCallbackOwnership` checks escaped native quotes/dependents, payoff
 ADTs, inner values, and grid mappings after GC. `CheckNativeCallbacks.cpp` additionally checks
-last-owner destruction, nested error slots, upstream catches, and unconsumed exception cleanup.
+last-owner destruction, nested error slots, upstream catches, unconsumed exception cleanup, and
+deletion deferred to the outermost call scope.
 
 Both bound FD vanilla engine families validate `StrikedTypePayoff` before calling upstream;
 QuantLib 1.43 otherwise dereferences a failed cast. A CI Hspec regression verifies rejection for
@@ -209,3 +244,12 @@ fixed and `hlint .` passes. GCC tracing checks and the 15 diagnostic-tool tests 
 
 Windows execution remains outstanding; the CI probes and artifact collection are prepared,
 but no Windows workflow has been dispatched from this session.
+
+The MultiCurve detach-on-destruction change was validated on Linux with GHC 9.4.7 and QuantLib 1.43
+built from source. A clean build including both flagged executables reported only the accepted
+generated-import warnings, and `hlint .` (3.5) passes. The suite passed all 635 examples by default
+and in a randomized 64 KB-nursery run. `CheckMultiCurve` passed by default, under `-A64k`, with
+`MALLOC_PERTURB_`, under valgrind with no errors, and traced under `-A64k` with 432 acquisitions
+across 32 classes balanced. The callback, ownership, marshalling and native call-scope probes and
+the 15 diagnostic-tool tests passed. The GHC 8.10 and 9.10 gates, macOS and Windows were not run
+for this change.

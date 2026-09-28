@@ -112,6 +112,6 @@ also get file:line. Minidumps need WinDbg or LLVM's `lldb`.
 The `memory_stress` workflow-dispatch input runs 100 isolated FDM repetitions and ten
 full-suite seeds under both default and 64 KiB nurseries, recording logs and binary hashes
 in `ci-memory`. The ABI, FDM aliasing, callback ownership/exception, and MultiCurve ownership probes run on every
-Windows job. The MultiCurve probe uses `-A64k` and values a dependent instrument after GC.
+Windows job. The MultiCurve probe uses `-A64k` and evaluates each retained instrument or handle after GC.
 The symbolizer also recovers `pc=0x...` when consistent frame addresses establish the
 runtime executable base and bound the PC within the image.
