@@ -233,13 +233,17 @@ gsrReversionSpec =
         expected <- helperOn truth >>= modelValue
         model <- gsrOn 0.01 0.01 0.01 0.01
         h <- helperOn model
-        unfitted <- modelValue h
-        unfitted `shouldNotBe` expected
+        initial <- modelValue h
+        initial `shouldNotBe` expected
         setParams model wanted
         params model `shouldReturn` wanted
         volatilities model `shouldReturn` [0.008, 0.012]
         modelValue h `shouldReturn` expected
-        setParams model (drop 1 wanted) `shouldThrow` anyException
+        -- Upstream writes parameters before checking the size, so either mismatch must not reach it.
+        forM_ [drop 1 wanted, wanted ++ [0.3]] $ \wrong -> do
+          setParams model (map (* 2) wrong) `shouldThrow` anyException
+          params model `shouldReturn` wanted
+          modelValue h `shouldReturn` expected
 
     -- Reversion i is fitted to a swaption starting inside piece i, whose swap spans it. The
     -- forward-measure numeraire couples the pieces, so the passes repeat.

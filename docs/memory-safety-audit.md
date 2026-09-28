@@ -20,7 +20,7 @@ access violation fixed on this evidence alone.
 | MultiCurve pricing indexes used non-owning internal handles after all external owners became unreachable | Fixed in fixtures and the native ownership boundary; group destruction detaches surviving members from the shared bootstrapper and empties internal handles | Reproduced a native SIGSEGV on macOS with `-A64k`; no established connection to the historical Windows failure |
 | Original MultiCurve member handles promoted to group owners let a member own its own group | Fixed; original handles own only their curve, and a spreaded member over another member's original handle no longer leaks the group | Found reviewing the ownership fix; a leak, not a crash |
 | A callback's GC could delete a MultiCurve group during its own joint bootstrap | Fixed; the group's deleter defers deletion until the outermost native call returns | Reproduced a SIGSEGV through internal-handle indexes with the previous shim; no established connection to the historical Windows failure |
-| FDM step conditions can return borrowed overlapping storage to `copyArray` | Fixed with `moveArray`; identity, offset slice, prefix, empty, and long results have a smoke probe | The example's `zipWith` returns fresh storage; no demonstrated trigger there |
+| FDM step conditions can return borrowed overlapping storage to `copyArray` | Fixed with `moveArray`; the identity result has a smoke probe, and other lengths throw `CallbackResultLength` (Hspec) | The example's `zipWith` returns fresh storage; no demonstrated trigger there |
 | Allocation analyzer could lose an intermediate over-free after address reuse balanced the ledger | Fixed; chronological unmatched-release events retain line numbers; malformed/empty traces fail | Diagnostic blind spot, not a runtime cause |
 | Raw unwinder PC omitted by symbolizer | Fixed when consistent frames establish the runtime base and bound the address inside the image | Supplied base is `0x7ff7636a0000`; unwinder PC RVA is `0x3fab94` |
 | Identity hierarchy conversions installed independent finalizers on the same wrapper | Already fixed by `ab00c678`; extended its ownership probe with nested callback quotes and updates | A credible intermittent corruption mechanism, but the triggering conversion/test order is unknown |
@@ -28,8 +28,8 @@ access violation fixed on this evidence alone.
 | Haskell exceptions escape callback entry points | Fixed with callback containment and structured per-call errors; exact Haskell exception types survive native unwinding | No exception trigger established in the original fixture |
 | Continuation-scoped callbacks can outlive their function pointers if an object or native dependent escapes | Fixed with managed Haskell and native shared owners; direct, ADT, and dependent escape probes pass | Inspected example uses remain within their brackets; no escape established |
 
-[`copyArray`](https://downloads.haskell.org/ghc/9.6-latest/docs/libraries/base-4.18.3.0/Foreign-Marshal-Array.html) forbids overlap; returning `id` or a slice is otherwise valid for the public callback
-signature. The regression probe also exercises all record coordinates, including direction 1,
+[`copyArray`](https://downloads.haskell.org/ghc/9.6-latest/docs/libraries/base-4.18.3.0/Foreign-Marshal-Array.html) forbids overlap; returning `id` is valid for the public callback signature, and any other
+length throws. The regression probe also exercises all record coordinates, including direction 1,
 unequal nonzero times and a nonzero splitting scalar. The old pricing fixture ignored several.
 
 ## Audit coverage and limits

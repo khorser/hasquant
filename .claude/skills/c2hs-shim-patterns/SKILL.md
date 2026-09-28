@@ -831,8 +831,9 @@ and decoding; masking only inside `peekDynString` starts after the handoff windo
 
 ## Borrowed callback vectors
 
-A callback can return its input vector or a slice. When native input and output alias
-(FDM step conditions), use `moveArray`, not `copyArray`, before padding the output.
+A callback can return its input vector. When native input and output alias (FDM step
+conditions), use `moveArray`, not `copyArray`. A result of another length throws
+`CallbackResultLength`; never pad or truncate it.
 Do not retain a `borrowRealVector` view beyond the callback; it has no native owner.
 Test field decoding independently of pricing: fixtures often ignore times or directions.
 

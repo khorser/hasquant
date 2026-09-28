@@ -839,8 +839,9 @@ swaptionHelper span' = case span' of
 {#fun qlCalibratedModelParams as params{withCalibratedModel*`GenCalibratedModel m',preDoubleArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Replace the arguments on which calibration is done, in the order 'params' returns them, and
--- notify the model's observers, so engines on it reprice. The array's length must equal
--- 'params''; the model's constraint is not checked. A later 'calibrate' starts from these values.
+-- notify the model's observers, so engines on it reprice. An array whose length differs from
+-- 'params'' throws and leaves the model unchanged; the model's constraint is not checked. A later
+-- 'calibrate' starts from these values.
 {#fun qlCalibratedModelSetParams as setParams{withCalibratedModel*`GenCalibratedModel m'
   ,withDoubleArray*`[Double]'& -- ^params
   ,preErrorCheck-`String'errorCheck*-}->`()'#}

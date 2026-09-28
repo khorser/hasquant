@@ -1520,7 +1520,11 @@ void qlCalibratedModelParams(QlCalibratedModel* o, unsigned *len, double** ps, Q
   try {fillVectorOut([&] {return (*arg(o))->params();}, len, ps);
   } catch (std::exception& er) {handleException<double*>(e, er);}}
 void qlCalibratedModelSetParams(QlCalibratedModel* o, unsigned pLen, double* p, QlError **e) { QlCallScope callbackScope(e);
-  try {(*arg(o))->setParams(Array(p, p+pLen));
+  try {
+    // Upstream writes parameters before its size checks, so validate first to keep the model whole.
+    const Size expected = (*arg(o))->params().size();
+    QL_REQUIRE(pLen == expected, "setParams: expected " << expected << " parameters, got " << pLen);
+    (*arg(o))->setParams(Array(p, p+pLen));
   } catch (std::exception& er) {(void)handleException<int>(e, er);}}
 double qlBlackCalibrationHelperBlackPrice(QlBlackCalibrationHelper* o, double volatility, QlError **e) { QlCallScope callbackScope(e);try {return (*arg(o))->blackPrice(volatility);} catch (std::exception& er) {return handleException<double>(e, er);}}
 double qlBlackCalibrationHelperCalibrationError(QlBlackCalibrationHelper* o, QlError **e) { QlCallScope callbackScope(e);try {return (*arg(o))->calibrationError();} catch (std::exception& er) {return handleException<double>(e, er);}}

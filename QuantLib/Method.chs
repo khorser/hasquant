@@ -291,12 +291,10 @@ import QuantLib.Internal.Type hiding (ptr) -- c2hs {#get#} binds its own `ptr'
 import QuantLib.Internal.Common
 {#import QuantLib.Math#}
 import Foreign.C.Types(CDouble)
-import Foreign.Ptr(Ptr, nullPtr, plusPtr, castPtr)
+import Foreign.Ptr(Ptr, nullPtr, castPtr)
 import Foreign.Marshal.Alloc(alloca)
 import Foreign.Marshal.Array(moveArray)
-import Foreign.Marshal.Utils(fillBytes)
-import Foreign.Storable(sizeOf)
-import Control.Monad(when)
+import Control.Exception(throwIO)
 import qualified Data.Vector.Storable as V
 
 {#pointer *PolymorphicPathGenerator as PathGenerator foreign -> CPathGenerator nocode#}
@@ -319,18 +317,18 @@ import qualified Data.Vector.Storable as V
 {#pointer *QlFdmMesher as FdmMesher foreign -> CFdmMesher nocode#}
 {#pointer *QlFdmInnerValueCalculator as FdmInnerValueCalculator foreign -> CFdmInnerValueCalculator nocode#}
 
-pokeBoundedFdmResult :: Int -> Ptr CDouble -> RealVector -> IO ()
-pokeBoundedFdmResult expected out result = do
-  let copied = min expected (V.length result)
-  V.unsafeWith result $ \p -> moveArray out (castPtr p) copied
-  when (copied < expected) $ fillBytes (out `plusPtr` (copied * sizeOf (undefined :: CDouble))) 0 ((expected - copied) * sizeOf (undefined :: CDouble))
+-- A step condition may return its borrowed input, which shares the output buffer.
+pokeFdmResult :: Int -> Ptr CDouble -> RealVector -> IO ()
+pokeFdmResult expected out result
+  | V.length result /= expected = throwIO (CallbackResultLength expected (V.length result))
+  | otherwise = V.unsafeWith result $ \p -> moveArray out (castPtr p) expected
 
 withFdmResult :: (Callback.CallbackArgs -> RealVector -> RealVector) -> (Ptr () -> IO b) -> IO b
 withFdmResult f use = Callback.withCallback call (`withCallbackPtr` use)
   where
     call args = do
       x <- borrowRealVector (Callback.callbackInput args) (fromIntegral (Callback.callbackSize args))
-      pokeBoundedFdmResult (Callback.callbackSize args) (Callback.callbackOutput args) (f args x)
+      pokeFdmResult (Callback.callbackSize args) (Callback.callbackOutput args) (f args x)
 
 withFdmApply :: ((Double, Double) -> RealVector -> RealVector) -> (Ptr () -> IO b) -> IO b
 withFdmApply f = withFdmResult $ \args -> f (Callback.callbackTime1 args, Callback.callbackTime2 args)
@@ -493,7 +491,8 @@ lsmRegressMulti p order (RealMatrix fr fc fd) t (RealMatrix er ec ed) = qlLsmReg
 --
 -- The grid is a plain @[Double]@ in and out -- no mesher, no @FdmInnerValueCalculator@, no
 -- @FdmSolverDesc@ is bound; callers manage their own grid geometry entirely in Haskell. Boundary
--- conditions are always the empty @FdmBoundaryConditionSet()@ (not bound).
+-- conditions are always the empty @FdmBoundaryConditionSet()@ (not bound). Every callback must
+-- return an array of its input's length; any other length throws 'QuantLib.Context.CallbackResultLength'.
 --
 -- /Only DouglasScheme::step's three virtuals are implemented -- 'apply', 'apply_direction' and/
 -- /'solve_splitting'; @apply_mixed@\/@preconditioner@ are unimplemented and @QL_FAIL@ at the C++/
