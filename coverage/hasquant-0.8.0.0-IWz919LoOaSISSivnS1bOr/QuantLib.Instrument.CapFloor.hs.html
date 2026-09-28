@@ -169,22 +169,22 @@ span.spaces    { background: white }
 <span class="lineno">  150 </span>-- vim: set ff=unix ts=8 sts=2 sw=2 et:
 <span class="lineno">  151 </span>
 <span class="lineno">  152 </span>foreign import ccall safe &quot;QuantLib/Instrument/CapFloor.chs.h qlCap&quot;
-<span class="lineno">  153 </span>  cap'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CCapFloor')))))))
+<span class="lineno">  153 </span>  cap'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CCapFloor')))))))
 <span class="lineno">  154 </span>
 <span class="lineno">  155 </span>foreign import ccall safe &quot;QuantLib/Instrument/CapFloor.chs.h qlCollar&quot;
-<span class="lineno">  156 </span>  collar'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CCapFloor')))))))))
+<span class="lineno">  156 </span>  collar'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CCapFloor')))))))))
 <span class="lineno">  157 </span>
 <span class="lineno">  158 </span>foreign import ccall safe &quot;QuantLib/Instrument/CapFloor.chs.h qlFloor&quot;
-<span class="lineno">  159 </span>  floor'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CCapFloor')))))))
+<span class="lineno">  159 </span>  floor'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CCapFloor')))))))
 <span class="lineno">  160 </span>
 <span class="lineno">  161 </span>foreign import ccall safe &quot;QuantLib/Instrument/CapFloor.chs.h qlCapFloorAtmRate&quot;
-<span class="lineno">  162 </span>  atmRate'_ :: ((C2HSImp.Ptr (CCapFloor')) -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble))))
+<span class="lineno">  162 </span>  atmRate'_ :: ((C2HSImp.Ptr (CCapFloor')) -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble))))
 <span class="lineno">  163 </span>
 <span class="lineno">  164 </span>foreign import ccall safe &quot;QuantLib/Instrument/CapFloor.chs.h qlCapFloorImpliedVolatility&quot;
-<span class="lineno">  165 </span>  impliedVolatility'_ :: ((C2HSImp.Ptr (CCapFloor')) -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble))))))))))))
+<span class="lineno">  165 </span>  impliedVolatility'_ :: ((C2HSImp.Ptr (CCapFloor')) -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble))))))))))))
 <span class="lineno">  166 </span>
 <span class="lineno">  167 </span>foreign import ccall safe &quot;QuantLib/Instrument/CapFloor.chs.h qlCapFloorOptionlet&quot;
-<span class="lineno">  168 </span>  optionlet'_ :: ((C2HSImp.Ptr (CCapFloor')) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CCapFloor'))))))
+<span class="lineno">  168 </span>  optionlet'_ :: ((C2HSImp.Ptr (CCapFloor')) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CCapFloor'))))))
 
 </pre>
 </body>

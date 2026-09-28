@@ -244,7 +244,7 @@ span.spaces    { background: white }
 <span class="lineno">  225 </span>  evaluationDate'_ :: (IO C2HSImp.CInt)
 <span class="lineno">  226 </span>
 <span class="lineno">  227 </span>foreign import ccall safe &quot;QuantLib/Context.chs.h qlSettingsSetEvaluationDate&quot;
-<span class="lineno">  228 </span>  setEvaluationDate'_ :: (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ())))
+<span class="lineno">  228 </span>  setEvaluationDate'_ :: (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO ())))
 <span class="lineno">  229 </span>
 <span class="lineno">  230 </span>foreign import ccall safe &quot;QuantLib/Context.chs.h qlSettingsEnforceTodaysHistoricFixings&quot;
 <span class="lineno">  231 </span>  enforceTodaysHistoricFixings'_ :: (IO C2HSImp.CInt)
@@ -268,7 +268,7 @@ span.spaces    { background: white }
 <span class="lineno">  249 </span>  disableUpdates'_ :: (C2HSImp.CInt -&gt; (IO ()))
 <span class="lineno">  250 </span>
 <span class="lineno">  251 </span>foreign import ccall safe &quot;QuantLib/Context.chs.h qlObservableSettingsEnableUpdates&quot;
-<span class="lineno">  252 </span>  enableUpdates'_ :: ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ()))
+<span class="lineno">  252 </span>  enableUpdates'_ :: ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO ()))
 <span class="lineno">  253 </span>
 <span class="lineno">  254 </span>foreign import ccall safe &quot;QuantLib/Context.chs.h qlObservableSettingsUpdatesEnabled&quot;
 <span class="lineno">  255 </span>  updatesEnabled'_ :: (IO C2HSImp.CInt)

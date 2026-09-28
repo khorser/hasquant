@@ -170,7 +170,7 @@ span.spaces    { background: white }
 <span class="lineno">  151 </span><span class="spaces">  </span><span class="istickedoff">toEnum 6 = Bimonthly</span>
 <span class="lineno">  152 </span><span class="spaces">  </span><span class="istickedoff">toEnum 12 = Monthly</span>
 <span class="lineno">  153 </span><span class="spaces">  </span><span class="istickedoff">toEnum 13 = EveryFourthWeek</span>
-<span class="lineno">  154 </span><span class="spaces">  </span><span class="istickedoff">toEnum 26 = <span class="nottickedoff">Biweekly</span></span>
+<span class="lineno">  154 </span><span class="spaces">  </span><span class="istickedoff">toEnum 26 = Biweekly</span>
 <span class="lineno">  155 </span><span class="spaces">  </span><span class="istickedoff">toEnum 52 = Weekly</span>
 <span class="lineno">  156 </span><span class="spaces">  </span><span class="istickedoff">toEnum 365 = Daily</span>
 <span class="lineno">  157 </span><span class="spaces">  </span><span class="istickedoff">toEnum 999 = <span class="nottickedoff">OtherFrequency</span></span>
@@ -478,55 +478,55 @@ span.spaces    { background: white }
 <span class="lineno">  459 </span>-- vim: set ff=unix ts=8 sts=2 sw=2 et:
 <span class="lineno">  460 </span>
 <span class="lineno">  461 </span>foreign import ccall safe &quot;QuantLib/Time/Schedule.chs.h qlDayCounter&quot;
-<span class="lineno">  462 </span>  qlDayCounter'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CDayCounter))))))
+<span class="lineno">  462 </span>  qlDayCounter'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CDayCounter))))))
 <span class="lineno">  463 </span>
 <span class="lineno">  464 </span>foreign import ccall safe &quot;QuantLib/Time/Schedule.chs.h qlDayCounterBusiness252&quot;
-<span class="lineno">  465 </span>  qlDayCounterBusiness252'_ :: ((C2HSImp.Ptr (CCalendar)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CDayCounter)))))
+<span class="lineno">  465 </span>  qlDayCounterBusiness252'_ :: ((C2HSImp.Ptr (CCalendar)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CDayCounter)))))
 <span class="lineno">  466 </span>
 <span class="lineno">  467 </span>foreign import ccall safe &quot;QuantLib/Time/Schedule.chs.h qlDayCounterActualActualBond&quot;
-<span class="lineno">  468 </span>  actualActualBond''_ :: ((C2HSImp.Ptr (CSchedule)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CDayCounter)))))
+<span class="lineno">  468 </span>  actualActualBond''_ :: ((C2HSImp.Ptr (CSchedule)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CDayCounter)))))
 <span class="lineno">  469 </span>
 <span class="lineno">  470 </span>foreign import ccall safe &quot;QuantLib/Time/Schedule.chs.h qlDayCounterActualActualISMA&quot;
-<span class="lineno">  471 </span>  actualActualISMA''_ :: ((C2HSImp.Ptr (CSchedule)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CDayCounter)))))
+<span class="lineno">  471 </span>  actualActualISMA''_ :: ((C2HSImp.Ptr (CSchedule)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CDayCounter)))))
 <span class="lineno">  472 </span>
 <span class="lineno">  473 </span>foreign import ccall safe &quot;QuantLib/Time/Schedule.chs.h qlDayCounterDayCount&quot;
 <span class="lineno">  474 </span>  days'_ :: ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (IO C2HSImp.CInt))))
 <span class="lineno">  475 </span>
 <span class="lineno">  476 </span>foreign import ccall safe &quot;QuantLib/Time/Schedule.chs.h qlDayCounterYearFraction&quot;
-<span class="lineno">  477 </span>  yearFraction'_ :: ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))))))
+<span class="lineno">  477 </span>  yearFraction'_ :: ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))))))
 <span class="lineno">  478 </span>
 <span class="lineno">  479 </span>foreign import ccall safe &quot;QuantLib/Time/Schedule.chs.h qlSchedule&quot;
-<span class="lineno">  480 </span>  schedule'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CCalendar)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CSchedule)))))))))))))))
+<span class="lineno">  480 </span>  schedule'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CCalendar)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CSchedule)))))))))))))))
 <span class="lineno">  481 </span>
 <span class="lineno">  482 </span>foreign import ccall safe &quot;QuantLib/Time/Schedule.chs.h qlSchedule1&quot;
-<span class="lineno">  483 </span>  fromDates'_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; ((C2HSImp.Ptr (CCalendar)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CSchedule)))))))))))))
+<span class="lineno">  483 </span>  fromDates'_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; ((C2HSImp.Ptr (CCalendar)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CSchedule)))))))))))))
 <span class="lineno">  484 </span>
 <span class="lineno">  485 </span>foreign import ccall safe &quot;QuantLib/Time/Schedule.chs.h qlScheduleUntil&quot;
-<span class="lineno">  486 </span>  until'_ :: ((C2HSImp.Ptr (CSchedule)) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CSchedule))))))
+<span class="lineno">  486 </span>  until'_ :: ((C2HSImp.Ptr (CSchedule)) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CSchedule))))))
 <span class="lineno">  487 </span>
 <span class="lineno">  488 </span>foreign import ccall safe &quot;QuantLib/Time/Schedule.chs.h qlScheduleDates&quot;
-<span class="lineno">  489 </span>  dates'_ :: ((C2HSImp.Ptr (CSchedule)) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CInt)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ())))))
+<span class="lineno">  489 </span>  dates'_ :: ((C2HSImp.Ptr (CSchedule)) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CInt)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO ())))))
 <span class="lineno">  490 </span>
 <span class="lineno">  491 </span>foreign import ccall safe &quot;QuantLib/Time/Schedule.chs.h qlPeriodFromFrequency1&quot;
-<span class="lineno">  492 </span>  fromFrequency'_ :: (C2HSImp.CInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CInt))))
+<span class="lineno">  492 </span>  fromFrequency'_ :: (C2HSImp.CInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CInt))))
 <span class="lineno">  493 </span>
 <span class="lineno">  494 </span>foreign import ccall safe &quot;QuantLib/Time/Schedule.chs.h qlPeriodToFrequency1&quot;
-<span class="lineno">  495 </span>  toFrequency'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CInt))))
+<span class="lineno">  495 </span>  toFrequency'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CInt))))
 <span class="lineno">  496 </span>
 <span class="lineno">  497 </span>foreign import ccall safe &quot;QuantLib/Time/Schedule.chs.h qlPeriodParserParse1&quot;
-<span class="lineno">  498 </span>  parse'_ :: ((C2HSImp.Ptr C2HSImp.CChar) -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CInt))))
+<span class="lineno">  498 </span>  parse'_ :: ((C2HSImp.Ptr C2HSImp.CChar) -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CInt))))
 <span class="lineno">  499 </span>
 <span class="lineno">  500 </span>foreign import ccall safe &quot;QuantLib/Time/Schedule.chs.h qlPeriodAdd1&quot;
-<span class="lineno">  501 </span>  addPeriods'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CInt)))))))
+<span class="lineno">  501 </span>  addPeriods'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CInt)))))))
 <span class="lineno">  502 </span>
 <span class="lineno">  503 </span>foreign import ccall safe &quot;QuantLib/Time/Schedule.chs.h qlPeriodDivide1&quot;
-<span class="lineno">  504 </span>  divide'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CInt))))))
+<span class="lineno">  504 </span>  divide'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CInt))))))
 <span class="lineno">  505 </span>
 <span class="lineno">  506 </span>foreign import ccall safe &quot;QuantLib/Time/Schedule.chs.h qlPeriodsLT1&quot;
-<span class="lineno">  507 </span>  lessThan'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CInt))))))
+<span class="lineno">  507 </span>  lessThan'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CInt))))))
 <span class="lineno">  508 </span>
 <span class="lineno">  509 </span>foreign import ccall safe &quot;QuantLib/Time/Schedule.chs.h qlPeriodNormalize1&quot;
-<span class="lineno">  510 </span>  normalize'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CInt)))))
+<span class="lineno">  510 </span>  normalize'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CInt)))))
 
 </pre>
 </body>

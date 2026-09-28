@@ -321,25 +321,25 @@ span.spaces    { background: white }
 <span class="lineno">  302 </span>-- vim: set ff=unix ts=8 sts=2 sw=2 et:
 <span class="lineno">  303 </span>
 <span class="lineno">  304 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Commodity.chs.h qlCommodityCurve&quot;
-<span class="lineno">  305 </span>  qlCommodityCurve'_ :: ((C2HSImp.Ptr C2HSImp.CChar) -&gt; ((C2HSImp.Ptr (CCommodityType)) -&gt; ((C2HSImp.Ptr (CCurrency)) -&gt; ((C2HSImp.Ptr (CUnitOfMeasure)) -&gt; ((C2HSImp.Ptr (CCalendar)) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CCommodityCurve'))))))))))))))
+<span class="lineno">  305 </span>  qlCommodityCurve'_ :: ((C2HSImp.Ptr C2HSImp.CChar) -&gt; ((C2HSImp.Ptr (CCommodityType)) -&gt; ((C2HSImp.Ptr (CCurrency)) -&gt; ((C2HSImp.Ptr (CUnitOfMeasure)) -&gt; ((C2HSImp.Ptr (CCalendar)) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CCommodityCurve'))))))))))))))
 <span class="lineno">  306 </span>
 <span class="lineno">  307 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Commodity.chs.h qlCommodityCurveName&quot;
 <span class="lineno">  308 </span>  nameRaw'_ :: ((C2HSImp.Ptr (CCommodityCurve')) -&gt; (IO (C2HSImp.Ptr C2HSImp.CChar)))
 <span class="lineno">  309 </span>
 <span class="lineno">  310 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Commodity.chs.h qlCommodityCurveCommodityType&quot;
-<span class="lineno">  311 </span>  commodityType'_ :: ((C2HSImp.Ptr (CCommodityCurve')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CCommodityType)))))
+<span class="lineno">  311 </span>  commodityType'_ :: ((C2HSImp.Ptr (CCommodityCurve')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CCommodityType)))))
 <span class="lineno">  312 </span>
 <span class="lineno">  313 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Commodity.chs.h qlCommodityCurveUnitOfMeasure&quot;
-<span class="lineno">  314 </span>  unitOfMeasure'_ :: ((C2HSImp.Ptr (CCommodityCurve')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CUnitOfMeasure)))))
+<span class="lineno">  314 </span>  unitOfMeasure'_ :: ((C2HSImp.Ptr (CCommodityCurve')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CUnitOfMeasure)))))
 <span class="lineno">  315 </span>
 <span class="lineno">  316 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Commodity.chs.h qlCommodityCurveCurrency&quot;
-<span class="lineno">  317 </span>  currency'_ :: ((C2HSImp.Ptr (CCommodityCurve')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CCurrency)))))
+<span class="lineno">  317 </span>  currency'_ :: ((C2HSImp.Ptr (CCommodityCurve')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CCurrency)))))
 <span class="lineno">  318 </span>
 <span class="lineno">  319 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Commodity.chs.h qlCommodityCurveDates&quot;
-<span class="lineno">  320 </span>  qlCommodityCurveDates'_ :: ((C2HSImp.Ptr (CCommodityCurve')) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CInt)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ())))))
+<span class="lineno">  320 </span>  qlCommodityCurveDates'_ :: ((C2HSImp.Ptr (CCommodityCurve')) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CInt)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO ())))))
 <span class="lineno">  321 </span>
 <span class="lineno">  322 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Commodity.chs.h qlCommodityCurvePrices&quot;
-<span class="lineno">  323 </span>  qlCommodityCurvePrices'_ :: ((C2HSImp.Ptr (CCommodityCurve')) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ())))))
+<span class="lineno">  323 </span>  qlCommodityCurvePrices'_ :: ((C2HSImp.Ptr (CCommodityCurve')) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO ())))))
 <span class="lineno">  324 </span>
 <span class="lineno">  325 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Commodity.chs.h qlCommodityCurveEmpty&quot;
 <span class="lineno">  326 </span>  isEmpty'_ :: ((C2HSImp.Ptr (CCommodityCurve')) -&gt; (IO C2HSImp.CInt))
@@ -348,16 +348,16 @@ span.spaces    { background: white }
 <span class="lineno">  329 </span>  basisOfCurve'_ :: ((C2HSImp.Ptr (CCommodityCurve')) -&gt; (IO (C2HSImp.Ptr (CCommodityCurve'))))
 <span class="lineno">  330 </span>
 <span class="lineno">  331 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Commodity.chs.h qlCommodityCurveSetBasisOfCurve&quot;
-<span class="lineno">  332 </span>  setBasisOfCurve'_ :: ((C2HSImp.Ptr (CCommodityCurve')) -&gt; ((C2HSImp.Ptr (CCommodityCurve')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ()))))
+<span class="lineno">  332 </span>  setBasisOfCurve'_ :: ((C2HSImp.Ptr (CCommodityCurve')) -&gt; ((C2HSImp.Ptr (CCommodityCurve')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO ()))))
 <span class="lineno">  333 </span>
 <span class="lineno">  334 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Commodity.chs.h qlCommodityCurvePrice&quot;
-<span class="lineno">  335 </span>  qlCommodityCurvePrice_'_ :: ((C2HSImp.Ptr (CCommodityCurve')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))))))))))))))
+<span class="lineno">  335 </span>  qlCommodityCurvePrice_'_ :: ((C2HSImp.Ptr (CCommodityCurve')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))))))))))))))
 <span class="lineno">  336 </span>
 <span class="lineno">  337 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Commodity.chs.h qlCommodityCurveBasisOfPrice&quot;
-<span class="lineno">  338 </span>  basisOfPrice'_ :: ((C2HSImp.Ptr (CCommodityCurve')) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble))))
+<span class="lineno">  338 </span>  basisOfPrice'_ :: ((C2HSImp.Ptr (CCommodityCurve')) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble))))
 <span class="lineno">  339 </span>
 <span class="lineno">  340 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Commodity.chs.h qlCommodityCurveUnderlyingPriceDate&quot;
-<span class="lineno">  341 </span>  qlCommodityCurveUnderlyingPriceDate_'_ :: ((C2HSImp.Ptr (CCommodityCurve')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CInt)))))))))))))))
+<span class="lineno">  341 </span>  qlCommodityCurveUnderlyingPriceDate_'_ :: ((C2HSImp.Ptr (CCommodityCurve')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CInt)))))))))))))))
 
 </pre>
 </body>

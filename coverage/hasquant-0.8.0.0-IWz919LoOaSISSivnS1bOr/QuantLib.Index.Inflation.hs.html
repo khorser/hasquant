@@ -421,37 +421,37 @@ span.spaces    { background: white }
 <span class="lineno">  402 </span>-- vim: set ff=unix ts=8 sts=2 sw=2 et:
 <span class="lineno">  403 </span>
 <span class="lineno">  404 </span>foreign import ccall safe &quot;QuantLib/Index/Inflation.chs.h qlCreateZeroInflationIndex&quot;
-<span class="lineno">  405 </span>  zeroInflationIndex'_ :: (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CZeroInflationIndex')))))
+<span class="lineno">  405 </span>  zeroInflationIndex'_ :: (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CZeroInflationIndex')))))
 <span class="lineno">  406 </span>
 <span class="lineno">  407 </span>foreign import ccall safe &quot;QuantLib/Index/Inflation.chs.h qlCreateYoYInflationIndex&quot;
-<span class="lineno">  408 </span>  yoyInflationIndex'_ :: (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CYoYInflationIndex')))))
+<span class="lineno">  408 </span>  yoyInflationIndex'_ :: (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CYoYInflationIndex')))))
 <span class="lineno">  409 </span>
 <span class="lineno">  410 </span>foreign import ccall safe &quot;QuantLib/Index/Inflation.chs.h qlRegion&quot;
-<span class="lineno">  411 </span>  region'_ :: (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CRegion)))))
+<span class="lineno">  411 </span>  region'_ :: (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CRegion)))))
 <span class="lineno">  412 </span>
 <span class="lineno">  413 </span>foreign import ccall safe &quot;QuantLib/Index/Inflation.chs.h qlCreateRegion&quot;
-<span class="lineno">  414 </span>  customRegion'_ :: ((C2HSImp.Ptr C2HSImp.CChar) -&gt; ((C2HSImp.Ptr C2HSImp.CChar) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CRegion))))))
+<span class="lineno">  414 </span>  customRegion'_ :: ((C2HSImp.Ptr C2HSImp.CChar) -&gt; ((C2HSImp.Ptr C2HSImp.CChar) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CRegion))))))
 <span class="lineno">  415 </span>
 <span class="lineno">  416 </span>foreign import ccall safe &quot;QuantLib/Index/Inflation.chs.h qlZeroInflationIndex&quot;
-<span class="lineno">  417 </span>  customZeroInflationIndex'_ :: ((C2HSImp.Ptr C2HSImp.CChar) -&gt; ((C2HSImp.Ptr (CRegion)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CCurrency)) -&gt; ((C2HSImp.Ptr (CZeroInflationTermStructure')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CZeroInflationIndex'))))))))))))
+<span class="lineno">  417 </span>  customZeroInflationIndex'_ :: ((C2HSImp.Ptr C2HSImp.CChar) -&gt; ((C2HSImp.Ptr (CRegion)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CCurrency)) -&gt; ((C2HSImp.Ptr (CZeroInflationTermStructure')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CZeroInflationIndex'))))))))))))
 <span class="lineno">  418 </span>
 <span class="lineno">  419 </span>foreign import ccall safe &quot;QuantLib/Index/Inflation.chs.h qlYoYInflationIndex&quot;
-<span class="lineno">  420 </span>  customYoyInflationIndex'_ :: ((C2HSImp.Ptr C2HSImp.CChar) -&gt; ((C2HSImp.Ptr (CRegion)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CCurrency)) -&gt; ((C2HSImp.Ptr (CYoYInflationTermStructure')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CYoYInflationIndex'))))))))))))
+<span class="lineno">  420 </span>  customYoyInflationIndex'_ :: ((C2HSImp.Ptr C2HSImp.CChar) -&gt; ((C2HSImp.Ptr (CRegion)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CCurrency)) -&gt; ((C2HSImp.Ptr (CYoYInflationTermStructure')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CYoYInflationIndex'))))))))))))
 <span class="lineno">  421 </span>
 <span class="lineno">  422 </span>foreign import ccall safe &quot;QuantLib/Index/Inflation.chs.h qlYoYInflationIndexFromZero&quot;
-<span class="lineno">  423 </span>  yoyInflationIndexFromZero'_ :: ((C2HSImp.Ptr (CZeroInflationIndex')) -&gt; ((C2HSImp.Ptr (CYoYInflationTermStructure')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CYoYInflationIndex'))))))
+<span class="lineno">  423 </span>  yoyInflationIndexFromZero'_ :: ((C2HSImp.Ptr (CZeroInflationIndex')) -&gt; ((C2HSImp.Ptr (CYoYInflationTermStructure')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CYoYInflationIndex'))))))
 <span class="lineno">  424 </span>
 <span class="lineno">  425 </span>foreign import ccall safe &quot;QuantLib/Index/Inflation.chs.h qlZeroInflationIndexFixing&quot;
-<span class="lineno">  426 </span>  fixing'_ :: ((C2HSImp.Ptr (CZeroInflationIndex')) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble))))
+<span class="lineno">  426 </span>  fixing'_ :: ((C2HSImp.Ptr (CZeroInflationIndex')) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble))))
 <span class="lineno">  427 </span>
 <span class="lineno">  428 </span>foreign import ccall safe &quot;QuantLib/Index/Inflation.chs.h qlYoYInflationIndexFixing&quot;
-<span class="lineno">  429 </span>  yoyFixing'_ :: ((C2HSImp.Ptr (CYoYInflationIndex')) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble))))
+<span class="lineno">  429 </span>  yoyFixing'_ :: ((C2HSImp.Ptr (CYoYInflationIndex')) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble))))
 <span class="lineno">  430 </span>
 <span class="lineno">  431 </span>foreign import ccall safe &quot;QuantLib/Index/Inflation.chs.h qlZeroInflationIndexNeedsForecast&quot;
-<span class="lineno">  432 </span>  needsForecast'_ :: ((C2HSImp.Ptr (CZeroInflationIndex')) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CInt))))
+<span class="lineno">  432 </span>  needsForecast'_ :: ((C2HSImp.Ptr (CZeroInflationIndex')) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CInt))))
 <span class="lineno">  433 </span>
 <span class="lineno">  434 </span>foreign import ccall safe &quot;QuantLib/Index/Inflation.chs.h qlYoYInflationIndexNeedsForecast&quot;
-<span class="lineno">  435 </span>  yoyNeedsForecast'_ :: ((C2HSImp.Ptr (CYoYInflationIndex')) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CInt))))
+<span class="lineno">  435 </span>  yoyNeedsForecast'_ :: ((C2HSImp.Ptr (CYoYInflationIndex')) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CInt))))
 
 </pre>
 </body>

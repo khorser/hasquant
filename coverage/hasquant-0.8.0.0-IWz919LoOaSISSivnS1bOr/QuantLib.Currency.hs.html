@@ -938,7 +938,7 @@ span.spaces    { background: white }
 <span class="lineno">  919 </span>-- vim: set ff=unix ts=8 sts=2 sw=2 et:
 <span class="lineno">  920 </span>
 <span class="lineno">  921 </span>foreign import ccall safe &quot;QuantLib/Currency.chs.h qlCurrency&quot;
-<span class="lineno">  922 </span>  currency'_ :: (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CCurrency)))))
+<span class="lineno">  922 </span>  currency'_ :: (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CCurrency)))))
 <span class="lineno">  923 </span>
 <span class="lineno">  924 </span>foreign import ccall safe &quot;QuantLib/Currency.chs.h qlCurrencyCode&quot;
 <span class="lineno">  925 </span>  codeRaw'_ :: ((C2HSImp.Ptr (CCurrency)) -&gt; (IO (C2HSImp.Ptr C2HSImp.CChar)))
@@ -956,10 +956,10 @@ span.spaces    { background: white }
 <span class="lineno">  937 </span>  symbol'_ :: ((C2HSImp.Ptr (CCurrency)) -&gt; (IO (C2HSImp.Ptr C2HSImp.CChar)))
 <span class="lineno">  938 </span>
 <span class="lineno">  939 </span>foreign import ccall safe &quot;QuantLib/Currency.chs.h qlCreateCurrency&quot;
-<span class="lineno">  940 </span>  customCurrency'_ :: ((C2HSImp.Ptr C2HSImp.CChar) -&gt; ((C2HSImp.Ptr C2HSImp.CChar) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr C2HSImp.CChar) -&gt; ((C2HSImp.Ptr C2HSImp.CChar) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CRounding)) -&gt; ((C2HSImp.Ptr (CCurrency)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CCurrency))))))))))))
+<span class="lineno">  940 </span>  customCurrency'_ :: ((C2HSImp.Ptr C2HSImp.CChar) -&gt; ((C2HSImp.Ptr C2HSImp.CChar) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr C2HSImp.CChar) -&gt; ((C2HSImp.Ptr C2HSImp.CChar) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CRounding)) -&gt; ((C2HSImp.Ptr (CCurrency)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CCurrency))))))))))))
 <span class="lineno">  941 </span>
 <span class="lineno">  942 </span>foreign import ccall safe &quot;QuantLib/Currency.chs.h qlExchangeRate&quot;
-<span class="lineno">  943 </span>  exchangeRate'_ :: ((C2HSImp.Ptr (CCurrency)) -&gt; ((C2HSImp.Ptr (CCurrency)) -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CExchangeRate)))))))
+<span class="lineno">  943 </span>  exchangeRate'_ :: ((C2HSImp.Ptr (CCurrency)) -&gt; ((C2HSImp.Ptr (CCurrency)) -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CExchangeRate)))))))
 <span class="lineno">  944 </span>
 <span class="lineno">  945 </span>foreign import ccall safe &quot;QuantLib/Currency.chs.h qlExchangeRateRate&quot;
 <span class="lineno">  946 </span>  rate'_ :: ((C2HSImp.Ptr (CExchangeRate)) -&gt; (IO C2HSImp.CDouble))
@@ -968,16 +968,16 @@ span.spaces    { background: white }
 <span class="lineno">  949 </span>  exchangeRateType'_ :: ((C2HSImp.Ptr (CExchangeRate)) -&gt; (IO C2HSImp.CInt))
 <span class="lineno">  950 </span>
 <span class="lineno">  951 </span>foreign import ccall safe &quot;QuantLib/Currency.chs.h qlExchangeRateExchange&quot;
-<span class="lineno">  952 </span>  exchange'_ :: ((C2HSImp.Ptr (CExchangeRate)) -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (CCurrency)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr (CCurrency))) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble))))))
+<span class="lineno">  952 </span>  exchange'_ :: ((C2HSImp.Ptr (CExchangeRate)) -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (CCurrency)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr (CCurrency))) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble))))))
 <span class="lineno">  953 </span>
 <span class="lineno">  954 </span>foreign import ccall safe &quot;QuantLib/Currency.chs.h qlExchangeRateChain&quot;
-<span class="lineno">  955 </span>  chainExchangeRate'_ :: ((C2HSImp.Ptr (CExchangeRate)) -&gt; ((C2HSImp.Ptr (CExchangeRate)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CExchangeRate))))))
+<span class="lineno">  955 </span>  chainExchangeRate'_ :: ((C2HSImp.Ptr (CExchangeRate)) -&gt; ((C2HSImp.Ptr (CExchangeRate)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CExchangeRate))))))
 <span class="lineno">  956 </span>
 <span class="lineno">  957 </span>foreign import ccall safe &quot;QuantLib/Currency.chs.h qlExchangeRateManagerAdd&quot;
-<span class="lineno">  958 </span>  addExchangeRate'_ :: ((C2HSImp.Ptr (CExchangeRate)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ())))))
+<span class="lineno">  958 </span>  addExchangeRate'_ :: ((C2HSImp.Ptr (CExchangeRate)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO ())))))
 <span class="lineno">  959 </span>
 <span class="lineno">  960 </span>foreign import ccall safe &quot;QuantLib/Currency.chs.h qlExchangeRateManagerLookup&quot;
-<span class="lineno">  961 </span>  lookupExchangeRate'_ :: ((C2HSImp.Ptr (CCurrency)) -&gt; ((C2HSImp.Ptr (CCurrency)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CExchangeRate))))))))
+<span class="lineno">  961 </span>  lookupExchangeRate'_ :: ((C2HSImp.Ptr (CCurrency)) -&gt; ((C2HSImp.Ptr (CCurrency)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CExchangeRate))))))))
 <span class="lineno">  962 </span>
 <span class="lineno">  963 </span>foreign import ccall safe &quot;QuantLib/Currency.chs.h qlExchangeRateManagerClear&quot;
 <span class="lineno">  964 </span>  clearExchangeRates'_ :: (IO ())
@@ -989,13 +989,13 @@ span.spaces    { background: white }
 <span class="lineno">  970 </span>  setMoneyConversionType'_ :: (C2HSImp.CInt -&gt; (IO ()))
 <span class="lineno">  971 </span>
 <span class="lineno">  972 </span>foreign import ccall safe &quot;QuantLib/Currency.chs.h qlMoneySettingsBaseCurrency&quot;
-<span class="lineno">  973 </span>  moneyBaseCurrency'_ :: ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CCurrency))))
+<span class="lineno">  973 </span>  moneyBaseCurrency'_ :: ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CCurrency))))
 <span class="lineno">  974 </span>
 <span class="lineno">  975 </span>foreign import ccall safe &quot;QuantLib/Currency.chs.h qlMoneySettingsSetBaseCurrency&quot;
 <span class="lineno">  976 </span>  setMoneyBaseCurrency'_ :: ((C2HSImp.Ptr (CCurrency)) -&gt; (IO ()))
 <span class="lineno">  977 </span>
 <span class="lineno">  978 </span>foreign import ccall safe &quot;QuantLib/Currency.chs.h qlConvertToBaseCurrency&quot;
-<span class="lineno">  979 </span>  convertToBaseCurrency'_ :: (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (CCurrency)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr (CCurrency))) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))))
+<span class="lineno">  979 </span>  convertToBaseCurrency'_ :: (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (CCurrency)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr (CCurrency))) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))))
 
 </pre>
 </body>

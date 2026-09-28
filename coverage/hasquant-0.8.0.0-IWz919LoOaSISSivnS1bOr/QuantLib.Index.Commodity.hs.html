@@ -132,13 +132,13 @@ span.spaces    { background: white }
 <span class="lineno">  113 </span>-- vim: set ff=unix ts=8 sts=2 sw=2 et:
 <span class="lineno">  114 </span>
 <span class="lineno">  115 </span>foreign import ccall safe &quot;QuantLib/Index/Commodity.chs.h qlCommodityIndex&quot;
-<span class="lineno">  116 </span>  commodityIndex'_ :: ((C2HSImp.Ptr C2HSImp.CChar) -&gt; ((C2HSImp.Ptr (CCommodityType)) -&gt; ((C2HSImp.Ptr (CCurrency)) -&gt; ((C2HSImp.Ptr (CUnitOfMeasure)) -&gt; ((C2HSImp.Ptr (CCalendar)) -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (CCommodityCurve')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CCommodityIndex')))))))))))
+<span class="lineno">  116 </span>  commodityIndex'_ :: ((C2HSImp.Ptr C2HSImp.CChar) -&gt; ((C2HSImp.Ptr (CCommodityType)) -&gt; ((C2HSImp.Ptr (CCurrency)) -&gt; ((C2HSImp.Ptr (CUnitOfMeasure)) -&gt; ((C2HSImp.Ptr (CCalendar)) -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (CCommodityCurve')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CCommodityIndex')))))))))))
 <span class="lineno">  117 </span>
 <span class="lineno">  118 </span>foreign import ccall safe &quot;QuantLib/Index/Commodity.chs.h qlCommodityIndexForwardPrice&quot;
-<span class="lineno">  119 </span>  forwardPrice'_ :: ((C2HSImp.Ptr (CCommodityIndex')) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble))))
+<span class="lineno">  119 </span>  forwardPrice'_ :: ((C2HSImp.Ptr (CCommodityIndex')) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble))))
 <span class="lineno">  120 </span>
 <span class="lineno">  121 </span>foreign import ccall safe &quot;QuantLib/Index/Commodity.chs.h qlCommodityIndexLastQuoteDate&quot;
-<span class="lineno">  122 </span>  lastQuoteDate'_ :: ((C2HSImp.Ptr (CCommodityIndex')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CInt)))
+<span class="lineno">  122 </span>  lastQuoteDate'_ :: ((C2HSImp.Ptr (CCommodityIndex')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CInt)))
 <span class="lineno">  123 </span>
 <span class="lineno">  124 </span>foreign import ccall safe &quot;QuantLib/Index/Commodity.chs.h qlCommodityIndexEmpty&quot;
 <span class="lineno">  125 </span>  isEmpty'_ :: ((C2HSImp.Ptr (CCommodityIndex')) -&gt; (IO C2HSImp.CInt))

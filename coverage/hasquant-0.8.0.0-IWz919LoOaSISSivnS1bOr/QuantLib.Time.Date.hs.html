@@ -303,12 +303,12 @@ span.spaces    { background: white }
 <span class="lineno">  284 </span><span class="spaces">  </span><span class="istickedoff">fromEnum Sat = 7</span></span>
 <span class="lineno">  285 </span>
 <span class="lineno">  286 </span>  <span class="decl"><span class="istickedoff">toEnum 1 = <span class="nottickedoff">Sunday</span></span>
-<span class="lineno">  287 </span><span class="spaces">  </span><span class="istickedoff">toEnum 2 = <span class="nottickedoff">Monday</span></span>
+<span class="lineno">  287 </span><span class="spaces">  </span><span class="istickedoff">toEnum 2 = Monday</span>
 <span class="lineno">  288 </span><span class="spaces">  </span><span class="istickedoff">toEnum 3 = <span class="nottickedoff">Tuesday</span></span>
 <span class="lineno">  289 </span><span class="spaces">  </span><span class="istickedoff">toEnum 4 = <span class="nottickedoff">Wednesday</span></span>
 <span class="lineno">  290 </span><span class="spaces">  </span><span class="istickedoff">toEnum 5 = <span class="nottickedoff">Thursday</span></span>
 <span class="lineno">  291 </span><span class="spaces">  </span><span class="istickedoff">toEnum 6 = <span class="nottickedoff">Friday</span></span>
-<span class="lineno">  292 </span><span class="spaces">  </span><span class="istickedoff">toEnum 7 = Saturday</span>
+<span class="lineno">  292 </span><span class="spaces">  </span><span class="istickedoff">toEnum 7 = <span class="nottickedoff">Saturday</span></span>
 <span class="lineno">  293 </span><span class="spaces">  </span><span class="istickedoff">toEnum unmatched = <span class="nottickedoff">error (&quot;Weekday.toEnum: Cannot match &quot; ++ show unmatched)</span></span></span>
 <span class="lineno">  294 </span>
 <span class="lineno">  295 </span>
@@ -817,13 +817,13 @@ span.spaces    { background: white }
 <span class="lineno">  798 </span>  nextWeekday'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (IO C2HSImp.CInt)))
 <span class="lineno">  799 </span>
 <span class="lineno">  800 </span>foreign import ccall safe &quot;QuantLib/Time/Date.chs.h qlDateNthWeekday&quot;
-<span class="lineno">  801 </span>  nthWeekday'_ :: (C2HSImp.CUInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CInt))))))
+<span class="lineno">  801 </span>  nthWeekday'_ :: (C2HSImp.CUInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CInt))))))
 <span class="lineno">  802 </span>
 <span class="lineno">  803 </span>foreign import ccall safe &quot;QuantLib/Time/Date.chs.h qlIMMCode&quot;
-<span class="lineno">  804 </span>  immCode'_ :: (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr C2HSImp.CChar))))
+<span class="lineno">  804 </span>  immCode'_ :: (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr C2HSImp.CChar))))
 <span class="lineno">  805 </span>
 <span class="lineno">  806 </span>foreign import ccall safe &quot;QuantLib/Time/Date.chs.h qlIMMDate&quot;
-<span class="lineno">  807 </span>  immDate'_ :: ((C2HSImp.Ptr C2HSImp.CChar) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CInt))))
+<span class="lineno">  807 </span>  immDate'_ :: ((C2HSImp.Ptr C2HSImp.CChar) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CInt))))
 <span class="lineno">  808 </span>
 <span class="lineno">  809 </span>foreign import ccall safe &quot;QuantLib/Time/Date.chs.h qlIMMIsIMMcode&quot;
 <span class="lineno">  810 </span>  isImmCode'_ :: ((C2HSImp.Ptr C2HSImp.CChar) -&gt; (C2HSImp.CInt -&gt; (IO C2HSImp.CInt)))
@@ -832,61 +832,61 @@ span.spaces    { background: white }
 <span class="lineno">  813 </span>  isImmDate'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (IO C2HSImp.CInt)))
 <span class="lineno">  814 </span>
 <span class="lineno">  815 </span>foreign import ccall safe &quot;QuantLib/Time/Date.chs.h qlIMMNextCode1&quot;
-<span class="lineno">  816 </span>  nextImmCodeFromCode'_ :: ((C2HSImp.Ptr C2HSImp.CChar) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr C2HSImp.CChar))))))
+<span class="lineno">  816 </span>  nextImmCodeFromCode'_ :: ((C2HSImp.Ptr C2HSImp.CChar) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr C2HSImp.CChar))))))
 <span class="lineno">  817 </span>
 <span class="lineno">  818 </span>foreign import ccall safe &quot;QuantLib/Time/Date.chs.h qlIMMNextCode&quot;
 <span class="lineno">  819 </span>  nextImmCodeRaw'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (IO (C2HSImp.Ptr C2HSImp.CChar))))
 <span class="lineno">  820 </span>
 <span class="lineno">  821 </span>foreign import ccall safe &quot;QuantLib/Time/Date.chs.h qlIMMNextDate1&quot;
-<span class="lineno">  822 </span>  nextImmDateFromCode'_ :: ((C2HSImp.Ptr C2HSImp.CChar) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CInt)))))
+<span class="lineno">  822 </span>  nextImmDateFromCode'_ :: ((C2HSImp.Ptr C2HSImp.CChar) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CInt)))))
 <span class="lineno">  823 </span>
 <span class="lineno">  824 </span>foreign import ccall safe &quot;QuantLib/Time/Date.chs.h qlIMMNextDate&quot;
 <span class="lineno">  825 </span>  nextImmDate'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (IO C2HSImp.CInt)))
 <span class="lineno">  826 </span>
 <span class="lineno">  827 </span>foreign import ccall safe &quot;QuantLib/Time/Date.chs.h qlAddPeriod&quot;
-<span class="lineno">  828 </span>  addPeriod'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CInt)))))
+<span class="lineno">  828 </span>  addPeriod'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CInt)))))
 <span class="lineno">  829 </span>
 <span class="lineno">  830 </span>foreign import ccall safe &quot;QuantLib/Time/Date.chs.h qlECBAddDate&quot;
-<span class="lineno">  831 </span>  addEcbDate'_ :: (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ())))
+<span class="lineno">  831 </span>  addEcbDate'_ :: (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO ())))
 <span class="lineno">  832 </span>
 <span class="lineno">  833 </span>foreign import ccall safe &quot;QuantLib/Time/Date.chs.h qlECBCode&quot;
-<span class="lineno">  834 </span>  ecbCode'_ :: (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr C2HSImp.CChar))))
+<span class="lineno">  834 </span>  ecbCode'_ :: (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr C2HSImp.CChar))))
 <span class="lineno">  835 </span>
 <span class="lineno">  836 </span>foreign import ccall safe &quot;QuantLib/Time/Date.chs.h qlECBDate1&quot;
-<span class="lineno">  837 </span>  ecbDateFromCode'_ :: ((C2HSImp.Ptr C2HSImp.CChar) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CInt))))
+<span class="lineno">  837 </span>  ecbDateFromCode'_ :: ((C2HSImp.Ptr C2HSImp.CChar) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CInt))))
 <span class="lineno">  838 </span>
 <span class="lineno">  839 </span>foreign import ccall safe &quot;QuantLib/Time/Date.chs.h qlECBDate&quot;
-<span class="lineno">  840 </span>  ecbDate'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CInt))))
+<span class="lineno">  840 </span>  ecbDate'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CInt))))
 <span class="lineno">  841 </span>
 <span class="lineno">  842 </span>foreign import ccall safe &quot;QuantLib/Time/Date.chs.h qlECBIsECBcode&quot;
-<span class="lineno">  843 </span>  isEcbCode'_ :: ((C2HSImp.Ptr C2HSImp.CChar) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CInt)))
+<span class="lineno">  843 </span>  isEcbCode'_ :: ((C2HSImp.Ptr C2HSImp.CChar) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CInt)))
 <span class="lineno">  844 </span>
 <span class="lineno">  845 </span>foreign import ccall safe &quot;QuantLib/Time/Date.chs.h qlECBIsECBdate&quot;
-<span class="lineno">  846 </span>  isEcbDate'_ :: (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CInt)))
+<span class="lineno">  846 </span>  isEcbDate'_ :: (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CInt)))
 <span class="lineno">  847 </span>
 <span class="lineno">  848 </span>foreign import ccall safe &quot;QuantLib/Time/Date.chs.h qlECBKnownDates&quot;
-<span class="lineno">  849 </span>  knownEcbDates'_ :: ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CInt)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ()))))
+<span class="lineno">  849 </span>  knownEcbDates'_ :: ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CInt)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO ()))))
 <span class="lineno">  850 </span>
 <span class="lineno">  851 </span>foreign import ccall safe &quot;QuantLib/Time/Date.chs.h qlECBNextCode1&quot;
-<span class="lineno">  852 </span>  nextEcbCodeFromCode'_ :: ((C2HSImp.Ptr C2HSImp.CChar) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr C2HSImp.CChar))))
+<span class="lineno">  852 </span>  nextEcbCodeFromCode'_ :: ((C2HSImp.Ptr C2HSImp.CChar) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr C2HSImp.CChar))))
 <span class="lineno">  853 </span>
 <span class="lineno">  854 </span>foreign import ccall safe &quot;QuantLib/Time/Date.chs.h qlECBNextCode&quot;
-<span class="lineno">  855 </span>  nextEcbCode'_ :: (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr C2HSImp.CChar))))
+<span class="lineno">  855 </span>  nextEcbCode'_ :: (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr C2HSImp.CChar))))
 <span class="lineno">  856 </span>
 <span class="lineno">  857 </span>foreign import ccall safe &quot;QuantLib/Time/Date.chs.h qlECBNextDate1&quot;
-<span class="lineno">  858 </span>  nextEcbDateFromCode'_ :: ((C2HSImp.Ptr C2HSImp.CChar) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CInt))))
+<span class="lineno">  858 </span>  nextEcbDateFromCode'_ :: ((C2HSImp.Ptr C2HSImp.CChar) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CInt))))
 <span class="lineno">  859 </span>
 <span class="lineno">  860 </span>foreign import ccall safe &quot;QuantLib/Time/Date.chs.h qlECBNextDate&quot;
-<span class="lineno">  861 </span>  nextEcbDate'_ :: (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CInt)))
+<span class="lineno">  861 </span>  nextEcbDate'_ :: (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CInt)))
 <span class="lineno">  862 </span>
 <span class="lineno">  863 </span>foreign import ccall safe &quot;QuantLib/Time/Date.chs.h qlECBNextDates1&quot;
-<span class="lineno">  864 </span>  nextEcbDatesFromCode'_ :: ((C2HSImp.Ptr C2HSImp.CChar) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CInt)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ()))))))
+<span class="lineno">  864 </span>  nextEcbDatesFromCode'_ :: ((C2HSImp.Ptr C2HSImp.CChar) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CInt)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO ()))))))
 <span class="lineno">  865 </span>
 <span class="lineno">  866 </span>foreign import ccall safe &quot;QuantLib/Time/Date.chs.h qlECBNextDates&quot;
-<span class="lineno">  867 </span>  nextEcbDates'_ :: (C2HSImp.CInt -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CInt)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ())))))
+<span class="lineno">  867 </span>  nextEcbDates'_ :: (C2HSImp.CInt -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CInt)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO ())))))
 <span class="lineno">  868 </span>
 <span class="lineno">  869 </span>foreign import ccall safe &quot;QuantLib/Time/Date.chs.h qlECBRemoveDate&quot;
-<span class="lineno">  870 </span>  removeEcbDate'_ :: (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO ())))
+<span class="lineno">  870 </span>  removeEcbDate'_ :: (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO ())))
 
 </pre>
 </body>

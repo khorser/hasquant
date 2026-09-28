@@ -289,31 +289,31 @@ span.spaces    { background: white }
 <span class="lineno">  270 </span>-- vim: set ff=unix ts=8 sts=2 sw=2 et:
 <span class="lineno">  271 </span>
 <span class="lineno">  272 </span>foreign import ccall safe &quot;QuantLib/TermStructure.chs.h qlBondHelperBond&quot;
-<span class="lineno">  273 </span>  qlBondHelperBond'_ :: ((C2HSImp.Ptr (CBondHelper')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CBond')))))
+<span class="lineno">  273 </span>  qlBondHelperBond'_ :: ((C2HSImp.Ptr (CBondHelper')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CBond')))))
 <span class="lineno">  274 </span>
 <span class="lineno">  275 </span>foreign import ccall safe &quot;QuantLib/TermStructure.chs.h qlSwapRateHelperSwap&quot;
-<span class="lineno">  276 </span>  qlSwapRateHelperSwap'_ :: ((C2HSImp.Ptr (CSwapRateHelper')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CVanillaSwap')))))
+<span class="lineno">  276 </span>  qlSwapRateHelperSwap'_ :: ((C2HSImp.Ptr (CSwapRateHelper')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CVanillaSwap')))))
 <span class="lineno">  277 </span>
 <span class="lineno">  278 </span>foreign import ccall safe &quot;QuantLib/TermStructure.chs.h qlOISRateHelperSwap&quot;
-<span class="lineno">  279 </span>  qlOISRateHelperSwap'_ :: ((C2HSImp.Ptr (COISRateHelper')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (COvernightIndexedSwap')))))
+<span class="lineno">  279 </span>  qlOISRateHelperSwap'_ :: ((C2HSImp.Ptr (COISRateHelper')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (COvernightIndexedSwap')))))
 <span class="lineno">  280 </span>
 <span class="lineno">  281 </span>foreign import ccall safe &quot;QuantLib/TermStructure.chs.h qlZeroCouponInflationSwapHelperSwap&quot;
-<span class="lineno">  282 </span>  qlZeroCouponInflationSwapHelperSwap'_ :: ((C2HSImp.Ptr (CZeroCouponInflationSwapHelper)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CZeroCouponInflationSwap')))))
+<span class="lineno">  282 </span>  qlZeroCouponInflationSwapHelperSwap'_ :: ((C2HSImp.Ptr (CZeroCouponInflationSwapHelper)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CZeroCouponInflationSwap')))))
 <span class="lineno">  283 </span>
 <span class="lineno">  284 </span>foreign import ccall safe &quot;QuantLib/TermStructure.chs.h qlYearOnYearInflationSwapHelperSwap&quot;
-<span class="lineno">  285 </span>  qlYearOnYearInflationSwapHelperSwap'_ :: ((C2HSImp.Ptr (CYearOnYearInflationSwapHelper)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CYearOnYearInflationSwap')))))
+<span class="lineno">  285 </span>  qlYearOnYearInflationSwapHelperSwap'_ :: ((C2HSImp.Ptr (CYearOnYearInflationSwapHelper)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CYearOnYearInflationSwap')))))
 <span class="lineno">  286 </span>
 <span class="lineno">  287 </span>foreign import ccall safe &quot;QuantLib/TermStructure.chs.h qlSwaptionHelperUnderlying&quot;
-<span class="lineno">  288 </span>  qlSwaptionHelperUnderlying'_ :: ((C2HSImp.Ptr (CSwaptionHelper')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO (C2HSImp.Ptr (CFixedVsFloatingSwap')))))
+<span class="lineno">  288 </span>  qlSwaptionHelperUnderlying'_ :: ((C2HSImp.Ptr (CSwaptionHelper')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CFixedVsFloatingSwap')))))
 <span class="lineno">  289 </span>
 <span class="lineno">  290 </span>foreign import ccall safe &quot;QuantLib/TermStructure.chs.h qlTermStructureReferenceDate&quot;
-<span class="lineno">  291 </span>  referenceDate'_ :: ((C2HSImp.Ptr (CTermStructure')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CInt)))
+<span class="lineno">  291 </span>  referenceDate'_ :: ((C2HSImp.Ptr (CTermStructure')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CInt)))
 <span class="lineno">  292 </span>
 <span class="lineno">  293 </span>foreign import ccall safe &quot;QuantLib/TermStructure.chs.h qlTermStructureMaxDate&quot;
-<span class="lineno">  294 </span>  maxDate'_ :: ((C2HSImp.Ptr (CTermStructure')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CInt)))
+<span class="lineno">  294 </span>  maxDate'_ :: ((C2HSImp.Ptr (CTermStructure')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CInt)))
 <span class="lineno">  295 </span>
 <span class="lineno">  296 </span>foreign import ccall safe &quot;QuantLib/TermStructure.chs.h qlTermStructureMaxTime&quot;
-<span class="lineno">  297 </span>  maxTime'_ :: ((C2HSImp.Ptr (CTermStructure')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble)))
+<span class="lineno">  297 </span>  maxTime'_ :: ((C2HSImp.Ptr (CTermStructure')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))
 <span class="lineno">  298 </span>
 <span class="lineno">  299 </span>foreign import ccall safe &quot;QuantLib/TermStructure.chs.h qlTermStructureAllowsExtrapolation&quot;
 <span class="lineno">  300 </span>  allowsExtrapolation'_ :: ((C2HSImp.Ptr (CTermStructure')) -&gt; (IO C2HSImp.CInt))
@@ -322,7 +322,7 @@ span.spaces    { background: white }
 <span class="lineno">  303 </span>  setExtrapolation'_ :: ((C2HSImp.Ptr (CTermStructure')) -&gt; (C2HSImp.CInt -&gt; (IO ())))
 <span class="lineno">  304 </span>
 <span class="lineno">  305 </span>foreign import ccall safe &quot;QuantLib/TermStructure.chs.h qlTermStructureTimeFromReference&quot;
-<span class="lineno">  306 </span>  timeFromReference'_ :: ((C2HSImp.Ptr (CTermStructure')) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; (IO C2HSImp.CDouble))))
+<span class="lineno">  306 </span>  timeFromReference'_ :: ((C2HSImp.Ptr (CTermStructure')) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble))))
 
 </pre>
 </body>
