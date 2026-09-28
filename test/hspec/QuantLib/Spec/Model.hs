@@ -214,6 +214,33 @@ gsrReversionSpec =
         forM_ (map fst helpers) (`Model.setPricingEngine` engine)
         calibrateReversionsIterative model (map fst helpers) lm lmCriteria Nothing [] `shouldThrow` anyException
 
+    it "setParams moves a model to the given parameters and reprices what is priced on it" $
+      Context.keepingSettingsGc $ do
+        (settlement, ts) <- flatCurve
+        let fiveYears = addGregorianYearsClip 5 settlement
+            gsrOn v0 r0 v1 r1 = do
+              qs <- mapM simpleQuote [v0, r0, v1, r1]
+              case qs of
+                [qv0, qr0, qv1, qr1] -> gsrWithReversions ts (qv0, qr0) [(fiveYears, (qv1, qr1))] 60.0
+                _ -> error "four quotes"
+            helperOn model = do
+              [(h, _)] <- mkHelpers settlement ts [(1, 5)]
+              engine <- asGaussian1dModel model >>= \m -> gaussian1dSwaptionEngine m 64 7.0 True False (Just ts) None
+              Model.setPricingEngine h engine
+              pure h
+        truth <- gsrOn 0.008 0.02 0.012 0.05
+        wanted <- params truth
+        expected <- helperOn truth >>= modelValue
+        model <- gsrOn 0.01 0.01 0.01 0.01
+        h <- helperOn model
+        before <- modelValue h
+        before `shouldNotBe` expected
+        setParams model wanted
+        params model `shouldReturn` wanted
+        volatilities model `shouldReturn` [0.008, 0.012]
+        modelValue h `shouldReturn` expected
+        setParams model (drop 1 wanted) `shouldThrow` anyException
+
     -- Reversion i is fitted to a swaption starting inside piece i, whose swap spans it. The
     -- forward-measure numeraire couples the pieces, so the passes repeat.
     it "fits piecewise reversions to their own swaptions and holds the volatilities" $

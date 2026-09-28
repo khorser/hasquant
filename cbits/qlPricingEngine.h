@@ -472,6 +472,7 @@ extern "C" {
   void qlBlackCalibrationHelperTimes(QlBlackCalibrationHelper* o, unsigned *len, double **ts, QlError **e);
 
   void qlCalibratedModelParams(QlCalibratedModel* o, unsigned *len, double** ps, QlError **e);
+  void qlCalibratedModelSetParams(QlCalibratedModel* o, unsigned pLen, double* p, QlError **e);
   double qlBlackCalibrationHelperBlackPrice(QlBlackCalibrationHelper* o, double volatility, QlError **e);
   double qlBlackCalibrationHelperCalibrationError(QlBlackCalibrationHelper* o, QlError **e);
   double qlBlackCalibrationHelperImpliedVolatility(QlBlackCalibrationHelper* o, double targetValue, double accuracy, unsigned maxEvaluations, double minVol, double maxVol, QlError **e);
