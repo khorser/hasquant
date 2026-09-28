@@ -11,7 +11,20 @@ namespace {
 QlCallScope::QlCallScope(QlError** error) noexcept : slot(error), previous_(currentCall) {
   currentCall = this;
 }
-QlCallScope::~QlCallScope() { currentCall = previous_; }
+QlCallScope::~QlCallScope() {
+  currentCall = previous_;
+  // Only the outermost scope collects deferred objects; no interrupted call can use them now.
+  for (auto& [object, destroy] : deferred_) destroy(object);
+}
+
+void QlCallScope::deleteAfterCall(void* object, void (*destroy)(void*)) noexcept {
+  QlCallScope* outermost = currentCall;
+  while (outermost && outermost->previous_) outermost = outermost->previous_;
+  if (outermost) {
+    try { outermost->deferred_.emplace_back(object, destroy); return; } catch (...) {}
+  }
+  destroy(object);
+}
 
 void qlSetError(QlError** slot, const char* message) {
   if (!*slot) *slot = ret(new QlError(message));

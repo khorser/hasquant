@@ -1224,9 +1224,14 @@ fittingMethodErrorCode = fmap toEnum . fittingMethodErrorCodeRaw
 -- then on, and links the internal handle to it (with ownership/observability stripped to avoid
 -- shared_ptr and notification cycles) so the curves' own cross-references resolve.
 --
--- Instruments outside the cycle must use indexes built on the returned external handles.
--- Original member handles and their existing dependents also retain the complete cycle.
--- Internal handles do not retain it and become empty when its last owning reference is released.
+-- Only the 'MultiCurve' value and the returned external handles keep the group alive, so
+-- instruments outside the cycle must use indexes built on the external handles. An original
+-- member handle keeps only its own curve, and internal handles keep nothing: once the group is
+-- released, anything reached through either raises an error instead of pricing.
+--
+-- __Leak hazard:__ members must reference each other through internal handles. A member curve,
+-- rate helper, or index inside the cycle built on an /external/ handle makes the group own
+-- itself, so it is never freed. Original member handles do not create such a cycle.
 {#fun qlMultiCurve as multiCurve{`Double' -- ^accuracy
   ,preErrorCheck-`String'errorCheck*-}->`MultiCurve'peekMultiCurve*#}
 

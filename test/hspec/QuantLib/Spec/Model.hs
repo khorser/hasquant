@@ -233,8 +233,8 @@ gsrReversionSpec =
         expected <- helperOn truth >>= modelValue
         model <- gsrOn 0.01 0.01 0.01 0.01
         h <- helperOn model
-        before <- modelValue h
-        before `shouldNotBe` expected
+        unfitted <- modelValue h
+        unfitted `shouldNotBe` expected
         setParams model wanted
         params model `shouldReturn` wanted
         volatilities model `shouldReturn` [0.008, 0.012]

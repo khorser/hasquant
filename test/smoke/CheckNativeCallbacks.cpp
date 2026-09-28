@@ -8,6 +8,8 @@ namespace {
   void* fail(const QlCallbackArgs*) { ++calls; return &exceptionToken; }
   void releaseFunction(void (*)(void)) { ++functionsFreed; }
   void releaseException(void* token) { assert(token == &exceptionToken); ++exceptionsFreed; }
+  int released = 0;
+  struct Released { ~Released() { ++released; } };
 }
 
 int main() {
@@ -40,5 +42,21 @@ int main() {
   releaseException(token);
   dependent.reset();
   assert(exceptionsFreed == 2 && functionsFreed == 1);
-  std::puts("Native callback lifetime, nested errors, and upstream catches: OK");
+
+  // A release inside nested calls waits for the outermost scope; one outside any call is immediate.
+  QlError* releaseError = nullptr;
+  {
+    QlCallScope outer(&releaseError);
+    std::shared_ptr<Released> owner(new Released, hasquant::DeleteAfterCall<Released>());
+    {
+      QlError* innerError = nullptr;
+      QlCallScope inner(&innerError);
+      owner.reset();
+    }
+    assert(released == 0);
+  }
+  assert(released == 1 && !releaseError);
+  std::shared_ptr<Released>(new Released, hasquant::DeleteAfterCall<Released>()).reset();
+  assert(released == 2);
+  std::puts("Native callback lifetime, nested errors, upstream catches, and deferred release: OK");
 }

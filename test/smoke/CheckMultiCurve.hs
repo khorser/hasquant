@@ -4,14 +4,17 @@
 --
 
 import Control.Exception (SomeException, try)
-import Control.Monad (forM_)
+import Control.Monad (forM_, when)
+import Data.IORef (IORef, atomicModifyIORef', newIORef, writeIORef)
 import Data.List (isInfixOf)
+import Data.Maybe (isJust)
+import System.IO.Unsafe (unsafePerformIO)
 import QuantLib.CashFlow(iborLeg)
 
 import Data.List.NonEmpty(fromList)
 import QuantLib.Index.InterestRate(iborIndex, IborConstructor(Euribor3M, Euribor6M))
 import QuantLib.Instrument(npv, setPricingEngine)
-import QuantLib.Instrument.Swap(Swap, swap)
+import QuantLib.Instrument.Swap(swap)
 import qualified QuantLib.InterestRate as IR
 import QuantLib.PricingEngine(discountingSwapEngine)
 import qualified QuantLib.Quote as Quote
@@ -26,24 +29,55 @@ import SmokeCheck (checkWith)
 curveToday :: Day
 curveToday = 23 `october` 2025
 
-data Ownership = External | Original | Internal deriving Show
+-- Each probe keeps one value alive and drops the rest; all but Reentrant collect before evaluating.
+data Ownership = External | Original | Internal | SpreadOverOriginal | Reentrant deriving Show
 
 main :: IO ()
-main = forM_ ([External, Original, Internal] :: [Ownership]) $ \ownership -> keepingSettingsGc $ do
-  sw <- buildSwap ownership
-  collectGarbage
-  result <- try (npv sw) :: IO (Either SomeException Double)
-  case (ownership, result) of
-    (Internal, Left e) -> checkWith "expired internal handle fails safely" (show e)
-      ("null term structure" `isInfixOf` show e)
-    (Internal, Right _) -> error "internal handle unexpectedly retained the curve group"
-    (_, Right v) -> checkWith (show ownership ++ " pricing index retains MultiCurve")
-      "only the instrument remains after GC" (abs v < 1.0e-4)
-    (_, Left e) -> error (show ownership ++ ": " ++ show e)
-  putStrLn ("multicurve " ++ show ownership ++ ": OK")
+main = do
+  forM_ ([External, Original, Internal, SpreadOverOriginal] :: [Ownership]) $ \ownership -> keepingSettingsGc $ do
+    value <- case ownership of
+      SpreadOverOriginal -> buildSpreadOverOriginal
+      _ -> buildCycle ownership
+    collectGarbage
+    result <- try value :: IO (Either SomeException Double)
+    case (ownership, result) of
+      (External, Right v) -> checkWith "external pricing index retains MultiCurve"
+        "only the instrument remains after GC" (abs v < 1.0e-4)
+      (External, Left e) -> error ("External: " ++ show e)
+      (_, Left e) -> checkWith (show ownership ++ " fails safely after the group is freed") (show e)
+        (expectedFailure ownership `isInfixOf` show e)
+      (_, Right _) -> error (show ownership ++ " unexpectedly retained the curve group")
+    putStrLn ("multicurve " ++ show ownership ++ ": OK")
+  keepingSettingsGc checkReentrantRelease
 
-buildSwap :: Ownership -> IO Swap
-buildSwap ownership = do
+-- A quote callback drops the group's last owners and collects while the joint bootstrap runs.
+checkReentrantRelease :: IO ()
+checkReentrantRelease = do
+  value <- buildCycle Reentrant
+  d <- value
+  checkWith "group released during its bootstrap finishes the call" (show d) (d > 0 && d < 1)
+  -- No further collection: the group released inside the first call is freed when it returns.
+  result <- try value :: IO (Either SomeException Double)
+  case result of
+    Left e -> checkWith "Reentrant fails safely after the group is freed" (show e)
+      (expectedFailure Reentrant `isInfixOf` show e)
+    Right _ -> error "Reentrant: the callback's collection did not release the curve group"
+  putStrLn "multicurve Reentrant: OK"
+
+-- The first callback after the owners are stored drops them and collects garbage.
+releaseOnce :: IORef (Maybe a) -> Double -> Double
+releaseOnce owners x = unsafePerformIO $ do
+  held <- atomicModifyIORef' owners (\h -> (Nothing, isJust h))
+  when held collectGarbage
+  pure x
+{-# NOINLINE releaseOnce #-}
+
+expectedFailure :: Ownership -> String
+expectedFailure SpreadOverOriginal = "empty Handle"
+expectedFailure _ = "null term structure"
+
+buildCycle :: Ownership -> IO (IO Double)
+buildCycle ownership = do
   setEvaluationDate (Just curveToday)
   cal <- calendar TARGET
   euriborDC <- dayCounter (Actual360 False)
@@ -72,7 +106,9 @@ buildSwap ownership = do
   intcurve6m <- relinkableYieldTermStructure Nothing
   euribor3m <- iborIndex Euribor3M (Just intcurve3m)
   euribor6m <- iborIndex Euribor6M (Just intcurve6m)
-  b <- Quote.simpleQuote 0.0020
+  owners <- newIORef Nothing
+  b0 <- Quote.simpleQuote 0.0020
+  b <- Quote.withDerivedQuote (releaseOnce owners) b0 pure
   helpers3mFra <- mapM (\i -> fraRateHelper q (FraMonths i (i + 3) 2 cal ModifiedFollowing True euriborDC) LastRelevantDate Nothing False) [1 .. 3]
   helpers3mBasis <- mapM (\i -> iborIborBasisSwapRateHelper b (i, Years) 2 cal ModifiedFollowing True euribor3m euribor6m discountCurve True) [2 .. 4]
   helpers6mBasis <- mapM (\i -> iborIborBasisSwapRateHelper b (i * 6, Months) 2 cal ModifiedFollowing True euribor3m euribor6m discountCurve False) [1 .. 2]
@@ -83,8 +119,6 @@ buildSwap ownership = do
     (GlobalDiscountLogLinear 1.0e-10 []) False
   ptr6m <- piecewiseYieldCurve (SettlementDays 0 cal) (fromList $ helpers6mBasis ++ helpers6mSwap) euriborDC []
     (GlobalDiscountLogLinear 1.0e-10 []) False
-  original3m <- iborIndex Euribor3M (Just ptr3m)
-  original6m <- iborIndex Euribor6M (Just ptr6m)
   mc <- multiCurve 1.0e-10
   curve3m <- addBootstrappedCurve mc intcurve3m ptr3m
   curve6m <- addBootstrappedCurve mc intcurve6m ptr6m
@@ -98,8 +132,7 @@ buildSwap ownership = do
 
   (pricing3m, pricing6m) <- case ownership of
     External -> (,) <$> iborIndex Euribor3M (Just curve3m) <*> iborIndex Euribor6M (Just curve6m)
-    Original -> pure (original3m, original6m)
-    Internal -> pure (euribor3m, euribor6m)
+    _ -> pure (euribor3m, euribor6m)
 
   -- Reprice a 3m/6m basis swap built on the bootstrapped curves: should be ~0, the same
   -- self-consistency property the real test checks.
@@ -120,6 +153,44 @@ buildSwap ownership = do
             "d3m/d6m come from addBootstrappedCurve's returned Handle<YieldTermStructure>"
             (d3m > 0 && d3m < 1 && d6m > 0 && d6m < 1)
 
-  pure sw
+  -- Original: only the 3m curve survives, so its recalculation must not reach the freed 6m curve.
+  case ownership of
+    Original -> pure (discount ptr3m (DatePoint maturity) False)
+    Reentrant -> do
+      -- The bump forces a joint bootstrap; its first quote callback, in a 3m helper, releases these
+      -- owners, which leaves the running 3m curve owned only by the group.
+      writeIORef owners (Just (mc, curve3m, curve6m))
+      pure (Quote.setValue b0 0.0021 >> discount ptr6m (DatePoint maturity) False)
+    _ -> pure (npv sw)
+
+-- The reported cycle: the spreaded member is built over the other member's original handle.
+buildSpreadOverOriginal :: IO (IO Double)
+buildSpreadOverOriginal = do
+  setEvaluationDate (Just curveToday)
+  cal <- calendar TARGET
+  euriborDC <- dayCounter (Actual360 False)
+  thirty360 <- dayCounter Thirty360BondBasis
+  intcurveois <- relinkableYieldTermStructure Nothing
+  intcurve3m <- relinkableYieldTermStructure Nothing
+  euribor3m <- iborIndex Euribor3M (Just intcurve3m)
+  q <- Quote.simpleQuote 0.03
+  b <- Quote.simpleQuote (-0.01)
+  helpers3m <- mapM (\i -> swapRateHelper q (SwapRateTenor (i, Years) cal Annual Following thirty360 euribor3m (0, Days) Nothing Nothing) Nothing (Just intcurveois)
+                              LastRelevantDate Nothing False Nothing Nothing
+                            >>= asRateHelper) [1 .. 4 :: Int]
+  ptr3m <- piecewiseYieldCurve (SettlementDays 0 cal) (fromList helpers3m) euriborDC []
+    (GlobalDiscountLogLinear 1.0e-10 []) False
+  ptrois <- zeroSpreadedTermStructure ptr3m b IR.Continuous NoFrequency
+  mc <- multiCurve 1.0e-10
+  curve3m <- addBootstrappedCurve mc intcurve3m ptr3m
+  curveois <- addNonBootstrappedCurve mc intcurveois ptrois
+  bVal <- Quote.value b
+  zOis <- IR.rate <$> zeroRate curveois (RateAtTime 1.0) IR.Continuous NoFrequency False
+  z3m <- IR.rate <$> zeroRate curve3m (RateAtTime 1.0) IR.Continuous NoFrequency False
+  checkWith "spread over an original member handle bootstraps"
+            "the spreaded member tracks the bootstrapped member through the cycle"
+            (abs (zOis - z3m - bVal) < 1.0e-10)
+  -- A self-owning group would keep this non-owning internal link populated after GC.
+  pure (discount intcurveois (TimePoint 1.0) False)
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:
