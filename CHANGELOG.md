@@ -12,8 +12,11 @@ GSR gains piecewise reversions: `gsrWithReversions` pairs a reversion with each 
 `calibrateReversionsIterative` fits them one helper at a time, and `reversions` reads them back.
 The `qlGsr` shim now takes a reversion array; `gsr` keeps its single-reversion signature.
 `setParams` sets a calibrated model's parameters, so a model can be rebuilt from a stored fit
-or calibrated from a warm start.
+or calibrated from a warm start. A list of the wrong length throws and leaves the model unchanged.
 `markovFunctional` accepts any swaption volatility structure, such as a `SwaptionVolatilityMatrix`.
+
+`fdmRollback` and `fdmSolve` callbacks must return an array of their input's length. Another length
+now throws the new `CallbackResultLength` error instead of being truncated or padded with zeros.
 
 On QuantLib 1.43, `gaussian1dSwaptionVolatility` works around an uninitialized `MakeSwaption`
 nominal by pricing its smile sections with a unit nominal; newer versions use upstream directly.

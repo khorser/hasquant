@@ -109,6 +109,8 @@ import qualified Data.Vector.Storable as V
 data Error = CPlusPlusException String
            | DateConversion Day
            | EnumConversion String
+             -- |A Haskell callback returned an array of the wrong length: expected, then returned.
+           | CallbackResultLength Int Int
            deriving (Show, Eq)
 
 instance Exception Error

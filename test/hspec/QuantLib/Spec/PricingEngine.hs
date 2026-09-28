@@ -30,7 +30,7 @@ import QuantLib.Process hiding(thetaAt)
 import QuantLib.Model hiding(setPricingEngine, value, discount, impliedVolatility)
 import QuantLib.Math(RngTrait(..), StatisticsTrait(..), PolynomialType(..), BinomialTree(..), FdmScheme(..), boxedRealMatrix, ComplexLogFormula(..)
   ,SobolDirectionIntegers(..), realMatrixRows, realMatrixColumns, realMatrixData)
-import QuantLib.Method(fdmBlackScholesMesher, fdmMesherComposite, fdmMesherLocations)
+import QuantLib.Method(fdmBlackScholesMesher, fdmMesherComposite, fdmMesherLocations, fdmRollback)
 import QuantLib.PricingEngine hiding(alpha, delta, gamma, theta)
 import qualified QuantLib.PricingEngine as Calc
 
@@ -77,6 +77,18 @@ spec = do
         npv opt `shouldThrow` (\case
           Context.CPlusPlusException message -> message == "finite-difference vanilla engine requires a striked payoff"
           _ -> False)
+
+  describe "fdmRollback callbacks" $
+    it "rejects a result whose length differs from its input instead of padding or truncating" $ do
+      let grid = V.fromList [1, 2, 3, 4]
+          zero :: (Double, Double) -> V.Vector Double -> V.Vector Double
+          zero _ = V.map (const 0)
+          roll op condition =
+            fdmRollback 1 op (const zero) (\_ _ _ -> id) (Just condition) V.empty Douglas grid 1 0 1 0
+      roll zero (const id) `shouldReturn` grid
+      forM_ [(V.drop 1, 3), (V.take 2, 2), (const V.empty, 0), (flip V.snoc 99, 5)] $ \(f, n) -> do
+        roll zero (const f) `shouldThrow` (== Context.CallbackResultLength 4 n)
+        roll (const f) (const id) `shouldThrow` (== Context.CallbackResultLength 4 n)
 
   -- Leans on invariants that hold for any
   -- correct implementation of the Black-76/Bachelier formula (value = discount*(forward*alpha
