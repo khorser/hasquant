@@ -37,7 +37,8 @@ Usage:
     tools/alloc-summary.py /tmp/trace.log --only Handle,YieldTermStructure
     tools/alloc-summary.py /tmp/trace.log --census   # also list shared_ptr payloads
 
-Exit status is 1 if the wrapper ledger does not balance.
+Exit status is 1 for an unbalanced ledger, any unmatched release, malformed input,
+or no tracked allocations in the selected classes.
 
 Class names come from typeid().name(), so templates arrive mangled
 (PN8QuantLib6HandleINS_18YieldTermStructureEEE); they are run through `c++filt -t`
@@ -62,7 +63,7 @@ import sys
 # null guard moved into traceAs() (cbits/qlaux.h), only `arg' can carry a null: every
 # lifecycle verb skips the trace entirely for one, which is why a "0" pointer never
 # reaches the ledger below.
-LINE = re.compile(r'^(?P<verb>\w+(?: \w+)?) (?P<cls>[^:]+): (?P<ptr>0x[0-9a-f]+|0)\s*$')
+LINE = re.compile(r'^(?P<verb>\w+(?: \w+)?) (?P<cls>.+?): (?P<ptr>0x[0-9a-f]+|0)\s*$')
 
 # `deleted' is the second trace of the same del() call as `deleting' -- counting both
 # would report every object as double-freed.
@@ -99,8 +100,9 @@ def parse(path):
     shared_only = {}                   # (cls, ptr) -> every acquisition was alloc()
     freed_kinds = set()                # classes something ever released
     unparsed = 0
+    overfree_events = []
     with open(path) as fh:
-        for line in fh:
+        for line_number, line in enumerate(fh, 1):
             line = line.rstrip('\n')
             if not line:
                 continue
@@ -115,11 +117,13 @@ def parse(path):
                 key = (cls, ptr)
                 shared_only[key] = shared_only.get(key, True) and verb == SHARED
             elif verb in RELEASE:
+                if balance[(cls, ptr)] <= 0:
+                    overfree_events.append((line_number, cls, ptr))
                 balance[(cls, ptr)] -= 1
                 freed_kinds.add(cls)
             elif verb not in IGNORE:
                 unparsed += 1
-    return balance, acquired, shared_only, freed_kinds, unparsed
+    return balance, acquired, shared_only, freed_kinds, unparsed, overfree_events
 
 
 def main():
@@ -132,7 +136,7 @@ def main():
     args = ap.parse_args()
 
     try:
-        balance, acquired, shared_only, freed_kinds, unparsed = parse(args.trace)
+        balance, acquired, shared_only, freed_kinds, unparsed, overfree_events = parse(args.trace)
     except FileNotFoundError:
         # The trace stream is opened on first use, so a run that traced *nothing* leaves
         # no file at all rather than an empty one. That is never a clean result: either
@@ -167,9 +171,12 @@ def main():
             else:
                 leaked[names[cls]] += n
 
+    overfree_events = [(line, cls, ptr) for line, cls, ptr in overfree_events if wanted(cls)]
     total = sum(n for cls, n in acquired.items() if wanted(cls))
     kinds = len([c for c in acquired if wanted(c)])
     print(f'{total} tracked allocations across {kinds} classes')
+    if not total:
+        print('no tracked allocations; cannot validate ownership')
     if unparsed:
         print(f'({unparsed} lines did not match the trace format and were skipped)')
 
@@ -177,6 +184,11 @@ def main():
         print('\nFREED MORE OFTEN THAN ALLOCATED (double free, or freed through the wrong type):')
         for cls, n in overfreed.most_common():
             print(f'  {n:6d}  {cls}')
+
+    if overfree_events:
+        print('\nRELEASE WITHOUT A LIVE ALLOCATION (including subsequently reused addresses):')
+        for line, cls, ptr in overfree_events:
+            print(f'  line {line}: {names[cls]} {ptr}')
 
     if leaked:
         print('\nSTILL LIVE AT EXIT:')
@@ -190,7 +202,7 @@ def main():
         for cls, n in shared.most_common():
             print(f'  {n:6d}  {cls}')
 
-    return 1 if (leaked or overfreed) else 0
+    return 1 if (leaked or overfreed or overfree_events or unparsed or not total) else 0
 
 
 if __name__ == '__main__':

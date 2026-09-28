@@ -1,3 +1,4 @@
+#include "qlCheckedFdEngine.h"
 // this file intentionally does not contain any references to wrappers, only vanilla QuantLib is used here
 #include <ql/pricingengines/all.hpp>
 #include <ql/pricingengines/vanilla/binomialengine.hpp>
@@ -288,7 +289,7 @@ PricingEngine* qlMCAmericanBasketEngine1Aux(int rngtrait, const shared_ptr<Stoch
   });
 }
 
-PricingEngine* qlFdBlackScholesVanillaEngineAux(const shared_ptr<GeneralizedBlackScholesProcess> process, unsigned tGrid, unsigned xGrid, unsigned dampingSteps, const FdmSchemeDesc &fdScheme, bool localVol, double illegalLocalVolOverwrite, int cashDividendModel) {return new FdBlackScholesVanillaEngine(process, tGrid, xGrid, dampingSteps, fdScheme, localVol, illegalLocalVolOverwrite, (FdBlackScholesVanillaEngine::CashDividendModel)cashDividendModel);}
+PricingEngine* qlFdBlackScholesVanillaEngineAux(const shared_ptr<GeneralizedBlackScholesProcess> process, unsigned tGrid, unsigned xGrid, unsigned dampingSteps, const FdmSchemeDesc &fdScheme, bool localVol, double illegalLocalVolOverwrite, int cashDividendModel) {return new hasquant::CheckedFdEngine<FdBlackScholesVanillaEngine>(process, tGrid, xGrid, dampingSteps, fdScheme, localVol, illegalLocalVolOverwrite, (FdBlackScholesVanillaEngine::CashDividendModel)cashDividendModel);}
 
 class PolymorphicPathGenerator {
 private:

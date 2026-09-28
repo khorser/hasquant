@@ -60,6 +60,9 @@ module QuantLib.Example.Fdm
   , run
   ) where
 import Control.Exception(try)
+import Control.Monad(when)
+import System.Environment(lookupEnv)
+import System.IO(hPutStrLn, hFlush, stderr)
 import Data.Time.Calendar(addDays, addGregorianYearsClip, diffDays)
 import Data.List(minimumBy)
 import Data.Ord(comparing)
@@ -157,6 +160,11 @@ applyOp (lo, di, up) u = go lo di up (0 : u) u (drop 1 u ++ [0])
 
 run :: IO Result
 run = do
+  tracing <- lookupEnv "HASQUANT_TRACE_FDM"
+  let mark name = when (tracing == Just "1") $ do
+        hPutStrLn stderr ("FDM stage: " ++ name)
+        hFlush stderr
+  mark "setup and evaluation date"
   setEvaluationDate $ Just evalDate
   dc <- dayCounter Actual365FixedStandard
   underQ <- simpleQuote spot
@@ -202,14 +210,17 @@ run = do
 
   europeanOpt <- vanillaOption vanillaPayoff europeanEx
   analyticEuropeanEngine bsmProc Nothing >>= QuantLib.Instrument.setPricingEngine europeanOpt
+  mark "analytic engine"
   analytic <- npv europeanOpt
 
+  mark "European rollback"
   fdmEuro <- fdmRollback 1 applyFn applyDirFn solveFn Nothing V.empty Douglas grid0 tMat 0 nSteps 0
 
   americanOpt <- vanillaOption vanillaPayoff americanEx
   americanInst <- asOneAssetOption americanOpt
   fdBlackScholesVanillaEngine bsmProc [] (fromIntegral nSteps) (fromIntegral nPts) 0 Douglas False 0.0 CashDividendSpot
     >>= QuantLib.Instrument.setPricingEngine americanInst
+  mark "native American engine"
   fdRef <- npv americanInst
 
   -- withCustomStrikedPayoff through the very engine a plain withCustomPayoff cannot survive:
@@ -219,6 +230,7 @@ run = do
   -- FdmLogInnerValue, which takes a plain Payoff. Deriving from StrikedTypePayoff makes that cast
   -- succeed, so the engine sizes its grid from the advisory strike and then prices the *Haskell*
   -- function. Same lambda, same strike as vanillaPayoff, so the result must equal fdRef exactly.
+  mark "custom striked payoff engine"
   fdCustomStrikedRef <- withCustomStrikedPayoff Call strike "HaskellCall" (\s -> max (s - strike) 0) $ \custom -> do
     opt <- vanillaOption custom americanEx
     inst <- asOneAssetOption opt
@@ -228,8 +240,10 @@ run = do
 
   let stepTimes = V.fromList [tMat * fromIntegral i / fromIntegral nSteps | i <- [1 .. nSteps]]
       stepCond _t u = V.zipWith max u grid0
+  mark "American rollback"
   fdmAmerican <- fdmRollback 1 applyFn applyDirFn solveFn (Just stepCond) stepTimes Douglas grid0 tMat 0 nSteps 0
 
+  mark "meshers"
   mesh1d <- predefined1dMesher (V.fromList xs)
   mesher <- fdmMesherComposite [mesh1d]
 
@@ -246,13 +260,16 @@ run = do
   overlapResult <- try (gluedMesher rightHalf leftHalf) :: IO (Either Error Fdm1dMesher)
   let gluedOverlapRejected = either (const True) (const False) overlapResult
   let ivFn _t loc = case loc of [x] -> intrinsicAt x; _ -> error "fdmSolve: expected a 1D location"
+  mark "custom calculator"
   withCustomFdmInnerValueCalculator mesher ivFn ivFn $ \calc -> do
     -- Node-level check, pinning both fdmAvgInnerValue's argument order and fdmIteratorAt's
     -- coordinate-to-index arithmetic on the C++ side (see qlPricingEngine.cpp): the calculator's
     -- own avgInnerValue at the grid's center node must match intrinsicAt evaluated directly.
     avgAtCenter <- fdmAvgInnerValue calc mesher [centerIdx] tMat
 
+    mark "European solve"
     fdmSolveEuro <- fdmSolve mesher calc 1 applyFn applyDirFn solveFn Nothing V.empty Douglas tMat 0 nSteps 0
+    mark "American solve"
     fdmSolveAmerican <- fdmSolve mesher calc 1 applyFn applyDirFn solveFn (Just stepCond) stepTimes Douglas tMat 0 nSteps 0
 
     -- FdmZeroInnerValue: always 0, at any node.
@@ -266,6 +283,7 @@ run = do
     -- cell center, so it is not bit-for-bit identical, just close (see
     -- QuantLib.Method.fdmLogInnerValue's haddock).
     logCalc <- fdmLogInnerValue payoff mesher 0
+    mark "log inner value solve"
     fdmLogEuro <- fdmSolve mesher logCalc 1 applyFn applyDirFn solveFn Nothing V.empty Douglas tMat 0 nSteps 0
 
     -- withCustomCellAveragingInnerValue payoff mesher 0 exp is the same computation as
@@ -273,6 +291,7 @@ run = do
     -- FdmCellAveragingInnerValue with gridMapping = exp internally) via a genuine per-node Haskell
     -- callback instead -- this is the check that actually exercises that callback path, and the
     -- two must agree bit-for-bit (same C++ formula, same exp function).
+    mark "cell averaging solve"
     fdmCustomCellAvgEuro <- withCustomCellAveragingInnerValue payoff mesher 0 exp $ \customCalc ->
       fdmSolve mesher customCalc 1 applyFn applyDirFn solveFn Nothing V.empty Douglas tMat 0 nSteps 0
 
@@ -282,6 +301,7 @@ run = do
     -- innerValue (no cell averaging -- see fdminnervaluecalculator.cpp), so this checks exactly
     -- against a Haskell-computed max-basket intrinsic value, at two different node pairs (one
     -- where asset 1's leg is the max, one where asset 2's is).
+    mark "basket calculators"
     basketMesher <- fdmMesherComposite [mesh1d, mesh1d]
     basketCalc <- fdmLogBasketInnerValue (Max payoff) basketMesher
     basketAtEqualNodes <- fdmAvgInnerValue basketCalc basketMesher [centerIdx, centerIdx] tMat
@@ -295,6 +315,7 @@ run = do
     -- log-spot: fdmLogInnerValue/fdmLogBasketInnerValue apply gridMapping = exp before the payoff
     -- is called. Note the continuation spans the whole use, not just construction: the calculator
     -- stores the payoff and calls back into it during fdmSolve (see withCustomPayoff's haddock).
+    mark "custom payoff and basket"
     (fdmCustomPayoffEuro, customBasketAtAsset1Max) <-
       withCustomPayoff "HaskellCall" "max(S - K, 0), defined in Haskell" (\s -> max (s - strike) 0) $ \custom -> do
         customPayoffCalc <- fdmLogInnerValue custom mesher 0
@@ -316,6 +337,7 @@ run = do
     hwMesher <- fdmMesherComposite [hwMesh]
     hwLocs <- fdmMesherLocations hwMesher 0
     let hwIdx0 = nearestZeroIdx (V.toList hwLocs)
+    mark "Hull-White calculator"
     hwCalc <- fdmAffineHullWhiteModelSwapInnerValue hwDisModel hwFwdModel swp [(irMat, swapEnd)] hwMesher 0
     -- Evaluated at t = irMat (the sole exercise date, matching the one entry in exerciseDates --
     -- evaluating at t = 0, which isn't a t2d key, throws deep inside QuantLib's own exercise-date
@@ -334,6 +356,7 @@ run = do
     g2LocsY <- fdmMesherLocations g2Mesher 1
     let g2Idx0x = nearestZeroIdx (V.toList g2LocsX)
         g2Idx0y = nearestZeroIdx (V.toList g2LocsY)
+    mark "G2 calculator"
     g2Calc <- fdmAffineG2ModelSwapInnerValue g2DisModel g2FwdModel swp [(irMat, swapEnd)] g2Mesher 0
     g2NodeNpv <- fdmAvgInnerValue g2Calc g2Mesher [g2Idx0x, g2Idx0y] irMat
 

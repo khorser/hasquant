@@ -97,7 +97,8 @@ import Foreign.Marshal.Utils(with, toBool, fromBool, withMany)
 import Foreign.Storable(peek, poke, peekElemOff, pokeElemOff, Storable)
 import Foreign.Marshal.Alloc(alloca)
 
-import Control.Exception(Exception, throwIO, mask, mask_, finally, onException)
+import Control.Exception(Exception, SomeException, throwIO, mask, mask_, finally, onException, catch)
+import Foreign.StablePtr(StablePtr, castStablePtrToPtr, deRefStablePtr, freeStablePtr)
 import Control.Monad(when, (>=>))
 import Data.Time.Calendar(Day(ModifiedJulianDay), toModifiedJulianDay, fromGregorian)
 import Data.List.NonEmpty(NonEmpty, toList)
@@ -112,17 +113,31 @@ data Error = CPlusPlusException String
 
 instance Exception Error
 
-errorCheck :: Ptr CString -> IO ()
-errorCheck p = do
-  a <- peek p
-  when
-    (a /= nullPtr)
-    (poke p nullPtr >> peekDynString a >>= throwIO . CPlusPlusException)
+foreign import ccall safe "ql.h qlErrorMessage" qlErrorMessage :: Ptr () -> IO CString
+foreign import ccall safe "ql.h qlTakeErrorException" qlTakeErrorException :: Ptr () -> IO (StablePtr SomeException)
+foreign import ccall safe "ql.h qlFreeError" qlFreeError :: Ptr () -> IO ()
 
--- like alloca but initializes the allocated pointer with zero
-preErrorCheck :: (Ptr CString -> IO b) -> IO b
+errorCheck :: Ptr (Ptr a) -> IO ()
+errorCheck p = mask_ $ do
+  errorPtr <- peek p
+  when (errorPtr /= nullPtr) $ do
+    poke p nullPtr
+    let owned = castPtr errorPtr
+    flip finally (qlFreeError owned) $ do
+      saved <- qlTakeErrorException owned
+      if castStablePtrToPtr saved == nullPtr
+        then qlErrorMessage owned >>= peekCString >>= throwIO . CPlusPlusException
+        else (deRefStablePtr saved `finally` freeStablePtr saved) >>= throwIO
+
+-- Keep the native error, including an unconsumed callback exception, scoped to adoption.
+preErrorCheck :: (Ptr (Ptr a) -> IO b) -> IO b
 preErrorCheck f = mask_ $ with nullPtr $ \p ->
-  f p `finally` (peek p >>= qlFreeString)
+  (do
+    result <- f p `catch` \ex -> errorCheck p >> throwIO (ex :: SomeException)
+    errorCheck p
+    pure result) `finally` (do
+      pending <- peek p
+      when (pending /= nullPtr) (qlFreeError (castPtr pending)))
 
 fromMaybeBool :: Maybe Bool -> CInt
 fromMaybeBool = maybe (-1) fromBool

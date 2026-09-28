@@ -15,6 +15,11 @@ on:
     branches: [master]
   pull_request:
   workflow_dispatch:
+    inputs:
+      memory_stress:
+        description: Run 100 FDM repetitions and ten suite seeds with default and small nurseries
+        type: boolean
+        default: false
 
 jobs:
   build:
@@ -204,6 +209,48 @@ jobs:
           set "TEMP=%GITHUB_WORKSPACE%\ci-dumps"
           ci-bin\stripped\hasquant_test.exe
 
+      - name: Callback ABI and ownership probes
+        shell: pwsh
+        env:
+          GHC_ROOT: ${{ steps.ghc-root.outputs.root }}
+        run: |
+          $env:PATH = "$env:QL_INSTALL/bin;$env:QL_INSTALL/lib;$env:PATH"
+          $env:TMP = "$env:GITHUB_WORKSPACE/ci-dumps"
+          $env:TEMP = $env:TMP
+          $mingw = "$env:GHC_ROOT/mingw"
+          & "$mingw/bin/clang++" -std=c++17 -Wall -Wextra -Icbits -c test/smoke/FdmCallbackFixture.cpp -o ci-bin/callback-fixture.o
+          if ($LASTEXITCODE) { throw "Callback fixture compilation failed" }
+          ghc -Wall -package-env - -hide-all-packages -package base -i test/smoke/CheckCallbackAbi.hs ci-bin/callback-fixture.o -outputdir ci-bin/abi-build -o ci-bin/callback-abi.exe -with-rtsopts=--generate-crash-dumps
+          if ($LASTEXITCODE) { throw "Callback ABI compilation failed" }
+          & ci-bin/callback-abi.exe
+          if ($LASTEXITCODE) { throw "Callback ABI probe failed" }
+          cabal exec -- ghc -Wall -i -package hasquant test/smoke/CheckFdmCallbacks.hs -outputdir ci-bin/fdm-build -o ci-bin/fdm-callbacks.exe -with-rtsopts=--generate-crash-dumps -optl "$mingw/lib/libc++.a" -optl "$mingw/lib/libc++abi.a" -optl "$mingw/lib/libunwind.a"
+          if ($LASTEXITCODE) { throw "FDM callback probe compilation failed" }
+          & ci-bin/fdm-callbacks.exe
+          if ($LASTEXITCODE) { throw "FDM callback probe failed" }
+          cabal exec -- ghc -Wall -i -itest/smoke -package hasquant -rtsopts test/smoke/CheckMultiCurve.hs -outputdir ci-bin/multicurve-build -o ci-bin/multicurve.exe -with-rtsopts=--generate-crash-dumps -optl "$mingw/lib/libc++.a" -optl "$mingw/lib/libc++abi.a" -optl "$mingw/lib/libunwind.a"
+          if ($LASTEXITCODE) { throw "MultiCurve ownership probe compilation failed" }
+          & ci-bin/multicurve.exe +RTS -A64k -RTS
+          if ($LASTEXITCODE) { throw "MultiCurve ownership probe failed" }
+          foreach ($probe in @('CheckCallbackFailure', 'CheckCallbackOwnership')) {
+            cabal exec -- ghc -Wall -i -package hasquant -rtsopts "test/smoke/$probe.hs" -outputdir "ci-bin/$probe-build" -o "ci-bin/$probe.exe" -with-rtsopts=--generate-crash-dumps -optl "$mingw/lib/libc++.a" -optl "$mingw/lib/libc++abi.a" -optl "$mingw/lib/libunwind.a"
+            if ($LASTEXITCODE) { throw "$probe compilation failed" }
+            & "ci-bin/$probe.exe" +RTS -A64k -RTS
+            if ($LASTEXITCODE) { throw "$probe failed" }
+          }
+          python -m unittest discover -s tools -p test_memory_diagnostics.py
+          if ($LASTEXITCODE) { throw "Memory diagnostic tool tests failed" }
+
+      - name: Memory stress
+        if: inputs.memory_stress
+        shell: pwsh
+        run: |
+          $env:PATH = "$env:QL_INSTALL/bin;$env:QL_INSTALL/lib;$env:PATH"
+          $env:TMP = "$env:GITHUB_WORKSPACE/ci-dumps"
+          $env:TEMP = $env:TMP
+          python tools/stress-memory.py ci-bin/stripped/hasquant_test.exe --output ci-memory --compiler "GHC $env:GHC_VERSION"
+          if ($LASTEXITCODE) { throw "Memory stress failed" }
+
       # On failure, and on every manual dispatch so the symbolization path stays exercised.
       - name: Upload test binaries
         if: failure() || github.event_name == 'workflow_dispatch'
@@ -215,5 +262,6 @@ jobs:
           path: |
             ci-bin
             ci-dumps
+            ci-memory
             ${{ env.QL_INSTALL }}\bin\*.dll
             ${{ env.QL_INSTALL }}\lib\*.dll

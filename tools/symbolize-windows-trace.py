@@ -33,6 +33,36 @@ Z_CODES = {
 }
 
 
+def trace_frames(trace, image_size=None):
+    """Recover an unwinder PC only inside an established executable extent."""
+    frames = [(m.group(1), int(m.group(2), 16)) for m in FRAME_RE.finditer(trace)]
+    bases, offsets = set(), []
+    for line in trace.splitlines():
+        frame = FRAME_RE.search(line)
+        addresses = re.match(r"\s*\*?\s*0x[0-9a-fA-F]+\s+0x([0-9a-fA-F]+)\s", line)
+        if frame and addresses and frame.group(1).lower() == "hasquant_test.exe":
+            offset = int(frame.group(2), 16)
+            bases.add(int(addresses.group(1), 16) - offset)
+            offsets.append(offset)
+    if len(bases) == 1:
+        runtime_base = bases.pop()
+        extent = image_size if image_size is not None else max(offsets) + 1
+        pcs = re.findall(r"\bpc=0x([0-9a-fA-F]+)", trace)
+        for pc in reversed(pcs):
+            offset = int(pc, 16) - runtime_base
+            if 0 <= offset < extent:
+                frames.insert(0, ("hasquant_test.exe", offset))
+    return frames
+
+
+def pe_image_size(exe):
+    with open(exe, "rb") as f:
+        f.seek(0x3C)
+        pe = struct.unpack("<I", f.read(4))[0]
+        f.seek(pe + 24 + 56)  # SizeOfImage has the same offset in PE32 and PE32+.
+        return struct.unpack("<I", f.read(4))[0]
+
+
 def zdecode(name):
     """Decode GHC's z-encoding; leaves non-GHC (e.g. C++) names alone."""
     if re.search(r"[\s:(<]", name) or not re.search(r"zi|zm|_(?:info|closure)$", name):
@@ -122,6 +152,9 @@ def main():
     ap.add_argument("--image-base", help="override the image base, e.g. 0x140000000")
     args = ap.parse_args()
 
+    if args.map and args.artifact and not os.path.isdir(args.artifact) and args.trace is None:
+        args.trace, args.artifact = args.artifact, None
+
     if args.artifact:
         root = args.artifact
         if os.path.isdir(os.path.join(root, "ci-bin")):
@@ -144,7 +177,7 @@ def main():
         print("warning: image base unknown, assuming 0x140000000", file=sys.stderr)
 
     trace = read_text(args.trace) if args.trace else sys.stdin.read()
-    frames = [(m.group(1), int(m.group(2), 16)) for m in FRAME_RE.finditer(trace)]
+    frames = trace_frames(trace, pe_image_size(args.exe) if args.exe else None)
     if not frames:
         sys.exit("no <module>+0x<offset> frames found in the trace")
 

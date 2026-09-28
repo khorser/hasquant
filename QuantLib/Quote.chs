@@ -48,7 +48,6 @@ module QuantLib.Quote
   , isValid
   , futuresValue
   ) where
-import Foreign.Ptr(FunPtr)
 
 import QuantLib.Internal
 import QuantLib.Internal.Common
@@ -190,31 +189,30 @@ import QuantLib.Internal.Type
 {#fun qlMultiCompositeQuote as multiCompositeQuote{fromEnumC`MultiQuoteOp'
   ,withQuoteArray*`[GenQuote q]'&,preErrorCheck-`String'errorCheck*-}->`Quote'peekQuote*#}
 
-{#fun qlDerivedQuoteFromFunction{withQuote*`GenQuote q',id`FunPtr QuoteUnaryFun'
+{#fun qlDerivedQuoteFromFunction{withQuote*`GenQuote q',withCallbackPtr*`Callback'
   ,preErrorCheck-`String'errorCheck*-}->`Quote'peekQuote*#}
 {#fun qlCompositeQuoteFromFunction{withQuote*`GenQuote q1',withQuote*`GenQuote q2'
-  ,id`FunPtr QuoteBinaryFun',preErrorCheck-`String'errorCheck*-}->`Quote'peekQuote*#}
+  ,withCallbackPtr*`Callback',preErrorCheck-`String'errorCheck*-}->`Quote'peekQuote*#}
 {#fun qlMultiCompositeQuoteFromFunction{withQuoteArray*`[GenQuote q]'&
-  ,id`FunPtr QuoteArrayFun',preErrorCheck-`String'errorCheck*-}->`Quote'peekQuote*#}
+  ,withCallbackPtr*`Callback',preErrorCheck-`String'errorCheck*-}->`Quote'peekQuote*#}
 
 -- |As 'derivedQuote', with an arbitrary Haskell function.
 --
--- __The continuation must span the whole use, not only construction.__ QuantLib calls @f@ later from @Quote::value()@. Returning frees its function pointer, so a later read crashes.
---
--- @f@ must be total: exceptions cross C++, including during bootstrap. Prefer 'derivedQuote' when its 'QuoteOp' fits.
+-- The quote and its native dependents retain the callback after the continuation returns.
+-- Callback exceptions are rethrown by the enclosing Haskell call.
 withDerivedQuote :: (Double -> Double) -- ^f(value)
   -> GenQuote q -> (Quote -> IO b) -> IO b
 withDerivedQuote f q k = withPayoffFun f (\fp -> qlDerivedQuoteFromFunction q fp >>= k)
 
 -- |As 'compositeQuote', but combining the two quotes with an arbitrary Haskell function. Same
--- continuation-lifetime and totality rules as 'withDerivedQuote'.
+-- ownership and exception rules as 'withDerivedQuote'.
 withCompositeQuote :: (Double -> Double -> Double) -- ^f(value1, value2)
   -> GenQuote q1 -> GenQuote q2 -> (Quote -> IO b) -> IO b
 withCompositeQuote f q1 q2 k = withQuoteBinaryFun f (\fp -> qlCompositeQuoteFromFunction q1 q2 fp >>= k)
 
 -- |As 'multiCompositeQuote', but folding with an arbitrary Haskell function. The whole element
 -- vector is passed per evaluation, so this crosses into Haskell once per value, not once per
--- element. Same continuation-lifetime and totality rules as 'withDerivedQuote'.
+-- element. Same ownership and exception rules as 'withDerivedQuote'.
 withMultiCompositeQuote :: ([Double] -> Double) -- ^f(values)
   -> [GenQuote q] -> (Quote -> IO b) -> IO b
 withMultiCompositeQuote f qs k = withBasketAccumulateFun f (\fp -> qlMultiCompositeQuoteFromFunction qs fp >>= k)

@@ -13,7 +13,7 @@ import qualified QuantLib.Context as Context
 import QuantLib.Spec.Helpers(ValidDay(..), InvalidDay(..))
 
 spec :: Spec
-spec = do
+spec = around_ Context.keepingSettingsGc $ do
     describe "settings" $ do
       describe "evaluaton date" $ do
         it "default is today" $ do

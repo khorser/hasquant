@@ -803,7 +803,7 @@ spec = do
         FdmExample.fdmEuropeanR r `shouldSatisfy` closePrec (FdmExample.analyticEuropeanR r) (2.0e-3 * FdmExample.analyticEuropeanR r)
         FdmExample.fdmAmericanR r `shouldSatisfy` closePrec (FdmExample.fdAmericanR r) (2.0e-3 * FdmExample.fdAmericanR r)
         -- withCustomStrikedPayoff driving fdBlackScholesVanillaEngine, which rejects a plain
-        -- withCustomPayoff (QuantLib <= 1.43 crashes on it instead). Same lambda and strike as the
+        -- withCustomPayoff. Same lambda and strike as the
         -- native payoff, so the price is identical.
         FdmExample.fdCustomStrikedAmericanR r `shouldBe` FdmExample.fdAmericanR r
         -- fdmSolve's mesher-driven initial condition must reproduce fdmRollback's hand-built

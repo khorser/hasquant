@@ -1,3 +1,4 @@
+{-# LANGUAGE LambdaCase #-}
 -- Pricing-engine behavior and numerical reference checks.
 module QuantLib.Spec.PricingEngine (spec) where
 
@@ -51,6 +52,32 @@ allTrees =
 
 spec :: Spec
 spec = do
+  describe "custom payoff compatibility" $
+    it "rejects non-striked payoffs in both FD vanilla engines" $ Context.keepingSettingsGc $ do
+      let fixtureDate = 23 `october` 2025
+      Context.setEvaluationDate (Just fixtureDate)
+      dc <- dayCounter Actual365FixedStandard
+      cal <- calendar TARGET
+      s0 <- simpleQuote 100
+      r <- simpleQuote 0.03
+      q <- simpleQuote 0.01
+      vol <- simpleQuote 0.2
+      rTS <- flatForward (ReferenceDate fixtureDate) r dc Continuous Annual
+      qTS <- flatForward (ReferenceDate fixtureDate) q dc Continuous Annual
+      volTS <- blackConstantVol (CalendarReferenceDate fixtureDate) cal vol dc
+      process <- blackScholesMertonProcess s0 qTS rTS volTS EulerDiscretization False
+      hp <- hestonProcess rTS (Just qTS) s0 0.04 1.5 0.04 0.3 (-0.5) QuadraticExponentialMartingale
+      hm <- hestonModel hp
+      bs <- fdBlackScholesVanillaEngine process [] 10 20 0 Douglas False 0 CashDividendSpot
+      hs <- fdHestonVanillaEngine hm [] 10 20 10 0 Hundsdorfer Nothing 1
+      payoff <- withCustomPayoff "custom" "non-striked" (max 0 . subtract 100) pure
+      forM_ [bs, hs] $ \engine -> do
+        opt <- oneAssetOption payoff (European (EuropeanExercise (addDays 365 fixtureDate)))
+        setPricingEngine opt engine
+        npv opt `shouldThrow` (\case
+          Context.CPlusPlusException message -> message == "finite-difference vanilla engine requires a striked payoff"
+          _ -> False)
+
   -- Leans on invariants that hold for any
   -- correct implementation of the Black-76/Bachelier formula (value = discount*(forward*alpha
   -- + x*beta), with alpha/beta's *derivatives* independent of Call-vs-Put) rather than

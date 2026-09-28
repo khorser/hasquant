@@ -1,3 +1,4 @@
+#include "qlCallback.h"
 #include "qlInstrument.h"
 #include "qlPricingEngine.h"
 #include "qlMisc.h"

@@ -34,6 +34,8 @@ tested-with:
 extra-source-files:
     cbits/ql.h
     cbits/qlaux.h
+    cbits/qlCallback.h
+    cbits/qlCheckedFdEngine.h
     cbits/qlEnumC2HS.h
     cbits/qlEnumObjects.h
     cbits/qlInstrument.h
@@ -44,6 +46,7 @@ extra-source-files:
     cbits/qlTermStructure.h
     cbits/qlTermStructureAux.h
     cbits/qlTypesC2HS.h
+    cbits/qlCallback.hpp
     README.md
     cabal.project.local.WINDOWS
     tools/api-name-map-0.7.txt
@@ -112,6 +115,7 @@ library
       QuantLib.PricingEngine
   other-modules:
       QuantLib.Internal
+      QuantLib.Internal.Callback
       QuantLib.Internal.Common
       QuantLib.Internal.Syntax
       QuantLib.Internal.CalendarEnum
@@ -121,6 +125,7 @@ library
   include-dirs:
       cbits
   cxx-sources:
+      cbits/qlCallback.cpp
       cbits/qlInstrument.cpp
       cbits/qlMisc.cpp
       cbits/qlPricingEngine.cpp
@@ -318,7 +323,7 @@ test-suite hasquant_test
       test/hspec
       test/example
       test/main
-  ghc-options: -Wall -Wredundant-constraints -Wmissing-exported-signatures -Widentities
+  ghc-options: -Wall -Wredundant-constraints -Wmissing-exported-signatures -Widentities -rtsopts
   build-depends:
       HUnit >=1.6.2 && <1.7
     , QuickCheck >=2.14.2 && <2.19

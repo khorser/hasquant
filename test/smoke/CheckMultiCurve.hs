@@ -3,16 +3,19 @@
 -- Exercise MultiCurve with GlobalBootstrap against the compiled library.
 --
 
+import Control.Exception (SomeException, try)
+import Control.Monad (forM_)
+import Data.List (isInfixOf)
 import QuantLib.CashFlow(iborLeg)
 
 import Data.List.NonEmpty(fromList)
 import QuantLib.Index.InterestRate(iborIndex, IborConstructor(Euribor3M, Euribor6M))
 import QuantLib.Instrument(npv, setPricingEngine)
-import QuantLib.Instrument.Swap(swap)
+import QuantLib.Instrument.Swap(Swap, swap)
 import qualified QuantLib.InterestRate as IR
 import QuantLib.PricingEngine(discountingSwapEngine)
 import qualified QuantLib.Quote as Quote
-import QuantLib.Context(setEvaluationDate)
+import QuantLib.Context(setEvaluationDate, keepingSettingsGc, collectGarbage)
 import QuantLib.TermStructure.Yield
 import QuantLib.Time.Calendar
 import QuantLib.Time.Date
@@ -23,8 +26,24 @@ import SmokeCheck (checkWith)
 curveToday :: Day
 curveToday = 23 `october` 2025
 
+data Ownership = External | Original | Internal deriving Show
+
 main :: IO ()
-main = do
+main = forM_ ([External, Original, Internal] :: [Ownership]) $ \ownership -> keepingSettingsGc $ do
+  sw <- buildSwap ownership
+  collectGarbage
+  result <- try (npv sw) :: IO (Either SomeException Double)
+  case (ownership, result) of
+    (Internal, Left e) -> checkWith "expired internal handle fails safely" (show e)
+      ("null term structure" `isInfixOf` show e)
+    (Internal, Right _) -> error "internal handle unexpectedly retained the curve group"
+    (_, Right v) -> checkWith (show ownership ++ " pricing index retains MultiCurve")
+      "only the instrument remains after GC" (abs v < 1.0e-4)
+    (_, Left e) -> error (show ownership ++ ": " ++ show e)
+  putStrLn ("multicurve " ++ show ownership ++ ": OK")
+
+buildSwap :: Ownership -> IO Swap
+buildSwap ownership = do
   setEvaluationDate (Just curveToday)
   cal <- calendar TARGET
   euriborDC <- dayCounter (Actual360 False)
@@ -64,9 +83,23 @@ main = do
     (GlobalDiscountLogLinear 1.0e-10 []) False
   ptr6m <- piecewiseYieldCurve (SettlementDays 0 cal) (fromList $ helpers6mBasis ++ helpers6mSwap) euriborDC []
     (GlobalDiscountLogLinear 1.0e-10 []) False
+  original3m <- iborIndex Euribor3M (Just ptr3m)
+  original6m <- iborIndex Euribor6M (Just ptr6m)
   mc <- multiCurve 1.0e-10
   curve3m <- addBootstrappedCurve mc intcurve3m ptr3m
   curve6m <- addBootstrappedCurve mc intcurve6m ptr6m
+  duplicateInternal <- relinkableYieldTermStructure Nothing
+  duplicate <- try (addBootstrappedCurve mc duplicateInternal ptr3m)
+    :: IO (Either SomeException YieldTermStructure)
+  case duplicate of
+    Left e -> checkWith "duplicate member is rejected" (show e)
+      ("already belongs" `isInfixOf` show e)
+    Right _ -> error "duplicate member was accepted"
+
+  (pricing3m, pricing6m) <- case ownership of
+    External -> (,) <$> iborIndex Euribor3M (Just curve3m) <*> iborIndex Euribor6M (Just curve6m)
+    Original -> pure (original3m, original6m)
+    Internal -> pure (euribor3m, euribor6m)
 
   -- Reprice a 3m/6m basis swap built on the bootstrapped curves: should be ~0, the same
   -- self-consistency property the real test checks.
@@ -74,16 +107,11 @@ main = do
   maturity <- advance cal settleFix (2, Years) ModifiedFollowing True
   baseSchedule <- schedule (Just settleFix) maturity (3, Months) cal ModifiedFollowing ModifiedFollowing Forward True Nothing Nothing
   otherSchedule <- schedule (Just settleFix) maturity (6, Months) cal ModifiedFollowing ModifiedFollowing Forward True Nothing Nothing
-  baseLeg <- iborLeg baseSchedule euribor3m [1.0] euriborDC ModifiedFollowing [] [] [bVal] [] [] False False
-  otherLeg <- iborLeg otherSchedule euribor6m [1.0] euriborDC ModifiedFollowing [] [] [] [] [] False False
+  baseLeg <- iborLeg baseSchedule pricing3m [1.0] euriborDC ModifiedFollowing [] [] [bVal] [] [] False False
+  otherLeg <- iborLeg otherSchedule pricing6m [1.0] euriborDC ModifiedFollowing [] [] [] [] [] False False
   sw <- swap baseLeg otherLeg
   eng <- discountingSwapEngine discountCurve Nothing Nothing Nothing
   setPricingEngine sw eng
-  v <- npv sw
-  checkWith "MultiCurve-cycle basis swap reprices to ~0"
-            "confirms curve3m/curve6m came out of a genuine bidirectional bootstrap, not stale finalizer wiring"
-            (abs v < 1.0e-4)
-
   -- curve3m/curve6m are the external handles addBootstrappedCurve hands back; confirm they're
   -- usable YieldTermStructures independent of the swap check above.
   d3m <- discount curve3m (DatePoint maturity) False
@@ -92,6 +120,6 @@ main = do
             "d3m/d6m come from addBootstrappedCurve's returned Handle<YieldTermStructure>"
             (d3m > 0 && d3m < 1 && d6m > 0 && d6m < 1)
 
-  putStrLn "multicurve: all checks passed"
+  pure sw
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

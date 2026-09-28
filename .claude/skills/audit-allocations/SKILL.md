@@ -152,7 +152,7 @@ At each throw point, make sure every traced allocation is owned and no pointer t
 
 **5. No raw pointer is hoisted above a `try` anywhere in `cbits/` — keep it that way.** The rule
 is mechanical and greppable: **no `catch` block frees anything.** A `catch` body is
-`handleException<T>(e, er)` or `*e = tracedup(er.what())`, nothing more.
+`handleException<T>(e, er)` or `qlSetError(e, er.what())`, nothing more.
 
 The still-common one-liner `return ret(new QlX(alloc(new X(...))));` has no such window — there is
 no second reference to leak or double-free — and needs no conversion.
@@ -187,7 +187,7 @@ forced:
 lifecycle get the same fallback label, and `alloc-summary.py` pairs per `(class, pointer)`, so they
 balance correctly under the mangled name.
 
-## The FFI boundary: which shims need a `char **e`
+## The FFI boundary: which shims need a `QlError **e`
 
 An exception escaping an `extern "C"` shim unwinds into the Haskell RTS — `std::terminate`, no
 message — instead of reaching Haskell as a `CPlusPlusException`. A shim with no `try` is only safe
@@ -208,7 +208,7 @@ re-deriving them costs a day, so start here:
 - **`bad_alloc` from an allocating accessor is an accepted window** — the `qlXAsBase` upcast
   shims, `qlCouponLegAsLeg`, `qlCommodityCurveBasisOfCurve`. Same tolerance as point 5's one-liner.
 
-So a shim needs a `char **e` only when a **non-date argument, or a construction-time setting no
+So a shim needs a `QlError **e` only when a **non-date argument, or a construction-time setting no
 marshaller constrains, can fail a `QL_REQUIRE`**. The three that qualify today, all found by
 reading the callee rather than the shim: `qlDateNthWeekday` (`nth` is a caller-supplied count,
 required in 1..5), and `qlZeroInflationIndexNeedsForecast`/`qlYoYInflationIndexNeedsForecast`
@@ -269,3 +269,14 @@ Adopt a factory's raw return immediately with `allocShared(factory(...))`. In
 precedes evaluation of its constructor arguments: if it fails, no `shared_ptr`
 ever takes ownership of `p`. This differs from `new Wrapper(new T(...))`, where
 the outer allocation precedes creation of the payload itself.
+
+## Chronological trace checks
+
+A final balance of zero can hide an unmatched release followed by address reuse.
+`alloc-summary.py` records every release without a live allocation, including its line;
+malformed or empty traces fail validation. Run `python3 -m unittest discover -s tools
+-p test_memory_diagnostics.py` when changing the parser. A balanced wrapper trace cannot
+prove payload or callback safety; native shared ownership and callbacks need separate probes.
+
+Trace labels can contain namespace qualifiers such as `hasquant::Callback`; the parser
+must split at the final `: <pointer>` separator, not the first colon.

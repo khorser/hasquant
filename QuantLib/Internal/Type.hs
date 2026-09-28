@@ -1,6 +1,6 @@
 {-# LANGUAGE RankNTypes, TypeFamilies, TypeOperators, FlexibleContexts, FlexibleInstances #-}
 module QuantLib.Internal.Type where
-import Foreign.Ptr(Ptr, FunPtr, nullPtr, freeHaskellFunPtr)
+import Foreign.Ptr(Ptr, nullPtr)
 import Foreign.ForeignPtr(ForeignPtr, FinalizerPtr, newForeignPtr, withForeignPtr)
 import Foreign.C.Types(CUInt(..), CInt, CDouble(..))
 import Foreign.C.String(CString)
@@ -11,6 +11,7 @@ import Foreign.Storable(peek)
 import Control.Monad((>=>))
 import System.IO.Unsafe(unsafePerformIO)
 
+import qualified QuantLib.Internal.Callback as Callback
 import QuantLib.Internal(RealVector, borrowRealVector, peekDynString, preIntArray, prePtrArray, peekDayArray, peekPtrArray)
 import Control.Exception (bracket, finally, mask, mask_, onException)
 
@@ -37,108 +38,35 @@ showStandalone :: (Ptr a -> IO CString) -> Standalone a -> String
 showStandalone f x = unsafePerformIO $ mask_ $ withStandalone x (f >=> peekDynString)
 {-# NOINLINE showStandalone #-}
 
--- QuantLib calls stay `safe': an `unsafe' import can block GC and the scheduler during pricing.
--- Finalizer imports take symbol addresses; callbacks into Haskell also require `safe' imports.
--- 'withCostFunction' passes the whole parameter vector to each optimizer callback.
-foreign import ccall "wrapper" mkCostFunPtr
-  :: (Ptr CDouble -> CUInt -> IO CDouble) -> IO (FunPtr (Ptr CDouble -> CUInt -> IO CDouble))
--- Build a C function pointer around a Haskell cost function for the duration of one 'optimize'
--- call, freeing it with 'freeHaskellFunPtr' once the continuation returns, whether normally or
--- via exception.
-withCostFunction :: (RealVector -> Double) -> (FunPtr (Ptr CDouble -> CUInt -> IO CDouble) -> IO b) -> IO b
-withCostFunction f g = mask $ \restore -> do
-  fp <- mkCostFunPtr call
-  restore (g fp) `finally` freeHaskellFunPtr fp
+type Callback = Callback.Callback
+
+withCallbackPtr :: Callback -> (Ptr () -> IO b) -> IO b
+withCallbackPtr = Callback.withCallbackPtr
+
+withCostFunction :: (RealVector -> Double) -> (Ptr () -> IO b) -> IO b
+withCostFunction f use = Callback.withScalarCallback call (`withCallbackPtr` use)
   where
-    call xs n = do
-      x <- borrowRealVector xs n
-      pure (realToFrac (f x))
+    call args = f <$> borrowRealVector (Callback.callbackInput args) (fromIntegral (Callback.callbackSize args))
 
-type FdmInnerValueFun = Ptr CDouble -> CUInt -> CDouble -> IO CDouble
-foreign import ccall "wrapper" mkFdmInnerValueFunPtr :: FdmInnerValueFun -> IO (FunPtr FdmInnerValueFun)
--- |Wrap a Haskell @t -> nodeLocation -> value@ function as an 'FdmInnerValueFun' C callback, for
--- either of @FdmInnerValueCalculator::innerValue@\/@avgInnerValue@ -- the one hook in this file
--- that is a genuine, uncoarsened per-grid-node callback rather than a whole-grid one (see
--- 'QuantLib.Method.fdmSolve' and its accompanying haddock for why no batched shape exists here,
--- matching QuantLib-SWIG's own @FdmInnerValueCalculatorDelegate@). Reuses the same
--- mask\/finally\/freeHaskellFunPtr bracket as 'withCostFunction' above; unlike the
--- FDM rollback callbacks in "QuantLib.Method", this one returns a single scalar so has no
--- 'pokeBoundedFdmResult'-style output-length hazard.
-withFdmInnerValue :: (Double -> [Double] -> Double) -> (FunPtr FdmInnerValueFun -> IO b) -> IO b
-withFdmInnerValue f g = mask $ \restore -> do
-  fp <- mkFdmInnerValueFunPtr call
-  restore (g fp) `finally` freeHaskellFunPtr fp
-  where
-    call locPtr n t = do
-      loc <- peekArray (fromIntegral n) locPtr
-      pure (realToFrac (f (realToFrac t) (map realToFrac loc)))
+withFdmInnerValue :: (Double -> [Double] -> Double) -> (Callback -> IO b) -> IO b
+withFdmInnerValue f = Callback.withScalarCallback $ \args -> do
+  loc <- peekArray (Callback.callbackSize args) (Callback.callbackInput args)
+  pure (f (Callback.callbackTime1 args) (map realToFrac loc))
 
-type FdmGridMappingFun = CDouble -> IO CDouble
-foreign import ccall "wrapper" mkFdmGridMappingFunPtr :: FdmGridMappingFun -> IO (FunPtr FdmGridMappingFun)
--- |Wrap a Haskell @Double -> Double@ function as an 'FdmGridMappingFun' C callback, for
--- @FdmCellAveragingInnerValue@'s optional @gridMapping@ (@QuantLib.Method.withCustomCellAveragingInnerValue@)
--- -- another genuine per-node callback (invoked from inside @avgInnerValueCalc@'s Simpson
--- integration and from every @innerValue@ call), same reasoning as 'withFdmInnerValue' above.
-withFdmGridMapping :: (Double -> Double) -> (FunPtr FdmGridMappingFun -> IO b) -> IO b
-withFdmGridMapping f g = mask $ \restore -> do
-  fp <- mkFdmGridMappingFunPtr call
-  restore (g fp) `finally` freeHaskellFunPtr fp
-  where
-    call x = pure (realToFrac (f (realToFrac x)))
+withFdmGridMapping :: (Double -> Double) -> (Callback -> IO b) -> IO b
+withFdmGridMapping = withPayoffFun
 
-type PayoffFun = CDouble -> IO CDouble
-foreign import ccall "wrapper" mkPayoffFunPtr :: PayoffFun -> IO (FunPtr PayoffFun)
--- |Wrap a Haskell @price -> value@ function as a 'PayoffFun' C callback, for
--- @QuantLib.Internal.Common.withCustomPayoff@. Another genuine, uncoarsened callback: QuantLib's
--- @Payoff::operator()@ takes one scalar price everywhere it is called -- per tree node in
--- @DiscretizedVanillaOption@, inside @FdmCellAveragingInnerValue@'s per-cell Simpson integral, per
--- path per exercise index in @AmericanPathPricer@ -- and nothing upstream batches an @Array@, so
--- there is no whole-vector shape to coarsen to (same situation as 'withFdmInnerValue' above).
-withPayoffFun :: (Double -> Double) -> (FunPtr PayoffFun -> IO b) -> IO b
-withPayoffFun f g = mask $ \restore -> do
-  fp <- mkPayoffFunPtr call
-  restore (g fp) `finally` freeHaskellFunPtr fp
-  where
-    call x = pure (realToFrac (f (realToFrac x)))
+withPayoffFun :: (Double -> Double) -> (Callback -> IO b) -> IO b
+withPayoffFun f = Callback.withScalarCallback (pure . f . Callback.callbackScalar)
 
-type BasketAccumulateFun = Ptr CDouble -> CUInt -> IO CDouble
-foreign import ccall "wrapper" mkBasketAccumulateFunPtr :: BasketAccumulateFun -> IO (FunPtr BasketAccumulateFun)
--- |Wrap a Haskell @underlyings -> accumulated@ function as a 'BasketAccumulateFun' C callback, for
--- @QuantLib.Internal.Common.withCustomBasketPayoff@. Unlike 'withPayoffFun' this one /is/ already
--- coarsened by upstream's own interface: @BasketPayoff::accumulate@ takes the whole underlying-state
--- @Array@ per call, not one component at a time.
-withBasketAccumulateFun :: ([Double] -> Double) -> (FunPtr BasketAccumulateFun -> IO b) -> IO b
-withBasketAccumulateFun f g = mask $ \restore -> do
-  fp <- mkBasketAccumulateFunPtr call
-  restore (g fp) `finally` freeHaskellFunPtr fp
-  where
-    call xs n = do
-      x <- peekArray (fromIntegral n) xs
-      pure (realToFrac (f (map realToFrac x)))
+withBasketAccumulateFun :: ([Double] -> Double) -> (Callback -> IO b) -> IO b
+withBasketAccumulateFun f = Callback.withScalarCallback $ \args -> do
+  xs <- peekArray (Callback.callbackSize args) (Callback.callbackInput args)
+  pure (f (map realToFrac xs))
 
--- |The unary callback a Haskell-defined @DerivedQuote@ crosses on, for
--- @QuantLib.Quote.withDerivedQuote@. Same C signature as 'PayoffFun', so it reuses
--- 'withPayoffFun' rather than duplicating the @wrapper@ import; the alias exists so the quote
--- bindings read in their own terms.
-type QuoteUnaryFun = PayoffFun
-
--- |As 'QuoteUnaryFun', but for @MultiCompositeQuote@ (@QuantLib.Quote.withMultiCompositeQuote@):
--- same C signature as 'BasketAccumulateFun', and coarsened the same way -- upstream hands the
--- whole element vector over per evaluation.
-type QuoteArrayFun = BasketAccumulateFun
-
-type QuoteBinaryFun = CDouble -> CDouble -> IO CDouble
-foreign import ccall "wrapper" mkQuoteBinaryFunPtr :: QuoteBinaryFun -> IO (FunPtr QuoteBinaryFun)
--- |Wrap a Haskell @value1 -> value2 -> value@ function as a 'QuoteBinaryFun' C callback, for
--- @QuantLib.Quote.withCompositeQuote@. The genuinely new arity of the three: @CompositeQuote@'s
--- @BinaryFunction@ takes both element values at once, so there is nothing to coarsen -- one
--- crossing per @Quote::value()@ evaluation is already the whole computation.
-withQuoteBinaryFun :: (Double -> Double -> Double) -> (FunPtr QuoteBinaryFun -> IO b) -> IO b
-withQuoteBinaryFun f g = mask $ \restore -> do
-  fp <- mkQuoteBinaryFunPtr call
-  restore (g fp) `finally` freeHaskellFunPtr fp
-  where
-    call x y = pure (realToFrac (f (realToFrac x) (realToFrac y)))
+withQuoteBinaryFun :: (Double -> Double -> Double) -> (Callback -> IO b) -> IO b
+withQuoteBinaryFun f = Callback.withScalarCallback $ \args ->
+  pure (f (Callback.callbackScalar args) (Callback.callbackTime1 args))
 
 data CCalendar
 newtype Calendar = Calendar {getCCalendar :: Standalone CCalendar}

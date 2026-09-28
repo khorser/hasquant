@@ -1,0 +1,70 @@
+#ifndef HASQUANT_CALLBACK_HPP
+#define HASQUANT_CALLBACK_HPP
+
+#include <exception>
+#include <memory>
+#include <string>
+#include <utility>
+
+namespace hasquant { class Callback; }
+using QlCallback = std::shared_ptr<hasquant::Callback>;
+#include "qlCallback.h"
+
+struct QlError {
+  explicit QlError(std::string text) : message(std::move(text)) {}
+  ~QlError() { if (exception) releaseException(exception); }
+  QlError(const QlError&) = delete;
+  QlError& operator=(const QlError&) = delete;
+  std::string message;
+  void* exception = nullptr;
+  QlReleaseStable releaseException = nullptr;
+};
+
+void qlSetError(QlError** slot, const char* message);
+
+class QlCallScope {
+public:
+  explicit QlCallScope(QlError** slot) noexcept;
+  ~QlCallScope();
+  QlCallScope(const QlCallScope&) = delete;
+  QlCallScope& operator=(const QlCallScope&) = delete;
+  QlError** slot;
+private:
+  QlCallScope* previous_;
+};
+
+namespace hasquant {
+  class Callback {
+  public:
+    Callback(QlCallbackFun fn, QlReleaseStable releaseStable)
+      : fn_(fn), releaseStable_(releaseStable) {}
+    ~Callback() { if (releaseFun_) releaseFun_(reinterpret_cast<void (*)(void)>(fn_)); }
+    Callback(const Callback&) = delete;
+    Callback& operator=(const Callback&) = delete;
+    void adopt(QlReleaseFun release) noexcept { releaseFun_ = release; }
+    void invoke(const QlCallbackArgs& args) const;
+    double scalar(double x, double y = 0.0) const {
+      double result = 0.0;
+      invoke(QlCallbackArgs{x, y, 0.0, nullptr, &result, 0, 0});
+      return result;
+    }
+    double array(const double* input, unsigned size, double time = 0.0) const {
+      double result = 0.0;
+      invoke(QlCallbackArgs{0.0, time, 0.0, input, &result, size, 0});
+      return result;
+    }
+  private:
+    QlCallbackFun fn_;
+    QlReleaseStable releaseStable_;
+    QlReleaseFun releaseFun_ = nullptr;
+  };
+  struct UnaryCallback {
+    QlCallback owner;
+    double operator()(double x) const { return owner->scalar(x); }
+  };
+  struct BinaryCallback {
+    QlCallback owner;
+    double operator()(double x, double y) const { return owner->scalar(x, y); }
+  };
+}
+#endif

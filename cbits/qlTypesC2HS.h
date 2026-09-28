@@ -1,4 +1,6 @@
 // fake typedefs for C2HS
+typedef struct QlCallback QlCallback;
+typedef struct QlError QlError;
 typedef struct Calendar Calendar;
 typedef struct DayCounter DayCounter;
 typedef struct Leg Leg;

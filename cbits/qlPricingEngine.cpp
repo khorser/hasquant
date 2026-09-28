@@ -1,3 +1,4 @@
+#include "qlCheckedFdEngine.h"
 #include <ql/experimental/callablebonds/blackcallablebondengine.hpp>
 #include <ql/experimental/callablebonds/treecallablebondengine.hpp>
 #include <ql/experimental/swaptions/haganirregularswaptionengine.hpp>
@@ -182,7 +183,7 @@ namespace {
   // DouglasScheme::step actually calls (size/setTime are plain state, not callbacks -- see below)
   // are implemented; apply_mixed/preconditioner QL_FAIL, so only schemes that never need them
   // (Douglas, Crank-Nicolson in 1D) work through this hook.
-  using FdmCallbackFun = void (*)(const FdmCallbackArgs*);
+  using FdmCallbackFun = QlCallback;
 
   class HsFdmLinearOpComposite : public FdmLinearOpComposite {
   public:
@@ -199,19 +200,19 @@ namespace {
     Array apply(const Array& r) const override {
       Array out(r.size());
       FdmCallbackArgs args{0.0, t1_, t2_, r.begin(), out.begin(), (unsigned)r.size(), 0};
-      applyFn_(&args);
+      applyFn_->invoke(args);
       return out;
     }
     Array apply_direction(Size direction, const Array& r) const override {
       Array out(r.size());
       FdmCallbackArgs args{0.0, t1_, t2_, r.begin(), out.begin(), (unsigned)r.size(), (unsigned)direction};
-      applyDirFn_(&args);
+      applyDirFn_->invoke(args);
       return out;
     }
     Array solve_splitting(Size direction, const Array& r, Real s) const override {
       Array out(r.size());
       FdmCallbackArgs args{s, t1_, t2_, r.begin(), out.begin(), (unsigned)r.size(), (unsigned)direction};
-      solveSplitFn_(&args);
+      solveSplitFn_->invoke(args);
       return out;
     }
     Array apply_mixed(const Array&) const override {
@@ -228,17 +229,14 @@ namespace {
     mutable Time t1_, t2_;
   };
 
-  // Wraps one optional Haskell-defined step condition (withMaybeFdmStepCondition) as a
-  // StepCondition<Array>. applyTo's caller-supplied `a' buffer is both the read source and the
-  // write destination -- safe because the Haskell-side callback fully reads its input (peekArray)
-  // before writing any of its output (pokeArray), so an in-place update never reads
-  // already-overwritten data.
+  // Step conditions share their input/output buffer. Haskell uses an overlap-safe copy
+  // because a callback can return the borrowed vector itself or a slice of it.
   class HsFdmStepCondition : public StepCondition<Array> {
   public:
     explicit HsFdmStepCondition(FdmCallbackFun fn) : fn_(fn) {}
     void applyTo(Array& a, Time t) const override {
       FdmCallbackArgs args{0.0, t, 0.0, a.begin(), a.begin(), (unsigned)a.size(), 0};
-      fn_(&args);
+      fn_->invoke(args);
     }
   private:
     FdmCallbackFun fn_;
@@ -251,7 +249,7 @@ namespace {
   // and QuantLib's own step conditions (e.g. FdmAmericanStepCondition, not bound here) call it
   // again per node at every exercise date -- matching QuantLib-SWIG's own
   // FdmInnerValueCalculatorDelegate (SWIG/fdm.i), which accepts the same real per-call cost.
-  using FdmInnerValueFun = double (*)(const double* loc, unsigned n, double t);
+  using FdmInnerValueFun = QlCallback;
 
   class HsFdmInnerValueCalculator : public FdmInnerValueCalculator {
   public:
@@ -267,7 +265,7 @@ namespace {
       const Size n = mesher_->layout()->dim().size();
       std::vector<Real> loc(n);
       for (Size d = 0; d < n; ++d) loc[d] = mesher_->location(iter, d);
-      return fn(loc.data(), (unsigned)n, t);
+      return fn->array(loc.data(), (unsigned)n, t);
     }
     shared_ptr<FdmMesher> mesher_;
     FdmInnerValueFun innerValueFn_, avgInnerValueFn_;
@@ -303,7 +301,7 @@ namespace {
   QlFdmInnerValueCalculator* fdmAffineModelSwapInnerValue(
                                                           shared_ptr<ModelType>* disModel, shared_ptr<ModelType>* fwdModel, QlFixedVsFloatingSwap* swap,
                                                           unsigned exDatesLen, double* exerciseTimes, int* exerciseDates,
-                                                          QlFdmMesher* mesher, unsigned direction, char **e) {
+                                                          QlFdmMesher* mesher, unsigned direction, QlError **e) { QlCallScope callbackScope(e);
     try {
       std::map<Time, Date> t2d;
       for (unsigned i = 0; i < exDatesLen; ++i) t2d[exerciseTimes[i]] = Date(exerciseDates[i]);
@@ -333,7 +331,7 @@ struct HestonSLVFDMLogEntries {
 };
 
 extern "C" {
-QlPricingEngine *qlDiscountingBondEngine(QlYieldTermStructure *ts, int f, char **e) {
+QlPricingEngine *qlDiscountingBondEngine(QlYieldTermStructure *ts, int f, QlError **e) { QlCallScope callbackScope(e);
   try {
     return ret(new QlPricingEngine(alloc(new DiscountingBondEngine(*arg(ts), qlOptBool(f)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine *>(e, er);}}
@@ -341,7 +339,7 @@ QlPricingEngine* qlDiscountingPerpetualFuturesEngine(
     QlYieldTermStructure* domesticDiscountCurve, QlYieldTermStructure* foreignDiscountCurve,
     QlQuote* assetSpot, unsigned fundingTimesLen, double* fundingTimes,
     unsigned fundingRatesLen, double* fundingRates, unsigned interestRateDiffsLen,
-    double* interestRateDiffs, int fundingInterpType, double maxT, char **e) {
+    double* interestRateDiffs, int fundingInterpType, double maxT, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new DiscountingPerpetualFuturesEngine(
       *arg(domesticDiscountCurve), *arg(foreignDiscountCurve), *arg(assetSpot),
       std::vector<Time>(fundingTimes, fundingTimes + fundingTimesLen),
@@ -349,209 +347,209 @@ QlPricingEngine* qlDiscountingPerpetualFuturesEngine(
       std::vector<Spread>(interestRateDiffs, interestRateDiffs + interestRateDiffsLen),
       (DiscountingPerpetualFuturesEngine::InterpolationType)fundingInterpType, maxT))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlRiskyBondEngine(QlDefaultProbabilityTermStructure* defaultTS, double recoveryRate, QlYieldTermStructure* yieldTS, char **e) {
+QlPricingEngine* qlRiskyBondEngine(QlDefaultProbabilityTermStructure* defaultTS, double recoveryRate, QlYieldTermStructure* yieldTS, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new RiskyBondEngine(Handle<DefaultProbabilityTermStructure>(*arg(defaultTS)), recoveryRate, *arg(yieldTS)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlDiscountingSwapEngine(QlYieldTermStructure* discountCurve, int includeSettlementDateFlows, int settlementDate, int npvDate, char **e) {
+QlPricingEngine* qlDiscountingSwapEngine(QlYieldTermStructure* discountCurve, int includeSettlementDateFlows, int settlementDate, int npvDate, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new DiscountingSwapEngine(*arg(discountCurve), qlOptBool(includeSettlementDateFlows), qlNullableDate(settlementDate), qlNullableDate(npvDate)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlDiscountingFxForwardEngine(QlYieldTermStructure* sourceCurrencyDiscountCurve, QlYieldTermStructure* targetCurrencyDiscountCurve, QlQuote* spotFx, char **e) {
+QlPricingEngine* qlDiscountingFxForwardEngine(QlYieldTermStructure* sourceCurrencyDiscountCurve, QlYieldTermStructure* targetCurrencyDiscountCurve, QlQuote* spotFx, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new DiscountingFxForwardEngine(*arg(sourceCurrencyDiscountCurve), *arg(targetCurrencyDiscountCurve), *arg(spotFx)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlDiscountingConstNotionalCrossCurrencySwapEngine(Currency* domesticCcy, QlYieldTermStructure* domesticCcyDiscountCurve, Currency* foreignCcy, QlYieldTermStructure* foreignCcyDiscountCurve, QlQuote* spotFX, int includeSettlementDateFlows, int settlementDate, int npvDate, int spotFXSettleDate, char **e) {
+QlPricingEngine* qlDiscountingConstNotionalCrossCurrencySwapEngine(Currency* domesticCcy, QlYieldTermStructure* domesticCcyDiscountCurve, Currency* foreignCcy, QlYieldTermStructure* foreignCcyDiscountCurve, QlQuote* spotFX, int includeSettlementDateFlows, int settlementDate, int npvDate, int spotFXSettleDate, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new DiscountingConstNotionalCrossCurrencySwapEngine(*arg(domesticCcy), *arg(domesticCcyDiscountCurve), *arg(foreignCcy), *arg(foreignCcyDiscountCurve), *arg(spotFX), qlOptBool(includeSettlementDateFlows), qlNullableDate(settlementDate), qlNullableDate(npvDate), qlNullableDate(spotFXSettleDate)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlCounterpartyAdjSwapEngine(QlYieldTermStructure* discountCurve, QlQuote* blackVol, QlDefaultProbabilityTermStructure* ctptyDTS, double ctptyRecoveryRate, QlDefaultProbabilityTermStructure* invstDTS, double invstRecoveryRate, char **e) {
+QlPricingEngine* qlCounterpartyAdjSwapEngine(QlYieldTermStructure* discountCurve, QlQuote* blackVol, QlDefaultProbabilityTermStructure* ctptyDTS, double ctptyRecoveryRate, QlDefaultProbabilityTermStructure* invstDTS, double invstRecoveryRate, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new CounterpartyAdjSwapEngine(*arg(discountCurve), *arg(blackVol), Handle<DefaultProbabilityTermStructure>(*arg(ctptyDTS)), ctptyRecoveryRate, qlNullableHandle(arg(invstDTS)), invstRecoveryRate))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlAnalyticBarrierEngine(QlGeneralizedBlackScholesProcess* process, char **e) {
+QlPricingEngine* qlAnalyticBarrierEngine(QlGeneralizedBlackScholesProcess* process, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new AnalyticBarrierEngine(*arg(process)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlAnalyticTwoAssetBarrierEngine(QlGeneralizedBlackScholesProcess* process1, QlGeneralizedBlackScholesProcess* process2, QlQuote* rho, char **e) {
+QlPricingEngine* qlAnalyticTwoAssetBarrierEngine(QlGeneralizedBlackScholesProcess* process1, QlGeneralizedBlackScholesProcess* process2, QlQuote* rho, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new AnalyticTwoAssetBarrierEngine(*arg(process1), *arg(process2), *arg(rho)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlAnalyticSoftBarrierEngine(QlGeneralizedBlackScholesProcess* process, char **e) {
+QlPricingEngine* qlAnalyticSoftBarrierEngine(QlGeneralizedBlackScholesProcess* process, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new AnalyticSoftBarrierEngine(*arg(process)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlAnalyticSimpleChooserEngine(QlGeneralizedBlackScholesProcess* process, char **e) {
+QlPricingEngine* qlAnalyticSimpleChooserEngine(QlGeneralizedBlackScholesProcess* process, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new AnalyticSimpleChooserEngine(*arg(process)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlAnalyticComplexChooserEngine(QlGeneralizedBlackScholesProcess* process, char **e) {
+QlPricingEngine* qlAnalyticComplexChooserEngine(QlGeneralizedBlackScholesProcess* process, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new AnalyticComplexChooserEngine(*arg(process)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlAnalyticTwoAssetCorrelationEngine(QlGeneralizedBlackScholesProcess* process1, QlGeneralizedBlackScholesProcess* process2, QlQuote* correlation, char **e) {
+QlPricingEngine* qlAnalyticTwoAssetCorrelationEngine(QlGeneralizedBlackScholesProcess* process1, QlGeneralizedBlackScholesProcess* process2, QlQuote* correlation, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new AnalyticTwoAssetCorrelationEngine(*arg(process1), *arg(process2), *arg(correlation)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlAnalyticEuropeanMargrabeEngine(QlGeneralizedBlackScholesProcess* process1, QlGeneralizedBlackScholesProcess* process2, double correlation, char **e) {
+QlPricingEngine* qlAnalyticEuropeanMargrabeEngine(QlGeneralizedBlackScholesProcess* process1, QlGeneralizedBlackScholesProcess* process2, double correlation, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new AnalyticEuropeanMargrabeEngine(*arg(process1), *arg(process2), correlation))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlAnalyticAmericanMargrabeEngine(QlGeneralizedBlackScholesProcess* process1, QlGeneralizedBlackScholesProcess* process2, double correlation, char **e) {
+QlPricingEngine* qlAnalyticAmericanMargrabeEngine(QlGeneralizedBlackScholesProcess* process1, QlGeneralizedBlackScholesProcess* process2, double correlation, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new AnalyticAmericanMargrabeEngine(*arg(process1), *arg(process2), correlation))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlAnalyticWriterExtensibleOptionEngine(QlGeneralizedBlackScholesProcess* process, char **e) {
+QlPricingEngine* qlAnalyticWriterExtensibleOptionEngine(QlGeneralizedBlackScholesProcess* process, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new AnalyticWriterExtensibleOptionEngine(*arg(process)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlAnalyticHolderExtensibleOptionEngine(QlGeneralizedBlackScholesProcess* process, char **e) {
+QlPricingEngine* qlAnalyticHolderExtensibleOptionEngine(QlGeneralizedBlackScholesProcess* process, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new AnalyticHolderExtensibleOptionEngine(*arg(process)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlAnalyticPartialTimeBarrierOptionEngine(QlGeneralizedBlackScholesProcess* process, char **e) {
+QlPricingEngine* qlAnalyticPartialTimeBarrierOptionEngine(QlGeneralizedBlackScholesProcess* process, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new AnalyticPartialTimeBarrierOptionEngine(*arg(process)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlAnalyticBinaryBarrierEngine(QlGeneralizedBlackScholesProcess* process, char **e) {
+QlPricingEngine* qlAnalyticBinaryBarrierEngine(QlGeneralizedBlackScholesProcess* process, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new AnalyticBinaryBarrierEngine(*arg(process)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlFdBlackScholesBarrierEngine(QlGeneralizedBlackScholesProcess* process, unsigned tGrid, unsigned xGrid, unsigned dampingSteps, FdmSchemeDesc *fdScheme, int localVol, double illegalLocalVolOverwrite, char **e) {
+QlPricingEngine* qlFdBlackScholesBarrierEngine(QlGeneralizedBlackScholesProcess* process, unsigned tGrid, unsigned xGrid, unsigned dampingSteps, FdmSchemeDesc *fdScheme, int localVol, double illegalLocalVolOverwrite, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new FdBlackScholesBarrierEngine(*arg(process), tGrid, xGrid, dampingSteps, *arg(fdScheme), localVol, illegalLocalVolOverwrite))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlFdHestonBarrierEngine(QlHestonModel* model, unsigned tGrid, unsigned xGrid, unsigned vGrid, unsigned dampingSteps, FdmSchemeDesc *fdScheme, QlLocalVolTermStructure* leverageFct, double mixingFactor, char **e) {
+QlPricingEngine* qlFdHestonBarrierEngine(QlHestonModel* model, unsigned tGrid, unsigned xGrid, unsigned vGrid, unsigned dampingSteps, FdmSchemeDesc *fdScheme, QlLocalVolTermStructure* leverageFct, double mixingFactor, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new FdHestonBarrierEngine(*arg(model), tGrid, xGrid, vGrid, dampingSteps, *arg(fdScheme), leverageFct ? *arg(leverageFct) : shared_ptr<LocalVolTermStructure>(), mixingFactor))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlFdHestonBarrierEngine1(QlHestonModel* model, unsigned dividendsLen, QlDividend** dividends, unsigned tGrid, unsigned xGrid, unsigned vGrid, unsigned dampingSteps, FdmSchemeDesc *fdScheme, QlLocalVolTermStructure* leverageFct, double mixingFactor, char **e) {
+QlPricingEngine* qlFdHestonBarrierEngine1(QlHestonModel* model, unsigned dividendsLen, QlDividend** dividends, unsigned tGrid, unsigned xGrid, unsigned vGrid, unsigned dampingSteps, FdmSchemeDesc *fdScheme, QlLocalVolTermStructure* leverageFct, double mixingFactor, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new FdHestonBarrierEngine(*arg(model), qlVector(dividends, dividendsLen), tGrid, xGrid, vGrid, dampingSteps, *arg(fdScheme), leverageFct ? *arg(leverageFct) : shared_ptr<LocalVolTermStructure>(), mixingFactor))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlFdHestonDoubleBarrierEngine(QlHestonModel* model, unsigned tGrid, unsigned xGrid, unsigned vGrid, unsigned dampingSteps, FdmSchemeDesc *fdScheme, QlLocalVolTermStructure* leverageFct, double mixingFactor, char **e) {
+QlPricingEngine* qlFdHestonDoubleBarrierEngine(QlHestonModel* model, unsigned tGrid, unsigned xGrid, unsigned vGrid, unsigned dampingSteps, FdmSchemeDesc *fdScheme, QlLocalVolTermStructure* leverageFct, double mixingFactor, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new FdHestonDoubleBarrierEngine(*arg(model), tGrid, xGrid, vGrid, dampingSteps, *arg(fdScheme), leverageFct ? *arg(leverageFct) : shared_ptr<LocalVolTermStructure>(), mixingFactor))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlBinomialBarrierEngine(int tree, QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, unsigned maxTimeSteps, char **e) {
+QlPricingEngine* qlBinomialBarrierEngine(int tree, QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, unsigned maxTimeSteps, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(qlBinomialBarrierEngineAux(tree, *arg(process), timeSteps, maxTimeSteps))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlVannaVolgaBarrierEngine(QlDeltaVolQuote* atmVol, QlDeltaVolQuote* vol25Put, QlDeltaVolQuote* vol25Call, QlQuote* spotFX, QlYieldTermStructure* domesticTS, QlYieldTermStructure* foreignTS, int adaptVanDelta, double bsPriceWithSmile, char **e) {
+QlPricingEngine* qlVannaVolgaBarrierEngine(QlDeltaVolQuote* atmVol, QlDeltaVolQuote* vol25Put, QlDeltaVolQuote* vol25Call, QlQuote* spotFX, QlYieldTermStructure* domesticTS, QlYieldTermStructure* foreignTS, int adaptVanDelta, double bsPriceWithSmile, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new VannaVolgaBarrierEngine(Handle<DeltaVolQuote>(*arg(atmVol)), Handle<DeltaVolQuote>(*arg(vol25Put)), Handle<DeltaVolQuote>(*arg(vol25Call)), *arg(spotFX), *arg(domesticTS), *arg(foreignTS), adaptVanDelta, bsPriceWithSmile))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlAnalyticDoubleBarrierEngine(QlGeneralizedBlackScholesProcess* process, int series, char **e) {
+QlPricingEngine* qlAnalyticDoubleBarrierEngine(QlGeneralizedBlackScholesProcess* process, int series, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new AnalyticDoubleBarrierEngine(*arg(process), series))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlVannaVolgaDoubleBarrierEngine(QlDeltaVolQuote* atmVol, QlDeltaVolQuote* vol25Put, QlDeltaVolQuote* vol25Call, QlQuote* spotFX, QlYieldTermStructure* domesticTS, QlYieldTermStructure* foreignTS, int adaptVanDelta, double bsPriceWithSmile, int series, char **e) {
+QlPricingEngine* qlVannaVolgaDoubleBarrierEngine(QlDeltaVolQuote* atmVol, QlDeltaVolQuote* vol25Put, QlDeltaVolQuote* vol25Call, QlQuote* spotFX, QlYieldTermStructure* domesticTS, QlYieldTermStructure* foreignTS, int adaptVanDelta, double bsPriceWithSmile, int series, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new VannaVolgaDoubleBarrierEngine<AnalyticDoubleBarrierEngine>(Handle<DeltaVolQuote>(*arg(atmVol)), Handle<DeltaVolQuote>(*arg(vol25Put)), Handle<DeltaVolQuote>(*arg(vol25Call)), *arg(spotFX), *arg(domesticTS), *arg(foreignTS), adaptVanDelta, bsPriceWithSmile, series))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlBinomialDoubleBarrierEngine(int tree, QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, char **e) {
+QlPricingEngine* qlBinomialDoubleBarrierEngine(int tree, QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(qlBinomialDoubleBarrierEngineAux(tree, *arg(process), timeSteps))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlMCDoubleBarrierEngine(int rngtrait, int stattrait, QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, unsigned timeStepsPerYear, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e) {
+QlPricingEngine* qlMCDoubleBarrierEngine(int rngtrait, int stattrait, QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, unsigned timeStepsPerYear, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(qlMCDoubleBarrierEngineAux(rngtrait, stattrait, *arg(process), timeSteps, timeStepsPerYear, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlAnalyticCliquetEngine(QlGeneralizedBlackScholesProcess* process, char **e) {
+QlPricingEngine* qlAnalyticCliquetEngine(QlGeneralizedBlackScholesProcess* process, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new AnalyticCliquetEngine(*arg(process)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlAnalyticCompoundOptionEngine(QlGeneralizedBlackScholesProcess* process, char **e) {
+QlPricingEngine* qlAnalyticCompoundOptionEngine(QlGeneralizedBlackScholesProcess* process, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new AnalyticCompoundOptionEngine(*arg(process)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlAnalyticContinuousFixedLookbackEngine(QlGeneralizedBlackScholesProcess* process, char **e) {
+QlPricingEngine* qlAnalyticContinuousFixedLookbackEngine(QlGeneralizedBlackScholesProcess* process, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new AnalyticContinuousFixedLookbackEngine(*arg(process)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlAnalyticContinuousFloatingLookbackEngine(QlGeneralizedBlackScholesProcess* process, char **e) {
+QlPricingEngine* qlAnalyticContinuousFloatingLookbackEngine(QlGeneralizedBlackScholesProcess* process, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new AnalyticContinuousFloatingLookbackEngine(*arg(process)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlAnalyticContinuousPartialFloatingLookbackEngine(QlGeneralizedBlackScholesProcess* process, char **e) {
+QlPricingEngine* qlAnalyticContinuousPartialFloatingLookbackEngine(QlGeneralizedBlackScholesProcess* process, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new AnalyticContinuousPartialFloatingLookbackEngine(*arg(process)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlAnalyticContinuousPartialFixedLookbackEngine(QlGeneralizedBlackScholesProcess* process, char **e) {
+QlPricingEngine* qlAnalyticContinuousPartialFixedLookbackEngine(QlGeneralizedBlackScholesProcess* process, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new AnalyticContinuousPartialFixedLookbackEngine(*arg(process)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlAnalyticContinuousGeometricAveragePriceAsianEngine(QlGeneralizedBlackScholesProcess* process, char **e) {
+QlPricingEngine* qlAnalyticContinuousGeometricAveragePriceAsianEngine(QlGeneralizedBlackScholesProcess* process, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new AnalyticContinuousGeometricAveragePriceAsianEngine(*arg(process)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlAnalyticContinuousGeometricAveragePriceAsianHestonEngine(QlHestonProcess* process, unsigned summationCutoff, double xiRightLimit, char **e) {
+QlPricingEngine* qlAnalyticContinuousGeometricAveragePriceAsianHestonEngine(QlHestonProcess* process, unsigned summationCutoff, double xiRightLimit, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new AnalyticContinuousGeometricAveragePriceAsianHestonEngine(*arg(process), summationCutoff, xiRightLimit))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlAnalyticDiscreteGeometricAveragePriceAsianHestonEngine(QlHestonProcess* process, double xiRightLimit, char **e) {
+QlPricingEngine* qlAnalyticDiscreteGeometricAveragePriceAsianHestonEngine(QlHestonProcess* process, double xiRightLimit, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new AnalyticDiscreteGeometricAveragePriceAsianHestonEngine(*arg(process), xiRightLimit))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlMCLookbackFixedEngine(int rngtrait, int stattrait, QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, unsigned timeStepsPerYear, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e) {
+QlPricingEngine* qlMCLookbackFixedEngine(int rngtrait, int stattrait, QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, unsigned timeStepsPerYear, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(qlMCLookbackFixedEngineAux(rngtrait, stattrait, *arg(process), timeSteps, timeStepsPerYear, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlMCLookbackFloatingEngine(int rngtrait, int stattrait, QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, unsigned timeStepsPerYear, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e) {
+QlPricingEngine* qlMCLookbackFloatingEngine(int rngtrait, int stattrait, QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, unsigned timeStepsPerYear, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(qlMCLookbackFloatingEngineAux(rngtrait, stattrait, *arg(process), timeSteps, timeStepsPerYear, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlMCLookbackPartialFixedEngine(int rngtrait, int stattrait, QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, unsigned timeStepsPerYear, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e) {
+QlPricingEngine* qlMCLookbackPartialFixedEngine(int rngtrait, int stattrait, QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, unsigned timeStepsPerYear, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(qlMCLookbackPartialFixedEngineAux(rngtrait, stattrait, *arg(process), timeSteps, timeStepsPerYear, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlMCLookbackPartialFloatingEngine(int rngtrait, int stattrait, QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, unsigned timeStepsPerYear, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e) {
+QlPricingEngine* qlMCLookbackPartialFloatingEngine(int rngtrait, int stattrait, QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, unsigned timeStepsPerYear, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(qlMCLookbackPartialFloatingEngineAux(rngtrait, stattrait, *arg(process), timeSteps, timeStepsPerYear, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlAnalyticDigitalAmericanEngine(QlGeneralizedBlackScholesProcess* x0, char **e) {
+QlPricingEngine* qlAnalyticDigitalAmericanEngine(QlGeneralizedBlackScholesProcess* x0, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new AnalyticDigitalAmericanEngine(*arg(x0)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlAnalyticDigitalAmericanKOEngine(QlGeneralizedBlackScholesProcess* x0, char **e) {
+QlPricingEngine* qlAnalyticDigitalAmericanKOEngine(QlGeneralizedBlackScholesProcess* x0, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new AnalyticDigitalAmericanKOEngine(*arg(x0)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlAnalyticDiscreteGeometricAveragePriceAsianEngine(QlGeneralizedBlackScholesProcess* process, char **e) {
+QlPricingEngine* qlAnalyticDiscreteGeometricAveragePriceAsianEngine(QlGeneralizedBlackScholesProcess* process, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new AnalyticDiscreteGeometricAveragePriceAsianEngine(*arg(process)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlAnalyticDiscreteGeometricAverageStrikeAsianEngine(QlGeneralizedBlackScholesProcess* process, char **e) {
+QlPricingEngine* qlAnalyticDiscreteGeometricAverageStrikeAsianEngine(QlGeneralizedBlackScholesProcess* process, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new AnalyticDiscreteGeometricAverageStrikeAsianEngine(*arg(process)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlTurnbullWakemanAsianEngine(QlGeneralizedBlackScholesProcess* process, char **e) {
+QlPricingEngine* qlTurnbullWakemanAsianEngine(QlGeneralizedBlackScholesProcess* process, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new TurnbullWakemanAsianEngine(*arg(process)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlFdBlackScholesAsianEngine(QlGeneralizedBlackScholesProcess* process, unsigned tGrid, unsigned xGrid, unsigned aGrid, FdmSchemeDesc *fdScheme, char **e) {
+QlPricingEngine* qlFdBlackScholesAsianEngine(QlGeneralizedBlackScholesProcess* process, unsigned tGrid, unsigned xGrid, unsigned aGrid, FdmSchemeDesc *fdScheme, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new FdBlackScholesAsianEngine(*arg(process), tGrid, xGrid, aGrid, *arg(fdScheme)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlForwardEuropeanEngine(QlGeneralizedBlackScholesProcess* process, char **e) {
+QlPricingEngine* qlForwardEuropeanEngine(QlGeneralizedBlackScholesProcess* process, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new ForwardVanillaEngine<AnalyticEuropeanEngine>(*arg(process)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlForwardBaroneAdesiWhaleyEngine(QlGeneralizedBlackScholesProcess* process, char **e) {
+QlPricingEngine* qlForwardBaroneAdesiWhaleyEngine(QlGeneralizedBlackScholesProcess* process, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new ForwardVanillaEngine<BaroneAdesiWhaleyApproximationEngine>(*arg(process)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlForwardBjerksundStenslandEngine(QlGeneralizedBlackScholesProcess* process, char **e) {
+QlPricingEngine* qlForwardBjerksundStenslandEngine(QlGeneralizedBlackScholesProcess* process, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new ForwardVanillaEngine<BjerksundStenslandApproximationEngine>(*arg(process)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlForwardFdBlackScholesVanillaEngine(QlGeneralizedBlackScholesProcess* process, char **e) {
-  try {return ret(new QlPricingEngine(alloc(new ForwardVanillaEngine<FdBlackScholesVanillaEngine>(*arg(process)))));
+QlPricingEngine* qlForwardFdBlackScholesVanillaEngine(QlGeneralizedBlackScholesProcess* process, QlError **e) { QlCallScope callbackScope(e);
+  try {return ret(new QlPricingEngine(allocAs<PricingEngine>(new ForwardVanillaEngine<hasquant::CheckedFdEngine<FdBlackScholesVanillaEngine>>(*arg(process)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlQuantoEuropeanEngine(QlGeneralizedBlackScholesProcess* process, QlYieldTermStructure* foreignRiskFreeRate, QlBlackVolTermStructure* exchangeRateVolatility, QlQuote* correlation, char **e) {
+QlPricingEngine* qlQuantoEuropeanEngine(QlGeneralizedBlackScholesProcess* process, QlYieldTermStructure* foreignRiskFreeRate, QlBlackVolTermStructure* exchangeRateVolatility, QlQuote* correlation, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new QuantoEngine<VanillaOption, AnalyticEuropeanEngine>(*arg(process), *arg(foreignRiskFreeRate), *arg(exchangeRateVolatility), *arg(correlation)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlQuantoForwardEuropeanEngine(QlGeneralizedBlackScholesProcess* process, QlYieldTermStructure* foreignRiskFreeRate, QlBlackVolTermStructure* exchangeRateVolatility, QlQuote* correlation, char **e) {
+QlPricingEngine* qlQuantoForwardEuropeanEngine(QlGeneralizedBlackScholesProcess* process, QlYieldTermStructure* foreignRiskFreeRate, QlBlackVolTermStructure* exchangeRateVolatility, QlQuote* correlation, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new QuantoEngine<ForwardVanillaOption, ForwardVanillaEngine<AnalyticEuropeanEngine> >(*arg(process), *arg(foreignRiskFreeRate), *arg(exchangeRateVolatility), *arg(correlation)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlQuantoForwardPerformanceEuropeanEngine(QlGeneralizedBlackScholesProcess* process, QlYieldTermStructure* foreignRiskFreeRate, QlBlackVolTermStructure* exchangeRateVolatility, QlQuote* correlation, char **e) {
+QlPricingEngine* qlQuantoForwardPerformanceEuropeanEngine(QlGeneralizedBlackScholesProcess* process, QlYieldTermStructure* foreignRiskFreeRate, QlBlackVolTermStructure* exchangeRateVolatility, QlQuote* correlation, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new QuantoEngine<ForwardVanillaOption, ForwardPerformanceVanillaEngine<AnalyticEuropeanEngine> >(*arg(process), *arg(foreignRiskFreeRate), *arg(exchangeRateVolatility), *arg(correlation)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlQuantoBarrierEngine(QlGeneralizedBlackScholesProcess* process, QlYieldTermStructure* foreignRiskFreeRate, QlBlackVolTermStructure* exchangeRateVolatility, QlQuote* correlation, char **e) {
+QlPricingEngine* qlQuantoBarrierEngine(QlGeneralizedBlackScholesProcess* process, QlYieldTermStructure* foreignRiskFreeRate, QlBlackVolTermStructure* exchangeRateVolatility, QlQuote* correlation, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new QuantoEngine<BarrierOption, AnalyticBarrierEngine>(*arg(process), *arg(foreignRiskFreeRate), *arg(exchangeRateVolatility), *arg(correlation)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlQuantoDoubleBarrierEngine(QlGeneralizedBlackScholesProcess* process, QlYieldTermStructure* foreignRiskFreeRate, QlBlackVolTermStructure* exchangeRateVolatility, QlQuote* correlation, char **e) {
+QlPricingEngine* qlQuantoDoubleBarrierEngine(QlGeneralizedBlackScholesProcess* process, QlYieldTermStructure* foreignRiskFreeRate, QlBlackVolTermStructure* exchangeRateVolatility, QlQuote* correlation, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new QuantoEngine<DoubleBarrierOption, AnalyticDoubleBarrierEngine>(*arg(process), *arg(foreignRiskFreeRate), *arg(exchangeRateVolatility), *arg(correlation)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlAnalyticHestonForwardEuropeanEngine(QlHestonProcess* process, unsigned integrationOrder, char **e) {
+QlPricingEngine* qlAnalyticHestonForwardEuropeanEngine(QlHestonProcess* process, unsigned integrationOrder, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new AnalyticHestonForwardEuropeanEngine(*arg(process), integrationOrder))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlAnalyticDividendEuropeanEngine(QlGeneralizedBlackScholesProcess* x0, unsigned dividendsLen, QlDividend** dividends, char **e) {
+QlPricingEngine* qlAnalyticDividendEuropeanEngine(QlGeneralizedBlackScholesProcess* x0, unsigned dividendsLen, QlDividend** dividends, QlError **e) { QlCallScope callbackScope(e);
   try {DividendSchedule d = qlVector(dividends, dividendsLen);
     return ret(new QlPricingEngine(alloc(new AnalyticDividendEuropeanEngine(*arg(x0), d))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlAnalyticEuropeanEngine(QlGeneralizedBlackScholesProcess* x0, QlYieldTermStructure* discountCurve, char **e) {
+QlPricingEngine* qlAnalyticEuropeanEngine(QlGeneralizedBlackScholesProcess* x0, QlYieldTermStructure* discountCurve, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new AnalyticEuropeanEngine(*arg(x0), qlNullableHandle(arg(discountCurve))))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlAnalyticPerformanceEngine(QlGeneralizedBlackScholesProcess* process, char **e) {
+QlPricingEngine* qlAnalyticPerformanceEngine(QlGeneralizedBlackScholesProcess* process, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new AnalyticPerformanceEngine(*arg(process)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlBlackCapFloorEngine1(QlYieldTermStructure* discountCurve, QlOptionletVolatilityStructure* vol, char **e) {
+QlPricingEngine* qlBlackCapFloorEngine1(QlYieldTermStructure* discountCurve, QlOptionletVolatilityStructure* vol, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new BlackCapFloorEngine(*arg(discountCurve), *arg(vol)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlBlackCapFloorEngine(QlYieldTermStructure* discountCurve, QlQuote* vol, DayCounter* dc, double displacement, char **e) {
+QlPricingEngine* qlBlackCapFloorEngine(QlYieldTermStructure* discountCurve, QlQuote* vol, DayCounter* dc, double displacement, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new BlackCapFloorEngine(*arg(discountCurve), *arg(vol), (*arg(dc)), displacement))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlBlackSwaptionEngine(QlYieldTermStructure* discountCurve, QlQuote* vol, DayCounter* dc, double displacement, int model, char **e) {
+QlPricingEngine* qlBlackSwaptionEngine(QlYieldTermStructure* discountCurve, QlQuote* vol, DayCounter* dc, double displacement, int model, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new BlackSwaptionEngine(*arg(discountCurve), *arg(vol), (*arg(dc)), displacement, (BlackSwaptionEngine::CashAnnuityModel)model))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlHaganIrregularSwaptionEngine(QlSwaptionVolatilityStructure* vol, QlYieldTermStructure* curve, char **e) {
+QlPricingEngine* qlHaganIrregularSwaptionEngine(QlSwaptionVolatilityStructure* vol, QlYieldTermStructure* curve, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new HaganIrregularSwaptionEngine(*arg(vol), qlNullableHandle(curve)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlBlackSwaptionEngine1(QlYieldTermStructure* discountCurve, QlSwaptionVolatilityStructure* vol, char **e) {
+QlPricingEngine* qlBlackSwaptionEngine1(QlYieldTermStructure* discountCurve, QlSwaptionVolatilityStructure* vol, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new BlackSwaptionEngine(*arg(discountCurve), *arg(vol)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlBachelierCapFloorEngine1(QlYieldTermStructure* discountCurve, QlOptionletVolatilityStructure* vol, char **e) {
+QlPricingEngine* qlBachelierCapFloorEngine1(QlYieldTermStructure* discountCurve, QlOptionletVolatilityStructure* vol, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new BachelierCapFloorEngine(*arg(discountCurve), *arg(vol)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlBachelierCapFloorEngine(QlYieldTermStructure* discountCurve, QlQuote* vol, DayCounter* dc, char **e) {
+QlPricingEngine* qlBachelierCapFloorEngine(QlYieldTermStructure* discountCurve, QlQuote* vol, DayCounter* dc, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new BachelierCapFloorEngine(*arg(discountCurve), *arg(vol), (*arg(dc))))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlBachelierSwaptionEngine(QlYieldTermStructure* discountCurve, QlQuote* vol, DayCounter* dc, int model, char **e) {
+QlPricingEngine* qlBachelierSwaptionEngine(QlYieldTermStructure* discountCurve, QlQuote* vol, DayCounter* dc, int model, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new BachelierSwaptionEngine(*arg(discountCurve), *arg(vol), (*arg(dc)), (BachelierSwaptionEngine::CashAnnuityModel)model))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlBachelierSwaptionEngine1(QlYieldTermStructure* discountCurve, QlSwaptionVolatilityStructure* vol, char **e) {
+QlPricingEngine* qlBachelierSwaptionEngine1(QlYieldTermStructure* discountCurve, QlSwaptionVolatilityStructure* vol, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new BachelierSwaptionEngine(*arg(discountCurve), *arg(vol)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
 
@@ -560,217 +558,217 @@ void qlFreeBlackCalculator(QlBlackCalculator *o) {del(o);}
 void qlFreeBlackScholesCalculator(QlBlackScholesCalculator *o) {del(o);}
 QlBlackCalculator* qlBlackScholesCalculatorAsBlackCalculator(QlBlackScholesCalculator *o) {return ret(new QlBlackCalculator(*arg(o)));}
 
-double qlBlackCalculatorAlpha(QlBlackCalculator* o, char **e) {try {return (*arg(o))->alpha();} catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlBlackCalculatorBeta(QlBlackCalculator* o, char **e) {try {return (*arg(o))->beta();} catch (std::exception& er) {return handleException<double>(e, er);}}
-QlBlackCalculator* qlBlackCalculator1(int optionType, double strike, double forward, double stdDev, double discount, char **e) {
+double qlBlackCalculatorAlpha(QlBlackCalculator* o, QlError **e) { QlCallScope callbackScope(e);try {return (*arg(o))->alpha();} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlBlackCalculatorBeta(QlBlackCalculator* o, QlError **e) { QlCallScope callbackScope(e);try {return (*arg(o))->beta();} catch (std::exception& er) {return handleException<double>(e, er);}}
+QlBlackCalculator* qlBlackCalculator1(int optionType, double strike, double forward, double stdDev, double discount, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlBlackCalculator(alloc(new BlackCalculator((Option::Type)optionType, strike, forward, stdDev, discount))));
   } catch (std::exception& er) {return handleException<QlBlackCalculator*>(e, er);}}
-QlBlackCalculator* qlBlackCalculator(QlStrikedTypePayoff* payoff, double forward, double stdDev, double discount, char **e) {
+QlBlackCalculator* qlBlackCalculator(QlStrikedTypePayoff* payoff, double forward, double stdDev, double discount, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlBlackCalculator(alloc(new BlackCalculator(*arg(payoff), forward, stdDev, discount))));
   } catch (std::exception& er) {return handleException<QlBlackCalculator*>(e, er);}}
-double qlBlackCalculatorDelta(QlBlackCalculator* o, double spot, char **e) {try {return (*arg(o))->delta(spot);} catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlBlackCalculatorDeltaForward(QlBlackCalculator* o, char **e) {try {return (*arg(o))->deltaForward();} catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlBlackCalculatorDividendRho(QlBlackCalculator* o, double maturity, char **e) {try {return (*arg(o))->dividendRho(maturity);} catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlBlackCalculatorElasticity(QlBlackCalculator* o, double spot, char **e) {try {return (*arg(o))->elasticity(spot);} catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlBlackCalculatorElasticityForward(QlBlackCalculator* o, char **e) {try {return (*arg(o))->elasticityForward();} catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlBlackCalculatorGamma(QlBlackCalculator* o, double spot, char **e) {try {return (*arg(o))->gamma(spot);} catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlBlackCalculatorGammaForward(QlBlackCalculator* o, char **e) {try {return (*arg(o))->gammaForward();} catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlBlackCalculatorItmAssetProbability(QlBlackCalculator* o, char **e) {try {return (*arg(o))->itmAssetProbability();} catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlBlackCalculatorItmCashProbability(QlBlackCalculator* o, char **e) {try {return (*arg(o))->itmCashProbability();} catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlBlackCalculatorRho(QlBlackCalculator* o, double maturity, char **e) {try {return (*arg(o))->rho(maturity);} catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlBlackCalculatorStrikeSensitivity(QlBlackCalculator* o, char **e) {try {return (*arg(o))->strikeSensitivity();} catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlBlackCalculatorStrikeGamma(QlBlackCalculator* o, char **e) {try {return (*arg(o))->strikeGamma();} catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlBlackCalculatorTheta(QlBlackCalculator* o, double spot, double maturity, char **e) {try {return (*arg(o))->theta(spot, maturity);} catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlBlackCalculatorThetaPerDay(QlBlackCalculator* o, double spot, double maturity, char **e) {try {return (*arg(o))->thetaPerDay(spot, maturity);} catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlBlackCalculatorValue(QlBlackCalculator* o, char **e) {try {return (*arg(o))->value();} catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlBlackCalculatorVanna(QlBlackCalculator* o, double spot, double maturity, char **e) {try {return (*arg(o))->vanna(spot, maturity);} catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlBlackCalculatorVega(QlBlackCalculator* o, double maturity, char **e) {try {return (*arg(o))->vega(maturity);} catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlBlackCalculatorVolga(QlBlackCalculator* o, double maturity, char **e) {try {return (*arg(o))->volga(maturity);} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlBlackCalculatorDelta(QlBlackCalculator* o, double spot, QlError **e) { QlCallScope callbackScope(e);try {return (*arg(o))->delta(spot);} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlBlackCalculatorDeltaForward(QlBlackCalculator* o, QlError **e) { QlCallScope callbackScope(e);try {return (*arg(o))->deltaForward();} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlBlackCalculatorDividendRho(QlBlackCalculator* o, double maturity, QlError **e) { QlCallScope callbackScope(e);try {return (*arg(o))->dividendRho(maturity);} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlBlackCalculatorElasticity(QlBlackCalculator* o, double spot, QlError **e) { QlCallScope callbackScope(e);try {return (*arg(o))->elasticity(spot);} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlBlackCalculatorElasticityForward(QlBlackCalculator* o, QlError **e) { QlCallScope callbackScope(e);try {return (*arg(o))->elasticityForward();} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlBlackCalculatorGamma(QlBlackCalculator* o, double spot, QlError **e) { QlCallScope callbackScope(e);try {return (*arg(o))->gamma(spot);} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlBlackCalculatorGammaForward(QlBlackCalculator* o, QlError **e) { QlCallScope callbackScope(e);try {return (*arg(o))->gammaForward();} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlBlackCalculatorItmAssetProbability(QlBlackCalculator* o, QlError **e) { QlCallScope callbackScope(e);try {return (*arg(o))->itmAssetProbability();} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlBlackCalculatorItmCashProbability(QlBlackCalculator* o, QlError **e) { QlCallScope callbackScope(e);try {return (*arg(o))->itmCashProbability();} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlBlackCalculatorRho(QlBlackCalculator* o, double maturity, QlError **e) { QlCallScope callbackScope(e);try {return (*arg(o))->rho(maturity);} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlBlackCalculatorStrikeSensitivity(QlBlackCalculator* o, QlError **e) { QlCallScope callbackScope(e);try {return (*arg(o))->strikeSensitivity();} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlBlackCalculatorStrikeGamma(QlBlackCalculator* o, QlError **e) { QlCallScope callbackScope(e);try {return (*arg(o))->strikeGamma();} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlBlackCalculatorTheta(QlBlackCalculator* o, double spot, double maturity, QlError **e) { QlCallScope callbackScope(e);try {return (*arg(o))->theta(spot, maturity);} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlBlackCalculatorThetaPerDay(QlBlackCalculator* o, double spot, double maturity, QlError **e) { QlCallScope callbackScope(e);try {return (*arg(o))->thetaPerDay(spot, maturity);} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlBlackCalculatorValue(QlBlackCalculator* o, QlError **e) { QlCallScope callbackScope(e);try {return (*arg(o))->value();} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlBlackCalculatorVanna(QlBlackCalculator* o, double spot, double maturity, QlError **e) { QlCallScope callbackScope(e);try {return (*arg(o))->vanna(spot, maturity);} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlBlackCalculatorVega(QlBlackCalculator* o, double maturity, QlError **e) { QlCallScope callbackScope(e);try {return (*arg(o))->vega(maturity);} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlBlackCalculatorVolga(QlBlackCalculator* o, double maturity, QlError **e) { QlCallScope callbackScope(e);try {return (*arg(o))->volga(maturity);} catch (std::exception& er) {return handleException<double>(e, er);}}
 
 void qlFreeBachelierCalculator(QlBachelierCalculator *o) {del(o);}
-double qlBachelierCalculatorAlpha(QlBachelierCalculator* o, char **e) {try {return (*arg(o))->alpha();} catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlBachelierCalculatorBeta(QlBachelierCalculator* o, char **e) {try {return (*arg(o))->beta();} catch (std::exception& er) {return handleException<double>(e, er);}}
-QlBachelierCalculator* qlBachelierCalculator1(int optionType, double strike, double forward, double stdDev, double discount, char **e) {
+double qlBachelierCalculatorAlpha(QlBachelierCalculator* o, QlError **e) { QlCallScope callbackScope(e);try {return (*arg(o))->alpha();} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlBachelierCalculatorBeta(QlBachelierCalculator* o, QlError **e) { QlCallScope callbackScope(e);try {return (*arg(o))->beta();} catch (std::exception& er) {return handleException<double>(e, er);}}
+QlBachelierCalculator* qlBachelierCalculator1(int optionType, double strike, double forward, double stdDev, double discount, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlBachelierCalculator(alloc(new BachelierCalculator((Option::Type)optionType, strike, forward, stdDev, discount))));
   } catch (std::exception& er) {return handleException<QlBachelierCalculator*>(e, er);}}
-QlBachelierCalculator* qlBachelierCalculator(QlStrikedTypePayoff* payoff, double forward, double stdDev, double discount, char **e) {
+QlBachelierCalculator* qlBachelierCalculator(QlStrikedTypePayoff* payoff, double forward, double stdDev, double discount, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlBachelierCalculator(alloc(new BachelierCalculator(*arg(payoff), forward, stdDev, discount))));
   } catch (std::exception& er) {return handleException<QlBachelierCalculator*>(e, er);}}
-double qlBachelierCalculatorDelta(QlBachelierCalculator* o, double spot, char **e) {try {return (*arg(o))->delta(spot);} catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlBachelierCalculatorDeltaForward(QlBachelierCalculator* o, char **e) {try {return (*arg(o))->deltaForward();} catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlBachelierCalculatorDividendRho(QlBachelierCalculator* o, double maturity, char **e) {try {return (*arg(o))->dividendRho(maturity);} catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlBachelierCalculatorElasticity(QlBachelierCalculator* o, double spot, char **e) {try {return (*arg(o))->elasticity(spot);} catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlBachelierCalculatorElasticityForward(QlBachelierCalculator* o, char **e) {try {return (*arg(o))->elasticityForward();} catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlBachelierCalculatorGamma(QlBachelierCalculator* o, double spot, char **e) {try {return (*arg(o))->gamma(spot);} catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlBachelierCalculatorGammaForward(QlBachelierCalculator* o, char **e) {try {return (*arg(o))->gammaForward();} catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlBachelierCalculatorItmAssetProbability(QlBachelierCalculator* o, char **e) {try {return (*arg(o))->itmAssetProbability();} catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlBachelierCalculatorItmCashProbability(QlBachelierCalculator* o, char **e) {try {return (*arg(o))->itmCashProbability();} catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlBachelierCalculatorRho(QlBachelierCalculator* o, double maturity, char **e) {try {return (*arg(o))->rho(maturity);} catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlBachelierCalculatorStrikeSensitivity(QlBachelierCalculator* o, char **e) {try {return (*arg(o))->strikeSensitivity();} catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlBachelierCalculatorStrikeGamma(QlBachelierCalculator* o, char **e) {try {return (*arg(o))->strikeGamma();} catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlBachelierCalculatorTheta(QlBachelierCalculator* o, double spot, double maturity, char **e) {try {return (*arg(o))->theta(spot, maturity);} catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlBachelierCalculatorThetaPerDay(QlBachelierCalculator* o, double spot, double maturity, char **e) {try {return (*arg(o))->thetaPerDay(spot, maturity);} catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlBachelierCalculatorValue(QlBachelierCalculator* o, char **e) {try {return (*arg(o))->value();} catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlBachelierCalculatorVanna(QlBachelierCalculator* o, double maturity, char **e) {try {return (*arg(o))->vanna(maturity);} catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlBachelierCalculatorVega(QlBachelierCalculator* o, double maturity, char **e) {try {return (*arg(o))->vega(maturity);} catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlBachelierCalculatorVolga(QlBachelierCalculator* o, double maturity, char **e) {try {return (*arg(o))->volga(maturity);} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlBachelierCalculatorDelta(QlBachelierCalculator* o, double spot, QlError **e) { QlCallScope callbackScope(e);try {return (*arg(o))->delta(spot);} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlBachelierCalculatorDeltaForward(QlBachelierCalculator* o, QlError **e) { QlCallScope callbackScope(e);try {return (*arg(o))->deltaForward();} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlBachelierCalculatorDividendRho(QlBachelierCalculator* o, double maturity, QlError **e) { QlCallScope callbackScope(e);try {return (*arg(o))->dividendRho(maturity);} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlBachelierCalculatorElasticity(QlBachelierCalculator* o, double spot, QlError **e) { QlCallScope callbackScope(e);try {return (*arg(o))->elasticity(spot);} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlBachelierCalculatorElasticityForward(QlBachelierCalculator* o, QlError **e) { QlCallScope callbackScope(e);try {return (*arg(o))->elasticityForward();} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlBachelierCalculatorGamma(QlBachelierCalculator* o, double spot, QlError **e) { QlCallScope callbackScope(e);try {return (*arg(o))->gamma(spot);} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlBachelierCalculatorGammaForward(QlBachelierCalculator* o, QlError **e) { QlCallScope callbackScope(e);try {return (*arg(o))->gammaForward();} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlBachelierCalculatorItmAssetProbability(QlBachelierCalculator* o, QlError **e) { QlCallScope callbackScope(e);try {return (*arg(o))->itmAssetProbability();} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlBachelierCalculatorItmCashProbability(QlBachelierCalculator* o, QlError **e) { QlCallScope callbackScope(e);try {return (*arg(o))->itmCashProbability();} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlBachelierCalculatorRho(QlBachelierCalculator* o, double maturity, QlError **e) { QlCallScope callbackScope(e);try {return (*arg(o))->rho(maturity);} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlBachelierCalculatorStrikeSensitivity(QlBachelierCalculator* o, QlError **e) { QlCallScope callbackScope(e);try {return (*arg(o))->strikeSensitivity();} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlBachelierCalculatorStrikeGamma(QlBachelierCalculator* o, QlError **e) { QlCallScope callbackScope(e);try {return (*arg(o))->strikeGamma();} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlBachelierCalculatorTheta(QlBachelierCalculator* o, double spot, double maturity, QlError **e) { QlCallScope callbackScope(e);try {return (*arg(o))->theta(spot, maturity);} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlBachelierCalculatorThetaPerDay(QlBachelierCalculator* o, double spot, double maturity, QlError **e) { QlCallScope callbackScope(e);try {return (*arg(o))->thetaPerDay(spot, maturity);} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlBachelierCalculatorValue(QlBachelierCalculator* o, QlError **e) { QlCallScope callbackScope(e);try {return (*arg(o))->value();} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlBachelierCalculatorVanna(QlBachelierCalculator* o, double maturity, QlError **e) { QlCallScope callbackScope(e);try {return (*arg(o))->vanna(maturity);} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlBachelierCalculatorVega(QlBachelierCalculator* o, double maturity, QlError **e) { QlCallScope callbackScope(e);try {return (*arg(o))->vega(maturity);} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlBachelierCalculatorVolga(QlBachelierCalculator* o, double maturity, QlError **e) { QlCallScope callbackScope(e);try {return (*arg(o))->volga(maturity);} catch (std::exception& er) {return handleException<double>(e, er);}}
 
-QlBlackScholesCalculator* qlBlackScholesCalculator1(int optionType, double strike, double spot, double growth, double stdDev, double discount, char **e) {
+QlBlackScholesCalculator* qlBlackScholesCalculator1(int optionType, double strike, double spot, double growth, double stdDev, double discount, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlBlackScholesCalculator(alloc(new BlackScholesCalculator((Option::Type)optionType, strike, spot, growth, stdDev, discount))));
   } catch (std::exception& er) {return handleException<QlBlackScholesCalculator*>(e, er);}}
-QlBlackScholesCalculator* qlBlackScholesCalculator(QlStrikedTypePayoff* payoff, double spot, double growth, double stdDev, double discount, char **e) {
+QlBlackScholesCalculator* qlBlackScholesCalculator(QlStrikedTypePayoff* payoff, double spot, double growth, double stdDev, double discount, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlBlackScholesCalculator(alloc(new BlackScholesCalculator(*arg(payoff), spot, growth, stdDev, discount))));
   } catch (std::exception& er) {return handleException<QlBlackScholesCalculator*>(e, er);}}
-double qlBlackScholesCalculatorDelta(QlBlackScholesCalculator* o, char **e) {try {return (*arg(o))->delta();} catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlBlackScholesCalculatorElasticity(QlBlackScholesCalculator* o, char **e) {try {return (*arg(o))->elasticity();} catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlBlackScholesCalculatorGamma(QlBlackScholesCalculator* o, char **e) {try {return (*arg(o))->gamma();} catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlBlackScholesCalculatorTheta(QlBlackScholesCalculator* o, double maturity, char **e) {try {return (*arg(o))->theta(maturity);} catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlBlackScholesCalculatorThetaPerDay(QlBlackScholesCalculator* o, double maturity, char **e) {try {return (*arg(o))->thetaPerDay(maturity);} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlBlackScholesCalculatorDelta(QlBlackScholesCalculator* o, QlError **e) { QlCallScope callbackScope(e);try {return (*arg(o))->delta();} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlBlackScholesCalculatorElasticity(QlBlackScholesCalculator* o, QlError **e) { QlCallScope callbackScope(e);try {return (*arg(o))->elasticity();} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlBlackScholesCalculatorGamma(QlBlackScholesCalculator* o, QlError **e) { QlCallScope callbackScope(e);try {return (*arg(o))->gamma();} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlBlackScholesCalculatorTheta(QlBlackScholesCalculator* o, double maturity, QlError **e) { QlCallScope callbackScope(e);try {return (*arg(o))->theta(maturity);} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlBlackScholesCalculatorThetaPerDay(QlBlackScholesCalculator* o, double maturity, QlError **e) { QlCallScope callbackScope(e);try {return (*arg(o))->thetaPerDay(maturity);} catch (std::exception& er) {return handleException<double>(e, er);}}
 void qlFreeBlackDeltaCalculator(BlackDeltaCalculator *o) {del(o);}
-BlackDeltaCalculator* qlBlackDeltaCalculator(int optionType, int deltaType, double spot, double dDiscount, double fDiscount, double stdDev, char **e) {
+BlackDeltaCalculator* qlBlackDeltaCalculator(int optionType, int deltaType, double spot, double dDiscount, double fDiscount, double stdDev, QlError **e) { QlCallScope callbackScope(e);
   try {return alloc(new BlackDeltaCalculator((Option::Type)optionType, (DeltaVolQuote::DeltaType)deltaType, spot, dDiscount, fDiscount, stdDev));
   } catch (std::exception& er) {return handleException<BlackDeltaCalculator*>(e, er);}}
-double qlBlackDeltaCalculatorDeltaFromStrike(BlackDeltaCalculator* o, double strike, char **e) {try {return arg(o)->deltaFromStrike(strike);} catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlBlackDeltaCalculatorStrikeFromDelta(BlackDeltaCalculator* o, double delta, char **e) {try {return arg(o)->strikeFromDelta(delta);} catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlBlackDeltaCalculatorAtmStrike(BlackDeltaCalculator* o, int atmType, char **e) {try {return arg(o)->atmStrike((DeltaVolQuote::AtmType)atmType);} catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlQuantLibBlackFormula(int optionType, double strike, double forward, double stdDev, double discount, double displacement, char **e) {
+double qlBlackDeltaCalculatorDeltaFromStrike(BlackDeltaCalculator* o, double strike, QlError **e) { QlCallScope callbackScope(e);try {return arg(o)->deltaFromStrike(strike);} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlBlackDeltaCalculatorStrikeFromDelta(BlackDeltaCalculator* o, double delta, QlError **e) { QlCallScope callbackScope(e);try {return arg(o)->strikeFromDelta(delta);} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlBlackDeltaCalculatorAtmStrike(BlackDeltaCalculator* o, int atmType, QlError **e) { QlCallScope callbackScope(e);try {return arg(o)->atmStrike((DeltaVolQuote::AtmType)atmType);} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlQuantLibBlackFormula(int optionType, double strike, double forward, double stdDev, double discount, double displacement, QlError **e) { QlCallScope callbackScope(e);
   try {return QuantLib::blackFormula((Option::Type)optionType, strike, forward, stdDev, discount, displacement);
   } catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlQuantLibBlackFormulaCashItmProbability(int optionType, double strike, double forward, double stdDev, double displacement, char **e) {
+double qlQuantLibBlackFormulaCashItmProbability(int optionType, double strike, double forward, double stdDev, double displacement, QlError **e) { QlCallScope callbackScope(e);
   try {return QuantLib::blackFormulaCashItmProbability((Option::Type)optionType, strike, forward, stdDev, displacement);
   } catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlQuantLibBlackFormulaImpliedStdDev(int optionType, double strike, double forward, double blackPrice, double discount, double displacement, double guess, double accuracy, unsigned maxIterations, char **e) {
+double qlQuantLibBlackFormulaImpliedStdDev(int optionType, double strike, double forward, double blackPrice, double discount, double displacement, double guess, double accuracy, unsigned maxIterations, QlError **e) { QlCallScope callbackScope(e);
   try {return QuantLib::blackFormulaImpliedStdDev((Option::Type)optionType, strike, forward, blackPrice, discount, displacement, guess, accuracy, maxIterations);
   } catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlQuantLibBlackFormulaImpliedStdDevApproximation(int optionType, double strike, double forward, double blackPrice, double discount, double displacement, char **e) {
+double qlQuantLibBlackFormulaImpliedStdDevApproximation(int optionType, double strike, double forward, double blackPrice, double discount, double displacement, QlError **e) { QlCallScope callbackScope(e);
   try {return QuantLib::blackFormulaImpliedStdDevApproximation((Option::Type)optionType, strike, forward, blackPrice, discount, displacement);
   } catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlQuantLibBlackFormulaStdDevDerivative(double strike, double forward, double stdDev, double discount, double displacement, char **e) {
+double qlQuantLibBlackFormulaStdDevDerivative(double strike, double forward, double stdDev, double discount, double displacement, QlError **e) { QlCallScope callbackScope(e);
   try {return QuantLib::blackFormulaStdDevDerivative(strike, forward, stdDev, discount, displacement);
   } catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlQuantLibBlackFormulaVolDerivative(double strike, double forward, double stdDev, double expiry, double discount, double displacement, char **e) {
+double qlQuantLibBlackFormulaVolDerivative(double strike, double forward, double stdDev, double expiry, double discount, double displacement, QlError **e) { QlCallScope callbackScope(e);
   try {return QuantLib::blackFormulaVolDerivative(strike, forward, stdDev, expiry, discount, displacement);
   } catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlQuantLibBlackScholesTheta(QlGeneralizedBlackScholesProcess* x0, double value, double delta, double gamma, char **e) {
+double qlQuantLibBlackScholesTheta(QlGeneralizedBlackScholesProcess* x0, double value, double delta, double gamma, QlError **e) { QlCallScope callbackScope(e);
   try {return QuantLib::blackScholesTheta(*arg(x0), value, delta, gamma);
   } catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlQuantLibBachelierBlackFormula(int optionType, double strike, double forward, double stdDev, double discount, char **e) {
+double qlQuantLibBachelierBlackFormula(int optionType, double strike, double forward, double stdDev, double discount, QlError **e) { QlCallScope callbackScope(e);
   try {return QuantLib::bachelierBlackFormula((Option::Type)optionType, strike, forward, stdDev, discount);
   } catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlQuantLibBlackFormulaForwardDerivative(int optionType, double strike, double forward, double stdDev, double discount, double displacement, char **e) {
+double qlQuantLibBlackFormulaForwardDerivative(int optionType, double strike, double forward, double stdDev, double discount, double displacement, QlError **e) { QlCallScope callbackScope(e);
   try {return QuantLib::blackFormulaForwardDerivative((Option::Type)optionType, strike, forward, stdDev, discount, displacement);
   } catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlQuantLibBlackFormulaImpliedStdDevChambers(int optionType, double strike, double forward, double blackPrice, double blackAtmPrice, double discount, double displacement, char **e) {
+double qlQuantLibBlackFormulaImpliedStdDevChambers(int optionType, double strike, double forward, double blackPrice, double blackAtmPrice, double discount, double displacement, QlError **e) { QlCallScope callbackScope(e);
   try {return QuantLib::blackFormulaImpliedStdDevChambers((Option::Type)optionType, strike, forward, blackPrice, blackAtmPrice, discount, displacement);
   } catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlQuantLibBlackFormulaImpliedStdDevApproximationRS(int optionType, double strike, double forward, double blackPrice, double discount, double displacement, char **e) {
+double qlQuantLibBlackFormulaImpliedStdDevApproximationRS(int optionType, double strike, double forward, double blackPrice, double discount, double displacement, QlError **e) { QlCallScope callbackScope(e);
   try {return QuantLib::blackFormulaImpliedStdDevApproximationRS((Option::Type)optionType, strike, forward, blackPrice, discount, displacement);
   } catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlQuantLibBlackFormulaImpliedStdDevLiRS(int optionType, double strike, double forward, double blackPrice, double discount, double displacement, double guess, double omega, double accuracy, unsigned maxIterations, char **e) {
+double qlQuantLibBlackFormulaImpliedStdDevLiRS(int optionType, double strike, double forward, double blackPrice, double discount, double displacement, double guess, double omega, double accuracy, unsigned maxIterations, QlError **e) { QlCallScope callbackScope(e);
   try {return QuantLib::blackFormulaImpliedStdDevLiRS((Option::Type)optionType, strike, forward, blackPrice, discount, displacement, guess, omega, accuracy, maxIterations);
   } catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlQuantLibBlackFormulaAssetItmProbability(int optionType, double strike, double forward, double stdDev, double displacement, char **e) {
+double qlQuantLibBlackFormulaAssetItmProbability(int optionType, double strike, double forward, double stdDev, double displacement, QlError **e) { QlCallScope callbackScope(e);
   try {return QuantLib::blackFormulaAssetItmProbability((Option::Type)optionType, strike, forward, stdDev, displacement);
   } catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlQuantLibBlackFormulaStdDevSecondDerivative(double strike, double forward, double stdDev, double discount, double displacement, char **e) {
+double qlQuantLibBlackFormulaStdDevSecondDerivative(double strike, double forward, double stdDev, double discount, double displacement, QlError **e) { QlCallScope callbackScope(e);
   try {return QuantLib::blackFormulaStdDevSecondDerivative(strike, forward, stdDev, discount, displacement);
   } catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlQuantLibBachelierBlackFormulaForwardDerivative(int optionType, double strike, double forward, double stdDev, double discount, char **e) {
+double qlQuantLibBachelierBlackFormulaForwardDerivative(int optionType, double strike, double forward, double stdDev, double discount, QlError **e) { QlCallScope callbackScope(e);
   try {return QuantLib::bachelierBlackFormulaForwardDerivative((Option::Type)optionType, strike, forward, stdDev, discount);
   } catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlQuantLibBachelierBlackFormulaImpliedVol(int optionType, double strike, double forward, double tte, double bachelierPrice, double discount, char **e) {
+double qlQuantLibBachelierBlackFormulaImpliedVol(int optionType, double strike, double forward, double tte, double bachelierPrice, double discount, QlError **e) { QlCallScope callbackScope(e);
   try {return QuantLib::bachelierBlackFormulaImpliedVol((Option::Type)optionType, strike, forward, tte, bachelierPrice, discount);
   } catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlQuantLibBachelierBlackFormulaImpliedVolChoi(int optionType, double strike, double forward, double tte, double bachelierPrice, double discount, char **e) {
+double qlQuantLibBachelierBlackFormulaImpliedVolChoi(int optionType, double strike, double forward, double tte, double bachelierPrice, double discount, QlError **e) { QlCallScope callbackScope(e);
   try {return QuantLib::bachelierBlackFormulaImpliedVolChoi((Option::Type)optionType, strike, forward, tte, bachelierPrice, discount);
   } catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlQuantLibBachelierBlackFormulaStdDevDerivative(double strike, double forward, double stdDev, double discount, char **e) {
+double qlQuantLibBachelierBlackFormulaStdDevDerivative(double strike, double forward, double stdDev, double discount, QlError **e) { QlCallScope callbackScope(e);
   try {return QuantLib::bachelierBlackFormulaStdDevDerivative(strike, forward, stdDev, discount);
   } catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlQuantLibBachelierBlackFormulaAssetItmProbability(int optionType, double strike, double forward, double stdDev, char **e) {
+double qlQuantLibBachelierBlackFormulaAssetItmProbability(int optionType, double strike, double forward, double stdDev, QlError **e) { QlCallScope callbackScope(e);
   try {return QuantLib::bachelierBlackFormulaAssetItmProbability((Option::Type)optionType, strike, forward, stdDev);
   } catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlQuantLibDefaultThetaPerDay(double theta, char **e) {try {return QuantLib::defaultThetaPerDay(theta);} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlQuantLibDefaultThetaPerDay(double theta, QlError **e) { QlCallScope callbackScope(e);try {return QuantLib::defaultThetaPerDay(theta);} catch (std::exception& er) {return handleException<double>(e, er);}}
 
-QlPricingEngine* qlAnalyticBSMHullWhiteEngine(double equityShortRateCorrelation, QlGeneralizedBlackScholesProcess* x1, QlHullWhite* x2, char **e) {
+QlPricingEngine* qlAnalyticBSMHullWhiteEngine(double equityShortRateCorrelation, QlGeneralizedBlackScholesProcess* x1, QlHullWhite* x2, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new AnalyticBSMHullWhiteEngine(equityShortRateCorrelation, *arg(x1), *arg(x2)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlAnalyticCapFloorEngine(QlAffineModel* model, QlYieldTermStructure* termStructure, char **e) {
+QlPricingEngine* qlAnalyticCapFloorEngine(QlAffineModel* model, QlYieldTermStructure* termStructure, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new AnalyticCapFloorEngine(*arg(model), qlNullableHandle(arg(termStructure))))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlAnalyticGJRGARCHEngine(QlGJRGARCHModel* model, char **e) {
+QlPricingEngine* qlAnalyticGJRGARCHEngine(QlGJRGARCHModel* model, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new AnalyticGJRGARCHEngine(*arg(model)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlAnalyticHestonEngine(QlHestonModel* model, double relTolerance, unsigned maxEvaluations, char **e) {
+QlPricingEngine* qlAnalyticHestonEngine(QlHestonModel* model, double relTolerance, unsigned maxEvaluations, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new AnalyticHestonEngine(*arg(model), relTolerance, maxEvaluations))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlAnalyticHestonHullWhiteEngine(QlHestonModel* hestonModel, QlHullWhite* hullWhiteModel, unsigned integrationOrder, char **e) {
+QlPricingEngine* qlAnalyticHestonHullWhiteEngine(QlHestonModel* hestonModel, QlHullWhite* hullWhiteModel, unsigned integrationOrder, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new AnalyticHestonHullWhiteEngine(*arg(hestonModel), *arg(hullWhiteModel), integrationOrder))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlBatesEngine(QlBatesModel* model, unsigned integrationOrder, char **e) {
+QlPricingEngine* qlBatesEngine(QlBatesModel* model, unsigned integrationOrder, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new BatesEngine(*arg(model), integrationOrder))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlFFTVanillaEngine(QlGeneralizedBlackScholesProcess* process, double logStrikeSpacing, char **e) {
+QlPricingEngine* qlFFTVanillaEngine(QlGeneralizedBlackScholesProcess* process, double logStrikeSpacing, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new FFTVanillaEngine(*arg(process), logStrikeSpacing))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlG2SwaptionEngine(QlG2* model, double range, unsigned intervals, char **e) {
+QlPricingEngine* qlG2SwaptionEngine(QlG2* model, double range, unsigned intervals, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new G2SwaptionEngine(*arg(model), range, intervals))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlJumpDiffusionEngine(QlMerton76Process* x0, double relativeAccuracy_, unsigned maxIterations, char **e) {
+QlPricingEngine* qlJumpDiffusionEngine(QlMerton76Process* x0, double relativeAccuracy_, unsigned maxIterations, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new JumpDiffusionEngine(*arg(x0), relativeAccuracy_, maxIterations))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlTreeCapFloorEngine(QlShortRateModel* model, unsigned timeSteps, QlYieldTermStructure* termStructure, char **e) {
+QlPricingEngine* qlTreeCapFloorEngine(QlShortRateModel* model, unsigned timeSteps, QlYieldTermStructure* termStructure, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new TreeCapFloorEngine(*arg(model), timeSteps, qlNullableHandle(arg(termStructure))))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlTreeSwaptionEngine(QlShortRateModel* x0, unsigned timeSteps, QlYieldTermStructure* termStructure, char **e) {
+QlPricingEngine* qlTreeSwaptionEngine(QlShortRateModel* x0, unsigned timeSteps, QlYieldTermStructure* termStructure, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new TreeSwaptionEngine(*arg(x0), timeSteps, qlNullableHandle(arg(termStructure))))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlTreeVanillaSwapEngine(QlShortRateModel* x0, unsigned timeSteps, QlYieldTermStructure* termStructure, char **e) {
+QlPricingEngine* qlTreeVanillaSwapEngine(QlShortRateModel* x0, unsigned timeSteps, QlYieldTermStructure* termStructure, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new TreeVanillaSwapEngine(*arg(x0), timeSteps, qlNullableHandle(arg(termStructure))))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlVarianceGammaEngine(QlVarianceGammaProcess* x0, double absoluteError, char **e) {
+QlPricingEngine* qlVarianceGammaEngine(QlVarianceGammaProcess* x0, double absoluteError, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new VarianceGammaEngine(*arg(x0), absoluteError))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlAnalyticHestonEngine1(QlHestonModel* model, unsigned integrationOrder, char **e) {
+QlPricingEngine* qlAnalyticHestonEngine1(QlHestonModel* model, unsigned integrationOrder, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new AnalyticHestonEngine(*arg(model), integrationOrder))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
 int qlAnalyticHestonEngineOptimalControlVariate(double t, double v0, double kappa, double theta, double sigma, double rho) {
   return AnalyticHestonEngine::optimalControlVariate(t, v0, kappa, theta, sigma, rho);
 }
-QlPricingEngine* qlAnalyticHestonHullWhiteEngine1(QlHestonModel* model, QlHullWhite* hullWhiteModel, double relTolerance, unsigned maxEvaluations, char **e) {
+QlPricingEngine* qlAnalyticHestonHullWhiteEngine1(QlHestonModel* model, QlHullWhite* hullWhiteModel, double relTolerance, unsigned maxEvaluations, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new AnalyticHestonHullWhiteEngine(*arg(model), *arg(hullWhiteModel), relTolerance, maxEvaluations))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlBatesEngine1(QlBatesModel* model, double relTolerance, unsigned maxEvaluations, char **e) {
+QlPricingEngine* qlBatesEngine1(QlBatesModel* model, double relTolerance, unsigned maxEvaluations, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new BatesEngine(*arg(model), relTolerance, maxEvaluations))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlBaroneAdesiWhaleyApproximationEngine(QlGeneralizedBlackScholesProcess* x0, char **e) {
+QlPricingEngine* qlBaroneAdesiWhaleyApproximationEngine(QlGeneralizedBlackScholesProcess* x0, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new BaroneAdesiWhaleyApproximationEngine(*arg(x0)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlBatesDetJumpEngine1(QlBatesDetJumpModel* model, double relTolerance, unsigned maxEvaluations, char **e) {
+QlPricingEngine* qlBatesDetJumpEngine1(QlBatesDetJumpModel* model, double relTolerance, unsigned maxEvaluations, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new BatesDetJumpEngine(*arg(model), relTolerance, maxEvaluations))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlBatesDetJumpEngine(QlBatesDetJumpModel* model, unsigned integrationOrder, char **e) {
+QlPricingEngine* qlBatesDetJumpEngine(QlBatesDetJumpModel* model, unsigned integrationOrder, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new BatesDetJumpEngine(*arg(model), integrationOrder))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlBatesDoubleExpDetJumpEngine1(QlBatesDoubleExpDetJumpModel* model, double relTolerance, unsigned maxEvaluations, char **e) {
+QlPricingEngine* qlBatesDoubleExpDetJumpEngine1(QlBatesDoubleExpDetJumpModel* model, double relTolerance, unsigned maxEvaluations, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new BatesDoubleExpDetJumpEngine(*arg(model), relTolerance, maxEvaluations))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlBatesDoubleExpDetJumpEngine(QlBatesDoubleExpDetJumpModel* model, unsigned integrationOrder, char **e) {
+QlPricingEngine* qlBatesDoubleExpDetJumpEngine(QlBatesDoubleExpDetJumpModel* model, unsigned integrationOrder, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new BatesDoubleExpDetJumpEngine(*arg(model), integrationOrder))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlBatesDoubleExpEngine1(QlBatesDoubleExpModel* model, double relTolerance, unsigned maxEvaluations, char **e) {
+QlPricingEngine* qlBatesDoubleExpEngine1(QlBatesDoubleExpModel* model, double relTolerance, unsigned maxEvaluations, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new BatesDoubleExpEngine(*arg(model), relTolerance, maxEvaluations))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlBatesDoubleExpEngine(QlBatesDoubleExpModel* model, unsigned integrationOrder, char **e) {
+QlPricingEngine* qlBatesDoubleExpEngine(QlBatesDoubleExpModel* model, unsigned integrationOrder, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new BatesDoubleExpEngine(*arg(model), integrationOrder))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlBjerksundStenslandApproximationEngine(QlGeneralizedBlackScholesProcess* x0, char **e) {
+QlPricingEngine* qlBjerksundStenslandApproximationEngine(QlGeneralizedBlackScholesProcess* x0, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new BjerksundStenslandApproximationEngine(*arg(x0)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlQdPlusAmericanEngine(QlGeneralizedBlackScholesProcess* process, unsigned interpolationPoints, int solverType, double eps, unsigned maxIter, char **e) {
+QlPricingEngine* qlQdPlusAmericanEngine(QlGeneralizedBlackScholesProcess* process, unsigned interpolationPoints, int solverType, double eps, unsigned maxIter, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new QdPlusAmericanEngine(*arg(process), interpolationPoints, (QdPlusAmericanEngine::SolverType)solverType, eps, Size(maxIter)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlQdFpAmericanEngine(QlGeneralizedBlackScholesProcess* process, int scheme, int fpEquation, char **e) {
+QlPricingEngine* qlQdFpAmericanEngine(QlGeneralizedBlackScholesProcess* process, int scheme, int fpEquation, QlError **e) { QlCallScope callbackScope(e);
   try {
     ext::shared_ptr<QdFpIterationScheme> iterationScheme;
     switch (scheme) {
@@ -780,252 +778,252 @@ QlPricingEngine* qlQdFpAmericanEngine(QlGeneralizedBlackScholesProcess* process,
     }
     return ret(new QlPricingEngine(alloc(new QdFpAmericanEngine(*arg(process), iterationScheme, (QdFpAmericanEngine::FixedPointEquation)fpEquation))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlContinuousArithmeticAsianVecerEngine(QlGeneralizedBlackScholesProcess* process, QlQuote* currentAverage, int startDate, unsigned timeSteps, unsigned assetSteps, double zMin, double zMax, char **e) {
+QlPricingEngine* qlContinuousArithmeticAsianVecerEngine(QlGeneralizedBlackScholesProcess* process, QlQuote* currentAverage, int startDate, unsigned timeSteps, unsigned assetSteps, double zMin, double zMax, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new ContinuousArithmeticAsianVecerEngine(*arg(process), qlNullableHandle(arg(currentAverage)), Date(startDate), timeSteps, assetSteps, zMin, zMax))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlIntegralCdsEngine(int l, int u, QlDefaultProbabilityTermStructure* x1, double recoveryRate, QlYieldTermStructure* discountCurve, int includeSettlementDateFlows, char **e) {
+QlPricingEngine* qlIntegralCdsEngine(int l, int u, QlDefaultProbabilityTermStructure* x1, double recoveryRate, QlYieldTermStructure* discountCurve, int includeSettlementDateFlows, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new IntegralCdsEngine(Period(l, (TimeUnit)u), Handle<DefaultProbabilityTermStructure>(*arg(x1)), recoveryRate, *arg(discountCurve), qlOptBool(includeSettlementDateFlows)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlIntegralEngine(QlGeneralizedBlackScholesProcess* x0, char **e) {
+QlPricingEngine* qlIntegralEngine(QlGeneralizedBlackScholesProcess* x0, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new IntegralEngine(*arg(x0)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlJamshidianSwaptionEngine(QlOneFactorAffineModel* model, QlYieldTermStructure* termStructure, char **e) {
+QlPricingEngine* qlJamshidianSwaptionEngine(QlOneFactorAffineModel* model, QlYieldTermStructure* termStructure, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new JamshidianSwaptionEngine(*arg(model), qlNullableHandle(arg(termStructure))))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlJuQuadraticApproximationEngine(QlGeneralizedBlackScholesProcess* x0, char **e) {
+QlPricingEngine* qlJuQuadraticApproximationEngine(QlGeneralizedBlackScholesProcess* x0, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new JuQuadraticApproximationEngine(*arg(x0)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlKirkEngine(QlBlackProcess* process1, QlBlackProcess* process2, double correlation, char **e) {
+QlPricingEngine* qlKirkEngine(QlBlackProcess* process1, QlBlackProcess* process2, double correlation, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new KirkEngine(*arg(process1), *arg(process2), correlation))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlIsdaCdsEngine(QlDefaultProbabilityTermStructure* x0, double recoveryRate, QlYieldTermStructure* discountCurve, int includeSettlementDateFlows, int numericalFix, int accrualBias, int forwardsInCouponPeriod, char **e) {
+QlPricingEngine* qlIsdaCdsEngine(QlDefaultProbabilityTermStructure* x0, double recoveryRate, QlYieldTermStructure* discountCurve, int includeSettlementDateFlows, int numericalFix, int accrualBias, int forwardsInCouponPeriod, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new IsdaCdsEngine(Handle<DefaultProbabilityTermStructure>(*arg(x0)), recoveryRate, *arg(discountCurve), qlOptBool(includeSettlementDateFlows),
       (IsdaCdsEngine::NumericalFix)numericalFix, (IsdaCdsEngine::AccrualBias)accrualBias, (IsdaCdsEngine::ForwardsInCouponPeriod)forwardsInCouponPeriod))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlMidPointCdsEngine(QlDefaultProbabilityTermStructure* x0, double recoveryRate, QlYieldTermStructure* discountCurve, int includeSettlementDateFlows, char **e) {
+QlPricingEngine* qlMidPointCdsEngine(QlDefaultProbabilityTermStructure* x0, double recoveryRate, QlYieldTermStructure* discountCurve, int includeSettlementDateFlows, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new MidPointCdsEngine(Handle<DefaultProbabilityTermStructure>(*arg(x0)), recoveryRate, *arg(discountCurve), qlOptBool(includeSettlementDateFlows)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlMidPointCDOEngine(QlYieldTermStructure* discountCurve, char **e) {
+QlPricingEngine* qlMidPointCDOEngine(QlYieldTermStructure* discountCurve, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new MidPointCDOEngine(*arg(discountCurve)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlIntegralCDOEngine(QlYieldTermStructure* discountCurve, int l, int u, char **e) {
+QlPricingEngine* qlIntegralCDOEngine(QlYieldTermStructure* discountCurve, int l, int u, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new IntegralCDOEngine(*arg(discountCurve), Period(l, (TimeUnit)u)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlIntegralNtdEngine(int l, int u, QlYieldTermStructure* discountCurve, char **e) {
+QlPricingEngine* qlIntegralNtdEngine(int l, int u, QlYieldTermStructure* discountCurve, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new IntegralNtdEngine(Period(l, (TimeUnit)u), *arg(discountCurve)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlReplicatingVarianceSwapEngine(QlGeneralizedBlackScholesProcess* process, double dk, unsigned callStrikesLen, double* callStrikes, unsigned putStrikesLen, double* putStrikes, char **e) {
+QlPricingEngine* qlReplicatingVarianceSwapEngine(QlGeneralizedBlackScholesProcess* process, double dk, unsigned callStrikesLen, double* callStrikes, unsigned putStrikesLen, double* putStrikes, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new ReplicatingVarianceSwapEngine(*arg(process), dk, std::vector<double>(callStrikes, callStrikes+callStrikesLen), std::vector<double>(putStrikes, putStrikes+putStrikesLen)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlStulzEngine(QlGeneralizedBlackScholesProcess* process1, QlGeneralizedBlackScholesProcess* process2, double correlation, char **e) {
+QlPricingEngine* qlStulzEngine(QlGeneralizedBlackScholesProcess* process1, QlGeneralizedBlackScholesProcess* process2, double correlation, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new StulzEngine(*arg(process1), *arg(process2), correlation))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlBjerksundStenslandSpreadEngine(QlGeneralizedBlackScholesProcess* process1, QlGeneralizedBlackScholesProcess* process2, double correlation, char **e) {
+QlPricingEngine* qlBjerksundStenslandSpreadEngine(QlGeneralizedBlackScholesProcess* process1, QlGeneralizedBlackScholesProcess* process2, double correlation, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new BjerksundStenslandSpreadEngine(*arg(process1), *arg(process2), correlation))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlOperatorSplittingSpreadEngine(QlGeneralizedBlackScholesProcess* process1, QlGeneralizedBlackScholesProcess* process2, double correlation, int order, char **e) {
+QlPricingEngine* qlOperatorSplittingSpreadEngine(QlGeneralizedBlackScholesProcess* process1, QlGeneralizedBlackScholesProcess* process2, double correlation, int order, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new OperatorSplittingSpreadEngine(*arg(process1), *arg(process2), correlation, (OperatorSplittingSpreadEngine::Order)order))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlPearsonSpreadEngine(QlGeneralizedBlackScholesProcess* process1, QlGeneralizedBlackScholesProcess* process2, double correlation, double integrationTolerance, unsigned maxIntegrationIterations, double nStd, char **e) {
+QlPricingEngine* qlPearsonSpreadEngine(QlGeneralizedBlackScholesProcess* process1, QlGeneralizedBlackScholesProcess* process2, double correlation, double integrationTolerance, unsigned maxIntegrationIterations, double nStd, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new PearsonSpreadEngine(*arg(process1), *arg(process2), correlation, integrationTolerance, maxIntegrationIterations, nStd))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlGaussianCopulaSpreadEngine(QlGeneralizedBlackScholesProcess* process1, QlGeneralizedBlackScholesProcess* process2, double correlation, unsigned nPoints, char **e) {
+QlPricingEngine* qlGaussianCopulaSpreadEngine(QlGeneralizedBlackScholesProcess* process1, QlGeneralizedBlackScholesProcess* process2, double correlation, unsigned nPoints, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new GaussianCopulaSpreadEngine(*arg(process1), *arg(process2), correlation, nPoints))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlFd2dBlackScholesVanillaEngine(QlGeneralizedBlackScholesProcess* p1, QlGeneralizedBlackScholesProcess* p2, double correlation, unsigned xGrid, unsigned yGrid, unsigned tGrid, unsigned dampingSteps, FdmSchemeDesc *schemeDesc, int localVol, double illegalLocalVolOverwrite, char **e) {
+QlPricingEngine* qlFd2dBlackScholesVanillaEngine(QlGeneralizedBlackScholesProcess* p1, QlGeneralizedBlackScholesProcess* p2, double correlation, unsigned xGrid, unsigned yGrid, unsigned tGrid, unsigned dampingSteps, FdmSchemeDesc *schemeDesc, int localVol, double illegalLocalVolOverwrite, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new Fd2dBlackScholesVanillaEngine(*arg(p1), *arg(p2), correlation, xGrid, yGrid, tGrid, dampingSteps, *arg(schemeDesc), localVol, illegalLocalVolOverwrite))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlChoiBasketEngine(unsigned processesLen, QlGeneralizedBlackScholesProcess** processes, unsigned rhoRows, unsigned rhoCols, double* rho, double lambda, unsigned maxNrIntegrationSteps, int calcfwdDelta, int controlVariate, char **e) {
+QlPricingEngine* qlChoiBasketEngine(unsigned processesLen, QlGeneralizedBlackScholesProcess** processes, unsigned rhoRows, unsigned rhoCols, double* rho, double lambda, unsigned maxNrIntegrationSteps, int calcfwdDelta, int controlVariate, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new ChoiBasketEngine(qlVector(processes, processesLen), qlMatrix(rho, rhoRows, rhoCols), lambda, maxNrIntegrationSteps, calcfwdDelta, controlVariate))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlDengLiZhouBasketEngine(unsigned processesLen, QlGeneralizedBlackScholesProcess** processes, unsigned rhoRows, unsigned rhoCols, double* rho, char **e) {
+QlPricingEngine* qlDengLiZhouBasketEngine(unsigned processesLen, QlGeneralizedBlackScholesProcess** processes, unsigned rhoRows, unsigned rhoCols, double* rho, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new DengLiZhouBasketEngine(qlVector(processes, processesLen), qlMatrix(rho, rhoRows, rhoCols)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlFdndimBlackScholesVanillaEngine(unsigned processesLen, QlGeneralizedBlackScholesProcess** processes, unsigned rhoRows, unsigned rhoCols, double* rho, unsigned xGridsLen, unsigned* xGrids, unsigned tGrid, unsigned dampingSteps, FdmSchemeDesc *schemeDesc, char **e) {
+QlPricingEngine* qlFdndimBlackScholesVanillaEngine(unsigned processesLen, QlGeneralizedBlackScholesProcess** processes, unsigned rhoRows, unsigned rhoCols, double* rho, unsigned xGridsLen, unsigned* xGrids, unsigned tGrid, unsigned dampingSteps, FdmSchemeDesc *schemeDesc, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new FdndimBlackScholesVanillaEngine(qlVector(processes, processesLen), qlMatrix(rho, rhoRows, rhoCols), std::vector<Size>(xGrids, xGrids+xGridsLen), tGrid, dampingSteps, *arg(schemeDesc)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlFdndimBlackScholesVanillaEngine1(unsigned processesLen, QlGeneralizedBlackScholesProcess** processes, unsigned rhoRows, unsigned rhoCols, double* rho, unsigned xGrid, unsigned tGrid, unsigned dampingSteps, FdmSchemeDesc *schemeDesc, char **e) {
+QlPricingEngine* qlFdndimBlackScholesVanillaEngine1(unsigned processesLen, QlGeneralizedBlackScholesProcess** processes, unsigned rhoRows, unsigned rhoCols, double* rho, unsigned xGrid, unsigned tGrid, unsigned dampingSteps, FdmSchemeDesc *schemeDesc, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new FdndimBlackScholesVanillaEngine(qlVector(processes, processesLen), qlMatrix(rho, rhoRows, rhoCols), xGrid, tGrid, dampingSteps, *arg(schemeDesc)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlSingleFactorBsmBasketEngine(unsigned processesLen, QlGeneralizedBlackScholesProcess** processes, double xTol, char **e) {
+QlPricingEngine* qlSingleFactorBsmBasketEngine(unsigned processesLen, QlGeneralizedBlackScholesProcess** processes, double xTol, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new SingleFactorBsmBasketEngine(qlVector(processes, processesLen), xTol))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlLfmSwaptionEngine(QlLiborForwardModel* model, QlYieldTermStructure* discountCurve, char **e) {
+QlPricingEngine* qlLfmSwaptionEngine(QlLiborForwardModel* model, QlYieldTermStructure* discountCurve, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new LfmSwaptionEngine(*arg(model), *arg(discountCurve)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlTreeCapFloorEngine1(QlShortRateModel* model, TimeGrid* timeGrid, QlYieldTermStructure* termStructure, char **e) {
+QlPricingEngine* qlTreeCapFloorEngine1(QlShortRateModel* model, TimeGrid* timeGrid, QlYieldTermStructure* termStructure, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new TreeCapFloorEngine(*arg(model), *arg(timeGrid), qlNullableHandle(arg(termStructure))))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlTreeSwaptionEngine1(QlShortRateModel* x0, TimeGrid* timeGrid, QlYieldTermStructure* termStructure, char **e) {
+QlPricingEngine* qlTreeSwaptionEngine1(QlShortRateModel* x0, TimeGrid* timeGrid, QlYieldTermStructure* termStructure, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new TreeSwaptionEngine(*arg(x0), *arg(timeGrid), qlNullableHandle(arg(termStructure))))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlTreeVanillaSwapEngine1(QlShortRateModel* x0, TimeGrid* timeGrid, QlYieldTermStructure* termStructure, char **e) {
+QlPricingEngine* qlTreeVanillaSwapEngine1(QlShortRateModel* x0, TimeGrid* timeGrid, QlYieldTermStructure* termStructure, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new TreeVanillaSwapEngine(*arg(x0), *arg(timeGrid), qlNullableHandle(arg(termStructure))))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlFdG2SwaptionEngine(QlG2* model, unsigned tGrid, unsigned xGrid, unsigned yGrid, unsigned dampingSteps, double invEps, FdmSchemeDesc *schemeDesc, char **e) {
+QlPricingEngine* qlFdG2SwaptionEngine(QlG2* model, unsigned tGrid, unsigned xGrid, unsigned yGrid, unsigned dampingSteps, double invEps, FdmSchemeDesc *schemeDesc, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new FdG2SwaptionEngine(*arg(model), tGrid, xGrid, yGrid, dampingSteps, invEps, *arg(schemeDesc)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlFdHullWhiteSwaptionEngine(QlHullWhite* model, unsigned tGrid, unsigned xGrid, unsigned dampingSteps, double invEps, FdmSchemeDesc *schemeDesc, char **e) {
+QlPricingEngine* qlFdHullWhiteSwaptionEngine(QlHullWhite* model, unsigned tGrid, unsigned xGrid, unsigned dampingSteps, double invEps, FdmSchemeDesc *schemeDesc, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new FdHullWhiteSwaptionEngine(*arg(model), tGrid, xGrid, dampingSteps, invEps, *arg(schemeDesc)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlMCVarianceSwapEngine1(int rngtrait, int stattrait, QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, unsigned timeStepsPerYear, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e) {
+QlPricingEngine* qlMCVarianceSwapEngine1(int rngtrait, int stattrait, QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, unsigned timeStepsPerYear, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(qlMCVarianceSwapEngine1Aux(rngtrait, stattrait, *arg(process), timeSteps, timeStepsPerYear, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlMCHestonHullWhiteEngine1(int rngtrait, int stattrait, QlHybridHestonHullWhiteProcess* process, unsigned timeSteps, unsigned timeStepsPerYear, int antitheticVariate, int controlVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e) {
+QlPricingEngine* qlMCHestonHullWhiteEngine1(int rngtrait, int stattrait, QlHybridHestonHullWhiteProcess* process, unsigned timeSteps, unsigned timeStepsPerYear, int antitheticVariate, int controlVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(qlMCHestonHullWhiteEngine1Aux(rngtrait, stattrait, *arg(process), timeSteps, timeStepsPerYear, antitheticVariate, controlVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlMCAmericanEngine1(int rngtrait, int stattrait, QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, unsigned timeStepsPerYear, int antitheticVariate, int controlVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, unsigned polynomOrder, int polynomType, unsigned nCalibrationSamples, int antitheticVariateCalibration, unsigned seedCalibration, char **e) {
+QlPricingEngine* qlMCAmericanEngine1(int rngtrait, int stattrait, QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, unsigned timeStepsPerYear, int antitheticVariate, int controlVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, unsigned polynomOrder, int polynomType, unsigned nCalibrationSamples, int antitheticVariateCalibration, unsigned seedCalibration, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(qlMCAmericanEngine1Aux(rngtrait, stattrait, *arg(process), timeSteps, timeStepsPerYear, antitheticVariate, controlVariate, requiredSamples, requiredTolerance, maxSamples, seed, polynomOrder, (LsmBasisSystem::PolynomialType)polynomType, nCalibrationSamples, qlOptBool(antitheticVariateCalibration), seedCalibration))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlMCBarrierEngine1(int rngtrait, int stattrait, QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, unsigned timeStepsPerYear, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, int isBiased, unsigned seed, char **e) {
+QlPricingEngine* qlMCBarrierEngine1(int rngtrait, int stattrait, QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, unsigned timeStepsPerYear, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, int isBiased, unsigned seed, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(qlMCBarrierEngine1Aux(rngtrait, stattrait, *arg(process), timeSteps, timeStepsPerYear, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, isBiased, seed))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlMCDigitalEngine1(int rngtrait, int stattrait, QlGeneralizedBlackScholesProcess* x0, unsigned timeSteps, unsigned timeStepsPerYear, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e) {
+QlPricingEngine* qlMCDigitalEngine1(int rngtrait, int stattrait, QlGeneralizedBlackScholesProcess* x0, unsigned timeSteps, unsigned timeStepsPerYear, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(qlMCDigitalEngine1Aux(rngtrait, stattrait, *arg(x0), timeSteps, timeStepsPerYear, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlMCForwardEuropeanBSEngine1(int rngtrait, int stattrait, QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, unsigned timeStepsPerYear, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e) {
+QlPricingEngine* qlMCForwardEuropeanBSEngine1(int rngtrait, int stattrait, QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, unsigned timeStepsPerYear, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(qlMCForwardEuropeanBSEngine1Aux(rngtrait, stattrait, *arg(process), timeSteps, timeStepsPerYear, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlMCForwardEuropeanHestonEngine1(int rngtrait, int stattrait, QlHestonProcess* process, unsigned timeSteps, unsigned timeStepsPerYear, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, int controlVariate, char **e) {
+QlPricingEngine* qlMCForwardEuropeanHestonEngine1(int rngtrait, int stattrait, QlHestonProcess* process, unsigned timeSteps, unsigned timeStepsPerYear, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, int controlVariate, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(qlMCForwardEuropeanHestonEngine1Aux(rngtrait, stattrait, *arg(process), timeSteps, timeStepsPerYear, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed, controlVariate))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlMCDiscreteArithmeticAPEngine1(int rngtrait, int stattrait, QlGeneralizedBlackScholesProcess* process, int brownianBridge, int antitheticVariate, int controlVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e) {
+QlPricingEngine* qlMCDiscreteArithmeticAPEngine1(int rngtrait, int stattrait, QlGeneralizedBlackScholesProcess* process, int brownianBridge, int antitheticVariate, int controlVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(qlMCDiscreteArithmeticAPEngine1Aux(rngtrait, stattrait, *arg(process), brownianBridge, antitheticVariate, controlVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlMCDiscreteArithmeticASEngine1(int rngtrait, int stattrait, QlGeneralizedBlackScholesProcess* process, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e) {
+QlPricingEngine* qlMCDiscreteArithmeticASEngine1(int rngtrait, int stattrait, QlGeneralizedBlackScholesProcess* process, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(qlMCDiscreteArithmeticASEngine1Aux(rngtrait, stattrait, *arg(process), brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlMCDiscreteArithmeticAPHestonEngine1(int rngtrait, int stattrait, QlHestonProcess* process, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, unsigned timeSteps, unsigned timeStepsPerYear, int controlVariate, char **e) {
+QlPricingEngine* qlMCDiscreteArithmeticAPHestonEngine1(int rngtrait, int stattrait, QlHestonProcess* process, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, unsigned timeSteps, unsigned timeStepsPerYear, int controlVariate, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(qlMCDiscreteArithmeticAPHestonEngine1Aux(rngtrait, stattrait, *arg(process), antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed, timeSteps, timeStepsPerYear, controlVariate))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlMCDiscreteGeometricAPHestonEngine1(int rngtrait, int stattrait, QlHestonProcess* process, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, unsigned timeSteps, unsigned timeStepsPerYear, char **e) {
+QlPricingEngine* qlMCDiscreteGeometricAPHestonEngine1(int rngtrait, int stattrait, QlHestonProcess* process, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, unsigned timeSteps, unsigned timeStepsPerYear, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(qlMCDiscreteGeometricAPHestonEngine1Aux(rngtrait, stattrait, *arg(process), antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed, timeSteps, timeStepsPerYear))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlMCDiscreteGeometricAPEngine1(int rngtrait, int stattrait, QlGeneralizedBlackScholesProcess* process, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e) {
+QlPricingEngine* qlMCDiscreteGeometricAPEngine1(int rngtrait, int stattrait, QlGeneralizedBlackScholesProcess* process, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(qlMCDiscreteGeometricAPEngine1Aux(rngtrait, stattrait, *arg(process), brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlMCEuropeanEngine1(int rngtrait, int stattrait, QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, unsigned timeStepsPerYear, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e) {
+QlPricingEngine* qlMCEuropeanEngine1(int rngtrait, int stattrait, QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, unsigned timeStepsPerYear, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(qlMCEuropeanEngine1Aux(rngtrait, stattrait, *arg(process), timeSteps, timeStepsPerYear, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlMCEuropeanGJRGARCHEngine1(int rngtrait, int stattrait, QlGJRGARCHProcess* x0, unsigned timeSteps, unsigned timeStepsPerYear, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e) {
+QlPricingEngine* qlMCEuropeanGJRGARCHEngine1(int rngtrait, int stattrait, QlGJRGARCHProcess* x0, unsigned timeSteps, unsigned timeStepsPerYear, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(qlMCEuropeanGJRGARCHEngine1Aux(rngtrait, stattrait, *arg(x0), timeSteps, timeStepsPerYear, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlMCEuropeanHestonEngine1(int rngtrait, int stattrait, QlHestonProcess* x0, unsigned timeSteps, unsigned timeStepsPerYear, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e) {
+QlPricingEngine* qlMCEuropeanHestonEngine1(int rngtrait, int stattrait, QlHestonProcess* x0, unsigned timeSteps, unsigned timeStepsPerYear, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(qlMCEuropeanHestonEngine1Aux(rngtrait, stattrait, *arg(x0), timeSteps, timeStepsPerYear, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlIntegralHestonVarianceOptionEngine(QlHestonProcess* process, char **e) {
+QlPricingEngine* qlIntegralHestonVarianceOptionEngine(QlHestonProcess* process, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new IntegralHestonVarianceOptionEngine(*arg(process)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlMCHullWhiteCapFloorEngine1(int rngtrait, int stattrait, QlHullWhite* model, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e) {
+QlPricingEngine* qlMCHullWhiteCapFloorEngine1(int rngtrait, int stattrait, QlHullWhite* model, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(qlMCHullWhiteCapFloorEngine1Aux(rngtrait, stattrait, *arg(model), brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlMCHimalayaEngine1(int rngtrait, int stattrait, QlStochasticProcessArray* processes, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e) {
+QlPricingEngine* qlMCHimalayaEngine1(int rngtrait, int stattrait, QlStochasticProcessArray* processes, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(qlMCHimalayaEngine1Aux(rngtrait, stattrait, *arg(processes), brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlMCPagodaEngine1(int rngtrait, int stattrait, QlStochasticProcessArray* processes, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e) {
+QlPricingEngine* qlMCPagodaEngine1(int rngtrait, int stattrait, QlStochasticProcessArray* processes, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(qlMCPagodaEngine1Aux(rngtrait, stattrait, *arg(processes), brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlMCEverestEngine1(int rngtrait, int stattrait, QlStochasticProcessArray* processes, unsigned timeSteps, unsigned timeStepsPerYear, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e) {
+QlPricingEngine* qlMCEverestEngine1(int rngtrait, int stattrait, QlStochasticProcessArray* processes, unsigned timeSteps, unsigned timeStepsPerYear, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(qlMCEverestEngine1Aux(rngtrait, stattrait, *arg(processes), timeSteps, timeStepsPerYear, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlMCEuropeanBasketEngine1(int rngtrait, int stattrait, QlStochasticProcessArray* processes, unsigned timeSteps, unsigned timeStepsPerYear, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e) {
+QlPricingEngine* qlMCEuropeanBasketEngine1(int rngtrait, int stattrait, QlStochasticProcessArray* processes, unsigned timeSteps, unsigned timeStepsPerYear, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(qlMCEuropeanBasketEngine1Aux(rngtrait, stattrait, *arg(processes), timeSteps, timeStepsPerYear, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlMCAmericanBasketEngine1(int rngtrait, QlStochasticProcessArray* processes, unsigned timeSteps, unsigned timeStepsPerYear, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, unsigned nCalibrationSamples, unsigned polynomialOrder, int polynomialType, char **e) {
+QlPricingEngine* qlMCAmericanBasketEngine1(int rngtrait, QlStochasticProcessArray* processes, unsigned timeSteps, unsigned timeStepsPerYear, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, unsigned nCalibrationSamples, unsigned polynomialOrder, int polynomialType, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(qlMCAmericanBasketEngine1Aux(rngtrait, *arg(processes), timeSteps, timeStepsPerYear, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed, nCalibrationSamples, polynomialOrder, (LsmBasisSystem::PolynomialType)polynomialType))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlMCPerformanceEngine1(int rngtrait, int stattrait, QlGeneralizedBlackScholesProcess* process, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e) {
+QlPricingEngine* qlMCPerformanceEngine1(int rngtrait, int stattrait, QlGeneralizedBlackScholesProcess* process, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(qlMCPerformanceEngine1Aux(rngtrait, stattrait, *arg(process), brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlBinomialVanillaEngine(int tree, QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, char **e) {
+QlPricingEngine* qlBinomialVanillaEngine(int tree, QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(qlBinomialVanillaEngineAux(tree, *arg(process), timeSteps))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlFdBlackScholesVanillaEngine(QlGeneralizedBlackScholesProcess* process, unsigned tGrid, unsigned xGrid, unsigned dampingSteps, FdmSchemeDesc *fdScheme, int localVol, double illegalLocalVolOverwrite, int cashDividendModel, char **e) {
+QlPricingEngine* qlFdBlackScholesVanillaEngine(QlGeneralizedBlackScholesProcess* process, unsigned tGrid, unsigned xGrid, unsigned dampingSteps, FdmSchemeDesc *fdScheme, int localVol, double illegalLocalVolOverwrite, int cashDividendModel, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(qlFdBlackScholesVanillaEngineAux(*arg(process), tGrid, xGrid, dampingSteps, *arg(fdScheme), localVol, illegalLocalVolOverwrite, cashDividendModel))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlFdBlackScholesVanillaEngine1(QlGeneralizedBlackScholesProcess* process, unsigned dividendsLen, QlDividend** dividends, unsigned tGrid, unsigned xGrid, unsigned dampingSteps, FdmSchemeDesc *fdScheme, int localVol, double illegalLocalVolOverwrite, int cashDividendModel, char **e) {
-  try {return ret(new QlPricingEngine(alloc(new FdBlackScholesVanillaEngine(*arg(process), qlVector(dividends, dividendsLen), tGrid, xGrid, dampingSteps, *arg(fdScheme), localVol, illegalLocalVolOverwrite, (FdBlackScholesVanillaEngine::CashDividendModel)cashDividendModel))));
+QlPricingEngine* qlFdBlackScholesVanillaEngine1(QlGeneralizedBlackScholesProcess* process, unsigned dividendsLen, QlDividend** dividends, unsigned tGrid, unsigned xGrid, unsigned dampingSteps, FdmSchemeDesc *fdScheme, int localVol, double illegalLocalVolOverwrite, int cashDividendModel, QlError **e) { QlCallScope callbackScope(e);
+  try {return ret(new QlPricingEngine(allocAs<PricingEngine>(new hasquant::CheckedFdEngine<FdBlackScholesVanillaEngine>(*arg(process), qlVector(dividends, dividendsLen), tGrid, xGrid, dampingSteps, *arg(fdScheme), localVol, illegalLocalVolOverwrite, (FdBlackScholesVanillaEngine::CashDividendModel)cashDividendModel))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlFdBlackScholesVanillaEngine2(QlGeneralizedBlackScholesProcess* process, QlFdmQuantoHelper* quantoHelper, unsigned tGrid, unsigned xGrid, unsigned dampingSteps, FdmSchemeDesc *fdScheme, int localVol, double illegalLocalVolOverwrite, int cashDividendModel, char **e) {
-  try {return ret(new QlPricingEngine(alloc(new FdBlackScholesVanillaEngine(*arg(process), quantoHelper ? *arg(quantoHelper) : shared_ptr<FdmQuantoHelper>(), tGrid, xGrid, dampingSteps, *arg(fdScheme), localVol, illegalLocalVolOverwrite, (FdBlackScholesVanillaEngine::CashDividendModel)cashDividendModel))));
+QlPricingEngine* qlFdBlackScholesVanillaEngine2(QlGeneralizedBlackScholesProcess* process, QlFdmQuantoHelper* quantoHelper, unsigned tGrid, unsigned xGrid, unsigned dampingSteps, FdmSchemeDesc *fdScheme, int localVol, double illegalLocalVolOverwrite, int cashDividendModel, QlError **e) { QlCallScope callbackScope(e);
+  try {return ret(new QlPricingEngine(allocAs<PricingEngine>(new hasquant::CheckedFdEngine<FdBlackScholesVanillaEngine>(*arg(process), quantoHelper ? *arg(quantoHelper) : shared_ptr<FdmQuantoHelper>(), tGrid, xGrid, dampingSteps, *arg(fdScheme), localVol, illegalLocalVolOverwrite, (FdBlackScholesVanillaEngine::CashDividendModel)cashDividendModel))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlFdBlackScholesVanillaEngine3(QlGeneralizedBlackScholesProcess* process, unsigned dividendsLen, QlDividend** dividends, QlFdmQuantoHelper* quantoHelper, unsigned tGrid, unsigned xGrid, unsigned dampingSteps, FdmSchemeDesc *fdScheme, int localVol, double illegalLocalVolOverwrite, int cashDividendModel, char **e) {
-  try {return ret(new QlPricingEngine(alloc(new FdBlackScholesVanillaEngine(*arg(process), qlVector(dividends, dividendsLen), quantoHelper ? *arg(quantoHelper) : shared_ptr<FdmQuantoHelper>(), tGrid, xGrid, dampingSteps, *arg(fdScheme), localVol, illegalLocalVolOverwrite, (FdBlackScholesVanillaEngine::CashDividendModel)cashDividendModel))));
+QlPricingEngine* qlFdBlackScholesVanillaEngine3(QlGeneralizedBlackScholesProcess* process, unsigned dividendsLen, QlDividend** dividends, QlFdmQuantoHelper* quantoHelper, unsigned tGrid, unsigned xGrid, unsigned dampingSteps, FdmSchemeDesc *fdScheme, int localVol, double illegalLocalVolOverwrite, int cashDividendModel, QlError **e) { QlCallScope callbackScope(e);
+  try {return ret(new QlPricingEngine(allocAs<PricingEngine>(new hasquant::CheckedFdEngine<FdBlackScholesVanillaEngine>(*arg(process), qlVector(dividends, dividendsLen), quantoHelper ? *arg(quantoHelper) : shared_ptr<FdmQuantoHelper>(), tGrid, xGrid, dampingSteps, *arg(fdScheme), localVol, illegalLocalVolOverwrite, (FdBlackScholesVanillaEngine::CashDividendModel)cashDividendModel))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlFdHestonVanillaEngine(QlHestonModel* model, unsigned tGrid, unsigned xGrid, unsigned vGrid, unsigned dampingSteps, FdmSchemeDesc *fdScheme, QlLocalVolTermStructure* leverageFct, double mixingFactor, char **e) {
-  try {return ret(new QlPricingEngine(alloc(new FdHestonVanillaEngine(*arg(model), tGrid, xGrid, vGrid, dampingSteps, *arg(fdScheme), leverageFct ? *arg(leverageFct) : shared_ptr<LocalVolTermStructure>(), mixingFactor))));
+QlPricingEngine* qlFdHestonVanillaEngine(QlHestonModel* model, unsigned tGrid, unsigned xGrid, unsigned vGrid, unsigned dampingSteps, FdmSchemeDesc *fdScheme, QlLocalVolTermStructure* leverageFct, double mixingFactor, QlError **e) { QlCallScope callbackScope(e);
+  try {return ret(new QlPricingEngine(allocAs<PricingEngine>(new hasquant::CheckedFdEngine<FdHestonVanillaEngine>(*arg(model), tGrid, xGrid, vGrid, dampingSteps, *arg(fdScheme), leverageFct ? *arg(leverageFct) : shared_ptr<LocalVolTermStructure>(), mixingFactor))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlFdHestonVanillaEngine1(QlHestonModel* model, unsigned dividendsLen, QlDividend** dividends, unsigned tGrid, unsigned xGrid, unsigned vGrid, unsigned dampingSteps, FdmSchemeDesc *fdScheme, QlLocalVolTermStructure* leverageFct, double mixingFactor, char **e) {
-  try {return ret(new QlPricingEngine(alloc(new FdHestonVanillaEngine(*arg(model), qlVector(dividends, dividendsLen), tGrid, xGrid, vGrid, dampingSteps, *arg(fdScheme), leverageFct ? *arg(leverageFct) : shared_ptr<LocalVolTermStructure>(), mixingFactor))));
+QlPricingEngine* qlFdHestonVanillaEngine1(QlHestonModel* model, unsigned dividendsLen, QlDividend** dividends, unsigned tGrid, unsigned xGrid, unsigned vGrid, unsigned dampingSteps, FdmSchemeDesc *fdScheme, QlLocalVolTermStructure* leverageFct, double mixingFactor, QlError **e) { QlCallScope callbackScope(e);
+  try {return ret(new QlPricingEngine(allocAs<PricingEngine>(new hasquant::CheckedFdEngine<FdHestonVanillaEngine>(*arg(model), qlVector(dividends, dividendsLen), tGrid, xGrid, vGrid, dampingSteps, *arg(fdScheme), leverageFct ? *arg(leverageFct) : shared_ptr<LocalVolTermStructure>(), mixingFactor))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlCOSHestonEngine(QlHestonModel* model, double L, unsigned N, char **e) {
+QlPricingEngine* qlCOSHestonEngine(QlHestonModel* model, double L, unsigned N, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new COSHestonEngine(*arg(model), L, N))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlAnalyticPDFHestonEngine(QlHestonModel* model, double eps, unsigned integrationOrder, char **e) {
+QlPricingEngine* qlAnalyticPDFHestonEngine(QlHestonModel* model, double eps, unsigned integrationOrder, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new AnalyticPDFHestonEngine(*arg(model), eps, integrationOrder))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlFdBatesVanillaEngine(QlBatesModel* model, unsigned tGrid, unsigned xGrid, unsigned vGrid, unsigned dampingSteps, FdmSchemeDesc *fdScheme, char **e) {
+QlPricingEngine* qlFdBatesVanillaEngine(QlBatesModel* model, unsigned tGrid, unsigned xGrid, unsigned vGrid, unsigned dampingSteps, FdmSchemeDesc *fdScheme, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new FdBatesVanillaEngine(*arg(model), tGrid, xGrid, vGrid, dampingSteps, *arg(fdScheme)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlFdBatesVanillaEngine1(QlBatesModel* model, unsigned dividendsLen, QlDividend** dividends, unsigned tGrid, unsigned xGrid, unsigned vGrid, unsigned dampingSteps, FdmSchemeDesc *fdScheme, char **e) {
+QlPricingEngine* qlFdBatesVanillaEngine1(QlBatesModel* model, unsigned dividendsLen, QlDividend** dividends, unsigned tGrid, unsigned xGrid, unsigned vGrid, unsigned dampingSteps, FdmSchemeDesc *fdScheme, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new FdBatesVanillaEngine(*arg(model), qlVector(dividends, dividendsLen), tGrid, xGrid, vGrid, dampingSteps, *arg(fdScheme)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlFdBlackScholesShoutEngine(QlGeneralizedBlackScholesProcess* process, unsigned tGrid, unsigned xGrid, unsigned dampingSteps, FdmSchemeDesc *fdScheme, char **e) {
+QlPricingEngine* qlFdBlackScholesShoutEngine(QlGeneralizedBlackScholesProcess* process, unsigned tGrid, unsigned xGrid, unsigned dampingSteps, FdmSchemeDesc *fdScheme, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new FdBlackScholesShoutEngine(*arg(process), tGrid, xGrid, dampingSteps, *arg(fdScheme)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlFdBlackScholesShoutEngine1(QlGeneralizedBlackScholesProcess* process, unsigned dividendsLen, QlDividend** dividends, unsigned tGrid, unsigned xGrid, unsigned dampingSteps, FdmSchemeDesc *fdScheme, char **e) {
+QlPricingEngine* qlFdBlackScholesShoutEngine1(QlGeneralizedBlackScholesProcess* process, unsigned dividendsLen, QlDividend** dividends, unsigned tGrid, unsigned xGrid, unsigned dampingSteps, FdmSchemeDesc *fdScheme, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new FdBlackScholesShoutEngine(*arg(process), qlVector(dividends, dividendsLen), tGrid, xGrid, dampingSteps, *arg(fdScheme)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlFdHestonVanillaEngine2(QlHestonModel* model, QlFdmQuantoHelper* quantoHelper, unsigned tGrid, unsigned xGrid, unsigned vGrid, unsigned dampingSteps, FdmSchemeDesc *fdScheme, QlLocalVolTermStructure* leverageFct, double mixingFactor, char **e) {
-  try {return ret(new QlPricingEngine(alloc(new FdHestonVanillaEngine(*arg(model), quantoHelper ? *arg(quantoHelper) : shared_ptr<FdmQuantoHelper>(), tGrid, xGrid, vGrid, dampingSteps, *arg(fdScheme), leverageFct ? *arg(leverageFct) : shared_ptr<LocalVolTermStructure>(), mixingFactor))));
+QlPricingEngine* qlFdHestonVanillaEngine2(QlHestonModel* model, QlFdmQuantoHelper* quantoHelper, unsigned tGrid, unsigned xGrid, unsigned vGrid, unsigned dampingSteps, FdmSchemeDesc *fdScheme, QlLocalVolTermStructure* leverageFct, double mixingFactor, QlError **e) { QlCallScope callbackScope(e);
+  try {return ret(new QlPricingEngine(allocAs<PricingEngine>(new hasquant::CheckedFdEngine<FdHestonVanillaEngine>(*arg(model), quantoHelper ? *arg(quantoHelper) : shared_ptr<FdmQuantoHelper>(), tGrid, xGrid, vGrid, dampingSteps, *arg(fdScheme), leverageFct ? *arg(leverageFct) : shared_ptr<LocalVolTermStructure>(), mixingFactor))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlFdHestonVanillaEngine3(QlHestonModel* model, unsigned dividendsLen, QlDividend** dividends, QlFdmQuantoHelper* quantoHelper, unsigned tGrid, unsigned xGrid, unsigned vGrid, unsigned dampingSteps, FdmSchemeDesc *fdScheme, QlLocalVolTermStructure* leverageFct, double mixingFactor, char **e) {
-  try {return ret(new QlPricingEngine(alloc(new FdHestonVanillaEngine(*arg(model), qlVector(dividends, dividendsLen), quantoHelper ? *arg(quantoHelper) : shared_ptr<FdmQuantoHelper>(), tGrid, xGrid, vGrid, dampingSteps, *arg(fdScheme), leverageFct ? *arg(leverageFct) : shared_ptr<LocalVolTermStructure>(), mixingFactor))));
+QlPricingEngine* qlFdHestonVanillaEngine3(QlHestonModel* model, unsigned dividendsLen, QlDividend** dividends, QlFdmQuantoHelper* quantoHelper, unsigned tGrid, unsigned xGrid, unsigned vGrid, unsigned dampingSteps, FdmSchemeDesc *fdScheme, QlLocalVolTermStructure* leverageFct, double mixingFactor, QlError **e) { QlCallScope callbackScope(e);
+  try {return ret(new QlPricingEngine(allocAs<PricingEngine>(new hasquant::CheckedFdEngine<FdHestonVanillaEngine>(*arg(model), qlVector(dividends, dividendsLen), quantoHelper ? *arg(quantoHelper) : shared_ptr<FdmQuantoHelper>(), tGrid, xGrid, vGrid, dampingSteps, *arg(fdScheme), leverageFct ? *arg(leverageFct) : shared_ptr<LocalVolTermStructure>(), mixingFactor))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlFdHestonHullWhiteVanillaEngine(QlHestonModel* model, QlHullWhiteProcess* hwProcess, double corrEquityShortRate, unsigned tGrid, unsigned xGrid, unsigned vGrid, unsigned rGrid, unsigned dampingSteps, int controlVariate, FdmSchemeDesc *fdScheme, char **e) {
+QlPricingEngine* qlFdHestonHullWhiteVanillaEngine(QlHestonModel* model, QlHullWhiteProcess* hwProcess, double corrEquityShortRate, unsigned tGrid, unsigned xGrid, unsigned vGrid, unsigned rGrid, unsigned dampingSteps, int controlVariate, FdmSchemeDesc *fdScheme, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new FdHestonHullWhiteVanillaEngine(*arg(model), *arg(hwProcess), corrEquityShortRate, tGrid, xGrid, vGrid, rGrid, dampingSteps, controlVariate, *arg(fdScheme)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlFdHestonHullWhiteVanillaEngine1(QlHestonModel* model, QlHullWhiteProcess* hwProcess, unsigned dividendsLen, QlDividend** dividends, double corrEquityShortRate, unsigned tGrid, unsigned xGrid, unsigned vGrid, unsigned rGrid, unsigned dampingSteps, int controlVariate, FdmSchemeDesc *fdScheme, char **e) {
+QlPricingEngine* qlFdHestonHullWhiteVanillaEngine1(QlHestonModel* model, QlHullWhiteProcess* hwProcess, unsigned dividendsLen, QlDividend** dividends, double corrEquityShortRate, unsigned tGrid, unsigned xGrid, unsigned vGrid, unsigned rGrid, unsigned dampingSteps, int controlVariate, FdmSchemeDesc *fdScheme, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new FdHestonHullWhiteVanillaEngine(*arg(model), *arg(hwProcess), qlVector(dividends, dividendsLen), corrEquityShortRate, tGrid, xGrid, vGrid, rGrid, dampingSteps, controlVariate, *arg(fdScheme)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlBinomialConvertibleEngine(int tree, QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, QlQuote* creditSpread, unsigned dividendsLen, QlDividend** dividends, char **e) {
+QlPricingEngine* qlBinomialConvertibleEngine(int tree, QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, QlQuote* creditSpread, unsigned dividendsLen, QlDividend** dividends, QlError **e) { QlCallScope callbackScope(e);
   try {const Handle<Quote>& cs = *arg(creditSpread); DividendSchedule d = qlVector(dividends, dividendsLen);
     return ret(new QlPricingEngine(alloc(qlBinomialConvertibleEngineAux(tree, *arg(process), timeSteps, cs, d))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlBlackCallableFixedRateBondEngine1(QlCallableBondVolatilityStructure* yieldVolStructure, QlYieldTermStructure* discountCurve, char **e) {
+QlPricingEngine* qlBlackCallableFixedRateBondEngine1(QlCallableBondVolatilityStructure* yieldVolStructure, QlYieldTermStructure* discountCurve, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new BlackCallableFixedRateBondEngine(Handle<CallableBondVolatilityStructure>(*arg(yieldVolStructure)), *arg(discountCurve)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlBlackCallableFixedRateBondEngine(QlQuote* fwdYieldVol, QlYieldTermStructure* discountCurve, char **e) {
+QlPricingEngine* qlBlackCallableFixedRateBondEngine(QlQuote* fwdYieldVol, QlYieldTermStructure* discountCurve, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new BlackCallableFixedRateBondEngine(*arg(fwdYieldVol), *arg(discountCurve)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlBlackCallableZeroCouponBondEngine1(QlCallableBondVolatilityStructure* yieldVolStructure, QlYieldTermStructure* discountCurve, char **e) {
+QlPricingEngine* qlBlackCallableZeroCouponBondEngine1(QlCallableBondVolatilityStructure* yieldVolStructure, QlYieldTermStructure* discountCurve, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new BlackCallableZeroCouponBondEngine(Handle<CallableBondVolatilityStructure>(*arg(yieldVolStructure)), *arg(discountCurve)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlBlackCallableZeroCouponBondEngine(QlQuote* fwdYieldVol, QlYieldTermStructure* discountCurve, char **e) {
+QlPricingEngine* qlBlackCallableZeroCouponBondEngine(QlQuote* fwdYieldVol, QlYieldTermStructure* discountCurve, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new BlackCallableZeroCouponBondEngine(*arg(fwdYieldVol), *arg(discountCurve)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlTreeCallableFixedRateBondEngine1(QlShortRateModel* x0, TimeGrid* timeGrid, QlYieldTermStructure* termStructure, char **e) {
+QlPricingEngine* qlTreeCallableFixedRateBondEngine1(QlShortRateModel* x0, TimeGrid* timeGrid, QlYieldTermStructure* termStructure, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new TreeCallableFixedRateBondEngine(*arg(x0), *arg(timeGrid), qlNullableHandle(arg(termStructure))))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlTreeCallableFixedRateBondEngine(QlShortRateModel* x0, unsigned timeSteps, QlYieldTermStructure* termStructure, char **e) {
+QlPricingEngine* qlTreeCallableFixedRateBondEngine(QlShortRateModel* x0, unsigned timeSteps, QlYieldTermStructure* termStructure, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new TreeCallableFixedRateBondEngine(*arg(x0), timeSteps, qlNullableHandle(arg(termStructure))))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlTreeCallableZeroCouponBondEngine1(QlShortRateModel* model, TimeGrid* timeGrid, QlYieldTermStructure* termStructure, char **e) {
+QlPricingEngine* qlTreeCallableZeroCouponBondEngine1(QlShortRateModel* model, TimeGrid* timeGrid, QlYieldTermStructure* termStructure, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new TreeCallableZeroCouponBondEngine(*arg(model), *arg(timeGrid), qlNullableHandle(arg(termStructure))))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlTreeCallableZeroCouponBondEngine(QlShortRateModel* model, unsigned timeSteps, QlYieldTermStructure* termStructure, char **e) {
+QlPricingEngine* qlTreeCallableZeroCouponBondEngine(QlShortRateModel* model, unsigned timeSteps, QlYieldTermStructure* termStructure, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new TreeCallableZeroCouponBondEngine(*arg(model), timeSteps, qlNullableHandle(arg(termStructure))))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
 
-FdmSchemeDesc* qlFdmSchemeDesc(int type, double theta, double mu, char **e) {try {return alloc(new FdmSchemeDesc((FdmSchemeDesc::FdmSchemeType)type, theta, mu));} catch (std::exception& er) {return handleException<FdmSchemeDesc*>(e, er);}}
-FdmSchemeDesc* qlFdmSchemeDescCraigSneyd(char **e) {try {return alloc(new FdmSchemeDesc(FdmSchemeDesc::CraigSneyd()));} catch (std::exception& er) {return handleException<FdmSchemeDesc*>(e, er);}}
-FdmSchemeDesc* qlFdmSchemeDescDouglas(char **e) {try {return alloc(new FdmSchemeDesc(FdmSchemeDesc::Douglas()));} catch (std::exception& er) {return handleException<FdmSchemeDesc*>(e, er);}}
-FdmSchemeDesc* qlFdmSchemeDescExplicitEuler(char **e) {try {return alloc(new FdmSchemeDesc(FdmSchemeDesc::ExplicitEuler()));} catch (std::exception& er) {return handleException<FdmSchemeDesc*>(e, er);}}
-FdmSchemeDesc* qlFdmSchemeDescHundsdorfer(char **e) {try {return alloc(new FdmSchemeDesc(FdmSchemeDesc::Hundsdorfer()));} catch (std::exception& er) {return handleException<FdmSchemeDesc*>(e, er);}}
-FdmSchemeDesc* qlFdmSchemeDescImplicitEuler(char **e) {try {return alloc(new FdmSchemeDesc(FdmSchemeDesc::ImplicitEuler()));} catch (std::exception& er) {return handleException<FdmSchemeDesc*>(e, er);}}
-FdmSchemeDesc* qlFdmSchemeDescModifiedCraigSneyd(char **e) {try {return alloc(new FdmSchemeDesc(FdmSchemeDesc::ModifiedCraigSneyd()));} catch (std::exception& er) {return handleException<FdmSchemeDesc*>(e, er);}}
-FdmSchemeDesc* qlFdmSchemeDescModifiedHundsdorfer(char **e) {try {return alloc(new FdmSchemeDesc(FdmSchemeDesc::ModifiedHundsdorfer()));} catch (std::exception& er) {return handleException<FdmSchemeDesc*>(e, er);}}
-FdmSchemeDesc* qlFdmSchemeDescMethodOfLines(double eps, double relInitStepSize, char **e) {try {return alloc(new FdmSchemeDesc(FdmSchemeDesc::MethodOfLines(eps, relInitStepSize)));} catch (std::exception& er) {return handleException<FdmSchemeDesc*>(e, er);}}
+FdmSchemeDesc* qlFdmSchemeDesc(int type, double theta, double mu, QlError **e) { QlCallScope callbackScope(e);try {return alloc(new FdmSchemeDesc((FdmSchemeDesc::FdmSchemeType)type, theta, mu));} catch (std::exception& er) {return handleException<FdmSchemeDesc*>(e, er);}}
+FdmSchemeDesc* qlFdmSchemeDescCraigSneyd(QlError **e) { QlCallScope callbackScope(e);try {return alloc(new FdmSchemeDesc(FdmSchemeDesc::CraigSneyd()));} catch (std::exception& er) {return handleException<FdmSchemeDesc*>(e, er);}}
+FdmSchemeDesc* qlFdmSchemeDescDouglas(QlError **e) { QlCallScope callbackScope(e);try {return alloc(new FdmSchemeDesc(FdmSchemeDesc::Douglas()));} catch (std::exception& er) {return handleException<FdmSchemeDesc*>(e, er);}}
+FdmSchemeDesc* qlFdmSchemeDescExplicitEuler(QlError **e) { QlCallScope callbackScope(e);try {return alloc(new FdmSchemeDesc(FdmSchemeDesc::ExplicitEuler()));} catch (std::exception& er) {return handleException<FdmSchemeDesc*>(e, er);}}
+FdmSchemeDesc* qlFdmSchemeDescHundsdorfer(QlError **e) { QlCallScope callbackScope(e);try {return alloc(new FdmSchemeDesc(FdmSchemeDesc::Hundsdorfer()));} catch (std::exception& er) {return handleException<FdmSchemeDesc*>(e, er);}}
+FdmSchemeDesc* qlFdmSchemeDescImplicitEuler(QlError **e) { QlCallScope callbackScope(e);try {return alloc(new FdmSchemeDesc(FdmSchemeDesc::ImplicitEuler()));} catch (std::exception& er) {return handleException<FdmSchemeDesc*>(e, er);}}
+FdmSchemeDesc* qlFdmSchemeDescModifiedCraigSneyd(QlError **e) { QlCallScope callbackScope(e);try {return alloc(new FdmSchemeDesc(FdmSchemeDesc::ModifiedCraigSneyd()));} catch (std::exception& er) {return handleException<FdmSchemeDesc*>(e, er);}}
+FdmSchemeDesc* qlFdmSchemeDescModifiedHundsdorfer(QlError **e) { QlCallScope callbackScope(e);try {return alloc(new FdmSchemeDesc(FdmSchemeDesc::ModifiedHundsdorfer()));} catch (std::exception& er) {return handleException<FdmSchemeDesc*>(e, er);}}
+FdmSchemeDesc* qlFdmSchemeDescMethodOfLines(double eps, double relInitStepSize, QlError **e) { QlCallScope callbackScope(e);try {return alloc(new FdmSchemeDesc(FdmSchemeDesc::MethodOfLines(eps, relInitStepSize)));} catch (std::exception& er) {return handleException<FdmSchemeDesc*>(e, er);}}
 void qlFreeFdmSchemeDesc(FdmSchemeDesc *o) {del(o);}
 
 // Drives FdmBackwardSolver::rollback with a Haskell-defined operator/step condition instead of a
@@ -1034,18 +1032,18 @@ void qlFreeFdmSchemeDesc(FdmSchemeDesc *o) {del(o);}
 // FdmBoundaryConditionSet(); boundary conditions are not bound. A null stepCondFn means no step
 // condition at all (matches FdmBackwardSolver's own null-condition default, an empty
 // FdmStepConditionComposite({}, {})).
-void qlFdmRollback(unsigned opSize, FdmCallbackFun applyFn, FdmCallbackFun applyDirFn, FdmCallbackFun solveSplitFn,
-                    FdmCallbackFun stepCondFn, unsigned stoppingTimesLen, double* stoppingTimes,
+void qlFdmRollback(unsigned opSize, QlCallback* applyFn, QlCallback* applyDirFn, QlCallback* solveSplitFn,
+                    QlCallback* stepCondFn, unsigned stoppingTimesLen, double* stoppingTimes,
                     FdmSchemeDesc* schemeDesc,
                     unsigned gridLen, double* grid,
                     double from, double to, unsigned steps, unsigned dampingSteps,
-                    unsigned* outLen, double** outValues, char **e) {
+                    unsigned* outLen, double** outValues, QlError **e) { QlCallScope callbackScope(e);
   try {fillVectorOut([&] {
-    ext::shared_ptr<FdmLinearOpComposite> map(alloc(new HsFdmLinearOpComposite(opSize, applyFn, applyDirFn, solveSplitFn)));
+    ext::shared_ptr<FdmLinearOpComposite> map(alloc(new HsFdmLinearOpComposite(opSize, *arg(applyFn), *arg(applyDirFn), *arg(solveSplitFn))));
     FdmStepConditionComposite::Conditions conditions;
     std::list<std::vector<Time> > stoppingTimesList;
     if (stepCondFn) {
-      conditions.push_back(ext::shared_ptr<StepCondition<Array> >(alloc(new HsFdmStepCondition(stepCondFn))));
+      conditions.push_back(ext::shared_ptr<StepCondition<Array> >(alloc(new HsFdmStepCondition(*arg(stepCondFn)))));
       stoppingTimesList.push_back(std::vector<Time>(stoppingTimes, stoppingTimes + stoppingTimesLen));
     }
     ext::shared_ptr<FdmStepConditionComposite> condition(alloc(new FdmStepConditionComposite(stoppingTimesList, conditions)));
@@ -1054,73 +1052,73 @@ void qlFdmRollback(unsigned opSize, FdmCallbackFun applyFn, FdmCallbackFun apply
     solver.rollback(a, from, to, steps, dampingSteps);
     return a;
   }, outLen, outValues);
-  } catch (std::exception& er) {*e = tracedup(er.what());}}
+  } catch (std::exception& er) {qlSetError(e, er.what());}}
 
 void qlFreeFdm1dMesher(QlFdm1dMesher *o) {del(o);}
 void qlFreeFdmMesher(QlFdmMesher *o) {del(o);}
 
-QlFdm1dMesher* qlPredefined1dMesher(unsigned len, double* points, char **e) {
+QlFdm1dMesher* qlPredefined1dMesher(unsigned len, double* points, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlFdm1dMesher(alloc(new Predefined1dMesher(std::vector<Real>(points, points + len)))));
   } catch (std::exception& er) {return handleException<QlFdm1dMesher*>(e, er);}}
-QlFdm1dMesher* qlUniform1dMesher(double start, double end, unsigned size, char **e) {
+QlFdm1dMesher* qlUniform1dMesher(double start, double end, unsigned size, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlFdm1dMesher(alloc(new Uniform1dMesher(start, end, size))));
   } catch (std::exception& er) {return handleException<QlFdm1dMesher*>(e, er);}}
-QlFdm1dMesher* qlConcentrating1dMesher(double start, double end, unsigned size, double cPointLoc, double cPointDensity, int requireCPoint, char **e) {
+QlFdm1dMesher* qlConcentrating1dMesher(double start, double end, unsigned size, double cPointLoc, double cPointDensity, int requireCPoint, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlFdm1dMesher(alloc(new Concentrating1dMesher(start, end, size, std::pair<Real, Real>(cPointLoc, cPointDensity), requireCPoint))));
   } catch (std::exception& er) {return handleException<QlFdm1dMesher*>(e, er);}}
-QlFdm1dMesher* qlConcentrating1dMesherMulti(double start, double end, unsigned size, unsigned cPointsLen, double* cPointLoc, double* cPointDensity, int* cPointRequire, double tol, char **e) {
+QlFdm1dMesher* qlConcentrating1dMesherMulti(double start, double end, unsigned size, unsigned cPointsLen, double* cPointLoc, double* cPointDensity, int* cPointRequire, double tol, QlError **e) { QlCallScope callbackScope(e);
   try {std::vector<std::tuple<Real, Real, bool> > cPoints;
     cPoints.reserve(cPointsLen);
     for (unsigned i = 0; i < cPointsLen; ++i)
       cPoints.push_back(std::make_tuple(cPointLoc[i], cPointDensity[i], cPointRequire[i] != 0));
     return ret(new QlFdm1dMesher(alloc(new Concentrating1dMesher(start, end, size, cPoints, tol))));
   } catch (std::exception& er) {return handleException<QlFdm1dMesher*>(e, er);}}
-QlFdm1dMesher* qlGluedMesher(QlFdm1dMesher* left, QlFdm1dMesher* right, char **e) {
+QlFdm1dMesher* qlGluedMesher(QlFdm1dMesher* left, QlFdm1dMesher* right, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlFdm1dMesher(alloc(new Glued1dMesher(**arg(left), **arg(right)))));
   } catch (std::exception& er) {return handleException<QlFdm1dMesher*>(e, er);}}
 QlFdm1dMesher* qlFdmBlackScholesMesher(unsigned size, QlGeneralizedBlackScholesProcess* process, double maturity, double strike,
     double xMinConstraint, double xMaxConstraint, double eps, double scaleFactor, double cPointLoc, double cPointDensity,
-    unsigned dividendsLen, QlDividend** dividends, QlFdmQuantoHelper* fdmQuantoHelper, double spotAdjustment, char **e) {
+    unsigned dividendsLen, QlDividend** dividends, QlFdmQuantoHelper* fdmQuantoHelper, double spotAdjustment, QlError **e) { QlCallScope callbackScope(e);
   try {DividendSchedule d = qlVector(dividends, dividendsLen);
     return ret(new QlFdm1dMesher(alloc(new FdmBlackScholesMesher(size, *arg(process), maturity, strike,
       xMinConstraint, xMaxConstraint, eps, scaleFactor, std::pair<Real, Real>(cPointLoc, cPointDensity), d,
       fdmQuantoHelper ? *arg(fdmQuantoHelper) : shared_ptr<FdmQuantoHelper>(), spotAdjustment))));
   } catch (std::exception& er) {return handleException<QlFdm1dMesher*>(e, er);}}
-QlFdm1dMesher* qlFdmCev1dMesher(unsigned size, double f0, double alpha, double beta, double maturity, double eps, double scaleFactor, double cPointLoc, double cPointDensity, char **e) {
+QlFdm1dMesher* qlFdmCev1dMesher(unsigned size, double f0, double alpha, double beta, double maturity, double eps, double scaleFactor, double cPointLoc, double cPointDensity, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlFdm1dMesher(alloc(new FdmCEV1dMesher(size, f0, alpha, beta, maturity, eps, scaleFactor, std::pair<Real, Real>(cPointLoc, cPointDensity)))));
   } catch (std::exception& er) {return handleException<QlFdm1dMesher*>(e, er);}}
-QlFdm1dMesher* qlExponentialJump1dMesher(unsigned steps, double beta, double jumpIntensity, double eta, double eps, char **e) {
+QlFdm1dMesher* qlExponentialJump1dMesher(unsigned steps, double beta, double jumpIntensity, double eta, double eps, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlFdm1dMesher(alloc(new ExponentialJump1dMesher(steps, beta, jumpIntensity, eta, eps))));
   } catch (std::exception& er) {return handleException<QlFdm1dMesher*>(e, er);}}
-QlFdm1dMesher* qlFdmSimpleProcess1dMesher(unsigned size, QlStochasticProcess1D* process, double maturity, unsigned tAvgSteps, double epsilon, double mandatoryPoint, char **e) {
+QlFdm1dMesher* qlFdmSimpleProcess1dMesher(unsigned size, QlStochasticProcess1D* process, double maturity, unsigned tAvgSteps, double epsilon, double mandatoryPoint, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlFdm1dMesher(alloc(new FdmSimpleProcess1dMesher(size, *arg(process), maturity, tAvgSteps, epsilon, mandatoryPoint))));
   } catch (std::exception& er) {return handleException<QlFdm1dMesher*>(e, er);}}
-QlFdm1dMesher* qlFdmHestonVarianceMesher(unsigned size, QlHestonProcess* process, double maturity, unsigned tAvgSteps, double epsilon, double mixingFactor, char **e) {
+QlFdm1dMesher* qlFdmHestonVarianceMesher(unsigned size, QlHestonProcess* process, double maturity, unsigned tAvgSteps, double epsilon, double mixingFactor, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlFdm1dMesher(alloc(new FdmHestonVarianceMesher(size, *arg(process), maturity, tAvgSteps, epsilon, mixingFactor))));
   } catch (std::exception& er) {return handleException<QlFdm1dMesher*>(e, er);}}
-QlFdm1dMesher* qlFdmHestonLocalVolatilityVarianceMesher(unsigned size, QlHestonProcess* process, QlLocalVolTermStructure* leverageFct, double maturity, unsigned tAvgSteps, double epsilon, double mixingFactor, char **e) {
+QlFdm1dMesher* qlFdmHestonLocalVolatilityVarianceMesher(unsigned size, QlHestonProcess* process, QlLocalVolTermStructure* leverageFct, double maturity, unsigned tAvgSteps, double epsilon, double mixingFactor, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlFdm1dMesher(alloc(new FdmHestonLocalVolatilityVarianceMesher(size, *arg(process), *arg(leverageFct), maturity, tAvgSteps, epsilon, mixingFactor))));
   } catch (std::exception& er) {return handleException<QlFdm1dMesher*>(e, er);}}
-QlFdmMesher* qlFdmMesherComposite(unsigned meshersLen, QlFdm1dMesher** meshers, char **e) {
+QlFdmMesher* qlFdmMesherComposite(unsigned meshersLen, QlFdm1dMesher** meshers, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlFdmMesher(alloc(new FdmMesherComposite(qlVector(meshers, meshersLen)))));
   } catch (std::exception& er) {return handleException<QlFdmMesher*>(e, er);}}
-void qlFdmMesherLocations(QlFdmMesher* mesher, unsigned direction, unsigned* outLen, double** outValues, char **e) {
+void qlFdmMesherLocations(QlFdmMesher* mesher, unsigned direction, unsigned* outLen, double** outValues, QlError **e) { QlCallScope callbackScope(e);
   try {fillVectorOut([&] {return (*arg(mesher))->locations(direction);}, outLen, outValues);
-  } catch (std::exception& er) {*e = tracedup(er.what());}}
+  } catch (std::exception& er) {qlSetError(e, er.what());}}
 
 void qlFreeFdmInnerValueCalculator(QlFdmInnerValueCalculator *o) {del(o);}
 
 // Give Haskell-defined inner-value callbacks a reusable QlFdmInnerValueCalculator lifetime.
-QlFdmInnerValueCalculator* qlFdmInnerValueCalculatorFromFunctions(QlFdmMesher* mesher, FdmInnerValueFun innerValueFn, FdmInnerValueFun avgInnerValueFn, char **e) {
-  try {return ret(new QlFdmInnerValueCalculator(alloc(new HsFdmInnerValueCalculator(*arg(mesher), innerValueFn, avgInnerValueFn))));
+QlFdmInnerValueCalculator* qlFdmInnerValueCalculatorFromFunctions(QlFdmMesher* mesher, QlCallback* innerValueFn, QlCallback* avgInnerValueFn, QlError **e) { QlCallScope callbackScope(e);
+  try {return ret(new QlFdmInnerValueCalculator(alloc(new HsFdmInnerValueCalculator(*arg(mesher), *arg(innerValueFn), *arg(avgInnerValueFn)))));
   } catch (std::exception& er) {return handleException<QlFdmInnerValueCalculator*>(e, er);}}
 
-double qlFdmInnerValueCalculatorEval(QlFdmInnerValueCalculator* calc, QlFdmMesher* mesher, unsigned ndims, unsigned* coords, double t, char **e) {
+double qlFdmInnerValueCalculatorEval(QlFdmInnerValueCalculator* calc, QlFdmMesher* mesher, unsigned ndims, unsigned* coords, double t, QlError **e) { QlCallScope callbackScope(e);
   try {return (*arg(calc))->innerValue(fdmIteratorAt(mesher, ndims, coords), t);
-  } catch (std::exception& er) {*e = tracedup(er.what()); return 0.0;}}
-double qlFdmInnerValueCalculatorAvgEval(QlFdmInnerValueCalculator* calc, QlFdmMesher* mesher, unsigned ndims, unsigned* coords, double t, char **e) {
+  } catch (std::exception& er) {qlSetError(e, er.what()); return 0.0;}}
+double qlFdmInnerValueCalculatorAvgEval(QlFdmInnerValueCalculator* calc, QlFdmMesher* mesher, unsigned ndims, unsigned* coords, double t, QlError **e) { QlCallScope callbackScope(e);
   try {return (*arg(calc))->avgInnerValue(fdmIteratorAt(mesher, ndims, coords), t);
-  } catch (std::exception& er) {*e = tracedup(er.what()); return 0.0;}}
+  } catch (std::exception& er) {qlSetError(e, er.what()); return 0.0;}}
 
 // Sibling of qlFdmRollback that derives its own initial grid from a mesher + a (native or
 // Haskell-callback-driven) FdmInnerValueCalculator (calc->avgInnerValue(iter, maturity) per node)
@@ -1130,11 +1128,11 @@ double qlFdmInnerValueCalculatorAvgEval(QlFdmInnerValueCalculator* calc, QlFdmMe
 // are not bound; a caller wanting interpolation combines this function's result with
 // qlFdmMesherLocations itself.
 void qlFdmSolve(QlFdmMesher* mesher, QlFdmInnerValueCalculator* calculator,
-                unsigned opSize, FdmCallbackFun applyFn, FdmCallbackFun applyDirFn, FdmCallbackFun solveSplitFn,
-                FdmCallbackFun stepCondFn, unsigned stoppingTimesLen, double* stoppingTimes,
+                unsigned opSize, QlCallback* applyFn, QlCallback* applyDirFn, QlCallback* solveSplitFn,
+                QlCallback* stepCondFn, unsigned stoppingTimesLen, double* stoppingTimes,
                 FdmSchemeDesc* schemeDesc,
                 double maturity, double to, unsigned steps, unsigned dampingSteps,
-                unsigned* outLen, double** outValues, char **e) {
+                unsigned* outLen, double** outValues, QlError **e) { QlCallScope callbackScope(e);
   try {fillVectorOut([&] {
     shared_ptr<FdmMesher> m = *arg(mesher);
     shared_ptr<FdmInnerValueCalculator> calc = *arg(calculator);
@@ -1142,11 +1140,11 @@ void qlFdmSolve(QlFdmMesher* mesher, QlFdmInnerValueCalculator* calculator,
     for (const auto& iter : *m->layout())
       a[iter.index()] = calc->avgInnerValue(iter, maturity);
 
-    ext::shared_ptr<FdmLinearOpComposite> map(alloc(new HsFdmLinearOpComposite(opSize, applyFn, applyDirFn, solveSplitFn)));
+    ext::shared_ptr<FdmLinearOpComposite> map(alloc(new HsFdmLinearOpComposite(opSize, *arg(applyFn), *arg(applyDirFn), *arg(solveSplitFn))));
     FdmStepConditionComposite::Conditions conditions;
     std::list<std::vector<Time> > stoppingTimesList;
     if (stepCondFn) {
-      conditions.push_back(ext::shared_ptr<StepCondition<Array> >(alloc(new HsFdmStepCondition(stepCondFn))));
+      conditions.push_back(ext::shared_ptr<StepCondition<Array> >(alloc(new HsFdmStepCondition(*arg(stepCondFn)))));
       stoppingTimesList.push_back(std::vector<Time>(stoppingTimes, stoppingTimes + stoppingTimesLen));
     }
     ext::shared_ptr<FdmStepConditionComposite> condition(alloc(new FdmStepConditionComposite(stoppingTimesList, conditions)));
@@ -1154,14 +1152,14 @@ void qlFdmSolve(QlFdmMesher* mesher, QlFdmInnerValueCalculator* calculator,
     solver.rollback(a, maturity, to, steps, dampingSteps);
     return a;
   }, outLen, outValues);
-  } catch (std::exception& er) {*e = tracedup(er.what());}}
+  } catch (std::exception& er) {qlSetError(e, er.what());}}
 
 // Native inner-value calculators avoid per-node Haskell callbacks and return the shared base type.
-QlFdmInnerValueCalculator* qlFdmZeroInnerValue(char **e) {
+QlFdmInnerValueCalculator* qlFdmZeroInnerValue(QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlFdmInnerValueCalculator(alloc(new FdmZeroInnerValue())));
   } catch (std::exception& er) {return handleException<QlFdmInnerValueCalculator*>(e, er);}}
 
-QlFdmInnerValueCalculator* qlFdmCellAveragingInnerValue(QlPayoff* payoff, QlFdmMesher* mesher, unsigned direction, char **e) {
+QlFdmInnerValueCalculator* qlFdmCellAveragingInnerValue(QlPayoff* payoff, QlFdmMesher* mesher, unsigned direction, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlFdmInnerValueCalculator(alloc(new FdmCellAveragingInnerValue(*arg(payoff), *arg(mesher), direction))));
   } catch (std::exception& er) {return handleException<QlFdmInnerValueCalculator*>(e, er);}}
 
@@ -1170,55 +1168,54 @@ QlFdmInnerValueCalculator* qlFdmCellAveragingInnerValue(QlPayoff* payoff, QlFdmM
 // see QuantLib.Method.withCustomCellAveragingInnerValue's haddock for why its Haskell wrapper must
 // be continuation-style, same reasoning as qlFdmInnerValueCalculatorFromFunctions/
 // withCustomFdmInnerValueCalculator.
-using FdmGridMappingFun = double (*)(double x);
-QlFdmInnerValueCalculator* qlFdmCellAveragingInnerValueMapped(QlPayoff* payoff, QlFdmMesher* mesher, unsigned direction, FdmGridMappingFun mappingFn, char **e) {
+QlFdmInnerValueCalculator* qlFdmCellAveragingInnerValueMapped(QlPayoff* payoff, QlFdmMesher* mesher, unsigned direction, QlCallback* mappingFn, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlFdmInnerValueCalculator(alloc(new FdmCellAveragingInnerValue(*arg(payoff), *arg(mesher), direction,
-    [mappingFn](Real x) -> Real { return mappingFn(x); }))));
+    hasquant::UnaryCallback{*arg(mappingFn)}))));
   } catch (std::exception& er) {return handleException<QlFdmInnerValueCalculator*>(e, er);}}
 
-QlFdmInnerValueCalculator* qlFdmLogInnerValue(QlPayoff* payoff, QlFdmMesher* mesher, unsigned direction, char **e) {
+QlFdmInnerValueCalculator* qlFdmLogInnerValue(QlPayoff* payoff, QlFdmMesher* mesher, unsigned direction, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlFdmInnerValueCalculator(alloc(new FdmLogInnerValue(*arg(payoff), *arg(mesher), direction))));
   } catch (std::exception& er) {return handleException<QlFdmInnerValueCalculator*>(e, er);}}
 
-QlFdmInnerValueCalculator* qlFdmLogBasketInnerValue(QlBasketPayoff* payoff, QlFdmMesher* mesher, char **e) {
+QlFdmInnerValueCalculator* qlFdmLogBasketInnerValue(QlBasketPayoff* payoff, QlFdmMesher* mesher, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlFdmInnerValueCalculator(alloc(new FdmLogBasketInnerValue(*arg(payoff), *arg(mesher)))));
   } catch (std::exception& er) {return handleException<QlFdmInnerValueCalculator*>(e, er);}}
 
 QlFdmInnerValueCalculator* qlFdmAffineG2ModelSwapInnerValue(QlG2* disModel, QlG2* fwdModel, QlFixedVsFloatingSwap* swap,
-    unsigned exDatesLen, double* exerciseTimes, int* exerciseDates, QlFdmMesher* mesher, unsigned direction, char **e) {
+    unsigned exDatesLen, double* exerciseTimes, int* exerciseDates, QlFdmMesher* mesher, unsigned direction, QlError **e) { QlCallScope callbackScope(e);
   return fdmAffineModelSwapInnerValue<G2>(disModel, fwdModel, swap, exDatesLen, exerciseTimes, exerciseDates, mesher, direction, e);
 }
 QlFdmInnerValueCalculator* qlFdmAffineHullWhiteModelSwapInnerValue(QlHullWhite* disModel, QlHullWhite* fwdModel, QlFixedVsFloatingSwap* swap,
-    unsigned exDatesLen, double* exerciseTimes, int* exerciseDates, QlFdmMesher* mesher, unsigned direction, char **e) {
+    unsigned exDatesLen, double* exerciseTimes, int* exerciseDates, QlFdmMesher* mesher, unsigned direction, QlError **e) { QlCallScope callbackScope(e);
   return fdmAffineModelSwapInnerValue<HullWhite>(disModel, fwdModel, swap, exDatesLen, exerciseTimes, exerciseDates, mesher, direction, e);
 }
 
 void qlFreeFdmQuantoHelper(QlFdmQuantoHelper *o) {del(o);}
-QlFdmQuantoHelper* qlFdmQuantoHelper(QlYieldTermStructure* rTS, QlYieldTermStructure* fTS, QlBlackVolTermStructure* fxVolTS, double equityFxCorrelation, double exchRateATMlevel, char **e) {
+QlFdmQuantoHelper* qlFdmQuantoHelper(QlYieldTermStructure* rTS, QlYieldTermStructure* fTS, QlBlackVolTermStructure* fxVolTS, double equityFxCorrelation, double exchRateATMlevel, QlError **e) { QlCallScope callbackScope(e);
   try {shared_ptr<YieldTermStructure> r = (*arg(rTS)).currentLink(), f = (*arg(fTS)).currentLink();
     shared_ptr<BlackVolTermStructure> fxVol = (*arg(fxVolTS)).currentLink();
     return ret(new QlFdmQuantoHelper(alloc(new FdmQuantoHelper(r, f, fxVol, equityFxCorrelation, exchRateATMlevel))));
   } catch (std::exception& er) {return handleException<QlFdmQuantoHelper*>(e, er);}}
-double qlFdmQuantoHelperQuantoAdjustment(QlFdmQuantoHelper* helper, double equityVol, double t1, double t2, char **e) {
+double qlFdmQuantoHelperQuantoAdjustment(QlFdmQuantoHelper* helper, double equityVol, double t1, double t2, QlError **e) { QlCallScope callbackScope(e);
   try {return (*arg(helper))->quantoAdjustment(equityVol, t1, t2);
   } catch (std::exception& er) {return handleException<double>(e, er);}}
 void qlFreeGJRGARCHModel(QlGJRGARCHModel *o) {del(o);}
 void qlFreeHestonModel(QlHestonModel *o) {del(o);}
 void qlFreeBrownianGeneratorFactory(QlBrownianGeneratorFactory *o) {del(o);}
-QlBrownianGeneratorFactory* qlMTBrownianGeneratorFactory(unsigned long seed, char **e) {
+QlBrownianGeneratorFactory* qlMTBrownianGeneratorFactory(unsigned long seed, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlBrownianGeneratorFactory(alloc(new MTBrownianGeneratorFactory(seed))));
   } catch (std::exception& er) {return handleException<QlBrownianGeneratorFactory*>(e, er);}}
-QlBrownianGeneratorFactory* qlSobolBrownianGeneratorFactory(int ordering, unsigned long seed, int directionIntegers, char **e) {
+QlBrownianGeneratorFactory* qlSobolBrownianGeneratorFactory(int ordering, unsigned long seed, int directionIntegers, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlBrownianGeneratorFactory(alloc(new SobolBrownianGeneratorFactory(
     (SobolBrownianGenerator::Ordering)ordering, seed, (SobolRsg::DirectionIntegers)directionIntegers))));
   } catch (std::exception& er) {return handleException<QlBrownianGeneratorFactory*>(e, er);}}
 void qlFreeHestonSLVMCModel(QlHestonSLVMCModel *o) {del(o);}
-QlHestonSLVMCModel* qlHestonSLVMCModel(QlLocalVolTermStructure* localVol, QlHestonModel* hestonModel, QlBrownianGeneratorFactory* factory, int endDate, unsigned timeStepsPerYear, unsigned nBins, unsigned calibrationPaths, unsigned mandatoryDatesLen, int* mandatoryDates, double mixingFactor, char **e) {
+QlHestonSLVMCModel* qlHestonSLVMCModel(QlLocalVolTermStructure* localVol, QlHestonModel* hestonModel, QlBrownianGeneratorFactory* factory, int endDate, unsigned timeStepsPerYear, unsigned nBins, unsigned calibrationPaths, unsigned mandatoryDatesLen, int* mandatoryDates, double mixingFactor, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlHestonSLVMCModel(alloc(new HestonSLVMCModel(
     Handle<LocalVolTermStructure>(*arg(localVol)), Handle<HestonModel>(*arg(hestonModel)), *arg(factory),
     Date(endDate), timeStepsPerYear, nBins, calibrationPaths, qlDateVector(mandatoryDates, mandatoryDatesLen), mixingFactor))));
   } catch (std::exception& er) {return handleException<QlHestonSLVMCModel*>(e, er);}}
-QlLocalVolTermStructure* qlHestonSLVMCModelLeverageFunction(QlHestonSLVMCModel* o, char **e) {
+QlLocalVolTermStructure* qlHestonSLVMCModelLeverageFunction(QlHestonSLVMCModel* o, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlLocalVolTermStructure((*arg(o))->leverageFunction()));
   } catch (std::exception& er) {return handleException<QlLocalVolTermStructure*>(e, er);}}
 void qlFreeHestonSLVFDMModel(QlHestonSLVFDMModel *o) {del(o);}
@@ -1228,7 +1225,7 @@ QlHestonSLVFDMModel* qlHestonSLVFDMModel(QlLocalVolTermStructure* localVol, QlHe
     unsigned maxIntegrationIterations, double vLowerEps, double vUpperEps, double vMin, double v0Density,
     double vLowerBoundDensity, double vUpperBoundDensity, double leverageFctPropEps, int greensAlgorithm,
     int trafoType, FdmSchemeDesc* schemeDesc, int logging, unsigned mandatoryDatesLen, int* mandatoryDates,
-    double mixingFactor, char **e) {
+    double mixingFactor, QlError **e) { QlCallScope callbackScope(e);
   try {
     HestonSLVFokkerPlanckFdmParams p = {xGrid, vGrid, tMaxStepsPerYear, tMinStepsPerYear, tStepNumberDecay,
       nRannacherTimeSteps, predictionCorretionSteps, x0Density, localVolEpsProb, maxIntegrationIterations,
@@ -1239,10 +1236,10 @@ QlHestonSLVFDMModel* qlHestonSLVFDMModel(QlLocalVolTermStructure* localVol, QlHe
       Handle<LocalVolTermStructure>(*arg(localVol)), Handle<HestonModel>(*arg(hestonModel)), Date(endDate), p,
       logging, qlDateVector(mandatoryDates, mandatoryDatesLen), mixingFactor))));
   } catch (std::exception& er) {return handleException<QlHestonSLVFDMModel*>(e, er);}}
-QlLocalVolTermStructure* qlHestonSLVFDMModelLeverageFunction(QlHestonSLVFDMModel* o, char **e) {
+QlLocalVolTermStructure* qlHestonSLVFDMModelLeverageFunction(QlHestonSLVFDMModel* o, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlLocalVolTermStructure((*arg(o))->leverageFunction()));
   } catch (std::exception& er) {return handleException<QlLocalVolTermStructure*>(e, er);}}
-HestonSLVFDMLogEntries* qlHestonSLVFDMModelLogEntries(QlHestonSLVFDMModel* o, char **e) {
+HestonSLVFDMLogEntries* qlHestonSLVFDMModelLogEntries(QlHestonSLVFDMModel* o, QlError **e) { QlCallScope callbackScope(e);
   try {
     std::unique_ptr<HestonSLVFDMLogEntries> out(new HestonSLVFDMLogEntries);
     const std::list<HestonSLVFDMModel::LogEntry>& entries = (*arg(o))->logEntries();
@@ -1260,16 +1257,16 @@ HestonSLVFDMLogEntries* qlHestonSLVFDMModelLogEntries(QlHestonSLVFDMModel* o, ch
   } catch (std::exception& er) {return handleException<HestonSLVFDMLogEntries*>(e, er);}}
 void qlFreeHestonSLVFDMLogEntries(HestonSLVFDMLogEntries* o) {del(o);}
 unsigned qlHestonSLVFDMLogEntriesSize(HestonSLVFDMLogEntries* o) {return (unsigned)o->entries.size();}
-double qlHestonSLVFDMLogEntriesTime(HestonSLVFDMLogEntries* o, unsigned i, char **e) {
+double qlHestonSLVFDMLogEntriesTime(HestonSLVFDMLogEntries* o, unsigned i, QlError **e) { QlCallScope callbackScope(e);
   try {return o->entries.at(i).time;
   } catch (std::exception& er) {return handleException<double>(e, er);}}
-void qlHestonSLVFDMLogEntriesSpotGrid(HestonSLVFDMLogEntries* o, unsigned i, unsigned* len, double** values, char **e) {
+void qlHestonSLVFDMLogEntriesSpotGrid(HestonSLVFDMLogEntries* o, unsigned i, unsigned* len, double** values, QlError **e) { QlCallScope callbackScope(e);
   try {fillVectorOut([&] {return o->entries.at(i).spotGrid;}, len, values);
-  } catch (std::exception& er) {*e = tracedup(er.what());}}
-void qlHestonSLVFDMLogEntriesVarianceGrid(HestonSLVFDMLogEntries* o, unsigned i, unsigned* len, double** values, char **e) {
+  } catch (std::exception& er) {qlSetError(e, er.what());}}
+void qlHestonSLVFDMLogEntriesVarianceGrid(HestonSLVFDMLogEntries* o, unsigned i, unsigned* len, double** values, QlError **e) { QlCallScope callbackScope(e);
   try {fillVectorOut([&] {return o->entries.at(i).varianceGrid;}, len, values);
-  } catch (std::exception& er) {*e = tracedup(er.what());}}
-void qlHestonSLVFDMLogEntriesDensity(HestonSLVFDMLogEntries* o, unsigned i, unsigned* rows, unsigned* cols, unsigned* len, double** values, char **e) {
+  } catch (std::exception& er) {qlSetError(e, er.what());}}
+void qlHestonSLVFDMLogEntriesDensity(HestonSLVFDMLogEntries* o, unsigned i, unsigned* rows, unsigned* cols, unsigned* len, double** values, QlError **e) { QlCallScope callbackScope(e);
   OutValue<unsigned> rowResult(rows), colResult(cols);
   OutArrayResult<double> result(len, values);
   try {
@@ -1279,24 +1276,24 @@ void qlHestonSLVFDMLogEntriesDensity(HestonSLVFDMLogEntries* o, unsigned i, unsi
     rowResult.set((unsigned)entry.varianceGrid.size());
     colResult.set((unsigned)entry.spotGrid.size());
     result.commit(); rowResult.commit(); colResult.commit();
-  } catch (std::exception& er) {*e = tracedup(er.what());}}
+  } catch (std::exception& er) {qlSetError(e, er.what());}}
 void qlFreeBatesModel(QlBatesModel *o) {del(o);}
 void qlFreePiecewiseTimeDependentHestonModel(QlPiecewiseTimeDependentHestonModel *o) {del(o);}
 void qlFreeShortRateModel(QlShortRateModel *o) {del(o);}
 void qlFreeAffineModel(QlAffineModel *o) {del(o);}
-double qlAffineModelDiscount(QlAffineModel* o, double t, char **e) {
+double qlAffineModelDiscount(QlAffineModel* o, double t, QlError **e) { QlCallScope callbackScope(e);
   try {return (*arg(o))->discount(t);
   } catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlAffineModelDiscountBond(QlAffineModel* o, double now, double maturity, unsigned factorsLen, double* factors, char **e) {
+double qlAffineModelDiscountBond(QlAffineModel* o, double now, double maturity, unsigned factorsLen, double* factors, QlError **e) { QlCallScope callbackScope(e);
   try {return (*arg(o))->discountBond(now, maturity, Array(factors, factors+factorsLen));
   } catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlAffineModelDiscountBondOption(QlAffineModel* o, int type, double strike, double maturity, int haveBondStart, double bondStart, double bondMaturity, char **e) {
+double qlAffineModelDiscountBondOption(QlAffineModel* o, int type, double strike, double maturity, int haveBondStart, double bondStart, double bondMaturity, QlError **e) { QlCallScope callbackScope(e);
   try {return haveBondStart
     ? (*arg(o))->discountBondOption((Option::Type)type, strike, maturity, bondStart, bondMaturity)
     : (*arg(o))->discountBondOption((Option::Type)type, strike, maturity, bondMaturity);
   } catch (std::exception& er) {return handleException<double>(e, er);}}
 void qlFreeOneFactorAffineModel(QlOneFactorAffineModel *o) {del(o);}
-double qlHullWhiteConvexityBias(double futurePrice, double t, double T, double sigma, double a, char **e) {
+double qlHullWhiteConvexityBias(double futurePrice, double t, double T, double sigma, double a, QlError **e) { QlCallScope callbackScope(e);
   try {return HullWhite::convexityBias(futurePrice, t, T, sigma, a);
   } catch (std::exception& er) {return handleException<double>(e, er);}}
 QlAffineModel* qlOneFactorAffineModelAsAffineModel(QlOneFactorAffineModel *o) {return ret(new QlAffineModel(*arg(o)));}
@@ -1306,31 +1303,31 @@ void qlFreeHullWhite(QlHullWhite *o) {del(o);}
 QlOneFactorAffineModel* qlHullWhiteAsOneFactorAffineModel(QlHullWhite *o) {return ret(new QlOneFactorAffineModel(*arg(o)));}
 void qlFreeCalibratedModel(QlCalibratedModel *o) {del(o);}
 
-QlBatesModel* qlBatesModel(QlBatesProcess* process, char **e) {try {return ret(new QlBatesModel(alloc(new BatesModel(*arg(process)))));} catch (std::exception& er) {return handleException<QlBatesModel*>(e, er);}}
-QlShortRateModel* qlBlackKarasinski(QlYieldTermStructure* termStructure, double a, double sigma, char **e) {
+QlBatesModel* qlBatesModel(QlBatesProcess* process, QlError **e) { QlCallScope callbackScope(e);try {return ret(new QlBatesModel(alloc(new BatesModel(*arg(process)))));} catch (std::exception& er) {return handleException<QlBatesModel*>(e, er);}}
+QlShortRateModel* qlBlackKarasinski(QlYieldTermStructure* termStructure, double a, double sigma, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlShortRateModel(alloc(new BlackKarasinski(*arg(termStructure), a, sigma))));
   } catch (std::exception& er) {return handleException<QlShortRateModel*>(e, er);}}
-QlOneFactorAffineModel* qlCoxIngersollRoss(double r0, double theta, double k, double sigma, int withFellerConstraint, char **e) {
+QlOneFactorAffineModel* qlCoxIngersollRoss(double r0, double theta, double k, double sigma, int withFellerConstraint, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlOneFactorAffineModel(alloc(new CoxIngersollRoss(r0, theta, k, sigma, withFellerConstraint))));
   } catch (std::exception& er) {return handleException<QlOneFactorAffineModel*>(e, er);}}
-QlOneFactorAffineModel* qlExtendedCoxIngersollRoss(QlYieldTermStructure* termStructure, double theta, double k, double sigma, double x0, int withFellerConstraint, char **e) {
+QlOneFactorAffineModel* qlExtendedCoxIngersollRoss(QlYieldTermStructure* termStructure, double theta, double k, double sigma, double x0, int withFellerConstraint, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlOneFactorAffineModel(alloc(new ExtendedCoxIngersollRoss(*arg(termStructure), theta, k, sigma, x0, withFellerConstraint))));
   } catch (std::exception& er) {return handleException<QlOneFactorAffineModel*>(e, er);}}
-QlG2* qlG2(QlYieldTermStructure* termStructure, double a, double sigma, double b, double eta, double rho, char **e) {
+QlG2* qlG2(QlYieldTermStructure* termStructure, double a, double sigma, double b, double eta, double rho, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlG2(alloc(new G2(*arg(termStructure), a, sigma, b, eta, rho))));
   } catch (std::exception& er) {return handleException<QlG2*>(e, er);}}
-QlShortRateModel* qlGeneralizedHullWhite(QlYieldTermStructure* yieldtermStructure, unsigned speedstructureLen, int* speedstructure, unsigned volstructureLen, int* volstructure, unsigned speedLen, double* speed, unsigned volLen, double* vol, char **e) {
+QlShortRateModel* qlGeneralizedHullWhite(QlYieldTermStructure* yieldtermStructure, unsigned speedstructureLen, int* speedstructure, unsigned volstructureLen, int* volstructure, unsigned speedLen, double* speed, unsigned volLen, double* vol, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlShortRateModel(alloc(new GeneralizedHullWhite(*arg(yieldtermStructure), qlDateVector(speedstructure, speedstructureLen), qlDateVector(volstructure, volstructureLen), std::vector<double>(speed, speed+speedLen), std::vector<double>(vol, vol+volLen)))));
   } catch (std::exception& er) {return handleException<QlShortRateModel*>(e, er);}}
-QlGJRGARCHModel* qlGJRGARCHModel(QlGJRGARCHProcess* process, char **e) {try {return ret(new QlGJRGARCHModel(alloc(new GJRGARCHModel(*arg(process)))));} catch (std::exception& er) {return handleException<QlGJRGARCHModel*>(e, er);}}
-QlHestonModel* qlHestonModel(QlHestonProcess* process, char **e) {try {return ret(new QlHestonModel(alloc(new HestonModel(*arg(process)))));} catch (std::exception& er) {return handleException<QlHestonModel*>(e, er);}}
-QlHullWhite* qlHullWhite(QlYieldTermStructure* termStructure, double a, double sigma, char **e) {
+QlGJRGARCHModel* qlGJRGARCHModel(QlGJRGARCHProcess* process, QlError **e) { QlCallScope callbackScope(e);try {return ret(new QlGJRGARCHModel(alloc(new GJRGARCHModel(*arg(process)))));} catch (std::exception& er) {return handleException<QlGJRGARCHModel*>(e, er);}}
+QlHestonModel* qlHestonModel(QlHestonProcess* process, QlError **e) { QlCallScope callbackScope(e);try {return ret(new QlHestonModel(alloc(new HestonModel(*arg(process)))));} catch (std::exception& er) {return handleException<QlHestonModel*>(e, er);}}
+QlHullWhite* qlHullWhite(QlYieldTermStructure* termStructure, double a, double sigma, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlHullWhite(alloc(new HullWhite(*arg(termStructure), a, sigma))));
   } catch (std::exception& er) {return handleException<QlHullWhite*>(e, er);}}
-QlCalibratedModel* qlVarianceGammaModel(QlVarianceGammaProcess* process, char **e) {
+QlCalibratedModel* qlVarianceGammaModel(QlVarianceGammaProcess* process, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlCalibratedModel(alloc(new VarianceGammaModel(*arg(process)))));
   } catch (std::exception& er) {return handleException<QlCalibratedModel*>(e, er);}}
-QlOneFactorAffineModel* qlVasicek(double r0, double a, double b, double sigma, double lambda, char **e) {
+QlOneFactorAffineModel* qlVasicek(double r0, double a, double b, double sigma, double lambda, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlOneFactorAffineModel(alloc(new Vasicek(r0, a, b, sigma, lambda))));
   } catch (std::exception& er) {return handleException<QlOneFactorAffineModel*>(e, er);}}
 
@@ -1338,10 +1335,10 @@ void qlFreeG2(QlG2 *o) {del(o);}
 QlAffineModel* qlG2AsAffineModel(QlG2 *o) {return ret(new QlAffineModel(*arg(o)));}
 QlShortRateModel* qlG2AsShortRateModel(QlG2 *o) {return ret(new QlShortRateModel(*arg(o)));}
 void qlFreeShortRateDynamics(QlShortRateDynamics *o) {del(o);}
-QlShortRateDynamics* qlG2Dynamics(QlG2 *o, char **e) {
+QlShortRateDynamics* qlG2Dynamics(QlG2 *o, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlShortRateDynamics((*arg(o))->dynamics()));
   } catch (std::exception& er) {return handleException<QlShortRateDynamics*>(e, er);}}
-double qlShortRateDynamicsShortRate(QlShortRateDynamics *o, double t, double x, double y, char **e) {
+double qlShortRateDynamicsShortRate(QlShortRateDynamics *o, double t, double x, double y, QlError **e) { QlCallScope callbackScope(e);
   try {return (*arg(o))->shortRate(t, x, y);
   } catch (std::exception& er) {return handleException<double>(e, er);}}
 void qlFreeBatesDetJumpModel(QlBatesDetJumpModel *o) {del(o);}
@@ -1353,34 +1350,34 @@ QlHestonModel* qlBatesDoubleExpModelAsHestonModel(QlBatesDoubleExpModel *o) {ret
 void qlFreeLmCorrelationModel(QlLmCorrelationModel *o) {del(o);}
 void qlFreeLmVolatilityModel(QlLmVolatilityModel *o) {del(o);}
 
-QlLmCorrelationModel* qlLmConstWrapperCorrelationModel(QlLmCorrelationModel* corrModel, char **e) {
+QlLmCorrelationModel* qlLmConstWrapperCorrelationModel(QlLmCorrelationModel* corrModel, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlLmCorrelationModel(alloc(new LmConstWrapperCorrelationModel(*arg(corrModel)))));
   } catch (std::exception& er) {return handleException<QlLmCorrelationModel*>(e, er);}}
-QlLmVolatilityModel* qlLmConstWrapperVolatilityModel(QlLmVolatilityModel* volaModel, char **e) {
+QlLmVolatilityModel* qlLmConstWrapperVolatilityModel(QlLmVolatilityModel* volaModel, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlLmVolatilityModel(alloc(new LmConstWrapperVolatilityModel(*arg(volaModel)))));
   } catch (std::exception& er) {return handleException<QlLmVolatilityModel*>(e, er);}}
-QlLmCorrelationModel* qlLmExponentialCorrelationModel(unsigned size, double rho, char **e) {
+QlLmCorrelationModel* qlLmExponentialCorrelationModel(unsigned size, double rho, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlLmCorrelationModel(alloc(new LmExponentialCorrelationModel(size, rho))));
   } catch (std::exception& er) {return handleException<QlLmCorrelationModel*>(e, er);}}
-QlLmVolatilityModel* qlLmFixedVolatilityModel(unsigned volatilitiesLen, double* volatilities, unsigned startTimesLen, double * startTimes, char **e) {
+QlLmVolatilityModel* qlLmFixedVolatilityModel(unsigned volatilitiesLen, double* volatilities, unsigned startTimesLen, double * startTimes, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlLmVolatilityModel(alloc(new LmFixedVolatilityModel(Array(volatilities, volatilities+volatilitiesLen), std::vector<double>(startTimes, startTimes+startTimesLen)))));
   } catch (std::exception& er) {return handleException<QlLmVolatilityModel*>(e, er);}}
-QlLmCorrelationModel* qlLmLinearExponentialCorrelationModel(unsigned size, double rho, double beta, unsigned factors, char **e) {
+QlLmCorrelationModel* qlLmLinearExponentialCorrelationModel(unsigned size, double rho, double beta, unsigned factors, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlLmCorrelationModel(alloc(new LmLinearExponentialCorrelationModel(size, rho, beta, factors))));
   } catch (std::exception& er) {return handleException<QlLmCorrelationModel*>(e, er);}}
-QlLmVolatilityModel* qlLmLinearExponentialVolatilityModel(unsigned fixingTimesLen, double * fixingTimes, double a, double b, double c, double d, char **e) {
+QlLmVolatilityModel* qlLmLinearExponentialVolatilityModel(unsigned fixingTimesLen, double * fixingTimes, double a, double b, double c, double d, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlLmVolatilityModel(alloc(new LmLinearExponentialVolatilityModel(std::vector<double>(fixingTimes, fixingTimes+fixingTimesLen), a, b, c, d))));
   } catch (std::exception& er) {return handleException<QlLmVolatilityModel*>(e, er);}}
-QlLiborForwardModel* qlLiborForwardModel(QlLiborForwardModelProcess* process, QlLmVolatilityModel* volaModel, QlLmCorrelationModel* corrModel, char **e) {
+QlLiborForwardModel* qlLiborForwardModel(QlLiborForwardModelProcess* process, QlLmVolatilityModel* volaModel, QlLmCorrelationModel* corrModel, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlLiborForwardModel(alloc(new LiborForwardModel(*arg(process), *arg(volaModel), *arg(corrModel)))));
   } catch (std::exception& er) {return handleException<QlLiborForwardModel*>(e, er);}}
-double qlLiborForwardModelS0(QlLiborForwardModel* o, unsigned alpha, unsigned beta, char **e) {
+double qlLiborForwardModelS0(QlLiborForwardModel* o, unsigned alpha, unsigned beta, QlError **e) { QlCallScope callbackScope(e);
   try {return (*arg(o))->S_0(alpha, beta);} catch (std::exception& er) {return handleException<double>(e, er);}}
 void qlFreeLfmHullWhiteParameterization(QlLfmHullWhiteParameterization *o) {del(o);}
-QlLfmHullWhiteParameterization* qlLfmHullWhiteParameterization(QlLiborForwardModelProcess* process, QlOptionletVolatilityStructure* capletVol, unsigned correlationRows, unsigned correlationCols, double* correlation, unsigned factors, char **e) {
+QlLfmHullWhiteParameterization* qlLfmHullWhiteParameterization(QlLiborForwardModelProcess* process, QlOptionletVolatilityStructure* capletVol, unsigned correlationRows, unsigned correlationCols, double* correlation, unsigned factors, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlLfmHullWhiteParameterization(alloc(new LfmHullWhiteParameterization(*arg(process), handlePtr(arg(capletVol)), qlMatrix(correlation, correlationRows, correlationCols), factors))));
   } catch (std::exception& er) {return handleException<QlLfmHullWhiteParameterization*>(e, er);}}
-void qlLfmHullWhiteCovariance(QlLfmHullWhiteParameterization* o, double t, unsigned xLen, double* x, unsigned *rows, unsigned *cols, unsigned *len, double **vs, char **e) {
+void qlLfmHullWhiteCovariance(QlLfmHullWhiteParameterization* o, double t, unsigned xLen, double* x, unsigned *rows, unsigned *cols, unsigned *len, double **vs, QlError **e) { QlCallScope callbackScope(e);
   try {fillMatrixOut([&] {return (*arg(o))->covariance(t, Array(x, x+xLen));}, rows, cols, len, vs);
   } catch (std::exception& er) {handleException<double*>(e, er);}}
 
@@ -1391,83 +1388,83 @@ QlCalibratedModel* qlGsrAsCalibratedModel(QlGsr *o) {return ret(new QlCalibrated
 QlCalibratedModel* qlMarkovFunctionalAsCalibratedModel(QlMarkovFunctional *o) {return ret(new QlCalibratedModel(*arg(o)));}
 QlGaussian1dModel* qlGsrAsGaussian1dModel(QlGsr *o) {return ret(new QlGaussian1dModel(*arg(o)));}
 QlGaussian1dModel* qlMarkovFunctionalAsGaussian1dModel(QlMarkovFunctional *o) {return ret(new QlGaussian1dModel(*arg(o)));}
-QlGsr* qlGsr(QlYieldTermStructure* termStructure, unsigned volstepdatesLen, int* volstepdates, unsigned volatilitiesLen, QlQuote** volatilities, unsigned reversionsLen, QlQuote** reversions, double T, char **e) {
+QlGsr* qlGsr(QlYieldTermStructure* termStructure, unsigned volstepdatesLen, int* volstepdates, unsigned volatilitiesLen, QlQuote** volatilities, unsigned reversionsLen, QlQuote** reversions, double T, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlGsr(alloc(new Gsr(*arg(termStructure), qlDateVector(volstepdates, volstepdatesLen), qlHandleVector(volatilities, volatilitiesLen), qlHandleVector(reversions, reversionsLen), T))));
   } catch (std::exception& er) {return handleException<QlGsr*>(e, er);}}
-void qlGsrVolatility(QlGsr* o, unsigned *len, double **vs, char **e) {
+void qlGsrVolatility(QlGsr* o, unsigned *len, double **vs, QlError **e) { QlCallScope callbackScope(e);
   try {fillVectorOut([&] {return (*arg(o))->volatility();}, len, vs);
   } catch (std::exception& er) {handleException<double*>(e, er);}}
-void qlGsrReversion(QlGsr* o, unsigned *len, double **vs, char **e) {
+void qlGsrReversion(QlGsr* o, unsigned *len, double **vs, QlError **e) { QlCallScope callbackScope(e);
   try {fillVectorOut([&] {return (*arg(o))->reversion();}, len, vs);
   } catch (std::exception& er) {handleException<double*>(e, er);}}
-void qlGsrMoveVolatility(QlGsr* o, unsigned i, unsigned *len, int **fp, char **e) {
+void qlGsrMoveVolatility(QlGsr* o, unsigned i, unsigned *len, int **fp, QlError **e) { QlCallScope callbackScope(e);
   OutArrayResult<int> result(len, fp);
   try {std::vector<bool> res = (*arg(o))->MoveVolatility(i);
     int *out = result.allocate((unsigned)res.size());
     for (unsigned j = 0; j < res.size(); ++j) out[j] = res[j];
     result.commit();
   } catch (std::exception& er) {handleException<int*>(e, er);}}
-void qlGsrMoveReversion(QlGsr* o, unsigned i, unsigned *len, int **fp, char **e) {
+void qlGsrMoveReversion(QlGsr* o, unsigned i, unsigned *len, int **fp, QlError **e) { QlCallScope callbackScope(e);
   OutArrayResult<int> result(len, fp);
   try {std::vector<bool> res = (*arg(o))->MoveReversion(i);
     int *out = result.allocate((unsigned)res.size());
     for (unsigned j = 0; j < res.size(); ++j) out[j] = res[j];
     result.commit();
   } catch (std::exception& er) {handleException<int*>(e, er);}}
-void qlGsrCalibrateVolatilitiesIterative(QlGsr* o, unsigned helpersLen, QlBlackCalibrationHelper** helpers, QlOptimizationMethod* method, QlEndCriteria* endCriteria, Constraint* constraint, unsigned weightsLen, double* weights, char **e) {
+void qlGsrCalibrateVolatilitiesIterative(QlGsr* o, unsigned helpersLen, QlBlackCalibrationHelper** helpers, QlOptimizationMethod* method, QlEndCriteria* endCriteria, Constraint* constraint, unsigned weightsLen, double* weights, QlError **e) { QlCallScope callbackScope(e);
   try {(*arg(o))->calibrateVolatilitiesIterative(qlVector(helpers, helpersLen), **arg(method), **arg(endCriteria), Constraint(constraint ? *arg(constraint) : Constraint()), std::vector<double>(weights, weights+weightsLen));
   } catch (std::exception& er) {(void)handleException<int>(e, er);}}
-void qlGsrCalibrateReversionsIterative(QlGsr* o, unsigned helpersLen, QlBlackCalibrationHelper** helpers, QlOptimizationMethod* method, QlEndCriteria* endCriteria, Constraint* constraint, unsigned weightsLen, double* weights, char **e) {
+void qlGsrCalibrateReversionsIterative(QlGsr* o, unsigned helpersLen, QlBlackCalibrationHelper** helpers, QlOptimizationMethod* method, QlEndCriteria* endCriteria, Constraint* constraint, unsigned weightsLen, double* weights, QlError **e) { QlCallScope callbackScope(e);
   try {(*arg(o))->calibrateReversionsIterative(qlVector(helpers, helpersLen), **arg(method), **arg(endCriteria), Constraint(constraint ? *arg(constraint) : Constraint()), std::vector<double>(weights, weights+weightsLen));
   } catch (std::exception& er) {(void)handleException<int>(e, er);}}
-QlMarkovFunctional* qlMarkovFunctional(QlYieldTermStructure* termStructure, double reversion, unsigned volstepdatesLen, int* volstepdates, unsigned volatilitiesLen, double* volatilities, QlSwaptionVolatilityStructure* swaptionVol, unsigned expiriesLen, int* swaptionExpiries, unsigned tenorsLen, int* tenorQuantity, unsigned, int* tenorUnit, QlSwapIndex* swapIndexBase, unsigned yGridPoints, char **e) {
+QlMarkovFunctional* qlMarkovFunctional(QlYieldTermStructure* termStructure, double reversion, unsigned volstepdatesLen, int* volstepdates, unsigned volatilitiesLen, double* volatilities, QlSwaptionVolatilityStructure* swaptionVol, unsigned expiriesLen, int* swaptionExpiries, unsigned tenorsLen, int* tenorQuantity, unsigned, int* tenorUnit, QlSwapIndex* swapIndexBase, unsigned yGridPoints, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlMarkovFunctional(alloc(new MarkovFunctional(*arg(termStructure), reversion, qlDateVector(volstepdates, volstepdatesLen), std::vector<double>(volatilities, volatilities+volatilitiesLen), *arg(swaptionVol), qlDateVector(swaptionExpiries, expiriesLen), qlPeriodVector(tenorQuantity, tenorUnit, tenorsLen), *arg(swapIndexBase), MarkovFunctional::ModelSettings().withYGridPoints(yGridPoints)))));
   } catch (std::exception& er) {return handleException<QlMarkovFunctional*>(e, er);}}
-QlMarkovFunctional* qlMarkovFunctionalCaplet(QlYieldTermStructure* termStructure, double reversion, unsigned volstepdatesLen, int* volstepdates, unsigned volatilitiesLen, double* volatilities, QlOptionletVolatilityStructure* capletVol, unsigned expiriesLen, int* capletExpiries, QlIborIndex* iborIndex, unsigned yGridPoints, char **e) {
+QlMarkovFunctional* qlMarkovFunctionalCaplet(QlYieldTermStructure* termStructure, double reversion, unsigned volstepdatesLen, int* volstepdates, unsigned volatilitiesLen, double* volatilities, QlOptionletVolatilityStructure* capletVol, unsigned expiriesLen, int* capletExpiries, QlIborIndex* iborIndex, unsigned yGridPoints, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlMarkovFunctional(alloc(new MarkovFunctional(*arg(termStructure), reversion, qlDateVector(volstepdates, volstepdatesLen), std::vector<double>(volatilities, volatilities+volatilitiesLen), *arg(capletVol), qlDateVector(capletExpiries, expiriesLen), *arg(iborIndex), MarkovFunctional::ModelSettings().withYGridPoints(yGridPoints)))));
   } catch (std::exception& er) {return handleException<QlMarkovFunctional*>(e, er);}}
-void qlMarkovFunctionalVolatility(QlMarkovFunctional* o, unsigned *len, double **vs, char **e) {
+void qlMarkovFunctionalVolatility(QlMarkovFunctional* o, unsigned *len, double **vs, QlError **e) { QlCallScope callbackScope(e);
   try {fillVectorOut([&] {return (*arg(o))->volatility();}, len, vs);
   } catch (std::exception& er) {handleException<double*>(e, er);}}
-double qlGaussian1dModelNumeraire(QlGaussian1dModel* o, int referenceDate, double y, QlYieldTermStructure* yts, char **e) {
+double qlGaussian1dModelNumeraire(QlGaussian1dModel* o, int referenceDate, double y, QlYieldTermStructure* yts, QlError **e) { QlCallScope callbackScope(e);
   try {return (*arg(o))->numeraire(Date(referenceDate), y, qlNullableHandle(yts));
   } catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlGaussian1dModelZerobond(QlGaussian1dModel* o, int maturity, int referenceDate, double y, QlYieldTermStructure* yts, char **e) {
+double qlGaussian1dModelZerobond(QlGaussian1dModel* o, int maturity, int referenceDate, double y, QlYieldTermStructure* yts, QlError **e) { QlCallScope callbackScope(e);
   try {return (*arg(o))->zerobond(Date(maturity), qlNullableDate(referenceDate), y, qlNullableHandle(yts));
   } catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlGaussian1dModelZerobondOption(QlGaussian1dModel* o, int type, int expiry, int valueDate, int maturity, double strike, int referenceDate, double y, QlYieldTermStructure* yts, double yStdDevs, unsigned yGridPoints, int extrapolatePayoff, int flatPayoffExtrapolation, char **e) {
+double qlGaussian1dModelZerobondOption(QlGaussian1dModel* o, int type, int expiry, int valueDate, int maturity, double strike, int referenceDate, double y, QlYieldTermStructure* yts, double yStdDevs, unsigned yGridPoints, int extrapolatePayoff, int flatPayoffExtrapolation, QlError **e) { QlCallScope callbackScope(e);
   try {return (*arg(o))->zerobondOption((Option::Type)type, Date(expiry), Date(valueDate), Date(maturity), strike, qlNullableDate(referenceDate), y, qlNullableHandle(yts), yStdDevs, yGridPoints, extrapolatePayoff, flatPayoffExtrapolation);
   } catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlGaussian1dModelForwardRate(QlGaussian1dModel* o, int fixing, int referenceDate, double y, QlIborIndex* iborIdx, char **e) {
+double qlGaussian1dModelForwardRate(QlGaussian1dModel* o, int fixing, int referenceDate, double y, QlIborIndex* iborIdx, QlError **e) { QlCallScope callbackScope(e);
   try {return (*arg(o))->forwardRate(Date(fixing), qlNullableDate(referenceDate), y, iborIdx ? *arg(iborIdx) : shared_ptr<IborIndex>());
   } catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlGaussian1dModelSwapRate(QlGaussian1dModel* o, int fixing, int tenorLen, int tenorUnit, int referenceDate, double y, QlSwapIndex* swapIdx, char **e) {
+double qlGaussian1dModelSwapRate(QlGaussian1dModel* o, int fixing, int tenorLen, int tenorUnit, int referenceDate, double y, QlSwapIndex* swapIdx, QlError **e) { QlCallScope callbackScope(e);
   try {return (*arg(o))->swapRate(Date(fixing), Period(tenorLen, (TimeUnit)tenorUnit), qlNullableDate(referenceDate), y, swapIdx ? *arg(swapIdx) : shared_ptr<SwapIndex>());
   } catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlGaussian1dModelSwapAnnuity(QlGaussian1dModel* o, int fixing, int tenorLen, int tenorUnit, int referenceDate, double y, QlSwapIndex* swapIdx, char **e) {
+double qlGaussian1dModelSwapAnnuity(QlGaussian1dModel* o, int fixing, int tenorLen, int tenorUnit, int referenceDate, double y, QlSwapIndex* swapIdx, QlError **e) { QlCallScope callbackScope(e);
   try {return (*arg(o))->swapAnnuity(Date(fixing), Period(tenorLen, (TimeUnit)tenorUnit), qlNullableDate(referenceDate), y, swapIdx ? *arg(swapIdx) : shared_ptr<SwapIndex>());
   } catch (std::exception& er) {return handleException<double>(e, er);}}
-void qlGaussian1dModelYGrid(QlGaussian1dModel* o, double yStdDevs, int gridPoints, double bigT, double t, double y, unsigned *len, double **out, char **e) {
+void qlGaussian1dModelYGrid(QlGaussian1dModel* o, double yStdDevs, int gridPoints, double bigT, double t, double y, unsigned *len, double **out, QlError **e) { QlCallScope callbackScope(e);
   try {fillVectorOut([&] {return (*arg(o))->yGrid(yStdDevs, gridPoints, bigT, t, y);}, len, out);
   } catch (std::exception& er) {handleException<double*>(e, er);}}
-QlStochasticProcess1D* qlGaussian1dModelStateProcess(QlGaussian1dModel* o, char **e) {
+QlStochasticProcess1D* qlGaussian1dModelStateProcess(QlGaussian1dModel* o, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlStochasticProcess1D((*arg(o))->stateProcess()));
   } catch (std::exception& er) {return handleException<QlStochasticProcess1D*>(e, er);}}
-QlPricingEngine* qlGaussian1dSwaptionEngine(QlGaussian1dModel* model, int integrationPoints, double stddevs, int extrapolatePayoff, int flatPayoffExtrapolation, QlYieldTermStructure* discountCurve, int probabilities, char **e) {
+QlPricingEngine* qlGaussian1dSwaptionEngine(QlGaussian1dModel* model, int integrationPoints, double stddevs, int extrapolatePayoff, int flatPayoffExtrapolation, QlYieldTermStructure* discountCurve, int probabilities, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new Gaussian1dSwaptionEngine(*arg(model), integrationPoints, stddevs, extrapolatePayoff, flatPayoffExtrapolation, qlNullableHandle(discountCurve), (Gaussian1dSwaptionEngine::Probabilities)probabilities))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlGaussian1dNonstandardSwaptionEngine(QlGaussian1dModel* model, int integrationPoints, double stddevs, int extrapolatePayoff, int flatPayoffExtrapolation, QlQuote* oas, QlYieldTermStructure* discountCurve, int probabilities, char **e) {
+QlPricingEngine* qlGaussian1dNonstandardSwaptionEngine(QlGaussian1dModel* model, int integrationPoints, double stddevs, int extrapolatePayoff, int flatPayoffExtrapolation, QlQuote* oas, QlYieldTermStructure* discountCurve, int probabilities, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new Gaussian1dNonstandardSwaptionEngine(*arg(model), integrationPoints, stddevs, extrapolatePayoff, flatPayoffExtrapolation, qlNullableHandle(oas), qlNullableHandle(discountCurve), (Gaussian1dNonstandardSwaptionEngine::Probabilities)probabilities))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
 // As qlGaussian1dNonstandardSwaptionEngine, plus a trailing includeTodaysExercise bool before
 // probabilities (gaussian1dfloatfloatswaptionengine.hpp).
-QlPricingEngine* qlGaussian1dFloatFloatSwaptionEngine(QlGaussian1dModel* model, int integrationPoints, double stddevs, int extrapolatePayoff, int flatPayoffExtrapolation, QlQuote* oas, QlYieldTermStructure* discountCurve, int includeTodaysExercise, int probabilities, char **e) {
+QlPricingEngine* qlGaussian1dFloatFloatSwaptionEngine(QlGaussian1dModel* model, int integrationPoints, double stddevs, int extrapolatePayoff, int flatPayoffExtrapolation, QlQuote* oas, QlYieldTermStructure* discountCurve, int includeTodaysExercise, int probabilities, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new Gaussian1dFloatFloatSwaptionEngine(*arg(model), integrationPoints, stddevs, extrapolatePayoff, flatPayoffExtrapolation, qlNullableHandle(oas), qlNullableHandle(discountCurve), includeTodaysExercise, (Gaussian1dFloatFloatSwaptionEngine::Probabilities)probabilities))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlGaussian1dJamshidianSwaptionEngine(QlGaussian1dModel* model, char **e) {
+QlPricingEngine* qlGaussian1dJamshidianSwaptionEngine(QlGaussian1dModel* model, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new Gaussian1dJamshidianSwaptionEngine(*arg(model)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlGaussian1dCapFloorEngine(QlGaussian1dModel* model, int integrationPoints, double stddevs, int extrapolatePayoff, int flatPayoffExtrapolation, QlYieldTermStructure* discountCurve, char **e) {
+QlPricingEngine* qlGaussian1dCapFloorEngine(QlGaussian1dModel* model, int integrationPoints, double stddevs, int extrapolatePayoff, int flatPayoffExtrapolation, QlYieldTermStructure* discountCurve, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new Gaussian1dCapFloorEngine(*arg(model), integrationPoints, stddevs, extrapolatePayoff, flatPayoffExtrapolation, qlNullableHandle(discountCurve)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
 
@@ -1482,54 +1479,54 @@ void qlFreeCalibrationHelper(QlCalibrationHelper *o) {del(o);}
 void qlFreeBlackCalibrationHelper(QlBlackCalibrationHelper *o) {del(o);}
 QlCalibrationHelper* qlBlackCalibrationHelperAsCalibrationHelper(QlBlackCalibrationHelper *o) {return ret(new QlCalibrationHelper(*arg(o)));}
 
-void qlCalibratedModelCalibrate(QlCalibratedModel* o, unsigned x1Len, QlCalibrationHelper** x1, unsigned wLen, double *weights, QlOptimizationMethod* method, QlEndCriteria* endCriteria, Constraint* constraint, unsigned fpLen, int* fixParameters, char **e) {
+void qlCalibratedModelCalibrate(QlCalibratedModel* o, unsigned x1Len, QlCalibrationHelper** x1, unsigned wLen, double *weights, QlOptimizationMethod* method, QlEndCriteria* endCriteria, Constraint* constraint, unsigned fpLen, int* fixParameters, QlError **e) { QlCallScope callbackScope(e);
   try {(*arg(o))->calibrate(qlVector(x1, x1Len), **arg(method), **arg(endCriteria), Constraint(constraint ? *arg(constraint) : Constraint()), std::vector<double>(weights, weights+wLen), std::vector<bool>(fixParameters, fixParameters+fpLen));
   } catch (std::exception& er) {(void)handleException<int>(e, er);}}
-double qlCalibratedModelValue(QlCalibratedModel* o, unsigned pLen, double* p, unsigned hLen, QlCalibrationHelper** h, char **e) {
+double qlCalibratedModelValue(QlCalibratedModel* o, unsigned pLen, double* p, unsigned hLen, QlCalibrationHelper** h, QlError **e) { QlCallScope callbackScope(e);
   try {return (*arg(o))->value(Array(p, p+pLen), qlVector(h, hLen));
   } catch (std::exception& er) {return handleException<double>(e, er);}}
-void qlBlackCalibrationHelperSetPricingEngine(QlBlackCalibrationHelper* o, QlPricingEngine* engine, char **e) {
+void qlBlackCalibrationHelperSetPricingEngine(QlBlackCalibrationHelper* o, QlPricingEngine* engine, QlError **e) { QlCallScope callbackScope(e);
   try {(*arg(o))->setPricingEngine(*arg(engine));
   } catch (std::exception& er) {(void)handleException<int>(e, er);}}
-QlBlackCalibrationHelper* qlCapHelper(int l, int u, QlQuote* volatility, QlIborIndex* index, int fixedLegFrequency, DayCounter* fixedLegDayCounter, int includeFirstSwaplet, QlYieldTermStructure* termStructure, int errorType, int type, double shift, char **e) {
+QlBlackCalibrationHelper* qlCapHelper(int l, int u, QlQuote* volatility, QlIborIndex* index, int fixedLegFrequency, DayCounter* fixedLegDayCounter, int includeFirstSwaplet, QlYieldTermStructure* termStructure, int errorType, int type, double shift, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlBlackCalibrationHelper(alloc(new CapHelper(Period(l, (TimeUnit)u), *arg(volatility), *arg(index), (Frequency)fixedLegFrequency, *arg(fixedLegDayCounter), includeFirstSwaplet, *arg(termStructure), (BlackCalibrationHelper::CalibrationErrorType)errorType, (VolatilityType)type, shift))));
   } catch (std::exception& er) {return handleException<QlBlackCalibrationHelper*>(e, er);}}
-QlBlackCalibrationHelper* qlHestonModelHelper(int l, int u, Calendar* calendar, QlQuote* s0, double strikePrice, QlQuote* volatility, QlYieldTermStructure* riskFreeRate, QlYieldTermStructure* dividendYield, int errorType, char **e) {
+QlBlackCalibrationHelper* qlHestonModelHelper(int l, int u, Calendar* calendar, QlQuote* s0, double strikePrice, QlQuote* volatility, QlYieldTermStructure* riskFreeRate, QlYieldTermStructure* dividendYield, int errorType, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlBlackCalibrationHelper(alloc(new HestonModelHelper(Period(l, (TimeUnit)u), *arg(calendar), *arg(s0), strikePrice, *arg(volatility), *arg(riskFreeRate), *arg(dividendYield), (BlackCalibrationHelper::CalibrationErrorType)errorType))));
   } catch (std::exception& er) {return handleException<QlBlackCalibrationHelper*>(e, er);}}
 void qlFreeSwaptionHelper(QlSwaptionHelper *o) {del(o);}
 QlBlackCalibrationHelper* qlSwaptionHelperAsBlackCalibrationHelper(QlSwaptionHelper *o) {return ret(new QlBlackCalibrationHelper(*arg(o)));}
-QlSwaptionHelper* qlSwaptionHelper(int l, int u, int ll, int lu, QlQuote* volatility, QlIborIndex* index, int fl, int fu, DayCounter* fixedLegDayCounter, DayCounter* floatingLegDayCounter, QlYieldTermStructure* termStructure, int errorType, double strike, double nominal, int volatilityType, double shift, unsigned settlementDays, int averagingMethod, char **e) {
+QlSwaptionHelper* qlSwaptionHelper(int l, int u, int ll, int lu, QlQuote* volatility, QlIborIndex* index, int fl, int fu, DayCounter* fixedLegDayCounter, DayCounter* floatingLegDayCounter, QlYieldTermStructure* termStructure, int errorType, double strike, double nominal, int volatilityType, double shift, unsigned settlementDays, int averagingMethod, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlSwaptionHelper(alloc(new SwaptionHelper(Period(l, (TimeUnit)u), Period(ll, (TimeUnit)lu), *arg(volatility), *arg(index), Period(fl, (TimeUnit)fu), *arg(fixedLegDayCounter), *arg(floatingLegDayCounter), *arg(termStructure), (BlackCalibrationHelper::CalibrationErrorType)errorType, strike, nominal, (VolatilityType)volatilityType, shift, settlementDays, (RateAveraging::Type)averagingMethod))));
   } catch (std::exception& er) {return handleException<QlSwaptionHelper*>(e, er);}}
-QlSwaptionHelper* qlSwaptionHelperFromDate(int exerciseDate, int ll, int lu, QlQuote* volatility, QlIborIndex* index, int fl, int fu, DayCounter* fixedLegDayCounter, DayCounter* floatingLegDayCounter, QlYieldTermStructure* termStructure, int errorType, double strike, double nominal, int volatilityType, double shift, unsigned settlementDays, int averagingMethod, char **e) {
+QlSwaptionHelper* qlSwaptionHelperFromDate(int exerciseDate, int ll, int lu, QlQuote* volatility, QlIborIndex* index, int fl, int fu, DayCounter* fixedLegDayCounter, DayCounter* floatingLegDayCounter, QlYieldTermStructure* termStructure, int errorType, double strike, double nominal, int volatilityType, double shift, unsigned settlementDays, int averagingMethod, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlSwaptionHelper(alloc(new SwaptionHelper(Date(exerciseDate), Period(ll, (TimeUnit)lu), *arg(volatility), *arg(index), Period(fl, (TimeUnit)fu), *arg(fixedLegDayCounter), *arg(floatingLegDayCounter), *arg(termStructure), (BlackCalibrationHelper::CalibrationErrorType)errorType, strike, nominal, (VolatilityType)volatilityType, shift, settlementDays, (RateAveraging::Type)averagingMethod))));
   } catch (std::exception& er) {return handleException<QlSwaptionHelper*>(e, er);}}
-QlSwaptionHelper* qlSwaptionHelperFromDates(int exerciseDate, int endDate, QlQuote* volatility, QlIborIndex* index, int fl, int fu, DayCounter* fixedLegDayCounter, DayCounter* floatingLegDayCounter, QlYieldTermStructure* termStructure, int errorType, double strike, double nominal, int volatilityType, double shift, unsigned settlementDays, int averagingMethod, char **e) {
+QlSwaptionHelper* qlSwaptionHelperFromDates(int exerciseDate, int endDate, QlQuote* volatility, QlIborIndex* index, int fl, int fu, DayCounter* fixedLegDayCounter, DayCounter* floatingLegDayCounter, QlYieldTermStructure* termStructure, int errorType, double strike, double nominal, int volatilityType, double shift, unsigned settlementDays, int averagingMethod, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlSwaptionHelper(alloc(new SwaptionHelper(Date(exerciseDate), Date(endDate), *arg(volatility), *arg(index), Period(fl, (TimeUnit)fu), *arg(fixedLegDayCounter), *arg(floatingLegDayCounter), *arg(termStructure), (BlackCalibrationHelper::CalibrationErrorType)errorType, strike, nominal, (VolatilityType)volatilityType, shift, settlementDays, (RateAveraging::Type)averagingMethod))));
   } catch (std::exception& er) {return handleException<QlSwaptionHelper*>(e, er);}}
 // Both accessors are cast-free: o is already a genuine SwaptionHelper (constructed as one above),
 // so underlying()/swaption() are plain method calls, not a downcast from a type-erased base.
-QlFixedVsFloatingSwap* qlSwaptionHelperUnderlying(QlSwaptionHelper* o, char **e) {
+QlFixedVsFloatingSwap* qlSwaptionHelperUnderlying(QlSwaptionHelper* o, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlFixedVsFloatingSwap((*arg(o))->underlying()));
   } catch (std::exception& er) {return handleException<QlFixedVsFloatingSwap*>(e, er);}}
-QlSwaption* qlSwaptionHelperSwaption(QlSwaptionHelper* o, char **e) {
+QlSwaption* qlSwaptionHelperSwaption(QlSwaptionHelper* o, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlSwaption((*arg(o))->swaption()));
   } catch (std::exception& er) {return handleException<QlSwaption*>(e, er);}}
-void qlBlackCalibrationHelperTimes(QlBlackCalibrationHelper* o, unsigned *len, double **ts, char **e) {
+void qlBlackCalibrationHelperTimes(QlBlackCalibrationHelper* o, unsigned *len, double **ts, QlError **e) { QlCallScope callbackScope(e);
   try {fillVectorOut([&] {std::list<double> times; (*arg(o))->addTimesTo(times); return times;}, len, ts);
   } catch (std::exception& er) {handleException<double*>(e, er);}}
-void qlCalibratedModelParams(QlCalibratedModel* o, unsigned *len, double** ps, char **e) {
+void qlCalibratedModelParams(QlCalibratedModel* o, unsigned *len, double** ps, QlError **e) { QlCallScope callbackScope(e);
   try {fillVectorOut([&] {return (*arg(o))->params();}, len, ps);
   } catch (std::exception& er) {handleException<double*>(e, er);}}
-double qlBlackCalibrationHelperBlackPrice(QlBlackCalibrationHelper* o, double volatility, char **e) {try {return (*arg(o))->blackPrice(volatility);} catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlBlackCalibrationHelperCalibrationError(QlBlackCalibrationHelper* o, char **e) {try {return (*arg(o))->calibrationError();} catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlBlackCalibrationHelperImpliedVolatility(QlBlackCalibrationHelper* o, double targetValue, double accuracy, unsigned maxEvaluations, double minVol, double maxVol, char **e) {
+double qlBlackCalibrationHelperBlackPrice(QlBlackCalibrationHelper* o, double volatility, QlError **e) { QlCallScope callbackScope(e);try {return (*arg(o))->blackPrice(volatility);} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlBlackCalibrationHelperCalibrationError(QlBlackCalibrationHelper* o, QlError **e) { QlCallScope callbackScope(e);try {return (*arg(o))->calibrationError();} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlBlackCalibrationHelperImpliedVolatility(QlBlackCalibrationHelper* o, double targetValue, double accuracy, unsigned maxEvaluations, double minVol, double maxVol, QlError **e) { QlCallScope callbackScope(e);
   try {return (*arg(o))->impliedVolatility(targetValue, accuracy, maxEvaluations, minVol, maxVol);
   } catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlBlackCalibrationHelperMarketValue(QlBlackCalibrationHelper* o, char **e) {try {return (*arg(o))->marketValue();} catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlBlackCalibrationHelperModelValue(QlBlackCalibrationHelper* o, char **e) {try {return (*arg(o))->modelValue();} catch (std::exception& er) {return handleException<double>(e, er);}}
-QlQuote* qlBlackCalibrationHelperVolatility(QlBlackCalibrationHelper* o, char **e) {
+double qlBlackCalibrationHelperMarketValue(QlBlackCalibrationHelper* o, QlError **e) { QlCallScope callbackScope(e);try {return (*arg(o))->marketValue();} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlBlackCalibrationHelperModelValue(QlBlackCalibrationHelper* o, QlError **e) { QlCallScope callbackScope(e);try {return (*arg(o))->modelValue();} catch (std::exception& er) {return handleException<double>(e, er);}}
+QlQuote* qlBlackCalibrationHelperVolatility(QlBlackCalibrationHelper* o, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlQuote((*arg(o))->volatility().currentLink()));
   } catch (std::exception& er) {return handleException<QlQuote*>(e, er);}}
 
@@ -1540,56 +1537,56 @@ QlGeneralizedBlackScholesProcess* qlBlackProcessAsGeneralizedBlackScholesProcess
 void qlFreeGeneralizedBlackScholesProcess(QlGeneralizedBlackScholesProcess *o) {del(o);}
 QlStochasticProcess1D* qlGeneralizedBlackScholesProcessAsStochasticProcess1D(QlGeneralizedBlackScholesProcess *o) {return ret(new QlStochasticProcess1D(*arg(o)));}
 void qlFreeStochasticProcess(QlStochasticProcess *o) {del(o);}
-unsigned qlStochasticProcessFactors(QlStochasticProcess* o, char **e) {
+unsigned qlStochasticProcessFactors(QlStochasticProcess* o, QlError **e) { QlCallScope callbackScope(e);
   try {return (*arg(o))->factors();
   } catch (std::exception& er) {return handleException<unsigned>(e, er);}}
-void qlStochasticProcessInitialValues(QlStochasticProcess* o, unsigned *len, double **vs, char **e) {
+void qlStochasticProcessInitialValues(QlStochasticProcess* o, unsigned *len, double **vs, QlError **e) { QlCallScope callbackScope(e);
   try {fillVectorOut([&] {return (*arg(o))->initialValues();}, len, vs);
   } catch (std::exception& er) {handleException<double*>(e, er);}}
-void qlStochasticProcessDrift(QlStochasticProcess* o, double t, unsigned xLen, double *x, unsigned *len, double **vs, char **e) {
+void qlStochasticProcessDrift(QlStochasticProcess* o, double t, unsigned xLen, double *x, unsigned *len, double **vs, QlError **e) { QlCallScope callbackScope(e);
   try {fillVectorOut([&] {return (*arg(o))->drift(t, Array(x, x+xLen));}, len, vs);
   } catch (std::exception& er) {handleException<double*>(e, er);}}
-void qlStochasticProcessDiffusion(QlStochasticProcess* o, double t, unsigned xLen, double *x, unsigned *rows, unsigned *cols, unsigned *len, double **vs, char **e) {
+void qlStochasticProcessDiffusion(QlStochasticProcess* o, double t, unsigned xLen, double *x, unsigned *rows, unsigned *cols, unsigned *len, double **vs, QlError **e) { QlCallScope callbackScope(e);
   try {fillMatrixOut([&] {return (*arg(o))->diffusion(t, Array(x, x+xLen));}, rows, cols, len, vs);
   } catch (std::exception& er) {handleException<double*>(e, er);}}
-void qlStochasticProcessExpectation(QlStochasticProcess* o, double t0, unsigned x0Len, double *x0, double dt, unsigned *len, double **vs, char **e) {
+void qlStochasticProcessExpectation(QlStochasticProcess* o, double t0, unsigned x0Len, double *x0, double dt, unsigned *len, double **vs, QlError **e) { QlCallScope callbackScope(e);
   try {fillVectorOut([&] {return (*arg(o))->expectation(t0, Array(x0, x0+x0Len), dt);}, len, vs);
   } catch (std::exception& er) {handleException<double*>(e, er);}}
-void qlStochasticProcessStdDeviation(QlStochasticProcess* o, double t0, unsigned x0Len, double *x0, double dt, unsigned *rows, unsigned *cols, unsigned *len, double **vs, char **e) {
+void qlStochasticProcessStdDeviation(QlStochasticProcess* o, double t0, unsigned x0Len, double *x0, double dt, unsigned *rows, unsigned *cols, unsigned *len, double **vs, QlError **e) { QlCallScope callbackScope(e);
   try {fillMatrixOut([&] {return (*arg(o))->stdDeviation(t0, Array(x0, x0+x0Len), dt);}, rows, cols, len, vs);
   } catch (std::exception& er) {handleException<double*>(e, er);}}
-void qlStochasticProcessCovariance(QlStochasticProcess* o, double t0, unsigned x0Len, double *x0, double dt, unsigned *rows, unsigned *cols, unsigned *len, double **vs, char **e) {
+void qlStochasticProcessCovariance(QlStochasticProcess* o, double t0, unsigned x0Len, double *x0, double dt, unsigned *rows, unsigned *cols, unsigned *len, double **vs, QlError **e) { QlCallScope callbackScope(e);
   try {fillMatrixOut([&] {return (*arg(o))->covariance(t0, Array(x0, x0+x0Len), dt);}, rows, cols, len, vs);
   } catch (std::exception& er) {handleException<double*>(e, er);}}
-void qlStochasticProcessApply(QlStochasticProcess* o, unsigned x0Len, double *x0, unsigned dxLen, double *dx, unsigned *len, double **vs, char **e) {
+void qlStochasticProcessApply(QlStochasticProcess* o, unsigned x0Len, double *x0, unsigned dxLen, double *dx, unsigned *len, double **vs, QlError **e) { QlCallScope callbackScope(e);
   try {fillVectorOut([&] {return (*arg(o))->apply(Array(x0, x0+x0Len), Array(dx, dx+dxLen));}, len, vs);
   } catch (std::exception& er) {handleException<double*>(e, er);}}
-void qlStochasticProcessEvolve(QlStochasticProcess* o, double t0, unsigned x0Len, double *x0, double dt, unsigned dwLen, double *dw, unsigned *len, double **vs, char **e) {
+void qlStochasticProcessEvolve(QlStochasticProcess* o, double t0, unsigned x0Len, double *x0, double dt, unsigned dwLen, double *dw, unsigned *len, double **vs, QlError **e) { QlCallScope callbackScope(e);
   try {fillVectorOut([&] {return (*arg(o))->evolve(t0, Array(x0, x0+x0Len), dt, Array(dw, dw+dwLen));}, len, vs);
   } catch (std::exception& er) {handleException<double*>(e, er);}}
 
-QlBlackProcess* qlBlackProcess(QlQuote* x0, QlYieldTermStructure* riskFreeTS, QlBlackVolTermStructure* blackVolTS, int d, int forceDiscretization, char **e) {
+QlBlackProcess* qlBlackProcess(QlQuote* x0, QlYieldTermStructure* riskFreeTS, QlBlackVolTermStructure* blackVolTS, int d, int forceDiscretization, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlBlackProcess(alloc(new BlackProcess(*arg(x0), *arg(riskFreeTS), *arg(blackVolTS), createDiscretization1D(d), forceDiscretization))));
   } catch (std::exception& er) {return handleException<QlBlackProcess*>(e, er);}}
-QlGeneralizedBlackScholesProcess* qlBlackScholesMertonProcess(QlQuote* x0, QlYieldTermStructure* dividendTS, QlYieldTermStructure* riskFreeTS, QlBlackVolTermStructure* blackVolTS, int d, int forceDiscretization, char **e) {
+QlGeneralizedBlackScholesProcess* qlBlackScholesMertonProcess(QlQuote* x0, QlYieldTermStructure* dividendTS, QlYieldTermStructure* riskFreeTS, QlBlackVolTermStructure* blackVolTS, int d, int forceDiscretization, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlGeneralizedBlackScholesProcess(alloc(new BlackScholesMertonProcess(*arg(x0), *arg(dividendTS), *arg(riskFreeTS), *arg(blackVolTS), createDiscretization1D(d), forceDiscretization))));
   } catch (std::exception& er) {return handleException<QlGeneralizedBlackScholesProcess*>(e, er);}}
-QlGeneralizedBlackScholesProcess* qlBlackScholesProcess(QlQuote* x0, QlYieldTermStructure* riskFreeTS, QlBlackVolTermStructure* blackVolTS, int d, int forceDiscretization, char **e) {
+QlGeneralizedBlackScholesProcess* qlBlackScholesProcess(QlQuote* x0, QlYieldTermStructure* riskFreeTS, QlBlackVolTermStructure* blackVolTS, int d, int forceDiscretization, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlGeneralizedBlackScholesProcess(alloc(new BlackScholesProcess(*arg(x0), *arg(riskFreeTS), *arg(blackVolTS), createDiscretization1D(d), forceDiscretization))));
   } catch (std::exception& er) {return handleException<QlGeneralizedBlackScholesProcess*>(e, er);}}
-QlGeneralizedBlackScholesProcess* qlExtendedBlackScholesMertonProcess(QlQuote* x0, QlYieldTermStructure* dividendTS, QlYieldTermStructure* riskFreeTS, QlBlackVolTermStructure* blackVolTS, int d, int evolDisc, char **e) {
+QlGeneralizedBlackScholesProcess* qlExtendedBlackScholesMertonProcess(QlQuote* x0, QlYieldTermStructure* dividendTS, QlYieldTermStructure* riskFreeTS, QlBlackVolTermStructure* blackVolTS, int d, int evolDisc, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlGeneralizedBlackScholesProcess(alloc(new ExtendedBlackScholesMertonProcess(*arg(x0), *arg(dividendTS), *arg(riskFreeTS), *arg(blackVolTS), createDiscretization1D(d), (ExtendedBlackScholesMertonProcess::Discretization)evolDisc))));
   } catch (std::exception& er) {return handleException<QlGeneralizedBlackScholesProcess*>(e, er);}}
-QlGeneralizedBlackScholesProcess* qlGarmanKohlhagenProcess(QlQuote* x0, QlYieldTermStructure* foreignRiskFreeTS, QlYieldTermStructure* domesticRiskFreeTS, QlBlackVolTermStructure* blackVolTS, int d, int forceDiscretization, char **e) {
+QlGeneralizedBlackScholesProcess* qlGarmanKohlhagenProcess(QlQuote* x0, QlYieldTermStructure* foreignRiskFreeTS, QlYieldTermStructure* domesticRiskFreeTS, QlBlackVolTermStructure* blackVolTS, int d, int forceDiscretization, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlGeneralizedBlackScholesProcess(alloc(new GarmanKohlagenProcess(*arg(x0), *arg(foreignRiskFreeTS), *arg(domesticRiskFreeTS), *arg(blackVolTS), createDiscretization1D(d), forceDiscretization))));
   } catch (std::exception& er) {return handleException<QlGeneralizedBlackScholesProcess*>(e, er);}}
-QlGeneralizedBlackScholesProcess* qlGeneralizedBlackScholesProcess(QlQuote* x0, QlYieldTermStructure* dividendTS, QlYieldTermStructure* riskFreeTS, QlBlackVolTermStructure* blackVolTS, int d, int forceDiscretization, char **e) {
+QlGeneralizedBlackScholesProcess* qlGeneralizedBlackScholesProcess(QlQuote* x0, QlYieldTermStructure* dividendTS, QlYieldTermStructure* riskFreeTS, QlBlackVolTermStructure* blackVolTS, int d, int forceDiscretization, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlGeneralizedBlackScholesProcess(alloc(new GeneralizedBlackScholesProcess(*arg(x0), *arg(dividendTS), *arg(riskFreeTS), *arg(blackVolTS), createDiscretization1D(d), forceDiscretization))));
   } catch (std::exception& er) {return handleException<QlGeneralizedBlackScholesProcess*>(e, er);}}
-QlStochasticProcess1D* qlSquareRootProcess(double b, double a, double sigma, double x0, int d, char **e) {
+QlStochasticProcess1D* qlSquareRootProcess(double b, double a, double sigma, double x0, int d, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlStochasticProcess1D(alloc(new SquareRootProcess(b, a, sigma, x0, createDiscretization1D(d)))));
   } catch (std::exception& er) {return handleException<QlStochasticProcess1D*>(e, er);}}
-QlGeneralizedBlackScholesProcess* qlVegaStressedBlackScholesProcess(QlQuote* x0, QlYieldTermStructure* dividendTS, QlYieldTermStructure* riskFreeTS, QlBlackVolTermStructure* blackVolTS, double lowerTimeBorderForStressTest, double upperTimeBorderForStressTest, double lowerAssetBorderForStressTest, double upperAssetBorderForStressTest, double stressLevel, int d, char **e) {
+QlGeneralizedBlackScholesProcess* qlVegaStressedBlackScholesProcess(QlQuote* x0, QlYieldTermStructure* dividendTS, QlYieldTermStructure* riskFreeTS, QlBlackVolTermStructure* blackVolTS, double lowerTimeBorderForStressTest, double upperTimeBorderForStressTest, double lowerAssetBorderForStressTest, double upperAssetBorderForStressTest, double stressLevel, int d, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlGeneralizedBlackScholesProcess(alloc(new VegaStressedBlackScholesProcess(*arg(x0), *arg(dividendTS), *arg(riskFreeTS), *arg(blackVolTS), lowerTimeBorderForStressTest, upperTimeBorderForStressTest, lowerAssetBorderForStressTest, upperAssetBorderForStressTest, stressLevel, createDiscretization1D(d)))));
   } catch (std::exception& er) {return handleException<QlGeneralizedBlackScholesProcess*>(e, er);}}
 
@@ -1603,7 +1600,7 @@ void qlFreeHestonProcess(QlHestonProcess *o) {del(o);}
 QlStochasticProcess* qlHestonProcessAsStochasticProcess(QlHestonProcess *o) {return ret(new QlStochasticProcess(*arg(o)));}
 void qlFreeHestonSLVProcess(QlHestonSLVProcess *o) {del(o);}
 QlStochasticProcess* qlHestonSLVProcessAsStochasticProcess(QlHestonSLVProcess *o) {return ret(new QlStochasticProcess(*arg(o)));}
-QlHestonSLVProcess* qlHestonSLVProcess(QlHestonProcess* hestonProcess, QlLocalVolTermStructure* leverageFct, double mixingFactor, char **e) {
+QlHestonSLVProcess* qlHestonSLVProcess(QlHestonProcess* hestonProcess, QlLocalVolTermStructure* leverageFct, double mixingFactor, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlHestonSLVProcess(alloc(new HestonSLVProcess(*arg(hestonProcess), *arg(leverageFct), mixingFactor))));
   } catch (std::exception& er) {return handleException<QlHestonSLVProcess*>(e, er);}}
 void qlFreeBatesProcess(QlBatesProcess *o) {del(o);}
@@ -1624,114 +1621,114 @@ void qlFreeHullWhiteProcess(QlHullWhiteProcess *o) {del(o);}
 QlStochasticProcess1D* qlHullWhiteProcessAsStochasticProcess1D(QlHullWhiteProcess *o) {return ret(new QlStochasticProcess1D(*arg(o)));}
 void qlFreeHullWhiteForwardProcess(QlHullWhiteForwardProcess *o) {del(o);}
 QlStochasticProcess1D* qlHullWhiteForwardProcessAsStochasticProcess1D(QlHullWhiteForwardProcess *o) {return ret(new QlStochasticProcess1D(*arg(o)));}
-void qlHullWhiteForwardProcessSetForwardMeasureTime(QlHullWhiteForwardProcess* o, double t, char **e) {
+void qlHullWhiteForwardProcessSetForwardMeasureTime(QlHullWhiteForwardProcess* o, double t, QlError **e) { QlCallScope callbackScope(e);
   try {(*arg(o))->setForwardMeasureTime(t);
   } catch (std::exception& er) {(void)handleException<double>(e, er);}}
-double qlHullWhiteProcessAlpha(QlHullWhiteProcess* o, double t, char **e) {
+double qlHullWhiteProcessAlpha(QlHullWhiteProcess* o, double t, QlError **e) { QlCallScope callbackScope(e);
   try {return (*arg(o))->alpha(t);
   } catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlHullWhiteForwardProcessAlpha(QlHullWhiteForwardProcess* o, double t, char **e) {
+double qlHullWhiteForwardProcessAlpha(QlHullWhiteForwardProcess* o, double t, QlError **e) { QlCallScope callbackScope(e);
   try {return (*arg(o))->alpha(t);
   } catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlHullWhiteForwardProcessB(QlHullWhiteForwardProcess* o, double t, double T, char **e) {
+double qlHullWhiteForwardProcessB(QlHullWhiteForwardProcess* o, double t, double T, QlError **e) { QlCallScope callbackScope(e);
   try {return (*arg(o))->B(t, T);
   } catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlHullWhiteForwardProcessMT(QlHullWhiteForwardProcess* o, double s, double t, double T, char **e) {
+double qlHullWhiteForwardProcessMT(QlHullWhiteForwardProcess* o, double s, double t, double T, QlError **e) { QlCallScope callbackScope(e);
   try {return (*arg(o))->M_T(s, t, T);
   } catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlHybridHestonHullWhiteProcessNumeraire(QlHybridHestonHullWhiteProcess* o, double t, unsigned xLen, double *x, char **e) {
+double qlHybridHestonHullWhiteProcessNumeraire(QlHybridHestonHullWhiteProcess* o, double t, unsigned xLen, double *x, QlError **e) { QlCallScope callbackScope(e);
   try {return (*arg(o))->numeraire(t, Array(x, x+xLen));
   } catch (std::exception& er) {return handleException<double>(e, er);}}
 
 void qlFreeG2Process(QlG2Process *o) {del(o);}
 QlStochasticProcess* qlG2ProcessAsStochasticProcess(QlG2Process *o) {return ret(new QlStochasticProcess(*arg(o)));}
-double qlG2ProcessPhi(QlG2Process* o, double t, char **e) {
+double qlG2ProcessPhi(QlG2Process* o, double t, QlError **e) { QlCallScope callbackScope(e);
   try {return (*arg(o))->phi(t);
   } catch (std::exception& er) {return handleException<double>(e, er);}}
 double qlG2ProcessShortRate(QlG2Process* o, double t, double x, double y) {return (*arg(o))->shortRate(t, x, y);}
 
 void qlFreeG2ForwardProcess(QlG2ForwardProcess *o) {del(o);}
 QlStochasticProcess* qlG2ForwardProcessAsStochasticProcess(QlG2ForwardProcess *o) {return ret(new QlStochasticProcess(*arg(o)));}
-double qlG2ForwardProcessPhi(QlG2ForwardProcess* o, double t, char **e) {
+double qlG2ForwardProcessPhi(QlG2ForwardProcess* o, double t, QlError **e) { QlCallScope callbackScope(e);
   try {return (*arg(o))->phi(t);
   } catch (std::exception& er) {return handleException<double>(e, er);}}
 double qlG2ForwardProcessShortRate(QlG2ForwardProcess* o, double t, double x, double y) {return (*arg(o))->shortRate(t, x, y);}
-void qlG2ForwardProcessSetForwardMeasureTime(QlG2ForwardProcess* o, double t, char **e) {
+void qlG2ForwardProcessSetForwardMeasureTime(QlG2ForwardProcess* o, double t, QlError **e) { QlCallScope callbackScope(e);
   try {(*arg(o))->setForwardMeasureTime(t);
   } catch (std::exception& er) {(void)handleException<double>(e, er);}}
 
-QlBatesProcess* qlBatesProcess(QlYieldTermStructure* riskFreeRate, QlYieldTermStructure* dividendYield, QlQuote* s0, double v0, double kappa, double theta, double sigma, double rho, double lambda, double nu, double delta, int d, char **e) {
+QlBatesProcess* qlBatesProcess(QlYieldTermStructure* riskFreeRate, QlYieldTermStructure* dividendYield, QlQuote* s0, double v0, double kappa, double theta, double sigma, double rho, double lambda, double nu, double delta, int d, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlBatesProcess(alloc(new BatesProcess(*arg(riskFreeRate), *arg(dividendYield), *arg(s0), v0, kappa, theta, sigma, rho, lambda, nu, delta, (HestonProcess::Discretization)d))));
   } catch (std::exception& er) {return handleException<QlBatesProcess*>(e, er);}}
-QlExtendedOrnsteinUhlenbeckProcess* qlExtendedOrnsteinUhlenbeckProcess(double speed, double sigma, double x0, double (*b)(double), int discretization, double intEps, char **e) {
-  try {return ret(new QlExtendedOrnsteinUhlenbeckProcess(alloc(new ExtendedOrnsteinUhlenbeckProcess(speed, sigma, x0, b, (ExtendedOrnsteinUhlenbeckProcess::Discretization)discretization, intEps))));
+QlExtendedOrnsteinUhlenbeckProcess* qlExtendedOrnsteinUhlenbeckProcess(double speed, double sigma, double x0, QlCallback* b, int discretization, double intEps, QlError **e) { QlCallScope callbackScope(e);
+  try {return ret(new QlExtendedOrnsteinUhlenbeckProcess(alloc(new ExtendedOrnsteinUhlenbeckProcess(speed, sigma, x0, hasquant::UnaryCallback{*arg(b)}, (ExtendedOrnsteinUhlenbeckProcess::Discretization)discretization, intEps))));
   } catch (std::exception& er) {return handleException<QlExtendedOrnsteinUhlenbeckProcess*>(e, er);}}
-QlExtendedOrnsteinUhlenbeckProcess* qlLinearSeasonalOrnsteinUhlenbeckProcess(double speed, double sigma, double x0, double a, double k, double c, double phase, int discretization, double intEps, char **e) {
+QlExtendedOrnsteinUhlenbeckProcess* qlLinearSeasonalOrnsteinUhlenbeckProcess(double speed, double sigma, double x0, double a, double k, double c, double phase, int discretization, double intEps, QlError **e) { QlCallScope callbackScope(e);
   try {
     std::function<Real(Real)> b = [a, k, c, phase](Real t) { return a + k*t + c*std::sin(2*M_PI*t + phase); };
     return ret(new QlExtendedOrnsteinUhlenbeckProcess(alloc(new ExtendedOrnsteinUhlenbeckProcess(speed, sigma, x0, b, (ExtendedOrnsteinUhlenbeckProcess::Discretization)discretization, intEps))));
   } catch (std::exception& er) {return handleException<QlExtendedOrnsteinUhlenbeckProcess*>(e, er);}}
-QlExtOUWithJumpsProcess* qlExtOUWithJumpsProcess(QlExtendedOrnsteinUhlenbeckProcess* process, double Y0, double beta, double jumpIntensity, double eta, char **e) {
+QlExtOUWithJumpsProcess* qlExtOUWithJumpsProcess(QlExtendedOrnsteinUhlenbeckProcess* process, double Y0, double beta, double jumpIntensity, double eta, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlExtOUWithJumpsProcess(alloc(new ExtOUWithJumpsProcess(*arg(process), Y0, beta, jumpIntensity, eta))));
   } catch (std::exception& er) {return handleException<QlExtOUWithJumpsProcess*>(e, er);}}
-QlG2ForwardProcess* qlG2ForwardProcess(double a, double sigma, double b, double eta, double rho, QlYieldTermStructure* termStructure, char **e) {
+QlG2ForwardProcess* qlG2ForwardProcess(double a, double sigma, double b, double eta, double rho, QlYieldTermStructure* termStructure, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlG2ForwardProcess(alloc(new G2ForwardProcess(a, sigma, b, eta, rho, qlNullableHandle(arg(termStructure))))));
   } catch (std::exception& er) {return handleException<QlG2ForwardProcess*>(e, er);}}
-QlG2Process* qlG2Process(double a, double sigma, double b, double eta, double rho, QlYieldTermStructure* termStructure, char **e) {
+QlG2Process* qlG2Process(double a, double sigma, double b, double eta, double rho, QlYieldTermStructure* termStructure, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlG2Process(alloc(new G2Process(a, sigma, b, eta, rho, qlNullableHandle(arg(termStructure))))));
   } catch (std::exception& er) {return handleException<QlG2Process*>(e, er);}}
-QlStochasticProcess1D* qlGemanRoncoroniProcess(double x0, double alpha, double beta, double gamma, double delta, double eps, double zeta, double d, double k, double tau, double sig2, double a, double b, double theta1, double theta2, double theta3, double psi, char **e) {
+QlStochasticProcess1D* qlGemanRoncoroniProcess(double x0, double alpha, double beta, double gamma, double delta, double eps, double zeta, double d, double k, double tau, double sig2, double a, double b, double theta1, double theta2, double theta3, double psi, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlStochasticProcess1D(alloc(new GemanRoncoroniProcess(x0, alpha, beta, gamma, delta, eps, zeta, d, k, tau, sig2, a, b, theta1, theta2, theta3, psi))));
   } catch (std::exception& er) {return handleException<QlStochasticProcess1D*>(e, er);}}
-QlStochasticProcess1D* qlGeometricBrownianMotionProcess(double initialValue, double mue, double sigma, char **e) {
+QlStochasticProcess1D* qlGeometricBrownianMotionProcess(double initialValue, double mue, double sigma, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlStochasticProcess1D(alloc(new GeometricBrownianMotionProcess(initialValue, mue, sigma))));
   } catch (std::exception& er) {return handleException<QlStochasticProcess1D*>(e, er);}}
-QlGJRGARCHProcess* qlGJRGARCHProcess(QlYieldTermStructure* riskFreeRate, QlYieldTermStructure* dividendYield, QlQuote* s0, double v0, double omega, double alpha, double beta, double gamma, double lambda, double daysPerYear, int d, char **e) {
+QlGJRGARCHProcess* qlGJRGARCHProcess(QlYieldTermStructure* riskFreeRate, QlYieldTermStructure* dividendYield, QlQuote* s0, double v0, double omega, double alpha, double beta, double gamma, double lambda, double daysPerYear, int d, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlGJRGARCHProcess(alloc(new GJRGARCHProcess(*arg(riskFreeRate), *arg(dividendYield), *arg(s0), v0, omega, alpha, beta, gamma, lambda, daysPerYear, (GJRGARCHProcess::Discretization)d))));
   } catch (std::exception& er) {return handleException<QlGJRGARCHProcess*>(e, er);}}
-QlHestonProcess* qlHestonProcess(QlYieldTermStructure* riskFreeRate, QlYieldTermStructure* dividendYield, QlQuote* s0, double v0, double kappa, double theta, double sigma, double rho, int d, char **e) {
+QlHestonProcess* qlHestonProcess(QlYieldTermStructure* riskFreeRate, QlYieldTermStructure* dividendYield, QlQuote* s0, double v0, double kappa, double theta, double sigma, double rho, int d, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlHestonProcess(alloc(new HestonProcess(*arg(riskFreeRate), qlNullableHandle(arg(dividendYield)), *arg(s0), v0, kappa, theta, sigma, rho, (HestonProcess::Discretization)d))));
   } catch (std::exception& er) {return handleException<QlHestonProcess*>(e, er);}}
-double qlHestonProcessPdf(QlHestonProcess* o, double x, double v, double t, double eps, char **e) {
+double qlHestonProcessPdf(QlHestonProcess* o, double x, double v, double t, double eps, QlError **e) { QlCallScope callbackScope(e);
   try {return (*arg(o))->pdf(x, v, t, eps);} catch (std::exception& er) {return handleException<double>(e, er);}}
-QlHullWhiteForwardProcess* qlHullWhiteForwardProcess(QlYieldTermStructure* h, double a, double sigma, char **e) {
+QlHullWhiteForwardProcess* qlHullWhiteForwardProcess(QlYieldTermStructure* h, double a, double sigma, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlHullWhiteForwardProcess(alloc(new HullWhiteForwardProcess(*arg(h), a, sigma))));
   } catch (std::exception& er) {return handleException<QlHullWhiteForwardProcess*>(e, er);}}
-QlHullWhiteProcess* qlHullWhiteProcess(QlYieldTermStructure* h, double a, double sigma, char **e) {
+QlHullWhiteProcess* qlHullWhiteProcess(QlYieldTermStructure* h, double a, double sigma, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlHullWhiteProcess(alloc(new HullWhiteProcess(*arg(h), a, sigma))));
   } catch (std::exception& er) {return handleException<QlHullWhiteProcess*>(e, er);}}
-QlHybridHestonHullWhiteProcess* qlHybridHestonHullWhiteProcess(QlHestonProcess* hestonProcess, QlHullWhiteForwardProcess* hullWhiteProcess, double corrEquityShortRate, int discretization, char **e) {
+QlHybridHestonHullWhiteProcess* qlHybridHestonHullWhiteProcess(QlHestonProcess* hestonProcess, QlHullWhiteForwardProcess* hullWhiteProcess, double corrEquityShortRate, int discretization, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlHybridHestonHullWhiteProcess(alloc(new HybridHestonHullWhiteProcess(*arg(hestonProcess), *arg(hullWhiteProcess), corrEquityShortRate, (HybridHestonHullWhiteProcess::Discretization)discretization))));
   } catch (std::exception& er) {return handleException<QlHybridHestonHullWhiteProcess*>(e, er);}}
-QlKlugeExtOUProcess* qlKlugeExtOUProcess(double rho, QlExtOUWithJumpsProcess* kluge, QlExtendedOrnsteinUhlenbeckProcess* extOU, char **e) {
+QlKlugeExtOUProcess* qlKlugeExtOUProcess(double rho, QlExtOUWithJumpsProcess* kluge, QlExtendedOrnsteinUhlenbeckProcess* extOU, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlKlugeExtOUProcess(alloc(new KlugeExtOUProcess(rho, *arg(kluge), (*arg(extOU))))));
   } catch (std::exception& er) {return handleException<QlKlugeExtOUProcess*>(e, er);}}
-QlLiborForwardModelProcess* qlLiborForwardModelProcess(unsigned size, QlIborIndex* index, char **e) {
+QlLiborForwardModelProcess* qlLiborForwardModelProcess(unsigned size, QlIborIndex* index, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlLiborForwardModelProcess(alloc(new LiborForwardModelProcess(size, *arg(index)))));
   } catch (std::exception& er) {return handleException<QlLiborForwardModelProcess*>(e, er);}}
-void qlLiborForwardModelProcessFixingDates(QlLiborForwardModelProcess* o, unsigned *len, int **dates, char **e) {
+void qlLiborForwardModelProcessFixingDates(QlLiborForwardModelProcess* o, unsigned *len, int **dates, QlError **e) { QlCallScope callbackScope(e);
   OutArrayResult<int> result(len, dates);
   try {const std::vector<Date>& fixingDates = (*arg(o))->fixingDates();
     int *out = result.allocate((unsigned)fixingDates.size());
     for (unsigned i = 0; i < fixingDates.size(); ++i) out[i] = fixingDates[i].serialNumber();
     result.commit();
   } catch (std::exception& er) {(void)handleException<int*>(e, er);}}
-void qlLiborForwardModelProcessFixingTimes(QlLiborForwardModelProcess* o, unsigned *len, double **times, char **e) {
+void qlLiborForwardModelProcessFixingTimes(QlLiborForwardModelProcess* o, unsigned *len, double **times, QlError **e) { QlCallScope callbackScope(e);
   try {fillVectorOut([&] {return (*arg(o))->fixingTimes();}, len, times);
   } catch (std::exception& er) {(void)handleException<double*>(e, er);}}
-Leg* qlLiborForwardModelProcessCashFlows(QlLiborForwardModelProcess* o, double amount, char **e) {
+Leg* qlLiborForwardModelProcessCashFlows(QlLiborForwardModelProcess* o, double amount, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new Leg((*arg(o))->cashFlows(amount)));
   } catch (std::exception& er) {return handleException<Leg*>(e, er);}}
-QlIborIndex* qlLiborForwardModelProcessIndex(QlLiborForwardModelProcess* o, char **e) {
+QlIborIndex* qlLiborForwardModelProcessIndex(QlLiborForwardModelProcess* o, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlIborIndex((*arg(o))->index()));
   } catch (std::exception& er) {return handleException<QlIborIndex*>(e, er);}}
-void qlLiborForwardModelProcessSetCovarParam(QlLiborForwardModelProcess* o, QlLfmHullWhiteParameterization* param, char **e) {
+void qlLiborForwardModelProcessSetCovarParam(QlLiborForwardModelProcess* o, QlLfmHullWhiteParameterization* param, QlError **e) { QlCallScope callbackScope(e);
   try {(*arg(o))->setCovarParam(*arg(param));
   } catch (std::exception& er) {(void)handleException<double>(e, er);}}
-void qlLiborForwardModelProcessDiscountBond(QlLiborForwardModelProcess* o, unsigned ratesLen, double *rates, unsigned *len, double **dfs, char **e) {
+void qlLiborForwardModelProcessDiscountBond(QlLiborForwardModelProcess* o, unsigned ratesLen, double *rates, unsigned *len, double **dfs, QlError **e) { QlCallScope callbackScope(e);
   try {fillVectorOut([&] {return (*arg(o))->discountBond(std::vector<Rate>(rates, rates+ratesLen));}, len, dfs);
   } catch (std::exception& er) {(void)handleException<double*>(e, er);}}
-void qlLiborForwardModelProcessAccrualTimes(QlLiborForwardModelProcess* o, unsigned *startLen, double **start, unsigned *endLen, double **end, char **e) {
+void qlLiborForwardModelProcessAccrualTimes(QlLiborForwardModelProcess* o, unsigned *startLen, double **start, unsigned *endLen, double **end, QlError **e) { QlCallScope callbackScope(e);
   OutArrayResult<double> startResult(startLen, start);
   OutArrayResult<double> endResult(endLen, end);
   try {const std::vector<Time>& s = (*arg(o))->accrualStartTimes();
@@ -1742,32 +1739,32 @@ void qlLiborForwardModelProcessAccrualTimes(QlLiborForwardModelProcess* o, unsig
     std::copy(t.begin(), t.end(), ends);
     startResult.commit(); endResult.commit();
   } catch (std::exception& er) {(void)handleException<double*>(e, er);}}
-QlMerton76Process* qlMerton76Process(QlQuote* stateVariable, QlYieldTermStructure* dividendTS, QlYieldTermStructure* riskFreeTS, QlBlackVolTermStructure* blackVolTS, QlQuote* jumpInt, QlQuote* logJMean, QlQuote* logJVol, int d, char **e) {
+QlMerton76Process* qlMerton76Process(QlQuote* stateVariable, QlYieldTermStructure* dividendTS, QlYieldTermStructure* riskFreeTS, QlBlackVolTermStructure* blackVolTS, QlQuote* jumpInt, QlQuote* logJMean, QlQuote* logJVol, int d, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlMerton76Process(alloc(new Merton76Process(*arg(stateVariable), *arg(dividendTS), *arg(riskFreeTS), *arg(blackVolTS), *arg(jumpInt), *arg(logJMean), *arg(logJVol), createDiscretization1D(d)))));
   } catch (std::exception& er) {return handleException<QlMerton76Process*>(e, er);}}
-QlStochasticProcess1D* qlOrnsteinUhlenbeckProcess(double speed, double vol, double x0, double level, char **e) {
+QlStochasticProcess1D* qlOrnsteinUhlenbeckProcess(double speed, double vol, double x0, double level, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlStochasticProcess1D(alloc(new OrnsteinUhlenbeckProcess(speed, vol, x0, level))));
   } catch (std::exception& er) {return handleException<QlStochasticProcess1D*>(e, er);}}
-QlVarianceGammaProcess* qlVarianceGammaProcess(QlQuote* s0, QlYieldTermStructure* dividendYield, QlYieldTermStructure* riskFreeRate, double sigma, double nu, double theta, char **e) {
+QlVarianceGammaProcess* qlVarianceGammaProcess(QlQuote* s0, QlYieldTermStructure* dividendYield, QlYieldTermStructure* riskFreeRate, double sigma, double nu, double theta, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlVarianceGammaProcess(alloc(new VarianceGammaProcess(*arg(s0), *arg(dividendYield), *arg(riskFreeRate), sigma, nu, theta))));
   } catch (std::exception& er) {return handleException<QlVarianceGammaProcess*>(e, er);}}
-QlStochasticProcessArray* qlStochasticProcessArray(unsigned x0Len, QlStochasticProcess1D** x0, unsigned correlationRows, unsigned correlationCols, double* correlation, char **e) {
+QlStochasticProcessArray* qlStochasticProcessArray(unsigned x0Len, QlStochasticProcess1D** x0, unsigned correlationRows, unsigned correlationCols, double* correlation, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlStochasticProcessArray(alloc(new StochasticProcessArray(qlVector(x0, x0Len), qlMatrix(correlation, correlationRows, correlationCols)))));
   } catch (std::exception& er) {return handleException<QlStochasticProcessArray*>(e, er);}}
 
 // delWith rather than del(): qlFreePolymorphicPathGeneratorAux does the actual `delete`, since
 // PolymorphicPathGenerator is only forward-declared in this translation unit.
 void qlFreePathGenerator(PolymorphicPathGenerator *gen) {delWith(gen, qlFreePolymorphicPathGeneratorAux);}
-PolymorphicPathGenerator *qlPathGenerator(int rngtrait, QlStochasticProcess *p, TimeGrid *t, unsigned seed, unsigned dim, int brownianBridge, char **e) {
+PolymorphicPathGenerator *qlPathGenerator(int rngtrait, QlStochasticProcess *p, TimeGrid *t, unsigned seed, unsigned dim, int brownianBridge, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(qlPathGeneratorAux(rngtrait, *arg(p), *arg(t), seed, dim, brownianBridge));
   } catch (std::exception& er) {return handleException<PolymorphicPathGenerator*>(e, er);}}
-PolymorphicPathGenerator *qlSobolPathGenerator(int dir, QlStochasticProcess *p, TimeGrid *t, unsigned seed, unsigned dim, int brownianBridge, char **e) {
+PolymorphicPathGenerator *qlSobolPathGenerator(int dir, QlStochasticProcess *p, TimeGrid *t, unsigned seed, unsigned dim, int brownianBridge, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(qlSobolPathGeneratorAux((SobolRsg::DirectionIntegers)dir, *arg(p), *arg(t), seed, dim, brownianBridge));
   } catch (std::exception& er) {return handleException<PolymorphicPathGenerator*>(e, er);}}
-SamplePath *qlPathGeneratorNext(PolymorphicPathGenerator *pgen, char **e) {
+SamplePath *qlPathGeneratorNext(PolymorphicPathGenerator *pgen, QlError **e) { QlCallScope callbackScope(e);
   try {return alloc(new SamplePath(qlPathGeneratorNextAux(pgen)));
   } catch (std::exception& er) {return handleException<SamplePath*>(e, er);}}
-SamplePath *qlPathGeneratorAntithetic(PolymorphicPathGenerator *pgen, char **e) {
+SamplePath *qlPathGeneratorAntithetic(PolymorphicPathGenerator *pgen, QlError **e) { QlCallScope callbackScope(e);
   try {return alloc(new SamplePath(qlPathGeneratorAntitheticAux(pgen)));
   } catch (std::exception& er) {return handleException<SamplePath*>(e, er);}}
 
@@ -1775,7 +1772,7 @@ double qlSamplePathWeight(SamplePath *p) {return arg(p)->weight;}
 unsigned qlSamplePathAssetNumber(SamplePath *p) {return arg(p)->value.assetNumber();}
 unsigned qlSamplePathSize(SamplePath *p) {return arg(p)->value.pathSize();}
 void qlFreeSamplePath(SamplePath *p) {del(p);}
-double qlSamplePathAt(SamplePath *p, unsigned asset, unsigned point, char **e) {try {return arg(p)->value.at(asset).at(point);} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlSamplePathAt(SamplePath *p, unsigned asset, unsigned point, QlError **e) { QlCallScope callbackScope(e);try {return arg(p)->value.at(asset).at(point);} catch (std::exception& er) {return handleException<double>(e, er);}}
 
 // delWith, for the same reason as qlFreePathGenerator above.
 void qlFreeGaussianRsg(PolymorphicGaussianRsg *g) {delWith(g, qlFreePolymorphicGaussianRsgAux);}
@@ -1783,15 +1780,15 @@ void qlFreeGaussianRsg(PolymorphicGaussianRsg *g) {delWith(g, qlFreePolymorphicG
 // freed by qlFreeGaussianRsg -- not a shared_ptr payload. Wrapping it in both verbs would trace one
 // pointer as two acquisitions against a single release, which alloc-summary.py reports as a leak.
 // Same shape as qlPathGenerator below.
-PolymorphicGaussianRsg *qlGaussianRsg(int rngtrait, unsigned dimension, unsigned seed, char **e) {
+PolymorphicGaussianRsg *qlGaussianRsg(int rngtrait, unsigned dimension, unsigned seed, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(qlGaussianRsgAux(rngtrait, dimension, seed));
   } catch (std::exception& er) {return handleException<PolymorphicGaussianRsg*>(e, er);}}
-PolymorphicGaussianRsg *qlSobolGaussianRsg(int dir, unsigned dimension, unsigned seed, char **e) {
+PolymorphicGaussianRsg *qlSobolGaussianRsg(int dir, unsigned dimension, unsigned seed, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(qlSobolGaussianRsgAux((SobolRsg::DirectionIntegers)dir, dimension, seed));
   } catch (std::exception& er) {return handleException<PolymorphicGaussianRsg*>(e, er);}}
 unsigned qlGaussianRsgDimension(PolymorphicGaussianRsg *g) {return qlGaussianRsgDimensionAux(arg(g));}
 
-void qlGaussianRsgNextSequence(PolymorphicGaussianRsg *g, unsigned *len, double **values, double *weight, char **e) {
+void qlGaussianRsgNextSequence(PolymorphicGaussianRsg *g, unsigned *len, double **values, double *weight, QlError **e) { QlCallScope callbackScope(e);
   OutArrayResult<double> valuesResult(len, values);
   OutValue<double> weightResult(weight);
   try {const auto& s = qlGaussianRsgNextSequenceAux(arg(g));
@@ -1799,8 +1796,8 @@ void qlGaussianRsgNextSequence(PolymorphicGaussianRsg *g, unsigned *len, double 
     std::copy(s.value.begin(), s.value.end(), out);
     weightResult.set(s.weight);
     valuesResult.commit(); weightResult.commit();
-  } catch (std::exception& er) {*e = tracedup(er.what());}}
-void qlGaussianRsgLastSequence(PolymorphicGaussianRsg *g, unsigned *len, double **values, double *weight, char **e) {
+  } catch (std::exception& er) {qlSetError(e, er.what());}}
+void qlGaussianRsgLastSequence(PolymorphicGaussianRsg *g, unsigned *len, double **values, double *weight, QlError **e) { QlCallScope callbackScope(e);
   OutArrayResult<double> valuesResult(len, values);
   OutValue<double> weightResult(weight);
   try {const auto& s = qlGaussianRsgLastSequenceAux(arg(g));
@@ -1808,9 +1805,9 @@ void qlGaussianRsgLastSequence(PolymorphicGaussianRsg *g, unsigned *len, double 
     std::copy(s.value.begin(), s.value.end(), out);
     weightResult.set(s.weight);
     valuesResult.commit(); weightResult.commit();
-  } catch (std::exception& er) {*e = tracedup(er.what());}}
+  } catch (std::exception& er) {qlSetError(e, er.what());}}
 
-void qlSamplePathAssetPath(SamplePath *s, unsigned asset, unsigned *len, double **p, char **e) {
+void qlSamplePathAssetPath(SamplePath *s, unsigned asset, unsigned *len, double **p, QlError **e) { QlCallScope callbackScope(e);
   try {fillVectorOut([&] {return std::vector<double>(arg(s)->value.at(asset).begin(), s->value.at(asset).end());}, len, p);
   } catch (std::exception& er) {(void)handleException<double*>(e, er);}}
 
@@ -1818,7 +1815,7 @@ void qlSamplePathAssetPath(SamplePath *s, unsigned asset, unsigned *len, double 
 // fitted continuation value at each evalState -- the cross-path regression step LongstaffSchwartzPathPricer
 // performs once per exercise date, with the payoff/exercise values supplied from Haskell instead of a
 // bound Payoff.
-void qlLsmRegress(int polynomType, unsigned order, unsigned fitStatesLen, double *fitStates, unsigned fitTargetsLen, double *fitTargets, unsigned evalLen, double *evalStates, unsigned *outLen, double **outValues, char **e) {
+void qlLsmRegress(int polynomType, unsigned order, unsigned fitStatesLen, double *fitStates, unsigned fitTargetsLen, double *fitTargets, unsigned evalLen, double *evalStates, unsigned *outLen, double **outValues, QlError **e) { QlCallScope callbackScope(e);
   OutArrayResult<double> result(outLen, outValues);
   try {
     QL_REQUIRE(fitStatesLen == fitTargetsLen, "fit states and fit targets must have the same length");
@@ -1832,11 +1829,11 @@ void qlLsmRegress(int polynomType, unsigned order, unsigned fitStatesLen, double
       values[i] = cont;
     }
     result.commit();
-  } catch (std::exception& er) {*e = tracedup(er.what());}}
+  } catch (std::exception& er) {qlSetError(e, er.what());}}
 
 // Multi-asset counterpart of qlLsmRegress, via LsmBasisSystem::multiPathBasisSystem: fitStates/evalStates
 // are row-major (one row per path, fitCols/evalCols columns = underlyings, which must agree).
-void qlLsmRegressMulti(int polynomType, unsigned order, unsigned fitRows, unsigned fitCols, double *fitStates, unsigned fitTargetsLen, double *fitTargets, unsigned evalRows, unsigned evalCols, double *evalStates, unsigned *outLen, double **outValues, char **e) {
+void qlLsmRegressMulti(int polynomType, unsigned order, unsigned fitRows, unsigned fitCols, double *fitStates, unsigned fitTargetsLen, double *fitTargets, unsigned evalRows, unsigned evalCols, double *evalStates, unsigned *outLen, double **outValues, QlError **e) { QlCallScope callbackScope(e);
   OutArrayResult<double> result(outLen, outValues);
   try {
     QL_REQUIRE(fitCols == evalCols, "fit states and eval states must have the same number of columns (underlyings)");
@@ -1854,33 +1851,33 @@ void qlLsmRegressMulti(int polynomType, unsigned order, unsigned fitRows, unsign
       values[i] = cont;
     }
     result.commit();
-  } catch (std::exception& er) {*e = tracedup(er.what());}}
+  } catch (std::exception& er) {qlSetError(e, er.what());}}
 
-double qlUnsafeSabrLogNormalVolatility(double strike, double forward, double expiryTime, double alpha, double beta, double nu, double rho, char **e) {
+double qlUnsafeSabrLogNormalVolatility(double strike, double forward, double expiryTime, double alpha, double beta, double nu, double rho, QlError **e) { QlCallScope callbackScope(e);
   try {return unsafeSabrLogNormalVolatility(strike, forward, expiryTime, alpha, beta, nu, rho);
   } catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlUnsafeShiftedSabrVolatility(double strike, double forward, double expiryTime, double alpha, double beta, double nu, double rho, double shift, int volatilityType, char **e) {
+double qlUnsafeShiftedSabrVolatility(double strike, double forward, double expiryTime, double alpha, double beta, double nu, double rho, double shift, int volatilityType, QlError **e) { QlCallScope callbackScope(e);
   try {return unsafeShiftedSabrVolatility(strike, forward, expiryTime, alpha, beta, nu, rho, shift, (VolatilityType)volatilityType);
   } catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlUnsafeSabrNormalVolatility(double strike, double forward, double expiryTime, double alpha, double beta, double nu, double rho, char **e) {
+double qlUnsafeSabrNormalVolatility(double strike, double forward, double expiryTime, double alpha, double beta, double nu, double rho, QlError **e) { QlCallScope callbackScope(e);
   try {return unsafeSabrNormalVolatility(strike, forward, expiryTime, alpha, beta, nu, rho);
   } catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlUnsafeSabrVolatility(double strike, double forward, double expiryTime, double alpha, double beta, double nu, double rho, int volatilityType, char **e) {
+double qlUnsafeSabrVolatility(double strike, double forward, double expiryTime, double alpha, double beta, double nu, double rho, int volatilityType, QlError **e) { QlCallScope callbackScope(e);
   try {return unsafeSabrVolatility(strike, forward, expiryTime, alpha, beta, nu, rho, (VolatilityType)volatilityType);
   } catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlSabrVolatility(double strike, double forward, double expiryTime, double alpha, double beta, double nu, double rho, int volatilityType, char **e) {
+double qlSabrVolatility(double strike, double forward, double expiryTime, double alpha, double beta, double nu, double rho, int volatilityType, QlError **e) { QlCallScope callbackScope(e);
   try {return sabrVolatility(strike, forward, expiryTime, alpha, beta, nu, rho, (VolatilityType)volatilityType);
   } catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlShiftedSabrVolatility(double strike, double forward, double expiryTime, double alpha, double beta, double nu, double rho, double shift, int volatilityType, char **e) {
+double qlShiftedSabrVolatility(double strike, double forward, double expiryTime, double alpha, double beta, double nu, double rho, double shift, int volatilityType, QlError **e) { QlCallScope callbackScope(e);
   try {return shiftedSabrVolatility(strike, forward, expiryTime, alpha, beta, nu, rho, shift, (VolatilityType)volatilityType);
   } catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlSabrFlochKennedyVolatility(double strike, double forward, double expiryTime, double alpha, double beta, double nu, double rho, char **e) {
+double qlSabrFlochKennedyVolatility(double strike, double forward, double expiryTime, double alpha, double beta, double nu, double rho, QlError **e) { QlCallScope callbackScope(e);
   try {return sabrFlochKennedyVolatility(strike, forward, expiryTime, alpha, beta, nu, rho);
   } catch (std::exception& er) {return handleException<double>(e, er);}}
-void qlValidateSabrParameters(double alpha, double beta, double nu, double rho, char **e) {
+void qlValidateSabrParameters(double alpha, double beta, double nu, double rho, QlError **e) { QlCallScope callbackScope(e);
   try {validateSabrParameters(alpha, beta, nu, rho);
   } catch (std::exception& er) {(void)handleException<int>(e, er);}}
-void qlSabrGuess(double k_m, double vol_m, double k_0, double vol_0, double k_p, double vol_p, double forward, double expiryTime, double beta, double shift, int volatilityType, unsigned *len, double **out, char **e) {
+void qlSabrGuess(double k_m, double vol_m, double k_0, double vol_0, double k_p, double vol_p, double forward, double expiryTime, double beta, double shift, int volatilityType, unsigned *len, double **out, QlError **e) { QlCallScope callbackScope(e);
   try {fillVectorOut([&] {return sabrGuess(k_m, vol_m, k_0, vol_0, k_p, vol_p, forward, expiryTime, beta, shift, (VolatilityType)volatilityType);}, len, out);
   } catch (std::exception& er) {(void)handleException<double*>(e, er);}}
 }

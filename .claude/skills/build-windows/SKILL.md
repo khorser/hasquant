@@ -108,3 +108,10 @@ tools/symbolize-windows-trace.py windows-test-bin-ghc9.10.3-attempt1 < trace.txt
 Frames `hasquant_test.exe+0x<RVA>` resolve to the nearest map symbol (GHC names
 z-decoded); with `llvm-symbolizer` available (`brew install llvm`), `cbits` frames
 also get file:line. Minidumps need WinDbg or LLVM's `lldb`.
+
+The `memory_stress` workflow-dispatch input runs 100 isolated FDM repetitions and ten
+full-suite seeds under both default and 64 KiB nurseries, recording logs and binary hashes
+in `ci-memory`. The ABI, FDM aliasing, callback ownership/exception, and MultiCurve ownership probes run on every
+Windows job. The MultiCurve probe uses `-A64k` and values a dependent instrument after GC.
+The symbolizer also recovers `pc=0x...` when consistent frame addresses establish the
+runtime executable base and bound the PC within the image.

@@ -40,4 +40,15 @@ main = Context.keepingSettingsGc $ do
   Instrument.isExpired option >>= check . not
   Instrument.isExpired base >>= check . not
   Instrument.isExpired instrument >>= check . not
+  -- Callback-bearing quotes keep their brackets around every dependent and repeated upcast.
+  quote <- Quote.simpleQuote 2
+  Quote.withDerivedQuote (* 3) quote $ \derived ->
+    Quote.withCompositeQuote (+) derived quote $ \combined ->
+      Quote.withMultiCompositeQuote sum [derived, combined] $ \total -> do
+        owner <- Quote.asQuote total >>= Quote.asQuote
+        Context.collectGarbage
+        Quote.value owner >>= check . (== 14)
+        _ <- Quote.setValue quote 4
+        Context.collectGarbage
+        Quote.value owner >>= check . (== 28)
   putStrLn "Hierarchy ownership: OK"

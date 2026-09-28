@@ -1,3 +1,4 @@
+#include "qlCallback.hpp"
 #include <ql/time/date.hpp>
 #include <ql/errors.hpp>
 #include <string.h>
@@ -989,10 +990,8 @@ using QlMargrabeOption = shared_ptr<MargrabeOption>;
 using QlMarkovFunctional = shared_ptr<MarkovFunctional>;
 using QlMerton76Process = shared_ptr<Merton76Process>;
 using QlMultiAssetOption = shared_ptr<MultiAssetOption>;
-// MultiCurve is enable_shared_from_this and upstream's own doc comment says "This must be a
-// shared pointer" -- bound as a standalone leaf type (own Finalizable instance, no Upcastable
-// parent: it isn't a TermStructure), same shape as e.g. QlSwapRateHelper.
-using QlMultiCurve = shared_ptr<MultiCurve>;
+namespace hasquant { class ManagedMultiCurve; }
+using QlMultiCurve = shared_ptr<hasquant::ManagedMultiCurve>;
 using QlNonstandardSwap = shared_ptr<NonstandardSwap>;
 using QlNonstandardSwaption = shared_ptr<NonstandardSwaption>;
 using QlFloatFloatSwap = shared_ptr<FloatFloatSwap>;
@@ -1113,6 +1112,9 @@ using CouponLeg = std::vector<shared_ptr<Coupon> >;
 template <class T> struct ObjClassName {static const char *name() {return typeid(T).name();}};
 #define QL_TRACE_NAME_AS(T, S) template <> struct ObjClassName<T*> {static constexpr const char *name() {return S;}};
 #define QL_TRACE_NAME(T) QL_TRACE_NAME_AS(T, #T)
+QL_TRACE_NAME(QlError)
+QL_TRACE_NAME(QlCallback)
+QL_TRACE_NAME(hasquant::Callback)
 QL_TRACE_NAME(AffineModel)
 QL_TRACE_NAME(AmericanExercise)
 QL_TRACE_NAME(AnalyticBSMHullWhiteEngine)
@@ -1947,8 +1949,8 @@ inline std::vector<Handle<T> > qlHandleVector(Handle<T> **vals, size_t len) {
 }
 
 template <class T>
-T handleException(char **msg, std::exception &e) {
-  *msg = tracedup(e.what());
+T handleException(QlError **msg, std::exception &e) {
+  qlSetError(msg, e.what());
   return 0;
 }
 

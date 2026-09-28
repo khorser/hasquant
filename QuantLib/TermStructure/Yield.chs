@@ -121,7 +121,7 @@ import QuantLib.Quote hiding(linkTo)
 import QuantLib.TermStructure (Reference(..), TermPoint(..), RatePoint(..), setExtrapolation, HasHelperUnderlying(..))
 import Data.Maybe(fromMaybe)
 import Data.List.NonEmpty(NonEmpty, toList)
-import Foreign.Ptr(FunPtr, Ptr)
+import Foreign.Ptr(Ptr)
 import Foreign.Marshal.Alloc(alloca)
 import Foreign.Storable(peek)
 import Foreign.C.Types(CInt, CUInt)
@@ -731,10 +731,8 @@ oisRateHelperWithOptions terms fixedRate idx discountingCurve opts = do
 -- input curves' zero rates expressed with the given compounding and frequency. The result is
 -- live in both inputs.
 --
--- __The resulting curve is valid only inside the continuation, which must span its whole use.__
--- QuantLib stores @f@ and calls it whenever the curve is queried, including from any object that
--- stores the curve. Leaving the continuation frees its function pointer; a later query crashes
--- the process. @f@ must be total: an exception escaping it crosses C++ unsafely.
+-- The curve and its native dependents retain @f@ after the continuation returns.
+-- Callback exceptions are rethrown by the enclosing Haskell call.
 withCompositeZeroYieldStructure :: (Double -> Double -> Double) -- ^f(rate1, rate2)
   -> GenYieldTermStructure y1 -- ^curve1
   -> GenYieldTermStructure y2 -- ^curve2
@@ -745,7 +743,7 @@ withCompositeZeroYieldStructure :: (Double -> Double -> Double) -- ^f(rate1, rat
 withCompositeZeroYieldStructure f c1 c2 comp freq k =
   withQuoteBinaryFun f $ \fp -> qlCompositeZeroYieldStructure c1 c2 fp comp freq >>= k
 {#fun qlCompositeZeroYieldStructure{withYieldTermStructure*`GenYieldTermStructure y1',withYieldTermStructure*`GenYieldTermStructure y2'
-  ,id`FunPtr QuoteBinaryFun',`Compounding',`Frequency',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
+  ,withCallbackPtr*`Callback',`Compounding',`Frequency',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
 
 -- |Rate helper for bootstrapping over BMA swap rates.
 {#fun qlBMASwapRateHelper as bmaSwapRateHelper{withQuote*`GenQuote q' -- ^liborFraction
@@ -1225,6 +1223,10 @@ fittingMethodErrorCode = fmap toEnum . fittingMethodErrorCodeRaw
 -- 'addBootstrappedCurve' -- which returns an /external/ handle to reference the curve by from
 -- then on, and links the internal handle to it (with ownership/observability stripped to avoid
 -- shared_ptr and notification cycles) so the curves' own cross-references resolve.
+--
+-- Instruments outside the cycle must use indexes built on the returned external handles.
+-- Original member handles and their existing dependents also retain the complete cycle.
+-- Internal handles do not retain it and become empty when its last owning reference is released.
 {#fun qlMultiCurve as multiCurve{`Double' -- ^accuracy
   ,preErrorCheck-`String'errorCheck*-}->`MultiCurve'peekMultiCurve*#}
 

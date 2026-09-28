@@ -1556,7 +1556,10 @@ spec = do
             mc <- multiCurve 1.0e-10
             curve3m <- addBootstrappedCurve mc intcurve3m ptr3m
             curve6m <- addBootstrappedCurve mc intcurve6m ptr6m
-            pure (cal, settleFix, euriborDC, thirty360, euribor3m, euribor6m, q, b, discountCurve, curve3m, curve6m)
+            -- Pricing indexes must own the external handles; internal handles do not retain the cycle.
+            pricing3m <- iborIndex Euribor3M (Just curve3m)
+            pricing6m <- iborIndex Euribor6M (Just curve6m)
+            pure (cal, settleFix, euriborDC, thirty360, pricing3m, pricing6m, q, b, discountCurve, curve3m, curve6m)
 
       it "FRA-implied forward rates match the input quote once the 3m/6m curves are bootstrapped together" $
         Context.keepingSettingsGc $ do
@@ -1634,7 +1637,8 @@ spec = do
             curve3m <- addBootstrappedCurve mc intcurve3m ptr3m
             ptrois <- zeroSpreadedTermStructure intcurve3m b IR.Continuous NoFrequency
             curveois <- addNonBootstrappedCurve mc intcurveois ptrois
-            pure (thirty360, euribor3m, q, b, curveois, curve3m)
+            pricing3m <- iborIndex Euribor3M (Just curve3m)
+            pure (thirty360, pricing3m, q, b, curveois, curve3m)
 
       it "a fixed spread over a bootstrapped curve reprices to that spread" $
         Context.keepingSettingsGc $ do

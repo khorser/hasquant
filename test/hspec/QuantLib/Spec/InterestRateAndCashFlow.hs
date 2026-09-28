@@ -2055,6 +2055,7 @@ spec evalDate = do
 
           d0 <- advance cal startDate (1, Days) Following False
           ds <- genDates n d0
+          Context.setEvaluationDate (Just (addDays 1 (last ds)))
           forM_ (zip [0 ..] ds) $ \(k, d) -> addFixing idx d (fixingAt k) False
 
           let rels = [fixingAt k / fixingAt (k - 1) - 1 | k <- [1 .. n]]

@@ -36,6 +36,7 @@ OUT="/tmp/hasquant-smoke-${NAME}"
 BUILD_DIR="${OUT}_build"
 
 EXTRA_OBJECTS=()
+EXTRA_INCLUDES=()
 case "$NAME" in
   CheckResultMarshalling|CheckTemporaryOwnership)
     mkdir -p "$BUILD_DIR"
@@ -46,8 +47,15 @@ case "$NAME" in
     ;;
 esac
 
+if [ "$NAME" = "CheckTemporaryOwnership" ]; then
+  # Internal.Type imports the c2hs callback module; materialize it for this source-level probe.
+  mkdir -p "$BUILD_DIR/QuantLib/Internal"
+  cabal exec -- c2hs --cppopts=-Icbits --output-dir="$BUILD_DIR" --output=QuantLib/Internal/Callback.hs QuantLib/Internal/Callback.chs
+  EXTRA_INCLUDES+=("-i$BUILD_DIR" "-Icbits")
+fi
+
 echo "==> compiling ${SCRIPT}" >&2
-cabal exec -- ghc -itest/smoke -package hasquant "$SCRIPT" "${EXTRA_OBJECTS[@]}" -o "$OUT" -outputdir "$BUILD_DIR" "$@"
+cabal exec -- ghc -itest/smoke "${EXTRA_INCLUDES[@]}" -package hasquant "$SCRIPT" "${EXTRA_OBJECTS[@]}" -o "$OUT" -outputdir "$BUILD_DIR" "$@"
 
 echo "==> running ${OUT}" >&2
 "$OUT"

@@ -115,7 +115,6 @@ module QuantLib.Process
 import QuantLib.Internal
 import QuantLib.Internal.Type
 import Data.List.NonEmpty(NonEmpty, toList)
-import Foreign.Ptr(FunPtr)
 
 {#enum ProcessDiscretization{} deriving(Show,Eq, Read)#}
 {#enum ExtendedBlackScholesMertonProcessDiscretization{} deriving(Show, Eq, Read)#}
@@ -243,15 +242,15 @@ import Foreign.Ptr(FunPtr)
   {`Double' -- ^speed
   ,`Double' -- ^sigma (volatility)
   ,`Double' -- ^x0
-  ,id`FunPtr PayoffFun'
+  ,withCallbackPtr*`Callback'
   ,`ExtendedOrnsteinUhlenbeckProcessDiscretization'
   ,`Double' -- ^intEps
   ,preErrorCheck-`String'errorCheck*-}->`ExtendedOrnsteinUhlenbeckProcess'peekExtendedOrnsteinUhlenbeckProcess*#}
 
 -- |An extended Ornstein-Uhlenbeck process @dx = speed*(b(t) - x)dt + sigma*dW@ with an arbitrary
 -- deterministic mean-reversion level @b@, usable with 'QuantLib.Method.pathGenerator'. The
--- 'FunPtr' backing @b@ is kept alive only for the continuation's duration. The process and any
--- dependent process must not escape it (same rule as 'QuantLib.Quote.withDerivedQuote').
+-- process and its native dependents retain @b@ after the continuation returns.
+-- Callback exceptions are rethrown by the enclosing Haskell call.
 withExtendedOrnsteinUhlenbeckProcess :: Double -- ^speed
   -> Double -- ^sigma
   -> Double -- ^x0
@@ -279,7 +278,7 @@ withExtendedOrnsteinUhlenbeckProcess speed sigma x0 b d intEps k =
 
 -- |Kluge model: an extended Ornstein-Uhlenbeck process plus an exponential-jump component,
 -- S = exp(X + Y) with dX = alpha (mu(t) - X) dt + sigma dW and dY = -beta Y dt + J dN. When the
--- extended process is callback-backed, this result must remain inside the same continuation.
+-- extended process is callback-backed, this result retains its callback.
 {#fun qlExtOUWithJumpsProcess as extOuWithJumpsProcess{withGenStochasticProcess1D*`ExtendedOrnsteinUhlenbeckProcess',`Double' -- ^Y0
   ,`Double' -- ^beta
   ,`Double' -- ^jumpIntensity

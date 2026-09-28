@@ -171,22 +171,19 @@
 --   @t -> location -> value@ pair of functions as an 'FdmInnerValueCalculator'. Unlike every
 --   callback above, this one crosses the language boundary once /per grid node/ -- there is no
 --   batched shape for it anywhere in QuantLib or QuantLib-SWIG, so the real per-call cost is
---   accepted, matching QuantLib-SWIG's own @FdmInnerValueCalculatorDelegate@ precedent. Because the
---   two callbacks are stored /inside/ the returned calculator and invoked again on every later
---   'fdmSolve'\/'fdmInnerValue' call (not just during construction), the calculator is only valid
---   /inside/ this continuation -- it cannot be built with a plain @IO FdmInnerValueCalculator@
---   smart constructor the way the native calculators below can.
+--   accepted, matching QuantLib-SWIG's own @FdmInnerValueCalculatorDelegate@ precedent.
+--   The calculator and native dependents retain both callbacks after the continuation returns;
+--   callback exceptions are rethrown by the enclosing Haskell call.
 --
 -- [@Custom inner values, native@] QuantLib's own concrete 'FdmInnerValueCalculator' subclasses are
 --   bound directly, for the common cases that don't need a per-node Haskell callback at all:
 --   'fdmZeroInnerValue' (always 0), 'fdmCellAveragingInnerValue'\/'fdmLogInnerValue' (a payoff
 --   cell-averaged -- Simpson-integrated across each grid cell, not just evaluated at its center --
 --   with an identity or @exp@ value mapping respectively), and 'fdmLogBasketInnerValue' (the
---   multi-asset counterpart, one @exp@ mapping per dimension). These hold no Haskell callback, so
---   they're plain @IO FdmInnerValueCalculator@ constructors -- except
+--   multi-asset counterpart, one @exp@ mapping per dimension). These retain their payoff,
+--   including any Haskell callback it owns. There is also
 --   'withCustomCellAveragingInnerValue', the one native constructor that /does/ take an explicit
---   @gridMapping@ callback, which needs the same continuation treatment as the fully custom case
---   above. 'fdmAffineG2ModelSwapInnerValue'\/'fdmAffineHullWhiteModelSwapInnerValue' price a swap
+--   @gridMapping@ callback, retained by the native calculator. 'fdmAffineG2ModelSwapInnerValue'\/'fdmAffineHullWhiteModelSwapInnerValue' price a swap
 --   under a calibrated 'QuantLib.Model.G2'\/'QuantLib.Model.HullWhite' model directly -- the same
 --   calculator @fdG2SwaptionEngine@\/@fdHullWhiteSwaptionEngine@ use internally.
 --
@@ -289,17 +286,16 @@ module QuantLib.Method
 #include "ql.h"
 
 import QuantLib.Internal
+import qualified QuantLib.Internal.Callback as Callback
 import QuantLib.Internal.Type hiding (ptr) -- c2hs {#get#} binds its own `ptr'
 import QuantLib.Internal.Common
 {#import QuantLib.Math#}
-import Foreign.C.String(CString)
-import Foreign.C.Types(CUInt, CDouble)
-import Foreign.Ptr(Ptr, FunPtr, nullFunPtr, freeHaskellFunPtr, plusPtr, castPtr)
+import Foreign.C.Types(CDouble)
+import Foreign.Ptr(Ptr, nullPtr, plusPtr, castPtr)
 import Foreign.Marshal.Alloc(alloca)
-import Foreign.Marshal.Array(copyArray)
+import Foreign.Marshal.Array(moveArray)
 import Foreign.Marshal.Utils(fillBytes)
 import Foreign.Storable(sizeOf)
-import Control.Exception(finally, mask)
 import Control.Monad(when)
 import qualified Data.Vector.Storable as V
 
@@ -323,68 +319,33 @@ import qualified Data.Vector.Storable as V
 {#pointer *QlFdmMesher as FdmMesher foreign -> CFdmMesher nocode#}
 {#pointer *QlFdmInnerValueCalculator as FdmInnerValueCalculator foreign -> CFdmInnerValueCalculator nocode#}
 
--- FDM callbacks cross the ABI as one C struct pointer. c2hs reads every field offset from
--- FdmCallbackArgs itself, avoiding a duplicate target-layout contract in Haskell.
-data CFdmCallbackArgs
--- c2hs erases callback-parameter struct pointers in generated imports, so retain its
--- @Ptr ()@ ABI here and cast only before the c2hs-generated field reads.
-type FdmCallbackFun = Ptr () -> IO ()
-foreign import ccall "wrapper" mkFdmCallbackFunPtr :: FdmCallbackFun -> IO (FunPtr FdmCallbackFun)
-
-pokeBoundedFdmResult :: CUInt -> Ptr CDouble -> RealVector -> IO ()
-pokeBoundedFdmResult n out result = do
-  let expected = fromIntegral n
-      copied = min expected (V.length result)
-  V.unsafeWith result $ \p -> copyArray out (castPtr p) copied
+pokeBoundedFdmResult :: Int -> Ptr CDouble -> RealVector -> IO ()
+pokeBoundedFdmResult expected out result = do
+  let copied = min expected (V.length result)
+  V.unsafeWith result $ \p -> moveArray out (castPtr p) copied
   when (copied < expected) $ fillBytes (out `plusPtr` (copied * sizeOf (undefined :: CDouble))) 0 ((expected - copied) * sizeOf (undefined :: CDouble))
 
-withFdmCallbackArgs :: Ptr CFdmCallbackArgs -> (Ptr CDouble -> CUInt -> CUInt -> CDouble -> CDouble -> CDouble -> Ptr CDouble -> IO a) -> IO a
-withFdmCallbackArgs p f = do
-  s <- {#get FdmCallbackArgs.s #} p
-  t1 <- {#get FdmCallbackArgs.t1 #} p
-  t2 <- {#get FdmCallbackArgs.t2 #} p
-  input <- {#get FdmCallbackArgs.input #} p
-  output <- {#get FdmCallbackArgs.output #} p
-  n <- {#get FdmCallbackArgs.size #} p
-  direction <- {#get FdmCallbackArgs.direction #} p
-  f input n direction s t1 t2 output
-
-withFdmApply :: ((Double, Double) -> RealVector -> RealVector) -> (FunPtr FdmCallbackFun -> IO b) -> IO b
-withFdmApply f g = mask $ \restore -> do
-  fp <- mkFdmCallbackFunPtr call
-  restore (g fp) `finally` freeHaskellFunPtr fp
+withFdmResult :: (Callback.CallbackArgs -> RealVector -> RealVector) -> (Ptr () -> IO b) -> IO b
+withFdmResult f use = Callback.withCallback call (`withCallbackPtr` use)
   where
-    call args = withFdmCallbackArgs (castPtr args) $ \xs n _dir _s t1 t2 out -> do
-      x <- borrowRealVector xs n
-      pokeBoundedFdmResult n out (f (realToFrac t1, realToFrac t2) x)
+    call args = do
+      x <- borrowRealVector (Callback.callbackInput args) (fromIntegral (Callback.callbackSize args))
+      pokeBoundedFdmResult (Callback.callbackSize args) (Callback.callbackOutput args) (f args x)
 
-withFdmApplyDirection :: (Int -> (Double, Double) -> RealVector -> RealVector) -> (FunPtr FdmCallbackFun -> IO b) -> IO b
-withFdmApplyDirection f g = mask $ \restore -> do
-  fp <- mkFdmCallbackFunPtr call
-  restore (g fp) `finally` freeHaskellFunPtr fp
-  where
-    call args = withFdmCallbackArgs (castPtr args) $ \xs n dir _s t1 t2 out -> do
-      x <- borrowRealVector xs n
-      pokeBoundedFdmResult n out (f (fromIntegral dir) (realToFrac t1, realToFrac t2) x)
+withFdmApply :: ((Double, Double) -> RealVector -> RealVector) -> (Ptr () -> IO b) -> IO b
+withFdmApply f = withFdmResult $ \args -> f (Callback.callbackTime1 args, Callback.callbackTime2 args)
 
-withFdmSolveSplitting :: (Int -> Double -> (Double, Double) -> RealVector -> RealVector) -> (FunPtr FdmCallbackFun -> IO b) -> IO b
-withFdmSolveSplitting f g = mask $ \restore -> do
-  fp <- mkFdmCallbackFunPtr call
-  restore (g fp) `finally` freeHaskellFunPtr fp
-  where
-    call args = withFdmCallbackArgs (castPtr args) $ \xs n dir s t1 t2 out -> do
-      x <- borrowRealVector xs n
-      pokeBoundedFdmResult n out (f (fromIntegral dir) (realToFrac s) (realToFrac t1, realToFrac t2) x)
+withFdmApplyDirection :: (Int -> (Double, Double) -> RealVector -> RealVector) -> (Ptr () -> IO b) -> IO b
+withFdmApplyDirection f = withFdmResult $ \args ->
+  f (Callback.callbackDirection args) (Callback.callbackTime1 args, Callback.callbackTime2 args)
 
-withMaybeFdmStepCondition :: Maybe (Double -> RealVector -> RealVector) -> (FunPtr FdmCallbackFun -> IO b) -> IO b
-withMaybeFdmStepCondition Nothing g = g nullFunPtr
-withMaybeFdmStepCondition (Just f) g = mask $ \restore -> do
-  fp <- mkFdmCallbackFunPtr call
-  restore (g fp) `finally` freeHaskellFunPtr fp
-  where
-    call args = withFdmCallbackArgs (castPtr args) $ \xs n _dir _s t _t2 out -> do
-      x <- borrowRealVector xs n
-      pokeBoundedFdmResult n out (f (realToFrac t) x)
+withFdmSolveSplitting :: (Int -> Double -> (Double, Double) -> RealVector -> RealVector) -> (Ptr () -> IO b) -> IO b
+withFdmSolveSplitting f = withFdmResult $ \args ->
+  f (Callback.callbackDirection args) (Callback.callbackScalar args) (Callback.callbackTime1 args, Callback.callbackTime2 args)
+
+withMaybeFdmStepCondition :: Maybe (Double -> RealVector -> RealVector) -> (Ptr () -> IO b) -> IO b
+withMaybeFdmStepCondition Nothing use = use nullPtr
+withMaybeFdmStepCondition (Just f) use = withFdmResult (f . Callback.callbackTime1) use
 
 -- |build a multi-asset path generator driven by a pseudo-random number generator (Mersenne Twister, Poisson, or Ziggurat, chosen by the RNG trait) over the given process and time grid.
 {#fun qlPathGenerator as pathGenerator{fromEnumC`RngTrait',withStochasticProcess*`GenStochasticProcess p',withTimeGrid*`TimeGrid'
@@ -689,19 +650,13 @@ concentrating1dMesherMulti start end sz cPoints tol =
   ,preDoubleArray-`RealVector'&peekRealVector*
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
--- Raw import, not a {#fun#}: 'withCustomFdmInnerValueCalculator' below needs the two
--- 'FunPtr's kept alive for as long as the returned 'FdmInnerValueCalculator' can be called into
--- (i.e. across the whole continuation, which typically includes a later 'fdmSolve' call), not
--- just for the duration of this one construction call the way a plain {#fun#}-generated
--- 'withFdmInnerValue' bracket would provide -- see the haddock below.
-foreign import ccall "ql.h qlFdmInnerValueCalculatorFromFunctions"
-  c_qlFdmInnerValueCalculatorFromFunctions :: Ptr CFdmMesher -> FunPtr FdmInnerValueFun -> FunPtr FdmInnerValueFun
-    -> Ptr CString -> IO (Ptr CFdmInnerValueCalculator)
+{#fun qlFdmInnerValueCalculatorFromFunctions{withFdmMesher*`FdmMesher'
+  ,withCallbackPtr*`Callback',withCallbackPtr*`Callback'
+  ,preErrorCheck-`String'errorCheck*-}->`FdmInnerValueCalculator'peekFdmInnerValueCalculator*#}
 
 -- |Wraps a Haskell @t -> location -> value@ pair of @innerValue@\/@avgInnerValue@ functions as a
--- real 'FdmInnerValueCalculator' object, valid only inside the continuation -- the fully custom
--- counterpart to constructors built from QuantLib's own concrete subclasses (bound alongside
--- this, which need no such bracket: they hold no Haskell callback). Unlike every callback
+-- real 'FdmInnerValueCalculator' that retains both callbacks after the continuation returns.
+-- Callback exceptions are rethrown by the enclosing Haskell call. Unlike every callback
 -- 'fdmRollback' takes, this crosses the language boundary once /per grid node/, not once per outer
 -- iteration over the whole grid -- there is no batched \"whole-grid inner value\" shape anywhere
 -- in QuantLib or QuantLib-SWIG. The per-call FFI cost across
@@ -713,13 +668,9 @@ withCustomFdmInnerValueCalculator :: FdmMesher
   -> (Double -> [Double] -> Double) -- ^avgInnerValue(t, location)
   -> (FdmInnerValueCalculator -> IO b) -> IO b
 withCustomFdmInnerValueCalculator mesher iv aiv k =
-  withFdmMesher mesher $ \mesher' ->
-  withFdmInnerValue iv $ \ivFp ->
-  withFdmInnerValue aiv $ \aivFp ->
-  preErrorCheck $ \errPtr -> do
-    res <- c_qlFdmInnerValueCalculatorFromFunctions mesher' ivFp aivFp errPtr
-    errorCheck errPtr
-    peekFdmInnerValueCalculator res >>= k
+  withFdmInnerValue iv $ \inner ->
+  withFdmInnerValue aiv $ \average ->
+  qlFdmInnerValueCalculatorFromFunctions mesher inner average >>= k
 
 -- |'FdmZeroInnerValue' -- an 'FdmInnerValueCalculator' whose @innerValue@\/@avgInnerValue@ are
 -- always 0.
@@ -736,29 +687,19 @@ withCustomFdmInnerValueCalculator mesher iv aiv k =
   ,fromIntegral`Int' -- ^direction
   ,preErrorCheck-`String'errorCheck*-}->`FdmInnerValueCalculator'peekFdmInnerValueCalculator*#}
 
--- Raw import, not a {#fun#}: same FunPtr-lifetime hazard as
--- 'c_qlFdmInnerValueCalculatorFromFunctions' above -- 'gridMapping' is stored inside the C++
--- object and invoked again on every later 'innerValue'\/'avgInnerValue' call, not just during
--- construction.
-foreign import ccall "ql.h qlFdmCellAveragingInnerValueMapped"
-  c_qlFdmCellAveragingInnerValueMapped :: QlPayoff -> Ptr CFdmMesher -> CUInt -> FunPtr FdmGridMappingFun
-    -> Ptr CString -> IO (Ptr CFdmInnerValueCalculator)
+{#fun qlFdmCellAveragingInnerValueMapped{withPayoff*`Payoff',withFdmMesher*`FdmMesher'
+  ,fromIntegral`Int',withCallbackPtr*`Callback'
+  ,preErrorCheck-`String'errorCheck*-}->`FdmInnerValueCalculator'peekFdmInnerValueCalculator*#}
 
 -- |As 'fdmCellAveragingInnerValue', but with an explicit @gridMapping :: Double -> Double@ applied
 -- to each node's location before the payoff sees it (e.g. @exp@ on a log-spot grid, reproducing
 -- 'fdmLogInnerValue' by hand) -- a genuine per-node Haskell callback; see
--- 'withCustomFdmInnerValueCalculator'. The
--- resulting 'FdmInnerValueCalculator' is only valid inside this continuation.
+-- 'withCustomFdmInnerValueCalculator'. The calculator retains the callback after the continuation.
 withCustomCellAveragingInnerValue :: Payoff -> FdmMesher -> Int -> (Double -> Double)
   -> (FdmInnerValueCalculator -> IO b) -> IO b
 withCustomCellAveragingInnerValue payoff mesher direction mapping k =
-  withPayoff payoff $ \payoff' ->
-  withFdmMesher mesher $ \mesher' ->
-  withFdmGridMapping mapping $ \mappingFp ->
-  preErrorCheck $ \errPtr -> do
-    res <- c_qlFdmCellAveragingInnerValueMapped payoff' mesher' (fromIntegral direction) mappingFp errPtr
-    errorCheck errPtr
-    peekFdmInnerValueCalculator res >>= k
+  withFdmGridMapping mapping $ \callback ->
+  qlFdmCellAveragingInnerValueMapped payoff mesher direction callback >>= k
 
 -- |'FdmLogInnerValue(payoff, mesher, direction)' -- 'fdmCellAveragingInnerValue' with the
 -- @gridMapping = exp@ QuantLib itself gives its own dedicated subclass (the standard shape for a

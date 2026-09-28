@@ -1,6 +1,7 @@
 module QuantLib.Spec.Index.Commodity (spec) where
 
 import Test.Hspec
+import Control.Exception (bracket_)
 import Data.List.NonEmpty(fromList)
 
 import QuantLib.Time.Date
@@ -19,7 +20,7 @@ spec = do
       bbl <- barrelUnitOfMeasure
       usd <- commoditySettingsCurrency
       cal <- calendar TARGET
-      idx <- CommodityIndex.commodityIndex "HO index" ho usd bbl cal 1000 Nothing
+      idx <- CommodityIndex.commodityIndex "HO empty index" ho usd bbl cal 1000 Nothing
       CommodityIndex.isEmpty idx `shouldBe` True
 
     it "forecasts a forward price from a forward curve" $ do
@@ -31,7 +32,7 @@ spec = do
       let d0 = 1 `january` 2024
           d1 = 1 `february` 2024
       curve <- CommodityCurve.commodityCurve "HO curve" ho usd bbl cal (fromList [(d0, 70.0), (d1, 71.0)]) dc
-      idx <- CommodityIndex.commodityIndex "HO index" ho usd bbl cal 1000 (Just curve)
+      idx <- CommodityIndex.commodityIndex "HO forward index" ho usd bbl cal 1000 (Just curve)
       CommodityIndex.forwardPrice idx d0 `shouldReturn` 70.0
 
     it "stores and returns historical fixings via QuantLib.Index's generic addFixing/fixing" $ do
@@ -39,11 +40,12 @@ spec = do
       bbl <- barrelUnitOfMeasure
       usd <- commoditySettingsCurrency
       cal <- calendar TARGET
-      idx <- CommodityIndex.commodityIndex "HO index" ho usd bbl cal 1000 Nothing
+      idx <- CommodityIndex.commodityIndex "HO fixing index" ho usd bbl cal 1000 Nothing
       let d0 = 2 `january` 2024 -- a TARGET business day (Jan 1st is a holiday)
-      addFixing idx d0 72.5 False
-      CommodityIndex.isEmpty idx `shouldBe` False
-      CommodityIndex.lastQuoteDate idx `shouldReturn` d0
-      fixing idx d0 False `shouldReturn` 72.5
+      bracket_ (clearFixings idx) (clearFixings idx) $ do
+        addFixing idx d0 72.5 False
+        CommodityIndex.isEmpty idx `shouldBe` False
+        CommodityIndex.lastQuoteDate idx `shouldReturn` d0
+        fixing idx d0 False `shouldReturn` 72.5
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

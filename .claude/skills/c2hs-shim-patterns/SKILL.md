@@ -107,7 +107,7 @@ Currency;`).
 ## Multi-output shims
 
 **A `{#fun#}` with more than one output value** (an out-parameter beyond
-the trailing `char **e` error slot, e.g. a shim returning both a `double`
+the trailing `QlError **e` error slot, e.g. a shim returning both a `double`
 and a `Currency*`) uses c2hs's `alloca-` marshaller on the extra pointer
 argument: `alloca-\`T'peekT*` allocates space, passes the pointer to C, and
 after the call peeks the result — a stock c2hs idiom, first used here in
@@ -126,7 +126,7 @@ after the call peeks the result — a stock c2hs idiom, first used here in
   not.
 
 **A `{#fun#}` with no primary return value and two output params** (a
-length + a `T**`/`double*` array, no `char**` slot involved) uses
+length + a `T**`/`double*` array, no `QlError**` slot involved) uses
 `preArray` (`QuantLib/Internal.hs`), not `alloca-`. `alloca-` (see above)
 allocates space for exactly *one* extra `Storable` out-param alongside a
 primary C return value; passing it two out-params for a void-returning
@@ -159,7 +159,7 @@ holders above for out-parameters, `allocShared` for objects immediately adopted 
 holders value-initialize their spines, so their destructors can release every slot after a
 mid-loop exception. Catch blocks translate exceptions only; they never free allocations.
 
-**Converting a `{#fun pure ...#}` binding to add `char **e`/`preErrorCheck`
+**Converting a `{#fun pure ...#}` binding to add `QlError **e`/`preErrorCheck`
 requires dropping `pure` too — a pure/`unsafePerformIO`-backed binding
 throwing a C++ exception across the FFI boundary is undefined behavior.**
 There is no existing (nor safe) example of `pure` combined with
@@ -173,8 +173,8 @@ name (not just the `.chs` file) before starting, since the ripple is often
 zero (many `{#fun pure#}` bindings with no caller yet) but isn't always.
 
 **`bad_alloc`-only sites are a real, lower-severity tier of the same gap:**
-a shim doing a bare `new`/`ret(new ...)` with no `char **e` at all can only
-really throw `std::bad_alloc`, but the fix (`char **e` + `try`/`catch` +
+a shim doing a bare `new`/`ret(new ...)` with no `QlError **e` at all can only
+really throw `std::bad_alloc`, but the fix (`QlError **e` + `try`/`catch` +
 `preErrorCheck`) is identical and worth doing wherever a sibling function
 in the same file already has the guard — the inconsistency itself is the
 signal, not the theoretical severity. Two traps found doing this pass:
@@ -191,20 +191,20 @@ signal, not the theoretical severity. Two traps found doing this pass:
   shim is exactly the shape most likely to be waved through without that
   check.
 - **`handleException<T>(msg, exc)` (`qlaux.h`) cannot be instantiated at
-  `T = void`** — its body is `*msg = tracedup(exc.what()); return 0;`, and
+  `T = void`** — its body is `qlSetError(msg, exc.what()); return 0;`, and
   `return 0;` in a function returning `void` is a hard compile error (`void
   function should not return a value`), not silently treated as `return;`.
-  For a `void`-returning shim, inline `*e = tracedup(er.what());` directly in
+  For a `void`-returning shim, inline `qlSetError(e, er.what());` directly in
   the `catch` block instead (precedent: `qlInstrumentAdditionalResults` and
   others already do this) rather than reaching for the generic helper.
 
 **A bare `tracedup(...)`-only string getter, or a bare `ret(new QlY(*arg(o)))`
 upcast shim, is not itself part of this exception-safety sweep even when
 it sits textually next to fixed siblings.** These are a deliberately uniform convention across `cbits/` —
-none of them takes `char **e`, and the only theoretical throw is
+none of them takes `QlError **e`, and the only theoretical throw is
 `bad_alloc` from the wrapping allocation itself. Don't retrofit one just
 because a neighboring function in the same audit bullet or file got fixed
-for a different reason. Adding `char **e` to these shims requires a deliberate
+for a different reason. Adding `QlError **e` to these shims requires a deliberate
 repository-wide policy change.
 
 ## Optional and any arguments
@@ -254,11 +254,11 @@ Consequences:
   `relinkable-spike.md` has the numbers (RSS −0.2%, growth loop flat to
   20,000 iterations, allocation-trace lifecycle counts identical to a
   control). Don't re-run it for a new handle-shaped type; it established a
-  property of `Handle<T>`. One caveat it depends on: nothing here is
-  `-threaded`, and finalizers are C `FinalizerPtr`s that GHC runs inside
-  the GC, so a finalizer can never mutate QuantLib's observer graph during
-  a call. This build has `QL_ENABLE_THREAD_SAFE_OBSERVER_PATTERN` **off**,
-  so adding `-threaded` would reopen that.
+  property of `Handle<T>`. This build is non-threaded and uses C finalizers, but
+  callback re-entry can allocate and run GC before native code returns. Do not infer
+  absence of observer-graph re-entrancy from the runtime setting. The build has
+  `QL_ENABLE_THREAD_SAFE_OBSERVER_PATTERN` **off**; threaded graph mutation would
+  require a separate concurrency audit.
 
 ## Upcast shims
 
@@ -825,6 +825,39 @@ clear the slot under masking when taking ownership; pointer-array converters als
 clear each element slot only after its finalizer has been installed successfully.
 A pointer converter must leave its element unowned if it throws.
 
-`preErrorCheck` masks the FFI/result-adoption interval and owns the exception string.
+`preErrorCheck` masks the FFI/result-adoption interval and owns the structured `QlError`.
 A string-returning call with no error slot needs a masked wrapper around the call
 and decoding; masking only inside `peekDynString` starts after the handoff window.
+
+## Borrowed callback vectors
+
+A callback can return its input vector or a slice. When native input and output alias
+(FDM step conditions), use `moveArray`, not `copyArray`, before padding the output.
+Do not retain a `borrowRealVector` view beyond the callback; it has no native owner.
+Test field decoding independently of pricing: fixtures often ignore times or directions.
+
+Stored callbacks use `QuantLib.Internal.Callback`: a managed Haskell owner and a native
+shared owner retain the function pointer across escaped ADTs, objects, and native dependents.
+Every callback uses one `QlCallbackArgs` pointer and returns null or an opaque stable exception.
+Catch `SomeException` around result evaluation and copying, not just the callback expression.
+The native adapter throws only after Haskell returns. Each callback-reachable C entry needs a
+`QlError **e`, `QlCallScope` within that same entry, and a native exception catch. The scope records
+the first failure even if upstream catches it; nested entries restore the preceding scope.
+`preErrorCheck` rethrows the saved Haskell exception after result adoption/cleanup. Never establish
+thread-local scopes across separate FFI calls, which need not execute on the same native thread.
+
+The last native owner calls RTS `hs_free_fun_ptr` directly, never a Haskell cleanup callback.
+GHC explicitly supports freeing function/stable pointers from finalizers after releasing its
+stable-pointer-table lock (see [GHC 9.10.3 GC.c](https://github.com/ghc/ghc/blob/ghc-9.10.3-release/rts/sm/GC.c)).
+Pass these C function addresses into the native owner; don't add RTS library dependencies to cbits.
+
+## MultiCurve internal handles are non-owning
+
+`MultiCurve::addCurve` deliberately relinks internal handles with `null_deleter` and
+disables their notifications. Build pricing indexes on the returned external handles,
+not the internal handles used by rate helpers. Otherwise GC can destroy the complete
+curve cycle while a live index still points into it. The shim's managed MultiCurve promotes original member handles to group ownership and
+clears internal links before member destruction. Existing dependents of original handles therefore
+retain the group too; escaped internal indexes report an empty curve rather than dereference freed
+memory. Internal handles remain inappropriate for external pricing because they omit notifications.
+Exercise dependent instruments after `collectGarbage` and under a small RTS nursery.

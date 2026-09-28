@@ -45,11 +45,14 @@ The `Ql*AsY` upcast shims this needs (`cbits/*.cpp`) are the standard `ret(new Q
 
 ## Stored Haskell callbacks
 
-If a C++ object stores a Haskell callback and invokes it later, the `FunPtr` bracket must span the object's whole use, not only its constructor. Represent the callback-bearing case in the Haskell ADT and expose a continuation such as `withCustomPayoff`; free the callback only after the continuation finishes. An argument-position marshaller would free it as soon as construction returned.
+Use `QuantLib.Internal.Callback` for every Haskell callback stored by C++. The ADT holds its
+managed `Callback`, and each native materialization copies shared ownership. Both an escaped
+Haskell ADT and an escaped native dependent must retain the function pointer. A continuation
+alone cannot enforce lifetime. See `c2hs-shim-patterns` for exception transport and finalizer rules.
 
 Before exposing a callback abstraction, inspect its consumers. Prefer an upstream inner primitive that lets Haskell own the outer loop; otherwise batch the callback to the coarsest granularity the upstream algorithm supports. Keep a fine-grained callback only when upstream itself consumes one element at a time.
 
-Custom payoff compatibility is consumer-specific. Most pricing engines require a built-in `StrikedTypePayoff`; on QuantLib <= 1.43, `FdBlackScholesVanillaEngine` and `FdHestonVanillaEngine` dereference a failed cast instead of throwing (fixed in QuantLib 1.44). Use the custom striked-payoff form for those engines and document compatibility on every public consumer that accepts a custom payoff. The supplied option type and strike guide the grid; they do not redefine the callback payoff.
+Custom payoff compatibility is consumer-specific. Most pricing engines require a built-in `StrikedTypePayoff`; on QuantLib <= 1.43, `FdBlackScholesVanillaEngine` and `FdHestonVanillaEngine` dereference a failed cast instead of throwing (fixed in QuantLib 1.44). The shim checks this cast before calling either engine. Use the custom striked-payoff form for those engines and document compatibility on every public consumer that accepts a custom payoff. The supplied option type and strike guide the grid; they do not redefine the callback payoff.
 
 ## Verification
 

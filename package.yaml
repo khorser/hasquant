@@ -40,6 +40,7 @@ flags:
     manual: True
 extra-source-files:
   - cbits/*.h
+  - cbits/*.hpp
   - README.md
   - cabal.project.local.WINDOWS
   - tools/api-name-map-0.7.txt
@@ -101,6 +102,7 @@ library:
     - QuantLib.PricingEngine
   other-modules:
     - QuantLib.Internal
+    - QuantLib.Internal.Callback
     - QuantLib.Internal.Common
     - QuantLib.Internal.Syntax
     - QuantLib.Internal.CalendarEnum
@@ -131,6 +133,7 @@ library:
 
 tests:
   hasquant_test:
+    ghc-options: -rtsopts
     main: QuantLib/MainTest.hs
     source-dirs:
       - test/hspec

@@ -32,7 +32,7 @@ import QuantLib.TermStructure.Volatility
 import QuantLib.TermStructure.Yield
 
 main :: IO ()
-main = do
+main = keepingSettingsGc $ do
   setEvaluationDate (Just evalDate)
   dc <- dayCounter Actual365FixedStandard
   underQ <- simpleQuote spot
@@ -92,12 +92,8 @@ main = do
     npv opt
   check "custom payoff vs native, through mcAmericanEngine" nativeMC customMC 0
 
-  -- withCustomStrikedPayoff: fdBlackScholesVanillaEngine dynamic_pointer_casts the payoff to
-  -- StrikedTypePayoff with NO null check and calls ->strike() for its mesher geometry
-  -- (fdblackscholesvanillaengine.cpp:154-166). A withCustomPayoff payoff crashes there; a
-  -- withCustomStrikedPayoff one carries a real strike, so the cast succeeds and the engine prices
-  -- the Haskell function correctly. Checked against the native PlainVanilla payoff through the
-  -- same engine: identical, since the payoff values are identical and the strike given matches.
+  -- A striked callback supplies the grid geometry required by the FD engine.
+  -- With identical payoff values and strike, it matches the native payoff exactly.
   let fdEngine = fdBlackScholesVanillaEngine bsmProc [] 100 200 0 Douglas False 0.0 CashDividendSpot
   nativeFdOpt <- vanillaOption (PlainVanilla (PlainVanillaPayoff Call strike)) americanEx
   nativeFdInst <- asOneAssetOption nativeFdOpt

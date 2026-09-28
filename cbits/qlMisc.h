@@ -3,14 +3,14 @@ extern "C" {
 #endif
   int qlSettingsEvaluationDate();
   int qlSettingsEnforceTodaysHistoricFixings();
-  void qlSettingsSetEvaluationDate(int x, char **e);
+  void qlSettingsSetEvaluationDate(int x, QlError **e);
   void qlSettingsSetEnforceTodaysHistoricFixings(int x);
   int qlSettingsIncludeTodaysCashFlows();
   void qlSettingsSetIncludeTodaysCashFlows(int x);
   int qlSettingsIncludeReferenceDateEvents();
   void qlSettingsSetIncludeReferenceDateEvents(int x0);
   void qlObservableSettingsDisableUpdates(int deferred);
-  void qlObservableSettingsEnableUpdates(char **e);
+  void qlObservableSettingsEnableUpdates(QlError **e);
   int qlObservableSettingsUpdatesEnabled();
   int qlObservableSettingsUpdatesDeferred();
   void *qlSavedSettings();
@@ -30,7 +30,7 @@ extern "C" {
   double qlNullReal();
   double qlEpsilon();
 
-  Currency *qlCurrency(int ccy, char **e);
+  Currency *qlCurrency(int ccy, QlError **e);
   const char *qlCurrencyName(Currency *currency);
 
   void qlFreeCurrency(Currency *currency);
@@ -39,60 +39,60 @@ extern "C" {
   char* qlCurrencyFractionSymbol(Currency* o);
   int qlCurrencyNumericCode(Currency* o);
   char* qlCurrencySymbol(Currency* o);
-  Currency* qlCreateCurrency(char* name, char* code, int numericCode, char* symbol, char* fractionSymbol, int fractionsPerUnit, Rounding* rounding, Currency* triangulationCurrency, char **e);
+  Currency* qlCreateCurrency(char* name, char* code, int numericCode, char* symbol, char* fractionSymbol, int fractionsPerUnit, Rounding* rounding, Currency* triangulationCurrency, QlError **e);
 
-  ExchangeRate *qlExchangeRate(Currency *source, Currency *target, double rate, char **e);
+  ExchangeRate *qlExchangeRate(Currency *source, Currency *target, double rate, QlError **e);
   void qlFreeExchangeRate(ExchangeRate *o);
   double qlExchangeRateRate(ExchangeRate *o);
   int qlExchangeRateType_(ExchangeRate *o);
-  double qlExchangeRateExchange(ExchangeRate *o, double amount, Currency *ccy, Currency **outCcy, char **e);
-  ExchangeRate *qlExchangeRateChain(ExchangeRate *r1, ExchangeRate *r2, char **e);
+  double qlExchangeRateExchange(ExchangeRate *o, double amount, Currency *ccy, Currency **outCcy, QlError **e);
+  ExchangeRate *qlExchangeRateChain(ExchangeRate *r1, ExchangeRate *r2, QlError **e);
 
-  void qlExchangeRateManagerAdd(ExchangeRate *rate, int startSerial, int endSerial, char **e);
-  ExchangeRate *qlExchangeRateManagerLookup(Currency *source, Currency *target, int dateSerial, int type, char **e);
+  void qlExchangeRateManagerAdd(ExchangeRate *rate, int startSerial, int endSerial, QlError **e);
+  ExchangeRate *qlExchangeRateManagerLookup(Currency *source, Currency *target, int dateSerial, int type, QlError **e);
   void qlExchangeRateManagerClear();
 
   int qlMoneySettingsConversionType();
   void qlMoneySettingsSetConversionType(int t);
-  Currency *qlMoneySettingsBaseCurrency(char **e);
+  Currency *qlMoneySettingsBaseCurrency(QlError **e);
   void qlMoneySettingsSetBaseCurrency(Currency *c);
-  double qlConvertToBaseCurrency(double amount, Currency *ccy, Currency **outCcy, char **e);
+  double qlConvertToBaseCurrency(double amount, Currency *ccy, Currency **outCcy, QlError **e);
 
-  InterestRate *qlInterestRate(double r, DayCounter *dc, int comp, int freq, char **e);
-  double qlInterestRateCompoundFactor1(InterestRate* o, int d1, int d2, int refStart, int refEnd, char **e);
-  double qlInterestRateCompoundFactor(InterestRate* o, double t, char **e);
-  double qlInterestRateDiscountFactor1(InterestRate* o, int d1, int d2, int refStart, int refEnd, char **e);
-  double qlInterestRateDiscountFactor(InterestRate* o, double t, char **e);
-  InterestRate* qlInterestRateEquivalentRate1(InterestRate* o, DayCounter* resultDC, int comp, int freq, int d1, int d2, int refStart, int refEnd, char **e);
-  InterestRate* qlInterestRateEquivalentRate(InterestRate* o, int comp, int freq, double t, char **e);
-  InterestRate* qlInterestRateImpliedRate1(InterestRate* o, double compound, DayCounter* resultDC, int comp, int freq, int d1, int d2, int refStart, int refEnd, char **e);
-  InterestRate* qlInterestRateImpliedRate(InterestRate* o, double compound, DayCounter* resultDC, int comp, int freq, double t, char **e);
+  InterestRate *qlInterestRate(double r, DayCounter *dc, int comp, int freq, QlError **e);
+  double qlInterestRateCompoundFactor1(InterestRate* o, int d1, int d2, int refStart, int refEnd, QlError **e);
+  double qlInterestRateCompoundFactor(InterestRate* o, double t, QlError **e);
+  double qlInterestRateDiscountFactor1(InterestRate* o, int d1, int d2, int refStart, int refEnd, QlError **e);
+  double qlInterestRateDiscountFactor(InterestRate* o, double t, QlError **e);
+  InterestRate* qlInterestRateEquivalentRate1(InterestRate* o, DayCounter* resultDC, int comp, int freq, int d1, int d2, int refStart, int refEnd, QlError **e);
+  InterestRate* qlInterestRateEquivalentRate(InterestRate* o, int comp, int freq, double t, QlError **e);
+  InterestRate* qlInterestRateImpliedRate1(InterestRate* o, double compound, DayCounter* resultDC, int comp, int freq, int d1, int d2, int refStart, int refEnd, QlError **e);
+  InterestRate* qlInterestRateImpliedRate(InterestRate* o, double compound, DayCounter* resultDC, int comp, int freq, double t, QlError **e);
   double qlInterestRateRate(InterestRate* o);
   void qlFreeInterestRate(InterestRate *rate);
 
   void qlFreeConstraint(Constraint *o);
-  Constraint* qlBoundaryConstraint(double low, double high, char **e);
-  Constraint* qlCompositeConstraint(Constraint* c1, Constraint* c2, char **e);
-  Constraint* qlNoConstraint(char **e);
-  Constraint* qlPositiveConstraint(char **e);
+  Constraint* qlBoundaryConstraint(double low, double high, QlError **e);
+  Constraint* qlCompositeConstraint(Constraint* c1, Constraint* c2, QlError **e);
+  Constraint* qlNoConstraint(QlError **e);
+  Constraint* qlPositiveConstraint(QlError **e);
 
   void qlFreeOptimizationMethod(QlOptimizationMethod *o);
-  QlOptimizationMethod* qlSimplex(double lambda, char **e);
-  QlOptimizationMethod* qlLevenbergMarquardt(double epsfcn, double xtol, double gtol, int useCostFunctionsJacobian, char **e);
+  QlOptimizationMethod* qlSimplex(double lambda, QlError **e);
+  QlOptimizationMethod* qlLevenbergMarquardt(double epsfcn, double xtol, double gtol, int useCostFunctionsJacobian, QlError **e);
   void qlFreeEndCriteria(QlEndCriteria *o);
-  QlEndCriteria* qlEndCriteria(unsigned maxIterations, unsigned maxStationaryStateIterations, double rootEpsilon, double functionEpsilon, double gradientNormEpsilon, char **e);
+  QlEndCriteria* qlEndCriteria(unsigned maxIterations, unsigned maxStationaryStateIterations, double rootEpsilon, double functionEpsilon, double gradientNormEpsilon, QlError **e);
 
   // Minimizes a Haskell-defined cost function (called once per outer optimizer iteration, over
   // the whole parameter vector -- see the HsCostFunction comment in qlMisc.cpp) via QuantLib's
   // general-purpose Problem/OptimizationMethod machinery.
-  void qlOptimize(double (*costFn)(double*, unsigned), unsigned x0Len, double* x0, Constraint* constraint, QlOptimizationMethod* method, QlEndCriteria* endCriteria, unsigned* outLen, double** outValues, double* outCost, int* outEndCriteriaType, char **e);
+  void qlOptimize(QlCallback* costFn, unsigned x0Len, double* x0, Constraint* constraint, QlOptimizationMethod* method, QlEndCriteria* endCriteria, unsigned* outLen, double** outValues, double* outCost, int* outEndCriteriaType, QlError **e);
   void qlFreeTimeGrid(TimeGrid *o);
-  TimeGrid* qlTimeGrid1(double end, unsigned steps, char **e);
-  TimeGrid* qlTimeGrid2(unsigned x0Len, double* x0, char **e);
-  TimeGrid* qlTimeGrid3(unsigned x0Len, double* x0, unsigned steps, char **e);
+  TimeGrid* qlTimeGrid1(double end, unsigned steps, QlError **e);
+  TimeGrid* qlTimeGrid2(unsigned x0Len, double* x0, QlError **e);
+  TimeGrid* qlTimeGrid3(unsigned x0Len, double* x0, unsigned steps, QlError **e);
   unsigned qlTimeGridSize(TimeGrid* t);
-  double qlTimeGridAt(TimeGrid* t, unsigned i, char **e);
-  void qlTimeGridPoints(TimeGrid *t, unsigned *len, double **p, char **e);
+  double qlTimeGridAt(TimeGrid* t, unsigned i, QlError **e);
+  void qlTimeGridPoints(TimeGrid *t, unsigned *len, double **p, QlError **e);
 
   /* RiskStatistics (ql/math/statistics/riskstatistics.hpp) -- a local
      GenericRiskStatistics<GaussianStatistics> built fresh from the caller's own sample
@@ -100,28 +100,28 @@ extern "C" {
      and gaussian-assumption (GenericGaussianStatistics) risk measures with no accumulator
      object surfaced to Haskell -- mirrors the qlHistoricalIndexAnalysis* accessors above, but
      over a caller-supplied sample instead of an index's historical fixings. */
-  double qlRiskStatisticsMean(unsigned n, double *xs, char **e);
-  double qlRiskStatisticsStandardDeviation(unsigned n, double *xs, char **e);
-  double qlRiskStatisticsVariance(unsigned n, double *xs, char **e);
-  double qlRiskStatisticsSkewness(unsigned n, double *xs, char **e);
-  double qlRiskStatisticsKurtosis(unsigned n, double *xs, char **e);
-  double qlRiskStatisticsMin(unsigned n, double *xs, char **e);
-  double qlRiskStatisticsMax(unsigned n, double *xs, char **e);
-  double qlRiskStatisticsSemiVariance(unsigned n, double *xs, char **e);
-  double qlRiskStatisticsSemiDeviation(unsigned n, double *xs, char **e);
-  double qlRiskStatisticsDownsideVariance(unsigned n, double *xs, char **e);
-  double qlRiskStatisticsDownsideDeviation(unsigned n, double *xs, char **e);
-  double qlRiskStatisticsPercentile(unsigned n, double *xs, double y, char **e);
-  double qlRiskStatisticsGaussianPercentile(unsigned n, double *xs, double y, char **e);
-  double qlRiskStatisticsValueAtRisk(unsigned n, double *xs, double y, char **e);
-  double qlRiskStatisticsGaussianValueAtRisk(unsigned n, double *xs, double y, char **e);
-  double qlRiskStatisticsExpectedShortfall(unsigned n, double *xs, double y, char **e);
-  double qlRiskStatisticsGaussianExpectedShortfall(unsigned n, double *xs, double y, char **e);
-  double qlRiskStatisticsPotentialUpside(unsigned n, double *xs, double y, char **e);
-  double qlRiskStatisticsGaussianPotentialUpside(unsigned n, double *xs, double y, char **e);
-  double qlRiskStatisticsRegret(unsigned n, double *xs, double y, char **e);
-  double qlRiskStatisticsShortfall(unsigned n, double *xs, double y, char **e);
-  double qlRiskStatisticsAverageShortfall(unsigned n, double *xs, double y, char **e);
+  double qlRiskStatisticsMean(unsigned n, double *xs, QlError **e);
+  double qlRiskStatisticsStandardDeviation(unsigned n, double *xs, QlError **e);
+  double qlRiskStatisticsVariance(unsigned n, double *xs, QlError **e);
+  double qlRiskStatisticsSkewness(unsigned n, double *xs, QlError **e);
+  double qlRiskStatisticsKurtosis(unsigned n, double *xs, QlError **e);
+  double qlRiskStatisticsMin(unsigned n, double *xs, QlError **e);
+  double qlRiskStatisticsMax(unsigned n, double *xs, QlError **e);
+  double qlRiskStatisticsSemiVariance(unsigned n, double *xs, QlError **e);
+  double qlRiskStatisticsSemiDeviation(unsigned n, double *xs, QlError **e);
+  double qlRiskStatisticsDownsideVariance(unsigned n, double *xs, QlError **e);
+  double qlRiskStatisticsDownsideDeviation(unsigned n, double *xs, QlError **e);
+  double qlRiskStatisticsPercentile(unsigned n, double *xs, double y, QlError **e);
+  double qlRiskStatisticsGaussianPercentile(unsigned n, double *xs, double y, QlError **e);
+  double qlRiskStatisticsValueAtRisk(unsigned n, double *xs, double y, QlError **e);
+  double qlRiskStatisticsGaussianValueAtRisk(unsigned n, double *xs, double y, QlError **e);
+  double qlRiskStatisticsExpectedShortfall(unsigned n, double *xs, double y, QlError **e);
+  double qlRiskStatisticsGaussianExpectedShortfall(unsigned n, double *xs, double y, QlError **e);
+  double qlRiskStatisticsPotentialUpside(unsigned n, double *xs, double y, QlError **e);
+  double qlRiskStatisticsGaussianPotentialUpside(unsigned n, double *xs, double y, QlError **e);
+  double qlRiskStatisticsRegret(unsigned n, double *xs, double y, QlError **e);
+  double qlRiskStatisticsShortfall(unsigned n, double *xs, double y, QlError **e);
+  double qlRiskStatisticsAverageShortfall(unsigned n, double *xs, double y, QlError **e);
 
   /* Matrix decompositions (ql/math/matrixutilities/{symmetricschurdecomposition,pseudosqrt,
      choleskydecomposition}.hpp) -- free functions over a caller-supplied matrix, passed flat
@@ -130,63 +130,59 @@ extern "C" {
      lower-triangular factor L, not the original matrix. */
   void qlSymmetricSchurDecomposition(unsigned rows, unsigned cols, double *m,
       unsigned *valuesLen, double **values,
-      unsigned *vectorRows, unsigned *vectorCols, unsigned *vectorsLen, double **vectors, char **e);
+      unsigned *vectorRows, unsigned *vectorCols, unsigned *vectorsLen, double **vectors, QlError **e);
   void qlPseudoSqrt(unsigned rows, unsigned cols, double *m, int salvaging,
-      unsigned *outRows, unsigned *outCols, unsigned *len, double **vs, char **e);
+      unsigned *outRows, unsigned *outCols, unsigned *len, double **vs, QlError **e);
   void qlRankReducedSqrt(unsigned rows, unsigned cols, double *m, unsigned maxRank,
       double componentRetainedPercentage, int salvaging,
-      unsigned *outRows, unsigned *outCols, unsigned *len, double **vs, char **e);
+      unsigned *outRows, unsigned *outCols, unsigned *len, double **vs, QlError **e);
   void qlCholeskyDecomposition(unsigned rows, unsigned cols, double *m, int flexible,
-      unsigned *outRows, unsigned *outCols, unsigned *len, double **vs, char **e);
+      unsigned *outRows, unsigned *outCols, unsigned *len, double **vs, QlError **e);
   void qlCholeskySolveFor(unsigned rows, unsigned cols, double *l, unsigned bLen, double *b,
-      unsigned *len, double **vs, char **e);
+      unsigned *len, double **vs, QlError **e);
 
   void qlFreeRounding(Rounding *o);
-  Rounding* qlRounding(char **e);
-  Rounding* qlRounding1(int precision, int type, int digit, char **e);
+  Rounding* qlRounding(QlError **e);
+  Rounding* qlRounding1(int precision, int type, int digit, QlError **e);
   double qlRound(Rounding *r, double val);
-  QlSimpleQuote *qlSimpleQuote(double value, char **e);
-  double qlQuoteValue(QlQuote *quote, char **e);
+  QlSimpleQuote *qlSimpleQuote(double value, QlError **e);
+  double qlQuoteValue(QlQuote *quote, QlError **e);
 
   void qlFreeQuote(QlQuote *quote);
   void qlFreeSimpleQuote(QlSimpleQuote *o);
   QlQuote* qlSimpleQuoteAsQuote(QlSimpleQuote *o);
-  double qlSimpleQuoteSetValue(QlSimpleQuote* o, double value, char **e);
-  QlDeltaVolQuote *qlDeltaVolQuote1(double delta, QlQuote *vol, double maturity, int deltaType, char **e);
-  QlDeltaVolQuote *qlDeltaVolQuote2(QlQuote *vol, int deltaType, double maturity, int atmType, char **e);
+  double qlSimpleQuoteSetValue(QlSimpleQuote* o, double value, QlError **e);
+  QlDeltaVolQuote *qlDeltaVolQuote1(double delta, QlQuote *vol, double maturity, int deltaType, QlError **e);
+  QlDeltaVolQuote *qlDeltaVolQuote2(QlQuote *vol, int deltaType, double maturity, int atmType, QlError **e);
   void qlFreeDeltaVolQuote(QlDeltaVolQuote *o);
   QlQuote* qlDeltaVolQuoteAsQuote(QlDeltaVolQuote *o);
-  QlQuote* qlEurodollarFuturesImpliedStdDevQuote(QlQuote* forward, QlQuote* callPrice, QlQuote* putPrice, double strike, double guess, double accuracy, unsigned maxIter, char **e);
-  QlQuote* qlForwardSwapQuote(QlSwapIndex* swapIndex, QlQuote* spread, int, int, char **e);
-  QlQuote* qlForwardValueQuote(QlIndex* index, int fixingDate, char **e);
-  QlFuturesConvAdjustmentQuote* qlFuturesConvAdjustmentQuote1(QlIborIndex* index, char* immCode, QlQuote* futuresQuote, QlQuote* volatility, QlQuote* meanReversion, char **e);
-  QlFuturesConvAdjustmentQuote* qlFuturesConvAdjustmentQuote(QlIborIndex* index, int futuresDate, QlQuote* futuresQuote, QlQuote* volatility, QlQuote* meanReversion, char **e);
+  QlQuote* qlEurodollarFuturesImpliedStdDevQuote(QlQuote* forward, QlQuote* callPrice, QlQuote* putPrice, double strike, double guess, double accuracy, unsigned maxIter, QlError **e);
+  QlQuote* qlForwardSwapQuote(QlSwapIndex* swapIndex, QlQuote* spread, int, int, QlError **e);
+  QlQuote* qlForwardValueQuote(QlIndex* index, int fixingDate, QlError **e);
+  QlFuturesConvAdjustmentQuote* qlFuturesConvAdjustmentQuote1(QlIborIndex* index, char* immCode, QlQuote* futuresQuote, QlQuote* volatility, QlQuote* meanReversion, QlError **e);
+  QlFuturesConvAdjustmentQuote* qlFuturesConvAdjustmentQuote(QlIborIndex* index, int futuresDate, QlQuote* futuresQuote, QlQuote* volatility, QlQuote* meanReversion, QlError **e);
   void qlFreeFuturesConvAdjustmentQuote(QlFuturesConvAdjustmentQuote *o);
   QlQuote* qlFuturesConvAdjustmentQuoteAsQuote(QlFuturesConvAdjustmentQuote *o);
-  double qlFuturesConvAdjustmentQuoteFuturesValue(QlFuturesConvAdjustmentQuote *o, char **e);
-  QlQuote* qlImpliedStdDevQuote(int optionType, QlQuote* forward, QlQuote* price, double strike, double guess, double accuracy, unsigned maxIter, char **e);
-  QlQuote* qlLastFixingQuote(QlIndex* index, char **e);
-  int qlQuoteIsValid(QlQuote* o, char **e);
+  double qlFuturesConvAdjustmentQuoteFuturesValue(QlFuturesConvAdjustmentQuote *o, QlError **e);
+  QlQuote* qlImpliedStdDevQuote(int optionType, QlQuote* forward, QlQuote* price, double strike, double guess, double accuracy, unsigned maxIter, QlError **e);
+  QlQuote* qlLastFixingQuote(QlIndex* index, QlError **e);
+  int qlQuoteIsValid(QlQuote* o, QlError **e);
 
   // Quote composition. The op forms select a functor from the QuoteOp/MultiQuoteOp catalogue in
   // qlEnumObjects.h; DerivedQuote's is applied as `x op operand'.
-  QlQuote* qlDerivedQuote(int op, QlQuote* element, double operand, char **e);
-  QlQuote* qlCompositeQuote(int op, QlQuote* element1, QlQuote* element2, char **e);
-  QlQuote* qlMultiCompositeQuote(int op, unsigned elementsLen, QlQuote** elements, char **e);
-  // As above, but over an arbitrary Haskell function. Same lifetime rule as
-  // qlPayoffFromFunction (cbits/qlInstrument.h): the returned quote keeps calling back through
-  // `fn' for its whole lifetime -- Quote::value() is invoked from wherever the quote was stored,
-  // including mid-bootstrap -- so the caller must keep the FunPtr alive until the quote is gone.
-  // See QuantLib.Quote.withDerivedQuote and friends.
-  QlQuote* qlDerivedQuoteFromFunction(QlQuote* element, double (*fn)(double), char **e);
-  QlQuote* qlCompositeQuoteFromFunction(QlQuote* element1, QlQuote* element2, double (*fn)(double, double), char **e);
+  QlQuote* qlDerivedQuote(int op, QlQuote* element, double operand, QlError **e);
+  QlQuote* qlCompositeQuote(int op, QlQuote* element1, QlQuote* element2, QlError **e);
+  QlQuote* qlMultiCompositeQuote(int op, unsigned elementsLen, QlQuote** elements, QlError **e);
+  // These quote functors retain shared callback ownership, including through native dependents.
+  QlQuote* qlDerivedQuoteFromFunction(QlQuote* element, QlCallback* fn, QlError **e);
+  QlQuote* qlCompositeQuoteFromFunction(QlQuote* element1, QlQuote* element2, QlCallback* fn, QlError **e);
   // accumulate() takes the whole element vector at once, so this crosses the language boundary
   // once per evaluation, not once per element.
-  QlQuote* qlMultiCompositeQuoteFromFunction(unsigned elementsLen, QlQuote** elements, double (*fn)(const double*, unsigned), char **e);
+  QlQuote* qlMultiCompositeQuoteFromFunction(unsigned elementsLen, QlQuote** elements, QlCallback* fn, QlError **e);
 
-  QlRelinkableQuote* qlRelinkableQuote(QlQuote *initial, char **e);
+  QlRelinkableQuote* qlRelinkableQuote(QlQuote *initial, QlError **e);
   void qlFreeRelinkableQuote(QlRelinkableQuote *o);
-  void qlRelinkableQuoteLinkTo(QlRelinkableQuote *o, QlQuote *c, char **e);
+  void qlRelinkableQuoteLinkTo(QlRelinkableQuote *o, QlQuote *c, QlError **e);
   QlQuote* qlRelinkableQuoteAsQuote(QlRelinkableQuote *o);
 
   int qlMinDateSerialNumber();
@@ -199,184 +195,184 @@ extern "C" {
   int qlDateEndOfMonth(int d);
   int qlDateIsEndOfMonth(int d);
   int qlDateNextWeekday(int d, int w);
-  int qlDateNthWeekday(unsigned n, int w, int m, int y, char **e);
+  int qlDateNthWeekday(unsigned n, int w, int m, int y, QlError **e);
 
-  char* qlIMMCode(int immDate, char **e);
-  int qlIMMDate(char* immCode, int referenceDate, char **e);
+  char* qlIMMCode(int immDate, QlError **e);
+  int qlIMMDate(char* immCode, int referenceDate, QlError **e);
   int qlIMMIsIMMcode(char* in, int mainCycle);
   int qlIMMIsIMMdate(int d, int mainCycle);
-  char* qlIMMNextCode1(char* immCode, int mainCycle, int referenceDate, char **e);
+  char* qlIMMNextCode1(char* immCode, int mainCycle, int referenceDate, QlError **e);
   char* qlIMMNextCode(int d, int mainCycle);
-  int qlIMMNextDate1(char* immCode, int mainCycle, int referenceDate, char **e);
+  int qlIMMNextDate1(char* immCode, int mainCycle, int referenceDate, QlError **e);
   int qlIMMNextDate(int d, int mainCycle);
 
-  int qlAddPeriod(int d, int, int, char **e);
+  int qlAddPeriod(int d, int, int, QlError **e);
 
-  void qlECBAddDate(int d, char **e);
-  char* qlECBCode(int ecbDate, char **e);
-  int qlECBDate1(char* ecbCode, int referenceDate, char **e);
-  int qlECBDate(int m, int y, char **e);
-  int qlECBIsECBcode(char* in, char **e);
-  int qlECBIsECBdate(int d, char **e);
-  void qlECBKnownDates(unsigned *count, int **ds, char **e);
-  char* qlECBNextCode1(char* ecbCode, char **e);
-  char* qlECBNextCode(int d, char **e);
-  int qlECBNextDate1(char* ecbCode, int referenceDate, char **e);
-  int qlECBNextDate(int d, char **e);
-  void qlECBNextDates(int d, unsigned *count, int **ds, char **e);
-  void qlECBNextDates1(char* ecbCode, int referenceDate, unsigned *count, int **ds, char **e);
-  void qlECBRemoveDate(int d, char **e);
+  void qlECBAddDate(int d, QlError **e);
+  char* qlECBCode(int ecbDate, QlError **e);
+  int qlECBDate1(char* ecbCode, int referenceDate, QlError **e);
+  int qlECBDate(int m, int y, QlError **e);
+  int qlECBIsECBcode(char* in, QlError **e);
+  int qlECBIsECBdate(int d, QlError **e);
+  void qlECBKnownDates(unsigned *count, int **ds, QlError **e);
+  char* qlECBNextCode1(char* ecbCode, QlError **e);
+  char* qlECBNextCode(int d, QlError **e);
+  int qlECBNextDate1(char* ecbCode, int referenceDate, QlError **e);
+  int qlECBNextDate(int d, QlError **e);
+  void qlECBNextDates(int d, unsigned *count, int **ds, QlError **e);
+  void qlECBNextDates1(char* ecbCode, int referenceDate, unsigned *count, int **ds, QlError **e);
+  void qlECBRemoveDate(int d, QlError **e);
 
-  Calendar *qlCalendar(int country, int market, char **e);
+  Calendar *qlCalendar(int country, int market, QlError **e);
   const char *qlCalendarName(Calendar *calendar);
-  int qlCalendarAdjust(Calendar *c, int date, int conv, char **e);
-  int qlCalendarAdvance(Calendar *c, int date, int n, int unit, int conv, int eom, char **e);
-  void qlCalendarAddHoliday(Calendar* o, int x0, char **e);
-  int qlCalendarBusinessDaysBetween(Calendar* o, int from, int to, int includeFirst, int includeLast, char **e);
-  int qlCalendarEndOfMonth(Calendar* o, int d, char **e);
-  int qlCalendarIsBusinessDay(Calendar* o, int d, char **e);
-  int qlCalendarIsEndOfMonth(Calendar* o, int d, char **e);
-  int qlCalendarIsHoliday(Calendar* o, int d, char **e);
-  int qlCalendarIsWeekend(Calendar* o, int w, char **e);
-  void qlCalendarRemoveHoliday(Calendar* o, int x0, char **e);
-  Calendar* qlBespokeCalendar(char* name, unsigned len, int *weekends, char **e);
-  Calendar* qlJointCalendar2(Calendar* x_1, Calendar* x0, int x1, char **e);
-  Calendar* qlJointCalendar3(Calendar* x_1, Calendar* x0, Calendar* x1, int x2, char **e);
-  Calendar* qlJointCalendar4(Calendar* x_1, Calendar* x0, Calendar* x1, Calendar* x2, int x3, char **e);
+  int qlCalendarAdjust(Calendar *c, int date, int conv, QlError **e);
+  int qlCalendarAdvance(Calendar *c, int date, int n, int unit, int conv, int eom, QlError **e);
+  void qlCalendarAddHoliday(Calendar* o, int x0, QlError **e);
+  int qlCalendarBusinessDaysBetween(Calendar* o, int from, int to, int includeFirst, int includeLast, QlError **e);
+  int qlCalendarEndOfMonth(Calendar* o, int d, QlError **e);
+  int qlCalendarIsBusinessDay(Calendar* o, int d, QlError **e);
+  int qlCalendarIsEndOfMonth(Calendar* o, int d, QlError **e);
+  int qlCalendarIsHoliday(Calendar* o, int d, QlError **e);
+  int qlCalendarIsWeekend(Calendar* o, int w, QlError **e);
+  void qlCalendarRemoveHoliday(Calendar* o, int x0, QlError **e);
+  Calendar* qlBespokeCalendar(char* name, unsigned len, int *weekends, QlError **e);
+  Calendar* qlJointCalendar2(Calendar* x_1, Calendar* x0, int x1, QlError **e);
+  Calendar* qlJointCalendar3(Calendar* x_1, Calendar* x0, Calendar* x1, int x2, QlError **e);
+  Calendar* qlJointCalendar4(Calendar* x_1, Calendar* x0, Calendar* x1, Calendar* x2, int x3, QlError **e);
 
-  void qlCalendarHolidayList(Calendar* calendar, int from, int to, int includeWeekEnds, unsigned *len, int **days, char **e);
+  void qlCalendarHolidayList(Calendar* calendar, int from, int to, int includeWeekEnds, unsigned *len, int **days, QlError **e);
   void qlFreeCalendar(Calendar *calendar);
 
-  Schedule *qlSchedule(int eff, int term, int, int, Calendar *cal, int conv, int termConv, int rule, int eom, int first, int nextToLast, char **e);
-  Schedule *qlSchedule1(unsigned len, int *dates, Calendar *cal, int conv, int termConv, int tenorLen, int tenorUnit, int rule, int eom, char **e);
-  Schedule *qlScheduleUntil(Schedule *sched, int date, char **e);
-  void qlScheduleDates(Schedule *sched, unsigned *count, int **days, char **e);
+  Schedule *qlSchedule(int eff, int term, int, int, Calendar *cal, int conv, int termConv, int rule, int eom, int first, int nextToLast, QlError **e);
+  Schedule *qlSchedule1(unsigned len, int *dates, Calendar *cal, int conv, int termConv, int tenorLen, int tenorUnit, int rule, int eom, QlError **e);
+  Schedule *qlScheduleUntil(Schedule *sched, int date, QlError **e);
+  void qlScheduleDates(Schedule *sched, unsigned *count, int **days, QlError **e);
   void qlFreeSchedule(Schedule *s);
 
-  int qlPeriodFromFrequency1(int freq, int *, char **e);
-  int qlPeriodToFrequency1(int l, int u, char **e);
-  int qlPeriodParserParse1(char* str, int *u, char **e);
-  int qlPeriodAdd1(int, int u1, int, int u2, int *u, char **e);
-  int qlPeriodDivide1(int, int u1, int n2, int *u, char **e);
-  int qlPeriodNormalize1(int, int u, int *, char **e);
-  int qlPeriodsLT1(int, int u1, int, int u2, char **e);
+  int qlPeriodFromFrequency1(int freq, int *, QlError **e);
+  int qlPeriodToFrequency1(int l, int u, QlError **e);
+  int qlPeriodParserParse1(char* str, int *u, QlError **e);
+  int qlPeriodAdd1(int, int u1, int, int u2, int *u, QlError **e);
+  int qlPeriodDivide1(int, int u1, int n2, int *u, QlError **e);
+  int qlPeriodNormalize1(int, int u, int *, QlError **e);
+  int qlPeriodsLT1(int, int u1, int, int u2, QlError **e);
 
-  DayCounter *qlDayCounter(int type, int convention, char **e);
-  DayCounter *qlDayCounterBusiness252(Calendar *cal, char **e);
-  DayCounter *qlDayCounterActualActualBond(Schedule *schedule, char **e);
-  DayCounter *qlDayCounterActualActualISMA(Schedule *schedule, char **e);
+  DayCounter *qlDayCounter(int type, int convention, QlError **e);
+  DayCounter *qlDayCounterBusiness252(Calendar *cal, QlError **e);
+  DayCounter *qlDayCounterActualActualBond(Schedule *schedule, QlError **e);
+  DayCounter *qlDayCounterActualActualISMA(Schedule *schedule, QlError **e);
   const char *qlDayCounterName(DayCounter *counter);
   int qlDayCounterDayCount(DayCounter* o, int x0, int x1);
-  double qlDayCounterYearFraction(DayCounter* o, int x0, int x1, int refPeriodStart, int refPeriodEnd, char **e);
+  double qlDayCounterYearFraction(DayCounter* o, int x0, int x1, int refPeriodStart, int refPeriodEnd, QlError **e);
 
   void qlFreeDayCounter(DayCounter *counter);
 
   /* CommodityType */
-  CommodityType *qlCommodityType(char *code, char *name, char **e);
-  CommodityType *qlNullCommodityType(char **e);
+  CommodityType *qlCommodityType(char *code, char *name, QlError **e);
+  CommodityType *qlNullCommodityType(QlError **e);
   void qlFreeCommodityType(CommodityType *o);
   char *qlCommodityTypeCode(CommodityType *o);
   char *qlCommodityTypeName(CommodityType *o);
   int qlCommodityTypeEmpty(CommodityType *o);
 
   /* UnitOfMeasure */
-  UnitOfMeasure *qlUnitOfMeasure(char *name, char *code, int unitType, char **e);
+  UnitOfMeasure *qlUnitOfMeasure(char *name, char *code, int unitType, QlError **e);
   void qlFreeUnitOfMeasure(UnitOfMeasure *o);
   char *qlUnitOfMeasureName(UnitOfMeasure *o);
   char *qlUnitOfMeasureCode(UnitOfMeasure *o);
   int qlUnitOfMeasureUnitType(UnitOfMeasure *o);
   int qlUnitOfMeasureEmpty(UnitOfMeasure *o);
-  UnitOfMeasure *qlLotUnitOfMeasure(char **e);
-  UnitOfMeasure *qlBarrelUnitOfMeasure(char **e);
-  UnitOfMeasure *qlMTUnitOfMeasure(char **e);
-  UnitOfMeasure *qlMBUnitOfMeasure(char **e);
-  UnitOfMeasure *qlGallonUnitOfMeasure(char **e);
-  UnitOfMeasure *qlLitreUnitOfMeasure(char **e);
-  UnitOfMeasure *qlKilolitreUnitOfMeasure(char **e);
-  UnitOfMeasure *qlTokyoKilolitreUnitOfMeasure(char **e);
+  UnitOfMeasure *qlLotUnitOfMeasure(QlError **e);
+  UnitOfMeasure *qlBarrelUnitOfMeasure(QlError **e);
+  UnitOfMeasure *qlMTUnitOfMeasure(QlError **e);
+  UnitOfMeasure *qlMBUnitOfMeasure(QlError **e);
+  UnitOfMeasure *qlGallonUnitOfMeasure(QlError **e);
+  UnitOfMeasure *qlLitreUnitOfMeasure(QlError **e);
+  UnitOfMeasure *qlKilolitreUnitOfMeasure(QlError **e);
+  UnitOfMeasure *qlTokyoKilolitreUnitOfMeasure(QlError **e);
 
   /* PaymentTerm */
-  PaymentTerm *qlPaymentTerm(char *name, int eventType, int offsetDays, Calendar *calendar, char **e);
+  PaymentTerm *qlPaymentTerm(char *name, int eventType, int offsetDays, Calendar *calendar, QlError **e);
   void qlFreePaymentTerm(PaymentTerm *o);
   char *qlPaymentTermName(PaymentTerm *o);
   int qlPaymentTermEventType_(PaymentTerm *o);
   int qlPaymentTermOffsetDays(PaymentTerm *o);
-  Calendar *qlPaymentTermCalendar(PaymentTerm *o, char **e);
+  Calendar *qlPaymentTermCalendar(PaymentTerm *o, QlError **e);
   int qlPaymentTermEmpty(PaymentTerm *o);
-  int qlPaymentTermGetPaymentDate(PaymentTerm *o, int date, char **e);
+  int qlPaymentTermGetPaymentDate(PaymentTerm *o, int date, QlError **e);
 
   /* Quantity uses flat triples because c2hs's `&` tuple-splitter supports only pairs. */
   double qlQuantityRoundedAmount(UnitOfMeasure *uom, double amount);
   int qlQuantityClose(CommodityType *ct1, UnitOfMeasure *uom1, double amount1,
-                      CommodityType *ct2, UnitOfMeasure *uom2, double amount2, int n, char **e);
+                      CommodityType *ct2, UnitOfMeasure *uom2, double amount2, int n, QlError **e);
   int qlQuantityCloseEnough(CommodityType *ct1, UnitOfMeasure *uom1, double amount1,
-                            CommodityType *ct2, UnitOfMeasure *uom2, double amount2, int n, char **e);
+                            CommodityType *ct2, UnitOfMeasure *uom2, double amount2, int n, QlError **e);
 
   /* UnitOfMeasureConversion */
   UnitOfMeasureConversion *qlUnitOfMeasureConversion(CommodityType *commodityType, UnitOfMeasure *source,
-                                                     UnitOfMeasure *target, double conversionFactor, char **e);
+                                                     UnitOfMeasure *target, double conversionFactor, QlError **e);
   void qlFreeUnitOfMeasureConversion(UnitOfMeasureConversion *o);
-  UnitOfMeasure *qlUnitOfMeasureConversionSource(UnitOfMeasureConversion *o, char **e);
-  UnitOfMeasure *qlUnitOfMeasureConversionTarget(UnitOfMeasureConversion *o, char **e);
-  CommodityType *qlUnitOfMeasureConversionCommodityType(UnitOfMeasureConversion *o, char **e);
+  UnitOfMeasure *qlUnitOfMeasureConversionSource(UnitOfMeasureConversion *o, QlError **e);
+  UnitOfMeasure *qlUnitOfMeasureConversionTarget(UnitOfMeasureConversion *o, QlError **e);
+  CommodityType *qlUnitOfMeasureConversionCommodityType(UnitOfMeasureConversion *o, QlError **e);
   int qlUnitOfMeasureConversionType_(UnitOfMeasureConversion *o);
   double qlUnitOfMeasureConversionFactor(UnitOfMeasureConversion *o);
   char *qlUnitOfMeasureConversionCode(UnitOfMeasureConversion *o);
   double qlUnitOfMeasureConversionConvert(UnitOfMeasureConversion *o, CommodityType *ct, UnitOfMeasure *uom,
-                                          double amount, CommodityType **outCt, UnitOfMeasure **outUom, char **e);
-  UnitOfMeasureConversion *qlUnitOfMeasureConversionChain(UnitOfMeasureConversion *r1, UnitOfMeasureConversion *r2, char **e);
+                                          double amount, CommodityType **outCt, UnitOfMeasure **outUom, QlError **e);
+  UnitOfMeasureConversion *qlUnitOfMeasureConversionChain(UnitOfMeasureConversion *r1, UnitOfMeasureConversion *r2, QlError **e);
 
   /* UnitOfMeasureConversionManager (singleton) */
   UnitOfMeasureConversion *qlUnitOfMeasureConversionManagerLookup(
-      CommodityType *commodityType, UnitOfMeasure *source, UnitOfMeasure *target, int type, char **e);
+      CommodityType *commodityType, UnitOfMeasure *source, UnitOfMeasure *target, int type, QlError **e);
   void qlUnitOfMeasureConversionManagerAdd(UnitOfMeasureConversion *c);
   void qlUnitOfMeasureConversionManagerClear(void);
 
   /* CommoditySettings (singleton) */
-  Currency *qlCommoditySettingsCurrency(char **e);
+  Currency *qlCommoditySettingsCurrency(QlError **e);
   void qlCommoditySettingsSetCurrency(Currency *c);
-  UnitOfMeasure *qlCommoditySettingsUnitOfMeasure(char **e);
+  UnitOfMeasure *qlCommoditySettingsUnitOfMeasure(QlError **e);
   void qlCommoditySettingsSetUnitOfMeasure(UnitOfMeasure *u);
 
   /* HistoricalIndexAnalysis samples relative returns for any Index and exposes
      SequenceStatistics measures per index. */
   QlHistoricalIndexAnalysis *qlHistoricalIndexAnalysis(int startDate, int endDate,
-      int stepLen, int stepUnit, unsigned indexesLen, QlIndex **indexes, char **e);
+      int stepLen, int stepUnit, unsigned indexesLen, QlIndex **indexes, QlError **e);
   void qlFreeHistoricalIndexAnalysis(QlHistoricalIndexAnalysis *o);
-  void qlHistoricalIndexAnalysisSkippedDates(QlHistoricalIndexAnalysis *o, unsigned *count, int **days, char **e);
-  void qlHistoricalIndexAnalysisSkippedDatesErrorMessage(QlHistoricalIndexAnalysis *o, unsigned *count, char ***msgs, char **e);
-  void qlHistoricalIndexAnalysisMean(QlHistoricalIndexAnalysis *o, unsigned *len, double **vs, char **e);
-  void qlHistoricalIndexAnalysisStandardDeviation(QlHistoricalIndexAnalysis *o, unsigned *len, double **vs, char **e);
-  void qlHistoricalIndexAnalysisSkewness(QlHistoricalIndexAnalysis *o, unsigned *len, double **vs, char **e);
-  void qlHistoricalIndexAnalysisKurtosis(QlHistoricalIndexAnalysis *o, unsigned *len, double **vs, char **e);
-  void qlHistoricalIndexAnalysisMin(QlHistoricalIndexAnalysis *o, unsigned *len, double **vs, char **e);
-  void qlHistoricalIndexAnalysisMax(QlHistoricalIndexAnalysis *o, unsigned *len, double **vs, char **e);
-  void qlHistoricalIndexAnalysisSemiVariance(QlHistoricalIndexAnalysis *o, unsigned *len, double **vs, char **e);
-  void qlHistoricalIndexAnalysisSemiDeviation(QlHistoricalIndexAnalysis *o, unsigned *len, double **vs, char **e);
-  void qlHistoricalIndexAnalysisDownsideVariance(QlHistoricalIndexAnalysis *o, unsigned *len, double **vs, char **e);
-  void qlHistoricalIndexAnalysisDownsideDeviation(QlHistoricalIndexAnalysis *o, unsigned *len, double **vs, char **e);
-  void qlHistoricalIndexAnalysisPercentile(QlHistoricalIndexAnalysis *o, double y, unsigned *len, double **vs, char **e);
-  void qlHistoricalIndexAnalysisGaussianPercentile(QlHistoricalIndexAnalysis *o, double y, unsigned *len, double **vs, char **e);
-  void qlHistoricalIndexAnalysisValueAtRisk(QlHistoricalIndexAnalysis *o, double centile, unsigned *len, double **vs, char **e);
-  void qlHistoricalIndexAnalysisGaussianValueAtRisk(QlHistoricalIndexAnalysis *o, double centile, unsigned *len, double **vs, char **e);
-  void qlHistoricalIndexAnalysisExpectedShortfall(QlHistoricalIndexAnalysis *o, double centile, unsigned *len, double **vs, char **e);
-  void qlHistoricalIndexAnalysisGaussianExpectedShortfall(QlHistoricalIndexAnalysis *o, double centile, unsigned *len, double **vs, char **e);
-  void qlHistoricalIndexAnalysisPotentialUpside(QlHistoricalIndexAnalysis *o, double centile, unsigned *len, double **vs, char **e);
-  void qlHistoricalIndexAnalysisGaussianPotentialUpside(QlHistoricalIndexAnalysis *o, double centile, unsigned *len, double **vs, char **e);
-  void qlHistoricalIndexAnalysisRegret(QlHistoricalIndexAnalysis *o, double target, unsigned *len, double **vs, char **e);
-  void qlHistoricalIndexAnalysisShortfall(QlHistoricalIndexAnalysis *o, double target, unsigned *len, double **vs, char **e);
-  void qlHistoricalIndexAnalysisGaussianShortfall(QlHistoricalIndexAnalysis *o, double target, unsigned *len, double **vs, char **e);
-  void qlHistoricalIndexAnalysisAverageShortfall(QlHistoricalIndexAnalysis *o, double target, unsigned *len, double **vs, char **e);
-  void qlHistoricalIndexAnalysisGaussianAverageShortfall(QlHistoricalIndexAnalysis *o, double target, unsigned *len, double **vs, char **e);
-  void qlHistoricalIndexAnalysisCovariance(QlHistoricalIndexAnalysis *o, unsigned *rows, unsigned *cols, unsigned *len, double **vs, char **e);
-  void qlHistoricalIndexAnalysisCorrelation(QlHistoricalIndexAnalysis *o, unsigned *rows, unsigned *cols, unsigned *len, double **vs, char **e);
+  void qlHistoricalIndexAnalysisSkippedDates(QlHistoricalIndexAnalysis *o, unsigned *count, int **days, QlError **e);
+  void qlHistoricalIndexAnalysisSkippedDatesErrorMessage(QlHistoricalIndexAnalysis *o, unsigned *count, char ***msgs, QlError **e);
+  void qlHistoricalIndexAnalysisMean(QlHistoricalIndexAnalysis *o, unsigned *len, double **vs, QlError **e);
+  void qlHistoricalIndexAnalysisStandardDeviation(QlHistoricalIndexAnalysis *o, unsigned *len, double **vs, QlError **e);
+  void qlHistoricalIndexAnalysisSkewness(QlHistoricalIndexAnalysis *o, unsigned *len, double **vs, QlError **e);
+  void qlHistoricalIndexAnalysisKurtosis(QlHistoricalIndexAnalysis *o, unsigned *len, double **vs, QlError **e);
+  void qlHistoricalIndexAnalysisMin(QlHistoricalIndexAnalysis *o, unsigned *len, double **vs, QlError **e);
+  void qlHistoricalIndexAnalysisMax(QlHistoricalIndexAnalysis *o, unsigned *len, double **vs, QlError **e);
+  void qlHistoricalIndexAnalysisSemiVariance(QlHistoricalIndexAnalysis *o, unsigned *len, double **vs, QlError **e);
+  void qlHistoricalIndexAnalysisSemiDeviation(QlHistoricalIndexAnalysis *o, unsigned *len, double **vs, QlError **e);
+  void qlHistoricalIndexAnalysisDownsideVariance(QlHistoricalIndexAnalysis *o, unsigned *len, double **vs, QlError **e);
+  void qlHistoricalIndexAnalysisDownsideDeviation(QlHistoricalIndexAnalysis *o, unsigned *len, double **vs, QlError **e);
+  void qlHistoricalIndexAnalysisPercentile(QlHistoricalIndexAnalysis *o, double y, unsigned *len, double **vs, QlError **e);
+  void qlHistoricalIndexAnalysisGaussianPercentile(QlHistoricalIndexAnalysis *o, double y, unsigned *len, double **vs, QlError **e);
+  void qlHistoricalIndexAnalysisValueAtRisk(QlHistoricalIndexAnalysis *o, double centile, unsigned *len, double **vs, QlError **e);
+  void qlHistoricalIndexAnalysisGaussianValueAtRisk(QlHistoricalIndexAnalysis *o, double centile, unsigned *len, double **vs, QlError **e);
+  void qlHistoricalIndexAnalysisExpectedShortfall(QlHistoricalIndexAnalysis *o, double centile, unsigned *len, double **vs, QlError **e);
+  void qlHistoricalIndexAnalysisGaussianExpectedShortfall(QlHistoricalIndexAnalysis *o, double centile, unsigned *len, double **vs, QlError **e);
+  void qlHistoricalIndexAnalysisPotentialUpside(QlHistoricalIndexAnalysis *o, double centile, unsigned *len, double **vs, QlError **e);
+  void qlHistoricalIndexAnalysisGaussianPotentialUpside(QlHistoricalIndexAnalysis *o, double centile, unsigned *len, double **vs, QlError **e);
+  void qlHistoricalIndexAnalysisRegret(QlHistoricalIndexAnalysis *o, double target, unsigned *len, double **vs, QlError **e);
+  void qlHistoricalIndexAnalysisShortfall(QlHistoricalIndexAnalysis *o, double target, unsigned *len, double **vs, QlError **e);
+  void qlHistoricalIndexAnalysisGaussianShortfall(QlHistoricalIndexAnalysis *o, double target, unsigned *len, double **vs, QlError **e);
+  void qlHistoricalIndexAnalysisAverageShortfall(QlHistoricalIndexAnalysis *o, double target, unsigned *len, double **vs, QlError **e);
+  void qlHistoricalIndexAnalysisGaussianAverageShortfall(QlHistoricalIndexAnalysis *o, double target, unsigned *len, double **vs, QlError **e);
+  void qlHistoricalIndexAnalysisCovariance(QlHistoricalIndexAnalysis *o, unsigned *rows, unsigned *cols, unsigned *len, double **vs, QlError **e);
+  void qlHistoricalIndexAnalysisCorrelation(QlHistoricalIndexAnalysis *o, unsigned *rows, unsigned *cols, unsigned *len, double **vs, QlError **e);
 
   /* Garch11 -- a GARCH(1,1) volatility model, direct-parameter or calibrated from a return
      series. calibratedDatesLen/calibratedValuesLen are always equal in practice (the Haskell
      side always builds them from one zipped list); kept as two counts, per the codebase's usual
      array-marshalling shape, rather than one shared length. */
-  Garch11 *qlGarch11(double alpha, double beta, double vl, char **e);
-  Garch11 *qlGarch11Calibrated(unsigned datesLen, int *dates, unsigned valuesLen, double *values, int mode, char **e);
+  Garch11 *qlGarch11(double alpha, double beta, double vl, QlError **e);
+  Garch11 *qlGarch11Calibrated(unsigned datesLen, int *dates, unsigned valuesLen, double *values, int mode, QlError **e);
   void qlFreeGarch11(Garch11 *o);
   double qlGarch11Alpha(Garch11 *o);
   double qlGarch11Beta(Garch11 *o);
@@ -385,7 +381,7 @@ extern "C" {
   double qlGarch11LogLikelihood(Garch11 *o);
   double qlGarch11Forecast(Garch11 *o, double r, double sigma2);
   void qlGarch11Calculate(Garch11 *o, unsigned datesLen, int *dates, unsigned valuesLen, double *values,
-      unsigned *outDatesLen, int **outDates, unsigned *outValuesLen, double **outValues, char **e);
+      unsigned *outDatesLen, int **outDates, unsigned *outValuesLen, double **outValues, QlError **e);
 
   /* GarmanKlass family (ql/models/volatility/garmanklass.hpp) and the two other
      LocalVolatilityEstimator/VolatilityCompositor implementations in ql/models/volatility --
@@ -396,37 +392,37 @@ extern "C" {
   void qlGarmanKlassSimpleSigma(double yearFraction,
       unsigned datesLen, int *dates, unsigned opensLen, double *opens, unsigned closesLen, double *closes,
       unsigned highsLen, double *highs, unsigned lowsLen, double *lows,
-      unsigned *outDatesLen, int **outDates, unsigned *outValuesLen, double **outValues, char **e);
+      unsigned *outDatesLen, int **outDates, unsigned *outValuesLen, double **outValues, QlError **e);
   void qlGarmanKlassSigma1(double yearFraction, double marketOpenFraction,
       unsigned datesLen, int *dates, unsigned opensLen, double *opens, unsigned closesLen, double *closes,
       unsigned highsLen, double *highs, unsigned lowsLen, double *lows,
-      unsigned *outDatesLen, int **outDates, unsigned *outValuesLen, double **outValues, char **e);
+      unsigned *outDatesLen, int **outDates, unsigned *outValuesLen, double **outValues, QlError **e);
   void qlParkinsonSigma(double yearFraction,
       unsigned datesLen, int *dates, unsigned opensLen, double *opens, unsigned closesLen, double *closes,
       unsigned highsLen, double *highs, unsigned lowsLen, double *lows,
-      unsigned *outDatesLen, int **outDates, unsigned *outValuesLen, double **outValues, char **e);
+      unsigned *outDatesLen, int **outDates, unsigned *outValuesLen, double **outValues, QlError **e);
   void qlGarmanKlassSigma3(double yearFraction, double marketOpenFraction,
       unsigned datesLen, int *dates, unsigned opensLen, double *opens, unsigned closesLen, double *closes,
       unsigned highsLen, double *highs, unsigned lowsLen, double *lows,
-      unsigned *outDatesLen, int **outDates, unsigned *outValuesLen, double **outValues, char **e);
+      unsigned *outDatesLen, int **outDates, unsigned *outValuesLen, double **outValues, QlError **e);
   void qlGarmanKlassSigma4(double yearFraction,
       unsigned datesLen, int *dates, unsigned opensLen, double *opens, unsigned closesLen, double *closes,
       unsigned highsLen, double *highs, unsigned lowsLen, double *lows,
-      unsigned *outDatesLen, int **outDates, unsigned *outValuesLen, double **outValues, char **e);
+      unsigned *outDatesLen, int **outDates, unsigned *outValuesLen, double **outValues, QlError **e);
   void qlGarmanKlassSigma5(double yearFraction,
       unsigned datesLen, int *dates, unsigned opensLen, double *opens, unsigned closesLen, double *closes,
       unsigned highsLen, double *highs, unsigned lowsLen, double *lows,
-      unsigned *outDatesLen, int **outDates, unsigned *outValuesLen, double **outValues, char **e);
+      unsigned *outDatesLen, int **outDates, unsigned *outValuesLen, double **outValues, QlError **e);
   void qlGarmanKlassSigma6(double yearFraction, double marketOpenFraction,
       unsigned datesLen, int *dates, unsigned opensLen, double *opens, unsigned closesLen, double *closes,
       unsigned highsLen, double *highs, unsigned lowsLen, double *lows,
-      unsigned *outDatesLen, int **outDates, unsigned *outValuesLen, double **outValues, char **e);
+      unsigned *outDatesLen, int **outDates, unsigned *outValuesLen, double **outValues, QlError **e);
   void qlConstantVolatilityEstimator(unsigned windowSize,
       unsigned datesLen, int *dates, unsigned valuesLen, double *values,
-      unsigned *outDatesLen, int **outDates, unsigned *outValuesLen, double **outValues, char **e);
+      unsigned *outDatesLen, int **outDates, unsigned *outValuesLen, double **outValues, QlError **e);
   void qlSimpleLocalVolatilityEstimator(double yearFraction,
       unsigned datesLen, int *dates, unsigned valuesLen, double *values,
-      unsigned *outDatesLen, int **outDates, unsigned *outValuesLen, double **outValues, char **e);
+      unsigned *outDatesLen, int **outDates, unsigned *outValuesLen, double **outValues, QlError **e);
 #ifdef __cplusplus
 }
 #endif

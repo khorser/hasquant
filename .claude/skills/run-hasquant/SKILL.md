@@ -88,7 +88,8 @@ failure) and pass its path to the driver — that's the whole point of the
 harness.
 
 The driver also compiles `MarshallingFixture.cpp` for the result-marshalling and
-temporary-ownership probes; no manual fixture build is needed for those scripts.
+temporary-ownership probes; no manual fixture build is needed for those scripts. The temporary
+probe also materializes `Internal.Callback.chs`, since it compiles `Internal.Type` from source.
 
 Compiled binaries land at `/tmp/hasquant-smoke-<name>`; build artifacts at
 `/tmp/hasquant-smoke-<name>_build/`.

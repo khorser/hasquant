@@ -32,7 +32,7 @@ void operator delete[](void* p) noexcept {::operator delete(p);}
 
 // Warm caches first; the final allocations wrap an already-constructed payload.
 template<class Make, class Free> void check(const char* name, long tailAllocations, Make make, Free free) {
-  char* error = nullptr;
+  QlError* error = nullptr;
   auto warm = make(&error);
   if (error || !warm) std::abort();
   free(warm);
@@ -48,7 +48,7 @@ template<class Make, class Free> void check(const char* name, long tailAllocatio
     auto result = make(&error);
     failAt = -1;
     if (result) free(result);
-    if (error) qlFreeString(error);
+    if (error) qlFreeError(error);
     if (live != baseline) {
       std::fprintf(stderr, "%s failure %ld/%ld: leaked %ld allocations\n", name, i, count, live-baseline);
       std::abort();
@@ -63,8 +63,8 @@ int main() {
   QlQuote spread(ext::make_shared<SimpleQuote>(0.001));
   QlQuote* spreads[] = {&spread, &spread};
   int dates[] = {Date(1, January, 2027).serialNumber(), Date(1, January, 2028).serialNumber()};
-  check("Ibor factory", 2, [&](char** e) {return qlCreateIbor(0, 3, Months, &base, e);}, qlFreeIborIndex);
-  check("Spread curve factory", 4, [&](char** e) {
+  check("Ibor factory", 2, [&](QlError** e) {return qlCreateIbor(0, 3, Months, &base, e);}, qlFreeIborIndex);
+  check("Spread curve factory", 4, [&](QlError** e) {
     return qlPiecewiseZeroSpreadedTermStructure(&base, 2, spreads, 2, dates, Continuous, Annual, 2, 0, 0, e);
   }, qlFreeYieldTermStructure);
 }
