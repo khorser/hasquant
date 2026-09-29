@@ -133,6 +133,7 @@ namespace QuantLib {
   class AnalyticEuropeanEngine;
   class AnalyticGJRGARCHEngine;
   class AnalyticHestonEngine;
+  class AnalyticH1HWEngine;
   class AnalyticHestonHullWhiteEngine;
   class AnalyticPerformanceEngine;
   class AssetOrNothingPayoff;
@@ -499,6 +500,7 @@ using QuantLib::AnalyticDividendEuropeanEngine;
 using QuantLib::AnalyticEuropeanEngine;
 using QuantLib::AnalyticGJRGARCHEngine;
 using QuantLib::AnalyticHestonEngine;
+using QuantLib::AnalyticH1HWEngine;
 using QuantLib::AnalyticHestonHullWhiteEngine;
 using QuantLib::AnalyticPerformanceEngine;
 using QuantLib::AssetOrNothingPayoff;
@@ -1131,6 +1133,7 @@ QL_TRACE_NAME(AnalyticDividendEuropeanEngine)
 QL_TRACE_NAME(AnalyticEuropeanEngine)
 QL_TRACE_NAME(AnalyticGJRGARCHEngine)
 QL_TRACE_NAME(AnalyticHestonEngine)
+QL_TRACE_NAME(AnalyticH1HWEngine)
 QL_TRACE_NAME(AnalyticHestonHullWhiteEngine)
 QL_TRACE_NAME(AnalyticPerformanceEngine)
 QL_TRACE_NAME(AssetOrNothingPayoff)

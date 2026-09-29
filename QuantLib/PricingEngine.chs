@@ -116,6 +116,7 @@ module QuantLib.PricingEngine
     -- ** Equity, stochastic-volatility and exotic products
   , analyticGjrGarchEngine
   , analyticHestonEngine
+  , analyticH1HwEngine
   , analyticHestonHullWhiteEngine
   , batesEngine
   , fftVanillaEngine
@@ -801,6 +802,12 @@ discountingPerpetualFuturesEngine domestic foreignCurve spot funding interpolati
   ,fromIntegral`Word' -- ^maxEvaluations
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
+-- |Heston/Hull-White approximation engine for European vanilla options. The H1-HW approximation assumes zero variance/short-rate correlation; @rhoSr@ is the equity/short-rate correlation.
+{#fun qlAnalyticH1HWEngine as analyticH1HwEngineOrder{withHestonModel*`GenHestonModel hm',withHullWhite*`HullWhite'
+  ,`Double' -- ^rhoSr
+  ,fromIntegral`Word' -- ^integrationOrder
+  ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+
 -- |semi-analytic pricing engine combining a Heston equity model with a Hull-White short-rate model
 {#fun qlAnalyticHestonHullWhiteEngine as analyticHestonHullWhiteEngineOrder{withHestonModel*`GenHestonModel hm',withHullWhite*`HullWhite'
   ,fromIntegral`Word' -- ^integrationOrder
@@ -870,12 +877,25 @@ analyticHestonEngine model control =
   ,fromIntegral`Word' -- ^maxEvaluations
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
+{#fun qlAnalyticH1HWEngine1 as analyticH1HwEngineTolerance{withHestonModel*`GenHestonModel hm',withHullWhite*`HullWhite'
+  ,`Double' -- ^rhoSr
+  ,`Double' -- ^relTolerance
+  ,fromIntegral`Word' -- ^maxEvaluations
+  ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+
 -- |Semi-analytic Heston/Hull-White engine with fixed-order or tolerance-based integration.
 analyticHestonHullWhiteEngine :: GenHestonModel hm -> HullWhite -> IntegrationControl -> IO PricingEngine
 analyticHestonHullWhiteEngine heston hullWhite control =
   case control of
     IntegrationOrder order -> analyticHestonHullWhiteEngineOrder heston hullWhite order
     IntegrationTolerance tolerance evaluations -> analyticHestonHullWhiteEngineTolerance heston hullWhite tolerance evaluations
+
+-- |H1-HW approximation engine with fixed-order or tolerance-based integration.
+analyticH1HwEngine :: GenHestonModel hm -> HullWhite -> Double -> IntegrationControl -> IO PricingEngine
+analyticH1HwEngine heston hullWhite rhoSr control =
+  case control of
+    IntegrationOrder order -> analyticH1HwEngineOrder heston hullWhite rhoSr order
+    IntegrationTolerance tolerance evaluations -> analyticH1HwEngineTolerance heston hullWhite rhoSr tolerance evaluations
 
 -- |semi-analytic Bates-model pricing engine, integrating with a fixed relative tolerance and evaluation cap
 {#fun qlBatesEngine1 as batesEngineTolerance{withBatesModel*`GenBatesModel bm',`Double' -- ^relTolerance

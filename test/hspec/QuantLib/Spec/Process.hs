@@ -17,11 +17,8 @@
 -- "G2ForwardProcess" and "HybridHestonHullWhiteProcess" describe blocks below. 'QuantLib.Model'
 -- also binds 'G2'\'s @dynamics()@ (as 'g2Dynamics', returning the new 'ShortRateDynamics' type)
 -- and its @shortRate@ method, closing the last holdout -- all 8 of upstream's g2process.cpp
--- cases are now ported. Of test-suite/hybridhestonhullwhiteprocess.cpp's 10 cases,
--- 'testAnalyticHestonHullWhitePricing' is ported here (an MC-vs-analytic cross-check with the
--- short-rate leg decorrelated) and 'testZeroBondPricing' as
--- "QuantLib.Example.HestonHullWhiteMC"; the rest still need bindings this module doesn't have
--- (a bound 'FdmHestonHullWhiteVanillaEngine', ...) and are left as a further follow-up.
+-- cases are now ported. 'testH1HWPricingEngine' checks the H1-HW approximation here;
+-- 'testAnalyticHestonHullWhitePricing' and 'testZeroBondPricing' have separate MC and example coverage.
 -- 'QuantLib.Process.numeraire' and the Hull-White process getters
 -- ('alpha'\/'bFunction'\/'mFunction') are
 -- checked here against closed forms, and 'stdDeviation'\/'covariance'\/'apply'\/'evolve'
@@ -35,15 +32,15 @@ import Data.Time.Calendar(addDays)
 import Data.List.NonEmpty(fromList)
 
 import qualified QuantLib.Context as Context
-import QuantLib.Time.Date(today, addPeriod, september)
+import QuantLib.Time.Date(today, addPeriod, july, september)
 import QuantLib.Time.Schedule(dayCounter, yearFraction, DayCounterConstructor(..), Frequency(..), TimeUnit(..))
 import QuantLib.InterestRate(Compounding(..), VolatilityType(..), rate)
 import QuantLib.Quote(simpleQuote, setValue)
 import QuantLib.TermStructure.Yield(Reference(..), TermPoint(..), flatForward, forwardRateBetweenTimes, discount, YieldTermStructure, interpolatedZeroCurve)
 import QuantLib.Instrument(npv, setPricingEngine)
-import QuantLib.Instrument.Option(europeanOption, StrikedPayoff(PlainVanilla), PlainVanillaPayoff(..), OptionType(..), Exercise(European), EuropeanExercise(..))
+import QuantLib.Instrument.Option(europeanOption, impliedVolatility, StrikedPayoff(PlainVanilla), PlainVanillaPayoff(..), OptionType(..), Exercise(European), EuropeanExercise(..))
 import qualified QuantLib.Process as Process
-import QuantLib.Process(hestonProcess, pdf, batesProcess, gjrGarchProcess, HestonProcessDiscretization(..), GJRGARCHProcessDiscretization(..)
+import QuantLib.Process(blackScholesMertonProcess, hestonProcess, pdf, batesProcess, gjrGarchProcess, HestonProcessDiscretization(..), GJRGARCHProcessDiscretization(..), ProcessDiscretization(EulerDiscretization)
  , g2Process, g2ForwardProcess, phi, setForwardMeasureTime, factors, drift, diffusion, expectation, initialValues, hullWhiteProcess, hullWhiteForwardProcess, hybridHestonHullWhiteProcess, HybridHestonHullWhiteProcessDiscretization(..)
  , liborForwardModelProcess, cashFlows
  , accrualTimes
@@ -55,16 +52,16 @@ import QuantLib.Model(hullWhite, g2, g2Dynamics, shortRate
  , hestonModel, batesModel, gjrGarchModel
  , liborForwardModel, liborForwardModelS0, asAffineModel, lfmHullWhiteParameterization, lfmHullWhiteCovariance, setCovarParam, LmVolatilityModel(..), LmCorrelationModel(..)
  , discountBond)
-import QuantLib.PricingEngine(analyticHestonHullWhiteEngine, mcHestonHullWhiteEngine
+import QuantLib.PricingEngine(analyticH1HwEngine, analyticHestonHullWhiteEngine, mcHestonHullWhiteEngine
  , analyticHestonEngine, IntegrationControl(..), batesEngine, analyticGjrGarchEngine, mcEuropeanGjrGarchEngine, blackFormula, analyticCapFloorEngine)
 import QuantLib.Method(pathGenerator, next, asset)
 import QuantLib.Math(RngTrait(..), StatisticsTrait(..), timeGrid, Interpolation(..), boxedRealMatrix, realMatrixFromVector, matrixRows, matrixColumns, matrixData, realMatrixData)
-import Control.Monad(replicateM, zipWithM_, foldM_)
+import Control.Monad(replicateM, forM_, zipWithM_, foldM_)
 import QuantLib.Instrument.CapFloor(cap)
 import QuantLib.Time.Calendar(adjust, advance, calendar, BusinessDayConvention(..), CalendarConstructor(..))
 import QuantLib.Index.InterestRate(iborIndex, IborConstructor(..))
 import qualified QuantLib.Index.InterestRate as Ibor(fixingDays)
-import qualified QuantLib.TermStructure.Volatility as Vol(capletVarianceCurve)
+import qualified QuantLib.TermStructure.Volatility as Vol(CalendarReference(..), capletVarianceCurve, blackConstantVol)
 
 import QuantLib.Spec.Helpers(closePrec)
 
@@ -617,7 +614,49 @@ spec = do
       kEvolved <- evolve klugeProcess 0.0 kx0 0.1 (replicate (fromIntegral kf) 0.1)
       length kEvolved `shouldBe` length kx0
 
-  describe "HybridHestonHullWhiteProcess (AnalyticHestonHullWhiteEngine vs. MCHestonHullWhiteEngine)" $ do
+  describe "Heston/Hull-White pricing engines" $ do
+    -- Ported from test-suite/hybridhestonhullwhiteprocess.cpp::testH1HWPricingEngine.
+    it "H1-HW reproduces the published implied-volatility fixture" $
+      Context.keepingSettingsGc $ do
+        let refDate = 15 `july` 2012
+            exerciseDate = 13 `july` 2022
+            expected =
+              [ (0.3, [0.267503, 0.235742, 0.228223, 0.223461, 0.217855])
+              , (0.6, [0.263626, 0.211625, 0.199907, 0.193502, 0.190025])
+              ]
+            strikes = [40.0, 80.0, 100.0, 120.0, 180.0]
+        Context.setEvaluationDate (Just refDate)
+        dc <- dayCounter Actual365FixedStandard
+        rQ <- simpleQuote 0.02
+        rTS <- flatForward (ReferenceDate refDate) rQ dc Continuous Annual
+        qQ <- simpleQuote 0.0
+        qTS <- flatForward (ReferenceDate refDate) qQ dc Continuous Annual
+        s0 <- simpleQuote 100.0
+        hullWhiteModel <- hullWhite rTS 0.01 0.01
+        volQ <- simpleQuote 0.20
+        nullCal <- calendar Null
+        volTS <- Vol.blackConstantVol (Vol.CalendarReferenceDate refDate) nullCal volQ dc
+        bsm <- blackScholesMertonProcess s0 qTS rTS volTS EulerDiscretization False
+        forM_ expected $ \(sigma, expectedVols) -> do
+          heston <- hestonProcess rTS (Just qTS) s0 0.05 0.3 0.05 sigma (-0.30) QuadraticExponentialMartingale
+          model <- hestonModel heston
+          engine <- analyticH1HwEngine model hullWhiteModel 0.6 (IntegrationOrder 144)
+          forM_ (zip strikes expectedVols) $ \(strike, expectedVol) -> do
+            option <- europeanOption (PlainVanilla (PlainVanillaPayoff Call strike)) (European (EuropeanExercise exerciseDate))
+            setPricingEngine option engine
+            value <- npv option
+            impliedVolatility option value bsm [] 1.0e-8 100 1.0e-4 10.0
+              >>= (`shouldSatisfy` closePrec expectedVol 1.0e-4)
+
+        heston <- hestonProcess rTS (Just qTS) s0 0.05 0.3 0.05 0.3 (-0.30) QuadraticExponentialMartingale
+        model <- hestonModel heston
+        toleranceEngine <- analyticH1HwEngine model hullWhiteModel 0.6 (IntegrationTolerance 1.0e-8 1000)
+        option <- europeanOption (PlainVanilla (PlainVanillaPayoff Call 100.0)) (European (EuropeanExercise exerciseDate))
+        setPricingEngine option toleranceEngine
+        value <- npv option
+        impliedVolatility option value bsm [] 1.0e-8 100 1.0e-4 10.0
+          >>= (`shouldSatisfy` closePrec 0.228223 1.0e-4)
+
     -- ported from test-suite/hybridhestonhullwhiteprocess.cpp::testAnalyticHestonHullWhitePricing:
     -- with the equity/short-rate correlation set to 0, an MC price on the joint
     -- Heston/Hull-White process must reproduce the semi-analytic AnalyticHestonHullWhiteEngine

@@ -7400,8 +7400,8 @@
 |x|ql/pricingengines/vanilla/analyticeuropeanvasicekengine.hpp|void AnalyticBlackVasicekEngine::calculate() const;
 |v|ql/pricingengines/vanilla/analyticgjrgarchengine.hpp|AnalyticGJRGARCHEngine::AnalyticGJRGARCHEngine(const ext::shared_ptr<GJRGARCHModel> & model);
 |x|ql/pricingengines/vanilla/analyticgjrgarchengine.hpp|void AnalyticGJRGARCHEngine::calculate() const;
-| |ql/pricingengines/vanilla/analytich1hwengine.hpp|AnalyticH1HWEngine::AnalyticH1HWEngine(const ext::shared_ptr<HestonModel> & model, const ext::shared_ptr<HullWhite> & hullWhiteModel, Real rhoSr, Size integrationOrder = 144);
-| |ql/pricingengines/vanilla/analytich1hwengine.hpp|AnalyticH1HWEngine::AnalyticH1HWEngine(const ext::shared_ptr<HestonModel> & model, const ext::shared_ptr<HullWhite> & hullWhiteModel, Real rhoSr, Real relTolerance, Size maxEvaluations);
+|v|ql/pricingengines/vanilla/analytich1hwengine.hpp|AnalyticH1HWEngine::AnalyticH1HWEngine(const ext::shared_ptr<HestonModel> & model, const ext::shared_ptr<HullWhite> & hullWhiteModel, Real rhoSr, Size integrationOrder = 144);
+|v|ql/pricingengines/vanilla/analytich1hwengine.hpp|AnalyticH1HWEngine::AnalyticH1HWEngine(const ext::shared_ptr<HestonModel> & model, const ext::shared_ptr<HullWhite> & hullWhiteModel, Real rhoSr, Real relTolerance, Size maxEvaluations);
 |v|ql/pricingengines/vanilla/analytichestonengine.hpp|AnalyticHestonEngine::AnalyticHestonEngine(const ext::shared_ptr<HestonModel> & model, Real relTolerance, Size maxEvaluations);
 |v|ql/pricingengines/vanilla/analytichestonengine.hpp|AnalyticHestonEngine::AnalyticHestonEngine(const ext::shared_ptr<HestonModel> & model, Size integrationOrder = 144);
 |u|ql/pricingengines/vanilla/analytichestonengine.hpp|AnalyticHestonEngine::AnalyticHestonEngine(const ext::shared_ptr<HestonModel> & model, ComplexLogFormula cpxLog, const Integration & itg, Real andersenPiterbargEpsilon = 1e-25, Real alpha = - 0.5);
