@@ -1,1 +1,2 @@
-stack build --test --no-haddock
+#!/bin/sh
+cabal build all --enable-tests "$@" && cabal test all --enable-tests "$@"

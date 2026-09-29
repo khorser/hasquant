@@ -12,7 +12,7 @@ RUN apt-get update \
 ENV LANG=en_US.UTF-8
 ENV LC_ALL=en_US.UTF-8
 
-# Non-root user: local dev caches ghcup/cabal/stack in named volumes mounted over
+# Non-root user: local dev caches ghcup/cabal in named volumes mounted over
 # this user's $HOME (see compose.yaml), so GHC isn't duplicated between image layers
 # and the volume, and doesn't need re-downloading on every image rebuild. Only the
 # steps that genuinely need root (apt installs above, boost/quantlib "make install"
@@ -62,8 +62,8 @@ RUN ldconfig
 ARG GHC_VERSION=9.10.3
 ENV GHC_VERSION=${GHC_VERSION}
 
-RUN mkdir -p /home/${USERNAME}/.ghcup /home/${USERNAME}/.cabal /home/${USERNAME}/.stack /hasquant/.stack-work /hasquant/dist-newstyle \
-    && chown -R ${UID}:${GID} /home/${USERNAME}/.ghcup /home/${USERNAME}/.cabal /home/${USERNAME}/.stack /hasquant/.stack-work /hasquant/dist-newstyle
+RUN mkdir -p /home/${USERNAME}/.ghcup /home/${USERNAME}/.cabal /hasquant/dist-newstyle \
+    && chown -R ${UID}:${GID} /home/${USERNAME}/.ghcup /home/${USERNAME}/.cabal /hasquant/dist-newstyle
 
 USER ${USERNAME}
 WORKDIR /home/${USERNAME}
@@ -75,18 +75,16 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | \
     BOOTSTRAP_HASKELL_NONINTERACTIVE=1 BOOTSTRAP_HASKELL_ADJUST_BASHRC=0 BOOTSTRAP_HASKELL_MINIMAL=1 \
     sh
 
-# BUILD_MODE=local (default): defer GHC/cabal/stack install to entrypoint.sh at
+# BUILD_MODE=local (default): defer GHC/cabal install to entrypoint.sh at
 # container start, into whatever's mounted over $HOME/.ghcup etc (compose.yaml's
 # named volumes) -- keeps the same GHC install from being duplicated between image
 # layers and the volume, and avoids re-downloading it on every image rebuild.
-# BUILD_MODE=ci: no persistent volume across CI runs, so bake GHC/cabal/stack into
+# BUILD_MODE=ci: no persistent volume across CI runs, so bake GHC/cabal into
 # this layer once instead; entrypoint.sh's own installs then no-op at container start.
 ARG BUILD_MODE=local
 RUN if [ "$BUILD_MODE" = "ci" ]; then \
       ghcup install ghc "${GHC_VERSION}" && ghcup set ghc "${GHC_VERSION}" && \
-      ghcup install cabal recommended && \
-      ghcup install stack recommended && \
-      stack config set system-ghc true --global; \
+      ghcup install cabal recommended; \
     fi
 
 RUN cat << 'EOF' > /home/${USERNAME}/entrypoint.sh
@@ -101,11 +99,6 @@ if [ -n "$GHC_VERSION" ]; then
     if ! ghcup whereis cabal > /dev/null 2>&1; then
         echo "[Entrypoint] Cabal not found. installing..."
         ghcup install cabal recommended
-    fi
-    if ! ghcup whereis stack > /dev/null 2>&1; then
-        echo "[Entrypoint] Stack not found. installing..."
-        ghcup install stack recommended
-        stack config set system-ghc true --global
     fi
 #    if ! ghcup whereis hls > /dev/null 2>&1; then
 #        echo "[Entrypoint] HLS not found. installing..."

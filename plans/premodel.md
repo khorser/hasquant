@@ -33,10 +33,10 @@ hasquant repo: `github.com/khorser/hasquant`, checked out at `../hasquant` besid
 - Scale tolerances to the result's magnitude. Use QuantLib's fixture tolerances where given.
 - Keep comments to two lines at most, stating current purpose. Don't record history in comments.
 - Gates before each commit:
-  - one clean, warning-visible build: `tools/quiet-build.py stack build --test --no-haddock --flag hasquant:buildExample --flag hasquant:buildSofrXva`;
-  - `stack test`;
+  - one clean, warning-visible build: `tools/quiet-build.py cabal build all --enable-tests -f buildExample -f buildSofrXva`;
+  - `cabal test all --enable-tests -f buildExample -f buildSofrXva`;
   - `hlint .`;
-  - the GHC 8.10 docker gate from `run-hasquant` (`docker compose run --rm hasquant sh -c 'stack build --resolver lts-18.8 --flag hasquant:buildExample --flag hasquant:buildSofrXva --no-haddock && stack --resolver lts-18.8 test'`).
+  - the GHC 8.10 docker gate from `run-hasquant` (`docker compose run --rm hasquant sh -c 'ghcup install ghc 8.10.6 && cabal update && cabal build all --project-file=cabal.project.lts-18.8 --enable-tests -f buildExample -f buildSofrXva && cabal test all --project-file=cabal.project.lts-18.8 --enable-tests -f buildExample -f buildSofrXva'`).
 - Phases 1–2 change no API, so `test/smoke/` does not need recompiling. Phase 3 adds API, so grep `test/smoke/` for affected names as the skill says.
 - **Out of scope. Do not add these:**
   - a C++ LGM or cross-asset process, or any ORE code;
@@ -164,9 +164,9 @@ Start this only when hasquant-dsl's Q3 work decides to calibrate stochastic cred
 ## Verification
 
 - **Phase 1:**
-  - `stack test` passes, and the new `it`s appear in the output.
+  - `cabal test all --enable-tests` passes, and the new `it`s appear in the output.
   - Temporarily perturb one input (for example the HW σ to 0.011, or one expected vol in its 4th decimal) and confirm the test fails. Revert before committing.
-- **Phase 2:** a warning-clean build, then `stack haddock --no-haddock-deps` renders the changed docs. `hlint .` passes.
+- **Phase 2:** a warning-clean build, then `cabal haddock lib:hasquant` renders the changed docs. `hlint .` passes.
 - **All phases:** the GHC 8.10 docker gate passes. `git status` is clean after each commit.
 - **Downstream check:** the user runs this locally after merge; it is not a gate for the cloud agent. In `../hasquant-dsl`, run `cabal build all roundtrip rpa-controls`. Phases 1–2 change no API, so it should still compile.
 

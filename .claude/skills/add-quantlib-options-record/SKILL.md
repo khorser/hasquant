@@ -49,4 +49,4 @@ oisRateHelperWithOptions (OisTenor days tenor forwardStart) rate idx curve
 
 ## Verification
 
-Run `make` for a quick C++-only compile check before a full `stack build --test --no-haddock`. Check that the *narrow* entry points still typecheck at their original signatures — that's the property this pattern exists to preserve.
+Run `make` for a quick C++-only compile check before a full `cabal build all --enable-tests`. Check that the *narrow* entry points still typecheck at their original signatures — that's the property this pattern exists to preserve.

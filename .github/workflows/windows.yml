@@ -121,6 +121,13 @@ jobs:
           ninja
           ninja install
 
+      # cabal.project pins GHC 9.10.3 to a Stackage snapshot; other GHCs use the unpinned
+      # project. Replacing it keeps cabal.project.local and every later cabal call unchanged.
+      - name: Use the unpinned project for GHC other than 9.10.3
+        if: env.GHC_VERSION != '9.10.3'
+        shell: pwsh
+        run: Copy-Item cabal.project.unpinned cabal.project -Force
+
       # WINDOWS.md Step 3: same flags as cabal.project.local.WINDOWS, with paths
       # resolved to this runner instead of the hardcoded h:/ example paths.
       - name: Write cabal.project.local

@@ -30,13 +30,6 @@ jobs:
           ghc-version: ${{ env.GHC_VERSION }}
           cabal-version: 'recommended'
 
-      - name: Set up Stack
-        if: matrix.ghc == '9.6.7'
-        uses: haskell-actions/setup@v2
-        with:
-          enable-stack: true
-          stack-version: 'latest'
-
       - name: Install dependencies via Homebrew
         run: |
           HOMEBREW_NO_AUTO_UPDATE=0 brew update --force
@@ -44,9 +37,11 @@ jobs:
 
       - name: Build and test
         run: |
+          # 9.6.7 and 9.10.3 are pinned to Stackage snapshots; 9.8.4 is unpinned.
           case "${{ matrix.ghc }}" in
-            9.6.7)
-              stack build --flag hasquant:buildExample --flag hasquant:buildSofrXva --resolver lts-22.44 --system-ghc --test ;;
-            *)
-              cabal build all -f buildExample -f buildSofrXva --enable-tests && cabal test all ;;
+            9.6.7) project=cabal.project.lts-22.44 ;;
+            9.10.3) project=cabal.project ;;
+            *) project=cabal.project.unpinned ;;
           esac
+          opts="--project-file=$project --enable-tests -f buildExample -f buildSofrXva"
+          cabal build all $opts && cabal test all $opts

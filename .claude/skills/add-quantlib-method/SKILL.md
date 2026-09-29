@@ -181,6 +181,6 @@ After the binding compiles, grep the method/class name in `tools/ql-methods-1.43
 
 ## Verification
 
-Run `make` for a quick C++-only compile check before doing a full `stack build --test --no-haddock`.
+Run `make` for a quick C++-only compile check before doing a full `cabal build all --enable-tests`.
 
 When changing `tools/gen_quantlib_method.py`, generate bindings for already-bound methods covering the affected shapes and diff them against the hand-written `.h`, `.cpp`, and `.chs` implementations. Treat marshaller, pointer-depth, enum-cast, exception, and naming differences as bugs unless they are documented human-judgment fields.

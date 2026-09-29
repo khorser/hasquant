@@ -1,8 +1,8 @@
 name: Release
 
 # On-demand release: checks out an existing tag, builds an sdist and
-# hackage-ready Haddock docs (GHC 9.10.3 / QuantLib 1.43, matching stack.yaml's
-# lts-24.53 resolver) inside the existing hasquant-ci image from linux.yml, and
+# hackage-ready Haddock docs (GHC 9.10.3 / QuantLib 1.43, pinned to lts-24.56
+# by cabal.project) inside the existing hasquant-ci image from linux.yml, and
 # publishes both as assets on a GitHub Release for that tag. Defaults to
 # creating the release as a draft (hidden from the public release list) so it
 # can be reviewed before publishing with `gh release edit <tag> --draft=false`.
@@ -62,9 +62,8 @@ jobs:
       - name: Build sdist and hackage docs
         run: |
           set -euo pipefail
-          # --allow-different-user: the bind-mounted checkout is owned by the
-          # runner's uid, not the image's baked-in dev uid; safe to bypass in
-          # this disposable single-use container (not shared multi-user state).
+          # The bind-mounted checkout is owned by the runner's uid, not the
+          # image's baked-in dev uid.
           chmod -R 777 "$PWD"
           docker run --rm \
             -v "$PWD":/hasquant \

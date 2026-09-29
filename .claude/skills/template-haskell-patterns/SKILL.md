@@ -28,6 +28,6 @@ A top-level splice must precede every `{#fun#}` hook in the file. c2hs places ge
 
 For any `derive*` refactor, compare normalized `-ddump-splices` output before and after. Strip source positions and normalize TH unique suffixes, then require byte-identical output unless the generated API is intentionally changing. Value tests do not detect field strictness or declaration-shape drift.
 
-GHC may skip splice dumping when it considers modules up to date, even with `--force-dirty`. Remove the affected generated modules' `.hi` and `.o` files under `.stack-work/dist/*/build/`, then rebuild with `--ghc-options=-ddump-splices`.
+GHC may skip splice dumping when it considers modules up to date, Remove the affected generated modules' `.hi` and `.o` files under `dist-newstyle/build/*/ghc-*/hasquant-*/build/`, then rebuild with `--ghc-options=-ddump-splices`.
 
 Run the normal local build and tests, followed by the GHC 8.10 gate from `run-hasquant`. The older gate is required for `template-haskell` compatibility.

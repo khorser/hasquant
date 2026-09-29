@@ -37,9 +37,9 @@ that is genuinely redundant would produce the same message and be hidden. Nothin
 tree has one, and c2hs's own import makes adding one pointless.
 
 Usage:
-    tools/quiet-build.py stack build --test --no-haddock
-    stack build 2>&1 | tools/quiet-build.py
-    tools/quiet-build.py --show-all stack build     # filter disabled, for checking
+    tools/quiet-build.py cabal build all --enable-tests
+    cabal build all 2>&1 | tools/quiet-build.py
+    tools/quiet-build.py --show-all cabal build all     # filter disabled, for checking
 
 Exit status is the build's own, so it stays usable in CI and in `make'.
 """
@@ -50,8 +50,7 @@ import subprocess
 import sys
 
 # A GHC diagnostic header: "path/File.chs:33:1: warning: [GHC-66111] [-Wunused-imports]".
-# Stack sometimes prefixes compiler output with "hasquant> ", so allow that.
-HEADER = re.compile(r'^(?:[\w.-]+> )?\S.*?:\d+:\d+: (?P<kind>warning|error)\b')
+HEADER = re.compile(r'^\S.*?:\d+:\d+: (?P<kind>warning|error)\b')
 
 # A continuation line of a diagnostic: blank, indented, or GHC's source snippet ("33 | ...").
 CONTINUATION = re.compile(r'^(?:\s*$|\s|\d+ \|)')

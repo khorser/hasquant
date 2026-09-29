@@ -145,7 +145,7 @@ def main():
         # program exited before reaching any bound call. Say so instead of reporting a
         # balanced ledger or dying with a traceback.
         print(f'no trace at {args.trace} -- nothing was ever traced.\n'
-              'Either tracing was not compiled in (delete .stack-work/dist/*/build/cbits and\n'
+              'Either tracing was not compiled in (delete dist-newstyle/build/*/ghc-*/hasquant-*/build/cbits and\n'
               'the stale libHShasquant* artifacts, rebuild with the trackAllocations flag, and\n'
               "confirm with `strings <built .o> | grep -c allocated'), or the program exited\n"
               'before calling anything in cbits/.', file=sys.stderr)

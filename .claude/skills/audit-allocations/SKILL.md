@@ -48,7 +48,7 @@ and nothing of that class is ever freed anywhere (then it's a `shared_ptr` paylo
 `--census` lists these separately). Exit code is 1 if anything leaked or over-freed.
 
 **Build gotcha** (see `run-hasquant` skill for the full procedure): the `trackAllocations` flag
-alone does not force `cbits` to recompile. Delete `.stack-work/dist/*/build/cbits` and the stale
+alone does not force `cbits` to recompile. Delete `dist-newstyle/build/*/ghc-*/hasquant-*/build/cbits` and the stale
 `libHShasquant*` artifacts before rebuilding, and confirm tracing actually compiled in with
 `strings <built .o> | grep -c allocated` before trusting an empty/clean trace.
 
@@ -228,7 +228,7 @@ the compiler's own derived-to-base upcast at the `return` for type safety instea
 ## Verification loop
 
 1. Rebuild with tracing per the `run-hasquant` skill's gotcha (clean `build/cbits` first).
-2. Exercise the code paths touched — ideally the full test suite (`stack test`), since a single
+2. Exercise the code paths touched — ideally the full test suite (`cabal test all --enable-tests`), since a single
    run's trace covers whatever it happens to call; a fix to a rarely-exercised function needs a
    targeted `test/smoke/` script or hspec case if the suite doesn't already reach it.
 3. `python3 tools/alloc-summary.py <trace>`; confirm exit code 0 ("nothing leaked", no

@@ -1,5 +1,0 @@
-resolver: lts-24.56
-packages:
-- .
-build:
-  cabal-verbose: True

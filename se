@@ -1,1 +1,2 @@
-stack build --flag hasquant:buildExample --no-haddock && stack exec hasquant_example
+#!/bin/sh
+cabal run hasquant_example -f buildExample "$@"

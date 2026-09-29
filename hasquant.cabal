@@ -1,9 +1,5 @@
 cabal-version: 2.2
 
--- This file has been generated from package.yaml by hpack version 0.39.6.
---
--- see: https://github.com/sol/hpack
-
 name:           hasquant
 version:        0.8.0.0
 synopsis:       Bindings to QuantLib
@@ -24,6 +20,8 @@ copyright:      (c) 2012-2026 Sergei Khorev
 license:        BSD-3-Clause
 license-file:   LICENSE
 build-type:     Simple
+-- Pinned Stackage snapshots (cabal.project*): GHC 8.10.6 lts-18.8,
+-- 9.6.7 lts-22.44, 9.10.3 lts-24.56; the other versions are unpinned.
 tested-with:
     GHC == 8.10.6
   , GHC == 9.6.7

@@ -1,1 +1,2 @@
-stack build --test --no-haddock --test-arguments --skip=LONG $*
+#!/bin/sh
+cabal build all --enable-tests "$@" && cabal test all --enable-tests --test-options=--skip=LONG "$@"

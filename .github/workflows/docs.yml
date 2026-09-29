@@ -1,7 +1,7 @@
 name: Docs
 
 # Builds Haddock API docs and an HPC coverage report (GHC 9.10.3 / QuantLib
-# 1.43, matching stack.yaml's lts-24.53 resolver) inside the existing
+# 1.43, pinned to lts-24.56 by cabal.project) inside the existing
 # hasquant-ci image from linux.yml, and publishes them to the gh-pages branch
 # root (docs) and gh-pages/coverage (HPC report), replacing previous contents.
 
@@ -50,15 +50,26 @@ jobs:
       - name: Build Haddock docs
         run: |
           set -euo pipefail
-          # --allow-different-user: the bind-mounted checkout is owned by the
-          # runner's uid, not the image's baked-in dev uid; safe to bypass in
-          # this disposable single-use container (not shared multi-user state).
+          # The bind-mounted checkout is owned by the runner's uid, not the
+          # image's baked-in dev uid.
           chmod -R 777 "$PWD"
           docker run --rm \
             -v "$PWD":/hasquant \
             -w /hasquant \
             "${{ steps.tag.outputs.tag }}" \
             sh -c "cabal update && cabal v2-haddock --enable-doc --haddock-hyperlink-source all"
+
+      # Staged before coverage, which deletes hasquant's build directory.
+      - name: Stage docs
+        run: |
+          set -euo pipefail
+          docdir=$(find dist-newstyle -type d -path '*/doc/html/hasquant' | head -1)
+          if [ -z "$docdir" ]; then
+            echo "Could not find generated haddock output under dist-newstyle" >&2
+            exit 1
+          fi
+          mkdir -p staged-docs
+          cp -r "$docdir"/. staged-docs/
 
       - name: Build coverage report
         run: |
@@ -72,25 +83,15 @@ jobs:
             -v "$PWD":/hasquant \
             -w /hasquant \
             "${{ steps.tag.outputs.tag }}" \
-            sh -c "stack --allow-different-user update && python3 tools/hpc-coverage.py"
+            sh -c "cabal update && python3 tools/hpc-coverage.py"
 
-      - name: Stage docs
+      - name: Stage coverage report
         run: |
           set -euo pipefail
-          docdir=$(find dist-newstyle -type d -path '*/doc/html/hasquant' | head -1)
-          if [ -z "$docdir" ]; then
-            echo "Could not find generated haddock output under dist-newstyle" >&2
-            exit 1
-          fi
-          mkdir -p staged-docs
-          cp -r "$docdir"/. staged-docs/
-
-          # per-component report; the hpc/combined/all one's totals don't
-          # reconcile with the sum of its own per-module rows (see the
-          # run-hasquant skill's Coverage section), so don't publish that one.
-          covdir=$(find .stack-work -type d -path '*/hpc/hasquant/hasquant_test' | head -1)
+          # The test suite's report also covers the library modules.
+          covdir=$(find dist-newstyle -name hpc_index.html -path '*hasquant_test*' -exec dirname {} \; | head -1)
           if [ -z "$covdir" ]; then
-            echo "Could not find generated HPC coverage report under .stack-work" >&2
+            echo "Could not find generated HPC coverage report under dist-newstyle" >&2
             exit 1
           fi
           mkdir -p staged-docs/coverage

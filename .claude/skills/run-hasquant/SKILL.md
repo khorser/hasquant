@@ -9,21 +9,20 @@ All paths below are relative to the repo root.
 
 ## Prerequisites
 
-QuantLib 1.43 and GHC/Stack/Cabal are expected to be installed. The GHC 8.10 compatibility gate uses the repository's Docker Compose setup below.
+QuantLib 1.43, GHCup, GHC 9.10.3 and Cabal are expected to be installed. `cabal.project` pins dependencies to Stackage lts-24.56; README.md's "Pinned dependencies" lists the other project files. The GHC 8.10 compatibility gate uses the repository's Docker Compose setup below.
 
 ## Build
 
 ```bash
 make                                   # C++-only compile check, fast, no Haskell rebuild
-stack build --test --no-haddock        # full build; prefer through tools/quiet-build.py, see Gotchas
+cabal build all --enable-tests         # full build; prefer through tools/quiet-build.py, see Gotchas
 
 # final gate: also compile the two flagged executables, as CI does
-tools/quiet-build.py stack build --test --no-haddock \
-  --flag hasquant:buildExample --flag hasquant:buildSofrXva
+tools/quiet-build.py cabal build all --enable-tests -f buildExample -f buildSofrXva
 ```
 
 The `app/SofrXva` executable and `test/example` are behind the default-off
-`buildSofrXva`/`buildExample` flags, so a plain `stack build --test` leaves
+`buildSofrXva`/`buildExample` flags, so a plain `cabal build all` leaves
 them uncompiled and can miss API breakage. Every CI job builds both
 (`.github/workflows/{linux,macos,windows}.yml`), so run the flagged build
 once before declaring a change done.
@@ -35,16 +34,20 @@ API change, grep `test/smoke/` for the affected names and re-run `driver.sh`
 on each hit; compiling them *is* the check.
 
 **GHC 8.10 gate.** The package supports GHC 8.10.6 / base 4.14.3.0, its
-declared floor (`base >=4.14`, set in `package.yaml` — `hasquant.cabal` is
-hpack-generated, so edit the former and let `stack build` regenerate the
-latter). Nothing merges until this passes:
+declared floor (`base >=4.14` in `hasquant.cabal`, which is edited directly).
+Nothing merges until this passes:
 
 ```bash
-docker compose run --rm hasquant sh -c 'stack build --resolver lts-18.8 --flag hasquant:buildExample --flag hasquant:buildSofrXva --no-haddock && stack --resolver lts-18.8 test --flag hasquant:buildExample --flag hasquant:buildSofrXva'
+docker compose run --rm hasquant sh -c 'ghcup install ghc 8.10.6 && cabal update && cabal build all --project-file=cabal.project.lts-18.8 --enable-tests -f buildExample -f buildSofrXva && cabal test all --project-file=cabal.project.lts-18.8 --enable-tests -f buildExample -f buildSofrXva'
 ```
 
-(no `-it`, which fails without a TTY). Keep the same flags on both commands;
-dropping the executable flags for `test` reconfigures and rebuilds the library.
+(no `-it`, which fails without a TTY). The image bakes in only GHC 9.10.3;
+`ghcup install` is a no-op once 8.10.6 is in the `ghcup-root` volume, and the
+lts-18.8 snapshot's `with-compiler: ghc-8.10.6` selects it. The gate's project
+file reads `cabal.project.lts-18.8.local`, so a host `cabal.project.local`
+bind-mounted into the container does not leak in. Keep the same flags on both
+commands; dropping the executable flags for `test` reconfigures and rebuilds
+the library.
 It catches two things the local
 GHC 9.10 build cannot: post-8.10 `base` functions creeping in — often *via*
 an hlint suggestion, e.g. `Data.Functor.unzip` (base 4.19+) — and types 9.10
@@ -62,17 +65,17 @@ environment file (not written into the repo), then compiles and runs a
 `test/smoke/*.hs` program against it:
 
 ```bash
-.claude/skills/run-hasquant/driver.sh test/smoke/CheckSabrSmileSection.hs
+.claude/skills/run-hasquant/driver.sh test/smoke/CheckCalendars.hs
 ```
 
 ```
 ==> cabal build lib:hasquant
 ==> cabal install --lib hasquant (registers a global GHC environment file, not in-repo)
-==> compiling test/smoke/CheckSabrSmileSection.hs
-==> running /tmp/hasquant-smoke-CheckSabrSmileSection
-OK   ShiftedLognormal strike=0.01 vol   0.4197993819773641
+==> compiling test/smoke/CheckCalendars.hs
+==> running /tmp/hasquant-smoke-CheckCalendars
 ...
-SabrInterpolatedSmileSection: OK, calibrated smile reproduces the generating SABR vols
+PolandSettlement: Saturday is weekend = True
+PolandWSE: Saturday is weekend = True
 ```
 
 Just build and register the library (no smoke script) with:
@@ -101,16 +104,16 @@ Same idea, spelled out manually (this is what the driver automates):
 ```bash
 cabal build lib:hasquant
 cabal install --lib hasquant --force-reinstalls   # only needed once, or after an API change
-cabal exec -- ghc -itest/smoke -package hasquant test/smoke/CheckSabrSmileSection.hs \
-  -o /tmp/checksabr -outputdir /tmp/checksabr_build
-/tmp/checksabr
+cabal exec -- ghc -itest/smoke -package hasquant test/smoke/CheckCalendars.hs \
+  -o /tmp/checkcalendars -outputdir /tmp/checkcalendars_build
+/tmp/checkcalendars
 ```
 
 ## Test
 
 ```bash
-stack test --ta '--skip LONG'          # fast path: ~3s, skips tests marked (LONG)
-stack build --test --no-haddock        # full suite: ~26s, 141 examples
+cabal test all --enable-tests --test-options=--skip=LONG   # fast path, skips tests marked (LONG)
+cabal test all --enable-tests                              # full suite
 ```
 
 Both pass clean on the current `HEAD`.
@@ -122,7 +125,7 @@ labelled `(LONG)` while running in 0.5s).
 
 ## Coverage
 
-Plain `stack test --coverage --ta '--skip LONG'` runs, but is close to
+Plain `cabal test --enable-coverage` runs, but is close to
 useless here: every c2hs-generated binding module (`QuantLib.CashFlow`,
 `QuantLib.Instrument.*`, `QuantLib.Time.Calendar`, …) reports `0/0` — not
 low coverage, *zero instrumentable expressions* — even though these
@@ -142,31 +145,29 @@ module, force a clean rebuild, strip the `LINE` pragmas from the generated
 `.hs` before GHC compiles it, then run the suite:
 
 ```bash
-python3 tools/hpc-coverage.py                    # default: --ta '--skip LONG'
-python3 tools/hpc-coverage.py --ta ''             # pass through other stack test args
+python3 tools/hpc-coverage.py                                  # default: --test-options=--skip=LONG
+python3 tools/hpc-coverage.py --test-options='--match /Quote/'  # other cabal test args
 ```
 
-It always starts with `stack clean hasquant` (needs a clean build to
-regenerate `.chs → .hs` output before it can strip anything) and runs two
-full library builds, so budget the time of two `stack build`s plus a test
-run — not something to run on every edit. Report locations print at the
-end; the useful one is the per-component report for `hasquant_test`, e.g.:
+It always deletes hasquant's `dist-newstyle/build/*/ghc-*/hasquant-*`
+directory first (needs a clean build to regenerate `.chs → .hs` output
+before it can strip anything) and runs two full library builds, so budget
+the time of two builds plus a test run — not something to run on every
+edit. After stripping, it deletes the package's `cache/build` file:
+cabal-install tracks only package sources, so without that it reports the
+library up to date and the stripped `.hs` is never compiled. Command-line
+`--ghc-options=-fforce-recomp` does not help; cabal leaves it out of the
+configuration hash. The script fails if `QuantLib.CashFlow.mix` ends up
+with no ticks. The report path prints at the end:
 
 ```
-.stack-work/install/<arch>/<snapshot>/<ghc>/hpc/hasquant/hasquant_test/hpc_index.html
+dist-newstyle/build/<arch>/ghc-<ver>/hasquant-<ver>/t/hasquant_test/hpc/vanilla/html/hpc_index.html
 ```
 
-(there's also a `hpc/combined/all/hpc_index.html` "unified" report, but its
-totals don't reconcile with the sum of its own listed per-module rows on
-this codebase — something about how stack merges `.tix` data across
-components inflates it; don't trust it as a percentage). `.stack-work` is
-already gitignored, so the report needs no separate cleanup — but note the
-generated `.hs` files under `.stack-work` now permanently have their `LINE`
-pragmas stripped until the next `stack clean`/fresh c2hs run, which makes
-GHC error locations for anything compiled from them point at the `.hs`
-instead of the `.chs` in the meantime (irrelevant for a passing build, only
-matters if you're mid-debugging a `.chs`-side compile error when you run
-this).
+The generated `.hs` files keep their `LINE` pragmas stripped until the next
+clean build, so GHC error locations for them point at the `.hs` instead of
+the `.chs` in the meantime (irrelevant for a passing build, only matters if
+you're mid-debugging a `.chs`-side compile error when you run this).
 
 A **gcov/`--coverage`-on-`cbits/`** route was tried first and abandoned:
 GHC's in-process TH interpreter segfaulted loading a `--coverage`-
@@ -179,16 +180,18 @@ Haskell-side HPC route above turns out insufficient.
 
 ## Gotchas
 
+- **A segfault at the first cbits call usually means a `Date` layout mismatch.** Check which
+  `ql/config.hpp` the shim saw: an `-isystem` for the QuantLib include dir demotes it behind
+  Homebrew's `QL_HIGH_RESOLUTION_DATE` headers; use `-optcxx--system-header-prefix=ql/` instead.
 - **Do not trust `cabal repl` or `ghci` numeric results that cross into `cbits/`.** Known-good
   pricing calls can return `0.0` in the interpreter while the compiled test binary is correct.
   Inspect intermediate values through a temporary trace in a compiled `cabal test`/`cabal run`
   path, then remove it.
 - **After a repository change, run one clean warning-visible build and fix every real
   source warning it reports, including pre-existing warnings.** Use
-  `stack clean hasquant` followed by
-  `tools/quiet-build.py stack build --test --no-haddock`; an incremental build can hide
-  warnings in untouched modules. The accepted noise is Stack's non-portable `cpp-options: -P`
-  note and the linker's redundant `-U` warning. The helper suppresses only c2hs's generated
+  `rm -rf dist-newstyle` followed by
+  `tools/quiet-build.py cabal build all --enable-tests -f buildExample -f buildSofrXva`; an incremental build can hide
+  warnings in untouched modules. The accepted noise is the macOS linker's redundant `-U` warning. The helper suppresses only c2hs's generated
   `Foreign.ForeignPtr` unused-import block; do not hide real warnings with a module-wide pragma.
   Fix partial-function warnings with an exhaustive `case`, not another incomplete pattern.
 
@@ -196,9 +199,8 @@ Haskell-side HPC route above turns out insufficient.
   applying it; for a proven false positive, add a narrow `.hlint.yaml` exception with a short
   reason.
 - **`trackAllocations` needs the built C++ objects deleted, or it silently
-  does nothing.** Neither `cabal build --flag trackAllocations` nor `stack
-  build --flag hasquant:trackAllocations` recompiles `cxx-sources` when
-  only a flag changes — both report `Up to date` while producing a library
+  does nothing.** `cabal build -f trackAllocations` does not recompile
+  `cxx-sources` when only a flag changes — it reports `Up to date` while producing a library
   with no tracing in it. `touch cbits/*.cpp` and deleting
   `dist-newstyle/.../build/cbits/*.o` did not trigger it; deleting the
   whole `build/cbits` directory did. Confirm tracing is compiled in before
@@ -224,13 +226,6 @@ Haskell-side HPC route above turns out insufficient.
   against a hand-written trace seeding a leak, a double free, and one of
   each `alloc()` case — a permissive bug here looks exactly like a clean
   result.
-- **`stack build` and `cabal build` are two independent build systems
-  here** and don't share installed-package state. The test suite
-  (`stack test`) and the smoke-script driver (`cabal exec -- ghc
-  -package hasquant`) go through different toolchains — building with
-  `stack` does not make `cabal exec` see the new code. Rebuild with
-  `cabal build lib:hasquant` (the driver's first step) before running a
-  smoke script, even right after a `stack build`.
 - **`cabal install --lib hasquant` fails if already registered**
   ("Packages requested to install already exist in environment file") —
   the driver passes `--force-reinstalls` to make re-registering after an
@@ -243,12 +238,12 @@ Haskell-side HPC route above turns out insufficient.
   driver does.
 - **A stale build can pass tests against old generated code.** Editing a C
   header (e.g. `cbits/qlEnumObjects.h`) without touching any `.chs` file
-  leaves `cabal build`/`stack build` silently stale: neither tracks that a
+  leaves `cabal build` silently stale: it does not track that a
   `.chs` file's `#include`d header changed, so the build reports success
   without re-running c2hs, and tests then pass against the *old* generated
   code. Do a clean build if in doubt. This is exactly why the smoke
   scripts exist and why this driver is the harness to reach for after any
-  enum/header-only change, not just `stack test`.
+  enum/header-only change, not just `cabal test`.
 
   A compiled build is not proof that generated enum cases actually
   changed. `test/smoke/` holds standalone end-to-end value-level checks

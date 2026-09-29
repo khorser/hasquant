@@ -20,7 +20,7 @@ import QuantLib.Time.Calendar
 import QuantLib.Time.Date
 import QuantLib.Time.Schedule
 
--- run tests with stack test --ta '--match /Repo'
+-- run tests with cabal test all --enable-tests --test-options='--match /Repo'
 data Result = Result
   { cleanPriceR :: Double
   , dirtyPriceR :: Double

@@ -1,1 +1,2 @@
-stack build --no-haddock  --flag hasquant:buildExample --flag hasquant:trackAllocations $* && stack exec hasquant_example
+#!/bin/sh
+cabal run hasquant_example -f buildExample -f trackAllocations "$@"

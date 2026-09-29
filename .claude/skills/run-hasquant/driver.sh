@@ -3,7 +3,7 @@
 # standalone test/smoke/*.hs program against the built library and run it.
 # See this skill's SKILL.md "Gotchas" section ("A stale build can pass
 # tests against old generated code") for why this exists (a compiled
-# `stack build` is not proof that generated code, e.g. from an edited
+# `cabal build` is not proof that generated code, e.g. from an edited
 # cbits/ header or a new enum case, actually changed) -- this script is
 # the harness for that check.
 #

@@ -56,7 +56,7 @@ Custom payoff compatibility is consumer-specific. Most pricing engines require a
 
 ## Verification
 
-Run `make` for a quick C++-only compile check, then a **full** (not incremental) `stack build --test --no-haddock` — this pattern touches `{#pointer#}` declarations across multiple `.chs` files, and an incremental build here once reported success while still running stale code. A wrong hop count still type-checks, so add or extend a `smoke/` script exercising the *deepest* case (most upcast hops) end to end: construct via the deepest nested case, consume it, print something derived (e.g. `isExpired`) — see `smoke/CheckPayoffExerciseUpcast.hs`.
+Run `make` for a quick C++-only compile check, then a **full** (not incremental) `cabal build all --enable-tests` — this pattern touches `{#pointer#}` declarations across multiple `.chs` files, and an incremental build here once reported success while still running stale code. A wrong hop count still type-checks, so add or extend a `smoke/` script exercising the *deepest* case (most upcast hops) end to end: construct via the deepest nested case, consume it, print something derived (e.g. `isExpired`) — see `smoke/CheckPayoffExerciseUpcast.hs`.
 
 ## Temporary-handle exception safety
 

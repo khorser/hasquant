@@ -204,6 +204,13 @@ jobs:
           hestonslv-hsprobe-mingwex.exe > hestonslv-hsprobe-mingwex.log 2>&1
           type hestonslv-hsprobe-mingwex.log
 
+      # cabal.project pins GHC 9.10.3 to a Stackage snapshot; other GHCs use the unpinned
+      # project. Replacing it keeps cabal.project.local and every later cabal call unchanged.
+      - name: Use the unpinned project for GHC other than 9.10.3
+        if: inputs.hasquant && env.GHC_VERSION != '9.10.3'
+        shell: pwsh
+        run: Copy-Item cabal.project.unpinned cabal.project -Force
+
       # Third rung: the same fixture through hasquant's own bindings. Only lib:hasquant
       # is built -- not the test suite or examples -- and the driver runs outside hspec,
       # so a throw here isolates the cause to hasquant's path rather than libQuantLib,

@@ -132,17 +132,15 @@ jobs:
       - name: Pull CI image
         run: docker pull "${{ steps.tag.outputs.tag }}"
 
-      # Only the cabal/stack package store is cached, keyed per GHC version --
-      # GHC itself is baked into the image (BUILD_MODE=ci), and .stack-work/
-      # dist-newstyle are deliberately never cached: a warm build dir here has
-      # twice produced wrong results (see CLAUDE.md) rather than just being slow.
+      # Only the cabal package store is cached, keyed per GHC version -- GHC
+      # itself is baked into the image (BUILD_MODE=ci), and dist-newstyle is
+      # deliberately never cached: a warm build dir here has twice produced
+      # wrong results (see CLAUDE.md) rather than just being slow.
       - name: Restore package store cache
         uses: actions/cache@v6
         with:
           path: ${{ runner.temp }}/cabal-cache
-          # stack.yaml.lock is gitignored (not present in the CI checkout), so
-          # only package.yaml is hashed here.
-          key: cabal-store-${{ matrix.ghc_version }}-${{ hashFiles('package.yaml') }}
+          key: cabal-store-${{ matrix.ghc_version }}-${{ hashFiles('hasquant.cabal', 'cabal.project*', 'cabal/*.config') }}
           restore-keys: |
             cabal-store-${{ matrix.ghc_version }}-
 
@@ -152,28 +150,22 @@ jobs:
           mkdir -p "${{ runner.temp }}/cabal-cache"
           # The container's dev user (uid baked at image build) may not match the
           # runner's uid; open up the bind-mounted cache dir and checkout so it
-          # can write there (.stack-work, dist-newstyle, etc).
+          # can write there (dist-newstyle etc).
           chmod -R 777 "${{ runner.temp }}/cabal-cache"
           chmod -R 777 "$PWD"
 
-          # --allow-different-user: the bind-mounted checkout is owned by the
-          # runner's uid, not the image's baked-in dev uid; safe to bypass in
-          # this disposable single-use container (not shared multi-user state).
+          # 8.10.6 and 9.10.3 are pinned to Stackage snapshots; the rest are unpinned.
           case "${{ matrix.ghc_version }}" in
-            8.10.6)
-              cmd='stack --allow-different-user build --resolver lts-18.8 --test --flag hasquant:buildExample --flag hasquant:buildSofrXva --no-haddock'
-              ;;
-            9.10.3)
-              cmd='stack --allow-different-user build --test --no-haddock'
-              ;;
-            9.12.*|9.14.*)
-              cmd='cabal update && cabal build all --enable-tests -f buildExample -f buildSofrXva && cabal test all'
-              ;;
+            8.10.6) project=cabal.project.lts-18.8 ;;
+            9.10.3) project=cabal.project ;;
+            9.12.*|9.14.*) project=cabal.project.unpinned ;;
             *)
-              echo "No test command configured for GHC ${{ matrix.ghc_version }}" >&2
+              echo "No project file configured for GHC ${{ matrix.ghc_version }}" >&2
               exit 1
               ;;
           esac
+          opts="--project-file=$project --enable-tests -f buildExample -f buildSofrXva"
+          cmd="cabal update && cabal build all $opts && cabal test all $opts"
 
           docker run --rm \
             -v "$PWD":/hasquant \

@@ -374,7 +374,7 @@ one is unused — a duplicate can each individually look required to
 whichever one of the two you keep, since it's the *pair* that's redundant,
 not either specific line, and *both* can look removable if tested
 in isolation without also checking for the sibling.
-Always confirm a candidate removal with `stack build hasquant`
+Always confirm a candidate removal with `cabal build lib:hasquant`
 (and restore-on-failure) before committing to it; do not remove a batch of
 candidates without a full clean rebuild afterward, since a duplicate pair
 tested independently can each look individually removable, masking that at
@@ -804,7 +804,7 @@ list and export-list length.
 
 Check `nocode` pragma placement and first-`{#fun#}` position first when a rendered doc looks
 wrong; they're cheaper to spot than computing generated-line drift by hand. After any fix here,
-rebuild (`stack haddock hasquant:lib --fast`) and re-grep the specific rendered HTML for that
+rebuild (`cabal haddock lib:hasquant`) and re-grep the specific rendered HTML for that
 declaration -- a plausible-sounding cause is not confirmed until the fresh build shows it fixed.
 
 ## Converting an already-base-typed value

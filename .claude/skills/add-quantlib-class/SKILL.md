@@ -59,6 +59,6 @@ Before treating an empty `ql/experimental/` header as a missing binding, check i
 
 ## Verification
 
-Run `make` for a quick C++-only compile check before doing a full `stack build --test --no-haddock`.
+Run `make` for a quick C++-only compile check before doing a full `cabal build all --enable-tests`.
 
 When changing `tools/gen_quantlib_hierarchy.py`, run it against already-bound hierarchies and diff the generated declarations with `QuantLib/Internal/Type.hs`. Exercise the affected root, intermediate, and deepest-leaf shapes; wrong `AnyOf` nesting and upcast depth can compile.

@@ -1,2 +1,2 @@
-#!/bin/bash
-stack ghci --ghci-options $(find .stack-work \( -name "*.so" -o -name "*.dylib" \) -print -quit)
+#!/bin/sh
+cabal repl lib:hasquant "$@"

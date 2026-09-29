@@ -1,5 +1,5 @@
 # The image's dev user must match the host UID/GID that owns the bind-mounted
-# working tree, or it can't write .stack-work/dist-newstyle. bash's $UID is
+# working tree, or it can't write dist-newstyle. bash's $UID is
 # read-only and not exported by default, so run e.g.
 #   UID=$(id -u) GID=$(id -g) docker compose build
 # or export UID/GID in your shell profile.
@@ -29,20 +29,15 @@ services:
 
     volumes:
       - .:/hasquant:delegated
-      - stack-root:/home/dev/.stack
       - ghcup-root:/home/dev/.ghcup
       - cabal-root:/home/dev/.cabal
-      - /hasquant/.stack-work
       - /hasquant/dist-newstyle
     stdin_open: true
     tty: true
     #environment:
     #  - TERM=dumb
-    #  - STACK_IN_CONTAINER=true
 
 volumes:
-  stack-root:
-    name: stack-root
   ghcup-root:
     name: ghcup-root
   cabal-root:

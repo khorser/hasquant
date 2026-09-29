@@ -1,0 +1,4 @@
+-- Primary development configuration: GHC 9.10.3 pinned to Stackage lts-24.56.
+-- Other GHCs use cabal.project.lts-18.8, cabal.project.lts-22.44 or cabal.project.unpinned.
+packages: .
+import: cabal/stackage-lts-24.56.config

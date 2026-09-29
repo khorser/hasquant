@@ -186,7 +186,7 @@ default. Windows uploads retain these logs with the matching binaries/maps/DLLs 
 For tracing use a fresh build directory; toggling the flag alone can leave uninstrumented objects:
 
 ```sh
-stack --work-dir .stack-work/memory-audit build --test --no-run-tests --no-haddock --flag hasquant:trackAllocations
+cabal build all --builddir=dist-newstyle/memory-audit --enable-tests -f trackAllocations
 # Verify an object contains tracing strings before running the resulting test executable.
 QLTRACK_ALLOCATIONS=/tmp/hasquant-memory.trace PATH_TO_TRACED_TEST
 python3 tools/alloc-summary.py /tmp/hasquant-memory.trace

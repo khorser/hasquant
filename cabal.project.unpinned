@@ -1,0 +1,3 @@
+-- GHCs without a pinned snapshot; dependencies resolve against current Hackage.
+-- Reads cabal.project.unpinned.local, not cabal.project.local.
+packages: .

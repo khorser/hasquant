@@ -60,7 +60,7 @@ npv ois >>= print       -- 70994.8441727506
 fairRate ois >>= print  -- 3.6554153626327204e-2
 ```
 
-This is `QuantLib.Example.QuickStart.run`, compiled by `stack exec hasquant_example` and covered by `test/hspec/QuantLib/Spec/Examples.hs`.
+This is `QuantLib.Example.QuickStart.run`, run by `cabal run hasquant_example -f buildExample` and covered by `test/hspec/QuantLib/Spec/Examples.hs`.
 
 # Goals and Scope
 
@@ -87,7 +87,7 @@ Tests reuse QuantLib fixtures and cached values when available. Enum-dispatched 
 
 # Building
 
-GHC 9.10 is the primary development version. GHC 8.10.6 (`base >= 4.14`) is the supported floor and is checked with lts-18.8. GitHub CI also tests with GHC 9.6.7, 9.8.4, 9.12.4, 9.14.1.
+GHC 9.10 is the primary development version. GHC 8.10.6 (`base >= 4.14`) is the supported floor and is checked against Stackage lts-18.8. GitHub CI also tests with GHC 9.6.7, 9.8.4, 9.12.4, 9.14.1.
 
 Install QuantLib 1.43 or later: [Linux](https://www.quantlib.org/install/linux.shtml), [macOS](https://www.quantlib.org/install/macosx.shtml), or [CMake](https://www.quantlib.org/install/cmake.shtml).
 
@@ -109,51 +109,58 @@ package hasquant
   flags: -usePkgConfig
   extra-include-dirs: /Users/you/opt/quantlib-1.43/include
   extra-lib-dirs: /Users/you/opt/quantlib-1.43/lib
-  cxx-options: -I/Users/you/opt/quantlib-1.43/include
+  ghc-options: -optcxx--system-header-prefix=ql/
 ```
 
-The `-I` matters on macOS. `hasquant.cabal` also adds `-isystem /opt/homebrew/opt/quantlib/include`, which `brew unlink` leaves in place, and the setting changes `Date`'s layout: shim code compiled against one setting must not link against a library built with the other.
-
-## Stack
-
-Minimal build: `stack build --no-haddock --no-test`
-
-Run tests: `stack build --test --no-haddock`
-
-Build and run examples: `stack build --flag hasquant:buildExample --no-haddock && stack exec hasquant_example`.
-The example executable is `buildable: False` without that flag, so HLS also needs it — add `package hasquant` / `flags: +buildExample` to a local `cabal.project.local` to edit `main/exe` with HLS.
-
-To trace allocations:
-`stack build --no-haddock --flag hasquant:buildExample --flag hasquant:trackAllocations && stack exec hasquant_example`
-
-The trace defaults to stderr. Use a file to keep program output separate:
-
-`QLTRACK_ALLOCATIONS=/tmp/trace.log stack exec hasquant_example`
-
-`tools/alloc-summary.py /tmp/trace.log` pairs allocations and frees, reports live objects and double frees, and exits nonzero on an accounting failure.
-
-**Caution:** Cabal and Stack do not rebuild `cxx-sources` when only a flag changes. Before enabling `trackAllocations`, delete `build/cbits` and confirm a built object contains `allocated` before trusting an empty trace.
-
-Run GHCi: `stack ghci --ghci-options $(find .stack-work \( -name "*.so" -o -name "*.dylib" \) -print -quit)`
+`extra-include-dirs` matters on macOS. `hasquant.cabal` also adds `-isystem /opt/homebrew/opt/quantlib/include`, which `brew unlink` leaves in place; the `-I` from `extra-include-dirs` is searched first. `--system-header-prefix=ql/` keeps QuantLib's own header warnings out of the cbits build; an `-isystem` for the same directory would instead demote it behind Homebrew's. The setting changes `Date`'s layout: shim code compiled against one setting must not link against a library built with the other.
 
 ## Cabal
 
-Standard build: `cabal configure --disable-documentation && cabal build`
+Build everything, including tests and the flagged executables:
+`cabal build all --enable-tests -f buildExample -f buildSofrXva`
 
-Build with documentation: `cabal configure --enable-documentation && cabal build`
+Run tests: `cabal test all --enable-tests` (add `--test-options=--skip=LONG` for the fast path)
 
-Build example: `cabal configure -f buildExample --disable-documentation && cabal build`
+Build and run examples: `cabal run hasquant_example -f buildExample`.
+The example executable is `buildable: False` without that flag, so HLS also needs it — add `package hasquant` / `flags: +buildExample` to `cabal.project.local` to edit `main/exe` with HLS.
 
-Build example and tests: `cabal configure -f buildExample --enable-tests --disable-documentation && cabal build`
+To trace allocations:
+`cabal run hasquant_example -f buildExample -f trackAllocations`
+
+The trace defaults to stderr. Use a file to keep program output separate:
+
+`QLTRACK_ALLOCATIONS=/tmp/trace.log cabal run hasquant_example -f buildExample -f trackAllocations`
+
+`tools/alloc-summary.py /tmp/trace.log` pairs allocations and frees, reports live objects and double frees, and exits nonzero on an accounting failure.
+
+**Caution:** Cabal does not rebuild `cxx-sources` when only a flag changes. Before enabling `trackAllocations`, delete `build/cbits` and confirm a built object contains `allocated` before trusting an empty trace.
+
+Run GHCi: `cabal repl lib:hasquant`
+
+### Pinned dependencies
+
+Dependencies are pinned to Stackage snapshots stored as cabal constraint files in `cabal/`:
+
+| Project file | GHC | Snapshot |
+|---|---|---|
+| `cabal.project` (default) | 9.10.3 | lts-24.56 |
+| `cabal.project.lts-22.44` | 9.6.7 | lts-22.44 |
+| `cabal.project.lts-18.8` | 8.10.6 | lts-18.8 |
+| `cabal.project.unpinned` | others | none |
+
+Select a non-default project with `--project-file=<file>`, which then reads `<file>.local` instead of `cabal.project.local`.
+Each snapshot's `with-compiler` selects the matching versioned `ghc-X.Y.Z` binary installed by GHCup.
+To add or refresh a snapshot, run `tools/stackage-cabal-config.sh lts-X.Y` and import the generated `cabal/stackage-lts-X.Y.config` from a project file.
 
 ## Docker
 
-Use the Linux x86_64 image for GHC 8.10.6:
-`docker compose build`, then `docker compose run --rm -it hasquant stack --resolver lts-18.8 test`.
+The Linux x86_64 image runs the GHC 8.10.6 compatibility gate:
+`docker compose build`, then
+`docker compose run --rm -it hasquant sh -c 'ghcup install ghc 8.10.6 && cabal update && cabal build all --project-file=cabal.project.lts-18.8 --enable-tests -f buildExample -f buildSofrXva && cabal test all --project-file=cabal.project.lts-18.8 --enable-tests -f buildExample -f buildSofrXva'`.
 
 Drop `-it` when running without a TTY (CI, or a scripted check) — it fails there.
 
-The image persists Stack, GHCup, and Cabal caches and keeps build outputs off the host.
+The image persists GHCup and Cabal caches and keeps build outputs off the host.
 
 # On Types
 

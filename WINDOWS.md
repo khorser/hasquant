@@ -106,6 +106,8 @@ If `ninja` reports access denied for `.obj.d`, on-access virus scanning is usual
 
 Copy `cabal.project.local.WINDOWS` to `cabal.project.local` and adjust its paths.
 
+`cabal.project` pins GHC 9.10.3 to Stackage lts-24.56. For another GHC, name the file `cabal.project.unpinned.local` instead and pass `--project-file=cabal.project.unpinned` to every `cabal` command.
+
 ## Step 4 — Build and run
 
 ```
@@ -133,7 +135,7 @@ h:\cabal.exe test
 - **Do not set `-pgml`.** GHC's Template Haskell bytecode linker then
   probes MSYS2's library dirs and chokes on `libmingwex.a`
   (`unknown symbol 'fileno'`).
-- `package.yaml` links `stdc++` on non-Windows only. Don't remove that
+- `hasquant.cabal` links `stdc++` on non-Windows only. Don't remove that
   guard — linking MSYS2's `libstdc++` alongside GHC's `libc++` produces
   `duplicate symbol: std::__1::basic_ostream<…>::operator<<(int)` and
   hundreds like it.
