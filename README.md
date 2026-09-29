@@ -102,17 +102,7 @@ cmake --build build -j && cmake --install build
 brew unlink quantlib
 ```
 
-Then, in `cabal.project.local` (substitute your home directory):
-
-```
-package hasquant
-  flags: -usePkgConfig
-  extra-include-dirs: /Users/you/opt/quantlib-1.43/include
-  extra-lib-dirs: /Users/you/opt/quantlib-1.43/lib
-  ghc-options: -optcxx--system-header-prefix=ql/
-```
-
-`extra-include-dirs` matters on macOS. `hasquant.cabal` also adds `-isystem /opt/homebrew/opt/quantlib/include`, which `brew unlink` leaves in place; the `-I` from `extra-include-dirs` is searched first. `--system-header-prefix=ql/` keeps QuantLib's own header warnings out of the cbits build; an `-isystem` for the same directory would instead demote it behind Homebrew's. The setting changes `Date`'s layout: shim code compiled against one setting must not link against a library built with the other.
+To use custom built QuantLib copy `cabal.project.local.customQL` to `cabal.project.local` and update the paths.
 
 ## Cabal
 
