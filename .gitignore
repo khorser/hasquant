@@ -7,7 +7,6 @@ obj
 dist-newstyle
 cabal.project.local
 *~
-_
 tags
 .aider*
 .cecli*
