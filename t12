@@ -1,0 +1,2 @@
+#!/bin/sh
+cabal build all -v2 -w ghc-9.12.4 --enable-tests -f buildExample -f buildSofrXva "$@" && cabal run -w ghc-9.12.4 hasquant_test --enable-tests "$@" -- --skip=LONG
