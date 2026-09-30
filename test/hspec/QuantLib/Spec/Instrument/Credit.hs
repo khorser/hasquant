@@ -1,4 +1,4 @@
--- | Golden-value tests for 'QuantLib.Instrument.Credit' ('creditDefaultSwap', 'fairSpread',
+-- | Golden-value tests for 'QuantLib.Instrument.Credit' ('creditDefaultSwap', 'fairSpread', 'cdsOption',
 -- 'fairUpfront', 'impliedHazardRate'), ported from QuantLib's own
 -- test-suite/creditdefaultswap.cpp -- currently zero coverage (no dedicated hspec Spec module
 -- existed for this file before).
@@ -25,8 +25,9 @@ import QuantLib.TermStructure.Yield
 import QuantLib.TermStructure.Credit
 import QuantLib.Instrument(npv, setPricingEngine, PricingModel(..))
 import QuantLib.Instrument.Credit
+import QuantLib.Instrument.Option(Exercise(European), EuropeanExercise(..))
 import QuantLib.Instrument.Swap(fairSpread)
-import QuantLib.PricingEngine(midPointCdsEngine, integralCdsEngine)
+import QuantLib.PricingEngine(blackCdsOptionEngine, midPointCdsEngine, integralCdsEngine)
 
 import QuantLib.Spec.Helpers(closePrec)
 
@@ -177,3 +178,38 @@ spec = do
           value <- npv cds
           implied <- impliedHazardRate cds value discountCurve dc 0.4 1.0e-10 Midpoint
           implied `shouldSatisfy` closePrec h 1.0e-6
+
+  describe "cdsoption.cpp testCached" $
+    it "a payer and a receiver CDS option at the fair spread reproduce the cached Black value,\
+       \ and their price implies the quoted volatility back" $
+      Context.keepingSettingsGc $ do
+        let today' = 10 `december` 2007
+        Context.setEvaluationDate (Just today')
+        cal <- calendar TARGET
+        dc <- dayCounter (Actual360 False)
+        rateQ <- simpleQuote 0.02
+        riskFree <- flatForward (ReferenceDate today') rateQ dc Continuous Annual
+        expiry <- advance cal today' (9, Months) Following False
+        start <- advance cal expiry (1, Months) Following False
+        maturity <- advance cal start (7, Years) Following False
+        sch <- schedule (Just start) maturity (3, Months) cal ModifiedFollowing ModifiedFollowing
+          Forward False Nothing Nothing
+        hazardQ <- simpleQuote 0.001
+        probCurve <- flatHazardRate (SettlementDays 0 cal) hazardQ dc
+        swapEngine <- midPointCdsEngine probCurve 0.4 riskFree Nothing
+        let cdsOn side spread = do
+              c <- creditDefaultSwap side 1000000 spread sch ModifiedFollowing dc True True
+                Nothing FaceValue dc True Nothing 3
+              setPricingEngine c swapEngine
+              pure c
+        strike <- cdsOn Seller 0.001 >>= fairSpread
+        volQ <- simpleQuote 0.20
+        optionEngine <- blackCdsOptionEngine probCurve 0.4 riskFree volQ
+        forM_ [Seller, Buyer] $ \side -> do
+          underlying <- cdsOn side strike
+          option <- cdsOption underlying (European (EuropeanExercise expiry)) True
+          setPricingEngine option optionEngine
+          value <- npv option
+          value `shouldSatisfy` closePrec 270.976348 1.0e-5
+          implied <- impliedVolatility option value riskFree probCurve 0.4 1.0e-10 100 1.0e-7 4.0
+          implied `shouldSatisfy` closePrec 0.20 1.0e-6

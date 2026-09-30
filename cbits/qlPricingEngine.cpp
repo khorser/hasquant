@@ -63,6 +63,7 @@
 #include <ql/pricingengines/capfloor/treecapfloorengine.hpp>
 #include <ql/pricingengines/cliquet/analyticcliquetengine.hpp>
 #include <ql/pricingengines/cliquet/analyticperformanceengine.hpp>
+#include <ql/experimental/credit/blackcdsoptionengine.hpp>
 #include <ql/experimental/credit/integralcdoengine.hpp>
 #include <ql/experimental/credit/midpointcdoengine.hpp>
 #include <ql/experimental/credit/integralntdengine.hpp>
@@ -787,6 +788,9 @@ QlPricingEngine* qlQdFpAmericanEngine(QlGeneralizedBlackScholesProcess* process,
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
 QlPricingEngine* qlContinuousArithmeticAsianVecerEngine(QlGeneralizedBlackScholesProcess* process, QlQuote* currentAverage, int startDate, unsigned timeSteps, unsigned assetSteps, double zMin, double zMax, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new ContinuousArithmeticAsianVecerEngine(*arg(process), qlNullableHandle(arg(currentAverage)), Date(startDate), timeSteps, assetSteps, zMin, zMax))));
+  } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
+QlPricingEngine* qlBlackCdsOptionEngine(QlDefaultProbabilityTermStructure* probability, double recoveryRate, QlYieldTermStructure* termStructure, QlQuote* vol, QlError **e) { QlCallScope callbackScope(e);
+  try {return ret(new QlPricingEngine(alloc(new BlackCdsOptionEngine(Handle<DefaultProbabilityTermStructure>(*arg(probability)), recoveryRate, *arg(termStructure), *arg(vol)))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
 QlPricingEngine* qlIntegralCdsEngine(int l, int u, QlDefaultProbabilityTermStructure* x1, double recoveryRate, QlYieldTermStructure* discountCurve, int includeSettlementDateFlows, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new IntegralCdsEngine(Period(l, (TimeUnit)u), Handle<DefaultProbabilityTermStructure>(*arg(x1)), recoveryRate, *arg(discountCurve), qlOptBool(includeSettlementDateFlows)))));

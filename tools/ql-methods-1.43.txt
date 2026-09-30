@@ -1334,7 +1334,7 @@
 | |ql/experimental/credit/binomiallossmodel.hpp|std::map<Real, Probability> lossDistribution(const Date & d) const;
 | |ql/experimental/credit/binomiallossmodel.hpp|Real percentile(const Date & d, Real perc) const;
 | |ql/experimental/credit/binomiallossmodel.hpp|Real expectedShortfall(const Date & d, Real perctl) const;
-| |ql/experimental/credit/blackcdsoptionengine.hpp|BlackCdsOptionEngine::BlackCdsOptionEngine(Handle<DefaultProbabilityTermStructure>, Real recoveryRate, Handle<YieldTermStructure> termStructure, Handle<Quote> vol);
+|v|ql/experimental/credit/blackcdsoptionengine.hpp|BlackCdsOptionEngine::BlackCdsOptionEngine(Handle<DefaultProbabilityTermStructure>, Real recoveryRate, Handle<YieldTermStructure> termStructure, Handle<Quote> vol);
 |x|ql/experimental/credit/blackcdsoptionengine.hpp|void BlackCdsOptionEngine::calculate() const;
 |x|ql/experimental/credit/blackcdsoptionengine.hpp|Handle<YieldTermStructure> BlackCdsOptionEngine::termStructure();
 |x|ql/experimental/credit/blackcdsoptionengine.hpp|Handle<Quote> BlackCdsOptionEngine::volatility();

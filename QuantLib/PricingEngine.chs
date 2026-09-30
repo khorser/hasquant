@@ -157,6 +157,7 @@ module QuantLib.PricingEngine
   , qdFpAmericanEngine
   , continuousArithmeticAsianVecerEngine
     -- ** Credit and spread products
+  , blackCdsOptionEngine
   , integralCdsEngine
   , integralEngine
   , isdaCdsEngine
@@ -992,6 +993,13 @@ batesDoubleExpEngine model control =
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |CDS pricing engine that integrates the default-leg payoff over the CDS's step-wise schedule
+-- |Black-formula CDS-option engine: the option on the forward spread, lognormal at the quoted
+-- volatility, scaled by the risky annuity. It assumes the exercise date is the CDS's start date.
+{#fun qlBlackCdsOptionEngine as blackCdsOptionEngine{withDefaultProbabilityTermStructure*`GenDefaultProbabilityTermStructure d',`Double' -- ^recoveryRate
+  ,withYieldTermStructure*`GenYieldTermStructure y' -- ^termStructure
+  ,withQuote*`GenQuote q' -- ^volatility
+  ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
+
 {#fun qlIntegralCdsEngine as integralCdsEngine{fromEnumQuantity`(Word,TimeUnit)'& -- ^integrationStep
   ,withDefaultProbabilityTermStructure*`GenDefaultProbabilityTermStructure d',`Double' -- ^recoveryRate
   ,withYieldTermStructure*`GenYieldTermStructure y' -- ^discountCurve

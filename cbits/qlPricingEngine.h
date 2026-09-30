@@ -196,6 +196,7 @@ extern "C" {
   QlPricingEngine* qlQdPlusAmericanEngine(QlGeneralizedBlackScholesProcess* process, unsigned interpolationPoints, int solverType, double eps, unsigned maxIter, QlError **e);
   QlPricingEngine* qlQdFpAmericanEngine(QlGeneralizedBlackScholesProcess* process, int scheme, int fpEquation, QlError **e);
   QlPricingEngine* qlContinuousArithmeticAsianVecerEngine(QlGeneralizedBlackScholesProcess* process, QlQuote* currentAverage, int startDate, unsigned timeSteps, unsigned assetSteps, double zMin, double zMax, QlError **e);
+  QlPricingEngine* qlBlackCdsOptionEngine(QlDefaultProbabilityTermStructure* probability, double recoveryRate, QlYieldTermStructure* termStructure, QlQuote* vol, QlError **e);
   QlPricingEngine* qlIntegralCdsEngine(int, int, QlDefaultProbabilityTermStructure* x1, double recoveryRate, QlYieldTermStructure* discountCurve, int includeSettlementDateFlows, QlError **e);
   QlPricingEngine* qlIntegralEngine(QlGeneralizedBlackScholesProcess* x0, QlError **e);
   QlPricingEngine* qlJamshidianSwaptionEngine(QlOneFactorAffineModel* model, QlYieldTermStructure* termStructure, QlError **e);

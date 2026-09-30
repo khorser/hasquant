@@ -14,6 +14,7 @@ The `qlGsr` shim now takes a reversion array; `gsr` keeps its single-reversion s
 `setParams` sets a calibrated model's parameters, so a model can be rebuilt from a stored fit
 or calibrated from a warm start. A list of the wrong length throws and leaves the model unchanged.
 `markovFunctional` accepts any swaption volatility structure, such as a `SwaptionVolatilityMatrix`.
+`blackCdsOptionEngine` prices a `CdsOption` by the Black formula on its forward spread.
 
 `fdmRollback` and `fdmSolve` callbacks must return an array of their input's length. Another length
 now throws the new `CallbackResultLength` error instead of being truncated or padded with zeros.

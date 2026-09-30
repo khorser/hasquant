@@ -289,6 +289,7 @@ namespace QuantLib {
   class ImpliedTermStructure;
   class ImpliedVolTermStructure;
   class InflationIndex;
+  class BlackCdsOptionEngine;
   class IntegralCdsEngine;
   class IntegralEngine;
   class InterestRateIndex;
@@ -655,6 +656,7 @@ using QuantLib::HybridHestonHullWhiteProcess;
 using QuantLib::ImpliedTermStructure;
 using QuantLib::ImpliedVolTermStructure;
 using QuantLib::InflationIndex;
+using QuantLib::BlackCdsOptionEngine;
 using QuantLib::IntegralCdsEngine;
 using QuantLib::IntegralEngine;
 using QuantLib::InterestRateIndex;
@@ -1322,6 +1324,7 @@ QL_TRACE_NAME(ImpliedVolTermStructure)
 QL_TRACE_NAME(Index)
 QL_TRACE_NAME(InflationIndex)
 QL_TRACE_NAME(Instrument)
+QL_TRACE_NAME(BlackCdsOptionEngine)
 QL_TRACE_NAME(IntegralCdsEngine)
 QL_TRACE_NAME(IntegralEngine)
 QL_TRACE_NAME(InterestRate)
