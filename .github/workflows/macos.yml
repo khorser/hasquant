@@ -37,9 +37,9 @@ jobs:
 
       - name: Build and test
         run: |
-          # 9.6.7 and 9.10.3 are pinned to Stackage snapshots; 9.8.4 is unpinned.
           case "${{ matrix.ghc }}" in
             9.6.7) project=cabal.project.lts-22.44 ;;
+            9.8.4) project=cabal.project.lts-23.28 ;;
             9.10.3) project=cabal.project ;;
             *) project=cabal.project.unpinned ;;
           esac

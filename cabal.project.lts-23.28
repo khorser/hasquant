@@ -1,0 +1,4 @@
+-- GHC 9.8.4, pinned to Stackage lts-23.28
+-- Reads cabal.project.lts-23.28.local, not cabal.project.local.
+packages: .
+import: cabal/stackage-lts-23.28.config

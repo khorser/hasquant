@@ -21,7 +21,7 @@ license:        BSD-3-Clause
 license-file:   LICENSE
 build-type:     Simple
 -- Pinned Stackage snapshots (cabal.project*): GHC 8.10.6 lts-18.8,
--- 9.6.7 lts-22.44, 9.10.3 lts-24.56; the other versions are unpinned.
+-- 9.6.7 lts-22.44, 9.8.4 lts-23.28, 9.10.3 lts-24.56; the other versions are unpinned.
 tested-with:
     GHC == 8.10.6
   , GHC == 9.6.7
