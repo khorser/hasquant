@@ -1,65 +1,10 @@
 ## 0.8.0.0 (2026)
 
-Adds the remaining comparable term structures: piecewise forward-spreaded curves, bootstrapped
-spread yield curves (`SpreadBootstrap`), interpolated simple-zero and zero-inflation curves, the
-ZABR swaption volatility cube, and Gaussian one-factor implied swaption volatilities.
+Added additional term structures and updated signatures for some existing term structure functions.
 
-Breaking change: `piecewiseZeroInflationCurve`, `piecewiseYoyInflationCurve` and
-`interpolatedYoyInflationCurve` take a `Maybe Seasonality` before the interpolation, supporting
-multiplicative and Kerkhof price seasonality at construction.
+Introduced new stochastic processes and engines as a result of battle-testing the library.
 
-GSR gains piecewise reversions: `gsrWithReversions` pairs a reversion with each volatility step,
-`calibrateReversionsIterative` fits them one helper at a time, and `reversions` reads them back.
-The `qlGsr` shim now takes a reversion array; `gsr` keeps its single-reversion signature.
-`setParams` sets a calibrated model's parameters, so a model can be rebuilt from a stored fit
-or calibrated from a warm start. A list of the wrong length throws and leaves the model unchanged.
-`markovFunctional` accepts any swaption volatility structure, such as a `SwaptionVolatilityMatrix`.
-`blackCdsOptionEngine` prices a `CdsOption` by the Black formula on its forward spread.
-
-`fdmRollback` and `fdmSolve` callbacks must return an array of their input's length. Another length
-now throws the new `CallbackResultLength` error instead of being truncated or padded with zeros.
-
-On QuantLib 1.43, `gaussian1dSwaptionVolatility` works around an uninitialized `MakeSwaption`
-nominal by pricing its smile sections with a unit nominal; newer versions use upstream directly.
-`extendedBlackVarianceSurface` reports an exception on QuantLib 1.43 instead of invoking its
-out-of-bounds implementation.
-
-`rateHelperFixingDependencies` now reads the cross-currency helpers' legs instead of reporting
-`Nothing`. Overnight-index and SOFR futures helpers used to report `Just []`, although they read
-past fixings once their reference period has started. From two weeks before that start they now
-report `Nothing`, because QuantLib 1.43 keeps their future private. A helper type the walk has no
-case for now reports `Nothing` too, instead of `Just []`. On QuantLib 1.44 the futures helpers
-report their fixings up to the evaluation date instead, through the newly public `future()`, and
-the walk reads the overnight-overnight basis and overnight-indexed funding helpers through their
-`swap()`.
-
-Breaking change: `depositRateHelper` takes a `DepositTerms`, the way `fraRateHelper` takes a
-`FraTerms`, and `depositRateHelperFromIndex` is gone. `DepositTenor` holds the former explicit
-arguments, and `DepositFromIndex` holds the index. The new `DepositOnFixingDate` binds QuantLib's
-fixed-date deposit. `FraTerms` gains `FraImmOffsets`, a FRA between two IMM dates after spot, and
-`FraBetweenDates`, the fixed-date FRA. The two fixed-date forms are the only deposit and FRA
-helpers that read a stored fixing, once their fixing date has passed. `rateHelperFixingDependencies`
-reports that fixing from the day after it, for the FRA only with an indexed coupon.
-
-Breaking change: `swapRateHelper` takes a `SwapRateTerms`, and `swapRateHelperFromConventions` is
-gone. `SwapRateFromIndex` holds the former `swapRateHelper`'s swap index and forward start.
-`SwapRateTenor` holds the former explicit conventions, forward start, settlement days and float
-convention. The new `SwapRateBetweenDates` binds QuantLib's swap between two fixed dates. The
-arguments every form shares follow the terms: spread, discounting curve, pillar, custom pillar
-date, end of month, indexed coupons and pricer.
-
-Breaking change: `oisRateHelper` and `oisRateHelperWithOptions` take an `OisTerms` first, where
-`OisTenor` holds the former settlement days, tenor and forward start and `OisBetweenDates` holds
-the former `oisRateHelperBetweenDates` dates. `oisRateHelperBetweenDates` and
-`oisRateHelperBetweenDatesWithOptions` are gone. Likewise `fxSwapRateHelper` takes an
-`FxSwapTerms`: `FxSwapTenor` holds the tenor, fixing days, calendar, convention, end of month and
-trading calendar, and `FxSwapBetweenDates` holds the former `fxSwapRateHelperBetweenDates` dates.
-
-Breaking change: `zeroCouponInflationSwapHelper` and `yearOnYearInflationSwapHelper` take an
-`InflationSwapPeriod` where they took the maturity: `InflationSwapToMaturity` is the former
-form, and the new `InflationSwapBetweenDates` binds QuantLib's swap between two fixed dates.
-Both helpers used to interpolate linearly whatever they were given: their shim read
-`CPIFlat`, which is 1, as linear. `CPIFlat` now gives flat observation.
+Improved robustness of callback execution.
 
 ## 0.7.0.0 (2026)
 
