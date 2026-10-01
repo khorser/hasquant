@@ -401,6 +401,11 @@ spec = do
       forM_ (zip helpers spreads) $ \(h, (_, quotedSpread)) -> do
         implied <- impliedQuote h
         implied `shouldSatisfy` closePrec quotedSpread 1.0e-8
+      -- fresh helpers at a zero spread read the same spreads off the curve they did not build
+      forM_ spreads $ \(years, quotedSpread) -> do
+        q <- simpleQuote 0
+        h <- spreadCdsHelper q (years, Years) 1 cal Quarterly Following TwentiethIMM helperDc recovery discountCurve True True Nothing helperDc True Midpoint
+        impliedQuoteOn h curve >>= (`shouldSatisfy` closePrec quotedSpread 1.0e-8)
 
     it "reproduces CDS spreads for all supported credit traits/interpolators" $ Context.keepingSettingsGc $ do
       let refDate = fromGregorian 2015 6 15

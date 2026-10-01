@@ -367,6 +367,29 @@ spec = do
           after <- (-) <$> flatFwd logLinear tMax (tMax + 1) <*> flatFwd ts tMax (tMax + 1)
           after `shouldSatisfy` closePrec before 1.0e-9
 
+      -- A par rate read on a curve the helper did not bootstrap: the helpers' own quotes play no
+      -- part, and helpers bootstrapped at those rates read them back on the rebuilt curve.
+      it "impliedQuoteOn reads par rates on any curve" $
+        Context.keepingSettingsGc $ do
+          (cal, settlementDays, ts) <- setup
+          refDate <- referenceDate ts
+          actual360dc <- dayCounter (Actual360 False)
+          thirty360dc <- dayCounter Thirty360BondBasis
+          ccy <- currency EUR
+          index <- iborIndex (Ibor "par3m" (3, Months) settlementDays ccy cal ModifiedFollowing False actual360dc) Nothing
+          let tenors = [1, 3, 6, 9, 15, 30] :: [Int]
+              helperAt r n = do
+                q <- Quote.simpleQuote r
+                swapRateHelper q (SwapRateTenor (n, Years) cal Annual Unadjusted thirty360dc index (0, Days) Nothing Nothing) Nothing Nothing
+                  LastRelevantDate Nothing False Nothing Nothing >>= asRateHelper
+          pars <- mapM (\n -> helperAt 0 n >>= (`impliedQuoteOn` ts)) tenors
+          rebuiltHelpers <- mapM (uncurry helperAt) (zip pars tenors)
+          rebuilt <- piecewiseYieldCurve (ReferenceDate refDate) (fromList rebuiltHelpers) actual360dc [] (Iterative Discount LogLinear defaultIterativeBootstrapOpts) True
+          forM_ (zip tenors pars) $ \(n, r) -> do
+            r `shouldSatisfy` (\x -> x > 0.04 && x < 0.07)
+            fresh <- helperAt 0 n
+            impliedQuoteOn fresh rebuilt >>= (`shouldSatisfy` closePrec r 1.0e-10)
+
       it "interpolated simple zero curve reproduces its simply-compounded node rates" $
         Context.keepingSettingsGc $ do
           let refDate = 15 `january` 2024

@@ -90,6 +90,50 @@ spec = do
     betweenDates <- yearOnYearCurveRate evalDate InflationSwapBetweenDates
     betweenDates `shouldSatisfy` closePrec toMaturity 1.0e-12
 
+  it "a zero-coupon helper reads its swap rate on a curve it did not bootstrap" $ Context.keepingSettingsGc $ do
+    Context.setEvaluationDate (Just evalDate)
+    gbp <- currency GBP
+    r <- customRegion "InflationSwapHelper Test" "ISHT"
+    cal <- calendar Null
+    dc <- dayCounter Actual365FixedStandard
+    zii0 <- customZeroInflationIndex "ISHT Zero" r False Monthly (1, Months) gbp Nothing
+    fixingDates <- mapM (\n -> advance cal evalDate (n, Months) Unadjusted False) [-96 .. 12 :: Int]
+    forM_ (zip [1 :: Double ..] fixingDates) $ \(i, d) -> addFixing zii0 d (100.0 + i * 0.1) False
+    let quotes = [(2, 0.03), (10, 0.025)] :: [(Int, Double)]
+        helperAt rate n = do
+          m <- advance cal evalDate (n, Years) Unadjusted False
+          q <- simpleQuote rate
+          zeroCouponInflationSwapHelper q (2, Months) (InflationSwapToMaturity m) cal Unadjusted dc zii0 CPIFlat LastRelevantDate Nothing
+    helpers <- mapM (\(n, rate) -> helperAt rate n) quotes
+    baseDate' <- advance cal evalDate (-2, Months) Unadjusted False
+    curve <- piecewiseZeroInflationCurve evalDate baseDate' Monthly dc (fromList helpers) Nothing Linear
+    forM_ quotes $ \(n, rate) -> do
+      fresh <- helperAt 0 n
+      zeroCouponInflationSwapImpliedQuoteOn fresh curve >>= (`shouldSatisfy` closePrec rate 1.0e-8)
+
+  it "a year-on-year helper reads its swap rate on a curve it did not bootstrap" $ Context.keepingSettingsGc $ do
+    Context.setEvaluationDate (Just evalDate)
+    gbp <- currency GBP
+    r <- customRegion "InflationSwapHelper Test" "ISHT"
+    cal <- calendar Null
+    dc <- dayCounter Actual365FixedStandard
+    yii0 <- customYoyInflationIndex "ISHT YoY" r False Monthly (1, Months) gbp Nothing
+    fixingDates <- mapM (\n -> advance cal evalDate (n, Months) Unadjusted False) [-96 .. 12 :: Int]
+    forM_ (zip [1 :: Double ..] fixingDates) $ \(i, d) -> addFixing yii0 d (0.03 + i * 0.0001) False
+    nominalQ <- simpleQuote 0.02
+    nominalCurve <- flatForward (ReferenceDate evalDate) nominalQ dc IR.Continuous Annual
+    let quotes = [(2, 0.03), (5, 0.028)] :: [(Int, Double)]
+        helperAt rate n = do
+          m <- advance cal evalDate (n, Years) Unadjusted False
+          q <- simpleQuote rate
+          yearOnYearInflationSwapHelper q (3, Months) (InflationSwapToMaturity m) cal Unadjusted dc yii0 CPIFlat nominalCurve LastRelevantDate Nothing
+    helpers <- mapM (\(n, rate) -> helperAt rate n) quotes
+    baseDate' <- advance cal evalDate (-2, Months) Unadjusted False
+    curve <- piecewiseYoyInflationCurve evalDate baseDate' 0.03 Monthly dc (fromList helpers) Nothing Linear
+    forM_ quotes $ \(n, rate) -> do
+      fresh <- helperAt 0 n
+      yearOnYearInflationSwapImpliedQuoteOn fresh curve >>= (`shouldSatisfy` closePrec rate 1.0e-8)
+
   -- The shim once mapped the interpolation with `== 0 ? Flat : Linear`, but CPIFlat is 1, so every
   -- helper interpolated linearly and these two curves were the same.
   it "honours flat against linear observation interpolation" $ Context.keepingSettingsGc $ do

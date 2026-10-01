@@ -2,6 +2,11 @@
 
 Added additional term structures and updated signatures for some existing term structure functions.
 
+Bootstrap helpers read their implied quote on a curve given in the call (`impliedQuoteOn` for rate
+and default-probability helpers, `zeroCouponInflationSwapImpliedQuoteOn` and
+`yearOnYearInflationSwapImpliedQuoteOn`): a par rate, spread or swap rate on any curve, with the
+helper's own schedule.
+
 Introduced new stochastic processes and engines as a result of battle-testing the library.
 
 Improved robustness of callback execution.

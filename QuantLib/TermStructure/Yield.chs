@@ -102,6 +102,7 @@ module QuantLib.TermStructure.Yield
   , zeroRate
   , discount
   , impliedQuote
+  , impliedQuoteOn
   , futuresRateHelperConvexityAdjustment
   , overnightIndexFutureRateHelperConvexityAdjustment
   , minimumCostValue
@@ -918,6 +919,12 @@ rateHelperFixingDependencies h = do
 -- last used against, i.e. what the helper's own market quote would need to be to make it
 -- reprice exactly.
 {#fun qlRateHelperImpliedQuote as impliedQuote{withRateHelper*`GenRateHelper rh',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |The quote that would make the helper reprice exactly on the given curve: a par rate read with
+-- the helper's own schedule and conventions on any curve, bootstrapped from it or not. The helper
+-- keeps a non-owning reference to the curve until it is next used, so a bootstrap may still take
+-- it afterwards.
+{#fun qlRateHelperImpliedQuoteOn as impliedQuoteOn{withRateHelper*`GenRateHelper rh',withYieldTermStructure*`GenYieldTermStructure y',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |A yield curve identical to 'baseCurve' but reporting a different reference date; observes
 -- and stays linked to 'baseCurve'.

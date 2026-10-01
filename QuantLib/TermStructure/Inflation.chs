@@ -25,6 +25,8 @@ module QuantLib.TermStructure.Inflation
   , HasHelperUnderlying(..)
   , zeroRate
   , yoyRate
+  , zeroCouponInflationSwapImpliedQuoteOn
+  , yearOnYearInflationSwapImpliedQuoteOn
   ) where
 import QuantLib.Internal
 import QuantLib.Internal.Type
@@ -240,6 +242,16 @@ seasonalityArgs d s k = case s of
 -- |Zero-coupon inflation rate implied by the curve.
 {#fun qlZeroInflationTermStructureZeroRate as zeroRate{withGenTermStructure*`ZeroInflationTermStructure',withDay*`Day',`Bool' -- ^extrapolate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |The swap rate that would make a zero-coupon inflation swap helper reprice exactly on the given
+-- zero-inflation curve, bootstrapped from it or not.
+{#fun qlZeroCouponInflationSwapHelperImpliedQuoteOn as zeroCouponInflationSwapImpliedQuoteOn{withZeroCouponInflationSwapHelper*`ZeroCouponInflationSwapHelper'
+  ,withGenTermStructure*`ZeroInflationTermStructure',preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |The swap rate that would make a year-on-year inflation swap helper reprice exactly on the given
+-- year-on-year curve.
+{#fun qlYearOnYearInflationSwapHelperImpliedQuoteOn as yearOnYearInflationSwapImpliedQuoteOn{withYearOnYearInflationSwapHelper*`YearOnYearInflationSwapHelper'
+  ,withGenTermStructure*`YoYInflationTermStructure',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Year-on-year inflation rate implied by the curve.
 {#fun qlYoYInflationTermStructureYoYRate as yoyRate{withGenTermStructure*`YoYInflationTermStructure',withDay*`Day',`Bool' -- ^extrapolate

@@ -1495,6 +1495,11 @@ void qlFreeDefaultProbabilityHelper(QlDefaultProbabilityHelper *o) {del(o);}
 double qlDefaultProbabilityHelperImpliedQuote(QlDefaultProbabilityHelper *o, QlError **e) { QlCallScope callbackScope(e);
   try {return (*arg(o))->impliedQuote();
   } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlDefaultProbabilityHelperImpliedQuoteOn(QlDefaultProbabilityHelper *o, QlDefaultProbabilityTermStructure *curve, QlError **e) { QlCallScope callbackScope(e);
+  try {
+    (*arg(o))->setTermStructure(arg(curve)->get());
+    return (*arg(o))->impliedQuote();
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
 
 QlDefaultProbabilityHelper* qlSpreadCdsHelper(QlQuote* runningSpread, int n, int u, int settlementDays, Calendar* calendar, int frequency, int paymentConvention, int rule, DayCounter* dayCounter, double recoveryRate, QlYieldTermStructure* discountCurve, int settlesAccrual, int paysAtDefaultTime, int startDate, DayCounter* lastPeriodDayCounter, int rebatesAccrual, int model, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlDefaultProbabilityHelper(alloc(new SpreadCdsHelper(*arg(runningSpread), Period(n, (TimeUnit)u), settlementDays, *arg(calendar), (Frequency)frequency, (BusinessDayConvention)paymentConvention, (DateGeneration::Rule)rule, *arg(dayCounter), recoveryRate, *arg(discountCurve), settlesAccrual, paysAtDefaultTime,
@@ -1690,6 +1695,16 @@ int qlCommodityIndexLastQuoteDate(QlCommodityIndex *o, QlError **e) { QlCallScop
 int qlCommodityIndexEmpty(QlCommodityIndex *o) {return (*arg(o))->empty();}
 
 void qlFreeZeroCouponInflationSwapHelper(QlZeroCouponInflationSwapHelper *o) {del(o);}
+double qlZeroCouponInflationSwapHelperImpliedQuoteOn(QlZeroCouponInflationSwapHelper *o, QlZeroInflationTermStructure *curve, QlError **e) { QlCallScope callbackScope(e);
+  try {
+    (*arg(o))->setTermStructure(arg(curve)->get());
+    return (*arg(o))->impliedQuote();
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlYearOnYearInflationSwapHelperImpliedQuoteOn(QlYearOnYearInflationSwapHelper *o, QlYoYInflationTermStructure *curve, QlError **e) { QlCallScope callbackScope(e);
+  try {
+    (*arg(o))->setTermStructure(arg(curve)->get());
+    return (*arg(o))->impliedQuote();
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
 QlZeroCouponInflationSwapHelper* qlZeroCouponInflationSwapHelper(QlQuote* quote, int n, int u, int maturity, Calendar* calendar, int paymentConvention, DayCounter* dayCounter, QlZeroInflationIndex* zii, int observationInterpolation, int pillar, int customPillarDate, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlZeroCouponInflationSwapHelper(alloc(new ZeroCouponInflationSwapHelper(*arg(quote), Period(n, (TimeUnit)u), Date(maturity),
           *arg(calendar), (BusinessDayConvention)paymentConvention, *arg(dayCounter), *arg(zii),
@@ -2292,6 +2307,14 @@ QlRateHelper* qlSofrFutureRateHelper(QlQuote* price, int month, int year, int fr
       (Pillar::Choice)pillar, qlNullableDate(customPillarDate)))));
   } catch (std::exception& er) {return handleException<QlRateHelper*>(e, er);}}
 double qlRateHelperImpliedQuote(QlRateHelper* o, QlError **e) { QlCallScope callbackScope(e);try {return (*arg(o))->impliedQuote();} catch (std::exception& er) {return handleException<double>(e, er);}}
+// The helper keeps a non-owning pointer to the curve until it is next set; the caller keeps the
+// curve alive for this call, and only impliedQuote reads it here.
+double qlRateHelperImpliedQuoteOn(QlRateHelper* o, QlYieldTermStructure* curve, QlError **e) { QlCallScope callbackScope(e);
+  try {
+    QL_REQUIRE(!arg(curve)->empty(), "empty term structure given");
+    (*arg(o))->setTermStructure(arg(curve)->currentLink().get());
+    return (*arg(o))->impliedQuote();
+  } catch (std::exception& er) {return handleException<double>(e, er);}}
 QlBond* qlBondHelperBond(QlBondHelper* o, QlError **e) { QlCallScope callbackScope(e);try {return ret(new QlBond((*arg(o))->bond()));} catch (std::exception& er) {return handleException<QlBond*>(e, er);}}
 QlOvernightIndexedSwap* qlOISRateHelperSwap(QlOISRateHelper* o, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlOvernightIndexedSwap((*arg(o))->swap()));

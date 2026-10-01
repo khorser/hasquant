@@ -346,6 +346,7 @@ extern "C" {
   QlDefaultProbabilityTermStructure* qlInterpolatedSurvivalProbabilityCurve(unsigned datesLen, int* dates, unsigned probabilitiesLen, double* probabilities, DayCounter* dayCounter, Calendar* calendar, unsigned jumpsLen, QlQuote** jumps, unsigned jDatesLen, int* jumpDates, int interpolator, int approximator, int approximatorArg, QlError **e);
   void qlFreeDefaultProbabilityHelper(QlDefaultProbabilityHelper *o);
   double qlDefaultProbabilityHelperImpliedQuote(QlDefaultProbabilityHelper *o, QlError **e);
+  double qlDefaultProbabilityHelperImpliedQuoteOn(QlDefaultProbabilityHelper *o, QlDefaultProbabilityTermStructure *curve, QlError **e);
   QlDefaultProbabilityHelper* qlSpreadCdsHelper(QlQuote* runningSpread, int, int, int settlementDays, Calendar* calendar, int frequency, int paymentConvention, int rule, DayCounter* dayCounter, double recoveryRate, QlYieldTermStructure* discountCurve, int settlesAccrual, int paysAtDefaultTime, int startDate, DayCounter* lastPeriodDayCounter, int rebatesAccrual, int model, QlError **e);
   QlDefaultProbabilityHelper* qlUpfrontCdsHelper(QlQuote* upfront, double runningSpread, int, int, int settlementDays, Calendar* calendar, int frequency, int paymentConvention, int rule, DayCounter* dayCounter, double recoveryRate, QlYieldTermStructure* discountCurve, unsigned upfrontSettlementDays, int settlesAccrual, int paysAtDefaultTime, int startDate, DayCounter* lastPeriodDayCounter, int rebatesAccrual, int model, QlError **e);
   QlDefaultProbabilityTermStructure* qlPiecewiseDefaultCurve(int referenceDate, unsigned instrumentsLen, QlDefaultProbabilityHelper** instruments, DayCounter* dayCounter, unsigned jumpsLen, QlQuote** jumps, unsigned jDatesLen, int* jumpDates, int trait, int interpolator, int approximator, int approximatorArg, double accuracy, double minValue, double maxValue, unsigned maxAttempts, double maxFactor, double minFactor, int dontThrow, unsigned dontThrowSteps, unsigned maxEvaluations, QlError **e);
@@ -412,6 +413,8 @@ extern "C" {
   int qlCommodityIndexEmpty(QlCommodityIndex *o);
 
   void qlFreeZeroCouponInflationSwapHelper(QlZeroCouponInflationSwapHelper *o);
+  double qlZeroCouponInflationSwapHelperImpliedQuoteOn(QlZeroCouponInflationSwapHelper *o, QlZeroInflationTermStructure *curve, QlError **e);
+  double qlYearOnYearInflationSwapHelperImpliedQuoteOn(QlYearOnYearInflationSwapHelper *o, QlYoYInflationTermStructure *curve, QlError **e);
   QlZeroCouponInflationSwapHelper* qlZeroCouponInflationSwapHelper(QlQuote* quote, int, int, int maturity, Calendar* calendar, int paymentConvention, DayCounter* dayCounter, QlZeroInflationIndex* zii, int observationInterpolation, int pillar, int customPillarDate, QlError **e);
   QlZeroCouponInflationSwapHelper* qlZeroCouponInflationSwapHelper2(QlQuote* quote, int, int, int startDate, int endDate, Calendar* calendar, int paymentConvention, DayCounter* dayCounter, QlZeroInflationIndex* zii, int observationInterpolation, int pillar, int customPillarDate, QlError **e);
   void qlFreeYearOnYearInflationSwapHelper(QlYearOnYearInflationSwapHelper *o);
@@ -528,6 +531,7 @@ extern "C" {
   double qlOvernightIndexFutureRateHelperConvexityAdjustment(QlOvernightIndexFutureRateHelper *o, QlError **e);
   QlRateHelper* qlSofrFutureRateHelper(QlQuote* price, int month, int year, int freq, QlQuote* convexityAdjustment, int pillar, int customPillarDate, QlError **e);
   double qlRateHelperImpliedQuote(QlRateHelper* o, QlError **e);
+  double qlRateHelperImpliedQuoteOn(QlRateHelper* o, QlYieldTermStructure* curve, QlError **e);
   QlBond* qlBondHelperBond(QlBondHelper* o, QlError **e);
   QlOvernightIndexedSwap* qlOISRateHelperSwap(QlOISRateHelper* o, QlError **e);
   QlVanillaSwap* qlSwapRateHelperSwap(QlSwapRateHelper* o, QlError **e);

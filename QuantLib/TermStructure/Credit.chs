@@ -39,6 +39,7 @@ module QuantLib.TermStructure.Credit
   , defaultProbabilityBetween
   , conditionalSurvivalProbability
   , impliedQuote
+  , impliedQuoteOn
   ) where
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"
@@ -187,6 +188,12 @@ conditionalSurvivalProbability curve interval yVal = case interval of
 -- engine -- the value that would make the quoted instrument re-price at par. Requires the helper
 -- to have already been used to bootstrap a curve (throws otherwise, per upstream).
 {#fun qlDefaultProbabilityHelperImpliedQuote as impliedQuote{withDefaultProbabilityHelper*`DefaultProbabilityHelper'
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |The quote that would make the helper reprice exactly on the given default-probability curve:
+-- a par spread or upfront read with the helper's own conventions on any credit curve.
+{#fun qlDefaultProbabilityHelperImpliedQuoteOn as impliedQuoteOn{withDefaultProbabilityHelper*`DefaultProbabilityHelper'
+  ,withDefaultProbabilityTermStructure*`GenDefaultProbabilityTermStructure d'
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 interpolatedDefaultDensityCurve :: NonEmpty (Day, Double) -> DayCounter -> Calendar -> [(Day, GenQuote q)] -- ^jumps
