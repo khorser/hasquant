@@ -1136,25 +1136,25 @@ span.spaces    { background: white }
 <span class="lineno"> 1117 </span>-- |A year-on-year inflation coupon.  As for 'yoyInflationLeg', attach a
 <span class="lineno"> 1118 </span>-- YoY inflation coupon pricer before evaluating the coupon rate.
 <span class="lineno"> 1119 </span>yoyInflationCoupon :: (Day) -&gt; (Double) -&gt; (Day) -&gt; (Day) -&gt; (Word) -&gt; (GenYoYInflationIndex yidx) -&gt; ((Int,TimeUnit)) -&gt; (CPIInterpolationType) -&gt; (DayCounter) -&gt; (Double) -&gt; (Double) -&gt; (Maybe Day) -&gt; (Maybe Day) -&gt; IO ((YoYInflationCoupon))
-<span class="lineno"> 1120 </span><span class="decl"><span class="nottickedoff">yoyInflationCoupon a1 a2 a3 a4 a5 a6 a7 a8 a9 a10 a11 a12 a13 =</span>
-<span class="lineno"> 1121 </span><span class="spaces">  </span><span class="nottickedoff">withDay a1 $ \a1' -&gt; </span>
-<span class="lineno"> 1122 </span><span class="spaces">  </span><span class="nottickedoff">let {a2' = realToFrac a2} in </span>
-<span class="lineno"> 1123 </span><span class="spaces">  </span><span class="nottickedoff">withDay a3 $ \a3' -&gt; </span>
-<span class="lineno"> 1124 </span><span class="spaces">  </span><span class="nottickedoff">withDay a4 $ \a4' -&gt; </span>
-<span class="lineno"> 1125 </span><span class="spaces">  </span><span class="nottickedoff">let {a5' = fromIntegral a5} in </span>
-<span class="lineno"> 1126 </span><span class="spaces">  </span><span class="nottickedoff">withYoYInflationIndex a6 $ \a6' -&gt; </span>
-<span class="lineno"> 1127 </span><span class="spaces">  </span><span class="nottickedoff">let {(a7'1, a7'2) = fromEnumQuantity a7} in </span>
-<span class="lineno"> 1128 </span><span class="spaces">  </span><span class="nottickedoff">let {a8' = fromEnumC a8} in </span>
-<span class="lineno"> 1129 </span><span class="spaces">  </span><span class="nottickedoff">withDayCounter a9 $ \a9' -&gt; </span>
-<span class="lineno"> 1130 </span><span class="spaces">  </span><span class="nottickedoff">let {a10' = realToFrac a10} in </span>
-<span class="lineno"> 1131 </span><span class="spaces">  </span><span class="nottickedoff">let {a11' = realToFrac a11} in </span>
-<span class="lineno"> 1132 </span><span class="spaces">  </span><span class="nottickedoff">withMaybeDay a12 $ \a12' -&gt; </span>
-<span class="lineno"> 1133 </span><span class="spaces">  </span><span class="nottickedoff">withMaybeDay a13 $ \a13' -&gt; </span>
-<span class="lineno"> 1134 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a14' -&gt; </span>
-<span class="lineno"> 1135 </span><span class="spaces">  </span><span class="nottickedoff">yoyInflationCoupon'_ a1' a2' a3' a4' a5' a6' a7'1  a7'2 a8' a9' a10' a11' a12' a13' a14' &gt;&gt;= \res -&gt;</span>
-<span class="lineno"> 1136 </span><span class="spaces">  </span><span class="nottickedoff">peekYoYInflationCoupon res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno"> 1137 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a14'&gt;&gt;</span>
-<span class="lineno"> 1138 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno"> 1120 </span><span class="decl"><span class="istickedoff">yoyInflationCoupon a1 a2 a3 a4 a5 a6 a7 a8 a9 a10 a11 a12 a13 =</span>
+<span class="lineno"> 1121 </span><span class="spaces">  </span><span class="istickedoff">withDay a1 $ \a1' -&gt; </span>
+<span class="lineno"> 1122 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = realToFrac a2} in </span>
+<span class="lineno"> 1123 </span><span class="spaces">  </span><span class="istickedoff">withDay a3 $ \a3' -&gt; </span>
+<span class="lineno"> 1124 </span><span class="spaces">  </span><span class="istickedoff">withDay a4 $ \a4' -&gt; </span>
+<span class="lineno"> 1125 </span><span class="spaces">  </span><span class="istickedoff">let {a5' = fromIntegral a5} in </span>
+<span class="lineno"> 1126 </span><span class="spaces">  </span><span class="istickedoff">withYoYInflationIndex a6 $ \a6' -&gt; </span>
+<span class="lineno"> 1127 </span><span class="spaces">  </span><span class="istickedoff">let {(a7'1, a7'2) = fromEnumQuantity a7} in </span>
+<span class="lineno"> 1128 </span><span class="spaces">  </span><span class="istickedoff">let {a8' = fromEnumC a8} in </span>
+<span class="lineno"> 1129 </span><span class="spaces">  </span><span class="istickedoff">withDayCounter a9 $ \a9' -&gt; </span>
+<span class="lineno"> 1130 </span><span class="spaces">  </span><span class="istickedoff">let {a10' = realToFrac a10} in </span>
+<span class="lineno"> 1131 </span><span class="spaces">  </span><span class="istickedoff">let {a11' = realToFrac a11} in </span>
+<span class="lineno"> 1132 </span><span class="spaces">  </span><span class="istickedoff">withMaybeDay a12 $ \a12' -&gt; </span>
+<span class="lineno"> 1133 </span><span class="spaces">  </span><span class="istickedoff">withMaybeDay a13 $ \a13' -&gt; </span>
+<span class="lineno"> 1134 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a14' -&gt; </span>
+<span class="lineno"> 1135 </span><span class="spaces">  </span><span class="istickedoff">yoyInflationCoupon'_ a1' a2' a3' a4' a5' a6' a7'1  a7'2 a8' a9' a10' a11' a12' a13' a14' &gt;&gt;= \res -&gt;</span>
+<span class="lineno"> 1136 </span><span class="spaces">  </span><span class="istickedoff">peekYoYInflationCoupon res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno"> 1137 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a14'&gt;&gt;</span>
+<span class="lineno"> 1138 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
 <span class="lineno"> 1139 </span>
 <span class="lineno"> 1140 </span>
 <span class="lineno"> 1141 </span>adjustedFixing :: (YoYInflationCoupon) -&gt; IO ((Double))
@@ -1408,25 +1408,25 @@ span.spaces    { background: white }
 <span class="lineno"> 1389 </span> -&gt; (Maybe Day) -- ^referencePeriodEnd
 <span class="lineno"> 1390 </span> -&gt; (Maybe Day) -- ^exCouponDate
 <span class="lineno"> 1391 </span> -&gt; IO ((CPICoupon))
-<span class="lineno"> 1392 </span><span class="decl"><span class="nottickedoff">cpiCouponFromBaseDate a1 a2 a3 a4 a5 a6 a7 a8 a9 a10 a11 a12 a13 =</span>
-<span class="lineno"> 1393 </span><span class="spaces">  </span><span class="nottickedoff">withDay a1 $ \a1' -&gt; </span>
-<span class="lineno"> 1394 </span><span class="spaces">  </span><span class="nottickedoff">withDay a2 $ \a2' -&gt; </span>
-<span class="lineno"> 1395 </span><span class="spaces">  </span><span class="nottickedoff">let {a3' = realToFrac a3} in </span>
-<span class="lineno"> 1396 </span><span class="spaces">  </span><span class="nottickedoff">withDay a4 $ \a4' -&gt; </span>
-<span class="lineno"> 1397 </span><span class="spaces">  </span><span class="nottickedoff">withDay a5 $ \a5' -&gt; </span>
-<span class="lineno"> 1398 </span><span class="spaces">  </span><span class="nottickedoff">withZeroInflationIndex a6 $ \a6' -&gt; </span>
-<span class="lineno"> 1399 </span><span class="spaces">  </span><span class="nottickedoff">let {(a7'1, a7'2) = fromEnumQuantity a7} in </span>
-<span class="lineno"> 1400 </span><span class="spaces">  </span><span class="nottickedoff">let {a8' = fromEnumC a8} in </span>
-<span class="lineno"> 1401 </span><span class="spaces">  </span><span class="nottickedoff">withDayCounter a9 $ \a9' -&gt; </span>
-<span class="lineno"> 1402 </span><span class="spaces">  </span><span class="nottickedoff">let {a10' = realToFrac a10} in </span>
-<span class="lineno"> 1403 </span><span class="spaces">  </span><span class="nottickedoff">withMaybeDay a11 $ \a11' -&gt; </span>
-<span class="lineno"> 1404 </span><span class="spaces">  </span><span class="nottickedoff">withMaybeDay a12 $ \a12' -&gt; </span>
-<span class="lineno"> 1405 </span><span class="spaces">  </span><span class="nottickedoff">withMaybeDay a13 $ \a13' -&gt; </span>
-<span class="lineno"> 1406 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a14' -&gt; </span>
-<span class="lineno"> 1407 </span><span class="spaces">  </span><span class="nottickedoff">cpiCouponFromBaseDate'_ a1' a2' a3' a4' a5' a6' a7'1  a7'2 a8' a9' a10' a11' a12' a13' a14' &gt;&gt;= \res -&gt;</span>
-<span class="lineno"> 1408 </span><span class="spaces">  </span><span class="nottickedoff">peekCPICoupon res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno"> 1409 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a14'&gt;&gt;</span>
-<span class="lineno"> 1410 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno"> 1392 </span><span class="decl"><span class="istickedoff">cpiCouponFromBaseDate a1 a2 a3 a4 a5 a6 a7 a8 a9 a10 a11 a12 a13 =</span>
+<span class="lineno"> 1393 </span><span class="spaces">  </span><span class="istickedoff">withDay a1 $ \a1' -&gt; </span>
+<span class="lineno"> 1394 </span><span class="spaces">  </span><span class="istickedoff">withDay a2 $ \a2' -&gt; </span>
+<span class="lineno"> 1395 </span><span class="spaces">  </span><span class="istickedoff">let {a3' = realToFrac a3} in </span>
+<span class="lineno"> 1396 </span><span class="spaces">  </span><span class="istickedoff">withDay a4 $ \a4' -&gt; </span>
+<span class="lineno"> 1397 </span><span class="spaces">  </span><span class="istickedoff">withDay a5 $ \a5' -&gt; </span>
+<span class="lineno"> 1398 </span><span class="spaces">  </span><span class="istickedoff">withZeroInflationIndex a6 $ \a6' -&gt; </span>
+<span class="lineno"> 1399 </span><span class="spaces">  </span><span class="istickedoff">let {(a7'1, a7'2) = fromEnumQuantity a7} in </span>
+<span class="lineno"> 1400 </span><span class="spaces">  </span><span class="istickedoff">let {a8' = fromEnumC a8} in </span>
+<span class="lineno"> 1401 </span><span class="spaces">  </span><span class="istickedoff">withDayCounter a9 $ \a9' -&gt; </span>
+<span class="lineno"> 1402 </span><span class="spaces">  </span><span class="istickedoff">let {a10' = realToFrac a10} in </span>
+<span class="lineno"> 1403 </span><span class="spaces">  </span><span class="istickedoff">withMaybeDay a11 $ \a11' -&gt; </span>
+<span class="lineno"> 1404 </span><span class="spaces">  </span><span class="istickedoff">withMaybeDay a12 $ \a12' -&gt; </span>
+<span class="lineno"> 1405 </span><span class="spaces">  </span><span class="istickedoff">withMaybeDay a13 $ \a13' -&gt; </span>
+<span class="lineno"> 1406 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a14' -&gt; </span>
+<span class="lineno"> 1407 </span><span class="spaces">  </span><span class="istickedoff">cpiCouponFromBaseDate'_ a1' a2' a3' a4' a5' a6' a7'1  a7'2 a8' a9' a10' a11' a12' a13' a14' &gt;&gt;= \res -&gt;</span>
+<span class="lineno"> 1408 </span><span class="spaces">  </span><span class="istickedoff">peekCPICoupon res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno"> 1409 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a14'&gt;&gt;</span>
+<span class="lineno"> 1410 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
 <span class="lineno"> 1411 </span>
 <span class="lineno"> 1412 </span>
 <span class="lineno"> 1413 </span>
@@ -3722,492 +3722,498 @@ span.spaces    { background: white }
 <span class="lineno"> 3703 </span>-- order.  QuantLib has no @requiredFixings@ query, so this walks the leg itself, unwrapping
 <span class="lineno"> 3704 </span>-- decorating coupons (capped\/floored, stripped, digital) and asking each coupon for its own
 <span class="lineno"> 3705 </span>-- fixing dates: one for an Ibor, CMS or CMS-spread coupon, one per averaged date for an
-<span class="lineno"> 3706 </span>-- overnight, BMA or multiple-resets coupon, and the fixing and base dates for an inflation
-<span class="lineno"> 3707 </span>-- coupon or an index-linked payment.  A CMS-spread coupon reports its two underlying swap
-<span class="lineno"> 3708 </span>-- indexes rather than the spread index, because that is where the fixings are stored.  Names
-<span class="lineno"> 3709 </span>-- are 'QuantLib.Index.name', the key QuantLib\'s process-global fixing store uses.  A cash flow
-<span class="lineno"> 3710 </span>-- that needs no fixing -- a redemption, a fixed-rate coupon -- contributes nothing.  Duplicates
-<span class="lineno"> 3711 </span>-- are not removed: two coupons may fix the same index on the same date.
-<span class="lineno"> 3712 </span>fixingDependencies :: GenLeg l -&gt; IO [(String, Day)]
-<span class="lineno"> 3713 </span><span class="decl"><span class="istickedoff">fixingDependencies l = uncurry zip &lt;$&gt; qlLegFixingDependencies l</span></span>
-<span class="lineno"> 3714 </span>qlLegFixingDependencies :: (GenLeg l) -&gt; IO (([String]), ([Day]))
-<span class="lineno"> 3715 </span><span class="decl"><span class="istickedoff">qlLegFixingDependencies a1 =</span>
-<span class="lineno"> 3716 </span><span class="spaces">  </span><span class="istickedoff">withLeg a1 $ \a1' -&gt; </span>
-<span class="lineno"> 3717 </span><span class="spaces">  </span><span class="istickedoff">preCStringArray $ \(a2'1, a2'2) -&gt; </span>
-<span class="lineno"> 3718 </span><span class="spaces">  </span><span class="istickedoff">preIntArray $ \(a3'1, a3'2) -&gt; </span>
-<span class="lineno"> 3719 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a4' -&gt; </span>
-<span class="lineno"> 3720 </span><span class="spaces">  </span><span class="istickedoff">qlLegFixingDependencies'_ a1' a2'1  a2'2 a3'1  a3'2 a4' &gt;&gt;</span>
-<span class="lineno"> 3721 </span><span class="spaces">  </span><span class="istickedoff">peekCStringArray  a2'1  a2'2&gt;&gt;= \a2'' -&gt; </span>
-<span class="lineno"> 3722 </span><span class="spaces">  </span><span class="istickedoff">peekDayArray  a3'1  a3'2&gt;&gt;= \a3'' -&gt; </span>
-<span class="lineno"> 3723 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a4'&gt;&gt;</span>
-<span class="lineno"> 3724 </span><span class="spaces">  </span><span class="istickedoff">return (a2'', a3'')</span></span>
-<span class="lineno"> 3725 </span>
-<span class="lineno"> 3726 </span>
-<span class="lineno"> 3727 </span>
-<span class="lineno"> 3728 </span>class HasFixingDates coupon where
-<span class="lineno"> 3729 </span>  fixingDates :: coupon -&gt; IO [Day]
-<span class="lineno"> 3730 </span>
-<span class="lineno"> 3731 </span>instance HasFixingDates AverageBMACoupon where
-<span class="lineno"> 3732 </span>  <span class="decl"><span class="istickedoff">fixingDates = averageBmaCouponFixingDatesRaw</span></span>
-<span class="lineno"> 3733 </span>instance HasFixingDates MultipleResetsCoupon where
-<span class="lineno"> 3734 </span>  <span class="decl"><span class="istickedoff">fixingDates = multipleResetsCouponFixingDatesRaw</span></span>
-<span class="lineno"> 3735 </span>instance HasFixingDates OvernightIndexedCoupon where
-<span class="lineno"> 3736 </span>  <span class="decl"><span class="istickedoff">fixingDates = overnightIndexedCouponFixingDatesRaw</span></span>
-<span class="lineno"> 3737 </span>
-<span class="lineno"> 3738 </span>-- |Coupon types that expose their component index fixings.
-<span class="lineno"> 3739 </span>class HasIndexFixings coupon where
-<span class="lineno"> 3740 </span>  indexFixings :: coupon -&gt; IO [Double]
-<span class="lineno"> 3741 </span>
-<span class="lineno"> 3742 </span>instance HasIndexFixings AverageBMACoupon where
-<span class="lineno"> 3743 </span>  <span class="decl"><span class="istickedoff">indexFixings = averageBmaCouponIndexFixingsRaw</span></span>
-<span class="lineno"> 3744 </span>instance HasIndexFixings OvernightIndexedCoupon where
-<span class="lineno"> 3745 </span>  <span class="decl"><span class="istickedoff">indexFixings = overnightIndexedCouponIndexFixingsRaw</span></span>
-<span class="lineno"> 3746 </span>
-<span class="lineno"> 3747 </span>-- vim: set ff=unix ts=8 sts=2 sw=2 et:
-<span class="lineno"> 3748 </span>
-<span class="lineno"> 3749 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlLeg&quot;
-<span class="lineno"> 3750 </span>  qlLeg'_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CLeg')))))))
-<span class="lineno"> 3751 </span>
-<span class="lineno"> 3752 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlSimpleCashFlow&quot;
-<span class="lineno"> 3753 </span>  simpleCashFlow'_ :: (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CCashFlow'))))))
+<span class="lineno"> 3706 </span>-- overnight, BMA or multiple-resets coupon, and the fixing and base dates for an index-linked
+<span class="lineno"> 3707 </span>-- payment.  An inflation flow reports the dates QuantLib\'s CPI store is read at, which are
+<span class="lineno"> 3708 </span>-- period starts (@ZeroInflationIndex::pastFixing@): for a CPI coupon, CPI cash flow or
+<span class="lineno"> 3709 </span>-- zero-inflation cash flow, the start of the index period holding each observed date less the
+<span class="lineno"> 3710 </span>-- observation lag, and under linear interpolation the next period\'s start too, unless the
+<span class="lineno"> 3711 </span>-- observed date is itself a period start (@CPI::laggedFixing@); a base only when no base CPI is
+<span class="lineno"> 3712 </span>-- given.  A year-on-year coupon reports its own index\'s period starts, or, for a ratio index, its
+<span class="lineno"> 3713 </span>-- underlying zero index a year apart.  A CMS-spread coupon reports its two underlying swap
+<span class="lineno"> 3714 </span>-- indexes rather than the spread index, because that is where the fixings are stored.  Names
+<span class="lineno"> 3715 </span>-- are 'QuantLib.Index.name', the key QuantLib\'s process-global fixing store uses.  A cash flow
+<span class="lineno"> 3716 </span>-- that needs no fixing -- a redemption, a fixed-rate coupon -- contributes nothing.  Duplicates
+<span class="lineno"> 3717 </span>-- are not removed: two coupons may fix the same index on the same date.
+<span class="lineno"> 3718 </span>fixingDependencies :: GenLeg l -&gt; IO [(String, Day)]
+<span class="lineno"> 3719 </span><span class="decl"><span class="istickedoff">fixingDependencies l = uncurry zip &lt;$&gt; qlLegFixingDependencies l</span></span>
+<span class="lineno"> 3720 </span>qlLegFixingDependencies :: (GenLeg l) -&gt; IO (([String]), ([Day]))
+<span class="lineno"> 3721 </span><span class="decl"><span class="istickedoff">qlLegFixingDependencies a1 =</span>
+<span class="lineno"> 3722 </span><span class="spaces">  </span><span class="istickedoff">withLeg a1 $ \a1' -&gt; </span>
+<span class="lineno"> 3723 </span><span class="spaces">  </span><span class="istickedoff">preCStringArray $ \(a2'1, a2'2) -&gt; </span>
+<span class="lineno"> 3724 </span><span class="spaces">  </span><span class="istickedoff">preIntArray $ \(a3'1, a3'2) -&gt; </span>
+<span class="lineno"> 3725 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a4' -&gt; </span>
+<span class="lineno"> 3726 </span><span class="spaces">  </span><span class="istickedoff">qlLegFixingDependencies'_ a1' a2'1  a2'2 a3'1  a3'2 a4' &gt;&gt;</span>
+<span class="lineno"> 3727 </span><span class="spaces">  </span><span class="istickedoff">peekCStringArray  a2'1  a2'2&gt;&gt;= \a2'' -&gt; </span>
+<span class="lineno"> 3728 </span><span class="spaces">  </span><span class="istickedoff">peekDayArray  a3'1  a3'2&gt;&gt;= \a3'' -&gt; </span>
+<span class="lineno"> 3729 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a4'&gt;&gt;</span>
+<span class="lineno"> 3730 </span><span class="spaces">  </span><span class="istickedoff">return (a2'', a3'')</span></span>
+<span class="lineno"> 3731 </span>
+<span class="lineno"> 3732 </span>
+<span class="lineno"> 3733 </span>
+<span class="lineno"> 3734 </span>class HasFixingDates coupon where
+<span class="lineno"> 3735 </span>  fixingDates :: coupon -&gt; IO [Day]
+<span class="lineno"> 3736 </span>
+<span class="lineno"> 3737 </span>instance HasFixingDates AverageBMACoupon where
+<span class="lineno"> 3738 </span>  <span class="decl"><span class="istickedoff">fixingDates = averageBmaCouponFixingDatesRaw</span></span>
+<span class="lineno"> 3739 </span>instance HasFixingDates MultipleResetsCoupon where
+<span class="lineno"> 3740 </span>  <span class="decl"><span class="istickedoff">fixingDates = multipleResetsCouponFixingDatesRaw</span></span>
+<span class="lineno"> 3741 </span>instance HasFixingDates OvernightIndexedCoupon where
+<span class="lineno"> 3742 </span>  <span class="decl"><span class="istickedoff">fixingDates = overnightIndexedCouponFixingDatesRaw</span></span>
+<span class="lineno"> 3743 </span>
+<span class="lineno"> 3744 </span>-- |Coupon types that expose their component index fixings.
+<span class="lineno"> 3745 </span>class HasIndexFixings coupon where
+<span class="lineno"> 3746 </span>  indexFixings :: coupon -&gt; IO [Double]
+<span class="lineno"> 3747 </span>
+<span class="lineno"> 3748 </span>instance HasIndexFixings AverageBMACoupon where
+<span class="lineno"> 3749 </span>  <span class="decl"><span class="istickedoff">indexFixings = averageBmaCouponIndexFixingsRaw</span></span>
+<span class="lineno"> 3750 </span>instance HasIndexFixings OvernightIndexedCoupon where
+<span class="lineno"> 3751 </span>  <span class="decl"><span class="istickedoff">indexFixings = overnightIndexedCouponIndexFixingsRaw</span></span>
+<span class="lineno"> 3752 </span>
+<span class="lineno"> 3753 </span>-- vim: set ff=unix ts=8 sts=2 sw=2 et:
 <span class="lineno"> 3754 </span>
-<span class="lineno"> 3755 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCashFlowAmount&quot;
-<span class="lineno"> 3756 </span>  amount'_ :: ((C2HSImp.Ptr (CCashFlow')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))
+<span class="lineno"> 3755 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlLeg&quot;
+<span class="lineno"> 3756 </span>  qlLeg'_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CLeg')))))))
 <span class="lineno"> 3757 </span>
-<span class="lineno"> 3758 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCashFlowDate&quot;
-<span class="lineno"> 3759 </span>  date'_ :: ((C2HSImp.Ptr (CCashFlow')) -&gt; (IO C2HSImp.CInt))
+<span class="lineno"> 3758 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlSimpleCashFlow&quot;
+<span class="lineno"> 3759 </span>  simpleCashFlow'_ :: (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CCashFlow'))))))
 <span class="lineno"> 3760 </span>
-<span class="lineno"> 3761 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlIndexedCashFlow&quot;
-<span class="lineno"> 3762 </span>  indexedCashFlow'_ :: (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (CIndex')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CIndexedCashFlow'))))))))))
+<span class="lineno"> 3761 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCashFlowAmount&quot;
+<span class="lineno"> 3762 </span>  amount'_ :: ((C2HSImp.Ptr (CCashFlow')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))
 <span class="lineno"> 3763 </span>
-<span class="lineno"> 3764 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlIndexedCashFlowBaseFixing&quot;
-<span class="lineno"> 3765 </span>  baseFixing'_ :: ((C2HSImp.Ptr (CIndexedCashFlow')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))
+<span class="lineno"> 3764 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCashFlowDate&quot;
+<span class="lineno"> 3765 </span>  date'_ :: ((C2HSImp.Ptr (CCashFlow')) -&gt; (IO C2HSImp.CInt))
 <span class="lineno"> 3766 </span>
-<span class="lineno"> 3767 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlIndexedCashFlowIndexFixing&quot;
-<span class="lineno"> 3768 </span>  indexFixing'_ :: ((C2HSImp.Ptr (CIndexedCashFlow')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))
+<span class="lineno"> 3767 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlIndexedCashFlow&quot;
+<span class="lineno"> 3768 </span>  indexedCashFlow'_ :: (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (CIndex')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CIndexedCashFlow'))))))))))
 <span class="lineno"> 3769 </span>
-<span class="lineno"> 3770 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlFixedRateCoupon&quot;
-<span class="lineno"> 3771 </span>  fixedRateCoupon'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CFixedRateCoupon')))))))))))))
+<span class="lineno"> 3770 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlIndexedCashFlowBaseFixing&quot;
+<span class="lineno"> 3771 </span>  baseFixing'_ :: ((C2HSImp.Ptr (CIndexedCashFlow')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))
 <span class="lineno"> 3772 </span>
-<span class="lineno"> 3773 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlFixedRateCouponInterestRate&quot;
-<span class="lineno"> 3774 </span>  interestRate'_ :: ((C2HSImp.Ptr (CFixedRateCoupon')) -&gt; (IO (C2HSImp.Ptr (CInterestRate))))
+<span class="lineno"> 3773 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlIndexedCashFlowIndexFixing&quot;
+<span class="lineno"> 3774 </span>  indexFixing'_ :: ((C2HSImp.Ptr (CIndexedCashFlow')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))
 <span class="lineno"> 3775 </span>
-<span class="lineno"> 3776 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlFloatingRateCoupon&quot;
-<span class="lineno"> 3777 </span>  floatingRateCoupon'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (CInterestRateIndex')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CFloatingRateCoupon'))))))))))))))))))
+<span class="lineno"> 3776 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlFixedRateCoupon&quot;
+<span class="lineno"> 3777 </span>  fixedRateCoupon'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CFixedRateCoupon')))))))))))))
 <span class="lineno"> 3778 </span>
-<span class="lineno"> 3779 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlIborCouponExact&quot;
-<span class="lineno"> 3780 </span>  iborCoupon'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (CIborIndex')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CIborCoupon'))))))))))))))))))
+<span class="lineno"> 3779 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlFixedRateCouponInterestRate&quot;
+<span class="lineno"> 3780 </span>  interestRate'_ :: ((C2HSImp.Ptr (CFixedRateCoupon')) -&gt; (IO (C2HSImp.Ptr (CInterestRate))))
 <span class="lineno"> 3781 </span>
-<span class="lineno"> 3782 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlAverageBMACoupon&quot;
-<span class="lineno"> 3783 </span>  averageBmaCoupon'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CBMAIndex')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CAverageBMACoupon'))))))))))))))
+<span class="lineno"> 3782 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlFloatingRateCoupon&quot;
+<span class="lineno"> 3783 </span>  floatingRateCoupon'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (CInterestRateIndex')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CFloatingRateCoupon'))))))))))))))))))
 <span class="lineno"> 3784 </span>
-<span class="lineno"> 3785 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlAverageBMACouponFixingDates&quot;
-<span class="lineno"> 3786 </span>  averageBmaCouponFixingDatesRaw'_ :: ((C2HSImp.Ptr (CAverageBMACoupon')) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CInt)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO ())))))
+<span class="lineno"> 3785 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlIborCouponExact&quot;
+<span class="lineno"> 3786 </span>  iborCoupon'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (CIborIndex')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CIborCoupon'))))))))))))))))))
 <span class="lineno"> 3787 </span>
-<span class="lineno"> 3788 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlAverageBMACouponIndexFixings&quot;
-<span class="lineno"> 3789 </span>  averageBmaCouponIndexFixingsRaw'_ :: ((C2HSImp.Ptr (CAverageBMACoupon')) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO ())))))
+<span class="lineno"> 3788 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlAverageBMACoupon&quot;
+<span class="lineno"> 3789 </span>  averageBmaCoupon'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CBMAIndex')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CAverageBMACoupon'))))))))))))))
 <span class="lineno"> 3790 </span>
-<span class="lineno"> 3791 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCappedFlooredCoupon&quot;
-<span class="lineno"> 3792 </span>  cappedFlooredCoupon'_ :: ((C2HSImp.Ptr (CFloatingRateCoupon')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CFloatingRateCoupon')))))))
+<span class="lineno"> 3791 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlAverageBMACouponFixingDates&quot;
+<span class="lineno"> 3792 </span>  averageBmaCouponFixingDatesRaw'_ :: ((C2HSImp.Ptr (CAverageBMACoupon')) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CInt)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO ())))))
 <span class="lineno"> 3793 </span>
-<span class="lineno"> 3794 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlStrippedCappedFlooredCoupon&quot;
-<span class="lineno"> 3795 </span>  strippedCappedFlooredCoupon'_ :: ((C2HSImp.Ptr (CFloatingRateCoupon')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CStrippedCappedFlooredCoupon')))))))
+<span class="lineno"> 3794 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlAverageBMACouponIndexFixings&quot;
+<span class="lineno"> 3795 </span>  averageBmaCouponIndexFixingsRaw'_ :: ((C2HSImp.Ptr (CAverageBMACoupon')) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO ())))))
 <span class="lineno"> 3796 </span>
-<span class="lineno"> 3797 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlStrippedCappedFlooredCouponCap&quot;
-<span class="lineno"> 3798 </span>  capRate'_ :: ((C2HSImp.Ptr (CStrippedCappedFlooredCoupon')) -&gt; (IO C2HSImp.CDouble))
+<span class="lineno"> 3797 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCappedFlooredCoupon&quot;
+<span class="lineno"> 3798 </span>  cappedFlooredCoupon'_ :: ((C2HSImp.Ptr (CFloatingRateCoupon')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CFloatingRateCoupon')))))))
 <span class="lineno"> 3799 </span>
-<span class="lineno"> 3800 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlStrippedCappedFlooredCouponFloor&quot;
-<span class="lineno"> 3801 </span>  floorRate'_ :: ((C2HSImp.Ptr (CStrippedCappedFlooredCoupon')) -&gt; (IO C2HSImp.CDouble))
+<span class="lineno"> 3800 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlStrippedCappedFlooredCoupon&quot;
+<span class="lineno"> 3801 </span>  strippedCappedFlooredCoupon'_ :: ((C2HSImp.Ptr (CFloatingRateCoupon')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CStrippedCappedFlooredCoupon')))))))
 <span class="lineno"> 3802 </span>
-<span class="lineno"> 3803 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlStrippedCappedFlooredCouponEffectiveCap&quot;
-<span class="lineno"> 3804 </span>  effectiveCap'_ :: ((C2HSImp.Ptr (CStrippedCappedFlooredCoupon')) -&gt; (IO C2HSImp.CDouble))
+<span class="lineno"> 3803 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlStrippedCappedFlooredCouponCap&quot;
+<span class="lineno"> 3804 </span>  capRate'_ :: ((C2HSImp.Ptr (CStrippedCappedFlooredCoupon')) -&gt; (IO C2HSImp.CDouble))
 <span class="lineno"> 3805 </span>
-<span class="lineno"> 3806 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlStrippedCappedFlooredCouponEffectiveFloor&quot;
-<span class="lineno"> 3807 </span>  effectiveFloor'_ :: ((C2HSImp.Ptr (CStrippedCappedFlooredCoupon')) -&gt; (IO C2HSImp.CDouble))
+<span class="lineno"> 3806 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlStrippedCappedFlooredCouponFloor&quot;
+<span class="lineno"> 3807 </span>  floorRate'_ :: ((C2HSImp.Ptr (CStrippedCappedFlooredCoupon')) -&gt; (IO C2HSImp.CDouble))
 <span class="lineno"> 3808 </span>
-<span class="lineno"> 3809 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlStrippedCappedFlooredCouponIsCap&quot;
-<span class="lineno"> 3810 </span>  isCap'_ :: ((C2HSImp.Ptr (CStrippedCappedFlooredCoupon')) -&gt; (IO C2HSImp.CInt))
+<span class="lineno"> 3809 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlStrippedCappedFlooredCouponEffectiveCap&quot;
+<span class="lineno"> 3810 </span>  effectiveCap'_ :: ((C2HSImp.Ptr (CStrippedCappedFlooredCoupon')) -&gt; (IO C2HSImp.CDouble))
 <span class="lineno"> 3811 </span>
-<span class="lineno"> 3812 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlStrippedCappedFlooredCouponIsFloor&quot;
-<span class="lineno"> 3813 </span>  isFloor'_ :: ((C2HSImp.Ptr (CStrippedCappedFlooredCoupon')) -&gt; (IO C2HSImp.CInt))
+<span class="lineno"> 3812 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlStrippedCappedFlooredCouponEffectiveFloor&quot;
+<span class="lineno"> 3813 </span>  effectiveFloor'_ :: ((C2HSImp.Ptr (CStrippedCappedFlooredCoupon')) -&gt; (IO C2HSImp.CDouble))
 <span class="lineno"> 3814 </span>
-<span class="lineno"> 3815 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlStrippedCappedFlooredCouponIsCollar&quot;
-<span class="lineno"> 3816 </span>  isCollar'_ :: ((C2HSImp.Ptr (CStrippedCappedFlooredCoupon')) -&gt; (IO C2HSImp.CInt))
+<span class="lineno"> 3815 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlStrippedCappedFlooredCouponIsCap&quot;
+<span class="lineno"> 3816 </span>  isCap'_ :: ((C2HSImp.Ptr (CStrippedCappedFlooredCoupon')) -&gt; (IO C2HSImp.CInt))
 <span class="lineno"> 3817 </span>
-<span class="lineno"> 3818 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCappedFlooredIborCoupon&quot;
-<span class="lineno"> 3819 </span>  cappedFlooredIborCoupon'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (CIborIndex')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CFloatingRateCoupon'))))))))))))))))))))
+<span class="lineno"> 3818 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlStrippedCappedFlooredCouponIsFloor&quot;
+<span class="lineno"> 3819 </span>  isFloor'_ :: ((C2HSImp.Ptr (CStrippedCappedFlooredCoupon')) -&gt; (IO C2HSImp.CInt))
 <span class="lineno"> 3820 </span>
-<span class="lineno"> 3821 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlDigitalIborCoupon&quot;
-<span class="lineno"> 3822 </span>  digitalIborCoupon'_ :: ((C2HSImp.Ptr (CIborCoupon')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (CDigitalReplication)) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CDigitalCoupon')))))))))))))))
+<span class="lineno"> 3821 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlStrippedCappedFlooredCouponIsCollar&quot;
+<span class="lineno"> 3822 </span>  isCollar'_ :: ((C2HSImp.Ptr (CStrippedCappedFlooredCoupon')) -&gt; (IO C2HSImp.CInt))
 <span class="lineno"> 3823 </span>
-<span class="lineno"> 3824 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlDigitalCoupon&quot;
-<span class="lineno"> 3825 </span>  digitalCoupon'_ :: ((C2HSImp.Ptr (CFloatingRateCoupon')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (CDigitalReplication)) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CDigitalCoupon')))))))))))))))
+<span class="lineno"> 3824 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCappedFlooredIborCoupon&quot;
+<span class="lineno"> 3825 </span>  cappedFlooredIborCoupon'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (CIborIndex')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CFloatingRateCoupon'))))))))))))))))))))
 <span class="lineno"> 3826 </span>
-<span class="lineno"> 3827 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlDigitalCouponCallOptionRate&quot;
-<span class="lineno"> 3828 </span>  callOptionRate'_ :: ((C2HSImp.Ptr (CDigitalCoupon')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))
+<span class="lineno"> 3827 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlDigitalIborCoupon&quot;
+<span class="lineno"> 3828 </span>  digitalIborCoupon'_ :: ((C2HSImp.Ptr (CIborCoupon')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (CDigitalReplication)) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CDigitalCoupon')))))))))))))))
 <span class="lineno"> 3829 </span>
-<span class="lineno"> 3830 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlDigitalCouponPutOptionRate&quot;
-<span class="lineno"> 3831 </span>  putOptionRate'_ :: ((C2HSImp.Ptr (CDigitalCoupon')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))
+<span class="lineno"> 3830 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlDigitalCoupon&quot;
+<span class="lineno"> 3831 </span>  digitalCoupon'_ :: ((C2HSImp.Ptr (CFloatingRateCoupon')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (CDigitalReplication)) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CDigitalCoupon')))))))))))))))
 <span class="lineno"> 3832 </span>
-<span class="lineno"> 3833 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlMultipleResetsCoupon&quot;
-<span class="lineno"> 3834 </span>  multipleResetsCoupon'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (CSchedule)) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (CIborIndex')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CMultipleResetsCoupon'))))))))))))))))
+<span class="lineno"> 3833 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlDigitalCouponCallOptionRate&quot;
+<span class="lineno"> 3834 </span>  callOptionRate'_ :: ((C2HSImp.Ptr (CDigitalCoupon')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))
 <span class="lineno"> 3835 </span>
-<span class="lineno"> 3836 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlMultipleResetsCouponFixingDates&quot;
-<span class="lineno"> 3837 </span>  multipleResetsCouponFixingDatesRaw'_ :: ((C2HSImp.Ptr (CMultipleResetsCoupon')) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CInt)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO ())))))
+<span class="lineno"> 3836 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlDigitalCouponPutOptionRate&quot;
+<span class="lineno"> 3837 </span>  putOptionRate'_ :: ((C2HSImp.Ptr (CDigitalCoupon')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))
 <span class="lineno"> 3838 </span>
-<span class="lineno"> 3839 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlRangeAccrualFloatersCoupon&quot;
-<span class="lineno"> 3840 </span>  rangeAccrualFloatersCoupon'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (CIborIndex')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CSchedule)) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CRangeAccrualFloatersCoupon'))))))))))))))))))
+<span class="lineno"> 3839 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlMultipleResetsCoupon&quot;
+<span class="lineno"> 3840 </span>  multipleResetsCoupon'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (CSchedule)) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (CIborIndex')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CMultipleResetsCoupon'))))))))))))))))
 <span class="lineno"> 3841 </span>
-<span class="lineno"> 3842 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlRangeAccrualFloatersCouponPriceWithoutOptionality&quot;
-<span class="lineno"> 3843 </span>  priceWithoutOptionality'_ :: ((C2HSImp.Ptr (CRangeAccrualFloatersCoupon')) -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble))))
+<span class="lineno"> 3842 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlMultipleResetsCouponFixingDates&quot;
+<span class="lineno"> 3843 </span>  multipleResetsCouponFixingDatesRaw'_ :: ((C2HSImp.Ptr (CMultipleResetsCoupon')) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CInt)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO ())))))
 <span class="lineno"> 3844 </span>
-<span class="lineno"> 3845 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlYoYInflationCoupon&quot;
-<span class="lineno"> 3846 </span>  yoyInflationCoupon'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (CYoYInflationIndex')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CYoYInflationCoupon'))))))))))))))))))
+<span class="lineno"> 3845 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlRangeAccrualFloatersCoupon&quot;
+<span class="lineno"> 3846 </span>  rangeAccrualFloatersCoupon'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (CIborIndex')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CSchedule)) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CRangeAccrualFloatersCoupon'))))))))))))))))))
 <span class="lineno"> 3847 </span>
-<span class="lineno"> 3848 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlYoYInflationCouponAdjustedFixing&quot;
-<span class="lineno"> 3849 </span>  adjustedFixing'_ :: ((C2HSImp.Ptr (CYoYInflationCoupon')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))
+<span class="lineno"> 3848 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlRangeAccrualFloatersCouponPriceWithoutOptionality&quot;
+<span class="lineno"> 3849 </span>  priceWithoutOptionality'_ :: ((C2HSImp.Ptr (CRangeAccrualFloatersCoupon')) -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble))))
 <span class="lineno"> 3850 </span>
-<span class="lineno"> 3851 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlAveragingMultipleResetsPricer&quot;
-<span class="lineno"> 3852 </span>  averagingMultipleResetsPricer'_ :: ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CFloatingRateCouponPricer'))))
+<span class="lineno"> 3851 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlYoYInflationCoupon&quot;
+<span class="lineno"> 3852 </span>  yoyInflationCoupon'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (CYoYInflationIndex')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CYoYInflationCoupon'))))))))))))))))))
 <span class="lineno"> 3853 </span>
-<span class="lineno"> 3854 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCompoundingMultipleResetsPricer&quot;
-<span class="lineno"> 3855 </span>  compoundingMultipleResetsPricer'_ :: ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CFloatingRateCouponPricer'))))
+<span class="lineno"> 3854 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlYoYInflationCouponAdjustedFixing&quot;
+<span class="lineno"> 3855 </span>  adjustedFixing'_ :: ((C2HSImp.Ptr (CYoYInflationCoupon')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))
 <span class="lineno"> 3856 </span>
-<span class="lineno"> 3857 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlOvernightIndexedCoupon&quot;
-<span class="lineno"> 3858 </span>  overnightIndexedCoupon'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (COvernightIndex')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (COvernightIndexedCoupon'))))))))))))))))))))))))
+<span class="lineno"> 3857 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlAveragingMultipleResetsPricer&quot;
+<span class="lineno"> 3858 </span>  averagingMultipleResetsPricer'_ :: ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CFloatingRateCouponPricer'))))
 <span class="lineno"> 3859 </span>
-<span class="lineno"> 3860 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlOvernightIndexedCouponFixingDates&quot;
-<span class="lineno"> 3861 </span>  overnightIndexedCouponFixingDatesRaw'_ :: ((C2HSImp.Ptr (COvernightIndexedCoupon')) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CInt)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO ())))))
+<span class="lineno"> 3860 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCompoundingMultipleResetsPricer&quot;
+<span class="lineno"> 3861 </span>  compoundingMultipleResetsPricer'_ :: ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CFloatingRateCouponPricer'))))
 <span class="lineno"> 3862 </span>
-<span class="lineno"> 3863 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlOvernightIndexedCouponIndexFixings&quot;
-<span class="lineno"> 3864 </span>  overnightIndexedCouponIndexFixingsRaw'_ :: ((C2HSImp.Ptr (COvernightIndexedCoupon')) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO ())))))
+<span class="lineno"> 3863 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlOvernightIndexedCoupon&quot;
+<span class="lineno"> 3864 </span>  overnightIndexedCoupon'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (COvernightIndex')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (COvernightIndexedCoupon'))))))))))))))))))))))))
 <span class="lineno"> 3865 </span>
-<span class="lineno"> 3866 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCappedFlooredOvernightIndexedCoupon&quot;
-<span class="lineno"> 3867 </span>  cappedFlooredOvernightIndexedCoupon'_ :: ((C2HSImp.Ptr (COvernightIndexedCoupon')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CFloatingRateCoupon')))))))))
+<span class="lineno"> 3866 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlOvernightIndexedCouponFixingDates&quot;
+<span class="lineno"> 3867 </span>  overnightIndexedCouponFixingDatesRaw'_ :: ((C2HSImp.Ptr (COvernightIndexedCoupon')) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CInt)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO ())))))
 <span class="lineno"> 3868 </span>
-<span class="lineno"> 3869 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCompoundingOvernightIndexedCouponPricer&quot;
-<span class="lineno"> 3870 </span>  compoundingOvernightIndexedCouponPricer'_ :: ((C2HSImp.Ptr (COptionletVolatilityStructure')) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CFloatingRateCouponPricer'))))))
+<span class="lineno"> 3869 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlOvernightIndexedCouponIndexFixings&quot;
+<span class="lineno"> 3870 </span>  overnightIndexedCouponIndexFixingsRaw'_ :: ((C2HSImp.Ptr (COvernightIndexedCoupon')) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO ())))))
 <span class="lineno"> 3871 </span>
-<span class="lineno"> 3872 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlArithmeticAveragedOvernightIndexedCouponPricer&quot;
-<span class="lineno"> 3873 </span>  arithmeticAveragedOvernightIndexedCouponPricer'_ :: (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (COptionletVolatilityStructure')) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CFloatingRateCouponPricer')))))))))
+<span class="lineno"> 3872 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCappedFlooredOvernightIndexedCoupon&quot;
+<span class="lineno"> 3873 </span>  cappedFlooredOvernightIndexedCoupon'_ :: ((C2HSImp.Ptr (COvernightIndexedCoupon')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CFloatingRateCoupon')))))))))
 <span class="lineno"> 3874 </span>
-<span class="lineno"> 3875 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlBlackCompoundingOvernightIndexedCouponPricer&quot;
-<span class="lineno"> 3876 </span>  blackCompoundingOvernightIndexedCouponPricer'_ :: ((C2HSImp.Ptr (COptionletVolatilityStructure')) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CFloatingRateCouponPricer'))))))
+<span class="lineno"> 3875 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCompoundingOvernightIndexedCouponPricer&quot;
+<span class="lineno"> 3876 </span>  compoundingOvernightIndexedCouponPricer'_ :: ((C2HSImp.Ptr (COptionletVolatilityStructure')) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CFloatingRateCouponPricer'))))))
 <span class="lineno"> 3877 </span>
-<span class="lineno"> 3878 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlBlackAveragingOvernightIndexedCouponPricer&quot;
-<span class="lineno"> 3879 </span>  blackAveragingOvernightIndexedCouponPricer'_ :: ((C2HSImp.Ptr (COptionletVolatilityStructure')) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CFloatingRateCouponPricer'))))))
+<span class="lineno"> 3878 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlArithmeticAveragedOvernightIndexedCouponPricer&quot;
+<span class="lineno"> 3879 </span>  arithmeticAveragedOvernightIndexedCouponPricer'_ :: (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (COptionletVolatilityStructure')) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CFloatingRateCouponPricer')))))))))
 <span class="lineno"> 3880 </span>
-<span class="lineno"> 3881 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCPICoupon&quot;
-<span class="lineno"> 3882 </span>  cpiCoupon'_ :: (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CZeroInflationIndex')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CCPICoupon'))))))))))))))))))
+<span class="lineno"> 3881 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlBlackCompoundingOvernightIndexedCouponPricer&quot;
+<span class="lineno"> 3882 </span>  blackCompoundingOvernightIndexedCouponPricer'_ :: ((C2HSImp.Ptr (COptionletVolatilityStructure')) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CFloatingRateCouponPricer'))))))
 <span class="lineno"> 3883 </span>
-<span class="lineno"> 3884 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCPICouponFromBaseDate&quot;
-<span class="lineno"> 3885 </span>  cpiCouponFromBaseDate'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CZeroInflationIndex')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CCPICoupon'))))))))))))))))))
+<span class="lineno"> 3884 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlBlackAveragingOvernightIndexedCouponPricer&quot;
+<span class="lineno"> 3885 </span>  blackAveragingOvernightIndexedCouponPricer'_ :: ((C2HSImp.Ptr (COptionletVolatilityStructure')) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CFloatingRateCouponPricer'))))))
 <span class="lineno"> 3886 </span>
-<span class="lineno"> 3887 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCPICouponWithBaseDate&quot;
-<span class="lineno"> 3888 </span>  cpiCouponWithBaseDate'_ :: (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CZeroInflationIndex')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CCPICoupon')))))))))))))))))))
+<span class="lineno"> 3887 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCPICoupon&quot;
+<span class="lineno"> 3888 </span>  cpiCoupon'_ :: (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CZeroInflationIndex')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CCPICoupon'))))))))))))))))))
 <span class="lineno"> 3889 </span>
-<span class="lineno"> 3890 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCPICouponPricer&quot;
-<span class="lineno"> 3891 </span>  cpiCouponPricer'_ :: ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CCPICouponPricer)))))
+<span class="lineno"> 3890 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCPICouponFromBaseDate&quot;
+<span class="lineno"> 3891 </span>  cpiCouponFromBaseDate'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CZeroInflationIndex')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CCPICoupon'))))))))))))))))))
 <span class="lineno"> 3892 </span>
-<span class="lineno"> 3893 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCPICouponPricerWithVol&quot;
-<span class="lineno"> 3894 </span>  cpiCouponPricerWithVol'_ :: ((C2HSImp.Ptr (CCPIVolatilitySurface')) -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CCPICouponPricer))))))
+<span class="lineno"> 3893 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCPICouponWithBaseDate&quot;
+<span class="lineno"> 3894 </span>  cpiCouponWithBaseDate'_ :: (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CZeroInflationIndex')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CCPICoupon')))))))))))))))))))
 <span class="lineno"> 3895 </span>
-<span class="lineno"> 3896 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCPICouponSetPricer&quot;
-<span class="lineno"> 3897 </span>  setCpiCouponPricer'_ :: ((C2HSImp.Ptr (CCPICoupon')) -&gt; ((C2HSImp.Ptr (CCPICouponPricer)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO ()))))
+<span class="lineno"> 3896 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCPICouponPricer&quot;
+<span class="lineno"> 3897 </span>  cpiCouponPricer'_ :: ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CCPICouponPricer)))))
 <span class="lineno"> 3898 </span>
-<span class="lineno"> 3899 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCPICouponIndexRatio&quot;
-<span class="lineno"> 3900 </span>  indexRatio'_ :: ((C2HSImp.Ptr (CCPICoupon')) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble))))
+<span class="lineno"> 3899 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCPICouponPricerWithVol&quot;
+<span class="lineno"> 3900 </span>  cpiCouponPricerWithVol'_ :: ((C2HSImp.Ptr (CCPIVolatilitySurface')) -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CCPICouponPricer))))))
 <span class="lineno"> 3901 </span>
-<span class="lineno"> 3902 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlRedemption&quot;
-<span class="lineno"> 3903 </span>  redemption'_ :: (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CCashFlow'))))))
+<span class="lineno"> 3902 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCPICouponSetPricer&quot;
+<span class="lineno"> 3903 </span>  setCpiCouponPricer'_ :: ((C2HSImp.Ptr (CCPICoupon')) -&gt; ((C2HSImp.Ptr (CCPICouponPricer)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO ()))))
 <span class="lineno"> 3904 </span>
-<span class="lineno"> 3905 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlAmortizingPayment&quot;
-<span class="lineno"> 3906 </span>  amortizingPayment'_ :: (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CCashFlow'))))))
+<span class="lineno"> 3905 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCPICouponIndexRatio&quot;
+<span class="lineno"> 3906 </span>  indexRatio'_ :: ((C2HSImp.Ptr (CCPICoupon')) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble))))
 <span class="lineno"> 3907 </span>
-<span class="lineno"> 3908 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCashFlowLeg&quot;
-<span class="lineno"> 3909 </span>  cashFlowLeg'_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr (CCashFlow'))) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CLeg'))))))
+<span class="lineno"> 3908 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlRedemption&quot;
+<span class="lineno"> 3909 </span>  redemption'_ :: (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CCashFlow'))))))
 <span class="lineno"> 3910 </span>
-<span class="lineno"> 3911 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlLegStartDate&quot;
-<span class="lineno"> 3912 </span>  startDate'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CInt)))
+<span class="lineno"> 3911 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlAmortizingPayment&quot;
+<span class="lineno"> 3912 </span>  amortizingPayment'_ :: (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CCashFlow'))))))
 <span class="lineno"> 3913 </span>
-<span class="lineno"> 3914 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlNextCashFlows&quot;
-<span class="lineno"> 3915 </span>  nextCashFlows'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CLeg')))))))
+<span class="lineno"> 3914 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCashFlowLeg&quot;
+<span class="lineno"> 3915 </span>  cashFlowLeg'_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr (CCashFlow'))) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CLeg'))))))
 <span class="lineno"> 3916 </span>
-<span class="lineno"> 3917 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlPreviousCashFlows&quot;
-<span class="lineno"> 3918 </span>  previousCashFlows'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CLeg')))))))
+<span class="lineno"> 3917 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlLegStartDate&quot;
+<span class="lineno"> 3918 </span>  startDate'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CInt)))
 <span class="lineno"> 3919 </span>
-<span class="lineno"> 3920 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlLegCashFlows&quot;
-<span class="lineno"> 3921 </span>  qlLegCashFlows'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CInt)) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CInt)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO ())))))))))))
+<span class="lineno"> 3920 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlNextCashFlows&quot;
+<span class="lineno"> 3921 </span>  nextCashFlows'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CLeg')))))))
 <span class="lineno"> 3922 </span>
-<span class="lineno"> 3923 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCashFlowsDuration&quot;
-<span class="lineno"> 3924 </span>  duration'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; ((C2HSImp.Ptr (CInterestRate)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble))))))))
+<span class="lineno"> 3923 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlPreviousCashFlows&quot;
+<span class="lineno"> 3924 </span>  previousCashFlows'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CLeg')))))))
 <span class="lineno"> 3925 </span>
-<span class="lineno"> 3926 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCashFlowsAccrualDays&quot;
-<span class="lineno"> 3927 </span>  accrualDays'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CInt)))))
+<span class="lineno"> 3926 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlLegCashFlows&quot;
+<span class="lineno"> 3927 </span>  qlLegCashFlows'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CInt)) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CInt)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO ())))))))))))
 <span class="lineno"> 3928 </span>
-<span class="lineno"> 3929 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCashFlowsAccrualEndDate&quot;
-<span class="lineno"> 3930 </span>  accrualEndDate'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CInt)))))
+<span class="lineno"> 3929 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCashFlowsDuration&quot;
+<span class="lineno"> 3930 </span>  duration'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; ((C2HSImp.Ptr (CInterestRate)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble))))))))
 <span class="lineno"> 3931 </span>
-<span class="lineno"> 3932 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCashFlowsAccrualPeriod&quot;
-<span class="lineno"> 3933 </span>  accrualPeriod'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))))
+<span class="lineno"> 3932 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCashFlowsAccrualDays&quot;
+<span class="lineno"> 3933 </span>  accrualDays'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CInt)))))
 <span class="lineno"> 3934 </span>
-<span class="lineno"> 3935 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCashFlowsAccrualStartDate&quot;
-<span class="lineno"> 3936 </span>  accrualStartDate'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CInt)))))
+<span class="lineno"> 3935 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCashFlowsAccrualEndDate&quot;
+<span class="lineno"> 3936 </span>  accrualEndDate'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CInt)))))
 <span class="lineno"> 3937 </span>
-<span class="lineno"> 3938 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCashFlowsAccruedAmount&quot;
-<span class="lineno"> 3939 </span>  accruedAmount'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))))
+<span class="lineno"> 3938 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCashFlowsAccrualPeriod&quot;
+<span class="lineno"> 3939 </span>  accrualPeriod'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))))
 <span class="lineno"> 3940 </span>
-<span class="lineno"> 3941 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCashFlowsAccruedDays&quot;
-<span class="lineno"> 3942 </span>  accruedDays'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CInt)))))
+<span class="lineno"> 3941 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCashFlowsAccrualStartDate&quot;
+<span class="lineno"> 3942 </span>  accrualStartDate'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CInt)))))
 <span class="lineno"> 3943 </span>
-<span class="lineno"> 3944 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCashFlowsAccruedPeriod&quot;
-<span class="lineno"> 3945 </span>  accruedPeriod'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))))
+<span class="lineno"> 3944 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCashFlowsAccruedAmount&quot;
+<span class="lineno"> 3945 </span>  accruedAmount'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))))
 <span class="lineno"> 3946 </span>
-<span class="lineno"> 3947 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCashFlowsBasisPointValue&quot;
-<span class="lineno"> 3948 </span>  basisPointValue'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; ((C2HSImp.Ptr (CInterestRate)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))))))
+<span class="lineno"> 3947 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCashFlowsAccruedDays&quot;
+<span class="lineno"> 3948 </span>  accruedDays'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CInt)))))
 <span class="lineno"> 3949 </span>
-<span class="lineno"> 3950 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCashFlowsBps1&quot;
-<span class="lineno"> 3951 </span>  bpsFromYieldRaw'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; ((C2HSImp.Ptr (CInterestRate)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))))))
+<span class="lineno"> 3950 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCashFlowsAccruedPeriod&quot;
+<span class="lineno"> 3951 </span>  accruedPeriod'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))))
 <span class="lineno"> 3952 </span>
-<span class="lineno"> 3953 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCashFlowsConvexity&quot;
-<span class="lineno"> 3954 </span>  convexity'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; ((C2HSImp.Ptr (CInterestRate)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))))))
+<span class="lineno"> 3953 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCashFlowsBasisPointValue&quot;
+<span class="lineno"> 3954 </span>  basisPointValue'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; ((C2HSImp.Ptr (CInterestRate)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))))))
 <span class="lineno"> 3955 </span>
-<span class="lineno"> 3956 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCashFlowsIsExpired&quot;
-<span class="lineno"> 3957 </span>  isExpired'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CInt)))))
+<span class="lineno"> 3956 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCashFlowsBps1&quot;
+<span class="lineno"> 3957 </span>  bpsFromYieldRaw'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; ((C2HSImp.Ptr (CInterestRate)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))))))
 <span class="lineno"> 3958 </span>
-<span class="lineno"> 3959 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCashFlowsMaturityDate&quot;
-<span class="lineno"> 3960 </span>  maturityDate'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CInt)))
+<span class="lineno"> 3959 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCashFlowsConvexity&quot;
+<span class="lineno"> 3960 </span>  convexity'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; ((C2HSImp.Ptr (CInterestRate)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))))))
 <span class="lineno"> 3961 </span>
-<span class="lineno"> 3962 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCashFlowsNextCashFlowAmount&quot;
-<span class="lineno"> 3963 </span>  nextCashFlowAmount'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))))
+<span class="lineno"> 3962 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCashFlowsIsExpired&quot;
+<span class="lineno"> 3963 </span>  isExpired'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CInt)))))
 <span class="lineno"> 3964 </span>
-<span class="lineno"> 3965 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCashFlowsNextCashFlowDate&quot;
-<span class="lineno"> 3966 </span>  nextCashFlowDate'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CInt)))))
+<span class="lineno"> 3965 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCashFlowsMaturityDate&quot;
+<span class="lineno"> 3966 </span>  maturityDate'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CInt)))
 <span class="lineno"> 3967 </span>
-<span class="lineno"> 3968 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCashFlowsNextCouponRate&quot;
-<span class="lineno"> 3969 </span>  nextCouponRate'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))))
+<span class="lineno"> 3968 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCashFlowsNextCashFlowAmount&quot;
+<span class="lineno"> 3969 </span>  nextCashFlowAmount'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))))
 <span class="lineno"> 3970 </span>
-<span class="lineno"> 3971 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCashFlowsNominal&quot;
-<span class="lineno"> 3972 </span>  nominal'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))))
+<span class="lineno"> 3971 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCashFlowsNextCashFlowDate&quot;
+<span class="lineno"> 3972 </span>  nextCashFlowDate'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CInt)))))
 <span class="lineno"> 3973 </span>
-<span class="lineno"> 3974 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCashFlowsNpv1&quot;
-<span class="lineno"> 3975 </span>  npvFromYieldRaw'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; ((C2HSImp.Ptr (CInterestRate)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))))))
+<span class="lineno"> 3974 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCashFlowsNextCouponRate&quot;
+<span class="lineno"> 3975 </span>  nextCouponRate'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))))
 <span class="lineno"> 3976 </span>
-<span class="lineno"> 3977 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCashFlowsAtmRate&quot;
-<span class="lineno"> 3978 </span>  atmRate'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble))))))))
+<span class="lineno"> 3977 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCashFlowsNominal&quot;
+<span class="lineno"> 3978 </span>  nominal'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))))
 <span class="lineno"> 3979 </span>
-<span class="lineno"> 3980 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCashFlowsBps&quot;
-<span class="lineno"> 3981 </span>  bpsFromCurveRaw'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))))))
+<span class="lineno"> 3980 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCashFlowsNpv1&quot;
+<span class="lineno"> 3981 </span>  npvFromYieldRaw'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; ((C2HSImp.Ptr (CInterestRate)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))))))
 <span class="lineno"> 3982 </span>
-<span class="lineno"> 3983 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCashFlowsNpv3&quot;
-<span class="lineno"> 3984 </span>  npvWithZSpreadRaw'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble))))))))))
+<span class="lineno"> 3983 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCashFlowsAtmRate&quot;
+<span class="lineno"> 3984 </span>  atmRate'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble))))))))
 <span class="lineno"> 3985 </span>
-<span class="lineno"> 3986 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCashFlowsNpv&quot;
-<span class="lineno"> 3987 </span>  npvFromCurveRaw'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))))))
+<span class="lineno"> 3986 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCashFlowsBps&quot;
+<span class="lineno"> 3987 </span>  bpsFromCurveRaw'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))))))
 <span class="lineno"> 3988 </span>
-<span class="lineno"> 3989 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCashFlowsNpvbps&quot;
-<span class="lineno"> 3990 </span>  npvBps'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO ())))))))))
+<span class="lineno"> 3989 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCashFlowsNpv3&quot;
+<span class="lineno"> 3990 </span>  npvWithZSpreadRaw'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble))))))))))
 <span class="lineno"> 3991 </span>
-<span class="lineno"> 3992 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCashFlowsZSpread&quot;
-<span class="lineno"> 3993 </span>  zSpread'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))))))))))))
+<span class="lineno"> 3992 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCashFlowsNpv&quot;
+<span class="lineno"> 3993 </span>  npvFromCurveRaw'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))))))
 <span class="lineno"> 3994 </span>
-<span class="lineno"> 3995 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCashFlowsPreviousCashFlowAmount&quot;
-<span class="lineno"> 3996 </span>  previousCashFlowAmount'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))))
+<span class="lineno"> 3995 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCashFlowsNpvbps&quot;
+<span class="lineno"> 3996 </span>  npvBps'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO ())))))))))
 <span class="lineno"> 3997 </span>
-<span class="lineno"> 3998 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCashFlowsPreviousCashFlowDate&quot;
-<span class="lineno"> 3999 </span>  previousCashFlowDate'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CInt)))))
+<span class="lineno"> 3998 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCashFlowsZSpread&quot;
+<span class="lineno"> 3999 </span>  zSpread'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))))))))))))
 <span class="lineno"> 4000 </span>
-<span class="lineno"> 4001 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCashFlowsPreviousCouponRate&quot;
-<span class="lineno"> 4002 </span>  previousCouponRate'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))))
+<span class="lineno"> 4001 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCashFlowsPreviousCashFlowAmount&quot;
+<span class="lineno"> 4002 </span>  previousCashFlowAmount'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))))
 <span class="lineno"> 4003 </span>
-<span class="lineno"> 4004 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCashFlowsReferencePeriodEnd&quot;
-<span class="lineno"> 4005 </span>  referencePeriodEnd'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CInt)))))
+<span class="lineno"> 4004 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCashFlowsPreviousCashFlowDate&quot;
+<span class="lineno"> 4005 </span>  previousCashFlowDate'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CInt)))))
 <span class="lineno"> 4006 </span>
-<span class="lineno"> 4007 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCashFlowsReferencePeriodStart&quot;
-<span class="lineno"> 4008 </span>  referencePeriodStart'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CInt)))))
+<span class="lineno"> 4007 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCashFlowsPreviousCouponRate&quot;
+<span class="lineno"> 4008 </span>  previousCouponRate'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))))
 <span class="lineno"> 4009 </span>
-<span class="lineno"> 4010 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCashFlowsYield&quot;
-<span class="lineno"> 4011 </span>  yield'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))))))))))))
+<span class="lineno"> 4010 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCashFlowsReferencePeriodEnd&quot;
+<span class="lineno"> 4011 </span>  referencePeriodEnd'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CInt)))))
 <span class="lineno"> 4012 </span>
-<span class="lineno"> 4013 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCashFlowsYieldValueBasisPoint&quot;
-<span class="lineno"> 4014 </span>  yieldValueBasisPoint'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; ((C2HSImp.Ptr (CInterestRate)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))))))
+<span class="lineno"> 4013 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCashFlowsReferencePeriodStart&quot;
+<span class="lineno"> 4014 </span>  referencePeriodStart'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CInt)))))
 <span class="lineno"> 4015 </span>
-<span class="lineno"> 4016 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCouponAccrualStartDates&quot;
-<span class="lineno"> 4017 </span>  couponAccrualStartDates'_ :: ((C2HSImp.Ptr (CCouponLeg')) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CInt)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO ())))))
+<span class="lineno"> 4016 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCashFlowsYield&quot;
+<span class="lineno"> 4017 </span>  yield'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))))))))))))
 <span class="lineno"> 4018 </span>
-<span class="lineno"> 4019 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlFixedDividend&quot;
-<span class="lineno"> 4020 </span>  fixedDividend'_ :: (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CDividend))))))
+<span class="lineno"> 4019 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCashFlowsYieldValueBasisPoint&quot;
+<span class="lineno"> 4020 </span>  yieldValueBasisPoint'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; ((C2HSImp.Ptr (CInterestRate)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))))))
 <span class="lineno"> 4021 </span>
-<span class="lineno"> 4022 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlFractionalDividend1&quot;
-<span class="lineno"> 4023 </span>  fractionalDividendWithNominal'_ :: (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CDividend)))))))
+<span class="lineno"> 4022 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCouponAccrualStartDates&quot;
+<span class="lineno"> 4023 </span>  couponAccrualStartDates'_ :: ((C2HSImp.Ptr (CCouponLeg')) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CInt)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO ())))))
 <span class="lineno"> 4024 </span>
-<span class="lineno"> 4025 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlFractionalDividend&quot;
-<span class="lineno"> 4026 </span>  fractionalDividend'_ :: (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CDividend))))))
+<span class="lineno"> 4025 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlFixedDividend&quot;
+<span class="lineno"> 4026 </span>  fixedDividend'_ :: (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CDividend))))))
 <span class="lineno"> 4027 </span>
-<span class="lineno"> 4028 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlAverageBMALeg&quot;
-<span class="lineno"> 4029 </span>  averageBmaLeg'_ :: ((C2HSImp.Ptr (CSchedule)) -&gt; ((C2HSImp.Ptr (CBMAIndex')) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CLeg'))))))))))))))
+<span class="lineno"> 4028 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlFractionalDividend1&quot;
+<span class="lineno"> 4029 </span>  fractionalDividendWithNominal'_ :: (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CDividend)))))))
 <span class="lineno"> 4030 </span>
-<span class="lineno"> 4031 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlFixedRateLeg&quot;
-<span class="lineno"> 4032 </span>  fixedRateLeg_'_ :: ((C2HSImp.Ptr (CSchedule)) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr (CInterestRate))) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; ((C2HSImp.Ptr (CCalendar)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CLeg'))))))))))))
+<span class="lineno"> 4031 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlFractionalDividend&quot;
+<span class="lineno"> 4032 </span>  fractionalDividend'_ :: (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CDividend))))))
 <span class="lineno"> 4033 </span>
-<span class="lineno"> 4034 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlIborLeg&quot;
-<span class="lineno"> 4035 </span>  iborLeg_'_ :: ((C2HSImp.Ptr (CSchedule)) -&gt; ((C2HSImp.Ptr (CIborIndex')) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CCalendar)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CCalendar)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CLeg')))))))))))))))))))))))))))))))
+<span class="lineno"> 4034 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlAverageBMALeg&quot;
+<span class="lineno"> 4035 </span>  averageBmaLeg'_ :: ((C2HSImp.Ptr (CSchedule)) -&gt; ((C2HSImp.Ptr (CBMAIndex')) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CLeg'))))))))))))))
 <span class="lineno"> 4036 </span>
-<span class="lineno"> 4037 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCmsLeg&quot;
-<span class="lineno"> 4038 </span>  cmsLeg_'_ :: ((C2HSImp.Ptr (CSchedule)) -&gt; ((C2HSImp.Ptr (CSwapIndex')) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CCalendar)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CLeg'))))))))))))))))))))))))))))
+<span class="lineno"> 4037 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlFixedRateLeg&quot;
+<span class="lineno"> 4038 </span>  fixedRateLeg_'_ :: ((C2HSImp.Ptr (CSchedule)) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr (CInterestRate))) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; ((C2HSImp.Ptr (CCalendar)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CLeg'))))))))))))
 <span class="lineno"> 4039 </span>
-<span class="lineno"> 4040 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlOvernightLeg&quot;
-<span class="lineno"> 4041 </span>  overnightLeg'_ :: ((C2HSImp.Ptr (CSchedule)) -&gt; ((C2HSImp.Ptr (COvernightIndex')) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CLeg'))))))))))))))
+<span class="lineno"> 4040 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlIborLeg&quot;
+<span class="lineno"> 4041 </span>  iborLeg_'_ :: ((C2HSImp.Ptr (CSchedule)) -&gt; ((C2HSImp.Ptr (CIborIndex')) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CCalendar)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CCalendar)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CLeg')))))))))))))))))))))))))))))))
 <span class="lineno"> 4042 </span>
-<span class="lineno"> 4043 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlRangeAccrualLeg&quot;
-<span class="lineno"> 4044 </span>  rangeAccrualLeg'_ :: ((C2HSImp.Ptr (CSchedule)) -&gt; ((C2HSImp.Ptr (CIborIndex')) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CLeg')))))))))))))))))))))))
+<span class="lineno"> 4043 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCmsLeg&quot;
+<span class="lineno"> 4044 </span>  cmsLeg_'_ :: ((C2HSImp.Ptr (CSchedule)) -&gt; ((C2HSImp.Ptr (CSwapIndex')) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CCalendar)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CLeg'))))))))))))))))))))))))))))
 <span class="lineno"> 4045 </span>
-<span class="lineno"> 4046 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCPILeg&quot;
-<span class="lineno"> 4047 </span>  cpiLeg'_ :: ((C2HSImp.Ptr (CSchedule)) -&gt; ((C2HSImp.Ptr (CZeroInflationIndex')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CCalendar)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CLeg'))))))))))))))))))
+<span class="lineno"> 4046 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlOvernightLeg&quot;
+<span class="lineno"> 4047 </span>  overnightLeg'_ :: ((C2HSImp.Ptr (CSchedule)) -&gt; ((C2HSImp.Ptr (COvernightIndex')) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CLeg'))))))))))))))
 <span class="lineno"> 4048 </span>
-<span class="lineno"> 4049 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlYoYInflationLeg&quot;
-<span class="lineno"> 4050 </span>  yoyInflationLeg'_ :: ((C2HSImp.Ptr (CSchedule)) -&gt; ((C2HSImp.Ptr (CCalendar)) -&gt; ((C2HSImp.Ptr (CYoYInflationIndex')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CLeg'))))))))))))))))))))))))
+<span class="lineno"> 4049 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlRangeAccrualLeg&quot;
+<span class="lineno"> 4050 </span>  rangeAccrualLeg'_ :: ((C2HSImp.Ptr (CSchedule)) -&gt; ((C2HSImp.Ptr (CIborIndex')) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CLeg')))))))))))))))))))))))
 <span class="lineno"> 4051 </span>
-<span class="lineno"> 4052 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlZeroInflationCashFlow&quot;
-<span class="lineno"> 4053 </span>  zeroInflationCashFlow'_ :: (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (CZeroInflationIndex')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CZeroInflationCashFlow')))))))))))))
+<span class="lineno"> 4052 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCPILeg&quot;
+<span class="lineno"> 4053 </span>  cpiLeg'_ :: ((C2HSImp.Ptr (CSchedule)) -&gt; ((C2HSImp.Ptr (CZeroInflationIndex')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CCalendar)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CLeg'))))))))))))))))))
 <span class="lineno"> 4054 </span>
-<span class="lineno"> 4055 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCPICashFlow&quot;
-<span class="lineno"> 4056 </span>  cpiCashFlow'_ :: (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (CZeroInflationIndex')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CCPICashFlow'))))))))))))))
+<span class="lineno"> 4055 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlYoYInflationLeg&quot;
+<span class="lineno"> 4056 </span>  yoyInflationLeg'_ :: ((C2HSImp.Ptr (CSchedule)) -&gt; ((C2HSImp.Ptr (CCalendar)) -&gt; ((C2HSImp.Ptr (CYoYInflationIndex')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CLeg'))))))))))))))))))))))))
 <span class="lineno"> 4057 </span>
-<span class="lineno"> 4058 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlEquityCashFlow&quot;
-<span class="lineno"> 4059 </span>  equityCashFlow'_ :: (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (CEquityIndex')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CEquityCashFlow'))))))))))
+<span class="lineno"> 4058 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlZeroInflationCashFlow&quot;
+<span class="lineno"> 4059 </span>  zeroInflationCashFlow'_ :: (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (CZeroInflationIndex')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CZeroInflationCashFlow')))))))))))))
 <span class="lineno"> 4060 </span>
-<span class="lineno"> 4061 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlEquityCashFlowSetPricer&quot;
-<span class="lineno"> 4062 </span>  setEquityCashFlowPricer'_ :: ((C2HSImp.Ptr (CEquityCashFlow')) -&gt; ((C2HSImp.Ptr (CEquityCashFlowPricer)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO ()))))
+<span class="lineno"> 4061 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCPICashFlow&quot;
+<span class="lineno"> 4062 </span>  cpiCashFlow'_ :: (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (CZeroInflationIndex')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CCPICashFlow'))))))))))))))
 <span class="lineno"> 4063 </span>
-<span class="lineno"> 4064 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlEquityQuantoCashFlowPricer&quot;
-<span class="lineno"> 4065 </span>  equityQuantoCashFlowPricer'_ :: ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; ((C2HSImp.Ptr (CBlackVolTermStructure')) -&gt; ((C2HSImp.Ptr (CBlackVolTermStructure')) -&gt; ((C2HSImp.Ptr (CQuote')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CEquityCashFlowPricer))))))))
+<span class="lineno"> 4064 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlEquityCashFlow&quot;
+<span class="lineno"> 4065 </span>  equityCashFlow'_ :: (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (CEquityIndex')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CEquityCashFlow'))))))))))
 <span class="lineno"> 4066 </span>
-<span class="lineno"> 4067 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlQuantLibSetEquityCashFlowPricer&quot;
-<span class="lineno"> 4068 </span>  setEquityLegPricer'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; ((C2HSImp.Ptr (CEquityCashFlowPricer)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO ()))))
+<span class="lineno"> 4067 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlEquityCashFlowSetPricer&quot;
+<span class="lineno"> 4068 </span>  setEquityCashFlowPricer'_ :: ((C2HSImp.Ptr (CEquityCashFlow')) -&gt; ((C2HSImp.Ptr (CEquityCashFlowPricer)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO ()))))
 <span class="lineno"> 4069 </span>
-<span class="lineno"> 4070 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlLegToCouponLeg&quot;
-<span class="lineno"> 4071 </span>  toCouponLeg'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CCouponLeg')))))
+<span class="lineno"> 4070 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlEquityQuantoCashFlowPricer&quot;
+<span class="lineno"> 4071 </span>  equityQuantoCashFlowPricer'_ :: ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; ((C2HSImp.Ptr (CBlackVolTermStructure')) -&gt; ((C2HSImp.Ptr (CBlackVolTermStructure')) -&gt; ((C2HSImp.Ptr (CQuote')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CEquityCashFlowPricer))))))))
 <span class="lineno"> 4072 </span>
-<span class="lineno"> 4073 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCouponLegCoupons&quot;
-<span class="lineno"> 4074 </span>  coupons'_ :: ((C2HSImp.Ptr (CCouponLeg')) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr (C2HSImp.Ptr (CCoupon')))) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO ())))))
+<span class="lineno"> 4073 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlQuantLibSetEquityCashFlowPricer&quot;
+<span class="lineno"> 4074 </span>  setEquityLegPricer'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; ((C2HSImp.Ptr (CEquityCashFlowPricer)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO ()))))
 <span class="lineno"> 4075 </span>
-<span class="lineno"> 4076 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlBlackIborCouponPricer&quot;
-<span class="lineno"> 4077 </span>  blackIborCouponPricer'_ :: ((C2HSImp.Ptr (COptionletVolatilityStructure')) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CQuote')) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CFloatingRateCouponPricer'))))))))
+<span class="lineno"> 4076 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlLegToCouponLeg&quot;
+<span class="lineno"> 4077 </span>  toCouponLeg'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CCouponLeg')))))
 <span class="lineno"> 4078 </span>
-<span class="lineno"> 4079 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlBlackIborQuantoCouponPricer&quot;
-<span class="lineno"> 4080 </span>  blackIborQuantoCouponPricer'_ :: ((C2HSImp.Ptr (CBlackVolTermStructure')) -&gt; ((C2HSImp.Ptr (CQuote')) -&gt; ((C2HSImp.Ptr (COptionletVolatilityStructure')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CFloatingRateCouponPricer')))))))
+<span class="lineno"> 4079 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCouponLegCoupons&quot;
+<span class="lineno"> 4080 </span>  coupons'_ :: ((C2HSImp.Ptr (CCouponLeg')) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr (C2HSImp.Ptr (CCoupon')))) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO ())))))
 <span class="lineno"> 4081 </span>
-<span class="lineno"> 4082 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlRangeAccrualPricerByBgm&quot;
-<span class="lineno"> 4083 </span>  rangeAccrualPricerByBgm'_ :: (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (CSmileSection)) -&gt; ((C2HSImp.Ptr (CSmileSection)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CFloatingRateCouponPricer')))))))))
+<span class="lineno"> 4082 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlBlackIborCouponPricer&quot;
+<span class="lineno"> 4083 </span>  blackIborCouponPricer'_ :: ((C2HSImp.Ptr (COptionletVolatilityStructure')) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CQuote')) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CFloatingRateCouponPricer'))))))))
 <span class="lineno"> 4084 </span>
-<span class="lineno"> 4085 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlBlackYoYInflationCouponPricer&quot;
-<span class="lineno"> 4086 </span>  blackYoyInflationCouponPricer'_ :: ((C2HSImp.Ptr (CYoYOptionletVolatilitySurface')) -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CYoYInflationCouponPricer))))))
+<span class="lineno"> 4085 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlBlackIborQuantoCouponPricer&quot;
+<span class="lineno"> 4086 </span>  blackIborQuantoCouponPricer'_ :: ((C2HSImp.Ptr (CBlackVolTermStructure')) -&gt; ((C2HSImp.Ptr (CQuote')) -&gt; ((C2HSImp.Ptr (COptionletVolatilityStructure')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CFloatingRateCouponPricer')))))))
 <span class="lineno"> 4087 </span>
-<span class="lineno"> 4088 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlUnitDisplacedBlackYoYInflationCouponPricer&quot;
-<span class="lineno"> 4089 </span>  unitDisplacedBlackYoyInflationCouponPricer'_ :: ((C2HSImp.Ptr (CYoYOptionletVolatilitySurface')) -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CYoYInflationCouponPricer))))))
+<span class="lineno"> 4088 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlRangeAccrualPricerByBgm&quot;
+<span class="lineno"> 4089 </span>  rangeAccrualPricerByBgm'_ :: (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (CSmileSection)) -&gt; ((C2HSImp.Ptr (CSmileSection)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CFloatingRateCouponPricer')))))))))
 <span class="lineno"> 4090 </span>
-<span class="lineno"> 4091 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlBachelierYoYInflationCouponPricer&quot;
-<span class="lineno"> 4092 </span>  bachelierYoyInflationCouponPricer'_ :: ((C2HSImp.Ptr (CYoYOptionletVolatilitySurface')) -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CYoYInflationCouponPricer))))))
+<span class="lineno"> 4091 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlBlackYoYInflationCouponPricer&quot;
+<span class="lineno"> 4092 </span>  blackYoyInflationCouponPricer'_ :: ((C2HSImp.Ptr (CYoYOptionletVolatilitySurface')) -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CYoYInflationCouponPricer))))))
 <span class="lineno"> 4093 </span>
-<span class="lineno"> 4094 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlSetYoYInflationCouponPricer&quot;
-<span class="lineno"> 4095 </span>  setYoyInflationCouponPricer'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; ((C2HSImp.Ptr (CYoYInflationCouponPricer)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO ()))))
+<span class="lineno"> 4094 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlUnitDisplacedBlackYoYInflationCouponPricer&quot;
+<span class="lineno"> 4095 </span>  unitDisplacedBlackYoyInflationCouponPricer'_ :: ((C2HSImp.Ptr (CYoYOptionletVolatilitySurface')) -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CYoYInflationCouponPricer))))))
 <span class="lineno"> 4096 </span>
-<span class="lineno"> 4097 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlQuantLibSetCouponPricer&quot;
-<span class="lineno"> 4098 </span>  setCouponPricer'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; ((C2HSImp.Ptr (CFloatingRateCouponPricer')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO ()))))
+<span class="lineno"> 4097 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlBachelierYoYInflationCouponPricer&quot;
+<span class="lineno"> 4098 </span>  bachelierYoyInflationCouponPricer'_ :: ((C2HSImp.Ptr (CYoYOptionletVolatilitySurface')) -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CYoYInflationCouponPricer))))))
 <span class="lineno"> 4099 </span>
-<span class="lineno"> 4100 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlQuantLibSetCouponPricers&quot;
-<span class="lineno"> 4101 </span>  setCouponPricers'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr (CFloatingRateCouponPricer'))) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO ())))))
+<span class="lineno"> 4100 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlSetYoYInflationCouponPricer&quot;
+<span class="lineno"> 4101 </span>  setYoyInflationCouponPricer'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; ((C2HSImp.Ptr (CYoYInflationCouponPricer)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO ()))))
 <span class="lineno"> 4102 </span>
-<span class="lineno"> 4103 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlFloatingRateCouponPricerSwapletRate&quot;
-<span class="lineno"> 4104 </span>  swapletRate'_ :: ((C2HSImp.Ptr (CFloatingRateCouponPricer')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))
+<span class="lineno"> 4103 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlQuantLibSetCouponPricer&quot;
+<span class="lineno"> 4104 </span>  setCouponPricer'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; ((C2HSImp.Ptr (CFloatingRateCouponPricer')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO ()))))
 <span class="lineno"> 4105 </span>
-<span class="lineno"> 4106 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlFloatingRateCouponPricerSwapletPrice&quot;
-<span class="lineno"> 4107 </span>  swapletPrice'_ :: ((C2HSImp.Ptr (CFloatingRateCouponPricer')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))
+<span class="lineno"> 4106 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlQuantLibSetCouponPricers&quot;
+<span class="lineno"> 4107 </span>  setCouponPricers'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr (CFloatingRateCouponPricer'))) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO ())))))
 <span class="lineno"> 4108 </span>
-<span class="lineno"> 4109 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlFloatingRateCouponPricerCapletPrice&quot;
-<span class="lineno"> 4110 </span>  capletPrice'_ :: ((C2HSImp.Ptr (CFloatingRateCouponPricer')) -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble))))
+<span class="lineno"> 4109 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlFloatingRateCouponPricerSwapletRate&quot;
+<span class="lineno"> 4110 </span>  swapletRate'_ :: ((C2HSImp.Ptr (CFloatingRateCouponPricer')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))
 <span class="lineno"> 4111 </span>
-<span class="lineno"> 4112 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlFloatingRateCouponPricerCapletRate&quot;
-<span class="lineno"> 4113 </span>  capletRate'_ :: ((C2HSImp.Ptr (CFloatingRateCouponPricer')) -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble))))
+<span class="lineno"> 4112 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlFloatingRateCouponPricerSwapletPrice&quot;
+<span class="lineno"> 4113 </span>  swapletPrice'_ :: ((C2HSImp.Ptr (CFloatingRateCouponPricer')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))
 <span class="lineno"> 4114 </span>
-<span class="lineno"> 4115 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlFloatingRateCouponPricerFloorletPrice&quot;
-<span class="lineno"> 4116 </span>  floorletPrice'_ :: ((C2HSImp.Ptr (CFloatingRateCouponPricer')) -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble))))
+<span class="lineno"> 4115 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlFloatingRateCouponPricerCapletPrice&quot;
+<span class="lineno"> 4116 </span>  capletPrice'_ :: ((C2HSImp.Ptr (CFloatingRateCouponPricer')) -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble))))
 <span class="lineno"> 4117 </span>
-<span class="lineno"> 4118 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlFloatingRateCouponPricerFloorletRate&quot;
-<span class="lineno"> 4119 </span>  floorletRate'_ :: ((C2HSImp.Ptr (CFloatingRateCouponPricer')) -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble))))
+<span class="lineno"> 4118 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlFloatingRateCouponPricerCapletRate&quot;
+<span class="lineno"> 4119 </span>  capletRate'_ :: ((C2HSImp.Ptr (CFloatingRateCouponPricer')) -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble))))
 <span class="lineno"> 4120 </span>
-<span class="lineno"> 4121 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCmsCoupon&quot;
-<span class="lineno"> 4122 </span>  cmsCoupon'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (CSwapIndex')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CCmsCoupon'))))))))))))))))))
+<span class="lineno"> 4121 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlFloatingRateCouponPricerFloorletPrice&quot;
+<span class="lineno"> 4122 </span>  floorletPrice'_ :: ((C2HSImp.Ptr (CFloatingRateCouponPricer')) -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble))))
 <span class="lineno"> 4123 </span>
-<span class="lineno"> 4124 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCmsSpreadCoupon&quot;
-<span class="lineno"> 4125 </span>  cmsSpreadCoupon'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (CSwapSpreadIndex')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CFloatingRateCoupon'))))))))))))))))))
+<span class="lineno"> 4124 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlFloatingRateCouponPricerFloorletRate&quot;
+<span class="lineno"> 4125 </span>  floorletRate'_ :: ((C2HSImp.Ptr (CFloatingRateCouponPricer')) -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble))))
 <span class="lineno"> 4126 </span>
-<span class="lineno"> 4127 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCouponRate&quot;
-<span class="lineno"> 4128 </span>  rate'_ :: ((C2HSImp.Ptr (CCoupon')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))
+<span class="lineno"> 4127 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCmsCoupon&quot;
+<span class="lineno"> 4128 </span>  cmsCoupon'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (CSwapIndex')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CCmsCoupon'))))))))))))))))))
 <span class="lineno"> 4129 </span>
-<span class="lineno"> 4130 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCouponAccruedAmount&quot;
-<span class="lineno"> 4131 </span>  couponAccruedAmount'_ :: ((C2HSImp.Ptr (CCoupon')) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble))))
+<span class="lineno"> 4130 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCmsSpreadCoupon&quot;
+<span class="lineno"> 4131 </span>  cmsSpreadCoupon'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (CSwapSpreadIndex')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CFloatingRateCoupon'))))))))))))))))))
 <span class="lineno"> 4132 </span>
-<span class="lineno"> 4133 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlFloatingRateCouponSetPricer&quot;
-<span class="lineno"> 4134 </span>  setFloatingRateCouponPricer'_ :: ((C2HSImp.Ptr (CFloatingRateCoupon')) -&gt; ((C2HSImp.Ptr (CFloatingRateCouponPricer')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO ()))))
+<span class="lineno"> 4133 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCouponRate&quot;
+<span class="lineno"> 4134 </span>  rate'_ :: ((C2HSImp.Ptr (CCoupon')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))
 <span class="lineno"> 4135 </span>
-<span class="lineno"> 4136 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlFloatingRateCouponPrice&quot;
-<span class="lineno"> 4137 </span>  price'_ :: ((C2HSImp.Ptr (CFloatingRateCoupon')) -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble))))
+<span class="lineno"> 4136 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCouponAccruedAmount&quot;
+<span class="lineno"> 4137 </span>  couponAccruedAmount'_ :: ((C2HSImp.Ptr (CCoupon')) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble))))
 <span class="lineno"> 4138 </span>
-<span class="lineno"> 4139 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlFloatingRateCouponConvexityAdjustment&quot;
-<span class="lineno"> 4140 </span>  convexityAdjustment'_ :: ((C2HSImp.Ptr (CFloatingRateCoupon')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))
+<span class="lineno"> 4139 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlFloatingRateCouponSetPricer&quot;
+<span class="lineno"> 4140 </span>  setFloatingRateCouponPricer'_ :: ((C2HSImp.Ptr (CFloatingRateCoupon')) -&gt; ((C2HSImp.Ptr (CFloatingRateCouponPricer')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO ()))))
 <span class="lineno"> 4141 </span>
-<span class="lineno"> 4142 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCappedFlooredCmsCoupon&quot;
-<span class="lineno"> 4143 </span>  cappedFlooredCmsCoupon'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (CSwapIndex')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CFloatingRateCoupon'))))))))))))))))))))
+<span class="lineno"> 4142 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlFloatingRateCouponPrice&quot;
+<span class="lineno"> 4143 </span>  price'_ :: ((C2HSImp.Ptr (CFloatingRateCoupon')) -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble))))
 <span class="lineno"> 4144 </span>
-<span class="lineno"> 4145 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCappedFlooredCmsSpreadCoupon&quot;
-<span class="lineno"> 4146 </span>  cappedFlooredCmsSpreadCoupon'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (CSwapSpreadIndex')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CFloatingRateCoupon'))))))))))))))))))))
+<span class="lineno"> 4145 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlFloatingRateCouponConvexityAdjustment&quot;
+<span class="lineno"> 4146 </span>  convexityAdjustment'_ :: ((C2HSImp.Ptr (CFloatingRateCoupon')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))
 <span class="lineno"> 4147 </span>
-<span class="lineno"> 4148 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCmsSpreadLeg&quot;
-<span class="lineno"> 4149 </span>  cmsSpreadLeg'_ :: ((C2HSImp.Ptr (CSchedule)) -&gt; ((C2HSImp.Ptr (CSwapSpreadIndex')) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CLeg'))))))))))))))))))))))
+<span class="lineno"> 4148 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCappedFlooredCmsCoupon&quot;
+<span class="lineno"> 4149 </span>  cappedFlooredCmsCoupon'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (CSwapIndex')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CFloatingRateCoupon'))))))))))))))))))))
 <span class="lineno"> 4150 </span>
-<span class="lineno"> 4151 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlDigitalReplication&quot;
-<span class="lineno"> 4152 </span>  digitalReplication'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CDigitalReplication))))))
+<span class="lineno"> 4151 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCappedFlooredCmsSpreadCoupon&quot;
+<span class="lineno"> 4152 </span>  cappedFlooredCmsSpreadCoupon'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (CSwapSpreadIndex')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CFloatingRateCoupon'))))))))))))))))))))
 <span class="lineno"> 4153 </span>
-<span class="lineno"> 4154 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlDigitalReplicationType&quot;
-<span class="lineno"> 4155 </span>  replicationType'_ :: ((C2HSImp.Ptr (CDigitalReplication)) -&gt; (IO C2HSImp.CInt))
+<span class="lineno"> 4154 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlCmsSpreadLeg&quot;
+<span class="lineno"> 4155 </span>  cmsSpreadLeg'_ :: ((C2HSImp.Ptr (CSchedule)) -&gt; ((C2HSImp.Ptr (CSwapSpreadIndex')) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CLeg'))))))))))))))))))))))
 <span class="lineno"> 4156 </span>
-<span class="lineno"> 4157 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlDigitalReplicationGap&quot;
-<span class="lineno"> 4158 </span>  gap'_ :: ((C2HSImp.Ptr (CDigitalReplication)) -&gt; (IO C2HSImp.CDouble))
+<span class="lineno"> 4157 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlDigitalReplication&quot;
+<span class="lineno"> 4158 </span>  digitalReplication'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CDigitalReplication))))))
 <span class="lineno"> 4159 </span>
-<span class="lineno"> 4160 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlDigitalCmsCoupon&quot;
-<span class="lineno"> 4161 </span>  digitalCmsCoupon'_ :: ((C2HSImp.Ptr (CCmsCoupon')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (CDigitalReplication)) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CDigitalCmsCoupon')))))))))))))))
+<span class="lineno"> 4160 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlDigitalReplicationType&quot;
+<span class="lineno"> 4161 </span>  replicationType'_ :: ((C2HSImp.Ptr (CDigitalReplication)) -&gt; (IO C2HSImp.CInt))
 <span class="lineno"> 4162 </span>
-<span class="lineno"> 4163 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlDigitalCmsSpreadCoupon&quot;
-<span class="lineno"> 4164 </span>  digitalCmsSpreadCoupon'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (CSwapSpreadIndex')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (CDigitalReplication)) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CDigitalCmsSpreadCoupon'))))))))))))))))))))))))))))
+<span class="lineno"> 4163 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlDigitalReplicationGap&quot;
+<span class="lineno"> 4164 </span>  gap'_ :: ((C2HSImp.Ptr (CDigitalReplication)) -&gt; (IO C2HSImp.CDouble))
 <span class="lineno"> 4165 </span>
-<span class="lineno"> 4166 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlDigitalCmsLeg&quot;
-<span class="lineno"> 4167 </span>  digitalCmsLeg_'_ :: ((C2HSImp.Ptr (CSchedule)) -&gt; ((C2HSImp.Ptr (CSwapIndex')) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (CDigitalReplication)) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CLeg')))))))))))))))))))))))))))))))
+<span class="lineno"> 4166 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlDigitalCmsCoupon&quot;
+<span class="lineno"> 4167 </span>  digitalCmsCoupon'_ :: ((C2HSImp.Ptr (CCmsCoupon')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (CDigitalReplication)) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CDigitalCmsCoupon')))))))))))))))
 <span class="lineno"> 4168 </span>
-<span class="lineno"> 4169 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlDigitalIborLeg&quot;
-<span class="lineno"> 4170 </span>  digitalIborLeg_'_ :: ((C2HSImp.Ptr (CSchedule)) -&gt; ((C2HSImp.Ptr (CIborIndex')) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (CDigitalReplication)) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CLeg')))))))))))))))))))))))))))))))
+<span class="lineno"> 4169 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlDigitalCmsSpreadCoupon&quot;
+<span class="lineno"> 4170 </span>  digitalCmsSpreadCoupon'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (CSwapSpreadIndex')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (CDigitalReplication)) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CDigitalCmsSpreadCoupon'))))))))))))))))))))))))))))
 <span class="lineno"> 4171 </span>
-<span class="lineno"> 4172 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlDigitalCmsSpreadLeg&quot;
-<span class="lineno"> 4173 </span>  digitalCmsSpreadLeg_'_ :: ((C2HSImp.Ptr (CSchedule)) -&gt; ((C2HSImp.Ptr (CSwapSpreadIndex')) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (CDigitalReplication)) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CLeg')))))))))))))))))))))))))))))))
+<span class="lineno"> 4172 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlDigitalCmsLeg&quot;
+<span class="lineno"> 4173 </span>  digitalCmsLeg_'_ :: ((C2HSImp.Ptr (CSchedule)) -&gt; ((C2HSImp.Ptr (CSwapIndex')) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (CDigitalReplication)) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CLeg')))))))))))))))))))))))))))))))
 <span class="lineno"> 4174 </span>
-<span class="lineno"> 4175 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlMultipleResetsLeg&quot;
-<span class="lineno"> 4176 </span>  multipleResetsLeg_'_ :: ((C2HSImp.Ptr (CSchedule)) -&gt; ((C2HSImp.Ptr (CIborIndex')) -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CCalendar)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CCalendar)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CLeg')))))))))))))))))))))))))))
+<span class="lineno"> 4175 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlDigitalIborLeg&quot;
+<span class="lineno"> 4176 </span>  digitalIborLeg_'_ :: ((C2HSImp.Ptr (CSchedule)) -&gt; ((C2HSImp.Ptr (CIborIndex')) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (CDigitalReplication)) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CLeg')))))))))))))))))))))))))))))))
 <span class="lineno"> 4177 </span>
-<span class="lineno"> 4178 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlAnalyticHaganPricer&quot;
-<span class="lineno"> 4179 </span>  analyticHaganPricer'_ :: ((C2HSImp.Ptr (CSwaptionVolatilityStructure')) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CQuote')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CCmsCouponPricer')))))))
+<span class="lineno"> 4178 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlDigitalCmsSpreadLeg&quot;
+<span class="lineno"> 4179 </span>  digitalCmsSpreadLeg_'_ :: ((C2HSImp.Ptr (CSchedule)) -&gt; ((C2HSImp.Ptr (CSwapSpreadIndex')) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (CDigitalReplication)) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CLeg')))))))))))))))))))))))))))))))
 <span class="lineno"> 4180 </span>
-<span class="lineno"> 4181 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlNumericHaganPricer&quot;
-<span class="lineno"> 4182 </span>  numericHaganPricer'_ :: ((C2HSImp.Ptr (CSwaptionVolatilityStructure')) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CQuote')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CCmsCouponPricer')))))))))))
+<span class="lineno"> 4181 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlMultipleResetsLeg&quot;
+<span class="lineno"> 4182 </span>  multipleResetsLeg_'_ :: ((C2HSImp.Ptr (CSchedule)) -&gt; ((C2HSImp.Ptr (CIborIndex')) -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CCalendar)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CCalendar)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CLeg')))))))))))))))))))))))))))
 <span class="lineno"> 4183 </span>
-<span class="lineno"> 4184 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlLinearTsrPricer&quot;
-<span class="lineno"> 4185 </span>  linearTsrPricer_'_ :: ((C2HSImp.Ptr (CSwaptionVolatilityStructure')) -&gt; ((C2HSImp.Ptr (CQuote')) -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CCmsCouponPricer'))))))))))))
+<span class="lineno"> 4184 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlAnalyticHaganPricer&quot;
+<span class="lineno"> 4185 </span>  analyticHaganPricer'_ :: ((C2HSImp.Ptr (CSwaptionVolatilityStructure')) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CQuote')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CCmsCouponPricer')))))))
 <span class="lineno"> 4186 </span>
-<span class="lineno"> 4187 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlLognormalCmsSpreadPricer&quot;
-<span class="lineno"> 4188 </span>  lognormalCmsSpreadPricer_'_ :: ((C2HSImp.Ptr (CCmsCouponPricer')) -&gt; ((C2HSImp.Ptr (CQuote')) -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CFloatingRateCouponPricer'))))))))))))
+<span class="lineno"> 4187 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlNumericHaganPricer&quot;
+<span class="lineno"> 4188 </span>  numericHaganPricer'_ :: ((C2HSImp.Ptr (CSwaptionVolatilityStructure')) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CQuote')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CCmsCouponPricer')))))))))))
 <span class="lineno"> 4189 </span>
-<span class="lineno"> 4190 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlLegFixingDependencies&quot;
-<span class="lineno"> 4191 </span>  qlLegFixingDependencies'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar))) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CInt)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO ())))))))
+<span class="lineno"> 4190 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlLinearTsrPricer&quot;
+<span class="lineno"> 4191 </span>  linearTsrPricer_'_ :: ((C2HSImp.Ptr (CSwaptionVolatilityStructure')) -&gt; ((C2HSImp.Ptr (CQuote')) -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CCmsCouponPricer'))))))))))))
+<span class="lineno"> 4192 </span>
+<span class="lineno"> 4193 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlLognormalCmsSpreadPricer&quot;
+<span class="lineno"> 4194 </span>  lognormalCmsSpreadPricer_'_ :: ((C2HSImp.Ptr (CCmsCouponPricer')) -&gt; ((C2HSImp.Ptr (CQuote')) -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CFloatingRateCouponPricer'))))))))))))
+<span class="lineno"> 4195 </span>
+<span class="lineno"> 4196 </span>foreign import ccall safe &quot;QuantLib/CashFlow.chs.h qlLegFixingDependencies&quot;
+<span class="lineno"> 4197 </span>  qlLegFixingDependencies'_ :: ((C2HSImp.Ptr (CLeg')) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar))) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CInt)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO ())))))))
 
 </pre>
 </body>
