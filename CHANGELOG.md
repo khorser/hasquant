@@ -19,6 +19,12 @@ own lag and interpolation.
 
 Improved robustness of callback execution.
 
+`analyticH1HwEngine` takes an `H1HwMean` (breaking). `FittedExponentialMean` is QuantLib's engine,
+which approximates E[sqrt v] by `a + b exp(-c t)` and returns NaN where that mean is not monotone
+(v0 near theta, for instance v0 0.04, kappa 1.5, theta 0.05, sigma 0.4). `ExactMean n` integrates
+the exact mean on `n` Gauss-Legendre nodes, through a hasquant subclass of QuantLib's
+Heston-Hull-White engine.
+
 ## 0.7.0.0 (2026)
 
 The final broad API-coverage batch adds Haskell callbacks for payoffs, optimization, regression and

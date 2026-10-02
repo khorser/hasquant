@@ -169,7 +169,7 @@ extern "C" {
   QlPricingEngine* qlAnalyticCapFloorEngine(QlAffineModel* model, QlYieldTermStructure* termStructure, QlError **e);
   QlPricingEngine* qlAnalyticGJRGARCHEngine(QlGJRGARCHModel* model, QlError **e);
   QlPricingEngine* qlAnalyticHestonEngine(QlHestonModel* model, double relTolerance, unsigned maxEvaluations, QlError **e);
-  QlPricingEngine* qlAnalyticH1HWEngine(QlHestonModel* model, QlHullWhite* hullWhiteModel, double rhoSr, unsigned integrationOrder, QlError **e);
+  QlPricingEngine* qlAnalyticH1HWEngine(QlHestonModel* model, QlHullWhite* hullWhiteModel, double rhoSr, unsigned integrationOrder, int exactMean, unsigned meanOrder, QlError **e);
   QlPricingEngine* qlAnalyticHestonHullWhiteEngine(QlHestonModel* hestonModel, QlHullWhite* hullWhiteModel, unsigned integrationOrder, QlError **e);
   QlPricingEngine* qlBatesEngine(QlBatesModel* model, unsigned integrationOrder, QlError **e);
   QlPricingEngine* qlFFTVanillaEngine(QlGeneralizedBlackScholesProcess* process, double logStrikeSpacing, QlError **e);
@@ -182,7 +182,7 @@ extern "C" {
   QlPricingEngine* qlAnalyticHestonEngine1(QlHestonModel* model, unsigned integrationOrder, QlError **e);
   int qlAnalyticHestonEngineOptimalControlVariate(double t, double v0, double kappa, double theta, double sigma, double rho);
   QlPricingEngine* qlAnalyticHestonHullWhiteEngine1(QlHestonModel* model, QlHullWhite* hullWhiteModel, double relTolerance, unsigned maxEvaluations, QlError **e);
-  QlPricingEngine* qlAnalyticH1HWEngine1(QlHestonModel* model, QlHullWhite* hullWhiteModel, double rhoSr, double relTolerance, unsigned maxEvaluations, QlError **e);
+  QlPricingEngine* qlAnalyticH1HWEngine1(QlHestonModel* model, QlHullWhite* hullWhiteModel, double rhoSr, double relTolerance, unsigned maxEvaluations, int exactMean, unsigned meanOrder, QlError **e);
   QlPricingEngine* qlBatesEngine1(QlBatesModel* model, double relTolerance, unsigned maxEvaluations, QlError **e);
 
   QlPricingEngine* qlBaroneAdesiWhaleyApproximationEngine(QlGeneralizedBlackScholesProcess* x0, QlError **e);

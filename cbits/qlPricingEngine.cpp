@@ -1,4 +1,5 @@
 #include "qlCheckedFdEngine.h"
+#include "qlExactMeanH1HwEngine.h"
 #include <ql/experimental/callablebonds/blackcallablebondengine.hpp>
 #include <ql/experimental/callablebonds/treecallablebondengine.hpp>
 #include <ql/experimental/swaptions/haganirregularswaptionengine.hpp>
@@ -164,6 +165,7 @@ using namespace QuantLib;
 
 #ifdef QLTRACK_ALLOCATIONS
 QL_TRACE_NAME(SamplePath)
+QL_TRACE_NAME(hasquant::ExactMeanH1HWEngine)
 #endif
 
 namespace {
@@ -704,8 +706,11 @@ QlPricingEngine* qlAnalyticGJRGARCHEngine(QlGJRGARCHModel* model, QlError **e) {
 QlPricingEngine* qlAnalyticHestonEngine(QlHestonModel* model, double relTolerance, unsigned maxEvaluations, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new AnalyticHestonEngine(*arg(model), relTolerance, maxEvaluations))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlAnalyticH1HWEngine(QlHestonModel* model, QlHullWhite* hullWhiteModel, double rhoSr, unsigned integrationOrder, QlError **e) { QlCallScope callbackScope(e);
-  try {return ret(new QlPricingEngine(alloc(new AnalyticH1HWEngine(*arg(model), *arg(hullWhiteModel), rhoSr, integrationOrder))));
+// Without exactMean, QuantLib's engine with its fitted E[sqrt(v)]; with it, the exact mean on meanOrder nodes.
+QlPricingEngine* qlAnalyticH1HWEngine(QlHestonModel* model, QlHullWhite* hullWhiteModel, double rhoSr, unsigned integrationOrder, int exactMean, unsigned meanOrder, QlError **e) { QlCallScope callbackScope(e);
+  try {return !exactMean
+      ? ret(new QlPricingEngine(alloc(new AnalyticH1HWEngine(*arg(model), *arg(hullWhiteModel), rhoSr, integrationOrder))))
+      : ret(new QlPricingEngine(alloc(new hasquant::ExactMeanH1HWEngine(*arg(model), *arg(hullWhiteModel), rhoSr, integrationOrder, meanOrder))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
 QlPricingEngine* qlAnalyticHestonHullWhiteEngine(QlHestonModel* hestonModel, QlHullWhite* hullWhiteModel, unsigned integrationOrder, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new AnalyticHestonHullWhiteEngine(*arg(hestonModel), *arg(hullWhiteModel), integrationOrder))));
@@ -743,8 +748,10 @@ int qlAnalyticHestonEngineOptimalControlVariate(double t, double v0, double kapp
 QlPricingEngine* qlAnalyticHestonHullWhiteEngine1(QlHestonModel* model, QlHullWhite* hullWhiteModel, double relTolerance, unsigned maxEvaluations, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new AnalyticHestonHullWhiteEngine(*arg(model), *arg(hullWhiteModel), relTolerance, maxEvaluations))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-QlPricingEngine* qlAnalyticH1HWEngine1(QlHestonModel* model, QlHullWhite* hullWhiteModel, double rhoSr, double relTolerance, unsigned maxEvaluations, QlError **e) { QlCallScope callbackScope(e);
-  try {return ret(new QlPricingEngine(alloc(new AnalyticH1HWEngine(*arg(model), *arg(hullWhiteModel), rhoSr, relTolerance, maxEvaluations))));
+QlPricingEngine* qlAnalyticH1HWEngine1(QlHestonModel* model, QlHullWhite* hullWhiteModel, double rhoSr, double relTolerance, unsigned maxEvaluations, int exactMean, unsigned meanOrder, QlError **e) { QlCallScope callbackScope(e);
+  try {return !exactMean
+      ? ret(new QlPricingEngine(alloc(new AnalyticH1HWEngine(*arg(model), *arg(hullWhiteModel), rhoSr, relTolerance, maxEvaluations))))
+      : ret(new QlPricingEngine(alloc(new hasquant::ExactMeanH1HWEngine(*arg(model), *arg(hullWhiteModel), rhoSr, relTolerance, maxEvaluations, meanOrder))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
 QlPricingEngine* qlBatesEngine1(QlBatesModel* model, double relTolerance, unsigned maxEvaluations, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new BatesEngine(*arg(model), relTolerance, maxEvaluations))));

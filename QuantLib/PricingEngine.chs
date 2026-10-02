@@ -24,6 +24,7 @@ module QuantLib.PricingEngine
   , FixedPointEquation(..)
   , QdFpScheme(..)
   , IntegrationControl(..)
+  , H1HwMean(..)
   , LatticeTime(..)
   , FdmGrid(..)
   , OperatorSplittingOrder(..)
@@ -284,6 +285,14 @@ import Data.List.NonEmpty(NonEmpty, toList)
 data IntegrationControl
   = IntegrationOrder Word
   | IntegrationTolerance Double Word
+  deriving (Eq, Show)
+
+-- |How the H1-HW engine reads E[sqrt v] of the Heston variance. QuantLib fits @a + b exp(-c t)@
+-- with @c@ taken at one year, which is NaN where the mean is not monotone (v0 near theta);
+-- 'ExactMean' integrates the exact mean by Gauss-Legendre on that many nodes.
+data H1HwMean
+  = FittedExponentialMean
+  | ExactMean Word
   deriving (Eq, Show)
 
 -- |An option's type and strike, given directly or carried by a striked payoff.
@@ -807,6 +816,8 @@ discountingPerpetualFuturesEngine domestic foreignCurve spot funding interpolati
 {#fun qlAnalyticH1HWEngine as analyticH1HwEngineOrder{withHestonModel*`GenHestonModel hm',withHullWhite*`HullWhite'
   ,`Double' -- ^rhoSr
   ,fromIntegral`Word' -- ^integrationOrder
+  ,`Bool' -- ^exactMean
+  ,fromIntegral`Word' -- ^meanOrder
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |semi-analytic pricing engine combining a Heston equity model with a Hull-White short-rate model
@@ -882,6 +893,8 @@ analyticHestonEngine model control =
   ,`Double' -- ^rhoSr
   ,`Double' -- ^relTolerance
   ,fromIntegral`Word' -- ^maxEvaluations
+  ,`Bool' -- ^exactMean
+  ,fromIntegral`Word' -- ^meanOrder
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |Semi-analytic Heston/Hull-White engine with fixed-order or tolerance-based integration.
@@ -891,12 +904,18 @@ analyticHestonHullWhiteEngine heston hullWhite control =
     IntegrationOrder order -> analyticHestonHullWhiteEngineOrder heston hullWhite order
     IntegrationTolerance tolerance evaluations -> analyticHestonHullWhiteEngineTolerance heston hullWhite tolerance evaluations
 
--- |H1-HW approximation engine with fixed-order or tolerance-based integration.
-analyticH1HwEngine :: GenHestonModel hm -> HullWhite -> Double -> IntegrationControl -> IO PricingEngine
-analyticH1HwEngine heston hullWhite rhoSr control =
+-- |H1-HW approximation engine with fixed-order or tolerance-based integration. @rhoSr@ must be
+-- non-negative. With 'ExactMean' it is a hasquant subclass of QuantLib's Heston/Hull-White engine
+-- that integrates the exact E[sqrt v]; QuantLib's own engine otherwise.
+analyticH1HwEngine :: GenHestonModel hm -> HullWhite -> Double -> IntegrationControl -> H1HwMean -> IO PricingEngine
+analyticH1HwEngine heston hullWhite rhoSr control mean =
   case control of
-    IntegrationOrder order -> analyticH1HwEngineOrder heston hullWhite rhoSr order
-    IntegrationTolerance tolerance evaluations -> analyticH1HwEngineTolerance heston hullWhite rhoSr tolerance evaluations
+    IntegrationOrder order -> analyticH1HwEngineOrder heston hullWhite rhoSr order exact meanOrder
+    IntegrationTolerance tolerance evaluations -> analyticH1HwEngineTolerance heston hullWhite rhoSr tolerance evaluations exact meanOrder
+  where
+    (exact, meanOrder) = case mean of
+      FittedExponentialMean -> (False, 0)
+      ExactMean n -> (True, n)
 
 -- |semi-analytic Bates-model pricing engine, integrating with a fixed relative tolerance and evaluation cap
 {#fun qlBatesEngine1 as batesEngineTolerance{withBatesModel*`GenBatesModel bm',`Double' -- ^relTolerance

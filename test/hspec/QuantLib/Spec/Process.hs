@@ -32,7 +32,7 @@ import Data.Time.Calendar(addDays)
 import Data.List.NonEmpty(fromList)
 
 import qualified QuantLib.Context as Context
-import QuantLib.Time.Date(today, addPeriod, july, september)
+import QuantLib.Time.Date(today, addPeriod, january, july, september)
 import QuantLib.Time.Schedule(dayCounter, yearFraction, DayCounterConstructor(..), Frequency(..), TimeUnit(..))
 import QuantLib.InterestRate(Compounding(..), VolatilityType(..), rate)
 import QuantLib.Quote(simpleQuote, setValue)
@@ -52,10 +52,10 @@ import QuantLib.Model(hullWhite, g2, g2Dynamics, shortRate
  , hestonModel, batesModel, gjrGarchModel
  , liborForwardModel, liborForwardModelS0, asAffineModel, lfmHullWhiteParameterization, lfmHullWhiteCovariance, setCovarParam, LmVolatilityModel(..), LmCorrelationModel(..)
  , discountBond)
-import QuantLib.PricingEngine(analyticH1HwEngine, analyticHestonHullWhiteEngine, mcHestonHullWhiteEngine
+import QuantLib.PricingEngine(analyticH1HwEngine, H1HwMean(..), analyticHestonHullWhiteEngine, mcHestonHullWhiteEngine, fdHestonHullWhiteVanillaEngine
  , analyticHestonEngine, IntegrationControl(..), batesEngine, analyticGjrGarchEngine, mcEuropeanGjrGarchEngine, blackFormula, analyticCapFloorEngine)
 import QuantLib.Method(pathGenerator, next, asset)
-import QuantLib.Math(RngTrait(..), StatisticsTrait(..), timeGrid, Interpolation(..), boxedRealMatrix, realMatrixFromVector, matrixRows, matrixColumns, matrixData, realMatrixData)
+import QuantLib.Math(FdmScheme(Hundsdorfer), RngTrait(..), StatisticsTrait(..), timeGrid, Interpolation(..), boxedRealMatrix, realMatrixFromVector, matrixRows, matrixColumns, matrixData, realMatrixData)
 import Control.Monad(replicateM, forM_, zipWithM_, foldM_)
 import QuantLib.Instrument.CapFloor(cap)
 import QuantLib.Time.Calendar(adjust, advance, calendar, BusinessDayConvention(..), CalendarConstructor(..))
@@ -640,7 +640,7 @@ spec = do
         forM_ expected $ \(sigma, expectedVols) -> do
           heston <- hestonProcess rTS (Just qTS) s0 0.05 0.3 0.05 sigma (-0.30) QuadraticExponentialMartingale
           model <- hestonModel heston
-          engine <- analyticH1HwEngine model hullWhiteModel 0.6 (IntegrationOrder 144)
+          engine <- analyticH1HwEngine model hullWhiteModel 0.6 (IntegrationOrder 144) FittedExponentialMean
           forM_ (zip strikes expectedVols) $ \(strike, expectedVol) -> do
             option <- europeanOption (PlainVanilla (PlainVanillaPayoff Call strike)) (European (EuropeanExercise exerciseDate))
             setPricingEngine option engine
@@ -650,12 +650,86 @@ spec = do
 
         heston <- hestonProcess rTS (Just qTS) s0 0.05 0.3 0.05 0.3 (-0.30) QuadraticExponentialMartingale
         model <- hestonModel heston
-        toleranceEngine <- analyticH1HwEngine model hullWhiteModel 0.6 (IntegrationTolerance 1.0e-8 1000)
+        toleranceEngine <- analyticH1HwEngine model hullWhiteModel 0.6 (IntegrationTolerance 1.0e-8 1000) FittedExponentialMean
         option <- europeanOption (PlainVanilla (PlainVanillaPayoff Call 100.0)) (European (EuropeanExercise exerciseDate))
         setPricingEngine option toleranceEngine
         value <- npv option
         impliedVolatility option value bsm [] 1.0e-8 100 1.0e-4 10.0
           >>= (`shouldSatisfy` closePrec 0.228223 1.0e-4)
+
+        -- where QuantLib's fitted mean holds, the exact one moves the published vols by less than
+        -- half a point; against finite differences neither is consistently closer
+        exact <- analyticH1HwEngine model hullWhiteModel 0.6 (IntegrationOrder 144) (ExactMean 64)
+        forM_ (zip strikes [0.267503, 0.235742, 0.228223, 0.223461, 0.217855]) $ \(strike, publishedVol) -> do
+          o <- europeanOption (PlainVanilla (PlainVanillaPayoff Call strike)) (European (EuropeanExercise exerciseDate))
+          setPricingEngine o exact
+          v <- npv o
+          impliedVolatility o v bsm [] 1.0e-8 100 1.0e-4 10.0 >>= \vol -> abs (vol - publishedVol) `shouldSatisfy` (< 5.0e-3)
+
+    -- E[sqrt v] falls from sqrt v0 and then rises when v0 is near theta, so QuantLib's a + b exp(-c t)
+    -- has no c: its engine is NaN. The exact mean is finite there and wherever else the sweep goes,
+    -- and without the cross term it is the analytic Heston-Hull-White price.
+    describe "H1-HW with the exact mean" $ do
+      let refDate = 2 `january` 2026
+          sweep = [ (0.04, 1.5, 0.05, 0.4, -0.6), (0.06, 1.0, 0.03, 0.6, -0.3), (0.04, 1.0, 0.05, 0.4, -0.6)
+                  , (0.05, 0.3, 0.05, 0.5, -0.3), (0.04, 3.0, 0.04, 0.2, -0.5), (1.0e-4, 1.5, 0.05, 0.4, -0.6) ]
+          options = [(d, k) | d <- [182, 365, 730], k <- [90, 100, 110 :: Double]]
+          option (d, k) = europeanOption (PlainVanilla (PlainVanillaPayoff (if k < 100 then Put else Call) k)) (European (EuropeanExercise (addDays d refDate)))
+          market k' = Context.keepingSettingsGc $ do
+            Context.setEvaluationDate (Just refDate)
+            dc <- dayCounter Actual365FixedStandard
+            rTS <- simpleQuote 0.02 >>= \q -> flatForward (ReferenceDate refDate) q dc Continuous Annual
+            qTS <- simpleQuote 0.0 >>= \q -> flatForward (ReferenceDate refDate) q dc Continuous Annual
+            s0 <- simpleQuote 100.0
+            hw <- hullWhite rTS 0.05 0.03
+            hwp <- hullWhiteProcess rTS 0.05 0.03
+            let modelOf (v0, kappa, theta, sigma, rho) = hestonProcess rTS (Just qTS) s0 v0 kappa theta sigma rho QuadraticExponentialMartingale >>= hestonModel
+            k' modelOf hw hwp
+          finite x = not (isNaN x || isInfinite x)
+      it "is finite where QuantLib's fitted mean is NaN, and across the sweep" $ market $ \modelOf hw _ -> do
+        fixture <- modelOf (0.04, 1.5, 0.05, 0.4, -0.6)
+        fitted <- analyticH1HwEngine fixture hw 0.6 (IntegrationOrder 144) FittedExponentialMean
+        forM_ options $ \o' -> do
+          o <- option o'
+          setPricingEngine o fitted
+          npv o >>= (`shouldSatisfy` isNaN)
+        forM_ sweep $ \p -> do
+          m <- modelOf p
+          exact <- analyticH1HwEngine m hw 0.6 (IntegrationOrder 144) (ExactMean 64)
+          tolerant <- analyticH1HwEngine m hw 0.6 (IntegrationTolerance 1.0e-8 1000) (ExactMean 64)
+          forM_ options $ \o' -> do
+            o <- option o'
+            setPricingEngine o exact
+            x <- npv o
+            x `shouldSatisfy` finite
+            setPricingEngine o tolerant
+            npv o >>= (`shouldSatisfy` closePrec x 1.0e-6)
+      it "uncorrelated, is the analytic Heston-Hull-White price" $ market $ \modelOf hw _ -> forM_ sweep $ \p -> do
+        m <- modelOf p
+        exact <- analyticH1HwEngine m hw 0.0 (IntegrationOrder 144) (ExactMean 64)
+        analytic <- analyticHestonHullWhiteEngine m hw (IntegrationOrder 144)
+        forM_ options $ \o' -> do
+          o <- option o'
+          setPricingEngine o analytic
+          a <- npv o
+          setPricingEngine o exact
+          npv o >>= (`shouldSatisfy` closePrec a 1.0e-12)
+      -- the H1-HW approximation, measured against finite differences: at most 0.92% on these options
+      it "is within 1.5% of the finite-difference Heston-Hull-White price (LONG)" $ market $ \modelOf hw hwp -> do
+        m <- modelOf (0.04, 1.5, 0.05, 0.4, -0.6)
+        exact <- analyticH1HwEngine m hw 0.6 (IntegrationOrder 144) (ExactMean 64)
+        fd <- fdHestonHullWhiteVanillaEngine m hwp [] 0.6 100 200 60 30 0 True Hundsdorfer
+        forM_ [(182, 90), (365, 100), (730, 110)] $ \o' -> do
+          o <- option o'
+          setPricingEngine o fd
+          y <- npv o
+          setPricingEngine o exact
+          x <- npv o
+          abs (x - y) / y `shouldSatisfy` (< 1.5e-2)
+      it "refuses a negative equity-rate correlation" $ market $ \modelOf hw _ -> do
+        m <- modelOf (0.04, 1.5, 0.05, 0.4, -0.6)
+        analyticH1HwEngine m hw (-0.1) (IntegrationOrder 144) (ExactMean 64) `shouldThrow` anyException
+        analyticH1HwEngine m hw (-0.1) (IntegrationTolerance 1.0e-8 1000) (ExactMean 64) `shouldThrow` anyException
 
     -- ported from test-suite/hybridhestonhullwhiteprocess.cpp::testAnalyticHestonHullWhitePricing:
     -- with the equity/short-rate correlation set to 0, an MC price on the joint

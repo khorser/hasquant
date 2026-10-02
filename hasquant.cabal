@@ -34,6 +34,7 @@ extra-source-files:
     cbits/qlaux.h
     cbits/qlCallback.h
     cbits/qlCheckedFdEngine.h
+    cbits/qlExactMeanH1HwEngine.h
     cbits/qlEnumC2HS.h
     cbits/qlEnumObjects.h
     cbits/qlInstrument.h
