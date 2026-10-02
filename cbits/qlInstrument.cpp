@@ -332,15 +332,26 @@ namespace {
     out.emplace_back(index->name(), date);
   }
 
-  // A base fixing is a stored fixing like any other, but a cash flow given a base CPI instead of
-  // a base date has none, and CPICashFlow::baseDate and CPICoupon::baseDate throw rather than
-  // answering (cpicoupon.cpp:159-166). That is a coupon with no base dependency, not a missing
-  // one, so the throw means "nothing to collect".
-  template <class T>
-  void collectBaseDate(const T& c,
-                       std::vector<std::pair<std::string, Date> >& out) {
-    try {collectIndexFixing(c.index(), c.baseDate(), out);} catch (const std::exception&) {}
+  // The CPI fixings CPI::laggedFixing reads for a date d (inflationindex.cpp): the start of the
+  // index period holding d - lag, and under Linear the next period's start too, unless d is
+  // itself a period start. QuantLib's store is read at period starts only
+  // (ZeroInflationIndex::pastFixing), so these are the keys a fixing must be filed under.
+  void collectLaggedFixing(const ext::shared_ptr<ZeroInflationIndex>& index, const Date& d,
+                           const Period& lag, CPI::InterpolationType interpolation,
+                           std::vector<std::pair<std::string, Date> >& out) {
+    if (!index || d == Date()) return;
+    std::pair<Date, Date> period = inflationPeriod(d - lag, index->frequency());
+    out.emplace_back(index->name(), period.first);
+    if (interpolation == CPI::Linear && d != inflationPeriod(d, index->frequency()).first)
+      out.emplace_back(index->name(), period.second + 1);
   }
+
+  // CPICashFlow keeps a given base CPI in a protected member and answers baseFixing() from it
+  // without saying whether it was given; a pointer to the member, taken in a derived scope, reads
+  // it (upstream offers no accessor).
+  struct CpiCashFlowBase : CPICashFlow {
+    static Real of(const CPICashFlow& c) {return c.*(&CpiCashFlowBase::baseFixing_);}
+  };
 
   class FixingDependencyVisitor : public AcyclicVisitor,
                                   public Visitor<CashFlow>,
@@ -354,7 +365,9 @@ namespace {
                                   public Visitor<CmsSpreadCoupon>,
                                   public Visitor<FloatingRateCoupon>,
                                   public Visitor<CPICoupon>,
+                                  public Visitor<YoYInflationCoupon>,
                                   public Visitor<InflationCoupon>,
+                                  public Visitor<ZeroInflationCashFlow>,
                                   public Visitor<IndexedCashFlow> {
     std::vector<std::pair<std::string, Date> >& out_;
 
@@ -393,16 +406,63 @@ namespace {
     void visit(FloatingRateCoupon& c) override {
       collectIndexFixing(c.index(), c.fixingDate(), out_);
     }
+    // CPICoupon::indexRatio: the accrual end through the lag, and a base read only when no base
+    // CPI is given, at baseDate() + lag (cpicoupon.cpp)
     void visit(CPICoupon& c) override {
-      collectIndexFixing(c.index(), c.fixingDate(), out_);
-      collectBaseDate(c, out_);
+      collectLaggedFixing(c.cpiIndex(), c.accrualEndDate(), c.observationLag(), c.observationInterpolation(), out_);
+      if (c.baseCPI() == Null<Real>())
+        collectLaggedFixing(c.cpiIndex(), c.baseDate() + c.observationLag(), c.observationLag(), c.observationInterpolation(), out_);
+    }
+    // CPI::laggedYoYRate: a quoted index's own fixings; a ratio index reads its underlying zero
+    // index a year apart (YoYInflationIndex::fixing, or interpolated first under Linear)
+    void visit(YoYInflationCoupon& c) override {
+      const ext::shared_ptr<YoYInflationIndex>& index = c.yoyIndex();
+      if (!index) return;
+      const Date d = c.accrualEndDate();
+      if (index->ratio()) {
+        const ext::shared_ptr<ZeroInflationIndex> underlying = index->underlyingIndex();
+        if (c.interpolation() == CPI::Linear) {
+          collectLaggedFixing(underlying, d, c.observationLag(), CPI::Linear, out_);
+          collectLaggedFixing(underlying, d - 1 * Years, c.observationLag(), CPI::Linear, out_);
+        } else {
+          const Date start = inflationPeriod(d - c.observationLag(), index->frequency()).first;
+          collectLaggedFixing(underlying, start, 0 * Months, CPI::Flat, out_);
+          collectLaggedFixing(underlying, start - 1 * Years, 0 * Months, CPI::Flat, out_);
+        }
+      } else {
+        std::pair<Date, Date> period = inflationPeriod(d - c.observationLag(), index->frequency());
+        out_.emplace_back(index->name(), period.first);
+        if (c.interpolation() == CPI::Linear && d != inflationPeriod(d, index->frequency()).first)
+          out_.emplace_back(index->name(), period.second + 1);
+      }
     }
     void visit(InflationCoupon& c) override {
       collectIndexFixing(c.index(), c.fixingDate(), out_);
     }
+    // ZeroInflationCashFlow reads laggedFixing at its start and end dates, which it keeps private;
+    // IndexedCashFlow's base and fixing dates are those less the lag, so their period starts are
+    // the keys, and under Linear the next ones unless the dates fall on a month's first day
+    void visit(ZeroInflationCashFlow& c) override {
+      const ext::shared_ptr<ZeroInflationIndex>& index = c.zeroInflationIndex();
+      if (!index) return;
+      for (const Date& lagged : {c.baseDate(), c.fixingDate()}) {
+        std::pair<Date, Date> period = inflationPeriod(lagged, index->frequency());
+        out_.emplace_back(index->name(), period.first);
+        if (c.observationInterpolation() == CPI::Linear && lagged.dayOfMonth() != 1)
+          out_.emplace_back(index->name(), period.second + 1);
+      }
+    }
     void visit(IndexedCashFlow& c) override {
+      // CPICashFlow has no accept() of its own, so it arrives here: a downcast is the only way
+      // to read its lag and interpolation (CPICashFlow::indexFixing, ::baseFixing)
+      if (auto* cpi = dynamic_cast<CPICashFlow*>(&c)) {
+        collectLaggedFixing(cpi->cpiIndex(), cpi->observationDate(), cpi->observationLag(), cpi->interpolation(), out_);
+        if (CpiCashFlowBase::of(*cpi) == Null<Real>())
+          collectLaggedFixing(cpi->cpiIndex(), cpi->baseDate(), 0 * Months, cpi->interpolation(), out_);
+        return;
+      }
       collectIndexFixing(c.index(), c.fixingDate(), out_);
-      collectBaseDate(c, out_);
+      try {collectIndexFixing(c.index(), c.baseDate(), out_);} catch (const std::exception&) {}
     }
   };
 

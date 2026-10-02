@@ -1953,6 +1953,44 @@ spec evalDate = do
             [(name10y, accrualStart), (name2y, accrualStart),
              (name10y, baseDate), (name2y, baseDate)]
 
+      it "reads inflation cash flows at the period starts QuantLib's CPI fixings read" $
+        Context.keepingSettingsGc $ do
+          let base = 15 `march` 2023
+              start = 15 `june` 2023
+              end = 15 `june` 2024
+          Context.setEvaluationDate (Just (15 `january` 2025))
+          rpi <- Inflation.zeroInflationIndex Inflation.UKRPI
+          rpiName <- Index.name rpi
+          dc <- dayCounter (Actual360 False)
+          let keys = map (rpiName,)
+          -- CPI::laggedFixing reads the period start of the date less the lag, and under Linear
+          -- the next period's start; a coupon given its base CPI reads no base
+          forM_ ([(Swap.CPIFlat, [1 `march` 2024]), (Swap.CPILinear, [1 `march` 2024, 1 `april` 2024])] :: [(Swap.CPIInterpolationType, [Day])]) $ \(interp, expected) -> do
+            given <- CF.cpiCoupon 100.0 end 100.0 start end rpi (3, Months) interp dc 0.01 Nothing Nothing Nothing
+            (CF.asCashFlow given >>= \f -> CF.cashFlowLeg [f] >>= CF.fixingDependencies) `shouldReturn` keys expected
+          -- from a base date, the base too: at the base date's period start (CPICoupon::indexRatio
+          -- reads it at baseDate + lag, through the lag)
+          fromBase <- CF.cpiCouponFromBaseDate base end 100.0 start end rpi (3, Months) Swap.CPILinear dc 0.01 Nothing Nothing Nothing
+          (CF.asCashFlow fromBase >>= \f -> CF.cashFlowLeg [f] >>= CF.fixingDependencies)
+            `shouldReturn` keys [1 `march` 2024, 1 `april` 2024, 1 `march` 2023, 1 `april` 2023]
+          -- a CPI cash flow's base reads at the base date itself, with no lag
+          cpi <- CF.cpiCashFlow 100.0 rpi (Just base) Nothing end (3, Months) Swap.CPIFlat end False
+          (CF.asCashFlow cpi >>= \f -> CF.cashFlowLeg [f] >>= CF.fixingDependencies) `shouldReturn` keys [1 `march` 2024, 1 `march` 2023]
+          cpiGiven <- CF.cpiCashFlow 100.0 rpi (Just base) (Just 250.0) end (3, Months) Swap.CPIFlat end False
+          (CF.asCashFlow cpiGiven >>= \f -> CF.cashFlowLeg [f] >>= CF.fixingDependencies) `shouldReturn` keys [1 `march` 2024]
+          -- a zero-coupon inflation swap's flow: its start and end through the lag
+          zero <- CF.zeroInflationCashFlow 100.0 rpi Swap.CPILinear start end (3, Months) end False
+          (CF.asCashFlow zero >>= \f -> CF.cashFlowLeg [f] >>= CF.fixingDependencies)
+            `shouldReturn` keys [1 `march` 2023, 1 `april` 2023, 1 `march` 2024, 1 `april` 2024]
+          -- a ratio YoY index reads its zero index a year apart; a quoted one its own fixings
+          ratio <- Inflation.yoyInflationIndexFromZero rpi Nothing
+          ratioCoupon <- CF.yoyInflationCoupon end 100.0 start end 0 ratio (3, Months) Swap.CPIFlat dc 1.0 0.0 Nothing Nothing
+          (CF.asCashFlow ratioCoupon >>= \f -> CF.cashFlowLeg [f] >>= CF.fixingDependencies) `shouldReturn` keys [1 `march` 2024, 1 `march` 2023]
+          quoted <- Inflation.yoyInflationIndex Inflation.YYUKRPI
+          quotedName <- Index.name quoted
+          quotedCoupon <- CF.yoyInflationCoupon end 100.0 start end 0 quoted (3, Months) Swap.CPIFlat dc 1.0 0.0 Nothing Nothing
+          (CF.asCashFlow quotedCoupon >>= \f -> CF.cashFlowLeg [f] >>= CF.fixingDependencies) `shouldReturn` [(quotedName, 1 `march` 2024)]
+
     describe "Index fixings" $ do
       it "calculates convention-aware fixing, value, and maturity dates" $
         Context.keepingSettingsGc $ do

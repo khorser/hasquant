@@ -9,6 +9,14 @@ helper's own schedule.
 
 Introduced new stochastic processes and engines as a result of battle-testing the library.
 
+`fixingDependencies` reports an inflation flow's dependencies at the dates QuantLib reads its CPI
+store: index-period starts through the observation lag, the next period's start under linear
+interpolation, and a base only when no base CPI is given. It used to report the coupon's
+`fixingDate()`, a mid-month date QuantLib never reads, never the second month of a linear
+interpolation, and a base date even when a base CPI was given. Year-on-year coupons on a ratio index
+report the underlying zero index's fixings; zero-inflation and CPI cash flows are walked with their
+own lag and interpolation.
+
 Improved robustness of callback execution.
 
 ## 0.7.0.0 (2026)

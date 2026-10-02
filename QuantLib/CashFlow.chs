@@ -1638,8 +1638,14 @@ lognormalCmsSpreadPricer cmsPricer correlation discountCurve integrationPoints v
 -- order.  QuantLib has no @requiredFixings@ query, so this walks the leg itself, unwrapping
 -- decorating coupons (capped\/floored, stripped, digital) and asking each coupon for its own
 -- fixing dates: one for an Ibor, CMS or CMS-spread coupon, one per averaged date for an
--- overnight, BMA or multiple-resets coupon, and the fixing and base dates for an inflation
--- coupon or an index-linked payment.  A CMS-spread coupon reports its two underlying swap
+-- overnight, BMA or multiple-resets coupon, and the fixing and base dates for an index-linked
+-- payment.  An inflation flow reports the dates QuantLib\'s CPI store is read at, which are
+-- period starts (@ZeroInflationIndex::pastFixing@): for a CPI coupon, CPI cash flow or
+-- zero-inflation cash flow, the start of the index period holding each observed date less the
+-- observation lag, and under linear interpolation the next period\'s start too, unless the
+-- observed date is itself a period start (@CPI::laggedFixing@); a base only when no base CPI is
+-- given.  A year-on-year coupon reports its own index\'s period starts, or, for a ratio index, its
+-- underlying zero index a year apart.  A CMS-spread coupon reports its two underlying swap
 -- indexes rather than the spread index, because that is where the fixings are stored.  Names
 -- are 'QuantLib.Index.name', the key QuantLib\'s process-global fixing store uses.  A cash flow
 -- that needs no fixing -- a redemption, a fixed-rate coupon -- contributes nothing.  Duplicates
