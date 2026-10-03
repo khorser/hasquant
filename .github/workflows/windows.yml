@@ -261,7 +261,7 @@ jobs:
       # On failure, and on every manual dispatch so the symbolization path stays exercised.
       - name: Upload test binaries
         if: failure() || github.event_name == 'workflow_dispatch'
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: windows-test-bin-ghc${{ matrix.ghc }}-attempt${{ github.run_attempt }}
           retention-days: 14
