@@ -23,7 +23,7 @@ ARG GID=1000
 RUN groupadd -g ${GID} ${USERNAME} \
     && useradd -m -u ${UID} -g ${GID} -s /bin/zsh ${USERNAME}
 
-ARG BOOST_VERSION=1.91.0-1
+ARG BOOST_VERSION=1.92.0
 FROM base AS boost-builder
 ARG BOOST_VERSION
 WORKDIR /build/boost

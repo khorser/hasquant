@@ -9,7 +9,7 @@ services:
       context: .
     # target: development
       args:
-        BOOST_VERSION: "1.91.0-1"
+        BOOST_VERSION: "1.92.0"
         QL_VERSION: "1.43"
         GHC_VERSION: "9.10.3"
         UID: "${UID:-1000}"
