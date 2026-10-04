@@ -51,9 +51,9 @@ import QuantLib.Process(blackScholesMertonProcess, hestonProcess, pdf, batesProc
 import QuantLib.Model(hullWhite, g2, g2Dynamics, shortRate
  , hestonModel, batesModel, gjrGarchModel
  , liborForwardModel, liborForwardModelS0, asAffineModel, lfmHullWhiteParameterization, lfmHullWhiteCovariance, setCovarParam, LmVolatilityModel(..), LmCorrelationModel(..)
- , discountBond)
+ , discountBond, setParams)
 import QuantLib.PricingEngine(analyticH1HwEngine, H1HwMean(..), analyticHestonHullWhiteEngine, mcHestonHullWhiteEngine, fdHestonHullWhiteVanillaEngine
- , analyticHestonEngine, IntegrationControl(..), batesEngine, analyticGjrGarchEngine, mcEuropeanGjrGarchEngine, blackFormula, analyticCapFloorEngine)
+ , analyticHestonEngine, analyticBsmHullWhiteEngine, IntegrationControl(..), batesEngine, analyticGjrGarchEngine, mcEuropeanGjrGarchEngine, blackFormula, analyticCapFloorEngine)
 import QuantLib.Method(pathGenerator, next, asset)
 import QuantLib.Math(FdmScheme(Hundsdorfer), RngTrait(..), StatisticsTrait(..), timeGrid, Interpolation(..), boxedRealMatrix, realMatrixFromVector, matrixRows, matrixColumns, matrixData, realMatrixData)
 import Control.Monad(replicateM, forM_, zipWithM_, foldM_)
@@ -686,6 +686,54 @@ spec = do
             let modelOf (v0, kappa, theta, sigma, rho) = hestonProcess rTS (Just qTS) s0 v0 kappa theta sigma rho QuadraticExponentialMartingale >>= hestonModel
             k' modelOf hw hwp
           finite x = not (isNaN x || isInfinite x)
+          limitMarket checks = Context.keepingSettingsGc $ do
+            Context.setEvaluationDate (Just refDate)
+            dc <- dayCounter Actual365FixedStandard
+            rTS <- simpleQuote 0.02 >>= \q -> flatForward (ReferenceDate refDate) q dc Continuous Annual
+            qTS <- simpleQuote 0.0 >>= \q -> flatForward (ReferenceDate refDate) q dc Continuous Annual
+            s0 <- simpleQuote 100.0
+            nullCal <- calendar Null
+            volTS <- simpleQuote 0.2 >>= \q -> Vol.blackConstantVol (Vol.CalendarReferenceDate refDate) nullCal q dc
+            bsm <- blackScholesMertonProcess s0 qTS rTS volTS EulerDiscretization False
+            let check kappa sigma a = do
+                  hw <- hullWhite rTS a 0.03
+                  m <- hestonProcess rTS (Just qTS) s0 0.04 kappa 0.04 sigma (-0.6) QuadraticExponentialMartingale >>= hestonModel
+                  o <- option (730, 100)
+                  reference <- analyticBsmHullWhiteEngine 0.6 bsm hw
+                  setPricingEngine o reference
+                  expected <- npv o
+                  forM_ [IntegrationOrder 144, IntegrationTolerance 1.0e-6 10000] $ \control -> do
+                    exact <- analyticH1HwEngine m hw 0.6 control (ExactMean 64)
+                    setPricingEngine o exact
+                    actual <- npv o
+                    actual `shouldSatisfy` finite
+                    actual `shouldSatisfy` closePrec expected (1.0e-6 * abs expected)
+            checks check
+      it "approaches BSM-Hull-White at small variance volatility" $ limitMarket $ \check ->
+        forM_ [1.0e-5, 1.0e-6, 1.0e-7, 1.0e-8] $ \sigma -> check 100 sigma 0.05
+      it "preserves the small Hull-White mean-reversion limit" $ limitMarket $ \check ->
+        forM_ [1.0e-8, 1.0e-12, 1.0e-18] $ \a -> check 1.5 1.0e-5 a
+      it "refreshes its cached integral when either model changes" $ market $ \modelOf hw _ -> do
+        m <- modelOf (0.04, 1.5, 0.05, 0.4, -0.6)
+        reused <- analyticH1HwEngine m hw 0.6 (IntegrationOrder 144) (ExactMean 64)
+        o <- option (730, 100)
+        setPricingEngine o reused
+        initial <- npv o
+        let check previous = do
+              actual <- npv o
+              actual `shouldSatisfy` finite
+              abs (actual - previous) `shouldSatisfy` (> 1.0e-6)
+              fresh <- analyticH1HwEngine m hw 0.6 (IntegrationOrder 144) (ExactMean 64)
+              setPricingEngine o fresh
+              expected <- npv o
+              actual `shouldSatisfy` closePrec expected 1.0e-12
+              setPricingEngine o reused
+              pure actual
+        setParams m [0.06, 1.2, 0.3, -0.5, 0.035]
+        changed <- check initial
+        setParams hw [0.08, 0.025]
+        _ <- check changed
+        pure ()
       it "is finite where QuantLib's fitted mean is NaN, and across the sweep" $ market $ \modelOf hw _ -> do
         fixture <- modelOf (0.04, 1.5, 0.05, 0.4, -0.6)
         fitted <- analyticH1HwEngine fixture hw 0.6 (IntegrationOrder 144) FittedExponentialMean

@@ -5,6 +5,17 @@ description: Reference for c2hs pragma flags, C shim marshalling patterns, and k
 
 Reference patterns for `.chs` pragmas and `cbits/` marshalling. Use it when a binding's pointer declaration, marshaller, or generated type fails to compile.
 
+## Numerical backports
+
+For a gamma ratio with a small fixed increment, use Boost.Math's `tgamma_delta_ratio(x, delta)`
+instead of subtracting log-gamma values. Large arguments lose digits in the subtraction and can
+even round `x + delta` back to `x`; the delta API preserves the increment. Older Boost versions
+can still lose precision internally at huge arguments, so verify the supported Boost range or
+use a large-shape expansion there, as the exact-mean H1-HW backport does.
+Use `-expm1(-x)` for `1 - exp(-x)`. If that factor is subsequently divided by a small model
+parameter, integrate the scaled kernel directly and retain its finite limit at zero.
+The exact-mean H1-HW backport is covered by Hspec price comparisons against BSM-Hull-White.
+
 ## Public Haskell names are semantic
 
 C shim suffixes exist only to disambiguate ABI symbols. Do not expose them as trailing apostrophes or unexplained numeric suffixes in Haskell. Name alternate representations with `From`, added configuration with `With`, coordinates with `At`, and evaluation-date-relative term structures with `Moving`. Reusing a short name in separate topical modules is intentional and preferable to encoding the module name in the value. Treat acronyms as camel-case words in exported values and record selectors (`npvBps`, `gjrGarchModel`, `hestonSlvFdmModel`, `nextImmDate`); ABI-facing C names, C tags, Haskell types, and constructors keep their existing spelling unless the representation itself changes.

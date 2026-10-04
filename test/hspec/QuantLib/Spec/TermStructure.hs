@@ -1,7 +1,7 @@
 {-# LANGUAGE ScopedTypeVariables, OverloadedLists, LambdaCase #-}
 module QuantLib.Spec.TermStructure (spec) where
 
-import Control.Monad(replicateM, forM_)
+import Control.Monad(replicateM, forM_, zipWithM, (>=>))
 
 import Test.Hspec hiding(before, after)
 import Test.Hspec.QuickCheck(prop)
@@ -382,8 +382,8 @@ spec = do
                 q <- Quote.simpleQuote r
                 swapRateHelper q (SwapRateTenor (n, Years) cal Annual Unadjusted thirty360dc index (0, Days) Nothing Nothing) Nothing Nothing
                   LastRelevantDate Nothing False Nothing Nothing >>= asRateHelper
-          pars <- mapM (\n -> helperAt 0 n >>= (`impliedQuoteOn` ts)) tenors
-          rebuiltHelpers <- mapM (uncurry helperAt) (zip pars tenors)
+          pars <- mapM (helperAt 0 >=> (`impliedQuoteOn` ts)) tenors
+          rebuiltHelpers <- zipWithM helperAt pars tenors
           rebuilt <- piecewiseYieldCurve (ReferenceDate refDate) (fromList rebuiltHelpers) actual360dc [] (Iterative Discount LogLinear defaultIterativeBootstrapOpts) True
           forM_ (zip tenors pars) $ \(n, r) -> do
             r `shouldSatisfy` (\x -> x > 0.04 && x < 0.07)

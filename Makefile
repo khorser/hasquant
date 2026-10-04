@@ -24,7 +24,7 @@ cobj/qlPricingEngineAux.o: cbits/qlPricingEngineAux.cpp cbits/qlPricingEngineAux
 cobj/qlTermStructureAux.o: cbits/qlTermStructureAux.cpp cbits/qlTermStructureAux.h | cobj
 	g++ -c $(CFLAGS) $(EXTRA) -o cobj/qlTermStructureAux.o cbits/qlTermStructureAux.cpp
 
-cobj/qlPricingEngine.o: cbits/qlPricingEngine.cpp cbits/qlaux.h cbits/qlPricingEngine.h cbits/qlPricingEngineAux.h cbits/qlCheckedFdEngine.h | cobj
+cobj/qlPricingEngine.o: cbits/qlPricingEngine.cpp cbits/qlaux.h cbits/qlPricingEngine.h cbits/qlPricingEngineAux.h cbits/qlCheckedFdEngine.h cbits/qlExactMeanH1HwEngine.h | cobj
 
 cobj/qlTermStructure.o: cbits/qlTermStructure.cpp cbits/qlaux.h cbits/qlTermStructure.h cbits/qlTermStructureAux.h | cobj
 

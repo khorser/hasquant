@@ -288,8 +288,9 @@ data IntegrationControl
   deriving (Eq, Show)
 
 -- |How the H1-HW engine reads E[sqrt v] of the Heston variance. QuantLib fits @a + b exp(-c t)@
--- with @c@ taken at one year, which is NaN where the mean is not monotone (v0 near theta);
--- 'ExactMean' integrates the exact mean by Gauss-Legendre on that many nodes.
+-- at one year or @1 / kappa@, depending on its variance parameters; the fit can fail for a
+-- nonmonotone mean. 'ExactMean' uses Gauss-Legendre on that many nodes, with an asymptotic
+-- expectation for large noncentrality.
 data H1HwMean
   = FittedExponentialMean
   | ExactMean Word

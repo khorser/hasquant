@@ -21,6 +21,11 @@ cabal build all --enable-tests         # full build; prefer through tools/quiet-
 tools/quiet-build.py cabal build all --enable-tests -f buildExample -f buildSofrXva
 ```
 
+For a local QuantLib install, prepend its `bin/` directory to `PATH` so `make` finds
+`quantlib-config`. Apple clang's default language mode can be older than C++17; pass
+`EXTRA='-std=c++17 -isystem/opt/homebrew/opt/boost/include'` to `make` when needed.
+Use the same QuantLib installation as `cabal.project.local` to keep header layouts consistent.
+
 The `app/SofrXva` executable and `test/example` are behind the default-off
 `buildSofrXva`/`buildExample` flags, so a plain `cabal build all` leaves
 them uncompiled and can miss API breakage. Every CI job builds both
