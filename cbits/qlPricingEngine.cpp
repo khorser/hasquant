@@ -1878,6 +1878,16 @@ void qlLsmRegressMulti(int polynomType, unsigned order, unsigned fitRows, unsign
     result.commit();
   } catch (std::exception& er) {qlSetError(e, er.what());}}
 
+void qlPathGeneratorSequence(PolymorphicPathGenerator *g, unsigned *len, double **values, double *weight, QlError **e) { QlCallScope callbackScope(e);
+  OutArrayResult<double> valuesResult(len, values);
+  OutValue<double> weightResult(weight);
+  try {const auto& s = qlPathGeneratorSequenceAux(arg(g));
+    double *out = valuesResult.allocate((unsigned)s.value.size());
+    std::copy(s.value.begin(), s.value.end(), out);
+    weightResult.set(s.weight);
+    valuesResult.commit(); weightResult.commit();
+  } catch (std::exception& er) {qlSetError(e, er.what());}}
+
 double qlUnsafeSabrLogNormalVolatility(double strike, double forward, double expiryTime, double alpha, double beta, double nu, double rho, QlError **e) { QlCallScope callbackScope(e);
   try {return unsafeSabrLogNormalVolatility(strike, forward, expiryTime, alpha, beta, nu, rho);
   } catch (std::exception& er) {return handleException<double>(e, er);}}

@@ -628,6 +628,7 @@ extern "C" {
   // the sample's weight (1 for every trait bound here, carried through for completeness).
   void qlGaussianRsgNextSequence(PolymorphicGaussianRsg *g, unsigned *len, double **values, double *weight, QlError **e);
   // Re-reads the sequence last drawn, without advancing the generator.
+  void qlPathGeneratorSequence(PolymorphicPathGenerator *g, unsigned *len, double **values, double *weight, QlError **e);
   void qlGaussianRsgLastSequence(PolymorphicGaussianRsg *g, unsigned *len, double **values, double *weight, QlError **e);
 
   void qlLsmRegress(int polynomType, unsigned order, unsigned fitStatesLen, double *fitStates, unsigned fitTargetsLen, double *fitTargets, unsigned evalLen, double *evalStates, unsigned *outLen, double **outValues, QlError **e);

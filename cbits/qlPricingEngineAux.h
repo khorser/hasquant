@@ -40,6 +40,7 @@ PolymorphicPathGenerator* qlSobolPathGeneratorAux(QuantLib::SobolRsg::DirectionI
 void qlFreePolymorphicPathGeneratorAux(PolymorphicPathGenerator *p);
 const SamplePath& qlPathGeneratorNextAux(PolymorphicPathGenerator* gen);
 const SamplePath& qlPathGeneratorAntitheticAux(PolymorphicPathGenerator* gen);
+const QuantLib::Sample<std::vector<QuantLib::Real>>& qlPathGeneratorSequenceAux(PolymorphicPathGenerator* gen);
 
 // The gaussian sequence generator MultiPathGenerator merely consumes, exposed standalone so a
 // Haskell-defined SDE can be evolved entirely in Haskell -- see QuantLib.Method.gaussianRsg.

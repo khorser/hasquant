@@ -54,7 +54,7 @@ import QuantLib.Model(hullWhite, g2, g2Dynamics, shortRate
  , discountBond, setParams)
 import QuantLib.PricingEngine(analyticH1HwEngine, H1HwMean(..), analyticHestonHullWhiteEngine, mcHestonHullWhiteEngine, fdHestonHullWhiteVanillaEngine
  , analyticHestonEngine, analyticBsmHullWhiteEngine, IntegrationControl(..), batesEngine, analyticGjrGarchEngine, mcEuropeanGjrGarchEngine, blackFormula, analyticCapFloorEngine)
-import QuantLib.Method(pathGenerator, next, asset)
+import QuantLib.Method(pathGenerator, next, asset, gaussianRsg, nextSequence, pathGeneratorSequence)
 import QuantLib.Math(FdmScheme(Hundsdorfer), RngTrait(..), StatisticsTrait(..), timeGrid, Interpolation(..), boxedRealMatrix, realMatrixFromVector, matrixRows, matrixColumns, matrixData, realMatrixData)
 import Control.Monad(replicateM, forM_, zipWithM_, foldM_)
 import QuantLib.Instrument.CapFloor(cap)
@@ -355,6 +355,14 @@ spec = do
         let horizon = 5.0; steps = 50 :: Word; nPaths = 4000 :: Int
         tg <- timeGrid horizon steps
         pg <- pathGenerator PseudoRandom process tg 42 (nf * steps) False
+        pathGeneratorSequence pg `shouldThrow` anyException
+        source <- gaussianRsg PseudoRandom (nf * steps) 42
+        tracePg <- pathGenerator PseudoRandom process tg 42 (nf * steps) False
+        _ <- next tracePg
+        firstDraw <- pathGeneratorSequence tracePg
+        expectedDraw <- nextSequence source
+        firstDraw `shouldBe` expectedDraw
+        pathGeneratorSequence tracePg `shouldReturn` firstDraw
         paths <- replicateM nPaths (next pg >>= \sp -> mapM (fmap V.toList . asset sp) [0, 1])
         let sumR = foldr1 (zipWith (+)) [zipWith (+) r0 r1 | [r0, r1] <- paths]
             meanR = map (/ fromIntegral nPaths) sumR

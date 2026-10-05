@@ -278,6 +278,7 @@ module QuantLib.Method
     -- ** Random sequences and meshers
   , rsgDimension
   , lastSequence
+  , pathGeneratorSequence
   , fdmMesherLocations
   ) where
 #include "qlTypesC2HS.h"
@@ -406,6 +407,14 @@ withMaybeFdmStepCondition (Just f) use = withFdmResult (f . Callback.callbackTim
 {#fun qlGaussianRsgLastSequence as lastSequence{withGaussianRsg*`GaussianRsg'
   ,preDoubleArray-`RealVector'&peekRealVector* -- ^draws
   ,alloca-`Double'peekDouble* -- ^weight
+  ,preErrorCheck-`String'errorCheck*-}->`()'#}
+
+-- |The random sequence consumed by the last 'next', with its sample weight, without advancing
+-- the generator. Refuses before the first draw. These are variates before process correlation;
+-- 'antithetic' uses their negatives and leaves this original sequence unchanged.
+{#fun qlPathGeneratorSequence as pathGeneratorSequence{withPathGenerator*`PathGenerator' -- ^generator
+  ,preDoubleArray-`RealVector'&peekRealVector*
+  ,alloca-`Double'peekDouble*
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |draw the next weighted sample path from the generator.
