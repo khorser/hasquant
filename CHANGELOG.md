@@ -1,29 +1,11 @@
 ## 0.8.0.0 (2026)
 
-Added additional term structures and updated signatures for some existing term structure functions.
-
-Bootstrap helpers read their implied quote on a curve given in the call (`impliedQuoteOn` for rate
-and default-probability helpers, `zeroCouponInflationSwapImpliedQuoteOn` and
-`yearOnYearInflationSwapImpliedQuoteOn`): a par rate, spread or swap rate on any curve, with the
-helper's own schedule.
+Added additional term structures and changed signatures for some existing term structure functions.
+Bound inspection methods for term structures needed for a sibling project.
 
 Introduced new stochastic processes and engines as a result of battle-testing the library.
 
-`fixingDependencies` reports an inflation flow's dependencies at the dates QuantLib reads its CPI
-store: index-period starts through the observation lag, the next period's start under linear
-interpolation, and a base only when no base CPI is given. It used to report the coupon's
-`fixingDate()`, a mid-month date QuantLib never reads, never the second month of a linear
-interpolation, and a base date even when a base CPI was given. Year-on-year coupons on a ratio index
-report the underlying zero index's fixings; zero-inflation and CPI cash flows are walked with their
-own lag and interpolation.
-
 Improved robustness of callback execution.
-
-`analyticH1HwEngine` takes an `H1HwMean` (breaking). `FittedExponentialMean` is QuantLib's engine,
-which approximates E[sqrt v] by `a + b exp(-c t)` and returns NaN where that mean is not monotone
-(v0 near theta, for instance v0 0.04, kappa 1.5, theta 0.05, sigma 0.4). `ExactMean n` integrates
-the exact mean on `n` Gauss-Legendre nodes, through a hasquant subclass of QuantLib's
-Heston-Hull-White engine.
 
 ## 0.7.0.0 (2026)
 
