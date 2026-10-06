@@ -1,13 +1,20 @@
 ## 0.8.0.0 (2026)
 
-Added `pathGeneratorSequence` to inspect the random variates actually consumed by a path generator.
-
-Added additional term structures and changed signatures for some existing term structure functions.
-Bound inspection methods for term structures needed for a sibling project.
-
-Introduced new stochastic processes and engines as a result of battle-testing the library.
-
-Improved robustness of callback execution.
+- Added QuantLib 1.44 support (currently tested against the release candidate), while retaining
+  compatibility with 1.43. New bindings include Rough Heston pricing, mark-to-market cross-currency
+  basis swaps, and FX reset cash flows. Calls requiring 1.44 report `UnsupportedQuantLibVersion`
+  on 1.43.
+- Expanded term-structure and bootstrap-helper support, including dated helper constructors and
+  implied-quote calculations on caller-supplied curves. Several existing constructor signatures
+  changed to expose additional configuration.
+- Extended model and engine support, including an exact-mean option for Heston–Hull–White pricing
+  that avoids numerical failures in the upstream approximation. `analyticH1HwEngine` now requires
+  an `H1HwMean` argument.
+- Improved simulation and fixing inspection: `pathGeneratorSequence` exposes the random variates
+  actually consumed, and inflation fixing dependencies now follow the dates and interpolation
+  rules QuantLib uses.
+- Improved callback validation, exception safety, and object ownership across the FFI, including
+  a fix for a MultiCurve ownership cycle.
 
 ## 0.7.0.0 (2026)
 
