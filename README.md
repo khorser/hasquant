@@ -88,8 +88,32 @@ Tests reuse QuantLib fixtures and cached values when available. Enum-dispatched 
 
 # QuantLib version policy
 
-Starting with QuantLib 1.44, hasquant supports the two most recent QuantLib release series:
-initially 1.43 and 1.44. Release candidates are tested ahead of the corresponding final release.
+Starting with QuantLib 1.44, hasquant supports the two most recent stable QuantLib release
+series, using only the latest patch release in each series. A series is identified by the
+first two version components: 1.42 and 1.42.1 belong to the same series. For example:
+
+- If the latest release is 1.43, the supported versions are 1.43 and 1.42.1.
+- If the latest release is 1.42.1, the supported versions are 1.42.1 and 1.41.
+
+Once 1.42.1 is available, new hasquant releases support it instead of the superseded 1.42.
+Patch releases do not advance the two-series window. Each hasquant release documents the
+exact QuantLib versions it supports; the window advances when a hasquant release adopts
+the next stable series. Release candidates are tested ahead of the corresponding final
+release but do not displace a supported stable series. The initial two-series window is
+1.43 and 1.44.
+
+Compatibility fixes are not backported to support QuantLib versions outside this window.
+
+Bindings to APIs deprecated by QuantLib are normally removed in the first hasquant release
+that adopts the next stable QuantLib release series after the upstream deprecation. For example,
+an API deprecated in QuantLib 1.44 normally loses its hasquant binding when hasquant adopts
+1.45, even if QuantLib still retains that API. Patch releases and release candidates do not
+trigger removal. Affected bindings document the intended removal series and the upstream
+replacement or migration path, if one exists.
+
+Binding removals are breaking API changes and require an increase in hasquant's major
+version (`A.B` under the [Haskell Package Versioning Policy](https://pvp.haskell.org/)).
+This applies both before and after 1.0. Removals are listed in the release notes.
 
 The public Haskell API is shared across supported versions. Calls requiring the newer QuantLib
 version raise `UnsupportedQuantLibVersion` (call name, minimum required version, linked version)
