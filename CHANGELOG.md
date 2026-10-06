@@ -1,5 +1,7 @@
 ## 0.8.0.0 (2026)
 
+Added `pathGeneratorSequence` to inspect the random variates actually consumed by a path generator.
+
 Added additional term structures and changed signatures for some existing term structure functions.
 Bound inspection methods for term structures needed for a sibling project.
 
