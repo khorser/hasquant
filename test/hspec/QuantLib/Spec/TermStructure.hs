@@ -9,12 +9,10 @@ import Test.QuickCheck.Monadic as Q(monadicIO, run)
 import Test.QuickCheck((==>))
 
 import Data.Time.Calendar
-import Data.Char(isDigit)
 import Data.Maybe(catMaybes)
 import Data.List(isInfixOf, nub)
 import Data.List.NonEmpty(NonEmpty, fromList)
 import qualified Data.Vector.Storable as V
-import Text.Read(readMaybe)
 
 import QuantLib.Time.Date
 import qualified QuantLib.Context as Context
@@ -43,14 +41,7 @@ import QuantLib.Process(blackScholesMertonProcess, ProcessDiscretization(EulerDi
 import qualified QuantLib.TermStructure.Volatility as Vol
 import QuantLib.PricingEngine(discountingSwapEngine, analyticEuropeanEngine, blackSwaptionEngineFromVolatilityStructure, blackCapFloorEngineFromVolatilityStructure, bachelierSwaptionEngineFromVolatilityStructure, bachelierCapFloorEngineFromVolatilityStructure, bjerksundStenslandApproximationEngine, analyticHestonEngine, IntegrationControl(..), fdHestonVanillaEngine)
 
-import QuantLib.Spec.Helpers(areClose, closePrec)
-
-quantLibAtMost143 :: Bool
-quantLibAtMost143 = case break (== '.') Context.version of
-  (major, '.':rest) -> case (readMaybe major, readMaybe (takeWhile isDigit rest)) of
-    (Just major', Just minor') -> (major', minor') <= (1 :: Int, 43 :: Int)
-    _ -> False
-  _ -> False
+import QuantLib.Spec.Helpers(areClose, closePrec, quantLibAtMost143)
 
 spec :: Spec
 spec = do

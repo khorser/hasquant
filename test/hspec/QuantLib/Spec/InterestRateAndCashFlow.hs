@@ -7,7 +7,8 @@ import Test.QuickCheck.Monadic as Q(monadicIO, run)
 import Test.QuickCheck((==>))
 
 import Control.Exception(bracket_)
-import Control.Monad(forM_, (>=>))
+import Control.Monad(forM_, unless, (>=>))
+import Data.List(isInfixOf)
 import qualified Data.List.NonEmpty as NE
 import Data.Maybe(fromMaybe)
 import Data.Time.Calendar
@@ -48,7 +49,7 @@ import qualified QuantLib.Instrument.Swap as Swap
 import qualified QuantLib.PricingEngine as PE
 import QuantLib.Math
 
-import QuantLib.Spec.Helpers(ValidDay(..), closePrec, listCloseRel)
+import QuantLib.Spec.Helpers(ValidDay(..), closePrec, listCloseRel, quantLibAtMost143)
 
 spec :: Day -> Spec
 spec evalDate = do
@@ -69,21 +70,7 @@ spec evalDate = do
                     (0.0700, IR.Compounded,        Bimonthly,  1.0/6,     IR.Simple,            Annual, 0.0700, 4),
                     (0.0800,     IR.Simple,           Annual,  1.0/6, IR.Compounded,         Bimonthly, 0.0800, 4),
                     (0.0900, IR.Compounded,          Monthly, 1.0/12,     IR.Simple,            Annual, 0.0900, 4),
-                    (0.1000,     IR.Simple,           Annual, 1.0/12, IR.Compounded,           Monthly, 0.1000, 4), (0.0300, IR.SimpleThenCompounded,       Semiannual,   0.25,               IR.Simple,            Annual, 0.0300, 4),
-                    (0.0300, IR.SimpleThenCompounded,       Semiannual,   0.25,               IR.Simple,        Semiannual, 0.0300, 4),
-                    (0.0300, IR.SimpleThenCompounded,       Semiannual,   0.25,               IR.Simple,         Quarterly, 0.0300, 4),
-                    (0.0300, IR.SimpleThenCompounded,       Semiannual,   0.50,               IR.Simple,            Annual, 0.0300, 4),
-                    (0.0300, IR.SimpleThenCompounded,       Semiannual,   0.50,               IR.Simple,        Semiannual, 0.0300, 4),
-                    (0.0300, IR.SimpleThenCompounded,       Semiannual,   0.75,           IR.Compounded,        Semiannual, 0.0300, 4),
-                    (0.0400,               IR.Simple,       Semiannual,   0.25, IR.SimpleThenCompounded,         Quarterly, 0.0400, 4),
-                    (0.0400,               IR.Simple,       Semiannual,   0.25, IR.SimpleThenCompounded,        Semiannual, 0.0400, 4),
-                    (0.0400,               IR.Simple,       Semiannual,   0.25, IR.SimpleThenCompounded,            Annual, 0.0400, 4),
-                    (0.0400,           IR.Compounded,        Quarterly,   0.50, IR.SimpleThenCompounded,         Quarterly, 0.0400, 4),
-                    (0.0400,               IR.Simple,       Semiannual,   0.50, IR.SimpleThenCompounded,        Semiannual, 0.0400, 4),
-                    (0.0400,               IR.Simple,       Semiannual,   0.50, IR.SimpleThenCompounded,            Annual, 0.0400, 4),
-                    (0.0400,           IR.Compounded,        Quarterly,   0.75, IR.SimpleThenCompounded,         Quarterly, 0.0400, 4),
-                    (0.0400,           IR.Compounded,       Semiannual,   0.75, IR.SimpleThenCompounded,        Semiannual, 0.0400, 4),
-                    (0.0400,               IR.Simple,       Semiannual,   0.75, IR.SimpleThenCompounded,            Annual, 0.0400, 4)]
+                    (0.1000,     IR.Simple,           Annual, 1.0/12, IR.Compounded,           Monthly, 0.1000, 4)]
 
       let testCase :: (Double, IR.Compounding, Frequency, Double, IR.Compounding, Frequency, Double, Int) -> IO ()
           testCase (r, comp, freq, t, comp2, freq2, expected, prec) = do
@@ -110,6 +97,34 @@ spec evalDate = do
 
       it "bulk test for conversions" $ do
         Context.keepingSettingsGc $ mapM_ testCase cases
+
+      unless quantLibAtMost143 $ do
+        let d1 = fromGregorian 2024 1 1
+            d2 = addDays 360 d1
+            compoundings :: [IR.Compounding]
+            compoundings = [IR.SimpleThenCompounded, IR.CompoundedThenSimple]
+            periods :: [(String, IR.AccrualPeriod)]
+            periods =
+              [ ("time", IR.AccrualAtTime 1.0)
+              , ("dates", IR.AccrualBetween d1 d2 (Just d1) (Just d2))
+              ]
+            unsupported (CPlusPlusException message) =
+              "not supported for direct calculations" `isInfixOf` message
+            unsupported _ = False
+        forM_ compoundings $ \comp ->
+          forM_ periods $ \(coordinate, accrual) ->
+            it ("rejects " ++ show comp ++ " direct calculations with " ++ coordinate) $ do
+              dc <- dayCounter (Actual360 False)
+              let equivalent = case accrual of
+                    IR.AccrualAtTime t -> IR.EquivalentAtTime t
+                    IR.AccrualBetween start end rs re -> IR.EquivalentBetween dc start end rs re
+              mixed <- IR.interestRate 0.03 dc comp Semiannual
+              simple <- IR.interestRate 0.03 dc IR.Simple Annual
+              IR.compoundFactor mixed accrual `shouldThrow` unsupported
+              IR.discountFactor mixed accrual `shouldThrow` unsupported
+              IR.equivalentRate mixed IR.Simple Annual equivalent `shouldThrow` unsupported
+              IR.equivalentRate simple comp Semiannual equivalent `shouldThrow` unsupported
+              IR.impliedRate simple 1.03 dc comp Semiannual accrual `shouldThrow` unsupported
 
       -- ActualActual(ISMA) is the case where the reference period actually matters: over an
       -- irregular period it year-fractions against [refStart, refEnd], not [d1, d2].

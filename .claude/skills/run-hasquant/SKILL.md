@@ -123,6 +123,11 @@ cabal test all --enable-tests                              # full suite
 
 Both pass clean on the current `HEAD`.
 
+For version-dependent expectations, reuse `QuantLib.Spec.Helpers.quantLibAtMost143`.
+It parses major/minor numerically, including suffixes such as `1.44-rc`; do not compare
+version strings lexically. QuantLib 1.44 rejects direct mixed-compounding interest-rate
+calculations, so the corresponding exception checks run only on newer versions.
+
 Slow tests are marked by suffixing `(LONG)` to the `it`/`describe`
 description. The effective threshold is ~2.5s, not tens of seconds: measure
 before labelling, and re-check existing labels (the equity option block was
@@ -185,6 +190,11 @@ Haskell-side HPC route above turns out insufficient.
 
 ## Gotchas
 
+- **A successful macOS link does not prove QuantLib's headers and library match.**
+  `-undefined dynamic_lookup` can leave a new constructor symbol unresolved, and a
+  test can terminate at its first affected call. Before testing against an upstream
+  checkout, refresh its library with `cmake --build <checkout>/build --target ql_library`.
+  Compare `nm -g <library> | c++filt` with the header if a constructor signature differs.
 - **A segfault at the first cbits call usually means a `Date` layout mismatch.** Check which
   `ql/config.hpp` the shim saw: an `-isystem` for the QuantLib include dir demotes it behind
   Homebrew's `QL_HIGH_RESOLUTION_DATE` headers; use `-optcxx--system-header-prefix=ql/` instead.

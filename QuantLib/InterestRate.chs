@@ -104,24 +104,32 @@ data EquivalentPeriod
 {#fun pure qlInterestRateRate as rate{withInterestRate*`InterestRate'}->`Double'#}
 
 -- |Compound (capitalization) factor implied by the rate over the given period.
+-- QuantLib 1.44 and later reject 'SimpleThenCompounded' and 'CompoundedThenSimple';
+-- use "QuantLib.CashFlow" calculations for these conventions.
 compoundFactor :: InterestRate -> AccrualPeriod -> IO Double
 compoundFactor ir period = case period of
   AccrualAtTime t -> compoundFactorAtTimeRaw ir t
   AccrualBetween d1 d2 rs re -> compoundFactorBetweenRaw ir d1 d2 rs re
 
 -- |Discount factor implied by the rate over the given period.
+-- QuantLib 1.44 and later reject 'SimpleThenCompounded' and 'CompoundedThenSimple';
+-- use "QuantLib.CashFlow" calculations for these conventions.
 discountFactor :: InterestRate -> AccrualPeriod -> IO Double
 discountFactor ir period = case period of
   AccrualAtTime t -> discountFactorAtTimeRaw ir t
   AccrualBetween d1 d2 rs re -> discountFactorBetweenRaw ir d1 d2 rs re
 
 -- |Equivalent rate under a different compounding and frequency over the given period.
+-- QuantLib 1.44 and later reject mixed source compounding and non-unit factors with
+-- mixed result compounding; use "QuantLib.CashFlow" for these conventions.
 equivalentRate :: InterestRate -> Compounding -> Frequency -> EquivalentPeriod -> IO InterestRate
 equivalentRate ir comp freq period = case period of
   EquivalentAtTime t -> equivalentRateAtTimeRaw ir comp freq t
   EquivalentBetween dc d1 d2 rs re -> equivalentRateBetweenRaw ir dc comp freq d1 d2 rs re
 
 -- |Rate implied by a given compound factor over the given period, in the supplied day counter.
+-- QuantLib 1.44 and later reject mixed result compounding for non-unit compound factors;
+-- use "QuantLib.CashFlow" calculations for 'SimpleThenCompounded' and 'CompoundedThenSimple'.
 impliedRate :: InterestRate -> Double -> DayCounter -> Compounding -> Frequency -> AccrualPeriod
   -> IO InterestRate
 impliedRate ir compound dc comp freq period = case period of

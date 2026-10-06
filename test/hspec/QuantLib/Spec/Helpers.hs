@@ -1,5 +1,5 @@
 {-# OPTIONS_GHC -fno-warn-orphans #-}
--- |Shared arbitrary instances and value-comparison helpers for @QuantLib.Spec.*@.
+-- |Shared version checks, arbitrary instances and value-comparison helpers for @QuantLib.Spec.*@.
 module QuantLib.Spec.Helpers (
     ValidDay(..)
   , InvalidDay(..)
@@ -8,16 +8,26 @@ module QuantLib.Spec.Helpers (
   , listClose
   , listCloseRel
   , binomialsClose
+  , quantLibAtMost143
   ) where
 
 import Data.Time.Calendar
+import Data.Char(isDigit)
 import Data.List(delete)
+import Text.Read(readMaybe)
 
 import Test.QuickCheck(elements, Arbitrary(arbitrary))
 
 import QuantLib.Time.Date(minDate, maxDate)
 import QuantLib.Time.Schedule(Frequency(..))
 import qualified QuantLib.Context as Context
+
+quantLibAtMost143 :: Bool
+quantLibAtMost143 = case break (== '.') Context.version of
+  (major, '.':rest) -> case (readMaybe major, readMaybe (takeWhile isDigit rest)) of
+    (Just major', Just minor') -> (major', minor') <= (1 :: Int, 43 :: Int)
+    _ -> False
+  _ -> False
 
 instance Arbitrary Frequency where
   arbitrary = elements $ OtherFrequency `delete` [minBound .. ]
