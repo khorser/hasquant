@@ -50,7 +50,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        ql_version: ["1.43"]
+        ql_version: ["1.43", "1.44-rc"]
         ghc_version: ["8.10.6", "9.10.3", "9.12.4", "9.14.1"]
         boost_version: ${{ fromJSON(needs.resolve-boost.outputs.versions) }}
     steps:
@@ -110,7 +110,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        ql_version: ["1.43"]
+        ql_version: ["1.43", "1.44-rc"]
         ghc_version: ["8.10.6", "9.10.3", "9.12.4"]
         boost_version: ${{ fromJSON(needs.resolve-boost.outputs.versions) }}
     steps:
