@@ -529,7 +529,7 @@ span.spaces    { background: white }
 <span class="lineno">  510 </span>
 <span class="lineno">  511 </span>
 <span class="lineno">  512 </span>-- |Sets the pricing engine used to compute the instrument's results.
-<span class="lineno">  513 </span>setPricingEngine :: (GenInstrument i) -&gt; (PricingEngine) -&gt; IO ()
+<span class="lineno">  513 </span>setPricingEngine :: (GenInstrument i) -&gt; (GenPricingEngine pe) -&gt; IO ()
 <span class="lineno">  514 </span><span class="decl"><span class="istickedoff">setPricingEngine a1 a2 =</span>
 <span class="lineno">  515 </span><span class="spaces">  </span><span class="istickedoff">withInstrument a1 $ \a1' -&gt; </span>
 <span class="lineno">  516 </span><span class="spaces">  </span><span class="istickedoff">withPricingEngine a2 $ \a2' -&gt; </span>
@@ -564,7 +564,7 @@ span.spaces    { background: white }
 <span class="lineno">  545 </span>  qlCompositeInstrument'_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr (CInstrument'))) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CInstrument'))))))))
 <span class="lineno">  546 </span>
 <span class="lineno">  547 </span>foreign import ccall safe &quot;QuantLib/Instrument.chs.h qlInstrumentSetPricingEngine&quot;
-<span class="lineno">  548 </span>  setPricingEngine'_ :: ((C2HSImp.Ptr (CInstrument')) -&gt; ((C2HSImp.Ptr (CPricingEngine)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO ()))))
+<span class="lineno">  548 </span>  setPricingEngine'_ :: ((C2HSImp.Ptr (CInstrument')) -&gt; ((C2HSImp.Ptr (CPricingEngine')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO ()))))
 
 </pre>
 </body>
