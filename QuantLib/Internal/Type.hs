@@ -77,6 +77,9 @@ peekCalendar = Calendar <.> peekStandalone
 withCalendar :: Calendar -> (Ptr CCalendar -> IO b) -> IO b
 withCalendar = withStandalone . getCCalendar
 foreign import ccall safe "ql.h qlCalendarName" qlCalendarName :: Ptr CCalendar -> IO CString
+withMaybeCalendar :: Maybe Calendar -> (Ptr CCalendar -> IO r) -> IO r
+withMaybeCalendar x f = maybe (f nullPtr) (`withCalendar` f) x
+
 instance Show Calendar where show x = showStandalone qlCalendarName (getCCalendar x)
 -- Equality by name, here and for the Currency/Region/DayCounter/Schedule instances
 -- below. This is deliberate: it is how QuantLib itself compares these types.
@@ -409,14 +412,33 @@ peekOptionletStripper2 = OptionletStripper2 <.> peekStandalone
 withOptionletStripper2 :: OptionletStripper2 -> (Ptr COptionletStripper2 -> IO b) -> IO b
 withOptionletStripper2 = withStandalone . getCOptionletStripper2
 
-data CPricingEngine
-newtype PricingEngine = PricingEngine {getCPricingEngine :: Standalone CPricingEngine}
-foreign import ccall unsafe "ql.h &qlFreePricingEngine" qlFreePricingEngine :: FinalizerPtr CPricingEngine
-instance Finalizable CPricingEngine where finalize = qlFreePricingEngine
-peekPricingEngine :: Ptr CPricingEngine -> IO PricingEngine
-peekPricingEngine = PricingEngine <.> peekStandalone
-withPricingEngine :: PricingEngine -> (Ptr CPricingEngine -> IO b) -> IO b
-withPricingEngine = withStandalone . getCPricingEngine
+-- |Pricing engine hierarchy: PricingEngine -> AnalyticRoughHestonEngine.
+data CPricingEngine'
+newtype GenPricingEngine pe = GenPricingEngine {getPricingEngine :: GenForeignPtr pe CPricingEngine'}
+type CPricingEngine = ForeignPtr CPricingEngine'
+type PricingEngine = GenPricingEngine CPricingEngine
+foreign import ccall unsafe "ql.h &qlFreePricingEngine" qlFreePricingEngine :: FinalizerPtr CPricingEngine'
+instance Finalizable CPricingEngine' where finalize = qlFreePricingEngine
+peekPricingEngine :: Ptr CPricingEngine' -> IO PricingEngine
+peekPricingEngine = GenPricingEngine <.> newCastForeignPtr
+withPricingEngine :: GenPricingEngine pe -> (Ptr CPricingEngine' -> IO b) -> IO b
+withPricingEngine = withGenForeignPtr . getPricingEngine
+asPricingEngine :: GenPricingEngine pe -> IO PricingEngine
+asPricingEngine = transferGenForeignPtr (pure . GenPricingEngine) . getPricingEngine
+
+data CAnalyticRoughHestonEngine'
+type CAnalyticRoughHestonEngine = ForeignPtr CAnalyticRoughHestonEngine'
+-- |A 'PricingEngine' with its concrete native interface preserved.
+type AnalyticRoughHestonEngine = GenPricingEngine CAnalyticRoughHestonEngine
+foreign import ccall unsafe "ql.h &qlFreeAnalyticRoughHestonEngine" qlFreeAnalyticRoughHestonEngine :: FinalizerPtr CAnalyticRoughHestonEngine'
+instance Finalizable CAnalyticRoughHestonEngine' where finalize = qlFreeAnalyticRoughHestonEngine
+foreign import ccall "ql.h qlAnalyticRoughHestonEngineAsPricingEngine" qlAnalyticRoughHestonEngineAsPricingEngine :: Ptr CAnalyticRoughHestonEngine' -> IO (Ptr CPricingEngine')
+instance Upcastable CAnalyticRoughHestonEngine' where {type Base CAnalyticRoughHestonEngine' = CPricingEngine'; upcast = qlAnalyticRoughHestonEngineAsPricingEngine}
+peekAnalyticRoughHestonEngine :: Ptr CAnalyticRoughHestonEngine' -> IO AnalyticRoughHestonEngine
+peekAnalyticRoughHestonEngine = GenPricingEngine <.> newGenForeignPtr
+withAnalyticRoughHestonEngine :: AnalyticRoughHestonEngine -> (Ptr CAnalyticRoughHestonEngine' -> IO b) -> IO b
+withAnalyticRoughHestonEngine = withForeignPtr . ptr . getPricingEngine
+
 
 data CBlackDeltaCalculator
 newtype BlackDeltaCalculator = BlackDeltaCalculator {getCBlackDeltaCalculator :: Standalone CBlackDeltaCalculator}
@@ -426,6 +448,12 @@ peekBlackDeltaCalculator :: Ptr CBlackDeltaCalculator -> IO BlackDeltaCalculator
 peekBlackDeltaCalculator = BlackDeltaCalculator <.> peekStandalone
 withBlackDeltaCalculator :: BlackDeltaCalculator -> (Ptr CBlackDeltaCalculator -> IO b) -> IO b
 withBlackDeltaCalculator = withStandalone . getCBlackDeltaCalculator
+
+-- Standalone FX projection interface.
+data CFxResetPricer
+type FxResetPricer = Standalone CFxResetPricer
+foreign import ccall unsafe "ql.h &qlFreeFxResetPricer" qlFreeFxResetPricer :: FinalizerPtr CFxResetPricer
+instance Finalizable CFxResetPricer where finalize = qlFreeFxResetPricer
 
 -- Generic floating-rate coupon pricer; CMS pricers retain a concrete subtype.
 data CFloatingRateCouponPricer'
@@ -508,6 +536,19 @@ peekIborCoupon :: Ptr CIborCoupon' -> IO IborCoupon
 peekIborCoupon = newGenForeignPtr >=> newGenFloatingRateCoupon
 withIborCoupon :: IborCoupon -> (Ptr CIborCoupon' -> IO b) -> IO b
 withIborCoupon = withForeignPtr . ptr . peel . peel . getCashFlow
+
+data CFxResetCoupon'
+type CFxResetCoupon = ForeignPtr CFxResetCoupon'
+-- |A 'FloatingRateCoupon' with its concrete native interface preserved.
+type FxResetCoupon = GenFloatingRateCoupon CFxResetCoupon
+foreign import ccall unsafe "ql.h &qlFreeFxResetCoupon" qlFreeFxResetCoupon :: FinalizerPtr CFxResetCoupon'
+instance Finalizable CFxResetCoupon' where finalize = qlFreeFxResetCoupon
+foreign import ccall "ql.h qlFxResetCouponAsFloatingRateCoupon" qlFxResetCouponAsFloatingRateCoupon :: Ptr CFxResetCoupon' -> IO (Ptr CFloatingRateCoupon')
+instance Upcastable CFxResetCoupon' where {type Base CFxResetCoupon' = CFloatingRateCoupon'; upcast = qlFxResetCouponAsFloatingRateCoupon}
+peekFxResetCoupon :: Ptr CFxResetCoupon' -> IO FxResetCoupon
+peekFxResetCoupon = newGenForeignPtr >=> newGenFloatingRateCoupon
+withFxResetCoupon :: FxResetCoupon -> (Ptr CFxResetCoupon' -> IO b) -> IO b
+withFxResetCoupon = withForeignPtr . ptr . peel . peel . getCashFlow
 
 data COvernightIndexedCoupon'
 type COvernightIndexedCoupon = ForeignPtr COvernightIndexedCoupon'
@@ -1116,6 +1157,7 @@ data CCashFlow'
 -- >       DigitalCoupon
 -- >         DigitalCmsCoupon
 -- >         DigitalCmsSpreadCoupon
+-- >       FxResetCoupon
 -- >       IborCoupon
 -- >       MultipleResetsCoupon
 -- >       OvernightIndexedCoupon
@@ -1123,6 +1165,7 @@ data CCashFlow'
 -- >       StrippedCappedFlooredCoupon
 -- >     CPICoupon
 -- >     YoYInflationCoupon
+-- >   FxResetNotionalExchange
 -- >   IndexedCashFlow
 -- >     CPICashFlow
 -- >     EquityCashFlow
@@ -1178,6 +1221,19 @@ peekFixedRateCoupon :: Ptr CFixedRateCoupon' -> IO FixedRateCoupon
 peekFixedRateCoupon = newGenForeignPtr >=> newGenCoupon
 withFixedRateCoupon :: FixedRateCoupon -> (Ptr CFixedRateCoupon' -> IO b) -> IO b
 withFixedRateCoupon = withForeignPtr . ptr . peel . getCashFlow
+
+data CFxResetNotionalExchange'
+type CFxResetNotionalExchange = ForeignPtr CFxResetNotionalExchange'
+-- |A 'CashFlow' with its concrete native interface preserved.
+type FxResetNotionalExchange = GenCashFlow CFxResetNotionalExchange
+foreign import ccall unsafe "ql.h &qlFreeFxResetNotionalExchange" qlFreeFxResetNotionalExchange :: FinalizerPtr CFxResetNotionalExchange'
+instance Finalizable CFxResetNotionalExchange' where finalize = qlFreeFxResetNotionalExchange
+foreign import ccall "ql.h qlFxResetNotionalExchangeAsCashFlow" qlFxResetNotionalExchangeAsCashFlow :: Ptr CFxResetNotionalExchange' -> IO (Ptr CCashFlow')
+instance Upcastable CFxResetNotionalExchange' where {type Base CFxResetNotionalExchange' = CCashFlow'; upcast = qlFxResetNotionalExchangeAsCashFlow}
+peekFxResetNotionalExchange :: Ptr CFxResetNotionalExchange' -> IO FxResetNotionalExchange
+peekFxResetNotionalExchange = GenCashFlow <.> newGenForeignPtr
+withFxResetNotionalExchange :: FxResetNotionalExchange -> (Ptr CFxResetNotionalExchange' -> IO b) -> IO b
+withFxResetNotionalExchange = withForeignPtr . ptr . getCashFlow
 
 data CIndexedCashFlow'
 -- |An 'IndexedCashFlow' or one of its leaves; see the hierarchy under t'GenCashFlow'.
@@ -2749,6 +2805,19 @@ data CLiborForwardModel'
 data CGsr'
 data CMarkovFunctional'
 data CPiecewiseTimeDependentHestonModel'
+data CRoughHestonModel'
+type CRoughHestonModel = ForeignPtr CRoughHestonModel'
+-- |A 'CalibratedModel' with its concrete native interface preserved.
+type RoughHestonModel = GenCalibratedModel CRoughHestonModel
+foreign import ccall unsafe "ql.h &qlFreeRoughHestonModel" qlFreeRoughHestonModel :: FinalizerPtr CRoughHestonModel'
+instance Finalizable CRoughHestonModel' where finalize = qlFreeRoughHestonModel
+foreign import ccall "ql.h qlRoughHestonModelAsCalibratedModel" qlRoughHestonModelAsCalibratedModel :: Ptr CRoughHestonModel' -> IO (Ptr CCalibratedModel')
+instance Upcastable CRoughHestonModel' where {type Base CRoughHestonModel' = CCalibratedModel'; upcast = qlRoughHestonModelAsCalibratedModel}
+peekRoughHestonModel :: Ptr CRoughHestonModel' -> IO RoughHestonModel
+peekRoughHestonModel = GenCalibratedModel <.> newGenForeignPtr
+withRoughHestonModel :: RoughHestonModel -> (Ptr CRoughHestonModel' -> IO b) -> IO b
+withRoughHestonModel = withForeignPtr . ptr . getCalibratedModel
+
 data CHestonModel'
 data CShortRateModel'
 data CBatesModel'
@@ -2764,6 +2833,7 @@ data CShortRateDynamics'
 -- >  LiborForwardModel + AffineModel
 -- >  GJRGARCHModel
 -- >  PiecewiseTimeDependentHestonModel
+-- >  RoughHestonModel
 -- >  HestonModel
 -- >    BatesModel
 -- >      BatesDetJumpModel
@@ -3058,6 +3128,7 @@ data CInstrument'
 -- >    CPISwap
 -- >    ZeroCouponSwap
 -- >    EquityTotalReturnSwap
+-- >    MtMCrossCurrencyBasisSwap
 -- >    ConstNotionalCrossCurrencySwap
 -- >      ConstNotionalCrossCurrencyBasisSwap
 -- >      ConstNotionalCrossCurrencyFixedVsFloatingSwap
@@ -3472,6 +3543,19 @@ withVanillaSwap = withForeignPtr . ptr . peel . peel . getInstrument
 -- own engine-dispatched getters (fairPaySpread/fairRecSpread, fairRate/fairSpread) reachable only
 -- through the real leaf pointer. Unlike FixedVsFloatingSwap, the base class is concrete upstream
 -- and hasquant binds its own 2-leg/N-leg constructors directly at this level.
+data CMtMCrossCurrencyBasisSwap'
+type CMtMCrossCurrencyBasisSwap = ForeignPtr CMtMCrossCurrencyBasisSwap'
+-- |A 'Swap' with its concrete native interface preserved.
+type MtMCrossCurrencyBasisSwap = GenSwap CMtMCrossCurrencyBasisSwap
+foreign import ccall unsafe "ql.h &qlFreeMtMCrossCurrencyBasisSwap" qlFreeMtMCrossCurrencyBasisSwap :: FinalizerPtr CMtMCrossCurrencyBasisSwap'
+instance Finalizable CMtMCrossCurrencyBasisSwap' where finalize = qlFreeMtMCrossCurrencyBasisSwap
+foreign import ccall "ql.h qlMtMCrossCurrencyBasisSwapAsSwap" qlMtMCrossCurrencyBasisSwapAsSwap :: Ptr CMtMCrossCurrencyBasisSwap' -> IO (Ptr CSwap')
+instance Upcastable CMtMCrossCurrencyBasisSwap' where {type Base CMtMCrossCurrencyBasisSwap' = CSwap'; upcast = qlMtMCrossCurrencyBasisSwapAsSwap}
+peekMtMCrossCurrencyBasisSwap :: Ptr CMtMCrossCurrencyBasisSwap' -> IO MtMCrossCurrencyBasisSwap
+peekMtMCrossCurrencyBasisSwap = newGenForeignPtr >=> newGenSwap
+withMtMCrossCurrencyBasisSwap :: MtMCrossCurrencyBasisSwap -> (Ptr CMtMCrossCurrencyBasisSwap' -> IO b) -> IO b
+withMtMCrossCurrencyBasisSwap = withForeignPtr . ptr . peel . getInstrument
+
 data CConstNotionalCrossCurrencySwap'
 type GenConstNotionalCrossCurrencySwap x = GenSwap (AnyOf CConstNotionalCrossCurrencySwap' x)
 type CConstNotionalCrossCurrencySwap = ForeignPtr CConstNotionalCrossCurrencySwap'

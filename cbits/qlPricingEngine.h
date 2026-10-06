@@ -644,6 +644,27 @@ extern "C" {
   void qlValidateSabrParameters(double alpha, double beta, double nu, double rho, QlError **e);
   void qlSabrGuess(double k_m, double vol_m, double k_0, double vol_0, double k_p, double vol_p, double forward, double expiryTime, double beta, double shift, int volatilityType, unsigned *len, double **out, QlError **e);
   double qlGaussian1dModelCompoundedRate(QlGaussian1dModel* model, QlOvernightIndexedCoupon* coupon, int date, double y, QlYieldTermStructure* curve, QlError **e);
+void qlFreeRoughHestonModel(QlRoughHestonModel* o);
+QlCalibratedModel* qlRoughHestonModelAsCalibratedModel(QlRoughHestonModel* o);
+QlRoughHestonModel* qlRoughHestonModel(QlHestonProcess* process, double hurst, QlError **e);
+double qlRoughHestonModelTheta(QlRoughHestonModel* o, QlError **e);
+double qlRoughHestonModelKappa(QlRoughHestonModel* o, QlError **e);
+double qlRoughHestonModelSigma(QlRoughHestonModel* o, QlError **e);
+double qlRoughHestonModelRho(QlRoughHestonModel* o, QlError **e);
+double qlRoughHestonModelV0(QlRoughHestonModel* o, QlError **e);
+double qlRoughHestonModelHurst(QlRoughHestonModel* o, QlError **e);
+QlHestonProcess* qlRoughHestonModelProcess(QlRoughHestonModel* o, QlError **e);
+void qlFreeAnalyticRoughHestonEngine(QlAnalyticRoughHestonEngine* o);
+QlPricingEngine* qlAnalyticRoughHestonEngineAsPricingEngine(QlAnalyticRoughHestonEngine* o);
+QlAnalyticRoughHestonEngine* qlAnalyticRoughHestonEngine(QlRoughHestonModel* model, unsigned integrationOrder, unsigned timeSteps, int approximation, unsigned nFactors, QlError **e);
+QlAnalyticRoughHestonEngine* qlAnalyticRoughHestonEngineWithIntegration(QlRoughHestonModel* model, int algorithm, unsigned count, double relative, double absolute, int convergence, unsigned timeSteps, double epsilon, double alpha, int approximation, unsigned nFactors, QlError **e);
+void qlRoughHestonchF(QlAnalyticRoughHestonEngine* o, double real, double imag, double time, double* outReal, double* outImag, QlError **e);
+void qlRoughHestonlnChF(QlAnalyticRoughHestonEngine* o, double real, double imag, double time, double* outReal, double* outImag, QlError **e);
+void qlRoughHestonriccatiSolution(QlAnalyticRoughHestonEngine* o, double real, double imag, double time, double* outReal, double* outImag, QlError **e);
+unsigned qlRoughHestonNumberOfEvaluations(QlAnalyticRoughHestonEngine* o, QlError **e);
+double qlRoughHestonPriceDate(QlAnalyticRoughHestonEngine* o, QlPlainVanillaPayoff* payoff, int maturity, QlError **e);
+double qlRoughHestonPriceTime(QlAnalyticRoughHestonEngine* o, QlPlainVanillaPayoff* payoff, double maturity, QlError **e);
+QlPricingEngine* qlDiscountingMtMCrossCurrencyBasisSwapEngine(Currency* domesticCcy, QlYieldTermStructure* domesticCurve, Currency* foreignCcy, QlYieldTermStructure* foreignCurve, QlQuote* spotFx, int includeSettlement, int settlementDate, int npvDate, int spotFxSettleDate, QlError **e);
 #ifdef __cplusplus
 }
 #endif

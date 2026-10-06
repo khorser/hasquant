@@ -1001,6 +1001,35 @@ extern "C" {
   double qlRendistatoCalculatorEquivalentSwapSpread(QlRendistatoCalculator *o, QlError **e);
   QlQuote *qlRendistatoEquivalentSwapLengthQuote(QlRendistatoCalculator *o, QlError **e);
   QlQuote *qlRendistatoEquivalentSwapSpreadQuote(QlRendistatoCalculator *o, QlError **e);
+void qlFreeMtMCrossCurrencyBasisSwap(QlMtMCrossCurrencyBasisSwap* o);
+QlSwap* qlMtMCrossCurrencyBasisSwapAsSwap(QlMtMCrossCurrencyBasisSwap* o);
+QlMtMCrossCurrencyBasisSwap* qlMtMCrossCurrencyBasisSwap(int type, double fxBaseNominal, Currency* fxBaseCurrency, Schedule* fxBaseSchedule, QlIborIndex* fxBaseIndex, double fxBaseSpread, double fxBaseGearing, double fxQuoteNominal, Currency* fxQuoteCurrency, Schedule* fxQuoteSchedule, QlIborIndex* fxQuoteIndex, double fxQuoteSpread, double fxQuoteGearing, int resetBase, unsigned fxResetFixingDays, Calendar* fxResetFixingCalendar, int fxBasePaymentLag, int fxQuotePaymentLag, int fxBasePaymentConvention, int fxQuotePaymentConvention, int fxBaseCompoundSpread, unsigned fxBaseLookbackDays, int fxBaseObservationShift, unsigned fxBaseLockoutDays, int fxBaseAveragingMethod, int fxQuoteCompoundSpread, unsigned fxQuoteLookbackDays, int fxQuoteObservationShift, unsigned fxQuoteLockoutDays, int fxQuoteAveragingMethod, int telescopicValueDates, int useIndexedCoupons, QlStubIndexSelection* fxBaseStubIndexSelection, QlStubIndexSelection* fxQuoteStubIndexSelection, QlError **e);
+Currency* qlMtMLegCurrency(QlMtMCrossCurrencyBasisSwap* o, unsigned j, QlError **e);
+double qlMtMInCcyLegBPS(QlMtMCrossCurrencyBasisSwap* o, unsigned j, QlError **e);
+double qlMtMInCcyLegNPV(QlMtMCrossCurrencyBasisSwap* o, unsigned j, QlError **e);
+double qlMtMNpvDateDiscounts(QlMtMCrossCurrencyBasisSwap* o, unsigned j, QlError **e);
+double qlMtMFairFxBaseSpread(QlMtMCrossCurrencyBasisSwap* o, QlError **e);
+double qlMtMFairFxQuoteSpread(QlMtMCrossCurrencyBasisSwap* o, QlError **e);
+double qlMtMFairPaySpread(QlMtMCrossCurrencyBasisSwap* o, QlError **e);
+double qlMtMFairRecSpread(QlMtMCrossCurrencyBasisSwap* o, QlError **e);
+void qlMtMFxResetRates(QlMtMCrossCurrencyBasisSwap* o, unsigned* len, double** out, QlError **e);
+void qlMtMFxResetNotionals(QlMtMCrossCurrencyBasisSwap* o, unsigned* len, double** out, QlError **e);
+void qlFxResetConventionReset(unsigned fixingDays, Calendar* calendar, int date, int* fixing, int* value, QlError **e);
+int qlFxResetConventionValueDate(unsigned fixingDays, Calendar* calendar, int date, QlError **e);
+void qlFreeFxResetPricer(QlFxResetPricer* o);
+QlFxResetPricer* qlDiscountingFxResetPricer(Currency* constantCcy, Currency* resetCcy, QlYieldTermStructure* constantCurve, QlYieldTermStructure* resetCurve, QlQuote* spotFx, int spotIsResettablePerConstant, int spotFxSettleDate, QlError **e);
+double qlFxResetRate(QlFxResetPricer* o, int fixing, int value, QlError **e);
+void qlFreeFxResetCoupon(QlFxResetCoupon* o);
+QlFloatingRateCoupon* qlFxResetCouponAsFloatingRateCoupon(QlFxResetCoupon* o);
+void qlFreeFxResetNotionalExchange(QlFxResetNotionalExchange* o);
+QlCashFlow* qlFxResetNotionalExchangeAsCashFlow(QlFxResetNotionalExchange* o);
+QlFxResetCoupon* qlFxResetCoupon(QlFloatingRateCoupon* underlying, double notional, int fixing, int value, QlError **e);
+QlFxResetNotionalExchange* qlFxResetNotionalExchange(int payment, double notional, int previousFixing, int previousValue, int currentFixing, int currentValue, QlError **e);
+void qlFxResetCouponSetFxResetPricer(QlFxResetCoupon* o, QlFxResetPricer* pricer, QlError **e);
+void qlFxResetNotionalExchangeSetFxResetPricer(QlFxResetNotionalExchange* o, QlFxResetPricer* pricer, QlError **e);
+void qlSetFxResetLegPricer(Leg* leg, QlFxResetPricer* pricer, QlError **e);
+QlIborCoupon* qlStubIborCoupon(int paymentDate, double nominal, int startDate, int endDate, unsigned fixingDays, QlStubIndexSelection* selection, double gearing, double spread, int refPeriodStart, int refPeriodEnd, DayCounter* dayCounter, int inArrears, int exCouponDate, int fixingConvention, QlError **e);
+double qlCouponNominal(QlCoupon* o, QlError **e);
 #ifdef __cplusplus
 }
 #endif

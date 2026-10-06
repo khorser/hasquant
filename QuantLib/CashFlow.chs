@@ -15,6 +15,8 @@ module QuantLib.CashFlow
   , IndexedCashFlow
   , FixedRateCoupon
   , IborCoupon
+  , FxResetCoupon
+  , FxResetNotionalExchange
   , AverageBMACoupon
   , StrippedCappedFlooredCoupon
   , CmsCoupon
@@ -42,8 +44,11 @@ module QuantLib.CashFlow
   , CPICouponPricer
   , YoYInflationCouponPricer
   , EquityCashFlowPricer
+  , FxResetPricer
 
     -- ** Configuration
+  , FxReset(..)
+  , FxResetConvention(..)
   , DurationType(..)
   , RateAveragingType(..)
   , TimingAdjustment(..)
@@ -72,6 +77,10 @@ module QuantLib.CashFlow
   , StubIndexSelection(..)
 
     -- * Constructors
+  , stubIborCoupon
+  , fxResetCoupon
+  , fxResetNotionalExchange
+  , discountingFxResetPricer
     -- ** Hierarchy conversion
   , asLeg
   , asCashFlow
@@ -161,6 +170,8 @@ module QuantLib.CashFlow
   , equityQuantoCashFlowPricer
 
     -- * Mutators
+  , HasFxResetPricer(..)
+  , setFxResetLegPricer
   , setCpiCouponPricer
   , setFloatingRateCouponPricer
   , setYoyInflationCouponPricer
@@ -170,6 +181,9 @@ module QuantLib.CashFlow
   , setEquityLegPricer
 
     -- * Inspectors
+  , fxResetObservation
+  , fxResetValueDate
+  , fxResetRate
     -- ** Coupon fixings
   , HasFixingDates(..)
   , fixingDependencies
@@ -217,6 +231,7 @@ module QuantLib.CashFlow
     -- ** Coupon rates and prices
   , coupons
   , couponAccrualStartDates
+  , couponNominal
   , couponAccruedAmount
   , rate
   , price
@@ -246,6 +261,10 @@ module QuantLib.CashFlow
   ) where
 import Language.Haskell.TH(mkName, varT)
 import QuantLib.Internal
+import Foreign.C.Types(CInt)
+import Foreign.Ptr(Ptr)
+import Foreign.Marshal.Alloc(alloca)
+import Foreign.Storable(peek)
 {#import QuantLib.InterestRate#}(Compounding, VolatilityType)
 {#import QuantLib.Time.Schedule#}(Frequency)
 import QuantLib.Time.Calendar(calendar, CalendarConstructor(..))
@@ -265,6 +284,7 @@ import Data.List.NonEmpty(NonEmpty(..), toList)
 {#pointer *QlDigitalCoupon as DigitalCoupon foreign -> CDigitalCoupon' nocode#}
 {#pointer *QlRangeAccrualFloatersCoupon as RangeAccrualFloatersCoupon foreign -> CRangeAccrualFloatersCoupon' nocode#}
 {#pointer *QlYoYInflationCoupon as YoYInflationCoupon foreign -> CYoYInflationCoupon' nocode#}
+{#pointer *Currency foreign -> CCurrency nocode#}
 {#pointer *Calendar foreign -> CCalendar nocode#}
 {#pointer *Leg foreign -> CLeg' nocode#}
 {#pointer *CouponLeg foreign -> CCouponLeg' nocode#}
@@ -295,6 +315,9 @@ import Data.List.NonEmpty(NonEmpty(..), toList)
 {#pointer *QlFloatingRateCoupon as FloatingRateCoupon foreign -> CFloatingRateCoupon' nocode#}
 {#pointer *QlStrippedCappedFlooredCoupon as StrippedCappedFlooredCoupon foreign -> CStrippedCappedFlooredCoupon' nocode#}
 {#pointer *QlDigitalReplication as DigitalReplication foreign -> CDigitalReplication nocode#}
+{#pointer *QlFxResetCoupon as FxResetCoupon foreign -> CFxResetCoupon' nocode#}
+{#pointer *QlFxResetNotionalExchange as FxResetNotionalExchange foreign -> CFxResetNotionalExchange' nocode#}
+{#pointer *QlFxResetPricer as FxResetPricer foreign -> CFxResetPricer nocode#}
 {#pointer *QlIborCoupon as IborCoupon foreign -> CIborCoupon' nocode#}
 {#pointer *QlOvernightIndexedCoupon as OvernightIndexedCoupon foreign -> COvernightIndexedCoupon' nocode#}
 {#pointer *QlAverageBMACoupon as AverageBMACoupon foreign -> CAverageBMACoupon' nocode#}
@@ -1680,5 +1703,126 @@ instance HasIndexFixings AverageBMACoupon where
   indexFixings = averageBmaCouponIndexFixingsRaw
 instance HasIndexFixings OvernightIndexedCoupon where
   indexFixings = overnightIndexedCouponIndexFixingsRaw
+
+-- |FX observation as fixing date and associated settlement/value date.
+data FxReset = FxReset { fxResetFixingDate :: Day, fxResetSettlementDate :: Day } deriving (Eq, Show, Read)
+-- |FX observation convention: business-day fixing lag and optional calendar.
+-- Nothing uses an empty calendar; it is valid only with zero fixing days.
+data FxResetConvention = FxResetConvention Word (Maybe Calendar)
+withFxReset :: FxReset -> ((CInt, CInt) -> IO r) -> IO r
+withFxReset (FxReset fixing value) f = do
+  fixingSerial <- toSerial fixing
+  valueSerial <- toSerial value
+  f (fixingSerial, valueSerial)
+withMaybeFxReset :: Maybe FxReset -> ((CInt, CInt) -> IO r) -> IO r
+withMaybeFxReset reset f = maybe (f (0, 0)) (`withFxReset` f) reset
+
+-- |Native FX observation calculation.
+{#fun qlFxResetConventionReset as fxResetObservationRaw{fromIntegral`Word' -- ^fixingDays
+  ,withMaybeCalendar*`Maybe Calendar' -- ^fixingCalendar
+  ,withDay*`Day' -- ^valueDate
+  ,alloca-`Day'peekResetDay* -- ^fixing
+  ,alloca-`Day'peekResetDay* -- ^value
+  ,preErrorCheck-`String'errorCheck*-}->`()'#}
+
+-- |Native FX value-date calculation.
+{#fun qlFxResetConventionValueDate as fxResetValueDateRaw{fromIntegral`Word' -- ^fixingDays
+  ,withMaybeCalendar*`Maybe Calendar' -- ^fixingCalendar
+  ,withDay*`Day' -- ^fixingDate
+  ,preErrorCheck-`String'errorCheck*-}->`Day'toDay#}
+
+-- |Derive an FX observation from its value date (1.44). Nonzero lag needs a nonempty calendar.
+fxResetObservation :: FxResetConvention -- ^Business-day fixing lag and optional calendar
+  -> Day -- ^FX value date
+  -> IO FxReset
+fxResetObservation (FxResetConvention days cal) observationDate = do
+  (fixing, valueDate) <- fxResetObservationRaw days cal observationDate
+  pure (FxReset fixing valueDate)
+-- |Derive the spot value date of a fixing date using business days (1.44).
+fxResetValueDate :: FxResetConvention -- ^Business-day fixing lag and optional calendar
+  -> Day -- ^FX fixing date
+  -> IO Day
+fxResetValueDate (FxResetConvention days cal) = fxResetValueDateRaw days cal
+
+-- |FX reset projection from spot and two discount curves (1.44).
+-- Returns resettable currency per constant currency; past observations use ExchangeRateManager.
+{#fun qlDiscountingFxResetPricer as discountingFxResetPricer{withCurrency*`Currency' -- ^constantLegCurrency
+  ,withCurrency*`Currency' -- ^resettableLegCurrency
+  ,withYieldTermStructure*`GenYieldTermStructure y1' -- ^constantLegCurve
+  ,withYieldTermStructure*`GenYieldTermStructure y2' -- ^resettableLegCurve
+  ,withQuote*`GenQuote q' -- ^spotFx
+  ,`Bool' -- ^spotIsResettablePerConstant
+  ,withMaybeDay*`Maybe Day' -- ^spotFxSettleDate
+  ,preErrorCheck-`String'errorCheck*-}->`FxResetPricer'peekStandalone*#}
+
+-- |Observed or projected resettable-currency units per constant-currency unit (1.44).
+{#fun qlFxResetRate as fxResetRate{withStandalone*`FxResetPricer' -- ^pricer
+  ,withFxReset*`FxReset'& -- ^reset
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |Coupon with FX-reset notional (1.44). Attach an FX reset pricer before querying amount or nominal.
+-- Rate and accrued amount preserve the underlying coupon calculation, including overnight compounding.
+{#fun qlFxResetCoupon as fxResetCoupon{withFloatingRateCoupon*`GenFloatingRateCoupon frc' -- ^underlying
+  ,`Double' -- ^constantLegNotional
+  ,withFxReset*`FxReset'& -- ^reset
+  ,preErrorCheck-`String'errorCheck*-}->`FxResetCoupon'peekFxResetCoupon*#}
+
+-- |Netted FX-reset principal exchange (1.44). Missing previous/current resets select inception/final exchanges.
+-- Attach an FX reset pricer before querying amount; native validation rejects two absent resets.
+{#fun qlFxResetNotionalExchange as fxResetNotionalExchange{withDay*`Day' -- ^paymentDate
+  ,`Double' -- ^constantLegNotional
+  ,withMaybeFxReset*`Maybe FxReset'& -- ^previousReset
+  ,withMaybeFxReset*`Maybe FxReset'& -- ^currentReset
+  ,preErrorCheck-`String'errorCheck*-}->`FxResetNotionalExchange'peekFxResetNotionalExchange*#}
+
+-- |Attach retained FX reset pricing.
+{#fun qlFxResetCouponSetFxResetPricer as setFxResetCouponPricerRaw{withFxResetCoupon*`FxResetCoupon' -- ^cashFlow
+  ,withStandalone*`FxResetPricer' -- ^pricer
+  ,preErrorCheck-`String'errorCheck*-}->`()'#}
+
+-- |Attach retained FX reset pricing.
+{#fun qlFxResetNotionalExchangeSetFxResetPricer as setFxResetNotionalExchangePricerRaw{withFxResetNotionalExchange*`FxResetNotionalExchange' -- ^cashFlow
+  ,withStandalone*`FxResetPricer' -- ^pricer
+  ,preErrorCheck-`String'errorCheck*-}->`()'#}
+
+-- |Cash flows supporting FX reset pricer wiring.
+class HasFxResetPricer cf where
+  -- |Assign a retained FX reset pricer (1.44).
+  setFxResetPricer :: cf -> FxResetPricer -> IO ()
+instance HasFxResetPricer FxResetCoupon where
+  setFxResetPricer = setFxResetCouponPricerRaw
+instance HasFxResetPricer FxResetNotionalExchange where
+  setFxResetPricer = setFxResetNotionalExchangePricerRaw
+
+-- |Assign an FX reset pricer to every reset cash flow in a leg (1.44). Other cash flows are unchanged.
+{#fun qlSetFxResetLegPricer as setFxResetLegPricer{withLeg*`GenLeg l' -- ^leg
+  ,withStandalone*`FxResetPricer' -- ^pricer
+  ,preErrorCheck-`String'errorCheck*-}->`()'#}
+
+-- |Broken-period IBOR coupon selecting or interpolating component indexes (1.44).
+-- A nonempty stub selection is required; Nothing passes the native empty selection and fails validation.
+{#fun qlStubIborCoupon as stubIborCoupon{withDay*`Day' -- ^paymentDate
+  ,`Double' -- ^nominal
+  ,withDay*`Day' -- ^startDate
+  ,withDay*`Day' -- ^endDate
+  ,fromIntegral`Word' -- ^fixingDays
+  ,withStubIndexSelection*`Maybe (StubIndexSelection ibor)' -- ^stubIndexSelection
+  ,`Double' -- ^gearing
+  ,`Double' -- ^spread
+  ,withMaybeDay*`Maybe Day' -- ^refPeriodStart
+  ,withMaybeDay*`Maybe Day' -- ^refPeriodEnd
+  ,withMaybeDayCounter*`Maybe DayCounter' -- ^dayCounter
+  ,`Bool' -- ^isInArrears
+  ,withMaybeDay*`Maybe Day' -- ^exCouponDate
+  ,fromEnumC`BusinessDayConvention' -- ^fixingConvention
+  ,preErrorCheck-`String'errorCheck*-}->`IborCoupon'peekIborCoupon*#}
+
+
+peekResetDay :: Ptr CInt -> IO Day
+peekResetDay p = toDay <$> peek p
+
+-- |Current coupon notional. FX reset coupons compute it from the assigned FX reset pricer.
+{#fun qlCouponNominal as couponNominal{withCoupon*`GenCoupon c' -- ^coupon
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

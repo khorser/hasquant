@@ -303,6 +303,11 @@ Haskell-side HPC route above turns out insufficient.
   regression test in `test/hspec/QuantLib/Spec/DatesAndSchedule.hs`
   (`describe "settings"`) — extend it, don't re-derive it, if this ever
   needs re-verifying.
+- **Native fair spreads can leave residuals with compounded overnight spreads.**
+  QuantLib 1.44 RC's MTM NPV/BPS spread calculation does not exactly reprice the combined
+  overnight/stub fixture with `compoundSpread` enabled; raw C++ matches the binding.
+  Check such options fixtures against discounted live leg cash flows. Keep exact par
+  checks on ordinary non-compounded spreads, and document the native limitation.
 - **Reproduce a suspicious zero or garbage upstream result in raw C++ before blaming a binding.**
   Compile a probe with `c++ -std=c++17 $(quantlib-config --cflags) -isystem/opt/homebrew/include
   probe.cpp -L/opt/homebrew/lib -lQuantLib`; `quantlib-config` omits the Boost include path. Upstream

@@ -146,6 +146,11 @@ namespace hasquant {
 #endif
 
 #include "qlaux.h"
+#if QL_HEX_VERSION >= 0x01440000
+#include <ql/experimental/fx/mtmcrosscurrencybasisswap.hpp>
+#include <ql/experimental/fx/fxresetcashflows.hpp>
+#include <ql/cashflows/stubiborcoupon.hpp>
+#endif
 using namespace QuantLib;
 #include "qlInstrument.h"
 #include "qlMisc.h"
@@ -368,6 +373,9 @@ namespace {
 
   class FixingDependencyVisitor : public AcyclicVisitor,
                                   public Visitor<CashFlow>,
+#if QL_HEX_VERSION >= 0x01440000
+                                  public Visitor<FxResetCoupon>,
+#endif
                                   public Visitor<CappedFlooredOvernightIndexedCoupon>,
                                   public Visitor<StrippedCappedFlooredCoupon>,
                                   public Visitor<DigitalCoupon>,
@@ -393,6 +401,9 @@ namespace {
     : out_(out) {}
 
     void visit(CashFlow&) override {}
+#if QL_HEX_VERSION >= 0x01440000
+    void visit(FxResetCoupon& c) override {accept(c.underlying());}
+#endif
     void visit(CappedFlooredOvernightIndexedCoupon& c) override {accept(c.underlying());}
 
     // StrippedCappedFlooredCoupon::accept visits its underlying before visiting itself.
@@ -2774,5 +2785,221 @@ QlCreditDefaultSwap* qlCdsOptionUnderlyingSwap(QlCdsOption* o, QlError **e) { Ql
   try {return ret(new QlCreditDefaultSwap((*arg(o))->underlyingSwap()));}
   catch (std::exception& er) {return handleException<QlCreditDefaultSwap*>(e, er);}}
 
+void qlFreeMtMCrossCurrencyBasisSwap(QlMtMCrossCurrencyBasisSwap* o) {del(o);}
+QlSwap* qlMtMCrossCurrencyBasisSwapAsSwap(QlMtMCrossCurrencyBasisSwap* o) {
+#if QL_HEX_VERSION >= 0x01440000
+  return ret(new QlSwap(*arg(o)));
+#else
+  (void)o; return nullptr;
+#endif
+}
+QlMtMCrossCurrencyBasisSwap* qlMtMCrossCurrencyBasisSwap(int type, double fxBaseNominal, Currency* fxBaseCurrency, Schedule* fxBaseSchedule, QlIborIndex* fxBaseIndex, double fxBaseSpread, double fxBaseGearing, double fxQuoteNominal, Currency* fxQuoteCurrency, Schedule* fxQuoteSchedule, QlIborIndex* fxQuoteIndex, double fxQuoteSpread, double fxQuoteGearing, int resetBase, unsigned fxResetFixingDays, Calendar* fxResetFixingCalendar, int fxBasePaymentLag, int fxQuotePaymentLag, int fxBasePaymentConvention, int fxQuotePaymentConvention, int fxBaseCompoundSpread, unsigned fxBaseLookbackDays, int fxBaseObservationShift, unsigned fxBaseLockoutDays, int fxBaseAveragingMethod, int fxQuoteCompoundSpread, unsigned fxQuoteLookbackDays, int fxQuoteObservationShift, unsigned fxQuoteLockoutDays, int fxQuoteAveragingMethod, int telescopicValueDates, int useIndexedCoupons, QlStubIndexSelection* fxBaseStubIndexSelection, QlStubIndexSelection* fxQuoteStubIndexSelection, QlError **e) { QlCallScope callbackScope(e);
+
+#if QL_HEX_VERSION >= 0x01440000
+  try {return ret(new QlMtMCrossCurrencyBasisSwap(alloc(new MtMCrossCurrencyBasisSwap((MtMCrossCurrencyBasisSwap::Type)type, fxBaseNominal, *arg(fxBaseCurrency), *arg(fxBaseSchedule), *arg(fxBaseIndex), fxBaseSpread, fxBaseGearing, fxQuoteNominal, *arg(fxQuoteCurrency), *arg(fxQuoteSchedule), *arg(fxQuoteIndex), fxQuoteSpread, fxQuoteGearing, resetBase, fxResetFixingDays, fxResetFixingCalendar ? *arg(fxResetFixingCalendar) : Calendar(), fxBasePaymentLag, fxQuotePaymentLag, (BusinessDayConvention)fxBasePaymentConvention, (BusinessDayConvention)fxQuotePaymentConvention, fxBaseCompoundSpread, fxBaseLookbackDays, fxBaseObservationShift, fxBaseLockoutDays, (RateAveraging::Type)fxBaseAveragingMethod, fxQuoteCompoundSpread, fxQuoteLookbackDays, fxQuoteObservationShift, fxQuoteLockoutDays, (RateAveraging::Type)fxQuoteAveragingMethod, telescopicValueDates, qlOptBool(useIndexedCoupons), qlStubSelection(fxBaseStubIndexSelection), qlStubSelection(fxQuoteStubIndexSelection)))));} catch (std::exception& er) {return handleException<QlMtMCrossCurrencyBasisSwap*>(e, er);}
+#else
+  (void)type; (void)fxBaseNominal; (void)fxBaseCurrency; (void)fxBaseSchedule; (void)fxBaseIndex; (void)fxBaseSpread; (void)fxBaseGearing; (void)fxQuoteNominal; (void)fxQuoteCurrency; (void)fxQuoteSchedule; (void)fxQuoteIndex; (void)fxQuoteSpread; (void)fxQuoteGearing; (void)resetBase; (void)fxResetFixingDays; (void)fxResetFixingCalendar; (void)fxBasePaymentLag; (void)fxQuotePaymentLag; (void)fxBasePaymentConvention; (void)fxQuotePaymentConvention; (void)fxBaseCompoundSpread; (void)fxBaseLookbackDays; (void)fxBaseObservationShift; (void)fxBaseLockoutDays; (void)fxBaseAveragingMethod; (void)fxQuoteCompoundSpread; (void)fxQuoteLookbackDays; (void)fxQuoteObservationShift; (void)fxQuoteLockoutDays; (void)fxQuoteAveragingMethod; (void)telescopicValueDates; (void)useIndexedCoupons; (void)fxBaseStubIndexSelection; (void)fxQuoteStubIndexSelection;
+  qlUnsupportedVersion(e, "mtmCrossCurrencyBasisSwap", "1.44"); return nullptr;
+#endif
+}
+Currency* qlMtMLegCurrency(QlMtMCrossCurrencyBasisSwap* o, unsigned j, QlError **e) { QlCallScope callbackScope(e);
+
+#if QL_HEX_VERSION >= 0x01440000
+  try {return ret(new Currency((*arg(o))->legCurrency(j)));} catch (std::exception& er) {return handleException<Currency*>(e, er);}
+#else
+  (void)o; (void)j;
+  qlUnsupportedVersion(e, "legCurrency", "1.44"); return nullptr;
+#endif
+}
+double qlMtMInCcyLegBPS(QlMtMCrossCurrencyBasisSwap* o, unsigned j, QlError **e) { QlCallScope callbackScope(e);
+
+#if QL_HEX_VERSION >= 0x01440000
+  try {return (*arg(o))->inCcyLegBPS(j);} catch (std::exception& er) {return handleException<double>(e, er);}
+#else
+  (void)o; (void)j;
+  qlUnsupportedVersion(e, "inCcyLegBps", "1.44"); return 0;
+#endif
+}
+double qlMtMInCcyLegNPV(QlMtMCrossCurrencyBasisSwap* o, unsigned j, QlError **e) { QlCallScope callbackScope(e);
+
+#if QL_HEX_VERSION >= 0x01440000
+  try {return (*arg(o))->inCcyLegNPV(j);} catch (std::exception& er) {return handleException<double>(e, er);}
+#else
+  (void)o; (void)j;
+  qlUnsupportedVersion(e, "inCcyLegNpv", "1.44"); return 0;
+#endif
+}
+double qlMtMNpvDateDiscounts(QlMtMCrossCurrencyBasisSwap* o, unsigned j, QlError **e) { QlCallScope callbackScope(e);
+
+#if QL_HEX_VERSION >= 0x01440000
+  try {return (*arg(o))->npvDateDiscounts(j);} catch (std::exception& er) {return handleException<double>(e, er);}
+#else
+  (void)o; (void)j;
+  qlUnsupportedVersion(e, "npvDateDiscounts", "1.44"); return 0;
+#endif
+}
+double qlMtMFairFxBaseSpread(QlMtMCrossCurrencyBasisSwap* o, QlError **e) { QlCallScope callbackScope(e);
+
+#if QL_HEX_VERSION >= 0x01440000
+  try {const double value = (*arg(o))->fairFxBaseSpread(); QL_REQUIRE(std::isfinite(value), "fair spread is undefined for zero leg BPS"); return value;} catch (std::exception& er) {return handleException<double>(e, er);}
+#else
+  (void)o;
+  qlUnsupportedVersion(e, "fairFxBaseSpread", "1.44"); return 0;
+#endif
+}
+double qlMtMFairFxQuoteSpread(QlMtMCrossCurrencyBasisSwap* o, QlError **e) { QlCallScope callbackScope(e);
+
+#if QL_HEX_VERSION >= 0x01440000
+  try {const double value = (*arg(o))->fairFxQuoteSpread(); QL_REQUIRE(std::isfinite(value), "fair spread is undefined for zero leg BPS"); return value;} catch (std::exception& er) {return handleException<double>(e, er);}
+#else
+  (void)o;
+  qlUnsupportedVersion(e, "fairFxQuoteSpread", "1.44"); return 0;
+#endif
+}
+double qlMtMFairPaySpread(QlMtMCrossCurrencyBasisSwap* o, QlError **e) { QlCallScope callbackScope(e);
+
+#if QL_HEX_VERSION >= 0x01440000
+  try {const double value = (*arg(o))->fairPaySpread(); QL_REQUIRE(std::isfinite(value), "fair spread is undefined for zero leg BPS"); return value;} catch (std::exception& er) {return handleException<double>(e, er);}
+#else
+  (void)o;
+  qlUnsupportedVersion(e, "fairPaySpread", "1.44"); return 0;
+#endif
+}
+double qlMtMFairRecSpread(QlMtMCrossCurrencyBasisSwap* o, QlError **e) { QlCallScope callbackScope(e);
+
+#if QL_HEX_VERSION >= 0x01440000
+  try {const double value = (*arg(o))->fairRecSpread(); QL_REQUIRE(std::isfinite(value), "fair spread is undefined for zero leg BPS"); return value;} catch (std::exception& er) {return handleException<double>(e, er);}
+#else
+  (void)o;
+  qlUnsupportedVersion(e, "fairRecSpread", "1.44"); return 0;
+#endif
+}
+void qlMtMFxResetRates(QlMtMCrossCurrencyBasisSwap* o, unsigned* len, double** out, QlError **e) { QlCallScope callbackScope(e);
+  *len = 0; *out = nullptr;
+#if QL_HEX_VERSION >= 0x01440000
+  try {fillVectorOut([&] {return (*arg(o))->fxResetRates();}, len, out);} catch (std::exception& er) {qlSetError(e, er.what());}
+#else
+  (void)o; (void)len; (void)out;
+  qlUnsupportedVersion(e, "fxResetRates", "1.44");
+#endif
+}
+void qlMtMFxResetNotionals(QlMtMCrossCurrencyBasisSwap* o, unsigned* len, double** out, QlError **e) { QlCallScope callbackScope(e);
+  *len = 0; *out = nullptr;
+#if QL_HEX_VERSION >= 0x01440000
+  try {fillVectorOut([&] {return (*arg(o))->fxResetNotionals();}, len, out);} catch (std::exception& er) {qlSetError(e, er.what());}
+#else
+  (void)o; (void)len; (void)out;
+  qlUnsupportedVersion(e, "fxResetNotionals", "1.44");
+#endif
+}
+void qlFxResetConventionReset(unsigned fixingDays, Calendar* calendar, int date, int* fixing, int* value, QlError **e) { QlCallScope callbackScope(e);
+  *fixing = 0; *value = 0;
+#if QL_HEX_VERSION >= 0x01440000
+  try {auto reset = FxResetConvention(fixingDays, calendar ? *arg(calendar) : Calendar()).reset(Date(date)); *fixing = reset.fixingDate().serialNumber(); *value = reset.valueDate().serialNumber();} catch (std::exception& er) {qlSetError(e, er.what());}
+#else
+  (void)fixingDays; (void)calendar; (void)date; (void)fixing; (void)value;
+  qlUnsupportedVersion(e, "fxResetObservation", "1.44");
+#endif
+}
+int qlFxResetConventionValueDate(unsigned fixingDays, Calendar* calendar, int date, QlError **e) { QlCallScope callbackScope(e);
+
+#if QL_HEX_VERSION >= 0x01440000
+  try {return FxResetConvention(fixingDays, calendar ? *arg(calendar) : Calendar()).valueDate(Date(date)).serialNumber();} catch (std::exception& er) {return handleException<int>(e, er);}
+#else
+  (void)fixingDays; (void)calendar; (void)date;
+  qlUnsupportedVersion(e, "fxResetValueDate", "1.44"); return 0;
+#endif
+}
+void qlFreeFxResetPricer(QlFxResetPricer* o) {del(o);}
+QlFxResetPricer* qlDiscountingFxResetPricer(Currency* constantCcy, Currency* resetCcy, QlYieldTermStructure* constantCurve, QlYieldTermStructure* resetCurve, QlQuote* spotFx, int spotIsResettablePerConstant, int spotFxSettleDate, QlError **e) { QlCallScope callbackScope(e);
+
+#if QL_HEX_VERSION >= 0x01440000
+  try {return ret(new QlFxResetPricer(alloc(new DiscountingFxResetPricer(*arg(constantCcy), *arg(resetCcy), *arg(constantCurve), *arg(resetCurve), *arg(spotFx), spotIsResettablePerConstant, qlNullableDate(spotFxSettleDate)))));} catch (std::exception& er) {return handleException<QlFxResetPricer*>(e, er);}
+#else
+  (void)constantCcy; (void)resetCcy; (void)constantCurve; (void)resetCurve; (void)spotFx; (void)spotIsResettablePerConstant; (void)spotFxSettleDate;
+  qlUnsupportedVersion(e, "discountingFxResetPricer", "1.44"); return nullptr;
+#endif
+}
+double qlFxResetRate(QlFxResetPricer* o, int fixing, int value, QlError **e) { QlCallScope callbackScope(e);
+
+#if QL_HEX_VERSION >= 0x01440000
+  try {return (*arg(o))->fxRate(FxReset(Date(fixing), Date(value)));} catch (std::exception& er) {return handleException<double>(e, er);}
+#else
+  (void)o; (void)fixing; (void)value;
+  qlUnsupportedVersion(e, "fxResetRate", "1.44"); return 0;
+#endif
+}
+void qlFreeFxResetCoupon(QlFxResetCoupon* o) {del(o);}
+QlFloatingRateCoupon* qlFxResetCouponAsFloatingRateCoupon(QlFxResetCoupon* o) {
+#if QL_HEX_VERSION >= 0x01440000
+  return ret(new QlFloatingRateCoupon(*arg(o)));
+#else
+  (void)o; return nullptr;
+#endif
+}
+void qlFreeFxResetNotionalExchange(QlFxResetNotionalExchange* o) {del(o);}
+QlCashFlow* qlFxResetNotionalExchangeAsCashFlow(QlFxResetNotionalExchange* o) {
+#if QL_HEX_VERSION >= 0x01440000
+  return ret(new QlCashFlow(*arg(o)));
+#else
+  (void)o; return nullptr;
+#endif
+}
+QlFxResetCoupon* qlFxResetCoupon(QlFloatingRateCoupon* underlying, double notional, int fixing, int value, QlError **e) { QlCallScope callbackScope(e);
+
+#if QL_HEX_VERSION >= 0x01440000
+  try {return ret(new QlFxResetCoupon(alloc(new FxResetCoupon(*arg(underlying), notional, FxReset(Date(fixing), Date(value))))));} catch (std::exception& er) {return handleException<QlFxResetCoupon*>(e, er);}
+#else
+  (void)underlying; (void)notional; (void)fixing; (void)value;
+  qlUnsupportedVersion(e, "fxResetCoupon", "1.44"); return nullptr;
+#endif
+}
+QlFxResetNotionalExchange* qlFxResetNotionalExchange(int payment, double notional, int previousFixing, int previousValue, int currentFixing, int currentValue, QlError **e) { QlCallScope callbackScope(e);
+
+#if QL_HEX_VERSION >= 0x01440000
+  try {optional<FxReset> previous, current; if (previousFixing) previous.emplace(Date(previousFixing), Date(previousValue)); if (currentFixing) current.emplace(Date(currentFixing), Date(currentValue)); return ret(new QlFxResetNotionalExchange(alloc(new FxResetNotionalExchange(Date(payment), notional, previous, current))));} catch (std::exception& er) {return handleException<QlFxResetNotionalExchange*>(e, er);}
+#else
+  (void)payment; (void)notional; (void)previousFixing; (void)previousValue; (void)currentFixing; (void)currentValue;
+  qlUnsupportedVersion(e, "fxResetNotionalExchange", "1.44"); return nullptr;
+#endif
+}
+void qlFxResetCouponSetFxResetPricer(QlFxResetCoupon* o, QlFxResetPricer* pricer, QlError **e) { QlCallScope callbackScope(e);
+
+#if QL_HEX_VERSION >= 0x01440000
+  try {(*arg(o))->setFxResetPricer(*arg(pricer));} catch (std::exception& er) {qlSetError(e, er.what());}
+#else
+  (void)o; (void)pricer;
+  qlUnsupportedVersion(e, "setFxResetPricer", "1.44");
+#endif
+}
+void qlFxResetNotionalExchangeSetFxResetPricer(QlFxResetNotionalExchange* o, QlFxResetPricer* pricer, QlError **e) { QlCallScope callbackScope(e);
+
+#if QL_HEX_VERSION >= 0x01440000
+  try {(*arg(o))->setFxResetPricer(*arg(pricer));} catch (std::exception& er) {qlSetError(e, er.what());}
+#else
+  (void)o; (void)pricer;
+  qlUnsupportedVersion(e, "setFxResetPricer", "1.44");
+#endif
+}
+void qlSetFxResetLegPricer(Leg* leg, QlFxResetPricer* pricer, QlError **e) { QlCallScope callbackScope(e);
+
+#if QL_HEX_VERSION >= 0x01440000
+  try {QuantLib::setFxResetPricer(*arg(leg), *arg(pricer));} catch (std::exception& er) {qlSetError(e, er.what());}
+#else
+  (void)leg; (void)pricer;
+  qlUnsupportedVersion(e, "setFxResetLegPricer", "1.44");
+#endif
+}
+QlIborCoupon* qlStubIborCoupon(int paymentDate, double nominal, int startDate, int endDate, unsigned fixingDays, QlStubIndexSelection* selection, double gearing, double spread, int refPeriodStart, int refPeriodEnd, DayCounter* dayCounter, int inArrears, int exCouponDate, int fixingConvention, QlError **e) { QlCallScope callbackScope(e);
+
+#if QL_HEX_VERSION >= 0x01440000
+  try {return ret(new QlIborCoupon(alloc(new StubIborCoupon(Date(paymentDate), nominal, Date(startDate), Date(endDate), fixingDays, qlStubSelection(selection), gearing, spread, qlNullableDate(refPeriodStart), qlNullableDate(refPeriodEnd), dayCounter ? *arg(dayCounter) : DayCounter(), inArrears, qlNullableDate(exCouponDate), (BusinessDayConvention)fixingConvention))));} catch (std::exception& er) {return handleException<QlIborCoupon*>(e, er);}
+#else
+  (void)paymentDate; (void)nominal; (void)startDate; (void)endDate; (void)fixingDays; (void)selection; (void)gearing; (void)spread; (void)refPeriodStart; (void)refPeriodEnd; (void)dayCounter; (void)inArrears; (void)exCouponDate; (void)fixingConvention;
+  qlUnsupportedVersion(e, "stubIborCoupon", "1.44"); return nullptr;
+#endif
+}
+double qlCouponNominal(QlCoupon* o, QlError **e) { QlCallScope callbackScope(e);
+  try {return (*arg(o))->nominal();} catch (std::exception& er) {return handleException<double>(e, er);}}
 }
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

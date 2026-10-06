@@ -272,3 +272,10 @@ typedef struct QlZeroInflationTermStructure QlZeroInflationTermStructure;
 typedef struct PolymorphicPathGenerator PolymorphicPathGenerator;
 typedef struct PolymorphicGaussianRsg PolymorphicGaussianRsg;
 typedef struct SamplePath SamplePath;
+
+typedef struct QlRoughHestonModel QlRoughHestonModel;
+typedef struct QlAnalyticRoughHestonEngine QlAnalyticRoughHestonEngine;
+typedef struct QlMtMCrossCurrencyBasisSwap QlMtMCrossCurrencyBasisSwap;
+typedef struct QlFxResetPricer QlFxResetPricer;
+typedef struct QlFxResetCoupon QlFxResetCoupon;
+typedef struct QlFxResetNotionalExchange QlFxResetNotionalExchange;

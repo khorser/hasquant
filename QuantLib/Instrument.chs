@@ -53,7 +53,7 @@ import QuantLib.Internal.Common
 
 #include "ql.h"
 
-{#pointer *QlPricingEngine as PricingEngine foreign -> CPricingEngine nocode#}
+{#pointer *QlPricingEngine as PricingEngine foreign -> CPricingEngine' nocode#}
 {#pointer *QlInstrument as Instrument foreign -> CInstrument' nocode#}
 {#pointer *Calendar foreign -> CCalendar nocode#}
 {#pointer *DayCounter foreign -> CDayCounter nocode#}
@@ -111,6 +111,6 @@ composite = (uncurry qlCompositeInstrument) . unzip
   ,preErrorCheck-`String'errorCheck*-}->`Instrument'peekInstrument*#}
 
 -- |Sets the pricing engine used to compute the instrument's results.
-{#fun qlInstrumentSetPricingEngine as setPricingEngine{withInstrument*`GenInstrument i',withPricingEngine*`PricingEngine',preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlInstrumentSetPricingEngine as setPricingEngine{withInstrument*`GenInstrument i',withPricingEngine*`GenPricingEngine pe',preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

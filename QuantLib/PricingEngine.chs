@@ -3,7 +3,9 @@ module QuantLib.PricingEngine
   (
     -- * Types
     -- ** Engines
-    PricingEngine
+    GenPricingEngine
+  , PricingEngine
+  , AnalyticRoughHestonEngine
   , FdmQuantoHelper
 
     -- ** Option calculators
@@ -24,6 +26,8 @@ module QuantLib.PricingEngine
   , FixedPointEquation(..)
   , QdFpScheme(..)
   , IntegrationControl(..)
+  , RoughHestonApproximation(..)
+  , FourierIntegration(..)
   , H1HwMean(..)
   , LatticeTime(..)
   , FdmGrid(..)
@@ -32,12 +36,14 @@ module QuantLib.PricingEngine
   , StrikeSpec(..)
 
     -- * Constructors
+  , asPricingEngine
     -- ** Discounting and counterparty engines
   , discountingBondEngine
   , riskyBondEngine
   , discountingSwapEngine
   , discountingFxForwardEngine
   , discountingConstNotionalCrossCurrencySwapEngine
+  , discountingMtmCrossCurrencyBasisSwapEngine
   , counterpartyAdjSwapEngine
   , discountingPerpetualFuturesEngine
 
@@ -117,6 +123,8 @@ module QuantLib.PricingEngine
     -- ** Equity, stochastic-volatility and exotic products
   , analyticGjrGarchEngine
   , analyticHestonEngine
+  , analyticRoughHestonEngine
+  , analyticRoughHestonEngineWithIntegration
   , analyticH1HwEngine
   , analyticHestonHullWhiteEngine
   , batesEngine
@@ -219,6 +227,11 @@ module QuantLib.PricingEngine
   , blackDeltaCalculator
 
     -- * Inspectors
+  , roughHestonPriceVanillaPayoff
+  , roughHestonCharacteristicFunction
+  , roughHestonLogCharacteristicFunction
+  , roughHestonRiccatiSolution
+  , roughHestonNumberOfEvaluations
     -- ** Option-calculator capability
   , HasOptionCalculator(..)
 
@@ -271,6 +284,8 @@ module QuantLib.PricingEngine
 #include "qlEnumObjects.h"
 
 import QuantLib.Internal
+import Data.Complex(Complex)
+import QuantLib.TermStructure(TermPoint(..))
 import QuantLib.Internal.Type
 {#import QuantLib.InterestRate#}(VolatilityType)
 {#import QuantLib.Math#}
@@ -360,7 +375,9 @@ data FdmGrid
 {#pointer *QlBlackScholesCalculator as BlackScholesCalculator foreign -> CBlackScholesCalculator' nocode#}
 {#pointer *QlBachelierCalculator as BachelierCalculator foreign -> CBachelierCalculator nocode#}
 {#pointer *BlackDeltaCalculator foreign -> CBlackDeltaCalculator nocode#}
-{#pointer *QlPricingEngine as PricingEngine foreign -> CPricingEngine nocode#}
+{#pointer *QlRoughHestonModel as RoughHestonModel foreign -> CRoughHestonModel' nocode#}
+{#pointer *QlAnalyticRoughHestonEngine as AnalyticRoughHestonEngine foreign -> CAnalyticRoughHestonEngine' nocode#}
+{#pointer *QlPricingEngine as PricingEngine foreign -> CPricingEngine' nocode#}
 {#pointer *QlStrikedTypePayoff nocode#}
 {#pointer *QlPlainVanillaPayoff nocode#}
 {#pointer *QlLocalVolTermStructure as LocalVolTermStructure foreign -> CLocalVolTermStructure' nocode#}
@@ -2152,7 +2169,6 @@ instance HasOptionCalculator BachelierCalculator where
   ,`Double' -- ^displacement
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
-
 -- |Black 1976 probability of being in the money (in the bond martingale measure), i.e. N(d2). It is a risk-neutral probability, not the real world one. /Warning/ instead of volatility it uses standard deviation, i.e. volatility*sqrt(timeToMaturity)
 {#fun qlQuantLibBlackFormulaCashItmProbability as blackCashItmProbability{fromEnumC`OptionType',`Double'
   ,`Double' -- ^forward
@@ -2411,5 +2427,139 @@ bachelierCalculator :: StrikeSpec -> Double -> Double -> Double -> IO BachelierC
 bachelierCalculator spec = case spec of
   Strike t k -> bachelierCalculatorAtStrikeRaw t k
   StrikePayoff p -> bachelierCalculatorFromPayoffRaw p
+
+-- |Fractional Riccati solver. Pade is most accurate for strongly negative correlation.
+data RoughHestonApproximation = AdamsPredictorCorrector | Pade | Lifted Word deriving (Eq, Show, Read)
+-- |Construction-time Fourier integration configuration for Rough Heston (1.44).
+data FourierIntegration
+  = FourierGaussLaguerre Word | FourierGaussLegendre Word
+  | FourierGaussChebyshev Word | FourierGaussChebyshev2nd Word
+  | FourierGaussLobatto Double Double Word Bool
+  | FourierGaussKronrod Double Word | FourierSimpson Double Word | FourierTrapezoid Double Word
+  | FourierDiscreteSimpson Word | FourierDiscreteTrapezoid Word
+  | FourierExpSinh Double | FourierTanhSinh Double
+  deriving (Eq, Show, Read)
+roughApproximation :: RoughHestonApproximation -> (Int, Word)
+roughApproximation AdamsPredictorCorrector = (0, 20)
+roughApproximation Pade = (1, 20)
+roughApproximation (Lifted factors) = (2, factors)
+fourierConfiguration :: FourierIntegration -> (Int, Word, Double, Double, Bool)
+fourierConfiguration integration = case integration of
+  FourierGaussLaguerre n -> (0, n, 0, 0, False)
+  FourierGaussLegendre n -> (1, n, 0, 0, False)
+  FourierGaussChebyshev n -> (2, n, 0, 0, False)
+  FourierGaussChebyshev2nd n -> (3, n, 0, 0, False)
+  FourierGaussLobatto r a n c -> (4, n, r, a, c)
+  FourierGaussKronrod a n -> (5, n, 0, a, False)
+  FourierSimpson a n -> (6, n, 0, a, False)
+  FourierTrapezoid a n -> (7, n, 0, a, False)
+  FourierDiscreteSimpson n -> (8, n, 0, 0, False)
+  FourierDiscreteTrapezoid n -> (9, n, 0, 0, False)
+  FourierExpSinh r -> (10, 0, r, 0, False)
+  FourierTanhSinh r -> (11, 0, r, 0, False)
+
+-- |European vanilla engine with Gauss-Laguerre integration (1.44).
+-- Upstream defaults are order 128 and 256 Riccati steps; Adams costs O(steps^2).
+analyticRoughHestonEngine :: RoughHestonModel -- ^Calibrated model
+  -> Word -- ^Gauss-Laguerre integration order
+  -> Word -- ^Riccati time steps
+  -> RoughHestonApproximation -- ^Riccati approximation and lifted factor count
+  -> IO AnalyticRoughHestonEngine
+analyticRoughHestonEngine model order steps approximation =
+  let (method, factors) = roughApproximation approximation
+  in roughHestonEngineRaw model order steps method factors
+-- |Native fixed-order construction.
+{#fun qlAnalyticRoughHestonEngine as roughHestonEngineRaw{withRoughHestonModel*`RoughHestonModel' -- ^model
+  ,fromIntegral`Word' -- ^integrationOrder
+  ,fromIntegral`Word' -- ^timeSteps
+  ,`Int' -- ^approximation
+  ,fromIntegral`Word' -- ^nFactors
+  ,preErrorCheck-`String'errorCheck*-}->`AnalyticRoughHestonEngine'peekAnalyticRoughHestonEngine*#}
+
+-- |European engine with full Fourier integration controls (1.44).
+-- Upstream defaults: steps 256, epsilon 1e-25, dampening alpha -0.5; alpha must be in (-1, 0).
+analyticRoughHestonEngineWithIntegration :: RoughHestonModel -- ^Calibrated model
+  -> FourierIntegration -- ^Integration algorithm and tolerances/order
+  -> Word -- ^Riccati time steps
+  -> Double -- ^Andersen-Piterbarg integration-limit epsilon
+  -> Double -- ^Dampening alpha, strictly between -1 and 0
+  -> RoughHestonApproximation -- ^Riccati approximation and lifted factor count
+  -> IO AnalyticRoughHestonEngine
+analyticRoughHestonEngineWithIntegration model integration steps epsilon dampening approximation =
+  let (algorithm, count, relative, absolute, convergence) = fourierConfiguration integration
+      (method, factors) = roughApproximation approximation
+  in roughHestonEngineIntegrationRaw model algorithm count relative absolute convergence steps epsilon dampening method factors
+-- |Native integration construction.
+{#fun qlAnalyticRoughHestonEngineWithIntegration as roughHestonEngineIntegrationRaw{withRoughHestonModel*`RoughHestonModel' -- ^model
+  ,`Int' -- ^algorithm
+  ,fromIntegral`Word' -- ^count
+  ,`Double' -- ^relative
+  ,`Double' -- ^absolute
+  ,`Bool' -- ^convergence
+  ,fromIntegral`Word' -- ^timeSteps
+  ,`Double' -- ^epsilon
+  ,`Double' -- ^alpha
+  ,`Int' -- ^approximation
+  ,fromIntegral`Word' -- ^nFactors
+  ,preErrorCheck-`String'errorCheck*-}->`AnalyticRoughHestonEngine'peekAnalyticRoughHestonEngine*#}
+
+-- |Normalized log-forward chF at time in years (1.44).
+{#fun qlRoughHestonchF as roughHestonCharacteristicFunction{withAnalyticRoughHestonEngine*`AnalyticRoughHestonEngine' -- ^engine
+  ,withComplex`Complex Double'& -- ^frequency
+  ,`Double' -- ^time
+  ,preComplex-`Complex Double'&peekComplex* -- ^result
+  ,preErrorCheck-`String'errorCheck*-}->`()'#}
+
+-- |Normalized log-forward lnChF at time in years (1.44).
+{#fun qlRoughHestonlnChF as roughHestonLogCharacteristicFunction{withAnalyticRoughHestonEngine*`AnalyticRoughHestonEngine' -- ^engine
+  ,withComplex`Complex Double'& -- ^frequency
+  ,`Double' -- ^time
+  ,preComplex-`Complex Double'&peekComplex* -- ^result
+  ,preErrorCheck-`String'errorCheck*-}->`()'#}
+
+-- |Normalized log-forward riccatiSolution at time in years (1.44).
+{#fun qlRoughHestonriccatiSolution as roughHestonRiccatiSolution{withAnalyticRoughHestonEngine*`AnalyticRoughHestonEngine' -- ^engine
+  ,withComplex`Complex Double'& -- ^frequency
+  ,`Double' -- ^time
+  ,preComplex-`Complex Double'&peekComplex* -- ^result
+  ,preErrorCheck-`String'errorCheck*-}->`()'#}
+
+-- |Fourier evaluations in the most recent pricing calculation (1.44).
+{#fun qlRoughHestonNumberOfEvaluations as roughHestonNumberOfEvaluations{withAnalyticRoughHestonEngine*`AnalyticRoughHestonEngine' -- ^engine
+  ,preErrorCheck-`String'errorCheck*-}->`Word'fromIntegral#}
+
+-- |Native direct European pricing.
+{#fun qlRoughHestonPriceDate as roughHestonPriceDateRaw{withAnalyticRoughHestonEngine*`AnalyticRoughHestonEngine' -- ^engine
+  ,withPlainVanillaPayoff*`PlainVanillaPayoff' -- ^payoff
+  ,withDay*`Day' -- ^maturity
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |Native direct European pricing.
+{#fun qlRoughHestonPriceTime as roughHestonPriceTimeRaw{withAnalyticRoughHestonEngine*`AnalyticRoughHestonEngine' -- ^engine
+  ,withPlainVanillaPayoff*`PlainVanillaPayoff' -- ^payoff
+  ,`Double' -- ^maturity
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |Direct European plain-vanilla pricing at a maturity date or time in years (1.44).
+roughHestonPriceVanillaPayoff :: AnalyticRoughHestonEngine -- ^Engine
+  -> PlainVanillaPayoff -- ^Call/put and strike
+  -> TermPoint -- ^Maturity; time is relative to the model risk-free curve's reference date
+  -> IO Double
+roughHestonPriceVanillaPayoff engine payoff maturity = case maturity of
+  DatePoint date -> roughHestonPriceDateRaw engine payoff date
+  TimePoint time -> roughHestonPriceTimeRaw engine payoff time
+
+-- |MTM cross-currency discounting (1.44). Spot is domestic currency per foreign currency.
+-- Historical reset observations come from ExchangeRateManager; live leg cash flows need their own FX reset pricer.
+{#fun qlDiscountingMtMCrossCurrencyBasisSwapEngine as discountingMtmCrossCurrencyBasisSwapEngine{withCurrency*`Currency' -- ^domesticCcy
+  ,withYieldTermStructure*`GenYieldTermStructure y1' -- ^domesticCurve
+  ,withCurrency*`Currency' -- ^foreignCcy
+  ,withYieldTermStructure*`GenYieldTermStructure y2' -- ^foreignCurve
+  ,withQuote*`GenQuote q' -- ^spotFx
+  ,fromMaybeBool`Maybe Bool' -- ^includeSettlementDateFlows
+  ,withMaybeDay*`Maybe Day' -- ^settlementDate
+  ,withMaybeDay*`Maybe Day' -- ^npvDate
+  ,withMaybeDay*`Maybe Day' -- ^spotFxSettleDate
+  ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

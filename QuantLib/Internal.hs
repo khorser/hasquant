@@ -17,6 +17,9 @@ module QuantLib.Internal
   , peekEnum
   , peekDouble
   , preEnum
+  , withComplex
+  , preComplex
+  , peekComplex
   , preNum
   , preArray
   , preArrayWith
@@ -88,6 +91,7 @@ module QuantLib.Internal
   )
 where
 
+import Data.Complex(Complex((:+)))
 import Foreign.C.Types(CUInt(..), CInt(..), CDouble(..))
 import Foreign.C.String(CString, peekCString, withCString)
 import Foreign.Ptr(Ptr, nullPtr, castPtr)
@@ -509,3 +513,11 @@ zipWith6 f (a:as) (b:bs) (c:cs) (d:ds) (e:es) (g:gs) = f a b c d e g : zipWith6 
 zipWith6 _ _ _ _ _ _ _ = []
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:
+
+-- Scalar components keep the FFI independent of C++ complex layout.
+withComplex :: Complex Double -> (CDouble, CDouble)
+withComplex (r :+ i) = (realToFrac r, realToFrac i)
+preComplex :: ((Ptr CDouble, Ptr CDouble) -> IO a) -> IO a
+preComplex f = alloca $ \r -> alloca $ \i -> f (r, i)
+peekComplex :: Ptr CDouble -> Ptr CDouble -> IO (Complex Double)
+peekComplex r i = (:+) . realToFrac <$> peek r <*> (realToFrac <$> peek i)

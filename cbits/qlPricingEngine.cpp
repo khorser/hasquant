@@ -154,6 +154,11 @@
 #include <ql/legacy/libormarketmodels/lfmprocess.hpp>
 
 #include "qlaux.h"
+#if QL_HEX_VERSION >= 0x01440000
+#include <ql/models/equity/roughhestonmodel.hpp>
+#include <ql/pricingengines/vanilla/analyticroughhestonengine.hpp>
+#include <ql/experimental/fx/discountingmtmcrosscurrencybasisswapengine.hpp>
+#endif
 #include "qlPricingEngineAux.h"
 #include "qlPricingEngine.h"
 
@@ -333,6 +338,28 @@ struct HestonSLVFDMLogEntries {
   };
   std::vector<Entry> entries;
 };
+
+#if QL_HEX_VERSION >= 0x01440000
+namespace {
+FourierIntegration roughFourierIntegration(int algorithm, unsigned count, double relative, double absolute, bool convergence) {
+  switch (algorithm) {
+    case 0: return FourierIntegration::gaussLaguerre(count);
+    case 1: return FourierIntegration::gaussLegendre(count);
+    case 2: return FourierIntegration::gaussChebyshev(count);
+    case 3: return FourierIntegration::gaussChebyshev2nd(count);
+    case 4: return FourierIntegration::gaussLobatto(relative, absolute, count, convergence);
+    case 5: return FourierIntegration::gaussKronrod(absolute, count);
+    case 6: return FourierIntegration::simpson(absolute, count);
+    case 7: return FourierIntegration::trapezoid(absolute, count);
+    case 8: return FourierIntegration::discreteSimpson(count);
+    case 9: return FourierIntegration::discreteTrapezoid(count);
+    case 10: return FourierIntegration::expSinh(relative);
+    case 11: return FourierIntegration::tanhSinh(relative);
+    default: QL_FAIL("unknown Fourier integration algorithm");
+  }
+}
+}
+#endif
 
 extern "C" {
 QlPricingEngine *qlDiscountingBondEngine(QlYieldTermStructure *ts, int f, QlError **e) { QlCallScope callbackScope(e);
@@ -1922,6 +1949,175 @@ double qlGaussian1dModelCompoundedRate(QlGaussian1dModel* model, QlOvernightInde
 #else
   (void)model; (void)coupon; (void)date; (void)y; (void)curve;
   qlUnsupportedVersion(e, "gaussian1dCompoundedRate", "1.44"); return 0;
+#endif
+}
+void qlFreeRoughHestonModel(QlRoughHestonModel* o) {del(o);}
+QlCalibratedModel* qlRoughHestonModelAsCalibratedModel(QlRoughHestonModel* o) {
+#if QL_HEX_VERSION >= 0x01440000
+  return ret(new QlCalibratedModel(*arg(o)));
+#else
+  (void)o; return nullptr;
+#endif
+}
+QlRoughHestonModel* qlRoughHestonModel(QlHestonProcess* process, double hurst, QlError **e) { QlCallScope callbackScope(e);
+
+#if QL_HEX_VERSION >= 0x01440000
+  try {return ret(new QlRoughHestonModel(alloc(new RoughHestonModel(*arg(process), hurst))));} catch (std::exception& er) {return handleException<QlRoughHestonModel*>(e, er);}
+#else
+  (void)process; (void)hurst;
+  qlUnsupportedVersion(e, "roughHestonModel", "1.44"); return nullptr;
+#endif
+}
+double qlRoughHestonModelTheta(QlRoughHestonModel* o, QlError **e) { QlCallScope callbackScope(e);
+
+#if QL_HEX_VERSION >= 0x01440000
+  try {return (*arg(o))->theta();} catch (std::exception& er) {return handleException<double>(e, er);}
+#else
+  (void)o;
+  qlUnsupportedVersion(e, "roughHestonTheta", "1.44"); return 0;
+#endif
+}
+double qlRoughHestonModelKappa(QlRoughHestonModel* o, QlError **e) { QlCallScope callbackScope(e);
+
+#if QL_HEX_VERSION >= 0x01440000
+  try {return (*arg(o))->kappa();} catch (std::exception& er) {return handleException<double>(e, er);}
+#else
+  (void)o;
+  qlUnsupportedVersion(e, "roughHestonKappa", "1.44"); return 0;
+#endif
+}
+double qlRoughHestonModelSigma(QlRoughHestonModel* o, QlError **e) { QlCallScope callbackScope(e);
+
+#if QL_HEX_VERSION >= 0x01440000
+  try {return (*arg(o))->sigma();} catch (std::exception& er) {return handleException<double>(e, er);}
+#else
+  (void)o;
+  qlUnsupportedVersion(e, "roughHestonSigma", "1.44"); return 0;
+#endif
+}
+double qlRoughHestonModelRho(QlRoughHestonModel* o, QlError **e) { QlCallScope callbackScope(e);
+
+#if QL_HEX_VERSION >= 0x01440000
+  try {return (*arg(o))->rho();} catch (std::exception& er) {return handleException<double>(e, er);}
+#else
+  (void)o;
+  qlUnsupportedVersion(e, "roughHestonRho", "1.44"); return 0;
+#endif
+}
+double qlRoughHestonModelV0(QlRoughHestonModel* o, QlError **e) { QlCallScope callbackScope(e);
+
+#if QL_HEX_VERSION >= 0x01440000
+  try {return (*arg(o))->v0();} catch (std::exception& er) {return handleException<double>(e, er);}
+#else
+  (void)o;
+  qlUnsupportedVersion(e, "roughHestonV0", "1.44"); return 0;
+#endif
+}
+double qlRoughHestonModelHurst(QlRoughHestonModel* o, QlError **e) { QlCallScope callbackScope(e);
+
+#if QL_HEX_VERSION >= 0x01440000
+  try {return (*arg(o))->hurst();} catch (std::exception& er) {return handleException<double>(e, er);}
+#else
+  (void)o;
+  qlUnsupportedVersion(e, "roughHestonHurst", "1.44"); return 0;
+#endif
+}
+QlHestonProcess* qlRoughHestonModelProcess(QlRoughHestonModel* o, QlError **e) { QlCallScope callbackScope(e);
+
+#if QL_HEX_VERSION >= 0x01440000
+  try {return ret(new QlHestonProcess((*arg(o))->process()));} catch (std::exception& er) {return handleException<QlHestonProcess*>(e, er);}
+#else
+  (void)o;
+  qlUnsupportedVersion(e, "roughHestonProcess", "1.44"); return nullptr;
+#endif
+}
+void qlFreeAnalyticRoughHestonEngine(QlAnalyticRoughHestonEngine* o) {del(o);}
+QlPricingEngine* qlAnalyticRoughHestonEngineAsPricingEngine(QlAnalyticRoughHestonEngine* o) {
+#if QL_HEX_VERSION >= 0x01440000
+  return ret(new QlPricingEngine(*arg(o)));
+#else
+  (void)o; return nullptr;
+#endif
+}
+QlAnalyticRoughHestonEngine* qlAnalyticRoughHestonEngine(QlRoughHestonModel* model, unsigned integrationOrder, unsigned timeSteps, int approximation, unsigned nFactors, QlError **e) { QlCallScope callbackScope(e);
+
+#if QL_HEX_VERSION >= 0x01440000
+  try {return ret(new QlAnalyticRoughHestonEngine(alloc(new AnalyticRoughHestonEngine(*arg(model), integrationOrder, timeSteps, (AnalyticRoughHestonEngine::Approximation)approximation, nFactors))));} catch (std::exception& er) {return handleException<QlAnalyticRoughHestonEngine*>(e, er);}
+#else
+  (void)model; (void)integrationOrder; (void)timeSteps; (void)approximation; (void)nFactors;
+  qlUnsupportedVersion(e, "analyticRoughHestonEngine", "1.44"); return nullptr;
+#endif
+}
+QlAnalyticRoughHestonEngine* qlAnalyticRoughHestonEngineWithIntegration(QlRoughHestonModel* model, int algorithm, unsigned count, double relative, double absolute, int convergence, unsigned timeSteps, double epsilon, double alpha, int approximation, unsigned nFactors, QlError **e) { QlCallScope callbackScope(e);
+
+#if QL_HEX_VERSION >= 0x01440000
+  try {return ret(new QlAnalyticRoughHestonEngine(alloc(new AnalyticRoughHestonEngine(*arg(model), roughFourierIntegration(algorithm, count, relative, absolute, convergence), timeSteps, epsilon, alpha, (AnalyticRoughHestonEngine::Approximation)approximation, nFactors))));} catch (std::exception& er) {return handleException<QlAnalyticRoughHestonEngine*>(e, er);}
+#else
+  (void)model; (void)algorithm; (void)count; (void)relative; (void)absolute; (void)convergence; (void)timeSteps; (void)epsilon; (void)alpha; (void)approximation; (void)nFactors;
+  qlUnsupportedVersion(e, "analyticRoughHestonEngineWithIntegration", "1.44"); return nullptr;
+#endif
+}
+void qlRoughHestonchF(QlAnalyticRoughHestonEngine* o, double real, double imag, double time, double* outReal, double* outImag, QlError **e) { QlCallScope callbackScope(e);
+  *outReal = 0; *outImag = 0;
+#if QL_HEX_VERSION >= 0x01440000
+  try {auto value = (*arg(o))->chF(std::complex<double>(real, imag), time); *outReal = value.real(); *outImag = value.imag();} catch (std::exception& er) {qlSetError(e, er.what());}
+#else
+  (void)o; (void)real; (void)imag; (void)time; (void)outReal; (void)outImag;
+  qlUnsupportedVersion(e, "roughHestonCharacteristicFunction", "1.44");
+#endif
+}
+void qlRoughHestonlnChF(QlAnalyticRoughHestonEngine* o, double real, double imag, double time, double* outReal, double* outImag, QlError **e) { QlCallScope callbackScope(e);
+  *outReal = 0; *outImag = 0;
+#if QL_HEX_VERSION >= 0x01440000
+  try {auto value = (*arg(o))->lnChF(std::complex<double>(real, imag), time); *outReal = value.real(); *outImag = value.imag();} catch (std::exception& er) {qlSetError(e, er.what());}
+#else
+  (void)o; (void)real; (void)imag; (void)time; (void)outReal; (void)outImag;
+  qlUnsupportedVersion(e, "roughHestonLogCharacteristicFunction", "1.44");
+#endif
+}
+void qlRoughHestonriccatiSolution(QlAnalyticRoughHestonEngine* o, double real, double imag, double time, double* outReal, double* outImag, QlError **e) { QlCallScope callbackScope(e);
+  *outReal = 0; *outImag = 0;
+#if QL_HEX_VERSION >= 0x01440000
+  try {auto value = (*arg(o))->riccatiSolution(std::complex<double>(real, imag), time); *outReal = value.real(); *outImag = value.imag();} catch (std::exception& er) {qlSetError(e, er.what());}
+#else
+  (void)o; (void)real; (void)imag; (void)time; (void)outReal; (void)outImag;
+  qlUnsupportedVersion(e, "roughHestonRiccatiSolution", "1.44");
+#endif
+}
+unsigned qlRoughHestonNumberOfEvaluations(QlAnalyticRoughHestonEngine* o, QlError **e) { QlCallScope callbackScope(e);
+
+#if QL_HEX_VERSION >= 0x01440000
+  try {return (*arg(o))->numberOfEvaluations();} catch (std::exception& er) {return handleException<unsigned>(e, er);}
+#else
+  (void)o;
+  qlUnsupportedVersion(e, "roughHestonNumberOfEvaluations", "1.44"); return 0;
+#endif
+}
+double qlRoughHestonPriceDate(QlAnalyticRoughHestonEngine* o, QlPlainVanillaPayoff* payoff, int maturity, QlError **e) { QlCallScope callbackScope(e);
+
+#if QL_HEX_VERSION >= 0x01440000
+  try {return (*arg(o))->priceVanillaPayoff(*arg(payoff), Date(maturity));} catch (std::exception& er) {return handleException<double>(e, er);}
+#else
+  (void)o; (void)payoff; (void)maturity;
+  qlUnsupportedVersion(e, "roughHestonPriceVanillaPayoff", "1.44"); return 0;
+#endif
+}
+double qlRoughHestonPriceTime(QlAnalyticRoughHestonEngine* o, QlPlainVanillaPayoff* payoff, double maturity, QlError **e) { QlCallScope callbackScope(e);
+
+#if QL_HEX_VERSION >= 0x01440000
+  try {return (*arg(o))->priceVanillaPayoff(*arg(payoff), maturity);} catch (std::exception& er) {return handleException<double>(e, er);}
+#else
+  (void)o; (void)payoff; (void)maturity;
+  qlUnsupportedVersion(e, "roughHestonPriceVanillaPayoff", "1.44"); return 0;
+#endif
+}
+QlPricingEngine* qlDiscountingMtMCrossCurrencyBasisSwapEngine(Currency* domesticCcy, QlYieldTermStructure* domesticCurve, Currency* foreignCcy, QlYieldTermStructure* foreignCurve, QlQuote* spotFx, int includeSettlement, int settlementDate, int npvDate, int spotFxSettleDate, QlError **e) { QlCallScope callbackScope(e);
+
+#if QL_HEX_VERSION >= 0x01440000
+  try {return ret(new QlPricingEngine(alloc(new DiscountingMtMCrossCurrencyBasisSwapEngine(*arg(domesticCcy), *arg(domesticCurve), *arg(foreignCcy), *arg(foreignCurve), *arg(spotFx), qlOptBool(includeSettlement), qlNullableDate(settlementDate), qlNullableDate(npvDate), qlNullableDate(spotFxSettleDate)))));} catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}
+#else
+  (void)domesticCcy; (void)domesticCurve; (void)foreignCcy; (void)foreignCurve; (void)spotFx; (void)includeSettlement; (void)settlementDate; (void)npvDate; (void)spotFxSettleDate;
+  qlUnsupportedVersion(e, "discountingMtmCrossCurrencyBasisSwapEngine", "1.44"); return nullptr;
 #endif
 }
 }

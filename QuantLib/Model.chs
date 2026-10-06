@@ -21,6 +21,7 @@ module QuantLib.Model
   , G2
   , GenHestonModel
   , HestonModel
+  , RoughHestonModel
   , PiecewiseTimeDependentHestonModel
   , GenBatesModel
   , BatesModel
@@ -84,6 +85,7 @@ module QuantLib.Model
   , generalizedHullWhite
   , gjrGarchModel
   , hestonModel
+  , roughHestonModel
   , mtBrownianGeneratorFactory
   , sobolBrownianGeneratorFactory
   , hestonSlvMcModel
@@ -135,6 +137,13 @@ module QuantLib.Model
   , impliedVolatility
 
     -- ** Model state and calibration
+  , roughHestonTheta
+  , roughHestonKappa
+  , roughHestonSigma
+  , roughHestonRho
+  , roughHestonV0
+  , roughHestonHurst
+  , roughHestonProcess
   , HasLeverageFunction(..)
   , HasVolatilities(..)
   , reversions
@@ -224,7 +233,7 @@ data HestonSLVFDMLogEntry = HestonSLVFDMLogEntry
   } deriving (Show, Eq)
 
 {#pointer *QlQuote as Quote foreign -> CQuote' nocode#}
-{#pointer *QlPricingEngine as PricingEngine foreign -> CPricingEngine nocode#}
+{#pointer *QlPricingEngine as PricingEngine foreign -> CPricingEngine' nocode#}
 {#pointer *QlOptimizationMethod as QlOptimizationMethod foreign -> COptimizationMethod nocode#}
 {#pointer *QlEndCriteria as QlEndCriteria foreign -> CEndCriteria nocode#}
 {#pointer *Constraint as QlConstraint foreign -> CConstraint nocode#}
@@ -232,6 +241,7 @@ data HestonSLVFDMLogEntry = HestonSLVFDMLogEntry
 {#pointer *QlLmVolatilityModel foreign -> CLmVolatilityModel nocode#}
 {#pointer *QlLfmHullWhiteParameterization as LfmHullWhiteParameterization foreign -> CLfmHullWhiteParameterization nocode#}
 {#pointer *QlGJRGARCHModel as GJRGARCHModel foreign -> CGJRGARCHModel' nocode#}
+{#pointer *QlRoughHestonModel as RoughHestonModel foreign -> CRoughHestonModel' nocode#}
 {#pointer *QlHestonModel as HestonModel foreign -> CHestonModel' nocode#}
 {#pointer *QlLocalVolTermStructure as LocalVolTermStructure foreign -> CLocalVolTermStructure' nocode#}
 {#pointer *QlBrownianGeneratorFactory as BrownianGeneratorFactory foreign -> CBrownianGeneratorFactory' nocode#}
@@ -873,7 +883,7 @@ swaptionHelper span' = case span' of
 {#fun qlBlackCalibrationHelperVolatility as volatility{withBlackCalibrationHelper*`GenBlackCalibrationHelper bch',preErrorCheck-`String'errorCheck*-}->`Quote'peekQuote*#}
 
 -- |Sets the pricing engine used to compute this calibration helper's model value.
-{#fun qlBlackCalibrationHelperSetPricingEngine as setPricingEngine{withBlackCalibrationHelper*`GenBlackCalibrationHelper bch',withPricingEngine*`PricingEngine',preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlBlackCalibrationHelperSetPricingEngine as setPricingEngine{withBlackCalibrationHelper*`GenBlackCalibrationHelper bch',withPricingEngine*`GenPricingEngine pe',preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Direct-parameter GARCH(1,1) model: @vl@ is the long-term (unconditional) volatility: the
 -- model's persistence @gamma = 1 - alpha - beta@ and @omega = vl * gamma@ are derived from it.
@@ -1075,8 +1085,6 @@ unzipBars bars = (map d5 xs, map o5 xs, map c5 xs, map h5 xs, map l5 xs)
     h5 (_,_,_,h,_) = h
     l5 (_,_,_,_,l) = l
 
--- vim: set ff=unix ts=8 sts=2 sw=2 et:
-
 -- |Conditional compounded overnight rate using the coupon's observation dates and index day
 -- counter; ignores gearing/spread and historical fixings. Requires QuantLib 1.44.
 -- Nothing selects the model reference date or model curve.
@@ -1086,3 +1094,38 @@ unzipBars bars = (map d5 xs, map o5 xs, map c5 xs, map h5 xs, map l5 xs)
   ,`Double' -- ^y
   ,withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)' -- ^curve
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |Rough Heston volatility model (1.44). Hurst is constrained to [0, 0.5]; 0.5 is classical Heston.
+{#fun qlRoughHestonModel as roughHestonModel{withHestonProcess*`GenHestonProcess hp' -- ^process
+  ,`Double' -- ^hurst
+  ,preErrorCheck-`String'errorCheck*-}->`RoughHestonModel'peekRoughHestonModel*#}
+
+-- |Current calibrated theta (1.44).
+{#fun qlRoughHestonModelTheta as roughHestonTheta{withRoughHestonModel*`RoughHestonModel' -- ^model
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |Current calibrated kappa (1.44).
+{#fun qlRoughHestonModelKappa as roughHestonKappa{withRoughHestonModel*`RoughHestonModel' -- ^model
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |Current calibrated sigma (1.44).
+{#fun qlRoughHestonModelSigma as roughHestonSigma{withRoughHestonModel*`RoughHestonModel' -- ^model
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |Current calibrated rho (1.44).
+{#fun qlRoughHestonModelRho as roughHestonRho{withRoughHestonModel*`RoughHestonModel' -- ^model
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |Current calibrated v0 (1.44).
+{#fun qlRoughHestonModelV0 as roughHestonV0{withRoughHestonModel*`RoughHestonModel' -- ^model
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |Current calibrated hurst (1.44).
+{#fun qlRoughHestonModelHurst as roughHestonHurst{withRoughHestonModel*`RoughHestonModel' -- ^model
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |Current calibrated process (1.44).
+{#fun qlRoughHestonModelProcess as roughHestonProcess{withRoughHestonModel*`RoughHestonModel' -- ^model
+  ,preErrorCheck-`String'errorCheck*-}->`HestonProcess'peekHestonProcess*#}
+
+-- vim: set ff=unix ts=8 sts=2 sw=2 et:

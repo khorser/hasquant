@@ -1,4 +1,5 @@
 #include "qlCallback.hpp"
+#include <ql/version.hpp>
 #include <ql/time/date.hpp>
 #include <ql/errors.hpp>
 #include <string.h>
@@ -44,6 +45,16 @@ extern "C" void qlFreeString(char *p);
 #endif
 
 namespace QuantLib {
+  class RoughHestonModel;
+  class AnalyticRoughHestonEngine;
+  class MtMCrossCurrencyBasisSwap;
+  class FxResetPricer;
+  class DiscountingFxResetPricer;
+  class FxResetCoupon;
+  class FxResetNotionalExchange;
+  class DiscountingMtMCrossCurrencyBasisSwapEngine;
+  class StubIborCoupon;
+
   template <class T> class Handle;
   class Quote;
   class Bond;
@@ -823,6 +834,22 @@ struct QlStubIndexSelection {
 QuantLib::StubIndexSelection qlStubSelection(const QlStubIndexSelection* selection);
 #endif
 
+using QuantLib::RoughHestonModel;
+using QuantLib::AnalyticRoughHestonEngine;
+using QuantLib::MtMCrossCurrencyBasisSwap;
+using QuantLib::FxResetPricer;
+using QuantLib::DiscountingFxResetPricer;
+using QuantLib::FxResetCoupon;
+using QuantLib::FxResetNotionalExchange;
+using QuantLib::DiscountingMtMCrossCurrencyBasisSwapEngine;
+using QuantLib::StubIborCoupon;
+using QlRoughHestonModel = shared_ptr<RoughHestonModel>;
+using QlAnalyticRoughHestonEngine = shared_ptr<AnalyticRoughHestonEngine>;
+using QlMtMCrossCurrencyBasisSwap = shared_ptr<MtMCrossCurrencyBasisSwap>;
+using QlFxResetPricer = shared_ptr<FxResetPricer>;
+using QlFxResetCoupon = shared_ptr<FxResetCoupon>;
+using QlFxResetNotionalExchange = shared_ptr<FxResetNotionalExchange>;
+
 using QlPricingEngine = shared_ptr<PricingEngine>;
 using QlIborIndex = shared_ptr<IborIndex>;
 using QlIndex = shared_ptr<Index>;
@@ -1567,6 +1594,21 @@ QL_TRACE_NAME(QlPayoff)
 QL_TRACE_NAME(QlPercentageStrikePayoff)
 QL_TRACE_NAME(QlPiecewiseTimeDependentHestonModel)
 QL_TRACE_NAME(QlPlainVanillaPayoff)
+QL_TRACE_NAME(RoughHestonModel)
+QL_TRACE_NAME(AnalyticRoughHestonEngine)
+QL_TRACE_NAME(MtMCrossCurrencyBasisSwap)
+QL_TRACE_NAME(FxResetPricer)
+QL_TRACE_NAME(DiscountingFxResetPricer)
+QL_TRACE_NAME(FxResetCoupon)
+QL_TRACE_NAME(FxResetNotionalExchange)
+QL_TRACE_NAME(DiscountingMtMCrossCurrencyBasisSwapEngine)
+QL_TRACE_NAME(StubIborCoupon)
+QL_TRACE_NAME(QlRoughHestonModel)
+QL_TRACE_NAME(QlAnalyticRoughHestonEngine)
+QL_TRACE_NAME(QlMtMCrossCurrencyBasisSwap)
+QL_TRACE_NAME(QlFxResetPricer)
+QL_TRACE_NAME(QlFxResetCoupon)
+QL_TRACE_NAME(QlFxResetNotionalExchange)
 QL_TRACE_NAME(QlPricingEngine)
 QL_TRACE_NAME(QlQuantoBarrierOption)
 QL_TRACE_NAME(QlQuantoDoubleBarrierOption)

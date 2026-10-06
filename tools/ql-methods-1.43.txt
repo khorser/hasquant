@@ -141,7 +141,7 @@
 |x|ql/cashflows/conundrumpricer.hpp|Real NumericHaganPricer::refineIntegration(Real integralValue, const ConundrumIntegrand & integrand) const;
 |v|ql/cashflows/conundrumpricer.hpp|AnalyticHaganPricer::AnalyticHaganPricer(const Handle<SwaptionVolatilityStructure> & swaptionVol, GFunctionFactory::YieldCurveModel modelOfYieldCurve, const Handle<Quote> & meanReversion);
 |x|ql/cashflows/coupon.hpp|Coupon::Coupon(const Date & paymentDate, Real nominal, const Date & accrualStartDate, const Date & accrualEndDate, const Date & refPeriodStart = Date(), const Date & refPeriodEnd = Date(), const Date & exCouponDate = Date());
-|x|ql/cashflows/coupon.hpp|Real Coupon::nominal() const;
+|v|ql/cashflows/coupon.hpp|Real Coupon::nominal() const;
 |x|ql/cashflows/coupon.hpp|const Date & Coupon::accrualStartDate() const;
 |x|ql/cashflows/coupon.hpp|const Date & Coupon::accrualEndDate() const;
 |x|ql/cashflows/coupon.hpp|const Date & Coupon::referencePeriodStart() const;

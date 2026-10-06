@@ -23,6 +23,7 @@ module QuantLib.Instrument.Swap
   , GenConstNotionalCrossCurrencySwap
   , ConstNotionalCrossCurrencySwap
   , ConstNotionalCrossCurrencyBasisSwap
+  , MtMCrossCurrencyBasisSwap
   , ConstNotionalCrossCurrencyFixedVsFloatingSwap
 
     -- ** Swaptions and variance options
@@ -43,6 +44,9 @@ module QuantLib.Instrument.Swap
   , FloatFloatSwapVaryingOpts(..)
   , defaultFloatFloatSwapVaryingOpts
   , ConstNotionalCrossCurrencyBasisSwapOpts(..)
+  , MtmCrossCurrencySwapType(..)
+  , MtMCrossCurrencyBasisSwapOpts(..)
+  , defaultMtmCrossCurrencyBasisSwapOpts
   , defaultConstNotionalCrossCurrencyBasisSwapOpts
   , OvernightObservation(..)
   , defaultOvernightObservation
@@ -79,6 +83,8 @@ module QuantLib.Instrument.Swap
   , constNotionalCrossCurrencySwap
   , constNotionalCrossCurrencySwapFromLegs
   , constNotionalCrossCurrencyBasisSwap
+  , mtmCrossCurrencyBasisSwap
+  , mtmCrossCurrencyBasisSwapWithOptions
   , constNotionalCrossCurrencyFixedVsFloatingSwap
 
     -- ** Overnight-indexed and asset swaps
@@ -95,6 +101,12 @@ module QuantLib.Instrument.Swap
   , floatFloatSwaption
 
     -- * Inspectors
+  , HasCrossCurrencyResults(..)
+  , HasFairLegSpreads(..)
+  , fairFxBaseSpread
+  , fairFxQuoteSpread
+  , fxResetRates
+  , fxResetNotionals
     -- ** Common swap inspectors
   , HasFixedLeg(..)
   , HasFloatingLeg(..)
@@ -114,12 +126,6 @@ module QuantLib.Instrument.Swap
   , nonstandardSwapFixedRate
 
     -- ** Cross-currency swaps
-  , legCurrency
-  , inCcyLegBps
-  , inCcyLegNpv
-  , npvDateDiscounts
-  , fairPaySpread
-  , fairRecSpread
 
     -- ** BMA swaps
   , bmaLeg
@@ -192,6 +198,7 @@ import QuantLib.Index.InterestRate(tenor, dayCounter, businessDayConvention)
 {#pointer *QlZeroInflationIndex as ZeroInflationIndex foreign -> CZeroInflationIndex' nocode#}
 {#pointer *QlYoYInflationIndex as YoYInflationIndex foreign -> CYoYInflationIndex' nocode#}
 {#pointer *Leg foreign -> CLeg' nocode#}
+{#pointer *QlMtMCrossCurrencyBasisSwap as MtMCrossCurrencyBasisSwap foreign -> CMtMCrossCurrencyBasisSwap' nocode#}
 {#pointer *QlSwaption as Swaption foreign -> CSwaption' nocode#}
 {#pointer *QlIrregularSwaption as IrregularSwaption foreign -> CIrregularSwaption' nocode#}
 {#pointer *QlSwap as Swap foreign -> CSwap' nocode#}
@@ -238,6 +245,28 @@ import QuantLib.Index.InterestRate(tenor, dayCounter, businessDayConvention)
 -- the physical end of the generated module regardless of where in the .chs a {#fun#} hook
 -- appears, so a top-level TH splice in between would split the file into declaration groups
 -- that can't see each other).
+-- |Direction of the FX-base currency leg, independent of the resettable-leg choice.
+data MtmCrossCurrencySwapType = PayFxBaseCurrency | ReceiveFxBaseCurrency deriving (Eq, Show, Read)
+
+$(deriveOptionsRecord "MtMCrossCurrencyBasisSwapOpts" ["ibor3", "ibor4"]
+  [ ("mtmFxResetFixingDays", [t|Word|], [|0|])
+  , ("mtmFxResetFixingCalendar", [t|Maybe Calendar|], [|Nothing|])
+  , ("mtmFxBasePaymentLag", [t|Int|], [|0|])
+  , ("mtmFxQuotePaymentLag", [t|Int|], [|0|])
+  , ("mtmFxBasePaymentConvention", [t|BusinessDayConvention|], [|Following|])
+  , ("mtmFxQuotePaymentConvention", [t|BusinessDayConvention|], [|Following|])
+  , ("mtmFxBaseCompoundSpread", [t|Bool|], [|False|])
+  , ("mtmFxBaseObservation", [t|OvernightObservation|], [|defaultOvernightObservation|])
+  , ("mtmFxBaseAveragingMethod", [t|RateAveragingType|], [|AveragingCompound|])
+  , ("mtmFxQuoteCompoundSpread", [t|Bool|], [|False|])
+  , ("mtmFxQuoteObservation", [t|OvernightObservation|], [|defaultOvernightObservation|])
+  , ("mtmFxQuoteAveragingMethod", [t|RateAveragingType|], [|AveragingCompound|])
+  , ("mtmTelescopicValueDates", [t|Bool|], [|False|])
+  , ("mtmUseIndexedCoupons", [t|Maybe Bool|], [|Nothing|])
+  , ("mtmFxBaseStubIndexSelection", [t|Maybe (StubIndexSelection $(varT (mkName "ibor3")))|], [|Nothing|])
+  , ("mtmFxQuoteStubIndexSelection", [t|Maybe (StubIndexSelection $(varT (mkName "ibor4")))|], [|Nothing|])
+  ])
+
 $(deriveOptionsRecord "FloatFloatSwapOpts" []
   [ ("ffsIntermediateCapitalExchange", [t|Bool|], [|False|])
   , ("ffsFinalCapitalExchange", [t|Bool|], [|False|])
@@ -626,16 +655,16 @@ constNotionalCrossCurrencySwapFromLegs legsPayer = qlConstNotionalCrossCurrencyS
 {#fun qlConstNotionalCrossCurrencySwap1{withLegArray*`[GenLeg l]'&,withBoolArray*`[Bool]'&,withCurrencyArray*`[Currency]'&,preErrorCheck-`String'errorCheck*-}->`ConstNotionalCrossCurrencySwap'peekConstNotionalCrossCurrencySwap*#}
 
 -- |Leg j's currency.
-{#fun qlConstNotionalCrossCurrencySwapLegCurrency as legCurrency{withConstNotionalCrossCurrencySwap*`GenConstNotionalCrossCurrencySwap x',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`Currency'peekCurrency*#}
+{#fun qlConstNotionalCrossCurrencySwapLegCurrency as constNotionalLegCurrency{withConstNotionalCrossCurrencySwap*`GenConstNotionalCrossCurrencySwap x',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`Currency'peekCurrency*#}
 
 -- |Basis-point sensitivity of leg j, expressed in the leg's own currency (contrast 'legBps', in the swap's NPV currency).
-{#fun qlConstNotionalCrossCurrencySwapInCcyLegBPS as inCcyLegBps{withConstNotionalCrossCurrencySwap*`GenConstNotionalCrossCurrencySwap x',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlConstNotionalCrossCurrencySwapInCcyLegBPS as constNotionalInCcyLegBPS{withConstNotionalCrossCurrencySwap*`GenConstNotionalCrossCurrencySwap x',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |NPV of leg j, expressed in the leg's own currency (contrast 'legNpv', in the swap's NPV currency).
-{#fun qlConstNotionalCrossCurrencySwapInCcyLegNPV as inCcyLegNpv{withConstNotionalCrossCurrencySwap*`GenConstNotionalCrossCurrencySwap x',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlConstNotionalCrossCurrencySwapInCcyLegNPV as constNotionalInCcyLegNPV{withConstNotionalCrossCurrencySwap*`GenConstNotionalCrossCurrencySwap x',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Discount factor at the instrument's NPV date, for leg j.
-{#fun qlConstNotionalCrossCurrencySwapNpvDateDiscounts as npvDateDiscounts{withConstNotionalCrossCurrencySwap*`GenConstNotionalCrossCurrencySwap x',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlConstNotionalCrossCurrencySwapNpvDateDiscounts as constNotionalNpvDateDiscounts{withConstNotionalCrossCurrencySwap*`GenConstNotionalCrossCurrencySwap x',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Cross-currency basis swap: pay-currency cashflows on leg 0, receive-currency on leg 1.
 -- 'ConstNotionalCrossCurrencyBasisSwapOpts' bundles every trailing param the C++ constructor
@@ -694,10 +723,10 @@ constNotionalCrossCurrencyBasisSwap payNominal payCurrency paySchedule payIndex 
   ,preErrorCheck-`String'errorCheck*-}->`ConstNotionalCrossCurrencyBasisSwap'peekConstNotionalCrossCurrencyBasisSwap*#}
 
 -- |The pay-leg spread that would make the swap's NPV zero.
-{#fun qlConstNotionalCrossCurrencyBasisSwapFairPaySpread as fairPaySpread{withConstNotionalCrossCurrencyBasisSwap*`ConstNotionalCrossCurrencyBasisSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlConstNotionalCrossCurrencyBasisSwapFairPaySpread as constNotionalFairPaySpread{withConstNotionalCrossCurrencyBasisSwap*`ConstNotionalCrossCurrencyBasisSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |The receive-leg spread that would make the swap's NPV zero.
-{#fun qlConstNotionalCrossCurrencyBasisSwapFairRecSpread as fairRecSpread{withConstNotionalCrossCurrencyBasisSwap*`ConstNotionalCrossCurrencyBasisSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlConstNotionalCrossCurrencyBasisSwapFairRecSpread as constNotionalFairRecSpread{withConstNotionalCrossCurrencyBasisSwap*`ConstNotionalCrossCurrencyBasisSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Cross-currency fixed-vs-floating swap: 'Payer' pays the fixed leg (leg 0) and receives the
 -- floating leg (leg 1); 'Receiver' the reverse. Every trailing defaulted param of the upstream
@@ -1263,5 +1292,184 @@ instance HasFloatingLeg AssetSwap where
   ,withDay*`Day' -- ^startDate
   ,withDay*`Day' -- ^maturityDate
   ,preErrorCheck-`String'errorCheck*-}->`VarianceOption'peekVarianceOption*#}
+
+-- |Native MTM product construction.
+{#fun qlMtMCrossCurrencyBasisSwap as mtmCrossCurrencyBasisSwapRaw{`Int' -- ^type
+  ,`Double' -- ^fxBaseNominal
+  ,withCurrency*`Currency' -- ^fxBaseCurrency
+  ,withSchedule*`Schedule' -- ^fxBaseSchedule
+  ,withIborIndex*`GenIborIndex ibor1' -- ^fxBaseIndex
+  ,`Double' -- ^fxBaseSpread
+  ,`Double' -- ^fxBaseGearing
+  ,`Double' -- ^fxQuoteNominal
+  ,withCurrency*`Currency' -- ^fxQuoteCurrency
+  ,withSchedule*`Schedule' -- ^fxQuoteSchedule
+  ,withIborIndex*`GenIborIndex ibor2' -- ^fxQuoteIndex
+  ,`Double' -- ^fxQuoteSpread
+  ,`Double' -- ^fxQuoteGearing
+  ,`Bool' -- ^isFxBaseCurrencyLegResettable
+  ,fromIntegral`Word' -- ^fxResetFixingDays
+  ,withMaybeCalendar*`Maybe Calendar' -- ^fxResetFixingCalendar
+  ,`Int' -- ^fxBasePaymentLag
+  ,`Int' -- ^fxQuotePaymentLag
+  ,fromEnumC`BusinessDayConvention' -- ^fxBasePaymentConvention
+  ,fromEnumC`BusinessDayConvention' -- ^fxQuotePaymentConvention
+  ,`Bool' -- ^fxBaseCompoundSpread
+  ,fromMaybeInt`Maybe Word' -- ^fxBaseLookbackDays
+  ,`Bool' -- ^fxBaseObservationShift
+  ,fromIntegral`Word' -- ^fxBaseLockoutDays
+  ,`RateAveragingType' -- ^fxBaseAveragingMethod
+  ,`Bool' -- ^fxQuoteCompoundSpread
+  ,fromMaybeInt`Maybe Word' -- ^fxQuoteLookbackDays
+  ,`Bool' -- ^fxQuoteObservationShift
+  ,fromIntegral`Word' -- ^fxQuoteLockoutDays
+  ,`RateAveragingType' -- ^fxQuoteAveragingMethod
+  ,`Bool' -- ^telescopicValueDates
+  ,fromMaybeBool`Maybe Bool' -- ^useIndexedCoupons
+  ,withStubIndexSelection*`Maybe (StubIndexSelection ibor3)' -- ^fxBaseStubIndexSelection
+  ,withStubIndexSelection*`Maybe (StubIndexSelection ibor4)' -- ^fxQuoteStubIndexSelection
+  ,preErrorCheck-`String'errorCheck*-}->`MtMCrossCurrencyBasisSwap'peekMtMCrossCurrencyBasisSwap*#}
+
+-- |Resetting-notional cross-currency basis swap with upstream defaults (1.44).
+-- Base is leg 0 and quote is leg 1. The Bool chooses whether base resets.
+mtmCrossCurrencyBasisSwap :: MtmCrossCurrencySwapType -- ^Pay/receive FX base currency; base is leg 0, quote leg 1
+  -> Double -- ^FX base nominal
+  -> Currency -- ^FX base currency
+  -> Schedule -- ^FX base schedule
+  -> GenIborIndex ibor1 -- ^FX base IBOR or overnight index
+  -> Double -- ^FX base spread
+  -> Double -- ^FX base gearing
+  -> Double -- ^FX quote nominal
+  -> Currency -- ^FX quote currency
+  -> Schedule -- ^FX quote schedule
+  -> GenIborIndex ibor2 -- ^FX quote IBOR or overnight index
+  -> Double -- ^FX quote spread
+  -> Double -- ^FX quote gearing
+  -> Bool -- ^True resets the FX base leg; False resets the FX quote leg
+  -> IO MtMCrossCurrencyBasisSwap
+mtmCrossCurrencyBasisSwap direction fxBaseNominal fxBaseCurrency fxBaseSchedule fxBaseIndex fxBaseSpread fxBaseGearing fxQuoteNominal fxQuoteCurrency fxQuoteSchedule fxQuoteIndex fxQuoteSpread fxQuoteGearing resetBase =
+  mtmCrossCurrencyBasisSwapWithOptions direction fxBaseNominal fxBaseCurrency fxBaseSchedule fxBaseIndex fxBaseSpread fxBaseGearing fxQuoteNominal fxQuoteCurrency fxQuoteSchedule fxQuoteIndex fxQuoteSpread fxQuoteGearing resetBase defaultMtmCrossCurrencyBasisSwapOpts
+
+-- |Full MTM construction (1.44). Payment lags affect coupons, not principal exchanges.
+-- Empty FX fixing calendars use the resetting schedule calendar when the fixing lag is nonzero.
+mtmCrossCurrencyBasisSwapWithOptions :: MtmCrossCurrencySwapType -- ^Pay/receive FX base currency; base is leg 0, quote leg 1
+  -> Double -- ^FX base nominal
+  -> Currency -- ^FX base currency
+  -> Schedule -- ^FX base schedule
+  -> GenIborIndex ibor1 -- ^FX base IBOR or overnight index
+  -> Double -- ^FX base spread
+  -> Double -- ^FX base gearing
+  -> Double -- ^FX quote nominal
+  -> Currency -- ^FX quote currency
+  -> Schedule -- ^FX quote schedule
+  -> GenIborIndex ibor2 -- ^FX quote IBOR or overnight index
+  -> Double -- ^FX quote spread
+  -> Double -- ^FX quote gearing
+  -> Bool -- ^True resets the FX base leg; False resets the FX quote leg
+  -> MtMCrossCurrencyBasisSwapOpts ibor3 ibor4 -- ^Payment, reset, overnight and stub options
+  -> IO MtMCrossCurrencyBasisSwap
+mtmCrossCurrencyBasisSwapWithOptions direction fxBaseNominal fxBaseCurrency fxBaseSchedule fxBaseIndex fxBaseSpread fxBaseGearing fxQuoteNominal fxQuoteCurrency fxQuoteSchedule fxQuoteIndex fxQuoteSpread fxQuoteGearing resetBase opts =
+  mtmCrossCurrencyBasisSwapRaw (case direction of PayFxBaseCurrency -> 0; ReceiveFxBaseCurrency -> 1)
+    fxBaseNominal fxBaseCurrency fxBaseSchedule fxBaseIndex fxBaseSpread fxBaseGearing fxQuoteNominal fxQuoteCurrency fxQuoteSchedule fxQuoteIndex fxQuoteSpread fxQuoteGearing resetBase
+    (mtmFxResetFixingDays opts) (mtmFxResetFixingCalendar opts)
+    (mtmFxBasePaymentLag opts) (mtmFxQuotePaymentLag opts)
+    (mtmFxBasePaymentConvention opts) (mtmFxQuotePaymentConvention opts)
+    (mtmFxBaseCompoundSpread opts) (lookbackDays baseObs) (applyObservationShift baseObs) (lockoutDays baseObs) (mtmFxBaseAveragingMethod opts)
+    (mtmFxQuoteCompoundSpread opts) (lookbackDays quoteObs) (applyObservationShift quoteObs) (lockoutDays quoteObs) (mtmFxQuoteAveragingMethod opts)
+    (mtmTelescopicValueDates opts) (mtmUseIndexedCoupons opts)
+    (mtmFxBaseStubIndexSelection opts) (mtmFxQuoteStubIndexSelection opts)
+  where baseObs = mtmFxBaseObservation opts
+        quoteObs = mtmFxQuoteObservation opts
+
+-- |Currency-denominated results shared by cross-currency swaps.
+class HasCrossCurrencyResults s where
+  -- |Currency of a leg, selected by zero-based index.
+  legCurrency :: s -> Word -> IO Currency
+  -- |Signed basis-point sensitivity in the leg currency.
+  inCcyLegBps :: s -> Word -> IO Double
+  -- |Signed NPV in the leg currency.
+  inCcyLegNpv :: s -> Word -> IO Double
+  -- |Discount factor at the NPV date for the selected currency.
+  npvDateDiscounts :: s -> Word -> IO Double
+
+instance HasCrossCurrencyResults (GenConstNotionalCrossCurrencySwap x) where
+  legCurrency = constNotionalLegCurrency
+  inCcyLegBps = constNotionalInCcyLegBPS
+  inCcyLegNpv = constNotionalInCcyLegNPV
+  npvDateDiscounts = constNotionalNpvDateDiscounts
+
+instance HasCrossCurrencyResults MtMCrossCurrencyBasisSwap where
+  legCurrency = mtmLegCurrency
+  inCcyLegBps = mtmInCcyLegBPS
+  inCcyLegNpv = mtmInCcyLegNPV
+  npvDateDiscounts = mtmNpvDateDiscounts
+
+-- |MTM legCurrency (1.44).
+{#fun qlMtMLegCurrency as mtmLegCurrency{withMtMCrossCurrencyBasisSwap*`MtMCrossCurrencyBasisSwap' -- ^swap
+  ,fromIntegral`Word' -- ^legIndex
+  ,preErrorCheck-`String'errorCheck*-}->`Currency'peekCurrency*#}
+
+-- |MTM inCcyLegBPS (1.44).
+{#fun qlMtMInCcyLegBPS as mtmInCcyLegBPS{withMtMCrossCurrencyBasisSwap*`MtMCrossCurrencyBasisSwap' -- ^swap
+  ,fromIntegral`Word' -- ^legIndex
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |MTM inCcyLegNPV (1.44).
+{#fun qlMtMInCcyLegNPV as mtmInCcyLegNPV{withMtMCrossCurrencyBasisSwap*`MtMCrossCurrencyBasisSwap' -- ^swap
+  ,fromIntegral`Word' -- ^legIndex
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |MTM npvDateDiscounts (1.44).
+{#fun qlMtMNpvDateDiscounts as mtmNpvDateDiscounts{withMtMCrossCurrencyBasisSwap*`MtMCrossCurrencyBasisSwap' -- ^swap
+  ,fromIntegral`Word' -- ^legIndex
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |Native NPV/BPS par spread (1.44).
+-- Compounded overnight spreads can leave a repricing residual.
+{#fun qlMtMFairFxBaseSpread as fairFxBaseSpread{withMtMCrossCurrencyBasisSwap*`MtMCrossCurrencyBasisSwap' -- ^swap
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |Native NPV/BPS par spread (1.44).
+-- Compounded overnight spreads can leave a repricing residual.
+{#fun qlMtMFairFxQuoteSpread as fairFxQuoteSpread{withMtMCrossCurrencyBasisSwap*`MtMCrossCurrencyBasisSwap' -- ^swap
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |Native NPV/BPS par spread (1.44).
+-- Compounded overnight spreads can leave a repricing residual.
+{#fun qlMtMFairPaySpread as mtmFairPaySpread{withMtMCrossCurrencyBasisSwap*`MtMCrossCurrencyBasisSwap' -- ^swap
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |Native NPV/BPS par spread (1.44).
+-- Compounded overnight spreads can leave a repricing residual.
+{#fun qlMtMFairRecSpread as mtmFairRecSpread{withMtMCrossCurrencyBasisSwap*`MtMCrossCurrencyBasisSwap' -- ^swap
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |Native NPV/BPS par spreads for paid and received legs of basis swaps.
+-- Compounded overnight spreads can leave a repricing residual.
+class HasFairLegSpreads s where
+  -- |Par spread of the paid leg.
+  fairPaySpread :: s -> IO Double
+  -- |Par spread of the received leg.
+  fairRecSpread :: s -> IO Double
+instance HasFairLegSpreads ConstNotionalCrossCurrencyBasisSwap where
+  fairPaySpread = constNotionalFairPaySpread
+  fairRecSpread = constNotionalFairRecSpread
+instance HasFairLegSpreads MtMCrossCurrencyBasisSwap where
+  fairPaySpread = mtmFairPaySpread
+  fairRecSpread = mtmFairRecSpread
+
+-- |Calculated reset rates for non-occurred coupons in leg order (1.44).
+{#fun qlMtMFxResetRates as fxResetRates{withMtMCrossCurrencyBasisSwap*`MtMCrossCurrencyBasisSwap' -- ^swap
+  ,preDoubleArray-`RealVector'&peekRealVector* -- ^result
+  ,preErrorCheck-`String'errorCheck*-}->`()'#}
+
+-- |Calculated reset notionals for non-occurred coupons in leg order (1.44).
+{#fun qlMtMFxResetNotionals as fxResetNotionals{withMtMCrossCurrencyBasisSwap*`MtMCrossCurrencyBasisSwap' -- ^swap
+  ,preDoubleArray-`RealVector'&peekRealVector* -- ^result
+  ,preErrorCheck-`String'errorCheck*-}->`()'#}
+
+-- |Upstream defaults for MTM cross-currency construction.
+defaultMtmCrossCurrencyBasisSwapOpts :: MtMCrossCurrencyBasisSwapOpts ibor3 ibor4
+defaultMtmCrossCurrencyBasisSwapOpts = defaultMtMCrossCurrencyBasisSwapOpts
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:
