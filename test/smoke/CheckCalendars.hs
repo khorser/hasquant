@@ -6,6 +6,8 @@
 --
 import QuantLib.Time.Calendar
 import QuantLib.Time.Date
+import Control.Exception(SomeException, try)
+import Data.List(isInfixOf)
 import Control.Monad
 
 -- All market-less (single-market, so no separate Market enum exposed --
@@ -26,6 +28,12 @@ newMarkets = [UnitedStatesSOFR, IsraelSHIR, IsraelTelbor
 
 main :: IO ()
 main = do
+  forM_ [Malaysia, Philippines] $ \ty -> do
+    result <- try (calendar ty >>= \cal -> isWeekend cal Saturday) :: IO (Either SomeException Bool)
+    case result of
+      Right True -> putStrLn (show ty ++ ": Saturday is weekend = True")
+      Left e | "UnsupportedQuantLibVersion" `isInfixOf` show e -> putStrLn (show ty ++ ": " ++ show e)
+      _ -> error ("unexpected calendar dispatch: " ++ show result)
   forM_ newCountries $ \ty -> do
     cal <- calendar ty
     isWknd <- isWeekend cal Saturday

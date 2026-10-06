@@ -124,6 +124,7 @@ module QuantLib.Model
   , numeraire
   , gaussian1dZerobond
   , gaussian1dZerobondOption
+  , gaussian1dCompoundedRate
   , gaussian1dForwardRate
   , gaussian1dSwapRate
   , gaussian1dSwapAnnuity
@@ -176,6 +177,7 @@ module QuantLib.Model
 #include "qlEnumObjects.h"
 
 #include "ql.h"
+{#pointer *QlOvernightIndexedCoupon as OvernightIndexedCoupon foreign -> COvernightIndexedCoupon' nocode#}
 
 import QuantLib.Internal
 {#import QuantLib.Time.Schedule#}(Frequency)
@@ -1074,3 +1076,13 @@ unzipBars bars = (map d5 xs, map o5 xs, map c5 xs, map h5 xs, map l5 xs)
     l5 (_,_,_,_,l) = l
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:
+
+-- |Conditional compounded overnight rate using the coupon's observation dates and index day
+-- counter; ignores gearing/spread and historical fixings. Requires QuantLib 1.44.
+-- Nothing selects the model reference date or model curve.
+{#fun qlGaussian1dModelCompoundedRate as gaussian1dCompoundedRate{withStandalone*`Gaussian1dModel' -- ^model
+  ,withOvernightIndexedCoupon*`OvernightIndexedCoupon' -- ^coupon
+  ,withMaybeDay*`Maybe Day' -- ^referenceDate
+  ,`Double' -- ^y
+  ,withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)' -- ^curve
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}

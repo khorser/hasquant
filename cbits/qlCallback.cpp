@@ -1,3 +1,4 @@
+#include <ql/version.hpp>
 #include "qlaux.h"
 
 namespace {
@@ -30,6 +31,15 @@ void qlSetError(QlError** slot, const char* message) {
   if (!*slot) *slot = ret(new QlError(message));
 }
 
+void qlUnsupportedVersion(QlError** slot, const char* call, const char* required) {
+  if (*slot) return;
+  auto error = std::make_unique<QlError>(std::string(call) + " requires QuantLib " + required);
+  error->call = call;
+  error->requiredVersion = required;
+  error->linkedVersion = QL_VERSION;
+  *slot = ret(error.release());
+}
+
 void hasquant::Callback::invoke(const QlCallbackArgs& args) const {
   if (currentCall && *currentCall->slot) throw CallbackFailure();
   void* failure = fn_(&args);
@@ -57,5 +67,10 @@ QlCallback* qlNewCallback(QlCallbackFun fn, QlReleaseFun releaseFun,
 }
 void qlFreeCallback(QlCallback* callback) { del(callback); }
 const char* qlErrorMessage(const QlError* error) { return error->message.c_str(); }
+const char* qlErrorCall(const QlError* error) { return error->call.c_str(); }
+const char* qlErrorRequiredVersion(const QlError* error) { return error->requiredVersion.c_str(); }
+const char* qlErrorLinkedVersion(const QlError* error) { return error->linkedVersion.c_str(); }
 void* qlTakeErrorException(QlError* error) { return std::exchange(error->exception, nullptr); }
 void qlFreeError(QlError* error) { del(error); }
+
+int qlSupports144(void) {return QL_HEX_VERSION >= 0x01440000;}

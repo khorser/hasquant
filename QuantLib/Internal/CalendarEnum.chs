@@ -21,6 +21,7 @@ import QuantLib.Internal.Type
 import QuantLib.Time.Date(Weekday)
 
 {#enum JointCalendarRule{} deriving(Show, Eq, Read)#}
+-- Keep both supported versions' constructors in the public enum; factories check availability.
 {#enum CalendarCountry{} add prefix = "Country__" deriving(Show, Eq, Read)#}
 {#enum AustriaMarket{} add prefix = "Austria__" deriving(Show, Eq, Read)#}
 {#enum BrazilMarket{} add prefix = "Brazil__" deriving(Show, Eq, Read)#}

@@ -10,6 +10,15 @@ typedef struct QlCallbackArgs {
   double* output;
   unsigned size;
   unsigned direction;
+#ifdef __cplusplus
+  const double* input2 = nullptr;
+  unsigned size2 = 0;
+  unsigned outputSize = 0;
+#else
+  const double* input2;
+  unsigned size2;
+  unsigned outputSize;
+#endif
 } QlCallbackArgs;
 
 typedef void* (*QlCallbackFun)(const QlCallbackArgs*);
@@ -23,8 +32,12 @@ extern "C" {
                             QlReleaseStable releaseStable, QlError** e);
   void qlFreeCallback(QlCallback* callback);
   const char* qlErrorMessage(const QlError* error);
+  const char* qlErrorCall(const QlError* error);
+  const char* qlErrorRequiredVersion(const QlError* error);
+  const char* qlErrorLinkedVersion(const QlError* error);
   void* qlTakeErrorException(QlError* error);
   void qlFreeError(QlError* error);
+  int qlSupports144(void);
 #ifdef __cplusplus
 }
 #endif

@@ -107,6 +107,8 @@ import Data.Vector.Storable(Vector, unsafeFromForeignPtr0)
 import qualified Data.Vector.Storable as V
 
 data Error = CPlusPlusException String
+             -- |Call name, minimum required version, and linked QuantLib version.
+           | UnsupportedQuantLibVersion String String String
            | DateConversion Day
            | EnumConversion String
              -- |A Haskell callback returned an array of the wrong length: expected, then returned.
@@ -116,6 +118,9 @@ data Error = CPlusPlusException String
 instance Exception Error
 
 foreign import ccall safe "ql.h qlErrorMessage" qlErrorMessage :: Ptr () -> IO CString
+foreign import ccall safe "ql.h qlErrorCall" qlErrorCall :: Ptr () -> IO CString
+foreign import ccall safe "ql.h qlErrorRequiredVersion" qlErrorRequiredVersion :: Ptr () -> IO CString
+foreign import ccall safe "ql.h qlErrorLinkedVersion" qlErrorLinkedVersion :: Ptr () -> IO CString
 foreign import ccall safe "ql.h qlTakeErrorException" qlTakeErrorException :: Ptr () -> IO (StablePtr SomeException)
 foreign import ccall safe "ql.h qlFreeError" qlFreeError :: Ptr () -> IO ()
 
@@ -128,7 +133,14 @@ errorCheck p = mask_ $ do
     flip finally (qlFreeError owned) $ do
       saved <- qlTakeErrorException owned
       if castStablePtrToPtr saved == nullPtr
-        then qlErrorMessage owned >>= peekCString >>= throwIO . CPlusPlusException
+        then do
+          call <- qlErrorCall owned >>= peekCString
+          if null call
+            then qlErrorMessage owned >>= peekCString >>= throwIO . CPlusPlusException
+            else do
+              required <- qlErrorRequiredVersion owned >>= peekCString
+              linked <- qlErrorLinkedVersion owned >>= peekCString
+              throwIO $ UnsupportedQuantLibVersion call required linked
         else (deRefStablePtr saved `finally` freeStablePtr saved) >>= throwIO
 
 -- Keep the native error, including an unconsumed callback exception, scoped to adoption.

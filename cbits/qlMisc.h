@@ -423,6 +423,10 @@ extern "C" {
   void qlSimpleLocalVolatilityEstimator(double yearFraction,
       unsigned datesLen, int *dates, unsigned valuesLen, double *values,
       unsigned *outDatesLen, int **outDates, unsigned *outValuesLen, double **outValues, QlError **e);
+  double qlInterestRateDiscountFactorFirstDerivative(InterestRate* o, double t, QlError **e);
+  double qlInterestRateDiscountFactorSecondDerivative(InterestRate* o, double t, QlError **e);
+  QlStubIndexSelection* qlStubIndexSelection(int convention, unsigned count, QlIborIndex** indices, QlError **e);
+  void qlFreeStubIndexSelection(QlStubIndexSelection* selection);
 #ifdef __cplusplus
 }
 #endif

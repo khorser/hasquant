@@ -890,3 +890,16 @@ Never make a handle that a member can reach own its group, for example by relink
 member handle to an aliasing pointer: a member built on that handle makes the group own itself and
 leak. External handles carry this hazard inside the cycle, which the `multiCurve` Haddock states.
 Exercise dependent instruments after `collectGarbage` and under a small RTS nursery.
+
+## Bootstrap initial guesses and adjacent versions
+
+`BootstrapInitialGuess` crosses once per whole curve: borrowed node times (including zero),
+previous data (empty on the first bootstrap), and one trait-specific output per non-reference
+pillar. `QlCallbackArgs` carries the second input and an independent output size. Validate the
+output length before copying; the managed native owner retains the callback for recalculation.
+On QuantLib 1.43, skip callback creation entirely, so ignored arguments cannot execute.
+
+`QlCallback` is a void typedef in the c2hs header. Use a `Ptr ()` marshaller without a
+`{#pointer *QlCallback nocode#}` hook, which would make generated FFI declarations refer to an
+undefined `QlCallback` Haskell type. C shim declarations belong before the closing
+`#ifdef __cplusplus` guard; declarations inside that guard are invisible to c2hs.

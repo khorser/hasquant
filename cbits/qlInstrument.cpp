@@ -86,6 +86,10 @@ namespace hasquant {
 #include <ql/experimental/swaptions/irregularswaption.hpp>
 #include <ql/instruments/bonds/convertiblebonds.hpp>
 #include <ql/cashflows/cashflows.hpp>
+#include <ql/version.hpp>
+#if QL_HEX_VERSION >= 0x01440000
+#include <ql/cashflows/stubiborcoupon.hpp>
+#endif
 #include <ql/cashflows/coupon.hpp>
 #include <ql/cashflows/averagebmacoupon.hpp>
 #include <ql/cashflows/fixedratecoupon.hpp>
@@ -136,6 +140,7 @@ namespace hasquant {
 #include <ql/termstructures/yield/multipleresetsswaphelper.hpp>
 #include <ql/termstructures/yield/overnightindexfutureratehelper.hpp>
 #include <ql/version.hpp>
+#include <cmath>
 #if QL_HEX_VERSION >= 0x01440000
 #include <ql/experimental/termstructures/overnightindexedfundingratehelper.hpp>
 #endif
@@ -329,6 +334,14 @@ namespace {
       collectIndexFixing(spread->swapIndex2(), date, out);
       return;
     }
+#if QL_HEX_VERSION >= 0x01440000
+    // The composite is erased to Index; its components own the actual fixing histories.
+    if (auto weighted = ext::dynamic_pointer_cast<StubIborCoupon::WeightedIndex>(index)) {
+      for (const auto& component : weighted->components())
+        collectIndexFixing(component.first, date, out);
+      return;
+    }
+#endif
     out.emplace_back(index->name(), date);
   }
 
@@ -573,7 +586,6 @@ namespace {
       collectSwapFixingDependencies(*h.swap(), out_);
     }
 #if QL_HEX_VERSION >= 0x01440000
-    // Added after 1.43; not bound yet, but a binding needs no visitor change.
     void visit(OvernightOvernightBasisSwapRateHelper& h) override {
       collectSwapFixingDependencies(*h.swap(), out_);
     }
@@ -902,12 +914,12 @@ QlNonstandardSwap* qlNonstandardSwap1(QlFixedVsFloatingSwap* v, QlError **e) { Q
   } catch (std::exception& er) {return handleException<QlNonstandardSwap*>(e, er);}}
 // Scalar gearing/spread ctor; fixedNominal/floatingNominal/fixedRate are still per-period vectors
 // upstream (see nonstandardswap.hpp).
-QlNonstandardSwap* qlNonstandardSwap(int type, unsigned fixedNominalLen, double* fixedNominal, unsigned floatingNominalLen, double* floatingNominal, Schedule* fixedSchedule, unsigned fixedRateLen, double* fixedRate, DayCounter* fixedDayCount, Schedule* floatingSchedule, QlIborIndex* iborIndex, double gearing, double spread, DayCounter* floatingDayCount, int intermediateCapitalExchange, int finalCapitalExchange, int paymentConvention, QlError **e) { QlCallScope callbackScope(e);
-  try {return ret(new QlNonstandardSwap(alloc(new NonstandardSwap((Swap::Type)type, std::vector<double>(fixedNominal, fixedNominal+fixedNominalLen), std::vector<double>(floatingNominal, floatingNominal+floatingNominalLen), *arg(fixedSchedule), std::vector<double>(fixedRate, fixedRate+fixedRateLen), *arg(fixedDayCount), *arg(floatingSchedule), *arg(iborIndex), gearing, spread, *arg(floatingDayCount), intermediateCapitalExchange, finalCapitalExchange, qlOptBusinessDayConvention(paymentConvention)))));
+QlNonstandardSwap* qlNonstandardSwap(int type, unsigned fixedNominalLen, double* fixedNominal, unsigned floatingNominalLen, double* floatingNominal, Schedule* fixedSchedule, unsigned fixedRateLen, double* fixedRate, DayCounter* fixedDayCount, Schedule* floatingSchedule, QlIborIndex* iborIndex, double gearing, double spread, DayCounter* floatingDayCount, int intermediateCapitalExchange, int finalCapitalExchange, int paymentConvention, [[maybe_unused]] int paymentLag, [[maybe_unused]] Calendar* paymentCalendar, QlError **e) { QlCallScope callbackScope(e);
+  try {return ret(new QlNonstandardSwap(alloc(new NonstandardSwap((Swap::Type)type, std::vector<double>(fixedNominal, fixedNominal+fixedNominalLen), std::vector<double>(floatingNominal, floatingNominal+floatingNominalLen), *arg(fixedSchedule), std::vector<double>(fixedRate, fixedRate+fixedRateLen), *arg(fixedDayCount), *arg(floatingSchedule), *arg(iborIndex), gearing, spread, *arg(floatingDayCount), intermediateCapitalExchange, finalCapitalExchange, qlOptBusinessDayConvention(paymentConvention) QL144_ARGS(paymentLag, *paymentCalendar)))));
   } catch (std::exception& er) {return handleException<QlNonstandardSwap*>(e, er);}}
 // Vector gearing/spread ctor (full coverage: the example only uses the scalar form above).
-QlNonstandardSwap* qlNonstandardSwap2(int type, unsigned fixedNominalLen, double* fixedNominal, unsigned floatingNominalLen, double* floatingNominal, Schedule* fixedSchedule, unsigned fixedRateLen, double* fixedRate, DayCounter* fixedDayCount, Schedule* floatingSchedule, QlIborIndex* iborIndex, unsigned gearingLen, double* gearing, unsigned spreadLen, double* spread, DayCounter* floatingDayCount, int intermediateCapitalExchange, int finalCapitalExchange, int paymentConvention, QlError **e) { QlCallScope callbackScope(e);
-  try {return ret(new QlNonstandardSwap(alloc(new NonstandardSwap((Swap::Type)type, std::vector<double>(fixedNominal, fixedNominal+fixedNominalLen), std::vector<double>(floatingNominal, floatingNominal+floatingNominalLen), *arg(fixedSchedule), std::vector<double>(fixedRate, fixedRate+fixedRateLen), *arg(fixedDayCount), *arg(floatingSchedule), *arg(iborIndex), std::vector<double>(gearing, gearing+gearingLen), std::vector<double>(spread, spread+spreadLen), *arg(floatingDayCount), intermediateCapitalExchange, finalCapitalExchange, qlOptBusinessDayConvention(paymentConvention)))));
+QlNonstandardSwap* qlNonstandardSwap2(int type, unsigned fixedNominalLen, double* fixedNominal, unsigned floatingNominalLen, double* floatingNominal, Schedule* fixedSchedule, unsigned fixedRateLen, double* fixedRate, DayCounter* fixedDayCount, Schedule* floatingSchedule, QlIborIndex* iborIndex, unsigned gearingLen, double* gearing, unsigned spreadLen, double* spread, DayCounter* floatingDayCount, int intermediateCapitalExchange, int finalCapitalExchange, int paymentConvention, [[maybe_unused]] int paymentLag, [[maybe_unused]] Calendar* paymentCalendar, QlError **e) { QlCallScope callbackScope(e);
+  try {return ret(new QlNonstandardSwap(alloc(new NonstandardSwap((Swap::Type)type, std::vector<double>(fixedNominal, fixedNominal+fixedNominalLen), std::vector<double>(floatingNominal, floatingNominal+floatingNominalLen), *arg(fixedSchedule), std::vector<double>(fixedRate, fixedRate+fixedRateLen), *arg(fixedDayCount), *arg(floatingSchedule), *arg(iborIndex), std::vector<double>(gearing, gearing+gearingLen), std::vector<double>(spread, spread+spreadLen), *arg(floatingDayCount), intermediateCapitalExchange, finalCapitalExchange, qlOptBusinessDayConvention(paymentConvention) QL144_ARGS(paymentLag, *paymentCalendar)))));
   } catch (std::exception& er) {return handleException<QlNonstandardSwap*>(e, er);}}
 void qlNonstandardSwapFixedRate(QlNonstandardSwap* o, unsigned *len, double **out, QlError **e) { QlCallScope callbackScope(e);
   try {fillVectorOut([&] {return (*arg(o))->fixedRate();}, len, out);
@@ -925,8 +937,8 @@ QlFloatFloatSwap* qlFloatFloatSwap(int type, double nominal1, double nominal2, S
 QlFloatFloatSwap* qlFloatFloatSwap2(int type, unsigned nominal1Len, double* nominal1, unsigned nominal2Len, double* nominal2, Schedule* schedule1, QlInterestRateIndex* index1, DayCounter* dayCount1, Schedule* schedule2, QlInterestRateIndex* index2, DayCounter* dayCount2, int intermediateCapitalExchange, int finalCapitalExchange, unsigned gearing1Len, double* gearing1, unsigned spread1Len, double* spread1, unsigned cappedRate1Len, double* cappedRate1, unsigned flooredRate1Len, double* flooredRate1, unsigned gearing2Len, double* gearing2, unsigned spread2Len, double* spread2, unsigned cappedRate2Len, double* cappedRate2, unsigned flooredRate2Len, double* flooredRate2, int paymentConvention1, int paymentConvention2, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlFloatFloatSwap(alloc(new FloatFloatSwap((Swap::Type)type, std::vector<double>(nominal1, nominal1+nominal1Len), std::vector<double>(nominal2, nominal2+nominal2Len), *arg(schedule1), *arg(index1), *arg(dayCount1), *arg(schedule2), *arg(index2), *arg(dayCount2), intermediateCapitalExchange, finalCapitalExchange, std::vector<double>(gearing1, gearing1+gearing1Len), std::vector<double>(spread1, spread1+spread1Len), std::vector<double>(cappedRate1, cappedRate1+cappedRate1Len), std::vector<double>(flooredRate1, flooredRate1+flooredRate1Len), std::vector<double>(gearing2, gearing2+gearing2Len), std::vector<double>(spread2, spread2+spread2Len), std::vector<double>(cappedRate2, cappedRate2+cappedRate2Len), std::vector<double>(flooredRate2, flooredRate2+flooredRate2Len), qlOptBusinessDayConvention(paymentConvention1), qlOptBusinessDayConvention(paymentConvention2)))));
   } catch (std::exception& er) {return handleException<QlFloatFloatSwap*>(e, er);}}
-double qlFloatFloatSwapFairSpread1(QlFloatFloatSwap* o, QlError **e) { QlCallScope callbackScope(e);try {return (*arg(o))->fairSpread1();} catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlFloatFloatSwapFairSpread2(QlFloatFloatSwap* o, QlError **e) { QlCallScope callbackScope(e);try {return (*arg(o))->fairSpread2();} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlFloatFloatSwapFairSpread1(QlFloatFloatSwap* o, QlError **e) { QlCallScope callbackScope(e);try {const double value = (*arg(o))->fairSpread1(); QL_REQUIRE(std::isfinite(value), "fair rate/spread is undefined for zero leg BPS"); return value;} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlFloatFloatSwapFairSpread2(QlFloatFloatSwap* o, QlError **e) { QlCallScope callbackScope(e);try {const double value = (*arg(o))->fairSpread2(); QL_REQUIRE(std::isfinite(value), "fair rate/spread is undefined for zero leg BPS"); return value;} catch (std::exception& er) {return handleException<double>(e, er);}}
 
 QlSwap* qlSwap(Leg* firstLeg, Leg* secondLeg, QlError **e) { QlCallScope callbackScope(e);try {return ret(new QlSwap(alloc(new Swap(*arg(firstLeg), *arg(secondLeg)))));} catch (std::exception& er) {return handleException<QlSwap*>(e, er);} }
 double qlSwapEndDiscounts(QlSwap* o, unsigned j, QlError **e) { QlCallScope callbackScope(e);try {return (*arg(o))->endDiscounts(j);} catch (std::exception& er) {return handleException<double>(e, er);}}
@@ -938,8 +950,8 @@ int qlSwapMaturityDate(QlSwap* o, QlError **e) { QlCallScope callbackScope(e);tr
 double qlSwapNpvDateDiscount(QlSwap* o, QlError **e) { QlCallScope callbackScope(e);try {return (*arg(o))->npvDateDiscount();} catch (std::exception& er) {return handleException<double>(e, er);}}
 int qlSwapStartDate(QlSwap* o, QlError **e) { QlCallScope callbackScope(e);try {return qlNullableDate((*arg(o))->startDate());} catch (std::exception& er) {return handleException<int>(e, er);}}
 double qlSwapStartDiscounts(QlSwap* o, unsigned j, QlError **e) { QlCallScope callbackScope(e);try {return (*arg(o))->startDiscounts(j);} catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlFixedVsFloatingSwapFairRate(QlFixedVsFloatingSwap* o, QlError **e) { QlCallScope callbackScope(e);try {return (*arg(o))->fairRate();} catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlFixedVsFloatingSwapFairSpread(QlFixedVsFloatingSwap* o, QlError **e) { QlCallScope callbackScope(e);try {return (*arg(o))->fairSpread();} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlFixedVsFloatingSwapFairRate(QlFixedVsFloatingSwap* o, QlError **e) { QlCallScope callbackScope(e);try {const double value = (*arg(o))->fairRate(); QL_REQUIRE(std::isfinite(value), "fair rate/spread is undefined for zero leg BPS"); return value;} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlFixedVsFloatingSwapFairSpread(QlFixedVsFloatingSwap* o, QlError **e) { QlCallScope callbackScope(e);try {const double value = (*arg(o))->fairSpread(); QL_REQUIRE(std::isfinite(value), "fair rate/spread is undefined for zero leg BPS"); return value;} catch (std::exception& er) {return handleException<double>(e, er);}}
 Leg* qlFixedVsFloatingSwapFixedLeg(QlFixedVsFloatingSwap* o, QlError **e) { QlCallScope callbackScope(e);try {return ret(new Leg((*arg(o))->fixedLeg()));} catch (std::exception& er) {return handleException<Leg*>(e, er);}}
 double qlFixedVsFloatingSwapFixedLegBPS(QlFixedVsFloatingSwap* o, QlError **e) { QlCallScope callbackScope(e);try {return (*arg(o))->fixedLegBPS();} catch (std::exception& er) {return handleException<double>(e, er);}}
 double qlFixedVsFloatingSwapFixedLegNPV(QlFixedVsFloatingSwap* o, QlError **e) { QlCallScope callbackScope(e);try {return (*arg(o))->fixedLegNPV();} catch (std::exception& er) {return handleException<double>(e, er);}}
@@ -961,12 +973,12 @@ double qlEquityTotalReturnSwapEquityLegNPV(QlEquityTotalReturnSwap* o, QlError *
 double qlEquityTotalReturnSwapInterestRateLegNPV(QlEquityTotalReturnSwap* o, QlError **e) { QlCallScope callbackScope(e);try {return (*arg(o))->interestRateLegNPV();} catch (std::exception& er) {return handleException<double>(e, er);}}
 double qlEquityTotalReturnSwapFairMargin(QlEquityTotalReturnSwap* o, QlError **e) { QlCallScope callbackScope(e);try {return (*arg(o))->fairMargin();} catch (std::exception& er) {return handleException<double>(e, er);}}
 
-QlOvernightIndexedSwap* qlOvernightIndexedSwap(int type, double nominal, Schedule* schedule, double fixedRate, DayCounter* fixedDC, QlOvernightIndex* overnightIndex, double spread, int paymentLag, int paymentAdjustment, Calendar* paymentCalendar, int telescopicValueDates, int averagingMethod, unsigned lookbackDays, unsigned lockoutDays, int applyObservationShift, QlError **e) { QlCallScope callbackScope(e);
-  try {return ret(new QlOvernightIndexedSwap(alloc(new OvernightIndexedSwap((OvernightIndexedSwap::Type)type, nominal, *arg(schedule), fixedRate, *arg(fixedDC), *arg(overnightIndex), spread, paymentLag, (BusinessDayConvention)paymentAdjustment, *arg(paymentCalendar), telescopicValueDates, (RateAveraging::Type)averagingMethod, lookbackDays, lockoutDays, applyObservationShift))));
+QlOvernightIndexedSwap* qlOvernightIndexedSwap(int type, double nominal, Schedule* schedule, double fixedRate, DayCounter* fixedDC, QlOvernightIndex* overnightIndex, double spread, int paymentLag, int paymentAdjustment, Calendar* paymentCalendar, int telescopicValueDates, int averagingMethod, unsigned lookbackDays, unsigned lockoutDays, int applyObservationShift, [[maybe_unused]] int roundingPrecision, QlError **e) { QlCallScope callbackScope(e);
+  try {return ret(new QlOvernightIndexedSwap(alloc(new OvernightIndexedSwap((OvernightIndexedSwap::Type)type, nominal, *arg(schedule), fixedRate, *arg(fixedDC), *arg(overnightIndex), spread, paymentLag, (BusinessDayConvention)paymentAdjustment, *arg(paymentCalendar), telescopicValueDates, (RateAveraging::Type)averagingMethod, lookbackDays, lockoutDays, applyObservationShift QL144_ARGS(roundingPrecision == Null<int>() ? optional<Integer>() : optional<Integer>(roundingPrecision))))));
   } catch (std::exception& er) {return handleException<QlOvernightIndexedSwap*>(e, er);}}
 
-QlOvernightIndexedSwap* qlOvernightIndexedSwap1(int type, unsigned nominalsLen, double* nominals, Schedule* schedule, double fixedRate, DayCounter* fixedDC, QlOvernightIndex* overnightIndex, double spread, int paymentLag, int paymentAdjustment, Calendar* paymentCalendar, int telescopicValueDates, int averagingMethod, unsigned lookbackDays, unsigned lockoutDays, int applyObservationShift, QlError **e) { QlCallScope callbackScope(e);
-  try {return ret(new QlOvernightIndexedSwap(alloc(new OvernightIndexedSwap((OvernightIndexedSwap::Type)type, std::vector<double>(nominals, nominals+nominalsLen), *arg(schedule), fixedRate, *arg(fixedDC), *arg(overnightIndex), spread, paymentLag, (BusinessDayConvention)paymentAdjustment, *arg(paymentCalendar), telescopicValueDates, (RateAveraging::Type)averagingMethod, lookbackDays, lockoutDays, applyObservationShift))));
+QlOvernightIndexedSwap* qlOvernightIndexedSwap1(int type, unsigned nominalsLen, double* nominals, Schedule* schedule, double fixedRate, DayCounter* fixedDC, QlOvernightIndex* overnightIndex, double spread, int paymentLag, int paymentAdjustment, Calendar* paymentCalendar, int telescopicValueDates, int averagingMethod, unsigned lookbackDays, unsigned lockoutDays, int applyObservationShift, [[maybe_unused]] int roundingPrecision, QlError **e) { QlCallScope callbackScope(e);
+  try {return ret(new QlOvernightIndexedSwap(alloc(new OvernightIndexedSwap((OvernightIndexedSwap::Type)type, std::vector<double>(nominals, nominals+nominalsLen), *arg(schedule), fixedRate, *arg(fixedDC), *arg(overnightIndex), spread, paymentLag, (BusinessDayConvention)paymentAdjustment, *arg(paymentCalendar), telescopicValueDates, (RateAveraging::Type)averagingMethod, lookbackDays, lockoutDays, applyObservationShift QL144_ARGS(roundingPrecision == Null<int>() ? optional<Integer>() : optional<Integer>(roundingPrecision))))));
   } catch (std::exception& er) {return handleException<QlOvernightIndexedSwap*>(e, er);}}
 void qlFreeConstNotionalCrossCurrencySwap(QlConstNotionalCrossCurrencySwap *o) {del(o);}
 QlSwap* qlConstNotionalCrossCurrencySwapAsSwap(QlConstNotionalCrossCurrencySwap *o) {return ret(new QlSwap(*arg(o)));}
@@ -989,14 +1001,14 @@ QlConstNotionalCrossCurrencyBasisSwap* qlConstNotionalCrossCurrencyBasisSwap(
     int payPaymentLag, int recPaymentLag,
     int payCompoundSpread, unsigned payLookbackDays, int payObservationShift, unsigned payLockoutDays, int payAveragingMethod,
     int recCompoundSpread, unsigned recLookbackDays, int recObservationShift, unsigned recLockoutDays, int recAveragingMethod,
-    int telescopicValueDates, QlError **e) { QlCallScope callbackScope(e);
+    int telescopicValueDates, [[maybe_unused]] int useIndexedCoupons, [[maybe_unused]] int paymentLagOnNotionalExchanges, [[maybe_unused]] QlStubIndexSelection* payStub, [[maybe_unused]] QlStubIndexSelection* recStub, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlConstNotionalCrossCurrencyBasisSwap(alloc(new ConstNotionalCrossCurrencyBasisSwap(
     payNominal, *arg(payCurrency), *arg(paySchedule), *arg(payIndex), paySpread, payGearing,
     recNominal, *arg(recCurrency), *arg(recSchedule), *arg(recIndex), recSpread, recGearing,
     payPaymentLag, recPaymentLag,
     payCompoundSpread, payLookbackDays, payObservationShift, payLockoutDays, (RateAveraging::Type)payAveragingMethod,
     recCompoundSpread, recLookbackDays, recObservationShift, recLockoutDays, (RateAveraging::Type)recAveragingMethod,
-    telescopicValueDates))));
+    telescopicValueDates QL144_ARGS(qlOptBool(useIndexedCoupons), paymentLagOnNotionalExchanges, qlStubSelection(payStub), qlStubSelection(recStub))))));
   } catch (std::exception& er) {return handleException<QlConstNotionalCrossCurrencyBasisSwap*>(e, er);}}
 double qlConstNotionalCrossCurrencyBasisSwapFairPaySpread(QlConstNotionalCrossCurrencyBasisSwap* o, QlError **e) { QlCallScope callbackScope(e);try {return (*arg(o))->fairPaySpread();} catch (std::exception& er) {return handleException<double>(e, er);}}
 double qlConstNotionalCrossCurrencyBasisSwapFairRecSpread(QlConstNotionalCrossCurrencyBasisSwap* o, QlError **e) { QlCallScope callbackScope(e);try {return (*arg(o))->fairRecSpread();} catch (std::exception& er) {return handleException<double>(e, er);}}
@@ -1009,14 +1021,14 @@ QlConstNotionalCrossCurrencyFixedVsFloatingSwap* qlConstNotionalCrossCurrencyFix
     double floatNominal, Currency* floatCurrency, Schedule* floatSchedule, QlIborIndex* floatIndex, double floatSpread,
     int floatPaymentBdc, unsigned floatPaymentLag, Calendar* floatPaymentCalendar,
     int telescopicValueDates, int floatCompoundSpread, unsigned floatLookbackDays, int floatObservationShift,
-    unsigned floatLockoutDays, int floatAveragingMethod, QlError **e) { QlCallScope callbackScope(e);
+    unsigned floatLockoutDays, int floatAveragingMethod, [[maybe_unused]] int useIndexedCoupons, [[maybe_unused]] QlStubIndexSelection* floatStub, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlConstNotionalCrossCurrencyFixedVsFloatingSwap(alloc(new ConstNotionalCrossCurrencyFixedVsFloatingSwap(
     (Swap::Type)type, fixedNominal, *arg(fixedCurrency), *arg(fixedSchedule), fixedRate, *arg(fixedDayCount),
     (BusinessDayConvention)fixedPaymentBdc, fixedPaymentLag, *arg(fixedPaymentCalendar),
     floatNominal, *arg(floatCurrency), *arg(floatSchedule), *arg(floatIndex), floatSpread,
     (BusinessDayConvention)floatPaymentBdc, floatPaymentLag, *arg(floatPaymentCalendar),
     telescopicValueDates, floatCompoundSpread, floatLookbackDays, floatObservationShift,
-    floatLockoutDays, (RateAveraging::Type)floatAveragingMethod))));
+    floatLockoutDays, (RateAveraging::Type)floatAveragingMethod QL144_ARGS(qlOptBool(useIndexedCoupons), qlStubSelection(floatStub))))));
   } catch (std::exception& er) {return handleException<QlConstNotionalCrossCurrencyFixedVsFloatingSwap*>(e, er);}}
 double qlConstNotionalCrossCurrencyFixedVsFloatingSwapFairRate(QlConstNotionalCrossCurrencyFixedVsFloatingSwap* o, QlError **e) { QlCallScope callbackScope(e);try {return (*arg(o))->fairRate();} catch (std::exception& er) {return handleException<double>(e, er);}}
 double qlConstNotionalCrossCurrencyFixedVsFloatingSwapFairSpread(QlConstNotionalCrossCurrencyFixedVsFloatingSwap* o, QlError **e) { QlCallScope callbackScope(e);try {return (*arg(o))->fairSpread();} catch (std::exception& er) {return handleException<double>(e, er);}}
@@ -1044,16 +1056,16 @@ QlSwap* qlYearOnYearInflationSwapAsSwap(QlYearOnYearInflationSwap *o) {return re
 QlYearOnYearInflationSwap* qlYearOnYearInflationSwap(int type, double nominal, Schedule* fixedSchedule, double fixedRate, DayCounter* fixedDayCount, Schedule* yoySchedule, QlYoYInflationIndex* yoyIndex, int obsLagLen, int obsLagUnit, int interpolation, double spread, DayCounter* yoyDayCount, Calendar* paymentCalendar, int paymentConvention, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlYearOnYearInflationSwap(alloc(new YearOnYearInflationSwap((YearOnYearInflationSwap::Type)type, nominal, *arg(fixedSchedule), fixedRate, *arg(fixedDayCount), *arg(yoySchedule), *arg(yoyIndex), Period(obsLagLen, (TimeUnit)obsLagUnit), (CPI::InterpolationType)interpolation, spread, *arg(yoyDayCount), *arg(paymentCalendar), (BusinessDayConvention)paymentConvention))));
   } catch (std::exception& er) {return handleException<QlYearOnYearInflationSwap*>(e, er);}}
-double qlYearOnYearInflationSwapFairRate(QlYearOnYearInflationSwap* o, QlError **e) { QlCallScope callbackScope(e);try {return (*arg(o))->fairRate();} catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlYearOnYearInflationSwapFairSpread(QlYearOnYearInflationSwap* o, QlError **e) { QlCallScope callbackScope(e);try {return (*arg(o))->fairSpread();} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlYearOnYearInflationSwapFairRate(QlYearOnYearInflationSwap* o, QlError **e) { QlCallScope callbackScope(e);try {const double value = (*arg(o))->fairRate(); QL_REQUIRE(std::isfinite(value), "fair rate/spread is undefined for zero leg BPS"); return value;} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlYearOnYearInflationSwapFairSpread(QlYearOnYearInflationSwap* o, QlError **e) { QlCallScope callbackScope(e);try {const double value = (*arg(o))->fairSpread(); QL_REQUIRE(std::isfinite(value), "fair rate/spread is undefined for zero leg BPS"); return value;} catch (std::exception& er) {return handleException<double>(e, er);}}
 
 void qlFreeCPISwap(QlCPISwap *o) {del(o);}
 QlSwap* qlCPISwapAsSwap(QlCPISwap *o) {return ret(new QlSwap(*arg(o)));}
 QlCPISwap* qlCPISwap(int type, double nominal, int subtractInflationNominal, double spread, DayCounter* floatDayCount, Schedule* floatSchedule, int floatRoll, unsigned fixingDays, QlIborIndex* floatIndex, double fixedRate, double baseCPI, DayCounter* fixedDayCount, Schedule* fixedSchedule, int fixedRoll, int obsLagLen, int obsLagUnit, QlZeroInflationIndex* fixedIndex, int observationInterpolation, double inflationNominal, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlCPISwap(alloc(new CPISwap((CPISwap::Type)type, nominal, subtractInflationNominal, spread, *arg(floatDayCount), *arg(floatSchedule), (BusinessDayConvention)floatRoll, fixingDays, *arg(floatIndex), fixedRate, baseCPI, *arg(fixedDayCount), *arg(fixedSchedule), (BusinessDayConvention)fixedRoll, Period(obsLagLen, (TimeUnit)obsLagUnit), *arg(fixedIndex), (CPI::InterpolationType)observationInterpolation, inflationNominal))));
   } catch (std::exception& er) {return handleException<QlCPISwap*>(e, er);}}
-double qlCPISwapFairRate(QlCPISwap* o, QlError **e) { QlCallScope callbackScope(e);try {return (*arg(o))->fairRate();} catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlCPISwapFairSpread(QlCPISwap* o, QlError **e) { QlCallScope callbackScope(e);try {return (*arg(o))->fairSpread();} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlCPISwapFairRate(QlCPISwap* o, QlError **e) { QlCallScope callbackScope(e);try {const double value = (*arg(o))->fairRate(); QL_REQUIRE(std::isfinite(value), "fair rate/spread is undefined for zero leg BPS"); return value;} catch (std::exception& er) {return handleException<double>(e, er);}}
+double qlCPISwapFairSpread(QlCPISwap* o, QlError **e) { QlCallScope callbackScope(e);try {const double value = (*arg(o))->fairSpread(); QL_REQUIRE(std::isfinite(value), "fair rate/spread is undefined for zero leg BPS"); return value;} catch (std::exception& er) {return handleException<double>(e, er);}}
 
 void qlFreeZeroCouponSwap(QlZeroCouponSwap *o) {del(o);}
 QlSwap* qlZeroCouponSwapAsSwap(QlZeroCouponSwap *o) {return ret(new QlSwap(*arg(o)));}
@@ -1859,14 +1871,18 @@ Leg* qlFixedRateLeg(Schedule* schedule, unsigned NotionalsLen, double* Notionals
         .withPaymentAdjustment((BusinessDayConvention)paymentAdjustment).withFirstPeriodDayCounter(*arg(firstPeriodDayCounter)).withPaymentCalendar(*arg(paymentCalendar))));
   } catch (std::exception& er) {return handleException<Leg*>(e, er);}}
 Leg* qlIborLeg(Schedule* schedule, QlIborIndex* index, unsigned notionalsLen, double* notionals, DayCounter* paymentDayCounter, int paymentAdjustment, unsigned fixingDaysLen, unsigned* fixingDays, unsigned gearingsLen, double* gearings, unsigned spreadsLen, double* spreads, unsigned capsLen, double* caps, unsigned floorsLen, double* floors, int inArrears, int zeroPayments,
-  int paymentLag, Calendar* paymentCalendar, int exCouponPeriodLen, int exCouponPeriodUnit, Calendar* exCouponCalendar, int exCouponConvention, int exCouponEndOfMonth, int fixingConvention, int useIndexedCoupons, QlError **e) { QlCallScope callbackScope(e);
+  int paymentLag, Calendar* paymentCalendar, int exCouponPeriodLen, int exCouponPeriodUnit, Calendar* exCouponCalendar, int exCouponConvention, int exCouponEndOfMonth, int fixingConvention, int useIndexedCoupons, [[maybe_unused]] QlStubIndexSelection* stub, QlError **e) { QlCallScope callbackScope(e);
   try {return alloc(new Leg(IborLeg(*arg(schedule), *arg(index)).withNotionals(std::vector<double>(notionals, notionals+notionalsLen)).withPaymentDayCounter(*arg(paymentDayCounter))
         .withPaymentAdjustment((BusinessDayConvention)paymentAdjustment).withFixingDays(std::vector<unsigned>(fixingDays, fixingDays+fixingDaysLen))
         .withGearings(std::vector<double>(gearings, gearings+gearingsLen)).withSpreads(std::vector<double>(spreads, spreads+spreadsLen))
         .withCaps(std::vector<double>(caps, caps+capsLen)).withFloors(std::vector<double>(floors, floors+floorsLen)).inArrears(inArrears).withZeroPayments(zeroPayments)
         .withPaymentLag(paymentLag).withPaymentCalendar(*arg(paymentCalendar))
         .withExCouponPeriod(Period(exCouponPeriodLen, (TimeUnit)exCouponPeriodUnit), *arg(exCouponCalendar), (BusinessDayConvention)exCouponConvention, exCouponEndOfMonth)
-        .withFixingConvention((BusinessDayConvention)fixingConvention).withIndexedCoupons(qlOptBool(useIndexedCoupons))));
+        .withFixingConvention((BusinessDayConvention)fixingConvention).withIndexedCoupons(qlOptBool(useIndexedCoupons))
+#if QL_HEX_VERSION >= 0x01440000
+      .withStubIndexSelection(qlStubSelection(stub))
+#endif
+));
   } catch (std::exception& er) {return handleException<Leg*>(e, er);}}
 Leg* qlCmsLeg(Schedule* schedule, QlSwapIndex* swapIndex, unsigned notionalsLen, double* notionals, DayCounter* paymentDayCounter, int paymentAdjustment, unsigned fixingDaysLen, unsigned* fixingDays, unsigned gearingsLen, double* gearings, unsigned spreadsLen, double* spreads, unsigned capsLen, double* caps, unsigned floorsLen, double* floors, int inArrears, int zeroPayments,
   int exCouponPeriodLen, int exCouponPeriodUnit, Calendar* exCouponCalendar, int exCouponConvention, int exCouponEndOfMonth, int fixingConvention, QlError **e) { QlCallScope callbackScope(e);

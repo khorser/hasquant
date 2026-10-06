@@ -51,7 +51,7 @@ sched <- schedule (Just settle) maturity (1, Years) cal
   ModifiedFollowing ModifiedFollowing Backward False Nothing Nothing
 
 ois <- overnightIndexedSwap Payer 10000000 sched 0.035 dc sofr 0.0
-  0 Following cal False AveragingCompound Nothing 0 False
+  0 Following cal False AveragingCompound Nothing Nothing 0 False
 
 engine <- discountingSwapEngine curve (Just False) Nothing Nothing
 setPricingEngine ois engine
@@ -74,6 +74,7 @@ Two things follow from that split:
 Out of scope: reimplementing or independently binding QuantLib's interpolation, optimization, linear-algebra, and RNG internals, unless another binding needs one exposed.
 
 ## Roadmap
+- Bind QuantLib 1.44 rough Heston models/engines and MTM cross-currency swap products.
 - Identify which [OpenSourceRiskEngine](https://opensourcerisk.org) functionality should be bound, e.g. `https://github.com/OpenSourceRisk/Engine/blob/master/QuantExt/qle/indexes/fallbackiborindex.hpp`
 - Build a declarative embedded DSL as a sibling project to define contracts, portfolios, market data, and calculation scenarios (unpublished WIP), use it for XVA and other complext calculations
 - Expose that DSL through an agent-callable tool, so an LLM can construct and price products through validated hasquant operations rather than generated pricing logic.
@@ -84,13 +85,26 @@ Out of scope: reimplementing or independently binding QuantLib's interpolation, 
 
 Tests reuse QuantLib fixtures and cached values when available. Enum-dispatched bindings also get smoke tests that construct and check representative values; these catch stale or incorrect enum mappings that can survive a clean build and the ordinary test suite.
 
-`tools/ql-methods-1.43.txt` tracks constructors and non-trivial methods. Coverage: https://khorser.github.io/hasquant/coverage/hpc_index.html.
+`tools/ql-methods-1.43.txt` and `tools/ql-methods-1.44.txt` track constructors and non-trivial methods. Coverage: https://khorser.github.io/hasquant/coverage/hpc_index.html.
+
+# QuantLib version policy
+
+Starting with QuantLib 1.44, hasquant supports the two most recent QuantLib release series:
+initially 1.43 and 1.44. Release candidates are tested ahead of the corresponding final release.
+
+The public Haskell API is shared across supported versions. Calls requiring the newer QuantLib
+version raise `UnsupportedQuantLibVersion` (call name, minimum required version, linked version)
+when used with the preceding version. Arguments introduced in the newer version are accepted but
+ignored on the preceding version, including their native validation and callback execution.
+
+Newer validation and safety restrictions may also be applied when running against the preceding
+version. Numerical results and other upstream behavior can still differ between versions.
 
 # Building
 
 GHC 9.10 is the primary development version. GHC 8.10.6 (`base >= 4.14`) is the supported floor and is checked against Stackage lts-18.8. GitHub CI also tests with GHC 9.6.7, 9.8.4, 9.12.4, 9.14.1.
 
-Install QuantLib 1.43 or later: [Linux](https://www.quantlib.org/install/linux.shtml), [macOS](https://www.quantlib.org/install/macosx.shtml), or [CMake](https://www.quantlib.org/install/cmake.shtml).
+Install QuantLib 1.43 or 1.44 (currently 1.44 RC): [Linux](https://www.quantlib.org/install/linux.shtml), [macOS](https://www.quantlib.org/install/macosx.shtml), or [CMake](https://www.quantlib.org/install/cmake.shtml).
 
 Linux and macOS are the primary, well-tested platforms. Windows builds work too, but QuantLib has to be rebuilt with GHC's own bundled Clang first — see [`WINDOWS.md`](WINDOWS.md) for the recipe.
 

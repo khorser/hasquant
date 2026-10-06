@@ -1,6 +1,8 @@
 {-# LANGUAGE ScopedTypeVariables, OverloadedLists, LambdaCase #-}
 module QuantLib.Spec.TermStructure (spec) where
 
+import Control.Exception(throwIO, IOException)
+import Data.IORef
 import Control.Monad(replicateM, forM_, zipWithM, (>=>))
 
 import Test.Hspec hiding(before, after)
@@ -41,10 +43,103 @@ import QuantLib.Process(blackScholesMertonProcess, ProcessDiscretization(EulerDi
 import qualified QuantLib.TermStructure.Volatility as Vol
 import QuantLib.PricingEngine(discountingSwapEngine, analyticEuropeanEngine, blackSwaptionEngineFromVolatilityStructure, blackCapFloorEngineFromVolatilityStructure, bachelierSwaptionEngineFromVolatilityStructure, bachelierCapFloorEngineFromVolatilityStructure, bjerksundStenslandApproximationEngine, analyticHestonEngine, IntegrationControl(..), fdHestonVanillaEngine)
 
-import QuantLib.Spec.Helpers(areClose, closePrec, quantLibAtMost143)
+import QuantLib.Spec.Helpers(areClose, closePrec, quantLibAtMost143, unsupportedQuantLib144)
 
 spec :: Spec
 spec = do
+    describe "QuantLib 1.44 curves and helpers" $ do
+      it "moves the implied reference date and preserves discount ratios" $ Context.keepingSettingsGc $ do
+        let today' = fromGregorian 2024 1 2
+        Context.setEvaluationDate (Just today')
+        cal <- calendar TARGET
+        dc <- dayCounter Actual365FixedStandard
+        q <- Quote.simpleQuote 0.03
+        base <- flatForward (ReferenceDate today') q dc IR.Continuous Annual
+        if quantLibAtMost143 then
+          impliedTermStructureMoving base 2 cal `shouldThrow` unsupportedQuantLib144 "impliedTermStructureMoving"
+        else do
+          moved <- impliedTermStructureMoving base 2 cal
+          ref <- advance cal today' (2, Days) Following False
+          TS.referenceDate moved `shouldReturn` ref
+          let maturity = addGregorianYearsClip 1 ref
+          df <- discount base (DatePoint maturity) False
+          refDf <- discount base (DatePoint ref) False
+          discount moved (DatePoint maturity) False >>= (`shouldSatisfy` closePrec (df/refDf) 1e-10)
+          Context.setEvaluationDate (Just (addDays 1 today'))
+          next <- advance cal (addDays 1 today') (2, Days) Following False
+          TS.referenceDate moved `shouldReturn` next
+
+      it "reprices overnight basis and funding helpers" $ Context.keepingSettingsGc $ do
+        let today' = fromGregorian 2024 1 2
+        Context.setEvaluationDate (Just today')
+        cal <- calendar TARGET
+        dc <- dayCounter (Actual360 False)
+        q <- Quote.simpleQuote 0.03
+        basis <- Quote.simpleQuote 0.001
+        base <- flatForward (ReferenceDate today') q dc IR.Continuous Annual
+        on <- overnightIborIndex Sofr (Just base)
+        other <- overnightIborIndex Sofr Nothing
+        let basisHelper = overnightOvernightBasisSwapRateHelper basis (1, Years) 2 cal ModifiedFollowing False
+              on other (Just base) False 2 Quarterly AveragingCompound AveragingCompound False Backward
+            funding terms = overnightIndexedFundingRateHelper terms basis cal ModifiedFollowing False on
+              (3, Months) dc 2 False Backward LastRelevantDate Nothing
+        if quantLibAtMost143 then do
+          basisHelper `shouldThrow` unsupportedQuantLib144 "overnightOvernightBasisSwapRateHelper"
+          funding (FundingTenor 2 (1, Years)) `shouldThrow` unsupportedQuantLib144 "overnightIndexedFundingRateHelper"
+          funding (FundingBetweenDates (addDays 2 today') (addGregorianYearsClip 1 today'))
+            `shouldThrow` unsupportedQuantLib144 "overnightIndexedFundingRateHelper"
+        else do
+          bh <- basisHelper
+          fh <- funding (FundingTenor 2 (1, Years))
+          start <- advance cal today' (2, Days) Following False
+          end <- advance cal start (1, Years) ModifiedFollowing False
+          dated <- funding (FundingBetweenDates start end)
+          forM_ ([bh, fh, dated] :: [RateHelper]) $ \helper -> do
+            curve <- piecewiseYieldCurve (ReferenceDate today') [helper] dc []
+              (Iterative Discount LogLinear defaultIterativeBootstrapOpts) False
+            discount curve (TimePoint 0.5) False >>= (`shouldSatisfy` (\df -> df > 0 && df < 1))
+            impliedQuote helper >>= (`shouldSatisfy` closePrec 0.001 1e-9)
+            deps <- rateHelperFixingDependencies helper
+            deps `shouldSatisfy` maybe False (not . null)
+
+      it "owns initial-guess callbacks and supplies previous bootstrap data" $ Context.keepingSettingsGc $ do
+        Context.setEvaluationDate (Just (fromGregorian 2024 1 2))
+        cal <- calendar TARGET
+        dc <- dayCounter (Actual360 False)
+        q <- Quote.simpleQuote 0.03
+        helpers <- mapM (\n -> depositRateHelper q (DepositTenor (n, Months) 0 cal ModifiedFollowing False dc)) [3, 6]
+        calls <- newIORef ([] :: [(Int, Int)])
+        let guess times previous = do
+              modifyIORef' calls (++ [(V.length times, V.length previous)])
+              pure (V.map (\t -> exp (-0.03*t)) (V.drop 1 times))
+        curve <- piecewiseYieldCurve (SettlementDays 0 cal) (fromList helpers) dc []
+          (GlobalDiscountLogLinear 1e-12 [] (Just guess)) False
+        Context.collectGarbage
+        discount curve (TimePoint 0.2) False >>= (`shouldSatisfy` (> 0))
+        _ <- Quote.setValue q 0.04
+        discount curve (TimePoint 0.2) False >>= (`shouldSatisfy` (> 0))
+        seen <- readIORef calls
+        seen `shouldBe` if quantLibAtMost143 then [] else [(3,0), (3,3)]
+
+      it "transports callback exceptions and rejects wrong initial-guess lengths" $ Context.keepingSettingsGc $ do
+        Context.setEvaluationDate (Just (fromGregorian 2024 1 2))
+        cal <- calendar TARGET
+        dc <- dayCounter (Actual360 False)
+        q <- Quote.simpleQuote 0.03
+        helper <- depositRateHelper q (DepositTenor (6, Months) 0 cal ModifiedFollowing False dc)
+        let runGuess guess = piecewiseYieldCurve (SettlementDays 0 cal) [helper] dc []
+              (GlobalDiscountLogLinear 1e-12 [] (Just guess)) False
+              >>= \curve -> discount curve (TimePoint 0.2) False
+            marker (e :: IOException) = show e == "user error (initial guess failed)"
+            wrongLength (Context.CallbackResultLength expected actual) = expected == 1 && actual == 0
+            wrongLength _ = False
+        if quantLibAtMost143 then do
+          runGuess (\_ _ -> throwIO (userError "initial guess failed")) >>= (`shouldSatisfy` (> 0))
+          runGuess (\_ _ -> pure V.empty) >>= (`shouldSatisfy` (> 0))
+        else do
+          runGuess (\_ _ -> throwIO (userError "initial guess failed")) `shouldThrow` marker
+          runGuess (\_ _ -> pure V.empty) `shouldThrow` wrongLength
+
     describe "Quote value" $ do
       prop "quote value" $
         \val ->
@@ -346,7 +441,7 @@ spec = do
               flatFwd curve t1 t2 = IR.rate <$> forwardRateBetweenTimes curve t1 t2 IR.Continuous NoFrequency True
           logLinear <- repricing (SpreadIterative LogLinear defaultIterativeBootstrapOpts)
           _ <- repricing (SpreadIterative Linear defaultIterativeBootstrapOpts)
-          _ <- repricing (SpreadGlobalLogLinear 1.0e-10 [])
+          _ <- repricing (SpreadGlobalLogLinear 1.0e-10 [] Nothing)
 
           curveMax <- TS.maxDate logLinear
           baseMax <- TS.maxDate ts
@@ -516,7 +611,7 @@ spec = do
           i6 <- iborIndex Euribor6M (Just curve)
           names <- mapM Index.name [i3, i6]
           basis <- Quote.simpleQuote 0.001
-          (Just deps) <- iborIborBasisSwapRateHelper basis (2, Years) 2 cal ModifiedFollowing False i3 i6 curve True
+          (Just deps) <- iborIborBasisSwapRateHelper basis (2, Years) 2 cal ModifiedFollowing False i3 i6 curve True Nothing Backward 0 Nothing Nothing
             >>= rateHelperFixingDependencies
           -- A basis swap is two floating legs, so both indexes are dependencies; a walk that
           -- stopped at the helper's "own" index would report half of what the curve reads.
@@ -535,13 +630,13 @@ spec = do
           names <- mapM Index.name [i3, i6]
           basis <- Quote.simpleQuote 0.001
           (Just basisDeps) <- constNotionalCrossCurrencyBasisSwapRateHelper basis (2, Years) 2 cal ModifiedFollowing False
-            i3 i6 curve True True Nothing 0 Nothing >>= rateHelperFixingDependencies
+            i3 i6 curve True True Nothing 0 Nothing Nothing False Nothing Nothing >>= rateHelperFixingDependencies
           nub (map fst basisDeps) `shouldMatchList` names
           (Just mtmDeps) <- mtmCrossCurrencyBasisSwapRateHelper basis (2, Years) 2 cal ModifiedFollowing False
-            i3 i6 curve True True True Nothing 0 Nothing >>= rateHelperFixingDependencies
+            i3 i6 curve True True True Nothing 0 Nothing 0 cal Nothing Nothing Nothing >>= rateHelperFixingDependencies
           nub (map fst mtmDeps) `shouldMatchList` names
           (Just fixedDeps) <- constNotionalCrossCurrencySwapRateHelper q (2, Years) 2 cal ModifiedFollowing False
-            Annual thirty360dc i6 curve True 0 >>= rateHelperFixingDependencies
+            Annual thirty360dc i6 curve True 0 Nothing Nothing Nothing >>= rateHelperFixingDependencies
           nub (map fst fixedDeps) `shouldBe` drop 1 names
 
       it "reports a started overnight-index futures contract's fixings up to the evaluation date" $
@@ -1212,7 +1307,7 @@ spec = do
           capVolSurface <- Vol.capFloorTermVolSurface (Vol.CalendarSettlementDays 0) cal Following
             [(n, Years) | n <- [1 .. 10]] [0.02, 0.05, 0.08] volMatrix dc
           strippedVol <- Vol.optionletStripper capVolSurface idx Nothing 1.0e-6 100
-            (Just discountH) IR.ShiftedLognormal 0 False Nothing
+            (Just discountH) IR.ShiftedLognormal 0 False Nothing 0
           strippedEng <- blackCapFloorEngineFromVolatilityStructure discountH strippedVol
           setPricingEngine capfl strippedEng
           priceStripped <- npv capfl
@@ -1338,9 +1433,9 @@ spec = do
           capVolCurve <- Vol.capFloorTermVolCurve (Vol.CalendarSettlementDays 0) cal Following (fromList $ zipWith (\(n, u) q -> (n, u, q)) tenors curveVolQs) dc
 
           stripper1 <- Vol.optionletStripper capVolSurface idx Nothing 1.0e-6 100
-            (Just discountH) IR.ShiftedLognormal 0 False Nothing
+            (Just discountH) IR.ShiftedLognormal 0 False Nothing 0
           stripper2 <- Vol.optionletStripperWithAtm capVolSurface idx Nothing 1.0e-6 100
-            (Just discountH) IR.ShiftedLognormal 0 False Nothing capVolCurve
+            (Just discountH) IR.ShiftedLognormal 0 False Nothing capVolCurve 0
           vol2 <- Vol.asOptionletVolatilityStructure stripper2
 
           eng1 <- blackCapFloorEngineFromVolatilityStructure discountH stripper1
@@ -1555,8 +1650,8 @@ spec = do
             q <- Quote.simpleQuote 0.03
             b <- Quote.simpleQuote 0.0020
             helpers3mFra <- mapM (\i -> fraRateHelper q (FraMonths i (i + 3) 2 cal ModifiedFollowing True euriborDC) LastRelevantDate Nothing False) [1 .. 9]
-            helpers3mBasis <- mapM (\i -> iborIborBasisSwapRateHelper b (i, Years) 2 cal ModifiedFollowing True euribor3m euribor6m discountCurve True) [2 .. 10]
-            helpers6mBasis <- mapM (\i -> iborIborBasisSwapRateHelper b (i * 6, Months) 2 cal ModifiedFollowing True euribor3m euribor6m discountCurve False) [1 .. 3]
+            helpers3mBasis <- mapM (\i -> iborIborBasisSwapRateHelper b (i, Years) 2 cal ModifiedFollowing True euribor3m euribor6m discountCurve True Nothing Backward 0 Nothing Nothing) [2 .. 10]
+            helpers6mBasis <- mapM (\i -> iborIborBasisSwapRateHelper b (i * 6, Months) 2 cal ModifiedFollowing True euribor3m euribor6m discountCurve False Nothing Backward 0 Nothing Nothing) [1 .. 3]
             helpers6mSwap <- mapM (\i -> swapRateHelper q (SwapRateTenor (i, Years) cal Annual Following thirty360 euribor6m (0, Days) Nothing Nothing) Nothing (Just discountCurve)
                                             LastRelevantDate Nothing False Nothing Nothing) [2 .. 10]
               >>= mapM asRateHelper -- swapRateHelper returns the concrete SwapRateHelper; upcast to the generic RateHelper the other helpers already are, so the list below is homogeneous
@@ -1564,9 +1659,9 @@ spec = do
             -- internal handle (via euribor3m/euribor6m) -- this is exactly the cycle a plain
             -- piecewiseYieldCurve (SettlementDays with IterativeBootstrap) can't resolve.
             ptr3m <- piecewiseYieldCurve (SettlementDays 0 cal) (fromList (helpers3mFra ++ helpers3mBasis)) euriborDC []
-              (GlobalDiscountLogLinear 1.0e-10 []) False
+              (GlobalDiscountLogLinear 1.0e-10 [] Nothing) False
             ptr6m <- piecewiseYieldCurve (SettlementDays 0 cal) (fromList (helpers6mBasis ++ helpers6mSwap)) euriborDC []
-              (GlobalDiscountLogLinear 1.0e-10 []) False
+              (GlobalDiscountLogLinear 1.0e-10 [] Nothing) False
             mc <- multiCurve 1.0e-10
             curve3m <- addBootstrappedCurve mc intcurve3m ptr3m
             curve6m <- addBootstrappedCurve mc intcurve6m ptr6m
@@ -1646,7 +1741,7 @@ spec = do
                                         LastRelevantDate Nothing False Nothing Nothing
                                       >>= asRateHelper) [1 .. 10 :: Int]
             ptr3m <- piecewiseYieldCurve (SettlementDays 0 cal) (fromList helpers3m) euriborDC []
-              (GlobalDiscountLogLinear 1.0e-10 []) False
+              (GlobalDiscountLogLinear 1.0e-10 [] Nothing) False
             mc <- multiCurve 1.0e-10
             curve3m <- addBootstrappedCurve mc intcurve3m ptr3m
             ptrois <- zeroSpreadedTermStructure intcurve3m b IR.Continuous NoFrequency
@@ -1694,9 +1789,9 @@ spec = do
           h2 <- depositRateHelper q2 (DepositTenor (6, Months) 2 cal ModifiedFollowing True euriborDC)
           let helpers = [h1, h2]
           curveMostlyQ2 <- piecewiseYieldCurve (SettlementDays 0 cal) helpers euriborDC []
-            (GlobalDiscountLogLinear 1.0e-10 [0.1, 0.9]) False
+            (GlobalDiscountLogLinear 1.0e-10 [0.1, 0.9] Nothing) False
           curveMostlyQ1 <- piecewiseYieldCurve (SettlementDays 0 cal) helpers euriborDC []
-            (GlobalDiscountLogLinear 1.0e-10 [0.9, 0.1]) False
+            (GlobalDiscountLogLinear 1.0e-10 [0.9, 0.1] Nothing) False
           settleFix <- advance cal curveToday (2, Days) Following False
           pillar <- advance cal settleFix (6, Months) ModifiedFollowing True
           d1 <- discount curveMostlyQ1 (DatePoint pillar) False
@@ -1715,9 +1810,9 @@ spec = do
           helpersDiscount <- mapM (\i -> depositRateHelper q (DepositTenor (i, Months) 2 cal ModifiedFollowing True euriborDC)) [1 .. 5 :: Int]
           helpersZero <- mapM (\i -> depositRateHelper q (DepositTenor (i, Months) 2 cal ModifiedFollowing True euriborDC)) [1 .. 5 :: Int]
           discountCurve <- piecewiseYieldCurve (SettlementDays 0 cal) (fromList helpersDiscount) euriborDC []
-            (GlobalDiscountLogLinear 1.0e-10 []) False
+            (GlobalDiscountLogLinear 1.0e-10 [] Nothing) False
           zeroCurve <- piecewiseYieldCurve (SettlementDays 0 cal) (fromList helpersZero) euriborDC []
-            (GlobalSimpleZeroLinear 1.0e-10 []) False
+            (GlobalSimpleZeroLinear 1.0e-10 [] Nothing) False
           settleFix <- advance cal curveToday (2, Days) Following False
           mapM_ (\i -> do
               pillar <- advance cal settleFix (i, Months) ModifiedFollowing True
@@ -1762,7 +1857,7 @@ spec = do
           extraDates <- mapM (\d -> advance cal settleFix (d, Days) ModifiedFollowing True) [45, 75, 105 :: Int]
           -- Match the helpers' two-day settlement so their start date anchors the discount.
           curve <- piecewiseYieldCurve (SettlementDays 2 cal) helpers euriborDC []
-            (GlobalSimpleZeroLinearFull helpers extraDates 1.0e-10) False
+            (GlobalSimpleZeroLinearFull helpers extraDates 1.0e-10 [] Nothing) False
           mapM_ (\i -> do
               pillar <- advance cal settleFix (i, Months) ModifiedFollowing True
               -- Actual360's year fraction is actual days divided by 360.
@@ -1822,11 +1917,11 @@ spec = do
                 ) ([1 .. 5] :: [Int])
               checkReference reference = do
                 piecewiseYieldCurve reference helpers euriborDC [] (Iterative ForwardRate Linear defaultIterativeBootstrapOpts) False >>= checkCurve
-                piecewiseYieldCurve reference helpers euriborDC [] (GlobalDiscountLogLinear 1.0e-10 []) False >>= checkCurve
-                piecewiseYieldCurve reference helpers euriborDC [] (GlobalSimpleZeroLinear 1.0e-10 []) False >>= checkCurve
-                piecewiseYieldCurve reference helpers euriborDC [] (GlobalSimpleZeroLinearFull helpers extraDates 1.0e-10) False >>= checkCurve
-                piecewiseYieldCurve reference helpers euriborDC [] (GlobalForwardRateLinear 1.0e-10 []) False >>= checkCurve
-                piecewiseYieldCurve reference helpers euriborDC [] (GlobalZeroYieldLinear 1.0e-10 []) False >>= checkCurve
+                piecewiseYieldCurve reference helpers euriborDC [] (GlobalDiscountLogLinear 1.0e-10 [] Nothing) False >>= checkCurve
+                piecewiseYieldCurve reference helpers euriborDC [] (GlobalSimpleZeroLinear 1.0e-10 [] Nothing) False >>= checkCurve
+                piecewiseYieldCurve reference helpers euriborDC [] (GlobalSimpleZeroLinearFull helpers extraDates 1.0e-10 [] Nothing) False >>= checkCurve
+                piecewiseYieldCurve reference helpers euriborDC [] (GlobalForwardRateLinear 1.0e-10 [] Nothing) False >>= checkCurve
+                piecewiseYieldCurve reference helpers euriborDC [] (GlobalZeroYieldLinear 1.0e-10 [] Nothing) False >>= checkCurve
                 piecewiseYieldCurve reference helpers euriborDC [] (Local LForwardRate 2 True 1.0e-10 0.3 0.7 True) False >>= checkCurve
           mapM_ checkReference ([ReferenceDate settleFix, SettlementDays 2 cal] :: [Reference])
 
@@ -1840,11 +1935,11 @@ spec = do
           q <- Quote.simpleQuote 0.03
           helpers <- fromList <$> mapM (\i -> depositRateHelper q (DepositTenor (i, Months) 2 cal ModifiedFollowing True euriborDC)) [1 .. 5 :: Int]
           discountCurve <- piecewiseYieldCurve (SettlementDays 0 cal) helpers euriborDC []
-            (GlobalDiscountLogLinear 1.0e-10 []) False
+            (GlobalDiscountLogLinear 1.0e-10 [] Nothing) False
           forwardCurve <- piecewiseYieldCurve (SettlementDays 0 cal) helpers euriborDC []
-            (GlobalForwardRateLinear 1.0e-10 []) False
+            (GlobalForwardRateLinear 1.0e-10 [] Nothing) False
           zeroCurve <- piecewiseYieldCurve (SettlementDays 0 cal) helpers euriborDC []
-            (GlobalZeroYieldLinear 1.0e-10 []) False
+            (GlobalZeroYieldLinear 1.0e-10 [] Nothing) False
           mapM_ (\i -> do
               pillar <- advance cal settleFix (i, Months) ModifiedFollowing True
               dfDiscount <- discount discountCurve (DatePoint pillar) False
@@ -2246,7 +2341,7 @@ spec = do
                     swapIndexBase shortSwapIndexBase False parametersGuess
                     -- beta fixed: 3 strikeSpreads can't identify 4 free SABR params
                     -- ("less functions than available variables"), so pin beta at the guess.
-                    False True False False False Nothing Nothing False 50 False 0.0001 Nothing Nothing
+                    False True False False False Nothing Nothing False 50 False 0.0001 Nothing Nothing False
           v <- Vol.swaptionVolatility cube (Vol.OptionDate (10 `december` 2013)) (Vol.SwapTenor (2, Years)) 0.03 False
           -- SABR calibration is a least-squares fit, not exact recovery, so this is deliberately a
           -- much looser tolerance than the exact-grid-recovery checks above -- don't tighten it.
@@ -2266,7 +2361,7 @@ spec = do
                     -- ConstantSwaptionVolatility, as this fixture's atmVol is -- it would need a
                     -- discrete grid structure (e.g. swaptionVolatilityMatrix) instead. Exercising
                     -- that path is out of scope for this shape/sanity test.
-                    False True False False False Nothing Nothing False 50 False 0.0001 Nothing Nothing
+                    False True False False False Nothing Nothing False 50 False 0.0001 Nothing Nothing False
           -- trigger calibration (lazy -- see the shim comment on qlSabrSwaptionVolatilityCube)
           _ <- Vol.swaptionVolatility cube (Vol.OptionDate (10 `december` 2013)) (Vol.SwapTenor (2, Years)) 0.03 False
           let n = fromIntegral (length optionTenors * length swapTenors)
@@ -2300,7 +2395,7 @@ spec = do
                     swapIndexBase shortSwapIndexBase False parametersGuess
                     -- beta fixed: 3 strikeSpreads can't identify 4 free SABR params
                     -- ("less functions than available variables"), so pin beta at the guess.
-                    False True False False False Nothing Nothing False 50 False 0.0001 Nothing Nothing
+                    False True False False False Nothing Nothing False 50 False 0.0001 Nothing Nothing False
           k <- Vol.atmStrike cube (Vol.AtmStrikeTenor (1, Years)) (2 :: Word, Years)
           k `shouldSatisfy` (\x -> x > -0.05 && x < 0.20)
           kAtDate <- Vol.atmStrike cube (Vol.AtmStrikeDate (10 `december` 2013)) (2 :: Word, Years)
@@ -2317,7 +2412,7 @@ spec = do
             Vol.sabrSwaptionVolatilityCube atmVol optionTenors swapTenors strikeSpreads volSpreads
               swapIndexBase shortSwapIndexBase False parametersGuess
               False True False False False Nothing Nothing False 50 False 0.0001
-              (Just endCriteria) (Just optMethod)
+              (Just endCriteria) (Just optMethod) False
           k <- Vol.atmStrike cube (Vol.AtmStrikeTenor (1, Years)) (2 :: Word, Years)
           k `shouldSatisfy` (\x -> x > -0.05 && x < 0.20)
       -- NoArbSabrSwaptionVolatilityCube is the same XabrSwaptionVolatilityCube construction one
@@ -2333,7 +2428,7 @@ spec = do
                     swapIndexBase shortSwapIndexBase False parametersGuess
                     -- beta fixed: 3 strikeSpreads can't identify 4 free SABR params
                     -- ("less functions than available variables"), so pin beta at the guess.
-                    False True False False False Nothing Nothing False 50 False 0.0001 Nothing Nothing
+                    False True False False False Nothing Nothing False 50 False 0.0001 Nothing Nothing False
           v <- Vol.swaptionVolatility cube (Vol.OptionDate (10 `december` 2013)) (Vol.SwapTenor (2, Years)) 0.03 False
           -- least-squares fit, not exact recovery -- same looser tolerance as the SABR cube check.
           abs (v - flatVol) `shouldSatisfy` (< 1.0e-2)
@@ -2343,7 +2438,7 @@ spec = do
           (_, _, atmVol, swapIndexBase, shortSwapIndexBase, volSpreads, parametersGuess) <- mkFixture
           cube <- Vol.noArbSabrSwaptionVolatilityCube atmVol optionTenors swapTenors strikeSpreads volSpreads
                     swapIndexBase shortSwapIndexBase False parametersGuess
-                    False True False False False Nothing Nothing False 50 False 0.0001 Nothing Nothing
+                    False True False False False Nothing Nothing False 50 False 0.0001 Nothing Nothing False
           k <- Vol.atmStrike cube (Vol.AtmStrikeTenor (1, Years)) (2 :: Word, Years)
           k `shouldSatisfy` (\x -> x > -0.05 && x < 0.20)
           kAtDate <- Vol.atmStrike cube (Vol.AtmStrikeDate (10 `december` 2013)) (2 :: Word, Years)
@@ -2359,7 +2454,7 @@ spec = do
           let parametersGuess = either error id $ objectMatrix (fromIntegral nodeCount) 5 guessQuotes
           cube <- Vol.zabrSwaptionVolatilityCube atmVol optionTenors swapTenors strikeSpreads volSpreads
                     swapIndexBase shortSwapIndexBase False parametersGuess
-                    False True False False True False Nothing Nothing False 50 False 0.0001 Nothing Nothing
+                    False True False False True False Nothing Nothing False 50 False 0.0001 Nothing Nothing False
           v <- Vol.swaptionVolatility cube (Vol.OptionDate (10 `december` 2013)) (Vol.SwapTenor (2, Years)) 0.03 False
           abs (v - flatVol) `shouldSatisfy` (< 1.0e-2)
           sparse <- Vol.zabrSparseParameters cube

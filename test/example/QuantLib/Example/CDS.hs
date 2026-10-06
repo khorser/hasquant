@@ -45,7 +45,7 @@ run = do
     (\t -> do
         spread <- simpleQuote quotedSpread
         spreadCdsHelper spread (t, Months) 1 cal Quarterly Following TwentiethIMM dc
-          recoveryRate ts True True Nothing dc True Midpoint)
+          recoveryRate ts True True Nothing dc True Midpoint Nothing)
     [3, 6, 12, 24]
 
   hts <- piecewiseDefaultCurve (ReferenceDate evalDate) (fromList instruments) dc [] HazardRate BackwardFlat defaultIterativeBootstrapOpts False

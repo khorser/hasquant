@@ -9,7 +9,7 @@ extern "C" {
   void qlFreeRelinkableOptionletVolatilityStructure(QlRelinkableOptionletVolatilityStructure *o);
   void qlRelinkableOptionletVolatilityStructureLinkTo(QlRelinkableOptionletVolatilityStructure *o, QlOptionletVolatilityStructure *c, QlError **e);
   QlOptionletVolatilityStructure* qlRelinkableOptionletVolatilityStructureAsOptionletVolatilityStructure(QlRelinkableOptionletVolatilityStructure *o);
-  QlOptionletVolatilityStructure* qlOptionletStripper1(QlCapFloorTermVolSurface* surface, QlIborIndex* index, double switchStrikes, double accuracy, unsigned maxIter, QlYieldTermStructure* discount, int type, double displacement, int dontThrow, int optionletFrequencyLen, int optionletFrequencyUnit, QlError **e);
+  QlOptionletVolatilityStructure* qlOptionletStripper1(QlCapFloorTermVolSurface* surface, QlIborIndex* index, double switchStrikes, double accuracy, unsigned maxIter, QlYieldTermStructure* discount, int type, double displacement, int dontThrow, int optionletFrequencyLen, int optionletFrequencyUnit, unsigned paymentLag, QlError **e);
   void qlFreeVolatilityTermStructure(QlVolatilityTermStructure *o);
   QlTermStructure* qlVolatilityTermStructureAsTermStructure(QlVolatilityTermStructure *o);
   double qlVolatilityTermStructureMinStrike(QlVolatilityTermStructure* o, QlError **e);
@@ -52,7 +52,7 @@ extern "C" {
   void qlSabrVolSurfaceVolatilitySpreadsForDate(QlSabrVolSurface* o, int date, unsigned *count, double **vols, QlError **e);
   QlInterestRateIndex* qlSabrVolSurfaceIndex(QlSabrVolSurface* o, QlError **e);
   int qlSabrVolSurfaceOptionDateFromTenor(QlSabrVolSurface* o, int n, int u, QlError **e);
-  QlOptionletStripper2* qlOptionletStripper2(QlCapFloorTermVolSurface* surface, QlIborIndex* index, double switchStrikes, double accuracy, unsigned maxIter, QlYieldTermStructure* discount, int type, double displacement, int dontThrow, int optionletFrequencyLen, int optionletFrequencyUnit, QlCapFloorTermVolCurve* atmCurve, QlError **e);
+  QlOptionletStripper2* qlOptionletStripper2(QlCapFloorTermVolSurface* surface, QlIborIndex* index, double switchStrikes, double accuracy, unsigned maxIter, QlYieldTermStructure* discount, int type, double displacement, int dontThrow, int optionletFrequencyLen, int optionletFrequencyUnit, QlCapFloorTermVolCurve* atmCurve, unsigned paymentLag, QlError **e);
   void qlFreeOptionletStripper2(QlOptionletStripper2 *o);
   QlOptionletVolatilityStructure* qlOptionletStripper2AsOptionletVolatilityStructure(QlOptionletStripper2 *o, QlError **e);
   void qlOptionletStripper2AtmCapFloorStrikes(QlOptionletStripper2* o, unsigned *count, double **vs, QlError **e);
@@ -253,7 +253,7 @@ extern "C" {
       int isAtmCalibrated,
       QlEndCriteria* endCriteria, QlOptimizationMethod* method,
       double maxErrorTolerance, double errorAccept, int useMaxError, unsigned maxGuesses,
-      int backwardFlat, double cutoffStrike, QlError **e);
+      int backwardFlat, double cutoffStrike, int singlePassCalibration, QlError **e);
   void qlFreeSabrSwaptionVolatilityCube(QlSabrSwaptionVolatilityCube *o);
   QlSwaptionVolatilityStructure* qlSabrSwaptionVolatilityCubeAsSwaptionVolatilityStructure(QlSabrSwaptionVolatilityCube *o);
   QlNoArbSabrSwaptionVolatilityCube* qlNoArbSabrSwaptionVolatilityCube(QlSwaptionVolatilityStructure* atmVolStructure,
@@ -267,7 +267,7 @@ extern "C" {
       int isAtmCalibrated,
       QlEndCriteria* endCriteria, QlOptimizationMethod* method,
       double maxErrorTolerance, double errorAccept, int useMaxError, unsigned maxGuesses,
-      int backwardFlat, double cutoffStrike, QlError **e);
+      int backwardFlat, double cutoffStrike, int singlePassCalibration, QlError **e);
   void qlFreeNoArbSabrSwaptionVolatilityCube(QlNoArbSabrSwaptionVolatilityCube *o);
   QlSwaptionVolatilityStructure* qlNoArbSabrSwaptionVolatilityCubeAsSwaptionVolatilityStructure(QlNoArbSabrSwaptionVolatilityCube *o);
   void qlNoArbSabrSwaptionVolatilityCubeSparseSabrParameters(QlNoArbSabrSwaptionVolatilityCube* o, unsigned* rows, unsigned* cols, unsigned* len, double** vs, QlError **e);
@@ -287,7 +287,7 @@ extern "C" {
       int isAtmCalibrated,
       QlEndCriteria* endCriteria, QlOptimizationMethod* method,
       double maxErrorTolerance, double errorAccept, int useMaxError, unsigned maxGuesses,
-      int backwardFlat, double cutoffStrike, QlError **e);
+      int backwardFlat, double cutoffStrike, int singlePassCalibration, QlError **e);
   void qlFreeZabrSwaptionVolatilityCube(QlZabrSwaptionVolatilityCube *o);
   QlSwaptionVolatilityStructure* qlZabrSwaptionVolatilityCubeAsSwaptionVolatilityStructure(QlZabrSwaptionVolatilityCube *o);
   void qlZabrSwaptionVolatilityCubeSparseSabrParameters(QlZabrSwaptionVolatilityCube* o, unsigned* rows, unsigned* cols, unsigned* len, double** vs, QlError **e);
@@ -347,8 +347,8 @@ extern "C" {
   void qlFreeDefaultProbabilityHelper(QlDefaultProbabilityHelper *o);
   double qlDefaultProbabilityHelperImpliedQuote(QlDefaultProbabilityHelper *o, QlError **e);
   double qlDefaultProbabilityHelperImpliedQuoteOn(QlDefaultProbabilityHelper *o, QlDefaultProbabilityTermStructure *curve, QlError **e);
-  QlDefaultProbabilityHelper* qlSpreadCdsHelper(QlQuote* runningSpread, int, int, int settlementDays, Calendar* calendar, int frequency, int paymentConvention, int rule, DayCounter* dayCounter, double recoveryRate, QlYieldTermStructure* discountCurve, int settlesAccrual, int paysAtDefaultTime, int startDate, DayCounter* lastPeriodDayCounter, int rebatesAccrual, int model, QlError **e);
-  QlDefaultProbabilityHelper* qlUpfrontCdsHelper(QlQuote* upfront, double runningSpread, int, int, int settlementDays, Calendar* calendar, int frequency, int paymentConvention, int rule, DayCounter* dayCounter, double recoveryRate, QlYieldTermStructure* discountCurve, unsigned upfrontSettlementDays, int settlesAccrual, int paysAtDefaultTime, int startDate, DayCounter* lastPeriodDayCounter, int rebatesAccrual, int model, QlError **e);
+  QlDefaultProbabilityHelper* qlSpreadCdsHelper(QlQuote* runningSpread, int, int, int settlementDays, Calendar* calendar, int frequency, int paymentConvention, int rule, DayCounter* dayCounter, double recoveryRate, QlYieldTermStructure* discountCurve, int settlesAccrual, int paysAtDefaultTime, int startDate, DayCounter* lastPeriodDayCounter, int rebatesAccrual, int model, int tradeDate, QlError **e);
+  QlDefaultProbabilityHelper* qlUpfrontCdsHelper(QlQuote* upfront, double runningSpread, int, int, int settlementDays, Calendar* calendar, int frequency, int paymentConvention, int rule, DayCounter* dayCounter, double recoveryRate, QlYieldTermStructure* discountCurve, unsigned upfrontSettlementDays, int settlesAccrual, int paysAtDefaultTime, int startDate, DayCounter* lastPeriodDayCounter, int rebatesAccrual, int model, int tradeDate, QlError **e);
   QlDefaultProbabilityTermStructure* qlPiecewiseDefaultCurve(int referenceDate, unsigned instrumentsLen, QlDefaultProbabilityHelper** instruments, DayCounter* dayCounter, unsigned jumpsLen, QlQuote** jumps, unsigned jDatesLen, int* jumpDates, int trait, int interpolator, int approximator, int approximatorArg, double accuracy, double minValue, double maxValue, unsigned maxAttempts, double maxFactor, double minFactor, int dontThrow, unsigned dontThrowSteps, unsigned maxEvaluations, QlError **e);
   QlDefaultProbabilityTermStructure* qlPiecewiseDefaultCurve1(unsigned settlementDays, Calendar *calendar, unsigned instrumentsLen, QlDefaultProbabilityHelper** instruments, DayCounter* dayCounter, unsigned jumpsLen, QlQuote** jumps, unsigned jDatesLen, int* jumpDates, int trait, int interpolator, int approximator, int approximatorArg, double accuracy, double minValue, double maxValue, unsigned maxAttempts, double maxFactor, double minFactor, int dontThrow, unsigned dontThrowSteps, unsigned maxEvaluations, QlError **e);
 
@@ -449,23 +449,23 @@ extern "C" {
   QlYieldTermStructure *qlPiecewiseYieldCurveFull(int date, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen, QlQuote **quotes, unsigned datesLen, int *dates, int trait, int interpolator, int approximator, int approximatorArg, double accuracy, double minValue, double maxValue, unsigned maxAttempts, double maxFactor, double minFactor, int dontThrow, unsigned dontThrowSteps, unsigned maxEvaluations, QlError **e);
   QlYieldTermStructure *qlPiecewiseYieldCurveFull1(unsigned settl, Calendar *cal, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen, QlQuote **quotes, unsigned datesLen, int *dates, int trait, int interpolator, int approximator, int approximatorArg, double accuracy, double minValue, double maxValue, unsigned maxAttempts, double maxFactor, double minFactor, int dontThrow, unsigned dontThrowSteps, unsigned maxEvaluations, int extrapolate, QlError **e);
   // GlobalBootstrap entry point with fixed Discount/LogLinear dispatch.
-  QlYieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrap1(unsigned settl, Calendar *cal, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen, QlQuote **quotes, unsigned datesLen, int *dates, double accuracy, unsigned weightsLen, double *weights, int extrapolate, QlError **e);
-  QlYieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrapFixed1(int date, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen, QlQuote **quotes, unsigned datesLen, int *dates, double accuracy, unsigned weightsLen, double *weights, int extrapolate, QlError **e);
+  QlYieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrap1(unsigned settl, Calendar *cal, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen, QlQuote **quotes, unsigned datesLen, int *dates, double accuracy, unsigned weightsLen, double *weights, int extrapolate, QlCallback* initialGuess, QlError **e);
+  QlYieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrapFixed1(int date, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen, QlQuote **quotes, unsigned datesLen, int *dates, double accuracy, unsigned weightsLen, double *weights, int extrapolate, QlCallback* initialGuess, QlError **e);
   // Same shape as qlPiecewiseYieldCurveGlobalBootstrap1, hardcoding trait=SimpleZeroYield/
   // interpolator=Linear instead -- QuantLib-SWIG's only bound GlobalBootstrap combination
   // (GlobalLinearSimpleZeroCurve).
-  QlYieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrap2(unsigned settl, Calendar *cal, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen, QlQuote **quotes, unsigned datesLen, int *dates, double accuracy, unsigned weightsLen, double *weights, int extrapolate, QlError **e);
-  QlYieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrapFixed2(int date, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen, QlQuote **quotes, unsigned datesLen, int *dates, double accuracy, unsigned weightsLen, double *weights, int extrapolate, QlError **e);
+  QlYieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrap2(unsigned settl, Calendar *cal, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen, QlQuote **quotes, unsigned datesLen, int *dates, double accuracy, unsigned weightsLen, double *weights, int extrapolate, QlCallback* initialGuess, QlError **e);
+  QlYieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrapFixed2(int date, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen, QlQuote **quotes, unsigned datesLen, int *dates, double accuracy, unsigned weightsLen, double *weights, int extrapolate, QlCallback* initialGuess, QlError **e);
   // ForwardRate/Linear and ZeroYield/Linear GlobalBootstrap variants.
-  QlYieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrap4(unsigned settl, Calendar *cal, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen, QlQuote **quotes, unsigned datesLen, int *dates, double accuracy, unsigned weightsLen, double *weights, int extrapolate, QlError **e);
-  QlYieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrap5(unsigned settl, Calendar *cal, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen, QlQuote **quotes, unsigned datesLen, int *dates, double accuracy, unsigned weightsLen, double *weights, int extrapolate, QlError **e);
-  QlYieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrapFixed4(int date, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen, QlQuote **quotes, unsigned datesLen, int *dates, double accuracy, unsigned weightsLen, double *weights, int extrapolate, QlError **e);
-  QlYieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrapFixed5(int date, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen, QlQuote **quotes, unsigned datesLen, int *dates, double accuracy, unsigned weightsLen, double *weights, int extrapolate, QlError **e);
+  QlYieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrap4(unsigned settl, Calendar *cal, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen, QlQuote **quotes, unsigned datesLen, int *dates, double accuracy, unsigned weightsLen, double *weights, int extrapolate, QlCallback* initialGuess, QlError **e);
+  QlYieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrap5(unsigned settl, Calendar *cal, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen, QlQuote **quotes, unsigned datesLen, int *dates, double accuracy, unsigned weightsLen, double *weights, int extrapolate, QlCallback* initialGuess, QlError **e);
+  QlYieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrapFixed4(int date, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen, QlQuote **quotes, unsigned datesLen, int *dates, double accuracy, unsigned weightsLen, double *weights, int extrapolate, QlCallback* initialGuess, QlError **e);
+  QlYieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrapFixed5(int date, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen, QlQuote **quotes, unsigned datesLen, int *dates, double accuracy, unsigned weightsLen, double *weights, int extrapolate, QlCallback* initialGuess, QlError **e);
   // trait=SimpleZeroYield/interpolator=Linear via GlobalBootstrap's functor-callback
   // constructor (canned AdditionalErrors/AdditionalDates -- see qlTermStructureAux.cpp).
   // additionalDatesLen must equal additionalRateLen - 2.
-  QlYieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrap3(unsigned settl, Calendar *cal, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen, QlQuote **quotes, unsigned datesLen, int *dates, unsigned additionalRateLen, QlRateHelper **additionalRatehelpers, unsigned additionalDatesLen, int *additionalDates, double accuracy, int extrapolate, QlError **e);
-  QlYieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrapFixed3(int date, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen, QlQuote **quotes, unsigned datesLen, int *dates, unsigned additionalRateLen, QlRateHelper **additionalRatehelpers, unsigned additionalDatesLen, int *additionalDates, double accuracy, int extrapolate, QlError **e);
+  QlYieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrap3(unsigned settl, Calendar *cal, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen, QlQuote **quotes, unsigned datesLen, int *dates, unsigned additionalRateLen, QlRateHelper **additionalRatehelpers, unsigned additionalDatesLen, int *additionalDates, double accuracy, int extrapolate, unsigned weightsLen, double* weights, QlCallback* initialGuess, QlError **e);
+  QlYieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrapFixed3(int date, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen, QlQuote **quotes, unsigned datesLen, int *dates, unsigned additionalRateLen, QlRateHelper **additionalRatehelpers, unsigned additionalDatesLen, int *additionalDates, double accuracy, int extrapolate, unsigned weightsLen, double* weights, QlCallback* initialGuess, QlError **e);
   // Dedicated LocalBootstrap entry point: interpolator is always ConvexMonotone (the only
   // upstream interpolator LocalBootstrap works with -- see qlTermStructureAux.cpp), so trait is
   // the only Haskell-visible dispatch axis here; localisation/forcePositive/accuracy are
@@ -479,11 +479,11 @@ extern "C" {
   QlYieldTermStructure *qlMultiCurveAddBootstrappedCurve(QlMultiCurve *mc, QlRelinkableYieldTermStructure *internalHandle, QlYieldTermStructure *curve, QlError **e);
   QlYieldTermStructure *qlMultiCurveAddNonBootstrappedCurve(QlMultiCurve *mc, QlRelinkableYieldTermStructure *internalHandle, QlYieldTermStructure *curve, QlError **e);
 
-  QlRateHelper *qlIborIborBasisSwapRateHelper(QlQuote *basis, int tenorLen, int tenorUnit, unsigned settlementDays, Calendar *calendar, int convention, int endOfMonth, QlIborIndex *baseIndex, QlIborIndex *otherIndex, QlYieldTermStructure *discountHandle, int bootstrapBaseCurve, QlError **e);
-  QlRateHelper *qlOvernightIborBasisSwapRateHelper(QlQuote *basis, int tenorLen, int tenorUnit, unsigned settlementDays, Calendar *calendar, int convention, int endOfMonth, QlOvernightIndex *baseIndex, QlIborIndex *otherIndex, QlYieldTermStructure *discountHandle, QlError **e);
-  QlRateHelper *qlConstNotionalCrossCurrencyBasisSwapRateHelper(QlQuote *basis, int tenorLen, int tenorUnit, unsigned fixingDays, Calendar *calendar, int convention, int endOfMonth, QlIborIndex *baseCurrencyIndex, QlIborIndex *quoteCurrencyIndex, QlYieldTermStructure *collateralCurve, int isFxBaseCurrencyCollateralCurrency, int isBasisOnFxBaseCurrencyLeg, int paymentFrequency, int paymentLag, int quoteCurrencyPaymentFrequency, QlError **e);
-  QlRateHelper *qlMtMCrossCurrencyBasisSwapRateHelper(QlQuote *basis, int tenorLen, int tenorUnit, unsigned fixingDays, Calendar *calendar, int convention, int endOfMonth, QlIborIndex *baseCurrencyIndex, QlIborIndex *quoteCurrencyIndex, QlYieldTermStructure *collateralCurve, int isFxBaseCurrencyCollateralCurrency, int isBasisOnFxBaseCurrencyLeg, int isFxBaseCurrencyLegResettable, int paymentFrequency, int paymentLag, int quoteCurrencyPaymentFrequency, QlError **e);
-  QlRateHelper *qlConstNotionalCrossCurrencySwapRateHelper(QlQuote *fixedRate, int tenorLen, int tenorUnit, unsigned fixingDays, Calendar *calendar, int convention, int endOfMonth, int fixedFrequency, DayCounter *fixedDayCount, QlIborIndex *floatIndex, QlYieldTermStructure *collateralCurve, int collateralOnFixedLeg, int paymentLag, QlError **e);
+  QlRateHelper *qlIborIborBasisSwapRateHelper(QlQuote *basis, int tenorLen, int tenorUnit, unsigned settlementDays, Calendar *calendar, int convention, int endOfMonth, QlIborIndex *baseIndex, QlIborIndex *otherIndex, QlYieldTermStructure *discountHandle, int bootstrapBaseCurve, int useIndexedCoupons, int rule, int paymentLag, QlStubIndexSelection* baseStub, QlStubIndexSelection* otherStub, QlError **e);
+  QlRateHelper *qlOvernightIborBasisSwapRateHelper(QlQuote *basis, int tenorLen, int tenorUnit, unsigned settlementDays, Calendar *calendar, int convention, int endOfMonth, QlOvernightIndex *baseIndex, QlIborIndex *otherIndex, QlYieldTermStructure *discountHandle, int bootstrapBaseCurve, int paymentLag, int overnightPaymentFrequency, int useIndexedCoupons, int rule, int averagingMethod, int telescopicValueDates, int basisOnIborLeg, QlStubIndexSelection* iborStub, QlError **e);
+  QlRateHelper *qlConstNotionalCrossCurrencyBasisSwapRateHelper(QlQuote *basis, int tenorLen, int tenorUnit, unsigned fixingDays, Calendar *calendar, int convention, int endOfMonth, QlIborIndex *baseCurrencyIndex, QlIborIndex *quoteCurrencyIndex, QlYieldTermStructure *collateralCurve, int isFxBaseCurrencyCollateralCurrency, int isBasisOnFxBaseCurrencyLeg, int paymentFrequency, int paymentLag, int quoteCurrencyPaymentFrequency, int useIndexedCoupons, int paymentLagOnNotionalExchanges, QlStubIndexSelection* baseStub, QlStubIndexSelection* quoteStub, QlError **e);
+  QlRateHelper *qlMtMCrossCurrencyBasisSwapRateHelper(QlQuote *basis, int tenorLen, int tenorUnit, unsigned fixingDays, Calendar *calendar, int convention, int endOfMonth, QlIborIndex *baseCurrencyIndex, QlIborIndex *quoteCurrencyIndex, QlYieldTermStructure *collateralCurve, int isFxBaseCurrencyCollateralCurrency, int isBasisOnFxBaseCurrencyLeg, int isFxBaseCurrencyLegResettable, int paymentFrequency, int paymentLag, int quoteCurrencyPaymentFrequency, unsigned fxResetFixingDays, Calendar* fxResetFixingCalendar, int useIndexedCoupons, QlStubIndexSelection* baseStub, QlStubIndexSelection* quoteStub, QlError **e);
+  QlRateHelper *qlConstNotionalCrossCurrencySwapRateHelper(QlQuote *fixedRate, int tenorLen, int tenorUnit, unsigned fixingDays, Calendar *calendar, int convention, int endOfMonth, int fixedFrequency, DayCounter *fixedDayCount, QlIborIndex *floatIndex, QlYieldTermStructure *collateralCurve, int collateralOnFixedLeg, int paymentLag, int useIndexedCoupons, int floatPaymentFrequency, QlStubIndexSelection* floatStub, QlError **e);
   QlRateHelper *qlFxSwapRateHelper(QlQuote *fwdPoint, QlQuote *spotFx, int tenorLen, int tenorUnit, unsigned fixingDays, Calendar *calendar, int convention, int endOfMonth, int isFxBaseCurrencyCollateralCurrency, QlYieldTermStructure *collateralCurve, Calendar *tradingCalendar, QlError **e);
   QlRateHelper *qlFxSwapRateHelper2(QlQuote *fwdPoint, QlQuote *spotFx, int startDate, int endDate, int isFxBaseCurrencyCollateralCurrency, QlYieldTermStructure *collateralCurve, QlError **e);
   QlSwapRateHelper *qlSwapRateHelper1(QlQuote *q, int, int, Calendar *cal, int freq, int conv, DayCounter *dc, QlIborIndex *i, QlQuote *s, int, int, QlYieldTermStructure *ts, unsigned settlementDays, int pillar, int customPillarDate, int endOfMonth, int useIndexedCoupons, int floatConvention, QlFloatingRateCouponPricer *couponPricer, QlError **e);
@@ -504,12 +504,12 @@ extern "C" {
     int telescopicValueDates, int paymentLag, int paymentConvention, int paymentFrequency, Calendar* paymentCalendar,
     int, int, QlQuote* overnightSpread, int pillar, int customPillarDate, int averagingMethod, int endOfMonth, int fixedPaymentFrequency,
     Calendar* fixedCalendar, unsigned lookbackDays, unsigned lockoutDays, int applyObservationShift,
-    QlFloatingRateCouponPricer* pricer, int rule, Calendar* overnightCalendar, int convention, QlError **e);
+    QlFloatingRateCouponPricer* pricer, int rule, Calendar* overnightCalendar, int convention, DayCounter* fixedDayCount, QlError **e);
   QlOISRateHelper* qlOISRateHelper2(int, int, QlQuote* fixedRate, QlOvernightIndex* overnightIndex, QlYieldTermStructure* discountingCurve,
     int telescopicValueDates, int paymentLag, int paymentConvention, int paymentFrequency, Calendar* paymentCalendar,
     QlQuote* overnightSpread, int pillar, int customPillarDate, int averagingMethod, int endOfMonth, int fixedPaymentFrequency,
     Calendar* fixedCalendar, unsigned lookbackDays, unsigned lockoutDays, int applyObservationShift,
-    QlFloatingRateCouponPricer* pricer, int rule, Calendar* overnightCalendar, int convention, QlError **e);
+    QlFloatingRateCouponPricer* pricer, int rule, Calendar* overnightCalendar, int convention, DayCounter* fixedDayCount, QlError **e);
   QlSwapRateHelper* qlSwapRateHelper(QlQuote* rate, QlSwapIndex* swapIndex, QlQuote* spread, int, int, QlYieldTermStructure* discountingCurve, int pillar, int customPillarDate, int endOfMonth, int useIndexedCoupons, QlFloatingRateCouponPricer *couponPricer, QlError **e);
   QlRateHelper* qlBMASwapRateHelper(QlQuote* liborFraction, int, int, unsigned settlementDays, Calendar* calendar, int, int, int bmaConvention, DayCounter* bmaDayCount, QlBMAIndex* bmaIndex, QlIborIndex* index, QlError **e);
   QlRateHelper* qlDepositRateHelper1(QlQuote* rate, QlIborIndex* iborIndex, QlError **e);
@@ -595,7 +595,7 @@ extern "C" {
   QlYieldTermStructure* qlPiecewiseZeroSpreadedTermStructure(QlYieldTermStructure* x0, unsigned spreadsLen, QlQuote** spreads, unsigned datesLen, int* dates, int comp, int freq, int interpolator, int approximator, int approximatorArg, QlError **e);
   QlYieldTermStructure* qlPiecewiseForwardSpreadedTermStructure(QlYieldTermStructure* x0, unsigned spreadsLen, QlQuote** spreads, unsigned datesLen, int* dates, int interpolator, int approximator, int approximatorArg, QlError **e);
   QlYieldTermStructure* qlPiecewiseSpreadYieldCurve(QlYieldTermStructure* baseCurve, unsigned rateLen, QlRateHelper** helpers, int interpolator, int approximator, int approximatorArg, double accuracy, double minValue, double maxValue, unsigned maxAttempts, double maxFactor, double minFactor, int dontThrow, unsigned dontThrowSteps, unsigned maxEvaluations, int extrapolate, QlError **e);
-  QlYieldTermStructure* qlPiecewiseSpreadYieldCurveGlobalBootstrap(QlYieldTermStructure* baseCurve, unsigned rateLen, QlRateHelper** helpers, double accuracy, unsigned weightsLen, double* weights, int extrapolate, QlError **e);
+  QlYieldTermStructure* qlPiecewiseSpreadYieldCurveGlobalBootstrap(QlYieldTermStructure* baseCurve, unsigned rateLen, QlRateHelper** helpers, double accuracy, unsigned weightsLen, double* weights, int extrapolate, QlCallback* initialGuess, QlError **e);
   QlYieldTermStructure* qlQuantoTermStructure(QlYieldTermStructure* underlyingDividendTS, QlYieldTermStructure* riskFreeTS, QlYieldTermStructure* foreignRiskFreeTS, QlBlackVolTermStructure* underlyingBlackVolTS, double strike, QlBlackVolTermStructure* exchRateBlackVolTS, double exchRateATMlevel, double underlyingExchRateCorrelation, QlError **e);
   QlYieldTermStructure* qlUltimateForwardTermStructure(QlYieldTermStructure* x0, QlQuote* lastLiquidForwardRate, QlQuote* ultimateForwardRate, int fspLen, int fspUnit, double alpha, int roundingDigits, int compounding, int frequency, QlError **e);
   QlYieldTermStructure* qlInterpolatedSpreadDiscountCurve(QlYieldTermStructure* baseCurve, unsigned dfsLen, double *dfs, unsigned datesLen, int *dates, int interpolator, int approximator, int approximatorArg, QlError **e);
@@ -780,6 +780,9 @@ extern "C" {
       QlYoYCapFloorTermPriceSurface *capFloorPrices, QlYoYInflationIndex *index,
       QlYieldTermStructure *nominalTs, double slope,
       int interpolator, int approximator, int approximatorArg, QlError **e);
+  QlYieldTermStructure* qlImpliedTermStructureMoving(QlYieldTermStructure* curve, unsigned days, Calendar* calendar, QlError **e);
+  QlRateHelper* qlOvernightOvernightBasisSwapRateHelper(QlQuote* basis, int tenorLen, int tenorUnit, unsigned settlementDays, Calendar* calendar, int convention, int endOfMonth, QlOvernightIndex* baseIndex, QlOvernightIndex* otherIndex, QlYieldTermStructure* discount, int bootstrapBaseCurve, int paymentLag, int paymentFrequency, int baseAveragingMethod, int otherAveragingMethod, int telescopicValueDates, int rule, QlError **e);
+  QlRateHelper* qlOvernightIndexedFundingRateHelperRaw(int dated, int start, int end, int tenorUnit, QlQuote* margin, Calendar* calendar, int convention, int endOfMonth, QlOvernightIndex* index, int paymentTenorLen, int paymentTenorUnit, DayCounter* paymentDayCounter, int paymentLag, int telescopicValueDates, int rule, int pillar, int customPillarDate, QlError **e);
 #ifdef __cplusplus
 }
 #endif

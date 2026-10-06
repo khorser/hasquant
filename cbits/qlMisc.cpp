@@ -30,6 +30,9 @@
 #include <ql/experimental/commodities/unitofmeasureconversionmanager.hpp>
 #include <ql/experimental/commodities/commoditysettings.hpp>
 #include <ql/index.hpp>
+#if QL_HEX_VERSION >= 0x01440000
+#include <ql/cashflows/stubiborcoupon.hpp>
+#endif
 #include <ql/math/statistics/sequencestatistics.hpp>
 #include <ql/math/statistics/riskstatistics.hpp>
 #include <ql/math/array.hpp>
@@ -58,8 +61,18 @@ namespace hasquant {
 }
 
 using namespace QuantLib;
+#if QL_HEX_VERSION >= 0x01440000
+StubIndexSelection qlStubSelection(const QlStubIndexSelection* p) {
+  return p ? StubIndexSelection((StubIndexSelection::Convention)p->convention, p->indices) : StubIndexSelection();
+}
+#endif
 
 namespace {
+  void requireDirectCompounding(Compounding comp) {
+    QL_REQUIRE(comp != SimpleThenCompounded && comp != CompoundedThenSimple,
+               "mixed compounding is not supported for direct calculations: use CashFlow methods");
+  }
+
   class SavedSettingsWithObservable {
     public:
       SavedSettingsWithObservable()
@@ -568,35 +581,35 @@ InterestRate *qlInterestRate(double r, DayCounter *dc, int comp, int freq, QlErr
 
 // generated code
 double qlInterestRateCompoundFactor1(InterestRate* o, int d1, int d2, int refStart, int refEnd, QlError **e) { QlCallScope callbackScope(e);
-  try {return (arg(o))->compoundFactor(Date(d1), Date(d2), qlNullableDate(refStart), qlNullableDate(refEnd));
+  try {requireDirectCompounding(o->compounding()); return (arg(o))->compoundFactor(Date(d1), Date(d2), qlNullableDate(refStart), qlNullableDate(refEnd));
   } catch (std::exception& er) {return handleException<double>(e, er);}}
 
 double qlInterestRateCompoundFactor(InterestRate* o, double t, QlError **e) { QlCallScope callbackScope(e);
-  try {return (arg(o))->compoundFactor(t);
+  try {requireDirectCompounding(o->compounding()); return (arg(o))->compoundFactor(t);
   } catch (std::exception& er) {return handleException<double>(e, er);}}
 
 double qlInterestRateDiscountFactor1(InterestRate* o, int d1, int d2, int refStart, int refEnd, QlError **e) { QlCallScope callbackScope(e);
-  try {return (arg(o))->discountFactor(Date(d1), Date(d2), qlNullableDate(refStart), qlNullableDate(refEnd));
+  try {requireDirectCompounding(o->compounding()); return (arg(o))->discountFactor(Date(d1), Date(d2), qlNullableDate(refStart), qlNullableDate(refEnd));
   } catch (std::exception& er) {return handleException<double>(e, er);}}
 
 double qlInterestRateDiscountFactor(InterestRate* o, double t, QlError **e) { QlCallScope callbackScope(e);
-  try {return (arg(o))->discountFactor(t);
+  try {requireDirectCompounding(o->compounding()); return (arg(o))->discountFactor(t);
   } catch (std::exception& er) {return handleException<double>(e, er);}}
 
 InterestRate* qlInterestRateEquivalentRate1(InterestRate* o, DayCounter* resultDC, int comp, int freq, int d1, int d2, int refStart, int refEnd, QlError **e) { QlCallScope callbackScope(e);
-  try {return ret(new InterestRate(arg(o)->equivalentRate(*arg(resultDC), (Compounding)comp, (Frequency)freq, Date(d1), Date(d2), qlNullableDate(refStart), qlNullableDate(refEnd))));
+  try {requireDirectCompounding((Compounding)comp); requireDirectCompounding(o->compounding()); return ret(new InterestRate(arg(o)->equivalentRate(*arg(resultDC), (Compounding)comp, (Frequency)freq, Date(d1), Date(d2), qlNullableDate(refStart), qlNullableDate(refEnd))));
   } catch (std::exception& er) {return handleException<InterestRate*>(e, er);}}
 
 InterestRate* qlInterestRateEquivalentRate(InterestRate* o, int comp, int freq, double t, QlError **e) { QlCallScope callbackScope(e);
-  try {return ret(new InterestRate(arg(o)->equivalentRate((Compounding)comp, (Frequency)freq, t)));
+  try {requireDirectCompounding((Compounding)comp); requireDirectCompounding(o->compounding()); return ret(new InterestRate(arg(o)->equivalentRate((Compounding)comp, (Frequency)freq, t)));
   } catch (std::exception& er) {return handleException<InterestRate*>(e, er);}}
 
 InterestRate* qlInterestRateImpliedRate1(InterestRate* o, double compound, DayCounter* resultDC, int comp, int freq, int d1, int d2, int refStart, int refEnd, QlError **e) { QlCallScope callbackScope(e);
-  try {return ret(new InterestRate(arg(o)->impliedRate(compound, *arg(resultDC), (Compounding)comp, (Frequency)freq, Date(d1), Date(d2), qlNullableDate(refStart), qlNullableDate(refEnd))));
+  try {requireDirectCompounding((Compounding)comp); return ret(new InterestRate(arg(o)->impliedRate(compound, *arg(resultDC), (Compounding)comp, (Frequency)freq, Date(d1), Date(d2), qlNullableDate(refStart), qlNullableDate(refEnd))));
   } catch (std::exception& er) {return handleException<InterestRate*>(e, er);}}
 
 InterestRate* qlInterestRateImpliedRate(InterestRate* o, double compound, DayCounter* resultDC, int comp, int freq, double t, QlError **e) { QlCallScope callbackScope(e);
-  try {return ret(new InterestRate(arg(o)->impliedRate(compound, *arg(resultDC), (Compounding)comp, (Frequency)freq, t)));
+  try {requireDirectCompounding((Compounding)comp); return ret(new InterestRate(arg(o)->impliedRate(compound, *arg(resultDC), (Compounding)comp, (Frequency)freq, t)));
   } catch (std::exception& er) {return handleException<InterestRate*>(e, er);}}
 
 Constraint* qlBoundaryConstraint(double low, double high, QlError **e) { QlCallScope callbackScope(e);
@@ -973,12 +986,23 @@ static const makeCal calendars[] = {
   , &makeCalendar<Serbia>
   , &makeCalendar<Slovenia>
   , &makeCalendar<Uzbekistan>
+#if QL_HEX_VERSION >= 0x01440000
+  , &makeCalendar<Malaysia>
+  , &makeCalendar<Philippines>
+#else
+  , nullptr
+  , nullptr
+#endif
 };
 
 Calendar *qlCalendar(int country, int market, QlError **e) { QlCallScope callbackScope(e);
   try {
     if (country < 0 || country >= (int)std::size(calendars))
       QL_FAIL("Invalid country index: " << country);
+    if (!calendars[country]) {
+      qlUnsupportedVersion(e, country == hasquant::Malaysia ? "calendar Malaysia" : "calendar Philippines", "1.44");
+      return nullptr;
+    }
     return alloc(calendars[country](market));
   } catch (std::exception& er) {return handleException<Calendar *>(e, er);}}
 
@@ -1125,8 +1149,7 @@ double qlDayCounterYearFraction(DayCounter* o, int x0, int x1, int refPeriodStar
 /* CommodityType */
 
 CommodityType *qlCommodityType(char *code, char *name, QlError **e) { QlCallScope callbackScope(e);
-  // commoditytype.hpp's declaration names its params (code, name), but the out-of-line
-  // definition in commoditytype.cpp takes (name, code) -- and that's what actually executes.
+  // The Haskell API takes code/name; QuantLib constructs name/code.
   try {return alloc(new CommodityType(arg(name), arg(code)));
   } catch (std::exception& er) {return handleException<CommodityType*>(e, er);}}
 
@@ -1550,5 +1573,30 @@ void qlSimpleLocalVolatilityEstimator(double yearFraction,
   realSeriesCalculate([&est](const TimeSeries<Real>& ts){return est.calculate(ts);},
       datesLen, dates, values, outDatesLen, outDates, outValuesLen, outValues, e);
 }
+double qlInterestRateDiscountFactorFirstDerivative(InterestRate* o, double t, QlError **e) { QlCallScope scope(e);
+#if QL_HEX_VERSION >= 0x01440000
+  try {return o->discountFactorFirstDerivative(t);} catch (std::exception& er) {return handleException<double>(e, er);}
+#else
+  (void)o; (void)t; qlUnsupportedVersion(e, "discountFactorFirstDerivative", "1.44"); return 0;
+#endif
+}
+double qlInterestRateDiscountFactorSecondDerivative(InterestRate* o, double t, QlError **e) { QlCallScope scope(e);
+#if QL_HEX_VERSION >= 0x01440000
+  try {return o->discountFactorSecondDerivative(t);} catch (std::exception& er) {return handleException<double>(e, er);}
+#else
+  (void)o; (void)t; qlUnsupportedVersion(e, "discountFactorSecondDerivative", "1.44"); return 0;
+#endif
+}
+QlStubIndexSelection* qlStubIndexSelection([[maybe_unused]] int convention, [[maybe_unused]] unsigned count, [[maybe_unused]] QlIborIndex** indices, QlError **e) { QlCallScope scope(e);
+  try {
+#if QL_HEX_VERSION >= 0x01440000
+    return ret(new QlStubIndexSelection{convention, qlVector(indices, count)});
+#else
+    return ret(new QlStubIndexSelection{0, {}});
+#endif
+  } catch (std::exception& er) {return handleException<QlStubIndexSelection*>(e, er);}
+}
+void qlFreeStubIndexSelection(QlStubIndexSelection* p) {del(p);}
+
 }
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

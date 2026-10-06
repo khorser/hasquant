@@ -165,6 +165,7 @@ conditionalSurvivalProbability curve interval yVal = case interval of
   ,withDayCounter*`DayCounter' -- ^lastPeriodDayCounter
   ,`Bool' -- ^rebatesAccrual
   ,`PricingModel' -- ^model
+  ,withMaybeDay*`Maybe Day' -- ^tradeDate (1.44 only)
   ,preErrorCheck-`String'errorCheck*-}->`DefaultProbabilityHelper'peekDefaultProbabilityHelper*#}
 
 -- |the upfront must be quoted in fractional units.
@@ -182,6 +183,7 @@ conditionalSurvivalProbability curve interval yVal = case interval of
   ,withDayCounter*`DayCounter' -- ^lastPeriodDayCounter
   ,`Bool' -- ^rebatesAccrual
   ,`PricingModel' -- ^model
+  ,withMaybeDay*`Maybe Day' -- ^tradeDate (1.44 only)
   ,preErrorCheck-`String'errorCheck*-}->`DefaultProbabilityHelper'peekDefaultProbabilityHelper*#}
 
 -- |The fair running-spread/upfront quote implied by the helper's current market data and pricing

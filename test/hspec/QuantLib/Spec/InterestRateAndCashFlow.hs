@@ -7,8 +7,8 @@ import Test.QuickCheck.Monadic as Q(monadicIO, run)
 import Test.QuickCheck((==>))
 
 import Control.Exception(bracket_)
-import Control.Monad(forM_, unless, (>=>))
-import Data.List(isInfixOf)
+import Control.Monad(forM_, (>=>))
+import Data.List(isInfixOf, nub)
 import qualified Data.List.NonEmpty as NE
 import Data.Maybe(fromMaybe)
 import Data.Time.Calendar
@@ -49,10 +49,28 @@ import qualified QuantLib.Instrument.Swap as Swap
 import qualified QuantLib.PricingEngine as PE
 import QuantLib.Math
 
-import QuantLib.Spec.Helpers(ValidDay(..), closePrec, listCloseRel, quantLibAtMost143)
+import QuantLib.Spec.Helpers(ValidDay(..), closePrec, listCloseRel, quantLibAtMost143, unsupportedQuantLib144)
 
 spec :: Day -> Spec
 spec evalDate = do
+    describe "IBOR stub selection" $ do
+      it "uses component fixing histories and ignores selections on 1.43" $ keepingSettingsGc $ do
+        setEvaluationDate (Just (fromGregorian 2024 1 2))
+        cal <- calendar TARGET
+        dc <- dayCounter (Actual360 False)
+        q <- Quote.simpleQuote 0.03
+        curve <- flatForward (SettlementDays 0 cal) q dc IR.Continuous Annual
+        base <- iborIndex Euribor6M (Just curve)
+        short <- iborIndex Euribor1M (Just curve)
+        long <- iborIndex Euribor3M (Just curve)
+        sch <- schedule (Just (fromGregorian 2024 1 4)) (fromGregorian 2024 9 4)
+          (6, Months) cal ModifiedFollowing ModifiedFollowing Backward False Nothing Nothing
+        leg <- CF.iborLegWithOptions sch base [100] dc ModifiedFollowing [2] [1] [0] [] [] False False
+          CF.defaultIborLegOpts { CF.ilgUseIndexedCoupons = Just True, CF.ilgStubIndexSelection = Just (InterpolatedStubIndexes [short, long]) }
+        deps <- CF.fixingDependencies leg
+        names <- mapM Index.name (if quantLibAtMost143 then [base] else [base, short, long])
+        nub (map fst deps) `shouldMatchList` names
+
     describe "Interest rate" $ do
       let cases :: [(Double, IR.Compounding, Frequency, Double, IR.Compounding, Frequency, Double, Int)]
           cases = [ (0.0800, IR.Compounded,        Quarterly,   1.00, IR.Continuous,            Annual, 0.0792, 4),
@@ -98,7 +116,24 @@ spec evalDate = do
       it "bulk test for conversions" $ do
         Context.keepingSettingsGc $ mapM_ testCase cases
 
-      unless quantLibAtMost143 $ do
+      it "discount-factor rate derivatives agree with finite differences" $ do
+        dc <- dayCounter Actual365FixedStandard
+        forM_ ([IR.Simple, IR.Continuous, IR.Compounded] :: [IR.Compounding]) $ \comp -> do
+          let r = 0.03; t = 2.5; h = 1e-4
+          ir <- IR.interestRate r dc comp Semiannual
+          if quantLibAtMost143 then do
+            IR.discountFactorFirstDerivative ir t `shouldThrow` unsupportedQuantLib144 "discountFactorFirstDerivative"
+            IR.discountFactorSecondDerivative ir t `shouldThrow` unsupportedQuantLib144 "discountFactorSecondDerivative"
+          else do
+            minus <- IR.interestRate (r-h) dc comp Semiannual >>= (`IR.discountFactor` IR.AccrualAtTime t)
+            center <- IR.discountFactor ir (IR.AccrualAtTime t)
+            plus <- IR.interestRate (r+h) dc comp Semiannual >>= (`IR.discountFactor` IR.AccrualAtTime t)
+            first <- IR.discountFactorFirstDerivative ir t
+            second <- IR.discountFactorSecondDerivative ir t
+            first `shouldSatisfy` closePrec ((plus-minus)/(2*h)) 1e-6
+            second `shouldSatisfy` closePrec ((plus-2*center+minus)/(h*h)) 1e-5
+
+      describe "mixed compounding restrictions" $ do
         let d1 = fromGregorian 2024 1 1
             d2 = addDays 360 d1
             compoundings :: [IR.Compounding]

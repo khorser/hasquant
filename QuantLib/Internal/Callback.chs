@@ -18,6 +18,9 @@ data CallbackArgs = CallbackArgs
   { callbackInput :: Ptr CDouble
   , callbackOutput :: Ptr CDouble
   , callbackSize :: Int
+  , callbackInput2 :: Ptr CDouble
+  , callbackSize2 :: Int
+  , callbackOutputSize :: Int
   , callbackDirection :: Int
   , callbackScalar :: Double
   , callbackTime1 :: Double
@@ -42,6 +45,9 @@ peekArgs p = CallbackArgs
   <$> {#get QlCallbackArgs->input#} p
   <*> {#get QlCallbackArgs->output#} p
   <*> (fromIntegral <$> {#get QlCallbackArgs->size#} p)
+  <*> {#get QlCallbackArgs->input2#} p
+  <*> (fromIntegral <$> {#get QlCallbackArgs->size2#} p)
+  <*> (fromIntegral <$> {#get QlCallbackArgs->outputSize#} p)
   <*> (fromIntegral <$> {#get QlCallbackArgs->direction#} p)
   <*> (realToFrac <$> {#get QlCallbackArgs->s#} p)
   <*> (realToFrac <$> {#get QlCallbackArgs->t1#} p)

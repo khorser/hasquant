@@ -1,3 +1,5 @@
+#include "qlCallback.hpp"
+#include "qlStdCompat.h"
 #include <ql/termstructures/yield/all.hpp>
 #include <ql/termstructures/globalbootstrap.hpp>
 #include <ql/termstructures/localbootstrap.hpp>
@@ -57,7 +59,7 @@ QuantLib::YieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrapAux(
   const std::vector<QuantLib::Handle<QuantLib::Quote> >& jumps,
   const std::vector<QuantLib::Date>& jumpDates,
   int trait, int interpolator, double accuracy,
-  const std::vector<double>& instrumentWeights);
+  const std::vector<double>& instrumentWeights, const QlCallback& initialGuess = {});
 
 // bootstrap: 0 = IterativeBootstrap (existing behaviour, default), 1 = GlobalBootstrap,
 // wired up only for trait=Discount/interpolator=LogLinear and trait=SimpleZeroYield/
@@ -79,7 +81,7 @@ QuantLib::YieldTermStructure *qlPiecewiseYieldCurveAux1(
   const std::vector<QuantLib::Date>& jumpDates,
   int trait, int interpolator, int approximator, int approximatorArg,
   int bootstrap, double accuracy, const std::vector<double>& instrumentWeights,
-  const QlIterativeBootstrapOpts& bootstrapOpts);
+  const QlIterativeBootstrapOpts& bootstrapOpts, const QlCallback& initialGuess = {});
 
 // PiecewiseYieldCurve<SimpleZeroYield, Linear, GlobalBootstrap> built via
 // GlobalBootstrap's functor-callback constructor (additionalHelpers/additionalDates, with
@@ -93,7 +95,7 @@ QuantLib::YieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrapFullAux(
   const std::vector<QuantLib::Date>& jumpDates,
   const std::vector<QuantLib::ext::shared_ptr<QuantLib::RateHelper> >& additionalHelpers,
   const std::vector<QuantLib::Date>& additionalDates,
-  double accuracy);
+  double accuracy, const std::vector<double>& instrumentWeights, const QlCallback& initialGuess = {});
 
 QuantLib::YieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrapFullAux(
   unsigned settl, const QuantLib::Calendar &cal,
@@ -103,7 +105,7 @@ QuantLib::YieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrapFullAux(
   const std::vector<QuantLib::Date>& jumpDates,
   const std::vector<QuantLib::ext::shared_ptr<QuantLib::RateHelper> >& additionalHelpers,
   const std::vector<QuantLib::Date>& additionalDates,
-  double accuracy);
+  double accuracy, const std::vector<double>& instrumentWeights, const QlCallback& initialGuess = {});
 
 // PiecewiseYieldCurve<Trait, ConvexMonotone, LocalBootstrap>, dispatched over
 // ForwardRate/ZeroYield/SimpleZeroYield -- Discount is rejected (QL_FAIL) at trait=Discount:
@@ -198,7 +200,7 @@ QuantLib::YieldTermStructure *qlPiecewiseSpreadYieldCurveAux(
 QuantLib::YieldTermStructure *qlPiecewiseSpreadYieldCurveGlobalBootstrapAux(
   const QuantLib::Handle<QuantLib::YieldTermStructure>& baseCurve,
   const std::vector<QuantLib::ext::shared_ptr<QuantLib::RateHelper> >& instr,
-  double accuracy, const std::vector<double>& instrumentWeights);
+  double accuracy, const std::vector<double>& instrumentWeights, const QlCallback& initialGuess = {});
 
 // some credit stuff
 QuantLib::DefaultProbabilityTermStructure *qlInterpolatedDefaultDensityCurveAux(

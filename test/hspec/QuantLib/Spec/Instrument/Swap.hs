@@ -6,10 +6,11 @@
 -- both legs built from the same index/schedule/nominal/spread, matching discount curves, and
 -- spotFX=1, the pay and receive legs must have equal in-currency NPV, so the swap's total NPV
 -- (and, for the basis swap, its fair pay/rec spreads) must come out at zero.
-{-# LANGUAGE OverloadedLists #-}
+{-# LANGUAGE OverloadedLists, LambdaCase #-}
 
 module QuantLib.Spec.Instrument.Swap (spec) where
 
+import Control.Monad(forM_)
 import Test.Hspec
 
 import qualified QuantLib.Context as Context
@@ -22,12 +23,13 @@ import qualified QuantLib.Index.InterestRate as IR
 import QuantLib.Quote
 import QuantLib.TermStructure.Yield
 import QuantLib.CashFlow(RateAveragingType(..))
+import qualified QuantLib.CashFlow as CF
 import QuantLib.Instrument
 import QuantLib.Instrument.Bond(fixedRateBond, asBond, settlementDate)
 import QuantLib.Instrument.Swap
 import QuantLib.PricingEngine
 
-import QuantLib.Spec.Helpers(closePrec)
+import QuantLib.Spec.Helpers(closePrec, quantLibAtMost143)
 
 -- |test-suite/swap.cpp's CommonVars: a Euribor6M-referencing Payer VanillaSwap fixture --
 -- nominal 100, fixed leg Annual/Unadjusted/Thirty360(BondBasis), floating leg
@@ -59,6 +61,61 @@ makeSwap today' lengthYears fixedRate floatingSpread = do
 
 spec :: Spec
 spec = do
+  describe "QuantLib 1.44 swap arguments" $ do
+    it "rounds overnight coupons only on 1.44" $ Context.keepingSettingsGc $ do
+      let today' = 2 `january` 2024; start = 4 `january` 2024; end = 4 `january` 2025
+      Context.setEvaluationDate (Just today')
+      cal <- calendar TARGET
+      dc <- dayCounter (Actual360 False)
+      q <- simpleQuote 0.03456789
+      curve <- flatForward (ReferenceDate today') q dc Continuous Annual
+      idx <- IR.overnightIborIndex IR.Sofr (Just curve)
+      sch <- schedule (Just start) end (1, Years) cal ModifiedFollowing ModifiedFollowing Backward False Nothing Nothing
+      let make = overnightIndexedSwap Payer 100 sch 0.03 dc idx 0 0 ModifiedFollowing cal
+            False AveragingCompound defaultOvernightObservation
+      plain <- make Nothing >>= (`leg` 1) >>= \l -> CF.cashFlows l Nothing Nothing
+      rounded <- make (Just 3) >>= (`leg` 1) >>= \l -> CF.cashFlows l Nothing Nothing
+      let amounts = map (\(_, a, _) -> a)
+      if quantLibAtMost143 then amounts rounded `shouldBe` amounts plain
+      else do
+        accrualEnd <- adjust cal end ModifiedFollowing
+        accrual <- yearFraction dc start accrualEnd Nothing Nothing
+        let expected = fromIntegral (round ((case amounts plain of [a] -> a; _ -> error "expected one overnight coupon") / (100*accrual) * 1000) :: Int) / 1000 * 100 * accrual
+        amounts rounded `shouldSatisfy` (\xs -> length xs == 1 && all (closePrec expected 1e-10) xs)
+
+    it "applies nonstandard swap payment lag on 1.44" $ Context.keepingSettingsGc $ do
+      let today' = 2 `january` 2024; start = 4 `january` 2024; end = 4 `january` 2025
+      Context.setEvaluationDate (Just today')
+      cal <- calendar TARGET
+      dc <- dayCounter (Actual360 False)
+      q <- simpleQuote 0.03
+      curve <- flatForward (ReferenceDate today') q dc Continuous Annual
+      idx <- IR.iborIndex IR.Euribor6M (Just curve)
+      fixed <- schedule (Just start) end (1, Years) cal ModifiedFollowing ModifiedFollowing Backward False Nothing Nothing
+      floating <- schedule (Just start) end (6, Months) cal ModifiedFollowing ModifiedFollowing Backward False Nothing Nothing
+      scalar <- nonstandardSwap Payer [100] [100,100] fixed [0.03] dc floating idx 1 0 dc False False Nothing 3 cal
+      vector <- nonstandardSwapFromGearingsAndSpreads Payer [100] [100,100] fixed [0.03] dc floating idx [1,1] [0,0] dc False False Nothing 3 cal
+      payment <- adjust cal end ModifiedFollowing
+      expected <- if quantLibAtMost143 then pure payment else advance cal payment (3, Days) ModifiedFollowing False
+      forM_ ([scalar, vector] :: [NonstandardSwap]) $ \swp -> do
+        flows <- leg swp 0 >>= \l -> CF.cashFlows l Nothing Nothing
+        map (\(d,_,_) -> d) flows `shouldBe` [expected]
+
+    it "rejects undefined fair rates for zero nominal" $ Context.keepingSettingsGc $ do
+      let today' = 2 `january` 2024; start = 4 `january` 2024; end = 4 `january` 2025
+      Context.setEvaluationDate (Just today')
+      cal <- calendar TARGET
+      dc <- dayCounter (Actual360 False)
+      q <- simpleQuote 0.03
+      curve <- flatForward (ReferenceDate today') q dc Continuous Annual
+      idx <- IR.iborIndex IR.Euribor6M (Just curve)
+      sch <- schedule (Just start) end (6, Months) cal ModifiedFollowing ModifiedFollowing Backward False Nothing Nothing
+      swp <- vanillaSwap Payer 0 sch 0.03 dc sch idx 0 dc Nothing Nothing
+      engine <- discountingSwapEngine curve Nothing Nothing Nothing
+      setPricingEngine swp engine
+      fairRate swp `shouldThrow` (\case Context.CPlusPlusException _ -> True; _ -> False)
+      fairSpread swp `shouldThrow` (\case Context.CPlusPlusException _ -> True; _ -> False)
+
   describe "VanillaSwap" $ do
     it "testCachedValue: 10Y swap NPV reproduces swap.cpp's cached value (either at-par or\
        \ index-fixing coupon pricing, since hasquant has no binding to select between them)" $
@@ -157,13 +214,13 @@ spec = do
         -- first guess, then rebuild at that rate and confirm the rebuilt swap reprices to zero.
         guess <- constNotionalCrossCurrencyFixedVsFloatingSwap Payer 100 usd sched 0.03 legDC
           ModifiedFollowing 0 cal 100 eur sched usdLibor3m 0 ModifiedFollowing 0 cal
-          False False defaultOvernightObservation AveragingCompound
+          False False defaultOvernightObservation AveragingCompound Nothing Nothing
         setPricingEngine guess engine
         fair <- fairRate guess
 
         priced <- constNotionalCrossCurrencyFixedVsFloatingSwap Payer 100 usd sched fair legDC
           ModifiedFollowing 0 cal 100 eur sched usdLibor3m 0 ModifiedFollowing 0 cal
-          False False defaultOvernightObservation AveragingCompound
+          False False defaultOvernightObservation AveragingCompound Nothing Nothing
         setPricingEngine priced engine
         pricedNPV <- npv priced
         pricedNPV `shouldSatisfy` closePrec 0 1e-6
@@ -196,19 +253,19 @@ spec = do
         eng <- discountingSwapEngine ts Nothing Nothing Nothing
         let obs = defaultOvernightObservation
         flatSwap <- overnightIndexedSwap Payer 100 sch 0.05 fixedDC ois 0.0 0 Following cal
-          False AveragingCompound obs
+          False AveragingCompound obs Nothing
         setPricingEngine flatSwap eng
         flatNpv <- npv flatSwap
         periods <- length <$> dates sch
         perPeriod <- overnightIndexedSwapFromNominals Payer (replicate (periods - 1) 100) sch 0.05
-          fixedDC ois 0.0 0 Following cal False AveragingCompound obs
+          fixedDC ois 0.0 0 Following cal False AveragingCompound obs Nothing
         setPricingEngine perPeriod eng
         perPeriodNpv <- npv perPeriod
         perPeriodNpv `shouldSatisfy` closePrec flatNpv 1.0e-12
         -- and the observation record is actually threaded through this wrapper, not dropped
         observed <- overnightIndexedSwapFromNominals Payer (replicate (periods - 1) 100) sch 0.05
           fixedDC ois 0.0 0 Following cal False AveragingCompound
-          obs{lockoutDays = 2}
+          obs{lockoutDays = 2} Nothing
         setPricingEngine observed eng
         observedNpv <- npv observed
         observedNpv `shouldNotSatisfy` closePrec perPeriodNpv 1.0e-12

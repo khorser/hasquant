@@ -17,11 +17,13 @@ struct QlError {
   QlError(const QlError&) = delete;
   QlError& operator=(const QlError&) = delete;
   std::string message;
+  std::string call, requiredVersion, linkedVersion;
   void* exception = nullptr;
   QlReleaseStable releaseException = nullptr;
 };
 
 void qlSetError(QlError** slot, const char* message);
+void qlUnsupportedVersion(QlError** slot, const char* call, const char* required);
 
 class QlCallScope {
 public:

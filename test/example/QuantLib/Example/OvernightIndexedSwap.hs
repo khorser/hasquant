@@ -48,12 +48,12 @@ run = do
   engine <- discountingSwapEngine estrTS (Just False) Nothing Nothing
 
   ois <- overnightIndexedSwap Payer 100.0 sched fixedRate act360 estrIndex 0.0
-    0 Following cal False AveragingCompound defaultOvernightObservation
+    0 Following cal False AveragingCompound defaultOvernightObservation Nothing
   setPricingEngine ois engine
   npv1 <- npv ois
 
   oisTelescopic <- overnightIndexedSwap Payer 100.0 sched fixedRate act360 estrIndex 0.0
-    0 Following cal True AveragingCompound defaultOvernightObservation
+    0 Following cal True AveragingCompound defaultOvernightObservation Nothing
   setPricingEngine oisTelescopic engine
   npv2 <- npv oisTelescopic
 

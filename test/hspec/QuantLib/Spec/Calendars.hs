@@ -3,6 +3,8 @@ module QuantLib.Spec.Calendars (spec) where
 
 import Prelude hiding(tail)
 
+import Control.Monad(forM_)
+import QuantLib.Spec.Helpers(quantLibAtMost143, unsupportedQuantLib144)
 import Test.Hspec
 
 import Data.Time.Calendar
@@ -15,6 +17,14 @@ import QuantLib.Time.Schedule(TimeUnit(..))
 spec :: Day -> Spec
 spec evalDate = do
     describe "calendars" $ do
+      forM_ ([Malaysia, Philippines] :: [CalendarConstructor]) $ \country ->
+        it ("supports " ++ show country ++ " with a typed version check") $
+          if quantLibAtMost143 then
+            calendar country `shouldThrow` unsupportedQuantLib144 ("calendar " ++ show country)
+          else do
+            cal <- calendar country
+            isWeekend cal Date.Saturday `shouldReturn` True
+            isHoliday cal (fromGregorian 2026 1 1) `shouldReturn` True
       it "adjust" $ do
         c <- calendar RussiaSettlement
         a <- adjust c (fromGregorian 2012 12 22) Preceding

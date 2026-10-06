@@ -59,11 +59,11 @@ main = do
   let n = length bermudanDates
       nominalFixed = [1.0 - fromIntegral i / fromIntegral (max 1 (n - 1)) | i <- [0 .. n - 1]]
       strikes = replicate n strike
-  underlying2 <- nonstandardSwap Payer nominalFixed (concatMap (\x -> [x, x]) nominalFixed) fixedSchedule strikes thirty360bb floatSchedule euribor6m 1.0 0.0 act360 False False Nothing
+  underlying2 <- nonstandardSwap Payer nominalFixed (concatMap (\x -> [x, x]) nominalFixed) fixedSchedule strikes thirty360bb floatSchedule euribor6m 1.0 0.0 act360 False False Nothing 0 cal
   swpn2 <- nonstandardSwaption underlying2 ex Physical PhysicalOTC
 
   -- 1c. Vector gearing/spread ctor (full coverage; not used by the upstream example).
-  underlying3 <- nonstandardSwapFromGearingsAndSpreads Payer nominalFixed (concatMap (\x -> [x, x]) nominalFixed) fixedSchedule strikes thirty360bb floatSchedule euribor6m (replicate (2 * n) 1.0) (replicate (2 * n) 0.0) act360 False False Nothing
+  underlying3 <- nonstandardSwapFromGearingsAndSpreads Payer nominalFixed (concatMap (\x -> [x, x]) nominalFixed) fixedSchedule strikes thirty360bb floatSchedule euribor6m (replicate (2 * n) 1.0) (replicate (2 * n) 0.0) act360 False False Nothing 0 cal
   _swpn3 <- nonstandardSwaption underlying3 ex Physical PhysicalOTC
 
   -- 2. From-Swaption ctor.

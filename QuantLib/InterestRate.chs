@@ -13,6 +13,8 @@ module QuantLib.InterestRate
     -- * Inspectors
   , compoundFactor
   , discountFactor
+  , discountFactorSecondDerivative
+  , discountFactorFirstDerivative
   , equivalentRate
   , impliedRate
   , rate
@@ -104,7 +106,7 @@ data EquivalentPeriod
 {#fun pure qlInterestRateRate as rate{withInterestRate*`InterestRate'}->`Double'#}
 
 -- |Compound (capitalization) factor implied by the rate over the given period.
--- QuantLib 1.44 and later reject 'SimpleThenCompounded' and 'CompoundedThenSimple';
+-- Both supported QuantLib versions reject 'SimpleThenCompounded' and 'CompoundedThenSimple';
 -- use "QuantLib.CashFlow" calculations for these conventions.
 compoundFactor :: InterestRate -> AccrualPeriod -> IO Double
 compoundFactor ir period = case period of
@@ -112,7 +114,7 @@ compoundFactor ir period = case period of
   AccrualBetween d1 d2 rs re -> compoundFactorBetweenRaw ir d1 d2 rs re
 
 -- |Discount factor implied by the rate over the given period.
--- QuantLib 1.44 and later reject 'SimpleThenCompounded' and 'CompoundedThenSimple';
+-- Both supported QuantLib versions reject 'SimpleThenCompounded' and 'CompoundedThenSimple';
 -- use "QuantLib.CashFlow" calculations for these conventions.
 discountFactor :: InterestRate -> AccrualPeriod -> IO Double
 discountFactor ir period = case period of
@@ -120,7 +122,7 @@ discountFactor ir period = case period of
   AccrualBetween d1 d2 rs re -> discountFactorBetweenRaw ir d1 d2 rs re
 
 -- |Equivalent rate under a different compounding and frequency over the given period.
--- QuantLib 1.44 and later reject mixed source compounding and non-unit factors with
+-- Both supported QuantLib versions reject mixed source compounding and non-unit factors with
 -- mixed result compounding; use "QuantLib.CashFlow" for these conventions.
 equivalentRate :: InterestRate -> Compounding -> Frequency -> EquivalentPeriod -> IO InterestRate
 equivalentRate ir comp freq period = case period of
@@ -128,7 +130,7 @@ equivalentRate ir comp freq period = case period of
   EquivalentBetween dc d1 d2 rs re -> equivalentRateBetweenRaw ir dc comp freq d1 d2 rs re
 
 -- |Rate implied by a given compound factor over the given period, in the supplied day counter.
--- QuantLib 1.44 and later reject mixed result compounding for non-unit compound factors;
+-- Both supported QuantLib versions reject mixed result compounding for non-unit compound factors;
 -- use "QuantLib.CashFlow" calculations for 'SimpleThenCompounded' and 'CompoundedThenSimple'.
 impliedRate :: InterestRate -> Double -> DayCounter -> Compounding -> Frequency -> AccrualPeriod
   -> IO InterestRate
@@ -137,3 +139,15 @@ impliedRate ir compound dc comp freq period = case period of
   AccrualBetween d1 d2 rs re -> impliedRateBetweenRaw ir compound dc comp freq d1 d2 rs re
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:
+
+-- |First derivative of the discount factor with respect to the rate at year fraction @t@.
+-- Requires QuantLib 1.44.
+{#fun qlInterestRateDiscountFactorFirstDerivative as discountFactorFirstDerivative{withInterestRate*`InterestRate' -- ^rate
+  ,`Double' -- ^t
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}
+
+-- |Second derivative of the discount factor with respect to the rate at year fraction @t@.
+-- Requires QuantLib 1.44.
+{#fun qlInterestRateDiscountFactorSecondDerivative as discountFactorSecondDerivative{withInterestRate*`InterestRate' -- ^rate
+  ,`Double' -- ^t
+  ,preErrorCheck-`String'errorCheck*-}->`Double'#}

@@ -31,3 +31,10 @@ Calendars are keyed by country. Countries with multiple markets add a per-countr
 Run `make` for a quick C++-only compile check before doing a full `cabal build all --enable-tests`.
 
 A `cbits/`-only change touches no `.chs` file, so the run-hasquant skill's stale-build gotcha applies: clean-build if in doubt, and confirm at the value level with a `smoke/` script that constructs one of the new calendars and prints something derived from it.
+
+For a calendar introduced in the newer supported release, keep its enum ordinal present on both
+versions. Guard its factory entry by `QL_HEX_VERSION` and use a null entry on the older release;
+`qlCalendar` reports `UnsupportedQuantLibVersion` with the public constructor name. Malaysia and
+Philippines (1.44) are single-market examples. Rebuild the enum's `.chs` module when its included
+header changes: touching the file alone can leave Cabal's content hash unchanged and retain stale
+constructors. A clean build is the definitive check.

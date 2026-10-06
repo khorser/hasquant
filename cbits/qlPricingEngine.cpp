@@ -1915,5 +1915,14 @@ void qlValidateSabrParameters(double alpha, double beta, double nu, double rho, 
 void qlSabrGuess(double k_m, double vol_m, double k_0, double vol_0, double k_p, double vol_p, double forward, double expiryTime, double beta, double shift, int volatilityType, unsigned *len, double **out, QlError **e) { QlCallScope callbackScope(e);
   try {fillVectorOut([&] {return sabrGuess(k_m, vol_m, k_0, vol_0, k_p, vol_p, forward, expiryTime, beta, shift, (VolatilityType)volatilityType);}, len, out);
   } catch (std::exception& er) {(void)handleException<double*>(e, er);}}
+double qlGaussian1dModelCompoundedRate(QlGaussian1dModel* model, QlOvernightIndexedCoupon* coupon, int date, double y, QlYieldTermStructure* curve, QlError **e) { QlCallScope scope(e);
+#if QL_HEX_VERSION >= 0x01440000
+  try {return (*model)->compoundedRate(**coupon, qlNullableDate(date), y, qlNullableHandle(curve));}
+  catch (std::exception& er) {return handleException<double>(e, er);}
+#else
+  (void)model; (void)coupon; (void)date; (void)y; (void)curve;
+  qlUnsupportedVersion(e, "gaussian1dCompoundedRate", "1.44"); return 0;
+#endif
+}
 }
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

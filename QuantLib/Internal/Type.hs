@@ -212,6 +212,9 @@ peekDayCounter :: Ptr CDayCounter -> IO DayCounter
 peekDayCounter = DayCounter <.> peekStandalone
 withDayCounter :: DayCounter -> (Ptr CDayCounter -> IO b) -> IO b
 withDayCounter = withStandalone . getCDayCounter
+
+withMaybeDayCounter :: Maybe DayCounter -> (Ptr CDayCounter -> IO r) -> IO r
+withMaybeDayCounter x f = maybe (f nullPtr) (`withDayCounter` f) x
 foreign import ccall safe "ql.h qlDayCounterName" qlDayCounterName :: Ptr CDayCounter -> IO CString
 instance Show DayCounter where show x = showStandalone qlDayCounterName (getCDayCounter x)
 instance Eq DayCounter where x == y = show x == show y
@@ -4020,3 +4023,12 @@ preBlackCalibrationHelperArray = prePtrArray freeUpcast
 
 preCommodityCashFlowArray :: ((Ptr CUInt, Ptr (Ptr (Ptr CCommodityCashFlow'))) -> IO b) -> IO b
 preCommodityCashFlowArray = prePtrArray freeUpcast
+
+-- Temporary construction input; the native consumer copies the selected indices.
+type QlStubIndexSelection = Ptr CStubIndexSelection'
+data CStubIndexSelection'
+foreign import ccall unsafe "ql.h &qlFreeStubIndexSelection" qlFreeStubIndexSelection :: FinalizerPtr CStubIndexSelection'
+instance Finalizable CStubIndexSelection' where finalize = qlFreeStubIndexSelection
+
+withIborIndexArray :: [GenIborIndex ibor] -> ((CUInt, Ptr (Ptr CIborIndex')) -> IO r) -> IO r
+withIborIndexArray = withGenArray withIborIndex

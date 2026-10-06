@@ -61,7 +61,7 @@ buildSofrProfile curves hist quotes = do
   fixedSched <- schedule (Just effectiveDate) terminationDate (6, Months) cal
     ModifiedFollowing ModifiedFollowing Backward False Nothing Nothing
   swap <- overnightIndexedSwap Payer 1000000 fixedSched 0.0278 dc index 0 2
-    ModifiedFollowing paymentCal False AveragingCompound defaultOvernightObservation
+    ModifiedFollowing paymentCal False AveragingCompound defaultOvernightObservation Nothing
   engine <- discountingSwapEngine tsh (Just False) Nothing Nothing
   setPricingEngine swap engine
 

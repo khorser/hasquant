@@ -31,13 +31,17 @@ module QuantLib.TermStructure.Yield
   , SwapRateTerms(..)
   , OisTerms(..)
   , FxSwapTerms(..)
+  , FundingTerms(..)
   , FuturesTerms(..)
   , OISRateHelperOpts(..)
   , OvernightObservation(..)
   , IterativeBootstrapOpts(..)
+  , BootstrapInitialGuess
   , Bootstrap(..)
   , LocalBootstrapTrait(..)
   , SpreadBootstrap(..)
+
+  , StubIndexSelection(..)
 
     -- * Constructors
     -- ** Hierarchy and handles
@@ -50,6 +54,7 @@ module QuantLib.TermStructure.Yield
   , forwardSpreadedTermStructure
   , zeroSpreadedTermStructure
   , withCompositeZeroYieldStructure
+  , impliedTermStructureMoving
   , impliedTermStructure
   , piecewiseZeroSpreadedTermStructure
   , piecewiseForwardSpreadedTermStructure
@@ -83,6 +88,8 @@ module QuantLib.TermStructure.Yield
   , multiCurve
     -- ** Basis and cross-currency helpers
   , iborIborBasisSwapRateHelper
+  , overnightOvernightBasisSwapRateHelper
+  , overnightIndexedFundingRateHelper
   , overnightIborBasisSwapRateHelper
   , constNotionalCrossCurrencyBasisSwapRateHelper
   , mtmCrossCurrencyBasisSwapRateHelper
@@ -122,7 +129,12 @@ import QuantLib.Quote hiding(linkTo)
 import QuantLib.TermStructure (Reference(..), TermPoint(..), RatePoint(..), setExtrapolation, HasHelperUnderlying(..))
 import Data.Maybe(fromMaybe)
 import Data.List.NonEmpty(NonEmpty, toList)
-import Foreign.Ptr(Ptr)
+import Foreign.Ptr(Ptr, nullPtr, castPtr)
+import Foreign.Marshal.Array(copyArray)
+import qualified QuantLib.Internal.Callback as Callback
+import qualified Data.Vector.Storable as V
+import Control.Exception(throwIO)
+import Control.Monad(when)
 import Foreign.Marshal.Alloc(alloca)
 import Foreign.Storable(peek)
 import Foreign.C.Types(CInt, CUInt)
@@ -139,6 +151,7 @@ import QuantLib.Internal.Type
 #include "qlEnumObjects.h"
 
 #include "ql.h"
+{#pointer *QlStubIndexSelection nocode#}
 
 -- These local pointer declarations break import cycles while allowing c2hs to attach finalizers.
 {#pointer *Calendar foreign -> CCalendar nocode#}
@@ -183,6 +196,7 @@ $(deriveOptionsRecord "OISRateHelperOpts" ["m", "p"]
   , ("oisRule", [t|DateGenerationRule|], [|Backward|])
   , ("oisOvernightCalendar", [t|Maybe Calendar|], [|Nothing|])
   , ("oisConvention", [t|BusinessDayConvention|], [|ModifiedFollowing|])
+  , ("oisFixedDayCount", [t|Maybe DayCounter|], [|Nothing|])
   ])
 
 -- Upstream defaults accuracy/minValue/maxValue to Null<Real>() rather than to a number, so
@@ -466,11 +480,17 @@ fraRateHelper rate terms = case terms of
   ,withIborIndex*`GenIborIndex ibor2' -- ^otherIndex
   ,withYieldTermStructure*`GenYieldTermStructure y' -- ^discountHandle
   ,`Bool' -- ^bootstrapBaseCurve
+  ,fromMaybeBool`Maybe Bool' -- ^useIndexedCoupons (1.44 only)
+  ,`DateGenerationRule' -- ^rule (1.44 only)
+  ,fromIntegral`Int' -- ^paymentLag (1.44 only)
+  ,withStubIndexSelection*`Maybe (StubIndexSelection ibor3)' -- ^baseStub (1.44 only)
+  ,withStubIndexSelection*`Maybe (StubIndexSelection ibor4)' -- ^otherStub (1.44 only)
   ,preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
 
 -- |Bootstrapping helper for an overnight-ibor basis swap: pays @baseIndex + basis@, receives
 -- @otherIndex@. Bootstraps the forecast curve for 'otherIndex'; 'baseIndex' needs an existing
--- forecast curve. If 'Nothing', the overnight index's own curve is used as the discount curve.
+-- forecast curve on 1.43. On 1.44, @bootstrapBaseCurve@ chooses the projected leg; an empty
+-- discount handle uses the bootstrapped curve (1.43 uses the overnight curve).
 {#fun qlOvernightIborBasisSwapRateHelper as overnightIborBasisSwapRateHelper{withQuote*`GenQuote q' -- ^basis
   ,fromEnumQuantity`(Int,TimeUnit)'& -- ^tenor
   ,fromIntegral`Word' -- ^settlementDays
@@ -480,6 +500,15 @@ fraRateHelper rate terms = case terms of
   ,withOvernightIborIndex*`OvernightIborIndex' -- ^baseIndex
   ,withIborIndex*`GenIborIndex ibor' -- ^otherIndex
   ,withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)' -- ^discountHandle
+  ,`Bool' -- ^bootstrapBaseCurve (1.44 only)
+  ,fromIntegral`Int' -- ^paymentLag (1.44 only)
+  ,fromMaybeEnum`Maybe Frequency' -- ^overnightPaymentFrequency (1.44 only)
+  ,fromMaybeBool`Maybe Bool' -- ^useIndexedCoupons (1.44 only)
+  ,`DateGenerationRule' -- ^rule (1.44 only)
+  ,fromEnumC`RateAveragingType' -- ^averagingMethod (1.44 only)
+  ,`Bool' -- ^telescopicValueDates (1.44 only)
+  ,`Bool' -- ^basisOnIborLeg (1.44 only)
+  ,withStubIndexSelection*`Maybe (StubIndexSelection ibor2)' -- ^iborStub (1.44 only)
   ,preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
 
 -- |Bootstrapping helper for a constant-notional cross-currency basis swap: the collateral is
@@ -500,6 +529,10 @@ fraRateHelper rate terms = case terms of
   ,fromMaybeEnum`Maybe Frequency' -- ^paymentFrequency
   ,fromIntegral`Int' -- ^paymentLag
   ,fromMaybeEnum`Maybe Frequency' -- ^quoteCurrencyPaymentFrequency
+  ,fromMaybeBool`Maybe Bool' -- ^useIndexedCoupons (1.44 only)
+  ,`Bool' -- ^paymentLagOnNotionalExchanges (1.44 only)
+  ,withStubIndexSelection*`Maybe (StubIndexSelection ibor3)' -- ^baseStub (1.44 only)
+  ,withStubIndexSelection*`Maybe (StubIndexSelection ibor4)' -- ^quoteStub (1.44 only)
   ,preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
 
 -- |Bootstrapping helper for a marked-to-market cross-currency basis swap: like
@@ -520,6 +553,11 @@ fraRateHelper rate terms = case terms of
   ,fromMaybeEnum`Maybe Frequency' -- ^paymentFrequency
   ,fromIntegral`Int' -- ^paymentLag
   ,fromMaybeEnum`Maybe Frequency' -- ^quoteCurrencyPaymentFrequency
+  ,fromIntegral`Word' -- ^fxResetFixingDays (1.44 only)
+  ,withCalendar*`Calendar' -- ^fxResetFixingCalendar (1.44 only)
+  ,fromMaybeBool`Maybe Bool' -- ^useIndexedCoupons (1.44 only)
+  ,withStubIndexSelection*`Maybe (StubIndexSelection ibor3)' -- ^baseStub (1.44 only)
+  ,withStubIndexSelection*`Maybe (StubIndexSelection ibor4)' -- ^quoteStub (1.44 only)
   ,preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
 
 -- |Bootstrapping helper for a fixed-vs-floating cross-currency par swap: quoted at par, so the
@@ -537,6 +575,9 @@ fraRateHelper rate terms = case terms of
   ,withYieldTermStructure*`GenYieldTermStructure y' -- ^collateralCurve
   ,`Bool' -- ^collateralOnFixedLeg
   ,fromIntegral`Int' -- ^paymentLag
+  ,fromMaybeBool`Maybe Bool' -- ^useIndexedCoupons (1.44 only)
+  ,fromMaybeEnum`Maybe Frequency' -- ^floatPaymentFrequency (1.44 only)
+  ,withStubIndexSelection*`Maybe (StubIndexSelection ibor2)' -- ^floatStub (1.44 only)
   ,preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
 
 -- |How an FX swap helper's dates are given. 'FxSwapTenor' is relative to the evaluation date:
@@ -621,11 +662,11 @@ oisRateHelper terms fixedRate idx discountingCurve = do
     OisTenor settlementDays tenor forwardStart ->
       oisRateHelper_ settlementDays tenor fixedRate idx discountingCurve
         False 0 Following Annual cal forwardStart Nothing LastRelevantDate Nothing AveragingCompound
-        Nothing Nothing cal Nothing 0 False Nothing Backward cal ModifiedFollowing
+        Nothing Nothing cal Nothing 0 False Nothing Backward cal ModifiedFollowing Nothing
     OisBetweenDates startDate endDate ->
       oisRateHelper2_ startDate endDate fixedRate idx discountingCurve
         False 0 Following Annual cal Nothing LastRelevantDate Nothing AveragingCompound
-        Nothing Nothing cal Nothing 0 False Nothing Backward cal ModifiedFollowing
+        Nothing Nothing cal Nothing 0 False Nothing Backward cal ModifiedFollowing Nothing
 
 {#fun qlOISRateHelper as oisRateHelper_{fromIntegral`Word' -- ^settlementDays
   ,fromEnumQuantity`(Int,TimeUnit)'& -- ^tenor
@@ -652,6 +693,7 @@ oisRateHelper terms fixedRate idx discountingCurve = do
   ,`DateGenerationRule' -- ^rule
   ,withCalendar*`Calendar' -- ^overnightCalendar
   ,fromEnumC`BusinessDayConvention' -- ^convention (q1.k.q1. overnightConvention)
+  ,withMaybeDayCounter*`Maybe DayCounter' -- ^fixedDayCount (1.44 only)
   ,preErrorCheck-`String'errorCheck*-}->`OISRateHelper'peekOISRateHelper*#}
 {#fun qlOISRateHelper2 as oisRateHelper2_{withDay*`Day' -- ^startDate
   ,withDay*`Day' -- ^endDate
@@ -677,6 +719,7 @@ oisRateHelper terms fixedRate idx discountingCurve = do
   ,`DateGenerationRule' -- ^rule
   ,withCalendar*`Calendar' -- ^overnightCalendar
   ,fromEnumC`BusinessDayConvention' -- ^convention (q1.k.q1. overnightConvention)
+  ,withMaybeDayCounter*`Maybe DayCounter' -- ^fixedDayCount (1.44 only)
   ,preErrorCheck-`String'errorCheck*-}->`OISRateHelper'peekOISRateHelper*#}
 
 -- |'oisRateHelper' with every trailing QuantLib parameter taken from an options record.
@@ -697,7 +740,7 @@ oisRateHelperWithOptions terms fixedRate idx discountingCurve opts = do
         (oisAveragingMethod opts) (oisEndOfMonth opts) (oisFixedPaymentFrequency opts)
         fixedCal (lookbackDays obs) (lockoutDays obs)
         (applyObservationShift obs) (oisPricer opts) (oisRule opts)
-        overnightCal (oisConvention opts)
+        overnightCal (oisConvention opts) (oisFixedDayCount opts)
     OisBetweenDates startDate endDate ->
       oisRateHelper2_ startDate endDate fixedRate idx discountingCurve
         (oisTelescopicValueDates opts) (oisPaymentLag opts) (oisPaymentConvention opts)
@@ -706,7 +749,7 @@ oisRateHelperWithOptions terms fixedRate idx discountingCurve opts = do
         (oisAveragingMethod opts) (oisEndOfMonth opts) (oisFixedPaymentFrequency opts)
         fixedCal (lookbackDays obs) (lockoutDays obs)
         (applyObservationShift obs) (oisPricer opts) (oisRule opts)
-        overnightCal (oisConvention opts)
+        overnightCal (oisConvention opts) (oisFixedDayCount opts)
 
 -- The 'SwapRateFromIndex' binding behind 'swapRateHelper'.
 {#fun qlSwapRateHelper as swapRateHelperFromIndexRaw{withQuote*`GenQuote q1' -- ^rate
@@ -990,24 +1033,34 @@ piecewiseForwardSpreadedTermStructure ts qd i = uncurryNested (qlPiecewiseForwar
 {#fun qlPiecewiseYieldCurveFull1{fromIntegral`Word',withCalendar*`Calendar',withRateHelperArray*`[GenRateHelper rh]'&,withDayCounter*`DayCounter',withQuoteArray*`[GenQuote q]'&,withDayArray*`[Day]'&,`BootstrapTrait',`Int',`Int',`Int',`Double',`Double',`Double',fromIntegral`Word',`Double',`Double',`Bool',fromIntegral`Word',fromIntegral`Word',`Bool',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
 
 -- Raw moving-curve bindings used by 'piecewiseYieldCurve'.
-{#fun qlPiecewiseYieldCurveGlobalBootstrap1{fromIntegral`Word',withCalendar*`Calendar',withRateHelperArray*`[GenRateHelper rh]'&,withDayCounter*`DayCounter',withQuoteArray*`[GenQuote q]'&,withDayArray*`[Day]'&,`Double',withDoubleArray*`[Double]'&,`Bool',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
+{#fun qlPiecewiseYieldCurveGlobalBootstrap1{fromIntegral`Word',withCalendar*`Calendar',withRateHelperArray*`[GenRateHelper rh]'&,withDayCounter*`DayCounter',withQuoteArray*`[GenQuote q]'&,withDayArray*`[Day]'&,`Double',withDoubleArray*`[Double]'&,`Bool',withMaybeBootstrapInitialGuess*`Maybe BootstrapInitialGuess'
+  ,preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
 
-{#fun qlPiecewiseYieldCurveGlobalBootstrap2{fromIntegral`Word',withCalendar*`Calendar',withRateHelperArray*`[GenRateHelper rh]'&,withDayCounter*`DayCounter',withQuoteArray*`[GenQuote q]'&,withDayArray*`[Day]'&,`Double',withDoubleArray*`[Double]'&,`Bool',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
+{#fun qlPiecewiseYieldCurveGlobalBootstrap2{fromIntegral`Word',withCalendar*`Calendar',withRateHelperArray*`[GenRateHelper rh]'&,withDayCounter*`DayCounter',withQuoteArray*`[GenQuote q]'&,withDayArray*`[Day]'&,`Double',withDoubleArray*`[Double]'&,`Bool',withMaybeBootstrapInitialGuess*`Maybe BootstrapInitialGuess'
+  ,preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
 
-{#fun qlPiecewiseYieldCurveGlobalBootstrap3{fromIntegral`Word',withCalendar*`Calendar',withRateHelperArray*`[GenRateHelper rh1]'&,withDayCounter*`DayCounter',withQuoteArray*`[GenQuote q]'&,withDayArray*`[Day]'&,withRateHelperArray*`[GenRateHelper rh2]'&,withDayArray*`[Day]'&,`Double',`Bool',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
+{#fun qlPiecewiseYieldCurveGlobalBootstrap3{fromIntegral`Word',withCalendar*`Calendar',withRateHelperArray*`[GenRateHelper rh1]'&,withDayCounter*`DayCounter',withQuoteArray*`[GenQuote q]'&,withDayArray*`[Day]'&,withRateHelperArray*`[GenRateHelper rh2]'&,withDayArray*`[Day]'&,`Double',`Bool',withDoubleArray*`[Double]'&,withMaybeBootstrapInitialGuess*`Maybe BootstrapInitialGuess'
+  ,preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
 
-{#fun qlPiecewiseYieldCurveGlobalBootstrap4{fromIntegral`Word',withCalendar*`Calendar',withRateHelperArray*`[GenRateHelper rh]'&,withDayCounter*`DayCounter',withQuoteArray*`[GenQuote q]'&,withDayArray*`[Day]'&,`Double',withDoubleArray*`[Double]'&,`Bool',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
+{#fun qlPiecewiseYieldCurveGlobalBootstrap4{fromIntegral`Word',withCalendar*`Calendar',withRateHelperArray*`[GenRateHelper rh]'&,withDayCounter*`DayCounter',withQuoteArray*`[GenQuote q]'&,withDayArray*`[Day]'&,`Double',withDoubleArray*`[Double]'&,`Bool',withMaybeBootstrapInitialGuess*`Maybe BootstrapInitialGuess'
+  ,preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
 
-{#fun qlPiecewiseYieldCurveGlobalBootstrap5{fromIntegral`Word',withCalendar*`Calendar',withRateHelperArray*`[GenRateHelper rh]'&,withDayCounter*`DayCounter',withQuoteArray*`[GenQuote q]'&,withDayArray*`[Day]'&,`Double',withDoubleArray*`[Double]'&,`Bool',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
+{#fun qlPiecewiseYieldCurveGlobalBootstrap5{fromIntegral`Word',withCalendar*`Calendar',withRateHelperArray*`[GenRateHelper rh]'&,withDayCounter*`DayCounter',withQuoteArray*`[GenQuote q]'&,withDayArray*`[Day]'&,`Double',withDoubleArray*`[Double]'&,`Bool',withMaybeBootstrapInitialGuess*`Maybe BootstrapInitialGuess'
+  ,preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
 
 {#fun qlPiecewiseYieldCurveLocalBootstrap1{fromIntegral`Word',withCalendar*`Calendar',withRateHelperArray*`[GenRateHelper rh]'&,withDayCounter*`DayCounter',withQuoteArray*`[GenQuote q]'&,withDayArray*`[Day]'&,`BootstrapTrait',fromIntegral`Word',`Bool',`Double',`Double',`Double',`Bool',`Bool',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
 
 -- Raw fixed-curve bindings for the non-iterative bootstrap choices.
-{#fun qlPiecewiseYieldCurveGlobalBootstrapFixed1{withDay*`Day',withRateHelperArray*`[GenRateHelper rh]'&,withDayCounter*`DayCounter',withQuoteArray*`[GenQuote q]'&,withDayArray*`[Day]'&,`Double',withDoubleArray*`[Double]'&,`Bool',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
-{#fun qlPiecewiseYieldCurveGlobalBootstrapFixed2{withDay*`Day',withRateHelperArray*`[GenRateHelper rh]'&,withDayCounter*`DayCounter',withQuoteArray*`[GenQuote q]'&,withDayArray*`[Day]'&,`Double',withDoubleArray*`[Double]'&,`Bool',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
-{#fun qlPiecewiseYieldCurveGlobalBootstrapFixed3{withDay*`Day',withRateHelperArray*`[GenRateHelper rh1]'&,withDayCounter*`DayCounter',withQuoteArray*`[GenQuote q]'&,withDayArray*`[Day]'&,withRateHelperArray*`[GenRateHelper rh2]'&,withDayArray*`[Day]'&,`Double',`Bool',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
-{#fun qlPiecewiseYieldCurveGlobalBootstrapFixed4{withDay*`Day',withRateHelperArray*`[GenRateHelper rh]'&,withDayCounter*`DayCounter',withQuoteArray*`[GenQuote q]'&,withDayArray*`[Day]'&,`Double',withDoubleArray*`[Double]'&,`Bool',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
-{#fun qlPiecewiseYieldCurveGlobalBootstrapFixed5{withDay*`Day',withRateHelperArray*`[GenRateHelper rh]'&,withDayCounter*`DayCounter',withQuoteArray*`[GenQuote q]'&,withDayArray*`[Day]'&,`Double',withDoubleArray*`[Double]'&,`Bool',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
+{#fun qlPiecewiseYieldCurveGlobalBootstrapFixed1{withDay*`Day',withRateHelperArray*`[GenRateHelper rh]'&,withDayCounter*`DayCounter',withQuoteArray*`[GenQuote q]'&,withDayArray*`[Day]'&,`Double',withDoubleArray*`[Double]'&,`Bool',withMaybeBootstrapInitialGuess*`Maybe BootstrapInitialGuess'
+  ,preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
+{#fun qlPiecewiseYieldCurveGlobalBootstrapFixed2{withDay*`Day',withRateHelperArray*`[GenRateHelper rh]'&,withDayCounter*`DayCounter',withQuoteArray*`[GenQuote q]'&,withDayArray*`[Day]'&,`Double',withDoubleArray*`[Double]'&,`Bool',withMaybeBootstrapInitialGuess*`Maybe BootstrapInitialGuess'
+  ,preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
+{#fun qlPiecewiseYieldCurveGlobalBootstrapFixed3{withDay*`Day',withRateHelperArray*`[GenRateHelper rh1]'&,withDayCounter*`DayCounter',withQuoteArray*`[GenQuote q]'&,withDayArray*`[Day]'&,withRateHelperArray*`[GenRateHelper rh2]'&,withDayArray*`[Day]'&,`Double',`Bool',withDoubleArray*`[Double]'&,withMaybeBootstrapInitialGuess*`Maybe BootstrapInitialGuess'
+  ,preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
+{#fun qlPiecewiseYieldCurveGlobalBootstrapFixed4{withDay*`Day',withRateHelperArray*`[GenRateHelper rh]'&,withDayCounter*`DayCounter',withQuoteArray*`[GenQuote q]'&,withDayArray*`[Day]'&,`Double',withDoubleArray*`[Double]'&,`Bool',withMaybeBootstrapInitialGuess*`Maybe BootstrapInitialGuess'
+  ,preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
+{#fun qlPiecewiseYieldCurveGlobalBootstrapFixed5{withDay*`Day',withRateHelperArray*`[GenRateHelper rh]'&,withDayCounter*`DayCounter',withQuoteArray*`[GenQuote q]'&,withDayArray*`[Day]'&,`Double',withDoubleArray*`[Double]'&,`Bool',withMaybeBootstrapInitialGuess*`Maybe BootstrapInitialGuess'
+  ,preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
 {#fun qlPiecewiseYieldCurveLocalBootstrapFixed{withDay*`Day',withRateHelperArray*`[GenRateHelper rh]'&,withDayCounter*`DayCounter',withQuoteArray*`[GenQuote q]'&,withDayArray*`[Day]'&,`BootstrapTrait',fromIntegral`Word',`Bool',`Double',`Double',`Double',`Bool',`Bool',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
 
 -- |Selects the bootstrapper used by 'piecewiseYieldCurve' and carries exactly the
@@ -1020,11 +1073,11 @@ piecewiseForwardSpreadedTermStructure ts qd i = uncurryNested (qlPiecewiseForwar
 -- invalid results with QuantLib's local bootstrapper.
 data Bootstrap rh2
   = Iterative !BootstrapTrait !Interpolation !IterativeBootstrapOpts
-  | GlobalDiscountLogLinear !Double ![Double] -- ^accuracy, instrumentWeights
-  | GlobalSimpleZeroLinear !Double ![Double] -- ^accuracy, instrumentWeights
-  | GlobalSimpleZeroLinearFull !(NonEmpty (GenRateHelper rh2)) ![Day] !Double -- ^additionalHelpers, additionalDates, accuracy
-  | GlobalForwardRateLinear !Double ![Double] -- ^accuracy, instrumentWeights
-  | GlobalZeroYieldLinear !Double ![Double] -- ^accuracy, instrumentWeights
+  | GlobalDiscountLogLinear !Double ![Double] !(Maybe BootstrapInitialGuess) -- ^accuracy, instrumentWeights (empty for equal weights), initialGuess
+  | GlobalSimpleZeroLinear !Double ![Double] !(Maybe BootstrapInitialGuess) -- ^accuracy, instrumentWeights (empty for equal weights), initialGuess
+  | GlobalSimpleZeroLinearFull !(NonEmpty (GenRateHelper rh2)) ![Day] !Double ![Double] !(Maybe BootstrapInitialGuess) -- ^additionalHelpers, additionalDates, accuracy, instrumentWeights, initialGuess
+  | GlobalForwardRateLinear !Double ![Double] !(Maybe BootstrapInitialGuess) -- ^accuracy, instrumentWeights (empty for equal weights), initialGuess
+  | GlobalZeroYieldLinear !Double ![Double] !(Maybe BootstrapInitialGuess) -- ^accuracy, instrumentWeights (empty for equal weights), initialGuess
   | Local !LocalBootstrapTrait !Word !Bool !Double !Double !Double !Bool
     -- ^trait, localisation, forcePositive (LocalBootstrap's), accuracy, quadraticity, monotonicity, convexForcePositive (ConvexMonotone's)
 
@@ -1042,7 +1095,7 @@ fromBootstrapTrait LSimpleZeroYield = SimpleZeroYield
 -- @LogLinear@ interpolation gives piecewise-constant forward spreads, upstream's canonical choice.
 data SpreadBootstrap
   = SpreadIterative !Interpolation !IterativeBootstrapOpts
-  | SpreadGlobalLogLinear !Double ![Double] -- ^accuracy, instrumentWeights (empty for equal weights)
+  | SpreadGlobalLogLinear !Double ![Double] !(Maybe BootstrapInitialGuess) -- ^accuracy, instrumentWeights (empty for equal weights), initialGuess
 
 -- |Bootstraps a term structure with either a fixed or evaluation-date-relative reference point.
 -- 'Bootstrap' selects iterative, global, or local construction; the final flag controls
@@ -1061,16 +1114,16 @@ piecewiseYieldCurve reference r dc qd bootstrap ex = case (reference, bootstrap)
   (SettlementDays s cal, Iterative t i b) -> uncurryNested (qlPiecewiseYieldCurveFull1 s cal rs dc qs ds t) (qlInterpolation i)
     (nullableDouble (ibAccuracy b)) (nullableDouble (ibMinValue b)) (nullableDouble (ibMaxValue b))
     (ibMaxAttempts b) (ibMaxFactor b) (ibMinFactor b) (ibDontThrow b) (ibDontThrowSteps b) (ibMaxEvaluations b) ex
-  (ReferenceDate d, GlobalDiscountLogLinear acc w) -> qlPiecewiseYieldCurveGlobalBootstrapFixed1 d rs dc qs ds acc w ex
-  (SettlementDays s cal, GlobalDiscountLogLinear acc w) -> qlPiecewiseYieldCurveGlobalBootstrap1 s cal rs dc qs ds acc w ex
-  (ReferenceDate d, GlobalSimpleZeroLinear acc w) -> qlPiecewiseYieldCurveGlobalBootstrapFixed2 d rs dc qs ds acc w ex
-  (SettlementDays s cal, GlobalSimpleZeroLinear acc w) -> qlPiecewiseYieldCurveGlobalBootstrap2 s cal rs dc qs ds acc w ex
-  (ReferenceDate d, GlobalSimpleZeroLinearFull ah ad acc) -> qlPiecewiseYieldCurveGlobalBootstrapFixed3 d rs dc qs ds (toList ah) ad acc ex
-  (SettlementDays s cal, GlobalSimpleZeroLinearFull ah ad acc) -> qlPiecewiseYieldCurveGlobalBootstrap3 s cal rs dc qs ds (toList ah) ad acc ex
-  (ReferenceDate d, GlobalForwardRateLinear acc w) -> qlPiecewiseYieldCurveGlobalBootstrapFixed4 d rs dc qs ds acc w ex
-  (SettlementDays s cal, GlobalForwardRateLinear acc w) -> qlPiecewiseYieldCurveGlobalBootstrap4 s cal rs dc qs ds acc w ex
-  (ReferenceDate d, GlobalZeroYieldLinear acc w) -> qlPiecewiseYieldCurveGlobalBootstrapFixed5 d rs dc qs ds acc w ex
-  (SettlementDays s cal, GlobalZeroYieldLinear acc w) -> qlPiecewiseYieldCurveGlobalBootstrap5 s cal rs dc qs ds acc w ex
+  (ReferenceDate d, GlobalDiscountLogLinear acc w guess) -> qlPiecewiseYieldCurveGlobalBootstrapFixed1 d rs dc qs ds acc w ex guess
+  (SettlementDays s cal, GlobalDiscountLogLinear acc w guess) -> qlPiecewiseYieldCurveGlobalBootstrap1 s cal rs dc qs ds acc w ex guess
+  (ReferenceDate d, GlobalSimpleZeroLinear acc w guess) -> qlPiecewiseYieldCurveGlobalBootstrapFixed2 d rs dc qs ds acc w ex guess
+  (SettlementDays s cal, GlobalSimpleZeroLinear acc w guess) -> qlPiecewiseYieldCurveGlobalBootstrap2 s cal rs dc qs ds acc w ex guess
+  (ReferenceDate d, GlobalSimpleZeroLinearFull ah ad acc w guess) -> qlPiecewiseYieldCurveGlobalBootstrapFixed3 d rs dc qs ds (toList ah) ad acc ex w guess
+  (SettlementDays s cal, GlobalSimpleZeroLinearFull ah ad acc w guess) -> qlPiecewiseYieldCurveGlobalBootstrap3 s cal rs dc qs ds (toList ah) ad acc ex w guess
+  (ReferenceDate d, GlobalForwardRateLinear acc w guess) -> qlPiecewiseYieldCurveGlobalBootstrapFixed4 d rs dc qs ds acc w ex guess
+  (SettlementDays s cal, GlobalForwardRateLinear acc w guess) -> qlPiecewiseYieldCurveGlobalBootstrap4 s cal rs dc qs ds acc w ex guess
+  (ReferenceDate d, GlobalZeroYieldLinear acc w guess) -> qlPiecewiseYieldCurveGlobalBootstrapFixed5 d rs dc qs ds acc w ex guess
+  (SettlementDays s cal, GlobalZeroYieldLinear acc w guess) -> qlPiecewiseYieldCurveGlobalBootstrap5 s cal rs dc qs ds acc w ex guess
   (ReferenceDate d, Local t loc fp acc q m cfp) -> qlPiecewiseYieldCurveLocalBootstrapFixed d rs dc qs ds (fromBootstrapTrait t) loc fp acc q m cfp ex
   (SettlementDays s cal, Local t loc fp acc q m cfp) -> qlPiecewiseYieldCurveLocalBootstrap1 s cal rs dc qs ds (fromBootstrapTrait t) loc fp acc q m cfp ex
   where (ds, qs) = unzip qd
@@ -1093,11 +1146,12 @@ piecewiseSpreadYieldCurve base r bootstrap ex = case bootstrap of
   SpreadIterative i b -> uncurryNested (qlPiecewiseSpreadYieldCurve base rs) (qlInterpolation i)
     (nullableDouble (ibAccuracy b)) (nullableDouble (ibMinValue b)) (nullableDouble (ibMaxValue b))
     (ibMaxAttempts b) (ibMaxFactor b) (ibMinFactor b) (ibDontThrow b) (ibDontThrowSteps b) (ibMaxEvaluations b) ex
-  SpreadGlobalLogLinear acc w -> qlPiecewiseSpreadYieldCurveGlobalBootstrap base rs acc w ex
+  SpreadGlobalLogLinear acc w guess -> qlPiecewiseSpreadYieldCurveGlobalBootstrap base rs acc w ex guess
   where rs = toList r
 {#fun qlPiecewiseSpreadYieldCurve{withYieldTermStructure*`GenYieldTermStructure y',withRateHelperArray*`[GenRateHelper rh]'&,`Int',`Int',`Int',`Double',`Double',`Double',fromIntegral`Word',`Double',`Double',`Bool',fromIntegral`Word',fromIntegral`Word',`Bool',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
 
-{#fun qlPiecewiseSpreadYieldCurveGlobalBootstrap{withYieldTermStructure*`GenYieldTermStructure y',withRateHelperArray*`[GenRateHelper rh]'&,`Double',withDoubleArray*`[Double]'&,`Bool',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
+{#fun qlPiecewiseSpreadYieldCurveGlobalBootstrap{withYieldTermStructure*`GenYieldTermStructure y',withRateHelperArray*`[GenRateHelper rh]'&,`Double',withDoubleArray*`[Double]'&,`Bool',withMaybeBootstrapInitialGuess*`Maybe BootstrapInitialGuess'
+  ,preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
 
 -- |Yield curve interpolating discount factors directly between the given dates.
 interpolatedDiscountCurve :: NonEmpty (Day, Double) -- ^dates, dfs
@@ -1257,3 +1311,98 @@ fittingMethodErrorCode = fmap toEnum . fittingMethodErrorCodeRaw
   ,preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:
+
+-- |An implied curve whose reference date moves with the evaluation date by settlement days.
+-- Shares the original curve's observable handle. Requires QuantLib 1.44.
+{#fun qlImpliedTermStructureMoving as impliedTermStructureMoving{withYieldTermStructure*`GenYieldTermStructure y' -- ^curve
+  ,fromIntegral`Word' -- ^settlementDays
+  ,withCalendar*`Calendar' -- ^calendar
+  ,preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
+
+-- |Basis helper paying base overnight plus basis and receiving the other overnight rate.
+-- Empty discount handle uses the bootstrapped curve; averaging is independent per leg.
+-- NoFrequency creates one coupon per leg. Requires QuantLib 1.44.
+{#fun qlOvernightOvernightBasisSwapRateHelper as overnightOvernightBasisSwapRateHelper{withQuote*`GenQuote q' -- ^basis
+  ,fromEnumQuantity`(Int,TimeUnit)'& -- ^tenorLen
+  ,fromIntegral`Word' -- ^settlementDays
+  ,withCalendar*`Calendar' -- ^calendar
+  ,fromEnumC`BusinessDayConvention' -- ^convention
+  ,`Bool' -- ^endOfMonth
+  ,withOvernightIborIndex*`OvernightIborIndex' -- ^baseIndex
+  ,withOvernightIborIndex*`OvernightIborIndex' -- ^otherIndex
+  ,withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)' -- ^discount
+  ,`Bool' -- ^bootstrapBaseCurve
+  ,fromIntegral`Int' -- ^paymentLag
+  ,`Frequency' -- ^paymentFrequency
+  ,fromEnumC`RateAveragingType' -- ^baseAveragingMethod
+  ,fromEnumC`RateAveragingType' -- ^otherAveragingMethod
+  ,`Bool' -- ^telescopicValueDates
+  ,`DateGenerationRule' -- ^rule
+  ,preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
+
+-- |Dates for a funding-margin helper: settlement days and tenor, or fixed endpoints.
+data FundingTerms = FundingTenor !Word !(Int, TimeUnit) | FundingBetweenDates !Day !Day
+
+-- |Funding-margin helper with principal exchanges and compounded overnight coupons.
+-- The index projects from an exogenous curve; the bootstrapped curve discounts every flow.
+-- Payment lag also applies to principal exchanges. Requires QuantLib 1.44.
+overnightIndexedFundingRateHelper :: FundingTerms -- ^contract dates
+  -> GenQuote q -- ^margin
+  -> Calendar -- ^calendar
+  -> BusinessDayConvention -- ^convention
+  -> Bool -- ^endOfMonth
+  -> OvernightIborIndex -- ^index
+  -> (Int, TimeUnit) -- ^paymentTenor
+  -> DayCounter -- ^paymentDayCounter
+  -> Int -- ^paymentLag
+  -> Bool -- ^telescopicValueDates
+  -> DateGenerationRule -- ^rule
+  -> PillarChoice -- ^pillar
+  -> Maybe Day -- ^customPillarDate
+  -> IO RateHelper
+overnightIndexedFundingRateHelper terms margin cal convention eom idx tenor dc lag telescopic rule pillar custom =
+  case terms of
+    FundingTenor days (n, unit) -> overnightIndexedFundingRateHelperRaw False (fromIntegral days) n unit margin cal convention eom idx tenor dc lag telescopic rule pillar custom
+    FundingBetweenDates start end -> do
+      s <- toSerial start
+      e <- toSerial end
+      overnightIndexedFundingRateHelperRaw True (fromIntegral s) (fromIntegral e) Days margin cal convention eom idx tenor dc lag telescopic rule pillar custom
+
+{#fun qlOvernightIndexedFundingRateHelperRaw as overnightIndexedFundingRateHelperRaw{`Bool' -- ^dated
+  ,fromIntegral`Int' -- ^start
+  ,fromIntegral`Int' -- ^end
+  ,fromEnumC`TimeUnit' -- ^tenorUnit
+  ,withQuote*`GenQuote q' -- ^margin
+  ,withCalendar*`Calendar' -- ^calendar
+  ,fromEnumC`BusinessDayConvention' -- ^convention
+  ,`Bool' -- ^endOfMonth
+  ,withOvernightIborIndex*`OvernightIborIndex' -- ^index
+  ,fromEnumQuantity`(Int,TimeUnit)'& -- ^paymentTenorLen
+  ,withDayCounter*`DayCounter' -- ^paymentDayCounter
+  ,fromIntegral`Int' -- ^paymentLag
+  ,`Bool' -- ^telescopicValueDates
+  ,`DateGenerationRule' -- ^rule
+  ,`PillarChoice' -- ^pillar
+  ,withMaybeDay*`Maybe Day' -- ^customPillarDate
+  ,preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
+
+-- |Whole-curve initial guess: node times (including time zero), previous data (empty on
+-- first bootstrap), and one trait-specific guess per non-reference pillar. Inputs are borrowed:
+-- copy them before retaining them past the callback. Ignored, without execution, on QuantLib 1.43.
+type BootstrapInitialGuess = RealVector -> RealVector -> IO RealVector
+
+foreign import ccall unsafe "ql.h qlSupports144" supportsInitialGuess :: Bool
+
+withMaybeBootstrapInitialGuess :: Maybe BootstrapInitialGuess -> (Ptr () -> IO r) -> IO r
+withMaybeBootstrapInitialGuess Nothing use = use nullPtr
+withMaybeBootstrapInitialGuess (Just f) use
+  | not supportsInitialGuess = use nullPtr
+  | otherwise = Callback.withCallback call (`Callback.withCallbackPtr` use)
+  where
+    call args = do
+      times <- borrowRealVector (Callback.callbackInput args) (fromIntegral (Callback.callbackSize args))
+      previous <- borrowRealVector (Callback.callbackInput2 args) (fromIntegral (Callback.callbackSize2 args))
+      values <- f times previous
+      let expected = Callback.callbackOutputSize args
+      when (V.length values /= expected) $ throwIO $ CallbackResultLength expected (V.length values)
+      V.unsafeWith values $ \p -> copyArray (castPtr (Callback.callbackOutput args)) p expected

@@ -9,7 +9,7 @@ All paths below are relative to the repo root.
 
 ## Prerequisites
 
-QuantLib 1.43, GHCup, GHC 9.10.3 and Cabal are expected to be installed. `cabal.project` pins dependencies to Stackage lts-24.56; README.md's "Pinned dependencies" lists the other project files. The GHC 8.10 compatibility gate uses the repository's Docker Compose setup below.
+QuantLib 1.43 or 1.44, GHCup, GHC 9.10.3 and Cabal are expected to be installed. `cabal.project` pins dependencies to Stackage lts-24.56; README.md's "Pinned dependencies" lists the other project files. The GHC 8.10 compatibility gate uses the repository's Docker Compose setup below.
 
 ## Build
 
@@ -125,8 +125,10 @@ Both pass clean on the current `HEAD`.
 
 For version-dependent expectations, reuse `QuantLib.Spec.Helpers.quantLibAtMost143`.
 It parses major/minor numerically, including suffixes such as `1.44-rc`; do not compare
-version strings lexically. QuantLib 1.44 rejects direct mixed-compounding interest-rate
-calculations, so the corresponding exception checks run only on newer versions.
+version strings lexically. hasquant applies QuantLib 1.44's direct mixed-compounding restrictions on both supported versions.
+For a version upgrade, build and run the suite against both matching header/library installations.
+New calls on 1.43 must throw `UnsupportedQuantLibVersion`; new arguments are ignored, including
+validation and callback execution.
 
 Slow tests are marked by suffixing `(LONG)` to the `it`/`describe`
 description. The effective threshold is ~2.5s, not tens of seconds: measure

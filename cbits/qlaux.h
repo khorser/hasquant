@@ -37,6 +37,8 @@ char *tracedup(const char *p);
 // Used by string-array staging so committed and uncommitted strings share a finalizer and trace label.
 extern "C" void qlFreeString(char *p);
 
+
+
 #ifdef QLTRACK_ALLOCATIONS
 # include <fstream>
 #endif
@@ -92,6 +94,7 @@ namespace QuantLib {
   class CompositeInstrument;
   class CustomIborIndex;
   class IborIndex;
+  class StubIndexSelection;
   class IborCoupon;
   class OvernightIndexedCoupon;
   class AverageBMACoupon;
@@ -257,6 +260,8 @@ namespace QuantLib {
   class FractionalDividend;
   class FuturesRateHelper;
   class OvernightIndexFutureRateHelper;
+  class OvernightOvernightBasisSwapRateHelper;
+  class OvernightIndexedFundingRateHelper;
   class FxForward;
   class G2;
   class G2ForwardProcess;
@@ -624,6 +629,8 @@ using QuantLib::FraRateHelper;
 using QuantLib::FractionalDividend;
 using QuantLib::FuturesRateHelper;
 using QuantLib::OvernightIndexFutureRateHelper;
+using QuantLib::OvernightOvernightBasisSwapRateHelper;
+using QuantLib::OvernightIndexedFundingRateHelper;
 using QuantLib::FxForward;
 using QuantLib::G2;
 using QuantLib::G2ForwardProcess;
@@ -808,6 +815,14 @@ using QlYieldTermStructure = Handle<YieldTermStructure>;
 // and needs no separate parameter type: it goes wherever a curve goes, through the ordinary
 // Upcastable machinery, and the upcast copy shares its Link so relinking still propagates.
 using QlRelinkableYieldTermStructure = RelinkableHandle<YieldTermStructure>;
+struct QlStubIndexSelection {
+  int convention;
+  std::vector<shared_ptr<QuantLib::IborIndex>> indices;
+};
+#if QL_HEX_VERSION >= 0x01440000
+QuantLib::StubIndexSelection qlStubSelection(const QlStubIndexSelection* selection);
+#endif
+
 using QlPricingEngine = shared_ptr<PricingEngine>;
 using QlIborIndex = shared_ptr<IborIndex>;
 using QlIndex = shared_ptr<Index>;
@@ -1117,6 +1132,7 @@ template <class T> struct ObjClassName {static const char *name() {return typeid
 #define QL_TRACE_NAME_AS(T, S) template <> struct ObjClassName<T*> {static constexpr const char *name() {return S;}};
 #define QL_TRACE_NAME(T) QL_TRACE_NAME_AS(T, #T)
 QL_TRACE_NAME(QlError)
+QL_TRACE_NAME(QlStubIndexSelection)
 QL_TRACE_NAME(QlCallback)
 QL_TRACE_NAME(hasquant::Callback)
 QL_TRACE_NAME(AffineModel)
@@ -1292,6 +1308,8 @@ QL_TRACE_NAME(FraRateHelper)
 QL_TRACE_NAME(FractionalDividend)
 QL_TRACE_NAME(FuturesRateHelper)
 QL_TRACE_NAME(OvernightIndexFutureRateHelper)
+QL_TRACE_NAME(OvernightOvernightBasisSwapRateHelper)
+QL_TRACE_NAME(OvernightIndexedFundingRateHelper)
 QL_TRACE_NAME(FxForward)
 QL_TRACE_NAME(G2)
 QL_TRACE_NAME(G2SwaptionEngine)

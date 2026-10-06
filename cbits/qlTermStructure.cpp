@@ -46,7 +46,11 @@
 #include <ql/experimental/credit/factorspreadedhazardratecurve.hpp>
 #include <ql/experimental/credit/interpolatedaffinehazardratecurve.hpp>
 #include <ql/termstructures/credit/defaultprobabilityhelpers.hpp>
+#include <ql/version.hpp>
 #include <ql/termstructures/yield/all.hpp>
+#if QL_HEX_VERSION >= 0x01440000
+#include <ql/experimental/termstructures/overnightindexedfundingratehelper.hpp>
+#endif
 #include <ql/termstructures/multicurve.hpp>
 #include <ql/experimental/termstructures/basisswapratehelpers.hpp>
 #include <ql/experimental/termstructures/crosscurrencyratehelpers.hpp>
@@ -317,11 +321,11 @@ QlVolatilityTermStructure* qlOptionletVolatilityStructureAsVolatilityTermStructu
 // StrippedOptionletAdapter, itself an OptionletVolatilityStructure, mirroring qlConstantOptionletVol1
 // above. optionletFrequencyUnit < 0 is the ext::nullopt sentinel for optionletFrequency, same
 // convention as qlOptBusinessDayConvention/qlOptFrequency (TimeUnit starts at 0, so can't self-sentinel).
-QlOptionletVolatilityStructure* qlOptionletStripper1(QlCapFloorTermVolSurface* surface, QlIborIndex* index, double switchStrikes, double accuracy, unsigned maxIter, QlYieldTermStructure* discount, int type, double displacement, int dontThrow, int optionletFrequencyLen, int optionletFrequencyUnit, QlError **e) { QlCallScope callbackScope(e);
+QlOptionletVolatilityStructure* qlOptionletStripper1(QlCapFloorTermVolSurface* surface, QlIborIndex* index, double switchStrikes, double accuracy, unsigned maxIter, QlYieldTermStructure* discount, int type, double displacement, int dontThrow, int optionletFrequencyLen, int optionletFrequencyUnit, [[maybe_unused]] unsigned paymentLag, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlOptionletVolatilityStructure(shared_ptr<OptionletVolatilityStructure>(alloc(new StrippedOptionletAdapter(
             shared_ptr<OptionletStripper1>(alloc(new OptionletStripper1(*arg(surface), *arg(index), switchStrikes, accuracy, maxIter,
               qlNullableHandle(arg(discount)), (VolatilityType)type, displacement, (bool)dontThrow,
-              optionletFrequencyUnit < 0 ? optional<Period>() : optional<Period>(Period(optionletFrequencyLen, (TimeUnit)optionletFrequencyUnit))))))))));
+              optionletFrequencyUnit < 0 ? optional<Period>() : optional<Period>(Period(optionletFrequencyLen, (TimeUnit)optionletFrequencyUnit)) QL144_ARGS(paymentLag)))))))));
   } catch (std::exception& er) {return handleException<QlOptionletVolatilityStructure*>(e, er);}}
 
 // A relinkable handle, empty when `initial` is null -- mirrors qlRelinkableYieldTermStructure.
@@ -499,11 +503,11 @@ int qlSabrVolSurfaceOptionDateFromTenor(QlSabrVolSurface* o, int n, int u, QlErr
 // OptionletStripper2 builds an OptionletStripper1 internally (never exposed to Haskell, same
 // fusion as qlOptionletStripper1 above) then wraps OptionletStripper2 itself around it, keeping
 // the OptionletStripper2 shared_ptr so its own diagnostic getters below are reachable with no cast.
-QlOptionletStripper2* qlOptionletStripper2(QlCapFloorTermVolSurface* surface, QlIborIndex* index, double switchStrikes, double accuracy, unsigned maxIter, QlYieldTermStructure* discount, int type, double displacement, int dontThrow, int optionletFrequencyLen, int optionletFrequencyUnit, QlCapFloorTermVolCurve* atmCurve, QlError **e) { QlCallScope callbackScope(e);
+QlOptionletStripper2* qlOptionletStripper2(QlCapFloorTermVolSurface* surface, QlIborIndex* index, double switchStrikes, double accuracy, unsigned maxIter, QlYieldTermStructure* discount, int type, double displacement, int dontThrow, int optionletFrequencyLen, int optionletFrequencyUnit, QlCapFloorTermVolCurve* atmCurve, [[maybe_unused]] unsigned paymentLag, QlError **e) { QlCallScope callbackScope(e);
   try {
     auto stripper1 = shared_ptr<OptionletStripper1>(alloc(new OptionletStripper1(*arg(surface), *arg(index),
         switchStrikes, accuracy, maxIter, qlNullableHandle(arg(discount)), (VolatilityType)type, displacement,
-        (bool)dontThrow, optionletFrequencyUnit < 0 ? optional<Period>() : optional<Period>(Period(optionletFrequencyLen, (TimeUnit)optionletFrequencyUnit)))));
+        (bool)dontThrow, optionletFrequencyUnit < 0 ? optional<Period>() : optional<Period>(Period(optionletFrequencyLen, (TimeUnit)optionletFrequencyUnit)) QL144_ARGS(paymentLag))));
     return ret(new QlOptionletStripper2(alloc(new OptionletStripper2(stripper1, Handle<CapFloorTermVolCurve>(*arg(atmCurve))))));
   } catch (std::exception& er) {return handleException<QlOptionletStripper2*>(e, er);}}
 void qlFreeOptionletStripper2(QlOptionletStripper2 *o) {del(o);}
@@ -1214,7 +1218,7 @@ QlSabrSwaptionVolatilityCube* qlSabrSwaptionVolatilityCube(QlSwaptionVolatilityS
     int isAtmCalibrated,
     QlEndCriteria* endCriteria, QlOptimizationMethod* method,
     double maxErrorTolerance, double errorAccept, int useMaxError, unsigned maxGuesses,
-    int backwardFlat, double cutoffStrike, QlError **e) { QlCallScope callbackScope(e);
+    int backwardFlat, double cutoffStrike, [[maybe_unused]] int singlePassCalibration, QlError **e) { QlCallScope callbackScope(e);
   try {
     return ret(new QlSabrSwaptionVolatilityCube(alloc(new SabrSwaptionVolatilityCube(
             *arg(atmVolStructure),
@@ -1229,7 +1233,7 @@ QlSabrSwaptionVolatilityCube* qlSabrSwaptionVolatilityCube(QlSwaptionVolatilityS
             (bool)isAtmCalibrated,
             endCriteria ? *arg(endCriteria) : shared_ptr<EndCriteria>(), maxErrorTolerance,
             method ? *arg(method) : shared_ptr<OptimizationMethod>(),
-            errorAccept, (bool)useMaxError, maxGuesses, (bool)backwardFlat, cutoffStrike))));
+            errorAccept, (bool)useMaxError, maxGuesses, (bool)backwardFlat, cutoffStrike QL144_ARGS((bool)singlePassCalibration)))));
   } catch (std::exception& er) {return handleException<QlSabrSwaptionVolatilityCube*>(e, er);}}
 void qlFreeSabrSwaptionVolatilityCube(QlSabrSwaptionVolatilityCube *o) {del(o);}
 // Fresh Handle for this newly built object -- same shape as every QlXxxAsSwaptionVolatilityStructure-
@@ -1257,7 +1261,7 @@ QlNoArbSabrSwaptionVolatilityCube* qlNoArbSabrSwaptionVolatilityCube(QlSwaptionV
     int isAtmCalibrated,
     QlEndCriteria* endCriteria, QlOptimizationMethod* method,
     double maxErrorTolerance, double errorAccept, int useMaxError, unsigned maxGuesses,
-    int backwardFlat, double cutoffStrike, QlError **e) { QlCallScope callbackScope(e);
+    int backwardFlat, double cutoffStrike, [[maybe_unused]] int singlePassCalibration, QlError **e) { QlCallScope callbackScope(e);
   try {
     return ret(new QlNoArbSabrSwaptionVolatilityCube(alloc(new NoArbSabrSwaptionVolatilityCube(
             *arg(atmVolStructure),
@@ -1272,7 +1276,7 @@ QlNoArbSabrSwaptionVolatilityCube* qlNoArbSabrSwaptionVolatilityCube(QlSwaptionV
             (bool)isAtmCalibrated,
             endCriteria ? *arg(endCriteria) : shared_ptr<EndCriteria>(), maxErrorTolerance,
             method ? *arg(method) : shared_ptr<OptimizationMethod>(),
-            errorAccept, (bool)useMaxError, maxGuesses, (bool)backwardFlat, cutoffStrike))));
+            errorAccept, (bool)useMaxError, maxGuesses, (bool)backwardFlat, cutoffStrike QL144_ARGS((bool)singlePassCalibration)))));
   } catch (std::exception& er) {return handleException<QlNoArbSabrSwaptionVolatilityCube*>(e, er);}}
 void qlFreeNoArbSabrSwaptionVolatilityCube(QlNoArbSabrSwaptionVolatilityCube *o) {del(o);}
 QlSwaptionVolatilityStructure* qlNoArbSabrSwaptionVolatilityCubeAsSwaptionVolatilityStructure(QlNoArbSabrSwaptionVolatilityCube *o) {
@@ -1310,7 +1314,7 @@ QlZabrSwaptionVolatilityCube* qlZabrSwaptionVolatilityCube(QlSwaptionVolatilityS
     int isAtmCalibrated,
     QlEndCriteria* endCriteria, QlOptimizationMethod* method,
     double maxErrorTolerance, double errorAccept, int useMaxError, unsigned maxGuesses,
-    int backwardFlat, double cutoffStrike, QlError **e) { QlCallScope callbackScope(e);
+    int backwardFlat, double cutoffStrike, [[maybe_unused]] int singlePassCalibration, QlError **e) { QlCallScope callbackScope(e);
   try {
     return ret(new QlZabrSwaptionVolatilityCube(alloc(new ZabrSwaptionVolatilityCube(
             *arg(atmVolStructure),
@@ -1325,7 +1329,7 @@ QlZabrSwaptionVolatilityCube* qlZabrSwaptionVolatilityCube(QlSwaptionVolatilityS
             (bool)isAtmCalibrated,
             endCriteria ? *arg(endCriteria) : shared_ptr<EndCriteria>(), maxErrorTolerance,
             method ? *arg(method) : shared_ptr<OptimizationMethod>(),
-            errorAccept, (bool)useMaxError, maxGuesses, (bool)backwardFlat, cutoffStrike))));
+            errorAccept, (bool)useMaxError, maxGuesses, (bool)backwardFlat, cutoffStrike QL144_ARGS((bool)singlePassCalibration)))));
   } catch (std::exception& er) {return handleException<QlZabrSwaptionVolatilityCube*>(e, er);}}
 void qlFreeZabrSwaptionVolatilityCube(QlZabrSwaptionVolatilityCube *o) {del(o);}
 QlSwaptionVolatilityStructure* qlZabrSwaptionVolatilityCubeAsSwaptionVolatilityStructure(QlZabrSwaptionVolatilityCube *o) {
@@ -1501,13 +1505,13 @@ double qlDefaultProbabilityHelperImpliedQuoteOn(QlDefaultProbabilityHelper *o, Q
     return (*arg(o))->impliedQuote();
   } catch (std::exception& er) {return handleException<double>(e, er);}}
 
-QlDefaultProbabilityHelper* qlSpreadCdsHelper(QlQuote* runningSpread, int n, int u, int settlementDays, Calendar* calendar, int frequency, int paymentConvention, int rule, DayCounter* dayCounter, double recoveryRate, QlYieldTermStructure* discountCurve, int settlesAccrual, int paysAtDefaultTime, int startDate, DayCounter* lastPeriodDayCounter, int rebatesAccrual, int model, QlError **e) { QlCallScope callbackScope(e);
+QlDefaultProbabilityHelper* qlSpreadCdsHelper(QlQuote* runningSpread, int n, int u, int settlementDays, Calendar* calendar, int frequency, int paymentConvention, int rule, DayCounter* dayCounter, double recoveryRate, QlYieldTermStructure* discountCurve, int settlesAccrual, int paysAtDefaultTime, int startDate, DayCounter* lastPeriodDayCounter, int rebatesAccrual, int model, [[maybe_unused]] int tradeDate, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlDefaultProbabilityHelper(alloc(new SpreadCdsHelper(*arg(runningSpread), Period(n, (TimeUnit)u), settlementDays, *arg(calendar), (Frequency)frequency, (BusinessDayConvention)paymentConvention, (DateGeneration::Rule)rule, *arg(dayCounter), recoveryRate, *arg(discountCurve), settlesAccrual, paysAtDefaultTime,
-            qlNullableDate(startDate), *arg(lastPeriodDayCounter), rebatesAccrual, (CreditDefaultSwap::PricingModel)model))));
+            qlNullableDate(startDate), *arg(lastPeriodDayCounter), rebatesAccrual, (CreditDefaultSwap::PricingModel)model QL144_ARGS(qlNullableDate(tradeDate))))));
   } catch (std::exception& er) {return handleException<QlDefaultProbabilityHelper*>(e, er);}}
-QlDefaultProbabilityHelper* qlUpfrontCdsHelper(QlQuote* upfront, double runningSpread, int n, int u, int settlementDays, Calendar* calendar, int frequency, int paymentConvention, int rule, DayCounter* dayCounter, double recoveryRate, QlYieldTermStructure* discountCurve, unsigned upfrontSettlementDays, int settlesAccrual, int paysAtDefaultTime, int startDate, DayCounter* lastPeriodDayCounter, int rebatesAccrual, int model, QlError **e) { QlCallScope callbackScope(e);
+QlDefaultProbabilityHelper* qlUpfrontCdsHelper(QlQuote* upfront, double runningSpread, int n, int u, int settlementDays, Calendar* calendar, int frequency, int paymentConvention, int rule, DayCounter* dayCounter, double recoveryRate, QlYieldTermStructure* discountCurve, unsigned upfrontSettlementDays, int settlesAccrual, int paysAtDefaultTime, int startDate, DayCounter* lastPeriodDayCounter, int rebatesAccrual, int model, [[maybe_unused]] int tradeDate, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlDefaultProbabilityHelper(alloc(new UpfrontCdsHelper(*arg(upfront), runningSpread, Period(n, (TimeUnit)u), settlementDays, *arg(calendar), (Frequency)frequency, (BusinessDayConvention)paymentConvention, (DateGeneration::Rule)rule, *arg(dayCounter), recoveryRate, *arg(discountCurve), upfrontSettlementDays, settlesAccrual, paysAtDefaultTime,
-            qlNullableDate(startDate), *arg(lastPeriodDayCounter), rebatesAccrual, (CreditDefaultSwap::PricingModel)model))));
+            qlNullableDate(startDate), *arg(lastPeriodDayCounter), rebatesAccrual, (CreditDefaultSwap::PricingModel)model QL144_ARGS(qlNullableDate(tradeDate))))));
   } catch (std::exception& er) {return handleException<QlDefaultProbabilityHelper*>(e, er);}}
 QlDefaultProbabilityTermStructure* qlPiecewiseDefaultCurve(int referenceDate, unsigned instrumentsLen, QlDefaultProbabilityHelper** instruments, DayCounter* dayCounter, unsigned jumpsLen, QlQuote** jumps, unsigned jDatesLen, int* jumpDates, int trait, int interpolator, int approximator, int approximatorArg, double accuracy, double minValue, double maxValue, unsigned maxAttempts, double maxFactor, double minFactor, int dontThrow, unsigned dontThrowSteps, unsigned maxEvaluations, QlError **e) { QlCallScope callbackScope(e);
   const auto b = bootstrapOpts(accuracy, minValue, maxValue, maxAttempts, maxFactor, minFactor, dontThrow, dontThrowSteps, maxEvaluations);
@@ -1863,11 +1867,11 @@ QlYieldTermStructure *qlPiecewiseYieldCurveFull1(unsigned settl, Calendar *cal, 
       bootstrapOpts(accuracy, minValue, maxValue, maxAttempts, maxFactor, minFactor, dontThrow, dontThrowSteps, maxEvaluations), extrapolate, e);
 }
 QlYieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrap1(unsigned settl, Calendar *cal, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen,
-  QlQuote **quotes, unsigned datesLen, int *dates, double accuracy, unsigned weightsLen, double *weights, int extrapolate, QlError **e) { QlCallScope callbackScope(e);
+  QlQuote **quotes, unsigned datesLen, int *dates, double accuracy, unsigned weightsLen, double *weights, int extrapolate, QlCallback* initialGuess, QlError **e) { QlCallScope callbackScope(e);
   try {
     auto ts = allocShared(qlPiecewiseYieldCurveAux1(settl, *arg(cal), qlVector(ratehelpers, rateLen), *arg(dayCount), qlHandleVector(quotes, quoteLen),
         qlDateVector(dates, datesLen), hasquant::Discount, hasquant::LogLinear, /*approximator=*/0, /*approximatorArg=*/0, /*bootstrap=*/1, accuracy,
-        std::vector<double>(weights, weights + weightsLen), defaultBootstrapOpts()));
+        std::vector<double>(weights, weights + weightsLen), defaultBootstrapOpts(), initialGuess ? *initialGuess : QlCallback()));
     if (extrapolate) ts->enableExtrapolation();
     return ret(new QlYieldTermStructure(ts));
   } catch (std::exception& er) {return handleException<QlYieldTermStructure *>(e, er);}}
@@ -1875,12 +1879,12 @@ QlYieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrap1(unsigned settl, Cale
 static QlYieldTermStructure *piecewiseYieldCurveGlobalBootstrapFixed(int date, unsigned rateLen,
   QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen, QlQuote **quotes,
   unsigned datesLen, int *dates, int trait, int interpolator, double accuracy,
-  unsigned weightsLen, double *weights, int extrapolate, QlError **e) { QlCallScope callbackScope(e);
+  unsigned weightsLen, double *weights, int extrapolate, QlCallback* initialGuess, QlError **e) { QlCallScope callbackScope(e);
   try {
     auto ts = allocShared(qlPiecewiseYieldCurveGlobalBootstrapAux(Date(date),
         qlVector(ratehelpers, rateLen), *arg(dayCount), qlHandleVector(quotes, quoteLen),
         qlDateVector(dates, datesLen), trait, interpolator, accuracy,
-        std::vector<double>(weights, weights + weightsLen)));
+        std::vector<double>(weights, weights + weightsLen), initialGuess ? *initialGuess : QlCallback()));
     if (extrapolate) ts->enableExtrapolation();
     return ret(new QlYieldTermStructure(ts));
   } catch (std::exception& er) {return handleException<QlYieldTermStructure *>(e, er);}}
@@ -1888,47 +1892,47 @@ static QlYieldTermStructure *piecewiseYieldCurveGlobalBootstrapFixed(int date, u
 QlYieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrapFixed1(int date, unsigned rateLen,
   QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen, QlQuote **quotes,
   unsigned datesLen, int *dates, double accuracy, unsigned weightsLen, double *weights,
-  int extrapolate, QlError **e) { QlCallScope callbackScope(e);
+  int extrapolate, QlCallback* initialGuess, QlError **e) { QlCallScope callbackScope(e);
   return piecewiseYieldCurveGlobalBootstrapFixed(date, rateLen, ratehelpers, dayCount, quoteLen,
       quotes, datesLen, dates, hasquant::Discount, hasquant::LogLinear, accuracy, weightsLen,
-      weights, extrapolate, e);
+      weights, extrapolate, initialGuess, e);
 }
 
 QlYieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrapFixed2(int date, unsigned rateLen,
   QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen, QlQuote **quotes,
   unsigned datesLen, int *dates, double accuracy, unsigned weightsLen, double *weights,
-  int extrapolate, QlError **e) { QlCallScope callbackScope(e);
+  int extrapolate, QlCallback* initialGuess, QlError **e) { QlCallScope callbackScope(e);
   return piecewiseYieldCurveGlobalBootstrapFixed(date, rateLen, ratehelpers, dayCount, quoteLen,
       quotes, datesLen, dates, hasquant::SimpleZeroYield, hasquant::Linear, accuracy, weightsLen,
-      weights, extrapolate, e);
+      weights, extrapolate, initialGuess, e);
 }
 
 QlYieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrap2(unsigned settl, Calendar *cal, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen,
-  QlQuote **quotes, unsigned datesLen, int *dates, double accuracy, unsigned weightsLen, double *weights, int extrapolate, QlError **e) { QlCallScope callbackScope(e);
+  QlQuote **quotes, unsigned datesLen, int *dates, double accuracy, unsigned weightsLen, double *weights, int extrapolate, QlCallback* initialGuess, QlError **e) { QlCallScope callbackScope(e);
   try {
     auto ts = allocShared(qlPiecewiseYieldCurveAux1(settl, *arg(cal), qlVector(ratehelpers, rateLen), *arg(dayCount), qlHandleVector(quotes, quoteLen),
         qlDateVector(dates, datesLen), hasquant::SimpleZeroYield, hasquant::Linear, /*approximator=*/0, /*approximatorArg=*/0, /*bootstrap=*/1, accuracy,
-        std::vector<double>(weights, weights + weightsLen), defaultBootstrapOpts()));
+        std::vector<double>(weights, weights + weightsLen), defaultBootstrapOpts(), initialGuess ? *initialGuess : QlCallback()));
     if (extrapolate) ts->enableExtrapolation();
     return ret(new QlYieldTermStructure(ts));
   } catch (std::exception& er) {return handleException<QlYieldTermStructure *>(e, er);}}
 
 QlYieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrap4(unsigned settl, Calendar *cal, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen,
-  QlQuote **quotes, unsigned datesLen, int *dates, double accuracy, unsigned weightsLen, double *weights, int extrapolate, QlError **e) { QlCallScope callbackScope(e);
+  QlQuote **quotes, unsigned datesLen, int *dates, double accuracy, unsigned weightsLen, double *weights, int extrapolate, QlCallback* initialGuess, QlError **e) { QlCallScope callbackScope(e);
   try {
     auto ts = allocShared(qlPiecewiseYieldCurveAux1(settl, *arg(cal), qlVector(ratehelpers, rateLen), *arg(dayCount), qlHandleVector(quotes, quoteLen),
         qlDateVector(dates, datesLen), hasquant::ForwardRate, hasquant::Linear, /*approximator=*/0, /*approximatorArg=*/0, /*bootstrap=*/1, accuracy,
-        std::vector<double>(weights, weights + weightsLen), defaultBootstrapOpts()));
+        std::vector<double>(weights, weights + weightsLen), defaultBootstrapOpts(), initialGuess ? *initialGuess : QlCallback()));
     if (extrapolate) ts->enableExtrapolation();
     return ret(new QlYieldTermStructure(ts));
   } catch (std::exception& er) {return handleException<QlYieldTermStructure *>(e, er);}}
 
 QlYieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrap5(unsigned settl, Calendar *cal, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen,
-  QlQuote **quotes, unsigned datesLen, int *dates, double accuracy, unsigned weightsLen, double *weights, int extrapolate, QlError **e) { QlCallScope callbackScope(e);
+  QlQuote **quotes, unsigned datesLen, int *dates, double accuracy, unsigned weightsLen, double *weights, int extrapolate, QlCallback* initialGuess, QlError **e) { QlCallScope callbackScope(e);
   try {
     auto ts = allocShared(qlPiecewiseYieldCurveAux1(settl, *arg(cal), qlVector(ratehelpers, rateLen), *arg(dayCount), qlHandleVector(quotes, quoteLen),
         qlDateVector(dates, datesLen), hasquant::ZeroYield, hasquant::Linear, /*approximator=*/0, /*approximatorArg=*/0, /*bootstrap=*/1, accuracy,
-        std::vector<double>(weights, weights + weightsLen), defaultBootstrapOpts()));
+        std::vector<double>(weights, weights + weightsLen), defaultBootstrapOpts(), initialGuess ? *initialGuess : QlCallback()));
     if (extrapolate) ts->enableExtrapolation();
     return ret(new QlYieldTermStructure(ts));
   } catch (std::exception& er) {return handleException<QlYieldTermStructure *>(e, er);}}
@@ -1936,19 +1940,19 @@ QlYieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrap5(unsigned settl, Cale
 QlYieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrapFixed4(int date, unsigned rateLen,
   QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen, QlQuote **quotes,
   unsigned datesLen, int *dates, double accuracy, unsigned weightsLen, double *weights,
-  int extrapolate, QlError **e) { QlCallScope callbackScope(e);
+  int extrapolate, QlCallback* initialGuess, QlError **e) { QlCallScope callbackScope(e);
   return piecewiseYieldCurveGlobalBootstrapFixed(date, rateLen, ratehelpers, dayCount, quoteLen,
       quotes, datesLen, dates, hasquant::ForwardRate, hasquant::Linear, accuracy, weightsLen,
-      weights, extrapolate, e);
+      weights, extrapolate, initialGuess, e);
 }
 
 QlYieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrapFixed5(int date, unsigned rateLen,
   QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen, QlQuote **quotes,
   unsigned datesLen, int *dates, double accuracy, unsigned weightsLen, double *weights,
-  int extrapolate, QlError **e) { QlCallScope callbackScope(e);
+  int extrapolate, QlCallback* initialGuess, QlError **e) { QlCallScope callbackScope(e);
   return piecewiseYieldCurveGlobalBootstrapFixed(date, rateLen, ratehelpers, dayCount, quoteLen,
       quotes, datesLen, dates, hasquant::ZeroYield, hasquant::Linear, accuracy, weightsLen,
-      weights, extrapolate, e);
+      weights, extrapolate, initialGuess, e);
 }
 
 QlYieldTermStructure *qlPiecewiseYieldCurveLocalBootstrap1(unsigned settl, Calendar *cal, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen,
@@ -1977,10 +1981,10 @@ QlYieldTermStructure *qlPiecewiseYieldCurveLocalBootstrapFixed(int date, unsigne
 
 QlYieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrap3(unsigned settl, Calendar *cal, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen,
   QlQuote **quotes, unsigned datesLen, int *dates, unsigned additionalRateLen, QlRateHelper **additionalRatehelpers, unsigned additionalDatesLen, int *additionalDates,
-  double accuracy, int extrapolate, QlError **e) { QlCallScope callbackScope(e);
+  double accuracy, int extrapolate, unsigned weightsLen, double* weights, QlCallback* initialGuess, QlError **e) { QlCallScope callbackScope(e);
   try {
     auto ts = allocShared(qlPiecewiseYieldCurveGlobalBootstrapFullAux(settl, *arg(cal), qlVector(ratehelpers, rateLen), *arg(dayCount), qlHandleVector(quotes, quoteLen),
-        qlDateVector(dates, datesLen), qlVector(additionalRatehelpers, additionalRateLen), qlDateVector(additionalDates, additionalDatesLen), accuracy));
+        qlDateVector(dates, datesLen), qlVector(additionalRatehelpers, additionalRateLen), qlDateVector(additionalDates, additionalDatesLen), accuracy, std::vector<double>(weights, weights + weightsLen), initialGuess ? *initialGuess : QlCallback()));
     if (extrapolate) ts->enableExtrapolation();
     return ret(new QlYieldTermStructure(ts));
   } catch (std::exception& er) {return handleException<QlYieldTermStructure *>(e, er);}}
@@ -1989,12 +1993,12 @@ QlYieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrapFixed3(int date, unsig
   QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen, QlQuote **quotes,
   unsigned datesLen, int *dates, unsigned additionalRateLen,
   QlRateHelper **additionalRatehelpers, unsigned additionalDatesLen, int *additionalDates,
-  double accuracy, int extrapolate, QlError **e) { QlCallScope callbackScope(e);
+  double accuracy, int extrapolate, unsigned weightsLen, double* weights, QlCallback* initialGuess, QlError **e) { QlCallScope callbackScope(e);
   try {
     auto ts = allocShared(qlPiecewiseYieldCurveGlobalBootstrapFullAux(Date(date),
         qlVector(ratehelpers, rateLen), *arg(dayCount), qlHandleVector(quotes, quoteLen),
         qlDateVector(dates, datesLen), qlVector(additionalRatehelpers, additionalRateLen),
-        qlDateVector(additionalDates, additionalDatesLen), accuracy));
+        qlDateVector(additionalDates, additionalDatesLen), accuracy, std::vector<double>(weights, weights + weightsLen), initialGuess ? *initialGuess : QlCallback()));
     if (extrapolate) ts->enableExtrapolation();
     return ret(new QlYieldTermStructure(ts));
   } catch (std::exception& er) {return handleException<QlYieldTermStructure *>(e, er);}}
@@ -2018,16 +2022,16 @@ QlYieldTermStructure *qlMultiCurveAddNonBootstrappedCurve(QlMultiCurve *mc, QlRe
 // (impliedQuote/accept/setTermStructure/swap() are visitor-pattern/internal plumbing, matching
 // the existing FraRateHelper/SwapRateHelper precedent of leaving those unbound).
 QlRateHelper *qlIborIborBasisSwapRateHelper(QlQuote *basis, int tenorLen, int tenorUnit, unsigned settlementDays, Calendar *calendar, int convention, int endOfMonth,
-  QlIborIndex *baseIndex, QlIborIndex *otherIndex, QlYieldTermStructure *discountHandle, int bootstrapBaseCurve, QlError **e) { QlCallScope callbackScope(e);
+  QlIborIndex *baseIndex, QlIborIndex *otherIndex, QlYieldTermStructure *discountHandle, int bootstrapBaseCurve, [[maybe_unused]] int useIndexedCoupons, [[maybe_unused]] int rule, [[maybe_unused]] int paymentLag, [[maybe_unused]] QlStubIndexSelection* baseStub, [[maybe_unused]] QlStubIndexSelection* otherStub, QlError **e) { QlCallScope callbackScope(e);
   try {
     return ret(new QlRateHelper(alloc(new IborIborBasisSwapRateHelper(*arg(basis), Period(tenorLen, (TimeUnit)tenorUnit), settlementDays, *arg(calendar), (BusinessDayConvention)convention, endOfMonth,
-      *arg(baseIndex), *arg(otherIndex), *arg(discountHandle), bootstrapBaseCurve))));
+      *arg(baseIndex), *arg(otherIndex), *arg(discountHandle), bootstrapBaseCurve QL144_ARGS(qlOptBool(useIndexedCoupons), (DateGeneration::Rule)rule, paymentLag, qlStubSelection(baseStub), qlStubSelection(otherStub))))));
   } catch (std::exception& er) {return handleException<QlRateHelper*>(e, er);}}
 QlRateHelper *qlOvernightIborBasisSwapRateHelper(QlQuote *basis, int tenorLen, int tenorUnit, unsigned settlementDays, Calendar *calendar, int convention, int endOfMonth,
-  QlOvernightIndex *baseIndex, QlIborIndex *otherIndex, QlYieldTermStructure *discountHandle, QlError **e) { QlCallScope callbackScope(e);
+  QlOvernightIndex *baseIndex, QlIborIndex *otherIndex, QlYieldTermStructure *discountHandle, [[maybe_unused]] int bootstrapBaseCurve, [[maybe_unused]] int paymentLag, [[maybe_unused]] int overnightPaymentFrequency, [[maybe_unused]] int useIndexedCoupons, [[maybe_unused]] int rule, [[maybe_unused]] int averagingMethod, [[maybe_unused]] int telescopicValueDates, [[maybe_unused]] int basisOnIborLeg, [[maybe_unused]] QlStubIndexSelection* iborStub, QlError **e) { QlCallScope callbackScope(e);
   try {
     return ret(new QlRateHelper(alloc(new OvernightIborBasisSwapRateHelper(*arg(basis), Period(tenorLen, (TimeUnit)tenorUnit), settlementDays, *arg(calendar), (BusinessDayConvention)convention, endOfMonth,
-      *arg(baseIndex), *arg(otherIndex), qlNullableHandle(arg(discountHandle))))));
+      *arg(baseIndex), *arg(otherIndex), qlNullableHandle(arg(discountHandle)) QL144_ARGS(bootstrapBaseCurve, paymentLag, overnightPaymentFrequency < 0 ? optional<Frequency>() : optional<Frequency>((Frequency)overnightPaymentFrequency), qlOptBool(useIndexedCoupons), (DateGeneration::Rule)rule, (RateAveraging::Type)averagingMethod, telescopicValueDates, basisOnIborLeg, qlStubSelection(iborStub))))));
   } catch (std::exception& er) {return handleException<QlRateHelper*>(e, er);}}
 
 // ql/experimental/termstructures/crosscurrencyratehelpers.hpp -- CrossCurrencySwapRateHelperBase
@@ -2036,32 +2040,32 @@ QlRateHelper *qlOvernightIborBasisSwapRateHelper(QlQuote *basis, int tenorLen, i
 QlRateHelper *qlConstNotionalCrossCurrencyBasisSwapRateHelper(QlQuote *basis, int tenorLen, int tenorUnit, unsigned fixingDays, Calendar *calendar, int convention, int endOfMonth,
   QlIborIndex *baseCurrencyIndex, QlIborIndex *quoteCurrencyIndex, QlYieldTermStructure *collateralCurve,
   int isFxBaseCurrencyCollateralCurrency, int isBasisOnFxBaseCurrencyLeg,
-  int paymentFrequency, int paymentLag, int quoteCurrencyPaymentFrequency, QlError **e) { QlCallScope callbackScope(e);
+  int paymentFrequency, int paymentLag, int quoteCurrencyPaymentFrequency, [[maybe_unused]] int useIndexedCoupons, [[maybe_unused]] int paymentLagOnNotionalExchanges, [[maybe_unused]] QlStubIndexSelection* baseStub, [[maybe_unused]] QlStubIndexSelection* quoteStub, QlError **e) { QlCallScope callbackScope(e);
   try {
     return ret(new QlRateHelper(alloc(new ConstNotionalCrossCurrencyBasisSwapRateHelper(*arg(basis), Period(tenorLen, (TimeUnit)tenorUnit), fixingDays, *arg(calendar), (BusinessDayConvention)convention, endOfMonth,
       *arg(baseCurrencyIndex), *arg(quoteCurrencyIndex), *arg(collateralCurve),
       isFxBaseCurrencyCollateralCurrency, isBasisOnFxBaseCurrencyLeg,
       paymentFrequency < 0 ? optional<Frequency>() : optional<Frequency>((Frequency)paymentFrequency),
       paymentLag,
-      quoteCurrencyPaymentFrequency < 0 ? optional<Frequency>() : optional<Frequency>((Frequency)quoteCurrencyPaymentFrequency)))));
+      quoteCurrencyPaymentFrequency < 0 ? optional<Frequency>() : optional<Frequency>((Frequency)quoteCurrencyPaymentFrequency) QL144_ARGS(qlOptBool(useIndexedCoupons), paymentLagOnNotionalExchanges, qlStubSelection(baseStub), qlStubSelection(quoteStub))))));
   } catch (std::exception& er) {return handleException<QlRateHelper*>(e, er);}}
 QlRateHelper *qlMtMCrossCurrencyBasisSwapRateHelper(QlQuote *basis, int tenorLen, int tenorUnit, unsigned fixingDays, Calendar *calendar, int convention, int endOfMonth,
   QlIborIndex *baseCurrencyIndex, QlIborIndex *quoteCurrencyIndex, QlYieldTermStructure *collateralCurve,
   int isFxBaseCurrencyCollateralCurrency, int isBasisOnFxBaseCurrencyLeg, int isFxBaseCurrencyLegResettable,
-  int paymentFrequency, int paymentLag, int quoteCurrencyPaymentFrequency, QlError **e) { QlCallScope callbackScope(e);
+  int paymentFrequency, int paymentLag, int quoteCurrencyPaymentFrequency, [[maybe_unused]] unsigned fxResetFixingDays, [[maybe_unused]] Calendar* fxResetFixingCalendar, [[maybe_unused]] int useIndexedCoupons, [[maybe_unused]] QlStubIndexSelection* baseStub, [[maybe_unused]] QlStubIndexSelection* quoteStub, QlError **e) { QlCallScope callbackScope(e);
   try {
     return ret(new QlRateHelper(alloc(new MtMCrossCurrencyBasisSwapRateHelper(*arg(basis), Period(tenorLen, (TimeUnit)tenorUnit), fixingDays, *arg(calendar), (BusinessDayConvention)convention, endOfMonth,
       *arg(baseCurrencyIndex), *arg(quoteCurrencyIndex), *arg(collateralCurve),
       isFxBaseCurrencyCollateralCurrency, isBasisOnFxBaseCurrencyLeg, isFxBaseCurrencyLegResettable,
       paymentFrequency < 0 ? optional<Frequency>() : optional<Frequency>((Frequency)paymentFrequency),
       paymentLag,
-      quoteCurrencyPaymentFrequency < 0 ? optional<Frequency>() : optional<Frequency>((Frequency)quoteCurrencyPaymentFrequency)))));
+      quoteCurrencyPaymentFrequency < 0 ? optional<Frequency>() : optional<Frequency>((Frequency)quoteCurrencyPaymentFrequency) QL144_ARGS(fxResetFixingDays, *fxResetFixingCalendar, qlOptBool(useIndexedCoupons), qlStubSelection(baseStub), qlStubSelection(quoteStub))))));
   } catch (std::exception& er) {return handleException<QlRateHelper*>(e, er);}}
 QlRateHelper *qlConstNotionalCrossCurrencySwapRateHelper(QlQuote *fixedRate, int tenorLen, int tenorUnit, unsigned fixingDays, Calendar *calendar, int convention, int endOfMonth,
-  int fixedFrequency, DayCounter *fixedDayCount, QlIborIndex *floatIndex, QlYieldTermStructure *collateralCurve, int collateralOnFixedLeg, int paymentLag, QlError **e) { QlCallScope callbackScope(e);
+  int fixedFrequency, DayCounter *fixedDayCount, QlIborIndex *floatIndex, QlYieldTermStructure *collateralCurve, int collateralOnFixedLeg, int paymentLag, [[maybe_unused]] int useIndexedCoupons, [[maybe_unused]] int floatPaymentFrequency, [[maybe_unused]] QlStubIndexSelection* floatStub, QlError **e) { QlCallScope callbackScope(e);
   try {
     return ret(new QlRateHelper(alloc(new ConstNotionalCrossCurrencySwapRateHelper(*arg(fixedRate), Period(tenorLen, (TimeUnit)tenorUnit), fixingDays, *arg(calendar), (BusinessDayConvention)convention, endOfMonth,
-      (Frequency)fixedFrequency, *arg(fixedDayCount), *arg(floatIndex), *arg(collateralCurve), collateralOnFixedLeg, paymentLag))));
+      (Frequency)fixedFrequency, *arg(fixedDayCount), *arg(floatIndex), *arg(collateralCurve), collateralOnFixedLeg, paymentLag QL144_ARGS(qlOptBool(useIndexedCoupons), floatPaymentFrequency < 0 ? optional<Frequency>() : optional<Frequency>((Frequency)floatPaymentFrequency), qlStubSelection(floatStub))))));
   } catch (std::exception& er) {return handleException<QlRateHelper*>(e, er);}}
 QlRateHelper *qlFxSwapRateHelper(QlQuote *fwdPoint, QlQuote *spotFx, int tenorLen, int tenorUnit, unsigned fixingDays, Calendar *calendar, int convention, int endOfMonth,
   int isFxBaseCurrencyCollateralCurrency, QlYieldTermStructure *collateralCurve, Calendar *tradingCalendar, QlError **e) { QlCallScope callbackScope(e);
@@ -2213,7 +2217,7 @@ QlOISRateHelper* qlOISRateHelper(unsigned settlementDays, int l, int u, QlQuote*
   int telescopicValueDates, int paymentLag, int paymentConvention, int paymentFrequency, Calendar* paymentCalendar,
   int fl, int fu, QlQuote* overnightSpread, int pillar, int customPillarDate, int averagingMethod, int endOfMonth, int fixedPaymentFrequency,
   Calendar* fixedCalendar, unsigned lookbackDays, unsigned lockoutDays, int applyObservationShift,
-  QlFloatingRateCouponPricer* pricer, int rule, Calendar* overnightCalendar, int convention, QlError **e) { QlCallScope callbackScope(e);
+  QlFloatingRateCouponPricer* pricer, int rule, Calendar* overnightCalendar, int convention, [[maybe_unused]] DayCounter* fixedDayCount, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlOISRateHelper(alloc(new OISRateHelper(settlementDays, Period(l, (TimeUnit)u), *arg(fixedRate), *arg(overnightIndex), qlNullableHandle(arg(discountingCurve)),
     telescopicValueDates, paymentLag, (BusinessDayConvention)paymentConvention, (Frequency)paymentFrequency, *arg(paymentCalendar),
     Period(fl, (TimeUnit)fu),
@@ -2221,20 +2225,20 @@ QlOISRateHelper* qlOISRateHelper(unsigned settlementDays, int l, int u, QlQuote*
     (Pillar::Choice)pillar, qlNullableDate(customPillarDate), (RateAveraging::Type)averagingMethod, qlOptBool(endOfMonth),
     fixedPaymentFrequency < 0 ? optional<Frequency>() : optional<Frequency>((Frequency)fixedPaymentFrequency),
     *arg(fixedCalendar), lookbackDays, lockoutDays, applyObservationShift,
-    pricer ? *arg(pricer) : ext::shared_ptr<FloatingRateCouponPricer>(), (DateGeneration::Rule)rule, *arg(overnightCalendar), (BusinessDayConvention)convention))));
+    pricer ? *arg(pricer) : ext::shared_ptr<FloatingRateCouponPricer>(), (DateGeneration::Rule)rule, *arg(overnightCalendar), (BusinessDayConvention)convention QL144_ARGS(fixedDayCount ? *fixedDayCount : DayCounter())))));
   } catch (std::exception& er) {return handleException<QlOISRateHelper*>(e, er);}}
 QlOISRateHelper* qlOISRateHelper2(int start, int end, QlQuote* fixedRate, QlOvernightIndex* overnightIndex, QlYieldTermStructure* discountingCurve,
   int telescopicValueDates, int paymentLag, int paymentConvention, int paymentFrequency, Calendar* paymentCalendar,
   QlQuote* overnightSpread, int pillar, int customPillarDate, int averagingMethod, int endOfMonth, int fixedPaymentFrequency,
   Calendar* fixedCalendar, unsigned lookbackDays, unsigned lockoutDays, int applyObservationShift,
-  QlFloatingRateCouponPricer* pricer, int rule, Calendar* overnightCalendar, int convention, QlError **e) { QlCallScope callbackScope(e);
+  QlFloatingRateCouponPricer* pricer, int rule, Calendar* overnightCalendar, int convention, [[maybe_unused]] DayCounter* fixedDayCount, QlError **e) { QlCallScope callbackScope(e);
     try {return ret(new QlOISRateHelper(alloc(new OISRateHelper(Date(start), Date(end), *arg(fixedRate), *arg(overnightIndex), qlNullableHandle(arg(discountingCurve)),
     telescopicValueDates, paymentLag, (BusinessDayConvention)paymentConvention, (Frequency)paymentFrequency, *arg(paymentCalendar),
     overnightSpread ? std::variant<Spread, Handle<Quote>>(*arg(overnightSpread)) : std::variant<Spread, Handle<Quote>>(Spread(0.0)),
     (Pillar::Choice)pillar, qlNullableDate(customPillarDate), (RateAveraging::Type)averagingMethod, qlOptBool(endOfMonth),
     fixedPaymentFrequency < 0 ? optional<Frequency>() : optional<Frequency>((Frequency)fixedPaymentFrequency),
     *arg(fixedCalendar), lookbackDays, lockoutDays, applyObservationShift,
-    pricer ? *arg(pricer) : ext::shared_ptr<FloatingRateCouponPricer>(), (DateGeneration::Rule)rule, *arg(overnightCalendar), (BusinessDayConvention)convention))));
+    pricer ? *arg(pricer) : ext::shared_ptr<FloatingRateCouponPricer>(), (DateGeneration::Rule)rule, *arg(overnightCalendar), (BusinessDayConvention)convention QL144_ARGS(fixedDayCount ? *fixedDayCount : DayCounter())))));
   } catch (std::exception& er) {return handleException<QlOISRateHelper*>(e, er);}}
 QlSwapRateHelper* qlSwapRateHelper(QlQuote* rate, QlSwapIndex* swapIndex, QlQuote* spread, int fl, int fu, QlYieldTermStructure* discountingCurve,
   int pillar, int customPillarDate, int endOfMonth, int useIndexedCoupons, QlFloatingRateCouponPricer *couponPricer, QlError **e) { QlCallScope callbackScope(e);
@@ -2348,10 +2352,10 @@ QlYieldTermStructure* qlPiecewiseSpreadYieldCurve(QlYieldTermStructure* baseCurv
     if (extrapolate) ts->enableExtrapolation();
     return ret(new QlYieldTermStructure(ts));
   } catch (std::exception& er) {return handleException<QlYieldTermStructure*>(e, er);}}
-QlYieldTermStructure* qlPiecewiseSpreadYieldCurveGlobalBootstrap(QlYieldTermStructure* baseCurve, unsigned rateLen, QlRateHelper** helpers, double accuracy, unsigned weightsLen, double* weights, int extrapolate, QlError **e) { QlCallScope callbackScope(e);
+QlYieldTermStructure* qlPiecewiseSpreadYieldCurveGlobalBootstrap(QlYieldTermStructure* baseCurve, unsigned rateLen, QlRateHelper** helpers, double accuracy, unsigned weightsLen, double* weights, int extrapolate, QlCallback* initialGuess, QlError **e) { QlCallScope callbackScope(e);
   try {
     auto ts = allocShared(qlPiecewiseSpreadYieldCurveGlobalBootstrapAux(qlNullableHandle(arg(baseCurve)), qlVector(helpers, rateLen), accuracy,
-        std::vector<double>(weights, weights + weightsLen)));
+        std::vector<double>(weights, weights + weightsLen), initialGuess ? *initialGuess : QlCallback()));
     if (extrapolate) ts->enableExtrapolation();
     return ret(new QlYieldTermStructure(ts));
   } catch (std::exception& er) {return handleException<QlYieldTermStructure*>(e, er);}}
@@ -2960,5 +2964,32 @@ QlYoYOptionletVolatilitySurface *qlKInterpolatedYoYOptionletVolatilitySurfaceBac
         interpolator, approximator, approximatorArg));
     return ret(new QlYoYOptionletVolatilitySurface(Handle<YoYOptionletVolatilitySurface>(s)));
   } catch (std::exception& er) {return handleException<QlYoYOptionletVolatilitySurface*>(e, er);}}
+QlYieldTermStructure* qlImpliedTermStructureMoving(QlYieldTermStructure* curve, unsigned days, Calendar* calendar, QlError **e) { QlCallScope scope(e);
+#if QL_HEX_VERSION >= 0x01440000
+  try {return ret(new QlYieldTermStructure(allocShared(new ImpliedTermStructure(*curve, days, *calendar))));}
+  catch (std::exception& er) {return handleException<QlYieldTermStructure*>(e, er);}
+#else
+  (void)curve; (void)days; (void)calendar;
+  qlUnsupportedVersion(e, "impliedTermStructureMoving", "1.44"); return nullptr;
+#endif
+}
+QlRateHelper* qlOvernightOvernightBasisSwapRateHelper(QlQuote* basis, int tenorLen, int tenorUnit, unsigned settlementDays, Calendar* calendar, int convention, int endOfMonth, QlOvernightIndex* baseIndex, QlOvernightIndex* otherIndex, QlYieldTermStructure* discount, int bootstrapBaseCurve, int paymentLag, int paymentFrequency, int baseAveragingMethod, int otherAveragingMethod, int telescopicValueDates, int rule, QlError **e) { QlCallScope scope(e);
+#if QL_HEX_VERSION >= 0x01440000
+  try {return ret(new QlRateHelper(allocShared(new OvernightOvernightBasisSwapRateHelper(*basis, Period(tenorLen, (TimeUnit)tenorUnit), settlementDays, *calendar, (BusinessDayConvention)convention, endOfMonth, *baseIndex, *otherIndex, qlNullableHandle(discount), bootstrapBaseCurve, paymentLag, (Frequency)paymentFrequency, (RateAveraging::Type)baseAveragingMethod, (RateAveraging::Type)otherAveragingMethod, telescopicValueDates, (DateGeneration::Rule)rule))));}
+  catch (std::exception& er) {return handleException<QlRateHelper*>(e, er);}
+#else
+  (void)basis; (void)tenorLen; (void)tenorUnit; (void)settlementDays; (void)calendar; (void)convention; (void)endOfMonth; (void)baseIndex; (void)otherIndex; (void)discount; (void)bootstrapBaseCurve; (void)paymentLag; (void)paymentFrequency; (void)baseAveragingMethod; (void)otherAveragingMethod; (void)telescopicValueDates; (void)rule;
+  qlUnsupportedVersion(e, "overnightOvernightBasisSwapRateHelper", "1.44"); return nullptr;
+#endif
+}
+QlRateHelper* qlOvernightIndexedFundingRateHelperRaw(int dated, int start, int end, int tenorUnit, QlQuote* margin, Calendar* calendar, int convention, int endOfMonth, QlOvernightIndex* index, int paymentTenorLen, int paymentTenorUnit, DayCounter* paymentDayCounter, int paymentLag, int telescopicValueDates, int rule, int pillar, int customPillarDate, QlError **e) { QlCallScope scope(e);
+#if QL_HEX_VERSION >= 0x01440000
+  try {return ret(new QlRateHelper(allocShared(dated ? new OvernightIndexedFundingRateHelper(*margin, Date(start), Date(end), *calendar, (BusinessDayConvention)convention, endOfMonth, *index, Period(paymentTenorLen, (TimeUnit)paymentTenorUnit), *paymentDayCounter, paymentLag, telescopicValueDates, (DateGeneration::Rule)rule, (Pillar::Choice)pillar, qlNullableDate(customPillarDate)) : new OvernightIndexedFundingRateHelper(*margin, Period(end, (TimeUnit)tenorUnit), start, *calendar, (BusinessDayConvention)convention, endOfMonth, *index, Period(paymentTenorLen, (TimeUnit)paymentTenorUnit), *paymentDayCounter, paymentLag, telescopicValueDates, (DateGeneration::Rule)rule, (Pillar::Choice)pillar, qlNullableDate(customPillarDate)))));}
+  catch (std::exception& er) {return handleException<QlRateHelper*>(e, er);}
+#else
+  (void)dated; (void)start; (void)end; (void)tenorUnit; (void)margin; (void)calendar; (void)convention; (void)endOfMonth; (void)index; (void)paymentTenorLen; (void)paymentTenorUnit; (void)paymentDayCounter; (void)paymentLag; (void)telescopicValueDates; (void)rule; (void)pillar; (void)customPillarDate;
+  qlUnsupportedVersion(e, "overnightIndexedFundingRateHelper", "1.44"); return nullptr;
+#endif
+}
 }
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

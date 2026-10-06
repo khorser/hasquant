@@ -591,6 +591,7 @@ capletVarianceCurve referenceDate nodes = qlCapletVarianceCurve referenceDate da
   ,`Double' -- ^displacement
   ,`Bool' -- ^dontThrow
   ,fromMaybeEnumQuantity`Maybe (Word, TimeUnit)'& -- ^optionletFrequency
+  ,fromIntegral`Word' -- ^paymentLag (1.44 only)
   ,preErrorCheck-`String'errorCheck*-}->`OptionletVolatilityStructure'peekOptionletVolatilityStructure*#}
 
 -- |Extends an 'OptionletStripper1' (built internally, never exposed as its own Haskell type --
@@ -611,6 +612,7 @@ capletVarianceCurve referenceDate nodes = qlCapletVarianceCurve referenceDate da
   ,`Bool' -- ^dontThrow
   ,fromMaybeEnumQuantity`Maybe (Word, TimeUnit)'& -- ^optionletFrequency
   ,withCapFloorTermVolCurve*`CapFloorTermVolCurve' -- ^atmCapFloorTermVolCurve
+  ,fromIntegral`Word' -- ^paymentLag (1.44 only)
   ,preErrorCheck-`String'errorCheck*-}->`OptionletStripper2'peekOptionletStripper2*#}
 
 -- |Fresh construction (a 'StrippedOptionletAdapter' wrapping the 'OptionletStripper2' itself),
@@ -2084,11 +2086,12 @@ sabrSwaptionVolatilityCube :: GenSwaptionVolatilityStructure sv -- ^atmVolStruct
   -> Double -- ^cutoffStrike
   -> Maybe EndCriteria -- ^endCriteria
   -> Maybe OptimizationMethod -- ^optMethod
+  -> Bool -- ^singlePassCalibration, ignored on QuantLib 1.43
   -> IO SabrSwaptionVolatilityCube
 sabrSwaptionVolatilityCube atm ot st ss (Matrix vr vc vd) sidx1 sidx2 vw (Matrix pr pc pd)
-  iaf ibf inf irf iac met eat ume mg bf cs ec om =
+  iaf ibf inf irf iac met eat ume mg bf cs ec om singlePass =
   qlSabrSwaptionVolatilityCube atm opl opu spl spu ss vr vc vd sidx1 sidx2 vw pr pc pd
-    iaf ibf inf irf iac ec om met eat ume mg bf cs
+    iaf ibf inf irf iac ec om met eat ume mg bf cs singlePass
   where (opl, opu) = unzip ot; (spl, spu) = unzip st
 {#fun qlSabrSwaptionVolatilityCube{withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure sv'
   ,withIntArray*`[Word]'&,withEnumArray*`[TimeUnit]'&
@@ -2104,6 +2107,7 @@ sabrSwaptionVolatilityCube atm ot st ss (Matrix vr vc vd) sidx1 sidx2 vw (Matrix
   ,withMaybeOptimizationMethod*`Maybe OptimizationMethod'
   ,fromMaybeDouble`Maybe Double',fromMaybeDouble`Maybe Double',`Bool',fromIntegral`Word'
   ,`Bool',`Double'
+  ,`Bool' -- ^singlePassCalibration (1.44 only)
   ,preErrorCheck-`String'errorCheck*-}->`SabrSwaptionVolatilityCube'peekSabrSwaptionVolatilityCube*#}
 
 -- |An arbitrage-free SABR (Doust) swaption volatility cube: the same
@@ -2136,11 +2140,12 @@ noArbSabrSwaptionVolatilityCube :: GenSwaptionVolatilityStructure sv -- ^atmVolS
   -> Double -- ^cutoffStrike
   -> Maybe EndCriteria -- ^endCriteria
   -> Maybe OptimizationMethod -- ^optMethod
+  -> Bool -- ^singlePassCalibration, ignored on QuantLib 1.43
   -> IO NoArbSabrSwaptionVolatilityCube
 noArbSabrSwaptionVolatilityCube atm ot st ss (Matrix vr vc vd) sidx1 sidx2 vw (Matrix pr pc pd)
-  iaf ibf inf irf iac met eat ume mg bf cs ec om =
+  iaf ibf inf irf iac met eat ume mg bf cs ec om singlePass =
   qlNoArbSabrSwaptionVolatilityCube atm opl opu spl spu ss vr vc vd sidx1 sidx2 vw pr pc pd
-    iaf ibf inf irf iac ec om met eat ume mg bf cs
+    iaf ibf inf irf iac ec om met eat ume mg bf cs singlePass
   where (opl, opu) = unzip ot; (spl, spu) = unzip st
 {#fun qlNoArbSabrSwaptionVolatilityCube{withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure sv'
   ,withIntArray*`[Word]'&,withEnumArray*`[TimeUnit]'&
@@ -2156,6 +2161,7 @@ noArbSabrSwaptionVolatilityCube atm ot st ss (Matrix vr vc vd) sidx1 sidx2 vw (M
   ,withMaybeOptimizationMethod*`Maybe OptimizationMethod'
   ,fromMaybeDouble`Maybe Double',fromMaybeDouble`Maybe Double',`Bool',fromIntegral`Word'
   ,`Bool',`Double'
+  ,`Bool' -- ^singlePassCalibration (1.44 only)
   ,preErrorCheck-`String'errorCheck*-}->`NoArbSabrSwaptionVolatilityCube'peekNoArbSabrSwaptionVolatilityCube*#}
 
 -- |A ZABR swaption volatility cube: 'sabrSwaptionVolatilityCube' with a fifth model parameter,
@@ -2184,11 +2190,12 @@ zabrSwaptionVolatilityCube :: GenSwaptionVolatilityStructure sv -- ^atmVolStruct
   -> Double -- ^cutoffStrike
   -> Maybe EndCriteria -- ^endCriteria
   -> Maybe OptimizationMethod -- ^optMethod
+  -> Bool -- ^singlePassCalibration, ignored on QuantLib 1.43
   -> IO ZabrSwaptionVolatilityCube
 zabrSwaptionVolatilityCube atm ot st ss (Matrix vr vc vd) sidx1 sidx2 vw (Matrix pr pc pd)
-  iaf ibf inf irf igf iac met eat ume mg bf cs ec om =
+  iaf ibf inf irf igf iac met eat ume mg bf cs ec om singlePass =
   qlZabrSwaptionVolatilityCube atm opl opu spl spu ss vr vc vd sidx1 sidx2 vw pr pc pd
-    iaf ibf inf irf igf iac ec om met eat ume mg bf cs
+    iaf ibf inf irf igf iac ec om met eat ume mg bf cs singlePass
   where (opl, opu) = unzip ot; (spl, spu) = unzip st
 {#fun qlZabrSwaptionVolatilityCube{withSwaptionVolatilityStructure*`GenSwaptionVolatilityStructure sv'
   ,withIntArray*`[Word]'&,withEnumArray*`[TimeUnit]'&
@@ -2204,6 +2211,7 @@ zabrSwaptionVolatilityCube atm ot st ss (Matrix vr vc vd) sidx1 sidx2 vw (Matrix
   ,withMaybeOptimizationMethod*`Maybe OptimizationMethod'
   ,fromMaybeDouble`Maybe Double',fromMaybeDouble`Maybe Double',`Bool',fromIntegral`Word'
   ,`Bool',`Double'
+  ,`Bool' -- ^singlePassCalibration (1.44 only)
   ,preErrorCheck-`String'errorCheck*-}->`ZabrSwaptionVolatilityCube'peekZabrSwaptionVolatilityCube*#}
 
 -- |The non-SABR, linear-interpolation swaption volatility cube: interpolates the given

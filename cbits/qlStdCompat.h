@@ -5,6 +5,13 @@
 #include <ql/optional.hpp>
 #include <ql/any.hpp>
 
+// New constructor arguments disappear entirely when compiling against the preceding release.
+#if QL_HEX_VERSION >= 0x01440000
+#define QL144_ARGS(...) , __VA_ARGS__
+#else
+#define QL144_ARGS(...)
+#endif
+
 // QuantLib's optional and any: std, or boost on a QuantLib <= 1.43 built without the std flags.
 #if QL_HEX_VERSION < 0x01440000 && !defined(QL_USE_STD_OPTIONAL)
 using boost::optional;

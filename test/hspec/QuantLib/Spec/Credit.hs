@@ -354,7 +354,7 @@ spec = do
       discountCurve <- flatForward (ReferenceDate refDate) discountQuote discountDc Continuous Annual
       helpers <- forM spreads $ \(years, spread) -> do
         q <- simpleQuote spread
-        spreadCdsHelper q (years, Years) 1 cal Quarterly Following TwentiethIMM helperDc recovery discountCurve True True Nothing helperDc True Midpoint
+        spreadCdsHelper q (years, Years) 1 cal Quarterly Following TwentiethIMM helperDc recovery discountCurve True True Nothing helperDc True Midpoint Nothing
       let hs = fromList helpers
       fixedCurve <- piecewiseDefaultCurve (ReferenceDate refDate) hs helperDc [] HazardRate BackwardFlat defaultIterativeBootstrapOpts False
       movingCurve <- piecewiseDefaultCurve (SettlementDays 0 cal) hs helperDc [] HazardRate BackwardFlat defaultIterativeBootstrapOpts False
@@ -389,7 +389,7 @@ spec = do
       discountCurve <- flatForward (ReferenceDate refDate) discountQuote discountDc Continuous Annual
       helpers <- forM spreads $ \(years, spread) -> do
         q <- simpleQuote spread
-        spreadCdsHelper q (years, Years) 1 cal Quarterly Following TwentiethIMM helperDc recovery discountCurve True True Nothing helperDc True Midpoint
+        spreadCdsHelper q (years, Years) 1 cal Quarterly Following TwentiethIMM helperDc recovery discountCurve True True Nothing helperDc True Midpoint Nothing
       let hs = fromList helpers
       curve <- piecewiseDefaultCurve (ReferenceDate refDate) hs helperDc [] HazardRate BackwardFlat defaultIterativeBootstrapOpts False
       -- PiecewiseDefaultCurve is a LazyObject: bootstrap (which calls setTermStructure/
@@ -404,7 +404,7 @@ spec = do
       -- fresh helpers at a zero spread read the same spreads off the curve they did not build
       forM_ spreads $ \(years, quotedSpread) -> do
         q <- simpleQuote 0
-        h <- spreadCdsHelper q (years, Years) 1 cal Quarterly Following TwentiethIMM helperDc recovery discountCurve True True Nothing helperDc True Midpoint
+        h <- spreadCdsHelper q (years, Years) 1 cal Quarterly Following TwentiethIMM helperDc recovery discountCurve True True Nothing helperDc True Midpoint Nothing
         impliedQuoteOn h curve >>= (`shouldSatisfy` closePrec quotedSpread 1.0e-8)
 
     it "reproduces CDS spreads for all supported credit traits/interpolators" $ Context.keepingSettingsGc $ do
@@ -426,7 +426,7 @@ spec = do
       discountCurve <- flatForward (ReferenceDate refDate) discountQuote discountDc Continuous Annual
       helpers <- forM spreads $ \(years, spread) -> do
         q <- simpleQuote spread
-        spreadCdsHelper q (years, Years) 1 cal Quarterly Following TwentiethIMM helperDc recovery discountCurve True True Nothing helperDc True Midpoint
+        spreadCdsHelper q (years, Years) 1 cal Quarterly Following TwentiethIMM helperDc recovery discountCurve True True Nothing helperDc True Midpoint Nothing
       let hs = fromList helpers
       forM_ (zip [0 :: Int ..] combinations) $ \(j, (trait, interpolation)) -> do
         curve <- if even j
@@ -476,7 +476,7 @@ spec = do
       discountCurve <- interpolatedDiscountCurve curveNodes tsDc cal [] LogLinear False
       helpers <- forM cdsSpreads $ \(tenor, spread) -> do
         q <- simpleQuote spread
-        spreadCdsHelper q tenor 1 cal Quarterly Following CDS2015 cdsDc recovery discountCurve True True Nothing lastDc True Midpoint
+        spreadCdsHelper q tenor 1 cal Quarterly Following CDS2015 cdsDc recovery discountCurve True True Nothing lastDc True Midpoint Nothing
       let hs = fromList helpers
       defaultCurve <- piecewiseDefaultCurve (ReferenceDate asof) hs tsDc [] SurvivalProbability LogLinear defaultIterativeBootstrapOpts False
       survivalProbability defaultCurve (DatePoint testDate) False `shouldThrow` anyException

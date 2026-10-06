@@ -92,7 +92,7 @@ buildCycle ownership = do
   q <- Quote.simpleQuote 0.03
   standaloneHelpers <- mapM (\i -> fraRateHelper q (FraMonths i (i + 3) 2 cal ModifiedFollowing True euriborDC) LastRelevantDate Nothing False) [1 .. 5]
   standaloneCurve <- piecewiseYieldCurve (SettlementDays 0 cal) (fromList standaloneHelpers) euriborDC []
-    (GlobalDiscountLogLinear 1.0e-10 []) False
+    (GlobalDiscountLogLinear 1.0e-10 [] Nothing) False
   sixM <- advance cal settleFix (6, Months) ModifiedFollowing True
   standaloneDiscount <- discount standaloneCurve (DatePoint sixM) False
   checkWith "standalone GlobalBootstrap curve produces a sane discount factor"
@@ -110,15 +110,15 @@ buildCycle ownership = do
   b0 <- Quote.simpleQuote 0.0020
   b <- Quote.withDerivedQuote (releaseOnce owners) b0 pure
   helpers3mFra <- mapM (\i -> fraRateHelper q (FraMonths i (i + 3) 2 cal ModifiedFollowing True euriborDC) LastRelevantDate Nothing False) [1 .. 3]
-  helpers3mBasis <- mapM (\i -> iborIborBasisSwapRateHelper b (i, Years) 2 cal ModifiedFollowing True euribor3m euribor6m discountCurve True) [2 .. 4]
-  helpers6mBasis <- mapM (\i -> iborIborBasisSwapRateHelper b (i * 6, Months) 2 cal ModifiedFollowing True euribor3m euribor6m discountCurve False) [1 .. 2]
+  helpers3mBasis <- mapM (\i -> iborIborBasisSwapRateHelper b (i, Years) 2 cal ModifiedFollowing True euribor3m euribor6m discountCurve True Nothing Backward 0 Nothing Nothing) [2 .. 4]
+  helpers6mBasis <- mapM (\i -> iborIborBasisSwapRateHelper b (i * 6, Months) 2 cal ModifiedFollowing True euribor3m euribor6m discountCurve False Nothing Backward 0 Nothing Nothing) [1 .. 2]
   helpers6mSwap <- mapM (\i -> swapRateHelper q (SwapRateTenor (i, Years) cal Annual Following euriborDC euribor6m (0, Days) Nothing Nothing) Nothing (Just discountCurve)
                                   LastRelevantDate Nothing False Nothing Nothing) [2 .. 4]
     >>= mapM asRateHelper
   ptr3m <- piecewiseYieldCurve (SettlementDays 0 cal) (fromList $ helpers3mFra ++ helpers3mBasis) euriborDC []
-    (GlobalDiscountLogLinear 1.0e-10 []) False
+    (GlobalDiscountLogLinear 1.0e-10 [] Nothing) False
   ptr6m <- piecewiseYieldCurve (SettlementDays 0 cal) (fromList $ helpers6mBasis ++ helpers6mSwap) euriborDC []
-    (GlobalDiscountLogLinear 1.0e-10 []) False
+    (GlobalDiscountLogLinear 1.0e-10 [] Nothing) False
   mc <- multiCurve 1.0e-10
   curve3m <- addBootstrappedCurve mc intcurve3m ptr3m
   curve6m <- addBootstrappedCurve mc intcurve6m ptr6m
@@ -179,7 +179,7 @@ buildSpreadOverOriginal = do
                               LastRelevantDate Nothing False Nothing Nothing
                             >>= asRateHelper) [1 .. 4 :: Int]
   ptr3m <- piecewiseYieldCurve (SettlementDays 0 cal) (fromList helpers3m) euriborDC []
-    (GlobalDiscountLogLinear 1.0e-10 []) False
+    (GlobalDiscountLogLinear 1.0e-10 [] Nothing) False
   ptrois <- zeroSpreadedTermStructure ptr3m b IR.Continuous NoFrequency
   mc <- multiCurve 1.0e-10
   curve3m <- addBootstrappedCurve mc intcurve3m ptr3m

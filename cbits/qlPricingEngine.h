@@ -643,6 +643,7 @@ extern "C" {
   double qlSabrFlochKennedyVolatility(double strike, double forward, double expiryTime, double alpha, double beta, double nu, double rho, QlError **e);
   void qlValidateSabrParameters(double alpha, double beta, double nu, double rho, QlError **e);
   void qlSabrGuess(double k_m, double vol_m, double k_0, double vol_0, double k_p, double vol_p, double forward, double expiryTime, double beta, double shift, int volatilityType, unsigned *len, double **out, QlError **e);
+  double qlGaussian1dModelCompoundedRate(QlGaussian1dModel* model, QlOvernightIndexedCoupon* coupon, int date, double y, QlYieldTermStructure* curve, QlError **e);
 #ifdef __cplusplus
 }
 #endif

@@ -150,7 +150,7 @@ run = do
       nominalFloating = concatMap (\x -> [x, x]) nominalFixed -- 6m vs. 1y: two float periods per fixed one
       strikes = replicate n strike
   underlying2 <- nonstandardSwap Payer nominalFixed nominalFloating fixedSchedule strikes thirty360bb
-    floatSchedule euribor6m 1.0 0.0 act360 False False Nothing
+    floatSchedule euribor6m 1.0 0.0 act360 False False Nothing 0 cal
   swaption2 <- nonstandardSwaption underlying2 ex Physical PhysicalOTC
   setPricingEngine swaption2 nonstandardSwaptionEngine
   basket3 <- calibrationBasket swaption2 swapBase swaptionVol MaturityStrikeByDeltaGamma
@@ -160,7 +160,7 @@ run = do
   let nominalFixed2 = replicate n 1.0
       nominalFloating2 = replicate (2 * n) 0.0 -- null the second leg
   underlying3 <- nonstandardSwap Receiver nominalFixed2 nominalFloating2 fixedSchedule strikes thirty360bb
-    floatSchedule euribor6m 1.0 0.0 act360 False True Nothing -- final capital exchange
+    floatSchedule euribor6m 1.0 0.0 act360 False True Nothing 0 cal -- final capital exchange
   let exercise2 = Rebated ex (-1.0) 2 cal Following
   swaption3 <- nonstandardSwaption underlying3 exercise2 Physical PhysicalOTC
 

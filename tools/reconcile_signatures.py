@@ -118,7 +118,8 @@ def normalize_decl(decl):
     """Declaration text with the `static` keyword and per-parameter defaults
     stripped, so an old dump (which never had either) can still match an
     otherwise-unchanged entry in a new dump that now captures both."""
-    d = decl.strip()
+    # QuantLib 1.44 replaces the optional alias with the standard spelling.
+    d = decl.strip().replace("ext::optional", "std::optional")
     if d.startswith("static "):
         d = d[len("static "):]
     m = DECL_SPLIT_RE.match(d)
@@ -132,6 +133,17 @@ def normalize_decl(decl):
             strip_param_default(p).strip() for p in split_top_level_commas(params_str)
         )
     return f"{prefix}({norm_params}){const};"
+
+
+def preserves_parameter_prefix(old, new):
+    """Distinguish overloads widened by the same number of trailing arguments."""
+    old_match = DECL_SPLIT_RE.match(normalize_decl(old))
+    new_match = DECL_SPLIT_RE.match(normalize_decl(new))
+    if not old_match or not new_match:
+        return False
+    old_params = split_top_level_commas(old_match.group(2)) if old_match.group(2) else []
+    new_params = split_top_level_commas(new_match.group(2)) if new_match.group(2) else []
+    return old_match.group(1) == new_match.group(1) and new_params[:len(old_params)] == old_params
 
 
 def parse_decl(decl):
@@ -214,7 +226,7 @@ def main():
             and normalize_decl(c[2]) not in old_decl_norm_set
         ]
         if candidates:
-            candidates.sort(key=lambda c: c[0])
+            candidates.sort(key=lambda c: (not preserves_parameter_prefix(decl, c[2]), c[0]))
             _, _, new_decl = candidates[0]
             new_status = "u" if status == "v" else status
             stdout_lines.append(f"|{new_status}|{header}|{new_decl}")

@@ -33,7 +33,7 @@ main = do
   -- slot); additionalDates needs exactly 5 - 2 = 3 entries for AdditionalErrors' formula.
   goodDates <- mapM (\i -> advance cal settleFix (i, Months) ModifiedFollowing True) [1, 2, 3 :: Int]
   curve <- piecewiseYieldCurve (SettlementDays 0 cal) nonEmptyHelpers euriborDC []
-    (GlobalSimpleZeroLinearFull nonEmptyHelpers goodDates 1.0e-10) False
+    (GlobalSimpleZeroLinearFull nonEmptyHelpers goodDates 1.0e-10 [] Nothing) False
   sampleDate <- advance cal settleFix (4, Months) ModifiedFollowing True
   df <- discount curve (DatePoint sampleDate) False
   checkWith "functor-based GlobalBootstrap curve produces a sane discount factor"
@@ -44,7 +44,7 @@ main = do
   -- crash with QuantLib's raw internal message.
   badDates <- mapM (\i -> advance cal settleFix (i, Months) ModifiedFollowing True) [1, 2, 3, 4 :: Int]
   result <- try (piecewiseYieldCurve (SettlementDays 0 cal) nonEmptyHelpers euriborDC []
-    (GlobalSimpleZeroLinearFull nonEmptyHelpers badDates 1.0e-10) False
+    (GlobalSimpleZeroLinearFull nonEmptyHelpers badDates 1.0e-10 [] Nothing) False
                     >>= \c -> discount c (DatePoint sampleDate) False >>= evaluate) :: IO (Either SomeException Double)
   checkWith "mismatched additionalDates/additionalHelpers pillar count raises"
             "confirms the QL_REQUIRE guard fires instead of silently misbootstrapping"

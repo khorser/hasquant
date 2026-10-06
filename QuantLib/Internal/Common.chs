@@ -57,6 +57,8 @@ module QuantLib.Internal.Common
 
   , CPIInterpolationType(..)
 
+  , StubIndexSelection(..)
+  , withStubIndexSelection
   , OvernightObservation(..)
   , defaultOvernightObservation
 
@@ -363,6 +365,24 @@ data Exercise =
         !Word -- ^rebateSettlementDays
         !Calendar -- ^rebatePaymentCalendar
         !BusinessDayConvention -- ^rebatePaymentConvention
+
+-- |Candidate indices for broken IBOR periods, selected by nearest maturity or interpolated
+-- between bracketing maturities in calendar days. Candidates keep their own curves and histories.
+-- Their currency, fixing days/calendar and day counter must match; enable indexed coupons
+-- when supplying a selection. Ignored on QuantLib 1.43.
+data StubIndexSelection ibor
+  = ClosestStubIndex !(NonEmpty (GenIborIndex ibor))
+  | InterpolatedStubIndexes !(NonEmpty (GenIborIndex ibor))
+
+type StubSelectionPtr = Ptr CStubIndexSelection'
+{#pointer *QlStubIndexSelection nocode#}
+{#pointer *QlIborIndex as IborIndex foreign -> CIborIndex' nocode#}
+
+withStubIndexSelection :: Maybe (StubIndexSelection ibor) -> (Ptr CStubIndexSelection' -> IO r) -> IO r
+withStubIndexSelection Nothing f = f nullPtr
+withStubIndexSelection (Just selection) f = case selection of
+  ClosestStubIndex indices -> withConstructed (stubIndexSelectionRaw 0 (toList indices)) f
+  InterpolatedStubIndexes indices -> withConstructed (stubIndexSelectionRaw 1 (toList indices)) f
 
 {#fun qlExercise{`ExerciseType',preErrorCheck-`String'errorCheck*-}->`QlExercise'peekPtr*#}
 {#fun qlAmericanExercise{withDay*`Day',withDay*`Day',`Bool',preErrorCheck-`String'errorCheck*-}->`QlAmericanExercise'peekPtr*#}
@@ -1109,3 +1129,7 @@ peekAdditionalResults = peekStructArray convertResult (\l p -> qlFreeAdditionalR
 
 preAdditionalResults :: ((Ptr CUInt, Ptr RawResultPtr) -> IO b) -> IO b
 preAdditionalResults = preArrayWith (\l p -> qlFreeAdditionalResults l (castPtr p))
+
+{#fun qlStubIndexSelection as stubIndexSelectionRaw{`Int'
+  ,withIborIndexArray*`[GenIborIndex ibor]'&
+  ,preErrorCheck-`String'errorCheck*-}->`StubSelectionPtr'peekPtr*#}

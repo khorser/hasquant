@@ -69,6 +69,8 @@ module QuantLib.CashFlow
   , MultipleResetsLegOpts(..)
   , defaultMultipleResetsLegOpts
 
+  , StubIndexSelection(..)
+
     -- * Constructors
     -- ** Hierarchy conversion
   , asLeg
@@ -242,6 +244,7 @@ module QuantLib.CashFlow
   , putOptionRate
   , priceWithoutOptionality
   ) where
+import Language.Haskell.TH(mkName, varT)
 import QuantLib.Internal
 {#import QuantLib.InterestRate#}(Compounding, VolatilityType)
 {#import QuantLib.Time.Schedule#}(Frequency)
@@ -257,6 +260,7 @@ import Data.List.NonEmpty(NonEmpty(..), toList)
 #include "qlEnumObjects.h"
 
 #include "ql.h"
+{#pointer *QlStubIndexSelection nocode#}
 
 {#pointer *QlDigitalCoupon as DigitalCoupon foreign -> CDigitalCoupon' nocode#}
 {#pointer *QlRangeAccrualFloatersCoupon as RangeAccrualFloatersCoupon foreign -> CRangeAccrualFloatersCoupon' nocode#}
@@ -326,7 +330,7 @@ import Data.List.NonEmpty(NonEmpty(..), toList)
 -- {#fun#} hook appears, and a top-level TH splice anywhere in between would otherwise
 -- split the file into declaration groups that can't see each other, breaking every
 -- earlier {#fun#} wrapper's reference to its own (always-last) foreign-import stub.
-$(deriveOptionsRecord "IborLegOpts" []
+$(deriveOptionsRecord "IborLegOpts" ["ibor2"]
   [ ("ilgPaymentLag", [t|Int|], [|0|])
   , ("ilgPaymentCalendar", [t|Maybe Calendar|], [|Nothing|])
   , ("ilgExCouponPeriod", [t|(Int, TimeUnit)|], [|(0, Days)|])
@@ -335,6 +339,7 @@ $(deriveOptionsRecord "IborLegOpts" []
   , ("ilgExCouponEndOfMonth", [t|Bool|], [|False|])
   , ("ilgFixingConvention", [t|BusinessDayConvention|], [|Preceding|])
   , ("ilgUseIndexedCoupons", [t|Maybe Bool|], [|Nothing|])
+  , ("ilgStubIndexSelection", [t|Maybe (StubIndexSelection $(varT (mkName "ibor2")))|], [|Nothing|])
   ])
 
 -- CmsLegOpts omits the IborLegOpts fields that QuantLib's CmsLeg builder lacks.
@@ -1064,18 +1069,18 @@ iborLeg schedule idx notionals dc adj fixingDays gearings spreads caps floors in
   iborLeg_ schedule idx notionals dc adj fixingDays gearings spreads caps floors inArrears zp
     (ilgPaymentLag defaultIborLegOpts) cal (ilgExCouponPeriod defaultIborLegOpts) cal
     (ilgExCouponConvention defaultIborLegOpts) (ilgExCouponEndOfMonth defaultIborLegOpts)
-    (ilgFixingConvention defaultIborLegOpts) (ilgUseIndexedCoupons defaultIborLegOpts)
+    (ilgFixingConvention defaultIborLegOpts) (ilgUseIndexedCoupons defaultIborLegOpts) Nothing
 
 -- |'iborLeg' widened to every 'IborLeg' builder-method param via 'IborLegOpts'.
 iborLegWithOptions :: Schedule -> GenIborIndex ibor -> NonEmpty Double -> DayCounter -> BusinessDayConvention
-  -> [Word] -> [Double] -> [Double] -> [Double] -> [Double] -> Bool -> Bool -> IborLegOpts
+  -> [Word] -> [Double] -> [Double] -> [Double] -> [Double] -> Bool -> Bool -> IborLegOpts ibor2
   -> IO Leg
 iborLegWithOptions schedule idx notionals dc adj fixingDays gearings spreads caps floors inArrears zp opts = do
   cal <- calendar Null
   iborLeg_ schedule idx notionals dc adj fixingDays gearings spreads caps floors inArrears zp
     (ilgPaymentLag opts) (fromMaybe cal (ilgPaymentCalendar opts)) (ilgExCouponPeriod opts)
     (fromMaybe cal (ilgExCouponCalendar opts)) (ilgExCouponConvention opts)
-    (ilgExCouponEndOfMonth opts) (ilgFixingConvention opts) (ilgUseIndexedCoupons opts)
+    (ilgExCouponEndOfMonth opts) (ilgFixingConvention opts) (ilgUseIndexedCoupons opts) (ilgStubIndexSelection opts)
 
 -- |Raw binding for 'iborLeg'\/'iborLegWithOptions': builds a leg of capped\/floored Ibor-rate coupons.
 {#fun qlIborLeg as iborLeg_{withSchedule*`Schedule',withIborIndex*`GenIborIndex ibor',withNonEmptyDoubleArray*`NonEmpty Double'& -- ^notionals
@@ -1095,6 +1100,7 @@ iborLegWithOptions schedule idx notionals dc adj fixingDays gearings spreads cap
   ,`Bool' -- ^exCouponEndOfMonth
   ,fromEnumC`BusinessDayConvention' -- ^fixingConvention
   ,fromMaybeBool`Maybe Bool' -- ^useIndexedCoupons
+  ,withStubIndexSelection*`Maybe (StubIndexSelection ibor2)' -- ^stubIndexSelection (1.44 only)
   ,preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
 
 -- |CMS leg builder (analog of 'iborLeg'), 12-arg core shape -- same defaults-hardcoding

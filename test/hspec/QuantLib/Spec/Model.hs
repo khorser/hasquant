@@ -34,10 +34,11 @@ import qualified QuantLib.Process as Process
 import qualified QuantLib.TermStructure.Volatility as Vol
 import QuantLib.Math(Interpolation(..), EndCriteria(..), OptimizationMethod(..), matrixData)
 import QuantLib.CashFlow(RateAveragingType(AveragingCompound))
+import qualified QuantLib.CashFlow as CF
 import Control.Monad(forM, forM_)
 import QuantLib.PricingEngine
 
-import QuantLib.Spec.Helpers(closePrec, listClose)
+import QuantLib.Spec.Helpers(closePrec, listClose, quantLibAtMost143, unsupportedQuantLib144)
 
 spec :: Spec
 spec = do
@@ -51,6 +52,25 @@ spec = do
 gaussian1dSpec :: Spec
 gaussian1dSpec =
   describe "Gaussian1dModel" $ do
+    it "compounds an overnight coupon against the fitted curve" $ Context.keepingSettingsGc $ do
+      let today' = fromGregorian 2024 1 2; start = fromGregorian 2024 1 4; end = fromGregorian 2024 4 4
+      Context.setEvaluationDate (Just today')
+      dc <- dayCounter (Actual360 False)
+      q <- simpleQuote 0.03
+      curve <- flatForward (ReferenceDate today') q dc Continuous Annual
+      vol <- simpleQuote 0.01
+      rev <- simpleQuote 0.01
+      model <- gsr curve vol [] rev 60 >>= asGaussian1dModel
+      idx <- IR.overnightIborIndex IR.Sofr (Just curve)
+      coupon <- CF.overnightIndexedCoupon end 100 start end idx 1 0 Nothing Nothing dc False
+        AveragingCompound 0 0 False False Nothing Nothing Nothing Nothing
+      if quantLibAtMost143 then
+        gaussian1dCompoundedRate model coupon Nothing 0 Nothing `shouldThrow` unsupportedQuantLib144 "gaussian1dCompoundedRate"
+      else do
+        expected <- CF.rate coupon
+        calculated <- gaussian1dCompoundedRate model coupon Nothing 0 Nothing
+        calculated `shouldSatisfy` closePrec expected 1e-8
+
     it "reproduces the fitted curve's own discount factors, forward rate, and fair swap rate at y=0" $
       Context.keepingSettingsGc $ do
         cal <- calendar TARGET

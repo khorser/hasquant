@@ -169,7 +169,10 @@ Use a public capability class for a genuine secondary interface or common functi
 
 ### Static methods, and default values, are now visible in the dump
 
-`tools/dump_signatures.py` includes `static` and parameter defaults. `tools/ql-methods-1.43.txt` does not, so check the header when working from that dump; `tools/reconcile_signatures.py` ignores those fields when matching entries.
+`tools/dump_signatures.py` includes `static` and parameter defaults. the inventories may include them, but check the header when working from a dump; `tools/reconcile_signatures.py` ignores those fields when matching entries.
+
+When reconciling an upgrade, normalize optional alias changes and match widened overloads by
+their existing parameter prefix; argument count alone can map distinct constructors to one signature.
 
 A true static/singleton accessor takes no self-parameter at all: `Settings::instance()`'s shim is `int qlSettingsEvaluationDate() {return Settings::instance().evaluationDate()...;}`, bound as `{#fun qlSettingsEvaluationDate as evaluationDate{}->\`Day'toDay#}` — the empty `{}` argument list is the tell. `tools/gen_quantlib_method.py` now does this automatically when it sees a `static` prefix: no receiver pointer/bound-class requirement, and the C++ call is qualified directly as `Class::member(...)` rather than dereferencing a receiver — see `qlCashFlowsYield` (generated from the `static Rate CashFlows::yield(...)` declaration above) for the shape. It also flags every defaulted parameter with a note pointing at the "one full-arity shim" convention above, rather than silently guessing whether to `Maybe`-wrap it — auto-generating the nullable marshalling for an arbitrary parameter type isn't reliable without an existing `Handle<T>`/`ext::optional<T>`-style convention for that specific type, so it's left as a flagged, human judgment call.
 
@@ -177,7 +180,25 @@ Do not classify a class as a singleton from its surface API or by analogy. Check
 
 ## Update tools/ql-methods-*.txt
 
-After the binding compiles, grep the method/class name in `tools/ql-methods-1.43.txt` (the current version's tracking dump) and set that line's status character to match what you just did: `v` if the shim's arg count matches the upstream declaration exactly, `u` if it deliberately binds fewer args (a documented scope cut, e.g. an omitted optional parameter). This is the same status vocabulary `tools/sync_ql_methods_status.py`/`tools/reconcile_signatures.py` already use (blank = unreviewed candidate, `x` = permanently excluded, `v`/`u`/`?` as above) — updating it inline as you add each binding keeps the file current without needing another bulk resync pass later. Some blank lines got auto-marked `x` by `tools/detect_trivial_getters.py`, a one-off libclang-based scan for getters that just return a field set verbatim from a constructor parameter and never written anywhere else with a computed value (report mode by default; `--apply` writes the marks) — if you're ever re-deriving why a getter is excluded, check there before assuming it was a manual call.
+After the binding compiles, grep the method/class name in `tools/ql-methods-1.43.txt` and `tools/ql-methods-1.44.txt` for the supported versions and set that line's status character to match what you just did: `v` if the shim's arg count matches the upstream declaration exactly, `u` if it deliberately binds fewer args (a documented scope cut, e.g. an omitted optional parameter). This is the same status vocabulary `tools/sync_ql_methods_status.py`/`tools/reconcile_signatures.py` already use (blank = unreviewed candidate, `x` = permanently excluded, `v`/`u`/`?` as above) — updating it inline as you add each binding keeps the file current without needing another bulk resync pass later. Some blank lines got auto-marked `x` by `tools/detect_trivial_getters.py`, a one-off libclang-based scan for getters that just return a field set verbatim from a constructor parameter and never written anywhere else with a computed value (report mode by default; `--apply` writes the marks) — if you're ever re-deriving why a getter is excluded, check there before assuming it was a manual call.
+
+## Supporting adjacent QuantLib releases
+
+Starting with 1.44, support the two latest release series. Keep one public Haskell API.
+For a new call, guard the native implementation with `QL_HEX_VERSION`; the older branch calls
+`qlUnsupportedVersion(e, publicName, "1.44")` and returns a harmless sentinel. `errorCheck`
+then raises `UnsupportedQuantLibVersion` with the call, required version and linked version.
+Keep the error slot and ordinary exception handling on both branches.
+
+For new trailing arguments, widen the same shim and use `QL144_ARGS(...)` at the upstream
+constructor call. Mark otherwise-unused C++ parameters `[[maybe_unused]]`; leave C headers plain.
+The older branch must neither validate nor execute new arguments. A stored callback's Haskell
+marshaller must skip creating its owner when unsupported. Apply straightforward new safety
+checks to both versions, while leaving numerical behavior to the linked QuantLib.
+
+Regenerate the newer inventory from tagged headers and carry statuses with
+`reconcile_signatures.py`; account for `ext::optional` becoming `std::optional` before matching.
+Review new methods against the actual shim headers, rather than trusting carried statuses.
 
 ## Verification
 

@@ -50,6 +50,8 @@ extra-source-files:
     cabal.project.local.WINDOWS
     tools/api-name-map-0.7.txt
     tools/ql-methods-1.43.txt
+    tools/ql-methods-1.44.txt
+    tools/quantlib-1.44-audit.md
 extra-doc-files:
     CHANGELOG.md
     WINDOWS.md

@@ -9,6 +9,7 @@ module QuantLib.Spec.Helpers (
   , listCloseRel
   , binomialsClose
   , quantLibAtMost143
+  , unsupportedQuantLib144
   ) where
 
 import Data.Time.Calendar
@@ -28,6 +29,11 @@ quantLibAtMost143 = case break (== '.') Context.version of
     (Just major', Just minor') -> (major', minor') <= (1 :: Int, 43 :: Int)
     _ -> False
   _ -> False
+
+unsupportedQuantLib144 :: String -> Context.Error -> Bool
+unsupportedQuantLib144 name (Context.UnsupportedQuantLibVersion call required linked) =
+  call == name && required == "1.44" && linked == Context.version
+unsupportedQuantLib144 _ _ = False
 
 instance Arbitrary Frequency where
   arbitrary = elements $ OtherFrequency `delete` [minBound .. ]
