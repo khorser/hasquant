@@ -1,2 +1,0 @@
-#!/bin/sh
-cabal run hasquant_example -f buildExample -f trackAllocations "$@"

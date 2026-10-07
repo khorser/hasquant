@@ -11,6 +11,10 @@ All paths below are relative to the repo root.
 
 QuantLib 1.43 or 1.44, GHCup, GHC 9.10.3 and Cabal are expected to be installed. `cabal.project` pins dependencies to Stackage lts-24.56; README.md's "Pinned dependencies" lists the other project files. The GHC 8.10 compatibility gate uses the repository's Docker Compose setup below.
 
+## Launcher
+
+`./q` opens an fzf menu of the commands below (build, test, trackAllocations, GHC 9.12, hlint, Docker image and GHC 8.10 gate), one hotkey each; `./q KEY [cabal args]` runs one directly. The action table is in `q`.
+
 ## Build
 
 ```bash

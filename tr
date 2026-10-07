@@ -1,2 +1,0 @@
-#!/bin/sh
-cabal build all --enable-tests -f trackAllocations "$@" && cabal test all --enable-tests -f trackAllocations --test-options=--skip=LONG "$@"
