@@ -92,8 +92,9 @@ case ${1:-} in
       binds=$(printf '%s\n' "$TABLE" | while IFS='|' read -r k _; do
         printf '%s:become(sh %s --menu-run %s),' "$k" "$SELF" "$k"
       done)
-      printf '%s\n' "$TABLE" | fzf --disabled --no-sort --reverse \
-        --delimiter='|' --with-nth=1,2 --header='press key to run, q/esc quits' \
+      printf '%s\n' "$TABLE" |
+        while IFS='|' read -r k d; do printf '\033[1;33m%s\033[0m   %s\n' "$k" "$d"; done |
+        fzf --ansi --disabled --no-sort --reverse --header='press key to run, q/esc quits' \
         --bind "${binds}q:abort" --bind 'enter:become(sh '"$SELF"' --menu-run {1})'
       exit 0
     fi
