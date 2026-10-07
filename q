@@ -14,13 +14,30 @@ E|run example with trackAllocations
 r|repl lib:hasquant
 g|build + test with GHC 9.12.4
 f|final gate: flagged build via quiet-build.py
-m|make: cbits compile check
+m|make: cbits compile check, Homebrew QuantLib
+M|make: cbits compile check, own QuantLib (QL_OWN)
+h|make: cbits compile check, QuantLib head (QL_HEAD)
 l|hlint .
 p|pick project file, build + test
 c|clean dist-newstyle
 d|docker: build image
 8|docker: GHC 8.10 gate
 s|docker: shell'
+
+# QuantLib installs for the make actions; override via the environment.
+QL_BREW=${QL_BREW:-/opt/homebrew/opt/quantlib}
+QL_OWN=${QL_OWN:-$HOME/opt/quantlib-1.43}
+QL_HEAD=${QL_HEAD:-$HOME/Src/QuantLib}
+
+# Per-checkout object dir; holds a header-only cmake configure for ql/config.hpp.
+head_dir() { echo "cobj/head-$(basename "$QL_HEAD")"; }
+head_cflags() {
+  cfg=$(head_dir)/cmake; mkdir -p "$(head_dir)"
+  [ -f "$cfg/ql/config.hpp" ] ||
+    cmake -S "$QL_HEAD" -B "$cfg" -DCMAKE_BUILD_TYPE=Release >"$cfg.log" 2>&1 ||
+    { echo "cmake configure failed, see $cfg.log" >&2; return 1; }
+  echo "-I$cfg -I$QL_HEAD"
+}
 
 pick_project() {
   ls cabal.project.lts-* cabal.project.unpinned 2>/dev/null | fzf --prompt='project file> '
@@ -42,7 +59,10 @@ run() {
     g) cabal build all -v2 -w ghc-9.12.4 --enable-tests -f buildExample -f buildSofrXva "$@" &&
        cabal run -w ghc-9.12.4 hasquant_test --enable-tests "$@" -- --skip=LONG ;;
     f) tools/quiet-build.py cabal build all --enable-tests -f buildExample -f buildSofrXva "$@" ;;
-    m) make EXTRA="${EXTRA:--std=c++17 -isystem/opt/homebrew/opt/boost/include}" "$@" ;;
+    m) make OBJDIR=cobj/brew QUANTLIB_CONFIG="$QL_BREW/bin/quantlib-config" "$@" ;;
+    M) make OBJDIR=cobj/own QUANTLIB_CONFIG="$QL_OWN/bin/quantlib-config" "$@" ;;
+    h) fl=$(head_cflags) || return 1
+       make OBJDIR="$(head_dir)" QL_CFLAGS="$fl" "$@" ;;
     l) hlint . "$@" ;;
     p) pf=$(pick_project) || return 1
        [ -n "$pf" ] || return 1
@@ -60,6 +80,8 @@ run() {
 
 case ${1:-} in
   --menu-run)  # invoked by fzf: run, then pause so output stays readable
+    # fzf's become leaves stdin non-blocking; reopen the terminal.
+    exec </dev/tty
     run "$2"; rc=$?
     printf '\n[exit %s] press enter to return ' "$rc"
     read -r _

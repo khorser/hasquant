@@ -13,7 +13,7 @@ QuantLib 1.43 or 1.44, GHCup, GHC 9.10.3 and Cabal are expected to be installed.
 
 ## Launcher
 
-`./q` opens an fzf menu of the commands below (build, test, trackAllocations, GHC 9.12, hlint, Docker image and GHC 8.10 gate), one hotkey each; `./q KEY [cabal args]` runs one directly. The action table is in `q`.
+`./q` opens an fzf menu of the commands below (build, test, trackAllocations, GHC 9.12, `make` against Homebrew/own/head QuantLib, hlint, Docker image and GHC 8.10 gate), one hotkey each; `./q KEY [cabal args]` runs one directly. The action table is in `q`.
 
 ## Build
 
@@ -25,10 +25,14 @@ cabal build all --enable-tests         # full build; prefer through tools/quiet-
 tools/quiet-build.py cabal build all --enable-tests -f buildExample -f buildSofrXva
 ```
 
-For a local QuantLib install, prepend its `bin/` directory to `PATH` so `make` finds
-`quantlib-config`. Apple clang's default language mode can be older than C++17; pass
-`EXTRA='-std=c++17 -isystem/opt/homebrew/opt/boost/include'` to `make` when needed.
-Use the same QuantLib installation as `cabal.project.local` to keep header layouts consistent.
+Plain `make` uses the `quantlib-config` on `PATH`; `brew unlink quantlib` removes it. Pick a
+QuantLib with `QUANTLIB_CONFIG=<prefix>/bin/quantlib-config` (or raw `QL_CFLAGS`) and give each one
+its own `OBJDIR` so switching does not rebuild everything (`-MD` tracks QuantLib headers). `./q m`,
+`M` and `h` do this for Homebrew, the own install (`QL_OWN`, default `~/opt/quantlib-1.43`) and a
+head checkout (`QL_HEAD`, default `~/Src/QuantLib`; a header-only cmake configure under
+`cobj/head-<checkout>/` supplies `ql/config.hpp`). The head action builds whatever the checkout
+holds; pull it first. Use the same QuantLib installation as `cabal.project.local` to keep header
+layouts consistent.
 
 The `app/SofrXva` executable and `test/example` are behind the default-off
 `buildSofrXva`/`buildExample` flags, so a plain `cabal build all` leaves
