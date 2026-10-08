@@ -2424,7 +2424,7 @@ span.spaces    { background: white }
 <span class="lineno"> 2405 </span> -&gt; (Bool) -- ^exCouponEndOfMonth
 <span class="lineno"> 2406 </span> -&gt; (BusinessDayConvention) -- ^fixingConvention
 <span class="lineno"> 2407 </span> -&gt; (Maybe Bool) -- ^useIndexedCoupons
-<span class="lineno"> 2408 </span> -&gt; (Maybe (StubIndexSelection ibor2)) -- ^stubIndexSelection (1.44 only)
+<span class="lineno"> 2408 </span> -&gt; (Maybe (StubIndexSelection ibor2)) -- ^stubIndexSelection (1.44; QuantLib 1.43 requires 'Nothing')
 <span class="lineno"> 2409 </span> -&gt; IO ((Leg))
 <span class="lineno"> 2410 </span><span class="decl"><span class="istickedoff">iborLeg_ a1 a2 a3 a4 a5 a6 a7 a8 a9 a10 a11 a12 a13 a14 a15 a16 a17 a18 a19 a20 a21 =</span>
 <span class="lineno"> 2411 </span><span class="spaces">  </span><span class="istickedoff">withSchedule a1 $ \a1' -&gt; </span>

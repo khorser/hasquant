@@ -962,7 +962,7 @@ span.spaces    { background: white }
 <span class="lineno">  943 </span> -&gt; (Double) -- ^displacement
 <span class="lineno">  944 </span> -&gt; (Bool) -- ^dontThrow
 <span class="lineno">  945 </span> -&gt; (Maybe (Word, TimeUnit)) -- ^optionletFrequency
-<span class="lineno">  946 </span> -&gt; (Word) -- ^paymentLag (1.44 only)
+<span class="lineno">  946 </span> -&gt; (Word) -- ^paymentLag (1.44; QuantLib 1.43 requires 0)
 <span class="lineno">  947 </span> -&gt; IO ((OptionletVolatilityStructure))
 <span class="lineno">  948 </span><span class="decl"><span class="istickedoff">optionletStripper a1 a2 a3 a4 a5 a6 a7 a8 a9 a10 a11 =</span>
 <span class="lineno">  949 </span><span class="spaces">  </span><span class="istickedoff">withCapFloorTermVolSurface a1 $ \a1' -&gt; </span>
@@ -1000,7 +1000,7 @@ span.spaces    { background: white }
 <span class="lineno">  981 </span> -&gt; (Bool) -- ^dontThrow
 <span class="lineno">  982 </span> -&gt; (Maybe (Word, TimeUnit)) -- ^optionletFrequency
 <span class="lineno">  983 </span> -&gt; (CapFloorTermVolCurve) -- ^atmCapFloorTermVolCurve
-<span class="lineno">  984 </span> -&gt; (Word) -- ^paymentLag (1.44 only)
+<span class="lineno">  984 </span> -&gt; (Word) -- ^paymentLag (1.44; QuantLib 1.43 requires 0)
 <span class="lineno">  985 </span> -&gt; IO ((OptionletStripper2))
 <span class="lineno">  986 </span><span class="decl"><span class="istickedoff">optionletStripperWithAtm a1 a2 a3 a4 a5 a6 a7 a8 a9 a10 a11 a12 =</span>
 <span class="lineno">  987 </span><span class="spaces">  </span><span class="istickedoff">withCapFloorTermVolSurface a1 $ \a1' -&gt; </span>
@@ -4508,14 +4508,14 @@ span.spaces    { background: white }
 <span class="lineno"> 4489 </span>  -&gt; Double -- ^cutoffStrike
 <span class="lineno"> 4490 </span>  -&gt; Maybe EndCriteria -- ^endCriteria
 <span class="lineno"> 4491 </span>  -&gt; Maybe OptimizationMethod -- ^optMethod
-<span class="lineno"> 4492 </span>  -&gt; Bool -- ^singlePassCalibration, ignored on QuantLib 1.43
+<span class="lineno"> 4492 </span>  -&gt; Bool -- ^singlePassCalibration (1.44; QuantLib 1.43 requires 'False')
 <span class="lineno"> 4493 </span>  -&gt; IO SabrSwaptionVolatilityCube
 <span class="lineno"> 4494 </span><span class="decl"><span class="istickedoff">sabrSwaptionVolatilityCube atm ot st ss (Matrix vr vc vd) sidx1 sidx2 vw (Matrix pr pc pd)</span>
 <span class="lineno"> 4495 </span><span class="spaces">  </span><span class="istickedoff">iaf ibf inf irf iac met eat ume mg bf cs ec om singlePass =</span>
 <span class="lineno"> 4496 </span><span class="spaces">  </span><span class="istickedoff">qlSabrSwaptionVolatilityCube atm opl opu spl spu ss vr vc vd sidx1 sidx2 vw pr pc pd</span>
 <span class="lineno"> 4497 </span><span class="spaces">    </span><span class="istickedoff">iaf ibf inf irf iac ec om met eat ume mg bf cs singlePass</span>
 <span class="lineno"> 4498 </span><span class="spaces">  </span><span class="istickedoff">where (opl, opu) = unzip ot; (spl, spu) = unzip st</span></span>
-<span class="lineno"> 4499 </span>qlSabrSwaptionVolatilityCube :: (GenSwaptionVolatilityStructure sv) -&gt; ([Word]) -&gt; ([TimeUnit]) -&gt; ([Word]) -&gt; ([TimeUnit]) -&gt; ([Double]) -&gt; (Word) -&gt; (Word) -&gt; ([GenQuote q1]) -&gt; (GenSwapIndex sidx1) -&gt; (GenSwapIndex sidx2) -&gt; (Bool) -&gt; (Word) -&gt; (Word) -&gt; ([GenQuote q2]) -&gt; (Bool) -&gt; (Bool) -&gt; (Bool) -&gt; (Bool) -&gt; (Bool) -&gt; (Maybe EndCriteria) -&gt; (Maybe OptimizationMethod) -&gt; (Maybe Double) -&gt; (Maybe Double) -&gt; (Bool) -&gt; (Word) -&gt; (Bool) -&gt; (Double) -&gt; (Bool) -- ^singlePassCalibration (1.44 only)
+<span class="lineno"> 4499 </span>qlSabrSwaptionVolatilityCube :: (GenSwaptionVolatilityStructure sv) -&gt; ([Word]) -&gt; ([TimeUnit]) -&gt; ([Word]) -&gt; ([TimeUnit]) -&gt; ([Double]) -&gt; (Word) -&gt; (Word) -&gt; ([GenQuote q1]) -&gt; (GenSwapIndex sidx1) -&gt; (GenSwapIndex sidx2) -&gt; (Bool) -&gt; (Word) -&gt; (Word) -&gt; ([GenQuote q2]) -&gt; (Bool) -&gt; (Bool) -&gt; (Bool) -&gt; (Bool) -&gt; (Bool) -&gt; (Maybe EndCriteria) -&gt; (Maybe OptimizationMethod) -&gt; (Maybe Double) -&gt; (Maybe Double) -&gt; (Bool) -&gt; (Word) -&gt; (Bool) -&gt; (Double) -&gt; (Bool) -- ^singlePassCalibration (1.44; QuantLib 1.43 requires 'False')
 <span class="lineno"> 4500 </span> -&gt; IO ((SabrSwaptionVolatilityCube))
 <span class="lineno"> 4501 </span><span class="decl"><span class="istickedoff">qlSabrSwaptionVolatilityCube a1 a2 a3 a4 a5 a6 a7 a8 a9 a10 a11 a12 a13 a14 a15 a16 a17 a18 a19 a20 a21 a22 a23 a24 a25 a26 a27 a28 a29 =</span>
 <span class="lineno"> 4502 </span><span class="spaces">  </span><span class="istickedoff">withSwaptionVolatilityStructure a1 $ \a1' -&gt; </span>
@@ -4585,14 +4585,14 @@ span.spaces    { background: white }
 <span class="lineno"> 4566 </span>  -&gt; Double -- ^cutoffStrike
 <span class="lineno"> 4567 </span>  -&gt; Maybe EndCriteria -- ^endCriteria
 <span class="lineno"> 4568 </span>  -&gt; Maybe OptimizationMethod -- ^optMethod
-<span class="lineno"> 4569 </span>  -&gt; Bool -- ^singlePassCalibration, ignored on QuantLib 1.43
+<span class="lineno"> 4569 </span>  -&gt; Bool -- ^singlePassCalibration (1.44; QuantLib 1.43 requires 'False')
 <span class="lineno"> 4570 </span>  -&gt; IO NoArbSabrSwaptionVolatilityCube
 <span class="lineno"> 4571 </span><span class="decl"><span class="istickedoff">noArbSabrSwaptionVolatilityCube atm ot st ss (Matrix vr vc vd) sidx1 sidx2 vw (Matrix pr pc pd)</span>
 <span class="lineno"> 4572 </span><span class="spaces">  </span><span class="istickedoff">iaf ibf inf irf iac met eat ume mg bf cs ec om singlePass =</span>
 <span class="lineno"> 4573 </span><span class="spaces">  </span><span class="istickedoff">qlNoArbSabrSwaptionVolatilityCube atm opl opu spl spu ss vr vc vd sidx1 sidx2 vw pr pc pd</span>
 <span class="lineno"> 4574 </span><span class="spaces">    </span><span class="istickedoff">iaf ibf inf irf iac ec om met eat ume mg bf cs singlePass</span>
 <span class="lineno"> 4575 </span><span class="spaces">  </span><span class="istickedoff">where (opl, opu) = unzip ot; (spl, spu) = unzip st</span></span>
-<span class="lineno"> 4576 </span>qlNoArbSabrSwaptionVolatilityCube :: (GenSwaptionVolatilityStructure sv) -&gt; ([Word]) -&gt; ([TimeUnit]) -&gt; ([Word]) -&gt; ([TimeUnit]) -&gt; ([Double]) -&gt; (Word) -&gt; (Word) -&gt; ([GenQuote q1]) -&gt; (GenSwapIndex sidx1) -&gt; (GenSwapIndex sidx2) -&gt; (Bool) -&gt; (Word) -&gt; (Word) -&gt; ([GenQuote q2]) -&gt; (Bool) -&gt; (Bool) -&gt; (Bool) -&gt; (Bool) -&gt; (Bool) -&gt; (Maybe EndCriteria) -&gt; (Maybe OptimizationMethod) -&gt; (Maybe Double) -&gt; (Maybe Double) -&gt; (Bool) -&gt; (Word) -&gt; (Bool) -&gt; (Double) -&gt; (Bool) -- ^singlePassCalibration (1.44 only)
+<span class="lineno"> 4576 </span>qlNoArbSabrSwaptionVolatilityCube :: (GenSwaptionVolatilityStructure sv) -&gt; ([Word]) -&gt; ([TimeUnit]) -&gt; ([Word]) -&gt; ([TimeUnit]) -&gt; ([Double]) -&gt; (Word) -&gt; (Word) -&gt; ([GenQuote q1]) -&gt; (GenSwapIndex sidx1) -&gt; (GenSwapIndex sidx2) -&gt; (Bool) -&gt; (Word) -&gt; (Word) -&gt; ([GenQuote q2]) -&gt; (Bool) -&gt; (Bool) -&gt; (Bool) -&gt; (Bool) -&gt; (Bool) -&gt; (Maybe EndCriteria) -&gt; (Maybe OptimizationMethod) -&gt; (Maybe Double) -&gt; (Maybe Double) -&gt; (Bool) -&gt; (Word) -&gt; (Bool) -&gt; (Double) -&gt; (Bool) -- ^singlePassCalibration (1.44; QuantLib 1.43 requires 'False')
 <span class="lineno"> 4577 </span> -&gt; IO ((NoArbSabrSwaptionVolatilityCube))
 <span class="lineno"> 4578 </span><span class="decl"><span class="istickedoff">qlNoArbSabrSwaptionVolatilityCube a1 a2 a3 a4 a5 a6 a7 a8 a9 a10 a11 a12 a13 a14 a15 a16 a17 a18 a19 a20 a21 a22 a23 a24 a25 a26 a27 a28 a29 =</span>
 <span class="lineno"> 4579 </span><span class="spaces">  </span><span class="istickedoff">withSwaptionVolatilityStructure a1 $ \a1' -&gt; </span>
@@ -4658,14 +4658,14 @@ span.spaces    { background: white }
 <span class="lineno"> 4639 </span>  -&gt; Double -- ^cutoffStrike
 <span class="lineno"> 4640 </span>  -&gt; Maybe EndCriteria -- ^endCriteria
 <span class="lineno"> 4641 </span>  -&gt; Maybe OptimizationMethod -- ^optMethod
-<span class="lineno"> 4642 </span>  -&gt; Bool -- ^singlePassCalibration, ignored on QuantLib 1.43
+<span class="lineno"> 4642 </span>  -&gt; Bool -- ^singlePassCalibration (1.44; QuantLib 1.43 requires 'False')
 <span class="lineno"> 4643 </span>  -&gt; IO ZabrSwaptionVolatilityCube
 <span class="lineno"> 4644 </span><span class="decl"><span class="istickedoff">zabrSwaptionVolatilityCube atm ot st ss (Matrix vr vc vd) sidx1 sidx2 vw (Matrix pr pc pd)</span>
 <span class="lineno"> 4645 </span><span class="spaces">  </span><span class="istickedoff">iaf ibf inf irf igf iac met eat ume mg bf cs ec om singlePass =</span>
 <span class="lineno"> 4646 </span><span class="spaces">  </span><span class="istickedoff">qlZabrSwaptionVolatilityCube atm opl opu spl spu ss vr vc vd sidx1 sidx2 vw pr pc pd</span>
 <span class="lineno"> 4647 </span><span class="spaces">    </span><span class="istickedoff">iaf ibf inf irf igf iac ec om met eat ume mg bf cs singlePass</span>
 <span class="lineno"> 4648 </span><span class="spaces">  </span><span class="istickedoff">where (opl, opu) = unzip ot; (spl, spu) = unzip st</span></span>
-<span class="lineno"> 4649 </span>qlZabrSwaptionVolatilityCube :: (GenSwaptionVolatilityStructure sv) -&gt; ([Word]) -&gt; ([TimeUnit]) -&gt; ([Word]) -&gt; ([TimeUnit]) -&gt; ([Double]) -&gt; (Word) -&gt; (Word) -&gt; ([GenQuote q1]) -&gt; (GenSwapIndex sidx1) -&gt; (GenSwapIndex sidx2) -&gt; (Bool) -&gt; (Word) -&gt; (Word) -&gt; ([GenQuote q2]) -&gt; (Bool) -&gt; (Bool) -&gt; (Bool) -&gt; (Bool) -&gt; (Bool) -&gt; (Bool) -&gt; (Maybe EndCriteria) -&gt; (Maybe OptimizationMethod) -&gt; (Maybe Double) -&gt; (Maybe Double) -&gt; (Bool) -&gt; (Word) -&gt; (Bool) -&gt; (Double) -&gt; (Bool) -- ^singlePassCalibration (1.44 only)
+<span class="lineno"> 4649 </span>qlZabrSwaptionVolatilityCube :: (GenSwaptionVolatilityStructure sv) -&gt; ([Word]) -&gt; ([TimeUnit]) -&gt; ([Word]) -&gt; ([TimeUnit]) -&gt; ([Double]) -&gt; (Word) -&gt; (Word) -&gt; ([GenQuote q1]) -&gt; (GenSwapIndex sidx1) -&gt; (GenSwapIndex sidx2) -&gt; (Bool) -&gt; (Word) -&gt; (Word) -&gt; ([GenQuote q2]) -&gt; (Bool) -&gt; (Bool) -&gt; (Bool) -&gt; (Bool) -&gt; (Bool) -&gt; (Bool) -&gt; (Maybe EndCriteria) -&gt; (Maybe OptimizationMethod) -&gt; (Maybe Double) -&gt; (Maybe Double) -&gt; (Bool) -&gt; (Word) -&gt; (Bool) -&gt; (Double) -&gt; (Bool) -- ^singlePassCalibration (1.44; QuantLib 1.43 requires 'False')
 <span class="lineno"> 4650 </span> -&gt; IO ((ZabrSwaptionVolatilityCube))
 <span class="lineno"> 4651 </span><span class="decl"><span class="istickedoff">qlZabrSwaptionVolatilityCube a1 a2 a3 a4 a5 a6 a7 a8 a9 a10 a11 a12 a13 a14 a15 a16 a17 a18 a19 a20 a21 a22 a23 a24 a25 a26 a27 a28 a29 a30 =</span>
 <span class="lineno"> 4652 </span><span class="spaces">  </span><span class="istickedoff">withSwaptionVolatilityStructure a1 $ \a1' -&gt; </span>

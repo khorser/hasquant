@@ -578,8 +578,8 @@ span.spaces    { background: white }
 <span class="lineno">  559 </span> -&gt; (Bool) -- ^intermediateCapitalExchange
 <span class="lineno">  560 </span> -&gt; (Bool) -- ^finalCapitalExchange
 <span class="lineno">  561 </span> -&gt; (Maybe BusinessDayConvention) -- ^paymentConvention
-<span class="lineno">  562 </span> -&gt; (Int) -- ^paymentLag (1.44 only)
-<span class="lineno">  563 </span> -&gt; (Calendar) -- ^paymentCalendar (1.44 only)
+<span class="lineno">  562 </span> -&gt; (Int) -- ^paymentLag (1.44; QuantLib 1.43 requires 0)
+<span class="lineno">  563 </span> -&gt; (Maybe Calendar) -- ^paymentCalendar, 'Nothing' for each leg's schedule calendar (1.44; QuantLib 1.43 requires 'Nothing')
 <span class="lineno">  564 </span> -&gt; IO ((NonstandardSwap))
 <span class="lineno">  565 </span><span class="decl"><span class="istickedoff">nonstandardSwap a1 a2 a3 a4 a5 a6 a7 a8 a9 a10 a11 a12 a13 a14 a15 a16 =</span>
 <span class="lineno">  566 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = (fromIntegral . fromEnum) a1} in </span>
@@ -597,12 +597,12 @@ span.spaces    { background: white }
 <span class="lineno">  578 </span><span class="spaces">  </span><span class="istickedoff">let {a13' = C2HSImp.fromBool a13} in </span>
 <span class="lineno">  579 </span><span class="spaces">  </span><span class="istickedoff">let {a14' = fromMaybeEnum a14} in </span>
 <span class="lineno">  580 </span><span class="spaces">  </span><span class="istickedoff">let {a15' = fromIntegral a15} in </span>
-<span class="lineno">  581 </span><span class="spaces">  </span><span class="istickedoff">withCalendar a16 $ \a16' -&gt; </span>
+<span class="lineno">  581 </span><span class="spaces">  </span><span class="istickedoff">withMaybeCalendar a16 $ \a16' -&gt; </span>
 <span class="lineno">  582 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a17' -&gt; </span>
 <span class="lineno">  583 </span><span class="spaces">  </span><span class="istickedoff">nonstandardSwap'_ a1' a2'1  a2'2 a3'1  a3'2 a4' a5'1  a5'2 a6' a7' a8' a9' a10' a11' a12' a13' a14' a15' a16' a17' &gt;&gt;= \res -&gt;</span>
 <span class="lineno">  584 </span><span class="spaces">  </span><span class="istickedoff">peekNonstandardSwap res &gt;&gt;= \res' -&gt;</span>
 <span class="lineno">  585 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a17'&gt;&gt;</span>
-<span class="lineno">  586 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  586 </span><span class="spaces">  </span><span class="istickedoff"><span class="nottickedoff">return (res')</span></span></span>
 <span class="lineno">  587 </span>
 <span class="lineno">  588 </span>
 <span class="lineno">  589 </span>
@@ -619,8 +619,8 @@ span.spaces    { background: white }
 <span class="lineno">  600 </span> -&gt; (Bool) -- ^intermediateCapitalExchange
 <span class="lineno">  601 </span> -&gt; (Bool) -- ^finalCapitalExchange
 <span class="lineno">  602 </span> -&gt; (Maybe BusinessDayConvention) -- ^paymentConvention
-<span class="lineno">  603 </span> -&gt; (Int) -- ^paymentLag (1.44 only)
-<span class="lineno">  604 </span> -&gt; (Calendar) -- ^paymentCalendar (1.44 only)
+<span class="lineno">  603 </span> -&gt; (Int) -- ^paymentLag (1.44; QuantLib 1.43 requires 0)
+<span class="lineno">  604 </span> -&gt; (Maybe Calendar) -- ^paymentCalendar, 'Nothing' for each leg's schedule calendar (1.44; QuantLib 1.43 requires 'Nothing')
 <span class="lineno">  605 </span> -&gt; IO ((NonstandardSwap))
 <span class="lineno">  606 </span><span class="decl"><span class="istickedoff">nonstandardSwapFromGearingsAndSpreads a1 a2 a3 a4 a5 a6 a7 a8 a9 a10 a11 a12 a13 a14 a15 a16 =</span>
 <span class="lineno">  607 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = (fromIntegral . fromEnum) a1} in </span>
@@ -638,12 +638,12 @@ span.spaces    { background: white }
 <span class="lineno">  619 </span><span class="spaces">  </span><span class="istickedoff">let {a13' = C2HSImp.fromBool a13} in </span>
 <span class="lineno">  620 </span><span class="spaces">  </span><span class="istickedoff">let {a14' = fromMaybeEnum a14} in </span>
 <span class="lineno">  621 </span><span class="spaces">  </span><span class="istickedoff">let {a15' = fromIntegral a15} in </span>
-<span class="lineno">  622 </span><span class="spaces">  </span><span class="istickedoff">withCalendar a16 $ \a16' -&gt; </span>
+<span class="lineno">  622 </span><span class="spaces">  </span><span class="istickedoff">withMaybeCalendar a16 $ \a16' -&gt; </span>
 <span class="lineno">  623 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a17' -&gt; </span>
 <span class="lineno">  624 </span><span class="spaces">  </span><span class="istickedoff">nonstandardSwapFromGearingsAndSpreads'_ a1' a2'1  a2'2 a3'1  a3'2 a4' a5'1  a5'2 a6' a7' a8' a9'1  a9'2 a10'1  a10'2 a11' a12' a13' a14' a15' a16' a17' &gt;&gt;= \res -&gt;</span>
 <span class="lineno">  625 </span><span class="spaces">  </span><span class="istickedoff">peekNonstandardSwap res &gt;&gt;= \res' -&gt;</span>
 <span class="lineno">  626 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a17'&gt;&gt;</span>
-<span class="lineno">  627 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
+<span class="lineno">  627 </span><span class="spaces">  </span><span class="istickedoff"><span class="nottickedoff">return (res')</span></span></span>
 <span class="lineno">  628 </span>
 <span class="lineno">  629 </span>
 <span class="lineno">  630 </span>
@@ -1123,7 +1123,7 @@ span.spaces    { background: white }
 <span class="lineno"> 1104 </span>-- defaults (OIS payment lag, compound-spread, lookback, observation shift, lockout,
 <span class="lineno"> 1105 </span>-- averaging method per leg, plus a shared telescopic-value-dates flag; ignored for a plain Ibor
 <span class="lineno"> 1106 </span>-- 'payIndex'\/'recIndex'). Indexed coupons, lagged notional exchanges and stub selections are
-<span class="lineno"> 1107 </span>-- available on QuantLib 1.44 and ignored on 1.43. Override only what's needed on
+<span class="lineno"> 1107 </span>-- available on QuantLib 1.44; 1.43 accepts only their defaults. Override only what's needed on
 <span class="lineno"> 1108 </span>-- 'defaultConstNotionalCrossCurrencyBasisSwapOpts'.
 <span class="lineno"> 1109 </span>constNotionalCrossCurrencyBasisSwap :: Double -&gt; Currency -&gt; Schedule -&gt; GenIborIndex ibor1 -&gt; Double -&gt; Double
 <span class="lineno"> 1110 </span>  -&gt; Double -&gt; Currency -&gt; Schedule -&gt; GenIborIndex ibor2 -&gt; Double -&gt; Double
@@ -1168,10 +1168,10 @@ span.spaces    { background: white }
 <span class="lineno"> 1149 </span> -&gt; (Word) -- ^recLockoutDays
 <span class="lineno"> 1150 </span> -&gt; (RateAveragingType) -- ^recAveragingMethod
 <span class="lineno"> 1151 </span> -&gt; (Bool) -- ^telescopicValueDates
-<span class="lineno"> 1152 </span> -&gt; (Maybe Bool) -- ^useIndexedCoupons (1.44 only)
-<span class="lineno"> 1153 </span> -&gt; (Bool) -- ^paymentLagOnNotionalExchanges (1.44 only)
-<span class="lineno"> 1154 </span> -&gt; (Maybe (StubIndexSelection ibor3)) -- ^payStub (1.44 only)
-<span class="lineno"> 1155 </span> -&gt; (Maybe (StubIndexSelection ibor4)) -- ^recStub (1.44 only)
+<span class="lineno"> 1152 </span> -&gt; (Maybe Bool) -- ^useIndexedCoupons (1.44; QuantLib 1.43 requires 'Nothing')
+<span class="lineno"> 1153 </span> -&gt; (Bool) -- ^paymentLagOnNotionalExchanges (1.44; QuantLib 1.43 requires 'False')
+<span class="lineno"> 1154 </span> -&gt; (Maybe (StubIndexSelection ibor3)) -- ^payStub (1.44; QuantLib 1.43 requires 'Nothing')
+<span class="lineno"> 1155 </span> -&gt; (Maybe (StubIndexSelection ibor4)) -- ^recStub (1.44; QuantLib 1.43 requires 'Nothing')
 <span class="lineno"> 1156 </span> -&gt; IO ((ConstNotionalCrossCurrencyBasisSwap))
 <span class="lineno"> 1157 </span><span class="decl"><span class="istickedoff">constNotionalCrossCurrencyBasisSwap_ a1 a2 a3 a4 a5 a6 a7 a8 a9 a10 a11 a12 a13 a14 a15 a16 a17 a18 a19 a20 a21 a22 a23 a24 a25 a26 a27 a28 a29 =</span>
 <span class="lineno"> 1158 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = realToFrac a1} in </span>
@@ -1266,8 +1266,8 @@ span.spaces    { background: white }
 <span class="lineno"> 1247 </span>  -&gt; Bool -- ^floatCompoundSpread
 <span class="lineno"> 1248 </span>  -&gt; OvernightObservation -- ^floatObservation
 <span class="lineno"> 1249 </span>  -&gt; RateAveragingType -- ^floatAveragingMethod
-<span class="lineno"> 1250 </span>  -&gt; Maybe Bool -- ^useIndexedCoupons, ignored on QuantLib 1.43
-<span class="lineno"> 1251 </span>  -&gt; Maybe (StubIndexSelection ibor2) -- ^floatStubIndexSelection, ignored on QuantLib 1.43
+<span class="lineno"> 1250 </span>  -&gt; Maybe Bool -- ^useIndexedCoupons (1.44; QuantLib 1.43 requires 'Nothing')
+<span class="lineno"> 1251 </span>  -&gt; Maybe (StubIndexSelection ibor2) -- ^floatStubIndexSelection (1.44; QuantLib 1.43 requires 'Nothing')
 <span class="lineno"> 1252 </span>  -&gt; IO ConstNotionalCrossCurrencyFixedVsFloatingSwap
 <span class="lineno"> 1253 </span><span class="decl"><span class="istickedoff">constNotionalCrossCurrencyFixedVsFloatingSwap t fxN fxC fxS fxR fxDc fxBdc fxLag fxCal</span>
 <span class="lineno"> 1254 </span><span class="spaces">  </span><span class="istickedoff">flN flC flS flIdx flSprd flBdc flLag flCal telescopic compound obs avg indexed stub =</span>
@@ -1297,8 +1297,8 @@ span.spaces    { background: white }
 <span class="lineno"> 1278 </span> -&gt; (Bool) -- ^floatObservationShift
 <span class="lineno"> 1279 </span> -&gt; (Word) -- ^floatLockoutDays
 <span class="lineno"> 1280 </span> -&gt; (RateAveragingType) -- ^floatAveragingMethod
-<span class="lineno"> 1281 </span> -&gt; (Maybe Bool) -- ^useIndexedCoupons (1.44 only)
-<span class="lineno"> 1282 </span> -&gt; (Maybe (StubIndexSelection ibor2)) -- ^floatStub (1.44 only)
+<span class="lineno"> 1281 </span> -&gt; (Maybe Bool) -- ^useIndexedCoupons (1.44; QuantLib 1.43 requires 'Nothing')
+<span class="lineno"> 1282 </span> -&gt; (Maybe (StubIndexSelection ibor2)) -- ^floatStub (1.44; QuantLib 1.43 requires 'Nothing')
 <span class="lineno"> 1283 </span> -&gt; IO ((ConstNotionalCrossCurrencyFixedVsFloatingSwap))
 <span class="lineno"> 1284 </span><span class="decl"><span class="istickedoff">constNotionalCrossCurrencyFixedVsFloatingSwapRaw a1 a2 a3 a4 a5 a6 a7 a8 a9 a10 a11 a12 a13 a14 a15 a16 a17 a18 a19 a20 a21 a22 a23 a24 a25 =</span>
 <span class="lineno"> 1285 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = (fromIntegral . fromEnum) a1} in </span>
@@ -1550,7 +1550,7 @@ span.spaces    { background: white }
 <span class="lineno"> 1531 </span>  -&gt; Bool -- ^telescopicValueDates
 <span class="lineno"> 1532 </span>  -&gt; RateAveragingType -- ^averagingMethod
 <span class="lineno"> 1533 </span>  -&gt; OvernightObservation
-<span class="lineno"> 1534 </span>  -&gt; Maybe Int -- ^roundingPrecision, ignored on QuantLib 1.43
+<span class="lineno"> 1534 </span>  -&gt; Maybe Int -- ^roundingPrecision (1.44; QuantLib 1.43 requires 'Nothing')
 <span class="lineno"> 1535 </span>  -&gt; IO OvernightIndexedSwap
 <span class="lineno"> 1536 </span><span class="decl"><span class="istickedoff">overnightIndexedSwap t n sch r dc idx sprd lag adj cal telescopic avg obs precision =</span>
 <span class="lineno"> 1537 </span><span class="spaces">  </span><span class="istickedoff">overnightIndexedSwapRaw t n sch r dc idx sprd lag adj cal telescopic avg</span>
@@ -1568,7 +1568,7 @@ span.spaces    { background: white }
 <span class="lineno"> 1549 </span> -&gt; (Maybe Word) -- ^lookbackDays
 <span class="lineno"> 1550 </span> -&gt; (Word) -- ^lockoutDays
 <span class="lineno"> 1551 </span> -&gt; (Bool) -- ^applyObservationShift
-<span class="lineno"> 1552 </span> -&gt; (Maybe Int) -- ^roundingPrecision (1.44 only)
+<span class="lineno"> 1552 </span> -&gt; (Maybe Int) -- ^roundingPrecision (1.44; QuantLib 1.43 requires 'Nothing')
 <span class="lineno"> 1553 </span> -&gt; IO ((OvernightIndexedSwap))
 <span class="lineno"> 1554 </span><span class="decl"><span class="istickedoff">overnightIndexedSwapRaw a1 a2 a3 a4 a5 a6 a7 a8 a9 a10 a11 a12 a13 a14 a15 a16 =</span>
 <span class="lineno"> 1555 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = (fromIntegral . fromEnum) a1} in </span>
@@ -1609,7 +1609,7 @@ span.spaces    { background: white }
 <span class="lineno"> 1590 </span>  -&gt; Bool -- ^telescopicValueDates
 <span class="lineno"> 1591 </span>  -&gt; RateAveragingType -- ^averagingMethod
 <span class="lineno"> 1592 </span>  -&gt; OvernightObservation
-<span class="lineno"> 1593 </span>  -&gt; Maybe Int -- ^roundingPrecision, ignored on QuantLib 1.43
+<span class="lineno"> 1593 </span>  -&gt; Maybe Int -- ^roundingPrecision (1.44; QuantLib 1.43 requires 'Nothing')
 <span class="lineno"> 1594 </span>  -&gt; IO OvernightIndexedSwap
 <span class="lineno"> 1595 </span><span class="decl"><span class="istickedoff">overnightIndexedSwapFromNominals t ns sch r dc idx sprd lag adj cal telescopic avg obs precision =</span>
 <span class="lineno"> 1596 </span><span class="spaces">  </span><span class="istickedoff">overnightIndexedSwapFromNominalsRaw t ns sch r dc idx sprd lag adj cal telescopic avg</span>
@@ -1628,7 +1628,7 @@ span.spaces    { background: white }
 <span class="lineno"> 1609 </span> -&gt; (Maybe Word) -- ^lookbackDays
 <span class="lineno"> 1610 </span> -&gt; (Word) -- ^lockoutDays
 <span class="lineno"> 1611 </span> -&gt; (Bool) -- ^applyObservationShift
-<span class="lineno"> 1612 </span> -&gt; (Maybe Int) -- ^roundingPrecision (1.44 only)
+<span class="lineno"> 1612 </span> -&gt; (Maybe Int) -- ^roundingPrecision (1.44; QuantLib 1.43 requires 'Nothing')
 <span class="lineno"> 1613 </span> -&gt; IO ((OvernightIndexedSwap))
 <span class="lineno"> 1614 </span><span class="decl"><span class="istickedoff">overnightIndexedSwapFromNominalsRaw a1 a2 a3 a4 a5 a6 a7 a8 a9 a10 a11 a12 a13 a14 a15 a16 =</span>
 <span class="lineno"> 1615 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = (fromIntegral . fromEnum) a1} in </span>

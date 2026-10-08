@@ -2108,7 +2108,7 @@ span.spaces    { background: white }
 <span class="lineno"> 2089 </span>
 <span class="lineno"> 2090 </span>-- |H1-HW approximation engine with fixed-order or tolerance-based integration. @rhoSr@ must be
 <span class="lineno"> 2091 </span>-- non-negative. With 'ExactMean' it is a hasquant subclass of QuantLib's Heston/Hull-White engine
-<span class="lineno"> 2092 </span>-- that integrates the exact E[sqrt v]; QuantLib's own engine otherwise.
+<span class="lineno"> 2092 </span>-- that integrates the exact E[sqrt v]; QuantLib's own engine otherwise, whose prices are NaN where its fit fails.
 <span class="lineno"> 2093 </span>analyticH1HwEngine :: GenHestonModel hm -&gt; HullWhite -&gt; Double -&gt; IntegrationControl -&gt; H1HwMean -&gt; IO PricingEngine
 <span class="lineno"> 2094 </span><span class="decl"><span class="istickedoff">analyticH1HwEngine heston hullWhite rhoSr control mean =</span>
 <span class="lineno"> 2095 </span><span class="spaces">  </span><span class="istickedoff">case control of</span>

@@ -1516,20 +1516,20 @@ span.spaces    { background: white }
 <span class="lineno"> 1497 </span> -&gt; (GenYieldTermStructure y1) -- ^riskFreeRate
 <span class="lineno"> 1498 </span> -&gt; (GenYieldTermStructure y2) -- ^dividendYield
 <span class="lineno"> 1499 </span> -&gt; (CalibrationErrorType) -&gt; IO ((BlackCalibrationHelper))
-<span class="lineno"> 1500 </span><span class="decl"><span class="nottickedoff">hestonModelHelper a1 a2 a3 a4 a5 a6 a7 a8 =</span>
-<span class="lineno"> 1501 </span><span class="spaces">  </span><span class="nottickedoff">let {(a1'1, a1'2) = fromEnumQuantity a1} in </span>
-<span class="lineno"> 1502 </span><span class="spaces">  </span><span class="nottickedoff">withCalendar a2 $ \a2' -&gt; </span>
-<span class="lineno"> 1503 </span><span class="spaces">  </span><span class="nottickedoff">withQuote a3 $ \a3' -&gt; </span>
-<span class="lineno"> 1504 </span><span class="spaces">  </span><span class="nottickedoff">let {a4' = realToFrac a4} in </span>
-<span class="lineno"> 1505 </span><span class="spaces">  </span><span class="nottickedoff">withQuote a5 $ \a5' -&gt; </span>
-<span class="lineno"> 1506 </span><span class="spaces">  </span><span class="nottickedoff">withYieldTermStructure a6 $ \a6' -&gt; </span>
-<span class="lineno"> 1507 </span><span class="spaces">  </span><span class="nottickedoff">withYieldTermStructure a7 $ \a7' -&gt; </span>
-<span class="lineno"> 1508 </span><span class="spaces">  </span><span class="nottickedoff">let {a8' = (fromIntegral . fromEnum) a8} in </span>
-<span class="lineno"> 1509 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a9' -&gt; </span>
-<span class="lineno"> 1510 </span><span class="spaces">  </span><span class="nottickedoff">hestonModelHelper'_ a1'1  a1'2 a2' a3' a4' a5' a6' a7' a8' a9' &gt;&gt;= \res -&gt;</span>
-<span class="lineno"> 1511 </span><span class="spaces">  </span><span class="nottickedoff">peekBlackCalibrationHelper res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno"> 1512 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a9'&gt;&gt;</span>
-<span class="lineno"> 1513 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno"> 1500 </span><span class="decl"><span class="istickedoff">hestonModelHelper a1 a2 a3 a4 a5 a6 a7 a8 =</span>
+<span class="lineno"> 1501 </span><span class="spaces">  </span><span class="istickedoff">let {(a1'1, a1'2) = fromEnumQuantity a1} in </span>
+<span class="lineno"> 1502 </span><span class="spaces">  </span><span class="istickedoff">withCalendar a2 $ \a2' -&gt; </span>
+<span class="lineno"> 1503 </span><span class="spaces">  </span><span class="istickedoff">withQuote a3 $ \a3' -&gt; </span>
+<span class="lineno"> 1504 </span><span class="spaces">  </span><span class="istickedoff">let {a4' = realToFrac a4} in </span>
+<span class="lineno"> 1505 </span><span class="spaces">  </span><span class="istickedoff">withQuote a5 $ \a5' -&gt; </span>
+<span class="lineno"> 1506 </span><span class="spaces">  </span><span class="istickedoff">withYieldTermStructure a6 $ \a6' -&gt; </span>
+<span class="lineno"> 1507 </span><span class="spaces">  </span><span class="istickedoff">withYieldTermStructure a7 $ \a7' -&gt; </span>
+<span class="lineno"> 1508 </span><span class="spaces">  </span><span class="istickedoff">let {a8' = (fromIntegral . fromEnum) a8} in </span>
+<span class="lineno"> 1509 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a9' -&gt; </span>
+<span class="lineno"> 1510 </span><span class="spaces">  </span><span class="istickedoff">hestonModelHelper'_ a1'1  a1'2 a2' a3' a4' a5' a6' a7' a8' a9' &gt;&gt;= \res -&gt;</span>
+<span class="lineno"> 1511 </span><span class="spaces">  </span><span class="istickedoff">peekBlackCalibrationHelper res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno"> 1512 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a9'&gt;&gt;</span>
+<span class="lineno"> 1513 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
 <span class="lineno"> 1514 </span>
 <span class="lineno"> 1515 </span>
 <span class="lineno"> 1516 </span>
@@ -1733,13 +1733,13 @@ span.spaces    { background: white }
 <span class="lineno"> 1714 </span>
 <span class="lineno"> 1715 </span>-- |returns the error resulting from the model valuation
 <span class="lineno"> 1716 </span>calibrationError :: (GenBlackCalibrationHelper bch) -&gt; IO ((Double))
-<span class="lineno"> 1717 </span><span class="decl"><span class="nottickedoff">calibrationError a1 =</span>
-<span class="lineno"> 1718 </span><span class="spaces">  </span><span class="nottickedoff">withBlackCalibrationHelper a1 $ \a1' -&gt; </span>
-<span class="lineno"> 1719 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a2' -&gt; </span>
-<span class="lineno"> 1720 </span><span class="spaces">  </span><span class="nottickedoff">calibrationError'_ a1' a2' &gt;&gt;= \res -&gt;</span>
-<span class="lineno"> 1721 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = realToFrac res} in</span>
-<span class="lineno"> 1722 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a2'&gt;&gt;</span>
-<span class="lineno"> 1723 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno"> 1717 </span><span class="decl"><span class="istickedoff">calibrationError a1 =</span>
+<span class="lineno"> 1718 </span><span class="spaces">  </span><span class="istickedoff">withBlackCalibrationHelper a1 $ \a1' -&gt; </span>
+<span class="lineno"> 1719 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
+<span class="lineno"> 1720 </span><span class="spaces">  </span><span class="istickedoff">calibrationError'_ a1' a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno"> 1721 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno"> 1722 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
+<span class="lineno"> 1723 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
 <span class="lineno"> 1724 </span>
 <span class="lineno"> 1725 </span>
 <span class="lineno"> 1726 </span>

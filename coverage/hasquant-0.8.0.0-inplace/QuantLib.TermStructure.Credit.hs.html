@@ -413,7 +413,7 @@ span.spaces    { background: white }
 <span class="lineno">  394 </span> -&gt; (DayCounter) -- ^lastPeriodDayCounter
 <span class="lineno">  395 </span> -&gt; (Bool) -- ^rebatesAccrual
 <span class="lineno">  396 </span> -&gt; (PricingModel) -- ^model
-<span class="lineno">  397 </span> -&gt; (Maybe Day) -- ^tradeDate (1.44 only)
+<span class="lineno">  397 </span> -&gt; (Maybe Day) -- ^tradeDate (1.44; QuantLib 1.43 requires 'Nothing')
 <span class="lineno">  398 </span> -&gt; IO ((DefaultProbabilityHelper))
 <span class="lineno">  399 </span><span class="decl"><span class="istickedoff">spreadCdsHelper a1 a2 a3 a4 a5 a6 a7 a8 a9 a10 a11 a12 a13 a14 a15 a16 a17 =</span>
 <span class="lineno">  400 </span><span class="spaces">  </span><span class="istickedoff">withQuote a1 $ \a1' -&gt; </span>
@@ -455,33 +455,33 @@ span.spaces    { background: white }
 <span class="lineno">  436 </span> -&gt; (DayCounter) -- ^lastPeriodDayCounter
 <span class="lineno">  437 </span> -&gt; (Bool) -- ^rebatesAccrual
 <span class="lineno">  438 </span> -&gt; (PricingModel) -- ^model
-<span class="lineno">  439 </span> -&gt; (Maybe Day) -- ^tradeDate (1.44 only)
+<span class="lineno">  439 </span> -&gt; (Maybe Day) -- ^tradeDate (1.44; QuantLib 1.43 requires 'Nothing')
 <span class="lineno">  440 </span> -&gt; IO ((DefaultProbabilityHelper))
-<span class="lineno">  441 </span><span class="decl"><span class="nottickedoff">upfrontCdsHelper a1 a2 a3 a4 a5 a6 a7 a8 a9 a10 a11 a12 a13 a14 a15 a16 a17 a18 a19 =</span>
-<span class="lineno">  442 </span><span class="spaces">  </span><span class="nottickedoff">withQuote a1 $ \a1' -&gt; </span>
-<span class="lineno">  443 </span><span class="spaces">  </span><span class="nottickedoff">let {a2' = realToFrac a2} in </span>
-<span class="lineno">  444 </span><span class="spaces">  </span><span class="nottickedoff">let {(a3'1, a3'2) = fromEnumQuantity a3} in </span>
-<span class="lineno">  445 </span><span class="spaces">  </span><span class="nottickedoff">let {a4' = fromIntegral a4} in </span>
-<span class="lineno">  446 </span><span class="spaces">  </span><span class="nottickedoff">withCalendar a5 $ \a5' -&gt; </span>
-<span class="lineno">  447 </span><span class="spaces">  </span><span class="nottickedoff">let {a6' = (fromIntegral . fromEnum) a6} in </span>
-<span class="lineno">  448 </span><span class="spaces">  </span><span class="nottickedoff">let {a7' = fromEnumC a7} in </span>
-<span class="lineno">  449 </span><span class="spaces">  </span><span class="nottickedoff">let {a8' = (fromIntegral . fromEnum) a8} in </span>
-<span class="lineno">  450 </span><span class="spaces">  </span><span class="nottickedoff">withDayCounter a9 $ \a9' -&gt; </span>
-<span class="lineno">  451 </span><span class="spaces">  </span><span class="nottickedoff">let {a10' = realToFrac a10} in </span>
-<span class="lineno">  452 </span><span class="spaces">  </span><span class="nottickedoff">withYieldTermStructure a11 $ \a11' -&gt; </span>
-<span class="lineno">  453 </span><span class="spaces">  </span><span class="nottickedoff">let {a12' = fromIntegral a12} in </span>
-<span class="lineno">  454 </span><span class="spaces">  </span><span class="nottickedoff">let {a13' = C2HSImp.fromBool a13} in </span>
-<span class="lineno">  455 </span><span class="spaces">  </span><span class="nottickedoff">let {a14' = C2HSImp.fromBool a14} in </span>
-<span class="lineno">  456 </span><span class="spaces">  </span><span class="nottickedoff">withMaybeDay a15 $ \a15' -&gt; </span>
-<span class="lineno">  457 </span><span class="spaces">  </span><span class="nottickedoff">withDayCounter a16 $ \a16' -&gt; </span>
-<span class="lineno">  458 </span><span class="spaces">  </span><span class="nottickedoff">let {a17' = C2HSImp.fromBool a17} in </span>
-<span class="lineno">  459 </span><span class="spaces">  </span><span class="nottickedoff">let {a18' = (fromIntegral . fromEnum) a18} in </span>
-<span class="lineno">  460 </span><span class="spaces">  </span><span class="nottickedoff">withMaybeDay a19 $ \a19' -&gt; </span>
-<span class="lineno">  461 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a20' -&gt; </span>
-<span class="lineno">  462 </span><span class="spaces">  </span><span class="nottickedoff">upfrontCdsHelper'_ a1' a2' a3'1  a3'2 a4' a5' a6' a7' a8' a9' a10' a11' a12' a13' a14' a15' a16' a17' a18' a19' a20' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  463 </span><span class="spaces">  </span><span class="nottickedoff">peekDefaultProbabilityHelper res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">  464 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a20'&gt;&gt;</span>
-<span class="lineno">  465 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno">  441 </span><span class="decl"><span class="istickedoff">upfrontCdsHelper a1 a2 a3 a4 a5 a6 a7 a8 a9 a10 a11 a12 a13 a14 a15 a16 a17 a18 a19 =</span>
+<span class="lineno">  442 </span><span class="spaces">  </span><span class="istickedoff">withQuote a1 $ \a1' -&gt; </span>
+<span class="lineno">  443 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = realToFrac a2} in </span>
+<span class="lineno">  444 </span><span class="spaces">  </span><span class="istickedoff">let {(a3'1, a3'2) = fromEnumQuantity a3} in </span>
+<span class="lineno">  445 </span><span class="spaces">  </span><span class="istickedoff">let {a4' = fromIntegral a4} in </span>
+<span class="lineno">  446 </span><span class="spaces">  </span><span class="istickedoff">withCalendar a5 $ \a5' -&gt; </span>
+<span class="lineno">  447 </span><span class="spaces">  </span><span class="istickedoff">let {a6' = (fromIntegral . fromEnum) a6} in </span>
+<span class="lineno">  448 </span><span class="spaces">  </span><span class="istickedoff">let {a7' = fromEnumC a7} in </span>
+<span class="lineno">  449 </span><span class="spaces">  </span><span class="istickedoff">let {a8' = (fromIntegral . fromEnum) a8} in </span>
+<span class="lineno">  450 </span><span class="spaces">  </span><span class="istickedoff">withDayCounter a9 $ \a9' -&gt; </span>
+<span class="lineno">  451 </span><span class="spaces">  </span><span class="istickedoff">let {a10' = realToFrac a10} in </span>
+<span class="lineno">  452 </span><span class="spaces">  </span><span class="istickedoff">withYieldTermStructure a11 $ \a11' -&gt; </span>
+<span class="lineno">  453 </span><span class="spaces">  </span><span class="istickedoff">let {a12' = fromIntegral a12} in </span>
+<span class="lineno">  454 </span><span class="spaces">  </span><span class="istickedoff">let {a13' = C2HSImp.fromBool a13} in </span>
+<span class="lineno">  455 </span><span class="spaces">  </span><span class="istickedoff">let {a14' = C2HSImp.fromBool a14} in </span>
+<span class="lineno">  456 </span><span class="spaces">  </span><span class="istickedoff">withMaybeDay a15 $ \a15' -&gt; </span>
+<span class="lineno">  457 </span><span class="spaces">  </span><span class="istickedoff">withDayCounter a16 $ \a16' -&gt; </span>
+<span class="lineno">  458 </span><span class="spaces">  </span><span class="istickedoff">let {a17' = C2HSImp.fromBool a17} in </span>
+<span class="lineno">  459 </span><span class="spaces">  </span><span class="istickedoff">let {a18' = (fromIntegral . fromEnum) a18} in </span>
+<span class="lineno">  460 </span><span class="spaces">  </span><span class="istickedoff">withMaybeDay a19 $ \a19' -&gt; </span>
+<span class="lineno">  461 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a20' -&gt; </span>
+<span class="lineno">  462 </span><span class="spaces">  </span><span class="istickedoff">upfrontCdsHelper'_ a1' a2' a3'1  a3'2 a4' a5' a6' a7' a8' a9' a10' a11' a12' a13' a14' a15' a16' a17' a18' a19' a20' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  463 </span><span class="spaces">  </span><span class="istickedoff">peekDefaultProbabilityHelper res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  464 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a20'&gt;&gt;</span>
+<span class="lineno">  465 </span><span class="spaces">  </span><span class="istickedoff"><span class="nottickedoff">return (res')</span></span></span>
 <span class="lineno">  466 </span>
 <span class="lineno">  467 </span>
 <span class="lineno">  468 </span>
