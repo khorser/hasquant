@@ -72,7 +72,7 @@ run() {
        read -r ans
        [ "$ans" = y ] && { echo "Cleaning up"; rm -rf dist-newstyle; } ;;
     d) UID=$(id -u) GID=$(id -g) docker compose build "$@" ;;
-    8) docker compose run --rm hasquant sh -c 'ghcup install ghc 8.10.6 && cabal update && cabal build all --project-file=cabal.project.lts-18.8 --enable-tests -f buildExample -f buildSofrXva && cabal test all --project-file=cabal.project.lts-18.8 --enable-tests -f buildExample -f buildSofrXva' ;;
+    8) docker compose run --rm hasquant sh -c 'ghcup install ghc 8.10.6 && cabal update && cabal build all --project-file=cabal.project.lts-18.8 --enable-tests -f buildExample -f buildSofrXva && cabal test all --project-file=cabal.project.lts-18.8 --enable-tests -f buildExample -f buildSofrXva --test-options="+RTS -V0 -RTS"' ;;
     s) docker compose run --rm -t hasquant bash ;;
     *) echo "unknown action: $key" >&2; return 2 ;;
   esac

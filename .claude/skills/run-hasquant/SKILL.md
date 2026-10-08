@@ -51,7 +51,7 @@ declared floor (`base >=4.14` in `hasquant.cabal`, which is edited directly).
 Nothing merges until this passes:
 
 ```bash
-docker compose run --rm hasquant sh -c 'ghcup install ghc 8.10.6 && cabal update && cabal build all --project-file=cabal.project.lts-18.8 --enable-tests -f buildExample -f buildSofrXva && cabal test all --project-file=cabal.project.lts-18.8 --enable-tests -f buildExample -f buildSofrXva'
+docker compose run --rm hasquant sh -c 'ghcup install ghc 8.10.6 && cabal update && cabal build all --project-file=cabal.project.lts-18.8 --enable-tests -f buildExample -f buildSofrXva && cabal test all --project-file=cabal.project.lts-18.8 --enable-tests -f buildExample -f buildSofrXva --test-options="+RTS -V0 -RTS"'
 ```
 
 (no `-it`, which fails without a TTY). The image bakes in only GHC 9.10.3;
@@ -68,6 +68,13 @@ infers but 8.10 rejects (a `let`-bound helper containing a list literal
 under `OverloadedLists` over-generalised to an `IsList`-polymorphic type and
 failed with `Illegal equational constraint`; fix: give the helper an
 explicit signature).
+
+`+RTS -V0` works around Rosetta on Apple Silicon (compose pins `linux/amd64`).
+Rosetta appears to corrupt in-flight x87 state when a signal lands, and GHC
+8.10's non-threaded RTS ticker is a `SIGVTALRM` timer. Boost's `long double`
+math then fails sporadically, e.g. `non_central_chi_squared_distribution<long
+double>::cdf: Random variate x is -nan` in the Heston-SLV FDM test. Not
+reproduced with GHC 9.10.3 or on the native amd64 CI legs.
 
 In case you need multiple rebuilds, prefer `docker compose run --rm -t hasquant bash` and execute commands in it to keep build artifacts.
 
