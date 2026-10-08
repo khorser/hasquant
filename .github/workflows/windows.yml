@@ -29,9 +29,10 @@ jobs:
       fail-fast: false
       matrix:
         ghc: ["9.10.3", "9.14.1"]
+        ql: ["1.43", "1.44-rc"]
 
     env:
-      QL_VERSION: "1.43"
+      QL_VERSION: ${{ matrix.ql }}
       BOOST_INC: ${{ github.workspace }}\boost-inc
       QL_INSTALL: ${{ github.workspace }}\QuantLib-ghc
       GHC_VERSION: ${{ matrix.ghc }}
@@ -263,7 +264,7 @@ jobs:
         if: failure() || github.event_name == 'workflow_dispatch'
         uses: actions/upload-artifact@v7
         with:
-          name: windows-test-bin-ghc${{ matrix.ghc }}-attempt${{ github.run_attempt }}
+          name: windows-test-bin-ghc${{ matrix.ghc }}-ql${{ matrix.ql }}-attempt${{ github.run_attempt }}
           retention-days: 14
           if-no-files-found: ignore
           path: |
