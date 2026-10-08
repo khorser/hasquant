@@ -4,8 +4,10 @@ module QuantLib.Context
   (
     -- * Types
     Error(..)
+  , SettingsSnapshot(..)
 
     -- * Mutators
+  , restoreSettings
   , setEvaluationDate
   , setEnforceTodaysHistoricFixings
   , setIncludeTodaysCashFlows
@@ -18,6 +20,7 @@ module QuantLib.Context
   , setExtendedPrecision
 
     -- * Inspectors
+  , captureSettings
   , evaluationDate
   , enforceTodaysHistoricFixings
   , includeTodaysCashFlows
@@ -32,7 +35,8 @@ import Foreign.C.Types(CDouble)
 import Foreign.C.String(CString, peekCString)
 import System.IO.Unsafe(unsafePerformIO)
 import System.Mem(performGC)
-import Control.Exception(bracket)
+import Control.Exception(bracket, SomeException, try, throwIO)
+import Control.Monad (forM)
 
 import QuantLib.Time.Date
 import QuantLib.Internal
@@ -92,6 +96,39 @@ import QuantLib.Internal
 
 -- |Whether observer notifications are currently disabled with deferred delivery enabled.
 {#fun qlObservableSettingsUpdatesDeferred as updatesDeferred{}->`Bool'#}
+
+-- |A value snapshot of pricing and observer settings. A 'Nothing' date retains the
+-- floating evaluation-date mode; it is not replaced with today's date.
+data SettingsSnapshot = SettingsSnapshot
+  { snapshotEvaluationDate :: Maybe Day
+  , snapshotEnforceTodaysHistoricFixings :: Bool
+  , snapshotIncludeTodaysCashFlows :: Maybe Bool
+  , snapshotIncludeReferenceDateEvents :: Bool
+  , snapshotUpdatesEnabled :: Bool
+  , snapshotUpdatesDeferred :: Bool
+  } deriving (Eq, Show)
+
+-- |Copies all settings preserved by 'keepingSettings', including the raw date mode.
+captureSettings :: IO SettingsSnapshot
+captureSettings = SettingsSnapshot <$> rawEvaluationDate <*> enforceTodaysHistoricFixings
+  <*> includeTodaysCashFlows <*> includeReferenceDateEvents <*> updatesEnabled <*> updatesDeferred
+
+{#fun qlSettingsRawEvaluationDate as rawEvaluationDate{}->`Maybe Day'toMaybeDay#}
+
+-- |Restores a snapshot and reports errors rather than suppressing them as the native
+-- SavedSettings destructor does. Every field is attempted even if an observer throws.
+restoreSettings :: SettingsSnapshot -> IO ()
+restoreSettings s = do
+  results <- forM
+    [ setEnforceTodaysHistoricFixings (snapshotEnforceTodaysHistoricFixings s)
+    , setIncludeTodaysCashFlows (snapshotIncludeTodaysCashFlows s)
+    , setIncludeReferenceDateEvents (snapshotIncludeReferenceDateEvents s)
+    , setEvaluationDate (snapshotEvaluationDate s)
+    , if snapshotUpdatesEnabled s then enableUpdates else disableUpdates (snapshotUpdatesDeferred s)
+    ] (try :: IO () -> IO (Either SomeException ()))
+  case [e | Left e <- results] of
+    e : _ -> throwIO e
+    [] -> pure ()
 
 -- |brackets to restore settings once action has completed or raised an exception
 keepingSettings :: IO b -> IO b

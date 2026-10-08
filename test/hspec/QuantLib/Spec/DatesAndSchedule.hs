@@ -12,6 +12,7 @@ import Data.Time.Calendar
 import Data.List.NonEmpty(fromList, head)
 
 import QuantLib.Time.Date as Date
+import qualified QuantLib.Index as Index
 import qualified QuantLib.Context as Context
 import QuantLib.Time.Calendar
 import QuantLib.Time.Schedule
@@ -174,6 +175,21 @@ spec = do
     -- worth pinning down directly rather than only assuming it from Control.Exception.bracket's
     -- documented semantics.
     describe "settings" $ do
+      it "checked snapshots restore floating dates and every settings field" $
+        Context.keepingSettingsGc $ do
+          Context.setEvaluationDate Nothing
+          baseline <- Context.captureSettings
+          Context.setEvaluationDate (Just (fromGregorian 2024 1 2))
+          Context.setEnforceTodaysHistoricFixings (not (Context.snapshotEnforceTodaysHistoricFixings baseline))
+          Context.setIncludeTodaysCashFlows (Just True)
+          Context.setIncludeReferenceDateEvents (not (Context.snapshotIncludeReferenceDateEvents baseline))
+          Context.disableUpdates True
+          Context.restoreSettings baseline
+          Context.captureSettings `shouldReturn` baseline
+      it "native fixing history names use bytewise case-insensitive keys" $ do
+        Index.fixingHistoryNameKey "Euribor6M Actual/360" `shouldReturn` "EURIBOR6M ACTUAL/360"
+        Index.fixingHistoryNameKey "euribor6m actual/360" `shouldReturn` "EURIBOR6M ACTUAL/360"
+
       it "keepingSettings restores the evaluation date set inside it, on normal completion" $ do
         before' <- Context.evaluationDate
         let inside = addDays 365 before'

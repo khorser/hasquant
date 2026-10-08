@@ -449,6 +449,14 @@ void qlFreeString(char *p) {
 
 /* dates are passed as int = serial number of the date, the code assumes that Haskell bindings validate date */
 int qlSettingsEvaluationDate() {return Settings::instance().evaluationDate().operator Date().serialNumber();}
+int qlSettingsRawEvaluationDate() {return Settings::instance().evaluationDate().value().serialNumber();}
+const char *qlIndexHistoryNameKey(const char *name, QlError **e) { QlCallScope callbackScope(e);
+  try {
+    std::string key(name);
+    for (auto& c : key) c = static_cast<char>(std::toupper(static_cast<unsigned char>(c)));
+    return tracedup(key.c_str());
+  } catch (std::exception& er) { return handleException<const char *>(e, er); }
+}
 int qlSettingsEnforceTodaysHistoricFixings() {return Settings::instance().enforcesTodaysHistoricFixings();}
 
 void qlSettingsSetEvaluationDate(int x, QlError **e) { QlCallScope callbackScope(e);

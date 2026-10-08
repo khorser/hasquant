@@ -2,6 +2,8 @@
 extern "C" {
 #endif
   int qlSettingsEvaluationDate();
+  int qlSettingsRawEvaluationDate();
+  const char *qlIndexHistoryNameKey(const char *name, QlError **e);
   int qlSettingsEnforceTodaysHistoricFixings();
   void qlSettingsSetEvaluationDate(int x, QlError **e);
   void qlSettingsSetEnforceTodaysHistoricFixings(int x);

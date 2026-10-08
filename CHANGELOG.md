@@ -1,5 +1,8 @@
 ## 0.8.0.0 (2026)
 
+- Added value-based Settings snapshots with checked restoration, preserving floating dates
+  and observer settings, and native fixing-history name normalization for context owners.
+
 - Added QuantLib 1.44 support (currently tested against the release candidate), while retaining
   compatibility with 1.43. New bindings include Rough Heston pricing, mark-to-market cross-currency
   basis swaps, and FX reset cash flows. Calls requiring 1.44, and non-default values of arguments

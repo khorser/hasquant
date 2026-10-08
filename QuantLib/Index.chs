@@ -24,6 +24,7 @@ module QuantLib.Index
   , isValidFixingDate
   , fixingHistory
   , fixingHistoryNames
+  , fixingHistoryNameKey
     -- ** Historical return analysis
   , skipped
   , mean
@@ -115,6 +116,11 @@ fixingHistory i = do
 -- |Returns the names with an entry in QuantLib's process-global fixing store.  Names are
 -- case-insensitive in that store and can be shared by separate index instances.
 {#fun qlIndexManagerHistories as fixingHistoryNames{preCStringArray-`[String]'&peekCStringArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+
+-- |Normalizes a native history name with IndexManager's bytewise case-insensitive
+-- comparison. Use this key for ownership registries; Unicode case folding differs.
+{#fun qlIndexHistoryNameKey as fixingHistoryNameKey{`String' -- ^nativeName
+  ,preErrorCheck-`String'errorCheck*-}->`String'peekDynString*#}
 
 -- |Clears every native fixing history in QuantLib's process-global store, for all index names.
 -- This affects other index instances and is intended for explicit session or test cleanup.
