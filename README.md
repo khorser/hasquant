@@ -145,6 +145,8 @@ The trace defaults to stderr. Use a file to keep program output separate:
 
 Run GHCi: `cabal repl lib:hasquant`
 
+See `q` script in the project root for more options, [fzf](https://github.com/junegunn/fzf) is needed
+
 ### Pinned dependencies
 
 Dependencies are pinned to Stackage snapshots stored as cabal constraint files in `cabal/`:
