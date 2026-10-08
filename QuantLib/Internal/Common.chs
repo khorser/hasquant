@@ -369,7 +369,7 @@ data Exercise =
 -- |Candidate indices for broken IBOR periods, selected by nearest maturity or interpolated
 -- between bracketing maturities in calendar days. Candidates keep their own curves and histories.
 -- Their currency, fixing days/calendar and day counter must match; enable indexed coupons
--- when supplying a selection. Ignored on QuantLib 1.43.
+-- when supplying a selection. Requires QuantLib 1.44.
 data StubIndexSelection ibor
   = ClosestStubIndex !(NonEmpty (GenIborIndex ibor))
   | InterpolatedStubIndexes !(NonEmpty (GenIborIndex ibor))

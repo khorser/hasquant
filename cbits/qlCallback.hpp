@@ -24,6 +24,8 @@ struct QlError {
 
 void qlSetError(QlError** slot, const char* message);
 void qlUnsupportedVersion(QlError** slot, const char* call, const char* required);
+// False after reporting call as unsupported when a QuantLib <= 1.43 receives a non-default 1.44 argument.
+bool ql144Default(QlError** slot, const char* call, bool isDefault);
 
 class QlCallScope {
 public:

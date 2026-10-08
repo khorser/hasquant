@@ -52,11 +52,12 @@ import QuantLib.Model(hullWhite, g2, g2Dynamics, shortRate
  , hestonModel, batesModel, gjrGarchModel
  , liborForwardModel, liborForwardModelS0, asAffineModel, lfmHullWhiteParameterization, lfmHullWhiteCovariance, setCovarParam, LmVolatilityModel(..), LmCorrelationModel(..)
  , discountBond, setParams)
+import qualified QuantLib.Model as Model
 import QuantLib.PricingEngine(analyticH1HwEngine, H1HwMean(..), analyticHestonHullWhiteEngine, mcHestonHullWhiteEngine, fdHestonHullWhiteVanillaEngine
  , analyticHestonEngine, analyticBsmHullWhiteEngine, IntegrationControl(..), batesEngine, analyticGjrGarchEngine, mcEuropeanGjrGarchEngine, blackFormula, analyticCapFloorEngine)
 import QuantLib.Method(pathGenerator, next, asset, gaussianRsg, nextSequence, pathGeneratorSequence)
-import QuantLib.Math(FdmScheme(Hundsdorfer), RngTrait(..), StatisticsTrait(..), timeGrid, Interpolation(..), boxedRealMatrix, realMatrixFromVector, matrixRows, matrixColumns, matrixData, realMatrixData)
-import Control.Monad(replicateM, forM_, zipWithM_, foldM_)
+import QuantLib.Math(EndCriteria(..), OptimizationMethod(..), FdmScheme(Hundsdorfer), RngTrait(..), StatisticsTrait(..), timeGrid, Interpolation(..), boxedRealMatrix, realMatrixFromVector, matrixRows, matrixColumns, matrixData, realMatrixData)
+import Control.Monad(replicateM, forM_, zipWithM_, foldM_, (>=>))
 import QuantLib.Instrument.CapFloor(cap)
 import QuantLib.Time.Calendar(adjust, advance, calendar, BusinessDayConvention(..), CalendarConstructor(..))
 import QuantLib.Index.InterestRate(iborIndex, IborConstructor(..))
@@ -784,8 +785,37 @@ spec = do
           abs (x - y) / y `shouldSatisfy` (< 1.5e-2)
       it "refuses a negative equity-rate correlation" $ market $ \modelOf hw _ -> do
         m <- modelOf (0.04, 1.5, 0.05, 0.4, -0.6)
-        analyticH1HwEngine m hw (-0.1) (IntegrationOrder 144) (ExactMean 64) `shouldThrow` anyException
-        analyticH1HwEngine m hw (-0.1) (IntegrationTolerance 1.0e-8 1000) (ExactMean 64) `shouldThrow` anyException
+        forM_ [IntegrationOrder 144, IntegrationTolerance 1.0e-8 1000] $ \control ->
+          forM_ [FittedExponentialMean, ExactMean 64] $ \mean ->
+            analyticH1HwEngine m hw (-0.1) control mean `shouldThrow` anyException
+      -- Quotes generated where the fitted mean is NaN; calibration from elsewhere recovers the model.
+      it "calibrates a Heston model back to its own exact-mean H1-HW prices" $ Context.keepingSettingsGc $ do
+        Context.setEvaluationDate (Just refDate)
+        dc <- dayCounter Actual365FixedStandard
+        rTS <- simpleQuote 0.02 >>= \q -> flatForward (ReferenceDate refDate) q dc Continuous Annual
+        qTS <- simpleQuote 0.0 >>= \q -> flatForward (ReferenceDate refDate) q dc Continuous Annual
+        s0 <- simpleQuote 100.0
+        nullCal <- calendar Null
+        hw <- hullWhite rTS 0.05 0.03
+        let modelOf (v0, kappa, theta, sigma, rho) = hestonProcess rTS (Just qTS) s0 v0 kappa theta sigma rho QuadraticExponentialMartingale >>= hestonModel
+            truth = [0.05, 1.5, 0.4, -0.6, 0.04]
+        truthModel <- modelOf (0.04, 1.5, 0.05, 0.4, -0.6)
+        truthEngine <- analyticH1HwEngine truthModel hw 0.6 (IntegrationOrder 144) (ExactMean 64)
+        helpers <- sequence
+          [ do vol <- simpleQuote 0.2
+               helper <- Model.hestonModelHelper (months, Months) nullCal s0 strike vol rTS qTS Model.ImpliedVolError
+               Model.setPricingEngine helper truthEngine
+               price <- Model.modelValue helper
+               _ <- Model.impliedVolatility helper price 1.0e-12 1000 0.01 2.0 >>= setValue vol
+               pure helper
+          | months <- [6, 12, 24], strike <- [90, 100, 110] ]
+        fitted <- modelOf (0.06, 1.0, 0.04, 0.3, -0.3)
+        fitEngine <- analyticH1HwEngine fitted hw 0.6 (IntegrationOrder 144) (ExactMean 64)
+        forM_ helpers (`Model.setPricingEngine` fitEngine)
+        Model.calibrate fitted (fromList (map (, 1) helpers)) (LevenbergMarquardt 1.0e-8 1.0e-8 1.0e-8 False)
+          (EndCriteria 400 40 1.0e-8 1.0e-8 1.0e-8) Nothing []
+        Model.params fitted >>= zipWithM_ (\expected actual -> actual `shouldSatisfy` closePrec expected (1.0e-3 * abs expected)) truth
+        forM_ helpers (Model.calibrationError >=> (`shouldSatisfy` ((< 1.0e-6) . abs)))
 
     -- ported from test-suite/hybridhestonhullwhiteprocess.cpp::testAnalyticHestonHullWhitePricing:
     -- with the equity/short-rate correlation set to 0, an MC price on the joint

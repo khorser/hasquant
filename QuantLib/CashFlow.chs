@@ -1123,7 +1123,7 @@ iborLegWithOptions schedule idx notionals dc adj fixingDays gearings spreads cap
   ,`Bool' -- ^exCouponEndOfMonth
   ,fromEnumC`BusinessDayConvention' -- ^fixingConvention
   ,fromMaybeBool`Maybe Bool' -- ^useIndexedCoupons
-  ,withStubIndexSelection*`Maybe (StubIndexSelection ibor2)' -- ^stubIndexSelection (1.44 only)
+  ,withStubIndexSelection*`Maybe (StubIndexSelection ibor2)' -- ^stubIndexSelection (1.44; QuantLib 1.43 requires 'Nothing')
   ,preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
 
 -- |CMS leg builder (analog of 'iborLeg'), 12-arg core shape -- same defaults-hardcoding

@@ -21,7 +21,7 @@ import QuantLib.Instrument.Swap(fairSpread)
 import QuantLib.PricingEngine(midPointCdsEngine, midPointCdoEngine, integralCdoEngine, integralNtdEngine)
 import qualified QuantLib.Context as Context
 import QuantLib.Credit
-import QuantLib.Spec.Helpers(closePrec)
+import QuantLib.Spec.Helpers(closePrec, quantLibAtMost143, unsupportedQuantLib144)
 
 -- |Builds a small pool/basket/Gaussian-LHP-loss-model chain and checks the loss model actually
 -- wired up -- 'basketNotional' alone can't tell (it's a plain constructor echo, computed before
@@ -339,6 +339,19 @@ spec = do
       betweenDates <- defaultProbabilityBetween hazard (DateInterval refDate d1) False
       betweenTimes <- defaultProbabilityBetween hazard (TimeInterval 0 t1) False
       betweenTimes `shouldSatisfy` closePrec betweenDates 1.0e-10
+
+    it "refuses a CDS helper trade date on QuantLib 1.43" $
+      if not quantLibAtMost143 then pendingWith "1.44 accepts a trade date" else Context.keepingSettingsGc $ do
+        let refDate = fromGregorian 2015 6 15
+        Context.setEvaluationDate (Just refDate)
+        cal <- calendar TARGET
+        dc <- dayCounter Thirty360BondBasis
+        discountCurve <- simpleQuote 0.06 >>= \r -> flatForward (ReferenceDate refDate) r dc Continuous Annual
+        q <- simpleQuote 0.01
+        spreadCdsHelper q (5, Years) 1 cal Quarterly Following TwentiethIMM dc 0.4 discountCurve True True Nothing dc True Midpoint (Just refDate)
+          `shouldThrow` unsupportedQuantLib144 "spreadCdsHelper"
+        upfrontCdsHelper q 0.01 (5, Years) 1 cal Quarterly Following TwentiethIMM dc 0.4 discountCurve 3 True True Nothing dc True Midpoint (Just refDate)
+          `shouldThrow` unsupportedQuantLib144 "upfrontCdsHelper"
 
     it "matches fixed and moving references at default bootstrap settings" $ Context.keepingSettingsGc $ do
       let refDate = fromGregorian 2015 6 15

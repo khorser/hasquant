@@ -144,7 +144,7 @@ spec = describe "MTM cross-currency 1.44" $ do
         helpers <- forM basisData $ \(years, basis) -> do
           quote <- simpleQuote basis
           mtmCrossCurrencyBasisSwapRateHelper quote (years, Years) 2 cal Following False
-            eurIndex usdIndex collateral collateralBase basisBase resetBase Nothing 0 Nothing 2 cal Nothing Nothing Nothing
+            eurIndex usdIndex collateral collateralBase basisBase resetBase Nothing 0 Nothing 2 (Just cal) Nothing Nothing Nothing
         curve <- piecewiseYieldCurve (ReferenceDate today) (NE.fromList helpers) dc []
           (Iterative Discount LogLinear defaultIterativeBootstrapOpts) True
         let eurDiscount = if collateralBase then eurForecast else curve

@@ -77,7 +77,7 @@ Out of scope: reimplementing or independently binding QuantLib's interpolation, 
 - Identify which [OpenSourceRiskEngine](https://opensourcerisk.org) functionality should be bound, e.g. `https://github.com/OpenSourceRisk/Engine/blob/master/QuantExt/qle/indexes/fallbackiborindex.hpp`
 - Build a declarative embedded DSL as a sibling project to define contracts, portfolios, market data, and calculation scenarios (unpublished WIP), use it for XVA and other complext calculations
 - Expose that DSL through an agent-callable tool, so an LLM can construct and price products through validated hasquant operations rather than generated pricing logic.
-- Drop the exact-mean H1-HW engine (`cbits/qlExactMeanH1HwEngine.h`) and bind QuantLib's own once it ships an exact E[sqrt v] option for `AnalyticH1HWEngine`
+- Keep the exact-mean H1-HW backport (`cbits/qlExactMeanH1HwEngine.h`) until both supported QuantLib series ship `AnalyticH1HWEngine::VarianceRootMean::Exact` (1.45 at the earliest); meanwhile dispatch `ExactMean` to upstream where the linked version has it, and let the fitted-mean NaN test accept upstream's exception
 - See [github issues](https://github.com/khorser/hasquant/issues) for more formalized tasks
 
 # Testing

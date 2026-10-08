@@ -50,8 +50,10 @@ The status audit checks the actual declarations in `cbits/*.h`.
 Existing small tails are widened; wide constructor options records gain fields. Initial guesses
 receive borrowed times and previous data, return one trait-specific value per non-reference
 pillar, and retain native shared ownership for lazy calculation and recalculation.
-New arguments, their native validation and callbacks are ignored on 1.43. New calls report
-`UnsupportedQuantLibVersion` on 1.43. Direct mixed-compounding restrictions and non-finite
+On 1.43, new arguments accept only their upstream 1.44 defaults, meaning whatever the linked
+QuantLib does; any other value, including a stub selection, reports `UnsupportedQuantLibVersion`
+for the public call. The bootstrap initial guess is the exception: it is skipped without execution.
+New calls report `UnsupportedQuantLibVersion` on 1.43. Direct mixed-compounding restrictions and non-finite
 fair-rate/spread guards apply to both supported versions.
 
 ## Reviewed scope

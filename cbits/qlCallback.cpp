@@ -40,6 +40,17 @@ void qlUnsupportedVersion(QlError** slot, const char* call, const char* required
   *slot = ret(error.release());
 }
 
+bool ql144Default(QlError** slot, const char* call, bool isDefault) {
+#if QL_HEX_VERSION >= 0x01440000
+  (void)slot; (void)call; (void)isDefault;
+  return true;
+#else
+  if (isDefault) return true;
+  qlUnsupportedVersion(slot, call, "1.44");
+  return false;
+#endif
+}
+
 void hasquant::Callback::invoke(const QlCallbackArgs& args) const {
   if (currentCall && *currentCall->slot) throw CallbackFailure();
   void* failure = fn_(&args);

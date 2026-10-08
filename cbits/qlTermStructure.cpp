@@ -321,7 +321,8 @@ QlVolatilityTermStructure* qlOptionletVolatilityStructureAsVolatilityTermStructu
 // StrippedOptionletAdapter, itself an OptionletVolatilityStructure, mirroring qlConstantOptionletVol1
 // above. optionletFrequencyUnit < 0 is the ext::nullopt sentinel for optionletFrequency, same
 // convention as qlOptBusinessDayConvention/qlOptFrequency (TimeUnit starts at 0, so can't self-sentinel).
-QlOptionletVolatilityStructure* qlOptionletStripper1(QlCapFloorTermVolSurface* surface, QlIborIndex* index, double switchStrikes, double accuracy, unsigned maxIter, QlYieldTermStructure* discount, int type, double displacement, int dontThrow, int optionletFrequencyLen, int optionletFrequencyUnit, [[maybe_unused]] unsigned paymentLag, QlError **e) { QlCallScope callbackScope(e);
+QlOptionletVolatilityStructure* qlOptionletStripper1(QlCapFloorTermVolSurface* surface, QlIborIndex* index, double switchStrikes, double accuracy, unsigned maxIter, QlYieldTermStructure* discount, int type, double displacement, int dontThrow, int optionletFrequencyLen, int optionletFrequencyUnit, unsigned paymentLag, QlError **e) { QlCallScope callbackScope(e);
+  if (!ql144Default(e, "optionletStripper", paymentLag == 0)) return nullptr;
   try {return ret(new QlOptionletVolatilityStructure(shared_ptr<OptionletVolatilityStructure>(alloc(new StrippedOptionletAdapter(
             shared_ptr<OptionletStripper1>(alloc(new OptionletStripper1(*arg(surface), *arg(index), switchStrikes, accuracy, maxIter,
               qlNullableHandle(arg(discount)), (VolatilityType)type, displacement, (bool)dontThrow,
@@ -503,7 +504,8 @@ int qlSabrVolSurfaceOptionDateFromTenor(QlSabrVolSurface* o, int n, int u, QlErr
 // OptionletStripper2 builds an OptionletStripper1 internally (never exposed to Haskell, same
 // fusion as qlOptionletStripper1 above) then wraps OptionletStripper2 itself around it, keeping
 // the OptionletStripper2 shared_ptr so its own diagnostic getters below are reachable with no cast.
-QlOptionletStripper2* qlOptionletStripper2(QlCapFloorTermVolSurface* surface, QlIborIndex* index, double switchStrikes, double accuracy, unsigned maxIter, QlYieldTermStructure* discount, int type, double displacement, int dontThrow, int optionletFrequencyLen, int optionletFrequencyUnit, QlCapFloorTermVolCurve* atmCurve, [[maybe_unused]] unsigned paymentLag, QlError **e) { QlCallScope callbackScope(e);
+QlOptionletStripper2* qlOptionletStripper2(QlCapFloorTermVolSurface* surface, QlIborIndex* index, double switchStrikes, double accuracy, unsigned maxIter, QlYieldTermStructure* discount, int type, double displacement, int dontThrow, int optionletFrequencyLen, int optionletFrequencyUnit, QlCapFloorTermVolCurve* atmCurve, unsigned paymentLag, QlError **e) { QlCallScope callbackScope(e);
+  if (!ql144Default(e, "optionletStripperWithAtm", paymentLag == 0)) return nullptr;
   try {
     auto stripper1 = shared_ptr<OptionletStripper1>(alloc(new OptionletStripper1(*arg(surface), *arg(index),
         switchStrikes, accuracy, maxIter, qlNullableHandle(arg(discount)), (VolatilityType)type, displacement,
@@ -1218,7 +1220,8 @@ QlSabrSwaptionVolatilityCube* qlSabrSwaptionVolatilityCube(QlSwaptionVolatilityS
     int isAtmCalibrated,
     QlEndCriteria* endCriteria, QlOptimizationMethod* method,
     double maxErrorTolerance, double errorAccept, int useMaxError, unsigned maxGuesses,
-    int backwardFlat, double cutoffStrike, [[maybe_unused]] int singlePassCalibration, QlError **e) { QlCallScope callbackScope(e);
+    int backwardFlat, double cutoffStrike, int singlePassCalibration, QlError **e) { QlCallScope callbackScope(e);
+  if (!ql144Default(e, "sabrSwaptionVolatilityCube", !singlePassCalibration)) return nullptr;
   try {
     return ret(new QlSabrSwaptionVolatilityCube(alloc(new SabrSwaptionVolatilityCube(
             *arg(atmVolStructure),
@@ -1261,7 +1264,8 @@ QlNoArbSabrSwaptionVolatilityCube* qlNoArbSabrSwaptionVolatilityCube(QlSwaptionV
     int isAtmCalibrated,
     QlEndCriteria* endCriteria, QlOptimizationMethod* method,
     double maxErrorTolerance, double errorAccept, int useMaxError, unsigned maxGuesses,
-    int backwardFlat, double cutoffStrike, [[maybe_unused]] int singlePassCalibration, QlError **e) { QlCallScope callbackScope(e);
+    int backwardFlat, double cutoffStrike, int singlePassCalibration, QlError **e) { QlCallScope callbackScope(e);
+  if (!ql144Default(e, "noArbSabrSwaptionVolatilityCube", !singlePassCalibration)) return nullptr;
   try {
     return ret(new QlNoArbSabrSwaptionVolatilityCube(alloc(new NoArbSabrSwaptionVolatilityCube(
             *arg(atmVolStructure),
@@ -1314,7 +1318,8 @@ QlZabrSwaptionVolatilityCube* qlZabrSwaptionVolatilityCube(QlSwaptionVolatilityS
     int isAtmCalibrated,
     QlEndCriteria* endCriteria, QlOptimizationMethod* method,
     double maxErrorTolerance, double errorAccept, int useMaxError, unsigned maxGuesses,
-    int backwardFlat, double cutoffStrike, [[maybe_unused]] int singlePassCalibration, QlError **e) { QlCallScope callbackScope(e);
+    int backwardFlat, double cutoffStrike, int singlePassCalibration, QlError **e) { QlCallScope callbackScope(e);
+  if (!ql144Default(e, "zabrSwaptionVolatilityCube", !singlePassCalibration)) return nullptr;
   try {
     return ret(new QlZabrSwaptionVolatilityCube(alloc(new ZabrSwaptionVolatilityCube(
             *arg(atmVolStructure),
@@ -1505,11 +1510,13 @@ double qlDefaultProbabilityHelperImpliedQuoteOn(QlDefaultProbabilityHelper *o, Q
     return (*arg(o))->impliedQuote();
   } catch (std::exception& er) {return handleException<double>(e, er);}}
 
-QlDefaultProbabilityHelper* qlSpreadCdsHelper(QlQuote* runningSpread, int n, int u, int settlementDays, Calendar* calendar, int frequency, int paymentConvention, int rule, DayCounter* dayCounter, double recoveryRate, QlYieldTermStructure* discountCurve, int settlesAccrual, int paysAtDefaultTime, int startDate, DayCounter* lastPeriodDayCounter, int rebatesAccrual, int model, [[maybe_unused]] int tradeDate, QlError **e) { QlCallScope callbackScope(e);
+QlDefaultProbabilityHelper* qlSpreadCdsHelper(QlQuote* runningSpread, int n, int u, int settlementDays, Calendar* calendar, int frequency, int paymentConvention, int rule, DayCounter* dayCounter, double recoveryRate, QlYieldTermStructure* discountCurve, int settlesAccrual, int paysAtDefaultTime, int startDate, DayCounter* lastPeriodDayCounter, int rebatesAccrual, int model, int tradeDate, QlError **e) { QlCallScope callbackScope(e);
+  if (!ql144Default(e, "spreadCdsHelper", tradeDate == 0)) return nullptr;
   try {return ret(new QlDefaultProbabilityHelper(alloc(new SpreadCdsHelper(*arg(runningSpread), Period(n, (TimeUnit)u), settlementDays, *arg(calendar), (Frequency)frequency, (BusinessDayConvention)paymentConvention, (DateGeneration::Rule)rule, *arg(dayCounter), recoveryRate, *arg(discountCurve), settlesAccrual, paysAtDefaultTime,
             qlNullableDate(startDate), *arg(lastPeriodDayCounter), rebatesAccrual, (CreditDefaultSwap::PricingModel)model QL144_ARGS(qlNullableDate(tradeDate))))));
   } catch (std::exception& er) {return handleException<QlDefaultProbabilityHelper*>(e, er);}}
-QlDefaultProbabilityHelper* qlUpfrontCdsHelper(QlQuote* upfront, double runningSpread, int n, int u, int settlementDays, Calendar* calendar, int frequency, int paymentConvention, int rule, DayCounter* dayCounter, double recoveryRate, QlYieldTermStructure* discountCurve, unsigned upfrontSettlementDays, int settlesAccrual, int paysAtDefaultTime, int startDate, DayCounter* lastPeriodDayCounter, int rebatesAccrual, int model, [[maybe_unused]] int tradeDate, QlError **e) { QlCallScope callbackScope(e);
+QlDefaultProbabilityHelper* qlUpfrontCdsHelper(QlQuote* upfront, double runningSpread, int n, int u, int settlementDays, Calendar* calendar, int frequency, int paymentConvention, int rule, DayCounter* dayCounter, double recoveryRate, QlYieldTermStructure* discountCurve, unsigned upfrontSettlementDays, int settlesAccrual, int paysAtDefaultTime, int startDate, DayCounter* lastPeriodDayCounter, int rebatesAccrual, int model, int tradeDate, QlError **e) { QlCallScope callbackScope(e);
+  if (!ql144Default(e, "upfrontCdsHelper", tradeDate == 0)) return nullptr;
   try {return ret(new QlDefaultProbabilityHelper(alloc(new UpfrontCdsHelper(*arg(upfront), runningSpread, Period(n, (TimeUnit)u), settlementDays, *arg(calendar), (Frequency)frequency, (BusinessDayConvention)paymentConvention, (DateGeneration::Rule)rule, *arg(dayCounter), recoveryRate, *arg(discountCurve), upfrontSettlementDays, settlesAccrual, paysAtDefaultTime,
             qlNullableDate(startDate), *arg(lastPeriodDayCounter), rebatesAccrual, (CreditDefaultSwap::PricingModel)model QL144_ARGS(qlNullableDate(tradeDate))))));
   } catch (std::exception& er) {return handleException<QlDefaultProbabilityHelper*>(e, er);}}
@@ -2022,13 +2029,15 @@ QlYieldTermStructure *qlMultiCurveAddNonBootstrappedCurve(QlMultiCurve *mc, QlRe
 // (impliedQuote/accept/setTermStructure/swap() are visitor-pattern/internal plumbing, matching
 // the existing FraRateHelper/SwapRateHelper precedent of leaving those unbound).
 QlRateHelper *qlIborIborBasisSwapRateHelper(QlQuote *basis, int tenorLen, int tenorUnit, unsigned settlementDays, Calendar *calendar, int convention, int endOfMonth,
-  QlIborIndex *baseIndex, QlIborIndex *otherIndex, QlYieldTermStructure *discountHandle, int bootstrapBaseCurve, [[maybe_unused]] int useIndexedCoupons, [[maybe_unused]] int rule, [[maybe_unused]] int paymentLag, [[maybe_unused]] QlStubIndexSelection* baseStub, [[maybe_unused]] QlStubIndexSelection* otherStub, QlError **e) { QlCallScope callbackScope(e);
+  QlIborIndex *baseIndex, QlIborIndex *otherIndex, QlYieldTermStructure *discountHandle, int bootstrapBaseCurve, int useIndexedCoupons, int rule, int paymentLag, QlStubIndexSelection* baseStub, QlStubIndexSelection* otherStub, QlError **e) { QlCallScope callbackScope(e);
+  if (!ql144Default(e, "iborIborBasisSwapRateHelper", useIndexedCoupons == -1 && rule == DateGeneration::Backward && paymentLag == 0 && !baseStub && !otherStub)) return nullptr;
   try {
     return ret(new QlRateHelper(alloc(new IborIborBasisSwapRateHelper(*arg(basis), Period(tenorLen, (TimeUnit)tenorUnit), settlementDays, *arg(calendar), (BusinessDayConvention)convention, endOfMonth,
       *arg(baseIndex), *arg(otherIndex), *arg(discountHandle), bootstrapBaseCurve QL144_ARGS(qlOptBool(useIndexedCoupons), (DateGeneration::Rule)rule, paymentLag, qlStubSelection(baseStub), qlStubSelection(otherStub))))));
   } catch (std::exception& er) {return handleException<QlRateHelper*>(e, er);}}
 QlRateHelper *qlOvernightIborBasisSwapRateHelper(QlQuote *basis, int tenorLen, int tenorUnit, unsigned settlementDays, Calendar *calendar, int convention, int endOfMonth,
-  QlOvernightIndex *baseIndex, QlIborIndex *otherIndex, QlYieldTermStructure *discountHandle, [[maybe_unused]] int bootstrapBaseCurve, [[maybe_unused]] int paymentLag, [[maybe_unused]] int overnightPaymentFrequency, [[maybe_unused]] int useIndexedCoupons, [[maybe_unused]] int rule, [[maybe_unused]] int averagingMethod, [[maybe_unused]] int telescopicValueDates, [[maybe_unused]] int basisOnIborLeg, [[maybe_unused]] QlStubIndexSelection* iborStub, QlError **e) { QlCallScope callbackScope(e);
+  QlOvernightIndex *baseIndex, QlIborIndex *otherIndex, QlYieldTermStructure *discountHandle, int bootstrapBaseCurve, int paymentLag, int overnightPaymentFrequency, int useIndexedCoupons, int rule, int averagingMethod, int telescopicValueDates, int basisOnIborLeg, QlStubIndexSelection* iborStub, QlError **e) { QlCallScope callbackScope(e);
+  if (!ql144Default(e, "overnightIborBasisSwapRateHelper", !bootstrapBaseCurve && paymentLag == 0 && overnightPaymentFrequency < 0 && useIndexedCoupons == -1 && rule == DateGeneration::Backward && averagingMethod == RateAveraging::Compound && !telescopicValueDates && !basisOnIborLeg && !iborStub)) return nullptr;
   try {
     return ret(new QlRateHelper(alloc(new OvernightIborBasisSwapRateHelper(*arg(basis), Period(tenorLen, (TimeUnit)tenorUnit), settlementDays, *arg(calendar), (BusinessDayConvention)convention, endOfMonth,
       *arg(baseIndex), *arg(otherIndex), qlNullableHandle(arg(discountHandle)) QL144_ARGS(bootstrapBaseCurve, paymentLag, overnightPaymentFrequency < 0 ? optional<Frequency>() : optional<Frequency>((Frequency)overnightPaymentFrequency), qlOptBool(useIndexedCoupons), (DateGeneration::Rule)rule, (RateAveraging::Type)averagingMethod, telescopicValueDates, basisOnIborLeg, qlStubSelection(iborStub))))));
@@ -2040,7 +2049,8 @@ QlRateHelper *qlOvernightIborBasisSwapRateHelper(QlQuote *basis, int tenorLen, i
 QlRateHelper *qlConstNotionalCrossCurrencyBasisSwapRateHelper(QlQuote *basis, int tenorLen, int tenorUnit, unsigned fixingDays, Calendar *calendar, int convention, int endOfMonth,
   QlIborIndex *baseCurrencyIndex, QlIborIndex *quoteCurrencyIndex, QlYieldTermStructure *collateralCurve,
   int isFxBaseCurrencyCollateralCurrency, int isBasisOnFxBaseCurrencyLeg,
-  int paymentFrequency, int paymentLag, int quoteCurrencyPaymentFrequency, [[maybe_unused]] int useIndexedCoupons, [[maybe_unused]] int paymentLagOnNotionalExchanges, [[maybe_unused]] QlStubIndexSelection* baseStub, [[maybe_unused]] QlStubIndexSelection* quoteStub, QlError **e) { QlCallScope callbackScope(e);
+  int paymentFrequency, int paymentLag, int quoteCurrencyPaymentFrequency, int useIndexedCoupons, int paymentLagOnNotionalExchanges, QlStubIndexSelection* baseStub, QlStubIndexSelection* quoteStub, QlError **e) { QlCallScope callbackScope(e);
+  if (!ql144Default(e, "constNotionalCrossCurrencyBasisSwapRateHelper", useIndexedCoupons == -1 && !paymentLagOnNotionalExchanges && !baseStub && !quoteStub)) return nullptr;
   try {
     return ret(new QlRateHelper(alloc(new ConstNotionalCrossCurrencyBasisSwapRateHelper(*arg(basis), Period(tenorLen, (TimeUnit)tenorUnit), fixingDays, *arg(calendar), (BusinessDayConvention)convention, endOfMonth,
       *arg(baseCurrencyIndex), *arg(quoteCurrencyIndex), *arg(collateralCurve),
@@ -2052,17 +2062,19 @@ QlRateHelper *qlConstNotionalCrossCurrencyBasisSwapRateHelper(QlQuote *basis, in
 QlRateHelper *qlMtMCrossCurrencyBasisSwapRateHelper(QlQuote *basis, int tenorLen, int tenorUnit, unsigned fixingDays, Calendar *calendar, int convention, int endOfMonth,
   QlIborIndex *baseCurrencyIndex, QlIborIndex *quoteCurrencyIndex, QlYieldTermStructure *collateralCurve,
   int isFxBaseCurrencyCollateralCurrency, int isBasisOnFxBaseCurrencyLeg, int isFxBaseCurrencyLegResettable,
-  int paymentFrequency, int paymentLag, int quoteCurrencyPaymentFrequency, [[maybe_unused]] unsigned fxResetFixingDays, [[maybe_unused]] Calendar* fxResetFixingCalendar, [[maybe_unused]] int useIndexedCoupons, [[maybe_unused]] QlStubIndexSelection* baseStub, [[maybe_unused]] QlStubIndexSelection* quoteStub, QlError **e) { QlCallScope callbackScope(e);
+  int paymentFrequency, int paymentLag, int quoteCurrencyPaymentFrequency, unsigned fxResetFixingDays, Calendar* fxResetFixingCalendar, int useIndexedCoupons, QlStubIndexSelection* baseStub, QlStubIndexSelection* quoteStub, QlError **e) { QlCallScope callbackScope(e);
+  if (!ql144Default(e, "mtmCrossCurrencyBasisSwapRateHelper", fxResetFixingDays == 0 && !fxResetFixingCalendar && useIndexedCoupons == -1 && !baseStub && !quoteStub)) return nullptr;
   try {
     return ret(new QlRateHelper(alloc(new MtMCrossCurrencyBasisSwapRateHelper(*arg(basis), Period(tenorLen, (TimeUnit)tenorUnit), fixingDays, *arg(calendar), (BusinessDayConvention)convention, endOfMonth,
       *arg(baseCurrencyIndex), *arg(quoteCurrencyIndex), *arg(collateralCurve),
       isFxBaseCurrencyCollateralCurrency, isBasisOnFxBaseCurrencyLeg, isFxBaseCurrencyLegResettable,
       paymentFrequency < 0 ? optional<Frequency>() : optional<Frequency>((Frequency)paymentFrequency),
       paymentLag,
-      quoteCurrencyPaymentFrequency < 0 ? optional<Frequency>() : optional<Frequency>((Frequency)quoteCurrencyPaymentFrequency) QL144_ARGS(fxResetFixingDays, *fxResetFixingCalendar, qlOptBool(useIndexedCoupons), qlStubSelection(baseStub), qlStubSelection(quoteStub))))));
+      quoteCurrencyPaymentFrequency < 0 ? optional<Frequency>() : optional<Frequency>((Frequency)quoteCurrencyPaymentFrequency) QL144_ARGS(fxResetFixingDays, fxResetFixingCalendar ? *fxResetFixingCalendar : Calendar(), qlOptBool(useIndexedCoupons), qlStubSelection(baseStub), qlStubSelection(quoteStub))))));
   } catch (std::exception& er) {return handleException<QlRateHelper*>(e, er);}}
 QlRateHelper *qlConstNotionalCrossCurrencySwapRateHelper(QlQuote *fixedRate, int tenorLen, int tenorUnit, unsigned fixingDays, Calendar *calendar, int convention, int endOfMonth,
-  int fixedFrequency, DayCounter *fixedDayCount, QlIborIndex *floatIndex, QlYieldTermStructure *collateralCurve, int collateralOnFixedLeg, int paymentLag, [[maybe_unused]] int useIndexedCoupons, [[maybe_unused]] int floatPaymentFrequency, [[maybe_unused]] QlStubIndexSelection* floatStub, QlError **e) { QlCallScope callbackScope(e);
+  int fixedFrequency, DayCounter *fixedDayCount, QlIborIndex *floatIndex, QlYieldTermStructure *collateralCurve, int collateralOnFixedLeg, int paymentLag, int useIndexedCoupons, int floatPaymentFrequency, QlStubIndexSelection* floatStub, QlError **e) { QlCallScope callbackScope(e);
+  if (!ql144Default(e, "constNotionalCrossCurrencySwapRateHelper", useIndexedCoupons == -1 && floatPaymentFrequency < 0 && !floatStub)) return nullptr;
   try {
     return ret(new QlRateHelper(alloc(new ConstNotionalCrossCurrencySwapRateHelper(*arg(fixedRate), Period(tenorLen, (TimeUnit)tenorUnit), fixingDays, *arg(calendar), (BusinessDayConvention)convention, endOfMonth,
       (Frequency)fixedFrequency, *arg(fixedDayCount), *arg(floatIndex), *arg(collateralCurve), collateralOnFixedLeg, paymentLag QL144_ARGS(qlOptBool(useIndexedCoupons), floatPaymentFrequency < 0 ? optional<Frequency>() : optional<Frequency>((Frequency)floatPaymentFrequency), qlStubSelection(floatStub))))));
@@ -2217,7 +2229,8 @@ QlOISRateHelper* qlOISRateHelper(unsigned settlementDays, int l, int u, QlQuote*
   int telescopicValueDates, int paymentLag, int paymentConvention, int paymentFrequency, Calendar* paymentCalendar,
   int fl, int fu, QlQuote* overnightSpread, int pillar, int customPillarDate, int averagingMethod, int endOfMonth, int fixedPaymentFrequency,
   Calendar* fixedCalendar, unsigned lookbackDays, unsigned lockoutDays, int applyObservationShift,
-  QlFloatingRateCouponPricer* pricer, int rule, Calendar* overnightCalendar, int convention, [[maybe_unused]] DayCounter* fixedDayCount, QlError **e) { QlCallScope callbackScope(e);
+  QlFloatingRateCouponPricer* pricer, int rule, Calendar* overnightCalendar, int convention, DayCounter* fixedDayCount, QlError **e) { QlCallScope callbackScope(e);
+  if (!ql144Default(e, "oisRateHelperWithOptions", !fixedDayCount)) return nullptr;
   try {return ret(new QlOISRateHelper(alloc(new OISRateHelper(settlementDays, Period(l, (TimeUnit)u), *arg(fixedRate), *arg(overnightIndex), qlNullableHandle(arg(discountingCurve)),
     telescopicValueDates, paymentLag, (BusinessDayConvention)paymentConvention, (Frequency)paymentFrequency, *arg(paymentCalendar),
     Period(fl, (TimeUnit)fu),
@@ -2231,7 +2244,8 @@ QlOISRateHelper* qlOISRateHelper2(int start, int end, QlQuote* fixedRate, QlOver
   int telescopicValueDates, int paymentLag, int paymentConvention, int paymentFrequency, Calendar* paymentCalendar,
   QlQuote* overnightSpread, int pillar, int customPillarDate, int averagingMethod, int endOfMonth, int fixedPaymentFrequency,
   Calendar* fixedCalendar, unsigned lookbackDays, unsigned lockoutDays, int applyObservationShift,
-  QlFloatingRateCouponPricer* pricer, int rule, Calendar* overnightCalendar, int convention, [[maybe_unused]] DayCounter* fixedDayCount, QlError **e) { QlCallScope callbackScope(e);
+  QlFloatingRateCouponPricer* pricer, int rule, Calendar* overnightCalendar, int convention, DayCounter* fixedDayCount, QlError **e) { QlCallScope callbackScope(e);
+  if (!ql144Default(e, "oisRateHelperWithOptions", !fixedDayCount)) return nullptr;
     try {return ret(new QlOISRateHelper(alloc(new OISRateHelper(Date(start), Date(end), *arg(fixedRate), *arg(overnightIndex), qlNullableHandle(arg(discountingCurve)),
     telescopicValueDates, paymentLag, (BusinessDayConvention)paymentConvention, (Frequency)paymentFrequency, *arg(paymentCalendar),
     overnightSpread ? std::variant<Spread, Handle<Quote>>(*arg(overnightSpread)) : std::variant<Spread, Handle<Quote>>(Spread(0.0)),

@@ -3,7 +3,7 @@ module QuantLib.Spec.TermStructure (spec) where
 
 import Control.Exception(throwIO, IOException)
 import Data.IORef
-import Control.Monad(replicateM, forM_, zipWithM, (>=>))
+import Control.Monad(replicateM, forM_, when, zipWithM, (>=>))
 
 import Test.Hspec hiding(before, after)
 import Test.Hspec.QuickCheck(prop)
@@ -633,11 +633,41 @@ spec = do
             i3 i6 curve True True Nothing 0 Nothing Nothing False Nothing Nothing >>= rateHelperFixingDependencies
           nub (map fst basisDeps) `shouldMatchList` names
           (Just mtmDeps) <- mtmCrossCurrencyBasisSwapRateHelper basis (2, Years) 2 cal ModifiedFollowing False
-            i3 i6 curve True True True Nothing 0 Nothing 0 cal Nothing Nothing Nothing >>= rateHelperFixingDependencies
+            i3 i6 curve True True True Nothing 0 Nothing 0 Nothing Nothing Nothing Nothing >>= rateHelperFixingDependencies
           nub (map fst mtmDeps) `shouldMatchList` names
           (Just fixedDeps) <- constNotionalCrossCurrencySwapRateHelper q (2, Years) 2 cal ModifiedFollowing False
             Annual thirty360dc i6 curve True 0 Nothing Nothing Nothing >>= rateHelperFixingDependencies
           nub (map fst fixedDeps) `shouldBe` drop 1 names
+
+      it "refuses non-default QuantLib 1.44 helper arguments on 1.43" $
+        if not quantLibAtMost143 then pendingWith "1.44 accepts these arguments" else Context.keepingSettingsGc $ do
+          Context.setEvaluationDate (Just (2 `january` 2024))
+          cal <- calendar TARGET
+          actual365dc <- dayCounter Actual365FixedStandard
+          thirty360dc <- dayCounter Thirty360BondBasis
+          q <- Quote.simpleQuote 0.03
+          curve <- flatForward (SettlementDays 0 cal) q actual365dc IR.Continuous Annual
+          i3 <- iborIndex Euribor3M (Just curve)
+          i6 <- iborIndex Euribor6M (Just curve)
+          sofr <- overnightIborIndex Sofr (Just curve)
+          basis <- Quote.simpleQuote 0.001
+          iborIborBasisSwapRateHelper basis (2, Years) 2 cal ModifiedFollowing False i3 i6 curve True Nothing Backward 1 Nothing Nothing
+            `shouldThrow` unsupportedQuantLib144 "iborIborBasisSwapRateHelper"
+          overnightIborBasisSwapRateHelper basis (2, Years) 2 cal ModifiedFollowing False sofr i3 (Just curve)
+            False 0 Nothing Nothing Backward AveragingCompound True False Nothing
+            `shouldThrow` unsupportedQuantLib144 "overnightIborBasisSwapRateHelper"
+          constNotionalCrossCurrencyBasisSwapRateHelper basis (2, Years) 2 cal ModifiedFollowing False
+            i3 i6 curve True True Nothing 0 Nothing Nothing True Nothing Nothing
+            `shouldThrow` unsupportedQuantLib144 "constNotionalCrossCurrencyBasisSwapRateHelper"
+          mtmCrossCurrencyBasisSwapRateHelper basis (2, Years) 2 cal ModifiedFollowing False
+            i3 i6 curve True True True Nothing 0 Nothing 2 (Just cal) Nothing Nothing Nothing
+            `shouldThrow` unsupportedQuantLib144 "mtmCrossCurrencyBasisSwapRateHelper"
+          constNotionalCrossCurrencySwapRateHelper q (2, Years) 2 cal ModifiedFollowing False
+            Annual thirty360dc i6 curve True 0 Nothing (Just Quarterly) Nothing
+            `shouldThrow` unsupportedQuantLib144 "constNotionalCrossCurrencySwapRateHelper"
+          oisRateHelperWithOptions (OisTenor 2 (1, Years) (0, Days)) q sofr Nothing
+            defaultOisRateHelperOpts { oisFixedDayCount = Just thirty360dc }
+            `shouldThrow` unsupportedQuantLib144 "oisRateHelperWithOptions"
 
       it "reports a started overnight-index futures contract's fixings up to the evaluation date" $
         Context.keepingSettingsGc $ do
@@ -1308,6 +1338,9 @@ spec = do
             [(n, Years) | n <- [1 .. 10]] [0.02, 0.05, 0.08] volMatrix dc
           strippedVol <- Vol.optionletStripper capVolSurface idx Nothing 1.0e-6 100
             (Just discountH) IR.ShiftedLognormal 0 False Nothing 0
+          when quantLibAtMost143 $
+            Vol.optionletStripper capVolSurface idx Nothing 1.0e-6 100 (Just discountH) IR.ShiftedLognormal 0 False Nothing 2
+              `shouldThrow` unsupportedQuantLib144 "optionletStripper"
           strippedEng <- blackCapFloorEngineFromVolatilityStructure discountH strippedVol
           setPricingEngine capfl strippedEng
           priceStripped <- npv capfl
@@ -2343,6 +2376,11 @@ spec = do
                     -- ("less functions than available variables"), so pin beta at the guess.
                     False True False False False Nothing Nothing False 50 False 0.0001 Nothing Nothing False
           v <- Vol.swaptionVolatility cube (Vol.OptionDate (10 `december` 2013)) (Vol.SwapTenor (2, Years)) 0.03 False
+          when quantLibAtMost143 $
+            Vol.sabrSwaptionVolatilityCube atmVol optionTenors swapTenors strikeSpreads volSpreads
+              swapIndexBase shortSwapIndexBase False parametersGuess
+              False True False False False Nothing Nothing False 50 False 0.0001 Nothing Nothing True
+              `shouldThrow` unsupportedQuantLib144 "sabrSwaptionVolatilityCube"
           -- SABR calibration is a least-squares fit, not exact recovery, so this is deliberately a
           -- much looser tolerance than the exact-grid-recovery checks above -- don't tighten it.
           abs (v - flatVol) `shouldSatisfy` (< 1.0e-2)

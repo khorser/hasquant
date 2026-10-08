@@ -382,8 +382,8 @@ swapFromLegs = (uncurry qlSwap1) . unzip
   ,`Bool' -- ^intermediateCapitalExchange
   ,`Bool' -- ^finalCapitalExchange
   ,fromMaybeEnum`Maybe BusinessDayConvention' -- ^paymentConvention
-  ,fromIntegral`Int' -- ^paymentLag (1.44 only)
-  ,withCalendar*`Calendar' -- ^paymentCalendar (1.44 only)
+  ,fromIntegral`Int' -- ^paymentLag (1.44; QuantLib 1.43 requires 0)
+  ,withMaybeCalendar*`Maybe Calendar' -- ^paymentCalendar, 'Nothing' for each leg's schedule calendar (1.44; QuantLib 1.43 requires 'Nothing')
   ,preErrorCheck-`String'errorCheck*-}->`NonstandardSwap'peekNonstandardSwap*#}
 
 -- |As 'nonstandardSwap', but with a per-period gearing and spread instead of one shared value.
@@ -401,8 +401,8 @@ swapFromLegs = (uncurry qlSwap1) . unzip
   ,`Bool' -- ^intermediateCapitalExchange
   ,`Bool' -- ^finalCapitalExchange
   ,fromMaybeEnum`Maybe BusinessDayConvention' -- ^paymentConvention
-  ,fromIntegral`Int' -- ^paymentLag (1.44 only)
-  ,withCalendar*`Calendar' -- ^paymentCalendar (1.44 only)
+  ,fromIntegral`Int' -- ^paymentLag (1.44; QuantLib 1.43 requires 0)
+  ,withMaybeCalendar*`Maybe Calendar' -- ^paymentCalendar, 'Nothing' for each leg's schedule calendar (1.44; QuantLib 1.43 requires 'Nothing')
   ,preErrorCheck-`String'errorCheck*-}->`NonstandardSwap'peekNonstandardSwap*#}
 
 -- |Per-period fixed rate, one entry per fixed-leg accrual period. For a swap built via
@@ -671,7 +671,7 @@ constNotionalCrossCurrencySwapFromLegs legsPayer = qlConstNotionalCrossCurrencyS
 -- defaults (OIS payment lag, compound-spread, lookback, observation shift, lockout,
 -- averaging method per leg, plus a shared telescopic-value-dates flag; ignored for a plain Ibor
 -- 'payIndex'\/'recIndex'). Indexed coupons, lagged notional exchanges and stub selections are
--- available on QuantLib 1.44 and ignored on 1.43. Override only what's needed on
+-- available on QuantLib 1.44; 1.43 accepts only their defaults. Override only what's needed on
 -- 'defaultConstNotionalCrossCurrencyBasisSwapOpts'.
 constNotionalCrossCurrencyBasisSwap :: Double -> Currency -> Schedule -> GenIborIndex ibor1 -> Double -> Double
   -> Double -> Currency -> Schedule -> GenIborIndex ibor2 -> Double -> Double
@@ -716,10 +716,10 @@ constNotionalCrossCurrencyBasisSwap payNominal payCurrency paySchedule payIndex 
   ,fromIntegral`Word' -- ^recLockoutDays
   ,`RateAveragingType' -- ^recAveragingMethod
   ,`Bool' -- ^telescopicValueDates
-  ,fromMaybeBool`Maybe Bool' -- ^useIndexedCoupons (1.44 only)
-  ,`Bool' -- ^paymentLagOnNotionalExchanges (1.44 only)
-  ,withStubIndexSelection*`Maybe (StubIndexSelection ibor3)' -- ^payStub (1.44 only)
-  ,withStubIndexSelection*`Maybe (StubIndexSelection ibor4)' -- ^recStub (1.44 only)
+  ,fromMaybeBool`Maybe Bool' -- ^useIndexedCoupons (1.44; QuantLib 1.43 requires 'Nothing')
+  ,`Bool' -- ^paymentLagOnNotionalExchanges (1.44; QuantLib 1.43 requires 'False')
+  ,withStubIndexSelection*`Maybe (StubIndexSelection ibor3)' -- ^payStub (1.44; QuantLib 1.43 requires 'Nothing')
+  ,withStubIndexSelection*`Maybe (StubIndexSelection ibor4)' -- ^recStub (1.44; QuantLib 1.43 requires 'Nothing')
   ,preErrorCheck-`String'errorCheck*-}->`ConstNotionalCrossCurrencyBasisSwap'peekConstNotionalCrossCurrencyBasisSwap*#}
 
 -- |The pay-leg spread that would make the swap's NPV zero.
@@ -759,8 +759,8 @@ constNotionalCrossCurrencyFixedVsFloatingSwap :: SwapType
   -> Bool -- ^floatCompoundSpread
   -> OvernightObservation -- ^floatObservation
   -> RateAveragingType -- ^floatAveragingMethod
-  -> Maybe Bool -- ^useIndexedCoupons, ignored on QuantLib 1.43
-  -> Maybe (StubIndexSelection ibor2) -- ^floatStubIndexSelection, ignored on QuantLib 1.43
+  -> Maybe Bool -- ^useIndexedCoupons (1.44; QuantLib 1.43 requires 'Nothing')
+  -> Maybe (StubIndexSelection ibor2) -- ^floatStubIndexSelection (1.44; QuantLib 1.43 requires 'Nothing')
   -> IO ConstNotionalCrossCurrencyFixedVsFloatingSwap
 constNotionalCrossCurrencyFixedVsFloatingSwap t fxN fxC fxS fxR fxDc fxBdc fxLag fxCal
   flN flC flS flIdx flSprd flBdc flLag flCal telescopic compound obs avg indexed stub =
@@ -791,8 +791,8 @@ constNotionalCrossCurrencyFixedVsFloatingSwap t fxN fxC fxS fxR fxDc fxBdc fxLag
   ,`Bool' -- ^floatObservationShift
   ,fromIntegral`Word' -- ^floatLockoutDays
   ,`RateAveragingType' -- ^floatAveragingMethod
-  ,fromMaybeBool`Maybe Bool' -- ^useIndexedCoupons (1.44 only)
-  ,withStubIndexSelection*`Maybe (StubIndexSelection ibor2)' -- ^floatStub (1.44 only)
+  ,fromMaybeBool`Maybe Bool' -- ^useIndexedCoupons (1.44; QuantLib 1.43 requires 'Nothing')
+  ,withStubIndexSelection*`Maybe (StubIndexSelection ibor2)' -- ^floatStub (1.44; QuantLib 1.43 requires 'Nothing')
   ,preErrorCheck-`String'errorCheck*-}->`ConstNotionalCrossCurrencyFixedVsFloatingSwap'peekConstNotionalCrossCurrencyFixedVsFloatingSwap*#}
 
 -- |The fixed rate that would make the swap's NPV zero.
@@ -870,7 +870,7 @@ overnightIndexedSwap :: SwapType
   -> Bool -- ^telescopicValueDates
   -> RateAveragingType -- ^averagingMethod
   -> OvernightObservation
-  -> Maybe Int -- ^roundingPrecision, ignored on QuantLib 1.43
+  -> Maybe Int -- ^roundingPrecision (1.44; QuantLib 1.43 requires 'Nothing')
   -> IO OvernightIndexedSwap
 overnightIndexedSwap t n sch r dc idx sprd lag adj cal telescopic avg obs precision =
   overnightIndexedSwapRaw t n sch r dc idx sprd lag adj cal telescopic avg
@@ -888,7 +888,7 @@ overnightIndexedSwap t n sch r dc idx sprd lag adj cal telescopic avg obs precis
   ,fromMaybeInt`Maybe Word' -- ^lookbackDays
   ,fromIntegral`Word' -- ^lockoutDays
   ,`Bool' -- ^applyObservationShift
-  ,fromMaybeInt`Maybe Int' -- ^roundingPrecision (1.44 only)
+  ,fromMaybeInt`Maybe Int' -- ^roundingPrecision (1.44; QuantLib 1.43 requires 'Nothing')
   ,preErrorCheck-`String'errorCheck*-}->`OvernightIndexedSwap'peekOvernightIndexedSwap*#}
 
 -- |As 'overnightIndexedSwap', but with a per-period nominal schedule instead of a single flat nominal.
@@ -905,7 +905,7 @@ overnightIndexedSwapFromNominals :: SwapType
   -> Bool -- ^telescopicValueDates
   -> RateAveragingType -- ^averagingMethod
   -> OvernightObservation
-  -> Maybe Int -- ^roundingPrecision, ignored on QuantLib 1.43
+  -> Maybe Int -- ^roundingPrecision (1.44; QuantLib 1.43 requires 'Nothing')
   -> IO OvernightIndexedSwap
 overnightIndexedSwapFromNominals t ns sch r dc idx sprd lag adj cal telescopic avg obs precision =
   overnightIndexedSwapFromNominalsRaw t ns sch r dc idx sprd lag adj cal telescopic avg
@@ -924,7 +924,7 @@ overnightIndexedSwapFromNominals t ns sch r dc idx sprd lag adj cal telescopic a
   ,fromMaybeInt`Maybe Word' -- ^lookbackDays
   ,fromIntegral`Word' -- ^lockoutDays
   ,`Bool' -- ^applyObservationShift
-  ,fromMaybeInt`Maybe Int' -- ^roundingPrecision (1.44 only)
+  ,fromMaybeInt`Maybe Int' -- ^roundingPrecision (1.44; QuantLib 1.43 requires 'Nothing')
   ,preErrorCheck-`String'errorCheck*-}->`OvernightIndexedSwap'peekOvernightIndexedSwap*#}
 
 -- |The swap's maturity date, or 'Nothing' if the swap has no legs.

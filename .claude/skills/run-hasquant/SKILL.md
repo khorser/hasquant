@@ -135,8 +135,8 @@ For version-dependent expectations, reuse `QuantLib.Spec.Helpers.quantLibAtMost1
 It parses major/minor numerically, including suffixes such as `1.44-rc`; do not compare
 version strings lexically. hasquant applies QuantLib 1.44's direct mixed-compounding restrictions on both supported versions.
 For a version upgrade, build and run the suite against both matching header/library installations.
-New calls on 1.43 must throw `UnsupportedQuantLibVersion`; new arguments are ignored, including
-validation and callback execution.
+New calls on 1.43 must throw `UnsupportedQuantLibVersion`, and so must non-default values of new
+arguments; test both with `unsupportedQuantLib144`. Only the bootstrap initial guess is skipped.
 
 Slow tests are marked by suffixing `(LONG)` to the `it`/`describe`
 description. The effective threshold is ~2.5s, not tens of seconds: measure

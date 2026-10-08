@@ -191,10 +191,15 @@ then raises `UnsupportedQuantLibVersion` with the call, required version and lin
 Keep the error slot and ordinary exception handling on both branches.
 
 For new trailing arguments, widen the same shim and use `QL144_ARGS(...)` at the upstream
-constructor call. Mark otherwise-unused C++ parameters `[[maybe_unused]]`; leave C headers plain.
-The older branch must neither validate nor execute new arguments. A stored callback's Haskell
-marshaller must skip creating its owner when unsupported. Apply straightforward new safety
-checks to both versions, while leaving numerical behavior to the linked QuantLib.
+constructor call. Before `try`, add `if (!ql144Default(e, "<publicName>", <every new argument
+equals its upstream 1.44 default>)) return nullptr;`: 1.43 accepts only those defaults, meaning
+whatever the linked QuantLib does, and reports any other value as `UnsupportedQuantLibVersion`.
+Read each default from the tagged header; never compare against what 1.43 happens to compute.
+Give a defaulted non-sentinel input (an empty `Calendar()`) a `Maybe` type so `Nothing` is the
+default. `publicName` is the exported wrapper, not a raw hook. Only a stored callback whose
+absence cannot change results, the bootstrap initial guess, is skipped instead: its marshaller
+must not create an owner when unsupported. Apply straightforward new safety checks to both
+versions, while leaving numerical behavior to the linked QuantLib.
 
 Regenerate the newer inventory from tagged headers and carry statuses with
 `reconcile_signatures.py`; account for `ext::optional` becoming `std::optional` before matching.

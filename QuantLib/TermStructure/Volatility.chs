@@ -591,7 +591,7 @@ capletVarianceCurve referenceDate nodes = qlCapletVarianceCurve referenceDate da
   ,`Double' -- ^displacement
   ,`Bool' -- ^dontThrow
   ,fromMaybeEnumQuantity`Maybe (Word, TimeUnit)'& -- ^optionletFrequency
-  ,fromIntegral`Word' -- ^paymentLag (1.44 only)
+  ,fromIntegral`Word' -- ^paymentLag (1.44; QuantLib 1.43 requires 0)
   ,preErrorCheck-`String'errorCheck*-}->`OptionletVolatilityStructure'peekOptionletVolatilityStructure*#}
 
 -- |Extends an 'OptionletStripper1' (built internally, never exposed as its own Haskell type --
@@ -612,7 +612,7 @@ capletVarianceCurve referenceDate nodes = qlCapletVarianceCurve referenceDate da
   ,`Bool' -- ^dontThrow
   ,fromMaybeEnumQuantity`Maybe (Word, TimeUnit)'& -- ^optionletFrequency
   ,withCapFloorTermVolCurve*`CapFloorTermVolCurve' -- ^atmCapFloorTermVolCurve
-  ,fromIntegral`Word' -- ^paymentLag (1.44 only)
+  ,fromIntegral`Word' -- ^paymentLag (1.44; QuantLib 1.43 requires 0)
   ,preErrorCheck-`String'errorCheck*-}->`OptionletStripper2'peekOptionletStripper2*#}
 
 -- |Fresh construction (a 'StrippedOptionletAdapter' wrapping the 'OptionletStripper2' itself),
@@ -2086,7 +2086,7 @@ sabrSwaptionVolatilityCube :: GenSwaptionVolatilityStructure sv -- ^atmVolStruct
   -> Double -- ^cutoffStrike
   -> Maybe EndCriteria -- ^endCriteria
   -> Maybe OptimizationMethod -- ^optMethod
-  -> Bool -- ^singlePassCalibration, ignored on QuantLib 1.43
+  -> Bool -- ^singlePassCalibration (1.44; QuantLib 1.43 requires 'False')
   -> IO SabrSwaptionVolatilityCube
 sabrSwaptionVolatilityCube atm ot st ss (Matrix vr vc vd) sidx1 sidx2 vw (Matrix pr pc pd)
   iaf ibf inf irf iac met eat ume mg bf cs ec om singlePass =
@@ -2107,7 +2107,7 @@ sabrSwaptionVolatilityCube atm ot st ss (Matrix vr vc vd) sidx1 sidx2 vw (Matrix
   ,withMaybeOptimizationMethod*`Maybe OptimizationMethod'
   ,fromMaybeDouble`Maybe Double',fromMaybeDouble`Maybe Double',`Bool',fromIntegral`Word'
   ,`Bool',`Double'
-  ,`Bool' -- ^singlePassCalibration (1.44 only)
+  ,`Bool' -- ^singlePassCalibration (1.44; QuantLib 1.43 requires 'False')
   ,preErrorCheck-`String'errorCheck*-}->`SabrSwaptionVolatilityCube'peekSabrSwaptionVolatilityCube*#}
 
 -- |An arbitrage-free SABR (Doust) swaption volatility cube: the same
@@ -2140,7 +2140,7 @@ noArbSabrSwaptionVolatilityCube :: GenSwaptionVolatilityStructure sv -- ^atmVolS
   -> Double -- ^cutoffStrike
   -> Maybe EndCriteria -- ^endCriteria
   -> Maybe OptimizationMethod -- ^optMethod
-  -> Bool -- ^singlePassCalibration, ignored on QuantLib 1.43
+  -> Bool -- ^singlePassCalibration (1.44; QuantLib 1.43 requires 'False')
   -> IO NoArbSabrSwaptionVolatilityCube
 noArbSabrSwaptionVolatilityCube atm ot st ss (Matrix vr vc vd) sidx1 sidx2 vw (Matrix pr pc pd)
   iaf ibf inf irf iac met eat ume mg bf cs ec om singlePass =
@@ -2161,7 +2161,7 @@ noArbSabrSwaptionVolatilityCube atm ot st ss (Matrix vr vc vd) sidx1 sidx2 vw (M
   ,withMaybeOptimizationMethod*`Maybe OptimizationMethod'
   ,fromMaybeDouble`Maybe Double',fromMaybeDouble`Maybe Double',`Bool',fromIntegral`Word'
   ,`Bool',`Double'
-  ,`Bool' -- ^singlePassCalibration (1.44 only)
+  ,`Bool' -- ^singlePassCalibration (1.44; QuantLib 1.43 requires 'False')
   ,preErrorCheck-`String'errorCheck*-}->`NoArbSabrSwaptionVolatilityCube'peekNoArbSabrSwaptionVolatilityCube*#}
 
 -- |A ZABR swaption volatility cube: 'sabrSwaptionVolatilityCube' with a fifth model parameter,
@@ -2190,7 +2190,7 @@ zabrSwaptionVolatilityCube :: GenSwaptionVolatilityStructure sv -- ^atmVolStruct
   -> Double -- ^cutoffStrike
   -> Maybe EndCriteria -- ^endCriteria
   -> Maybe OptimizationMethod -- ^optMethod
-  -> Bool -- ^singlePassCalibration, ignored on QuantLib 1.43
+  -> Bool -- ^singlePassCalibration (1.44; QuantLib 1.43 requires 'False')
   -> IO ZabrSwaptionVolatilityCube
 zabrSwaptionVolatilityCube atm ot st ss (Matrix vr vc vd) sidx1 sidx2 vw (Matrix pr pc pd)
   iaf ibf inf irf igf iac met eat ume mg bf cs ec om singlePass =
@@ -2211,7 +2211,7 @@ zabrSwaptionVolatilityCube atm ot st ss (Matrix vr vc vd) sidx1 sidx2 vw (Matrix
   ,withMaybeOptimizationMethod*`Maybe OptimizationMethod'
   ,fromMaybeDouble`Maybe Double',fromMaybeDouble`Maybe Double',`Bool',fromIntegral`Word'
   ,`Bool',`Double'
-  ,`Bool' -- ^singlePassCalibration (1.44 only)
+  ,`Bool' -- ^singlePassCalibration (1.44; QuantLib 1.43 requires 'False')
   ,preErrorCheck-`String'errorCheck*-}->`ZabrSwaptionVolatilityCube'peekZabrSwaptionVolatilityCube*#}
 
 -- |The non-SABR, linear-interpolation swaption volatility cube: interpolates the given

@@ -480,11 +480,11 @@ fraRateHelper rate terms = case terms of
   ,withIborIndex*`GenIborIndex ibor2' -- ^otherIndex
   ,withYieldTermStructure*`GenYieldTermStructure y' -- ^discountHandle
   ,`Bool' -- ^bootstrapBaseCurve
-  ,fromMaybeBool`Maybe Bool' -- ^useIndexedCoupons (1.44 only)
-  ,`DateGenerationRule' -- ^rule (1.44 only)
-  ,fromIntegral`Int' -- ^paymentLag (1.44 only)
-  ,withStubIndexSelection*`Maybe (StubIndexSelection ibor3)' -- ^baseStub (1.44 only)
-  ,withStubIndexSelection*`Maybe (StubIndexSelection ibor4)' -- ^otherStub (1.44 only)
+  ,fromMaybeBool`Maybe Bool' -- ^useIndexedCoupons (1.44; QuantLib 1.43 requires 'Nothing')
+  ,`DateGenerationRule' -- ^rule (1.44; QuantLib 1.43 requires 'Backward')
+  ,fromIntegral`Int' -- ^paymentLag (1.44; QuantLib 1.43 requires 0)
+  ,withStubIndexSelection*`Maybe (StubIndexSelection ibor3)' -- ^baseStub (1.44; QuantLib 1.43 requires 'Nothing')
+  ,withStubIndexSelection*`Maybe (StubIndexSelection ibor4)' -- ^otherStub (1.44; QuantLib 1.43 requires 'Nothing')
   ,preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
 
 -- |Bootstrapping helper for an overnight-ibor basis swap: pays @baseIndex + basis@, receives
@@ -500,15 +500,15 @@ fraRateHelper rate terms = case terms of
   ,withOvernightIborIndex*`OvernightIborIndex' -- ^baseIndex
   ,withIborIndex*`GenIborIndex ibor' -- ^otherIndex
   ,withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)' -- ^discountHandle
-  ,`Bool' -- ^bootstrapBaseCurve (1.44 only)
-  ,fromIntegral`Int' -- ^paymentLag (1.44 only)
-  ,fromMaybeEnum`Maybe Frequency' -- ^overnightPaymentFrequency (1.44 only)
-  ,fromMaybeBool`Maybe Bool' -- ^useIndexedCoupons (1.44 only)
-  ,`DateGenerationRule' -- ^rule (1.44 only)
-  ,fromEnumC`RateAveragingType' -- ^averagingMethod (1.44 only)
-  ,`Bool' -- ^telescopicValueDates (1.44 only)
-  ,`Bool' -- ^basisOnIborLeg (1.44 only)
-  ,withStubIndexSelection*`Maybe (StubIndexSelection ibor2)' -- ^iborStub (1.44 only)
+  ,`Bool' -- ^bootstrapBaseCurve (1.44; QuantLib 1.43 requires 'False')
+  ,fromIntegral`Int' -- ^paymentLag (1.44; QuantLib 1.43 requires 0)
+  ,fromMaybeEnum`Maybe Frequency' -- ^overnightPaymentFrequency (1.44; QuantLib 1.43 requires 'Nothing')
+  ,fromMaybeBool`Maybe Bool' -- ^useIndexedCoupons (1.44; QuantLib 1.43 requires 'Nothing')
+  ,`DateGenerationRule' -- ^rule (1.44; QuantLib 1.43 requires 'Backward')
+  ,fromEnumC`RateAveragingType' -- ^averagingMethod (1.44; QuantLib 1.43 requires 'AveragingCompound')
+  ,`Bool' -- ^telescopicValueDates (1.44; QuantLib 1.43 requires 'False')
+  ,`Bool' -- ^basisOnIborLeg (1.44; QuantLib 1.43 requires 'False')
+  ,withStubIndexSelection*`Maybe (StubIndexSelection ibor2)' -- ^iborStub (1.44; QuantLib 1.43 requires 'Nothing')
   ,preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
 
 -- |Bootstrapping helper for a constant-notional cross-currency basis swap: the collateral is
@@ -529,10 +529,10 @@ fraRateHelper rate terms = case terms of
   ,fromMaybeEnum`Maybe Frequency' -- ^paymentFrequency
   ,fromIntegral`Int' -- ^paymentLag
   ,fromMaybeEnum`Maybe Frequency' -- ^quoteCurrencyPaymentFrequency
-  ,fromMaybeBool`Maybe Bool' -- ^useIndexedCoupons (1.44 only)
-  ,`Bool' -- ^paymentLagOnNotionalExchanges (1.44 only)
-  ,withStubIndexSelection*`Maybe (StubIndexSelection ibor3)' -- ^baseStub (1.44 only)
-  ,withStubIndexSelection*`Maybe (StubIndexSelection ibor4)' -- ^quoteStub (1.44 only)
+  ,fromMaybeBool`Maybe Bool' -- ^useIndexedCoupons (1.44; QuantLib 1.43 requires 'Nothing')
+  ,`Bool' -- ^paymentLagOnNotionalExchanges (1.44; QuantLib 1.43 requires 'False')
+  ,withStubIndexSelection*`Maybe (StubIndexSelection ibor3)' -- ^baseStub (1.44; QuantLib 1.43 requires 'Nothing')
+  ,withStubIndexSelection*`Maybe (StubIndexSelection ibor4)' -- ^quoteStub (1.44; QuantLib 1.43 requires 'Nothing')
   ,preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
 
 -- |Bootstrapping helper for a marked-to-market cross-currency basis swap: like
@@ -553,11 +553,11 @@ fraRateHelper rate terms = case terms of
   ,fromMaybeEnum`Maybe Frequency' -- ^paymentFrequency
   ,fromIntegral`Int' -- ^paymentLag
   ,fromMaybeEnum`Maybe Frequency' -- ^quoteCurrencyPaymentFrequency
-  ,fromIntegral`Word' -- ^fxResetFixingDays (1.44 only)
-  ,withCalendar*`Calendar' -- ^fxResetFixingCalendar (1.44 only)
-  ,fromMaybeBool`Maybe Bool' -- ^useIndexedCoupons (1.44 only)
-  ,withStubIndexSelection*`Maybe (StubIndexSelection ibor3)' -- ^baseStub (1.44 only)
-  ,withStubIndexSelection*`Maybe (StubIndexSelection ibor4)' -- ^quoteStub (1.44 only)
+  ,fromIntegral`Word' -- ^fxResetFixingDays (1.44; QuantLib 1.43 requires 0)
+  ,withMaybeCalendar*`Maybe Calendar' -- ^fxResetFixingCalendar (1.44; QuantLib 1.43 requires 'Nothing')
+  ,fromMaybeBool`Maybe Bool' -- ^useIndexedCoupons (1.44; QuantLib 1.43 requires 'Nothing')
+  ,withStubIndexSelection*`Maybe (StubIndexSelection ibor3)' -- ^baseStub (1.44; QuantLib 1.43 requires 'Nothing')
+  ,withStubIndexSelection*`Maybe (StubIndexSelection ibor4)' -- ^quoteStub (1.44; QuantLib 1.43 requires 'Nothing')
   ,preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
 
 -- |Bootstrapping helper for a fixed-vs-floating cross-currency par swap: quoted at par, so the
@@ -575,9 +575,9 @@ fraRateHelper rate terms = case terms of
   ,withYieldTermStructure*`GenYieldTermStructure y' -- ^collateralCurve
   ,`Bool' -- ^collateralOnFixedLeg
   ,fromIntegral`Int' -- ^paymentLag
-  ,fromMaybeBool`Maybe Bool' -- ^useIndexedCoupons (1.44 only)
-  ,fromMaybeEnum`Maybe Frequency' -- ^floatPaymentFrequency (1.44 only)
-  ,withStubIndexSelection*`Maybe (StubIndexSelection ibor2)' -- ^floatStub (1.44 only)
+  ,fromMaybeBool`Maybe Bool' -- ^useIndexedCoupons (1.44; QuantLib 1.43 requires 'Nothing')
+  ,fromMaybeEnum`Maybe Frequency' -- ^floatPaymentFrequency (1.44; QuantLib 1.43 requires 'Nothing')
+  ,withStubIndexSelection*`Maybe (StubIndexSelection ibor2)' -- ^floatStub (1.44; QuantLib 1.43 requires 'Nothing')
   ,preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
 
 -- |How an FX swap helper's dates are given. 'FxSwapTenor' is relative to the evaluation date:
@@ -693,7 +693,7 @@ oisRateHelper terms fixedRate idx discountingCurve = do
   ,`DateGenerationRule' -- ^rule
   ,withCalendar*`Calendar' -- ^overnightCalendar
   ,fromEnumC`BusinessDayConvention' -- ^convention (q1.k.q1. overnightConvention)
-  ,withMaybeDayCounter*`Maybe DayCounter' -- ^fixedDayCount (1.44 only)
+  ,withMaybeDayCounter*`Maybe DayCounter' -- ^fixedDayCount (1.44; QuantLib 1.43 requires 'Nothing')
   ,preErrorCheck-`String'errorCheck*-}->`OISRateHelper'peekOISRateHelper*#}
 {#fun qlOISRateHelper2 as oisRateHelper2_{withDay*`Day' -- ^startDate
   ,withDay*`Day' -- ^endDate
@@ -719,7 +719,7 @@ oisRateHelper terms fixedRate idx discountingCurve = do
   ,`DateGenerationRule' -- ^rule
   ,withCalendar*`Calendar' -- ^overnightCalendar
   ,fromEnumC`BusinessDayConvention' -- ^convention (q1.k.q1. overnightConvention)
-  ,withMaybeDayCounter*`Maybe DayCounter' -- ^fixedDayCount (1.44 only)
+  ,withMaybeDayCounter*`Maybe DayCounter' -- ^fixedDayCount (1.44; QuantLib 1.43 requires 'Nothing')
   ,preErrorCheck-`String'errorCheck*-}->`OISRateHelper'peekOISRateHelper*#}
 
 -- |'oisRateHelper' with every trailing QuantLib parameter taken from an options record.

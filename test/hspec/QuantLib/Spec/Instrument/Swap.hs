@@ -10,7 +10,7 @@
 
 module QuantLib.Spec.Instrument.Swap (spec) where
 
-import Control.Monad(forM_)
+import Control.Monad(forM_, when)
 import Test.Hspec
 
 import qualified QuantLib.Context as Context
@@ -29,7 +29,7 @@ import QuantLib.Instrument.Bond(fixedRateBond, asBond, settlementDate)
 import QuantLib.Instrument.Swap
 import QuantLib.PricingEngine
 
-import QuantLib.Spec.Helpers(closePrec, quantLibAtMost143)
+import QuantLib.Spec.Helpers(closePrec, quantLibAtMost143, unsupportedQuantLib144)
 
 -- |test-suite/swap.cpp's CommonVars: a Euribor6M-referencing Payer VanillaSwap fixture --
 -- nominal 100, fixed leg Annual/Unadjusted/Thirty360(BondBasis), floating leg
@@ -62,7 +62,7 @@ makeSwap today' lengthYears fixedRate floatingSpread = do
 spec :: Spec
 spec = do
   describe "QuantLib 1.44 swap arguments" $ do
-    it "rounds overnight coupons only on 1.44" $ Context.keepingSettingsGc $ do
+    it "rounds overnight coupons on 1.44 and refuses rounding on 1.43" $ Context.keepingSettingsGc $ do
       let today' = 2 `january` 2024; start = 4 `january` 2024; end = 4 `january` 2025
       Context.setEvaluationDate (Just today')
       cal <- calendar TARGET
@@ -74,10 +74,10 @@ spec = do
       let make = overnightIndexedSwap Payer 100 sch 0.03 dc idx 0 0 ModifiedFollowing cal
             False AveragingCompound defaultOvernightObservation
       plain <- make Nothing >>= (`leg` 1) >>= \l -> CF.cashFlows l Nothing Nothing
-      rounded <- make (Just 3) >>= (`leg` 1) >>= \l -> CF.cashFlows l Nothing Nothing
       let amounts = map (\(_, a, _) -> a)
-      if quantLibAtMost143 then amounts rounded `shouldBe` amounts plain
+      if quantLibAtMost143 then make (Just 3) `shouldThrow` unsupportedQuantLib144 "overnightIndexedSwap"
       else do
+        rounded <- make (Just 3) >>= (`leg` 1) >>= \l -> CF.cashFlows l Nothing Nothing
         accrualEnd <- adjust cal end ModifiedFollowing
         accrual <- yearFraction dc start accrualEnd Nothing Nothing
         let expected = fromIntegral (round ((case amounts plain of [a] -> a; _ -> error "expected one overnight coupon") / (100*accrual) * 1000) :: Int) / 1000 * 100 * accrual
@@ -93,13 +93,19 @@ spec = do
       idx <- IR.iborIndex IR.Euribor6M (Just curve)
       fixed <- schedule (Just start) end (1, Years) cal ModifiedFollowing ModifiedFollowing Backward False Nothing Nothing
       floating <- schedule (Just start) end (6, Months) cal ModifiedFollowing ModifiedFollowing Backward False Nothing Nothing
-      scalar <- nonstandardSwap Payer [100] [100,100] fixed [0.03] dc floating idx 1 0 dc False False Nothing 3 cal
-      vector <- nonstandardSwapFromGearingsAndSpreads Payer [100] [100,100] fixed [0.03] dc floating idx [1,1] [0,0] dc False False Nothing 3 cal
-      payment <- adjust cal end ModifiedFollowing
-      expected <- if quantLibAtMost143 then pure payment else advance cal payment (3, Days) ModifiedFollowing False
-      forM_ ([scalar, vector] :: [NonstandardSwap]) $ \swp -> do
-        flows <- leg swp 0 >>= \l -> CF.cashFlows l Nothing Nothing
-        map (\(d,_,_) -> d) flows `shouldBe` [expected]
+      let scalar lag = nonstandardSwap Payer [100] [100,100] fixed [0.03] dc floating idx 1 0 dc False False Nothing lag (Just cal)
+          vector lag = nonstandardSwapFromGearingsAndSpreads Payer [100] [100,100] fixed [0.03] dc floating idx [1,1] [0,0] dc False False Nothing lag (Just cal)
+      if quantLibAtMost143
+        then do
+          scalar 3 `shouldThrow` unsupportedQuantLib144 "nonstandardSwap"
+          vector 3 `shouldThrow` unsupportedQuantLib144 "nonstandardSwapFromGearingsAndSpreads"
+        else do
+          payment <- adjust cal end ModifiedFollowing
+          expected <- advance cal payment (3, Days) ModifiedFollowing False
+          swaps <- sequence ([scalar 3, vector 3] :: [IO NonstandardSwap])
+          forM_ swaps $ \swp -> do
+            flows <- leg swp 0 >>= \l -> CF.cashFlows l Nothing Nothing
+            map (\(d,_,_) -> d) flows `shouldBe` [expected]
 
     it "rejects undefined fair rates for zero nominal" $ Context.keepingSettingsGc $ do
       let today' = 2 `january` 2024; start = 4 `january` 2024; end = 4 `january` 2025
@@ -224,6 +230,15 @@ spec = do
         setPricingEngine priced engine
         pricedNPV <- npv priced
         pricedNPV `shouldSatisfy` closePrec 0 1e-6
+
+        when quantLibAtMost143 $ do
+          constNotionalCrossCurrencyBasisSwap 100 usd sched usdLibor3m 0 1 100 eur sched usdLibor3m 0 1
+            defaultConstNotionalCrossCurrencyBasisSwapOpts { cccbsPaymentLagOnNotionalExchanges = True }
+            `shouldThrow` unsupportedQuantLib144 "constNotionalCrossCurrencyBasisSwap"
+          constNotionalCrossCurrencyFixedVsFloatingSwap Payer 100 usd sched fair legDC
+            ModifiedFollowing 0 cal 100 eur sched usdLibor3m 0 ModifiedFollowing 0 cal
+            False False defaultOvernightObservation AveragingCompound (Just True) Nothing
+            `shouldThrow` unsupportedQuantLib144 "constNotionalCrossCurrencyFixedVsFloatingSwap"
 
   -- Ported from test-suite/assetswap.cpp::testConsistency's par-asset-swap portion (the
   -- NpvDate-sensitivity half of that test, and the market/non-par asset-swap cases from later

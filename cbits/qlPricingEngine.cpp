@@ -776,7 +776,10 @@ QlPricingEngine* qlAnalyticHestonHullWhiteEngine1(QlHestonModel* model, QlHullWh
   try {return ret(new QlPricingEngine(alloc(new AnalyticHestonHullWhiteEngine(*arg(model), *arg(hullWhiteModel), relTolerance, maxEvaluations))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
 QlPricingEngine* qlAnalyticH1HWEngine1(QlHestonModel* model, QlHullWhite* hullWhiteModel, double rhoSr, double relTolerance, unsigned maxEvaluations, int exactMean, unsigned meanOrder, QlError **e) { QlCallScope callbackScope(e);
-  try {return !exactMean
+  try {
+    // QuantLib's tolerance constructor omits the check its fixed-order one makes.
+    QL_REQUIRE(rhoSr >= 0.0, "Fourier integration is not stable if the equity interest rate correlation is negative");
+    return !exactMean
       ? ret(new QlPricingEngine(alloc(new AnalyticH1HWEngine(*arg(model), *arg(hullWhiteModel), rhoSr, relTolerance, maxEvaluations))))
       : ret(new QlPricingEngine(alloc(new hasquant::ExactMeanH1HWEngine(*arg(model), *arg(hullWhiteModel), rhoSr, relTolerance, maxEvaluations, meanOrder))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}

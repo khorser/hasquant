@@ -924,7 +924,7 @@ analyticHestonHullWhiteEngine heston hullWhite control =
 
 -- |H1-HW approximation engine with fixed-order or tolerance-based integration. @rhoSr@ must be
 -- non-negative. With 'ExactMean' it is a hasquant subclass of QuantLib's Heston/Hull-White engine
--- that integrates the exact E[sqrt v]; QuantLib's own engine otherwise.
+-- that integrates the exact E[sqrt v]; QuantLib's own engine otherwise, whose prices are NaN where its fit fails.
 analyticH1HwEngine :: GenHestonModel hm -> HullWhite -> Double -> IntegrationControl -> H1HwMean -> IO PricingEngine
 analyticH1HwEngine heston hullWhite rhoSr control mean =
   case control of

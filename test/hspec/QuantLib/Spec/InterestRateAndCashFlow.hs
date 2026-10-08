@@ -54,7 +54,7 @@ import QuantLib.Spec.Helpers(ValidDay(..), closePrec, listCloseRel, quantLibAtMo
 spec :: Day -> Spec
 spec evalDate = do
     describe "IBOR stub selection" $ do
-      it "uses component fixing histories and ignores selections on 1.43" $ keepingSettingsGc $ do
+      it "uses component fixing histories, and needs QuantLib 1.44" $ keepingSettingsGc $ do
         setEvaluationDate (Just (fromGregorian 2024 1 2))
         cal <- calendar TARGET
         dc <- dayCounter (Actual360 False)
@@ -65,11 +65,13 @@ spec evalDate = do
         long <- iborIndex Euribor3M (Just curve)
         sch <- schedule (Just (fromGregorian 2024 1 4)) (fromGregorian 2024 9 4)
           (6, Months) cal ModifiedFollowing ModifiedFollowing Backward False Nothing Nothing
-        leg <- CF.iborLegWithOptions sch base [100] dc ModifiedFollowing [2] [1] [0] [] [] False False
-          CF.defaultIborLegOpts { CF.ilgUseIndexedCoupons = Just True, CF.ilgStubIndexSelection = Just (InterpolatedStubIndexes [short, long]) }
-        deps <- CF.fixingDependencies leg
-        names <- mapM Index.name (if quantLibAtMost143 then [base] else [base, short, long])
-        nub (map fst deps) `shouldMatchList` names
+        let makeLeg = CF.iborLegWithOptions sch base [100] dc ModifiedFollowing [2] [1] [0] [] [] False False
+              CF.defaultIborLegOpts { CF.ilgUseIndexedCoupons = Just True, CF.ilgStubIndexSelection = Just (InterpolatedStubIndexes [short, long]) }
+        if quantLibAtMost143 then makeLeg `shouldThrow` unsupportedQuantLib144 "iborLegWithOptions"
+        else do
+          deps <- makeLeg >>= CF.fixingDependencies
+          names <- mapM Index.name [base, short, long]
+          nub (map fst deps) `shouldMatchList` names
 
     describe "Interest rate" $ do
       let cases :: [(Double, IR.Compounding, Frequency, Double, IR.Compounding, Frequency, Double, Int)]
