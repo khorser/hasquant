@@ -274,6 +274,7 @@ test-suite hasquant_test
       QuantLib.Spec.InterestRateAndCashFlow
       QuantLib.Spec.CashFlow.FxReset
       QuantLib.Spec.Matrix
+      QuantLib.Spec.Method
       QuantLib.Spec.Model
       QuantLib.Spec.Model.RoughHeston
       QuantLib.Spec.PricingEngine

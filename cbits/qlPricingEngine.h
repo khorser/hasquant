@@ -633,6 +633,9 @@ extern "C" {
 
   void qlLsmRegress(int polynomType, unsigned order, unsigned fitStatesLen, double *fitStates, unsigned fitTargetsLen, double *fitTargets, unsigned evalLen, double *evalStates, unsigned *outLen, double **outValues, QlError **e);
   void qlLsmRegressMulti(int polynomType, unsigned order, unsigned fitRows, unsigned fitCols, double *fitStates, unsigned fitTargetsLen, double *fitTargets, unsigned evalRows, unsigned evalCols, double *evalStates, unsigned *outLen, double **outValues, QlError **e);
+  void qlLsmFit(int polynomType, unsigned order, unsigned rows, unsigned cols, double *states, unsigned targetsLen, double *targets, unsigned *outLen, double **outCoefficients, QlError **e);
+  void qlLsmEvaluate(int polynomType, unsigned order, unsigned coeffLen, double *coefficients, unsigned rows, unsigned cols, double *states, unsigned *outLen, double **outValues, QlError **e);
+  const char *qlLsmEvaluatorIdentity();
 
   double qlUnsafeSabrLogNormalVolatility(double strike, double forward, double expiryTime, double alpha, double beta, double nu, double rho, QlError **e);
   double qlUnsafeShiftedSabrVolatility(double strike, double forward, double expiryTime, double alpha, double beta, double nu, double rho, double shift, int volatilityType, QlError **e);

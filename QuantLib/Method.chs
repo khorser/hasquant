@@ -56,6 +56,19 @@
 -- row per path, and guard the ITM-fit-size check with 'lsmBasisSize' instead of the basis order --
 -- the multi-asset basis has combinatorially many more terms than the scalar case.
 --
+-- To keep a fit and evaluate it later, split the combined call: 'lsmFit' returns the basis
+-- coefficients and 'lsmEvaluate' applies them to new states. Both pick the basis by the state
+-- matrix's column count -- the scalar basis of 'lsmRegress' at one column, the basis of
+-- 'lsmRegressMulti' at several -- and share the combined calls' native code, so within one build
+-- fitting then evaluating gives the combined call's values bit for bit. Across builds the bits are
+-- not promised: 'lsmEvaluatorIdentity' names the basis revision, QuantLib version, compiler and
+-- architecture, so a stored fit can be refused elsewhere. It is necessary, not sufficient: a
+-- library rebuilt under the same version string keeps it.
+--
+-- Both Chebyshev types are QuantLib's weighted bases, undefined outside (-1, 1): with a state there
+-- the least-squares solve of every regression above does not return. Scale the states into that
+-- interval or choose another 'PolynomialType'.
+--
 -- @test\/example\/QuantLib\/Example\/HaskellLSM.hs@ benchmarks 'lsmRegress' against the same
 -- backward induction with the per-date regression reimplemented from scratch in plain Haskell
 -- (QuantLib used only for path generation) -- a worked illustration of why this module exposes
@@ -264,6 +277,9 @@ module QuantLib.Method
   , lsmRegress
   , lsmBasisSize
   , lsmRegressMulti
+  , lsmFit
+  , lsmEvaluate
+  , lsmEvaluatorIdentity
     -- ** Finite differences
   , fdmRollback
   , fdmInnerValue
@@ -291,6 +307,7 @@ import qualified QuantLib.Internal.Callback as Callback
 import QuantLib.Internal.Type hiding (ptr) -- c2hs {#get#} binds its own `ptr'
 import QuantLib.Internal.Common
 {#import QuantLib.Math#}
+import Foreign.C.String(peekCString)
 import Foreign.C.Types(CDouble)
 import Foreign.Ptr(Ptr, nullPtr, castPtr)
 import Foreign.Marshal.Alloc(alloca)
@@ -486,6 +503,40 @@ lsmRegressMulti p order (RealMatrix fr fc fd) t (RealMatrix er ec ed) = qlLsmReg
   ,withRealVectorRaw*`RealVector' -- ^eval states, row-major
   ,preDoubleArray-`RealVector'&peekRealVector* -- ^continuation value estimate per eval row
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
+
+-- |basis coefficients of one Longstaff-Schwartz fit, the fitting half of 'lsmRegress' (one state
+-- column) or 'lsmRegressMulti' (several): fit states are a row-major 'RealMatrix', one row per
+-- path. There are 'lsmBasisSize' of them, in QuantLib's basis order; evaluate them with 'lsmEvaluate'.
+lsmFit :: PolynomialType -> Word -> RealMatrix -- ^fit states (in-the-money paths only)
+  -> RealVector -- ^fit targets (continuation value at these states)
+  -> IO RealVector -- ^basis coefficients
+lsmFit p order (RealMatrix r c d) = qlLsmFit p order r c d
+{#fun qlLsmFit{`PolynomialType',fromIntegral`Word' -- ^basis order
+  ,fromIntegral`Word' -- ^rows
+  ,fromIntegral`Word' -- ^columns
+  ,withRealVectorRaw*`RealVector' -- ^states, row-major
+  ,withRealVector*`RealVector'& -- ^targets
+  ,preDoubleArray-`RealVector'&peekRealVector* -- ^coefficients
+  ,preErrorCheck-`String'errorCheck*-}->`()'#}
+
+-- |continuation value of 'lsmFit' coefficients at each row of the given states, which must have
+-- the fit's column count; the polynomial type and order must be the fit's too. Throws unless there
+-- are 'lsmBasisSize' coefficients for that column count.
+lsmEvaluate :: PolynomialType -> Word -> RealVector -- ^coefficients
+  -> RealMatrix -- ^eval states (one row per path)
+  -> IO RealVector -- ^continuation value estimate per row
+lsmEvaluate p order coefficients (RealMatrix r c d) = qlLsmEvaluate p order coefficients r c d
+{#fun qlLsmEvaluate{`PolynomialType',fromIntegral`Word' -- ^basis order
+  ,withRealVector*`RealVector'& -- ^coefficients
+  ,fromIntegral`Word' -- ^rows
+  ,fromIntegral`Word' -- ^columns
+  ,withRealVectorRaw*`RealVector' -- ^states, row-major
+  ,preDoubleArray-`RealVector'&peekRealVector* -- ^continuation values
+  ,preErrorCheck-`String'errorCheck*-}->`()'#}
+
+-- |the build that 'lsmFit' and 'lsmEvaluate' belong to: the shim's basis revision, the QuantLib
+-- version, the compiler and the architecture. Store it beside coefficients meant for later use.
+{#fun pure qlLsmEvaluatorIdentity as lsmEvaluatorIdentity{}->`String'peekCString*#}
 
 -- |Drive @FdmBackwardSolver::rollback@ with a Haskell-defined 'FdmLinearOpComposite' (the
 -- @apply@\/@apply_direction@\/@solve_splitting@ callbacks) and an optional Haskell-defined step

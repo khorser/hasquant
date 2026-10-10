@@ -10,6 +10,7 @@
 #include <ql/legacy/libormarketmodels/lfmswaptionengine.hpp>
 #include <ql/methods/montecarlo/lsmbasissystem.hpp>
 #include <ql/math/generallinearleastsquares.hpp>
+#include <ql/version.hpp>
 #include <ql/pricingengines/asian/analytic_cont_geom_av_price.hpp>
 #include <ql/pricingengines/asian/analytic_discr_geom_av_strike.hpp>
 #include <ql/pricingengines/asian/mc_discr_arith_av_price.hpp>
@@ -1866,6 +1867,46 @@ void qlSamplePathAssetPath(SamplePath *s, unsigned asset, unsigned *len, double 
   try {fillVectorOut([&] {return std::vector<double>(arg(s)->value.at(asset).begin(), s->value.at(asset).end());}, len, p);
   } catch (std::exception& er) {(void)handleException<double*>(e, er);}}
 
+// One Longstaff-Schwartz basis: scalar at one column when `scalarAtOne`, else multi-dimensional. Every
+// entry point below fits and evaluates through it, so stored coefficients repeat a combined call's bits.
+namespace {
+class LsmBasis {
+ public:
+  LsmBasis(int polynomType, unsigned order, unsigned cols, bool scalarAtOne) : cols_(cols), scalar_(scalarAtOne && cols == 1) {
+    QL_REQUIRE(cols > 0, "a regression needs at least one state column");
+    if (scalar_) scalarBasis_ = LsmBasisSystem::pathBasisSystem(order, (LsmBasisSystem::PolynomialType)polynomType);
+    else multiBasis_ = LsmBasisSystem::multiPathBasisSystem(cols, order, (LsmBasisSystem::PolynomialType)polynomType);
+  }
+  Size size() const {return scalar_ ? scalarBasis_.size() : multiBasis_.size();}
+  // Row-major states, one row per path.
+  Array fit(unsigned rows, const double *states, const double *targets) const {
+    std::vector<Real> y(targets, targets + rows);
+    if (scalar_) return GeneralLinearLeastSquares(std::vector<Real>(states, states + rows), y, scalarBasis_).coefficients();
+    std::vector<Array> x; x.reserve(rows);
+    for (unsigned i = 0; i < rows; ++i) x.emplace_back(states + i*cols_, states + (i+1)*cols_);
+    return GeneralLinearLeastSquares(x, y, multiBasis_).coefficients();
+  }
+  void evaluate(const Array& coeff, unsigned rows, const double *states, double *values) const {
+    QL_REQUIRE(coeff.size() == size(), "expected " << size() << " regression coefficients, got " << coeff.size());
+    for (unsigned i = 0; i < rows; ++i) {
+      Real cont = 0.0;
+      if (scalar_) {
+        for (Size l = 0; l < scalarBasis_.size(); ++l) cont += coeff[l] * scalarBasis_[l](states[i]);
+      } else {
+        Array row(states + i*cols_, states + (i+1)*cols_);
+        for (Size l = 0; l < multiBasis_.size(); ++l) cont += coeff[l] * multiBasis_[l](row);
+      }
+      values[i] = cont;
+    }
+  }
+ private:
+  unsigned cols_;
+  bool scalar_;
+  std::vector<std::function<Real(Real)> > scalarBasis_;
+  std::vector<std::function<Real(Array)> > multiBasis_;
+};
+}
+
 // Runs one Longstaff-Schwartz basis-function regression (fitStates -> fitTargets) and evaluates the
 // fitted continuation value at each evalState -- the cross-path regression step LongstaffSchwartzPathPricer
 // performs once per exercise date, with the payoff/exercise values supplied from Haskell instead of a
@@ -1874,15 +1915,9 @@ void qlLsmRegress(int polynomType, unsigned order, unsigned fitStatesLen, double
   OutArrayResult<double> result(outLen, outValues);
   try {
     QL_REQUIRE(fitStatesLen == fitTargetsLen, "fit states and fit targets must have the same length");
-    std::vector<std::function<Real(Real)> > v = LsmBasisSystem::pathBasisSystem(order, (LsmBasisSystem::PolynomialType)polynomType);
-    std::vector<Real> x(fitStates, fitStates + fitStatesLen), y(fitTargets, fitTargets + fitTargetsLen);
-    Array coeff = GeneralLinearLeastSquares(x, y, v).coefficients();
-    double *values = result.allocate(evalLen);
-    for (unsigned i = 0; i < evalLen; ++i) {
-      Real cont = 0.0;
-      for (Size l = 0; l < v.size(); ++l) cont += coeff[l] * v[l](evalStates[i]);
-      values[i] = cont;
-    }
+    LsmBasis basis(polynomType, order, 1, true);
+    Array coeff = basis.fit(fitStatesLen, fitStates, fitTargets);
+    basis.evaluate(coeff, evalLen, evalStates, result.allocate(evalLen));
     result.commit();
   } catch (std::exception& er) {qlSetError(e, er.what());}}
 
@@ -1893,20 +1928,45 @@ void qlLsmRegressMulti(int polynomType, unsigned order, unsigned fitRows, unsign
   try {
     QL_REQUIRE(fitCols == evalCols, "fit states and eval states must have the same number of columns (underlyings)");
     QL_REQUIRE(fitRows == fitTargetsLen, "fit states and fit targets must have the same number of rows");
-    std::vector<std::function<Real(Array)> > v = LsmBasisSystem::multiPathBasisSystem(fitCols, order, (LsmBasisSystem::PolynomialType)polynomType);
-    std::vector<Array> x; x.reserve(fitRows);
-    for (unsigned i = 0; i < fitRows; ++i) x.emplace_back(fitStates + i*fitCols, fitStates + (i+1)*fitCols);
-    std::vector<Real> y(fitTargets, fitTargets + fitTargetsLen);
-    Array coeff = GeneralLinearLeastSquares(x, y, v).coefficients();
-    double *values = result.allocate(evalRows);
-    for (unsigned i = 0; i < evalRows; ++i) {
-      Array row(evalStates + i*evalCols, evalStates + (i+1)*evalCols);
-      Real cont = 0.0;
-      for (Size l = 0; l < v.size(); ++l) cont += coeff[l] * v[l](row);
-      values[i] = cont;
-    }
+    LsmBasis basis(polynomType, order, fitCols, false);
+    Array coeff = basis.fit(fitRows, fitStates, fitTargets);
+    basis.evaluate(coeff, evalRows, evalStates, result.allocate(evalRows));
     result.commit();
   } catch (std::exception& er) {qlSetError(e, er.what());}}
+
+// The fitting half of the combined calls: the basis coefficients, scalar basis at one column.
+void qlLsmFit(int polynomType, unsigned order, unsigned rows, unsigned cols, double *states, unsigned targetsLen, double *targets, unsigned *outLen, double **outCoefficients, QlError **e) { QlCallScope callbackScope(e);
+  OutArrayResult<double> result(outLen, outCoefficients);
+  try {
+    QL_REQUIRE(rows == targetsLen, "fit states and fit targets must have the same number of rows");
+    Array coeff = LsmBasis(polynomType, order, cols, true).fit(rows, states, targets);
+    std::copy(coeff.begin(), coeff.end(), result.allocate((unsigned)coeff.size()));
+    result.commit();
+  } catch (std::exception& er) {qlSetError(e, er.what());}}
+
+// The evaluating half: the continuation value of stored coefficients at each row.
+void qlLsmEvaluate(int polynomType, unsigned order, unsigned coeffLen, double *coefficients, unsigned rows, unsigned cols, double *states, unsigned *outLen, double **outValues, QlError **e) { QlCallScope callbackScope(e);
+  OutArrayResult<double> result(outLen, outValues);
+  try {
+    LsmBasis basis(polynomType, order, cols, true);
+    basis.evaluate(Array(coefficients, coefficients + coeffLen), rows, states, result.allocate(rows));
+    result.commit();
+  } catch (std::exception& er) {qlSetError(e, er.what());}}
+
+// Bump the revision whenever LsmBasis's basis choice or evaluation order changes.
+#if defined(__aarch64__) || defined(_M_ARM64)
+#define HQ_LSM_ARCH "arm64"
+#elif defined(__x86_64__) || defined(_M_X64)
+#define HQ_LSM_ARCH "x86_64"
+#else
+#define HQ_LSM_ARCH "unknown architecture"
+#endif
+#ifdef __VERSION__
+#define HQ_LSM_COMPILER __VERSION__
+#else
+#define HQ_LSM_COMPILER "unknown compiler"
+#endif
+const char *qlLsmEvaluatorIdentity() {return "hasquant LSM basis 1; QuantLib " QL_VERSION "; " HQ_LSM_COMPILER "; " HQ_LSM_ARCH;}
 
 void qlPathGeneratorSequence(PolymorphicPathGenerator *g, unsigned *len, double **values, double *weight, QlError **e) { QlCallScope callbackScope(e);
   OutArrayResult<double> valuesResult(len, values);

@@ -30,6 +30,7 @@ import qualified QuantLib.Spec.Instrument.Option as InstrumentOption
 import qualified QuantLib.Spec.Instrument.Swap as InstrumentSwap
 import qualified QuantLib.Spec.Instrument.MtmCrossCurrency as MtmCrossCurrency
 import qualified QuantLib.Spec.Matrix as Matrix
+import qualified QuantLib.Spec.Method as Method
 import qualified QuantLib.Spec.Model as Model
 import qualified QuantLib.Spec.Model.RoughHeston as RoughHeston
 import qualified QuantLib.Spec.PricingEngine as PricingEngine
@@ -72,6 +73,7 @@ main = do
     InstrumentSwap.spec
     MtmCrossCurrency.spec
     Matrix.spec
+    Method.spec
     Model.spec
     RoughHeston.spec
     PricingEngine.spec
