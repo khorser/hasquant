@@ -87,17 +87,17 @@ forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
 </span><a href="QuantLib.Context.html#evaluationDate%27_"><span class="hs-identifier hs-var">evaluationDate'_</span></a></span><span> </span><span class="annot"><span class="annottext">IO CInt -&gt; (CInt -&gt; IO Day) -&gt; IO Day
 forall a b. IO a -&gt; (a -&gt; IO b) -&gt; IO b
 forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; (a -&gt; m b) -&gt; m b
-</span><span class="hs-operator hs-var">&gt;&gt;=</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680521760"><span class="annot"><span class="annottext">CInt
-</span><a href="#local-6989586621680521760"><span class="hs-identifier hs-var">res</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
-</span><span id="line-62"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span id="local-6989586621680521761"><span class="annot"><span class="annottext">res' :: Day
-</span><a href="#local-6989586621680521761"><span class="hs-identifier hs-var hs-var">res'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">CInt -&gt; Day
+</span><span class="hs-operator hs-var">&gt;&gt;=</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680522384"><span class="annot"><span class="annottext">CInt
+</span><a href="#local-6989586621680522384"><span class="hs-identifier hs-var">res</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><span id="line-62"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span id="local-6989586621680522385"><span class="annot"><span class="annottext">res' :: Day
+</span><a href="#local-6989586621680522385"><span class="hs-identifier hs-var hs-var">res'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">CInt -&gt; Day
 </span><a href="QuantLib.Internal.html#toDay"><span class="hs-identifier hs-var">toDay</span></a></span><span> </span><span class="annot"><span class="annottext">CInt
-</span><a href="#local-6989586621680521760"><span class="hs-identifier hs-var">res</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span>
+</span><a href="#local-6989586621680522384"><span class="hs-identifier hs-var">res</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span>
 </span><span id="line-63"></span><span>  </span><span class="annot"><span class="annottext">Day -&gt; IO Day
 forall a. a -&gt; IO a
 forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
 </span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Day
-</span><a href="#local-6989586621680521761"><span class="hs-identifier hs-var">res'</span></a></span><span class="hs-special">)</span><span>
+</span><a href="#local-6989586621680522385"><span class="hs-identifier hs-var">res'</span></a></span><span class="hs-special">)</span><span>
 </span><span id="line-64"></span><span>
 </span><span id="line-65"></span><span id="setEvaluationDate"><span class="hs-pragma">{-# LINE 59 &quot;./QuantLib/Context.chs&quot; #-}</span></span><span>
 </span><span id="line-59"></span><span>
@@ -107,33 +107,33 @@ forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
 </span><span id="line-63"></span><span class="hs-comment">-- This comes at the price of losing some performance, since the evaluation date is re-evaluated each time it is read.</span><span>
 </span><span id="line-64"></span><span class="hs-identifier">setEvaluationDate</span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-special">(</span><span class="hs-identifier">Maybe</span><span> </span><span class="hs-identifier">Day</span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-identifier">IO</span><span> </span><span class="hs-special">(</span><span class="hs-special">)</span><span>
 </span><span id="line-65"></span><span id="setEvaluationDate"><span class="annot"><span class="annottext">setEvaluationDate :: Maybe Day -&gt; IO ()
-</span><a href="QuantLib.Context.html#setEvaluationDate"><span class="hs-identifier hs-var hs-var">setEvaluationDate</span></a></span></span><span> </span><span id="local-6989586621680521763"><span class="annot"><span class="annottext">Maybe Day
-</span><a href="#local-6989586621680521763"><span class="hs-identifier hs-var">a1</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
+</span><a href="QuantLib.Context.html#setEvaluationDate"><span class="hs-identifier hs-var hs-var">setEvaluationDate</span></a></span></span><span> </span><span id="local-6989586621680522387"><span class="annot"><span class="annottext">Maybe Day
+</span><a href="#local-6989586621680522387"><span class="hs-identifier hs-var">a1</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
 </span><span id="line-66"></span><span>  </span><span class="annot"><span class="annottext">Maybe Day -&gt; (CInt -&gt; IO ()) -&gt; IO ()
 forall a. Maybe Day -&gt; (CInt -&gt; IO a) -&gt; IO a
 </span><a href="QuantLib.Internal.html#withMaybeDay"><span class="hs-identifier hs-var">withMaybeDay</span></a></span><span> </span><span class="annot"><span class="annottext">Maybe Day
-</span><a href="#local-6989586621680521763"><span class="hs-identifier hs-var">a1</span></a></span><span> </span><span class="annot"><span class="annottext">((CInt -&gt; IO ()) -&gt; IO ()) -&gt; (CInt -&gt; IO ()) -&gt; IO ()
+</span><a href="#local-6989586621680522387"><span class="hs-identifier hs-var">a1</span></a></span><span> </span><span class="annot"><span class="annottext">((CInt -&gt; IO ()) -&gt; IO ()) -&gt; (CInt -&gt; IO ()) -&gt; IO ()
 forall a b. (a -&gt; b) -&gt; a -&gt; b
-</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680521765"><span class="annot"><span class="annottext">CInt
-</span><a href="#local-6989586621680521765"><span class="hs-identifier hs-var">a1'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680522389"><span class="annot"><span class="annottext">CInt
+</span><a href="#local-6989586621680522389"><span class="hs-identifier hs-var">a1'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
 </span><span id="line-67"></span><span>  </span><span class="annot"><span class="annottext">(Ptr (Ptr ()) -&gt; IO ()) -&gt; IO ()
 forall a b. (Ptr (Ptr a) -&gt; IO b) -&gt; IO b
 </span><a href="QuantLib.Internal.html#preErrorCheck"><span class="hs-identifier hs-var">preErrorCheck</span></a></span><span> </span><span class="annot"><span class="annottext">((Ptr (Ptr ()) -&gt; IO ()) -&gt; IO ())
 -&gt; (Ptr (Ptr ()) -&gt; IO ()) -&gt; IO ()
 forall a b. (a -&gt; b) -&gt; a -&gt; b
-</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680521767"><span class="annot"><span class="annottext">Ptr (Ptr ())
-</span><a href="#local-6989586621680521767"><span class="hs-identifier hs-var">a2'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680522391"><span class="annot"><span class="annottext">Ptr (Ptr ())
+</span><a href="#local-6989586621680522391"><span class="hs-identifier hs-var">a2'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
 </span><span id="line-68"></span><span>  </span><span class="annot"><span class="annottext">CInt -&gt; Ptr (Ptr ()) -&gt; IO ()
 </span><a href="QuantLib.Context.html#setEvaluationDate%27_"><span class="hs-identifier hs-var">setEvaluationDate'_</span></a></span><span> </span><span class="annot"><span class="annottext">CInt
-</span><a href="#local-6989586621680521765"><span class="hs-identifier hs-var">a1'</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr (Ptr ())
-</span><a href="#local-6989586621680521767"><span class="hs-identifier hs-var">a2'</span></a></span><span> </span><span class="annot"><span class="annottext">IO () -&gt; IO () -&gt; IO ()
+</span><a href="#local-6989586621680522389"><span class="hs-identifier hs-var">a1'</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr (Ptr ())
+</span><a href="#local-6989586621680522391"><span class="hs-identifier hs-var">a2'</span></a></span><span> </span><span class="annot"><span class="annottext">IO () -&gt; IO () -&gt; IO ()
 forall a b. IO a -&gt; IO b -&gt; IO b
 forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; m b -&gt; m b
 </span><span class="hs-operator hs-var">&gt;&gt;</span></span><span>
 </span><span id="line-69"></span><span>  </span><span class="annot"><span class="annottext">Ptr (Ptr ()) -&gt; IO ()
 forall a. Ptr (Ptr a) -&gt; IO ()
 </span><a href="QuantLib.Internal.html#errorCheck"><span class="hs-identifier hs-var">errorCheck</span></a></span><span>  </span><span class="annot"><span class="annottext">Ptr (Ptr ())
-</span><a href="#local-6989586621680521767"><span class="hs-identifier hs-var">a2'</span></a></span><span class="annot"><span class="annottext">IO () -&gt; IO () -&gt; IO ()
+</span><a href="#local-6989586621680522391"><span class="hs-identifier hs-var">a2'</span></a></span><span class="annot"><span class="annottext">IO () -&gt; IO () -&gt; IO ()
 forall a b. IO a -&gt; IO b -&gt; IO b
 forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; m b -&gt; m b
 </span><span class="hs-operator hs-var">&gt;&gt;</span></span><span>
@@ -212,16 +212,16 @@ forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
 </span><span id="line-88"></span><span class="hs-identifier">disableUpdates</span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-special">(</span><span class="hs-identifier">Bool</span><span class="hs-special">)</span><span> </span><span class="hs-comment">-- ^deferred</span><span>
 </span><span id="line-89"></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-identifier">IO</span><span> </span><span class="hs-special">(</span><span class="hs-special">)</span><span>
 </span><span id="line-90"></span><span id="disableUpdates"><span class="annot"><span class="annottext">disableUpdates :: Bool -&gt; IO ()
-</span><a href="QuantLib.Context.html#disableUpdates"><span class="hs-identifier hs-var hs-var">disableUpdates</span></a></span></span><span> </span><span id="local-6989586621680521787"><span class="annot"><span class="annottext">Bool
-</span><a href="#local-6989586621680521787"><span class="hs-identifier hs-var">a1</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
-</span><span id="line-91"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span id="local-6989586621680521789"><span class="annot"><span class="annottext">a1' :: CInt
-</span><a href="#local-6989586621680521789"><span class="hs-identifier hs-var hs-var">a1'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Bool -&gt; CInt
+</span><a href="QuantLib.Context.html#disableUpdates"><span class="hs-identifier hs-var hs-var">disableUpdates</span></a></span></span><span> </span><span id="local-6989586621680522411"><span class="annot"><span class="annottext">Bool
+</span><a href="#local-6989586621680522411"><span class="hs-identifier hs-var">a1</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
+</span><span id="line-91"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span id="local-6989586621680522413"><span class="annot"><span class="annottext">a1' :: CInt
+</span><a href="#local-6989586621680522413"><span class="hs-identifier hs-var hs-var">a1'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Bool -&gt; CInt
 forall a. Num a =&gt; Bool -&gt; a
 </span><span class="hs-identifier hs-var">C2HSImp.fromBool</span></span><span> </span><span class="annot"><span class="annottext">Bool
-</span><a href="#local-6989586621680521787"><span class="hs-identifier hs-var">a1</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span> </span><span>
+</span><a href="#local-6989586621680522411"><span class="hs-identifier hs-var">a1</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span> </span><span>
 </span><span id="line-92"></span><span>  </span><span class="annot"><span class="annottext">CInt -&gt; IO ()
 </span><a href="QuantLib.Context.html#disableUpdates%27_"><span class="hs-identifier hs-var">disableUpdates'_</span></a></span><span> </span><span class="annot"><span class="annottext">CInt
-</span><a href="#local-6989586621680521789"><span class="hs-identifier hs-var">a1'</span></a></span><span> </span><span class="annot"><span class="annottext">IO () -&gt; IO () -&gt; IO ()
+</span><a href="#local-6989586621680522413"><span class="hs-identifier hs-var">a1'</span></a></span><span> </span><span class="annot"><span class="annottext">IO () -&gt; IO () -&gt; IO ()
 forall a b. IO a -&gt; IO b -&gt; IO b
 forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; m b -&gt; m b
 </span><span class="hs-operator hs-var">&gt;&gt;</span></span><span>
@@ -277,7 +277,7 @@ forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
 </span><a href="QuantLib.Context.html#snapshotUpdatesEnabled"><span class="hs-identifier hs-var">snapshotUpdatesEnabled</span></a></span></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-identifier">Bool</span><span>
 </span><span id="line-108"></span><span>  </span><span class="hs-special">,</span><span> </span><span id="snapshotUpdatesDeferred"><span class="annot"><span class="annottext">SettingsSnapshot -&gt; Bool
 </span><a href="QuantLib.Context.html#snapshotUpdatesDeferred"><span class="hs-identifier hs-var">snapshotUpdatesDeferred</span></a></span></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-identifier">Bool</span><span>
-</span><span id="line-109"></span><span>  </span><span class="hs-special">}</span><span> </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680521804"><span id="local-6989586621680521815"><span class="annot"><span class="annottext">SettingsSnapshot -&gt; SettingsSnapshot -&gt; Bool
+</span><span id="line-109"></span><span>  </span><span class="hs-special">}</span><span> </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span id="local-6989586621680522428"><span id="local-6989586621680522439"><span class="annot"><span class="annottext">SettingsSnapshot -&gt; SettingsSnapshot -&gt; Bool
 (SettingsSnapshot -&gt; SettingsSnapshot -&gt; Bool)
 -&gt; (SettingsSnapshot -&gt; SettingsSnapshot -&gt; Bool)
 -&gt; Eq SettingsSnapshot
@@ -286,7 +286,7 @@ $c== :: SettingsSnapshot -&gt; SettingsSnapshot -&gt; Bool
 == :: SettingsSnapshot -&gt; SettingsSnapshot -&gt; Bool
 $c/= :: SettingsSnapshot -&gt; SettingsSnapshot -&gt; Bool
 /= :: SettingsSnapshot -&gt; SettingsSnapshot -&gt; Bool
-</span><a href="#local-6989586621680521803"><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var">Eq</span></a></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680521821"><span id="local-6989586621680521834"><span id="local-6989586621680521838"><span class="annot"><span class="annottext">Int -&gt; SettingsSnapshot -&gt; ShowS
+</span><a href="#local-6989586621680522427"><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var">Eq</span></a></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621680522445"><span id="local-6989586621680522458"><span id="local-6989586621680522462"><span class="annot"><span class="annottext">Int -&gt; SettingsSnapshot -&gt; ShowS
 [SettingsSnapshot] -&gt; ShowS
 SettingsSnapshot -&gt; String
 (Int -&gt; SettingsSnapshot -&gt; ShowS)
@@ -301,7 +301,7 @@ $cshow :: SettingsSnapshot -&gt; String
 show :: SettingsSnapshot -&gt; String
 $cshowList :: [SettingsSnapshot] -&gt; ShowS
 showList :: [SettingsSnapshot] -&gt; ShowS
-</span><a href="#local-6989586621680521820"><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Show</span></a></span></span></span></span><span class="hs-special">)</span><span>
+</span><a href="#local-6989586621680522444"><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Show</span></a></span></span></span></span><span class="hs-special">)</span><span>
 </span><span id="line-110"></span><span>
 </span><span id="line-111"></span><span class="annot"><span class="hs-comment">-- |Copies all settings preserved by 'keepingSettings', including the raw date mode.</span></span><span>
 </span><span id="line-112"></span><span class="annot"><a href="QuantLib.Context.html#captureSettings"><span class="hs-identifier hs-type">captureSettings</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">IO</span></span><span> </span><span class="annot"><a href="QuantLib.Context.html#SettingsSnapshot"><span class="hs-identifier hs-type">SettingsSnapshot</span></a></span><span>
@@ -350,17 +350,17 @@ forall (f :: * -&gt; *) a b. Applicative f =&gt; f (a -&gt; b) -&gt; f a -&gt; f
 </span><a href="QuantLib.Context.html#rawEvaluationDate%27_"><span class="hs-identifier hs-var">rawEvaluationDate'_</span></a></span><span> </span><span class="annot"><span class="annottext">IO CInt -&gt; (CInt -&gt; IO (Maybe Day)) -&gt; IO (Maybe Day)
 forall a b. IO a -&gt; (a -&gt; IO b) -&gt; IO b
 forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; (a -&gt; m b) -&gt; m b
-</span><span class="hs-operator hs-var">&gt;&gt;=</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680521846"><span class="annot"><span class="annottext">CInt
-</span><a href="#local-6989586621680521846"><span class="hs-identifier hs-var">res</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
-</span><span id="line-119"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span id="local-6989586621680521847"><span class="annot"><span class="annottext">res' :: Maybe Day
-</span><a href="#local-6989586621680521847"><span class="hs-identifier hs-var hs-var">res'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">CInt -&gt; Maybe Day
+</span><span class="hs-operator hs-var">&gt;&gt;=</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680522470"><span class="annot"><span class="annottext">CInt
+</span><a href="#local-6989586621680522470"><span class="hs-identifier hs-var">res</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><span id="line-119"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span id="local-6989586621680522471"><span class="annot"><span class="annottext">res' :: Maybe Day
+</span><a href="#local-6989586621680522471"><span class="hs-identifier hs-var hs-var">res'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">CInt -&gt; Maybe Day
 </span><a href="QuantLib.Internal.html#toMaybeDay"><span class="hs-identifier hs-var">toMaybeDay</span></a></span><span> </span><span class="annot"><span class="annottext">CInt
-</span><a href="#local-6989586621680521846"><span class="hs-identifier hs-var">res</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span>
+</span><a href="#local-6989586621680522470"><span class="hs-identifier hs-var">res</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span>
 </span><span id="line-120"></span><span>  </span><span class="annot"><span class="annottext">Maybe Day -&gt; IO (Maybe Day)
 forall a. a -&gt; IO a
 forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
 </span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Maybe Day
-</span><a href="#local-6989586621680521847"><span class="hs-identifier hs-var">res'</span></a></span><span class="hs-special">)</span><span>
+</span><a href="#local-6989586621680522471"><span class="hs-identifier hs-var">res'</span></a></span><span class="hs-special">)</span><span>
 </span><span id="line-121"></span><span>
 </span><span id="line-122"></span><span class="hs-pragma">{-# LINE 116 &quot;./QuantLib/Context.chs&quot; #-}</span><span>
 </span><span id="line-116"></span><span>
@@ -381,7 +381,7 @@ forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
 </span><span id="line-131"></span><span>    </span><span class="hs-special">[</span><span class="hs-special">]</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-identifier">pure</span><span> </span><span class="hs-special">(</span><span class="hs-special">)</span><span>
 </span><span id="line-132"></span><span>
 </span><span id="line-133"></span><span class="annot"><span class="hs-comment">-- |brackets to restore settings once action has completed or raised an exception</span></span><span>
-</span><span id="line-134"></span><span id="local-6989586621680521658"><span class="annot"><a href="QuantLib.Context.html#keepingSettings"><span class="hs-identifier hs-type">keepingSettings</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">IO</span></span><span> </span><span class="annot"><a href="#local-6989586621680521658"><span class="hs-identifier hs-type">b</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">IO</span></span><span> </span><span class="annot"><a href="#local-6989586621680521658"><span class="hs-identifier hs-type">b</span></a></span></span><span>
+</span><span id="line-134"></span><span id="local-6989586621680522282"><span class="annot"><a href="QuantLib.Context.html#keepingSettings"><span class="hs-identifier hs-type">keepingSettings</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">IO</span></span><span> </span><span class="annot"><a href="#local-6989586621680522282"><span class="hs-identifier hs-type">b</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">IO</span></span><span> </span><span class="annot"><a href="#local-6989586621680522282"><span class="hs-identifier hs-type">b</span></a></span></span><span>
 </span><span id="line-135"></span><span id="keepingSettings"><span class="annot"><span class="annottext">keepingSettings :: forall b. IO b -&gt; IO b
 </span><a href="QuantLib.Context.html#keepingSettings"><span class="hs-identifier hs-var hs-var">keepingSettings</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">IO (Ptr ()) -&gt; (Ptr () -&gt; IO ()) -&gt; (Ptr () -&gt; IO b) -&gt; IO b
 forall a b c. IO a -&gt; (a -&gt; IO b) -&gt; (a -&gt; IO c) -&gt; IO c
@@ -397,19 +397,19 @@ forall a b. a -&gt; b -&gt; a
 </span><span id="line-137"></span><span>
 </span><span id="line-138"></span><span class="hs-comment">-- |brackets to restore settings once action has completed or raised an exception. Before restoring settings</span><span>
 </span><span id="line-139"></span><span class="hs-comment">-- 'collectGarbage' is run to avoid problems with market data objects watching evaluation date</span><span>
-</span><span id="line-140"></span><span id="local-6989586621680521857"><span class="annot"><a href="QuantLib.Context.html#keepingSettingsGc"><span class="hs-identifier hs-type">keepingSettingsGc</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">IO</span></span><span> </span><span class="annot"><a href="#local-6989586621680521857"><span class="hs-identifier hs-type">b</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">IO</span></span><span> </span><span class="annot"><a href="#local-6989586621680521857"><span class="hs-identifier hs-type">b</span></a></span></span><span>
+</span><span id="line-140"></span><span id="local-6989586621680522481"><span class="annot"><a href="QuantLib.Context.html#keepingSettingsGc"><span class="hs-identifier hs-type">keepingSettingsGc</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">IO</span></span><span> </span><span class="annot"><a href="#local-6989586621680522481"><span class="hs-identifier hs-type">b</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">IO</span></span><span> </span><span class="annot"><a href="#local-6989586621680522481"><span class="hs-identifier hs-type">b</span></a></span></span><span>
 </span><span id="line-141"></span><span id="keepingSettingsGc"><span class="annot"><span class="annottext">keepingSettingsGc :: forall b. IO b -&gt; IO b
 </span><a href="QuantLib.Context.html#keepingSettingsGc"><span class="hs-identifier hs-var hs-var">keepingSettingsGc</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">IO (Ptr ()) -&gt; (Ptr () -&gt; IO ()) -&gt; (Ptr () -&gt; IO b) -&gt; IO b
 forall a b c. IO a -&gt; (a -&gt; IO b) -&gt; (a -&gt; IO c) -&gt; IO c
 </span><span class="hs-identifier hs-var">bracket</span></span><span> </span><span class="annot"><span class="annottext">IO (Ptr ())
-</span><a href="QuantLib.Internal.html#qlSavedSettings"><span class="hs-identifier hs-var">qlSavedSettings</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-glyph">\</span><span id="local-6989586621680521859"><span class="annot"><span class="annottext">Ptr ()
-</span><a href="#local-6989586621680521859"><span class="hs-identifier hs-var">s</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">IO ()
+</span><a href="QuantLib.Internal.html#qlSavedSettings"><span class="hs-identifier hs-var">qlSavedSettings</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-glyph">\</span><span id="local-6989586621680522483"><span class="annot"><span class="annottext">Ptr ()
+</span><a href="#local-6989586621680522483"><span class="hs-identifier hs-var">s</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">IO ()
 </span><a href="QuantLib.Context.html#collectGarbage"><span class="hs-identifier hs-var">collectGarbage</span></a></span><span> </span><span class="annot"><span class="annottext">IO () -&gt; IO () -&gt; IO ()
 forall a b. IO a -&gt; IO b -&gt; IO b
 forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; m b -&gt; m b
 </span><span class="hs-operator hs-var">&gt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">Ptr () -&gt; IO ()
 </span><a href="QuantLib.Internal.html#qlFreeSavedSettings"><span class="hs-identifier hs-var">qlFreeSavedSettings</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr ()
-</span><a href="#local-6989586621680521859"><span class="hs-identifier hs-var">s</span></a></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">((Ptr () -&gt; IO b) -&gt; IO b)
+</span><a href="#local-6989586621680522483"><span class="hs-identifier hs-var">s</span></a></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">((Ptr () -&gt; IO b) -&gt; IO b)
 -&gt; (IO b -&gt; Ptr () -&gt; IO b) -&gt; IO b -&gt; IO b
 forall b c a. (b -&gt; c) -&gt; (a -&gt; b) -&gt; a -&gt; c
 </span><span class="hs-operator hs-var">.</span></span><span> </span><span class="annot"><span class="annottext">IO b -&gt; Ptr () -&gt; IO b

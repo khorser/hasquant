@@ -13,6 +13,9 @@
 - Extended model and engine support, including an exact-mean option for Heston–Hull–White pricing
   that avoids numerical failures in the upstream approximation. `analyticH1HwEngine` now requires
   an `H1HwMean` argument and rejects a negative equity/rate correlation with either integration control.
+- Split Longstaff-Schwartz regression into `lsmFit` (basis coefficients) and `lsmEvaluate`, which
+  reproduce `lsmRegress`/`lsmRegressMulti` bit for bit within one build; `lsmEvaluatorIdentity`
+  names that build so stored coefficients can be refused elsewhere.
 - Improved simulation and fixing inspection: `pathGeneratorSequence` exposes the random variates
   actually consumed, and inflation fixing dependencies now follow the dates and interpolation
   rules QuantLib uses.
