@@ -304,8 +304,9 @@ data IntegrationControl
 
 -- |How the H1-HW engine reads E[sqrt v] of the Heston variance. QuantLib fits @a + b exp(-c t)@
 -- at one year or @1 / kappa@, depending on its variance parameters; the fit can fail for a
--- nonmonotone mean. 'ExactMean' uses Gauss-Legendre on that many nodes, with an asymptotic
--- expectation for large noncentrality.
+-- nonmonotone mean. 'ExactMean' uses Gauss-Legendre on the specified positive number of nodes,
+-- with an asymptotic expectation for large noncentrality. Its accuracy depends on the node count
+-- and model parameters; it provides no adaptive error estimate and retains the H1-HW approximation.
 data H1HwMean
   = FittedExponentialMean
   | ExactMean Word
@@ -923,8 +924,9 @@ analyticHestonHullWhiteEngine heston hullWhite control =
     IntegrationTolerance tolerance evaluations -> analyticHestonHullWhiteEngineTolerance heston hullWhite tolerance evaluations
 
 -- |H1-HW approximation engine with fixed-order or tolerance-based integration. @rhoSr@ must be
--- non-negative. With 'ExactMean' it is a hasquant subclass of QuantLib's Heston/Hull-White engine
--- that integrates the exact E[sqrt v]; QuantLib's own engine otherwise, whose prices are NaN where its fit fails.
+-- non-negative. 'ExactMean' uses QuantLib's native variance-root expectation integration when
+-- available, otherwise hasquant's backport. 'FittedExponentialMean' delegates to QuantLib's fitted
+-- engine: invalid or singular fits can return NaN or throw, depending on the linked version.
 analyticH1HwEngine :: GenHestonModel hm -> HullWhite -> Double -> IntegrationControl -> H1HwMean -> IO PricingEngine
 analyticH1HwEngine heston hullWhite rhoSr control mean =
   case control of

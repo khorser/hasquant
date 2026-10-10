@@ -14,7 +14,17 @@ can still lose precision internally at huge arguments, so verify the supported B
 use a large-shape expansion there, as the exact-mean H1-HW backport does.
 Use `-expm1(-x)` for `1 - exp(-x)`. If that factor is subsequently divided by a small model
 parameter, integrate the scaled kernel directly and retain its finite limit at zero.
-The exact-mean H1-HW backport is covered by Hspec price comparisons against BSM-Hull-White.
+The exact-mean H1-HW backport is covered by Hspec price comparisons against BSM-Hull-White and
+mean-quadrature order convergence. For failed fitted means, legacy fixed-order engines return
+NaN while legacy adaptive integration throws `Interval contains no more machine number`.
+Patched engines throw earlier with an Exact suggestion. Match those specific outcomes in tests;
+do not accept an arbitrary native exception.
+
+An upstream PR can add an API without changing `QL_HEX_VERSION`. To support both patched and
+stock headers, detect the optional member in a dependent template with `std::void_t`, then select
+the implementation with `if constexpr`, as `h1HwEngine` does. A non-template `if constexpr` still
+checks an unavailable API in its discarded branch. Verify both branches against matching headers
+and libraries; a successful macOS link alone does not establish symbol availability.
 
 ## Public Haskell names are semantic
 

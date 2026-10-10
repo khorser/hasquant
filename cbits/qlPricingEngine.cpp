@@ -153,6 +153,7 @@
 #include <ql/experimental/processes/all.hpp>
 #include <ql/experimental/variancegamma/all.hpp>
 #include <ql/legacy/libormarketmodels/lfmprocess.hpp>
+#include <type_traits>
 
 #include "qlaux.h"
 #if QL_HEX_VERSION >= 0x01440000
@@ -175,6 +176,27 @@ QL_TRACE_NAME(hasquant::ExactMeanH1HWEngine)
 #endif
 
 namespace {
+  template <class Engine, class = void>
+  struct HasExactVarianceRootMean : std::false_type {};
+
+  template <class Engine>
+  struct HasExactVarianceRootMean<Engine, std::void_t<decltype(Engine::VarianceRootMean::Exact)>>
+      : std::true_type {};
+
+  template <class Engine = AnalyticH1HWEngine, class... Integration>
+  QlPricingEngine* h1HwEngine(const shared_ptr<HestonModel>& model,
+                            const shared_ptr<HullWhite>& hullWhiteModel, Real rhoSr,
+                            bool exactMean, Size meanOrder, Integration... integration) {
+    if (!exactMean)
+      return ret(new QlPricingEngine(alloc(new Engine(model, hullWhiteModel, rhoSr, integration...))));
+    if constexpr (HasExactVarianceRootMean<Engine>::value)
+      return ret(new QlPricingEngine(alloc(new Engine(model, hullWhiteModel, rhoSr, integration...,
+                                                    Engine::VarianceRootMean::Exact, meanOrder))));
+    else
+      return ret(new QlPricingEngine(alloc(new hasquant::ExactMeanH1HWEngine(
+          model, hullWhiteModel, rhoSr, integration..., meanOrder))));
+  }
+
   shared_ptr<StochasticProcess1D::discretization> createDiscretization1D(int n) {
     switch (n) {
     case hasquant::EulerDiscretization:
@@ -734,11 +756,8 @@ QlPricingEngine* qlAnalyticGJRGARCHEngine(QlGJRGARCHModel* model, QlError **e) {
 QlPricingEngine* qlAnalyticHestonEngine(QlHestonModel* model, double relTolerance, unsigned maxEvaluations, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new AnalyticHestonEngine(*arg(model), relTolerance, maxEvaluations))));
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
-// Without exactMean, QuantLib's engine with its fitted E[sqrt(v)]; with it, the exact mean on meanOrder nodes.
 QlPricingEngine* qlAnalyticH1HWEngine(QlHestonModel* model, QlHullWhite* hullWhiteModel, double rhoSr, unsigned integrationOrder, int exactMean, unsigned meanOrder, QlError **e) { QlCallScope callbackScope(e);
-  try {return !exactMean
-      ? ret(new QlPricingEngine(alloc(new AnalyticH1HWEngine(*arg(model), *arg(hullWhiteModel), rhoSr, integrationOrder))))
-      : ret(new QlPricingEngine(alloc(new hasquant::ExactMeanH1HWEngine(*arg(model), *arg(hullWhiteModel), rhoSr, integrationOrder, meanOrder))));
+  try {return h1HwEngine(*arg(model), *arg(hullWhiteModel), rhoSr, exactMean, meanOrder, integrationOrder);
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
 QlPricingEngine* qlAnalyticHestonHullWhiteEngine(QlHestonModel* hestonModel, QlHullWhite* hullWhiteModel, unsigned integrationOrder, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new AnalyticHestonHullWhiteEngine(*arg(hestonModel), *arg(hullWhiteModel), integrationOrder))));
@@ -778,11 +797,9 @@ QlPricingEngine* qlAnalyticHestonHullWhiteEngine1(QlHestonModel* model, QlHullWh
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
 QlPricingEngine* qlAnalyticH1HWEngine1(QlHestonModel* model, QlHullWhite* hullWhiteModel, double rhoSr, double relTolerance, unsigned maxEvaluations, int exactMean, unsigned meanOrder, QlError **e) { QlCallScope callbackScope(e);
   try {
-    // QuantLib's tolerance constructor omits the check its fixed-order one makes.
+    // Enforce the correlation restriction on older QuantLib tolerance constructors too.
     QL_REQUIRE(rhoSr >= 0.0, "Fourier integration is not stable if the equity interest rate correlation is negative");
-    return !exactMean
-      ? ret(new QlPricingEngine(alloc(new AnalyticH1HWEngine(*arg(model), *arg(hullWhiteModel), rhoSr, relTolerance, maxEvaluations))))
-      : ret(new QlPricingEngine(alloc(new hasquant::ExactMeanH1HWEngine(*arg(model), *arg(hullWhiteModel), rhoSr, relTolerance, maxEvaluations, meanOrder))));
+    return h1HwEngine(*arg(model), *arg(hullWhiteModel), rhoSr, exactMean, meanOrder, relTolerance, maxEvaluations);
   } catch (std::exception& er) {return handleException<QlPricingEngine*>(e, er);}}
 QlPricingEngine* qlBatesEngine1(QlBatesModel* model, double relTolerance, unsigned maxEvaluations, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlPricingEngine(alloc(new BatesEngine(*arg(model), relTolerance, maxEvaluations))));

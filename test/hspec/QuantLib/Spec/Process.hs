@@ -29,7 +29,9 @@ module QuantLib.Spec.Process (spec) where
 import Test.Hspec
 import qualified Data.Vector.Storable as V
 import Data.Time.Calendar(addDays)
+import Data.List(isInfixOf)
 import Data.List.NonEmpty(fromList)
+import Control.Exception(try)
 
 import qualified QuantLib.Context as Context
 import QuantLib.Time.Date(today, addPeriod, january, july, september)
@@ -57,7 +59,7 @@ import QuantLib.PricingEngine(analyticH1HwEngine, H1HwMean(..), analyticHestonHu
  , analyticHestonEngine, analyticBsmHullWhiteEngine, IntegrationControl(..), batesEngine, analyticGjrGarchEngine, mcEuropeanGjrGarchEngine, blackFormula, analyticCapFloorEngine)
 import QuantLib.Method(pathGenerator, next, asset, gaussianRsg, nextSequence, pathGeneratorSequence)
 import QuantLib.Math(EndCriteria(..), OptimizationMethod(..), FdmScheme(Hundsdorfer), RngTrait(..), StatisticsTrait(..), timeGrid, Interpolation(..), boxedRealMatrix, realMatrixFromVector, matrixRows, matrixColumns, matrixData, realMatrixData)
-import Control.Monad(replicateM, forM_, zipWithM_, foldM_, (>=>))
+import Control.Monad(replicateM, forM_, zipWithM_, foldM_, unless, (>=>))
 import QuantLib.Instrument.CapFloor(cap)
 import QuantLib.Time.Calendar(adjust, advance, calendar, BusinessDayConvention(..), CalendarConstructor(..))
 import QuantLib.Index.InterestRate(iborIndex, IborConstructor(..))
@@ -675,9 +677,8 @@ spec = do
           v <- npv o
           impliedVolatility o v bsm [] 1.0e-8 100 1.0e-4 10.0 >>= \vol -> abs (vol - publishedVol) `shouldSatisfy` (< 5.0e-3)
 
-    -- E[sqrt v] falls from sqrt v0 and then rises when v0 is near theta, so QuantLib's a + b exp(-c t)
-    -- has no c: its engine is NaN. The exact mean is finite there and wherever else the sweep goes,
-    -- and without the cross term it is the analytic Heston-Hull-White price.
+    -- Nonmonotone expectations can invalidate the fitted mean. Exact remains finite in the sweep
+    -- and reduces to analytic Heston-Hull-White when the equity/rate cross term vanishes.
     describe "H1-HW with the exact mean" $ do
       let refDate = 2 `january` 2026
           sweep = [ (0.04, 1.5, 0.05, 0.4, -0.6), (0.06, 1.0, 0.03, 0.6, -0.3), (0.04, 1.0, 0.05, 0.4, -0.6)
@@ -695,6 +696,18 @@ spec = do
             let modelOf (v0, kappa, theta, sigma, rho) = hestonProcess rTS (Just qTS) s0 v0 kappa theta sigma rho QuadraticExponentialMartingale >>= hestonModel
             k' modelOf hw hwp
           finite x = not (isNaN x || isInfinite x)
+          fittedFailure :: IntegrationControl -> IO Double -> Expectation
+          fittedFailure control action = do
+            result <- try action
+            case result of
+              Right x -> x `shouldSatisfy` isNaN
+              Left (Context.CPlusPlusException message) -> case control of
+                -- Legacy adaptive integration cannot subdivide an interval with a NaN integrand.
+                IntegrationTolerance _ _ | message == "Interval contains no more machine number" -> pure ()
+                _ -> do
+                  message `shouldSatisfy` isInfixOf "fitted approximation of E[sqrt(v)]"
+                  message `shouldSatisfy` isInfixOf "VarianceRootMean::Exact"
+              Left other -> expectationFailure $ "unexpected fitted-mean exception: " ++ show other
           limitMarket checks = Context.keepingSettingsGc $ do
             Context.setEvaluationDate (Just refDate)
             dc <- dayCounter Actual365FixedStandard
@@ -743,13 +756,25 @@ spec = do
         setParams hw [0.08, 0.025]
         _ <- check changed
         pure ()
-      it "is finite where QuantLib's fitted mean is NaN, and across the sweep" $ market $ \modelOf hw _ -> do
+      it "handles nonmonotone fitted-mean failures" $ market $ \modelOf hw _ -> do
         fixture <- modelOf (0.04, 1.5, 0.05, 0.4, -0.6)
-        fitted <- analyticH1HwEngine fixture hw 0.6 (IntegrationOrder 144) FittedExponentialMean
-        forM_ options $ \o' -> do
-          o <- option o'
+        forM_ [IntegrationOrder 144, IntegrationTolerance 1.0e-8 1000] $ \control -> do
+          fitted <- analyticH1HwEngine fixture hw 0.6 control FittedExponentialMean
+          forM_ options $ \o' -> do
+            o <- option o'
+            setPricingEngine o fitted
+            fittedFailure control (npv o)
+      it "handles a zero fitted decay rate in both constructors" $ market $ \modelOf hw _ -> do
+        m <- modelOf (0.02568918717646957, 1.0, 0.04, 0.3, -0.6)
+        o <- option (730, 100)
+        forM_ [IntegrationOrder 144, IntegrationTolerance 1.0e-6 10000] $ \control -> do
+          fitted <- analyticH1HwEngine m hw 0.6 control FittedExponentialMean
           setPricingEngine o fitted
-          npv o >>= (`shouldSatisfy` isNaN)
+          fittedFailure control (npv o)
+          exact <- analyticH1HwEngine m hw 0.6 control (ExactMean 64)
+          setPricingEngine o exact
+          npv o >>= (`shouldSatisfy` finite)
+      it "produces finite Exact prices across the variance-parameter sweep" $ market $ \modelOf hw _ ->
         forM_ sweep $ \p -> do
           m <- modelOf p
           exact <- analyticH1HwEngine m hw 0.6 (IntegrationOrder 144) (ExactMean 64)
@@ -761,6 +786,27 @@ spec = do
             x `shouldSatisfy` finite
             setPricingEngine o tolerant
             npv o >>= (`shouldSatisfy` closePrec x 1.0e-6)
+      it "converges as the exact-mean quadrature order increases" $ market $ \modelOf hw _ -> do
+        let fixtures = [ ((0.04, 1.5, 0.05, 0.4, -0.6), 730, 1.0e-6)
+                       , ((1.0e-4, 1.5, 0.05, 0.4, -0.6), 730, 1.0e-6)
+                       , ((0.05, 0.3, 0.05, 0.6, -0.6), 3650, 1.0e-6)
+                       , ((1.0e-4, 100.0, 0.05, 0.4, -0.6), 10950, 5.0e-6) ]
+        forM_ fixtures $ \(parameters, days, tolerance) -> do
+          m <- modelOf parameters
+          o <- option (days, 100)
+          let price order = do
+                engine <- analyticH1HwEngine m hw 0.6 (IntegrationOrder 144) (ExactMean order)
+                setPricingEngine o engine
+                npv o
+          reference <- price 512
+          reference `shouldSatisfy` finite
+          reference `shouldSatisfy` (> 0)
+          forM_ [(64, tolerance), (128, tolerance), (256, 1.0e-7)] $ \(order, relativeTolerance) -> do
+            actual <- price order
+            unless (finite actual && closePrec reference (relativeTolerance * abs reference) actual) $
+              expectationFailure $ "exact-mean quadrature has not converged: parameters=" ++ show parameters
+                ++ ", days=" ++ show days ++ ", orders=" ++ show (order, 512 :: Word)
+                ++ ", prices=" ++ show (actual, reference) ++ ", relative tolerance=" ++ show relativeTolerance
       it "uncorrelated, is the analytic Heston-Hull-White price" $ market $ \modelOf hw _ -> forM_ sweep $ \p -> do
         m <- modelOf p
         exact <- analyticH1HwEngine m hw 0.0 (IntegrationOrder 144) (ExactMean 64)
