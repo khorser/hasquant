@@ -1,24 +1,35 @@
 name: Release
 
-# On-demand release: checks out an existing tag, builds an sdist and
-# hackage-ready Haddock docs (GHC 9.10.3 / QuantLib 1.43, pinned to lts-24.56
-# by cabal.project) inside the existing hasquant-ci image from linux.yml, and
-# publishes both as assets on a GitHub Release for that tag. Defaults to
-# creating the release as a draft (hidden from the public release list) so it
-# can be reviewed before publishing with `gh release edit <tag> --draft=false`.
+# Build release assets and a Hackage candidate, or upload saved docs after
+# manual Hackage promotion. GitHub draft status is independent of Hackage.
 
 on:
   workflow_dispatch:
     inputs:
       tag:
-        description: "Existing tag to release (e.g. v.0.5.0.2)"
+        description: "Existing version tag (e.g. v.0.8.0.0)"
         required: true
         type: string
-      draft:
-        description: "Create as a draft (hidden until published)"
+      operation:
+        description: "Build a release, or upload docs after manual Hackage promotion"
+        required: true
+        type: choice
+        options: [release, published-docs]
+        default: release
+      upload_candidate:
+        description: "Upload candidate and docs to Hackage (release operation only)"
         required: false
         type: boolean
         default: true
+      draft:
+        description: "Create GitHub release as a draft (release operation only)"
+        required: false
+        type: boolean
+        default: true
+
+concurrency:
+  group: release-${{ inputs.tag }}
+  cancel-in-progress: false
 
 jobs:
   release:
@@ -29,10 +40,41 @@ jobs:
     env:
       GHC_VERSION: "9.10.3"
       QL_VERSION: "1.43"
+      RELEASE_TAG: ${{ inputs.tag }}
+    defaults:
+      run:
+        shell: bash
     steps:
+      - name: Check Hackage credentials
+        if: inputs.operation == 'published-docs' || inputs.upload_candidate
+        env:
+          HACKAGE_TOKEN: ${{ secrets.HACKAGE_TOKEN }}
+        run: |
+          set -euo pipefail
+          if [ -z "$HACKAGE_TOKEN" ]; then
+            echo "Set the HACKAGE_TOKEN repository secret before uploading to Hackage." >&2
+            exit 1
+          fi
+
       - uses: actions/checkout@v7
         with:
-          ref: ${{ inputs.tag }}
+          ref: refs/tags/${{ inputs.tag }}
+
+      - name: Validate release tag and package version
+        id: package
+        run: |
+          set -euo pipefail
+          git check-ref-format "refs/tags/$RELEASE_TAG"
+          git rev-parse --verify "refs/tags/$RELEASE_TAG^{commit}" > /dev/null
+          version="${RELEASE_TAG#v.}"
+          version="${version#v}"
+          package_version=$(awk 'tolower($1) == "version:" { print $2; exit }' hasquant.cabal)
+          if [[ ! "$version" =~ ^[0-9]+(\.[0-9]+)*$ ]] || [ "$version" != "$package_version" ]; then
+            echo "Tag $RELEASE_TAG does not match hasquant.cabal version $package_version." >&2
+            exit 1
+          fi
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+          echo "id=hasquant-$version" >> "$GITHUB_OUTPUT"
 
       - name: Resolve latest Boost version
         id: boost
@@ -45,9 +87,13 @@ jobs:
 
       - name: Compute image tag
         id: image
+        env:
+          REPOSITORY_OWNER: ${{ github.repository_owner }}
+          BOOST_VERSION: ${{ steps.boost.outputs.version }}
         run: |
-          owner=$(echo "${{ github.repository_owner }}" | tr '[:upper:]' '[:lower:]')
-          echo "tag=ghcr.io/${owner}/hasquant-ci:ql${{ env.QL_VERSION }}-boost${{ steps.boost.outputs.version }}-ghc${{ env.GHC_VERSION }}" >> "$GITHUB_OUTPUT"
+          set -euo pipefail
+          owner=$(echo "$REPOSITORY_OWNER" | tr '[:upper:]' '[:lower:]')
+          echo "tag=ghcr.io/${owner}/hasquant-ci:ql${QL_VERSION}-boost${BOOST_VERSION}-ghc${GHC_VERSION}" >> "$GITHUB_OUTPUT"
 
       - name: Log in to GHCR
         uses: docker/login-action@v4
@@ -57,9 +103,14 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Pull CI image
-        run: docker pull "${{ steps.image.outputs.tag }}"
+        env:
+          CI_IMAGE: ${{ steps.image.outputs.tag }}
+        run: docker pull "$CI_IMAGE"
 
       - name: Build sdist and hackage docs
+        if: inputs.operation == 'release'
+        env:
+          CI_IMAGE: ${{ steps.image.outputs.tag }}
         run: |
           set -euo pipefail
           # The bind-mounted checkout is owned by the runner's uid, not the
@@ -68,58 +119,136 @@ jobs:
           docker run --rm \
             -v "$PWD":/hasquant \
             -w /hasquant \
-            "${{ steps.image.outputs.tag }}" \
+            "$CI_IMAGE" \
             sh -c "cabal update && cabal v2-haddock --haddock-for-hackage --enable-doc && cabal v2-sdist"
 
       - name: Locate build artifacts
+        if: inputs.operation == 'release'
         id: artifacts
+        env:
+          PACKAGE_ID: ${{ steps.package.outputs.id }}
         run: |
           set -euo pipefail
-          sdist=$(find dist-newstyle/sdist -name 'hasquant-*.tar.gz' | head -1)
-          docs=$(find dist-newstyle -maxdepth 3 -name '*-docs.tar.gz' | head -1)
-          if [ -z "$sdist" ] || [ -z "$docs" ]; then
-            echo "Missing sdist or docs tarball under dist-newstyle" >&2
+          find dist-newstyle/sdist -type f -name "$PACKAGE_ID.tar.gz" > "$RUNNER_TEMP/sdist-paths"
+          find dist-newstyle -type f -name "$PACKAGE_ID-docs.tar.gz" > "$RUNNER_TEMP/docs-paths"
+          mapfile -t sdists < "$RUNNER_TEMP/sdist-paths"
+          mapfile -t docs < "$RUNNER_TEMP/docs-paths"
+          if [ "${#sdists[@]}" -ne 1 ] || [ "${#docs[@]}" -ne 1 ]; then
+            echo "Expected exactly one source tarball and one docs tarball for $PACKAGE_ID." >&2
             exit 1
           fi
-          echo "sdist=$sdist" >> "$GITHUB_OUTPUT"
-          echo "docs=$docs" >> "$GITHUB_OUTPUT"
+          echo "sdist=${sdists[0]}" >> "$GITHUB_OUTPUT"
+          echo "docs=${docs[0]}" >> "$GITHUB_OUTPUT"
 
       - name: Extract release notes from CHANGELOG.md
-        id: notes
+        if: inputs.operation == 'release'
+        env:
+          PACKAGE_VERSION: ${{ steps.package.outputs.version }}
         run: |
           set -euo pipefail
-          ver="${{ inputs.tag }}"
-          ver="${ver#v.}"
-          ver="${ver#v}"
-          awk -v ver="$ver" '
-            $0 ~ "^## " ver " " { found=1; print; next }
+          awk -v ver="$PACKAGE_VERSION" '
+            $1 == "##" && $2 == ver { found=1; print; next }
             found && /^## / { exit }
             found { print }
           ' CHANGELOG.md > release-notes.md
           if [ ! -s release-notes.md ]; then
-            echo "Release ${{ inputs.tag }}" > release-notes.md
+            echo "Release $RELEASE_TAG" > release-notes.md
           fi
 
       - name: Create or update GitHub Release
+        if: inputs.operation == 'release'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SDIST: ${{ steps.artifacts.outputs.sdist }}
+          DOCS: ${{ steps.artifacts.outputs.docs }}
+          DRAFT: ${{ inputs.draft }}
         run: |
           set -euo pipefail
-          tag="${{ inputs.tag }}"
-          sdist="${{ steps.artifacts.outputs.sdist }}"
-          docs="${{ steps.artifacts.outputs.docs }}"
           draft_flag=()
-          if [ "${{ inputs.draft }}" = "true" ]; then
+          if [ "$DRAFT" = "true" ]; then
             draft_flag=(--draft)
           fi
-          if gh release view "$tag" > /dev/null 2>&1; then
-            # Release already exists (e.g. re-running after a build fix): only
-            # refresh its assets. Publish state is left alone -- flip it with
-            # `gh release edit <tag> --draft=false` once you're happy with it.
-            gh release upload "$tag" "$sdist" "$docs" --clobber
+          if gh release view "$RELEASE_TAG" > /dev/null 2>&1; then
+            # Refresh assets while preserving the existing publish state.
+            gh release upload "$RELEASE_TAG" "$SDIST" "$DOCS" --clobber
           else
-            gh release create "$tag" "$sdist" "$docs" \
-              --title "$tag" \
+            gh release create "$RELEASE_TAG" "$SDIST" "$DOCS" \
+              --verify-tag --title "$RELEASE_TAG" \
               --notes-file release-notes.md \
               "${draft_flag[@]}"
           fi
+
+      - name: Summarize GitHub release assets
+        if: inputs.operation == 'release'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          gh release view "$RELEASE_TAG" --json url,assets --jq \
+            '"GitHub release: " + .url, (.assets[] | "Asset: [" + .name + "](" + .url + ")")' \
+            >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload Hackage candidate and docs
+        if: inputs.operation == 'release' && inputs.upload_candidate
+        env:
+          HACKAGE_TOKEN: ${{ secrets.HACKAGE_TOKEN }}
+          CI_IMAGE: ${{ steps.image.outputs.tag }}
+          SDIST: ${{ steps.artifacts.outputs.sdist }}
+          DOCS: ${{ steps.artifacts.outputs.docs }}
+          PACKAGE_ID: ${{ steps.package.outputs.id }}
+        run: |
+          set -euo pipefail
+          docker run --rm \
+            -e HACKAGE_TOKEN -e SDIST -e DOCS \
+            -v "$PWD":/hasquant:ro -w /hasquant \
+            "$CI_IMAGE" sh -ec '
+              cabal upload --token="$HACKAGE_TOKEN" "$SDIST"
+              cabal upload --documentation --token="$HACKAGE_TOKEN" "$DOCS"
+            '
+          {
+            echo "Candidate: https://hackage.haskell.org/package/$PACKAGE_ID/candidate"
+            echo "Candidate docs: https://hackage.haskell.org/package/$PACKAGE_ID/candidate/docs/"
+            echo "After manual promotion, dispatch published-docs for $RELEASE_TAG."
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Download saved release docs
+        if: inputs.operation == 'published-docs'
+        id: downloaded
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PACKAGE_ID: ${{ steps.package.outputs.id }}
+        run: |
+          set -euo pipefail
+          gh release view "$RELEASE_TAG" --json assets > "$RUNNER_TEMP/release-assets.json"
+          count=$(jq --arg name "$PACKAGE_ID-docs.tar.gz" \
+            '[.assets[] | select(.name == $name)] | length' "$RUNNER_TEMP/release-assets.json")
+          if [ "$count" -ne 1 ]; then
+            echo "Expected exactly one $PACKAGE_ID-docs.tar.gz asset on release $RELEASE_TAG." >&2
+            exit 1
+          fi
+          gh release download "$RELEASE_TAG" --pattern "$PACKAGE_ID-docs.tar.gz" --dir saved-docs
+          test -s "saved-docs/$PACKAGE_ID-docs.tar.gz"
+          echo "docs=saved-docs/$PACKAGE_ID-docs.tar.gz" >> "$GITHUB_OUTPUT"
+          jq -r --arg name "$PACKAGE_ID-docs.tar.gz" \
+            '.assets[] | select(.name == $name) | "Saved docs: [" + .name + "](" + .url + ")"' \
+            "$RUNNER_TEMP/release-assets.json" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload docs for published Hackage package
+        if: inputs.operation == 'published-docs'
+        env:
+          HACKAGE_TOKEN: ${{ secrets.HACKAGE_TOKEN }}
+          CI_IMAGE: ${{ steps.image.outputs.tag }}
+          DOCS: ${{ steps.downloaded.outputs.docs }}
+          PACKAGE_ID: ${{ steps.package.outputs.id }}
+        run: |
+          set -euo pipefail
+          docker run --rm \
+            -e HACKAGE_TOKEN -e DOCS \
+            -v "$PWD":/hasquant:ro -w /hasquant \
+            "$CI_IMAGE" sh -ec '
+              cabal upload --documentation --publish --token="$HACKAGE_TOKEN" "$DOCS"
+            '
+          {
+            echo "Published package: https://hackage.haskell.org/package/$PACKAGE_ID"
+            echo "Published docs: https://hackage.haskell.org/package/$PACKAGE_ID/docs/"
+          } >> "$GITHUB_STEP_SUMMARY"

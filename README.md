@@ -22,6 +22,30 @@ Examples are in `test/example/QuantLib/Example`; most deliberately follow QuantL
 
 Published package: https://hackage.haskell.org/package/hasquant. Current Haddock: https://khorser.github.io/hasquant.
 
+# Releasing
+
+Add a `HACKAGE_TOKEN` repository secret containing an API token from a Hackage
+account with permission to upload `hasquant`. The Release workflow uses the existing
+Linux CI image (GHC 9.10.3 / QuantLib 1.43) to build source and Haddock tarballs.
+
+1. Push a version tag matching `hasquant.cabal` (`v.0.8.0.0`, `v0.8.0.0`, or
+   `0.8.0.0`), then dispatch **Release** from the default branch with that `tag`
+   and `operation=release`.
+2. The workflow saves both tarballs on a GitHub release and uploads a Hackage
+   candidate plus its docs. Review the candidate using the links in the job summary.
+   Set `upload_candidate=false` for a GitHub-only run; that run needs no Hackage token.
+3. Promote the reviewed candidate manually on Hackage, then dispatch **Release**
+   again with the same `tag` and `operation=published-docs`. This uploads the saved
+   documentation tarball to the published version without rebuilding or uploading
+   a source package. The operation can be repeated if the docs upload fails.
+
+GitHub releases default to drafts. The `draft` input applies only when creating a
+release; reruns replace its assets while preserving its current publish state.
+Publish the GitHub release separately when ready. GitHub draft status is independent
+of Hackage candidate status, and `draft`/`upload_candidate` are ignored by
+`published-docs`. Hackage upload failures fail the workflow; assets already saved on
+GitHub remain available.
+
 # Quick Example
 
 Build and price a five-year SOFR OIS:

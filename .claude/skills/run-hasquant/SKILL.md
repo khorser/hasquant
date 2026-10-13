@@ -150,6 +150,30 @@ description. The effective threshold is ~2.5s, not tens of seconds: measure
 before labelling, and re-check existing labels (the equity option block was
 labelled `(LONG)` while running in 0.5s).
 
+## Release uploads
+
+`.github/workflows/release.yml` builds source and `--haddock-for-hackage` docs
+tarballs from an existing version tag and saves both as GitHub release assets.
+It uploads a Hackage candidate by default; `upload_candidate=false` opts out.
+Uploads require the `HACKAGE_TOKEN` repository secret for a package maintainer.
+
+`cabal upload --token=… <sdist>` uploads a candidate, and
+`cabal upload --documentation --token=… <docs>` uploads its candidate docs.
+After manual promotion on Hackage, dispatch `operation=published-docs` with the
+same tag: it reuses the saved asset with
+`cabal upload --documentation --publish --token=… <docs>`. Candidate and published
+docs are separate upload destinations; the workflow explicitly uploads to both.
+Never add `--publish` to the source upload. GitHub draft status is independent.
+
+For workflow changes, validate with Actionlint/ShellCheck and stub remote commands
+to check routing and failure propagation without performing actual uploads.
+Live upload verification belongs to the next authorized release.
+
+Docs uploads reporting curl error 56 about chunked encoding may hit
+[cabal#10252](https://github.com/haskell/cabal/issues/10252), reported with Cabal
+3.12.1.0. Check the upload transport and Cabal version before changing packaging;
+preserve the failing exit status.
+
 ## Coverage
 
 Plain `cabal test --enable-coverage` runs, but is close to
