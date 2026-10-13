@@ -7,6 +7,8 @@
   Rough Heston pricing, mark-to-market cross-currency basis swaps, FX reset cash flows, and
   Gaussian1d (GSR) swaptions on overnight-indexed swaps. Calls requiring 1.44, and non-default
   values of arguments added in 1.44, report `UnsupportedQuantLibVersion` on 1.43.
+- Deprecated the `ItalyExchange` calendar, following QuantLib 1.44; it will be removed when
+  hasquant adopts QuantLib 1.45. Use `TARGET` instead.
 - `OvernightIndexedSwap` is now a `FixedVsFloatingSwap`; its fair-rate and fixed-leg inspectors
   come from the generic `FixedVsFloatingSwap` instances.
 - Expanded term-structure and bootstrap-helper support, including dated helper constructors and

@@ -47,6 +47,8 @@ import System.IO.Unsafe(unsafePerformIO)
 -- |Constructs the calendar for the given country, with an optional market variant.
 {#fun qlCalendar{`Int',`Int',preErrorCheck-`String'errorCheck*-}->`Calendar'peekCalendar*#}
 
+-- |Constructs a calendar. 'ItalyExchange' is deprecated by QuantLib 1.44 and will be removed
+-- when hasquant adopts QuantLib 1.45; use 'TARGET' instead.
 calendar :: CalendarConstructor -> IO Calendar
 calendar (Bespoke n w) = qlBespokeCalendar n w
 calendar (Joint2 c1 c2 r) = qlJointCalendar2 c1 c2 r

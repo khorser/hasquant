@@ -102,6 +102,10 @@ Out of scope: reimplementing or independently binding QuantLib's interpolation, 
 - Build a declarative embedded DSL as a sibling project to define contracts, portfolios, market data, and calculation scenarios (unpublished WIP), use it for XVA and other complext calculations
 - Expose that DSL through an agent-callable tool, so an LLM can construct and price products through validated hasquant operations rather than generated pricing logic.
 - Keep the exact-mean H1-HW backport (`cbits/qlExactMeanH1HwEngine.h`) until both supported QuantLib release series provide `AnalyticH1HWEngine::VarianceRootMean::Exact`; `ExactMean` already selects the native engine when the linked headers expose it.
+- On adopting QuantLib 1.45 (dropping 1.43):
+  - remove the `ItalyExchange` calendar, deprecated in 1.44 (replacement: `TARGET`);
+  - drop the boost branches of `cbits/qlStdCompat.h` and spell `std::optional`/`std::any` directly;
+    its versioned-argument macro then becomes unconditional or moves to the 1.45 pair.
 - See [github issues](https://github.com/khorser/hasquant/issues) for more formalized tasks
 
 # Testing
