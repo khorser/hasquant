@@ -164,6 +164,17 @@ QL_TRACE_NAME(QlAdditionalResult)
 #endif
 
 namespace {
+  // QuantLib <= 1.43 prices an OIS underlying as Ibor coupons; 1.44 dispatches on this same type.
+  bool qlOvernightUnderlyingSupported(QlError **e, const shared_ptr<FixedVsFloatingSwap>& swap, const char* call) {
+#if QL_HEX_VERSION >= 0x01440000
+    (void)e; (void)swap; (void)call;
+    return true;
+#else
+    if (!ext::dynamic_pointer_cast<OvernightIndexedSwap>(swap)) return true;
+    qlUnsupportedVersion(e, call, "1.44");
+    return false;
+#endif
+  }
   Replication::Type qlReplicationType(int type) {
     switch (type) {
       case hasquant::ReplicationSub: return Replication::Sub;
@@ -900,7 +911,7 @@ QlSwap* qlNonstandardSwapAsSwap(QlNonstandardSwap *o) {return ret(new QlSwap(*ar
 void qlFreeBMASwap(QlBMASwap *o) {del(o);}
 QlSwap* qlBMASwapAsSwap(QlBMASwap *o) {return ret(new QlSwap(*arg(o)));}
 void qlFreeOvernightIndexedSwap(QlOvernightIndexedSwap *o) {del(o);}
-QlSwap* qlOvernightIndexedSwapAsSwap(QlOvernightIndexedSwap *o) {return ret(new QlSwap(*arg(o)));}
+QlFixedVsFloatingSwap* qlOvernightIndexedSwapAsFixedVsFloatingSwap(QlOvernightIndexedSwap *o) {return ret(new QlFixedVsFloatingSwap(*arg(o)));}
 QlSwap* qlSwap1(unsigned legsLen, Leg** legs, unsigned payerLen, int *payer, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlSwap(alloc(new Swap(qlVector(legs, legsLen), std::vector<bool>(payer, payer+payerLen)))));
   } catch (std::exception& er) {return handleException<QlSwap*>(e, er);}}
@@ -921,6 +932,7 @@ QlVanillaSwap* qlVanillaSwap(int type, double nominal, Schedule* fixedSchedule, 
 // Converts an existing FixedVsFloatingSwap (e.g. a VanillaSwap) into a NonstandardSwap
 // (upstream's own conversion ctor, not a delegating convenience overload).
 QlNonstandardSwap* qlNonstandardSwap1(QlFixedVsFloatingSwap* v, QlError **e) { QlCallScope callbackScope(e);
+  if (!qlOvernightUnderlyingSupported(e, *arg(v), "nonstandardSwapFromVanilla")) return nullptr;
   try {return ret(new QlNonstandardSwap(alloc(new NonstandardSwap(**arg(v)))));
   } catch (std::exception& er) {return handleException<QlNonstandardSwap*>(e, er);}}
 // Scalar gearing/spread ctor; fixedNominal/floatingNominal/fixedRate are still per-period vectors
@@ -1104,11 +1116,6 @@ double qlBMASwapLiborFraction(QlBMASwap* o, QlError **e) { QlCallScope callbackS
 Leg* qlBMASwapLiborLeg(QlBMASwap* o, QlError **e) { QlCallScope callbackScope(e);try {return ret(new Leg((*arg(o))->liborLeg()));} catch (std::exception& er) {return handleException<Leg*>(e, er);}}
 double qlBMASwapLiborLegBPS(QlBMASwap* o, QlError **e) { QlCallScope callbackScope(e);try {return (*arg(o))->liborLegBPS();} catch (std::exception& er) {return handleException<double>(e, er);}}
 double qlBMASwapLiborLegNPV(QlBMASwap* o, QlError **e) { QlCallScope callbackScope(e);try {return (*arg(o))->liborLegNPV();} catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlOvernightIndexedSwapFairRate(QlOvernightIndexedSwap* o, QlError **e) { QlCallScope callbackScope(e);try {return (*arg(o))->fairRate();} catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlOvernightIndexedSwapFairSpread(QlOvernightIndexedSwap* o, QlError **e) { QlCallScope callbackScope(e);try {return (*arg(o))->fairSpread();} catch (std::exception& er) {return handleException<double>(e, er);}}
-Leg* qlOvernightIndexedSwapFixedLeg(QlOvernightIndexedSwap* o, QlError **e) { QlCallScope callbackScope(e);try {return ret(new Leg((*arg(o))->fixedLeg()));} catch (std::exception& er) {return handleException<Leg*>(e, er);}}
-double qlOvernightIndexedSwapFixedLegBPS(QlOvernightIndexedSwap* o, QlError **e) { QlCallScope callbackScope(e);try {return (*arg(o))->fixedLegBPS();} catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlOvernightIndexedSwapFixedLegNPV(QlOvernightIndexedSwap* o, QlError **e) { QlCallScope callbackScope(e);try {return (*arg(o))->fixedLegNPV();} catch (std::exception& er) {return handleException<double>(e, er);}}
 Leg* qlOvernightIndexedSwapOvernightLeg(QlOvernightIndexedSwap* o, QlError **e) { QlCallScope callbackScope(e);try {return ret(new Leg((*arg(o))->overnightLeg()));} catch (std::exception& er) {return handleException<Leg*>(e, er);}}
 double qlOvernightIndexedSwapOvernightLegBPS(QlOvernightIndexedSwap* o, QlError **e) { QlCallScope callbackScope(e);try {return (*arg(o))->overnightLegBPS();} catch (std::exception& er) {return handleException<double>(e, er);}}
 double qlOvernightIndexedSwapOvernightLegNPV(QlOvernightIndexedSwap* o, QlError **e) { QlCallScope callbackScope(e);try {return (*arg(o))->overnightLegNPV();} catch (std::exception& er) {return handleException<double>(e, er);}}
@@ -1183,6 +1190,7 @@ double qlSwaptionImpliedVolatility(QlSwaption* o, double price, QlYieldTermStruc
   try {return (*arg(o))->impliedVolatility(price, *arg(discountCurve), guess, accuracy, maxEvaluations, minVol, maxVol, (VolatilityType)type, displacement, (Swaption::PriceType)priceType);
   } catch (std::exception& er) {return handleException<double>(e, er);}}
 QlSwaption* qlSwaption(QlFixedVsFloatingSwap* swap, QlExercise* exercise, int delivery, int settlementMethod, QlError **e) { QlCallScope callbackScope(e);
+  if (!qlOvernightUnderlyingSupported(e, *arg(swap), "swaption on OvernightIndexedSwap")) return nullptr;
   try {return ret(new QlSwaption(alloc(new Swaption(*arg(swap), *arg(exercise), (Settlement::Type) delivery, (Settlement::Method) settlementMethod))));
   } catch (std::exception& er) {return handleException<QlSwaption*>(e, er);}}
 void qlFreeIrregularSwaption(QlIrregularSwaption* o) {del(o);}

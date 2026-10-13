@@ -12,6 +12,9 @@ The status audit checks the actual declarations in `cbits/*.h`.
 
 - InterestRate: first and second discount-factor derivatives with respect to the rate.
 - Gaussian1dModel: compounded overnight coupon rate.
+- OvernightIndexedSwap now sits under FixedVsFloatingSwap, so `swaption` and
+  `nonstandardSwapFromVanilla` accept it for the 1.44 RFR Gaussian1d engines. QuantLib 1.43 would
+  price it as Ibor coupons, so both refuse an OIS there with `UnsupportedQuantLibVersion`.
 - ImpliedTermStructure: settlement-days/calendar construction.
 - OvernightOvernightBasisSwapRateHelper and OvernightIndexedFundingRateHelper:
   constructors returning the existing RateHelper type, with fixing-dependency extraction.

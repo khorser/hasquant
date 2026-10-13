@@ -10127,8 +10127,8 @@
 |v|ql/instruments/crosscurrencyswap.hpp|Real CrossCurrencySwap::inCcyLegBPS(Size j) const;
 |v|ql/instruments/crosscurrencyswap.hpp|Real CrossCurrencySwap::inCcyLegNPV(Size j) const;
 |v|ql/instruments/crosscurrencyswap.hpp|DiscountFactor CrossCurrencySwap::npvDateDiscounts(Size j) const;
-| |ql/instruments/fixedvsfloatingswap.hpp|Integer FixedVsFloatingSwap::paymentLag() const;
-| |ql/instruments/fixedvsfloatingswap.hpp|const Calendar & FixedVsFloatingSwap::paymentCalendar() const;
+|x|ql/instruments/fixedvsfloatingswap.hpp|Integer FixedVsFloatingSwap::paymentLag() const;
+|x|ql/instruments/fixedvsfloatingswap.hpp|const Calendar & FixedVsFloatingSwap::paymentCalendar() const;
 | |ql/instruments/fixedvsfloatingswap.hpp|Real nominal() const;
 | |ql/instruments/fixedvsfloatingswap.hpp|const std::vector<Real> & nominals() const;
 | |ql/instruments/fixedvsfloatingswap.hpp|const std::vector<Real> & fixedNominals() const;
@@ -10186,8 +10186,8 @@
 | |ql/instruments/makevanillaswap.hpp|MakeVanillaSwap & MakeVanillaSwap::withForwardStart(const Period & f);
 | |ql/instruments/makevanillaswap.hpp|MakeVanillaSwap & MakeVanillaSwap::withSettlementCalendar(const Calendar & cal);
 |v|ql/instruments/nonstandardswap.hpp|NonstandardSwap::NonstandardSwap(Swap::Type type, std::vector<Real> fixedNominal, std::vector<Real> floatingNominal, Schedule fixedSchedule, std::vector<Real> fixedRate, DayCounter fixedDayCount, Schedule floatingSchedule, ext::shared_ptr<IborIndex> iborIndex, std::vector<Real> gearing, std::vector<Spread> spread, DayCounter floatingDayCount, bool intermediateCapitalExchange = false, bool finalCapitalExchange = false, std::optional<BusinessDayConvention> paymentConvention = std::nullopt, Integer paymentLag = 0, Calendar paymentCalendar = Calendar());
-| |ql/instruments/nonstandardswap.hpp|Integer NonstandardSwap::paymentLag() const;
-| |ql/instruments/nonstandardswap.hpp|const Calendar & NonstandardSwap::paymentCalendar() const;
+|x|ql/instruments/nonstandardswap.hpp|Integer NonstandardSwap::paymentLag() const;
+|x|ql/instruments/nonstandardswap.hpp|const Calendar & NonstandardSwap::paymentCalendar() const;
 | |ql/instruments/nonstandardswap.hpp|const std::vector<Real> & fixedNominal() const;
 | |ql/instruments/nonstandardswap.hpp|const std::vector<Real> & floatingNominal() const;
 | |ql/instruments/nonstandardswap.hpp|const Schedule & fixedSchedule() const;

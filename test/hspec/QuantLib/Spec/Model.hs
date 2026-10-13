@@ -13,7 +13,7 @@ module QuantLib.Spec.Model (spec) where
 
 import Test.Hspec
 import qualified Data.Vector.Storable as V
-import Data.Time.Calendar(addGregorianYearsClip, addGregorianMonthsClip, fromGregorian, addDays)
+import Data.Time.Calendar(Day, addGregorianYearsClip, addGregorianMonthsClip, fromGregorian, addDays)
 import Data.List.NonEmpty(NonEmpty(..), fromList)
 
 import qualified QuantLib.Context as Context
@@ -27,7 +27,9 @@ import QuantLib.TermStructure.Yield
 import qualified QuantLib.Index.InterestRate as IR
 import QuantLib.Instrument
 import QuantLib.Instrument.Option(EuropeanExercise(..))
-import QuantLib.Instrument.Swap(fairRate, fixedLegBps, vanillaSwap, makeVanillaSwap, swaption, SwapType(..))
+import QuantLib.Instrument.Swap(fairRate, fixedLegBps, vanillaSwap, makeVanillaSwap, swaption, SwapType(..)
+  , overnightIndexedSwap, nonstandardSwapFromVanilla, nonstandardSwaption, overnightLegNpv
+  , HasFloatingLeg(floatingLegNpv))
 import QuantLib.Model hiding(setPricingEngine, value, discount)
 import qualified QuantLib.Model as Model
 import qualified QuantLib.Process as Process
@@ -35,7 +37,8 @@ import qualified QuantLib.TermStructure.Volatility as Vol
 import QuantLib.Math(Interpolation(..), EndCriteria(..), OptimizationMethod(..), matrixData)
 import QuantLib.CashFlow(RateAveragingType(AveragingCompound))
 import qualified QuantLib.CashFlow as CF
-import Control.Monad(forM, forM_)
+import Control.Monad(forM, forM_, unless)
+import QuantLib.Index(fixingCalendar)
 import QuantLib.PricingEngine
 
 import QuantLib.Spec.Helpers(closePrec, listClose, quantLibAtMost143, unsupportedQuantLib144)
@@ -43,6 +46,7 @@ import QuantLib.Spec.Helpers(closePrec, listClose, quantLibAtMost143, unsupporte
 spec :: Spec
 spec = do
   gaussian1dSpec
+  gaussian1dOisSwaptionSpec
   gsrReversionSpec
   affineModelSpec
   garch11Spec
@@ -173,6 +177,88 @@ gaussian1dSpec =
 
 -- Piecewise reversions: gsr.cpp's testGsrModel equivalence of one reversion and n+1 equal ones,
 -- and a recovery check for 'calibrateReversionsIterative' alternating with the volatility fit.
+-- gsr.cpp's testSofrSwaptionPaymentLag and testSofrSwaptionObservationShiftNormalization.
+gaussian1dOisSwaptionSpec :: Spec
+gaussian1dOisSwaptionSpec =
+  describe "Gaussian1d swaptions on an OvernightIndexedSwap" $ do
+    it "agree across the standard, Jamshidian and nonstandard engines with a payment lag" $
+      Context.keepingSettingsGc $ do
+        (curve, sofr, cal, dc, model) <- sofrSetup 0.025 0.01
+        expiry <- adjust cal (addGregorianYearsClip 3 today) Following
+        start <- advance cal expiry (2, Days) Following False
+        end <- advance cal start (5, Years) Following False
+        sch <- schedule (Just start) end (1, Years) cal ModifiedFollowing ModifiedFollowing Forward False Nothing Nothing
+        discounting <- discountingSwapEngine curve Nothing Nothing Nothing
+        let ois rate = overnightIndexedSwap Payer 1 sch rate dc sofr 0 2 Following cal False
+              AveragingCompound defaultOvernightObservation Nothing
+        probe <- ois 0
+        setPricingEngine probe discounting
+        swap <- fairRate probe >>= ois
+        setPricingEngine swap discounting
+        swapNpv <- npv swap
+        swapNpv `shouldSatisfy` closePrec 0 1e-12
+        onNpv <- overnightLegNpv swap
+        floatingLegNpv swap >>= (`shouldSatisfy` closePrec onNpv 1e-12)
+        let exercise = European (EuropeanExercise expiry)
+        if quantLibAtMost143 then do
+          swaption swap exercise Physical PhysicalOTC
+            `shouldThrow` unsupportedQuantLib144 "swaption on OvernightIndexedSwap"
+          nonstandardSwapFromVanilla swap `shouldThrow` unsupportedQuantLib144 "nonstandardSwapFromVanilla"
+        else do
+          swpn <- swaption swap exercise Physical PhysicalOTC
+          gaussian1dSwaptionEngine model 128 8 True False Nothing None >>= setPricingEngine swpn
+          gaussian <- npv swpn
+          gaussian1dJamshidianSwaptionEngine model >>= setPricingEngine swpn
+          jamshidian <- npv swpn
+          jamshidian `shouldSatisfy` closePrec gaussian (2e-3 * gaussian)
+          nonstandard <- nonstandardSwapFromVanilla swap
+          setPricingEngine nonstandard discounting
+          nonstandardNpv <- npv nonstandard
+          nonstandardNpv `shouldSatisfy` closePrec swapNpv 1e-12
+          nsSwpn <- nonstandardSwaption nonstandard exercise Physical PhysicalOTC
+          gaussian1dNonstandardSwaptionEngine model 128 8 True False (Nothing :: Maybe Quote) (Just curve) None
+            >>= setPricingEngine nsSwpn
+          nonstandardPrice <- npv nsSwpn
+          nonstandardPrice `shouldSatisfy` closePrec gaussian (2e-3 * gaussian)
+
+    it "keeps put-call parity with a lookback under observation shift" $
+      Context.keepingSettingsGc $ do
+        (curve, sofr, cal, _, model) <- sofrSetup 0.02 0.015
+        fixedDc <- dayCounter (Actual360 False)
+        engine <- gaussian1dSwaptionEngine model 128 8 True False Nothing None
+        discounting <- discountingSwapEngine curve Nothing Nothing Nothing
+        let shifted = OvernightObservation (Just 5) 0 True
+            ois typ s e = do
+              sch <- schedule (Just s) e (3, Months) cal ModifiedFollowing ModifiedFollowing Forward False Nothing Nothing
+              overnightIndexedSwap typ 1 sch 0.03 fixedDc sofr 0 0 Following cal False AveragingCompound shifted Nothing
+        unless quantLibAtMost143 $ forM_ [26, 39 .. 117] $ \weeks -> do
+          s <- advance cal today (weeks, Weeks) Following False
+          e <- advance cal s (3, Months) Following False
+          ex <- advance cal s (-3, Weeks) Following False
+          forward <- ois Payer s e
+          setPricingEngine forward discounting
+          reference <- npv forward
+          let price typ = do
+                swpn <- ois typ s e >>= \u -> swaption u (European (EuropeanExercise ex)) Physical PhysicalOTC
+                setPricingEngine swpn engine
+                npv swpn
+          parity <- (-) <$> price Payer <*> price Receiver
+          parity `shouldSatisfy` closePrec reference 1e-5
+  where
+    today = fromGregorian 2025 6 30
+    sofrSetup r0 slope = do
+      Context.setEvaluationDate (Just today)
+      dc <- dayCounter Actual365FixedStandard
+      sofrCal <- IR.overnightIborIndex IR.Sofr Nothing >>= fixingCalendar
+      let pillars = (today, r0) :| [ (addGregorianYearsClip i today, r0 + slope * (1 - exp (-fromIntegral i / 3)))
+                                  | i <- [1 .. 12] ]
+      curve <- interpolatedZeroCurve pillars dc sofrCal ([] :: [(Day, Quote)]) Linear
+      sofr <- IR.overnightIborIndex IR.Sofr (Just curve)
+      vol <- simpleQuote 0.008
+      rev <- simpleQuote 0.03
+      model <- gsr curve vol [] rev 12 >>= asGaussian1dModel
+      pure (curve, sofr, sofrCal, dc, model)
+
 gsrReversionSpec :: Spec
 gsrReversionSpec =
   describe "Gsr reversions" $ do

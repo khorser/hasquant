@@ -4,9 +4,11 @@
   and observer settings, and native fixing-history name normalization for context owners.
 
 - Added QuantLib 1.44 support, while retaining compatibility with 1.43. New bindings include
-  Rough Heston pricing, mark-to-market cross-currency basis swaps, and FX reset cash flows. Calls
-  requiring 1.44, and non-default values of arguments added in 1.44, report
-  `UnsupportedQuantLibVersion` on 1.43.
+  Rough Heston pricing, mark-to-market cross-currency basis swaps, FX reset cash flows, and
+  Gaussian1d (GSR) swaptions on overnight-indexed swaps. Calls requiring 1.44, and non-default
+  values of arguments added in 1.44, report `UnsupportedQuantLibVersion` on 1.43.
+- `OvernightIndexedSwap` is now a `FixedVsFloatingSwap`; its fair-rate and fixed-leg inspectors
+  come from the generic `FixedVsFloatingSwap` instances.
 - Expanded term-structure and bootstrap-helper support, including dated helper constructors and
   implied-quote calculations on caller-supplied curves. Several existing constructor signatures
   changed to expose additional configuration.

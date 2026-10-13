@@ -161,7 +161,7 @@ extern "C" {
   void qlFreeBMASwap(QlBMASwap *o);
   QlSwap* qlBMASwapAsSwap(QlBMASwap *o);
   void qlFreeOvernightIndexedSwap(QlOvernightIndexedSwap *o);
-  QlSwap* qlOvernightIndexedSwapAsSwap(QlOvernightIndexedSwap *o);
+  QlFixedVsFloatingSwap* qlOvernightIndexedSwapAsFixedVsFloatingSwap(QlOvernightIndexedSwap *o);
   void qlFreeAssetSwap(QlAssetSwap *o);
   QlSwap* qlAssetSwapAsSwap(QlAssetSwap *o);
   void qlFreeZeroCouponInflationSwap(QlZeroCouponInflationSwap *o);
@@ -240,7 +240,6 @@ extern "C" {
   Leg* qlAssetSwapFloatingLeg(QlAssetSwap* o, QlError **e);
   Leg* qlBMASwapBmaLeg(QlBMASwap* o, QlError **e);
   Leg* qlBMASwapLiborLeg(QlBMASwap* o, QlError **e);
-  Leg* qlOvernightIndexedSwapFixedLeg(QlOvernightIndexedSwap* o, QlError **e);
   Leg* qlOvernightIndexedSwapOvernightLeg(QlOvernightIndexedSwap* o, QlError **e);
   double qlAssetSwapCleanPrice(QlAssetSwap* o, QlError **e);
   double qlAssetSwapFairCleanPrice(QlAssetSwap* o, QlError **e);
@@ -258,10 +257,6 @@ extern "C" {
   double qlBMASwapLiborFraction(QlBMASwap* o, QlError **e);
   double qlBMASwapLiborLegBPS(QlBMASwap* o, QlError **e);
   double qlBMASwapLiborLegNPV(QlBMASwap* o, QlError **e);
-  double qlOvernightIndexedSwapFairRate(QlOvernightIndexedSwap* o, QlError **e);
-  double qlOvernightIndexedSwapFairSpread(QlOvernightIndexedSwap* o, QlError **e);
-  double qlOvernightIndexedSwapFixedLegBPS(QlOvernightIndexedSwap* o, QlError **e);
-  double qlOvernightIndexedSwapFixedLegNPV(QlOvernightIndexedSwap* o, QlError **e);
   double qlOvernightIndexedSwapOvernightLegBPS(QlOvernightIndexedSwap* o, QlError **e);
   double qlOvernightIndexedSwapOvernightLegNPV(QlOvernightIndexedSwap* o, QlError **e);
   double qlSwapEndDiscounts(QlSwap* o, unsigned j, QlError **e);

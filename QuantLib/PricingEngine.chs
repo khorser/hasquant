@@ -1051,7 +1051,8 @@ batesDoubleExpEngine model control =
 -- |the term structure is only needed when the short-rate model cannot provide one itself.
 {#fun qlJamshidianSwaptionEngine as jamshidianSwaptionEngine{withOneFactorAffineModel*`GenOneFactorAffineModel om',withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
--- |swaption pricing engine for any one-factor Gaussian short-rate model, evaluated by integration over the model's state variable
+-- |swaption pricing engine for any one-factor Gaussian short-rate model, evaluated by integration over the model's state variable.
+-- On QuantLib 1.44 it also prices an 'QuantLib.Instrument.Swap.OvernightIndexedSwap' underlying (see 'QuantLib.Instrument.Swap.swaption').
 {#fun qlGaussian1dSwaptionEngine as gaussian1dSwaptionEngine{withStandalone*`Gaussian1dModel'
   ,fromIntegral`Int' -- ^integrationPoints
   ,`Double' -- ^stddevs
@@ -1063,7 +1064,7 @@ batesDoubleExpEngine model control =
 
 -- |As 'gaussian1dSwaptionEngine', for a 'QuantLib.Instrument.Swap.NonstandardSwaption'. Adds
 -- an optional OAS ('oas', continuously compounded w.r.t. the discount curve's day counter) on
--- top of the shared parameters.
+-- top of the shared parameters. Overnight-indexed floating coupons are compounded on QuantLib 1.44.
 {#fun qlGaussian1dNonstandardSwaptionEngine as gaussian1dNonstandardSwaptionEngine{withStandalone*`Gaussian1dModel'
   ,fromIntegral`Int' -- ^integrationPoints
   ,`Double' -- ^stddevs
@@ -1089,7 +1090,7 @@ batesDoubleExpEngine model control =
   ,preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |swaption pricing engine using Jamshidian's decomposition, for any one-factor Gaussian
--- short-rate model.
+-- short-rate model. QuantLib 1.44 freezes a floating payment lag's convexity at time zero.
 {#fun qlGaussian1dJamshidianSwaptionEngine as gaussian1dJamshidianSwaptionEngine{withStandalone*`Gaussian1dModel',preErrorCheck-`String'errorCheck*-}->`PricingEngine'peekPricingEngine*#}
 
 -- |Ju (1999) quadratic-approximation engine for American options

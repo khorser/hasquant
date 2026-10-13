@@ -8,11 +8,11 @@ module QuantLib.Instrument.Swap
   , GenFixedVsFloatingSwap
   , FixedVsFloatingSwap
   , VanillaSwap
+  , OvernightIndexedSwap
   , NonstandardSwap
   , IrregularSwap
   , FloatFloatSwap
   , AssetSwap
-  , OvernightIndexedSwap
   , BMASwap
   , ZeroCouponInflationSwap
   , YearOnYearInflationSwap
@@ -362,12 +362,15 @@ swapFromLegs = (uncurry qlSwap1) . unzip
 
 -- |Converts an existing 'FixedVsFloatingSwap' (e.g. a 'VanillaSwap') into a 'NonstandardSwap'
 -- (upstream's own conversion constructor, @NonstandardSwap(const FixedVsFloatingSwap&)@).
+-- An 'OvernightIndexedSwap' keeps its compounded coupons, payment lag and observation
+-- conventions; converting one requires QuantLib 1.44.
 {#fun qlNonstandardSwap1 as nonstandardSwapFromVanilla{withFixedVsFloatingSwap*`GenFixedVsFloatingSwap f'
   ,preErrorCheck-`String'errorCheck*-}->`NonstandardSwap'peekNonstandardSwap*#}
 
 -- |'VanillaSwap' generalized to per-period fixed/floating nominals and fixed rates, plus
 -- optional intermediate\/final notional exchange -- a single 'Double' gearing\/spread shared
 -- across all floating periods. See 'nonstandardSwapFromGearingsAndSpreads' for per-period gearing\/spread.
+-- QuantLib 1.44 builds compounded coupons for an overnight index; 1.43 builds Ibor coupons.
 {#fun qlNonstandardSwap as nonstandardSwap{`SwapType'
   ,withDoubleArray*`[Double]'& -- ^fixedNominal
   ,withDoubleArray*`[Double]'& -- ^floatingNominal
@@ -804,7 +807,9 @@ instance HasFairSpread ConstNotionalCrossCurrencyFixedVsFloatingSwap where
   fairSpread = qlConstNotionalCrossCurrencyFixedVsFloatingSwapFairSpread
 {#fun qlConstNotionalCrossCurrencyFixedVsFloatingSwapFairSpread{withConstNotionalCrossCurrencyFixedVsFloatingSwap*`ConstNotionalCrossCurrencyFixedVsFloatingSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
--- |An option on a 'VanillaSwap'.
+-- |An option on a 'VanillaSwap' or an 'OvernightIndexedSwap'; the latter requires QuantLib 1.44.
+-- The Gaussian1d swaption engines then compound overnight coupons exactly, approximate lookback
+-- without observation shift and lockout, and do not support arithmetic averaging.
 {#fun qlSwaption as swaption{withFixedVsFloatingSwap*`GenFixedVsFloatingSwap f',withExercise*`Exercise',`SettlementType',`SettlementMethod',preErrorCheck-`String'errorCheck*-}->`Swaption'peekSwaption*#}
 
 -- |A priceable option on an 'IrregularSwap'.  Use 'haganIrregularSwaptionEngine'
@@ -1134,10 +1139,6 @@ class HasFixedLeg a where
   fixedLeg :: a -> IO Leg
   fixedLegBps :: a -> IO Double
   fixedLegNpv :: a -> IO Double
-instance HasFixedLeg OvernightIndexedSwap where
-  fixedLeg = qlOvernightIndexedSwapFixedLeg
-  fixedLegBps = qlOvernightIndexedSwapFixedLegBPS
-  fixedLegNpv = qlOvernightIndexedSwapFixedLegNPV
 instance HasFixedLeg (GenFixedVsFloatingSwap f) where
   fixedLeg = qlFixedVsFloatingSwapFixedLeg
   fixedLegBps = qlFixedVsFloatingSwapFixedLegBPS
@@ -1145,8 +1146,6 @@ instance HasFixedLeg (GenFixedVsFloatingSwap f) where
 
 class HasFairRate a where
   fairRate :: a -> IO Double
-instance HasFairRate OvernightIndexedSwap where
-  fairRate = qlOvernightIndexedSwapFairRate
 instance HasFairRate (GenFixedVsFloatingSwap f) where
   fairRate = qlFixedVsFloatingSwapFairRate
 instance HasFairRate IrregularSwap where
@@ -1162,8 +1161,6 @@ class HasFairSpread a where
   fairSpread :: a -> IO Double
 instance HasFairSpread (GenFixedVsFloatingSwap f) where
   fairSpread = qlFixedVsFloatingSwapFairSpread
-instance HasFairSpread OvernightIndexedSwap where
-  fairSpread = qlOvernightIndexedSwapFairSpread
 instance HasFairSpread AssetSwap where
   fairSpread = qlAssetSwapFairSpread
 instance HasFairSpread CreditDefaultSwap where
@@ -1232,21 +1229,6 @@ instance HasFloatingLeg AssetSwap where
 
 -- |NPV of the fixed leg.
 {#fun qlFixedVsFloatingSwapFixedLegNPV{withFixedVsFloatingSwap*`GenFixedVsFloatingSwap f',preErrorCheck-`String'errorCheck*-}->`Double'#}
-
--- |The fixed rate that would make the swap's NPV zero.
-{#fun qlOvernightIndexedSwapFairRate{withOvernightIndexedSwap*`OvernightIndexedSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
-
--- |The fixed leg's cash flows.
-{#fun qlOvernightIndexedSwapFixedLeg{withOvernightIndexedSwap*`OvernightIndexedSwap',preErrorCheck-`String'errorCheck*-}->`Leg'peekLeg*#}
-
--- |Basis-point sensitivity of the fixed leg.
-{#fun qlOvernightIndexedSwapFixedLegBPS{withOvernightIndexedSwap*`OvernightIndexedSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
-
--- |NPV of the fixed leg.
-{#fun qlOvernightIndexedSwapFixedLegNPV{withOvernightIndexedSwap*`OvernightIndexedSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
-
--- |The spread that would make the swap's NPV zero.
-{#fun qlOvernightIndexedSwapFairSpread{withOvernightIndexedSwap*`OvernightIndexedSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Returns the running spread that, given the quoted recovery rate, will make the running-only CDS have an NPV of 0.This calculation does not take any upfront into account, even if one was given.
 {#fun qlCreditDefaultSwapFairSpread{withGenInstrument*`CreditDefaultSwap',preErrorCheck-`String'errorCheck*-}->`Double'#}

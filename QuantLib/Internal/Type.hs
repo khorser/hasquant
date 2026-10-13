@@ -3117,12 +3117,12 @@ data CInstrument'
 -- >  Swap*
 -- >    FixedVsFloatingSwap*
 -- >      VanillaSwap
+-- >      OvernightIndexedSwap
 -- >    IrregularSwap
 -- >    NonstandardSwap
 -- >    FloatFloatSwap
 -- >    AssetSwap
 -- >    BMASwap
--- >    OvernightIndexedSwap
 -- >    ZeroCouponInflationSwap
 -- >    YearOnYearInflationSwap
 -- >    CPISwap
@@ -3496,9 +3496,8 @@ peekCallableBond = peekGenBond
 withCallableBond :: CallableBond -> (Ptr CCallableBond' -> IO b) -> IO b
 withCallableBond = withForeignPtr . ptr . peel . getInstrument
 
--- FixedVsFloatingSwap sits between Swap and VanillaSwap (upstream: VanillaSwap, OvernightIndexedSwap
--- and MultipleResetsSwap all derive from it, but only VanillaSwap is modelled through it here --
--- the others still upcast straight to Swap, collapsing the intermediate level as usual). It earns
+-- FixedVsFloatingSwap sits between Swap and VanillaSwap/OvernightIndexedSwap (upstream
+-- MultipleResetsSwap also derives from it but is not bound). It earns
 -- its own family level (mirrors MultiAssetOption/MargrabeOption's one-more-AnyOf-layer shape)
 -- because SwaptionHelper::underlying() (QuantLib/Model.chs) returns exactly this type, and its own
 -- getters (fairRate, fairSpread, fixedLeg*, floatingLeg*) are inherited, not VanillaSwap-specific --
@@ -3652,16 +3651,16 @@ withBMASwap = withForeignPtr . ptr . peel . getInstrument
 
 data COvernightIndexedSwap'
 type COvernightIndexedSwap = ForeignPtr COvernightIndexedSwap'
--- |A 'Swap'; see the hierarchy under t'GenInstrument'.
-type OvernightIndexedSwap = GenSwap COvernightIndexedSwap
+-- |A 'FixedVsFloatingSwap'; see the hierarchy under t'GenInstrument'.
+type OvernightIndexedSwap = GenFixedVsFloatingSwap COvernightIndexedSwap
 foreign import ccall unsafe "ql.h &qlFreeOvernightIndexedSwap" qlFreeOvernightIndexedSwap :: FinalizerPtr COvernightIndexedSwap'
 instance Finalizable COvernightIndexedSwap' where finalize = qlFreeOvernightIndexedSwap
-foreign import ccall "ql.h qlOvernightIndexedSwapAsSwap" qlOvernightIndexedSwapAsSwap :: Ptr COvernightIndexedSwap' -> IO (Ptr CSwap')
-instance Upcastable COvernightIndexedSwap' where {type Base COvernightIndexedSwap' = CSwap'; upcast = qlOvernightIndexedSwapAsSwap}
+foreign import ccall "ql.h qlOvernightIndexedSwapAsFixedVsFloatingSwap" qlOvernightIndexedSwapAsFixedVsFloatingSwap :: Ptr COvernightIndexedSwap' -> IO (Ptr CFixedVsFloatingSwap')
+instance Upcastable COvernightIndexedSwap' where {type Base COvernightIndexedSwap' = CFixedVsFloatingSwap'; upcast = qlOvernightIndexedSwapAsFixedVsFloatingSwap}
 peekOvernightIndexedSwap :: Ptr COvernightIndexedSwap' -> IO OvernightIndexedSwap
-peekOvernightIndexedSwap = peekGenSwap
+peekOvernightIndexedSwap = newGenForeignPtr >=> newGenFixedVsFloatingSwap
 withOvernightIndexedSwap :: OvernightIndexedSwap -> (Ptr COvernightIndexedSwap' -> IO b) -> IO b
-withOvernightIndexedSwap = withForeignPtr . ptr . peel . getInstrument
+withOvernightIndexedSwap = withForeignPtr . ptr . peel . peel . getInstrument
 
 data CZeroCouponInflationSwap'
 type CZeroCouponInflationSwap = ForeignPtr CZeroCouponInflationSwap'
