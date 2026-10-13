@@ -1,6 +1,7 @@
 # QuantLib 1.44 binding audit
 
-Source: upstream tag `v1.44-rc` (`2897626`), compared with `v1.43`.
+Source: upstream tag `v1.44-rc` (`2897626`), compared with `v1.43`. The `v1.44` release
+(`ab4cb47`) differs from the RC only in `ql/version.hpp`, so this audit applies unchanged.
 `ql-methods-1.44.txt` is extracted from the complete RC header tree with
 `dump_signatures.py`; `reconcile_signatures.py` carries the curated 1.43 statuses.
 The extractor filters deprecated and duplicate inherited methods; out-of-line template
@@ -90,7 +91,7 @@ echo getters retain their exclusions when upstream changes their return type to 
 
 ## Verification
 
-Pricing regressions use the RC Rough Heston reference prices and Hurst calibration, and the MTM
+Pricing regressions use the 1.44 Rough Heston reference prices and Hurst calibration, and the MTM
 helper-curve repricing fixture across all collateral/basis/reset flag combinations. FX reset tests
 check overnight accrual scaling, netted exchanges, historical direct/inverse/triangulated rates,
 spot settlement, and component fixing dependencies. Both 1.43 version errors and 1.44 calculations
@@ -98,5 +99,5 @@ run in the normal Hspec suite; ownership and integration-factory dispatch have s
 
 The combined overnight/stub options fixture checks payment dates, component dependencies and
 currency-leg NPV against independently discounted live cash flows. With compoundSpread enabled,
-the RC's BPS-based fair spread does not exactly reprice that fixture; a raw C++ reproduction
+1.44's BPS-based fair spread does not exactly reprice that fixture; a raw C++ reproduction
 matches the binding. Ordinary non-compounded fair-spread repricing remains covered separately.

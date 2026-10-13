@@ -29,7 +29,7 @@ jobs:
       fail-fast: false
       matrix:
         ghc: ["9.10.3", "9.14.1"]
-        ql: ["1.43", "1.44-rc"]
+        ql: ["1.43", "1.44"]
 
     env:
       QL_VERSION: ${{ matrix.ql }}
