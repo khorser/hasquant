@@ -1,14 +1,16 @@
+## 0.9.0.0 (2026)
+
+- `QuantLib.Math` exports `Matrix`'s fields, so the matrices processes return (`stdDeviation`,
+  `covariance`, `diffusion`) can be read without `QuantLib.Internal`.
+
 ## 0.8.0.0 (2026)
 
 - Added value-based Settings snapshots with checked restoration, preserving floating dates
   and observer settings, and native fixing-history name normalization for context owners.
-
 - Added QuantLib 1.44 support, while retaining compatibility with 1.43. New bindings include
   Rough Heston pricing, mark-to-market cross-currency basis swaps, FX reset cash flows, and
   Gaussian1d (GSR) swaptions on overnight-indexed swaps. Calls requiring 1.44, and non-default
   values of arguments added in 1.44, report `UnsupportedQuantLibVersion` on 1.43.
-- `QuantLib.Math` exports `Matrix`'s fields, so the matrices processes return (`stdDeviation`,
-  `covariance`, `diffusion`) can be read without `QuantLib.Internal`.
 - Deprecated the `ItalyExchange` calendar, following QuantLib 1.44; it will be removed when
   hasquant adopts QuantLib 1.45. Use `TARGET` instead.
 - `OvernightIndexedSwap` is now a `FixedVsFloatingSwap`; its fair-rate and fixed-leg inspectors
