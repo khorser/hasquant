@@ -1,7 +1,7 @@
 cabal-version: 2.2
 
 name:           hasquant
-version:        0.8.0.0
+version:        0.9.0.0
 synopsis:       Bindings to QuantLib
 description:    Haskell bindings to the QuantLib C++ library. hasquant provides
                 pricing, curve-building, and risk primitives, including financial
