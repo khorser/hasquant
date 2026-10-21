@@ -305,7 +305,7 @@ span.spaces    { background: white }
 <span class="lineno">  286 </span>customZeroInflationIndex :: (String) -- ^familyName
 <span class="lineno">  287 </span> -&gt; (Region) -&gt; (Bool) -- ^revised
 <span class="lineno">  288 </span> -&gt; (Frequency) -&gt; ((Int,TimeUnit)) -- ^availabilityLag
-<span class="lineno">  289 </span> -&gt; (Currency) -&gt; (Maybe ZeroInflationTermStructure) -&gt; IO ((ZeroInflationIndex))
+<span class="lineno">  289 </span> -&gt; (Currency) -&gt; (Maybe (GenZeroInflationTermStructure z)) -&gt; IO ((ZeroInflationIndex))
 <span class="lineno">  290 </span><span class="decl"><span class="istickedoff">customZeroInflationIndex a1 a2 a3 a4 a5 a6 a7 =</span>
 <span class="lineno">  291 </span><span class="spaces">  </span><span class="istickedoff">C2HSImp.withCString a1 $ \a1' -&gt; </span>
 <span class="lineno">  292 </span><span class="spaces">  </span><span class="istickedoff">withRegion a2 $ \a2' -&gt; </span>
@@ -328,7 +328,7 @@ span.spaces    { background: white }
 <span class="lineno">  309 </span>customYoyInflationIndex :: (String) -- ^familyName
 <span class="lineno">  310 </span> -&gt; (Region) -&gt; (Bool) -- ^revised
 <span class="lineno">  311 </span> -&gt; (Frequency) -&gt; ((Int,TimeUnit)) -- ^availabilityLag
-<span class="lineno">  312 </span> -&gt; (Currency) -&gt; (Maybe YoYInflationTermStructure) -&gt; IO ((YoYInflationIndex))
+<span class="lineno">  312 </span> -&gt; (Currency) -&gt; (Maybe (GenYoYInflationTermStructure y)) -&gt; IO ((YoYInflationIndex))
 <span class="lineno">  313 </span><span class="decl"><span class="istickedoff">customYoyInflationIndex a1 a2 a3 a4 a5 a6 a7 =</span>
 <span class="lineno">  314 </span><span class="spaces">  </span><span class="istickedoff">C2HSImp.withCString a1 $ \a1' -&gt; </span>
 <span class="lineno">  315 </span><span class="spaces">  </span><span class="istickedoff">withRegion a2 $ \a2' -&gt; </span>
@@ -347,7 +347,7 @@ span.spaces    { background: white }
 <span class="lineno">  328 </span>
 <span class="lineno">  329 </span>-- |A year-on-year index defined as the ratio of an existing 'ZeroInflationIndex'\'s fixings;
 <span class="lineno">  330 </span>-- stores no fixings of its own.
-<span class="lineno">  331 </span>yoyInflationIndexFromZero :: (GenZeroInflationIndex zidx) -&gt; (Maybe YoYInflationTermStructure) -&gt; IO ((YoYInflationIndex))
+<span class="lineno">  331 </span>yoyInflationIndexFromZero :: (GenZeroInflationIndex zidx) -&gt; (Maybe (GenYoYInflationTermStructure y)) -&gt; IO ((YoYInflationIndex))
 <span class="lineno">  332 </span><span class="decl"><span class="istickedoff">yoyInflationIndexFromZero a1 a2 =</span>
 <span class="lineno">  333 </span><span class="spaces">  </span><span class="istickedoff">withZeroInflationIndex a1 $ \a1' -&gt; </span>
 <span class="lineno">  334 </span><span class="spaces">  </span><span class="istickedoff">withMaybeYoYInflationTermStructure a2 $ \a2' -&gt; </span>
