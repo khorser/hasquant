@@ -36,7 +36,7 @@ matrix rows columns = either error id . realMatrixFromVector rows columns . V.fr
 -- same globally shared index-name fixing store -- QuantLib's fixing store is keyed by index
 -- name, and hspec runs specs in random order, so any shared name is a latent cross-test
 -- conflict.
-customYoYIndex :: Maybe YoYInflationTermStructure -> IO YoYInflationIndex
+customYoYIndex :: Maybe (GenYoYInflationTermStructure y) -> IO YoYInflationIndex
 customYoYIndex mts = do
   gbp <- currency GBP
   r <- customRegion "InflationCapFloor Test" "ICFT"

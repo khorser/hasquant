@@ -1742,7 +1742,7 @@ QlYearOnYearInflationSwapHelper* qlYearOnYearInflationSwapHelper2(QlQuote* quote
 QlZeroCouponInflationSwap* qlZeroCouponInflationSwapHelperSwap(QlZeroCouponInflationSwapHelper* o, QlError **e) { QlCallScope callbackScope(e);try {return ret(new QlZeroCouponInflationSwap((*arg(o))->swap()));} catch (std::exception& er) {return handleException<QlZeroCouponInflationSwap*>(e, er);}}
 QlYearOnYearInflationSwap* qlYearOnYearInflationSwapHelperSwap(QlYearOnYearInflationSwapHelper* o, QlError **e) { QlCallScope callbackScope(e);try {return ret(new QlYearOnYearInflationSwap((*arg(o))->swap()));} catch (std::exception& er) {return handleException<QlYearOnYearInflationSwap*>(e, er);}}
 
-QlZeroInflationTermStructure* qlPiecewiseZeroInflationCurve(int referenceDate, int baseDate, int frequency, DayCounter* dayCounter, unsigned instrumentsLen, QlZeroCouponInflationSwapHelper** instruments,
+QlPiecewiseZeroInflationCurve* qlPiecewiseZeroInflationCurve(int referenceDate, int baseDate, int frequency, DayCounter* dayCounter, unsigned instrumentsLen, QlZeroCouponInflationSwapHelper** instruments,
     int seasKind, int seasBaseDate, int seasFreq, unsigned seasLen, double *seasFactors, int interpolator, int approximator, int approximatorArg, QlError **e) { QlCallScope callbackScope(e);
   try {
     // instruments[i] is shared_ptr<ZeroCouponInflationSwapHelper>*; push_back upcasts each
@@ -1754,9 +1754,9 @@ QlZeroInflationTermStructure* qlPiecewiseZeroInflationCurve(int referenceDate, i
     for (unsigned i = 0; i < instrumentsLen; ++i) instr.push_back(*instruments[i]);
     auto ts = allocShared(qlPiecewiseZeroInflationCurveAux(Date(referenceDate), Date(baseDate), (Frequency)frequency, *arg(dayCounter),
         instr, qlSeasonality(seasKind, seasBaseDate, seasFreq, seasLen, seasFactors), interpolator, approximator, approximatorArg));
-    return ret(new QlZeroInflationTermStructure(ts));
-  } catch (std::exception& er) {return handleException<QlZeroInflationTermStructure*>(e, er);}}
-QlYoYInflationTermStructure* qlPiecewiseYoYInflationCurve(int referenceDate, int baseDate, double baseYoYRate, int frequency, DayCounter* dayCounter, unsigned instrumentsLen, QlYearOnYearInflationSwapHelper** instruments,
+    return ret(new QlPiecewiseZeroInflationCurve(ts));
+  } catch (std::exception& er) {return handleException<QlPiecewiseZeroInflationCurve*>(e, er);}}
+QlPiecewiseYoYInflationCurve* qlPiecewiseYoYInflationCurve(int referenceDate, int baseDate, double baseYoYRate, int frequency, DayCounter* dayCounter, unsigned instrumentsLen, QlYearOnYearInflationSwapHelper** instruments,
     int seasKind, int seasBaseDate, int seasFreq, unsigned seasLen, double *seasFactors, int interpolator, int approximator, int approximatorArg, QlError **e) { QlCallScope callbackScope(e);
   try {
     std::vector<shared_ptr<BootstrapHelper<YoYInflationTermStructure> > > instr;
@@ -1764,8 +1764,49 @@ QlYoYInflationTermStructure* qlPiecewiseYoYInflationCurve(int referenceDate, int
     for (unsigned i = 0; i < instrumentsLen; ++i) instr.push_back(*instruments[i]);
     auto ts = allocShared(qlPiecewiseYoYInflationCurveAux(Date(referenceDate), Date(baseDate), baseYoYRate, (Frequency)frequency, *arg(dayCounter),
         instr, qlSeasonality(seasKind, seasBaseDate, seasFreq, seasLen, seasFactors), interpolator, approximator, approximatorArg));
-    return ret(new QlYoYInflationTermStructure(ts));
-  } catch (std::exception& er) {return handleException<QlYoYInflationTermStructure*>(e, er);}}
+    return ret(new QlPiecewiseYoYInflationCurve(ts));
+  } catch (std::exception& er) {return handleException<QlPiecewiseYoYInflationCurve*>(e, er);}}
+// The nodes of a bootstrapped curve: reading them runs the bootstrap.
+void qlFreePiecewiseZeroInflationCurve(QlPiecewiseZeroInflationCurve *o) {del(o);}
+QlZeroInflationTermStructure* qlPiecewiseZeroInflationCurveAsZeroInflationTermStructure(QlPiecewiseZeroInflationCurve *o) {return ret(new QlZeroInflationTermStructure((*arg(o))->curve));}
+void qlPiecewiseZeroInflationCurveDates(QlPiecewiseZeroInflationCurve *o, unsigned *count, int **days, QlError **e) { QlCallScope callbackScope(e);
+  *count = 0; *days = 0;
+  try {
+    const auto nodes = (*arg(o))->nodesFn();
+    int *ds = qlAllocateInts((unsigned)nodes.size());
+    for (size_t i = 0; i < nodes.size(); ++i) ds[i] = nodes[i].first.serialNumber();
+    *count = (unsigned)nodes.size(); *days = ds;
+  } catch (std::exception& er) {qlSetError(e, er.what());}
+}
+void qlPiecewiseZeroInflationCurveRates(QlPiecewiseZeroInflationCurve *o, unsigned *count, double **rates, QlError **e) { QlCallScope callbackScope(e);
+  *count = 0; *rates = 0;
+  try {
+    const auto nodes = (*arg(o))->nodesFn();
+    double *rs = qlAllocateDoubles((unsigned)nodes.size());
+    for (size_t i = 0; i < nodes.size(); ++i) rs[i] = nodes[i].second;
+    *count = (unsigned)nodes.size(); *rates = rs;
+  } catch (std::exception& er) {qlSetError(e, er.what());}
+}
+void qlFreePiecewiseYoYInflationCurve(QlPiecewiseYoYInflationCurve *o) {del(o);}
+QlYoYInflationTermStructure* qlPiecewiseYoYInflationCurveAsYoYInflationTermStructure(QlPiecewiseYoYInflationCurve *o) {return ret(new QlYoYInflationTermStructure((*arg(o))->curve));}
+void qlPiecewiseYoYInflationCurveDates(QlPiecewiseYoYInflationCurve *o, unsigned *count, int **days, QlError **e) { QlCallScope callbackScope(e);
+  *count = 0; *days = 0;
+  try {
+    const auto nodes = (*arg(o))->nodesFn();
+    int *ds = qlAllocateInts((unsigned)nodes.size());
+    for (size_t i = 0; i < nodes.size(); ++i) ds[i] = nodes[i].first.serialNumber();
+    *count = (unsigned)nodes.size(); *days = ds;
+  } catch (std::exception& er) {qlSetError(e, er.what());}
+}
+void qlPiecewiseYoYInflationCurveRates(QlPiecewiseYoYInflationCurve *o, unsigned *count, double **rates, QlError **e) { QlCallScope callbackScope(e);
+  *count = 0; *rates = 0;
+  try {
+    const auto nodes = (*arg(o))->nodesFn();
+    double *rs = qlAllocateDoubles((unsigned)nodes.size());
+    for (size_t i = 0; i < nodes.size(); ++i) rs[i] = nodes[i].second;
+    *count = (unsigned)nodes.size(); *rates = rs;
+  } catch (std::exception& er) {qlSetError(e, er.what());}
+}
 
 // Interpolated (dates, rates) inflation curves, unlike the piecewise bootstraps from swap helpers.
 QlYoYInflationTermStructure* qlInterpolatedYoYInflationCurve(int referenceDate,

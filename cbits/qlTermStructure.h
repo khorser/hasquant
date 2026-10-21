@@ -424,10 +424,18 @@ extern "C" {
   QlYearOnYearInflationSwap* qlYearOnYearInflationSwapHelperSwap(QlYearOnYearInflationSwapHelper* o, QlError **e);
 
   // seasKind: -1 none, 0 MultiplicativePriceSeasonality, 1 KerkhofSeasonality.
-  QlZeroInflationTermStructure* qlPiecewiseZeroInflationCurve(int referenceDate, int baseDate, int frequency, DayCounter* dayCounter, unsigned instrumentsLen, QlZeroCouponInflationSwapHelper** instruments,
+  QlPiecewiseZeroInflationCurve* qlPiecewiseZeroInflationCurve(int referenceDate, int baseDate, int frequency, DayCounter* dayCounter, unsigned instrumentsLen, QlZeroCouponInflationSwapHelper** instruments,
       int seasKind, int seasBaseDate, int seasFreq, unsigned seasLen, double *seasFactors, int interpolator, int approximator, int approximatorArg, QlError **e);
-  QlYoYInflationTermStructure* qlPiecewiseYoYInflationCurve(int referenceDate, int baseDate, double baseYoYRate, int frequency, DayCounter* dayCounter, unsigned instrumentsLen, QlYearOnYearInflationSwapHelper** instruments,
+  QlPiecewiseYoYInflationCurve* qlPiecewiseYoYInflationCurve(int referenceDate, int baseDate, double baseYoYRate, int frequency, DayCounter* dayCounter, unsigned instrumentsLen, QlYearOnYearInflationSwapHelper** instruments,
       int seasKind, int seasBaseDate, int seasFreq, unsigned seasLen, double *seasFactors, int interpolator, int approximator, int approximatorArg, QlError **e);
+  void qlFreePiecewiseZeroInflationCurve(QlPiecewiseZeroInflationCurve *o);
+  QlZeroInflationTermStructure* qlPiecewiseZeroInflationCurveAsZeroInflationTermStructure(QlPiecewiseZeroInflationCurve *o);
+  void qlPiecewiseZeroInflationCurveDates(QlPiecewiseZeroInflationCurve *o, unsigned *count, int **days, QlError **e);
+  void qlPiecewiseZeroInflationCurveRates(QlPiecewiseZeroInflationCurve *o, unsigned *count, double **rates, QlError **e);
+  void qlFreePiecewiseYoYInflationCurve(QlPiecewiseYoYInflationCurve *o);
+  QlYoYInflationTermStructure* qlPiecewiseYoYInflationCurveAsYoYInflationTermStructure(QlPiecewiseYoYInflationCurve *o);
+  void qlPiecewiseYoYInflationCurveDates(QlPiecewiseYoYInflationCurve *o, unsigned *count, int **days, QlError **e);
+  void qlPiecewiseYoYInflationCurveRates(QlPiecewiseYoYInflationCurve *o, unsigned *count, double **rates, QlError **e);
   QlYoYInflationTermStructure* qlInterpolatedYoYInflationCurve(int referenceDate, unsigned datesLen, int *dates, double *rates, int frequency, DayCounter* dayCounter,
       int seasKind, int seasBaseDate, int seasFreq, unsigned seasLen, double *seasFactors, int interpolator, int approximator, int approximatorArg, QlError **e);
   QlZeroInflationTermStructure* qlInterpolatedZeroInflationCurve(int referenceDate, unsigned datesLen, int *dates, double *rates, int frequency, DayCounter* dayCounter,

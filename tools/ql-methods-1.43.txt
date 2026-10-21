@@ -8184,7 +8184,7 @@
 | |ql/termstructures/inflation/piecewiseyoyinflationcurve.hpp|const std::vector<Time> & times() const;
 | |ql/termstructures/inflation/piecewiseyoyinflationcurve.hpp|const std::vector<Date> & dates() const;
 | |ql/termstructures/inflation/piecewiseyoyinflationcurve.hpp|const std::vector<Real> & data() const;
-| |ql/termstructures/inflation/piecewiseyoyinflationcurve.hpp|std::vector<std::pair<Date, Real>> nodes() const;
+|v|ql/termstructures/inflation/piecewiseyoyinflationcurve.hpp|std::vector<std::pair<Date, Real>> nodes() const;
 | |ql/termstructures/inflation/piecewiseyoyinflationcurve.hpp|void performCalculations() const;
 | |ql/termstructures/inflation/piecewiseyoyinflationcurve.hpp|Rate yoyRateImpl(Time t) const;
 | |ql/termstructures/inflation/piecewiseyoyinflationcurve.hpp|void update();
@@ -8195,7 +8195,7 @@
 | |ql/termstructures/inflation/piecewisezeroinflationcurve.hpp|const std::vector<Time> & times() const;
 | |ql/termstructures/inflation/piecewisezeroinflationcurve.hpp|const std::vector<Date> & dates() const;
 | |ql/termstructures/inflation/piecewisezeroinflationcurve.hpp|const std::vector<Real> & data() const;
-| |ql/termstructures/inflation/piecewisezeroinflationcurve.hpp|std::vector<std::pair<Date, Real>> nodes() const;
+|v|ql/termstructures/inflation/piecewisezeroinflationcurve.hpp|std::vector<std::pair<Date, Real>> nodes() const;
 | |ql/termstructures/inflation/piecewisezeroinflationcurve.hpp|void performCalculations() const;
 | |ql/termstructures/inflation/piecewisezeroinflationcurve.hpp|Rate zeroRateImpl(Time t) const;
 | |ql/termstructures/inflation/piecewisezeroinflationcurve.hpp|void update();

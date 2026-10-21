@@ -1774,6 +1774,8 @@ data CDefaultProbabilityTermStructure'
 data CAffineHazardRateCurve'
 data CZeroInflationTermStructure'
 data CYoYInflationTermStructure'
+data CPiecewiseZeroInflationCurve'
+data CPiecewiseYoYInflationCurve'
 data CCommodityCurve'
 -- | > TermStructure = GenTermStructure t
 -- >  YieldTermStructure = GenYieldTermStructure y = GenTermStructure t
@@ -1807,8 +1809,10 @@ data CCommodityCurve'
 -- >  CallableBondVolatilityStructure
 -- >  DefaultProbabilityTermStructure = GenDefaultProbabilityTermStructure d = GenTermStructure t
 -- >    AffineHazardRateCurve = GenDefaultProbabilityTermStructure ...
--- >  ZeroInflationTermStructure
--- >  YoYInflationTermStructure
+-- >  ZeroInflationTermStructure = GenZeroInflationTermStructure z = GenTermStructure t
+-- >    PiecewiseZeroInflationCurve = GenZeroInflationTermStructure ...
+-- >  YoYInflationTermStructure = GenYoYInflationTermStructure y = GenTermStructure t
+-- >    PiecewiseYoYInflationCurve = GenYoYInflationTermStructure ...
 -- >  YoYCapFloorTermPriceSurface
 -- >  CPICapFloorTermPriceSurface
 -- >  CommodityCurve
@@ -2102,12 +2106,24 @@ peekDigitalLossModel = DigitalLossModel <.> peekStandalone
 withDigitalLossModel :: DigitalLossModel -> (Ptr CDefaultLossModel -> IO b) -> IO b
 withDigitalLossModel = withStandalone . getCDigitalLossModel
 
+-- |A 'ZeroInflationTermStructure' or one of its leaves; see the hierarchy under t'GenTermStructure'.
+type GenZeroInflationTermStructure z = GenTermStructure (AnyOf CZeroInflationTermStructure' z)
 type CZeroInflationTermStructure = ForeignPtr CZeroInflationTermStructure'
 -- |A 'TermStructure'; see the hierarchy under t'GenTermStructure'.
-type ZeroInflationTermStructure = GenTermStructure CZeroInflationTermStructure
+type ZeroInflationTermStructure = GenZeroInflationTermStructure CZeroInflationTermStructure
+type CPiecewiseZeroInflationCurve = ForeignPtr CPiecewiseZeroInflationCurve'
+-- |A 'ZeroInflationTermStructure' bootstrapped from swap helpers, whose nodes can be read; see the
+-- hierarchy under t'GenTermStructure'.
+type PiecewiseZeroInflationCurve = GenZeroInflationTermStructure CPiecewiseZeroInflationCurve
+-- |A 'YoYInflationTermStructure' or one of its leaves; see the hierarchy under t'GenTermStructure'.
+type GenYoYInflationTermStructure y = GenTermStructure (AnyOf CYoYInflationTermStructure' y)
 type CYoYInflationTermStructure = ForeignPtr CYoYInflationTermStructure'
 -- |A 'TermStructure'; see the hierarchy under t'GenTermStructure'.
-type YoYInflationTermStructure = GenTermStructure CYoYInflationTermStructure
+type YoYInflationTermStructure = GenYoYInflationTermStructure CYoYInflationTermStructure
+type CPiecewiseYoYInflationCurve = ForeignPtr CPiecewiseYoYInflationCurve'
+-- |A 'YoYInflationTermStructure' bootstrapped from swap helpers, whose nodes can be read; see the
+-- hierarchy under t'GenTermStructure'.
+type PiecewiseYoYInflationCurve = GenYoYInflationTermStructure CPiecewiseYoYInflationCurve
 type CCommodityCurve = ForeignPtr CCommodityCurve'
 -- | A plain 'TermStructure' leaf (not a 'YieldTermStructure' -- it has no discount-factor
 -- semantics, just an interpolated price curve), constructed and consumed by @shared_ptr@ like
@@ -2174,6 +2190,8 @@ foreign import ccall unsafe "ql.h &qlFreeDefaultProbabilityTermStructure" qlFree
 foreign import ccall unsafe "ql.h &qlFreeAffineHazardRateCurve" qlFreeAffineHazardRateCurve :: FinalizerPtr CAffineHazardRateCurve'
 foreign import ccall unsafe "ql.h &qlFreeZeroInflationTermStructure" qlFreeZeroInflationTermStructure :: FinalizerPtr CZeroInflationTermStructure'
 foreign import ccall unsafe "ql.h &qlFreeYoYInflationTermStructure" qlFreeYoYInflationTermStructure :: FinalizerPtr CYoYInflationTermStructure'
+foreign import ccall unsafe "ql.h &qlFreePiecewiseZeroInflationCurve" qlFreePiecewiseZeroInflationCurve :: FinalizerPtr CPiecewiseZeroInflationCurve'
+foreign import ccall unsafe "ql.h &qlFreePiecewiseYoYInflationCurve" qlFreePiecewiseYoYInflationCurve :: FinalizerPtr CPiecewiseYoYInflationCurve'
 foreign import ccall unsafe "ql.h &qlFreeYoYCapFloorTermPriceSurface" qlFreeYoYCapFloorTermPriceSurface :: FinalizerPtr CYoYCapFloorTermPriceSurface'
 foreign import ccall unsafe "ql.h &qlFreeCPICapFloorTermPriceSurface" qlFreeCPICapFloorTermPriceSurface :: FinalizerPtr CCPICapFloorTermPriceSurface'
 foreign import ccall unsafe "ql.h &qlFreeCommodityCurve" qlFreeCommodityCurve :: FinalizerPtr CCommodityCurve'
@@ -2212,6 +2230,8 @@ instance Finalizable CDefaultProbabilityTermStructure' where finalize = qlFreeDe
 instance Finalizable CAffineHazardRateCurve' where finalize = qlFreeAffineHazardRateCurve
 instance Finalizable CZeroInflationTermStructure' where finalize = qlFreeZeroInflationTermStructure
 instance Finalizable CYoYInflationTermStructure' where finalize = qlFreeYoYInflationTermStructure
+instance Finalizable CPiecewiseZeroInflationCurve' where finalize = qlFreePiecewiseZeroInflationCurve
+instance Finalizable CPiecewiseYoYInflationCurve' where finalize = qlFreePiecewiseYoYInflationCurve
 instance Finalizable CYoYCapFloorTermPriceSurface' where finalize = qlFreeYoYCapFloorTermPriceSurface
 instance Finalizable CCPICapFloorTermPriceSurface' where finalize = qlFreeCPICapFloorTermPriceSurface
 instance Finalizable CCommodityCurve' where finalize = qlFreeCommodityCurve
@@ -2248,6 +2268,8 @@ foreign import ccall "ql.h qlDefaultProbabilityTermStructureAsTermStructure" qlD
 foreign import ccall "ql.h qlAffineHazardRateCurveAsDefaultProbabilityTermStructure" qlAffineHazardRateCurveAsDefaultProbabilityTermStructure :: Ptr CAffineHazardRateCurve' -> IO (Ptr CDefaultProbabilityTermStructure')
 foreign import ccall "ql.h qlZeroInflationTermStructureAsTermStructure" qlZeroInflationTermStructureAsTermStructure :: Ptr CZeroInflationTermStructure' -> IO (Ptr CTermStructure')
 foreign import ccall "ql.h qlYoYInflationTermStructureAsTermStructure" qlYoYInflationTermStructureAsTermStructure :: Ptr CYoYInflationTermStructure' -> IO (Ptr CTermStructure')
+foreign import ccall "ql.h qlPiecewiseZeroInflationCurveAsZeroInflationTermStructure" qlPiecewiseZeroInflationCurveAsZeroInflationTermStructure :: Ptr CPiecewiseZeroInflationCurve' -> IO (Ptr CZeroInflationTermStructure')
+foreign import ccall "ql.h qlPiecewiseYoYInflationCurveAsYoYInflationTermStructure" qlPiecewiseYoYInflationCurveAsYoYInflationTermStructure :: Ptr CPiecewiseYoYInflationCurve' -> IO (Ptr CYoYInflationTermStructure')
 foreign import ccall "ql.h qlYoYCapFloorTermPriceSurfaceAsTermStructure" qlYoYCapFloorTermPriceSurfaceAsTermStructure :: Ptr CYoYCapFloorTermPriceSurface' -> IO (Ptr CTermStructure')
 foreign import ccall "ql.h qlCPICapFloorTermPriceSurfaceAsTermStructure" qlCPICapFloorTermPriceSurfaceAsTermStructure :: Ptr CCPICapFloorTermPriceSurface' -> IO (Ptr CTermStructure')
 foreign import ccall "ql.h qlCommodityCurveAsTermStructure" qlCommodityCurveAsTermStructure :: Ptr CCommodityCurve' -> IO (Ptr CTermStructure')
@@ -2260,6 +2282,8 @@ instance Upcastable CDefaultProbabilityTermStructure' where {type Base CDefaultP
 instance Upcastable CAffineHazardRateCurve' where {type Base CAffineHazardRateCurve' = CDefaultProbabilityTermStructure'; upcast = qlAffineHazardRateCurveAsDefaultProbabilityTermStructure}
 instance Upcastable CZeroInflationTermStructure' where {type Base CZeroInflationTermStructure' = CTermStructure'; upcast = qlZeroInflationTermStructureAsTermStructure}
 instance Upcastable CYoYInflationTermStructure' where {type Base CYoYInflationTermStructure' = CTermStructure'; upcast = qlYoYInflationTermStructureAsTermStructure}
+instance Upcastable CPiecewiseZeroInflationCurve' where {type Base CPiecewiseZeroInflationCurve' = CZeroInflationTermStructure'; upcast = qlPiecewiseZeroInflationCurveAsZeroInflationTermStructure}
+instance Upcastable CPiecewiseYoYInflationCurve' where {type Base CPiecewiseYoYInflationCurve' = CYoYInflationTermStructure'; upcast = qlPiecewiseYoYInflationCurveAsYoYInflationTermStructure}
 instance Upcastable CYoYCapFloorTermPriceSurface' where {type Base CYoYCapFloorTermPriceSurface' = CTermStructure'; upcast = qlYoYCapFloorTermPriceSurfaceAsTermStructure}
 instance Upcastable CCPICapFloorTermPriceSurface' where {type Base CCPICapFloorTermPriceSurface' = CTermStructure'; upcast = qlCPICapFloorTermPriceSurfaceAsTermStructure}
 instance Upcastable CCommodityCurve' where {type Base CCommodityCurve' = CTermStructure'; upcast = qlCommodityCurveAsTermStructure}
@@ -2451,14 +2475,34 @@ peekAffineHazardRateCurve = newGenForeignPtr >=> newGenDefaultProbabilityTermStr
 -- 'withDefaultProbabilityTermStructure' instead, which upcasts.
 withAffineHazardRateCurve :: AffineHazardRateCurve -> (Ptr CAffineHazardRateCurve' -> IO b) -> IO b
 withAffineHazardRateCurve = withForeignPtr . ptr . peel . getTermStructure
+asZeroInflationTermStructure :: GenZeroInflationTermStructure z -> IO ZeroInflationTermStructure
+asZeroInflationTermStructure = transferGenForeignPtr newGenZeroInflationTermStructure . peel . getTermStructure
 peekZeroInflationTermStructure :: Ptr CZeroInflationTermStructure' -> IO ZeroInflationTermStructure
-peekZeroInflationTermStructure = GenTermStructure <.> newGenForeignPtr
-withMaybeZeroInflationTermStructure :: Maybe ZeroInflationTermStructure -> (Ptr CZeroInflationTermStructure' -> IO b) -> IO b
-withMaybeZeroInflationTermStructure x f = maybe (f nullPtr) (`withGenTermStructure` f) x
+peekZeroInflationTermStructure = newCastForeignPtr >=> newGenZeroInflationTermStructure
+withZeroInflationTermStructure :: GenZeroInflationTermStructure z -> (Ptr CZeroInflationTermStructure' -> IO b) -> IO b
+withZeroInflationTermStructure = withGenForeignPtr . peel . getTermStructure
+withMaybeZeroInflationTermStructure :: Maybe (GenZeroInflationTermStructure z) -> (Ptr CZeroInflationTermStructure' -> IO b) -> IO b
+withMaybeZeroInflationTermStructure x f = maybe (f nullPtr) (`withZeroInflationTermStructure` f) x
+newGenZeroInflationTermStructure :: GenForeignPtr z CZeroInflationTermStructure' -> IO (GenZeroInflationTermStructure z)
+newGenZeroInflationTermStructure = pure . GenTermStructure . newAnyOf
+peekPiecewiseZeroInflationCurve :: Ptr CPiecewiseZeroInflationCurve' -> IO PiecewiseZeroInflationCurve
+peekPiecewiseZeroInflationCurve = newGenForeignPtr >=> newGenZeroInflationTermStructure
+withPiecewiseZeroInflationCurve :: PiecewiseZeroInflationCurve -> (Ptr CPiecewiseZeroInflationCurve' -> IO b) -> IO b
+withPiecewiseZeroInflationCurve = withForeignPtr . ptr . peel . getTermStructure
+asYoYInflationTermStructure :: GenYoYInflationTermStructure y -> IO YoYInflationTermStructure
+asYoYInflationTermStructure = transferGenForeignPtr newGenYoYInflationTermStructure . peel . getTermStructure
 peekYoYInflationTermStructure :: Ptr CYoYInflationTermStructure' -> IO YoYInflationTermStructure
-peekYoYInflationTermStructure = GenTermStructure <.> newGenForeignPtr
-withMaybeYoYInflationTermStructure :: Maybe YoYInflationTermStructure -> (Ptr CYoYInflationTermStructure' -> IO b) -> IO b
-withMaybeYoYInflationTermStructure x f = maybe (f nullPtr) (`withGenTermStructure` f) x
+peekYoYInflationTermStructure = newCastForeignPtr >=> newGenYoYInflationTermStructure
+withYoYInflationTermStructure :: GenYoYInflationTermStructure y -> (Ptr CYoYInflationTermStructure' -> IO b) -> IO b
+withYoYInflationTermStructure = withGenForeignPtr . peel . getTermStructure
+withMaybeYoYInflationTermStructure :: Maybe (GenYoYInflationTermStructure y) -> (Ptr CYoYInflationTermStructure' -> IO b) -> IO b
+withMaybeYoYInflationTermStructure x f = maybe (f nullPtr) (`withYoYInflationTermStructure` f) x
+newGenYoYInflationTermStructure :: GenForeignPtr y CYoYInflationTermStructure' -> IO (GenYoYInflationTermStructure y)
+newGenYoYInflationTermStructure = pure . GenTermStructure . newAnyOf
+peekPiecewiseYoYInflationCurve :: Ptr CPiecewiseYoYInflationCurve' -> IO PiecewiseYoYInflationCurve
+peekPiecewiseYoYInflationCurve = newGenForeignPtr >=> newGenYoYInflationTermStructure
+withPiecewiseYoYInflationCurve :: PiecewiseYoYInflationCurve -> (Ptr CPiecewiseYoYInflationCurve' -> IO b) -> IO b
+withPiecewiseYoYInflationCurve = withForeignPtr . ptr . peel . getTermStructure
 peekYoYCapFloorTermPriceSurface :: Ptr CYoYCapFloorTermPriceSurface' -> IO YoYCapFloorTermPriceSurface
 peekYoYCapFloorTermPriceSurface = GenTermStructure <.> newGenForeignPtr
 peekCPICapFloorTermPriceSurface :: Ptr CCPICapFloorTermPriceSurface' -> IO CPICapFloorTermPriceSurface

@@ -583,7 +583,7 @@ DefaultLossModel* qlConstantLossModelAux(const Handle<Quote>& mktCorrel,
 
 // The 1.0e-14 / 1.0e-12 accuracies below are upstream's own defaults, spelled explicitly because
 // the interpolator follows them (piecewisezeroinflationcurve.hpp / piecewiseyoyinflationcurve.hpp).
-ZeroInflationTermStructure *qlPiecewiseZeroInflationCurveAux(
+PiecewiseZeroInflationCurveHandle *qlPiecewiseZeroInflationCurveAux(
     const Date &referenceDate,
     const Date &baseDate,
     Frequency frequency,
@@ -591,14 +591,15 @@ ZeroInflationTermStructure *qlPiecewiseZeroInflationCurveAux(
     const std::vector<shared_ptr<BootstrapHelper<ZeroInflationTermStructure> > >& instruments,
     const shared_ptr<Seasonality>& seasonality,
     int interpolator, int approximator, int approximatorArg) {
-  return dispatchInterpolation<ZeroInflationTermStructure*>(interpolator, approximator, approximatorArg,
+  return dispatchInterpolation<PiecewiseZeroInflationCurveHandle*>(interpolator, approximator, approximatorArg,
 [&](auto i) {
-        return new PiecewiseZeroInflationCurve<decltype(i)>(referenceDate, baseDate, frequency,
+        auto curve = ext::make_shared<PiecewiseZeroInflationCurve<decltype(i)>>(referenceDate, baseDate, frequency,
             dayCounter, instruments, seasonality, 1.0e-14, i);
+        return new PiecewiseZeroInflationCurveHandle{curve, [curve]{ return curve->nodes(); }};
       });
 }
 
-YoYInflationTermStructure *qlPiecewiseYoYInflationCurveAux(
+PiecewiseYoYInflationCurveHandle *qlPiecewiseYoYInflationCurveAux(
     const Date &referenceDate,
     const Date &baseDate,
     Rate baseYoYRate,
@@ -607,10 +608,11 @@ YoYInflationTermStructure *qlPiecewiseYoYInflationCurveAux(
     const std::vector<shared_ptr<BootstrapHelper<YoYInflationTermStructure> > >& instruments,
     const shared_ptr<Seasonality>& seasonality,
     int interpolator, int approximator, int approximatorArg) {
-  return dispatchInterpolation<YoYInflationTermStructure*>(interpolator, approximator, approximatorArg,
+  return dispatchInterpolation<PiecewiseYoYInflationCurveHandle*>(interpolator, approximator, approximatorArg,
 [&](auto i) {
-        return new PiecewiseYoYInflationCurve<decltype(i)>(referenceDate, baseDate, baseYoYRate,
+        auto curve = ext::make_shared<PiecewiseYoYInflationCurve<decltype(i)>>(referenceDate, baseDate, baseYoYRate,
             frequency, dayCounter, instruments, seasonality, 1.0e-12, i);
+        return new PiecewiseYoYInflationCurveHandle{curve, [curve]{ return curve->nodes(); }};
       });
 }
 

@@ -1139,6 +1139,13 @@ using QlYoYInflationCapFloor = shared_ptr<YoYInflationCapFloor>;
 using QlYoYInflationCouponPricer = shared_ptr<YoYInflationCouponPricer>;
 using QlYoYInflationIndex = shared_ptr<YoYInflationIndex>;
 using QlYoYInflationTermStructure = shared_ptr<YoYInflationTermStructure>;
+// PiecewiseYoYInflationCurve<Interpolator> and PiecewiseZeroInflationCurve<Interpolator> have no
+// common concrete type with nodes(); like ZabrInterpolatedSmileSectionHandle, each handle keeps
+// the type-erased curve and a nodes closure over the instantiation (qlTermStructureAux.h).
+struct PiecewiseYoYInflationCurveHandle;
+struct PiecewiseZeroInflationCurveHandle;
+using QlPiecewiseYoYInflationCurve = shared_ptr<PiecewiseYoYInflationCurveHandle>;
+using QlPiecewiseZeroInflationCurve = shared_ptr<PiecewiseZeroInflationCurveHandle>;
 // A vol structure is a Handle, same reasoning as QlOptionletVolatilityStructure above.
 using QlYoYOptionletVolatilitySurface = Handle<YoYOptionletVolatilitySurface>;
 using QlZeroCouponInflationSwap = shared_ptr<ZeroCouponInflationSwap>;
@@ -1663,6 +1670,8 @@ QL_TRACE_NAME(QlYoYInflationCoupon)
 QL_TRACE_NAME(QlYoYInflationCouponPricer)
 QL_TRACE_NAME(QlYoYInflationIndex)
 QL_TRACE_NAME(QlYoYInflationTermStructure)
+QL_TRACE_NAME(QlPiecewiseYoYInflationCurve)
+QL_TRACE_NAME(QlPiecewiseZeroInflationCurve)
 QL_TRACE_NAME(QlYoYOptionletVolatilitySurface)
 QL_TRACE_NAME(QlZeroCouponInflationSwap)
 QL_TRACE_NAME(QlZeroCouponSwap)

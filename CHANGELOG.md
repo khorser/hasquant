@@ -2,6 +2,13 @@
 
 - `QuantLib.Math` exports `Matrix`'s fields, so the matrices processes return (`stdDeviation`,
   `covariance`, `diffusion`) can be read without `QuantLib.Internal`.
+- Breaking: `piecewiseZeroInflationCurve` and `piecewiseYoyInflationCurve` return the new
+  `PiecewiseZeroInflationCurve` and `PiecewiseYoYInflationCurve` leaves, whose bootstrapped
+  nodes `zeroInflationNodes` and `yoyInflationNodes` read. `ZeroInflationTermStructure` and
+  `YoYInflationTermStructure` are now families (`GenZeroInflationTermStructure`,
+  `GenYoYInflationTermStructure`): rate, implied-quote and index inputs accept either leaf, and
+  `asZeroInflationTermStructure`/`asYoYInflationTermStructure` convert where a concrete type is
+  stored.
 
 ## 0.8.0.0 (2026)
 

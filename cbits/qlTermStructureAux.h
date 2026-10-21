@@ -266,7 +266,17 @@ QuantLib::DefaultLossModel* qlConstantLossModelAux(const QuantLib::Handle<QuantL
     QuantLib::LatentModelIntegrationType::LatentModelIntegrationType integralType,
     QuantLib::Size nVariables, const std::vector<QuantLib::Integer>& tOrders);
 
-QuantLib::ZeroInflationTermStructure *qlPiecewiseZeroInflationCurveAux(
+// A bootstrapped inflation curve and its (date, rate) nodes, read after bootstrapping.
+struct PiecewiseZeroInflationCurveHandle {
+  QuantLib::ext::shared_ptr<QuantLib::ZeroInflationTermStructure> curve;
+  std::function<std::vector<std::pair<QuantLib::Date, QuantLib::Real>>()> nodesFn;
+};
+struct PiecewiseYoYInflationCurveHandle {
+  QuantLib::ext::shared_ptr<QuantLib::YoYInflationTermStructure> curve;
+  std::function<std::vector<std::pair<QuantLib::Date, QuantLib::Real>>()> nodesFn;
+};
+
+PiecewiseZeroInflationCurveHandle *qlPiecewiseZeroInflationCurveAux(
     const QuantLib::Date &referenceDate,
     const QuantLib::Date &baseDate,
     QuantLib::Frequency frequency,
@@ -275,7 +285,7 @@ QuantLib::ZeroInflationTermStructure *qlPiecewiseZeroInflationCurveAux(
     const QuantLib::ext::shared_ptr<QuantLib::Seasonality>& seasonality,
     int interpolator, int approximator, int approximatorArg);
 
-QuantLib::YoYInflationTermStructure *qlPiecewiseYoYInflationCurveAux(
+PiecewiseYoYInflationCurveHandle *qlPiecewiseYoYInflationCurveAux(
     const QuantLib::Date &referenceDate,
     const QuantLib::Date &baseDate,
     QuantLib::Rate baseYoYRate,

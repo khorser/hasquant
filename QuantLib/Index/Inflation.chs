@@ -79,7 +79,7 @@ import QuantLib.Internal.Type
   ,`Frequency'
   ,fromEnumQuantity`(Int,TimeUnit)'& -- ^availabilityLag
   ,withCurrency*`Currency'
-  ,withMaybeZeroInflationTermStructure*`Maybe ZeroInflationTermStructure'
+  ,withMaybeZeroInflationTermStructure*`Maybe (GenZeroInflationTermStructure z)'
   ,preErrorCheck-`String'errorCheck*-}->`ZeroInflationIndex'peekZeroInflationIndex*#}
 
 -- |A custom quoted year-on-year inflation index (arbitrary family name/region/currency); needs
@@ -91,13 +91,13 @@ import QuantLib.Internal.Type
   ,`Frequency'
   ,fromEnumQuantity`(Int,TimeUnit)'& -- ^availabilityLag
   ,withCurrency*`Currency'
-  ,withMaybeYoYInflationTermStructure*`Maybe YoYInflationTermStructure'
+  ,withMaybeYoYInflationTermStructure*`Maybe (GenYoYInflationTermStructure y)'
   ,preErrorCheck-`String'errorCheck*-}->`YoYInflationIndex'peekYoYInflationIndex*#}
 
 -- |A year-on-year index defined as the ratio of an existing 'ZeroInflationIndex'\'s fixings;
 -- stores no fixings of its own.
 {#fun qlYoYInflationIndexFromZero as yoyInflationIndexFromZero{withZeroInflationIndex*`GenZeroInflationIndex zidx'
-  ,withMaybeYoYInflationTermStructure*`Maybe YoYInflationTermStructure'
+  ,withMaybeYoYInflationTermStructure*`Maybe (GenYoYInflationTermStructure y)'
   ,preErrorCheck-`String'errorCheck*-}->`YoYInflationIndex'peekYoYInflationIndex*#}
 
 -- |The (possibly forecast) fixing at the given date; for a date with no linked term
