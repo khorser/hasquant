@@ -4,7 +4,7 @@ module QuantLib.Math
   (
     -- * Types
     -- ** Matrices, vectors and grids
-    Matrix(..)
+    Matrix(Matrix)
   , RealMatrix
   , RealVector
   , NonEmptyVector
