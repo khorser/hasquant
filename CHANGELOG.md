@@ -1,7 +1,9 @@
 ## 0.9.0.0 (2026)
 
-- `QuantLib.Math` exports `Matrix`'s fields, so the matrices processes return (`stdDeviation`,
-  `covariance`, `diffusion`) can be read without `QuantLib.Internal`.
+- `QuantLib.Math` exports `Matrix` abstractly, with the `matrixRows`, `matrixColumns` and
+  `matrixData` inspectors, so matrices processes return (`stdDeviation`, `covariance`,
+  `diffusion`) can be read without `QuantLib.Internal`. Build one with `boxedRealMatrix` or
+  `objectMatrix`, which check its shape.
 - Breaking: `piecewiseZeroInflationCurve` and `piecewiseYoyInflationCurve` return the new
   `PiecewiseZeroInflationCurve` and `PiecewiseYoYInflationCurve` leaves, whose bootstrapped
   nodes `zeroInflationNodes` and `yoyInflationNodes` read. `ZeroInflationTermStructure` and
