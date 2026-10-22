@@ -15,7 +15,7 @@ import System.Exit (exitFailure)
 import qualified Data.Vector.Storable as V
 
 import QuantLib.InterestRate (VolatilityType(ShiftedLognormal))
-import QuantLib.Math (Matrix(..), RealMatrix, realMatrixFromVector, objectMatrix)
+import QuantLib.Math (Matrix, RealMatrix, realMatrixFromVector, objectMatrix)
 import qualified QuantLib.Quote as Q
 import QuantLib.TermStructure (referenceDate)
 import qualified QuantLib.TermStructure.Volatility as Vol
