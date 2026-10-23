@@ -1,5 +1,10 @@
 ## 0.9.0.0 (2026)
 
+- Breaking: matrix inspectors are ordinary functions rather than record fields. Replace
+  `m.matrixData` with `matrixData m` (and likewise for the other matrix inspectors), and import
+  inspectors explicitly instead of through `Matrix(..)` or `RealMatrix(..)`. Construct a new
+  matrix with the checked smart constructors instead of updating record fields.
+- QuantLib 1.44 is the default for development, documentation and release builds; 1.43 remains supported.
 - `QuantLib.Math` exports `Matrix` abstractly, with the `matrixRows`, `matrixColumns` and
   `matrixData` inspectors, so matrices processes return (`stdDeviation`, `covariance`,
   `diffusion`) can be read without `QuantLib.Internal`. Build one with `boxedRealMatrix` or

@@ -165,7 +165,7 @@ jobs:
               ;;
           esac
           opts="--project-file=$project --enable-tests -f buildExample -f buildSofrXva"
-          cmd="cabal update && cabal build all $opts && cabal test all $opts"
+          cmd="cabal update && cabal build all $opts && python3 tools/check-matrix-api.py --project-file=$project && cabal test all $opts"
 
           docker run --rm \
             -v "$PWD":/hasquant \

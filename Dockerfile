@@ -39,7 +39,7 @@ RUN wget https://github.com/boostorg/boost/releases/download/boost-${BOOST_VERSI
     make -j$(nproc) && \
     make install
 
-ARG QL_VERSION=1.43
+ARG QL_VERSION=1.44
 FROM boost-builder AS ql-builder
 ARG QL_VERSION
 WORKDIR /build/quantlib

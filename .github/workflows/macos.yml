@@ -43,5 +43,5 @@ jobs:
             9.10.3) project=cabal.project ;;
             *) project=cabal.project.unpinned ;;
           esac
-          opts="--project-file=$project --enable-tests -f buildExample -f buildSofrXva"
-          cabal build all $opts && cabal test all $opts
+          opts=(--project-file="$project" --enable-tests -f buildExample -f buildSofrXva)
+          cabal build all "${opts[@]}" && python3 tools/check-matrix-api.py --project-file="$project" && cabal test all "${opts[@]}"

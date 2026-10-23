@@ -26,7 +26,7 @@ s|docker: shell'
 
 # QuantLib installs for the make actions; override via the environment.
 QL_BREW=${QL_BREW:-/opt/homebrew/opt/quantlib}
-QL_OWN=${QL_OWN:-$HOME/opt/quantlib-1.43}
+QL_OWN=${QL_OWN:-$HOME/opt/quantlib-1.44}
 QL_HEAD=${QL_HEAD:-$HOME/Src/QuantLib}
 
 # Per-checkout object dir; holds a header-only cmake configure for ql/config.hpp.

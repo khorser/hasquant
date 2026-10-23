@@ -9,7 +9,7 @@ All paths below are relative to the repo root.
 
 ## Prerequisites
 
-QuantLib 1.43 or 1.44, GHCup, GHC 9.10.3 and Cabal are expected to be installed. `cabal.project` pins dependencies to Stackage lts-24.56; README.md's "Pinned dependencies" lists the other project files. The GHC 8.10 compatibility gate uses the repository's Docker Compose setup below.
+QuantLib 1.44 by default (1.43 remains supported), GHCup, GHC 9.10.3 and Cabal are expected to be installed. `cabal.project` pins dependencies to Stackage lts-24.56; README.md's "Pinned dependencies" lists the other project files. The GHC 8.10 compatibility gate uses the repository's Docker Compose setup below.
 
 ## Launcher
 
@@ -23,12 +23,13 @@ cabal build all --enable-tests         # full build; prefer through tools/quiet-
 
 # final gate: also compile the two flagged executables, as CI does
 tools/quiet-build.py cabal build all --enable-tests -f buildExample -f buildSofrXva
+python3 tools/check-matrix-api.py       # accessors compile; unchecked matrix updates do not
 ```
 
 Plain `make` uses the `quantlib-config` on `PATH`; `brew unlink quantlib` removes it. Pick a
 QuantLib with `QUANTLIB_CONFIG=<prefix>/bin/quantlib-config` (or raw `QL_CFLAGS`) and give each one
 its own `OBJDIR` so switching does not rebuild everything (`-MD` tracks QuantLib headers). `./q m`,
-`M` and `h` do this for Homebrew, the own install (`QL_OWN`, default `~/opt/quantlib-1.43`) and a
+`M` and `h` do this for Homebrew, the own install (`QL_OWN`, default `~/opt/quantlib-1.44`) and a
 head checkout (`QL_HEAD`, default `~/Src/QuantLib`; a header-only cmake configure under
 `cobj/head-<checkout>/` supplies `ql/config.hpp`). The head action builds whatever the checkout
 holds; pull it first. Use the same QuantLib installation as `cabal.project.local` to keep header

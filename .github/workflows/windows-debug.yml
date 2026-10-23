@@ -33,7 +33,7 @@ jobs:
     runs-on: windows-latest
 
     env:
-      QL_VERSION: "1.43"
+      QL_VERSION: "1.44"
       BOOST_INC: ${{ github.workspace }}\boost-inc
       QL_INSTALL: ${{ github.workspace }}\QuantLib-ghc
       GHC_VERSION: ${{ inputs.ghc }}

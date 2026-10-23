@@ -74,6 +74,11 @@ spec = do
     it "accepts matching boxed and contiguous shapes, including an empty matrix" $ do
       fmap matrixData (boxedRealMatrix 2 2 [1, 2, 3, 4]) `shouldBe` Right [1, 2, 3, 4]
       fmap realMatrixData (realMatrixFromVector 0 0 V.empty) `shouldBe` Right V.empty
+    it "preserves matrix Show output after making the inspectors ordinary functions" $ do
+      fmap show (boxedRealMatrix 1 2 [1, 2]) `shouldBe`
+        Right "Matrix {matrixRows = 1, matrixColumns = 2, matrixData = [1.0,2.0]}"
+      fmap show (realMatrixFromVector 1 2 (V.fromList [1, 2])) `shouldBe`
+        Right "RealMatrix {realMatrixRows = 1, realMatrixColumns = 2, realMatrixData = [1.0,2.0]}"
     it "rejects mismatched and overflowed shapes" $ do
       boxedRealMatrix 2 2 [1, 2, 3] `shouldBe` Left "Data length 3 does not match dimensions 2x2"
       realMatrixFromVector 2 2 (V.fromList [1, 2, 3]) `shouldBe` Left "Data length 3 does not match dimensions 2x2"

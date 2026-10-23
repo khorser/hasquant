@@ -1,7 +1,7 @@
 name: Docs
 
 # Builds Haddock API docs and an HPC coverage report (GHC 9.10.3 / QuantLib
-# 1.43, pinned to lts-24.56 by cabal.project) inside the existing
+# 1.44, pinned to lts-24.56 by cabal.project) inside the existing
 # hasquant-ci image from linux.yml, and publishes them to the gh-pages branch
 # root (docs) and gh-pages/coverage (HPC report), replacing previous contents.
 
@@ -18,7 +18,7 @@ jobs:
       packages: read
     env:
       GHC_VERSION: "9.10.3"
-      QL_VERSION: "1.43"
+      QL_VERSION: "1.44"
     steps:
       - uses: actions/checkout@v7
 

@@ -80,6 +80,12 @@ module QuantLib.Internal
   , peekPtrArray
   , Matrix(..)
   , RealMatrix(..)
+  , matrixRows
+  , matrixColumns
+  , matrixData
+  , realMatrixRows
+  , realMatrixColumns
+  , realMatrixData
   , boxedRealMatrix
   , realMatrixFromVector
   , objectMatrix
@@ -442,8 +448,26 @@ minDate = fromSerial qlMinDateSerialNumber
 maxDate :: Day
 maxDate = fromSerial qlMaxDateSerialNumber
 
-data Matrix a = Matrix {matrixRows::Word, matrixColumns::Word, matrixData::[a]}
-  deriving (Eq, Show)
+-- Public accessors must not be record fields: exported fields permit unchecked record updates.
+data Matrix a = Matrix Word Word [a]
+  deriving (Eq)
+
+instance Show a => Show (Matrix a) where
+  showsPrec p (Matrix r c d) = showParen (p > 10) $
+    showString "Matrix {matrixRows = " . shows r . showString ", matrixColumns = " . shows c
+      . showString ", matrixData = " . shows d . showChar '}'
+
+-- |Number of rows.
+matrixRows :: Matrix a -> Word
+matrixRows (Matrix r _ _) = r
+
+-- |Number of columns.
+matrixColumns :: Matrix a -> Word
+matrixColumns (Matrix _ c _) = c
+
+-- |Elements in row-major order.
+matrixData :: Matrix a -> [a]
+matrixData (Matrix _ _ d) = d
 
 -- |Row-major numeric matrix backed by contiguous storage.  Use this for
 -- large dense grids such as regression and volatility-surface data; small
@@ -457,12 +481,25 @@ data Matrix a = Matrix {matrixRows::Word, matrixColumns::Word, matrixData::[a]}
 -- The reverse conversion through @flatten@ is zero-copy only for a contiguous
 -- row-major hmatrix matrix; BLAS-produced or sliced matrices can require a
 -- reorder/copy.
-data RealMatrix = RealMatrix
-  { realMatrixRows :: Word
-  , realMatrixColumns :: Word
-  , realMatrixData :: RealVector
-  }
-  deriving (Eq, Show)
+data RealMatrix = RealMatrix Word Word RealVector
+  deriving (Eq)
+
+instance Show RealMatrix where
+  showsPrec p (RealMatrix r c d) = showParen (p > 10) $
+    showString "RealMatrix {realMatrixRows = " . shows r . showString ", realMatrixColumns = " . shows c
+      . showString ", realMatrixData = " . shows d . showChar '}'
+
+-- |Number of rows.
+realMatrixRows :: RealMatrix -> Word
+realMatrixRows (RealMatrix r _ _) = r
+
+-- |Number of columns.
+realMatrixColumns :: RealMatrix -> Word
+realMatrixColumns (RealMatrix _ c _) = c
+
+-- |Contiguous elements in row-major order.
+realMatrixData :: RealMatrix -> RealVector
+realMatrixData (RealMatrix _ _ d) = d
 
 -- |Construct a list-backed numeric matrix for small-dimensional APIs such as process
 -- correlation and diffusion matrices. Returns a boxed 'Matrix' 'Double', /not/ a

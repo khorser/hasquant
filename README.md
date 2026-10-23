@@ -26,7 +26,7 @@ Published package: https://hackage.haskell.org/package/hasquant. Current Haddock
 
 Add a `HACKAGE_TOKEN` repository secret containing an API token from a Hackage
 account with permission to upload `hasquant`. The Release workflow uses the existing
-Linux CI image (GHC 9.10.3 / QuantLib 1.43) to build source and Haddock tarballs.
+Linux CI image (GHC 9.10.3 / QuantLib 1.44) to build source and Haddock tarballs.
 
 1. Push a version tag matching `hasquant.cabal` (`v.0.8.0.0`, `v0.8.0.0`, or
    `0.8.0.0`), then dispatch **Release** from the default branch with that `tag`
@@ -135,15 +135,15 @@ but their upstream default. Newer validation may also apply there, and results c
 
 GHC 9.10 is the primary development version. GHC 8.10.6 (`base >= 4.14`) is the supported floor and is checked against Stackage lts-18.8. GitHub CI also tests with GHC 9.6.7, 9.8.4, 9.12.4, 9.14.1.
 
-Install QuantLib 1.43 or 1.44: [Linux](https://www.quantlib.org/install/linux.shtml), [macOS](https://www.quantlib.org/install/macosx.shtml), or [CMake](https://www.quantlib.org/install/cmake.shtml).
+QuantLib 1.44 is the default; 1.43 remains supported. Install either version: [Linux](https://www.quantlib.org/install/linux.shtml), [macOS](https://www.quantlib.org/install/macosx.shtml), or [CMake](https://www.quantlib.org/install/cmake.shtml).
 
 Linux and macOS are the primary, well-tested platforms. Windows builds work too, but QuantLib has to be rebuilt with GHC's own bundled Clang first — see [`WINDOWS.md`](WINDOWS.md) for the recipe.
 
 hasquant never uses intraday dates, so prefer a QuantLib built without `QL_HIGH_RESOLUTION_DATE` (check `ql/config.hpp`). With it, every `Date` operation goes through boost `posix_time`. In a GSR-calibration-heavy workload that was 59% of CPU, and turning it off cut run times from 309 s to 156 s and from 76 s to 28 s, with bit-identical results. Homebrew's formula turns it on (`--enable-intraday`); CMake leaves it off by default:
 
 ```
-cmake -S QuantLib-1.43 -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$HOME/opt/quantlib-1.43 \
-  -DCMAKE_INSTALL_NAME_DIR=$HOME/opt/quantlib-1.43/lib -DQL_BUILD_EXAMPLES=OFF -DQL_BUILD_TEST_SUITE=OFF
+cmake -S QuantLib-1.44 -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$HOME/opt/quantlib-1.44 \
+  -DCMAKE_INSTALL_NAME_DIR=$HOME/opt/quantlib-1.44/lib -DQL_BUILD_EXAMPLES=OFF -DQL_BUILD_TEST_SUITE=OFF
 cmake --build build -j && cmake --install build
 brew unlink quantlib
 ```

@@ -159,6 +159,10 @@ jobs:
         shell: pwsh
         run: cabal build all --enable-tests -f buildExample -f buildSofrXva
 
+      - name: Check public matrix API
+        shell: pwsh
+        run: python tools/check-matrix-api.py
+
       # Runs a stripped copy of the test binary, as a release build would, and keeps the
       # unstripped one for symbolizing crash offsets; stripping leaves section RVAs unchanged.
       - name: Stage test binaries

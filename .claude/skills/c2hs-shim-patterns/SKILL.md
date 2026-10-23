@@ -77,6 +77,14 @@ Rules:
   `PlainVanillaPayoff`'s type and strike, which is what the Haskell value already is. Delete
   those rather than wrapping them in an ADT.
 
+## Checked values and exported record fields
+
+Hiding a constructor does not prevent record updates when its field selectors are exported.
+For values whose dimensions or other invariants protect an FFI read, use positional internal
+constructors and ordinary public accessor functions, as with `Matrix` and `RealMatrix`.
+Keep checked smart constructors as the public construction path. Check both successful accessor
+calls and rejected record updates with compiled public-API probes.
+
 ## `{#pointer#}` flags and bare-backtick return specs
 
 **`{#pointer#}` flags decide what a bare-backtick `{#fun#}` return spec
