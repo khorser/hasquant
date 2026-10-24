@@ -831,6 +831,12 @@ list and export-list length.
   from being immediately adjacent to the documented `{#fun#}` (e.g. up near the module's
   `#include`s) so the comment is no longer preceded by a run of no-op pragmas.
 
+**A constructor doc written after a multi-line `-- ^` field doc joins that field's doc.** In a sum
+type whose first constructor documents positional fields with `-- ^`, a `-- |` placed on its own
+line before `| Next` renders as a trailing "|..." inside the previous field. Write the constructor
+docs after the separator instead: `= -- |doc` then the constructor on the next line, and likewise
+`| -- |doc` (see `PiecewiseVarianceNodes` in `QuantLib/TermStructure/Volatility.chs`).
+
 Check `nocode` pragma placement and first-`{#fun#}` position first when a rendered doc looks
 wrong; they're cheaper to spot than computing generated-line drift by hand. After any fix here,
 rebuild (`cabal haddock lib:hasquant`) and re-grep the specific rendered HTML for that

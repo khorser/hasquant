@@ -1927,8 +1927,8 @@ extendedBlackVarianceSurface d c ds s (Matrix mr mc md) = qlExtendedBlackVarianc
 --   (the intersection of the two enclosing sections' strikes between expiries; the section's own
 --   strikes at an expiry or beyond the end expiries) has to check them itself.
 piecewiseBlackVarianceSurface :: Day -- ^referenceDate: time origin of the surface and of every section
-  -> PiecewiseVarianceNodes
-  -> DayCounter
+  -> PiecewiseVarianceNodes -- ^nodes: expiry dates with their (strike, Black volatility) nodes
+  -> DayCounter -- ^dayCounter: year fractions from referenceDate for both the sections' standard deviations and the surface's time weights
   -> Bool -- ^extrapolate: enable extrapolation on the surface object
   -> IO BlackVolTermStructure
 piecewiseBlackVarianceSurface d nodes dc extrapolate = case nodes of
