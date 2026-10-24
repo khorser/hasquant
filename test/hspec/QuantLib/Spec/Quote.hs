@@ -1,19 +1,26 @@
 module QuantLib.Spec.Quote (spec) where
 
 import Control.Monad(forM_)
+import Data.Time.Calendar(Day, diffDays)
 
 import Test.Hspec
 
 import QuantLib.Quote
 import qualified QuantLib.Context as Context
 import QuantLib.Time.Calendar(calendar, CalendarConstructor(TARGET), advance, BusinessDayConvention(Following))
-import QuantLib.Time.Schedule(dayCounter, DayCounterConstructor(ActualActualISDA), Frequency(Annual), TimeUnit(Years))
+import QuantLib.Time.Date(december)
+import QuantLib.Time.Schedule(dayCounter, DayCounterConstructor(ActualActualISDA, Actual365FixedStandard), Frequency(Annual), TimeUnit(Years))
 import qualified QuantLib.InterestRate as IR
 import QuantLib.Index(fixing)
 import QuantLib.Index.InterestRate(iborIndex, IborConstructor(Euribor1Y))
-import QuantLib.TermStructure.Yield(Reference(..), flatForward)
-import QuantLib.PricingEngine(blackFormula)
-import QuantLib.Instrument.Option(OptionType(Call))
+import QuantLib.TermStructure(TermPoint(DatePoint))
+import QuantLib.TermStructure.Yield(Reference(..), flatForward, discount, relinkableYieldTermStructure)
+import qualified QuantLib.TermStructure.Yield as Yield
+import QuantLib.TermStructure.Volatility(CalendarReference(CalendarReferenceDate), blackConstantVol)
+import QuantLib.Process(blackScholesMertonProcess, ProcessDiscretization(EulerDiscretization))
+import QuantLib.Instrument(npv, setPricingEngine)
+import QuantLib.PricingEngine(blackFormula, analyticEuropeanEngine)
+import QuantLib.Instrument.Option(OptionType(Call), vanillaOption, PlainVanillaPayoff(..), StrikedPayoff(PlainVanilla), EuropeanExercise(..), Exercise(European))
 import QuantLib.Spec.Helpers(closePrec)
 
 -- The three upstream unary functions from test-suite/quotes.cpp:testDerived, and its values.
@@ -214,6 +221,87 @@ spec = do
       v' `shouldSatisfy` closePrec expected' 1.0e-15
       v' `shouldNotSatisfy` closePrec v 1.0e-9
       Context.collectGarbage
+
+  -- A settlement-dated spot S_V and its cash value S_d at the evaluation date d. Expected values
+  -- come from the flat continuous rates directly, not from the curves' discount factors.
+  describe "FX cash spot quote" $ do
+    let settle = 2 :: Word
+        spotV = 1.25
+        rd = 0.05
+        rf = 0.01
+        yf :: Day -> Day -> Double
+        yf from to = fromIntegral (diffDays to from) / 365
+        expectedCash d v s = s * exp (-(rd - rf) * yf d v)
+        withMarket d k = Context.keepingSettingsGc $ do
+          Context.setEvaluationDate (Just d)
+          dc <- dayCounter Actual365FixedStandard
+          cal <- calendar TARGET
+          spot <- simpleQuote spotV
+          rdQ <- simpleQuote rd
+          rfQ <- simpleQuote rf
+          dom <- flatForward (ReferenceDate d) rdQ dc IR.Continuous Annual
+          for <- flatForward (ReferenceDate d) rfQ dc IR.Continuous Annual
+          k dc cal spot rdQ dom for
+    it "discounts a settlement spot back over the spot lag, across a holiday" $
+      -- 23 Dec 2026 + 2 TARGET days skips Christmas and the weekend: V = 28 Dec 2026.
+      withMarket (23 `december` 2026) $ \_ cal spot _ dom for -> do
+        let d = 23 `december` 2026
+            v = 28 `december` 2026
+        cash <- fxCashSpotQuote spot dom for cal settle >>= value
+        cash `shouldSatisfy` closePrec (expectedCash d v spotV) 1.0e-14
+        cash `shouldSatisfy` (< spotV)
+        -- The forward to the settlement date reproduces the quoted spot.
+        pfV <- discount for (DatePoint v) False
+        pdV <- discount dom (DatePoint v) False
+        (cash * pfV / pdV) `shouldSatisfy` closePrec spotV 1.0e-14
+    it "returns the settlement spot itself with no lag on a business day" $
+      withMarket (23 `december` 2026) $ \_ cal spot _ dom for ->
+        (fxCashSpotQuote spot dom for cal 0 >>= value) `shouldReturn` spotV
+    it "follows the spot, a curve's rate and a relink, and restores exactly" $
+      withMarket (23 `december` 2026) $ \dc cal spot rdQ dom for -> do
+        domHandle <- relinkableYieldTermStructure (Just dom)
+        q <- fxCashSpotQuote spot domHandle for cal settle
+        base <- value q
+        _ <- setValue spot 1.30
+        value q >>= (`shouldSatisfy` (/= base))
+        _ <- setValue spot spotV
+        _ <- setValue rdQ 0.06
+        value q >>= (`shouldSatisfy` (/= base))
+        _ <- setValue rdQ rd
+        value q `shouldReturn` base
+        flatQ <- simpleQuote rf
+        flatDom <- flatForward (ReferenceDate (23 `december` 2026)) flatQ dc IR.Continuous Annual
+        Yield.linkTo domHandle flatDom
+        value q `shouldReturn` spotV
+        Yield.linkTo domHandle dom
+        value q `shouldReturn` base
+    it "recomputes the settlement date when the evaluation date rolls" $
+      withMarket (22 `december` 2026) $ \_ cal spot _ dom for -> do
+        q <- fxCashSpotQuote spot dom for cal settle
+        -- From 22 Dec, V = 24 Dec; from 23 Dec, V = 28 Dec.
+        value q >>= (`shouldSatisfy` closePrec (expectedCash (22 `december` 2026) (24 `december` 2026) spotV) 1.0e-14)
+        Context.setEvaluationDate (Just (23 `december` 2026))
+        value q >>= (`shouldSatisfy` closePrec (expectedCash (23 `december` 2026) (28 `december` 2026) spotV) 1.0e-14)
+    it "notifies a cached option price when a curve it reads moves" $
+      withMarket (23 `december` 2026) $ \dc cal spot rdQ dom for -> do
+        -- The process discounts on curves of its own, so only the quote reads rdQ.
+        q <- fxCashSpotQuote spot dom for cal settle
+        let d = 23 `december` 2026
+        procRd <- simpleQuote rd
+        procRf <- simpleQuote rf
+        procDom <- flatForward (ReferenceDate d) procRd dc IR.Continuous Annual
+        procFor <- flatForward (ReferenceDate d) procRf dc IR.Continuous Annual
+        volQ <- simpleQuote 0.10
+        vol <- blackConstantVol (CalendarReferenceDate d) cal volQ dc
+        process <- blackScholesMertonProcess q procFor procDom vol EulerDiscretization False
+        option <- vanillaOption (PlainVanilla (PlainVanillaPayoff Call 1.25)) (European (EuropeanExercise (23 `december` 2027)))
+        analyticEuropeanEngine process Nothing >>= setPricingEngine option
+        basePv <- npv option
+        _ <- setValue rdQ 0.07
+        movedPv <- npv option
+        movedPv `shouldSatisfy` (< basePv)
+        _ <- setValue rdQ rd
+        npv option `shouldReturn` basePv
 
   describe "FuturesConvAdjustmentQuote" $
     it "futuresValue reports the futures quote's own value, independent of volatility/meanReversion" $ do

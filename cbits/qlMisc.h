@@ -172,6 +172,7 @@ extern "C" {
 
   // Quote composition. The op forms select a functor from the QuoteOp/MultiQuoteOp catalogue in
   // qlEnumObjects.h; DerivedQuote's is applied as `x op operand'.
+  QlQuote* qlFxCashSpotQuote(QlQuote* settlementSpot, QlYieldTermStructure* domesticTS, QlYieldTermStructure* foreignTS, Calendar* calendar, unsigned settlementDays, QlError **e);
   QlQuote* qlDerivedQuote(int op, QlQuote* element, double operand, QlError **e);
   QlQuote* qlCompositeQuote(int op, QlQuote* element1, QlQuote* element2, QlError **e);
   QlQuote* qlMultiCompositeQuote(int op, unsigned elementsLen, QlQuote** elements, QlError **e);

@@ -26,6 +26,7 @@ module QuantLib.Quote
   , eurodollarFuturesImpliedStdDevQuote
   , forwardSwapQuote
   , forwardValueQuote
+  , fxCashSpotQuote
   , futuresConvAdjustmentQuoteFromImmCode
   , futuresConvAdjustmentQuote
   , impliedStdDevQuote
@@ -80,6 +81,8 @@ import QuantLib.Internal.Type
 {#pointer *QlDeltaVolQuote as DeltaVolQuote foreign -> CDeltaVolQuote' nocode#}
 {#pointer *QlFuturesConvAdjustmentQuote as FuturesConvAdjustmentQuote foreign -> CFuturesConvAdjustmentQuote' nocode#}
 {#pointer *QlRelinkableQuote as RelinkableQuote foreign -> CRelinkableQuote' nocode#}
+{#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure' nocode#}
+{#pointer *Calendar foreign -> CCalendar nocode#}
 
 -- |market element returning a stored value
 {#fun qlSimpleQuote as simpleQuote{`Double',preErrorCheck-`String'errorCheck*-}->`SimpleQuote'peekSimpleQuote*#}
@@ -122,6 +125,28 @@ import QuantLib.Internal.Type
 
 -- |forward value of an index as of a given fixing date
 {#fun qlForwardValueQuote as forwardValueQuote{withIndex*`GenIndex idx',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Quote'peekQuote*#}
+
+-- |The cash value, at the evaluation date @d@, of an FX spot quoted for settlement on
+-- @V = advance calendar d settlementDays Days@ (business days; with zero days, @d@ adjusted
+-- Following). Its value is
+--
+-- > S_d = S_V * (P_dom(V) / P_dom(d)) / (P_for(V) / P_for(d))
+--
+-- with @P@ each curve's discount factor, so a forward built from it,
+-- @S_d * (P_for(T) \/ P_for(d)) \/ (P_dom(T) \/ P_dom(d))@, equals @S_V@ at @T = V@. Use it as a
+-- Garman-Kohlhagen process's spot when the market quotes spot for settlement rather than cash.
+--
+-- This class is defined by hasquant, not QuantLib (which has no quote observing yield curves);
+-- QuantExt's @FxRateQuote@ is the prior art. It is live: it notifies its observers when the
+-- settlement spot, either curve (including a relink) or the evaluation date changes, and recomputes
+-- @V@ and every discount factor on each read. A read throws when a curve cannot discount to @d@, for
+-- instance when its reference date is after the evaluation date.
+{#fun qlFxCashSpotQuote as fxCashSpotQuote{withQuote*`GenQuote q' -- ^settlementSpot: @S_V@, domestic currency per unit of foreign, for settlement on @V@
+  ,withYieldTermStructure*`GenYieldTermStructure y1' -- ^domesticTS: discounting in the domestic (quote) currency
+  ,withYieldTermStructure*`GenYieldTermStructure y2' -- ^foreignTS: discounting in the foreign (base) currency
+  ,withCalendar*`Calendar' -- ^settlementCalendar: business days that set @V@
+  ,fromIntegral`Word' -- ^settlementDays: spot lag in business days from the evaluation date
+  ,preErrorCheck-`String'errorCheck*-}->`Quote'peekQuote*#}
 
 -- |futures-convexity adjustment for an Ibor future identified by its IMM code
 {#fun qlFuturesConvAdjustmentQuote1 as futuresConvAdjustmentQuoteFromImmCode{withIborIndex*`GenIborIndex ibor',`String' -- ^immCode

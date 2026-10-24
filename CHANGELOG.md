@@ -6,6 +6,10 @@
   between expiries. Pass `False` to keep the former behaviour. The surface's strike range is
   unbounded, so only this flag decides whether a section reads outside its strikes; the
   Haddock describes the domain a caller must check itself.
+- Added `fxCashSpotQuote`, the cash value at the evaluation date of an FX spot quoted for
+  settlement after a business-day lag. It is defined by hasquant rather than QuantLib, which
+  has no quote observing yield curves, and it stays live in the spot, both curves, relinks and
+  the evaluation date.
 - Breaking: matrix inspectors are ordinary functions rather than record fields. Replace
   `m.matrixData` with `matrixData m` (and likewise for the other matrix inspectors), and import
   inspectors explicitly instead of through `Matrix(..)` or `RealMatrix(..)`. Construct a new

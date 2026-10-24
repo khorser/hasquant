@@ -172,6 +172,38 @@ namespace {
   };
   using HsMultiCompositeQuote = MultiCompositeQuote<HsArrayFun>;
 
+  // A hasquant-defined quote: QuantLib has none that observes yield curves. It turns an FX spot
+  // quoted for settlement V = calendar.advance(d, lag, Days) into its cash value at the evaluation
+  // date d, S_V * (P_dom(V)/P_dom(d)) / (P_for(V)/P_for(d)), so that a forward
+  // S_d * (P_for(T)/P_for(d)) / (P_dom(T)/P_dom(d)) equals S_V at T = V. QuantExt's FxRateQuote is
+  // the prior art. value() reads the quote, both curves and the evaluation date on every call, so
+  // update() only forwards the notification and never re-enters QuantLib.
+  class FxCashSpotQuote : public Quote, public Observer {
+   public:
+    FxCashSpotQuote(const Handle<Quote>& settlementSpot, const Handle<YieldTermStructure>& domestic,
+                    const Handle<YieldTermStructure>& foreign, const Calendar& calendar, Natural lag)
+    : spot_(settlementSpot), domestic_(domestic), foreign_(foreign), calendar_(calendar), lag_(lag) {
+      registerWith(spot_);
+      registerWith(domestic_);
+      registerWith(foreign_);
+      registerWith(Settings::instance().evaluationDate());
+    }
+    Real value() const override {
+      QL_ENSURE(isValid(), "invalid FX cash spot quote: the settlement spot has no valid value");
+      const Date d = Settings::instance().evaluationDate();
+      const Date v = calendar_.advance(d, lag_, Days);
+      return spot_->value() * (domestic_->discount(v) / domestic_->discount(d))
+          / (foreign_->discount(v) / foreign_->discount(d));
+    }
+    bool isValid() const override {return !spot_.empty() && spot_->isValid();}
+    void update() override {notifyObservers();}
+   private:
+    Handle<Quote> spot_;
+    Handle<YieldTermStructure> domestic_, foreign_;
+    Calendar calendar_;
+    Natural lag_;
+  };
+
   RiskStatistics riskStats(unsigned n, double *xs) {
     RiskStatistics s;
     s.addSequence(xs, xs+n);
@@ -248,6 +280,7 @@ QL_TRACE_NAME(OpMultiCompositeQuote)
 QL_TRACE_NAME(HsDerivedQuote)
 QL_TRACE_NAME(HsCompositeQuote)
 QL_TRACE_NAME(HsMultiCompositeQuote)
+QL_TRACE_NAME(FxCashSpotQuote)
 QL_TRACE_NAME(SavedSettingsWithObservable)
 #endif
 
@@ -821,6 +854,9 @@ double qlFuturesConvAdjustmentQuoteFuturesValue(QlFuturesConvAdjustmentQuote *o,
   } catch (std::exception& er) {return handleException<double>(e, er);}}
 QlQuote* qlImpliedStdDevQuote(int optionType, QlQuote* forward, QlQuote* price, double strike, double guess, double accuracy, unsigned maxIter, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlQuote(shared_ptr<Quote>(alloc(new ImpliedStdDevQuote((Option::Type)optionType, *arg(forward), *arg(price), strike, guess, accuracy, maxIter)))));
+  } catch (std::exception& er) {return handleException<QlQuote*>(e, er);}}
+QlQuote* qlFxCashSpotQuote(QlQuote* settlementSpot, QlYieldTermStructure* domesticTS, QlYieldTermStructure* foreignTS, Calendar* calendar, unsigned settlementDays, QlError **e) { QlCallScope callbackScope(e);
+  try {return ret(new QlQuote(shared_ptr<Quote>(alloc(new FxCashSpotQuote(*arg(settlementSpot), *arg(domesticTS), *arg(foreignTS), *arg(calendar), settlementDays)))));
   } catch (std::exception& er) {return handleException<QlQuote*>(e, er);}}
 QlQuote* qlLastFixingQuote(QlIndex* index, QlError **e) { QlCallScope callbackScope(e);try {return ret(new QlQuote(shared_ptr<Quote>(alloc(new LastFixingQuote(*arg(index))))));} catch (std::exception& er) {return handleException<QlQuote*>(e, er);}}
 int qlQuoteIsValid(QlQuote* o, QlError **e) { QlCallScope callbackScope(e);try {return (*arg(o))->isValid();} catch (std::exception& er) {return handleException<int>(e, er);}}
