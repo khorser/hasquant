@@ -1,5 +1,11 @@
 ## 0.9.0.0 (2026)
 
+- Breaking: `piecewiseBlackVarianceSurface` takes its nodes as `PiecewiseVarianceNodes` and an
+  `extrapolate` flag. `VarianceGrid dates strikes vols` is the former rectangular grid;
+  `VarianceSlices` gives each expiry its own (strike, volatility) nodes, so strike sets can differ
+  between expiries. Pass `False` to keep the former behaviour. The surface's strike range is
+  unbounded, so only this flag decides whether a section reads outside its strikes; the
+  Haddock describes the domain a caller must check itself.
 - Breaking: matrix inspectors are ordinary functions rather than record fields. Replace
   `m.matrixData` with `matrixData m` (and likewise for the other matrix inspectors), and import
   inspectors explicitly instead of through `Matrix(..)` or `RealMatrix(..)`. Construct a new

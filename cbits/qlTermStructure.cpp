@@ -4,6 +4,7 @@
 #include <ql/termstructures/volatility/optionlet/strippedoptionletadapter.hpp>
 #include <ql/termstructures/volatility/optionlet/spreadedoptionletvol.hpp>
 #include <ql/termstructures/volatility/flatsmilesection.hpp>
+#include <ql/termstructures/volatility/interpolatedsmilesection.hpp>
 #include <ql/termstructures/volatility/spreadedsmilesection.hpp>
 #include <ql/termstructures/volatility/atmsmilesection.hpp>
 #include <ql/experimental/volatility/svismilesection.hpp>
@@ -1104,11 +1105,44 @@ QlBlackVolTermStructure* qlExtendedBlackVarianceSurface(int referenceDate, Calen
         (ExtendedBlackVarianceSurface::Extrapolation)lowerExtrapolation, (ExtendedBlackVarianceSurface::Extrapolation)upperExtrapolation)))));
 #endif
   } catch (std::exception& er) {return handleException<QlBlackVolTermStructure*>(e, er);}}
-QlBlackVolTermStructure* qlPiecewiseBlackVarianceSurface(int referenceDate, unsigned datesLen, int* dates, unsigned strikesLen, double* strikes, unsigned blackVolsRows, unsigned blackVolsCols, double* blackVols, DayCounter* dayCounter, QlError **e) { QlCallScope callbackScope(e);
+QlBlackVolTermStructure* qlPiecewiseBlackVarianceSurface(int referenceDate, unsigned datesLen, int* dates, unsigned strikesLen, double* strikes, unsigned blackVolsRows, unsigned blackVolsCols, double* blackVols, DayCounter* dayCounter, int extrapolate, QlError **e) { QlCallScope callbackScope(e);
   try {
-    return ret(new QlBlackVolTermStructure(shared_ptr<BlackVolTermStructure>(
-        PiecewiseBlackVarianceSurface::makeFromGrid(Date(referenceDate), qlDateVector(dates, datesLen),
-            std::vector<Real>(strikes, strikes+strikesLen), qlMatrix(blackVols, blackVolsRows, blackVolsCols), *arg(dayCounter)))));
+    auto ts = PiecewiseBlackVarianceSurface::makeFromGrid(Date(referenceDate), qlDateVector(dates, datesLen),
+        std::vector<Real>(strikes, strikes+strikesLen), qlMatrix(blackVols, blackVolsRows, blackVolsCols), *arg(dayCounter));
+    if (extrapolate) ts->enableExtrapolation();
+    return ret(new QlBlackVolTermStructure(shared_ptr<BlackVolTermStructure>(ts)));
+  } catch (std::exception& er) {return handleException<QlBlackVolTermStructure*>(e, er);}}
+// One InterpolatedSmileSection<Linear> per date, built exactly as makeFromGrid builds its columns
+// (stdDev = vol * sqrt(dc.yearFraction(referenceDate, date)), same reference date and day counter),
+// so every section's exercise time equals the surface's time to that date.
+QlBlackVolTermStructure* qlPiecewiseBlackVarianceSurfaceSlices(int referenceDate, unsigned datesLen, int* dates, unsigned slicesLen, unsigned* strikeLengths, double* strikes, double* blackVols, DayCounter* dayCounter, int extrapolate, QlError **e) { QlCallScope callbackScope(e);
+  try {
+    QL_REQUIRE(slicesLen == datesLen, "mismatch between " << datesLen << " dates and " << slicesLen << " smile slices");
+    const Date ref(referenceDate);
+    const std::vector<Date> ds = qlDateVector(dates, datesLen);
+    const DayCounter& dc = *arg(dayCounter);
+    std::vector<ext::shared_ptr<SmileSection>> sections;
+    sections.reserve(datesLen);
+    size_t offset = 0;
+    for (size_t j = 0; j < datesLen; ++j) {
+      const size_t n = strikeLengths[j];
+      QL_REQUIRE(n >= 2, "smile slice " << j << " (" << ds[j] << ") has " << n << " strike(s); linear interpolation needs at least 2");
+      std::vector<Real> ks(strikes + offset, strikes + offset + n);
+      for (size_t i = 1; i < n; ++i)
+        QL_REQUIRE(ks[i] > ks[i-1], "strikes of smile slice " << j << " (" << ds[j] << ") must be strictly increasing");
+      const Time t = dc.yearFraction(ref, ds[j]);
+      QL_REQUIRE(t > 0.0, "date " << ds[j] << " must be after reference date " << ref);
+      const Real sqrtT = std::sqrt(t);
+      std::vector<Real> stdDevs(n);
+      for (size_t i = 0; i < n; ++i)
+        stdDevs[i] = blackVols[offset + i] * sqrtT;
+      offset += n;
+      sections.push_back(ext::make_shared<InterpolatedSmileSection<Linear>>(
+          ds[j], std::move(ks), stdDevs, Null<Real>(), dc, Linear(), ref));
+    }
+    auto ts = allocShared(new PiecewiseBlackVarianceSurface(ref, ds, std::move(sections), dc));
+    if (extrapolate) ts->enableExtrapolation();
+    return ret(new QlBlackVolTermStructure(shared_ptr<BlackVolTermStructure>(ts)));
   } catch (std::exception& er) {return handleException<QlBlackVolTermStructure*>(e, er);}}
 void qlFreeBlackVolatilitySurfaceDelta(QlBlackVolatilitySurfaceDelta *o) {del(o);}
 QlBlackVolTermStructure* qlBlackVolatilitySurfaceDeltaAsBlackVolTermStructure(QlBlackVolatilitySurfaceDelta *o) {return ret(new QlBlackVolTermStructure(*arg(o)));}

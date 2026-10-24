@@ -336,6 +336,7 @@ namespace QuantLib {
   class NoConstraint;
   class NonstandardSwap;
   class NonstandardSwaption;
+  class PiecewiseBlackVarianceSurface;
   class FloatFloatSwap;
   class FloatFloatSwaption;
   class OISRateHelper;
@@ -708,6 +709,7 @@ using QuantLib::ZabrSwaptionVolatilityCube;
 using QuantLib::NoConstraint;
 using QuantLib::NonstandardSwap;
 using QuantLib::NonstandardSwaption;
+using QuantLib::PiecewiseBlackVarianceSurface;
 using QuantLib::FloatFloatSwap;
 using QuantLib::FloatFloatSwaption;
 using QuantLib::OISRateHelper;
@@ -1419,6 +1421,7 @@ QL_TRACE_NAME(OvernightIndexedSwapIndex)
 QL_TRACE_NAME(PaymentTerm)
 QL_TRACE_NAME(Payoff)
 QL_TRACE_NAME(PercentageStrikePayoff)
+QL_TRACE_NAME(PiecewiseBlackVarianceSurface)
 QL_TRACE_NAME(PiecewiseTimeDependentHestonModel)
 QL_TRACE_NAME(PlainVanillaPayoff)
 QL_TRACE_NAME(PolymorphicPathGenerator)

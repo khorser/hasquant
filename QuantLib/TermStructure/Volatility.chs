@@ -53,6 +53,7 @@ module QuantLib.TermStructure.Volatility
   , SmileInterpolationMethod(..)
   , BlackVolTimeExtrapolationType(..)
   , BlackVolatilitySurfaceDeltaOpts(..)
+  , PiecewiseVarianceNodes(..)
   , SabrInterpolatedSmileSectionOpts(..)
 
     -- ** Coordinates
@@ -387,6 +388,20 @@ data SabrVolatilitySpreadsMaturity
 data AtmStrikeMaturity
   = AtmStrikeDate !Day
   | AtmStrikeTenor !(Word, TimeUnit)
+  deriving (Eq, Show)
+
+-- |The smile sections of a 'piecewiseBlackVarianceSurface', one per expiry date. Dates must be
+-- strictly increasing and after the surface's reference date; each date's strikes must be strictly
+-- increasing. Volatilities are Black (lognormal) volatilities, not standard deviations.
+data PiecewiseVarianceNodes
+  = -- |One strike axis shared by every date, as upstream's @makeFromGrid@.
+    VarianceGrid
+      [Day] -- ^expiry dates, one matrix column each
+      [Double] -- ^strikes, one matrix row each
+      RealMatrix -- ^Black volatilities, rows indexed by strike and columns by date
+  | -- |Each expiry date with its own non-empty (strike, Black volatility) nodes, at least two per
+    -- date; the strike sets may differ between dates.
+    VarianceSlices (NonEmpty (Day, NonEmpty (Double, Double)))
   deriving (Eq, Show)
 
 -- SabrInterpolatedSmileSectionOpts bundles every trailing param
@@ -1892,17 +1907,39 @@ extendedBlackVarianceSurface :: Day -> Calendar -> [Day] -- ^dates
 extendedBlackVarianceSurface d c ds s (Matrix mr mc md) = qlExtendedBlackVarianceSurface d c ds s mr mc md
 {#fun qlExtendedBlackVarianceSurface{withDay*`Day',withCalendar*`Calendar',withDayArray*`[Day]'&,withDoubleArray*`[Double]'&,fromIntegral`Word',fromIntegral`Word',withQuoteArrayRaw*`[GenQuote q]',withDayCounter*`DayCounter',`ExtendedBlackVarianceSurfaceExtrapolation',`ExtendedBlackVarianceSurfaceExtrapolation',preErrorCheck-`String'errorCheck*-}->`BlackVolTermStructure'peekBlackVolTermStructure*#}
 
--- |Builds a Black volatility surface from a rectangular vol grid via
--- 'PiecewiseBlackVarianceSurface::makeFromGrid': one interpolated smile section per date
--- column, linear in total variance between columns -- a fixed interpolation scheme, unlike
--- 'blackVarianceSurface''s configurable 2-D interpolator.
-piecewiseBlackVarianceSurface :: Day -> [Day] -- ^dates
-  -> [Double] -- ^strikes
-  -> RealMatrix -- ^blackVols
+-- |A Black volatility surface built from one smile section per expiry date
+-- (@PiecewiseBlackVarianceSurface@). Each section interpolates volatility linearly in strike,
+-- holding standard deviations @vol * sqrt t@ where @t@ is the day counter's year fraction from the
+-- reference date to that expiry; the surface itself measures time with the same day counter and
+-- reference date, so a section's variance and the surface's time weights agree. Between two
+-- expiries the surface interpolates total variance linearly in time at the same absolute strike;
+-- before the first expiry and after the last it keeps that section's volatility flat.
+--
+-- Strike domain. The surface reports an unbounded strike range, so a query's own extrapolation
+-- flag (as in 'blackVol') never admits or rejects a strike; it only admits dates after the last
+-- expiry. The only strike check is on each section and follows the surface's @extrapolate@ flag:
+--
+-- * Without extrapolation, any section read outside its own strikes throws. At an interior expiry
+--   upstream also reads the /next/ section, weighted by zero, so a strike quoted only at that
+--   expiry throws if it lies outside the next section's strikes.
+-- * With extrapolation, every section extrapolates linearly in strike, floored at zero
+--   volatility, and nothing throws. A caller that must refuse strikes outside the quoted domain
+--   (the intersection of the two enclosing sections' strikes between expiries; the section's own
+--   strikes at an expiry or beyond the end expiries) has to check them itself.
+piecewiseBlackVarianceSurface :: Day -- ^referenceDate: time origin of the surface and of every section
+  -> PiecewiseVarianceNodes
   -> DayCounter
+  -> Bool -- ^extrapolate: enable extrapolation on the surface object
   -> IO BlackVolTermStructure
-piecewiseBlackVarianceSurface d ds s (RealMatrix mr mc md) dc = qlPiecewiseBlackVarianceSurface d ds s mr mc md dc
-{#fun qlPiecewiseBlackVarianceSurface{withDay*`Day',withDayArray*`[Day]'&,withDoubleArray*`[Double]'&,fromIntegral`Word',fromIntegral`Word',withRealVectorRaw*`RealVector',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`BlackVolTermStructure'peekBlackVolTermStructure*#}
+piecewiseBlackVarianceSurface d nodes dc extrapolate = case nodes of
+  VarianceGrid ds s (RealMatrix mr mc md) -> qlPiecewiseBlackVarianceSurface d ds s mr mc md dc extrapolate
+  VarianceSlices slices ->
+    let (dates, rows) = unzip (toList slices)
+        rowLists = map toList rows
+        (strikes, vols) = unzip (concat rowLists)
+    in qlPiecewiseBlackVarianceSurfaceSlices d dates (map length rowLists) strikes vols dc extrapolate
+{#fun qlPiecewiseBlackVarianceSurface{withDay*`Day',withDayArray*`[Day]'&,withDoubleArray*`[Double]'&,fromIntegral`Word',fromIntegral`Word',withRealVectorRaw*`RealVector',withDayCounter*`DayCounter',`Bool',preErrorCheck-`String'errorCheck*-}->`BlackVolTermStructure'peekBlackVolTermStructure*#}
+{#fun qlPiecewiseBlackVarianceSurfaceSlices{withDay*`Day',withDayArray*`[Day]'&,withIntArray*`[Int]'&,withDoubleArrayRaw*`[Double]',withDoubleArrayRaw*`[Double]',withDayCounter*`DayCounter',`Bool',preErrorCheck-`String'errorCheck*-}->`BlackVolTermStructure'peekBlackVolTermStructure*#}
 
 -- |A Black volatility surface parameterized by market deltas (put\/call deltas and, optionally,
 -- an ATM quote) rather than fixed strikes -- the standard FX vol quoting convention. Constructed

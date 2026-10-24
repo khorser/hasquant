@@ -2058,13 +2058,94 @@ spec = do
                 , 0.20, nodeVol
                 , 0.35, 0.32
                 ]
-          piecewise <- Vol.piecewiseBlackVarianceSurface refDate [otherDate, nodeDate]
-                         [80, 100, 120] volMatrix dc
+          piecewise <- Vol.piecewiseBlackVarianceSurface refDate
+                         (Vol.VarianceGrid [otherDate, nodeDate] [80, 100, 120] volMatrix) dc False
           q <- Quote.simpleQuote nodeVol
           flat <- Vol.blackConstantVol (Vol.CalendarReferenceDate refDate) cal q dc
           npvPiecewise <- mkNpv piecewise
           npvFlat <- mkNpv flat
           npvPiecewise `shouldSatisfy` closePrec npvFlat tolerance
+
+    describe "piecewise Black variance surface from strike slices" $ do
+      -- Upstream's testRaggedStrikeGrids/testExtrapolation fixtures (piecewiseblackvariancesurface.cpp),
+      -- with section variances computed here from linear vol interpolation in strike.
+      let refDate = 15 `january` 2026
+          d1 = 15 `july` 2026
+          dMid = 15 `october` 2026
+          d2 = 15 `january` 2027
+          yf d = fromIntegral (diffDays d refDate) / 365 :: Double
+          linear nodes k = case [(k0, v0, k1, v1) | ((k0, v0), (k1, v1)) <- zip nodes (drop 1 nodes), k <= k1] of
+            (k0, v0, k1, v1) : _ -> v0 + (v1 - v0) * (k - k0) / (k1 - k0)
+            [] -> let ((k0, v0), (k1, v1)) = (nodes !! (length nodes - 2), last nodes)
+                  in v0 + (v1 - v0) * (k - k0) / (k1 - k0)
+          sectionVar nodes d k = linear nodes k ^ (2 :: Int) * yf d
+          strikes1 = [(80, 0.30), (100, 0.20), (120, 0.18)] :: [(Double, Double)]
+          strikes2 = [(70, 0.35), (90, 0.25), (110, 0.22), (130, 0.20)] :: [(Double, Double)]
+          ragged = Vol.VarianceSlices [(d1, fromList strikes1), (d2, fromList strikes2)]
+          tolerance = 1.0e-12
+          outsideRange = \case
+            Context.CPlusPlusException message -> "outside the range" `isInfixOf` message
+            _ -> False
+      it "reprices each slice at its own strikes and refuses a strike outside an enclosing slice" $
+        Context.keepingSettingsGc $ do
+          Context.setEvaluationDate (Just refDate)
+          dc <- dayCounter Actual365FixedStandard
+          surface <- Vol.piecewiseBlackVarianceSurface refDate ragged dc False
+          forM_ ([(d1, strikes1), (d2, strikes2)] :: [(Day, [(Double, Double)])]) $ \(d, nodes) -> forM_ nodes $ \(k, v) ->
+            Vol.blackVolVariance surface (DatePoint d) k False
+              >>= (`shouldSatisfy` closePrec (v * v * yf d) tolerance)
+          -- 75 lies in the second slice's strikes but not the first's.
+          Vol.blackVolVariance surface (DatePoint dMid) 75 False `shouldThrow` outsideRange
+          -- The query's own extrapolation flag does not reach the section range check.
+          Vol.blackVolVariance surface (DatePoint dMid) 75 True `shouldThrow` outsideRange
+      it "interpolates total variance across slices with different strike sets when extrapolating" $
+        Context.keepingSettingsGc $ do
+          Context.setEvaluationDate (Just refDate)
+          dc <- dayCounter Actual365FixedStandard
+          surface <- Vol.piecewiseBlackVarianceSurface refDate ragged dc True
+          let alpha = (yf dMid - yf d1) / (yf d2 - yf d1)
+              var1 = sectionVar strikes1 d1 75
+              var2 = sectionVar strikes2 d2 75
+          Vol.blackVolVariance surface (DatePoint dMid) 75 False
+            >>= (`shouldSatisfy` closePrec (var1 + (var2 - var1) * alpha) tolerance)
+          forM_ ([70, 80, 90, 100, 110, 120, 130] :: [Double]) $ \k -> do
+            vars <- mapM (\d -> Vol.blackVolVariance surface (DatePoint d) k False) ([d1, dMid, d2] :: [Day])
+            and (zipWith (\a b -> a <= b + tolerance) vars (drop 1 vars)) `shouldBe` True
+      it "keeps the last slice's volatility flat beyond its date" $
+        Context.keepingSettingsGc $ do
+          Context.setEvaluationDate (Just refDate)
+          dc <- dayCounter Actual365FixedStandard
+          surface <- Vol.piecewiseBlackVarianceSurface refDate
+                       (Vol.VarianceSlices [(d1, [(90, 0.20), (110, 0.20)]), (d2, [(90, 0.30), (110, 0.30)])]) dc True
+          let beyond = 15 `january` 2028
+          Vol.blackVolVariance surface (DatePoint beyond) 100 True
+            >>= (`shouldSatisfy` closePrec (0.09 * yf beyond) tolerance)
+          Vol.blackVol surface (DatePoint beyond) 100 True >>= (`shouldSatisfy` closePrec 0.30 tolerance)
+      it "reads the next slice at an interior expiry, so only extrapolation admits a wing quoted there alone" $
+        Context.keepingSettingsGc $ do
+          Context.setEvaluationDate (Just refDate)
+          dc <- dayCounter Actual365FixedStandard
+          let wide = [(60, 0.32), (100, 0.20), (140, 0.24)] :: [(Double, Double)]
+              nodes = Vol.VarianceSlices
+                [(d1, [(70, 0.30), (130, 0.22)]), (dMid, fromList wide), (d2, [(80, 0.26), (120, 0.21)])]
+          strict <- Vol.piecewiseBlackVarianceSurface refDate nodes dc False
+          Vol.blackVol strict (DatePoint dMid) 65 False `shouldThrow` \case
+            Context.CPlusPlusException message -> "outside the range of smile section 2" `isInfixOf` message
+            _ -> False
+          extrapolating <- Vol.piecewiseBlackVarianceSurface refDate nodes dc True
+          Vol.blackVol extrapolating (DatePoint dMid) 65 False
+            >>= (`shouldSatisfy` closePrec (linear wide 65) tolerance)
+      it "refuses slices that cannot be interpolated" $
+        Context.keepingSettingsGc $ do
+          Context.setEvaluationDate (Just refDate)
+          dc <- dayCounter Actual365FixedStandard
+          let refused fragment nodes = Vol.piecewiseBlackVarianceSurface refDate (Vol.VarianceSlices nodes) dc False
+                `shouldThrow` \case
+                  Context.CPlusPlusException message -> fragment `isInfixOf` message
+                  _ -> False
+          refused "at least 2" [(d1, [(100, 0.2)])]
+          refused "strictly increasing" [(d1, [(100, 0.2), (100, 0.25)])]
+          refused "must be after reference date" [(refDate, [(90, 0.2), (110, 0.2)])]
 
     describe "extended Black variance surface" $
       it "rejects QuantLib <= 1.43 before entering its out-of-bounds implementation" $
