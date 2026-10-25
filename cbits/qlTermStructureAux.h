@@ -203,6 +203,11 @@ QuantLib::YieldTermStructure *qlPiecewiseSpreadYieldCurveGlobalBootstrapAux(
   double accuracy, const std::vector<double>& instrumentWeights, const QlCallback& initialGuess = {});
 
 // some credit stuff
+// A bootstrapped curve's type-erased base and a nodes closure over its trait and interpolator.
+struct PiecewiseDefaultCurveHandle {
+  QuantLib::ext::shared_ptr<QuantLib::DefaultProbabilityTermStructure> curve;
+  std::function<std::vector<std::pair<QuantLib::Date, QuantLib::Real>>()> nodesFn;
+};
 QuantLib::DefaultProbabilityTermStructure *qlInterpolatedDefaultDensityCurveAux(
             const std::vector<QuantLib::Date>& dates,
             const std::vector<double>& densities,
@@ -240,14 +245,14 @@ QuantLib::DefaultProbabilityTermStructure *qlInterpolatedSurvivalProbabilityCurv
             const std::vector<QuantLib::Date>& jumpDates,
             int interpolator, int approximator, int approximatorArg);
 
-QuantLib::DefaultProbabilityTermStructure* qlPiecewiseDefaultCurveAux(const QuantLib::Date &referenceDate,
+PiecewiseDefaultCurveHandle* qlPiecewiseDefaultCurveAux(const QuantLib::Date &referenceDate,
     const std::vector<QuantLib::ext::shared_ptr<QuantLib::DefaultProbabilityHelper> >& instruments,
     QuantLib::DayCounter& dayCounter,
     const std::vector<QuantLib::Handle<QuantLib::Quote> >& jumps, const std::vector<QuantLib::Date>& jumpDates,
     int trait,int interpolator, int approximator, int approximatorArg,
     const QlIterativeBootstrapOpts& bootstrapOpts);
 
-QuantLib::DefaultProbabilityTermStructure* qlPiecewiseDefaultCurveAux1(unsigned settlementDays,
+PiecewiseDefaultCurveHandle* qlPiecewiseDefaultCurveAux1(unsigned settlementDays,
     const QuantLib::Calendar& calendar,
     const std::vector<QuantLib::ext::shared_ptr<QuantLib::DefaultProbabilityHelper> >& instruments,
     QuantLib::DayCounter& dayCounter,

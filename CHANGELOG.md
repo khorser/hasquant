@@ -1,5 +1,12 @@
 ## 0.9.0.0 (2026)
 
+- Breaking: `piecewiseDefaultCurve` returns a `PiecewiseDefaultCurve`, a
+  `DefaultProbabilityTermStructure` leaf. Every curve argument still accepts it; convert with
+  `asDefaultProbabilityTermStructure` where a concrete `DefaultProbabilityTermStructure` is
+  stored. `defaultCurveNodes` reads its bootstrapped nodes: the reference date, then each
+  helper's pillar, with the value its trait interpolates. The interpolated curve of that trait
+  on these nodes is the same curve.
+
 - Breaking: hazard shifts use `shiftedHazardRateCurve` and `HazardRateShift`.
   Replace `spreadedHazardRateCurve base q` with `shiftedHazardRateCurve base
   (ParallelHazardShift q)`, and `factorSpreadedHazardRateCurve base q` with

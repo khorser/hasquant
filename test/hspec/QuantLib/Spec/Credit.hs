@@ -2,7 +2,7 @@ module QuantLib.Spec.Credit (spec) where
 
 import Control.Monad(forM, forM_, unless)
 import Test.Hspec
-import Data.List(isInfixOf)
+import Data.List(isInfixOf, uncons)
 import Data.List.NonEmpty(fromList)
 import Data.Time.Calendar(fromGregorian, addDays, addGregorianYearsClip)
 
@@ -548,6 +548,17 @@ spec = do
           setPricingEngine cds engine
           computed <- fairSpread cds
           computed `shouldSatisfy` closePrec quotedSpread 1.0e-6
+        -- the interpolated curve of the bootstrap's trait on its nodes is the same curve
+        nodes <- defaultCurveNodes curve
+        map fst nodes `shouldSatisfy` ((== Just refDate) . fmap fst . uncons)
+        length nodes `shouldBe` length spreads + 1
+        rebuilt <- case trait of
+          HazardRate -> interpolatedHazardRateCurve (fromList nodes) helperDc cal [] interpolation False
+          DefaultDensity -> interpolatedDefaultDensityCurve (fromList nodes) helperDc cal [] interpolation False
+          SurvivalProbability -> interpolatedSurvivalProbabilityCurve (fromList nodes) helperDc cal [] interpolation False
+        forM_ [addDays k refDate | k <- [0, 45, 365, 400, 1000, 1825]] $ \d -> do
+          expected <- survivalProbability curve (DatePoint d) False
+          survivalProbability rebuilt (DatePoint d) False >>= (`shouldBe` expected)
 
     it "supports retry/fallback settings for a distressed inverted spread curve" $ Context.keepingSettingsGc $ do
       let asof = fromGregorian 2020 4 1

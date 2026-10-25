@@ -18,6 +18,7 @@ module QuantLib.TermStructure.Credit
     GenDefaultProbabilityTermStructure
   , DefaultProbabilityTermStructure
   , AffineHazardRateCurve
+  , PiecewiseDefaultCurve
   , DefaultProbabilityHelper
 
     -- ** Coordinates
@@ -45,6 +46,7 @@ module QuantLib.TermStructure.Credit
   , interpolatedSurvivalProbabilityCurve
   , defaultIterativeBootstrapOpts
   , piecewiseDefaultCurve
+  , asDefaultProbabilityTermStructure
 
     -- * Inspectors
   , defaultProbability
@@ -55,6 +57,7 @@ module QuantLib.TermStructure.Credit
   , conditionalSurvivalProbability
   , impliedQuote
   , impliedQuoteOn
+  , defaultCurveNodes
   ) where
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"
@@ -73,6 +76,7 @@ import Data.List.NonEmpty(NonEmpty, toList)
 
 {#pointer *Calendar foreign -> CCalendar nocode#}
 {#pointer *QlDefaultProbabilityTermStructure as DefaultProbabilityTermStructure foreign -> CDefaultProbabilityTermStructure' nocode#}
+{#pointer *QlPiecewiseDefaultCurve as PiecewiseDefaultCurve foreign -> CPiecewiseDefaultCurve' nocode#}
 {#pointer *QlAffineHazardRateCurve as AffineHazardRateCurve foreign -> CAffineHazardRateCurve' nocode#}
 {#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure' nocode#}
 {#pointer *QlQuote as Quote foreign -> CQuote' nocode#}
@@ -323,7 +327,7 @@ piecewiseDefaultCurve :: Reference
   -> Interpolation -- ^interpolator
   -> IterativeBootstrapOpts -- ^bootstrap settings
   -> Bool -- ^extrapolate past the curve's max date
-  -> IO DefaultProbabilityTermStructure
+  -> IO PiecewiseDefaultCurve
 piecewiseDefaultCurve reference h dc q t i b ex = do
   curve <- case reference of
     ReferenceDate d -> uncurryNested (piecewiseDefaultCurve_ d hs dc qq qd t) (qlInterpolation i)
@@ -336,7 +340,16 @@ piecewiseDefaultCurve reference h dc q t i b ex = do
   pure curve
   where (qd, qq) = unzip q
         hs = toList h
-{#fun qlPiecewiseDefaultCurve as piecewiseDefaultCurve_{withDay*`Day',withDefaultProbabilityHelperArray*`[DefaultProbabilityHelper]'&,withDayCounter*`DayCounter',withQuoteArray*`[GenQuote q]'&,withDayArray*`[Day]'&,`ProbabilityTrait',`Int',`Int',`Int',`Double',`Double',`Double',fromIntegral`Word',`Double',`Double',`Bool',fromIntegral`Word',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`DefaultProbabilityTermStructure'peekDefaultProbabilityTermStructure*#}
-{#fun qlPiecewiseDefaultCurve1 as piecewiseDefaultCurve1_{fromIntegral`Word',withCalendar*`Calendar',withDefaultProbabilityHelperArray*`[DefaultProbabilityHelper]'&,withDayCounter*`DayCounter',withQuoteArray*`[GenQuote q]'&,withDayArray*`[Day]'&,`ProbabilityTrait',`Int',`Int',`Int',`Double',`Double',`Double',fromIntegral`Word',`Double',`Double',`Bool',fromIntegral`Word',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`DefaultProbabilityTermStructure'peekDefaultProbabilityTermStructure*#}
+{#fun qlPiecewiseDefaultCurve as piecewiseDefaultCurve_{withDay*`Day',withDefaultProbabilityHelperArray*`[DefaultProbabilityHelper]'&,withDayCounter*`DayCounter',withQuoteArray*`[GenQuote q]'&,withDayArray*`[Day]'&,`ProbabilityTrait',`Int',`Int',`Int',`Double',`Double',`Double',fromIntegral`Word',`Double',`Double',`Bool',fromIntegral`Word',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`PiecewiseDefaultCurve'peekPiecewiseDefaultCurve*#}
+{#fun qlPiecewiseDefaultCurve1 as piecewiseDefaultCurve1_{fromIntegral`Word',withCalendar*`Calendar',withDefaultProbabilityHelperArray*`[DefaultProbabilityHelper]'&,withDayCounter*`DayCounter',withQuoteArray*`[GenQuote q]'&,withDayArray*`[Day]'&,`ProbabilityTrait',`Int',`Int',`Int',`Double',`Double',`Double',fromIntegral`Word',`Double',`Double',`Bool',fromIntegral`Word',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`PiecewiseDefaultCurve'peekPiecewiseDefaultCurve*#}
+
+-- |A bootstrapped default-probability curve's nodes, bootstrapping it if it has not been: its
+-- reference date first, then each helper's pillar, each with the value its trait interpolates (a
+-- hazard rate, survival probability or default density). The interpolated curve of that trait on
+-- these nodes, with the bootstrap's day counter and interpolation, is the same curve.
+defaultCurveNodes :: PiecewiseDefaultCurve -> IO [(Day, Double)]
+defaultCurveNodes c = zip <$> qlPiecewiseDefaultCurveDates c <*> qlPiecewiseDefaultCurveData c
+{#fun qlPiecewiseDefaultCurveDates{withPiecewiseDefaultCurve*`PiecewiseDefaultCurve',preIntArray-`[Day]'&peekDayArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlPiecewiseDefaultCurveData{withPiecewiseDefaultCurve*`PiecewiseDefaultCurve',preDoubleArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

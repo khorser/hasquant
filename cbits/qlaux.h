@@ -1148,6 +1148,10 @@ struct PiecewiseYoYInflationCurveHandle;
 struct PiecewiseZeroInflationCurveHandle;
 using QlPiecewiseYoYInflationCurve = shared_ptr<PiecewiseYoYInflationCurveHandle>;
 using QlPiecewiseZeroInflationCurve = shared_ptr<PiecewiseZeroInflationCurveHandle>;
+// PiecewiseDefaultCurve<Traits, Interpolator> likewise: the handle keeps the type-erased curve and
+// a nodes closure over its trait and interpolator.
+struct PiecewiseDefaultCurveHandle;
+using QlPiecewiseDefaultCurve = shared_ptr<PiecewiseDefaultCurveHandle>;
 // A vol structure is a Handle, same reasoning as QlOptionletVolatilityStructure above.
 using QlYoYOptionletVolatilitySurface = Handle<YoYOptionletVolatilitySurface>;
 using QlZeroCouponInflationSwap = shared_ptr<ZeroCouponInflationSwap>;
@@ -1677,6 +1681,8 @@ QL_TRACE_NAME(QlPiecewiseYoYInflationCurve)
 QL_TRACE_NAME(QlPiecewiseZeroInflationCurve)
 QL_TRACE_NAME(PiecewiseYoYInflationCurveHandle)
 QL_TRACE_NAME(PiecewiseZeroInflationCurveHandle)
+QL_TRACE_NAME(QlPiecewiseDefaultCurve)
+QL_TRACE_NAME(PiecewiseDefaultCurveHandle)
 QL_TRACE_NAME(QlYoYOptionletVolatilitySurface)
 QL_TRACE_NAME(QlZeroCouponInflationSwap)
 QL_TRACE_NAME(QlZeroCouponSwap)

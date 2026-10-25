@@ -169,12 +169,12 @@ namespace {
   }
 
   template <class Build>
-  QlDefaultProbabilityTermStructure* piecewiseDefaultCurveImpl(Build&& build, QlError **e) { QlCallScope callbackScope(e);
+  QlPiecewiseDefaultCurve* piecewiseDefaultCurveImpl(Build&& build, QlError **e) { QlCallScope callbackScope(e);
     try {
       auto ts = allocShared(build());
-      return ret(new QlDefaultProbabilityTermStructure(ts));
+      return ret(new QlPiecewiseDefaultCurve(ts));
     } catch (std::exception& er) {
-      return handleException<QlDefaultProbabilityTermStructure*>(e, er);
+      return handleException<QlPiecewiseDefaultCurve*>(e, er);
     }
   }
 
@@ -1566,17 +1566,38 @@ QlDefaultProbabilityHelper* qlUpfrontCdsHelper(QlQuote* upfront, double runningS
   try {return ret(new QlDefaultProbabilityHelper(alloc(new UpfrontCdsHelper(*arg(upfront), runningSpread, Period(n, (TimeUnit)u), settlementDays, *arg(calendar), (Frequency)frequency, (BusinessDayConvention)paymentConvention, (DateGeneration::Rule)rule, *arg(dayCounter), recoveryRate, *arg(discountCurve), upfrontSettlementDays, settlesAccrual, paysAtDefaultTime,
             qlNullableDate(startDate), *arg(lastPeriodDayCounter), rebatesAccrual, (CreditDefaultSwap::PricingModel)model QL144_ARGS(qlNullableDate(tradeDate))))));
   } catch (std::exception& er) {return handleException<QlDefaultProbabilityHelper*>(e, er);}}
-QlDefaultProbabilityTermStructure* qlPiecewiseDefaultCurve(int referenceDate, unsigned instrumentsLen, QlDefaultProbabilityHelper** instruments, DayCounter* dayCounter, unsigned jumpsLen, QlQuote** jumps, unsigned jDatesLen, int* jumpDates, int trait, int interpolator, int approximator, int approximatorArg, double accuracy, double minValue, double maxValue, unsigned maxAttempts, double maxFactor, double minFactor, int dontThrow, unsigned dontThrowSteps, unsigned maxEvaluations, QlError **e) { QlCallScope callbackScope(e);
+QlPiecewiseDefaultCurve* qlPiecewiseDefaultCurve(int referenceDate, unsigned instrumentsLen, QlDefaultProbabilityHelper** instruments, DayCounter* dayCounter, unsigned jumpsLen, QlQuote** jumps, unsigned jDatesLen, int* jumpDates, int trait, int interpolator, int approximator, int approximatorArg, double accuracy, double minValue, double maxValue, unsigned maxAttempts, double maxFactor, double minFactor, int dontThrow, unsigned dontThrowSteps, unsigned maxEvaluations, QlError **e) { QlCallScope callbackScope(e);
   const auto b = bootstrapOpts(accuracy, minValue, maxValue, maxAttempts, maxFactor, minFactor, dontThrow, dontThrowSteps, maxEvaluations);
   return piecewiseDefaultCurveImpl([&] {
     return qlPiecewiseDefaultCurveAux(Date(referenceDate), qlVector(instruments, instrumentsLen), *arg(dayCounter), qlHandleVector(jumps, jumpsLen), qlDateVector(jumpDates, jDatesLen), trait, interpolator, approximator, approximatorArg, b);
   }, e);
 }
-QlDefaultProbabilityTermStructure* qlPiecewiseDefaultCurve1(unsigned settlementDays, Calendar *calendar, unsigned instrumentsLen, QlDefaultProbabilityHelper** instruments, DayCounter* dayCounter, unsigned jumpsLen, QlQuote** jumps, unsigned jDatesLen, int* jumpDates, int trait, int interpolator, int approximator, int approximatorArg, double accuracy, double minValue, double maxValue, unsigned maxAttempts, double maxFactor, double minFactor, int dontThrow, unsigned dontThrowSteps, unsigned maxEvaluations, QlError **e) { QlCallScope callbackScope(e);
+QlPiecewiseDefaultCurve* qlPiecewiseDefaultCurve1(unsigned settlementDays, Calendar *calendar, unsigned instrumentsLen, QlDefaultProbabilityHelper** instruments, DayCounter* dayCounter, unsigned jumpsLen, QlQuote** jumps, unsigned jDatesLen, int* jumpDates, int trait, int interpolator, int approximator, int approximatorArg, double accuracy, double minValue, double maxValue, unsigned maxAttempts, double maxFactor, double minFactor, int dontThrow, unsigned dontThrowSteps, unsigned maxEvaluations, QlError **e) { QlCallScope callbackScope(e);
   const auto b = bootstrapOpts(accuracy, minValue, maxValue, maxAttempts, maxFactor, minFactor, dontThrow, dontThrowSteps, maxEvaluations);
   return piecewiseDefaultCurveImpl([&] {
     return qlPiecewiseDefaultCurveAux1(settlementDays, *arg(calendar), qlVector(instruments, instrumentsLen), *arg(dayCounter), qlHandleVector(jumps, jumpsLen), qlDateVector(jumpDates, jDatesLen), trait, interpolator, approximator, approximatorArg, b);
   }, e);
+}
+void qlFreePiecewiseDefaultCurve(QlPiecewiseDefaultCurve *o) {del(o);}
+QlDefaultProbabilityTermStructure* qlPiecewiseDefaultCurveAsDefaultProbabilityTermStructure(QlPiecewiseDefaultCurve *o) {return ret(new QlDefaultProbabilityTermStructure((*arg(o))->curve));}
+// The nodes of a bootstrapped curve: reading them runs the bootstrap.
+void qlPiecewiseDefaultCurveDates(QlPiecewiseDefaultCurve *o, unsigned *count, int **days, QlError **e) { QlCallScope callbackScope(e);
+  *count = 0; *days = 0;
+  try {
+    const auto nodes = (*arg(o))->nodesFn();
+    int *ds = qlAllocateInts((unsigned)nodes.size());
+    for (size_t i = 0; i < nodes.size(); ++i) ds[i] = nodes[i].first.serialNumber();
+    *count = (unsigned)nodes.size(); *days = ds;
+  } catch (std::exception& er) {qlSetError(e, er.what());}
+}
+void qlPiecewiseDefaultCurveData(QlPiecewiseDefaultCurve *o, unsigned *count, double **values, QlError **e) { QlCallScope callbackScope(e);
+  *count = 0; *values = 0;
+  try {
+    const auto nodes = (*arg(o))->nodesFn();
+    double *vs = qlAllocateDoubles((unsigned)nodes.size());
+    for (size_t i = 0; i < nodes.size(); ++i) vs[i] = nodes[i].second;
+    *count = (unsigned)nodes.size(); *values = vs;
+  } catch (std::exception& er) {qlSetError(e, er.what());}
 }
 double qlDefaultProbabilityTermStructureDefaultDensity1(QlDefaultProbabilityTermStructure* o, double t, int extrapolate, QlError **e) { QlCallScope callbackScope(e);
   try {return (*arg(o))->defaultDensity(t, extrapolate);

@@ -528,19 +528,21 @@ Ret dispatchDefaultTrait(int trait, F&& make) {
 // The trait x interpolator product, with the entry-point-specific constructor prefix forwarded
 // as a variadic pack -- same shape as dispatchTrait's for PiecewiseYieldCurve above.
 template <class... Args>
-DefaultProbabilityTermStructure *makePiecewiseDefaultCurve(int trait, int interpolator,
+PiecewiseDefaultCurveHandle *makePiecewiseDefaultCurve(int trait, int interpolator,
     int approximator, int approximatorArg, const QlIterativeBootstrapOpts& b, Args&&... args) {
-  return dispatchDefaultTrait<DefaultProbabilityTermStructure*>(trait, [&](auto t) {
+  return dispatchDefaultTrait<PiecewiseDefaultCurveHandle*>(trait, [&](auto t) {
     using Trait = typename decltype(t)::type;
-    return dispatchInterpolation<DefaultProbabilityTermStructure*>(interpolator, approximator, approximatorArg,
+    return dispatchInterpolation<PiecewiseDefaultCurveHandle*>(interpolator, approximator, approximatorArg,
 [&](auto i) {
           using CurveType = PiecewiseDefaultCurve<Trait, decltype(i)>;
-          return new CurveType(std::forward<Args>(args)..., i, makeIterativeBootstrap<CurveType>(b));
+          auto curve = ext::make_shared<CurveType>(std::forward<Args>(args)..., i, makeIterativeBootstrap<CurveType>(b));
+          // PiecewiseDefaultCurve::nodes runs the bootstrap first.
+          return new PiecewiseDefaultCurveHandle{curve, [curve]{ return curve->nodes(); }};
         });
   });
 }
 
-DefaultProbabilityTermStructure* qlPiecewiseDefaultCurveAux(const Date &referenceDate,
+PiecewiseDefaultCurveHandle* qlPiecewiseDefaultCurveAux(const Date &referenceDate,
     const std::vector<shared_ptr<DefaultProbabilityHelper> >& instruments,
     DayCounter& dayCounter,
     const std::vector<Handle<Quote> >& jumps, const std::vector<Date>& jumpDates,
@@ -550,7 +552,7 @@ DefaultProbabilityTermStructure* qlPiecewiseDefaultCurveAux(const Date &referenc
       referenceDate, instruments, dayCounter, jumps, jumpDates);
 }
 
-DefaultProbabilityTermStructure* qlPiecewiseDefaultCurveAux1(unsigned settlementDays,
+PiecewiseDefaultCurveHandle* qlPiecewiseDefaultCurveAux1(unsigned settlementDays,
     const Calendar& calendar,
     const std::vector<shared_ptr<DefaultProbabilityHelper> >& instruments,
     DayCounter& dayCounter,
