@@ -255,13 +255,11 @@ Haskell-side HPC route above turns out insufficient.
   Run `hlint .`, not per-file linting of `.chs` inputs. Check a hint is type-correct before
   applying it; for a proven false positive, add a narrow `.hlint.yaml` exception with a short
   reason.
-- **`trackAllocations` needs the built C++ objects deleted, or it silently
-  does nothing.** `cabal build -f trackAllocations` does not recompile
-  `cxx-sources` when only a flag changes — it reports `Up to date` while producing a library
-  with no tracing in it. `touch cbits/*.cpp` and deleting
-  `dist-newstyle/.../build/cbits/*.o` did not trigger it; deleting the
-  whole `build/cbits` directory did. Confirm tracing is compiled in before
-  trusting an empty trace: `strings <built .o> | grep -c allocated`.
+- **Build `trackAllocations` from a fresh build directory.** Cabal can reuse
+  `cxx-sources` when only a flag changes. Use a fresh `--builddir` or remove
+  the complete package build tree; deleting only `build/cbits` may leave the
+  library cache valid. Confirm tracing before trusting an empty trace:
+  `strings <built .o> | grep -c allocated`.
 
   The trace destination is the `QLTRACK_ALLOCATIONS` **env var** when set,
   falling back to the compile-time path the flag bakes in. Pair the result
@@ -294,11 +292,11 @@ Haskell-side HPC route above turns out insufficient.
   `~/.ghc/<arch>/environments/default` instead, which is what the
   driver does.
 - **A stale build can pass tests against old generated code.** Editing a C
-  header (e.g. `cbits/qlEnumObjects.h`) without touching any `.chs` file
-  leaves `cabal build` silently stale: it does not track that a
-  `.chs` file's `#include`d header changed, so the build reports success
-  without re-running c2hs, and tests then pass against the *old* generated
-  code. Do a clean build if in doubt. This is exactly why the smoke
+  header (e.g. `cbits/qlEnumObjects.h`) can leave `cabal build` silently stale.
+  This affects both c2hs includes and C++ shim headers. Use a fresh `--builddir`
+  or remove the complete package build tree after header changes; removing only
+  `build/cbits` may not invalidate Cabal's library cache. Verify regenerated
+  bindings and C++ object timestamps before trusting the tests. This is exactly why the smoke
   scripts exist and why this driver is the harness to reach for after any
   enum/header-only change, not just `cabal test`.
 

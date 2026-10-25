@@ -35,7 +35,7 @@ $(OBJDIR)/qlTermStructureAux.o: cbits/qlTermStructureAux.cpp cbits/qlTermStructu
 
 $(OBJDIR)/qlPricingEngine.o: cbits/qlPricingEngine.cpp cbits/qlaux.h cbits/qlPricingEngine.h cbits/qlPricingEngineAux.h cbits/qlCheckedFdEngine.h cbits/qlExactMeanH1HwEngine.h | $(OBJDIR)
 
-$(OBJDIR)/qlTermStructure.o: cbits/qlTermStructure.cpp cbits/qlaux.h cbits/qlTermStructure.h cbits/qlTermStructureAux.h | $(OBJDIR)
+$(OBJDIR)/qlTermStructure.o: cbits/qlTermStructure.cpp cbits/qlaux.h cbits/qlTermStructure.h cbits/qlTermStructureAux.h cbits/qlShapedHazardCurve.h | $(OBJDIR)
 
 $(OBJDIR)/%.o: cbits/%.cpp cbits/qlaux.h cbits/qlStdCompat.h cbits/qlCallback.h cbits/qlCallback.hpp cbits/%.h | $(OBJDIR)
 	g++ -c $(CFLAGS) $(DEPFLAGS) $(EXTRA) -o $@ $<

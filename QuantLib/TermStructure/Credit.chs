@@ -1,3 +1,16 @@
+-- | Credit term structures and helpers.
+--
+-- = Hazard shifts #hazard-shifts#
+--
+-- 'shiftedHazardRateCurve' retains QuantLib's parallel and relative wrappers. Their
+-- survival calculation uses 48-point Gauss-Chebyshev quadrature, so even
+-- a constant hazard integrates with a small numerical error. For a flat annual
+-- hazard h, parallel survival is @exp(-k*h*t)@, with @k = pi\/(96*sin(pi\/96))@, rather
+-- than exp(-h*t). This numerical behavior is retained for compatibility.
+-- Parallel queries now refuse negative or non-finite resulting hazards, including
+-- during native survival integration, rather than returning invalid credit rates.
+-- Shaped shifts instead retain base survival and apply the exact interpolation
+-- primitive of their spread; see 'shiftedHazardRateCurve' for bounds and query checks.
 module QuantLib.TermStructure.Credit
   (
     -- * Types
@@ -12,15 +25,17 @@ module QuantLib.TermStructure.Credit
   , TermPoint(..)
   , TermInterval(..)
 
+    -- ** Hazard shifts
+  , HazardRateShift(..)
+
     -- ** Bootstrap configuration
   , ProbabilityTrait(..)
   , IterativeBootstrapOpts(..)
 
     -- * Constructors
     -- ** Flat and spreaded curves
-  , factorSpreadedHazardRateCurve
+  , shiftedHazardRateCurve
   , flatHazardRate
-  , spreadedHazardRateCurve
     -- ** Helpers and bootstrapped curves
   , spreadCdsHelper
   , upfrontCdsHelper
@@ -64,8 +79,59 @@ import Data.List.NonEmpty(NonEmpty, toList)
 {#pointer *QlDefaultProbabilityHelper as DefaultProbabilityHelper foreign -> CDefaultProbabilityHelper nocode#}
 {#pointer *QlOneFactorAffineModel as OneFactorAffineModel foreign -> COneFactorAffineModel' nocode#}
 
--- |a curve whose hazard rate is another curve's, scaled by a spread factor
-{#fun qlFactorSpreadedHazardRateCurve as factorSpreadedHazardRateCurve{withDefaultProbabilityTermStructure*`GenDefaultProbabilityTermStructure d',withQuote*`GenQuote q',preErrorCheck-`String'errorCheck*-}->`DefaultProbabilityTermStructure'peekDefaultProbabilityTermStructure*#}
+-- | A live shift of a credit curve. Spreads are annual continuous hazard fractions;
+-- relative operands are dimensionless (0.01 means multiplying hazards by 1.01).
+data HazardRateShift q
+  = -- | QuantLib's additive parallel hazard wrapper.
+    ParallelHazardShift (GenQuote q) -- ^Annual additive spread quote.
+  | -- | QuantLib's relative hazard wrapper.
+    RelativeHazardShift (GenQuote q) -- ^Fractional change quote, normally at least -1.
+  | -- | Linear spread in curve time between dates, flat outside the grid.
+    KeyRateHazardShifts (NonEmpty (Day, GenQuote q)) -- ^Strictly increasing dates after the underlying reference date, paired with annual spread quotes.
+  | -- | Constant spread on [previous end, end), zero at and after the last end.
+    BucketHazardShifts (NonEmpty (Day, GenQuote q)) -- ^Strictly increasing period ends after the underlying reference date, paired with annual spread quotes; the first period starts at that reference date.
+
+-- | Apply a live hazard shift, retaining the underlying reference date, day counter,
+-- calendar and maximum date. The underlying and all quotes remain observed.
+--
+-- Parallel and relative shifts retain QuantLib's original wrappers and numerical
+-- integration; parallel queries additionally check finite nonnegative hazards.
+-- The shaped adapter is defined by hasquant: it adds the spread to
+-- the underlying hazard and multiplies underlying survival by
+-- @exp(-integral spread dt)@. QuantLib's linear/forward-flat interpolation primitives
+-- integrate the spread exactly, so bucket boundaries introduce no survival jumps
+-- and the accumulated change remains after the last bucket. The base curve is
+-- never sampled or re-interpolated. Curve times use its own day counter.
+--
+-- Shaped queries refuse non-finite spreads, negative or non-finite resulting hazards,
+-- and non-finite survival probabilities or values outside [0,1]. Multiplication
+-- roundoff at most four machine epsilons above one is clamped to one, so exactly
+-- zero hazards are not refused because @exp(-x) * exp(x)@ rounded upward.
+-- Survival queries
+-- check their endpoint and both sides of earlier spread knots; this is not a proof
+-- of positivity at every point of an arbitrary underlying curve. Underflow and
+-- overflow of the exponential correction remain native floating-point limits.
+shiftedHazardRateCurve
+  :: GenDefaultProbabilityTermStructure d -- ^Underlying credit curve.
+  -> HazardRateShift q -- ^Live shift quotes and, for shapes, their date grid.
+  -> IO DefaultProbabilityTermStructure
+shiftedHazardRateCurve base shift = case shift of
+  ParallelHazardShift q -> parallelHazardRateCurveRaw base q
+  RelativeHazardShift q -> relativeHazardRateCurveRaw base q
+  KeyRateHazardShifts nodes -> shaped False nodes
+  BucketHazardShifts nodes -> shaped True nodes
+  where
+    shaped buckets nodes = let (dates, quotes) = unzip (toList nodes)
+                          in shapedHazardRateCurveRaw base quotes dates buckets
+
+{#fun qlShapedHazardRateCurve as shapedHazardRateCurveRaw
+  {withDefaultProbabilityTermStructure*`GenDefaultProbabilityTermStructure d'
+  ,withQuoteArray*`[GenQuote q]'&
+  ,withDayArray*`[Day]'&
+  ,`Bool'
+  ,preErrorCheck-`String'errorCheck*-}->`DefaultProbabilityTermStructure'peekDefaultProbabilityTermStructure*#}
+
+{#fun qlFactorSpreadedHazardRateCurve as relativeHazardRateCurveRaw{withDefaultProbabilityTermStructure*`GenDefaultProbabilityTermStructure d',withQuote*`GenQuote q',preErrorCheck-`String'errorCheck*-}->`DefaultProbabilityTermStructure'peekDefaultProbabilityTermStructure*#}
 
 -- |Flat hazard-rate curve with either a fixed or evaluation-date-relative reference point.
 flatHazardRate :: Reference -> GenQuote q -> DayCounter -> IO DefaultProbabilityTermStructure
@@ -74,8 +140,7 @@ flatHazardRate (SettlementDays n cal) = flatHazardRateMovingRaw n cal
 {#fun qlFlatHazardRate1 as flatHazardRateMovingRaw{fromIntegral`Word',withCalendar*`Calendar',withQuote*`GenQuote q',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`DefaultProbabilityTermStructure'peekDefaultProbabilityTermStructure*#}
 {#fun qlFlatHazardRate as flatHazardRateFixed{withDay*`Day',withQuote*`GenQuote q',withDayCounter*`DayCounter',preErrorCheck-`String'errorCheck*-}->`DefaultProbabilityTermStructure'peekDefaultProbabilityTermStructure*#}
 
--- |a curve whose survival probability is another curve's, multiplied by a spread factor
-{#fun qlSpreadedHazardRateCurve as spreadedHazardRateCurve{withDefaultProbabilityTermStructure*`GenDefaultProbabilityTermStructure d',withQuote*`GenQuote q',preErrorCheck-`String'errorCheck*-}->`DefaultProbabilityTermStructure'peekDefaultProbabilityTermStructure*#}
+{#fun qlSpreadedHazardRateCurve as parallelHazardRateCurveRaw{withDefaultProbabilityTermStructure*`GenDefaultProbabilityTermStructure d',withQuote*`GenQuote q',preErrorCheck-`String'errorCheck*-}->`DefaultProbabilityTermStructure'peekDefaultProbabilityTermStructure*#}
 
 {#fun qlDefaultProbabilityTermStructureDefaultProbability as defaultProbabilityAtDateRaw{withDefaultProbabilityTermStructure*`GenDefaultProbabilityTermStructure d',withDay*`Day',`Bool' -- ^extrapolate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}

@@ -90,12 +90,15 @@ using QlRateHelper = shared_ptr<RateHelper>;
 using FittedBondDiscountCurveFittingMethod = FittedBondDiscountCurve::FittingMethod;
 #include "qlTermStructure.h"
 #include "qlTermStructureAux.h"
+#include "qlShapedHazardCurve.h"
 
 namespace hasquant {
 #include "qlEnumObjects.h"
 }
 
 #ifdef QLTRACK_ALLOCATIONS
+QL_TRACE_NAME(hasquant::ShapedHazardCurve)
+QL_TRACE_NAME(hasquant::CheckedParallelHazardCurve)
 QL_TRACE_NAME(DefaultProbabilityHelper)
 QL_TRACE_NAME(QlDefaultProbabilityHelper)
 QL_TRACE_NAME(RateHelper)
@@ -1512,8 +1515,17 @@ QlDefaultProbabilityTermStructure* qlFlatHazardRate1(unsigned settlementDays, Ca
 QlDefaultProbabilityTermStructure* qlFlatHazardRate(int referenceDate, QlQuote* hazardRate, DayCounter* x2, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlDefaultProbabilityTermStructure(alloc(new FlatHazardRate(Date(referenceDate), *arg(hazardRate), (*arg(x2))))));
   } catch (std::exception& er) {return handleException<QlDefaultProbabilityTermStructure*>(e, er);}}
+QlDefaultProbabilityTermStructure* qlShapedHazardRateCurve(QlDefaultProbabilityTermStructure* originalCurve,
+    unsigned spreadsLen, QlQuote** spreads, unsigned datesLen, int* dates, int buckets, QlError **e) { QlCallScope callbackScope(e);
+  try {
+    QL_REQUIRE(spreadsLen == datesLen, "hazard dates and spreads must match");
+    auto curve = allocShared(new hasquant::ShapedHazardCurve(Handle<DefaultProbabilityTermStructure>(*arg(originalCurve)),
+        qlDateVector(dates, datesLen), qlHandleVector(spreads, spreadsLen), buckets != 0));
+    return ret(new QlDefaultProbabilityTermStructure(curve));
+  } catch (std::exception& er) {return handleException<QlDefaultProbabilityTermStructure*>(e, er);}}
+
 QlDefaultProbabilityTermStructure* qlSpreadedHazardRateCurve(QlDefaultProbabilityTermStructure* originalCurve, QlQuote* spread, QlError **e) { QlCallScope callbackScope(e);
-  try {return ret(new QlDefaultProbabilityTermStructure(alloc(new SpreadedHazardRateCurve(Handle<DefaultProbabilityTermStructure>(*arg(originalCurve)), *arg(spread)))));
+  try {return ret(new QlDefaultProbabilityTermStructure(alloc(new hasquant::CheckedParallelHazardCurve(Handle<DefaultProbabilityTermStructure>(*arg(originalCurve)), *arg(spread)))));
   } catch (std::exception& er) {return handleException<QlDefaultProbabilityTermStructure*>(e, er);}}
 QlDefaultProbabilityTermStructure* qlInterpolatedDefaultDensityCurve(unsigned datesLen, int* dates, unsigned densitiesLen, double* densities, DayCounter* dayCounter, Calendar* calendar, unsigned jumpsLen, QlQuote** jumps, unsigned jDatesLen, int* jumpDates, int interpolator, int approximator, int approximatorArg, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlDefaultProbabilityTermStructure(alloc(qlInterpolatedDefaultDensityCurveAux(qlDateVector(dates, datesLen), std::vector<double>(densities, densities+densitiesLen), *arg(dayCounter), *arg(calendar), qlHandleVector(jumps, jumpsLen), qlDateVector(jumpDates, jDatesLen), interpolator, approximator, approximatorArg))));

@@ -2,6 +2,7 @@ module QuantLib.Spec.Credit (spec) where
 
 import Control.Monad(forM, forM_, unless)
 import Test.Hspec
+import Data.List(isInfixOf)
 import Data.List.NonEmpty(fromList)
 import Data.Time.Calendar(fromGregorian, addDays, addGregorianYearsClip)
 
@@ -32,6 +33,97 @@ import QuantLib.Spec.Helpers(closePrec, quantLibAtMost143, unsupportedQuantLib14
 -- the 'SyntheticCDO' test below.
 spec :: Spec
 spec = do
+  describe "live hazard shift shapes" $ do
+    it "keeps parallel and relative shifts on the native wrappers" $ Context.keepingSettingsGc $ do
+      let ref = fromGregorian 2025 1 2
+      dc <- dayCounter Actual365FixedStandard
+      q <- simpleQuote 0.02
+      base <- flatHazardRate (ReferenceDate ref) q dc
+      s <- simpleQuote 0.001
+      parallelCurve <- shiftedHazardRateCurve base (ParallelHazardShift s)
+      relative <- shiftedHazardRateCurve base (RelativeHazardShift s)
+      hazardRate parallelCurve (TimePoint 2) False `shouldReturn` 0.021
+      hazardRate relative (TimePoint 2) False `shouldReturn` (0.02 * 1.001)
+      let quadratureScale = pi / (96 * sin (pi / 96))
+      survivalProbability parallelCurve (TimePoint 2) False >>= (`shouldSatisfy` closePrec (exp (-0.042 * quadratureScale)) 1e-14)
+
+    it "integrates linear shifts exactly and observes base and node quotes after GC" $ Context.keepingSettingsGc $ do
+      let ref = fromGregorian 2025 1 2
+          day n = addDays (365 * n) ref
+      dc <- dayCounter Actual365FixedStandard
+      q <- simpleQuote 0.02
+      base <- flatHazardRate (ReferenceDate ref) q dc
+      s1 <- simpleQuote 0.001
+      s2 <- simpleQuote 0.003
+      curve <- shiftedHazardRateCurve base (KeyRateHazardShifts (fromList [(day 1,s1), (day 3,s2), (day 5,s1)]))
+      Context.collectGarbage
+      forM_ [(0,0.021), (0.5,0.021), (1,0.021), (2,0.022), (3,0.023), (4,0.022), (7,0.021)] $ \(t,h) ->
+        hazardRate curve (TimePoint t) False >>= (`shouldSatisfy` closePrec h 1e-14)
+      survivalProbability curve (TimePoint 2) False >>= (`shouldSatisfy` closePrec (exp (-0.0425)) 1e-14)
+      survivalProbability curve (TimePoint 6) False >>= (`shouldSatisfy` closePrec (exp (-0.13)) 1e-14)
+      _ <- setValue s2 0.001
+      hazardRate curve (TimePoint 2) False >>= (`shouldSatisfy` closePrec 0.021 1e-14)
+      _ <- setValue q 0.03
+      survivalProbability curve (TimePoint 2) False >>= (`shouldSatisfy` closePrec (exp (-0.062)) 1e-14)
+
+    it "gives shared boundaries to the next bucket and retains accumulated survival" $ Context.keepingSettingsGc $ do
+      let ref = fromGregorian 2025 1 2
+          day n = addDays (365 * n) ref
+      dc <- dayCounter Actual365FixedStandard
+      q <- simpleQuote 0.02
+      base <- flatHazardRate (ReferenceDate ref) q dc
+      s1 <- simpleQuote 0.001
+      s2 <- simpleQuote 0.003
+      curve <- shiftedHazardRateCurve base (BucketHazardShifts (fromList [(day 1,s1), (day 3,s2)]))
+      forM_ [(0,0.021), (0.999,0.021), (1,0.023), (2.999,0.023), (3,0.02), (4,0.02)] $ \(t,h) ->
+        hazardRate curve (TimePoint t) False >>= (`shouldSatisfy` closePrec h 1e-14)
+      survivalProbability curve (TimePoint 4) False >>= (`shouldSatisfy` closePrec (exp (-0.087)) 1e-14)
+      left <- survivalProbability curve (TimePoint (1 - 1e-10)) False
+      right <- survivalProbability curve (TimePoint (1 + 1e-10)) False
+      abs (left - right) `shouldSatisfy` (< 1e-10)
+      _ <- setValue s1 (-0.02)
+      _ <- setValue s2 (-0.02)
+      forM_ [0.002,0.017,0.02,0.5,1,2] $ \t -> do
+        hazardRate curve (TimePoint t) False `shouldReturn` 0
+        probability <- survivalProbability curve (TimePoint t) False
+        probability `shouldSatisfy` (\x -> x <= 1 && closePrec 1 1e-15 x)
+
+    it "refreshes grid times when the underlying reference date moves" $ Context.keepingSettingsGc $ do
+      let ref = fromGregorian 2025 1 2
+      Context.setEvaluationDate (Just ref)
+      cal <- calendar Null
+      dc <- dayCounter Actual365FixedStandard
+      q <- simpleQuote 0.02
+      base <- flatHazardRate (SettlementDays 0 cal) q dc
+      s1 <- simpleQuote 0.001
+      s2 <- simpleQuote 0.003
+      let start = addDays 365 ref
+          end = addDays 1095 ref
+      curve <- shiftedHazardRateCurve base (KeyRateHazardShifts (fromList [(start,s1), (end,s2)]))
+      hazardRate curve (DatePoint start) False >>= (`shouldSatisfy` closePrec 0.021 1e-14)
+      Context.setEvaluationDate (Just (addDays 30 ref))
+      hazardRate curve (DatePoint start) False >>= (`shouldSatisfy` closePrec 0.021 1e-14)
+      hazardRate curve (DatePoint end) False >>= (`shouldSatisfy` closePrec 0.023 1e-14)
+
+    it "rejects invalid grids, non-finite operands and negative hazards" $ Context.keepingSettingsGc $ do
+      let ref = fromGregorian 2025 1 2
+          end = addDays 365 ref
+          has message e = message `isInfixOf` show (e :: Context.Error)
+      dc <- dayCounter Actual365FixedStandard
+      q <- simpleQuote 0.02
+      base <- flatHazardRate (ReferenceDate ref) q dc
+      s <- simpleQuote (-0.03)
+      shiftedHazardRateCurve base (KeyRateHazardShifts (fromList [(ref,s)])) `shouldThrow` has "after the reference date"
+      shiftedHazardRateCurve base (BucketHazardShifts (fromList [(end,s), (end,s)])) `shouldThrow` has "after the reference date"
+      parallelCurve <- shiftedHazardRateCurve base (ParallelHazardShift s)
+      hazardRate parallelCurve (TimePoint 0.5) False `shouldThrow` has "nonnegative"
+      survivalProbability parallelCurve (TimePoint 2) False `shouldThrow` has "nonnegative"
+      curve <- shiftedHazardRateCurve base (BucketHazardShifts (fromList [(end,s)]))
+      hazardRate curve (TimePoint 0.5) False `shouldThrow` has "nonnegative"
+      survivalProbability curve (TimePoint 2) False `shouldThrow` has "nonnegative"
+      _ <- setValue s (1/0)
+      hazardRate curve (TimePoint 0.5) False `shouldThrow` has "spreads must be finite"
+
   describe "portfolio credit scaffolding (Pool, Issuer, Basket, GaussianLHPLossModel)" $ do
     it "wires a basket to a Gaussian LHP loss model over a small pool" $ Context.keepingSettingsGc $ do
       let refDate = fromGregorian 2006 8 31

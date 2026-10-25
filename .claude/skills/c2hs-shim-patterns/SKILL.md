@@ -927,3 +927,14 @@ On QuantLib 1.43, skip callback creation entirely, so ignored arguments cannot e
 `{#pointer *QlCallback nocode#}` hook, which would make generated FFI declarations refer to an
 undefined `QlCallback` Haskell type. C shim declarations belong before the closing
 `#ifdef __cplusplus` guard; declarations inside that guard are invisible to c2hs.
+
+
+## Hazard spread integration
+
+`QuantLib.TermStructure.Credit.shiftedHazardRateCurve` keeps upstream's parallel and relative
+wrappers. `HazardRateStructure::survivalProbabilityImpl` uses 48-point Gauss-Chebyshev quadrature;
+for constant hazards its integral carries the factor `pi/(96*sin(pi/96))`. Preserve that convention
+when comparing existing prices. The shaped adapter in `cbits/qlShapedHazardCurve.h` instead uses
+the base survival and QuantLib interpolation primitives for its spread: discontinuous buckets
+must not be integrated by one quadrature spanning their boundaries. Compare flat-curve controls
+with the explicit quadrature factor rather than widening a pricing tolerance without a reason.

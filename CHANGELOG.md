@@ -1,5 +1,14 @@
 ## 0.9.0.0 (2026)
 
+- Breaking: hazard shifts use `shiftedHazardRateCurve` and `HazardRateShift`.
+  Replace `spreadedHazardRateCurve base q` with `shiftedHazardRateCurve base
+  (ParallelHazardShift q)`, and `factorSpreadedHazardRateCurve base q` with
+  `shiftedHazardRateCurve base (RelativeHazardShift q)`. Those cases retain their native
+  numerical behavior; parallel queries now refuse negative or non-finite hazards.
+  `KeyRateHazardShifts` and `BucketHazardShifts` add live linear and square
+  spread shapes without re-interpolating the base curve; their survival correction uses
+  QuantLib interpolation primitives. Shaped queries refuse negative or non-finite hazards.
+
 - Breaking: `piecewiseBlackVarianceSurface` takes its nodes as `PiecewiseVarianceNodes` and an
   `extrapolate` flag. `VarianceGrid dates strikes vols` is the former rectangular grid;
   `VarianceSlices` gives each expiry its own (strike, volatility) nodes, so strike sets can differ
