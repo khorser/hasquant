@@ -2443,20 +2443,20 @@ span.spaces    { background: white }
 <span class="lineno"> 2424 </span> -&gt; (Maybe (GenYieldTermStructure y)) -- ^discountCurve
 <span class="lineno"> 2425 </span> -&gt; (Probabilities) -- ^probabilities
 <span class="lineno"> 2426 </span> -&gt; IO ((PricingEngine))
-<span class="lineno"> 2427 </span><span class="decl"><span class="nottickedoff">gaussian1dNonstandardSwaptionEngine a1 a2 a3 a4 a5 a6 a7 a8 =</span>
-<span class="lineno"> 2428 </span><span class="spaces">  </span><span class="nottickedoff">withStandalone a1 $ \a1' -&gt; </span>
-<span class="lineno"> 2429 </span><span class="spaces">  </span><span class="nottickedoff">let {a2' = fromIntegral a2} in </span>
-<span class="lineno"> 2430 </span><span class="spaces">  </span><span class="nottickedoff">let {a3' = realToFrac a3} in </span>
-<span class="lineno"> 2431 </span><span class="spaces">  </span><span class="nottickedoff">let {a4' = C2HSImp.fromBool a4} in </span>
-<span class="lineno"> 2432 </span><span class="spaces">  </span><span class="nottickedoff">let {a5' = C2HSImp.fromBool a5} in </span>
-<span class="lineno"> 2433 </span><span class="spaces">  </span><span class="nottickedoff">withMaybeQuote a6 $ \a6' -&gt; </span>
-<span class="lineno"> 2434 </span><span class="spaces">  </span><span class="nottickedoff">withMaybeYieldTermStructure a7 $ \a7' -&gt; </span>
-<span class="lineno"> 2435 </span><span class="spaces">  </span><span class="nottickedoff">let {a8' = (fromIntegral . fromEnum) a8} in </span>
-<span class="lineno"> 2436 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a9' -&gt; </span>
-<span class="lineno"> 2437 </span><span class="spaces">  </span><span class="nottickedoff">gaussian1dNonstandardSwaptionEngine'_ a1' a2' a3' a4' a5' a6' a7' a8' a9' &gt;&gt;= \res -&gt;</span>
-<span class="lineno"> 2438 </span><span class="spaces">  </span><span class="nottickedoff">peekPricingEngine res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno"> 2439 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a9'&gt;&gt;</span>
-<span class="lineno"> 2440 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno"> 2427 </span><span class="decl"><span class="istickedoff">gaussian1dNonstandardSwaptionEngine a1 a2 a3 a4 a5 a6 a7 a8 =</span>
+<span class="lineno"> 2428 </span><span class="spaces">  </span><span class="istickedoff">withStandalone a1 $ \a1' -&gt; </span>
+<span class="lineno"> 2429 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = fromIntegral a2} in </span>
+<span class="lineno"> 2430 </span><span class="spaces">  </span><span class="istickedoff">let {a3' = realToFrac a3} in </span>
+<span class="lineno"> 2431 </span><span class="spaces">  </span><span class="istickedoff">let {a4' = C2HSImp.fromBool a4} in </span>
+<span class="lineno"> 2432 </span><span class="spaces">  </span><span class="istickedoff">let {a5' = C2HSImp.fromBool a5} in </span>
+<span class="lineno"> 2433 </span><span class="spaces">  </span><span class="istickedoff">withMaybeQuote a6 $ \a6' -&gt; </span>
+<span class="lineno"> 2434 </span><span class="spaces">  </span><span class="istickedoff">withMaybeYieldTermStructure a7 $ \a7' -&gt; </span>
+<span class="lineno"> 2435 </span><span class="spaces">  </span><span class="istickedoff">let {a8' = (fromIntegral . fromEnum) a8} in </span>
+<span class="lineno"> 2436 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a9' -&gt; </span>
+<span class="lineno"> 2437 </span><span class="spaces">  </span><span class="istickedoff">gaussian1dNonstandardSwaptionEngine'_ a1' a2' a3' a4' a5' a6' a7' a8' a9' &gt;&gt;= \res -&gt;</span>
+<span class="lineno"> 2438 </span><span class="spaces">  </span><span class="istickedoff">peekPricingEngine res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno"> 2439 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a9'&gt;&gt;</span>
+<span class="lineno"> 2440 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
 <span class="lineno"> 2441 </span>
 <span class="lineno"> 2442 </span>
 <span class="lineno"> 2443 </span>
@@ -2493,13 +2493,13 @@ span.spaces    { background: white }
 <span class="lineno"> 2474 </span>-- |swaption pricing engine using Jamshidian's decomposition, for any one-factor Gaussian
 <span class="lineno"> 2475 </span>-- short-rate model. QuantLib 1.44 freezes a floating payment lag's convexity at time zero.
 <span class="lineno"> 2476 </span>gaussian1dJamshidianSwaptionEngine :: (Gaussian1dModel) -&gt; IO ((PricingEngine))
-<span class="lineno"> 2477 </span><span class="decl"><span class="nottickedoff">gaussian1dJamshidianSwaptionEngine a1 =</span>
-<span class="lineno"> 2478 </span><span class="spaces">  </span><span class="nottickedoff">withStandalone a1 $ \a1' -&gt; </span>
-<span class="lineno"> 2479 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a2' -&gt; </span>
-<span class="lineno"> 2480 </span><span class="spaces">  </span><span class="nottickedoff">gaussian1dJamshidianSwaptionEngine'_ a1' a2' &gt;&gt;= \res -&gt;</span>
-<span class="lineno"> 2481 </span><span class="spaces">  </span><span class="nottickedoff">peekPricingEngine res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno"> 2482 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a2'&gt;&gt;</span>
-<span class="lineno"> 2483 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno"> 2477 </span><span class="decl"><span class="istickedoff">gaussian1dJamshidianSwaptionEngine a1 =</span>
+<span class="lineno"> 2478 </span><span class="spaces">  </span><span class="istickedoff">withStandalone a1 $ \a1' -&gt; </span>
+<span class="lineno"> 2479 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
+<span class="lineno"> 2480 </span><span class="spaces">  </span><span class="istickedoff">gaussian1dJamshidianSwaptionEngine'_ a1' a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno"> 2481 </span><span class="spaces">  </span><span class="istickedoff">peekPricingEngine res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno"> 2482 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
+<span class="lineno"> 2483 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
 <span class="lineno"> 2484 </span>
 <span class="lineno"> 2485 </span>
 <span class="lineno"> 2486 </span>
@@ -5904,23 +5904,23 @@ span.spaces    { background: white }
 <span class="lineno"> 5885 </span>  | FourierExpSinh Double | FourierTanhSinh Double
 <span class="lineno"> 5886 </span>  deriving (<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Eq</span></span></span></span>, <span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Show</span></span></span></span></span></span>, <span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Read</span></span></span></span></span></span></span></span>)
 <span class="lineno"> 5887 </span>roughApproximation :: RoughHestonApproximation -&gt; (Int, Word)
-<span class="lineno"> 5888 </span><span class="decl"><span class="nottickedoff">roughApproximation AdamsPredictorCorrector = (0, 20)</span>
-<span class="lineno"> 5889 </span><span class="spaces"></span><span class="nottickedoff">roughApproximation Pade = (1, 20)</span>
-<span class="lineno"> 5890 </span><span class="spaces"></span><span class="nottickedoff">roughApproximation (Lifted factors) = (2, factors)</span></span>
+<span class="lineno"> 5888 </span><span class="decl"><span class="istickedoff">roughApproximation AdamsPredictorCorrector = (0, 20)</span>
+<span class="lineno"> 5889 </span><span class="spaces"></span><span class="istickedoff">roughApproximation Pade = (1, 20)</span>
+<span class="lineno"> 5890 </span><span class="spaces"></span><span class="istickedoff">roughApproximation (Lifted factors) = (2, factors)</span></span>
 <span class="lineno"> 5891 </span>fourierConfiguration :: FourierIntegration -&gt; (Int, Word, Double, Double, Bool)
-<span class="lineno"> 5892 </span><span class="decl"><span class="nottickedoff">fourierConfiguration integration = case integration of</span>
-<span class="lineno"> 5893 </span><span class="spaces">  </span><span class="nottickedoff">FourierGaussLaguerre n -&gt; (0, n, 0, 0, False)</span>
-<span class="lineno"> 5894 </span><span class="spaces">  </span><span class="nottickedoff">FourierGaussLegendre n -&gt; (1, n, 0, 0, False)</span>
-<span class="lineno"> 5895 </span><span class="spaces">  </span><span class="nottickedoff">FourierGaussChebyshev n -&gt; (2, n, 0, 0, False)</span>
-<span class="lineno"> 5896 </span><span class="spaces">  </span><span class="nottickedoff">FourierGaussChebyshev2nd n -&gt; (3, n, 0, 0, False)</span>
-<span class="lineno"> 5897 </span><span class="spaces">  </span><span class="nottickedoff">FourierGaussLobatto r a n c -&gt; (4, n, r, a, c)</span>
-<span class="lineno"> 5898 </span><span class="spaces">  </span><span class="nottickedoff">FourierGaussKronrod a n -&gt; (5, n, 0, a, False)</span>
-<span class="lineno"> 5899 </span><span class="spaces">  </span><span class="nottickedoff">FourierSimpson a n -&gt; (6, n, 0, a, False)</span>
-<span class="lineno"> 5900 </span><span class="spaces">  </span><span class="nottickedoff">FourierTrapezoid a n -&gt; (7, n, 0, a, False)</span>
-<span class="lineno"> 5901 </span><span class="spaces">  </span><span class="nottickedoff">FourierDiscreteSimpson n -&gt; (8, n, 0, 0, False)</span>
-<span class="lineno"> 5902 </span><span class="spaces">  </span><span class="nottickedoff">FourierDiscreteTrapezoid n -&gt; (9, n, 0, 0, False)</span>
-<span class="lineno"> 5903 </span><span class="spaces">  </span><span class="nottickedoff">FourierExpSinh r -&gt; (10, 0, r, 0, False)</span>
-<span class="lineno"> 5904 </span><span class="spaces">  </span><span class="nottickedoff">FourierTanhSinh r -&gt; (11, 0, r, 0, False)</span></span>
+<span class="lineno"> 5892 </span><span class="decl"><span class="istickedoff">fourierConfiguration integration = case integration of</span>
+<span class="lineno"> 5893 </span><span class="spaces">  </span><span class="istickedoff">FourierGaussLaguerre n -&gt; (0, n, 0, 0, False)</span>
+<span class="lineno"> 5894 </span><span class="spaces">  </span><span class="istickedoff">FourierGaussLegendre n -&gt; <span class="nottickedoff">(1, n, 0, 0, False)</span></span>
+<span class="lineno"> 5895 </span><span class="spaces">  </span><span class="istickedoff">FourierGaussChebyshev n -&gt; <span class="nottickedoff">(2, n, 0, 0, False)</span></span>
+<span class="lineno"> 5896 </span><span class="spaces">  </span><span class="istickedoff">FourierGaussChebyshev2nd n -&gt; <span class="nottickedoff">(3, n, 0, 0, False)</span></span>
+<span class="lineno"> 5897 </span><span class="spaces">  </span><span class="istickedoff">FourierGaussLobatto r a n c -&gt; (4, n, r, a, c)</span>
+<span class="lineno"> 5898 </span><span class="spaces">  </span><span class="istickedoff">FourierGaussKronrod a n -&gt; <span class="nottickedoff">(5, n, 0, a, False)</span></span>
+<span class="lineno"> 5899 </span><span class="spaces">  </span><span class="istickedoff">FourierSimpson a n -&gt; <span class="nottickedoff">(6, n, 0, a, False)</span></span>
+<span class="lineno"> 5900 </span><span class="spaces">  </span><span class="istickedoff">FourierTrapezoid a n -&gt; <span class="nottickedoff">(7, n, 0, a, False)</span></span>
+<span class="lineno"> 5901 </span><span class="spaces">  </span><span class="istickedoff">FourierDiscreteSimpson n -&gt; <span class="nottickedoff">(8, n, 0, 0, False)</span></span>
+<span class="lineno"> 5902 </span><span class="spaces">  </span><span class="istickedoff">FourierDiscreteTrapezoid n -&gt; <span class="nottickedoff">(9, n, 0, 0, False)</span></span>
+<span class="lineno"> 5903 </span><span class="spaces">  </span><span class="istickedoff">FourierExpSinh r -&gt; <span class="nottickedoff">(10, 0, r, 0, False)</span></span>
+<span class="lineno"> 5904 </span><span class="spaces">  </span><span class="istickedoff">FourierTanhSinh r -&gt; <span class="nottickedoff">(11, 0, r, 0, False)</span></span></span>
 <span class="lineno"> 5905 </span>
 <span class="lineno"> 5906 </span>-- |European vanilla engine with Gauss-Laguerre integration (1.44).
 <span class="lineno"> 5907 </span>-- Upstream defaults are order 128 and 256 Riccati steps; Adams costs O(steps^2).
@@ -5929,9 +5929,9 @@ span.spaces    { background: white }
 <span class="lineno"> 5910 </span>  -&gt; Word -- ^Riccati time steps
 <span class="lineno"> 5911 </span>  -&gt; RoughHestonApproximation -- ^Riccati approximation and lifted factor count
 <span class="lineno"> 5912 </span>  -&gt; IO AnalyticRoughHestonEngine
-<span class="lineno"> 5913 </span><span class="decl"><span class="nottickedoff">analyticRoughHestonEngine model order steps approximation =</span>
-<span class="lineno"> 5914 </span><span class="spaces">  </span><span class="nottickedoff">let (method, factors) = roughApproximation approximation</span>
-<span class="lineno"> 5915 </span><span class="spaces">  </span><span class="nottickedoff">in roughHestonEngineRaw model order steps method factors</span></span>
+<span class="lineno"> 5913 </span><span class="decl"><span class="istickedoff">analyticRoughHestonEngine model order steps approximation =</span>
+<span class="lineno"> 5914 </span><span class="spaces">  </span><span class="istickedoff">let (method, factors) = roughApproximation approximation</span>
+<span class="lineno"> 5915 </span><span class="spaces">  </span><span class="istickedoff">in roughHestonEngineRaw model order steps method factors</span></span>
 <span class="lineno"> 5916 </span>-- |Native fixed-order construction.
 <span class="lineno"> 5917 </span>roughHestonEngineRaw :: (RoughHestonModel) -- ^model
 <span class="lineno"> 5918 </span> -&gt; (Word) -- ^integrationOrder
@@ -5939,17 +5939,17 @@ span.spaces    { background: white }
 <span class="lineno"> 5920 </span> -&gt; (Int) -- ^approximation
 <span class="lineno"> 5921 </span> -&gt; (Word) -- ^nFactors
 <span class="lineno"> 5922 </span> -&gt; IO ((AnalyticRoughHestonEngine))
-<span class="lineno"> 5923 </span><span class="decl"><span class="nottickedoff">roughHestonEngineRaw a1 a2 a3 a4 a5 =</span>
-<span class="lineno"> 5924 </span><span class="spaces">  </span><span class="nottickedoff">withRoughHestonModel a1 $ \a1' -&gt; </span>
-<span class="lineno"> 5925 </span><span class="spaces">  </span><span class="nottickedoff">let {a2' = fromIntegral a2} in </span>
-<span class="lineno"> 5926 </span><span class="spaces">  </span><span class="nottickedoff">let {a3' = fromIntegral a3} in </span>
-<span class="lineno"> 5927 </span><span class="spaces">  </span><span class="nottickedoff">let {a4' = fromIntegral a4} in </span>
-<span class="lineno"> 5928 </span><span class="spaces">  </span><span class="nottickedoff">let {a5' = fromIntegral a5} in </span>
-<span class="lineno"> 5929 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a6' -&gt; </span>
-<span class="lineno"> 5930 </span><span class="spaces">  </span><span class="nottickedoff">roughHestonEngineRaw'_ a1' a2' a3' a4' a5' a6' &gt;&gt;= \res -&gt;</span>
-<span class="lineno"> 5931 </span><span class="spaces">  </span><span class="nottickedoff">peekAnalyticRoughHestonEngine res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno"> 5932 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a6'&gt;&gt;</span>
-<span class="lineno"> 5933 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno"> 5923 </span><span class="decl"><span class="istickedoff">roughHestonEngineRaw a1 a2 a3 a4 a5 =</span>
+<span class="lineno"> 5924 </span><span class="spaces">  </span><span class="istickedoff">withRoughHestonModel a1 $ \a1' -&gt; </span>
+<span class="lineno"> 5925 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = fromIntegral a2} in </span>
+<span class="lineno"> 5926 </span><span class="spaces">  </span><span class="istickedoff">let {a3' = fromIntegral a3} in </span>
+<span class="lineno"> 5927 </span><span class="spaces">  </span><span class="istickedoff">let {a4' = fromIntegral a4} in </span>
+<span class="lineno"> 5928 </span><span class="spaces">  </span><span class="istickedoff">let {a5' = fromIntegral a5} in </span>
+<span class="lineno"> 5929 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a6' -&gt; </span>
+<span class="lineno"> 5930 </span><span class="spaces">  </span><span class="istickedoff">roughHestonEngineRaw'_ a1' a2' a3' a4' a5' a6' &gt;&gt;= \res -&gt;</span>
+<span class="lineno"> 5931 </span><span class="spaces">  </span><span class="istickedoff">peekAnalyticRoughHestonEngine res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno"> 5932 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a6'&gt;&gt;</span>
+<span class="lineno"> 5933 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
 <span class="lineno"> 5934 </span>
 <span class="lineno"> 5935 </span>
 <span class="lineno"> 5936 </span>
@@ -5962,10 +5962,10 @@ span.spaces    { background: white }
 <span class="lineno"> 5943 </span>  -&gt; Double -- ^Dampening alpha, strictly between -1 and 0
 <span class="lineno"> 5944 </span>  -&gt; RoughHestonApproximation -- ^Riccati approximation and lifted factor count
 <span class="lineno"> 5945 </span>  -&gt; IO AnalyticRoughHestonEngine
-<span class="lineno"> 5946 </span><span class="decl"><span class="nottickedoff">analyticRoughHestonEngineWithIntegration model integration steps epsilon dampening approximation =</span>
-<span class="lineno"> 5947 </span><span class="spaces">  </span><span class="nottickedoff">let (algorithm, count, relative, absolute, convergence) = fourierConfiguration integration</span>
-<span class="lineno"> 5948 </span><span class="spaces">      </span><span class="nottickedoff">(method, factors) = roughApproximation approximation</span>
-<span class="lineno"> 5949 </span><span class="spaces">  </span><span class="nottickedoff">in roughHestonEngineIntegrationRaw model algorithm count relative absolute convergence steps epsilon dampening method factors</span></span>
+<span class="lineno"> 5946 </span><span class="decl"><span class="istickedoff">analyticRoughHestonEngineWithIntegration model integration steps epsilon dampening approximation =</span>
+<span class="lineno"> 5947 </span><span class="spaces">  </span><span class="istickedoff">let (algorithm, count, relative, absolute, convergence) = fourierConfiguration integration</span>
+<span class="lineno"> 5948 </span><span class="spaces">      </span><span class="istickedoff">(method, factors) = roughApproximation approximation</span>
+<span class="lineno"> 5949 </span><span class="spaces">  </span><span class="istickedoff">in roughHestonEngineIntegrationRaw model algorithm count relative absolute convergence steps epsilon dampening method factors</span></span>
 <span class="lineno"> 5950 </span>-- |Native integration construction.
 <span class="lineno"> 5951 </span>roughHestonEngineIntegrationRaw :: (RoughHestonModel) -- ^model
 <span class="lineno"> 5952 </span> -&gt; (Int) -- ^algorithm
@@ -5979,23 +5979,23 @@ span.spaces    { background: white }
 <span class="lineno"> 5960 </span> -&gt; (Int) -- ^approximation
 <span class="lineno"> 5961 </span> -&gt; (Word) -- ^nFactors
 <span class="lineno"> 5962 </span> -&gt; IO ((AnalyticRoughHestonEngine))
-<span class="lineno"> 5963 </span><span class="decl"><span class="nottickedoff">roughHestonEngineIntegrationRaw a1 a2 a3 a4 a5 a6 a7 a8 a9 a10 a11 =</span>
-<span class="lineno"> 5964 </span><span class="spaces">  </span><span class="nottickedoff">withRoughHestonModel a1 $ \a1' -&gt; </span>
-<span class="lineno"> 5965 </span><span class="spaces">  </span><span class="nottickedoff">let {a2' = fromIntegral a2} in </span>
-<span class="lineno"> 5966 </span><span class="spaces">  </span><span class="nottickedoff">let {a3' = fromIntegral a3} in </span>
-<span class="lineno"> 5967 </span><span class="spaces">  </span><span class="nottickedoff">let {a4' = realToFrac a4} in </span>
-<span class="lineno"> 5968 </span><span class="spaces">  </span><span class="nottickedoff">let {a5' = realToFrac a5} in </span>
-<span class="lineno"> 5969 </span><span class="spaces">  </span><span class="nottickedoff">let {a6' = C2HSImp.fromBool a6} in </span>
-<span class="lineno"> 5970 </span><span class="spaces">  </span><span class="nottickedoff">let {a7' = fromIntegral a7} in </span>
-<span class="lineno"> 5971 </span><span class="spaces">  </span><span class="nottickedoff">let {a8' = realToFrac a8} in </span>
-<span class="lineno"> 5972 </span><span class="spaces">  </span><span class="nottickedoff">let {a9' = realToFrac a9} in </span>
-<span class="lineno"> 5973 </span><span class="spaces">  </span><span class="nottickedoff">let {a10' = fromIntegral a10} in </span>
-<span class="lineno"> 5974 </span><span class="spaces">  </span><span class="nottickedoff">let {a11' = fromIntegral a11} in </span>
-<span class="lineno"> 5975 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a12' -&gt; </span>
-<span class="lineno"> 5976 </span><span class="spaces">  </span><span class="nottickedoff">roughHestonEngineIntegrationRaw'_ a1' a2' a3' a4' a5' a6' a7' a8' a9' a10' a11' a12' &gt;&gt;= \res -&gt;</span>
-<span class="lineno"> 5977 </span><span class="spaces">  </span><span class="nottickedoff">peekAnalyticRoughHestonEngine res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno"> 5978 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a12'&gt;&gt;</span>
-<span class="lineno"> 5979 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno"> 5963 </span><span class="decl"><span class="istickedoff">roughHestonEngineIntegrationRaw a1 a2 a3 a4 a5 a6 a7 a8 a9 a10 a11 =</span>
+<span class="lineno"> 5964 </span><span class="spaces">  </span><span class="istickedoff">withRoughHestonModel a1 $ \a1' -&gt; </span>
+<span class="lineno"> 5965 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = fromIntegral a2} in </span>
+<span class="lineno"> 5966 </span><span class="spaces">  </span><span class="istickedoff">let {a3' = fromIntegral a3} in </span>
+<span class="lineno"> 5967 </span><span class="spaces">  </span><span class="istickedoff">let {a4' = realToFrac a4} in </span>
+<span class="lineno"> 5968 </span><span class="spaces">  </span><span class="istickedoff">let {a5' = realToFrac a5} in </span>
+<span class="lineno"> 5969 </span><span class="spaces">  </span><span class="istickedoff">let {a6' = C2HSImp.fromBool a6} in </span>
+<span class="lineno"> 5970 </span><span class="spaces">  </span><span class="istickedoff">let {a7' = fromIntegral a7} in </span>
+<span class="lineno"> 5971 </span><span class="spaces">  </span><span class="istickedoff">let {a8' = realToFrac a8} in </span>
+<span class="lineno"> 5972 </span><span class="spaces">  </span><span class="istickedoff">let {a9' = realToFrac a9} in </span>
+<span class="lineno"> 5973 </span><span class="spaces">  </span><span class="istickedoff">let {a10' = fromIntegral a10} in </span>
+<span class="lineno"> 5974 </span><span class="spaces">  </span><span class="istickedoff">let {a11' = fromIntegral a11} in </span>
+<span class="lineno"> 5975 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a12' -&gt; </span>
+<span class="lineno"> 5976 </span><span class="spaces">  </span><span class="istickedoff">roughHestonEngineIntegrationRaw'_ a1' a2' a3' a4' a5' a6' a7' a8' a9' a10' a11' a12' &gt;&gt;= \res -&gt;</span>
+<span class="lineno"> 5977 </span><span class="spaces">  </span><span class="istickedoff">peekAnalyticRoughHestonEngine res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno"> 5978 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a12'&gt;&gt;</span>
+<span class="lineno"> 5979 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
 <span class="lineno"> 5980 </span>
 <span class="lineno"> 5981 </span>
 <span class="lineno"> 5982 </span>
@@ -6004,16 +6004,16 @@ span.spaces    { background: white }
 <span class="lineno"> 5985 </span> -&gt; (Complex Double) -- ^frequency
 <span class="lineno"> 5986 </span> -&gt; (Double) -- ^time
 <span class="lineno"> 5987 </span> -&gt; IO ((Complex Double))
-<span class="lineno"> 5988 </span><span class="decl"><span class="nottickedoff">roughHestonCharacteristicFunction a1 a2 a3 =</span>
-<span class="lineno"> 5989 </span><span class="spaces">  </span><span class="nottickedoff">withAnalyticRoughHestonEngine a1 $ \a1' -&gt; </span>
-<span class="lineno"> 5990 </span><span class="spaces">  </span><span class="nottickedoff">let {(a2'1, a2'2) = withComplex a2} in </span>
-<span class="lineno"> 5991 </span><span class="spaces">  </span><span class="nottickedoff">let {a3' = realToFrac a3} in </span>
-<span class="lineno"> 5992 </span><span class="spaces">  </span><span class="nottickedoff">preComplex $ \(a4'1, a4'2) -&gt; </span>
-<span class="lineno"> 5993 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a5' -&gt; </span>
-<span class="lineno"> 5994 </span><span class="spaces">  </span><span class="nottickedoff">roughHestonCharacteristicFunction'_ a1' a2'1  a2'2 a3' a4'1  a4'2 a5' &gt;&gt;</span>
-<span class="lineno"> 5995 </span><span class="spaces">  </span><span class="nottickedoff">peekComplex  a4'1  a4'2&gt;&gt;= \a4'' -&gt; </span>
-<span class="lineno"> 5996 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a5'&gt;&gt;</span>
-<span class="lineno"> 5997 </span><span class="spaces">  </span><span class="nottickedoff">return (a4'')</span></span>
+<span class="lineno"> 5988 </span><span class="decl"><span class="istickedoff">roughHestonCharacteristicFunction a1 a2 a3 =</span>
+<span class="lineno"> 5989 </span><span class="spaces">  </span><span class="istickedoff">withAnalyticRoughHestonEngine a1 $ \a1' -&gt; </span>
+<span class="lineno"> 5990 </span><span class="spaces">  </span><span class="istickedoff">let {(a2'1, a2'2) = withComplex a2} in </span>
+<span class="lineno"> 5991 </span><span class="spaces">  </span><span class="istickedoff">let {a3' = realToFrac a3} in </span>
+<span class="lineno"> 5992 </span><span class="spaces">  </span><span class="istickedoff">preComplex $ \(a4'1, a4'2) -&gt; </span>
+<span class="lineno"> 5993 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a5' -&gt; </span>
+<span class="lineno"> 5994 </span><span class="spaces">  </span><span class="istickedoff">roughHestonCharacteristicFunction'_ a1' a2'1  a2'2 a3' a4'1  a4'2 a5' &gt;&gt;</span>
+<span class="lineno"> 5995 </span><span class="spaces">  </span><span class="istickedoff">peekComplex  a4'1  a4'2&gt;&gt;= \a4'' -&gt; </span>
+<span class="lineno"> 5996 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a5'&gt;&gt;</span>
+<span class="lineno"> 5997 </span><span class="spaces">  </span><span class="istickedoff">return (a4'')</span></span>
 <span class="lineno"> 5998 </span>
 <span class="lineno"> 5999 </span>
 <span class="lineno"> 6000 </span>
@@ -6022,16 +6022,16 @@ span.spaces    { background: white }
 <span class="lineno"> 6003 </span> -&gt; (Complex Double) -- ^frequency
 <span class="lineno"> 6004 </span> -&gt; (Double) -- ^time
 <span class="lineno"> 6005 </span> -&gt; IO ((Complex Double))
-<span class="lineno"> 6006 </span><span class="decl"><span class="nottickedoff">roughHestonLogCharacteristicFunction a1 a2 a3 =</span>
-<span class="lineno"> 6007 </span><span class="spaces">  </span><span class="nottickedoff">withAnalyticRoughHestonEngine a1 $ \a1' -&gt; </span>
-<span class="lineno"> 6008 </span><span class="spaces">  </span><span class="nottickedoff">let {(a2'1, a2'2) = withComplex a2} in </span>
-<span class="lineno"> 6009 </span><span class="spaces">  </span><span class="nottickedoff">let {a3' = realToFrac a3} in </span>
-<span class="lineno"> 6010 </span><span class="spaces">  </span><span class="nottickedoff">preComplex $ \(a4'1, a4'2) -&gt; </span>
-<span class="lineno"> 6011 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a5' -&gt; </span>
-<span class="lineno"> 6012 </span><span class="spaces">  </span><span class="nottickedoff">roughHestonLogCharacteristicFunction'_ a1' a2'1  a2'2 a3' a4'1  a4'2 a5' &gt;&gt;</span>
-<span class="lineno"> 6013 </span><span class="spaces">  </span><span class="nottickedoff">peekComplex  a4'1  a4'2&gt;&gt;= \a4'' -&gt; </span>
-<span class="lineno"> 6014 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a5'&gt;&gt;</span>
-<span class="lineno"> 6015 </span><span class="spaces">  </span><span class="nottickedoff">return (a4'')</span></span>
+<span class="lineno"> 6006 </span><span class="decl"><span class="istickedoff">roughHestonLogCharacteristicFunction a1 a2 a3 =</span>
+<span class="lineno"> 6007 </span><span class="spaces">  </span><span class="istickedoff">withAnalyticRoughHestonEngine a1 $ \a1' -&gt; </span>
+<span class="lineno"> 6008 </span><span class="spaces">  </span><span class="istickedoff">let {(a2'1, a2'2) = withComplex a2} in </span>
+<span class="lineno"> 6009 </span><span class="spaces">  </span><span class="istickedoff">let {a3' = realToFrac a3} in </span>
+<span class="lineno"> 6010 </span><span class="spaces">  </span><span class="istickedoff">preComplex $ \(a4'1, a4'2) -&gt; </span>
+<span class="lineno"> 6011 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a5' -&gt; </span>
+<span class="lineno"> 6012 </span><span class="spaces">  </span><span class="istickedoff">roughHestonLogCharacteristicFunction'_ a1' a2'1  a2'2 a3' a4'1  a4'2 a5' &gt;&gt;</span>
+<span class="lineno"> 6013 </span><span class="spaces">  </span><span class="istickedoff">peekComplex  a4'1  a4'2&gt;&gt;= \a4'' -&gt; </span>
+<span class="lineno"> 6014 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a5'&gt;&gt;</span>
+<span class="lineno"> 6015 </span><span class="spaces">  </span><span class="istickedoff">return (a4'')</span></span>
 <span class="lineno"> 6016 </span>
 <span class="lineno"> 6017 </span>
 <span class="lineno"> 6018 </span>
@@ -6040,29 +6040,29 @@ span.spaces    { background: white }
 <span class="lineno"> 6021 </span> -&gt; (Complex Double) -- ^frequency
 <span class="lineno"> 6022 </span> -&gt; (Double) -- ^time
 <span class="lineno"> 6023 </span> -&gt; IO ((Complex Double))
-<span class="lineno"> 6024 </span><span class="decl"><span class="nottickedoff">roughHestonRiccatiSolution a1 a2 a3 =</span>
-<span class="lineno"> 6025 </span><span class="spaces">  </span><span class="nottickedoff">withAnalyticRoughHestonEngine a1 $ \a1' -&gt; </span>
-<span class="lineno"> 6026 </span><span class="spaces">  </span><span class="nottickedoff">let {(a2'1, a2'2) = withComplex a2} in </span>
-<span class="lineno"> 6027 </span><span class="spaces">  </span><span class="nottickedoff">let {a3' = realToFrac a3} in </span>
-<span class="lineno"> 6028 </span><span class="spaces">  </span><span class="nottickedoff">preComplex $ \(a4'1, a4'2) -&gt; </span>
-<span class="lineno"> 6029 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a5' -&gt; </span>
-<span class="lineno"> 6030 </span><span class="spaces">  </span><span class="nottickedoff">roughHestonRiccatiSolution'_ a1' a2'1  a2'2 a3' a4'1  a4'2 a5' &gt;&gt;</span>
-<span class="lineno"> 6031 </span><span class="spaces">  </span><span class="nottickedoff">peekComplex  a4'1  a4'2&gt;&gt;= \a4'' -&gt; </span>
-<span class="lineno"> 6032 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a5'&gt;&gt;</span>
-<span class="lineno"> 6033 </span><span class="spaces">  </span><span class="nottickedoff">return (a4'')</span></span>
+<span class="lineno"> 6024 </span><span class="decl"><span class="istickedoff">roughHestonRiccatiSolution a1 a2 a3 =</span>
+<span class="lineno"> 6025 </span><span class="spaces">  </span><span class="istickedoff">withAnalyticRoughHestonEngine a1 $ \a1' -&gt; </span>
+<span class="lineno"> 6026 </span><span class="spaces">  </span><span class="istickedoff">let {(a2'1, a2'2) = withComplex a2} in </span>
+<span class="lineno"> 6027 </span><span class="spaces">  </span><span class="istickedoff">let {a3' = realToFrac a3} in </span>
+<span class="lineno"> 6028 </span><span class="spaces">  </span><span class="istickedoff">preComplex $ \(a4'1, a4'2) -&gt; </span>
+<span class="lineno"> 6029 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a5' -&gt; </span>
+<span class="lineno"> 6030 </span><span class="spaces">  </span><span class="istickedoff">roughHestonRiccatiSolution'_ a1' a2'1  a2'2 a3' a4'1  a4'2 a5' &gt;&gt;</span>
+<span class="lineno"> 6031 </span><span class="spaces">  </span><span class="istickedoff">peekComplex  a4'1  a4'2&gt;&gt;= \a4'' -&gt; </span>
+<span class="lineno"> 6032 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a5'&gt;&gt;</span>
+<span class="lineno"> 6033 </span><span class="spaces">  </span><span class="istickedoff">return (a4'')</span></span>
 <span class="lineno"> 6034 </span>
 <span class="lineno"> 6035 </span>
 <span class="lineno"> 6036 </span>
 <span class="lineno"> 6037 </span>-- |Fourier evaluations in the most recent pricing calculation (1.44).
 <span class="lineno"> 6038 </span>roughHestonNumberOfEvaluations :: (AnalyticRoughHestonEngine) -- ^engine
 <span class="lineno"> 6039 </span> -&gt; IO ((Word))
-<span class="lineno"> 6040 </span><span class="decl"><span class="nottickedoff">roughHestonNumberOfEvaluations a1 =</span>
-<span class="lineno"> 6041 </span><span class="spaces">  </span><span class="nottickedoff">withAnalyticRoughHestonEngine a1 $ \a1' -&gt; </span>
-<span class="lineno"> 6042 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a2' -&gt; </span>
-<span class="lineno"> 6043 </span><span class="spaces">  </span><span class="nottickedoff">roughHestonNumberOfEvaluations'_ a1' a2' &gt;&gt;= \res -&gt;</span>
-<span class="lineno"> 6044 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = fromIntegral res} in</span>
-<span class="lineno"> 6045 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a2'&gt;&gt;</span>
-<span class="lineno"> 6046 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno"> 6040 </span><span class="decl"><span class="istickedoff">roughHestonNumberOfEvaluations a1 =</span>
+<span class="lineno"> 6041 </span><span class="spaces">  </span><span class="istickedoff">withAnalyticRoughHestonEngine a1 $ \a1' -&gt; </span>
+<span class="lineno"> 6042 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
+<span class="lineno"> 6043 </span><span class="spaces">  </span><span class="istickedoff">roughHestonNumberOfEvaluations'_ a1' a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno"> 6044 </span><span class="spaces">  </span><span class="istickedoff">let {res' = fromIntegral res} in</span>
+<span class="lineno"> 6045 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
+<span class="lineno"> 6046 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
 <span class="lineno"> 6047 </span>
 <span class="lineno"> 6048 </span>
 <span class="lineno"> 6049 </span>
@@ -6071,15 +6071,15 @@ span.spaces    { background: white }
 <span class="lineno"> 6052 </span> -&gt; (PlainVanillaPayoff) -- ^payoff
 <span class="lineno"> 6053 </span> -&gt; (Day) -- ^maturity
 <span class="lineno"> 6054 </span> -&gt; IO ((Double))
-<span class="lineno"> 6055 </span><span class="decl"><span class="nottickedoff">roughHestonPriceDateRaw a1 a2 a3 =</span>
-<span class="lineno"> 6056 </span><span class="spaces">  </span><span class="nottickedoff">withAnalyticRoughHestonEngine a1 $ \a1' -&gt; </span>
-<span class="lineno"> 6057 </span><span class="spaces">  </span><span class="nottickedoff">withPlainVanillaPayoff a2 $ \a2' -&gt; </span>
-<span class="lineno"> 6058 </span><span class="spaces">  </span><span class="nottickedoff">withDay a3 $ \a3' -&gt; </span>
-<span class="lineno"> 6059 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a4' -&gt; </span>
-<span class="lineno"> 6060 </span><span class="spaces">  </span><span class="nottickedoff">roughHestonPriceDateRaw'_ a1' a2' a3' a4' &gt;&gt;= \res -&gt;</span>
-<span class="lineno"> 6061 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = realToFrac res} in</span>
-<span class="lineno"> 6062 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a4'&gt;&gt;</span>
-<span class="lineno"> 6063 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno"> 6055 </span><span class="decl"><span class="istickedoff">roughHestonPriceDateRaw a1 a2 a3 =</span>
+<span class="lineno"> 6056 </span><span class="spaces">  </span><span class="istickedoff">withAnalyticRoughHestonEngine a1 $ \a1' -&gt; </span>
+<span class="lineno"> 6057 </span><span class="spaces">  </span><span class="istickedoff">withPlainVanillaPayoff a2 $ \a2' -&gt; </span>
+<span class="lineno"> 6058 </span><span class="spaces">  </span><span class="istickedoff">withDay a3 $ \a3' -&gt; </span>
+<span class="lineno"> 6059 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a4' -&gt; </span>
+<span class="lineno"> 6060 </span><span class="spaces">  </span><span class="istickedoff">roughHestonPriceDateRaw'_ a1' a2' a3' a4' &gt;&gt;= \res -&gt;</span>
+<span class="lineno"> 6061 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno"> 6062 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a4'&gt;&gt;</span>
+<span class="lineno"> 6063 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
 <span class="lineno"> 6064 </span>
 <span class="lineno"> 6065 </span>
 <span class="lineno"> 6066 </span>
@@ -6088,15 +6088,15 @@ span.spaces    { background: white }
 <span class="lineno"> 6069 </span> -&gt; (PlainVanillaPayoff) -- ^payoff
 <span class="lineno"> 6070 </span> -&gt; (Double) -- ^maturity
 <span class="lineno"> 6071 </span> -&gt; IO ((Double))
-<span class="lineno"> 6072 </span><span class="decl"><span class="nottickedoff">roughHestonPriceTimeRaw a1 a2 a3 =</span>
-<span class="lineno"> 6073 </span><span class="spaces">  </span><span class="nottickedoff">withAnalyticRoughHestonEngine a1 $ \a1' -&gt; </span>
-<span class="lineno"> 6074 </span><span class="spaces">  </span><span class="nottickedoff">withPlainVanillaPayoff a2 $ \a2' -&gt; </span>
-<span class="lineno"> 6075 </span><span class="spaces">  </span><span class="nottickedoff">let {a3' = realToFrac a3} in </span>
-<span class="lineno"> 6076 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a4' -&gt; </span>
-<span class="lineno"> 6077 </span><span class="spaces">  </span><span class="nottickedoff">roughHestonPriceTimeRaw'_ a1' a2' a3' a4' &gt;&gt;= \res -&gt;</span>
-<span class="lineno"> 6078 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = realToFrac res} in</span>
-<span class="lineno"> 6079 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a4'&gt;&gt;</span>
-<span class="lineno"> 6080 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno"> 6072 </span><span class="decl"><span class="istickedoff">roughHestonPriceTimeRaw a1 a2 a3 =</span>
+<span class="lineno"> 6073 </span><span class="spaces">  </span><span class="istickedoff">withAnalyticRoughHestonEngine a1 $ \a1' -&gt; </span>
+<span class="lineno"> 6074 </span><span class="spaces">  </span><span class="istickedoff">withPlainVanillaPayoff a2 $ \a2' -&gt; </span>
+<span class="lineno"> 6075 </span><span class="spaces">  </span><span class="istickedoff">let {a3' = realToFrac a3} in </span>
+<span class="lineno"> 6076 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a4' -&gt; </span>
+<span class="lineno"> 6077 </span><span class="spaces">  </span><span class="istickedoff">roughHestonPriceTimeRaw'_ a1' a2' a3' a4' &gt;&gt;= \res -&gt;</span>
+<span class="lineno"> 6078 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno"> 6079 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a4'&gt;&gt;</span>
+<span class="lineno"> 6080 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
 <span class="lineno"> 6081 </span>
 <span class="lineno"> 6082 </span>
 <span class="lineno"> 6083 </span>
@@ -6105,9 +6105,9 @@ span.spaces    { background: white }
 <span class="lineno"> 6086 </span>  -&gt; PlainVanillaPayoff -- ^Call/put and strike
 <span class="lineno"> 6087 </span>  -&gt; TermPoint -- ^Maturity; time is relative to the model risk-free curve's reference date
 <span class="lineno"> 6088 </span>  -&gt; IO Double
-<span class="lineno"> 6089 </span><span class="decl"><span class="nottickedoff">roughHestonPriceVanillaPayoff engine payoff maturity = case maturity of</span>
-<span class="lineno"> 6090 </span><span class="spaces">  </span><span class="nottickedoff">DatePoint date -&gt; roughHestonPriceDateRaw engine payoff date</span>
-<span class="lineno"> 6091 </span><span class="spaces">  </span><span class="nottickedoff">TimePoint time -&gt; roughHestonPriceTimeRaw engine payoff time</span></span>
+<span class="lineno"> 6089 </span><span class="decl"><span class="istickedoff">roughHestonPriceVanillaPayoff engine payoff maturity = case maturity of</span>
+<span class="lineno"> 6090 </span><span class="spaces">  </span><span class="istickedoff">DatePoint date -&gt; roughHestonPriceDateRaw engine payoff date</span>
+<span class="lineno"> 6091 </span><span class="spaces">  </span><span class="istickedoff">TimePoint time -&gt; roughHestonPriceTimeRaw engine payoff time</span></span>
 <span class="lineno"> 6092 </span>
 <span class="lineno"> 6093 </span>-- |MTM cross-currency discounting (1.44). Spot is domestic currency per foreign currency.
 <span class="lineno"> 6094 </span>-- Historical reset observations come from ExchangeRateManager; live leg cash flows need their own FX reset pricer.
@@ -6135,7 +6135,7 @@ span.spaces    { background: white }
 <span class="lineno"> 6116 </span><span class="spaces">  </span><span class="istickedoff">discountingMtmCrossCurrencyBasisSwapEngine'_ a1' a2' a3' a4' a5' a6' a7' a8' a9' a10' &gt;&gt;= \res -&gt;</span>
 <span class="lineno"> 6117 </span><span class="spaces">  </span><span class="istickedoff">peekPricingEngine res &gt;&gt;= \res' -&gt;</span>
 <span class="lineno"> 6118 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a10'&gt;&gt;</span>
-<span class="lineno"> 6119 </span><span class="spaces">  </span><span class="istickedoff"><span class="nottickedoff">return (res')</span></span></span>
+<span class="lineno"> 6119 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
 <span class="lineno"> 6120 </span>
 <span class="lineno"> 6121 </span>
 <span class="lineno"> 6122 </span>

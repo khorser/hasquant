@@ -3805,7 +3805,7 @@ span.spaces    { background: white }
 <span class="lineno"> 3786 </span>  <span class="decl"><span class="istickedoff">indexFixings = overnightIndexedCouponIndexFixingsRaw</span></span>
 <span class="lineno"> 3787 </span>
 <span class="lineno"> 3788 </span>-- |FX observation as fixing date and associated settlement/value date.
-<span class="lineno"> 3789 </span>data FxReset = FxReset { <span class="nottickedoff"><span class="decl"><span class="nottickedoff">fxResetFixingDate</span></span></span> :: Day, <span class="nottickedoff"><span class="decl"><span class="nottickedoff">fxResetSettlementDate</span></span></span> :: Day } deriving (<span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Eq</span></span></span></span>, <span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Show</span></span></span></span></span></span>, <span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Read</span></span></span></span></span></span></span></span>)
+<span class="lineno"> 3789 </span>data FxReset = FxReset { <span class="istickedoff"><span class="decl"><span class="istickedoff">fxResetFixingDate</span></span></span> :: Day, <span class="nottickedoff"><span class="decl"><span class="nottickedoff">fxResetSettlementDate</span></span></span> :: Day } deriving (<span class="decl"><span class="istickedoff"><span class="decl"><span class="nottickedoff">Eq</span></span></span></span>, <span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Show</span></span></span></span></span></span>, <span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff"><span class="decl"><span class="nottickedoff">Read</span></span></span></span></span></span></span></span>)
 <span class="lineno"> 3790 </span>-- |FX observation convention: business-day fixing lag and optional calendar.
 <span class="lineno"> 3791 </span>-- Nothing uses an empty calendar; it is valid only with zero fixing days.
 <span class="lineno"> 3792 </span>data FxResetConvention = FxResetConvention Word (Maybe Calendar)
@@ -3833,7 +3833,7 @@ span.spaces    { background: white }
 <span class="lineno"> 3814 </span><span class="spaces">  </span><span class="istickedoff">peekResetDay  a4'&gt;&gt;= \a4'' -&gt; </span>
 <span class="lineno"> 3815 </span><span class="spaces">  </span><span class="istickedoff">peekResetDay  a5'&gt;&gt;= \a5'' -&gt; </span>
 <span class="lineno"> 3816 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a6'&gt;&gt;</span>
-<span class="lineno"> 3817 </span><span class="spaces">  </span><span class="istickedoff"><span class="nottickedoff">return (a4'', a5'')</span></span></span>
+<span class="lineno"> 3817 </span><span class="spaces">  </span><span class="istickedoff">return (a4'', a5'')</span></span>
 <span class="lineno"> 3818 </span>
 <span class="lineno"> 3819 </span>
 <span class="lineno"> 3820 </span>
@@ -3842,15 +3842,15 @@ span.spaces    { background: white }
 <span class="lineno"> 3823 </span> -&gt; (Maybe Calendar) -- ^fixingCalendar
 <span class="lineno"> 3824 </span> -&gt; (Day) -- ^fixingDate
 <span class="lineno"> 3825 </span> -&gt; IO ((Day))
-<span class="lineno"> 3826 </span><span class="decl"><span class="nottickedoff">fxResetValueDateRaw a1 a2 a3 =</span>
-<span class="lineno"> 3827 </span><span class="spaces">  </span><span class="nottickedoff">let {a1' = fromIntegral a1} in </span>
-<span class="lineno"> 3828 </span><span class="spaces">  </span><span class="nottickedoff">withMaybeCalendar a2 $ \a2' -&gt; </span>
-<span class="lineno"> 3829 </span><span class="spaces">  </span><span class="nottickedoff">withDay a3 $ \a3' -&gt; </span>
-<span class="lineno"> 3830 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a4' -&gt; </span>
-<span class="lineno"> 3831 </span><span class="spaces">  </span><span class="nottickedoff">fxResetValueDateRaw'_ a1' a2' a3' a4' &gt;&gt;= \res -&gt;</span>
-<span class="lineno"> 3832 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = toDay res} in</span>
-<span class="lineno"> 3833 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a4'&gt;&gt;</span>
-<span class="lineno"> 3834 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno"> 3826 </span><span class="decl"><span class="istickedoff">fxResetValueDateRaw a1 a2 a3 =</span>
+<span class="lineno"> 3827 </span><span class="spaces">  </span><span class="istickedoff">let {a1' = fromIntegral a1} in </span>
+<span class="lineno"> 3828 </span><span class="spaces">  </span><span class="istickedoff">withMaybeCalendar a2 $ \a2' -&gt; </span>
+<span class="lineno"> 3829 </span><span class="spaces">  </span><span class="istickedoff">withDay a3 $ \a3' -&gt; </span>
+<span class="lineno"> 3830 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a4' -&gt; </span>
+<span class="lineno"> 3831 </span><span class="spaces">  </span><span class="istickedoff">fxResetValueDateRaw'_ a1' a2' a3' a4' &gt;&gt;= \res -&gt;</span>
+<span class="lineno"> 3832 </span><span class="spaces">  </span><span class="istickedoff">let {res' = toDay res} in</span>
+<span class="lineno"> 3833 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a4'&gt;&gt;</span>
+<span class="lineno"> 3834 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
 <span class="lineno"> 3835 </span>
 <span class="lineno"> 3836 </span>
 <span class="lineno"> 3837 </span>
@@ -3860,12 +3860,12 @@ span.spaces    { background: white }
 <span class="lineno"> 3841 </span>  -&gt; IO FxReset
 <span class="lineno"> 3842 </span><span class="decl"><span class="istickedoff">fxResetObservation (FxResetConvention days cal) observationDate = do</span>
 <span class="lineno"> 3843 </span><span class="spaces">  </span><span class="istickedoff">(fixing, valueDate) &lt;- fxResetObservationRaw days cal observationDate</span>
-<span class="lineno"> 3844 </span><span class="spaces">  </span><span class="istickedoff"><span class="nottickedoff">pure (FxReset fixing valueDate)</span></span></span>
+<span class="lineno"> 3844 </span><span class="spaces">  </span><span class="istickedoff">pure (FxReset fixing valueDate)</span></span>
 <span class="lineno"> 3845 </span>-- |Derive the spot value date of a fixing date using business days (1.44).
 <span class="lineno"> 3846 </span>fxResetValueDate :: FxResetConvention -- ^Business-day fixing lag and optional calendar
 <span class="lineno"> 3847 </span>  -&gt; Day -- ^FX fixing date
 <span class="lineno"> 3848 </span>  -&gt; IO Day
-<span class="lineno"> 3849 </span><span class="decl"><span class="nottickedoff">fxResetValueDate (FxResetConvention days cal) = fxResetValueDateRaw days cal</span></span>
+<span class="lineno"> 3849 </span><span class="decl"><span class="istickedoff">fxResetValueDate (FxResetConvention days cal) = fxResetValueDateRaw days cal</span></span>
 <span class="lineno"> 3850 </span>
 <span class="lineno"> 3851 </span>-- |FX reset projection from spot and two discount curves (1.44).
 <span class="lineno"> 3852 </span>-- Returns resettable currency per constant currency; past observations use ExchangeRateManager.
@@ -3889,7 +3889,7 @@ span.spaces    { background: white }
 <span class="lineno"> 3870 </span><span class="spaces">  </span><span class="istickedoff">discountingFxResetPricer'_ a1' a2' a3' a4' a5' a6' a7' a8' &gt;&gt;= \res -&gt;</span>
 <span class="lineno"> 3871 </span><span class="spaces">  </span><span class="istickedoff">peekStandalone res &gt;&gt;= \res' -&gt;</span>
 <span class="lineno"> 3872 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a8'&gt;&gt;</span>
-<span class="lineno"> 3873 </span><span class="spaces">  </span><span class="istickedoff"><span class="nottickedoff">return (res')</span></span></span>
+<span class="lineno"> 3873 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
 <span class="lineno"> 3874 </span>
 <span class="lineno"> 3875 </span>
 <span class="lineno"> 3876 </span>
@@ -3897,14 +3897,14 @@ span.spaces    { background: white }
 <span class="lineno"> 3878 </span>fxResetRate :: (FxResetPricer) -- ^pricer
 <span class="lineno"> 3879 </span> -&gt; (FxReset) -- ^reset
 <span class="lineno"> 3880 </span> -&gt; IO ((Double))
-<span class="lineno"> 3881 </span><span class="decl"><span class="nottickedoff">fxResetRate a1 a2 =</span>
-<span class="lineno"> 3882 </span><span class="spaces">  </span><span class="nottickedoff">withStandalone a1 $ \a1' -&gt; </span>
-<span class="lineno"> 3883 </span><span class="spaces">  </span><span class="nottickedoff">withFxReset a2 $ \(a2'1, a2'2) -&gt; </span>
-<span class="lineno"> 3884 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a3' -&gt; </span>
-<span class="lineno"> 3885 </span><span class="spaces">  </span><span class="nottickedoff">fxResetRate'_ a1' a2'1  a2'2 a3' &gt;&gt;= \res -&gt;</span>
-<span class="lineno"> 3886 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = realToFrac res} in</span>
-<span class="lineno"> 3887 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a3'&gt;&gt;</span>
-<span class="lineno"> 3888 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno"> 3881 </span><span class="decl"><span class="istickedoff">fxResetRate a1 a2 =</span>
+<span class="lineno"> 3882 </span><span class="spaces">  </span><span class="istickedoff">withStandalone a1 $ \a1' -&gt; </span>
+<span class="lineno"> 3883 </span><span class="spaces">  </span><span class="istickedoff">withFxReset a2 $ \(a2'1, a2'2) -&gt; </span>
+<span class="lineno"> 3884 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
+<span class="lineno"> 3885 </span><span class="spaces">  </span><span class="istickedoff">fxResetRate'_ a1' a2'1  a2'2 a3' &gt;&gt;= \res -&gt;</span>
+<span class="lineno"> 3886 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno"> 3887 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
+<span class="lineno"> 3888 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
 <span class="lineno"> 3889 </span>
 <span class="lineno"> 3890 </span>
 <span class="lineno"> 3891 </span>
@@ -3922,7 +3922,7 @@ span.spaces    { background: white }
 <span class="lineno"> 3903 </span><span class="spaces">  </span><span class="istickedoff">fxResetCoupon'_ a1' a2' a3'1  a3'2 a4' &gt;&gt;= \res -&gt;</span>
 <span class="lineno"> 3904 </span><span class="spaces">  </span><span class="istickedoff">peekFxResetCoupon res &gt;&gt;= \res' -&gt;</span>
 <span class="lineno"> 3905 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a4'&gt;&gt;</span>
-<span class="lineno"> 3906 </span><span class="spaces">  </span><span class="istickedoff"><span class="nottickedoff">return (res')</span></span></span>
+<span class="lineno"> 3906 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
 <span class="lineno"> 3907 </span>
 <span class="lineno"> 3908 </span>
 <span class="lineno"> 3909 </span>
@@ -3942,7 +3942,7 @@ span.spaces    { background: white }
 <span class="lineno"> 3923 </span><span class="spaces">  </span><span class="istickedoff">fxResetNotionalExchange'_ a1' a2' a3'1  a3'2 a4'1  a4'2 a5' &gt;&gt;= \res -&gt;</span>
 <span class="lineno"> 3924 </span><span class="spaces">  </span><span class="istickedoff">peekFxResetNotionalExchange res &gt;&gt;= \res' -&gt;</span>
 <span class="lineno"> 3925 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a5'&gt;&gt;</span>
-<span class="lineno"> 3926 </span><span class="spaces">  </span><span class="istickedoff"><span class="nottickedoff">return (res')</span></span></span>
+<span class="lineno"> 3926 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
 <span class="lineno"> 3927 </span>
 <span class="lineno"> 3928 </span>
 <span class="lineno"> 3929 </span>
@@ -3950,13 +3950,13 @@ span.spaces    { background: white }
 <span class="lineno"> 3931 </span>setFxResetCouponPricerRaw :: (FxResetCoupon) -- ^cashFlow
 <span class="lineno"> 3932 </span> -&gt; (FxResetPricer) -- ^pricer
 <span class="lineno"> 3933 </span> -&gt; IO ()
-<span class="lineno"> 3934 </span><span class="decl"><span class="nottickedoff">setFxResetCouponPricerRaw a1 a2 =</span>
-<span class="lineno"> 3935 </span><span class="spaces">  </span><span class="nottickedoff">withFxResetCoupon a1 $ \a1' -&gt; </span>
-<span class="lineno"> 3936 </span><span class="spaces">  </span><span class="nottickedoff">withStandalone a2 $ \a2' -&gt; </span>
-<span class="lineno"> 3937 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a3' -&gt; </span>
-<span class="lineno"> 3938 </span><span class="spaces">  </span><span class="nottickedoff">setFxResetCouponPricerRaw'_ a1' a2' a3' &gt;&gt;</span>
-<span class="lineno"> 3939 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a3'&gt;&gt;</span>
-<span class="lineno"> 3940 </span><span class="spaces">  </span><span class="nottickedoff">return ()</span></span>
+<span class="lineno"> 3934 </span><span class="decl"><span class="istickedoff">setFxResetCouponPricerRaw a1 a2 =</span>
+<span class="lineno"> 3935 </span><span class="spaces">  </span><span class="istickedoff">withFxResetCoupon a1 $ \a1' -&gt; </span>
+<span class="lineno"> 3936 </span><span class="spaces">  </span><span class="istickedoff">withStandalone a2 $ \a2' -&gt; </span>
+<span class="lineno"> 3937 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
+<span class="lineno"> 3938 </span><span class="spaces">  </span><span class="istickedoff">setFxResetCouponPricerRaw'_ a1' a2' a3' &gt;&gt;</span>
+<span class="lineno"> 3939 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
+<span class="lineno"> 3940 </span><span class="spaces">  </span><span class="istickedoff">return <span class="nottickedoff">()</span></span></span>
 <span class="lineno"> 3941 </span>
 <span class="lineno"> 3942 </span>
 <span class="lineno"> 3943 </span>
@@ -3979,7 +3979,7 @@ span.spaces    { background: white }
 <span class="lineno"> 3960 </span>  -- |Assign a retained FX reset pricer (1.44).
 <span class="lineno"> 3961 </span>  setFxResetPricer :: cf -&gt; FxResetPricer -&gt; IO ()
 <span class="lineno"> 3962 </span>instance HasFxResetPricer FxResetCoupon where
-<span class="lineno"> 3963 </span>  <span class="decl"><span class="nottickedoff">setFxResetPricer = setFxResetCouponPricerRaw</span></span>
+<span class="lineno"> 3963 </span>  <span class="decl"><span class="istickedoff">setFxResetPricer = setFxResetCouponPricerRaw</span></span>
 <span class="lineno"> 3964 </span>instance HasFxResetPricer FxResetNotionalExchange where
 <span class="lineno"> 3965 </span>  <span class="decl"><span class="nottickedoff">setFxResetPricer = setFxResetNotionalExchangePricerRaw</span></span>
 <span class="lineno"> 3966 </span>
@@ -3987,13 +3987,13 @@ span.spaces    { background: white }
 <span class="lineno"> 3968 </span>setFxResetLegPricer :: (GenLeg l) -- ^leg
 <span class="lineno"> 3969 </span> -&gt; (FxResetPricer) -- ^pricer
 <span class="lineno"> 3970 </span> -&gt; IO ()
-<span class="lineno"> 3971 </span><span class="decl"><span class="nottickedoff">setFxResetLegPricer a1 a2 =</span>
-<span class="lineno"> 3972 </span><span class="spaces">  </span><span class="nottickedoff">withLeg a1 $ \a1' -&gt; </span>
-<span class="lineno"> 3973 </span><span class="spaces">  </span><span class="nottickedoff">withStandalone a2 $ \a2' -&gt; </span>
-<span class="lineno"> 3974 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a3' -&gt; </span>
-<span class="lineno"> 3975 </span><span class="spaces">  </span><span class="nottickedoff">setFxResetLegPricer'_ a1' a2' a3' &gt;&gt;</span>
-<span class="lineno"> 3976 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a3'&gt;&gt;</span>
-<span class="lineno"> 3977 </span><span class="spaces">  </span><span class="nottickedoff">return ()</span></span>
+<span class="lineno"> 3971 </span><span class="decl"><span class="istickedoff">setFxResetLegPricer a1 a2 =</span>
+<span class="lineno"> 3972 </span><span class="spaces">  </span><span class="istickedoff">withLeg a1 $ \a1' -&gt; </span>
+<span class="lineno"> 3973 </span><span class="spaces">  </span><span class="istickedoff">withStandalone a2 $ \a2' -&gt; </span>
+<span class="lineno"> 3974 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
+<span class="lineno"> 3975 </span><span class="spaces">  </span><span class="istickedoff">setFxResetLegPricer'_ a1' a2' a3' &gt;&gt;</span>
+<span class="lineno"> 3976 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
+<span class="lineno"> 3977 </span><span class="spaces">  </span><span class="istickedoff">return <span class="nottickedoff">()</span></span></span>
 <span class="lineno"> 3978 </span>
 <span class="lineno"> 3979 </span>
 <span class="lineno"> 3980 </span>
@@ -4033,24 +4033,24 @@ span.spaces    { background: white }
 <span class="lineno"> 4014 </span><span class="spaces">  </span><span class="istickedoff">stubIborCoupon'_ a1' a2' a3' a4' a5' a6' a7' a8' a9' a10' a11' a12' a13' a14' a15' &gt;&gt;= \res -&gt;</span>
 <span class="lineno"> 4015 </span><span class="spaces">  </span><span class="istickedoff">peekIborCoupon res &gt;&gt;= \res' -&gt;</span>
 <span class="lineno"> 4016 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a15'&gt;&gt;</span>
-<span class="lineno"> 4017 </span><span class="spaces">  </span><span class="istickedoff"><span class="nottickedoff">return (res')</span></span></span>
+<span class="lineno"> 4017 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
 <span class="lineno"> 4018 </span>
 <span class="lineno"> 4019 </span>
 <span class="lineno"> 4020 </span>
 <span class="lineno"> 4021 </span>
 <span class="lineno"> 4022 </span>peekResetDay :: Ptr CInt -&gt; IO Day
-<span class="lineno"> 4023 </span><span class="decl"><span class="istickedoff">peekResetDay p = <span class="nottickedoff">toDay</span> &lt;$&gt; peek p</span></span>
+<span class="lineno"> 4023 </span><span class="decl"><span class="istickedoff">peekResetDay p = toDay &lt;$&gt; peek p</span></span>
 <span class="lineno"> 4024 </span>
 <span class="lineno"> 4025 </span>-- |Current coupon notional. FX reset coupons compute it from the assigned FX reset pricer.
 <span class="lineno"> 4026 </span>couponNominal :: (GenCoupon c) -- ^coupon
 <span class="lineno"> 4027 </span> -&gt; IO ((Double))
-<span class="lineno"> 4028 </span><span class="decl"><span class="nottickedoff">couponNominal a1 =</span>
-<span class="lineno"> 4029 </span><span class="spaces">  </span><span class="nottickedoff">withCoupon a1 $ \a1' -&gt; </span>
-<span class="lineno"> 4030 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a2' -&gt; </span>
-<span class="lineno"> 4031 </span><span class="spaces">  </span><span class="nottickedoff">couponNominal'_ a1' a2' &gt;&gt;= \res -&gt;</span>
-<span class="lineno"> 4032 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = realToFrac res} in</span>
-<span class="lineno"> 4033 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a2'&gt;&gt;</span>
-<span class="lineno"> 4034 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno"> 4028 </span><span class="decl"><span class="istickedoff">couponNominal a1 =</span>
+<span class="lineno"> 4029 </span><span class="spaces">  </span><span class="istickedoff">withCoupon a1 $ \a1' -&gt; </span>
+<span class="lineno"> 4030 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
+<span class="lineno"> 4031 </span><span class="spaces">  </span><span class="istickedoff">couponNominal'_ a1' a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno"> 4032 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno"> 4033 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
+<span class="lineno"> 4034 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
 <span class="lineno"> 4035 </span>
 <span class="lineno"> 4036 </span>
 <span class="lineno"> 4037 </span>

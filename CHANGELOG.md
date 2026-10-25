@@ -1,5 +1,36 @@
 ## 0.9.0.0 (2026)
 
+- Breaking: `piecewiseDefaultCurve` returns a `PiecewiseDefaultCurve`, a
+  `DefaultProbabilityTermStructure` leaf. Every curve argument still accepts it; convert with
+  `asDefaultProbabilityTermStructure` where a concrete `DefaultProbabilityTermStructure` is
+  stored. `defaultCurveNodes` reads its bootstrapped nodes: the reference date, then each
+  helper's pillar, with the value its trait interpolates. The interpolated curve of that trait
+  on these nodes is the same curve.
+
+- Breaking: hazard shifts use `shiftedHazardRateCurve` and `HazardRateShift`.
+  Replace `spreadedHazardRateCurve base q` with `shiftedHazardRateCurve base
+  (ParallelHazardShift q)`, and `factorSpreadedHazardRateCurve base q` with
+  `shiftedHazardRateCurve base (RelativeHazardShift q)`. Those cases retain their native
+  numerical behavior; parallel queries now refuse negative or non-finite hazards.
+  `KeyRateHazardShifts` and `BucketHazardShifts` add live linear and square
+  spread shapes without re-interpolating the base curve; their survival correction uses
+  QuantLib interpolation primitives. Shaped queries refuse negative or non-finite hazards.
+
+- Breaking: `piecewiseBlackVarianceSurface` takes its nodes as `PiecewiseVarianceNodes` and an
+  `extrapolate` flag. `VarianceGrid dates strikes vols` is the former rectangular grid;
+  `VarianceSlices` gives each expiry its own (strike, volatility) nodes, so strike sets can differ
+  between expiries. Pass `False` to keep the former behaviour. The surface's strike range is
+  unbounded, so only this flag decides whether a section reads outside its strikes; the
+  Haddock describes the domain a caller must check itself.
+- Added `fxCashSpotQuote`, the cash value at the evaluation date of an FX spot quoted for
+  settlement after a business-day lag. It is defined by hasquant rather than QuantLib, which
+  has no quote observing yield curves, and it stays live in the spot, both curves, relinks and
+  the evaluation date.
+- Breaking: matrix inspectors are ordinary functions rather than record fields. Replace
+  `m.matrixData` with `matrixData m` (and likewise for the other matrix inspectors), and import
+  inspectors explicitly instead of through `Matrix(..)` or `RealMatrix(..)`. Construct a new
+  matrix with the checked smart constructors instead of updating record fields.
+- QuantLib 1.44 is the default for development, documentation and release builds; 1.43 remains supported.
 - `QuantLib.Math` exports `Matrix` abstractly, with the `matrixRows`, `matrixColumns` and
   `matrixData` inspectors, so matrices processes return (`stdDeviation`, `covariance`,
   `diffusion`) can be read without `QuantLib.Internal`. Build one with `boxedRealMatrix` or

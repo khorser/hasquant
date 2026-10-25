@@ -561,7 +561,7 @@ span.spaces    { background: white }
 <span class="lineno">  542 </span><span class="spaces">  </span><span class="istickedoff">nonstandardSwapFromVanilla'_ a1' a2' &gt;&gt;= \res -&gt;</span>
 <span class="lineno">  543 </span><span class="spaces">  </span><span class="istickedoff">peekNonstandardSwap res &gt;&gt;= \res' -&gt;</span>
 <span class="lineno">  544 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
-<span class="lineno">  545 </span><span class="spaces">  </span><span class="istickedoff"><span class="nottickedoff">return (res')</span></span></span>
+<span class="lineno">  545 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
 <span class="lineno">  546 </span>
 <span class="lineno">  547 </span>
 <span class="lineno">  548 </span>
@@ -605,7 +605,7 @@ span.spaces    { background: white }
 <span class="lineno">  586 </span><span class="spaces">  </span><span class="istickedoff">nonstandardSwap'_ a1' a2'1  a2'2 a3'1  a3'2 a4' a5'1  a5'2 a6' a7' a8' a9' a10' a11' a12' a13' a14' a15' a16' a17' &gt;&gt;= \res -&gt;</span>
 <span class="lineno">  587 </span><span class="spaces">  </span><span class="istickedoff">peekNonstandardSwap res &gt;&gt;= \res' -&gt;</span>
 <span class="lineno">  588 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a17'&gt;&gt;</span>
-<span class="lineno">  589 </span><span class="spaces">  </span><span class="istickedoff"><span class="nottickedoff">return (res')</span></span></span>
+<span class="lineno">  589 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
 <span class="lineno">  590 </span>
 <span class="lineno">  591 </span>
 <span class="lineno">  592 </span>
@@ -646,7 +646,7 @@ span.spaces    { background: white }
 <span class="lineno">  627 </span><span class="spaces">  </span><span class="istickedoff">nonstandardSwapFromGearingsAndSpreads'_ a1' a2'1  a2'2 a3'1  a3'2 a4' a5'1  a5'2 a6' a7' a8' a9'1  a9'2 a10'1  a10'2 a11' a12' a13' a14' a15' a16' a17' &gt;&gt;= \res -&gt;</span>
 <span class="lineno">  628 </span><span class="spaces">  </span><span class="istickedoff">peekNonstandardSwap res &gt;&gt;= \res' -&gt;</span>
 <span class="lineno">  629 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a17'&gt;&gt;</span>
-<span class="lineno">  630 </span><span class="spaces">  </span><span class="istickedoff"><span class="nottickedoff">return (res')</span></span></span>
+<span class="lineno">  630 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
 <span class="lineno">  631 </span>
 <span class="lineno">  632 </span>
 <span class="lineno">  633 </span>
@@ -1443,16 +1443,16 @@ span.spaces    { background: white }
 <span class="lineno"> 1424 </span>
 <span class="lineno"> 1425 </span>-- |An option on a 'NonstandardSwap'.
 <span class="lineno"> 1426 </span>nonstandardSwaption :: (NonstandardSwap) -&gt; (Exercise) -&gt; (SettlementType) -&gt; (SettlementMethod) -&gt; IO ((NonstandardSwaption))
-<span class="lineno"> 1427 </span><span class="decl"><span class="nottickedoff">nonstandardSwaption a1 a2 a3 a4 =</span>
-<span class="lineno"> 1428 </span><span class="spaces">  </span><span class="nottickedoff">withNonstandardSwap a1 $ \a1' -&gt; </span>
-<span class="lineno"> 1429 </span><span class="spaces">  </span><span class="nottickedoff">withExercise a2 $ \a2' -&gt; </span>
-<span class="lineno"> 1430 </span><span class="spaces">  </span><span class="nottickedoff">let {a3' = (fromIntegral . fromEnum) a3} in </span>
-<span class="lineno"> 1431 </span><span class="spaces">  </span><span class="nottickedoff">let {a4' = (fromIntegral . fromEnum) a4} in </span>
-<span class="lineno"> 1432 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a5' -&gt; </span>
-<span class="lineno"> 1433 </span><span class="spaces">  </span><span class="nottickedoff">nonstandardSwaption'_ a1' a2' a3' a4' a5' &gt;&gt;= \res -&gt;</span>
-<span class="lineno"> 1434 </span><span class="spaces">  </span><span class="nottickedoff">peekNonstandardSwaption res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno"> 1435 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a5'&gt;&gt;</span>
-<span class="lineno"> 1436 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno"> 1427 </span><span class="decl"><span class="istickedoff">nonstandardSwaption a1 a2 a3 a4 =</span>
+<span class="lineno"> 1428 </span><span class="spaces">  </span><span class="istickedoff">withNonstandardSwap a1 $ \a1' -&gt; </span>
+<span class="lineno"> 1429 </span><span class="spaces">  </span><span class="istickedoff">withExercise a2 $ \a2' -&gt; </span>
+<span class="lineno"> 1430 </span><span class="spaces">  </span><span class="istickedoff">let {a3' = (fromIntegral . fromEnum) a3} in </span>
+<span class="lineno"> 1431 </span><span class="spaces">  </span><span class="istickedoff">let {a4' = (fromIntegral . fromEnum) a4} in </span>
+<span class="lineno"> 1432 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a5' -&gt; </span>
+<span class="lineno"> 1433 </span><span class="spaces">  </span><span class="istickedoff">nonstandardSwaption'_ a1' a2' a3' a4' a5' &gt;&gt;= \res -&gt;</span>
+<span class="lineno"> 1434 </span><span class="spaces">  </span><span class="istickedoff">peekNonstandardSwaption res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno"> 1435 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a5'&gt;&gt;</span>
+<span class="lineno"> 1436 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
 <span class="lineno"> 1437 </span>
 <span class="lineno"> 1438 </span>
 <span class="lineno"> 1439 </span>
@@ -2697,7 +2697,7 @@ span.spaces    { background: white }
 <span class="lineno"> 2678 </span><span class="spaces">  </span><span class="istickedoff">mtmCrossCurrencyBasisSwapRaw'_ a1' a2' a3' a4' a5' a6' a7' a8' a9' a10' a11' a12' a13' a14' a15' a16' a17' a18' a19' a20' a21' a22' a23' a24' a25' a26' a27' a28' a29' a30' a31' a32' a33' a34' a35' &gt;&gt;= \res -&gt;</span>
 <span class="lineno"> 2679 </span><span class="spaces">  </span><span class="istickedoff">peekMtMCrossCurrencyBasisSwap res &gt;&gt;= \res' -&gt;</span>
 <span class="lineno"> 2680 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a35'&gt;&gt;</span>
-<span class="lineno"> 2681 </span><span class="spaces">  </span><span class="istickedoff"><span class="nottickedoff">return (res')</span></span></span>
+<span class="lineno"> 2681 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
 <span class="lineno"> 2682 </span>
 <span class="lineno"> 2683 </span>
 <span class="lineno"> 2684 </span>
@@ -2740,7 +2740,7 @@ span.spaces    { background: white }
 <span class="lineno"> 2721 </span>  -&gt; MtMCrossCurrencyBasisSwapOpts ibor3 ibor4 -- ^Payment, reset, overnight and stub options
 <span class="lineno"> 2722 </span>  -&gt; IO MtMCrossCurrencyBasisSwap
 <span class="lineno"> 2723 </span><span class="decl"><span class="istickedoff">mtmCrossCurrencyBasisSwapWithOptions direction fxBaseNominal fxBaseCurrency fxBaseSchedule fxBaseIndex fxBaseSpread fxBaseGearing fxQuoteNominal fxQuoteCurrency fxQuoteSchedule fxQuoteIndex fxQuoteSpread fxQuoteGearing resetBase opts =</span>
-<span class="lineno"> 2724 </span><span class="spaces">  </span><span class="istickedoff">mtmCrossCurrencyBasisSwapRaw (case direction of PayFxBaseCurrency -&gt; 0; ReceiveFxBaseCurrency -&gt; <span class="nottickedoff">1</span>)</span>
+<span class="lineno"> 2724 </span><span class="spaces">  </span><span class="istickedoff">mtmCrossCurrencyBasisSwapRaw (case direction of PayFxBaseCurrency -&gt; 0; ReceiveFxBaseCurrency -&gt; 1)</span>
 <span class="lineno"> 2725 </span><span class="spaces">    </span><span class="istickedoff">fxBaseNominal fxBaseCurrency fxBaseSchedule fxBaseIndex fxBaseSpread fxBaseGearing fxQuoteNominal fxQuoteCurrency fxQuoteSchedule fxQuoteIndex fxQuoteSpread fxQuoteGearing resetBase</span>
 <span class="lineno"> 2726 </span><span class="spaces">    </span><span class="istickedoff">(mtmFxResetFixingDays opts) (mtmFxResetFixingCalendar opts)</span>
 <span class="lineno"> 2727 </span><span class="spaces">    </span><span class="istickedoff">(mtmFxBasePaymentLag opts) (mtmFxQuotePaymentLag opts)</span>
@@ -2770,23 +2770,23 @@ span.spaces    { background: white }
 <span class="lineno"> 2751 </span>  <span class="decl"><span class="nottickedoff">npvDateDiscounts = constNotionalNpvDateDiscounts</span></span>
 <span class="lineno"> 2752 </span>
 <span class="lineno"> 2753 </span>instance HasCrossCurrencyResults MtMCrossCurrencyBasisSwap where
-<span class="lineno"> 2754 </span>  <span class="decl"><span class="nottickedoff">legCurrency = mtmLegCurrency</span></span>
-<span class="lineno"> 2755 </span>  <span class="decl"><span class="nottickedoff">inCcyLegBps = mtmInCcyLegBPS</span></span>
-<span class="lineno"> 2756 </span>  <span class="decl"><span class="nottickedoff">inCcyLegNpv = mtmInCcyLegNPV</span></span>
-<span class="lineno"> 2757 </span>  <span class="decl"><span class="nottickedoff">npvDateDiscounts = mtmNpvDateDiscounts</span></span>
+<span class="lineno"> 2754 </span>  <span class="decl"><span class="istickedoff">legCurrency = mtmLegCurrency</span></span>
+<span class="lineno"> 2755 </span>  <span class="decl"><span class="istickedoff">inCcyLegBps = mtmInCcyLegBPS</span></span>
+<span class="lineno"> 2756 </span>  <span class="decl"><span class="istickedoff">inCcyLegNpv = mtmInCcyLegNPV</span></span>
+<span class="lineno"> 2757 </span>  <span class="decl"><span class="istickedoff">npvDateDiscounts = mtmNpvDateDiscounts</span></span>
 <span class="lineno"> 2758 </span>
 <span class="lineno"> 2759 </span>-- |MTM legCurrency (1.44).
 <span class="lineno"> 2760 </span>mtmLegCurrency :: (MtMCrossCurrencyBasisSwap) -- ^swap
 <span class="lineno"> 2761 </span> -&gt; (Word) -- ^legIndex
 <span class="lineno"> 2762 </span> -&gt; IO ((Currency))
-<span class="lineno"> 2763 </span><span class="decl"><span class="nottickedoff">mtmLegCurrency a1 a2 =</span>
-<span class="lineno"> 2764 </span><span class="spaces">  </span><span class="nottickedoff">withMtMCrossCurrencyBasisSwap a1 $ \a1' -&gt; </span>
-<span class="lineno"> 2765 </span><span class="spaces">  </span><span class="nottickedoff">let {a2' = fromIntegral a2} in </span>
-<span class="lineno"> 2766 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a3' -&gt; </span>
-<span class="lineno"> 2767 </span><span class="spaces">  </span><span class="nottickedoff">mtmLegCurrency'_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
-<span class="lineno"> 2768 </span><span class="spaces">  </span><span class="nottickedoff">peekCurrency res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno"> 2769 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a3'&gt;&gt;</span>
-<span class="lineno"> 2770 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno"> 2763 </span><span class="decl"><span class="istickedoff">mtmLegCurrency a1 a2 =</span>
+<span class="lineno"> 2764 </span><span class="spaces">  </span><span class="istickedoff">withMtMCrossCurrencyBasisSwap a1 $ \a1' -&gt; </span>
+<span class="lineno"> 2765 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = fromIntegral a2} in </span>
+<span class="lineno"> 2766 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
+<span class="lineno"> 2767 </span><span class="spaces">  </span><span class="istickedoff">mtmLegCurrency'_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
+<span class="lineno"> 2768 </span><span class="spaces">  </span><span class="istickedoff">peekCurrency res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno"> 2769 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
+<span class="lineno"> 2770 </span><span class="spaces">  </span><span class="istickedoff">return <span class="nottickedoff">(res')</span></span></span>
 <span class="lineno"> 2771 </span>
 <span class="lineno"> 2772 </span>
 <span class="lineno"> 2773 </span>
@@ -2794,14 +2794,14 @@ span.spaces    { background: white }
 <span class="lineno"> 2775 </span>mtmInCcyLegBPS :: (MtMCrossCurrencyBasisSwap) -- ^swap
 <span class="lineno"> 2776 </span> -&gt; (Word) -- ^legIndex
 <span class="lineno"> 2777 </span> -&gt; IO ((Double))
-<span class="lineno"> 2778 </span><span class="decl"><span class="nottickedoff">mtmInCcyLegBPS a1 a2 =</span>
-<span class="lineno"> 2779 </span><span class="spaces">  </span><span class="nottickedoff">withMtMCrossCurrencyBasisSwap a1 $ \a1' -&gt; </span>
-<span class="lineno"> 2780 </span><span class="spaces">  </span><span class="nottickedoff">let {a2' = fromIntegral a2} in </span>
-<span class="lineno"> 2781 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a3' -&gt; </span>
-<span class="lineno"> 2782 </span><span class="spaces">  </span><span class="nottickedoff">mtmInCcyLegBPS'_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
-<span class="lineno"> 2783 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = realToFrac res} in</span>
-<span class="lineno"> 2784 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a3'&gt;&gt;</span>
-<span class="lineno"> 2785 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno"> 2778 </span><span class="decl"><span class="istickedoff">mtmInCcyLegBPS a1 a2 =</span>
+<span class="lineno"> 2779 </span><span class="spaces">  </span><span class="istickedoff">withMtMCrossCurrencyBasisSwap a1 $ \a1' -&gt; </span>
+<span class="lineno"> 2780 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = fromIntegral a2} in </span>
+<span class="lineno"> 2781 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
+<span class="lineno"> 2782 </span><span class="spaces">  </span><span class="istickedoff">mtmInCcyLegBPS'_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
+<span class="lineno"> 2783 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno"> 2784 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
+<span class="lineno"> 2785 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
 <span class="lineno"> 2786 </span>
 <span class="lineno"> 2787 </span>
 <span class="lineno"> 2788 </span>
@@ -2809,14 +2809,14 @@ span.spaces    { background: white }
 <span class="lineno"> 2790 </span>mtmInCcyLegNPV :: (MtMCrossCurrencyBasisSwap) -- ^swap
 <span class="lineno"> 2791 </span> -&gt; (Word) -- ^legIndex
 <span class="lineno"> 2792 </span> -&gt; IO ((Double))
-<span class="lineno"> 2793 </span><span class="decl"><span class="nottickedoff">mtmInCcyLegNPV a1 a2 =</span>
-<span class="lineno"> 2794 </span><span class="spaces">  </span><span class="nottickedoff">withMtMCrossCurrencyBasisSwap a1 $ \a1' -&gt; </span>
-<span class="lineno"> 2795 </span><span class="spaces">  </span><span class="nottickedoff">let {a2' = fromIntegral a2} in </span>
-<span class="lineno"> 2796 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a3' -&gt; </span>
-<span class="lineno"> 2797 </span><span class="spaces">  </span><span class="nottickedoff">mtmInCcyLegNPV'_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
-<span class="lineno"> 2798 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = realToFrac res} in</span>
-<span class="lineno"> 2799 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a3'&gt;&gt;</span>
-<span class="lineno"> 2800 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno"> 2793 </span><span class="decl"><span class="istickedoff">mtmInCcyLegNPV a1 a2 =</span>
+<span class="lineno"> 2794 </span><span class="spaces">  </span><span class="istickedoff">withMtMCrossCurrencyBasisSwap a1 $ \a1' -&gt; </span>
+<span class="lineno"> 2795 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = fromIntegral a2} in </span>
+<span class="lineno"> 2796 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
+<span class="lineno"> 2797 </span><span class="spaces">  </span><span class="istickedoff">mtmInCcyLegNPV'_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
+<span class="lineno"> 2798 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno"> 2799 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
+<span class="lineno"> 2800 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
 <span class="lineno"> 2801 </span>
 <span class="lineno"> 2802 </span>
 <span class="lineno"> 2803 </span>
@@ -2824,14 +2824,14 @@ span.spaces    { background: white }
 <span class="lineno"> 2805 </span>mtmNpvDateDiscounts :: (MtMCrossCurrencyBasisSwap) -- ^swap
 <span class="lineno"> 2806 </span> -&gt; (Word) -- ^legIndex
 <span class="lineno"> 2807 </span> -&gt; IO ((Double))
-<span class="lineno"> 2808 </span><span class="decl"><span class="nottickedoff">mtmNpvDateDiscounts a1 a2 =</span>
-<span class="lineno"> 2809 </span><span class="spaces">  </span><span class="nottickedoff">withMtMCrossCurrencyBasisSwap a1 $ \a1' -&gt; </span>
-<span class="lineno"> 2810 </span><span class="spaces">  </span><span class="nottickedoff">let {a2' = fromIntegral a2} in </span>
-<span class="lineno"> 2811 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a3' -&gt; </span>
-<span class="lineno"> 2812 </span><span class="spaces">  </span><span class="nottickedoff">mtmNpvDateDiscounts'_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
-<span class="lineno"> 2813 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = realToFrac res} in</span>
-<span class="lineno"> 2814 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a3'&gt;&gt;</span>
-<span class="lineno"> 2815 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno"> 2808 </span><span class="decl"><span class="istickedoff">mtmNpvDateDiscounts a1 a2 =</span>
+<span class="lineno"> 2809 </span><span class="spaces">  </span><span class="istickedoff">withMtMCrossCurrencyBasisSwap a1 $ \a1' -&gt; </span>
+<span class="lineno"> 2810 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = fromIntegral a2} in </span>
+<span class="lineno"> 2811 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
+<span class="lineno"> 2812 </span><span class="spaces">  </span><span class="istickedoff">mtmNpvDateDiscounts'_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
+<span class="lineno"> 2813 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno"> 2814 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
+<span class="lineno"> 2815 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
 <span class="lineno"> 2816 </span>
 <span class="lineno"> 2817 </span>
 <span class="lineno"> 2818 </span>
@@ -2839,13 +2839,13 @@ span.spaces    { background: white }
 <span class="lineno"> 2820 </span>-- Compounded overnight spreads can leave a repricing residual.
 <span class="lineno"> 2821 </span>fairFxBaseSpread :: (MtMCrossCurrencyBasisSwap) -- ^swap
 <span class="lineno"> 2822 </span> -&gt; IO ((Double))
-<span class="lineno"> 2823 </span><span class="decl"><span class="nottickedoff">fairFxBaseSpread a1 =</span>
-<span class="lineno"> 2824 </span><span class="spaces">  </span><span class="nottickedoff">withMtMCrossCurrencyBasisSwap a1 $ \a1' -&gt; </span>
-<span class="lineno"> 2825 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a2' -&gt; </span>
-<span class="lineno"> 2826 </span><span class="spaces">  </span><span class="nottickedoff">fairFxBaseSpread'_ a1' a2' &gt;&gt;= \res -&gt;</span>
-<span class="lineno"> 2827 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = realToFrac res} in</span>
-<span class="lineno"> 2828 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a2'&gt;&gt;</span>
-<span class="lineno"> 2829 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno"> 2823 </span><span class="decl"><span class="istickedoff">fairFxBaseSpread a1 =</span>
+<span class="lineno"> 2824 </span><span class="spaces">  </span><span class="istickedoff">withMtMCrossCurrencyBasisSwap a1 $ \a1' -&gt; </span>
+<span class="lineno"> 2825 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
+<span class="lineno"> 2826 </span><span class="spaces">  </span><span class="istickedoff">fairFxBaseSpread'_ a1' a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno"> 2827 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno"> 2828 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
+<span class="lineno"> 2829 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
 <span class="lineno"> 2830 </span>
 <span class="lineno"> 2831 </span>
 <span class="lineno"> 2832 </span>
@@ -2853,13 +2853,13 @@ span.spaces    { background: white }
 <span class="lineno"> 2834 </span>-- Compounded overnight spreads can leave a repricing residual.
 <span class="lineno"> 2835 </span>fairFxQuoteSpread :: (MtMCrossCurrencyBasisSwap) -- ^swap
 <span class="lineno"> 2836 </span> -&gt; IO ((Double))
-<span class="lineno"> 2837 </span><span class="decl"><span class="nottickedoff">fairFxQuoteSpread a1 =</span>
-<span class="lineno"> 2838 </span><span class="spaces">  </span><span class="nottickedoff">withMtMCrossCurrencyBasisSwap a1 $ \a1' -&gt; </span>
-<span class="lineno"> 2839 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a2' -&gt; </span>
-<span class="lineno"> 2840 </span><span class="spaces">  </span><span class="nottickedoff">fairFxQuoteSpread'_ a1' a2' &gt;&gt;= \res -&gt;</span>
-<span class="lineno"> 2841 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = realToFrac res} in</span>
-<span class="lineno"> 2842 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a2'&gt;&gt;</span>
-<span class="lineno"> 2843 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno"> 2837 </span><span class="decl"><span class="istickedoff">fairFxQuoteSpread a1 =</span>
+<span class="lineno"> 2838 </span><span class="spaces">  </span><span class="istickedoff">withMtMCrossCurrencyBasisSwap a1 $ \a1' -&gt; </span>
+<span class="lineno"> 2839 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
+<span class="lineno"> 2840 </span><span class="spaces">  </span><span class="istickedoff">fairFxQuoteSpread'_ a1' a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno"> 2841 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno"> 2842 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
+<span class="lineno"> 2843 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
 <span class="lineno"> 2844 </span>
 <span class="lineno"> 2845 </span>
 <span class="lineno"> 2846 </span>
@@ -2867,13 +2867,13 @@ span.spaces    { background: white }
 <span class="lineno"> 2848 </span>-- Compounded overnight spreads can leave a repricing residual.
 <span class="lineno"> 2849 </span>mtmFairPaySpread :: (MtMCrossCurrencyBasisSwap) -- ^swap
 <span class="lineno"> 2850 </span> -&gt; IO ((Double))
-<span class="lineno"> 2851 </span><span class="decl"><span class="nottickedoff">mtmFairPaySpread a1 =</span>
-<span class="lineno"> 2852 </span><span class="spaces">  </span><span class="nottickedoff">withMtMCrossCurrencyBasisSwap a1 $ \a1' -&gt; </span>
-<span class="lineno"> 2853 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a2' -&gt; </span>
-<span class="lineno"> 2854 </span><span class="spaces">  </span><span class="nottickedoff">mtmFairPaySpread'_ a1' a2' &gt;&gt;= \res -&gt;</span>
-<span class="lineno"> 2855 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = realToFrac res} in</span>
-<span class="lineno"> 2856 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a2'&gt;&gt;</span>
-<span class="lineno"> 2857 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno"> 2851 </span><span class="decl"><span class="istickedoff">mtmFairPaySpread a1 =</span>
+<span class="lineno"> 2852 </span><span class="spaces">  </span><span class="istickedoff">withMtMCrossCurrencyBasisSwap a1 $ \a1' -&gt; </span>
+<span class="lineno"> 2853 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
+<span class="lineno"> 2854 </span><span class="spaces">  </span><span class="istickedoff">mtmFairPaySpread'_ a1' a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno"> 2855 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno"> 2856 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
+<span class="lineno"> 2857 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
 <span class="lineno"> 2858 </span>
 <span class="lineno"> 2859 </span>
 <span class="lineno"> 2860 </span>
@@ -2881,13 +2881,13 @@ span.spaces    { background: white }
 <span class="lineno"> 2862 </span>-- Compounded overnight spreads can leave a repricing residual.
 <span class="lineno"> 2863 </span>mtmFairRecSpread :: (MtMCrossCurrencyBasisSwap) -- ^swap
 <span class="lineno"> 2864 </span> -&gt; IO ((Double))
-<span class="lineno"> 2865 </span><span class="decl"><span class="nottickedoff">mtmFairRecSpread a1 =</span>
-<span class="lineno"> 2866 </span><span class="spaces">  </span><span class="nottickedoff">withMtMCrossCurrencyBasisSwap a1 $ \a1' -&gt; </span>
-<span class="lineno"> 2867 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a2' -&gt; </span>
-<span class="lineno"> 2868 </span><span class="spaces">  </span><span class="nottickedoff">mtmFairRecSpread'_ a1' a2' &gt;&gt;= \res -&gt;</span>
-<span class="lineno"> 2869 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = realToFrac res} in</span>
-<span class="lineno"> 2870 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a2'&gt;&gt;</span>
-<span class="lineno"> 2871 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno"> 2865 </span><span class="decl"><span class="istickedoff">mtmFairRecSpread a1 =</span>
+<span class="lineno"> 2866 </span><span class="spaces">  </span><span class="istickedoff">withMtMCrossCurrencyBasisSwap a1 $ \a1' -&gt; </span>
+<span class="lineno"> 2867 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
+<span class="lineno"> 2868 </span><span class="spaces">  </span><span class="istickedoff">mtmFairRecSpread'_ a1' a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno"> 2869 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno"> 2870 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
+<span class="lineno"> 2871 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
 <span class="lineno"> 2872 </span>
 <span class="lineno"> 2873 </span>
 <span class="lineno"> 2874 </span>
@@ -2902,34 +2902,34 @@ span.spaces    { background: white }
 <span class="lineno"> 2883 </span>  <span class="decl"><span class="istickedoff">fairPaySpread = constNotionalFairPaySpread</span></span>
 <span class="lineno"> 2884 </span>  <span class="decl"><span class="istickedoff">fairRecSpread = constNotionalFairRecSpread</span></span>
 <span class="lineno"> 2885 </span>instance HasFairLegSpreads MtMCrossCurrencyBasisSwap where
-<span class="lineno"> 2886 </span>  <span class="decl"><span class="nottickedoff">fairPaySpread = mtmFairPaySpread</span></span>
-<span class="lineno"> 2887 </span>  <span class="decl"><span class="nottickedoff">fairRecSpread = mtmFairRecSpread</span></span>
+<span class="lineno"> 2886 </span>  <span class="decl"><span class="istickedoff">fairPaySpread = mtmFairPaySpread</span></span>
+<span class="lineno"> 2887 </span>  <span class="decl"><span class="istickedoff">fairRecSpread = mtmFairRecSpread</span></span>
 <span class="lineno"> 2888 </span>
 <span class="lineno"> 2889 </span>-- |Calculated reset rates for non-occurred coupons in leg order (1.44).
 <span class="lineno"> 2890 </span>fxResetRates :: (MtMCrossCurrencyBasisSwap) -- ^swap
 <span class="lineno"> 2891 </span> -&gt; IO ((RealVector))
-<span class="lineno"> 2892 </span><span class="decl"><span class="nottickedoff">fxResetRates a1 =</span>
-<span class="lineno"> 2893 </span><span class="spaces">  </span><span class="nottickedoff">withMtMCrossCurrencyBasisSwap a1 $ \a1' -&gt; </span>
-<span class="lineno"> 2894 </span><span class="spaces">  </span><span class="nottickedoff">preDoubleArray $ \(a2'1, a2'2) -&gt; </span>
-<span class="lineno"> 2895 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a3' -&gt; </span>
-<span class="lineno"> 2896 </span><span class="spaces">  </span><span class="nottickedoff">fxResetRates'_ a1' a2'1  a2'2 a3' &gt;&gt;</span>
-<span class="lineno"> 2897 </span><span class="spaces">  </span><span class="nottickedoff">peekRealVector  a2'1  a2'2&gt;&gt;= \a2'' -&gt; </span>
-<span class="lineno"> 2898 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a3'&gt;&gt;</span>
-<span class="lineno"> 2899 </span><span class="spaces">  </span><span class="nottickedoff">return (a2'')</span></span>
+<span class="lineno"> 2892 </span><span class="decl"><span class="istickedoff">fxResetRates a1 =</span>
+<span class="lineno"> 2893 </span><span class="spaces">  </span><span class="istickedoff">withMtMCrossCurrencyBasisSwap a1 $ \a1' -&gt; </span>
+<span class="lineno"> 2894 </span><span class="spaces">  </span><span class="istickedoff">preDoubleArray $ \(a2'1, a2'2) -&gt; </span>
+<span class="lineno"> 2895 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
+<span class="lineno"> 2896 </span><span class="spaces">  </span><span class="istickedoff">fxResetRates'_ a1' a2'1  a2'2 a3' &gt;&gt;</span>
+<span class="lineno"> 2897 </span><span class="spaces">  </span><span class="istickedoff">peekRealVector  a2'1  a2'2&gt;&gt;= \a2'' -&gt; </span>
+<span class="lineno"> 2898 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
+<span class="lineno"> 2899 </span><span class="spaces">  </span><span class="istickedoff">return (a2'')</span></span>
 <span class="lineno"> 2900 </span>
 <span class="lineno"> 2901 </span>
 <span class="lineno"> 2902 </span>
 <span class="lineno"> 2903 </span>-- |Calculated reset notionals for non-occurred coupons in leg order (1.44).
 <span class="lineno"> 2904 </span>fxResetNotionals :: (MtMCrossCurrencyBasisSwap) -- ^swap
 <span class="lineno"> 2905 </span> -&gt; IO ((RealVector))
-<span class="lineno"> 2906 </span><span class="decl"><span class="nottickedoff">fxResetNotionals a1 =</span>
-<span class="lineno"> 2907 </span><span class="spaces">  </span><span class="nottickedoff">withMtMCrossCurrencyBasisSwap a1 $ \a1' -&gt; </span>
-<span class="lineno"> 2908 </span><span class="spaces">  </span><span class="nottickedoff">preDoubleArray $ \(a2'1, a2'2) -&gt; </span>
-<span class="lineno"> 2909 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a3' -&gt; </span>
-<span class="lineno"> 2910 </span><span class="spaces">  </span><span class="nottickedoff">fxResetNotionals'_ a1' a2'1  a2'2 a3' &gt;&gt;</span>
-<span class="lineno"> 2911 </span><span class="spaces">  </span><span class="nottickedoff">peekRealVector  a2'1  a2'2&gt;&gt;= \a2'' -&gt; </span>
-<span class="lineno"> 2912 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a3'&gt;&gt;</span>
-<span class="lineno"> 2913 </span><span class="spaces">  </span><span class="nottickedoff">return (a2'')</span></span>
+<span class="lineno"> 2906 </span><span class="decl"><span class="istickedoff">fxResetNotionals a1 =</span>
+<span class="lineno"> 2907 </span><span class="spaces">  </span><span class="istickedoff">withMtMCrossCurrencyBasisSwap a1 $ \a1' -&gt; </span>
+<span class="lineno"> 2908 </span><span class="spaces">  </span><span class="istickedoff">preDoubleArray $ \(a2'1, a2'2) -&gt; </span>
+<span class="lineno"> 2909 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
+<span class="lineno"> 2910 </span><span class="spaces">  </span><span class="istickedoff">fxResetNotionals'_ a1' a2'1  a2'2 a3' &gt;&gt;</span>
+<span class="lineno"> 2911 </span><span class="spaces">  </span><span class="istickedoff">peekRealVector  a2'1  a2'2&gt;&gt;= \a2'' -&gt; </span>
+<span class="lineno"> 2912 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
+<span class="lineno"> 2913 </span><span class="spaces">  </span><span class="istickedoff">return (a2'')</span></span>
 <span class="lineno"> 2914 </span>
 <span class="lineno"> 2915 </span>
 <span class="lineno"> 2916 </span>

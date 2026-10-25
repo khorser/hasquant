@@ -239,26 +239,26 @@ span.spaces    { background: white }
 <span class="lineno">  220 </span>-- 'Calendar' cannot occur in this pure default value. Keep this splice before every {#fun#}:
 <span class="lineno">  221 </span>-- c2hs appends foreign imports to the generated module, and an intervening top-level splice
 <span class="lineno">  222 </span>-- would split declarations from the imports their wrappers use.
-<span class="lineno">  223 </span>$<span class="istickedoff"><span class="nottickedoff"><span class="istickedoff">(deriveOptionsRecord &quot;OISRateHelperOpts&quot; [&quot;m&quot;, &quot;p&quot;]</span></span></span>
-<span class="lineno">  224 </span><span class="spaces">  </span><span class="istickedoff"><span class="nottickedoff"><span class="istickedoff">[ (&quot;oisTelescopicValueDates&quot;, [t|Bool|], [|False|])</span></span></span>
-<span class="lineno">  225 </span><span class="spaces">  </span><span class="istickedoff"><span class="nottickedoff"><span class="istickedoff">, (&quot;oisPaymentLag&quot;, [t|Int|], [|0|])</span></span></span>
-<span class="lineno">  226 </span><span class="spaces">  </span><span class="istickedoff"><span class="nottickedoff"><span class="istickedoff">, (&quot;oisPaymentConvention&quot;, [t|BusinessDayConvention|], [|Following|])</span></span></span>
-<span class="lineno">  227 </span><span class="spaces">  </span><span class="istickedoff"><span class="nottickedoff"><span class="istickedoff">, (&quot;oisPaymentFrequency&quot;, [t|Frequency|], [|Annual|])</span></span></span>
-<span class="lineno">  228 </span><span class="spaces">  </span><span class="istickedoff"><span class="nottickedoff"><span class="istickedoff">, (&quot;oisPaymentCalendar&quot;, [t|Maybe Calendar|], [|Nothing|])</span></span></span>
-<span class="lineno">  229 </span><span class="spaces">  </span><span class="istickedoff"><span class="nottickedoff"><span class="istickedoff">, (&quot;oisOvernightSpread&quot;, [t|Maybe (GenQuote $(varT (mkName &quot;m&quot;)))|], [|Nothing|])</span></span></span>
-<span class="lineno">  230 </span><span class="spaces">  </span><span class="istickedoff"><span class="nottickedoff"><span class="istickedoff">, (&quot;oisPillar&quot;, [t|PillarChoice|], [|LastRelevantDate|])</span></span></span>
-<span class="lineno">  231 </span><span class="spaces">  </span><span class="istickedoff"><span class="nottickedoff"><span class="istickedoff">, (&quot;oisCustomPillarDate&quot;, [t|Maybe Day|], [|Nothing|])</span></span></span>
-<span class="lineno">  232 </span><span class="spaces">  </span><span class="istickedoff"><span class="nottickedoff"><span class="istickedoff">, (&quot;oisAveragingMethod&quot;, [t|RateAveragingType|], [|AveragingCompound|])</span></span></span>
-<span class="lineno">  233 </span><span class="spaces">  </span><span class="istickedoff"><span class="nottickedoff"><span class="istickedoff">, (&quot;oisEndOfMonth&quot;, [t|Maybe Bool|], [|Nothing|])</span></span></span>
-<span class="lineno">  234 </span><span class="spaces">  </span><span class="istickedoff"><span class="nottickedoff"><span class="istickedoff">, (&quot;oisFixedPaymentFrequency&quot;, [t|Maybe Frequency|], [|Nothing|])</span></span></span>
-<span class="lineno">  235 </span><span class="spaces">  </span><span class="istickedoff"><span class="nottickedoff"><span class="istickedoff">, (&quot;oisFixedCalendar&quot;, [t|Maybe Calendar|], [|Nothing|])</span></span></span>
-<span class="lineno">  236 </span><span class="spaces">  </span><span class="istickedoff"><span class="nottickedoff"><span class="istickedoff">, (&quot;oisObservation&quot;, [t|OvernightObservation|], [|defaultOvernightObservation|])</span></span></span>
-<span class="lineno">  237 </span><span class="spaces">  </span><span class="istickedoff"><span class="nottickedoff"><span class="istickedoff">, (&quot;oisPricer&quot;, [t|Maybe (GenFloatingRateCouponPricer $(varT (mkName &quot;p&quot;)))|], [|Nothing|])</span></span></span>
-<span class="lineno">  238 </span><span class="spaces">  </span><span class="istickedoff"><span class="nottickedoff"><span class="istickedoff">, (&quot;oisRule&quot;, [t|DateGenerationRule|], [|Backward|])</span></span></span>
-<span class="lineno">  239 </span><span class="spaces">  </span><span class="istickedoff"><span class="nottickedoff"><span class="istickedoff">, (&quot;oisOvernightCalendar&quot;, [t|Maybe Calendar|], [|Nothing|])</span></span></span>
-<span class="lineno">  240 </span><span class="spaces">  </span><span class="istickedoff"><span class="nottickedoff"><span class="istickedoff">, (&quot;oisConvention&quot;, [t|BusinessDayConvention|], [|ModifiedFollowing|])</span></span></span>
-<span class="lineno">  241 </span><span class="spaces">  </span><span class="istickedoff"><span class="nottickedoff"><span class="istickedoff">, (&quot;oisFixedDayCount&quot;, [t|Maybe DayCounter|], [|Nothing|])</span></span></span>
-<span class="lineno">  242 </span><span class="spaces">  </span><span class="istickedoff"><span class="nottickedoff"><span class="istickedoff">])</span></span></span>
+<span class="lineno">  223 </span>$<span class="nottickedoff">(deriveOptionsRecord &quot;OISRateHelperOpts&quot; [&quot;m&quot;, &quot;p&quot;]</span>
+<span class="lineno">  224 </span><span class="spaces">  </span><span class="nottickedoff">[ (&quot;oisTelescopicValueDates&quot;, [t|Bool|], [|False|])</span>
+<span class="lineno">  225 </span><span class="spaces">  </span><span class="nottickedoff">, (&quot;oisPaymentLag&quot;, [t|Int|], [|0|])</span>
+<span class="lineno">  226 </span><span class="spaces">  </span><span class="nottickedoff">, (&quot;oisPaymentConvention&quot;, [t|BusinessDayConvention|], [|Following|])</span>
+<span class="lineno">  227 </span><span class="spaces">  </span><span class="nottickedoff">, (&quot;oisPaymentFrequency&quot;, [t|Frequency|], [|Annual|])</span>
+<span class="lineno">  228 </span><span class="spaces">  </span><span class="nottickedoff">, (&quot;oisPaymentCalendar&quot;, [t|Maybe Calendar|], [|Nothing|])</span>
+<span class="lineno">  229 </span><span class="spaces">  </span><span class="nottickedoff">, (&quot;oisOvernightSpread&quot;, [t|Maybe (GenQuote $(varT (mkName &quot;m&quot;)))|], [|Nothing|])</span>
+<span class="lineno">  230 </span><span class="spaces">  </span><span class="nottickedoff">, (&quot;oisPillar&quot;, [t|PillarChoice|], [|LastRelevantDate|])</span>
+<span class="lineno">  231 </span><span class="spaces">  </span><span class="nottickedoff">, (&quot;oisCustomPillarDate&quot;, [t|Maybe Day|], [|Nothing|])</span>
+<span class="lineno">  232 </span><span class="spaces">  </span><span class="nottickedoff">, (&quot;oisAveragingMethod&quot;, [t|RateAveragingType|], [|AveragingCompound|])</span>
+<span class="lineno">  233 </span><span class="spaces">  </span><span class="nottickedoff">, (&quot;oisEndOfMonth&quot;, [t|Maybe Bool|], [|Nothing|])</span>
+<span class="lineno">  234 </span><span class="spaces">  </span><span class="nottickedoff">, (&quot;oisFixedPaymentFrequency&quot;, [t|Maybe Frequency|], [|Nothing|])</span>
+<span class="lineno">  235 </span><span class="spaces">  </span><span class="nottickedoff">, (&quot;oisFixedCalendar&quot;, [t|Maybe Calendar|], [|Nothing|])</span>
+<span class="lineno">  236 </span><span class="spaces">  </span><span class="nottickedoff">, (&quot;oisObservation&quot;, [t|OvernightObservation|], [|defaultOvernightObservation|])</span>
+<span class="lineno">  237 </span><span class="spaces">  </span><span class="nottickedoff">, (&quot;oisPricer&quot;, [t|Maybe (GenFloatingRateCouponPricer $(varT (mkName &quot;p&quot;)))|], [|Nothing|])</span>
+<span class="lineno">  238 </span><span class="spaces">  </span><span class="nottickedoff">, (&quot;oisRule&quot;, [t|DateGenerationRule|], [|Backward|])</span>
+<span class="lineno">  239 </span><span class="spaces">  </span><span class="nottickedoff">, (&quot;oisOvernightCalendar&quot;, [t|Maybe Calendar|], [|Nothing|])</span>
+<span class="lineno">  240 </span><span class="spaces">  </span><span class="nottickedoff">, (&quot;oisConvention&quot;, [t|BusinessDayConvention|], [|ModifiedFollowing|])</span>
+<span class="lineno">  241 </span><span class="spaces">  </span><span class="nottickedoff">, (&quot;oisFixedDayCount&quot;, [t|Maybe DayCounter|], [|Nothing|])</span>
+<span class="lineno">  242 </span><span class="spaces">  </span><span class="nottickedoff">])</span>
 <span class="lineno">  243 </span>
 <span class="lineno">  244 </span>-- Upstream defaults accuracy/minValue/maxValue to Null&lt;Real&gt;() rather than to a number, so
 <span class="lineno">  245 </span>-- those three are Maybe on the Haskell side; fromMaybeDouble supplies the sentinel, and the
@@ -815,30 +815,30 @@ span.spaces    { background: white }
 <span class="lineno">  796 </span> -&gt; (Bool) -- ^basisOnIborLeg (1.44; QuantLib 1.43 requires 'False')
 <span class="lineno">  797 </span> -&gt; (Maybe (StubIndexSelection ibor2)) -- ^iborStub (1.44; QuantLib 1.43 requires 'Nothing')
 <span class="lineno">  798 </span> -&gt; IO ((RateHelper))
-<span class="lineno">  799 </span><span class="decl"><span class="istickedoff">overnightIborBasisSwapRateHelper a1 a2 a3 a4 a5 a6 a7 a8 a9 a10 a11 a12 a13 a14 a15 a16 a17 a18 =</span>
-<span class="lineno">  800 </span><span class="spaces">  </span><span class="istickedoff">withQuote a1 $ \a1' -&gt; </span>
-<span class="lineno">  801 </span><span class="spaces">  </span><span class="istickedoff">let {(a2'1, a2'2) = fromEnumQuantity a2} in </span>
-<span class="lineno">  802 </span><span class="spaces">  </span><span class="istickedoff">let {a3' = fromIntegral a3} in </span>
-<span class="lineno">  803 </span><span class="spaces">  </span><span class="istickedoff">withCalendar a4 $ \a4' -&gt; </span>
-<span class="lineno">  804 </span><span class="spaces">  </span><span class="istickedoff">let {a5' = fromEnumC a5} in </span>
-<span class="lineno">  805 </span><span class="spaces">  </span><span class="istickedoff">let {a6' = C2HSImp.fromBool a6} in </span>
-<span class="lineno">  806 </span><span class="spaces">  </span><span class="istickedoff">withOvernightIborIndex a7 $ \a7' -&gt; </span>
-<span class="lineno">  807 </span><span class="spaces">  </span><span class="istickedoff">withIborIndex a8 $ \a8' -&gt; </span>
-<span class="lineno">  808 </span><span class="spaces">  </span><span class="istickedoff">withMaybeYieldTermStructure a9 $ \a9' -&gt; </span>
-<span class="lineno">  809 </span><span class="spaces">  </span><span class="istickedoff">let {a10' = C2HSImp.fromBool a10} in </span>
-<span class="lineno">  810 </span><span class="spaces">  </span><span class="istickedoff">let {a11' = fromIntegral a11} in </span>
-<span class="lineno">  811 </span><span class="spaces">  </span><span class="istickedoff">let {a12' = fromMaybeEnum a12} in </span>
-<span class="lineno">  812 </span><span class="spaces">  </span><span class="istickedoff">let {a13' = fromMaybeBool a13} in </span>
-<span class="lineno">  813 </span><span class="spaces">  </span><span class="istickedoff">let {a14' = (fromIntegral . fromEnum) a14} in </span>
-<span class="lineno">  814 </span><span class="spaces">  </span><span class="istickedoff">let {a15' = fromEnumC a15} in </span>
-<span class="lineno">  815 </span><span class="spaces">  </span><span class="istickedoff">let {a16' = C2HSImp.fromBool a16} in </span>
-<span class="lineno">  816 </span><span class="spaces">  </span><span class="istickedoff">let {a17' = C2HSImp.fromBool a17} in </span>
-<span class="lineno">  817 </span><span class="spaces">  </span><span class="istickedoff">withStubIndexSelection a18 $ \a18' -&gt; </span>
-<span class="lineno">  818 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a19' -&gt; </span>
-<span class="lineno">  819 </span><span class="spaces">  </span><span class="istickedoff">overnightIborBasisSwapRateHelper'_ a1' a2'1  a2'2 a3' a4' a5' a6' a7' a8' a9' a10' a11' a12' a13' a14' a15' a16' a17' a18' a19' &gt;&gt;= \res -&gt;</span>
-<span class="lineno">  820 </span><span class="spaces">  </span><span class="istickedoff">peekRateHelper res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno">  821 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a19'&gt;&gt;</span>
-<span class="lineno">  822 </span><span class="spaces">  </span><span class="istickedoff"><span class="nottickedoff">return (res')</span></span></span>
+<span class="lineno">  799 </span><span class="decl"><span class="nottickedoff">overnightIborBasisSwapRateHelper a1 a2 a3 a4 a5 a6 a7 a8 a9 a10 a11 a12 a13 a14 a15 a16 a17 a18 =</span>
+<span class="lineno">  800 </span><span class="spaces">  </span><span class="nottickedoff">withQuote a1 $ \a1' -&gt; </span>
+<span class="lineno">  801 </span><span class="spaces">  </span><span class="nottickedoff">let {(a2'1, a2'2) = fromEnumQuantity a2} in </span>
+<span class="lineno">  802 </span><span class="spaces">  </span><span class="nottickedoff">let {a3' = fromIntegral a3} in </span>
+<span class="lineno">  803 </span><span class="spaces">  </span><span class="nottickedoff">withCalendar a4 $ \a4' -&gt; </span>
+<span class="lineno">  804 </span><span class="spaces">  </span><span class="nottickedoff">let {a5' = fromEnumC a5} in </span>
+<span class="lineno">  805 </span><span class="spaces">  </span><span class="nottickedoff">let {a6' = C2HSImp.fromBool a6} in </span>
+<span class="lineno">  806 </span><span class="spaces">  </span><span class="nottickedoff">withOvernightIborIndex a7 $ \a7' -&gt; </span>
+<span class="lineno">  807 </span><span class="spaces">  </span><span class="nottickedoff">withIborIndex a8 $ \a8' -&gt; </span>
+<span class="lineno">  808 </span><span class="spaces">  </span><span class="nottickedoff">withMaybeYieldTermStructure a9 $ \a9' -&gt; </span>
+<span class="lineno">  809 </span><span class="spaces">  </span><span class="nottickedoff">let {a10' = C2HSImp.fromBool a10} in </span>
+<span class="lineno">  810 </span><span class="spaces">  </span><span class="nottickedoff">let {a11' = fromIntegral a11} in </span>
+<span class="lineno">  811 </span><span class="spaces">  </span><span class="nottickedoff">let {a12' = fromMaybeEnum a12} in </span>
+<span class="lineno">  812 </span><span class="spaces">  </span><span class="nottickedoff">let {a13' = fromMaybeBool a13} in </span>
+<span class="lineno">  813 </span><span class="spaces">  </span><span class="nottickedoff">let {a14' = (fromIntegral . fromEnum) a14} in </span>
+<span class="lineno">  814 </span><span class="spaces">  </span><span class="nottickedoff">let {a15' = fromEnumC a15} in </span>
+<span class="lineno">  815 </span><span class="spaces">  </span><span class="nottickedoff">let {a16' = C2HSImp.fromBool a16} in </span>
+<span class="lineno">  816 </span><span class="spaces">  </span><span class="nottickedoff">let {a17' = C2HSImp.fromBool a17} in </span>
+<span class="lineno">  817 </span><span class="spaces">  </span><span class="nottickedoff">withStubIndexSelection a18 $ \a18' -&gt; </span>
+<span class="lineno">  818 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a19' -&gt; </span>
+<span class="lineno">  819 </span><span class="spaces">  </span><span class="nottickedoff">overnightIborBasisSwapRateHelper'_ a1' a2'1  a2'2 a3' a4' a5' a6' a7' a8' a9' a10' a11' a12' a13' a14' a15' a16' a17' a18' a19' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  820 </span><span class="spaces">  </span><span class="nottickedoff">peekRateHelper res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno">  821 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a19'&gt;&gt;</span>
+<span class="lineno">  822 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
 <span class="lineno">  823 </span>
 <span class="lineno">  824 </span>
 <span class="lineno">  825 </span>
@@ -1239,31 +1239,31 @@ span.spaces    { background: white }
 <span class="lineno"> 1220 </span>-- |'oisRateHelper' with every trailing QuantLib parameter taken from an options record.
 <span class="lineno"> 1221 </span>oisRateHelperWithOptions :: OisTerms -&gt; GenQuote q -&gt; OvernightIborIndex
 <span class="lineno"> 1222 </span>  -&gt; Maybe (GenYieldTermStructure y) -&gt; OISRateHelperOpts m p -&gt; IO OISRateHelper
-<span class="lineno"> 1223 </span><span class="decl"><span class="istickedoff">oisRateHelperWithOptions terms fixedRate idx discountingCurve opts = do</span>
-<span class="lineno"> 1224 </span><span class="spaces">  </span><span class="istickedoff">cal &lt;- calendar Null</span>
-<span class="lineno"> 1225 </span><span class="spaces">  </span><span class="istickedoff">let obs = oisObservation opts</span>
-<span class="lineno"> 1226 </span><span class="spaces">      </span><span class="istickedoff">paymentCal = fromMaybe cal (oisPaymentCalendar opts)</span>
-<span class="lineno"> 1227 </span><span class="spaces">      </span><span class="istickedoff">fixedCal = fromMaybe cal (oisFixedCalendar opts)</span>
-<span class="lineno"> 1228 </span><span class="spaces">      </span><span class="istickedoff">overnightCal = fromMaybe cal (oisOvernightCalendar opts)</span>
-<span class="lineno"> 1229 </span><span class="spaces">  </span><span class="istickedoff">case terms of</span>
-<span class="lineno"> 1230 </span><span class="spaces">    </span><span class="istickedoff">OisTenor settlementDays tenor forwardStart -&gt;</span>
-<span class="lineno"> 1231 </span><span class="spaces">      </span><span class="istickedoff">oisRateHelper_ settlementDays tenor fixedRate idx discountingCurve</span>
-<span class="lineno"> 1232 </span><span class="spaces">        </span><span class="istickedoff">(oisTelescopicValueDates opts) (oisPaymentLag opts) (oisPaymentConvention opts)</span>
-<span class="lineno"> 1233 </span><span class="spaces">        </span><span class="istickedoff">(oisPaymentFrequency opts) paymentCal</span>
-<span class="lineno"> 1234 </span><span class="spaces">        </span><span class="istickedoff">forwardStart (oisOvernightSpread opts) (oisPillar opts) (oisCustomPillarDate opts)</span>
-<span class="lineno"> 1235 </span><span class="spaces">        </span><span class="istickedoff">(oisAveragingMethod opts) (oisEndOfMonth opts) (oisFixedPaymentFrequency opts)</span>
-<span class="lineno"> 1236 </span><span class="spaces">        </span><span class="istickedoff">fixedCal (lookbackDays obs) (lockoutDays obs)</span>
-<span class="lineno"> 1237 </span><span class="spaces">        </span><span class="istickedoff">(applyObservationShift obs) (oisPricer opts) (oisRule opts)</span>
-<span class="lineno"> 1238 </span><span class="spaces">        </span><span class="istickedoff">overnightCal (oisConvention opts) (oisFixedDayCount opts)</span>
-<span class="lineno"> 1239 </span><span class="spaces">    </span><span class="istickedoff">OisBetweenDates startDate endDate -&gt;</span>
-<span class="lineno"> 1240 </span><span class="spaces">      </span><span class="istickedoff"><span class="nottickedoff">oisRateHelper2_ startDate endDate fixedRate idx discountingCurve</span></span>
-<span class="lineno"> 1241 </span><span class="spaces">        </span><span class="istickedoff"><span class="nottickedoff">(oisTelescopicValueDates opts) (oisPaymentLag opts) (oisPaymentConvention opts)</span></span>
-<span class="lineno"> 1242 </span><span class="spaces">        </span><span class="istickedoff"><span class="nottickedoff">(oisPaymentFrequency opts) paymentCal</span></span>
-<span class="lineno"> 1243 </span><span class="spaces">        </span><span class="istickedoff"><span class="nottickedoff">(oisOvernightSpread opts) (oisPillar opts) (oisCustomPillarDate opts)</span></span>
-<span class="lineno"> 1244 </span><span class="spaces">        </span><span class="istickedoff"><span class="nottickedoff">(oisAveragingMethod opts) (oisEndOfMonth opts) (oisFixedPaymentFrequency opts)</span></span>
-<span class="lineno"> 1245 </span><span class="spaces">        </span><span class="istickedoff"><span class="nottickedoff">fixedCal (lookbackDays obs) (lockoutDays obs)</span></span>
-<span class="lineno"> 1246 </span><span class="spaces">        </span><span class="istickedoff"><span class="nottickedoff">(applyObservationShift obs) (oisPricer opts) (oisRule opts)</span></span>
-<span class="lineno"> 1247 </span><span class="spaces">        </span><span class="istickedoff"><span class="nottickedoff">overnightCal (oisConvention opts) (oisFixedDayCount opts)</span></span></span>
+<span class="lineno"> 1223 </span><span class="decl"><span class="nottickedoff">oisRateHelperWithOptions terms fixedRate idx discountingCurve opts = do</span>
+<span class="lineno"> 1224 </span><span class="spaces">  </span><span class="nottickedoff">cal &lt;- calendar Null</span>
+<span class="lineno"> 1225 </span><span class="spaces">  </span><span class="nottickedoff">let obs = oisObservation opts</span>
+<span class="lineno"> 1226 </span><span class="spaces">      </span><span class="nottickedoff">paymentCal = fromMaybe cal (oisPaymentCalendar opts)</span>
+<span class="lineno"> 1227 </span><span class="spaces">      </span><span class="nottickedoff">fixedCal = fromMaybe cal (oisFixedCalendar opts)</span>
+<span class="lineno"> 1228 </span><span class="spaces">      </span><span class="nottickedoff">overnightCal = fromMaybe cal (oisOvernightCalendar opts)</span>
+<span class="lineno"> 1229 </span><span class="spaces">  </span><span class="nottickedoff">case terms of</span>
+<span class="lineno"> 1230 </span><span class="spaces">    </span><span class="nottickedoff">OisTenor settlementDays tenor forwardStart -&gt;</span>
+<span class="lineno"> 1231 </span><span class="spaces">      </span><span class="nottickedoff">oisRateHelper_ settlementDays tenor fixedRate idx discountingCurve</span>
+<span class="lineno"> 1232 </span><span class="spaces">        </span><span class="nottickedoff">(oisTelescopicValueDates opts) (oisPaymentLag opts) (oisPaymentConvention opts)</span>
+<span class="lineno"> 1233 </span><span class="spaces">        </span><span class="nottickedoff">(oisPaymentFrequency opts) paymentCal</span>
+<span class="lineno"> 1234 </span><span class="spaces">        </span><span class="nottickedoff">forwardStart (oisOvernightSpread opts) (oisPillar opts) (oisCustomPillarDate opts)</span>
+<span class="lineno"> 1235 </span><span class="spaces">        </span><span class="nottickedoff">(oisAveragingMethod opts) (oisEndOfMonth opts) (oisFixedPaymentFrequency opts)</span>
+<span class="lineno"> 1236 </span><span class="spaces">        </span><span class="nottickedoff">fixedCal (lookbackDays obs) (lockoutDays obs)</span>
+<span class="lineno"> 1237 </span><span class="spaces">        </span><span class="nottickedoff">(applyObservationShift obs) (oisPricer opts) (oisRule opts)</span>
+<span class="lineno"> 1238 </span><span class="spaces">        </span><span class="nottickedoff">overnightCal (oisConvention opts) (oisFixedDayCount opts)</span>
+<span class="lineno"> 1239 </span><span class="spaces">    </span><span class="nottickedoff">OisBetweenDates startDate endDate -&gt;</span>
+<span class="lineno"> 1240 </span><span class="spaces">      </span><span class="nottickedoff">oisRateHelper2_ startDate endDate fixedRate idx discountingCurve</span>
+<span class="lineno"> 1241 </span><span class="spaces">        </span><span class="nottickedoff">(oisTelescopicValueDates opts) (oisPaymentLag opts) (oisPaymentConvention opts)</span>
+<span class="lineno"> 1242 </span><span class="spaces">        </span><span class="nottickedoff">(oisPaymentFrequency opts) paymentCal</span>
+<span class="lineno"> 1243 </span><span class="spaces">        </span><span class="nottickedoff">(oisOvernightSpread opts) (oisPillar opts) (oisCustomPillarDate opts)</span>
+<span class="lineno"> 1244 </span><span class="spaces">        </span><span class="nottickedoff">(oisAveragingMethod opts) (oisEndOfMonth opts) (oisFixedPaymentFrequency opts)</span>
+<span class="lineno"> 1245 </span><span class="spaces">        </span><span class="nottickedoff">fixedCal (lookbackDays obs) (lockoutDays obs)</span>
+<span class="lineno"> 1246 </span><span class="spaces">        </span><span class="nottickedoff">(applyObservationShift obs) (oisPricer opts) (oisRule opts)</span>
+<span class="lineno"> 1247 </span><span class="spaces">        </span><span class="nottickedoff">overnightCal (oisConvention opts) (oisFixedDayCount opts)</span></span>
 <span class="lineno"> 1248 </span>
 <span class="lineno"> 1249 </span>-- The 'SwapRateFromIndex' binding behind 'swapRateHelper'.
 <span class="lineno"> 1250 </span>swapRateHelperFromIndexRaw :: (GenQuote q1) -- ^rate
@@ -1692,7 +1692,7 @@ span.spaces    { background: white }
 <span class="lineno"> 1673 </span>rateHelperFixingDependencies :: GenRateHelper rh -&gt; IO (Maybe [(String, Day)])
 <span class="lineno"> 1674 </span><span class="decl"><span class="istickedoff">rateHelperFixingDependencies h = do</span>
 <span class="lineno"> 1675 </span><span class="spaces">  </span><span class="istickedoff">(ns, ds, ok) &lt;- qlRateHelperFixingDependencies h</span>
-<span class="lineno"> 1676 </span><span class="spaces">  </span><span class="istickedoff">pure $ if ok /= 0 then Just (zip ns ds) else Nothing</span></span>
+<span class="lineno"> 1676 </span><span class="spaces">  </span><span class="istickedoff">pure $ if <span class="tickonlytrue">ok /= 0</span> then Just (zip ns ds) else <span class="nottickedoff">Nothing</span></span></span>
 <span class="lineno"> 1677 </span>qlRateHelperFixingDependencies :: (GenRateHelper rh) -&gt; IO (([String]), ([Day]), (CInt))
 <span class="lineno"> 1678 </span><span class="decl"><span class="istickedoff">qlRateHelperFixingDependencies a1 =</span>
 <span class="lineno"> 1679 </span><span class="spaces">  </span><span class="istickedoff">withRateHelper a1 $ \a1' -&gt; </span>
@@ -2708,7 +2708,7 @@ span.spaces    { background: white }
 <span class="lineno"> 2689 </span><span class="spaces">  </span><span class="istickedoff">impliedTermStructureMoving'_ a1' a2' a3' a4' &gt;&gt;= \res -&gt;</span>
 <span class="lineno"> 2690 </span><span class="spaces">  </span><span class="istickedoff">peekYieldTermStructure res &gt;&gt;= \res' -&gt;</span>
 <span class="lineno"> 2691 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a4'&gt;&gt;</span>
-<span class="lineno"> 2692 </span><span class="spaces">  </span><span class="istickedoff"><span class="nottickedoff">return (res')</span></span></span>
+<span class="lineno"> 2692 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
 <span class="lineno"> 2693 </span>
 <span class="lineno"> 2694 </span>
 <span class="lineno"> 2695 </span>
@@ -2753,7 +2753,7 @@ span.spaces    { background: white }
 <span class="lineno"> 2734 </span><span class="spaces">  </span><span class="istickedoff">overnightOvernightBasisSwapRateHelper'_ a1' a2'1  a2'2 a3' a4' a5' a6' a7' a8' a9' a10' a11' a12' a13' a14' a15' a16' a17' &gt;&gt;= \res -&gt;</span>
 <span class="lineno"> 2735 </span><span class="spaces">  </span><span class="istickedoff">peekRateHelper res &gt;&gt;= \res' -&gt;</span>
 <span class="lineno"> 2736 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a17'&gt;&gt;</span>
-<span class="lineno"> 2737 </span><span class="spaces">  </span><span class="istickedoff"><span class="nottickedoff">return (res')</span></span></span>
+<span class="lineno"> 2737 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
 <span class="lineno"> 2738 </span>
 <span class="lineno"> 2739 </span>
 <span class="lineno"> 2740 </span>
@@ -2823,7 +2823,7 @@ span.spaces    { background: white }
 <span class="lineno"> 2804 </span><span class="spaces">  </span><span class="istickedoff">overnightIndexedFundingRateHelperRaw'_ a1' a2' a3' a4' a5' a6' a7' a8' a9' a10'1  a10'2 a11' a12' a13' a14' a15' a16' a17' &gt;&gt;= \res -&gt;</span>
 <span class="lineno"> 2805 </span><span class="spaces">  </span><span class="istickedoff">peekRateHelper res &gt;&gt;= \res' -&gt;</span>
 <span class="lineno"> 2806 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a17'&gt;&gt;</span>
-<span class="lineno"> 2807 </span><span class="spaces">  </span><span class="istickedoff"><span class="nottickedoff">return (res')</span></span></span>
+<span class="lineno"> 2807 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
 <span class="lineno"> 2808 </span>
 <span class="lineno"> 2809 </span>
 <span class="lineno"> 2810 </span>
@@ -2837,16 +2837,16 @@ span.spaces    { background: white }
 <span class="lineno"> 2818 </span>withMaybeBootstrapInitialGuess :: Maybe BootstrapInitialGuess -&gt; (Ptr () -&gt; IO r) -&gt; IO r
 <span class="lineno"> 2819 </span><span class="decl"><span class="istickedoff">withMaybeBootstrapInitialGuess Nothing use = use nullPtr</span>
 <span class="lineno"> 2820 </span><span class="spaces"></span><span class="istickedoff">withMaybeBootstrapInitialGuess (Just f) use</span>
-<span class="lineno"> 2821 </span><span class="spaces">  </span><span class="istickedoff">| <span class="tickonlytrue">not supportsInitialGuess</span> = use nullPtr</span>
-<span class="lineno"> 2822 </span><span class="spaces">  </span><span class="istickedoff">| <span class="nottickedoff">otherwise</span> = <span class="nottickedoff">Callback.withCallback call (`Callback.withCallbackPtr` use)</span></span>
+<span class="lineno"> 2821 </span><span class="spaces">  </span><span class="istickedoff">| <span class="tickonlyfalse">not supportsInitialGuess</span> = <span class="nottickedoff">use nullPtr</span></span>
+<span class="lineno"> 2822 </span><span class="spaces">  </span><span class="istickedoff">| <span class="tickonlytrue">otherwise</span> = Callback.withCallback call (`Callback.withCallbackPtr` use)</span>
 <span class="lineno"> 2823 </span><span class="spaces">  </span><span class="istickedoff">where</span>
-<span class="lineno"> 2824 </span><span class="spaces">    </span><span class="istickedoff"><span class="nottickedoff">call args = do</span></span>
-<span class="lineno"> 2825 </span><span class="spaces">      </span><span class="istickedoff"><span class="nottickedoff">times &lt;- borrowRealVector (Callback.callbackInput args) (fromIntegral (Callback.callbackSize args))</span></span>
-<span class="lineno"> 2826 </span><span class="spaces">      </span><span class="istickedoff"><span class="nottickedoff">previous &lt;- borrowRealVector (Callback.callbackInput2 args) (fromIntegral (Callback.callbackSize2 args))</span></span>
-<span class="lineno"> 2827 </span><span class="spaces">      </span><span class="istickedoff"><span class="nottickedoff">values &lt;- f times previous</span></span>
-<span class="lineno"> 2828 </span><span class="spaces">      </span><span class="istickedoff"><span class="nottickedoff">let expected = Callback.callbackOutputSize args</span></span>
-<span class="lineno"> 2829 </span><span class="spaces">      </span><span class="istickedoff"><span class="nottickedoff">when (V.length values /= expected) $ throwIO $ CallbackResultLength expected (V.length values)</span></span>
-<span class="lineno"> 2830 </span><span class="spaces">      </span><span class="istickedoff"><span class="nottickedoff">V.unsafeWith values $ \p -&gt; copyArray (castPtr (Callback.callbackOutput args)) p expected</span></span></span>
+<span class="lineno"> 2824 </span><span class="spaces">    </span><span class="istickedoff">call args = do</span>
+<span class="lineno"> 2825 </span><span class="spaces">      </span><span class="istickedoff">times &lt;- borrowRealVector (Callback.callbackInput args) (fromIntegral (Callback.callbackSize args))</span>
+<span class="lineno"> 2826 </span><span class="spaces">      </span><span class="istickedoff">previous &lt;- borrowRealVector (Callback.callbackInput2 args) (fromIntegral (Callback.callbackSize2 args))</span>
+<span class="lineno"> 2827 </span><span class="spaces">      </span><span class="istickedoff">values &lt;- f times previous</span>
+<span class="lineno"> 2828 </span><span class="spaces">      </span><span class="istickedoff">let expected = Callback.callbackOutputSize args</span>
+<span class="lineno"> 2829 </span><span class="spaces">      </span><span class="istickedoff">when (V.length values /= expected) $ throwIO $ CallbackResultLength expected (V.length values)</span>
+<span class="lineno"> 2830 </span><span class="spaces">      </span><span class="istickedoff">V.unsafeWith values $ \p -&gt; copyArray (castPtr (Callback.callbackOutput args)) p expected</span></span>
 <span class="lineno"> 2831 </span>
 <span class="lineno"> 2832 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Yield.chs.h qlDepositRateHelper1&quot;
 <span class="lineno"> 2833 </span>  depositRateHelperFromIndexRaw'_ :: ((C2HSImp.Ptr (CQuote')) -&gt; ((C2HSImp.Ptr (CIborIndex')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CRateHelper'))))))

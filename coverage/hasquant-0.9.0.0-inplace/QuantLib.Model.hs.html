@@ -2236,9 +2236,9 @@ span.spaces    { background: white }
 <span class="lineno"> 2217 </span><span class="spaces">  </span><span class="istickedoff">withMaybeYieldTermStructure a5 $ \a5' -&gt; </span>
 <span class="lineno"> 2218 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a6' -&gt; </span>
 <span class="lineno"> 2219 </span><span class="spaces">  </span><span class="istickedoff">gaussian1dCompoundedRate'_ a1' a2' a3' a4' a5' a6' &gt;&gt;= \res -&gt;</span>
-<span class="lineno"> 2220 </span><span class="spaces">  </span><span class="istickedoff">let {<span class="nottickedoff">res' = realToFrac res</span>} in</span>
+<span class="lineno"> 2220 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
 <span class="lineno"> 2221 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a6'&gt;&gt;</span>
-<span class="lineno"> 2222 </span><span class="spaces">  </span><span class="istickedoff"><span class="nottickedoff">return (res')</span></span></span>
+<span class="lineno"> 2222 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
 <span class="lineno"> 2223 </span>
 <span class="lineno"> 2224 </span>
 <span class="lineno"> 2225 </span>
@@ -2253,20 +2253,20 @@ span.spaces    { background: white }
 <span class="lineno"> 2234 </span><span class="spaces">  </span><span class="istickedoff">roughHestonModel'_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
 <span class="lineno"> 2235 </span><span class="spaces">  </span><span class="istickedoff">peekRoughHestonModel res &gt;&gt;= \res' -&gt;</span>
 <span class="lineno"> 2236 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
-<span class="lineno"> 2237 </span><span class="spaces">  </span><span class="istickedoff"><span class="nottickedoff">return (res')</span></span></span>
+<span class="lineno"> 2237 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
 <span class="lineno"> 2238 </span>
 <span class="lineno"> 2239 </span>
 <span class="lineno"> 2240 </span>
 <span class="lineno"> 2241 </span>-- |Current calibrated theta (1.44).
 <span class="lineno"> 2242 </span>roughHestonTheta :: (RoughHestonModel) -- ^model
 <span class="lineno"> 2243 </span> -&gt; IO ((Double))
-<span class="lineno"> 2244 </span><span class="decl"><span class="nottickedoff">roughHestonTheta a1 =</span>
-<span class="lineno"> 2245 </span><span class="spaces">  </span><span class="nottickedoff">withRoughHestonModel a1 $ \a1' -&gt; </span>
-<span class="lineno"> 2246 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a2' -&gt; </span>
-<span class="lineno"> 2247 </span><span class="spaces">  </span><span class="nottickedoff">roughHestonTheta'_ a1' a2' &gt;&gt;= \res -&gt;</span>
-<span class="lineno"> 2248 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = realToFrac res} in</span>
-<span class="lineno"> 2249 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a2'&gt;&gt;</span>
-<span class="lineno"> 2250 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno"> 2244 </span><span class="decl"><span class="istickedoff">roughHestonTheta a1 =</span>
+<span class="lineno"> 2245 </span><span class="spaces">  </span><span class="istickedoff">withRoughHestonModel a1 $ \a1' -&gt; </span>
+<span class="lineno"> 2246 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
+<span class="lineno"> 2247 </span><span class="spaces">  </span><span class="istickedoff">roughHestonTheta'_ a1' a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno"> 2248 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno"> 2249 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
+<span class="lineno"> 2250 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
 <span class="lineno"> 2251 </span>
 <span class="lineno"> 2252 </span>
 <span class="lineno"> 2253 </span>
@@ -2325,26 +2325,26 @@ span.spaces    { background: white }
 <span class="lineno"> 2306 </span>-- |Current calibrated hurst (1.44).
 <span class="lineno"> 2307 </span>roughHestonHurst :: (RoughHestonModel) -- ^model
 <span class="lineno"> 2308 </span> -&gt; IO ((Double))
-<span class="lineno"> 2309 </span><span class="decl"><span class="nottickedoff">roughHestonHurst a1 =</span>
-<span class="lineno"> 2310 </span><span class="spaces">  </span><span class="nottickedoff">withRoughHestonModel a1 $ \a1' -&gt; </span>
-<span class="lineno"> 2311 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a2' -&gt; </span>
-<span class="lineno"> 2312 </span><span class="spaces">  </span><span class="nottickedoff">roughHestonHurst'_ a1' a2' &gt;&gt;= \res -&gt;</span>
-<span class="lineno"> 2313 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = realToFrac res} in</span>
-<span class="lineno"> 2314 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a2'&gt;&gt;</span>
-<span class="lineno"> 2315 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno"> 2309 </span><span class="decl"><span class="istickedoff">roughHestonHurst a1 =</span>
+<span class="lineno"> 2310 </span><span class="spaces">  </span><span class="istickedoff">withRoughHestonModel a1 $ \a1' -&gt; </span>
+<span class="lineno"> 2311 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
+<span class="lineno"> 2312 </span><span class="spaces">  </span><span class="istickedoff">roughHestonHurst'_ a1' a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno"> 2313 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
+<span class="lineno"> 2314 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
+<span class="lineno"> 2315 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
 <span class="lineno"> 2316 </span>
 <span class="lineno"> 2317 </span>
 <span class="lineno"> 2318 </span>
 <span class="lineno"> 2319 </span>-- |Current calibrated process (1.44).
 <span class="lineno"> 2320 </span>roughHestonProcess :: (RoughHestonModel) -- ^model
 <span class="lineno"> 2321 </span> -&gt; IO ((HestonProcess))
-<span class="lineno"> 2322 </span><span class="decl"><span class="nottickedoff">roughHestonProcess a1 =</span>
-<span class="lineno"> 2323 </span><span class="spaces">  </span><span class="nottickedoff">withRoughHestonModel a1 $ \a1' -&gt; </span>
-<span class="lineno"> 2324 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a2' -&gt; </span>
-<span class="lineno"> 2325 </span><span class="spaces">  </span><span class="nottickedoff">roughHestonProcess'_ a1' a2' &gt;&gt;= \res -&gt;</span>
-<span class="lineno"> 2326 </span><span class="spaces">  </span><span class="nottickedoff">peekHestonProcess res &gt;&gt;= \res' -&gt;</span>
-<span class="lineno"> 2327 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a2'&gt;&gt;</span>
-<span class="lineno"> 2328 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
+<span class="lineno"> 2322 </span><span class="decl"><span class="istickedoff">roughHestonProcess a1 =</span>
+<span class="lineno"> 2323 </span><span class="spaces">  </span><span class="istickedoff">withRoughHestonModel a1 $ \a1' -&gt; </span>
+<span class="lineno"> 2324 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
+<span class="lineno"> 2325 </span><span class="spaces">  </span><span class="istickedoff">roughHestonProcess'_ a1' a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno"> 2326 </span><span class="spaces">  </span><span class="istickedoff">peekHestonProcess res &gt;&gt;= \res' -&gt;</span>
+<span class="lineno"> 2327 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
+<span class="lineno"> 2328 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
 <span class="lineno"> 2329 </span>
 <span class="lineno"> 2330 </span>
 <span class="lineno"> 2331 </span>
