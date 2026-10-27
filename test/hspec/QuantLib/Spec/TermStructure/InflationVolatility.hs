@@ -128,7 +128,7 @@ setup = do
 
   let fixingDays = 0
       yyLag = (3, Months)
-  priceSurfEU <- yoyCapFloorTermPriceSurface fixingDays yyLag yoyIndexEU CPILinear nominalEUR dc cal ModifiedFollowing
+  priceSurfEU <- yoyCapFloorTermPriceSurface (Just eval) fixingDays yyLag yoyIndexEU CPILinear nominalEUR dc cal ModifiedFollowing
                    cStrikesEU fStrikesEU cfMaturitiesEU capPricesEU floorPricesEU Bicubic (Cubic Kruger)
 
   return (eval, cal, dc, nominalEUR, yoyIndexEU, priceSurfEU)
@@ -136,6 +136,15 @@ setup = do
 spec :: Spec
 spec = do
  describe "YoY optionlet stripper (KInterpolatedYoYOptionletVolatilitySurface)" $ do
+  it "booked ATM helpers survive a clock after their first maturity" $ Context.keepingSettingsGc $ do
+    (eval, _, _, _, _, prices) <- setup
+    rates <- yoyCapFloorAtmYoySwapDateRates prices
+    ratesBefore <- mapM (\(date, _) -> yoyCapFloorAtmYoyRate prices date Nothing True) rates
+    Context.setEvaluationDate (Just (addGregorianYearsClip 2 eval))
+    Context.setEvaluationDate (Just eval)
+    ratesAfter <- mapM (\(date, _) -> yoyCapFloorAtmYoyRate prices date Nothing True) rates
+    zipWithM_ (\a b -> abs (a-b) `shouldSatisfy` (< 1e-12)) ratesBefore ratesAfter
+
   it "interpolatedYoyInflationCurve: a non-Linear interpolation builds and differs between nodes" $ Context.keepingSettingsGc $ do
     let eval = 23 `november` 2007
     Context.setEvaluationDate (Just eval)
@@ -212,7 +221,7 @@ spec = do
     zii <- zeroInflationIndex EUHICP
     yoyIndexEU <- yoyInflationIndexFromZero zii (Just yoyEU)
 
-    priceSurf <- yoyCapFloorTermPriceSurface 0 (3, Months) yoyIndexEU CPILinear nominalEUR dc cal ModifiedFollowing
+    priceSurf <- yoyCapFloorTermPriceSurface Nothing 0 (3, Months) yoyIndexEU CPILinear nominalEUR dc cal ModifiedFollowing
                    cStrikesEU fStrikesEU cfMaturitiesEU capPricesEU floorPricesEU Bilinear Linear
     ((rate1st, _):_) <- yoyCapFloorAtmYoySwapDateRates priceSurf
     rate <- yoyCapFloorAtmYoySwapRate priceSurf rate1st True

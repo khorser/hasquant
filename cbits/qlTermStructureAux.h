@@ -341,7 +341,7 @@ QuantLib::CPICapFloorTermPriceSurface *qlCPICapFloorTermPriceSurfaceAux(
 
 // Two interpolator axes: the 2-D cap/floor price grid, and the 1-D per-maturity curve.
 QuantLib::YoYCapFloorTermPriceSurface *qlYoYCapFloorTermPriceSurfaceAux(
-    QuantLib::Natural fixingDays, const QuantLib::Period &yyLag,
+    const QuantLib::Date& startDate, QuantLib::Natural fixingDays, const QuantLib::Period &yyLag,
     const QuantLib::ext::shared_ptr<QuantLib::YoYInflationIndex> &yii,
     QuantLib::CPI::InterpolationType interpolation,
     const QuantLib::Handle<QuantLib::YieldTermStructure> &nominal,

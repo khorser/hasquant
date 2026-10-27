@@ -96,7 +96,15 @@ import QuantLib.Internal.Common
 -- |Prices YoY cap\/floors by cap\/floor-surface intersection and put\/call parity, deriving an
 -- ATM YoY swap curve as a side effect. 'Interpolation2D' chooses the cap\/floor price-grid
 -- interpolator, 'Interpolation' the per-maturity one.
-yoyCapFloorTermPriceSurface :: Word -- ^fixingDays
+--
+-- @Nothing@ preserves QuantLib's moving reference date and swap helpers. @Just start@
+-- books the price grid at the current evaluation date, which must equal @start@. Its reference
+-- date is fixed at construction and its derived ATM curve uses QuantLib fixed-start swap helpers,
+-- with the same native pillar dates. This prevents later process-date restoration from rebuilding
+-- a swap after its maturity. Rebuild a booked grid to value it on another evaluation date.
+-- The intersection, parity, interpolation and bootstrapping calculations remain QuantLib's.
+yoyCapFloorTermPriceSurface :: Maybe Day -- ^Fixed swap start, equal to the construction evaluation date; Nothing selects moving dates.
+  -> Word -- ^fixingDays
   -> (Word, TimeUnit) -- ^yyLag
   -> GenYoYInflationIndex yidx -> CPIInterpolationType -> GenYieldTermStructure y -- ^nominal
   -> DayCounter -> Calendar -> BusinessDayConvention
@@ -107,10 +115,11 @@ yoyCapFloorTermPriceSurface :: Word -- ^fixingDays
   -> RealMatrix -- ^fPrice
   -> Interpolation2D -> Interpolation
   -> IO YoYCapFloorTermPriceSurface
-yoyCapFloorTermPriceSurface fixingDays yyLag yii interp nominal dc cal bdc cStrikes fStrikes cfMaturities (RealMatrix cr cc cd) (RealMatrix fr fc fd) i2d i1d =
-  uncurryNested (qlYoYCapFloorTermPriceSurface fixingDays yyLag yii interp nominal dc cal bdc cStrikes fStrikes maturityNums maturityUnits cr cc cd fr fc fd (fromEnum i2d)) (qlInterpolation i1d)
+yoyCapFloorTermPriceSurface startDate fixingDays yyLag yii interp nominal dc cal bdc cStrikes fStrikes cfMaturities (RealMatrix cr cc cd) (RealMatrix fr fc fd) i2d i1d =
+  uncurryNested (qlYoYCapFloorTermPriceSurface startDate fixingDays yyLag yii interp nominal dc cal bdc cStrikes fStrikes maturityNums maturityUnits cr cc cd fr fc fd (fromEnum i2d)) (qlInterpolation i1d)
   where (maturityNums, maturityUnits) = unzip cfMaturities
-{#fun qlYoYCapFloorTermPriceSurface{fromIntegral`Word' -- ^fixingDays
+{#fun qlYoYCapFloorTermPriceSurface{withMaybeDay*`Maybe Day' -- ^Fixed start, or moving dates.
+  ,fromIntegral`Word' -- ^fixingDays
   ,fromEnumQuantity`(Word,TimeUnit)'& -- ^yyLag
   ,withYoYInflationIndex*`GenYoYInflationIndex yidx'
   ,fromEnumC`CPIInterpolationType'

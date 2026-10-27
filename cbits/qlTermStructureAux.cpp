@@ -700,9 +700,44 @@ CPICapFloorTermPriceSurface *qlCPICapFloorTermPriceSurfaceAux(
   });
 }
 
+// Keep booked price grids independent of later process-clock changes.
+template <class I2D, class I1D>
+class FixedStartYoyPriceSurface : public InterpolatedYoYCapFloorTermPriceSurface<I2D, I1D> {
+  using Base = InterpolatedYoYCapFloorTermPriceSurface<I2D, I1D>;
+  Date reference_;
+public:
+  template <class... Args>
+  FixedStartYoyPriceSurface(const Date& start, Args&&... args)
+      : Base(std::forward<Args>(args)...), reference_(Base::referenceDate()) {
+    this->unregisterWith(Settings::instance().evaluationDate());
+    const auto frequency = this->yoyIndex()->frequency();
+    const auto interpolation = this->indexIsInterpolated() ? CPI::Linear : CPI::Flat;
+    const Size years = (Size)std::lround(this->timeFromReference(reference_ + this->cfMaturities_.back()));
+    std::vector<shared_ptr<BootstrapHelper<YoYInflationTermStructure>>> helpers;
+    for (Size year = 1; year <= years; ++year) {
+      const Date maturity = this->nominalTS_->referenceDate() + Period(year, Years);
+      const Handle<Quote> quote(ext::make_shared<SimpleQuote>(this->atmYoYSwapRate(maturity)));
+      // Preserve the native moving constructor's pillar, including interpolated observations.
+      const YearOnYearInflationSwapHelper original(quote, this->observationLag(), maturity,
+          this->calendar(), this->bdc_, this->dayCounter(), this->yoyIndex(), interpolation,
+          this->nominalTS_);
+      helpers.push_back(ext::make_shared<YearOnYearInflationSwapHelper>(quote,
+          this->observationLag(), start, maturity, this->calendar(), this->bdc_,
+          this->dayCounter(), this->yoyIndex(), interpolation, this->nominalTS_,
+          Pillar::CustomDate, original.pillarDate()));
+    }
+    auto curve = ext::make_shared<PiecewiseYoYInflationCurve<Linear>>(
+        this->nominalTS_->referenceDate(), this->yoy_->baseDate(),
+        this->atmYoYSwapRate(reference_), frequency, this->dayCounter(), helpers);
+    curve->recalculate();
+    this->yoy_ = std::move(curve);
+  }
+  const Date& referenceDate() const override { return reference_; }
+};
+
 // Dispatch both interpolator axes: the 2-D price grid and the inner 1-D per-maturity curve.
 YoYCapFloorTermPriceSurface *qlYoYCapFloorTermPriceSurfaceAux(
-    Natural fixingDays, const Period &yyLag, const shared_ptr<YoYInflationIndex> &yii,
+    const Date& startDate, Natural fixingDays, const Period &yyLag, const shared_ptr<YoYInflationIndex> &yii,
     CPI::InterpolationType interpolation, const Handle<YieldTermStructure> &nominal,
     const DayCounter &dc, const Calendar &cal, BusinessDayConvention bdc,
     const std::vector<Rate> &cStrikes, const std::vector<Rate> &fStrikes,
@@ -712,9 +747,13 @@ YoYCapFloorTermPriceSurface *qlYoYCapFloorTermPriceSurfaceAux(
     using I2D = typename decltype(i2d)::type;
     return dispatchInterpolation<YoYCapFloorTermPriceSurface*>(interpolator1D, approximator, approximatorArg,
 [&](auto i) {
-          return new InterpolatedYoYCapFloorTermPriceSurface<I2D, decltype(i)>(fixingDays, yyLag, yii,
+          if (startDate != Date())
+            return static_cast<YoYCapFloorTermPriceSurface*>(new FixedStartYoyPriceSurface<I2D, decltype(i)>(
+                startDate, fixingDays, yyLag, yii, interpolation, nominal, dc, cal, bdc,
+                cStrikes, fStrikes, cfMaturities, cPrice, fPrice, I2D(), i));
+          return static_cast<YoYCapFloorTermPriceSurface*>(new InterpolatedYoYCapFloorTermPriceSurface<I2D, decltype(i)>(fixingDays, yyLag, yii,
               interpolation, nominal, dc, cal, bdc, cStrikes, fStrikes, cfMaturities, cPrice, fPrice,
-              I2D(), i);
+              I2D(), i));
         });
   });
 }

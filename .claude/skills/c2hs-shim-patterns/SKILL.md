@@ -915,6 +915,15 @@ member handle to an aliasing pointer: a member built on that handle makes the gr
 leak. External handles carry this hazard inside the cycle, which the `multiCurve` Haddock states.
 Exercise dependent instruments after `collectGarbage` and under a small RTS nursery.
 
+## Booked YoY price grids
+
+`yoyCapFloorTermPriceSurface (Just evaluationDate)` pins its reference and uses native
+fixed-start ATM swap helpers. Preserve the moving helper's native pillar explicitly:
+QuantLib's fixed-start constructor can otherwise choose an interpolated pillar from the
+start date. `Nothing` keeps the upstream moving behavior. A retained moving helper can
+throw during Settings restoration after its first maturity even when no valuation is
+requested; GC is not a substitute for explicit booked-date semantics.
+
 ## Bootstrap initial guesses and adjacent versions
 
 `BootstrapInitialGuess` crosses once per whole curve: borrowed node times (including zero),

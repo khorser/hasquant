@@ -2967,7 +2967,7 @@ void qlFreeYoYCapFloorTermPriceSurface(QlYoYCapFloorTermPriceSurface *o) {del(o)
 QlTermStructure *qlYoYCapFloorTermPriceSurfaceAsTermStructure(QlYoYCapFloorTermPriceSurface *o) {
   return ret(new QlTermStructure(*arg(o)));}
 
-QlYoYCapFloorTermPriceSurface *qlYoYCapFloorTermPriceSurface(unsigned fixingDays,
+QlYoYCapFloorTermPriceSurface *qlYoYCapFloorTermPriceSurface(int startDate, unsigned fixingDays,
     int yyLagLen, int yyLagUnit, QlYoYInflationIndex *yii, int interpolationType,
     QlYieldTermStructure *nominal, DayCounter *dc, Calendar *cal, int bdc,
     unsigned cStrikesLen, double *cStrikes, unsigned fStrikesLen, double *fStrikes,
@@ -2984,7 +2984,9 @@ QlYoYCapFloorTermPriceSurface *qlYoYCapFloorTermPriceSurface(unsigned fixingDays
     const std::vector<Period> cfMaturitiesVec = qlPeriodVector(cfMaturitiesNum, cfMaturitiesUnit, cfMaturitiesLen);
     const Matrix cPriceMat = qlMatrix(cPriceData, cPriceRows, cPriceCols);
     const Matrix fPriceMat = qlMatrix(fPriceData, fPriceRows, fPriceCols);
-    auto s = allocShared(qlYoYCapFloorTermPriceSurfaceAux(fixingDays, yyLag, yiiRef,
+    QL_REQUIRE(startDate == 0 || Date(startDate) == Settings::instance().evaluationDate(),
+               "fixed YoY price surface start must equal the construction evaluation date");
+    auto s = allocShared(qlYoYCapFloorTermPriceSurfaceAux(qlNullableDate(startDate), fixingDays, yyLag, yiiRef,
         (CPI::InterpolationType)interpolationType, nominalRef, *arg(dc), *arg(cal), (BusinessDayConvention)bdc,
         cStrikesVec, fStrikesVec, cfMaturitiesVec, cPriceMat, fPriceMat,
         interpolator2D, interpolator1D, approximator, approximatorArg));

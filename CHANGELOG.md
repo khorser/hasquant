@@ -1,5 +1,11 @@
 ## 0.9.0.0 (2026)
 
+- Breaking: `yoyCapFloorTermPriceSurface` takes a leading `Maybe Day`. `Nothing` keeps
+  native moving dates; `Just start` books the surface at the current evaluation date,
+  which must equal `start`. The booked surface uses native fixed-start ATM swap helpers
+  and preserves the native pillars, so restoring a later process date cannot rebuild
+  swaps beyond their fixed maturities. Rebuild booked surfaces for date rolls.
+
 - Breaking: `piecewiseDefaultCurve` returns a `PiecewiseDefaultCurve`, a
   `DefaultProbabilityTermStructure` leaf. Every curve argument still accepts it; convert with
   `asDefaultProbabilityTermStructure` where a concrete `DefaultProbabilityTermStructure` is

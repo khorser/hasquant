@@ -750,7 +750,7 @@ extern "C" {
       double strike, int obsLagLen, int obsLagUnit, int extrapolate, QlError **e);
 
   /* YoYCapFloorTermPriceSurface */
-  QlYoYCapFloorTermPriceSurface *qlYoYCapFloorTermPriceSurface(unsigned fixingDays,
+  QlYoYCapFloorTermPriceSurface *qlYoYCapFloorTermPriceSurface(int startDate, unsigned fixingDays,
       int yyLagLen, int yyLagUnit, QlYoYInflationIndex *yii, int interpolationType,
       QlYieldTermStructure *nominal, DayCounter *dc, Calendar *cal, int bdc,
       unsigned cStrikesLen, double *cStrikes, unsigned fStrikesLen, double *fStrikes,
