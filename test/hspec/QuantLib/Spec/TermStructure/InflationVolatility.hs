@@ -145,6 +145,11 @@ spec = do
     ratesAfter <- mapM (\(date, _) -> yoyCapFloorAtmYoyRate prices date Nothing True) rates
     zipWithM_ (\a b -> abs (a-b) `shouldSatisfy` (< 1e-12)) ratesBefore ratesAfter
 
+  it "refuses a booked start other than the evaluation date" $ Context.keepingSettingsGc $ do
+    (eval, cal, dc, nominal, index, _) <- setup
+    yoyCapFloorTermPriceSurface (Just (addDays 1 eval)) 0 (3, Months) index CPILinear nominal dc cal ModifiedFollowing
+      cStrikesEU fStrikesEU cfMaturitiesEU capPricesEU floorPricesEU Bicubic (Cubic Kruger) `shouldThrow` anyException
+
   it "interpolatedYoyInflationCurve: a non-Linear interpolation builds and differs between nodes" $ Context.keepingSettingsGc $ do
     let eval = 23 `november` 2007
     Context.setEvaluationDate (Just eval)

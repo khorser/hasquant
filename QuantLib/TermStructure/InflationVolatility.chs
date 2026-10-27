@@ -98,7 +98,7 @@ import QuantLib.Internal.Common
 -- interpolator, 'Interpolation' the per-maturity one.
 --
 -- @Nothing@ preserves QuantLib's moving reference date and swap helpers. @Just start@
--- books the price grid at the current evaluation date, which must equal @start@. Its reference
+-- books the price grid at the current evaluation date; any other @start@ is refused. Its reference
 -- date is fixed at construction and its derived ATM curve uses QuantLib fixed-start swap helpers,
 -- with the same native pillar dates. This prevents later process-date restoration from rebuilding
 -- a swap after its maturity. Rebuild a booked grid to value it on another evaluation date.

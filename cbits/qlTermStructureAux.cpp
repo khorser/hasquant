@@ -709,6 +709,9 @@ public:
   template <class... Args>
   FixedStartYoyPriceSurface(const Date& start, Args&&... args)
       : Base(std::forward<Args>(args)...), reference_(Base::referenceDate()) {
+    const Date today = Settings::instance().evaluationDate();
+    QL_REQUIRE(start == today, "booked YoY price surface start " << start
+               << " differs from the evaluation date " << today);
     this->unregisterWith(Settings::instance().evaluationDate());
     const auto frequency = this->yoyIndex()->frequency();
     const auto interpolation = this->indexIsInterpolated() ? CPI::Linear : CPI::Flat;
