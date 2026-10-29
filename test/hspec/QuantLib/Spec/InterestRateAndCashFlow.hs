@@ -1262,10 +1262,15 @@ spec evalDate = do
     -- than against a golden value, since both entry points must agree to FP precision on the
     -- exact same fixture.
     describe "cash flow analytics" $ do
-      let mkFixedLeg = do
+      let -- one regular period spanning today: a start of today less 2 months would be a day off
+          -- the end's backward roll whenever the end clips to a shorter month (an end on Feb 28
+          -- rolls back to Aug 28, not Aug 29), and make the coupon an irregular stub
+          mkSchedule td cal = let end = addGregorianMonthsClip 4 td in
+            schedule (Just $ addGregorianMonthsClip (-6) end) end (6, Months) cal Unadjusted Unadjusted Backward False Nothing Nothing
+          mkFixedLeg = do
             td <- Context.evaluationDate
             cal <- calendar TARGET
-            sch <- schedule (Just $ addGregorianMonthsClip (-2) td) (addGregorianMonthsClip 4 td) (6, Months) cal Unadjusted Unadjusted Backward False Nothing Nothing
+            sch <- mkSchedule td cal
             dc <- dayCounter (Actual360 False)
             cpn <- IR.interestRate 0.03 dc IR.Simple Annual
             l <- CF.fixedRateLeg sch [100.0] [cpn] Following dc cal
@@ -1377,7 +1382,7 @@ spec evalDate = do
 
           atm <- CF.atmRate l curve False Nothing Nothing n1
           cal <- calendar TARGET
-          sch2 <- schedule (Just $ addGregorianMonthsClip (-2) td) (addGregorianMonthsClip 4 td) (6, Months) cal Unadjusted Unadjusted Backward False Nothing Nothing
+          sch2 <- mkSchedule td cal
           cpnAtm <- IR.interestRate atm dc IR.Simple Annual
           lAtm <- CF.fixedRateLeg sch2 [100.0] [cpnAtm] Following dc cal
           nAtm <- CF.npv lAtm (CF.DiscountingCurve curve) False Nothing Nothing
