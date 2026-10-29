@@ -2,7 +2,7 @@
 extern "C" {
 #endif
   QlOptionletVolatilityStructure *qlConstantOptionletVol1(unsigned days, Calendar *cal, int conv, QlQuote *q, DayCounter *dc, int type, double displacement, QlError **e);
-  QlOptionletVolatilityStructure *qlCapletVarianceCurve(int referenceDate, unsigned datesLen, int* dates, unsigned volsLen, double* vols, DayCounter* dc, int type, double displacement, QlError **e);
+  QlOptionletVolatilityStructure *qlCapletVarianceCurve(int referenceDate, unsigned datesLen, int* dates, unsigned volsLen, double* vols, DayCounter* dc, int type, double displacement, int extrapolate, QlError **e);
   void qlFreeOptionletVolatilityStructure(QlOptionletVolatilityStructure *p);
   QlVolatilityTermStructure* qlOptionletVolatilityStructureAsVolatilityTermStructure(QlOptionletVolatilityStructure *o);
   QlRelinkableOptionletVolatilityStructure* qlRelinkableOptionletVolatilityStructure(QlOptionletVolatilityStructure *initial, QlError **e);

@@ -313,8 +313,11 @@ extern "C" {
 QlOptionletVolatilityStructure *qlConstantOptionletVol1(unsigned days, Calendar *cal, int conv, QlQuote *q, DayCounter *dc, int type, double displacement, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlOptionletVolatilityStructure(shared_ptr<OptionletVolatilityStructure>(alloc(new ConstantOptionletVolatility(days, *arg(cal), (BusinessDayConvention) conv, *arg(q), *arg(dc), (VolatilityType)type, displacement)))));
   } catch (std::exception& er) {return handleException<QlOptionletVolatilityStructure *>(e, er);}}
-QlOptionletVolatilityStructure *qlCapletVarianceCurve(int referenceDate, unsigned datesLen, int* dates, unsigned volsLen, double* vols, DayCounter* dc, int type, double displacement, QlError **e) { QlCallScope callbackScope(e);
-  try {return ret(new QlOptionletVolatilityStructure(shared_ptr<OptionletVolatilityStructure>(alloc(new CapletVarianceCurve(Date(referenceDate), qlDateVector(dates, datesLen), std::vector<double>(vols, vols+volsLen), *arg(dc), (VolatilityType)type, displacement)))));
+QlOptionletVolatilityStructure *qlCapletVarianceCurve(int referenceDate, unsigned datesLen, int* dates, unsigned volsLen, double* vols, DayCounter* dc, int type, double displacement, int extrapolate, QlError **e) { QlCallScope callbackScope(e);
+  try {
+    shared_ptr<OptionletVolatilityStructure> ts(alloc(new CapletVarianceCurve(Date(referenceDate), qlDateVector(dates, datesLen), std::vector<double>(vols, vols+volsLen), *arg(dc), (VolatilityType)type, displacement)));
+    if (extrapolate) ts->enableExtrapolation();
+    return ret(new QlOptionletVolatilityStructure(ts));
   } catch (std::exception& er) {return handleException<QlOptionletVolatilityStructure *>(e, er);}}
 
 void qlFreeOptionletVolatilityStructure(QlOptionletVolatilityStructure *p) {del(p);}

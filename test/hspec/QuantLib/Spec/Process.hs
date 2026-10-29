@@ -245,7 +245,7 @@ spec = do
         process <- liborForwardModelProcess size idx
         fixingDates <- Process.fixingDates process
         fixingTimes <- Process.fixingTimes process
-        capletVol <- Vol.capletVarianceCurve evalDate (fromList $ zip (take 9 $ drop 1 fixingDates) capletVols) dc ShiftedLognormal 0.0
+        capletVol <- Vol.capletVarianceCurve evalDate (fromList $ zip (take 9 $ drop 1 fixingDates) capletVols) dc ShiftedLognormal 0.0 False
         let emptyCorrelation = either error id $ boxedRealMatrix 0 0 []
         parameterization <- lfmHullWhiteParameterization process capletVol emptyCorrelation 1
         covar <- lfmHullWhiteCovariance parameterization 0.0 []
@@ -300,7 +300,7 @@ spec = do
 
         -- the process is only simulable once a covariance parameterization is installed
         fixingDates <- Process.fixingDates process
-        capletVol <- Vol.capletVarianceCurve evalDate (fromList (map (, 0.15) (take 9 (drop 1 fixingDates)))) dc ShiftedLognormal 0.0
+        capletVol <- Vol.capletVarianceCurve evalDate (fromList (map (, 0.15) (take 9 (drop 1 fixingDates)))) dc ShiftedLognormal 0.0 False
         let emptyCorrelation = either error id $ boxedRealMatrix 0 0 []
         parameterization <- lfmHullWhiteParameterization process capletVol emptyCorrelation 1
         setCovarParam process parameterization

@@ -13,7 +13,7 @@ import Test.QuickCheck((==>))
 import Data.Time.Calendar
 import Data.Maybe(catMaybes)
 import Data.List(isInfixOf, nub)
-import Data.List.NonEmpty(NonEmpty, fromList)
+import Data.List.NonEmpty(NonEmpty(..), fromList)
 import qualified Data.Vector.Storable as V
 
 import QuantLib.Time.Date
@@ -1310,6 +1310,27 @@ spec = do
           Vol.linkOptionletVolTo volH vol1
           npvAfter <- npv capfl
           abs (npvAfter - npvBefore) `shouldSatisfy` (> 0.5)
+
+      -- A caplet variance curve whose every node has the same volatility is that constant
+      -- volatility, before its first node by its variance interpolation and after its last
+      -- only when it extrapolates: the 5-year cap's last caplets fix after the last node.
+      it "a caplet variance curve extrapolates its last volatility only when asked" $
+        Context.keepingSettingsGc $ do
+          let refDate = 11 `december` 2012
+          Context.setEvaluationDate (Just refDate)
+          (capfl, _) <- mkCap
+          expected <- npv capfl
+          (_, discountH, _) <- setupSwap
+          dc <- dayCounter Actual365FixedStandard
+          let nodes = (11 `december` 2013, 0.20) :| [(11 `december` 2014, 0.20)]
+              priceOn extrapolate = do
+                curve <- Vol.capletVarianceCurve refDate nodes dc IR.ShiftedLognormal 0 extrapolate
+                eng <- blackCapFloorEngineFromVolatilityStructure discountH curve
+                setPricingEngine capfl eng
+                npv capfl
+          got <- priceOn True
+          abs (got - expected) `shouldSatisfy` (<= 1e-8 * abs expected)
+          priceOn False `shouldThrow` anyException
 
       -- OptionletStripper1 strips a quoted CapFloorTermVolSurface into caplet/floorlet vols,
       -- immediately wrapped behind StrippedOptionletAdapter (an OptionletVolatilityStructure).

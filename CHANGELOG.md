@@ -1,5 +1,9 @@
 ## 0.9.0.0 (2026)
 
+- Breaking: `capletVarianceCurve` takes a trailing `extrapolate` flag. With `True`, a read
+  after the last node keeps that node's volatility, as `BlackVarianceCurve` interpolates by
+  variance; with `False`, the former behaviour, QuantLib refuses the read.
+
 - Breaking: `yoyCapFloorTermPriceSurface` takes a leading `Maybe Day`. `Nothing` keeps
   native moving dates; `Just start` books the surface at the current evaluation date, and
   any other `start` is refused. The booked surface uses native fixed-start ATM swap helpers

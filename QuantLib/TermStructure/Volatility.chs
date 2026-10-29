@@ -578,8 +578,15 @@ constantOptionletVolatility reference cal = case reference of
 
 -- |Optionlet volatility curve interpolating the supplied caplet-volatility nodes by variance.
 -- Each node pairs an option date with its volatility, so mismatched date/value inputs are
--- unrepresentable.
-capletVarianceCurve :: Day -> NonEmpty (Day, Double) -> DayCounter -> VolatilityType -> Double
+-- unrepresentable. With @extrapolate@, a read after the last node keeps that node's
+-- volatility; without it, QuantLib refuses the read.
+capletVarianceCurve
+  :: Day -- ^Reference date, from which option times are measured.
+  -> NonEmpty (Day, Double) -- ^Option dates and their caplet volatilities.
+  -> DayCounter -- ^Day counter of the time axis.
+  -> VolatilityType
+  -> Double -- ^Displacement of a shifted-lognormal rate, as a fraction.
+  -> Bool -- ^Whether reads after the last node are allowed (@extrapolate@).
   -> IO OptionletVolatilityStructure
 capletVarianceCurve referenceDate nodes = qlCapletVarianceCurve referenceDate dates vols
   where (dates, vols) = unzip (toList nodes)
@@ -589,6 +596,7 @@ capletVarianceCurve referenceDate nodes = qlCapletVarianceCurve referenceDate da
   ,withDayCounter*`DayCounter' -- ^dayCounter
   ,`VolatilityType' -- ^type
   ,`Double' -- ^displacement
+  ,`Bool' -- ^extrapolate
   ,preErrorCheck-`String'errorCheck*-}->`OptionletVolatilityStructure'peekOptionletVolatilityStructure*#}
 
 -- |Strips a 'CapFloorTermVolSurface' (quoted cap\/floor term vols) into caplet\/floorlet vols via

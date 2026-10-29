@@ -65,7 +65,7 @@ run = Context.keepingSettingsGc $ do
   volDates <- fixingDates volProcess
   volDc <- dayCounter ActualActualISDA
   capletVol <- Vol.capletVarianceCurve evalDate
-    (fromList (zip (take (fromIntegral len) (drop 1 volDates)) capletVols)) volDc ShiftedLognormal 0.0
+    (fromList (zip (take (fromIntegral len) (drop 1 volDates)) capletVols)) volDc ShiftedLognormal 0.0 False
 
   process <- liborForwardModelProcess len idx
   parameterization <- lfmHullWhiteParameterization process capletVol emptyCorrelation 1
