@@ -7910,7 +7910,7 @@
 | |ql/termstructures/bootstraphelper.hpp|Date BootstrapHelper::earliestDate() const;
 | |ql/termstructures/bootstraphelper.hpp|Date BootstrapHelper::maturityDate() const;
 | |ql/termstructures/bootstraphelper.hpp|Date BootstrapHelper::latestRelevantDate() const;
-| |ql/termstructures/bootstraphelper.hpp|Date BootstrapHelper::pillarDate() const;
+|v|ql/termstructures/bootstraphelper.hpp|Date BootstrapHelper::pillarDate() const;
 | |ql/termstructures/bootstraphelper.hpp|Date BootstrapHelper::latestDate() const;
 | |ql/termstructures/bootstraphelper.hpp|void BootstrapHelper::accept(AcyclicVisitor &);
 | |ql/termstructures/bootstraphelper.hpp|RelativeDateBootstrapHelper::RelativeDateBootstrapHelper<TS>(const std::variant<Spread, Handle<Quote>> & quote, bool updateDates = true);

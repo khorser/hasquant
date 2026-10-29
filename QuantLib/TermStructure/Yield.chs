@@ -108,6 +108,7 @@ module QuantLib.TermStructure.Yield
   , forwardRateBetweenTimes
   , zeroRate
   , discount
+  , rateHelperPillarDate
   , impliedQuote
   , impliedQuoteOn
   , futuresRateHelperConvexityAdjustment
@@ -957,6 +958,12 @@ rateHelperFixingDependencies h = do
   ,`PillarChoice' -- ^pillar
   ,withMaybeDay*`Maybe Day' -- ^customPillarDate
   ,preErrorCheck-`String'errorCheck*-}->`RateHelper'peekRateHelper*#}
+
+-- |The date of this helper's bootstrap pillar, computed from its instrument's conventions.
+-- This can differ from contractual maturity. Relative-date helpers update it when the
+-- evaluation date changes; no curve needs to be attached to inspect the date.
+{#fun qlRateHelperPillarDate as rateHelperPillarDate{withRateHelper*`GenRateHelper rh' -- ^helper
+  ,preErrorCheck-`String'errorCheck*-}->`Day'toDay#}
 
 -- |The quote value implied by the current bootstrapped state of the curve the helper was
 -- last used against, i.e. what the helper's own market quote would need to be to make it

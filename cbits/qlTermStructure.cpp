@@ -2435,6 +2435,10 @@ QlRateHelper* qlSofrFutureRateHelper(QlQuote* price, int month, int year, int fr
       convexityAdjustment ? std::variant<Rate, Handle<Quote>>(*arg(convexityAdjustment)) : std::variant<Rate, Handle<Quote>>(Rate(0.0)),
       (Pillar::Choice)pillar, qlNullableDate(customPillarDate)))));
   } catch (std::exception& er) {return handleException<QlRateHelper*>(e, er);}}
+int qlRateHelperPillarDate(QlRateHelper* o, QlError **e) { QlCallScope callbackScope(e);
+  try {return (*arg(o))->pillarDate().serialNumber();
+  } catch (std::exception& er) {return handleException<int>(e, er);}}
+
 double qlRateHelperImpliedQuote(QlRateHelper* o, QlError **e) { QlCallScope callbackScope(e);try {return (*arg(o))->impliedQuote();} catch (std::exception& er) {return handleException<double>(e, er);}}
 // The helper keeps a non-owning pointer to the curve until it is next set; the caller keeps the
 // curve alive for this call, and only impliedQuote reads it here.

@@ -1,5 +1,7 @@
 ## 0.9.0.0 (2026)
 
+- Add `rateHelperPillarDate` to inspect native bootstrap pillar dates before attaching a curve.
+
 - Breaking: `capletVarianceCurve` takes a trailing `extrapolate` flag. With `True`, a read
   after the last node keeps that node's volatility, as `BlackVarianceCurve` interpolates by
   variance; with `False`, the former behaviour, QuantLib refuses the read.

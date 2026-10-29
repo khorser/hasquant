@@ -47,6 +47,31 @@ import QuantLib.Spec.Helpers(areClose, closePrec, quantLibAtMost143, unsupported
 
 spec :: Spec
 spec = do
+    describe "rate helper pillar dates" $
+      it "computes pillars without a curve and moves only relative-date helpers" $ Context.keepingSettingsGc $ do
+        let origin = fromGregorian 2025 1 2
+            futureStart = fromGregorian 2025 10 1
+        Context.setEvaluationDate (Just origin)
+        cal <- calendar TARGET
+        dc <- dayCounter (Actual360 False)
+        q <- Quote.simpleQuote 0.03
+        price <- Quote.simpleQuote 97
+        index <- iborIndex (Euribor (3, Months)) Nothing
+        deposit <- depositRateHelper q (DepositTenor (3, Months) 2 cal ModifiedFollowing False dc)
+        fra <- fraRateHelper q (FraMonthsFromIndex 3 index) LastRelevantDate Nothing True
+        future <- futuresRateHelper price (FuturesFromIndex futureStart index) Nothing Custom
+        spot <- advance cal origin (2, Days) Following False
+        depEnd <- advance cal spot (3, Months) ModifiedFollowing False
+        fraEnd <- advance cal depEnd (3, Months) ModifiedFollowing False
+        futureEnd <- advance cal futureStart (3, Months) ModifiedFollowing False
+        rateHelperPillarDate deposit `shouldReturn` depEnd
+        rateHelperPillarDate fra `shouldReturn` fraEnd
+        rateHelperPillarDate future `shouldReturn` futureEnd
+        Context.setEvaluationDate (Just (addDays 7 origin))
+        moved <- rateHelperPillarDate fra
+        moved `shouldSatisfy` (> fraEnd)
+        rateHelperPillarDate future `shouldReturn` futureEnd
+
     describe "QuantLib 1.44 curves and helpers" $ do
       it "moves the implied reference date and preserves discount ratios" $ Context.keepingSettingsGc $ do
         let today' = fromGregorian 2024 1 2

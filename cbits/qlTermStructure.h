@@ -544,6 +544,7 @@ extern "C" {
   QlRateHelper* qlOvernightIndexFutureRateHelperAsRateHelper(QlOvernightIndexFutureRateHelper *o);
   double qlOvernightIndexFutureRateHelperConvexityAdjustment(QlOvernightIndexFutureRateHelper *o, QlError **e);
   QlRateHelper* qlSofrFutureRateHelper(QlQuote* price, int month, int year, int freq, QlQuote* convexityAdjustment, int pillar, int customPillarDate, QlError **e);
+  int qlRateHelperPillarDate(QlRateHelper* o, QlError **e);
   double qlRateHelperImpliedQuote(QlRateHelper* o, QlError **e);
   double qlRateHelperImpliedQuoteOn(QlRateHelper* o, QlYieldTermStructure* curve, QlError **e);
   QlBond* qlBondHelperBond(QlBondHelper* o, QlError **e);
