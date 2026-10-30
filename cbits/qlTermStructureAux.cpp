@@ -93,6 +93,31 @@ YieldTermStructure *dispatchTrait(int trait, int interpolator, int approximator,
   }
 }
 
+// The interpolator instance only selects the curve type here, so a cubic one takes any
+// approximation.
+std::vector<std::pair<Date, Real>> qlPiecewiseYieldCurveNodesAux(const shared_ptr<YieldTermStructure>& curve,
+    int trait, int interpolator) {
+  using Nodes = std::vector<std::pair<Date, Real>>;
+  auto nodesForTrait = [&](auto t) -> Nodes {
+    using Trait = typename decltype(t)::type;
+    return dispatchInterpolation<Nodes>(interpolator, hasquant::Kruger, 0, [&](auto i) -> Nodes {
+      using CurveType = PiecewiseYieldCurve<Trait, decltype(i)>;
+      auto bootstrapped = QuantLib::ext::dynamic_pointer_cast<CurveType>(curve);
+      QL_REQUIRE(bootstrapped, "the curve is not an iteratively bootstrapped curve of trait "
+          << trait << " and interpolator " << interpolator);
+      return bootstrapped->nodes();
+    });
+  };
+  switch (trait) {
+  case hasquant::Discount: return nodesForTrait(Tag<QuantLib::Discount>());
+  case hasquant::ForwardRate: return nodesForTrait(Tag<QuantLib::ForwardRate>());
+  case hasquant::ZeroYield: return nodesForTrait(Tag<QuantLib::ZeroYield>());
+  case hasquant::SimpleZeroYield: return nodesForTrait(Tag<QuantLib::SimpleZeroYield>());
+  default:
+    QL_FAIL("Unsupported trait" << trait);
+  }
+}
+
 // QuantLib-SWIG's canned GlobalBootstrap functors (SWIG/piecewiseyieldcurve.i:186-282).
 // AdditionalErrors is a fixed interpolation formula, not a user callback, and both functors are
 // trait-independent, so they need neither Haskell marshalling nor per-trait definitions.

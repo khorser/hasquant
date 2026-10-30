@@ -1602,6 +1602,25 @@ void qlPiecewiseDefaultCurveData(QlPiecewiseDefaultCurve *o, unsigned *count, do
     *count = (unsigned)nodes.size(); *values = vs;
   } catch (std::exception& er) {qlSetError(e, er.what());}
 }
+// The nodes of an iteratively bootstrapped yield curve: reading them runs the bootstrap.
+void qlPiecewiseYieldCurveDates(QlYieldTermStructure *o, int trait, int interpolator, unsigned *count, int **days, QlError **e) { QlCallScope callbackScope(e);
+  *count = 0; *days = 0;
+  try {
+    const auto nodes = qlPiecewiseYieldCurveNodesAux(arg(o)->currentLink(), trait, interpolator);
+    int *ds = qlAllocateInts((unsigned)nodes.size());
+    for (size_t i = 0; i < nodes.size(); ++i) ds[i] = nodes[i].first.serialNumber();
+    *count = (unsigned)nodes.size(); *days = ds;
+  } catch (std::exception& er) {qlSetError(e, er.what());}
+}
+void qlPiecewiseYieldCurveData(QlYieldTermStructure *o, int trait, int interpolator, unsigned *count, double **values, QlError **e) { QlCallScope callbackScope(e);
+  *count = 0; *values = 0;
+  try {
+    const auto nodes = qlPiecewiseYieldCurveNodesAux(arg(o)->currentLink(), trait, interpolator);
+    double *vs = qlAllocateDoubles((unsigned)nodes.size());
+    for (size_t i = 0; i < nodes.size(); ++i) vs[i] = nodes[i].second;
+    *count = (unsigned)nodes.size(); *values = vs;
+  } catch (std::exception& er) {qlSetError(e, er.what());}
+}
 double qlDefaultProbabilityTermStructureDefaultDensity1(QlDefaultProbabilityTermStructure* o, double t, int extrapolate, QlError **e) { QlCallScope callbackScope(e);
   try {return (*arg(o))->defaultDensity(t, extrapolate);
   } catch (std::exception& er) {return handleException<double>(e, er);}}

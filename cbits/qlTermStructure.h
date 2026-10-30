@@ -357,6 +357,8 @@ extern "C" {
   QlDefaultProbabilityTermStructure* qlPiecewiseDefaultCurveAsDefaultProbabilityTermStructure(QlPiecewiseDefaultCurve *o);
   void qlPiecewiseDefaultCurveDates(QlPiecewiseDefaultCurve *o, unsigned *count, int **days, QlError **e);
   void qlPiecewiseDefaultCurveData(QlPiecewiseDefaultCurve *o, unsigned *count, double **values, QlError **e);
+  void qlPiecewiseYieldCurveDates(QlYieldTermStructure *o, int trait, int interpolator, unsigned *count, int **days, QlError **e);
+  void qlPiecewiseYieldCurveData(QlYieldTermStructure *o, int trait, int interpolator, unsigned *count, double **values, QlError **e);
 
   double qlDefaultProbabilityTermStructureDefaultDensity1(QlDefaultProbabilityTermStructure* o, double t, int extrapolate, QlError **e);
   double qlDefaultProbabilityTermStructureDefaultDensity(QlDefaultProbabilityTermStructure* o, int d, int extrapolate, QlError **e);
