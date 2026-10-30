@@ -12,7 +12,7 @@ import Test.QuickCheck((==>))
 
 import Data.Time.Calendar
 import Data.Maybe(catMaybes)
-import Data.List(isInfixOf, nub)
+import Data.List(isInfixOf, nub, uncons)
 import Data.List.NonEmpty(NonEmpty(..), fromList)
 import qualified Data.Vector.Storable as V
 
@@ -210,6 +210,28 @@ spec = do
 
             ts <- piecewiseYieldCurve (ReferenceDate settlement) (fromList (deposits ++ swaps)) actual360dc [] (Iterative Discount LogLinear defaultIterativeBootstrapOpts) False
             return (cal, settlementDays, ts)
+      it "rebuilds a bootstrapped curve from its nodes" $ Context.keepingSettingsGc $ do
+        cal <- calendar TARGET
+        today' <- today >>= \d -> adjust cal d Following
+        Context.setEvaluationDate (Just today')
+        dc <- dayCounter (Actual360 False)
+        helpers <- mapM (\(t, r) -> Quote.simpleQuote (r :: Double) >>= \q -> depositRateHelper q (DepositTenor t 2 cal ModifiedFollowing True dc))
+          [((3, Months), 0.045), ((6, Months), 0.046), ((1, Years), 0.047), ((2, Years), 0.049)]
+        forM_ ([(Discount, LogLinear), (Discount, Linear), (ZeroYield, Linear), (ForwardRate, BackwardFlat), (SimpleZeroYield, Linear)] :: [(BootstrapTrait, Interpolation)]) $ \(trait, interpolation) -> do
+          curve <- piecewiseYieldCurve (SettlementDays 0 cal) (fromList helpers) dc [] (Iterative trait interpolation defaultIterativeBootstrapOpts) True
+          nodes <- piecewiseYieldCurveNodes curve trait interpolation
+          map fst nodes `shouldSatisfy` ((== Just today') . fmap fst . uncons)
+          length nodes `shouldBe` length helpers + 1
+          rebuilt <- case trait of
+            Discount -> interpolatedDiscountCurve (fromList nodes) dc cal [] interpolation False
+            ZeroYield -> interpolatedZeroCurve (fromList nodes) dc cal [] interpolation
+            ForwardRate -> interpolatedForwardCurve (fromList nodes) dc cal [] interpolation
+            SimpleZeroYield -> interpolatedSimpleZeroCurve (fromList nodes) dc cal [] interpolation
+          forM_ [addDays k today' | k <- [0, 45, 180, 400, 700]] $ \d -> do
+            expected <- discount curve (DatePoint d) False
+            discount rebuilt (DatePoint d) False >>= (`shouldBe` expected)
+          -- another interpolation names another curve type
+          piecewiseYieldCurveNodes curve trait ForwardFlat `shouldThrow` anyException
       it "referenceChange" $ Context.keepingSettingsGc $ do
         let ds = [10, 30, 60, 120, 360, 720]
         (_calendar, settlementDays, _ts) <- setup

@@ -2,6 +2,10 @@
 
 - Add `rateHelperPillarDate` to inspect native bootstrap pillar dates before attaching a curve.
 
+- `piecewiseYieldCurveNodes` reads an iteratively bootstrapped yield curve's nodes: the
+  reference date, then each helper's pillar, with the value its trait interpolates. The
+  interpolated curve of that trait on these nodes is the same curve.
+
 - Breaking: `capletVarianceCurve` takes a trailing `extrapolate` flag. With `True`, a read
   after the last node keeps that node's volatility, as `BlackVarianceCurve` interpolates by
   variance; with `False`, the former behaviour, QuantLib refuses the read.

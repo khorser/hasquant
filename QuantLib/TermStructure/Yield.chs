@@ -77,6 +77,7 @@ module QuantLib.TermStructure.Yield
   , sofrFutureRateHelper
     -- ** Bootstrapped and interpolated curves
   , piecewiseYieldCurve
+  , piecewiseYieldCurveNodes
   , piecewiseSpreadYieldCurve
   , defaultIterativeBootstrapOpts
   , interpolatedZeroCurve
@@ -1097,6 +1098,18 @@ fromBootstrapTrait :: LocalBootstrapTrait -> BootstrapTrait
 fromBootstrapTrait LForwardRate = ForwardRate
 fromBootstrapTrait LZeroYield = ZeroYield
 fromBootstrapTrait LSimpleZeroYield = SimpleZeroYield
+
+-- |The nodes of a curve 'piecewiseYieldCurve' bootstrapped with @Iterative trait interpolation@:
+-- the reference date first, then each helper's pillar, each with the value the trait
+-- interpolates (a discount factor, zero rate or instantaneous forward). The interpolated curve of
+-- that trait on these nodes, with the bootstrap's day counter and interpolation, is the same
+-- curve. Reading them runs the bootstrap; a curve of another trait, interpolation or bootstrap is
+-- refused.
+piecewiseYieldCurveNodes :: GenYieldTermStructure y -> BootstrapTrait -> Interpolation -> IO [(Day, Double)]
+piecewiseYieldCurveNodes c t i = zip <$> qlPiecewiseYieldCurveDates c t k <*> qlPiecewiseYieldCurveData c t k
+  where k = fst (qlInterpolation i)
+{#fun qlPiecewiseYieldCurveDates{withYieldTermStructure*`GenYieldTermStructure y',`BootstrapTrait',`Int',preIntArray-`[Day]'&peekDayArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlPiecewiseYieldCurveData{withYieldTermStructure*`GenYieldTermStructure y',`BootstrapTrait',`Int',preDoubleArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Bootstrapper for 'piecewiseSpreadYieldCurve', whose nodes are always discount-factor spreads.
 -- @LogLinear@ interpolation gives piecewise-constant forward spreads, upstream's canonical choice.
