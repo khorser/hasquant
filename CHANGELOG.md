@@ -1,5 +1,21 @@
 ## 0.9.0.0 (2026)
 
+- Add `rateHelperPillarDate` to inspect native bootstrap pillar dates before attaching a curve.
+
+- `piecewiseYieldCurveNodes` reads an iteratively bootstrapped yield curve's nodes: the
+  reference date, then each helper's pillar, with the value its trait interpolates. The
+  interpolated curve of that trait on these nodes is the same curve.
+
+- Breaking: `capletVarianceCurve` takes a trailing `extrapolate` flag. With `True`, a read
+  after the last node keeps that node's volatility, as `BlackVarianceCurve` interpolates by
+  variance; with `False`, the former behaviour, QuantLib refuses the read.
+
+- Breaking: `yoyCapFloorTermPriceSurface` takes a leading `Maybe Day`. `Nothing` keeps
+  native moving dates; `Just start` books the surface at the current evaluation date, and
+  any other `start` is refused. The booked surface uses native fixed-start ATM swap helpers
+  and preserves the native pillars, so restoring a later process date cannot rebuild
+  swaps beyond their fixed maturities. Rebuild booked surfaces for date rolls.
+
 - Breaking: `piecewiseDefaultCurve` returns a `PiecewiseDefaultCurve`, a
   `DefaultProbabilityTermStructure` leaf. Every curve argument still accepts it; convert with
   `asDefaultProbabilityTermStructure` where a concrete `DefaultProbabilityTermStructure` is
