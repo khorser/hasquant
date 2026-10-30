@@ -1,5 +1,9 @@
 ## 0.9.0.0 (2026)
 
+- Breaking: replace the three model-specific YoY optionlet stripping constructors with
+  `kInterpolatedYoyOptionletVolatilitySurface`, selected by `YoyOptionletModel`, and add an
+  optional initial-volatility root bracket. `Nothing` retains the native 1e-5 to 0.08 bounds.
+
 - Add `rateHelperPillarDate` to inspect native bootstrap pillar dates before attaching a curve.
 
 - `piecewiseYieldCurveNodes` reads an iteratively bootstrapped yield curve's nodes: the

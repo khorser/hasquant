@@ -3073,45 +3073,25 @@ void qlYoYCapFloorTermPriceSurfaceStrikes(QlYoYCapFloorTermPriceSurface *o, unsi
 
 /* KInterpolatedYoYOptionletVolatilitySurface */
 
-QlYoYOptionletVolatilitySurface *qlKInterpolatedYoYOptionletVolatilitySurfaceBlack(
-    unsigned settlementDays, Calendar *cal, int bdc, DayCounter *dc,
+QlYoYOptionletVolatilitySurface *qlKInterpolatedYoYOptionletVolatilitySurface(
+    int model, unsigned settlementDays, Calendar *cal, int bdc, DayCounter *dc,
     QlYoYCapFloorTermPriceSurface *capFloorPrices, QlYoYInflationIndex *index,
-    QlYieldTermStructure *nominalTs, double slope,
+    QlYieldTermStructure *nominalTs, double slope, int useBracket, double lower, double upper,
     int interpolator, int approximator, int approximatorArg, QlError **e) { QlCallScope callbackScope(e);
   try {
-    shared_ptr<YoYInflationCapFloorEngine> engine(new YoYInflationBlackCapFloorEngine(
-        *arg(index), qlNullYoYOptionletVolatilitySurfaceHandle(), *arg(nominalTs)));
+    shared_ptr<YoYInflationCapFloorEngine> engine;
+    switch (model) {
+    case hasquant::YoyBlack:
+      engine = allocShared(new YoYInflationBlackCapFloorEngine(*arg(index), qlNullYoYOptionletVolatilitySurfaceHandle(), *arg(nominalTs))); break;
+    case hasquant::YoyUnitDisplacedBlack:
+      engine = allocShared(new YoYInflationUnitDisplacedBlackCapFloorEngine(*arg(index), qlNullYoYOptionletVolatilitySurfaceHandle(), *arg(nominalTs))); break;
+    case hasquant::YoyBachelier:
+      engine = allocShared(new YoYInflationBachelierCapFloorEngine(*arg(index), qlNullYoYOptionletVolatilitySurfaceHandle(), *arg(nominalTs))); break;
+    default: QL_FAIL("unsupported YoY optionlet model " << model);
+    }
     auto s = allocShared(qlKInterpolatedYoYOptionletVolatilitySurfaceAux(
         settlementDays, *arg(cal), (BusinessDayConvention)bdc, *arg(dc), *arg(capFloorPrices), engine, slope,
-        interpolator, approximator, approximatorArg));
-    return ret(new QlYoYOptionletVolatilitySurface(Handle<YoYOptionletVolatilitySurface>(s)));
-  } catch (std::exception& er) {return handleException<QlYoYOptionletVolatilitySurface*>(e, er);}}
-
-QlYoYOptionletVolatilitySurface *qlKInterpolatedYoYOptionletVolatilitySurfaceUnitDisplacedBlack(
-    unsigned settlementDays, Calendar *cal, int bdc, DayCounter *dc,
-    QlYoYCapFloorTermPriceSurface *capFloorPrices, QlYoYInflationIndex *index,
-    QlYieldTermStructure *nominalTs, double slope,
-    int interpolator, int approximator, int approximatorArg, QlError **e) { QlCallScope callbackScope(e);
-  try {
-    shared_ptr<YoYInflationCapFloorEngine> engine(new YoYInflationUnitDisplacedBlackCapFloorEngine(
-        *arg(index), qlNullYoYOptionletVolatilitySurfaceHandle(), *arg(nominalTs)));
-    auto s = allocShared(qlKInterpolatedYoYOptionletVolatilitySurfaceAux(
-        settlementDays, *arg(cal), (BusinessDayConvention)bdc, *arg(dc), *arg(capFloorPrices), engine, slope,
-        interpolator, approximator, approximatorArg));
-    return ret(new QlYoYOptionletVolatilitySurface(Handle<YoYOptionletVolatilitySurface>(s)));
-  } catch (std::exception& er) {return handleException<QlYoYOptionletVolatilitySurface*>(e, er);}}
-
-QlYoYOptionletVolatilitySurface *qlKInterpolatedYoYOptionletVolatilitySurfaceBachelier(
-    unsigned settlementDays, Calendar *cal, int bdc, DayCounter *dc,
-    QlYoYCapFloorTermPriceSurface *capFloorPrices, QlYoYInflationIndex *index,
-    QlYieldTermStructure *nominalTs, double slope,
-    int interpolator, int approximator, int approximatorArg, QlError **e) { QlCallScope callbackScope(e);
-  try {
-    shared_ptr<YoYInflationCapFloorEngine> engine(new YoYInflationBachelierCapFloorEngine(
-        *arg(index), qlNullYoYOptionletVolatilitySurfaceHandle(), *arg(nominalTs)));
-    auto s = allocShared(qlKInterpolatedYoYOptionletVolatilitySurfaceAux(
-        settlementDays, *arg(cal), (BusinessDayConvention)bdc, *arg(dc), *arg(capFloorPrices), engine, slope,
-        interpolator, approximator, approximatorArg));
+        interpolator, approximator, approximatorArg, useBracket != 0, lower, upper));
     return ret(new QlYoYOptionletVolatilitySurface(Handle<YoYOptionletVolatilitySurface>(s)));
   } catch (std::exception& er) {return handleException<QlYoYOptionletVolatilitySurface*>(e, er);}}
 QlYieldTermStructure* qlImpliedTermStructureMoving(QlYieldTermStructure* curve, unsigned days, Calendar* calendar, QlError **e) { QlCallScope scope(e);

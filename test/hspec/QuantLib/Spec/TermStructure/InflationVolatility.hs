@@ -1,6 +1,8 @@
-module QuantLib.Spec.TermStructure.InflationVolatility (spec) where
+module QuantLib.Spec.TermStructure.InflationVolatility (spec, setup) where
 
+import Control.Exception (SomeException, displayException)
 import Control.Monad(forM_, zipWithM_)
+import Data.List (isInfixOf)
 import Data.Time.Calendar(addDays, addGregorianYearsClip)
 import Data.List.NonEmpty(fromList)
 import qualified Data.Vector.Storable as V
@@ -170,8 +172,8 @@ spec = do
   it "matches an independent C++ reprise of upstream's testYoYPriceSurfaceToVol fixture" $ Context.keepingSettingsGc $ do
     (_, cal, dc, nominalEUR, yoyIndexEU, priceSurfEU) <- setup
 
-    yoySurf <- kInterpolatedYoyOptionletVolatilitySurfaceUnitDisplacedBlack 0 cal ModifiedFollowing dc
-                 priceSurfEU yoyIndexEU nominalEUR (-0.5) Linear
+    yoySurf <- kInterpolatedYoyOptionletVolatilitySurface YoyUnitDisplacedBlack 0 cal ModifiedFollowing dc
+                 priceSurfEU yoyIndexEU nominalEUR (-0.5) Nothing Linear
 
     strikes <- yoyCapFloorStrikes priceSurfEU
     baseDate <- yoyCapFloorBaseDate priceSurfEU
@@ -238,11 +240,31 @@ spec = do
   -- LogCubic case in qlInflationVol.cpp's dispatchKInterpolatedYoYOptionletVolatilitySurface).
   -- This sparse fixture does not converge under Cubic; BackwardFlat exercises another
   -- interpolator without derivative estimation.
-  it "kInterpolatedYoyOptionletVolatilitySurfaceUnitDisplacedBlack: a non-Linear interpolation builds and queries" $ Context.keepingSettingsGc $ do
+  it "explicit YoY root brackets retain native default prices and validate bounds" $ Context.keepingSettingsGc $ do
+    (_, cal, dc, nominalEUR, index, prices) <- setup
+    let invalidBracket :: SomeException -> Bool
+        invalidBracket exception = "bracket must be finite, positive and ordered" `isInfixOf` displayException exception
+        strip bracket = kInterpolatedYoyOptionletVolatilitySurface YoyUnitDisplacedBlack 0 cal ModifiedFollowing dc
+                          prices index nominalEUR (-0.5) bracket Linear
+    native <- strip Nothing
+    explicit <- strip (Just (1e-5, 0.08))
+    wider <- strip (Just (1e-6, 0.2))
+    base <- yoyCapFloorBaseDate prices
+    date <- advance cal base (3, Years) Unadjusted False
+    strikes <- yoyCapFloorStrikes prices
+    forM_ strikes $ \strike -> do
+      reference <- yoyOptionletVolatility native date strike Nothing True
+      forM_ [explicit, wider] $ \surface -> do
+        actual <- yoyOptionletVolatility surface date strike Nothing True
+        abs (actual - reference) `shouldSatisfy` (<= 1e-6 * max 1 (abs reference))
+    forM_ [(0, 0.08), (-1, 0.08), (0.08, 0.08), (0.1, 0.08), (0/0, 0.08), (1e-5, 1/0)] $ \bounds ->
+      strip (Just bounds) `shouldThrow` invalidBracket
+
+  it "kInterpolatedYoyOptionletVolatilitySurface YoyUnitDisplacedBlack: a non-Linear interpolation builds and queries" $ Context.keepingSettingsGc $ do
     (_, cal, dc, nominalEUR, yoyIndexEU, priceSurfEU) <- setup
 
-    yoySurf <- kInterpolatedYoyOptionletVolatilitySurfaceUnitDisplacedBlack 0 cal ModifiedFollowing dc
-                 priceSurfEU yoyIndexEU nominalEUR (-0.5) BackwardFlat
+    yoySurf <- kInterpolatedYoyOptionletVolatilitySurface YoyUnitDisplacedBlack 0 cal ModifiedFollowing dc
+                 priceSurfEU yoyIndexEU nominalEUR (-0.5) Nothing BackwardFlat
 
     (strike1st: _) <- yoyCapFloorStrikes priceSurfEU
     baseDate <- yoyCapFloorBaseDate priceSurfEU

@@ -363,7 +363,7 @@ QuantLib::YoYOptionletVolatilitySurface *qlKInterpolatedYoYOptionletVolatilitySu
     const QuantLib::DayCounter &dc,
     const QuantLib::ext::shared_ptr<QuantLib::YoYCapFloorTermPriceSurface> &capFloorPrices,
     const QuantLib::ext::shared_ptr<QuantLib::YoYInflationCapFloorEngine> &engine, double slope,
-    int interpolator1D, int approximator, int approximatorArg);
+    int interpolator1D, int approximator, int approximatorArg, bool useBracket, double lower, double upper);
 
 // ZabrSmileSection<Evaluation> is templated over the evaluation-tag axis (4 type-only tags, no
 // runtime state) -- dispatched here rather than in qlTermStructure.cpp, same rule as every other

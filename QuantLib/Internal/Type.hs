@@ -2140,7 +2140,7 @@ data CYoYCapFloorTermPriceSurface'
 type CYoYCapFloorTermPriceSurface = ForeignPtr CYoYCapFloorTermPriceSurface'
 -- | Prices YoY cap\/floors by cap\/floor-surface intersection and put\/call parity, deriving an
 -- ATM YoY swap curve as a side effect -- the market-data input the YoY optionlet stripper
--- ('QuantLib.TermStructure.InflationVolatility.kInterpolatedYoyOptionletVolatilitySurfaceBlack'
+-- ('QuantLib.TermStructure.InflationVolatility.kInterpolatedYoyOptionletVolatilitySurface'
 -- et al.) bootstraps from. A plain 'TermStructure' leaf, constructed and consumed by
 -- @shared_ptr@ like 'CPICapFloorTermPriceSurface', never a @Handle@. Takes independent
 -- 'Interpolation2D' (cap\/floor price grid) and 'Interpolation' (per-maturity) choices --

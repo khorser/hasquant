@@ -1,3 +1,5 @@
+enum YoyOptionletModel { YoyBlack, YoyUnitDisplacedBlack, YoyBachelier };
+
 enum ReplicationType { ReplicationSub = 0, ReplicationCentral = 1, ReplicationSuper = 2 };
 
 // Enumerations to be mapped to specific QuantLib classes

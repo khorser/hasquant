@@ -782,20 +782,10 @@ extern "C" {
      stripper nor the per-strike PiecewiseYoYOptionletVolatilityCurve/YoYOptionletHelper it
      builds internally are ever exposed: nothing in upstream reaches them from outside
      YoYOptionletStripper::initialize, so there is nothing for a Haskell binding to return. */
-  QlYoYOptionletVolatilitySurface *qlKInterpolatedYoYOptionletVolatilitySurfaceBlack(
-      unsigned settlementDays, Calendar *cal, int bdc, DayCounter *dc,
+  QlYoYOptionletVolatilitySurface *qlKInterpolatedYoYOptionletVolatilitySurface(
+      int model, unsigned settlementDays, Calendar *cal, int bdc, DayCounter *dc,
       QlYoYCapFloorTermPriceSurface *capFloorPrices, QlYoYInflationIndex *index,
-      QlYieldTermStructure *nominalTs, double slope,
-      int interpolator, int approximator, int approximatorArg, QlError **e);
-  QlYoYOptionletVolatilitySurface *qlKInterpolatedYoYOptionletVolatilitySurfaceUnitDisplacedBlack(
-      unsigned settlementDays, Calendar *cal, int bdc, DayCounter *dc,
-      QlYoYCapFloorTermPriceSurface *capFloorPrices, QlYoYInflationIndex *index,
-      QlYieldTermStructure *nominalTs, double slope,
-      int interpolator, int approximator, int approximatorArg, QlError **e);
-  QlYoYOptionletVolatilitySurface *qlKInterpolatedYoYOptionletVolatilitySurfaceBachelier(
-      unsigned settlementDays, Calendar *cal, int bdc, DayCounter *dc,
-      QlYoYCapFloorTermPriceSurface *capFloorPrices, QlYoYInflationIndex *index,
-      QlYieldTermStructure *nominalTs, double slope,
+      QlYieldTermStructure *nominalTs, double slope, int useBracket, double lower, double upper,
       int interpolator, int approximator, int approximatorArg, QlError **e);
   QlYieldTermStructure* qlImpliedTermStructureMoving(QlYieldTermStructure* curve, unsigned days, Calendar* calendar, QlError **e);
   QlRateHelper* qlOvernightOvernightBasisSwapRateHelper(QlQuote* basis, int tenorLen, int tenorUnit, unsigned settlementDays, Calendar* calendar, int convention, int endOfMonth, QlOvernightIndex* baseIndex, QlOvernightIndex* otherIndex, QlYieldTermStructure* discount, int bootstrapBaseCurve, int paymentLag, int paymentFrequency, int baseAveragingMethod, int otherAveragingMethod, int telescopicValueDates, int rule, QlError **e);

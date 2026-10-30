@@ -5,13 +5,13 @@ module QuantLib.TermStructure.InflationVolatility
   , YoYCapFloorTermPriceSurface
   , CPICapFloorTermPriceSurface
   , CPIVolatilitySurface
+    -- ** Pricing model
+  , YoyOptionletModel(..)
 
     -- * Constructors
     -- ** YoY volatility and price surfaces
   , constantYoyOptionletVolatility
-  , kInterpolatedYoyOptionletVolatilitySurfaceBlack
-  , kInterpolatedYoyOptionletVolatilitySurfaceUnitDisplacedBlack
-  , kInterpolatedYoyOptionletVolatilitySurfaceBachelier
+  , kInterpolatedYoyOptionletVolatilitySurface
   , yoyCapFloorTermPriceSurface
     -- ** CPI surfaces
   , cpiCapFloorTermPriceSurface
@@ -58,7 +58,7 @@ import QuantLib.Internal.Common
 -- 'QuantLib.TermStructure.Volatility.constantOptionletVolatility', taking a t'GenQuote' rather
 -- than a plain 'Double' per the @std::variant@\/overload-collapse rule (the flat case is already
 -- reachable via 'QuantLib.Quote.simpleQuote'). Not the only concrete leaf of this type any
--- more -- see 'kInterpolatedYoyOptionletVolatilitySurfaceBlack' for the market-quote-bootstrapped
+-- more -- see 'kInterpolatedYoyOptionletVolatilitySurface' for the market-quote-bootstrapped
 -- alternative.
 {#fun qlConstantYoYOptionletVolatility as constantYoyOptionletVolatility{withQuote*`GenQuote q'
   ,fromIntegral`Word' -- ^settlementDays
@@ -175,84 +175,43 @@ yoyCapFloorAtmYoySwapTimeRates s = do
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |The union of cap and floor strikes in the surface's price grid -- the strikes a stripped
--- 'YoYOptionletVolatilitySurface' (via 'kInterpolatedYoyOptionletVolatilitySurfaceBlack' et al.)
+-- 'YoYOptionletVolatilitySurface' (via 'kInterpolatedYoyOptionletVolatilitySurface')
 -- has a bootstrapped vol curve for.
 {#fun qlYoYCapFloorTermPriceSurfaceStrikes as yoyCapFloorStrikes{withGenTermStructure*`YoYCapFloorTermPriceSurface'
   ,preDoubleArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
--- |Strips a 'YoYOptionletVolatilitySurface' from a 'YoYCapFloorTermPriceSurface' by bootstrapping
--- a per-strike vol curve against Black-priced YoY caps\/floors (mirrors upstream's own
--- @testYoYPriceSurfaceToVol@: an @InterpolatedYoYOptionletStripper@ solving each strike's initial
--- vol, then a @KInterpolatedYoYOptionletVolatilitySurface@ interpolating across strikes, both
--- sharing the given 'Interpolation' -- neither is exposed as its own type, since nothing in
--- upstream reaches them from outside this one bootstrap; see this function's C shim for the full
--- pipeline). /index/\//nominalTermStructure/ price the null-vol engine the stripper solves
--- against; /slope/ is the assumed initial caplet-vol slope for strikes past the edge of good
--- price data (a negative slope for typically low\/flat short-dated extreme-strike prices, per
--- upstream's own comment -- too extreme a slope can leave no arbitrage-free solution).
-kInterpolatedYoyOptionletVolatilitySurfaceBlack :: Word -- ^settlementDays
-  -> Calendar -> BusinessDayConvention -> DayCounter
-  -> YoYCapFloorTermPriceSurface -- ^capFloorPrices
-  -> GenYoYInflationIndex yidx -- ^index
-  -> GenYieldTermStructure y -- ^nominalTermStructure
-  -> Double -- ^slope
-  -> Interpolation
-  -> IO YoYOptionletVolatilitySurface
-kInterpolatedYoyOptionletVolatilitySurfaceBlack settlementDays cal bdc dc capFloorPrices index nominalTs slope i1d =
-  uncurryNested (qlKInterpolatedYoYOptionletVolatilitySurfaceBlack settlementDays cal bdc dc capFloorPrices index nominalTs slope) (qlInterpolation i1d)
-{#fun qlKInterpolatedYoYOptionletVolatilitySurfaceBlack{fromIntegral`Word' -- ^settlementDays
-  ,withCalendar*`Calendar'
-  ,fromEnumC`BusinessDayConvention'
-  ,withDayCounter*`DayCounter'
-  ,withGenTermStructure*`YoYCapFloorTermPriceSurface' -- ^capFloorPrices
-  ,withYoYInflationIndex*`GenYoYInflationIndex yidx' -- ^index
-  ,withYieldTermStructure*`GenYieldTermStructure y' -- ^nominalTermStructure
-  ,`Double' -- ^slope
-  ,`Int',`Int',`Int' -- ^interpolator, approximator, approximatorArg
-  ,preErrorCheck-`String'errorCheck*-}->`YoYOptionletVolatilitySurface'peekYoYOptionletVolatilityStructure*#}
+-- |Pricing model for stripping YoY cap/floor price quotes.
+{#enum YoyOptionletModel{} deriving(Show, Eq, Read)#}
 
--- |As 'kInterpolatedYoyOptionletVolatilitySurfaceBlack', but unit-displaced Black.
-kInterpolatedYoyOptionletVolatilitySurfaceUnitDisplacedBlack :: Word -- ^settlementDays
+-- |Strip a native per-strike volatility curve and interpolate across strikes. The optional
+-- initial volatility bracket replaces QuantLib's fixed 1e-5 to 0.08 bounds; Nothing uses the
+-- unmodified native stripper. An explicit bracket uses its protected native objective, Brent
+-- solver (accuracy 1e-7), helpers and piecewise bootstrap, changing only those bounds.
+-- Bounds must be finite, positive and strictly ordered. The slope is the native relative
+-- initial caplet-volatility slope outside reliable short-end prices. LogCubic is unsupported
+-- because the native stripper default-constructs its interpolator. The index and nominal curve
+-- price the null-vol engine the stripper solves against.
+kInterpolatedYoyOptionletVolatilitySurface
+  :: YoyOptionletModel
+  -> Word -- ^Business-day settlement lag of the volatility surface.
   -> Calendar -> BusinessDayConvention -> DayCounter
-  -> YoYCapFloorTermPriceSurface -- ^capFloorPrices
-  -> GenYoYInflationIndex yidx -- ^index
-  -> GenYieldTermStructure y -- ^nominalTermStructure
-  -> Double -- ^slope
+  -> YoYCapFloorTermPriceSurface -- ^Quoted cap/floor term prices to strip.
+  -> GenYoYInflationIndex yidx -- ^YoY index used to price the stripping helpers.
+  -> GenYieldTermStructure y -- ^Nominal discount curve used to price the stripping helpers.
+  -> Double -- ^Initial relative caplet-volatility slope per year.
+  -> Maybe (Double, Double) -- ^Optional (lower, upper) initial annual volatility bounds, per square root year: log-rate units for Black, log(1+rate) for unit-displaced Black, absolute decimal-rate units for Bachelier.
   -> Interpolation
   -> IO YoYOptionletVolatilitySurface
-kInterpolatedYoyOptionletVolatilitySurfaceUnitDisplacedBlack settlementDays cal bdc dc capFloorPrices index nominalTs slope i1d =
-  uncurryNested (qlKInterpolatedYoYOptionletVolatilitySurfaceUnitDisplacedBlack settlementDays cal bdc dc capFloorPrices index nominalTs slope) (qlInterpolation i1d)
-{#fun qlKInterpolatedYoYOptionletVolatilitySurfaceUnitDisplacedBlack{fromIntegral`Word' -- ^settlementDays
-  ,withCalendar*`Calendar'
-  ,fromEnumC`BusinessDayConvention'
-  ,withDayCounter*`DayCounter'
-  ,withGenTermStructure*`YoYCapFloorTermPriceSurface' -- ^capFloorPrices
-  ,withYoYInflationIndex*`GenYoYInflationIndex yidx' -- ^index
-  ,withYieldTermStructure*`GenYieldTermStructure y' -- ^nominalTermStructure
-  ,`Double' -- ^slope
-  ,`Int',`Int',`Int' -- ^interpolator, approximator, approximatorArg
-  ,preErrorCheck-`String'errorCheck*-}->`YoYOptionletVolatilitySurface'peekYoYOptionletVolatilityStructure*#}
-
--- |As 'kInterpolatedYoyOptionletVolatilitySurfaceBlack', but Bachelier (normal model).
-kInterpolatedYoyOptionletVolatilitySurfaceBachelier :: Word -- ^settlementDays
-  -> Calendar -> BusinessDayConvention -> DayCounter
-  -> YoYCapFloorTermPriceSurface -- ^capFloorPrices
-  -> GenYoYInflationIndex yidx -- ^index
-  -> GenYieldTermStructure y -- ^nominalTermStructure
-  -> Double -- ^slope
-  -> Interpolation
-  -> IO YoYOptionletVolatilitySurface
-kInterpolatedYoyOptionletVolatilitySurfaceBachelier settlementDays cal bdc dc capFloorPrices index nominalTs slope i1d =
-  uncurryNested (qlKInterpolatedYoYOptionletVolatilitySurfaceBachelier settlementDays cal bdc dc capFloorPrices index nominalTs slope) (qlInterpolation i1d)
-{#fun qlKInterpolatedYoYOptionletVolatilitySurfaceBachelier{fromIntegral`Word' -- ^settlementDays
-  ,withCalendar*`Calendar'
-  ,fromEnumC`BusinessDayConvention'
-  ,withDayCounter*`DayCounter'
-  ,withGenTermStructure*`YoYCapFloorTermPriceSurface' -- ^capFloorPrices
-  ,withYoYInflationIndex*`GenYoYInflationIndex yidx' -- ^index
-  ,withYieldTermStructure*`GenYieldTermStructure y' -- ^nominalTermStructure
-  ,`Double' -- ^slope
-  ,`Int',`Int',`Int' -- ^interpolator, approximator, approximatorArg
+kInterpolatedYoyOptionletVolatilitySurface model settlementDays cal bdc dc prices index nominal slope bracket i1d =
+  let (useBracket, lower, upper) = case bracket of Nothing -> (False, 1e-5, 0.08); Just (lo, hi) -> (True, lo, hi)
+  in uncurryNested (qlKInterpolatedYoYOptionletVolatilitySurface model settlementDays cal bdc dc prices index nominal slope useBracket lower upper) (qlInterpolation i1d)
+{#fun qlKInterpolatedYoYOptionletVolatilitySurface{fromEnumC`YoyOptionletModel'
+  ,fromIntegral`Word',withCalendar*`Calendar',fromEnumC`BusinessDayConvention',withDayCounter*`DayCounter'
+  ,withGenTermStructure*`YoYCapFloorTermPriceSurface'
+  ,withYoYInflationIndex*`GenYoYInflationIndex yidx'
+  ,withYieldTermStructure*`GenYieldTermStructure y'
+  ,`Double',`Bool',`Double',`Double'
+  ,`Int',`Int',`Int'
   ,preErrorCheck-`String'errorCheck*-}->`YoYOptionletVolatilitySurface'peekYoYOptionletVolatilityStructure*#}
 
 -- |Prices CPI cap\/floors by interpolation and put\/call parity off a market strike\/maturity

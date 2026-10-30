@@ -1,3 +1,4 @@
+#include <cmath>
 #include <ql/shared_ptr.hpp>
 using QuantLib::ext::shared_ptr;
 #include "qlTermStructureAux.h"
@@ -791,16 +792,166 @@ YoYCapFloorTermPriceSurface *qlYoYCapFloorTermPriceSurfaceAux(
 // never passes one) -- only the surface's own K-direction interpolator (factory1D_) takes an
 // explicit instance, so only that one needs the Cubic/LogCubic approximator-specific
 // construction.
+/*
+ Copyright (C) 2009 Chris Kenyon
+
+ This file is part of QuantLib, a free-software/open-source library
+ for financial quantitative analysts and developers - http://quantlib.org/
+
+ QuantLib is free software: you can redistribute it and/or modify it
+ under the terms of the QuantLib license.  You should have received a
+ copy of the license along with this program; if not, please email
+ <quantlib-dev@lists.sf.net>. The license is also available online at
+ <https://www.quantlib.org/license.shtml>.
+
+ This program is distributed in the hope that it will be useful, but WITHOUT
+ ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ FOR A PARTICULAR PURPOSE.  See the license for more details.
+*/
+
+// Adapt the native initialization pipeline with configurable root bounds.
+template <class Interpolator1D>
+class BracketedYoyOptionletStripper : public InterpolatedYoYOptionletStripper<Interpolator1D> {
+    using Base = InterpolatedYoYOptionletStripper<Interpolator1D>;
+    using ObjectiveFunction = typename Base::ObjectiveFunction;
+    using Base::YoYCapFloorTermPriceSurface_;
+    using Base::p_;
+    using Base::lag_;
+    using Base::frequency_;
+    using Base::indexIsInterpolated_;
+    using Base::volCurves_;
+    Real lower_, upper_;
+  public:
+    BracketedYoyOptionletStripper(Real lower, Real upper) : lower_(lower), upper_(upper) {}
+    void initialize(const shared_ptr<YoYCapFloorTermPriceSurface>& s,
+                    const shared_ptr<YoYInflationCapFloorEngine>& p,
+                    Real slope) const override {
+        YoYCapFloorTermPriceSurface_ = s;
+        p_ = p;
+        lag_ = YoYCapFloorTermPriceSurface_->observationLag();
+        frequency_ = YoYCapFloorTermPriceSurface_->frequency();
+        indexIsInterpolated_ = YoYCapFloorTermPriceSurface_->indexIsInterpolated();
+        Natural fixingDays_ = YoYCapFloorTermPriceSurface_->fixingDays();
+        Natural settlementDays = 0; // always
+        Calendar cal = YoYCapFloorTermPriceSurface_->calendar();
+        BusinessDayConvention bdc =
+            YoYCapFloorTermPriceSurface_->businessDayConvention();
+        DayCounter dc = YoYCapFloorTermPriceSurface_->dayCounter();
+
+        // switch from caps to floors when out of floors
+        Rate maxFloor = YoYCapFloorTermPriceSurface_->floorStrikes().back();
+        YoYInflationCapFloor::Type useType = YoYInflationCapFloor::Floor;
+        Period TPmin = YoYCapFloorTermPriceSurface_->maturities().front();
+        // create a "fake index" based on Generic, this should work
+        // provided that the lag and frequency are correct
+        RelinkableHandle<YoYInflationTermStructure> hYoY(
+                                       YoYCapFloorTermPriceSurface_->YoYTS());
+        ext::shared_ptr<YoYInflationIndex> anIndex(
+                                           new YYGenericCPI(frequency_,
+                                                            false, lag_,
+                                                            Currency(), hYoY));
+
+        // strip each K separatly
+        for (Size i=0; i<YoYCapFloorTermPriceSurface_->strikes().size(); i++) {
+            Rate K = YoYCapFloorTermPriceSurface_->strikes()[i];
+            if (K > maxFloor) useType = YoYInflationCapFloor::Cap;
+
+            // solve for the initial point on the vol curve
+            Brent solver;
+            Real solverTolerance_ = 1e-7;
+             // these are VOLATILITY guesses (always +)
+            Real lo = lower_, hi = upper_;
+            Real guess = lo + (hi-lo)/2.0;
+            Real found;
+            Real priceToMatch =
+                (useType == YoYInflationCapFloor::Cap ?
+                 YoYCapFloorTermPriceSurface_->capPrice(TPmin, K) :
+                 YoYCapFloorTermPriceSurface_->floorPrice(TPmin, K));
+
+            try{
+                found = solver.solve(
+                      ObjectiveFunction(useType, slope, K, lag_, fixingDays_,
+                                        anIndex, YoYCapFloorTermPriceSurface_,
+                                        p_, priceToMatch),
+                      solverTolerance_, guess, lo, hi );
+            } catch( std::exception &e) {
+                QL_FAIL("failed to find solution here because: " << e.what());
+            }
+
+            // ***create helpers***
+            Real notional = 10000; // work in bps
+            std::vector<ext::shared_ptr<BootstrapHelper<YoYOptionletVolatilitySurface> > > helperInstruments;
+            std::vector<ext::shared_ptr<YoYOptionletHelper> > helpers;
+            for (Size j = 0; j < YoYCapFloorTermPriceSurface_->maturities().size(); j++){
+                Period Tp = YoYCapFloorTermPriceSurface_->maturities()[j];
+
+                Real nextPrice =
+                    (useType == YoYInflationCapFloor::Cap ?
+                     YoYCapFloorTermPriceSurface_->capPrice(Tp, K) :
+                     YoYCapFloorTermPriceSurface_->floorPrice(Tp, K));
+
+                Handle<Quote> quote1(ext::shared_ptr<Quote>(
+                                               new SimpleQuote( nextPrice )));
+                // helper should be an integer number of periods away,
+                // this is enforced by rounding
+                Size nT = (Size)floor(s->timeFromReference(s->yoyOptionDateFromTenor(Tp))+0.5);
+                helpers.push_back(ext::shared_ptr<YoYOptionletHelper>(
+                          new YoYOptionletHelper(quote1, notional, useType,
+                                                 lag_,
+                                                 dc, cal,
+                                                 fixingDays_,
+                                                 anIndex, CPI::Flat,
+                                                 K, nT, p_)));
+
+                ext::shared_ptr<ConstantYoYOptionletVolatility> yoyVolBLACK(
+                          new ConstantYoYOptionletVolatility(found, settlementDays,
+                                                             cal, bdc, dc,
+                                                             lag_, frequency_,
+                                                             false,
+                                                             // -100% to +300%
+                                                             -1.0,3.0));
+
+                helpers[j]->setTermStructure(
+                       // gets underlying pointer & removes const
+                       const_cast<ConstantYoYOptionletVolatility*>(
+                                                          yoyVolBLACK.get()));
+                helperInstruments.push_back(helpers[j]);
+            }
+            // ***bootstrap***
+            // this is the artificial vol at zero so that first section works
+            Real Tmin = s->timeFromReference(s->yoyOptionDateFromTenor(TPmin));
+            Volatility baseYoYVolatility = found - slope * Tmin * found;
+            Rate eps = std::max(K, 0.02) / 1000.0;
+            Rate minStrike = K-eps;
+            Rate maxStrike = K+eps;
+            ext::shared_ptr<
+                PiecewiseYoYOptionletVolatilityCurve<Interpolator1D> > testPW(
+                new PiecewiseYoYOptionletVolatilityCurve<Interpolator1D>(
+                                            settlementDays, cal, bdc, dc, lag_,
+                                            frequency_, indexIsInterpolated_,
+                                            minStrike, maxStrike,
+                                            baseYoYVolatility,
+                                            helperInstruments) );
+            testPW->recalculate();
+            volCurves_.push_back(testPW);
+        }
+    }
+};
+
 template <class Interpolator1D>
 YoYOptionletVolatilitySurface *makeKInterpolatedYoYOptionletVolatilitySurface(
     unsigned settlementDays, const Calendar &cal, BusinessDayConvention bdc, const DayCounter &dc,
     const shared_ptr<YoYCapFloorTermPriceSurface> &capFloorPrices,
     const shared_ptr<YoYInflationCapFloorEngine> &engine, double slope,
-    const Interpolator1D &interpolator) {
+    const Interpolator1D &interpolator, bool useBracket, double lower, double upper) {
+  shared_ptr<YoYOptionletStripper> stripper;
+  if (useBracket)
+    stripper = shared_ptr<YoYOptionletStripper>(new BracketedYoyOptionletStripper<Interpolator1D>(lower, upper));
+  else
+    stripper = shared_ptr<YoYOptionletStripper>(new InterpolatedYoYOptionletStripper<Interpolator1D>());
   return new KInterpolatedYoYOptionletVolatilitySurface<Interpolator1D>(
       settlementDays, cal, bdc, dc, capFloorPrices->observationLag(), capFloorPrices, engine,
-      shared_ptr<YoYOptionletStripper>(new InterpolatedYoYOptionletStripper<Interpolator1D>()),
-      slope, interpolator);
+      stripper, slope, interpolator);
 }
 
 // Not written in terms of dispatchInterpolation, unlike everything else in this file: that
@@ -809,10 +960,12 @@ YoYOptionletVolatilitySurface *qlKInterpolatedYoYOptionletVolatilitySurfaceAux(
     unsigned settlementDays, const Calendar &cal, BusinessDayConvention bdc, const DayCounter &dc,
     const shared_ptr<YoYCapFloorTermPriceSurface> &capFloorPrices,
     const shared_ptr<YoYInflationCapFloorEngine> &engine, double slope,
-    int interpolator1D, int approximator, int approximatorArg) {
+    int interpolator1D, int approximator, int approximatorArg, bool useBracket, double lower, double upper) {
+  QL_REQUIRE(!useBracket || (std::isfinite(lower) && std::isfinite(upper) && 0 < lower && lower < upper),
+             "YoY initial volatility bracket must be finite, positive and ordered");
   auto make = [&](auto i) -> YoYOptionletVolatilitySurface* {
     return makeKInterpolatedYoYOptionletVolatilitySurface(settlementDays, cal, bdc, dc,
-        capFloorPrices, engine, slope, i);
+        capFloorPrices, engine, slope, i, useBracket, lower, upper);
   };
   switch (interpolator1D) {
   case hasquant::BackwardFlat: return make(BackwardFlat());
