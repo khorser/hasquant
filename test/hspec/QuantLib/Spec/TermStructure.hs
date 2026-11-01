@@ -172,7 +172,7 @@ spec = do
             ==> monadicIO $ do run $ (Quote.simpleQuote val >>= \q -> Quote.value q) `shouldReturn` val
 
     describe "yield term structure" $ do
-      let setup :: IO (Calendar, Word, YieldTermStructure)
+      let setup :: IO (Calendar, Word, PiecewiseYieldCurve)
           setup = do
             let settlementDays = 2
                 depositData = [
@@ -217,9 +217,9 @@ spec = do
         dc <- dayCounter (Actual360 False)
         helpers <- mapM (\(t, r) -> Quote.simpleQuote (r :: Double) >>= \q -> depositRateHelper q (DepositTenor t 2 cal ModifiedFollowing True dc))
           [((3, Months), 0.045), ((6, Months), 0.046), ((1, Years), 0.047), ((2, Years), 0.049)]
-        forM_ ([(Discount, LogLinear), (Discount, Linear), (ZeroYield, Linear), (ForwardRate, BackwardFlat), (SimpleZeroYield, Linear)] :: [(BootstrapTrait, Interpolation)]) $ \(trait, interpolation) -> do
+        forM_ ([(Discount, LogLinear), (Discount, Linear), (ZeroYield, Linear), (ForwardRate, BackwardFlat), (SimpleZeroYield, Linear), (Discount, Cubic (NaturalSpline False))] :: [(BootstrapTrait, Interpolation)]) $ \(trait, interpolation) -> do
           curve <- piecewiseYieldCurve (SettlementDays 0 cal) (fromList helpers) dc [] (Iterative trait interpolation defaultIterativeBootstrapOpts) True
-          nodes <- piecewiseYieldCurveNodes curve trait interpolation
+          nodes <- piecewiseYieldCurveNodes curve
           map fst nodes `shouldSatisfy` ((== Just today') . fmap fst . uncons)
           length nodes `shouldBe` length helpers + 1
           rebuilt <- case trait of
@@ -230,8 +230,33 @@ spec = do
           forM_ [addDays k today' | k <- [0, 45, 180, 400, 700]] $ \d -> do
             expected <- discount curve (DatePoint d) False
             discount rebuilt (DatePoint d) False >>= (`shouldBe` expected)
-          -- another interpolation names another curve type
-          piecewiseYieldCurveNodes curve trait ForwardFlat `shouldThrow` anyException
+
+      it "reconstructs jump-bearing nodes and refuses non-iterative inspection" $ Context.keepingSettingsGc $ do
+        let ref = fromGregorian 2025 1 2
+        Context.setEvaluationDate (Just ref)
+        cal <- calendar Null
+        dc <- dayCounter Actual365FixedStandard
+        quotes <- mapM Quote.simpleQuote [0.04, 0.045, 0.05]
+        helpers <- sequence [depositRateHelper q (DepositTenor (n, Years) 0 cal Unadjusted False dc) | (n,q) <- zip [1,2,3] quotes]
+        jump <- Quote.simpleQuote 0.99
+        let jumps = [(addDays 550 ref, jump)]
+        forM_ ([ReferenceDate ref, SettlementDays 0 cal] :: [Reference]) $ \reference -> do
+          curve <- piecewiseYieldCurve reference (fromList helpers) dc jumps (Iterative Discount LogLinear defaultIterativeBootstrapOpts) False
+          nodes <- piecewiseYieldCurveNodes curve
+          rebuilt <- interpolatedDiscountCurve (fromList nodes) dc cal jumps LogLinear False
+          omitted <- interpolatedDiscountCurve (fromList nodes) dc cal [] LogLinear False
+          forM_ ([365, 550, 551, 730] :: [Integer]) $ \n -> do
+            expected <- discount curve (DatePoint (addDays n ref)) False
+            discount rebuilt (DatePoint (addDays n ref)) False >>= (`shouldSatisfy` closePrec expected 1e-6)
+          expected <- discount curve (TimePoint 2) False
+          discount omitted (TimePoint 2) False >>= (\x -> abs (x - expected) `shouldSatisfy` (> 0.001))
+          _ <- Quote.setValue jump 0.98
+          updated <- piecewiseYieldCurveNodes curve
+          updated `shouldNotBe` nodes
+          _ <- Quote.setValue jump 0.99
+          pure ()
+        global <- piecewiseYieldCurve (ReferenceDate ref) (fromList helpers) dc [] (GlobalDiscountLogLinear 1e-12 [] Nothing) False
+        piecewiseYieldCurveNodes global `shouldThrow` (\e -> "nodes require an iteratively" `isInfixOf` show (e :: Context.Error))
       it "referenceChange" $ Context.keepingSettingsGc $ do
         let ds = [10, 30, 60, 120, 360, 720]
         (_calendar, settlementDays, _ts) <- setup

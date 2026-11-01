@@ -1773,6 +1773,7 @@ data CCallableBondVolatilityStructure'
 data CDefaultProbabilityTermStructure'
 data CAffineHazardRateCurve'
 data CPiecewiseDefaultCurve'
+data CPiecewiseYieldCurve'
 data CZeroInflationTermStructure'
 data CYoYInflationTermStructure'
 data CPiecewiseZeroInflationCurve'
@@ -1780,6 +1781,7 @@ data CPiecewiseYoYInflationCurve'
 data CCommodityCurve'
 -- | > TermStructure = GenTermStructure t
 -- >  YieldTermStructure = GenYieldTermStructure y = GenTermStructure t
+-- >    PiecewiseYieldCurve = GenYieldTermStructure ...
 -- >    FittedBondDiscountCurve = GenYieldTermStructure ...
 -- >    RelinkableYieldTermStructure = GenYieldTermStructure ...
 -- >  VolatilityTermStructure
@@ -1825,6 +1827,9 @@ type GenYieldTermStructure y = GenTermStructure (AnyOf CYieldTermStructure' y)
 type CYieldTermStructure = ForeignPtr CYieldTermStructure'
 -- |A 'TermStructure'; see the hierarchy under t'GenTermStructure'.
 type YieldTermStructure = GenYieldTermStructure CYieldTermStructure
+type CPiecewiseYieldCurve = ForeignPtr CPiecewiseYieldCurve'
+-- |A bootstrapped yield curve retaining its concrete native node accessor.
+type PiecewiseYieldCurve = GenYieldTermStructure CPiecewiseYieldCurve
 type CFittedBondDiscountCurve = ForeignPtr CFittedBondDiscountCurve'
 -- |A 'YieldTermStructure'; see the hierarchy under t'GenTermStructure'.
 type FittedBondDiscountCurve = GenYieldTermStructure CFittedBondDiscountCurve
@@ -2195,6 +2200,7 @@ foreign import ccall unsafe "ql.h &qlFreeCallableBondVolatilityStructure" qlFree
 foreign import ccall unsafe "ql.h &qlFreeDefaultProbabilityTermStructure" qlFreeDefaultProbabilityTermStructure :: FinalizerPtr CDefaultProbabilityTermStructure'
 foreign import ccall unsafe "ql.h &qlFreeAffineHazardRateCurve" qlFreeAffineHazardRateCurve :: FinalizerPtr CAffineHazardRateCurve'
 foreign import ccall unsafe "ql.h &qlFreePiecewiseDefaultCurve" qlFreePiecewiseDefaultCurve :: FinalizerPtr CPiecewiseDefaultCurve'
+foreign import ccall unsafe "ql.h &qlFreePiecewiseYieldCurve" qlFreePiecewiseYieldCurve :: FinalizerPtr CPiecewiseYieldCurve'
 foreign import ccall unsafe "ql.h &qlFreeZeroInflationTermStructure" qlFreeZeroInflationTermStructure :: FinalizerPtr CZeroInflationTermStructure'
 foreign import ccall unsafe "ql.h &qlFreeYoYInflationTermStructure" qlFreeYoYInflationTermStructure :: FinalizerPtr CYoYInflationTermStructure'
 foreign import ccall unsafe "ql.h &qlFreePiecewiseZeroInflationCurve" qlFreePiecewiseZeroInflationCurve :: FinalizerPtr CPiecewiseZeroInflationCurve'
@@ -2236,6 +2242,7 @@ instance Finalizable CCallableBondVolatilityStructure' where finalize = qlFreeCa
 instance Finalizable CDefaultProbabilityTermStructure' where finalize = qlFreeDefaultProbabilityTermStructure
 instance Finalizable CAffineHazardRateCurve' where finalize = qlFreeAffineHazardRateCurve
 instance Finalizable CPiecewiseDefaultCurve' where finalize = qlFreePiecewiseDefaultCurve
+instance Finalizable CPiecewiseYieldCurve' where finalize = qlFreePiecewiseYieldCurve
 instance Finalizable CZeroInflationTermStructure' where finalize = qlFreeZeroInflationTermStructure
 instance Finalizable CYoYInflationTermStructure' where finalize = qlFreeYoYInflationTermStructure
 instance Finalizable CPiecewiseZeroInflationCurve' where finalize = qlFreePiecewiseZeroInflationCurve
@@ -2275,6 +2282,7 @@ foreign import ccall "ql.h qlCallableBondVolatilityStructureAsTermStructure" qlC
 foreign import ccall "ql.h qlDefaultProbabilityTermStructureAsTermStructure" qlDefaultProbabilityTermStructureAsTermStructure :: Ptr CDefaultProbabilityTermStructure' -> IO (Ptr CTermStructure')
 foreign import ccall "ql.h qlAffineHazardRateCurveAsDefaultProbabilityTermStructure" qlAffineHazardRateCurveAsDefaultProbabilityTermStructure :: Ptr CAffineHazardRateCurve' -> IO (Ptr CDefaultProbabilityTermStructure')
 foreign import ccall "ql.h qlPiecewiseDefaultCurveAsDefaultProbabilityTermStructure" qlPiecewiseDefaultCurveAsDefaultProbabilityTermStructure :: Ptr CPiecewiseDefaultCurve' -> IO (Ptr CDefaultProbabilityTermStructure')
+foreign import ccall "ql.h qlPiecewiseYieldCurveAsYieldTermStructure" qlPiecewiseYieldCurveAsYieldTermStructure :: Ptr CPiecewiseYieldCurve' -> IO (Ptr CYieldTermStructure')
 foreign import ccall "ql.h qlZeroInflationTermStructureAsTermStructure" qlZeroInflationTermStructureAsTermStructure :: Ptr CZeroInflationTermStructure' -> IO (Ptr CTermStructure')
 foreign import ccall "ql.h qlYoYInflationTermStructureAsTermStructure" qlYoYInflationTermStructureAsTermStructure :: Ptr CYoYInflationTermStructure' -> IO (Ptr CTermStructure')
 foreign import ccall "ql.h qlPiecewiseZeroInflationCurveAsZeroInflationTermStructure" qlPiecewiseZeroInflationCurveAsZeroInflationTermStructure :: Ptr CPiecewiseZeroInflationCurve' -> IO (Ptr CZeroInflationTermStructure')
@@ -2290,6 +2298,7 @@ instance Upcastable CCallableBondVolatilityStructure' where {type Base CCallable
 instance Upcastable CDefaultProbabilityTermStructure' where {type Base CDefaultProbabilityTermStructure' = CTermStructure'; upcast = qlDefaultProbabilityTermStructureAsTermStructure}
 instance Upcastable CAffineHazardRateCurve' where {type Base CAffineHazardRateCurve' = CDefaultProbabilityTermStructure'; upcast = qlAffineHazardRateCurveAsDefaultProbabilityTermStructure}
 instance Upcastable CPiecewiseDefaultCurve' where {type Base CPiecewiseDefaultCurve' = CDefaultProbabilityTermStructure'; upcast = qlPiecewiseDefaultCurveAsDefaultProbabilityTermStructure}
+instance Upcastable CPiecewiseYieldCurve' where {type Base CPiecewiseYieldCurve' = CYieldTermStructure'; upcast = qlPiecewiseYieldCurveAsYieldTermStructure}
 instance Upcastable CZeroInflationTermStructure' where {type Base CZeroInflationTermStructure' = CTermStructure'; upcast = qlZeroInflationTermStructureAsTermStructure}
 instance Upcastable CYoYInflationTermStructure' where {type Base CYoYInflationTermStructure' = CTermStructure'; upcast = qlYoYInflationTermStructureAsTermStructure}
 instance Upcastable CPiecewiseZeroInflationCurve' where {type Base CPiecewiseZeroInflationCurve' = CZeroInflationTermStructure'; upcast = qlPiecewiseZeroInflationCurveAsZeroInflationTermStructure}
@@ -2491,6 +2500,11 @@ peekPiecewiseDefaultCurve = newGenForeignPtr >=> newGenDefaultProbabilityTermStr
 -- 'withDefaultProbabilityTermStructure', which upcasts.
 withPiecewiseDefaultCurve :: PiecewiseDefaultCurve -> (Ptr CPiecewiseDefaultCurve' -> IO b) -> IO b
 withPiecewiseDefaultCurve = withForeignPtr . ptr . peel . getTermStructure
+peekPiecewiseYieldCurve :: Ptr CPiecewiseYieldCurve' -> IO PiecewiseYieldCurve
+peekPiecewiseYieldCurve = newGenForeignPtr >=> newGenYieldTermStructure
+-- |Reach the concrete leaf for its nodes; ordinary consumers use the yield upcast.
+withPiecewiseYieldCurve :: PiecewiseYieldCurve -> (Ptr CPiecewiseYieldCurve' -> IO b) -> IO b
+withPiecewiseYieldCurve = withForeignPtr . ptr . peel . getTermStructure
 asZeroInflationTermStructure :: GenZeroInflationTermStructure z -> IO ZeroInflationTermStructure
 asZeroInflationTermStructure = transferGenForeignPtr newGenZeroInflationTermStructure . peel . getTermStructure
 peekZeroInflationTermStructure :: Ptr CZeroInflationTermStructure' -> IO ZeroInflationTermStructure

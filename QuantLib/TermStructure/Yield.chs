@@ -5,6 +5,7 @@ module QuantLib.TermStructure.Yield
     -- ** Curves and helpers
     GenYieldTermStructure
   , YieldTermStructure
+  , PiecewiseYieldCurve
   , RelinkableYieldTermStructure
   , FittedBondDiscountCurve
   , MultiCurve
@@ -160,6 +161,7 @@ import QuantLib.Internal.Type
 {#pointer *QlBMAIndex as BMAIndex foreign -> CBMAIndex' nocode#}
 {#pointer *QlBond as Bond foreign -> CBond' nocode#}
 {#pointer *QlOvernightIndex as OvernightIborIndex foreign -> COvernightIndex' nocode#}
+{#pointer *QlPiecewiseYieldCurve as PiecewiseYieldCurve foreign -> CPiecewiseYieldCurve' nocode#}
 {#pointer *QlYieldTermStructure as YieldTermStructure foreign -> CYieldTermStructure' nocode#}
 {#pointer *QlFittedBondDiscountCurve as FittedBondDiscountCurve foreign -> CFittedBondDiscountCurve' nocode#}
 {#pointer *QlRelinkableYieldTermStructure as RelinkableYieldTermStructure foreign -> CRelinkableYieldTermStructure' nocode#}
@@ -1036,40 +1038,40 @@ piecewiseForwardSpreadedTermStructure ts qd i = uncurryNested (qlPiecewiseForwar
 -- pillar\"), not to a number. 'ibDontThrow' is the one to reach for when a curve fails to
 -- bootstrap: it substitutes the best value found so far for a pillar that won't solve,
 -- rather than throwing.
-{#fun qlPiecewiseYieldCurveFull{withDay*`Day',withRateHelperArray*`[GenRateHelper rh]'&,withDayCounter*`DayCounter',withQuoteArray*`[GenQuote q]'&,withDayArray*`[Day]'&,`BootstrapTrait',`Int',`Int',`Int',`Double',`Double',`Double',fromIntegral`Word',`Double',`Double',`Bool',fromIntegral`Word',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
+{#fun qlPiecewiseYieldCurveFull{withDay*`Day',withRateHelperArray*`[GenRateHelper rh]'&,withDayCounter*`DayCounter',withQuoteArray*`[GenQuote q]'&,withDayArray*`[Day]'&,`BootstrapTrait',`Int',`Int',`Int',`Double',`Double',`Double',fromIntegral`Word',`Double',`Double',`Bool',fromIntegral`Word',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`PiecewiseYieldCurve'peekPiecewiseYieldCurve*#}
 
-{#fun qlPiecewiseYieldCurveFull1{fromIntegral`Word',withCalendar*`Calendar',withRateHelperArray*`[GenRateHelper rh]'&,withDayCounter*`DayCounter',withQuoteArray*`[GenQuote q]'&,withDayArray*`[Day]'&,`BootstrapTrait',`Int',`Int',`Int',`Double',`Double',`Double',fromIntegral`Word',`Double',`Double',`Bool',fromIntegral`Word',fromIntegral`Word',`Bool',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
+{#fun qlPiecewiseYieldCurveFull1{fromIntegral`Word',withCalendar*`Calendar',withRateHelperArray*`[GenRateHelper rh]'&,withDayCounter*`DayCounter',withQuoteArray*`[GenQuote q]'&,withDayArray*`[Day]'&,`BootstrapTrait',`Int',`Int',`Int',`Double',`Double',`Double',fromIntegral`Word',`Double',`Double',`Bool',fromIntegral`Word',fromIntegral`Word',`Bool',preErrorCheck-`String'errorCheck*-}->`PiecewiseYieldCurve'peekPiecewiseYieldCurve*#}
 
 -- Raw moving-curve bindings used by 'piecewiseYieldCurve'.
 {#fun qlPiecewiseYieldCurveGlobalBootstrap1{fromIntegral`Word',withCalendar*`Calendar',withRateHelperArray*`[GenRateHelper rh]'&,withDayCounter*`DayCounter',withQuoteArray*`[GenQuote q]'&,withDayArray*`[Day]'&,`Double',withDoubleArray*`[Double]'&,`Bool',withMaybeBootstrapInitialGuess*`Maybe BootstrapInitialGuess'
-  ,preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
+  ,preErrorCheck-`String'errorCheck*-}->`PiecewiseYieldCurve'peekPiecewiseYieldCurve*#}
 
 {#fun qlPiecewiseYieldCurveGlobalBootstrap2{fromIntegral`Word',withCalendar*`Calendar',withRateHelperArray*`[GenRateHelper rh]'&,withDayCounter*`DayCounter',withQuoteArray*`[GenQuote q]'&,withDayArray*`[Day]'&,`Double',withDoubleArray*`[Double]'&,`Bool',withMaybeBootstrapInitialGuess*`Maybe BootstrapInitialGuess'
-  ,preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
+  ,preErrorCheck-`String'errorCheck*-}->`PiecewiseYieldCurve'peekPiecewiseYieldCurve*#}
 
 {#fun qlPiecewiseYieldCurveGlobalBootstrap3{fromIntegral`Word',withCalendar*`Calendar',withRateHelperArray*`[GenRateHelper rh1]'&,withDayCounter*`DayCounter',withQuoteArray*`[GenQuote q]'&,withDayArray*`[Day]'&,withRateHelperArray*`[GenRateHelper rh2]'&,withDayArray*`[Day]'&,`Double',`Bool',withDoubleArray*`[Double]'&,withMaybeBootstrapInitialGuess*`Maybe BootstrapInitialGuess'
-  ,preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
+  ,preErrorCheck-`String'errorCheck*-}->`PiecewiseYieldCurve'peekPiecewiseYieldCurve*#}
 
 {#fun qlPiecewiseYieldCurveGlobalBootstrap4{fromIntegral`Word',withCalendar*`Calendar',withRateHelperArray*`[GenRateHelper rh]'&,withDayCounter*`DayCounter',withQuoteArray*`[GenQuote q]'&,withDayArray*`[Day]'&,`Double',withDoubleArray*`[Double]'&,`Bool',withMaybeBootstrapInitialGuess*`Maybe BootstrapInitialGuess'
-  ,preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
+  ,preErrorCheck-`String'errorCheck*-}->`PiecewiseYieldCurve'peekPiecewiseYieldCurve*#}
 
 {#fun qlPiecewiseYieldCurveGlobalBootstrap5{fromIntegral`Word',withCalendar*`Calendar',withRateHelperArray*`[GenRateHelper rh]'&,withDayCounter*`DayCounter',withQuoteArray*`[GenQuote q]'&,withDayArray*`[Day]'&,`Double',withDoubleArray*`[Double]'&,`Bool',withMaybeBootstrapInitialGuess*`Maybe BootstrapInitialGuess'
-  ,preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
+  ,preErrorCheck-`String'errorCheck*-}->`PiecewiseYieldCurve'peekPiecewiseYieldCurve*#}
 
-{#fun qlPiecewiseYieldCurveLocalBootstrap1{fromIntegral`Word',withCalendar*`Calendar',withRateHelperArray*`[GenRateHelper rh]'&,withDayCounter*`DayCounter',withQuoteArray*`[GenQuote q]'&,withDayArray*`[Day]'&,`BootstrapTrait',fromIntegral`Word',`Bool',`Double',`Double',`Double',`Bool',`Bool',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
+{#fun qlPiecewiseYieldCurveLocalBootstrap1{fromIntegral`Word',withCalendar*`Calendar',withRateHelperArray*`[GenRateHelper rh]'&,withDayCounter*`DayCounter',withQuoteArray*`[GenQuote q]'&,withDayArray*`[Day]'&,`BootstrapTrait',fromIntegral`Word',`Bool',`Double',`Double',`Double',`Bool',`Bool',preErrorCheck-`String'errorCheck*-}->`PiecewiseYieldCurve'peekPiecewiseYieldCurve*#}
 
 -- Raw fixed-curve bindings for the non-iterative bootstrap choices.
 {#fun qlPiecewiseYieldCurveGlobalBootstrapFixed1{withDay*`Day',withRateHelperArray*`[GenRateHelper rh]'&,withDayCounter*`DayCounter',withQuoteArray*`[GenQuote q]'&,withDayArray*`[Day]'&,`Double',withDoubleArray*`[Double]'&,`Bool',withMaybeBootstrapInitialGuess*`Maybe BootstrapInitialGuess'
-  ,preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
+  ,preErrorCheck-`String'errorCheck*-}->`PiecewiseYieldCurve'peekPiecewiseYieldCurve*#}
 {#fun qlPiecewiseYieldCurveGlobalBootstrapFixed2{withDay*`Day',withRateHelperArray*`[GenRateHelper rh]'&,withDayCounter*`DayCounter',withQuoteArray*`[GenQuote q]'&,withDayArray*`[Day]'&,`Double',withDoubleArray*`[Double]'&,`Bool',withMaybeBootstrapInitialGuess*`Maybe BootstrapInitialGuess'
-  ,preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
+  ,preErrorCheck-`String'errorCheck*-}->`PiecewiseYieldCurve'peekPiecewiseYieldCurve*#}
 {#fun qlPiecewiseYieldCurveGlobalBootstrapFixed3{withDay*`Day',withRateHelperArray*`[GenRateHelper rh1]'&,withDayCounter*`DayCounter',withQuoteArray*`[GenQuote q]'&,withDayArray*`[Day]'&,withRateHelperArray*`[GenRateHelper rh2]'&,withDayArray*`[Day]'&,`Double',`Bool',withDoubleArray*`[Double]'&,withMaybeBootstrapInitialGuess*`Maybe BootstrapInitialGuess'
-  ,preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
+  ,preErrorCheck-`String'errorCheck*-}->`PiecewiseYieldCurve'peekPiecewiseYieldCurve*#}
 {#fun qlPiecewiseYieldCurveGlobalBootstrapFixed4{withDay*`Day',withRateHelperArray*`[GenRateHelper rh]'&,withDayCounter*`DayCounter',withQuoteArray*`[GenQuote q]'&,withDayArray*`[Day]'&,`Double',withDoubleArray*`[Double]'&,`Bool',withMaybeBootstrapInitialGuess*`Maybe BootstrapInitialGuess'
-  ,preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
+  ,preErrorCheck-`String'errorCheck*-}->`PiecewiseYieldCurve'peekPiecewiseYieldCurve*#}
 {#fun qlPiecewiseYieldCurveGlobalBootstrapFixed5{withDay*`Day',withRateHelperArray*`[GenRateHelper rh]'&,withDayCounter*`DayCounter',withQuoteArray*`[GenQuote q]'&,withDayArray*`[Day]'&,`Double',withDoubleArray*`[Double]'&,`Bool',withMaybeBootstrapInitialGuess*`Maybe BootstrapInitialGuess'
-  ,preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
-{#fun qlPiecewiseYieldCurveLocalBootstrapFixed{withDay*`Day',withRateHelperArray*`[GenRateHelper rh]'&,withDayCounter*`DayCounter',withQuoteArray*`[GenQuote q]'&,withDayArray*`[Day]'&,`BootstrapTrait',fromIntegral`Word',`Bool',`Double',`Double',`Double',`Bool',`Bool',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
+  ,preErrorCheck-`String'errorCheck*-}->`PiecewiseYieldCurve'peekPiecewiseYieldCurve*#}
+{#fun qlPiecewiseYieldCurveLocalBootstrapFixed{withDay*`Day',withRateHelperArray*`[GenRateHelper rh]'&,withDayCounter*`DayCounter',withQuoteArray*`[GenQuote q]'&,withDayArray*`[Day]'&,`BootstrapTrait',fromIntegral`Word',`Bool',`Double',`Double',`Double',`Bool',`Bool',preErrorCheck-`String'errorCheck*-}->`PiecewiseYieldCurve'peekPiecewiseYieldCurve*#}
 
 -- |Selects the bootstrapper used by 'piecewiseYieldCurve' and carries exactly the
 -- parameters valid for that choice. 'Iterative' uses the selected trait, interpolation, and
@@ -1099,17 +1101,15 @@ fromBootstrapTrait LForwardRate = ForwardRate
 fromBootstrapTrait LZeroYield = ZeroYield
 fromBootstrapTrait LSimpleZeroYield = SimpleZeroYield
 
--- |The nodes of a curve 'piecewiseYieldCurve' bootstrapped with @Iterative trait interpolation@:
--- the reference date first, then each helper's pillar, each with the value the trait
--- interpolates (a discount factor, zero rate or instantaneous forward). The interpolated curve of
--- that trait on these nodes, with the bootstrap's day counter and interpolation, is the same
--- curve. Reading them runs the bootstrap; a curve of another trait, interpolation or bootstrap is
--- refused.
-piecewiseYieldCurveNodes :: GenYieldTermStructure y -> BootstrapTrait -> Interpolation -> IO [(Day, Double)]
-piecewiseYieldCurveNodes c t i = zip <$> qlPiecewiseYieldCurveDates c t k <*> qlPiecewiseYieldCurveData c t k
-  where k = fst (qlInterpolation i)
-{#fun qlPiecewiseYieldCurveDates{withYieldTermStructure*`GenYieldTermStructure y',`BootstrapTrait',`Int',preIntArray-`[Day]'&peekDayArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
-{#fun qlPiecewiseYieldCurveData{withYieldTermStructure*`GenYieldTermStructure y',`BootstrapTrait',`Int',preDoubleArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+-- |Native nodes of an iteratively bootstrapped yield curve: reference date first,
+-- followed by helper pillars and the values interpolated by the construction trait.
+-- Reading them runs the bootstrap; other bootstrap choices are refused.
+-- Reconstruct with the original day counter, full interpolation configuration and jumps.
+-- Nodes exclude the separately applied jump factors.
+piecewiseYieldCurveNodes :: PiecewiseYieldCurve -> IO [(Day, Double)]
+piecewiseYieldCurveNodes c = zip <$> qlPiecewiseYieldCurveDates c <*> qlPiecewiseYieldCurveData c
+{#fun qlPiecewiseYieldCurveDates{withPiecewiseYieldCurve*`PiecewiseYieldCurve',preIntArray-`[Day]'&peekDayArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlPiecewiseYieldCurveData{withPiecewiseYieldCurve*`PiecewiseYieldCurve',preDoubleArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Bootstrapper for 'piecewiseSpreadYieldCurve', whose nodes are always discount-factor spreads.
 -- @LogLinear@ interpolation gives piecewise-constant forward spreads, upstream's canonical choice.
@@ -1126,7 +1126,7 @@ piecewiseYieldCurve :: Reference
   -> [(Day, GenQuote q)] -- ^jumps
   -> Bootstrap rh2 -- ^bootstrapper choice
   -> Bool -- ^extrapolate past the curve's max date
-  -> IO YieldTermStructure
+  -> IO PiecewiseYieldCurve
 piecewiseYieldCurve reference r dc qd bootstrap ex = case (reference, bootstrap) of
   (ReferenceDate d, Iterative t i b) -> enable ex $ uncurryNested (qlPiecewiseYieldCurveFull d rs dc qs ds t) (qlInterpolation i)
     (nullableDouble (ibAccuracy b)) (nullableDouble (ibMinValue b)) (nullableDouble (ibMaxValue b))

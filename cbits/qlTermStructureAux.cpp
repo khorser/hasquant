@@ -74,14 +74,15 @@ Ret dispatchInterpolation(int interpolator, int approximator, int approximatorAr
 // instruments/dayCounter/jumps/jumpDates; every PiecewiseYieldCurve constructor ends with the
 // interpolator and the bootstrapper, so those two go last in the lambda below.
 template <class... Args>
-YieldTermStructure *dispatchTrait(int trait, int interpolator, int approximator, int approximatorArg,
+PiecewiseYieldCurveHandle *dispatchTrait(int trait, int interpolator, int approximator, int approximatorArg,
     const QlIterativeBootstrapOpts& b, Args&&... args) {
-  auto makeForTrait = [&](auto t) -> YieldTermStructure* {
+  auto makeForTrait = [&](auto t) -> PiecewiseYieldCurveHandle* {
     using Trait = typename decltype(t)::type;
-    return dispatchInterpolation<YieldTermStructure*>(interpolator, approximator, approximatorArg,
+    return dispatchInterpolation<PiecewiseYieldCurveHandle*>(interpolator, approximator, approximatorArg,
 [&](auto i) {
           using CurveType = PiecewiseYieldCurve<Trait, decltype(i)>;
-          return new CurveType(std::forward<Args>(args)..., i, makeIterativeBootstrap<CurveType>(b));
+          auto curve = ext::make_shared<CurveType>(std::forward<Args>(args)..., i, makeIterativeBootstrap<CurveType>(b));
+          return new PiecewiseYieldCurveHandle(curve, [curve]{ return curve->nodes(); });
         });
   };
   switch (trait) {
@@ -89,31 +90,6 @@ YieldTermStructure *dispatchTrait(int trait, int interpolator, int approximator,
   case hasquant::ForwardRate: return makeForTrait(Tag<QuantLib::ForwardRate>());
   case hasquant::ZeroYield: return makeForTrait(Tag<QuantLib::ZeroYield>());
   case hasquant::SimpleZeroYield: return makeForTrait(Tag<QuantLib::SimpleZeroYield>());
-  default:
-    QL_FAIL("Unsupported trait" << trait);
-  }
-}
-
-// The interpolator instance only selects the curve type here, so a cubic one takes any
-// approximation.
-std::vector<std::pair<Date, Real>> qlPiecewiseYieldCurveNodesAux(const shared_ptr<YieldTermStructure>& curve,
-    int trait, int interpolator) {
-  using Nodes = std::vector<std::pair<Date, Real>>;
-  auto nodesForTrait = [&](auto t) -> Nodes {
-    using Trait = typename decltype(t)::type;
-    return dispatchInterpolation<Nodes>(interpolator, hasquant::Kruger, 0, [&](auto i) -> Nodes {
-      using CurveType = PiecewiseYieldCurve<Trait, decltype(i)>;
-      auto bootstrapped = QuantLib::ext::dynamic_pointer_cast<CurveType>(curve);
-      QL_REQUIRE(bootstrapped, "the curve is not an iteratively bootstrapped curve of trait "
-          << trait << " and interpolator " << interpolator);
-      return bootstrapped->nodes();
-    });
-  };
-  switch (trait) {
-  case hasquant::Discount: return nodesForTrait(Tag<QuantLib::Discount>());
-  case hasquant::ForwardRate: return nodesForTrait(Tag<QuantLib::ForwardRate>());
-  case hasquant::ZeroYield: return nodesForTrait(Tag<QuantLib::ZeroYield>());
-  case hasquant::SimpleZeroYield: return nodesForTrait(Tag<QuantLib::SimpleZeroYield>());
   default:
     QL_FAIL("Unsupported trait" << trait);
   }
@@ -321,7 +297,7 @@ YieldTermStructure *qlPiecewiseYieldCurveLocalBootstrapAux(const Date& date,
 }
 
 // extracted some template-heavy stuff into a separate file to speed up the compilation
-YieldTermStructure *qlPiecewiseYieldCurveAux(const Date &date,
+PiecewiseYieldCurveHandle *qlPiecewiseYieldCurveAux(const Date &date,
     const std::vector<shared_ptr<RateHelper> >& instr,
     const DayCounter& dayCount,
     const std::vector<Handle<Quote> >& jumps, const std::vector<Date>& jumpDates,
@@ -331,7 +307,7 @@ YieldTermStructure *qlPiecewiseYieldCurveAux(const Date &date,
       date, instr, dayCount, jumps, jumpDates);
 }
 
-YieldTermStructure *qlPiecewiseYieldCurveAux1(unsigned settl, const Calendar &cal,
+PiecewiseYieldCurveHandle *qlPiecewiseYieldCurveAux1(unsigned settl, const Calendar &cal,
     const std::vector<shared_ptr<RateHelper> >& instr,
     const DayCounter& dayCount,
     const std::vector<Handle<Quote> >& jumps, const std::vector<Date>& jumpDates,
@@ -339,8 +315,9 @@ YieldTermStructure *qlPiecewiseYieldCurveAux1(unsigned settl, const Calendar &ca
     int bootstrap, double accuracy, const std::vector<double>& instrumentWeights,
     const QlIterativeBootstrapOpts& bootstrapOpts, [[maybe_unused]] const QlCallback& initialGuess) {
   if (bootstrap == 1) {
-    return dispatchTraitGlobalBootstrap(trait, interpolator, accuracy, instrumentWeights, initialGuess,
-        settl, cal, instr, dayCount, jumps, jumpDates);
+    auto curve = ext::shared_ptr<YieldTermStructure>(dispatchTraitGlobalBootstrap(trait, interpolator, accuracy, instrumentWeights, initialGuess,
+        settl, cal, instr, dayCount, jumps, jumpDates));
+    return new PiecewiseYieldCurveHandle(curve);
   }
   return dispatchTrait(trait, interpolator, approximator, approximatorArg, bootstrapOpts,
       settl, cal, instr, dayCount, jumps, jumpDates);

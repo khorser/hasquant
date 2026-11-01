@@ -346,7 +346,8 @@ piecewiseDefaultCurve reference h dc q t i b ex = do
 -- |A bootstrapped default-probability curve's nodes, bootstrapping it if it has not been: its
 -- reference date first, then each helper's pillar, each with the value its trait interpolates (a
 -- hazard rate, survival probability or default density). The interpolated curve of that trait on
--- these nodes, with the bootstrap's day counter and interpolation, is the same curve.
+-- these nodes reproduces the curve only with the original day counter, full interpolation
+-- configuration and jump dates/quotes. Nodes exclude separately applied jump factors.
 defaultCurveNodes :: PiecewiseDefaultCurve -> IO [(Day, Double)]
 defaultCurveNodes c = zip <$> qlPiecewiseDefaultCurveDates c <*> qlPiecewiseDefaultCurveData c
 {#fun qlPiecewiseDefaultCurveDates{withPiecewiseDefaultCurve*`PiecewiseDefaultCurve',preIntArray-`[Day]'&peekDayArray*,preErrorCheck-`String'errorCheck*-}->`()'#}

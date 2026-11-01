@@ -947,3 +947,11 @@ when comparing existing prices. The shaped adapter in `cbits/qlShapedHazardCurve
 the base survival and QuantLib interpolation primitives for its spread: discontinuous buckets
 must not be integrated by one quadrature spanning their boundaries. Compare flat-curve controls
 with the explicit quadrature factor rather than widening a pricing tolerance without a reason.
+
+## Piecewise curve node access
+
+Retain concrete node access at construction in a leaf handle with a native `nodes()` closure.
+Never recover template arguments with runtime downcasts or require callers to repeat them.
+Yield leaves retain a shared `Handle<YieldTermStructure>`; upcasts copy that handle.
+Nodes omit separately applied jump factors: reconstruction needs the original jumps as well
+as the day counter and full interpolation configuration.

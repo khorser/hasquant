@@ -30,7 +30,7 @@ curveToday = 23 `october` 2025
 
 -- A small, entirely ordinary deposit curve -- it bootstraps fine under upstream's defaults.
 -- The point is what the *settings* do to it, not the curve itself.
-buildCurve :: IterativeBootstrapOpts -> IO YieldTermStructure
+buildCurve :: IterativeBootstrapOpts -> IO PiecewiseYieldCurve
 buildCurve opts = do
   cal <- calendar TARGET
   dc <- dayCounter (Actual360 False)

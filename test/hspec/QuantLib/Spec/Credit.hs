@@ -560,6 +560,28 @@ spec = do
           expected <- survivalProbability curve (DatePoint d) False
           survivalProbability rebuilt (DatePoint d) False >>= (`shouldBe` expected)
 
+    it "reconstructs default nodes with their separate jump factors" $ Context.keepingSettingsGc $ do
+      let ref = fromGregorian 2015 6 15
+      Context.setEvaluationDate (Just ref)
+      cal <- calendar TARGET
+      dc <- dayCounter Actual365FixedStandard
+      discountQuote <- simpleQuote 0.03
+      nominal <- flatForward (ReferenceDate ref) discountQuote dc Continuous Annual
+      helpers <- forM [1,2,3,5] $ \n -> do
+        q <- simpleQuote 0.02
+        spreadCdsHelper q (n, Years) 1 cal Quarterly Following TwentiethIMM dc 0.4 nominal True True Nothing dc True Midpoint Nothing
+      jump <- simpleQuote 0.995
+      let jumps = [(addDays 550 ref, jump)]
+      curve <- piecewiseDefaultCurve (ReferenceDate ref) (fromList helpers) dc jumps HazardRate BackwardFlat defaultIterativeBootstrapOpts False
+      nodes <- defaultCurveNodes curve
+      rebuilt <- interpolatedHazardRateCurve (fromList nodes) dc cal jumps BackwardFlat False
+      omitted <- interpolatedHazardRateCurve (fromList nodes) dc cal [] BackwardFlat False
+      forM_ ([365,550,551,730] :: [Integer]) $ \n -> do
+        expected <- survivalProbability curve (DatePoint (addDays n ref)) False
+        survivalProbability rebuilt (DatePoint (addDays n ref)) False >>= (`shouldSatisfy` closePrec expected 1e-6)
+      expected <- survivalProbability curve (TimePoint 2) False
+      survivalProbability omitted (TimePoint 2) False >>= (\x -> abs (x - expected) `shouldSatisfy` (> 0.001))
+
     it "supports retry/fallback settings for a distressed inverted spread curve" $ Context.keepingSettingsGc $ do
       let asof = fromGregorian 2020 4 1
           curveNodes = fromList $ zip

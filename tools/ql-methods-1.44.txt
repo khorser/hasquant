@@ -8005,7 +8005,7 @@
 | |ql/termstructures/credit/piecewisedefaultcurve.hpp|const std::vector<Time> & PiecewiseDefaultCurve::times() const;
 | |ql/termstructures/credit/piecewisedefaultcurve.hpp|const std::vector<Date> & PiecewiseDefaultCurve::dates() const;
 | |ql/termstructures/credit/piecewisedefaultcurve.hpp|const std::vector<Real> & PiecewiseDefaultCurve::data() const;
-| |ql/termstructures/credit/piecewisedefaultcurve.hpp|std::vector<std::pair<Date, Real>> PiecewiseDefaultCurve::nodes() const;
+|v|ql/termstructures/credit/piecewisedefaultcurve.hpp|std::vector<std::pair<Date, Real>> PiecewiseDefaultCurve::nodes() const;
 | |ql/termstructures/credit/piecewisedefaultcurve.hpp|void update();
 | |ql/termstructures/credit/piecewisedefaultcurve.hpp|Probability survivalProbabilityImpl(Time t) const;
 | |ql/termstructures/credit/piecewisedefaultcurve.hpp|Real defaultDensityImpl(Time t) const;
@@ -9053,7 +9053,7 @@
 |x|ql/termstructures/yield/piecewiseyieldcurve.hpp|const std::vector<Time> & PiecewiseYieldCurve::times() const;
 |x|ql/termstructures/yield/piecewiseyieldcurve.hpp|const std::vector<Date> & PiecewiseYieldCurve::dates() const;
 |x|ql/termstructures/yield/piecewiseyieldcurve.hpp|const std::vector<Real> & PiecewiseYieldCurve::data() const;
-|x|ql/termstructures/yield/piecewiseyieldcurve.hpp|std::vector<std::pair<Date, Real>> PiecewiseYieldCurve::nodes() const;
+|v|ql/termstructures/yield/piecewiseyieldcurve.hpp|std::vector<std::pair<Date, Real>> PiecewiseYieldCurve::nodes() const;
 | |ql/termstructures/yield/piecewiseyieldcurve.hpp|void update();
 | |ql/termstructures/yield/piecewiseyieldcurve.hpp|DiscountFactor discountImpl(Time t) const;
 | |ql/termstructures/yield/piecewiseyieldcurve.hpp|void performCalculations() const;

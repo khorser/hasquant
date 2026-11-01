@@ -43,7 +43,16 @@ struct QlIterativeBootstrapOpts {
   unsigned dontThrowSteps, maxEvaluations;
 };
 
-QuantLib::YieldTermStructure *qlPiecewiseYieldCurveAux(
+struct PiecewiseYieldCurveHandle {
+  QuantLib::Handle<QuantLib::YieldTermStructure> curve;
+  std::function<std::vector<std::pair<QuantLib::Date, QuantLib::Real>>()> nodesFn;
+  PiecewiseYieldCurveHandle(const QuantLib::ext::shared_ptr<QuantLib::YieldTermStructure>& base,
+      std::function<std::vector<std::pair<QuantLib::Date, QuantLib::Real>>()> nodes = {})
+      : curve(base), nodesFn(std::move(nodes)) {}
+  void enableExtrapolation() { curve->enableExtrapolation(); }
+};
+
+PiecewiseYieldCurveHandle *qlPiecewiseYieldCurveAux(
   const QuantLib::Date &date,
   const std::vector<QuantLib::ext::shared_ptr<QuantLib::RateHelper> >& instr,
   const QuantLib::DayCounter& dayCount,
@@ -73,12 +82,7 @@ QuantLib::YieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrapAux(
 // The Haskell `piecewiseYieldCurve` dispatcher selects the matching C shim for each
 // `Bootstrap` constructor. This integer therefore remains limited to 0 and 1; local bootstrap
 // uses its separate shim.
-// The nodes of an iteratively bootstrapped curve of this trait and interpolator: the reference
-// date, then each helper's pillar, with the value the trait interpolates. Reading them runs the
-// bootstrap; a curve of another type is refused.
-std::vector<std::pair<QuantLib::Date, QuantLib::Real>> qlPiecewiseYieldCurveNodesAux(
-  const QuantLib::ext::shared_ptr<QuantLib::YieldTermStructure>& curve, int trait, int interpolator);
-QuantLib::YieldTermStructure *qlPiecewiseYieldCurveAux1(
+PiecewiseYieldCurveHandle *qlPiecewiseYieldCurveAux1(
   unsigned settl, const QuantLib::Calendar &cal,
   const std::vector<QuantLib::ext::shared_ptr<QuantLib::RateHelper> >& instr,
   const QuantLib::DayCounter& dayCount,

@@ -123,9 +123,10 @@ run = do
 
       let (instrA, instrB) = unzip helpers
 
-      ts0 <- TS.piecewiseYieldCurve (TS.SettlementDays curveSettleDays cal) (fromList instrB) dc []
+      piecewise <- TS.piecewiseYieldCurve (TS.SettlementDays curveSettleDays cal) (fromList instrB) dc []
         (TS.Iterative TS.Discount LogLinear TS.defaultIterativeBootstrapOpts) False
 
+      ts0 <- TS.asYieldTermStructure piecewise
       curves <- fitCurves cal dc instrA
       rs <- rates ts0 dc bondSettle evalDate curves instrA
       return (rs, ts0, instrA, instrB, curves)
@@ -143,9 +144,10 @@ run = do
     step3 :: Day -> DayCounter -> Calendar -> Day -> [TS.BondHelper] -> [TS.RateHelper]
              -> IO (Rate, TS.YieldTermStructure, [TS.FittedBondDiscountCurve])
     step3 evalDate dc cal bondSettle iA iB = do
-      ts00 <- TS.piecewiseYieldCurve (TS.SettlementDays curveSettleDays cal) (fromList iB) dc []
+      piecewise <- TS.piecewiseYieldCurve (TS.SettlementDays curveSettleDays cal) (fromList iB) dc []
         (TS.Iterative TS.Discount LogLinear TS.defaultIterativeBootstrapOpts) False
 
+      ts00 <- TS.asYieldTermStructure piecewise
       curves <- fitCurves cal dc iA
       rs <- rates ts00 dc bondSettle evalDate curves iA
       return (rs, ts00, curves)

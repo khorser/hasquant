@@ -132,6 +132,7 @@ buildMarketData = do
           --Abcd
 
   --df <- discount ts (fromGregorian 2011 08 03) True
+  base <- asYieldTermStructure ts
   return MarketData
     { targetCal = targetCal'
     , nyseCal = nyseCal'
@@ -143,7 +144,7 @@ buildMarketData = do
     , thirty360Europeandc = thirty360Europeandc'
     , settlDate = settlDate'
     , todaysDate = todaysDate'
-    , discountCurve = ts
+    , discountCurve = base
     }
 
 buildBonds :: MarketData -> IO (Bond, Bond, Bond, PricingEngine)
