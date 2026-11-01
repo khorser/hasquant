@@ -1,5 +1,9 @@
 ## 0.9.0.0 (2026)
 
+- Breaking: return a `PiecewiseYieldCurve` leaf from `piecewiseYieldCurve`; node inspection now
+  takes only that curve, retaining its native type without runtime downcasts.
+- Clarify that yield/default node reconstruction also requires the original jumps.
+
 - Breaking: replace the three model-specific YoY optionlet stripping constructors with
   `kInterpolatedYoyOptionletVolatilitySurface`, selected by `YoyOptionletModel`, and add an
   optional initial-volatility root bracket. `Nothing` retains the native 1e-5 to 0.08 bounds.
@@ -8,7 +12,8 @@
 
 - `piecewiseYieldCurveNodes` reads an iteratively bootstrapped yield curve's nodes: the
   reference date, then each helper's pillar, with the value its trait interpolates. The
-  interpolated curve of that trait on these nodes is the same curve.
+  interpolated curve of that trait on these nodes reproduces the curve with the original
+  day counter, full interpolation configuration, and jump dates/quotes.
 
 - Breaking: `capletVarianceCurve` takes a trailing `extrapolate` flag. With `True`, a read
   after the last node keeps that node's volatility, as `BlackVarianceCurve` interpolates by
@@ -25,7 +30,7 @@
   `asDefaultProbabilityTermStructure` where a concrete `DefaultProbabilityTermStructure` is
   stored. `defaultCurveNodes` reads its bootstrapped nodes: the reference date, then each
   helper's pillar, with the value its trait interpolates. The interpolated curve of that trait
-  on these nodes is the same curve.
+  on these nodes reproduces the curve with the original day counter, interpolation, and jumps.
 
 - Breaking: hazard shifts use `shiftedHazardRateCurve` and `HazardRateShift`.
   Replace `spreadedHazardRateCurve base q` with `shiftedHazardRateCurve base
