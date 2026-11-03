@@ -684,6 +684,7 @@ extern "C" {
   QlFloatingRateCoupon* qlMultipleResetsCouponAsFloatingRateCoupon(QlMultipleResetsCoupon* o);
   QlMultipleResetsCoupon* qlMultipleResetsCoupon(int paymentDate, double nominal, Schedule *schedule, unsigned fixingDays, QlIborIndex *index, double gearing, double couponSpread, double rateSpread, int refPeriodStart, int refPeriodEnd, DayCounter *dayCounter, int exCouponDate, QlError **e);
   void qlMultipleResetsCouponFixingDates(QlMultipleResetsCoupon *o, unsigned *len, int **dates, QlError **e);
+  void qlMultipleResetsCouponAccrualFractions(QlMultipleResetsCoupon *o, unsigned *len, double **fractions, QlError **e);
   void qlFreeRangeAccrualFloatersCoupon(QlRangeAccrualFloatersCoupon*);
   QlFloatingRateCoupon* qlRangeAccrualFloatersCouponAsFloatingRateCoupon(QlRangeAccrualFloatersCoupon*);
   QlRangeAccrualFloatersCoupon* qlRangeAccrualFloatersCoupon(int paymentDate, double nominal, QlIborIndex*, int startDate, int endDate, unsigned fixingDays, DayCounter*, double gearing, double spread, int refStart, int refEnd, Schedule*, double lower, double upper, QlError **e);
@@ -699,6 +700,7 @@ extern "C" {
   QlOvernightIndexedCoupon* qlOvernightIndexedCoupon(int paymentDate, double nominal, int startDate, int endDate, QlOvernightIndex *index, double gearing, double spread, int refPeriodStart, int refPeriodEnd, DayCounter *dayCounter, int telescopic, int averaging, unsigned lookback, unsigned lockout, int observationShift, int compoundSpread, int rateStart, int rateEnd, int exCouponDate, int rounding, QlError **e);
   QlFloatingRateCoupon* qlCappedFlooredOvernightIndexedCoupon(QlOvernightIndexedCoupon *underlying, double cap, double floor, int naked, int daily, QlError **e);
   void qlOvernightIndexedCouponFixingDates(QlOvernightIndexedCoupon *o, unsigned *len, int **dates, QlError **e);
+  void qlOvernightIndexedCouponAccrualFractions(QlOvernightIndexedCoupon *o, unsigned *len, double **fractions, QlError **e);
   void qlOvernightIndexedCouponIndexFixings(QlOvernightIndexedCoupon *o, unsigned *len, double **fixings, QlError **e);
   QlFloatingRateCouponPricer* qlCompoundingOvernightIndexedCouponPricer(QlOptionletVolatilityStructure *vol, int effective, QlError **e);
   QlFloatingRateCouponPricer* qlArithmeticAveragedOvernightIndexedCouponPricer(double mr, double volatility, int byApprox, QlOptionletVolatilityStructure *vol, int effective, QlError **e);

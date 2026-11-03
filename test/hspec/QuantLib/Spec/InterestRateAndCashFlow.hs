@@ -11,6 +11,7 @@ import Control.Monad(forM_, (>=>))
 import Data.List(isInfixOf, nub)
 import qualified Data.List.NonEmpty as NE
 import Data.Maybe(fromMaybe)
+import qualified Data.Vector.Storable as V
 import Data.Time.Calendar
 
 import QuantLib.Time.Date
@@ -954,6 +955,12 @@ spec evalDate = do
           length dates' `shouldSatisfy` (> 0)
           expected <- mapM (\d -> fixing sofr d False) dates'
           fixings `shouldBe` expected
+          fractions <- CF.fixingAccrualFractions pastCoupon
+          let ends = drop 1 dates' ++ [18 `november` 2021]
+              expectedFractions = [fromIntegral (diffDays end start) / 360 | (start, end) <- zip dates' ends]
+          V.toList fractions `shouldBe` expectedFractions
+          product (zipWith (\r dt -> 1 + r * dt) fixings expectedFractions) - 1
+            `shouldSatisfy` closePrec (0.000987136104 * 31 / 360) 1e-12
 
       it "AverageBMACoupon fixingDates/indexFixings agree with the coupon's own seeded fixings" $
         bracket_ clearAllFixingHistories clearAllFixingHistories $ Context.keepingSettingsGc $ do
@@ -1193,6 +1200,10 @@ spec evalDate = do
             Nothing Nothing dc Nothing
           fixingDates <- CF.fixingDates testCpn
           length fixingDates `shouldBe` length subs
+          fractions <- CF.fixingAccrualFractions testCpn
+          V.length fractions `shouldBe` length subs
+          and (zipWith (`closePrec` 1e-12) (map snd subs) (V.toList fractions))
+            `shouldBe` True
           pricer <- CF.compoundingMultipleResetsPricer
           CF.setFloatingRateCouponPricer testCpn pricer
           actual <- CF.amount testCpn

@@ -431,7 +431,7 @@
 |x|ql/cashflows/lineartsrpricer.hpp|Real PriceHelper::operator()(Real strike) const;
 |v|ql/cashflows/multipleresetscoupon.hpp|MultipleResetsCoupon::MultipleResetsCoupon(const Date & paymentDate, Real nominal, const Schedule & resetSchedule, Natural fixingDays, const ext::shared_ptr<IborIndex> & index, Real gearing = 1.0, Rate couponSpread = 0.0, Rate rateSpread = 0.0, const Date & refPeriodStart = Date(), const Date & refPeriodEnd = Date(), const DayCounter & dayCounter = DayCounter(), const Date & exCouponDate = Date());
 |v|ql/cashflows/multipleresetscoupon.hpp|const std::vector<Date> & MultipleResetsCoupon::fixingDates() const;
-|x|ql/cashflows/multipleresetscoupon.hpp|const std::vector<Time> & MultipleResetsCoupon::dt() const;
+|v|ql/cashflows/multipleresetscoupon.hpp|const std::vector<Time> & MultipleResetsCoupon::dt() const;
 |x|ql/cashflows/multipleresetscoupon.hpp|const std::vector<Date> & MultipleResetsCoupon::valueDates() const;
 |x|ql/cashflows/multipleresetscoupon.hpp|Spread MultipleResetsCoupon::rateSpread() const;
 | |ql/cashflows/multipleresetscoupon.hpp|Rate MultipleResetsPricer::swapletPrice() const;
@@ -461,7 +461,7 @@
 | |ql/cashflows/multipleresetscoupon.hpp|MultipleResetsLeg & MultipleResetsLeg::withAveragingMethod(RateAveraging::Type averagingMethod);
 |v|ql/cashflows/overnightindexedcoupon.hpp|OvernightIndexedCoupon::OvernightIndexedCoupon(const Date & paymentDate, Real nominal, const Date & startDate, const Date & endDate, const ext::shared_ptr<OvernightIndex> & overnightIndex, Real gearing = 1.0, Spread spread = 0.0, const Date & refPeriodStart = Date(), const Date & refPeriodEnd = Date(), const DayCounter & dayCounter = DayCounter(), bool telescopicValueDates = false, RateAveraging::Type averagingMethod = RateAveraging::Compound, Natural lookbackDays = Null<Natural>(), Natural lockoutDays = 0, bool applyObservationShift = false, bool compoundSpread = false, const Date & rateComputationStartDate = Date(), const Date & rateComputationEndDate = Date(), const Date & exCouponDate = Date(), const std::optional<Integer> & roundingPrecision = std::nullopt);
 |v|ql/cashflows/overnightindexedcoupon.hpp|const std::vector<Date> & OvernightIndexedCoupon::fixingDates() const;
-|x|ql/cashflows/overnightindexedcoupon.hpp|const std::vector<Time> & OvernightIndexedCoupon::dt() const;
+|v|ql/cashflows/overnightindexedcoupon.hpp|const std::vector<Time> & OvernightIndexedCoupon::dt() const;
 |v|ql/cashflows/overnightindexedcoupon.hpp|const std::vector<Rate> & OvernightIndexedCoupon::indexFixings() const;
 |x|ql/cashflows/overnightindexedcoupon.hpp|const std::vector<Date> & OvernightIndexedCoupon::valueDates() const;
 |x|ql/cashflows/overnightindexedcoupon.hpp|const std::vector<Date> & OvernightIndexedCoupon::interestDates() const;

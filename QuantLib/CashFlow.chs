@@ -188,6 +188,7 @@ module QuantLib.CashFlow
   , HasFixingDates(..)
   , fixingDependencies
   , HasIndexFixings(..)
+  , HasFixingAccrualFractions(..)
   , baseFixing
   , indexFixing
   , adjustedFixing
@@ -1695,6 +1696,12 @@ instance HasFixingDates MultipleResetsCoupon where
 instance HasFixingDates OvernightIndexedCoupon where
   fixingDates = overnightIndexedCouponFixingDatesRaw
 
+{#fun qlOvernightIndexedCouponAccrualFractions as overnightIndexedCouponAccrualFractionsRaw{withOvernightIndexedCoupon*`OvernightIndexedCoupon' -- ^Coupon whose native sub-period weights are read.
+  ,preDoubleArray-`RealVector'&peekRealVector*,preErrorCheck-`String'errorCheck*-}->`()'#}
+
+{#fun qlMultipleResetsCouponAccrualFractions as multipleResetsCouponAccrualFractionsRaw{withMultipleResetsCoupon*`MultipleResetsCoupon' -- ^Coupon whose native sub-period weights are read.
+  ,preDoubleArray-`RealVector'&peekRealVector*,preErrorCheck-`String'errorCheck*-}->`()'#}
+
 -- |Coupon types that expose their component index fixings.
 class HasIndexFixings coupon where
   indexFixings :: coupon -> IO [Double]
@@ -1703,6 +1710,19 @@ instance HasIndexFixings AverageBMACoupon where
   indexFixings = averageBmaCouponIndexFixingsRaw
 instance HasIndexFixings OvernightIndexedCoupon where
   indexFixings = overnightIndexedCouponIndexFixingsRaw
+
+-- |Coupons exposing the year fractions applied to their component index fixings.
+-- Entries align with 'fixingDates' and use the underlying index's day counter, independently
+-- of the coupon's overall day counter. Overnight weights include native observation-shift
+-- conventions; a telescopic coupon exposes only its retained sub-periods.
+class HasFixingAccrualFractions coupon where
+  fixingAccrualFractions :: coupon -- ^Coupon whose computed accrual sub-periods are read.
+    -> IO RealVector
+
+instance HasFixingAccrualFractions OvernightIndexedCoupon where
+  fixingAccrualFractions = overnightIndexedCouponAccrualFractionsRaw
+instance HasFixingAccrualFractions MultipleResetsCoupon where
+  fixingAccrualFractions = multipleResetsCouponAccrualFractionsRaw
 
 -- |FX observation as fixing date and associated settlement/value date.
 data FxReset = FxReset { fxResetFixingDate :: Day, fxResetSettlementDate :: Day } deriving (Eq, Show, Read)

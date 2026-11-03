@@ -2095,6 +2095,9 @@ void qlMultipleResetsCouponFixingDates(QlMultipleResetsCoupon *o, unsigned *len,
     for (unsigned i = 0; i < ds.size(); ++i) out[i] = ds[i].serialNumber();
     result.commit();
   } catch (std::exception& er) {(void)handleException<int*>(e, er);}}
+void qlMultipleResetsCouponAccrualFractions(QlMultipleResetsCoupon *o, unsigned *len, double **fractions, QlError **e) { QlCallScope callbackScope(e);
+  try {fillVectorOut([&] {return (*arg(o))->dt();}, len, fractions);
+  } catch (std::exception& er) {(void)handleException<double*>(e, er);}}
 void qlFreeRangeAccrualFloatersCoupon(QlRangeAccrualFloatersCoupon* o) {del(o);}
 QlFloatingRateCoupon* qlRangeAccrualFloatersCouponAsFloatingRateCoupon(QlRangeAccrualFloatersCoupon* o) {return ret(new QlFloatingRateCoupon(*arg(o)));}
 QlRangeAccrualFloatersCoupon* qlRangeAccrualFloatersCoupon(int paymentDate, double nominal, QlIborIndex* index, int startDate, int endDate, unsigned fixingDays, DayCounter* dayCounter, double gearing, double spread, int refStart, int refEnd, Schedule* observations, double lower, double upper, QlError **e) { QlCallScope callbackScope(e);
@@ -2124,6 +2127,9 @@ void qlOvernightIndexedCouponFixingDates(QlOvernightIndexedCoupon *o, unsigned *
     for (unsigned i = 0; i < ds.size(); ++i) out[i] = ds[i].serialNumber();
     result.commit();
   } catch (std::exception& er) {(void)handleException<int*>(e, er);}}
+void qlOvernightIndexedCouponAccrualFractions(QlOvernightIndexedCoupon *o, unsigned *len, double **fractions, QlError **e) { QlCallScope callbackScope(e);
+  try {fillVectorOut([&] {return (*arg(o))->dt();}, len, fractions);
+  } catch (std::exception& er) {(void)handleException<double*>(e, er);}}
 void qlOvernightIndexedCouponIndexFixings(QlOvernightIndexedCoupon *o, unsigned *len, double **fixings, QlError **e) { QlCallScope callbackScope(e);
   try {fillVectorOut([&] {return (*arg(o))->indexFixings();}, len, fixings);
   } catch (std::exception& er) {(void)handleException<double*>(e, er);}}

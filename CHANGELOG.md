@@ -1,5 +1,8 @@
 ## 0.9.0.0 (2026)
 
+- Add `fixingAccrualFractions` for overnight and multiple-reset coupons, exposing native
+  index-day-count weights alongside fixing dates.
+
 - Breaking: return a `PiecewiseYieldCurve` leaf from `piecewiseYieldCurve`; node inspection now
   takes only that curve, retaining its native type without runtime downcasts.
 - Clarify that yield/default node reconstruction also requires the original jumps.
