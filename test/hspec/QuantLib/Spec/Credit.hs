@@ -4,7 +4,7 @@ import Control.Monad(forM, forM_, unless)
 import Test.Hspec
 import Data.List(isInfixOf, uncons)
 import Data.List.NonEmpty(fromList)
-import Data.Time.Calendar(fromGregorian, addDays, addGregorianYearsClip)
+import Data.Time.Calendar(Day, fromGregorian, addDays, addGregorianYearsClip)
 
 import QuantLib.Currency(currency, Ccy(..))
 import QuantLib.Time.Calendar(calendar, adjust, CalendarConstructor(..), BusinessDayConvention(..))
@@ -12,8 +12,8 @@ import QuantLib.Time.Schedule(dayCounter, DayCounterConstructor(..), TimeUnit(..
 import qualified QuantLib.Time.Schedule as Schedule
 import QuantLib.InterestRate(Compounding(..))
 import QuantLib.Math(Interpolation(..))
-import QuantLib.Quote(simpleQuote, setValue)
-import QuantLib.TermStructure(allowsExtrapolation)
+import QuantLib.Quote(SimpleQuote, simpleQuote, setValue)
+import QuantLib.TermStructure(allowsExtrapolation, referenceDate, setExtrapolation, maxDate)
 import QuantLib.TermStructure.Credit
 import QuantLib.TermStructure.Yield(flatForward, interpolatedDiscountCurve)
 import QuantLib.Instrument(setPricingEngine, PricingModel(..))
@@ -33,6 +33,90 @@ import QuantLib.Spec.Helpers(closePrec, quantLibAtMost143, unsupportedQuantLib14
 -- the 'SyntheticCDO' test below.
 spec :: Spec
 spec = do
+  describe "conditional survival views" $ do
+    it "retains native survival, density and hazard geometry for every shift family" $ Context.keepingSettingsGc $ do
+      let ref = fromGregorian 2025 1 2
+          day n = addDays (365 * n) ref
+      dc <- dayCounter Actual365FixedStandard
+      q <- simpleQuote 0.02
+      base <- flatHazardRate (ReferenceDate ref) q dc
+      s1 <- simpleQuote 0.001
+      s2 <- simpleQuote 0.003
+      forM_ [ParallelHazardShift s1, RelativeHazardShift s2,
+             KeyRateHazardShifts (fromList [(day 1,s1), (day 3,s2), (day 5,s1)]),
+             BucketHazardShifts (fromList [(day 1,s1), (day 3,s2)])] $ \shift -> do
+        original <- shiftedHazardRateCurve base shift
+        view <- conditionalSurvivalCurve original (day 1)
+        referenceDate view `shouldReturn` day 1
+        originalMaximum <- maxDate original
+        maxDate view `shouldReturn` originalMaximum
+        normalization <- survivalProbability original (DatePoint (day 1)) False
+        forM_ [day 1,day 2,day 4,day 6] $ \target -> do
+          originalSurvival <- survivalProbability original (DatePoint target) False
+          survivalProbability view (DatePoint target) False >>= (`shouldSatisfy` closePrec (originalSurvival / normalization) 1e-13)
+          density <- defaultDensity original (DatePoint target) False
+          defaultDensity view (DatePoint target) False >>= (`shouldSatisfy` closePrec (density / normalization) 1e-13)
+          hazard <- hazardRate original (DatePoint target) False
+          hazardRate view (DatePoint target) False >>= (`shouldSatisfy` closePrec hazard 1e-13)
+
+    it "keeps analytic accumulated bucket survival on the translated clock" $ Context.keepingSettingsGc $ do
+      let ref = fromGregorian 2025 1 2
+          day n = addDays (365 * n) ref
+      dc <- dayCounter Actual365FixedStandard
+      q <- simpleQuote 0.02
+      base <- flatHazardRate (ReferenceDate ref) q dc
+      s1 <- simpleQuote 0.001
+      s2 <- simpleQuote 0.003
+      original <- shiftedHazardRateCurve base (BucketHazardShifts (fromList [(day 1,s1), (day 3,s2)]))
+      view <- conditionalSurvivalCurve original (day 1)
+      survivalProbability view (TimePoint 0) False `shouldReturn` 1
+      survivalProbability view (TimePoint 2) False >>= (`shouldSatisfy` closePrec (exp (-0.046)) 1e-14)
+      survivalProbability view (TimePoint 3) False >>= (`shouldSatisfy` closePrec (exp (-0.066)) 1e-14)
+      hazardRate view (TimePoint 0) False >>= (`shouldSatisfy` closePrec 0.023 1e-14)
+      hazardRate view (TimePoint 2) False >>= (`shouldSatisfy` closePrec 0.02 1e-14)
+
+    it "owns its original curve and observes live quote changes after GC" $ Context.keepingSettingsGc $ do
+      let ref = fromGregorian 2025 1 2
+      dc <- dayCounter Actual365FixedStandard
+      q <- simpleQuote 0.02
+      s <- simpleQuote 0.001
+      view <- do
+        base <- flatHazardRate (ReferenceDate ref) q dc
+        shifted <- shiftedHazardRateCurve base (KeyRateHazardShifts (fromList [(addDays 730 ref,s)]))
+        conditionalSurvivalCurve shifted (addDays 365 ref)
+      Context.collectGarbage
+      _ <- setValue q 0.03
+      _ <- setValue s 0.002
+      survivalProbability view (TimePoint 2) False >>= (`shouldSatisfy` closePrec (exp (-0.064)) 1e-14)
+
+    it "preserves extrapolation permission and rejects invalid reference normalizations" $ Context.keepingSettingsGc $ do
+      let ref = fromGregorian 2025 1 2
+          has message e = message `isInfixOf` show (e :: Context.Error)
+      dc <- dayCounter Actual365FixedStandard
+      cal <- calendar Null
+      base <- interpolatedHazardRateCurve (fromList [(ref,0.02),(addDays 365 ref,0.02)]) dc cal
+        ([] :: [(Day,SimpleQuote)]) Linear False
+      conditionalSurvivalCurve base (addDays (-1) ref) `shouldThrow` has "must not precede"
+      conditionalSurvivalCurve base (addDays 366 ref) `shouldThrow` has "within the original curve support"
+      view <- conditionalSurvivalCurve base (addDays 180 ref)
+      allowsExtrapolation view `shouldReturn` False
+      survivalProbability view (TimePoint 2) False `shouldThrow` has "past max curve time"
+      setExtrapolation base True
+      extrapolated <- conditionalSurvivalCurve base (addDays 180 ref)
+      allowsExtrapolation extrapolated `shouldReturn` True
+      survivalProbability extrapolated (TimePoint 2) False >>= (`shouldSatisfy` closePrec (exp (-0.04)) 1e-14)
+      q <- simpleQuote 1.0e6
+      zeroSurvival <- flatHazardRate (ReferenceDate ref) q dc
+      conditionalSurvivalCurve zeroSurvival (addDays 365 ref) `shouldThrow` has "normalization must be positive and finite"
+      _ <- setValue q 0.02
+      updated <- conditionalSurvivalCurve zeroSurvival (addDays 365 ref)
+      _ <- setValue q 1.0e6
+      hazardRate updated (TimePoint 1) False `shouldThrow` has "normalization must be positive and finite"
+      jump <- simpleQuote 0.9
+      withJump <- interpolatedHazardRateCurve (fromList [(ref,0.02),(addDays 730 ref,0.02)]) dc cal
+        [(addDays 365 ref,jump)] Linear False
+      conditionalSurvivalCurve withJump (addDays 180 ref) `shouldThrow` has "scheduled-jump metadata"
+
   describe "live hazard shift shapes" $ do
     it "keeps parallel and relative shifts on the native wrappers" $ Context.keepingSettingsGc $ do
       let ref = fromGregorian 2025 1 2

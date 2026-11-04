@@ -338,6 +338,7 @@ extern "C" {
   double qlAffineHazardRateCurveConditionalSurvivalProbability(QlAffineHazardRateCurve* o, int dFwd, int dTgt, double yVal, int extrapolate, QlError **e);
   double qlAffineHazardRateCurveConditionalSurvivalProbability1(QlAffineHazardRateCurve* o, double tFwd, double tTgt, double yVal, int extrapolate, QlError **e);
   QlDefaultProbabilityTermStructure* qlFactorSpreadedHazardRateCurve(QlDefaultProbabilityTermStructure* originalCurve, QlQuote* spread, QlError **e);
+  QlDefaultProbabilityTermStructure* qlConditionalSurvivalCurve(QlDefaultProbabilityTermStructure* originalCurve, int referenceDate, QlError **e);
   QlDefaultProbabilityTermStructure* qlFlatHazardRate1(unsigned settlementDays, Calendar* calendar, QlQuote* hazardRate, DayCounter* x3, QlError **e);
   QlDefaultProbabilityTermStructure* qlFlatHazardRate(int referenceDate, QlQuote* hazardRate, DayCounter* x2, QlError **e);
   QlDefaultProbabilityTermStructure* qlShapedHazardRateCurve(QlDefaultProbabilityTermStructure* originalCurve, unsigned spreadsLen, QlQuote** spreads, unsigned datesLen, int* dates, int buckets, QlError **e);

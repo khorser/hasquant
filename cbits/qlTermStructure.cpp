@@ -91,6 +91,7 @@ using FittedBondDiscountCurveFittingMethod = FittedBondDiscountCurve::FittingMet
 #include "qlTermStructure.h"
 #include "qlTermStructureAux.h"
 #include "qlShapedHazardCurve.h"
+#include "qlConditionalSurvivalCurve.h"
 
 namespace hasquant {
 #include "qlEnumObjects.h"
@@ -98,6 +99,7 @@ namespace hasquant {
 
 #ifdef QLTRACK_ALLOCATIONS
 QL_TRACE_NAME(hasquant::ShapedHazardCurve)
+QL_TRACE_NAME(hasquant::ConditionalSurvivalCurve)
 QL_TRACE_NAME(hasquant::CheckedParallelHazardCurve)
 QL_TRACE_NAME(DefaultProbabilityHelper)
 QL_TRACE_NAME(QlDefaultProbabilityHelper)
@@ -1509,6 +1511,14 @@ double qlCallableBondVolatilityStructureMinStrike(QlCallableBondVolatilityStruct
 double qlCallableBondVolatilityStructureMaxStrike(QlCallableBondVolatilityStructure* o, QlError **e) { QlCallScope callbackScope(e);
   try {return (*arg(o))->maxStrike();
   } catch (std::exception& er) {return handleException<double>(e, er);}}
+QlDefaultProbabilityTermStructure* qlConditionalSurvivalCurve(QlDefaultProbabilityTermStructure* originalCurve,
+    int referenceDate, QlError **e) { QlCallScope callbackScope(e);
+  try {
+    auto curve = allocShared(new hasquant::ConditionalSurvivalCurve(
+        Handle<DefaultProbabilityTermStructure>(*arg(originalCurve)), Date(referenceDate)));
+    return ret(new QlDefaultProbabilityTermStructure(curve));
+  } catch (std::exception& er) {return handleException<QlDefaultProbabilityTermStructure*>(e, er);}}
+
 QlDefaultProbabilityTermStructure* qlFactorSpreadedHazardRateCurve(QlDefaultProbabilityTermStructure* originalCurve, QlQuote* spread, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlDefaultProbabilityTermStructure(alloc(new FactorSpreadedHazardRateCurve(Handle<DefaultProbabilityTermStructure>(*arg(originalCurve)), *arg(spread)))));
   } catch (std::exception& er) {return handleException<QlDefaultProbabilityTermStructure*>(e, er);}}

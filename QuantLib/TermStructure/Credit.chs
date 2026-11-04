@@ -11,6 +11,24 @@
 -- during native survival integration, rather than returning invalid credit rates.
 -- Shaped shifts instead retain base survival and apply the exact interpolation
 -- primitive of their spread; see 'shiftedHazardRateCurve' for bounds and query checks.
+--
+-- = Conditional survival #conditional-survival#
+--
+-- 'conditionalSurvivalCurve' is a hasquant curve view, not a QuantLib class binding.
+-- It keeps the original native interpolation and hazard-wrapper quadrature. For
+-- original-curve time s at its new fixed reference, a view-time t reads
+-- @S(s+t)/S(s)@, @f(s+t)/S(s)@ and @h(s+t)@ from the original curve.
+-- View times are years from the new reference on the original day counter. Date
+-- queries preserve original-date ratios when that day counter adds year fractions;
+-- callers must check that clock convention rather than silently re-interpolate.
+-- The new reference must lie within the original support and have positive finite
+-- survival: normalizing zero or an invalid value cannot define a conditional curve.
+-- Sources exposing scheduled jumps are refused: the generic curve interface does not
+-- expose their quote handles, so transferring their jump metadata would lose updates.
+-- The view keeps its original curve alive, observes its updates and inherits its
+-- calendar, day counter, maximum date and extrapolation permission. Its reference
+-- remains fixed if the original curve moves; a reference that then becomes invalid
+-- is refused when queried. Native query values must remain finite.
 module QuantLib.TermStructure.Credit
   (
     -- * Types
@@ -34,9 +52,10 @@ module QuantLib.TermStructure.Credit
   , IterativeBootstrapOpts(..)
 
     -- * Constructors
-    -- ** Flat and spreaded curves
+    -- ** Flat, conditional and spreaded curves
   , shiftedHazardRateCurve
   , flatHazardRate
+  , conditionalSurvivalCurve
     -- ** Helpers and bootstrapped curves
   , spreadCdsHelper
   , upfrontCdsHelper
@@ -136,6 +155,13 @@ shiftedHazardRateCurve base shift = case shift of
   ,preErrorCheck-`String'errorCheck*-}->`DefaultProbabilityTermStructure'peekDefaultProbabilityTermStructure*#}
 
 {#fun qlFactorSpreadedHazardRateCurve as relativeHazardRateCurveRaw{withDefaultProbabilityTermStructure*`GenDefaultProbabilityTermStructure d',withQuote*`GenQuote q',preErrorCheck-`String'errorCheck*-}->`DefaultProbabilityTermStructure'peekDefaultProbabilityTermStructure*#}
+
+-- | The original native credit curve conditioned on survival at a later fixed reference.
+-- This is the delegated curve view described in [Conditional survival](#conditional-survival).
+{#fun qlConditionalSurvivalCurve as conditionalSurvivalCurve
+  {withDefaultProbabilityTermStructure*`GenDefaultProbabilityTermStructure d' -- ^Original credit curve, retained and observed by the view.
+  ,withDay*`Day' -- ^New fixed reference date, on or after the original reference and no later than its maximum date.
+  ,preErrorCheck-`String'errorCheck*-}->`DefaultProbabilityTermStructure'peekDefaultProbabilityTermStructure*#}
 
 -- |Flat hazard-rate curve with either a fixed or evaluation-date-relative reference point.
 flatHazardRate :: Reference -> GenQuote q -> DayCounter -> IO DefaultProbabilityTermStructure

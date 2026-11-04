@@ -1,5 +1,10 @@
 ## 0.9.0.0 (2026)
 
+- Add `conditionalSurvivalCurve`, a hasquant conditional view over an existing native credit
+  curve. Survival and density normalize at a later fixed reference while hazard queries keep
+  the original curve's geometry and native numerics; no re-interpolation is performed.
+  Sources exposing scheduled jumps are refused because their live quote metadata is unavailable.
+
 - Add `fixingAccrualFractions` for overnight and multiple-reset coupons, exposing native
   index-day-count weights alongside fixing dates.
 
