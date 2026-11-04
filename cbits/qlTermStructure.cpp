@@ -2513,21 +2513,21 @@ QlYieldTermStructure* qlPiecewiseForwardSpreadedTermStructure(QlYieldTermStructu
     auto ts = allocShared(qlPiecewiseForwardSpreadedTermStructureAux(qlNullableHandle(arg(x0)), qlHandleVector(spreads, spreadsLen), qlDateVector(dates, datesLen), interpolator, approximator, approximatorArg));
     return ret(new QlYieldTermStructure(ts));
   } catch (std::exception& er) {return handleException<QlYieldTermStructure*>(e, er);}}
-QlYieldTermStructure* qlPiecewiseSpreadYieldCurve(QlYieldTermStructure* baseCurve, unsigned rateLen, QlRateHelper** helpers, int interpolator, int approximator, int approximatorArg,
+QlPiecewiseYieldCurve* qlPiecewiseSpreadYieldCurve(QlYieldTermStructure* baseCurve, unsigned rateLen, QlRateHelper** helpers, int interpolator, int approximator, int approximatorArg,
     double accuracy, double minValue, double maxValue, unsigned maxAttempts, double maxFactor, double minFactor, int dontThrow, unsigned dontThrowSteps, unsigned maxEvaluations, int extrapolate, QlError **e) { QlCallScope callbackScope(e);
   try {
     auto ts = allocShared(qlPiecewiseSpreadYieldCurveAux(qlNullableHandle(arg(baseCurve)), qlVector(helpers, rateLen), interpolator, approximator, approximatorArg,
         bootstrapOpts(accuracy, minValue, maxValue, maxAttempts, maxFactor, minFactor, dontThrow, dontThrowSteps, maxEvaluations)));
     if (extrapolate) ts->enableExtrapolation();
-    return ret(new QlYieldTermStructure(ts));
-  } catch (std::exception& er) {return handleException<QlYieldTermStructure*>(e, er);}}
-QlYieldTermStructure* qlPiecewiseSpreadYieldCurveGlobalBootstrap(QlYieldTermStructure* baseCurve, unsigned rateLen, QlRateHelper** helpers, double accuracy, unsigned weightsLen, double* weights, int extrapolate, QlCallback* initialGuess, QlError **e) { QlCallScope callbackScope(e);
+    return ret(new QlPiecewiseYieldCurve(ts));
+  } catch (std::exception& er) {return handleException<QlPiecewiseYieldCurve*>(e, er);}}
+QlPiecewiseYieldCurve* qlPiecewiseSpreadYieldCurveGlobalBootstrap(QlYieldTermStructure* baseCurve, unsigned rateLen, QlRateHelper** helpers, double accuracy, unsigned weightsLen, double* weights, int extrapolate, QlCallback* initialGuess, QlError **e) { QlCallScope callbackScope(e);
   try {
     auto ts = allocShared(qlPiecewiseSpreadYieldCurveGlobalBootstrapAux(qlNullableHandle(arg(baseCurve)), qlVector(helpers, rateLen), accuracy,
         std::vector<double>(weights, weights + weightsLen), initialGuess ? *initialGuess : QlCallback()));
     if (extrapolate) ts->enableExtrapolation();
-    return ret(new QlYieldTermStructure(ts));
-  } catch (std::exception& er) {return handleException<QlYieldTermStructure*>(e, er);}}
+    return ret(new QlPiecewiseYieldCurve(ts));
+  } catch (std::exception& er) {return handleException<QlPiecewiseYieldCurve*>(e, er);}}
 QlYieldTermStructure* qlQuantoTermStructure(QlYieldTermStructure* underlyingDividendTS, QlYieldTermStructure* riskFreeTS, QlYieldTermStructure* foreignRiskFreeTS, QlBlackVolTermStructure* underlyingBlackVolTS, double strike, QlBlackVolTermStructure* exchRateBlackVolTS, double exchRateATMlevel, double underlyingExchRateCorrelation, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlYieldTermStructure(shared_ptr<YieldTermStructure>(alloc(new QuantoTermStructure(*arg(underlyingDividendTS), *arg(riskFreeTS), *arg(foreignRiskFreeTS), *arg(underlyingBlackVolTS), strike, *arg(exchRateBlackVolTS), exchRateATMlevel, underlyingExchRateCorrelation)))));
   } catch (std::exception& er) {return handleException<QlYieldTermStructure*>(e, er);}}

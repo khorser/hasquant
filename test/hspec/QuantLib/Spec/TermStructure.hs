@@ -509,6 +509,16 @@ spec = do
                 curve <- piecewiseSpreadYieldCurve ts (fromList (map fst hs)) bootstrap True
                 _ <- discount curve (DatePoint (addGregorianYearsClip 1 refDate)) True
                 mapM_ (\(h, r) -> impliedQuote h >>= (`shouldSatisfy` closePrec r 1.0e-8)) hs
+                nodes <- piecewiseYieldCurveNodes curve
+                map fst (take 1 nodes) `shouldBe` [refDate]
+                let interpolation = case bootstrap of
+                      SpreadIterative i _ -> i
+                      SpreadGlobalLogLinear{} -> LogLinear
+                held <- interpolatedSpreadDiscountCurve ts (fromList nodes) interpolation
+                Context.collectGarbage
+                forM_ ([0.1,1,2.7,7.3,20,35,50] :: [Double]) $ \t -> do
+                  expected <- discount curve (TimePoint t) True
+                  discount held (TimePoint t) True >>= (`shouldSatisfy` closePrec expected 1.0e-12)
                 pure curve
               flatFwd curve t1 t2 = IR.rate <$> forwardRateBetweenTimes curve t1 t2 IR.Continuous NoFrequency True
           logLinear <- repricing (SpreadIterative LogLinear defaultIterativeBootstrapOpts)

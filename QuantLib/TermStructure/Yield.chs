@@ -1103,8 +1103,11 @@ fromBootstrapTrait LSimpleZeroYield = SimpleZeroYield
 
 -- |Native nodes of an iteratively bootstrapped yield curve: reference date first,
 -- followed by helper pillars and the values interpolated by the construction trait.
--- Reading them runs the bootstrap; other bootstrap choices are refused.
--- Reconstruct with the original day counter, full interpolation configuration and jumps.
+-- Reading them runs the bootstrap; ordinary yield curves with other bootstrap choices are refused.
+-- For 'piecewiseSpreadYieldCurve', both supported bootstrappers retain nodes: dimensionless
+-- multiplicative discount-factor spreads, reconstructed with 'interpolatedSpreadDiscountCurve'
+-- over the same base and full interpolation configuration.
+-- Reconstruct ordinary yield nodes with the original day counter, full interpolation configuration and jumps.
 -- Nodes exclude the separately applied jump factors.
 piecewiseYieldCurveNodes :: PiecewiseYieldCurve -> IO [(Day, Double)]
 piecewiseYieldCurveNodes c = zip <$> qlPiecewiseYieldCurveDates c <*> qlPiecewiseYieldCurveData c
@@ -1156,22 +1159,24 @@ piecewiseYieldCurve reference r dc qd bootstrap ex = case (reference, bootstrap)
 
 -- |Bootstraps multiplicative discount-factor spreads over 'baseCurve' so that each instrument
 -- reprices on the combined curve. Reference date, calendar and day counter come from the linked
--- base curve; past the last node the forward spread stays flat.
+-- base curve; past the last node the forward spread stays flat. 'piecewiseYieldCurveNodes'
+-- retains the calibrated spread geometry for both bootstrap choices. Upcast explicitly with
+-- 'asYieldTermStructure' when a concrete parent type is required.
 piecewiseSpreadYieldCurve :: GenYieldTermStructure y -- ^baseCurve
   -> NonEmpty (GenRateHelper rh) -- ^instruments
   -> SpreadBootstrap -- ^bootstrapper choice
   -> Bool -- ^extrapolate past the curve's max date
-  -> IO YieldTermStructure
+  -> IO PiecewiseYieldCurve
 piecewiseSpreadYieldCurve base r bootstrap ex = case bootstrap of
   SpreadIterative i b -> uncurryNested (qlPiecewiseSpreadYieldCurve base rs) (qlInterpolation i)
     (nullableDouble (ibAccuracy b)) (nullableDouble (ibMinValue b)) (nullableDouble (ibMaxValue b))
     (ibMaxAttempts b) (ibMaxFactor b) (ibMinFactor b) (ibDontThrow b) (ibDontThrowSteps b) (ibMaxEvaluations b) ex
   SpreadGlobalLogLinear acc w guess -> qlPiecewiseSpreadYieldCurveGlobalBootstrap base rs acc w ex guess
   where rs = toList r
-{#fun qlPiecewiseSpreadYieldCurve{withYieldTermStructure*`GenYieldTermStructure y',withRateHelperArray*`[GenRateHelper rh]'&,`Int',`Int',`Int',`Double',`Double',`Double',fromIntegral`Word',`Double',`Double',`Bool',fromIntegral`Word',fromIntegral`Word',`Bool',preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
+{#fun qlPiecewiseSpreadYieldCurve{withYieldTermStructure*`GenYieldTermStructure y',withRateHelperArray*`[GenRateHelper rh]'&,`Int',`Int',`Int',`Double',`Double',`Double',fromIntegral`Word',`Double',`Double',`Bool',fromIntegral`Word',fromIntegral`Word',`Bool',preErrorCheck-`String'errorCheck*-}->`PiecewiseYieldCurve'peekPiecewiseYieldCurve*#}
 
 {#fun qlPiecewiseSpreadYieldCurveGlobalBootstrap{withYieldTermStructure*`GenYieldTermStructure y',withRateHelperArray*`[GenRateHelper rh]'&,`Double',withDoubleArray*`[Double]'&,`Bool',withMaybeBootstrapInitialGuess*`Maybe BootstrapInitialGuess'
-  ,preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
+  ,preErrorCheck-`String'errorCheck*-}->`PiecewiseYieldCurve'peekPiecewiseYieldCurve*#}
 
 -- |Yield curve interpolating discount factors directly between the given dates.
 interpolatedDiscountCurve :: NonEmpty (Day, Double) -- ^dates, dfs

@@ -433,26 +433,28 @@ YieldTermStructure *qlPiecewiseForwardSpreadedTermStructureAux(
       });
 }
 
-YieldTermStructure *qlPiecewiseSpreadYieldCurveAux(
+PiecewiseYieldCurveHandle *qlPiecewiseSpreadYieldCurveAux(
     const Handle<YieldTermStructure>& baseCurve,
     const std::vector<shared_ptr<RateHelper> >& instr,
     int interpolator, int approximator, int approximatorArg,
     const QlIterativeBootstrapOpts& b) {
-  return dispatchInterpolation<YieldTermStructure*>(interpolator, approximator, approximatorArg,
+  return dispatchInterpolation<PiecewiseYieldCurveHandle*>(interpolator, approximator, approximatorArg,
 [&](auto i) {
         using CurveType = PiecewiseSpreadYieldCurve<QuantLib::Discount, decltype(i)>;
-        return new CurveType(baseCurve, instr, i, makeIterativeBootstrap<CurveType>(b));
+        auto curve = ext::make_shared<CurveType>(baseCurve, instr, i, makeIterativeBootstrap<CurveType>(b));
+        return new PiecewiseYieldCurveHandle(curve, [curve]{ return curve->nodes(); });
       });
 }
 
 // Bootstrap spelled through CurveType::bootstrap_type, as in makeGlobalBootstrapCurve.
-YieldTermStructure *qlPiecewiseSpreadYieldCurveGlobalBootstrapAux(
+PiecewiseYieldCurveHandle *qlPiecewiseSpreadYieldCurveGlobalBootstrapAux(
     const Handle<YieldTermStructure>& baseCurve,
     const std::vector<shared_ptr<RateHelper> >& instr,
     double accuracy, const std::vector<double>& instrumentWeights, [[maybe_unused]] const QlCallback& initialGuess) {
   using CurveType = PiecewiseSpreadYieldCurve<QuantLib::Discount, QuantLib::LogLinear, QuantLib::GlobalBootstrap>;
-  return new CurveType(baseCurve, instr, QuantLib::LogLinear(),
+  auto curve = ext::make_shared<CurveType>(baseCurve, instr, QuantLib::LogLinear(),
       typename CurveType::bootstrap_type(accuracy, nullptr, nullptr, instrumentWeights QL144_ARGS(bootstrapInitialGuess(initialGuess))));
+  return new PiecewiseYieldCurveHandle(curve, [curve]{ return curve->nodes(); });
 }
 
 // some credit stuff

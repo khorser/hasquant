@@ -199,14 +199,14 @@ QuantLib::YieldTermStructure *qlPiecewiseForwardSpreadedTermStructureAux(
   int interpolator, int approximator, int approximatorArg);
 
 // PiecewiseSpreadYieldCurve<Discount, Interpolator, IterativeBootstrap>.
-QuantLib::YieldTermStructure *qlPiecewiseSpreadYieldCurveAux(
+PiecewiseYieldCurveHandle *qlPiecewiseSpreadYieldCurveAux(
   const QuantLib::Handle<QuantLib::YieldTermStructure>& baseCurve,
   const std::vector<QuantLib::ext::shared_ptr<QuantLib::RateHelper> >& instr,
   int interpolator, int approximator, int approximatorArg,
   const QlIterativeBootstrapOpts& bootstrapOpts);
 
 // PiecewiseSpreadYieldCurve<Discount, LogLinear, GlobalBootstrap>.
-QuantLib::YieldTermStructure *qlPiecewiseSpreadYieldCurveGlobalBootstrapAux(
+PiecewiseYieldCurveHandle *qlPiecewiseSpreadYieldCurveGlobalBootstrapAux(
   const QuantLib::Handle<QuantLib::YieldTermStructure>& baseCurve,
   const std::vector<QuantLib::ext::shared_ptr<QuantLib::RateHelper> >& instr,
   double accuracy, const std::vector<double>& instrumentWeights, const QlCallback& initialGuess = {});

@@ -79,6 +79,12 @@ reproduced with GHC 9.10.3 or on the native amd64 CI legs.
 
 In case you need multiple rebuilds, prefer `docker compose run --rm -t hasquant bash` and execute commands in it to keep build artifacts.
 
+For an isolated checkout, confirm that Docker's bind mount can read its project file before
+building. If the daemon cannot see the temporary filesystem, copy a source archive into a
+container-owned volume instead. Exclude `.git`, `cobj` and `dist-newstyle`; on macOS create
+it with `COPYFILE_DISABLE=1 tar --no-xattrs` so AppleDouble sidecars cannot become extra Cabal
+package files. Keep the original checkout's bind mount out of that copied-source build.
+
 ## Run (agent path)
 
 The driver builds `lib:hasquant` via `cabal`, registers it in a global GHC
