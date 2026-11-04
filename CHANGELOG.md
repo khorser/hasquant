@@ -1,5 +1,17 @@
 ## 0.9.0.0 (2026)
 
+- Breaking: return `PiecewiseYieldCurve` from `piecewiseSpreadYieldCurve`, retaining calibrated
+  multiplicative discount-factor spread nodes for both iterative and global bootstrappers.
+  Read them with `piecewiseYieldCurveNodes`; concrete parent callers upcast explicitly.
+
+- Add `conditionalSurvivalCurve`, a hasquant conditional view over an existing native credit
+  curve. Survival and density normalize at a later fixed reference while hazard queries keep
+  the original curve's geometry and native numerics; no re-interpolation is performed.
+  Sources exposing scheduled jumps are refused because their live quote metadata is unavailable.
+
+- Add `fixingAccrualFractions` for overnight and multiple-reset coupons, exposing native
+  index-day-count weights alongside fixing dates.
+
 - Breaking: return a `PiecewiseYieldCurve` leaf from `piecewiseYieldCurve`; node inspection now
   takes only that curve, retaining its native type without runtime downcasts.
 - Clarify that yield/default node reconstruction also requires the original jumps.
