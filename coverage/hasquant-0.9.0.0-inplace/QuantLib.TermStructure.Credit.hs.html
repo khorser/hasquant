@@ -99,7 +99,7 @@ span.spaces    { background: white }
 <span class="lineno">   80 </span>  , conditionalSurvivalProbability
 <span class="lineno">   81 </span>  , impliedQuote
 <span class="lineno">   82 </span>  , impliedQuoteOn
-<span class="lineno">   83 </span>  , defaultCurveNodes
+<span class="lineno">   83 </span>  , HasNodes(..)
 <span class="lineno">   84 </span>  ) where
 <span class="lineno">   85 </span>import qualified Foreign.C.Types as C2HSImp
 <span class="lineno">   86 </span>import qualified Foreign.ForeignPtr as C2HSImp
@@ -117,7 +117,7 @@ span.spaces    { background: white }
 <span class="lineno">   98 </span>import QuantLib.Internal.Type
 <span class="lineno">   99 </span>import QuantLib.Time.Schedule(DateGenerationRule, Frequency)
 <span class="lineno">  100 </span>import QuantLib.Internal.Common
-<span class="lineno">  101 </span>import QuantLib.TermStructure (Reference(..), TermPoint(..), TermInterval(..), setExtrapolation)
+<span class="lineno">  101 </span>import QuantLib.TermStructure (Reference(..), TermPoint(..), TermInterval(..), setExtrapolation, HasNodes(..))
 <span class="lineno">  102 </span>import Data.List.NonEmpty(NonEmpty, toList)
 <span class="lineno">  103 </span>
 <span class="lineno">  104 </span>data ProbabilityTrait = SurvivalProbability
@@ -825,127 +825,91 @@ span.spaces    { background: white }
 <span class="lineno">  806 </span>
 <span class="lineno">  807 </span>
 <span class="lineno">  808 </span>
-<span class="lineno">  809 </span>-- |A bootstrapped default-probability curve's nodes, bootstrapping it if it has not been: its
-<span class="lineno">  810 </span>-- reference date first, then each helper's pillar, each with the value its trait interpolates (a
-<span class="lineno">  811 </span>-- hazard rate, survival probability or default density). The interpolated curve of that trait on
-<span class="lineno">  812 </span>-- these nodes reproduces the curve only with the original day counter, full interpolation
-<span class="lineno">  813 </span>-- configuration and jump dates/quotes. Nodes exclude separately applied jump factors.
-<span class="lineno">  814 </span>defaultCurveNodes :: PiecewiseDefaultCurve -&gt; IO [(Day, Double)]
-<span class="lineno">  815 </span><span class="decl"><span class="istickedoff">defaultCurveNodes c = zip &lt;$&gt; qlPiecewiseDefaultCurveDates c &lt;*&gt; qlPiecewiseDefaultCurveData c</span></span>
-<span class="lineno">  816 </span>qlPiecewiseDefaultCurveDates :: (PiecewiseDefaultCurve) -&gt; IO (([Day]))
-<span class="lineno">  817 </span><span class="decl"><span class="istickedoff">qlPiecewiseDefaultCurveDates a1 =</span>
-<span class="lineno">  818 </span><span class="spaces">  </span><span class="istickedoff">withPiecewiseDefaultCurve a1 $ \a1' -&gt; </span>
-<span class="lineno">  819 </span><span class="spaces">  </span><span class="istickedoff">preIntArray $ \(a2'1, a2'2) -&gt; </span>
-<span class="lineno">  820 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
-<span class="lineno">  821 </span><span class="spaces">  </span><span class="istickedoff">qlPiecewiseDefaultCurveDates'_ a1' a2'1  a2'2 a3' &gt;&gt;</span>
-<span class="lineno">  822 </span><span class="spaces">  </span><span class="istickedoff">peekDayArray  a2'1  a2'2&gt;&gt;= \a2'' -&gt; </span>
-<span class="lineno">  823 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
-<span class="lineno">  824 </span><span class="spaces">  </span><span class="istickedoff">return (a2'')</span></span>
+<span class="lineno">  809 </span>-- vim: set ff=unix ts=8 sts=2 sw=2 et:
+<span class="lineno">  810 </span>
+<span class="lineno">  811 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlShapedHazardRateCurve&quot;
+<span class="lineno">  812 </span>  shapedHazardRateCurveRaw'_ :: ((C2HSImp.Ptr (CDefaultProbabilityTermStructure')) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr (CQuote'))) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CDefaultProbabilityTermStructure'))))))))))
+<span class="lineno">  813 </span>
+<span class="lineno">  814 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlFactorSpreadedHazardRateCurve&quot;
+<span class="lineno">  815 </span>  relativeHazardRateCurveRaw'_ :: ((C2HSImp.Ptr (CDefaultProbabilityTermStructure')) -&gt; ((C2HSImp.Ptr (CQuote')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CDefaultProbabilityTermStructure'))))))
+<span class="lineno">  816 </span>
+<span class="lineno">  817 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlConditionalSurvivalCurve&quot;
+<span class="lineno">  818 </span>  conditionalSurvivalCurve'_ :: ((C2HSImp.Ptr (CDefaultProbabilityTermStructure')) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CDefaultProbabilityTermStructure'))))))
+<span class="lineno">  819 </span>
+<span class="lineno">  820 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlFlatHazardRate1&quot;
+<span class="lineno">  821 </span>  flatHazardRateMovingRaw'_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (CCalendar)) -&gt; ((C2HSImp.Ptr (CQuote')) -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CDefaultProbabilityTermStructure'))))))))
+<span class="lineno">  822 </span>
+<span class="lineno">  823 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlFlatHazardRate&quot;
+<span class="lineno">  824 </span>  flatHazardRateFixed'_ :: (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CQuote')) -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CDefaultProbabilityTermStructure')))))))
 <span class="lineno">  825 </span>
-<span class="lineno">  826 </span>
-<span class="lineno">  827 </span>qlPiecewiseDefaultCurveData :: (PiecewiseDefaultCurve) -&gt; IO (([Double]))
-<span class="lineno">  828 </span><span class="decl"><span class="istickedoff">qlPiecewiseDefaultCurveData a1 =</span>
-<span class="lineno">  829 </span><span class="spaces">  </span><span class="istickedoff">withPiecewiseDefaultCurve a1 $ \a1' -&gt; </span>
-<span class="lineno">  830 </span><span class="spaces">  </span><span class="istickedoff">preDoubleArray $ \(a2'1, a2'2) -&gt; </span>
-<span class="lineno">  831 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
-<span class="lineno">  832 </span><span class="spaces">  </span><span class="istickedoff">qlPiecewiseDefaultCurveData'_ a1' a2'1  a2'2 a3' &gt;&gt;</span>
-<span class="lineno">  833 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a2'1  a2'2&gt;&gt;= \a2'' -&gt; </span>
-<span class="lineno">  834 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
-<span class="lineno">  835 </span><span class="spaces">  </span><span class="istickedoff">return (a2'')</span></span>
-<span class="lineno">  836 </span>
+<span class="lineno">  826 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlSpreadedHazardRateCurve&quot;
+<span class="lineno">  827 </span>  parallelHazardRateCurveRaw'_ :: ((C2HSImp.Ptr (CDefaultProbabilityTermStructure')) -&gt; ((C2HSImp.Ptr (CQuote')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CDefaultProbabilityTermStructure'))))))
+<span class="lineno">  828 </span>
+<span class="lineno">  829 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlDefaultProbabilityTermStructureDefaultProbability&quot;
+<span class="lineno">  830 </span>  defaultProbabilityAtDateRaw'_ :: ((C2HSImp.Ptr (CDefaultProbabilityTermStructure')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))))
+<span class="lineno">  831 </span>
+<span class="lineno">  832 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlDefaultProbabilityTermStructureHazardRate1&quot;
+<span class="lineno">  833 </span>  hazardRateAtTimeRaw'_ :: ((C2HSImp.Ptr (CDefaultProbabilityTermStructure')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))))
+<span class="lineno">  834 </span>
+<span class="lineno">  835 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlDefaultProbabilityTermStructureHazardRate&quot;
+<span class="lineno">  836 </span>  hazardRateAtDateRaw'_ :: ((C2HSImp.Ptr (CDefaultProbabilityTermStructure')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))))
 <span class="lineno">  837 </span>
-<span class="lineno">  838 </span>
-<span class="lineno">  839 </span>-- vim: set ff=unix ts=8 sts=2 sw=2 et:
+<span class="lineno">  838 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlDefaultProbabilityTermStructureSurvivalProbability1&quot;
+<span class="lineno">  839 </span>  survivalProbabilityAtTimeRaw'_ :: ((C2HSImp.Ptr (CDefaultProbabilityTermStructure')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))))
 <span class="lineno">  840 </span>
-<span class="lineno">  841 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlShapedHazardRateCurve&quot;
-<span class="lineno">  842 </span>  shapedHazardRateCurveRaw'_ :: ((C2HSImp.Ptr (CDefaultProbabilityTermStructure')) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr (CQuote'))) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CDefaultProbabilityTermStructure'))))))))))
+<span class="lineno">  841 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlDefaultProbabilityTermStructureSurvivalProbability&quot;
+<span class="lineno">  842 </span>  survivalProbabilityAtDateRaw'_ :: ((C2HSImp.Ptr (CDefaultProbabilityTermStructure')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))))
 <span class="lineno">  843 </span>
-<span class="lineno">  844 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlFactorSpreadedHazardRateCurve&quot;
-<span class="lineno">  845 </span>  relativeHazardRateCurveRaw'_ :: ((C2HSImp.Ptr (CDefaultProbabilityTermStructure')) -&gt; ((C2HSImp.Ptr (CQuote')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CDefaultProbabilityTermStructure'))))))
+<span class="lineno">  844 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlDefaultProbabilityTermStructureDefaultDensity1&quot;
+<span class="lineno">  845 </span>  defaultDensityAtTimeRaw'_ :: ((C2HSImp.Ptr (CDefaultProbabilityTermStructure')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))))
 <span class="lineno">  846 </span>
-<span class="lineno">  847 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlConditionalSurvivalCurve&quot;
-<span class="lineno">  848 </span>  conditionalSurvivalCurve'_ :: ((C2HSImp.Ptr (CDefaultProbabilityTermStructure')) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CDefaultProbabilityTermStructure'))))))
+<span class="lineno">  847 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlDefaultProbabilityTermStructureDefaultDensity&quot;
+<span class="lineno">  848 </span>  defaultDensityAtDateRaw'_ :: ((C2HSImp.Ptr (CDefaultProbabilityTermStructure')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))))
 <span class="lineno">  849 </span>
-<span class="lineno">  850 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlFlatHazardRate1&quot;
-<span class="lineno">  851 </span>  flatHazardRateMovingRaw'_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (CCalendar)) -&gt; ((C2HSImp.Ptr (CQuote')) -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CDefaultProbabilityTermStructure'))))))))
+<span class="lineno">  850 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlDefaultProbabilityTermStructureDefaultProbability1&quot;
+<span class="lineno">  851 </span>  defaultProbabilityAtTimeRaw'_ :: ((C2HSImp.Ptr (CDefaultProbabilityTermStructure')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))))
 <span class="lineno">  852 </span>
-<span class="lineno">  853 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlFlatHazardRate&quot;
-<span class="lineno">  854 </span>  flatHazardRateFixed'_ :: (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CQuote')) -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CDefaultProbabilityTermStructure')))))))
+<span class="lineno">  853 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlDefaultProbabilityTermStructureDefaultProbability2&quot;
+<span class="lineno">  854 </span>  defaultProbabilityBetweenDatesRaw'_ :: ((C2HSImp.Ptr (CDefaultProbabilityTermStructure')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble))))))
 <span class="lineno">  855 </span>
-<span class="lineno">  856 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlSpreadedHazardRateCurve&quot;
-<span class="lineno">  857 </span>  parallelHazardRateCurveRaw'_ :: ((C2HSImp.Ptr (CDefaultProbabilityTermStructure')) -&gt; ((C2HSImp.Ptr (CQuote')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CDefaultProbabilityTermStructure'))))))
+<span class="lineno">  856 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlDefaultProbabilityTermStructureDefaultProbability3&quot;
+<span class="lineno">  857 </span>  defaultProbabilityBetweenTimesRaw'_ :: ((C2HSImp.Ptr (CDefaultProbabilityTermStructure')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble))))))
 <span class="lineno">  858 </span>
-<span class="lineno">  859 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlDefaultProbabilityTermStructureDefaultProbability&quot;
-<span class="lineno">  860 </span>  defaultProbabilityAtDateRaw'_ :: ((C2HSImp.Ptr (CDefaultProbabilityTermStructure')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))))
+<span class="lineno">  859 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlAffineHazardRateCurveConditionalSurvivalProbability&quot;
+<span class="lineno">  860 </span>  conditionalSurvivalProbabilityAtDatesRaw'_ :: ((C2HSImp.Ptr (CAffineHazardRateCurve')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))))))
 <span class="lineno">  861 </span>
-<span class="lineno">  862 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlDefaultProbabilityTermStructureHazardRate1&quot;
-<span class="lineno">  863 </span>  hazardRateAtTimeRaw'_ :: ((C2HSImp.Ptr (CDefaultProbabilityTermStructure')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))))
+<span class="lineno">  862 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlAffineHazardRateCurveConditionalSurvivalProbability1&quot;
+<span class="lineno">  863 </span>  conditionalSurvivalProbabilityAtTimesRaw'_ :: ((C2HSImp.Ptr (CAffineHazardRateCurve')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))))))
 <span class="lineno">  864 </span>
-<span class="lineno">  865 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlDefaultProbabilityTermStructureHazardRate&quot;
-<span class="lineno">  866 </span>  hazardRateAtDateRaw'_ :: ((C2HSImp.Ptr (CDefaultProbabilityTermStructure')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))))
+<span class="lineno">  865 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlSpreadCdsHelper&quot;
+<span class="lineno">  866 </span>  spreadCdsHelper'_ :: ((C2HSImp.Ptr (CQuote')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CCalendar)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CDefaultProbabilityHelper))))))))))))))))))))))
 <span class="lineno">  867 </span>
-<span class="lineno">  868 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlDefaultProbabilityTermStructureSurvivalProbability1&quot;
-<span class="lineno">  869 </span>  survivalProbabilityAtTimeRaw'_ :: ((C2HSImp.Ptr (CDefaultProbabilityTermStructure')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))))
+<span class="lineno">  868 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlUpfrontCdsHelper&quot;
+<span class="lineno">  869 </span>  upfrontCdsHelper'_ :: ((C2HSImp.Ptr (CQuote')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CCalendar)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CDefaultProbabilityHelper))))))))))))))))))))))))
 <span class="lineno">  870 </span>
-<span class="lineno">  871 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlDefaultProbabilityTermStructureSurvivalProbability&quot;
-<span class="lineno">  872 </span>  survivalProbabilityAtDateRaw'_ :: ((C2HSImp.Ptr (CDefaultProbabilityTermStructure')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))))
+<span class="lineno">  871 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlDefaultProbabilityHelperImpliedQuote&quot;
+<span class="lineno">  872 </span>  impliedQuote'_ :: ((C2HSImp.Ptr (CDefaultProbabilityHelper)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))
 <span class="lineno">  873 </span>
-<span class="lineno">  874 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlDefaultProbabilityTermStructureDefaultDensity1&quot;
-<span class="lineno">  875 </span>  defaultDensityAtTimeRaw'_ :: ((C2HSImp.Ptr (CDefaultProbabilityTermStructure')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))))
+<span class="lineno">  874 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlDefaultProbabilityHelperImpliedQuoteOn&quot;
+<span class="lineno">  875 </span>  impliedQuoteOn'_ :: ((C2HSImp.Ptr (CDefaultProbabilityHelper)) -&gt; ((C2HSImp.Ptr (CDefaultProbabilityTermStructure')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble))))
 <span class="lineno">  876 </span>
-<span class="lineno">  877 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlDefaultProbabilityTermStructureDefaultDensity&quot;
-<span class="lineno">  878 </span>  defaultDensityAtDateRaw'_ :: ((C2HSImp.Ptr (CDefaultProbabilityTermStructure')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))))
+<span class="lineno">  877 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlInterpolatedDefaultDensityCurve&quot;
+<span class="lineno">  878 </span>  qlInterpolatedDefaultDensityCurve'_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; ((C2HSImp.Ptr (CCalendar)) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr (CQuote'))) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CDefaultProbabilityTermStructure')))))))))))))))))
 <span class="lineno">  879 </span>
-<span class="lineno">  880 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlDefaultProbabilityTermStructureDefaultProbability1&quot;
-<span class="lineno">  881 </span>  defaultProbabilityAtTimeRaw'_ :: ((C2HSImp.Ptr (CDefaultProbabilityTermStructure')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))))
+<span class="lineno">  880 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlInterpolatedHazardRateCurve&quot;
+<span class="lineno">  881 </span>  qlInterpolatedHazardRateCurve'_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; ((C2HSImp.Ptr (CCalendar)) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr (CQuote'))) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CDefaultProbabilityTermStructure'))))))))))))))))))
 <span class="lineno">  882 </span>
-<span class="lineno">  883 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlDefaultProbabilityTermStructureDefaultProbability2&quot;
-<span class="lineno">  884 </span>  defaultProbabilityBetweenDatesRaw'_ :: ((C2HSImp.Ptr (CDefaultProbabilityTermStructure')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble))))))
+<span class="lineno">  883 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlInterpolatedAffineHazardRateCurve&quot;
+<span class="lineno">  884 </span>  qlInterpolatedAffineHazardRateCurve'_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; ((C2HSImp.Ptr (COneFactorAffineModel')) -&gt; ((C2HSImp.Ptr (CCalendar)) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr (CQuote'))) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CAffineHazardRateCurve')))))))))))))))))))
 <span class="lineno">  885 </span>
-<span class="lineno">  886 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlDefaultProbabilityTermStructureDefaultProbability3&quot;
-<span class="lineno">  887 </span>  defaultProbabilityBetweenTimesRaw'_ :: ((C2HSImp.Ptr (CDefaultProbabilityTermStructure')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble))))))
+<span class="lineno">  886 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlInterpolatedSurvivalProbabilityCurve&quot;
+<span class="lineno">  887 </span>  qlInterpolatedSurvivalProbabilityCurve'_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; ((C2HSImp.Ptr (CCalendar)) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr (CQuote'))) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CDefaultProbabilityTermStructure')))))))))))))))))
 <span class="lineno">  888 </span>
-<span class="lineno">  889 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlAffineHazardRateCurveConditionalSurvivalProbability&quot;
-<span class="lineno">  890 </span>  conditionalSurvivalProbabilityAtDatesRaw'_ :: ((C2HSImp.Ptr (CAffineHazardRateCurve')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))))))
+<span class="lineno">  889 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlPiecewiseDefaultCurve&quot;
+<span class="lineno">  890 </span>  piecewiseDefaultCurve_'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr (CDefaultProbabilityHelper))) -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr (CQuote'))) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CPiecewiseDefaultCurve')))))))))))))))))))))))))
 <span class="lineno">  891 </span>
-<span class="lineno">  892 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlAffineHazardRateCurveConditionalSurvivalProbability1&quot;
-<span class="lineno">  893 </span>  conditionalSurvivalProbabilityAtTimesRaw'_ :: ((C2HSImp.Ptr (CAffineHazardRateCurve')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))))))
-<span class="lineno">  894 </span>
-<span class="lineno">  895 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlSpreadCdsHelper&quot;
-<span class="lineno">  896 </span>  spreadCdsHelper'_ :: ((C2HSImp.Ptr (CQuote')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CCalendar)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CDefaultProbabilityHelper))))))))))))))))))))))
-<span class="lineno">  897 </span>
-<span class="lineno">  898 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlUpfrontCdsHelper&quot;
-<span class="lineno">  899 </span>  upfrontCdsHelper'_ :: ((C2HSImp.Ptr (CQuote')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CCalendar)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CDefaultProbabilityHelper))))))))))))))))))))))))
-<span class="lineno">  900 </span>
-<span class="lineno">  901 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlDefaultProbabilityHelperImpliedQuote&quot;
-<span class="lineno">  902 </span>  impliedQuote'_ :: ((C2HSImp.Ptr (CDefaultProbabilityHelper)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))
-<span class="lineno">  903 </span>
-<span class="lineno">  904 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlDefaultProbabilityHelperImpliedQuoteOn&quot;
-<span class="lineno">  905 </span>  impliedQuoteOn'_ :: ((C2HSImp.Ptr (CDefaultProbabilityHelper)) -&gt; ((C2HSImp.Ptr (CDefaultProbabilityTermStructure')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble))))
-<span class="lineno">  906 </span>
-<span class="lineno">  907 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlInterpolatedDefaultDensityCurve&quot;
-<span class="lineno">  908 </span>  qlInterpolatedDefaultDensityCurve'_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; ((C2HSImp.Ptr (CCalendar)) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr (CQuote'))) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CDefaultProbabilityTermStructure')))))))))))))))))
-<span class="lineno">  909 </span>
-<span class="lineno">  910 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlInterpolatedHazardRateCurve&quot;
-<span class="lineno">  911 </span>  qlInterpolatedHazardRateCurve'_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; ((C2HSImp.Ptr (CCalendar)) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr (CQuote'))) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CDefaultProbabilityTermStructure'))))))))))))))))))
-<span class="lineno">  912 </span>
-<span class="lineno">  913 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlInterpolatedAffineHazardRateCurve&quot;
-<span class="lineno">  914 </span>  qlInterpolatedAffineHazardRateCurve'_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; ((C2HSImp.Ptr (COneFactorAffineModel')) -&gt; ((C2HSImp.Ptr (CCalendar)) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr (CQuote'))) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CAffineHazardRateCurve')))))))))))))))))))
-<span class="lineno">  915 </span>
-<span class="lineno">  916 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlInterpolatedSurvivalProbabilityCurve&quot;
-<span class="lineno">  917 </span>  qlInterpolatedSurvivalProbabilityCurve'_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; ((C2HSImp.Ptr (CCalendar)) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr (CQuote'))) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CDefaultProbabilityTermStructure')))))))))))))))))
-<span class="lineno">  918 </span>
-<span class="lineno">  919 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlPiecewiseDefaultCurve&quot;
-<span class="lineno">  920 </span>  piecewiseDefaultCurve_'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr (CDefaultProbabilityHelper))) -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr (CQuote'))) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CPiecewiseDefaultCurve')))))))))))))))))))))))))
-<span class="lineno">  921 </span>
-<span class="lineno">  922 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlPiecewiseDefaultCurve1&quot;
-<span class="lineno">  923 </span>  piecewiseDefaultCurve1_'_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (CCalendar)) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr (CDefaultProbabilityHelper))) -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr (CQuote'))) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CPiecewiseDefaultCurve'))))))))))))))))))))))))))
-<span class="lineno">  924 </span>
-<span class="lineno">  925 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlPiecewiseDefaultCurveDates&quot;
-<span class="lineno">  926 </span>  qlPiecewiseDefaultCurveDates'_ :: ((C2HSImp.Ptr (CPiecewiseDefaultCurve')) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CInt)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO ())))))
-<span class="lineno">  927 </span>
-<span class="lineno">  928 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlPiecewiseDefaultCurveData&quot;
-<span class="lineno">  929 </span>  qlPiecewiseDefaultCurveData'_ :: ((C2HSImp.Ptr (CPiecewiseDefaultCurve')) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO ())))))
+<span class="lineno">  892 </span>foreign import ccall safe &quot;QuantLib/TermStructure/Credit.chs.h qlPiecewiseDefaultCurve1&quot;
+<span class="lineno">  893 </span>  piecewiseDefaultCurve1_'_ :: (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (CCalendar)) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr (CDefaultProbabilityHelper))) -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr (CQuote'))) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CInt) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CPiecewiseDefaultCurve'))))))))))))))))))))))))))
 
 </pre>
 </body>

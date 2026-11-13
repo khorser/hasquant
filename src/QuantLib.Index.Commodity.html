@@ -21,11 +21,11 @@
 </span><span id="line-16"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><span class="hs-identifier">Foreign.ForeignPtr</span></span><span> </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">C2HSImp</span></span><span>
 </span><span id="line-17"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><span class="hs-identifier">Foreign.Marshal.Utils</span></span><span> </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">C2HSImp</span></span><span>
 </span><span id="line-18"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><span class="hs-identifier">Foreign.Ptr</span></span><span> </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">C2HSImp</span></span><span>
-</span><span id="line-19"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><span class="hs-identifier">System.IO.Unsafe</span></span><span> </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">C2HSImp</span></span><span>
+</span><span id="line-19"></span><span>
 </span><span id="line-20"></span><span>
-</span><span id="line-21"></span><span>
-</span><span id="line-22"></span><span class="hs-keyword">import</span><span> </span><span class="annot"><a href="QuantLib.Internal.html"><span class="hs-identifier">QuantLib.Internal</span></a></span><span>
-</span><span id="line-23"></span><span class="hs-keyword">import</span><span> </span><span class="annot"><a href="QuantLib.Internal.Type.html"><span class="hs-identifier">QuantLib.Internal.Type</span></a></span><span>
+</span><span id="line-21"></span><span class="hs-keyword">import</span><span> </span><span class="annot"><a href="QuantLib.Internal.html"><span class="hs-identifier">QuantLib.Internal</span></a></span><span>
+</span><span id="line-22"></span><span class="hs-keyword">import</span><span> </span><span class="annot"><a href="QuantLib.Internal.Type.html"><span class="hs-identifier">QuantLib.Internal.Type</span></a></span><span>
+</span><span id="line-23"></span><span>
 </span><span id="line-24"></span><span>
 </span><span id="line-25"></span><span>
 </span><span id="line-26"></span><span>
@@ -33,8 +33,7 @@
 </span><span id="line-28"></span><span>
 </span><span id="line-29"></span><span>
 </span><span id="line-30"></span><span>
-</span><span id="line-31"></span><span>
-</span><span id="line-32"></span><span class="hs-pragma">{-# LINE 23 &quot;./QuantLib/Index/Commodity.chs&quot; #-}</span><span>
+</span><span id="line-31"></span><span class="hs-pragma">{-# LINE 23 &quot;./QuantLib/Index/Commodity.chs&quot; #-}</span><span>
 </span><span id="line-23"></span><span>
 </span><span id="line-24"></span><span>
 </span><span id="line-25"></span><span class="hs-pragma">{-# LINE 24 &quot;./QuantLib/Index/Commodity.chs&quot; #-}</span><span>
@@ -72,80 +71,80 @@
 -&gt; Double
 -&gt; Maybe CommodityCurve
 -&gt; IO CommodityIndex
-</span><a href="QuantLib.Index.Commodity.html#commodityIndex"><span class="hs-identifier hs-var hs-var">commodityIndex</span></a></span></span><span> </span><span id="local-6989586621680516196"><span class="annot"><span class="annottext">String
-</span><a href="#local-6989586621680516196"><span class="hs-identifier hs-var">a1</span></a></span></span><span> </span><span id="local-6989586621680516197"><span class="annot"><span class="annottext">CommodityType
-</span><a href="#local-6989586621680516197"><span class="hs-identifier hs-var">a2</span></a></span></span><span> </span><span id="local-6989586621680516198"><span class="annot"><span class="annottext">Currency
-</span><a href="#local-6989586621680516198"><span class="hs-identifier hs-var">a3</span></a></span></span><span> </span><span id="local-6989586621680516199"><span class="annot"><span class="annottext">UnitOfMeasure
-</span><a href="#local-6989586621680516199"><span class="hs-identifier hs-var">a4</span></a></span></span><span> </span><span id="local-6989586621680516200"><span class="annot"><span class="annottext">Calendar
-</span><a href="#local-6989586621680516200"><span class="hs-identifier hs-var">a5</span></a></span></span><span> </span><span id="local-6989586621680516201"><span class="annot"><span class="annottext">Double
-</span><a href="#local-6989586621680516201"><span class="hs-identifier hs-var">a6</span></a></span></span><span> </span><span id="local-6989586621680516202"><span class="annot"><span class="annottext">Maybe CommodityCurve
-</span><a href="#local-6989586621680516202"><span class="hs-identifier hs-var">a7</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
+</span><a href="QuantLib.Index.Commodity.html#commodityIndex"><span class="hs-identifier hs-var hs-var">commodityIndex</span></a></span></span><span> </span><span id="local-6989586621680522676"><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621680522676"><span class="hs-identifier hs-var">a1</span></a></span></span><span> </span><span id="local-6989586621680522677"><span class="annot"><span class="annottext">CommodityType
+</span><a href="#local-6989586621680522677"><span class="hs-identifier hs-var">a2</span></a></span></span><span> </span><span id="local-6989586621680522678"><span class="annot"><span class="annottext">Currency
+</span><a href="#local-6989586621680522678"><span class="hs-identifier hs-var">a3</span></a></span></span><span> </span><span id="local-6989586621680522679"><span class="annot"><span class="annottext">UnitOfMeasure
+</span><a href="#local-6989586621680522679"><span class="hs-identifier hs-var">a4</span></a></span></span><span> </span><span id="local-6989586621680522680"><span class="annot"><span class="annottext">Calendar
+</span><a href="#local-6989586621680522680"><span class="hs-identifier hs-var">a5</span></a></span></span><span> </span><span id="local-6989586621680522681"><span class="annot"><span class="annottext">Double
+</span><a href="#local-6989586621680522681"><span class="hs-identifier hs-var">a6</span></a></span></span><span> </span><span id="local-6989586621680522682"><span class="annot"><span class="annottext">Maybe CommodityCurve
+</span><a href="#local-6989586621680522682"><span class="hs-identifier hs-var">a7</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
 </span><span id="line-43"></span><span>  </span><span class="annot"><span class="annottext">String -&gt; (CString -&gt; IO CommodityIndex) -&gt; IO CommodityIndex
 forall a. String -&gt; (CString -&gt; IO a) -&gt; IO a
 </span><span class="hs-identifier hs-var">C2HSImp.withCString</span></span><span> </span><span class="annot"><span class="annottext">String
-</span><a href="#local-6989586621680516196"><span class="hs-identifier hs-var">a1</span></a></span><span> </span><span class="annot"><span class="annottext">((CString -&gt; IO CommodityIndex) -&gt; IO CommodityIndex)
+</span><a href="#local-6989586621680522676"><span class="hs-identifier hs-var">a1</span></a></span><span> </span><span class="annot"><span class="annottext">((CString -&gt; IO CommodityIndex) -&gt; IO CommodityIndex)
 -&gt; (CString -&gt; IO CommodityIndex) -&gt; IO CommodityIndex
 forall a b. (a -&gt; b) -&gt; a -&gt; b
-</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680516204"><span class="annot"><span class="annottext">CString
-</span><a href="#local-6989586621680516204"><span class="hs-identifier hs-var">a1'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680522684"><span class="annot"><span class="annottext">CString
+</span><a href="#local-6989586621680522684"><span class="hs-identifier hs-var">a1'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
 </span><span id="line-44"></span><span>  </span><span class="annot"><span class="annottext">CommodityType
 -&gt; (Ptr CCommodityType -&gt; IO CommodityIndex) -&gt; IO CommodityIndex
 forall b. CommodityType -&gt; (Ptr CCommodityType -&gt; IO b) -&gt; IO b
 </span><a href="QuantLib.Internal.Type.html#withCommodityType"><span class="hs-identifier hs-var">withCommodityType</span></a></span><span> </span><span class="annot"><span class="annottext">CommodityType
-</span><a href="#local-6989586621680516197"><span class="hs-identifier hs-var">a2</span></a></span><span> </span><span class="annot"><span class="annottext">((Ptr CCommodityType -&gt; IO CommodityIndex) -&gt; IO CommodityIndex)
+</span><a href="#local-6989586621680522677"><span class="hs-identifier hs-var">a2</span></a></span><span> </span><span class="annot"><span class="annottext">((Ptr CCommodityType -&gt; IO CommodityIndex) -&gt; IO CommodityIndex)
 -&gt; (Ptr CCommodityType -&gt; IO CommodityIndex) -&gt; IO CommodityIndex
 forall a b. (a -&gt; b) -&gt; a -&gt; b
-</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680516206"><span class="annot"><span class="annottext">Ptr CCommodityType
-</span><a href="#local-6989586621680516206"><span class="hs-identifier hs-var">a2'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680522686"><span class="annot"><span class="annottext">Ptr CCommodityType
+</span><a href="#local-6989586621680522686"><span class="hs-identifier hs-var">a2'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
 </span><span id="line-45"></span><span>  </span><span class="annot"><span class="annottext">Currency
 -&gt; (Ptr CCurrency -&gt; IO CommodityIndex) -&gt; IO CommodityIndex
 forall b. Currency -&gt; (Ptr CCurrency -&gt; IO b) -&gt; IO b
 </span><a href="QuantLib.Internal.Type.html#withCurrency"><span class="hs-identifier hs-var">withCurrency</span></a></span><span> </span><span class="annot"><span class="annottext">Currency
-</span><a href="#local-6989586621680516198"><span class="hs-identifier hs-var">a3</span></a></span><span> </span><span class="annot"><span class="annottext">((Ptr CCurrency -&gt; IO CommodityIndex) -&gt; IO CommodityIndex)
+</span><a href="#local-6989586621680522678"><span class="hs-identifier hs-var">a3</span></a></span><span> </span><span class="annot"><span class="annottext">((Ptr CCurrency -&gt; IO CommodityIndex) -&gt; IO CommodityIndex)
 -&gt; (Ptr CCurrency -&gt; IO CommodityIndex) -&gt; IO CommodityIndex
 forall a b. (a -&gt; b) -&gt; a -&gt; b
-</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680516208"><span class="annot"><span class="annottext">Ptr CCurrency
-</span><a href="#local-6989586621680516208"><span class="hs-identifier hs-var">a3'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680522688"><span class="annot"><span class="annottext">Ptr CCurrency
+</span><a href="#local-6989586621680522688"><span class="hs-identifier hs-var">a3'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
 </span><span id="line-46"></span><span>  </span><span class="annot"><span class="annottext">UnitOfMeasure
 -&gt; (Ptr CUnitOfMeasure -&gt; IO CommodityIndex) -&gt; IO CommodityIndex
 forall b. UnitOfMeasure -&gt; (Ptr CUnitOfMeasure -&gt; IO b) -&gt; IO b
 </span><a href="QuantLib.Internal.Type.html#withUnitOfMeasure"><span class="hs-identifier hs-var">withUnitOfMeasure</span></a></span><span> </span><span class="annot"><span class="annottext">UnitOfMeasure
-</span><a href="#local-6989586621680516199"><span class="hs-identifier hs-var">a4</span></a></span><span> </span><span class="annot"><span class="annottext">((Ptr CUnitOfMeasure -&gt; IO CommodityIndex) -&gt; IO CommodityIndex)
+</span><a href="#local-6989586621680522679"><span class="hs-identifier hs-var">a4</span></a></span><span> </span><span class="annot"><span class="annottext">((Ptr CUnitOfMeasure -&gt; IO CommodityIndex) -&gt; IO CommodityIndex)
 -&gt; (Ptr CUnitOfMeasure -&gt; IO CommodityIndex) -&gt; IO CommodityIndex
 forall a b. (a -&gt; b) -&gt; a -&gt; b
-</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680516210"><span class="annot"><span class="annottext">Ptr CUnitOfMeasure
-</span><a href="#local-6989586621680516210"><span class="hs-identifier hs-var">a4'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680522690"><span class="annot"><span class="annottext">Ptr CUnitOfMeasure
+</span><a href="#local-6989586621680522690"><span class="hs-identifier hs-var">a4'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
 </span><span id="line-47"></span><span>  </span><span class="annot"><span class="annottext">Calendar
 -&gt; (Ptr CCalendar -&gt; IO CommodityIndex) -&gt; IO CommodityIndex
 forall b. Calendar -&gt; (Ptr CCalendar -&gt; IO b) -&gt; IO b
 </span><a href="QuantLib.Internal.Type.html#withCalendar"><span class="hs-identifier hs-var">withCalendar</span></a></span><span> </span><span class="annot"><span class="annottext">Calendar
-</span><a href="#local-6989586621680516200"><span class="hs-identifier hs-var">a5</span></a></span><span> </span><span class="annot"><span class="annottext">((Ptr CCalendar -&gt; IO CommodityIndex) -&gt; IO CommodityIndex)
+</span><a href="#local-6989586621680522680"><span class="hs-identifier hs-var">a5</span></a></span><span> </span><span class="annot"><span class="annottext">((Ptr CCalendar -&gt; IO CommodityIndex) -&gt; IO CommodityIndex)
 -&gt; (Ptr CCalendar -&gt; IO CommodityIndex) -&gt; IO CommodityIndex
 forall a b. (a -&gt; b) -&gt; a -&gt; b
-</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680516212"><span class="annot"><span class="annottext">Ptr CCalendar
-</span><a href="#local-6989586621680516212"><span class="hs-identifier hs-var">a5'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
-</span><span id="line-48"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span id="local-6989586621680516219"><span class="annot"><span class="annottext">a6' :: CDouble
-</span><a href="#local-6989586621680516219"><span class="hs-identifier hs-var hs-var">a6'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Double -&gt; CDouble
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680522692"><span class="annot"><span class="annottext">Ptr CCalendar
+</span><a href="#local-6989586621680522692"><span class="hs-identifier hs-var">a5'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
+</span><span id="line-48"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span id="local-6989586621680522699"><span class="annot"><span class="annottext">a6' :: CDouble
+</span><a href="#local-6989586621680522699"><span class="hs-identifier hs-var hs-var">a6'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Double -&gt; CDouble
 forall a b. (Real a, Fractional b) =&gt; a -&gt; b
 </span><span class="hs-identifier hs-var">realToFrac</span></span><span> </span><span class="annot"><span class="annottext">Double
-</span><a href="#local-6989586621680516201"><span class="hs-identifier hs-var">a6</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span> </span><span>
+</span><a href="#local-6989586621680522681"><span class="hs-identifier hs-var">a6</span></a></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span> </span><span>
 </span><span id="line-49"></span><span>  </span><span class="annot"><span class="annottext">Maybe CommodityCurve
 -&gt; (Ptr CCommodityCurve' -&gt; IO CommodityIndex) -&gt; IO CommodityIndex
 forall b.
 Maybe CommodityCurve -&gt; (Ptr CCommodityCurve' -&gt; IO b) -&gt; IO b
 </span><a href="QuantLib.Internal.Type.html#withMaybeCommodityCurve"><span class="hs-identifier hs-var">withMaybeCommodityCurve</span></a></span><span> </span><span class="annot"><span class="annottext">Maybe CommodityCurve
-</span><a href="#local-6989586621680516202"><span class="hs-identifier hs-var">a7</span></a></span><span> </span><span class="annot"><span class="annottext">((Ptr CCommodityCurve' -&gt; IO CommodityIndex) -&gt; IO CommodityIndex)
+</span><a href="#local-6989586621680522682"><span class="hs-identifier hs-var">a7</span></a></span><span> </span><span class="annot"><span class="annottext">((Ptr CCommodityCurve' -&gt; IO CommodityIndex) -&gt; IO CommodityIndex)
 -&gt; (Ptr CCommodityCurve' -&gt; IO CommodityIndex) -&gt; IO CommodityIndex
 forall a b. (a -&gt; b) -&gt; a -&gt; b
-</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680516222"><span class="annot"><span class="annottext">Ptr CCommodityCurve'
-</span><a href="#local-6989586621680516222"><span class="hs-identifier hs-var">a7'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680522702"><span class="annot"><span class="annottext">Ptr CCommodityCurve'
+</span><a href="#local-6989586621680522702"><span class="hs-identifier hs-var">a7'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
 </span><span id="line-50"></span><span>  </span><span class="annot"><span class="annottext">(Ptr (Ptr ()) -&gt; IO CommodityIndex) -&gt; IO CommodityIndex
 forall a b. (Ptr (Ptr a) -&gt; IO b) -&gt; IO b
 </span><a href="QuantLib.Internal.html#preErrorCheck"><span class="hs-identifier hs-var">preErrorCheck</span></a></span><span> </span><span class="annot"><span class="annottext">((Ptr (Ptr ()) -&gt; IO CommodityIndex) -&gt; IO CommodityIndex)
 -&gt; (Ptr (Ptr ()) -&gt; IO CommodityIndex) -&gt; IO CommodityIndex
 forall a b. (a -&gt; b) -&gt; a -&gt; b
-</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680516224"><span class="annot"><span class="annottext">Ptr (Ptr ())
-</span><a href="#local-6989586621680516224"><span class="hs-identifier hs-var">a8'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680522704"><span class="annot"><span class="annottext">Ptr (Ptr ())
+</span><a href="#local-6989586621680522704"><span class="hs-identifier hs-var">a8'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
 </span><span id="line-51"></span><span>  </span><span class="annot"><span class="annottext">CString
 -&gt; Ptr CCommodityType
 -&gt; Ptr CCurrency
@@ -156,28 +155,26 @@ forall a b. (a -&gt; b) -&gt; a -&gt; b
 -&gt; Ptr (Ptr ())
 -&gt; IO (Ptr CCommodityIndex')
 </span><a href="QuantLib.Index.Commodity.html#commodityIndex%27_"><span class="hs-identifier hs-var">commodityIndex'_</span></a></span><span> </span><span class="annot"><span class="annottext">CString
-</span><a href="#local-6989586621680516204"><span class="hs-identifier hs-var">a1'</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr CCommodityType
-</span><a href="#local-6989586621680516206"><span class="hs-identifier hs-var">a2'</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr CCurrency
-</span><a href="#local-6989586621680516208"><span class="hs-identifier hs-var">a3'</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr CUnitOfMeasure
-</span><a href="#local-6989586621680516210"><span class="hs-identifier hs-var">a4'</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr CCalendar
-</span><a href="#local-6989586621680516212"><span class="hs-identifier hs-var">a5'</span></a></span><span> </span><span class="annot"><span class="annottext">CDouble
-</span><a href="#local-6989586621680516219"><span class="hs-identifier hs-var">a6'</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr CCommodityCurve'
-</span><a href="#local-6989586621680516222"><span class="hs-identifier hs-var">a7'</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr (Ptr ())
-</span><a href="#local-6989586621680516224"><span class="hs-identifier hs-var">a8'</span></a></span><span> </span><span class="annot"><span class="annottext">IO (Ptr CCommodityIndex')
+</span><a href="#local-6989586621680522684"><span class="hs-identifier hs-var">a1'</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr CCommodityType
+</span><a href="#local-6989586621680522686"><span class="hs-identifier hs-var">a2'</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr CCurrency
+</span><a href="#local-6989586621680522688"><span class="hs-identifier hs-var">a3'</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr CUnitOfMeasure
+</span><a href="#local-6989586621680522690"><span class="hs-identifier hs-var">a4'</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr CCalendar
+</span><a href="#local-6989586621680522692"><span class="hs-identifier hs-var">a5'</span></a></span><span> </span><span class="annot"><span class="annottext">CDouble
+</span><a href="#local-6989586621680522699"><span class="hs-identifier hs-var">a6'</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr CCommodityCurve'
+</span><a href="#local-6989586621680522702"><span class="hs-identifier hs-var">a7'</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr (Ptr ())
+</span><a href="#local-6989586621680522704"><span class="hs-identifier hs-var">a8'</span></a></span><span> </span><span class="annot"><span class="annottext">IO (Ptr CCommodityIndex')
 -&gt; (Ptr CCommodityIndex' -&gt; IO CommodityIndex) -&gt; IO CommodityIndex
 forall a b. IO a -&gt; (a -&gt; IO b) -&gt; IO b
 forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; (a -&gt; m b) -&gt; m b
-</span><span class="hs-operator hs-var">&gt;&gt;=</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680516226"><span class="annot"><span class="annottext">Ptr CCommodityIndex'
-</span><a href="#local-6989586621680516226"><span class="hs-identifier hs-var">res</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
-</span><span id="line-52"></span><span>  </span><span class="annot"><span class="annottext">Ptr CCommodityIndex' -&gt; IO CommodityIndex
-</span><a href="QuantLib.Internal.Type.html#peekCommodityIndex"><span class="hs-identifier hs-var">peekCommodityIndex</span></a></span><span> </span><span class="annot"><span class="annottext">Ptr CCommodityIndex'
-</span><a href="#local-6989586621680516226"><span class="hs-identifier hs-var">res</span></a></span><span> </span><span class="annot"><span class="annottext">IO CommodityIndex
+</span><span class="hs-operator hs-var">&gt;&gt;=</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680522706"><span class="annot"><span class="annottext">Ptr CCommodityIndex'
+</span><a href="#local-6989586621680522706"><span class="hs-identifier hs-var">res</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><span id="line-52"></span><span>  </span><span class="annot"><a href="QuantLib.Internal.Type.html#peekCommodityIndex"><span class="hs-identifier hs-type">peekCommodityIndex</span></a></span><span> </span><span class="annot"><a href="#local-6989586621680522706"><span class="hs-identifier hs-type">res</span></a></span><span> </span><span class="annot"><span class="annottext">IO CommodityIndex
 -&gt; (CommodityIndex -&gt; IO CommodityIndex) -&gt; IO CommodityIndex
 forall a b. IO a -&gt; (a -&gt; IO b) -&gt; IO b
 forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; (a -&gt; m b) -&gt; m b
-</span><span class="hs-operator hs-var">&gt;&gt;=</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680516228"><span class="annot"><a href="#local-6989586621680516228"><span class="hs-identifier hs-var">res'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
-</span><span id="line-53"></span><span>  </span><span class="annot"><a href="QuantLib.Internal.html#errorCheck"><span class="hs-identifier hs-type">errorCheck</span></a></span><span>  </span><span class="annot"><a href="#local-6989586621680516224"><span class="hs-identifier hs-type">a8'</span></a></span><span class="annot"><span class="hs-operator hs-type">&gt;&gt;</span></span><span>
-</span><span id="line-54"></span><span>  </span><span class="annot"><span class="hs-identifier hs-type">return</span></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="#local-6989586621680516228"><span class="hs-identifier hs-type">res'</span></a></span><span class="hs-special">)</span><span>
+</span><span class="hs-operator hs-var">&gt;&gt;=</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621680522708"><span class="annot"><a href="#local-6989586621680522708"><span class="hs-identifier hs-var">res'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><span id="line-53"></span><span>  </span><span class="annot"><a href="QuantLib.Internal.html#errorCheck"><span class="hs-identifier hs-type">errorCheck</span></a></span><span>  </span><span class="annot"><a href="#local-6989586621680522704"><span class="hs-identifier hs-type">a8'</span></a></span><span class="annot"><span class="hs-operator hs-type">&gt;&gt;</span></span><span>
+</span><span id="line-54"></span><span>  </span><span class="annot"><span class="hs-identifier hs-type">return</span></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="#local-6989586621680522708"><span class="hs-identifier hs-type">res'</span></a></span><span class="hs-special">)</span><span>
 </span><span id="line-55"></span><span>
 </span><span id="line-56"></span><span class="hs-pragma">{-# LINE 46 &quot;./QuantLib/Index/Commodity.chs&quot; #-}</span><span>
 </span><span id="line-46"></span><span>
@@ -211,15 +208,14 @@ forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; (a -&gt; m b) -&gt; m b
 </span><span id="line-53"></span><span>
 </span><span id="line-54"></span><span>
 </span><span id="line-55"></span><span class="hs-comment">-- |Whether this index has any stored historical fixings.</span><span>
-</span><span id="line-56"></span><span class="hs-identifier">isEmpty</span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-special">(</span><span class="hs-identifier">CommodityIndex</span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-special">(</span><span class="hs-identifier">Bool</span><span class="hs-special">)</span><span>
+</span><span id="line-56"></span><span class="hs-identifier">isEmpty</span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-special">(</span><span class="hs-identifier">CommodityIndex</span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-identifier">IO</span><span> </span><span class="hs-special">(</span><span class="hs-special">(</span><span class="hs-identifier">Bool</span><span class="hs-special">)</span><span class="hs-special">)</span><span>
 </span><span id="line-57"></span><span class="hs-identifier">isEmpty</span><span> </span><span class="hs-identifier">a1</span><span> </span><span class="hs-glyph">=</span><span>
-</span><span id="line-58"></span><span>  </span><span class="hs-identifier">C2HSImp.unsafePerformIO</span><span> </span><span class="hs-operator">$</span><span>
-</span><span id="line-59"></span><span>  </span><span class="hs-identifier">withCommodityIndex</span><span> </span><span class="hs-identifier">a1</span><span> </span><span class="hs-operator">$</span><span> </span><span class="hs-glyph">\</span><span class="hs-identifier">a1'</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
-</span><span id="line-60"></span><span>  </span><span class="hs-identifier">isEmpty'_</span><span> </span><span class="hs-identifier">a1'</span><span> </span><span class="hs-operator">&gt;&gt;=</span><span> </span><span class="hs-glyph">\</span><span class="hs-identifier">res</span><span> </span><span class="hs-glyph">-&gt;</span><span>
-</span><span id="line-61"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span class="hs-identifier">res'</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-identifier">C2HSImp.toBool</span><span> </span><span class="hs-identifier">res</span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span>
-</span><span id="line-62"></span><span>  </span><span class="hs-identifier">return</span><span> </span><span class="hs-special">(</span><span class="hs-identifier">res'</span><span class="hs-special">)</span><span>
-</span><span id="line-63"></span><span>
-</span><span id="line-64"></span><span class="hs-pragma">{-# LINE 56 &quot;./QuantLib/Index/Commodity.chs&quot; #-}</span><span>
+</span><span id="line-58"></span><span>  </span><span class="hs-identifier">withCommodityIndex</span><span> </span><span class="hs-identifier">a1</span><span> </span><span class="hs-operator">$</span><span> </span><span class="hs-glyph">\</span><span class="hs-identifier">a1'</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span>
+</span><span id="line-59"></span><span>  </span><span class="hs-identifier">isEmpty'_</span><span> </span><span class="hs-identifier">a1'</span><span> </span><span class="hs-operator">&gt;&gt;=</span><span> </span><span class="hs-glyph">\</span><span class="hs-identifier">res</span><span> </span><span class="hs-glyph">-&gt;</span><span>
+</span><span id="line-60"></span><span>  </span><span class="hs-keyword">let</span><span> </span><span class="hs-special">{</span><span class="hs-identifier">res'</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-identifier">C2HSImp.toBool</span><span> </span><span class="hs-identifier">res</span><span class="hs-special">}</span><span> </span><span class="hs-keyword">in</span><span>
+</span><span id="line-61"></span><span>  </span><span class="hs-identifier">return</span><span> </span><span class="hs-special">(</span><span class="hs-identifier">res'</span><span class="hs-special">)</span><span>
+</span><span id="line-62"></span><span>
+</span><span id="line-63"></span><span class="hs-pragma">{-# LINE 56 &quot;./QuantLib/Index/Commodity.chs&quot; #-}</span><span>
 </span><span id="line-56"></span><span>
 </span><span id="line-57"></span><span>
 </span><span id="line-58"></span><span class="hs-comment">-- vim: set ff=unix ts=8 sts=2 sw=2 et:</span><span>

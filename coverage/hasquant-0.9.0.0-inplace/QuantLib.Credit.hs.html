@@ -52,15 +52,15 @@ span.spaces    { background: white }
 <span class="lineno">   33 </span>  , constantLossModel
 <span class="lineno">   34 </span>
 <span class="lineno">   35 </span>    -- * Inspectors
-<span class="lineno">   36 </span>  , basketExpectedTrancheLoss
-<span class="lineno">   37 </span>  , basketProbOverLoss
-<span class="lineno">   38 </span>  , basketPercentile
-<span class="lineno">   39 </span>  , basketExpectedShortfall
-<span class="lineno">   40 </span>  , basketDefaultCorrelation
-<span class="lineno">   41 </span>  , basketProbAtLeastNEvents
-<span class="lineno">   42 </span>  , basketNotional
-<span class="lineno">   43 </span>  , basketRemainingNotional
-<span class="lineno">   44 </span>  , basketRecoveryRate
+<span class="lineno">   36 </span>  , expectedTrancheLoss
+<span class="lineno">   37 </span>  , probOverLoss
+<span class="lineno">   38 </span>  , percentile
+<span class="lineno">   39 </span>  , expectedShortfall
+<span class="lineno">   40 </span>  , defaultCorrelation
+<span class="lineno">   41 </span>  , probAtLeastNEvents
+<span class="lineno">   42 </span>  , notional
+<span class="lineno">   43 </span>  , remainingNotional
+<span class="lineno">   44 </span>  , recoveryRate
 <span class="lineno">   45 </span>  ) where
 <span class="lineno">   46 </span>import qualified Foreign.C.Types as C2HSImp
 <span class="lineno">   47 </span>import qualified Foreign.ForeignPtr as C2HSImp
@@ -325,11 +325,11 @@ span.spaces    { background: white }
 <span class="lineno">  306 </span>
 <span class="lineno">  307 </span>
 <span class="lineno">  308 </span>-- |Basket total notional at inception, before losses.
-<span class="lineno">  309 </span>basketNotional :: (Basket) -&gt; IO ((Double))
-<span class="lineno">  310 </span><span class="decl"><span class="istickedoff">basketNotional a1 =</span>
+<span class="lineno">  309 </span>notional :: (Basket) -&gt; IO ((Double))
+<span class="lineno">  310 </span><span class="decl"><span class="istickedoff">notional a1 =</span>
 <span class="lineno">  311 </span><span class="spaces">  </span><span class="istickedoff">withBasket a1 $ \a1' -&gt; </span>
 <span class="lineno">  312 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
-<span class="lineno">  313 </span><span class="spaces">  </span><span class="istickedoff">basketNotional'_ a1' a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  313 </span><span class="spaces">  </span><span class="istickedoff">notional'_ a1' a2' &gt;&gt;= \res -&gt;</span>
 <span class="lineno">  314 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
 <span class="lineno">  315 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
 <span class="lineno">  316 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
@@ -337,13 +337,13 @@ span.spaces    { background: white }
 <span class="lineno">  318 </span>
 <span class="lineno">  319 </span>
 <span class="lineno">  320 </span>-- |Live (undefaulted) notional remaining at date @d@. Loss-model-agnostic.
-<span class="lineno">  321 </span>basketRemainingNotional :: (Basket) -&gt; (Day) -- ^d
+<span class="lineno">  321 </span>remainingNotional :: (Basket) -&gt; (Day) -- ^d
 <span class="lineno">  322 </span> -&gt; IO ((Double))
-<span class="lineno">  323 </span><span class="decl"><span class="istickedoff">basketRemainingNotional a1 a2 =</span>
+<span class="lineno">  323 </span><span class="decl"><span class="istickedoff">remainingNotional a1 a2 =</span>
 <span class="lineno">  324 </span><span class="spaces">  </span><span class="istickedoff">withBasket a1 $ \a1' -&gt; </span>
 <span class="lineno">  325 </span><span class="spaces">  </span><span class="istickedoff">withDay a2 $ \a2' -&gt; </span>
 <span class="lineno">  326 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
-<span class="lineno">  327 </span><span class="spaces">  </span><span class="istickedoff">basketRemainingNotional'_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  327 </span><span class="spaces">  </span><span class="istickedoff">remainingNotional'_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
 <span class="lineno">  328 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
 <span class="lineno">  329 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
 <span class="lineno">  330 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
@@ -352,15 +352,15 @@ span.spaces    { background: white }
 <span class="lineno">  333 </span>
 <span class="lineno">  334 </span>-- |Expected recovery rate of the @iName@-th pool name (0-based, in basket-construction order),
 <span class="lineno">  335 </span>-- conditional on default by date @d@. Loss-model-agnostic.
-<span class="lineno">  336 </span>basketRecoveryRate :: (Basket) -&gt; (Day) -- ^d
+<span class="lineno">  336 </span>recoveryRate :: (Basket) -&gt; (Day) -- ^d
 <span class="lineno">  337 </span> -&gt; (Word) -- ^iName
 <span class="lineno">  338 </span> -&gt; IO ((Double))
-<span class="lineno">  339 </span><span class="decl"><span class="istickedoff">basketRecoveryRate a1 a2 a3 =</span>
+<span class="lineno">  339 </span><span class="decl"><span class="istickedoff">recoveryRate a1 a2 a3 =</span>
 <span class="lineno">  340 </span><span class="spaces">  </span><span class="istickedoff">withBasket a1 $ \a1' -&gt; </span>
 <span class="lineno">  341 </span><span class="spaces">  </span><span class="istickedoff">withDay a2 $ \a2' -&gt; </span>
 <span class="lineno">  342 </span><span class="spaces">  </span><span class="istickedoff">let {a3' = fromIntegral a3} in </span>
 <span class="lineno">  343 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a4' -&gt; </span>
-<span class="lineno">  344 </span><span class="spaces">  </span><span class="istickedoff">basketRecoveryRate'_ a1' a2' a3' a4' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  344 </span><span class="spaces">  </span><span class="istickedoff">recoveryRate'_ a1' a2' a3' a4' &gt;&gt;= \res -&gt;</span>
 <span class="lineno">  345 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
 <span class="lineno">  346 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a4'&gt;&gt;</span>
 <span class="lineno">  347 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
@@ -368,13 +368,13 @@ span.spaces    { background: white }
 <span class="lineno">  349 </span>
 <span class="lineno">  350 </span>
 <span class="lineno">  351 </span>-- |Expected tranche loss on date @d@; requires a tranche-loss model.
-<span class="lineno">  352 </span>basketExpectedTrancheLoss :: (TrancheBasket) -&gt; (Day) -- ^d
+<span class="lineno">  352 </span>expectedTrancheLoss :: (TrancheBasket) -&gt; (Day) -- ^d
 <span class="lineno">  353 </span> -&gt; IO ((Double))
-<span class="lineno">  354 </span><span class="decl"><span class="istickedoff">basketExpectedTrancheLoss a1 a2 =</span>
+<span class="lineno">  354 </span><span class="decl"><span class="istickedoff">expectedTrancheLoss a1 a2 =</span>
 <span class="lineno">  355 </span><span class="spaces">  </span><span class="istickedoff">withTrancheBasket a1 $ \a1' -&gt; </span>
 <span class="lineno">  356 </span><span class="spaces">  </span><span class="istickedoff">withDay a2 $ \a2' -&gt; </span>
 <span class="lineno">  357 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
-<span class="lineno">  358 </span><span class="spaces">  </span><span class="istickedoff">basketExpectedTrancheLoss'_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  358 </span><span class="spaces">  </span><span class="istickedoff">expectedTrancheLoss'_ a1' a2' a3' &gt;&gt;= \res -&gt;</span>
 <span class="lineno">  359 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
 <span class="lineno">  360 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
 <span class="lineno">  361 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
@@ -382,15 +382,15 @@ span.spaces    { background: white }
 <span class="lineno">  363 </span>
 <span class="lineno">  364 </span>
 <span class="lineno">  365 </span>-- |Probability the tranche loses at least @lossFraction@ of the tranche notional by date @d@.
-<span class="lineno">  366 </span>basketProbOverLoss :: (TrancheBasket) -&gt; (Day) -- ^d
+<span class="lineno">  366 </span>probOverLoss :: (TrancheBasket) -&gt; (Day) -- ^d
 <span class="lineno">  367 </span> -&gt; (Double) -- ^lossFraction
 <span class="lineno">  368 </span> -&gt; IO ((Double))
-<span class="lineno">  369 </span><span class="decl"><span class="istickedoff">basketProbOverLoss a1 a2 a3 =</span>
+<span class="lineno">  369 </span><span class="decl"><span class="istickedoff">probOverLoss a1 a2 a3 =</span>
 <span class="lineno">  370 </span><span class="spaces">  </span><span class="istickedoff">withTrancheBasket a1 $ \a1' -&gt; </span>
 <span class="lineno">  371 </span><span class="spaces">  </span><span class="istickedoff">withDay a2 $ \a2' -&gt; </span>
 <span class="lineno">  372 </span><span class="spaces">  </span><span class="istickedoff">let {a3' = realToFrac a3} in </span>
 <span class="lineno">  373 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a4' -&gt; </span>
-<span class="lineno">  374 </span><span class="spaces">  </span><span class="istickedoff">basketProbOverLoss'_ a1' a2' a3' a4' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  374 </span><span class="spaces">  </span><span class="istickedoff">probOverLoss'_ a1' a2' a3' a4' &gt;&gt;= \res -&gt;</span>
 <span class="lineno">  375 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
 <span class="lineno">  376 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a4'&gt;&gt;</span>
 <span class="lineno">  377 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
@@ -398,15 +398,15 @@ span.spaces    { background: white }
 <span class="lineno">  379 </span>
 <span class="lineno">  380 </span>
 <span class="lineno">  381 </span>-- |Tranche loss fraction at the given percentile of the loss distribution on date @d@ (VaR).
-<span class="lineno">  382 </span>basketPercentile :: (TrancheBasket) -&gt; (Day) -- ^d
+<span class="lineno">  382 </span>percentile :: (TrancheBasket) -&gt; (Day) -- ^d
 <span class="lineno">  383 </span> -&gt; (Double) -- ^prob
 <span class="lineno">  384 </span> -&gt; IO ((Double))
-<span class="lineno">  385 </span><span class="decl"><span class="istickedoff">basketPercentile a1 a2 a3 =</span>
+<span class="lineno">  385 </span><span class="decl"><span class="istickedoff">percentile a1 a2 a3 =</span>
 <span class="lineno">  386 </span><span class="spaces">  </span><span class="istickedoff">withTrancheBasket a1 $ \a1' -&gt; </span>
 <span class="lineno">  387 </span><span class="spaces">  </span><span class="istickedoff">withDay a2 $ \a2' -&gt; </span>
 <span class="lineno">  388 </span><span class="spaces">  </span><span class="istickedoff">let {a3' = realToFrac a3} in </span>
 <span class="lineno">  389 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a4' -&gt; </span>
-<span class="lineno">  390 </span><span class="spaces">  </span><span class="istickedoff">basketPercentile'_ a1' a2' a3' a4' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  390 </span><span class="spaces">  </span><span class="istickedoff">percentile'_ a1' a2' a3' a4' &gt;&gt;= \res -&gt;</span>
 <span class="lineno">  391 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
 <span class="lineno">  392 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a4'&gt;&gt;</span>
 <span class="lineno">  393 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
@@ -414,15 +414,15 @@ span.spaces    { background: white }
 <span class="lineno">  395 </span>
 <span class="lineno">  396 </span>
 <span class="lineno">  397 </span>-- |Expected tranche loss given loss exceeds the given percentile on date @d@.
-<span class="lineno">  398 </span>basketExpectedShortfall :: (TrancheBasket) -&gt; (Day) -- ^d
+<span class="lineno">  398 </span>expectedShortfall :: (TrancheBasket) -&gt; (Day) -- ^d
 <span class="lineno">  399 </span> -&gt; (Double) -- ^prob
 <span class="lineno">  400 </span> -&gt; IO ((Double))
-<span class="lineno">  401 </span><span class="decl"><span class="istickedoff">basketExpectedShortfall a1 a2 a3 =</span>
+<span class="lineno">  401 </span><span class="decl"><span class="istickedoff">expectedShortfall a1 a2 a3 =</span>
 <span class="lineno">  402 </span><span class="spaces">  </span><span class="istickedoff">withTrancheBasket a1 $ \a1' -&gt; </span>
 <span class="lineno">  403 </span><span class="spaces">  </span><span class="istickedoff">withDay a2 $ \a2' -&gt; </span>
 <span class="lineno">  404 </span><span class="spaces">  </span><span class="istickedoff">let {a3' = realToFrac a3} in </span>
 <span class="lineno">  405 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a4' -&gt; </span>
-<span class="lineno">  406 </span><span class="spaces">  </span><span class="istickedoff">basketExpectedShortfall'_ a1' a2' a3' a4' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  406 </span><span class="spaces">  </span><span class="istickedoff">expectedShortfall'_ a1' a2' a3' a4' &gt;&gt;= \res -&gt;</span>
 <span class="lineno">  407 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
 <span class="lineno">  408 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a4'&gt;&gt;</span>
 <span class="lineno">  409 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
@@ -431,17 +431,17 @@ span.spaces    { background: white }
 <span class="lineno">  412 </span>
 <span class="lineno">  413 </span>-- |Pearson default-probability correlation between pool names @iName@ and @jName@ (0-based) by
 <span class="lineno">  414 </span>-- date @d@.
-<span class="lineno">  415 </span>basketDefaultCorrelation :: (DigitalBasket) -&gt; (Day) -- ^d
+<span class="lineno">  415 </span>defaultCorrelation :: (DigitalBasket) -&gt; (Day) -- ^d
 <span class="lineno">  416 </span> -&gt; (Word) -- ^iName
 <span class="lineno">  417 </span> -&gt; (Word) -- ^jName
 <span class="lineno">  418 </span> -&gt; IO ((Double))
-<span class="lineno">  419 </span><span class="decl"><span class="istickedoff">basketDefaultCorrelation a1 a2 a3 a4 =</span>
+<span class="lineno">  419 </span><span class="decl"><span class="istickedoff">defaultCorrelation a1 a2 a3 a4 =</span>
 <span class="lineno">  420 </span><span class="spaces">  </span><span class="istickedoff">withDigitalBasket a1 $ \a1' -&gt; </span>
 <span class="lineno">  421 </span><span class="spaces">  </span><span class="istickedoff">withDay a2 $ \a2' -&gt; </span>
 <span class="lineno">  422 </span><span class="spaces">  </span><span class="istickedoff">let {a3' = fromIntegral a3} in </span>
 <span class="lineno">  423 </span><span class="spaces">  </span><span class="istickedoff">let {a4' = fromIntegral a4} in </span>
 <span class="lineno">  424 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a5' -&gt; </span>
-<span class="lineno">  425 </span><span class="spaces">  </span><span class="istickedoff">basketDefaultCorrelation'_ a1' a2' a3' a4' a5' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  425 </span><span class="spaces">  </span><span class="istickedoff">defaultCorrelation'_ a1' a2' a3' a4' a5' &gt;&gt;= \res -&gt;</span>
 <span class="lineno">  426 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
 <span class="lineno">  427 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a5'&gt;&gt;</span>
 <span class="lineno">  428 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
@@ -449,15 +449,15 @@ span.spaces    { background: white }
 <span class="lineno">  430 </span>
 <span class="lineno">  431 </span>
 <span class="lineno">  432 </span>-- |Probability of at least @n@ defaults in the basket by date @d@.
-<span class="lineno">  433 </span>basketProbAtLeastNEvents :: (DigitalBasket) -&gt; (Word) -- ^n
+<span class="lineno">  433 </span>probAtLeastNEvents :: (DigitalBasket) -&gt; (Word) -- ^n
 <span class="lineno">  434 </span> -&gt; (Day) -- ^d
 <span class="lineno">  435 </span> -&gt; IO ((Double))
-<span class="lineno">  436 </span><span class="decl"><span class="istickedoff">basketProbAtLeastNEvents a1 a2 a3 =</span>
+<span class="lineno">  436 </span><span class="decl"><span class="istickedoff">probAtLeastNEvents a1 a2 a3 =</span>
 <span class="lineno">  437 </span><span class="spaces">  </span><span class="istickedoff">withDigitalBasket a1 $ \a1' -&gt; </span>
 <span class="lineno">  438 </span><span class="spaces">  </span><span class="istickedoff">let {a2' = fromIntegral a2} in </span>
 <span class="lineno">  439 </span><span class="spaces">  </span><span class="istickedoff">withDay a3 $ \a3' -&gt; </span>
 <span class="lineno">  440 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a4' -&gt; </span>
-<span class="lineno">  441 </span><span class="spaces">  </span><span class="istickedoff">basketProbAtLeastNEvents'_ a1' a2' a3' a4' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  441 </span><span class="spaces">  </span><span class="istickedoff">probAtLeastNEvents'_ a1' a2' a3' a4' &gt;&gt;= \res -&gt;</span>
 <span class="lineno">  442 </span><span class="spaces">  </span><span class="istickedoff">let {res' = realToFrac res} in</span>
 <span class="lineno">  443 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a4'&gt;&gt;</span>
 <span class="lineno">  444 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
@@ -540,31 +540,31 @@ span.spaces    { background: white }
 <span class="lineno">  521 </span>  qlBasket'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (CPool)) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (CQlClaim)) -&gt; ((C2HSImp.Ptr (CDefaultLossModel)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CBasket)))))))))))))
 <span class="lineno">  522 </span>
 <span class="lineno">  523 </span>foreign import ccall safe &quot;QuantLib/Credit.chs.h qlBasketNotional&quot;
-<span class="lineno">  524 </span>  basketNotional'_ :: ((C2HSImp.Ptr (CBasket)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))
+<span class="lineno">  524 </span>  notional'_ :: ((C2HSImp.Ptr (CBasket)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))
 <span class="lineno">  525 </span>
 <span class="lineno">  526 </span>foreign import ccall safe &quot;QuantLib/Credit.chs.h qlBasketRemainingNotional&quot;
-<span class="lineno">  527 </span>  basketRemainingNotional'_ :: ((C2HSImp.Ptr (CBasket)) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble))))
+<span class="lineno">  527 </span>  remainingNotional'_ :: ((C2HSImp.Ptr (CBasket)) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble))))
 <span class="lineno">  528 </span>
 <span class="lineno">  529 </span>foreign import ccall safe &quot;QuantLib/Credit.chs.h qlBasketRecoveryRate&quot;
-<span class="lineno">  530 </span>  basketRecoveryRate'_ :: ((C2HSImp.Ptr (CBasket)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))))
+<span class="lineno">  530 </span>  recoveryRate'_ :: ((C2HSImp.Ptr (CBasket)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))))
 <span class="lineno">  531 </span>
 <span class="lineno">  532 </span>foreign import ccall safe &quot;QuantLib/Credit.chs.h qlBasketExpectedTrancheLoss&quot;
-<span class="lineno">  533 </span>  basketExpectedTrancheLoss'_ :: ((C2HSImp.Ptr (CBasket)) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble))))
+<span class="lineno">  533 </span>  expectedTrancheLoss'_ :: ((C2HSImp.Ptr (CBasket)) -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble))))
 <span class="lineno">  534 </span>
 <span class="lineno">  535 </span>foreign import ccall safe &quot;QuantLib/Credit.chs.h qlBasketProbOverLoss&quot;
-<span class="lineno">  536 </span>  basketProbOverLoss'_ :: ((C2HSImp.Ptr (CBasket)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))))
+<span class="lineno">  536 </span>  probOverLoss'_ :: ((C2HSImp.Ptr (CBasket)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))))
 <span class="lineno">  537 </span>
 <span class="lineno">  538 </span>foreign import ccall safe &quot;QuantLib/Credit.chs.h qlBasketPercentile&quot;
-<span class="lineno">  539 </span>  basketPercentile'_ :: ((C2HSImp.Ptr (CBasket)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))))
+<span class="lineno">  539 </span>  percentile'_ :: ((C2HSImp.Ptr (CBasket)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))))
 <span class="lineno">  540 </span>
 <span class="lineno">  541 </span>foreign import ccall safe &quot;QuantLib/Credit.chs.h qlBasketExpectedShortfall&quot;
-<span class="lineno">  542 </span>  basketExpectedShortfall'_ :: ((C2HSImp.Ptr (CBasket)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))))
+<span class="lineno">  542 </span>  expectedShortfall'_ :: ((C2HSImp.Ptr (CBasket)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))))
 <span class="lineno">  543 </span>
 <span class="lineno">  544 </span>foreign import ccall safe &quot;QuantLib/Credit.chs.h qlBasketDefaultCorrelation&quot;
-<span class="lineno">  545 </span>  basketDefaultCorrelation'_ :: ((C2HSImp.Ptr (CBasket)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble))))))
+<span class="lineno">  545 </span>  defaultCorrelation'_ :: ((C2HSImp.Ptr (CBasket)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble))))))
 <span class="lineno">  546 </span>
 <span class="lineno">  547 </span>foreign import ccall safe &quot;QuantLib/Credit.chs.h qlBasketProbAtLeastNEvents&quot;
-<span class="lineno">  548 </span>  basketProbAtLeastNEvents'_ :: ((C2HSImp.Ptr (CBasket)) -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))))
+<span class="lineno">  548 </span>  probAtLeastNEvents'_ :: ((C2HSImp.Ptr (CBasket)) -&gt; (C2HSImp.CUInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))))
 <span class="lineno">  549 </span>
 <span class="lineno">  550 </span>foreign import ccall safe &quot;QuantLib/Credit.chs.h qlDigitalBasket&quot;
 <span class="lineno">  551 </span>  qlDigitalBasket'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CChar)) -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (CPool)) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (CQlClaim)) -&gt; ((C2HSImp.Ptr (CDefaultLossModel)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CBasket)))))))))))))

@@ -146,7 +146,7 @@ span.spaces    { background: white }
 <span class="lineno">  127 </span>  , npvDateDiscount
 <span class="lineno">  128 </span>  , startDate
 <span class="lineno">  129 </span>  , startDiscounts
-<span class="lineno">  130 </span>  , nonstandardSwapFixedRate
+<span class="lineno">  130 </span>  , fixedRates
 <span class="lineno">  131 </span>
 <span class="lineno">  132 </span>    -- ** Cross-currency swaps
 <span class="lineno">  133 </span>
@@ -654,12 +654,12 @@ span.spaces    { background: white }
 <span class="lineno">  635 </span>-- 'nonstandardSwap'\/'nonstandardSwapFromGearingsAndSpreads', this simply echoes the constructor's @fixedRate@; for
 <span class="lineno">  636 </span>-- one built via 'nonstandardSwapFromVanilla' it is derived from the underlying vanilla swap's
 <span class="lineno">  637 </span>-- fixed leg coupons.
-<span class="lineno">  638 </span>nonstandardSwapFixedRate :: (NonstandardSwap) -&gt; IO (([Double]))
-<span class="lineno">  639 </span><span class="decl"><span class="nottickedoff">nonstandardSwapFixedRate a1 =</span>
+<span class="lineno">  638 </span>fixedRates :: (NonstandardSwap) -&gt; IO (([Double]))
+<span class="lineno">  639 </span><span class="decl"><span class="nottickedoff">fixedRates a1 =</span>
 <span class="lineno">  640 </span><span class="spaces">  </span><span class="nottickedoff">withNonstandardSwap a1 $ \a1' -&gt; </span>
 <span class="lineno">  641 </span><span class="spaces">  </span><span class="nottickedoff">preDoubleArray $ \(a2'1, a2'2) -&gt; </span>
 <span class="lineno">  642 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a3' -&gt; </span>
-<span class="lineno">  643 </span><span class="spaces">  </span><span class="nottickedoff">nonstandardSwapFixedRate'_ a1' a2'1  a2'2 a3' &gt;&gt;</span>
+<span class="lineno">  643 </span><span class="spaces">  </span><span class="nottickedoff">fixedRates'_ a1' a2'1  a2'2 a3' &gt;&gt;</span>
 <span class="lineno">  644 </span><span class="spaces">  </span><span class="nottickedoff">peekDoubleArray  a2'1  a2'2&gt;&gt;= \a2'' -&gt; </span>
 <span class="lineno">  645 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a3'&gt;&gt;</span>
 <span class="lineno">  646 </span><span class="spaces">  </span><span class="nottickedoff">return (a2'')</span></span>
@@ -854,8 +854,8 @@ span.spaces    { background: white }
 <span class="lineno">  835 </span><span class="spaces">  </span><span class="istickedoff">floatTenor &lt;- tenor index</span>
 <span class="lineno">  836 </span><span class="spaces">  </span><span class="istickedoff">floatDayCount &lt;- dayCounter index</span>
 <span class="lineno">  837 </span><span class="spaces">  </span><span class="istickedoff">refDate &lt;- evaluationDate</span>
-<span class="lineno">  838 </span><span class="spaces">  </span><span class="istickedoff">let floatConv = businessDayConvention index</span>
-<span class="lineno">  839 </span><span class="spaces">      </span><span class="istickedoff">floatCalendar = fromMaybe idxCalendar mFloatCalendar</span>
+<span class="lineno">  838 </span><span class="spaces">  </span><span class="istickedoff">floatConv &lt;- businessDayConvention index</span>
+<span class="lineno">  839 </span><span class="spaces">  </span><span class="istickedoff">let floatCalendar = fromMaybe idxCalendar mFloatCalendar</span>
 <span class="lineno">  840 </span><span class="spaces">      </span><span class="istickedoff">fixedCalendar = fromMaybe idxCalendar mFixedCalendar</span>
 <span class="lineno">  841 </span><span class="spaces">      </span><span class="istickedoff">fixedConvention = fromMaybe ModifiedFollowing mFixedConvention</span>
 <span class="lineno">  842 </span><span class="spaces">      </span><span class="istickedoff">fixedTerminationConvention = fromMaybe ModifiedFollowing mFixedTerminationConvention</span>
@@ -918,8 +918,8 @@ span.spaces    { background: white }
 <span class="lineno">  899 </span><span class="spaces">  </span><span class="istickedoff">floatTenor &lt;- tenor iborIndex</span>
 <span class="lineno">  900 </span><span class="spaces">  </span><span class="istickedoff">floatDayCount &lt;- dayCounter iborIndex</span>
 <span class="lineno">  901 </span><span class="spaces">  </span><span class="istickedoff">refDate &lt;- evaluationDate</span>
-<span class="lineno">  902 </span><span class="spaces">  </span><span class="istickedoff">let floatConv = businessDayConvention iborIndex</span>
-<span class="lineno">  903 </span><span class="spaces">      </span><span class="istickedoff">floatCalendar = fromMaybe idxCalendar mFloatCalendar</span>
+<span class="lineno">  902 </span><span class="spaces">  </span><span class="istickedoff">floatConv &lt;- businessDayConvention iborIndex</span>
+<span class="lineno">  903 </span><span class="spaces">  </span><span class="istickedoff">let floatCalendar = fromMaybe idxCalendar mFloatCalendar</span>
 <span class="lineno">  904 </span><span class="spaces">      </span><span class="istickedoff">cmsCalendar = fromMaybe idxCalendar mCmsCalendar</span>
 <span class="lineno">  905 </span><span class="spaces">      </span><span class="istickedoff">settlementDays = fromMaybe 0 mSettlementDays</span>
 <span class="lineno">  906 </span><span class="spaces">      </span><span class="istickedoff">nominal = fromMaybe <span class="nottickedoff">1.0</span> mNominal</span>
@@ -1660,25 +1660,25 @@ span.spaces    { background: white }
 <span class="lineno"> 1641 </span>
 <span class="lineno"> 1642 </span>
 <span class="lineno"> 1643 </span>
-<span class="lineno"> 1644 </span>-- |The swap's maturity date, or 'Nothing' if the swap has no legs.
-<span class="lineno"> 1645 </span>maturityDate :: (GenSwap s) -&gt; IO (((Maybe Day)))
+<span class="lineno"> 1644 </span>-- |The swap's maturity date: the latest across its legs. Throws if the swap has no legs.
+<span class="lineno"> 1645 </span>maturityDate :: (GenSwap s) -&gt; IO ((Day))
 <span class="lineno"> 1646 </span><span class="decl"><span class="istickedoff">maturityDate a1 =</span>
 <span class="lineno"> 1647 </span><span class="spaces">  </span><span class="istickedoff">withSwap a1 $ \a1' -&gt; </span>
 <span class="lineno"> 1648 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a2' -&gt; </span>
 <span class="lineno"> 1649 </span><span class="spaces">  </span><span class="istickedoff">maturityDate'_ a1' a2' &gt;&gt;= \res -&gt;</span>
-<span class="lineno"> 1650 </span><span class="spaces">  </span><span class="istickedoff">let {res' = toMaybeDay res} in</span>
+<span class="lineno"> 1650 </span><span class="spaces">  </span><span class="istickedoff">let {res' = toDay res} in</span>
 <span class="lineno"> 1651 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a2'&gt;&gt;</span>
 <span class="lineno"> 1652 </span><span class="spaces">  </span><span class="istickedoff">return (res')</span></span>
 <span class="lineno"> 1653 </span>
 <span class="lineno"> 1654 </span>
 <span class="lineno"> 1655 </span>
-<span class="lineno"> 1656 </span>-- |The swap's start date, or 'Nothing' if the swap has no legs.
-<span class="lineno"> 1657 </span>startDate :: (GenSwap s) -&gt; IO (((Maybe Day)))
+<span class="lineno"> 1656 </span>-- |The swap's start date: the earliest across its legs. Throws if the swap has no legs.
+<span class="lineno"> 1657 </span>startDate :: (GenSwap s) -&gt; IO ((Day))
 <span class="lineno"> 1658 </span><span class="decl"><span class="nottickedoff">startDate a1 =</span>
 <span class="lineno"> 1659 </span><span class="spaces">  </span><span class="nottickedoff">withSwap a1 $ \a1' -&gt; </span>
 <span class="lineno"> 1660 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a2' -&gt; </span>
 <span class="lineno"> 1661 </span><span class="spaces">  </span><span class="nottickedoff">startDate'_ a1' a2' &gt;&gt;= \res -&gt;</span>
-<span class="lineno"> 1662 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = toMaybeDay res} in</span>
+<span class="lineno"> 1662 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = toDay res} in</span>
 <span class="lineno"> 1663 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a2'&gt;&gt;</span>
 <span class="lineno"> 1664 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
 <span class="lineno"> 1665 </span>
@@ -2907,13 +2907,13 @@ span.spaces    { background: white }
 <span class="lineno"> 2888 </span>
 <span class="lineno"> 2889 </span>-- |Calculated reset rates for non-occurred coupons in leg order (1.44).
 <span class="lineno"> 2890 </span>fxResetRates :: (MtMCrossCurrencyBasisSwap) -- ^swap
-<span class="lineno"> 2891 </span> -&gt; IO ((RealVector))
+<span class="lineno"> 2891 </span> -&gt; IO (([Double]))
 <span class="lineno"> 2892 </span><span class="decl"><span class="istickedoff">fxResetRates a1 =</span>
 <span class="lineno"> 2893 </span><span class="spaces">  </span><span class="istickedoff">withMtMCrossCurrencyBasisSwap a1 $ \a1' -&gt; </span>
 <span class="lineno"> 2894 </span><span class="spaces">  </span><span class="istickedoff">preDoubleArray $ \(a2'1, a2'2) -&gt; </span>
 <span class="lineno"> 2895 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
 <span class="lineno"> 2896 </span><span class="spaces">  </span><span class="istickedoff">fxResetRates'_ a1' a2'1  a2'2 a3' &gt;&gt;</span>
-<span class="lineno"> 2897 </span><span class="spaces">  </span><span class="istickedoff">peekRealVector  a2'1  a2'2&gt;&gt;= \a2'' -&gt; </span>
+<span class="lineno"> 2897 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a2'1  a2'2&gt;&gt;= \a2'' -&gt; </span>
 <span class="lineno"> 2898 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
 <span class="lineno"> 2899 </span><span class="spaces">  </span><span class="istickedoff">return (a2'')</span></span>
 <span class="lineno"> 2900 </span>
@@ -2921,13 +2921,13 @@ span.spaces    { background: white }
 <span class="lineno"> 2902 </span>
 <span class="lineno"> 2903 </span>-- |Calculated reset notionals for non-occurred coupons in leg order (1.44).
 <span class="lineno"> 2904 </span>fxResetNotionals :: (MtMCrossCurrencyBasisSwap) -- ^swap
-<span class="lineno"> 2905 </span> -&gt; IO ((RealVector))
+<span class="lineno"> 2905 </span> -&gt; IO (([Double]))
 <span class="lineno"> 2906 </span><span class="decl"><span class="istickedoff">fxResetNotionals a1 =</span>
 <span class="lineno"> 2907 </span><span class="spaces">  </span><span class="istickedoff">withMtMCrossCurrencyBasisSwap a1 $ \a1' -&gt; </span>
 <span class="lineno"> 2908 </span><span class="spaces">  </span><span class="istickedoff">preDoubleArray $ \(a2'1, a2'2) -&gt; </span>
 <span class="lineno"> 2909 </span><span class="spaces">  </span><span class="istickedoff">preErrorCheck $ \a3' -&gt; </span>
 <span class="lineno"> 2910 </span><span class="spaces">  </span><span class="istickedoff">fxResetNotionals'_ a1' a2'1  a2'2 a3' &gt;&gt;</span>
-<span class="lineno"> 2911 </span><span class="spaces">  </span><span class="istickedoff">peekRealVector  a2'1  a2'2&gt;&gt;= \a2'' -&gt; </span>
+<span class="lineno"> 2911 </span><span class="spaces">  </span><span class="istickedoff">peekDoubleArray  a2'1  a2'2&gt;&gt;= \a2'' -&gt; </span>
 <span class="lineno"> 2912 </span><span class="spaces">  </span><span class="istickedoff">errorCheck  a3'&gt;&gt;</span>
 <span class="lineno"> 2913 </span><span class="spaces">  </span><span class="istickedoff">return (a2'')</span></span>
 <span class="lineno"> 2914 </span>
@@ -2961,7 +2961,7 @@ span.spaces    { background: white }
 <span class="lineno"> 2942 </span>  nonstandardSwapFromGearingsAndSpreads'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (CSchedule)) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; ((C2HSImp.Ptr (CSchedule)) -&gt; ((C2HSImp.Ptr (CIborIndex')) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (CCalendar)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CNonstandardSwap')))))))))))))))))))))))))
 <span class="lineno"> 2943 </span>
 <span class="lineno"> 2944 </span>foreign import ccall safe &quot;QuantLib/Instrument/Swap.chs.h qlNonstandardSwapFixedRate&quot;
-<span class="lineno"> 2945 </span>  nonstandardSwapFixedRate'_ :: ((C2HSImp.Ptr (CNonstandardSwap')) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO ())))))
+<span class="lineno"> 2945 </span>  fixedRates'_ :: ((C2HSImp.Ptr (CNonstandardSwap')) -&gt; ((C2HSImp.Ptr C2HSImp.CUInt) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr C2HSImp.CDouble)) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO ())))))
 <span class="lineno"> 2946 </span>
 <span class="lineno"> 2947 </span>foreign import ccall safe &quot;QuantLib/Instrument/Swap.chs.h qlFloatFloatSwap&quot;
 <span class="lineno"> 2948 </span>  floatFloatSwap_'_ :: (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (CSchedule)) -&gt; ((C2HSImp.Ptr (CInterestRateIndex')) -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; ((C2HSImp.Ptr (CSchedule)) -&gt; ((C2HSImp.Ptr (CInterestRateIndex')) -&gt; ((C2HSImp.Ptr (CDayCounter)) -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CInt -&gt; (C2HSImp.CInt -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO (C2HSImp.Ptr (CFloatFloatSwap')))))))))))))))))))))))))

@@ -61,7 +61,7 @@ span.spaces    { background: white }
 <span class="lineno">   42 </span>  , protectionValue
 <span class="lineno">   43 </span>  , premiumLegNpv
 <span class="lineno">   44 </span>  , protectionLegNpv
-<span class="lineno">   45 </span>  , cdoRemainingNotional
+<span class="lineno">   45 </span>  , remainingNotional
 <span class="lineno">   46 </span>  , implicitCorrelation
 <span class="lineno">   47 </span>    -- ** Nth-to-default
 <span class="lineno">   48 </span>  , ntdFairPremium
@@ -492,11 +492,11 @@ span.spaces    { background: white }
 <span class="lineno">  473 </span>
 <span class="lineno">  474 </span>
 <span class="lineno">  475 </span>-- |Total outstanding tranche notional, not wiped out by realized losses.
-<span class="lineno">  476 </span>cdoRemainingNotional :: (SyntheticCDO) -&gt; IO ((Double))
-<span class="lineno">  477 </span><span class="decl"><span class="nottickedoff">cdoRemainingNotional a1 =</span>
+<span class="lineno">  476 </span>remainingNotional :: (SyntheticCDO) -&gt; IO ((Double))
+<span class="lineno">  477 </span><span class="decl"><span class="nottickedoff">remainingNotional a1 =</span>
 <span class="lineno">  478 </span><span class="spaces">  </span><span class="nottickedoff">withGenInstrument a1 $ \a1' -&gt; </span>
 <span class="lineno">  479 </span><span class="spaces">  </span><span class="nottickedoff">preErrorCheck $ \a2' -&gt; </span>
-<span class="lineno">  480 </span><span class="spaces">  </span><span class="nottickedoff">cdoRemainingNotional'_ a1' a2' &gt;&gt;= \res -&gt;</span>
+<span class="lineno">  480 </span><span class="spaces">  </span><span class="nottickedoff">remainingNotional'_ a1' a2' &gt;&gt;= \res -&gt;</span>
 <span class="lineno">  481 </span><span class="spaces">  </span><span class="nottickedoff">let {res' = realToFrac res} in</span>
 <span class="lineno">  482 </span><span class="spaces">  </span><span class="nottickedoff">errorCheck  a2'&gt;&gt;</span>
 <span class="lineno">  483 </span><span class="spaces">  </span><span class="nottickedoff">return (res')</span></span>
@@ -629,7 +629,7 @@ span.spaces    { background: white }
 <span class="lineno">  610 </span>  protectionLegNpv'_ :: ((C2HSImp.Ptr (CSyntheticCDO')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))
 <span class="lineno">  611 </span>
 <span class="lineno">  612 </span>foreign import ccall safe &quot;QuantLib/Instrument/Credit.chs.h qlSyntheticCDORemainingNotional&quot;
-<span class="lineno">  613 </span>  cdoRemainingNotional'_ :: ((C2HSImp.Ptr (CSyntheticCDO')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))
+<span class="lineno">  613 </span>  remainingNotional'_ :: ((C2HSImp.Ptr (CSyntheticCDO')) -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble)))
 <span class="lineno">  614 </span>
 <span class="lineno">  615 </span>foreign import ccall safe &quot;QuantLib/Instrument/Credit.chs.h qlSyntheticCDOImplicitCorrelation&quot;
 <span class="lineno">  616 </span>  implicitCorrelation'_ :: ((C2HSImp.Ptr (CSyntheticCDO')) -&gt; (C2HSImp.CUInt -&gt; ((C2HSImp.Ptr C2HSImp.CDouble) -&gt; ((C2HSImp.Ptr (CYieldTermStructure')) -&gt; (C2HSImp.CDouble -&gt; (C2HSImp.CDouble -&gt; ((C2HSImp.Ptr (C2HSImp.Ptr ())) -&gt; (IO C2HSImp.CDouble))))))))
