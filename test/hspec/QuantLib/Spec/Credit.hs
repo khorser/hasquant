@@ -633,7 +633,7 @@ spec = do
           computed <- fairSpread cds
           computed `shouldSatisfy` closePrec quotedSpread 1.0e-6
         -- the interpolated curve of the bootstrap's trait on its nodes is the same curve
-        nodes <- defaultCurveNodes curve
+        nodes <- bootstrappedNodes curve
         map fst nodes `shouldSatisfy` ((== Just refDate) . fmap fst . uncons)
         length nodes `shouldBe` length spreads + 1
         rebuilt <- case trait of
@@ -657,7 +657,7 @@ spec = do
       jump <- simpleQuote 0.995
       let jumps = [(addDays 550 ref, jump)]
       curve <- piecewiseDefaultCurve (ReferenceDate ref) (fromList helpers) dc jumps HazardRate BackwardFlat defaultIterativeBootstrapOpts False
-      nodes <- defaultCurveNodes curve
+      nodes <- bootstrappedNodes curve
       rebuilt <- interpolatedHazardRateCurve (fromList nodes) dc cal jumps BackwardFlat False
       omitted <- interpolatedHazardRateCurve (fromList nodes) dc cal [] BackwardFlat False
       forM_ ([365,550,551,730] :: [Integer]) $ \n -> do

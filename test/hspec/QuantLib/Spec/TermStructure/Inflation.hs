@@ -151,7 +151,7 @@ spec = do
     baseDate' <- advance cal evalDate (-2, Months) Unadjusted False
     let seasonality = Just (MultiplicativePriceSeasonality baseDate' Monthly [1.0, 1.01, 1.02, 1.015, 1.005, 0.995, 0.99, 0.985, 0.99, 1.0, 1.005, 1.01])
     curve <- piecewiseZeroInflationCurve evalDate baseDate' Monthly dc (fromList helpers) seasonality Linear
-    nodes <- zeroInflationNodes curve
+    nodes <- bootstrappedNodes curve
     map fst nodes `shouldSatisfy` \ds -> length ds == 4 && take 1 ds == [baseDate'] && and (zipWith (<) ds (drop 1 ds))
     rebuilt <- interpolatedZeroInflationCurve evalDate (fromList nodes) Monthly dc seasonality Linear
     forM_ [6, 18, 30, 66, 114 :: Integer] $ \k -> do
@@ -177,7 +177,7 @@ spec = do
       [(2, 0.03), (5, 0.028) :: (Int, Double)]
     baseDate' <- advance cal evalDate (-2, Months) Unadjusted False
     curve <- piecewiseYoyInflationCurve evalDate baseDate' 0.03 Monthly dc (fromList helpers) Nothing Linear
-    nodes <- yoyInflationNodes curve
+    nodes <- bootstrappedNodes curve
     map fst nodes `shouldSatisfy` \ds -> length ds == 3 && take 1 ds == [baseDate']
     rebuilt <- interpolatedYoyInflationCurve evalDate (fromList nodes) Monthly dc Nothing Linear
     forM_ [6, 18, 42 :: Integer] $ \k -> do

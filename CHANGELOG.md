@@ -2,7 +2,16 @@
 
 - Breaking: return `PiecewiseYieldCurve` from `piecewiseSpreadYieldCurve`, retaining calibrated
   multiplicative discount-factor spread nodes for both iterative and global bootstrappers.
-  Read them with `piecewiseYieldCurveNodes`; concrete parent callers upcast explicitly.
+  Read them with `bootstrappedNodes`; concrete parent callers upcast explicitly.
+
+- Bootstrapped curve nodes are read through one capability, `HasNodes(bootstrappedNodes)`, with
+  instances for `PiecewiseYieldCurve`, `PiecewiseDefaultCurve`, `PiecewiseZeroInflationCurve` and
+  `PiecewiseYoYInflationCurve`. Yield curves keep their nodes under every bootstrapper, global
+  and local included; local-bootstrap nodes alone do not rebuild the convex-monotone curve.
+
+- Breaking: `addBootstrappedCurve` takes the `PiecewiseYieldCurve` leaf returned by
+  `piecewiseYieldCurve` instead of any yield curve; non-bootstrapped curves no longer type-check
+  there and go through `addNonBootstrappedCurve`.
 
 - Add `conditionalSurvivalCurve`, a hasquant conditional view over an existing native credit
   curve. Survival and density normalize at a later fixed reference while hazard queries keep
@@ -10,9 +19,9 @@
   Sources exposing scheduled jumps are refused because their live quote metadata is unavailable.
 
 - Add `fixingAccrualFractions` for overnight and multiple-reset coupons, exposing native
-  index-day-count weights alongside fixing dates.
+  index-day-count weights as a list aligned with `fixingDates`.
 
-- Breaking: return a `PiecewiseYieldCurve` leaf from `piecewiseYieldCurve`; node inspection now
+- Breaking: return a `PiecewiseYieldCurve` leaf from `piecewiseYieldCurve`; node inspection
   takes only that curve, retaining its native type without runtime downcasts.
 - Clarify that yield/default node reconstruction also requires the original jumps.
 
@@ -22,7 +31,7 @@
 
 - Add `rateHelperPillarDate` to inspect native bootstrap pillar dates before attaching a curve.
 
-- `piecewiseYieldCurveNodes` reads an iteratively bootstrapped yield curve's nodes: the
+- `bootstrappedNodes` reads a bootstrapped yield curve's nodes: the
   reference date, then each helper's pillar, with the value its trait interpolates. The
   interpolated curve of that trait on these nodes reproduces the curve with the original
   day counter, full interpolation configuration, and jump dates/quotes.
@@ -31,16 +40,16 @@
   after the last node keeps that node's volatility, as `BlackVarianceCurve` interpolates by
   variance; with `False`, the former behaviour, QuantLib refuses the read.
 
-- Breaking: `yoyCapFloorTermPriceSurface` takes a leading `Maybe Day`. `Nothing` keeps
-  native moving dates; `Just start` books the surface at the current evaluation date, and
-  any other `start` is refused. The booked surface uses native fixed-start ATM swap helpers
+- Breaking: `yoyCapFloorTermPriceSurface` takes a leading `YoyPriceSurfaceStart`. `MovingStart`
+  keeps native moving dates; `BookedAtEvaluationDate` books the surface at the current
+  evaluation date. The booked surface uses native fixed-start ATM swap helpers
   and preserves the native pillars, so restoring a later process date cannot rebuild
   swaps beyond their fixed maturities. Rebuild booked surfaces for date rolls.
 
 - Breaking: `piecewiseDefaultCurve` returns a `PiecewiseDefaultCurve`, a
   `DefaultProbabilityTermStructure` leaf. Every curve argument still accepts it; convert with
   `asDefaultProbabilityTermStructure` where a concrete `DefaultProbabilityTermStructure` is
-  stored. `defaultCurveNodes` reads its bootstrapped nodes: the reference date, then each
+  stored. `bootstrappedNodes` reads its bootstrapped nodes: the reference date, then each
   helper's pillar, with the value its trait interpolates. The interpolated curve of that trait
   on these nodes reproduces the curve with the original day counter, interpolation, and jumps.
 
@@ -74,7 +83,7 @@
   `objectMatrix`, which check its shape.
 - Breaking: `piecewiseZeroInflationCurve` and `piecewiseYoyInflationCurve` return the new
   `PiecewiseZeroInflationCurve` and `PiecewiseYoYInflationCurve` leaves, whose bootstrapped
-  nodes `zeroInflationNodes` and `yoyInflationNodes` read. `ZeroInflationTermStructure` and
+  nodes `bootstrappedNodes` reads. `ZeroInflationTermStructure` and
   `YoYInflationTermStructure` are now families (`GenZeroInflationTermStructure`,
   `GenYoYInflationTermStructure`): rate, implied-quote and index inputs accept either leaf, and
   `asZeroInflationTermStructure`/`asYoYInflationTermStructure` convert where a concrete type is

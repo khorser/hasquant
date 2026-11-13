@@ -219,7 +219,7 @@ spec = do
           [((3, Months), 0.045), ((6, Months), 0.046), ((1, Years), 0.047), ((2, Years), 0.049)]
         forM_ ([(Discount, LogLinear), (Discount, Linear), (ZeroYield, Linear), (ForwardRate, BackwardFlat), (SimpleZeroYield, Linear), (Discount, Cubic (NaturalSpline False))] :: [(BootstrapTrait, Interpolation)]) $ \(trait, interpolation) -> do
           curve <- piecewiseYieldCurve (SettlementDays 0 cal) (fromList helpers) dc [] (Iterative trait interpolation defaultIterativeBootstrapOpts) True
-          nodes <- piecewiseYieldCurveNodes curve
+          nodes <- bootstrappedNodes curve
           map fst nodes `shouldSatisfy` ((== Just today') . fmap fst . uncons)
           length nodes `shouldBe` length helpers + 1
           rebuilt <- case trait of
@@ -231,7 +231,7 @@ spec = do
             expected <- discount curve (DatePoint d) False
             discount rebuilt (DatePoint d) False >>= (`shouldBe` expected)
 
-      it "reconstructs jump-bearing nodes and refuses non-iterative inspection" $ Context.keepingSettingsGc $ do
+      it "reconstructs jump-bearing nodes and a globally bootstrapped curve" $ Context.keepingSettingsGc $ do
         let ref = fromGregorian 2025 1 2
         Context.setEvaluationDate (Just ref)
         cal <- calendar Null
@@ -242,7 +242,7 @@ spec = do
         let jumps = [(addDays 550 ref, jump)]
         forM_ ([ReferenceDate ref, SettlementDays 0 cal] :: [Reference]) $ \reference -> do
           curve <- piecewiseYieldCurve reference (fromList helpers) dc jumps (Iterative Discount LogLinear defaultIterativeBootstrapOpts) False
-          nodes <- piecewiseYieldCurveNodes curve
+          nodes <- bootstrappedNodes curve
           rebuilt <- interpolatedDiscountCurve (fromList nodes) dc cal jumps LogLinear False
           omitted <- interpolatedDiscountCurve (fromList nodes) dc cal [] LogLinear False
           forM_ ([365, 550, 551, 730] :: [Integer]) $ \n -> do
@@ -251,12 +251,16 @@ spec = do
           expected <- discount curve (TimePoint 2) False
           discount omitted (TimePoint 2) False >>= (\x -> abs (x - expected) `shouldSatisfy` (> 0.001))
           _ <- Quote.setValue jump 0.98
-          updated <- piecewiseYieldCurveNodes curve
+          updated <- bootstrappedNodes curve
           updated `shouldNotBe` nodes
           _ <- Quote.setValue jump 0.99
           pure ()
         global <- piecewiseYieldCurve (ReferenceDate ref) (fromList helpers) dc [] (GlobalDiscountLogLinear 1e-12 [] Nothing) False
-        piecewiseYieldCurveNodes global `shouldThrow` (\e -> "nodes require an iteratively" `isInfixOf` show (e :: Context.Error))
+        globalNodes <- bootstrappedNodes global
+        rebuiltGlobal <- interpolatedDiscountCurve (fromList globalNodes) dc cal [] LogLinear False
+        forM_ ([200, 365, 550, 900] :: [Integer]) $ \n -> do
+          expected <- discount global (DatePoint (addDays n ref)) False
+          discount rebuiltGlobal (DatePoint (addDays n ref)) False >>= (`shouldSatisfy` closePrec expected 1e-6)
       it "referenceChange" $ Context.keepingSettingsGc $ do
         let ds = [10, 30, 60, 120, 360, 720]
         (_calendar, settlementDays, _ts) <- setup
@@ -509,7 +513,7 @@ spec = do
                 curve <- piecewiseSpreadYieldCurve ts (fromList (map fst hs)) bootstrap True
                 _ <- discount curve (DatePoint (addGregorianYearsClip 1 refDate)) True
                 mapM_ (\(h, r) -> impliedQuote h >>= (`shouldSatisfy` closePrec r 1.0e-8)) hs
-                nodes <- piecewiseYieldCurveNodes curve
+                nodes <- bootstrappedNodes curve
                 map fst (take 1 nodes) `shouldBe` [refDate]
                 let interpolation = case bootstrap of
                       SpreadIterative i _ -> i
@@ -2045,12 +2049,20 @@ spec = do
           -- additionalDates for GlobalSimpleZeroLinearFull below: deliberately not coincident
           -- with the primary monthly pillars, same reasoning as the GlobalBootstrapFull test above.
           extraDates <- mapM (\d -> advance cal settleFix (d, Days) ModifiedFollowing True) [45, 75, 105 :: Int]
-          let checkCurve curve = mapM_ (\i -> do
+          let checkCurve :: PiecewiseYieldCurve -> IO ()
+              checkCurve curve = mapM_ (\i -> do
                   pillar <- advance cal settleFix (i, Months) ModifiedFollowing True
                   let tau = fromIntegral (diffDays pillar settleFix) / 360 :: Double
                   df <- discount curve (DatePoint pillar) False
                   df `shouldSatisfy` closePrec (1 / (1 + qVal * tau)) tolerance
-                ) ([1 .. 5] :: [Int])
+                ) ([1 .. 5] :: [Int]) >> checkNodes curve
+              -- Every bootstrapper keeps its nodes: the reference date, then increasing pillars.
+              checkNodes :: PiecewiseYieldCurve -> IO ()
+              checkNodes curve = do
+                nodeDates <- map fst <$> bootstrappedNodes curve
+                take 1 nodeDates `shouldBe` [settleFix]
+                length nodeDates `shouldSatisfy` (>= 6)
+                and (zipWith (<) nodeDates (drop 1 nodeDates)) `shouldBe` True
               checkReference reference = do
                 piecewiseYieldCurve reference helpers euriborDC [] (Iterative ForwardRate Linear defaultIterativeBootstrapOpts) False >>= checkCurve
                 piecewiseYieldCurve reference helpers euriborDC [] (GlobalDiscountLogLinear 1.0e-10 [] Nothing) False >>= checkCurve

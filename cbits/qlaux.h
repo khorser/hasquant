@@ -411,6 +411,9 @@ namespace QuantLib {
   class YoYCapFloorTermPriceSurface;
   class YoYInflationCapFloor;
   class YoYInflationCouponPricer;
+  class YoYInflationBlackCapFloorEngine;
+  class YoYInflationUnitDisplacedBlackCapFloorEngine;
+  class YoYInflationBachelierCapFloorEngine;
   class YoYInflationIndex;
   class YoYInflationTermStructure;
   class YoYOptionletVolatilitySurface;
@@ -789,6 +792,9 @@ using QuantLib::YearOnYearInflationSwapHelper;
 using QuantLib::YoYCapFloorTermPriceSurface;
 using QuantLib::YoYInflationCapFloor;
 using QuantLib::YoYInflationCouponPricer;
+using QuantLib::YoYInflationBlackCapFloorEngine;
+using QuantLib::YoYInflationUnitDisplacedBlackCapFloorEngine;
+using QuantLib::YoYInflationBachelierCapFloorEngine;
 using QuantLib::YoYInflationIndex;
 using QuantLib::YoYInflationTermStructure;
 using QuantLib::YoYOptionletVolatilitySurface;
@@ -1755,6 +1761,9 @@ QL_TRACE_NAME(YieldTermStructure)
 QL_TRACE_NAME(YoYCapFloorTermPriceSurface)
 QL_TRACE_NAME(YoYInflationCapFloor)
 QL_TRACE_NAME(YoYInflationCouponPricer)
+QL_TRACE_NAME(YoYInflationBlackCapFloorEngine)
+QL_TRACE_NAME(YoYInflationUnitDisplacedBlackCapFloorEngine)
+QL_TRACE_NAME(YoYInflationBachelierCapFloorEngine)
 QL_TRACE_NAME(YoYInflationIndex)
 QL_TRACE_NAME(YoYInflationTermStructure)
 QL_TRACE_NAME(YoYOptionletVolatilitySurface)

@@ -23,10 +23,10 @@ main = Context.keepingSettingsGc $ do
     base <- asYieldTermStructure curve
     pure (curve, base)
   Context.collectGarbage
-  nodes <- piecewiseYieldCurveNodes leaf
+  nodes <- bootstrappedNodes leaf
   before <- discount parent (TimePoint 2) False
   _ <- Quote.setValue quote 0.05
-  changed <- piecewiseYieldCurveNodes leaf
+  changed <- bootstrappedNodes leaf
   unless (nodes /= changed) (fail "leaf failed to observe the quote")
   after <- discount parent (TimePoint 2) False
   unless (after < before) (fail "upcast failed to observe the quote")

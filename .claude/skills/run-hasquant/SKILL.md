@@ -24,6 +24,7 @@ cabal build all --enable-tests         # full build; prefer through tools/quiet-
 # final gate: also compile the two flagged executables, as CI does
 tools/quiet-build.py cabal build all --enable-tests -f buildExample -f buildSofrXva
 python3 tools/check-matrix-api.py       # accessors compile; unchecked matrix updates do not
+python3 tools/check-yoy-upstream-copies.py  # cbits copies of upstream YoY code still match the headers
 ```
 
 Plain `make` uses the `quantlib-config` on `PATH`; `brew unlink quantlib` removes it. Pick a

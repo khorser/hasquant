@@ -21,6 +21,7 @@ module QuantLib.TermStructure
 
     -- * Inspectors
   , HasHelperUnderlying(..)
+  , HasNodes(..)
   , referenceDate
   , maxDate
   , maxTime
@@ -49,6 +50,10 @@ import QuantLib.Internal.Type
 {#pointer *QlYearOnYearInflationSwap as YearOnYearInflationSwap foreign -> CYearOnYearInflationSwap' nocode#}
 {#pointer *QlFixedVsFloatingSwap as FixedVsFloatingSwap foreign -> CFixedVsFloatingSwap' nocode#}
 {#pointer *QlTermStructure as TermStructure foreign -> CTermStructure' nocode#}
+{#pointer *QlPiecewiseYieldCurve as PiecewiseYieldCurve foreign -> CPiecewiseYieldCurve' nocode#}
+{#pointer *QlPiecewiseDefaultCurve as PiecewiseDefaultCurve foreign -> CPiecewiseDefaultCurve' nocode#}
+{#pointer *QlPiecewiseZeroInflationCurve as PiecewiseZeroInflationCurve foreign -> CPiecewiseZeroInflationCurve' nocode#}
+{#pointer *QlPiecewiseYoYInflationCurve as PiecewiseYoYInflationCurve foreign -> CPiecewiseYoYInflationCurve' nocode#}
 
 -- |Bootstrap and calibration helpers that build and hold the instrument whose market quote
 -- they match. The class lives here, in the term-structure root module, because its instances
@@ -87,6 +92,35 @@ instance HasHelperUnderlying SwaptionHelper where
 {#fun qlZeroCouponInflationSwapHelperSwap{withZeroCouponInflationSwapHelper*`ZeroCouponInflationSwapHelper',preErrorCheck-`String'errorCheck*-}->`ZeroCouponInflationSwap'peekZeroCouponInflationSwap*#}
 {#fun qlYearOnYearInflationSwapHelperSwap{withYearOnYearInflationSwapHelper*`YearOnYearInflationSwapHelper',preErrorCheck-`String'errorCheck*-}->`YearOnYearInflationSwap'peekYearOnYearInflationSwap*#}
 {#fun qlSwaptionHelperUnderlying{withSwaptionHelper*`SwaptionHelper',preErrorCheck-`String'errorCheck*-}->`FixedVsFloatingSwap'peekFixedVsFloatingSwap*#}
+
+-- |Bootstrapped curve leaves that retain their native nodes. The class lives in this root module
+-- for the same reason as 'HasHelperUnderlying': its instances span the topical curve modules.
+class HasNodes c where
+  -- |The curve's (date, value) nodes; reading them runs the bootstrap. The first node is the
+  -- reference date (inflation curves: the base date), the rest are helper pillars. Each value is
+  -- what the curve interpolates: the trait's quantity for yield and default curves, a
+  -- discount-factor spread for 'QuantLib.TermStructure.Yield.piecewiseSpreadYieldCurve', and
+  -- the rate before seasonality for inflation curves. Jump factors are applied separately and
+  -- are not part of the nodes.
+  --
+  -- An interpolated curve of the same kind on these nodes, with the original day counter,
+  -- interpolation, jumps and seasonality, reproduces the bootstrapped curve. The exception is a
+  -- local bootstrap, whose convex-monotone shape also depends on state the nodes do not carry.
+  bootstrappedNodes :: c -> IO [(Day, Double)]
+
+instance HasNodes PiecewiseYieldCurve where
+  bootstrappedNodes = fmap (uncurry zip) . qlPiecewiseYieldCurveNodes
+instance HasNodes PiecewiseDefaultCurve where
+  bootstrappedNodes = fmap (uncurry zip) . qlPiecewiseDefaultCurveNodes
+instance HasNodes PiecewiseZeroInflationCurve where
+  bootstrappedNodes = fmap (uncurry zip) . qlPiecewiseZeroInflationCurveNodes
+instance HasNodes PiecewiseYoYInflationCurve where
+  bootstrappedNodes = fmap (uncurry zip) . qlPiecewiseYoYInflationCurveNodes
+
+{#fun qlPiecewiseYieldCurveNodes{withPiecewiseYieldCurve*`PiecewiseYieldCurve',preIntArray-`[Day]'&peekDayArray*,preDoubleArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlPiecewiseDefaultCurveNodes{withPiecewiseDefaultCurve*`PiecewiseDefaultCurve',preIntArray-`[Day]'&peekDayArray*,preDoubleArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlPiecewiseZeroInflationCurveNodes{withPiecewiseZeroInflationCurve*`PiecewiseZeroInflationCurve',preIntArray-`[Day]'&peekDayArray*,preDoubleArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlPiecewiseYoYInflationCurveNodes{withPiecewiseYoYInflationCurve*`PiecewiseYoYInflationCurve',preIntArray-`[Day]'&peekDayArray*,preDoubleArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |A term-structure reference point. 'ReferenceDate' stays fixed for the object's lifetime;
 -- 'SettlementDays' follows the global evaluation date using the supplied calendar.

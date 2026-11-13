@@ -34,15 +34,13 @@ module QuantLib.TermStructure.Inflation
   , yoyRate
   , zeroCouponInflationSwapImpliedQuoteOn
   , yearOnYearInflationSwapImpliedQuoteOn
-    -- ** Bootstrapped nodes
-  , zeroInflationNodes
-  , yoyInflationNodes
+  , HasNodes(..)
   ) where
 import QuantLib.Internal
 import QuantLib.Internal.Type
 {#import QuantLib.Time.Schedule#}(Frequency(..))
 import QuantLib.Internal.Common
-import QuantLib.TermStructure(HasHelperUnderlying(..))
+import QuantLib.TermStructure(HasHelperUnderlying(..), HasNodes(..))
 import Data.List.NonEmpty(NonEmpty, toList)
 {#import QuantLib.TermStructure.Yield#}(PillarChoice)
 
@@ -263,28 +261,10 @@ seasonalityArgs d s k = case s of
 -- |The swap rate that would make a year-on-year inflation swap helper reprice exactly on the given
 -- year-on-year curve.
 {#fun qlYearOnYearInflationSwapHelperImpliedQuoteOn as yearOnYearInflationSwapImpliedQuoteOn{withYearOnYearInflationSwapHelper*`YearOnYearInflationSwapHelper'
-  ,withYoYInflationTermStructure*`GenYoYInflationTermStructure y',preErrorCheck-`String'errorCheck*-}->`Double'#}
+  ,withYoYInflationTermStructure*`GenYoYInflationTermStructure yoy',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Year-on-year inflation rate implied by the curve.
-{#fun qlYoYInflationTermStructureYoYRate as yoyRate{withYoYInflationTermStructure*`GenYoYInflationTermStructure y',withDay*`Day',`Bool' -- ^extrapolate
+{#fun qlYoYInflationTermStructureYoYRate as yoyRate{withYoYInflationTermStructure*`GenYoYInflationTermStructure yoy',withDay*`Day',`Bool' -- ^extrapolate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
-
--- |A bootstrapped zero-inflation curve's nodes, bootstrapping it if it has not been: its base date
--- first, then each helper's pillar, each with the zero inflation rate the curve interpolates, before
--- seasonality. 'interpolatedZeroInflationCurve' on these nodes, with the bootstrap's interpolation,
--- frequency, day counter and seasonality, is the same curve.
-zeroInflationNodes :: PiecewiseZeroInflationCurve -> IO [(Day, Double)]
-zeroInflationNodes c = zip <$> qlPiecewiseZeroInflationCurveDates c <*> qlPiecewiseZeroInflationCurveRates c
-{#fun qlPiecewiseZeroInflationCurveDates{withPiecewiseZeroInflationCurve*`PiecewiseZeroInflationCurve',preIntArray-`[Day]'&peekDayArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
-{#fun qlPiecewiseZeroInflationCurveRates{withPiecewiseZeroInflationCurve*`PiecewiseZeroInflationCurve',preDoubleArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
-
--- |A bootstrapped year-on-year curve's nodes, bootstrapping it if it has not been: its base date
--- first, then each helper's pillar, each with the year-on-year rate the curve interpolates, before
--- seasonality. 'interpolatedYoyInflationCurve' on these nodes, with the bootstrap's interpolation,
--- frequency, day counter and seasonality, is the same curve.
-yoyInflationNodes :: PiecewiseYoYInflationCurve -> IO [(Day, Double)]
-yoyInflationNodes c = zip <$> qlPiecewiseYoYInflationCurveDates c <*> qlPiecewiseYoYInflationCurveRates c
-{#fun qlPiecewiseYoYInflationCurveDates{withPiecewiseYoYInflationCurve*`PiecewiseYoYInflationCurve',preIntArray-`[Day]'&peekDayArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
-{#fun qlPiecewiseYoYInflationCurveRates{withPiecewiseYoYInflationCurve*`PiecewiseYoYInflationCurve',preDoubleArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

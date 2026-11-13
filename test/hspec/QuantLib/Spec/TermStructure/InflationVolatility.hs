@@ -130,7 +130,7 @@ setup = do
 
   let fixingDays = 0
       yyLag = (3, Months)
-  priceSurfEU <- yoyCapFloorTermPriceSurface (Just eval) fixingDays yyLag yoyIndexEU CPILinear nominalEUR dc cal ModifiedFollowing
+  priceSurfEU <- yoyCapFloorTermPriceSurface BookedAtEvaluationDate fixingDays yyLag yoyIndexEU CPILinear nominalEUR dc cal ModifiedFollowing
                    cStrikesEU fStrikesEU cfMaturitiesEU capPricesEU floorPricesEU Bicubic (Cubic Kruger)
 
   return (eval, cal, dc, nominalEUR, yoyIndexEU, priceSurfEU)
@@ -146,11 +146,6 @@ spec = do
     Context.setEvaluationDate (Just eval)
     ratesAfter <- mapM (\(date, _) -> yoyCapFloorAtmYoyRate prices date Nothing True) rates
     zipWithM_ (\a b -> abs (a-b) `shouldSatisfy` (< 1e-12)) ratesBefore ratesAfter
-
-  it "refuses a booked start other than the evaluation date" $ Context.keepingSettingsGc $ do
-    (eval, cal, dc, nominal, index, _) <- setup
-    yoyCapFloorTermPriceSurface (Just (addDays 1 eval)) 0 (3, Months) index CPILinear nominal dc cal ModifiedFollowing
-      cStrikesEU fStrikesEU cfMaturitiesEU capPricesEU floorPricesEU Bicubic (Cubic Kruger) `shouldThrow` anyException
 
   it "interpolatedYoyInflationCurve: a non-Linear interpolation builds and differs between nodes" $ Context.keepingSettingsGc $ do
     let eval = 23 `november` 2007
@@ -228,7 +223,7 @@ spec = do
     zii <- zeroInflationIndex EUHICP
     yoyIndexEU <- yoyInflationIndexFromZero zii (Just yoyEU)
 
-    priceSurf <- yoyCapFloorTermPriceSurface Nothing 0 (3, Months) yoyIndexEU CPILinear nominalEUR dc cal ModifiedFollowing
+    priceSurf <- yoyCapFloorTermPriceSurface MovingStart 0 (3, Months) yoyIndexEU CPILinear nominalEUR dc cal ModifiedFollowing
                    cStrikesEU fStrikesEU cfMaturitiesEU capPricesEU floorPricesEU Bilinear Linear
     ((rate1st, _):_) <- yoyCapFloorAtmYoySwapDateRates priceSurf
     rate <- yoyCapFloorAtmYoySwapRate priceSurf rate1st True

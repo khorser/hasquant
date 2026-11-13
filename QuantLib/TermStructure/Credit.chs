@@ -76,7 +76,7 @@ module QuantLib.TermStructure.Credit
   , conditionalSurvivalProbability
   , impliedQuote
   , impliedQuoteOn
-  , defaultCurveNodes
+  , HasNodes(..)
   ) where
 #include "qlTypesC2HS.h"
 #include "qlEnumC2HS.h"
@@ -88,7 +88,7 @@ import QuantLib.Internal
 import QuantLib.Internal.Type
 {#import QuantLib.Time.Schedule#}(DateGenerationRule, Frequency)
 import QuantLib.Internal.Common
-import QuantLib.TermStructure (Reference(..), TermPoint(..), TermInterval(..), setExtrapolation)
+import QuantLib.TermStructure (Reference(..), TermPoint(..), TermInterval(..), setExtrapolation, HasNodes(..))
 import Data.List.NonEmpty(NonEmpty, toList)
 
 {#enum ProbabilityTrait{} deriving(Show, Eq, Read)#}
@@ -368,15 +368,5 @@ piecewiseDefaultCurve reference h dc q t i b ex = do
         hs = toList h
 {#fun qlPiecewiseDefaultCurve as piecewiseDefaultCurve_{withDay*`Day',withDefaultProbabilityHelperArray*`[DefaultProbabilityHelper]'&,withDayCounter*`DayCounter',withQuoteArray*`[GenQuote q]'&,withDayArray*`[Day]'&,`ProbabilityTrait',`Int',`Int',`Int',`Double',`Double',`Double',fromIntegral`Word',`Double',`Double',`Bool',fromIntegral`Word',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`PiecewiseDefaultCurve'peekPiecewiseDefaultCurve*#}
 {#fun qlPiecewiseDefaultCurve1 as piecewiseDefaultCurve1_{fromIntegral`Word',withCalendar*`Calendar',withDefaultProbabilityHelperArray*`[DefaultProbabilityHelper]'&,withDayCounter*`DayCounter',withQuoteArray*`[GenQuote q]'&,withDayArray*`[Day]'&,`ProbabilityTrait',`Int',`Int',`Int',`Double',`Double',`Double',fromIntegral`Word',`Double',`Double',`Bool',fromIntegral`Word',fromIntegral`Word',preErrorCheck-`String'errorCheck*-}->`PiecewiseDefaultCurve'peekPiecewiseDefaultCurve*#}
-
--- |A bootstrapped default-probability curve's nodes, bootstrapping it if it has not been: its
--- reference date first, then each helper's pillar, each with the value its trait interpolates (a
--- hazard rate, survival probability or default density). The interpolated curve of that trait on
--- these nodes reproduces the curve only with the original day counter, full interpolation
--- configuration and jump dates/quotes. Nodes exclude separately applied jump factors.
-defaultCurveNodes :: PiecewiseDefaultCurve -> IO [(Day, Double)]
-defaultCurveNodes c = zip <$> qlPiecewiseDefaultCurveDates c <*> qlPiecewiseDefaultCurveData c
-{#fun qlPiecewiseDefaultCurveDates{withPiecewiseDefaultCurve*`PiecewiseDefaultCurve',preIntArray-`[Day]'&peekDayArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
-{#fun qlPiecewiseDefaultCurveData{withPiecewiseDefaultCurve*`PiecewiseDefaultCurve',preDoubleArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

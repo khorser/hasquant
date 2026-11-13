@@ -38,10 +38,9 @@ cashSpotDroppingInputs = do
   pure (q, rdQ)
 
 main :: IO ()
-main = do
+main = keepingSettingsGc $ do
   setEvaluationDate (Just evalDate)
   (q, rdQ) <- cashSpotDroppingInputs
-  collectGarbage
   collectGarbage
   v0 <- value q
   checkClose "cash spot reads its dropped inputs" (expected 1.25 0.05 0.01) v0 1.0e-14

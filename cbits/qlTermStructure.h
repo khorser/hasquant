@@ -356,12 +356,10 @@ extern "C" {
   QlPiecewiseDefaultCurve* qlPiecewiseDefaultCurve1(unsigned settlementDays, Calendar *calendar, unsigned instrumentsLen, QlDefaultProbabilityHelper** instruments, DayCounter* dayCounter, unsigned jumpsLen, QlQuote** jumps, unsigned jDatesLen, int* jumpDates, int trait, int interpolator, int approximator, int approximatorArg, double accuracy, double minValue, double maxValue, unsigned maxAttempts, double maxFactor, double minFactor, int dontThrow, unsigned dontThrowSteps, unsigned maxEvaluations, QlError **e);
   void qlFreePiecewiseDefaultCurve(QlPiecewiseDefaultCurve *o);
   QlDefaultProbabilityTermStructure* qlPiecewiseDefaultCurveAsDefaultProbabilityTermStructure(QlPiecewiseDefaultCurve *o);
-  void qlPiecewiseDefaultCurveDates(QlPiecewiseDefaultCurve *o, unsigned *count, int **days, QlError **e);
-  void qlPiecewiseDefaultCurveData(QlPiecewiseDefaultCurve *o, unsigned *count, double **values, QlError **e);
+  void qlPiecewiseDefaultCurveNodes(QlPiecewiseDefaultCurve *o, unsigned *daysLen, int **days, unsigned *valuesLen, double **values, QlError **e);
   void qlFreePiecewiseYieldCurve(QlPiecewiseYieldCurve *o);
   QlYieldTermStructure *qlPiecewiseYieldCurveAsYieldTermStructure(QlPiecewiseYieldCurve *o);
-  void qlPiecewiseYieldCurveDates(QlPiecewiseYieldCurve *o, unsigned *count, int **days, QlError **e);
-  void qlPiecewiseYieldCurveData(QlPiecewiseYieldCurve *o, unsigned *count, double **values, QlError **e);
+  void qlPiecewiseYieldCurveNodes(QlPiecewiseYieldCurve *o, unsigned *daysLen, int **days, unsigned *valuesLen, double **values, QlError **e);
 
   double qlDefaultProbabilityTermStructureDefaultDensity1(QlDefaultProbabilityTermStructure* o, double t, int extrapolate, QlError **e);
   double qlDefaultProbabilityTermStructureDefaultDensity(QlDefaultProbabilityTermStructure* o, int d, int extrapolate, QlError **e);
@@ -441,12 +439,10 @@ extern "C" {
       int seasKind, int seasBaseDate, int seasFreq, unsigned seasLen, double *seasFactors, int interpolator, int approximator, int approximatorArg, QlError **e);
   void qlFreePiecewiseZeroInflationCurve(QlPiecewiseZeroInflationCurve *o);
   QlZeroInflationTermStructure* qlPiecewiseZeroInflationCurveAsZeroInflationTermStructure(QlPiecewiseZeroInflationCurve *o);
-  void qlPiecewiseZeroInflationCurveDates(QlPiecewiseZeroInflationCurve *o, unsigned *count, int **days, QlError **e);
-  void qlPiecewiseZeroInflationCurveRates(QlPiecewiseZeroInflationCurve *o, unsigned *count, double **rates, QlError **e);
+  void qlPiecewiseZeroInflationCurveNodes(QlPiecewiseZeroInflationCurve *o, unsigned *daysLen, int **days, unsigned *valuesLen, double **values, QlError **e);
   void qlFreePiecewiseYoYInflationCurve(QlPiecewiseYoYInflationCurve *o);
   QlYoYInflationTermStructure* qlPiecewiseYoYInflationCurveAsYoYInflationTermStructure(QlPiecewiseYoYInflationCurve *o);
-  void qlPiecewiseYoYInflationCurveDates(QlPiecewiseYoYInflationCurve *o, unsigned *count, int **days, QlError **e);
-  void qlPiecewiseYoYInflationCurveRates(QlPiecewiseYoYInflationCurve *o, unsigned *count, double **rates, QlError **e);
+  void qlPiecewiseYoYInflationCurveNodes(QlPiecewiseYoYInflationCurve *o, unsigned *daysLen, int **days, unsigned *valuesLen, double **values, QlError **e);
   QlYoYInflationTermStructure* qlInterpolatedYoYInflationCurve(int referenceDate, unsigned datesLen, int *dates, double *rates, int frequency, DayCounter* dayCounter,
       int seasKind, int seasBaseDate, int seasFreq, unsigned seasLen, double *seasFactors, int interpolator, int approximator, int approximatorArg, QlError **e);
   QlZeroInflationTermStructure* qlInterpolatedZeroInflationCurve(int referenceDate, unsigned datesLen, int *dates, double *rates, int frequency, DayCounter* dayCounter,
@@ -495,7 +491,7 @@ extern "C" {
 
   QlMultiCurve *qlMultiCurve(double accuracy, QlError **e);
   void qlFreeMultiCurve(QlMultiCurve *o);
-  QlYieldTermStructure *qlMultiCurveAddBootstrappedCurve(QlMultiCurve *mc, QlRelinkableYieldTermStructure *internalHandle, QlYieldTermStructure *curve, QlError **e);
+  QlYieldTermStructure *qlMultiCurveAddBootstrappedCurve(QlMultiCurve *mc, QlRelinkableYieldTermStructure *internalHandle, QlPiecewiseYieldCurve *curve, QlError **e);
   QlYieldTermStructure *qlMultiCurveAddNonBootstrappedCurve(QlMultiCurve *mc, QlRelinkableYieldTermStructure *internalHandle, QlYieldTermStructure *curve, QlError **e);
 
   QlRateHelper *qlIborIborBasisSwapRateHelper(QlQuote *basis, int tenorLen, int tenorUnit, unsigned settlementDays, Calendar *calendar, int convention, int endOfMonth, QlIborIndex *baseIndex, QlIborIndex *otherIndex, QlYieldTermStructure *discountHandle, int bootstrapBaseCurve, int useIndexedCoupons, int rule, int paymentLag, QlStubIndexSelection* baseStub, QlStubIndexSelection* otherStub, QlError **e);
@@ -756,7 +752,7 @@ extern "C" {
       double strike, int obsLagLen, int obsLagUnit, int extrapolate, QlError **e);
 
   /* YoYCapFloorTermPriceSurface */
-  QlYoYCapFloorTermPriceSurface *qlYoYCapFloorTermPriceSurface(int startDate, unsigned fixingDays,
+  QlYoYCapFloorTermPriceSurface *qlYoYCapFloorTermPriceSurface(int booked, unsigned fixingDays,
       int yyLagLen, int yyLagUnit, QlYoYInflationIndex *yii, int interpolationType,
       QlYieldTermStructure *nominal, DayCounter *dc, Calendar *cal, int bdc,
       unsigned cStrikesLen, double *cStrikes, unsigned fStrikesLen, double *fStrikes,

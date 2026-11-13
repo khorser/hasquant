@@ -1697,10 +1697,10 @@ instance HasFixingDates OvernightIndexedCoupon where
   fixingDates = overnightIndexedCouponFixingDatesRaw
 
 {#fun qlOvernightIndexedCouponAccrualFractions as overnightIndexedCouponAccrualFractionsRaw{withOvernightIndexedCoupon*`OvernightIndexedCoupon' -- ^Coupon whose native sub-period weights are read.
-  ,preDoubleArray-`RealVector'&peekRealVector*,preErrorCheck-`String'errorCheck*-}->`()'#}
+  ,preDoubleArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 {#fun qlMultipleResetsCouponAccrualFractions as multipleResetsCouponAccrualFractionsRaw{withMultipleResetsCoupon*`MultipleResetsCoupon' -- ^Coupon whose native sub-period weights are read.
-  ,preDoubleArray-`RealVector'&peekRealVector*,preErrorCheck-`String'errorCheck*-}->`()'#}
+  ,preDoubleArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Coupon types that expose their component index fixings.
 class HasIndexFixings coupon where
@@ -1717,7 +1717,7 @@ instance HasIndexFixings OvernightIndexedCoupon where
 -- conventions; a telescopic coupon exposes only its retained sub-periods.
 class HasFixingAccrualFractions coupon where
   fixingAccrualFractions :: coupon -- ^Coupon whose computed accrual sub-periods are read.
-    -> IO RealVector
+    -> IO [Double]
 
 instance HasFixingAccrualFractions OvernightIndexedCoupon where
   fixingAccrualFractions = overnightIndexedCouponAccrualFractionsRaw

@@ -170,6 +170,22 @@ namespace {
     }
   }
 
+  // Publish a bootstrapped curve's nodes as parallel arrays; reading them runs the bootstrap.
+  template <class CurveHandle>
+  void nodesOut(CurveHandle *o, unsigned *daysLen, int **days, unsigned *valuesLen, double **values, QlError **e) {
+    OutArrayResult<int> ds(daysLen, days);
+    OutArrayResult<double> vs(valuesLen, values);
+    try {
+      const auto nodes = (*arg(o))->nodesFn();
+      const auto n = (unsigned)nodes.size();
+      int *d = ds.allocate(n);
+      double *v = vs.allocate(n);
+      for (unsigned i = 0; i < n; ++i) {d[i] = nodes[i].first.serialNumber(); v[i] = nodes[i].second;}
+      ds.commit();
+      vs.commit();
+    } catch (std::exception& er) {qlSetError(e, er.what());}
+  }
+
   template <class Build>
   QlPiecewiseDefaultCurve* piecewiseDefaultCurveImpl(Build&& build, QlError **e) { QlCallScope callbackScope(e);
     try {
@@ -281,8 +297,10 @@ namespace hasquant {
         try { handle.linkTo({}, false); } catch (...) {}
       }
     }
+    // A bootstrapped member passes the contributor its leaf retained at construction.
     Handle<YieldTermStructure> add(RelinkableHandle<YieldTermStructure>& internal,
-                                   const Handle<YieldTermStructure>& original, bool bootstrap) {
+                                   const Handle<YieldTermStructure>& original, bool bootstrap,
+                                   const MultiCurveBootstrapContributor* contributor) {
       QL_REQUIRE(internal.empty(), "internal handle must be empty; was the curve added already?");
       auto member = original.currentLink();
       // A second registration would give the shared bootstrapper the same contributor twice.
@@ -291,12 +309,7 @@ namespace hasquant {
       // Retain attempted additions too: upstream can register a raw contributor before throwing.
       members_.push_back(member);
       internalHandles_.push_back(internal);
-      // Same cross-cast as upstream's addBootstrappedCurve: the contributor has no other accessor.
-      if (bootstrap) {
-        if (auto provider = ext::dynamic_pointer_cast<MultiCurveBootstrapProvider>(member))
-          if (const auto* contributor = provider->multiCurveBootstrapContributor())
-            contributors_.push_back(contributor);
-      }
+      if (bootstrap && contributor) contributors_.push_back(contributor);
       return bootstrap ? addBootstrappedCurve(internal, std::move(member))
                        : addNonBootstrappedCurve(internal, std::move(member));
     }
@@ -1593,49 +1606,15 @@ QlPiecewiseDefaultCurve* qlPiecewiseDefaultCurve1(unsigned settlementDays, Calen
 }
 void qlFreePiecewiseDefaultCurve(QlPiecewiseDefaultCurve *o) {del(o);}
 QlDefaultProbabilityTermStructure* qlPiecewiseDefaultCurveAsDefaultProbabilityTermStructure(QlPiecewiseDefaultCurve *o) {return ret(new QlDefaultProbabilityTermStructure((*arg(o))->curve));}
-// The nodes of a bootstrapped curve: reading them runs the bootstrap.
-void qlPiecewiseDefaultCurveDates(QlPiecewiseDefaultCurve *o, unsigned *count, int **days, QlError **e) { QlCallScope callbackScope(e);
-  *count = 0; *days = 0;
-  try {
-    const auto nodes = (*arg(o))->nodesFn();
-    int *ds = qlAllocateInts((unsigned)nodes.size());
-    for (size_t i = 0; i < nodes.size(); ++i) ds[i] = nodes[i].first.serialNumber();
-    *count = (unsigned)nodes.size(); *days = ds;
-  } catch (std::exception& er) {qlSetError(e, er.what());}
-}
-void qlPiecewiseDefaultCurveData(QlPiecewiseDefaultCurve *o, unsigned *count, double **values, QlError **e) { QlCallScope callbackScope(e);
-  *count = 0; *values = 0;
-  try {
-    const auto nodes = (*arg(o))->nodesFn();
-    double *vs = qlAllocateDoubles((unsigned)nodes.size());
-    for (size_t i = 0; i < nodes.size(); ++i) vs[i] = nodes[i].second;
-    *count = (unsigned)nodes.size(); *values = vs;
-  } catch (std::exception& er) {qlSetError(e, er.what());}
+void qlPiecewiseDefaultCurveNodes(QlPiecewiseDefaultCurve *o, unsigned *daysLen, int **days, unsigned *valuesLen, double **values, QlError **e) { QlCallScope callbackScope(e);
+  nodesOut(o, daysLen, days, valuesLen, values, e);
 }
 void qlFreePiecewiseYieldCurve(QlPiecewiseYieldCurve *o) {del(o);}
 QlYieldTermStructure *qlPiecewiseYieldCurveAsYieldTermStructure(QlPiecewiseYieldCurve *o) {
   return ret(new QlYieldTermStructure((*arg(o))->curve));
 }
-// The nodes of an iteratively bootstrapped yield curve: reading them runs the bootstrap.
-void qlPiecewiseYieldCurveDates(QlPiecewiseYieldCurve *o, unsigned *count, int **days, QlError **e) { QlCallScope callbackScope(e);
-  *count = 0; *days = 0;
-  try {
-    QL_REQUIRE((*arg(o))->nodesFn, "nodes require an iteratively bootstrapped yield curve");
-    const auto nodes = (*arg(o))->nodesFn();
-    int *ds = qlAllocateInts((unsigned)nodes.size());
-    for (size_t i = 0; i < nodes.size(); ++i) ds[i] = nodes[i].first.serialNumber();
-    *count = (unsigned)nodes.size(); *days = ds;
-  } catch (std::exception& er) {qlSetError(e, er.what());}
-}
-void qlPiecewiseYieldCurveData(QlPiecewiseYieldCurve *o, unsigned *count, double **values, QlError **e) { QlCallScope callbackScope(e);
-  *count = 0; *values = 0;
-  try {
-    QL_REQUIRE((*arg(o))->nodesFn, "nodes require an iteratively bootstrapped yield curve");
-    const auto nodes = (*arg(o))->nodesFn();
-    double *vs = qlAllocateDoubles((unsigned)nodes.size());
-    for (size_t i = 0; i < nodes.size(); ++i) vs[i] = nodes[i].second;
-    *count = (unsigned)nodes.size(); *values = vs;
-  } catch (std::exception& er) {qlSetError(e, er.what());}
+void qlPiecewiseYieldCurveNodes(QlPiecewiseYieldCurve *o, unsigned *daysLen, int **days, unsigned *valuesLen, double **values, QlError **e) { QlCallScope callbackScope(e);
+  nodesOut(o, daysLen, days, valuesLen, values, e);
 }
 double qlDefaultProbabilityTermStructureDefaultDensity1(QlDefaultProbabilityTermStructure* o, double t, int extrapolate, QlError **e) { QlCallScope callbackScope(e);
   try {return (*arg(o))->defaultDensity(t, extrapolate);
@@ -1871,46 +1850,15 @@ QlPiecewiseYoYInflationCurve* qlPiecewiseYoYInflationCurve(int referenceDate, in
         instr, qlSeasonality(seasKind, seasBaseDate, seasFreq, seasLen, seasFactors), interpolator, approximator, approximatorArg));
     return ret(new QlPiecewiseYoYInflationCurve(ts));
   } catch (std::exception& er) {return handleException<QlPiecewiseYoYInflationCurve*>(e, er);}}
-// The nodes of a bootstrapped curve: reading them runs the bootstrap.
 void qlFreePiecewiseZeroInflationCurve(QlPiecewiseZeroInflationCurve *o) {del(o);}
 QlZeroInflationTermStructure* qlPiecewiseZeroInflationCurveAsZeroInflationTermStructure(QlPiecewiseZeroInflationCurve *o) {return ret(new QlZeroInflationTermStructure((*arg(o))->curve));}
-void qlPiecewiseZeroInflationCurveDates(QlPiecewiseZeroInflationCurve *o, unsigned *count, int **days, QlError **e) { QlCallScope callbackScope(e);
-  *count = 0; *days = 0;
-  try {
-    const auto nodes = (*arg(o))->nodesFn();
-    int *ds = qlAllocateInts((unsigned)nodes.size());
-    for (size_t i = 0; i < nodes.size(); ++i) ds[i] = nodes[i].first.serialNumber();
-    *count = (unsigned)nodes.size(); *days = ds;
-  } catch (std::exception& er) {qlSetError(e, er.what());}
-}
-void qlPiecewiseZeroInflationCurveRates(QlPiecewiseZeroInflationCurve *o, unsigned *count, double **rates, QlError **e) { QlCallScope callbackScope(e);
-  *count = 0; *rates = 0;
-  try {
-    const auto nodes = (*arg(o))->nodesFn();
-    double *rs = qlAllocateDoubles((unsigned)nodes.size());
-    for (size_t i = 0; i < nodes.size(); ++i) rs[i] = nodes[i].second;
-    *count = (unsigned)nodes.size(); *rates = rs;
-  } catch (std::exception& er) {qlSetError(e, er.what());}
+void qlPiecewiseZeroInflationCurveNodes(QlPiecewiseZeroInflationCurve *o, unsigned *daysLen, int **days, unsigned *valuesLen, double **values, QlError **e) { QlCallScope callbackScope(e);
+  nodesOut(o, daysLen, days, valuesLen, values, e);
 }
 void qlFreePiecewiseYoYInflationCurve(QlPiecewiseYoYInflationCurve *o) {del(o);}
 QlYoYInflationTermStructure* qlPiecewiseYoYInflationCurveAsYoYInflationTermStructure(QlPiecewiseYoYInflationCurve *o) {return ret(new QlYoYInflationTermStructure((*arg(o))->curve));}
-void qlPiecewiseYoYInflationCurveDates(QlPiecewiseYoYInflationCurve *o, unsigned *count, int **days, QlError **e) { QlCallScope callbackScope(e);
-  *count = 0; *days = 0;
-  try {
-    const auto nodes = (*arg(o))->nodesFn();
-    int *ds = qlAllocateInts((unsigned)nodes.size());
-    for (size_t i = 0; i < nodes.size(); ++i) ds[i] = nodes[i].first.serialNumber();
-    *count = (unsigned)nodes.size(); *days = ds;
-  } catch (std::exception& er) {qlSetError(e, er.what());}
-}
-void qlPiecewiseYoYInflationCurveRates(QlPiecewiseYoYInflationCurve *o, unsigned *count, double **rates, QlError **e) { QlCallScope callbackScope(e);
-  *count = 0; *rates = 0;
-  try {
-    const auto nodes = (*arg(o))->nodesFn();
-    double *rs = qlAllocateDoubles((unsigned)nodes.size());
-    for (size_t i = 0; i < nodes.size(); ++i) rs[i] = nodes[i].second;
-    *count = (unsigned)nodes.size(); *rates = rs;
-  } catch (std::exception& er) {qlSetError(e, er.what());}
+void qlPiecewiseYoYInflationCurveNodes(QlPiecewiseYoYInflationCurve *o, unsigned *daysLen, int **days, unsigned *valuesLen, double **values, QlError **e) { QlCallScope callbackScope(e);
+  nodesOut(o, daysLen, days, valuesLen, values, e);
 }
 
 // Interpolated (dates, rates) inflation curves, unlike the piecewise bootstraps from swap helpers.
@@ -2039,8 +1987,7 @@ static QlPiecewiseYieldCurve *piecewiseYieldCurveGlobalBootstrapFixed(int date, 
         qlDateVector(dates, datesLen), trait, interpolator, accuracy,
         std::vector<double>(weights, weights + weightsLen), initialGuess ? *initialGuess : QlCallback()));
     if (extrapolate) ts->enableExtrapolation();
-    auto holder = allocShared(new PiecewiseYieldCurveHandle(ts));
-    return ret(new QlPiecewiseYieldCurve(holder));
+    return ret(new QlPiecewiseYieldCurve(ts));
   } catch (std::exception& er) {return handleException<QlPiecewiseYieldCurve *>(e, er);}}
 
 QlPiecewiseYieldCurve *qlPiecewiseYieldCurveGlobalBootstrapFixed1(int date, unsigned rateLen,
@@ -2116,8 +2063,7 @@ QlPiecewiseYieldCurve *qlPiecewiseYieldCurveLocalBootstrap1(unsigned settl, Cale
     auto ts = allocShared(qlPiecewiseYieldCurveLocalBootstrapAux1(settl, *arg(cal), qlVector(ratehelpers, rateLen), *arg(dayCount), qlHandleVector(quotes, quoteLen),
         qlDateVector(dates, datesLen), trait, localisation, forcePositive != 0, accuracy, quadraticity, monotonicity, convexForcePositive != 0));
     if (extrapolate) ts->enableExtrapolation();
-    auto holder = allocShared(new PiecewiseYieldCurveHandle(ts));
-    return ret(new QlPiecewiseYieldCurve(holder));
+    return ret(new QlPiecewiseYieldCurve(ts));
   } catch (std::exception& er) {return handleException<QlPiecewiseYieldCurve *>(e, er);}}
 
 QlPiecewiseYieldCurve *qlPiecewiseYieldCurveLocalBootstrapFixed(int date, unsigned rateLen,
@@ -2131,8 +2077,7 @@ QlPiecewiseYieldCurve *qlPiecewiseYieldCurveLocalBootstrapFixed(int date, unsign
         qlDateVector(dates, datesLen), trait, localisation, forcePositive != 0, accuracy,
         quadraticity, monotonicity, convexForcePositive != 0));
     if (extrapolate) ts->enableExtrapolation();
-    auto holder = allocShared(new PiecewiseYieldCurveHandle(ts));
-    return ret(new QlPiecewiseYieldCurve(holder));
+    return ret(new QlPiecewiseYieldCurve(ts));
   } catch (std::exception& er) {return handleException<QlPiecewiseYieldCurve *>(e, er);}}
 
 QlPiecewiseYieldCurve *qlPiecewiseYieldCurveGlobalBootstrap3(unsigned settl, Calendar *cal, unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen,
@@ -2142,8 +2087,7 @@ QlPiecewiseYieldCurve *qlPiecewiseYieldCurveGlobalBootstrap3(unsigned settl, Cal
     auto ts = allocShared(qlPiecewiseYieldCurveGlobalBootstrapFullAux(settl, *arg(cal), qlVector(ratehelpers, rateLen), *arg(dayCount), qlHandleVector(quotes, quoteLen),
         qlDateVector(dates, datesLen), qlVector(additionalRatehelpers, additionalRateLen), qlDateVector(additionalDates, additionalDatesLen), accuracy, std::vector<double>(weights, weights + weightsLen), initialGuess ? *initialGuess : QlCallback()));
     if (extrapolate) ts->enableExtrapolation();
-    auto holder = allocShared(new PiecewiseYieldCurveHandle(ts));
-    return ret(new QlPiecewiseYieldCurve(holder));
+    return ret(new QlPiecewiseYieldCurve(ts));
   } catch (std::exception& er) {return handleException<QlPiecewiseYieldCurve *>(e, er);}}
 
 QlPiecewiseYieldCurve *qlPiecewiseYieldCurveGlobalBootstrapFixed3(int date, unsigned rateLen,
@@ -2157,8 +2101,7 @@ QlPiecewiseYieldCurve *qlPiecewiseYieldCurveGlobalBootstrapFixed3(int date, unsi
         qlDateVector(dates, datesLen), qlVector(additionalRatehelpers, additionalRateLen),
         qlDateVector(additionalDates, additionalDatesLen), accuracy, std::vector<double>(weights, weights + weightsLen), initialGuess ? *initialGuess : QlCallback()));
     if (extrapolate) ts->enableExtrapolation();
-    auto holder = allocShared(new PiecewiseYieldCurveHandle(ts));
-    return ret(new QlPiecewiseYieldCurve(holder));
+    return ret(new QlPiecewiseYieldCurve(ts));
   } catch (std::exception& er) {return handleException<QlPiecewiseYieldCurve *>(e, er);}}
 
 
@@ -2169,11 +2112,11 @@ QlMultiCurve *qlMultiCurve(double accuracy, QlError **e) { QlCallScope callbackS
   } catch (std::exception& er) {return handleException<QlMultiCurve*>(e, er);}}
 void qlFreeMultiCurve(QlMultiCurve *o) {del(o);}
 
-QlYieldTermStructure *qlMultiCurveAddBootstrappedCurve(QlMultiCurve *mc, QlRelinkableYieldTermStructure *internalHandle, QlYieldTermStructure *curve, QlError **e) { QlCallScope callbackScope(e);
-  try {return ret(new QlYieldTermStructure((*arg(mc))->add(*arg(internalHandle), *arg(curve), true)));
+QlYieldTermStructure *qlMultiCurveAddBootstrappedCurve(QlMultiCurve *mc, QlRelinkableYieldTermStructure *internalHandle, QlPiecewiseYieldCurve *curve, QlError **e) { QlCallScope callbackScope(e);
+  try {return ret(new QlYieldTermStructure((*arg(mc))->add(*arg(internalHandle), (*arg(curve))->curve, true, (*arg(curve))->contributor)));
   } catch (std::exception& er) {return handleException<QlYieldTermStructure*>(e, er);}}
 QlYieldTermStructure *qlMultiCurveAddNonBootstrappedCurve(QlMultiCurve *mc, QlRelinkableYieldTermStructure *internalHandle, QlYieldTermStructure *curve, QlError **e) { QlCallScope callbackScope(e);
-  try {return ret(new QlYieldTermStructure((*arg(mc))->add(*arg(internalHandle), *arg(curve), false)));
+  try {return ret(new QlYieldTermStructure((*arg(mc))->add(*arg(internalHandle), *arg(curve), false, nullptr)));
   } catch (std::exception& er) {return handleException<QlYieldTermStructure*>(e, er);}}
 
 // ql/experimental/termstructures/basisswapratehelpers.hpp -- rate-helper constructors only
@@ -3014,7 +2957,7 @@ void qlFreeYoYCapFloorTermPriceSurface(QlYoYCapFloorTermPriceSurface *o) {del(o)
 QlTermStructure *qlYoYCapFloorTermPriceSurfaceAsTermStructure(QlYoYCapFloorTermPriceSurface *o) {
   return ret(new QlTermStructure(*arg(o)));}
 
-QlYoYCapFloorTermPriceSurface *qlYoYCapFloorTermPriceSurface(int startDate, unsigned fixingDays,
+QlYoYCapFloorTermPriceSurface *qlYoYCapFloorTermPriceSurface(int booked, unsigned fixingDays,
     int yyLagLen, int yyLagUnit, QlYoYInflationIndex *yii, int interpolationType,
     QlYieldTermStructure *nominal, DayCounter *dc, Calendar *cal, int bdc,
     unsigned cStrikesLen, double *cStrikes, unsigned fStrikesLen, double *fStrikes,
@@ -3031,9 +2974,7 @@ QlYoYCapFloorTermPriceSurface *qlYoYCapFloorTermPriceSurface(int startDate, unsi
     const std::vector<Period> cfMaturitiesVec = qlPeriodVector(cfMaturitiesNum, cfMaturitiesUnit, cfMaturitiesLen);
     const Matrix cPriceMat = qlMatrix(cPriceData, cPriceRows, cPriceCols);
     const Matrix fPriceMat = qlMatrix(fPriceData, fPriceRows, fPriceCols);
-    QL_REQUIRE(startDate == 0 || Date(startDate) == Settings::instance().evaluationDate(),
-               "fixed YoY price surface start must equal the construction evaluation date");
-    auto s = allocShared(qlYoYCapFloorTermPriceSurfaceAux(qlNullableDate(startDate), fixingDays, yyLag, yiiRef,
+    auto s = allocShared(qlYoYCapFloorTermPriceSurfaceAux(booked != 0, fixingDays, yyLag, yiiRef,
         (CPI::InterpolationType)interpolationType, nominalRef, *arg(dc), *arg(cal), (BusinessDayConvention)bdc,
         cStrikesVec, fStrikesVec, cfMaturitiesVec, cPriceMat, fPriceMat,
         interpolator2D, interpolator1D, approximator, approximatorArg));

@@ -1815,7 +1815,7 @@ data CCommodityCurve'
 -- >    PiecewiseDefaultCurve = GenDefaultProbabilityTermStructure ...
 -- >  ZeroInflationTermStructure = GenZeroInflationTermStructure z = GenTermStructure t
 -- >    PiecewiseZeroInflationCurve = GenZeroInflationTermStructure ...
--- >  YoYInflationTermStructure = GenYoYInflationTermStructure y = GenTermStructure t
+-- >  YoYInflationTermStructure = GenYoYInflationTermStructure yoy = GenTermStructure t
 -- >    PiecewiseYoYInflationCurve = GenYoYInflationTermStructure ...
 -- >  YoYCapFloorTermPriceSurface
 -- >  CPICapFloorTermPriceSurface
@@ -2127,7 +2127,7 @@ type CPiecewiseZeroInflationCurve = ForeignPtr CPiecewiseZeroInflationCurve'
 -- hierarchy under t'GenTermStructure'.
 type PiecewiseZeroInflationCurve = GenZeroInflationTermStructure CPiecewiseZeroInflationCurve
 -- |A 'YoYInflationTermStructure' or one of its leaves; see the hierarchy under t'GenTermStructure'.
-type GenYoYInflationTermStructure y = GenTermStructure (AnyOf CYoYInflationTermStructure' y)
+type GenYoYInflationTermStructure yoy = GenTermStructure (AnyOf CYoYInflationTermStructure' yoy)
 type CYoYInflationTermStructure = ForeignPtr CYoYInflationTermStructure'
 -- |A 'TermStructure'; see the hierarchy under t'GenTermStructure'.
 type YoYInflationTermStructure = GenYoYInflationTermStructure CYoYInflationTermStructure
@@ -2519,15 +2519,15 @@ peekPiecewiseZeroInflationCurve :: Ptr CPiecewiseZeroInflationCurve' -> IO Piece
 peekPiecewiseZeroInflationCurve = newGenForeignPtr >=> newGenZeroInflationTermStructure
 withPiecewiseZeroInflationCurve :: PiecewiseZeroInflationCurve -> (Ptr CPiecewiseZeroInflationCurve' -> IO b) -> IO b
 withPiecewiseZeroInflationCurve = withForeignPtr . ptr . peel . getTermStructure
-asYoYInflationTermStructure :: GenYoYInflationTermStructure y -> IO YoYInflationTermStructure
+asYoYInflationTermStructure :: GenYoYInflationTermStructure yoy -> IO YoYInflationTermStructure
 asYoYInflationTermStructure = transferGenForeignPtr newGenYoYInflationTermStructure . peel . getTermStructure
 peekYoYInflationTermStructure :: Ptr CYoYInflationTermStructure' -> IO YoYInflationTermStructure
 peekYoYInflationTermStructure = newCastForeignPtr >=> newGenYoYInflationTermStructure
-withYoYInflationTermStructure :: GenYoYInflationTermStructure y -> (Ptr CYoYInflationTermStructure' -> IO b) -> IO b
+withYoYInflationTermStructure :: GenYoYInflationTermStructure yoy -> (Ptr CYoYInflationTermStructure' -> IO b) -> IO b
 withYoYInflationTermStructure = withGenForeignPtr . peel . getTermStructure
-withMaybeYoYInflationTermStructure :: Maybe (GenYoYInflationTermStructure y) -> (Ptr CYoYInflationTermStructure' -> IO b) -> IO b
+withMaybeYoYInflationTermStructure :: Maybe (GenYoYInflationTermStructure yoy) -> (Ptr CYoYInflationTermStructure' -> IO b) -> IO b
 withMaybeYoYInflationTermStructure x f = maybe (f nullPtr) (`withYoYInflationTermStructure` f) x
-newGenYoYInflationTermStructure :: GenForeignPtr y CYoYInflationTermStructure' -> IO (GenYoYInflationTermStructure y)
+newGenYoYInflationTermStructure :: GenForeignPtr yoy CYoYInflationTermStructure' -> IO (GenYoYInflationTermStructure yoy)
 newGenYoYInflationTermStructure = pure . GenTermStructure . newAnyOf
 peekPiecewiseYoYInflationCurve :: Ptr CPiecewiseYoYInflationCurve' -> IO PiecewiseYoYInflationCurve
 peekPiecewiseYoYInflationCurve = newGenForeignPtr >=> newGenYoYInflationTermStructure

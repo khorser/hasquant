@@ -466,6 +466,7 @@ Mnemonic table:
 | | | GenHestonProcess | `hp` | GenFixedVsFloatingSwap | `fvf` |
 | | | GenBlackCalibrationHelper | `bch` | | |
 | | | GenCapFloorTermVolatilityStructure | `c` | | |
+| GenDefaultProbabilityTermStructure | `d` | GenZeroInflationTermStructure | `z` | GenYoYInflationTermStructure | `yoy` |
 
 Applies only to the actual type-variable occurrence (inside a backtick
 `` `GenQuote a' `` annotation or an explicit Haskell signature), never to a
@@ -917,10 +918,11 @@ Exercise dependent instruments after `collectGarbage` and under a small RTS nurs
 
 ## Booked YoY price grids
 
-`yoyCapFloorTermPriceSurface (Just evaluationDate)` pins its reference and uses native
+`yoyCapFloorTermPriceSurface BookedAtEvaluationDate` pins its reference and uses native
 fixed-start ATM swap helpers. Preserve the moving helper's native pillar explicitly:
 QuantLib's fixed-start constructor can otherwise choose an interpolated pillar from the
-start date. `Nothing` keeps the upstream moving behavior. A retained moving helper can
+start date. `MovingStart` keeps the upstream moving behavior. The start is a two-case ADT,
+not a date: the evaluation date is the only start the booked form can honour. A retained moving helper can
 throw during Settings restoration after its first maturity even when no valuation is
 requested; GC is not a substitute for explicit booked-date semantics.
 
@@ -952,6 +954,12 @@ with the explicit quadrature factor rather than widening a pricing tolerance wit
 
 Retain concrete node access at construction in a leaf handle with a native `nodes()` closure.
 Never recover template arguments with runtime downcasts or require callers to repeat them.
+Every maker of a leaf supplies the closure (`retainNodes` in `qlTermStructureAux.cpp`), including
+the global and local bootstraps: a handle without one turns a typed accessor into a runtime refusal.
+The four leaves share `HasNodes(bootstrappedNodes)` in `QuantLib.TermStructure` and one C template,
+`nodesOut`, which stages both out-arrays. A bare `nodes` method would shadow dozens of local binders.
+The yield leaf also retains its `MultiCurveBootstrapContributor`, so `addBootstrappedCurve` takes
+the leaf and needs no cross-cast. Retain any other concrete-type capability the same way.
 Yield leaves retain a shared `Handle<YieldTermStructure>`; upcasts copy that handle.
 Nodes omit separately applied jump factors: reconstruction needs the original jumps as well
 as the day counter and full interpolation configuration.

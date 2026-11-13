@@ -78,7 +78,6 @@ module QuantLib.TermStructure.Yield
   , sofrFutureRateHelper
     -- ** Bootstrapped and interpolated curves
   , piecewiseYieldCurve
-  , piecewiseYieldCurveNodes
   , piecewiseSpreadYieldCurve
   , defaultIterativeBootstrapOpts
   , interpolatedZeroCurve
@@ -105,6 +104,7 @@ module QuantLib.TermStructure.Yield
 
     -- * Inspectors
   , HasHelperUnderlying(..)
+  , HasNodes(..)
   , rateHelperFixingDependencies
   , forwardRate
   , forwardRateBetweenTimes
@@ -129,7 +129,7 @@ import Language.Haskell.TH(mkName)
 import Language.Haskell.TH.Lib(varT)
 import QuantLib.Math(EndCriteriaType(..))
 import QuantLib.Quote hiding(linkTo)
-import QuantLib.TermStructure (Reference(..), TermPoint(..), RatePoint(..), setExtrapolation, HasHelperUnderlying(..))
+import QuantLib.TermStructure (Reference(..), TermPoint(..), RatePoint(..), setExtrapolation, HasHelperUnderlying(..), HasNodes(..))
 import Data.Maybe(fromMaybe)
 import Data.List.NonEmpty(NonEmpty, toList)
 import Foreign.Ptr(Ptr, nullPtr, castPtr)
@@ -1101,19 +1101,6 @@ fromBootstrapTrait LForwardRate = ForwardRate
 fromBootstrapTrait LZeroYield = ZeroYield
 fromBootstrapTrait LSimpleZeroYield = SimpleZeroYield
 
--- |Native nodes of an iteratively bootstrapped yield curve: reference date first,
--- followed by helper pillars and the values interpolated by the construction trait.
--- Reading them runs the bootstrap; ordinary yield curves with other bootstrap choices are refused.
--- For 'piecewiseSpreadYieldCurve', both supported bootstrappers retain nodes: dimensionless
--- multiplicative discount-factor spreads, reconstructed with 'interpolatedSpreadDiscountCurve'
--- over the same base and full interpolation configuration.
--- Reconstruct ordinary yield nodes with the original day counter, full interpolation configuration and jumps.
--- Nodes exclude the separately applied jump factors.
-piecewiseYieldCurveNodes :: PiecewiseYieldCurve -> IO [(Day, Double)]
-piecewiseYieldCurveNodes c = zip <$> qlPiecewiseYieldCurveDates c <*> qlPiecewiseYieldCurveData c
-{#fun qlPiecewiseYieldCurveDates{withPiecewiseYieldCurve*`PiecewiseYieldCurve',preIntArray-`[Day]'&peekDayArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
-{#fun qlPiecewiseYieldCurveData{withPiecewiseYieldCurve*`PiecewiseYieldCurve',preDoubleArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
-
 -- |Bootstrapper for 'piecewiseSpreadYieldCurve', whose nodes are always discount-factor spreads.
 -- @LogLinear@ interpolation gives piecewise-constant forward spreads, upstream's canonical choice.
 data SpreadBootstrap
@@ -1159,8 +1146,8 @@ piecewiseYieldCurve reference r dc qd bootstrap ex = case (reference, bootstrap)
 
 -- |Bootstraps multiplicative discount-factor spreads over 'baseCurve' so that each instrument
 -- reprices on the combined curve. Reference date, calendar and day counter come from the linked
--- base curve; past the last node the forward spread stays flat. 'piecewiseYieldCurveNodes'
--- retains the calibrated spread geometry for both bootstrap choices. Upcast explicitly with
+-- base curve; past the last node the forward spread stays flat. 'bootstrappedNodes'
+-- reads the calibrated spread geometry for both bootstrap choices. Upcast explicitly with
 -- 'asYieldTermStructure' when a concrete parent type is required.
 piecewiseSpreadYieldCurve :: GenYieldTermStructure y -- ^baseCurve
   -> NonEmpty (GenRateHelper rh) -- ^instruments
@@ -1321,11 +1308,11 @@ fittingMethodErrorCode = fmap toEnum . fittingMethodErrorCodeRaw
 {#fun qlMultiCurve as multiCurve{`Double' -- ^accuracy
   ,preErrorCheck-`String'errorCheck*-}->`MultiCurve'peekMultiCurve*#}
 
--- |Add a curve built with a bootstrapper (e.g. 'piecewiseYieldCurve') to the
--- cycle. See 'multiCurve' for the protocol.
+-- |Add a curve built by 'piecewiseYieldCurve' to the cycle; QuantLib accepts only its global
+-- bootstrappers here. See 'multiCurve' for the protocol.
 {#fun qlMultiCurveAddBootstrappedCurve as addBootstrappedCurve{withMultiCurve*`MultiCurve'
   ,withRelinkableYieldTermStructure*`RelinkableYieldTermStructure' -- ^internalHandle
-  ,withYieldTermStructure*`GenYieldTermStructure y' -- ^curve
+  ,withPiecewiseYieldCurve*`PiecewiseYieldCurve' -- ^curve
   ,preErrorCheck-`String'errorCheck*-}->`YieldTermStructure'peekYieldTermStructure*#}
 
 -- |Add a curve that isn't built with a bootstrapper (e.g. a spreaded curve) to the cycle. See

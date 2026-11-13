@@ -73,6 +73,15 @@ Ret dispatchInterpolation(int interpolator, int approximator, int approximatorAr
 // Args is the entry-point-specific prefix (a Date, or settlementDays + Calendar) followed by
 // instruments/dayCounter/jumps/jumpDates; every PiecewiseYieldCurve constructor ends with the
 // interpolator and the bootstrapper, so those two go last in the lambda below.
+// Keep the concrete curve's nodes() and MultiCurve contributor reachable behind the erased handle.
+template <class CurveType>
+PiecewiseYieldCurveHandle *retainNodes(const shared_ptr<CurveType>& curve) {
+  const QuantLib::MultiCurveBootstrapContributor* contributor = nullptr;
+  if constexpr (std::is_base_of_v<QuantLib::MultiCurveBootstrapProvider, CurveType>)
+    contributor = curve->multiCurveBootstrapContributor();
+  return new PiecewiseYieldCurveHandle(curve, [curve]{ return curve->nodes(); }, contributor);
+}
+
 template <class... Args>
 PiecewiseYieldCurveHandle *dispatchTrait(int trait, int interpolator, int approximator, int approximatorArg,
     const QlIterativeBootstrapOpts& b, Args&&... args) {
@@ -81,8 +90,7 @@ PiecewiseYieldCurveHandle *dispatchTrait(int trait, int interpolator, int approx
     return dispatchInterpolation<PiecewiseYieldCurveHandle*>(interpolator, approximator, approximatorArg,
 [&](auto i) {
           using CurveType = PiecewiseYieldCurve<Trait, decltype(i)>;
-          auto curve = ext::make_shared<CurveType>(std::forward<Args>(args)..., i, makeIterativeBootstrap<CurveType>(b));
-          return new PiecewiseYieldCurveHandle(curve, [curve]{ return curve->nodes(); });
+          return retainNodes(ext::make_shared<CurveType>(std::forward<Args>(args)..., i, makeIterativeBootstrap<CurveType>(b)));
         });
   };
   switch (trait) {
@@ -137,11 +145,12 @@ public:
 // for LocalBootstrap below) so each trait/interpolator combination is one dispatch arm instead of
 // a hand-duplicated block.
 template <class Trait, class Interp, class... Args>
-YieldTermStructure *makeGlobalBootstrapCurve(const Interp& interp, double accuracy,
+PiecewiseYieldCurveHandle *makeGlobalBootstrapCurve(const Interp& interp, double accuracy,
     const std::vector<double>& instrumentWeights, [[maybe_unused]] const QlCallback& initialGuess, Args&&... args) {
   using CurveType = PiecewiseYieldCurve<Trait, Interp, QuantLib::GlobalBootstrap>;
-  return new CurveType(std::forward<Args>(args)..., interp,
-      typename CurveType::bootstrap_type(accuracy, nullptr, nullptr, instrumentWeights QL144_ARGS(bootstrapInitialGuess(initialGuess))));
+  static_assert(std::is_base_of_v<QuantLib::MultiCurveBootstrapProvider, CurveType>, "MultiCurve members must retain their contributor");
+  return retainNodes(ext::make_shared<CurveType>(std::forward<Args>(args)..., interp,
+      typename CurveType::bootstrap_type(accuracy, nullptr, nullptr, instrumentWeights QL144_ARGS(bootstrapInitialGuess(initialGuess)))));
 }
 
 // GlobalBootstrap is wired up only for the combinations concrete use cases have asked for --
@@ -151,7 +160,7 @@ YieldTermStructure *makeGlobalBootstrapCurve(const Interp& interp, double accura
 // not the full trait x interpolator matrix; CLAUDE.md is explicit about not building dispatch for
 // hypothetical future combinations.
 template <class... Args>
-YieldTermStructure *dispatchTraitGlobalBootstrap(int trait, int interpolator, double accuracy,
+PiecewiseYieldCurveHandle *dispatchTraitGlobalBootstrap(int trait, int interpolator, double accuracy,
     const std::vector<double>& instrumentWeights, [[maybe_unused]] const QlCallback& initialGuess, Args&&... args) {
   switch (trait) {
   case hasquant::Discount:
@@ -194,7 +203,7 @@ YieldTermStructure *dispatchTraitGlobalBootstrap(int trait, int interpolator, do
 // instrumentWeights constructor and this functor constructor are different GlobalBootstrap
 // overloads entirely, not more parameters on the same one.
 template <class... Args>
-YieldTermStructure *piecewiseYieldCurveGlobalBootstrapFull(
+PiecewiseYieldCurveHandle *piecewiseYieldCurveGlobalBootstrapFull(
     const std::vector<shared_ptr<RateHelper> >& instr,
     const DayCounter& dayCount,
     const std::vector<Handle<Quote> >& jumps, const std::vector<Date>& jumpDates,
@@ -212,15 +221,16 @@ YieldTermStructure *piecewiseYieldCurveGlobalBootstrapFull(
       " additionalHelpers and " << additionalDates.size() << " additionalDates, expected " <<
       (additionalHelpers.size() - 2) << " additionalDates)");
   using CurveType = PiecewiseYieldCurve<QuantLib::SimpleZeroYield, QuantLib::Linear, QuantLib::GlobalBootstrap>;
+  static_assert(std::is_base_of_v<QuantLib::MultiCurveBootstrapProvider, CurveType>, "MultiCurve members must retain their contributor");
   // CurveType::bootstrap_type(...) naming order -- see the comment on the plain-constructor
   // GlobalBootstrap branch in qlPiecewiseYieldCurveAux1, same [temp.inst] reason.
-  return new CurveType(std::forward<Args>(reference)..., instr, dayCount, jumps, jumpDates,
+  return retainNodes(ext::make_shared<CurveType>(std::forward<Args>(reference)..., instr, dayCount, jumps, jumpDates,
       QuantLib::Linear(),
       CurveType::bootstrap_type(additionalHelpers, AdditionalDates(additionalDates),
-          AdditionalErrors(additionalHelpers), accuracy, nullptr, nullptr, nullptr, instrumentWeights QL144_ARGS(bootstrapInitialGuess(initialGuess))));
+          AdditionalErrors(additionalHelpers), accuracy, nullptr, nullptr, nullptr, instrumentWeights QL144_ARGS(bootstrapInitialGuess(initialGuess)))));
 }
 
-YieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrapFullAux(const Date& date,
+PiecewiseYieldCurveHandle *qlPiecewiseYieldCurveGlobalBootstrapFullAux(const Date& date,
     const std::vector<shared_ptr<RateHelper> >& instr, const DayCounter& dayCount,
     const std::vector<Handle<Quote> >& jumps, const std::vector<Date>& jumpDates,
     const std::vector<shared_ptr<RateHelper> >& additionalHelpers,
@@ -229,7 +239,7 @@ YieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrapFullAux(const Date& date
       additionalHelpers, additionalDates, accuracy, instrumentWeights, initialGuess, date);
 }
 
-YieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrapFullAux(unsigned settl,
+PiecewiseYieldCurveHandle *qlPiecewiseYieldCurveGlobalBootstrapFullAux(unsigned settl,
     const Calendar &cal, const std::vector<shared_ptr<RateHelper> >& instr,
     const DayCounter& dayCount, const std::vector<Handle<Quote> >& jumps,
     const std::vector<Date>& jumpDates,
@@ -248,17 +258,17 @@ YieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrapFullAux(unsigned settl,
 // Discount is excluded: its guesses produce invalid discount factors with
 // ConvexMonotone/LocalBootstrap. The supported traits bootstrap ordinary deposit rates.
 template <class Trait, class... Args>
-YieldTermStructure *makeCurveLocalBootstrap(const ConvexMonotone& interp, Size localisation,
+PiecewiseYieldCurveHandle *makeCurveLocalBootstrap(const ConvexMonotone& interp, Size localisation,
     bool forcePositive, double accuracy, Args&&... args) {
   using CurveType = PiecewiseYieldCurve<Trait, QuantLib::ConvexMonotone, QuantLib::LocalBootstrap>;
   // CurveType::bootstrap_type(...) naming order -- see the comment on the GlobalBootstrap branch
   // in qlPiecewiseYieldCurveAux1, same [temp.inst] reasoning applied defensively here too.
-  return new CurveType(std::forward<Args>(args)..., interp,
-      typename CurveType::bootstrap_type(localisation, forcePositive, accuracy));
+  return retainNodes(ext::make_shared<CurveType>(std::forward<Args>(args)..., interp,
+      typename CurveType::bootstrap_type(localisation, forcePositive, accuracy)));
 }
 
 template <class... Args>
-YieldTermStructure *dispatchTraitLocalBootstrap(int trait, const ConvexMonotone& interp,
+PiecewiseYieldCurveHandle *dispatchTraitLocalBootstrap(int trait, const ConvexMonotone& interp,
     Size localisation, bool forcePositive, double accuracy, Args&&... args) {
   switch (trait) {
   case hasquant::ForwardRate:
@@ -276,7 +286,7 @@ YieldTermStructure *dispatchTraitLocalBootstrap(int trait, const ConvexMonotone&
   }
 }
 
-YieldTermStructure *qlPiecewiseYieldCurveLocalBootstrapAux1(unsigned settl, const Calendar &cal,
+PiecewiseYieldCurveHandle *qlPiecewiseYieldCurveLocalBootstrapAux1(unsigned settl, const Calendar &cal,
     const std::vector<shared_ptr<RateHelper> >& instr,
     const DayCounter& dayCount,
     const std::vector<Handle<Quote> >& jumps, const std::vector<Date>& jumpDates,
@@ -286,7 +296,7 @@ YieldTermStructure *qlPiecewiseYieldCurveLocalBootstrapAux1(unsigned settl, cons
       localisation, forcePositive, accuracy, settl, cal, instr, dayCount, jumps, jumpDates);
 }
 
-YieldTermStructure *qlPiecewiseYieldCurveLocalBootstrapAux(const Date& date,
+PiecewiseYieldCurveHandle *qlPiecewiseYieldCurveLocalBootstrapAux(const Date& date,
     const std::vector<shared_ptr<RateHelper> >& instr,
     const DayCounter& dayCount,
     const std::vector<Handle<Quote> >& jumps, const std::vector<Date>& jumpDates,
@@ -314,17 +324,15 @@ PiecewiseYieldCurveHandle *qlPiecewiseYieldCurveAux1(unsigned settl, const Calen
     int trait, int interpolator, int approximator, int approximatorArg,
     int bootstrap, double accuracy, const std::vector<double>& instrumentWeights,
     const QlIterativeBootstrapOpts& bootstrapOpts, [[maybe_unused]] const QlCallback& initialGuess) {
-  if (bootstrap == 1) {
-    auto curve = ext::shared_ptr<YieldTermStructure>(dispatchTraitGlobalBootstrap(trait, interpolator, accuracy, instrumentWeights, initialGuess,
-        settl, cal, instr, dayCount, jumps, jumpDates));
-    return new PiecewiseYieldCurveHandle(curve);
-  }
+  if (bootstrap == 1)
+    return dispatchTraitGlobalBootstrap(trait, interpolator, accuracy, instrumentWeights, initialGuess,
+        settl, cal, instr, dayCount, jumps, jumpDates);
   return dispatchTrait(trait, interpolator, approximator, approximatorArg, bootstrapOpts,
       settl, cal, instr, dayCount, jumps, jumpDates);
 }
 
 
-YieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrapAux(const Date& date,
+PiecewiseYieldCurveHandle *qlPiecewiseYieldCurveGlobalBootstrapAux(const Date& date,
     const std::vector<shared_ptr<RateHelper> >& instr,
     const DayCounter& dayCount,
     const std::vector<Handle<Quote> >& jumps, const std::vector<Date>& jumpDates,
@@ -441,8 +449,7 @@ PiecewiseYieldCurveHandle *qlPiecewiseSpreadYieldCurveAux(
   return dispatchInterpolation<PiecewiseYieldCurveHandle*>(interpolator, approximator, approximatorArg,
 [&](auto i) {
         using CurveType = PiecewiseSpreadYieldCurve<QuantLib::Discount, decltype(i)>;
-        auto curve = ext::make_shared<CurveType>(baseCurve, instr, i, makeIterativeBootstrap<CurveType>(b));
-        return new PiecewiseYieldCurveHandle(curve, [curve]{ return curve->nodes(); });
+        return retainNodes(ext::make_shared<CurveType>(baseCurve, instr, i, makeIterativeBootstrap<CurveType>(b)));
       });
 }
 
@@ -452,9 +459,8 @@ PiecewiseYieldCurveHandle *qlPiecewiseSpreadYieldCurveGlobalBootstrapAux(
     const std::vector<shared_ptr<RateHelper> >& instr,
     double accuracy, const std::vector<double>& instrumentWeights, [[maybe_unused]] const QlCallback& initialGuess) {
   using CurveType = PiecewiseSpreadYieldCurve<QuantLib::Discount, QuantLib::LogLinear, QuantLib::GlobalBootstrap>;
-  auto curve = ext::make_shared<CurveType>(baseCurve, instr, QuantLib::LogLinear(),
-      typename CurveType::bootstrap_type(accuracy, nullptr, nullptr, instrumentWeights QL144_ARGS(bootstrapInitialGuess(initialGuess))));
-  return new PiecewiseYieldCurveHandle(curve, [curve]{ return curve->nodes(); });
+  return retainNodes(ext::make_shared<CurveType>(baseCurve, instr, QuantLib::LogLinear(),
+      typename CurveType::bootstrap_type(accuracy, nullptr, nullptr, instrumentWeights QL144_ARGS(bootstrapInitialGuess(initialGuess)))));
 }
 
 // some credit stuff
@@ -712,11 +718,9 @@ class FixedStartYoyPriceSurface : public InterpolatedYoYCapFloorTermPriceSurface
   Date reference_;
 public:
   template <class... Args>
-  FixedStartYoyPriceSurface(const Date& start, Args&&... args)
+  explicit FixedStartYoyPriceSurface(Args&&... args)
       : Base(std::forward<Args>(args)...), reference_(Base::referenceDate()) {
-    const Date today = Settings::instance().evaluationDate();
-    QL_REQUIRE(start == today, "booked YoY price surface start " << start
-               << " differs from the evaluation date " << today);
+    const Date start = Settings::instance().evaluationDate();
     this->unregisterWith(Settings::instance().evaluationDate());
     const auto frequency = this->yoyIndex()->frequency();
     const auto interpolation = this->indexIsInterpolated() ? CPI::Linear : CPI::Flat;
@@ -745,7 +749,7 @@ public:
 
 // Dispatch both interpolator axes: the 2-D price grid and the inner 1-D per-maturity curve.
 YoYCapFloorTermPriceSurface *qlYoYCapFloorTermPriceSurfaceAux(
-    const Date& startDate, Natural fixingDays, const Period &yyLag, const shared_ptr<YoYInflationIndex> &yii,
+    bool booked, Natural fixingDays, const Period &yyLag, const shared_ptr<YoYInflationIndex> &yii,
     CPI::InterpolationType interpolation, const Handle<YieldTermStructure> &nominal,
     const DayCounter &dc, const Calendar &cal, BusinessDayConvention bdc,
     const std::vector<Rate> &cStrikes, const std::vector<Rate> &fStrikes,
@@ -755,9 +759,9 @@ YoYCapFloorTermPriceSurface *qlYoYCapFloorTermPriceSurfaceAux(
     using I2D = typename decltype(i2d)::type;
     return dispatchInterpolation<YoYCapFloorTermPriceSurface*>(interpolator1D, approximator, approximatorArg,
 [&](auto i) {
-          if (startDate != Date())
+          if (booked)
             return static_cast<YoYCapFloorTermPriceSurface*>(new FixedStartYoyPriceSurface<I2D, decltype(i)>(
-                startDate, fixingDays, yyLag, yii, interpolation, nominal, dc, cal, bdc,
+                fixingDays, yyLag, yii, interpolation, nominal, dc, cal, bdc,
                 cStrikes, fStrikes, cfMaturities, cPrice, fPrice, I2D(), i));
           return static_cast<YoYCapFloorTermPriceSurface*>(new InterpolatedYoYCapFloorTermPriceSurface<I2D, decltype(i)>(fixingDays, yyLag, yii,
               interpolation, nominal, dc, cal, bdc, cStrikes, fStrikes, cfMaturities, cPrice, fPrice,

@@ -43,12 +43,17 @@ struct QlIterativeBootstrapOpts {
   unsigned dontThrowSteps, maxEvaluations;
 };
 
+// Node pairs of a bootstrapped curve, read through a closure over its concrete instantiation.
+using QlCurveNodes = std::vector<std::pair<QuantLib::Date, QuantLib::Real>>;
+
 struct PiecewiseYieldCurveHandle {
   QuantLib::Handle<QuantLib::YieldTermStructure> curve;
-  std::function<std::vector<std::pair<QuantLib::Date, QuantLib::Real>>()> nodesFn;
+  std::function<QlCurveNodes()> nodesFn;
+  // The curve's own bootstrapper when it can join a MultiCurve, else null; owned by the curve.
+  const QuantLib::MultiCurveBootstrapContributor* contributor;
   PiecewiseYieldCurveHandle(const QuantLib::ext::shared_ptr<QuantLib::YieldTermStructure>& base,
-      std::function<std::vector<std::pair<QuantLib::Date, QuantLib::Real>>()> nodes = {})
-      : curve(base), nodesFn(std::move(nodes)) {}
+      std::function<QlCurveNodes()> nodes, const QuantLib::MultiCurveBootstrapContributor* member)
+      : curve(base), nodesFn(std::move(nodes)), contributor(member) {}
   void enableExtrapolation() { curve->enableExtrapolation(); }
 };
 
@@ -61,7 +66,7 @@ PiecewiseYieldCurveHandle *qlPiecewiseYieldCurveAux(
   int trait, int interpolator, int approximator, int approximatorArg,
   const QlIterativeBootstrapOpts& bootstrapOpts);
 
-QuantLib::YieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrapAux(
+PiecewiseYieldCurveHandle *qlPiecewiseYieldCurveGlobalBootstrapAux(
   const QuantLib::Date &date,
   const std::vector<QuantLib::ext::shared_ptr<QuantLib::RateHelper> >& instr,
   const QuantLib::DayCounter& dayCount,
@@ -96,7 +101,7 @@ PiecewiseYieldCurveHandle *qlPiecewiseYieldCurveAux1(
 // GlobalBootstrap's functor-callback constructor (additionalHelpers/additionalDates, with
 // AdditionalErrors/AdditionalDates constructed internally -- see qlTermStructureAux.cpp).
 // additionalDates.size() must equal additionalHelpers.size() - 2 (QL_REQUIRE'd inside).
-QuantLib::YieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrapFullAux(
+PiecewiseYieldCurveHandle *qlPiecewiseYieldCurveGlobalBootstrapFullAux(
   const QuantLib::Date& date,
   const std::vector<QuantLib::ext::shared_ptr<QuantLib::RateHelper> >& instr,
   const QuantLib::DayCounter& dayCount,
@@ -106,7 +111,7 @@ QuantLib::YieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrapFullAux(
   const std::vector<QuantLib::Date>& additionalDates,
   double accuracy, const std::vector<double>& instrumentWeights, const QlCallback& initialGuess = {});
 
-QuantLib::YieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrapFullAux(
+PiecewiseYieldCurveHandle *qlPiecewiseYieldCurveGlobalBootstrapFullAux(
   unsigned settl, const QuantLib::Calendar &cal,
   const std::vector<QuantLib::ext::shared_ptr<QuantLib::RateHelper> >& instr,
   const QuantLib::DayCounter& dayCount,
@@ -123,7 +128,7 @@ QuantLib::YieldTermStructure *qlPiecewiseYieldCurveGlobalBootstrapFullAux(
 // with -- see qlTermStructureAux.cpp for why -- so it's implicit, not a Haskell-visible choice;
 // quadraticity/monotonicity/convexForcePositive are its own constructor params, distinct from
 // localisation/forcePositive/accuracy (LocalBootstrap's own).
-QuantLib::YieldTermStructure *qlPiecewiseYieldCurveLocalBootstrapAux1(
+PiecewiseYieldCurveHandle *qlPiecewiseYieldCurveLocalBootstrapAux1(
   unsigned settl, const QuantLib::Calendar &cal,
   const std::vector<QuantLib::ext::shared_ptr<QuantLib::RateHelper> >& instr,
   const QuantLib::DayCounter& dayCount,
@@ -132,7 +137,7 @@ QuantLib::YieldTermStructure *qlPiecewiseYieldCurveLocalBootstrapAux1(
   int trait, QuantLib::Size localisation, bool forcePositive, double accuracy,
   double quadraticity, double monotonicity, bool convexForcePositive);
 
-QuantLib::YieldTermStructure *qlPiecewiseYieldCurveLocalBootstrapAux(
+PiecewiseYieldCurveHandle *qlPiecewiseYieldCurveLocalBootstrapAux(
   const QuantLib::Date& date,
   const std::vector<QuantLib::ext::shared_ptr<QuantLib::RateHelper> >& instr,
   const QuantLib::DayCounter& dayCount,
@@ -215,7 +220,7 @@ PiecewiseYieldCurveHandle *qlPiecewiseSpreadYieldCurveGlobalBootstrapAux(
 // A bootstrapped curve's type-erased base and a nodes closure over its trait and interpolator.
 struct PiecewiseDefaultCurveHandle {
   QuantLib::ext::shared_ptr<QuantLib::DefaultProbabilityTermStructure> curve;
-  std::function<std::vector<std::pair<QuantLib::Date, QuantLib::Real>>()> nodesFn;
+  std::function<QlCurveNodes()> nodesFn;
 };
 QuantLib::DefaultProbabilityTermStructure *qlInterpolatedDefaultDensityCurveAux(
             const std::vector<QuantLib::Date>& dates,
@@ -283,11 +288,11 @@ QuantLib::DefaultLossModel* qlConstantLossModelAux(const QuantLib::Handle<QuantL
 // A bootstrapped inflation curve and its (date, rate) nodes, read after bootstrapping.
 struct PiecewiseZeroInflationCurveHandle {
   QuantLib::ext::shared_ptr<QuantLib::ZeroInflationTermStructure> curve;
-  std::function<std::vector<std::pair<QuantLib::Date, QuantLib::Real>>()> nodesFn;
+  std::function<QlCurveNodes()> nodesFn;
 };
 struct PiecewiseYoYInflationCurveHandle {
   QuantLib::ext::shared_ptr<QuantLib::YoYInflationTermStructure> curve;
-  std::function<std::vector<std::pair<QuantLib::Date, QuantLib::Real>>()> nodesFn;
+  std::function<QlCurveNodes()> nodesFn;
 };
 
 PiecewiseZeroInflationCurveHandle *qlPiecewiseZeroInflationCurveAux(
@@ -350,7 +355,7 @@ QuantLib::CPICapFloorTermPriceSurface *qlCPICapFloorTermPriceSurfaceAux(
 
 // Two interpolator axes: the 2-D cap/floor price grid, and the 1-D per-maturity curve.
 QuantLib::YoYCapFloorTermPriceSurface *qlYoYCapFloorTermPriceSurfaceAux(
-    const QuantLib::Date& startDate, QuantLib::Natural fixingDays, const QuantLib::Period &yyLag,
+    bool booked, QuantLib::Natural fixingDays, const QuantLib::Period &yyLag,
     const QuantLib::ext::shared_ptr<QuantLib::YoYInflationIndex> &yii,
     QuantLib::CPI::InterpolationType interpolation,
     const QuantLib::Handle<QuantLib::YieldTermStructure> &nominal,
