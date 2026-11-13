@@ -1,7 +1,7 @@
 name: Linux
 
 # Test-only CI: builds/tests hasquant against every supported GHC version and
-# QuantLib version, on the latest Boost by default. Never builds or publishes a
+# QuantLib version, on the latest stable Boost by default. Never builds or publishes a
 # release artifact. Boost/QuantLib are compiled from source in a Docker image
 # (built by build-image) that's pushed to GHCR purely as an internal CI cache —
 # not a user-facing image.
@@ -27,12 +27,22 @@ jobs:
         run: |
           set -euo pipefail
           # Edit this list to bisect a Boost regression, e.g. ("latest" "1.87.0").
+          # A beta is used only when named explicitly, e.g. "1.93.0.beta1".
           requested=("latest")
           resolved=()
           for v in "${requested[@]}"; do
             if [ "$v" = "latest" ]; then
-              tag=$(gh api repos/boostorg/boost/releases/latest --jq .tag_name)
-              resolved+=("${tag#boost-}")
+              # boostorg publishes betas as non-prerelease releases, so filter by tag.
+              latest=$(gh api 'repos/boostorg/boost/releases?per_page=100' --jq '
+                .[] | select((.draft or .prerelease) | not)
+                    | select(.tag_name | test("^boost-[0-9]+\\.[0-9]+\\.[0-9]+(-[0-9]+)?$"))
+                    | select(.tag_name as $t | any(.assets[]; .name == ($t + "-cmake.tar.gz")))
+                    | .tag_name' | sed 's/^boost-//' | sort -V | tail -1)
+              if [ -z "$latest" ]; then
+                echo "No stable Boost release found" >&2
+                exit 1
+              fi
+              resolved+=("$latest")
             else
               resolved+=("$v")
             fi

@@ -82,8 +82,17 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
-          tag=$(gh api repos/boostorg/boost/releases/latest --jq .tag_name)
-          echo "version=${tag#boost-}" >> "$GITHUB_OUTPUT"
+          # Same stable-only selection as linux.yml's resolve-boost.
+          version=$(gh api 'repos/boostorg/boost/releases?per_page=100' --jq '
+            .[] | select((.draft or .prerelease) | not)
+                | select(.tag_name | test("^boost-[0-9]+\\.[0-9]+\\.[0-9]+(-[0-9]+)?$"))
+                | select(.tag_name as $t | any(.assets[]; .name == ($t + "-cmake.tar.gz")))
+                | .tag_name' | sed 's/^boost-//' | sort -V | tail -1)
+          if [ -z "$version" ]; then
+            echo "No stable Boost release found" >&2
+            exit 1
+          fi
+          echo "version=$version" >> "$GITHUB_OUTPUT"
 
       - name: Compute image tag
         id: image

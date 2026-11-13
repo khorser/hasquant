@@ -4,14 +4,21 @@ name: Docs
 # 1.44, pinned to lts-24.56 by cabal.project) inside the existing
 # hasquant-ci image from linux.yml, and publishes them to the gh-pages branch
 # root (docs) and gh-pages/coverage (HPC report), replacing previous contents.
+# Runs after a successful Linux push run on master, which has built the image.
 
 on:
-  push:
+  workflow_run:
+    workflows: [Linux]
+    types: [completed]
     branches: [master]
   workflow_dispatch:
 
 jobs:
   publish-docs:
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.workflow_run.conclusion == 'success' &&
+       github.event.workflow_run.event == 'push')
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -21,6 +28,8 @@ jobs:
       QL_VERSION: "1.44"
     steps:
       - uses: actions/checkout@v7
+        with:
+          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
 
       - name: Resolve latest Boost version
         id: boost
@@ -28,8 +37,17 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
-          tag=$(gh api repos/boostorg/boost/releases/latest --jq .tag_name)
-          echo "version=${tag#boost-}" >> "$GITHUB_OUTPUT"
+          # Same stable-only selection as linux.yml's resolve-boost.
+          version=$(gh api 'repos/boostorg/boost/releases?per_page=100' --jq '
+            .[] | select((.draft or .prerelease) | not)
+                | select(.tag_name | test("^boost-[0-9]+\\.[0-9]+\\.[0-9]+(-[0-9]+)?$"))
+                | select(.tag_name as $t | any(.assets[]; .name == ($t + "-cmake.tar.gz")))
+                | .tag_name' | sed 's/^boost-//' | sort -V | tail -1)
+          if [ -z "$version" ]; then
+            echo "No stable Boost release found" >&2
+            exit 1
+          fi
+          echo "version=$version" >> "$GITHUB_OUTPUT"
 
       - name: Compute image tag
         id: tag
