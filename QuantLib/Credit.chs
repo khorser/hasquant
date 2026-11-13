@@ -29,15 +29,15 @@ module QuantLib.Credit
   , constantLossModel
 
     -- * Inspectors
-  , basketExpectedTrancheLoss
-  , basketProbOverLoss
-  , basketPercentile
-  , basketExpectedShortfall
-  , basketDefaultCorrelation
-  , basketProbAtLeastNEvents
-  , basketNotional
-  , basketRemainingNotional
-  , basketRecoveryRate
+  , expectedTrancheLoss
+  , probOverLoss
+  , percentile
+  , expectedShortfall
+  , defaultCorrelation
+  , probAtLeastNEvents
+  , notional
+  , remainingNotional
+  , recoveryRate
   ) where
 import Data.List.NonEmpty(NonEmpty, toList)
 
@@ -116,46 +116,46 @@ basket refDate positions p attachmentRatio detachmentRatio cl lm =
   ,preErrorCheck-`String'errorCheck*-}->`TrancheBasket'peekTrancheBasket*#}
 
 -- |Basket total notional at inception, before losses.
-{#fun qlBasketNotional as basketNotional{withBasket*`Basket',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlBasketNotional as notional{withBasket*`Basket',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Live (undefaulted) notional remaining at date @d@. Loss-model-agnostic.
-{#fun qlBasketRemainingNotional as basketRemainingNotional{withBasket*`Basket',withDay*`Day' -- ^d
+{#fun qlBasketRemainingNotional as remainingNotional{withBasket*`Basket',withDay*`Day' -- ^d
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Expected recovery rate of the @iName@-th pool name (0-based, in basket-construction order),
 -- conditional on default by date @d@. Loss-model-agnostic.
-{#fun qlBasketRecoveryRate as basketRecoveryRate{withBasket*`Basket',withDay*`Day' -- ^d
+{#fun qlBasketRecoveryRate as recoveryRate{withBasket*`Basket',withDay*`Day' -- ^d
   ,fromIntegral`Word' -- ^iName
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Expected tranche loss on date @d@; requires a tranche-loss model.
-{#fun qlBasketExpectedTrancheLoss as basketExpectedTrancheLoss{withTrancheBasket*`TrancheBasket',withDay*`Day' -- ^d
+{#fun qlBasketExpectedTrancheLoss as expectedTrancheLoss{withTrancheBasket*`TrancheBasket',withDay*`Day' -- ^d
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Probability the tranche loses at least @lossFraction@ of the tranche notional by date @d@.
-{#fun qlBasketProbOverLoss as basketProbOverLoss{withTrancheBasket*`TrancheBasket',withDay*`Day' -- ^d
+{#fun qlBasketProbOverLoss as probOverLoss{withTrancheBasket*`TrancheBasket',withDay*`Day' -- ^d
   ,`Double' -- ^lossFraction
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Tranche loss fraction at the given percentile of the loss distribution on date @d@ (VaR).
-{#fun qlBasketPercentile as basketPercentile{withTrancheBasket*`TrancheBasket',withDay*`Day' -- ^d
+{#fun qlBasketPercentile as percentile{withTrancheBasket*`TrancheBasket',withDay*`Day' -- ^d
   ,`Double' -- ^prob
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Expected tranche loss given loss exceeds the given percentile on date @d@.
-{#fun qlBasketExpectedShortfall as basketExpectedShortfall{withTrancheBasket*`TrancheBasket',withDay*`Day' -- ^d
+{#fun qlBasketExpectedShortfall as expectedShortfall{withTrancheBasket*`TrancheBasket',withDay*`Day' -- ^d
   ,`Double' -- ^prob
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Pearson default-probability correlation between pool names @iName@ and @jName@ (0-based) by
 -- date @d@.
-{#fun qlBasketDefaultCorrelation as basketDefaultCorrelation{withDigitalBasket*`DigitalBasket',withDay*`Day' -- ^d
+{#fun qlBasketDefaultCorrelation as defaultCorrelation{withDigitalBasket*`DigitalBasket',withDay*`Day' -- ^d
   ,fromIntegral`Word' -- ^iName
   ,fromIntegral`Word' -- ^jName
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Probability of at least @n@ defaults in the basket by date @d@.
-{#fun qlBasketProbAtLeastNEvents as basketProbAtLeastNEvents{withDigitalBasket*`DigitalBasket'
+{#fun qlBasketProbAtLeastNEvents as probAtLeastNEvents{withDigitalBasket*`DigitalBasket'
   ,fromIntegral`Word' -- ^n
   ,withDay*`Day' -- ^d
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}

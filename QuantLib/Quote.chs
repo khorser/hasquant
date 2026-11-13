@@ -104,9 +104,8 @@ import QuantLib.Internal.Type
 -- |Returns the current value of the given Quote object
 {#fun qlQuoteValue as value{withQuote*`GenQuote q',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
--- |returns the difference between the new value and the old value
--- /NB/ The change will propagate to all users of the quote
-{#fun qlSimpleQuoteSetValue as setValue{withGenQuote*`SimpleQuote',`Double',preErrorCheck-`String'errorCheck*-}->`Double'#}
+-- |Set the quote's value. The change propagates to all users of the quote.
+{#fun qlSimpleQuoteSetValue as setValue{withGenQuote*`SimpleQuote',`Double',preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |implied standard deviation of a Eurodollar future's underlying, solved from its call/put prices
 {#fun qlEurodollarFuturesImpliedStdDevQuote as eurodollarFuturesImpliedStdDevQuote{withQuote*`GenQuote q1' -- ^forward

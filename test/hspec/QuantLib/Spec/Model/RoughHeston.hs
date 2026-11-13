@@ -90,7 +90,7 @@ spec = describe "Rough Heston 1.44" $
       case engines of
         engine:_ -> do
           priceBefore <- roughHestonPriceVanillaPayoff engine (PlainVanillaPayoff Call 100) (TimePoint 1)
-          _ <- setValue spot 110
+          setValue spot 110
           priceAfter <- roughHestonPriceVanillaPayoff engine (PlainVanillaPayoff Call 100) (TimePoint 1)
           priceAfter `shouldSatisfy` (> priceBefore)
           Model.setParams model [0.05, 0.4, 0.3, -0.6, 0.03, 0.2]

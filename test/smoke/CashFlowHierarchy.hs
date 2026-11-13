@@ -31,7 +31,7 @@ main = Context.keepingSettingsGc $ do
     coupon <- CashFlow.asCoupon floating
     CashFlow.asCashFlow coupon
   Context.collectGarbage
-  let paymentDate = CashFlow.date root
+  paymentDate <- CashFlow.date root
   leg <- CashFlow.cashFlowLeg [root]
   legStart <- CashFlow.startDate leg
   if paymentDate == accrualEnd && legStart == accrualStart

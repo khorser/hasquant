@@ -174,7 +174,7 @@ run = do
   npv3 <- npv swaption3
 
   -- Add a 100bp credit spread and regenerate the basket.
-  _ <- setValue oasQuote 0.01
+  setValue oasQuote 0.01
   basket5 <- calibrationBasket swaption3 swapBase swaptionVol MaturityStrikeByDeltaGamma
   forM_ basket5 (`Model.setPricingEngine` swaptionEngine)
   calibrateVolatilitiesIterative gsrModel basket5 lmMethod lmEndCriteria Nothing []

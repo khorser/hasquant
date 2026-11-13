@@ -514,7 +514,8 @@ affineModelSpec =
         Context.setEvaluationDate (Just evalDate)
         dc <- dayCounter (Actual360 False)
         emptyIndex <- IR.iborIndex IR.Euribor6M Nothing
-        firstPillar <- advance cal evalDate (fromIntegral (IR.fixingDays emptyIndex), Days) Following False
+        fixDays <- IR.fixingDays emptyIndex
+        firstPillar <- advance cal evalDate (fromIntegral fixDays, Days) Following False
         rTS <- interpolatedZeroCurve (fromList [(firstPillar, 0.039), (curveEndDate, 0.041)]) dc cal [] Linear
         idx <- IR.iborIndex IR.Euribor6M (Just rTS)
         process <- Process.liborForwardModelProcess size idx

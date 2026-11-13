@@ -48,7 +48,7 @@ main = Context.keepingSettingsGc $ do
         owner <- Quote.asQuote total >>= Quote.asQuote
         Context.collectGarbage
         Quote.value owner >>= check . (== 14)
-        _ <- Quote.setValue quote 4
+        Quote.setValue quote 4
         Context.collectGarbage
         Quote.value owner >>= check . (== 28)
   putStrLn "Hierarchy ownership: OK"

@@ -8,7 +8,7 @@ module QuantLib.Example.InflationInstruments
 import Control.Monad(forM_)
 import qualified QuantLib.CashFlow as CF
 import QuantLib.Currency(currency, Ccy(GBP))
-import QuantLib.Index(addFixing)
+import QuantLib.Index(addFixing, fixing)
 import qualified QuantLib.Index.InterestRate as I
 import QuantLib.Index.Inflation
 import QuantLib.InterestRate(Compounding(Continuous, Compounded), interestRate)
@@ -160,7 +160,7 @@ run = do
   floatSchedule <- schedule (Just evalDate) maturity5Y (6, Months) cal Unadjusted Unadjusted Backward False Nothing Nothing
   fixedSchedule <- schedule (Just evalDate) maturity5Y (6, Months) cal Unadjusted Unadjusted Backward False Nothing Nothing
   floatIdx <- I.iborIndex (I.GbpLibor (6, Months)) (Just nominalCurve)
-  baseCPI0 <- fixing idx1 evalDate
+  baseCPI0 <- fixing idx1 evalDate False
   let cpiSwapCtx = CpiSwapContext
         { cpiSwapDc = dc
         , cpiSwapFloatSchedule = floatSchedule

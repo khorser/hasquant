@@ -21,7 +21,7 @@ spec = do
       usd <- commoditySettingsCurrency
       cal <- calendar TARGET
       idx <- CommodityIndex.commodityIndex "HO empty index" ho usd bbl cal 1000 Nothing
-      CommodityIndex.isEmpty idx `shouldBe` True
+      CommodityIndex.isEmpty idx `shouldReturn` True
 
     it "forecasts a forward price from a forward curve" $ do
       ho <- commodityType "HO" "Heating Oil"
@@ -44,7 +44,7 @@ spec = do
       let d0 = 2 `january` 2024 -- a TARGET business day (Jan 1st is a holiday)
       bracket_ (clearFixings idx) (clearFixings idx) $ do
         addFixing idx d0 72.5 False
-        CommodityIndex.isEmpty idx `shouldBe` False
+        CommodityIndex.isEmpty idx `shouldReturn` False
         CommodityIndex.lastQuoteDate idx `shouldReturn` d0
         fixing idx d0 False `shouldReturn` 72.5
 

@@ -44,7 +44,7 @@ main = keepingSettingsGc $ do
   collectGarbage
   v0 <- value q
   checkClose "cash spot reads its dropped inputs" (expected 1.25 0.05 0.01) v0 1.0e-14
-  _ <- setValue rdQ 0.06
+  setValue rdQ 0.06
   collectGarbage
   v1 <- value q
   checkClose "a dropped curve still moves the quote" (expected 1.25 0.06 0.01) v1 1.0e-14

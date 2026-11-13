@@ -25,8 +25,8 @@ import QuantLib.Credit
 import QuantLib.Spec.Helpers(closePrec, quantLibAtMost143, unsupportedQuantLib144)
 
 -- |Builds a small pool/basket/Gaussian-LHP-loss-model chain and checks the loss model actually
--- wired up -- 'basketNotional' alone can't tell (it's a plain constructor echo, computed before
--- any loss model is consulted), so the discriminating check is 'basketExpectedTrancheLoss', which
+-- wired up -- 'notional' alone can't tell (it's a plain constructor echo, computed before
+-- any loss model is consulted), so the discriminating check is 'expectedTrancheLoss', which
 -- throws if no loss model is attached. Fixture shape follows
 -- ~/Src/QuantLib/test-suite/cdo.cpp (an EUR corporate default key, a single shared flat hazard
 -- curve, five equal-notional names); numeric golden-value coverage against that fixture is
@@ -85,8 +85,8 @@ spec = do
         shifted <- shiftedHazardRateCurve base (KeyRateHazardShifts (fromList [(addDays 730 ref,s)]))
         conditionalSurvivalCurve shifted (addDays 365 ref)
       Context.collectGarbage
-      _ <- setValue q 0.03
-      _ <- setValue s 0.002
+      setValue q 0.03
+      setValue s 0.002
       survivalProbability view (TimePoint 2) False >>= (`shouldSatisfy` closePrec (exp (-0.064)) 1e-14)
 
     it "preserves extrapolation permission and rejects invalid reference normalizations" $ Context.keepingSettingsGc $ do
@@ -108,9 +108,9 @@ spec = do
       q <- simpleQuote 1.0e6
       zeroSurvival <- flatHazardRate (ReferenceDate ref) q dc
       conditionalSurvivalCurve zeroSurvival (addDays 365 ref) `shouldThrow` has "normalization must be positive and finite"
-      _ <- setValue q 0.02
+      setValue q 0.02
       updated <- conditionalSurvivalCurve zeroSurvival (addDays 365 ref)
-      _ <- setValue q 1.0e6
+      setValue q 1.0e6
       hazardRate updated (TimePoint 1) False `shouldThrow` has "normalization must be positive and finite"
       jump <- simpleQuote 0.9
       withJump <- interpolatedHazardRateCurve (fromList [(ref,0.02),(addDays 730 ref,0.02)]) dc cal
@@ -145,9 +145,9 @@ spec = do
         hazardRate curve (TimePoint t) False >>= (`shouldSatisfy` closePrec h 1e-14)
       survivalProbability curve (TimePoint 2) False >>= (`shouldSatisfy` closePrec (exp (-0.0425)) 1e-14)
       survivalProbability curve (TimePoint 6) False >>= (`shouldSatisfy` closePrec (exp (-0.13)) 1e-14)
-      _ <- setValue s2 0.001
+      setValue s2 0.001
       hazardRate curve (TimePoint 2) False >>= (`shouldSatisfy` closePrec 0.021 1e-14)
-      _ <- setValue q 0.03
+      setValue q 0.03
       survivalProbability curve (TimePoint 2) False >>= (`shouldSatisfy` closePrec (exp (-0.062)) 1e-14)
 
     it "gives shared boundaries to the next bucket and retains accumulated survival" $ Context.keepingSettingsGc $ do
@@ -165,8 +165,8 @@ spec = do
       left <- survivalProbability curve (TimePoint (1 - 1e-10)) False
       right <- survivalProbability curve (TimePoint (1 + 1e-10)) False
       abs (left - right) `shouldSatisfy` (< 1e-10)
-      _ <- setValue s1 (-0.02)
-      _ <- setValue s2 (-0.02)
+      setValue s1 (-0.02)
+      setValue s2 (-0.02)
       forM_ [0.002,0.017,0.02,0.5,1,2] $ \t -> do
         hazardRate curve (TimePoint t) False `shouldReturn` 0
         probability <- survivalProbability curve (TimePoint t) False
@@ -205,7 +205,7 @@ spec = do
       curve <- shiftedHazardRateCurve base (BucketHazardShifts (fromList [(end,s)]))
       hazardRate curve (TimePoint 0.5) False `shouldThrow` has "nonnegative"
       survivalProbability curve (TimePoint 2) False `shouldThrow` has "nonnegative"
-      _ <- setValue s (1/0)
+      setValue s (1/0)
       hazardRate curve (TimePoint 0.5) False `shouldThrow` has "spreads must be finite"
 
   describe "portfolio credit scaffolding (Pool, Issuer, Basket, GaussianLHPLossModel)" $ do
@@ -230,12 +230,12 @@ spec = do
 
       b <- basket refDate (fromList [(n, notionalPerName) | n <- names]) p 0.0 1.0 FaceValue lossModel
 
-      notional <- basketNotional (trancheBasketAsBasket b)
-      notional `shouldBe` notionalPerName * fromIntegral (length names)
+      total <- notional (trancheBasketAsBasket b)
+      total `shouldBe` notionalPerName * fromIntegral (length names)
 
       let futureDate = addGregorianYearsClip 5 refDate
-      etl <- basketExpectedTrancheLoss b futureDate
-      etl `shouldSatisfy` (\x -> x > 0 && x < notional)
+      etl <- expectedTrancheLoss b futureDate
+      etl `shouldSatisfy` (\x -> x > 0 && x < total)
 
     -- Ports test-suite/cdo.cpp's testHW, data set 1 only (corr=0.1, the "gaussian" branch of
     -- hwData7): a 100-name pool, the Gaussian LHP loss model (the only loss model hasquant
@@ -358,7 +358,7 @@ spec = do
       gaussCorrelQuote <- simpleQuote 0.0
       gaussNtds <- buildNtds gaussCorrelQuote
       mapM_ (\(j, corr) -> do
-        _ <- setValue gaussCorrelQuote corr
+        setValue gaussCorrelQuote corr
         mapM_ (\(rank, spreads) -> do
           fair <- (* 1e4) <$> ntdFairPremium (gaussNtds !! (rank - 1))
           let expected = spreads !! j
@@ -416,25 +416,25 @@ spec = do
           bb = trancheBasketAsBasket b
 
       -- No default has been recorded on the pool, so the live notional never drops.
-      full <- basketNotional bb
-      remaining <- basketRemainingNotional bb futureDate
+      full <- notional bb
+      remaining <- remainingNotional bb futureDate
       remaining `shouldBe` full
 
       -- GaussianLHPLossModel's expectedRecovery is just the recovery quote passed in.
-      rr <- basketRecoveryRate bb futureDate 0
+      rr <- recoveryRate bb futureDate 0
       rr `shouldSatisfy` closePrec recovery 1.0e-12
 
       -- Certain to lose at least 0% of the tranche.
-      p0 <- basketProbOverLoss b futureDate 0.0
+      p0 <- probOverLoss b futureDate 0.0
       p0 `shouldSatisfy` closePrec 1.0 1.0e-6
 
       -- percentile is a monotone non-decreasing function of its probability argument.
-      pctLo <- basketPercentile b futureDate 0.5
-      pctHi <- basketPercentile b futureDate 0.95
+      pctLo <- percentile b futureDate 0.5
+      pctHi <- percentile b futureDate 0.95
       pctLo `shouldSatisfy` (<= pctHi)
 
       -- expected shortfall past a percentile is never below that percentile itself.
-      es <- basketExpectedShortfall b futureDate 0.95
+      es <- expectedShortfall b futureDate 0.95
       es `shouldSatisfy` (>= pctHi)
 
     -- Reuses the nth-to-default Gaussian fixture (10 names, correlation 0.3) to check
@@ -467,16 +467,16 @@ spec = do
       let futureDate = addGregorianYearsClip 5 refDate
 
       -- Self-correlation is always 1 (E[1_i*1_i] = p_i, per the closed form).
-      selfCorr <- basketDefaultCorrelation b futureDate 0 0
+      selfCorr <- defaultCorrelation b futureDate 0 0
       selfCorr `shouldSatisfy` closePrec 1.0 1.0e-9
 
       -- Certain to have at least 0 defaults.
-      p0 <- basketProbAtLeastNEvents b 0 futureDate
+      p0 <- probAtLeastNEvents b 0 futureDate
       p0 `shouldSatisfy` closePrec 1.0 1.0e-6
 
       -- probAtLeastNEvents is non-increasing in n.
-      p1 <- basketProbAtLeastNEvents b 1 futureDate
-      p2 <- basketProbAtLeastNEvents b 2 futureDate
+      p1 <- probAtLeastNEvents b 1 futureDate
+      p2 <- probAtLeastNEvents b 2 futureDate
       (p0 >= p1 && p1 >= p2) `shouldBe` True
 
   describe "default-probability curves" $ do

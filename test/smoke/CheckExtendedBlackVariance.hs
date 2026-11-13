@@ -55,7 +55,7 @@ main = do
   -- optionExpiry sits between the first two pillars, so this is the one that actually reaches
   -- the option's interpolated variance; kept below the second pillar's 0.22 to respect
   -- forceMonotoneVariance.
-  _ <- setValue q1 0.10
+  setValue q1 0.10
   after <- npv opt
   report "NPV after bump" after
   checkWith "both NPVs positive" "each > 0" (before > 0 && after > 0)

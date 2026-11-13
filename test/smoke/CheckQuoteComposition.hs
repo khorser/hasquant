@@ -40,7 +40,7 @@ main = do
 
   curve <- flatForward (ReferenceDate evalDate) q dc Continuous Annual
   df0 <- discount curve (DatePoint maturity) True
-  _ <- setValue base 0.04
+  setValue base 0.04
   df1 <- discount curve (DatePoint maturity) True
   checkWith "curve reprices after base quote moves"
     "discount factor must change, i.e. the curve heard the notification" (df0 /= df1)
@@ -49,7 +49,7 @@ main = do
   dfRef <- discount ref (DatePoint maturity) True
   checkClose "curve matches the composed rate 0.0405" dfRef df1 1.0e-14
 
-  _ <- setValue spread 0.001
+  setValue spread 0.001
   df2 <- discount curve (DatePoint maturity) True
   ref2 <- simpleQuote 0.041 >>= \r -> flatForward (ReferenceDate evalDate) r dc Continuous Annual
   dfRef2 <- discount ref2 (DatePoint maturity) True
@@ -62,7 +62,7 @@ main = do
     checkClose "derived quote value" 0.045 `flip` 1.0e-12 =<< value dq
     curve' <- flatForward (ReferenceDate evalDate) dq dc Continuous Annual
     dfA <- discount curve' (DatePoint maturity) True
-    _ <- setValue base' 0.02
+    setValue base' 0.02
     dfB <- discount curve' (DatePoint maturity) True
     refB <- simpleQuote 0.03 >>= \r -> flatForward (ReferenceDate evalDate) r dc Continuous Annual
     dfRefB <- discount refB (DatePoint maturity) True
@@ -76,12 +76,12 @@ main = do
   let qs = [q1, q2, q3]
   s <- multiCompositeQuote QuoteSum qs
   checkClose "multi-composite sum" 0.06 `flip` 1.0e-12 =<< value s
-  _ <- setValue q1 0.04
+  setValue q1 0.04
   checkClose "multi-composite sum after an input moves" 0.09 `flip` 1.0e-12 =<< value s
 
   withMultiCompositeQuote (\xs -> sum xs / fromIntegral (length xs)) qs $ \avg -> do
     checkClose "multi-composite average (callback)" 0.03 `flip` 1.0e-12 =<< value avg
-    _ <- setValue q1 0.01
+    setValue q1 0.01
     checkClose "multi-composite average after an input moves" 0.02 `flip` 1.0e-12 =<< value avg
 
   collectGarbage

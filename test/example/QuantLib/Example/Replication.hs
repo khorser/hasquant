@@ -4,7 +4,7 @@ module QuantLib.Example.Replication
     Result(..)
   , run
   ) where
-import Control.Monad(void, foldM)
+import Control.Monad(foldM)
 import Data.Time.Calendar
 
 import QuantLib.Instrument
@@ -109,7 +109,7 @@ run = do
           putn <- europeanOption innerPayoff innerExercise >>= asOneAssetOption >>= asOption >>= asInstrument
           setPricingEngine putn engine
           setEvaluationDate $ Just killDate
-          void $ setValue underlyingQuote barrier
+          setValue underlyingQuote barrier
           portfolioValue <- composite p >>= npv
           putValue <- npv putn
           return (putn, -portfolioValue / putValue)

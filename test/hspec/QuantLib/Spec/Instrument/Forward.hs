@@ -61,7 +61,7 @@ spec = do
         let sourceNominal = 100.0
             targetNominal = 112.34
         fwd <- fxForward sourceNominal usd targetNominal eur maturity True 2 cal
-        let r = fxForwardRate fwd
+        r <- fxForwardRate fwd
         r `shouldSatisfy` closePrec (targetNominal / sourceNominal) 1e-12
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

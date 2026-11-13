@@ -302,7 +302,7 @@ spec evalDate = do
           indexed <- CF.indexedCashFlow 100.0 idx baseDate fixingDate' paymentDate False
           growth <- CF.indexedCashFlow 100.0 idx baseDate fixingDate' paymentDate True
           CF.amount simple `shouldReturn` 10.0
-          CF.date simple `shouldBe` paymentDate
+          CF.date simple `shouldReturn` paymentDate
           CF.baseFixing indexed >>= (`shouldSatisfy` closePrec 100.0 1.0e-12)
           CF.indexFixing indexed >>= (`shouldSatisfy` closePrec 120.0 1.0e-12)
           fixedCoupon <- CF.fixedRateCoupon accrualEnd 100.0 0.05 dc paymentDate accrualEnd Nothing Nothing Nothing
@@ -365,7 +365,7 @@ spec evalDate = do
           zeroAmount <- CF.amount zero
           cpiAmount <- CF.amount cpi
           equityAmount <- CF.amount equity
-          CF.date equity `shouldBe` paymentDate
+          CF.date equity `shouldReturn` paymentDate
           CF.baseFixing equity >>= (`shouldSatisfy` closePrec 80.0 1.0e-12)
           CF.indexFixing equity >>= (`shouldSatisfy` closePrec 100.0 1.0e-12)
           listCloseRel id [120.0, 120.0, 125.0] 1.0e-12 [zeroAmount, cpiAmount, equityAmount] `shouldBe` True
@@ -437,8 +437,7 @@ spec evalDate = do
           price `shouldSatisfy` closePrec (amount * disc) 1e-10
 
           -- No CMS-style timing adjustment applies to a plain Ibor coupon.
-          convexityAdjustment <- CF.convexityAdjustment coupon
-          convexityAdjustment `shouldSatisfy` closePrec 0.0 1e-12
+          CF.convexityAdjustment coupon >>= (`shouldSatisfy` closePrec 0.0 1e-12)
 
           -- Caplet/floorlet put-call parity at a common effective strike: the price difference
           -- must equal the (undiscounted) intrinsic value of the underlying swaplet relative to
@@ -862,17 +861,12 @@ spec evalDate = do
           strippedRate <- CF.rate stripped
           (cappedRate + strippedRate) `shouldSatisfy` closePrec plainRate 1.0e-10
 
-          let isCap = CF.isCap stripped
-              isFloor = CF.isFloor stripped
-              isCollar = CF.isCollar stripped
-          isCap `shouldBe` True
-          isFloor `shouldBe` False
-          isCollar `shouldBe` False
+          CF.isCap stripped `shouldReturn` True
+          CF.isFloor stripped `shouldReturn` False
+          CF.isCollar stripped `shouldReturn` False
 
-          let cap' = CF.capRate stripped
-              effCap = CF.effectiveCap stripped
-          cap' `shouldBe` capStrike
-          effCap `shouldBe` capStrike
+          CF.capRate stripped `shouldReturn` capStrike
+          CF.effectiveCap stripped `shouldReturn` capStrike
 
     -- Ported from test-suite/overnightindexedcoupon.cpp's 'CommonVars' fixture: a SOFR index
     -- seeded with two blocks of real historical fixings (Jun-Aug 2019, Oct-Nov 2021), default
@@ -1190,7 +1184,7 @@ spec evalDate = do
               end = addGregorianMonthsClip 6 start
               spread = 0.001
           sch <- mrSchedule cal start end
-          let fixingDaysN = Ibor.fixingDays euribor
+          fixingDaysN <- Ibor.fixingDays euribor
           subs <- mrExpected cal dc euribor fixingDaysN spread sch
           let expected = product [1 + a * r | (r, a) <- subs] - 1
 
@@ -1220,7 +1214,7 @@ spec evalDate = do
               end = addGregorianMonthsClip 6 start
               spread = 0.001
           sch <- mrSchedule cal start end
-          let fixingDaysN = Ibor.fixingDays euribor
+          fixingDaysN <- Ibor.fixingDays euribor
           subs <- mrExpected cal dc euribor fixingDaysN spread sch
           let expected = sum [a * r | (r, a) <- subs]
 
@@ -1492,8 +1486,8 @@ spec evalDate = do
       it "direct cappedFlooredCmsCoupon agrees between numerical and analytic Hagan pricers" $
         Context.keepingSettingsGc $ do
           (_, dc, _, atmVol, meanRevQ, _, swapIdx, startDate, endDate) <- mkFixture
-          let fixingDays = Ibor.fixingDays swapIdx
-              coupon = CF.cappedFlooredCmsCoupon endDate 1.0 startDate endDate fixingDays swapIdx
+          fixingDays <- Ibor.fixingDays swapIdx
+          let coupon = CF.cappedFlooredCmsCoupon endDate 1.0 startDate endDate fixingDays swapIdx
                 1.0 0.0 Nothing Nothing (Just startDate) (Just endDate) dc False Nothing Preceding
           numerical <- CF.numericHaganPricer atmVol CF.NonParallelShifts meanRevQ 0.0 1.0 1.0e-6 1.0e100
           couponNumerical <- coupon
@@ -1512,8 +1506,8 @@ spec evalDate = do
       it "direct capped/floored CMS coupons satisfy put-call parity" $
         Context.keepingSettingsGc $ do
           (_, dc, _, atmVol, meanRevQ, _, swapIdx, startDate, endDate) <- mkFixture
-          let fixingDays = Ibor.fixingDays swapIdx
-              strike = 0.03
+          fixingDays <- Ibor.fixingDays swapIdx
+          let strike = 0.03
               coupon mCap mFloor = CF.cappedFlooredCmsCoupon endDate 1.0 startDate endDate fixingDays swapIdx
                 1.0 0.0 mCap mFloor (Just startDate) (Just endDate) dc False Nothing Preceding
               priced mCap mFloor = do
@@ -1533,8 +1527,8 @@ spec evalDate = do
         Context.keepingSettingsGc $ do
           (cal, dc, curve, atmVol, meanRevQ, _, swapIdx, startDate, endDate) <- mkFixture
           pricer <- CF.analyticHaganPricer atmVol CF.NonParallelShifts meanRevQ
-          let fixingDays = Ibor.fixingDays swapIdx
-              coupon = CF.cmsCoupon endDate 1.0 startDate endDate fixingDays swapIdx
+          fixingDays <- Ibor.fixingDays swapIdx
+          let coupon = CF.cmsCoupon endDate 1.0 startDate endDate fixingDays swapIdx
                 1.0 0.0 Nothing Nothing dc False Nothing Preceding
           plain <- coupon
           CF.setFloatingRateCouponPricer plain pricer

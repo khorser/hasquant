@@ -33,9 +33,9 @@ run = do
   setEvaluationDate $ Just todaysDate
   eu3m <- I.iborIndex I.Euribor3M Nothing
   fraCalendar <- fixingCalendar eu3m
-  let fixDays = I.fixingDays eu3m
-      convention = I.businessDayConvention eu3m
-      eom = I.endOfMonth eu3m
+  fixDays <- I.fixingDays eu3m
+  convention <- I.businessDayConvention eu3m
+  eom <- I.endOfMonth eu3m
   settleDate <- advance fraCalendar todaysDate (fromIntegral fixDays, Days) Following False
 
   fraQuotes <- mapM simpleQuote quotes

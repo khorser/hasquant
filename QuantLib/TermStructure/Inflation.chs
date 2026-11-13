@@ -1,3 +1,4 @@
+{-# LANGUAGE FlexibleInstances, MultiParamTypeClasses #-}
 module QuantLib.TermStructure.Inflation
   (
     -- * Types
@@ -26,14 +27,13 @@ module QuantLib.TermStructure.Inflation
   , interpolatedZeroInflationCurve
     -- ** Conversions
   , asZeroInflationTermStructure
-  , asYoYInflationTermStructure
+  , asYoyInflationTermStructure
 
     -- * Inspectors
   , HasHelperUnderlying(..)
   , zeroRate
   , yoyRate
-  , zeroCouponInflationSwapImpliedQuoteOn
-  , yearOnYearInflationSwapImpliedQuoteOn
+  , HasImpliedQuoteOn(..)
   , HasNodes(..)
   ) where
 import QuantLib.Internal
@@ -253,14 +253,20 @@ seasonalityArgs d s k = case s of
 {#fun qlZeroInflationTermStructureZeroRate as zeroRate{withZeroInflationTermStructure*`GenZeroInflationTermStructure z',withDay*`Day',`Bool' -- ^extrapolate
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
--- |The swap rate that would make a zero-coupon inflation swap helper reprice exactly on the given
--- zero-inflation curve, bootstrapped from it or not.
-{#fun qlZeroCouponInflationSwapHelperImpliedQuoteOn as zeroCouponInflationSwapImpliedQuoteOn{withZeroCouponInflationSwapHelper*`ZeroCouponInflationSwapHelper'
+-- |Inflation swap helpers paired with the only curve family each can reprice on.
+class HasImpliedQuoteOn helper curve where
+  -- |The swap rate that would make the helper reprice exactly on the given curve, bootstrapped
+  -- from it or not.
+  impliedQuoteOn :: helper -> curve -> IO Double
+instance HasImpliedQuoteOn ZeroCouponInflationSwapHelper (GenZeroInflationTermStructure z) where
+  impliedQuoteOn = qlZeroCouponInflationSwapHelperImpliedQuoteOn
+instance HasImpliedQuoteOn YearOnYearInflationSwapHelper (GenYoYInflationTermStructure yoy) where
+  impliedQuoteOn = qlYearOnYearInflationSwapHelperImpliedQuoteOn
+
+{#fun qlZeroCouponInflationSwapHelperImpliedQuoteOn{withZeroCouponInflationSwapHelper*`ZeroCouponInflationSwapHelper'
   ,withZeroInflationTermStructure*`GenZeroInflationTermStructure z',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
--- |The swap rate that would make a year-on-year inflation swap helper reprice exactly on the given
--- year-on-year curve.
-{#fun qlYearOnYearInflationSwapHelperImpliedQuoteOn as yearOnYearInflationSwapImpliedQuoteOn{withYearOnYearInflationSwapHelper*`YearOnYearInflationSwapHelper'
+{#fun qlYearOnYearInflationSwapHelperImpliedQuoteOn{withYearOnYearInflationSwapHelper*`YearOnYearInflationSwapHelper'
   ,withYoYInflationTermStructure*`GenYoYInflationTermStructure yoy',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Year-on-year inflation rate implied by the curve.

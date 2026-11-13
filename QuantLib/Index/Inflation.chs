@@ -1,3 +1,4 @@
+{-# LANGUAGE FlexibleInstances #-}
 module QuantLib.Index.Inflation
   (
     -- * Types
@@ -30,10 +31,7 @@ module QuantLib.Index.Inflation
   , yoyInflationIndexFromZero
 
     -- * Inspectors
-  , fixing
-  , yoyFixing
-  , needsForecast
-  , yoyNeedsForecast
+  , HasNeedsForecast(..)
   ) where
 import QuantLib.Internal
 import QuantLib.Internal.Type
@@ -100,23 +98,20 @@ import QuantLib.Internal.Type
   ,withMaybeYoYInflationTermStructure*`Maybe (GenYoYInflationTermStructure yoy)'
   ,preErrorCheck-`String'errorCheck*-}->`YoYInflationIndex'peekYoYInflationIndex*#}
 
--- |The (possibly forecast) fixing at the given date; for a date with no linked term
--- structure this returns the stored historical fixing added via 'QuantLib.Index.addFixing'.
-{#fun qlZeroInflationIndexFixing as fixing{withZeroInflationIndex*`GenZeroInflationIndex zidx',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Double'#}
+-- |Zero and year-on-year inflation indexes; read their fixings with 'QuantLib.Index.fixing'.
+class HasNeedsForecast idx where
+  -- |Whether 'QuantLib.Index.fixing' at the given date would have to be forecast rather than
+  -- served from a stored historical fixing -- true once the date falls after the latest period
+  -- a fixing could plausibly already be published for, given the index's publication lag.
+  -- /Warning/ It raises an exception if the index was built with a frequency outside
+  -- @Annual@..@Monthly@, which the inflation-period calculation does not handle.
+  needsForecast :: idx -> Day -> IO Bool
+instance HasNeedsForecast (GenZeroInflationIndex zidx) where
+  needsForecast = qlZeroInflationIndexNeedsForecast
+instance HasNeedsForecast (GenYoYInflationIndex yidx) where
+  needsForecast = qlYoYInflationIndexNeedsForecast
 
--- |The (possibly forecast) year-on-year fixing at the given date; for a date with no linked
--- term structure this returns the stored historical fixing added via 'QuantLib.Index.addFixing'.
-{#fun qlYoYInflationIndexFixing as yoyFixing{withYoYInflationIndex*`GenYoYInflationIndex yidx',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Double'#}
-
--- |Whether 'fixing' at the given date would have to be forecast rather than served from a stored
--- historical fixing -- true once the date falls after the latest period a fixing could plausibly
--- already be published for, given the index's publication lag.
--- /Warning/ It raises an exception if the index was built with a frequency outside
--- @Annual@..@Monthly@, which the inflation-period calculation does not handle.
-{#fun qlZeroInflationIndexNeedsForecast as needsForecast{withZeroInflationIndex*`GenZeroInflationIndex zidx',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Bool'#}
-
--- |The year-on-year counterpart of 'needsForecast', for 'yoyFixing'.
--- /Warning/ It raises an exception on an unhandled frequency, as 'needsForecast' does.
-{#fun qlYoYInflationIndexNeedsForecast as yoyNeedsForecast{withYoYInflationIndex*`GenYoYInflationIndex yidx',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Bool'#}
+{#fun qlZeroInflationIndexNeedsForecast{withZeroInflationIndex*`GenZeroInflationIndex zidx',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Bool'#}
+{#fun qlYoYInflationIndexNeedsForecast{withYoYInflationIndex*`GenYoYInflationIndex yidx',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Bool'#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

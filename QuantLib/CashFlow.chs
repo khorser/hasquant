@@ -430,7 +430,7 @@ leg f = qlLeg fs ds where (ds, fs) = unzip f
   ,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |The payment date of a cash flow.
-{#fun pure qlCashFlowDate as date{withCashFlow*`GenCashFlow cf' -- ^cashFlow
+{#fun qlCashFlowDate as date{withCashFlow*`GenCashFlow cf' -- ^cashFlow
   }->`Day'toDay#}
 
 -- |A payment of @notional * i(fixingDate) \/ i(baseDate)@, or the same ratio minus one when
@@ -546,34 +546,34 @@ leg f = qlLeg fs ds where (ds, fs) = unzip f
 
 -- |The cap actually in effect for this coupon, accounting for the sign of /gearing/;
 -- QuantLib's null-rate sentinel means no cap applies.
-{#fun pure qlStrippedCappedFlooredCouponCap as capRate{withStrippedCappedFlooredCoupon*`StrippedCappedFlooredCoupon' -- ^coupon
+{#fun qlStrippedCappedFlooredCouponCap as capRate{withStrippedCappedFlooredCoupon*`StrippedCappedFlooredCoupon' -- ^coupon
   }->`Double'#}
 
 -- |The floor actually in effect for this coupon, accounting for the sign of /gearing/;
 -- QuantLib's null-rate sentinel means no floor applies.
-{#fun pure qlStrippedCappedFlooredCouponFloor as floorRate{withStrippedCappedFlooredCoupon*`StrippedCappedFlooredCoupon' -- ^coupon
+{#fun qlStrippedCappedFlooredCouponFloor as floorRate{withStrippedCappedFlooredCoupon*`StrippedCappedFlooredCoupon' -- ^coupon
   }->`Double'#}
 
 -- |The cap rate translated back to the underlying index rate (before gearing\/spread);
 -- QuantLib's null-rate sentinel means the coupon is not capped.
-{#fun pure qlStrippedCappedFlooredCouponEffectiveCap as effectiveCap{withStrippedCappedFlooredCoupon*`StrippedCappedFlooredCoupon' -- ^coupon
+{#fun qlStrippedCappedFlooredCouponEffectiveCap as effectiveCap{withStrippedCappedFlooredCoupon*`StrippedCappedFlooredCoupon' -- ^coupon
   }->`Double'#}
 
 -- |The floor rate translated back to the underlying index rate (before gearing\/spread);
 -- QuantLib's null-rate sentinel means the coupon is not floored.
-{#fun pure qlStrippedCappedFlooredCouponEffectiveFloor as effectiveFloor{withStrippedCappedFlooredCoupon*`StrippedCappedFlooredCoupon' -- ^coupon
+{#fun qlStrippedCappedFlooredCouponEffectiveFloor as effectiveFloor{withStrippedCappedFlooredCoupon*`StrippedCappedFlooredCoupon' -- ^coupon
   }->`Double'#}
 
 -- |Whether this coupon has a cap in effect.
-{#fun pure qlStrippedCappedFlooredCouponIsCap as isCap{withStrippedCappedFlooredCoupon*`StrippedCappedFlooredCoupon' -- ^coupon
+{#fun qlStrippedCappedFlooredCouponIsCap as isCap{withStrippedCappedFlooredCoupon*`StrippedCappedFlooredCoupon' -- ^coupon
   }->`Bool'#}
 
 -- |Whether this coupon has a floor in effect.
-{#fun pure qlStrippedCappedFlooredCouponIsFloor as isFloor{withStrippedCappedFlooredCoupon*`StrippedCappedFlooredCoupon' -- ^coupon
+{#fun qlStrippedCappedFlooredCouponIsFloor as isFloor{withStrippedCappedFlooredCoupon*`StrippedCappedFlooredCoupon' -- ^coupon
   }->`Bool'#}
 
 -- |Whether this coupon is both capped and floored (a collar).
-{#fun pure qlStrippedCappedFlooredCouponIsCollar as isCollar{withStrippedCappedFlooredCoupon*`StrippedCappedFlooredCoupon' -- ^coupon
+{#fun qlStrippedCappedFlooredCouponIsCollar as isCollar{withStrippedCappedFlooredCoupon*`StrippedCappedFlooredCoupon' -- ^coupon
   }->`Bool'#}
 
 -- |Ibor coupon with optional cap and floor rates.

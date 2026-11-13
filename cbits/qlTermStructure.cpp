@@ -2824,12 +2824,6 @@ QlInflationIndex* qlZeroInflationIndexAsInflationIndex(QlZeroInflationIndex *o) 
 void qlFreeYoYInflationIndex(QlYoYInflationIndex *o) {del(o);}
 QlInflationIndex* qlYoYInflationIndexAsInflationIndex(QlYoYInflationIndex *o) {return ret(new QlInflationIndex(*arg(o)));}
 
-double qlZeroInflationIndexFixing(QlZeroInflationIndex* o, int fixingDate, QlError **e) { QlCallScope callbackScope(e);
-  try {return (*arg(o))->fixing(Date(fixingDate));
-  } catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlYoYInflationIndexFixing(QlYoYInflationIndex* o, int fixingDate, QlError **e) { QlCallScope callbackScope(e);
-  try {return (*arg(o))->fixing(Date(fixingDate));
-  } catch (std::exception& er) {return handleException<double>(e, er);}}
 // Both reach inflationPeriod(), which QL_FAILs on a frequency outside Annual..Monthly -- and the
 // index constructors above take an unconstrained one -- so these need an error channel despite
 // looking like plain getters.

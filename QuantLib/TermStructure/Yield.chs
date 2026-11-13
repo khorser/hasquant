@@ -1,4 +1,4 @@
-{-# LANGUAGE TemplateHaskell #-}
+{-# LANGUAGE TemplateHaskell, FlexibleInstances #-}
 module QuantLib.TermStructure.Yield
   (
     -- * Types
@@ -21,6 +21,7 @@ module QuantLib.TermStructure.Yield
   , Reference(..)
   , TermPoint(..)
   , RatePoint(..)
+  , RateInterval(..)
 
     -- ** Bootstrap and contract configuration
   , FittingMethod(..)
@@ -107,14 +108,12 @@ module QuantLib.TermStructure.Yield
   , HasNodes(..)
   , rateHelperFixingDependencies
   , forwardRate
-  , forwardRateBetweenTimes
   , zeroRate
   , discount
   , rateHelperPillarDate
   , impliedQuote
   , impliedQuoteOn
-  , futuresRateHelperConvexityAdjustment
-  , overnightIndexFutureRateHelperConvexityAdjustment
+  , HasConvexityAdjustment(..)
   , minimumCostValue
   , numberOfIterations
   , fittingMethodSize
@@ -129,7 +128,7 @@ import Language.Haskell.TH(mkName)
 import Language.Haskell.TH.Lib(varT)
 import QuantLib.Math(EndCriteriaType(..))
 import QuantLib.Quote hiding(linkTo)
-import QuantLib.TermStructure (Reference(..), TermPoint(..), RatePoint(..), setExtrapolation, HasHelperUnderlying(..), HasNodes(..))
+import QuantLib.TermStructure (Reference(..), TermPoint(..), RatePoint(..), RateInterval(..), setExtrapolation, HasHelperUnderlying(..), HasNodes(..))
 import Data.Maybe(fromMaybe)
 import Data.List.NonEmpty(NonEmpty, toList)
 import Foreign.Ptr(Ptr, nullPtr, castPtr)
@@ -376,14 +375,19 @@ zeroRate curve point = case point of
   ,`Bool' -- ^extrapolate
   ,preErrorCheck-`String'errorCheck*-}->`InterestRate'peekInterestRate*#}
 
--- |The forward rate between two dates, in the given day-counting rule.
--- /Warning/ Dates are not adjusted for holidays.
-{#fun qlYieldTermStructureForwardRate as forwardRate{withYieldTermStructure*`GenYieldTermStructure y',withDay*`Day',withDay*`Day',withDayCounter*`DayCounter',`Compounding',`Frequency'
+-- |The forward rate over a date or year-fraction interval. Dates are not adjusted for
+-- holidays; a time interval's rate carries the curve's own day-counting rule.
+forwardRate :: GenYieldTermStructure y -> RateInterval -> Compounding -> Frequency -> Bool
+  -> IO InterestRate
+forwardRate curve interval = case interval of
+  RateBetweenDates d1 d2 dc -> forwardRateBetweenDatesRaw curve d1 d2 dc
+  RateBetweenTimes t1 t2 -> forwardRateBetweenTimesRaw curve t1 t2
+
+{#fun qlYieldTermStructureForwardRate as forwardRateBetweenDatesRaw{withYieldTermStructure*`GenYieldTermStructure y',withDay*`Day',withDay*`Day',withDayCounter*`DayCounter',`Compounding',`Frequency'
   ,`Bool' -- ^extrapolate
   ,preErrorCheck-`String'errorCheck*-}->`InterestRate'peekInterestRate*#}
 
--- |The resulting interest rate has the same day-counting rule used by the term structure. The same rule should be used for calculating the passed times t1 and t2.
-{#fun qlYieldTermStructureForwardRate2 as forwardRateBetweenTimes{withYieldTermStructure*`GenYieldTermStructure y',`Double',`Double',`Compounding',`Frequency'
+{#fun qlYieldTermStructureForwardRate2 as forwardRateBetweenTimesRaw{withYieldTermStructure*`GenYieldTermStructure y',`Double',`Double',`Compounding',`Frequency'
   ,`Bool' -- ^extrapolate
   ,preErrorCheck-`String'errorCheck*-}->`InterestRate'peekInterestRate*#}
 
@@ -905,8 +909,16 @@ futuresRateHelper price terms = case terms of
   ,`FuturesType' -- ^type
   ,preErrorCheck-`String'errorCheck*-}->`FuturesRateHelper'peekFuturesRateHelper*#}
 
--- |The futures-vs-forward convexity adjustment this helper was built with (0 if none was given).
-{#fun qlFuturesRateHelperConvexityAdjustment as futuresRateHelperConvexityAdjustment{withGenRateHelper*`FuturesRateHelper',preErrorCheck-`String'errorCheck*-}->`Double'#}
+-- |Futures rate helpers built with an optional futures-vs-forward convexity adjustment.
+class HasConvexityAdjustment h where
+  -- |The convexity adjustment this helper was built with (0 if none was given).
+  convexityAdjustment :: h -> IO Double
+instance HasConvexityAdjustment FuturesRateHelper where
+  convexityAdjustment = qlFuturesRateHelperConvexityAdjustment
+instance HasConvexityAdjustment OvernightIndexFutureRateHelper where
+  convexityAdjustment = qlOvernightIndexFutureRateHelperConvexityAdjustment
+
+{#fun qlFuturesRateHelperConvexityAdjustment{withGenRateHelper*`FuturesRateHelper',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Rate helper for bootstrapping over overnight-index compounding futures.
 {#fun qlOvernightIndexFutureRateHelper as overnightIndexFutureRateHelper{withQuote*`GenQuote q1',withDay*`Day' -- ^valueDate
@@ -918,8 +930,7 @@ futuresRateHelper price terms = case terms of
   ,withMaybeDay*`Maybe Day' -- ^customPillarDate
   ,preErrorCheck-`String'errorCheck*-}->`OvernightIndexFutureRateHelper'peekOvernightIndexFutureRateHelper*#}
 
--- |The futures-vs-forward convexity adjustment this helper was built with (0 if none was given).
-{#fun qlOvernightIndexFutureRateHelperConvexityAdjustment as overnightIndexFutureRateHelperConvexityAdjustment{withGenRateHelper*`OvernightIndexFutureRateHelper',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlOvernightIndexFutureRateHelperConvexityAdjustment{withGenRateHelper*`OvernightIndexFutureRateHelper',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Every fixing this rate helper reads from the store, as @(index name, fixing date)@ pairs.  A
 -- bootstrapped curve cannot be asked what it was built from -- @PiecewiseYieldCurve@ is a

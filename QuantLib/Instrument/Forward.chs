@@ -124,7 +124,7 @@ import QuantLib.Internal.Type
 
 -- |The contracted forward exchange rate (target\/source), computed as @targetNominal \/
 -- sourceNominal@ -- distinct from 'fairForwardRate', the market-implied rate.
-{#fun pure qlFxForwardForwardRate as fxForwardRate{withGenInstrument*`FxForward'}->`Double'#}
+{#fun qlFxForwardForwardRate as fxForwardRate{withGenInstrument*`FxForward'}->`Double'#}
 
 -- |The market-implied fair forward rate, computed by the pricing engine.
 {#fun qlFxForwardFairForwardRate as fairForwardRate{withGenInstrument*`FxForward',preErrorCheck-`String'errorCheck*-}->`Double'#}

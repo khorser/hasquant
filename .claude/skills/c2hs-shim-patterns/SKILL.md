@@ -756,13 +756,13 @@ subclasses (confirmed by reading `basket.cpp`: every delegated method, e.g.
 `lossDistribution`/`probsBeingNthEvent`/`defaultCorrelation`/`probAtLeastNEvents`/`recoveryRate`,
 calls `lossModel_->...`, and `GaussianLHPLossModel` and `ConstantLossModel` each override a
 different, non-overlapping subset -- see `QuantLib/Internal/Type.hs`'s CREDIT section comment).
-Handing every consumer a single `Basket` type either lets `syntheticCdo`/`basketExpectedTrancheLoss`
+Handing every consumer a single `Basket` type either lets `syntheticCdo`/`expectedTrancheLoss`
 compile against a `ConstantLossModel`-backed basket (QL_FAILs at runtime) or vice versa for
 `nthToDefault` -- exactly the kind of runtime throw AGENTS.md's `std::variant` guidance and the
 "avoid `dynamic_cast`" bullet exist to push to compile time instead.
 
 The fix is a 3-type family -- `Basket` (universal: every loss-model-agnostic accessor, e.g.
-`basketNotional`), `TrancheBasket` and `DigitalBasket` (each required by the consumers that need
+`notional`), `TrancheBasket` and `DigitalBasket` (each required by the consumers that need
 their loss model's delegated half) -- but since there is no real C++ upcast to perform (the pointer
 is the exact same `CBasket`/`shared_ptr<Basket>` either way), the "upcast" is a pure, zero-cost
 relabel, not an `IO`-sequenced FFI call:

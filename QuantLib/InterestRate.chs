@@ -44,6 +44,7 @@ data AccrualPeriod
 data EquivalentPeriod
   = EquivalentAtTime !Double
   | EquivalentBetween !DayCounter !Day !Day !(Maybe Day) !(Maybe Day) -- ^resultDC, d1, d2, refStart, refEnd
+  deriving (Eq, Show)
 
 -- |construct an interest rate from a rate value, a day counter, a compounding convention and a frequency.
 {#fun qlInterestRate as interestRate{`Double' -- ^r

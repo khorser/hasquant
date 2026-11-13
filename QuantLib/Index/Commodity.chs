@@ -53,6 +53,6 @@ import QuantLib.Internal.Type
 {#fun qlCommodityIndexLastQuoteDate as lastQuoteDate{withCommodityIndex*`CommodityIndex',preErrorCheck-`String'errorCheck*-}->`Day'toDay#}
 
 -- |Whether this index has any stored historical fixings.
-{#fun pure qlCommodityIndexEmpty as isEmpty{withCommodityIndex*`CommodityIndex'}->`Bool'#}
+{#fun qlCommodityIndexEmpty as isEmpty{withCommodityIndex*`CommodityIndex'}->`Bool'#}
 
 -- vim: set ff=unix ts=8 sts=2 sw=2 et:

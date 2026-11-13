@@ -1965,7 +1965,7 @@ data CSabrVolSurface'
 type CSabrVolSurface = ForeignPtr CSabrVolSurface'
 -- | SABR-smile surface built from an interest-rate index, an ATM 'BlackAtmVolCurve', and
 -- per-tenor vol spreads. A dedicated 'BlackVolSurface' leaf (own getters: @atmCurve@,
--- @sabrVolatilitySpreads@; plus @index@\/@optionDateFromTenor@ folded in directly from upstream's
+-- @sabrVolSurfaceVolatilitySpreads@; plus @index@\/@optionDateFromTenor@ folded in directly from upstream's
 -- @InterestRateVolSurface@, which is not given its own hierarchy level here since
 -- 'SabrVolSurface' is its only concrete member in this binding -- per CLAUDE.md's "don't mirror
 -- the C++ hierarchy 1:1" rule). Two 'AnyOf' layers under 'GenBlackVolSurface' (mirrors
@@ -2519,8 +2519,8 @@ peekPiecewiseZeroInflationCurve :: Ptr CPiecewiseZeroInflationCurve' -> IO Piece
 peekPiecewiseZeroInflationCurve = newGenForeignPtr >=> newGenZeroInflationTermStructure
 withPiecewiseZeroInflationCurve :: PiecewiseZeroInflationCurve -> (Ptr CPiecewiseZeroInflationCurve' -> IO b) -> IO b
 withPiecewiseZeroInflationCurve = withForeignPtr . ptr . peel . getTermStructure
-asYoYInflationTermStructure :: GenYoYInflationTermStructure yoy -> IO YoYInflationTermStructure
-asYoYInflationTermStructure = transferGenForeignPtr newGenYoYInflationTermStructure . peel . getTermStructure
+asYoyInflationTermStructure :: GenYoYInflationTermStructure yoy -> IO YoYInflationTermStructure
+asYoyInflationTermStructure = transferGenForeignPtr newGenYoYInflationTermStructure . peel . getTermStructure
 peekYoYInflationTermStructure :: Ptr CYoYInflationTermStructure' -> IO YoYInflationTermStructure
 peekYoYInflationTermStructure = newCastForeignPtr >=> newGenYoYInflationTermStructure
 withYoYInflationTermStructure :: GenYoYInflationTermStructure yoy -> (Ptr CYoYInflationTermStructure' -> IO b) -> IO b

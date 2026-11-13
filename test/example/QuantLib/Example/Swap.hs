@@ -5,7 +5,7 @@ module QuantLib.Example.Swap
   , IterationResult(..)
   , run
   ) where
-import Control.Monad(void, forM)
+import Control.Monad(forM)
 import Data.Time.Calendar
 import Data.List.NonEmpty(fromList)
 
@@ -81,7 +81,7 @@ run = do
   i1 <- forM [depoSwapTS, depoFutSwapTS, depoFraSwapTS] (\ts -> valuateSwap settleDate ts ts)
 
   let market5YQuote = swapQuotes !! 2
-  void $ setValue market5YQuote 0.0460
+  setValue market5YQuote 0.0460
 
   i2 <- forM [depoSwapTS, depoFutSwapTS, depoFraSwapTS] (\ts -> valuateSwap settleDate ts ts)
 

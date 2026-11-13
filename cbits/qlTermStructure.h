@@ -698,8 +698,6 @@ extern "C" {
   void qlFreeYoYInflationIndex(QlYoYInflationIndex *o);
   QlInflationIndex* qlYoYInflationIndexAsInflationIndex(QlYoYInflationIndex *o);
 
-  double qlZeroInflationIndexFixing(QlZeroInflationIndex* o, int fixingDate, QlError **e);
-  double qlYoYInflationIndexFixing(QlYoYInflationIndex* o, int fixingDate, QlError **e);
   int qlZeroInflationIndexNeedsForecast(QlZeroInflationIndex* o, int fixingDate, QlError **e);
   int qlYoYInflationIndexNeedsForecast(QlYoYInflationIndex* o, int fixingDate, QlError **e);
 

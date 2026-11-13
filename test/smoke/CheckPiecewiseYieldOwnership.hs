@@ -25,7 +25,7 @@ main = Context.keepingSettingsGc $ do
   Context.collectGarbage
   nodes <- bootstrappedNodes leaf
   before <- discount parent (TimePoint 2) False
-  _ <- Quote.setValue quote 0.05
+  Quote.setValue quote 0.05
   changed <- bootstrappedNodes leaf
   unless (nodes /= changed) (fail "leaf failed to observe the quote")
   after <- discount parent (TimePoint 2) False

@@ -1,10 +1,9 @@
 module QuantLib.Spec.Instrument.MtmCrossCurrency (spec) where
 
-import Control.Monad(forM, forM_, void)
+import Control.Monad(forM, forM_)
 import qualified Data.List.NonEmpty as NE
 import QuantLib.Math(Interpolation(..))
 import Data.Time.Calendar(Day, fromGregorian, addGregorianYearsClip)
-import qualified Data.Vector.Storable as V
 import Test.Hspec
 import qualified QuantLib.Context as Context
 import QuantLib.Time.Calendar
@@ -67,19 +66,19 @@ spec = describe "MTM cross-currency 1.44" $ do
           npv par >>= near 0.02 0
         rates <- fxResetRates payer
         notionals <- fxResetNotionals payer
-        V.length rates `shouldBe` 20
-        V.length notionals `shouldBe` V.length rates
+        length rates `shouldBe` 20
+        length notionals `shouldBe` length rates
         let notional = if resetBase then 10000000 / 1.1 else 10000000
-        forM_ (zip (V.toList rates) (V.toList notionals)) $ \(rate, nominal) -> near 1e-6 (notional * rate) nominal
+        forM_ (zip rates notionals) $ \(rate, nominal) -> near 1e-6 (notional * rate) nominal
         _ <- legCurrency payer 0
         inCcyLegNpv payer 0 >>= (`shouldSatisfy` (\v -> not (isNaN v || isInfinite v)))
         inCcyLegBps payer 1 >>= (`shouldSatisfy` (/= 0))
         npvDateDiscounts payer 0 `shouldReturn` 1
         fxResetRates payer >>= \old -> do
-          _ <- setValue spot 1.2
+          setValue spot 1.2
           changed <- fxResetRates payer
           changed `shouldSatisfy` (/= old)
-          void (setValue spot 1.1)
+          setValue spot 1.1
 
   it "projects resets at value dates and respects spot settlement overrides" $ Context.keepingSettingsGc $ do
     let today = fromGregorian 2024 7 1
@@ -113,7 +112,7 @@ spec = describe "MTM cross-currency 1.44" $ do
       eurStartDf <- discount eurCurve (DatePoint start) False
       usdStartDf <- discount usdCurve (DatePoint start) False
       rates <- fxResetRates swap
-      case V.toList rates of
+      case rates of
         first:_ -> near 1e-10 (1.1 * usdSpotDf / eurSpotDf * eurStartDf / usdStartDf) first
         [] -> expectationFailure "no FX reset rates"
       explicit <- discountingMtmCrossCurrencyBasisSwapEngine usd usdCurve eur eurCurve spot Nothing Nothing Nothing (Just valueDate)

@@ -361,7 +361,7 @@ extern "C" {
   QlOption* qlQuantoForwardVanillaOptionAsOption(QlQuantoForwardVanillaOption *o);
 
   QlBarrierOption* qlBarrierOption(int barrierType, double barrier, double rebate, QlStrikedTypePayoff* payoff, QlExercise* exercise, QlError **e);
-  QlInstrument* qlTwoAssetBarrierOption(int barrierType, double barrier, QlStrikedTypePayoff* payoff, QlExercise* exercise, QlError **e);
+  QlOption* qlTwoAssetBarrierOption(int barrierType, double barrier, QlStrikedTypePayoff* payoff, QlExercise* exercise, QlError **e);
   double qlBarrierOptionImpliedVolatility(QlBarrierOption* o, double price, QlGeneralizedBlackScholesProcess* process, unsigned dividendsLen, QlDividend** dividends, double accuracy, unsigned maxEvaluations, double minVol, double maxVol, QlError **e);
   QlOneAssetOption* qlPartialTimeBarrierOption(int barrierType, int barrierRange, double barrier, double rebate, int coverEventDate, QlStrikedTypePayoff* payoff, QlExercise* exercise, QlError **e);
   QlDoubleBarrierOption* qlDoubleBarrierOption(int barrierType, double barrierLo, double barrierHi, double rebate, QlStrikedTypePayoff* payoff, QlExercise* exercise, QlError **e);

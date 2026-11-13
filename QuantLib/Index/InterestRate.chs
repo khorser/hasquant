@@ -283,7 +283,7 @@ iborIndex c ts = qlCreateIbor (iborIndexOrdinal c) (iborIndexTenor c) ts
 {#fun qlInterestRateIndexDayCounter as dayCounter{withInterestRateIndex*`GenInterestRateIndex ridx',preErrorCheck-`String'errorCheck*-}->`DayCounter'peekDayCounter*#}
 
 -- |Returns the number of business days between a fixing date and the corresponding value date.
-{#fun pure qlInterestRateIndexFixingDays as fixingDays{withInterestRateIndex*`GenInterestRateIndex ridx'}->`Word'fromIntegral#}
+{#fun qlInterestRateIndexFixingDays as fixingDays{withInterestRateIndex*`GenInterestRateIndex ridx'}->`Word'fromIntegral#}
 
 -- |Returns the index's tenor.
 {#fun qlInterestRateIndexTenor as tenor{withInterestRateIndex*`GenInterestRateIndex ridx',preEnum-`TimeUnit'peekEnum*,preErrorCheck-`String'errorCheck*-}->`Word'fromIntegral#}
@@ -393,10 +393,10 @@ overnightIndexedSwapIndex familyName tenr settlementDays ccy idx telescopicValue
   ,withCurrency*`Currency',withCalendar*`Calendar',withDayCounter*`DayCounter',withMaybeYieldTermStructure*`Maybe (GenYieldTermStructure y)',preErrorCheck-`String'errorCheck*-}->`OvernightIborIndex'peekOvernightIborIndex*#}
 
 -- |Returns the business day convention used to adjust the index's value/maturity dates.
-{#fun pure qlIborIndexBusinessDayConvention as businessDayConvention{withIborIndex*`GenIborIndex ibor'}->`BusinessDayConvention'toEnumC#}
+{#fun qlIborIndexBusinessDayConvention as businessDayConvention{withIborIndex*`GenIborIndex ibor'}->`BusinessDayConvention'toEnumC#}
 
 -- |Returns whether the index's date calculations roll to the end of the month.
-{#fun pure qlIborIndexEndOfMonth as endOfMonth{withIborIndex*`GenIborIndex ibor'}->`Bool'#}
+{#fun qlIborIndexEndOfMonth as endOfMonth{withIborIndex*`GenIborIndex ibor'}->`Bool'#}
 
 -- |Returns the overnight-indexed swap underlying the index for a given fixing date. Relinking the index's term structure afterwards has no effect on the returned swap.
 {#fun qlOvernightIndexedSwapIndexUnderlyingSwap as underlyingOis {withOvernightIndexedSwapIndex*`OvernightIndexedSwapIndex',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`OvernightIndexedSwap'peekOvernightIndexedSwap*#}

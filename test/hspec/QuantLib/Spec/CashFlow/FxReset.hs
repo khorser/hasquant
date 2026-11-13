@@ -82,7 +82,7 @@ spec = describe "FX reset and stub cash flows 1.44" $ do
       CF.fixingDependencies plain >>= \dependencies -> CF.fixingDependencies wrapped `shouldReturn` dependencies
       Context.collectGarbage
       CF.amount coupon >>= near 1e-10 (rawAmount * fx)
-      _ <- setValue spot 1.2
+      setValue spot 1.2
       CF.amount coupon >>= near 1e-10 (rawAmount * fx * 1.2 / 1.1)
 
   it "uses historical direct, inverse and triangulated exchange rates" $ Context.keepingSettingsGc $

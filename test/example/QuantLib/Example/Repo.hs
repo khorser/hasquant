@@ -5,7 +5,7 @@ module QuantLib.Example.Repo
   , run
   ) where
 
-import Control.Monad(void, when)
+import Control.Monad(when)
 import System.IO (hPutStrLn, stderr)
 
 import QuantLib.Instrument
@@ -103,7 +103,7 @@ run gc = do
             (0, Days) bondCalendar Unadjusted False bondDayCountConvention
           -- liftM2 setPricingEngine (asInstrument b) (discountingBondEngine bondCurve Nothing)]
           discountingBondEngine bondCurve Nothing >>= setPricingEngine b
-          void $ yieldFromPrice b (bondCleanPrice, Clean) bondDayCountConvention IR.Compounded bondCouponFrequency repoSettlementDate 1e-8 100 >>= setValue bondQuote
+          yieldFromPrice b (bondCleanPrice, Clean) bondDayCountConvention IR.Compounded bondCouponFrequency repoSettlementDate 1e-8 100 >>= setValue bondQuote
           repoQuote <- simpleQuote repoRate
           repoCurve <- flatForward (ReferenceDate repoSettlementDate) repoQuote
             repoDayCountConvention repoCompounding repoCompoundFreq

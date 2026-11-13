@@ -12,6 +12,7 @@ module QuantLib.TermStructure
   , TermPoint(..)
   , TermInterval(..)
   , RatePoint(..)
+  , RateInterval(..)
 
     -- * Constructors
   , asTermStructure
@@ -151,6 +152,13 @@ data TermInterval
 data RatePoint
   = RateAtDate !Day !DayCounter
   | RateAtTime !Double
+  deriving (Eq, Show)
+
+-- |A same-representation interval where dates need their day-counting rule; times use the
+-- curve's own.
+data RateInterval
+  = RateBetweenDates !Day !Day !DayCounter
+  | RateBetweenTimes !Double !Double
   deriving (Eq, Show)
 
 -- |the date at which discount = 1.0 and/or variance = 0.0

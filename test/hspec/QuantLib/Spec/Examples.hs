@@ -118,7 +118,7 @@ spec = do
         sch <- schedule (Just issue) maturity (1, Years) c Unadjusted Unadjusted Backward False Nothing Nothing
         b <- B.fixedRateBond 2 1000 sch [0.05] dc Following 100 (Just issue) c
           (0, Days) c Unadjusted False dc
-        B.maturityDate b `shouldReturn` Just (fromGregorian 2013 1 1)
+        B.maturityDate b `shouldReturn` fromGregorian 2013 1 1
 
     describe "Amortizing bonds" $ do
       it "AmortizingFixedRateBond reproduces upstream's sinking-fund pmt values" $ do

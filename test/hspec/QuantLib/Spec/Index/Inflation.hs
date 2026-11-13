@@ -16,7 +16,7 @@ spec =
       -- A date decades before the availability lag can only be served from a stored fixing.
       needsForecast idx (fromGregorian 1990 1 1) `shouldReturn` False
       yoy <- yoyInflationIndexFromZero idx Nothing
-      yoyNeedsForecast yoy (fromGregorian 1990 1 1) `shouldReturn` False
+      needsForecast yoy (fromGregorian 1990 1 1) `shouldReturn` False
 
     -- The constructors accept any Frequency, but needsForecast reaches inflationPeriod, which
     -- QL_FAILs outside Annual..Monthly. Nothing on the Haskell side constrains the frequency, so
@@ -26,7 +26,7 @@ spec =
       idx <- unsupportedIndex
       needsForecast idx (fromGregorian 1990 1 1) `shouldThrow` anyException
       yoy <- yoyInflationIndexFromZero idx Nothing
-      yoyNeedsForecast yoy (fromGregorian 1990 1 1) `shouldThrow` anyException
+      needsForecast yoy (fromGregorian 1990 1 1) `shouldThrow` anyException
   where
     mkIndex freq = do
       uk <- region UKRegion

@@ -132,13 +132,13 @@ type CommodityCashFlows = [CommodityCashFlow]
 {#fun qlCommodityCashFlowUndiscountedPaymentAmount as undiscountedPaymentAmount{withCommodityCashFlow*`CommodityCashFlow',alloca-`Currency'peekCurrencyPtr*,preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |The discount factor applied to the base-currency amount.
-{#fun pure qlCommodityCashFlowDiscountFactor as discountFactor{withCommodityCashFlow*`CommodityCashFlow'}->`Double'#}
+{#fun qlCommodityCashFlowDiscountFactor as discountFactor{withCommodityCashFlow*`CommodityCashFlow'}->`Double'#}
 
 -- |The discount factor applied to the payment-currency amount.
-{#fun pure qlCommodityCashFlowPaymentDiscountFactor as paymentDiscountFactor{withCommodityCashFlow*`CommodityCashFlow'}->`Double'#}
+{#fun qlCommodityCashFlowPaymentDiscountFactor as paymentDiscountFactor{withCommodityCashFlow*`CommodityCashFlow'}->`Double'#}
 
 -- |Whether this cash flow's payment date has already occurred as of the evaluation date.
-{#fun pure qlCommodityCashFlowFinalized as finalized{withCommodityCashFlow*`CommodityCashFlow'}->`Bool'#}
+{#fun qlCommodityCashFlowFinalized as finalized{withCommodityCashFlow*`CommodityCashFlow'}->`Bool'#}
 
 -- |Record a pricing diagnostic against a 'Commodity'\/'EnergyCommodity' leaf (any of 'EnergyFuture',
 -- 'EnergyVanillaSwap', 'EnergyBasisSwap'), retrievable afterwards via 'pricingErrors'. Mirrors

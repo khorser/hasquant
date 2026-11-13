@@ -38,7 +38,7 @@ module QuantLib.Instrument.Credit
   , protectionValue
   , premiumLegNpv
   , protectionLegNpv
-  , cdoRemainingNotional
+  , remainingNotional
   , implicitCorrelation
     -- ** Nth-to-default
   , ntdFairPremium
@@ -190,7 +190,7 @@ syntheticCdo basket side sched upfrontRate runningRate dc conv notional =
 {#fun qlSyntheticCDOProtectionLegNPV as protectionLegNpv{withGenInstrument*`SyntheticCDO',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |Total outstanding tranche notional, not wiped out by realized losses.
-{#fun qlSyntheticCDORemainingNotional as cdoRemainingNotional{withGenInstrument*`SyntheticCDO',preErrorCheck-`String'errorCheck*-}->`Double'#}
+{#fun qlSyntheticCDORemainingNotional as remainingNotional{withGenInstrument*`SyntheticCDO',preErrorCheck-`String'errorCheck*-}->`Double'#}
 
 -- |The flat Gaussian-copula LHP correlation (constant along time and portfolio loss level)
 -- that makes the tranche's NPV equal @targetNPV@.

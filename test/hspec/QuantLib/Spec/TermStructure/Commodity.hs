@@ -33,7 +33,7 @@ spec = do
       ccy <- Curve.currency curve
       ccy `shouldBe` usd
       Curve.nodes curve `shouldReturn` zip dates prices
-      Curve.isEmpty curve `shouldBe` False
+      Curve.isEmpty curve `shouldReturn` False
 
     it "has no basis curve until one is set, and finds it afterwards" $ do
       ho <- commodityType "HO" "Heating Oil"

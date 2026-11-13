@@ -34,7 +34,7 @@ main = do
   Q.value direct >>= check "direct quote" 6
   Q.value dependent >>= check "native dependent" 20
   Q.value array >>= check "array quote" 4
-  _ <- Q.setValue q 4
+  Q.setValue q 4
   Q.value direct >>= check "live direct quote" 12
   Q.value dependent >>= check "live native dependent" 40
   fdmInnerValue calculator mesh [1] 3 >>= check "inner value" 4

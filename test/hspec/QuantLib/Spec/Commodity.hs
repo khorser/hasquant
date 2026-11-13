@@ -75,7 +75,7 @@ spec = do
       pt <- paymentTerm "Trade + 2 days" TradeDate 2 cal
       let d = 3 `january` 2024
       expected <- adjust cal (addDays 2 d) Following
-      paymentTermGetPaymentDate pt d `shouldReturn` expected
+      paymentTermPaymentDate pt d `shouldReturn` expected
 
   describe "Quantity" $ do
     it "rounds the amount per the unit of measure's rounding convention, unit/type unchanged" $ do

@@ -971,9 +971,9 @@ unsigned qlSwapNumberOfLegs(QlSwap* o, QlError **e) { QlCallScope callbackScope(
 Leg* qlSwapLeg(QlSwap* o, unsigned j, QlError **e) { QlCallScope callbackScope(e);try {return ret(new Leg((*arg(o))->leg(j)));} catch (std::exception& er) {return handleException<Leg*>(e, er);}}
 double qlSwapLegBPS(QlSwap* o, unsigned j, QlError **e) { QlCallScope callbackScope(e);try {return (*arg(o))->legBPS(j);} catch (std::exception& er) {return handleException<double>(e, er);}}
 double qlSwapLegNPV(QlSwap* o, unsigned j, QlError **e) { QlCallScope callbackScope(e);try {return (*arg(o))->legNPV(j);} catch (std::exception& er) {return handleException<double>(e, er);}}
-int qlSwapMaturityDate(QlSwap* o, QlError **e) { QlCallScope callbackScope(e);try {return qlNullableDate((*arg(o))->maturityDate());} catch (std::exception& er) {return handleException<int>(e, er);}}
+int qlSwapMaturityDate(QlSwap* o, QlError **e) { QlCallScope callbackScope(e);try {return ((*arg(o))->maturityDate()).serialNumber();} catch (std::exception& er) {return handleException<int>(e, er);}}
 double qlSwapNpvDateDiscount(QlSwap* o, QlError **e) { QlCallScope callbackScope(e);try {return (*arg(o))->npvDateDiscount();} catch (std::exception& er) {return handleException<double>(e, er);}}
-int qlSwapStartDate(QlSwap* o, QlError **e) { QlCallScope callbackScope(e);try {return qlNullableDate((*arg(o))->startDate());} catch (std::exception& er) {return handleException<int>(e, er);}}
+int qlSwapStartDate(QlSwap* o, QlError **e) { QlCallScope callbackScope(e);try {return ((*arg(o))->startDate()).serialNumber();} catch (std::exception& er) {return handleException<int>(e, er);}}
 double qlSwapStartDiscounts(QlSwap* o, unsigned j, QlError **e) { QlCallScope callbackScope(e);try {return (*arg(o))->startDiscounts(j);} catch (std::exception& er) {return handleException<double>(e, er);}}
 double qlFixedVsFloatingSwapFairRate(QlFixedVsFloatingSwap* o, QlError **e) { QlCallScope callbackScope(e);try {const double value = (*arg(o))->fairRate(); QL_REQUIRE(std::isfinite(value), "fair rate/spread is undefined for zero leg BPS"); return value;} catch (std::exception& er) {return handleException<double>(e, er);}}
 double qlFixedVsFloatingSwapFairSpread(QlFixedVsFloatingSwap* o, QlError **e) { QlCallScope callbackScope(e);try {const double value = (*arg(o))->fairSpread(); QL_REQUIRE(std::isfinite(value), "fair rate/spread is undefined for zero leg BPS"); return value;} catch (std::exception& er) {return handleException<double>(e, er);}}
@@ -1251,9 +1251,9 @@ QlOneAssetOption* qlQuantoForwardVanillaOptionAsOneAssetOption(QlQuantoForwardVa
 QlBarrierOption* qlBarrierOption(int barrierType, double barrier, double rebate, QlStrikedTypePayoff* payoff, QlExercise* exercise, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlBarrierOption(alloc(new BarrierOption((Barrier::Type)barrierType, barrier, rebate, *arg(payoff), (*arg(exercise))))));
   } catch (std::exception& er) {return handleException<QlBarrierOption*>(e, er);}}
-QlInstrument* qlTwoAssetBarrierOption(int barrierType, double barrier, QlStrikedTypePayoff* payoff, QlExercise* exercise, QlError **e) { QlCallScope callbackScope(e);
-  try {return ret(new QlInstrument(alloc(new TwoAssetBarrierOption((Barrier::Type)barrierType, barrier, *arg(payoff), (*arg(exercise))))));
-  } catch (std::exception& er) {return handleException<QlInstrument*>(e, er);}}
+QlOption* qlTwoAssetBarrierOption(int barrierType, double barrier, QlStrikedTypePayoff* payoff, QlExercise* exercise, QlError **e) { QlCallScope callbackScope(e);
+  try {return ret(new QlOption(alloc(new TwoAssetBarrierOption((Barrier::Type)barrierType, barrier, *arg(payoff), (*arg(exercise))))));
+  } catch (std::exception& er) {return handleException<QlOption*>(e, er);}}
 double qlBarrierOptionImpliedVolatility(QlBarrierOption* o, double price, QlGeneralizedBlackScholesProcess* process, unsigned dividendsLen, QlDividend** dividends, double accuracy, unsigned maxEvaluations, double minVol, double maxVol, QlError **e) { QlCallScope callbackScope(e);
   try {DividendSchedule d = qlVector(dividends, dividendsLen);
     return (*arg(o))->impliedVolatility(price, *arg(process), d, accuracy, maxEvaluations, minVol, maxVol);
@@ -1392,7 +1392,7 @@ QlBond *qlBond(unsigned settlDays, Calendar *calendar, int issueDate, Leg *coupo
   try {return ret(new QlBond(alloc(new Bond(settlDays, *arg(calendar), qlNullableDate(issueDate), *arg(coupons)))));
   } catch (std::exception& er) {return handleException<QlBond *>(e, er);}}
 int qlBondMaturityDate(QlBond *bond, QlError **e) { QlCallScope callbackScope(e);
-  try {return qlNullableDate((*arg(bond))->maturityDate());
+  try {return ((*arg(bond))->maturityDate()).serialNumber();
   } catch (std::exception& er) {return handleException<int>(e, er);}}
 void qlFreeBond(QlBond *bond) {del(bond);}
 void qlFreeFixedRateBond(QlFixedRateBond *bond) {del(bond);}

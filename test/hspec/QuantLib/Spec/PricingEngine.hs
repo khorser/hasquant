@@ -1190,13 +1190,13 @@ spec = do
           optInst <- asOneAssetOption opt
           setPricingEngine optInst engine
           forM_ innerCases $ \(q, r, v, fxr, fxv, corr) -> do
-            _ <- setValue spotQ u
-            _ <- setValue qRateQ q
-            _ <- setValue rRateQ r
-            _ <- setValue volQ v
-            _ <- setValue fxRateQ fxr
-            _ <- setValue fxVolQ fxv
-            _ <- setValue corrQ corr
+            setValue spotQ u
+            setValue qRateQ q
+            setValue rRateQ r
+            setValue volQ v
+            setValue fxRateQ fxr
+            setValue fxVolQ fxv
+            setValue corrQ corr
             val <- npv optInst
             when (val > u * 1.0e-5) $ do
               calcDelta <- delta optInst
@@ -1210,46 +1210,46 @@ spec = do
               calcQlambda <- qlambda opt
 
               let du = u * 1.0e-4
-              _ <- setValue spotQ (u + du); valueP <- npv optInst; deltaP <- delta optInst
-              _ <- setValue spotQ (u - du); valueM <- npv optInst; deltaM <- delta optInst
-              _ <- setValue spotQ u
+              setValue spotQ (u + du); valueP <- npv optInst; deltaP <- delta optInst
+              setValue spotQ (u - du); valueM <- npv optInst; deltaM <- delta optInst
+              setValue spotQ u
               let expDelta = (valueP - valueM) / (2 * du)
                   expGamma = (deltaP - deltaM) / (2 * du)
 
               let dr = r * 1.0e-4
-              _ <- setValue rRateQ (r + dr); rValueP <- npv optInst
-              _ <- setValue rRateQ (r - dr); rValueM <- npv optInst
-              _ <- setValue rRateQ r
+              setValue rRateQ (r + dr); rValueP <- npv optInst
+              setValue rRateQ (r - dr); rValueM <- npv optInst
+              setValue rRateQ r
               let expRho = (rValueP - rValueM) / (2 * dr)
 
               let dq = q * 1.0e-4
-              _ <- setValue qRateQ (q + dq); qValueP <- npv optInst
-              _ <- setValue qRateQ (q - dq); qValueM <- npv optInst
-              _ <- setValue qRateQ q
+              setValue qRateQ (q + dq); qValueP <- npv optInst
+              setValue qRateQ (q - dq); qValueM <- npv optInst
+              setValue qRateQ q
               let expDivRho = (qValueP - qValueM) / (2 * dq)
 
               let dv = v * 1.0e-4
-              _ <- setValue volQ (v + dv); vValueP <- npv optInst
-              _ <- setValue volQ (v - dv); vValueM <- npv optInst
-              _ <- setValue volQ v
+              setValue volQ (v + dv); vValueP <- npv optInst
+              setValue volQ (v - dv); vValueM <- npv optInst
+              setValue volQ v
               let expVega = (vValueP - vValueM) / (2 * dv)
 
               let dfxr = fxr * 1.0e-4
-              _ <- setValue fxRateQ (fxr + dfxr); fxrValueP <- npv optInst
-              _ <- setValue fxRateQ (fxr - dfxr); fxrValueM <- npv optInst
-              _ <- setValue fxRateQ fxr
+              setValue fxRateQ (fxr + dfxr); fxrValueP <- npv optInst
+              setValue fxRateQ (fxr - dfxr); fxrValueM <- npv optInst
+              setValue fxRateQ fxr
               let expQrho = (fxrValueP - fxrValueM) / (2 * dfxr)
 
               let dfxv = fxv * 1.0e-4
-              _ <- setValue fxVolQ (fxv + dfxv); fxvValueP <- npv optInst
-              _ <- setValue fxVolQ (fxv - dfxv); fxvValueM <- npv optInst
-              _ <- setValue fxVolQ fxv
+              setValue fxVolQ (fxv + dfxv); fxvValueP <- npv optInst
+              setValue fxVolQ (fxv - dfxv); fxvValueM <- npv optInst
+              setValue fxVolQ fxv
               let expQvega = (fxvValueP - fxvValueM) / (2 * dfxv)
 
               let dcorr = corr * 1.0e-4
-              _ <- setValue corrQ (corr + dcorr); corrValueP <- npv optInst
-              _ <- setValue corrQ (corr - dcorr); corrValueM <- npv optInst
-              _ <- setValue corrQ corr
+              setValue corrQ (corr + dcorr); corrValueP <- npv optInst
+              setValue corrQ (corr - dcorr); corrValueM <- npv optInst
+              setValue corrQ corr
               let expQlambda = (corrValueP - corrValueM) / (2 * dcorr)
 
               dTyears <- yearFraction dc (addDays (-1) today') (addDays 1 today') Nothing Nothing
@@ -1334,13 +1334,13 @@ spec = do
             optInst <- asOneAssetOption opt
             setPricingEngine optInst engine
             forM_ innerCases $ \(q, r, v, fxr, fxv, corr) -> do
-              _ <- setValue spotQ u
-              _ <- setValue qRateQ q
-              _ <- setValue rRateQ r
-              _ <- setValue volQ v
-              _ <- setValue fxRateQ fxr
-              _ <- setValue fxVolQ fxv
-              _ <- setValue corrQ corr
+              setValue spotQ u
+              setValue qRateQ q
+              setValue rRateQ r
+              setValue volQ v
+              setValue fxRateQ fxr
+              setValue fxVolQ fxv
+              setValue corrQ corr
               val <- npv optInst
               when (val > u * 1.0e-5) $ do
                 calcDelta <- delta optInst
@@ -1354,46 +1354,46 @@ spec = do
                 calcQlambda <- qlambda opt
 
                 let du = u * 1.0e-4
-                _ <- setValue spotQ (u + du); valueP <- npv optInst; deltaP <- delta optInst
-                _ <- setValue spotQ (u - du); valueM <- npv optInst; deltaM <- delta optInst
-                _ <- setValue spotQ u
+                setValue spotQ (u + du); valueP <- npv optInst; deltaP <- delta optInst
+                setValue spotQ (u - du); valueM <- npv optInst; deltaM <- delta optInst
+                setValue spotQ u
                 let expDelta = (valueP - valueM) / (2 * du)
                     expGamma = (deltaP - deltaM) / (2 * du)
 
                 let dr = r * 1.0e-4
-                _ <- setValue rRateQ (r + dr); rValueP <- npv optInst
-                _ <- setValue rRateQ (r - dr); rValueM <- npv optInst
-                _ <- setValue rRateQ r
+                setValue rRateQ (r + dr); rValueP <- npv optInst
+                setValue rRateQ (r - dr); rValueM <- npv optInst
+                setValue rRateQ r
                 let expRho = (rValueP - rValueM) / (2 * dr)
 
                 let dq = q * 1.0e-4
-                _ <- setValue qRateQ (q + dq); qValueP <- npv optInst
-                _ <- setValue qRateQ (q - dq); qValueM <- npv optInst
-                _ <- setValue qRateQ q
+                setValue qRateQ (q + dq); qValueP <- npv optInst
+                setValue qRateQ (q - dq); qValueM <- npv optInst
+                setValue qRateQ q
                 let expDivRho = (qValueP - qValueM) / (2 * dq)
 
                 let dv = v * 1.0e-4
-                _ <- setValue volQ (v + dv); vValueP <- npv optInst
-                _ <- setValue volQ (v - dv); vValueM <- npv optInst
-                _ <- setValue volQ v
+                setValue volQ (v + dv); vValueP <- npv optInst
+                setValue volQ (v - dv); vValueM <- npv optInst
+                setValue volQ v
                 let expVega = (vValueP - vValueM) / (2 * dv)
 
                 let dfxr = fxr * 1.0e-4
-                _ <- setValue fxRateQ (fxr + dfxr); fxrValueP <- npv optInst
-                _ <- setValue fxRateQ (fxr - dfxr); fxrValueM <- npv optInst
-                _ <- setValue fxRateQ fxr
+                setValue fxRateQ (fxr + dfxr); fxrValueP <- npv optInst
+                setValue fxRateQ (fxr - dfxr); fxrValueM <- npv optInst
+                setValue fxRateQ fxr
                 let expQrho = (fxrValueP - fxrValueM) / (2 * dfxr)
 
                 let dfxv = fxv * 1.0e-4
-                _ <- setValue fxVolQ (fxv + dfxv); fxvValueP <- npv optInst
-                _ <- setValue fxVolQ (fxv - dfxv); fxvValueM <- npv optInst
-                _ <- setValue fxVolQ fxv
+                setValue fxVolQ (fxv + dfxv); fxvValueP <- npv optInst
+                setValue fxVolQ (fxv - dfxv); fxvValueM <- npv optInst
+                setValue fxVolQ fxv
                 let expQvega = (fxvValueP - fxvValueM) / (2 * dfxv)
 
                 let dcorr = corr * 1.0e-4
-                _ <- setValue corrQ (corr + dcorr); corrValueP <- npv optInst
-                _ <- setValue corrQ (corr - dcorr); corrValueM <- npv optInst
-                _ <- setValue corrQ corr
+                setValue corrQ (corr + dcorr); corrValueP <- npv optInst
+                setValue corrQ (corr - dcorr); corrValueM <- npv optInst
+                setValue corrQ corr
                 let expQlambda = (corrValueP - corrValueM) / (2 * dcorr)
 
                 dTyears <- yearFraction dc (addDays (-1) today') (addDays 1 today') Nothing Nothing
@@ -1713,7 +1713,7 @@ spec = do
         rQ <- simpleQuote (0.0 :: Double)
         rTS <- flatForward (ReferenceDate today') rQ dc Continuous Annual
         forM_ cases $ \(barType, ty, barrier, strike, corr, r, expected) -> do
-          _ <- setValue rQ r
+          setValue rQ r
           s1Q <- simpleQuote (100.0 :: Double)
           q1Q <- simpleQuote (0.0 :: Double)
           v1Q <- simpleQuote (0.2 :: Double)
@@ -1994,7 +1994,7 @@ spec = do
         let exDate = addDays (round (0.5 * 360 :: Double)) evalDate
         eng <- mcAmericanBasketEngine PseudoRandom procArr (Just 52) Nothing False True (Just 10000) Nothing Nothing 1 (Just 2500) 2 Monomial
         forM_ rows $ \(s, expected, tol) -> do
-          _ <- setValue spot1 s
+          setValue spot1 s
           let payoff = plainVanillaPayoff (PlainVanillaPayoff Put 100.0)
               basket = Max payoff
           opt <- basketOption basket (American (Just evalDate) exDate False)
@@ -2097,12 +2097,12 @@ spec = do
         npv0 <- npv opt
 
         let eps = 1.0
-        _ <- setValue spot1 (s1 + eps)
-        _ <- setValue spot2 (s2 + eps)
+        setValue spot1 (s1 + eps)
+        setValue spot2 (s2 + eps)
         npvUp <- npv opt
 
-        _ <- setValue spot1 (s1 - eps)
-        _ <- setValue spot2 (s2 - eps)
+        setValue spot1 (s1 - eps)
+        setValue spot2 (s2 - eps)
         npvDown <- npv opt
 
         let expectedDelta = (npvUp - npvDown) / (2 * eps)
@@ -2298,9 +2298,9 @@ spec = do
 
                 fmap concat $
                   forM [0.0, 0.05, 0.2] $ \rate -> do
-                    _ <- setValue rQ rate
+                    setValue rQ rate
                     forM [75.0, 90.0, 100.0, 105.0, 175.0] $ \spot -> do
-                      _ <- setValue s2Q spot
+                      setValue s2Q spot
                       setPricingEngine opt fd2d
                       fdNPV <- npv opt
                       setPricingEngine opt kirk

@@ -67,7 +67,7 @@ module QuantLib.Commodity
   , paymentTermOffsetDays
   , paymentTermCalendar
   , paymentTermEmpty
-  , paymentTermGetPaymentDate
+  , paymentTermPaymentDate
     -- ** Pricing periods and conversions
   , pricingPeriodStartDate
   , pricingPeriodEndDate
@@ -204,7 +204,7 @@ paymentTermName x = unsafePerformIO $ mask_ (paymentTermNameRaw x)
 
 -- |Applies the term's offset (and calendar adjustment) to a trade or pricing-period-end date to
 -- get the actual payment date.
-{#fun qlPaymentTermGetPaymentDate as paymentTermGetPaymentDate
+{#fun qlPaymentTermGetPaymentDate as paymentTermPaymentDate
   {withPaymentTerm*`PaymentTerm',withDay*`Day',preErrorCheck-`String'errorCheck*-}->`Day'toDay#}
 
 -- |A commodity type, unit of measure, and amount. Its FFI arguments are flat because c2hs's

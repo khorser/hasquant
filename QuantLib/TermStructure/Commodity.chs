@@ -88,7 +88,7 @@ nodes curve = do
 {#fun qlCommodityCurvePrices as qlCommodityCurvePrices{withGenTermStructure*`CommodityCurve',preDoubleArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Whether this curve has any nodes.
-{#fun pure qlCommodityCurveEmpty as isEmpty{withGenTermStructure*`CommodityCurve'}->`Bool'#}
+{#fun qlCommodityCurveEmpty as isEmpty{withGenTermStructure*`CommodityCurve'}->`Bool'#}
 
 -- |The basis curve this curve was chained to via 'setBasisOfCurve', if any.
 {#fun qlCommodityCurveBasisOfCurve as basisOfCurve{withGenTermStructure*`CommodityCurve'}->`Maybe CommodityCurve'peekMaybeCommodityCurve*#}

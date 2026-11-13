@@ -829,7 +829,7 @@ Rounding* qlRounding1(int precision, int type, int digit, QlError **e) { QlCallS
 
 QlSimpleQuote *qlSimpleQuote(double value, QlError **e) { QlCallScope callbackScope(e);try {return ret(new QlSimpleQuote(alloc(new SimpleQuote(value))));} catch (std::exception& er) {return handleException<QlSimpleQuote *>(e, er);}}
 double qlQuoteValue(QlQuote *quote, QlError **e) { QlCallScope callbackScope(e);try {return (*arg(quote))->value();} catch (std::exception& er) {return handleException<double>(e, er);}}
-double qlSimpleQuoteSetValue(QlSimpleQuote* o, double value, QlError **e) { QlCallScope callbackScope(e);try {return (*arg(o))->setValue(value);} catch (std::exception& er) {return handleException<double>(e, er);}}
+void qlSimpleQuoteSetValue(QlSimpleQuote* o, double value, QlError **e) { QlCallScope callbackScope(e);try {(*arg(o))->setValue(value);} catch (std::exception& er) {(void)handleException<void *>(e, er);}}
 
 QlQuote* qlEurodollarFuturesImpliedStdDevQuote(QlQuote* forward, QlQuote* callPrice, QlQuote* putPrice, double strike, double guess, double accuracy, unsigned maxIter, QlError **e) { QlCallScope callbackScope(e);
   try {return ret(new QlQuote(shared_ptr<Quote>(alloc(new EurodollarFuturesImpliedStdDevQuote(*arg(forward), *arg(callPrice), *arg(putPrice), strike, guess, accuracy, maxIter)))));

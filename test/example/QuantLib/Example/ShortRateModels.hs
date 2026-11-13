@@ -122,8 +122,8 @@ runCachedHullWhite2 = do
   ccy <- IR.currency index
   cal <- fixingCalendar index
   dc <- IR.dayCounter index
-  let conv = IR.businessDayConvention index
-      eom = IR.endOfMonth index
+  conv <- IR.businessDayConvention index
+  eom <- IR.endOfMonth index
   index0 <- IR.iborIndex (IR.Ibor "Euribor" tenr 0 ccy cal conv eom dc) (Just ts)
   runCalibration model index0 ts [] 0.0482063 0.00582687
 

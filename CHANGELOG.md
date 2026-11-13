@@ -1,5 +1,33 @@
 ## 0.9.0.0 (2026)
 
+- Breaking: API consistency pass. Renamed, old to new:
+  - `asYoYInflationTermStructure` to `asYoyInflationTermStructure`;
+    `paymentTermGetPaymentDate` to `paymentTermPaymentDate`; `blackVolVariance` to `blackVariance`;
+    `abcdAtmVolCurveOptionTenors` to `abcdOptionTenors`.
+  - SABR cube: `sparseSabrParameters`, `denseSabrParameters`, `marketVolCube`,
+    `volCubeAtmCalibrated` to `sabrSparseParameters`, `sabrDenseParameters`, `sabrMarketVolCube`,
+    `sabrVolCubeAtmCalibrated`; `noArbSabrSparseSabrParameters`, `noArbSabrDenseSabrParameters` to
+    `noArbSabrSparseParameters`, `noArbSabrDenseParameters`; `sabrVolatilitySpreads` to
+    `sabrVolSurfaceVolatilitySpreads`.
+  - `QuantLib.Credit` drops the `basket` prefix: `notional`, `remainingNotional`, `recoveryRate`,
+    `expectedTrancheLoss`, `probOverLoss`, `percentile`, `expectedShortfall`,
+    `defaultCorrelation`, `probAtLeastNEvents`. `cdoRemainingNotional` is `remainingNotional`
+    and `nonstandardSwapFixedRate` is `fixedRates`.
+- Breaking: getters on live objects are in `IO`: `fixingDays`, `businessDayConvention` and
+  `endOfMonth` of an interest-rate index, `fxForwardRate`, `isEmpty` of a commodity curve or
+  index, `discountFactor`, `paymentDiscountFactor` and `finalized` of a commodity cash flow,
+  cash-flow `date`, and the `StrippedCappedFlooredCoupon` getters.
+- Breaking: `forwardRate` takes a `RateInterval` and replaces `forwardRateBetweenTimes`;
+  `swapLength` takes a `SwapSpan` and replaces `swapLengthBetweenDates`.
+- Breaking: capability classes replace per-type names. `HasImpliedQuoteOn(impliedQuoteOn)` covers
+  both inflation swap helpers, `HasConvexityAdjustment(convexityAdjustment)` both futures rate
+  helpers, and `HasNeedsForecast(needsForecast)` zero and year-on-year inflation indexes. The
+  inflation `fixing` and `yoyFixing` are removed; `QuantLib.Index.fixing` reads every index.
+- Breaking: `setValue` returns `()`. `twoAssetBarrierOption` returns `Option`. Swap
+  `startDate`/`maturityDate` and bond `maturityDate` return `Day`. `fxResetRates` and
+  `fxResetNotionals` return lists. `capFloorTermVolCurve` pairs each tenor with its quote as
+  `((Word, TimeUnit), GenQuote q)`.
+
 - Breaking: return `PiecewiseYieldCurve` from `piecewiseSpreadYieldCurve`, retaining calibrated
   multiplicative discount-factor spread nodes for both iterative and global bootstrappers.
   Read them with `bootstrappedNodes`; concrete parent callers upcast explicitly.

@@ -37,13 +37,12 @@ spec = do
   -- Ported from quotes.cpp:testObservable's core mechanic (the value round-trip); the
   -- Flag/registerWith observer-notification check in that test has no hasquant binding.
   describe "SimpleQuote" $
-    it "round-trips value/setValue, with setValue returning the change" $ do
+    it "round-trips value/setValue" $ do
       q <- simpleQuote 0.0
       value q `shouldReturn` 0.0
-      setValue q 3.14 `shouldReturn` 3.14
+      setValue q 3.14
       value q `shouldReturn` 3.14
-      diff <- setValue q 1.0
-      diff `shouldSatisfy` closePrec (1.0 - 3.14) 1.0e-9
+      setValue q 1.0
       value q `shouldReturn` 1.0
 
   -- quotes.cpp:testDerived. Both entry points against the same three functions/values.
@@ -54,7 +53,7 @@ spec = do
           me <- simpleQuote 0.0
           derived <- derivedQuote op me operand
           forM_ values $ \v -> do
-            _ <- setValue me v
+            setValue me v
             x <- value derived
             x `shouldSatisfy` closePrec (f v) 1.0e-10
 
@@ -63,7 +62,7 @@ spec = do
         me <- simpleQuote 0.0
         withDerivedQuote f me $ \derived ->
           forM_ values $ \v -> do
-            _ <- setValue me v
+            setValue me v
             x <- value derived
             x `shouldSatisfy` closePrec (f v) 1.0e-10
 
@@ -75,8 +74,8 @@ spec = do
         me2 <- simpleQuote 0.0
         composite <- compositeQuote op me1 me2
         forM_ values $ \v -> do
-          _ <- setValue me1 v
-          _ <- setValue me2 (v + 1)
+          setValue me1 v
+          setValue me2 (v + 1)
           x <- value composite
           x `shouldSatisfy` closePrec (f v (v + 1)) 1.0e-10
 
@@ -86,8 +85,8 @@ spec = do
         me2 <- simpleQuote 0.0
         withCompositeQuote f me1 me2 $ \composite ->
           forM_ values $ \v -> do
-            _ <- setValue me1 v
-            _ <- setValue me2 (v + 1)
+            setValue me1 v
+            setValue me2 (v + 1)
             x <- value composite
             x `shouldSatisfy` closePrec (f v (v + 1)) 1.0e-10
 
@@ -128,10 +127,10 @@ spec = do
       spread <- simpleQuote 0.0005
       q <- compositeQuote QuoteAdd base spread
       value q `shouldReturn` 0.0305
-      _ <- setValue base 0.04
+      setValue base 0.04
       v1 <- value q
       v1 `shouldSatisfy` closePrec 0.0405 1.0e-12
-      _ <- setValue spread 0.001
+      setValue spread 0.001
       v2 <- value q
       v2 `shouldSatisfy` closePrec 0.041 1.0e-12
 
@@ -175,7 +174,7 @@ spec = do
       priceQuote <- simpleQuote price
       q <- impliedStdDevQuote Call forwardQuote priceQuote strike guess 1.0e-10 100
       stdev0 <- value q
-      _ <- setValue priceQuote 0.011
+      setValue priceQuote 0.011
       stdev1 <- value q
       stdev1 `shouldNotSatisfy` closePrec stdev0 1.0e-6
       repriced <- blackFormula Call strike forwardRate stdev1 1.0 0.0
@@ -215,7 +214,7 @@ spec = do
       expected <- fixing idx fixingDate True
       v <- value q
       v `shouldSatisfy` closePrec expected 1.0e-15
-      _ <- setValue forwardQuote 0.04
+      setValue forwardQuote 0.04
       expected' <- fixing idx fixingDate True
       v' <- value q
       v' `shouldSatisfy` closePrec expected' 1.0e-15
@@ -262,12 +261,12 @@ spec = do
         domHandle <- relinkableYieldTermStructure (Just dom)
         q <- fxCashSpotQuote spot domHandle for cal settle
         base <- value q
-        _ <- setValue spot 1.30
+        setValue spot 1.30
         value q >>= (`shouldSatisfy` (/= base))
-        _ <- setValue spot spotV
-        _ <- setValue rdQ 0.06
+        setValue spot spotV
+        setValue rdQ 0.06
         value q >>= (`shouldSatisfy` (/= base))
-        _ <- setValue rdQ rd
+        setValue rdQ rd
         value q `shouldReturn` base
         flatQ <- simpleQuote rf
         flatDom <- flatForward (ReferenceDate (23 `december` 2026)) flatQ dc IR.Continuous Annual
@@ -297,10 +296,10 @@ spec = do
         option <- vanillaOption (PlainVanilla (PlainVanillaPayoff Call 1.25)) (European (EuropeanExercise (23 `december` 2027)))
         analyticEuropeanEngine process Nothing >>= setPricingEngine option
         basePv <- npv option
-        _ <- setValue rdQ 0.07
+        setValue rdQ 0.07
         movedPv <- npv option
         movedPv `shouldSatisfy` (< basePv)
-        _ <- setValue rdQ rd
+        setValue rdQ rd
         npv option `shouldReturn` basePv
 
   describe "FuturesConvAdjustmentQuote" $

@@ -153,7 +153,7 @@ extern "C" {
   void qlFreeQuote(QlQuote *quote);
   void qlFreeSimpleQuote(QlSimpleQuote *o);
   QlQuote* qlSimpleQuoteAsQuote(QlSimpleQuote *o);
-  double qlSimpleQuoteSetValue(QlSimpleQuote* o, double value, QlError **e);
+  void qlSimpleQuoteSetValue(QlSimpleQuote* o, double value, QlError **e);
   QlDeltaVolQuote *qlDeltaVolQuote1(double delta, QlQuote *vol, double maturity, int deltaType, QlError **e);
   QlDeltaVolQuote *qlDeltaVolQuote2(QlQuote *vol, int deltaType, double maturity, int atmType, QlError **e);
   void qlFreeDeltaVolQuote(QlDeltaVolQuote *o);

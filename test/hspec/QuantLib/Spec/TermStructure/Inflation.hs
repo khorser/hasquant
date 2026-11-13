@@ -109,7 +109,7 @@ spec = do
     curve <- piecewiseZeroInflationCurve evalDate baseDate' Monthly dc (fromList helpers) Nothing Linear
     forM_ quotes $ \(n, rate) -> do
       fresh <- helperAt 0 n
-      zeroCouponInflationSwapImpliedQuoteOn fresh curve >>= (`shouldSatisfy` closePrec rate 1.0e-8)
+      impliedQuoteOn fresh curve >>= (`shouldSatisfy` closePrec rate 1.0e-8)
 
   it "a year-on-year helper reads its swap rate on a curve it did not bootstrap" $ Context.keepingSettingsGc $ do
     Context.setEvaluationDate (Just evalDate)
@@ -132,7 +132,7 @@ spec = do
     curve <- piecewiseYoyInflationCurve evalDate baseDate' 0.03 Monthly dc (fromList helpers) Nothing Linear
     forM_ quotes $ \(n, rate) -> do
       fresh <- helperAt 0 n
-      yearOnYearInflationSwapImpliedQuoteOn fresh curve >>= (`shouldSatisfy` closePrec rate 1.0e-8)
+      impliedQuoteOn fresh curve >>= (`shouldSatisfy` closePrec rate 1.0e-8)
 
   it "a bootstrapped zero curve's nodes rebuild it, seasonality included" $ Context.keepingSettingsGc $ do
     Context.setEvaluationDate (Just evalDate)

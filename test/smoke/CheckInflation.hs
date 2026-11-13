@@ -11,7 +11,7 @@ import Control.Monad
 import qualified QuantLib.CashFlow as CF
 import qualified QuantLib.InterestRate as IR
 import QuantLib.Currency(currency, Ccy(GBP))
-import QuantLib.Index(addFixing)
+import QuantLib.Index(addFixing, fixing)
 import QuantLib.Index.Inflation
 import QuantLib.Math(Interpolation(..))
 import QuantLib.Quote(simpleQuote)
@@ -31,12 +31,12 @@ main = do
   forM_ ([AUCPI, EUHICP, EUHICPXT, FRHICP, UKHICP, UKRPI, USCPI, ZACPI] :: [ZeroInflationIndexType]) $ \ty -> do
     idx <- zeroInflationIndex ty
     addFixing idx (1 `january` 2020) 100.0 False
-    f <- fixing idx (1 `january` 2020)
+    f <- fixing idx (1 `january` 2020) False
     putStrLn (show ty ++ " -> fixing " ++ show f)
   forM_ ([YYAUCPI, YYEUHICP, YYEUHICPXT, YYFRHICP, YYUKRPI, YYUSCPI, YYZACPI] :: [YoYInflationIndexType]) $ \ty -> do
     idx <- yoyInflationIndex ty
     addFixing idx (1 `january` 2020) 0.03 False
-    f <- yoyFixing idx (1 `january` 2020)
+    f <- fixing idx (1 `january` 2020) False
     putStrLn (show ty ++ " -> fixing " ++ show f)
 
   forM_ ([minBound .. maxBound] :: [RegionType]) $ \ty -> do
@@ -48,17 +48,17 @@ main = do
   zii' <- customZeroInflationIndex "WL CPI" reg False Monthly (1, Months) gbp Nothing
   addFixing zii' (1 `january` 2019) 97.0 False
   addFixing zii' (1 `january` 2020) 100.0 False
-  fz' <- fixing zii' (1 `january` 2020)
+  fz' <- fixing zii' (1 `january` 2020) False
   putStrLn ("custom zero-inflation index -> fixing " ++ show fz')
 
   yii' <- customYoyInflationIndex "WL YoY CPI" reg False Monthly (1, Months) gbp Nothing
   addFixing yii' (1 `january` 2020) 0.03 False
-  fy' <- yoyFixing yii' (1 `january` 2020)
+  fy' <- fixing yii' (1 `january` 2020) False
   putStrLn ("custom YoY-inflation index -> fixing " ++ show fy')
 
   -- ratio YoY index needs the underlying zero index's fixings a year apart
   yiiRatio <- yoyInflationIndexFromZero zii' Nothing
-  fyr <- yoyFixing yiiRatio (1 `january` 2020)
+  fyr <- fixing yiiRatio (1 `january` 2020) False
   putStrLn ("yoyInflationIndexFromZero (ratio off custom zero index) -> fixing " ++ show fyr)
 
   setEvaluationDate $ Just today

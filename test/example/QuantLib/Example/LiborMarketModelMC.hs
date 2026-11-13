@@ -56,7 +56,8 @@ run = Context.keepingSettingsGc $ do
   Context.setEvaluationDate (Just evalDate)
   dc <- dayCounter (Actual360 False)
   emptyIndex <- iborIndex Euribor1Y Nothing
-  firstPillar <- advance cal evalDate (fromIntegral (Ibor.fixingDays emptyIndex), Days) Following False
+  fixDays <- Ibor.fixingDays emptyIndex
+  firstPillar <- advance cal evalDate (fromIntegral fixDays, Days) Following False
   rTS <- interpolatedZeroCurve (fromList [(firstPillar, 0.01), (curveEndDate, 0.08)]) dc cal [] Linear
   idx <- iborIndex Euribor1Y (Just rTS)
 

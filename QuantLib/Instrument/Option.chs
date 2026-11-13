@@ -132,6 +132,7 @@ import Data.List.NonEmpty(NonEmpty, toList)
 {#pointer *QlEverestOption as EverestOption foreign -> CEverestOption' nocode#}
 {#pointer *QlMultiAssetOption as MultiAssetOption foreign -> CMultiAssetOption' nocode#}
 {#pointer *QlOneAssetOption as OneAssetOption foreign -> COneAssetOption' nocode#}
+{#pointer *QlOption as Option foreign -> COption' nocode#}
 {#pointer *QlQuantoBarrierOption as QuantoBarrierOption foreign -> CQuantoBarrierOption' nocode#}
 {#pointer *QlQuantoDoubleBarrierOption as QuantoDoubleBarrierOption foreign -> CQuantoDoubleBarrierOption' nocode#}
 {#pointer *QlQuantoForwardVanillaOption as QuantoForwardVanillaOption foreign -> CQuantoForwardVanillaOption' nocode#}
@@ -266,7 +267,7 @@ import Data.List.NonEmpty(NonEmpty, toList)
 -- |Barrier option on two assets: the first asset's value is compared to the strike to determine the payoff, while the second asset's value is monitored against the barrier.
 {#fun qlTwoAssetBarrierOption as twoAssetBarrierOption{`BarrierType'
   ,`Double' -- ^barrier
-  ,withStrikedPayoff*`StrikedPayoff',withExercise*`Exercise',preErrorCheck-`String'errorCheck*-}->`Instrument'peekInstrument*#}
+  ,withStrikedPayoff*`StrikedPayoff',withExercise*`Exercise',preErrorCheck-`String'errorCheck*-}->`Option'peekOption*#}
 
 -- |Base construction for an option on multiple assets.
 {#fun qlMultiAssetOption as multiAssetOption{withPayoff*`Payoff',withExercise*`Exercise',preErrorCheck-`String'errorCheck*-}->`MultiAssetOption'peekMultiAssetOption*#}

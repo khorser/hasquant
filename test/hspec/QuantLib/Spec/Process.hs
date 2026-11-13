@@ -38,7 +38,7 @@ import QuantLib.Time.Date(today, addPeriod, january, july, september)
 import QuantLib.Time.Schedule(dayCounter, yearFraction, DayCounterConstructor(..), Frequency(..), TimeUnit(..))
 import QuantLib.InterestRate(Compounding(..), VolatilityType(..), rate)
 import QuantLib.Quote(simpleQuote, setValue)
-import QuantLib.TermStructure.Yield(Reference(..), TermPoint(..), flatForward, forwardRateBetweenTimes, discount, YieldTermStructure, interpolatedZeroCurve)
+import QuantLib.TermStructure.Yield(Reference(..), TermPoint(..), RateInterval(..), flatForward, forwardRate, discount, YieldTermStructure, interpolatedZeroCurve)
 import QuantLib.Instrument(npv, setPricingEngine)
 import QuantLib.Instrument.Option(europeanOption, impliedVolatility, StrikedPayoff(PlainVanilla), PlainVanillaPayoff(..), OptionType(..), Exercise(European), EuropeanExercise(..))
 import qualified QuantLib.Process as Process
@@ -239,7 +239,7 @@ spec = do
         Context.setEvaluationDate (Just evalDate)
         dc <- dayCounter (Actual360 False)
         emptyIndex <- iborIndex Euribor6M Nothing
-        firstPillar <- advance cal evalDate (fromIntegral (Ibor.fixingDays emptyIndex), Days) Following False
+        firstPillar <- Ibor.fixingDays emptyIndex >>= \n -> advance cal evalDate (fromIntegral n, Days) Following False
         rTS <- interpolatedZeroCurve (fromList [(firstPillar, 0.039), (curveEndDate, 0.041)]) dc cal [] Linear
         idx <- iborIndex Euribor6M (Just rTS)
         process <- liborForwardModelProcess size idx
@@ -284,7 +284,7 @@ spec = do
         Context.setEvaluationDate (Just evalDate)
         dc <- dayCounter (Actual360 False)
         emptyIndex <- iborIndex Euribor6M Nothing
-        firstPillar <- advance cal evalDate (fromIntegral (Ibor.fixingDays emptyIndex), Days) Following False
+        firstPillar <- Ibor.fixingDays emptyIndex >>= \n -> advance cal evalDate (fromIntegral n, Days) Following False
         rTS <- interpolatedZeroCurve (fromList [(firstPillar, 0.039), (curveEndDate, 0.041)]) dc cal [] Linear
         idx <- iborIndex Euribor6M (Just rTS)
         process <- liborForwardModelProcess size idx
@@ -323,7 +323,7 @@ spec = do
         process <- g2Process 0.1 0.01 0.2 0.013 (-0.5) (Just curve)
         let t = 2.0
         phiBefore <- phi process t
-        _ <- setValue rateQ 0.05
+        setValue rateQ 0.05
         phiAfter <- phi process t
         (phiAfter - phiBefore) `shouldSatisfy` closePrec 0.03 1.0e-10
 
@@ -857,7 +857,7 @@ spec = do
                helper <- Model.hestonModelHelper (months, Months) nullCal s0 strike vol rTS qTS Model.ImpliedVolError
                Model.setPricingEngine helper truthEngine
                price <- Model.modelValue helper
-               _ <- Model.impliedVolatility helper price 1.0e-12 1000 0.01 2.0 >>= setValue vol
+               Model.impliedVolatility helper price 1.0e-12 1000 0.01 2.0 >>= setValue vol
                pure helper
           | months <- [6, 12, 24], strike <- [90, 100, 110] ]
         fitted <- modelOf (0.06, 1.0, 0.04, 0.3, -0.3)
@@ -978,7 +978,7 @@ spec = do
         setForwardMeasureTime hwFwd 10.0
 
         mapM_ (\t -> do
-            fwdIR <- forwardRateBetweenTimes rTS t t Continuous NoFrequency True
+            fwdIR <- forwardRate rTS (RateBetweenTimes t t) Continuous NoFrequency True
             let alfa = (sigma / a) * (1 - exp (-a * t))
                 expected = 0.5 * alfa * alfa + rate fwdIR
             plain <- Process.alpha hw t
@@ -1027,7 +1027,7 @@ spec = do
     -- reference independent of G2Process.
     referencePhi :: YieldTermStructure -> Double -> Double -> Double -> Double -> Double -> Double -> IO Double
     referencePhi curve t a sigma b eta rho = do
-      fwdIR <- forwardRateBetweenTimes curve t t Continuous NoFrequency True
+      fwdIR <- forwardRate curve (RateBetweenTimes t t) Continuous NoFrequency True
       let fwd = rate fwdIR
           temp1 = sigma * (1 - exp (-a * t)) / a
           temp2 = eta * (1 - exp (-b * t)) / b

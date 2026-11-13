@@ -123,7 +123,7 @@ module QuantLib.Instrument.Swap
   , npvDateDiscount
   , startDate
   , startDiscounts
-  , nonstandardSwapFixedRate
+  , fixedRates
 
     -- ** Cross-currency swaps
 
@@ -412,7 +412,7 @@ swapFromLegs = (uncurry qlSwap1) . unzip
 -- 'nonstandardSwap'\/'nonstandardSwapFromGearingsAndSpreads', this simply echoes the constructor's @fixedRate@; for
 -- one built via 'nonstandardSwapFromVanilla' it is derived from the underlying vanilla swap's
 -- fixed leg coupons.
-{#fun qlNonstandardSwapFixedRate as nonstandardSwapFixedRate{withNonstandardSwap*`NonstandardSwap',preDoubleArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
+{#fun qlNonstandardSwapFixedRate as fixedRates{withNonstandardSwap*`NonstandardSwap',preDoubleArray-`[Double]'&peekDoubleArray*,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Swap exchanging capped\/floored Libor or CMS coupons with a single flat nominal on each leg.
 -- 'FloatFloatSwapOpts' bundles every trailing param the C++ constructor defaults (gearing\/
@@ -532,8 +532,8 @@ makeVanillaSwap (swLen, swUnit) index fixedRate forwardStart mSettlementDays
   floatTenor <- tenor index
   floatDayCount <- dayCounter index
   refDate <- evaluationDate
-  let floatConv = businessDayConvention index
-      floatCalendar = fromMaybe idxCalendar mFloatCalendar
+  floatConv <- businessDayConvention index
+  let floatCalendar = fromMaybe idxCalendar mFloatCalendar
       fixedCalendar = fromMaybe idxCalendar mFixedCalendar
       fixedConvention = fromMaybe ModifiedFollowing mFixedConvention
       fixedTerminationConvention = fromMaybe ModifiedFollowing mFixedTerminationConvention
@@ -596,8 +596,8 @@ makeCms (swLen, swUnit) swapIndex iborIndex iborSpread forwardStart mSettlementD
   floatTenor <- tenor iborIndex
   floatDayCount <- dayCounter iborIndex
   refDate <- evaluationDate
-  let floatConv = businessDayConvention iborIndex
-      floatCalendar = fromMaybe idxCalendar mFloatCalendar
+  floatConv <- businessDayConvention iborIndex
+  let floatCalendar = fromMaybe idxCalendar mFloatCalendar
       cmsCalendar = fromMaybe idxCalendar mCmsCalendar
       settlementDays = fromMaybe 0 mSettlementDays
       nominal = fromMaybe 1.0 mNominal
@@ -932,11 +932,11 @@ overnightIndexedSwapFromNominals t ns sch r dc idx sprd lag adj cal telescopic a
   ,fromMaybeInt`Maybe Int' -- ^roundingPrecision (1.44; QuantLib 1.43 requires 'Nothing')
   ,preErrorCheck-`String'errorCheck*-}->`OvernightIndexedSwap'peekOvernightIndexedSwap*#}
 
--- |The swap's maturity date, or 'Nothing' if the swap has no legs.
-{#fun qlSwapMaturityDate as maturityDate{withSwap*`GenSwap s',preErrorCheck-`String'errorCheck*-}->`(Maybe Day)' toMaybeDay#}
+-- |The swap's maturity date: the latest across its legs. Throws if the swap has no legs.
+{#fun qlSwapMaturityDate as maturityDate{withSwap*`GenSwap s',preErrorCheck-`String'errorCheck*-}->`Day'toDay#}
 
--- |The swap's start date, or 'Nothing' if the swap has no legs.
-{#fun qlSwapStartDate as startDate{withSwap*`GenSwap s',preErrorCheck-`String'errorCheck*-}->`(Maybe Day)' toMaybeDay#}
+-- |The swap's start date: the earliest across its legs. Throws if the swap has no legs.
+{#fun qlSwapStartDate as startDate{withSwap*`GenSwap s',preErrorCheck-`String'errorCheck*-}->`Day'toDay#}
 
 -- |Discount factor at the instrument's NPV date.
 {#fun qlSwapNpvDateDiscount as npvDateDiscount{withSwap*`GenSwap s',preErrorCheck-`String'errorCheck*-}->`Double'#}
@@ -1442,12 +1442,12 @@ instance HasFairLegSpreads MtMCrossCurrencyBasisSwap where
 
 -- |Calculated reset rates for non-occurred coupons in leg order (1.44).
 {#fun qlMtMFxResetRates as fxResetRates{withMtMCrossCurrencyBasisSwap*`MtMCrossCurrencyBasisSwap' -- ^swap
-  ,preDoubleArray-`RealVector'&peekRealVector* -- ^result
+  ,preDoubleArray-`[Double]'&peekDoubleArray* -- ^result
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Calculated reset notionals for non-occurred coupons in leg order (1.44).
 {#fun qlMtMFxResetNotionals as fxResetNotionals{withMtMCrossCurrencyBasisSwap*`MtMCrossCurrencyBasisSwap' -- ^swap
-  ,preDoubleArray-`RealVector'&peekRealVector* -- ^result
+  ,preDoubleArray-`[Double]'&peekDoubleArray* -- ^result
   ,preErrorCheck-`String'errorCheck*-}->`()'#}
 
 -- |Upstream defaults for MTM cross-currency construction.
