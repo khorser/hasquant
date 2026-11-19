@@ -1,121 +1,26 @@
 ## 0.9.0.0 (2026)
 
-- Breaking: API consistency pass. Renamed, old to new:
-  - `asYoYInflationTermStructure` to `asYoyInflationTermStructure`;
-    `paymentTermGetPaymentDate` to `paymentTermPaymentDate`; `blackVolVariance` to `blackVariance`;
-    `abcdAtmVolCurveOptionTenors` to `abcdOptionTenors`.
-  - SABR cube: `sparseSabrParameters`, `denseSabrParameters`, `marketVolCube`,
-    `volCubeAtmCalibrated` to `sabrSparseParameters`, `sabrDenseParameters`, `sabrMarketVolCube`,
-    `sabrVolCubeAtmCalibrated`; `noArbSabrSparseSabrParameters`, `noArbSabrDenseSabrParameters` to
-    `noArbSabrSparseParameters`, `noArbSabrDenseParameters`; `sabrVolatilitySpreads` to
-    `sabrVolSurfaceVolatilitySpreads`.
-  - `QuantLib.Credit` drops the `basket` prefix: `notional`, `remainingNotional`, `recoveryRate`,
-    `expectedTrancheLoss`, `probOverLoss`, `percentile`, `expectedShortfall`,
-    `defaultCorrelation`, `probAtLeastNEvents`. `cdoRemainingNotional` is `remainingNotional`
-    and `nonstandardSwapFixedRate` is `fixedRates`.
-- Breaking: getters on live objects are in `IO`: `fixingDays`, `businessDayConvention` and
-  `endOfMonth` of an interest-rate index, `fxForwardRate`, `isEmpty` of a commodity curve or
-  index, `discountFactor`, `paymentDiscountFactor` and `finalized` of a commodity cash flow,
-  cash-flow `date`, and the `StrippedCappedFlooredCoupon` getters.
-- Breaking: `forwardRate` takes a `RateInterval` and replaces `forwardRateBetweenTimes`;
-  `swapLength` takes a `SwapSpan` and replaces `swapLengthBetweenDates`.
-- Breaking: capability classes replace per-type names. `HasImpliedQuoteOn(impliedQuoteOn)` covers
-  both inflation swap helpers, `HasConvexityAdjustment(convexityAdjustment)` both futures rate
-  helpers, and `HasNeedsForecast(needsForecast)` zero and year-on-year inflation indexes. The
-  inflation `fixing` and `yoyFixing` are removed; `QuantLib.Index.fixing` reads every index.
-- Breaking: `setValue` returns `()`. `twoAssetBarrierOption` returns `Option`. Swap
-  `startDate`/`maturityDate` and bond `maturityDate` return `Day`. `fxResetRates` and
-  `fxResetNotionals` return lists. `capFloorTermVolCurve` pairs each tenor with its quote as
-  `((Word, TimeUnit), GenQuote q)`.
+Supports QuantLib 1.43 and 1.44; 1.44 is now the default for development, documentation and
+release builds. Most changes below are breaking.
 
-- Breaking: return `PiecewiseYieldCurve` from `piecewiseSpreadYieldCurve`, retaining calibrated
-  multiplicative discount-factor spread nodes for both iterative and global bootstrappers.
-  Read them with `bootstrappedNodes`; concrete parent callers upcast explicitly.
-
-- Bootstrapped curve nodes are read through one capability, `HasNodes(bootstrappedNodes)`, with
-  instances for `PiecewiseYieldCurve`, `PiecewiseDefaultCurve`, `PiecewiseZeroInflationCurve` and
-  `PiecewiseYoYInflationCurve`. Yield curves keep their nodes under every bootstrapper, global
-  and local included; local-bootstrap nodes alone do not rebuild the convex-monotone curve.
-
-- Breaking: `addBootstrappedCurve` takes the `PiecewiseYieldCurve` leaf returned by
-  `piecewiseYieldCurve` instead of any yield curve; non-bootstrapped curves no longer type-check
-  there and go through `addNonBootstrappedCurve`.
-
-- Add `conditionalSurvivalCurve`, a hasquant conditional view over an existing native credit
-  curve. Survival and density normalize at a later fixed reference while hazard queries keep
-  the original curve's geometry and native numerics; no re-interpolation is performed.
-  Sources exposing scheduled jumps are refused because their live quote metadata is unavailable.
-
-- Add `fixingAccrualFractions` for overnight and multiple-reset coupons, exposing native
-  index-day-count weights as a list aligned with `fixingDates`.
-
-- Breaking: return a `PiecewiseYieldCurve` leaf from `piecewiseYieldCurve`; node inspection
-  takes only that curve, retaining its native type without runtime downcasts.
-- Clarify that yield/default node reconstruction also requires the original jumps.
-
-- Breaking: replace the three model-specific YoY optionlet stripping constructors with
-  `kInterpolatedYoyOptionletVolatilitySurface`, selected by `YoyOptionletModel`, and add an
-  optional initial-volatility root bracket. `Nothing` retains the native 1e-5 to 0.08 bounds.
-
-- Add `rateHelperPillarDate` to inspect native bootstrap pillar dates before attaching a curve.
-
-- `bootstrappedNodes` reads a bootstrapped yield curve's nodes: the
-  reference date, then each helper's pillar, with the value its trait interpolates. The
-  interpolated curve of that trait on these nodes reproduces the curve with the original
-  day counter, full interpolation configuration, and jump dates/quotes.
-
-- Breaking: `capletVarianceCurve` takes a trailing `extrapolate` flag. With `True`, a read
-  after the last node keeps that node's volatility, as `BlackVarianceCurve` interpolates by
-  variance; with `False`, the former behaviour, QuantLib refuses the read.
-
-- Breaking: `yoyCapFloorTermPriceSurface` takes a leading `YoyPriceSurfaceStart`. `MovingStart`
-  keeps native moving dates; `BookedAtEvaluationDate` books the surface at the current
-  evaluation date. The booked surface uses native fixed-start ATM swap helpers
-  and preserves the native pillars, so restoring a later process date cannot rebuild
-  swaps beyond their fixed maturities. Rebuild booked surfaces for date rolls.
-
-- Breaking: `piecewiseDefaultCurve` returns a `PiecewiseDefaultCurve`, a
-  `DefaultProbabilityTermStructure` leaf. Every curve argument still accepts it; convert with
-  `asDefaultProbabilityTermStructure` where a concrete `DefaultProbabilityTermStructure` is
-  stored. `bootstrappedNodes` reads its bootstrapped nodes: the reference date, then each
-  helper's pillar, with the value its trait interpolates. The interpolated curve of that trait
-  on these nodes reproduces the curve with the original day counter, interpolation, and jumps.
-
-- Breaking: hazard shifts use `shiftedHazardRateCurve` and `HazardRateShift`.
-  Replace `spreadedHazardRateCurve base q` with `shiftedHazardRateCurve base
-  (ParallelHazardShift q)`, and `factorSpreadedHazardRateCurve base q` with
-  `shiftedHazardRateCurve base (RelativeHazardShift q)`. Those cases retain their native
-  numerical behavior; parallel queries now refuse negative or non-finite hazards.
-  `KeyRateHazardShifts` and `BucketHazardShifts` add live linear and square
-  spread shapes without re-interpolating the base curve; their survival correction uses
-  QuantLib interpolation primitives. Shaped queries refuse negative or non-finite hazards.
-
-- Breaking: `piecewiseBlackVarianceSurface` takes its nodes as `PiecewiseVarianceNodes` and an
-  `extrapolate` flag. `VarianceGrid dates strikes vols` is the former rectangular grid;
-  `VarianceSlices` gives each expiry its own (strike, volatility) nodes, so strike sets can differ
-  between expiries. Pass `False` to keep the former behaviour. The surface's strike range is
-  unbounded, so only this flag decides whether a section reads outside its strikes; the
-  Haddock describes the domain a caller must check itself.
-- Added `fxCashSpotQuote`, the cash value at the evaluation date of an FX spot quoted for
-  settlement after a business-day lag. It is defined by hasquant rather than QuantLib, which
-  has no quote observing yield curves, and it stays live in the spot, both curves, relinks and
-  the evaluation date.
-- Breaking: matrix inspectors are ordinary functions rather than record fields. Replace
-  `m.matrixData` with `matrixData m` (and likewise for the other matrix inspectors), and import
-  inspectors explicitly instead of through `Matrix(..)` or `RealMatrix(..)`. Construct a new
-  matrix with the checked smart constructors instead of updating record fields.
-- QuantLib 1.44 is the default for development, documentation and release builds; 1.43 remains supported.
-- `QuantLib.Math` exports `Matrix` abstractly, with the `matrixRows`, `matrixColumns` and
-  `matrixData` inspectors, so matrices processes return (`stdDeviation`, `covariance`,
-  `diffusion`) can be read without `QuantLib.Internal`. Build one with `boxedRealMatrix` or
-  `objectMatrix`, which check its shape.
-- Breaking: `piecewiseZeroInflationCurve` and `piecewiseYoyInflationCurve` return the new
-  `PiecewiseZeroInflationCurve` and `PiecewiseYoYInflationCurve` leaves, whose bootstrapped
-  nodes `bootstrappedNodes` reads. `ZeroInflationTermStructure` and
-  `YoYInflationTermStructure` are now families (`GenZeroInflationTermStructure`,
-  `GenYoYInflationTermStructure`): rate, implied-quote and index inputs accept either leaf, and
-  `asZeroInflationTermStructure`/`asYoYInflationTermStructure` convert where a concrete type is
-  stored.
+- Bootstrapped curves keep their calibration. The piecewise yield, spread, default and
+  inflation curve constructors return typed piecewise leaves whose calibrated nodes
+  `bootstrappedNodes` reads; `addBootstrappedCurve` accepts only such a leaf, and
+  `rateHelperPillarDate` inspects helper pillars before bootstrapping.
+- Credit-curve scenarios: `shiftedHazardRateCurve` replaces the spreaded hazard curves and adds
+  live key-rate and bucket shifts; `conditionalSurvivalCurve` conditions an existing curve on
+  survival to a later date.
+- Volatility: piecewise Black variance surfaces accept per-expiry strike slices, caplet variance
+  curves and variance surfaces can extrapolate, YoY optionlet stripping uses one model-selected
+  constructor with an optional root bracket, and YoY price surfaces can be booked at the
+  evaluation date.
+- Added a curve-observing FX cash spot quote (`fxCashSpotQuote`) and the accrual fractions of
+  compounded coupons (`fixingAccrualFractions`).
+- `QuantLib.Math` exports `Matrix` abstractly, with checked constructors and plain inspector
+  functions.
+- API consistency pass: uniform naming, `IO` getters on live objects, more precise return
+  types, coordinate ADTs instead of per-coordinate query variants, and capability classes
+  instead of per-type names (`QuantLib.Index.fixing` now reads every index).
 
 ## 0.8.0.0 (2026)
 
